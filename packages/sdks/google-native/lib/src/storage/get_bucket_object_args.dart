@@ -30,27 +30,17 @@ class GetBucketObjectArgs {
   /// [softDeleted] Optional.
   /// [userProject] Optional.
   GetBucketObjectArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? generation,
-    pulumi.Output<String>? ifGenerationMatch,
-    pulumi.Output<String>? ifGenerationNotMatch,
-    pulumi.Output<String>? ifMetagenerationMatch,
-    pulumi.Output<String>? ifMetagenerationNotMatch,
-    required pulumi.Output<String> object,
-    pulumi.Output<String>? projection,
-    pulumi.Output<bool>? softDeleted,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      generation = pulumi.Input.asOptionalInput<String>(generation),
-      ifGenerationMatch = pulumi.Input.asOptionalInput<String>(ifGenerationMatch),
-      ifGenerationNotMatch = pulumi.Input.asOptionalInput<String>(ifGenerationNotMatch),
-      ifMetagenerationMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationMatch),
-      ifMetagenerationNotMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationNotMatch),
-      object = pulumi.Input.asInput<String>(object),
-      projection = pulumi.Input.asOptionalInput<String>(projection),
-      softDeleted = pulumi.Input.asOptionalInput<bool>(softDeleted),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    this.generation,
+    this.ifGenerationMatch,
+    this.ifGenerationNotMatch,
+    this.ifMetagenerationMatch,
+    this.ifMetagenerationNotMatch,
+    required this.object,
+    this.projection,
+    this.softDeleted,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,16 +59,16 @@ class GetBucketObjectArgs {
 
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      generation: map['generation'] == null ? null : pulumi.Output.create<String>(map['generation'] as String),
-      ifGenerationMatch: map['ifGenerationMatch'] == null ? null : pulumi.Output.create<String>(map['ifGenerationMatch'] as String),
-      ifGenerationNotMatch: map['ifGenerationNotMatch'] == null ? null : pulumi.Output.create<String>(map['ifGenerationNotMatch'] as String),
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : pulumi.Output.create<String>(map['ifMetagenerationMatch'] as String),
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : pulumi.Output.create<String>(map['ifMetagenerationNotMatch'] as String),
-      object: pulumi.Output.create<String>(map['object'] as String),
-      projection: map['projection'] == null ? null : pulumi.Output.create<String>(map['projection'] as String),
-      softDeleted: map['softDeleted'] == null ? null : pulumi.Output.create<bool>(map['softDeleted'] as bool),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      ifGenerationMatch: map['ifGenerationMatch'] == null ? null : (map['ifGenerationMatch'] as String).input(),
+      ifGenerationNotMatch: map['ifGenerationNotMatch'] == null ? null : (map['ifGenerationNotMatch'] as String).input(),
+      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch'] as String).input(),
+      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch'] as String).input(),
+      object: (map['object'] as String).input(),
+      projection: map['projection'] == null ? null : (map['projection'] as String).input(),
+      softDeleted: map['softDeleted'] == null ? null : (map['softDeleted'] as bool).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

@@ -8,37 +8,37 @@ import 'get_service_meshes_mesh_network.dart';
 
 class GetServiceMeshesMesh {
   /// The Cluster List.
-  final List<String> clusters;
+  final pulumi.Input<List<String>> clusters;
   /// The created time of the Service Mesh instance.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
-  final String edition;
+  final pulumi.Input<String> edition;
   /// The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
-  final List<GetServiceMeshesMeshEndpoint> endpoints;
+  final pulumi.Input<List<GetServiceMeshesMeshEndpoint>> endpoints;
   /// The returned error message.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The ID of the Service Mesh instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
-  final String istioOperatorVersion;
+  final pulumi.Input<String> istioOperatorVersion;
   /// The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
-  final String kubeConfig;
+  final pulumi.Input<String> kubeConfig;
   /// The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
-  final List<GetServiceMeshesMeshLoadBalancer> loadBalancers;
+  final pulumi.Input<List<GetServiceMeshesMeshLoadBalancer>> loadBalancers;
   /// The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
-  final List<GetServiceMeshesMeshMeshConfig> meshConfigs;
+  final pulumi.Input<List<GetServiceMeshesMeshMeshConfig>> meshConfigs;
   /// The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
-  final List<GetServiceMeshesMeshNetwork> networks;
+  final pulumi.Input<List<GetServiceMeshesMeshNetwork>> networks;
   /// The ID of the Service Mesh instance.
-  final String serviceMeshId;
+  final pulumi.Input<String> serviceMeshId;
   /// The name of the Service Mesh instance.
-  final String serviceMeshName;
+  final pulumi.Input<String> serviceMeshName;
   /// (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
-  final String sidecarVersion;
+  final pulumi.Input<String> sidecarVersion;
   /// The status of the Service Mesh. Valid values: `running`, `initial`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The version of the Service Mesh instance.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetServiceMeshesMesh].
   /// [clusters] The Cluster List.
@@ -81,14 +81,14 @@ class GetServiceMeshesMesh {
       'clusters': clusters,
       'createTime': createTime,
       'edition': edition,
-      'endpoints': pulumi.Input.encodeList<GetServiceMeshesMeshEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
+      'endpoints': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshEndpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'errorMessage': errorMessage,
       'id': id,
       'istioOperatorVersion': istioOperatorVersion,
       'kubeConfig': kubeConfig,
-      'loadBalancers': pulumi.Input.encodeList<GetServiceMeshesMeshLoadBalancer, Map<String, dynamic>>(loadBalancers, (value) => value.toMap()),
-      'meshConfigs': pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfig, Map<String, dynamic>>(meshConfigs, (value) => value.toMap()),
-      'networks': pulumi.Input.encodeList<GetServiceMeshesMeshNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
+      'loadBalancers': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshLoadBalancer>, List<Map<String, dynamic>>>(loadBalancers, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshLoadBalancer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'meshConfigs': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfig>, List<Map<String, dynamic>>>(meshConfigs, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networks': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshNetwork>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceMeshId': serviceMeshId,
       'serviceMeshName': serviceMeshName,
       'sidecarVersion': sidecarVersion,
@@ -99,22 +99,22 @@ class GetServiceMeshesMesh {
 
   factory GetServiceMeshesMesh.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMesh(
-      clusters: (map['clusters'] as List).cast<String>(),
-      createTime: map['createTime'] as String,
-      edition: map['edition'] as String,
-      endpoints: pulumi.Input.decodeList<GetServiceMeshesMeshEndpoint>(map['endpoints'], (value) => GetServiceMeshesMeshEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      errorMessage: map['errorMessage'] as String,
-      id: map['id'] as String,
-      istioOperatorVersion: map['istioOperatorVersion'] as String,
-      kubeConfig: map['kubeConfig'] as String,
-      loadBalancers: pulumi.Input.decodeList<GetServiceMeshesMeshLoadBalancer>(map['loadBalancers'], (value) => GetServiceMeshesMeshLoadBalancer.fromMap((value as Map).cast<String, dynamic>())),
-      meshConfigs: pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfig>(map['meshConfigs'], (value) => GetServiceMeshesMeshMeshConfig.fromMap((value as Map).cast<String, dynamic>())),
-      networks: pulumi.Input.decodeList<GetServiceMeshesMeshNetwork>(map['networks'], (value) => GetServiceMeshesMeshNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      serviceMeshId: map['serviceMeshId'] as String,
-      serviceMeshName: map['serviceMeshName'] as String,
-      sidecarVersion: map['sidecarVersion'] as String,
-      status: map['status'] as String,
-      version: map['version'] as String,
+      clusters: ((map['clusters'] as List).cast<String>()).input(),
+      createTime: (map['createTime'] as String).input(),
+      edition: (map['edition'] as String).input(),
+      endpoints: (pulumi.Input.decodeList<GetServiceMeshesMeshEndpoint>(map['endpoints'], (value) => GetServiceMeshesMeshEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      id: (map['id'] as String).input(),
+      istioOperatorVersion: (map['istioOperatorVersion'] as String).input(),
+      kubeConfig: (map['kubeConfig'] as String).input(),
+      loadBalancers: (pulumi.Input.decodeList<GetServiceMeshesMeshLoadBalancer>(map['loadBalancers'], (value) => GetServiceMeshesMeshLoadBalancer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      meshConfigs: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfig>(map['meshConfigs'], (value) => GetServiceMeshesMeshMeshConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networks: (pulumi.Input.decodeList<GetServiceMeshesMeshNetwork>(map['networks'], (value) => GetServiceMeshesMeshNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceMeshId: (map['serviceMeshId'] as String).input(),
+      serviceMeshName: (map['serviceMeshName'] as String).input(),
+      sidecarVersion: (map['sidecarVersion'] as String).input(),
+      status: (map['status'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

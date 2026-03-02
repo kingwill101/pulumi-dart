@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketRefererConfig {
   /// Allows referer to be empty. Defaults false.
-  final bool? allowEmpty;
+  final pulumi.Input<bool>? allowEmpty;
   /// The list of referer.
-  final List<String> referers;
+  final pulumi.Input<List<String>> referers;
 
   /// Creates a new [BucketRefererConfig].
   /// [allowEmpty] Allows referer to be empty. Defaults false.
@@ -24,8 +25,8 @@ class BucketRefererConfig {
 
   factory BucketRefererConfig.fromMap(Map<String, dynamic> map) {
     return BucketRefererConfig(
-      allowEmpty: map['allowEmpty'] == null ? null : map['allowEmpty'] as bool,
-      referers: (map['referers'] as List).cast<String>(),
+      allowEmpty: map['allowEmpty'] == null ? null : (map['allowEmpty'] as bool).input(),
+      referers: ((map['referers'] as List).cast<String>()).input(),
     );
   }
 }

@@ -27,19 +27,13 @@ class PhraseSetArgs {
   /// [phrases] A list of word and phrases.
   /// [project] Optional.
   PhraseSetArgs({
-    pulumi.Output<double>? boost,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> phraseSetId,
-    pulumi.Output<List<Phrase>>? phrases,
-    pulumi.Output<String>? project,
-  }) :
-      boost = pulumi.Input.asOptionalInput<double>(boost),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      phraseSetId = pulumi.Input.asInput<String>(phraseSetId),
-      phrases = pulumi.Input.asOptionalInput<List<Phrase>>(phrases),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.boost,
+    this.location,
+    this.name,
+    required this.phraseSetId,
+    this.phrases,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class PhraseSetArgs {
 
   factory PhraseSetArgs.fromMap(Map<String, dynamic> map) {
     return PhraseSetArgs(
-      boost: map['boost'] == null ? null : pulumi.Output.create<double>(map['boost'] as double),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      phraseSetId: pulumi.Output.create<String>(map['phraseSetId'] as String),
-      phrases: map['phrases'] == null ? null : pulumi.Output.create<List<Phrase>>(pulumi.Input.decodeList<Phrase>(map['phrases'], (value) => Phrase.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      boost: map['boost'] == null ? null : (map['boost'] as double).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      phraseSetId: (map['phraseSetId'] as String).input(),
+      phrases: map['phrases'] == null ? null : (pulumi.Input.decodeList<Phrase>(map['phrases'], (value) => Phrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

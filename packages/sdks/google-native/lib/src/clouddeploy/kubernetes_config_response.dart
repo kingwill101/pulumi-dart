@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_service_mesh_response.dart';
 import 'service_networking_response.dart';
 
 /// KubernetesConfig contains the Kubernetes runtime configuration.
 class KubernetesConfigResponse {
   /// Kubernetes Gateway API service mesh configuration.
-  final GatewayServiceMeshResponse gatewayServiceMesh;
+  final pulumi.Input<GatewayServiceMeshResponse> gatewayServiceMesh;
   /// Kubernetes Service networking configuration.
-  final ServiceNetworkingResponse serviceNetworking;
+  final pulumi.Input<ServiceNetworkingResponse> serviceNetworking;
 
   /// Creates a new [KubernetesConfigResponse].
   /// [gatewayServiceMesh] Kubernetes Gateway API service mesh configuration.
@@ -20,15 +21,15 @@ class KubernetesConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gatewayServiceMesh': gatewayServiceMesh.toMap(),
-      'serviceNetworking': serviceNetworking.toMap(),
+      'gatewayServiceMesh': pulumi.Input.mapInputValue<GatewayServiceMeshResponse, Map<String, dynamic>>(gatewayServiceMesh, (value) => value.toMap()),
+      'serviceNetworking': pulumi.Input.mapInputValue<ServiceNetworkingResponse, Map<String, dynamic>>(serviceNetworking, (value) => value.toMap()),
     };
   }
 
   factory KubernetesConfigResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesConfigResponse(
-      gatewayServiceMesh: GatewayServiceMeshResponse.fromMap((map['gatewayServiceMesh'] as Map).cast<String, dynamic>()),
-      serviceNetworking: ServiceNetworkingResponse.fromMap((map['serviceNetworking'] as Map).cast<String, dynamic>()),
+      gatewayServiceMesh: (GatewayServiceMeshResponse.fromMap((map['gatewayServiceMesh'] as Map).cast<String, dynamic>())).input(),
+      serviceNetworking: (ServiceNetworkingResponse.fromMap((map['serviceNetworking'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

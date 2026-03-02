@@ -13,9 +13,8 @@ class GetAccountEncryptionArgs {
   /// Creates a new [GetAccountEncryptionArgs].
   /// [netappAccountId] The ID of the NetApp account where customer managed keys-based encryption is enabled.
   GetAccountEncryptionArgs({
-    required pulumi.Output<String> netappAccountId,
-  }) :
-      netappAccountId = pulumi.Input.asInput<String>(netappAccountId);
+    required this.netappAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAccountEncryptionArgs {
 
   factory GetAccountEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountEncryptionArgs(
-      netappAccountId: pulumi.Output.create<String>(map['netappAccountId'] as String),
+      netappAccountId: (map['netappAccountId'] as String).input(),
     );
   }
 }

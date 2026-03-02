@@ -6,31 +6,31 @@ import 'alert_query_parameter_response.dart';
 /// Describes the properties of an alert.
 class AlertRulePropertiesResponse {
   /// Action Group resource Ids to invoke when the alert fires
-  final List<String>? actionGroups;
+  final pulumi.Input<List<String>>? actionGroups;
   /// The alert query parameters.
-  final List<AlertQueryParameterResponse>? alertQueryParameters;
+  final pulumi.Input<List<AlertQueryParameterResponse>>? alertQueryParameters;
   /// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
-  final String? autoMitigate;
+  final pulumi.Input<String>? autoMitigate;
   /// Evaluation of metric on a particular column.
-  final String? dimension;
+  final pulumi.Input<String>? dimension;
   /// How often the scheduled query rule is evaluated.
-  final int? evaluationFrequency;
+  final pulumi.Input<int>? evaluationFrequency;
   /// The operator for failing periods.
-  final String? failingPeriodsOperator;
+  final pulumi.Input<String>? failingPeriodsOperator;
   /// The number of failing periods to trigger an alert.
-  final int? failingPeriodsToAlert;
+  final pulumi.Input<int>? failingPeriodsToAlert;
   /// Mute actions for the chosen period of time after the alert is fired.
-  final int? muteActionsDuration;
+  final pulumi.Input<int>? muteActionsDuration;
   /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
-  final int? severity;
+  final pulumi.Input<int>? severity;
   /// Indicates whether the alert is in an enabled state.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The threshold of the alert.
-  final int? threshold;
+  final pulumi.Input<int>? threshold;
   /// The threshold operator of the alert.
-  final String? thresholdOperator;
+  final pulumi.Input<String>? thresholdOperator;
   /// The period of time on which the Alert query will be executed.
-  final int? windowSize;
+  final pulumi.Input<int>? windowSize;
 
   /// Creates a new [AlertRulePropertiesResponse].
   /// [actionGroups] Action Group resource Ids to invoke when the alert fires
@@ -65,7 +65,7 @@ class AlertRulePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionGroups': ?actionGroups,
-      'alertQueryParameters': ?alertQueryParameters == null ? null : pulumi.Input.encodeList<AlertQueryParameterResponse, Map<String, dynamic>>(alertQueryParameters!, (value) => value.toMap()),
+      'alertQueryParameters': ?pulumi.Input.mapOptionalInputValue<List<AlertQueryParameterResponse>, List<Map<String, dynamic>>>(alertQueryParameters, (value) => pulumi.Input.encodeList<AlertQueryParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'autoMitigate': ?autoMitigate,
       'dimension': ?dimension,
       'evaluationFrequency': ?evaluationFrequency,
@@ -82,19 +82,19 @@ class AlertRulePropertiesResponse {
 
   factory AlertRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AlertRulePropertiesResponse(
-      actionGroups: map['actionGroups'] == null ? null : (map['actionGroups'] as List).cast<String>(),
-      alertQueryParameters: map['alertQueryParameters'] == null ? null : pulumi.Input.decodeList<AlertQueryParameterResponse>(map['alertQueryParameters'], (value) => AlertQueryParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      autoMitigate: map['autoMitigate'] == null ? null : map['autoMitigate'] as String,
-      dimension: map['dimension'] == null ? null : map['dimension'] as String,
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : map['evaluationFrequency'] as int,
-      failingPeriodsOperator: map['failingPeriodsOperator'] == null ? null : map['failingPeriodsOperator'] as String,
-      failingPeriodsToAlert: map['failingPeriodsToAlert'] == null ? null : map['failingPeriodsToAlert'] as int,
-      muteActionsDuration: map['muteActionsDuration'] == null ? null : map['muteActionsDuration'] as int,
-      severity: map['severity'] == null ? null : map['severity'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
-      threshold: map['threshold'] == null ? null : map['threshold'] as int,
-      thresholdOperator: map['thresholdOperator'] == null ? null : map['thresholdOperator'] as String,
-      windowSize: map['windowSize'] == null ? null : map['windowSize'] as int,
+      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups'] as List).cast<String>()).input(),
+      alertQueryParameters: map['alertQueryParameters'] == null ? null : (pulumi.Input.decodeList<AlertQueryParameterResponse>(map['alertQueryParameters'], (value) => AlertQueryParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate'] as String).input(),
+      dimension: map['dimension'] == null ? null : (map['dimension'] as String).input(),
+      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency'] as int).input(),
+      failingPeriodsOperator: map['failingPeriodsOperator'] == null ? null : (map['failingPeriodsOperator'] as String).input(),
+      failingPeriodsToAlert: map['failingPeriodsToAlert'] == null ? null : (map['failingPeriodsToAlert'] as int).input(),
+      muteActionsDuration: map['muteActionsDuration'] == null ? null : (map['muteActionsDuration'] as int).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
+      thresholdOperator: map['thresholdOperator'] == null ? null : (map['thresholdOperator'] as String).input(),
+      windowSize: map['windowSize'] == null ? null : (map['windowSize'] as int).input(),
     );
   }
 }

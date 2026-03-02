@@ -6,11 +6,11 @@ import 'hyperv_license.dart';
 /// HyperV Virtualization Management Settings.
 class HypervVirtualizationManagementSettings {
   /// Licence and support list.
-  final List<HypervLicense> licenseAndSupportList;
+  final pulumi.Input<List<HypervLicense>> licenseAndSupportList;
   /// Number of physical cores per licence.
-  final int numberOfPhysicalCoresPerLicense;
+  final pulumi.Input<int> numberOfPhysicalCoresPerLicense;
   /// Software Assurance Cost.
-  final double softwareAssuranceCost;
+  final pulumi.Input<double> softwareAssuranceCost;
 
   /// Creates a new [HypervVirtualizationManagementSettings].
   /// [licenseAndSupportList] Licence and support list.
@@ -24,7 +24,7 @@ class HypervVirtualizationManagementSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'licenseAndSupportList': pulumi.Input.encodeList<HypervLicense, Map<String, dynamic>>(licenseAndSupportList, (value) => value.toMap()),
+      'licenseAndSupportList': pulumi.Input.mapInputValue<List<HypervLicense>, List<Map<String, dynamic>>>(licenseAndSupportList, (value) => pulumi.Input.encodeList<HypervLicense, Map<String, dynamic>>(value, (value) => value.toMap())),
       'numberOfPhysicalCoresPerLicense': numberOfPhysicalCoresPerLicense,
       'softwareAssuranceCost': softwareAssuranceCost,
     };
@@ -32,9 +32,9 @@ class HypervVirtualizationManagementSettings {
 
   factory HypervVirtualizationManagementSettings.fromMap(Map<String, dynamic> map) {
     return HypervVirtualizationManagementSettings(
-      licenseAndSupportList: pulumi.Input.decodeList<HypervLicense>(map['licenseAndSupportList'], (value) => HypervLicense.fromMap((value as Map).cast<String, dynamic>())),
-      numberOfPhysicalCoresPerLicense: map['numberOfPhysicalCoresPerLicense'] as int,
-      softwareAssuranceCost: map['softwareAssuranceCost'] as double,
+      licenseAndSupportList: (pulumi.Input.decodeList<HypervLicense>(map['licenseAndSupportList'], (value) => HypervLicense.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      numberOfPhysicalCoresPerLicense: (map['numberOfPhysicalCoresPerLicense'] as int).input(),
+      softwareAssuranceCost: (map['softwareAssuranceCost'] as double).input(),
     );
   }
 }

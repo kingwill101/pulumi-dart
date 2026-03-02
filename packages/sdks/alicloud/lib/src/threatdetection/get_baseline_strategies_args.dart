@@ -24,17 +24,12 @@ class GetBaselineStrategiesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [strategyIds] Optional.
   GetBaselineStrategiesArgs({
-    pulumi.Output<String>? customType,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? strategyIds,
-  }) :
-      customType = pulumi.Input.asOptionalInput<String>(customType),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      strategyIds = pulumi.Input.asOptionalInput<String>(strategyIds);
+    this.customType,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.strategyIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GetBaselineStrategiesArgs {
 
   factory GetBaselineStrategiesArgs.fromMap(Map<String, dynamic> map) {
     return GetBaselineStrategiesArgs(
-      customType: map['customType'] == null ? null : pulumi.Output.create<String>(map['customType'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      strategyIds: map['strategyIds'] == null ? null : pulumi.Output.create<String>(map['strategyIds'] as String),
+      customType: map['customType'] == null ? null : (map['customType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      strategyIds: map['strategyIds'] == null ? null : (map['strategyIds'] as String).input(),
     );
   }
 }

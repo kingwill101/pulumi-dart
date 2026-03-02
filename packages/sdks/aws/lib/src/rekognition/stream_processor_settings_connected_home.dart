@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorSettingsConnectedHome {
   /// Specifies what you want to detect in the video, such as people, packages, or pets. The current valid labels you can include in this list are: `PERSON`, `PET`, `PACKAGE`, and `ALL`.
-  final List<String>? labels;
+  final pulumi.Input<List<String>>? labels;
   /// Minimum confidence required to label an object in the video.
-  final double? minConfidence;
+  final pulumi.Input<double>? minConfidence;
 
   /// Creates a new [StreamProcessorSettingsConnectedHome].
   /// [labels] Specifies what you want to detect in the video, such as people, packages, or pets. The current valid labels you can include in this list are: `PERSON`, `PET`, `PACKAGE`, and `ALL`.
@@ -24,8 +25,8 @@ class StreamProcessorSettingsConnectedHome {
 
   factory StreamProcessorSettingsConnectedHome.fromMap(Map<String, dynamic> map) {
     return StreamProcessorSettingsConnectedHome(
-      labels: map['labels'] == null ? null : (map['labels'] as List).cast<String>(),
-      minConfidence: map['minConfidence'] == null ? null : map['minConfidence'] as double,
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      minConfidence: map['minConfidence'] == null ? null : (map['minConfidence'] as double).input(),
     );
   }
 }

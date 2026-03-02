@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'method_map_response.dart';
 import 'options_response.dart';
 
 /// CollectionOverride allows resource handling overrides for specific resources within a BaseType
 class CollectionOverrideResponse {
   /// The collection that identifies this resource within its service.
-  final String collection;
+  final pulumi.Input<String> collection;
   /// Custom verb method mappings to support unordered list API mappings.
-  final MethodMapResponse methodMap;
+  final pulumi.Input<MethodMapResponse> methodMap;
   /// The options to apply to this resource-level override
-  final OptionsResponse options;
+  final pulumi.Input<OptionsResponse> options;
 
   /// Creates a new [CollectionOverrideResponse].
   /// [collection] The collection that identifies this resource within its service.
@@ -25,16 +26,16 @@ class CollectionOverrideResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'collection': collection,
-      'methodMap': methodMap.toMap(),
-      'options': options.toMap(),
+      'methodMap': pulumi.Input.mapInputValue<MethodMapResponse, Map<String, dynamic>>(methodMap, (value) => value.toMap()),
+      'options': pulumi.Input.mapInputValue<OptionsResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
     };
   }
 
   factory CollectionOverrideResponse.fromMap(Map<String, dynamic> map) {
     return CollectionOverrideResponse(
-      collection: map['collection'] as String,
-      methodMap: MethodMapResponse.fromMap((map['methodMap'] as Map).cast<String, dynamic>()),
-      options: OptionsResponse.fromMap((map['options'] as Map).cast<String, dynamic>()),
+      collection: (map['collection'] as String).input(),
+      methodMap: (MethodMapResponse.fromMap((map['methodMap'] as Map).cast<String, dynamic>())).input(),
+      options: (OptionsResponse.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

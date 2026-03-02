@@ -33,21 +33,14 @@ class MountTargetArgs {
   /// [securityGroups] A list of up to 5 VPC security group IDs (that must
   /// [subnetId] The ID of the subnet to add the mount target in.
   MountTargetArgs({
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<String>? ipv6Address,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroups,
-    required pulumi.Output<String> subnetId,
-  }) :
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      ipv6Address = pulumi.Input.asOptionalInput<String>(ipv6Address),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroups = pulumi.Input.asOptionalInput<List<String>>(securityGroups),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    required this.fileSystemId,
+    this.ipAddress,
+    this.ipAddressType,
+    this.ipv6Address,
+    this.region,
+    this.securityGroups,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class MountTargetArgs {
 
   factory MountTargetArgs.fromMap(Map<String, dynamic> map) {
     return MountTargetArgs(
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      ipv6Address: map['ipv6Address'] == null ? null : pulumi.Output.create<String>(map['ipv6Address'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroups: map['securityGroups'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroups'] as List).cast<String>()),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

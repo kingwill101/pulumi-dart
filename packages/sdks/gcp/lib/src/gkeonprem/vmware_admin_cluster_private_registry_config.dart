@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterPrivateRegistryConfig {
   /// The registry address.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The CA certificate public key for private registry.
-  final String? caCert;
+  final pulumi.Input<String>? caCert;
 
   /// Creates a new [VmwareAdminClusterPrivateRegistryConfig].
   /// [address] The registry address.
@@ -24,8 +25,8 @@ class VmwareAdminClusterPrivateRegistryConfig {
 
   factory VmwareAdminClusterPrivateRegistryConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterPrivateRegistryConfig(
-      address: map['address'] == null ? null : map['address'] as String,
-      caCert: map['caCert'] == null ? null : map['caCert'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
     );
   }
 }

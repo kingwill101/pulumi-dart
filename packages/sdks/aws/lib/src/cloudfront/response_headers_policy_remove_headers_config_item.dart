@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResponseHeadersPolicyRemoveHeadersConfigItem {
-  final String header;
+  final pulumi.Input<String> header;
 
   /// Creates a new [ResponseHeadersPolicyRemoveHeadersConfigItem].
   /// [header] Required.
@@ -18,7 +19,7 @@ class ResponseHeadersPolicyRemoveHeadersConfigItem {
 
   factory ResponseHeadersPolicyRemoveHeadersConfigItem.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyRemoveHeadersConfigItem(
-      header: map['header'] as String,
+      header: (map['header'] as String).input(),
     );
   }
 }

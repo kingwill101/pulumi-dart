@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firehose_delivery_stream_snowflake_configuration_cloudwatch_logging_options.dart';
 import 'firehose_delivery_stream_snowflake_configuration_processing_configuration.dart';
 import 'firehose_delivery_stream_snowflake_configuration_s3_configuration.dart';
@@ -9,47 +10,47 @@ import 'firehose_delivery_stream_snowflake_configuration_snowflake_vpc_configura
 
 class FirehoseDeliveryStreamSnowflakeConfiguration {
   /// The URL of the Snowflake account. Format: https://[account_identifier].snowflakecomputing.com.
-  final String accountUrl;
+  final pulumi.Input<String> accountUrl;
   /// Buffer incoming data for the specified period of time, in seconds between 0 to 900, before delivering it to the destination.  The default value is 0s.
-  final int? bufferingInterval;
+  final pulumi.Input<int>? bufferingInterval;
   /// Buffer incoming data to the specified size, in MBs between 1 to 128, before delivering it to the destination.  The default value is 1MB.
-  final int? bufferingSize;
+  final pulumi.Input<int>? bufferingSize;
   /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
-  final FirehoseDeliveryStreamSnowflakeConfigurationCloudwatchLoggingOptions? cloudwatchLoggingOptions;
+  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationCloudwatchLoggingOptions>? cloudwatchLoggingOptions;
   /// The name of the content column.
-  final String? contentColumnName;
+  final pulumi.Input<String>? contentColumnName;
   /// The data loading option.
-  final String? dataLoadingOption;
+  final pulumi.Input<String>? dataLoadingOption;
   /// The Snowflake database name.
-  final String database;
+  final pulumi.Input<String> database;
   /// The passphrase for the private key.
-  final String? keyPassphrase;
+  final pulumi.Input<String>? keyPassphrase;
   /// The name of the metadata column.
-  final String? metadataColumnName;
+  final pulumi.Input<String>? metadataColumnName;
   /// The private key for authentication. This value is required if `secrets_manager_configuration` is not provided.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// The processing configuration. See `processing_configuration` block below for details.
-  final FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration? processingConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration>? processingConfiguration;
   /// After an initial failure to deliver to Snowflake, the total amount of time, in seconds between 0 to 7200, during which Firehose re-attempts delivery (including the first attempt).  After this time has elapsed, the failed documents are written to Amazon S3.  The default value is 60s.  There will be no retry if the value is 0.
-  final int? retryDuration;
+  final pulumi.Input<int>? retryDuration;
   /// The ARN of the IAM role.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The S3 backup mode.
-  final String? s3BackupMode;
+  final pulumi.Input<String>? s3BackupMode;
   /// The S3 configuration. See `s3_configuration` block below for details.
-  final FirehoseDeliveryStreamSnowflakeConfigurationS3Configuration s3Configuration;
+  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationS3Configuration> s3Configuration;
   /// The Snowflake schema name.
-  final String schema;
+  final pulumi.Input<String> schema;
   /// The Secrets Manager configuration. See `secrets_manager_configuration` block below for details. This value is required if `user` and `private_key` are not provided.
-  final FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration? secretsManagerConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration>? secretsManagerConfiguration;
   /// The configuration for Snowflake role.
-  final FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration? snowflakeRoleConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration>? snowflakeRoleConfiguration;
   /// The VPC configuration for Snowflake.
-  final FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration? snowflakeVpcConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration>? snowflakeVpcConfiguration;
   /// The Snowflake table name.
-  final String table;
+  final pulumi.Input<String> table;
   /// The user for authentication. This value is required if `secrets_manager_configuration` is not provided.
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfiguration].
   /// [accountUrl] The URL of the Snowflake account. Format: https://[account_identifier].snowflakecomputing.com.
@@ -102,22 +103,22 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
       'accountUrl': accountUrl,
       'bufferingInterval': ?bufferingInterval,
       'bufferingSize': ?bufferingSize,
-      'cloudwatchLoggingOptions': ?cloudwatchLoggingOptions == null ? null : cloudwatchLoggingOptions!.toMap(),
+      'cloudwatchLoggingOptions': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamSnowflakeConfigurationCloudwatchLoggingOptions, Map<String, dynamic>>(cloudwatchLoggingOptions, (value) => value.toMap()),
       'contentColumnName': ?contentColumnName,
       'dataLoadingOption': ?dataLoadingOption,
       'database': database,
       'keyPassphrase': ?keyPassphrase,
       'metadataColumnName': ?metadataColumnName,
       'privateKey': ?privateKey,
-      'processingConfiguration': ?processingConfiguration == null ? null : processingConfiguration!.toMap(),
+      'processingConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration, Map<String, dynamic>>(processingConfiguration, (value) => value.toMap()),
       'retryDuration': ?retryDuration,
       'roleArn': roleArn,
       's3BackupMode': ?s3BackupMode,
-      's3Configuration': s3Configuration.toMap(),
+      's3Configuration': pulumi.Input.mapInputValue<FirehoseDeliveryStreamSnowflakeConfigurationS3Configuration, Map<String, dynamic>>(s3Configuration, (value) => value.toMap()),
       'schema': schema,
-      'secretsManagerConfiguration': ?secretsManagerConfiguration == null ? null : secretsManagerConfiguration!.toMap(),
-      'snowflakeRoleConfiguration': ?snowflakeRoleConfiguration == null ? null : snowflakeRoleConfiguration!.toMap(),
-      'snowflakeVpcConfiguration': ?snowflakeVpcConfiguration == null ? null : snowflakeVpcConfiguration!.toMap(),
+      'secretsManagerConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration, Map<String, dynamic>>(secretsManagerConfiguration, (value) => value.toMap()),
+      'snowflakeRoleConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration, Map<String, dynamic>>(snowflakeRoleConfiguration, (value) => value.toMap()),
+      'snowflakeVpcConfiguration': ?pulumi.Input.mapOptionalInputValue<FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration, Map<String, dynamic>>(snowflakeVpcConfiguration, (value) => value.toMap()),
       'table': table,
       'user': ?user,
     };
@@ -125,27 +126,27 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
 
   factory FirehoseDeliveryStreamSnowflakeConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfiguration(
-      accountUrl: map['accountUrl'] as String,
-      bufferingInterval: map['bufferingInterval'] == null ? null : map['bufferingInterval'] as int,
-      bufferingSize: map['bufferingSize'] == null ? null : map['bufferingSize'] as int,
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : FirehoseDeliveryStreamSnowflakeConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>()),
-      contentColumnName: map['contentColumnName'] == null ? null : map['contentColumnName'] as String,
-      dataLoadingOption: map['dataLoadingOption'] == null ? null : map['dataLoadingOption'] as String,
-      database: map['database'] as String,
-      keyPassphrase: map['keyPassphrase'] == null ? null : map['keyPassphrase'] as String,
-      metadataColumnName: map['metadataColumnName'] == null ? null : map['metadataColumnName'] as String,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      processingConfiguration: map['processingConfiguration'] == null ? null : FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>()),
-      retryDuration: map['retryDuration'] == null ? null : map['retryDuration'] as int,
-      roleArn: map['roleArn'] as String,
-      s3BackupMode: map['s3BackupMode'] == null ? null : map['s3BackupMode'] as String,
-      s3Configuration: FirehoseDeliveryStreamSnowflakeConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
-      schema: map['schema'] as String,
-      secretsManagerConfiguration: map['secretsManagerConfiguration'] == null ? null : FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration.fromMap((map['secretsManagerConfiguration'] as Map).cast<String, dynamic>()),
-      snowflakeRoleConfiguration: map['snowflakeRoleConfiguration'] == null ? null : FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration.fromMap((map['snowflakeRoleConfiguration'] as Map).cast<String, dynamic>()),
-      snowflakeVpcConfiguration: map['snowflakeVpcConfiguration'] == null ? null : FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration.fromMap((map['snowflakeVpcConfiguration'] as Map).cast<String, dynamic>()),
-      table: map['table'] as String,
-      user: map['user'] == null ? null : map['user'] as String,
+      accountUrl: (map['accountUrl'] as String).input(),
+      bufferingInterval: map['bufferingInterval'] == null ? null : (map['bufferingInterval'] as int).input(),
+      bufferingSize: map['bufferingSize'] == null ? null : (map['bufferingSize'] as int).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (FirehoseDeliveryStreamSnowflakeConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
+      contentColumnName: map['contentColumnName'] == null ? null : (map['contentColumnName'] as String).input(),
+      dataLoadingOption: map['dataLoadingOption'] == null ? null : (map['dataLoadingOption'] as String).input(),
+      database: (map['database'] as String).input(),
+      keyPassphrase: map['keyPassphrase'] == null ? null : (map['keyPassphrase'] as String).input(),
+      metadataColumnName: map['metadataColumnName'] == null ? null : (map['metadataColumnName'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : (FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      retryDuration: map['retryDuration'] == null ? null : (map['retryDuration'] as int).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      s3BackupMode: map['s3BackupMode'] == null ? null : (map['s3BackupMode'] as String).input(),
+      s3Configuration: (FirehoseDeliveryStreamSnowflakeConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
+      schema: (map['schema'] as String).input(),
+      secretsManagerConfiguration: map['secretsManagerConfiguration'] == null ? null : (FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration.fromMap((map['secretsManagerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      snowflakeRoleConfiguration: map['snowflakeRoleConfiguration'] == null ? null : (FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration.fromMap((map['snowflakeRoleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      snowflakeVpcConfiguration: map['snowflakeVpcConfiguration'] == null ? null : (FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration.fromMap((map['snowflakeVpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      table: (map['table'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

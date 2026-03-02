@@ -13,9 +13,8 @@ class ListProviderActionInUseStorageAccountsArgs {
   /// Creates a new [ListProviderActionInUseStorageAccountsArgs].
   /// [subscriptionIds] List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user.
   ListProviderActionInUseStorageAccountsArgs({
-    pulumi.Output<List<String>>? subscriptionIds,
-  }) :
-      subscriptionIds = pulumi.Input.asOptionalInput<List<String>>(subscriptionIds);
+    this.subscriptionIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ListProviderActionInUseStorageAccountsArgs {
 
   factory ListProviderActionInUseStorageAccountsArgs.fromMap(Map<String, dynamic> map) {
     return ListProviderActionInUseStorageAccountsArgs(
-      subscriptionIds: map['subscriptionIds'] == null ? null : pulumi.Output.create<List<String>>((map['subscriptionIds'] as List).cast<String>()),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
     );
   }
 }

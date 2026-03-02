@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleRemoteAddressCondition {
   /// List of string values. For `GeoMatch` `operator` this should be a list of country codes (e.g. `US` or `DE`). List of IP address if `operator` equals to `IPMatch`. This is required if `operator` is not `Any`.
-  final List<String>? matchValues;
+  final pulumi.Input<List<String>>? matchValues;
   /// Defaults to `false`.
-  final bool? negateCondition;
+  final pulumi.Input<bool>? negateCondition;
   /// Valid values are `Any`, `GeoMatch` and `IPMatch`.
-  final String operator;
+  final pulumi.Input<String> operator;
 
   /// Creates a new [EndpointDeliveryRuleRemoteAddressCondition].
   /// [matchValues] List of string values. For `GeoMatch` `operator` this should be a list of country codes (e.g. `US` or `DE`). List of IP address if `operator` equals to `IPMatch`. This is required if `operator` is not `Any`.
@@ -29,9 +30,9 @@ class EndpointDeliveryRuleRemoteAddressCondition {
 
   factory EndpointDeliveryRuleRemoteAddressCondition.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleRemoteAddressCondition(
-      matchValues: map['matchValues'] == null ? null : (map['matchValues'] as List).cast<String>(),
-      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
-      operator: map['operator'] as String,
+      matchValues: map['matchValues'] == null ? null : ((map['matchValues'] as List).cast<String>()).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      operator: (map['operator'] as String).input(),
     );
   }
 }

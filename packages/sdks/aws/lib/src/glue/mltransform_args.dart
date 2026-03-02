@@ -51,33 +51,20 @@ class MLTransformArgs {
   /// [timeout] The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
   /// [workerType] The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `number_of_workers`.
   MLTransformArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? glueVersion,
-    required pulumi.Output<List<MLTransformInputRecordTable>> inputRecordTables,
-    pulumi.Output<double>? maxCapacity,
-    pulumi.Output<int>? maxRetries,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? numberOfWorkers,
-    required pulumi.Output<MLTransformParameters> parameters,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? timeout,
-    pulumi.Output<String>? workerType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      glueVersion = pulumi.Input.asOptionalInput<String>(glueVersion),
-      inputRecordTables = pulumi.Input.asInput<List<MLTransformInputRecordTable>>(inputRecordTables),
-      maxCapacity = pulumi.Input.asOptionalInput<double>(maxCapacity),
-      maxRetries = pulumi.Input.asOptionalInput<int>(maxRetries),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      numberOfWorkers = pulumi.Input.asOptionalInput<int>(numberOfWorkers),
-      parameters = pulumi.Input.asInput<MLTransformParameters>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout),
-      workerType = pulumi.Input.asOptionalInput<String>(workerType);
+    this.description,
+    this.glueVersion,
+    required this.inputRecordTables,
+    this.maxCapacity,
+    this.maxRetries,
+    this.name,
+    this.numberOfWorkers,
+    required this.parameters,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    this.timeout,
+    this.workerType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class MLTransformArgs {
 
   factory MLTransformArgs.fromMap(Map<String, dynamic> map) {
     return MLTransformArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      glueVersion: map['glueVersion'] == null ? null : pulumi.Output.create<String>(map['glueVersion'] as String),
-      inputRecordTables: pulumi.Output.create<List<MLTransformInputRecordTable>>(pulumi.Input.decodeList<MLTransformInputRecordTable>(map['inputRecordTables'], (value) => MLTransformInputRecordTable.fromMap((value as Map).cast<String, dynamic>()))),
-      maxCapacity: map['maxCapacity'] == null ? null : pulumi.Output.create<double>(map['maxCapacity'] as double),
-      maxRetries: map['maxRetries'] == null ? null : pulumi.Output.create<int>(map['maxRetries'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      numberOfWorkers: map['numberOfWorkers'] == null ? null : pulumi.Output.create<int>(map['numberOfWorkers'] as int),
-      parameters: pulumi.Output.create<MLTransformParameters>(MLTransformParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
-      workerType: map['workerType'] == null ? null : pulumi.Output.create<String>(map['workerType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      glueVersion: map['glueVersion'] == null ? null : (map['glueVersion'] as String).input(),
+      inputRecordTables: (pulumi.Input.decodeList<MLTransformInputRecordTable>(map['inputRecordTables'], (value) => MLTransformInputRecordTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as double).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      numberOfWorkers: map['numberOfWorkers'] == null ? null : (map['numberOfWorkers'] as int).input(),
+      parameters: (MLTransformParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      workerType: map['workerType'] == null ? null : (map['workerType'] as String).input(),
     );
   }
 }

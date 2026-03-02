@@ -38,27 +38,17 @@ class DbInstancePlanState {
   /// [planType] The type of the Plan. Valid values: `PauseResume`, `Resize`.
   /// [status] The Status of the Plan. Valid values: `active`, `cancel`.
   DbInstancePlanState({
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? dbInstancePlanName,
-    pulumi.Output<List<DbInstancePlanPlanConfig>>? planConfigs,
-    pulumi.Output<String>? planDesc,
-    pulumi.Output<String>? planEndDate,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? planScheduleType,
-    pulumi.Output<String>? planStartDate,
-    pulumi.Output<String>? planType,
-    pulumi.Output<String>? status,
-  }) :
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      dbInstancePlanName = pulumi.Input.asOptionalInput<String>(dbInstancePlanName),
-      planConfigs = pulumi.Input.asOptionalInput<List<DbInstancePlanPlanConfig>>(planConfigs),
-      planDesc = pulumi.Input.asOptionalInput<String>(planDesc),
-      planEndDate = pulumi.Input.asOptionalInput<String>(planEndDate),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      planScheduleType = pulumi.Input.asOptionalInput<String>(planScheduleType),
-      planStartDate = pulumi.Input.asOptionalInput<String>(planStartDate),
-      planType = pulumi.Input.asOptionalInput<String>(planType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.dbInstanceId,
+    this.dbInstancePlanName,
+    this.planConfigs,
+    this.planDesc,
+    this.planEndDate,
+    this.planId,
+    this.planScheduleType,
+    this.planStartDate,
+    this.planType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class DbInstancePlanState {
 
   factory DbInstancePlanState.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      dbInstancePlanName: map['dbInstancePlanName'] == null ? null : pulumi.Output.create<String>(map['dbInstancePlanName'] as String),
-      planConfigs: map['planConfigs'] == null ? null : pulumi.Output.create<List<DbInstancePlanPlanConfig>>(pulumi.Input.decodeList<DbInstancePlanPlanConfig>(map['planConfigs'], (value) => DbInstancePlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      planDesc: map['planDesc'] == null ? null : pulumi.Output.create<String>(map['planDesc'] as String),
-      planEndDate: map['planEndDate'] == null ? null : pulumi.Output.create<String>(map['planEndDate'] as String),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      planScheduleType: map['planScheduleType'] == null ? null : pulumi.Output.create<String>(map['planScheduleType'] as String),
-      planStartDate: map['planStartDate'] == null ? null : pulumi.Output.create<String>(map['planStartDate'] as String),
-      planType: map['planType'] == null ? null : pulumi.Output.create<String>(map['planType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      dbInstancePlanName: map['dbInstancePlanName'] == null ? null : (map['dbInstancePlanName'] as String).input(),
+      planConfigs: map['planConfigs'] == null ? null : (pulumi.Input.decodeList<DbInstancePlanPlanConfig>(map['planConfigs'], (value) => DbInstancePlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      planDesc: map['planDesc'] == null ? null : (map['planDesc'] as String).input(),
+      planEndDate: map['planEndDate'] == null ? null : (map['planEndDate'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      planScheduleType: map['planScheduleType'] == null ? null : (map['planScheduleType'] as String).input(),
+      planStartDate: map['planStartDate'] == null ? null : (map['planStartDate'] as String).input(),
+      planType: map['planType'] == null ? null : (map['planType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

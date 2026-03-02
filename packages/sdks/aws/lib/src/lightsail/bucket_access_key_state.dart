@@ -25,19 +25,13 @@ class BucketAccessKeyState {
   /// [secretAccessKey] Secret access key used to sign requests. This attribute is not available for imported resources. Note that this will be written to the state file.
   /// [status] Status of the access key.
   BucketAccessKeyState({
-    pulumi.Output<String>? accessKeyId,
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretAccessKey,
-    pulumi.Output<String>? status,
-  }) :
-      accessKeyId = pulumi.Input.asOptionalInput<String>(accessKeyId),
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretAccessKey = pulumi.Input.asOptionalInput<String>(secretAccessKey),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accessKeyId,
+    this.bucketName,
+    this.createdAt,
+    this.region,
+    this.secretAccessKey,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class BucketAccessKeyState {
 
   factory BucketAccessKeyState.fromMap(Map<String, dynamic> map) {
     return BucketAccessKeyState(
-      accessKeyId: map['accessKeyId'] == null ? null : pulumi.Output.create<String>(map['accessKeyId'] as String),
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretAccessKey: map['secretAccessKey'] == null ? null : pulumi.Output.create<String>(map['secretAccessKey'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

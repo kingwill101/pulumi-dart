@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of VersioningConfiguration
 class VersioningConfiguration {
   /// The versioning state of the bucket.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [VersioningConfiguration].
   /// [status] The versioning state of the bucket.
@@ -20,7 +21,7 @@ class VersioningConfiguration {
 
   factory VersioningConfiguration.fromMap(Map<String, dynamic> map) {
     return VersioningConfiguration(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -49,31 +49,19 @@ class SmartDetectorAlertRuleArgs {
   /// [tags] The resource tags.
   /// [throttling] The alert rule throttling information.
   SmartDetectorAlertRuleArgs({
-    required pulumi.Output<ActionGroupsInformation> actionGroups,
-    pulumi.Output<String>? alertRuleName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<Detector> detector,
-    required pulumi.Output<String> frequency,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<String>> scope,
-    required pulumi.Output<String> severity,
-    required pulumi.Output<String> state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ThrottlingInformation>? throttling,
-  }) :
-      actionGroups = pulumi.Input.asInput<ActionGroupsInformation>(actionGroups),
-      alertRuleName = pulumi.Input.asOptionalInput<String>(alertRuleName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      detector = pulumi.Input.asInput<Detector>(detector),
-      frequency = pulumi.Input.asInput<String>(frequency),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asInput<List<String>>(scope),
-      severity = pulumi.Input.asInput<String>(severity),
-      state = pulumi.Input.asInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      throttling = pulumi.Input.asOptionalInput<ThrottlingInformation>(throttling);
+    required this.actionGroups,
+    this.alertRuleName,
+    this.description,
+    required this.detector,
+    required this.frequency,
+    this.location,
+    required this.resourceGroupName,
+    required this.scope,
+    required this.severity,
+    required this.state,
+    this.tags,
+    this.throttling,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class SmartDetectorAlertRuleArgs {
 
   factory SmartDetectorAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return SmartDetectorAlertRuleArgs(
-      actionGroups: pulumi.Output.create<ActionGroupsInformation>(ActionGroupsInformation.fromMap((map['actionGroups'] as Map).cast<String, dynamic>())),
-      alertRuleName: map['alertRuleName'] == null ? null : pulumi.Output.create<String>(map['alertRuleName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      detector: pulumi.Output.create<Detector>(Detector.fromMap((map['detector'] as Map).cast<String, dynamic>())),
-      frequency: pulumi.Output.create<String>(map['frequency'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: pulumi.Output.create<List<String>>((map['scope'] as List).cast<String>()),
-      severity: pulumi.Output.create<String>(map['severity'] as String),
-      state: pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      throttling: map['throttling'] == null ? null : pulumi.Output.create<ThrottlingInformation>(ThrottlingInformation.fromMap((map['throttling'] as Map).cast<String, dynamic>())),
+      actionGroups: (ActionGroupsInformation.fromMap((map['actionGroups'] as Map).cast<String, dynamic>())).input(),
+      alertRuleName: map['alertRuleName'] == null ? null : (map['alertRuleName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      detector: (Detector.fromMap((map['detector'] as Map).cast<String, dynamic>())).input(),
+      frequency: (map['frequency'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: ((map['scope'] as List).cast<String>()).input(),
+      severity: (map['severity'] as String).input(),
+      state: (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      throttling: map['throttling'] == null ? null : (ThrottlingInformation.fromMap((map['throttling'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

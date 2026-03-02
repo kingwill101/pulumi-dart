@@ -33,23 +33,15 @@ class ScheduleArgs {
   /// [state] Optional.
   /// [timeZone] Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
   ScheduleArgs({
-    pulumi.Output<String>? cronSchedule,
-    pulumi.Output<String>? description,
-    pulumi.Output<ExecutionTemplate>? executionTemplate,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scheduleId,
-    pulumi.Output<ScheduleState>? state,
-    pulumi.Output<String>? timeZone,
-  }) :
-      cronSchedule = pulumi.Input.asOptionalInput<String>(cronSchedule),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionTemplate = pulumi.Input.asOptionalInput<ExecutionTemplate>(executionTemplate),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scheduleId = pulumi.Input.asInput<String>(scheduleId),
-      state = pulumi.Input.asOptionalInput<ScheduleState>(state),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.cronSchedule,
+    this.description,
+    this.executionTemplate,
+    this.location,
+    this.project,
+    required this.scheduleId,
+    this.state,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      cronSchedule: map['cronSchedule'] == null ? null : pulumi.Output.create<String>(map['cronSchedule'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionTemplate: map['executionTemplate'] == null ? null : pulumi.Output.create<ExecutionTemplate>(ExecutionTemplate.fromMap((map['executionTemplate'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scheduleId: pulumi.Output.create<String>(map['scheduleId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<ScheduleState>(ScheduleState.fromValue(map['state'] as String)),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionTemplate: map['executionTemplate'] == null ? null : (ExecutionTemplate.fromMap((map['executionTemplate'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scheduleId: (map['scheduleId'] as String).input(),
+      state: map['state'] == null ? null : (ScheduleState.fromValue(map['state'] as String)).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

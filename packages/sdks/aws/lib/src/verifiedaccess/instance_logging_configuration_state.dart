@@ -17,13 +17,10 @@ class InstanceLoggingConfigurationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [verifiedaccessInstanceId] The ID of the Verified Access instance.
   InstanceLoggingConfigurationState({
-    pulumi.Output<InstanceLoggingConfigurationAccessLogs>? accessLogs,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? verifiedaccessInstanceId,
-  }) :
-      accessLogs = pulumi.Input.asOptionalInput<InstanceLoggingConfigurationAccessLogs>(accessLogs),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      verifiedaccessInstanceId = pulumi.Input.asOptionalInput<String>(verifiedaccessInstanceId);
+    this.accessLogs,
+    this.region,
+    this.verifiedaccessInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class InstanceLoggingConfigurationState {
 
   factory InstanceLoggingConfigurationState.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationState(
-      accessLogs: map['accessLogs'] == null ? null : pulumi.Output.create<InstanceLoggingConfigurationAccessLogs>(InstanceLoggingConfigurationAccessLogs.fromMap((map['accessLogs'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : pulumi.Output.create<String>(map['verifiedaccessInstanceId'] as String),
+      accessLogs: map['accessLogs'] == null ? null : (InstanceLoggingConfigurationAccessLogs.fromMap((map['accessLogs'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : (map['verifiedaccessInstanceId'] as String).input(),
     );
   }
 }

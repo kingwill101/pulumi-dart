@@ -22,17 +22,12 @@ class UserPasswordState {
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
   /// [user] The IAM user to associate with this access key.
   UserPasswordState({
-    pulumi.Output<String>? encryptedPassword,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? keyFingerprint,
-    pulumi.Output<String>? pgpKey,
-    pulumi.Output<String>? user,
-  }) :
-      encryptedPassword = pulumi.Input.asOptionalInput<String>(encryptedPassword),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      keyFingerprint = pulumi.Input.asOptionalInput<String>(keyFingerprint),
-      pgpKey = pulumi.Input.asOptionalInput<String>(pgpKey),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.encryptedPassword,
+    this.host,
+    this.keyFingerprint,
+    this.pgpKey,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class UserPasswordState {
 
   factory UserPasswordState.fromMap(Map<String, dynamic> map) {
     return UserPasswordState(
-      encryptedPassword: map['encryptedPassword'] == null ? null : pulumi.Output.create<String>(map['encryptedPassword'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      keyFingerprint: map['keyFingerprint'] == null ? null : pulumi.Output.create<String>(map['keyFingerprint'] as String),
-      pgpKey: map['pgpKey'] == null ? null : pulumi.Output.create<String>(map['pgpKey'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      encryptedPassword: map['encryptedPassword'] == null ? null : (map['encryptedPassword'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

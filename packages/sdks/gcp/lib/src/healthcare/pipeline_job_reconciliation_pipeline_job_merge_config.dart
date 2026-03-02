@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_job_reconciliation_pipeline_job_merge_config_whistle_config_source.dart';
 
 class PipelineJobReconciliationPipelineJobMergeConfig {
   /// Describes the mapping configuration.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specifies the path to the mapping configuration for harmonization pipeline.
   /// Structure is documented below.
-  final PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource whistleConfigSource;
+  final pulumi.Input<PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource> whistleConfigSource;
 
   /// Creates a new [PipelineJobReconciliationPipelineJobMergeConfig].
   /// [description] Describes the mapping configuration.
@@ -20,14 +21,14 @@ class PipelineJobReconciliationPipelineJobMergeConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'whistleConfigSource': whistleConfigSource.toMap(),
+      'whistleConfigSource': pulumi.Input.mapInputValue<PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource, Map<String, dynamic>>(whistleConfigSource, (value) => value.toMap()),
     };
   }
 
   factory PipelineJobReconciliationPipelineJobMergeConfig.fromMap(Map<String, dynamic> map) {
     return PipelineJobReconciliationPipelineJobMergeConfig(
-      description: map['description'] == null ? null : map['description'] as String,
-      whistleConfigSource: PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource.fromMap((map['whistleConfigSource'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      whistleConfigSource: (PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource.fromMap((map['whistleConfigSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

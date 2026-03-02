@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_gateway_route_spec_http2_route_match_header_match_range.dart';
 
 class GetGatewayRouteSpecHttp2RouteMatchHeaderMatch {
-  final String exact;
-  final String prefix;
-  final List<GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange> ranges;
-  final String regex;
-  final String suffix;
+  final pulumi.Input<String> exact;
+  final pulumi.Input<String> prefix;
+  final pulumi.Input<List<GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange>> ranges;
+  final pulumi.Input<String> regex;
+  final pulumi.Input<String> suffix;
 
   /// Creates a new [GetGatewayRouteSpecHttp2RouteMatchHeaderMatch].
   /// [exact] Required.
@@ -28,7 +28,7 @@ class GetGatewayRouteSpecHttp2RouteMatchHeaderMatch {
     return <String, dynamic>{
       'exact': exact,
       'prefix': prefix,
-      'ranges': pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange, Map<String, dynamic>>(ranges, (value) => value.toMap()),
+      'ranges': pulumi.Input.mapInputValue<List<GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange>, List<Map<String, dynamic>>>(ranges, (value) => pulumi.Input.encodeList<GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regex': regex,
       'suffix': suffix,
     };
@@ -36,11 +36,11 @@ class GetGatewayRouteSpecHttp2RouteMatchHeaderMatch {
 
   factory GetGatewayRouteSpecHttp2RouteMatchHeaderMatch.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteMatchHeaderMatch(
-      exact: map['exact'] as String,
-      prefix: map['prefix'] as String,
-      ranges: pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange>(map['ranges'], (value) => GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange.fromMap((value as Map).cast<String, dynamic>())),
-      regex: map['regex'] as String,
-      suffix: map['suffix'] as String,
+      exact: (map['exact'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
+      ranges: (pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange>(map['ranges'], (value) => GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regex: (map['regex'] as String).input(),
+      suffix: (map['suffix'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetSpaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
   GetSpaceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> spaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spaceName = pulumi.Input.asInput<String>(spaceName);
+    required this.resourceGroupName,
+    required this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSpaceArgs {
 
   factory GetSpaceArgs.fromMap(Map<String, dynamic> map) {
     return GetSpaceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
     );
   }
 }

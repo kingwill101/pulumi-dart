@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileSttConfig {
   /// Audio encoding of the audio content to process.
   /// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
-  final String? audioEncoding;
+  final pulumi.Input<String>? audioEncoding;
   /// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
-  final bool? enableWordInfo;
+  final pulumi.Input<bool>? enableWordInfo;
   /// The language of the supplied audio.
-  final String? languageCode;
+  final pulumi.Input<String>? languageCode;
   /// Which Speech model to select.
   /// Leave this field unspecified to use Agent Speech settings for model selection.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// Sample rate (in Hertz) of the audio content sent in the query.
-  final int? sampleRateHertz;
+  final pulumi.Input<int>? sampleRateHertz;
   /// The speech model used in speech to text.
   /// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
-  final String? speechModelVariant;
+  final pulumi.Input<String>? speechModelVariant;
   /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
-  final bool? useTimeoutBasedEndpointing;
+  final pulumi.Input<bool>? useTimeoutBasedEndpointing;
 
   /// Creates a new [ConversationProfileSttConfig].
   /// [audioEncoding] Audio encoding of the audio content to process.
@@ -52,13 +53,13 @@ class ConversationProfileSttConfig {
 
   factory ConversationProfileSttConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileSttConfig(
-      audioEncoding: map['audioEncoding'] == null ? null : map['audioEncoding'] as String,
-      enableWordInfo: map['enableWordInfo'] == null ? null : map['enableWordInfo'] as bool,
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
-      model: map['model'] == null ? null : map['model'] as String,
-      sampleRateHertz: map['sampleRateHertz'] == null ? null : map['sampleRateHertz'] as int,
-      speechModelVariant: map['speechModelVariant'] == null ? null : map['speechModelVariant'] as String,
-      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : map['useTimeoutBasedEndpointing'] as bool,
+      audioEncoding: map['audioEncoding'] == null ? null : (map['audioEncoding'] as String).input(),
+      enableWordInfo: map['enableWordInfo'] == null ? null : (map['enableWordInfo'] as bool).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz'] as int).input(),
+      speechModelVariant: map['speechModelVariant'] == null ? null : (map['speechModelVariant'] as String).input(),
+      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : (map['useTimeoutBasedEndpointing'] as bool).input(),
     );
   }
 }

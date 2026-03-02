@@ -26,17 +26,12 @@ class EdgeActionArgs {
   /// [sku] The sku type of the edge action
   /// [tags] Resource tags.
   EdgeActionArgs({
-    pulumi.Output<String>? edgeActionName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<SkuType> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      edgeActionName = pulumi.Input.asOptionalInput<String>(edgeActionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<SkuType>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.edgeActionName,
+    this.location,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class EdgeActionArgs {
 
   factory EdgeActionArgs.fromMap(Map<String, dynamic> map) {
     return EdgeActionArgs(
-      edgeActionName: map['edgeActionName'] == null ? null : pulumi.Output.create<String>(map['edgeActionName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<SkuType>(SkuType.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      edgeActionName: map['edgeActionName'] == null ? null : (map['edgeActionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (SkuType.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

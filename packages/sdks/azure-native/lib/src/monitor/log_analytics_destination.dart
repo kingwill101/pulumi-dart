@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Log Analytics destination.
 class LogAnalyticsDestination {
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The resource ID of the Log Analytics workspace.
-  final String? workspaceResourceId;
+  final pulumi.Input<String>? workspaceResourceId;
 
   /// Creates a new [LogAnalyticsDestination].
   /// [name] A friendly name for the destination.
@@ -26,8 +27,8 @@ class LogAnalyticsDestination {
 
   factory LogAnalyticsDestination.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsDestination(
-      name: map['name'] == null ? null : map['name'] as String,
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : map['workspaceResourceId'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetDbNodesArgs {
   /// Creates a new [GetDbNodesArgs].
   /// [cloudVmClusterId] The id of the Cloud VM cluster.
   GetDbNodesArgs({
-    required pulumi.Output<String> cloudVmClusterId,
-  }) :
-      cloudVmClusterId = pulumi.Input.asInput<String>(cloudVmClusterId);
+    required this.cloudVmClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDbNodesArgs {
 
   factory GetDbNodesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbNodesArgs(
-      cloudVmClusterId: pulumi.Output.create<String>(map['cloudVmClusterId'] as String),
+      cloudVmClusterId: (map['cloudVmClusterId'] as String).input(),
     );
   }
 }

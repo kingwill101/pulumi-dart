@@ -25,17 +25,12 @@ class RepoArgs {
   /// [repoType] `PUBLIC` or `PRIVATE`, repo's visibility.
   /// [summary] The repository general information. It can contain 1 to 80 characters.
   RepoArgs({
-    pulumi.Output<String>? detail,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespace,
-    required pulumi.Output<String> repoType,
-    required pulumi.Output<String> summary,
-  }) :
-      detail = pulumi.Input.asOptionalInput<String>(detail),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      repoType = pulumi.Input.asInput<String>(repoType),
-      summary = pulumi.Input.asInput<String>(summary);
+    this.detail,
+    this.name,
+    required this.namespace,
+    required this.repoType,
+    required this.summary,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RepoArgs {
 
   factory RepoArgs.fromMap(Map<String, dynamic> map) {
     return RepoArgs(
-      detail: map['detail'] == null ? null : pulumi.Output.create<String>(map['detail'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      repoType: pulumi.Output.create<String>(map['repoType'] as String),
-      summary: pulumi.Output.create<String>(map['summary'] as String),
+      detail: map['detail'] == null ? null : (map['detail'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      repoType: (map['repoType'] as String).input(),
+      summary: (map['summary'] as String).input(),
     );
   }
 }

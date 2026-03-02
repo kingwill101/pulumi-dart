@@ -19,15 +19,11 @@ class DocumentationVersionState {
   /// [restApiId] ID of the associated Rest API
   /// [version] Version identifier of the API documentation snapshot.
   DocumentationVersionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? restApiId,
-    pulumi.Output<String>? version,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asOptionalInput<String>(restApiId),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.description,
+    this.region,
+    this.restApiId,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DocumentationVersionState {
 
   factory DocumentationVersionState.fromMap(Map<String, dynamic> map) {
     return DocumentationVersionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: map['restApiId'] == null ? null : pulumi.Output.create<String>(map['restApiId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

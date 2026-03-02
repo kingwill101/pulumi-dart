@@ -22,17 +22,12 @@ class FirewallRuleState {
   /// [resourceGroupName] The name of the resource group in which this Redis Cache exists. Changing this forces a new resource to be created.
   /// [startIp] The lowest IP address included in the range
   FirewallRuleState({
-    pulumi.Output<String>? endIp,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? redisCacheName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? startIp,
-  }) :
-      endIp = pulumi.Input.asOptionalInput<String>(endIp),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      redisCacheName = pulumi.Input.asOptionalInput<String>(redisCacheName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      startIp = pulumi.Input.asOptionalInput<String>(startIp);
+    this.endIp,
+    this.name,
+    this.redisCacheName,
+    this.resourceGroupName,
+    this.startIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      endIp: map['endIp'] == null ? null : pulumi.Output.create<String>(map['endIp'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      redisCacheName: map['redisCacheName'] == null ? null : pulumi.Output.create<String>(map['redisCacheName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startIp: map['startIp'] == null ? null : pulumi.Output.create<String>(map['startIp'] as String),
+      endIp: map['endIp'] == null ? null : (map['endIp'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      redisCacheName: map['redisCacheName'] == null ? null : (map['redisCacheName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      startIp: map['startIp'] == null ? null : (map['startIp'] as String).input(),
     );
   }
 }

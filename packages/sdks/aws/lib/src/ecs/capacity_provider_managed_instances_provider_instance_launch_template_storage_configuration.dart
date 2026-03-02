@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration {
   /// The size of the tasks volume in GiB. Must be at least 1.
-  final int storageSizeGib;
+  final pulumi.Input<int> storageSizeGib;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration].
   /// [storageSizeGib] The size of the tasks volume in GiB. Must be at least 1.
@@ -19,7 +20,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfi
 
   factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration(
-      storageSizeGib: map['storageSizeGib'] as int,
+      storageSizeGib: (map['storageSizeGib'] as int).input(),
     );
   }
 }

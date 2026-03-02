@@ -40,27 +40,17 @@ class WebhookArgs {
   /// [webhookKey] webhook secret token. If not set, this field value is null; otherwise, please set a string value.
   /// [webhookName] Webhook Name.
   WebhookArgs({
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? enableSslVerification,
-    pulumi.Output<List<String>>? events,
-    pulumi.Output<String>? payloadUrl,
-    required pulumi.Output<String> reportName,
-    pulumi.Output<String>? sendAllEvents,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? updateWebhookKey,
-    pulumi.Output<String>? webhookKey,
-    pulumi.Output<String>? webhookName,
-  }) :
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      enableSslVerification = pulumi.Input.asOptionalInput<String>(enableSslVerification),
-      events = pulumi.Input.asOptionalInput<List<String>>(events),
-      payloadUrl = pulumi.Input.asOptionalInput<String>(payloadUrl),
-      reportName = pulumi.Input.asInput<String>(reportName),
-      sendAllEvents = pulumi.Input.asOptionalInput<String>(sendAllEvents),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      updateWebhookKey = pulumi.Input.asOptionalInput<String>(updateWebhookKey),
-      webhookKey = pulumi.Input.asOptionalInput<String>(webhookKey),
-      webhookName = pulumi.Input.asOptionalInput<String>(webhookName);
+    this.contentType,
+    this.enableSslVerification,
+    this.events,
+    this.payloadUrl,
+    required this.reportName,
+    this.sendAllEvents,
+    this.status,
+    this.updateWebhookKey,
+    this.webhookKey,
+    this.webhookName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      enableSslVerification: map['enableSslVerification'] == null ? null : pulumi.Output.create<String>(map['enableSslVerification'] as String),
-      events: map['events'] == null ? null : pulumi.Output.create<List<String>>((map['events'] as List).cast<String>()),
-      payloadUrl: map['payloadUrl'] == null ? null : pulumi.Output.create<String>(map['payloadUrl'] as String),
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
-      sendAllEvents: map['sendAllEvents'] == null ? null : pulumi.Output.create<String>(map['sendAllEvents'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      updateWebhookKey: map['updateWebhookKey'] == null ? null : pulumi.Output.create<String>(map['updateWebhookKey'] as String),
-      webhookKey: map['webhookKey'] == null ? null : pulumi.Output.create<String>(map['webhookKey'] as String),
-      webhookName: map['webhookName'] == null ? null : pulumi.Output.create<String>(map['webhookName'] as String),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      enableSslVerification: map['enableSslVerification'] == null ? null : (map['enableSslVerification'] as String).input(),
+      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      payloadUrl: map['payloadUrl'] == null ? null : (map['payloadUrl'] as String).input(),
+      reportName: (map['reportName'] as String).input(),
+      sendAllEvents: map['sendAllEvents'] == null ? null : (map['sendAllEvents'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      updateWebhookKey: map['updateWebhookKey'] == null ? null : (map['updateWebhookKey'] as String).input(),
+      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey'] as String).input(),
+      webhookName: map['webhookName'] == null ? null : (map['webhookName'] as String).input(),
     );
   }
 }

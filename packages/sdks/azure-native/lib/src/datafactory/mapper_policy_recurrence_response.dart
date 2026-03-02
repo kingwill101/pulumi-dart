@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CDC policy recurrence details.
 class MapperPolicyRecurrenceResponse {
   /// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
-  final String? frequency;
+  final pulumi.Input<String>? frequency;
   /// Actual interval value as per chosen frequency.
-  final int? interval;
+  final pulumi.Input<int>? interval;
 
   /// Creates a new [MapperPolicyRecurrenceResponse].
   /// [frequency] Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
@@ -25,8 +26,8 @@ class MapperPolicyRecurrenceResponse {
 
   factory MapperPolicyRecurrenceResponse.fromMap(Map<String, dynamic> map) {
     return MapperPolicyRecurrenceResponse(
-      frequency: map['frequency'] == null ? null : map['frequency'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as int,
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
     );
   }
 }

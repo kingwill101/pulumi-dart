@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationRecordersRecorder {
   /// The ID of the Alicloud account.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// The ID of the Config Configuration Recorder. Value as the `account_id`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Enterprise version configuration audit enabled status.
-  final String organizationEnableStatus;
+  final pulumi.Input<String> organizationEnableStatus;
   /// The ID of the Enterprise management account.
-  final int organizationMasterId;
+  final pulumi.Input<int> organizationMasterId;
   /// A list of resource types to be monitored.
-  final List<String> resourceTypes;
+  final pulumi.Input<List<String>> resourceTypes;
   /// Status of resource monitoring.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetConfigurationRecordersRecorder].
   /// [accountId] The ID of the Alicloud account.
@@ -44,12 +45,12 @@ class GetConfigurationRecordersRecorder {
 
   factory GetConfigurationRecordersRecorder.fromMap(Map<String, dynamic> map) {
     return GetConfigurationRecordersRecorder(
-      accountId: map['accountId'] as String,
-      id: map['id'] as String,
-      organizationEnableStatus: map['organizationEnableStatus'] as String,
-      organizationMasterId: map['organizationMasterId'] as int,
-      resourceTypes: (map['resourceTypes'] as List).cast<String>(),
-      status: map['status'] as String,
+      accountId: (map['accountId'] as String).input(),
+      id: (map['id'] as String).input(),
+      organizationEnableStatus: (map['organizationEnableStatus'] as String).input(),
+      organizationMasterId: (map['organizationMasterId'] as int).input(),
+      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

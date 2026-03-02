@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceLoadBalancerAdvancedConfiguration {
   /// ARN of the alternate target group to use for Blue/Green deployments.
-  final String alternateTargetGroupArn;
+  final pulumi.Input<String> alternateTargetGroupArn;
   /// ARN of the listener rule that routes production traffic.
-  final String productionListenerRule;
+  final pulumi.Input<String> productionListenerRule;
   /// ARN of the IAM role that allows ECS to manage the target groups.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// ARN of the listener rule that routes test traffic.
-  final String testListenerRule;
+  final pulumi.Input<String> testListenerRule;
 
   /// Creates a new [GetServiceLoadBalancerAdvancedConfiguration].
   /// [alternateTargetGroupArn] ARN of the alternate target group to use for Blue/Green deployments.
@@ -34,10 +35,10 @@ class GetServiceLoadBalancerAdvancedConfiguration {
 
   factory GetServiceLoadBalancerAdvancedConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceLoadBalancerAdvancedConfiguration(
-      alternateTargetGroupArn: map['alternateTargetGroupArn'] as String,
-      productionListenerRule: map['productionListenerRule'] as String,
-      roleArn: map['roleArn'] as String,
-      testListenerRule: map['testListenerRule'] as String,
+      alternateTargetGroupArn: (map['alternateTargetGroupArn'] as String).input(),
+      productionListenerRule: (map['productionListenerRule'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      testListenerRule: (map['testListenerRule'] as String).input(),
     );
   }
 }

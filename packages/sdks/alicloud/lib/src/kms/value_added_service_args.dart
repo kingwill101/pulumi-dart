@@ -32,17 +32,12 @@ class ValueAddedServiceArgs {
   /// [renewStatus] The renewal status of the specified instance. Valid values:
   /// [valueAddedService] value added service type, Instance Backup 1 default key rotation 2 Expert service 3
   ValueAddedServiceArgs({
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<int>? period,
-    pulumi.Output<int>? renewPeriod,
-    pulumi.Output<String>? renewStatus,
-    pulumi.Output<String>? valueAddedService,
-  }) :
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      renewPeriod = pulumi.Input.asOptionalInput<int>(renewPeriod),
-      renewStatus = pulumi.Input.asOptionalInput<String>(renewStatus),
-      valueAddedService = pulumi.Input.asOptionalInput<String>(valueAddedService);
+    required this.paymentType,
+    this.period,
+    this.renewPeriod,
+    this.renewStatus,
+    this.valueAddedService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class ValueAddedServiceArgs {
 
   factory ValueAddedServiceArgs.fromMap(Map<String, dynamic> map) {
     return ValueAddedServiceArgs(
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      renewPeriod: map['renewPeriod'] == null ? null : pulumi.Output.create<int>(map['renewPeriod'] as int),
-      renewStatus: map['renewStatus'] == null ? null : pulumi.Output.create<String>(map['renewStatus'] as String),
-      valueAddedService: map['valueAddedService'] == null ? null : pulumi.Output.create<String>(map['valueAddedService'] as String),
+      paymentType: (map['paymentType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod'] as int).input(),
+      renewStatus: map['renewStatus'] == null ? null : (map['renewStatus'] as String).input(),
+      valueAddedService: map['valueAddedService'] == null ? null : (map['valueAddedService'] as String).input(),
     );
   }
 }

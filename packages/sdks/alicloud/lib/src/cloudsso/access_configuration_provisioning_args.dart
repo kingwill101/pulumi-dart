@@ -25,17 +25,12 @@ class AccessConfigurationProvisioningArgs {
   /// [targetId] The ID of the target to create the resource range.
   /// [targetType] The type of the resource range target to be accessed. Valid values: `RD-Account`.
   AccessConfigurationProvisioningArgs({
-    required pulumi.Output<String> accessConfigurationId,
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> targetId,
-    required pulumi.Output<String> targetType,
-  }) :
-      accessConfigurationId = pulumi.Input.asInput<String>(accessConfigurationId),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetId = pulumi.Input.asInput<String>(targetId),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    required this.accessConfigurationId,
+    required this.directoryId,
+    this.status,
+    required this.targetId,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AccessConfigurationProvisioningArgs {
 
   factory AccessConfigurationProvisioningArgs.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationProvisioningArgs(
-      accessConfigurationId: pulumi.Output.create<String>(map['accessConfigurationId'] as String),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      accessConfigurationId: (map['accessConfigurationId'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetSArgs {
   /// [project] The ID of the project. If it is not provided, the provider project is used.
   /// [regex] A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
   GetSArgs({
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? regex,
-  }) :
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regex = pulumi.Input.asOptionalInput<String>(regex);
+    this.prefix,
+    this.project,
+    this.regex,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSArgs {
 
   factory GetSArgs.fromMap(Map<String, dynamic> map) {
     return GetSArgs(
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regex: map['regex'] == null ? null : pulumi.Output.create<String>(map['regex'] as String),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
     );
   }
 }

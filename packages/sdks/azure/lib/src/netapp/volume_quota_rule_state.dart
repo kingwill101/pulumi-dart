@@ -29,19 +29,13 @@ class VolumeQuotaRuleState {
   /// [quotaType] Quota type. Possible values are `DefaultGroupQuota`, `DefaultUserQuota`, `IndividualGroupQuota` and `IndividualUserQuota`. Please note that `IndividualGroupQuota` and `DefaultGroupQuota` are not applicable to SMB and dual-protocol volumes. Changing this forces a new resource to be created.
   /// [volumeId] The NetApp volume ID where the Volume Quota Rule is assigned to. Changing this forces a new resource to be created.
   VolumeQuotaRuleState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? quotaSizeInKib,
-    pulumi.Output<String>? quotaTarget,
-    pulumi.Output<String>? quotaType,
-    pulumi.Output<String>? volumeId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      quotaSizeInKib = pulumi.Input.asOptionalInput<int>(quotaSizeInKib),
-      quotaTarget = pulumi.Input.asOptionalInput<String>(quotaTarget),
-      quotaType = pulumi.Input.asOptionalInput<String>(quotaType),
-      volumeId = pulumi.Input.asOptionalInput<String>(volumeId);
+    this.location,
+    this.name,
+    this.quotaSizeInKib,
+    this.quotaTarget,
+    this.quotaType,
+    this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class VolumeQuotaRuleState {
 
   factory VolumeQuotaRuleState.fromMap(Map<String, dynamic> map) {
     return VolumeQuotaRuleState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      quotaSizeInKib: map['quotaSizeInKib'] == null ? null : pulumi.Output.create<int>(map['quotaSizeInKib'] as int),
-      quotaTarget: map['quotaTarget'] == null ? null : pulumi.Output.create<String>(map['quotaTarget'] as String),
-      quotaType: map['quotaType'] == null ? null : pulumi.Output.create<String>(map['quotaType'] as String),
-      volumeId: map['volumeId'] == null ? null : pulumi.Output.create<String>(map['volumeId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      quotaSizeInKib: map['quotaSizeInKib'] == null ? null : (map['quotaSizeInKib'] as int).input(),
+      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget'] as String).input(),
+      quotaType: map['quotaType'] == null ? null : (map['quotaType'] as String).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
     );
   }
 }

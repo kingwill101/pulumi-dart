@@ -77,31 +77,19 @@ class SloState {
   /// [userLabels] This field is intended to be used for organizing and identifying the AlertPolicy
   /// [windowsBasedSli] A windows-based SLI defines the criteria for time windows.
   SloState({
-    pulumi.Output<SloBasicSli>? basicSli,
-    pulumi.Output<String>? calendarPeriod,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<double>? goal,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<SloRequestBasedSli>? requestBasedSli,
-    pulumi.Output<int>? rollingPeriodDays,
-    pulumi.Output<String>? service,
-    pulumi.Output<String>? sloId,
-    pulumi.Output<Map<String, String>>? userLabels,
-    pulumi.Output<SloWindowsBasedSli>? windowsBasedSli,
-  }) :
-      basicSli = pulumi.Input.asOptionalInput<SloBasicSli>(basicSli),
-      calendarPeriod = pulumi.Input.asOptionalInput<String>(calendarPeriod),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      goal = pulumi.Input.asOptionalInput<double>(goal),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestBasedSli = pulumi.Input.asOptionalInput<SloRequestBasedSli>(requestBasedSli),
-      rollingPeriodDays = pulumi.Input.asOptionalInput<int>(rollingPeriodDays),
-      service = pulumi.Input.asOptionalInput<String>(service),
-      sloId = pulumi.Input.asOptionalInput<String>(sloId),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels),
-      windowsBasedSli = pulumi.Input.asOptionalInput<SloWindowsBasedSli>(windowsBasedSli);
+    this.basicSli,
+    this.calendarPeriod,
+    this.displayName,
+    this.goal,
+    this.name,
+    this.project,
+    this.requestBasedSli,
+    this.rollingPeriodDays,
+    this.service,
+    this.sloId,
+    this.userLabels,
+    this.windowsBasedSli,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -122,18 +110,18 @@ class SloState {
 
   factory SloState.fromMap(Map<String, dynamic> map) {
     return SloState(
-      basicSli: map['basicSli'] == null ? null : pulumi.Output.create<SloBasicSli>(SloBasicSli.fromMap((map['basicSli'] as Map).cast<String, dynamic>())),
-      calendarPeriod: map['calendarPeriod'] == null ? null : pulumi.Output.create<String>(map['calendarPeriod'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      goal: map['goal'] == null ? null : pulumi.Output.create<double>(map['goal'] as double),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestBasedSli: map['requestBasedSli'] == null ? null : pulumi.Output.create<SloRequestBasedSli>(SloRequestBasedSli.fromMap((map['requestBasedSli'] as Map).cast<String, dynamic>())),
-      rollingPeriodDays: map['rollingPeriodDays'] == null ? null : pulumi.Output.create<int>(map['rollingPeriodDays'] as int),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
-      sloId: map['sloId'] == null ? null : pulumi.Output.create<String>(map['sloId'] as String),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
-      windowsBasedSli: map['windowsBasedSli'] == null ? null : pulumi.Output.create<SloWindowsBasedSli>(SloWindowsBasedSli.fromMap((map['windowsBasedSli'] as Map).cast<String, dynamic>())),
+      basicSli: map['basicSli'] == null ? null : (SloBasicSli.fromMap((map['basicSli'] as Map).cast<String, dynamic>())).input(),
+      calendarPeriod: map['calendarPeriod'] == null ? null : (map['calendarPeriod'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      goal: map['goal'] == null ? null : (map['goal'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestBasedSli: map['requestBasedSli'] == null ? null : (SloRequestBasedSli.fromMap((map['requestBasedSli'] as Map).cast<String, dynamic>())).input(),
+      rollingPeriodDays: map['rollingPeriodDays'] == null ? null : (map['rollingPeriodDays'] as int).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      sloId: map['sloId'] == null ? null : (map['sloId'] as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      windowsBasedSli: map['windowsBasedSli'] == null ? null : (SloWindowsBasedSli.fromMap((map['windowsBasedSli'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

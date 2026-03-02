@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
   /// (Output)
@@ -13,9 +14,9 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
   /// -signkey example.com.key \
   /// -out example.com.crt \
   /// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
-  final String? cert;
+  final pulumi.Input<String>? cert;
   /// The display name of the app version.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolTlsConfigCaCert].
   /// [cert] (Output)
@@ -34,8 +35,8 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
 
   factory AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolTlsConfigCaCert(
-      cert: map['cert'] == null ? null : map['cert'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

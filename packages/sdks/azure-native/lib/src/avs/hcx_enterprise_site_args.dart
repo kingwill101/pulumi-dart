@@ -19,13 +19,10 @@ class HcxEnterpriseSiteArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   HcxEnterpriseSiteArgs({
-    pulumi.Output<String>? hcxEnterpriseSiteName,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hcxEnterpriseSiteName = pulumi.Input.asOptionalInput<String>(hcxEnterpriseSiteName),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.hcxEnterpriseSiteName,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class HcxEnterpriseSiteArgs {
 
   factory HcxEnterpriseSiteArgs.fromMap(Map<String, dynamic> map) {
     return HcxEnterpriseSiteArgs(
-      hcxEnterpriseSiteName: map['hcxEnterpriseSiteName'] == null ? null : pulumi.Output.create<String>(map['hcxEnterpriseSiteName'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hcxEnterpriseSiteName: map['hcxEnterpriseSiteName'] == null ? null : (map['hcxEnterpriseSiteName'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

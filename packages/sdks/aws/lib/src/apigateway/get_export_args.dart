@@ -28,19 +28,13 @@ class GetExportArgs {
   /// [restApiId] Identifier of the associated REST API.
   /// [stageName] Name of the Stage that will be exported.
   GetExportArgs({
-    pulumi.Output<String>? accepts,
-    required pulumi.Output<String> exportType,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApiId,
-    required pulumi.Output<String> stageName,
-  }) :
-      accepts = pulumi.Input.asOptionalInput<String>(accepts),
-      exportType = pulumi.Input.asInput<String>(exportType),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asInput<String>(restApiId),
-      stageName = pulumi.Input.asInput<String>(stageName);
+    this.accepts,
+    required this.exportType,
+    this.parameters,
+    this.region,
+    required this.restApiId,
+    required this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetExportArgs {
 
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
-      accepts: map['accepts'] == null ? null : pulumi.Output.create<String>(map['accepts'] as String),
-      exportType: pulumi.Output.create<String>(map['exportType'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: pulumi.Output.create<String>(map['restApiId'] as String),
-      stageName: pulumi.Output.create<String>(map['stageName'] as String),
+      accepts: map['accepts'] == null ? null : (map['accepts'] as String).input(),
+      exportType: (map['exportType'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: (map['restApiId'] as String).input(),
+      stageName: (map['stageName'] as String).input(),
     );
   }
 }

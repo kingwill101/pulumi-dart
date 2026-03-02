@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainNameServer {
   /// Glue IP addresses of a name server. The list can contain only one IPv4 and one IPv6 address.
-  final List<String> glueIps;
+  final pulumi.Input<List<String>> glueIps;
   /// The fully qualified host name of the name server.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DomainNameServer].
   /// [glueIps] Glue IP addresses of a name server. The list can contain only one IPv4 and one IPv6 address.
@@ -24,8 +25,8 @@ class DomainNameServer {
 
   factory DomainNameServer.fromMap(Map<String, dynamic> map) {
     return DomainNameServer(
-      glueIps: (map['glueIps'] as List).cast<String>(),
-      name: map['name'] as String,
+      glueIps: ((map['glueIps'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -40,23 +40,15 @@ class FirewallEndpointAssociationArgs {
   /// [parent] The name of the parent this firewall endpoint association belongs to.
   /// [tlsInspectionPolicy] The URL of the TlsInspectionPolicy that is being associated.
   FirewallEndpointAssociationArgs({
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> firewallEndpoint,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? tlsInspectionPolicy,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      firewallEndpoint = pulumi.Input.asInput<String>(firewallEndpoint),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asInput<String>(network),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      tlsInspectionPolicy = pulumi.Input.asOptionalInput<String>(tlsInspectionPolicy);
+    this.disabled,
+    required this.firewallEndpoint,
+    this.labels,
+    required this.location,
+    this.name,
+    required this.network,
+    this.parent,
+    this.tlsInspectionPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class FirewallEndpointAssociationArgs {
 
   factory FirewallEndpointAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointAssociationArgs(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      firewallEndpoint: pulumi.Output.create<String>(map['firewallEndpoint'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : pulumi.Output.create<String>(map['tlsInspectionPolicy'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      firewallEndpoint: (map['firewallEndpoint'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : (map['tlsInspectionPolicy'] as String).input(),
     );
   }
 }

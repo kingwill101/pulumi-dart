@@ -45,29 +45,18 @@ class DataSharingWithGoogleSettingState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Update time stamp.
   DataSharingWithGoogleSettingState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataSharingWithGoogleSettingId,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<bool>? enableDataSharing,
-    pulumi.Output<bool>? enablePreviewDataSharing,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataSharingWithGoogleSettingId = pulumi.Input.asOptionalInput<String>(dataSharingWithGoogleSettingId),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      enableDataSharing = pulumi.Input.asOptionalInput<bool>(enableDataSharing),
-      enablePreviewDataSharing = pulumi.Input.asOptionalInput<bool>(enablePreviewDataSharing),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.dataSharingWithGoogleSettingId,
+    this.effectiveLabels,
+    this.enableDataSharing,
+    this.enablePreviewDataSharing,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class DataSharingWithGoogleSettingState {
 
   factory DataSharingWithGoogleSettingState.fromMap(Map<String, dynamic> map) {
     return DataSharingWithGoogleSettingState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataSharingWithGoogleSettingId: map['dataSharingWithGoogleSettingId'] == null ? null : pulumi.Output.create<String>(map['dataSharingWithGoogleSettingId'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      enableDataSharing: map['enableDataSharing'] == null ? null : pulumi.Output.create<bool>(map['enableDataSharing'] as bool),
-      enablePreviewDataSharing: map['enablePreviewDataSharing'] == null ? null : pulumi.Output.create<bool>(map['enablePreviewDataSharing'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataSharingWithGoogleSettingId: map['dataSharingWithGoogleSettingId'] == null ? null : (map['dataSharingWithGoogleSettingId'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      enableDataSharing: map['enableDataSharing'] == null ? null : (map['enableDataSharing'] as bool).input(),
+      enablePreviewDataSharing: map['enablePreviewDataSharing'] == null ? null : (map['enablePreviewDataSharing'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

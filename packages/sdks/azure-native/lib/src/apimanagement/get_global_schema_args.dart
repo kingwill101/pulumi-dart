@@ -19,13 +19,10 @@ class GetGlobalSchemaArgs {
   /// [schemaId] Schema id identifier. Must be unique in the current API Management service instance.
   /// [serviceName] The name of the API Management service.
   GetGlobalSchemaArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaId,
-    required pulumi.Output<String> serviceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaId = pulumi.Input.asInput<String>(schemaId),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.resourceGroupName,
+    required this.schemaId,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGlobalSchemaArgs {
 
   factory GetGlobalSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalSchemaArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaId: pulumi.Output.create<String>(map['schemaId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

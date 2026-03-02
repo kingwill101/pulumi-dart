@@ -28,19 +28,13 @@ class NasFileSystemArgs {
   /// [officeSiteId] The ID of office site.
   /// [reset] The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
   NasFileSystemArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? mountTargetDomain,
-    pulumi.Output<String>? nasFileSystemName,
-    required pulumi.Output<String> officeSiteId,
-    pulumi.Output<bool>? reset,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      mountTargetDomain = pulumi.Input.asOptionalInput<String>(mountTargetDomain),
-      nasFileSystemName = pulumi.Input.asOptionalInput<String>(nasFileSystemName),
-      officeSiteId = pulumi.Input.asInput<String>(officeSiteId),
-      reset = pulumi.Input.asOptionalInput<bool>(reset);
+    this.description,
+    this.fileSystemId,
+    this.mountTargetDomain,
+    this.nasFileSystemName,
+    required this.officeSiteId,
+    this.reset,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class NasFileSystemArgs {
 
   factory NasFileSystemArgs.fromMap(Map<String, dynamic> map) {
     return NasFileSystemArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : pulumi.Output.create<String>(map['mountTargetDomain'] as String),
-      nasFileSystemName: map['nasFileSystemName'] == null ? null : pulumi.Output.create<String>(map['nasFileSystemName'] as String),
-      officeSiteId: pulumi.Output.create<String>(map['officeSiteId'] as String),
-      reset: map['reset'] == null ? null : pulumi.Output.create<bool>(map['reset'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain'] as String).input(),
+      nasFileSystemName: map['nasFileSystemName'] == null ? null : (map['nasFileSystemName'] as String).input(),
+      officeSiteId: (map['officeSiteId'] as String).input(),
+      reset: map['reset'] == null ? null : (map['reset'] as bool).input(),
     );
   }
 }

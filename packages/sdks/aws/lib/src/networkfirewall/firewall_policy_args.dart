@@ -30,19 +30,13 @@ class FirewallPolicyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   FirewallPolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<FirewallPolicyEncryptionConfiguration>? encryptionConfiguration,
-    required pulumi.Output<FirewallPolicyFirewallPolicy> firewallPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<FirewallPolicyEncryptionConfiguration>(encryptionConfiguration),
-      firewallPolicy = pulumi.Input.asInput<FirewallPolicyFirewallPolicy>(firewallPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.encryptionConfiguration,
+    required this.firewallPolicy,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class FirewallPolicyArgs {
 
   factory FirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<FirewallPolicyEncryptionConfiguration>(FirewallPolicyEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      firewallPolicy: pulumi.Output.create<FirewallPolicyFirewallPolicy>(FirewallPolicyFirewallPolicy.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (FirewallPolicyEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      firewallPolicy: (FirewallPolicyFirewallPolicy.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

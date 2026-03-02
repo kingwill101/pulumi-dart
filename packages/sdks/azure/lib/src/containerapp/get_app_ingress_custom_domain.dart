@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppIngressCustomDomain {
   /// The Binding type.
-  final String certificateBindingType;
+  final pulumi.Input<String> certificateBindingType;
   /// The ID of the Container App Environment Certificate.
-  final String certificateId;
+  final pulumi.Input<String> certificateId;
   /// The name of the Container App.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetAppIngressCustomDomain].
   /// [certificateBindingType] The Binding type.
@@ -29,9 +30,9 @@ class GetAppIngressCustomDomain {
 
   factory GetAppIngressCustomDomain.fromMap(Map<String, dynamic> map) {
     return GetAppIngressCustomDomain(
-      certificateBindingType: map['certificateBindingType'] as String,
-      certificateId: map['certificateId'] as String,
-      name: map['name'] as String,
+      certificateBindingType: (map['certificateBindingType'] as String).input(),
+      certificateId: (map['certificateId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

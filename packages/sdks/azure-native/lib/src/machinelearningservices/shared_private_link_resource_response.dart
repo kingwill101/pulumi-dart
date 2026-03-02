@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SharedPrivateLinkResourceResponse {
   /// The private link resource group id.
-  final String? groupId;
+  final pulumi.Input<String>? groupId;
   /// Unique name of the private link.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The resource id that private link links to.
-  final String? privateLinkResourceId;
+  final pulumi.Input<String>? privateLinkResourceId;
   /// Request message.
-  final String? requestMessage;
+  final pulumi.Input<String>? requestMessage;
   /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [SharedPrivateLinkResourceResponse].
   /// [groupId] The private link resource group id.
@@ -39,11 +40,11 @@ class SharedPrivateLinkResourceResponse {
 
   factory SharedPrivateLinkResourceResponse.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceResponse(
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : map['privateLinkResourceId'] as String,
-      requestMessage: map['requestMessage'] == null ? null : map['requestMessage'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

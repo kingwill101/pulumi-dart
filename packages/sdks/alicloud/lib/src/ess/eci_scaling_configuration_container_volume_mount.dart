@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EciScalingConfigurationContainerVolumeMount {
-  final String? mountPath;
-  final String? mountPropagation;
-  final String? name;
-  final bool? readOnly;
-  final String? subPath;
+  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String>? mountPropagation;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<String>? subPath;
 
   /// Creates a new [EciScalingConfigurationContainerVolumeMount].
   /// [mountPath] Optional.
@@ -34,11 +35,11 @@ class EciScalingConfigurationContainerVolumeMount {
 
   factory EciScalingConfigurationContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationContainerVolumeMount(
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      mountPropagation: map['mountPropagation'] == null ? null : map['mountPropagation'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      subPath: map['subPath'] == null ? null : map['subPath'] as String,
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      mountPropagation: map['mountPropagation'] == null ? null : (map['mountPropagation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
     );
   }
 }

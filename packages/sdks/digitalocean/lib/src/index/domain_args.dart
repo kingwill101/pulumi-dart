@@ -17,11 +17,9 @@ class DomainArgs {
   /// [ipAddress] The IP address of the domain. If specified, this IP
   /// [name] The name of the domain
   DomainArgs({
-    pulumi.Output<String>? ipAddress,
-    required pulumi.Output<String> name,
-  }) :
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      name = pulumi.Input.asInput<String>(name);
+    this.ipAddress,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -7,17 +7,17 @@ import 'namespace_dataset_data_point_response.dart';
 /// Defines the dataset properties.
 class NamespaceDatasetResponse {
   /// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
-  final List<NamespaceDatasetDataPointResponse>? dataPoints;
+  final pulumi.Input<List<NamespaceDatasetDataPointResponse>>? dataPoints;
   /// Reference to a data source for a given dataset.
-  final String? dataSource;
+  final pulumi.Input<String>? dataSource;
   /// Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
-  final String? datasetConfiguration;
+  final pulumi.Input<String>? datasetConfiguration;
   /// Destinations for a dataset.
-  final List<DatasetBrokerStateStoreDestinationResponse>? destinations;
+  final pulumi.Input<List<DatasetBrokerStateStoreDestinationResponse>>? destinations;
   /// Name of the dataset.
-  final String name;
+  final pulumi.Input<String> name;
   /// URI or type definition ID.
-  final String? typeRef;
+  final pulumi.Input<String>? typeRef;
 
   /// Creates a new [NamespaceDatasetResponse].
   /// [dataPoints] Array of data points that are part of the dataset. Each data point can have per-data point configuration.
@@ -37,10 +37,10 @@ class NamespaceDatasetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataPoints': ?dataPoints == null ? null : pulumi.Input.encodeList<NamespaceDatasetDataPointResponse, Map<String, dynamic>>(dataPoints!, (value) => value.toMap()),
+      'dataPoints': ?pulumi.Input.mapOptionalInputValue<List<NamespaceDatasetDataPointResponse>, List<Map<String, dynamic>>>(dataPoints, (value) => pulumi.Input.encodeList<NamespaceDatasetDataPointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataSource': ?dataSource,
       'datasetConfiguration': ?datasetConfiguration,
-      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<DatasetBrokerStateStoreDestinationResponse, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'destinations': ?pulumi.Input.mapOptionalInputValue<List<DatasetBrokerStateStoreDestinationResponse>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<DatasetBrokerStateStoreDestinationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'typeRef': ?typeRef,
     };
@@ -48,12 +48,12 @@ class NamespaceDatasetResponse {
 
   factory NamespaceDatasetResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceDatasetResponse(
-      dataPoints: map['dataPoints'] == null ? null : pulumi.Input.decodeList<NamespaceDatasetDataPointResponse>(map['dataPoints'], (value) => NamespaceDatasetDataPointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
-      datasetConfiguration: map['datasetConfiguration'] == null ? null : map['datasetConfiguration'] as String,
-      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<DatasetBrokerStateStoreDestinationResponse>(map['destinations'], (value) => DatasetBrokerStateStoreDestinationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      typeRef: map['typeRef'] == null ? null : map['typeRef'] as String,
+      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceDatasetDataPointResponse>(map['dataPoints'], (value) => NamespaceDatasetDataPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration'] as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<DatasetBrokerStateStoreDestinationResponse>(map['destinations'], (value) => DatasetBrokerStateStoreDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
     );
   }
 }

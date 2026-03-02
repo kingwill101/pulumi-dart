@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMonitorEnvironmentPropertyEnvironmentInfo {
-  final String environmentId;
+  final pulumi.Input<String> environmentId;
 
   /// Creates a new [GetMonitorEnvironmentPropertyEnvironmentInfo].
   /// [environmentId] Required.
@@ -18,7 +19,7 @@ class GetMonitorEnvironmentPropertyEnvironmentInfo {
 
   factory GetMonitorEnvironmentPropertyEnvironmentInfo.fromMap(Map<String, dynamic> map) {
     return GetMonitorEnvironmentPropertyEnvironmentInfo(
-      environmentId: map['environmentId'] as String,
+      environmentId: (map['environmentId'] as String).input(),
     );
   }
 }

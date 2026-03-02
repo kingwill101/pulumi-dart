@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_v2_key_vault_properties.dart';
 
 /// The object that contains details of encryption used on the workspace.
 class EncryptionV2 {
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
-  final String keySource;
+  final pulumi.Input<String> keySource;
   /// Key Vault input properties for encryption.
-  final EncryptionV2KeyVaultProperties? keyVaultProperties;
+  final pulumi.Input<EncryptionV2KeyVaultProperties>? keyVaultProperties;
 
   /// Creates a new [EncryptionV2].
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
@@ -20,14 +21,14 @@ class EncryptionV2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keySource': keySource,
-      'keyVaultProperties': ?keyVaultProperties == null ? null : keyVaultProperties!.toMap(),
+      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<EncryptionV2KeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory EncryptionV2.fromMap(Map<String, dynamic> map) {
     return EncryptionV2(
-      keySource: map['keySource'] as String,
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : EncryptionV2KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>()),
+      keySource: (map['keySource'] as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionV2KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

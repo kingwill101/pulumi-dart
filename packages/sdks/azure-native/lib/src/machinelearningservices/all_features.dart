@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AllFeatures {
   /// Expected value is 'AllFeatures'.
-  final String filterType;
+  final pulumi.Input<String> filterType;
 
   /// Creates a new [AllFeatures].
   /// [filterType] Expected value is 'AllFeatures'.
@@ -19,7 +20,7 @@ class AllFeatures {
 
   factory AllFeatures.fromMap(Map<String, dynamic> map) {
     return AllFeatures(
-      filterType: map['filterType'] as String,
+      filterType: (map['filterType'] as String).input(),
     );
   }
 }

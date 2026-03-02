@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Instance of a general execution.
 class GoogleCloudAiplatformV1beta1ExecutionResponse {
   /// Timestamp when this Execution was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Description of the Execution
-  final String description;
+  final pulumi.Input<String> description;
   /// User provided display name of the Execution. May be up to 128 Unicode characters.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// An eTag used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The labels with user-defined metadata to organize your Executions. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Execution (System labels are excluded).
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-  final Map<String, String> metadata;
+  final pulumi.Input<Map<String, String>> metadata;
   /// The resource name of the Execution.
-  final String name;
+  final pulumi.Input<String> name;
   /// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
-  final String schemaTitle;
+  final pulumi.Input<String> schemaTitle;
   /// The version of the schema in `schema_title` to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
-  final String schemaVersion;
+  final pulumi.Input<String> schemaVersion;
   /// The state of this Execution. This is a property of the Execution, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines) and the system does not prescribe or check the validity of state transitions.
-  final String state;
+  final pulumi.Input<String> state;
   /// Timestamp when this Execution was last updated.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ExecutionResponse].
   /// [createTime] Timestamp when this Execution was created.
@@ -70,17 +71,17 @@ class GoogleCloudAiplatformV1beta1ExecutionResponse {
 
   factory GoogleCloudAiplatformV1beta1ExecutionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ExecutionResponse(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      schemaTitle: map['schemaTitle'] as String,
-      schemaVersion: map['schemaVersion'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      schemaTitle: (map['schemaTitle'] as String).input(),
+      schemaVersion: (map['schemaVersion'] as String).input(),
+      state: (map['state'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

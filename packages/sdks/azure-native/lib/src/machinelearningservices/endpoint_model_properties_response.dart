@@ -8,26 +8,26 @@ import 'system_data_response.dart';
 /// Endpoint Model properties.
 class EndpointModelPropertiesResponse {
   /// The capabilities.
-  final Map<String, String>? capabilities;
-  final EndpointModelDeprecationPropertiesResponse? deprecation;
+  final pulumi.Input<Map<String, String>>? capabilities;
+  final pulumi.Input<EndpointModelDeprecationPropertiesResponse>? deprecation;
   /// The capabilities for finetune models.
-  final Map<String, String>? finetuneCapabilities;
+  final pulumi.Input<Map<String, String>>? finetuneCapabilities;
   /// Deployment model format.
-  final String? format;
+  final pulumi.Input<String>? format;
   /// If the model is default version.
-  final bool? isDefaultVersion;
+  final pulumi.Input<bool>? isDefaultVersion;
   /// Model lifecycle status.
-  final String? lifecycleStatus;
+  final pulumi.Input<String>? lifecycleStatus;
   /// The max capacity.
-  final int? maxCapacity;
+  final pulumi.Input<int>? maxCapacity;
   /// Deployment model name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The list of Model Sku.
-  final List<EndpointModelSkuPropertiesResponse>? skus;
+  final pulumi.Input<List<EndpointModelSkuPropertiesResponse>>? skus;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [EndpointModelPropertiesResponse].
   /// [capabilities] The capabilities.
@@ -58,32 +58,32 @@ class EndpointModelPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capabilities': ?capabilities,
-      'deprecation': ?deprecation == null ? null : deprecation!.toMap(),
+      'deprecation': ?pulumi.Input.mapOptionalInputValue<EndpointModelDeprecationPropertiesResponse, Map<String, dynamic>>(deprecation, (value) => value.toMap()),
       'finetuneCapabilities': ?finetuneCapabilities,
       'format': ?format,
       'isDefaultVersion': ?isDefaultVersion,
       'lifecycleStatus': ?lifecycleStatus,
       'maxCapacity': ?maxCapacity,
       'name': ?name,
-      'skus': ?skus == null ? null : pulumi.Input.encodeList<EndpointModelSkuPropertiesResponse, Map<String, dynamic>>(skus!, (value) => value.toMap()),
-      'systemData': systemData.toMap(),
+      'skus': ?pulumi.Input.mapOptionalInputValue<List<EndpointModelSkuPropertiesResponse>, List<Map<String, dynamic>>>(skus, (value) => pulumi.Input.encodeList<EndpointModelSkuPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory EndpointModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelPropertiesResponse(
-      capabilities: map['capabilities'] == null ? null : (map['capabilities'] as Map).cast<String, String>(),
-      deprecation: map['deprecation'] == null ? null : EndpointModelDeprecationPropertiesResponse.fromMap((map['deprecation'] as Map).cast<String, dynamic>()),
-      finetuneCapabilities: map['finetuneCapabilities'] == null ? null : (map['finetuneCapabilities'] as Map).cast<String, String>(),
-      format: map['format'] == null ? null : map['format'] as String,
-      isDefaultVersion: map['isDefaultVersion'] == null ? null : map['isDefaultVersion'] as bool,
-      lifecycleStatus: map['lifecycleStatus'] == null ? null : map['lifecycleStatus'] as String,
-      maxCapacity: map['maxCapacity'] == null ? null : map['maxCapacity'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      skus: map['skus'] == null ? null : pulumi.Input.decodeList<EndpointModelSkuPropertiesResponse>(map['skus'], (value) => EndpointModelSkuPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as Map).cast<String, String>()).input(),
+      deprecation: map['deprecation'] == null ? null : (EndpointModelDeprecationPropertiesResponse.fromMap((map['deprecation'] as Map).cast<String, dynamic>())).input(),
+      finetuneCapabilities: map['finetuneCapabilities'] == null ? null : ((map['finetuneCapabilities'] as Map).cast<String, String>()).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion'] as bool).input(),
+      lifecycleStatus: map['lifecycleStatus'] == null ? null : (map['lifecycleStatus'] as String).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      skus: map['skus'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuPropertiesResponse>(map['skus'], (value) => EndpointModelSkuPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

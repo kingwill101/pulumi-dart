@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentConfirmationSettingElicitationCodeHook {
   /// Whether a Lambda function should be invoked for the dialog.
-  final bool? enableCodeHookInvocation;
+  final pulumi.Input<bool>? enableCodeHookInvocation;
   /// Label that indicates the dialog step from which the dialog code hook is happening.
-  final String? invocationLabel;
+  final pulumi.Input<String>? invocationLabel;
 
   /// Creates a new [V2modelsIntentConfirmationSettingElicitationCodeHook].
   /// [enableCodeHookInvocation] Whether a Lambda function should be invoked for the dialog.
@@ -24,8 +25,8 @@ class V2modelsIntentConfirmationSettingElicitationCodeHook {
 
   factory V2modelsIntentConfirmationSettingElicitationCodeHook.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingElicitationCodeHook(
-      enableCodeHookInvocation: map['enableCodeHookInvocation'] == null ? null : map['enableCodeHookInvocation'] as bool,
-      invocationLabel: map['invocationLabel'] == null ? null : map['invocationLabel'] as String,
+      enableCodeHookInvocation: map['enableCodeHookInvocation'] == null ? null : (map['enableCodeHookInvocation'] as bool).input(),
+      invocationLabel: map['invocationLabel'] == null ? null : (map['invocationLabel'] as String).input(),
     );
   }
 }

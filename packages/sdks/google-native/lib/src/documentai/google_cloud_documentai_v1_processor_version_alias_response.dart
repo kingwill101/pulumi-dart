@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains the alias and the aliased resource name of processor version.
 class GoogleCloudDocumentaiV1ProcessorVersionAliasResponse {
   /// The alias in the form of `processor_version` resource name.
-  final String alias;
+  final pulumi.Input<String> alias;
   /// The resource name of aliased processor version.
-  final String processorVersion;
+  final pulumi.Input<String> processorVersion;
 
   /// Creates a new [GoogleCloudDocumentaiV1ProcessorVersionAliasResponse].
   /// [alias] The alias in the form of `processor_version` resource name.
@@ -25,8 +26,8 @@ class GoogleCloudDocumentaiV1ProcessorVersionAliasResponse {
 
   factory GoogleCloudDocumentaiV1ProcessorVersionAliasResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1ProcessorVersionAliasResponse(
-      alias: map['alias'] as String,
-      processorVersion: map['processorVersion'] as String,
+      alias: (map['alias'] as String).input(),
+      processorVersion: (map['processorVersion'] as String).input(),
     );
   }
 }

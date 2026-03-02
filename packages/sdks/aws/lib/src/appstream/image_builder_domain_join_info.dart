@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageBuilderDomainJoinInfo {
   /// Fully qualified name of the directory (for example, corp.example.com).
-  final String? directoryName;
+  final pulumi.Input<String>? directoryName;
   /// Distinguished name of the organizational unit for computer accounts.
-  final String? organizationalUnitDistinguishedName;
+  final pulumi.Input<String>? organizationalUnitDistinguishedName;
 
   /// Creates a new [ImageBuilderDomainJoinInfo].
   /// [directoryName] Fully qualified name of the directory (for example, corp.example.com).
@@ -24,8 +25,8 @@ class ImageBuilderDomainJoinInfo {
 
   factory ImageBuilderDomainJoinInfo.fromMap(Map<String, dynamic> map) {
     return ImageBuilderDomainJoinInfo(
-      directoryName: map['directoryName'] == null ? null : map['directoryName'] as String,
-      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] == null ? null : map['organizationalUnitDistinguishedName'] as String,
+      directoryName: map['directoryName'] == null ? null : (map['directoryName'] as String).input(),
+      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] == null ? null : (map['organizationalUnitDistinguishedName'] as String).input(),
     );
   }
 }

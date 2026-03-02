@@ -26,17 +26,12 @@ class FolderSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// [folderId] Required.
   /// [name] Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
   FolderSecurityHealthAnalyticsSettingCustomModuleArgs({
-    pulumi.Output<GoogleCloudSecuritycenterV1CustomConfig>? customConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState>? enablementState,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<String>? name,
-  }) :
-      customConfig = pulumi.Input.asOptionalInput<GoogleCloudSecuritycenterV1CustomConfig>(customConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState>(enablementState),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    required this.folderId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class FolderSecurityHealthAnalyticsSettingCustomModuleArgs {
 
   factory FolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return FolderSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : pulumi.Output.create<GoogleCloudSecuritycenterV1CustomConfig>(GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: map['enablementState'] == null ? null : pulumi.Output.create<FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState>(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enablementState: map['enablementState'] == null ? null : (FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)).input(),
+      folderId: (map['folderId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

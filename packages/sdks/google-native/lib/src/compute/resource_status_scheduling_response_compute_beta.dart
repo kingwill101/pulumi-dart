@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceStatusSchedulingResponseComputeBeta {
   /// Time in future when the instance will be terminated in RFC3339 text format.
-  final String terminationTimestamp;
+  final pulumi.Input<String> terminationTimestamp;
 
   /// Creates a new [ResourceStatusSchedulingResponseComputeBeta].
   /// [terminationTimestamp] Time in future when the instance will be terminated in RFC3339 text format.
@@ -19,7 +20,7 @@ class ResourceStatusSchedulingResponseComputeBeta {
 
   factory ResourceStatusSchedulingResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourceStatusSchedulingResponseComputeBeta(
-      terminationTimestamp: map['terminationTimestamp'] as String,
+      terminationTimestamp: (map['terminationTimestamp'] as String).input(),
     );
   }
 }

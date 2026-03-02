@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyVMInstantRestoreResourceGroup {
   /// The prefix for the `instant_restore_resource_group` name.
-  final String prefix;
+  final pulumi.Input<String> prefix;
   /// The suffix for the `instant_restore_resource_group` name.
-  final String? suffix;
+  final pulumi.Input<String>? suffix;
 
   /// Creates a new [PolicyVMInstantRestoreResourceGroup].
   /// [prefix] The prefix for the `instant_restore_resource_group` name.
@@ -24,8 +25,8 @@ class PolicyVMInstantRestoreResourceGroup {
 
   factory PolicyVMInstantRestoreResourceGroup.fromMap(Map<String, dynamic> map) {
     return PolicyVMInstantRestoreResourceGroup(
-      prefix: map['prefix'] as String,
-      suffix: map['suffix'] == null ? null : map['suffix'] as String,
+      prefix: (map['prefix'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
     );
   }
 }

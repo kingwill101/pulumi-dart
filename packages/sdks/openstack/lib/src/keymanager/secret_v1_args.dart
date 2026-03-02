@@ -53,31 +53,19 @@ class SecretV1Args {
   /// [region] The region in which to obtain the V1 KeyManager client.
   /// [secretType] Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
   SecretV1Args({
-    pulumi.Output<SecretV1Acl>? acl,
-    pulumi.Output<String>? algorithm,
-    pulumi.Output<int>? bitLength,
-    pulumi.Output<String>? expiration,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? payload,
-    pulumi.Output<String>? payloadContentEncoding,
-    pulumi.Output<String>? payloadContentType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretType,
-  }) :
-      acl = pulumi.Input.asOptionalInput<SecretV1Acl>(acl),
-      algorithm = pulumi.Input.asOptionalInput<String>(algorithm),
-      bitLength = pulumi.Input.asOptionalInput<int>(bitLength),
-      expiration = pulumi.Input.asOptionalInput<String>(expiration),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      payload = pulumi.Input.asOptionalInput<String>(payload),
-      payloadContentEncoding = pulumi.Input.asOptionalInput<String>(payloadContentEncoding),
-      payloadContentType = pulumi.Input.asOptionalInput<String>(payloadContentType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretType = pulumi.Input.asOptionalInput<String>(secretType);
+    this.acl,
+    this.algorithm,
+    this.bitLength,
+    this.expiration,
+    this.metadata,
+    this.mode,
+    this.name,
+    this.payload,
+    this.payloadContentEncoding,
+    this.payloadContentType,
+    this.region,
+    this.secretType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class SecretV1Args {
 
   factory SecretV1Args.fromMap(Map<String, dynamic> map) {
     return SecretV1Args(
-      acl: map['acl'] == null ? null : pulumi.Output.create<SecretV1Acl>(SecretV1Acl.fromMap((map['acl'] as Map).cast<String, dynamic>())),
-      algorithm: map['algorithm'] == null ? null : pulumi.Output.create<String>(map['algorithm'] as String),
-      bitLength: map['bitLength'] == null ? null : pulumi.Output.create<int>(map['bitLength'] as int),
-      expiration: map['expiration'] == null ? null : pulumi.Output.create<String>(map['expiration'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      payload: map['payload'] == null ? null : pulumi.Output.create<String>(map['payload'] as String),
-      payloadContentEncoding: map['payloadContentEncoding'] == null ? null : pulumi.Output.create<String>(map['payloadContentEncoding'] as String),
-      payloadContentType: map['payloadContentType'] == null ? null : pulumi.Output.create<String>(map['payloadContentType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretType: map['secretType'] == null ? null : pulumi.Output.create<String>(map['secretType'] as String),
+      acl: map['acl'] == null ? null : (SecretV1Acl.fromMap((map['acl'] as Map).cast<String, dynamic>())).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
+      bitLength: map['bitLength'] == null ? null : (map['bitLength'] as int).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
+      payloadContentEncoding: map['payloadContentEncoding'] == null ? null : (map['payloadContentEncoding'] as String).input(),
+      payloadContentType: map['payloadContentType'] == null ? null : (map['payloadContentType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretType: map['secretType'] == null ? null : (map['secretType'] as String).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class GetDbServersArgs {
   /// [location] The location of resource.
   /// [project] The project to which the resource belongs. If it
   GetDbServersArgs({
-    required pulumi.Output<String> cloudExadataInfrastructure,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      cloudExadataInfrastructure = pulumi.Input.asInput<String>(cloudExadataInfrastructure),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.cloudExadataInfrastructure,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetDbServersArgs {
 
   factory GetDbServersArgs.fromMap(Map<String, dynamic> map) {
     return GetDbServersArgs(
-      cloudExadataInfrastructure: pulumi.Output.create<String>(map['cloudExadataInfrastructure'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      cloudExadataInfrastructure: (map['cloudExadataInfrastructure'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

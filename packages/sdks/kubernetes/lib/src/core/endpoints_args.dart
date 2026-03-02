@@ -24,15 +24,11 @@ class EndpointsArgs {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [subsets] The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
   EndpointsArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<List<EndpointSubset>>? subsets,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      subsets = pulumi.Input.asOptionalInput<List<EndpointSubset>>(subsets);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.subsets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class EndpointsArgs {
 
   factory EndpointsArgs.fromMap(Map<String, dynamic> map) {
     return EndpointsArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      subsets: map['subsets'] == null ? null : pulumi.Output.create<List<EndpointSubset>>(pulumi.Input.decodeList<EndpointSubset>(map['subsets'], (value) => EndpointSubset.fromMap((value as Map).cast<String, dynamic>()))),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      subsets: map['subsets'] == null ? null : (pulumi.Input.decodeList<EndpointSubset>(map['subsets'], (value) => EndpointSubset.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_content_response.dart';
 
 /// The event request message sent to the service URI.
 class EventRequestMessageResponse {
   /// The content of the event request message.
-  final EventContentResponse? content;
+  final pulumi.Input<EventContentResponse>? content;
   /// The headers of the event request message.
-  final Map<String, String>? headers;
+  final pulumi.Input<Map<String, String>>? headers;
   /// The HTTP method used to send the event request message.
-  final String? method;
+  final pulumi.Input<String>? method;
   /// The URI used to send the event request message.
-  final String? requestUri;
+  final pulumi.Input<String>? requestUri;
   /// The HTTP message version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [EventRequestMessageResponse].
   /// [content] The content of the event request message.
@@ -31,7 +32,7 @@ class EventRequestMessageResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'content': ?content == null ? null : content!.toMap(),
+      'content': ?pulumi.Input.mapOptionalInputValue<EventContentResponse, Map<String, dynamic>>(content, (value) => value.toMap()),
       'headers': ?headers,
       'method': ?method,
       'requestUri': ?requestUri,
@@ -41,11 +42,11 @@ class EventRequestMessageResponse {
 
   factory EventRequestMessageResponse.fromMap(Map<String, dynamic> map) {
     return EventRequestMessageResponse(
-      content: map['content'] == null ? null : EventContentResponse.fromMap((map['content'] as Map).cast<String, dynamic>()),
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, String>(),
-      method: map['method'] == null ? null : map['method'] as String,
-      requestUri: map['requestUri'] == null ? null : map['requestUri'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      content: map['content'] == null ? null : (EventContentResponse.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      requestUri: map['requestUri'] == null ? null : (map['requestUri'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_mljob.dart';
 
 class JobScheduleAction {
   /// Expected value is 'CreateJob'.
-  final String actionType;
+  final pulumi.Input<String> actionType;
   /// [Required] Defines Schedule action definition details.
-  final AutoMLJob jobBaseProperties;
+  final pulumi.Input<AutoMLJob> jobBaseProperties;
 
   /// Creates a new [JobScheduleAction].
   /// [actionType] Expected value is 'CreateJob'.
@@ -19,14 +20,14 @@ class JobScheduleAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionType': actionType,
-      'jobBaseProperties': jobBaseProperties.toMap(),
+      'jobBaseProperties': pulumi.Input.mapInputValue<AutoMLJob, Map<String, dynamic>>(jobBaseProperties, (value) => value.toMap()),
     };
   }
 
   factory JobScheduleAction.fromMap(Map<String, dynamic> map) {
     return JobScheduleAction(
-      actionType: map['actionType'] as String,
-      jobBaseProperties: AutoMLJob.fromMap((map['jobBaseProperties'] as Map).cast<String, dynamic>()),
+      actionType: (map['actionType'] as String).input(),
+      jobBaseProperties: (AutoMLJob.fromMap((map['jobBaseProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

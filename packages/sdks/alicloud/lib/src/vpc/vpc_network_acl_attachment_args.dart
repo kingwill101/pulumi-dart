@@ -19,13 +19,10 @@ class VpcNetworkAclAttachmentArgs {
   /// [resourceId] The ID of the associated  vswitch instance.
   /// [resourceType] The type of the associated resource. Valid values: `VSwitch`.
   VpcNetworkAclAttachmentArgs({
-    required pulumi.Output<String> networkAclId,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> resourceType,
-  }) :
-      networkAclId = pulumi.Input.asInput<String>(networkAclId),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    required this.networkAclId,
+    required this.resourceId,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VpcNetworkAclAttachmentArgs {
 
   factory VpcNetworkAclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpcNetworkAclAttachmentArgs(
-      networkAclId: pulumi.Output.create<String>(map['networkAclId'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      networkAclId: (map['networkAclId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

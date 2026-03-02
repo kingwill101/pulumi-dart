@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSmartagFlowLogsLog {
   /// The time interval at which log data of active connections is collected. Valid values: 60 to 6000. Default value: 300. Unit: second.
-  final int activeAging;
+  final pulumi.Input<int> activeAging;
   /// The description of the flow log.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the flow log.
-  final String flowLogId;
+  final pulumi.Input<String> flowLogId;
   /// The name of the flow log.
-  final String flowLogName;
+  final pulumi.Input<String> flowLogName;
   /// The ID of the Flow Log.
-  final String id;
+  final pulumi.Input<String> id;
   /// The time interval at which log data of inactive connections is connected. Valid values: 10 to 600. Default value: 15. Unit: second.
-  final int inactiveAging;
+  final pulumi.Input<int> inactiveAging;
   /// The name of the Log Service Logstore.
-  final String logstoreName;
+  final pulumi.Input<String> logstoreName;
   /// The IP address of the NetFlow collector where the flow log is stored.
-  final String netflowServerIp;
+  final pulumi.Input<String> netflowServerIp;
   /// The port of the NetFlow collector. Default value: 9995.
-  final int netflowServerPort;
+  final pulumi.Input<int> netflowServerPort;
   /// The NetFlow version. Default value: V9.
-  final String netflowVersion;
+  final pulumi.Input<String> netflowVersion;
   /// The location where the flow log is stored. Valid values:  sls: The flow log is stored in Log Service. netflow: The flow log is stored on a NetFlow collector. all: The flow log is stored both in Log Service and on a NetFlow collector.
-  final String outputType;
+  final pulumi.Input<String> outputType;
   /// The name of the Log Service project.
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The ID of the region where Log Service is deployed.
-  final String slsRegionId;
+  final pulumi.Input<String> slsRegionId;
   /// The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
-  final String status;
+  final pulumi.Input<String> status;
   /// The number of Smart Access gateway (SAG) instances with which the flow log is associated.
-  final int totalSagNum;
+  final pulumi.Input<int> totalSagNum;
 
   /// Creates a new [GetSmartagFlowLogsLog].
   /// [activeAging] The time interval at which log data of active connections is collected. Valid values: 60 to 6000. Default value: 300. Unit: second.
@@ -94,22 +95,22 @@ class GetSmartagFlowLogsLog {
 
   factory GetSmartagFlowLogsLog.fromMap(Map<String, dynamic> map) {
     return GetSmartagFlowLogsLog(
-      activeAging: map['activeAging'] as int,
-      description: map['description'] as String,
-      flowLogId: map['flowLogId'] as String,
-      flowLogName: map['flowLogName'] as String,
-      id: map['id'] as String,
-      inactiveAging: map['inactiveAging'] as int,
-      logstoreName: map['logstoreName'] as String,
-      netflowServerIp: map['netflowServerIp'] as String,
-      netflowServerPort: map['netflowServerPort'] as int,
-      netflowVersion: map['netflowVersion'] as String,
-      outputType: map['outputType'] as String,
-      projectName: map['projectName'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      slsRegionId: map['slsRegionId'] as String,
-      status: map['status'] as String,
-      totalSagNum: map['totalSagNum'] as int,
+      activeAging: (map['activeAging'] as int).input(),
+      description: (map['description'] as String).input(),
+      flowLogId: (map['flowLogId'] as String).input(),
+      flowLogName: (map['flowLogName'] as String).input(),
+      id: (map['id'] as String).input(),
+      inactiveAging: (map['inactiveAging'] as int).input(),
+      logstoreName: (map['logstoreName'] as String).input(),
+      netflowServerIp: (map['netflowServerIp'] as String).input(),
+      netflowServerPort: (map['netflowServerPort'] as int).input(),
+      netflowVersion: (map['netflowVersion'] as String).input(),
+      outputType: (map['outputType'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      slsRegionId: (map['slsRegionId'] as String).input(),
+      status: (map['status'] as String).input(),
+      totalSagNum: (map['totalSagNum'] as int).input(),
     );
   }
 }

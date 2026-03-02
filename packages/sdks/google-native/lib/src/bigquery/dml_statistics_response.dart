@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DmlStatisticsResponse {
   /// Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
-  final String deletedRowCount;
+  final pulumi.Input<String> deletedRowCount;
   /// Number of inserted Rows. Populated by DML INSERT and MERGE statements.
-  final String insertedRowCount;
+  final pulumi.Input<String> insertedRowCount;
   /// Number of updated Rows. Populated by DML UPDATE and MERGE statements.
-  final String updatedRowCount;
+  final pulumi.Input<String> updatedRowCount;
 
   /// Creates a new [DmlStatisticsResponse].
   /// [deletedRowCount] Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
@@ -29,9 +30,9 @@ class DmlStatisticsResponse {
 
   factory DmlStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return DmlStatisticsResponse(
-      deletedRowCount: map['deletedRowCount'] as String,
-      insertedRowCount: map['insertedRowCount'] as String,
-      updatedRowCount: map['updatedRowCount'] as String,
+      deletedRowCount: (map['deletedRowCount'] as String).input(),
+      insertedRowCount: (map['insertedRowCount'] as String).input(),
+      updatedRowCount: (map['updatedRowCount'] as String).input(),
     );
   }
 }

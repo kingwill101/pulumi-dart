@@ -6,9 +6,9 @@ import 'lifetime_action_response.dart';
 
 class RotationPolicyResponse {
   /// The attributes of key rotation policy.
-  final KeyRotationPolicyAttributesResponse? attributes;
+  final pulumi.Input<KeyRotationPolicyAttributesResponse>? attributes;
   /// The lifetimeActions for key rotation action.
-  final List<LifetimeActionResponse>? lifetimeActions;
+  final pulumi.Input<List<LifetimeActionResponse>>? lifetimeActions;
 
   /// Creates a new [RotationPolicyResponse].
   /// [attributes] The attributes of key rotation policy.
@@ -20,15 +20,15 @@ class RotationPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': ?attributes == null ? null : attributes!.toMap(),
-      'lifetimeActions': ?lifetimeActions == null ? null : pulumi.Input.encodeList<LifetimeActionResponse, Map<String, dynamic>>(lifetimeActions!, (value) => value.toMap()),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<KeyRotationPolicyAttributesResponse, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'lifetimeActions': ?pulumi.Input.mapOptionalInputValue<List<LifetimeActionResponse>, List<Map<String, dynamic>>>(lifetimeActions, (value) => pulumi.Input.encodeList<LifetimeActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RotationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RotationPolicyResponse(
-      attributes: map['attributes'] == null ? null : KeyRotationPolicyAttributesResponse.fromMap((map['attributes'] as Map).cast<String, dynamic>()),
-      lifetimeActions: map['lifetimeActions'] == null ? null : pulumi.Input.decodeList<LifetimeActionResponse>(map['lifetimeActions'], (value) => LifetimeActionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      attributes: map['attributes'] == null ? null : (KeyRotationPolicyAttributesResponse.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
+      lifetimeActions: map['lifetimeActions'] == null ? null : (pulumi.Input.decodeList<LifetimeActionResponse>(map['lifetimeActions'], (value) => LifetimeActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

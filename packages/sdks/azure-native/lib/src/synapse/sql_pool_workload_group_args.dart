@@ -40,27 +40,17 @@ class SqlPoolWorkloadGroupArgs {
   /// [workloadGroupName] The name of the workload group.
   /// [workspaceName] The name of the workspace.
   SqlPoolWorkloadGroupArgs({
-    pulumi.Output<String>? importance,
-    required pulumi.Output<int> maxResourcePercent,
-    pulumi.Output<double>? maxResourcePercentPerRequest,
-    required pulumi.Output<int> minResourcePercent,
-    required pulumi.Output<double> minResourcePercentPerRequest,
-    pulumi.Output<int>? queryExecutionTimeout,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlPoolName,
-    pulumi.Output<String>? workloadGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      importance = pulumi.Input.asOptionalInput<String>(importance),
-      maxResourcePercent = pulumi.Input.asInput<int>(maxResourcePercent),
-      maxResourcePercentPerRequest = pulumi.Input.asOptionalInput<double>(maxResourcePercentPerRequest),
-      minResourcePercent = pulumi.Input.asInput<int>(minResourcePercent),
-      minResourcePercentPerRequest = pulumi.Input.asInput<double>(minResourcePercentPerRequest),
-      queryExecutionTimeout = pulumi.Input.asOptionalInput<int>(queryExecutionTimeout),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlPoolName = pulumi.Input.asInput<String>(sqlPoolName),
-      workloadGroupName = pulumi.Input.asOptionalInput<String>(workloadGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.importance,
+    required this.maxResourcePercent,
+    this.maxResourcePercentPerRequest,
+    required this.minResourcePercent,
+    required this.minResourcePercentPerRequest,
+    this.queryExecutionTimeout,
+    required this.resourceGroupName,
+    required this.sqlPoolName,
+    this.workloadGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class SqlPoolWorkloadGroupArgs {
 
   factory SqlPoolWorkloadGroupArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadGroupArgs(
-      importance: map['importance'] == null ? null : pulumi.Output.create<String>(map['importance'] as String),
-      maxResourcePercent: pulumi.Output.create<int>(map['maxResourcePercent'] as int),
-      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : pulumi.Output.create<double>(map['maxResourcePercentPerRequest'] as double),
-      minResourcePercent: pulumi.Output.create<int>(map['minResourcePercent'] as int),
-      minResourcePercentPerRequest: pulumi.Output.create<double>(map['minResourcePercentPerRequest'] as double),
-      queryExecutionTimeout: map['queryExecutionTimeout'] == null ? null : pulumi.Output.create<int>(map['queryExecutionTimeout'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlPoolName: pulumi.Output.create<String>(map['sqlPoolName'] as String),
-      workloadGroupName: map['workloadGroupName'] == null ? null : pulumi.Output.create<String>(map['workloadGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
+      maxResourcePercent: (map['maxResourcePercent'] as int).input(),
+      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : (map['maxResourcePercentPerRequest'] as double).input(),
+      minResourcePercent: (map['minResourcePercent'] as int).input(),
+      minResourcePercentPerRequest: (map['minResourcePercentPerRequest'] as double).input(),
+      queryExecutionTimeout: map['queryExecutionTimeout'] == null ? null : (map['queryExecutionTimeout'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlPoolName: (map['sqlPoolName'] as String).input(),
+      workloadGroupName: map['workloadGroupName'] == null ? null : (map['workloadGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

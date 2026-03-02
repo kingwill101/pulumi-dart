@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRestoreToPointInTime {
   /// The date and time to restore from. Value must be a time in Universal Coordinated Time (UTC) format and must be before the latest restorable time for the DB instance. Cannot be specified with `use_latest_restorable_time`.
-  final String? restoreToTime;
+  final pulumi.Input<String>? restoreToTime;
   /// The type of restore to be performed. Valid values are `full-copy`, `copy-on-write`.
-  final String? restoreType;
+  final pulumi.Input<String>? restoreType;
   /// The identifier of the source DB cluster from which to restore. Must match the identifier of an existing DB cluster.
-  final String sourceClusterIdentifier;
+  final pulumi.Input<String> sourceClusterIdentifier;
   /// A boolean value that indicates whether the DB cluster is restored from the latest backup time. Defaults to `false`. Cannot be specified with `restore_to_time`.
-  final bool? useLatestRestorableTime;
+  final pulumi.Input<bool>? useLatestRestorableTime;
 
   /// Creates a new [ClusterRestoreToPointInTime].
   /// [restoreToTime] The date and time to restore from. Value must be a time in Universal Coordinated Time (UTC) format and must be before the latest restorable time for the DB instance. Cannot be specified with `use_latest_restorable_time`.
@@ -34,10 +35,10 @@ class ClusterRestoreToPointInTime {
 
   factory ClusterRestoreToPointInTime.fromMap(Map<String, dynamic> map) {
     return ClusterRestoreToPointInTime(
-      restoreToTime: map['restoreToTime'] == null ? null : map['restoreToTime'] as String,
-      restoreType: map['restoreType'] == null ? null : map['restoreType'] as String,
-      sourceClusterIdentifier: map['sourceClusterIdentifier'] as String,
-      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : map['useLatestRestorableTime'] as bool,
+      restoreToTime: map['restoreToTime'] == null ? null : (map['restoreToTime'] as String).input(),
+      restoreType: map['restoreType'] == null ? null : (map['restoreType'] as String).input(),
+      sourceClusterIdentifier: (map['sourceClusterIdentifier'] as String).input(),
+      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : (map['useLatestRestorableTime'] as bool).input(),
     );
   }
 }

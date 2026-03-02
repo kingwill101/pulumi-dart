@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition.dart';
 import 'monitoring_schedule_monitoring_schedule_config_schedule_config.dart';
 
 class MonitoringScheduleMonitoringScheduleConfig {
   /// Defines the monitoring job. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition? monitoringJobDefinition;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition>? monitoringJobDefinition;
   /// The name of the monitoring job definition to schedule.
-  final String? monitoringJobDefinitionName;
+  final pulumi.Input<String>? monitoringJobDefinitionName;
   /// The type of the monitoring job definition to schedule. Valid values are `DataQuality`, `ModelQuality`, `ModelBias` or `ModelExplainability`
-  final String monitoringType;
+  final pulumi.Input<String> monitoringType;
   /// Configures the monitoring schedule. Fields are documented below.
-  final MonitoringScheduleMonitoringScheduleConfigScheduleConfig? scheduleConfig;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigScheduleConfig>? scheduleConfig;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfig].
   /// [monitoringJobDefinition] Defines the monitoring job. Fields are documented below.
@@ -27,19 +28,19 @@ class MonitoringScheduleMonitoringScheduleConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'monitoringJobDefinition': ?monitoringJobDefinition == null ? null : monitoringJobDefinition!.toMap(),
+      'monitoringJobDefinition': ?pulumi.Input.mapOptionalInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition, Map<String, dynamic>>(monitoringJobDefinition, (value) => value.toMap()),
       'monitoringJobDefinitionName': ?monitoringJobDefinitionName,
       'monitoringType': monitoringType,
-      'scheduleConfig': ?scheduleConfig == null ? null : scheduleConfig!.toMap(),
+      'scheduleConfig': ?pulumi.Input.mapOptionalInputValue<MonitoringScheduleMonitoringScheduleConfigScheduleConfig, Map<String, dynamic>>(scheduleConfig, (value) => value.toMap()),
     };
   }
 
   factory MonitoringScheduleMonitoringScheduleConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfig(
-      monitoringJobDefinition: map['monitoringJobDefinition'] == null ? null : MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition.fromMap((map['monitoringJobDefinition'] as Map).cast<String, dynamic>()),
-      monitoringJobDefinitionName: map['monitoringJobDefinitionName'] == null ? null : map['monitoringJobDefinitionName'] as String,
-      monitoringType: map['monitoringType'] as String,
-      scheduleConfig: map['scheduleConfig'] == null ? null : MonitoringScheduleMonitoringScheduleConfigScheduleConfig.fromMap((map['scheduleConfig'] as Map).cast<String, dynamic>()),
+      monitoringJobDefinition: map['monitoringJobDefinition'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition.fromMap((map['monitoringJobDefinition'] as Map).cast<String, dynamic>())).input(),
+      monitoringJobDefinitionName: map['monitoringJobDefinitionName'] == null ? null : (map['monitoringJobDefinitionName'] as String).input(),
+      monitoringType: (map['monitoringType'] as String).input(),
+      scheduleConfig: map['scheduleConfig'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigScheduleConfig.fromMap((map['scheduleConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

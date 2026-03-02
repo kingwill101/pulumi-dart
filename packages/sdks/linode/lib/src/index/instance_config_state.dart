@@ -58,33 +58,20 @@ class InstanceConfigState {
   /// [runLevel] Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
   /// [virtMode] Controls the virtualization mode. (`paravirt`, `fullvirt`)
   InstanceConfigState({
-    pulumi.Output<bool>? booted,
-    pulumi.Output<String>? comments,
-    pulumi.Output<List<InstanceConfigDevice>>? device,
-    pulumi.Output<InstanceConfigDevices>? devices,
-    pulumi.Output<List<InstanceConfigHelper>>? helpers,
-    pulumi.Output<List<InstanceConfigInterface>>? interfaces,
-    pulumi.Output<String>? kernel,
-    pulumi.Output<String>? label,
-    pulumi.Output<int>? linodeId,
-    pulumi.Output<int>? memoryLimit,
-    pulumi.Output<String>? rootDevice,
-    pulumi.Output<String>? runLevel,
-    pulumi.Output<String>? virtMode,
-  }) :
-      booted = pulumi.Input.asOptionalInput<bool>(booted),
-      comments = pulumi.Input.asOptionalInput<String>(comments),
-      device = pulumi.Input.asOptionalInput<List<InstanceConfigDevice>>(device),
-      devices = pulumi.Input.asOptionalInput<InstanceConfigDevices>(devices),
-      helpers = pulumi.Input.asOptionalInput<List<InstanceConfigHelper>>(helpers),
-      interfaces = pulumi.Input.asOptionalInput<List<InstanceConfigInterface>>(interfaces),
-      kernel = pulumi.Input.asOptionalInput<String>(kernel),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      linodeId = pulumi.Input.asOptionalInput<int>(linodeId),
-      memoryLimit = pulumi.Input.asOptionalInput<int>(memoryLimit),
-      rootDevice = pulumi.Input.asOptionalInput<String>(rootDevice),
-      runLevel = pulumi.Input.asOptionalInput<String>(runLevel),
-      virtMode = pulumi.Input.asOptionalInput<String>(virtMode);
+    this.booted,
+    this.comments,
+    this.device,
+    this.devices,
+    this.helpers,
+    this.interfaces,
+    this.kernel,
+    this.label,
+    this.linodeId,
+    this.memoryLimit,
+    this.rootDevice,
+    this.runLevel,
+    this.virtMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,19 +93,19 @@ class InstanceConfigState {
 
   factory InstanceConfigState.fromMap(Map<String, dynamic> map) {
     return InstanceConfigState(
-      booted: map['booted'] == null ? null : pulumi.Output.create<bool>(map['booted'] as bool),
-      comments: map['comments'] == null ? null : pulumi.Output.create<String>(map['comments'] as String),
-      device: map['device'] == null ? null : pulumi.Output.create<List<InstanceConfigDevice>>(pulumi.Input.decodeList<InstanceConfigDevice>(map['device'], (value) => InstanceConfigDevice.fromMap((value as Map).cast<String, dynamic>()))),
-      devices: map['devices'] == null ? null : pulumi.Output.create<InstanceConfigDevices>(InstanceConfigDevices.fromMap((map['devices'] as Map).cast<String, dynamic>())),
-      helpers: map['helpers'] == null ? null : pulumi.Output.create<List<InstanceConfigHelper>>(pulumi.Input.decodeList<InstanceConfigHelper>(map['helpers'], (value) => InstanceConfigHelper.fromMap((value as Map).cast<String, dynamic>()))),
-      interfaces: map['interfaces'] == null ? null : pulumi.Output.create<List<InstanceConfigInterface>>(pulumi.Input.decodeList<InstanceConfigInterface>(map['interfaces'], (value) => InstanceConfigInterface.fromMap((value as Map).cast<String, dynamic>()))),
-      kernel: map['kernel'] == null ? null : pulumi.Output.create<String>(map['kernel'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      linodeId: map['linodeId'] == null ? null : pulumi.Output.create<int>(map['linodeId'] as int),
-      memoryLimit: map['memoryLimit'] == null ? null : pulumi.Output.create<int>(map['memoryLimit'] as int),
-      rootDevice: map['rootDevice'] == null ? null : pulumi.Output.create<String>(map['rootDevice'] as String),
-      runLevel: map['runLevel'] == null ? null : pulumi.Output.create<String>(map['runLevel'] as String),
-      virtMode: map['virtMode'] == null ? null : pulumi.Output.create<String>(map['virtMode'] as String),
+      booted: map['booted'] == null ? null : (map['booted'] as bool).input(),
+      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
+      device: map['device'] == null ? null : (pulumi.Input.decodeList<InstanceConfigDevice>(map['device'], (value) => InstanceConfigDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      devices: map['devices'] == null ? null : (InstanceConfigDevices.fromMap((map['devices'] as Map).cast<String, dynamic>())).input(),
+      helpers: map['helpers'] == null ? null : (pulumi.Input.decodeList<InstanceConfigHelper>(map['helpers'], (value) => InstanceConfigHelper.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<InstanceConfigInterface>(map['interfaces'], (value) => InstanceConfigInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kernel: map['kernel'] == null ? null : (map['kernel'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit'] as int).input(),
+      rootDevice: map['rootDevice'] == null ? null : (map['rootDevice'] as String).input(),
+      runLevel: map['runLevel'] == null ? null : (map['runLevel'] as String).input(),
+      virtMode: map['virtMode'] == null ? null : (map['virtMode'] as String).input(),
     );
   }
 }

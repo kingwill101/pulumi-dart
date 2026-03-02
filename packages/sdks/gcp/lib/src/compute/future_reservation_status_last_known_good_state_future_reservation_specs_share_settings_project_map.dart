@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final String project;
+  final pulumi.Input<String> project;
   /// The project ID, should be same as the key of this project config in the parent map.
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap].
   /// [project] The ID of the project in which the resource belongs.
@@ -25,8 +26,8 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
 
   factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap(
-      project: map['project'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
+      project: (map['project'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

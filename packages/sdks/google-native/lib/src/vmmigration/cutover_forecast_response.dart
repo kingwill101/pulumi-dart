@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
 class CutoverForecastResponse {
   /// Estimation of the CutoverJob duration.
-  final String estimatedCutoverJobDuration;
+  final pulumi.Input<String> estimatedCutoverJobDuration;
 
   /// Creates a new [CutoverForecastResponse].
   /// [estimatedCutoverJobDuration] Estimation of the CutoverJob duration.
@@ -20,7 +21,7 @@ class CutoverForecastResponse {
 
   factory CutoverForecastResponse.fromMap(Map<String, dynamic> map) {
     return CutoverForecastResponse(
-      estimatedCutoverJobDuration: map['estimatedCutoverJobDuration'] as String,
+      estimatedCutoverJobDuration: (map['estimatedCutoverJobDuration'] as String).input(),
     );
   }
 }

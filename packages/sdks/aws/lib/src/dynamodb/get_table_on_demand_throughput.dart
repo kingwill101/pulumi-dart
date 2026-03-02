@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableOnDemandThroughput {
-  final int maxReadRequestUnits;
-  final int maxWriteRequestUnits;
+  final pulumi.Input<int> maxReadRequestUnits;
+  final pulumi.Input<int> maxWriteRequestUnits;
 
   /// Creates a new [GetTableOnDemandThroughput].
   /// [maxReadRequestUnits] Required.
@@ -22,8 +23,8 @@ class GetTableOnDemandThroughput {
 
   factory GetTableOnDemandThroughput.fromMap(Map<String, dynamic> map) {
     return GetTableOnDemandThroughput(
-      maxReadRequestUnits: map['maxReadRequestUnits'] as int,
-      maxWriteRequestUnits: map['maxWriteRequestUnits'] as int,
+      maxReadRequestUnits: (map['maxReadRequestUnits'] as int).input(),
+      maxWriteRequestUnits: (map['maxWriteRequestUnits'] as int).input(),
     );
   }
 }

@@ -13,11 +13,9 @@ class NetworkInterfaceSecurityGroupAssociationState {
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
   /// [networkSecurityGroupId] The ID of the Network Security Group which should be attached to the Network Interface. Changing this forces a new resource to be created.
   NetworkInterfaceSecurityGroupAssociationState({
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? networkSecurityGroupId,
-  }) :
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      networkSecurityGroupId = pulumi.Input.asOptionalInput<String>(networkSecurityGroupId);
+    this.networkInterfaceId,
+    this.networkSecurityGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class NetworkInterfaceSecurityGroupAssociationState {
 
   factory NetworkInterfaceSecurityGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceSecurityGroupAssociationState(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : pulumi.Output.create<String>(map['networkSecurityGroupId'] as String),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
     );
   }
 }

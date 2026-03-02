@@ -40,29 +40,18 @@ class ProfileFastHttpState {
   /// [maxheaderSize] Specifies the maximum amount of HTTP header data that the system buffers before making a load balancing decision. The default setting is 32768.
   /// [name] Name of the profile_fasthttp
   ProfileFastHttpState({
-    pulumi.Output<int>? connpoolMaxreuse,
-    pulumi.Output<int>? connpoolMaxsize,
-    pulumi.Output<int>? connpoolMinsize,
-    pulumi.Output<String>? connpoolReplenish,
-    pulumi.Output<int>? connpoolStep,
-    pulumi.Output<int>? connpoolidleTimeoutoverride,
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<String>? forcehttp10response,
-    pulumi.Output<int>? idleTimeout,
-    pulumi.Output<int>? maxheaderSize,
-    pulumi.Output<String>? name,
-  }) :
-      connpoolMaxreuse = pulumi.Input.asOptionalInput<int>(connpoolMaxreuse),
-      connpoolMaxsize = pulumi.Input.asOptionalInput<int>(connpoolMaxsize),
-      connpoolMinsize = pulumi.Input.asOptionalInput<int>(connpoolMinsize),
-      connpoolReplenish = pulumi.Input.asOptionalInput<String>(connpoolReplenish),
-      connpoolStep = pulumi.Input.asOptionalInput<int>(connpoolStep),
-      connpoolidleTimeoutoverride = pulumi.Input.asOptionalInput<int>(connpoolidleTimeoutoverride),
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      forcehttp10response = pulumi.Input.asOptionalInput<String>(forcehttp10response),
-      idleTimeout = pulumi.Input.asOptionalInput<int>(idleTimeout),
-      maxheaderSize = pulumi.Input.asOptionalInput<int>(maxheaderSize),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.connpoolMaxreuse,
+    this.connpoolMaxsize,
+    this.connpoolMinsize,
+    this.connpoolReplenish,
+    this.connpoolStep,
+    this.connpoolidleTimeoutoverride,
+    this.defaultsFrom,
+    this.forcehttp10response,
+    this.idleTimeout,
+    this.maxheaderSize,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class ProfileFastHttpState {
 
   factory ProfileFastHttpState.fromMap(Map<String, dynamic> map) {
     return ProfileFastHttpState(
-      connpoolMaxreuse: map['connpoolMaxreuse'] == null ? null : pulumi.Output.create<int>(map['connpoolMaxreuse'] as int),
-      connpoolMaxsize: map['connpoolMaxsize'] == null ? null : pulumi.Output.create<int>(map['connpoolMaxsize'] as int),
-      connpoolMinsize: map['connpoolMinsize'] == null ? null : pulumi.Output.create<int>(map['connpoolMinsize'] as int),
-      connpoolReplenish: map['connpoolReplenish'] == null ? null : pulumi.Output.create<String>(map['connpoolReplenish'] as String),
-      connpoolStep: map['connpoolStep'] == null ? null : pulumi.Output.create<int>(map['connpoolStep'] as int),
-      connpoolidleTimeoutoverride: map['connpoolidleTimeoutoverride'] == null ? null : pulumi.Output.create<int>(map['connpoolidleTimeoutoverride'] as int),
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      forcehttp10response: map['forcehttp10response'] == null ? null : pulumi.Output.create<String>(map['forcehttp10response'] as String),
-      idleTimeout: map['idleTimeout'] == null ? null : pulumi.Output.create<int>(map['idleTimeout'] as int),
-      maxheaderSize: map['maxheaderSize'] == null ? null : pulumi.Output.create<int>(map['maxheaderSize'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      connpoolMaxreuse: map['connpoolMaxreuse'] == null ? null : (map['connpoolMaxreuse'] as int).input(),
+      connpoolMaxsize: map['connpoolMaxsize'] == null ? null : (map['connpoolMaxsize'] as int).input(),
+      connpoolMinsize: map['connpoolMinsize'] == null ? null : (map['connpoolMinsize'] as int).input(),
+      connpoolReplenish: map['connpoolReplenish'] == null ? null : (map['connpoolReplenish'] as String).input(),
+      connpoolStep: map['connpoolStep'] == null ? null : (map['connpoolStep'] as int).input(),
+      connpoolidleTimeoutoverride: map['connpoolidleTimeoutoverride'] == null ? null : (map['connpoolidleTimeoutoverride'] as int).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      forcehttp10response: map['forcehttp10response'] == null ? null : (map['forcehttp10response'] as String).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as int).input(),
+      maxheaderSize: map['maxheaderSize'] == null ? null : (map['maxheaderSize'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

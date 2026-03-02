@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceSpec {
   /// The number of VPUs this Linode has access to.
-  final int acceleratedDevices;
+  final pulumi.Input<int> acceleratedDevices;
   /// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
-  final int disk;
+  final pulumi.Input<int> disk;
   /// The number of GPUs this Linode has access to.
-  final int gpus;
+  final pulumi.Input<int> gpus;
   /// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
-  final int memory;
+  final pulumi.Input<int> memory;
   /// The amount of network transfer this Linode is allotted each month.
-  final int transfer;
+  final pulumi.Input<int> transfer;
   /// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
-  final int vcpus;
+  final pulumi.Input<int> vcpus;
 
   /// Creates a new [GetInstancesInstanceSpec].
   /// [acceleratedDevices] The number of VPUs this Linode has access to.
@@ -44,12 +45,12 @@ class GetInstancesInstanceSpec {
 
   factory GetInstancesInstanceSpec.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceSpec(
-      acceleratedDevices: map['acceleratedDevices'] as int,
-      disk: map['disk'] as int,
-      gpus: map['gpus'] as int,
-      memory: map['memory'] as int,
-      transfer: map['transfer'] as int,
-      vcpus: map['vcpus'] as int,
+      acceleratedDevices: (map['acceleratedDevices'] as int).input(),
+      disk: (map['disk'] as int).input(),
+      gpus: (map['gpus'] as int).input(),
+      memory: (map['memory'] as int).input(),
+      transfer: (map['transfer'] as int).input(),
+      vcpus: (map['vcpus'] as int).input(),
     );
   }
 }

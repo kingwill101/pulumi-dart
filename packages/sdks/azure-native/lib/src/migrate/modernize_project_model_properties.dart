@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migration_configuration.dart';
 
 /// ModernizeProject properties.
 class ModernizeProjectModelProperties {
   /// MigrationConfiguration properties.
-  final MigrationConfiguration? migrationConfiguration;
+  final pulumi.Input<MigrationConfiguration>? migrationConfiguration;
 
   /// Creates a new [ModernizeProjectModelProperties].
   /// [migrationConfiguration] MigrationConfiguration properties.
@@ -15,13 +16,13 @@ class ModernizeProjectModelProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'migrationConfiguration': ?migrationConfiguration == null ? null : migrationConfiguration!.toMap(),
+      'migrationConfiguration': ?pulumi.Input.mapOptionalInputValue<MigrationConfiguration, Map<String, dynamic>>(migrationConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ModernizeProjectModelProperties.fromMap(Map<String, dynamic> map) {
     return ModernizeProjectModelProperties(
-      migrationConfiguration: map['migrationConfiguration'] == null ? null : MigrationConfiguration.fromMap((map['migrationConfiguration'] as Map).cast<String, dynamic>()),
+      migrationConfiguration: map['migrationConfiguration'] == null ? null : (MigrationConfiguration.fromMap((map['migrationConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

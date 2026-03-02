@@ -34,19 +34,13 @@ class EntityTypeState {
   /// [name] The unique identifier of the entity type.
   /// [project] The ID of the project in which the resource belongs.
   EntityTypeState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enableFuzzyExtraction,
-    pulumi.Output<List<EntityTypeEntity>>? entities,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enableFuzzyExtraction = pulumi.Input.asOptionalInput<bool>(enableFuzzyExtraction),
-      entities = pulumi.Input.asOptionalInput<List<EntityTypeEntity>>(entities),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.displayName,
+    this.enableFuzzyExtraction,
+    this.entities,
+    this.kind,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class EntityTypeState {
 
   factory EntityTypeState.fromMap(Map<String, dynamic> map) {
     return EntityTypeState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : pulumi.Output.create<bool>(map['enableFuzzyExtraction'] as bool),
-      entities: map['entities'] == null ? null : pulumi.Output.create<List<EntityTypeEntity>>(pulumi.Input.decodeList<EntityTypeEntity>(map['entities'], (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<EntityTypeEntity>(map['entities'], (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

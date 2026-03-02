@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The provider authentication.
 class ResourceProviderManifestPropertiesProviderAuthenticationResponse {
   /// The allowed audiences.
-  final List<String> allowedAudiences;
+  final pulumi.Input<List<String>> allowedAudiences;
 
   /// Creates a new [ResourceProviderManifestPropertiesProviderAuthenticationResponse].
   /// [allowedAudiences] The allowed audiences.
@@ -20,7 +21,7 @@ class ResourceProviderManifestPropertiesProviderAuthenticationResponse {
 
   factory ResourceProviderManifestPropertiesProviderAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesProviderAuthenticationResponse(
-      allowedAudiences: (map['allowedAudiences'] as List).cast<String>(),
+      allowedAudiences: ((map['allowedAudiences'] as List).cast<String>()).input(),
     );
   }
 }

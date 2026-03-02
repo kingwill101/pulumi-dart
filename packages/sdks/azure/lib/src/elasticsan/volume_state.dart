@@ -34,23 +34,15 @@ class VolumeState {
   /// [volumeGroupId] Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
   /// [volumeId] The UUID of the Elastic SAN Volume.
   VolumeState({
-    pulumi.Output<VolumeCreateSource>? createSource,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? sizeInGib,
-    pulumi.Output<String>? targetIqn,
-    pulumi.Output<String>? targetPortalHostname,
-    pulumi.Output<int>? targetPortalPort,
-    pulumi.Output<String>? volumeGroupId,
-    pulumi.Output<String>? volumeId,
-  }) :
-      createSource = pulumi.Input.asOptionalInput<VolumeCreateSource>(createSource),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sizeInGib = pulumi.Input.asOptionalInput<int>(sizeInGib),
-      targetIqn = pulumi.Input.asOptionalInput<String>(targetIqn),
-      targetPortalHostname = pulumi.Input.asOptionalInput<String>(targetPortalHostname),
-      targetPortalPort = pulumi.Input.asOptionalInput<int>(targetPortalPort),
-      volumeGroupId = pulumi.Input.asOptionalInput<String>(volumeGroupId),
-      volumeId = pulumi.Input.asOptionalInput<String>(volumeId);
+    this.createSource,
+    this.name,
+    this.sizeInGib,
+    this.targetIqn,
+    this.targetPortalHostname,
+    this.targetPortalPort,
+    this.volumeGroupId,
+    this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class VolumeState {
 
   factory VolumeState.fromMap(Map<String, dynamic> map) {
     return VolumeState(
-      createSource: map['createSource'] == null ? null : pulumi.Output.create<VolumeCreateSource>(VolumeCreateSource.fromMap((map['createSource'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sizeInGib: map['sizeInGib'] == null ? null : pulumi.Output.create<int>(map['sizeInGib'] as int),
-      targetIqn: map['targetIqn'] == null ? null : pulumi.Output.create<String>(map['targetIqn'] as String),
-      targetPortalHostname: map['targetPortalHostname'] == null ? null : pulumi.Output.create<String>(map['targetPortalHostname'] as String),
-      targetPortalPort: map['targetPortalPort'] == null ? null : pulumi.Output.create<int>(map['targetPortalPort'] as int),
-      volumeGroupId: map['volumeGroupId'] == null ? null : pulumi.Output.create<String>(map['volumeGroupId'] as String),
-      volumeId: map['volumeId'] == null ? null : pulumi.Output.create<String>(map['volumeId'] as String),
+      createSource: map['createSource'] == null ? null : (VolumeCreateSource.fromMap((map['createSource'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sizeInGib: map['sizeInGib'] == null ? null : (map['sizeInGib'] as int).input(),
+      targetIqn: map['targetIqn'] == null ? null : (map['targetIqn'] as String).input(),
+      targetPortalHostname: map['targetPortalHostname'] == null ? null : (map['targetPortalHostname'] as String).input(),
+      targetPortalPort: map['targetPortalPort'] == null ? null : (map['targetPortalPort'] as int).input(),
+      volumeGroupId: map['volumeGroupId'] == null ? null : (map['volumeGroupId'] as String).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
     );
   }
 }

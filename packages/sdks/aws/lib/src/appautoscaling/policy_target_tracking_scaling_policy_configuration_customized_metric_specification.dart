@@ -6,17 +6,17 @@ import 'policy_target_tracking_scaling_policy_configuration_customized_metric_sp
 
 class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification {
   /// Dimensions of the metric.
-  final List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>? dimensions;
+  final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>>? dimensions;
   /// Name of the metric.
-  final String? metricName;
+  final pulumi.Input<String>? metricName;
   /// Metrics to include, as a metric data query.
-  final List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>? metrics;
+  final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>>? metrics;
   /// Namespace of the metric.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// Statistic of the metric. Valid values: `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
-  final String? statistic;
+  final pulumi.Input<String>? statistic;
   /// Unit of the metrics to return.
-  final String? unit;
+  final pulumi.Input<String>? unit;
 
   /// Creates a new [PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification].
   /// [dimensions] Dimensions of the metric.
@@ -36,9 +36,9 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': ?metricName,
-      'metrics': ?metrics == null ? null : pulumi.Input.encodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric, Map<String, dynamic>>(metrics!, (value) => value.toMap()),
+      'metrics': ?pulumi.Input.mapOptionalInputValue<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'namespace': ?namespace,
       'statistic': ?statistic,
       'unit': ?unit,
@@ -47,12 +47,12 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
 
   factory PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>(map['dimensions'], (value) => PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension.fromMap((value as Map).cast<String, dynamic>())),
-      metricName: map['metricName'] == null ? null : map['metricName'] as String,
-      metrics: map['metrics'] == null ? null : pulumi.Input.decodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>(map['metrics'], (value) => PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric.fromMap((value as Map).cast<String, dynamic>())),
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      statistic: map['statistic'] == null ? null : map['statistic'] as String,
-      unit: map['unit'] == null ? null : map['unit'] as String,
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>(map['dimensions'], (value) => PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>(map['metrics'], (value) => PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      statistic: map['statistic'] == null ? null : (map['statistic'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
     );
   }
 }

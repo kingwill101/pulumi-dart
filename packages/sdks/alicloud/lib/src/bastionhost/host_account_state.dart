@@ -31,23 +31,15 @@ class HostAccountState {
   /// [privateKey] The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
   /// [protocolName] The protocol used by the host account. Valid values: SSH,RDP
   HostAccountState({
-    pulumi.Output<String>? hostAccountId,
-    pulumi.Output<String>? hostAccountName,
-    pulumi.Output<String>? hostId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? passPhrase,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? protocolName,
-  }) :
-      hostAccountId = pulumi.Input.asOptionalInput<String>(hostAccountId),
-      hostAccountName = pulumi.Input.asOptionalInput<String>(hostAccountName),
-      hostId = pulumi.Input.asOptionalInput<String>(hostId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      passPhrase = pulumi.Input.asOptionalInput<String>(passPhrase),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      protocolName = pulumi.Input.asOptionalInput<String>(protocolName);
+    this.hostAccountId,
+    this.hostAccountName,
+    this.hostId,
+    this.instanceId,
+    this.passPhrase,
+    this.password,
+    this.privateKey,
+    this.protocolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class HostAccountState {
 
   factory HostAccountState.fromMap(Map<String, dynamic> map) {
     return HostAccountState(
-      hostAccountId: map['hostAccountId'] == null ? null : pulumi.Output.create<String>(map['hostAccountId'] as String),
-      hostAccountName: map['hostAccountName'] == null ? null : pulumi.Output.create<String>(map['hostAccountName'] as String),
-      hostId: map['hostId'] == null ? null : pulumi.Output.create<String>(map['hostId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      passPhrase: map['passPhrase'] == null ? null : pulumi.Output.create<String>(map['passPhrase'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      protocolName: map['protocolName'] == null ? null : pulumi.Output.create<String>(map['protocolName'] as String),
+      hostAccountId: map['hostAccountId'] == null ? null : (map['hostAccountId'] as String).input(),
+      hostAccountName: map['hostAccountName'] == null ? null : (map['hostAccountName'] as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      protocolName: map['protocolName'] == null ? null : (map['protocolName'] as String).input(),
     );
   }
 }

@@ -39,27 +39,17 @@ class EventSubscriptionArgs {
   /// [subscriber] Optional. name of the Subscriber for the current EventSubscription.
   /// [subscriberLink] Optional. Link for Subscriber of the current EventSubscription.
   EventSubscriptionArgs({
-    required pulumi.Output<String> connectionId,
-    pulumi.Output<EventSubscriptionDestination>? destinations,
-    required pulumi.Output<String> eventSubscriptionId,
-    pulumi.Output<String>? eventTypeId,
-    pulumi.Output<JMS>? jms,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? subscriber,
-    pulumi.Output<String>? subscriberLink,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      destinations = pulumi.Input.asOptionalInput<EventSubscriptionDestination>(destinations),
-      eventSubscriptionId = pulumi.Input.asInput<String>(eventSubscriptionId),
-      eventTypeId = pulumi.Input.asOptionalInput<String>(eventTypeId),
-      jms = pulumi.Input.asOptionalInput<JMS>(jms),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subscriber = pulumi.Input.asOptionalInput<String>(subscriber),
-      subscriberLink = pulumi.Input.asOptionalInput<String>(subscriberLink);
+    required this.connectionId,
+    this.destinations,
+    required this.eventSubscriptionId,
+    this.eventTypeId,
+    this.jms,
+    this.location,
+    this.name,
+    this.project,
+    this.subscriber,
+    this.subscriberLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class EventSubscriptionArgs {
 
   factory EventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionArgs(
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      destinations: map['destinations'] == null ? null : pulumi.Output.create<EventSubscriptionDestination>(EventSubscriptionDestination.fromMap((map['destinations'] as Map).cast<String, dynamic>())),
-      eventSubscriptionId: pulumi.Output.create<String>(map['eventSubscriptionId'] as String),
-      eventTypeId: map['eventTypeId'] == null ? null : pulumi.Output.create<String>(map['eventTypeId'] as String),
-      jms: map['jms'] == null ? null : pulumi.Output.create<JMS>(JMS.fromMap((map['jms'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      subscriber: map['subscriber'] == null ? null : pulumi.Output.create<String>(map['subscriber'] as String),
-      subscriberLink: map['subscriberLink'] == null ? null : pulumi.Output.create<String>(map['subscriberLink'] as String),
+      connectionId: (map['connectionId'] as String).input(),
+      destinations: map['destinations'] == null ? null : (EventSubscriptionDestination.fromMap((map['destinations'] as Map).cast<String, dynamic>())).input(),
+      eventSubscriptionId: (map['eventSubscriptionId'] as String).input(),
+      eventTypeId: map['eventTypeId'] == null ? null : (map['eventTypeId'] as String).input(),
+      jms: map['jms'] == null ? null : (JMS.fromMap((map['jms'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      subscriber: map['subscriber'] == null ? null : (map['subscriber'] as String).input(),
+      subscriberLink: map['subscriberLink'] == null ? null : (map['subscriberLink'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class EmailIdentityFeedbackAttributesArgs {
   /// [emailIdentity] The email identity.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EmailIdentityFeedbackAttributesArgs({
-    pulumi.Output<bool>? emailForwardingEnabled,
-    required pulumi.Output<String> emailIdentity,
-    pulumi.Output<String>? region,
-  }) :
-      emailForwardingEnabled = pulumi.Input.asOptionalInput<bool>(emailForwardingEnabled),
-      emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.emailForwardingEnabled,
+    required this.emailIdentity,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EmailIdentityFeedbackAttributesArgs {
 
   factory EmailIdentityFeedbackAttributesArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityFeedbackAttributesArgs(
-      emailForwardingEnabled: map['emailForwardingEnabled'] == null ? null : pulumi.Output.create<bool>(map['emailForwardingEnabled'] as bool),
-      emailIdentity: pulumi.Output.create<String>(map['emailIdentity'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      emailForwardingEnabled: map['emailForwardingEnabled'] == null ? null : (map['emailForwardingEnabled'] as bool).input(),
+      emailIdentity: (map['emailIdentity'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_page_advanced_settings_dtmf_settings.dart';
 
 class CxPageAdvancedSettings {
@@ -9,7 +10,7 @@ class CxPageAdvancedSettings {
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final CxPageAdvancedSettingsDtmfSettings? dtmfSettings;
+  final pulumi.Input<CxPageAdvancedSettingsDtmfSettings>? dtmfSettings;
 
   /// Creates a new [CxPageAdvancedSettings].
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
@@ -19,13 +20,13 @@ class CxPageAdvancedSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dtmfSettings': ?dtmfSettings == null ? null : dtmfSettings!.toMap(),
+      'dtmfSettings': ?pulumi.Input.mapOptionalInputValue<CxPageAdvancedSettingsDtmfSettings, Map<String, dynamic>>(dtmfSettings, (value) => value.toMap()),
     };
   }
 
   factory CxPageAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null ? null : CxPageAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
+      dtmfSettings: map['dtmfSettings'] == null ? null : (CxPageAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

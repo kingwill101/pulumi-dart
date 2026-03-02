@@ -36,25 +36,16 @@ class BundleState {
   /// [userDiskPerformanceLevel] The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
   /// [userDiskSizeGibs] The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
   BundleState({
-    pulumi.Output<String>? bundleName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? desktopType,
-    pulumi.Output<String>? imageId,
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? rootDiskPerformanceLevel,
-    pulumi.Output<int>? rootDiskSizeGib,
-    pulumi.Output<String>? userDiskPerformanceLevel,
-    pulumi.Output<List<int>>? userDiskSizeGibs,
-  }) :
-      bundleName = pulumi.Input.asOptionalInput<String>(bundleName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      desktopType = pulumi.Input.asOptionalInput<String>(desktopType),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      language = pulumi.Input.asOptionalInput<String>(language),
-      rootDiskPerformanceLevel = pulumi.Input.asOptionalInput<String>(rootDiskPerformanceLevel),
-      rootDiskSizeGib = pulumi.Input.asOptionalInput<int>(rootDiskSizeGib),
-      userDiskPerformanceLevel = pulumi.Input.asOptionalInput<String>(userDiskPerformanceLevel),
-      userDiskSizeGibs = pulumi.Input.asOptionalInput<List<int>>(userDiskSizeGibs);
+    this.bundleName,
+    this.description,
+    this.desktopType,
+    this.imageId,
+    this.language,
+    this.rootDiskPerformanceLevel,
+    this.rootDiskSizeGib,
+    this.userDiskPerformanceLevel,
+    this.userDiskSizeGibs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class BundleState {
 
   factory BundleState.fromMap(Map<String, dynamic> map) {
     return BundleState(
-      bundleName: map['bundleName'] == null ? null : pulumi.Output.create<String>(map['bundleName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      desktopType: map['desktopType'] == null ? null : pulumi.Output.create<String>(map['desktopType'] as String),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      rootDiskPerformanceLevel: map['rootDiskPerformanceLevel'] == null ? null : pulumi.Output.create<String>(map['rootDiskPerformanceLevel'] as String),
-      rootDiskSizeGib: map['rootDiskSizeGib'] == null ? null : pulumi.Output.create<int>(map['rootDiskSizeGib'] as int),
-      userDiskPerformanceLevel: map['userDiskPerformanceLevel'] == null ? null : pulumi.Output.create<String>(map['userDiskPerformanceLevel'] as String),
-      userDiskSizeGibs: map['userDiskSizeGibs'] == null ? null : pulumi.Output.create<List<int>>((map['userDiskSizeGibs'] as List).cast<int>()),
+      bundleName: map['bundleName'] == null ? null : (map['bundleName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      desktopType: map['desktopType'] == null ? null : (map['desktopType'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      rootDiskPerformanceLevel: map['rootDiskPerformanceLevel'] == null ? null : (map['rootDiskPerformanceLevel'] as String).input(),
+      rootDiskSizeGib: map['rootDiskSizeGib'] == null ? null : (map['rootDiskSizeGib'] as int).input(),
+      userDiskPerformanceLevel: map['userDiskPerformanceLevel'] == null ? null : (map['userDiskPerformanceLevel'] as String).input(),
+      userDiskSizeGibs: map['userDiskSizeGibs'] == null ? null : ((map['userDiskSizeGibs'] as List).cast<int>()).input(),
     );
   }
 }

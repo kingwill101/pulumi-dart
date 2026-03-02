@@ -39,25 +39,16 @@ class ConsoleArgs {
   /// [tags] Resource tags.
   /// [virtualMachineName] The name of the virtual machine.
   ConsoleArgs({
-    pulumi.Output<String>? consoleName,
-    required pulumi.Output<String> enabled,
-    pulumi.Output<String>? expiration,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<SshPublicKey> sshPublicKey,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      consoleName = pulumi.Input.asOptionalInput<String>(consoleName),
-      enabled = pulumi.Input.asInput<String>(enabled),
-      expiration = pulumi.Input.asOptionalInput<String>(expiration),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sshPublicKey = pulumi.Input.asInput<SshPublicKey>(sshPublicKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    this.consoleName,
+    required this.enabled,
+    this.expiration,
+    required this.extendedLocation,
+    this.location,
+    required this.resourceGroupName,
+    required this.sshPublicKey,
+    this.tags,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ConsoleArgs {
 
   factory ConsoleArgs.fromMap(Map<String, dynamic> map) {
     return ConsoleArgs(
-      consoleName: map['consoleName'] == null ? null : pulumi.Output.create<String>(map['consoleName'] as String),
-      enabled: pulumi.Output.create<String>(map['enabled'] as String),
-      expiration: map['expiration'] == null ? null : pulumi.Output.create<String>(map['expiration'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sshPublicKey: pulumi.Output.create<SshPublicKey>(SshPublicKey.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      consoleName: map['consoleName'] == null ? null : (map['consoleName'] as String).input(),
+      enabled: (map['enabled'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sshPublicKey: (SshPublicKey.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

@@ -12,30 +12,30 @@ import 'get_launch_template_instance_requirement_total_local_storage_gb.dart';
 import 'get_launch_template_instance_requirement_vcpu_count.dart';
 
 class GetLaunchTemplateInstanceRequirement {
-  final List<GetLaunchTemplateInstanceRequirementAcceleratorCount> acceleratorCounts;
-  final List<String> acceleratorManufacturers;
-  final List<String> acceleratorNames;
-  final List<GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib> acceleratorTotalMemoryMibs;
-  final List<String> acceleratorTypes;
-  final List<String> allowedInstanceTypes;
-  final String bareMetal;
-  final List<GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp> baselineEbsBandwidthMbps;
-  final String burstablePerformance;
-  final List<String> cpuManufacturers;
-  final List<String> excludedInstanceTypes;
-  final List<String> instanceGenerations;
-  final String localStorage;
-  final List<String> localStorageTypes;
-  final int maxSpotPriceAsPercentageOfOptimalOnDemandPrice;
-  final List<GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus> memoryGibPerVcpus;
-  final List<GetLaunchTemplateInstanceRequirementMemoryMib> memoryMibs;
-  final List<GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp> networkBandwidthGbps;
-  final List<GetLaunchTemplateInstanceRequirementNetworkInterfaceCount> networkInterfaceCounts;
-  final int onDemandMaxPricePercentageOverLowestPrice;
-  final bool requireHibernateSupport;
-  final int spotMaxPricePercentageOverLowestPrice;
-  final List<GetLaunchTemplateInstanceRequirementTotalLocalStorageGb> totalLocalStorageGbs;
-  final List<GetLaunchTemplateInstanceRequirementVcpuCount> vcpuCounts;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementAcceleratorCount>> acceleratorCounts;
+  final pulumi.Input<List<String>> acceleratorManufacturers;
+  final pulumi.Input<List<String>> acceleratorNames;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib>> acceleratorTotalMemoryMibs;
+  final pulumi.Input<List<String>> acceleratorTypes;
+  final pulumi.Input<List<String>> allowedInstanceTypes;
+  final pulumi.Input<String> bareMetal;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp>> baselineEbsBandwidthMbps;
+  final pulumi.Input<String> burstablePerformance;
+  final pulumi.Input<List<String>> cpuManufacturers;
+  final pulumi.Input<List<String>> excludedInstanceTypes;
+  final pulumi.Input<List<String>> instanceGenerations;
+  final pulumi.Input<String> localStorage;
+  final pulumi.Input<List<String>> localStorageTypes;
+  final pulumi.Input<int> maxSpotPriceAsPercentageOfOptimalOnDemandPrice;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus>> memoryGibPerVcpus;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementMemoryMib>> memoryMibs;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp>> networkBandwidthGbps;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementNetworkInterfaceCount>> networkInterfaceCounts;
+  final pulumi.Input<int> onDemandMaxPricePercentageOverLowestPrice;
+  final pulumi.Input<bool> requireHibernateSupport;
+  final pulumi.Input<int> spotMaxPricePercentageOverLowestPrice;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementTotalLocalStorageGb>> totalLocalStorageGbs;
+  final pulumi.Input<List<GetLaunchTemplateInstanceRequirementVcpuCount>> vcpuCounts;
 
   /// Creates a new [GetLaunchTemplateInstanceRequirement].
   /// [acceleratorCounts] Required.
@@ -91,14 +91,14 @@ class GetLaunchTemplateInstanceRequirement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acceleratorCounts': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementAcceleratorCount, Map<String, dynamic>>(acceleratorCounts, (value) => value.toMap()),
+      'acceleratorCounts': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementAcceleratorCount>, List<Map<String, dynamic>>>(acceleratorCounts, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementAcceleratorCount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'acceleratorManufacturers': acceleratorManufacturers,
       'acceleratorNames': acceleratorNames,
-      'acceleratorTotalMemoryMibs': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib, Map<String, dynamic>>(acceleratorTotalMemoryMibs, (value) => value.toMap()),
+      'acceleratorTotalMemoryMibs': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib>, List<Map<String, dynamic>>>(acceleratorTotalMemoryMibs, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib, Map<String, dynamic>>(value, (value) => value.toMap())),
       'acceleratorTypes': acceleratorTypes,
       'allowedInstanceTypes': allowedInstanceTypes,
       'bareMetal': bareMetal,
-      'baselineEbsBandwidthMbps': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp, Map<String, dynamic>>(baselineEbsBandwidthMbps, (value) => value.toMap()),
+      'baselineEbsBandwidthMbps': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp>, List<Map<String, dynamic>>>(baselineEbsBandwidthMbps, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'burstablePerformance': burstablePerformance,
       'cpuManufacturers': cpuManufacturers,
       'excludedInstanceTypes': excludedInstanceTypes,
@@ -106,44 +106,44 @@ class GetLaunchTemplateInstanceRequirement {
       'localStorage': localStorage,
       'localStorageTypes': localStorageTypes,
       'maxSpotPriceAsPercentageOfOptimalOnDemandPrice': maxSpotPriceAsPercentageOfOptimalOnDemandPrice,
-      'memoryGibPerVcpus': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus, Map<String, dynamic>>(memoryGibPerVcpus, (value) => value.toMap()),
-      'memoryMibs': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementMemoryMib, Map<String, dynamic>>(memoryMibs, (value) => value.toMap()),
-      'networkBandwidthGbps': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp, Map<String, dynamic>>(networkBandwidthGbps, (value) => value.toMap()),
-      'networkInterfaceCounts': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementNetworkInterfaceCount, Map<String, dynamic>>(networkInterfaceCounts, (value) => value.toMap()),
+      'memoryGibPerVcpus': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus>, List<Map<String, dynamic>>>(memoryGibPerVcpus, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'memoryMibs': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementMemoryMib>, List<Map<String, dynamic>>>(memoryMibs, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementMemoryMib, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkBandwidthGbps': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp>, List<Map<String, dynamic>>>(networkBandwidthGbps, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaceCounts': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementNetworkInterfaceCount>, List<Map<String, dynamic>>>(networkInterfaceCounts, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementNetworkInterfaceCount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'onDemandMaxPricePercentageOverLowestPrice': onDemandMaxPricePercentageOverLowestPrice,
       'requireHibernateSupport': requireHibernateSupport,
       'spotMaxPricePercentageOverLowestPrice': spotMaxPricePercentageOverLowestPrice,
-      'totalLocalStorageGbs': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementTotalLocalStorageGb, Map<String, dynamic>>(totalLocalStorageGbs, (value) => value.toMap()),
-      'vcpuCounts': pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementVcpuCount, Map<String, dynamic>>(vcpuCounts, (value) => value.toMap()),
+      'totalLocalStorageGbs': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementTotalLocalStorageGb>, List<Map<String, dynamic>>>(totalLocalStorageGbs, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementTotalLocalStorageGb, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vcpuCounts': pulumi.Input.mapInputValue<List<GetLaunchTemplateInstanceRequirementVcpuCount>, List<Map<String, dynamic>>>(vcpuCounts, (value) => pulumi.Input.encodeList<GetLaunchTemplateInstanceRequirementVcpuCount, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetLaunchTemplateInstanceRequirement.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirement(
-      acceleratorCounts: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementAcceleratorCount>(map['acceleratorCounts'], (value) => GetLaunchTemplateInstanceRequirementAcceleratorCount.fromMap((value as Map).cast<String, dynamic>())),
-      acceleratorManufacturers: (map['acceleratorManufacturers'] as List).cast<String>(),
-      acceleratorNames: (map['acceleratorNames'] as List).cast<String>(),
-      acceleratorTotalMemoryMibs: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib>(map['acceleratorTotalMemoryMibs'], (value) => GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib.fromMap((value as Map).cast<String, dynamic>())),
-      acceleratorTypes: (map['acceleratorTypes'] as List).cast<String>(),
-      allowedInstanceTypes: (map['allowedInstanceTypes'] as List).cast<String>(),
-      bareMetal: map['bareMetal'] as String,
-      baselineEbsBandwidthMbps: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp>(map['baselineEbsBandwidthMbps'], (value) => GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp.fromMap((value as Map).cast<String, dynamic>())),
-      burstablePerformance: map['burstablePerformance'] as String,
-      cpuManufacturers: (map['cpuManufacturers'] as List).cast<String>(),
-      excludedInstanceTypes: (map['excludedInstanceTypes'] as List).cast<String>(),
-      instanceGenerations: (map['instanceGenerations'] as List).cast<String>(),
-      localStorage: map['localStorage'] as String,
-      localStorageTypes: (map['localStorageTypes'] as List).cast<String>(),
-      maxSpotPriceAsPercentageOfOptimalOnDemandPrice: map['maxSpotPriceAsPercentageOfOptimalOnDemandPrice'] as int,
-      memoryGibPerVcpus: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus>(map['memoryGibPerVcpus'], (value) => GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus.fromMap((value as Map).cast<String, dynamic>())),
-      memoryMibs: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementMemoryMib>(map['memoryMibs'], (value) => GetLaunchTemplateInstanceRequirementMemoryMib.fromMap((value as Map).cast<String, dynamic>())),
-      networkBandwidthGbps: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp>(map['networkBandwidthGbps'], (value) => GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp.fromMap((value as Map).cast<String, dynamic>())),
-      networkInterfaceCounts: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementNetworkInterfaceCount>(map['networkInterfaceCounts'], (value) => GetLaunchTemplateInstanceRequirementNetworkInterfaceCount.fromMap((value as Map).cast<String, dynamic>())),
-      onDemandMaxPricePercentageOverLowestPrice: map['onDemandMaxPricePercentageOverLowestPrice'] as int,
-      requireHibernateSupport: map['requireHibernateSupport'] as bool,
-      spotMaxPricePercentageOverLowestPrice: map['spotMaxPricePercentageOverLowestPrice'] as int,
-      totalLocalStorageGbs: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementTotalLocalStorageGb>(map['totalLocalStorageGbs'], (value) => GetLaunchTemplateInstanceRequirementTotalLocalStorageGb.fromMap((value as Map).cast<String, dynamic>())),
-      vcpuCounts: pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementVcpuCount>(map['vcpuCounts'], (value) => GetLaunchTemplateInstanceRequirementVcpuCount.fromMap((value as Map).cast<String, dynamic>())),
+      acceleratorCounts: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementAcceleratorCount>(map['acceleratorCounts'], (value) => GetLaunchTemplateInstanceRequirementAcceleratorCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acceleratorManufacturers: ((map['acceleratorManufacturers'] as List).cast<String>()).input(),
+      acceleratorNames: ((map['acceleratorNames'] as List).cast<String>()).input(),
+      acceleratorTotalMemoryMibs: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib>(map['acceleratorTotalMemoryMibs'], (value) => GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acceleratorTypes: ((map['acceleratorTypes'] as List).cast<String>()).input(),
+      allowedInstanceTypes: ((map['allowedInstanceTypes'] as List).cast<String>()).input(),
+      bareMetal: (map['bareMetal'] as String).input(),
+      baselineEbsBandwidthMbps: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp>(map['baselineEbsBandwidthMbps'], (value) => GetLaunchTemplateInstanceRequirementBaselineEbsBandwidthMbp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      burstablePerformance: (map['burstablePerformance'] as String).input(),
+      cpuManufacturers: ((map['cpuManufacturers'] as List).cast<String>()).input(),
+      excludedInstanceTypes: ((map['excludedInstanceTypes'] as List).cast<String>()).input(),
+      instanceGenerations: ((map['instanceGenerations'] as List).cast<String>()).input(),
+      localStorage: (map['localStorage'] as String).input(),
+      localStorageTypes: ((map['localStorageTypes'] as List).cast<String>()).input(),
+      maxSpotPriceAsPercentageOfOptimalOnDemandPrice: (map['maxSpotPriceAsPercentageOfOptimalOnDemandPrice'] as int).input(),
+      memoryGibPerVcpus: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus>(map['memoryGibPerVcpus'], (value) => GetLaunchTemplateInstanceRequirementMemoryGibPerVcpus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      memoryMibs: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementMemoryMib>(map['memoryMibs'], (value) => GetLaunchTemplateInstanceRequirementMemoryMib.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkBandwidthGbps: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp>(map['networkBandwidthGbps'], (value) => GetLaunchTemplateInstanceRequirementNetworkBandwidthGbp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaceCounts: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementNetworkInterfaceCount>(map['networkInterfaceCounts'], (value) => GetLaunchTemplateInstanceRequirementNetworkInterfaceCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onDemandMaxPricePercentageOverLowestPrice: (map['onDemandMaxPricePercentageOverLowestPrice'] as int).input(),
+      requireHibernateSupport: (map['requireHibernateSupport'] as bool).input(),
+      spotMaxPricePercentageOverLowestPrice: (map['spotMaxPricePercentageOverLowestPrice'] as int).input(),
+      totalLocalStorageGbs: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementTotalLocalStorageGb>(map['totalLocalStorageGbs'], (value) => GetLaunchTemplateInstanceRequirementTotalLocalStorageGb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vcpuCounts: (pulumi.Input.decodeList<GetLaunchTemplateInstanceRequirementVcpuCount>(map['vcpuCounts'], (value) => GetLaunchTemplateInstanceRequirementVcpuCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

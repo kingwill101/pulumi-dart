@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_beyondcorp_appconnections_v1alpha_app_connection_gateway_type.dart';
 
 /// Gateway represents a user facing component that serves as an entrance to enable connectivity.
 class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway {
   /// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
-  final String appGateway;
+  final pulumi.Input<String> appGateway;
   /// The type of hosting used by the gateway.
-  final GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType type;
+  final pulumi.Input<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType> type;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway].
   /// [appGateway] AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
@@ -20,14 +21,14 @@ class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appGateway': appGateway,
-      'type': type.value,
+      'type': pulumi.Input.mapInputValue<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType, String>(type, (value) => value.value),
     };
   }
 
   factory GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway(
-      appGateway: map['appGateway'] as String,
-      type: GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType.fromValue(map['type'] as String),
+      appGateway: (map['appGateway'] as String).input(),
+      type: (GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType.fromValue(map['type'] as String)).input(),
     );
   }
 }

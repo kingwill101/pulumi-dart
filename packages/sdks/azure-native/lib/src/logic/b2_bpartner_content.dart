@@ -6,7 +6,7 @@ import 'business_identity.dart';
 /// The B2B partner content.
 class B2BPartnerContent {
   /// The list of partner business identities.
-  final List<BusinessIdentity>? businessIdentities;
+  final pulumi.Input<List<BusinessIdentity>>? businessIdentities;
 
   /// Creates a new [B2BPartnerContent].
   /// [businessIdentities] The list of partner business identities.
@@ -16,13 +16,13 @@ class B2BPartnerContent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'businessIdentities': ?businessIdentities == null ? null : pulumi.Input.encodeList<BusinessIdentity, Map<String, dynamic>>(businessIdentities!, (value) => value.toMap()),
+      'businessIdentities': ?pulumi.Input.mapOptionalInputValue<List<BusinessIdentity>, List<Map<String, dynamic>>>(businessIdentities, (value) => pulumi.Input.encodeList<BusinessIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory B2BPartnerContent.fromMap(Map<String, dynamic> map) {
     return B2BPartnerContent(
-      businessIdentities: map['businessIdentities'] == null ? null : pulumi.Input.decodeList<BusinessIdentity>(map['businessIdentities'], (value) => BusinessIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      businessIdentities: map['businessIdentities'] == null ? null : (pulumi.Input.decodeList<BusinessIdentity>(map['businessIdentities'], (value) => BusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

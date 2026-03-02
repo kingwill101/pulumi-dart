@@ -23,17 +23,12 @@ class GetNamespaceDisasterRecoveryConfigArgs {
   /// [namespaceName] Optional.
   /// [resourceGroupName] Optional.
   GetNamespaceDisasterRecoveryConfigArgs({
-    pulumi.Output<String>? aliasAuthorizationRuleId,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      aliasAuthorizationRuleId = pulumi.Input.asOptionalInput<String>(aliasAuthorizationRuleId),
-      name = pulumi.Input.asInput<String>(name),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.aliasAuthorizationRuleId,
+    required this.name,
+    this.namespaceId,
+    this.namespaceName,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class GetNamespaceDisasterRecoveryConfigArgs {
 
   factory GetNamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceDisasterRecoveryConfigArgs(
-      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : pulumi.Output.create<String>(map['aliasAuthorizationRuleId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

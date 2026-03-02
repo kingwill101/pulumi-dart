@@ -10,9 +10,8 @@ class LocalRulestackOutboundTrustCertificateAssociationState {
   /// Creates a new [LocalRulestackOutboundTrustCertificateAssociationState].
   /// [certificateId] The ID of the Certificate to use as the Outbound Trust Certificate. Changing this forces a new Palo Alto Networks Rulestack Outbound Trust Certificate Association to be created.
   LocalRulestackOutboundTrustCertificateAssociationState({
-    pulumi.Output<String>? certificateId,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId);
+    this.certificateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class LocalRulestackOutboundTrustCertificateAssociationState {
 
   factory LocalRulestackOutboundTrustCertificateAssociationState.fromMap(Map<String, dynamic> map) {
     return LocalRulestackOutboundTrustCertificateAssociationState(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
     );
   }
 }

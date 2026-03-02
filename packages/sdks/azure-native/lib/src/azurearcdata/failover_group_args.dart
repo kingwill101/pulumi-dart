@@ -23,15 +23,11 @@ class FailoverGroupArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlManagedInstanceName] Name of SQL Managed Instance
   FailoverGroupArgs({
-    pulumi.Output<String>? failoverGroupName,
-    required pulumi.Output<FailoverGroupProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlManagedInstanceName,
-  }) :
-      failoverGroupName = pulumi.Input.asOptionalInput<String>(failoverGroupName),
-      properties = pulumi.Input.asInput<FailoverGroupProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlManagedInstanceName = pulumi.Input.asInput<String>(sqlManagedInstanceName);
+    this.failoverGroupName,
+    required this.properties,
+    required this.resourceGroupName,
+    required this.sqlManagedInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FailoverGroupArgs {
 
   factory FailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return FailoverGroupArgs(
-      failoverGroupName: map['failoverGroupName'] == null ? null : pulumi.Output.create<String>(map['failoverGroupName'] as String),
-      properties: pulumi.Output.create<FailoverGroupProperties>(FailoverGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlManagedInstanceName: pulumi.Output.create<String>(map['sqlManagedInstanceName'] as String),
+      failoverGroupName: map['failoverGroupName'] == null ? null : (map['failoverGroupName'] as String).input(),
+      properties: (FailoverGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlManagedInstanceName: (map['sqlManagedInstanceName'] as String).input(),
     );
   }
 }

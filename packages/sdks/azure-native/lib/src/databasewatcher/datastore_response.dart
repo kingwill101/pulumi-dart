@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a data store.
 class DatastoreResponse {
   /// The Azure resource ID of an Azure Data Explorer cluster.
-  final String? adxClusterResourceId;
+  final pulumi.Input<String>? adxClusterResourceId;
   /// The Kusto cluster display name.
-  final String? kustoClusterDisplayName;
+  final pulumi.Input<String>? kustoClusterDisplayName;
   /// The Kusto cluster URI.
-  final String kustoClusterUri;
+  final pulumi.Input<String> kustoClusterUri;
   /// The Kusto data ingestion URI.
-  final String kustoDataIngestionUri;
+  final pulumi.Input<String> kustoDataIngestionUri;
   /// The name of a Kusto database.
-  final String kustoDatabaseName;
+  final pulumi.Input<String> kustoDatabaseName;
   /// The Kusto management URL.
-  final String kustoManagementUrl;
+  final pulumi.Input<String> kustoManagementUrl;
   /// The type of a Kusto offering.
-  final String kustoOfferingType;
+  final pulumi.Input<String> kustoOfferingType;
 
   /// Creates a new [DatastoreResponse].
   /// [adxClusterResourceId] The Azure resource ID of an Azure Data Explorer cluster.
@@ -50,13 +51,13 @@ class DatastoreResponse {
 
   factory DatastoreResponse.fromMap(Map<String, dynamic> map) {
     return DatastoreResponse(
-      adxClusterResourceId: map['adxClusterResourceId'] == null ? null : map['adxClusterResourceId'] as String,
-      kustoClusterDisplayName: map['kustoClusterDisplayName'] == null ? null : map['kustoClusterDisplayName'] as String,
-      kustoClusterUri: map['kustoClusterUri'] as String,
-      kustoDataIngestionUri: map['kustoDataIngestionUri'] as String,
-      kustoDatabaseName: map['kustoDatabaseName'] as String,
-      kustoManagementUrl: map['kustoManagementUrl'] as String,
-      kustoOfferingType: map['kustoOfferingType'] as String,
+      adxClusterResourceId: map['adxClusterResourceId'] == null ? null : (map['adxClusterResourceId'] as String).input(),
+      kustoClusterDisplayName: map['kustoClusterDisplayName'] == null ? null : (map['kustoClusterDisplayName'] as String).input(),
+      kustoClusterUri: (map['kustoClusterUri'] as String).input(),
+      kustoDataIngestionUri: (map['kustoDataIngestionUri'] as String).input(),
+      kustoDatabaseName: (map['kustoDatabaseName'] as String).input(),
+      kustoManagementUrl: (map['kustoManagementUrl'] as String).input(),
+      kustoOfferingType: (map['kustoOfferingType'] as String).input(),
     );
   }
 }

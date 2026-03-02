@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeEnrichmentParametersHttpParameters {
-  final Map<String, String>? headerParameters;
-  final String? pathParameterValues;
-  final Map<String, String>? queryStringParameters;
+  final pulumi.Input<Map<String, String>>? headerParameters;
+  final pulumi.Input<String>? pathParameterValues;
+  final pulumi.Input<Map<String, String>>? queryStringParameters;
 
   /// Creates a new [PipeEnrichmentParametersHttpParameters].
   /// [headerParameters] Optional.
@@ -26,9 +27,9 @@ class PipeEnrichmentParametersHttpParameters {
 
   factory PipeEnrichmentParametersHttpParameters.fromMap(Map<String, dynamic> map) {
     return PipeEnrichmentParametersHttpParameters(
-      headerParameters: map['headerParameters'] == null ? null : (map['headerParameters'] as Map).cast<String, String>(),
-      pathParameterValues: map['pathParameterValues'] == null ? null : map['pathParameterValues'] as String,
-      queryStringParameters: map['queryStringParameters'] == null ? null : (map['queryStringParameters'] as Map).cast<String, String>(),
+      headerParameters: map['headerParameters'] == null ? null : ((map['headerParameters'] as Map).cast<String, String>()).input(),
+      pathParameterValues: map['pathParameterValues'] == null ? null : (map['pathParameterValues'] as String).input(),
+      queryStringParameters: map['queryStringParameters'] == null ? null : ((map['queryStringParameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

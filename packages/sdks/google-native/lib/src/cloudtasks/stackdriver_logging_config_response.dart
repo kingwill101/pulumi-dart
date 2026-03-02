@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
 class StackdriverLoggingConfigResponse {
   /// Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
-  final double samplingRatio;
+  final pulumi.Input<double> samplingRatio;
 
   /// Creates a new [StackdriverLoggingConfigResponse].
   /// [samplingRatio] Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
@@ -20,7 +21,7 @@ class StackdriverLoggingConfigResponse {
 
   factory StackdriverLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return StackdriverLoggingConfigResponse(
-      samplingRatio: map['samplingRatio'] as double,
+      samplingRatio: (map['samplingRatio'] as double).input(),
     );
   }
 }

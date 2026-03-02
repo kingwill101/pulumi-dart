@@ -31,21 +31,14 @@ class PermissionSetArgs {
   /// [sessionDuration] The length of time that the application user sessions are valid in the ISO-8601 standard. Default: `PT1H`.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   PermissionSetArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? relayState,
-    pulumi.Output<String>? sessionDuration,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      relayState = pulumi.Input.asOptionalInput<String>(relayState),
-      sessionDuration = pulumi.Input.asOptionalInput<String>(sessionDuration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.instanceArn,
+    this.name,
+    this.region,
+    this.relayState,
+    this.sessionDuration,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class PermissionSetArgs {
 
   factory PermissionSetArgs.fromMap(Map<String, dynamic> map) {
     return PermissionSetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceArn: pulumi.Output.create<String>(map['instanceArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      relayState: map['relayState'] == null ? null : pulumi.Output.create<String>(map['relayState'] as String),
-      sessionDuration: map['sessionDuration'] == null ? null : pulumi.Output.create<String>(map['sessionDuration'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceArn: (map['instanceArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      relayState: map['relayState'] == null ? null : (map['relayState'] as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

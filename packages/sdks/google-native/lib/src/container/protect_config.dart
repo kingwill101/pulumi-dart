@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'protect_config_workload_vulnerability_mode.dart';
 import 'workload_config.dart';
 
 /// ProtectConfig defines the flags needed to enable/disable features for the Protect API.
 class ProtectConfig {
   /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
-  final WorkloadConfig? workloadConfig;
+  final pulumi.Input<WorkloadConfig>? workloadConfig;
   /// Sets which mode to use for Protect workload vulnerability scanning feature.
-  final ProtectConfigWorkloadVulnerabilityMode? workloadVulnerabilityMode;
+  final pulumi.Input<ProtectConfigWorkloadVulnerabilityMode>? workloadVulnerabilityMode;
 
   /// Creates a new [ProtectConfig].
   /// [workloadConfig] WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
@@ -20,15 +21,15 @@ class ProtectConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'workloadConfig': ?workloadConfig == null ? null : workloadConfig!.toMap(),
-      'workloadVulnerabilityMode': ?workloadVulnerabilityMode == null ? null : workloadVulnerabilityMode!.value,
+      'workloadConfig': ?pulumi.Input.mapOptionalInputValue<WorkloadConfig, Map<String, dynamic>>(workloadConfig, (value) => value.toMap()),
+      'workloadVulnerabilityMode': ?pulumi.Input.mapOptionalInputValue<ProtectConfigWorkloadVulnerabilityMode, String>(workloadVulnerabilityMode, (value) => value.value),
     };
   }
 
   factory ProtectConfig.fromMap(Map<String, dynamic> map) {
     return ProtectConfig(
-      workloadConfig: map['workloadConfig'] == null ? null : WorkloadConfig.fromMap((map['workloadConfig'] as Map).cast<String, dynamic>()),
-      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null ? null : ProtectConfigWorkloadVulnerabilityMode.fromValue(map['workloadVulnerabilityMode'] as String),
+      workloadConfig: map['workloadConfig'] == null ? null : (WorkloadConfig.fromMap((map['workloadConfig'] as Map).cast<String, dynamic>())).input(),
+      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null ? null : (ProtectConfigWorkloadVulnerabilityMode.fromValue(map['workloadVulnerabilityMode'] as String)).input(),
     );
   }
 }

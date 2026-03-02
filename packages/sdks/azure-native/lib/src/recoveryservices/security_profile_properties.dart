@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Security profile input.
 class SecurityProfileProperties {
   /// A value indicating whether confidential compute encryption to be enabled.
-  final String? targetVmConfidentialEncryption;
+  final pulumi.Input<String>? targetVmConfidentialEncryption;
   /// A value indicating whether integrity monitoring to be enabled.
-  final String? targetVmMonitoring;
+  final pulumi.Input<String>? targetVmMonitoring;
   /// A value indicating whether secure boot to be enabled.
-  final String? targetVmSecureBoot;
+  final pulumi.Input<String>? targetVmSecureBoot;
   /// The target VM security type.
-  final String? targetVmSecurityType;
+  final pulumi.Input<String>? targetVmSecurityType;
   /// A value indicating whether trusted platform module to be enabled.
-  final String? targetVmTpm;
+  final pulumi.Input<String>? targetVmTpm;
 
   /// Creates a new [SecurityProfileProperties].
   /// [targetVmConfidentialEncryption] A value indicating whether confidential compute encryption to be enabled.
@@ -40,11 +41,11 @@ class SecurityProfileProperties {
 
   factory SecurityProfileProperties.fromMap(Map<String, dynamic> map) {
     return SecurityProfileProperties(
-      targetVmConfidentialEncryption: map['targetVmConfidentialEncryption'] == null ? null : map['targetVmConfidentialEncryption'] as String,
-      targetVmMonitoring: map['targetVmMonitoring'] == null ? null : map['targetVmMonitoring'] as String,
-      targetVmSecureBoot: map['targetVmSecureBoot'] == null ? null : map['targetVmSecureBoot'] as String,
-      targetVmSecurityType: map['targetVmSecurityType'] == null ? null : map['targetVmSecurityType'] as String,
-      targetVmTpm: map['targetVmTpm'] == null ? null : map['targetVmTpm'] as String,
+      targetVmConfidentialEncryption: map['targetVmConfidentialEncryption'] == null ? null : (map['targetVmConfidentialEncryption'] as String).input(),
+      targetVmMonitoring: map['targetVmMonitoring'] == null ? null : (map['targetVmMonitoring'] as String).input(),
+      targetVmSecureBoot: map['targetVmSecureBoot'] == null ? null : (map['targetVmSecureBoot'] as String).input(),
+      targetVmSecurityType: map['targetVmSecurityType'] == null ? null : (map['targetVmSecurityType'] as String).input(),
+      targetVmTpm: map['targetVmTpm'] == null ? null : (map['targetVmTpm'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Partner Billing details associated with the resource.
 class PartnerBillingEntityResponse {
   /// The Elastic Organization Id.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The Elastic Organization Name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Link to the elastic organization page
-  final String? partnerEntityUri;
+  final pulumi.Input<String>? partnerEntityUri;
 
   /// Creates a new [PartnerBillingEntityResponse].
   /// [id] The Elastic Organization Id.
@@ -30,9 +31,9 @@ class PartnerBillingEntityResponse {
 
   factory PartnerBillingEntityResponse.fromMap(Map<String, dynamic> map) {
     return PartnerBillingEntityResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      partnerEntityUri: map['partnerEntityUri'] == null ? null : map['partnerEntityUri'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partnerEntityUri: map['partnerEntityUri'] == null ? null : (map['partnerEntityUri'] as String).input(),
     );
   }
 }

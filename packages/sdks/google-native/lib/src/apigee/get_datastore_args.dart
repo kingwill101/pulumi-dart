@@ -14,11 +14,9 @@ class GetDatastoreArgs {
   /// [datastoreId] Required.
   /// [organizationId] Required.
   GetDatastoreArgs({
-    required pulumi.Output<String> datastoreId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      datastoreId = pulumi.Input.asInput<String>(datastoreId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.datastoreId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetDatastoreArgs {
 
   factory GetDatastoreArgs.fromMap(Map<String, dynamic> map) {
     return GetDatastoreArgs(
-      datastoreId: pulumi.Output.create<String>(map['datastoreId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      datastoreId: (map['datastoreId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

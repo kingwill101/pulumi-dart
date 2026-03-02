@@ -8,17 +8,17 @@ import 'google_cloud_datacatalog_v1_routine_spec_routine_type.dart';
 /// Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.
 class GoogleCloudDatacatalogV1RoutineSpec {
   /// Fields specific for BigQuery routines.
-  final GoogleCloudDatacatalogV1BigQueryRoutineSpec? bigqueryRoutineSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1BigQueryRoutineSpec>? bigqueryRoutineSpec;
   /// The body of the routine.
-  final String? definitionBody;
+  final pulumi.Input<String>? definitionBody;
   /// The language the routine is written in. The exact value depends on the source system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT`
-  final String? language;
+  final pulumi.Input<String>? language;
   /// Return type of the argument. The exact value depends on the source system and the language.
-  final String? returnType;
+  final pulumi.Input<String>? returnType;
   /// Arguments of the routine.
-  final List<GoogleCloudDatacatalogV1RoutineSpecArgument>? routineArguments;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1RoutineSpecArgument>>? routineArguments;
   /// The type of the routine.
-  final GoogleCloudDatacatalogV1RoutineSpecRoutineType? routineType;
+  final pulumi.Input<GoogleCloudDatacatalogV1RoutineSpecRoutineType>? routineType;
 
   /// Creates a new [GoogleCloudDatacatalogV1RoutineSpec].
   /// [bigqueryRoutineSpec] Fields specific for BigQuery routines.
@@ -38,23 +38,23 @@ class GoogleCloudDatacatalogV1RoutineSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryRoutineSpec': ?bigqueryRoutineSpec == null ? null : bigqueryRoutineSpec!.toMap(),
+      'bigqueryRoutineSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatacatalogV1BigQueryRoutineSpec, Map<String, dynamic>>(bigqueryRoutineSpec, (value) => value.toMap()),
       'definitionBody': ?definitionBody,
       'language': ?language,
       'returnType': ?returnType,
-      'routineArguments': ?routineArguments == null ? null : pulumi.Input.encodeList<GoogleCloudDatacatalogV1RoutineSpecArgument, Map<String, dynamic>>(routineArguments!, (value) => value.toMap()),
-      'routineType': ?routineType == null ? null : routineType!.value,
+      'routineArguments': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDatacatalogV1RoutineSpecArgument>, List<Map<String, dynamic>>>(routineArguments, (value) => pulumi.Input.encodeList<GoogleCloudDatacatalogV1RoutineSpecArgument, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routineType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatacatalogV1RoutineSpecRoutineType, String>(routineType, (value) => value.value),
     };
   }
 
   factory GoogleCloudDatacatalogV1RoutineSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1RoutineSpec(
-      bigqueryRoutineSpec: map['bigqueryRoutineSpec'] == null ? null : GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromMap((map['bigqueryRoutineSpec'] as Map).cast<String, dynamic>()),
-      definitionBody: map['definitionBody'] == null ? null : map['definitionBody'] as String,
-      language: map['language'] == null ? null : map['language'] as String,
-      returnType: map['returnType'] == null ? null : map['returnType'] as String,
-      routineArguments: map['routineArguments'] == null ? null : pulumi.Input.decodeList<GoogleCloudDatacatalogV1RoutineSpecArgument>(map['routineArguments'], (value) => GoogleCloudDatacatalogV1RoutineSpecArgument.fromMap((value as Map).cast<String, dynamic>())),
-      routineType: map['routineType'] == null ? null : GoogleCloudDatacatalogV1RoutineSpecRoutineType.fromValue(map['routineType'] as String),
+      bigqueryRoutineSpec: map['bigqueryRoutineSpec'] == null ? null : (GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromMap((map['bigqueryRoutineSpec'] as Map).cast<String, dynamic>())).input(),
+      definitionBody: map['definitionBody'] == null ? null : (map['definitionBody'] as String).input(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      returnType: map['returnType'] == null ? null : (map['returnType'] as String).input(),
+      routineArguments: map['routineArguments'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1RoutineSpecArgument>(map['routineArguments'], (value) => GoogleCloudDatacatalogV1RoutineSpecArgument.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routineType: map['routineType'] == null ? null : (GoogleCloudDatacatalogV1RoutineSpecRoutineType.fromValue(map['routineType'] as String)).input(),
     );
   }
 }

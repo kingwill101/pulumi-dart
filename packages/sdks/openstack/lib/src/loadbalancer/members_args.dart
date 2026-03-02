@@ -25,13 +25,10 @@ class MembersArgs {
   /// [poolId] The id of the pool that members will be assigned to.
   /// [region] The region in which to obtain the V2 Networking client.
   MembersArgs({
-    pulumi.Output<List<MembersMember>>? members,
-    required pulumi.Output<String> poolId,
-    pulumi.Output<String>? region,
-  }) :
-      members = pulumi.Input.asOptionalInput<List<MembersMember>>(members),
-      poolId = pulumi.Input.asInput<String>(poolId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.members,
+    required this.poolId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,9 +40,9 @@ class MembersArgs {
 
   factory MembersArgs.fromMap(Map<String, dynamic> map) {
     return MembersArgs(
-      members: map['members'] == null ? null : pulumi.Output.create<List<MembersMember>>(pulumi.Input.decodeList<MembersMember>(map['members'], (value) => MembersMember.fromMap((value as Map).cast<String, dynamic>()))),
-      poolId: pulumi.Output.create<String>(map['poolId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      members: map['members'] == null ? null : (pulumi.Input.decodeList<MembersMember>(map['members'], (value) => MembersMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      poolId: (map['poolId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

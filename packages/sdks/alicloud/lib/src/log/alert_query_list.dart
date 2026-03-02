@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertQueryList {
   /// Chart title, optional from 1.161.0+.
-  final String? chartTitle;
+  final pulumi.Input<String>? chartTitle;
   /// Query dashboard id.
-  final String? dashboardId;
+  final pulumi.Input<String>? dashboardId;
   /// End time. example: 20s.
-  final String end;
+  final pulumi.Input<String> end;
   /// Query logstore, use store for new alert, Deprecated from 1.161.0+.
-  final String? logstore;
+  final pulumi.Input<String>? logstore;
   /// default disable, whether to use power sql. support auto, enable, disable.
-  final String? powerSqlMode;
+  final pulumi.Input<String>? powerSqlMode;
   /// Query project.
-  final String? project;
+  final pulumi.Input<String>? project;
   /// Query corresponding to chart. example: * AND aliyun.
-  final String query;
+  final pulumi.Input<String> query;
   /// Query project region.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// Query project store's ARN.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
   /// Begin time. example: -60s.
-  final String start;
+  final pulumi.Input<String> start;
   /// Query store for new alert.
-  final String? store;
+  final pulumi.Input<String>? store;
   /// Query store type for new alert, including log,metric,meta.
-  final String? storeType;
+  final pulumi.Input<String>? storeType;
   /// default Custom. No need to configure this parameter.
-  final String? timeSpanType;
+  final pulumi.Input<String>? timeSpanType;
 
   /// Creates a new [AlertQueryList].
   /// [chartTitle] Chart title, optional from 1.161.0+.
@@ -79,19 +80,19 @@ class AlertQueryList {
 
   factory AlertQueryList.fromMap(Map<String, dynamic> map) {
     return AlertQueryList(
-      chartTitle: map['chartTitle'] == null ? null : map['chartTitle'] as String,
-      dashboardId: map['dashboardId'] == null ? null : map['dashboardId'] as String,
-      end: map['end'] as String,
-      logstore: map['logstore'] == null ? null : map['logstore'] as String,
-      powerSqlMode: map['powerSqlMode'] == null ? null : map['powerSqlMode'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      query: map['query'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      start: map['start'] as String,
-      store: map['store'] == null ? null : map['store'] as String,
-      storeType: map['storeType'] == null ? null : map['storeType'] as String,
-      timeSpanType: map['timeSpanType'] == null ? null : map['timeSpanType'] as String,
+      chartTitle: map['chartTitle'] == null ? null : (map['chartTitle'] as String).input(),
+      dashboardId: map['dashboardId'] == null ? null : (map['dashboardId'] as String).input(),
+      end: (map['end'] as String).input(),
+      logstore: map['logstore'] == null ? null : (map['logstore'] as String).input(),
+      powerSqlMode: map['powerSqlMode'] == null ? null : (map['powerSqlMode'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      query: (map['query'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      start: (map['start'] as String).input(),
+      store: map['store'] == null ? null : (map['store'] as String).input(),
+      storeType: map['storeType'] == null ? null : (map['storeType'] as String).input(),
+      timeSpanType: map['timeSpanType'] == null ? null : (map['timeSpanType'] as String).input(),
     );
   }
 }

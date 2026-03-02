@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of domain controller to which SCOM and SQL servers join for AuthN/AuthZ.
 class DomainControllerPropertiesResponse {
   /// IP address of DNS server
-  final String? dnsServer;
+  final pulumi.Input<String>? dnsServer;
   /// Fully qualified domain name
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// Organizational Unit path in which the SCOM servers will be present
-  final String? ouPath;
+  final pulumi.Input<String>? ouPath;
 
   /// Creates a new [DomainControllerPropertiesResponse].
   /// [dnsServer] IP address of DNS server
@@ -30,9 +31,9 @@ class DomainControllerPropertiesResponse {
 
   factory DomainControllerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DomainControllerPropertiesResponse(
-      dnsServer: map['dnsServer'] == null ? null : map['dnsServer'] as String,
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      ouPath: map['ouPath'] == null ? null : map['ouPath'] as String,
+      dnsServer: map['dnsServer'] == null ? null : (map['dnsServer'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      ouPath: map['ouPath'] == null ? null : (map['ouPath'] as String).input(),
     );
   }
 }

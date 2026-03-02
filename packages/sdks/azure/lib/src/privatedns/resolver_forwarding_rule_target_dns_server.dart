@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResolverForwardingRuleTargetDnsServer {
   /// DNS server IP address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// DNS server port.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ResolverForwardingRuleTargetDnsServer].
   /// [ipAddress] DNS server IP address.
@@ -24,8 +25,8 @@ class ResolverForwardingRuleTargetDnsServer {
 
   factory ResolverForwardingRuleTargetDnsServer.fromMap(Map<String, dynamic> map) {
     return ResolverForwardingRuleTargetDnsServer(
-      ipAddress: map['ipAddress'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      ipAddress: (map['ipAddress'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

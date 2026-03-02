@@ -49,33 +49,20 @@ class MaintenanceWindowArgs {
   /// [startDate] Timestamp in [ISO-8601 extended format](https://www.iso.org/iso-8601-date-and-time-format.html) when to begin the maintenance window.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   MaintenanceWindowArgs({
-    pulumi.Output<bool>? allowUnassociatedTargets,
-    required pulumi.Output<int> cutoff,
-    pulumi.Output<String>? description,
-    required pulumi.Output<int> duration,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? endDate,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> schedule,
-    pulumi.Output<int>? scheduleOffset,
-    pulumi.Output<String>? scheduleTimezone,
-    pulumi.Output<String>? startDate,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allowUnassociatedTargets = pulumi.Input.asOptionalInput<bool>(allowUnassociatedTargets),
-      cutoff = pulumi.Input.asInput<int>(cutoff),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      duration = pulumi.Input.asInput<int>(duration),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedule = pulumi.Input.asInput<String>(schedule),
-      scheduleOffset = pulumi.Input.asOptionalInput<int>(scheduleOffset),
-      scheduleTimezone = pulumi.Input.asOptionalInput<String>(scheduleTimezone),
-      startDate = pulumi.Input.asOptionalInput<String>(startDate),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.allowUnassociatedTargets,
+    required this.cutoff,
+    this.description,
+    required this.duration,
+    this.enabled,
+    this.endDate,
+    this.name,
+    this.region,
+    required this.schedule,
+    this.scheduleOffset,
+    this.scheduleTimezone,
+    this.startDate,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class MaintenanceWindowArgs {
 
   factory MaintenanceWindowArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowArgs(
-      allowUnassociatedTargets: map['allowUnassociatedTargets'] == null ? null : pulumi.Output.create<bool>(map['allowUnassociatedTargets'] as bool),
-      cutoff: pulumi.Output.create<int>(map['cutoff'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      duration: pulumi.Output.create<int>(map['duration'] as int),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<String>(map['endDate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schedule: pulumi.Output.create<String>(map['schedule'] as String),
-      scheduleOffset: map['scheduleOffset'] == null ? null : pulumi.Output.create<int>(map['scheduleOffset'] as int),
-      scheduleTimezone: map['scheduleTimezone'] == null ? null : pulumi.Output.create<String>(map['scheduleTimezone'] as String),
-      startDate: map['startDate'] == null ? null : pulumi.Output.create<String>(map['startDate'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allowUnassociatedTargets: map['allowUnassociatedTargets'] == null ? null : (map['allowUnassociatedTargets'] as bool).input(),
+      cutoff: (map['cutoff'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      duration: (map['duration'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      scheduleOffset: map['scheduleOffset'] == null ? null : (map['scheduleOffset'] as int).input(),
+      scheduleTimezone: map['scheduleTimezone'] == null ? null : (map['scheduleTimezone'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

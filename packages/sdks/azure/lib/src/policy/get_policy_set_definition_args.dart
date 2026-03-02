@@ -21,13 +21,10 @@ class GetPolicySetDefinitionArgs {
   /// [managementGroupName] Only retrieve Policy Set Definitions from this Management Group.
   /// [name] Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
   GetPolicySetDefinitionArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? managementGroupName,
-    pulumi.Output<String>? name,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      managementGroupName = pulumi.Input.asOptionalInput<String>(managementGroupName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.displayName,
+    this.managementGroupName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetPolicySetDefinitionArgs {
 
   factory GetPolicySetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      managementGroupName: map['managementGroupName'] == null ? null : pulumi.Output.create<String>(map['managementGroupName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      managementGroupName: map['managementGroupName'] == null ? null : (map['managementGroupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject {
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject].
   /// [status] Required.
@@ -18,7 +19,7 @@ class GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncrypte
 
   factory GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

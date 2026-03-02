@@ -16,11 +16,9 @@ class CapabilityArgs {
   /// [capabilityType] The capability that should be applied to the Chaos Studio Target. For supported values please see this Chaos Studio [Fault Library](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-library). Changing this forces a new Chaos Studio Capability to be created.
   /// [chaosStudioTargetId] The Chaos Studio Target that the capability should be applied to. Changing this forces a new Chaos Studio Capability to be created.
   CapabilityArgs({
-    required pulumi.Output<String> capabilityType,
-    required pulumi.Output<String> chaosStudioTargetId,
-  }) :
-      capabilityType = pulumi.Input.asInput<String>(capabilityType),
-      chaosStudioTargetId = pulumi.Input.asInput<String>(chaosStudioTargetId);
+    required this.capabilityType,
+    required this.chaosStudioTargetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class CapabilityArgs {
 
   factory CapabilityArgs.fromMap(Map<String, dynamic> map) {
     return CapabilityArgs(
-      capabilityType: pulumi.Output.create<String>(map['capabilityType'] as String),
-      chaosStudioTargetId: pulumi.Output.create<String>(map['chaosStudioTargetId'] as String),
+      capabilityType: (map['capabilityType'] as String).input(),
+      chaosStudioTargetId: (map['chaosStudioTargetId'] as String).input(),
     );
   }
 }

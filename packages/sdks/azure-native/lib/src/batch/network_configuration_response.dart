@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_endpoint_configuration_response.dart';
 import 'public_ipaddress_configuration_response.dart';
 
 /// The network configuration for a pool.
 class NetworkConfigurationResponse {
   /// The scope of dynamic vnet assignment.
-  final String? dynamicVnetAssignmentScope;
+  final pulumi.Input<String>? dynamicVnetAssignmentScope;
   /// Accelerated networking enables single root I/O virtualization (SR-IOV) to a VM, which may lead to improved networking performance. For more details, see: https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview.
-  final bool? enableAcceleratedNetworking;
+  final pulumi.Input<bool>? enableAcceleratedNetworking;
   /// The endpoint configuration for a pool.
-  final PoolEndpointConfigurationResponse? endpointConfiguration;
+  final pulumi.Input<PoolEndpointConfigurationResponse>? endpointConfiguration;
   /// The public IP Address configuration of the networking configuration of a Pool.
-  final PublicIPAddressConfigurationResponse? publicIPAddressConfiguration;
+  final pulumi.Input<PublicIPAddressConfigurationResponse>? publicIPAddressConfiguration;
   /// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [NetworkConfigurationResponse].
   /// [dynamicVnetAssignmentScope] The scope of dynamic vnet assignment.
@@ -34,19 +35,19 @@ class NetworkConfigurationResponse {
     return <String, dynamic>{
       'dynamicVnetAssignmentScope': ?dynamicVnetAssignmentScope,
       'enableAcceleratedNetworking': ?enableAcceleratedNetworking,
-      'endpointConfiguration': ?endpointConfiguration == null ? null : endpointConfiguration!.toMap(),
-      'publicIPAddressConfiguration': ?publicIPAddressConfiguration == null ? null : publicIPAddressConfiguration!.toMap(),
+      'endpointConfiguration': ?pulumi.Input.mapOptionalInputValue<PoolEndpointConfigurationResponse, Map<String, dynamic>>(endpointConfiguration, (value) => value.toMap()),
+      'publicIPAddressConfiguration': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressConfigurationResponse, Map<String, dynamic>>(publicIPAddressConfiguration, (value) => value.toMap()),
       'subnetId': ?subnetId,
     };
   }
 
   factory NetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigurationResponse(
-      dynamicVnetAssignmentScope: map['dynamicVnetAssignmentScope'] == null ? null : map['dynamicVnetAssignmentScope'] as String,
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : map['enableAcceleratedNetworking'] as bool,
-      endpointConfiguration: map['endpointConfiguration'] == null ? null : PoolEndpointConfigurationResponse.fromMap((map['endpointConfiguration'] as Map).cast<String, dynamic>()),
-      publicIPAddressConfiguration: map['publicIPAddressConfiguration'] == null ? null : PublicIPAddressConfigurationResponse.fromMap((map['publicIPAddressConfiguration'] as Map).cast<String, dynamic>()),
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      dynamicVnetAssignmentScope: map['dynamicVnetAssignmentScope'] == null ? null : (map['dynamicVnetAssignmentScope'] as String).input(),
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
+      endpointConfiguration: map['endpointConfiguration'] == null ? null : (PoolEndpointConfigurationResponse.fromMap((map['endpointConfiguration'] as Map).cast<String, dynamic>())).input(),
+      publicIPAddressConfiguration: map['publicIPAddressConfiguration'] == null ? null : (PublicIPAddressConfigurationResponse.fromMap((map['publicIPAddressConfiguration'] as Map).cast<String, dynamic>())).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Account key datastore credentials configuration.
 class AccountKeyDatastoreCredentialsResponse {
   /// Enum to determine the datastore credentials type.
   /// Expected value is 'AccountKey'.
-  final String credentialsType;
+  final pulumi.Input<String> credentialsType;
 
   /// Creates a new [AccountKeyDatastoreCredentialsResponse].
   /// [credentialsType] Enum to determine the datastore credentials type.
@@ -21,7 +22,7 @@ class AccountKeyDatastoreCredentialsResponse {
 
   factory AccountKeyDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return AccountKeyDatastoreCredentialsResponse(
-      credentialsType: map['credentialsType'] as String,
+      credentialsType: (map['credentialsType'] as String).input(),
     );
   }
 }

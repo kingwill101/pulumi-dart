@@ -51,35 +51,21 @@ class TransitRouterVbrAttachmentState {
   /// [vbrId] The ID of the VBR.
   /// [vbrOwnerId] The owner id of the vbr.
   TransitRouterVbrAttachmentState({
-    pulumi.Output<bool>? autoPublishRouteEnabled,
-    pulumi.Output<String>? cenId,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<bool>? routeTableAssociationEnabled,
-    pulumi.Output<bool>? routeTablePropagationEnabled,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitRouterAttachmentDescription,
-    pulumi.Output<String>? transitRouterAttachmentId,
-    pulumi.Output<String>? transitRouterAttachmentName,
-    pulumi.Output<String>? transitRouterId,
-    pulumi.Output<String>? vbrId,
-    pulumi.Output<String>? vbrOwnerId,
-  }) :
-      autoPublishRouteEnabled = pulumi.Input.asOptionalInput<bool>(autoPublishRouteEnabled),
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      routeTableAssociationEnabled = pulumi.Input.asOptionalInput<bool>(routeTableAssociationEnabled),
-      routeTablePropagationEnabled = pulumi.Input.asOptionalInput<bool>(routeTablePropagationEnabled),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitRouterAttachmentDescription = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentDescription),
-      transitRouterAttachmentId = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentId),
-      transitRouterAttachmentName = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentName),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId),
-      vbrId = pulumi.Input.asOptionalInput<String>(vbrId),
-      vbrOwnerId = pulumi.Input.asOptionalInput<String>(vbrOwnerId);
+    this.autoPublishRouteEnabled,
+    this.cenId,
+    this.dryRun,
+    this.resourceType,
+    this.routeTableAssociationEnabled,
+    this.routeTablePropagationEnabled,
+    this.status,
+    this.tags,
+    this.transitRouterAttachmentDescription,
+    this.transitRouterAttachmentId,
+    this.transitRouterAttachmentName,
+    this.transitRouterId,
+    this.vbrId,
+    this.vbrOwnerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class TransitRouterVbrAttachmentState {
 
   factory TransitRouterVbrAttachmentState.fromMap(Map<String, dynamic> map) {
     return TransitRouterVbrAttachmentState(
-      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoPublishRouteEnabled'] as bool),
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      routeTableAssociationEnabled: map['routeTableAssociationEnabled'] == null ? null : pulumi.Output.create<bool>(map['routeTableAssociationEnabled'] as bool),
-      routeTablePropagationEnabled: map['routeTablePropagationEnabled'] == null ? null : pulumi.Output.create<bool>(map['routeTablePropagationEnabled'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentDescription'] as String),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterAttachmentName: map['transitRouterAttachmentName'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentName'] as String),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
-      vbrId: map['vbrId'] == null ? null : pulumi.Output.create<String>(map['vbrId'] as String),
-      vbrOwnerId: map['vbrOwnerId'] == null ? null : pulumi.Output.create<String>(map['vbrOwnerId'] as String),
+      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] == null ? null : (map['autoPublishRouteEnabled'] as bool).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      routeTableAssociationEnabled: map['routeTableAssociationEnabled'] == null ? null : (map['routeTableAssociationEnabled'] as bool).input(),
+      routeTablePropagationEnabled: map['routeTablePropagationEnabled'] == null ? null : (map['routeTablePropagationEnabled'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : (map['transitRouterAttachmentDescription'] as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterAttachmentName: map['transitRouterAttachmentName'] == null ? null : (map['transitRouterAttachmentName'] as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      vbrId: map['vbrId'] == null ? null : (map['vbrId'] as String).input(),
+      vbrOwnerId: map['vbrOwnerId'] == null ? null : (map['vbrOwnerId'] as String).input(),
     );
   }
 }

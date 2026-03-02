@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubscriptionExpirationPolicy {
   /// Specifies the "time-to-live" duration for an associated resource. The
@@ -7,7 +8,7 @@ class GetSubscriptionExpirationPolicy {
   /// If ttl is set to "", the associated resource never expires.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'.
   /// Example - "3.5s".
-  final String ttl;
+  final pulumi.Input<String> ttl;
 
   /// Creates a new [GetSubscriptionExpirationPolicy].
   /// [ttl] Specifies the "time-to-live" duration for an associated resource. The
@@ -23,7 +24,7 @@ class GetSubscriptionExpirationPolicy {
 
   factory GetSubscriptionExpirationPolicy.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionExpirationPolicy(
-      ttl: map['ttl'] as String,
+      ttl: (map['ttl'] as String).input(),
     );
   }
 }

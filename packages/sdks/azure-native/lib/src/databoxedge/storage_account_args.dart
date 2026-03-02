@@ -31,21 +31,14 @@ class StorageAccountArgs {
   /// [storageAccountName] The StorageAccount name.
   /// [storageAccountStatus] Current status of the storage account
   StorageAccountArgs({
-    required pulumi.Output<String> dataPolicy,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageAccountCredentialId,
-    pulumi.Output<String>? storageAccountName,
-    pulumi.Output<String>? storageAccountStatus,
-  }) :
-      dataPolicy = pulumi.Input.asInput<String>(dataPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountCredentialId = pulumi.Input.asOptionalInput<String>(storageAccountCredentialId),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName),
-      storageAccountStatus = pulumi.Input.asOptionalInput<String>(storageAccountStatus);
+    required this.dataPolicy,
+    this.description,
+    required this.deviceName,
+    required this.resourceGroupName,
+    this.storageAccountCredentialId,
+    this.storageAccountName,
+    this.storageAccountStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class StorageAccountArgs {
 
   factory StorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountArgs(
-      dataPolicy: pulumi.Output.create<String>(map['dataPolicy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountCredentialId: map['storageAccountCredentialId'] == null ? null : pulumi.Output.create<String>(map['storageAccountCredentialId'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
-      storageAccountStatus: map['storageAccountStatus'] == null ? null : pulumi.Output.create<String>(map['storageAccountStatus'] as String),
+      dataPolicy: (map['dataPolicy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountCredentialId: map['storageAccountCredentialId'] == null ? null : (map['storageAccountCredentialId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      storageAccountStatus: map['storageAccountStatus'] == null ? null : (map['storageAccountStatus'] as String).input(),
     );
   }
 }

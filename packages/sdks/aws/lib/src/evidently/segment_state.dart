@@ -40,29 +40,18 @@ class SegmentState {
   /// [tags] Tags to apply to the segment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   SegmentState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? experimentCount,
-    pulumi.Output<String>? lastUpdatedTime,
-    pulumi.Output<int>? launchCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pattern,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdTime = pulumi.Input.asOptionalInput<String>(createdTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      experimentCount = pulumi.Input.asOptionalInput<int>(experimentCount),
-      lastUpdatedTime = pulumi.Input.asOptionalInput<String>(lastUpdatedTime),
-      launchCount = pulumi.Input.asOptionalInput<int>(launchCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pattern = pulumi.Input.asOptionalInput<String>(pattern),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdTime,
+    this.description,
+    this.experimentCount,
+    this.lastUpdatedTime,
+    this.launchCount,
+    this.name,
+    this.pattern,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class SegmentState {
 
   factory SegmentState.fromMap(Map<String, dynamic> map) {
     return SegmentState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdTime: map['createdTime'] == null ? null : pulumi.Output.create<String>(map['createdTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      experimentCount: map['experimentCount'] == null ? null : pulumi.Output.create<int>(map['experimentCount'] as int),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : pulumi.Output.create<String>(map['lastUpdatedTime'] as String),
-      launchCount: map['launchCount'] == null ? null : pulumi.Output.create<int>(map['launchCount'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pattern: map['pattern'] == null ? null : pulumi.Output.create<String>(map['pattern'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      experimentCount: map['experimentCount'] == null ? null : (map['experimentCount'] as int).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
+      launchCount: map['launchCount'] == null ? null : (map['launchCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

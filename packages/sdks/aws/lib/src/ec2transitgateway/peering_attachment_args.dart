@@ -32,21 +32,14 @@ class PeeringAttachmentArgs {
   /// [tags] Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   PeeringAttachmentArgs({
-    pulumi.Output<PeeringAttachmentOptions>? options,
-    pulumi.Output<String>? peerAccountId,
-    required pulumi.Output<String> peerRegion,
-    required pulumi.Output<String> peerTransitGatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> transitGatewayId,
-  }) :
-      options = pulumi.Input.asOptionalInput<PeeringAttachmentOptions>(options),
-      peerAccountId = pulumi.Input.asOptionalInput<String>(peerAccountId),
-      peerRegion = pulumi.Input.asInput<String>(peerRegion),
-      peerTransitGatewayId = pulumi.Input.asInput<String>(peerTransitGatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayId = pulumi.Input.asInput<String>(transitGatewayId);
+    this.options,
+    this.peerAccountId,
+    required this.peerRegion,
+    required this.peerTransitGatewayId,
+    this.region,
+    this.tags,
+    required this.transitGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class PeeringAttachmentArgs {
 
   factory PeeringAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PeeringAttachmentArgs(
-      options: map['options'] == null ? null : pulumi.Output.create<PeeringAttachmentOptions>(PeeringAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())),
-      peerAccountId: map['peerAccountId'] == null ? null : pulumi.Output.create<String>(map['peerAccountId'] as String),
-      peerRegion: pulumi.Output.create<String>(map['peerRegion'] as String),
-      peerTransitGatewayId: pulumi.Output.create<String>(map['peerTransitGatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayId: pulumi.Output.create<String>(map['transitGatewayId'] as String),
+      options: map['options'] == null ? null : (PeeringAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      peerAccountId: map['peerAccountId'] == null ? null : (map['peerAccountId'] as String).input(),
+      peerRegion: (map['peerRegion'] as String).input(),
+      peerTransitGatewayId: (map['peerTransitGatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayId: (map['transitGatewayId'] as String).input(),
     );
   }
 }

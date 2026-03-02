@@ -34,23 +34,15 @@ class RegionInstanceTemplateComputeV1Args {
   /// [sourceInstance] The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
   /// [sourceInstanceParams] The source instance params to use to create this instance template.
   RegionInstanceTemplateComputeV1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<InstancePropertiesComputeV1>? properties,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? sourceInstance,
-    pulumi.Output<SourceInstanceParamsComputeV1>? sourceInstanceParams,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      properties = pulumi.Input.asOptionalInput<InstancePropertiesComputeV1>(properties),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceInstance = pulumi.Input.asOptionalInput<String>(sourceInstance),
-      sourceInstanceParams = pulumi.Input.asOptionalInput<SourceInstanceParamsComputeV1>(sourceInstanceParams);
+    this.description,
+    this.name,
+    this.project,
+    this.properties,
+    required this.region,
+    this.requestId,
+    this.sourceInstance,
+    this.sourceInstanceParams,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class RegionInstanceTemplateComputeV1Args {
 
   factory RegionInstanceTemplateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateComputeV1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<InstancePropertiesComputeV1>(InstancePropertiesComputeV1.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceInstance: map['sourceInstance'] == null ? null : pulumi.Output.create<String>(map['sourceInstance'] as String),
-      sourceInstanceParams: map['sourceInstanceParams'] == null ? null : pulumi.Output.create<SourceInstanceParamsComputeV1>(SourceInstanceParamsComputeV1.fromMap((map['sourceInstanceParams'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      properties: map['properties'] == null ? null : (InstancePropertiesComputeV1.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceInstance: map['sourceInstance'] == null ? null : (map['sourceInstance'] as String).input(),
+      sourceInstanceParams: map['sourceInstanceParams'] == null ? null : (SourceInstanceParamsComputeV1.fromMap((map['sourceInstanceParams'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

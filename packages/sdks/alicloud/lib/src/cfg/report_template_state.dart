@@ -43,21 +43,14 @@ class ReportTemplateState {
   /// [reportTemplateName] Report Template Name
   /// [subscriptionFrequency] Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.
   ReportTemplateState({
-    pulumi.Output<String>? reportFileFormats,
-    pulumi.Output<String>? reportGranularity,
-    pulumi.Output<String>? reportLanguage,
-    pulumi.Output<List<ReportTemplateReportScope>>? reportScopes,
-    pulumi.Output<String>? reportTemplateDescription,
-    pulumi.Output<String>? reportTemplateName,
-    pulumi.Output<String>? subscriptionFrequency,
-  }) :
-      reportFileFormats = pulumi.Input.asOptionalInput<String>(reportFileFormats),
-      reportGranularity = pulumi.Input.asOptionalInput<String>(reportGranularity),
-      reportLanguage = pulumi.Input.asOptionalInput<String>(reportLanguage),
-      reportScopes = pulumi.Input.asOptionalInput<List<ReportTemplateReportScope>>(reportScopes),
-      reportTemplateDescription = pulumi.Input.asOptionalInput<String>(reportTemplateDescription),
-      reportTemplateName = pulumi.Input.asOptionalInput<String>(reportTemplateName),
-      subscriptionFrequency = pulumi.Input.asOptionalInput<String>(subscriptionFrequency);
+    this.reportFileFormats,
+    this.reportGranularity,
+    this.reportLanguage,
+    this.reportScopes,
+    this.reportTemplateDescription,
+    this.reportTemplateName,
+    this.subscriptionFrequency,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,13 +66,13 @@ class ReportTemplateState {
 
   factory ReportTemplateState.fromMap(Map<String, dynamic> map) {
     return ReportTemplateState(
-      reportFileFormats: map['reportFileFormats'] == null ? null : pulumi.Output.create<String>(map['reportFileFormats'] as String),
-      reportGranularity: map['reportGranularity'] == null ? null : pulumi.Output.create<String>(map['reportGranularity'] as String),
-      reportLanguage: map['reportLanguage'] == null ? null : pulumi.Output.create<String>(map['reportLanguage'] as String),
-      reportScopes: map['reportScopes'] == null ? null : pulumi.Output.create<List<ReportTemplateReportScope>>(pulumi.Input.decodeList<ReportTemplateReportScope>(map['reportScopes'], (value) => ReportTemplateReportScope.fromMap((value as Map).cast<String, dynamic>()))),
-      reportTemplateDescription: map['reportTemplateDescription'] == null ? null : pulumi.Output.create<String>(map['reportTemplateDescription'] as String),
-      reportTemplateName: map['reportTemplateName'] == null ? null : pulumi.Output.create<String>(map['reportTemplateName'] as String),
-      subscriptionFrequency: map['subscriptionFrequency'] == null ? null : pulumi.Output.create<String>(map['subscriptionFrequency'] as String),
+      reportFileFormats: map['reportFileFormats'] == null ? null : (map['reportFileFormats'] as String).input(),
+      reportGranularity: map['reportGranularity'] == null ? null : (map['reportGranularity'] as String).input(),
+      reportLanguage: map['reportLanguage'] == null ? null : (map['reportLanguage'] as String).input(),
+      reportScopes: map['reportScopes'] == null ? null : (pulumi.Input.decodeList<ReportTemplateReportScope>(map['reportScopes'], (value) => ReportTemplateReportScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reportTemplateDescription: map['reportTemplateDescription'] == null ? null : (map['reportTemplateDescription'] as String).input(),
+      reportTemplateName: map['reportTemplateName'] == null ? null : (map['reportTemplateName'] as String).input(),
+      subscriptionFrequency: map['subscriptionFrequency'] == null ? null : (map['subscriptionFrequency'] as String).input(),
     );
   }
 }

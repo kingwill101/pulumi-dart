@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointConfigurationProductionVariantManagedInstanceScaling {
   /// Maximum number of instances that the endpoint can provision when it scales up to accommodate an increase in traffic.
-  final int? maxInstanceCount;
+  final pulumi.Input<int>? maxInstanceCount;
   /// Minimum number of instances that the endpoint must retain when it scales down to accommodate a decrease in traffic.
-  final int? minInstanceCount;
+  final pulumi.Input<int>? minInstanceCount;
   /// Whether managed instance scaling is enabled. Valid values are `ENABLED` and `DISABLED`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [EndpointConfigurationProductionVariantManagedInstanceScaling].
   /// [maxInstanceCount] Maximum number of instances that the endpoint can provision when it scales up to accommodate an increase in traffic.
@@ -29,9 +30,9 @@ class EndpointConfigurationProductionVariantManagedInstanceScaling {
 
   factory EndpointConfigurationProductionVariantManagedInstanceScaling.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationProductionVariantManagedInstanceScaling(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] == null ? null : map['minInstanceCount'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount'] as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

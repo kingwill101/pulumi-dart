@@ -35,27 +35,17 @@ class VpcIpamScopeState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   VpcIpamScopeState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipamArn,
-    pulumi.Output<String>? ipamId,
-    pulumi.Output<String>? ipamScopeType,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<int>? poolCount,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipamArn = pulumi.Input.asOptionalInput<String>(ipamArn),
-      ipamId = pulumi.Input.asOptionalInput<String>(ipamId),
-      ipamScopeType = pulumi.Input.asOptionalInput<String>(ipamScopeType),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      poolCount = pulumi.Input.asOptionalInput<int>(poolCount),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.ipamArn,
+    this.ipamId,
+    this.ipamScopeType,
+    this.isDefault,
+    this.poolCount,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,16 +64,16 @@ class VpcIpamScopeState {
 
   factory VpcIpamScopeState.fromMap(Map<String, dynamic> map) {
     return VpcIpamScopeState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipamArn: map['ipamArn'] == null ? null : pulumi.Output.create<String>(map['ipamArn'] as String),
-      ipamId: map['ipamId'] == null ? null : pulumi.Output.create<String>(map['ipamId'] as String),
-      ipamScopeType: map['ipamScopeType'] == null ? null : pulumi.Output.create<String>(map['ipamScopeType'] as String),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      poolCount: map['poolCount'] == null ? null : pulumi.Output.create<int>(map['poolCount'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipamArn: map['ipamArn'] == null ? null : (map['ipamArn'] as String).input(),
+      ipamId: map['ipamId'] == null ? null : (map['ipamId'] as String).input(),
+      ipamScopeType: map['ipamScopeType'] == null ? null : (map['ipamScopeType'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      poolCount: map['poolCount'] == null ? null : (map['poolCount'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

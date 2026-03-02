@@ -25,19 +25,13 @@ class NetworkState {
   /// [networkName] Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
   /// [status] The status of the network instance. Pending: Configuring, Available: Available.
   NetworkState({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ensRegionId,
-    pulumi.Output<String>? networkName,
-    pulumi.Output<String>? status,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ensRegionId = pulumi.Input.asOptionalInput<String>(ensRegionId),
-      networkName = pulumi.Input.asOptionalInput<String>(networkName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.cidrBlock,
+    this.createTime,
+    this.description,
+    this.ensRegionId,
+    this.networkName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ensRegionId: map['ensRegionId'] == null ? null : pulumi.Output.create<String>(map['ensRegionId'] as String),
-      networkName: map['networkName'] == null ? null : pulumi.Output.create<String>(map['networkName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
+      networkName: map['networkName'] == null ? null : (map['networkName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

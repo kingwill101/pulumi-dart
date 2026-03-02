@@ -30,19 +30,13 @@ class DxGatewayAttachmentArgs {
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   DxGatewayAttachmentArgs({
-    required pulumi.Output<String> coreNetworkId,
-    required pulumi.Output<String> directConnectGatewayArn,
-    required pulumi.Output<List<String>> edgeLocations,
-    pulumi.Output<String>? routingPolicyLabel,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<DxGatewayAttachmentTimeouts>? timeouts,
-  }) :
-      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-      directConnectGatewayArn = pulumi.Input.asInput<String>(directConnectGatewayArn),
-      edgeLocations = pulumi.Input.asInput<List<String>>(edgeLocations),
-      routingPolicyLabel = pulumi.Input.asOptionalInput<String>(routingPolicyLabel),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<DxGatewayAttachmentTimeouts>(timeouts);
+    required this.coreNetworkId,
+    required this.directConnectGatewayArn,
+    required this.edgeLocations,
+    this.routingPolicyLabel,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class DxGatewayAttachmentArgs {
 
   factory DxGatewayAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DxGatewayAttachmentArgs(
-      coreNetworkId: pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      directConnectGatewayArn: pulumi.Output.create<String>(map['directConnectGatewayArn'] as String),
-      edgeLocations: pulumi.Output.create<List<String>>((map['edgeLocations'] as List).cast<String>()),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : pulumi.Output.create<String>(map['routingPolicyLabel'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DxGatewayAttachmentTimeouts>(DxGatewayAttachmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      coreNetworkId: (map['coreNetworkId'] as String).input(),
+      directConnectGatewayArn: (map['directConnectGatewayArn'] as String).input(),
+      edgeLocations: ((map['edgeLocations'] as List).cast<String>()).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (DxGatewayAttachmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

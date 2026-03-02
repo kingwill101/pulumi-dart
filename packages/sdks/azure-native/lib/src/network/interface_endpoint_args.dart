@@ -36,23 +36,15 @@ class InterfaceEndpointArgs {
   /// [subnet] The ID of the subnet from which the private IP will be allocated.
   /// [tags] Resource tags.
   InterfaceEndpointArgs({
-    pulumi.Output<EndpointService>? endpointService,
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? interfaceEndpointName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SubnetNetwork>? subnet,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      endpointService = pulumi.Input.asOptionalInput<EndpointService>(endpointService),
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      interfaceEndpointName = pulumi.Input.asOptionalInput<String>(interfaceEndpointName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnet = pulumi.Input.asOptionalInput<SubnetNetwork>(subnet),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.endpointService,
+    this.fqdn,
+    this.id,
+    this.interfaceEndpointName,
+    this.location,
+    required this.resourceGroupName,
+    this.subnet,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class InterfaceEndpointArgs {
 
   factory InterfaceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return InterfaceEndpointArgs(
-      endpointService: map['endpointService'] == null ? null : pulumi.Output.create<EndpointService>(EndpointService.fromMap((map['endpointService'] as Map).cast<String, dynamic>())),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      interfaceEndpointName: map['interfaceEndpointName'] == null ? null : pulumi.Output.create<String>(map['interfaceEndpointName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<SubnetNetwork>(map['subnet'] as SubnetNetwork),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      endpointService: map['endpointService'] == null ? null : (EndpointService.fromMap((map['endpointService'] as Map).cast<String, dynamic>())).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      interfaceEndpointName: map['interfaceEndpointName'] == null ? null : (map['interfaceEndpointName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as SubnetNetwork).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

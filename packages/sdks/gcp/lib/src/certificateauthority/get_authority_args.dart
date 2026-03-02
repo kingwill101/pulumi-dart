@@ -25,15 +25,11 @@ class GetAuthorityArgs {
   /// [pool] The name of the pool the certificate authority belongs to.
   /// [project] The ID of the project in which the resource belongs. If it
   GetAuthorityArgs({
-    pulumi.Output<String>? certificateAuthorityId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? pool,
-    pulumi.Output<String>? project,
-  }) :
-      certificateAuthorityId = pulumi.Input.asOptionalInput<String>(certificateAuthorityId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      pool = pulumi.Input.asOptionalInput<String>(pool),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.certificateAuthorityId,
+    this.location,
+    this.pool,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetAuthorityArgs {
 
   factory GetAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorityArgs(
-      certificateAuthorityId: map['certificateAuthorityId'] == null ? null : pulumi.Output.create<String>(map['certificateAuthorityId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      pool: map['pool'] == null ? null : pulumi.Output.create<String>(map['pool'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      certificateAuthorityId: map['certificateAuthorityId'] == null ? null : (map['certificateAuthorityId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

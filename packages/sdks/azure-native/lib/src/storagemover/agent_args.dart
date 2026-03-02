@@ -32,21 +32,14 @@ class AgentArgs {
   /// [storageMoverName] The name of the Storage Mover resource.
   /// [uploadLimitSchedule] The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
   AgentArgs({
-    pulumi.Output<String>? agentName,
-    required pulumi.Output<String> arcResourceId,
-    required pulumi.Output<String> arcVmUuid,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageMoverName,
-    pulumi.Output<UploadLimitSchedule>? uploadLimitSchedule,
-  }) :
-      agentName = pulumi.Input.asOptionalInput<String>(agentName),
-      arcResourceId = pulumi.Input.asInput<String>(arcResourceId),
-      arcVmUuid = pulumi.Input.asInput<String>(arcVmUuid),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageMoverName = pulumi.Input.asInput<String>(storageMoverName),
-      uploadLimitSchedule = pulumi.Input.asOptionalInput<UploadLimitSchedule>(uploadLimitSchedule);
+    this.agentName,
+    required this.arcResourceId,
+    required this.arcVmUuid,
+    this.description,
+    required this.resourceGroupName,
+    required this.storageMoverName,
+    this.uploadLimitSchedule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class AgentArgs {
 
   factory AgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentArgs(
-      agentName: map['agentName'] == null ? null : pulumi.Output.create<String>(map['agentName'] as String),
-      arcResourceId: pulumi.Output.create<String>(map['arcResourceId'] as String),
-      arcVmUuid: pulumi.Output.create<String>(map['arcVmUuid'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageMoverName: pulumi.Output.create<String>(map['storageMoverName'] as String),
-      uploadLimitSchedule: map['uploadLimitSchedule'] == null ? null : pulumi.Output.create<UploadLimitSchedule>(UploadLimitSchedule.fromMap((map['uploadLimitSchedule'] as Map).cast<String, dynamic>())),
+      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      arcResourceId: (map['arcResourceId'] as String).input(),
+      arcVmUuid: (map['arcVmUuid'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageMoverName: (map['storageMoverName'] as String).input(),
+      uploadLimitSchedule: map['uploadLimitSchedule'] == null ? null : (UploadLimitSchedule.fromMap((map['uploadLimitSchedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

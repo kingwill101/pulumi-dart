@@ -30,19 +30,13 @@ class TunnelPolicyArgs {
   /// [tunnelPolicyName] Name of the Tunnel Policy under the profile.
   /// [tunnelType] Protocol this tunnel will use for allowing traffic to backends.
   TunnelPolicyArgs({
-    required pulumi.Output<List<ActivatedResourceReference>> domains,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<ResourceReference>>? targetGroups,
-    pulumi.Output<String>? tunnelPolicyName,
-    pulumi.Output<String>? tunnelType,
-  }) :
-      domains = pulumi.Input.asInput<List<ActivatedResourceReference>>(domains),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetGroups = pulumi.Input.asOptionalInput<List<ResourceReference>>(targetGroups),
-      tunnelPolicyName = pulumi.Input.asOptionalInput<String>(tunnelPolicyName),
-      tunnelType = pulumi.Input.asOptionalInput<String>(tunnelType);
+    required this.domains,
+    required this.profileName,
+    required this.resourceGroupName,
+    this.targetGroups,
+    this.tunnelPolicyName,
+    this.tunnelType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class TunnelPolicyArgs {
 
   factory TunnelPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TunnelPolicyArgs(
-      domains: pulumi.Output.create<List<ActivatedResourceReference>>(pulumi.Input.decodeList<ActivatedResourceReference>(map['domains'], (value) => ActivatedResourceReference.fromMap((value as Map).cast<String, dynamic>()))),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetGroups: map['targetGroups'] == null ? null : pulumi.Output.create<List<ResourceReference>>(pulumi.Input.decodeList<ResourceReference>(map['targetGroups'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))),
-      tunnelPolicyName: map['tunnelPolicyName'] == null ? null : pulumi.Output.create<String>(map['tunnelPolicyName'] as String),
-      tunnelType: map['tunnelType'] == null ? null : pulumi.Output.create<String>(map['tunnelType'] as String),
+      domains: (pulumi.Input.decodeList<ActivatedResourceReference>(map['domains'], (value) => ActivatedResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetGroups: map['targetGroups'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['targetGroups'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tunnelPolicyName: map['tunnelPolicyName'] == null ? null : (map['tunnelPolicyName'] as String).input(),
+      tunnelType: map['tunnelType'] == null ? null : (map['tunnelType'] as String).input(),
     );
   }
 }

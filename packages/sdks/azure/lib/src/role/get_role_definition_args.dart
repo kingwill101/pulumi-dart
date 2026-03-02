@@ -23,13 +23,10 @@ class GetRoleDefinitionArgs {
   /// [roleDefinitionId] Specifies the ID of the Role Definition as a UUID/GUID.
   /// [scope] Specifies the Scope at which the Custom Role Definition exists.
   GetRoleDefinitionArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<String>? scope,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.name,
+    this.roleDefinitionId,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetRoleDefinitionArgs {
 
   factory GetRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleDefinitionArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

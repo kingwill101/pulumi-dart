@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_lifecycle_configuration_rule_abort_incomplete_multipart_upload_s3_control.dart';
 import 'bucket_lifecycle_configuration_rule_expiration_s3_control.dart';
 import 'bucket_lifecycle_configuration_rule_filter_s3_control.dart';
 
 class BucketLifecycleConfigurationRuleS3Control {
   /// Configuration block containing settings for abort incomplete multipart upload.
-  final BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control? abortIncompleteMultipartUpload;
+  final pulumi.Input<BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control>? abortIncompleteMultipartUpload;
   /// Configuration block containing settings for expiration of objects.
-  final BucketLifecycleConfigurationRuleExpirationS3Control? expiration;
+  final pulumi.Input<BucketLifecycleConfigurationRuleExpirationS3Control>? expiration;
   /// Configuration block containing settings for filtering.
-  final BucketLifecycleConfigurationRuleFilterS3Control? filter;
+  final pulumi.Input<BucketLifecycleConfigurationRuleFilterS3Control>? filter;
   /// Unique identifier for the rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// Status of the rule. Valid values: `Enabled` and `Disabled`. Defaults to `Enabled`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [BucketLifecycleConfigurationRuleS3Control].
   /// [abortIncompleteMultipartUpload] Configuration block containing settings for abort incomplete multipart upload.
@@ -32,9 +33,9 @@ class BucketLifecycleConfigurationRuleS3Control {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abortIncompleteMultipartUpload': ?abortIncompleteMultipartUpload == null ? null : abortIncompleteMultipartUpload!.toMap(),
-      'expiration': ?expiration == null ? null : expiration!.toMap(),
-      'filter': ?filter == null ? null : filter!.toMap(),
+      'abortIncompleteMultipartUpload': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control, Map<String, dynamic>>(abortIncompleteMultipartUpload, (value) => value.toMap()),
+      'expiration': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleConfigurationRuleExpirationS3Control, Map<String, dynamic>>(expiration, (value) => value.toMap()),
+      'filter': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleConfigurationRuleFilterS3Control, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'id': id,
       'status': ?status,
     };
@@ -42,11 +43,11 @@ class BucketLifecycleConfigurationRuleS3Control {
 
   factory BucketLifecycleConfigurationRuleS3Control.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleS3Control(
-      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap((map['abortIncompleteMultipartUpload'] as Map).cast<String, dynamic>()),
-      expiration: map['expiration'] == null ? null : BucketLifecycleConfigurationRuleExpirationS3Control.fromMap((map['expiration'] as Map).cast<String, dynamic>()),
-      filter: map['filter'] == null ? null : BucketLifecycleConfigurationRuleFilterS3Control.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : (BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap((map['abortIncompleteMultipartUpload'] as Map).cast<String, dynamic>())).input(),
+      expiration: map['expiration'] == null ? null : (BucketLifecycleConfigurationRuleExpirationS3Control.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (BucketLifecycleConfigurationRuleFilterS3Control.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

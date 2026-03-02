@@ -19,15 +19,11 @@ class ConfigMapState {
   /// [name] ConfigMap instance name.
   /// [namespaceId] The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
   ConfigMapState({
-    pulumi.Output<String>? data,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespaceId,
-  }) :
-      data = pulumi.Input.asOptionalInput<String>(data),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId);
+    this.data,
+    this.description,
+    this.name,
+    this.namespaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ConfigMapState {
 
   factory ConfigMapState.fromMap(Map<String, dynamic> map) {
     return ConfigMapState(
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
     );
   }
 }

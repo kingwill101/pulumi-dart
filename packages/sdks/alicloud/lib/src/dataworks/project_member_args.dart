@@ -20,13 +20,10 @@ class ProjectMemberArgs {
   /// [roles] List of roles owned by members. See `roles` below.
   /// [userId] The user ID of the member.
   ProjectMemberArgs({
-    required pulumi.Output<int> projectId,
-    pulumi.Output<List<ProjectMemberRole>>? roles,
-    required pulumi.Output<String> userId,
-  }) :
-      projectId = pulumi.Input.asInput<int>(projectId),
-      roles = pulumi.Input.asOptionalInput<List<ProjectMemberRole>>(roles),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.projectId,
+    this.roles,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ProjectMemberArgs {
 
   factory ProjectMemberArgs.fromMap(Map<String, dynamic> map) {
     return ProjectMemberArgs(
-      projectId: pulumi.Output.create<int>(map['projectId'] as int),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<ProjectMemberRole>>(pulumi.Input.decodeList<ProjectMemberRole>(map['roles'], (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      projectId: (map['projectId'] as int).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ProjectMemberRole>(map['roles'], (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

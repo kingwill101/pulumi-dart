@@ -54,35 +54,21 @@ class ElasticsearchState {
   /// [skuName] Specifies the name of the SKU for this Elasticsearch. Changing this forces a new Elasticsearch to be created.
   /// [tags] A mapping of tags which should be assigned to the Elasticsearch resource.
   ElasticsearchState({
-    pulumi.Output<String>? elasticCloudDeploymentId,
-    pulumi.Output<String>? elasticCloudEmailAddress,
-    pulumi.Output<String>? elasticCloudSsoDefaultUrl,
-    pulumi.Output<String>? elasticCloudUserId,
-    pulumi.Output<String>? elasticsearchServiceUrl,
-    pulumi.Output<String>? kibanaServiceUrl,
-    pulumi.Output<String>? kibanaSsoUri,
-    pulumi.Output<String>? location,
-    pulumi.Output<ElasticsearchLogs>? logs,
-    pulumi.Output<bool>? monitoringEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      elasticCloudDeploymentId = pulumi.Input.asOptionalInput<String>(elasticCloudDeploymentId),
-      elasticCloudEmailAddress = pulumi.Input.asOptionalInput<String>(elasticCloudEmailAddress),
-      elasticCloudSsoDefaultUrl = pulumi.Input.asOptionalInput<String>(elasticCloudSsoDefaultUrl),
-      elasticCloudUserId = pulumi.Input.asOptionalInput<String>(elasticCloudUserId),
-      elasticsearchServiceUrl = pulumi.Input.asOptionalInput<String>(elasticsearchServiceUrl),
-      kibanaServiceUrl = pulumi.Input.asOptionalInput<String>(kibanaServiceUrl),
-      kibanaSsoUri = pulumi.Input.asOptionalInput<String>(kibanaSsoUri),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logs = pulumi.Input.asOptionalInput<ElasticsearchLogs>(logs),
-      monitoringEnabled = pulumi.Input.asOptionalInput<bool>(monitoringEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.elasticCloudDeploymentId,
+    this.elasticCloudEmailAddress,
+    this.elasticCloudSsoDefaultUrl,
+    this.elasticCloudUserId,
+    this.elasticsearchServiceUrl,
+    this.kibanaServiceUrl,
+    this.kibanaSsoUri,
+    this.location,
+    this.logs,
+    this.monitoringEnabled,
+    this.name,
+    this.resourceGroupName,
+    this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class ElasticsearchState {
 
   factory ElasticsearchState.fromMap(Map<String, dynamic> map) {
     return ElasticsearchState(
-      elasticCloudDeploymentId: map['elasticCloudDeploymentId'] == null ? null : pulumi.Output.create<String>(map['elasticCloudDeploymentId'] as String),
-      elasticCloudEmailAddress: map['elasticCloudEmailAddress'] == null ? null : pulumi.Output.create<String>(map['elasticCloudEmailAddress'] as String),
-      elasticCloudSsoDefaultUrl: map['elasticCloudSsoDefaultUrl'] == null ? null : pulumi.Output.create<String>(map['elasticCloudSsoDefaultUrl'] as String),
-      elasticCloudUserId: map['elasticCloudUserId'] == null ? null : pulumi.Output.create<String>(map['elasticCloudUserId'] as String),
-      elasticsearchServiceUrl: map['elasticsearchServiceUrl'] == null ? null : pulumi.Output.create<String>(map['elasticsearchServiceUrl'] as String),
-      kibanaServiceUrl: map['kibanaServiceUrl'] == null ? null : pulumi.Output.create<String>(map['kibanaServiceUrl'] as String),
-      kibanaSsoUri: map['kibanaSsoUri'] == null ? null : pulumi.Output.create<String>(map['kibanaSsoUri'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logs: map['logs'] == null ? null : pulumi.Output.create<ElasticsearchLogs>(ElasticsearchLogs.fromMap((map['logs'] as Map).cast<String, dynamic>())),
-      monitoringEnabled: map['monitoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['monitoringEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      elasticCloudDeploymentId: map['elasticCloudDeploymentId'] == null ? null : (map['elasticCloudDeploymentId'] as String).input(),
+      elasticCloudEmailAddress: map['elasticCloudEmailAddress'] == null ? null : (map['elasticCloudEmailAddress'] as String).input(),
+      elasticCloudSsoDefaultUrl: map['elasticCloudSsoDefaultUrl'] == null ? null : (map['elasticCloudSsoDefaultUrl'] as String).input(),
+      elasticCloudUserId: map['elasticCloudUserId'] == null ? null : (map['elasticCloudUserId'] as String).input(),
+      elasticsearchServiceUrl: map['elasticsearchServiceUrl'] == null ? null : (map['elasticsearchServiceUrl'] as String).input(),
+      kibanaServiceUrl: map['kibanaServiceUrl'] == null ? null : (map['kibanaServiceUrl'] as String).input(),
+      kibanaSsoUri: map['kibanaSsoUri'] == null ? null : (map['kibanaSsoUri'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logs: map['logs'] == null ? null : (ElasticsearchLogs.fromMap((map['logs'] as Map).cast<String, dynamic>())).input(),
+      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

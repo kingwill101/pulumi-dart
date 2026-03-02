@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A set of Shielded VM options.
 class ShieldedVmConfigResponseComputeBeta {
   /// Defines whether the instance has integrity monitoring enabled.
-  final bool enableIntegrityMonitoring;
+  final pulumi.Input<bool> enableIntegrityMonitoring;
   /// Defines whether the instance has Secure Boot enabled.
-  final bool enableSecureBoot;
+  final pulumi.Input<bool> enableSecureBoot;
   /// Defines whether the instance has the vTPM enabled.
-  final bool enableVtpm;
+  final pulumi.Input<bool> enableVtpm;
 
   /// Creates a new [ShieldedVmConfigResponseComputeBeta].
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.
@@ -30,9 +31,9 @@ class ShieldedVmConfigResponseComputeBeta {
 
   factory ShieldedVmConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ShieldedVmConfigResponseComputeBeta(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] as bool,
-      enableVtpm: map['enableVtpm'] as bool,
+      enableIntegrityMonitoring: (map['enableIntegrityMonitoring'] as bool).input(),
+      enableSecureBoot: (map['enableSecureBoot'] as bool).input(),
+      enableVtpm: (map['enableVtpm'] as bool).input(),
     );
   }
 }

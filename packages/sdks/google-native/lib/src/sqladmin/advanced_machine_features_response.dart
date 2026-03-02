@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies options for controlling advanced machine features.
 class AdvancedMachineFeaturesResponse {
   /// The number of threads per physical core.
-  final int threadsPerCore;
+  final pulumi.Input<int> threadsPerCore;
 
   /// Creates a new [AdvancedMachineFeaturesResponse].
   /// [threadsPerCore] The number of threads per physical core.
@@ -20,7 +21,7 @@ class AdvancedMachineFeaturesResponse {
 
   factory AdvancedMachineFeaturesResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeaturesResponse(
-      threadsPerCore: map['threadsPerCore'] as int,
+      threadsPerCore: (map['threadsPerCore'] as int).input(),
     );
   }
 }

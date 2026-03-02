@@ -45,31 +45,19 @@ class OntapStorageVirtualMachineState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uuid] The SVM's UUID (universally unique identifier).
   OntapStorageVirtualMachineState({
-    pulumi.Output<OntapStorageVirtualMachineActiveDirectoryConfiguration>? activeDirectoryConfiguration,
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<OntapStorageVirtualMachineEndpoint>>? endpoints,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? rootVolumeSecurityStyle,
-    pulumi.Output<String>? subtype,
-    pulumi.Output<String>? svmAdminPassword,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uuid,
-  }) :
-      activeDirectoryConfiguration = pulumi.Input.asOptionalInput<OntapStorageVirtualMachineActiveDirectoryConfiguration>(activeDirectoryConfiguration),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      endpoints = pulumi.Input.asOptionalInput<List<OntapStorageVirtualMachineEndpoint>>(endpoints),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rootVolumeSecurityStyle = pulumi.Input.asOptionalInput<String>(rootVolumeSecurityStyle),
-      subtype = pulumi.Input.asOptionalInput<String>(subtype),
-      svmAdminPassword = pulumi.Input.asOptionalInput<String>(svmAdminPassword),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.activeDirectoryConfiguration,
+    this.arn,
+    this.endpoints,
+    this.fileSystemId,
+    this.name,
+    this.region,
+    this.rootVolumeSecurityStyle,
+    this.subtype,
+    this.svmAdminPassword,
+    this.tags,
+    this.tagsAll,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class OntapStorageVirtualMachineState {
 
   factory OntapStorageVirtualMachineState.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineState(
-      activeDirectoryConfiguration: map['activeDirectoryConfiguration'] == null ? null : pulumi.Output.create<OntapStorageVirtualMachineActiveDirectoryConfiguration>(OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((map['activeDirectoryConfiguration'] as Map).cast<String, dynamic>())),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      endpoints: map['endpoints'] == null ? null : pulumi.Output.create<List<OntapStorageVirtualMachineEndpoint>>(pulumi.Input.decodeList<OntapStorageVirtualMachineEndpoint>(map['endpoints'], (value) => OntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rootVolumeSecurityStyle: map['rootVolumeSecurityStyle'] == null ? null : pulumi.Output.create<String>(map['rootVolumeSecurityStyle'] as String),
-      subtype: map['subtype'] == null ? null : pulumi.Output.create<String>(map['subtype'] as String),
-      svmAdminPassword: map['svmAdminPassword'] == null ? null : pulumi.Output.create<String>(map['svmAdminPassword'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      activeDirectoryConfiguration: map['activeDirectoryConfiguration'] == null ? null : (OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((map['activeDirectoryConfiguration'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<OntapStorageVirtualMachineEndpoint>(map['endpoints'], (value) => OntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rootVolumeSecurityStyle: map['rootVolumeSecurityStyle'] == null ? null : (map['rootVolumeSecurityStyle'] as String).input(),
+      subtype: map['subtype'] == null ? null : (map['subtype'] as String).input(),
+      svmAdminPassword: map['svmAdminPassword'] == null ? null : (map['svmAdminPassword'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

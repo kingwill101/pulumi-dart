@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolsetOpenApiToolsetServiceDirectoryConfig {
   /// The name of [Service
@@ -8,7 +9,7 @@ class ToolsetOpenApiToolsetServiceDirectoryConfig {
   /// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
   /// Location of the service directory must be the same as the location of the
   /// app.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [ToolsetOpenApiToolsetServiceDirectoryConfig].
   /// [service] The name of [Service
@@ -24,7 +25,7 @@ class ToolsetOpenApiToolsetServiceDirectoryConfig {
 
   factory ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetServiceDirectoryConfig(
-      service: map['service'] as String,
+      service: (map['service'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'materialization_compute_resource.dart';
 import 'notification_setting.dart';
 import 'recurrence_trigger.dart';
 
 class MaterializationSettings {
   /// Specifies the notification details
-  final NotificationSetting? notification;
+  final pulumi.Input<NotificationSetting>? notification;
   /// Specifies the compute resource settings
-  final MaterializationComputeResource? resource;
+  final pulumi.Input<MaterializationComputeResource>? resource;
   /// Specifies the schedule details
-  final RecurrenceTrigger? schedule;
+  final pulumi.Input<RecurrenceTrigger>? schedule;
   /// Specifies the spark compute settings
-  final Map<String, String>? sparkConfiguration;
+  final pulumi.Input<Map<String, String>>? sparkConfiguration;
   /// Specifies the stores to which materialization should happen
-  final String? storeType;
+  final pulumi.Input<String>? storeType;
 
   /// Creates a new [MaterializationSettings].
   /// [notification] Specifies the notification details
@@ -32,9 +33,9 @@ class MaterializationSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'notification': ?notification == null ? null : notification!.toMap(),
-      'resource': ?resource == null ? null : resource!.toMap(),
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'notification': ?pulumi.Input.mapOptionalInputValue<NotificationSetting, Map<String, dynamic>>(notification, (value) => value.toMap()),
+      'resource': ?pulumi.Input.mapOptionalInputValue<MaterializationComputeResource, Map<String, dynamic>>(resource, (value) => value.toMap()),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<RecurrenceTrigger, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'sparkConfiguration': ?sparkConfiguration,
       'storeType': ?storeType,
     };
@@ -42,11 +43,11 @@ class MaterializationSettings {
 
   factory MaterializationSettings.fromMap(Map<String, dynamic> map) {
     return MaterializationSettings(
-      notification: map['notification'] == null ? null : NotificationSetting.fromMap((map['notification'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null ? null : MaterializationComputeResource.fromMap((map['resource'] as Map).cast<String, dynamic>()),
-      schedule: map['schedule'] == null ? null : RecurrenceTrigger.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
-      sparkConfiguration: map['sparkConfiguration'] == null ? null : (map['sparkConfiguration'] as Map).cast<String, String>(),
-      storeType: map['storeType'] == null ? null : map['storeType'] as String,
+      notification: map['notification'] == null ? null : (NotificationSetting.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (MaterializationComputeResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (RecurrenceTrigger.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      sparkConfiguration: map['sparkConfiguration'] == null ? null : ((map['sparkConfiguration'] as Map).cast<String, String>()).input(),
+      storeType: map['storeType'] == null ? null : (map['storeType'] as String).input(),
     );
   }
 }

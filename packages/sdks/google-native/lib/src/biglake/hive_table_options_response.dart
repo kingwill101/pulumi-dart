@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_descriptor_response.dart';
 
 /// Options of a Hive table.
 class HiveTableOptionsResponse {
   /// Stores user supplied Hive table parameters.
-  final Map<String, String> parameters;
+  final pulumi.Input<Map<String, String>> parameters;
   /// Stores physical storage information of the data.
-  final StorageDescriptorResponse storageDescriptor;
+  final pulumi.Input<StorageDescriptorResponse> storageDescriptor;
   /// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
-  final String tableType;
+  final pulumi.Input<String> tableType;
 
   /// Creates a new [HiveTableOptionsResponse].
   /// [parameters] Stores user supplied Hive table parameters.
@@ -24,16 +25,16 @@ class HiveTableOptionsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'parameters': parameters,
-      'storageDescriptor': storageDescriptor.toMap(),
+      'storageDescriptor': pulumi.Input.mapInputValue<StorageDescriptorResponse, Map<String, dynamic>>(storageDescriptor, (value) => value.toMap()),
       'tableType': tableType,
     };
   }
 
   factory HiveTableOptionsResponse.fromMap(Map<String, dynamic> map) {
     return HiveTableOptionsResponse(
-      parameters: (map['parameters'] as Map).cast<String, String>(),
-      storageDescriptor: StorageDescriptorResponse.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>()),
-      tableType: map['tableType'] as String,
+      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
+      storageDescriptor: (StorageDescriptorResponse.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
+      tableType: (map['tableType'] as String).input(),
     );
   }
 }

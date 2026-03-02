@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAuthScopeRole {
   /// The ID of the role.
-  final String roleId;
+  final pulumi.Input<String> roleId;
   /// The name of the role.
-  final String roleName;
+  final pulumi.Input<String> roleName;
 
   /// Creates a new [GetAuthScopeRole].
   /// [roleId] The ID of the role.
@@ -24,8 +25,8 @@ class GetAuthScopeRole {
 
   factory GetAuthScopeRole.fromMap(Map<String, dynamic> map) {
     return GetAuthScopeRole(
-      roleId: map['roleId'] as String,
-      roleName: map['roleName'] as String,
+      roleId: (map['roleId'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

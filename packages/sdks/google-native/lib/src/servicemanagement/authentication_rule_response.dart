@@ -7,13 +7,13 @@ import 'oauth_requirements_response.dart';
 /// Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored.
 class AuthenticationRuleResponse {
   /// If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
-  final bool allowWithoutCredential;
+  final pulumi.Input<bool> allowWithoutCredential;
   /// The requirements for OAuth credentials.
-  final OAuthRequirementsResponse oauth;
+  final pulumi.Input<OAuthRequirementsResponse> oauth;
   /// Requirements for additional authentication providers.
-  final List<AuthRequirementResponse> requirements;
+  final pulumi.Input<List<AuthRequirementResponse>> requirements;
   /// Selects the methods to which this rule applies. Refer to selector for syntax details.
-  final String selector;
+  final pulumi.Input<String> selector;
 
   /// Creates a new [AuthenticationRuleResponse].
   /// [allowWithoutCredential] If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
@@ -30,18 +30,18 @@ class AuthenticationRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowWithoutCredential': allowWithoutCredential,
-      'oauth': oauth.toMap(),
-      'requirements': pulumi.Input.encodeList<AuthRequirementResponse, Map<String, dynamic>>(requirements, (value) => value.toMap()),
+      'oauth': pulumi.Input.mapInputValue<OAuthRequirementsResponse, Map<String, dynamic>>(oauth, (value) => value.toMap()),
+      'requirements': pulumi.Input.mapInputValue<List<AuthRequirementResponse>, List<Map<String, dynamic>>>(requirements, (value) => pulumi.Input.encodeList<AuthRequirementResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'selector': selector,
     };
   }
 
   factory AuthenticationRuleResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationRuleResponse(
-      allowWithoutCredential: map['allowWithoutCredential'] as bool,
-      oauth: OAuthRequirementsResponse.fromMap((map['oauth'] as Map).cast<String, dynamic>()),
-      requirements: pulumi.Input.decodeList<AuthRequirementResponse>(map['requirements'], (value) => AuthRequirementResponse.fromMap((value as Map).cast<String, dynamic>())),
-      selector: map['selector'] as String,
+      allowWithoutCredential: (map['allowWithoutCredential'] as bool).input(),
+      oauth: (OAuthRequirementsResponse.fromMap((map['oauth'] as Map).cast<String, dynamic>())).input(),
+      requirements: (pulumi.Input.decodeList<AuthRequirementResponse>(map['requirements'], (value) => AuthRequirementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selector: (map['selector'] as String).input(),
     );
   }
 }

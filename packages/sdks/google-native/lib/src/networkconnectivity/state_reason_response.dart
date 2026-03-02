@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The reason a spoke is inactive.
 class StateReasonResponse {
   /// The code associated with this reason.
-  final String code;
+  final pulumi.Input<String> code;
   /// Human-readable details about this reason.
-  final String message;
+  final pulumi.Input<String> message;
   /// Additional information provided by the user in the RejectSpoke call.
-  final String userDetails;
+  final pulumi.Input<String> userDetails;
 
   /// Creates a new [StateReasonResponse].
   /// [code] The code associated with this reason.
@@ -30,9 +31,9 @@ class StateReasonResponse {
 
   factory StateReasonResponse.fromMap(Map<String, dynamic> map) {
     return StateReasonResponse(
-      code: map['code'] as String,
-      message: map['message'] as String,
-      userDetails: map['userDetails'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
+      userDetails: (map['userDetails'] as String).input(),
     );
   }
 }

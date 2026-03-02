@@ -26,17 +26,12 @@ class NodeCustomizationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   NodeCustomizationArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? nodeCustomizationName,
-    pulumi.Output<NodeCustomizationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      nodeCustomizationName = pulumi.Input.asOptionalInput<String>(nodeCustomizationName),
-      properties = pulumi.Input.asOptionalInput<NodeCustomizationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.nodeCustomizationName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class NodeCustomizationArgs {
 
   factory NodeCustomizationArgs.fromMap(Map<String, dynamic> map) {
     return NodeCustomizationArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      nodeCustomizationName: map['nodeCustomizationName'] == null ? null : pulumi.Output.create<String>(map['nodeCustomizationName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<NodeCustomizationProperties>(NodeCustomizationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      nodeCustomizationName: map['nodeCustomizationName'] == null ? null : (map['nodeCustomizationName'] as String).input(),
+      properties: map['properties'] == null ? null : (NodeCustomizationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of ServerSiteResource.
 class SiteHealthSummaryResponse {
   /// Gets or sets the count of affected objects.
-  final double? affectedObjectsCount;
+  final pulumi.Input<double>? affectedObjectsCount;
   /// Gets the affected resource type.
-  final String affectedResourceType;
+  final pulumi.Input<String> affectedResourceType;
   /// Gets or sets the affected resources.
-  final List<String>? affectedResources;
+  final pulumi.Input<List<String>>? affectedResources;
   /// Gets the appliance name.
-  final String applianceName;
+  final pulumi.Input<String> applianceName;
   /// Gets the error code.
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// Gets the error Id.
-  final double errorId;
+  final pulumi.Input<double> errorId;
   /// Gets the error message.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// Gets or sets sources of the exception.
-  final List<String>? fabricLayoutUpdateSources;
+  final pulumi.Input<List<String>>? fabricLayoutUpdateSources;
   /// Gets or sets the hit count of the error.
-  final double? hitCount;
+  final pulumi.Input<double>? hitCount;
   /// Gets the remediation guidance.
-  final String remediationGuidance;
+  final pulumi.Input<String> remediationGuidance;
   /// Gets the severity of error.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// Gets the summary message.
-  final String summaryMessage;
+  final pulumi.Input<String> summaryMessage;
 
   /// Creates a new [SiteHealthSummaryResponse].
   /// [affectedObjectsCount] Gets or sets the count of affected objects.
@@ -75,18 +76,18 @@ class SiteHealthSummaryResponse {
 
   factory SiteHealthSummaryResponse.fromMap(Map<String, dynamic> map) {
     return SiteHealthSummaryResponse(
-      affectedObjectsCount: map['affectedObjectsCount'] == null ? null : map['affectedObjectsCount'] as double,
-      affectedResourceType: map['affectedResourceType'] as String,
-      affectedResources: map['affectedResources'] == null ? null : (map['affectedResources'] as List).cast<String>(),
-      applianceName: map['applianceName'] as String,
-      errorCode: map['errorCode'] as String,
-      errorId: map['errorId'] as double,
-      errorMessage: map['errorMessage'] as String,
-      fabricLayoutUpdateSources: map['fabricLayoutUpdateSources'] == null ? null : (map['fabricLayoutUpdateSources'] as List).cast<String>(),
-      hitCount: map['hitCount'] == null ? null : map['hitCount'] as double,
-      remediationGuidance: map['remediationGuidance'] as String,
-      severity: map['severity'] as String,
-      summaryMessage: map['summaryMessage'] as String,
+      affectedObjectsCount: map['affectedObjectsCount'] == null ? null : (map['affectedObjectsCount'] as double).input(),
+      affectedResourceType: (map['affectedResourceType'] as String).input(),
+      affectedResources: map['affectedResources'] == null ? null : ((map['affectedResources'] as List).cast<String>()).input(),
+      applianceName: (map['applianceName'] as String).input(),
+      errorCode: (map['errorCode'] as String).input(),
+      errorId: (map['errorId'] as double).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      fabricLayoutUpdateSources: map['fabricLayoutUpdateSources'] == null ? null : ((map['fabricLayoutUpdateSources'] as List).cast<String>()).input(),
+      hitCount: map['hitCount'] == null ? null : (map['hitCount'] as double).input(),
+      remediationGuidance: (map['remediationGuidance'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      summaryMessage: (map['summaryMessage'] as String).input(),
     );
   }
 }

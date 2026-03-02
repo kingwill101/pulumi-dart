@@ -17,11 +17,9 @@ class EventSourcesConfigArgs {
   /// [eventSources] Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EventSourcesConfigArgs({
-    required pulumi.Output<List<EventSourcesConfigEventSource>> eventSources,
-    pulumi.Output<String>? region,
-  }) :
-      eventSources = pulumi.Input.asInput<List<EventSourcesConfigEventSource>>(eventSources),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.eventSources,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class EventSourcesConfigArgs {
 
   factory EventSourcesConfigArgs.fromMap(Map<String, dynamic> map) {
     return EventSourcesConfigArgs(
-      eventSources: pulumi.Output.create<List<EventSourcesConfigEventSource>>(pulumi.Input.decodeList<EventSourcesConfigEventSource>(map['eventSources'], (value) => EventSourcesConfigEventSource.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      eventSources: (pulumi.Input.decodeList<EventSourcesConfigEventSource>(map['eventSources'], (value) => EventSourcesConfigEventSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

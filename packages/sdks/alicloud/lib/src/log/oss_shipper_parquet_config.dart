@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OssShipperParquetConfig {
-  final String name;
-  final String type;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OssShipperParquetConfig].
   /// [name] Required.
@@ -22,8 +23,8 @@ class OssShipperParquetConfig {
 
   factory OssShipperParquetConfig.fromMap(Map<String, dynamic> map) {
     return OssShipperParquetConfig(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

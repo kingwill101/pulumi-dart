@@ -38,23 +38,15 @@ class SettingsState {
   /// [serviceAccountApproverSettings] This controls the node-level settings for allowing service accounts as approvers.
   /// [updateTime] Update timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
   SettingsState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<SettingsEmailNotificationSettings>? emailNotificationSettings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<SettingsServiceAccountApproverSettings>? serviceAccountApproverSettings,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      emailNotificationSettings = pulumi.Input.asOptionalInput<SettingsEmailNotificationSettings>(emailNotificationSettings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      serviceAccountApproverSettings = pulumi.Input.asOptionalInput<SettingsServiceAccountApproverSettings>(serviceAccountApproverSettings),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.emailNotificationSettings,
+    this.etag,
+    this.location,
+    this.name,
+    this.parent,
+    this.serviceAccountApproverSettings,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class SettingsState {
 
   factory SettingsState.fromMap(Map<String, dynamic> map) {
     return SettingsState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : pulumi.Output.create<SettingsEmailNotificationSettings>(SettingsEmailNotificationSettings.fromMap((map['emailNotificationSettings'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      serviceAccountApproverSettings: map['serviceAccountApproverSettings'] == null ? null : pulumi.Output.create<SettingsServiceAccountApproverSettings>(SettingsServiceAccountApproverSettings.fromMap((map['serviceAccountApproverSettings'] as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : (SettingsEmailNotificationSettings.fromMap((map['emailNotificationSettings'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      serviceAccountApproverSettings: map['serviceAccountApproverSettings'] == null ? null : (SettingsServiceAccountApproverSettings.fromMap((map['serviceAccountApproverSettings'] as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

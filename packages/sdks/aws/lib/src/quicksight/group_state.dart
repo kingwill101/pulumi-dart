@@ -25,19 +25,13 @@ class GroupState {
   /// [namespace] The namespace. Currently, you should set this to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.awsAccountId,
+    this.description,
+    this.groupName,
+    this.namespace,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

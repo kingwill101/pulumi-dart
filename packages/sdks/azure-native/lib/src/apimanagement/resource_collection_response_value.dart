@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceCollectionResponseValue {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ResourceCollectionResponseValue].
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -29,9 +30,9 @@ class ResourceCollectionResponseValue {
 
   factory ResourceCollectionResponseValue.fromMap(Map<String, dynamic> map) {
     return ResourceCollectionResponseValue(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

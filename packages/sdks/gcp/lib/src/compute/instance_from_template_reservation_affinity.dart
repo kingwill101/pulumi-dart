@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_from_template_reservation_affinity_specific_reservation.dart';
 
 class InstanceFromTemplateReservationAffinity {
   /// Specifies the label selector for the reservation to use.
-  final InstanceFromTemplateReservationAffinitySpecificReservation? specificReservation;
+  final pulumi.Input<InstanceFromTemplateReservationAffinitySpecificReservation>? specificReservation;
   /// The type of reservation from which this instance can consume resources.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [InstanceFromTemplateReservationAffinity].
   /// [specificReservation] Specifies the label selector for the reservation to use.
@@ -18,15 +19,15 @@ class InstanceFromTemplateReservationAffinity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'specificReservation': ?specificReservation == null ? null : specificReservation!.toMap(),
+      'specificReservation': ?pulumi.Input.mapOptionalInputValue<InstanceFromTemplateReservationAffinitySpecificReservation, Map<String, dynamic>>(specificReservation, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory InstanceFromTemplateReservationAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateReservationAffinity(
-      specificReservation: map['specificReservation'] == null ? null : InstanceFromTemplateReservationAffinitySpecificReservation.fromMap((map['specificReservation'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      specificReservation: map['specificReservation'] == null ? null : (InstanceFromTemplateReservationAffinitySpecificReservation.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

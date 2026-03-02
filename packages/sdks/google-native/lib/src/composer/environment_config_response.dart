@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_config_response.dart';
 import 'encryption_config_response.dart';
 import 'maintenance_window_response.dart';
@@ -15,41 +16,41 @@ import 'workloads_config_response.dart';
 /// Configuration information for an environment.
 class EnvironmentConfigResponse {
   /// The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).
-  final String airflowByoidUri;
+  final pulumi.Input<String> airflowByoidUri;
   /// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-  final String airflowUri;
+  final pulumi.Input<String> airflowUri;
   /// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-  final String dagGcsPrefix;
+  final pulumi.Input<String> dagGcsPrefix;
   /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
-  final DatabaseConfigResponse databaseConfig;
+  final pulumi.Input<DatabaseConfigResponse> databaseConfig;
   /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-  final EncryptionConfigResponse encryptionConfig;
+  final pulumi.Input<EncryptionConfigResponse> encryptionConfig;
   /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final String environmentSize;
+  final pulumi.Input<String> environmentSize;
   /// The Kubernetes Engine cluster used to run this environment.
-  final String gkeCluster;
+  final pulumi.Input<String> gkeCluster;
   /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
-  final MaintenanceWindowResponse maintenanceWindow;
+  final pulumi.Input<MaintenanceWindowResponse> maintenanceWindow;
   /// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
-  final MasterAuthorizedNetworksConfigResponse masterAuthorizedNetworksConfig;
+  final pulumi.Input<MasterAuthorizedNetworksConfigResponse> masterAuthorizedNetworksConfig;
   /// The configuration used for the Kubernetes Engine cluster.
-  final NodeConfigResponse nodeConfig;
+  final pulumi.Input<NodeConfigResponse> nodeConfig;
   /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final int nodeCount;
+  final pulumi.Input<int> nodeCount;
   /// The configuration used for the Private IP Cloud Composer environment.
-  final PrivateEnvironmentConfigResponse privateEnvironmentConfig;
+  final pulumi.Input<PrivateEnvironmentConfigResponse> privateEnvironmentConfig;
   /// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final RecoveryConfigResponse recoveryConfig;
+  final pulumi.Input<RecoveryConfigResponse> recoveryConfig;
   /// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
-  final String resilienceMode;
+  final pulumi.Input<String> resilienceMode;
   /// The configuration settings for software inside the environment.
-  final SoftwareConfigResponse softwareConfig;
+  final pulumi.Input<SoftwareConfigResponse> softwareConfig;
   /// Optional. The configuration settings for the Airflow web server App Engine instance.
-  final WebServerConfigResponse webServerConfig;
+  final pulumi.Input<WebServerConfigResponse> webServerConfig;
   /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
-  final WebServerNetworkAccessControlResponse webServerNetworkAccessControl;
+  final pulumi.Input<WebServerNetworkAccessControlResponse> webServerNetworkAccessControl;
   /// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final WorkloadsConfigResponse workloadsConfig;
+  final pulumi.Input<WorkloadsConfigResponse> workloadsConfig;
 
   /// Creates a new [EnvironmentConfigResponse].
   /// [airflowByoidUri] The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).
@@ -96,44 +97,44 @@ class EnvironmentConfigResponse {
       'airflowByoidUri': airflowByoidUri,
       'airflowUri': airflowUri,
       'dagGcsPrefix': dagGcsPrefix,
-      'databaseConfig': databaseConfig.toMap(),
-      'encryptionConfig': encryptionConfig.toMap(),
+      'databaseConfig': pulumi.Input.mapInputValue<DatabaseConfigResponse, Map<String, dynamic>>(databaseConfig, (value) => value.toMap()),
+      'encryptionConfig': pulumi.Input.mapInputValue<EncryptionConfigResponse, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'environmentSize': environmentSize,
       'gkeCluster': gkeCluster,
-      'maintenanceWindow': maintenanceWindow.toMap(),
-      'masterAuthorizedNetworksConfig': masterAuthorizedNetworksConfig.toMap(),
-      'nodeConfig': nodeConfig.toMap(),
+      'maintenanceWindow': pulumi.Input.mapInputValue<MaintenanceWindowResponse, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
+      'masterAuthorizedNetworksConfig': pulumi.Input.mapInputValue<MasterAuthorizedNetworksConfigResponse, Map<String, dynamic>>(masterAuthorizedNetworksConfig, (value) => value.toMap()),
+      'nodeConfig': pulumi.Input.mapInputValue<NodeConfigResponse, Map<String, dynamic>>(nodeConfig, (value) => value.toMap()),
       'nodeCount': nodeCount,
-      'privateEnvironmentConfig': privateEnvironmentConfig.toMap(),
-      'recoveryConfig': recoveryConfig.toMap(),
+      'privateEnvironmentConfig': pulumi.Input.mapInputValue<PrivateEnvironmentConfigResponse, Map<String, dynamic>>(privateEnvironmentConfig, (value) => value.toMap()),
+      'recoveryConfig': pulumi.Input.mapInputValue<RecoveryConfigResponse, Map<String, dynamic>>(recoveryConfig, (value) => value.toMap()),
       'resilienceMode': resilienceMode,
-      'softwareConfig': softwareConfig.toMap(),
-      'webServerConfig': webServerConfig.toMap(),
-      'webServerNetworkAccessControl': webServerNetworkAccessControl.toMap(),
-      'workloadsConfig': workloadsConfig.toMap(),
+      'softwareConfig': pulumi.Input.mapInputValue<SoftwareConfigResponse, Map<String, dynamic>>(softwareConfig, (value) => value.toMap()),
+      'webServerConfig': pulumi.Input.mapInputValue<WebServerConfigResponse, Map<String, dynamic>>(webServerConfig, (value) => value.toMap()),
+      'webServerNetworkAccessControl': pulumi.Input.mapInputValue<WebServerNetworkAccessControlResponse, Map<String, dynamic>>(webServerNetworkAccessControl, (value) => value.toMap()),
+      'workloadsConfig': pulumi.Input.mapInputValue<WorkloadsConfigResponse, Map<String, dynamic>>(workloadsConfig, (value) => value.toMap()),
     };
   }
 
   factory EnvironmentConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigResponse(
-      airflowByoidUri: map['airflowByoidUri'] as String,
-      airflowUri: map['airflowUri'] as String,
-      dagGcsPrefix: map['dagGcsPrefix'] as String,
-      databaseConfig: DatabaseConfigResponse.fromMap((map['databaseConfig'] as Map).cast<String, dynamic>()),
-      encryptionConfig: EncryptionConfigResponse.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
-      environmentSize: map['environmentSize'] as String,
-      gkeCluster: map['gkeCluster'] as String,
-      maintenanceWindow: MaintenanceWindowResponse.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>()),
-      masterAuthorizedNetworksConfig: MasterAuthorizedNetworksConfigResponse.fromMap((map['masterAuthorizedNetworksConfig'] as Map).cast<String, dynamic>()),
-      nodeConfig: NodeConfigResponse.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>()),
-      nodeCount: map['nodeCount'] as int,
-      privateEnvironmentConfig: PrivateEnvironmentConfigResponse.fromMap((map['privateEnvironmentConfig'] as Map).cast<String, dynamic>()),
-      recoveryConfig: RecoveryConfigResponse.fromMap((map['recoveryConfig'] as Map).cast<String, dynamic>()),
-      resilienceMode: map['resilienceMode'] as String,
-      softwareConfig: SoftwareConfigResponse.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>()),
-      webServerConfig: WebServerConfigResponse.fromMap((map['webServerConfig'] as Map).cast<String, dynamic>()),
-      webServerNetworkAccessControl: WebServerNetworkAccessControlResponse.fromMap((map['webServerNetworkAccessControl'] as Map).cast<String, dynamic>()),
-      workloadsConfig: WorkloadsConfigResponse.fromMap((map['workloadsConfig'] as Map).cast<String, dynamic>()),
+      airflowByoidUri: (map['airflowByoidUri'] as String).input(),
+      airflowUri: (map['airflowUri'] as String).input(),
+      dagGcsPrefix: (map['dagGcsPrefix'] as String).input(),
+      databaseConfig: (DatabaseConfigResponse.fromMap((map['databaseConfig'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfig: (EncryptionConfigResponse.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      environmentSize: (map['environmentSize'] as String).input(),
+      gkeCluster: (map['gkeCluster'] as String).input(),
+      maintenanceWindow: (MaintenanceWindowResponse.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      masterAuthorizedNetworksConfig: (MasterAuthorizedNetworksConfigResponse.fromMap((map['masterAuthorizedNetworksConfig'] as Map).cast<String, dynamic>())).input(),
+      nodeConfig: (NodeConfigResponse.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      privateEnvironmentConfig: (PrivateEnvironmentConfigResponse.fromMap((map['privateEnvironmentConfig'] as Map).cast<String, dynamic>())).input(),
+      recoveryConfig: (RecoveryConfigResponse.fromMap((map['recoveryConfig'] as Map).cast<String, dynamic>())).input(),
+      resilienceMode: (map['resilienceMode'] as String).input(),
+      softwareConfig: (SoftwareConfigResponse.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
+      webServerConfig: (WebServerConfigResponse.fromMap((map['webServerConfig'] as Map).cast<String, dynamic>())).input(),
+      webServerNetworkAccessControl: (WebServerNetworkAccessControlResponse.fromMap((map['webServerNetworkAccessControl'] as Map).cast<String, dynamic>())).input(),
+      workloadsConfig: (WorkloadsConfigResponse.fromMap((map['workloadsConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -38,27 +38,17 @@ class RunArgs {
   /// [startTime] The timestamp of the start of the run.
   /// [state] The state of the run.
   RunArgs({
-    pulumi.Output<Map<String, String>>? attributes,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> processId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> startTime,
-    required pulumi.Output<RunState> state,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<Map<String, String>>(attributes),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      processId = pulumi.Input.asInput<String>(processId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      startTime = pulumi.Input.asInput<String>(startTime),
-      state = pulumi.Input.asInput<RunState>(state);
+    this.attributes,
+    this.displayName,
+    this.endTime,
+    this.location,
+    this.name,
+    required this.processId,
+    this.project,
+    this.requestId,
+    required this.startTime,
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class RunArgs {
 
   factory RunArgs.fromMap(Map<String, dynamic> map) {
     return RunArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributes'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      processId: pulumi.Output.create<String>(map['processId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
-      state: pulumi.Output.create<RunState>(RunState.fromValue(map['state'] as String)),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      processId: (map['processId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      state: (RunState.fromValue(map['state'] as String)).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class TagRulesArgs {
   /// [monitorId] Name of the Dynatrace monitor. Changing this forces a new resource to be created.
   /// [name] Name of the Dynatrace tag rules. Currently, the only supported value is `default`. Changing this forces a new resource to be created.
   TagRulesArgs({
-    pulumi.Output<TagRulesLogRule>? logRule,
-    pulumi.Output<TagRulesMetricRule>? metricRule,
-    required pulumi.Output<String> monitorId,
-    pulumi.Output<String>? name,
-  }) :
-      logRule = pulumi.Input.asOptionalInput<TagRulesLogRule>(logRule),
-      metricRule = pulumi.Input.asOptionalInput<TagRulesMetricRule>(metricRule),
-      monitorId = pulumi.Input.asInput<String>(monitorId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.logRule,
+    this.metricRule,
+    required this.monitorId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class TagRulesArgs {
 
   factory TagRulesArgs.fromMap(Map<String, dynamic> map) {
     return TagRulesArgs(
-      logRule: map['logRule'] == null ? null : pulumi.Output.create<TagRulesLogRule>(TagRulesLogRule.fromMap((map['logRule'] as Map).cast<String, dynamic>())),
-      metricRule: map['metricRule'] == null ? null : pulumi.Output.create<TagRulesMetricRule>(TagRulesMetricRule.fromMap((map['metricRule'] as Map).cast<String, dynamic>())),
-      monitorId: pulumi.Output.create<String>(map['monitorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      logRule: map['logRule'] == null ? null : (TagRulesLogRule.fromMap((map['logRule'] as Map).cast<String, dynamic>())).input(),
+      metricRule: map['metricRule'] == null ? null : (TagRulesMetricRule.fromMap((map['metricRule'] as Map).cast<String, dynamic>())).input(),
+      monitorId: (map['monitorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

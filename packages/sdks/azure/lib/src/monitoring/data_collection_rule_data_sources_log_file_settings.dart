@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_collection_rule_data_sources_log_file_settings_text.dart';
 
 class DataCollectionRuleDataSourcesLogFileSettings {
   /// A `text` block as defined below.
-  final DataCollectionRuleDataSourcesLogFileSettingsText text;
+  final pulumi.Input<DataCollectionRuleDataSourcesLogFileSettingsText> text;
 
   /// Creates a new [DataCollectionRuleDataSourcesLogFileSettings].
   /// [text] A `text` block as defined below.
@@ -14,13 +15,13 @@ class DataCollectionRuleDataSourcesLogFileSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'text': text.toMap(),
+      'text': pulumi.Input.mapInputValue<DataCollectionRuleDataSourcesLogFileSettingsText, Map<String, dynamic>>(text, (value) => value.toMap()),
     };
   }
 
   factory DataCollectionRuleDataSourcesLogFileSettings.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDataSourcesLogFileSettings(
-      text: DataCollectionRuleDataSourcesLogFileSettingsText.fromMap((map['text'] as Map).cast<String, dynamic>()),
+      text: (DataCollectionRuleDataSourcesLogFileSettingsText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -37,27 +37,17 @@ class EnvironmentApiRevisionDeploymentState {
   /// [serviceAccount] Optional service account the deployed proxy runs as.
   /// [state] Deployment state reported by Apigee.
   EnvironmentApiRevisionDeploymentState({
-    pulumi.Output<String>? api,
-    pulumi.Output<List<String>>? basepaths,
-    pulumi.Output<String>? deployStartTime,
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<bool>? override,
-    pulumi.Output<int>? revision,
-    pulumi.Output<bool>? sequencedRollout,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<String>? state,
-  }) :
-      api = pulumi.Input.asOptionalInput<String>(api),
-      basepaths = pulumi.Input.asOptionalInput<List<String>>(basepaths),
-      deployStartTime = pulumi.Input.asOptionalInput<String>(deployStartTime),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      override = pulumi.Input.asOptionalInput<bool>(override),
-      revision = pulumi.Input.asOptionalInput<int>(revision),
-      sequencedRollout = pulumi.Input.asOptionalInput<bool>(sequencedRollout),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.api,
+    this.basepaths,
+    this.deployStartTime,
+    this.environment,
+    this.orgId,
+    this.override,
+    this.revision,
+    this.sequencedRollout,
+    this.serviceAccount,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class EnvironmentApiRevisionDeploymentState {
 
   factory EnvironmentApiRevisionDeploymentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentApiRevisionDeploymentState(
-      api: map['api'] == null ? null : pulumi.Output.create<String>(map['api'] as String),
-      basepaths: map['basepaths'] == null ? null : pulumi.Output.create<List<String>>((map['basepaths'] as List).cast<String>()),
-      deployStartTime: map['deployStartTime'] == null ? null : pulumi.Output.create<String>(map['deployStartTime'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      override: map['override'] == null ? null : pulumi.Output.create<bool>(map['override'] as bool),
-      revision: map['revision'] == null ? null : pulumi.Output.create<int>(map['revision'] as int),
-      sequencedRollout: map['sequencedRollout'] == null ? null : pulumi.Output.create<bool>(map['sequencedRollout'] as bool),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      api: map['api'] == null ? null : (map['api'] as String).input(),
+      basepaths: map['basepaths'] == null ? null : ((map['basepaths'] as List).cast<String>()).input(),
+      deployStartTime: map['deployStartTime'] == null ? null : (map['deployStartTime'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      override: map['override'] == null ? null : (map['override'] as bool).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
+      sequencedRollout: map['sequencedRollout'] == null ? null : (map['sequencedRollout'] as bool).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

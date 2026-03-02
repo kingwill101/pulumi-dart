@@ -33,21 +33,14 @@ class GroupArgs {
   /// [remark] This attribute is a concise description of group. The length cannot exceed 256.
   /// [tags] A mapping of tags to assign to the resource.
   GroupArgs({
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? groupType,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<bool>? readEnable,
-    pulumi.Output<String>? remark,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      groupType = pulumi.Input.asOptionalInput<String>(groupType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      readEnable = pulumi.Input.asOptionalInput<bool>(readEnable),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.groupId,
+    this.groupName,
+    this.groupType,
+    required this.instanceId,
+    this.readEnable,
+    this.remark,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      groupType: map['groupType'] == null ? null : pulumi.Output.create<String>(map['groupType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      readEnable: map['readEnable'] == null ? null : pulumi.Output.create<bool>(map['readEnable'] as bool),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      readEnable: map['readEnable'] == null ? null : (map['readEnable'] as bool).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

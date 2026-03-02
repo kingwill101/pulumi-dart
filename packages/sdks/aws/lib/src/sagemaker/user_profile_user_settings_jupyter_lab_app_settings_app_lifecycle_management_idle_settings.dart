@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings {
   /// The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between `60` and `525600`.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// Indicates whether idle shutdown is activated for the application type. Valid values are `ENABLED` and `DISABLED`.
-  final String? lifecycleManagement;
+  final pulumi.Input<String>? lifecycleManagement;
   /// The maximum value in minutes that custom idle shutdown can be set to by the user. Valid values are between `60` and `525600`.
-  final int? maxIdleTimeoutInMinutes;
+  final pulumi.Input<int>? maxIdleTimeoutInMinutes;
   /// The minimum value in minutes that custom idle shutdown can be set to by the user. Valid values are between `60` and `525600`.
-  final int? minIdleTimeoutInMinutes;
+  final pulumi.Input<int>? minIdleTimeoutInMinutes;
 
   /// Creates a new [UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings].
   /// [idleTimeoutInMinutes] The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between `60` and `525600`.
@@ -34,10 +35,10 @@ class UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSett
 
   factory UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      lifecycleManagement: map['lifecycleManagement'] == null ? null : map['lifecycleManagement'] as String,
-      maxIdleTimeoutInMinutes: map['maxIdleTimeoutInMinutes'] == null ? null : map['maxIdleTimeoutInMinutes'] as int,
-      minIdleTimeoutInMinutes: map['minIdleTimeoutInMinutes'] == null ? null : map['minIdleTimeoutInMinutes'] as int,
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      lifecycleManagement: map['lifecycleManagement'] == null ? null : (map['lifecycleManagement'] as String).input(),
+      maxIdleTimeoutInMinutes: map['maxIdleTimeoutInMinutes'] == null ? null : (map['maxIdleTimeoutInMinutes'] as int).input(),
+      minIdleTimeoutInMinutes: map['minIdleTimeoutInMinutes'] == null ? null : (map['minIdleTimeoutInMinutes'] as int).input(),
     );
   }
 }

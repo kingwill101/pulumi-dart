@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig {
   /// Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  final String action;
+  final pulumi.Input<String> action;
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  final String? inputAction;
+  final pulumi.Input<String>? inputAction;
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
-  final bool? inputEnabled;
+  final pulumi.Input<bool>? inputEnabled;
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  final String? outputAction;
+  final pulumi.Input<String>? outputAction;
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
-  final bool? outputEnabled;
+  final pulumi.Input<bool>? outputEnabled;
   /// The currently supported PII entities.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig].
   /// [action] Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
@@ -44,12 +45,12 @@ class GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig {
 
   factory GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig(
-      action: map['action'] as String,
-      inputAction: map['inputAction'] == null ? null : map['inputAction'] as String,
-      inputEnabled: map['inputEnabled'] == null ? null : map['inputEnabled'] as bool,
-      outputAction: map['outputAction'] == null ? null : map['outputAction'] as String,
-      outputEnabled: map['outputEnabled'] == null ? null : map['outputEnabled'] as bool,
-      type: map['type'] as String,
+      action: (map['action'] as String).input(),
+      inputAction: map['inputAction'] == null ? null : (map['inputAction'] as String).input(),
+      inputEnabled: map['inputEnabled'] == null ? null : (map['inputEnabled'] as bool).input(),
+      outputAction: map['outputAction'] == null ? null : (map['outputAction'] as String).input(),
+      outputEnabled: map['outputEnabled'] == null ? null : (map['outputEnabled'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

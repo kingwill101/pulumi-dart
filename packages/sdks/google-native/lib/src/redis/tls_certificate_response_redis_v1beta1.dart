@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TlsCertificate Resource
 class TlsCertificateResponseRedisV1beta1 {
   /// PEM representation.
-  final String cert;
+  final pulumi.Input<String> cert;
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// Serial number, as extracted from the certificate.
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
   /// Sha1 Fingerprint of the certificate.
-  final String sha1Fingerprint;
+  final pulumi.Input<String> sha1Fingerprint;
 
   /// Creates a new [TlsCertificateResponseRedisV1beta1].
   /// [cert] PEM representation.
@@ -40,11 +41,11 @@ class TlsCertificateResponseRedisV1beta1 {
 
   factory TlsCertificateResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return TlsCertificateResponseRedisV1beta1(
-      cert: map['cert'] as String,
-      createTime: map['createTime'] as String,
-      expireTime: map['expireTime'] as String,
-      serialNumber: map['serialNumber'] as String,
-      sha1Fingerprint: map['sha1Fingerprint'] as String,
+      cert: (map['cert'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      sha1Fingerprint: (map['sha1Fingerprint'] as String).input(),
     );
   }
 }

@@ -24,17 +24,12 @@ class HyperVCollectorArgs {
   /// [properties] Optional.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   HyperVCollectorArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? hyperVCollectorName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<CollectorProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      hyperVCollectorName = pulumi.Input.asOptionalInput<String>(hyperVCollectorName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<CollectorProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.eTag,
+    this.hyperVCollectorName,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class HyperVCollectorArgs {
 
   factory HyperVCollectorArgs.fromMap(Map<String, dynamic> map) {
     return HyperVCollectorArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      hyperVCollectorName: map['hyperVCollectorName'] == null ? null : pulumi.Output.create<String>(map['hyperVCollectorName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CollectorProperties>(CollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      hyperVCollectorName: map['hyperVCollectorName'] == null ? null : (map['hyperVCollectorName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (CollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

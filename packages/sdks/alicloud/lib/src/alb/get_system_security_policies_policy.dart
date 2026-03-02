@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSystemSecurityPoliciesPolicy {
   /// The supported cipher suites, which are determined by the TLS protocol version.
-  final List<String> ciphers;
+  final pulumi.Input<List<String>> ciphers;
   /// The ID of the Security Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The first ID of the resource.
-  final String securityPolicyId;
+  final pulumi.Input<String> securityPolicyId;
   /// The TLS protocol versions are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
-  final List<String> tlsVersions;
+  final pulumi.Input<List<String>> tlsVersions;
 
   /// Creates a new [GetSystemSecurityPoliciesPolicy].
   /// [ciphers] The supported cipher suites, which are determined by the TLS protocol version.
@@ -34,10 +35,10 @@ class GetSystemSecurityPoliciesPolicy {
 
   factory GetSystemSecurityPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetSystemSecurityPoliciesPolicy(
-      ciphers: (map['ciphers'] as List).cast<String>(),
-      id: map['id'] as String,
-      securityPolicyId: map['securityPolicyId'] as String,
-      tlsVersions: (map['tlsVersions'] as List).cast<String>(),
+      ciphers: ((map['ciphers'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      securityPolicyId: (map['securityPolicyId'] as String).input(),
+      tlsVersions: ((map['tlsVersions'] as List).cast<String>()).input(),
     );
   }
 }

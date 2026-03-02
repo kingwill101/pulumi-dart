@@ -27,17 +27,12 @@ class SharedPrivateLinkServiceArgs {
   /// [subresourceName] Specify the sub resource name which the Azure Search Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] Specify the ID of the Shared Private Link Enabled Remote Resource which this Azure Search Private Endpoint should be connected to. Changing this forces a new resource to be created.
   SharedPrivateLinkServiceArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? requestMessage,
-    required pulumi.Output<String> searchServiceId,
-    required pulumi.Output<String> subresourceName,
-    required pulumi.Output<String> targetResourceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      searchServiceId = pulumi.Input.asInput<String>(searchServiceId),
-      subresourceName = pulumi.Input.asInput<String>(subresourceName),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId);
+    this.name,
+    this.requestMessage,
+    required this.searchServiceId,
+    required this.subresourceName,
+    required this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class SharedPrivateLinkServiceArgs {
 
   factory SharedPrivateLinkServiceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkServiceArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      searchServiceId: pulumi.Output.create<String>(map['searchServiceId'] as String),
-      subresourceName: pulumi.Output.create<String>(map['subresourceName'] as String),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      searchServiceId: (map['searchServiceId'] as String).input(),
+      subresourceName: (map['subresourceName'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }
 }

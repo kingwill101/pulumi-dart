@@ -26,17 +26,12 @@ class ServerTrustGroupArgs {
   /// [serverTrustGroupName] The name of the server trust group.
   /// [trustScopes] Trust scope of the server trust group.
   ServerTrustGroupArgs({
-    required pulumi.Output<List<ServerInfo>> groupMembers,
-    required pulumi.Output<String> locationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serverTrustGroupName,
-    required pulumi.Output<List<String>> trustScopes,
-  }) :
-      groupMembers = pulumi.Input.asInput<List<ServerInfo>>(groupMembers),
-      locationName = pulumi.Input.asInput<String>(locationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverTrustGroupName = pulumi.Input.asOptionalInput<String>(serverTrustGroupName),
-      trustScopes = pulumi.Input.asInput<List<String>>(trustScopes);
+    required this.groupMembers,
+    required this.locationName,
+    required this.resourceGroupName,
+    this.serverTrustGroupName,
+    required this.trustScopes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ServerTrustGroupArgs {
 
   factory ServerTrustGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerTrustGroupArgs(
-      groupMembers: pulumi.Output.create<List<ServerInfo>>(pulumi.Input.decodeList<ServerInfo>(map['groupMembers'], (value) => ServerInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      locationName: pulumi.Output.create<String>(map['locationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverTrustGroupName: map['serverTrustGroupName'] == null ? null : pulumi.Output.create<String>(map['serverTrustGroupName'] as String),
-      trustScopes: pulumi.Output.create<List<String>>((map['trustScopes'] as List).cast<String>()),
+      groupMembers: (pulumi.Input.decodeList<ServerInfo>(map['groupMembers'], (value) => ServerInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locationName: (map['locationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverTrustGroupName: map['serverTrustGroupName'] == null ? null : (map['serverTrustGroupName'] as String).input(),
+      trustScopes: ((map['trustScopes'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful {
-  final String ungraceful;
+  final pulumi.Input<String> ungraceful;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful].
   /// [ungraceful] Required.
@@ -18,7 +19,7 @@ class PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful {
 
   factory PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful(
-      ungraceful: map['ungraceful'] as String,
+      ungraceful: (map['ungraceful'] as String).input(),
     );
   }
 }

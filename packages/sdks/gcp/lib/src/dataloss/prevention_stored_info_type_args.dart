@@ -43,21 +43,14 @@ class PreventionStoredInfoTypeArgs {
   /// [regex] Regular expression which defines the rule.
   /// [storedInfoTypeId] The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
   PreventionStoredInfoTypeArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<PreventionStoredInfoTypeDictionary>? dictionary,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<PreventionStoredInfoTypeLargeCustomDictionary>? largeCustomDictionary,
-    required pulumi.Output<String> parent,
-    pulumi.Output<PreventionStoredInfoTypeRegex>? regex,
-    pulumi.Output<String>? storedInfoTypeId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dictionary = pulumi.Input.asOptionalInput<PreventionStoredInfoTypeDictionary>(dictionary),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      largeCustomDictionary = pulumi.Input.asOptionalInput<PreventionStoredInfoTypeLargeCustomDictionary>(largeCustomDictionary),
-      parent = pulumi.Input.asInput<String>(parent),
-      regex = pulumi.Input.asOptionalInput<PreventionStoredInfoTypeRegex>(regex),
-      storedInfoTypeId = pulumi.Input.asOptionalInput<String>(storedInfoTypeId);
+    this.description,
+    this.dictionary,
+    this.displayName,
+    this.largeCustomDictionary,
+    required this.parent,
+    this.regex,
+    this.storedInfoTypeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,13 +66,13 @@ class PreventionStoredInfoTypeArgs {
 
   factory PreventionStoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dictionary: map['dictionary'] == null ? null : pulumi.Output.create<PreventionStoredInfoTypeDictionary>(PreventionStoredInfoTypeDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      largeCustomDictionary: map['largeCustomDictionary'] == null ? null : pulumi.Output.create<PreventionStoredInfoTypeLargeCustomDictionary>(PreventionStoredInfoTypeLargeCustomDictionary.fromMap((map['largeCustomDictionary'] as Map).cast<String, dynamic>())),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      regex: map['regex'] == null ? null : pulumi.Output.create<PreventionStoredInfoTypeRegex>(PreventionStoredInfoTypeRegex.fromMap((map['regex'] as Map).cast<String, dynamic>())),
-      storedInfoTypeId: map['storedInfoTypeId'] == null ? null : pulumi.Output.create<String>(map['storedInfoTypeId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dictionary: map['dictionary'] == null ? null : (PreventionStoredInfoTypeDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      largeCustomDictionary: map['largeCustomDictionary'] == null ? null : (PreventionStoredInfoTypeLargeCustomDictionary.fromMap((map['largeCustomDictionary'] as Map).cast<String, dynamic>())).input(),
+      parent: (map['parent'] as String).input(),
+      regex: map['regex'] == null ? null : (PreventionStoredInfoTypeRegex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
+      storedInfoTypeId: map['storedInfoTypeId'] == null ? null : (map['storedInfoTypeId'] as String).input(),
     );
   }
 }

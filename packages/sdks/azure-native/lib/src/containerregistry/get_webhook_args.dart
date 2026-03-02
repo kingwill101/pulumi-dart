@@ -19,13 +19,10 @@ class GetWebhookArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [webhookName] The name of the webhook.
   GetWebhookArgs({
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> webhookName,
-  }) :
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      webhookName = pulumi.Input.asInput<String>(webhookName);
+    required this.registryName,
+    required this.resourceGroupName,
+    required this.webhookName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebhookArgs {
 
   factory GetWebhookArgs.fromMap(Map<String, dynamic> map) {
     return GetWebhookArgs(
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      webhookName: pulumi.Output.create<String>(map['webhookName'] as String),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      webhookName: (map['webhookName'] as String).input(),
     );
   }
 }

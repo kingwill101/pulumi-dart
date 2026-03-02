@@ -21,15 +21,11 @@ class MscSubContractState {
   /// [mobile] The User's Telephone.
   /// [position] The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
   MscSubContractState({
-    pulumi.Output<String>? contactName,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? mobile,
-    pulumi.Output<String>? position,
-  }) :
-      contactName = pulumi.Input.asOptionalInput<String>(contactName),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      mobile = pulumi.Input.asOptionalInput<String>(mobile),
-      position = pulumi.Input.asOptionalInput<String>(position);
+    this.contactName,
+    this.email,
+    this.mobile,
+    this.position,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class MscSubContractState {
 
   factory MscSubContractState.fromMap(Map<String, dynamic> map) {
     return MscSubContractState(
-      contactName: map['contactName'] == null ? null : pulumi.Output.create<String>(map['contactName'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      mobile: map['mobile'] == null ? null : pulumi.Output.create<String>(map['mobile'] as String),
-      position: map['position'] == null ? null : pulumi.Output.create<String>(map['position'] as String),
+      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
+      position: map['position'] == null ? null : (map['position'] as String).input(),
     );
   }
 }

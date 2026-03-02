@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema {
   /// Specifies the format of the records on the output stream. Valid values: `CSV`, `JSON`.
-  final String recordFormatType;
+  final pulumi.Input<String> recordFormatType;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema].
   /// [recordFormatType] Specifies the format of the records on the output stream. Valid values: `CSV`, `JSON`.
@@ -19,7 +20,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestin
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema(
-      recordFormatType: map['recordFormatType'] as String,
+      recordFormatType: (map['recordFormatType'] as String).input(),
     );
   }
 }

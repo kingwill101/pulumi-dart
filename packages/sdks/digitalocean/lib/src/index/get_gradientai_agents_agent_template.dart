@@ -6,29 +6,29 @@ import 'get_gradientai_agents_agent_template_model.dart';
 
 class GetGradientaiAgentsAgentTemplate {
   /// Created At timestamp for the Knowledge Base
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Description of the Agent Template
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Instruction for the Agent
-  final String? instruction;
+  final pulumi.Input<String>? instruction;
   /// K value for the Agent Template
-  final int? k;
+  final pulumi.Input<int>? k;
   /// List of Knowledge Bases
-  final List<GetGradientaiAgentsAgentTemplateKnowledgeBase>? knowledgeBases;
+  final pulumi.Input<List<GetGradientaiAgentsAgentTemplateKnowledgeBase>>? knowledgeBases;
   /// Maximum tokens allowed
-  final int? maxTokens;
+  final pulumi.Input<int>? maxTokens;
   /// Model of the Agent Template
-  final List<GetGradientaiAgentsAgentTemplateModel>? models;
+  final pulumi.Input<List<GetGradientaiAgentsAgentTemplateModel>>? models;
   /// Name of the Agent Template
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Agent temperature setting
-  final double? temperature;
+  final pulumi.Input<double>? temperature;
   /// Top P sampling parameter
-  final double? topP;
+  final pulumi.Input<double>? topP;
   /// Updated At timestamp for the Agent Template
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// uuid of the Agent Template
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [GetGradientaiAgentsAgentTemplate].
   /// [createdAt] Created At timestamp for the Knowledge Base
@@ -64,9 +64,9 @@ class GetGradientaiAgentsAgentTemplate {
       'description': ?description,
       'instruction': ?instruction,
       'k': ?k,
-      'knowledgeBases': ?knowledgeBases == null ? null : pulumi.Input.encodeList<GetGradientaiAgentsAgentTemplateKnowledgeBase, Map<String, dynamic>>(knowledgeBases!, (value) => value.toMap()),
+      'knowledgeBases': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsAgentTemplateKnowledgeBase>, List<Map<String, dynamic>>>(knowledgeBases, (value) => pulumi.Input.encodeList<GetGradientaiAgentsAgentTemplateKnowledgeBase, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maxTokens': ?maxTokens,
-      'models': ?models == null ? null : pulumi.Input.encodeList<GetGradientaiAgentsAgentTemplateModel, Map<String, dynamic>>(models!, (value) => value.toMap()),
+      'models': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsAgentTemplateModel>, List<Map<String, dynamic>>>(models, (value) => pulumi.Input.encodeList<GetGradientaiAgentsAgentTemplateModel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'temperature': ?temperature,
       'topP': ?topP,
@@ -77,18 +77,18 @@ class GetGradientaiAgentsAgentTemplate {
 
   factory GetGradientaiAgentsAgentTemplate.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentTemplate(
-      createdAt: map['createdAt'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      instruction: map['instruction'] == null ? null : map['instruction'] as String,
-      k: map['k'] == null ? null : map['k'] as int,
-      knowledgeBases: map['knowledgeBases'] == null ? null : pulumi.Input.decodeList<GetGradientaiAgentsAgentTemplateKnowledgeBase>(map['knowledgeBases'], (value) => GetGradientaiAgentsAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>())),
-      maxTokens: map['maxTokens'] == null ? null : map['maxTokens'] as int,
-      models: map['models'] == null ? null : pulumi.Input.decodeList<GetGradientaiAgentsAgentTemplateModel>(map['models'], (value) => GetGradientaiAgentsAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      temperature: map['temperature'] == null ? null : map['temperature'] as double,
-      topP: map['topP'] == null ? null : map['topP'] as double,
-      updatedAt: map['updatedAt'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instruction: map['instruction'] == null ? null : (map['instruction'] as String).input(),
+      k: map['k'] == null ? null : (map['k'] as int).input(),
+      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsAgentTemplateKnowledgeBase>(map['knowledgeBases'], (value) => GetGradientaiAgentsAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens'] as int).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsAgentTemplateModel>(map['models'], (value) => GetGradientaiAgentsAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
+      topP: map['topP'] == null ? null : (map['topP'] as double).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

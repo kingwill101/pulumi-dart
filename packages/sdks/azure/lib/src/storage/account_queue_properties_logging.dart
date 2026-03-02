@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountQueuePropertiesLogging {
   /// Indicates whether all delete requests should be logged.
-  final bool delete;
+  final pulumi.Input<bool> delete;
   /// Indicates whether all read requests should be logged.
-  final bool read;
+  final pulumi.Input<bool> read;
   /// Specifies the number of days that logs will be retained.
-  final int? retentionPolicyDays;
+  final pulumi.Input<int>? retentionPolicyDays;
   /// The version of storage analytics to configure.
-  final String version;
+  final pulumi.Input<String> version;
   /// Indicates whether all write requests should be logged.
-  final bool write;
+  final pulumi.Input<bool> write;
 
   /// Creates a new [AccountQueuePropertiesLogging].
   /// [delete] Indicates whether all delete requests should be logged.
@@ -39,11 +40,11 @@ class AccountQueuePropertiesLogging {
 
   factory AccountQueuePropertiesLogging.fromMap(Map<String, dynamic> map) {
     return AccountQueuePropertiesLogging(
-      delete: map['delete'] as bool,
-      read: map['read'] as bool,
-      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : map['retentionPolicyDays'] as int,
-      version: map['version'] as String,
-      write: map['write'] as bool,
+      delete: (map['delete'] as bool).input(),
+      read: (map['read'] as bool).input(),
+      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : (map['retentionPolicyDays'] as int).input(),
+      version: (map['version'] as String).input(),
+      write: (map['write'] as bool).input(),
     );
   }
 }

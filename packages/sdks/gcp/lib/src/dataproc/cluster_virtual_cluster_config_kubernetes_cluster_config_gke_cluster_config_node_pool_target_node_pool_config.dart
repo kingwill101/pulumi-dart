@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_config_node_pool_target_node_pool_config_autoscaling.dart';
 import 'cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_config_node_pool_target_node_pool_config_config.dart';
 
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
   /// The autoscaler configuration for this node pool.
   /// The autoscaler is enabled only when a valid configuration is present.
-  final ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling? autoscaling;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling>? autoscaling;
   /// The node pool configuration.
-  final ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig? config;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig>? config;
   /// The list of Compute Engine zones where node pool nodes associated
   /// with a Dataproc on GKE virtual cluster will be located.
   /// - - -
-  final List<String> locations;
+  final pulumi.Input<List<String>> locations;
 
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig].
   /// [autoscaling] The autoscaler configuration for this node pool.
@@ -26,17 +27,17 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscaling': ?autoscaling == null ? null : autoscaling!.toMap(),
-      'config': ?config == null ? null : config!.toMap(),
+      'autoscaling': ?pulumi.Input.mapOptionalInputValue<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling, Map<String, dynamic>>(autoscaling, (value) => value.toMap()),
+      'config': ?pulumi.Input.mapOptionalInputValue<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'locations': locations,
     };
   }
 
   factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig(
-      autoscaling: map['autoscaling'] == null ? null : ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>()),
-      config: map['config'] == null ? null : ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
-      locations: (map['locations'] as List).cast<String>(),
+      autoscaling: map['autoscaling'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      locations: ((map['locations'] as List).cast<String>()).input(),
     );
   }
 }

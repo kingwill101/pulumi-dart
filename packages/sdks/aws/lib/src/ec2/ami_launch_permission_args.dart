@@ -28,19 +28,13 @@ class AmiLaunchPermissionArgs {
   /// [organizationalUnitArn] ARN of an organizational unit for the launch permission.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AmiLaunchPermissionArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? group,
-    required pulumi.Output<String> imageId,
-    pulumi.Output<String>? organizationArn,
-    pulumi.Output<String>? organizationalUnitArn,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      imageId = pulumi.Input.asInput<String>(imageId),
-      organizationArn = pulumi.Input.asOptionalInput<String>(organizationArn),
-      organizationalUnitArn = pulumi.Input.asOptionalInput<String>(organizationalUnitArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    this.group,
+    required this.imageId,
+    this.organizationArn,
+    this.organizationalUnitArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AmiLaunchPermissionArgs {
 
   factory AmiLaunchPermissionArgs.fromMap(Map<String, dynamic> map) {
     return AmiLaunchPermissionArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      imageId: pulumi.Output.create<String>(map['imageId'] as String),
-      organizationArn: map['organizationArn'] == null ? null : pulumi.Output.create<String>(map['organizationArn'] as String),
-      organizationalUnitArn: map['organizationalUnitArn'] == null ? null : pulumi.Output.create<String>(map['organizationalUnitArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      organizationArn: map['organizationArn'] == null ? null : (map['organizationArn'] as String).input(),
+      organizationalUnitArn: map['organizationalUnitArn'] == null ? null : (map['organizationalUnitArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sync Session status object.
 class ServerEndpointSyncActivityStatusResponse {
   /// Applied bytes
-  final double appliedBytes;
+  final pulumi.Input<double> appliedBytes;
   /// Applied item count.
-  final double appliedItemCount;
+  final pulumi.Input<double> appliedItemCount;
   /// Per item error count
-  final double perItemErrorCount;
+  final pulumi.Input<double> perItemErrorCount;
   /// Session minutes remaining (if available)
-  final int sessionMinutesRemaining;
+  final pulumi.Input<int> sessionMinutesRemaining;
   /// Sync mode
-  final String syncMode;
+  final pulumi.Input<String> syncMode;
   /// Timestamp when properties were updated
-  final String timestamp;
+  final pulumi.Input<String> timestamp;
   /// Total bytes (if available)
-  final double totalBytes;
+  final pulumi.Input<double> totalBytes;
   /// Total item count (if available)
-  final double totalItemCount;
+  final pulumi.Input<double> totalItemCount;
 
   /// Creates a new [ServerEndpointSyncActivityStatusResponse].
   /// [appliedBytes] Applied bytes
@@ -55,14 +56,14 @@ class ServerEndpointSyncActivityStatusResponse {
 
   factory ServerEndpointSyncActivityStatusResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointSyncActivityStatusResponse(
-      appliedBytes: map['appliedBytes'] as double,
-      appliedItemCount: map['appliedItemCount'] as double,
-      perItemErrorCount: map['perItemErrorCount'] as double,
-      sessionMinutesRemaining: map['sessionMinutesRemaining'] as int,
-      syncMode: map['syncMode'] as String,
-      timestamp: map['timestamp'] as String,
-      totalBytes: map['totalBytes'] as double,
-      totalItemCount: map['totalItemCount'] as double,
+      appliedBytes: (map['appliedBytes'] as double).input(),
+      appliedItemCount: (map['appliedItemCount'] as double).input(),
+      perItemErrorCount: (map['perItemErrorCount'] as double).input(),
+      sessionMinutesRemaining: (map['sessionMinutesRemaining'] as int).input(),
+      syncMode: (map['syncMode'] as String).input(),
+      timestamp: (map['timestamp'] as String).input(),
+      totalBytes: (map['totalBytes'] as double).input(),
+      totalItemCount: (map['totalItemCount'] as double).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class InternetGatewayAttachmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcId] The ID of the VPC.
   InternetGatewayAttachmentState({
-    pulumi.Output<String>? internetGatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vpcId,
-  }) :
-      internetGatewayId = pulumi.Input.asOptionalInput<String>(internetGatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.internetGatewayId,
+    this.region,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class InternetGatewayAttachmentState {
 
   factory InternetGatewayAttachmentState.fromMap(Map<String, dynamic> map) {
     return InternetGatewayAttachmentState(
-      internetGatewayId: map['internetGatewayId'] == null ? null : pulumi.Output.create<String>(map['internetGatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      internetGatewayId: map['internetGatewayId'] == null ? null : (map['internetGatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

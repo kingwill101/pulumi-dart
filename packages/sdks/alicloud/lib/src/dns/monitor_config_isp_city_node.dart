@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorConfigIspCityNode {
   /// The code of the city node to monitor.
-  final String cityCode;
+  final pulumi.Input<String> cityCode;
   /// The code of the Internet provider service (ISP) node to monitor.
-  final String ispCode;
+  final pulumi.Input<String> ispCode;
 
   /// Creates a new [MonitorConfigIspCityNode].
   /// [cityCode] The code of the city node to monitor.
@@ -24,8 +25,8 @@ class MonitorConfigIspCityNode {
 
   factory MonitorConfigIspCityNode.fromMap(Map<String, dynamic> map) {
     return MonitorConfigIspCityNode(
-      cityCode: map['cityCode'] as String,
-      ispCode: map['ispCode'] as String,
+      cityCode: (map['cityCode'] as String).input(),
+      ispCode: (map['ispCode'] as String).input(),
     );
   }
 }

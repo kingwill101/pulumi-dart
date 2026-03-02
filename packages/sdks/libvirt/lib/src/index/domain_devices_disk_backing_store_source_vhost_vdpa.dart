@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskBackingStoreSourceVhostVdpa {
   /// Specifies the device to be used for the VHostVDPA source in the backing store.
-  final String dev;
+  final pulumi.Input<String> dev;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceVhostVdpa].
   /// [dev] Specifies the device to be used for the VHostVDPA source in the backing store.
@@ -19,7 +20,7 @@ class DomainDevicesDiskBackingStoreSourceVhostVdpa {
 
   factory DomainDevicesDiskBackingStoreSourceVhostVdpa.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceVhostVdpa(
-      dev: map['dev'] as String,
+      dev: (map['dev'] as String).input(),
     );
   }
 }

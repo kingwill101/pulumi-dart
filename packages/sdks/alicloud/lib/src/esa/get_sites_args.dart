@@ -52,35 +52,21 @@ class GetSitesArgs {
   /// [status] The status of the resource
   /// [tags] Resource tags
   GetSitesArgs({
-    pulumi.Output<String>? accessType,
-    pulumi.Output<String>? coverage,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<bool>? onlyEnterprise,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? planSubscribeType,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? siteName,
-    pulumi.Output<String>? siteSearchType,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      coverage = pulumi.Input.asOptionalInput<String>(coverage),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      onlyEnterprise = pulumi.Input.asOptionalInput<bool>(onlyEnterprise),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      planSubscribeType = pulumi.Input.asOptionalInput<String>(planSubscribeType),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      siteName = pulumi.Input.asOptionalInput<String>(siteName),
-      siteSearchType = pulumi.Input.asOptionalInput<String>(siteSearchType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessType,
+    this.coverage,
+    this.ids,
+    this.nameRegex,
+    this.onlyEnterprise,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.planSubscribeType,
+    this.resourceGroupId,
+    this.siteName,
+    this.siteSearchType,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class GetSitesArgs {
 
   factory GetSitesArgs.fromMap(Map<String, dynamic> map) {
     return GetSitesArgs(
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      coverage: map['coverage'] == null ? null : pulumi.Output.create<String>(map['coverage'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      onlyEnterprise: map['onlyEnterprise'] == null ? null : pulumi.Output.create<bool>(map['onlyEnterprise'] as bool),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      planSubscribeType: map['planSubscribeType'] == null ? null : pulumi.Output.create<String>(map['planSubscribeType'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      siteName: map['siteName'] == null ? null : pulumi.Output.create<String>(map['siteName'] as String),
-      siteSearchType: map['siteSearchType'] == null ? null : pulumi.Output.create<String>(map['siteSearchType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      coverage: map['coverage'] == null ? null : (map['coverage'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      onlyEnterprise: map['onlyEnterprise'] == null ? null : (map['onlyEnterprise'] as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      planSubscribeType: map['planSubscribeType'] == null ? null : (map['planSubscribeType'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      siteSearchType: map['siteSearchType'] == null ? null : (map['siteSearchType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

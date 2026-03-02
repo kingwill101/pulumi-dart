@@ -29,19 +29,13 @@ class ConfigMapPatchArgs {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   ConfigMapPatchArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<Map<String, String>>? binaryData,
-    pulumi.Output<Map<String, String>>? data,
-    pulumi.Output<bool>? immutable,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      binaryData = pulumi.Input.asOptionalInput<Map<String, String>>(binaryData),
-      data = pulumi.Input.asOptionalInput<Map<String, String>>(data),
-      immutable = pulumi.Input.asOptionalInput<bool>(immutable),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata);
+    this.apiVersion,
+    this.binaryData,
+    this.data,
+    this.immutable,
+    this.kind,
+    this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ConfigMapPatchArgs {
 
   factory ConfigMapPatchArgs.fromMap(Map<String, dynamic> map) {
     return ConfigMapPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      binaryData: map['binaryData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['binaryData'] as Map).cast<String, String>()),
-      data: map['data'] == null ? null : pulumi.Output.create<Map<String, String>>((map['data'] as Map).cast<String, String>()),
-      immutable: map['immutable'] == null ? null : pulumi.Output.create<bool>(map['immutable'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      binaryData: map['binaryData'] == null ? null : ((map['binaryData'] as Map).cast<String, String>()).input(),
+      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
+      immutable: map['immutable'] == null ? null : (map['immutable'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

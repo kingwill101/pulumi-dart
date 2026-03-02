@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DicomServicePrivateEndpoint {
   /// The ID of the Healthcare DICOM Service.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the name of the Healthcare DICOM Service. Changing this forces a new Healthcare DICOM Service to be created.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DicomServicePrivateEndpoint].
   /// [id] The ID of the Healthcare DICOM Service.
@@ -24,8 +25,8 @@ class DicomServicePrivateEndpoint {
 
   factory DicomServicePrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return DicomServicePrivateEndpoint(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

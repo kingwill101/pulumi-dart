@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardParametersIntegerParameter {
   /// Display name for the dashboard.
-  final String name;
-  final List<int> values;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<int>> values;
 
   /// Creates a new [DashboardParametersIntegerParameter].
   /// [name] Display name for the dashboard.
@@ -23,8 +24,8 @@ class DashboardParametersIntegerParameter {
 
   factory DashboardParametersIntegerParameter.fromMap(Map<String, dynamic> map) {
     return DashboardParametersIntegerParameter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<int>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<int>()).input(),
     );
   }
 }

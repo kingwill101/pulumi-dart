@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserLinodeGrant {
   /// The ID of the entity this grant applies to.
-  final int id;
+  final pulumi.Input<int> id;
   /// The level of access this User has to this entity. If null, this User has no access.
-  final String permissions;
+  final pulumi.Input<String> permissions;
 
   /// Creates a new [UserLinodeGrant].
   /// [id] The ID of the entity this grant applies to.
@@ -24,8 +25,8 @@ class UserLinodeGrant {
 
   factory UserLinodeGrant.fromMap(Map<String, dynamic> map) {
     return UserLinodeGrant(
-      id: map['id'] as int,
-      permissions: map['permissions'] as String,
+      id: (map['id'] as int).input(),
+      permissions: (map['permissions'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotExampleMessageChunkAgentTransfer {
   /// The display name of the app version.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// (Output)
   /// The agent to which the conversation is being transferred. The agent will
   /// handle the conversation from this point forward.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  final String? targetAgent;
+  final pulumi.Input<String>? targetAgent;
 
   /// Creates a new [AppVersionSnapshotExampleMessageChunkAgentTransfer].
   /// [displayName] The display name of the app version.
@@ -27,8 +28,8 @@ class AppVersionSnapshotExampleMessageChunkAgentTransfer {
 
   factory AppVersionSnapshotExampleMessageChunkAgentTransfer.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessageChunkAgentTransfer(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      targetAgent: map['targetAgent'] == null ? null : map['targetAgent'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      targetAgent: map['targetAgent'] == null ? null : (map['targetAgent'] as String).input(),
     );
   }
 }

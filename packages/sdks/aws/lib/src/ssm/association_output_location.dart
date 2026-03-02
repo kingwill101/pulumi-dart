@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssociationOutputLocation {
   /// The S3 bucket name.
-  final String s3BucketName;
+  final pulumi.Input<String> s3BucketName;
   /// The S3 bucket prefix. Results stored in the root if not configured.
-  final String? s3KeyPrefix;
+  final pulumi.Input<String>? s3KeyPrefix;
   /// The S3 bucket region.
   ///
   /// Targets specify what instance IDs or tags to apply the document to and has these keys:
-  final String? s3Region;
+  final pulumi.Input<String>? s3Region;
 
   /// Creates a new [AssociationOutputLocation].
   /// [s3BucketName] The S3 bucket name.
@@ -31,9 +32,9 @@ class AssociationOutputLocation {
 
   factory AssociationOutputLocation.fromMap(Map<String, dynamic> map) {
     return AssociationOutputLocation(
-      s3BucketName: map['s3BucketName'] as String,
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : map['s3KeyPrefix'] as String,
-      s3Region: map['s3Region'] == null ? null : map['s3Region'] as String,
+      s3BucketName: (map['s3BucketName'] as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      s3Region: map['s3Region'] == null ? null : (map['s3Region'] as String).input(),
     );
   }
 }

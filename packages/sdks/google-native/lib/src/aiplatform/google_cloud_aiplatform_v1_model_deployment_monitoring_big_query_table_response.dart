@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ModelDeploymentMonitoringBigQueryTable specifies the BigQuery table name as well as some information of the logs stored in this table.
 class GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse {
   /// The created BigQuery table to store logs. Customer could do their own query & analysis. Format: `bq://.model_deployment_monitoring_._`
-  final String bigqueryTablePath;
+  final pulumi.Input<String> bigqueryTablePath;
   /// The source of log.
-  final String logSource;
+  final pulumi.Input<String> logSource;
   /// The type of log.
-  final String logType;
+  final pulumi.Input<String> logType;
 
   /// Creates a new [GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse].
   /// [bigqueryTablePath] The created BigQuery table to store logs. Customer could do their own query & analysis. Format: `bq://.model_deployment_monitoring_._`
@@ -30,9 +31,9 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse {
 
   factory GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse(
-      bigqueryTablePath: map['bigqueryTablePath'] as String,
-      logSource: map['logSource'] as String,
-      logType: map['logType'] as String,
+      bigqueryTablePath: (map['bigqueryTablePath'] as String).input(),
+      logSource: (map['logSource'] as String).input(),
+      logType: (map['logType'] as String).input(),
     );
   }
 }

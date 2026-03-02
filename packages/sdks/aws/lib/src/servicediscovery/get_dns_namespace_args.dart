@@ -22,15 +22,11 @@ class GetDnsNamespaceArgs {
   /// [tags] Map of tags for the resource.
   /// [type] Type of the namespace. Allowed values are `DNS_PUBLIC` or `DNS_PRIVATE`.
   GetDnsNamespaceArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    required this.name,
+    this.region,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDnsNamespaceArgs {
 
   factory GetDnsNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsNamespaceArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

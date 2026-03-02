@@ -30,19 +30,13 @@ class GetSchemasArgs {
   /// [notLikeAllPatterns] List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
   /// [regexPattern] Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
   GetSchemasArgs({
-    required pulumi.Output<String> database,
-    pulumi.Output<bool>? includeSystemSchemas,
-    pulumi.Output<List<String>>? likeAllPatterns,
-    pulumi.Output<List<String>>? likeAnyPatterns,
-    pulumi.Output<List<String>>? notLikeAllPatterns,
-    pulumi.Output<String>? regexPattern,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      includeSystemSchemas = pulumi.Input.asOptionalInput<bool>(includeSystemSchemas),
-      likeAllPatterns = pulumi.Input.asOptionalInput<List<String>>(likeAllPatterns),
-      likeAnyPatterns = pulumi.Input.asOptionalInput<List<String>>(likeAnyPatterns),
-      notLikeAllPatterns = pulumi.Input.asOptionalInput<List<String>>(notLikeAllPatterns),
-      regexPattern = pulumi.Input.asOptionalInput<String>(regexPattern);
+    required this.database,
+    this.includeSystemSchemas,
+    this.likeAllPatterns,
+    this.likeAnyPatterns,
+    this.notLikeAllPatterns,
+    this.regexPattern,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class GetSchemasArgs {
 
   factory GetSchemasArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemasArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      includeSystemSchemas: map['includeSystemSchemas'] == null ? null : pulumi.Output.create<bool>(map['includeSystemSchemas'] as bool),
-      likeAllPatterns: map['likeAllPatterns'] == null ? null : pulumi.Output.create<List<String>>((map['likeAllPatterns'] as List).cast<String>()),
-      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : pulumi.Output.create<List<String>>((map['likeAnyPatterns'] as List).cast<String>()),
-      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : pulumi.Output.create<List<String>>((map['notLikeAllPatterns'] as List).cast<String>()),
-      regexPattern: map['regexPattern'] == null ? null : pulumi.Output.create<String>(map['regexPattern'] as String),
+      database: (map['database'] as String).input(),
+      includeSystemSchemas: map['includeSystemSchemas'] == null ? null : (map['includeSystemSchemas'] as bool).input(),
+      likeAllPatterns: map['likeAllPatterns'] == null ? null : ((map['likeAllPatterns'] as List).cast<String>()).input(),
+      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : ((map['likeAnyPatterns'] as List).cast<String>()).input(),
+      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : ((map['notLikeAllPatterns'] as List).cast<String>()).input(),
+      regexPattern: map['regexPattern'] == null ? null : (map['regexPattern'] as String).input(),
     );
   }
 }

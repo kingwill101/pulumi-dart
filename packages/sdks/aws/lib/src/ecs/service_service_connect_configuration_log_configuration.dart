@@ -5,11 +5,11 @@ import 'service_service_connect_configuration_log_configuration_secret_option.da
 
 class ServiceServiceConnectConfigurationLogConfiguration {
   /// Log driver to use for the container.
-  final String logDriver;
+  final pulumi.Input<String> logDriver;
   /// Configuration options to send to the log driver.
-  final Map<String, String>? options;
+  final pulumi.Input<Map<String, String>>? options;
   /// Secrets to pass to the log configuration. See below.
-  final List<ServiceServiceConnectConfigurationLogConfigurationSecretOption>? secretOptions;
+  final pulumi.Input<List<ServiceServiceConnectConfigurationLogConfigurationSecretOption>>? secretOptions;
 
   /// Creates a new [ServiceServiceConnectConfigurationLogConfiguration].
   /// [logDriver] Log driver to use for the container.
@@ -25,15 +25,15 @@ class ServiceServiceConnectConfigurationLogConfiguration {
     return <String, dynamic>{
       'logDriver': logDriver,
       'options': ?options,
-      'secretOptions': ?secretOptions == null ? null : pulumi.Input.encodeList<ServiceServiceConnectConfigurationLogConfigurationSecretOption, Map<String, dynamic>>(secretOptions!, (value) => value.toMap()),
+      'secretOptions': ?pulumi.Input.mapOptionalInputValue<List<ServiceServiceConnectConfigurationLogConfigurationSecretOption>, List<Map<String, dynamic>>>(secretOptions, (value) => pulumi.Input.encodeList<ServiceServiceConnectConfigurationLogConfigurationSecretOption, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceServiceConnectConfigurationLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationLogConfiguration(
-      logDriver: map['logDriver'] as String,
-      options: map['options'] == null ? null : (map['options'] as Map).cast<String, String>(),
-      secretOptions: map['secretOptions'] == null ? null : pulumi.Input.decodeList<ServiceServiceConnectConfigurationLogConfigurationSecretOption>(map['secretOptions'], (value) => ServiceServiceConnectConfigurationLogConfigurationSecretOption.fromMap((value as Map).cast<String, dynamic>())),
+      logDriver: (map['logDriver'] as String).input(),
+      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
+      secretOptions: map['secretOptions'] == null ? null : (pulumi.Input.decodeList<ServiceServiceConnectConfigurationLogConfigurationSecretOption>(map['secretOptions'], (value) => ServiceServiceConnectConfigurationLogConfigurationSecretOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

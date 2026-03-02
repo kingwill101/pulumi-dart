@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClientCertAuthentication {
   /// Gets or sets the certificate expiration date.
-  final String? certificateExpirationDate;
+  final pulumi.Input<String>? certificateExpirationDate;
   /// Gets or sets the certificate subject name.
-  final String? certificateSubjectName;
+  final pulumi.Input<String>? certificateSubjectName;
   /// Gets or sets the certificate thumbprint.
-  final String? certificateThumbprint;
+  final pulumi.Input<String>? certificateThumbprint;
   /// Gets or sets the certificate password, return value will always be empty.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Gets or sets the pfx certificate. Accepts certification in base64 encoding, return value will always be empty.
-  final String? pfx;
+  final pulumi.Input<String>? pfx;
   /// Gets or sets the HTTP authentication type.
   /// Expected value is 'ClientCertificate'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ClientCertAuthentication].
   /// [certificateExpirationDate] Gets or sets the certificate expiration date.
@@ -45,12 +46,12 @@ class ClientCertAuthentication {
 
   factory ClientCertAuthentication.fromMap(Map<String, dynamic> map) {
     return ClientCertAuthentication(
-      certificateExpirationDate: map['certificateExpirationDate'] == null ? null : map['certificateExpirationDate'] as String,
-      certificateSubjectName: map['certificateSubjectName'] == null ? null : map['certificateSubjectName'] as String,
-      certificateThumbprint: map['certificateThumbprint'] == null ? null : map['certificateThumbprint'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      pfx: map['pfx'] == null ? null : map['pfx'] as String,
-      type: map['type'] as String,
+      certificateExpirationDate: map['certificateExpirationDate'] == null ? null : (map['certificateExpirationDate'] as String).input(),
+      certificateSubjectName: map['certificateSubjectName'] == null ? null : (map['certificateSubjectName'] as String).input(),
+      certificateThumbprint: map['certificateThumbprint'] == null ? null : (map['certificateThumbprint'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      pfx: map['pfx'] == null ? null : (map['pfx'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

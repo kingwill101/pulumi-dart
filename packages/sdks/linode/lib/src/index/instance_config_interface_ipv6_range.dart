@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceConfigInterfaceIpv6Range {
   /// The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
-  final String? assignedRange;
+  final pulumi.Input<String>? assignedRange;
   /// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-  final String? range;
+  final pulumi.Input<String>? range;
 
   /// Creates a new [InstanceConfigInterfaceIpv6Range].
   /// [assignedRange] The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
@@ -24,8 +25,8 @@ class InstanceConfigInterfaceIpv6Range {
 
   factory InstanceConfigInterfaceIpv6Range.fromMap(Map<String, dynamic> map) {
     return InstanceConfigInterfaceIpv6Range(
-      assignedRange: map['assignedRange'] == null ? null : map['assignedRange'] as String,
-      range: map['range'] == null ? null : map['range'] as String,
+      assignedRange: map['assignedRange'] == null ? null : (map['assignedRange'] as String).input(),
+      range: map['range'] == null ? null : (map['range'] as String).input(),
     );
   }
 }

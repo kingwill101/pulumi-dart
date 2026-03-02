@@ -47,31 +47,19 @@ class ZoneState {
   /// [userInfos] The user information of the host synchronization task. See `user_info` below.
   /// [zoneName] The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
   ZoneState({
-    pulumi.Output<bool>? isPtr,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? proxyPattern,
-    pulumi.Output<int>? recordCount,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? syncStatus,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? userClientIp,
-    pulumi.Output<List<ZoneUserInfo>>? userInfos,
-    pulumi.Output<String>? zoneName,
-  }) :
-      isPtr = pulumi.Input.asOptionalInput<bool>(isPtr),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      proxyPattern = pulumi.Input.asOptionalInput<String>(proxyPattern),
-      recordCount = pulumi.Input.asOptionalInput<int>(recordCount),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      syncStatus = pulumi.Input.asOptionalInput<String>(syncStatus),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userClientIp = pulumi.Input.asOptionalInput<String>(userClientIp),
-      userInfos = pulumi.Input.asOptionalInput<List<ZoneUserInfo>>(userInfos),
-      zoneName = pulumi.Input.asOptionalInput<String>(zoneName);
+    this.isPtr,
+    this.lang,
+    this.name,
+    this.proxyPattern,
+    this.recordCount,
+    this.remark,
+    this.resourceGroupId,
+    this.syncStatus,
+    this.tags,
+    this.userClientIp,
+    this.userInfos,
+    this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class ZoneState {
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      isPtr: map['isPtr'] == null ? null : pulumi.Output.create<bool>(map['isPtr'] as bool),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      proxyPattern: map['proxyPattern'] == null ? null : pulumi.Output.create<String>(map['proxyPattern'] as String),
-      recordCount: map['recordCount'] == null ? null : pulumi.Output.create<int>(map['recordCount'] as int),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      syncStatus: map['syncStatus'] == null ? null : pulumi.Output.create<String>(map['syncStatus'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userClientIp: map['userClientIp'] == null ? null : pulumi.Output.create<String>(map['userClientIp'] as String),
-      userInfos: map['userInfos'] == null ? null : pulumi.Output.create<List<ZoneUserInfo>>(pulumi.Input.decodeList<ZoneUserInfo>(map['userInfos'], (value) => ZoneUserInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      zoneName: map['zoneName'] == null ? null : pulumi.Output.create<String>(map['zoneName'] as String),
+      isPtr: map['isPtr'] == null ? null : (map['isPtr'] as bool).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      proxyPattern: map['proxyPattern'] == null ? null : (map['proxyPattern'] as String).input(),
+      recordCount: map['recordCount'] == null ? null : (map['recordCount'] as int).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      syncStatus: map['syncStatus'] == null ? null : (map['syncStatus'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      userInfos: map['userInfos'] == null ? null : (pulumi.Input.decodeList<ZoneUserInfo>(map['userInfos'], (value) => ZoneUserInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
     );
   }
 }

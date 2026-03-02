@@ -30,19 +30,13 @@ class GetGroupArgs {
   /// [objectId] Specifies the object ID of the group.
   /// [securityEnabled] Whether the group is a security group.
   GetGroupArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? includeTransitiveMembers,
-    pulumi.Output<bool>? mailEnabled,
-    pulumi.Output<String>? mailNickname,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<bool>? securityEnabled,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      includeTransitiveMembers = pulumi.Input.asOptionalInput<bool>(includeTransitiveMembers),
-      mailEnabled = pulumi.Input.asOptionalInput<bool>(mailEnabled),
-      mailNickname = pulumi.Input.asOptionalInput<String>(mailNickname),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      securityEnabled = pulumi.Input.asOptionalInput<bool>(securityEnabled);
+    this.displayName,
+    this.includeTransitiveMembers,
+    this.mailEnabled,
+    this.mailNickname,
+    this.objectId,
+    this.securityEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      includeTransitiveMembers: map['includeTransitiveMembers'] == null ? null : pulumi.Output.create<bool>(map['includeTransitiveMembers'] as bool),
-      mailEnabled: map['mailEnabled'] == null ? null : pulumi.Output.create<bool>(map['mailEnabled'] as bool),
-      mailNickname: map['mailNickname'] == null ? null : pulumi.Output.create<String>(map['mailNickname'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      securityEnabled: map['securityEnabled'] == null ? null : pulumi.Output.create<bool>(map['securityEnabled'] as bool),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      includeTransitiveMembers: map['includeTransitiveMembers'] == null ? null : (map['includeTransitiveMembers'] as bool).input(),
+      mailEnabled: map['mailEnabled'] == null ? null : (map['mailEnabled'] as bool).input(),
+      mailNickname: map['mailNickname'] == null ? null : (map['mailNickname'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled'] as bool).input(),
     );
   }
 }

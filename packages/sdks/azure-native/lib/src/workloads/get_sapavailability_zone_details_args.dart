@@ -22,15 +22,11 @@ class GetSAPAvailabilityZoneDetailsArgs {
   /// [location] The name of Azure region.
   /// [sapProduct] Defines the SAP Product type.
   GetSAPAvailabilityZoneDetailsArgs({
-    required pulumi.Output<String> appLocation,
-    required pulumi.Output<String> databaseType,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> sapProduct,
-  }) :
-      appLocation = pulumi.Input.asInput<String>(appLocation),
-      databaseType = pulumi.Input.asInput<String>(databaseType),
-      location = pulumi.Input.asInput<String>(location),
-      sapProduct = pulumi.Input.asInput<String>(sapProduct);
+    required this.appLocation,
+    required this.databaseType,
+    required this.location,
+    required this.sapProduct,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSAPAvailabilityZoneDetailsArgs {
 
   factory GetSAPAvailabilityZoneDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetSAPAvailabilityZoneDetailsArgs(
-      appLocation: pulumi.Output.create<String>(map['appLocation'] as String),
-      databaseType: pulumi.Output.create<String>(map['databaseType'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      sapProduct: pulumi.Output.create<String>(map['sapProduct'] as String),
+      appLocation: (map['appLocation'] as String).input(),
+      databaseType: (map['databaseType'] as String).input(),
+      location: (map['location'] as String).input(),
+      sapProduct: (map['sapProduct'] as String).input(),
     );
   }
 }

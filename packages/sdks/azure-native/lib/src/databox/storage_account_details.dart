@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details for the storage account.
 class StorageAccountDetails {
   /// Account Type of the data to be transferred.
   /// Expected value is 'StorageAccount'.
-  final String dataAccountType;
+  final pulumi.Input<String> dataAccountType;
   /// Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
-  final String? sharePassword;
+  final pulumi.Input<String>? sharePassword;
   /// Storage Account Resource Id.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [StorageAccountDetails].
   /// [dataAccountType] Account Type of the data to be transferred.
@@ -31,9 +32,9 @@ class StorageAccountDetails {
 
   factory StorageAccountDetails.fromMap(Map<String, dynamic> map) {
     return StorageAccountDetails(
-      dataAccountType: map['dataAccountType'] as String,
-      sharePassword: map['sharePassword'] == null ? null : map['sharePassword'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      dataAccountType: (map['dataAccountType'] as String).input(),
+      sharePassword: map['sharePassword'] == null ? null : (map['sharePassword'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

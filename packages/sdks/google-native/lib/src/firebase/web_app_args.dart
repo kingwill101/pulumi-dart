@@ -27,19 +27,13 @@ class WebAppArgs {
   /// [name] The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
   /// [project] Optional.
   WebAppArgs({
-    pulumi.Output<String>? apiKeyId,
-    pulumi.Output<List<String>>? appUrls,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-      appUrls = pulumi.Input.asOptionalInput<List<String>>(appUrls),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.apiKeyId,
+    this.appUrls,
+    this.displayName,
+    this.etag,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class WebAppArgs {
 
   factory WebAppArgs.fromMap(Map<String, dynamic> map) {
     return WebAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : pulumi.Output.create<String>(map['apiKeyId'] as String),
-      appUrls: map['appUrls'] == null ? null : pulumi.Output.create<List<String>>((map['appUrls'] as List).cast<String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
+      appUrls: map['appUrls'] == null ? null : ((map['appUrls'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

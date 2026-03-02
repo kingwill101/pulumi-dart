@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_management_policy_rule_target_response.dart';
 
 /// The role management policy enablement rule.
 class RoleManagementPolicyEnablementRuleResponse {
   /// The list of enabled rules.
-  final List<String>? enabledRules;
+  final pulumi.Input<List<String>>? enabledRules;
   /// The id of the rule.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyEnablementRule'.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final RoleManagementPolicyRuleTargetResponse? target;
+  final pulumi.Input<RoleManagementPolicyRuleTargetResponse>? target;
 
   /// Creates a new [RoleManagementPolicyEnablementRuleResponse].
   /// [enabledRules] The list of enabled rules.
@@ -31,16 +32,16 @@ class RoleManagementPolicyEnablementRuleResponse {
       'enabledRules': ?enabledRules,
       'id': ?id,
       'ruleType': ruleType,
-      'target': ?target == null ? null : target!.toMap(),
+      'target': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyRuleTargetResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory RoleManagementPolicyEnablementRuleResponse.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyEnablementRuleResponse(
-      enabledRules: map['enabledRules'] == null ? null : (map['enabledRules'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      ruleType: map['ruleType'] as String,
-      target: map['target'] == null ? null : RoleManagementPolicyRuleTargetResponse.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      enabledRules: map['enabledRules'] == null ? null : ((map['enabledRules'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ruleType: (map['ruleType'] as String).input(),
+      target: map['target'] == null ? null : (RoleManagementPolicyRuleTargetResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetPartnerTopicEventSubscriptionDeliveryAttributesArgs {
   /// [partnerTopicName] Name of the partner topic.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   GetPartnerTopicEventSubscriptionDeliveryAttributesArgs({
-    required pulumi.Output<String> eventSubscriptionName,
-    required pulumi.Output<String> partnerTopicName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      eventSubscriptionName = pulumi.Input.asInput<String>(eventSubscriptionName),
-      partnerTopicName = pulumi.Input.asInput<String>(partnerTopicName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.eventSubscriptionName,
+    required this.partnerTopicName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPartnerTopicEventSubscriptionDeliveryAttributesArgs {
 
   factory GetPartnerTopicEventSubscriptionDeliveryAttributesArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerTopicEventSubscriptionDeliveryAttributesArgs(
-      eventSubscriptionName: pulumi.Output.create<String>(map['eventSubscriptionName'] as String),
-      partnerTopicName: pulumi.Output.create<String>(map['partnerTopicName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      eventSubscriptionName: (map['eventSubscriptionName'] as String).input(),
+      partnerTopicName: (map['partnerTopicName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

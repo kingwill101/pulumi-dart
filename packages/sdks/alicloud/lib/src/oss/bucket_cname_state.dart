@@ -29,21 +29,14 @@ class BucketCnameState {
   /// [previousCertId] The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
   /// [status] Cname status
   BucketCnameState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<BucketCnameCertificate>? certificate,
-    pulumi.Output<bool>? deleteCertificate,
-    pulumi.Output<String>? domain,
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? previousCertId,
-    pulumi.Output<String>? status,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      certificate = pulumi.Input.asOptionalInput<BucketCnameCertificate>(certificate),
-      deleteCertificate = pulumi.Input.asOptionalInput<bool>(deleteCertificate),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      previousCertId = pulumi.Input.asOptionalInput<String>(previousCertId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bucket,
+    this.certificate,
+    this.deleteCertificate,
+    this.domain,
+    this.force,
+    this.previousCertId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class BucketCnameState {
 
   factory BucketCnameState.fromMap(Map<String, dynamic> map) {
     return BucketCnameState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<BucketCnameCertificate>(BucketCnameCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())),
-      deleteCertificate: map['deleteCertificate'] == null ? null : pulumi.Output.create<bool>(map['deleteCertificate'] as bool),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      previousCertId: map['previousCertId'] == null ? null : pulumi.Output.create<String>(map['previousCertId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      certificate: map['certificate'] == null ? null : (BucketCnameCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
+      deleteCertificate: map['deleteCertificate'] == null ? null : (map['deleteCertificate'] as bool).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      previousCertId: map['previousCertId'] == null ? null : (map['previousCertId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

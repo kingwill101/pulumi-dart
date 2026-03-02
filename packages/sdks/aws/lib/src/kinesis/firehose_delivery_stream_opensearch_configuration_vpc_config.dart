@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamOpensearchConfigurationVpcConfig {
   /// The ARN of the IAM role to be assumed by Firehose for calling the Amazon EC2 configuration API and for creating network interfaces. Make sure role has necessary [IAM permissions](https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-es-vpc)
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// A list of security group IDs to associate with Kinesis Firehose.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// A list of subnet IDs to associate with Kinesis Firehose.
-  final List<String> subnetIds;
-  final String? vpcId;
+  final pulumi.Input<List<String>> subnetIds;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [FirehoseDeliveryStreamOpensearchConfigurationVpcConfig].
   /// [roleArn] The ARN of the IAM role to be assumed by Firehose for calling the Amazon EC2 configuration API and for creating network interfaces. Make sure role has necessary [IAM permissions](https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-es-vpc)
@@ -33,10 +34,10 @@ class FirehoseDeliveryStreamOpensearchConfigurationVpcConfig {
 
   factory FirehoseDeliveryStreamOpensearchConfigurationVpcConfig.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamOpensearchConfigurationVpcConfig(
-      roleArn: map['roleArn'] as String,
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      roleArn: (map['roleArn'] as String).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

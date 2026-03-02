@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHostPoolScheduledAgentUpdateSchedule {
   /// The day of the week on which agent updates should be performed.
-  final String dayOfWeek;
+  final pulumi.Input<String> dayOfWeek;
   /// The hour of day the update window should start.
-  final int hourOfDay;
+  final pulumi.Input<int> hourOfDay;
 
   /// Creates a new [GetHostPoolScheduledAgentUpdateSchedule].
   /// [dayOfWeek] The day of the week on which agent updates should be performed.
@@ -24,8 +25,8 @@ class GetHostPoolScheduledAgentUpdateSchedule {
 
   factory GetHostPoolScheduledAgentUpdateSchedule.fromMap(Map<String, dynamic> map) {
     return GetHostPoolScheduledAgentUpdateSchedule(
-      dayOfWeek: map['dayOfWeek'] as String,
-      hourOfDay: map['hourOfDay'] as int,
+      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      hourOfDay: (map['hourOfDay'] as int).input(),
     );
   }
 }

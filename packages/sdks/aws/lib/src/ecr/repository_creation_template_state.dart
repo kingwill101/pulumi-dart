@@ -45,31 +45,19 @@ class RepositoryCreationTemplateState {
   /// [repositoryPolicy] The registry policy document to apply to any created repositories. This is a JSON formatted string. For more information about building IAM policy documents with Terraform, see the AWS IAM Policy Document Guide.
   /// [resourceTags] A map of tags to assign to any created repositories.
   RepositoryCreationTemplateState({
-    pulumi.Output<List<String>>? appliedFors,
-    pulumi.Output<String>? customRoleArn,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<RepositoryCreationTemplateEncryptionConfiguration>>? encryptionConfigurations,
-    pulumi.Output<String>? imageTagMutability,
-    pulumi.Output<List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>>? imageTagMutabilityExclusionFilters,
-    pulumi.Output<String>? lifecyclePolicy,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    pulumi.Output<String>? repositoryPolicy,
-    pulumi.Output<Map<String, String>>? resourceTags,
-  }) :
-      appliedFors = pulumi.Input.asOptionalInput<List<String>>(appliedFors),
-      customRoleArn = pulumi.Input.asOptionalInput<String>(customRoleArn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptionConfigurations = pulumi.Input.asOptionalInput<List<RepositoryCreationTemplateEncryptionConfiguration>>(encryptionConfigurations),
-      imageTagMutability = pulumi.Input.asOptionalInput<String>(imageTagMutability),
-      imageTagMutabilityExclusionFilters = pulumi.Input.asOptionalInput<List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>>(imageTagMutabilityExclusionFilters),
-      lifecyclePolicy = pulumi.Input.asOptionalInput<String>(lifecyclePolicy),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      repositoryPolicy = pulumi.Input.asOptionalInput<String>(repositoryPolicy),
-      resourceTags = pulumi.Input.asOptionalInput<Map<String, String>>(resourceTags);
+    this.appliedFors,
+    this.customRoleArn,
+    this.description,
+    this.encryptionConfigurations,
+    this.imageTagMutability,
+    this.imageTagMutabilityExclusionFilters,
+    this.lifecyclePolicy,
+    this.prefix,
+    this.region,
+    this.registryId,
+    this.repositoryPolicy,
+    this.resourceTags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class RepositoryCreationTemplateState {
 
   factory RepositoryCreationTemplateState.fromMap(Map<String, dynamic> map) {
     return RepositoryCreationTemplateState(
-      appliedFors: map['appliedFors'] == null ? null : pulumi.Output.create<List<String>>((map['appliedFors'] as List).cast<String>()),
-      customRoleArn: map['customRoleArn'] == null ? null : pulumi.Output.create<String>(map['customRoleArn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Output.create<List<RepositoryCreationTemplateEncryptionConfiguration>>(pulumi.Input.decodeList<RepositoryCreationTemplateEncryptionConfiguration>(map['encryptionConfigurations'], (value) => RepositoryCreationTemplateEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      imageTagMutability: map['imageTagMutability'] == null ? null : pulumi.Output.create<String>(map['imageTagMutability'] as String),
-      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : pulumi.Output.create<List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>>(pulumi.Input.decodeList<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => RepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : pulumi.Output.create<String>(map['lifecyclePolicy'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      repositoryPolicy: map['repositoryPolicy'] == null ? null : pulumi.Output.create<String>(map['repositoryPolicy'] as String),
-      resourceTags: map['resourceTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['resourceTags'] as Map).cast<String, String>()),
+      appliedFors: map['appliedFors'] == null ? null : ((map['appliedFors'] as List).cast<String>()).input(),
+      customRoleArn: map['customRoleArn'] == null ? null : (map['customRoleArn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<RepositoryCreationTemplateEncryptionConfiguration>(map['encryptionConfigurations'], (value) => RepositoryCreationTemplateEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageTagMutability: map['imageTagMutability'] == null ? null : (map['imageTagMutability'] as String).input(),
+      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : (pulumi.Input.decodeList<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => RepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : (map['lifecyclePolicy'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      repositoryPolicy: map['repositoryPolicy'] == null ? null : (map['repositoryPolicy'] as String).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
     );
   }
 }

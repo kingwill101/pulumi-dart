@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plugin_instance_auth_config_api_key_config_api_key.dart';
 
 class PluginInstanceAuthConfigApiKeyConfig {
   /// Secret provides a reference to entries in Secret Manager.
   /// Structure is documented below.
-  final PluginInstanceAuthConfigApiKeyConfigApiKey apiKey;
+  final pulumi.Input<PluginInstanceAuthConfigApiKeyConfigApiKey> apiKey;
   /// The location of the API key.
   /// The default value is QUERY.
   /// Possible values:
@@ -15,11 +16,11 @@ class PluginInstanceAuthConfigApiKeyConfig {
   /// PATH
   /// BODY
   /// COOKIE
-  final String httpElementLocation;
+  final pulumi.Input<String> httpElementLocation;
   /// The parameter name of the API key.
   /// E.g. If the API request is "https://example.com/act?api_key=",
   /// "api_key" would be the parameter name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PluginInstanceAuthConfigApiKeyConfig].
   /// [apiKey] Secret provides a reference to entries in Secret Manager.
@@ -33,7 +34,7 @@ class PluginInstanceAuthConfigApiKeyConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiKey': apiKey.toMap(),
+      'apiKey': pulumi.Input.mapInputValue<PluginInstanceAuthConfigApiKeyConfigApiKey, Map<String, dynamic>>(apiKey, (value) => value.toMap()),
       'httpElementLocation': httpElementLocation,
       'name': name,
     };
@@ -41,9 +42,9 @@ class PluginInstanceAuthConfigApiKeyConfig {
 
   factory PluginInstanceAuthConfigApiKeyConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigApiKeyConfig(
-      apiKey: PluginInstanceAuthConfigApiKeyConfigApiKey.fromMap((map['apiKey'] as Map).cast<String, dynamic>()),
-      httpElementLocation: map['httpElementLocation'] as String,
-      name: map['name'] as String,
+      apiKey: (PluginInstanceAuthConfigApiKeyConfigApiKey.fromMap((map['apiKey'] as Map).cast<String, dynamic>())).input(),
+      httpElementLocation: (map['httpElementLocation'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

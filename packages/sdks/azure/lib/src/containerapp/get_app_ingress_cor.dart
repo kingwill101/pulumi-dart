@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppIngressCor {
   /// Whether user credentials are allowed in the cross-origin request.
-  final bool allowCredentialsEnabled;
+  final pulumi.Input<bool> allowCredentialsEnabled;
   /// The list of request headers that are permitted in the actual request.
-  final List<String> allowedHeaders;
+  final pulumi.Input<List<String>> allowedHeaders;
   /// The list of HTTP methods are allowed when accessing the resource in a cross-origin request.
-  final List<String> allowedMethods;
+  final pulumi.Input<List<String>> allowedMethods;
   /// The list of origins that are allowed to make cross-origin calls.
-  final List<String> allowedOrigins;
+  final pulumi.Input<List<String>> allowedOrigins;
   /// The list of headers exposed to the browser in the response to a cross-origin request.
-  final List<String> exposedHeaders;
+  final pulumi.Input<List<String>> exposedHeaders;
   /// The number of seconds that the browser can cache the results of a preflight request.
-  final int maxAgeInSeconds;
+  final pulumi.Input<int> maxAgeInSeconds;
 
   /// Creates a new [GetAppIngressCor].
   /// [allowCredentialsEnabled] Whether user credentials are allowed in the cross-origin request.
@@ -44,12 +45,12 @@ class GetAppIngressCor {
 
   factory GetAppIngressCor.fromMap(Map<String, dynamic> map) {
     return GetAppIngressCor(
-      allowCredentialsEnabled: map['allowCredentialsEnabled'] as bool,
-      allowedHeaders: (map['allowedHeaders'] as List).cast<String>(),
-      allowedMethods: (map['allowedMethods'] as List).cast<String>(),
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
-      exposedHeaders: (map['exposedHeaders'] as List).cast<String>(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] as int,
+      allowCredentialsEnabled: (map['allowCredentialsEnabled'] as bool).input(),
+      allowedHeaders: ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
+      exposedHeaders: ((map['exposedHeaders'] as List).cast<String>()).input(),
+      maxAgeInSeconds: (map['maxAgeInSeconds'] as int).input(),
     );
   }
 }

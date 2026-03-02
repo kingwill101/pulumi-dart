@@ -53,35 +53,21 @@ class ProxyArgs {
   /// [vpcSecurityGroupIds] One or more VPC security group IDs to associate with the new proxy.
   /// [vpcSubnetIds] One or more VPC subnet IDs to associate with the new proxy.
   ProxyArgs({
-    pulumi.Output<List<ProxyAuth>>? auths,
-    pulumi.Output<bool>? debugLogging,
-    pulumi.Output<String>? defaultAuthScheme,
-    pulumi.Output<String>? endpointNetworkType,
-    required pulumi.Output<String> engineFamily,
-    pulumi.Output<int>? idleClientTimeout,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? requireTls,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetConnectionNetworkType,
-    pulumi.Output<List<String>>? vpcSecurityGroupIds,
-    required pulumi.Output<List<String>> vpcSubnetIds,
-  }) :
-      auths = pulumi.Input.asOptionalInput<List<ProxyAuth>>(auths),
-      debugLogging = pulumi.Input.asOptionalInput<bool>(debugLogging),
-      defaultAuthScheme = pulumi.Input.asOptionalInput<String>(defaultAuthScheme),
-      endpointNetworkType = pulumi.Input.asOptionalInput<String>(endpointNetworkType),
-      engineFamily = pulumi.Input.asInput<String>(engineFamily),
-      idleClientTimeout = pulumi.Input.asOptionalInput<int>(idleClientTimeout),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requireTls = pulumi.Input.asOptionalInput<bool>(requireTls),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetConnectionNetworkType = pulumi.Input.asOptionalInput<String>(targetConnectionNetworkType),
-      vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(vpcSecurityGroupIds),
-      vpcSubnetIds = pulumi.Input.asInput<List<String>>(vpcSubnetIds);
+    this.auths,
+    this.debugLogging,
+    this.defaultAuthScheme,
+    this.endpointNetworkType,
+    required this.engineFamily,
+    this.idleClientTimeout,
+    this.name,
+    this.region,
+    this.requireTls,
+    required this.roleArn,
+    this.tags,
+    this.targetConnectionNetworkType,
+    this.vpcSecurityGroupIds,
+    required this.vpcSubnetIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class ProxyArgs {
 
   factory ProxyArgs.fromMap(Map<String, dynamic> map) {
     return ProxyArgs(
-      auths: map['auths'] == null ? null : pulumi.Output.create<List<ProxyAuth>>(pulumi.Input.decodeList<ProxyAuth>(map['auths'], (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>()))),
-      debugLogging: map['debugLogging'] == null ? null : pulumi.Output.create<bool>(map['debugLogging'] as bool),
-      defaultAuthScheme: map['defaultAuthScheme'] == null ? null : pulumi.Output.create<String>(map['defaultAuthScheme'] as String),
-      endpointNetworkType: map['endpointNetworkType'] == null ? null : pulumi.Output.create<String>(map['endpointNetworkType'] as String),
-      engineFamily: pulumi.Output.create<String>(map['engineFamily'] as String),
-      idleClientTimeout: map['idleClientTimeout'] == null ? null : pulumi.Output.create<int>(map['idleClientTimeout'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requireTls: map['requireTls'] == null ? null : pulumi.Output.create<bool>(map['requireTls'] as bool),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetConnectionNetworkType: map['targetConnectionNetworkType'] == null ? null : pulumi.Output.create<String>(map['targetConnectionNetworkType'] as String),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcSecurityGroupIds'] as List).cast<String>()),
-      vpcSubnetIds: pulumi.Output.create<List<String>>((map['vpcSubnetIds'] as List).cast<String>()),
+      auths: map['auths'] == null ? null : (pulumi.Input.decodeList<ProxyAuth>(map['auths'], (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      debugLogging: map['debugLogging'] == null ? null : (map['debugLogging'] as bool).input(),
+      defaultAuthScheme: map['defaultAuthScheme'] == null ? null : (map['defaultAuthScheme'] as String).input(),
+      endpointNetworkType: map['endpointNetworkType'] == null ? null : (map['endpointNetworkType'] as String).input(),
+      engineFamily: (map['engineFamily'] as String).input(),
+      idleClientTimeout: map['idleClientTimeout'] == null ? null : (map['idleClientTimeout'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requireTls: map['requireTls'] == null ? null : (map['requireTls'] as bool).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetConnectionNetworkType: map['targetConnectionNetworkType'] == null ? null : (map['targetConnectionNetworkType'] as String).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      vpcSubnetIds: ((map['vpcSubnetIds'] as List).cast<String>()).input(),
     );
   }
 }

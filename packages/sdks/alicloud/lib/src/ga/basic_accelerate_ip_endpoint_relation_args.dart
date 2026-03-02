@@ -19,13 +19,10 @@ class BasicAccelerateIpEndpointRelationArgs {
   /// [acceleratorId] The ID of the Basic GA instance.
   /// [endpointId] The ID of the Basic Endpoint.
   BasicAccelerateIpEndpointRelationArgs({
-    required pulumi.Output<String> accelerateIpId,
-    required pulumi.Output<String> acceleratorId,
-    required pulumi.Output<String> endpointId,
-  }) :
-      accelerateIpId = pulumi.Input.asInput<String>(accelerateIpId),
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      endpointId = pulumi.Input.asInput<String>(endpointId);
+    required this.accelerateIpId,
+    required this.acceleratorId,
+    required this.endpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class BasicAccelerateIpEndpointRelationArgs {
 
   factory BasicAccelerateIpEndpointRelationArgs.fromMap(Map<String, dynamic> map) {
     return BasicAccelerateIpEndpointRelationArgs(
-      accelerateIpId: pulumi.Output.create<String>(map['accelerateIpId'] as String),
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
+      accelerateIpId: (map['accelerateIpId'] as String).input(),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      endpointId: (map['endpointId'] as String).input(),
     );
   }
 }

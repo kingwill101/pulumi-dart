@@ -5,9 +5,9 @@ import 'one_dashboard_page_widget_histogram_null_value_series_override.dart';
 
 class OneDashboardPageWidgetHistogramNullValue {
   /// Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
-  final String? nullValue;
+  final pulumi.Input<String>? nullValue;
   /// (Optional) A Nested block which will take two string attributes `color` and `series_name`. This nested block is used to customize colors of individual.
-  final List<OneDashboardPageWidgetHistogramNullValueSeriesOverride>? seriesOverrides;
+  final pulumi.Input<List<OneDashboardPageWidgetHistogramNullValueSeriesOverride>>? seriesOverrides;
 
   /// Creates a new [OneDashboardPageWidgetHistogramNullValue].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
@@ -20,14 +20,14 @@ class OneDashboardPageWidgetHistogramNullValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nullValue': ?nullValue,
-      'seriesOverrides': ?seriesOverrides == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetHistogramNullValueSeriesOverride, Map<String, dynamic>>(seriesOverrides!, (value) => value.toMap()),
+      'seriesOverrides': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetHistogramNullValueSeriesOverride>, List<Map<String, dynamic>>>(seriesOverrides, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetHistogramNullValueSeriesOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OneDashboardPageWidgetHistogramNullValue.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetHistogramNullValue(
-      nullValue: map['nullValue'] == null ? null : map['nullValue'] as String,
-      seriesOverrides: map['seriesOverrides'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetHistogramNullValueSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetHistogramNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>())),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue'] as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramNullValueSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetHistogramNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

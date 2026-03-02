@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetShardingNetworkPublicAddressesAddress {
   /// The db instance id.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// The remaining duration of the classic network address. Unit: `seconds`.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The IP address of the instance.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The endpoint of the instance.
-  final String networkAddress;
+  final pulumi.Input<String> networkAddress;
   /// The network type.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
-  final String nodeId;
+  final pulumi.Input<String> nodeId;
   /// The type of the node.
-  final String nodeType;
+  final pulumi.Input<String> nodeType;
   /// The port number.
-  final String port;
+  final pulumi.Input<String> port;
   /// The role of the node.
-  final String role;
+  final pulumi.Input<String> role;
   /// The ID of the VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vSwitch ID of the VPC.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetShardingNetworkPublicAddressesAddress].
   /// [dbInstanceId] The db instance id.
@@ -69,17 +70,17 @@ class GetShardingNetworkPublicAddressesAddress {
 
   factory GetShardingNetworkPublicAddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetShardingNetworkPublicAddressesAddress(
-      dbInstanceId: map['dbInstanceId'] as String,
-      expiredTime: map['expiredTime'] as String,
-      ipAddress: map['ipAddress'] as String,
-      networkAddress: map['networkAddress'] as String,
-      networkType: map['networkType'] as String,
-      nodeId: map['nodeId'] as String,
-      nodeType: map['nodeType'] as String,
-      port: map['port'] as String,
-      role: map['role'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      networkAddress: (map['networkAddress'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      nodeType: (map['nodeType'] as String).input(),
+      port: (map['port'] as String).input(),
+      role: (map['role'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

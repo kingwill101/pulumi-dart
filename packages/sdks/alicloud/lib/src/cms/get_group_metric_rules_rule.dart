@@ -5,43 +5,43 @@ import 'get_group_metric_rules_rule_escalation.dart';
 
 class GetGroupMetricRulesRule {
   /// Alarm contact group.
-  final String contactGroups;
+  final pulumi.Input<String> contactGroups;
   /// The dimensions that specify the resources to be associated with the alert rule.
-  final String dimensions;
+  final pulumi.Input<String> dimensions;
   /// The time period during which the alert rule is effective.
-  final String effectiveInterval;
+  final pulumi.Input<String> effectiveInterval;
   /// The subject of the alert notification email.
-  final String emailSubject;
+  final pulumi.Input<String> emailSubject;
   /// Indicates whether the alert rule is enabled.
-  final bool enableState;
+  final pulumi.Input<bool> enableState;
   /// Alarm level.
-  final List<GetGroupMetricRulesRuleEscalation> escalations;
+  final pulumi.Input<List<GetGroupMetricRulesRuleEscalation>> escalations;
   /// The ID of the application group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The name of the alert rule.
-  final String groupMetricRuleName;
+  final pulumi.Input<String> groupMetricRuleName;
   /// The ID of the Group Metric Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the metric.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The namespace of the service.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// The time period during which the alert rule is ineffective.
-  final String noEffectiveInterval;
+  final pulumi.Input<String> noEffectiveInterval;
   /// The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
-  final int period;
+  final pulumi.Input<int> period;
   /// The resources that are associated with the alert rule.
-  final String resources;
+  final pulumi.Input<String> resources;
   /// The ID of the alert rule.
-  final String ruleId;
+  final pulumi.Input<String> ruleId;
   /// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
-  final int silenceTime;
+  final pulumi.Input<int> silenceTime;
   /// The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// The status of Group Metric Rule..
-  final String status;
+  final pulumi.Input<String> status;
   /// The callback URL.
-  final String webhook;
+  final pulumi.Input<String> webhook;
 
   /// Creates a new [GetGroupMetricRulesRule].
   /// [contactGroups] Alarm contact group.
@@ -92,7 +92,7 @@ class GetGroupMetricRulesRule {
       'effectiveInterval': effectiveInterval,
       'emailSubject': emailSubject,
       'enableState': enableState,
-      'escalations': pulumi.Input.encodeList<GetGroupMetricRulesRuleEscalation, Map<String, dynamic>>(escalations, (value) => value.toMap()),
+      'escalations': pulumi.Input.mapInputValue<List<GetGroupMetricRulesRuleEscalation>, List<Map<String, dynamic>>>(escalations, (value) => pulumi.Input.encodeList<GetGroupMetricRulesRuleEscalation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'groupId': groupId,
       'groupMetricRuleName': groupMetricRuleName,
       'id': id,
@@ -111,25 +111,25 @@ class GetGroupMetricRulesRule {
 
   factory GetGroupMetricRulesRule.fromMap(Map<String, dynamic> map) {
     return GetGroupMetricRulesRule(
-      contactGroups: map['contactGroups'] as String,
-      dimensions: map['dimensions'] as String,
-      effectiveInterval: map['effectiveInterval'] as String,
-      emailSubject: map['emailSubject'] as String,
-      enableState: map['enableState'] as bool,
-      escalations: pulumi.Input.decodeList<GetGroupMetricRulesRuleEscalation>(map['escalations'], (value) => GetGroupMetricRulesRuleEscalation.fromMap((value as Map).cast<String, dynamic>())),
-      groupId: map['groupId'] as String,
-      groupMetricRuleName: map['groupMetricRuleName'] as String,
-      id: map['id'] as String,
-      metricName: map['metricName'] as String,
-      namespace: map['namespace'] as String,
-      noEffectiveInterval: map['noEffectiveInterval'] as String,
-      period: map['period'] as int,
-      resources: map['resources'] as String,
-      ruleId: map['ruleId'] as String,
-      silenceTime: map['silenceTime'] as int,
-      sourceType: map['sourceType'] as String,
-      status: map['status'] as String,
-      webhook: map['webhook'] as String,
+      contactGroups: (map['contactGroups'] as String).input(),
+      dimensions: (map['dimensions'] as String).input(),
+      effectiveInterval: (map['effectiveInterval'] as String).input(),
+      emailSubject: (map['emailSubject'] as String).input(),
+      enableState: (map['enableState'] as bool).input(),
+      escalations: (pulumi.Input.decodeList<GetGroupMetricRulesRuleEscalation>(map['escalations'], (value) => GetGroupMetricRulesRuleEscalation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupId: (map['groupId'] as String).input(),
+      groupMetricRuleName: (map['groupMetricRuleName'] as String).input(),
+      id: (map['id'] as String).input(),
+      metricName: (map['metricName'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      noEffectiveInterval: (map['noEffectiveInterval'] as String).input(),
+      period: (map['period'] as int).input(),
+      resources: (map['resources'] as String).input(),
+      ruleId: (map['ruleId'] as String).input(),
+      silenceTime: (map['silenceTime'] as int).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      webhook: (map['webhook'] as String).input(),
     );
   }
 }

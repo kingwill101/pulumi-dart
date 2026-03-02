@@ -31,19 +31,13 @@ class TagTemplateArgs {
   /// [region] Template location region.
   /// [tagTemplateId] The id of the tag template to create.
   TagTemplateArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<List<TagTemplateField>> fields,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tagTemplateId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      fields = pulumi.Input.asInput<List<TagTemplateField>>(fields),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tagTemplateId = pulumi.Input.asInput<String>(tagTemplateId);
+    this.displayName,
+    required this.fields,
+    this.forceDelete,
+    this.project,
+    this.region,
+    required this.tagTemplateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class TagTemplateArgs {
 
   factory TagTemplateArgs.fromMap(Map<String, dynamic> map) {
     return TagTemplateArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      fields: pulumi.Output.create<List<TagTemplateField>>(pulumi.Input.decodeList<TagTemplateField>(map['fields'], (value) => TagTemplateField.fromMap((value as Map).cast<String, dynamic>()))),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tagTemplateId: pulumi.Output.create<String>(map['tagTemplateId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      fields: (pulumi.Input.decodeList<TagTemplateField>(map['fields'], (value) => TagTemplateField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tagTemplateId: (map['tagTemplateId'] as String).input(),
     );
   }
 }

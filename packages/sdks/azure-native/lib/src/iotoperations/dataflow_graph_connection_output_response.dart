@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataflowGraph DataflowGraphNode Connection Output.
 class DataflowGraphConnectionOutputResponse {
   /// Name of the destination node.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DataflowGraphConnectionOutputResponse].
   /// [name] Name of the destination node.
@@ -20,7 +21,7 @@ class DataflowGraphConnectionOutputResponse {
 
   factory DataflowGraphConnectionOutputResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphConnectionOutputResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

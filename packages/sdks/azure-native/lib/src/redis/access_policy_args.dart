@@ -22,15 +22,11 @@ class AccessPolicyArgs {
   /// [permissions] Permissions for the access policy. Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AccessPolicyArgs({
-    pulumi.Output<String>? accessPolicyName,
-    required pulumi.Output<String> cacheName,
-    required pulumi.Output<String> permissions,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accessPolicyName = pulumi.Input.asOptionalInput<String>(accessPolicyName),
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      permissions = pulumi.Input.asInput<String>(permissions),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.accessPolicyName,
+    required this.cacheName,
+    required this.permissions,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      accessPolicyName: map['accessPolicyName'] == null ? null : pulumi.Output.create<String>(map['accessPolicyName'] as String),
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      permissions: pulumi.Output.create<String>(map['permissions'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
+      cacheName: (map['cacheName'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

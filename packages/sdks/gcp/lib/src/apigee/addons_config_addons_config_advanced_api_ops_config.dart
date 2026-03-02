@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AddonsConfigAddonsConfigAdvancedApiOpsConfig {
   /// Flag that specifies whether the Advanced API Ops add-on is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [AddonsConfigAddonsConfigAdvancedApiOpsConfig].
   /// [enabled] Flag that specifies whether the Advanced API Ops add-on is enabled.
@@ -19,7 +20,7 @@ class AddonsConfigAddonsConfigAdvancedApiOpsConfig {
 
   factory AddonsConfigAddonsConfigAdvancedApiOpsConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfigAdvancedApiOpsConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

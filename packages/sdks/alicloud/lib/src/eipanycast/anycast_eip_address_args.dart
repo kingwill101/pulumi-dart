@@ -34,23 +34,15 @@ class AnycastEipAddressArgs {
   /// [serviceLocation] Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
   /// [tags] List of resource-bound tags.
   AnycastEipAddressArgs({
-    pulumi.Output<String>? anycastEipAddressName,
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? internetChargeType,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> serviceLocation,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      anycastEipAddressName = pulumi.Input.asOptionalInput<String>(anycastEipAddressName),
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      serviceLocation = pulumi.Input.asInput<String>(serviceLocation),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.anycastEipAddressName,
+    this.bandwidth,
+    this.description,
+    this.internetChargeType,
+    this.paymentType,
+    this.resourceGroupId,
+    required this.serviceLocation,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AnycastEipAddressArgs {
 
   factory AnycastEipAddressArgs.fromMap(Map<String, dynamic> map) {
     return AnycastEipAddressArgs(
-      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : pulumi.Output.create<String>(map['anycastEipAddressName'] as String),
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      serviceLocation: pulumi.Output.create<String>(map['serviceLocation'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      serviceLocation: (map['serviceLocation'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

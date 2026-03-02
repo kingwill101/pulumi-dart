@@ -16,11 +16,9 @@ class GetSolutionConfigurationArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [solutionConfiguration] Represent Solution Configuration Resource.
   GetSolutionConfigurationArgs({
-    required pulumi.Output<String> resourceUri,
-    required pulumi.Output<String> solutionConfiguration,
-  }) :
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      solutionConfiguration = pulumi.Input.asInput<String>(solutionConfiguration);
+    required this.resourceUri,
+    required this.solutionConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSolutionConfigurationArgs {
 
   factory GetSolutionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionConfigurationArgs(
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      solutionConfiguration: pulumi.Output.create<String>(map['solutionConfiguration'] as String),
+      resourceUri: (map['resourceUri'] as String).input(),
+      solutionConfiguration: (map['solutionConfiguration'] as String).input(),
     );
   }
 }

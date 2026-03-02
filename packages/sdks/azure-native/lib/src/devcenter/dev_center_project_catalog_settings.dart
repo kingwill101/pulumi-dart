@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Project catalog settings for project catalogs under a project associated to this dev center.
 class DevCenterProjectCatalogSettings {
   /// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
-  final String? catalogItemSyncEnableStatus;
+  final pulumi.Input<String>? catalogItemSyncEnableStatus;
 
   /// Creates a new [DevCenterProjectCatalogSettings].
   /// [catalogItemSyncEnableStatus] Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
@@ -20,7 +21,7 @@ class DevCenterProjectCatalogSettings {
 
   factory DevCenterProjectCatalogSettings.fromMap(Map<String, dynamic> map) {
     return DevCenterProjectCatalogSettings(
-      catalogItemSyncEnableStatus: map['catalogItemSyncEnableStatus'] == null ? null : map['catalogItemSyncEnableStatus'] as String,
+      catalogItemSyncEnableStatus: map['catalogItemSyncEnableStatus'] == null ? null : (map['catalogItemSyncEnableStatus'] as String).input(),
     );
   }
 }

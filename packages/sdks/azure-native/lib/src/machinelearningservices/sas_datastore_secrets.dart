@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Datastore SAS secrets.
 class SasDatastoreSecrets {
   /// Storage container SAS token.
-  final String? sasToken;
+  final pulumi.Input<String>? sasToken;
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'Sas'.
-  final String secretsType;
+  final pulumi.Input<String> secretsType;
 
   /// Creates a new [SasDatastoreSecrets].
   /// [sasToken] Storage container SAS token.
@@ -26,8 +27,8 @@ class SasDatastoreSecrets {
 
   factory SasDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return SasDatastoreSecrets(
-      sasToken: map['sasToken'] == null ? null : map['sasToken'] as String,
-      secretsType: map['secretsType'] as String,
+      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
+      secretsType: (map['secretsType'] as String).input(),
     );
   }
 }

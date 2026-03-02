@@ -16,11 +16,9 @@ class GetCostAllocationRuleArgs {
   /// [billingAccountId] BillingAccount ID
   /// [ruleName] Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
   GetCostAllocationRuleArgs({
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<String> ruleName,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      ruleName = pulumi.Input.asInput<String>(ruleName);
+    required this.billingAccountId,
+    required this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCostAllocationRuleArgs {
 
   factory GetCostAllocationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetCostAllocationRuleArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

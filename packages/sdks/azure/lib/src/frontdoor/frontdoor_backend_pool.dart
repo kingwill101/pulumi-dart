@@ -5,15 +5,15 @@ import 'frontdoor_backend_pool_backend.dart';
 
 class FrontdoorBackendPool {
   /// A `backend` block as defined below.
-  final List<FrontdoorBackendPoolBackend> backends;
+  final pulumi.Input<List<FrontdoorBackendPoolBackend>> backends;
   /// Specifies the name of the `backend_pool_health_probe` block within this resource to use for this `Backend Pool`.
-  final String healthProbeName;
+  final pulumi.Input<String> healthProbeName;
   /// The ID of the FrontDoor.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the name of the `backend_pool_load_balancing` block within this resource to use for this `Backend Pool`.
-  final String loadBalancingName;
+  final pulumi.Input<String> loadBalancingName;
   /// Specifies the name of the Backend Pool.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [FrontdoorBackendPool].
   /// [backends] A `backend` block as defined below.
@@ -31,7 +31,7 @@ class FrontdoorBackendPool {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backends': pulumi.Input.encodeList<FrontdoorBackendPoolBackend, Map<String, dynamic>>(backends, (value) => value.toMap()),
+      'backends': pulumi.Input.mapInputValue<List<FrontdoorBackendPoolBackend>, List<Map<String, dynamic>>>(backends, (value) => pulumi.Input.encodeList<FrontdoorBackendPoolBackend, Map<String, dynamic>>(value, (value) => value.toMap())),
       'healthProbeName': healthProbeName,
       'id': ?id,
       'loadBalancingName': loadBalancingName,
@@ -41,11 +41,11 @@ class FrontdoorBackendPool {
 
   factory FrontdoorBackendPool.fromMap(Map<String, dynamic> map) {
     return FrontdoorBackendPool(
-      backends: pulumi.Input.decodeList<FrontdoorBackendPoolBackend>(map['backends'], (value) => FrontdoorBackendPoolBackend.fromMap((value as Map).cast<String, dynamic>())),
-      healthProbeName: map['healthProbeName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      loadBalancingName: map['loadBalancingName'] as String,
-      name: map['name'] as String,
+      backends: (pulumi.Input.decodeList<FrontdoorBackendPoolBackend>(map['backends'], (value) => FrontdoorBackendPoolBackend.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbeName: (map['healthProbeName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      loadBalancingName: (map['loadBalancingName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

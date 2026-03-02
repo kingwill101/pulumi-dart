@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Upcoming Maintenance notification information.
 class UpcomingMaintenanceResponseComputeV1 {
   /// Indicates if the maintenance can be customer triggered.
-  final bool canReschedule;
+  final pulumi.Input<bool> canReschedule;
   /// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
-  final String latestWindowStartTime;
-  final String maintenanceStatus;
+  final pulumi.Input<String> latestWindowStartTime;
+  final pulumi.Input<String> maintenanceStatus;
   /// Defines the type of maintenance.
-  final String type;
+  final pulumi.Input<String> type;
   /// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
-  final String windowEndTime;
+  final pulumi.Input<String> windowEndTime;
   /// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
-  final String windowStartTime;
+  final pulumi.Input<String> windowStartTime;
 
   /// Creates a new [UpcomingMaintenanceResponseComputeV1].
   /// [canReschedule] Indicates if the maintenance can be customer triggered.
@@ -44,12 +45,12 @@ class UpcomingMaintenanceResponseComputeV1 {
 
   factory UpcomingMaintenanceResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return UpcomingMaintenanceResponseComputeV1(
-      canReschedule: map['canReschedule'] as bool,
-      latestWindowStartTime: map['latestWindowStartTime'] as String,
-      maintenanceStatus: map['maintenanceStatus'] as String,
-      type: map['type'] as String,
-      windowEndTime: map['windowEndTime'] as String,
-      windowStartTime: map['windowStartTime'] as String,
+      canReschedule: (map['canReschedule'] as bool).input(),
+      latestWindowStartTime: (map['latestWindowStartTime'] as String).input(),
+      maintenanceStatus: (map['maintenanceStatus'] as String).input(),
+      type: (map['type'] as String).input(),
+      windowEndTime: (map['windowEndTime'] as String).input(),
+      windowStartTime: (map['windowStartTime'] as String).input(),
     );
   }
 }

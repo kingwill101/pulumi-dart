@@ -6,9 +6,9 @@ import 'get_feature_spec_fleetobservability_logging_config_fleet_scope_logs_conf
 
 class GetFeatureSpecFleetobservabilityLoggingConfig {
   /// Specified if applying the default routing config to logs not specified in other configs.
-  final List<GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig> defaultConfigs;
+  final pulumi.Input<List<GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig>> defaultConfigs;
   /// Specified if applying the routing config to all logs for all fleet scopes.
-  final List<GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig> fleetScopeLogsConfigs;
+  final pulumi.Input<List<GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig>> fleetScopeLogsConfigs;
 
   /// Creates a new [GetFeatureSpecFleetobservabilityLoggingConfig].
   /// [defaultConfigs] Specified if applying the default routing config to logs not specified in other configs.
@@ -20,15 +20,15 @@ class GetFeatureSpecFleetobservabilityLoggingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultConfigs': pulumi.Input.encodeList<GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig, Map<String, dynamic>>(defaultConfigs, (value) => value.toMap()),
-      'fleetScopeLogsConfigs': pulumi.Input.encodeList<GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig, Map<String, dynamic>>(fleetScopeLogsConfigs, (value) => value.toMap()),
+      'defaultConfigs': pulumi.Input.mapInputValue<List<GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig>, List<Map<String, dynamic>>>(defaultConfigs, (value) => pulumi.Input.encodeList<GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fleetScopeLogsConfigs': pulumi.Input.mapInputValue<List<GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig>, List<Map<String, dynamic>>>(fleetScopeLogsConfigs, (value) => pulumi.Input.encodeList<GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetFeatureSpecFleetobservabilityLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpecFleetobservabilityLoggingConfig(
-      defaultConfigs: pulumi.Input.decodeList<GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig>(map['defaultConfigs'], (value) => GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig.fromMap((value as Map).cast<String, dynamic>())),
-      fleetScopeLogsConfigs: pulumi.Input.decodeList<GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig>(map['fleetScopeLogsConfigs'], (value) => GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      defaultConfigs: (pulumi.Input.decodeList<GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig>(map['defaultConfigs'], (value) => GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fleetScopeLogsConfigs: (pulumi.Input.decodeList<GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig>(map['fleetScopeLogsConfigs'], (value) => GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

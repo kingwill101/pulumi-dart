@@ -5,13 +5,13 @@ import 'get_check_structures_structure_standard_requirement_section.dart';
 
 class GetCheckStructuresStructureStandardRequirement {
   /// The ID of the section for the check item.
-  final int id;
+  final pulumi.Input<int> id;
   /// The information about the sections of check items.
-  final List<GetCheckStructuresStructureStandardRequirementSection> sections;
+  final pulumi.Input<List<GetCheckStructuresStructureStandardRequirementSection>> sections;
   /// The display name of the standard for the check item.
-  final String showName;
+  final pulumi.Input<String> showName;
   /// The total number of check items for the requirement.
-  final int totalCheckCount;
+  final pulumi.Input<int> totalCheckCount;
 
   /// Creates a new [GetCheckStructuresStructureStandardRequirement].
   /// [id] The ID of the section for the check item.
@@ -28,7 +28,7 @@ class GetCheckStructuresStructureStandardRequirement {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'sections': pulumi.Input.encodeList<GetCheckStructuresStructureStandardRequirementSection, Map<String, dynamic>>(sections, (value) => value.toMap()),
+      'sections': pulumi.Input.mapInputValue<List<GetCheckStructuresStructureStandardRequirementSection>, List<Map<String, dynamic>>>(sections, (value) => pulumi.Input.encodeList<GetCheckStructuresStructureStandardRequirementSection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'showName': showName,
       'totalCheckCount': totalCheckCount,
     };
@@ -36,10 +36,10 @@ class GetCheckStructuresStructureStandardRequirement {
 
   factory GetCheckStructuresStructureStandardRequirement.fromMap(Map<String, dynamic> map) {
     return GetCheckStructuresStructureStandardRequirement(
-      id: map['id'] as int,
-      sections: pulumi.Input.decodeList<GetCheckStructuresStructureStandardRequirementSection>(map['sections'], (value) => GetCheckStructuresStructureStandardRequirementSection.fromMap((value as Map).cast<String, dynamic>())),
-      showName: map['showName'] as String,
-      totalCheckCount: map['totalCheckCount'] as int,
+      id: (map['id'] as int).input(),
+      sections: (pulumi.Input.decodeList<GetCheckStructuresStructureStandardRequirementSection>(map['sections'], (value) => GetCheckStructuresStructureStandardRequirementSection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      showName: (map['showName'] as String).input(),
+      totalCheckCount: (map['totalCheckCount'] as int).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesTemplateDeployment {
-  final bool deleteNestedItemsDuringDeletion;
+  final pulumi.Input<bool> deleteNestedItemsDuringDeletion;
 
   /// Creates a new [ProviderFeaturesTemplateDeployment].
   /// [deleteNestedItemsDuringDeletion] Required.
@@ -18,7 +19,7 @@ class ProviderFeaturesTemplateDeployment {
 
   factory ProviderFeaturesTemplateDeployment.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesTemplateDeployment(
-      deleteNestedItemsDuringDeletion: map['deleteNestedItemsDuringDeletion'] as bool,
+      deleteNestedItemsDuringDeletion: (map['deleteNestedItemsDuringDeletion'] as bool).input(),
     );
   }
 }

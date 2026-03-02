@@ -19,13 +19,10 @@ class EnterpriseAuthorityTemplateArgs {
   /// [description] Permission template description information.
   /// [tid] Tenant ID.
   EnterpriseAuthorityTemplateArgs({
-    required pulumi.Output<String> authorityTemplateName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<int> tid,
-  }) :
-      authorityTemplateName = pulumi.Input.asInput<String>(authorityTemplateName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      tid = pulumi.Input.asInput<int>(tid);
+    required this.authorityTemplateName,
+    this.description,
+    required this.tid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EnterpriseAuthorityTemplateArgs {
 
   factory EnterpriseAuthorityTemplateArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseAuthorityTemplateArgs(
-      authorityTemplateName: pulumi.Output.create<String>(map['authorityTemplateName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      tid: pulumi.Output.create<int>(map['tid'] as int),
+      authorityTemplateName: (map['authorityTemplateName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      tid: (map['tid'] as int).input(),
     );
   }
 }

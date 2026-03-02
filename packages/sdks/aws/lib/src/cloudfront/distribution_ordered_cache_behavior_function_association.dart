@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionOrderedCacheBehaviorFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request` or `viewer-response`.
-  final String eventType;
+  final pulumi.Input<String> eventType;
   /// ARN of the CloudFront function.
-  final String functionArn;
+  final pulumi.Input<String> functionArn;
 
   /// Creates a new [DistributionOrderedCacheBehaviorFunctionAssociation].
   /// [eventType] Specific event to trigger this function. Valid values: `viewer-request` or `viewer-response`.
@@ -24,8 +25,8 @@ class DistributionOrderedCacheBehaviorFunctionAssociation {
 
   factory DistributionOrderedCacheBehaviorFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return DistributionOrderedCacheBehaviorFunctionAssociation(
-      eventType: map['eventType'] as String,
-      functionArn: map['functionArn'] as String,
+      eventType: (map['eventType'] as String).input(),
+      functionArn: (map['functionArn'] as String).input(),
     );
   }
 }

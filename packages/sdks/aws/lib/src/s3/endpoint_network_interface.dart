@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointNetworkInterface {
   /// Identifier of the Elastic Network Interface (ENI).
-  final String? networkInterfaceId;
+  final pulumi.Input<String>? networkInterfaceId;
 
   /// Creates a new [EndpointNetworkInterface].
   /// [networkInterfaceId] Identifier of the Elastic Network Interface (ENI).
@@ -19,7 +20,7 @@ class EndpointNetworkInterface {
 
   factory EndpointNetworkInterface.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterface(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
     );
   }
 }

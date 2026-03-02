@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The reference to the spacecraft resource.
 class AvailableContactsResponseSpacecraft {
   /// Resource ID.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [AvailableContactsResponseSpacecraft].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class AvailableContactsResponseSpacecraft {
 
   factory AvailableContactsResponseSpacecraft.fromMap(Map<String, dynamic> map) {
     return AvailableContactsResponseSpacecraft(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

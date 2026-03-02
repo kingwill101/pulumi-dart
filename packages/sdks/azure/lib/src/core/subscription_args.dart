@@ -32,19 +32,13 @@ class SubscriptionArgs {
   /// [tags] A mapping of tags to assign to the Subscription.
   /// [workload] The workload type of the Subscription. Possible values are `Production` (default) and `DevTest`. Changing this forces a new Subscription to be created.
   SubscriptionArgs({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? billingScopeId,
-    pulumi.Output<String>? subscriptionId,
-    required pulumi.Output<String> subscriptionName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workload,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      billingScopeId = pulumi.Input.asOptionalInput<String>(billingScopeId),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      subscriptionName = pulumi.Input.asInput<String>(subscriptionName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workload = pulumi.Input.asOptionalInput<String>(workload);
+    this.alias,
+    this.billingScopeId,
+    this.subscriptionId,
+    required this.subscriptionName,
+    this.tags,
+    this.workload,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      billingScopeId: map['billingScopeId'] == null ? null : pulumi.Output.create<String>(map['billingScopeId'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      subscriptionName: pulumi.Output.create<String>(map['subscriptionName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workload: map['workload'] == null ? null : pulumi.Output.create<String>(map['workload'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      billingScopeId: map['billingScopeId'] == null ? null : (map['billingScopeId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionName: (map['subscriptionName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
     );
   }
 }

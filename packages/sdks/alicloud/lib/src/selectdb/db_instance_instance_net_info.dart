@@ -5,17 +5,17 @@ import 'db_instance_instance_net_info_port_list.dart';
 
 class DbInstanceInstanceNetInfo {
   /// The connection string of the instance.
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
   /// The IP address of the instance.
-  final String? dbIp;
+  final pulumi.Input<String>? dbIp;
   /// The network type of the instance.
-  final String? netType;
+  final pulumi.Input<String>? netType;
   /// A list for port provides SelectDB service.
-  final List<DbInstanceInstanceNetInfoPortList>? portLists;
+  final pulumi.Input<List<DbInstanceInstanceNetInfoPortList>>? portLists;
   /// The VPC ID.
-  final String? vpcInstanceId;
+  final pulumi.Input<String>? vpcInstanceId;
   /// The ID of vswitch for DBInstance.
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
 
   /// Creates a new [DbInstanceInstanceNetInfo].
   /// [connectionString] The connection string of the instance.
@@ -38,7 +38,7 @@ class DbInstanceInstanceNetInfo {
       'connectionString': ?connectionString,
       'dbIp': ?dbIp,
       'netType': ?netType,
-      'portLists': ?portLists == null ? null : pulumi.Input.encodeList<DbInstanceInstanceNetInfoPortList, Map<String, dynamic>>(portLists!, (value) => value.toMap()),
+      'portLists': ?pulumi.Input.mapOptionalInputValue<List<DbInstanceInstanceNetInfoPortList>, List<Map<String, dynamic>>>(portLists, (value) => pulumi.Input.encodeList<DbInstanceInstanceNetInfoPortList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcInstanceId': ?vpcInstanceId,
       'vswitchId': ?vswitchId,
     };
@@ -46,12 +46,12 @@ class DbInstanceInstanceNetInfo {
 
   factory DbInstanceInstanceNetInfo.fromMap(Map<String, dynamic> map) {
     return DbInstanceInstanceNetInfo(
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
-      dbIp: map['dbIp'] == null ? null : map['dbIp'] as String,
-      netType: map['netType'] == null ? null : map['netType'] as String,
-      portLists: map['portLists'] == null ? null : pulumi.Input.decodeList<DbInstanceInstanceNetInfoPortList>(map['portLists'], (value) => DbInstanceInstanceNetInfoPortList.fromMap((value as Map).cast<String, dynamic>())),
-      vpcInstanceId: map['vpcInstanceId'] == null ? null : map['vpcInstanceId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      dbIp: map['dbIp'] == null ? null : (map['dbIp'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      portLists: map['portLists'] == null ? null : (pulumi.Input.decodeList<DbInstanceInstanceNetInfoPortList>(map['portLists'], (value) => DbInstanceInstanceNetInfoPortList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcInstanceId: map['vpcInstanceId'] == null ? null : (map['vpcInstanceId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

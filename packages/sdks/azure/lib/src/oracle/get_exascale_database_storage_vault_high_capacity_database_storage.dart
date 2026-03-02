@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
   /// Available capacity in gigabytes.
-  final int availableSizeInGb;
+  final pulumi.Input<int> availableSizeInGb;
   /// Total capacity in gigabytes.
-  final int totalSizeInGb;
+  final pulumi.Input<int> totalSizeInGb;
 
   /// Creates a new [GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage].
   /// [availableSizeInGb] Available capacity in gigabytes.
@@ -24,8 +25,8 @@ class GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
 
   factory GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(Map<String, dynamic> map) {
     return GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage(
-      availableSizeInGb: map['availableSizeInGb'] as int,
-      totalSizeInGb: map['totalSizeInGb'] as int,
+      availableSizeInGb: (map['availableSizeInGb'] as int).input(),
+      totalSizeInGb: (map['totalSizeInGb'] as int).input(),
     );
   }
 }

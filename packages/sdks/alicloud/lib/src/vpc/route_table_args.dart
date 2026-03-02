@@ -35,21 +35,14 @@ class RouteTableArgs {
   /// [tags] The tag
   /// [vpcId] The ID of VPC.
   RouteTableArgs({
-    pulumi.Output<String>? associateType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? routePropagationEnable,
-    pulumi.Output<String>? routeTableName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      associateType = pulumi.Input.asOptionalInput<String>(associateType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      routePropagationEnable = pulumi.Input.asOptionalInput<bool>(routePropagationEnable),
-      routeTableName = pulumi.Input.asOptionalInput<String>(routeTableName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.associateType,
+    this.description,
+    this.name,
+    this.routePropagationEnable,
+    this.routeTableName,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class RouteTableArgs {
 
   factory RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableArgs(
-      associateType: map['associateType'] == null ? null : pulumi.Output.create<String>(map['associateType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      routePropagationEnable: map['routePropagationEnable'] == null ? null : pulumi.Output.create<bool>(map['routePropagationEnable'] as bool),
-      routeTableName: map['routeTableName'] == null ? null : pulumi.Output.create<String>(map['routeTableName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      associateType: map['associateType'] == null ? null : (map['associateType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      routePropagationEnable: map['routePropagationEnable'] == null ? null : (map['routePropagationEnable'] as bool).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

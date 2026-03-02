@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of the IoT hub.
 class IotHubDefinitionDescription {
   /// weight to apply for a given iot h.
-  final int? allocationWeight;
+  final pulumi.Input<int>? allocationWeight;
   /// flag for applying allocationPolicy or not for a given iot hub.
-  final bool? applyAllocationPolicy;
+  final pulumi.Input<bool>? applyAllocationPolicy;
   /// Connection string of the IoT hub.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// ARM region of the IoT hub.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [IotHubDefinitionDescription].
   /// [allocationWeight] weight to apply for a given iot h.
@@ -35,10 +36,10 @@ class IotHubDefinitionDescription {
 
   factory IotHubDefinitionDescription.fromMap(Map<String, dynamic> map) {
     return IotHubDefinitionDescription(
-      allocationWeight: map['allocationWeight'] == null ? null : map['allocationWeight'] as int,
-      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : map['applyAllocationPolicy'] as bool,
-      connectionString: map['connectionString'] as String,
-      location: map['location'] as String,
+      allocationWeight: map['allocationWeight'] == null ? null : (map['allocationWeight'] as int).input(),
+      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : (map['applyAllocationPolicy'] as bool).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

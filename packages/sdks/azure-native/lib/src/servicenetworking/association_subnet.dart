@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Association Subnet.
 class AssociationSubnet {
   /// Association ID.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [AssociationSubnet].
   /// [id] Association ID.
@@ -20,7 +21,7 @@ class AssociationSubnet {
 
   factory AssociationSubnet.fromMap(Map<String, dynamic> map) {
     return AssociationSubnet(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

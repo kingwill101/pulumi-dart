@@ -28,19 +28,13 @@ class RepositoryPermissionsPolicyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] The name of the repository to set the resource policy on.
   RepositoryPermissionsPolicyArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? domainOwner,
-    required pulumi.Output<String> policyDocument,
-    pulumi.Output<String>? policyRevision,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> repository,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      domainOwner = pulumi.Input.asOptionalInput<String>(domainOwner),
-      policyDocument = pulumi.Input.asInput<String>(policyDocument),
-      policyRevision = pulumi.Input.asOptionalInput<String>(policyRevision),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repository = pulumi.Input.asInput<String>(repository);
+    required this.domain,
+    this.domainOwner,
+    required this.policyDocument,
+    this.policyRevision,
+    this.region,
+    required this.repository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RepositoryPermissionsPolicyArgs {
 
   factory RepositoryPermissionsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryPermissionsPolicyArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      domainOwner: map['domainOwner'] == null ? null : pulumi.Output.create<String>(map['domainOwner'] as String),
-      policyDocument: pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyRevision: map['policyRevision'] == null ? null : pulumi.Output.create<String>(map['policyRevision'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repository: pulumi.Output.create<String>(map['repository'] as String),
+      domain: (map['domain'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
+      policyDocument: (map['policyDocument'] as String).input(),
+      policyRevision: map['policyRevision'] == null ? null : (map['policyRevision'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repository: (map['repository'] as String).input(),
     );
   }
 }

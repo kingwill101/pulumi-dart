@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResiliencyPolicyPolicyRegion {
   /// Recovery Point Objective (RPO) as a Go duration.
-  final String? rpo;
+  final pulumi.Input<String>? rpo;
   /// Recovery Time Objective (RTO) as a Go duration.
-  final String? rto;
+  final pulumi.Input<String>? rto;
 
   /// Creates a new [ResiliencyPolicyPolicyRegion].
   /// [rpo] Recovery Point Objective (RPO) as a Go duration.
@@ -24,8 +25,8 @@ class ResiliencyPolicyPolicyRegion {
 
   factory ResiliencyPolicyPolicyRegion.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicyPolicyRegion(
-      rpo: map['rpo'] == null ? null : map['rpo'] as String,
-      rto: map['rto'] == null ? null : map['rto'] as String,
+      rpo: map['rpo'] == null ? null : (map['rpo'] as String).input(),
+      rto: map['rto'] == null ? null : (map['rto'] as String).input(),
     );
   }
 }

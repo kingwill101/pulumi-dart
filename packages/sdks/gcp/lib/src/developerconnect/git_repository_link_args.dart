@@ -43,23 +43,15 @@ class GitRepositoryLinkArgs {
   /// [parentConnection] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
   /// [project] The ID of the project in which the resource belongs.
   GitRepositoryLinkArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> cloneUri,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> gitRepositoryLinkId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> parentConnection,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      cloneUri = pulumi.Input.asInput<String>(cloneUri),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      gitRepositoryLinkId = pulumi.Input.asInput<String>(gitRepositoryLinkId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      parentConnection = pulumi.Input.asInput<String>(parentConnection),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    required this.cloneUri,
+    this.etag,
+    required this.gitRepositoryLinkId,
+    this.labels,
+    required this.location,
+    required this.parentConnection,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class GitRepositoryLinkArgs {
 
   factory GitRepositoryLinkArgs.fromMap(Map<String, dynamic> map) {
     return GitRepositoryLinkArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      cloneUri: pulumi.Output.create<String>(map['cloneUri'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      gitRepositoryLinkId: pulumi.Output.create<String>(map['gitRepositoryLinkId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parentConnection: pulumi.Output.create<String>(map['parentConnection'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      cloneUri: (map['cloneUri'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      gitRepositoryLinkId: (map['gitRepositoryLinkId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      parentConnection: (map['parentConnection'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

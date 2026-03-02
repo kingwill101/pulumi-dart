@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMeshesMeshMeshConfigPilot {
   /// Whether to support the HTTP1.0.
-  final bool http10Enabled;
+  final pulumi.Input<bool> http10Enabled;
   /// The  percentage of the Link trace sampling.
-  final double traceSampling;
+  final pulumi.Input<double> traceSampling;
 
   /// Creates a new [GetServiceMeshesMeshMeshConfigPilot].
   /// [http10Enabled] Whether to support the HTTP1.0.
@@ -24,8 +25,8 @@ class GetServiceMeshesMeshMeshConfigPilot {
 
   factory GetServiceMeshesMeshMeshConfigPilot.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshMeshConfigPilot(
-      http10Enabled: map['http10Enabled'] as bool,
-      traceSampling: map['traceSampling'] as double,
+      http10Enabled: (map['http10Enabled'] as bool).input(),
+      traceSampling: (map['traceSampling'] as double).input(),
     );
   }
 }

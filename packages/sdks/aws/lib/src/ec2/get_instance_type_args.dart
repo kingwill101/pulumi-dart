@@ -16,11 +16,9 @@ class GetInstanceTypeArgs {
   /// [instanceType] Instance
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetInstanceTypeArgs({
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? region,
-  }) :
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.instanceType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInstanceTypeArgs {
 
   factory GetInstanceTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeArgs(
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      instanceType: (map['instanceType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

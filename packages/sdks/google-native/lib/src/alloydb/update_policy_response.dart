@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Policy to be used while updating the instance.
 class UpdatePolicyResponse {
   /// Mode for updating the instance.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [UpdatePolicyResponse].
   /// [mode] Mode for updating the instance.
@@ -20,7 +21,7 @@ class UpdatePolicyResponse {
 
   factory UpdatePolicyResponse.fromMap(Map<String, dynamic> map) {
     return UpdatePolicyResponse(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

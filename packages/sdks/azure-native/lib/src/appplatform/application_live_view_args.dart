@@ -19,13 +19,10 @@ class ApplicationLiveViewArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   ApplicationLiveViewArgs({
-    pulumi.Output<String>? applicationLiveViewName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      applicationLiveViewName = pulumi.Input.asOptionalInput<String>(applicationLiveViewName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.applicationLiveViewName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApplicationLiveViewArgs {
 
   factory ApplicationLiveViewArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationLiveViewArgs(
-      applicationLiveViewName: map['applicationLiveViewName'] == null ? null : pulumi.Output.create<String>(map['applicationLiveViewName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      applicationLiveViewName: map['applicationLiveViewName'] == null ? null : (map['applicationLiveViewName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A patient identifier and associated type.
 class PatientIdResponseHealthcareV1beta1 {
   /// ID type. For example, MRN or NHS.
-  final String type;
+  final pulumi.Input<String> type;
   /// The patient's unique identifier.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [PatientIdResponseHealthcareV1beta1].
   /// [type] ID type. For example, MRN or NHS.
@@ -25,8 +26,8 @@ class PatientIdResponseHealthcareV1beta1 {
 
   factory PatientIdResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return PatientIdResponseHealthcareV1beta1(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

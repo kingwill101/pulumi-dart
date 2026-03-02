@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The start and end date for a budget.
 class BudgetTimePeriodResponse {
   /// The end date for the budget. If not provided, we default this to 10 years from the start date.
-  final String? endDate;
+  final pulumi.Input<String>? endDate;
   /// The start date for the budget.
-  final String startDate;
+  final pulumi.Input<String> startDate;
 
   /// Creates a new [BudgetTimePeriodResponse].
   /// [endDate] The end date for the budget. If not provided, we default this to 10 years from the start date.
@@ -25,8 +26,8 @@ class BudgetTimePeriodResponse {
 
   factory BudgetTimePeriodResponse.fromMap(Map<String, dynamic> map) {
     return BudgetTimePeriodResponse(
-      endDate: map['endDate'] == null ? null : map['endDate'] as String,
-      startDate: map['startDate'] as String,
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      startDate: (map['startDate'] as String).input(),
     );
   }
 }

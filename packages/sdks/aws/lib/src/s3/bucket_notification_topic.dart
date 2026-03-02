@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketNotificationTopic {
   /// [Event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
-  final List<String> events;
+  final pulumi.Input<List<String>> events;
   /// Object key name prefix.
-  final String? filterPrefix;
+  final pulumi.Input<String>? filterPrefix;
   /// Object key name suffix.
-  final String? filterSuffix;
+  final pulumi.Input<String>? filterSuffix;
   /// Unique identifier for each of the notification configurations.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// SNS topic ARN.
-  final String topicArn;
+  final pulumi.Input<String> topicArn;
 
   /// Creates a new [BucketNotificationTopic].
   /// [events] [Event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
@@ -39,11 +40,11 @@ class BucketNotificationTopic {
 
   factory BucketNotificationTopic.fromMap(Map<String, dynamic> map) {
     return BucketNotificationTopic(
-      events: (map['events'] as List).cast<String>(),
-      filterPrefix: map['filterPrefix'] == null ? null : map['filterPrefix'] as String,
-      filterSuffix: map['filterSuffix'] == null ? null : map['filterSuffix'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      topicArn: map['topicArn'] as String,
+      events: ((map['events'] as List).cast<String>()).input(),
+      filterPrefix: map['filterPrefix'] == null ? null : (map['filterPrefix'] as String).input(),
+      filterSuffix: map['filterSuffix'] == null ? null : (map['filterSuffix'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      topicArn: (map['topicArn'] as String).input(),
     );
   }
 }

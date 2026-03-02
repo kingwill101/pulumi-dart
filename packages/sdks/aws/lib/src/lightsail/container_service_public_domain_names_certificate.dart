@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerServicePublicDomainNamesCertificate {
   /// Name of the certificate.
-  final String certificateName;
+  final pulumi.Input<String> certificateName;
   /// List of domain names for the certificate.
-  final List<String> domainNames;
+  final pulumi.Input<List<String>> domainNames;
 
   /// Creates a new [ContainerServicePublicDomainNamesCertificate].
   /// [certificateName] Name of the certificate.
@@ -24,8 +25,8 @@ class ContainerServicePublicDomainNamesCertificate {
 
   factory ContainerServicePublicDomainNamesCertificate.fromMap(Map<String, dynamic> map) {
     return ContainerServicePublicDomainNamesCertificate(
-      certificateName: map['certificateName'] as String,
-      domainNames: (map['domainNames'] as List).cast<String>(),
+      certificateName: (map['certificateName'] as String).input(),
+      domainNames: ((map['domainNames'] as List).cast<String>()).input(),
     );
   }
 }

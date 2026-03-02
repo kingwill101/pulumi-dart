@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefinitionAuthorization {
   /// Specifies a role definition identifier for the provider. This role will define all the permissions that the provider must have on the managed application's container resource group. This role definition cannot have permission to delete the resource group.
-  final String roleDefinitionId;
+  final pulumi.Input<String> roleDefinitionId;
   /// Specifies a service principal identifier for the provider. This is the identity that the provider will use to call ARM to manage the managed application resources.
-  final String servicePrincipalId;
+  final pulumi.Input<String> servicePrincipalId;
 
   /// Creates a new [DefinitionAuthorization].
   /// [roleDefinitionId] Specifies a role definition identifier for the provider. This role will define all the permissions that the provider must have on the managed application's container resource group. This role definition cannot have permission to delete the resource group.
@@ -24,8 +25,8 @@ class DefinitionAuthorization {
 
   factory DefinitionAuthorization.fromMap(Map<String, dynamic> map) {
     return DefinitionAuthorization(
-      roleDefinitionId: map['roleDefinitionId'] as String,
-      servicePrincipalId: map['servicePrincipalId'] as String,
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
     );
   }
 }

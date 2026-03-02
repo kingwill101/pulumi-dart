@@ -40,29 +40,18 @@ class ServiceSpecificCredentialState {
   /// [status] The status to be assigned to the service-specific credential. Valid values are `Active`, `Inactive`, and `Expired`. Default value is `Active`. Note that `Expired` is only used for read operations and cannot be set manually.
   /// [userName] The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.
   ServiceSpecificCredentialState({
-    pulumi.Output<String>? createDate,
-    pulumi.Output<int>? credentialAgeDays,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<String>? serviceCredentialAlias,
-    pulumi.Output<String>? serviceCredentialSecret,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<String>? servicePassword,
-    pulumi.Output<String>? serviceSpecificCredentialId,
-    pulumi.Output<String>? serviceUserName,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? userName,
-  }) :
-      createDate = pulumi.Input.asOptionalInput<String>(createDate),
-      credentialAgeDays = pulumi.Input.asOptionalInput<int>(credentialAgeDays),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      serviceCredentialAlias = pulumi.Input.asOptionalInput<String>(serviceCredentialAlias),
-      serviceCredentialSecret = pulumi.Input.asOptionalInput<String>(serviceCredentialSecret),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      servicePassword = pulumi.Input.asOptionalInput<String>(servicePassword),
-      serviceSpecificCredentialId = pulumi.Input.asOptionalInput<String>(serviceSpecificCredentialId),
-      serviceUserName = pulumi.Input.asOptionalInput<String>(serviceUserName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.createDate,
+    this.credentialAgeDays,
+    this.expirationDate,
+    this.serviceCredentialAlias,
+    this.serviceCredentialSecret,
+    this.serviceName,
+    this.servicePassword,
+    this.serviceSpecificCredentialId,
+    this.serviceUserName,
+    this.status,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class ServiceSpecificCredentialState {
 
   factory ServiceSpecificCredentialState.fromMap(Map<String, dynamic> map) {
     return ServiceSpecificCredentialState(
-      createDate: map['createDate'] == null ? null : pulumi.Output.create<String>(map['createDate'] as String),
-      credentialAgeDays: map['credentialAgeDays'] == null ? null : pulumi.Output.create<int>(map['credentialAgeDays'] as int),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      serviceCredentialAlias: map['serviceCredentialAlias'] == null ? null : pulumi.Output.create<String>(map['serviceCredentialAlias'] as String),
-      serviceCredentialSecret: map['serviceCredentialSecret'] == null ? null : pulumi.Output.create<String>(map['serviceCredentialSecret'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      servicePassword: map['servicePassword'] == null ? null : pulumi.Output.create<String>(map['servicePassword'] as String),
-      serviceSpecificCredentialId: map['serviceSpecificCredentialId'] == null ? null : pulumi.Output.create<String>(map['serviceSpecificCredentialId'] as String),
-      serviceUserName: map['serviceUserName'] == null ? null : pulumi.Output.create<String>(map['serviceUserName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
+      credentialAgeDays: map['credentialAgeDays'] == null ? null : (map['credentialAgeDays'] as int).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      serviceCredentialAlias: map['serviceCredentialAlias'] == null ? null : (map['serviceCredentialAlias'] as String).input(),
+      serviceCredentialSecret: map['serviceCredentialSecret'] == null ? null : (map['serviceCredentialSecret'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      servicePassword: map['servicePassword'] == null ? null : (map['servicePassword'] as String).input(),
+      serviceSpecificCredentialId: map['serviceSpecificCredentialId'] == null ? null : (map['serviceSpecificCredentialId'] as String).input(),
+      serviceUserName: map['serviceUserName'] == null ? null : (map['serviceUserName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

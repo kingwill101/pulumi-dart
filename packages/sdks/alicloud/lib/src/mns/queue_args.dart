@@ -28,19 +28,13 @@ class QueueArgs {
   /// [pollingWaitSeconds] Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
   /// [visibilityTimeout] The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
   QueueArgs({
-    pulumi.Output<int>? delaySeconds,
-    pulumi.Output<int>? maximumMessageSize,
-    pulumi.Output<int>? messageRetentionPeriod,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? pollingWaitSeconds,
-    pulumi.Output<int>? visibilityTimeout,
-  }) :
-      delaySeconds = pulumi.Input.asOptionalInput<int>(delaySeconds),
-      maximumMessageSize = pulumi.Input.asOptionalInput<int>(maximumMessageSize),
-      messageRetentionPeriod = pulumi.Input.asOptionalInput<int>(messageRetentionPeriod),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pollingWaitSeconds = pulumi.Input.asOptionalInput<int>(pollingWaitSeconds),
-      visibilityTimeout = pulumi.Input.asOptionalInput<int>(visibilityTimeout);
+    this.delaySeconds,
+    this.maximumMessageSize,
+    this.messageRetentionPeriod,
+    this.name,
+    this.pollingWaitSeconds,
+    this.visibilityTimeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      delaySeconds: map['delaySeconds'] == null ? null : pulumi.Output.create<int>(map['delaySeconds'] as int),
-      maximumMessageSize: map['maximumMessageSize'] == null ? null : pulumi.Output.create<int>(map['maximumMessageSize'] as int),
-      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['messageRetentionPeriod'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : pulumi.Output.create<int>(map['pollingWaitSeconds'] as int),
-      visibilityTimeout: map['visibilityTimeout'] == null ? null : pulumi.Output.create<int>(map['visibilityTimeout'] as int),
+      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds'] as int).input(),
+      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize'] as int).input(),
+      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : (map['messageRetentionPeriod'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : (map['pollingWaitSeconds'] as int).input(),
+      visibilityTimeout: map['visibilityTimeout'] == null ? null : (map['visibilityTimeout'] as int).input(),
     );
   }
 }

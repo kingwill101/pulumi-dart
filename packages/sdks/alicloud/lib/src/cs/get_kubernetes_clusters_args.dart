@@ -25,17 +25,12 @@ class GetKubernetesClustersArgs {
   /// [nameRegex] A regex string to filter results by cluster name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetKubernetesClustersArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? kubeConfigFilePrefix,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      kubeConfigFilePrefix = pulumi.Input.asOptionalInput<String>(kubeConfigFilePrefix),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.enableDetails,
+    this.ids,
+    this.kubeConfigFilePrefix,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetKubernetesClustersArgs {
 
   factory GetKubernetesClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClustersArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      kubeConfigFilePrefix: map['kubeConfigFilePrefix'] == null ? null : pulumi.Output.create<String>(map['kubeConfigFilePrefix'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      kubeConfigFilePrefix: map['kubeConfigFilePrefix'] == null ? null : (map['kubeConfigFilePrefix'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetTemplatesArgs {
   /// [awsRegion] AWS Region to which the quota increases apply.
   /// [region] AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
   GetTemplatesArgs({
-    pulumi.Output<String>? awsRegion,
-    pulumi.Output<String>? region,
-  }) :
-      awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.awsRegion,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTemplatesArgs {
 
   factory GetTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplatesArgs(
-      awsRegion: map['awsRegion'] == null ? null : pulumi.Output.create<String>(map['awsRegion'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

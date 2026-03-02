@@ -28,19 +28,13 @@ class GetApiDefinitionArgs {
   /// [versionName] The name of the API version.
   /// [workspaceName] The name of the workspace.
   GetApiDefinitionArgs({
-    required pulumi.Output<String> apiName,
-    required pulumi.Output<String> definitionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> versionName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      apiName = pulumi.Input.asInput<String>(apiName),
-      definitionName = pulumi.Input.asInput<String>(definitionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      versionName = pulumi.Input.asInput<String>(versionName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.apiName,
+    required this.definitionName,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.versionName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetApiDefinitionArgs {
 
   factory GetApiDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetApiDefinitionArgs(
-      apiName: pulumi.Output.create<String>(map['apiName'] as String),
-      definitionName: pulumi.Output.create<String>(map['definitionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      versionName: pulumi.Output.create<String>(map['versionName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      apiName: (map['apiName'] as String).input(),
+      definitionName: (map['definitionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

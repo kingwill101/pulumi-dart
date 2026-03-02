@@ -32,21 +32,14 @@ class AssociationsInterfaceArgs {
   /// [tags] Resource tags.
   /// [trafficControllerName] traffic controller name for path
   AssociationsInterfaceArgs({
-    pulumi.Output<String>? associationName,
-    required pulumi.Output<String> associationType,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AssociationSubnet>? subnet,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trafficControllerName,
-  }) :
-      associationName = pulumi.Input.asOptionalInput<String>(associationName),
-      associationType = pulumi.Input.asInput<String>(associationType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnet = pulumi.Input.asOptionalInput<AssociationSubnet>(subnet),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficControllerName = pulumi.Input.asInput<String>(trafficControllerName);
+    this.associationName,
+    required this.associationType,
+    this.location,
+    required this.resourceGroupName,
+    this.subnet,
+    this.tags,
+    required this.trafficControllerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class AssociationsInterfaceArgs {
 
   factory AssociationsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return AssociationsInterfaceArgs(
-      associationName: map['associationName'] == null ? null : pulumi.Output.create<String>(map['associationName'] as String),
-      associationType: pulumi.Output.create<String>(map['associationType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<AssociationSubnet>(AssociationSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficControllerName: pulumi.Output.create<String>(map['trafficControllerName'] as String),
+      associationName: map['associationName'] == null ? null : (map['associationName'] as String).input(),
+      associationType: (map['associationType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnet: map['subnet'] == null ? null : (AssociationSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficControllerName: (map['trafficControllerName'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'budget_filter_expression_not_and_cost_categories.dart';
 import 'budget_filter_expression_not_and_dimensions.dart';
 import 'budget_filter_expression_not_and_tags.dart';
 
 class BudgetFilterExpressionNotAnd {
   /// (Optional) A Cost Category Filter block.
-  final BudgetFilterExpressionNotAndCostCategories? costCategories;
+  final pulumi.Input<BudgetFilterExpressionNotAndCostCategories>? costCategories;
   /// (Optional) A Dimension Filter block.
-  final BudgetFilterExpressionNotAndDimensions? dimensions;
+  final pulumi.Input<BudgetFilterExpressionNotAndDimensions>? dimensions;
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final BudgetFilterExpressionNotAndTags? tags;
+  final pulumi.Input<BudgetFilterExpressionNotAndTags>? tags;
 
   /// Creates a new [BudgetFilterExpressionNotAnd].
   /// [costCategories] (Optional) A Cost Category Filter block.
@@ -24,17 +25,17 @@ class BudgetFilterExpressionNotAnd {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costCategories': ?costCategories == null ? null : costCategories!.toMap(),
-      'dimensions': ?dimensions == null ? null : dimensions!.toMap(),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'costCategories': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionNotAndCostCategories, Map<String, dynamic>>(costCategories, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionNotAndDimensions, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionNotAndTags, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory BudgetFilterExpressionNotAnd.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionNotAnd(
-      costCategories: map['costCategories'] == null ? null : BudgetFilterExpressionNotAndCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>()),
-      dimensions: map['dimensions'] == null ? null : BudgetFilterExpressionNotAndDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : BudgetFilterExpressionNotAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      costCategories: map['costCategories'] == null ? null : (BudgetFilterExpressionNotAndCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>())).input(),
+      dimensions: map['dimensions'] == null ? null : (BudgetFilterExpressionNotAndDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (BudgetFilterExpressionNotAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

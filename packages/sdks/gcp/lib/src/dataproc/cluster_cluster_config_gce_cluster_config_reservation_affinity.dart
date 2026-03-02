@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigGceClusterConfigReservationAffinity {
   /// Corresponds to the type of reservation consumption.
-  final String? consumeReservationType;
+  final pulumi.Input<String>? consumeReservationType;
   /// Corresponds to the label key of reservation resource.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Corresponds to the label values of reservation resource.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ClusterClusterConfigGceClusterConfigReservationAffinity].
   /// [consumeReservationType] Corresponds to the type of reservation consumption.
@@ -29,9 +30,9 @@ class ClusterClusterConfigGceClusterConfigReservationAffinity {
 
   factory ClusterClusterConfigGceClusterConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigReservationAffinity(
-      consumeReservationType: map['consumeReservationType'] == null ? null : map['consumeReservationType'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      consumeReservationType: map['consumeReservationType'] == null ? null : (map['consumeReservationType'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

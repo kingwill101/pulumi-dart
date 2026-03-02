@@ -19,13 +19,10 @@ class GetSyncIdentityProviderArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the OpenShift cluster resource.
   GetSyncIdentityProviderArgs({
-    required pulumi.Output<String> childResourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      childResourceName = pulumi.Input.asInput<String>(childResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.childResourceName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSyncIdentityProviderArgs {
 
   factory GetSyncIdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetSyncIdentityProviderArgs(
-      childResourceName: pulumi.Output.create<String>(map['childResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      childResourceName: (map['childResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

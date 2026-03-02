@@ -29,17 +29,12 @@ class RouteTableArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The VPC ID.
   RouteTableArgs({
-    pulumi.Output<List<String>>? propagatingVgws,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<RouteTableRoute>>? routes,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      propagatingVgws = pulumi.Input.asOptionalInput<List<String>>(propagatingVgws),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routes = pulumi.Input.asOptionalInput<List<RouteTableRoute>>(routes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.propagatingVgws,
+    this.region,
+    this.routes,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class RouteTableArgs {
 
   factory RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableArgs(
-      propagatingVgws: map['propagatingVgws'] == null ? null : pulumi.Output.create<List<String>>((map['propagatingVgws'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<RouteTableRoute>>(pulumi.Input.decodeList<RouteTableRoute>(map['routes'], (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      propagatingVgws: map['propagatingVgws'] == null ? null : ((map['propagatingVgws'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouteTableRoute>(map['routes'], (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

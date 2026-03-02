@@ -26,17 +26,12 @@ class RegistryCodeVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
   RegistryCodeVersionArgs({
-    required pulumi.Output<String> codeName,
-    required pulumi.Output<CodeVersionMachinelearningservices> codeVersionProperties,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? version,
-  }) :
-      codeName = pulumi.Input.asInput<String>(codeName),
-      codeVersionProperties = pulumi.Input.asInput<CodeVersionMachinelearningservices>(codeVersionProperties),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.codeName,
+    required this.codeVersionProperties,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RegistryCodeVersionArgs {
 
   factory RegistryCodeVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegistryCodeVersionArgs(
-      codeName: pulumi.Output.create<String>(map['codeName'] as String),
-      codeVersionProperties: pulumi.Output.create<CodeVersionMachinelearningservices>(map['codeVersionProperties'] as CodeVersionMachinelearningservices),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      codeName: (map['codeName'] as String).input(),
+      codeVersionProperties: (map['codeVersionProperties'] as CodeVersionMachinelearningservices).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

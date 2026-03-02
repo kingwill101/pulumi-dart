@@ -35,15 +35,11 @@ class CryptoKeyIAMBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Note that custom roles must be of the format
   CryptoKeyIAMBindingArgs({
-    pulumi.Output<CryptoKeyIAMBindingCondition>? condition,
-    required pulumi.Output<String> cryptoKeyId,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<CryptoKeyIAMBindingCondition>(condition),
-      cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId),
-      members = pulumi.Input.asInput<List<String>>(members),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.cryptoKeyId,
+    required this.members,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,10 +52,10 @@ class CryptoKeyIAMBindingArgs {
 
   factory CryptoKeyIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyIAMBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<CryptoKeyIAMBindingCondition>(CryptoKeyIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      cryptoKeyId: pulumi.Output.create<String>(map['cryptoKeyId'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (CryptoKeyIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      cryptoKeyId: (map['cryptoKeyId'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of PointInTimeRecoverySpecification
 class PointInTimeRecoverySpecificationResponse {
   /// Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.
-  final bool? pointInTimeRecoveryEnabled;
+  final pulumi.Input<bool>? pointInTimeRecoveryEnabled;
 
   /// Creates a new [PointInTimeRecoverySpecificationResponse].
   /// [pointInTimeRecoveryEnabled] Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.
@@ -20,7 +21,7 @@ class PointInTimeRecoverySpecificationResponse {
 
   factory PointInTimeRecoverySpecificationResponse.fromMap(Map<String, dynamic> map) {
     return PointInTimeRecoverySpecificationResponse(
-      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : map['pointInTimeRecoveryEnabled'] as bool,
+      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : (map['pointInTimeRecoveryEnabled'] as bool).input(),
     );
   }
 }

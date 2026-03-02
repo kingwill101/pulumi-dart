@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationNetworkConfiguration {
   /// The array of security group Ids for customer VPC connectivity.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
   /// The array of subnet Ids for customer VPC connectivity.
-  final List<String>? subnetIds;
+  final pulumi.Input<List<String>>? subnetIds;
 
   /// Creates a new [ApplicationNetworkConfiguration].
   /// [securityGroupIds] The array of security group Ids for customer VPC connectivity.
@@ -24,8 +25,8 @@ class ApplicationNetworkConfiguration {
 
   factory ApplicationNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationNetworkConfiguration(
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The StorageQoSPolicyDetails definition.
 class StorageQoSPolicyDetails {
   /// The ID of the QoS policy.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the policy.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [StorageQoSPolicyDetails].
   /// [id] The ID of the QoS policy.
@@ -25,8 +26,8 @@ class StorageQoSPolicyDetails {
 
   factory StorageQoSPolicyDetails.fromMap(Map<String, dynamic> map) {
     return StorageQoSPolicyDetails(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

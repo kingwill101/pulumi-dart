@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
   /// When set network_config.advanced_networking is automatically
   /// set to true.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig].
   /// [enabled] When set network_config.advanced_networking is automatically
@@ -20,7 +21,7 @@ class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
 
   factory BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

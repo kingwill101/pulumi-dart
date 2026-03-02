@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'arm_resource_definition_resource_element_template.dart';
 import 'depends_on_profile.dart';
 
 /// The network function definition resource element template details.
 class NetworkFunctionDefinitionResourceElementTemplateDetails {
   /// The resource element template type.
-  final ArmResourceDefinitionResourceElementTemplate? configuration;
+  final pulumi.Input<ArmResourceDefinitionResourceElementTemplate>? configuration;
   /// The depends on profile.
-  final DependsOnProfile? dependsOnProfile;
+  final pulumi.Input<DependsOnProfile>? dependsOnProfile;
   /// Name of the resource element template.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The resource element template type.
   /// Expected value is 'NetworkFunctionDefinition'.
-  final String resourceElementType;
+  final pulumi.Input<String> resourceElementType;
 
   /// Creates a new [NetworkFunctionDefinitionResourceElementTemplateDetails].
   /// [configuration] The resource element template type.
@@ -29,8 +30,8 @@ class NetworkFunctionDefinitionResourceElementTemplateDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?configuration == null ? null : configuration!.toMap(),
-      'dependsOnProfile': ?dependsOnProfile == null ? null : dependsOnProfile!.toMap(),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<ArmResourceDefinitionResourceElementTemplate, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'dependsOnProfile': ?pulumi.Input.mapOptionalInputValue<DependsOnProfile, Map<String, dynamic>>(dependsOnProfile, (value) => value.toMap()),
       'name': ?name,
       'resourceElementType': resourceElementType,
     };
@@ -38,10 +39,10 @@ class NetworkFunctionDefinitionResourceElementTemplateDetails {
 
   factory NetworkFunctionDefinitionResourceElementTemplateDetails.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionDefinitionResourceElementTemplateDetails(
-      configuration: map['configuration'] == null ? null : ArmResourceDefinitionResourceElementTemplate.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : DependsOnProfile.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      resourceElementType: map['resourceElementType'] as String,
+      configuration: map['configuration'] == null ? null : (ArmResourceDefinitionResourceElementTemplate.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceElementType: (map['resourceElementType'] as String).input(),
     );
   }
 }

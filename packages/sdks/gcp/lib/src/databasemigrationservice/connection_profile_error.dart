@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileError {
   /// (Output)
   /// The status code, which should be an enum value of google.rpc.Code.
-  final int? code;
+  final pulumi.Input<int>? code;
   /// (Output)
   /// A list of messages that carry the error details.
-  final List<Map<String, String>>? details;
+  final pulumi.Input<List<Map<String, String>>>? details;
   /// (Output)
   /// Human readable message indicating details about the current status.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [ConnectionProfileError].
   /// [code] (Output)
@@ -32,9 +33,9 @@ class ConnectionProfileError {
 
   factory ConnectionProfileError.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileError(
-      code: map['code'] == null ? null : map['code'] as int,
-      details: map['details'] == null ? null : (map['details'] as List).cast<Map<String, String>>(),
-      message: map['message'] == null ? null : map['message'] as String,
+      code: map['code'] == null ? null : (map['code'] as int).input(),
+      details: map['details'] == null ? null : ((map['details'] as List).cast<Map<String, String>>()).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

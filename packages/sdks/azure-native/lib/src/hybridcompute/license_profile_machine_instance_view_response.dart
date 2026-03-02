@@ -8,29 +8,29 @@ import 'product_feature_response.dart';
 /// License Profile Instance View in Machine Properties.
 class LicenseProfileMachineInstanceViewResponse {
   /// The timestamp in UTC when the billing ends.
-  final String billingEndDate;
+  final pulumi.Input<String> billingEndDate;
   /// The timestamp in UTC when the billing starts.
-  final String billingStartDate;
+  final pulumi.Input<String> billingStartDate;
   /// The timestamp in UTC when the user disenrolled the feature.
-  final String disenrollmentDate;
+  final pulumi.Input<String> disenrollmentDate;
   /// The timestamp in UTC when the user enrolls the feature.
-  final String enrollmentDate;
+  final pulumi.Input<String> enrollmentDate;
   /// The errors that were encountered during the feature enrollment or disenrollment.
-  final ErrorDetailResponse error;
+  final pulumi.Input<ErrorDetailResponse> error;
   /// Properties for the Machine ESU profile.
-  final LicenseProfileMachineInstanceViewEsuPropertiesResponse? esuProfile;
+  final pulumi.Input<LicenseProfileMachineInstanceViewEsuPropertiesResponse>? esuProfile;
   /// Indicates the license channel.
-  final String licenseChannel;
+  final pulumi.Input<String> licenseChannel;
   /// Indicates the license status of the OS.
-  final String licenseStatus;
+  final pulumi.Input<String> licenseStatus;
   /// The list of product features.
-  final List<ProductFeatureResponse>? productFeatures;
+  final pulumi.Input<List<ProductFeatureResponse>>? productFeatures;
   /// Indicates the product type of the license.
-  final String? productType;
+  final pulumi.Input<String>? productType;
   /// Specifies if this machine is licensed as part of a Software Assurance agreement.
-  final bool? softwareAssuranceCustomer;
+  final pulumi.Input<bool>? softwareAssuranceCustomer;
   /// Indicates the subscription status of the product.
-  final String? subscriptionStatus;
+  final pulumi.Input<String>? subscriptionStatus;
 
   /// Creates a new [LicenseProfileMachineInstanceViewResponse].
   /// [billingEndDate] The timestamp in UTC when the billing ends.
@@ -66,11 +66,11 @@ class LicenseProfileMachineInstanceViewResponse {
       'billingStartDate': billingStartDate,
       'disenrollmentDate': disenrollmentDate,
       'enrollmentDate': enrollmentDate,
-      'error': error.toMap(),
-      'esuProfile': ?esuProfile == null ? null : esuProfile!.toMap(),
+      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'esuProfile': ?pulumi.Input.mapOptionalInputValue<LicenseProfileMachineInstanceViewEsuPropertiesResponse, Map<String, dynamic>>(esuProfile, (value) => value.toMap()),
       'licenseChannel': licenseChannel,
       'licenseStatus': licenseStatus,
-      'productFeatures': ?productFeatures == null ? null : pulumi.Input.encodeList<ProductFeatureResponse, Map<String, dynamic>>(productFeatures!, (value) => value.toMap()),
+      'productFeatures': ?pulumi.Input.mapOptionalInputValue<List<ProductFeatureResponse>, List<Map<String, dynamic>>>(productFeatures, (value) => pulumi.Input.encodeList<ProductFeatureResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'productType': ?productType,
       'softwareAssuranceCustomer': ?softwareAssuranceCustomer,
       'subscriptionStatus': ?subscriptionStatus,
@@ -79,18 +79,18 @@ class LicenseProfileMachineInstanceViewResponse {
 
   factory LicenseProfileMachineInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return LicenseProfileMachineInstanceViewResponse(
-      billingEndDate: map['billingEndDate'] as String,
-      billingStartDate: map['billingStartDate'] as String,
-      disenrollmentDate: map['disenrollmentDate'] as String,
-      enrollmentDate: map['enrollmentDate'] as String,
-      error: ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      esuProfile: map['esuProfile'] == null ? null : LicenseProfileMachineInstanceViewEsuPropertiesResponse.fromMap((map['esuProfile'] as Map).cast<String, dynamic>()),
-      licenseChannel: map['licenseChannel'] as String,
-      licenseStatus: map['licenseStatus'] as String,
-      productFeatures: map['productFeatures'] == null ? null : pulumi.Input.decodeList<ProductFeatureResponse>(map['productFeatures'], (value) => ProductFeatureResponse.fromMap((value as Map).cast<String, dynamic>())),
-      productType: map['productType'] == null ? null : map['productType'] as String,
-      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : map['softwareAssuranceCustomer'] as bool,
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : map['subscriptionStatus'] as String,
+      billingEndDate: (map['billingEndDate'] as String).input(),
+      billingStartDate: (map['billingStartDate'] as String).input(),
+      disenrollmentDate: (map['disenrollmentDate'] as String).input(),
+      enrollmentDate: (map['enrollmentDate'] as String).input(),
+      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      esuProfile: map['esuProfile'] == null ? null : (LicenseProfileMachineInstanceViewEsuPropertiesResponse.fromMap((map['esuProfile'] as Map).cast<String, dynamic>())).input(),
+      licenseChannel: (map['licenseChannel'] as String).input(),
+      licenseStatus: (map['licenseStatus'] as String).input(),
+      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeatureResponse>(map['productFeatures'], (value) => ProductFeatureResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer'] as bool).input(),
+      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus'] as String).input(),
     );
   }
 }

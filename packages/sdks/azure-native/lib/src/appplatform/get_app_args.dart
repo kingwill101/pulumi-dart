@@ -22,15 +22,11 @@ class GetAppArgs {
   /// [serviceName] The name of the Service resource.
   /// [syncStatus] Indicates whether sync status
   GetAppArgs({
-    required pulumi.Output<String> appName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? syncStatus,
-  }) :
-      appName = pulumi.Input.asInput<String>(appName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      syncStatus = pulumi.Input.asOptionalInput<String>(syncStatus);
+    required this.appName,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.syncStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAppArgs {
 
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      syncStatus: map['syncStatus'] == null ? null : pulumi.Output.create<String>(map['syncStatus'] as String),
+      appName: (map['appName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      syncStatus: map['syncStatus'] == null ? null : (map['syncStatus'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigFastSocket {
   /// Whether or not NCCL Fast Socket is enabled
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [NodePoolNodeConfigFastSocket].
   /// [enabled] Whether or not NCCL Fast Socket is enabled
@@ -19,7 +20,7 @@ class NodePoolNodeConfigFastSocket {
 
   factory NodePoolNodeConfigFastSocket.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigFastSocket(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

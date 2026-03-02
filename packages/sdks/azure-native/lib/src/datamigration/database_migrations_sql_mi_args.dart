@@ -22,15 +22,11 @@ class DatabaseMigrationsSqlMiArgs {
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [targetDbName] The name of the target database.
   DatabaseMigrationsSqlMiArgs({
-    required pulumi.Output<String> managedInstanceName,
-    pulumi.Output<DatabaseMigrationPropertiesSqlMi>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? targetDbName,
-  }) :
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      properties = pulumi.Input.asOptionalInput<DatabaseMigrationPropertiesSqlMi>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetDbName = pulumi.Input.asOptionalInput<String>(targetDbName);
+    required this.managedInstanceName,
+    this.properties,
+    required this.resourceGroupName,
+    this.targetDbName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DatabaseMigrationsSqlMiArgs {
 
   factory DatabaseMigrationsSqlMiArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsSqlMiArgs(
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DatabaseMigrationPropertiesSqlMi>(DatabaseMigrationPropertiesSqlMi.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetDbName: map['targetDbName'] == null ? null : pulumi.Output.create<String>(map['targetDbName'] as String),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlMi.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName'] as String).input(),
     );
   }
 }

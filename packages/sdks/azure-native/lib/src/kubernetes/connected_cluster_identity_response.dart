@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity for the connected cluster.
 class ConnectedClusterIdentityResponse {
   /// The principal id of connected cluster identity. This property will only be provided for a system assigned identity.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant id associated with the connected cluster. This property will only be provided for a system assigned identity.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ConnectedClusterIdentityResponse].
   /// [principalId] The principal id of connected cluster identity. This property will only be provided for a system assigned identity.
@@ -30,9 +31,9 @@ class ConnectedClusterIdentityResponse {
 
   factory ConnectedClusterIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ConnectedClusterIdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

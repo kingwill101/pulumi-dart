@@ -7,13 +7,13 @@ import 'data_lake_configuration_replication_configuration.dart';
 
 class DataLakeConfiguration {
   /// Provides encryption details of Amazon Security Lake object.
-  final List<DataLakeConfigurationEncryptionConfiguration>? encryptionConfigurations;
+  final pulumi.Input<List<DataLakeConfigurationEncryptionConfiguration>>? encryptionConfigurations;
   /// Provides lifecycle details of Amazon Security Lake object.
-  final DataLakeConfigurationLifecycleConfiguration? lifecycleConfiguration;
+  final pulumi.Input<DataLakeConfigurationLifecycleConfiguration>? lifecycleConfiguration;
   /// The AWS Regions where Security Lake is automatically enabled.
-  final String region;
+  final pulumi.Input<String> region;
   /// Provides replication details of Amazon Security Lake object.
-  final DataLakeConfigurationReplicationConfiguration? replicationConfiguration;
+  final pulumi.Input<DataLakeConfigurationReplicationConfiguration>? replicationConfiguration;
 
   /// Creates a new [DataLakeConfiguration].
   /// [encryptionConfigurations] Provides encryption details of Amazon Security Lake object.
@@ -29,19 +29,19 @@ class DataLakeConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionConfigurations': ?encryptionConfigurations == null ? null : pulumi.Input.encodeList<DataLakeConfigurationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfigurations!, (value) => value.toMap()),
-      'lifecycleConfiguration': ?lifecycleConfiguration == null ? null : lifecycleConfiguration!.toMap(),
+      'encryptionConfigurations': ?pulumi.Input.mapOptionalInputValue<List<DataLakeConfigurationEncryptionConfiguration>, List<Map<String, dynamic>>>(encryptionConfigurations, (value) => pulumi.Input.encodeList<DataLakeConfigurationEncryptionConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lifecycleConfiguration': ?pulumi.Input.mapOptionalInputValue<DataLakeConfigurationLifecycleConfiguration, Map<String, dynamic>>(lifecycleConfiguration, (value) => value.toMap()),
       'region': region,
-      'replicationConfiguration': ?replicationConfiguration == null ? null : replicationConfiguration!.toMap(),
+      'replicationConfiguration': ?pulumi.Input.mapOptionalInputValue<DataLakeConfigurationReplicationConfiguration, Map<String, dynamic>>(replicationConfiguration, (value) => value.toMap()),
     };
   }
 
   factory DataLakeConfiguration.fromMap(Map<String, dynamic> map) {
     return DataLakeConfiguration(
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Input.decodeList<DataLakeConfigurationEncryptionConfiguration>(map['encryptionConfigurations'], (value) => DataLakeConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : DataLakeConfigurationLifecycleConfiguration.fromMap((map['lifecycleConfiguration'] as Map).cast<String, dynamic>()),
-      region: map['region'] as String,
-      replicationConfiguration: map['replicationConfiguration'] == null ? null : DataLakeConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>()),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<DataLakeConfigurationEncryptionConfiguration>(map['encryptionConfigurations'], (value) => DataLakeConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : (DataLakeConfigurationLifecycleConfiguration.fromMap((map['lifecycleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: (map['region'] as String).input(),
+      replicationConfiguration: map['replicationConfiguration'] == null ? null : (DataLakeConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

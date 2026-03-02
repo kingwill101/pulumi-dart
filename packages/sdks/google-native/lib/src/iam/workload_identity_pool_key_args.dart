@@ -29,21 +29,14 @@ class WorkloadIdentityPoolKeyArgs {
   /// [workloadIdentityPoolId] Required.
   /// [workloadIdentityPoolProviderKeyId] Required. The ID to use for the key, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].
   WorkloadIdentityPoolKeyArgs({
-    pulumi.Output<KeyData>? keyData,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> providerId,
-    required pulumi.Output<WorkloadIdentityPoolKeyUse> use,
-    required pulumi.Output<String> workloadIdentityPoolId,
-    required pulumi.Output<String> workloadIdentityPoolProviderKeyId,
-  }) :
-      keyData = pulumi.Input.asOptionalInput<KeyData>(keyData),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      providerId = pulumi.Input.asInput<String>(providerId),
-      use = pulumi.Input.asInput<WorkloadIdentityPoolKeyUse>(use),
-      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId),
-      workloadIdentityPoolProviderKeyId = pulumi.Input.asInput<String>(workloadIdentityPoolProviderKeyId);
+    this.keyData,
+    this.location,
+    this.project,
+    required this.providerId,
+    required this.use,
+    required this.workloadIdentityPoolId,
+    required this.workloadIdentityPoolProviderKeyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class WorkloadIdentityPoolKeyArgs {
 
   factory WorkloadIdentityPoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolKeyArgs(
-      keyData: map['keyData'] == null ? null : pulumi.Output.create<KeyData>(KeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      providerId: pulumi.Output.create<String>(map['providerId'] as String),
-      use: pulumi.Output.create<WorkloadIdentityPoolKeyUse>(WorkloadIdentityPoolKeyUse.fromValue(map['use'] as String)),
-      workloadIdentityPoolId: pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
-      workloadIdentityPoolProviderKeyId: pulumi.Output.create<String>(map['workloadIdentityPoolProviderKeyId'] as String),
+      keyData: map['keyData'] == null ? null : (KeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      providerId: (map['providerId'] as String).input(),
+      use: (WorkloadIdentityPoolKeyUse.fromValue(map['use'] as String)).input(),
+      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
+      workloadIdentityPoolProviderKeyId: (map['workloadIdentityPoolProviderKeyId'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class AzureClientState {
   /// [tenantId] The Azure Active Directory Tenant ID.
   /// [uid] Output only. A globally unique identifier for the client.
   AzureClientState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? uid,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      uid = pulumi.Input.asOptionalInput<String>(uid);
+    this.applicationId,
+    this.certificate,
+    this.createTime,
+    this.location,
+    this.name,
+    this.project,
+    this.tenantId,
+    this.uid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class AzureClientState {
 
   factory AzureClientState.fromMap(Map<String, dynamic> map) {
     return AzureClientState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

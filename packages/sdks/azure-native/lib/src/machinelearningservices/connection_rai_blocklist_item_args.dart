@@ -32,21 +32,14 @@ class ConnectionRaiBlocklistItemArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
   ConnectionRaiBlocklistItemArgs({
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<RaiBlocklistItemProperties> properties,
-    pulumi.Output<String>? proxyApiVersion,
-    pulumi.Output<String>? raiBlocklistItemName,
-    required pulumi.Output<String> raiBlocklistName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      properties = pulumi.Input.asInput<RaiBlocklistItemProperties>(properties),
-      proxyApiVersion = pulumi.Input.asOptionalInput<String>(proxyApiVersion),
-      raiBlocklistItemName = pulumi.Input.asOptionalInput<String>(raiBlocklistItemName),
-      raiBlocklistName = pulumi.Input.asInput<String>(raiBlocklistName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.connectionName,
+    required this.properties,
+    this.proxyApiVersion,
+    this.raiBlocklistItemName,
+    required this.raiBlocklistName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ConnectionRaiBlocklistItemArgs {
 
   factory ConnectionRaiBlocklistItemArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionRaiBlocklistItemArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      properties: pulumi.Output.create<RaiBlocklistItemProperties>(RaiBlocklistItemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      proxyApiVersion: map['proxyApiVersion'] == null ? null : pulumi.Output.create<String>(map['proxyApiVersion'] as String),
-      raiBlocklistItemName: map['raiBlocklistItemName'] == null ? null : pulumi.Output.create<String>(map['raiBlocklistItemName'] as String),
-      raiBlocklistName: pulumi.Output.create<String>(map['raiBlocklistName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      properties: (RaiBlocklistItemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion'] as String).input(),
+      raiBlocklistItemName: map['raiBlocklistItemName'] == null ? null : (map['raiBlocklistItemName'] as String).input(),
+      raiBlocklistName: (map['raiBlocklistName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

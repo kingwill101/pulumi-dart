@@ -19,13 +19,10 @@ class GetSecretArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [secretName] Name of the Secret under the profile.
   GetSecretArgs({
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> secretName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretName = pulumi.Input.asInput<String>(secretName);
+    required this.profileName,
+    required this.resourceGroupName,
+    required this.secretName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretName: pulumi.Output.create<String>(map['secretName'] as String),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
     );
   }
 }

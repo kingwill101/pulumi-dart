@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Deployment instance payload
 class DeploymentInstanceResponse {
   /// Discovery status of the deployment instance
-  final String discoveryStatus;
+  final pulumi.Input<String> discoveryStatus;
   /// Name of the deployment instance
-  final String name;
+  final pulumi.Input<String> name;
   /// Failed reason of the deployment instance
-  final String reason;
+  final pulumi.Input<String> reason;
   /// Start time of the deployment instance
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Status of the deployment instance
-  final String status;
+  final pulumi.Input<String> status;
   /// Availability zone information of the deployment instance
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [DeploymentInstanceResponse].
   /// [discoveryStatus] Discovery status of the deployment instance
@@ -45,12 +46,12 @@ class DeploymentInstanceResponse {
 
   factory DeploymentInstanceResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentInstanceResponse(
-      discoveryStatus: map['discoveryStatus'] as String,
-      name: map['name'] as String,
-      reason: map['reason'] as String,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      zone: map['zone'] as String,
+      discoveryStatus: (map['discoveryStatus'] as String).input(),
+      name: (map['name'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

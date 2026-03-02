@@ -19,15 +19,11 @@ class SharedTargetState {
   /// [status] The status of shared target.
   /// [targetId] The ID of the principal.
   SharedTargetState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? resourceShareId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? targetId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      resourceShareId = pulumi.Input.asOptionalInput<String>(resourceShareId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId);
+    this.createTime,
+    this.resourceShareId,
+    this.status,
+    this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SharedTargetState {
 
   factory SharedTargetState.fromMap(Map<String, dynamic> map) {
     return SharedTargetState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      resourceShareId: map['resourceShareId'] == null ? null : pulumi.Output.create<String>(map['resourceShareId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
     );
   }
 }

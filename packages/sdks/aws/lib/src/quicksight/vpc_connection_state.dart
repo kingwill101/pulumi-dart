@@ -48,33 +48,20 @@ class VpcConnectionState {
   /// [timeouts] Optional.
   /// [vpcConnectionId] The ID of the VPC connection.
   VpcConnectionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? availabilityStatus,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<List<String>>? dnsResolvers,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<List<String>>? securityGroupIds,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<VpcConnectionTimeouts>? timeouts,
-    pulumi.Output<String>? vpcConnectionId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      availabilityStatus = pulumi.Input.asOptionalInput<String>(availabilityStatus),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      dnsResolvers = pulumi.Input.asOptionalInput<List<String>>(dnsResolvers),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<VpcConnectionTimeouts>(timeouts),
-      vpcConnectionId = pulumi.Input.asOptionalInput<String>(vpcConnectionId);
+    this.arn,
+    this.availabilityStatus,
+    this.awsAccountId,
+    this.dnsResolvers,
+    this.name,
+    this.region,
+    this.roleArn,
+    this.securityGroupIds,
+    this.subnetIds,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.vpcConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class VpcConnectionState {
 
   factory VpcConnectionState.fromMap(Map<String, dynamic> map) {
     return VpcConnectionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      availabilityStatus: map['availabilityStatus'] == null ? null : pulumi.Output.create<String>(map['availabilityStatus'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      dnsResolvers: map['dnsResolvers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsResolvers'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<VpcConnectionTimeouts>(VpcConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcConnectionId: map['vpcConnectionId'] == null ? null : pulumi.Output.create<String>(map['vpcConnectionId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      dnsResolvers: map['dnsResolvers'] == null ? null : ((map['dnsResolvers'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VpcConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcConnectionId: map['vpcConnectionId'] == null ? null : (map['vpcConnectionId'] as String).input(),
     );
   }
 }

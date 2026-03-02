@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MongoClusterIdentity {
   /// A list of one or more Resource IDs for User Assigned Managed identities to assign.
   ///
   /// > **Note:** Required when `type` is set to `UserAssigned`.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The type of managed identity to assign. Possible value is `UserAssigned`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MongoClusterIdentity].
   /// [identityIds] A list of one or more Resource IDs for User Assigned Managed identities to assign.
@@ -26,8 +27,8 @@ class MongoClusterIdentity {
 
   factory MongoClusterIdentity.fromMap(Map<String, dynamic> map) {
     return MongoClusterIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

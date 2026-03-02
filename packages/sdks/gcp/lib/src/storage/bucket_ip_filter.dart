@@ -6,19 +6,19 @@ import 'bucket_ip_filter_vpc_network_source.dart';
 
 class BucketIpFilter {
   /// While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
-  final bool? allowAllServiceAgentAccess;
+  final pulumi.Input<bool>? allowAllServiceAgentAccess;
   /// While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
-  final bool? allowCrossOrgVpcs;
+  final pulumi.Input<bool>? allowCrossOrgVpcs;
   /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
   ///
   /// **Note**: Once ip_filter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
   ///
   /// **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The public network IP address ranges that can access the bucket and its data. Structure is documented below.
-  final BucketIpFilterPublicNetworkSource? publicNetworkSource;
+  final pulumi.Input<BucketIpFilterPublicNetworkSource>? publicNetworkSource;
   /// The list of VPC networks that can access the bucket. Structure is documented below.
-  final List<BucketIpFilterVpcNetworkSource>? vpcNetworkSources;
+  final pulumi.Input<List<BucketIpFilterVpcNetworkSource>>? vpcNetworkSources;
 
   /// Creates a new [BucketIpFilter].
   /// [allowAllServiceAgentAccess] While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
@@ -39,18 +39,18 @@ class BucketIpFilter {
       'allowAllServiceAgentAccess': ?allowAllServiceAgentAccess,
       'allowCrossOrgVpcs': ?allowCrossOrgVpcs,
       'mode': mode,
-      'publicNetworkSource': ?publicNetworkSource == null ? null : publicNetworkSource!.toMap(),
-      'vpcNetworkSources': ?vpcNetworkSources == null ? null : pulumi.Input.encodeList<BucketIpFilterVpcNetworkSource, Map<String, dynamic>>(vpcNetworkSources!, (value) => value.toMap()),
+      'publicNetworkSource': ?pulumi.Input.mapOptionalInputValue<BucketIpFilterPublicNetworkSource, Map<String, dynamic>>(publicNetworkSource, (value) => value.toMap()),
+      'vpcNetworkSources': ?pulumi.Input.mapOptionalInputValue<List<BucketIpFilterVpcNetworkSource>, List<Map<String, dynamic>>>(vpcNetworkSources, (value) => pulumi.Input.encodeList<BucketIpFilterVpcNetworkSource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BucketIpFilter.fromMap(Map<String, dynamic> map) {
     return BucketIpFilter(
-      allowAllServiceAgentAccess: map['allowAllServiceAgentAccess'] == null ? null : map['allowAllServiceAgentAccess'] as bool,
-      allowCrossOrgVpcs: map['allowCrossOrgVpcs'] == null ? null : map['allowCrossOrgVpcs'] as bool,
-      mode: map['mode'] as String,
-      publicNetworkSource: map['publicNetworkSource'] == null ? null : BucketIpFilterPublicNetworkSource.fromMap((map['publicNetworkSource'] as Map).cast<String, dynamic>()),
-      vpcNetworkSources: map['vpcNetworkSources'] == null ? null : pulumi.Input.decodeList<BucketIpFilterVpcNetworkSource>(map['vpcNetworkSources'], (value) => BucketIpFilterVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>())),
+      allowAllServiceAgentAccess: map['allowAllServiceAgentAccess'] == null ? null : (map['allowAllServiceAgentAccess'] as bool).input(),
+      allowCrossOrgVpcs: map['allowCrossOrgVpcs'] == null ? null : (map['allowCrossOrgVpcs'] as bool).input(),
+      mode: (map['mode'] as String).input(),
+      publicNetworkSource: map['publicNetworkSource'] == null ? null : (BucketIpFilterPublicNetworkSource.fromMap((map['publicNetworkSource'] as Map).cast<String, dynamic>())).input(),
+      vpcNetworkSources: map['vpcNetworkSources'] == null ? null : (pulumi.Input.decodeList<BucketIpFilterVpcNetworkSource>(map['vpcNetworkSources'], (value) => BucketIpFilterVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UsagePlanThrottleSettings {
-  final int? burstLimit;
-  final double? rateLimit;
+  final pulumi.Input<int>? burstLimit;
+  final pulumi.Input<double>? rateLimit;
 
   /// Creates a new [UsagePlanThrottleSettings].
   /// [burstLimit] Optional.
@@ -22,8 +23,8 @@ class UsagePlanThrottleSettings {
 
   factory UsagePlanThrottleSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanThrottleSettings(
-      burstLimit: map['burstLimit'] == null ? null : map['burstLimit'] as int,
-      rateLimit: map['rateLimit'] == null ? null : map['rateLimit'] as double,
+      burstLimit: map['burstLimit'] == null ? null : (map['burstLimit'] as int).input(),
+      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit'] as double).input(),
     );
   }
 }

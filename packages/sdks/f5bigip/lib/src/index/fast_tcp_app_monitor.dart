@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FastTcpAppMonitor {
   /// Set the time between health checks,in seconds for FAST-Generated Pool Monitor.
-  final int? interval;
+  final pulumi.Input<int>? interval;
 
   /// Creates a new [FastTcpAppMonitor].
   /// [interval] Set the time between health checks,in seconds for FAST-Generated Pool Monitor.
@@ -19,7 +20,7 @@ class FastTcpAppMonitor {
 
   factory FastTcpAppMonitor.fromMap(Map<String, dynamic> map) {
     return FastTcpAppMonitor(
-      interval: map['interval'] == null ? null : map['interval'] as int,
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
     );
   }
 }

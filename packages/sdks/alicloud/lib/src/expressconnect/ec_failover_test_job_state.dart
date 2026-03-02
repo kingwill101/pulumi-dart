@@ -28,21 +28,14 @@ class EcFailoverTestJobState {
   /// [resourceType] Resource type.
   /// [status] The status of the resource.
   EcFailoverTestJobState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ecFailoverTestJobName,
-    pulumi.Output<int>? jobDuration,
-    pulumi.Output<String>? jobType,
-    pulumi.Output<List<String>>? resourceIds,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ecFailoverTestJobName = pulumi.Input.asOptionalInput<String>(ecFailoverTestJobName),
-      jobDuration = pulumi.Input.asOptionalInput<int>(jobDuration),
-      jobType = pulumi.Input.asOptionalInput<String>(jobType),
-      resourceIds = pulumi.Input.asOptionalInput<List<String>>(resourceIds),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.ecFailoverTestJobName,
+    this.jobDuration,
+    this.jobType,
+    this.resourceIds,
+    this.resourceType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class EcFailoverTestJobState {
 
   factory EcFailoverTestJobState.fromMap(Map<String, dynamic> map) {
     return EcFailoverTestJobState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ecFailoverTestJobName: map['ecFailoverTestJobName'] == null ? null : pulumi.Output.create<String>(map['ecFailoverTestJobName'] as String),
-      jobDuration: map['jobDuration'] == null ? null : pulumi.Output.create<int>(map['jobDuration'] as int),
-      jobType: map['jobType'] == null ? null : pulumi.Output.create<String>(map['jobType'] as String),
-      resourceIds: map['resourceIds'] == null ? null : pulumi.Output.create<List<String>>((map['resourceIds'] as List).cast<String>()),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ecFailoverTestJobName: map['ecFailoverTestJobName'] == null ? null : (map['ecFailoverTestJobName'] as String).input(),
+      jobDuration: map['jobDuration'] == null ? null : (map['jobDuration'] as int).input(),
+      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
+      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds'] as List).cast<String>()).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

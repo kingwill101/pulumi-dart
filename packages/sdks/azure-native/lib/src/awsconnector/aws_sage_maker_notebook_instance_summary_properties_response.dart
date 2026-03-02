@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_type_enum_value_response.dart';
 import 'notebook_instance_status_enum_value_response.dart';
 
 /// Definition of awsSageMakerNotebookInstanceSummary
 class AwsSageMakerNotebookInstanceSummaryPropertiesResponse {
   /// <p>An array of up to three Git repositories associated with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in <a href='https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html'>Amazon Web Services CodeCommit</a> or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see <a href='https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html'>Associating Git Repositories with SageMaker Notebook Instances</a>.</p>
-  final List<String>? additionalCodeRepositories;
+  final pulumi.Input<List<String>>? additionalCodeRepositories;
   /// <p>A timestamp that shows when the notebook instance was created.</p>
-  final String? creationTime;
+  final pulumi.Input<String>? creationTime;
   /// <p>The Git repository associated with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in <a href='https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html'>Amazon Web Services CodeCommit</a> or in any other Git repository. When you open a notebook instance, it opens in the directory that contains this repository. For more information, see <a href='https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html'>Associating Git Repositories with SageMaker Notebook Instances</a>.</p>
-  final String? defaultCodeRepository;
+  final pulumi.Input<String>? defaultCodeRepository;
   /// <p>The type of ML compute instance that the notebook instance is running on.</p>
-  final InstanceTypeEnumValueResponse? instanceType;
+  final pulumi.Input<InstanceTypeEnumValueResponse>? instanceType;
   /// <p>A timestamp that shows when the notebook instance was last modified.</p>
-  final String? lastModifiedTime;
+  final pulumi.Input<String>? lastModifiedTime;
   /// <p>The Amazon Resource Name (ARN) of the notebook instance.</p>
-  final String? notebookInstanceArn;
+  final pulumi.Input<String>? notebookInstanceArn;
   /// <p>The name of a notebook instance lifecycle configuration associated with this notebook instance.</p> <p>For information about notebook instance lifestyle configurations, see <a href='https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html'>Step 2.1: (Optional) Customize a Notebook Instance</a>.</p>
-  final String? notebookInstanceLifecycleConfigName;
+  final pulumi.Input<String>? notebookInstanceLifecycleConfigName;
   /// <p>The name of the notebook instance that you want a summary for.</p>
-  final String? notebookInstanceName;
+  final pulumi.Input<String>? notebookInstanceName;
   /// <p>The status of the notebook instance.</p>
-  final NotebookInstanceStatusEnumValueResponse? notebookInstanceStatus;
+  final pulumi.Input<NotebookInstanceStatusEnumValueResponse>? notebookInstanceStatus;
   /// <p>The URL that you use to connect to the Jupyter notebook running in your notebook instance. </p>
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [AwsSageMakerNotebookInstanceSummaryPropertiesResponse].
   /// [additionalCodeRepositories] <p>An array of up to three Git repositories associated with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in <a href='https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html'>Amazon Web Services CodeCommit</a> or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see <a href='https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html'>Associating Git Repositories with SageMaker Notebook Instances</a>.</p>
@@ -55,28 +56,28 @@ class AwsSageMakerNotebookInstanceSummaryPropertiesResponse {
       'additionalCodeRepositories': ?additionalCodeRepositories,
       'creationTime': ?creationTime,
       'defaultCodeRepository': ?defaultCodeRepository,
-      'instanceType': ?instanceType == null ? null : instanceType!.toMap(),
+      'instanceType': ?pulumi.Input.mapOptionalInputValue<InstanceTypeEnumValueResponse, Map<String, dynamic>>(instanceType, (value) => value.toMap()),
       'lastModifiedTime': ?lastModifiedTime,
       'notebookInstanceArn': ?notebookInstanceArn,
       'notebookInstanceLifecycleConfigName': ?notebookInstanceLifecycleConfigName,
       'notebookInstanceName': ?notebookInstanceName,
-      'notebookInstanceStatus': ?notebookInstanceStatus == null ? null : notebookInstanceStatus!.toMap(),
+      'notebookInstanceStatus': ?pulumi.Input.mapOptionalInputValue<NotebookInstanceStatusEnumValueResponse, Map<String, dynamic>>(notebookInstanceStatus, (value) => value.toMap()),
       'url': ?url,
     };
   }
 
   factory AwsSageMakerNotebookInstanceSummaryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsSageMakerNotebookInstanceSummaryPropertiesResponse(
-      additionalCodeRepositories: map['additionalCodeRepositories'] == null ? null : (map['additionalCodeRepositories'] as List).cast<String>(),
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      defaultCodeRepository: map['defaultCodeRepository'] == null ? null : map['defaultCodeRepository'] as String,
-      instanceType: map['instanceType'] == null ? null : InstanceTypeEnumValueResponse.fromMap((map['instanceType'] as Map).cast<String, dynamic>()),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
-      notebookInstanceArn: map['notebookInstanceArn'] == null ? null : map['notebookInstanceArn'] as String,
-      notebookInstanceLifecycleConfigName: map['notebookInstanceLifecycleConfigName'] == null ? null : map['notebookInstanceLifecycleConfigName'] as String,
-      notebookInstanceName: map['notebookInstanceName'] == null ? null : map['notebookInstanceName'] as String,
-      notebookInstanceStatus: map['notebookInstanceStatus'] == null ? null : NotebookInstanceStatusEnumValueResponse.fromMap((map['notebookInstanceStatus'] as Map).cast<String, dynamic>()),
-      url: map['url'] == null ? null : map['url'] as String,
+      additionalCodeRepositories: map['additionalCodeRepositories'] == null ? null : ((map['additionalCodeRepositories'] as List).cast<String>()).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      defaultCodeRepository: map['defaultCodeRepository'] == null ? null : (map['defaultCodeRepository'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (InstanceTypeEnumValueResponse.fromMap((map['instanceType'] as Map).cast<String, dynamic>())).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      notebookInstanceArn: map['notebookInstanceArn'] == null ? null : (map['notebookInstanceArn'] as String).input(),
+      notebookInstanceLifecycleConfigName: map['notebookInstanceLifecycleConfigName'] == null ? null : (map['notebookInstanceLifecycleConfigName'] as String).input(),
+      notebookInstanceName: map['notebookInstanceName'] == null ? null : (map['notebookInstanceName'] as String).input(),
+      notebookInstanceStatus: map['notebookInstanceStatus'] == null ? null : (NotebookInstanceStatusEnumValueResponse.fromMap((map['notebookInstanceStatus'] as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

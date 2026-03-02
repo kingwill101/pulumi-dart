@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceModelWithAllowedPropertySetResponseIdentity {
   /// The principal ID of resource identity. The value must be an UUID.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant ID of resource. The value must be an UUID.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The identity type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ResourceModelWithAllowedPropertySetResponseIdentity].
   /// [principalId] The principal ID of resource identity. The value must be an UUID.
@@ -29,9 +30,9 @@ class ResourceModelWithAllowedPropertySetResponseIdentity {
 
   factory ResourceModelWithAllowedPropertySetResponseIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceModelWithAllowedPropertySetResponseIdentity(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

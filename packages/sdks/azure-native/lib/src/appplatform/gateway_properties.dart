@@ -13,29 +13,29 @@ import 'sso_properties.dart';
 /// Spring Cloud Gateway properties payload
 class GatewayProperties {
   /// Collection of addons for Spring Cloud Gateway
-  final Map<String, dynamic>? addonConfigs;
+  final pulumi.Input<Map<String, dynamic>>? addonConfigs;
   /// API metadata property for Spring Cloud Gateway
-  final GatewayApiMetadataProperties? apiMetadataProperties;
+  final pulumi.Input<GatewayApiMetadataProperties>? apiMetadataProperties;
   /// Collection of APM type used in Spring Cloud Gateway
-  final List<String>? apmTypes;
+  final pulumi.Input<List<String>>? apmTypes;
   /// Collection of ApmReferences in service level
-  final List<ApmReference>? apms;
+  final pulumi.Input<List<ApmReference>>? apms;
   /// Client-Certification Authentication.
-  final GatewayPropertiesClientAuth? clientAuth;
+  final pulumi.Input<GatewayPropertiesClientAuth>? clientAuth;
   /// Cross-Origin Resource Sharing property
-  final GatewayCorsProperties? corsProperties;
+  final pulumi.Input<GatewayCorsProperties>? corsProperties;
   /// Environment variables of Spring Cloud Gateway
-  final GatewayPropertiesEnvironmentVariables? environmentVariables;
+  final pulumi.Input<GatewayPropertiesEnvironmentVariables>? environmentVariables;
   /// Indicate if only https is allowed.
-  final bool? httpsOnly;
+  final pulumi.Input<bool>? httpsOnly;
   /// Indicates whether the Spring Cloud Gateway exposes endpoint.
-  final bool? public;
+  final pulumi.Input<bool>? public;
   /// The requested resource quantity for required CPU and Memory.
-  final GatewayResourceRequests? resourceRequests;
+  final pulumi.Input<GatewayResourceRequests>? resourceRequests;
   /// The properties to configure different types of response cache for Spring Cloud Gateway.
-  final GatewayLocalResponseCachePerInstanceProperties? responseCacheProperties;
+  final pulumi.Input<GatewayLocalResponseCachePerInstanceProperties>? responseCacheProperties;
   /// Single sign-on related configuration
-  final SsoProperties? ssoProperties;
+  final pulumi.Input<SsoProperties>? ssoProperties;
 
   /// Creates a new [GatewayProperties].
   /// [addonConfigs] Collection of addons for Spring Cloud Gateway
@@ -68,34 +68,34 @@ class GatewayProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addonConfigs': ?addonConfigs,
-      'apiMetadataProperties': ?apiMetadataProperties == null ? null : apiMetadataProperties!.toMap(),
+      'apiMetadataProperties': ?pulumi.Input.mapOptionalInputValue<GatewayApiMetadataProperties, Map<String, dynamic>>(apiMetadataProperties, (value) => value.toMap()),
       'apmTypes': ?apmTypes,
-      'apms': ?apms == null ? null : pulumi.Input.encodeList<ApmReference, Map<String, dynamic>>(apms!, (value) => value.toMap()),
-      'clientAuth': ?clientAuth == null ? null : clientAuth!.toMap(),
-      'corsProperties': ?corsProperties == null ? null : corsProperties!.toMap(),
-      'environmentVariables': ?environmentVariables == null ? null : environmentVariables!.toMap(),
+      'apms': ?pulumi.Input.mapOptionalInputValue<List<ApmReference>, List<Map<String, dynamic>>>(apms, (value) => pulumi.Input.encodeList<ApmReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clientAuth': ?pulumi.Input.mapOptionalInputValue<GatewayPropertiesClientAuth, Map<String, dynamic>>(clientAuth, (value) => value.toMap()),
+      'corsProperties': ?pulumi.Input.mapOptionalInputValue<GatewayCorsProperties, Map<String, dynamic>>(corsProperties, (value) => value.toMap()),
+      'environmentVariables': ?pulumi.Input.mapOptionalInputValue<GatewayPropertiesEnvironmentVariables, Map<String, dynamic>>(environmentVariables, (value) => value.toMap()),
       'httpsOnly': ?httpsOnly,
       'public': ?public,
-      'resourceRequests': ?resourceRequests == null ? null : resourceRequests!.toMap(),
-      'responseCacheProperties': ?responseCacheProperties == null ? null : responseCacheProperties!.toMap(),
-      'ssoProperties': ?ssoProperties == null ? null : ssoProperties!.toMap(),
+      'resourceRequests': ?pulumi.Input.mapOptionalInputValue<GatewayResourceRequests, Map<String, dynamic>>(resourceRequests, (value) => value.toMap()),
+      'responseCacheProperties': ?pulumi.Input.mapOptionalInputValue<GatewayLocalResponseCachePerInstanceProperties, Map<String, dynamic>>(responseCacheProperties, (value) => value.toMap()),
+      'ssoProperties': ?pulumi.Input.mapOptionalInputValue<SsoProperties, Map<String, dynamic>>(ssoProperties, (value) => value.toMap()),
     };
   }
 
   factory GatewayProperties.fromMap(Map<String, dynamic> map) {
     return GatewayProperties(
-      addonConfigs: map['addonConfigs'] == null ? null : (map['addonConfigs'] as Map).cast<String, dynamic>(),
-      apiMetadataProperties: map['apiMetadataProperties'] == null ? null : GatewayApiMetadataProperties.fromMap((map['apiMetadataProperties'] as Map).cast<String, dynamic>()),
-      apmTypes: map['apmTypes'] == null ? null : (map['apmTypes'] as List).cast<String>(),
-      apms: map['apms'] == null ? null : pulumi.Input.decodeList<ApmReference>(map['apms'], (value) => ApmReference.fromMap((value as Map).cast<String, dynamic>())),
-      clientAuth: map['clientAuth'] == null ? null : GatewayPropertiesClientAuth.fromMap((map['clientAuth'] as Map).cast<String, dynamic>()),
-      corsProperties: map['corsProperties'] == null ? null : GatewayCorsProperties.fromMap((map['corsProperties'] as Map).cast<String, dynamic>()),
-      environmentVariables: map['environmentVariables'] == null ? null : GatewayPropertiesEnvironmentVariables.fromMap((map['environmentVariables'] as Map).cast<String, dynamic>()),
-      httpsOnly: map['httpsOnly'] == null ? null : map['httpsOnly'] as bool,
-      public: map['public'] == null ? null : map['public'] as bool,
-      resourceRequests: map['resourceRequests'] == null ? null : GatewayResourceRequests.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>()),
-      responseCacheProperties: map['responseCacheProperties'] == null ? null : GatewayLocalResponseCachePerInstanceProperties.fromMap((map['responseCacheProperties'] as Map).cast<String, dynamic>()),
-      ssoProperties: map['ssoProperties'] == null ? null : SsoProperties.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>()),
+      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs'] as Map).cast<String, dynamic>()).input(),
+      apiMetadataProperties: map['apiMetadataProperties'] == null ? null : (GatewayApiMetadataProperties.fromMap((map['apiMetadataProperties'] as Map).cast<String, dynamic>())).input(),
+      apmTypes: map['apmTypes'] == null ? null : ((map['apmTypes'] as List).cast<String>()).input(),
+      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReference>(map['apms'], (value) => ApmReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAuth: map['clientAuth'] == null ? null : (GatewayPropertiesClientAuth.fromMap((map['clientAuth'] as Map).cast<String, dynamic>())).input(),
+      corsProperties: map['corsProperties'] == null ? null : (GatewayCorsProperties.fromMap((map['corsProperties'] as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (GatewayPropertiesEnvironmentVariables.fromMap((map['environmentVariables'] as Map).cast<String, dynamic>())).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (GatewayResourceRequests.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      responseCacheProperties: map['responseCacheProperties'] == null ? null : (GatewayLocalResponseCachePerInstanceProperties.fromMap((map['responseCacheProperties'] as Map).cast<String, dynamic>())).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (SsoProperties.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AttachedVolume describes a volume attached to a node
 class AttachedVolumePatch {
   /// DevicePath represents the device path where the volume should be available
-  final String? devicePath;
+  final pulumi.Input<String>? devicePath;
   /// Name of the attached volume
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AttachedVolumePatch].
   /// [devicePath] DevicePath represents the device path where the volume should be available
@@ -25,8 +26,8 @@ class AttachedVolumePatch {
 
   factory AttachedVolumePatch.fromMap(Map<String, dynamic> map) {
     return AttachedVolumePatch(
-      devicePath: map['devicePath'] == null ? null : map['devicePath'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      devicePath: map['devicePath'] == null ? null : (map['devicePath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

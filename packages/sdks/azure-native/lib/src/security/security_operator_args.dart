@@ -16,11 +16,9 @@ class SecurityOperatorArgs {
   /// [pricingName] name of the pricing configuration
   /// [securityOperatorName] name of the securityOperator
   SecurityOperatorArgs({
-    required pulumi.Output<String> pricingName,
-    pulumi.Output<String>? securityOperatorName,
-  }) :
-      pricingName = pulumi.Input.asInput<String>(pricingName),
-      securityOperatorName = pulumi.Input.asOptionalInput<String>(securityOperatorName);
+    required this.pricingName,
+    this.securityOperatorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class SecurityOperatorArgs {
 
   factory SecurityOperatorArgs.fromMap(Map<String, dynamic> map) {
     return SecurityOperatorArgs(
-      pricingName: pulumi.Output.create<String>(map['pricingName'] as String),
-      securityOperatorName: map['securityOperatorName'] == null ? null : pulumi.Output.create<String>(map['securityOperatorName'] as String),
+      pricingName: (map['pricingName'] as String).input(),
+      securityOperatorName: map['securityOperatorName'] == null ? null : (map['securityOperatorName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicSpiceJpeg {
   /// Sets the JPEG compression quality for images sent via the Spice protocol.
-  final String compression;
+  final pulumi.Input<String> compression;
 
   /// Creates a new [DomainDevicesGraphicSpiceJpeg].
   /// [compression] Sets the JPEG compression quality for images sent via the Spice protocol.
@@ -19,7 +20,7 @@ class DomainDevicesGraphicSpiceJpeg {
 
   factory DomainDevicesGraphicSpiceJpeg.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceJpeg(
-      compression: map['compression'] as String,
+      compression: (map['compression'] as String).input(),
     );
   }
 }

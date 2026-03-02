@@ -19,13 +19,10 @@ class FirewallTransitGatewayAttachmentAccepterArgs {
   /// [timeouts] Optional.
   /// [transitGatewayAttachmentId] The unique identifier of the transit gateway attachment to accept. This ID is returned in the response when creating a transit gateway-attached firewall.
   FirewallTransitGatewayAttachmentAccepterArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<FirewallTransitGatewayAttachmentAccepterTimeouts>? timeouts,
-    required pulumi.Output<String> transitGatewayAttachmentId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<FirewallTransitGatewayAttachmentAccepterTimeouts>(timeouts),
-      transitGatewayAttachmentId = pulumi.Input.asInput<String>(transitGatewayAttachmentId);
+    this.region,
+    this.timeouts,
+    required this.transitGatewayAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class FirewallTransitGatewayAttachmentAccepterArgs {
 
   factory FirewallTransitGatewayAttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return FirewallTransitGatewayAttachmentAccepterArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<FirewallTransitGatewayAttachmentAccepterTimeouts>(FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      transitGatewayAttachmentId: pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
     );
   }
 }

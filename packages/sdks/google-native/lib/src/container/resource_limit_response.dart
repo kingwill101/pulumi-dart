@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains information about amount of some resource in the cluster. For memory, value should be in GB.
 class ResourceLimitResponse {
   /// Maximum amount of the resource in the cluster.
-  final String maximum;
+  final pulumi.Input<String> maximum;
   /// Minimum amount of the resource in the cluster.
-  final String minimum;
+  final pulumi.Input<String> minimum;
   /// Resource name "cpu", "memory" or gpu-specific string.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [ResourceLimitResponse].
   /// [maximum] Maximum amount of the resource in the cluster.
@@ -30,9 +31,9 @@ class ResourceLimitResponse {
 
   factory ResourceLimitResponse.fromMap(Map<String, dynamic> map) {
     return ResourceLimitResponse(
-      maximum: map['maximum'] as String,
-      minimum: map['minimum'] as String,
-      resourceType: map['resourceType'] as String,
+      maximum: (map['maximum'] as String).input(),
+      minimum: (map['minimum'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

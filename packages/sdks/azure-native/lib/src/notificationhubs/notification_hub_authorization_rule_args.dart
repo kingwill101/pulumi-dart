@@ -37,25 +37,16 @@ class NotificationHubAuthorizationRuleArgs {
   /// [secondaryKey] Gets a base64-encoded 256-bit primary key for signing and
   /// [tags] Optional.
   NotificationHubAuthorizationRuleArgs({
-    pulumi.Output<String>? authorizationRuleName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> notificationHubName,
-    pulumi.Output<String>? primaryKey,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<String>> rights,
-    pulumi.Output<String>? secondaryKey,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      authorizationRuleName = pulumi.Input.asOptionalInput<String>(authorizationRuleName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      notificationHubName = pulumi.Input.asInput<String>(notificationHubName),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rights = pulumi.Input.asInput<List<String>>(rights),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.authorizationRuleName,
+    this.location,
+    required this.namespaceName,
+    required this.notificationHubName,
+    this.primaryKey,
+    required this.resourceGroupName,
+    required this.rights,
+    this.secondaryKey,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class NotificationHubAuthorizationRuleArgs {
 
   factory NotificationHubAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return NotificationHubAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : pulumi.Output.create<String>(map['authorizationRuleName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      notificationHubName: pulumi.Output.create<String>(map['notificationHubName'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rights: pulumi.Output.create<List<String>>((map['rights'] as List).cast<String>()),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      notificationHubName: (map['notificationHubName'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rights: ((map['rights'] as List).cast<String>()).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

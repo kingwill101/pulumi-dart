@@ -6,7 +6,7 @@ import 'monitoring_component_config_enable_components_item.dart';
 /// MonitoringComponentConfig is cluster monitoring component configuration.
 class MonitoringComponentConfig {
   /// Select components to collect metrics. An empty set would disable all monitoring.
-  final List<MonitoringComponentConfigEnableComponentsItem>? enableComponents;
+  final pulumi.Input<List<MonitoringComponentConfigEnableComponentsItem>>? enableComponents;
 
   /// Creates a new [MonitoringComponentConfig].
   /// [enableComponents] Select components to collect metrics. An empty set would disable all monitoring.
@@ -16,13 +16,13 @@ class MonitoringComponentConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enableComponents': ?enableComponents == null ? null : pulumi.Input.encodeList<MonitoringComponentConfigEnableComponentsItem, String>(enableComponents!, (value) => value.value),
+      'enableComponents': ?pulumi.Input.mapOptionalInputValue<List<MonitoringComponentConfigEnableComponentsItem>, List<String>>(enableComponents, (value) => pulumi.Input.encodeList<MonitoringComponentConfigEnableComponentsItem, String>(value, (value) => value.value)),
     };
   }
 
   factory MonitoringComponentConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringComponentConfig(
-      enableComponents: map['enableComponents'] == null ? null : pulumi.Input.decodeList<MonitoringComponentConfigEnableComponentsItem>(map['enableComponents'], (value) => MonitoringComponentConfigEnableComponentsItem.fromValue(value as String)),
+      enableComponents: map['enableComponents'] == null ? null : (pulumi.Input.decodeList<MonitoringComponentConfigEnableComponentsItem>(map['enableComponents'], (value) => MonitoringComponentConfigEnableComponentsItem.fromValue(value as String))).input(),
     );
   }
 }

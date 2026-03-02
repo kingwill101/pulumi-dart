@@ -26,17 +26,12 @@ class RegionNetworkFirewallPolicyAssociationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location of this resource.
   RegionNetworkFirewallPolicyAssociationArgs({
-    required pulumi.Output<String> attachmentTarget,
-    required pulumi.Output<String> firewallPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.attachmentTarget,
+    required this.firewallPolicy,
+    this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RegionNetworkFirewallPolicyAssociationArgs {
 
   factory RegionNetworkFirewallPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyAssociationArgs(
-      attachmentTarget: pulumi.Output.create<String>(map['attachmentTarget'] as String),
-      firewallPolicy: pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      attachmentTarget: (map['attachmentTarget'] as String).input(),
+      firewallPolicy: (map['firewallPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class FastSnapshotRestoreArgs {
   /// [snapshotId] ID of the snapshot.
   /// [timeouts] Optional.
   FastSnapshotRestoreArgs({
-    required pulumi.Output<String> availabilityZone,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> snapshotId,
-    pulumi.Output<FastSnapshotRestoreTimeouts>? timeouts,
-  }) :
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotId = pulumi.Input.asInput<String>(snapshotId),
-      timeouts = pulumi.Input.asOptionalInput<FastSnapshotRestoreTimeouts>(timeouts);
+    required this.availabilityZone,
+    this.region,
+    required this.snapshotId,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class FastSnapshotRestoreArgs {
 
   factory FastSnapshotRestoreArgs.fromMap(Map<String, dynamic> map) {
     return FastSnapshotRestoreArgs(
-      availabilityZone: pulumi.Output.create<String>(map['availabilityZone'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotId: pulumi.Output.create<String>(map['snapshotId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<FastSnapshotRestoreTimeouts>(FastSnapshotRestoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (FastSnapshotRestoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

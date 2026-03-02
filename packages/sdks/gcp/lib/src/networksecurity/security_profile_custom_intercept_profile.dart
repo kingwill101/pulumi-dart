@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityProfileCustomInterceptProfile {
   /// The Intercept Endpoint Group to which matching traffic should be intercepted.
   /// Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
-  final String interceptEndpointGroup;
+  final pulumi.Input<String> interceptEndpointGroup;
 
   /// Creates a new [SecurityProfileCustomInterceptProfile].
   /// [interceptEndpointGroup] The Intercept Endpoint Group to which matching traffic should be intercepted.
@@ -20,7 +21,7 @@ class SecurityProfileCustomInterceptProfile {
 
   factory SecurityProfileCustomInterceptProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfileCustomInterceptProfile(
-      interceptEndpointGroup: map['interceptEndpointGroup'] as String,
+      interceptEndpointGroup: (map['interceptEndpointGroup'] as String).input(),
     );
   }
 }

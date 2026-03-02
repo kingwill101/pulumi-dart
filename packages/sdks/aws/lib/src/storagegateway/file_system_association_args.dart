@@ -35,23 +35,15 @@ class FileSystemAssociationArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [username] The user name of the user credential that has permission to access the root share of the Amazon FSx file system. The user account must belong to the Amazon FSx delegated admin user group.
   FileSystemAssociationArgs({
-    pulumi.Output<String>? auditDestinationArn,
-    pulumi.Output<FileSystemAssociationCacheAttributes>? cacheAttributes,
-    required pulumi.Output<String> gatewayArn,
-    required pulumi.Output<String> locationArn,
-    required pulumi.Output<String> password,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> username,
-  }) :
-      auditDestinationArn = pulumi.Input.asOptionalInput<String>(auditDestinationArn),
-      cacheAttributes = pulumi.Input.asOptionalInput<FileSystemAssociationCacheAttributes>(cacheAttributes),
-      gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
-      locationArn = pulumi.Input.asInput<String>(locationArn),
-      password = pulumi.Input.asInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      username = pulumi.Input.asInput<String>(username);
+    this.auditDestinationArn,
+    this.cacheAttributes,
+    required this.gatewayArn,
+    required this.locationArn,
+    required this.password,
+    this.region,
+    this.tags,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class FileSystemAssociationArgs {
 
   factory FileSystemAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemAssociationArgs(
-      auditDestinationArn: map['auditDestinationArn'] == null ? null : pulumi.Output.create<String>(map['auditDestinationArn'] as String),
-      cacheAttributes: map['cacheAttributes'] == null ? null : pulumi.Output.create<FileSystemAssociationCacheAttributes>(FileSystemAssociationCacheAttributes.fromMap((map['cacheAttributes'] as Map).cast<String, dynamic>())),
-      gatewayArn: pulumi.Output.create<String>(map['gatewayArn'] as String),
-      locationArn: pulumi.Output.create<String>(map['locationArn'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      auditDestinationArn: map['auditDestinationArn'] == null ? null : (map['auditDestinationArn'] as String).input(),
+      cacheAttributes: map['cacheAttributes'] == null ? null : (FileSystemAssociationCacheAttributes.fromMap((map['cacheAttributes'] as Map).cast<String, dynamic>())).input(),
+      gatewayArn: (map['gatewayArn'] as String).input(),
+      locationArn: (map['locationArn'] as String).input(),
+      password: (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

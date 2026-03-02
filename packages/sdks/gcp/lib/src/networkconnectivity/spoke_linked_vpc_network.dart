@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpokeLinkedVpcNetwork {
   /// IP ranges encompassing the subnets to be excluded from peering.
-  final List<String>? excludeExportRanges;
+  final pulumi.Input<List<String>>? excludeExportRanges;
   /// IP ranges allowed to be included from peering.
-  final List<String>? includeExportRanges;
+  final pulumi.Input<List<String>>? includeExportRanges;
   /// The URI of the VPC network resource.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [SpokeLinkedVpcNetwork].
   /// [excludeExportRanges] IP ranges encompassing the subnets to be excluded from peering.
@@ -29,9 +30,9 @@ class SpokeLinkedVpcNetwork {
 
   factory SpokeLinkedVpcNetwork.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedVpcNetwork(
-      excludeExportRanges: map['excludeExportRanges'] == null ? null : (map['excludeExportRanges'] as List).cast<String>(),
-      includeExportRanges: map['includeExportRanges'] == null ? null : (map['includeExportRanges'] as List).cast<String>(),
-      uri: map['uri'] as String,
+      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges'] as List).cast<String>()).input(),
+      includeExportRanges: map['includeExportRanges'] == null ? null : ((map['includeExportRanges'] as List).cast<String>()).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

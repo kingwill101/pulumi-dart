@@ -6,9 +6,9 @@ import 'mysql_table.dart';
 /// MySQL database.
 class MysqlDatabase {
   /// Database name.
-  final String? database;
+  final pulumi.Input<String>? database;
   /// Tables in the database.
-  final List<MysqlTable>? mysqlTables;
+  final pulumi.Input<List<MysqlTable>>? mysqlTables;
 
   /// Creates a new [MysqlDatabase].
   /// [database] Database name.
@@ -21,14 +21,14 @@ class MysqlDatabase {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'database': ?database,
-      'mysqlTables': ?mysqlTables == null ? null : pulumi.Input.encodeList<MysqlTable, Map<String, dynamic>>(mysqlTables!, (value) => value.toMap()),
+      'mysqlTables': ?pulumi.Input.mapOptionalInputValue<List<MysqlTable>, List<Map<String, dynamic>>>(mysqlTables, (value) => pulumi.Input.encodeList<MysqlTable, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MysqlDatabase.fromMap(Map<String, dynamic> map) {
     return MysqlDatabase(
-      database: map['database'] == null ? null : map['database'] as String,
-      mysqlTables: map['mysqlTables'] == null ? null : pulumi.Input.decodeList<MysqlTable>(map['mysqlTables'], (value) => MysqlTable.fromMap((value as Map).cast<String, dynamic>())),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<MysqlTable>(map['mysqlTables'], (value) => MysqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class GetSqlPoolSensitivityLabelArgs {
   /// [tableName] The name of the table.
   /// [workspaceName] The name of the workspace.
   GetSqlPoolSensitivityLabelArgs({
-    required pulumi.Output<String> columnName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    required pulumi.Output<String> sensitivityLabelSource,
-    required pulumi.Output<String> sqlPoolName,
-    required pulumi.Output<String> tableName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      columnName = pulumi.Input.asInput<String>(columnName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      sensitivityLabelSource = pulumi.Input.asInput<String>(sensitivityLabelSource),
-      sqlPoolName = pulumi.Input.asInput<String>(sqlPoolName),
-      tableName = pulumi.Input.asInput<String>(tableName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.columnName,
+    required this.resourceGroupName,
+    required this.schemaName,
+    required this.sensitivityLabelSource,
+    required this.sqlPoolName,
+    required this.tableName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetSqlPoolSensitivityLabelArgs {
 
   factory GetSqlPoolSensitivityLabelArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlPoolSensitivityLabelArgs(
-      columnName: pulumi.Output.create<String>(map['columnName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      sensitivityLabelSource: pulumi.Output.create<String>(map['sensitivityLabelSource'] as String),
-      sqlPoolName: pulumi.Output.create<String>(map['sqlPoolName'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      columnName: (map['columnName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      sensitivityLabelSource: (map['sensitivityLabelSource'] as String).input(),
+      sqlPoolName: (map['sqlPoolName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

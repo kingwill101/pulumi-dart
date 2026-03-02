@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceShieldedInstanceConfig {
   /// - Whether integrity monitoring is enabled for the instance.
-  final bool enableIntegrityMonitoring;
+  final pulumi.Input<bool> enableIntegrityMonitoring;
   /// - Whether secure boot is enabled for the instance.
-  final bool enableSecureBoot;
+  final pulumi.Input<bool> enableSecureBoot;
   /// - Whether the instance uses vTPM.
-  final bool enableVtpm;
+  final pulumi.Input<bool> enableVtpm;
 
   /// Creates a new [GetInstanceShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] - Whether integrity monitoring is enabled for the instance.
@@ -29,9 +30,9 @@ class GetInstanceShieldedInstanceConfig {
 
   factory GetInstanceShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] as bool,
-      enableVtpm: map['enableVtpm'] as bool,
+      enableIntegrityMonitoring: (map['enableIntegrityMonitoring'] as bool).input(),
+      enableSecureBoot: (map['enableSecureBoot'] as bool).input(),
+      enableVtpm: (map['enableVtpm'] as bool).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the Backend WebProxy Server to use in the Request to Backend.
 class BackendProxyContract {
   /// Password to connect to the WebProxy Server
-  final String? password;
+  final pulumi.Input<String>? password;
   /// WebProxy Server AbsoluteUri property which includes the entire URI stored in the Uri instance, including all fragments and query strings.
-  final String url;
+  final pulumi.Input<String> url;
   /// Username to connect to the WebProxy server
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [BackendProxyContract].
   /// [password] Password to connect to the WebProxy Server
@@ -30,9 +31,9 @@ class BackendProxyContract {
 
   factory BackendProxyContract.fromMap(Map<String, dynamic> map) {
     return BackendProxyContract(
-      password: map['password'] == null ? null : map['password'] as String,
-      url: map['url'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      url: (map['url'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

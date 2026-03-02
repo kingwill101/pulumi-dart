@@ -6,7 +6,7 @@ import 'custom_domain_configuration.dart';
 /// Properties of the Topics Configuration.
 class TopicsConfiguration {
   /// List of custom domain configurations for the namespace.
-  final List<CustomDomainConfiguration>? customDomains;
+  final pulumi.Input<List<CustomDomainConfiguration>>? customDomains;
 
   /// Creates a new [TopicsConfiguration].
   /// [customDomains] List of custom domain configurations for the namespace.
@@ -16,13 +16,13 @@ class TopicsConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customDomains': ?customDomains == null ? null : pulumi.Input.encodeList<CustomDomainConfiguration, Map<String, dynamic>>(customDomains!, (value) => value.toMap()),
+      'customDomains': ?pulumi.Input.mapOptionalInputValue<List<CustomDomainConfiguration>, List<Map<String, dynamic>>>(customDomains, (value) => pulumi.Input.encodeList<CustomDomainConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TopicsConfiguration.fromMap(Map<String, dynamic> map) {
     return TopicsConfiguration(
-      customDomains: map['customDomains'] == null ? null : pulumi.Input.decodeList<CustomDomainConfiguration>(map['customDomains'], (value) => CustomDomainConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainConfiguration>(map['customDomains'], (value) => CustomDomainConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2VmServiceAccount {
   /// Email address of the service account. If empty, default Compute service account will be used.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// The list of scopes to be made available for this service account. If empty, access to all
   /// Cloud APIs will be allowed.
-  final List<String>? scopes;
+  final pulumi.Input<List<String>>? scopes;
 
   /// Creates a new [V2VmServiceAccount].
   /// [email] Email address of the service account. If empty, default Compute service account will be used.
@@ -25,8 +26,8 @@ class V2VmServiceAccount {
 
   factory V2VmServiceAccount.fromMap(Map<String, dynamic> map) {
     return V2VmServiceAccount(
-      email: map['email'] == null ? null : map['email'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

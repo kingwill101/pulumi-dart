@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiFeatureStoreOnlineServingConfigScaling {
   /// The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
-  final int maxNodeCount;
+  final pulumi.Input<int> maxNodeCount;
   /// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
-  final int minNodeCount;
+  final pulumi.Input<int> minNodeCount;
 
   /// Creates a new [AiFeatureStoreOnlineServingConfigScaling].
   /// [maxNodeCount] The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
@@ -24,8 +25,8 @@ class AiFeatureStoreOnlineServingConfigScaling {
 
   factory AiFeatureStoreOnlineServingConfigScaling.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreOnlineServingConfigScaling(
-      maxNodeCount: map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] as int,
+      maxNodeCount: (map['maxNodeCount'] as int).input(),
+      minNodeCount: (map['minNodeCount'] as int).input(),
     );
   }
 }

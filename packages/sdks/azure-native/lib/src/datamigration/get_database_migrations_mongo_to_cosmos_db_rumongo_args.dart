@@ -19,13 +19,10 @@ class GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs {
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [targetResourceName] The name of the target resource/account.
   GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs({
-    required pulumi.Output<String> migrationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetResourceName,
-  }) :
-      migrationName = pulumi.Input.asInput<String>(migrationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetResourceName = pulumi.Input.asInput<String>(targetResourceName);
+    required this.migrationName,
+    required this.resourceGroupName,
+    required this.targetResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs {
 
   factory GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs(
-      migrationName: pulumi.Output.create<String>(map['migrationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetResourceName: pulumi.Output.create<String>(map['targetResourceName'] as String),
+      migrationName: (map['migrationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetResourceName: (map['targetResourceName'] as String).input(),
     );
   }
 }

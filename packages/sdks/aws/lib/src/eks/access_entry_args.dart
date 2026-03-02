@@ -33,21 +33,14 @@ class AccessEntryArgs {
   /// [type] Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.
   /// [userName] Defaults to principal ARN if user is principal else defaults to assume-role/session-name is role is used.
   AccessEntryArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<List<String>>? kubernetesGroups,
-    required pulumi.Output<String> principalArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? userName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      kubernetesGroups = pulumi.Input.asOptionalInput<List<String>>(kubernetesGroups),
-      principalArn = pulumi.Input.asInput<String>(principalArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    required this.clusterName,
+    this.kubernetesGroups,
+    required this.principalArn,
+    this.region,
+    this.tags,
+    this.type,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AccessEntryArgs {
 
   factory AccessEntryArgs.fromMap(Map<String, dynamic> map) {
     return AccessEntryArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      kubernetesGroups: map['kubernetesGroups'] == null ? null : pulumi.Output.create<List<String>>((map['kubernetesGroups'] as List).cast<String>()),
-      principalArn: pulumi.Output.create<String>(map['principalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      kubernetesGroups: map['kubernetesGroups'] == null ? null : ((map['kubernetesGroups'] as List).cast<String>()).input(),
+      principalArn: (map['principalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

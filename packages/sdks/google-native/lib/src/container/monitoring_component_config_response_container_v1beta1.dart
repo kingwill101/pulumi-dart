@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MonitoringComponentConfig is cluster monitoring component configuration.
 class MonitoringComponentConfigResponseContainerV1beta1 {
   /// Select components to collect metrics. An empty set would disable all monitoring.
-  final List<String> enableComponents;
+  final pulumi.Input<List<String>> enableComponents;
 
   /// Creates a new [MonitoringComponentConfigResponseContainerV1beta1].
   /// [enableComponents] Select components to collect metrics. An empty set would disable all monitoring.
@@ -20,7 +21,7 @@ class MonitoringComponentConfigResponseContainerV1beta1 {
 
   factory MonitoringComponentConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MonitoringComponentConfigResponseContainerV1beta1(
-      enableComponents: (map['enableComponents'] as List).cast<String>(),
+      enableComponents: ((map['enableComponents'] as List).cast<String>()).input(),
     );
   }
 }

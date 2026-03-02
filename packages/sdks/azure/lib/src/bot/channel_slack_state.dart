@@ -31,23 +31,15 @@ class ChannelSlackState {
   /// [signingSecret] The Signing Secret that will be used to sign the requests.
   /// [verificationToken] The Verification Token that will be used to authenticate with Slack.
   ChannelSlackState({
-    pulumi.Output<String>? botName,
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<String>? landingPageUrl,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? signingSecret,
-    pulumi.Output<String>? verificationToken,
-  }) :
-      botName = pulumi.Input.asOptionalInput<String>(botName),
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      landingPageUrl = pulumi.Input.asOptionalInput<String>(landingPageUrl),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      signingSecret = pulumi.Input.asOptionalInput<String>(signingSecret),
-      verificationToken = pulumi.Input.asOptionalInput<String>(verificationToken);
+    this.botName,
+    this.clientId,
+    this.clientSecret,
+    this.landingPageUrl,
+    this.location,
+    this.resourceGroupName,
+    this.signingSecret,
+    this.verificationToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ChannelSlackState {
 
   factory ChannelSlackState.fromMap(Map<String, dynamic> map) {
     return ChannelSlackState(
-      botName: map['botName'] == null ? null : pulumi.Output.create<String>(map['botName'] as String),
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      landingPageUrl: map['landingPageUrl'] == null ? null : pulumi.Output.create<String>(map['landingPageUrl'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      signingSecret: map['signingSecret'] == null ? null : pulumi.Output.create<String>(map['signingSecret'] as String),
-      verificationToken: map['verificationToken'] == null ? null : pulumi.Output.create<String>(map['verificationToken'] as String),
+      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret'] as String).input(),
+      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken'] as String).input(),
     );
   }
 }

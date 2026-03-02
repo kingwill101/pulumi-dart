@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contact Details.
 class ContactDetailsResponse {
   /// Contact name of the person.
-  final String? contactName;
+  final pulumi.Input<String>? contactName;
   /// List of Email-ids to be notified about job progress.
-  final List<String>? emailList;
+  final pulumi.Input<List<String>>? emailList;
   /// Mobile number of the contact person.
-  final String? mobile;
+  final pulumi.Input<String>? mobile;
   /// Phone number of the contact person.
-  final String? phone;
+  final pulumi.Input<String>? phone;
   /// Phone extension number of the contact person.
-  final String? phoneExtension;
+  final pulumi.Input<String>? phoneExtension;
 
   /// Creates a new [ContactDetailsResponse].
   /// [contactName] Contact name of the person.
@@ -40,11 +41,11 @@ class ContactDetailsResponse {
 
   factory ContactDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ContactDetailsResponse(
-      contactName: map['contactName'] == null ? null : map['contactName'] as String,
-      emailList: map['emailList'] == null ? null : (map['emailList'] as List).cast<String>(),
-      mobile: map['mobile'] == null ? null : map['mobile'] as String,
-      phone: map['phone'] == null ? null : map['phone'] as String,
-      phoneExtension: map['phoneExtension'] == null ? null : map['phoneExtension'] as String,
+      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
+      emailList: map['emailList'] == null ? null : ((map['emailList'] as List).cast<String>()).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
+      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension'] as String).input(),
     );
   }
 }

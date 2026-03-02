@@ -31,19 +31,13 @@ class ChannelArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [thirdPartyProvider] The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
   ChannelArgs({
-    pulumi.Output<String>? cryptoKeyName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? thirdPartyProvider,
-  }) :
-      cryptoKeyName = pulumi.Input.asOptionalInput<String>(cryptoKeyName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      thirdPartyProvider = pulumi.Input.asOptionalInput<String>(thirdPartyProvider);
+    this.cryptoKeyName,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.thirdPartyProvider,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      thirdPartyProvider: map['thirdPartyProvider'] == null ? null : pulumi.Output.create<String>(map['thirdPartyProvider'] as String),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      thirdPartyProvider: map['thirdPartyProvider'] == null ? null : (map['thirdPartyProvider'] as String).input(),
     );
   }
 }

@@ -23,17 +23,12 @@ class BucketAclState {
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BucketAclState({
-    pulumi.Output<BucketAclAccessControlPolicy>? accessControlPolicy,
-    pulumi.Output<String>? acl,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? region,
-  }) :
-      accessControlPolicy = pulumi.Input.asOptionalInput<BucketAclAccessControlPolicy>(accessControlPolicy),
-      acl = pulumi.Input.asOptionalInput<String>(acl),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accessControlPolicy,
+    this.acl,
+    this.bucket,
+    this.expectedBucketOwner,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class BucketAclState {
 
   factory BucketAclState.fromMap(Map<String, dynamic> map) {
     return BucketAclState(
-      accessControlPolicy: map['accessControlPolicy'] == null ? null : pulumi.Output.create<BucketAclAccessControlPolicy>(BucketAclAccessControlPolicy.fromMap((map['accessControlPolicy'] as Map).cast<String, dynamic>())),
-      acl: map['acl'] == null ? null : pulumi.Output.create<String>(map['acl'] as String),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accessControlPolicy: map['accessControlPolicy'] == null ? null : (BucketAclAccessControlPolicy.fromMap((map['accessControlPolicy'] as Map).cast<String, dynamic>())).input(),
+      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

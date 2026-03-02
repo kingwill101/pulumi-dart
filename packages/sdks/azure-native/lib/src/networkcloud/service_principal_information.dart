@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServicePrincipalInformation {
   /// The application ID, also known as client ID, of the service principal.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// The password of the service principal.
-  final String password;
+  final pulumi.Input<String> password;
   /// The principal ID, also known as the object ID, of the service principal.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant ID, also known as the directory ID, of the tenant in which the service principal is created.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [ServicePrincipalInformation].
   /// [applicationId] The application ID, also known as client ID, of the service principal.
@@ -34,10 +35,10 @@ class ServicePrincipalInformation {
 
   factory ServicePrincipalInformation.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalInformation(
-      applicationId: map['applicationId'] as String,
-      password: map['password'] as String,
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
+      applicationId: (map['applicationId'] as String).input(),
+      password: (map['password'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

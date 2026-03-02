@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Informational messages about the state of the Cloud Function or Operation.
 class GoogleCloudFunctionsV2StateMessageResponse {
   /// The message.
-  final String message;
+  final pulumi.Input<String> message;
   /// Severity of the state message.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// One-word CamelCase type of the state message.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudFunctionsV2StateMessageResponse].
   /// [message] The message.
@@ -30,9 +31,9 @@ class GoogleCloudFunctionsV2StateMessageResponse {
 
   factory GoogleCloudFunctionsV2StateMessageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudFunctionsV2StateMessageResponse(
-      message: map['message'] as String,
-      severity: map['severity'] as String,
-      type: map['type'] as String,
+      message: (map['message'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

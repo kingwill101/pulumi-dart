@@ -33,15 +33,11 @@ class IAMBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
   IAMBindingArgs({
-    pulumi.Output<IAMBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serviceAccountId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IAMBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      role = pulumi.Input.asInput<String>(role),
-      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
+    this.condition,
+    required this.members,
+    required this.role,
+    required this.serviceAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,10 +50,10 @@ class IAMBindingArgs {
 
   factory IAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return IAMBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IAMBindingCondition>(IAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serviceAccountId: pulumi.Output.create<String>(map['serviceAccountId'] as String),
+      condition: map['condition'] == null ? null : (IAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
+      serviceAccountId: (map['serviceAccountId'] as String).input(),
     );
   }
 }

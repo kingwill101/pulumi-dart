@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contact_info.dart';
 import 'shipping_address.dart';
 
 /// Reverse Shipping Address and contact details for a job.
 class ReverseShippingDetails {
   /// Contact Info.
-  final ContactInfo? contactDetails;
+  final pulumi.Input<ContactInfo>? contactDetails;
   /// Shipping address where customer wishes to receive the device.
-  final ShippingAddress? shippingAddress;
+  final pulumi.Input<ShippingAddress>? shippingAddress;
 
   /// Creates a new [ReverseShippingDetails].
   /// [contactDetails] Contact Info.
@@ -20,15 +21,15 @@ class ReverseShippingDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contactDetails': ?contactDetails == null ? null : contactDetails!.toMap(),
-      'shippingAddress': ?shippingAddress == null ? null : shippingAddress!.toMap(),
+      'contactDetails': ?pulumi.Input.mapOptionalInputValue<ContactInfo, Map<String, dynamic>>(contactDetails, (value) => value.toMap()),
+      'shippingAddress': ?pulumi.Input.mapOptionalInputValue<ShippingAddress, Map<String, dynamic>>(shippingAddress, (value) => value.toMap()),
     };
   }
 
   factory ReverseShippingDetails.fromMap(Map<String, dynamic> map) {
     return ReverseShippingDetails(
-      contactDetails: map['contactDetails'] == null ? null : ContactInfo.fromMap((map['contactDetails'] as Map).cast<String, dynamic>()),
-      shippingAddress: map['shippingAddress'] == null ? null : ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>()),
+      contactDetails: map['contactDetails'] == null ? null : (ContactInfo.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

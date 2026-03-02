@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An invoice section.
 class InvoiceSectionPropertiesResponse {
   /// The name of the invoice section.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The provisioning state of the resource during a long-running operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Reason for the specified invoice section status.
-  final String? reasonCode;
+  final pulumi.Input<String>? reasonCode;
   /// Identifies the status of an invoice section.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The system generated unique identifier for an invoice section.
-  final String systemId;
+  final pulumi.Input<String> systemId;
   /// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
-  final String? targetCloud;
+  final pulumi.Input<String>? targetCloud;
 
   /// Creates a new [InvoiceSectionPropertiesResponse].
   /// [displayName] The name of the invoice section.
@@ -50,13 +51,13 @@ class InvoiceSectionPropertiesResponse {
 
   factory InvoiceSectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InvoiceSectionPropertiesResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      reasonCode: map['reasonCode'] == null ? null : map['reasonCode'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      systemId: map['systemId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetCloud: map['targetCloud'] == null ? null : map['targetCloud'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reasonCode: map['reasonCode'] == null ? null : (map['reasonCode'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      systemId: (map['systemId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetCloud: map['targetCloud'] == null ? null : (map['targetCloud'] as String).input(),
     );
   }
 }

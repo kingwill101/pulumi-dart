@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes Protocol and thumbprint of Windows Remote Management listener
 class WinRMListener {
@@ -16,10 +17,10 @@ class WinRMListener {
   /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
   /// or the [Azure Key Vault virtual machine extension for
   /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
-  final String? certificateUrl;
+  final pulumi.Input<String>? certificateUrl;
   /// Specifies the protocol of WinRM listener. Possible values are: **http,**
   /// **https.**
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [WinRMListener].
   /// [certificateUrl] This is the URL of a certificate that has been uploaded to Key Vault as a
@@ -38,8 +39,8 @@ class WinRMListener {
 
   factory WinRMListener.fromMap(Map<String, dynamic> map) {
     return WinRMListener(
-      certificateUrl: map['certificateUrl'] == null ? null : map['certificateUrl'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

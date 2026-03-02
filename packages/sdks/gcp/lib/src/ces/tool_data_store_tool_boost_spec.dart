@@ -7,10 +7,10 @@ class ToolDataStoreToolBoostSpec {
   /// The Data Store where the boosting configuration is applied. Full resource
   /// name of DataStore, such as
   /// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
-  final List<String> dataStores;
+  final pulumi.Input<List<String>> dataStores;
   /// A list of boosting specifications.
   /// Structure is documented below.
-  final List<ToolDataStoreToolBoostSpecSpec> specs;
+  final pulumi.Input<List<ToolDataStoreToolBoostSpecSpec>> specs;
 
   /// Creates a new [ToolDataStoreToolBoostSpec].
   /// [dataStores] The Data Store where the boosting configuration is applied. Full resource
@@ -23,14 +23,14 @@ class ToolDataStoreToolBoostSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataStores': dataStores,
-      'specs': pulumi.Input.encodeList<ToolDataStoreToolBoostSpecSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
+      'specs': pulumi.Input.mapInputValue<List<ToolDataStoreToolBoostSpecSpec>, List<Map<String, dynamic>>>(specs, (value) => pulumi.Input.encodeList<ToolDataStoreToolBoostSpecSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ToolDataStoreToolBoostSpec.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolBoostSpec(
-      dataStores: (map['dataStores'] as List).cast<String>(),
-      specs: pulumi.Input.decodeList<ToolDataStoreToolBoostSpecSpec>(map['specs'], (value) => ToolDataStoreToolBoostSpecSpec.fromMap((value as Map).cast<String, dynamic>())),
+      dataStores: ((map['dataStores'] as List).cast<String>()).input(),
+      specs: (pulumi.Input.decodeList<ToolDataStoreToolBoostSpecSpec>(map['specs'], (value) => ToolDataStoreToolBoostSpecSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

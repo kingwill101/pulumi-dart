@@ -19,15 +19,11 @@ class UserFlowAttributeState {
   /// [description] The description of the user flow attribute that is shown to the user at the time of sign-up.
   /// [displayName] The display name of the user flow attribute. Changing this forces a new resource to be created.
   UserFlowAttributeState({
-    pulumi.Output<String>? attributeType,
-    pulumi.Output<String>? dataType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-  }) :
-      attributeType = pulumi.Input.asOptionalInput<String>(attributeType),
-      dataType = pulumi.Input.asOptionalInput<String>(dataType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName);
+    this.attributeType,
+    this.dataType,
+    this.description,
+    this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class UserFlowAttributeState {
 
   factory UserFlowAttributeState.fromMap(Map<String, dynamic> map) {
     return UserFlowAttributeState(
-      attributeType: map['attributeType'] == null ? null : pulumi.Output.create<String>(map['attributeType'] as String),
-      dataType: map['dataType'] == null ? null : pulumi.Output.create<String>(map['dataType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
+      attributeType: map['attributeType'] == null ? null : (map['attributeType'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReferenceListEntry {
   /// Required. The value of the entry. Maximum length is 512 characters.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ReferenceListEntry].
   /// [value] Required. The value of the entry. Maximum length is 512 characters.
@@ -19,7 +20,7 @@ class ReferenceListEntry {
 
   factory ReferenceListEntry.fromMap(Map<String, dynamic> map) {
     return ReferenceListEntry(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

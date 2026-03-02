@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypePrice {
   /// Cost (in US dollars) per hour.
-  final double hourly;
+  final pulumi.Input<double> hourly;
   /// Cost (in US dollars) per month.
-  final double monthly;
+  final pulumi.Input<double> monthly;
 
   /// Creates a new [GetInstanceTypePrice].
   /// [hourly] Cost (in US dollars) per hour.
@@ -24,8 +25,8 @@ class GetInstanceTypePrice {
 
   factory GetInstanceTypePrice.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypePrice(
-      hourly: map['hourly'] as double,
-      monthly: map['monthly'] as double,
+      hourly: (map['hourly'] as double).input(),
+      monthly: (map['monthly'] as double).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Collection of instances belong to the Application Live View
 class ApplicationLiveViewInstanceResponse {
   /// Name of the Application Live View instance.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status of the Application Live View instance. It can be Pending, Running, Succeeded, Failed, Unknown.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ApplicationLiveViewInstanceResponse].
   /// [name] Name of the Application Live View instance.
@@ -25,8 +26,8 @@ class ApplicationLiveViewInstanceResponse {
 
   factory ApplicationLiveViewInstanceResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationLiveViewInstanceResponse(
-      name: map['name'] as String,
-      status: map['status'] as String,
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

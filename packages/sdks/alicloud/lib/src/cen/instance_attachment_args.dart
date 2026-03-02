@@ -30,19 +30,13 @@ class InstanceAttachmentArgs {
   /// [childInstanceType] The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
   /// [instanceId] The ID of the CEN.
   InstanceAttachmentArgs({
-    pulumi.Output<int>? cenOwnerId,
-    required pulumi.Output<String> childInstanceId,
-    pulumi.Output<int>? childInstanceOwnerId,
-    required pulumi.Output<String> childInstanceRegionId,
-    required pulumi.Output<String> childInstanceType,
-    required pulumi.Output<String> instanceId,
-  }) :
-      cenOwnerId = pulumi.Input.asOptionalInput<int>(cenOwnerId),
-      childInstanceId = pulumi.Input.asInput<String>(childInstanceId),
-      childInstanceOwnerId = pulumi.Input.asOptionalInput<int>(childInstanceOwnerId),
-      childInstanceRegionId = pulumi.Input.asInput<String>(childInstanceRegionId),
-      childInstanceType = pulumi.Input.asInput<String>(childInstanceType),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    this.cenOwnerId,
+    required this.childInstanceId,
+    this.childInstanceOwnerId,
+    required this.childInstanceRegionId,
+    required this.childInstanceType,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class InstanceAttachmentArgs {
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentArgs(
-      cenOwnerId: map['cenOwnerId'] == null ? null : pulumi.Output.create<int>(map['cenOwnerId'] as int),
-      childInstanceId: pulumi.Output.create<String>(map['childInstanceId'] as String),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : pulumi.Output.create<int>(map['childInstanceOwnerId'] as int),
-      childInstanceRegionId: pulumi.Output.create<String>(map['childInstanceRegionId'] as String),
-      childInstanceType: pulumi.Output.create<String>(map['childInstanceType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as int).input(),
+      childInstanceId: (map['childInstanceId'] as String).input(),
+      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId'] as int).input(),
+      childInstanceRegionId: (map['childInstanceRegionId'] as String).input(),
+      childInstanceType: (map['childInstanceType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

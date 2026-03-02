@@ -5,23 +5,23 @@ import 'get_virtual_machine_scale_set_network_interface_ip_configuration.dart';
 
 class GetVirtualMachineScaleSetNetworkInterface {
   /// The auxiliary mode for the network interface.
-  final String auxiliaryMode;
+  final pulumi.Input<String> auxiliaryMode;
   /// The auxiliary SKU for the network interface.
-  final String auxiliarySku;
+  final pulumi.Input<String> auxiliarySku;
   /// An array of the DNS servers in use.
-  final List<String> dnsServers;
+  final pulumi.Input<List<String>> dnsServers;
   /// Whether accelerated networking is enabled.
-  final bool enableAcceleratedNetworking;
+  final pulumi.Input<bool> enableAcceleratedNetworking;
   /// Whether IP forwarding is enabled on this NIC.
-  final bool enableIpForwarding;
+  final pulumi.Input<bool> enableIpForwarding;
   /// An `ip_configuration` block as defined below.
-  final List<GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration> ipConfigurations;
+  final pulumi.Input<List<GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration>> ipConfigurations;
   /// The name of this Virtual Machine Scale Set.
-  final String name;
+  final pulumi.Input<String> name;
   /// The identifier for the network security group.
-  final String networkSecurityGroupId;
+  final pulumi.Input<String> networkSecurityGroupId;
   /// If this ip_configuration is the primary one.
-  final bool primary;
+  final pulumi.Input<bool> primary;
 
   /// Creates a new [GetVirtualMachineScaleSetNetworkInterface].
   /// [auxiliaryMode] The auxiliary mode for the network interface.
@@ -52,7 +52,7 @@ class GetVirtualMachineScaleSetNetworkInterface {
       'dnsServers': dnsServers,
       'enableAcceleratedNetworking': enableAcceleratedNetworking,
       'enableIpForwarding': enableIpForwarding,
-      'ipConfigurations': pulumi.Input.encodeList<GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations': pulumi.Input.mapInputValue<List<GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'networkSecurityGroupId': networkSecurityGroupId,
       'primary': primary,
@@ -61,15 +61,15 @@ class GetVirtualMachineScaleSetNetworkInterface {
 
   factory GetVirtualMachineScaleSetNetworkInterface.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetNetworkInterface(
-      auxiliaryMode: map['auxiliaryMode'] as String,
-      auxiliarySku: map['auxiliarySku'] as String,
-      dnsServers: (map['dnsServers'] as List).cast<String>(),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] as bool,
-      enableIpForwarding: map['enableIpForwarding'] as bool,
-      ipConfigurations: pulumi.Input.decodeList<GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      networkSecurityGroupId: map['networkSecurityGroupId'] as String,
-      primary: map['primary'] as bool,
+      auxiliaryMode: (map['auxiliaryMode'] as String).input(),
+      auxiliarySku: (map['auxiliarySku'] as String).input(),
+      dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
+      enableAcceleratedNetworking: (map['enableAcceleratedNetworking'] as bool).input(),
+      enableIpForwarding: (map['enableIpForwarding'] as bool).input(),
+      ipConfigurations: (pulumi.Input.decodeList<GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => GetVirtualMachineScaleSetNetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      networkSecurityGroupId: (map['networkSecurityGroupId'] as String).input(),
+      primary: (map['primary'] as bool).input(),
     );
   }
 }

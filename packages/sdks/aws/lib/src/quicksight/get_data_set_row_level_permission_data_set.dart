@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetRowLevelPermissionDataSet {
-  final String arn;
-  final String formatVersion;
-  final String namespace;
-  final String permissionPolicy;
-  final String status;
+  final pulumi.Input<String> arn;
+  final pulumi.Input<String> formatVersion;
+  final pulumi.Input<String> namespace;
+  final pulumi.Input<String> permissionPolicy;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetDataSetRowLevelPermissionDataSet].
   /// [arn] Required.
@@ -34,11 +35,11 @@ class GetDataSetRowLevelPermissionDataSet {
 
   factory GetDataSetRowLevelPermissionDataSet.fromMap(Map<String, dynamic> map) {
     return GetDataSetRowLevelPermissionDataSet(
-      arn: map['arn'] as String,
-      formatVersion: map['formatVersion'] as String,
-      namespace: map['namespace'] as String,
-      permissionPolicy: map['permissionPolicy'] as String,
-      status: map['status'] as String,
+      arn: (map['arn'] as String).input(),
+      formatVersion: (map['formatVersion'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      permissionPolicy: (map['permissionPolicy'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -18,15 +18,11 @@ class GetObjectIamPolicyArgs {
   /// [object] Required.
   /// [userProject] Optional.
   GetObjectIamPolicyArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? generation,
-    required pulumi.Output<String> object,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      generation = pulumi.Input.asOptionalInput<String>(generation),
-      object = pulumi.Input.asInput<String>(object),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    this.generation,
+    required this.object,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetObjectIamPolicyArgs {
 
   factory GetObjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectIamPolicyArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      generation: map['generation'] == null ? null : pulumi.Output.create<String>(map['generation'] as String),
-      object: pulumi.Output.create<String>(map['object'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      object: (map['object'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

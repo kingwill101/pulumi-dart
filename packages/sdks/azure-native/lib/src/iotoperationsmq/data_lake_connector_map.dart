@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'delta_table.dart';
 
 /// DataLake connector map route properties
 class DataLakeConnectorMap {
   /// Allowed latency for transferring data.
-  final int allowedLatencySecs;
+  final pulumi.Input<int> allowedLatencySecs;
   /// Client Id to use.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Maximum messages to send per Batch.
-  final double maxMessagesPerBatch;
+  final pulumi.Input<double> maxMessagesPerBatch;
   /// Message payload type.
-  final String messagePayloadType;
+  final pulumi.Input<String> messagePayloadType;
   /// Mqtt source topic.
-  final String mqttSourceTopic;
+  final pulumi.Input<String> mqttSourceTopic;
   /// Quality of Service.
-  final int? qos;
+  final pulumi.Input<int>? qos;
   /// Delta table properties to use.
-  final DeltaTable table;
+  final pulumi.Input<DeltaTable> table;
 
   /// Creates a new [DataLakeConnectorMap].
   /// [allowedLatencySecs] Allowed latency for transferring data.
@@ -45,19 +46,19 @@ class DataLakeConnectorMap {
       'messagePayloadType': messagePayloadType,
       'mqttSourceTopic': mqttSourceTopic,
       'qos': ?qos,
-      'table': table.toMap(),
+      'table': pulumi.Input.mapInputValue<DeltaTable, Map<String, dynamic>>(table, (value) => value.toMap()),
     };
   }
 
   factory DataLakeConnectorMap.fromMap(Map<String, dynamic> map) {
     return DataLakeConnectorMap(
-      allowedLatencySecs: map['allowedLatencySecs'] as int,
-      clientId: map['clientId'] as String,
-      maxMessagesPerBatch: map['maxMessagesPerBatch'] as double,
-      messagePayloadType: map['messagePayloadType'] as String,
-      mqttSourceTopic: map['mqttSourceTopic'] as String,
-      qos: map['qos'] == null ? null : map['qos'] as int,
-      table: DeltaTable.fromMap((map['table'] as Map).cast<String, dynamic>()),
+      allowedLatencySecs: (map['allowedLatencySecs'] as int).input(),
+      clientId: (map['clientId'] as String).input(),
+      maxMessagesPerBatch: (map['maxMessagesPerBatch'] as double).input(),
+      messagePayloadType: (map['messagePayloadType'] as String).input(),
+      mqttSourceTopic: (map['mqttSourceTopic'] as String).input(),
+      qos: map['qos'] == null ? null : (map['qos'] as int).input(),
+      table: (DeltaTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

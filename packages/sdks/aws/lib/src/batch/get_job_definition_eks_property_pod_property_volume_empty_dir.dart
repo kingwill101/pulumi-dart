@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir {
   /// The medium to store the volume.
-  final String medium;
+  final pulumi.Input<String> medium;
   /// The maximum size of the volume. By default, there's no maximum size defined.
-  final String sizeLimit;
+  final pulumi.Input<String> sizeLimit;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir].
   /// [medium] The medium to store the volume.
@@ -24,8 +25,8 @@ class GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir {
 
   factory GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir(
-      medium: map['medium'] as String,
-      sizeLimit: map['sizeLimit'] as String,
+      medium: (map['medium'] as String).input(),
+      sizeLimit: (map['sizeLimit'] as String).input(),
     );
   }
 }

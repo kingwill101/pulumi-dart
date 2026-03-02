@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeCacheKeysetValidationSharedKey {
   /// The name of the secret version in Secret Manager.
@@ -8,7 +9,7 @@ class EdgeCacheKeysetValidationSharedKey {
   /// * If you are using HMAC-SHA1, we suggest 20-byte secrets.
   /// * If you are using HMAC-SHA256, we suggest 32-byte secrets.
   /// See RFC 2104, Section 3 for more details on these recommendations.
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
 
   /// Creates a new [EdgeCacheKeysetValidationSharedKey].
   /// [secretVersion] The name of the secret version in Secret Manager.
@@ -24,7 +25,7 @@ class EdgeCacheKeysetValidationSharedKey {
 
   factory EdgeCacheKeysetValidationSharedKey.fromMap(Map<String, dynamic> map) {
     return EdgeCacheKeysetValidationSharedKey(
-      secretVersion: map['secretVersion'] as String,
+      secretVersion: (map['secretVersion'] as String).input(),
     );
   }
 }

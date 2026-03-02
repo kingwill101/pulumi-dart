@@ -22,15 +22,11 @@ class GetPolicyFragmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetPolicyFragmentArgs({
-    pulumi.Output<String>? format,
-    required pulumi.Output<String> id,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      format = pulumi.Input.asOptionalInput<String>(format),
-      id = pulumi.Input.asInput<String>(id),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.format,
+    required this.id,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPolicyFragmentArgs {
 
   factory GetPolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyFragmentArgs(
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      id: (map['id'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

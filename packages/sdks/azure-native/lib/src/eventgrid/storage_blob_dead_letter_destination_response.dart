@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the storage blob based dead letter destination.
 class StorageBlobDeadLetterDestinationResponse {
   /// The name of the Storage blob container that is the destination of the deadletter events
-  final String? blobContainerName;
+  final pulumi.Input<String>? blobContainerName;
   /// Type of the endpoint for the dead letter destination
   /// Expected value is 'StorageBlob'.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The Azure Resource ID of the storage account that is the destination of the deadletter events
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [StorageBlobDeadLetterDestinationResponse].
   /// [blobContainerName] The name of the Storage blob container that is the destination of the deadletter events
@@ -31,9 +32,9 @@ class StorageBlobDeadLetterDestinationResponse {
 
   factory StorageBlobDeadLetterDestinationResponse.fromMap(Map<String, dynamic> map) {
     return StorageBlobDeadLetterDestinationResponse(
-      blobContainerName: map['blobContainerName'] == null ? null : map['blobContainerName'] as String,
-      endpointType: map['endpointType'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

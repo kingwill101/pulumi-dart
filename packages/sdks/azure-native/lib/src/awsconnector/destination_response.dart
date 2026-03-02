@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Destination
 class DestinationResponse {
   /// The account ID that owns the destination S3 bucket. If no account ID is provided, the owner is not validated before exporting data.   Although this value is optional, we strongly recommend that you set it to help prevent problems if the destination bucket ownership changes.
-  final String? bucketAccountId;
+  final pulumi.Input<String>? bucketAccountId;
   /// The Amazon Resource Name (ARN) of the bucket to which data is exported.
-  final String? bucketArn;
+  final pulumi.Input<String>? bucketArn;
   /// Specifies the file format used when exporting data to Amazon S3.  *Allowed values*: ``CSV`` | ``ORC`` | ``Parquet``
-  final String? format;
+  final pulumi.Input<String>? format;
   /// The prefix to use when exporting data. The prefix is prepended to all results.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [DestinationResponse].
   /// [bucketAccountId] The account ID that owns the destination S3 bucket. If no account ID is provided, the owner is not validated before exporting data.   Although this value is optional, we strongly recommend that you set it to help prevent problems if the destination bucket ownership changes.
@@ -35,10 +36,10 @@ class DestinationResponse {
 
   factory DestinationResponse.fromMap(Map<String, dynamic> map) {
     return DestinationResponse(
-      bucketAccountId: map['bucketAccountId'] == null ? null : map['bucketAccountId'] as String,
-      bucketArn: map['bucketArn'] == null ? null : map['bucketArn'] as String,
-      format: map['format'] == null ? null : map['format'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
+      bucketArn: map['bucketArn'] == null ? null : (map['bucketArn'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

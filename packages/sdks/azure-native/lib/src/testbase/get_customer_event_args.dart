@@ -19,13 +19,10 @@ class GetCustomerEventArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   GetCustomerEventArgs({
-    required pulumi.Output<String> customerEventName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      customerEventName = pulumi.Input.asInput<String>(customerEventName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    required this.customerEventName,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCustomerEventArgs {
 
   factory GetCustomerEventArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomerEventArgs(
-      customerEventName: pulumi.Output.create<String>(map['customerEventName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      customerEventName: (map['customerEventName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 class EncryptionPropertiesIdentityResponse {
   /// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Managed identity type to use for accessing encryption key Url.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [EncryptionPropertiesIdentityResponse].
   /// [resourceId] User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
@@ -25,8 +26,8 @@ class EncryptionPropertiesIdentityResponse {
 
   factory EncryptionPropertiesIdentityResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionPropertiesIdentityResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

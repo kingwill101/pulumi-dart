@@ -23,17 +23,12 @@ class VscMountPointState {
   /// [instances] The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
   /// [mountPointId] VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
   VscMountPointState({
-    pulumi.Output<String>? aliasPrefix,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<List<VscMountPointInstance>>? instances,
-    pulumi.Output<String>? mountPointId,
-  }) :
-      aliasPrefix = pulumi.Input.asOptionalInput<String>(aliasPrefix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      instances = pulumi.Input.asOptionalInput<List<VscMountPointInstance>>(instances),
-      mountPointId = pulumi.Input.asOptionalInput<String>(mountPointId);
+    this.aliasPrefix,
+    this.description,
+    this.fileSystemId,
+    this.instances,
+    this.mountPointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class VscMountPointState {
 
   factory VscMountPointState.fromMap(Map<String, dynamic> map) {
     return VscMountPointState(
-      aliasPrefix: map['aliasPrefix'] == null ? null : pulumi.Output.create<String>(map['aliasPrefix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      instances: map['instances'] == null ? null : pulumi.Output.create<List<VscMountPointInstance>>(pulumi.Input.decodeList<VscMountPointInstance>(map['instances'], (value) => VscMountPointInstance.fromMap((value as Map).cast<String, dynamic>()))),
-      mountPointId: map['mountPointId'] == null ? null : pulumi.Output.create<String>(map['mountPointId'] as String),
+      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<VscMountPointInstance>(map['instances'], (value) => VscMountPointInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mountPointId: map['mountPointId'] == null ? null : (map['mountPointId'] as String).input(),
     );
   }
 }

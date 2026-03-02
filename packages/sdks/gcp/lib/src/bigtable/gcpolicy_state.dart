@@ -46,27 +46,17 @@ class GCPolicyState {
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [table] The name of the table.
   GCPolicyState({
-    pulumi.Output<String>? columnFamily,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? gcRules,
-    pulumi.Output<bool>? ignoreWarnings,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<GCPolicyMaxAge>? maxAge,
-    pulumi.Output<List<GCPolicyMaxVersion>>? maxVersions,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? table,
-  }) :
-      columnFamily = pulumi.Input.asOptionalInput<String>(columnFamily),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      gcRules = pulumi.Input.asOptionalInput<String>(gcRules),
-      ignoreWarnings = pulumi.Input.asOptionalInput<bool>(ignoreWarnings),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      maxAge = pulumi.Input.asOptionalInput<GCPolicyMaxAge>(maxAge),
-      maxVersions = pulumi.Input.asOptionalInput<List<GCPolicyMaxVersion>>(maxVersions),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      table = pulumi.Input.asOptionalInput<String>(table);
+    this.columnFamily,
+    this.deletionPolicy,
+    this.gcRules,
+    this.ignoreWarnings,
+    this.instanceName,
+    this.maxAge,
+    this.maxVersions,
+    this.mode,
+    this.project,
+    this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class GCPolicyState {
 
   factory GCPolicyState.fromMap(Map<String, dynamic> map) {
     return GCPolicyState(
-      columnFamily: map['columnFamily'] == null ? null : pulumi.Output.create<String>(map['columnFamily'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      gcRules: map['gcRules'] == null ? null : pulumi.Output.create<String>(map['gcRules'] as String),
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : pulumi.Output.create<bool>(map['ignoreWarnings'] as bool),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      maxAge: map['maxAge'] == null ? null : pulumi.Output.create<GCPolicyMaxAge>(GCPolicyMaxAge.fromMap((map['maxAge'] as Map).cast<String, dynamic>())),
-      maxVersions: map['maxVersions'] == null ? null : pulumi.Output.create<List<GCPolicyMaxVersion>>(pulumi.Input.decodeList<GCPolicyMaxVersion>(map['maxVersions'], (value) => GCPolicyMaxVersion.fromMap((value as Map).cast<String, dynamic>()))),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
+      columnFamily: map['columnFamily'] == null ? null : (map['columnFamily'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      gcRules: map['gcRules'] == null ? null : (map['gcRules'] as String).input(),
+      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings'] as bool).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      maxAge: map['maxAge'] == null ? null : (GCPolicyMaxAge.fromMap((map['maxAge'] as Map).cast<String, dynamic>())).input(),
+      maxVersions: map['maxVersions'] == null ? null : (pulumi.Input.decodeList<GCPolicyMaxVersion>(map['maxVersions'], (value) => GCPolicyMaxVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
     );
   }
 }

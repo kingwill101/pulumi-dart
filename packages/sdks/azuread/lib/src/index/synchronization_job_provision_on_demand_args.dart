@@ -23,15 +23,11 @@ class SynchronizationJobProvisionOnDemandArgs {
   /// [synchronizationJobId] The ID of the synchronization job.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
   SynchronizationJobProvisionOnDemandArgs({
-    required pulumi.Output<List<SynchronizationJobProvisionOnDemandParameter>> parameters,
-    required pulumi.Output<String> servicePrincipalId,
-    required pulumi.Output<String> synchronizationJobId,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      parameters = pulumi.Input.asInput<List<SynchronizationJobProvisionOnDemandParameter>>(parameters),
-      servicePrincipalId = pulumi.Input.asInput<String>(servicePrincipalId),
-      synchronizationJobId = pulumi.Input.asInput<String>(synchronizationJobId),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    required this.parameters,
+    required this.servicePrincipalId,
+    required this.synchronizationJobId,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SynchronizationJobProvisionOnDemandArgs {
 
   factory SynchronizationJobProvisionOnDemandArgs.fromMap(Map<String, dynamic> map) {
     return SynchronizationJobProvisionOnDemandArgs(
-      parameters: pulumi.Output.create<List<SynchronizationJobProvisionOnDemandParameter>>(pulumi.Input.decodeList<SynchronizationJobProvisionOnDemandParameter>(map['parameters'], (value) => SynchronizationJobProvisionOnDemandParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      servicePrincipalId: pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      synchronizationJobId: pulumi.Output.create<String>(map['synchronizationJobId'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      parameters: (pulumi.Input.decodeList<SynchronizationJobProvisionOnDemandParameter>(map['parameters'], (value) => SynchronizationJobProvisionOnDemandParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
+      synchronizationJobId: (map['synchronizationJobId'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

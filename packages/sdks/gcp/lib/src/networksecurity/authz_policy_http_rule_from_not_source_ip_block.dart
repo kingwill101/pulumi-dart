@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthzPolicyHttpRuleFromNotSourceIpBlock {
   /// The length of the address range.
-  final int length;
+  final pulumi.Input<int> length;
   /// The address prefix.
-  final String prefix;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [AuthzPolicyHttpRuleFromNotSourceIpBlock].
   /// [length] The length of the address range.
@@ -24,8 +25,8 @@ class AuthzPolicyHttpRuleFromNotSourceIpBlock {
 
   factory AuthzPolicyHttpRuleFromNotSourceIpBlock.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromNotSourceIpBlock(
-      length: map['length'] as int,
-      prefix: map['prefix'] as String,
+      length: (map['length'] as int).input(),
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

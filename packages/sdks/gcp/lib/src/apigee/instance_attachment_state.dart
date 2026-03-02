@@ -17,13 +17,10 @@ class InstanceAttachmentState {
   /// [instanceId] The Apigee instance associated with the Apigee environment,
   /// [name] The name of the newly created  attachment (output parameter).
   InstanceAttachmentState({
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-  }) :
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.environment,
+    this.instanceId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

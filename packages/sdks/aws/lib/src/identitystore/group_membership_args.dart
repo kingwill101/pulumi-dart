@@ -22,15 +22,11 @@ class GroupMembershipArgs {
   /// [memberId] The identifier for a user in the Identity Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GroupMembershipArgs({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> identityStoreId,
-    required pulumi.Output<String> memberId,
-    pulumi.Output<String>? region,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
-      memberId = pulumi.Input.asInput<String>(memberId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.groupId,
+    required this.identityStoreId,
+    required this.memberId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GroupMembershipArgs {
 
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GroupMembershipArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      identityStoreId: pulumi.Output.create<String>(map['identityStoreId'] as String),
-      memberId: pulumi.Output.create<String>(map['memberId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      groupId: (map['groupId'] as String).input(),
+      identityStoreId: (map['identityStoreId'] as String).input(),
+      memberId: (map['memberId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

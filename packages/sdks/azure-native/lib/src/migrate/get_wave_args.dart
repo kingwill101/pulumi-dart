@@ -19,13 +19,10 @@ class GetWaveArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [waveName] Migration Wave Resource
   GetWaveArgs({
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> waveName,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      waveName = pulumi.Input.asInput<String>(waveName);
+    required this.projectName,
+    required this.resourceGroupName,
+    required this.waveName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWaveArgs {
 
   factory GetWaveArgs.fromMap(Map<String, dynamic> map) {
     return GetWaveArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      waveName: pulumi.Output.create<String>(map['waveName'] as String),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      waveName: (map['waveName'] as String).input(),
     );
   }
 }

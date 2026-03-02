@@ -33,17 +33,12 @@ class CertificateArgs {
   /// [csr] The certificate signing request. Review
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   CertificateArgs({
-    required pulumi.Output<bool> active,
-    pulumi.Output<String>? caPem,
-    pulumi.Output<String>? certificatePem,
-    pulumi.Output<String>? csr,
-    pulumi.Output<String>? region,
-  }) :
-      active = pulumi.Input.asInput<bool>(active),
-      caPem = pulumi.Input.asOptionalInput<String>(caPem),
-      certificatePem = pulumi.Input.asOptionalInput<String>(certificatePem),
-      csr = pulumi.Input.asOptionalInput<String>(csr),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.active,
+    this.caPem,
+    this.certificatePem,
+    this.csr,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +52,11 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      active: pulumi.Output.create<bool>(map['active'] as bool),
-      caPem: map['caPem'] == null ? null : pulumi.Output.create<String>(map['caPem'] as String),
-      certificatePem: map['certificatePem'] == null ? null : pulumi.Output.create<String>(map['certificatePem'] as String),
-      csr: map['csr'] == null ? null : pulumi.Output.create<String>(map['csr'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      active: (map['active'] as bool).input(),
+      caPem: map['caPem'] == null ? null : (map['caPem'] as String).input(),
+      certificatePem: map['certificatePem'] == null ? null : (map['certificatePem'] as String).input(),
+      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

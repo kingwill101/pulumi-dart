@@ -30,19 +30,13 @@ class SchemaState {
   /// [project] The ID of the project in which the resource belongs.
   /// [schemaId] The unique id of the schema.
   SchemaState({
-    pulumi.Output<String>? dataStoreId,
-    pulumi.Output<String>? jsonSchema,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? schemaId,
-  }) :
-      dataStoreId = pulumi.Input.asOptionalInput<String>(dataStoreId),
-      jsonSchema = pulumi.Input.asOptionalInput<String>(jsonSchema),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaId = pulumi.Input.asOptionalInput<String>(schemaId);
+    this.dataStoreId,
+    this.jsonSchema,
+    this.location,
+    this.name,
+    this.project,
+    this.schemaId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      dataStoreId: map['dataStoreId'] == null ? null : pulumi.Output.create<String>(map['dataStoreId'] as String),
-      jsonSchema: map['jsonSchema'] == null ? null : pulumi.Output.create<String>(map['jsonSchema'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaId: map['schemaId'] == null ? null : pulumi.Output.create<String>(map['schemaId'] as String),
+      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId'] as String).input(),
+      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
     );
   }
 }

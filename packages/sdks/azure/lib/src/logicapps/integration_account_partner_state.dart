@@ -23,17 +23,12 @@ class IntegrationAccountPartnerState {
   /// [name] The name which should be used for this Logic App Integration Account Partner. Changing this forces a new Logic App Integration Account Partner to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Partner should exist. Changing this forces a new Logic App Integration Account Partner to be created.
   IntegrationAccountPartnerState({
-    pulumi.Output<List<IntegrationAccountPartnerBusinessIdentity>>? businessIdentities,
-    pulumi.Output<String>? integrationAccountName,
-    pulumi.Output<String>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      businessIdentities = pulumi.Input.asOptionalInput<List<IntegrationAccountPartnerBusinessIdentity>>(businessIdentities),
-      integrationAccountName = pulumi.Input.asOptionalInput<String>(integrationAccountName),
-      metadata = pulumi.Input.asOptionalInput<String>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.businessIdentities,
+    this.integrationAccountName,
+    this.metadata,
+    this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class IntegrationAccountPartnerState {
 
   factory IntegrationAccountPartnerState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountPartnerState(
-      businessIdentities: map['businessIdentities'] == null ? null : pulumi.Output.create<List<IntegrationAccountPartnerBusinessIdentity>>(pulumi.Input.decodeList<IntegrationAccountPartnerBusinessIdentity>(map['businessIdentities'], (value) => IntegrationAccountPartnerBusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))),
-      integrationAccountName: map['integrationAccountName'] == null ? null : pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<String>(map['metadata'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      businessIdentities: map['businessIdentities'] == null ? null : (pulumi.Input.decodeList<IntegrationAccountPartnerBusinessIdentity>(map['businessIdentities'], (value) => IntegrationAccountPartnerBusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

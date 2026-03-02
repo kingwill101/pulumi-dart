@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBrokerLogs {
   /// Whether audit logging is enabled.
-  final bool audit;
+  final pulumi.Input<bool> audit;
   /// Whether general logging is enabled.
-  final bool general;
+  final pulumi.Input<bool> general;
 
   /// Creates a new [GetBrokerLogs].
   /// [audit] Whether audit logging is enabled.
@@ -24,8 +25,8 @@ class GetBrokerLogs {
 
   factory GetBrokerLogs.fromMap(Map<String, dynamic> map) {
     return GetBrokerLogs(
-      audit: map['audit'] as bool,
-      general: map['general'] as bool,
+      audit: (map['audit'] as bool).input(),
+      general: (map['general'] as bool).input(),
     );
   }
 }

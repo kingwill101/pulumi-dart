@@ -16,11 +16,9 @@ class GetDefinitionArgs {
   /// [name] The name of the Blueprint.
   /// [scopeId] The ID of the Subscription or Management Group, as the scope at which the blueprint definition is stored.
   GetDefinitionArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> scopeId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      scopeId = pulumi.Input.asInput<String>(scopeId);
+    required this.name,
+    required this.scopeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDefinitionArgs {
 
   factory GetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetDefinitionArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
+      name: (map['name'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
     );
   }
 }

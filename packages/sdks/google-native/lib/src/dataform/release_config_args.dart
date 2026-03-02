@@ -35,25 +35,16 @@ class ReleaseConfigArgs {
   /// [repositoryId] Required.
   /// [timeZone] Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
   ReleaseConfigArgs({
-    pulumi.Output<CodeCompilationConfig>? codeCompilationConfig,
-    pulumi.Output<String>? cronSchedule,
-    required pulumi.Output<String> gitCommitish,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? releaseCompilationResult,
-    required pulumi.Output<String> releaseConfigId,
-    required pulumi.Output<String> repositoryId,
-    pulumi.Output<String>? timeZone,
-  }) :
-      codeCompilationConfig = pulumi.Input.asOptionalInput<CodeCompilationConfig>(codeCompilationConfig),
-      cronSchedule = pulumi.Input.asOptionalInput<String>(cronSchedule),
-      gitCommitish = pulumi.Input.asInput<String>(gitCommitish),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      releaseCompilationResult = pulumi.Input.asOptionalInput<String>(releaseCompilationResult),
-      releaseConfigId = pulumi.Input.asInput<String>(releaseConfigId),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.codeCompilationConfig,
+    this.cronSchedule,
+    required this.gitCommitish,
+    this.location,
+    this.project,
+    this.releaseCompilationResult,
+    required this.releaseConfigId,
+    required this.repositoryId,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ReleaseConfigArgs {
 
   factory ReleaseConfigArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseConfigArgs(
-      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : pulumi.Output.create<CodeCompilationConfig>(CodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())),
-      cronSchedule: map['cronSchedule'] == null ? null : pulumi.Output.create<String>(map['cronSchedule'] as String),
-      gitCommitish: pulumi.Output.create<String>(map['gitCommitish'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      releaseCompilationResult: map['releaseCompilationResult'] == null ? null : pulumi.Output.create<String>(map['releaseCompilationResult'] as String),
-      releaseConfigId: pulumi.Output.create<String>(map['releaseConfigId'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (CodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
+      gitCommitish: (map['gitCommitish'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      releaseCompilationResult: map['releaseCompilationResult'] == null ? null : (map['releaseCompilationResult'] as String).input(),
+      releaseConfigId: (map['releaseConfigId'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class MoverAgentArgs {
   /// [name] Specifies the name which should be used for this Storage Mover Agent. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the Storage Mover that this Agent should be connected to. Changing this forces a new resource to be created.
   MoverAgentArgs({
-    required pulumi.Output<String> arcVirtualMachineId,
-    required pulumi.Output<String> arcVirtualMachineUuid,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> storageMoverId,
-  }) :
-      arcVirtualMachineId = pulumi.Input.asInput<String>(arcVirtualMachineId),
-      arcVirtualMachineUuid = pulumi.Input.asInput<String>(arcVirtualMachineUuid),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageMoverId = pulumi.Input.asInput<String>(storageMoverId);
+    required this.arcVirtualMachineId,
+    required this.arcVirtualMachineUuid,
+    this.description,
+    this.name,
+    required this.storageMoverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class MoverAgentArgs {
 
   factory MoverAgentArgs.fromMap(Map<String, dynamic> map) {
     return MoverAgentArgs(
-      arcVirtualMachineId: pulumi.Output.create<String>(map['arcVirtualMachineId'] as String),
-      arcVirtualMachineUuid: pulumi.Output.create<String>(map['arcVirtualMachineUuid'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageMoverId: pulumi.Output.create<String>(map['storageMoverId'] as String),
+      arcVirtualMachineId: (map['arcVirtualMachineId'] as String).input(),
+      arcVirtualMachineUuid: (map['arcVirtualMachineUuid'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageMoverId: (map['storageMoverId'] as String).input(),
     );
   }
 }

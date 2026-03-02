@@ -36,25 +36,16 @@ class SourceArgs {
   /// [sourceId] Required. User specified ID for the source. It will become the last component of the source name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
   /// [type] Data source type.
   SourceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? managed,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> sourceId,
-    pulumi.Output<SourceType>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managed = pulumi.Input.asOptionalInput<bool>(managed),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      type = pulumi.Input.asOptionalInput<SourceType>(type);
+    this.description,
+    this.displayName,
+    this.location,
+    this.managed,
+    this.priority,
+    this.project,
+    this.requestId,
+    required this.sourceId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class SourceArgs {
 
   factory SourceArgs.fromMap(Map<String, dynamic> map) {
     return SourceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managed: map['managed'] == null ? null : pulumi.Output.create<bool>(map['managed'] as bool),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceId: pulumi.Output.create<String>(map['sourceId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<SourceType>(SourceType.fromValue(map['type'] as String)),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceId: (map['sourceId'] as String).input(),
+      type: map['type'] == null ? null : (SourceType.fromValue(map['type'] as String)).input(),
     );
   }
 }

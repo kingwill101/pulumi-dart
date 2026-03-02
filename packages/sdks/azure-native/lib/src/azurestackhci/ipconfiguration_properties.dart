@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'logical_network_arm_reference.dart';
 
 /// InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
 class IPConfigurationProperties {
   /// PrivateIPAddress - Private IP address of the IP configuration.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// Subnet - Name of Subnet bound to the IP configuration.
-  final LogicalNetworkArmReference? subnet;
+  final pulumi.Input<LogicalNetworkArmReference>? subnet;
 
   /// Creates a new [IPConfigurationProperties].
   /// [privateIPAddress] PrivateIPAddress - Private IP address of the IP configuration.
@@ -20,14 +21,14 @@ class IPConfigurationProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'privateIPAddress': ?privateIPAddress,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<LogicalNetworkArmReference, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory IPConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return IPConfigurationProperties(
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      subnet: map['subnet'] == null ? null : LogicalNetworkArmReference.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      subnet: map['subnet'] == null ? null : (LogicalNetworkArmReference.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

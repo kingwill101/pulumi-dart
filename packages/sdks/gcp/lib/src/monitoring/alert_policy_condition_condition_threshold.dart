@@ -21,7 +21,7 @@ class AlertPolicyConditionConditionThreshold {
   /// ListTimeSeries method when debugging this
   /// field.
   /// Structure is documented below.
-  final List<AlertPolicyConditionConditionThresholdAggregation>? aggregations;
+  final pulumi.Input<List<AlertPolicyConditionConditionThresholdAggregation>>? aggregations;
   /// The comparison to apply between the time
   /// series (indicated by filter and aggregation)
   /// and the threshold (indicated by
@@ -31,7 +31,7 @@ class AlertPolicyConditionConditionThreshold {
   /// right-hand side. Only COMPARISON_LT and
   /// COMPARISON_GT are supported currently.
   /// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
-  final String comparison;
+  final pulumi.Input<String> comparison;
   /// Specifies the alignment of data points in
   /// individual time series selected by
   /// denominatorFilter as well as how to combine
@@ -49,7 +49,7 @@ class AlertPolicyConditionConditionThreshold {
   /// is advisable to use the ListTimeSeries
   /// method when debugging this field.
   /// Structure is documented below.
-  final List<AlertPolicyConditionConditionThresholdDenominatorAggregation>? denominatorAggregations;
+  final pulumi.Input<List<AlertPolicyConditionConditionThresholdDenominatorAggregation>>? denominatorAggregations;
   /// A filter that identifies a time series that
   /// should be used as the denominator of a ratio
   /// that will be compared with the threshold. If
@@ -65,7 +65,7 @@ class AlertPolicyConditionConditionThreshold {
   /// resource labels, and metric labels. This
   /// field may not exceed 2048 Unicode characters
   /// in length.
-  final String? denominatorFilter;
+  final pulumi.Input<String>? denominatorFilter;
   /// The amount of time that a time series must
   /// violate the threshold to be considered
   /// failing. Currently, only values that are a
@@ -81,12 +81,12 @@ class AlertPolicyConditionConditionThreshold {
   /// generate spurious alerts, but short enough
   /// that unhealthy states are detected and
   /// alerted on quickly.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// A condition control that determines how
   /// metric-threshold conditions are evaluated when
   /// data stops arriving.
   /// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
-  final String? evaluationMissingData;
+  final pulumi.Input<String>? evaluationMissingData;
   /// A filter that identifies which time series
   /// should be compared with the threshold.The
   /// filter is similar to the one that is
@@ -99,7 +99,7 @@ class AlertPolicyConditionConditionThreshold {
   /// resource labels, and metric labels. This
   /// field may not exceed 2048 Unicode characters
   /// in length.
-  final String? filter;
+  final pulumi.Input<String>? filter;
   /// When this field is present, the `MetricThreshold`
   /// condition forecasts whether the time series is
   /// predicted to violate the threshold within the
@@ -107,10 +107,10 @@ class AlertPolicyConditionConditionThreshold {
   /// `MetricThreshold` tests the current value of the
   /// timeseries against the threshold.
   /// Structure is documented below.
-  final AlertPolicyConditionConditionThresholdForecastOptions? forecastOptions;
+  final pulumi.Input<AlertPolicyConditionConditionThresholdForecastOptions>? forecastOptions;
   /// A value against which to compare the time
   /// series.
-  final double? thresholdValue;
+  final pulumi.Input<double>? thresholdValue;
   /// The number/percent of time series for which
   /// the comparison must hold in order for the
   /// condition to trigger. If unspecified, then
@@ -120,7 +120,7 @@ class AlertPolicyConditionConditionThreshold {
   /// or by the ratio, if denominator_filter and
   /// denominator_aggregations are specified.
   /// Structure is documented below.
-  final AlertPolicyConditionConditionThresholdTrigger? trigger;
+  final pulumi.Input<AlertPolicyConditionConditionThresholdTrigger>? trigger;
 
   /// Creates a new [AlertPolicyConditionConditionThreshold].
   /// [aggregations] Specifies the alignment of data points in
@@ -148,31 +148,31 @@ class AlertPolicyConditionConditionThreshold {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregations': ?aggregations == null ? null : pulumi.Input.encodeList<AlertPolicyConditionConditionThresholdAggregation, Map<String, dynamic>>(aggregations!, (value) => value.toMap()),
+      'aggregations': ?pulumi.Input.mapOptionalInputValue<List<AlertPolicyConditionConditionThresholdAggregation>, List<Map<String, dynamic>>>(aggregations, (value) => pulumi.Input.encodeList<AlertPolicyConditionConditionThresholdAggregation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'comparison': comparison,
-      'denominatorAggregations': ?denominatorAggregations == null ? null : pulumi.Input.encodeList<AlertPolicyConditionConditionThresholdDenominatorAggregation, Map<String, dynamic>>(denominatorAggregations!, (value) => value.toMap()),
+      'denominatorAggregations': ?pulumi.Input.mapOptionalInputValue<List<AlertPolicyConditionConditionThresholdDenominatorAggregation>, List<Map<String, dynamic>>>(denominatorAggregations, (value) => pulumi.Input.encodeList<AlertPolicyConditionConditionThresholdDenominatorAggregation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'denominatorFilter': ?denominatorFilter,
       'duration': duration,
       'evaluationMissingData': ?evaluationMissingData,
       'filter': ?filter,
-      'forecastOptions': ?forecastOptions == null ? null : forecastOptions!.toMap(),
+      'forecastOptions': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionThresholdForecastOptions, Map<String, dynamic>>(forecastOptions, (value) => value.toMap()),
       'thresholdValue': ?thresholdValue,
-      'trigger': ?trigger == null ? null : trigger!.toMap(),
+      'trigger': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionThresholdTrigger, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
   factory AlertPolicyConditionConditionThreshold.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionThreshold(
-      aggregations: map['aggregations'] == null ? null : pulumi.Input.decodeList<AlertPolicyConditionConditionThresholdAggregation>(map['aggregations'], (value) => AlertPolicyConditionConditionThresholdAggregation.fromMap((value as Map).cast<String, dynamic>())),
-      comparison: map['comparison'] as String,
-      denominatorAggregations: map['denominatorAggregations'] == null ? null : pulumi.Input.decodeList<AlertPolicyConditionConditionThresholdDenominatorAggregation>(map['denominatorAggregations'], (value) => AlertPolicyConditionConditionThresholdDenominatorAggregation.fromMap((value as Map).cast<String, dynamic>())),
-      denominatorFilter: map['denominatorFilter'] == null ? null : map['denominatorFilter'] as String,
-      duration: map['duration'] as String,
-      evaluationMissingData: map['evaluationMissingData'] == null ? null : map['evaluationMissingData'] as String,
-      filter: map['filter'] == null ? null : map['filter'] as String,
-      forecastOptions: map['forecastOptions'] == null ? null : AlertPolicyConditionConditionThresholdForecastOptions.fromMap((map['forecastOptions'] as Map).cast<String, dynamic>()),
-      thresholdValue: map['thresholdValue'] == null ? null : map['thresholdValue'] as double,
-      trigger: map['trigger'] == null ? null : AlertPolicyConditionConditionThresholdTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>()),
+      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionThresholdAggregation>(map['aggregations'], (value) => AlertPolicyConditionConditionThresholdAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      comparison: (map['comparison'] as String).input(),
+      denominatorAggregations: map['denominatorAggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionThresholdDenominatorAggregation>(map['denominatorAggregations'], (value) => AlertPolicyConditionConditionThresholdDenominatorAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      denominatorFilter: map['denominatorFilter'] == null ? null : (map['denominatorFilter'] as String).input(),
+      duration: (map['duration'] as String).input(),
+      evaluationMissingData: map['evaluationMissingData'] == null ? null : (map['evaluationMissingData'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      forecastOptions: map['forecastOptions'] == null ? null : (AlertPolicyConditionConditionThresholdForecastOptions.fromMap((map['forecastOptions'] as Map).cast<String, dynamic>())).input(),
+      thresholdValue: map['thresholdValue'] == null ? null : (map['thresholdValue'] as double).input(),
+      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionThresholdTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

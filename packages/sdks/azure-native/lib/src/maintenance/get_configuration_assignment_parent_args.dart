@@ -31,21 +31,14 @@ class GetConfigurationAssignmentParentArgs {
   /// [resourceParentType] Resource parent type
   /// [resourceType] Resource type
   GetConfigurationAssignmentParentArgs({
-    required pulumi.Output<String> configurationAssignmentName,
-    required pulumi.Output<String> providerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> resourceParentName,
-    required pulumi.Output<String> resourceParentType,
-    required pulumi.Output<String> resourceType,
-  }) :
-      configurationAssignmentName = pulumi.Input.asInput<String>(configurationAssignmentName),
-      providerName = pulumi.Input.asInput<String>(providerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      resourceParentName = pulumi.Input.asInput<String>(resourceParentName),
-      resourceParentType = pulumi.Input.asInput<String>(resourceParentType),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    required this.configurationAssignmentName,
+    required this.providerName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.resourceParentName,
+    required this.resourceParentType,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetConfigurationAssignmentParentArgs {
 
   factory GetConfigurationAssignmentParentArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationAssignmentParentArgs(
-      configurationAssignmentName: pulumi.Output.create<String>(map['configurationAssignmentName'] as String),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceParentName: pulumi.Output.create<String>(map['resourceParentName'] as String),
-      resourceParentType: pulumi.Output.create<String>(map['resourceParentType'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      configurationAssignmentName: (map['configurationAssignmentName'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceParentName: (map['resourceParentName'] as String).input(),
+      resourceParentType: (map['resourceParentType'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

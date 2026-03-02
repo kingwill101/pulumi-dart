@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetActionDefinitionScpActionDefinition {
   /// The policy ID attached.
-  final String policyId;
+  final pulumi.Input<String> policyId;
   /// A list of target IDs.
-  final List<String> targetIds;
+  final pulumi.Input<List<String>> targetIds;
 
   /// Creates a new [BudgetActionDefinitionScpActionDefinition].
   /// [policyId] The policy ID attached.
@@ -24,8 +25,8 @@ class BudgetActionDefinitionScpActionDefinition {
 
   factory BudgetActionDefinitionScpActionDefinition.fromMap(Map<String, dynamic> map) {
     return BudgetActionDefinitionScpActionDefinition(
-      policyId: map['policyId'] as String,
-      targetIds: (map['targetIds'] as List).cast<String>(),
+      policyId: (map['policyId'] as String).input(),
+      targetIds: ((map['targetIds'] as List).cast<String>()).input(),
     );
   }
 }

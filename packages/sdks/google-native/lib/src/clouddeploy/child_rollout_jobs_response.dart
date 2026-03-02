@@ -6,9 +6,9 @@ import 'job_response.dart';
 /// ChildRollouts job composition
 class ChildRolloutJobsResponse {
   /// List of AdvanceChildRolloutJobs
-  final List<JobResponse> advanceRolloutJobs;
+  final pulumi.Input<List<JobResponse>> advanceRolloutJobs;
   /// List of CreateChildRolloutJobs
-  final List<JobResponse> createRolloutJobs;
+  final pulumi.Input<List<JobResponse>> createRolloutJobs;
 
   /// Creates a new [ChildRolloutJobsResponse].
   /// [advanceRolloutJobs] List of AdvanceChildRolloutJobs
@@ -20,15 +20,15 @@ class ChildRolloutJobsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advanceRolloutJobs': pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(advanceRolloutJobs, (value) => value.toMap()),
-      'createRolloutJobs': pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(createRolloutJobs, (value) => value.toMap()),
+      'advanceRolloutJobs': pulumi.Input.mapInputValue<List<JobResponse>, List<Map<String, dynamic>>>(advanceRolloutJobs, (value) => pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'createRolloutJobs': pulumi.Input.mapInputValue<List<JobResponse>, List<Map<String, dynamic>>>(createRolloutJobs, (value) => pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ChildRolloutJobsResponse.fromMap(Map<String, dynamic> map) {
     return ChildRolloutJobsResponse(
-      advanceRolloutJobs: pulumi.Input.decodeList<JobResponse>(map['advanceRolloutJobs'], (value) => JobResponse.fromMap((value as Map).cast<String, dynamic>())),
-      createRolloutJobs: pulumi.Input.decodeList<JobResponse>(map['createRolloutJobs'], (value) => JobResponse.fromMap((value as Map).cast<String, dynamic>())),
+      advanceRolloutJobs: (pulumi.Input.decodeList<JobResponse>(map['advanceRolloutJobs'], (value) => JobResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createRolloutJobs: (pulumi.Input.decodeList<JobResponse>(map['createRolloutJobs'], (value) => JobResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetTransparentDataEncryptionArgs {
   /// [serverName] The name of the server.
   /// [tdeName] The name of the transparent data encryption configuration.
   GetTransparentDataEncryptionArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> tdeName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      tdeName = pulumi.Input.asInput<String>(tdeName);
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.tdeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetTransparentDataEncryptionArgs {
 
   factory GetTransparentDataEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return GetTransparentDataEncryptionArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      tdeName: pulumi.Output.create<String>(map['tdeName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      tdeName: (map['tdeName'] as String).input(),
     );
   }
 }

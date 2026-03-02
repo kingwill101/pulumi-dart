@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_scale_run_error_response.dart';
 
 /// The results and errors from an execution of a pool autoscale formula.
 class AutoScaleRunResponse {
   /// An error that occurred when autoscaling a pool.
-  final AutoScaleRunErrorResponse? error;
+  final pulumi.Input<AutoScaleRunErrorResponse>? error;
   /// The time at which the autoscale formula was last evaluated.
-  final String evaluationTime;
+  final pulumi.Input<String> evaluationTime;
   /// Each variable value is returned in the form $variable=value, and variables are separated by semicolons.
-  final String? results;
+  final pulumi.Input<String>? results;
 
   /// Creates a new [AutoScaleRunResponse].
   /// [error] An error that occurred when autoscaling a pool.
@@ -23,7 +24,7 @@ class AutoScaleRunResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<AutoScaleRunErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'evaluationTime': evaluationTime,
       'results': ?results,
     };
@@ -31,9 +32,9 @@ class AutoScaleRunResponse {
 
   factory AutoScaleRunResponse.fromMap(Map<String, dynamic> map) {
     return AutoScaleRunResponse(
-      error: map['error'] == null ? null : AutoScaleRunErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      evaluationTime: map['evaluationTime'] as String,
-      results: map['results'] == null ? null : map['results'] as String,
+      error: map['error'] == null ? null : (AutoScaleRunErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      evaluationTime: (map['evaluationTime'] as String).input(),
+      results: map['results'] == null ? null : (map['results'] as String).input(),
     );
   }
 }

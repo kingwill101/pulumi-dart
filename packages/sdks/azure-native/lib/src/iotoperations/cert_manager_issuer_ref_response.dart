@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cert-Manager issuerRef properties
 class CertManagerIssuerRefResponse {
   /// group of issuer.
-  final String group;
+  final pulumi.Input<String> group;
   /// kind of issuer (Issuer or ClusterIssuer).
-  final String kind;
+  final pulumi.Input<String> kind;
   /// name of issuer.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CertManagerIssuerRefResponse].
   /// [group] group of issuer.
@@ -30,9 +31,9 @@ class CertManagerIssuerRefResponse {
 
   factory CertManagerIssuerRefResponse.fromMap(Map<String, dynamic> map) {
     return CertManagerIssuerRefResponse(
-      group: map['group'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
+      group: (map['group'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

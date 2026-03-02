@@ -40,23 +40,15 @@ class GetEntityArgs {
   /// [top] Number of elements to return when retrieving results. Passing this in will override $skipToken.
   /// [view] The view parameter allows clients to filter the type of data that is returned by the getEntities call.
   GetEntityArgs({
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? search,
-    pulumi.Output<String>? select,
-    pulumi.Output<int>? skip,
-    pulumi.Output<String>? skiptoken,
-    pulumi.Output<int>? top,
-    pulumi.Output<String>? view,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      search = pulumi.Input.asOptionalInput<String>(search),
-      select = pulumi.Input.asOptionalInput<String>(select),
-      skip = pulumi.Input.asOptionalInput<int>(skip),
-      skiptoken = pulumi.Input.asOptionalInput<String>(skiptoken),
-      top = pulumi.Input.asOptionalInput<int>(top),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    this.filter,
+    this.groupName,
+    this.search,
+    this.select,
+    this.skip,
+    this.skiptoken,
+    this.top,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class GetEntityArgs {
 
   factory GetEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      search: map['search'] == null ? null : pulumi.Output.create<String>(map['search'] as String),
-      select: map['select'] == null ? null : pulumi.Output.create<String>(map['select'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<int>(map['skip'] as int),
-      skiptoken: map['skiptoken'] == null ? null : pulumi.Output.create<String>(map['skiptoken'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      search: map['search'] == null ? null : (map['search'] as String).input(),
+      select: map['select'] == null ? null : (map['select'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
+      skiptoken: map['skiptoken'] == null ? null : (map['skiptoken'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

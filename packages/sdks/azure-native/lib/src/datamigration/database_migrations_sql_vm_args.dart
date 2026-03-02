@@ -22,15 +22,11 @@ class DatabaseMigrationsSqlVmArgs {
   /// [sqlVirtualMachineName] Required.
   /// [targetDbName] The name of the target database.
   DatabaseMigrationsSqlVmArgs({
-    pulumi.Output<DatabaseMigrationPropertiesSqlVm>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlVirtualMachineName,
-    pulumi.Output<String>? targetDbName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<DatabaseMigrationPropertiesSqlVm>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlVirtualMachineName = pulumi.Input.asInput<String>(sqlVirtualMachineName),
-      targetDbName = pulumi.Input.asOptionalInput<String>(targetDbName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.sqlVirtualMachineName,
+    this.targetDbName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DatabaseMigrationsSqlVmArgs {
 
   factory DatabaseMigrationsSqlVmArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsSqlVmArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<DatabaseMigrationPropertiesSqlVm>(DatabaseMigrationPropertiesSqlVm.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlVirtualMachineName: pulumi.Output.create<String>(map['sqlVirtualMachineName'] as String),
-      targetDbName: map['targetDbName'] == null ? null : pulumi.Output.create<String>(map['targetDbName'] as String),
+      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlVm.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlVirtualMachineName: (map['sqlVirtualMachineName'] as String).input(),
+      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName'] as String).input(),
     );
   }
 }

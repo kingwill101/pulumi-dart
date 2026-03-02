@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterRouteTablesTable {
   /// The ID of the Transit Router Route Table.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The description of the route table.
-  final String transitRouterRouteTableDescription;
+  final pulumi.Input<String> transitRouterRouteTableDescription;
   /// The ID of the Transit Router Route Table.
-  final String transitRouterRouteTableId;
+  final pulumi.Input<String> transitRouterRouteTableId;
   /// The name of the route table.
-  final String transitRouterRouteTableName;
+  final pulumi.Input<String> transitRouterRouteTableName;
   /// The type of the route table. Valid values: `System`, `Custom`.
-  final String transitRouterRouteTableType;
+  final pulumi.Input<String> transitRouterRouteTableType;
 
   /// Creates a new [GetTransitRouterRouteTablesTable].
   /// [id] The ID of the Transit Router Route Table.
@@ -44,12 +45,12 @@ class GetTransitRouterRouteTablesTable {
 
   factory GetTransitRouterRouteTablesTable.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterRouteTablesTable(
-      id: map['id'] as String,
-      status: map['status'] as String,
-      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] as String,
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] as String,
-      transitRouterRouteTableName: map['transitRouterRouteTableName'] as String,
-      transitRouterRouteTableType: map['transitRouterRouteTableType'] as String,
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterRouteTableDescription: (map['transitRouterRouteTableDescription'] as String).input(),
+      transitRouterRouteTableId: (map['transitRouterRouteTableId'] as String).input(),
+      transitRouterRouteTableName: (map['transitRouterRouteTableName'] as String).input(),
+      transitRouterRouteTableType: (map['transitRouterRouteTableType'] as String).input(),
     );
   }
 }

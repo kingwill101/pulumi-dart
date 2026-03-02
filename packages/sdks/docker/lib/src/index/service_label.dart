@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceLabel {
   /// Name of the label
-  final String label;
+  final pulumi.Input<String> label;
   /// Value of the label
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ServiceLabel].
   /// [label] Name of the label
@@ -24,8 +25,8 @@ class ServiceLabel {
 
   factory ServiceLabel.fromMap(Map<String, dynamic> map) {
     return ServiceLabel(
-      label: map['label'] as String,
-      value: map['value'] as String,
+      label: (map['label'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

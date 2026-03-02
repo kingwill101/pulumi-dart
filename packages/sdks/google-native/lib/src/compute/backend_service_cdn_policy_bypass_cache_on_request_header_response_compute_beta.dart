@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
 class BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta {
   /// The header field name to match on when bypassing cache. Values are case-insensitive.
-  final String headerName;
+  final pulumi.Input<String> headerName;
 
   /// Creates a new [BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta].
   /// [headerName] The header field name to match on when bypassing cache. Values are case-insensitive.
@@ -20,7 +21,7 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta {
 
   factory BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponseComputeBeta(
-      headerName: map['headerName'] as String,
+      headerName: (map['headerName'] as String).input(),
     );
   }
 }

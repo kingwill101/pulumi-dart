@@ -16,13 +16,10 @@ class RedriveAllowPolicyState {
   /// [redriveAllowPolicy] The JSON redrive allow policy for the SQS queue. Learn more in the [Amazon SQS dead-letter queues documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   RedriveAllowPolicyState({
-    pulumi.Output<String>? queueUrl,
-    pulumi.Output<String>? redriveAllowPolicy,
-    pulumi.Output<String>? region,
-  }) :
-      queueUrl = pulumi.Input.asOptionalInput<String>(queueUrl),
-      redriveAllowPolicy = pulumi.Input.asOptionalInput<String>(redriveAllowPolicy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.queueUrl,
+    this.redriveAllowPolicy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class RedriveAllowPolicyState {
 
   factory RedriveAllowPolicyState.fromMap(Map<String, dynamic> map) {
     return RedriveAllowPolicyState(
-      queueUrl: map['queueUrl'] == null ? null : pulumi.Output.create<String>(map['queueUrl'] as String),
-      redriveAllowPolicy: map['redriveAllowPolicy'] == null ? null : pulumi.Output.create<String>(map['redriveAllowPolicy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      queueUrl: map['queueUrl'] == null ? null : (map['queueUrl'] as String).input(),
+      redriveAllowPolicy: map['redriveAllowPolicy'] == null ? null : (map['redriveAllowPolicy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

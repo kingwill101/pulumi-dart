@@ -6,31 +6,31 @@ import 'sql_backup_set_info_response.dart';
 /// Detailed status of current migration.
 class MigrationStatusDetailsResponse {
   /// Backup sets that are currently active.
-  final List<SqlBackupSetInfoResponse> activeBackupSets;
+  final pulumi.Input<List<SqlBackupSetInfoResponse>> activeBackupSets;
   /// Name of blob container.
-  final String blobContainerName;
+  final pulumi.Input<String> blobContainerName;
   /// Complete restore error message, if any
-  final String completeRestoreErrorMessage;
+  final pulumi.Input<String> completeRestoreErrorMessage;
   /// File name that is currently being restored.
-  final String currentRestoringFilename;
+  final pulumi.Input<String> currentRestoringFilename;
   /// File upload blocking errors, if any.
-  final List<String> fileUploadBlockingErrors;
+  final pulumi.Input<List<String>> fileUploadBlockingErrors;
   /// Details of full backup set.
-  final SqlBackupSetInfoResponse fullBackupSetInfo;
+  final pulumi.Input<SqlBackupSetInfoResponse> fullBackupSetInfo;
   /// Files that are not valid backup files.
-  final List<String> invalidFiles;
+  final pulumi.Input<List<String>> invalidFiles;
   /// Whether full backup has been applied to the target database or not.
-  final bool isFullBackupRestored;
+  final pulumi.Input<bool> isFullBackupRestored;
   /// Last applied backup set information.
-  final SqlBackupSetInfoResponse lastRestoredBackupSetInfo;
+  final pulumi.Input<SqlBackupSetInfoResponse> lastRestoredBackupSetInfo;
   /// Last restored file name.
-  final String lastRestoredFilename;
+  final pulumi.Input<String> lastRestoredFilename;
   /// Current State of Migration.
-  final String migrationState;
+  final pulumi.Input<String> migrationState;
   /// Total pending log backups.
-  final int pendingLogBackupsCount;
+  final pulumi.Input<int> pendingLogBackupsCount;
   /// Restore blocking reason, if any
-  final String restoreBlockingReason;
+  final pulumi.Input<String> restoreBlockingReason;
 
   /// Creates a new [MigrationStatusDetailsResponse].
   /// [activeBackupSets] Backup sets that are currently active.
@@ -64,15 +64,15 @@ class MigrationStatusDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeBackupSets': pulumi.Input.encodeList<SqlBackupSetInfoResponse, Map<String, dynamic>>(activeBackupSets, (value) => value.toMap()),
+      'activeBackupSets': pulumi.Input.mapInputValue<List<SqlBackupSetInfoResponse>, List<Map<String, dynamic>>>(activeBackupSets, (value) => pulumi.Input.encodeList<SqlBackupSetInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'blobContainerName': blobContainerName,
       'completeRestoreErrorMessage': completeRestoreErrorMessage,
       'currentRestoringFilename': currentRestoringFilename,
       'fileUploadBlockingErrors': fileUploadBlockingErrors,
-      'fullBackupSetInfo': fullBackupSetInfo.toMap(),
+      'fullBackupSetInfo': pulumi.Input.mapInputValue<SqlBackupSetInfoResponse, Map<String, dynamic>>(fullBackupSetInfo, (value) => value.toMap()),
       'invalidFiles': invalidFiles,
       'isFullBackupRestored': isFullBackupRestored,
-      'lastRestoredBackupSetInfo': lastRestoredBackupSetInfo.toMap(),
+      'lastRestoredBackupSetInfo': pulumi.Input.mapInputValue<SqlBackupSetInfoResponse, Map<String, dynamic>>(lastRestoredBackupSetInfo, (value) => value.toMap()),
       'lastRestoredFilename': lastRestoredFilename,
       'migrationState': migrationState,
       'pendingLogBackupsCount': pendingLogBackupsCount,
@@ -82,19 +82,19 @@ class MigrationStatusDetailsResponse {
 
   factory MigrationStatusDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MigrationStatusDetailsResponse(
-      activeBackupSets: pulumi.Input.decodeList<SqlBackupSetInfoResponse>(map['activeBackupSets'], (value) => SqlBackupSetInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      blobContainerName: map['blobContainerName'] as String,
-      completeRestoreErrorMessage: map['completeRestoreErrorMessage'] as String,
-      currentRestoringFilename: map['currentRestoringFilename'] as String,
-      fileUploadBlockingErrors: (map['fileUploadBlockingErrors'] as List).cast<String>(),
-      fullBackupSetInfo: SqlBackupSetInfoResponse.fromMap((map['fullBackupSetInfo'] as Map).cast<String, dynamic>()),
-      invalidFiles: (map['invalidFiles'] as List).cast<String>(),
-      isFullBackupRestored: map['isFullBackupRestored'] as bool,
-      lastRestoredBackupSetInfo: SqlBackupSetInfoResponse.fromMap((map['lastRestoredBackupSetInfo'] as Map).cast<String, dynamic>()),
-      lastRestoredFilename: map['lastRestoredFilename'] as String,
-      migrationState: map['migrationState'] as String,
-      pendingLogBackupsCount: map['pendingLogBackupsCount'] as int,
-      restoreBlockingReason: map['restoreBlockingReason'] as String,
+      activeBackupSets: (pulumi.Input.decodeList<SqlBackupSetInfoResponse>(map['activeBackupSets'], (value) => SqlBackupSetInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blobContainerName: (map['blobContainerName'] as String).input(),
+      completeRestoreErrorMessage: (map['completeRestoreErrorMessage'] as String).input(),
+      currentRestoringFilename: (map['currentRestoringFilename'] as String).input(),
+      fileUploadBlockingErrors: ((map['fileUploadBlockingErrors'] as List).cast<String>()).input(),
+      fullBackupSetInfo: (SqlBackupSetInfoResponse.fromMap((map['fullBackupSetInfo'] as Map).cast<String, dynamic>())).input(),
+      invalidFiles: ((map['invalidFiles'] as List).cast<String>()).input(),
+      isFullBackupRestored: (map['isFullBackupRestored'] as bool).input(),
+      lastRestoredBackupSetInfo: (SqlBackupSetInfoResponse.fromMap((map['lastRestoredBackupSetInfo'] as Map).cast<String, dynamic>())).input(),
+      lastRestoredFilename: (map['lastRestoredFilename'] as String).input(),
+      migrationState: (map['migrationState'] as String).input(),
+      pendingLogBackupsCount: (map['pendingLogBackupsCount'] as int).input(),
+      restoreBlockingReason: (map['restoreBlockingReason'] as String).input(),
     );
   }
 }

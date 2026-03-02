@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An email receiver.
 class EmailReceiver {
   /// The email address of this receiver.
-  final String emailAddress;
+  final pulumi.Input<String> emailAddress;
   /// The name of the email receiver. Names must be unique across all receivers within a tenant action group.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether to use common alert schema.
-  final bool? useCommonAlertSchema;
+  final pulumi.Input<bool>? useCommonAlertSchema;
 
   /// Creates a new [EmailReceiver].
   /// [emailAddress] The email address of this receiver.
@@ -30,9 +31,9 @@ class EmailReceiver {
 
   factory EmailReceiver.fromMap(Map<String, dynamic> map) {
     return EmailReceiver(
-      emailAddress: map['emailAddress'] as String,
-      name: map['name'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : map['useCommonAlertSchema'] as bool,
+      emailAddress: (map['emailAddress'] as String).input(),
+      name: (map['name'] as String).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

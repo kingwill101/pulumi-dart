@@ -48,29 +48,18 @@ class InstanceV2Args {
   /// [sdl] Data leakage protection status. Valid values: `true`, `false`.
   /// [spec] The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
   InstanceV2Args({
-    pulumi.Output<bool>? cfwLog,
-    pulumi.Output<String>? modifyType,
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<int>? period,
-    required pulumi.Output<String> productCode,
-    required pulumi.Output<String> productType,
-    pulumi.Output<int>? renewalDuration,
-    pulumi.Output<String>? renewalDurationUnit,
-    pulumi.Output<String>? renewalStatus,
-    pulumi.Output<bool>? sdl,
-    required pulumi.Output<String> spec,
-  }) :
-      cfwLog = pulumi.Input.asOptionalInput<bool>(cfwLog),
-      modifyType = pulumi.Input.asOptionalInput<String>(modifyType),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      productCode = pulumi.Input.asInput<String>(productCode),
-      productType = pulumi.Input.asInput<String>(productType),
-      renewalDuration = pulumi.Input.asOptionalInput<int>(renewalDuration),
-      renewalDurationUnit = pulumi.Input.asOptionalInput<String>(renewalDurationUnit),
-      renewalStatus = pulumi.Input.asOptionalInput<String>(renewalStatus),
-      sdl = pulumi.Input.asOptionalInput<bool>(sdl),
-      spec = pulumi.Input.asInput<String>(spec);
+    this.cfwLog,
+    this.modifyType,
+    required this.paymentType,
+    this.period,
+    required this.productCode,
+    required this.productType,
+    this.renewalDuration,
+    this.renewalDurationUnit,
+    this.renewalStatus,
+    this.sdl,
+    required this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class InstanceV2Args {
 
   factory InstanceV2Args.fromMap(Map<String, dynamic> map) {
     return InstanceV2Args(
-      cfwLog: map['cfwLog'] == null ? null : pulumi.Output.create<bool>(map['cfwLog'] as bool),
-      modifyType: map['modifyType'] == null ? null : pulumi.Output.create<String>(map['modifyType'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      productCode: pulumi.Output.create<String>(map['productCode'] as String),
-      productType: pulumi.Output.create<String>(map['productType'] as String),
-      renewalDuration: map['renewalDuration'] == null ? null : pulumi.Output.create<int>(map['renewalDuration'] as int),
-      renewalDurationUnit: map['renewalDurationUnit'] == null ? null : pulumi.Output.create<String>(map['renewalDurationUnit'] as String),
-      renewalStatus: map['renewalStatus'] == null ? null : pulumi.Output.create<String>(map['renewalStatus'] as String),
-      sdl: map['sdl'] == null ? null : pulumi.Output.create<bool>(map['sdl'] as bool),
-      spec: pulumi.Output.create<String>(map['spec'] as String),
+      cfwLog: map['cfwLog'] == null ? null : (map['cfwLog'] as bool).input(),
+      modifyType: map['modifyType'] == null ? null : (map['modifyType'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      productCode: (map['productCode'] as String).input(),
+      productType: (map['productType'] as String).input(),
+      renewalDuration: map['renewalDuration'] == null ? null : (map['renewalDuration'] as int).input(),
+      renewalDurationUnit: map['renewalDurationUnit'] == null ? null : (map['renewalDurationUnit'] as String).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
+      sdl: map['sdl'] == null ? null : (map['sdl'] as bool).input(),
+      spec: (map['spec'] as String).input(),
     );
   }
 }

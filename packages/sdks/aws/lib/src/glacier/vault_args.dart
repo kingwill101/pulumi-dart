@@ -27,17 +27,12 @@ class VaultArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   VaultArgs({
-    pulumi.Output<String>? accessPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<VaultNotification>? notification,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessPolicy = pulumi.Input.asOptionalInput<String>(accessPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notification = pulumi.Input.asOptionalInput<VaultNotification>(notification),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessPolicy,
+    this.name,
+    this.notification,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class VaultArgs {
 
   factory VaultArgs.fromMap(Map<String, dynamic> map) {
     return VaultArgs(
-      accessPolicy: map['accessPolicy'] == null ? null : pulumi.Output.create<String>(map['accessPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notification: map['notification'] == null ? null : pulumi.Output.create<VaultNotification>(VaultNotification.fromMap((map['notification'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessPolicy: map['accessPolicy'] == null ? null : (map['accessPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notification: map['notification'] == null ? null : (VaultNotification.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

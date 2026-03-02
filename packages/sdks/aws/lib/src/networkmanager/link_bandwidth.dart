@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkBandwidth {
   /// Download speed in Mbps.
-  final int? downloadSpeed;
+  final pulumi.Input<int>? downloadSpeed;
   /// Upload speed in Mbps.
-  final int? uploadSpeed;
+  final pulumi.Input<int>? uploadSpeed;
 
   /// Creates a new [LinkBandwidth].
   /// [downloadSpeed] Download speed in Mbps.
@@ -24,8 +25,8 @@ class LinkBandwidth {
 
   factory LinkBandwidth.fromMap(Map<String, dynamic> map) {
     return LinkBandwidth(
-      downloadSpeed: map['downloadSpeed'] == null ? null : map['downloadSpeed'] as int,
-      uploadSpeed: map['uploadSpeed'] == null ? null : map['uploadSpeed'] as int,
+      downloadSpeed: map['downloadSpeed'] == null ? null : (map['downloadSpeed'] as int).input(),
+      uploadSpeed: map['uploadSpeed'] == null ? null : (map['uploadSpeed'] as int).input(),
     );
   }
 }

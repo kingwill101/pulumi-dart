@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of MonthlyTransfer
 class MonthlyTransferResponse {
   /// GbPerMonthAllocated of the Instance.
-  final String? gbPerMonthAllocated;
+  final pulumi.Input<String>? gbPerMonthAllocated;
 
   /// Creates a new [MonthlyTransferResponse].
   /// [gbPerMonthAllocated] GbPerMonthAllocated of the Instance.
@@ -20,7 +21,7 @@ class MonthlyTransferResponse {
 
   factory MonthlyTransferResponse.fromMap(Map<String, dynamic> map) {
     return MonthlyTransferResponse(
-      gbPerMonthAllocated: map['gbPerMonthAllocated'] == null ? null : map['gbPerMonthAllocated'] as String,
+      gbPerMonthAllocated: map['gbPerMonthAllocated'] == null ? null : (map['gbPerMonthAllocated'] as String).input(),
     );
   }
 }

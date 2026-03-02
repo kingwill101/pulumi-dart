@@ -42,25 +42,16 @@ class SecurityProfileGroupArgs {
   /// [threatPreventionProfile] Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   /// [urlFilteringProfile] Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
   SecurityProfileGroupArgs({
-    pulumi.Output<String>? customInterceptProfile,
-    pulumi.Output<String>? customMirroringProfile,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? threatPreventionProfile,
-    pulumi.Output<String>? urlFilteringProfile,
-  }) :
-      customInterceptProfile = pulumi.Input.asOptionalInput<String>(customInterceptProfile),
-      customMirroringProfile = pulumi.Input.asOptionalInput<String>(customMirroringProfile),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      threatPreventionProfile = pulumi.Input.asOptionalInput<String>(threatPreventionProfile),
-      urlFilteringProfile = pulumi.Input.asOptionalInput<String>(urlFilteringProfile);
+    this.customInterceptProfile,
+    this.customMirroringProfile,
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    this.parent,
+    this.threatPreventionProfile,
+    this.urlFilteringProfile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class SecurityProfileGroupArgs {
 
   factory SecurityProfileGroupArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileGroupArgs(
-      customInterceptProfile: map['customInterceptProfile'] == null ? null : pulumi.Output.create<String>(map['customInterceptProfile'] as String),
-      customMirroringProfile: map['customMirroringProfile'] == null ? null : pulumi.Output.create<String>(map['customMirroringProfile'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : pulumi.Output.create<String>(map['threatPreventionProfile'] as String),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : pulumi.Output.create<String>(map['urlFilteringProfile'] as String),
+      customInterceptProfile: map['customInterceptProfile'] == null ? null : (map['customInterceptProfile'] as String).input(),
+      customMirroringProfile: map['customMirroringProfile'] == null ? null : (map['customMirroringProfile'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile'] as String).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile'] as String).input(),
     );
   }
 }

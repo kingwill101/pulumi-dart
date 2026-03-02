@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderAssumeRoleWithWebIdentity {
   /// The duration, between 15 minutes and 12 hours, of the role session. Valid time units are ns, us (or µs), ms, s, h, or m.
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
-  final String? policy;
+  final pulumi.Input<String>? policy;
   /// Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.
-  final List<String>? policyArns;
+  final pulumi.Input<List<String>>? policyArns;
   /// Amazon Resource Name (ARN) of an IAM Role to assume prior to making API calls.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
   /// An identifier for the assumed role session.
-  final String? sessionName;
-  final String? webIdentityToken;
-  final String? webIdentityTokenFile;
+  final pulumi.Input<String>? sessionName;
+  final pulumi.Input<String>? webIdentityToken;
+  final pulumi.Input<String>? webIdentityTokenFile;
 
   /// Creates a new [ProviderAssumeRoleWithWebIdentity].
   /// [duration] The duration, between 15 minutes and 12 hours, of the role session. Valid time units are ns, us (or µs), ms, s, h, or m.
@@ -47,13 +48,13 @@ class ProviderAssumeRoleWithWebIdentity {
 
   factory ProviderAssumeRoleWithWebIdentity.fromMap(Map<String, dynamic> map) {
     return ProviderAssumeRoleWithWebIdentity(
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as String,
-      policyArns: map['policyArns'] == null ? null : (map['policyArns'] as List).cast<String>(),
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      sessionName: map['sessionName'] == null ? null : map['sessionName'] as String,
-      webIdentityToken: map['webIdentityToken'] == null ? null : map['webIdentityToken'] as String,
-      webIdentityTokenFile: map['webIdentityTokenFile'] == null ? null : map['webIdentityTokenFile'] as String,
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policyArns: map['policyArns'] == null ? null : ((map['policyArns'] as List).cast<String>()).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
+      webIdentityToken: map['webIdentityToken'] == null ? null : (map['webIdentityToken'] as String).input(),
+      webIdentityTokenFile: map['webIdentityTokenFile'] == null ? null : (map['webIdentityTokenFile'] as String).input(),
     );
   }
 }

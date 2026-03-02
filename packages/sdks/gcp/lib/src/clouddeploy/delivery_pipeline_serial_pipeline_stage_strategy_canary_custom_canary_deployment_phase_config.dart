@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_deployment_phase_config_postdeploy.dart';
 import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_deployment_phase_config_predeploy.dart';
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
   /// Required. Percentage deployment for the phase.
-  final int percentage;
+  final pulumi.Input<int> percentage;
   /// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-  final String phaseId;
+  final pulumi.Input<String> phaseId;
   /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy? postdeploy;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy>? postdeploy;
   /// Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy? predeploy;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy>? predeploy;
   /// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
-  final List<String>? profiles;
+  final pulumi.Input<List<String>>? profiles;
   /// Whether to run verify tests after the deployment.
-  final bool? verify;
+  final pulumi.Input<bool>? verify;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig].
   /// [percentage] Required. Percentage deployment for the phase.
@@ -37,8 +38,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     return <String, dynamic>{
       'percentage': percentage,
       'phaseId': phaseId,
-      'postdeploy': ?postdeploy == null ? null : postdeploy!.toMap(),
-      'predeploy': ?predeploy == null ? null : predeploy!.toMap(),
+      'postdeploy': ?pulumi.Input.mapOptionalInputValue<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy, Map<String, dynamic>>(postdeploy, (value) => value.toMap()),
+      'predeploy': ?pulumi.Input.mapOptionalInputValue<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy, Map<String, dynamic>>(predeploy, (value) => value.toMap()),
       'profiles': ?profiles,
       'verify': ?verify,
     };
@@ -46,12 +47,12 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig(
-      percentage: map['percentage'] as int,
-      phaseId: map['phaseId'] as String,
-      postdeploy: map['postdeploy'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>()),
-      predeploy: map['predeploy'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>()),
-      profiles: map['profiles'] == null ? null : (map['profiles'] as List).cast<String>(),
-      verify: map['verify'] == null ? null : map['verify'] as bool,
+      percentage: (map['percentage'] as int).input(),
+      phaseId: (map['phaseId'] as String).input(),
+      postdeploy: map['postdeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>())).input(),
+      predeploy: map['predeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>())).input(),
+      profiles: map['profiles'] == null ? null : ((map['profiles'] as List).cast<String>()).input(),
+      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
     );
   }
 }

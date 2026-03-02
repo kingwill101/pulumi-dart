@@ -26,17 +26,12 @@ class FolderPolicyArgs {
   /// [name] Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
   /// [spec] Basic information about the Organization Policy.
   FolderPolicyArgs({
-    pulumi.Output<GoogleCloudOrgpolicyV2AlternatePolicySpec>? alternate,
-    pulumi.Output<GoogleCloudOrgpolicyV2PolicySpec>? dryRunSpec,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<String>? name,
-    pulumi.Output<GoogleCloudOrgpolicyV2PolicySpec>? spec,
-  }) :
-      alternate = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2AlternatePolicySpec>(alternate),
-      dryRunSpec = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(dryRunSpec),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      spec = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(spec);
+    this.alternate,
+    this.dryRunSpec,
+    required this.folderId,
+    this.name,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class FolderPolicyArgs {
 
   factory FolderPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FolderPolicyArgs(
-      alternate: map['alternate'] == null ? null : pulumi.Output.create<GoogleCloudOrgpolicyV2AlternatePolicySpec>(GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate'] as Map).cast<String, dynamic>())),
-      dryRunSpec: map['dryRunSpec'] == null ? null : pulumi.Output.create<GoogleCloudOrgpolicyV2PolicySpec>(GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<GoogleCloudOrgpolicyV2PolicySpec>(GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      alternate: map['alternate'] == null ? null : (GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate'] as Map).cast<String, dynamic>())).input(),
+      dryRunSpec: map['dryRunSpec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())).input(),
+      folderId: (map['folderId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      spec: map['spec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

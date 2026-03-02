@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AAD Profile specifies attributes for Azure Active Directory integration.
 class AadProfile {
   /// The list of AAD group object IDs that will have admin role of the cluster.
-  final List<String>? adminGroupObjectIDs;
+  final pulumi.Input<List<String>>? adminGroupObjectIDs;
   /// Whether to enable Azure RBAC for Kubernetes authorization.
-  final bool? enableAzureRBAC;
+  final pulumi.Input<bool>? enableAzureRBAC;
   /// The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  final String? tenantID;
+  final pulumi.Input<String>? tenantID;
 
   /// Creates a new [AadProfile].
   /// [adminGroupObjectIDs] The list of AAD group object IDs that will have admin role of the cluster.
@@ -30,9 +31,9 @@ class AadProfile {
 
   factory AadProfile.fromMap(Map<String, dynamic> map) {
     return AadProfile(
-      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : (map['adminGroupObjectIDs'] as List).cast<String>(),
-      enableAzureRBAC: map['enableAzureRBAC'] == null ? null : map['enableAzureRBAC'] as bool,
-      tenantID: map['tenantID'] == null ? null : map['tenantID'] as String,
+      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs'] as List).cast<String>()).input(),
+      enableAzureRBAC: map['enableAzureRBAC'] == null ? null : (map['enableAzureRBAC'] as bool).input(),
+      tenantID: map['tenantID'] == null ? null : (map['tenantID'] as String).input(),
     );
   }
 }

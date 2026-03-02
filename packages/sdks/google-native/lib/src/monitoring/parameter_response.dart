@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
 class ParameterResponse {
   /// A floating-point parameter value.
-  final double doubleValue;
+  final pulumi.Input<double> doubleValue;
   /// An integer parameter value.
-  final String intValue;
+  final pulumi.Input<String> intValue;
 
   /// Creates a new [ParameterResponse].
   /// [doubleValue] A floating-point parameter value.
@@ -25,8 +26,8 @@ class ParameterResponse {
 
   factory ParameterResponse.fromMap(Map<String, dynamic> map) {
     return ParameterResponse(
-      doubleValue: map['doubleValue'] as double,
-      intValue: map['intValue'] as String,
+      doubleValue: (map['doubleValue'] as double).input(),
+      intValue: (map['intValue'] as String).input(),
     );
   }
 }

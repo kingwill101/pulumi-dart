@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicationGroupNodeGroupConfiguration {
   /// ID for the node group. Redis (cluster mode disabled) replication groups don't have node group IDs, so this value is ignored. For Redis (cluster mode enabled) replication groups, the node group ID is a 1 to 4 character alphanumeric string.
-  final String? nodeGroupId;
+  final pulumi.Input<String>? nodeGroupId;
   /// Availability zone for the primary node.
-  final String? primaryAvailabilityZone;
+  final pulumi.Input<String>? primaryAvailabilityZone;
   /// ARN of the Outpost for the primary node.
-  final String? primaryOutpostArn;
+  final pulumi.Input<String>? primaryOutpostArn;
   /// List of availability zones for the replica nodes.
-  final List<String>? replicaAvailabilityZones;
+  final pulumi.Input<List<String>>? replicaAvailabilityZones;
   /// Number of replica nodes in this node group.
-  final int? replicaCount;
+  final pulumi.Input<int>? replicaCount;
   /// List of ARNs of the Outposts for the replica nodes.
-  final List<String>? replicaOutpostArns;
+  final pulumi.Input<List<String>>? replicaOutpostArns;
   /// Keyspace for this node group. Format is `start-end` (e.g., `0-5460`). For Redis (cluster mode disabled) replication groups, this value is ignored.
-  final String? slots;
+  final pulumi.Input<String>? slots;
 
   /// Creates a new [ReplicationGroupNodeGroupConfiguration].
   /// [nodeGroupId] ID for the node group. Redis (cluster mode disabled) replication groups don't have node group IDs, so this value is ignored. For Redis (cluster mode enabled) replication groups, the node group ID is a 1 to 4 character alphanumeric string.
@@ -49,13 +50,13 @@ class ReplicationGroupNodeGroupConfiguration {
 
   factory ReplicationGroupNodeGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return ReplicationGroupNodeGroupConfiguration(
-      nodeGroupId: map['nodeGroupId'] == null ? null : map['nodeGroupId'] as String,
-      primaryAvailabilityZone: map['primaryAvailabilityZone'] == null ? null : map['primaryAvailabilityZone'] as String,
-      primaryOutpostArn: map['primaryOutpostArn'] == null ? null : map['primaryOutpostArn'] as String,
-      replicaAvailabilityZones: map['replicaAvailabilityZones'] == null ? null : (map['replicaAvailabilityZones'] as List).cast<String>(),
-      replicaCount: map['replicaCount'] == null ? null : map['replicaCount'] as int,
-      replicaOutpostArns: map['replicaOutpostArns'] == null ? null : (map['replicaOutpostArns'] as List).cast<String>(),
-      slots: map['slots'] == null ? null : map['slots'] as String,
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
+      primaryAvailabilityZone: map['primaryAvailabilityZone'] == null ? null : (map['primaryAvailabilityZone'] as String).input(),
+      primaryOutpostArn: map['primaryOutpostArn'] == null ? null : (map['primaryOutpostArn'] as String).input(),
+      replicaAvailabilityZones: map['replicaAvailabilityZones'] == null ? null : ((map['replicaAvailabilityZones'] as List).cast<String>()).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      replicaOutpostArns: map['replicaOutpostArns'] == null ? null : ((map['replicaOutpostArns'] as List).cast<String>()).input(),
+      slots: map['slots'] == null ? null : (map['slots'] as String).input(),
     );
   }
 }

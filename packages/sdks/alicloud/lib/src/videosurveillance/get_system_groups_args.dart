@@ -28,19 +28,13 @@ class GetSystemGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status. Valid values: `on`,`off`.
   GetSystemGroupsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? inProtocol,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      inProtocol = pulumi.Input.asOptionalInput<String>(inProtocol),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.inProtocol,
+    this.name,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetSystemGroupsArgs {
 
   factory GetSystemGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetSystemGroupsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      inProtocol: map['inProtocol'] == null ? null : pulumi.Output.create<String>(map['inProtocol'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      inProtocol: map['inProtocol'] == null ? null : (map['inProtocol'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

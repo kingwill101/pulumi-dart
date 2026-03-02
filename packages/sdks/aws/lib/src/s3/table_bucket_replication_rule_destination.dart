@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableBucketReplicationRuleDestination {
   /// ARN of destination table bucket to replicate source tables to.
-  final String destinationTableBucketArn;
+  final pulumi.Input<String> destinationTableBucketArn;
 
   /// Creates a new [TableBucketReplicationRuleDestination].
   /// [destinationTableBucketArn] ARN of destination table bucket to replicate source tables to.
@@ -19,7 +20,7 @@ class TableBucketReplicationRuleDestination {
 
   factory TableBucketReplicationRuleDestination.fromMap(Map<String, dynamic> map) {
     return TableBucketReplicationRuleDestination(
-      destinationTableBucketArn: map['destinationTableBucketArn'] as String,
+      destinationTableBucketArn: (map['destinationTableBucketArn'] as String).input(),
     );
   }
 }

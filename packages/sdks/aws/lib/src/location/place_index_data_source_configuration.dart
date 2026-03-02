@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlaceIndexDataSourceConfiguration {
   /// Specifies how the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
-  final String? intendedUse;
+  final pulumi.Input<String>? intendedUse;
 
   /// Creates a new [PlaceIndexDataSourceConfiguration].
   /// [intendedUse] Specifies how the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
@@ -19,7 +20,7 @@ class PlaceIndexDataSourceConfiguration {
 
   factory PlaceIndexDataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return PlaceIndexDataSourceConfiguration(
-      intendedUse: map['intendedUse'] == null ? null : map['intendedUse'] as String,
+      intendedUse: map['intendedUse'] == null ? null : (map['intendedUse'] as String).input(),
     );
   }
 }

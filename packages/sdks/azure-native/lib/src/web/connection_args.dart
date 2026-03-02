@@ -28,19 +28,13 @@ class ConnectionArgs {
   /// [subscriptionId] Subscription Id
   /// [tags] Resource tags
   ConnectionArgs({
-    pulumi.Output<String>? connectionName,
-    pulumi.Output<String>? location,
-    pulumi.Output<ApiConnectionDefinitionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ApiConnectionDefinitionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.connectionName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.subscriptionId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ApiConnectionDefinitionProperties>(ApiConnectionDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ApiConnectionDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

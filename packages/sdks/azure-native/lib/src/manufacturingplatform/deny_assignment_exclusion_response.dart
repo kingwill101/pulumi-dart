@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to Deny Assignment Exclusions
 class DenyAssignmentExclusionResponse {
   /// Object Id of Identity
-  final String id;
+  final pulumi.Input<String> id;
   /// Type of Identity
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DenyAssignmentExclusionResponse].
   /// [id] Object Id of Identity
@@ -25,8 +26,8 @@ class DenyAssignmentExclusionResponse {
 
   factory DenyAssignmentExclusionResponse.fromMap(Map<String, dynamic> map) {
     return DenyAssignmentExclusionResponse(
-      id: map['id'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,43 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCapacityReservationsReservation {
   /// Capacity Reservation id
-  final String capacityReservationId;
+  final pulumi.Input<String> capacityReservationId;
   /// Capacity reservation service name.
-  final String capacityReservationName;
+  final pulumi.Input<String> capacityReservationName;
   /// description of the capacity reservation instance
-  final String description;
+  final pulumi.Input<String> description;
   /// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
-  final String endTimeType;
+  final pulumi.Input<String> endTimeType;
   /// The ID of the Capacity Reservation.
-  final String id;
+  final pulumi.Input<String> id;
   /// The total number of instances that need to be reserved within the capacity reservation
-  final String instanceAmount;
+  final pulumi.Input<String> instanceAmount;
   /// Instance type. Currently, you can only set the capacity reservation service for one instance type.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
-  final String matchCriteria;
+  final pulumi.Input<String> matchCriteria;
   /// The payment type of the resource. value range `PostPaid`, `PrePaid`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// platform of the capacity reservation , value range `windows`, `linux`, `all`.
-  final String platform;
+  final pulumi.Input<String> platform;
   /// The resource group id.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// time of the capacity reservation which become active
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
-  final String startTimeType;
+  final pulumi.Input<String> startTimeType;
   /// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag of the resource.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// This parameter is under test and is not yet open for use.
-  final String timeSlot;
+  final pulumi.Input<String> timeSlot;
   /// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
-  final List<String> zoneIds;
+  final pulumi.Input<List<String>> zoneIds;
 
   /// Creates a new [GetCapacityReservationsReservation].
   /// [capacityReservationId] Capacity Reservation id
@@ -104,24 +105,24 @@ class GetCapacityReservationsReservation {
 
   factory GetCapacityReservationsReservation.fromMap(Map<String, dynamic> map) {
     return GetCapacityReservationsReservation(
-      capacityReservationId: map['capacityReservationId'] as String,
-      capacityReservationName: map['capacityReservationName'] as String,
-      description: map['description'] as String,
-      endTime: map['endTime'] as String,
-      endTimeType: map['endTimeType'] as String,
-      id: map['id'] as String,
-      instanceAmount: map['instanceAmount'] as String,
-      instanceType: map['instanceType'] as String,
-      matchCriteria: map['matchCriteria'] as String,
-      paymentType: map['paymentType'] as String,
-      platform: map['platform'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      startTime: map['startTime'] as String,
-      startTimeType: map['startTimeType'] as String,
-      status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timeSlot: map['timeSlot'] as String,
-      zoneIds: (map['zoneIds'] as List).cast<String>(),
+      capacityReservationId: (map['capacityReservationId'] as String).input(),
+      capacityReservationName: (map['capacityReservationName'] as String).input(),
+      description: (map['description'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      endTimeType: (map['endTimeType'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceAmount: (map['instanceAmount'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      matchCriteria: (map['matchCriteria'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      platform: (map['platform'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      startTimeType: (map['startTimeType'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeSlot: (map['timeSlot'] as String).input(),
+      zoneIds: ((map['zoneIds'] as List).cast<String>()).input(),
     );
   }
 }

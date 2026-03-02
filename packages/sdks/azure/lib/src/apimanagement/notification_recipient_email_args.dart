@@ -19,13 +19,10 @@ class NotificationRecipientEmailArgs {
   /// [email] The recipient email address. Changing this forces a new API Management Notification Recipient Email to be created.
   /// [notificationType] The Notification Name to be received. Changing this forces a new API Management Notification Recipient Email to be created. Possible values are `AccountClosedPublisher`, `BCC`, `NewApplicationNotificationMessage`, `NewIssuePublisherNotificationMessage`, `PurchasePublisherNotificationMessage`, `QuotaLimitApproachingPublisherNotificationMessage`, and `RequestPublisherNotificationMessage`.
   NotificationRecipientEmailArgs({
-    required pulumi.Output<String> apiManagementId,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> notificationType,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      email = pulumi.Input.asInput<String>(email),
-      notificationType = pulumi.Input.asInput<String>(notificationType);
+    required this.apiManagementId,
+    required this.email,
+    required this.notificationType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NotificationRecipientEmailArgs {
 
   factory NotificationRecipientEmailArgs.fromMap(Map<String, dynamic> map) {
     return NotificationRecipientEmailArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      notificationType: pulumi.Output.create<String>(map['notificationType'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      email: (map['email'] as String).input(),
+      notificationType: (map['notificationType'] as String).input(),
     );
   }
 }

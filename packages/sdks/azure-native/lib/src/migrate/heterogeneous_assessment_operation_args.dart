@@ -23,15 +23,11 @@ class HeterogeneousAssessmentOperationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   HeterogeneousAssessmentOperationArgs({
-    pulumi.Output<String>? assessmentName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<HeterogeneousAssessmentProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assessmentName = pulumi.Input.asOptionalInput<String>(assessmentName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<HeterogeneousAssessmentProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.assessmentName,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class HeterogeneousAssessmentOperationArgs {
 
   factory HeterogeneousAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return HeterogeneousAssessmentOperationArgs(
-      assessmentName: map['assessmentName'] == null ? null : pulumi.Output.create<String>(map['assessmentName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<HeterogeneousAssessmentProperties>(HeterogeneousAssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (HeterogeneousAssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

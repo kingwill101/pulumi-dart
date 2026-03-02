@@ -5,17 +5,17 @@ import 'get_event_rules_rule_event_pattern_keyword_filter.dart';
 
 class GetEventRulesRuleEventPattern {
   /// The list of event types.
-  final List<String> eventTypeLists;
+  final pulumi.Input<List<String>> eventTypeLists;
   /// The filter keyword.
-  final List<GetEventRulesRuleEventPatternKeywordFilter> keywordFilters;
+  final pulumi.Input<List<GetEventRulesRuleEventPatternKeywordFilter>> keywordFilters;
   /// The list of event levels.
-  final List<String> levelLists;
+  final pulumi.Input<List<String>> levelLists;
   /// The list of event names.
-  final List<String> nameLists;
+  final pulumi.Input<List<String>> nameLists;
   /// The type of the cloud service.
-  final String product;
+  final pulumi.Input<String> product;
   /// The SQL condition that is used to filter events.
-  final String sqlFilter;
+  final pulumi.Input<String> sqlFilter;
 
   /// Creates a new [GetEventRulesRuleEventPattern].
   /// [eventTypeLists] The list of event types.
@@ -36,7 +36,7 @@ class GetEventRulesRuleEventPattern {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'eventTypeLists': eventTypeLists,
-      'keywordFilters': pulumi.Input.encodeList<GetEventRulesRuleEventPatternKeywordFilter, Map<String, dynamic>>(keywordFilters, (value) => value.toMap()),
+      'keywordFilters': pulumi.Input.mapInputValue<List<GetEventRulesRuleEventPatternKeywordFilter>, List<Map<String, dynamic>>>(keywordFilters, (value) => pulumi.Input.encodeList<GetEventRulesRuleEventPatternKeywordFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'levelLists': levelLists,
       'nameLists': nameLists,
       'product': product,
@@ -46,12 +46,12 @@ class GetEventRulesRuleEventPattern {
 
   factory GetEventRulesRuleEventPattern.fromMap(Map<String, dynamic> map) {
     return GetEventRulesRuleEventPattern(
-      eventTypeLists: (map['eventTypeLists'] as List).cast<String>(),
-      keywordFilters: pulumi.Input.decodeList<GetEventRulesRuleEventPatternKeywordFilter>(map['keywordFilters'], (value) => GetEventRulesRuleEventPatternKeywordFilter.fromMap((value as Map).cast<String, dynamic>())),
-      levelLists: (map['levelLists'] as List).cast<String>(),
-      nameLists: (map['nameLists'] as List).cast<String>(),
-      product: map['product'] as String,
-      sqlFilter: map['sqlFilter'] as String,
+      eventTypeLists: ((map['eventTypeLists'] as List).cast<String>()).input(),
+      keywordFilters: (pulumi.Input.decodeList<GetEventRulesRuleEventPatternKeywordFilter>(map['keywordFilters'], (value) => GetEventRulesRuleEventPatternKeywordFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      levelLists: ((map['levelLists'] as List).cast<String>()).input(),
+      nameLists: ((map['nameLists'] as List).cast<String>()).input(),
+      product: (map['product'] as String).input(),
+      sqlFilter: (map['sqlFilter'] as String).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class DbClusterArgs {
   /// [desiredStatus] The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
   /// [paymentType] The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
   DbClusterArgs({
-    required pulumi.Output<int> cacheSize,
-    required pulumi.Output<String> dbClusterClass,
-    required pulumi.Output<String> dbClusterDescription,
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<List<DbClusterDesiredParam>>? desiredParams,
-    pulumi.Output<String>? desiredStatus,
-    required pulumi.Output<String> paymentType,
-  }) :
-      cacheSize = pulumi.Input.asInput<int>(cacheSize),
-      dbClusterClass = pulumi.Input.asInput<String>(dbClusterClass),
-      dbClusterDescription = pulumi.Input.asInput<String>(dbClusterDescription),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      desiredParams = pulumi.Input.asOptionalInput<List<DbClusterDesiredParam>>(desiredParams),
-      desiredStatus = pulumi.Input.asOptionalInput<String>(desiredStatus),
-      paymentType = pulumi.Input.asInput<String>(paymentType);
+    required this.cacheSize,
+    required this.dbClusterClass,
+    required this.dbClusterDescription,
+    required this.dbInstanceId,
+    this.desiredParams,
+    this.desiredStatus,
+    required this.paymentType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DbClusterArgs {
 
   factory DbClusterArgs.fromMap(Map<String, dynamic> map) {
     return DbClusterArgs(
-      cacheSize: pulumi.Output.create<int>(map['cacheSize'] as int),
-      dbClusterClass: pulumi.Output.create<String>(map['dbClusterClass'] as String),
-      dbClusterDescription: pulumi.Output.create<String>(map['dbClusterDescription'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      desiredParams: map['desiredParams'] == null ? null : pulumi.Output.create<List<DbClusterDesiredParam>>(pulumi.Input.decodeList<DbClusterDesiredParam>(map['desiredParams'], (value) => DbClusterDesiredParam.fromMap((value as Map).cast<String, dynamic>()))),
-      desiredStatus: map['desiredStatus'] == null ? null : pulumi.Output.create<String>(map['desiredStatus'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
+      cacheSize: (map['cacheSize'] as int).input(),
+      dbClusterClass: (map['dbClusterClass'] as String).input(),
+      dbClusterDescription: (map['dbClusterDescription'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      desiredParams: map['desiredParams'] == null ? null : (pulumi.Input.decodeList<DbClusterDesiredParam>(map['desiredParams'], (value) => DbClusterDesiredParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredStatus: map['desiredStatus'] == null ? null : (map['desiredStatus'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
     );
   }
 }

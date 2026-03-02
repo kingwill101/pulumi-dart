@@ -32,19 +32,13 @@ class CaExternalAccountKeyState {
   /// [name] Resource name. projects/{project}/locations/{location}/externalAccountKeys/{keyId}.
   /// [project] The ID of the project in which the resource belongs.
   CaExternalAccountKeyState({
-    pulumi.Output<String>? b64MacKey,
-    pulumi.Output<String>? b64urlMacKey,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      b64MacKey = pulumi.Input.asOptionalInput<String>(b64MacKey),
-      b64urlMacKey = pulumi.Input.asOptionalInput<String>(b64urlMacKey),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.b64MacKey,
+    this.b64urlMacKey,
+    this.keyId,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class CaExternalAccountKeyState {
 
   factory CaExternalAccountKeyState.fromMap(Map<String, dynamic> map) {
     return CaExternalAccountKeyState(
-      b64MacKey: map['b64MacKey'] == null ? null : pulumi.Output.create<String>(map['b64MacKey'] as String),
-      b64urlMacKey: map['b64urlMacKey'] == null ? null : pulumi.Output.create<String>(map['b64urlMacKey'] as String),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      b64MacKey: map['b64MacKey'] == null ? null : (map['b64MacKey'] as String).input(),
+      b64urlMacKey: map['b64urlMacKey'] == null ? null : (map['b64urlMacKey'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

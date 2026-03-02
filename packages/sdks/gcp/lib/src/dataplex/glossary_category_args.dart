@@ -38,23 +38,15 @@ class GlossaryCategoryArgs {
   /// [parent] The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
   /// [project] The ID of the project in which the resource belongs.
   GlossaryCategoryArgs({
-    pulumi.Output<String>? categoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? glossaryId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? project,
-  }) :
-      categoryId = pulumi.Input.asOptionalInput<String>(categoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      glossaryId = pulumi.Input.asOptionalInput<String>(glossaryId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      parent = pulumi.Input.asInput<String>(parent),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.categoryId,
+    this.description,
+    this.displayName,
+    this.glossaryId,
+    this.labels,
+    required this.location,
+    required this.parent,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class GlossaryCategoryArgs {
 
   factory GlossaryCategoryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryCategoryArgs(
-      categoryId: map['categoryId'] == null ? null : pulumi.Output.create<String>(map['categoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      glossaryId: map['glossaryId'] == null ? null : pulumi.Output.create<String>(map['glossaryId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      categoryId: map['categoryId'] == null ? null : (map['categoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      glossaryId: map['glossaryId'] == null ? null : (map['glossaryId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

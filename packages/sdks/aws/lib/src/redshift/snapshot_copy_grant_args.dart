@@ -22,15 +22,11 @@ class SnapshotCopyGrantArgs {
   /// [snapshotCopyGrantName] A friendly name for identifying the grant.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   SnapshotCopyGrantArgs({
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> snapshotCopyGrantName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotCopyGrantName = pulumi.Input.asInput<String>(snapshotCopyGrantName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.kmsKeyId,
+    this.region,
+    required this.snapshotCopyGrantName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SnapshotCopyGrantArgs {
 
   factory SnapshotCopyGrantArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyGrantArgs(
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotCopyGrantName: pulumi.Output.create<String>(map['snapshotCopyGrantName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotCopyGrantName: (map['snapshotCopyGrantName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

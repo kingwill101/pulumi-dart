@@ -42,31 +42,19 @@ class PersistenceProfileSrcAddrState {
   /// [overrideConnLimit] To enable _ disable that pool member connection limits are overridden for persisted clients. Per-virtual connection limits remain hard limits and are not overridden.
   /// [timeout] Timeout for persistence of the session
   PersistenceProfileSrcAddrState({
-    pulumi.Output<String>? appService,
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<String>? hashAlgorithm,
-    pulumi.Output<String>? mapProxies,
-    pulumi.Output<String>? mask,
-    pulumi.Output<String>? matchAcrossPools,
-    pulumi.Output<String>? matchAcrossServices,
-    pulumi.Output<String>? matchAcrossVirtuals,
-    pulumi.Output<String>? mirror,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? overrideConnLimit,
-    pulumi.Output<int>? timeout,
-  }) :
-      appService = pulumi.Input.asOptionalInput<String>(appService),
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      hashAlgorithm = pulumi.Input.asOptionalInput<String>(hashAlgorithm),
-      mapProxies = pulumi.Input.asOptionalInput<String>(mapProxies),
-      mask = pulumi.Input.asOptionalInput<String>(mask),
-      matchAcrossPools = pulumi.Input.asOptionalInput<String>(matchAcrossPools),
-      matchAcrossServices = pulumi.Input.asOptionalInput<String>(matchAcrossServices),
-      matchAcrossVirtuals = pulumi.Input.asOptionalInput<String>(matchAcrossVirtuals),
-      mirror = pulumi.Input.asOptionalInput<String>(mirror),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      overrideConnLimit = pulumi.Input.asOptionalInput<String>(overrideConnLimit),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout);
+    this.appService,
+    this.defaultsFrom,
+    this.hashAlgorithm,
+    this.mapProxies,
+    this.mask,
+    this.matchAcrossPools,
+    this.matchAcrossServices,
+    this.matchAcrossVirtuals,
+    this.mirror,
+    this.name,
+    this.overrideConnLimit,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,18 +75,18 @@ class PersistenceProfileSrcAddrState {
 
   factory PersistenceProfileSrcAddrState.fromMap(Map<String, dynamic> map) {
     return PersistenceProfileSrcAddrState(
-      appService: map['appService'] == null ? null : pulumi.Output.create<String>(map['appService'] as String),
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      hashAlgorithm: map['hashAlgorithm'] == null ? null : pulumi.Output.create<String>(map['hashAlgorithm'] as String),
-      mapProxies: map['mapProxies'] == null ? null : pulumi.Output.create<String>(map['mapProxies'] as String),
-      mask: map['mask'] == null ? null : pulumi.Output.create<String>(map['mask'] as String),
-      matchAcrossPools: map['matchAcrossPools'] == null ? null : pulumi.Output.create<String>(map['matchAcrossPools'] as String),
-      matchAcrossServices: map['matchAcrossServices'] == null ? null : pulumi.Output.create<String>(map['matchAcrossServices'] as String),
-      matchAcrossVirtuals: map['matchAcrossVirtuals'] == null ? null : pulumi.Output.create<String>(map['matchAcrossVirtuals'] as String),
-      mirror: map['mirror'] == null ? null : pulumi.Output.create<String>(map['mirror'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      overrideConnLimit: map['overrideConnLimit'] == null ? null : pulumi.Output.create<String>(map['overrideConnLimit'] as String),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
+      appService: map['appService'] == null ? null : (map['appService'] as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      hashAlgorithm: map['hashAlgorithm'] == null ? null : (map['hashAlgorithm'] as String).input(),
+      mapProxies: map['mapProxies'] == null ? null : (map['mapProxies'] as String).input(),
+      mask: map['mask'] == null ? null : (map['mask'] as String).input(),
+      matchAcrossPools: map['matchAcrossPools'] == null ? null : (map['matchAcrossPools'] as String).input(),
+      matchAcrossServices: map['matchAcrossServices'] == null ? null : (map['matchAcrossServices'] as String).input(),
+      matchAcrossVirtuals: map['matchAcrossVirtuals'] == null ? null : (map['matchAcrossVirtuals'] as String).input(),
+      mirror: map['mirror'] == null ? null : (map['mirror'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      overrideConnLimit: map['overrideConnLimit'] == null ? null : (map['overrideConnLimit'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

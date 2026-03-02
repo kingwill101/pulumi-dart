@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecMountTmpfsOptions {
   /// The permission mode for the tmpfs mount in an integer
-  final int? mode;
+  final pulumi.Input<int>? mode;
   /// The size for the tmpfs mount in bytes
-  final int? sizeBytes;
+  final pulumi.Input<int>? sizeBytes;
 
   /// Creates a new [ServiceTaskSpecContainerSpecMountTmpfsOptions].
   /// [mode] The permission mode for the tmpfs mount in an integer
@@ -24,8 +25,8 @@ class ServiceTaskSpecContainerSpecMountTmpfsOptions {
 
   factory ServiceTaskSpecContainerSpecMountTmpfsOptions.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecMountTmpfsOptions(
-      mode: map['mode'] == null ? null : map['mode'] as int,
-      sizeBytes: map['sizeBytes'] == null ? null : map['sizeBytes'] as int,
+      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as int).input(),
     );
   }
 }

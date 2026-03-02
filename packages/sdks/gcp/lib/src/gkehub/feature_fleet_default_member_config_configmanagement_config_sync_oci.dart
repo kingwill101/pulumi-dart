@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
   /// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
-  final String? gcpServiceAccountEmail;
+  final pulumi.Input<String>? gcpServiceAccountEmail;
   /// The absolute path of the directory that contains the local resources. Default: the root directory of the image
-  final String? policyDir;
+  final pulumi.Input<String>? policyDir;
   /// Type of secret configured for access to the Git repo
-  final String secretType;
+  final pulumi.Input<String> secretType;
   /// The OCI image repository URL for the package to sync from
-  final String? syncRepo;
+  final pulumi.Input<String>? syncRepo;
   /// Period in seconds between consecutive syncs. Default: 15
-  final String? syncWaitSecs;
+  final pulumi.Input<String>? syncWaitSecs;
   /// (Optional, Deprecated)
   /// Version of Config Sync installed
   ///
   /// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci].
   /// [gcpServiceAccountEmail] The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
@@ -47,12 +48,12 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
 
   factory FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci(
-      gcpServiceAccountEmail: map['gcpServiceAccountEmail'] == null ? null : map['gcpServiceAccountEmail'] as String,
-      policyDir: map['policyDir'] == null ? null : map['policyDir'] as String,
-      secretType: map['secretType'] as String,
-      syncRepo: map['syncRepo'] == null ? null : map['syncRepo'] as String,
-      syncWaitSecs: map['syncWaitSecs'] == null ? null : map['syncWaitSecs'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      gcpServiceAccountEmail: map['gcpServiceAccountEmail'] == null ? null : (map['gcpServiceAccountEmail'] as String).input(),
+      policyDir: map['policyDir'] == null ? null : (map['policyDir'] as String).input(),
+      secretType: (map['secretType'] as String).input(),
+      syncRepo: map['syncRepo'] == null ? null : (map['syncRepo'] as String).input(),
+      syncWaitSecs: map['syncWaitSecs'] == null ? null : (map['syncWaitSecs'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

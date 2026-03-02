@@ -8,7 +8,7 @@ class PodCertificateRequestStatus {
   /// beginRefreshAt is the time at which the kubelet should begin trying to refresh the certificate.  This field is set via the /status subresource, and must be set at the same time as certificateChain.  Once populated, this field is immutable.
   ///
   /// This field is only a hint.  Kubelet may start refreshing before or after this time if necessary.
-  final String? beginRefreshAt;
+  final pulumi.Input<String>? beginRefreshAt;
   /// certificateChain is populated with an issued certificate by the signer. This field is set via the /status subresource. Once populated, this field is immutable.
   ///
   /// If the certificate signing request is denied, a condition of type "Denied" is added and this field remains empty. If the signer cannot issue the certificate, a condition of type "Failed" is added and this field remains empty.
@@ -19,17 +19,17 @@ class PodCertificateRequestStatus {
   /// described in section 4 of RFC5280.
   ///
   /// If more than one block is present, and the definition of the requested spec.signerName does not indicate otherwise, the first block is the issued certificate, and subsequent blocks should be treated as intermediate certificates and presented in TLS handshakes.  When projecting the chain into a pod volume, kubelet will drop any data in-between the PEM blocks, as well as any PEM block headers.
-  final String? certificateChain;
+  final pulumi.Input<String>? certificateChain;
   /// conditions applied to the request.
   ///
   /// The types "Issued", "Denied", and "Failed" have special handling.  At most one of these conditions may be present, and they must have status "True".
   ///
   /// If the request is denied with `Reason=UnsupportedKeyType`, the signer may suggest a key type that will work in the message field.
-  final List<Condition>? conditions;
+  final pulumi.Input<List<Condition>>? conditions;
   /// notAfter is the time at which the certificate expires.  The value must be the same as the notAfter value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable.  The signer must set this field at the same time it sets certificateChain.
-  final String? notAfter;
+  final pulumi.Input<String>? notAfter;
   /// notBefore is the time at which the certificate becomes valid.  The value must be the same as the notBefore value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable. The signer must set this field at the same time it sets certificateChain.
-  final String? notBefore;
+  final pulumi.Input<String>? notBefore;
 
   /// Creates a new [PodCertificateRequestStatus].
   /// [beginRefreshAt] beginRefreshAt is the time at which the kubelet should begin trying to refresh the certificate.  This field is set via the /status subresource, and must be set at the same time as certificateChain.  Once populated, this field is immutable.
@@ -49,7 +49,7 @@ class PodCertificateRequestStatus {
     return <String, dynamic>{
       'beginRefreshAt': ?beginRefreshAt,
       'certificateChain': ?certificateChain,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<Condition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'notAfter': ?notAfter,
       'notBefore': ?notBefore,
     };
@@ -57,11 +57,11 @@ class PodCertificateRequestStatus {
 
   factory PodCertificateRequestStatus.fromMap(Map<String, dynamic> map) {
     return PodCertificateRequestStatus(
-      beginRefreshAt: map['beginRefreshAt'] == null ? null : map['beginRefreshAt'] as String,
-      certificateChain: map['certificateChain'] == null ? null : map['certificateChain'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>())),
-      notAfter: map['notAfter'] == null ? null : map['notAfter'] as String,
-      notBefore: map['notBefore'] == null ? null : map['notBefore'] as String,
+      beginRefreshAt: map['beginRefreshAt'] == null ? null : (map['beginRefreshAt'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
     );
   }
 }

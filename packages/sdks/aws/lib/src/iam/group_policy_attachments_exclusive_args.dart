@@ -16,11 +16,9 @@ class GroupPolicyAttachmentsExclusiveArgs {
   /// [groupName] IAM group name.
   /// [policyArns] A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
   GroupPolicyAttachmentsExclusiveArgs({
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<List<String>> policyArns,
-  }) :
-      groupName = pulumi.Input.asInput<String>(groupName),
-      policyArns = pulumi.Input.asInput<List<String>>(policyArns);
+    required this.groupName,
+    required this.policyArns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GroupPolicyAttachmentsExclusiveArgs {
 
   factory GroupPolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentsExclusiveArgs(
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      policyArns: pulumi.Output.create<List<String>>((map['policyArns'] as List).cast<String>()),
+      groupName: (map['groupName'] as String).input(),
+      policyArns: ((map['policyArns'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
   /// This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
-  final String? autoUpgradeStartTime;
+  final pulumi.Input<String>? autoUpgradeStartTime;
   /// Description of the cluster.
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption].
   /// [autoUpgradeStartTime] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
@@ -24,8 +25,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
 
   factory ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption.fromMap(Map<String, dynamic> map) {
     return ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption(
-      autoUpgradeStartTime: map['autoUpgradeStartTime'] == null ? null : map['autoUpgradeStartTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      autoUpgradeStartTime: map['autoUpgradeStartTime'] == null ? null : (map['autoUpgradeStartTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

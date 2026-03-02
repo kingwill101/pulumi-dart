@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_interface_source_bridge.dart';
 import 'domain_devices_interface_source_client.dart';
 import 'domain_devices_interface_source_direct.dart';
@@ -17,35 +18,35 @@ import 'domain_devices_interface_source_vhost_user.dart';
 
 class DomainDevicesInterfaceSource {
   /// Sets the bridge configuration for the network interface, allowing the interface to connect via a bridge.
-  final DomainDevicesInterfaceSourceBridge? bridge;
+  final pulumi.Input<DomainDevicesInterfaceSourceBridge>? bridge;
   /// Configures the client source for the network interface, typically used for user-mode networking.
-  final DomainDevicesInterfaceSourceClient? client;
+  final pulumi.Input<DomainDevicesInterfaceSourceClient>? client;
   /// Configures settings for direct attachment to a physical interface for the network interface.
-  final DomainDevicesInterfaceSourceDirect? direct;
+  final pulumi.Input<DomainDevicesInterfaceSourceDirect>? direct;
   /// Configures Ethernet settings for the network interface, allowing for low-level network configurations.
-  final DomainDevicesInterfaceSourceEthernet? ethernet;
+  final pulumi.Input<DomainDevicesInterfaceSourceEthernet>? ethernet;
   /// Configures the settings for a host device used in the network interface configuration.
-  final DomainDevicesInterfaceSourceHostdev? hostdev;
+  final pulumi.Input<DomainDevicesInterfaceSourceHostdev>? hostdev;
   /// Configures the internal settings for the network interface, typically for non-connected setups.
-  final DomainDevicesInterfaceSourceInternal? internal;
+  final pulumi.Input<DomainDevicesInterfaceSourceInternal>? internal;
   /// Configures the multicast settings for the network interface, enabling multicast communication.
-  final DomainDevicesInterfaceSourceMcast? mcast;
+  final pulumi.Input<DomainDevicesInterfaceSourceMcast>? mcast;
   /// Specifies network settings for the interface, configuring its connection to a given network.
-  final DomainDevicesInterfaceSourceNetwork? network;
+  final pulumi.Input<DomainDevicesInterfaceSourceNetwork>? network;
   /// Specifies that the network interface does not connect to any active source, effectively disabling it.
-  final bool? null_;
+  final pulumi.Input<bool>? null_;
   /// Configures source settings to connect the network interface to a specific server.
-  final DomainDevicesInterfaceSourceServer? server;
+  final pulumi.Input<DomainDevicesInterfaceSourceServer>? server;
   /// Configures UDP settings for the network interface, allowing for UDP-based communications.
-  final DomainDevicesInterfaceSourceUdp? udp;
+  final pulumi.Input<DomainDevicesInterfaceSourceUdp>? udp;
   /// Configures user-based settings for the network interface, allowing for user management of the connection.
-  final DomainDevicesInterfaceSourceUser? user;
+  final pulumi.Input<DomainDevicesInterfaceSourceUser>? user;
   /// Configures settings for using a vDPA network device with the interface, enabling specialized network performance.
-  final DomainDevicesInterfaceSourceVdpa? vdpa;
+  final pulumi.Input<DomainDevicesInterfaceSourceVdpa>? vdpa;
   /// Configures settings for using a vDS network source with the interface, supporting advanced network features.
-  final DomainDevicesInterfaceSourceVds? vds;
+  final pulumi.Input<DomainDevicesInterfaceSourceVds>? vds;
   /// Sets configurations for using vhost-user to connect the network interface to a user space application.
-  final DomainDevicesInterfaceSourceVhostUser? vhostUser;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUser>? vhostUser;
 
   /// Creates a new [DomainDevicesInterfaceSource].
   /// [bridge] Sets the bridge configuration for the network interface, allowing the interface to connect via a bridge.
@@ -83,41 +84,41 @@ class DomainDevicesInterfaceSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bridge': ?bridge == null ? null : bridge!.toMap(),
-      'client': ?client == null ? null : client!.toMap(),
-      'direct': ?direct == null ? null : direct!.toMap(),
-      'ethernet': ?ethernet == null ? null : ethernet!.toMap(),
-      'hostdev': ?hostdev == null ? null : hostdev!.toMap(),
-      'internal': ?internal == null ? null : internal!.toMap(),
-      'mcast': ?mcast == null ? null : mcast!.toMap(),
-      'network': ?network == null ? null : network!.toMap(),
+      'bridge': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceBridge, Map<String, dynamic>>(bridge, (value) => value.toMap()),
+      'client': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceClient, Map<String, dynamic>>(client, (value) => value.toMap()),
+      'direct': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceDirect, Map<String, dynamic>>(direct, (value) => value.toMap()),
+      'ethernet': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceEthernet, Map<String, dynamic>>(ethernet, (value) => value.toMap()),
+      'hostdev': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceHostdev, Map<String, dynamic>>(hostdev, (value) => value.toMap()),
+      'internal': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceInternal, Map<String, dynamic>>(internal, (value) => value.toMap()),
+      'mcast': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceMcast, Map<String, dynamic>>(mcast, (value) => value.toMap()),
+      'network': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceNetwork, Map<String, dynamic>>(network, (value) => value.toMap()),
       'null': ?null_,
-      'server': ?server == null ? null : server!.toMap(),
-      'udp': ?udp == null ? null : udp!.toMap(),
-      'user': ?user == null ? null : user!.toMap(),
-      'vdpa': ?vdpa == null ? null : vdpa!.toMap(),
-      'vds': ?vds == null ? null : vds!.toMap(),
-      'vhostUser': ?vhostUser == null ? null : vhostUser!.toMap(),
+      'server': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceServer, Map<String, dynamic>>(server, (value) => value.toMap()),
+      'udp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceUdp, Map<String, dynamic>>(udp, (value) => value.toMap()),
+      'user': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceUser, Map<String, dynamic>>(user, (value) => value.toMap()),
+      'vdpa': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceVdpa, Map<String, dynamic>>(vdpa, (value) => value.toMap()),
+      'vds': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceVds, Map<String, dynamic>>(vds, (value) => value.toMap()),
+      'vhostUser': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceVhostUser, Map<String, dynamic>>(vhostUser, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesInterfaceSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSource(
-      bridge: map['bridge'] == null ? null : DomainDevicesInterfaceSourceBridge.fromMap((map['bridge'] as Map).cast<String, dynamic>()),
-      client: map['client'] == null ? null : DomainDevicesInterfaceSourceClient.fromMap((map['client'] as Map).cast<String, dynamic>()),
-      direct: map['direct'] == null ? null : DomainDevicesInterfaceSourceDirect.fromMap((map['direct'] as Map).cast<String, dynamic>()),
-      ethernet: map['ethernet'] == null ? null : DomainDevicesInterfaceSourceEthernet.fromMap((map['ethernet'] as Map).cast<String, dynamic>()),
-      hostdev: map['hostdev'] == null ? null : DomainDevicesInterfaceSourceHostdev.fromMap((map['hostdev'] as Map).cast<String, dynamic>()),
-      internal: map['internal'] == null ? null : DomainDevicesInterfaceSourceInternal.fromMap((map['internal'] as Map).cast<String, dynamic>()),
-      mcast: map['mcast'] == null ? null : DomainDevicesInterfaceSourceMcast.fromMap((map['mcast'] as Map).cast<String, dynamic>()),
-      network: map['network'] == null ? null : DomainDevicesInterfaceSourceNetwork.fromMap((map['network'] as Map).cast<String, dynamic>()),
-      null_: map['null'] == null ? null : map['null'] as bool,
-      server: map['server'] == null ? null : DomainDevicesInterfaceSourceServer.fromMap((map['server'] as Map).cast<String, dynamic>()),
-      udp: map['udp'] == null ? null : DomainDevicesInterfaceSourceUdp.fromMap((map['udp'] as Map).cast<String, dynamic>()),
-      user: map['user'] == null ? null : DomainDevicesInterfaceSourceUser.fromMap((map['user'] as Map).cast<String, dynamic>()),
-      vdpa: map['vdpa'] == null ? null : DomainDevicesInterfaceSourceVdpa.fromMap((map['vdpa'] as Map).cast<String, dynamic>()),
-      vds: map['vds'] == null ? null : DomainDevicesInterfaceSourceVds.fromMap((map['vds'] as Map).cast<String, dynamic>()),
-      vhostUser: map['vhostUser'] == null ? null : DomainDevicesInterfaceSourceVhostUser.fromMap((map['vhostUser'] as Map).cast<String, dynamic>()),
+      bridge: map['bridge'] == null ? null : (DomainDevicesInterfaceSourceBridge.fromMap((map['bridge'] as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (DomainDevicesInterfaceSourceClient.fromMap((map['client'] as Map).cast<String, dynamic>())).input(),
+      direct: map['direct'] == null ? null : (DomainDevicesInterfaceSourceDirect.fromMap((map['direct'] as Map).cast<String, dynamic>())).input(),
+      ethernet: map['ethernet'] == null ? null : (DomainDevicesInterfaceSourceEthernet.fromMap((map['ethernet'] as Map).cast<String, dynamic>())).input(),
+      hostdev: map['hostdev'] == null ? null : (DomainDevicesInterfaceSourceHostdev.fromMap((map['hostdev'] as Map).cast<String, dynamic>())).input(),
+      internal: map['internal'] == null ? null : (DomainDevicesInterfaceSourceInternal.fromMap((map['internal'] as Map).cast<String, dynamic>())).input(),
+      mcast: map['mcast'] == null ? null : (DomainDevicesInterfaceSourceMcast.fromMap((map['mcast'] as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (DomainDevicesInterfaceSourceNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      null_: map['null'] == null ? null : (map['null'] as bool).input(),
+      server: map['server'] == null ? null : (DomainDevicesInterfaceSourceServer.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (DomainDevicesInterfaceSourceUdp.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (DomainDevicesInterfaceSourceUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      vdpa: map['vdpa'] == null ? null : (DomainDevicesInterfaceSourceVdpa.fromMap((map['vdpa'] as Map).cast<String, dynamic>())).input(),
+      vds: map['vds'] == null ? null : (DomainDevicesInterfaceSourceVds.fromMap((map['vds'] as Map).cast<String, dynamic>())).input(),
+      vhostUser: map['vhostUser'] == null ? null : (DomainDevicesInterfaceSourceVhostUser.fromMap((map['vhostUser'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

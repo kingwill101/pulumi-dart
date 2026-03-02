@@ -17,15 +17,11 @@ class SourceIamPolicyState {
   /// [policyData] Optional.
   /// [source] Optional.
   SourceIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? organization,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? source,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      organization = pulumi.Input.asOptionalInput<String>(organization),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.etag,
+    this.organization,
+    this.policyData,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,10 +34,10 @@ class SourceIamPolicyState {
 
   factory SourceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return SourceIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

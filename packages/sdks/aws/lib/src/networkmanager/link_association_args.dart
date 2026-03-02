@@ -19,13 +19,10 @@ class LinkAssociationArgs {
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link.
   LinkAssociationArgs({
-    required pulumi.Output<String> deviceId,
-    required pulumi.Output<String> globalNetworkId,
-    required pulumi.Output<String> linkId,
-  }) :
-      deviceId = pulumi.Input.asInput<String>(deviceId),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      linkId = pulumi.Input.asInput<String>(linkId);
+    required this.deviceId,
+    required this.globalNetworkId,
+    required this.linkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LinkAssociationArgs {
 
   factory LinkAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LinkAssociationArgs(
-      deviceId: pulumi.Output.create<String>(map['deviceId'] as String),
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      linkId: pulumi.Output.create<String>(map['linkId'] as String),
+      deviceId: (map['deviceId'] as String).input(),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      linkId: (map['linkId'] as String).input(),
     );
   }
 }

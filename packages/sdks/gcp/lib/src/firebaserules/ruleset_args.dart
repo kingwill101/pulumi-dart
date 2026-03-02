@@ -17,11 +17,9 @@ class RulesetArgs {
   /// [project] The project for the resource
   /// [source] `Source` for the `Ruleset`.
   RulesetArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<RulesetSource> source,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      source = pulumi.Input.asInput<RulesetSource>(source);
+    this.project,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class RulesetArgs {
 
   factory RulesetArgs.fromMap(Map<String, dynamic> map) {
     return RulesetArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      source: pulumi.Output.create<RulesetSource>(RulesetSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      source: (RulesetSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

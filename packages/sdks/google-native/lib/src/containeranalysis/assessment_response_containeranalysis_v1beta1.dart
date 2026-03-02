@@ -8,23 +8,23 @@ import 'remediation_response_containeranalysis_v1beta1.dart';
 /// Assessment provides all information that is related to a single vulnerability for this product.
 class AssessmentResponseContaineranalysisV1beta1 {
   /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
-  final String cve;
+  final pulumi.Input<String> cve;
   /// Contains information about the impact of this vulnerability, this will change with time.
-  final List<String> impacts;
+  final pulumi.Input<List<String>> impacts;
   /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
-  final JustificationResponseContaineranalysisV1beta1 justification;
+  final pulumi.Input<JustificationResponseContaineranalysisV1beta1> justification;
   /// A detailed description of this Vex.
-  final String longDescription;
+  final pulumi.Input<String> longDescription;
   /// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
-  final List<RelatedUrlResponseContaineranalysisV1beta1> relatedUris;
+  final pulumi.Input<List<RelatedUrlResponseContaineranalysisV1beta1>> relatedUris;
   /// Specifies details on how to handle (and presumably, fix) a vulnerability.
-  final List<RemediationResponseContaineranalysisV1beta1> remediations;
+  final pulumi.Input<List<RemediationResponseContaineranalysisV1beta1>> remediations;
   /// A one sentence description of this Vex.
-  final String shortDescription;
+  final pulumi.Input<String> shortDescription;
   /// Provides the state of this Vulnerability assessment.
-  final String state;
+  final pulumi.Input<String> state;
   /// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
-  final String vulnerabilityId;
+  final pulumi.Input<String> vulnerabilityId;
 
   /// Creates a new [AssessmentResponseContaineranalysisV1beta1].
   /// [cve] Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
@@ -52,10 +52,10 @@ class AssessmentResponseContaineranalysisV1beta1 {
     return <String, dynamic>{
       'cve': cve,
       'impacts': impacts,
-      'justification': justification.toMap(),
+      'justification': pulumi.Input.mapInputValue<JustificationResponseContaineranalysisV1beta1, Map<String, dynamic>>(justification, (value) => value.toMap()),
       'longDescription': longDescription,
-      'relatedUris': pulumi.Input.encodeList<RelatedUrlResponseContaineranalysisV1beta1, Map<String, dynamic>>(relatedUris, (value) => value.toMap()),
-      'remediations': pulumi.Input.encodeList<RemediationResponseContaineranalysisV1beta1, Map<String, dynamic>>(remediations, (value) => value.toMap()),
+      'relatedUris': pulumi.Input.mapInputValue<List<RelatedUrlResponseContaineranalysisV1beta1>, List<Map<String, dynamic>>>(relatedUris, (value) => pulumi.Input.encodeList<RelatedUrlResponseContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'remediations': pulumi.Input.mapInputValue<List<RemediationResponseContaineranalysisV1beta1>, List<Map<String, dynamic>>>(remediations, (value) => pulumi.Input.encodeList<RemediationResponseContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'shortDescription': shortDescription,
       'state': state,
       'vulnerabilityId': vulnerabilityId,
@@ -64,15 +64,15 @@ class AssessmentResponseContaineranalysisV1beta1 {
 
   factory AssessmentResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AssessmentResponseContaineranalysisV1beta1(
-      cve: map['cve'] as String,
-      impacts: (map['impacts'] as List).cast<String>(),
-      justification: JustificationResponseContaineranalysisV1beta1.fromMap((map['justification'] as Map).cast<String, dynamic>()),
-      longDescription: map['longDescription'] as String,
-      relatedUris: pulumi.Input.decodeList<RelatedUrlResponseContaineranalysisV1beta1>(map['relatedUris'], (value) => RelatedUrlResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      remediations: pulumi.Input.decodeList<RemediationResponseContaineranalysisV1beta1>(map['remediations'], (value) => RemediationResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      shortDescription: map['shortDescription'] as String,
-      state: map['state'] as String,
-      vulnerabilityId: map['vulnerabilityId'] as String,
+      cve: (map['cve'] as String).input(),
+      impacts: ((map['impacts'] as List).cast<String>()).input(),
+      justification: (JustificationResponseContaineranalysisV1beta1.fromMap((map['justification'] as Map).cast<String, dynamic>())).input(),
+      longDescription: (map['longDescription'] as String).input(),
+      relatedUris: (pulumi.Input.decodeList<RelatedUrlResponseContaineranalysisV1beta1>(map['relatedUris'], (value) => RelatedUrlResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remediations: (pulumi.Input.decodeList<RemediationResponseContaineranalysisV1beta1>(map['remediations'], (value) => RemediationResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortDescription: (map['shortDescription'] as String).input(),
+      state: (map['state'] as String).input(),
+      vulnerabilityId: (map['vulnerabilityId'] as String).input(),
     );
   }
 }

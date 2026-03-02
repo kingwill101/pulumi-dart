@@ -43,31 +43,19 @@ class ReferenceInputMssqlState {
   /// [table] The name of the table in the Azure SQL database.
   /// [username] The username to connect to the MS SQL database.
   ReferenceInputMssqlState({
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? deltaSnapshotQuery,
-    pulumi.Output<String>? fullSnapshotQuery,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? refreshIntervalDuration,
-    pulumi.Output<String>? refreshType,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? server,
-    pulumi.Output<String>? streamAnalyticsJobName,
-    pulumi.Output<String>? table,
-    pulumi.Output<String>? username,
-  }) :
-      database = pulumi.Input.asOptionalInput<String>(database),
-      deltaSnapshotQuery = pulumi.Input.asOptionalInput<String>(deltaSnapshotQuery),
-      fullSnapshotQuery = pulumi.Input.asOptionalInput<String>(fullSnapshotQuery),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      refreshIntervalDuration = pulumi.Input.asOptionalInput<String>(refreshIntervalDuration),
-      refreshType = pulumi.Input.asOptionalInput<String>(refreshType),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      server = pulumi.Input.asOptionalInput<String>(server),
-      streamAnalyticsJobName = pulumi.Input.asOptionalInput<String>(streamAnalyticsJobName),
-      table = pulumi.Input.asOptionalInput<String>(table),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.database,
+    this.deltaSnapshotQuery,
+    this.fullSnapshotQuery,
+    this.name,
+    this.password,
+    this.refreshIntervalDuration,
+    this.refreshType,
+    this.resourceGroupName,
+    this.server,
+    this.streamAnalyticsJobName,
+    this.table,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class ReferenceInputMssqlState {
 
   factory ReferenceInputMssqlState.fromMap(Map<String, dynamic> map) {
     return ReferenceInputMssqlState(
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : pulumi.Output.create<String>(map['deltaSnapshotQuery'] as String),
-      fullSnapshotQuery: map['fullSnapshotQuery'] == null ? null : pulumi.Output.create<String>(map['fullSnapshotQuery'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      refreshIntervalDuration: map['refreshIntervalDuration'] == null ? null : pulumi.Output.create<String>(map['refreshIntervalDuration'] as String),
-      refreshType: map['refreshType'] == null ? null : pulumi.Output.create<String>(map['refreshType'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      server: map['server'] == null ? null : pulumi.Output.create<String>(map['server'] as String),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery'] as String).input(),
+      fullSnapshotQuery: map['fullSnapshotQuery'] == null ? null : (map['fullSnapshotQuery'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      refreshIntervalDuration: map['refreshIntervalDuration'] == null ? null : (map['refreshIntervalDuration'] as String).input(),
+      refreshType: map['refreshType'] == null ? null : (map['refreshType'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

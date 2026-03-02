@@ -23,17 +23,12 @@ class MultiRegionAccessPointPolicyState {
   /// [proposed] The proposed policy for the Multi-Region Access Point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   MultiRegionAccessPointPolicyState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<MultiRegionAccessPointPolicyDetails>? details,
-    pulumi.Output<String>? established,
-    pulumi.Output<String>? proposed,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      details = pulumi.Input.asOptionalInput<MultiRegionAccessPointPolicyDetails>(details),
-      established = pulumi.Input.asOptionalInput<String>(established),
-      proposed = pulumi.Input.asOptionalInput<String>(proposed),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    this.details,
+    this.established,
+    this.proposed,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class MultiRegionAccessPointPolicyState {
 
   factory MultiRegionAccessPointPolicyState.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointPolicyState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      details: map['details'] == null ? null : pulumi.Output.create<MultiRegionAccessPointPolicyDetails>(MultiRegionAccessPointPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())),
-      established: map['established'] == null ? null : pulumi.Output.create<String>(map['established'] as String),
-      proposed: map['proposed'] == null ? null : pulumi.Output.create<String>(map['proposed'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      details: map['details'] == null ? null : (MultiRegionAccessPointPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      established: map['established'] == null ? null : (map['established'] as String).input(),
+      proposed: map['proposed'] == null ? null : (map['proposed'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

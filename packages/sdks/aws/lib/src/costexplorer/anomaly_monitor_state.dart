@@ -28,21 +28,14 @@ class AnomalyMonitorState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   AnomalyMonitorState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? monitorDimension,
-    pulumi.Output<String>? monitorSpecification,
-    pulumi.Output<String>? monitorType,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      monitorDimension = pulumi.Input.asOptionalInput<String>(monitorDimension),
-      monitorSpecification = pulumi.Input.asOptionalInput<String>(monitorSpecification),
-      monitorType = pulumi.Input.asOptionalInput<String>(monitorType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.monitorDimension,
+    this.monitorSpecification,
+    this.monitorType,
+    this.name,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class AnomalyMonitorState {
 
   factory AnomalyMonitorState.fromMap(Map<String, dynamic> map) {
     return AnomalyMonitorState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      monitorDimension: map['monitorDimension'] == null ? null : pulumi.Output.create<String>(map['monitorDimension'] as String),
-      monitorSpecification: map['monitorSpecification'] == null ? null : pulumi.Output.create<String>(map['monitorSpecification'] as String),
-      monitorType: map['monitorType'] == null ? null : pulumi.Output.create<String>(map['monitorType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      monitorDimension: map['monitorDimension'] == null ? null : (map['monitorDimension'] as String).input(),
+      monitorSpecification: map['monitorSpecification'] == null ? null : (map['monitorSpecification'] as String).input(),
+      monitorType: map['monitorType'] == null ? null : (map['monitorType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

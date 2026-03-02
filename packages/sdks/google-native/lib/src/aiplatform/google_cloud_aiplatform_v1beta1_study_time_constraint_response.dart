@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Time-based Constraint for Study
 class GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse {
   /// Compares the wallclock time to this time. Must use UTC timezone.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Counts the wallclock time passed since the creation of this Study.
-  final String maxDuration;
+  final pulumi.Input<String> maxDuration;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse].
   /// [endTime] Compares the wallclock time to this time. Must use UTC timezone.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse {
 
   factory GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse(
-      endTime: map['endTime'] as String,
-      maxDuration: map['maxDuration'] as String,
+      endTime: (map['endTime'] as String).input(),
+      maxDuration: (map['maxDuration'] as String).input(),
     );
   }
 }

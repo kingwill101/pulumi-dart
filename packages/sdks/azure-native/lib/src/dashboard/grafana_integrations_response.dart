@@ -5,7 +5,7 @@ import 'azure_monitor_workspace_integration_response.dart';
 
 /// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 class GrafanaIntegrationsResponse {
-  final List<AzureMonitorWorkspaceIntegrationResponse>? azureMonitorWorkspaceIntegrations;
+  final pulumi.Input<List<AzureMonitorWorkspaceIntegrationResponse>>? azureMonitorWorkspaceIntegrations;
 
   /// Creates a new [GrafanaIntegrationsResponse].
   /// [azureMonitorWorkspaceIntegrations] Optional.
@@ -15,13 +15,13 @@ class GrafanaIntegrationsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureMonitorWorkspaceIntegrations': ?azureMonitorWorkspaceIntegrations == null ? null : pulumi.Input.encodeList<AzureMonitorWorkspaceIntegrationResponse, Map<String, dynamic>>(azureMonitorWorkspaceIntegrations!, (value) => value.toMap()),
+      'azureMonitorWorkspaceIntegrations': ?pulumi.Input.mapOptionalInputValue<List<AzureMonitorWorkspaceIntegrationResponse>, List<Map<String, dynamic>>>(azureMonitorWorkspaceIntegrations, (value) => pulumi.Input.encodeList<AzureMonitorWorkspaceIntegrationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GrafanaIntegrationsResponse.fromMap(Map<String, dynamic> map) {
     return GrafanaIntegrationsResponse(
-      azureMonitorWorkspaceIntegrations: map['azureMonitorWorkspaceIntegrations'] == null ? null : pulumi.Input.decodeList<AzureMonitorWorkspaceIntegrationResponse>(map['azureMonitorWorkspaceIntegrations'], (value) => AzureMonitorWorkspaceIntegrationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      azureMonitorWorkspaceIntegrations: map['azureMonitorWorkspaceIntegrations'] == null ? null : (pulumi.Input.decodeList<AzureMonitorWorkspaceIntegrationResponse>(map['azureMonitorWorkspaceIntegrations'], (value) => AzureMonitorWorkspaceIntegrationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

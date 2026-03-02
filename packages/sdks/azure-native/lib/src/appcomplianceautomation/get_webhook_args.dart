@@ -16,11 +16,9 @@ class GetWebhookArgs {
   /// [reportName] Report Name.
   /// [webhookName] Webhook Name.
   GetWebhookArgs({
-    required pulumi.Output<String> reportName,
-    required pulumi.Output<String> webhookName,
-  }) :
-      reportName = pulumi.Input.asInput<String>(reportName),
-      webhookName = pulumi.Input.asInput<String>(webhookName);
+    required this.reportName,
+    required this.webhookName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWebhookArgs {
 
   factory GetWebhookArgs.fromMap(Map<String, dynamic> map) {
     return GetWebhookArgs(
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
-      webhookName: pulumi.Output.create<String>(map['webhookName'] as String),
+      reportName: (map['reportName'] as String).input(),
+      webhookName: (map['webhookName'] as String).input(),
     );
   }
 }

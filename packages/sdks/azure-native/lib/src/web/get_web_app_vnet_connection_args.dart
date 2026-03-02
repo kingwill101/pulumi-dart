@@ -19,13 +19,10 @@ class GetWebAppVnetConnectionArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [vnetName] Name of the virtual network.
   GetWebAppVnetConnectionArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vnetName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vnetName = pulumi.Input.asInput<String>(vnetName);
+    required this.name,
+    required this.resourceGroupName,
+    required this.vnetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebAppVnetConnectionArgs {
 
   factory GetWebAppVnetConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppVnetConnectionArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vnetName: pulumi.Output.create<String>(map['vnetName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vnetName: (map['vnetName'] as String).input(),
     );
   }
 }

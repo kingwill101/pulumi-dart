@@ -22,17 +22,12 @@ class OneDashboardJsonState {
   /// [permalink] The URL for viewing the dashboard.
   /// [updatedAt] The date and time when the dashboard was last updated.
   OneDashboardJsonState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? guid,
-    pulumi.Output<String>? json,
-    pulumi.Output<String>? permalink,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      guid = pulumi.Input.asOptionalInput<String>(guid),
-      json = pulumi.Input.asOptionalInput<String>(json),
-      permalink = pulumi.Input.asOptionalInput<String>(permalink),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.accountId,
+    this.guid,
+    this.json,
+    this.permalink,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class OneDashboardJsonState {
 
   factory OneDashboardJsonState.fromMap(Map<String, dynamic> map) {
     return OneDashboardJsonState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      guid: map['guid'] == null ? null : pulumi.Output.create<String>(map['guid'] as String),
-      json: map['json'] == null ? null : pulumi.Output.create<String>(map['json'] as String),
-      permalink: map['permalink'] == null ? null : pulumi.Output.create<String>(map['permalink'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      json: map['json'] == null ? null : (map['json'] as String).input(),
+      permalink: map['permalink'] == null ? null : (map['permalink'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

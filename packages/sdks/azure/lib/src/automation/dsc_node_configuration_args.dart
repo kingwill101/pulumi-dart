@@ -22,15 +22,11 @@ class DscNodeConfigurationArgs {
   /// [name] Specifies the name of the DSC Node Configuration. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
   DscNodeConfigurationArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> contentEmbedded,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      contentEmbedded = pulumi.Input.asInput<String>(contentEmbedded),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.contentEmbedded,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DscNodeConfigurationArgs {
 
   factory DscNodeConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DscNodeConfigurationArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      contentEmbedded: pulumi.Output.create<String>(map['contentEmbedded'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      contentEmbedded: (map['contentEmbedded'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

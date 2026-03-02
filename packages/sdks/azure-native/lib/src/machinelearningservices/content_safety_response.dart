@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContentSafetyResponse {
   /// [Required] Specifies the status of content safety.
-  final String contentSafetyStatus;
+  final pulumi.Input<String> contentSafetyStatus;
 
   /// Creates a new [ContentSafetyResponse].
   /// [contentSafetyStatus] [Required] Specifies the status of content safety.
@@ -19,7 +20,7 @@ class ContentSafetyResponse {
 
   factory ContentSafetyResponse.fromMap(Map<String, dynamic> map) {
     return ContentSafetyResponse(
-      contentSafetyStatus: map['contentSafetyStatus'] as String,
+      contentSafetyStatus: (map['contentSafetyStatus'] as String).input(),
     );
   }
 }

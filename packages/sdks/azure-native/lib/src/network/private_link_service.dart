@@ -10,27 +10,27 @@ import 'private_link_service_properties_visibility.dart';
 /// Private link service resource.
 class PrivateLinkService {
   /// The auto-approval list of the private link service.
-  final PrivateLinkServicePropertiesAutoApproval? autoApproval;
+  final pulumi.Input<PrivateLinkServicePropertiesAutoApproval>? autoApproval;
   /// The destination IP address of the private link service.
-  final String? destinationIPAddress;
+  final pulumi.Input<String>? destinationIPAddress;
   /// Whether the private link service is enabled for proxy protocol or not.
-  final bool? enableProxyProtocol;
+  final pulumi.Input<bool>? enableProxyProtocol;
   /// The extended location of the load balancer.
-  final ExtendedLocation? extendedLocation;
+  final pulumi.Input<ExtendedLocation>? extendedLocation;
   /// The list of Fqdn.
-  final List<String>? fqdns;
+  final pulumi.Input<List<String>>? fqdns;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// An array of private link service IP configurations.
-  final List<PrivateLinkServiceIpConfiguration>? ipConfigurations;
+  final pulumi.Input<List<PrivateLinkServiceIpConfiguration>>? ipConfigurations;
   /// An array of references to the load balancer IP configurations.
-  final List<FrontendIPConfiguration>? loadBalancerFrontendIpConfigurations;
+  final pulumi.Input<List<FrontendIPConfiguration>>? loadBalancerFrontendIpConfigurations;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The visibility list of the private link service.
-  final PrivateLinkServicePropertiesVisibility? visibility;
+  final pulumi.Input<PrivateLinkServicePropertiesVisibility>? visibility;
 
   /// Creates a new [PrivateLinkService].
   /// [autoApproval] The auto-approval list of the private link service.
@@ -60,33 +60,33 @@ class PrivateLinkService {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoApproval': ?autoApproval == null ? null : autoApproval!.toMap(),
+      'autoApproval': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServicePropertiesAutoApproval, Map<String, dynamic>>(autoApproval, (value) => value.toMap()),
       'destinationIPAddress': ?destinationIPAddress,
       'enableProxyProtocol': ?enableProxyProtocol,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'fqdns': ?fqdns,
       'id': ?id,
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<PrivateLinkServiceIpConfiguration, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
-      'loadBalancerFrontendIpConfigurations': ?loadBalancerFrontendIpConfigurations == null ? null : pulumi.Input.encodeList<FrontendIPConfiguration, Map<String, dynamic>>(loadBalancerFrontendIpConfigurations!, (value) => value.toMap()),
+      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<PrivateLinkServiceIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<PrivateLinkServiceIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancerFrontendIpConfigurations': ?pulumi.Input.mapOptionalInputValue<List<FrontendIPConfiguration>, List<Map<String, dynamic>>>(loadBalancerFrontendIpConfigurations, (value) => pulumi.Input.encodeList<FrontendIPConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'tags': ?tags,
-      'visibility': ?visibility == null ? null : visibility!.toMap(),
+      'visibility': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServicePropertiesVisibility, Map<String, dynamic>>(visibility, (value) => value.toMap()),
     };
   }
 
   factory PrivateLinkService.fromMap(Map<String, dynamic> map) {
     return PrivateLinkService(
-      autoApproval: map['autoApproval'] == null ? null : PrivateLinkServicePropertiesAutoApproval.fromMap((map['autoApproval'] as Map).cast<String, dynamic>()),
-      destinationIPAddress: map['destinationIPAddress'] == null ? null : map['destinationIPAddress'] as String,
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : map['enableProxyProtocol'] as bool,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      fqdns: map['fqdns'] == null ? null : (map['fqdns'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceIpConfiguration>(map['ipConfigurations'], (value) => PrivateLinkServiceIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancerFrontendIpConfigurations: map['loadBalancerFrontendIpConfigurations'] == null ? null : pulumi.Input.decodeList<FrontendIPConfiguration>(map['loadBalancerFrontendIpConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      visibility: map['visibility'] == null ? null : PrivateLinkServicePropertiesVisibility.fromMap((map['visibility'] as Map).cast<String, dynamic>()),
+      autoApproval: map['autoApproval'] == null ? null : (PrivateLinkServicePropertiesAutoApproval.fromMap((map['autoApproval'] as Map).cast<String, dynamic>())).input(),
+      destinationIPAddress: map['destinationIPAddress'] == null ? null : (map['destinationIPAddress'] as String).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceIpConfiguration>(map['ipConfigurations'], (value) => PrivateLinkServiceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerFrontendIpConfigurations: map['loadBalancerFrontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfiguration>(map['loadBalancerFrontendIpConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      visibility: map['visibility'] == null ? null : (PrivateLinkServicePropertiesVisibility.fromMap((map['visibility'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

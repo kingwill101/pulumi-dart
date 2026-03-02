@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopNFeaturesByAttributionResponse {
   /// Expected value is 'TopNByAttribution'.
-  final String filterType;
+  final pulumi.Input<String> filterType;
   /// The number of top features to include.
-  final int? top;
+  final pulumi.Input<int>? top;
 
   /// Creates a new [TopNFeaturesByAttributionResponse].
   /// [filterType] Expected value is 'TopNByAttribution'.
@@ -24,8 +25,8 @@ class TopNFeaturesByAttributionResponse {
 
   factory TopNFeaturesByAttributionResponse.fromMap(Map<String, dynamic> map) {
     return TopNFeaturesByAttributionResponse(
-      filterType: map['filterType'] as String,
-      top: map['top'] == null ? null : map['top'] as int,
+      filterType: (map['filterType'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

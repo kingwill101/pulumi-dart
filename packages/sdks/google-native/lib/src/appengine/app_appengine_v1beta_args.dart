@@ -47,29 +47,18 @@ class AppAppengineV1betaArgs {
   /// [serviceAccount] The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
   /// [servingStatus] Serving status of this application.
   AppAppengineV1betaArgs({
-    pulumi.Output<String>? authDomain,
-    pulumi.Output<AppDatabaseTypeAppengineV1beta>? databaseType,
-    pulumi.Output<String>? defaultCookieExpiration,
-    pulumi.Output<List<UrlDispatchRuleAppengineV1beta>>? dispatchRules,
-    pulumi.Output<FeatureSettingsAppengineV1beta>? featureSettings,
-    pulumi.Output<Map<String, String>>? generatedCustomerMetadata,
-    pulumi.Output<IdentityAwareProxyAppengineV1beta>? iap,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<AppServingStatusAppengineV1beta>? servingStatus,
-  }) :
-      authDomain = pulumi.Input.asOptionalInput<String>(authDomain),
-      databaseType = pulumi.Input.asOptionalInput<AppDatabaseTypeAppengineV1beta>(databaseType),
-      defaultCookieExpiration = pulumi.Input.asOptionalInput<String>(defaultCookieExpiration),
-      dispatchRules = pulumi.Input.asOptionalInput<List<UrlDispatchRuleAppengineV1beta>>(dispatchRules),
-      featureSettings = pulumi.Input.asOptionalInput<FeatureSettingsAppengineV1beta>(featureSettings),
-      generatedCustomerMetadata = pulumi.Input.asOptionalInput<Map<String, String>>(generatedCustomerMetadata),
-      iap = pulumi.Input.asOptionalInput<IdentityAwareProxyAppengineV1beta>(iap),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      servingStatus = pulumi.Input.asOptionalInput<AppServingStatusAppengineV1beta>(servingStatus);
+    this.authDomain,
+    this.databaseType,
+    this.defaultCookieExpiration,
+    this.dispatchRules,
+    this.featureSettings,
+    this.generatedCustomerMetadata,
+    this.iap,
+    this.id,
+    this.location,
+    this.serviceAccount,
+    this.servingStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class AppAppengineV1betaArgs {
 
   factory AppAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return AppAppengineV1betaArgs(
-      authDomain: map['authDomain'] == null ? null : pulumi.Output.create<String>(map['authDomain'] as String),
-      databaseType: map['databaseType'] == null ? null : pulumi.Output.create<AppDatabaseTypeAppengineV1beta>(AppDatabaseTypeAppengineV1beta.fromValue(map['databaseType'] as String)),
-      defaultCookieExpiration: map['defaultCookieExpiration'] == null ? null : pulumi.Output.create<String>(map['defaultCookieExpiration'] as String),
-      dispatchRules: map['dispatchRules'] == null ? null : pulumi.Output.create<List<UrlDispatchRuleAppengineV1beta>>(pulumi.Input.decodeList<UrlDispatchRuleAppengineV1beta>(map['dispatchRules'], (value) => UrlDispatchRuleAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))),
-      featureSettings: map['featureSettings'] == null ? null : pulumi.Output.create<FeatureSettingsAppengineV1beta>(FeatureSettingsAppengineV1beta.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())),
-      generatedCustomerMetadata: map['generatedCustomerMetadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['generatedCustomerMetadata'] as Map).cast<String, String>()),
-      iap: map['iap'] == null ? null : pulumi.Output.create<IdentityAwareProxyAppengineV1beta>(IdentityAwareProxyAppengineV1beta.fromMap((map['iap'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      servingStatus: map['servingStatus'] == null ? null : pulumi.Output.create<AppServingStatusAppengineV1beta>(AppServingStatusAppengineV1beta.fromValue(map['servingStatus'] as String)),
+      authDomain: map['authDomain'] == null ? null : (map['authDomain'] as String).input(),
+      databaseType: map['databaseType'] == null ? null : (AppDatabaseTypeAppengineV1beta.fromValue(map['databaseType'] as String)).input(),
+      defaultCookieExpiration: map['defaultCookieExpiration'] == null ? null : (map['defaultCookieExpiration'] as String).input(),
+      dispatchRules: map['dispatchRules'] == null ? null : (pulumi.Input.decodeList<UrlDispatchRuleAppengineV1beta>(map['dispatchRules'], (value) => UrlDispatchRuleAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      featureSettings: map['featureSettings'] == null ? null : (FeatureSettingsAppengineV1beta.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())).input(),
+      generatedCustomerMetadata: map['generatedCustomerMetadata'] == null ? null : ((map['generatedCustomerMetadata'] as Map).cast<String, String>()).input(),
+      iap: map['iap'] == null ? null : (IdentityAwareProxyAppengineV1beta.fromMap((map['iap'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      servingStatus: map['servingStatus'] == null ? null : (AppServingStatusAppengineV1beta.fromValue(map['servingStatus'] as String)).input(),
     );
   }
 }

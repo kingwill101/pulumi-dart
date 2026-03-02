@@ -44,29 +44,18 @@ class MetricRuleBlackListArgs {
   /// [scopeType] The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
   /// [scopeValues] Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
   MetricRuleBlackListArgs({
-    required pulumi.Output<String> category,
-    pulumi.Output<String>? effectiveTime,
-    pulumi.Output<String>? enableEndTime,
-    pulumi.Output<String>? enableStartTime,
-    required pulumi.Output<List<String>> instances,
-    pulumi.Output<bool>? isEnable,
-    required pulumi.Output<String> metricRuleBlackListName,
-    pulumi.Output<List<MetricRuleBlackListMetric>>? metrics,
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? scopeType,
-    pulumi.Output<List<String>>? scopeValues,
-  }) :
-      category = pulumi.Input.asInput<String>(category),
-      effectiveTime = pulumi.Input.asOptionalInput<String>(effectiveTime),
-      enableEndTime = pulumi.Input.asOptionalInput<String>(enableEndTime),
-      enableStartTime = pulumi.Input.asOptionalInput<String>(enableStartTime),
-      instances = pulumi.Input.asInput<List<String>>(instances),
-      isEnable = pulumi.Input.asOptionalInput<bool>(isEnable),
-      metricRuleBlackListName = pulumi.Input.asInput<String>(metricRuleBlackListName),
-      metrics = pulumi.Input.asOptionalInput<List<MetricRuleBlackListMetric>>(metrics),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      scopeType = pulumi.Input.asOptionalInput<String>(scopeType),
-      scopeValues = pulumi.Input.asOptionalInput<List<String>>(scopeValues);
+    required this.category,
+    this.effectiveTime,
+    this.enableEndTime,
+    this.enableStartTime,
+    required this.instances,
+    this.isEnable,
+    required this.metricRuleBlackListName,
+    this.metrics,
+    required this.namespace,
+    this.scopeType,
+    this.scopeValues,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class MetricRuleBlackListArgs {
 
   factory MetricRuleBlackListArgs.fromMap(Map<String, dynamic> map) {
     return MetricRuleBlackListArgs(
-      category: pulumi.Output.create<String>(map['category'] as String),
-      effectiveTime: map['effectiveTime'] == null ? null : pulumi.Output.create<String>(map['effectiveTime'] as String),
-      enableEndTime: map['enableEndTime'] == null ? null : pulumi.Output.create<String>(map['enableEndTime'] as String),
-      enableStartTime: map['enableStartTime'] == null ? null : pulumi.Output.create<String>(map['enableStartTime'] as String),
-      instances: pulumi.Output.create<List<String>>((map['instances'] as List).cast<String>()),
-      isEnable: map['isEnable'] == null ? null : pulumi.Output.create<bool>(map['isEnable'] as bool),
-      metricRuleBlackListName: pulumi.Output.create<String>(map['metricRuleBlackListName'] as String),
-      metrics: map['metrics'] == null ? null : pulumi.Output.create<List<MetricRuleBlackListMetric>>(pulumi.Input.decodeList<MetricRuleBlackListMetric>(map['metrics'], (value) => MetricRuleBlackListMetric.fromMap((value as Map).cast<String, dynamic>()))),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      scopeType: map['scopeType'] == null ? null : pulumi.Output.create<String>(map['scopeType'] as String),
-      scopeValues: map['scopeValues'] == null ? null : pulumi.Output.create<List<String>>((map['scopeValues'] as List).cast<String>()),
+      category: (map['category'] as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
+      enableEndTime: map['enableEndTime'] == null ? null : (map['enableEndTime'] as String).input(),
+      enableStartTime: map['enableStartTime'] == null ? null : (map['enableStartTime'] as String).input(),
+      instances: ((map['instances'] as List).cast<String>()).input(),
+      isEnable: map['isEnable'] == null ? null : (map['isEnable'] as bool).input(),
+      metricRuleBlackListName: (map['metricRuleBlackListName'] as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MetricRuleBlackListMetric>(map['metrics'], (value) => MetricRuleBlackListMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: (map['namespace'] as String).input(),
+      scopeType: map['scopeType'] == null ? null : (map['scopeType'] as String).input(),
+      scopeValues: map['scopeValues'] == null ? null : ((map['scopeValues'] as List).cast<String>()).input(),
     );
   }
 }

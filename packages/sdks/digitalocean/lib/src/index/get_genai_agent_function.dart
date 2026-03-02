@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentFunction {
   /// API Key value
-  final String? apiKey;
+  final pulumi.Input<String>? apiKey;
   /// Created At timestamp for the Function
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Description of the Function
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Name of function
-  final String? faasname;
+  final pulumi.Input<String>? faasname;
   /// Namespace of function
-  final String? faasnamespace;
+  final pulumi.Input<String>? faasnamespace;
   /// Guardrail UUID for the Function
-  final String? guardrailUuid;
+  final pulumi.Input<String>? guardrailUuid;
   /// Name of function
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Updated At timestamp for the Agent
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// Url of the Deployment
-  final String? url;
+  final pulumi.Input<String>? url;
   /// API Key value
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [GetGenaiAgentFunction].
   /// [apiKey] API Key value
@@ -64,16 +65,16 @@ class GetGenaiAgentFunction {
 
   factory GetGenaiAgentFunction.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentFunction(
-      apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
-      createdAt: map['createdAt'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      faasname: map['faasname'] == null ? null : map['faasname'] as String,
-      faasnamespace: map['faasnamespace'] == null ? null : map['faasnamespace'] as String,
-      guardrailUuid: map['guardrailUuid'] == null ? null : map['guardrailUuid'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      updatedAt: map['updatedAt'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      faasname: map['faasname'] == null ? null : (map['faasname'] as String).input(),
+      faasnamespace: map['faasnamespace'] == null ? null : (map['faasnamespace'] as String).input(),
+      guardrailUuid: map['guardrailUuid'] == null ? null : (map['guardrailUuid'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

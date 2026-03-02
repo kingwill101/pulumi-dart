@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityProfileThreatPreventionProfileSeverityOverride {
   /// Threat action override.
   /// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
-  final String action;
+  final pulumi.Input<String> action;
   /// Severity level to match.
   /// Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
-  final String severity;
+  final pulumi.Input<String> severity;
 
   /// Creates a new [SecurityProfileThreatPreventionProfileSeverityOverride].
   /// [action] Threat action override.
@@ -26,8 +27,8 @@ class SecurityProfileThreatPreventionProfileSeverityOverride {
 
   factory SecurityProfileThreatPreventionProfileSeverityOverride.fromMap(Map<String, dynamic> map) {
     return SecurityProfileThreatPreventionProfileSeverityOverride(
-      action: map['action'] as String,
-      severity: map['severity'] as String,
+      action: (map['action'] as String).input(),
+      severity: (map['severity'] as String).input(),
     );
   }
 }

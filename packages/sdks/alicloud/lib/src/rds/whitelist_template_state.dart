@@ -15,11 +15,9 @@ class WhitelistTemplateState {
   /// [ipWhiteList] IP whitelist, multiple IP addresses should be separated by commas (,) and cannot be duplicated.Supports the following two formats:
   /// [templateName] Whitelist template name. Passed in when creating a template, and cannot have the same name under the same account, starting with a letter.
   WhitelistTemplateState({
-    pulumi.Output<String>? ipWhiteList,
-    pulumi.Output<String>? templateName,
-  }) :
-      ipWhiteList = pulumi.Input.asOptionalInput<String>(ipWhiteList),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName);
+    this.ipWhiteList,
+    this.templateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class WhitelistTemplateState {
 
   factory WhitelistTemplateState.fromMap(Map<String, dynamic> map) {
     return WhitelistTemplateState(
-      ipWhiteList: map['ipWhiteList'] == null ? null : pulumi.Output.create<String>(map['ipWhiteList'] as String),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
+      ipWhiteList: map['ipWhiteList'] == null ? null : (map['ipWhiteList'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status specifies state for the subcomponent.
 class StatusResponseGkehubV1alpha {
   /// Code specifies AppDevExperienceFeature's subcomponent ready state.
-  final String code;
+  final pulumi.Input<String> code;
   /// Description is populated if Code is Failed, explaining why it has failed.
-  final String description;
+  final pulumi.Input<String> description;
 
   /// Creates a new [StatusResponseGkehubV1alpha].
   /// [code] Code specifies AppDevExperienceFeature's subcomponent ready state.
@@ -25,8 +26,8 @@ class StatusResponseGkehubV1alpha {
 
   factory StatusResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return StatusResponseGkehubV1alpha(
-      code: map['code'] as String,
-      description: map['description'] as String,
+      code: (map['code'] as String).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

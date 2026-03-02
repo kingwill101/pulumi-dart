@@ -25,17 +25,12 @@ class FlexibleServerActiveDirectoryAdministratoryArgs {
   /// [serverId] The resource ID of the MySQL Flexible Server. Changing this forces a new resource to be created.
   /// [tenantId] The Azure Tenant ID.
   FlexibleServerActiveDirectoryAdministratoryArgs({
-    required pulumi.Output<String> identityId,
-    required pulumi.Output<String> login,
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> serverId,
-    required pulumi.Output<String> tenantId,
-  }) :
-      identityId = pulumi.Input.asInput<String>(identityId),
-      login = pulumi.Input.asInput<String>(login),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.identityId,
+    required this.login,
+    required this.objectId,
+    required this.serverId,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FlexibleServerActiveDirectoryAdministratoryArgs {
 
   factory FlexibleServerActiveDirectoryAdministratoryArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerActiveDirectoryAdministratoryArgs(
-      identityId: pulumi.Output.create<String>(map['identityId'] as String),
-      login: pulumi.Output.create<String>(map['login'] as String),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      identityId: (map['identityId'] as String).input(),
+      login: (map['login'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

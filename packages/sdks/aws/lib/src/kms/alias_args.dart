@@ -23,15 +23,11 @@ class AliasArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetKeyId] Identifier for the key for which the alias is for, can be either an ARN or key_id.
   AliasArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> targetKeyId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetKeyId = pulumi.Input.asInput<String>(targetKeyId);
+    this.name,
+    this.namePrefix,
+    this.region,
+    required this.targetKeyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetKeyId: pulumi.Output.create<String>(map['targetKeyId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetKeyId: (map['targetKeyId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeTargetEncryptionSecret {
   /// Defines the type of the secret used for encryption purposes.
-  final String type;
+  final pulumi.Input<String> type;
   /// Sets the universally unique identifier (UUID) for the encryption secret.
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [VolumeTargetEncryptionSecret].
   /// [type] Defines the type of the secret used for encryption purposes.
@@ -24,8 +25,8 @@ class VolumeTargetEncryptionSecret {
 
   factory VolumeTargetEncryptionSecret.fromMap(Map<String, dynamic> map) {
     return VolumeTargetEncryptionSecret(
-      type: map['type'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      type: (map['type'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

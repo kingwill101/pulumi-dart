@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_agent_properties_response.dart';
 
 class CollectorPropertiesResponse {
-  final CollectorAgentPropertiesResponse? agentProperties;
+  final pulumi.Input<CollectorAgentPropertiesResponse>? agentProperties;
   /// Time when this collector was created. Date-Time represented in ISO-8601 format.
-  final String createdTimestamp;
+  final pulumi.Input<String> createdTimestamp;
   /// The ARM id of the discovery service site.
-  final String? discoverySiteId;
+  final pulumi.Input<String>? discoverySiteId;
   /// Time when this collector was updated. Date-Time represented in ISO-8601 format.
-  final String updatedTimestamp;
+  final pulumi.Input<String> updatedTimestamp;
 
   /// Creates a new [CollectorPropertiesResponse].
   /// [agentProperties] Optional.
@@ -25,7 +26,7 @@ class CollectorPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentProperties': ?agentProperties == null ? null : agentProperties!.toMap(),
+      'agentProperties': ?pulumi.Input.mapOptionalInputValue<CollectorAgentPropertiesResponse, Map<String, dynamic>>(agentProperties, (value) => value.toMap()),
       'createdTimestamp': createdTimestamp,
       'discoverySiteId': ?discoverySiteId,
       'updatedTimestamp': updatedTimestamp,
@@ -34,10 +35,10 @@ class CollectorPropertiesResponse {
 
   factory CollectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CollectorPropertiesResponse(
-      agentProperties: map['agentProperties'] == null ? null : CollectorAgentPropertiesResponse.fromMap((map['agentProperties'] as Map).cast<String, dynamic>()),
-      createdTimestamp: map['createdTimestamp'] as String,
-      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId'] as String,
-      updatedTimestamp: map['updatedTimestamp'] as String,
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesResponse.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
+      createdTimestamp: (map['createdTimestamp'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );
   }
 }

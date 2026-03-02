@@ -37,25 +37,16 @@ class WorkforcePoolProviderScimTokenState {
   /// [state] The current state of the scim token.
   /// [workforcePoolId] The ID of the Workforce Pool.
   WorkforcePoolProviderScimTokenState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerId,
-    pulumi.Output<String>? scimTenantId,
-    pulumi.Output<String>? scimTokenId,
-    pulumi.Output<String>? securityToken,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? workforcePoolId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerId = pulumi.Input.asOptionalInput<String>(providerId),
-      scimTenantId = pulumi.Input.asOptionalInput<String>(scimTenantId),
-      scimTokenId = pulumi.Input.asOptionalInput<String>(scimTokenId),
-      securityToken = pulumi.Input.asOptionalInput<String>(securityToken),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      workforcePoolId = pulumi.Input.asOptionalInput<String>(workforcePoolId);
+    this.displayName,
+    this.location,
+    this.name,
+    this.providerId,
+    this.scimTenantId,
+    this.scimTokenId,
+    this.securityToken,
+    this.state,
+    this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class WorkforcePoolProviderScimTokenState {
 
   factory WorkforcePoolProviderScimTokenState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTokenState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerId: map['providerId'] == null ? null : pulumi.Output.create<String>(map['providerId'] as String),
-      scimTenantId: map['scimTenantId'] == null ? null : pulumi.Output.create<String>(map['scimTenantId'] as String),
-      scimTokenId: map['scimTokenId'] == null ? null : pulumi.Output.create<String>(map['scimTokenId'] as String),
-      securityToken: map['securityToken'] == null ? null : pulumi.Output.create<String>(map['securityToken'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      workforcePoolId: map['workforcePoolId'] == null ? null : pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
+      scimTenantId: map['scimTenantId'] == null ? null : (map['scimTenantId'] as String).input(),
+      scimTokenId: map['scimTokenId'] == null ? null : (map['scimTokenId'] as String).input(),
+      securityToken: map['securityToken'] == null ? null : (map['securityToken'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
     );
   }
 }

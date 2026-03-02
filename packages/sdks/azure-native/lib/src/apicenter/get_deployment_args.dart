@@ -25,17 +25,12 @@ class GetDeploymentArgs {
   /// [serviceName] The name of Azure API Center service.
   /// [workspaceName] The name of the workspace.
   GetDeploymentArgs({
-    required pulumi.Output<String> apiName,
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      apiName = pulumi.Input.asInput<String>(apiName),
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.apiName,
+    required this.deploymentName,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetDeploymentArgs {
 
   factory GetDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentArgs(
-      apiName: pulumi.Output.create<String>(map['apiName'] as String),
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      apiName: (map['apiName'] as String).input(),
+      deploymentName: (map['deploymentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

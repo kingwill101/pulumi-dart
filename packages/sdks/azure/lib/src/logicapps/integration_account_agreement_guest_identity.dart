@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IntegrationAccountAgreementGuestIdentity {
   /// The authenticating body that provides unique guest identities to organizations.
-  final String qualifier;
+  final pulumi.Input<String> qualifier;
   /// The value that identifies the documents that your logic apps receive.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [IntegrationAccountAgreementGuestIdentity].
   /// [qualifier] The authenticating body that provides unique guest identities to organizations.
@@ -24,8 +25,8 @@ class IntegrationAccountAgreementGuestIdentity {
 
   factory IntegrationAccountAgreementGuestIdentity.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAgreementGuestIdentity(
-      qualifier: map['qualifier'] as String,
-      value: map['value'] as String,
+      qualifier: (map['qualifier'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Site Reference Properties
 class SiteReferencePropertiesResponse {
   /// Provisioning State
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Azure Resource ID for Site
-  final String siteId;
+  final pulumi.Input<String> siteId;
 
   /// Creates a new [SiteReferencePropertiesResponse].
   /// [provisioningState] Provisioning State
@@ -25,8 +26,8 @@ class SiteReferencePropertiesResponse {
 
   factory SiteReferencePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SiteReferencePropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      siteId: map['siteId'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

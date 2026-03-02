@@ -29,21 +29,14 @@ class AclState {
   /// [status] The status of the resource.
   /// [tags] A mapping of tags to assign to the resource.
   AclState({
-    pulumi.Output<List<AclAclEntry>>? aclEntries,
-    pulumi.Output<String>? aclName,
-    pulumi.Output<String>? addressIpVersion,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      aclEntries = pulumi.Input.asOptionalInput<List<AclAclEntry>>(aclEntries),
-      aclName = pulumi.Input.asOptionalInput<String>(aclName),
-      addressIpVersion = pulumi.Input.asOptionalInput<String>(addressIpVersion),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.aclEntries,
+    this.aclName,
+    this.addressIpVersion,
+    this.dryRun,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      aclEntries: map['aclEntries'] == null ? null : pulumi.Output.create<List<AclAclEntry>>(pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      aclName: map['aclName'] == null ? null : pulumi.Output.create<String>(map['aclName'] as String),
-      addressIpVersion: map['addressIpVersion'] == null ? null : pulumi.Output.create<String>(map['addressIpVersion'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      aclEntries: map['aclEntries'] == null ? null : (pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aclName: map['aclName'] == null ? null : (map['aclName'] as String).input(),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

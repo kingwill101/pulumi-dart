@@ -32,21 +32,14 @@ class EnvironmentComposerV1beta1Args {
   /// [state] The current state of the environment.
   /// [storageConfig] Optional. Storage configuration for this environment.
   EnvironmentComposerV1beta1Args({
-    pulumi.Output<EnvironmentConfigComposerV1beta1>? config,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<EnvironmentStateComposerV1beta1>? state,
-    pulumi.Output<StorageConfigComposerV1beta1>? storageConfig,
-  }) :
-      config = pulumi.Input.asOptionalInput<EnvironmentConfigComposerV1beta1>(config),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<EnvironmentStateComposerV1beta1>(state),
-      storageConfig = pulumi.Input.asOptionalInput<StorageConfigComposerV1beta1>(storageConfig);
+    this.config,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.state,
+    this.storageConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class EnvironmentComposerV1beta1Args {
 
   factory EnvironmentComposerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentComposerV1beta1Args(
-      config: map['config'] == null ? null : pulumi.Output.create<EnvironmentConfigComposerV1beta1>(EnvironmentConfigComposerV1beta1.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<EnvironmentStateComposerV1beta1>(EnvironmentStateComposerV1beta1.fromValue(map['state'] as String)),
-      storageConfig: map['storageConfig'] == null ? null : pulumi.Output.create<StorageConfigComposerV1beta1>(StorageConfigComposerV1beta1.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())),
+      config: map['config'] == null ? null : (EnvironmentConfigComposerV1beta1.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (EnvironmentStateComposerV1beta1.fromValue(map['state'] as String)).input(),
+      storageConfig: map['storageConfig'] == null ? null : (StorageConfigComposerV1beta1.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

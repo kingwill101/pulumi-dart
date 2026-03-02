@@ -28,19 +28,13 @@ class GetIpv6GatewaysArgs {
   /// [status] The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
   /// [vpcId] The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
   GetIpv6GatewaysArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? ipv6GatewayName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      ipv6GatewayName = pulumi.Input.asOptionalInput<String>(ipv6GatewayName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.ids,
+    this.ipv6GatewayName,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetIpv6GatewaysArgs {
 
   factory GetIpv6GatewaysArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6GatewaysArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      ipv6GatewayName: map['ipv6GatewayName'] == null ? null : pulumi.Output.create<String>(map['ipv6GatewayName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ipv6GatewayName: map['ipv6GatewayName'] == null ? null : (map['ipv6GatewayName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

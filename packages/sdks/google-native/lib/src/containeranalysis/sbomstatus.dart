@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sbomstatus_sbom_state.dart';
 
 /// The status of an SBOM generation.
 class SBOMStatus {
   /// If there was an error generating an SBOM, this will indicate what that error was.
-  final String? error;
+  final pulumi.Input<String>? error;
   /// The progress of the SBOM generation.
-  final SBOMStatusSbomState? sbomState;
+  final pulumi.Input<SBOMStatusSbomState>? sbomState;
 
   /// Creates a new [SBOMStatus].
   /// [error] If there was an error generating an SBOM, this will indicate what that error was.
@@ -20,14 +21,14 @@ class SBOMStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'error': ?error,
-      'sbomState': ?sbomState == null ? null : sbomState!.value,
+      'sbomState': ?pulumi.Input.mapOptionalInputValue<SBOMStatusSbomState, String>(sbomState, (value) => value.value),
     };
   }
 
   factory SBOMStatus.fromMap(Map<String, dynamic> map) {
     return SBOMStatus(
-      error: map['error'] == null ? null : map['error'] as String,
-      sbomState: map['sbomState'] == null ? null : SBOMStatusSbomState.fromValue(map['sbomState'] as String),
+      error: map['error'] == null ? null : (map['error'] as String).input(),
+      sbomState: map['sbomState'] == null ? null : (SBOMStatusSbomState.fromValue(map['sbomState'] as String)).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration {
   /// S3 URI to deliver recordings.
-  final String? destination;
+  final pulumi.Input<String>? destination;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration].
   /// [destination] S3 URI to deliver recordings.
@@ -19,7 +20,7 @@ class MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration {
 
   factory MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration(
-      destination: map['destination'] == null ? null : map['destination'] as String,
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
     );
   }
 }

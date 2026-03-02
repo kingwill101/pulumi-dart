@@ -16,11 +16,9 @@ class GetCommunityTrainingArgs {
   /// [communityTrainingName] The name of the Community Training Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCommunityTrainingArgs({
-    required pulumi.Output<String> communityTrainingName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      communityTrainingName = pulumi.Input.asInput<String>(communityTrainingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.communityTrainingName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCommunityTrainingArgs {
 
   factory GetCommunityTrainingArgs.fromMap(Map<String, dynamic> map) {
     return GetCommunityTrainingArgs(
-      communityTrainingName: pulumi.Output.create<String>(map['communityTrainingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      communityTrainingName: (map['communityTrainingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

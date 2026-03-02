@@ -29,19 +29,13 @@ class ApplicationGroupArgs {
   /// [policies] List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   ApplicationGroupArgs({
-    pulumi.Output<String>? applicationGroupName,
-    required pulumi.Output<String> clientAppGroupIdentifier,
-    pulumi.Output<bool>? isEnabled,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<List<ThrottlingPolicy>>? policies,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applicationGroupName = pulumi.Input.asOptionalInput<String>(applicationGroupName),
-      clientAppGroupIdentifier = pulumi.Input.asInput<String>(clientAppGroupIdentifier),
-      isEnabled = pulumi.Input.asOptionalInput<bool>(isEnabled),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      policies = pulumi.Input.asOptionalInput<List<ThrottlingPolicy>>(policies),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.applicationGroupName,
+    required this.clientAppGroupIdentifier,
+    this.isEnabled,
+    required this.namespaceName,
+    this.policies,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ApplicationGroupArgs {
 
   factory ApplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationGroupArgs(
-      applicationGroupName: map['applicationGroupName'] == null ? null : pulumi.Output.create<String>(map['applicationGroupName'] as String),
-      clientAppGroupIdentifier: pulumi.Output.create<String>(map['clientAppGroupIdentifier'] as String),
-      isEnabled: map['isEnabled'] == null ? null : pulumi.Output.create<bool>(map['isEnabled'] as bool),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      policies: map['policies'] == null ? null : pulumi.Output.create<List<ThrottlingPolicy>>(pulumi.Input.decodeList<ThrottlingPolicy>(map['policies'], (value) => ThrottlingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationGroupName: map['applicationGroupName'] == null ? null : (map['applicationGroupName'] as String).input(),
+      clientAppGroupIdentifier: (map['clientAppGroupIdentifier'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<ThrottlingPolicy>(map['policies'], (value) => ThrottlingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

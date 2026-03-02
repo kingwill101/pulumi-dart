@@ -6,17 +6,17 @@ import 'ipconfiguration_response.dart';
 /// The private link configuration.
 class PrivateLinkConfigurationResponse {
   /// The HDInsight private linkable sub-resource name to apply the private link configuration to. For example, 'headnode', 'gateway', 'edgenode'.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The private link configuration id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The IP configurations for the private link service.
-  final List<IPConfigurationResponse> ipConfigurations;
+  final pulumi.Input<List<IPConfigurationResponse>> ipConfigurations;
   /// The name of private link configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// The private link configuration provisioning state, which only appears in the response.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The type of the private link configuration.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PrivateLinkConfigurationResponse].
   /// [groupId] The HDInsight private linkable sub-resource name to apply the private link configuration to. For example, 'headnode', 'gateway', 'edgenode'.
@@ -38,7 +38,7 @@ class PrivateLinkConfigurationResponse {
     return <String, dynamic>{
       'groupId': groupId,
       'id': id,
-      'ipConfigurations': pulumi.Input.encodeList<IPConfigurationResponse, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations': pulumi.Input.mapInputValue<List<IPConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<IPConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'provisioningState': provisioningState,
       'type': type,
@@ -47,12 +47,12 @@ class PrivateLinkConfigurationResponse {
 
   factory PrivateLinkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkConfigurationResponse(
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      ipConfigurations: pulumi.Input.decodeList<IPConfigurationResponse>(map['ipConfigurations'], (value) => IPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      groupId: (map['groupId'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipConfigurations: (pulumi.Input.decodeList<IPConfigurationResponse>(map['ipConfigurations'], (value) => IPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

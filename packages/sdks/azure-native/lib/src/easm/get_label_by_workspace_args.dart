@@ -19,13 +19,10 @@ class GetLabelByWorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the Workspace.
   GetLabelByWorkspaceArgs({
-    required pulumi.Output<String> labelName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      labelName = pulumi.Input.asInput<String>(labelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.labelName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLabelByWorkspaceArgs {
 
   factory GetLabelByWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetLabelByWorkspaceArgs(
-      labelName: pulumi.Output.create<String>(map['labelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      labelName: (map['labelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

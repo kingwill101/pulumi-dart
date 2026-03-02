@@ -22,15 +22,11 @@ class GetIotConnectorFhirDestinationArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
   GetIotConnectorFhirDestinationArgs({
-    required pulumi.Output<String> fhirDestinationName,
-    required pulumi.Output<String> iotConnectorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      fhirDestinationName = pulumi.Input.asInput<String>(fhirDestinationName),
-      iotConnectorName = pulumi.Input.asInput<String>(iotConnectorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.fhirDestinationName,
+    required this.iotConnectorName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetIotConnectorFhirDestinationArgs {
 
   factory GetIotConnectorFhirDestinationArgs.fromMap(Map<String, dynamic> map) {
     return GetIotConnectorFhirDestinationArgs(
-      fhirDestinationName: pulumi.Output.create<String>(map['fhirDestinationName'] as String),
-      iotConnectorName: pulumi.Output.create<String>(map['iotConnectorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      fhirDestinationName: (map['fhirDestinationName'] as String).input(),
+      iotConnectorName: (map['iotConnectorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

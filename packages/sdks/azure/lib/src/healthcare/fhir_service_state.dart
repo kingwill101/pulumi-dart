@@ -53,35 +53,21 @@ class FhirServiceState {
   /// [tags] A mapping of tags to assign to the Healthcare FHIR Service.
   /// [workspaceId] Specifies the id of the Healthcare Workspace where the Healthcare FHIR Service should exist. Changing this forces a new Healthcare FHIR Service to be created.
   FhirServiceState({
-    pulumi.Output<List<String>>? accessPolicyObjectIds,
-    pulumi.Output<FhirServiceAuthentication>? authentication,
-    pulumi.Output<String>? configurationExportStorageAccountName,
-    pulumi.Output<List<String>>? containerRegistryLoginServerUrls,
-    pulumi.Output<FhirServiceCors>? cors,
-    pulumi.Output<FhirServiceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<FhirServiceOciArtifact>>? ociArtifacts,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      accessPolicyObjectIds = pulumi.Input.asOptionalInput<List<String>>(accessPolicyObjectIds),
-      authentication = pulumi.Input.asOptionalInput<FhirServiceAuthentication>(authentication),
-      configurationExportStorageAccountName = pulumi.Input.asOptionalInput<String>(configurationExportStorageAccountName),
-      containerRegistryLoginServerUrls = pulumi.Input.asOptionalInput<List<String>>(containerRegistryLoginServerUrls),
-      cors = pulumi.Input.asOptionalInput<FhirServiceCors>(cors),
-      identity = pulumi.Input.asOptionalInput<FhirServiceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ociArtifacts = pulumi.Input.asOptionalInput<List<FhirServiceOciArtifact>>(ociArtifacts),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.accessPolicyObjectIds,
+    this.authentication,
+    this.configurationExportStorageAccountName,
+    this.containerRegistryLoginServerUrls,
+    this.cors,
+    this.identity,
+    this.kind,
+    this.location,
+    this.name,
+    this.ociArtifacts,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.tags,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class FhirServiceState {
 
   factory FhirServiceState.fromMap(Map<String, dynamic> map) {
     return FhirServiceState(
-      accessPolicyObjectIds: map['accessPolicyObjectIds'] == null ? null : pulumi.Output.create<List<String>>((map['accessPolicyObjectIds'] as List).cast<String>()),
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<FhirServiceAuthentication>(FhirServiceAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] == null ? null : pulumi.Output.create<String>(map['configurationExportStorageAccountName'] as String),
-      containerRegistryLoginServerUrls: map['containerRegistryLoginServerUrls'] == null ? null : pulumi.Output.create<List<String>>((map['containerRegistryLoginServerUrls'] as List).cast<String>()),
-      cors: map['cors'] == null ? null : pulumi.Output.create<FhirServiceCors>(FhirServiceCors.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<FhirServiceIdentity>(FhirServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ociArtifacts: map['ociArtifacts'] == null ? null : pulumi.Output.create<List<FhirServiceOciArtifact>>(pulumi.Input.decodeList<FhirServiceOciArtifact>(map['ociArtifacts'], (value) => FhirServiceOciArtifact.fromMap((value as Map).cast<String, dynamic>()))),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      accessPolicyObjectIds: map['accessPolicyObjectIds'] == null ? null : ((map['accessPolicyObjectIds'] as List).cast<String>()).input(),
+      authentication: map['authentication'] == null ? null : (FhirServiceAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] == null ? null : (map['configurationExportStorageAccountName'] as String).input(),
+      containerRegistryLoginServerUrls: map['containerRegistryLoginServerUrls'] == null ? null : ((map['containerRegistryLoginServerUrls'] as List).cast<String>()).input(),
+      cors: map['cors'] == null ? null : (FhirServiceCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (FhirServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ociArtifacts: map['ociArtifacts'] == null ? null : (pulumi.Input.decodeList<FhirServiceOciArtifact>(map['ociArtifacts'], (value) => FhirServiceOciArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -7,23 +7,23 @@ import 'private_endpoint_connection_response.dart';
 /// Properties of a migrate project.
 class MigrateProjectPropertiesResponse {
   /// Last summary refresh time.
-  final String lastSummaryRefreshedTime;
+  final pulumi.Input<String> lastSummaryRefreshedTime;
   /// Gets the private endpoint connections.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Provisioning state of the migrate project.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Gets or sets the state of public network access.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// Refresh summary state.
-  final String refreshSummaryState;
+  final pulumi.Input<String> refreshSummaryState;
   /// Register tools inside project.
-  final List<String> registeredTools;
+  final pulumi.Input<List<String>> registeredTools;
   /// Service endpoint.
-  final String? serviceEndpoint;
+  final pulumi.Input<String>? serviceEndpoint;
   /// Project summary.
-  final Map<String, DatabaseProjectSummaryResponse> summary;
+  final pulumi.Input<Map<String, DatabaseProjectSummaryResponse>> summary;
   /// Utility storage account id.
-  final String? utilityStorageAccountId;
+  final pulumi.Input<String>? utilityStorageAccountId;
 
   /// Creates a new [MigrateProjectPropertiesResponse].
   /// [lastSummaryRefreshedTime] Last summary refresh time.
@@ -50,28 +50,28 @@ class MigrateProjectPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'lastSummaryRefreshedTime': lastSummaryRefreshedTime,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': ?provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'refreshSummaryState': refreshSummaryState,
       'registeredTools': registeredTools,
       'serviceEndpoint': ?serviceEndpoint,
-      'summary': pulumi.Input.encodeMapValues<DatabaseProjectSummaryResponse, Map<String, dynamic>>(summary, (value) => value.toMap()),
+      'summary': pulumi.Input.mapInputValue<Map<String, DatabaseProjectSummaryResponse>, Map<String, Map<String, dynamic>>>(summary, (value) => pulumi.Input.encodeMapValues<DatabaseProjectSummaryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'utilityStorageAccountId': ?utilityStorageAccountId,
     };
   }
 
   factory MigrateProjectPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrateProjectPropertiesResponse(
-      lastSummaryRefreshedTime: map['lastSummaryRefreshedTime'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      refreshSummaryState: map['refreshSummaryState'] as String,
-      registeredTools: (map['registeredTools'] as List).cast<String>(),
-      serviceEndpoint: map['serviceEndpoint'] == null ? null : map['serviceEndpoint'] as String,
-      summary: pulumi.Input.decodeMapValues<DatabaseProjectSummaryResponse>(map['summary'], (value) => DatabaseProjectSummaryResponse.fromMap((value as Map).cast<String, dynamic>())),
-      utilityStorageAccountId: map['utilityStorageAccountId'] == null ? null : map['utilityStorageAccountId'] as String,
+      lastSummaryRefreshedTime: (map['lastSummaryRefreshedTime'] as String).input(),
+      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      refreshSummaryState: (map['refreshSummaryState'] as String).input(),
+      registeredTools: ((map['registeredTools'] as List).cast<String>()).input(),
+      serviceEndpoint: map['serviceEndpoint'] == null ? null : (map['serviceEndpoint'] as String).input(),
+      summary: (pulumi.Input.decodeMapValues<DatabaseProjectSummaryResponse>(map['summary'], (value) => DatabaseProjectSummaryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      utilityStorageAccountId: map['utilityStorageAccountId'] == null ? null : (map['utilityStorageAccountId'] as String).input(),
     );
   }
 }

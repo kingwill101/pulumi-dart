@@ -63,31 +63,19 @@ class SubnetState {
   /// [sharingScope] The sharing scope of the subnet. Possible value is `Tenant`.
   /// [virtualNetworkName] The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
   SubnetState({
-    pulumi.Output<List<String>>? addressPrefixes,
-    pulumi.Output<bool>? defaultOutboundAccessEnabled,
-    pulumi.Output<List<SubnetDelegation>>? delegations,
-    pulumi.Output<SubnetIpAddressPool>? ipAddressPool,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateEndpointNetworkPolicies,
-    pulumi.Output<bool>? privateLinkServiceNetworkPoliciesEnabled,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<String>>? serviceEndpointPolicyIds,
-    pulumi.Output<List<String>>? serviceEndpoints,
-    pulumi.Output<String>? sharingScope,
-    pulumi.Output<String>? virtualNetworkName,
-  }) :
-      addressPrefixes = pulumi.Input.asOptionalInput<List<String>>(addressPrefixes),
-      defaultOutboundAccessEnabled = pulumi.Input.asOptionalInput<bool>(defaultOutboundAccessEnabled),
-      delegations = pulumi.Input.asOptionalInput<List<SubnetDelegation>>(delegations),
-      ipAddressPool = pulumi.Input.asOptionalInput<SubnetIpAddressPool>(ipAddressPool),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateEndpointNetworkPolicies = pulumi.Input.asOptionalInput<String>(privateEndpointNetworkPolicies),
-      privateLinkServiceNetworkPoliciesEnabled = pulumi.Input.asOptionalInput<bool>(privateLinkServiceNetworkPoliciesEnabled),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serviceEndpointPolicyIds = pulumi.Input.asOptionalInput<List<String>>(serviceEndpointPolicyIds),
-      serviceEndpoints = pulumi.Input.asOptionalInput<List<String>>(serviceEndpoints),
-      sharingScope = pulumi.Input.asOptionalInput<String>(sharingScope),
-      virtualNetworkName = pulumi.Input.asOptionalInput<String>(virtualNetworkName);
+    this.addressPrefixes,
+    this.defaultOutboundAccessEnabled,
+    this.delegations,
+    this.ipAddressPool,
+    this.name,
+    this.privateEndpointNetworkPolicies,
+    this.privateLinkServiceNetworkPoliciesEnabled,
+    this.resourceGroupName,
+    this.serviceEndpointPolicyIds,
+    this.serviceEndpoints,
+    this.sharingScope,
+    this.virtualNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,18 +96,18 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      addressPrefixes: map['addressPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['addressPrefixes'] as List).cast<String>()),
-      defaultOutboundAccessEnabled: map['defaultOutboundAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['defaultOutboundAccessEnabled'] as bool),
-      delegations: map['delegations'] == null ? null : pulumi.Output.create<List<SubnetDelegation>>(pulumi.Input.decodeList<SubnetDelegation>(map['delegations'], (value) => SubnetDelegation.fromMap((value as Map).cast<String, dynamic>()))),
-      ipAddressPool: map['ipAddressPool'] == null ? null : pulumi.Output.create<SubnetIpAddressPool>(SubnetIpAddressPool.fromMap((map['ipAddressPool'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : pulumi.Output.create<String>(map['privateEndpointNetworkPolicies'] as String),
-      privateLinkServiceNetworkPoliciesEnabled: map['privateLinkServiceNetworkPoliciesEnabled'] == null ? null : pulumi.Output.create<bool>(map['privateLinkServiceNetworkPoliciesEnabled'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceEndpointPolicyIds: map['serviceEndpointPolicyIds'] == null ? null : pulumi.Output.create<List<String>>((map['serviceEndpointPolicyIds'] as List).cast<String>()),
-      serviceEndpoints: map['serviceEndpoints'] == null ? null : pulumi.Output.create<List<String>>((map['serviceEndpoints'] as List).cast<String>()),
-      sharingScope: map['sharingScope'] == null ? null : pulumi.Output.create<String>(map['sharingScope'] as String),
-      virtualNetworkName: map['virtualNetworkName'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkName'] as String),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
+      defaultOutboundAccessEnabled: map['defaultOutboundAccessEnabled'] == null ? null : (map['defaultOutboundAccessEnabled'] as bool).input(),
+      delegations: map['delegations'] == null ? null : (pulumi.Input.decodeList<SubnetDelegation>(map['delegations'], (value) => SubnetDelegation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddressPool: map['ipAddressPool'] == null ? null : (SubnetIpAddressPool.fromMap((map['ipAddressPool'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies'] as String).input(),
+      privateLinkServiceNetworkPoliciesEnabled: map['privateLinkServiceNetworkPoliciesEnabled'] == null ? null : (map['privateLinkServiceNetworkPoliciesEnabled'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serviceEndpointPolicyIds: map['serviceEndpointPolicyIds'] == null ? null : ((map['serviceEndpointPolicyIds'] as List).cast<String>()).input(),
+      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints'] as List).cast<String>()).input(),
+      sharingScope: map['sharingScope'] == null ? null : (map['sharingScope'] as String).input(),
+      virtualNetworkName: map['virtualNetworkName'] == null ? null : (map['virtualNetworkName'] as String).input(),
     );
   }
 }

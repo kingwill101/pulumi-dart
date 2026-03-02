@@ -19,13 +19,10 @@ class ApplicationSnapshotArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotName] The name of the application snapshot.
   ApplicationSnapshotArgs({
-    required pulumi.Output<String> applicationName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> snapshotName,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotName = pulumi.Input.asInput<String>(snapshotName);
+    required this.applicationName,
+    this.region,
+    required this.snapshotName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApplicationSnapshotArgs {
 
   factory ApplicationSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationSnapshotArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotName: pulumi.Output.create<String>(map['snapshotName'] as String),
+      applicationName: (map['applicationName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotName: (map['snapshotName'] as String).input(),
     );
   }
 }

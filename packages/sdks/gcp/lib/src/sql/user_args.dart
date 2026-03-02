@@ -61,27 +61,17 @@ class UserArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [type] The user type. It determines the method to authenticate the
   UserArgs({
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? host,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<UserPasswordPolicy>? passwordPolicy,
-    pulumi.Output<String>? passwordWo,
-    pulumi.Output<int>? passwordWoVersion,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? type,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instance = pulumi.Input.asInput<String>(instance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordPolicy = pulumi.Input.asOptionalInput<UserPasswordPolicy>(passwordPolicy),
-      passwordWo = pulumi.Input.asOptionalInput<String>(passwordWo),
-      passwordWoVersion = pulumi.Input.asOptionalInput<int>(passwordWoVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.deletionPolicy,
+    this.host,
+    required this.instance,
+    this.name,
+    this.password,
+    this.passwordPolicy,
+    this.passwordWo,
+    this.passwordWoVersion,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,16 +90,16 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordPolicy: map['passwordPolicy'] == null ? null : pulumi.Output.create<UserPasswordPolicy>(UserPasswordPolicy.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())),
-      passwordWo: map['passwordWo'] == null ? null : pulumi.Output.create<String>(map['passwordWo'] as String),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : pulumi.Output.create<int>(map['passwordWoVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordPolicy: map['passwordPolicy'] == null ? null : (UserPasswordPolicy.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())).input(),
+      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo'] as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage container properties.
 class StorageContainerProperties {
   /// Gets or sets the ClusterSharedVolumePath.
-  final String clusterSharedVolumePath;
+  final pulumi.Input<String> clusterSharedVolumePath;
   /// Gets or sets the Name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [StorageContainerProperties].
   /// [clusterSharedVolumePath] Gets or sets the ClusterSharedVolumePath.
@@ -25,8 +26,8 @@ class StorageContainerProperties {
 
   factory StorageContainerProperties.fromMap(Map<String, dynamic> map) {
     return StorageContainerProperties(
-      clusterSharedVolumePath: map['clusterSharedVolumePath'] as String,
-      name: map['name'] as String,
+      clusterSharedVolumePath: (map['clusterSharedVolumePath'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

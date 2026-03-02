@@ -22,15 +22,11 @@ class ServiceIdentityState {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service to generate identity for.
   ServiceIdentityState({
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? service,
-  }) :
-      email = pulumi.Input.asOptionalInput<String>(email),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.email,
+    this.member,
+    this.project,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServiceIdentityState {
 
   factory ServiceIdentityState.fromMap(Map<String, dynamic> map) {
     return ServiceIdentityState(
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

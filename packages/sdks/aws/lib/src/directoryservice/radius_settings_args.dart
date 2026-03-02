@@ -40,27 +40,17 @@ class RadiusSettingsArgs {
   /// [sharedSecret] Required for enabling RADIUS on the directory.
   /// [useSameUsername] Not currently used.
   RadiusSettingsArgs({
-    required pulumi.Output<String> authenticationProtocol,
-    required pulumi.Output<String> directoryId,
-    required pulumi.Output<String> displayLabel,
-    required pulumi.Output<int> radiusPort,
-    required pulumi.Output<int> radiusRetries,
-    required pulumi.Output<List<String>> radiusServers,
-    required pulumi.Output<int> radiusTimeout,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sharedSecret,
-    pulumi.Output<bool>? useSameUsername,
-  }) :
-      authenticationProtocol = pulumi.Input.asInput<String>(authenticationProtocol),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      displayLabel = pulumi.Input.asInput<String>(displayLabel),
-      radiusPort = pulumi.Input.asInput<int>(radiusPort),
-      radiusRetries = pulumi.Input.asInput<int>(radiusRetries),
-      radiusServers = pulumi.Input.asInput<List<String>>(radiusServers),
-      radiusTimeout = pulumi.Input.asInput<int>(radiusTimeout),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedSecret = pulumi.Input.asInput<String>(sharedSecret),
-      useSameUsername = pulumi.Input.asOptionalInput<bool>(useSameUsername);
+    required this.authenticationProtocol,
+    required this.directoryId,
+    required this.displayLabel,
+    required this.radiusPort,
+    required this.radiusRetries,
+    required this.radiusServers,
+    required this.radiusTimeout,
+    this.region,
+    required this.sharedSecret,
+    this.useSameUsername,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class RadiusSettingsArgs {
 
   factory RadiusSettingsArgs.fromMap(Map<String, dynamic> map) {
     return RadiusSettingsArgs(
-      authenticationProtocol: pulumi.Output.create<String>(map['authenticationProtocol'] as String),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      displayLabel: pulumi.Output.create<String>(map['displayLabel'] as String),
-      radiusPort: pulumi.Output.create<int>(map['radiusPort'] as int),
-      radiusRetries: pulumi.Output.create<int>(map['radiusRetries'] as int),
-      radiusServers: pulumi.Output.create<List<String>>((map['radiusServers'] as List).cast<String>()),
-      radiusTimeout: pulumi.Output.create<int>(map['radiusTimeout'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharedSecret: pulumi.Output.create<String>(map['sharedSecret'] as String),
-      useSameUsername: map['useSameUsername'] == null ? null : pulumi.Output.create<bool>(map['useSameUsername'] as bool),
+      authenticationProtocol: (map['authenticationProtocol'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      displayLabel: (map['displayLabel'] as String).input(),
+      radiusPort: (map['radiusPort'] as int).input(),
+      radiusRetries: (map['radiusRetries'] as int).input(),
+      radiusServers: ((map['radiusServers'] as List).cast<String>()).input(),
+      radiusTimeout: (map['radiusTimeout'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharedSecret: (map['sharedSecret'] as String).input(),
+      useSameUsername: map['useSameUsername'] == null ? null : (map['useSameUsername'] as bool).input(),
     );
   }
 }

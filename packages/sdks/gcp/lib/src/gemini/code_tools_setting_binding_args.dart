@@ -35,21 +35,14 @@ class CodeToolsSettingBindingArgs {
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
   CodeToolsSettingBindingArgs({
-    required pulumi.Output<String> codeToolsSettingId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? product,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> settingBindingId,
-    required pulumi.Output<String> target,
-  }) :
-      codeToolsSettingId = pulumi.Input.asInput<String>(codeToolsSettingId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      product = pulumi.Input.asOptionalInput<String>(product),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      settingBindingId = pulumi.Input.asInput<String>(settingBindingId),
-      target = pulumi.Input.asInput<String>(target);
+    required this.codeToolsSettingId,
+    this.labels,
+    this.location,
+    this.product,
+    this.project,
+    required this.settingBindingId,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class CodeToolsSettingBindingArgs {
 
   factory CodeToolsSettingBindingArgs.fromMap(Map<String, dynamic> map) {
     return CodeToolsSettingBindingArgs(
-      codeToolsSettingId: pulumi.Output.create<String>(map['codeToolsSettingId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      product: map['product'] == null ? null : pulumi.Output.create<String>(map['product'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      settingBindingId: pulumi.Output.create<String>(map['settingBindingId'] as String),
-      target: pulumi.Output.create<String>(map['target'] as String),
+      codeToolsSettingId: (map['codeToolsSettingId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      settingBindingId: (map['settingBindingId'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

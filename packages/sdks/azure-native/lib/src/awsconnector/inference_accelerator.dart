@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InferenceAccelerator
 class InferenceAccelerator {
   /// The Elastic Inference accelerator device name. The ``deviceName`` must also be referenced in a container definition as a [ResourceRequirement](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ResourceRequirement.html).
-  final String? deviceName;
+  final pulumi.Input<String>? deviceName;
   /// The Elastic Inference accelerator type to use.
-  final String? deviceType;
+  final pulumi.Input<String>? deviceType;
 
   /// Creates a new [InferenceAccelerator].
   /// [deviceName] The Elastic Inference accelerator device name. The ``deviceName`` must also be referenced in a container definition as a [ResourceRequirement](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ResourceRequirement.html).
@@ -25,8 +26,8 @@ class InferenceAccelerator {
 
   factory InferenceAccelerator.fromMap(Map<String, dynamic> map) {
     return InferenceAccelerator(
-      deviceName: map['deviceName'] == null ? null : map['deviceName'] as String,
-      deviceType: map['deviceType'] == null ? null : map['deviceType'] as String,
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      deviceType: map['deviceType'] == null ? null : (map['deviceType'] as String).input(),
     );
   }
 }

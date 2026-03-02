@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection {
   /// Specifies the GROUP-ID in the #EXT-X-MEDIA tag of the target HLS audio rendition.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// Specifies the NAME in the #EXT-X-MEDIA tag of the target HLS audio rendition.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection].
   /// [groupId] Specifies the GROUP-ID in the #EXT-X-MEDIA tag of the target HLS audio rendition.
@@ -24,8 +25,8 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRe
 
   factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection(
-      groupId: map['groupId'] as String,
-      name: map['name'] as String,
+      groupId: (map['groupId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

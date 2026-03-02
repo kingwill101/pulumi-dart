@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
   /// The Amazon Resource Name (ARN) for the Exadata infrastructure.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Cloud exadata infrastructure id associated with this cloud autonomous VM cluster.
-  final String cloudExadataInfrastructureId;
+  final pulumi.Input<String> cloudExadataInfrastructureId;
   /// The display name of the Autonomous VM cluster.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The unique identifier of the cloud autonomous vm cluster.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the OCI resource anchor associated with this Autonomous VM cluster.
-  final String ociResourceAnchorName;
+  final pulumi.Input<String> ociResourceAnchorName;
   /// The URL for accessing the OCI console page for this Autonomous VM cluster.
-  final String ociUrl;
+  final pulumi.Input<String> ociUrl;
   /// The Oracle Cloud Identifier (OCID) of the Autonomous VM cluster.
-  final String ocid;
+  final pulumi.Input<String> ocid;
   /// The unique identifier of the ODB network associated with this Autonomous VM cluster.
-  final String odbNetworkId;
+  final pulumi.Input<String> odbNetworkId;
 
   /// Creates a new [GetCloudAutonomousVmClustersCloudAutonomousVmCluster].
   /// [arn] The Amazon Resource Name (ARN) for the Exadata infrastructure.
@@ -54,14 +55,14 @@ class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
 
   factory GetCloudAutonomousVmClustersCloudAutonomousVmCluster.fromMap(Map<String, dynamic> map) {
     return GetCloudAutonomousVmClustersCloudAutonomousVmCluster(
-      arn: map['arn'] as String,
-      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      ociResourceAnchorName: map['ociResourceAnchorName'] as String,
-      ociUrl: map['ociUrl'] as String,
-      ocid: map['ocid'] as String,
-      odbNetworkId: map['odbNetworkId'] as String,
+      arn: (map['arn'] as String).input(),
+      cloudExadataInfrastructureId: (map['cloudExadataInfrastructureId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      ociResourceAnchorName: (map['ociResourceAnchorName'] as String).input(),
+      ociUrl: (map['ociUrl'] as String).input(),
+      ocid: (map['ocid'] as String).input(),
+      odbNetworkId: (map['odbNetworkId'] as String).input(),
     );
   }
 }

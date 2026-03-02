@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Actions to invoke when the alert fires.
 class ActionsResponse {
   /// Action Group resource Ids to invoke when the alert fires.
-  final List<String>? actionGroups;
+  final pulumi.Input<List<String>>? actionGroups;
   /// The properties of an action properties.
-  final Map<String, String>? actionProperties;
+  final pulumi.Input<Map<String, String>>? actionProperties;
   /// The properties of an alert payload.
-  final Map<String, String>? customProperties;
+  final pulumi.Input<Map<String, String>>? customProperties;
 
   /// Creates a new [ActionsResponse].
   /// [actionGroups] Action Group resource Ids to invoke when the alert fires.
@@ -30,9 +31,9 @@ class ActionsResponse {
 
   factory ActionsResponse.fromMap(Map<String, dynamic> map) {
     return ActionsResponse(
-      actionGroups: map['actionGroups'] == null ? null : (map['actionGroups'] as List).cast<String>(),
-      actionProperties: map['actionProperties'] == null ? null : (map['actionProperties'] as Map).cast<String, String>(),
-      customProperties: map['customProperties'] == null ? null : (map['customProperties'] as Map).cast<String, String>(),
+      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups'] as List).cast<String>()).input(),
+      actionProperties: map['actionProperties'] == null ? null : ((map['actionProperties'] as Map).cast<String, String>()).input(),
+      customProperties: map['customProperties'] == null ? null : ((map['customProperties'] as Map).cast<String, String>()).input(),
     );
   }
 }

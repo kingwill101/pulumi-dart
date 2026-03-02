@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderMonitorSettingPropertiesResponse {
   /// The provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ProviderMonitorSettingPropertiesResponse].
   /// [provisioningState] The provisioning state.
@@ -19,7 +20,7 @@ class ProviderMonitorSettingPropertiesResponse {
 
   factory ProviderMonitorSettingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProviderMonitorSettingPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

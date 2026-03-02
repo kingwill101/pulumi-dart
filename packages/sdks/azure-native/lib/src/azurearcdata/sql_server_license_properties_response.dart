@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of SQL Server License.
 class SqlServerLicensePropertiesResponse {
   /// The activation state of the license.
-  final String activationState;
+  final pulumi.Input<String> activationState;
   /// SQL Server license type.
-  final String billingPlan;
+  final pulumi.Input<String> billingPlan;
   /// The timestamp of the most recent activation of the SqlServerLicense.
-  final String lastActivatedAt;
+  final pulumi.Input<String> lastActivatedAt;
   /// The timestamp of the most recent deactivation of the SqlServerLicense.
-  final String lastDeactivatedAt;
+  final pulumi.Input<String> lastDeactivatedAt;
   /// This property represents the choice between SQL Server Core and ESU licenses.
-  final String licenseCategory;
+  final pulumi.Input<String> licenseCategory;
   /// The number of total cores of the license covers.
-  final int physicalCores;
+  final pulumi.Input<int> physicalCores;
   /// The Azure scope to which the license will apply.
-  final String scopeType;
+  final pulumi.Input<String> scopeType;
   /// The tenantId the SQL Server license resource subscription resides in.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [SqlServerLicensePropertiesResponse].
   /// [activationState] The activation state of the license.
@@ -55,14 +56,14 @@ class SqlServerLicensePropertiesResponse {
 
   factory SqlServerLicensePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerLicensePropertiesResponse(
-      activationState: map['activationState'] as String,
-      billingPlan: map['billingPlan'] as String,
-      lastActivatedAt: map['lastActivatedAt'] as String,
-      lastDeactivatedAt: map['lastDeactivatedAt'] as String,
-      licenseCategory: map['licenseCategory'] as String,
-      physicalCores: map['physicalCores'] as int,
-      scopeType: map['scopeType'] as String,
-      tenantId: map['tenantId'] as String,
+      activationState: (map['activationState'] as String).input(),
+      billingPlan: (map['billingPlan'] as String).input(),
+      lastActivatedAt: (map['lastActivatedAt'] as String).input(),
+      lastDeactivatedAt: (map['lastDeactivatedAt'] as String).input(),
+      licenseCategory: (map['licenseCategory'] as String).input(),
+      physicalCores: (map['physicalCores'] as int).input(),
+      scopeType: (map['scopeType'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

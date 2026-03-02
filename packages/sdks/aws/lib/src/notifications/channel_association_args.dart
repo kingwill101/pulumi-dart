@@ -16,11 +16,9 @@ class ChannelAssociationArgs {
   /// [arn] ARN of the channel to associate with the notification configuration. Must match pattern `^arn:aws:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+$`.
   /// [notificationConfigurationArn] ARN of the notification configuration to associate the channel with.
   ChannelAssociationArgs({
-    required pulumi.Output<String> arn,
-    required pulumi.Output<String> notificationConfigurationArn,
-  }) :
-      arn = pulumi.Input.asInput<String>(arn),
-      notificationConfigurationArn = pulumi.Input.asInput<String>(notificationConfigurationArn);
+    required this.arn,
+    required this.notificationConfigurationArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ChannelAssociationArgs {
 
   factory ChannelAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ChannelAssociationArgs(
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      notificationConfigurationArn: pulumi.Output.create<String>(map['notificationConfigurationArn'] as String),
+      arn: (map['arn'] as String).input(),
+      notificationConfigurationArn: (map['notificationConfigurationArn'] as String).input(),
     );
   }
 }

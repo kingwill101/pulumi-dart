@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventTargetRetryPolicy {
   /// The age in seconds to continue to make retry attempts.
-  final int? maximumEventAgeInSeconds;
+  final pulumi.Input<int>? maximumEventAgeInSeconds;
   /// maximum number of retry attempts to make before the request fails
-  final int? maximumRetryAttempts;
+  final pulumi.Input<int>? maximumRetryAttempts;
 
   /// Creates a new [EventTargetRetryPolicy].
   /// [maximumEventAgeInSeconds] The age in seconds to continue to make retry attempts.
@@ -24,8 +25,8 @@ class EventTargetRetryPolicy {
 
   factory EventTargetRetryPolicy.fromMap(Map<String, dynamic> map) {
     return EventTargetRetryPolicy(
-      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : map['maximumEventAgeInSeconds'] as int,
-      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : map['maximumRetryAttempts'] as int,
+      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : (map['maximumEventAgeInSeconds'] as int).input(),
+      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : (map['maximumRetryAttempts'] as int).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class HoneypotNodeState {
   /// [securityGroupProbeIpLists] Release the collection of network segments.
   /// [status] The status of the resource
   HoneypotNodeState({
-    pulumi.Output<bool>? allowHoneypotAccessInternet,
-    pulumi.Output<int>? availableProbeNum,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? nodeName,
-    pulumi.Output<List<String>>? securityGroupProbeIpLists,
-    pulumi.Output<int>? status,
-  }) :
-      allowHoneypotAccessInternet = pulumi.Input.asOptionalInput<bool>(allowHoneypotAccessInternet),
-      availableProbeNum = pulumi.Input.asOptionalInput<int>(availableProbeNum),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      nodeName = pulumi.Input.asOptionalInput<String>(nodeName),
-      securityGroupProbeIpLists = pulumi.Input.asOptionalInput<List<String>>(securityGroupProbeIpLists),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    this.allowHoneypotAccessInternet,
+    this.availableProbeNum,
+    this.createTime,
+    this.nodeName,
+    this.securityGroupProbeIpLists,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class HoneypotNodeState {
 
   factory HoneypotNodeState.fromMap(Map<String, dynamic> map) {
     return HoneypotNodeState(
-      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : pulumi.Output.create<bool>(map['allowHoneypotAccessInternet'] as bool),
-      availableProbeNum: map['availableProbeNum'] == null ? null : pulumi.Output.create<int>(map['availableProbeNum'] as int),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      nodeName: map['nodeName'] == null ? null : pulumi.Output.create<String>(map['nodeName'] as String),
-      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupProbeIpLists'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : (map['allowHoneypotAccessInternet'] as bool).input(),
+      availableProbeNum: map['availableProbeNum'] == null ? null : (map['availableProbeNum'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : ((map['securityGroupProbeIpLists'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

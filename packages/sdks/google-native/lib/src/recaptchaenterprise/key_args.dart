@@ -41,25 +41,16 @@ class KeyArgs {
   /// [wafSettings] Optional. Settings for WAF
   /// [webSettings] Settings for keys that can be used by websites.
   KeyArgs({
-    pulumi.Output<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings>? androidSettings,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudRecaptchaenterpriseV1IOSKeySettings>? iosSettings,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudRecaptchaenterpriseV1TestingOptions>? testingOptions,
-    pulumi.Output<GoogleCloudRecaptchaenterpriseV1WafSettings>? wafSettings,
-    pulumi.Output<GoogleCloudRecaptchaenterpriseV1WebKeySettings>? webSettings,
-  }) :
-      androidSettings = pulumi.Input.asOptionalInput<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings>(androidSettings),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      iosSettings = pulumi.Input.asOptionalInput<GoogleCloudRecaptchaenterpriseV1IOSKeySettings>(iosSettings),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      testingOptions = pulumi.Input.asOptionalInput<GoogleCloudRecaptchaenterpriseV1TestingOptions>(testingOptions),
-      wafSettings = pulumi.Input.asOptionalInput<GoogleCloudRecaptchaenterpriseV1WafSettings>(wafSettings),
-      webSettings = pulumi.Input.asOptionalInput<GoogleCloudRecaptchaenterpriseV1WebKeySettings>(webSettings);
+    this.androidSettings,
+    required this.displayName,
+    this.iosSettings,
+    this.labels,
+    this.name,
+    this.project,
+    this.testingOptions,
+    this.wafSettings,
+    this.webSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      androidSettings: map['androidSettings'] == null ? null : pulumi.Output.create<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings>(GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      iosSettings: map['iosSettings'] == null ? null : pulumi.Output.create<GoogleCloudRecaptchaenterpriseV1IOSKeySettings>(GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      testingOptions: map['testingOptions'] == null ? null : pulumi.Output.create<GoogleCloudRecaptchaenterpriseV1TestingOptions>(GoogleCloudRecaptchaenterpriseV1TestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())),
-      wafSettings: map['wafSettings'] == null ? null : pulumi.Output.create<GoogleCloudRecaptchaenterpriseV1WafSettings>(GoogleCloudRecaptchaenterpriseV1WafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())),
-      webSettings: map['webSettings'] == null ? null : pulumi.Output.create<GoogleCloudRecaptchaenterpriseV1WebKeySettings>(GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())),
+      androidSettings: map['androidSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      iosSettings: map['iosSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      testingOptions: map['testingOptions'] == null ? null : (GoogleCloudRecaptchaenterpriseV1TestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())).input(),
+      wafSettings: map['wafSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1WafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())).input(),
+      webSettings: map['webSettings'] == null ? null : (GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

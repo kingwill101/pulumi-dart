@@ -7,9 +7,9 @@ import 'network_interface_response.dart';
 /// The network profile definition.
 class NetworkProfileResponse {
   /// Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
-  final List<NetworkInterfaceResponse>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceResponse>>? networkInterfaces;
   /// Specifies the identifier of the subnet.
-  final ApiEntityReferenceResponse? subnet;
+  final pulumi.Input<ApiEntityReferenceResponse>? subnet;
 
   /// Creates a new [NetworkProfileResponse].
   /// [networkInterfaces] Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
@@ -21,15 +21,15 @@ class NetworkProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<ApiEntityReferenceResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      subnet: map['subnet'] == null ? null : ApiEntityReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnet: map['subnet'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

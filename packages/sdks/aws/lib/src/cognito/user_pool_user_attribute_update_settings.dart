@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolUserAttributeUpdateSettings {
   /// A list of attributes requiring verification before update. If set, the provided value(s) must also be set in `auto_verified_attributes`. Valid values: `email`, `phone_number`.
-  final List<String> attributesRequireVerificationBeforeUpdates;
+  final pulumi.Input<List<String>> attributesRequireVerificationBeforeUpdates;
 
   /// Creates a new [UserPoolUserAttributeUpdateSettings].
   /// [attributesRequireVerificationBeforeUpdates] A list of attributes requiring verification before update. If set, the provided value(s) must also be set in `auto_verified_attributes`. Valid values: `email`, `phone_number`.
@@ -19,7 +20,7 @@ class UserPoolUserAttributeUpdateSettings {
 
   factory UserPoolUserAttributeUpdateSettings.fromMap(Map<String, dynamic> map) {
     return UserPoolUserAttributeUpdateSettings(
-      attributesRequireVerificationBeforeUpdates: (map['attributesRequireVerificationBeforeUpdates'] as List).cast<String>(),
+      attributesRequireVerificationBeforeUpdates: ((map['attributesRequireVerificationBeforeUpdates'] as List).cast<String>()).input(),
     );
   }
 }

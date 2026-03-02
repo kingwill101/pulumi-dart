@@ -22,17 +22,12 @@ class EipDomainNameState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   EipDomainNameState({
-    pulumi.Output<String>? allocationId,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? ptrRecord,
-    pulumi.Output<String>? region,
-    pulumi.Output<EipDomainNameTimeouts>? timeouts,
-  }) :
-      allocationId = pulumi.Input.asOptionalInput<String>(allocationId),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      ptrRecord = pulumi.Input.asOptionalInput<String>(ptrRecord),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<EipDomainNameTimeouts>(timeouts);
+    this.allocationId,
+    this.domainName,
+    this.ptrRecord,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EipDomainNameState {
 
   factory EipDomainNameState.fromMap(Map<String, dynamic> map) {
     return EipDomainNameState(
-      allocationId: map['allocationId'] == null ? null : pulumi.Output.create<String>(map['allocationId'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      ptrRecord: map['ptrRecord'] == null ? null : pulumi.Output.create<String>(map['ptrRecord'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<EipDomainNameTimeouts>(EipDomainNameTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      ptrRecord: map['ptrRecord'] == null ? null : (map['ptrRecord'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (EipDomainNameTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

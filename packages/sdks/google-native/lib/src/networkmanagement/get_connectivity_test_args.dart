@@ -14,11 +14,9 @@ class GetConnectivityTestArgs {
   /// [connectivityTestId] Required.
   /// [project] Optional.
   GetConnectivityTestArgs({
-    required pulumi.Output<String> connectivityTestId,
-    pulumi.Output<String>? project,
-  }) :
-      connectivityTestId = pulumi.Input.asInput<String>(connectivityTestId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.connectivityTestId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetConnectivityTestArgs {
 
   factory GetConnectivityTestArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestArgs(
-      connectivityTestId: pulumi.Output.create<String>(map['connectivityTestId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      connectivityTestId: (map['connectivityTestId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

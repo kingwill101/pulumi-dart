@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NFS Azure File Properties.
 class NfsAzureFilePropertiesResponse {
   /// Access mode for storage
-  final String? accessMode;
+  final pulumi.Input<String>? accessMode;
   /// Server for NFS azure file.
-  final String? server;
+  final pulumi.Input<String>? server;
   /// NFS Azure file share name.
-  final String? shareName;
+  final pulumi.Input<String>? shareName;
 
   /// Creates a new [NfsAzureFilePropertiesResponse].
   /// [accessMode] Access mode for storage
@@ -30,9 +31,9 @@ class NfsAzureFilePropertiesResponse {
 
   factory NfsAzureFilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NfsAzureFilePropertiesResponse(
-      accessMode: map['accessMode'] == null ? null : map['accessMode'] as String,
-      server: map['server'] == null ? null : map['server'] as String,
-      shareName: map['shareName'] == null ? null : map['shareName'] as String,
+      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
     );
   }
 }

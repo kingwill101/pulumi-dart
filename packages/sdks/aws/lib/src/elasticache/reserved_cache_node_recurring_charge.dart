@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReservedCacheNodeRecurringCharge {
-  final double recurringChargeAmount;
-  final String recurringChargeFrequency;
+  final pulumi.Input<double> recurringChargeAmount;
+  final pulumi.Input<String> recurringChargeFrequency;
 
   /// Creates a new [ReservedCacheNodeRecurringCharge].
   /// [recurringChargeAmount] Required.
@@ -22,8 +23,8 @@ class ReservedCacheNodeRecurringCharge {
 
   factory ReservedCacheNodeRecurringCharge.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeRecurringCharge(
-      recurringChargeAmount: map['recurringChargeAmount'] as double,
-      recurringChargeFrequency: map['recurringChargeFrequency'] as String,
+      recurringChargeAmount: (map['recurringChargeAmount'] as double).input(),
+      recurringChargeFrequency: (map['recurringChargeFrequency'] as String).input(),
     );
   }
 }

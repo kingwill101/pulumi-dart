@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsTimecodeConfig {
   /// The source for the timecode that will be associated with the events outputs.
-  final String source;
+  final pulumi.Input<String> source;
   /// Threshold in frames beyond which output timecode is resynchronized to the input timecode.
-  final int? syncThreshold;
+  final pulumi.Input<int>? syncThreshold;
 
   /// Creates a new [ChannelEncoderSettingsTimecodeConfig].
   /// [source] The source for the timecode that will be associated with the events outputs.
@@ -24,8 +25,8 @@ class ChannelEncoderSettingsTimecodeConfig {
 
   factory ChannelEncoderSettingsTimecodeConfig.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsTimecodeConfig(
-      source: map['source'] as String,
-      syncThreshold: map['syncThreshold'] == null ? null : map['syncThreshold'] as int,
+      source: (map['source'] as String).input(),
+      syncThreshold: map['syncThreshold'] == null ? null : (map['syncThreshold'] as int).input(),
     );
   }
 }

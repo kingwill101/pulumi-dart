@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuCache {
   /// Specifies the cache level for CPU configurations, such as L1, L2, or L3.
-  final double? level;
+  final pulumi.Input<double>? level;
   /// Determines the mode of operation for CPU caches, affecting how data is stored and retrieved.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [DomainCpuCache].
   /// [level] Specifies the cache level for CPU configurations, such as L1, L2, or L3.
@@ -24,8 +25,8 @@ class DomainCpuCache {
 
   factory DomainCpuCache.fromMap(Map<String, dynamic> map) {
     return DomainCpuCache(
-      level: map['level'] == null ? null : map['level'] as double,
-      mode: map['mode'] as String,
+      level: map['level'] == null ? null : (map['level'] as double).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The location of amazon S3 dataset.
 class AmazonS3LocationResponse {
   /// Specify the bucketName of amazon S3. Type: string (or Expression with resultType string)
-  final dynamic bucketName;
+  final pulumi.Input<dynamic>? bucketName;
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
-  final dynamic fileName;
+  final pulumi.Input<dynamic>? fileName;
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
-  final dynamic folderPath;
+  final pulumi.Input<dynamic>? folderPath;
   /// Type of dataset storage location.
   /// Expected value is 'AmazonS3Location'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specify the version of amazon S3. Type: string (or Expression with resultType string).
-  final dynamic version;
+  final pulumi.Input<dynamic>? version;
 
   /// Creates a new [AmazonS3LocationResponse].
   /// [bucketName] Specify the bucketName of amazon S3. Type: string (or Expression with resultType string)
@@ -41,11 +42,11 @@ class AmazonS3LocationResponse {
 
   factory AmazonS3LocationResponse.fromMap(Map<String, dynamic> map) {
     return AmazonS3LocationResponse(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'],
-      fileName: map['fileName'] == null ? null : map['fileName'],
-      folderPath: map['folderPath'] == null ? null : map['folderPath'],
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'],
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version']).input(),
     );
   }
 }

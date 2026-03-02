@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rosetta_net_pip_business_document_response.dart';
 
 /// The integration account RosettaNet ProcessConfiguration role settings.
 class RosettaNetPipRoleSettingsResponse {
   /// The action name.
-  final String action;
+  final pulumi.Input<String> action;
   /// The RosettaNet ProcessConfiguration business document.
-  final RosettaNetPipBusinessDocumentResponse businessDocument;
+  final pulumi.Input<RosettaNetPipBusinessDocumentResponse> businessDocument;
   /// The description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The role name.
-  final String role;
+  final pulumi.Input<String> role;
   /// The RosettaNet ProcessConfiguration role type.
-  final String roleType;
+  final pulumi.Input<String> roleType;
   /// The service name.
-  final String service;
+  final pulumi.Input<String> service;
   /// The service classification name.
-  final String serviceClassification;
+  final pulumi.Input<String> serviceClassification;
 
   /// Creates a new [RosettaNetPipRoleSettingsResponse].
   /// [action] The action name.
@@ -40,7 +41,7 @@ class RosettaNetPipRoleSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'businessDocument': businessDocument.toMap(),
+      'businessDocument': pulumi.Input.mapInputValue<RosettaNetPipBusinessDocumentResponse, Map<String, dynamic>>(businessDocument, (value) => value.toMap()),
       'description': ?description,
       'role': role,
       'roleType': roleType,
@@ -51,13 +52,13 @@ class RosettaNetPipRoleSettingsResponse {
 
   factory RosettaNetPipRoleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipRoleSettingsResponse(
-      action: map['action'] as String,
-      businessDocument: RosettaNetPipBusinessDocumentResponse.fromMap((map['businessDocument'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      role: map['role'] as String,
-      roleType: map['roleType'] as String,
-      service: map['service'] as String,
-      serviceClassification: map['serviceClassification'] as String,
+      action: (map['action'] as String).input(),
+      businessDocument: (RosettaNetPipBusinessDocumentResponse.fromMap((map['businessDocument'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      role: (map['role'] as String).input(),
+      roleType: (map['roleType'] as String).input(),
+      service: (map['service'] as String).input(),
+      serviceClassification: (map['serviceClassification'] as String).input(),
     );
   }
 }

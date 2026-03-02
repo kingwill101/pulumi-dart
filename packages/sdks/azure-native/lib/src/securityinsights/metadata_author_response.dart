@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Publisher or creator of the content item.
 class MetadataAuthorResponse {
   /// Email of author contact
-  final String? email;
+  final pulumi.Input<String>? email;
   /// Link for author/vendor page
-  final String? link;
+  final pulumi.Input<String>? link;
   /// Name of the author. Company or person.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [MetadataAuthorResponse].
   /// [email] Email of author contact
@@ -30,9 +31,9 @@ class MetadataAuthorResponse {
 
   factory MetadataAuthorResponse.fromMap(Map<String, dynamic> map) {
     return MetadataAuthorResponse(
-      email: map['email'] == null ? null : map['email'] as String,
-      link: map['link'] == null ? null : map['link'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      link: map['link'] == null ? null : (map['link'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

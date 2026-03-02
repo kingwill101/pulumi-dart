@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration {
   /// Collection of keywords to match.
-  final List<String> keywords;
+  final pulumi.Input<List<String>> keywords;
   /// Negate the rule.
-  final bool? negate;
+  final pulumi.Input<bool>? negate;
   /// Rule name.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
 
   /// Creates a new [MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration].
   /// [keywords] Collection of keywords to match.
@@ -29,9 +30,9 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMat
 
   factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration(
-      keywords: (map['keywords'] as List).cast<String>(),
-      negate: map['negate'] == null ? null : map['negate'] as bool,
-      ruleName: map['ruleName'] as String,
+      keywords: ((map['keywords'] as List).cast<String>()).input(),
+      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

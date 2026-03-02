@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Adds and removes POSIX capabilities from running containers.
 class CapabilitiesPatch {
   /// Added capabilities
-  final List<String>? add;
+  final pulumi.Input<List<String>>? add;
   /// Removed capabilities
-  final List<String>? drop;
+  final pulumi.Input<List<String>>? drop;
 
   /// Creates a new [CapabilitiesPatch].
   /// [add] Added capabilities
@@ -25,8 +26,8 @@ class CapabilitiesPatch {
 
   factory CapabilitiesPatch.fromMap(Map<String, dynamic> map) {
     return CapabilitiesPatch(
-      add: map['add'] == null ? null : (map['add'] as List).cast<String>(),
-      drop: map['drop'] == null ? null : (map['drop'] as List).cast<String>(),
+      add: map['add'] == null ? null : ((map['add'] as List).cast<String>()).input(),
+      drop: map['drop'] == null ? null : ((map['drop'] as List).cast<String>()).input(),
     );
   }
 }

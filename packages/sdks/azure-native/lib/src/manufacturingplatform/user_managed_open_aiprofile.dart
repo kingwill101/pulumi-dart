@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to User Managed OpenAI Resource
 class UserManagedOpenAIProfile {
   /// Embedding Model Deployment Name
-  final String embeddingModelDeploymentName;
+  final pulumi.Input<String> embeddingModelDeploymentName;
   /// GPT Model Deployment Name
-  final String gptModelDeploymentName;
+  final pulumi.Input<String> gptModelDeploymentName;
   /// Resource Id of OpenAI Resource
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [UserManagedOpenAIProfile].
   /// [embeddingModelDeploymentName] Embedding Model Deployment Name
@@ -30,9 +31,9 @@ class UserManagedOpenAIProfile {
 
   factory UserManagedOpenAIProfile.fromMap(Map<String, dynamic> map) {
     return UserManagedOpenAIProfile(
-      embeddingModelDeploymentName: map['embeddingModelDeploymentName'] as String,
-      gptModelDeploymentName: map['gptModelDeploymentName'] as String,
-      id: map['id'] as String,
+      embeddingModelDeploymentName: (map['embeddingModelDeploymentName'] as String).input(),
+      gptModelDeploymentName: (map['gptModelDeploymentName'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

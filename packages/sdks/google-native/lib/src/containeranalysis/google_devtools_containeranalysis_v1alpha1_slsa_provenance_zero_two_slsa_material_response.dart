@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse {
   /// Collection of cryptographic digests for the contents of this artifact.
-  final Map<String, String> digest;
+  final pulumi.Input<Map<String, String>> digest;
   /// The method by which this artifact was referenced during the build.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse].
   /// [digest] Collection of cryptographic digests for the contents of this artifact.
@@ -25,8 +26,8 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialRe
 
   factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse(
-      digest: (map['digest'] as Map).cast<String, String>(),
-      uri: map['uri'] as String,
+      digest: ((map['digest'] as Map).cast<String, String>()).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetInstanceKeywordsArgs {
   /// [key] The type of reserved keyword to query. Valid values: `account`, `database`.
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
   GetInstanceKeywordsArgs({
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? outputFile,
-  }) :
-      key = pulumi.Input.asInput<String>(key),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.key,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInstanceKeywordsArgs {
 
   factory GetInstanceKeywordsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceKeywordsArgs(
-      key: pulumi.Output.create<String>(map['key'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      key: (map['key'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

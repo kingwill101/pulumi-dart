@@ -16,11 +16,9 @@ class GetResolverZonesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
   GetResolverZonesArgs({
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResolverZonesArgs {
 
   factory GetResolverZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverZonesArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

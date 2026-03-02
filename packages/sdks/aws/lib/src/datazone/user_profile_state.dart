@@ -34,23 +34,15 @@ class UserProfileState {
   /// [userIdentifier] The user identifier.
   /// [userType] The user type.
   UserProfileState({
-    pulumi.Output<List<UserProfileDetail>>? details,
-    pulumi.Output<String>? domainIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<UserProfileTimeouts>? timeouts,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? userIdentifier,
-    pulumi.Output<String>? userType,
-  }) :
-      details = pulumi.Input.asOptionalInput<List<UserProfileDetail>>(details),
-      domainIdentifier = pulumi.Input.asOptionalInput<String>(domainIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      timeouts = pulumi.Input.asOptionalInput<UserProfileTimeouts>(timeouts),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      userIdentifier = pulumi.Input.asOptionalInput<String>(userIdentifier),
-      userType = pulumi.Input.asOptionalInput<String>(userType);
+    this.details,
+    this.domainIdentifier,
+    this.region,
+    this.status,
+    this.timeouts,
+    this.type,
+    this.userIdentifier,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class UserProfileState {
 
   factory UserProfileState.fromMap(Map<String, dynamic> map) {
     return UserProfileState(
-      details: map['details'] == null ? null : pulumi.Output.create<List<UserProfileDetail>>(pulumi.Input.decodeList<UserProfileDetail>(map['details'], (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      domainIdentifier: map['domainIdentifier'] == null ? null : pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<UserProfileTimeouts>(UserProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      userIdentifier: map['userIdentifier'] == null ? null : pulumi.Output.create<String>(map['userIdentifier'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<UserProfileDetail>(map['details'], (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (UserProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userIdentifier: map['userIdentifier'] == null ? null : (map['userIdentifier'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

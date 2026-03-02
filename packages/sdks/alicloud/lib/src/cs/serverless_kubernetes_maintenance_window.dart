@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessKubernetesMaintenanceWindow {
   /// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
   /// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
-  final String? maintenanceTime;
+  final pulumi.Input<String>? maintenanceTime;
   /// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
   ///
   /// for example:
@@ -19,7 +20,7 @@ class ServerlessKubernetesMaintenanceWindow {
   /// weekly_period     = "Monday,Friday"
   /// }
   /// ```
-  final String? weeklyPeriod;
+  final pulumi.Input<String>? weeklyPeriod;
 
   /// Creates a new [ServerlessKubernetesMaintenanceWindow].
   /// [duration] The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
@@ -44,10 +45,10 @@ class ServerlessKubernetesMaintenanceWindow {
 
   factory ServerlessKubernetesMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ServerlessKubernetesMaintenanceWindow(
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      enable: map['enable'] == null ? null : map['enable'] as bool,
-      maintenanceTime: map['maintenanceTime'] == null ? null : map['maintenanceTime'] as String,
-      weeklyPeriod: map['weeklyPeriod'] == null ? null : map['weeklyPeriod'] as String,
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      maintenanceTime: map['maintenanceTime'] == null ? null : (map['maintenanceTime'] as String).input(),
+      weeklyPeriod: map['weeklyPeriod'] == null ? null : (map['weeklyPeriod'] as String).input(),
     );
   }
 }

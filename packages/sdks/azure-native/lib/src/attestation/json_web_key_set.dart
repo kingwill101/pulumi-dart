@@ -9,7 +9,7 @@ class JsonWebKeySet {
   /// an order of preference among them, although applications of JWK Sets
   /// can choose to assign a meaning to the order for their purposes, if
   /// desired.
-  final List<JsonWebKey>? keys;
+  final pulumi.Input<List<JsonWebKey>>? keys;
 
   /// Creates a new [JsonWebKeySet].
   /// [keys] The value of the "keys" parameter is an array of JWK values.  By
@@ -19,13 +19,13 @@ class JsonWebKeySet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keys': ?keys == null ? null : pulumi.Input.encodeList<JsonWebKey, Map<String, dynamic>>(keys!, (value) => value.toMap()),
+      'keys': ?pulumi.Input.mapOptionalInputValue<List<JsonWebKey>, List<Map<String, dynamic>>>(keys, (value) => pulumi.Input.encodeList<JsonWebKey, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JsonWebKeySet.fromMap(Map<String, dynamic> map) {
     return JsonWebKeySet(
-      keys: map['keys'] == null ? null : pulumi.Input.decodeList<JsonWebKey>(map['keys'], (value) => JsonWebKey.fromMap((value as Map).cast<String, dynamic>())),
+      keys: map['keys'] == null ? null : (pulumi.Input.decodeList<JsonWebKey>(map['keys'], (value) => JsonWebKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

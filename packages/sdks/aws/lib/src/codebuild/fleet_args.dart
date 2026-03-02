@@ -51,31 +51,19 @@ class FleetArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfigs] Configuration block. See `vpc_config` below.
   FleetArgs({
-    required pulumi.Output<int> baseCapacity,
-    pulumi.Output<FleetComputeConfiguration>? computeConfiguration,
-    required pulumi.Output<String> computeType,
-    required pulumi.Output<String> environmentType,
-    pulumi.Output<String>? fleetServiceRole,
-    pulumi.Output<String>? imageId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? overflowBehavior,
-    pulumi.Output<String>? region,
-    pulumi.Output<FleetScalingConfiguration>? scalingConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<FleetVpcConfig>>? vpcConfigs,
-  }) :
-      baseCapacity = pulumi.Input.asInput<int>(baseCapacity),
-      computeConfiguration = pulumi.Input.asOptionalInput<FleetComputeConfiguration>(computeConfiguration),
-      computeType = pulumi.Input.asInput<String>(computeType),
-      environmentType = pulumi.Input.asInput<String>(environmentType),
-      fleetServiceRole = pulumi.Input.asOptionalInput<String>(fleetServiceRole),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      overflowBehavior = pulumi.Input.asOptionalInput<String>(overflowBehavior),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scalingConfiguration = pulumi.Input.asOptionalInput<FleetScalingConfiguration>(scalingConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcConfigs = pulumi.Input.asOptionalInput<List<FleetVpcConfig>>(vpcConfigs);
+    required this.baseCapacity,
+    this.computeConfiguration,
+    required this.computeType,
+    required this.environmentType,
+    this.fleetServiceRole,
+    this.imageId,
+    this.name,
+    this.overflowBehavior,
+    this.region,
+    this.scalingConfiguration,
+    this.tags,
+    this.vpcConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      baseCapacity: pulumi.Output.create<int>(map['baseCapacity'] as int),
-      computeConfiguration: map['computeConfiguration'] == null ? null : pulumi.Output.create<FleetComputeConfiguration>(FleetComputeConfiguration.fromMap((map['computeConfiguration'] as Map).cast<String, dynamic>())),
-      computeType: pulumi.Output.create<String>(map['computeType'] as String),
-      environmentType: pulumi.Output.create<String>(map['environmentType'] as String),
-      fleetServiceRole: map['fleetServiceRole'] == null ? null : pulumi.Output.create<String>(map['fleetServiceRole'] as String),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      overflowBehavior: map['overflowBehavior'] == null ? null : pulumi.Output.create<String>(map['overflowBehavior'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scalingConfiguration: map['scalingConfiguration'] == null ? null : pulumi.Output.create<FleetScalingConfiguration>(FleetScalingConfiguration.fromMap((map['scalingConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcConfigs: map['vpcConfigs'] == null ? null : pulumi.Output.create<List<FleetVpcConfig>>(pulumi.Input.decodeList<FleetVpcConfig>(map['vpcConfigs'], (value) => FleetVpcConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      baseCapacity: (map['baseCapacity'] as int).input(),
+      computeConfiguration: map['computeConfiguration'] == null ? null : (FleetComputeConfiguration.fromMap((map['computeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      computeType: (map['computeType'] as String).input(),
+      environmentType: (map['environmentType'] as String).input(),
+      fleetServiceRole: map['fleetServiceRole'] == null ? null : (map['fleetServiceRole'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      overflowBehavior: map['overflowBehavior'] == null ? null : (map['overflowBehavior'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scalingConfiguration: map['scalingConfiguration'] == null ? null : (FleetScalingConfiguration.fromMap((map['scalingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcConfigs: map['vpcConfigs'] == null ? null : (pulumi.Input.decodeList<FleetVpcConfig>(map['vpcConfigs'], (value) => FleetVpcConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

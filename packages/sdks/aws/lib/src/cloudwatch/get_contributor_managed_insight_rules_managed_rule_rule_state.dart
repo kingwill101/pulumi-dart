@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetContributorManagedInsightRulesManagedRuleRuleState {
   /// Name of the Contributor Insights rule that contains data for the specified Amazon Web Services resource.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
   /// Indicates whether the rule is enabled or disabled.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetContributorManagedInsightRulesManagedRuleRuleState].
   /// [ruleName] Name of the Contributor Insights rule that contains data for the specified Amazon Web Services resource.
@@ -24,8 +25,8 @@ class GetContributorManagedInsightRulesManagedRuleRuleState {
 
   factory GetContributorManagedInsightRulesManagedRuleRuleState.fromMap(Map<String, dynamic> map) {
     return GetContributorManagedInsightRulesManagedRuleRuleState(
-      ruleName: map['ruleName'] as String,
-      state: map['state'] as String,
+      ruleName: (map['ruleName'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

@@ -6,32 +6,32 @@ import 'reportable_exception_response.dart';
 
 class MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse {
   /// Backup sets that are currently active (Either being uploaded or getting restored)
-  final List<BackupSetInfoResponse> activeBackupSets;
+  final pulumi.Input<List<BackupSetInfoResponse>> activeBackupSets;
   /// Name of container created in the Azure Storage account where backups are copied to
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// Database migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// prefix string to use for querying errors for this database
-  final String errorPrefix;
+  final pulumi.Input<String> errorPrefix;
   /// Migration exceptions and warnings
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Details of full backup set
-  final BackupSetInfoResponse fullBackupSetInfo;
+  final pulumi.Input<BackupSetInfoResponse> fullBackupSetInfo;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether full backup has been applied to the target database or not
-  final bool isFullBackupRestored;
+  final pulumi.Input<bool> isFullBackupRestored;
   /// Last applied backup set information
-  final BackupSetInfoResponse lastRestoredBackupSetInfo;
+  final pulumi.Input<BackupSetInfoResponse> lastRestoredBackupSetInfo;
   /// Current state of database
-  final String migrationState;
+  final pulumi.Input<String> migrationState;
   /// Result type
   /// Expected value is 'DatabaseLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Name of the database
-  final String sourceDatabaseName;
+  final pulumi.Input<String> sourceDatabaseName;
   /// Database migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
 
   /// Creates a new [MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse].
   /// [activeBackupSets] Backup sets that are currently active (Either being uploaded or getting restored)
@@ -65,15 +65,15 @@ class MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeBackupSets': pulumi.Input.encodeList<BackupSetInfoResponse, Map<String, dynamic>>(activeBackupSets, (value) => value.toMap()),
+      'activeBackupSets': pulumi.Input.mapInputValue<List<BackupSetInfoResponse>, List<Map<String, dynamic>>>(activeBackupSets, (value) => pulumi.Input.encodeList<BackupSetInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'containerName': containerName,
       'endedOn': endedOn,
       'errorPrefix': errorPrefix,
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
-      'fullBackupSetInfo': fullBackupSetInfo.toMap(),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fullBackupSetInfo': pulumi.Input.mapInputValue<BackupSetInfoResponse, Map<String, dynamic>>(fullBackupSetInfo, (value) => value.toMap()),
       'id': id,
       'isFullBackupRestored': isFullBackupRestored,
-      'lastRestoredBackupSetInfo': lastRestoredBackupSetInfo.toMap(),
+      'lastRestoredBackupSetInfo': pulumi.Input.mapInputValue<BackupSetInfoResponse, Map<String, dynamic>>(lastRestoredBackupSetInfo, (value) => value.toMap()),
       'migrationState': migrationState,
       'resultType': resultType,
       'sourceDatabaseName': sourceDatabaseName,
@@ -83,19 +83,19 @@ class MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse {
 
   factory MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse(
-      activeBackupSets: pulumi.Input.decodeList<BackupSetInfoResponse>(map['activeBackupSets'], (value) => BackupSetInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      containerName: map['containerName'] as String,
-      endedOn: map['endedOn'] as String,
-      errorPrefix: map['errorPrefix'] as String,
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      fullBackupSetInfo: BackupSetInfoResponse.fromMap((map['fullBackupSetInfo'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      isFullBackupRestored: map['isFullBackupRestored'] as bool,
-      lastRestoredBackupSetInfo: BackupSetInfoResponse.fromMap((map['lastRestoredBackupSetInfo'] as Map).cast<String, dynamic>()),
-      migrationState: map['migrationState'] as String,
-      resultType: map['resultType'] as String,
-      sourceDatabaseName: map['sourceDatabaseName'] as String,
-      startedOn: map['startedOn'] as String,
+      activeBackupSets: (pulumi.Input.decodeList<BackupSetInfoResponse>(map['activeBackupSets'], (value) => BackupSetInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerName: (map['containerName'] as String).input(),
+      endedOn: (map['endedOn'] as String).input(),
+      errorPrefix: (map['errorPrefix'] as String).input(),
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullBackupSetInfo: (BackupSetInfoResponse.fromMap((map['fullBackupSetInfo'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      isFullBackupRestored: (map['isFullBackupRestored'] as bool).input(),
+      lastRestoredBackupSetInfo: (BackupSetInfoResponse.fromMap((map['lastRestoredBackupSetInfo'] as Map).cast<String, dynamic>())).input(),
+      migrationState: (map['migrationState'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      sourceDatabaseName: (map['sourceDatabaseName'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
     );
   }
 }

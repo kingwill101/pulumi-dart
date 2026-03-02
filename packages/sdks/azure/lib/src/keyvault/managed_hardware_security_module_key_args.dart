@@ -39,25 +39,16 @@ class ManagedHardwareSecurityModuleKeyArgs {
   /// [notBeforeDate] Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   /// [tags] A mapping of tags to assign to the resource.
   ManagedHardwareSecurityModuleKeyArgs({
-    pulumi.Output<String>? curve,
-    pulumi.Output<String>? expirationDate,
-    required pulumi.Output<List<String>> keyOpts,
-    pulumi.Output<int>? keySize,
-    required pulumi.Output<String> keyType,
-    required pulumi.Output<String> managedHsmId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notBeforeDate,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      curve = pulumi.Input.asOptionalInput<String>(curve),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      keyOpts = pulumi.Input.asInput<List<String>>(keyOpts),
-      keySize = pulumi.Input.asOptionalInput<int>(keySize),
-      keyType = pulumi.Input.asInput<String>(keyType),
-      managedHsmId = pulumi.Input.asInput<String>(managedHsmId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notBeforeDate = pulumi.Input.asOptionalInput<String>(notBeforeDate),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.curve,
+    this.expirationDate,
+    required this.keyOpts,
+    this.keySize,
+    required this.keyType,
+    required this.managedHsmId,
+    this.name,
+    this.notBeforeDate,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ManagedHardwareSecurityModuleKeyArgs {
 
   factory ManagedHardwareSecurityModuleKeyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleKeyArgs(
-      curve: map['curve'] == null ? null : pulumi.Output.create<String>(map['curve'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      keyOpts: pulumi.Output.create<List<String>>((map['keyOpts'] as List).cast<String>()),
-      keySize: map['keySize'] == null ? null : pulumi.Output.create<int>(map['keySize'] as int),
-      keyType: pulumi.Output.create<String>(map['keyType'] as String),
-      managedHsmId: pulumi.Output.create<String>(map['managedHsmId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notBeforeDate: map['notBeforeDate'] == null ? null : pulumi.Output.create<String>(map['notBeforeDate'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      curve: map['curve'] == null ? null : (map['curve'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      keyOpts: ((map['keyOpts'] as List).cast<String>()).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize'] as int).input(),
+      keyType: (map['keyType'] as String).input(),
+      managedHsmId: (map['managedHsmId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

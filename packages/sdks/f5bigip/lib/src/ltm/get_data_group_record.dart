@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataGroupRecord {
-  final String? data;
+  final pulumi.Input<String>? data;
   /// Name of the datagroup
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetDataGroupRecord].
   /// [data] Optional.
@@ -23,8 +24,8 @@ class GetDataGroupRecord {
 
   factory GetDataGroupRecord.fromMap(Map<String, dynamic> map) {
     return GetDataGroupRecord(
-      data: map['data'] == null ? null : map['data'] as String,
-      name: map['name'] as String,
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

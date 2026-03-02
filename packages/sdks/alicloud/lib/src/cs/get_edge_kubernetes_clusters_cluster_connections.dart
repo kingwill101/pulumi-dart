@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEdgeKubernetesClustersClusterConnections {
   /// API Server Internet endpoint.
-  final String apiServerInternet;
+  final pulumi.Input<String> apiServerInternet;
   /// API Server Intranet endpoint.
-  final String apiServerIntranet;
+  final pulumi.Input<String> apiServerIntranet;
 
   /// Creates a new [GetEdgeKubernetesClustersClusterConnections].
   /// [apiServerInternet] API Server Internet endpoint.
@@ -24,8 +25,8 @@ class GetEdgeKubernetesClustersClusterConnections {
 
   factory GetEdgeKubernetesClustersClusterConnections.fromMap(Map<String, dynamic> map) {
     return GetEdgeKubernetesClustersClusterConnections(
-      apiServerInternet: map['apiServerInternet'] as String,
-      apiServerIntranet: map['apiServerIntranet'] as String,
+      apiServerInternet: (map['apiServerInternet'] as String).input(),
+      apiServerIntranet: (map['apiServerIntranet'] as String).input(),
     );
   }
 }

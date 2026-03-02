@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceTypesTypeInfo {
   /// Payment formpaid (paid)(free).
-  final String chargeType;
+  final pulumi.Input<String> chargeType;
   /// Delivery Levelcenter (centralized deployment level)region (regional deployment level)zone (Availability zone deployment level).
-  final String deliveryScope;
+  final pulumi.Input<String> deliveryScope;
   /// Resource type description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The resource type name.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GetResourceTypesTypeInfo].
   /// [chargeType] Payment formpaid (paid)(free).
@@ -34,10 +35,10 @@ class GetResourceTypesTypeInfo {
 
   factory GetResourceTypesTypeInfo.fromMap(Map<String, dynamic> map) {
     return GetResourceTypesTypeInfo(
-      chargeType: map['chargeType'] as String,
-      deliveryScope: map['deliveryScope'] as String,
-      description: map['description'] as String,
-      title: map['title'] as String,
+      chargeType: (map['chargeType'] as String).input(),
+      deliveryScope: (map['deliveryScope'] as String).input(),
+      description: (map['description'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

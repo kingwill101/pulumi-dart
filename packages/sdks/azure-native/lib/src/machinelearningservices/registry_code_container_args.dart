@@ -23,15 +23,11 @@ class RegistryCodeContainerArgs {
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   RegistryCodeContainerArgs({
-    required pulumi.Output<CodeContainerMachinelearningservices> codeContainerProperties,
-    pulumi.Output<String>? codeName,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      codeContainerProperties = pulumi.Input.asInput<CodeContainerMachinelearningservices>(codeContainerProperties),
-      codeName = pulumi.Input.asOptionalInput<String>(codeName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.codeContainerProperties,
+    this.codeName,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class RegistryCodeContainerArgs {
 
   factory RegistryCodeContainerArgs.fromMap(Map<String, dynamic> map) {
     return RegistryCodeContainerArgs(
-      codeContainerProperties: pulumi.Output.create<CodeContainerMachinelearningservices>(map['codeContainerProperties'] as CodeContainerMachinelearningservices),
-      codeName: map['codeName'] == null ? null : pulumi.Output.create<String>(map['codeName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      codeContainerProperties: (map['codeContainerProperties'] as CodeContainerMachinelearningservices).input(),
+      codeName: map['codeName'] == null ? null : (map['codeName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

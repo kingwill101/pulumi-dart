@@ -16,13 +16,10 @@ class GatewayState {
   /// [gatewayName] The name of the Gateway.
   /// [status] The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
   GatewayState({
-    pulumi.Output<String>? gatewayDesc,
-    pulumi.Output<String>? gatewayName,
-    pulumi.Output<String>? status,
-  }) :
-      gatewayDesc = pulumi.Input.asOptionalInput<String>(gatewayDesc),
-      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.gatewayDesc,
+    this.gatewayName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GatewayState {
 
   factory GatewayState.fromMap(Map<String, dynamic> map) {
     return GatewayState(
-      gatewayDesc: map['gatewayDesc'] == null ? null : pulumi.Output.create<String>(map['gatewayDesc'] as String),
-      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      gatewayDesc: map['gatewayDesc'] == null ? null : (map['gatewayDesc'] as String).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

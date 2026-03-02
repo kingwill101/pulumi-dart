@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Private endpoint connection details at member level.
 class ConnectionDetailsResponse {
   /// Gets or sets group id.
-  final String? groupId;
+  final pulumi.Input<String>? groupId;
   /// Gets or sets id.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Gets or sets link identifier.
-  final String? linkIdentifier;
+  final pulumi.Input<String>? linkIdentifier;
   /// Gets or sets member name.
-  final String? memberName;
+  final pulumi.Input<String>? memberName;
   /// Gets or sets private IP address.
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
 
   /// Creates a new [ConnectionDetailsResponse].
   /// [groupId] Gets or sets group id.
@@ -40,11 +41,11 @@ class ConnectionDetailsResponse {
 
   factory ConnectionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionDetailsResponse(
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      linkIdentifier: map['linkIdentifier'] == null ? null : map['linkIdentifier'] as String,
-      memberName: map['memberName'] == null ? null : map['memberName'] as String,
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      linkIdentifier: map['linkIdentifier'] == null ? null : (map['linkIdentifier'] as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
     );
   }
 }

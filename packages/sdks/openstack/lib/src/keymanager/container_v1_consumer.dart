@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerV1Consumer {
   /// Human-readable name for the Container. Does not have
   /// to be unique.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The consumer URL.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [ContainerV1Consumer].
   /// [name] Human-readable name for the Container. Does not have
@@ -25,8 +26,8 @@ class ContainerV1Consumer {
 
   factory ContainerV1Consumer.fromMap(Map<String, dynamic> map) {
     return ContainerV1Consumer(
-      name: map['name'] == null ? null : map['name'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

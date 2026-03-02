@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource details
 class SourceOrTargetResponse {
   /// Azure resource id, example /subscription/{subscription}/resourceGroup/{rg}/Microsoft.compute/virtualMachine/{vmName}
-  final String? azureResourceId;
+  final pulumi.Input<String>? azureResourceId;
 
   /// Creates a new [SourceOrTargetResponse].
   /// [azureResourceId] Azure resource id, example /subscription/{subscription}/resourceGroup/{rg}/Microsoft.compute/virtualMachine/{vmName}
@@ -20,7 +21,7 @@ class SourceOrTargetResponse {
 
   factory SourceOrTargetResponse.fromMap(Map<String, dynamic> map) {
     return SourceOrTargetResponse(
-      azureResourceId: map['azureResourceId'] == null ? null : map['azureResourceId'] as String,
+      azureResourceId: map['azureResourceId'] == null ? null : (map['azureResourceId'] as String).input(),
     );
   }
 }

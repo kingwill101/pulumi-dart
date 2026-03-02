@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceConfigDeviceSdh {
   /// The Disk ID of the associated `disk_label`, if used
-  final int diskId;
+  final pulumi.Input<int> diskId;
   /// The `label` of the `disk` to map to this `device` slot.
-  final String? diskLabel;
+  final pulumi.Input<String>? diskLabel;
   /// The Volume ID to map to this `device` slot.
-  final int? volumeId;
+  final pulumi.Input<int>? volumeId;
 
   /// Creates a new [GetInstancesInstanceConfigDeviceSdh].
   /// [diskId] The Disk ID of the associated `disk_label`, if used
@@ -29,9 +30,9 @@ class GetInstancesInstanceConfigDeviceSdh {
 
   factory GetInstancesInstanceConfigDeviceSdh.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceConfigDeviceSdh(
-      diskId: map['diskId'] as int,
-      diskLabel: map['diskLabel'] == null ? null : map['diskLabel'] as String,
-      volumeId: map['volumeId'] == null ? null : map['volumeId'] as int,
+      diskId: (map['diskId'] as int).input(),
+      diskLabel: map['diskLabel'] == null ? null : (map['diskLabel'] as String).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as int).input(),
     );
   }
 }

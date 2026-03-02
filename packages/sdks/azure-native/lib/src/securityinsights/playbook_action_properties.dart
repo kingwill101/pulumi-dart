@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlaybookActionProperties {
   /// The resource id of the playbook resource.
-  final String logicAppResourceId;
+  final pulumi.Input<String> logicAppResourceId;
   /// The tenant id of the playbook resource.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [PlaybookActionProperties].
   /// [logicAppResourceId] The resource id of the playbook resource.
@@ -24,8 +25,8 @@ class PlaybookActionProperties {
 
   factory PlaybookActionProperties.fromMap(Map<String, dynamic> map) {
     return PlaybookActionProperties(
-      logicAppResourceId: map['logicAppResourceId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      logicAppResourceId: (map['logicAppResourceId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

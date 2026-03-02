@@ -23,15 +23,11 @@ class SecurityPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityPolicyName] Name of the security policy under the profile.
   SecurityPolicyArgs({
-    pulumi.Output<SecurityPolicyWebApplicationFirewallParameters>? parameters,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? securityPolicyName,
-  }) :
-      parameters = pulumi.Input.asOptionalInput<SecurityPolicyWebApplicationFirewallParameters>(parameters),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityPolicyName = pulumi.Input.asOptionalInput<String>(securityPolicyName);
+    this.parameters,
+    required this.profileName,
+    required this.resourceGroupName,
+    this.securityPolicyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SecurityPolicyArgs {
 
   factory SecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyArgs(
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<SecurityPolicyWebApplicationFirewallParameters>(SecurityPolicyWebApplicationFirewallParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityPolicyName: map['securityPolicyName'] == null ? null : pulumi.Output.create<String>(map['securityPolicyName'] as String),
+      parameters: map['parameters'] == null ? null : (SecurityPolicyWebApplicationFirewallParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName'] as String).input(),
     );
   }
 }

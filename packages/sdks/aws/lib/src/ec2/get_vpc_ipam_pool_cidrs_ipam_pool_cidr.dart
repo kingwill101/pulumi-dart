@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcIpamPoolCidrsIpamPoolCidr {
   /// A network CIDR.
-  final String cidr;
+  final pulumi.Input<String> cidr;
   /// The provisioning state of that CIDR.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetVpcIpamPoolCidrsIpamPoolCidr].
   /// [cidr] A network CIDR.
@@ -24,8 +25,8 @@ class GetVpcIpamPoolCidrsIpamPoolCidr {
 
   factory GetVpcIpamPoolCidrsIpamPoolCidr.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolCidrsIpamPoolCidr(
-      cidr: map['cidr'] as String,
-      state: map['state'] as String,
+      cidr: (map['cidr'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

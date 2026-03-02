@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BitbucketServerConfigSecrets {
   /// The resource name for the admin access token's secret version.
-  final String adminAccessTokenVersionName;
+  final pulumi.Input<String> adminAccessTokenVersionName;
   /// The resource name for the read access token's secret version.
-  final String readAccessTokenVersionName;
+  final pulumi.Input<String> readAccessTokenVersionName;
   /// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
   /// Changing this field will result in deleting/ recreating the resource.
-  final String webhookSecretVersionName;
+  final pulumi.Input<String> webhookSecretVersionName;
 
   /// Creates a new [BitbucketServerConfigSecrets].
   /// [adminAccessTokenVersionName] The resource name for the admin access token's secret version.
@@ -30,9 +31,9 @@ class BitbucketServerConfigSecrets {
 
   factory BitbucketServerConfigSecrets.fromMap(Map<String, dynamic> map) {
     return BitbucketServerConfigSecrets(
-      adminAccessTokenVersionName: map['adminAccessTokenVersionName'] as String,
-      readAccessTokenVersionName: map['readAccessTokenVersionName'] as String,
-      webhookSecretVersionName: map['webhookSecretVersionName'] as String,
+      adminAccessTokenVersionName: (map['adminAccessTokenVersionName'] as String).input(),
+      readAccessTokenVersionName: (map['readAccessTokenVersionName'] as String).input(),
+      webhookSecretVersionName: (map['webhookSecretVersionName'] as String).input(),
     );
   }
 }

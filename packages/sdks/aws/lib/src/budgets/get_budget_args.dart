@@ -24,15 +24,11 @@ class GetBudgetArgs {
   /// [namePrefix] The prefix of the name of a budget. Unique within accounts.
   /// [tags] Map of tags assigned to the resource.
   GetBudgetArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      name = pulumi.Input.asInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountId,
+    required this.name,
+    this.namePrefix,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetBudgetArgs {
 
   factory GetBudgetArgs.fromMap(Map<String, dynamic> map) {
     return GetBudgetArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      name: (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

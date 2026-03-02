@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Tmpfs
 class Tmpfs {
   /// The absolute file path where the tmpfs volume is to be mounted.
-  final String? containerPath;
+  final pulumi.Input<String>? containerPath;
   /// The list of tmpfs volume mount options.
-  final List<String>? mountOptions;
+  final pulumi.Input<List<String>>? mountOptions;
   /// The maximum size (in MiB) of the tmpfs volume.
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [Tmpfs].
   /// [containerPath] The absolute file path where the tmpfs volume is to be mounted.
@@ -30,9 +31,9 @@ class Tmpfs {
 
   factory Tmpfs.fromMap(Map<String, dynamic> map) {
     return Tmpfs(
-      containerPath: map['containerPath'] == null ? null : map['containerPath'] as String,
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as List).cast<String>(),
-      size: map['size'] == null ? null : map['size'] as int,
+      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

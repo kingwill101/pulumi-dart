@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_endpoint_system_assigned_managed_identity_settings.dart';
 
 /// System assigned identity authentication
 class RegistryEndpointSystemAssignedIdentityAuthentication {
   /// The authentication method.
   /// Expected value is 'SystemAssignedManagedIdentity'.
-  final String method;
+  final pulumi.Input<String> method;
   /// System assigned managed identity properties
-  final RegistryEndpointSystemAssignedManagedIdentitySettings systemAssignedManagedIdentitySettings;
+  final pulumi.Input<RegistryEndpointSystemAssignedManagedIdentitySettings> systemAssignedManagedIdentitySettings;
 
   /// Creates a new [RegistryEndpointSystemAssignedIdentityAuthentication].
   /// [method] The authentication method.
@@ -21,14 +22,14 @@ class RegistryEndpointSystemAssignedIdentityAuthentication {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'method': method,
-      'systemAssignedManagedIdentitySettings': systemAssignedManagedIdentitySettings.toMap(),
+      'systemAssignedManagedIdentitySettings': pulumi.Input.mapInputValue<RegistryEndpointSystemAssignedManagedIdentitySettings, Map<String, dynamic>>(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
     };
   }
 
   factory RegistryEndpointSystemAssignedIdentityAuthentication.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointSystemAssignedIdentityAuthentication(
-      method: map['method'] as String,
-      systemAssignedManagedIdentitySettings: RegistryEndpointSystemAssignedManagedIdentitySettings.fromMap((map['systemAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>()),
+      method: (map['method'] as String).input(),
+      systemAssignedManagedIdentitySettings: (RegistryEndpointSystemAssignedManagedIdentitySettings.fromMap((map['systemAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

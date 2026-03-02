@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Firewall rule properties.
 class FirewallRulePropertiesResponse {
   /// End IP address.
-  final String? endIpAddress;
+  final pulumi.Input<String>? endIpAddress;
   /// Provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Start IP address.
-  final String? startIpAddress;
+  final pulumi.Input<String>? startIpAddress;
 
   /// Creates a new [FirewallRulePropertiesResponse].
   /// [endIpAddress] End IP address.
@@ -30,9 +31,9 @@ class FirewallRulePropertiesResponse {
 
   factory FirewallRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FirewallRulePropertiesResponse(
-      endIpAddress: map['endIpAddress'] == null ? null : map['endIpAddress'] as String,
-      provisioningState: map['provisioningState'] as String,
-      startIpAddress: map['startIpAddress'] == null ? null : map['startIpAddress'] as String,
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
     );
   }
 }

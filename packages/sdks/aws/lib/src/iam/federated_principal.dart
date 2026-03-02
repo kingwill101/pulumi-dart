@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Federated principal for identity providers.
 class FederatedPrincipal {
   /// The federated principal identifier.
-  final String federated;
+  final pulumi.Input<String> federated;
 
   /// Creates a new [FederatedPrincipal].
   /// [federated] The federated principal identifier.
@@ -20,7 +21,7 @@ class FederatedPrincipal {
 
   factory FederatedPrincipal.fromMap(Map<String, dynamic> map) {
     return FederatedPrincipal(
-      federated: map['Federated'] as String,
+      federated: (map['Federated'] as String).input(),
     );
   }
 }

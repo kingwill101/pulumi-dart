@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigHandlerMapping {
   /// The command-line arguments to be passed to the script processor.
-  final String arguments;
+  final pulumi.Input<String> arguments;
   /// The extension to be handled by the specified FastCGI application.
-  final String extension;
+  final pulumi.Input<String> extension;
   /// The absolute path to the FastCGI application.
-  final String scriptProcessorPath;
+  final pulumi.Input<String> scriptProcessorPath;
 
   /// Creates a new [GetWindowsWebAppSiteConfigHandlerMapping].
   /// [arguments] The command-line arguments to be passed to the script processor.
@@ -29,9 +30,9 @@ class GetWindowsWebAppSiteConfigHandlerMapping {
 
   factory GetWindowsWebAppSiteConfigHandlerMapping.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigHandlerMapping(
-      arguments: map['arguments'] as String,
-      extension: map['extension'] as String,
-      scriptProcessorPath: map['scriptProcessorPath'] as String,
+      arguments: (map['arguments'] as String).input(),
+      extension: (map['extension'] as String).input(),
+      scriptProcessorPath: (map['scriptProcessorPath'] as String).input(),
     );
   }
 }

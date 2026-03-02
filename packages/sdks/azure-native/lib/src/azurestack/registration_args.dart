@@ -22,15 +22,11 @@ class RegistrationArgs {
   /// [registrationToken] The token identifying registered Azure Stack
   /// [resourceGroup] Name of the resource group.
   RegistrationArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? registrationName,
-    required pulumi.Output<String> registrationToken,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      registrationName = pulumi.Input.asOptionalInput<String>(registrationName),
-      registrationToken = pulumi.Input.asInput<String>(registrationToken),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    this.location,
+    this.registrationName,
+    required this.registrationToken,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class RegistrationArgs {
 
   factory RegistrationArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      registrationName: map['registrationName'] == null ? null : pulumi.Output.create<String>(map['registrationName'] as String),
-      registrationToken: pulumi.Output.create<String>(map['registrationToken'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      registrationName: map['registrationName'] == null ? null : (map['registrationName'] as String).input(),
+      registrationToken: (map['registrationToken'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

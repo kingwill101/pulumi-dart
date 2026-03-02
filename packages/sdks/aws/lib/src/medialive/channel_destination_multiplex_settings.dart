@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelDestinationMultiplexSettings {
   /// The ID of the Multiplex that the encoder is providing output to.
-  final String multiplexId;
+  final pulumi.Input<String> multiplexId;
   /// The program name of the Multiplex program that the encoder is providing output to.
-  final String programName;
+  final pulumi.Input<String> programName;
 
   /// Creates a new [ChannelDestinationMultiplexSettings].
   /// [multiplexId] The ID of the Multiplex that the encoder is providing output to.
@@ -24,8 +25,8 @@ class ChannelDestinationMultiplexSettings {
 
   factory ChannelDestinationMultiplexSettings.fromMap(Map<String, dynamic> map) {
     return ChannelDestinationMultiplexSettings(
-      multiplexId: map['multiplexId'] as String,
-      programName: map['programName'] as String,
+      multiplexId: (map['multiplexId'] as String).input(),
+      programName: (map['programName'] as String).input(),
     );
   }
 }

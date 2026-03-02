@@ -16,11 +16,9 @@ class GetConnectorArgs {
   /// [connectorName] Connector Name.
   /// [resourceGroupName] Azure Resource Group Name.
   GetConnectorArgs({
-    required pulumi.Output<String> connectorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectorName = pulumi.Input.asInput<String>(connectorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.connectorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetConnectorArgs {
 
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
-      connectorName: pulumi.Output.create<String>(map['connectorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectorName: (map['connectorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

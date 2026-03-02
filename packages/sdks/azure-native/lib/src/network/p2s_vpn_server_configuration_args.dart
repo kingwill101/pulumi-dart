@@ -29,19 +29,13 @@ class P2sVpnServerConfigurationArgs {
   /// [resourceGroupName] The resource group name of the VirtualWan.
   /// [virtualWanName] The name of the VirtualWan.
   P2sVpnServerConfigurationArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? p2SVpnServerConfigurationName,
-    pulumi.Output<P2SVpnServerConfigurationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualWanName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      p2SVpnServerConfigurationName = pulumi.Input.asOptionalInput<String>(p2SVpnServerConfigurationName),
-      properties = pulumi.Input.asOptionalInput<P2SVpnServerConfigurationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualWanName = pulumi.Input.asInput<String>(virtualWanName);
+    this.id,
+    this.name,
+    this.p2SVpnServerConfigurationName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.virtualWanName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class P2sVpnServerConfigurationArgs {
 
   factory P2sVpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return P2sVpnServerConfigurationArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      p2SVpnServerConfigurationName: map['p2SVpnServerConfigurationName'] == null ? null : pulumi.Output.create<String>(map['p2SVpnServerConfigurationName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<P2SVpnServerConfigurationProperties>(P2SVpnServerConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualWanName: pulumi.Output.create<String>(map['virtualWanName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      p2SVpnServerConfigurationName: map['p2SVpnServerConfigurationName'] == null ? null : (map['p2SVpnServerConfigurationName'] as String).input(),
+      properties: map['properties'] == null ? null : (P2SVpnServerConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualWanName: (map['virtualWanName'] as String).input(),
     );
   }
 }

@@ -25,15 +25,11 @@ class FirewallPolicyWithRulesArgs {
   /// [rules] A list of firewall policy rules.
   /// [shortName] A textual name of the security policy.
   FirewallPolicyWithRulesArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<List<FirewallPolicyWithRulesRule>> rules,
-    required pulumi.Output<String> shortName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parent = pulumi.Input.asInput<String>(parent),
-      rules = pulumi.Input.asInput<List<FirewallPolicyWithRulesRule>>(rules),
-      shortName = pulumi.Input.asInput<String>(shortName);
+    this.description,
+    required this.parent,
+    required this.rules,
+    required this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class FirewallPolicyWithRulesArgs {
 
   factory FirewallPolicyWithRulesArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyWithRulesArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      rules: pulumi.Output.create<List<FirewallPolicyWithRulesRule>>(pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(map['rules'], (value) => FirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))),
-      shortName: pulumi.Output.create<String>(map['shortName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      rules: (pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(map['rules'], (value) => FirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

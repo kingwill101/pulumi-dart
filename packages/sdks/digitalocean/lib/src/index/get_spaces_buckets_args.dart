@@ -20,11 +20,9 @@ class GetSpacesBucketsArgs {
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
   GetSpacesBucketsArgs({
-    pulumi.Output<List<GetSpacesBucketsFilter>>? filters,
-    pulumi.Output<List<GetSpacesBucketsSort>>? sorts,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetSpacesBucketsFilter>>(filters),
-      sorts = pulumi.Input.asOptionalInput<List<GetSpacesBucketsSort>>(sorts);
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,8 +33,8 @@ class GetSpacesBucketsArgs {
 
   factory GetSpacesBucketsArgs.fromMap(Map<String, dynamic> map) {
     return GetSpacesBucketsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSpacesBucketsFilter>>(pulumi.Input.decodeList<GetSpacesBucketsFilter>(map['filters'], (value) => GetSpacesBucketsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      sorts: map['sorts'] == null ? null : pulumi.Output.create<List<GetSpacesBucketsSort>>(pulumi.Input.decodeList<GetSpacesBucketsSort>(map['sorts'], (value) => GetSpacesBucketsSort.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSpacesBucketsFilter>(map['filters'], (value) => GetSpacesBucketsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetSpacesBucketsSort>(map['sorts'], (value) => GetSpacesBucketsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

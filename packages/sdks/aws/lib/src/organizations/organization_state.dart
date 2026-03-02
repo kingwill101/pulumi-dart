@@ -46,31 +46,19 @@ class OrganizationState {
   /// [returnOrganizationOnly] Return (as attributes) only the results of the [`DescribeOrganization`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html) API to avoid [API limits](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#throttling-limits). When configured to `true` only the `arn`, `feature_set`, `master_account_arn`, `master_account_email` and `master_account_id` attributes will be returned. All others will be empty. Default: `false`.
   /// [roots] List of organization roots. All elements have these attributes:
   OrganizationState({
-    pulumi.Output<List<OrganizationAccount>>? accounts,
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<String>>? awsServiceAccessPrincipals,
-    pulumi.Output<List<String>>? enabledPolicyTypes,
-    pulumi.Output<String>? featureSet,
-    pulumi.Output<String>? masterAccountArn,
-    pulumi.Output<String>? masterAccountEmail,
-    pulumi.Output<String>? masterAccountId,
-    pulumi.Output<String>? masterAccountName,
-    pulumi.Output<List<OrganizationNonMasterAccount>>? nonMasterAccounts,
-    pulumi.Output<bool>? returnOrganizationOnly,
-    pulumi.Output<List<OrganizationRoot>>? roots,
-  }) :
-      accounts = pulumi.Input.asOptionalInput<List<OrganizationAccount>>(accounts),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsServiceAccessPrincipals = pulumi.Input.asOptionalInput<List<String>>(awsServiceAccessPrincipals),
-      enabledPolicyTypes = pulumi.Input.asOptionalInput<List<String>>(enabledPolicyTypes),
-      featureSet = pulumi.Input.asOptionalInput<String>(featureSet),
-      masterAccountArn = pulumi.Input.asOptionalInput<String>(masterAccountArn),
-      masterAccountEmail = pulumi.Input.asOptionalInput<String>(masterAccountEmail),
-      masterAccountId = pulumi.Input.asOptionalInput<String>(masterAccountId),
-      masterAccountName = pulumi.Input.asOptionalInput<String>(masterAccountName),
-      nonMasterAccounts = pulumi.Input.asOptionalInput<List<OrganizationNonMasterAccount>>(nonMasterAccounts),
-      returnOrganizationOnly = pulumi.Input.asOptionalInput<bool>(returnOrganizationOnly),
-      roots = pulumi.Input.asOptionalInput<List<OrganizationRoot>>(roots);
+    this.accounts,
+    this.arn,
+    this.awsServiceAccessPrincipals,
+    this.enabledPolicyTypes,
+    this.featureSet,
+    this.masterAccountArn,
+    this.masterAccountEmail,
+    this.masterAccountId,
+    this.masterAccountName,
+    this.nonMasterAccounts,
+    this.returnOrganizationOnly,
+    this.roots,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class OrganizationState {
 
   factory OrganizationState.fromMap(Map<String, dynamic> map) {
     return OrganizationState(
-      accounts: map['accounts'] == null ? null : pulumi.Output.create<List<OrganizationAccount>>(pulumi.Input.decodeList<OrganizationAccount>(map['accounts'], (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>()))),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsServiceAccessPrincipals: map['awsServiceAccessPrincipals'] == null ? null : pulumi.Output.create<List<String>>((map['awsServiceAccessPrincipals'] as List).cast<String>()),
-      enabledPolicyTypes: map['enabledPolicyTypes'] == null ? null : pulumi.Output.create<List<String>>((map['enabledPolicyTypes'] as List).cast<String>()),
-      featureSet: map['featureSet'] == null ? null : pulumi.Output.create<String>(map['featureSet'] as String),
-      masterAccountArn: map['masterAccountArn'] == null ? null : pulumi.Output.create<String>(map['masterAccountArn'] as String),
-      masterAccountEmail: map['masterAccountEmail'] == null ? null : pulumi.Output.create<String>(map['masterAccountEmail'] as String),
-      masterAccountId: map['masterAccountId'] == null ? null : pulumi.Output.create<String>(map['masterAccountId'] as String),
-      masterAccountName: map['masterAccountName'] == null ? null : pulumi.Output.create<String>(map['masterAccountName'] as String),
-      nonMasterAccounts: map['nonMasterAccounts'] == null ? null : pulumi.Output.create<List<OrganizationNonMasterAccount>>(pulumi.Input.decodeList<OrganizationNonMasterAccount>(map['nonMasterAccounts'], (value) => OrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>()))),
-      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : pulumi.Output.create<bool>(map['returnOrganizationOnly'] as bool),
-      roots: map['roots'] == null ? null : pulumi.Output.create<List<OrganizationRoot>>(pulumi.Input.decodeList<OrganizationRoot>(map['roots'], (value) => OrganizationRoot.fromMap((value as Map).cast<String, dynamic>()))),
+      accounts: map['accounts'] == null ? null : (pulumi.Input.decodeList<OrganizationAccount>(map['accounts'], (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsServiceAccessPrincipals: map['awsServiceAccessPrincipals'] == null ? null : ((map['awsServiceAccessPrincipals'] as List).cast<String>()).input(),
+      enabledPolicyTypes: map['enabledPolicyTypes'] == null ? null : ((map['enabledPolicyTypes'] as List).cast<String>()).input(),
+      featureSet: map['featureSet'] == null ? null : (map['featureSet'] as String).input(),
+      masterAccountArn: map['masterAccountArn'] == null ? null : (map['masterAccountArn'] as String).input(),
+      masterAccountEmail: map['masterAccountEmail'] == null ? null : (map['masterAccountEmail'] as String).input(),
+      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId'] as String).input(),
+      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName'] as String).input(),
+      nonMasterAccounts: map['nonMasterAccounts'] == null ? null : (pulumi.Input.decodeList<OrganizationNonMasterAccount>(map['nonMasterAccounts'], (value) => OrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : (map['returnOrganizationOnly'] as bool).input(),
+      roots: map['roots'] == null ? null : (pulumi.Input.decodeList<OrganizationRoot>(map['roots'], (value) => OrganizationRoot.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

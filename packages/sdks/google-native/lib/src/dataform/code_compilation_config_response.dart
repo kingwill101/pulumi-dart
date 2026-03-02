@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configures various aspects of Dataform code compilation.
 class CodeCompilationConfigResponse {
   /// Optional. The default schema (BigQuery dataset ID) for assertions.
-  final String assertionSchema;
+  final pulumi.Input<String> assertionSchema;
   /// Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
-  final String databaseSuffix;
+  final pulumi.Input<String> databaseSuffix;
   /// Optional. The default database (Google Cloud project ID).
-  final String defaultDatabase;
+  final pulumi.Input<String> defaultDatabase;
   /// Optional. The default BigQuery location to use. Defaults to "US". See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
-  final String defaultLocation;
+  final pulumi.Input<String> defaultLocation;
   /// Optional. The default schema (BigQuery dataset ID).
-  final String defaultSchema;
+  final pulumi.Input<String> defaultSchema;
   /// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
-  final String schemaSuffix;
+  final pulumi.Input<String> schemaSuffix;
   /// Optional. The prefix that should be prepended to all table names.
-  final String tablePrefix;
+  final pulumi.Input<String> tablePrefix;
   /// Optional. User-defined variables that are made available to project code during compilation.
-  final Map<String, String> vars;
+  final pulumi.Input<Map<String, String>> vars;
 
   /// Creates a new [CodeCompilationConfigResponse].
   /// [assertionSchema] Optional. The default schema (BigQuery dataset ID) for assertions.
@@ -55,14 +56,14 @@ class CodeCompilationConfigResponse {
 
   factory CodeCompilationConfigResponse.fromMap(Map<String, dynamic> map) {
     return CodeCompilationConfigResponse(
-      assertionSchema: map['assertionSchema'] as String,
-      databaseSuffix: map['databaseSuffix'] as String,
-      defaultDatabase: map['defaultDatabase'] as String,
-      defaultLocation: map['defaultLocation'] as String,
-      defaultSchema: map['defaultSchema'] as String,
-      schemaSuffix: map['schemaSuffix'] as String,
-      tablePrefix: map['tablePrefix'] as String,
-      vars: (map['vars'] as Map).cast<String, String>(),
+      assertionSchema: (map['assertionSchema'] as String).input(),
+      databaseSuffix: (map['databaseSuffix'] as String).input(),
+      defaultDatabase: (map['defaultDatabase'] as String).input(),
+      defaultLocation: (map['defaultLocation'] as String).input(),
+      defaultSchema: (map['defaultSchema'] as String).input(),
+      schemaSuffix: (map['schemaSuffix'] as String).input(),
+      tablePrefix: (map['tablePrefix'] as String).input(),
+      vars: ((map['vars'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class FirewallPolicyAssociationState {
   /// [name] The name for an association.
   /// [shortName] The short name of the firewall policy of the association.
   FirewallPolicyAssociationState({
-    pulumi.Output<String>? attachmentTarget,
-    pulumi.Output<String>? firewallPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? shortName,
-  }) :
-      attachmentTarget = pulumi.Input.asOptionalInput<String>(attachmentTarget),
-      firewallPolicy = pulumi.Input.asOptionalInput<String>(firewallPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      shortName = pulumi.Input.asOptionalInput<String>(shortName);
+    this.attachmentTarget,
+    this.firewallPolicy,
+    this.name,
+    this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FirewallPolicyAssociationState {
 
   factory FirewallPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyAssociationState(
-      attachmentTarget: map['attachmentTarget'] == null ? null : pulumi.Output.create<String>(map['attachmentTarget'] as String),
-      firewallPolicy: map['firewallPolicy'] == null ? null : pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      shortName: map['shortName'] == null ? null : pulumi.Output.create<String>(map['shortName'] as String),
+      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget'] as String).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (map['firewallPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
     );
   }
 }

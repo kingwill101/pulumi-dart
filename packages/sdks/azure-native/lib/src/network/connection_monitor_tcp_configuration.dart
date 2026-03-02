@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the TCP configuration.
 class ConnectionMonitorTcpConfiguration {
   /// Destination port behavior.
-  final String? destinationPortBehavior;
+  final pulumi.Input<String>? destinationPortBehavior;
   /// Value indicating whether path evaluation with trace route should be disabled.
-  final bool? disableTraceRoute;
+  final pulumi.Input<bool>? disableTraceRoute;
   /// The port to connect to.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ConnectionMonitorTcpConfiguration].
   /// [destinationPortBehavior] Destination port behavior.
@@ -30,9 +31,9 @@ class ConnectionMonitorTcpConfiguration {
 
   factory ConnectionMonitorTcpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorTcpConfiguration(
-      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : map['destinationPortBehavior'] as String,
-      disableTraceRoute: map['disableTraceRoute'] == null ? null : map['disableTraceRoute'] as bool,
-      port: map['port'] == null ? null : map['port'] as int,
+      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : (map['destinationPortBehavior'] as String).input(),
+      disableTraceRoute: map['disableTraceRoute'] == null ? null : (map['disableTraceRoute'] as bool).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

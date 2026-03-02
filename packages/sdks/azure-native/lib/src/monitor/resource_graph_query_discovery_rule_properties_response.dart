@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'discovery_error_response.dart';
 
 /// Discovery rule properties for an Azure Resource Graph query
 class ResourceGraphQueryDiscoveryRulePropertiesResponse {
   /// Whether to add all recommended signals to the discovered entities.
-  final String addRecommendedSignals;
+  final pulumi.Input<String> addRecommendedSignals;
   /// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
-  final String authenticationSetting;
+  final pulumi.Input<String> authenticationSetting;
   /// Date when the discovery rule was (soft-)deleted.
-  final String deletionDate;
+  final pulumi.Input<String> deletionDate;
   /// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
-  final String discoverRelationships;
+  final pulumi.Input<String> discoverRelationships;
   /// Discovery rule relationship discovery behavior
   /// Expected value is 'ResourceGraphQuery'.
-  final String discoveryRuleKind;
+  final pulumi.Input<String> discoveryRuleKind;
   /// Display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
-  final String entityName;
+  final pulumi.Input<String> entityName;
   /// Error details if the last discovery operation failed.
-  final DiscoveryErrorResponse error;
+  final pulumi.Input<DiscoveryErrorResponse> error;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
-  final String resourceGraphQuery;
+  final pulumi.Input<String> resourceGraphQuery;
 
   /// Creates a new [ResourceGraphQueryDiscoveryRulePropertiesResponse].
   /// [addRecommendedSignals] Whether to add all recommended signals to the discovered entities.
@@ -59,7 +60,7 @@ class ResourceGraphQueryDiscoveryRulePropertiesResponse {
       'discoveryRuleKind': discoveryRuleKind,
       'displayName': ?displayName,
       'entityName': entityName,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<DiscoveryErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'resourceGraphQuery': resourceGraphQuery,
     };
@@ -67,16 +68,16 @@ class ResourceGraphQueryDiscoveryRulePropertiesResponse {
 
   factory ResourceGraphQueryDiscoveryRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGraphQueryDiscoveryRulePropertiesResponse(
-      addRecommendedSignals: map['addRecommendedSignals'] as String,
-      authenticationSetting: map['authenticationSetting'] as String,
-      deletionDate: map['deletionDate'] as String,
-      discoverRelationships: map['discoverRelationships'] as String,
-      discoveryRuleKind: map['discoveryRuleKind'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      entityName: map['entityName'] as String,
-      error: DiscoveryErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      resourceGraphQuery: map['resourceGraphQuery'] as String,
+      addRecommendedSignals: (map['addRecommendedSignals'] as String).input(),
+      authenticationSetting: (map['authenticationSetting'] as String).input(),
+      deletionDate: (map['deletionDate'] as String).input(),
+      discoverRelationships: (map['discoverRelationships'] as String).input(),
+      discoveryRuleKind: (map['discoveryRuleKind'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      entityName: (map['entityName'] as String).input(),
+      error: (DiscoveryErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGraphQuery: (map['resourceGraphQuery'] as String).input(),
     );
   }
 }

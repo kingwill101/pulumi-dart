@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionRouteEntriesEntry {
   /// The destination CIDR block of the route entry.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// ID of the next hop.
-  final String nextHopId;
+  final pulumi.Input<String> nextHopId;
   /// ID of the region where the next hop is located.
-  final String nextHopRegionId;
+  final pulumi.Input<String> nextHopRegionId;
   /// Type of the next hop.
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
   /// Type of the route entry.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetRegionRouteEntriesEntry].
   /// [cidrBlock] The destination CIDR block of the route entry.
@@ -39,11 +40,11 @@ class GetRegionRouteEntriesEntry {
 
   factory GetRegionRouteEntriesEntry.fromMap(Map<String, dynamic> map) {
     return GetRegionRouteEntriesEntry(
-      cidrBlock: map['cidrBlock'] as String,
-      nextHopId: map['nextHopId'] as String,
-      nextHopRegionId: map['nextHopRegionId'] as String,
-      nextHopType: map['nextHopType'] as String,
-      type: map['type'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      nextHopId: (map['nextHopId'] as String).input(),
+      nextHopRegionId: (map['nextHopRegionId'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

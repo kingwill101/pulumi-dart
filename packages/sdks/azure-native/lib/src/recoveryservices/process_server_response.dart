@@ -8,77 +8,77 @@ import 'version_details_response.dart';
 /// Details of the Process Server.
 class ProcessServerResponse {
   /// Agent expiry date.
-  final String? agentExpiryDate;
+  final pulumi.Input<String>? agentExpiryDate;
   /// The version of the scout component on the server.
-  final String? agentVersion;
+  final pulumi.Input<String>? agentVersion;
   /// The agent version details.
-  final VersionDetailsResponse? agentVersionDetails;
+  final pulumi.Input<VersionDetailsResponse>? agentVersionDetails;
   /// The available memory.
-  final double? availableMemoryInBytes;
+  final pulumi.Input<double>? availableMemoryInBytes;
   /// The available space.
-  final double? availableSpaceInBytes;
+  final pulumi.Input<double>? availableSpaceInBytes;
   /// The percentage of the CPU load.
-  final String? cpuLoad;
+  final pulumi.Input<String>? cpuLoad;
   /// The CPU load status.
-  final String? cpuLoadStatus;
+  final pulumi.Input<String>? cpuLoadStatus;
   /// The Process Server's friendly name.
-  final String? friendlyName;
+  final pulumi.Input<String>? friendlyName;
   /// The health of Process Server.
-  final String health;
+  final pulumi.Input<String> health;
   /// Health errors.
-  final List<HealthErrorResponse>? healthErrors;
+  final pulumi.Input<List<HealthErrorResponse>>? healthErrors;
   /// The agent generated Id.
-  final String? hostId;
+  final pulumi.Input<String>? hostId;
   /// The Process Server Id.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The IP address of the server.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The last heartbeat received from the server.
-  final String? lastHeartbeat;
+  final pulumi.Input<String>? lastHeartbeat;
   /// The servers configured with this PS.
-  final String? machineCount;
+  final pulumi.Input<String>? machineCount;
   /// The MARS communication status.
-  final String marsCommunicationStatus;
+  final pulumi.Input<String> marsCommunicationStatus;
   /// The MARS registration status.
-  final String marsRegistrationStatus;
+  final pulumi.Input<String> marsRegistrationStatus;
   /// The memory usage status.
-  final String? memoryUsageStatus;
+  final pulumi.Input<String>? memoryUsageStatus;
   /// The list of the mobility service updates available on the Process Server.
-  final List<MobilityServiceUpdateResponse>? mobilityServiceUpdates;
+  final pulumi.Input<List<MobilityServiceUpdateResponse>>? mobilityServiceUpdates;
   /// The OS type of the server.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// OS Version of the process server. Note: This will get populated if user has CS version greater than 9.12.0.0.
-  final String? osVersion;
+  final pulumi.Input<String>? osVersion;
   /// The PS service status.
-  final String? psServiceStatus;
+  final pulumi.Input<String>? psServiceStatus;
   /// The process server stats refresh time.
-  final String psStatsRefreshTime;
+  final pulumi.Input<String> psStatsRefreshTime;
   /// The number of replication pairs configured in this PS.
-  final String? replicationPairCount;
+  final pulumi.Input<String>? replicationPairCount;
   /// The space usage status.
-  final String? spaceUsageStatus;
+  final pulumi.Input<String>? spaceUsageStatus;
   /// The PS SSL cert expiry date.
-  final String? sslCertExpiryDate;
+  final pulumi.Input<String>? sslCertExpiryDate;
   /// CS SSL cert expiry date.
-  final int? sslCertExpiryRemainingDays;
+  final pulumi.Input<int>? sslCertExpiryRemainingDays;
   /// The percentage of the system load.
-  final String? systemLoad;
+  final pulumi.Input<String>? systemLoad;
   /// The system load status.
-  final String? systemLoadStatus;
+  final pulumi.Input<String>? systemLoadStatus;
   /// The throughput in bytes.
-  final double throughputInBytes;
+  final pulumi.Input<double> throughputInBytes;
   /// The throughput in MBps.
-  final double throughputInMBps;
+  final pulumi.Input<double> throughputInMBps;
   /// The throughput status.
-  final String throughputStatus;
+  final pulumi.Input<String> throughputStatus;
   /// The uploading pending data in bytes.
-  final double throughputUploadPendingDataInBytes;
+  final pulumi.Input<double> throughputUploadPendingDataInBytes;
   /// The total memory.
-  final double? totalMemoryInBytes;
+  final pulumi.Input<double>? totalMemoryInBytes;
   /// The total space.
-  final double? totalSpaceInBytes;
+  final pulumi.Input<double>? totalSpaceInBytes;
   /// Version status.
-  final String? versionStatus;
+  final pulumi.Input<String>? versionStatus;
 
   /// Creates a new [ProcessServerResponse].
   /// [agentExpiryDate] Agent expiry date.
@@ -160,14 +160,14 @@ class ProcessServerResponse {
     return <String, dynamic>{
       'agentExpiryDate': ?agentExpiryDate,
       'agentVersion': ?agentVersion,
-      'agentVersionDetails': ?agentVersionDetails == null ? null : agentVersionDetails!.toMap(),
+      'agentVersionDetails': ?pulumi.Input.mapOptionalInputValue<VersionDetailsResponse, Map<String, dynamic>>(agentVersionDetails, (value) => value.toMap()),
       'availableMemoryInBytes': ?availableMemoryInBytes,
       'availableSpaceInBytes': ?availableSpaceInBytes,
       'cpuLoad': ?cpuLoad,
       'cpuLoadStatus': ?cpuLoadStatus,
       'friendlyName': ?friendlyName,
       'health': health,
-      'healthErrors': ?healthErrors == null ? null : pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(healthErrors!, (value) => value.toMap()),
+      'healthErrors': ?pulumi.Input.mapOptionalInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hostId': ?hostId,
       'id': ?id,
       'ipAddress': ?ipAddress,
@@ -176,7 +176,7 @@ class ProcessServerResponse {
       'marsCommunicationStatus': marsCommunicationStatus,
       'marsRegistrationStatus': marsRegistrationStatus,
       'memoryUsageStatus': ?memoryUsageStatus,
-      'mobilityServiceUpdates': ?mobilityServiceUpdates == null ? null : pulumi.Input.encodeList<MobilityServiceUpdateResponse, Map<String, dynamic>>(mobilityServiceUpdates!, (value) => value.toMap()),
+      'mobilityServiceUpdates': ?pulumi.Input.mapOptionalInputValue<List<MobilityServiceUpdateResponse>, List<Map<String, dynamic>>>(mobilityServiceUpdates, (value) => pulumi.Input.encodeList<MobilityServiceUpdateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'osType': ?osType,
       'osVersion': ?osVersion,
       'psServiceStatus': ?psServiceStatus,
@@ -199,42 +199,42 @@ class ProcessServerResponse {
 
   factory ProcessServerResponse.fromMap(Map<String, dynamic> map) {
     return ProcessServerResponse(
-      agentExpiryDate: map['agentExpiryDate'] == null ? null : map['agentExpiryDate'] as String,
-      agentVersion: map['agentVersion'] == null ? null : map['agentVersion'] as String,
-      agentVersionDetails: map['agentVersionDetails'] == null ? null : VersionDetailsResponse.fromMap((map['agentVersionDetails'] as Map).cast<String, dynamic>()),
-      availableMemoryInBytes: map['availableMemoryInBytes'] == null ? null : map['availableMemoryInBytes'] as double,
-      availableSpaceInBytes: map['availableSpaceInBytes'] == null ? null : map['availableSpaceInBytes'] as double,
-      cpuLoad: map['cpuLoad'] == null ? null : map['cpuLoad'] as String,
-      cpuLoadStatus: map['cpuLoadStatus'] == null ? null : map['cpuLoadStatus'] as String,
-      friendlyName: map['friendlyName'] == null ? null : map['friendlyName'] as String,
-      health: map['health'] as String,
-      healthErrors: map['healthErrors'] == null ? null : pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      hostId: map['hostId'] == null ? null : map['hostId'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      lastHeartbeat: map['lastHeartbeat'] == null ? null : map['lastHeartbeat'] as String,
-      machineCount: map['machineCount'] == null ? null : map['machineCount'] as String,
-      marsCommunicationStatus: map['marsCommunicationStatus'] as String,
-      marsRegistrationStatus: map['marsRegistrationStatus'] as String,
-      memoryUsageStatus: map['memoryUsageStatus'] == null ? null : map['memoryUsageStatus'] as String,
-      mobilityServiceUpdates: map['mobilityServiceUpdates'] == null ? null : pulumi.Input.decodeList<MobilityServiceUpdateResponse>(map['mobilityServiceUpdates'], (value) => MobilityServiceUpdateResponse.fromMap((value as Map).cast<String, dynamic>())),
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      osVersion: map['osVersion'] == null ? null : map['osVersion'] as String,
-      psServiceStatus: map['psServiceStatus'] == null ? null : map['psServiceStatus'] as String,
-      psStatsRefreshTime: map['psStatsRefreshTime'] as String,
-      replicationPairCount: map['replicationPairCount'] == null ? null : map['replicationPairCount'] as String,
-      spaceUsageStatus: map['spaceUsageStatus'] == null ? null : map['spaceUsageStatus'] as String,
-      sslCertExpiryDate: map['sslCertExpiryDate'] == null ? null : map['sslCertExpiryDate'] as String,
-      sslCertExpiryRemainingDays: map['sslCertExpiryRemainingDays'] == null ? null : map['sslCertExpiryRemainingDays'] as int,
-      systemLoad: map['systemLoad'] == null ? null : map['systemLoad'] as String,
-      systemLoadStatus: map['systemLoadStatus'] == null ? null : map['systemLoadStatus'] as String,
-      throughputInBytes: map['throughputInBytes'] as double,
-      throughputInMBps: map['throughputInMBps'] as double,
-      throughputStatus: map['throughputStatus'] as String,
-      throughputUploadPendingDataInBytes: map['throughputUploadPendingDataInBytes'] as double,
-      totalMemoryInBytes: map['totalMemoryInBytes'] == null ? null : map['totalMemoryInBytes'] as double,
-      totalSpaceInBytes: map['totalSpaceInBytes'] == null ? null : map['totalSpaceInBytes'] as double,
-      versionStatus: map['versionStatus'] == null ? null : map['versionStatus'] as String,
+      agentExpiryDate: map['agentExpiryDate'] == null ? null : (map['agentExpiryDate'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      agentVersionDetails: map['agentVersionDetails'] == null ? null : (VersionDetailsResponse.fromMap((map['agentVersionDetails'] as Map).cast<String, dynamic>())).input(),
+      availableMemoryInBytes: map['availableMemoryInBytes'] == null ? null : (map['availableMemoryInBytes'] as double).input(),
+      availableSpaceInBytes: map['availableSpaceInBytes'] == null ? null : (map['availableSpaceInBytes'] as double).input(),
+      cpuLoad: map['cpuLoad'] == null ? null : (map['cpuLoad'] as String).input(),
+      cpuLoadStatus: map['cpuLoadStatus'] == null ? null : (map['cpuLoadStatus'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      health: (map['health'] as String).input(),
+      healthErrors: map['healthErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      lastHeartbeat: map['lastHeartbeat'] == null ? null : (map['lastHeartbeat'] as String).input(),
+      machineCount: map['machineCount'] == null ? null : (map['machineCount'] as String).input(),
+      marsCommunicationStatus: (map['marsCommunicationStatus'] as String).input(),
+      marsRegistrationStatus: (map['marsRegistrationStatus'] as String).input(),
+      memoryUsageStatus: map['memoryUsageStatus'] == null ? null : (map['memoryUsageStatus'] as String).input(),
+      mobilityServiceUpdates: map['mobilityServiceUpdates'] == null ? null : (pulumi.Input.decodeList<MobilityServiceUpdateResponse>(map['mobilityServiceUpdates'], (value) => MobilityServiceUpdateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      psServiceStatus: map['psServiceStatus'] == null ? null : (map['psServiceStatus'] as String).input(),
+      psStatsRefreshTime: (map['psStatsRefreshTime'] as String).input(),
+      replicationPairCount: map['replicationPairCount'] == null ? null : (map['replicationPairCount'] as String).input(),
+      spaceUsageStatus: map['spaceUsageStatus'] == null ? null : (map['spaceUsageStatus'] as String).input(),
+      sslCertExpiryDate: map['sslCertExpiryDate'] == null ? null : (map['sslCertExpiryDate'] as String).input(),
+      sslCertExpiryRemainingDays: map['sslCertExpiryRemainingDays'] == null ? null : (map['sslCertExpiryRemainingDays'] as int).input(),
+      systemLoad: map['systemLoad'] == null ? null : (map['systemLoad'] as String).input(),
+      systemLoadStatus: map['systemLoadStatus'] == null ? null : (map['systemLoadStatus'] as String).input(),
+      throughputInBytes: (map['throughputInBytes'] as double).input(),
+      throughputInMBps: (map['throughputInMBps'] as double).input(),
+      throughputStatus: (map['throughputStatus'] as String).input(),
+      throughputUploadPendingDataInBytes: (map['throughputUploadPendingDataInBytes'] as double).input(),
+      totalMemoryInBytes: map['totalMemoryInBytes'] == null ? null : (map['totalMemoryInBytes'] as double).input(),
+      totalSpaceInBytes: map['totalSpaceInBytes'] == null ? null : (map['totalSpaceInBytes'] as double).input(),
+      versionStatus: map['versionStatus'] == null ? null : (map['versionStatus'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceUserAccessParam {
   /// Access keys are important credentials for authentication.
-  final String accessId;
+  final pulumi.Input<String> accessId;
   /// A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
-  final String accessKey;
+  final pulumi.Input<String> accessKey;
   /// An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
-  final String workspaceId;
+  final pulumi.Input<String> workspaceId;
 
   /// Creates a new [ResourceUserAccessParam].
   /// [accessId] Access keys are important credentials for authentication.
@@ -34,10 +35,10 @@ class ResourceUserAccessParam {
 
   factory ResourceUserAccessParam.fromMap(Map<String, dynamic> map) {
     return ResourceUserAccessParam(
-      accessId: map['accessId'] as String,
-      accessKey: map['accessKey'] as String,
-      endpoint: map['endpoint'] as String,
-      workspaceId: map['workspaceId'] as String,
+      accessId: (map['accessId'] as String).input(),
+      accessKey: (map['accessKey'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

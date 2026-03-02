@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes Redirect Route.
 class RedirectConfigurationResponse {
   /// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-  final String? customFragment;
+  final pulumi.Input<String>? customFragment;
   /// Host to redirect. Leave empty to use the incoming host as the destination host.
-  final String? customHost;
+  final pulumi.Input<String>? customHost;
   /// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-  final String? customPath;
+  final pulumi.Input<String>? customPath;
   /// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-  final String? customQueryString;
+  final pulumi.Input<String>? customQueryString;
   /// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-  final String odataType;
+  final pulumi.Input<String> odataType;
   /// The protocol of the destination to where the traffic is redirected
-  final String? redirectProtocol;
+  final pulumi.Input<String>? redirectProtocol;
   /// The redirect type the rule will use when redirecting traffic.
-  final String? redirectType;
+  final pulumi.Input<String>? redirectType;
 
   /// Creates a new [RedirectConfigurationResponse].
   /// [customFragment] Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
@@ -50,13 +51,13 @@ class RedirectConfigurationResponse {
 
   factory RedirectConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return RedirectConfigurationResponse(
-      customFragment: map['customFragment'] == null ? null : map['customFragment'] as String,
-      customHost: map['customHost'] == null ? null : map['customHost'] as String,
-      customPath: map['customPath'] == null ? null : map['customPath'] as String,
-      customQueryString: map['customQueryString'] == null ? null : map['customQueryString'] as String,
-      odataType: map['odataType'] as String,
-      redirectProtocol: map['redirectProtocol'] == null ? null : map['redirectProtocol'] as String,
-      redirectType: map['redirectType'] == null ? null : map['redirectType'] as String,
+      customFragment: map['customFragment'] == null ? null : (map['customFragment'] as String).input(),
+      customHost: map['customHost'] == null ? null : (map['customHost'] as String).input(),
+      customPath: map['customPath'] == null ? null : (map['customPath'] as String).input(),
+      customQueryString: map['customQueryString'] == null ? null : (map['customQueryString'] as String).input(),
+      odataType: (map['odataType'] as String).input(),
+      redirectProtocol: map['redirectProtocol'] == null ? null : (map['redirectProtocol'] as String).input(),
+      redirectType: map['redirectType'] == null ? null : (map['redirectType'] as String).input(),
     );
   }
 }

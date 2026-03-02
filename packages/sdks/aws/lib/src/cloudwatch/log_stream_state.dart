@@ -19,15 +19,11 @@ class LogStreamState {
   /// [name] The name of the log stream. Must not be longer than 512 characters and must not contain `:`
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LogStreamState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? logGroupName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      logGroupName = pulumi.Input.asOptionalInput<String>(logGroupName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.logGroupName,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class LogStreamState {
 
   factory LogStreamState.fromMap(Map<String, dynamic> map) {
     return LogStreamState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      logGroupName: map['logGroupName'] == null ? null : pulumi.Output.create<String>(map['logGroupName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

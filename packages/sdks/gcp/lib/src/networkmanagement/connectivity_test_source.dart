@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connectivity_test_source_app_engine_version.dart';
 import 'connectivity_test_source_cloud_function.dart';
 import 'connectivity_test_source_cloud_run_revision.dart';
@@ -7,29 +8,29 @@ import 'connectivity_test_source_cloud_run_revision.dart';
 class ConnectivityTestSource {
   /// An App Engine service version.
   /// Structure is documented below.
-  final ConnectivityTestSourceAppEngineVersion? appEngineVersion;
+  final pulumi.Input<ConnectivityTestSourceAppEngineVersion>? appEngineVersion;
   /// A Cloud Function.
   /// Structure is documented below.
-  final ConnectivityTestSourceCloudFunction? cloudFunction;
+  final pulumi.Input<ConnectivityTestSourceCloudFunction>? cloudFunction;
   /// A Cloud Run revision.
   /// Structure is documented below.
-  final ConnectivityTestSourceCloudRunRevision? cloudRunRevision;
+  final pulumi.Input<ConnectivityTestSourceCloudRunRevision>? cloudRunRevision;
   /// A Cloud SQL instance URI.
-  final String? cloudSqlInstance;
+  final pulumi.Input<String>? cloudSqlInstance;
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
-  final String? gkeMasterCluster;
+  final pulumi.Input<String>? gkeMasterCluster;
   /// A Compute Engine instance URI.
-  final String? instance;
+  final pulumi.Input<String>? instance;
   /// The IP address of the endpoint, which can be an external or internal IP.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// A VPC network URI.
-  final String? network;
+  final pulumi.Input<String>? network;
   /// Type of the network where the endpoint is located.
   /// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
-  final String? networkType;
+  final pulumi.Input<String>? networkType;
   /// The IP protocol port of the endpoint. Only applicable when protocol is
   /// TCP or UDP.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Project ID where the endpoint is located.
   /// The project ID can be derived from the URI if you provide a endpoint or
   /// network URI.
@@ -39,7 +40,7 @@ class ConnectivityTestSource {
   /// 2. When you are using Shared VPC and the IP address that you provide is
   /// from the service project. In this case, the network that the IP address
   /// resides in is defined in the host project.
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
 
   /// Creates a new [ConnectivityTestSource].
   /// [appEngineVersion] An App Engine service version.
@@ -69,9 +70,9 @@ class ConnectivityTestSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appEngineVersion': ?appEngineVersion == null ? null : appEngineVersion!.toMap(),
-      'cloudFunction': ?cloudFunction == null ? null : cloudFunction!.toMap(),
-      'cloudRunRevision': ?cloudRunRevision == null ? null : cloudRunRevision!.toMap(),
+      'appEngineVersion': ?pulumi.Input.mapOptionalInputValue<ConnectivityTestSourceAppEngineVersion, Map<String, dynamic>>(appEngineVersion, (value) => value.toMap()),
+      'cloudFunction': ?pulumi.Input.mapOptionalInputValue<ConnectivityTestSourceCloudFunction, Map<String, dynamic>>(cloudFunction, (value) => value.toMap()),
+      'cloudRunRevision': ?pulumi.Input.mapOptionalInputValue<ConnectivityTestSourceCloudRunRevision, Map<String, dynamic>>(cloudRunRevision, (value) => value.toMap()),
       'cloudSqlInstance': ?cloudSqlInstance,
       'gkeMasterCluster': ?gkeMasterCluster,
       'instance': ?instance,
@@ -85,17 +86,17 @@ class ConnectivityTestSource {
 
   factory ConnectivityTestSource.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestSource(
-      appEngineVersion: map['appEngineVersion'] == null ? null : ConnectivityTestSourceAppEngineVersion.fromMap((map['appEngineVersion'] as Map).cast<String, dynamic>()),
-      cloudFunction: map['cloudFunction'] == null ? null : ConnectivityTestSourceCloudFunction.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>()),
-      cloudRunRevision: map['cloudRunRevision'] == null ? null : ConnectivityTestSourceCloudRunRevision.fromMap((map['cloudRunRevision'] as Map).cast<String, dynamic>()),
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : map['cloudSqlInstance'] as String,
-      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : map['gkeMasterCluster'] as String,
-      instance: map['instance'] == null ? null : map['instance'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      network: map['network'] == null ? null : map['network'] as String,
-      networkType: map['networkType'] == null ? null : map['networkType'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
+      appEngineVersion: map['appEngineVersion'] == null ? null : (ConnectivityTestSourceAppEngineVersion.fromMap((map['appEngineVersion'] as Map).cast<String, dynamic>())).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (ConnectivityTestSourceCloudFunction.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())).input(),
+      cloudRunRevision: map['cloudRunRevision'] == null ? null : (ConnectivityTestSourceCloudRunRevision.fromMap((map['cloudRunRevision'] as Map).cast<String, dynamic>())).input(),
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (map['cloudSqlInstance'] as String).input(),
+      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : (map['gkeMasterCluster'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

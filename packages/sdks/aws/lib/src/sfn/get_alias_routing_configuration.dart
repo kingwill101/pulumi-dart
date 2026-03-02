@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAliasRoutingConfiguration {
-  final String stateMachineVersionArn;
-  final int weight;
+  final pulumi.Input<String> stateMachineVersionArn;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetAliasRoutingConfiguration].
   /// [stateMachineVersionArn] Required.
@@ -22,8 +23,8 @@ class GetAliasRoutingConfiguration {
 
   factory GetAliasRoutingConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAliasRoutingConfiguration(
-      stateMachineVersionArn: map['stateMachineVersionArn'] as String,
-      weight: map['weight'] as int,
+      stateMachineVersionArn: (map['stateMachineVersionArn'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

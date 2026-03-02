@@ -23,15 +23,11 @@ class CapabilityHostArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   CapabilityHostArgs({
-    required pulumi.Output<CapabilityHostMachinelearningservices> capabilityHostProperties,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      capabilityHostProperties = pulumi.Input.asInput<CapabilityHostMachinelearningservices>(capabilityHostProperties),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.capabilityHostProperties,
+    this.name,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CapabilityHostArgs {
 
   factory CapabilityHostArgs.fromMap(Map<String, dynamic> map) {
     return CapabilityHostArgs(
-      capabilityHostProperties: pulumi.Output.create<CapabilityHostMachinelearningservices>(map['capabilityHostProperties'] as CapabilityHostMachinelearningservices),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      capabilityHostProperties: (map['capabilityHostProperties'] as CapabilityHostMachinelearningservices).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

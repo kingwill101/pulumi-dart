@@ -36,19 +36,13 @@ class KeyArgs {
   /// [publicKeyType] The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
   /// [serviceAccountId] The Service account id of the Key. This can be a string in the format
   KeyArgs({
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<String>? keyAlgorithm,
-    pulumi.Output<String>? privateKeyType,
-    pulumi.Output<String>? publicKeyData,
-    pulumi.Output<String>? publicKeyType,
-    required pulumi.Output<String> serviceAccountId,
-  }) :
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      keyAlgorithm = pulumi.Input.asOptionalInput<String>(keyAlgorithm),
-      privateKeyType = pulumi.Input.asOptionalInput<String>(privateKeyType),
-      publicKeyData = pulumi.Input.asOptionalInput<String>(publicKeyData),
-      publicKeyType = pulumi.Input.asOptionalInput<String>(publicKeyType),
-      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
+    this.keepers,
+    this.keyAlgorithm,
+    this.privateKeyType,
+    this.publicKeyData,
+    this.publicKeyType,
+    required this.serviceAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,12 +57,12 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : pulumi.Output.create<String>(map['keyAlgorithm'] as String),
-      privateKeyType: map['privateKeyType'] == null ? null : pulumi.Output.create<String>(map['privateKeyType'] as String),
-      publicKeyData: map['publicKeyData'] == null ? null : pulumi.Output.create<String>(map['publicKeyData'] as String),
-      publicKeyType: map['publicKeyType'] == null ? null : pulumi.Output.create<String>(map['publicKeyType'] as String),
-      serviceAccountId: pulumi.Output.create<String>(map['serviceAccountId'] as String),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
+      privateKeyType: map['privateKeyType'] == null ? null : (map['privateKeyType'] as String).input(),
+      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData'] as String).input(),
+      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType'] as String).input(),
+      serviceAccountId: (map['serviceAccountId'] as String).input(),
     );
   }
 }

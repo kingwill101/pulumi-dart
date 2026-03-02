@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AllowedResourceNameResponse {
   /// Get action verb.
-  final String? getActionVerb;
+  final pulumi.Input<String>? getActionVerb;
   /// Resource name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AllowedResourceNameResponse].
   /// [getActionVerb] Get action verb.
@@ -24,8 +25,8 @@ class AllowedResourceNameResponse {
 
   factory AllowedResourceNameResponse.fromMap(Map<String, dynamic> map) {
     return AllowedResourceNameResponse(
-      getActionVerb: map['getActionVerb'] == null ? null : map['getActionVerb'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      getActionVerb: map['getActionVerb'] == null ? null : (map['getActionVerb'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

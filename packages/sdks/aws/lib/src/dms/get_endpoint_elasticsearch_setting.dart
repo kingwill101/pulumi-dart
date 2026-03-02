@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointElasticsearchSetting {
-  final String endpointUri;
-  final int errorRetryDuration;
-  final int fullLoadErrorPercentage;
-  final String serviceAccessRoleArn;
+  final pulumi.Input<String> endpointUri;
+  final pulumi.Input<int> errorRetryDuration;
+  final pulumi.Input<int> fullLoadErrorPercentage;
+  final pulumi.Input<String> serviceAccessRoleArn;
 
   /// Creates a new [GetEndpointElasticsearchSetting].
   /// [endpointUri] Required.
@@ -30,10 +31,10 @@ class GetEndpointElasticsearchSetting {
 
   factory GetEndpointElasticsearchSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointElasticsearchSetting(
-      endpointUri: map['endpointUri'] as String,
-      errorRetryDuration: map['errorRetryDuration'] as int,
-      fullLoadErrorPercentage: map['fullLoadErrorPercentage'] as int,
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
+      endpointUri: (map['endpointUri'] as String).input(),
+      errorRetryDuration: (map['errorRetryDuration'] as int).input(),
+      fullLoadErrorPercentage: (map['fullLoadErrorPercentage'] as int).input(),
+      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
     );
   }
 }

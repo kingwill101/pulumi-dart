@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_service_extension_profile.dart';
 import 'cloud_service_network_profile.dart';
 import 'cloud_service_os_profile.dart';
@@ -9,30 +10,30 @@ import 'cloud_service_role_profile.dart';
 class CloudServiceProperties {
   /// (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.
   /// The default value is `false`.
-  final bool? allowModelOverride;
+  final pulumi.Input<bool>? allowModelOverride;
   /// Specifies the XML service configuration (.cscfg) for the cloud service.
-  final String? configuration;
+  final pulumi.Input<String>? configuration;
   /// Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL  can be Shared Access Signature (SAS) URI from any storage account.
   /// This is a write-only property and is not returned in GET calls.
-  final String? configurationUrl;
+  final pulumi.Input<String>? configurationUrl;
   /// Describes a cloud service extension profile.
-  final CloudServiceExtensionProfile? extensionProfile;
+  final pulumi.Input<CloudServiceExtensionProfile>? extensionProfile;
   /// Network Profile for the cloud service.
-  final CloudServiceNetworkProfile? networkProfile;
+  final pulumi.Input<CloudServiceNetworkProfile>? networkProfile;
   /// Describes the OS profile for the cloud service.
-  final CloudServiceOsProfile? osProfile;
+  final pulumi.Input<CloudServiceOsProfile>? osProfile;
   /// Specifies a URL that refers to the location of the service package in the Blob service. The service package URL can be Shared Access Signature (SAS) URI from any storage account.
   /// This is a write-only property and is not returned in GET calls.
-  final String? packageUrl;
+  final pulumi.Input<String>? packageUrl;
   /// Describes the role profile for the cloud service.
-  final CloudServiceRoleProfile? roleProfile;
+  final pulumi.Input<CloudServiceRoleProfile>? roleProfile;
   /// (Optional) Indicates whether to start the cloud service immediately after it is created. The default value is `true`.
   /// If false, the service model is still deployed, but the code is not run immediately. Instead, the service is PoweredOff until you call Start, at which time the service will be started. A deployed service still incurs charges, even if it is poweredoff.
-  final bool? startCloudService;
+  final pulumi.Input<bool>? startCloudService;
   /// Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.
   /// Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />
   /// If not specified, the default value is Auto. If set to Manual, PUT UpdateDomain must be called to apply the update. If set to Auto, the update is automatically applied to each update domain in sequence.
-  final String? upgradeMode;
+  final pulumi.Input<String>? upgradeMode;
 
   /// Creates a new [CloudServiceProperties].
   /// [allowModelOverride] (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.
@@ -63,11 +64,11 @@ class CloudServiceProperties {
       'allowModelOverride': ?allowModelOverride,
       'configuration': ?configuration,
       'configurationUrl': ?configurationUrl,
-      'extensionProfile': ?extensionProfile == null ? null : extensionProfile!.toMap(),
-      'networkProfile': ?networkProfile == null ? null : networkProfile!.toMap(),
-      'osProfile': ?osProfile == null ? null : osProfile!.toMap(),
+      'extensionProfile': ?pulumi.Input.mapOptionalInputValue<CloudServiceExtensionProfile, Map<String, dynamic>>(extensionProfile, (value) => value.toMap()),
+      'networkProfile': ?pulumi.Input.mapOptionalInputValue<CloudServiceNetworkProfile, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'osProfile': ?pulumi.Input.mapOptionalInputValue<CloudServiceOsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
       'packageUrl': ?packageUrl,
-      'roleProfile': ?roleProfile == null ? null : roleProfile!.toMap(),
+      'roleProfile': ?pulumi.Input.mapOptionalInputValue<CloudServiceRoleProfile, Map<String, dynamic>>(roleProfile, (value) => value.toMap()),
       'startCloudService': ?startCloudService,
       'upgradeMode': ?upgradeMode,
     };
@@ -75,16 +76,16 @@ class CloudServiceProperties {
 
   factory CloudServiceProperties.fromMap(Map<String, dynamic> map) {
     return CloudServiceProperties(
-      allowModelOverride: map['allowModelOverride'] == null ? null : map['allowModelOverride'] as bool,
-      configuration: map['configuration'] == null ? null : map['configuration'] as String,
-      configurationUrl: map['configurationUrl'] == null ? null : map['configurationUrl'] as String,
-      extensionProfile: map['extensionProfile'] == null ? null : CloudServiceExtensionProfile.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>()),
-      networkProfile: map['networkProfile'] == null ? null : CloudServiceNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      osProfile: map['osProfile'] == null ? null : CloudServiceOsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      packageUrl: map['packageUrl'] == null ? null : map['packageUrl'] as String,
-      roleProfile: map['roleProfile'] == null ? null : CloudServiceRoleProfile.fromMap((map['roleProfile'] as Map).cast<String, dynamic>()),
-      startCloudService: map['startCloudService'] == null ? null : map['startCloudService'] as bool,
-      upgradeMode: map['upgradeMode'] == null ? null : map['upgradeMode'] as String,
+      allowModelOverride: map['allowModelOverride'] == null ? null : (map['allowModelOverride'] as bool).input(),
+      configuration: map['configuration'] == null ? null : (map['configuration'] as String).input(),
+      configurationUrl: map['configurationUrl'] == null ? null : (map['configurationUrl'] as String).input(),
+      extensionProfile: map['extensionProfile'] == null ? null : (CloudServiceExtensionProfile.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (CloudServiceNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (CloudServiceOsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      packageUrl: map['packageUrl'] == null ? null : (map['packageUrl'] as String).input(),
+      roleProfile: map['roleProfile'] == null ? null : (CloudServiceRoleProfile.fromMap((map['roleProfile'] as Map).cast<String, dynamic>())).input(),
+      startCloudService: map['startCloudService'] == null ? null : (map['startCloudService'] as bool).input(),
+      upgradeMode: map['upgradeMode'] == null ? null : (map['upgradeMode'] as String).input(),
     );
   }
 }

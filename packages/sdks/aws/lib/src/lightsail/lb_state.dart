@@ -48,33 +48,20 @@ class LbState {
   /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   LbState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? dnsName,
-    pulumi.Output<String>? healthCheckPath,
-    pulumi.Output<int>? instancePort,
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<List<int>>? publicPorts,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? supportCode,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
-      healthCheckPath = pulumi.Input.asOptionalInput<String>(healthCheckPath),
-      instancePort = pulumi.Input.asOptionalInput<int>(instancePort),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      publicPorts = pulumi.Input.asOptionalInput<List<int>>(publicPorts),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      supportCode = pulumi.Input.asOptionalInput<String>(supportCode),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdAt,
+    this.dnsName,
+    this.healthCheckPath,
+    this.instancePort,
+    this.ipAddressType,
+    this.name,
+    this.protocol,
+    this.publicPorts,
+    this.region,
+    this.supportCode,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class LbState {
 
   factory LbState.fromMap(Map<String, dynamic> map) {
     return LbState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
-      healthCheckPath: map['healthCheckPath'] == null ? null : pulumi.Output.create<String>(map['healthCheckPath'] as String),
-      instancePort: map['instancePort'] == null ? null : pulumi.Output.create<int>(map['instancePort'] as int),
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      publicPorts: map['publicPorts'] == null ? null : pulumi.Output.create<List<int>>((map['publicPorts'] as List).cast<int>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      supportCode: map['supportCode'] == null ? null : pulumi.Output.create<String>(map['supportCode'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
+      instancePort: map['instancePort'] == null ? null : (map['instancePort'] as int).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      publicPorts: map['publicPorts'] == null ? null : ((map['publicPorts'] as List).cast<int>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      supportCode: map['supportCode'] == null ? null : (map['supportCode'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

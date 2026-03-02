@@ -34,23 +34,15 @@ class EdgeActionExecutionFilterArgs {
   /// [tags] Resource tags.
   /// [versionId] The referenced versionId of the edgeaction version
   EdgeActionExecutionFilterArgs({
-    required pulumi.Output<String> edgeActionName,
-    pulumi.Output<String>? executionFilter,
-    required pulumi.Output<String> executionFilterIdentifierHeaderName,
-    required pulumi.Output<String> executionFilterIdentifierHeaderValue,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> versionId,
-  }) :
-      edgeActionName = pulumi.Input.asInput<String>(edgeActionName),
-      executionFilter = pulumi.Input.asOptionalInput<String>(executionFilter),
-      executionFilterIdentifierHeaderName = pulumi.Input.asInput<String>(executionFilterIdentifierHeaderName),
-      executionFilterIdentifierHeaderValue = pulumi.Input.asInput<String>(executionFilterIdentifierHeaderValue),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      versionId = pulumi.Input.asInput<String>(versionId);
+    required this.edgeActionName,
+    this.executionFilter,
+    required this.executionFilterIdentifierHeaderName,
+    required this.executionFilterIdentifierHeaderValue,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    required this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class EdgeActionExecutionFilterArgs {
 
   factory EdgeActionExecutionFilterArgs.fromMap(Map<String, dynamic> map) {
     return EdgeActionExecutionFilterArgs(
-      edgeActionName: pulumi.Output.create<String>(map['edgeActionName'] as String),
-      executionFilter: map['executionFilter'] == null ? null : pulumi.Output.create<String>(map['executionFilter'] as String),
-      executionFilterIdentifierHeaderName: pulumi.Output.create<String>(map['executionFilterIdentifierHeaderName'] as String),
-      executionFilterIdentifierHeaderValue: pulumi.Output.create<String>(map['executionFilterIdentifierHeaderValue'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      versionId: pulumi.Output.create<String>(map['versionId'] as String),
+      edgeActionName: (map['edgeActionName'] as String).input(),
+      executionFilter: map['executionFilter'] == null ? null : (map['executionFilter'] as String).input(),
+      executionFilterIdentifierHeaderName: (map['executionFilterIdentifierHeaderName'] as String).input(),
+      executionFilterIdentifierHeaderValue: (map['executionFilterIdentifierHeaderValue'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

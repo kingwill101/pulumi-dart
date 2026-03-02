@@ -16,11 +16,9 @@ class BigIpLicenseArgs {
   /// [command] Tmsh command to execute tmsh commands like install
   /// [registrationKey] A unique Key F5 provides for Licensing BIG-IP
   BigIpLicenseArgs({
-    required pulumi.Output<String> command,
-    required pulumi.Output<String> registrationKey,
-  }) :
-      command = pulumi.Input.asInput<String>(command),
-      registrationKey = pulumi.Input.asInput<String>(registrationKey);
+    required this.command,
+    required this.registrationKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BigIpLicenseArgs {
 
   factory BigIpLicenseArgs.fromMap(Map<String, dynamic> map) {
     return BigIpLicenseArgs(
-      command: pulumi.Output.create<String>(map['command'] as String),
-      registrationKey: pulumi.Output.create<String>(map['registrationKey'] as String),
+      command: (map['command'] as String).input(),
+      registrationKey: (map['registrationKey'] as String).input(),
     );
   }
 }

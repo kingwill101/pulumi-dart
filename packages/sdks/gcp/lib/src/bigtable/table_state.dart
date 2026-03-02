@@ -46,25 +46,16 @@ class TableState {
   /// [rowKeySchema] Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
   /// [splitKeys] A list of predefined keys to split the table on.
   TableState({
-    pulumi.Output<TableAutomatedBackupPolicy>? automatedBackupPolicy,
-    pulumi.Output<String>? changeStreamRetention,
-    pulumi.Output<List<TableColumnFamily>>? columnFamilies,
-    pulumi.Output<String>? deletionProtection,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? rowKeySchema,
-    pulumi.Output<List<String>>? splitKeys,
-  }) :
-      automatedBackupPolicy = pulumi.Input.asOptionalInput<TableAutomatedBackupPolicy>(automatedBackupPolicy),
-      changeStreamRetention = pulumi.Input.asOptionalInput<String>(changeStreamRetention),
-      columnFamilies = pulumi.Input.asOptionalInput<List<TableColumnFamily>>(columnFamilies),
-      deletionProtection = pulumi.Input.asOptionalInput<String>(deletionProtection),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rowKeySchema = pulumi.Input.asOptionalInput<String>(rowKeySchema),
-      splitKeys = pulumi.Input.asOptionalInput<List<String>>(splitKeys);
+    this.automatedBackupPolicy,
+    this.changeStreamRetention,
+    this.columnFamilies,
+    this.deletionProtection,
+    this.instanceName,
+    this.name,
+    this.project,
+    this.rowKeySchema,
+    this.splitKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,15 +73,15 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      automatedBackupPolicy: map['automatedBackupPolicy'] == null ? null : pulumi.Output.create<TableAutomatedBackupPolicy>(TableAutomatedBackupPolicy.fromMap((map['automatedBackupPolicy'] as Map).cast<String, dynamic>())),
-      changeStreamRetention: map['changeStreamRetention'] == null ? null : pulumi.Output.create<String>(map['changeStreamRetention'] as String),
-      columnFamilies: map['columnFamilies'] == null ? null : pulumi.Output.create<List<TableColumnFamily>>(pulumi.Input.decodeList<TableColumnFamily>(map['columnFamilies'], (value) => TableColumnFamily.fromMap((value as Map).cast<String, dynamic>()))),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<String>(map['deletionProtection'] as String),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rowKeySchema: map['rowKeySchema'] == null ? null : pulumi.Output.create<String>(map['rowKeySchema'] as String),
-      splitKeys: map['splitKeys'] == null ? null : pulumi.Output.create<List<String>>((map['splitKeys'] as List).cast<String>()),
+      automatedBackupPolicy: map['automatedBackupPolicy'] == null ? null : (TableAutomatedBackupPolicy.fromMap((map['automatedBackupPolicy'] as Map).cast<String, dynamic>())).input(),
+      changeStreamRetention: map['changeStreamRetention'] == null ? null : (map['changeStreamRetention'] as String).input(),
+      columnFamilies: map['columnFamilies'] == null ? null : (pulumi.Input.decodeList<TableColumnFamily>(map['columnFamilies'], (value) => TableColumnFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rowKeySchema: map['rowKeySchema'] == null ? null : (map['rowKeySchema'] as String).input(),
+      splitKeys: map['splitKeys'] == null ? null : ((map['splitKeys'] as List).cast<String>()).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetCustomEntityStoreAssignmentArgs {
   /// [customEntityStoreAssignmentName] Name of the custom entity store assignment. Generated name is GUID.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetCustomEntityStoreAssignmentArgs({
-    required pulumi.Output<String> customEntityStoreAssignmentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      customEntityStoreAssignmentName = pulumi.Input.asInput<String>(customEntityStoreAssignmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.customEntityStoreAssignmentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCustomEntityStoreAssignmentArgs {
 
   factory GetCustomEntityStoreAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomEntityStoreAssignmentArgs(
-      customEntityStoreAssignmentName: pulumi.Output.create<String>(map['customEntityStoreAssignmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      customEntityStoreAssignmentName: (map['customEntityStoreAssignmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

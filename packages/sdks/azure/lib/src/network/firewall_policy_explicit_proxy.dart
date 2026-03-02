@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyExplicitProxy {
   /// Whether the pac file port and url need to be provided.
-  final bool? enablePacFile;
+  final pulumi.Input<bool>? enablePacFile;
   /// Whether the explicit proxy is enabled for this Firewall Policy.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The port number for explicit http protocol.
-  final int? httpPort;
+  final pulumi.Input<int>? httpPort;
   /// The port number for explicit proxy https protocol.
-  final int? httpsPort;
+  final pulumi.Input<int>? httpsPort;
   /// Specifies a SAS URL for PAC file.
-  final String? pacFile;
+  final pulumi.Input<String>? pacFile;
   /// Specifies a port number for firewall to serve PAC file.
-  final int? pacFilePort;
+  final pulumi.Input<int>? pacFilePort;
 
   /// Creates a new [FirewallPolicyExplicitProxy].
   /// [enablePacFile] Whether the pac file port and url need to be provided.
@@ -44,12 +45,12 @@ class FirewallPolicyExplicitProxy {
 
   factory FirewallPolicyExplicitProxy.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyExplicitProxy(
-      enablePacFile: map['enablePacFile'] == null ? null : map['enablePacFile'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      httpPort: map['httpPort'] == null ? null : map['httpPort'] as int,
-      httpsPort: map['httpsPort'] == null ? null : map['httpsPort'] as int,
-      pacFile: map['pacFile'] == null ? null : map['pacFile'] as String,
-      pacFilePort: map['pacFilePort'] == null ? null : map['pacFilePort'] as int,
+      enablePacFile: map['enablePacFile'] == null ? null : (map['enablePacFile'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
+      pacFile: map['pacFile'] == null ? null : (map['pacFile'] as String).input(),
+      pacFilePort: map['pacFilePort'] == null ? null : (map['pacFilePort'] as int).input(),
     );
   }
 }

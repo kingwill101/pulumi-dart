@@ -6,13 +6,13 @@ import 'metric_transformation.dart';
 /// Definition of awsLogsMetricFilter
 class AwsLogsMetricFilterProperties {
   /// The name of the metric filter.
-  final String? filterName;
+  final pulumi.Input<String>? filterName;
   /// A filter pattern for extracting metric data out of ingested log events. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
-  final String? filterPattern;
+  final pulumi.Input<String>? filterPattern;
   /// The name of an existing log group that you want to associate with this metric filter.
-  final String? logGroupName;
+  final pulumi.Input<String>? logGroupName;
   /// The metric transformations.
-  final List<MetricTransformation>? metricTransformations;
+  final pulumi.Input<List<MetricTransformation>>? metricTransformations;
 
   /// Creates a new [AwsLogsMetricFilterProperties].
   /// [filterName] The name of the metric filter.
@@ -31,16 +31,16 @@ class AwsLogsMetricFilterProperties {
       'filterName': ?filterName,
       'filterPattern': ?filterPattern,
       'logGroupName': ?logGroupName,
-      'metricTransformations': ?metricTransformations == null ? null : pulumi.Input.encodeList<MetricTransformation, Map<String, dynamic>>(metricTransformations!, (value) => value.toMap()),
+      'metricTransformations': ?pulumi.Input.mapOptionalInputValue<List<MetricTransformation>, List<Map<String, dynamic>>>(metricTransformations, (value) => pulumi.Input.encodeList<MetricTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsLogsMetricFilterProperties.fromMap(Map<String, dynamic> map) {
     return AwsLogsMetricFilterProperties(
-      filterName: map['filterName'] == null ? null : map['filterName'] as String,
-      filterPattern: map['filterPattern'] == null ? null : map['filterPattern'] as String,
-      logGroupName: map['logGroupName'] == null ? null : map['logGroupName'] as String,
-      metricTransformations: map['metricTransformations'] == null ? null : pulumi.Input.decodeList<MetricTransformation>(map['metricTransformations'], (value) => MetricTransformation.fromMap((value as Map).cast<String, dynamic>())),
+      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
+      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
+      metricTransformations: map['metricTransformations'] == null ? null : (pulumi.Input.decodeList<MetricTransformation>(map['metricTransformations'], (value) => MetricTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

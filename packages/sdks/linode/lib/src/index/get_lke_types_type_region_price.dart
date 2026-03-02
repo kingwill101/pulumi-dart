@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLkeTypesTypeRegionPrice {
-  final double hourly;
+  final pulumi.Input<double> hourly;
   /// The ID representing the Kubernetes type.
-  final String id;
-  final double monthly;
+  final pulumi.Input<String> id;
+  final pulumi.Input<double> monthly;
 
   /// Creates a new [GetLkeTypesTypeRegionPrice].
   /// [hourly] Required.
@@ -27,9 +28,9 @@ class GetLkeTypesTypeRegionPrice {
 
   factory GetLkeTypesTypeRegionPrice.fromMap(Map<String, dynamic> map) {
     return GetLkeTypesTypeRegionPrice(
-      hourly: map['hourly'] as double,
-      id: map['id'] as String,
-      monthly: map['monthly'] as double,
+      hourly: (map['hourly'] as double).input(),
+      id: (map['id'] as String).input(),
+      monthly: (map['monthly'] as double).input(),
     );
   }
 }

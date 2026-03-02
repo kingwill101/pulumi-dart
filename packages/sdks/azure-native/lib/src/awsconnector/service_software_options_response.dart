@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_status_enum_value_response.dart';
 
 /// Definition of ServiceSoftwareOptions
 class ServiceSoftwareOptionsResponse {
   /// <p>The timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.</p>
-  final String? automatedUpdateDate;
+  final pulumi.Input<String>? automatedUpdateDate;
   /// <p> True if you're able to cancel your service software version update. False if you can't cancel your service software update.</p>
-  final bool? cancellable;
+  final pulumi.Input<bool>? cancellable;
   /// <p>The current service software version present on the domain.</p>
-  final String? currentVersion;
+  final pulumi.Input<String>? currentVersion;
   /// <p>A description of the service software update status.</p>
-  final String? description;
+  final pulumi.Input<String>? description;
   /// <p>The new service software version, if one is available.</p>
-  final String? newVersion;
+  final pulumi.Input<String>? newVersion;
   /// <p>True if a service software is never automatically updated. False if a service software is automatically updated after the automated update date.</p>
-  final bool? optionalDeployment;
+  final pulumi.Input<bool>? optionalDeployment;
   /// <p>True if you're able to update your service software version. False if you can't update your service software version.</p>
-  final bool? updateAvailable;
+  final pulumi.Input<bool>? updateAvailable;
   /// <p>The status of your service software update.</p>
-  final DeploymentStatusEnumValueResponse? updateStatus;
+  final pulumi.Input<DeploymentStatusEnumValueResponse>? updateStatus;
 
   /// Creates a new [ServiceSoftwareOptionsResponse].
   /// [automatedUpdateDate] <p>The timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.</p>
@@ -50,20 +51,20 @@ class ServiceSoftwareOptionsResponse {
       'newVersion': ?newVersion,
       'optionalDeployment': ?optionalDeployment,
       'updateAvailable': ?updateAvailable,
-      'updateStatus': ?updateStatus == null ? null : updateStatus!.toMap(),
+      'updateStatus': ?pulumi.Input.mapOptionalInputValue<DeploymentStatusEnumValueResponse, Map<String, dynamic>>(updateStatus, (value) => value.toMap()),
     };
   }
 
   factory ServiceSoftwareOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ServiceSoftwareOptionsResponse(
-      automatedUpdateDate: map['automatedUpdateDate'] == null ? null : map['automatedUpdateDate'] as String,
-      cancellable: map['cancellable'] == null ? null : map['cancellable'] as bool,
-      currentVersion: map['currentVersion'] == null ? null : map['currentVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      newVersion: map['newVersion'] == null ? null : map['newVersion'] as String,
-      optionalDeployment: map['optionalDeployment'] == null ? null : map['optionalDeployment'] as bool,
-      updateAvailable: map['updateAvailable'] == null ? null : map['updateAvailable'] as bool,
-      updateStatus: map['updateStatus'] == null ? null : DeploymentStatusEnumValueResponse.fromMap((map['updateStatus'] as Map).cast<String, dynamic>()),
+      automatedUpdateDate: map['automatedUpdateDate'] == null ? null : (map['automatedUpdateDate'] as String).input(),
+      cancellable: map['cancellable'] == null ? null : (map['cancellable'] as bool).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      newVersion: map['newVersion'] == null ? null : (map['newVersion'] as String).input(),
+      optionalDeployment: map['optionalDeployment'] == null ? null : (map['optionalDeployment'] as bool).input(),
+      updateAvailable: map['updateAvailable'] == null ? null : (map['updateAvailable'] as bool).input(),
+      updateStatus: map['updateStatus'] == null ? null : (DeploymentStatusEnumValueResponse.fromMap((map['updateStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

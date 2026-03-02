@@ -28,19 +28,13 @@ class ServerGroupServerAttachmentArgs {
   /// [type] The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
   /// [weight] The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
   ServerGroupServerAttachmentArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<int> port,
-    required pulumi.Output<String> serverGroupId,
-    required pulumi.Output<String> serverId,
-    pulumi.Output<String>? type,
-    pulumi.Output<int>? weight,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      port = pulumi.Input.asInput<int>(port),
-      serverGroupId = pulumi.Input.asInput<String>(serverGroupId),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.description,
+    required this.port,
+    required this.serverGroupId,
+    required this.serverId,
+    this.type,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ServerGroupServerAttachmentArgs {
 
   factory ServerGroupServerAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupServerAttachmentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      serverGroupId: pulumi.Output.create<String>(map['serverGroupId'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      port: (map['port'] as int).input(),
+      serverGroupId: (map['serverGroupId'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

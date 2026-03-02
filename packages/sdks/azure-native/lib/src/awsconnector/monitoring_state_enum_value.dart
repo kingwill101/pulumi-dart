@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of MonitoringStateEnumValue
 class MonitoringStateEnumValue {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [MonitoringStateEnumValue].
   /// [value] Property value
@@ -20,7 +21,7 @@ class MonitoringStateEnumValue {
 
   factory MonitoringStateEnumValue.fromMap(Map<String, dynamic> map) {
     return MonitoringStateEnumValue(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

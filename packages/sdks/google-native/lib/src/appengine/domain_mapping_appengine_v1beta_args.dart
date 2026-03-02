@@ -22,15 +22,11 @@ class DomainMappingAppengineV1betaArgs {
   /// [overrideStrategy] Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   DomainMappingAppengineV1betaArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? overrideStrategy,
-    pulumi.Output<SslSettingsAppengineV1beta>? sslSettings,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      overrideStrategy = pulumi.Input.asOptionalInput<String>(overrideStrategy),
-      sslSettings = pulumi.Input.asOptionalInput<SslSettingsAppengineV1beta>(sslSettings);
+    required this.appId,
+    this.id,
+    this.overrideStrategy,
+    this.sslSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DomainMappingAppengineV1betaArgs {
 
   factory DomainMappingAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingAppengineV1betaArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      overrideStrategy: map['overrideStrategy'] == null ? null : pulumi.Output.create<String>(map['overrideStrategy'] as String),
-      sslSettings: map['sslSettings'] == null ? null : pulumi.Output.create<SslSettingsAppengineV1beta>(SslSettingsAppengineV1beta.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())),
+      appId: (map['appId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy'] as String).input(),
+      sslSettings: map['sslSettings'] == null ? null : (SslSettingsAppengineV1beta.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the SAP Enqueue Replication Server (ERS) properties.
 class EnqueueReplicationServerPropertiesResponse {
   /// Defines the type of Enqueue Replication Server.
-  final String ersVersion;
+  final pulumi.Input<String> ersVersion;
   /// Defines the health of SAP Instances.
-  final String health;
+  final pulumi.Input<String> health;
   /// ERS SAP Hostname.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// ERS Instance Number.
-  final String instanceNo;
+  final pulumi.Input<String> instanceNo;
   /// ERS SAP IP Address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// ERS SAP Kernel Patch level.
-  final String kernelPatch;
+  final pulumi.Input<String> kernelPatch;
   /// ERS SAP Kernel Version.
-  final String kernelVersion;
+  final pulumi.Input<String> kernelVersion;
 
   /// Creates a new [EnqueueReplicationServerPropertiesResponse].
   /// [ersVersion] Defines the type of Enqueue Replication Server.
@@ -50,13 +51,13 @@ class EnqueueReplicationServerPropertiesResponse {
 
   factory EnqueueReplicationServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnqueueReplicationServerPropertiesResponse(
-      ersVersion: map['ersVersion'] as String,
-      health: map['health'] as String,
-      hostname: map['hostname'] as String,
-      instanceNo: map['instanceNo'] as String,
-      ipAddress: map['ipAddress'] as String,
-      kernelPatch: map['kernelPatch'] as String,
-      kernelVersion: map['kernelVersion'] as String,
+      ersVersion: (map['ersVersion'] as String).input(),
+      health: (map['health'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      instanceNo: (map['instanceNo'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      kernelPatch: (map['kernelPatch'] as String).input(),
+      kernelVersion: (map['kernelVersion'] as String).input(),
     );
   }
 }

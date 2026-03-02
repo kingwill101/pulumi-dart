@@ -5,9 +5,9 @@ import 'domain_devices_disk_backing_store_source_reservations_source_pipe_sec_la
 
 class DomainDevicesDiskBackingStoreSourceReservationsSourcePipe {
   /// Sets the path for the pipe source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final List<DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
@@ -20,14 +20,14 @@ class DomainDevicesDiskBackingStoreSourceReservationsSourcePipe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskBackingStoreSourceReservationsSourcePipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceReservationsSourcePipe(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

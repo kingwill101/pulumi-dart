@@ -34,19 +34,13 @@ class DeploymentArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   DeploymentArgs({
-    required pulumi.Output<String> app,
-    required pulumi.Output<String> appVersion,
-    required pulumi.Output<DeploymentChannelProfile> channelProfile,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      app = pulumi.Input.asInput<String>(app),
-      appVersion = pulumi.Input.asInput<String>(appVersion),
-      channelProfile = pulumi.Input.asInput<DeploymentChannelProfile>(channelProfile),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.app,
+    required this.appVersion,
+    required this.channelProfile,
+    required this.displayName,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      app: pulumi.Output.create<String>(map['app'] as String),
-      appVersion: pulumi.Output.create<String>(map['appVersion'] as String),
-      channelProfile: pulumi.Output.create<DeploymentChannelProfile>(DeploymentChannelProfile.fromMap((map['channelProfile'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      app: (map['app'] as String).input(),
+      appVersion: (map['appVersion'] as String).input(),
+      channelProfile: (DeploymentChannelProfile.fromMap((map['channelProfile'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

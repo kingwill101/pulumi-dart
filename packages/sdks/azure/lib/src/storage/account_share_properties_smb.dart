@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountSharePropertiesSmb {
   /// A set of SMB authentication methods. Possible values are `NTLMv2`, and `Kerberos`.
-  final List<String>? authenticationTypes;
+  final pulumi.Input<List<String>>? authenticationTypes;
   /// A set of SMB channel encryption. Possible values are `AES-128-CCM`, `AES-128-GCM`, and `AES-256-GCM`.
-  final List<String>? channelEncryptionTypes;
+  final pulumi.Input<List<String>>? channelEncryptionTypes;
   /// A set of Kerberos ticket encryption. Possible values are `RC4-HMAC`, and `AES-256`.
-  final List<String>? kerberosTicketEncryptionTypes;
+  final pulumi.Input<List<String>>? kerberosTicketEncryptionTypes;
   /// Indicates whether multichannel is enabled. Defaults to `false`. This is only supported on Premium storage accounts.
-  final bool? multichannelEnabled;
+  final pulumi.Input<bool>? multichannelEnabled;
   /// A set of SMB protocol versions. Possible values are `SMB2.1`, `SMB3.0`, and `SMB3.1.1`.
-  final List<String>? versions;
+  final pulumi.Input<List<String>>? versions;
 
   /// Creates a new [AccountSharePropertiesSmb].
   /// [authenticationTypes] A set of SMB authentication methods. Possible values are `NTLMv2`, and `Kerberos`.
@@ -39,11 +40,11 @@ class AccountSharePropertiesSmb {
 
   factory AccountSharePropertiesSmb.fromMap(Map<String, dynamic> map) {
     return AccountSharePropertiesSmb(
-      authenticationTypes: map['authenticationTypes'] == null ? null : (map['authenticationTypes'] as List).cast<String>(),
-      channelEncryptionTypes: map['channelEncryptionTypes'] == null ? null : (map['channelEncryptionTypes'] as List).cast<String>(),
-      kerberosTicketEncryptionTypes: map['kerberosTicketEncryptionTypes'] == null ? null : (map['kerberosTicketEncryptionTypes'] as List).cast<String>(),
-      multichannelEnabled: map['multichannelEnabled'] == null ? null : map['multichannelEnabled'] as bool,
-      versions: map['versions'] == null ? null : (map['versions'] as List).cast<String>(),
+      authenticationTypes: map['authenticationTypes'] == null ? null : ((map['authenticationTypes'] as List).cast<String>()).input(),
+      channelEncryptionTypes: map['channelEncryptionTypes'] == null ? null : ((map['channelEncryptionTypes'] as List).cast<String>()).input(),
+      kerberosTicketEncryptionTypes: map['kerberosTicketEncryptionTypes'] == null ? null : ((map['kerberosTicketEncryptionTypes'] as List).cast<String>()).input(),
+      multichannelEnabled: map['multichannelEnabled'] == null ? null : (map['multichannelEnabled'] as bool).input(),
+      versions: map['versions'] == null ? null : ((map['versions'] as List).cast<String>()).input(),
     );
   }
 }

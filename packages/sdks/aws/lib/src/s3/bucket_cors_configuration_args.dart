@@ -23,15 +23,11 @@ class BucketCorsConfigurationArgs {
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BucketCorsConfigurationArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<List<BucketCorsConfigurationCorsRule>> corsRules,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? region,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      corsRules = pulumi.Input.asInput<List<BucketCorsConfigurationCorsRule>>(corsRules),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.bucket,
+    required this.corsRules,
+    this.expectedBucketOwner,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class BucketCorsConfigurationArgs {
 
   factory BucketCorsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketCorsConfigurationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      corsRules: pulumi.Output.create<List<BucketCorsConfigurationCorsRule>>(pulumi.Input.decodeList<BucketCorsConfigurationCorsRule>(map['corsRules'], (value) => BucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>()))),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bucket: (map['bucket'] as String).input(),
+      corsRules: (pulumi.Input.decodeList<BucketCorsConfigurationCorsRule>(map['corsRules'], (value) => BucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

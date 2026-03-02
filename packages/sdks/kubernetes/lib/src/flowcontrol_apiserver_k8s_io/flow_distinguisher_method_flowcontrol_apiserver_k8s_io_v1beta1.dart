@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// FlowDistinguisherMethod specifies the method of a flow distinguisher.
 class FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta1 {
   /// `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta1].
   /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
@@ -20,7 +21,7 @@ class FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta1 {
 
   factory FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1beta1(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

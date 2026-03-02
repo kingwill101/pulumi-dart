@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SessionTemplateJupyterSession {
   /// Display name, shown in the Jupyter kernelspec card.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Kernel to be used with Jupyter interactive session.
   /// Possible values are: `PYTHON`, `SCALA`.
-  final String? kernel;
+  final pulumi.Input<String>? kernel;
 
   /// Creates a new [SessionTemplateJupyterSession].
   /// [displayName] Display name, shown in the Jupyter kernelspec card.
@@ -25,8 +26,8 @@ class SessionTemplateJupyterSession {
 
   factory SessionTemplateJupyterSession.fromMap(Map<String, dynamic> map) {
     return SessionTemplateJupyterSession(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      kernel: map['kernel'] == null ? null : map['kernel'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kernel: map['kernel'] == null ? null : (map['kernel'] as String).input(),
     );
   }
 }

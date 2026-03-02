@@ -40,27 +40,17 @@ class LinkedServiceAzureFunctionState {
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [url] The url of the Azure Function.
   LinkedServiceAzureFunctionState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<String>? key,
-    pulumi.Output<LinkedServiceAzureFunctionKeyVaultKey>? keyVaultKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? url,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      keyVaultKey = pulumi.Input.asOptionalInput<LinkedServiceAzureFunctionKeyVaultKey>(keyVaultKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.additionalProperties,
+    this.annotations,
+    this.dataFactoryId,
+    this.description,
+    this.integrationRuntimeName,
+    this.key,
+    this.keyVaultKey,
+    this.name,
+    this.parameters,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class LinkedServiceAzureFunctionState {
 
   factory LinkedServiceAzureFunctionState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureFunctionState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      keyVaultKey: map['keyVaultKey'] == null ? null : pulumi.Output.create<LinkedServiceAzureFunctionKeyVaultKey>(LinkedServiceAzureFunctionKeyVaultKey.fromMap((map['keyVaultKey'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      keyVaultKey: map['keyVaultKey'] == null ? null : (LinkedServiceAzureFunctionKeyVaultKey.fromMap((map['keyVaultKey'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

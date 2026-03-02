@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
   /// The time when this access control entry expires in RFC 3339 format.
-  final String? expireTime;
+  final pulumi.Input<String>? expireTime;
   /// A label to identify this entry.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Input only. The time-to-leave of this access control entry.
-  final String? ttl;
+  final pulumi.Input<String>? ttl;
   /// The allowlisted value for the access control list.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork].
   /// [expireTime] The time when this access control entry expires in RFC 3339 format.
@@ -34,10 +35,10 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
 
   factory ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork(
-      expireTime: map['expireTime'] == null ? null : map['expireTime'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      ttl: map['ttl'] == null ? null : map['ttl'] as String,
-      value: map['value'] as String,
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

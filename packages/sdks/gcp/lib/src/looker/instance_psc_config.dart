@@ -5,13 +5,13 @@ import 'instance_psc_config_service_attachment.dart';
 
 class InstancePscConfig {
   /// List of VPCs that are allowed ingress into the Looker instance.
-  final List<String>? allowedVpcs;
+  final pulumi.Input<List<String>>? allowedVpcs;
   /// (Output)
   /// URI of the Looker service attachment.
-  final String? lookerServiceAttachmentUri;
+  final pulumi.Input<String>? lookerServiceAttachmentUri;
   /// List of egress service attachment configurations.
   /// Structure is documented below.
-  final List<InstancePscConfigServiceAttachment>? serviceAttachments;
+  final pulumi.Input<List<InstancePscConfigServiceAttachment>>? serviceAttachments;
 
   /// Creates a new [InstancePscConfig].
   /// [allowedVpcs] List of VPCs that are allowed ingress into the Looker instance.
@@ -27,15 +27,15 @@ class InstancePscConfig {
     return <String, dynamic>{
       'allowedVpcs': ?allowedVpcs,
       'lookerServiceAttachmentUri': ?lookerServiceAttachmentUri,
-      'serviceAttachments': ?serviceAttachments == null ? null : pulumi.Input.encodeList<InstancePscConfigServiceAttachment, Map<String, dynamic>>(serviceAttachments!, (value) => value.toMap()),
+      'serviceAttachments': ?pulumi.Input.mapOptionalInputValue<List<InstancePscConfigServiceAttachment>, List<Map<String, dynamic>>>(serviceAttachments, (value) => pulumi.Input.encodeList<InstancePscConfigServiceAttachment, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory InstancePscConfig.fromMap(Map<String, dynamic> map) {
     return InstancePscConfig(
-      allowedVpcs: map['allowedVpcs'] == null ? null : (map['allowedVpcs'] as List).cast<String>(),
-      lookerServiceAttachmentUri: map['lookerServiceAttachmentUri'] == null ? null : map['lookerServiceAttachmentUri'] as String,
-      serviceAttachments: map['serviceAttachments'] == null ? null : pulumi.Input.decodeList<InstancePscConfigServiceAttachment>(map['serviceAttachments'], (value) => InstancePscConfigServiceAttachment.fromMap((value as Map).cast<String, dynamic>())),
+      allowedVpcs: map['allowedVpcs'] == null ? null : ((map['allowedVpcs'] as List).cast<String>()).input(),
+      lookerServiceAttachmentUri: map['lookerServiceAttachmentUri'] == null ? null : (map['lookerServiceAttachmentUri'] as String).input(),
+      serviceAttachments: map['serviceAttachments'] == null ? null : (pulumi.Input.decodeList<InstancePscConfigServiceAttachment>(map['serviceAttachments'], (value) => InstancePscConfigServiceAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachinePropertiesNetworkInterfaces {
   /// ID - Resource Id of the network interface
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [VirtualMachinePropertiesNetworkInterfaces].
   /// [id] ID - Resource Id of the network interface
@@ -19,7 +20,7 @@ class VirtualMachinePropertiesNetworkInterfaces {
 
   factory VirtualMachinePropertiesNetworkInterfaces.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesNetworkInterfaces(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

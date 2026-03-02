@@ -6,9 +6,9 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_s3.
 
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
   /// Inline tool definition. See `inline_payload` below.
-  final List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>? inlinePayloads;
+  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>>? inlinePayloads;
   /// S3-based tool definition. See `s3` below.
-  final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3? s3;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3>? s3;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema].
   /// [inlinePayloads] Inline tool definition. See `inline_payload` below.
@@ -20,15 +20,15 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inlinePayloads': ?inlinePayloads == null ? null : pulumi.Input.encodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload, Map<String, dynamic>>(inlinePayloads!, (value) => value.toMap()),
-      's3': ?s3 == null ? null : s3!.toMap(),
+      'inlinePayloads': ?pulumi.Input.mapOptionalInputValue<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>, List<Map<String, dynamic>>>(inlinePayloads, (value) => pulumi.Input.encodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload, Map<String, dynamic>>(value, (value) => value.toMap())),
+      's3': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3, Map<String, dynamic>>(s3, (value) => value.toMap()),
     };
   }
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema(
-      inlinePayloads: map['inlinePayloads'] == null ? null : pulumi.Input.decodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>(map['inlinePayloads'], (value) => AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload.fromMap((value as Map).cast<String, dynamic>())),
-      s3: map['s3'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
+      inlinePayloads: map['inlinePayloads'] == null ? null : (pulumi.Input.decodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>(map['inlinePayloads'], (value) => AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3: map['s3'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

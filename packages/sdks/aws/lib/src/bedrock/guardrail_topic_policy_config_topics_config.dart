@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailTopicPolicyConfigTopicsConfig {
   /// Definition of topic in topic policy.
-  final String definition;
+  final pulumi.Input<String> definition;
   /// List of text examples.
-  final List<String>? examples;
+  final pulumi.Input<List<String>>? examples;
   /// Name of topic in topic policy.
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of topic in a policy.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GuardrailTopicPolicyConfigTopicsConfig].
   /// [definition] Definition of topic in topic policy.
@@ -34,10 +35,10 @@ class GuardrailTopicPolicyConfigTopicsConfig {
 
   factory GuardrailTopicPolicyConfigTopicsConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailTopicPolicyConfigTopicsConfig(
-      definition: map['definition'] as String,
-      examples: map['examples'] == null ? null : (map['examples'] as List).cast<String>(),
-      name: map['name'] as String,
-      type: map['type'] as String,
+      definition: (map['definition'] as String).input(),
+      examples: map['examples'] == null ? null : ((map['examples'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

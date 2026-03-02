@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureImportanceSettingsResponse {
   /// The mode of operation for computing feature importance.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The name of the target column within the input data asset.
-  final String? targetColumn;
+  final pulumi.Input<String>? targetColumn;
 
   /// Creates a new [FeatureImportanceSettingsResponse].
   /// [mode] The mode of operation for computing feature importance.
@@ -24,8 +25,8 @@ class FeatureImportanceSettingsResponse {
 
   factory FeatureImportanceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FeatureImportanceSettingsResponse(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      targetColumn: map['targetColumn'] == null ? null : map['targetColumn'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      targetColumn: map['targetColumn'] == null ? null : (map['targetColumn'] as String).input(),
     );
   }
 }

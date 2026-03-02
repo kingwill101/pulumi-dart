@@ -1,82 +1,83 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouterInterfacesInterface {
   /// The access point ID to which the VBR belongs.
-  final String accessPointId;
+  final pulumi.Input<String> accessPointId;
   /// The bandwidth of the resource.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
-  final String businessStatus;
+  final pulumi.Input<String> businessStatus;
   /// The connected time of the resource.
-  final String connectedTime;
+  final pulumi.Input<String> connectedTime;
   /// The creation time of the resource
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The cross border of the resource.
-  final bool crossBorder;
+  final pulumi.Input<bool> crossBorder;
   /// The description of the router interface.
-  final String description;
+  final pulumi.Input<String> description;
   /// The end time of the resource.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The has reservation data of the resource.
-  final String hasReservationData;
+  final pulumi.Input<String> hasReservationData;
   /// The hc rate of the resource.
-  final int hcRate;
+  final pulumi.Input<int> hcRate;
   /// The hc threshold of the resource.
-  final String hcThreshold;
+  final pulumi.Input<String> hcThreshold;
   /// The health check source IP address, must be an unused IP within the local VPC.
-  final String healthCheckSourceIp;
+  final pulumi.Input<String> healthCheckSourceIp;
   /// The IP address for health screening purposes.
-  final String healthCheckTargetIp;
-  final String id;
+  final pulumi.Input<String> healthCheckTargetIp;
+  final pulumi.Input<String> id;
   /// The Access point ID to which the other end belongs.
-  final String oppositeAccessPointId;
+  final pulumi.Input<String> oppositeAccessPointId;
   /// The opposite bandwidth of the router on the other side.
-  final int oppositeBandwidth;
+  final pulumi.Input<int> oppositeBandwidth;
   /// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
-  final String oppositeInterfaceBusinessStatus;
+  final pulumi.Input<String> oppositeInterfaceBusinessStatus;
   /// The Interface ID of the router at the other end.
-  final String oppositeInterfaceId;
+  final pulumi.Input<String> oppositeInterfaceId;
   /// The AliCloud account ID of the owner of the router interface on the other end.
-  final String oppositeInterfaceOwnerId;
+  final pulumi.Input<String> oppositeInterfaceOwnerId;
   /// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
-  final String oppositeInterfaceSpec;
+  final pulumi.Input<String> oppositeInterfaceSpec;
   /// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
-  final String oppositeInterfaceStatus;
+  final pulumi.Input<String> oppositeInterfaceStatus;
   /// The geographical ID of the location of the receiving end of the connection.
-  final String oppositeRegionId;
+  final pulumi.Input<String> oppositeRegionId;
   /// The id of the router at the other end.
-  final String oppositeRouterId;
+  final pulumi.Input<String> oppositeRouterId;
   /// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
-  final String oppositeRouterType;
+  final pulumi.Input<String> oppositeRouterType;
   /// The opposite vpc instance id of the router on the other side.
-  final String oppositeVpcInstanceId;
+  final pulumi.Input<String> oppositeVpcInstanceId;
   /// The payment methods for router interfaces. Valid Values: `PrePaid`, `PostPaid`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The reservation active time of the resource.
-  final String reservationActiveTime;
+  final pulumi.Input<String> reservationActiveTime;
   /// The reservation bandwidth of the resource.
-  final String reservationBandwidth;
+  final pulumi.Input<String> reservationBandwidth;
   /// The reservation internet charge type of the resource.
-  final String reservationInternetChargeType;
+  final pulumi.Input<String> reservationInternetChargeType;
   /// The reservation order type of the resource.
-  final String reservationOrderType;
+  final pulumi.Input<String> reservationOrderType;
   /// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
-  final String role;
+  final pulumi.Input<String> role;
   /// The router id associated with the router interface.
-  final String routerId;
+  final pulumi.Input<String> routerId;
   /// The first ID of the resource.
-  final String routerInterfaceId;
+  final pulumi.Input<String> routerInterfaceId;
   /// The name of the resource.
-  final String routerInterfaceName;
+  final pulumi.Input<String> routerInterfaceName;
   /// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
-  final String routerType;
+  final pulumi.Input<String> routerType;
   /// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
-  final String spec;
+  final pulumi.Input<String> spec;
   /// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The vpc instance id of the resource.
-  final String vpcInstanceId;
+  final pulumi.Input<String> vpcInstanceId;
 
   /// Creates a new [GetRouterInterfacesInterface].
   /// [accessPointId] The access point ID to which the VBR belongs.
@@ -203,44 +204,44 @@ class GetRouterInterfacesInterface {
 
   factory GetRouterInterfacesInterface.fromMap(Map<String, dynamic> map) {
     return GetRouterInterfacesInterface(
-      accessPointId: map['accessPointId'] as String,
-      bandwidth: map['bandwidth'] as int,
-      businessStatus: map['businessStatus'] as String,
-      connectedTime: map['connectedTime'] as String,
-      createTime: map['createTime'] as String,
-      crossBorder: map['crossBorder'] as bool,
-      description: map['description'] as String,
-      endTime: map['endTime'] as String,
-      hasReservationData: map['hasReservationData'] as String,
-      hcRate: map['hcRate'] as int,
-      hcThreshold: map['hcThreshold'] as String,
-      healthCheckSourceIp: map['healthCheckSourceIp'] as String,
-      healthCheckTargetIp: map['healthCheckTargetIp'] as String,
-      id: map['id'] as String,
-      oppositeAccessPointId: map['oppositeAccessPointId'] as String,
-      oppositeBandwidth: map['oppositeBandwidth'] as int,
-      oppositeInterfaceBusinessStatus: map['oppositeInterfaceBusinessStatus'] as String,
-      oppositeInterfaceId: map['oppositeInterfaceId'] as String,
-      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] as String,
-      oppositeInterfaceSpec: map['oppositeInterfaceSpec'] as String,
-      oppositeInterfaceStatus: map['oppositeInterfaceStatus'] as String,
-      oppositeRegionId: map['oppositeRegionId'] as String,
-      oppositeRouterId: map['oppositeRouterId'] as String,
-      oppositeRouterType: map['oppositeRouterType'] as String,
-      oppositeVpcInstanceId: map['oppositeVpcInstanceId'] as String,
-      paymentType: map['paymentType'] as String,
-      reservationActiveTime: map['reservationActiveTime'] as String,
-      reservationBandwidth: map['reservationBandwidth'] as String,
-      reservationInternetChargeType: map['reservationInternetChargeType'] as String,
-      reservationOrderType: map['reservationOrderType'] as String,
-      role: map['role'] as String,
-      routerId: map['routerId'] as String,
-      routerInterfaceId: map['routerInterfaceId'] as String,
-      routerInterfaceName: map['routerInterfaceName'] as String,
-      routerType: map['routerType'] as String,
-      spec: map['spec'] as String,
-      status: map['status'] as String,
-      vpcInstanceId: map['vpcInstanceId'] as String,
+      accessPointId: (map['accessPointId'] as String).input(),
+      bandwidth: (map['bandwidth'] as int).input(),
+      businessStatus: (map['businessStatus'] as String).input(),
+      connectedTime: (map['connectedTime'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      crossBorder: (map['crossBorder'] as bool).input(),
+      description: (map['description'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      hasReservationData: (map['hasReservationData'] as String).input(),
+      hcRate: (map['hcRate'] as int).input(),
+      hcThreshold: (map['hcThreshold'] as String).input(),
+      healthCheckSourceIp: (map['healthCheckSourceIp'] as String).input(),
+      healthCheckTargetIp: (map['healthCheckTargetIp'] as String).input(),
+      id: (map['id'] as String).input(),
+      oppositeAccessPointId: (map['oppositeAccessPointId'] as String).input(),
+      oppositeBandwidth: (map['oppositeBandwidth'] as int).input(),
+      oppositeInterfaceBusinessStatus: (map['oppositeInterfaceBusinessStatus'] as String).input(),
+      oppositeInterfaceId: (map['oppositeInterfaceId'] as String).input(),
+      oppositeInterfaceOwnerId: (map['oppositeInterfaceOwnerId'] as String).input(),
+      oppositeInterfaceSpec: (map['oppositeInterfaceSpec'] as String).input(),
+      oppositeInterfaceStatus: (map['oppositeInterfaceStatus'] as String).input(),
+      oppositeRegionId: (map['oppositeRegionId'] as String).input(),
+      oppositeRouterId: (map['oppositeRouterId'] as String).input(),
+      oppositeRouterType: (map['oppositeRouterType'] as String).input(),
+      oppositeVpcInstanceId: (map['oppositeVpcInstanceId'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      reservationActiveTime: (map['reservationActiveTime'] as String).input(),
+      reservationBandwidth: (map['reservationBandwidth'] as String).input(),
+      reservationInternetChargeType: (map['reservationInternetChargeType'] as String).input(),
+      reservationOrderType: (map['reservationOrderType'] as String).input(),
+      role: (map['role'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      routerInterfaceId: (map['routerInterfaceId'] as String).input(),
+      routerInterfaceName: (map['routerInterfaceName'] as String).input(),
+      routerType: (map['routerType'] as String).input(),
+      spec: (map['spec'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcInstanceId: (map['vpcInstanceId'] as String).input(),
     );
   }
 }

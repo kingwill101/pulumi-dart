@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The mapping between a particular user and the access type on the SMB share.
 class UserAccessRight {
   /// Type of access to be allowed for the user.
-  final String accessType;
+  final pulumi.Input<String> accessType;
   /// User ID (already existing in the device).
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [UserAccessRight].
   /// [accessType] Type of access to be allowed for the user.
@@ -25,8 +26,8 @@ class UserAccessRight {
 
   factory UserAccessRight.fromMap(Map<String, dynamic> map) {
     return UserAccessRight(
-      accessType: map['accessType'] as String,
-      userId: map['userId'] as String,
+      accessType: (map['accessType'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

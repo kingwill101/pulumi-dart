@@ -51,33 +51,20 @@ class FlowDialogflowV3beta1Args {
   /// [transitionRouteGroups] A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
   /// [transitionRoutes] A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
   FlowDialogflowV3beta1Args({
-    pulumi.Output<GoogleCloudDialogflowCxV3beta1AdvancedSettings>? advancedSettings,
-    required pulumi.Output<String> agentId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3beta1EventHandler>>? eventHandlers,
-    pulumi.Output<GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings>? knowledgeConnectorSettings,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<GoogleCloudDialogflowCxV3beta1NluSettings>? nluSettings,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? transitionRouteGroups,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>? transitionRoutes,
-  }) :
-      advancedSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1AdvancedSettings>(advancedSettings),
-      agentId = pulumi.Input.asInput<String>(agentId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      eventHandlers = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3beta1EventHandler>>(eventHandlers),
-      knowledgeConnectorSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings>(knowledgeConnectorSettings),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nluSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1NluSettings>(nluSettings),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      transitionRouteGroups = pulumi.Input.asOptionalInput<List<String>>(transitionRouteGroups),
-      transitionRoutes = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>(transitionRoutes);
+    this.advancedSettings,
+    required this.agentId,
+    this.description,
+    required this.displayName,
+    this.eventHandlers,
+    this.knowledgeConnectorSettings,
+    this.languageCode,
+    this.location,
+    this.name,
+    this.nluSettings,
+    this.project,
+    this.transitionRouteGroups,
+    this.transitionRoutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class FlowDialogflowV3beta1Args {
 
   factory FlowDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return FlowDialogflowV3beta1Args(
-      advancedSettings: map['advancedSettings'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3beta1AdvancedSettings>(GoogleCloudDialogflowCxV3beta1AdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())),
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      eventHandlers: map['eventHandlers'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3beta1EventHandler>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EventHandler>(map['eventHandlers'], (value) => GoogleCloudDialogflowCxV3beta1EventHandler.fromMap((value as Map).cast<String, dynamic>()))),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings>(GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nluSettings: map['nluSettings'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3beta1NluSettings>(GoogleCloudDialogflowCxV3beta1NluSettings.fromMap((map['nluSettings'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : pulumi.Output.create<List<String>>((map['transitionRouteGroups'] as List).cast<String>()),
-      transitionRoutes: map['transitionRoutes'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRoute>(map['transitionRoutes'], (value) => GoogleCloudDialogflowCxV3beta1TransitionRoute.fromMap((value as Map).cast<String, dynamic>()))),
+      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1AdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
+      agentId: (map['agentId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EventHandler>(map['eventHandlers'], (value) => GoogleCloudDialogflowCxV3beta1EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nluSettings: map['nluSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1NluSettings.fromMap((map['nluSettings'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups'] as List).cast<String>()).input(),
+      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRoute>(map['transitionRoutes'], (value) => GoogleCloudDialogflowCxV3beta1TransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

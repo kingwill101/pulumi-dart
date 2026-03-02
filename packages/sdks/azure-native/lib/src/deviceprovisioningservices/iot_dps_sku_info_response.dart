@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// List of possible provisioning service SKUs.
 class IotDpsSkuInfoResponse {
   /// The number of units to provision
-  final double? capacity;
+  final pulumi.Input<double>? capacity;
   /// Sku name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Pricing tier name of the provisioning service.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [IotDpsSkuInfoResponse].
   /// [capacity] The number of units to provision
@@ -30,9 +31,9 @@ class IotDpsSkuInfoResponse {
 
   factory IotDpsSkuInfoResponse.fromMap(Map<String, dynamic> map) {
     return IotDpsSkuInfoResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetRemediationAtResourceArgs {
   /// [remediationName] The name of the remediation.
   /// [resourceId] Resource ID.
   GetRemediationAtResourceArgs({
-    required pulumi.Output<String> remediationName,
-    required pulumi.Output<String> resourceId,
-  }) :
-      remediationName = pulumi.Input.asInput<String>(remediationName),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    required this.remediationName,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRemediationAtResourceArgs {
 
   factory GetRemediationAtResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetRemediationAtResourceArgs(
-      remediationName: pulumi.Output.create<String>(map['remediationName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      remediationName: (map['remediationName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

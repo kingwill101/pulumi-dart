@@ -19,13 +19,10 @@ class GetReplicaArgs {
   /// [replicaName] The name of the replica.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   GetReplicaArgs({
-    required pulumi.Output<String> configStoreName,
-    required pulumi.Output<String> replicaName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configStoreName = pulumi.Input.asInput<String>(configStoreName),
-      replicaName = pulumi.Input.asInput<String>(replicaName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configStoreName,
+    required this.replicaName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetReplicaArgs {
 
   factory GetReplicaArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicaArgs(
-      configStoreName: pulumi.Output.create<String>(map['configStoreName'] as String),
-      replicaName: pulumi.Output.create<String>(map['replicaName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configStoreName: (map['configStoreName'] as String).input(),
+      replicaName: (map['replicaName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a scaling mechanism for adding or removing named partitions of a stateless service. Partition names are in the format '0','1'...'N-1'.
 class AddRemoveIncrementalNamedPartitionScalingMechanismResponse {
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'AddRemoveIncrementalNamedPartition'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Maximum number of named partitions of the service.
-  final int maxPartitionCount;
+  final pulumi.Input<int> maxPartitionCount;
   /// Minimum number of named partitions of the service.
-  final int minPartitionCount;
+  final pulumi.Input<int> minPartitionCount;
   /// The number of instances to add or remove during a scaling operation.
-  final int scaleIncrement;
+  final pulumi.Input<int> scaleIncrement;
 
   /// Creates a new [AddRemoveIncrementalNamedPartitionScalingMechanismResponse].
   /// [kind] Enumerates the ways that a service can be partitioned.
@@ -36,10 +37,10 @@ class AddRemoveIncrementalNamedPartitionScalingMechanismResponse {
 
   factory AddRemoveIncrementalNamedPartitionScalingMechanismResponse.fromMap(Map<String, dynamic> map) {
     return AddRemoveIncrementalNamedPartitionScalingMechanismResponse(
-      kind: map['kind'] as String,
-      maxPartitionCount: map['maxPartitionCount'] as int,
-      minPartitionCount: map['minPartitionCount'] as int,
-      scaleIncrement: map['scaleIncrement'] as int,
+      kind: (map['kind'] as String).input(),
+      maxPartitionCount: (map['maxPartitionCount'] as int).input(),
+      minPartitionCount: (map['minPartitionCount'] as int).input(),
+      scaleIncrement: (map['scaleIncrement'] as int).input(),
     );
   }
 }

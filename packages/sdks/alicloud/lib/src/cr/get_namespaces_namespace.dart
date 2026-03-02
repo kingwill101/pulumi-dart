@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNamespacesNamespace {
   /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-  final bool autoCreate;
+  final pulumi.Input<bool> autoCreate;
   /// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-  final String defaultVisibility;
+  final pulumi.Input<String> defaultVisibility;
   /// Name of Container Registry namespace.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetNamespacesNamespace].
   /// [autoCreate] Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -29,9 +30,9 @@ class GetNamespacesNamespace {
 
   factory GetNamespacesNamespace.fromMap(Map<String, dynamic> map) {
     return GetNamespacesNamespace(
-      autoCreate: map['autoCreate'] as bool,
-      defaultVisibility: map['defaultVisibility'] as String,
-      name: map['name'] as String,
+      autoCreate: (map['autoCreate'] as bool).input(),
+      defaultVisibility: (map['defaultVisibility'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

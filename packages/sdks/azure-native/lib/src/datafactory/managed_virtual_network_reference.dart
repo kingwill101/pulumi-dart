@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed Virtual Network reference type.
 class ManagedVirtualNetworkReference {
   /// Reference ManagedVirtualNetwork name.
-  final String referenceName;
+  final pulumi.Input<String> referenceName;
   /// Managed Virtual Network reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedVirtualNetworkReference].
   /// [referenceName] Reference ManagedVirtualNetwork name.
@@ -25,8 +26,8 @@ class ManagedVirtualNetworkReference {
 
   factory ManagedVirtualNetworkReference.fromMap(Map<String, dynamic> map) {
     return ManagedVirtualNetworkReference(
-      referenceName: map['referenceName'] as String,
-      type: map['type'] as String,
+      referenceName: (map['referenceName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

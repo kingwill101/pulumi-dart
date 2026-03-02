@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileSystemSizeInByte {
   /// The latest known metered size (in bytes) of data stored in the file system.
-  final int? value;
+  final pulumi.Input<int>? value;
   /// The latest known metered size (in bytes) of data stored in the Infrequent Access storage class.
-  final int? valueInIa;
+  final pulumi.Input<int>? valueInIa;
   /// The latest known metered size (in bytes) of data stored in the Standard storage class.
-  final int? valueInStandard;
+  final pulumi.Input<int>? valueInStandard;
 
   /// Creates a new [FileSystemSizeInByte].
   /// [value] The latest known metered size (in bytes) of data stored in the file system.
@@ -29,9 +30,9 @@ class FileSystemSizeInByte {
 
   factory FileSystemSizeInByte.fromMap(Map<String, dynamic> map) {
     return FileSystemSizeInByte(
-      value: map['value'] == null ? null : map['value'] as int,
-      valueInIa: map['valueInIa'] == null ? null : map['valueInIa'] as int,
-      valueInStandard: map['valueInStandard'] == null ? null : map['valueInStandard'] as int,
+      value: map['value'] == null ? null : (map['value'] as int).input(),
+      valueInIa: map['valueInIa'] == null ? null : (map['valueInIa'] as int).input(),
+      valueInStandard: map['valueInStandard'] == null ? null : (map['valueInStandard'] as int).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_route_spec_grpc_route.dart';
 import 'gateway_route_spec_http2_route.dart';
 import 'gateway_route_spec_http_route.dart';
 
 class GatewayRouteSpec {
   /// Specification of a gRPC gateway route.
-  final GatewayRouteSpecGrpcRoute? grpcRoute;
+  final pulumi.Input<GatewayRouteSpecGrpcRoute>? grpcRoute;
   /// Specification of an HTTP/2 gateway route.
-  final GatewayRouteSpecHttp2Route? http2Route;
+  final pulumi.Input<GatewayRouteSpecHttp2Route>? http2Route;
   /// Specification of an HTTP gateway route.
-  final GatewayRouteSpecHttpRoute? httpRoute;
+  final pulumi.Input<GatewayRouteSpecHttpRoute>? httpRoute;
   /// Priority for the gateway route, between `0` and `1000`.
-  final int? priority;
+  final pulumi.Input<int>? priority;
 
   /// Creates a new [GatewayRouteSpec].
   /// [grpcRoute] Specification of a gRPC gateway route.
@@ -28,19 +29,19 @@ class GatewayRouteSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'grpcRoute': ?grpcRoute == null ? null : grpcRoute!.toMap(),
-      'http2Route': ?http2Route == null ? null : http2Route!.toMap(),
-      'httpRoute': ?httpRoute == null ? null : httpRoute!.toMap(),
+      'grpcRoute': ?pulumi.Input.mapOptionalInputValue<GatewayRouteSpecGrpcRoute, Map<String, dynamic>>(grpcRoute, (value) => value.toMap()),
+      'http2Route': ?pulumi.Input.mapOptionalInputValue<GatewayRouteSpecHttp2Route, Map<String, dynamic>>(http2Route, (value) => value.toMap()),
+      'httpRoute': ?pulumi.Input.mapOptionalInputValue<GatewayRouteSpecHttpRoute, Map<String, dynamic>>(httpRoute, (value) => value.toMap()),
       'priority': ?priority,
     };
   }
 
   factory GatewayRouteSpec.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpec(
-      grpcRoute: map['grpcRoute'] == null ? null : GatewayRouteSpecGrpcRoute.fromMap((map['grpcRoute'] as Map).cast<String, dynamic>()),
-      http2Route: map['http2Route'] == null ? null : GatewayRouteSpecHttp2Route.fromMap((map['http2Route'] as Map).cast<String, dynamic>()),
-      httpRoute: map['httpRoute'] == null ? null : GatewayRouteSpecHttpRoute.fromMap((map['httpRoute'] as Map).cast<String, dynamic>()),
-      priority: map['priority'] == null ? null : map['priority'] as int,
+      grpcRoute: map['grpcRoute'] == null ? null : (GatewayRouteSpecGrpcRoute.fromMap((map['grpcRoute'] as Map).cast<String, dynamic>())).input(),
+      http2Route: map['http2Route'] == null ? null : (GatewayRouteSpecHttp2Route.fromMap((map['http2Route'] as Map).cast<String, dynamic>())).input(),
+      httpRoute: map['httpRoute'] == null ? null : (GatewayRouteSpecHttpRoute.fromMap((map['httpRoute'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
     );
   }
 }

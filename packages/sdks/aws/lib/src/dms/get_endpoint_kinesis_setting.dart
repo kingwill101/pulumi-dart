@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointKinesisSetting {
-  final bool includeControlDetails;
-  final bool includeNullAndEmpty;
-  final bool includePartitionValue;
-  final bool includeTableAlterOperations;
-  final bool includeTransactionDetails;
-  final String messageFormat;
-  final bool partitionIncludeSchemaTable;
-  final String serviceAccessRoleArn;
-  final String streamArn;
-  final bool useLargeIntegerValue;
+  final pulumi.Input<bool> includeControlDetails;
+  final pulumi.Input<bool> includeNullAndEmpty;
+  final pulumi.Input<bool> includePartitionValue;
+  final pulumi.Input<bool> includeTableAlterOperations;
+  final pulumi.Input<bool> includeTransactionDetails;
+  final pulumi.Input<String> messageFormat;
+  final pulumi.Input<bool> partitionIncludeSchemaTable;
+  final pulumi.Input<String> serviceAccessRoleArn;
+  final pulumi.Input<String> streamArn;
+  final pulumi.Input<bool> useLargeIntegerValue;
 
   /// Creates a new [GetEndpointKinesisSetting].
   /// [includeControlDetails] Required.
@@ -54,16 +55,16 @@ class GetEndpointKinesisSetting {
 
   factory GetEndpointKinesisSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointKinesisSetting(
-      includeControlDetails: map['includeControlDetails'] as bool,
-      includeNullAndEmpty: map['includeNullAndEmpty'] as bool,
-      includePartitionValue: map['includePartitionValue'] as bool,
-      includeTableAlterOperations: map['includeTableAlterOperations'] as bool,
-      includeTransactionDetails: map['includeTransactionDetails'] as bool,
-      messageFormat: map['messageFormat'] as String,
-      partitionIncludeSchemaTable: map['partitionIncludeSchemaTable'] as bool,
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
-      streamArn: map['streamArn'] as String,
-      useLargeIntegerValue: map['useLargeIntegerValue'] as bool,
+      includeControlDetails: (map['includeControlDetails'] as bool).input(),
+      includeNullAndEmpty: (map['includeNullAndEmpty'] as bool).input(),
+      includePartitionValue: (map['includePartitionValue'] as bool).input(),
+      includeTableAlterOperations: (map['includeTableAlterOperations'] as bool).input(),
+      includeTransactionDetails: (map['includeTransactionDetails'] as bool).input(),
+      messageFormat: (map['messageFormat'] as String).input(),
+      partitionIncludeSchemaTable: (map['partitionIncludeSchemaTable'] as bool).input(),
+      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
+      streamArn: (map['streamArn'] as String).input(),
+      useLargeIntegerValue: (map['useLargeIntegerValue'] as bool).input(),
     );
   }
 }

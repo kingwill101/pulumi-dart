@@ -6,15 +6,15 @@ import 'placement_key_value_pairs_response.dart';
 /// Volume group properties
 class VolumeGroupMetaDataResponse {
   /// Application specific identifier
-  final String? applicationIdentifier;
+  final pulumi.Input<String>? applicationIdentifier;
   /// Application Type
-  final String? applicationType;
+  final pulumi.Input<String>? applicationType;
   /// Application specific placement rules for the volume group
-  final List<PlacementKeyValuePairsResponse>? globalPlacementRules;
+  final pulumi.Input<List<PlacementKeyValuePairsResponse>>? globalPlacementRules;
   /// Group Description
-  final String? groupDescription;
+  final pulumi.Input<String>? groupDescription;
   /// Number of volumes in volume group
-  final double volumesCount;
+  final pulumi.Input<double> volumesCount;
 
   /// Creates a new [VolumeGroupMetaDataResponse].
   /// [applicationIdentifier] Application specific identifier
@@ -34,7 +34,7 @@ class VolumeGroupMetaDataResponse {
     return <String, dynamic>{
       'applicationIdentifier': ?applicationIdentifier,
       'applicationType': ?applicationType,
-      'globalPlacementRules': ?globalPlacementRules == null ? null : pulumi.Input.encodeList<PlacementKeyValuePairsResponse, Map<String, dynamic>>(globalPlacementRules!, (value) => value.toMap()),
+      'globalPlacementRules': ?pulumi.Input.mapOptionalInputValue<List<PlacementKeyValuePairsResponse>, List<Map<String, dynamic>>>(globalPlacementRules, (value) => pulumi.Input.encodeList<PlacementKeyValuePairsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'groupDescription': ?groupDescription,
       'volumesCount': volumesCount,
     };
@@ -42,11 +42,11 @@ class VolumeGroupMetaDataResponse {
 
   factory VolumeGroupMetaDataResponse.fromMap(Map<String, dynamic> map) {
     return VolumeGroupMetaDataResponse(
-      applicationIdentifier: map['applicationIdentifier'] == null ? null : map['applicationIdentifier'] as String,
-      applicationType: map['applicationType'] == null ? null : map['applicationType'] as String,
-      globalPlacementRules: map['globalPlacementRules'] == null ? null : pulumi.Input.decodeList<PlacementKeyValuePairsResponse>(map['globalPlacementRules'], (value) => PlacementKeyValuePairsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      groupDescription: map['groupDescription'] == null ? null : map['groupDescription'] as String,
-      volumesCount: map['volumesCount'] as double,
+      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier'] as String).input(),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
+      globalPlacementRules: map['globalPlacementRules'] == null ? null : (pulumi.Input.decodeList<PlacementKeyValuePairsResponse>(map['globalPlacementRules'], (value) => PlacementKeyValuePairsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription'] as String).input(),
+      volumesCount: (map['volumesCount'] as double).input(),
     );
   }
 }

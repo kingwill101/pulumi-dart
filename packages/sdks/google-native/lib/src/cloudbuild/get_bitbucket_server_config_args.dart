@@ -16,13 +16,10 @@ class GetBitbucketServerConfigArgs {
   /// [location] Required.
   /// [project] Optional.
   GetBitbucketServerConfigArgs({
-    required pulumi.Output<String> bitbucketServerConfigId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      bitbucketServerConfigId = pulumi.Input.asInput<String>(bitbucketServerConfigId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.bitbucketServerConfigId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBitbucketServerConfigArgs {
 
   factory GetBitbucketServerConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetBitbucketServerConfigArgs(
-      bitbucketServerConfigId: pulumi.Output.create<String>(map['bitbucketServerConfigId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bitbucketServerConfigId: (map['bitbucketServerConfigId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class NetworkSecurityPerimeterArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   NetworkSecurityPerimeterArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? networkSecurityPerimeterName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkSecurityPerimeterName = pulumi.Input.asOptionalInput<String>(networkSecurityPerimeterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.id,
+    this.location,
+    this.networkSecurityPerimeterName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkSecurityPerimeterArgs {
 
   factory NetworkSecurityPerimeterArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkSecurityPerimeterName: map['networkSecurityPerimeterName'] == null ? null : pulumi.Output.create<String>(map['networkSecurityPerimeterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkSecurityPerimeterName: map['networkSecurityPerimeterName'] == null ? null : (map['networkSecurityPerimeterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

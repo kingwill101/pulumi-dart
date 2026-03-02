@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProvisionedProductProvisioningParameter {
   /// Parameter key.
-  final String key;
+  final pulumi.Input<String> key;
   /// Whether to ignore `value` and keep the previous parameter value. Ignored when initially provisioning a product.
-  final bool? usePreviousValue;
+  final pulumi.Input<bool>? usePreviousValue;
   /// Parameter value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ProvisionedProductProvisioningParameter].
   /// [key] Parameter key.
@@ -29,9 +30,9 @@ class ProvisionedProductProvisioningParameter {
 
   factory ProvisionedProductProvisioningParameter.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductProvisioningParameter(
-      key: map['key'] as String,
-      usePreviousValue: map['usePreviousValue'] == null ? null : map['usePreviousValue'] as bool,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: (map['key'] as String).input(),
+      usePreviousValue: map['usePreviousValue'] == null ? null : (map['usePreviousValue'] as bool).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

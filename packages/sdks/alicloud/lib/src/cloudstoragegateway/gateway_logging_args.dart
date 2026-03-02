@@ -22,15 +22,11 @@ class GatewayLoggingArgs {
   /// [slsProject] The name of the Project.
   /// [status] The status of the resource. Valid values: `Enabled`, `Disable`.
   GatewayLoggingArgs({
-    required pulumi.Output<String> gatewayId,
-    required pulumi.Output<String> slsLogstore,
-    required pulumi.Output<String> slsProject,
-    pulumi.Output<String>? status,
-  }) :
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      slsLogstore = pulumi.Input.asInput<String>(slsLogstore),
-      slsProject = pulumi.Input.asInput<String>(slsProject),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.gatewayId,
+    required this.slsLogstore,
+    required this.slsProject,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GatewayLoggingArgs {
 
   factory GatewayLoggingArgs.fromMap(Map<String, dynamic> map) {
     return GatewayLoggingArgs(
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      slsLogstore: pulumi.Output.create<String>(map['slsLogstore'] as String),
-      slsProject: pulumi.Output.create<String>(map['slsProject'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      gatewayId: (map['gatewayId'] as String).input(),
+      slsLogstore: (map['slsLogstore'] as String).input(),
+      slsProject: (map['slsProject'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

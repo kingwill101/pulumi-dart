@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A condition represents the status of the secret create and update processes.
 class SecretSyncConditionResponse {
   /// LastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
-  final String lastTransitionTime;
+  final pulumi.Input<String> lastTransitionTime;
   /// Message is a human readable message indicating details about the transition. This may be an empty string.
-  final String message;
+  final pulumi.Input<String> message;
   /// ObservedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.
-  final double observedGeneration;
+  final pulumi.Input<double> observedGeneration;
   /// Reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// Status of the condition, one of True, False, Unknown.
-  final String status;
+  final pulumi.Input<String> status;
   /// Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to de-conflict is important. The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SecretSyncConditionResponse].
   /// [lastTransitionTime] LastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
@@ -45,12 +46,12 @@ class SecretSyncConditionResponse {
 
   factory SecretSyncConditionResponse.fromMap(Map<String, dynamic> map) {
     return SecretSyncConditionResponse(
-      lastTransitionTime: map['lastTransitionTime'] as String,
-      message: map['message'] as String,
-      observedGeneration: map['observedGeneration'] as double,
-      reason: map['reason'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      lastTransitionTime: (map['lastTransitionTime'] as String).input(),
+      message: (map['message'] as String).input(),
+      observedGeneration: (map['observedGeneration'] as double).input(),
+      reason: (map['reason'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

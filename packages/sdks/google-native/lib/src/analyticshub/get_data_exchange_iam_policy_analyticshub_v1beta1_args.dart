@@ -16,13 +16,10 @@ class GetDataExchangeIamPolicyAnalyticshubV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetDataExchangeIamPolicyAnalyticshubV1beta1Args({
-    required pulumi.Output<String> dataExchangeId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      dataExchangeId = pulumi.Input.asInput<String>(dataExchangeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataExchangeId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDataExchangeIamPolicyAnalyticshubV1beta1Args {
 
   factory GetDataExchangeIamPolicyAnalyticshubV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDataExchangeIamPolicyAnalyticshubV1beta1Args(
-      dataExchangeId: pulumi.Output.create<String>(map['dataExchangeId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataExchangeId: (map['dataExchangeId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

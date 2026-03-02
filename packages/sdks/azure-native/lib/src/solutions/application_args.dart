@@ -53,33 +53,20 @@ class ApplicationArgs {
   /// [sku] The SKU of the resource.
   /// [tags] Resource tags
   ApplicationArgs({
-    pulumi.Output<String>? applicationDefinitionId,
-    pulumi.Output<String>? applicationName,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<ApplicationJitAccessPolicy>? jitAccessPolicy,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<String>? managedResourceGroupId,
-    pulumi.Output<dynamic>? parameters,
-    pulumi.Output<Plan>? plan,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationDefinitionId = pulumi.Input.asOptionalInput<String>(applicationDefinitionId),
-      applicationName = pulumi.Input.asOptionalInput<String>(applicationName),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      jitAccessPolicy = pulumi.Input.asOptionalInput<ApplicationJitAccessPolicy>(jitAccessPolicy),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      managedResourceGroupId = pulumi.Input.asOptionalInput<String>(managedResourceGroupId),
-      parameters = pulumi.Input.asOptionalInput<dynamic>(parameters),
-      plan = pulumi.Input.asOptionalInput<Plan>(plan),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationDefinitionId,
+    this.applicationName,
+    this.identity,
+    this.jitAccessPolicy,
+    required this.kind,
+    this.location,
+    this.managedBy,
+    this.managedResourceGroupId,
+    this.parameters,
+    this.plan,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : pulumi.Output.create<String>(map['applicationDefinitionId'] as String),
-      applicationName: map['applicationName'] == null ? null : pulumi.Output.create<String>(map['applicationName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      jitAccessPolicy: map['jitAccessPolicy'] == null ? null : pulumi.Output.create<ApplicationJitAccessPolicy>(ApplicationJitAccessPolicy.fromMap((map['jitAccessPolicy'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      managedResourceGroupId: map['managedResourceGroupId'] == null ? null : pulumi.Output.create<String>(map['managedResourceGroupId'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<dynamic>(map['parameters']),
-      plan: map['plan'] == null ? null : pulumi.Output.create<Plan>(Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      jitAccessPolicy: map['jitAccessPolicy'] == null ? null : (ApplicationJitAccessPolicy.fromMap((map['jitAccessPolicy'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      managedResourceGroupId: map['managedResourceGroupId'] == null ? null : (map['managedResourceGroupId'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

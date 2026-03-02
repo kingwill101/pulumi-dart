@@ -60,35 +60,21 @@ class AIServicesArgs {
   /// [storages] A `storage` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   AIServicesArgs({
-    pulumi.Output<String>? customSubdomainName,
-    pulumi.Output<AIServicesCustomerManagedKey>? customerManagedKey,
-    pulumi.Output<List<String>>? fqdns,
-    pulumi.Output<AIServicesIdentity>? identity,
-    pulumi.Output<bool>? localAuthenticationEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<AIServicesNetworkAcls>? networkAcls,
-    pulumi.Output<bool>? outboundNetworkAccessRestricted,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<List<AIServicesStorage>>? storages,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customSubdomainName = pulumi.Input.asOptionalInput<String>(customSubdomainName),
-      customerManagedKey = pulumi.Input.asOptionalInput<AIServicesCustomerManagedKey>(customerManagedKey),
-      fqdns = pulumi.Input.asOptionalInput<List<String>>(fqdns),
-      identity = pulumi.Input.asOptionalInput<AIServicesIdentity>(identity),
-      localAuthenticationEnabled = pulumi.Input.asOptionalInput<bool>(localAuthenticationEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkAcls = pulumi.Input.asOptionalInput<AIServicesNetworkAcls>(networkAcls),
-      outboundNetworkAccessRestricted = pulumi.Input.asOptionalInput<bool>(outboundNetworkAccessRestricted),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      storages = pulumi.Input.asOptionalInput<List<AIServicesStorage>>(storages),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customSubdomainName,
+    this.customerManagedKey,
+    this.fqdns,
+    this.identity,
+    this.localAuthenticationEnabled,
+    this.location,
+    this.name,
+    this.networkAcls,
+    this.outboundNetworkAccessRestricted,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.storages,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,20 +97,20 @@ class AIServicesArgs {
 
   factory AIServicesArgs.fromMap(Map<String, dynamic> map) {
     return AIServicesArgs(
-      customSubdomainName: map['customSubdomainName'] == null ? null : pulumi.Output.create<String>(map['customSubdomainName'] as String),
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<AIServicesCustomerManagedKey>(AIServicesCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())),
-      fqdns: map['fqdns'] == null ? null : pulumi.Output.create<List<String>>((map['fqdns'] as List).cast<String>()),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AIServicesIdentity>(AIServicesIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthenticationEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkAcls: map['networkAcls'] == null ? null : pulumi.Output.create<AIServicesNetworkAcls>(AIServicesNetworkAcls.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())),
-      outboundNetworkAccessRestricted: map['outboundNetworkAccessRestricted'] == null ? null : pulumi.Output.create<bool>(map['outboundNetworkAccessRestricted'] as bool),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      storages: map['storages'] == null ? null : pulumi.Output.create<List<AIServicesStorage>>(pulumi.Input.decodeList<AIServicesStorage>(map['storages'], (value) => AIServicesStorage.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customSubdomainName: map['customSubdomainName'] == null ? null : (map['customSubdomainName'] as String).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (AIServicesCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      identity: map['identity'] == null ? null : (AIServicesIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (AIServicesNetworkAcls.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
+      outboundNetworkAccessRestricted: map['outboundNetworkAccessRestricted'] == null ? null : (map['outboundNetworkAccessRestricted'] as bool).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      storages: map['storages'] == null ? null : (pulumi.Input.decodeList<AIServicesStorage>(map['storages'], (value) => AIServicesStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class ConnectorArgs {
   /// [isInternal] If this is an internal connector.
   /// [resourceGroupName] The name of the resource group.
   ConnectorArgs({
-    pulumi.Output<String>? connectorName,
-    required pulumi.Output<Map<String, dynamic>> connectorProperties,
-    required pulumi.Output<String> connectorType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> hubName,
-    pulumi.Output<bool>? isInternal,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      connectorProperties = pulumi.Input.asInput<Map<String, dynamic>>(connectorProperties),
-      connectorType = pulumi.Input.asInput<String>(connectorType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hubName = pulumi.Input.asInput<String>(hubName),
-      isInternal = pulumi.Input.asOptionalInput<bool>(isInternal),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.connectorName,
+    required this.connectorProperties,
+    required this.connectorType,
+    this.description,
+    this.displayName,
+    required this.hubName,
+    this.isInternal,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      connectorProperties: pulumi.Output.create<Map<String, dynamic>>((map['connectorProperties'] as Map).cast<String, dynamic>()),
-      connectorType: pulumi.Output.create<String>(map['connectorType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      isInternal: map['isInternal'] == null ? null : pulumi.Output.create<bool>(map['isInternal'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      connectorProperties: ((map['connectorProperties'] as Map).cast<String, dynamic>()).input(),
+      connectorType: (map['connectorType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hubName: (map['hubName'] as String).input(),
+      isInternal: map['isInternal'] == null ? null : (map['isInternal'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

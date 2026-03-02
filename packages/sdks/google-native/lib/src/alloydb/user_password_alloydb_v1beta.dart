@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The username/password for a database user. Used for specifying initial users at cluster creation time.
 class UserPasswordAlloydbV1beta {
   /// The initial password for the user.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The database username.
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [UserPasswordAlloydbV1beta].
   /// [password] The initial password for the user.
@@ -25,8 +26,8 @@ class UserPasswordAlloydbV1beta {
 
   factory UserPasswordAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return UserPasswordAlloydbV1beta(
-      password: map['password'] == null ? null : map['password'] as String,
-      user: map['user'] == null ? null : map['user'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

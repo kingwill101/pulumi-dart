@@ -17,11 +17,9 @@ class SshKeyArgs {
   /// [name] The name of the SSH key for identification
   /// [publicKey] The public key. If this is a file, it
   SshKeyArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> publicKey,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicKey = pulumi.Input.asInput<String>(publicKey);
+    this.name,
+    required this.publicKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class SshKeyArgs {
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicKey: pulumi.Output.create<String>(map['publicKey'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicKey: (map['publicKey'] as String).input(),
     );
   }
 }

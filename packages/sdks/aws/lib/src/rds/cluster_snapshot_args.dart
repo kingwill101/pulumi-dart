@@ -25,17 +25,12 @@ class ClusterSnapshotArgs {
   /// [sharedAccounts] List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ClusterSnapshotArgs({
-    required pulumi.Output<String> dbClusterIdentifier,
-    required pulumi.Output<String> dbClusterSnapshotIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? sharedAccounts,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dbClusterIdentifier = pulumi.Input.asInput<String>(dbClusterIdentifier),
-      dbClusterSnapshotIdentifier = pulumi.Input.asInput<String>(dbClusterSnapshotIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedAccounts = pulumi.Input.asOptionalInput<List<String>>(sharedAccounts),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.dbClusterIdentifier,
+    required this.dbClusterSnapshotIdentifier,
+    this.region,
+    this.sharedAccounts,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ClusterSnapshotArgs {
 
   factory ClusterSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotArgs(
-      dbClusterIdentifier: pulumi.Output.create<String>(map['dbClusterIdentifier'] as String),
-      dbClusterSnapshotIdentifier: pulumi.Output.create<String>(map['dbClusterSnapshotIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharedAccounts: map['sharedAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['sharedAccounts'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
+      dbClusterSnapshotIdentifier: (map['dbClusterSnapshotIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharedAccounts: map['sharedAccounts'] == null ? null : ((map['sharedAccounts'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

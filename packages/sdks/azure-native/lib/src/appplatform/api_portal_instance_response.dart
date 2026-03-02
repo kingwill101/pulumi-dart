@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Collection of instances belong to the API portal
 class ApiPortalInstanceResponse {
   /// Name of the API portal instance
-  final String name;
+  final pulumi.Input<String> name;
   /// Status of the API portal instance
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ApiPortalInstanceResponse].
   /// [name] Name of the API portal instance
@@ -25,8 +26,8 @@ class ApiPortalInstanceResponse {
 
   factory ApiPortalInstanceResponse.fromMap(Map<String, dynamic> map) {
     return ApiPortalInstanceResponse(
-      name: map['name'] as String,
-      status: map['status'] as String,
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

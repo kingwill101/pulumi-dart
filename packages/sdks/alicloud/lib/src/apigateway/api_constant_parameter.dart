@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiConstantParameter {
   /// The description of Constant parameter.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Constant parameter location; values: 'HEAD' and 'QUERY'.
-  final String in_;
+  final pulumi.Input<String> in_;
   /// Constant parameter name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Constant parameter value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ApiConstantParameter].
   /// [description] The description of Constant parameter.
@@ -34,10 +35,10 @@ class ApiConstantParameter {
 
   factory ApiConstantParameter.fromMap(Map<String, dynamic> map) {
     return ApiConstantParameter(
-      description: map['description'] == null ? null : map['description'] as String,
-      in_: map['in'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      in_: (map['in'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects {
   /// Boolean which indicates if this criteria is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects].
   /// [enabled] Boolean which indicates if this criteria is enabled.
@@ -19,7 +20,7 @@ class BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedOb
 
   factory BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

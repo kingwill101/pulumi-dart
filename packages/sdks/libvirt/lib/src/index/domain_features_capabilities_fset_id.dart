@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesCapabilitiesFsetId {
   /// Sets the state of the capability to wake from an alarm.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DomainFeaturesCapabilitiesFsetId].
   /// [state] Sets the state of the capability to wake from an alarm.
@@ -19,7 +20,7 @@ class DomainFeaturesCapabilitiesFsetId {
 
   factory DomainFeaturesCapabilitiesFsetId.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesFsetId(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

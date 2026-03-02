@@ -26,17 +26,12 @@ class DatastoreArgs {
   /// [skipValidation] Flag to skip validation.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   DatastoreArgs({
-    required pulumi.Output<AzureBlobDatastore> datastoreProperties,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? skipValidation,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      datastoreProperties = pulumi.Input.asInput<AzureBlobDatastore>(datastoreProperties),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipValidation = pulumi.Input.asOptionalInput<bool>(skipValidation),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.datastoreProperties,
+    this.name,
+    required this.resourceGroupName,
+    this.skipValidation,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      datastoreProperties: pulumi.Output.create<AzureBlobDatastore>(AzureBlobDatastore.fromMap((map['datastoreProperties'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipValidation: map['skipValidation'] == null ? null : pulumi.Output.create<bool>(map['skipValidation'] as bool),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      datastoreProperties: (AzureBlobDatastore.fromMap((map['datastoreProperties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation'] as bool).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

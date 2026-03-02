@@ -31,21 +31,14 @@ class PhoneNumberArgs {
   /// [targetArn] The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
   /// [type] The type of phone number. Valid Values: `TOLL_FREE` | `DID`.
   PhoneNumberArgs({
-    required pulumi.Output<String> countryCode,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetArn,
-    required pulumi.Output<String> type,
-  }) :
-      countryCode = pulumi.Input.asInput<String>(countryCode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetArn = pulumi.Input.asInput<String>(targetArn),
-      type = pulumi.Input.asInput<String>(type);
+    required this.countryCode,
+    this.description,
+    this.prefix,
+    this.region,
+    this.tags,
+    required this.targetArn,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class PhoneNumberArgs {
 
   factory PhoneNumberArgs.fromMap(Map<String, dynamic> map) {
     return PhoneNumberArgs(
-      countryCode: pulumi.Output.create<String>(map['countryCode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetArn: pulumi.Output.create<String>(map['targetArn'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      countryCode: (map['countryCode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetArn: (map['targetArn'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

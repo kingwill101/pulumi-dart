@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCheckItemConfigsConfigDescription {
   /// The type of the description of the check item. Valid value:*   **text**.
-  final String type;
+  final pulumi.Input<String> type;
   /// The content of the description for the check item when the Type parameter is text.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetCheckItemConfigsConfigDescription].
   /// [type] The type of the description of the check item. Valid value:*   **text**.
@@ -24,8 +25,8 @@ class GetCheckItemConfigsConfigDescription {
 
   factory GetCheckItemConfigsConfigDescription.fromMap(Map<String, dynamic> map) {
     return GetCheckItemConfigsConfigDescription(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

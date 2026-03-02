@@ -26,17 +26,12 @@ class ReplicationRecoveryServicesProviderArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
   ReplicationRecoveryServicesProviderArgs({
-    required pulumi.Output<String> fabricName,
-    required pulumi.Output<AddRecoveryServicesProviderInputProperties> properties,
-    pulumi.Output<String>? providerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      properties = pulumi.Input.asInput<AddRecoveryServicesProviderInputProperties>(properties),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.fabricName,
+    required this.properties,
+    this.providerName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ReplicationRecoveryServicesProviderArgs {
 
   factory ReplicationRecoveryServicesProviderArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryServicesProviderArgs(
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      properties: pulumi.Output.create<AddRecoveryServicesProviderInputProperties>(AddRecoveryServicesProviderInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      fabricName: (map['fabricName'] as String).input(),
+      properties: (AddRecoveryServicesProviderInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

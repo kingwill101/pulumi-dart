@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_type_enum_value_response.dart';
 import 'server_type_enum_value_response.dart';
 
 /// Definition of awsCodeBuildSourceCredentialsInfo
 class AwsCodeBuildSourceCredentialsInfoPropertiesResponse {
   /// <p> The Amazon Resource Name (ARN) of the token. </p>
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// <p> The type of authentication used by the credentials. Valid options are OAUTH, BASIC_AUTH, PERSONAL_ACCESS_TOKEN, or CODECONNECTIONS. </p>
-  final AuthTypeEnumValueResponse? authType;
+  final pulumi.Input<AuthTypeEnumValueResponse>? authType;
   /// <p>The connection ARN if your serverType type is GITLAB or GITLAB_SELF_MANAGED and your authType is CODECONNECTIONS.</p>
-  final String? resource;
+  final pulumi.Input<String>? resource;
   /// <p> The type of source provider. The valid options are GITHUB, GITHUB_ENTERPRISE, GITLAB, GITLAB_SELF_MANAGED, or BITBUCKET. </p>
-  final ServerTypeEnumValueResponse? serverType;
+  final pulumi.Input<ServerTypeEnumValueResponse>? serverType;
 
   /// Creates a new [AwsCodeBuildSourceCredentialsInfoPropertiesResponse].
   /// [arn] <p> The Amazon Resource Name (ARN) of the token. </p>
@@ -29,18 +30,18 @@ class AwsCodeBuildSourceCredentialsInfoPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'authType': ?authType == null ? null : authType!.toMap(),
+      'authType': ?pulumi.Input.mapOptionalInputValue<AuthTypeEnumValueResponse, Map<String, dynamic>>(authType, (value) => value.toMap()),
       'resource': ?resource,
-      'serverType': ?serverType == null ? null : serverType!.toMap(),
+      'serverType': ?pulumi.Input.mapOptionalInputValue<ServerTypeEnumValueResponse, Map<String, dynamic>>(serverType, (value) => value.toMap()),
     };
   }
 
   factory AwsCodeBuildSourceCredentialsInfoPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsCodeBuildSourceCredentialsInfoPropertiesResponse(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      authType: map['authType'] == null ? null : AuthTypeEnumValueResponse.fromMap((map['authType'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null ? null : map['resource'] as String,
-      serverType: map['serverType'] == null ? null : ServerTypeEnumValueResponse.fromMap((map['serverType'] as Map).cast<String, dynamic>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authType: map['authType'] == null ? null : (AuthTypeEnumValueResponse.fromMap((map['authType'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      serverType: map['serverType'] == null ? null : (ServerTypeEnumValueResponse.fromMap((map['serverType'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

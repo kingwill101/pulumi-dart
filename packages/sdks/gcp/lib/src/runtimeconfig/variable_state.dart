@@ -34,19 +34,13 @@ class VariableState {
   /// [updateTime] (Computed) The timestamp in RFC3339 UTC "Zulu" format,
   /// [value] Optional.
   VariableState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? text,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<String>? value,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      text = pulumi.Input.asOptionalInput<String>(text),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.name,
+    this.parent,
+    this.project,
+    this.text,
+    this.updateTime,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class VariableState {
 
   factory VariableState.fromMap(Map<String, dynamic> map) {
     return VariableState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      text: map['text'] == null ? null : pulumi.Output.create<String>(map['text'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

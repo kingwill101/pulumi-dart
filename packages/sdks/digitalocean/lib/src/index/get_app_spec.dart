@@ -17,34 +17,34 @@ import 'get_app_spec_worker.dart';
 
 class GetAppSpec {
   /// Describes an alert policy for the component.
-  final List<GetAppSpecAlert>? alerts;
-  final List<GetAppSpecDatabase>? databases;
+  final pulumi.Input<List<GetAppSpecAlert>>? alerts;
+  final pulumi.Input<List<GetAppSpecDatabase>>? databases;
   /// Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
-  final bool? disableEdgeCache;
+  final pulumi.Input<bool>? disableEdgeCache;
   /// Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
-  final bool? disableEmailObfuscation;
-  final List<GetAppSpecDomain> domain;
-  final List<String> domains;
-  final List<GetAppSpecEgress>? egresses;
+  final pulumi.Input<bool>? disableEmailObfuscation;
+  final pulumi.Input<List<GetAppSpecDomain>> domain;
+  final pulumi.Input<List<String>> domains;
+  final pulumi.Input<List<GetAppSpecEgress>>? egresses;
   /// Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
-  final bool? enhancedThreatControlEnabled;
+  final pulumi.Input<bool>? enhancedThreatControlEnabled;
   /// Describes an environment variable made available to an app competent.
-  final List<GetAppSpecEnv>? envs;
+  final pulumi.Input<List<GetAppSpecEnv>>? envs;
   /// List of features which is applied to the app
-  final List<String> features;
-  final List<GetAppSpecFunction>? functions;
-  final GetAppSpecIngress ingress;
-  final List<GetAppSpecJob>? jobs;
+  final pulumi.Input<List<String>> features;
+  final pulumi.Input<List<GetAppSpecFunction>>? functions;
+  final pulumi.Input<GetAppSpecIngress> ingress;
+  final pulumi.Input<List<GetAppSpecJob>>? jobs;
   /// Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
-  final GetAppSpecMaintenance? maintenance;
+  final pulumi.Input<GetAppSpecMaintenance>? maintenance;
   /// The name of the component.
-  final String name;
+  final pulumi.Input<String> name;
   /// The slug for the DigitalOcean data center region hosting the app
-  final String? region;
-  final List<GetAppSpecService>? services;
-  final List<GetAppSpecStaticSite>? staticSites;
-  final List<GetAppSpecVpc>? vpcs;
-  final List<GetAppSpecWorker>? workers;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<List<GetAppSpecService>>? services;
+  final pulumi.Input<List<GetAppSpecStaticSite>>? staticSites;
+  final pulumi.Input<List<GetAppSpecVpc>>? vpcs;
+  final pulumi.Input<List<GetAppSpecWorker>>? workers;
 
   /// Creates a new [GetAppSpec].
   /// [alerts] Describes an alert policy for the component.
@@ -92,51 +92,51 @@ class GetAppSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alerts': ?alerts == null ? null : pulumi.Input.encodeList<GetAppSpecAlert, Map<String, dynamic>>(alerts!, (value) => value.toMap()),
-      'databases': ?databases == null ? null : pulumi.Input.encodeList<GetAppSpecDatabase, Map<String, dynamic>>(databases!, (value) => value.toMap()),
+      'alerts': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecAlert>, List<Map<String, dynamic>>>(alerts, (value) => pulumi.Input.encodeList<GetAppSpecAlert, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'databases': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecDatabase>, List<Map<String, dynamic>>>(databases, (value) => pulumi.Input.encodeList<GetAppSpecDatabase, Map<String, dynamic>>(value, (value) => value.toMap())),
       'disableEdgeCache': ?disableEdgeCache,
       'disableEmailObfuscation': ?disableEmailObfuscation,
-      'domain': pulumi.Input.encodeList<GetAppSpecDomain, Map<String, dynamic>>(domain, (value) => value.toMap()),
+      'domain': pulumi.Input.mapInputValue<List<GetAppSpecDomain>, List<Map<String, dynamic>>>(domain, (value) => pulumi.Input.encodeList<GetAppSpecDomain, Map<String, dynamic>>(value, (value) => value.toMap())),
       'domains': domains,
-      'egresses': ?egresses == null ? null : pulumi.Input.encodeList<GetAppSpecEgress, Map<String, dynamic>>(egresses!, (value) => value.toMap()),
+      'egresses': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecEgress>, List<Map<String, dynamic>>>(egresses, (value) => pulumi.Input.encodeList<GetAppSpecEgress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enhancedThreatControlEnabled': ?enhancedThreatControlEnabled,
-      'envs': ?envs == null ? null : pulumi.Input.encodeList<GetAppSpecEnv, Map<String, dynamic>>(envs!, (value) => value.toMap()),
+      'envs': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecEnv>, List<Map<String, dynamic>>>(envs, (value) => pulumi.Input.encodeList<GetAppSpecEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
       'features': features,
-      'functions': ?functions == null ? null : pulumi.Input.encodeList<GetAppSpecFunction, Map<String, dynamic>>(functions!, (value) => value.toMap()),
-      'ingress': ingress.toMap(),
-      'jobs': ?jobs == null ? null : pulumi.Input.encodeList<GetAppSpecJob, Map<String, dynamic>>(jobs!, (value) => value.toMap()),
-      'maintenance': ?maintenance == null ? null : maintenance!.toMap(),
+      'functions': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecFunction>, List<Map<String, dynamic>>>(functions, (value) => pulumi.Input.encodeList<GetAppSpecFunction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ingress': pulumi.Input.mapInputValue<GetAppSpecIngress, Map<String, dynamic>>(ingress, (value) => value.toMap()),
+      'jobs': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecJob>, List<Map<String, dynamic>>>(jobs, (value) => pulumi.Input.encodeList<GetAppSpecJob, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'maintenance': ?pulumi.Input.mapOptionalInputValue<GetAppSpecMaintenance, Map<String, dynamic>>(maintenance, (value) => value.toMap()),
       'name': name,
       'region': ?region,
-      'services': ?services == null ? null : pulumi.Input.encodeList<GetAppSpecService, Map<String, dynamic>>(services!, (value) => value.toMap()),
-      'staticSites': ?staticSites == null ? null : pulumi.Input.encodeList<GetAppSpecStaticSite, Map<String, dynamic>>(staticSites!, (value) => value.toMap()),
-      'vpcs': ?vpcs == null ? null : pulumi.Input.encodeList<GetAppSpecVpc, Map<String, dynamic>>(vpcs!, (value) => value.toMap()),
-      'workers': ?workers == null ? null : pulumi.Input.encodeList<GetAppSpecWorker, Map<String, dynamic>>(workers!, (value) => value.toMap()),
+      'services': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecService>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<GetAppSpecService, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'staticSites': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecStaticSite>, List<Map<String, dynamic>>>(staticSites, (value) => pulumi.Input.encodeList<GetAppSpecStaticSite, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcs': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecVpc>, List<Map<String, dynamic>>>(vpcs, (value) => pulumi.Input.encodeList<GetAppSpecVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'workers': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecWorker>, List<Map<String, dynamic>>>(workers, (value) => pulumi.Input.encodeList<GetAppSpecWorker, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetAppSpec.fromMap(Map<String, dynamic> map) {
     return GetAppSpec(
-      alerts: map['alerts'] == null ? null : pulumi.Input.decodeList<GetAppSpecAlert>(map['alerts'], (value) => GetAppSpecAlert.fromMap((value as Map).cast<String, dynamic>())),
-      databases: map['databases'] == null ? null : pulumi.Input.decodeList<GetAppSpecDatabase>(map['databases'], (value) => GetAppSpecDatabase.fromMap((value as Map).cast<String, dynamic>())),
-      disableEdgeCache: map['disableEdgeCache'] == null ? null : map['disableEdgeCache'] as bool,
-      disableEmailObfuscation: map['disableEmailObfuscation'] == null ? null : map['disableEmailObfuscation'] as bool,
-      domain: pulumi.Input.decodeList<GetAppSpecDomain>(map['domain'], (value) => GetAppSpecDomain.fromMap((value as Map).cast<String, dynamic>())),
-      domains: (map['domains'] as List).cast<String>(),
-      egresses: map['egresses'] == null ? null : pulumi.Input.decodeList<GetAppSpecEgress>(map['egresses'], (value) => GetAppSpecEgress.fromMap((value as Map).cast<String, dynamic>())),
-      enhancedThreatControlEnabled: map['enhancedThreatControlEnabled'] == null ? null : map['enhancedThreatControlEnabled'] as bool,
-      envs: map['envs'] == null ? null : pulumi.Input.decodeList<GetAppSpecEnv>(map['envs'], (value) => GetAppSpecEnv.fromMap((value as Map).cast<String, dynamic>())),
-      features: (map['features'] as List).cast<String>(),
-      functions: map['functions'] == null ? null : pulumi.Input.decodeList<GetAppSpecFunction>(map['functions'], (value) => GetAppSpecFunction.fromMap((value as Map).cast<String, dynamic>())),
-      ingress: GetAppSpecIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>()),
-      jobs: map['jobs'] == null ? null : pulumi.Input.decodeList<GetAppSpecJob>(map['jobs'], (value) => GetAppSpecJob.fromMap((value as Map).cast<String, dynamic>())),
-      maintenance: map['maintenance'] == null ? null : GetAppSpecMaintenance.fromMap((map['maintenance'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      services: map['services'] == null ? null : pulumi.Input.decodeList<GetAppSpecService>(map['services'], (value) => GetAppSpecService.fromMap((value as Map).cast<String, dynamic>())),
-      staticSites: map['staticSites'] == null ? null : pulumi.Input.decodeList<GetAppSpecStaticSite>(map['staticSites'], (value) => GetAppSpecStaticSite.fromMap((value as Map).cast<String, dynamic>())),
-      vpcs: map['vpcs'] == null ? null : pulumi.Input.decodeList<GetAppSpecVpc>(map['vpcs'], (value) => GetAppSpecVpc.fromMap((value as Map).cast<String, dynamic>())),
-      workers: map['workers'] == null ? null : pulumi.Input.decodeList<GetAppSpecWorker>(map['workers'], (value) => GetAppSpecWorker.fromMap((value as Map).cast<String, dynamic>())),
+      alerts: map['alerts'] == null ? null : (pulumi.Input.decodeList<GetAppSpecAlert>(map['alerts'], (value) => GetAppSpecAlert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<GetAppSpecDatabase>(map['databases'], (value) => GetAppSpecDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disableEdgeCache: map['disableEdgeCache'] == null ? null : (map['disableEdgeCache'] as bool).input(),
+      disableEmailObfuscation: map['disableEmailObfuscation'] == null ? null : (map['disableEmailObfuscation'] as bool).input(),
+      domain: (pulumi.Input.decodeList<GetAppSpecDomain>(map['domain'], (value) => GetAppSpecDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domains: ((map['domains'] as List).cast<String>()).input(),
+      egresses: map['egresses'] == null ? null : (pulumi.Input.decodeList<GetAppSpecEgress>(map['egresses'], (value) => GetAppSpecEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enhancedThreatControlEnabled: map['enhancedThreatControlEnabled'] == null ? null : (map['enhancedThreatControlEnabled'] as bool).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<GetAppSpecEnv>(map['envs'], (value) => GetAppSpecEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      features: ((map['features'] as List).cast<String>()).input(),
+      functions: map['functions'] == null ? null : (pulumi.Input.decodeList<GetAppSpecFunction>(map['functions'], (value) => GetAppSpecFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: (GetAppSpecIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>())).input(),
+      jobs: map['jobs'] == null ? null : (pulumi.Input.decodeList<GetAppSpecJob>(map['jobs'], (value) => GetAppSpecJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maintenance: map['maintenance'] == null ? null : (GetAppSpecMaintenance.fromMap((map['maintenance'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<GetAppSpecService>(map['services'], (value) => GetAppSpecService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      staticSites: map['staticSites'] == null ? null : (pulumi.Input.decodeList<GetAppSpecStaticSite>(map['staticSites'], (value) => GetAppSpecStaticSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<GetAppSpecVpc>(map['vpcs'], (value) => GetAppSpecVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workers: map['workers'] == null ? null : (pulumi.Input.decodeList<GetAppSpecWorker>(map['workers'], (value) => GetAppSpecWorker.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

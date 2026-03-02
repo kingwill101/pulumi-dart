@@ -22,15 +22,11 @@ class GetStudentArgs {
   /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
   /// [studentAlias] Student alias.
   GetStudentArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> billingProfileName,
-    required pulumi.Output<String> invoiceSectionName,
-    required pulumi.Output<String> studentAlias,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingProfileName = pulumi.Input.asInput<String>(billingProfileName),
-      invoiceSectionName = pulumi.Input.asInput<String>(invoiceSectionName),
-      studentAlias = pulumi.Input.asInput<String>(studentAlias);
+    required this.billingAccountName,
+    required this.billingProfileName,
+    required this.invoiceSectionName,
+    required this.studentAlias,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetStudentArgs {
 
   factory GetStudentArgs.fromMap(Map<String, dynamic> map) {
     return GetStudentArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingProfileName: pulumi.Output.create<String>(map['billingProfileName'] as String),
-      invoiceSectionName: pulumi.Output.create<String>(map['invoiceSectionName'] as String),
-      studentAlias: pulumi.Output.create<String>(map['studentAlias'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingProfileName: (map['billingProfileName'] as String).input(),
+      invoiceSectionName: (map['invoiceSectionName'] as String).input(),
+      studentAlias: (map['studentAlias'] as String).input(),
     );
   }
 }

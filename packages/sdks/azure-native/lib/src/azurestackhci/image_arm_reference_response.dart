@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Resource ID for a Gallery Image.
 class ImageArmReferenceResponse {
   /// The Azure Resource ID for an image resource used by the virtual machine instance.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ImageArmReferenceResponse].
   /// [id] The Azure Resource ID for an image resource used by the virtual machine instance.
@@ -20,7 +21,7 @@ class ImageArmReferenceResponse {
 
   factory ImageArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageArmReferenceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

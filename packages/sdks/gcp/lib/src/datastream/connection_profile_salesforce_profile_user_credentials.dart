@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileSalesforceProfileUserCredentials {
   /// Password of the user.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// A reference to a Secret Manager resource name storing the user's password.
-  final String? secretManagerStoredPassword;
+  final pulumi.Input<String>? secretManagerStoredPassword;
   /// A reference to a Secret Manager resource name storing the user's security token.
   ///
   /// <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
-  final String? secretManagerStoredSecurityToken;
+  final pulumi.Input<String>? secretManagerStoredSecurityToken;
   /// Security token of the user.
-  final String? securityToken;
+  final pulumi.Input<String>? securityToken;
   /// Username to use for authentication.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ConnectionProfileSalesforceProfileUserCredentials].
   /// [password] Password of the user.
@@ -41,11 +42,11 @@ class ConnectionProfileSalesforceProfileUserCredentials {
 
   factory ConnectionProfileSalesforceProfileUserCredentials.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileSalesforceProfileUserCredentials(
-      password: map['password'] == null ? null : map['password'] as String,
-      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : map['secretManagerStoredPassword'] as String,
-      secretManagerStoredSecurityToken: map['secretManagerStoredSecurityToken'] == null ? null : map['secretManagerStoredSecurityToken'] as String,
-      securityToken: map['securityToken'] == null ? null : map['securityToken'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword'] as String).input(),
+      secretManagerStoredSecurityToken: map['secretManagerStoredSecurityToken'] == null ? null : (map['secretManagerStoredSecurityToken'] as String).input(),
+      securityToken: map['securityToken'] == null ? null : (map['securityToken'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

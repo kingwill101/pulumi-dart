@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActionHttpRunAfter {
   /// Specifies the name of the precedent HTTP Action.
-  final String actionName;
+  final pulumi.Input<String> actionName;
   /// Specifies the expected result of the precedent HTTP Action, only after which the current HTTP Action will be triggered. Possible values include `Succeeded`, `Failed`, `Skipped` and `TimedOut`.
-  final String actionResult;
+  final pulumi.Input<String> actionResult;
 
   /// Creates a new [ActionHttpRunAfter].
   /// [actionName] Specifies the name of the precedent HTTP Action.
@@ -24,8 +25,8 @@ class ActionHttpRunAfter {
 
   factory ActionHttpRunAfter.fromMap(Map<String, dynamic> map) {
     return ActionHttpRunAfter(
-      actionName: map['actionName'] as String,
-      actionResult: map['actionResult'] as String,
+      actionName: (map['actionName'] as String).input(),
+      actionResult: (map['actionResult'] as String).input(),
     );
   }
 }

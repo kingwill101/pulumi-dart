@@ -34,17 +34,12 @@ class WorkspaceNetworkOutboundRulePrivateEndpointArgs {
   /// [subResourceTarget] Specifies the Sub Resource of the service resource to connect to. Possible values are `vault`,`amlworkspace`,`blob`,`table`,`queue`,`file`,`web`,`dfs`, `redisCache`. Changing this forces a new resource to be created.
   /// [workspaceId] Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
   WorkspaceNetworkOutboundRulePrivateEndpointArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> serviceResourceId,
-    pulumi.Output<bool>? sparkEnabled,
-    required pulumi.Output<String> subResourceTarget,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serviceResourceId = pulumi.Input.asInput<String>(serviceResourceId),
-      sparkEnabled = pulumi.Input.asOptionalInput<bool>(sparkEnabled),
-      subResourceTarget = pulumi.Input.asInput<String>(subResourceTarget),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.name,
+    required this.serviceResourceId,
+    this.sparkEnabled,
+    required this.subResourceTarget,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class WorkspaceNetworkOutboundRulePrivateEndpointArgs {
 
   factory WorkspaceNetworkOutboundRulePrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRulePrivateEndpointArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serviceResourceId: pulumi.Output.create<String>(map['serviceResourceId'] as String),
-      sparkEnabled: map['sparkEnabled'] == null ? null : pulumi.Output.create<bool>(map['sparkEnabled'] as bool),
-      subResourceTarget: pulumi.Output.create<String>(map['subResourceTarget'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serviceResourceId: (map['serviceResourceId'] as String).input(),
+      sparkEnabled: map['sparkEnabled'] == null ? null : (map['sparkEnabled'] as bool).input(),
+      subResourceTarget: (map['subResourceTarget'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

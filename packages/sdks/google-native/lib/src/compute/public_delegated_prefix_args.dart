@@ -43,29 +43,18 @@ class PublicDelegatedPrefixArgs {
   /// [region] Required.
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   PublicDelegatedPrefixArgs({
-    pulumi.Output<int>? allocatablePrefixLength,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipCidrRange,
-    pulumi.Output<bool>? isLiveMigration,
-    pulumi.Output<PublicDelegatedPrefixMode>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentPrefix,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>? publicDelegatedSubPrefixs,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-  }) :
-      allocatablePrefixLength = pulumi.Input.asOptionalInput<int>(allocatablePrefixLength),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipCidrRange = pulumi.Input.asOptionalInput<String>(ipCidrRange),
-      isLiveMigration = pulumi.Input.asOptionalInput<bool>(isLiveMigration),
-      mode = pulumi.Input.asOptionalInput<PublicDelegatedPrefixMode>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentPrefix = pulumi.Input.asOptionalInput<String>(parentPrefix),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicDelegatedSubPrefixs = pulumi.Input.asOptionalInput<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>(publicDelegatedSubPrefixs),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.allocatablePrefixLength,
+    this.description,
+    this.ipCidrRange,
+    this.isLiveMigration,
+    this.mode,
+    this.name,
+    this.parentPrefix,
+    this.project,
+    this.publicDelegatedSubPrefixs,
+    required this.region,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class PublicDelegatedPrefixArgs {
 
   factory PublicDelegatedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixArgs(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : pulumi.Output.create<int>(map['allocatablePrefixLength'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipCidrRange: map['ipCidrRange'] == null ? null : pulumi.Output.create<String>(map['ipCidrRange'] as String),
-      isLiveMigration: map['isLiveMigration'] == null ? null : pulumi.Output.create<bool>(map['isLiveMigration'] as bool),
-      mode: map['mode'] == null ? null : pulumi.Output.create<PublicDelegatedPrefixMode>(PublicDelegatedPrefixMode.fromValue(map['mode'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentPrefix: map['parentPrefix'] == null ? null : pulumi.Output.create<String>(map['parentPrefix'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : pulumi.Output.create<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>(pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
+      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration'] as bool).input(),
+      mode: map['mode'] == null ? null : (PublicDelegatedPrefixMode.fromValue(map['mode'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

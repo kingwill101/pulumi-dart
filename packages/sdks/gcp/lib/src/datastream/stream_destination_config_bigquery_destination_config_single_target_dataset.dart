@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
   /// Dataset ID in the format projects/{project}/datasets/{dataset_id} or
   /// {project}:{dataset_id}
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
 
   /// Creates a new [StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset].
   /// [datasetId] Dataset ID in the format projects/{project}/datasets/{dataset_id} or
@@ -20,7 +21,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
 
   factory StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset(
-      datasetId: map['datasetId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
     );
   }
 }

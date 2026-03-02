@@ -7,23 +7,23 @@ class PolicyCustomRule {
   /// Type of action. Possible values are `Allow`, `Block`, `JSChallenge` and `Log`.
   ///
   /// > **Note:** If the `rule_type` is specified as `RateLimitRule`, the `Allow` is not supported.
-  final String action;
+  final pulumi.Input<String> action;
   /// Describes if the policy is in enabled state or disabled state. Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Specifies what grouping the rate limit will count requests by. Possible values are `ClientAddr`, `ClientAddrXFFHeader`, `GeoLocation`, `GeoLocationXFFHeader` and `None`.
-  final String? groupRateLimitBy;
+  final pulumi.Input<String>? groupRateLimitBy;
   /// One or more `match_conditions` blocks as defined below.
-  final List<PolicyCustomRuleMatchCondition> matchConditions;
+  final pulumi.Input<List<PolicyCustomRuleMatchCondition>> matchConditions;
   /// Gets name of the resource that is unique within a policy. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Specifies the duration at which the rate limit policy will be applied. Should be used with `RateLimitRule` rule type. Possible values are `FiveMins` and `OneMin`.
-  final String? rateLimitDuration;
+  final pulumi.Input<String>? rateLimitDuration;
   /// Specifies the threshold value for the rate limit policy. Must be greater than or equal to 1 if provided.
-  final int? rateLimitThreshold;
+  final pulumi.Input<int>? rateLimitThreshold;
   /// Describes the type of rule. Possible values are `MatchRule`, `RateLimitRule` and `Invalid`.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
 
   /// Creates a new [PolicyCustomRule].
   /// [action] Type of action. Possible values are `Allow`, `Block`, `JSChallenge` and `Log`.
@@ -52,7 +52,7 @@ class PolicyCustomRule {
       'action': action,
       'enabled': ?enabled,
       'groupRateLimitBy': ?groupRateLimitBy,
-      'matchConditions': pulumi.Input.encodeList<PolicyCustomRuleMatchCondition, Map<String, dynamic>>(matchConditions, (value) => value.toMap()),
+      'matchConditions': pulumi.Input.mapInputValue<List<PolicyCustomRuleMatchCondition>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<PolicyCustomRuleMatchCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'priority': priority,
       'rateLimitDuration': ?rateLimitDuration,
@@ -63,15 +63,15 @@ class PolicyCustomRule {
 
   factory PolicyCustomRule.fromMap(Map<String, dynamic> map) {
     return PolicyCustomRule(
-      action: map['action'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      groupRateLimitBy: map['groupRateLimitBy'] == null ? null : map['groupRateLimitBy'] as String,
-      matchConditions: pulumi.Input.decodeList<PolicyCustomRuleMatchCondition>(map['matchConditions'], (value) => PolicyCustomRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] as int,
-      rateLimitDuration: map['rateLimitDuration'] == null ? null : map['rateLimitDuration'] as String,
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : map['rateLimitThreshold'] as int,
-      ruleType: map['ruleType'] as String,
+      action: (map['action'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      groupRateLimitBy: map['groupRateLimitBy'] == null ? null : (map['groupRateLimitBy'] as String).input(),
+      matchConditions: (pulumi.Input.decodeList<PolicyCustomRuleMatchCondition>(map['matchConditions'], (value) => PolicyCustomRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      rateLimitDuration: map['rateLimitDuration'] == null ? null : (map['rateLimitDuration'] as String).input(),
+      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold'] as int).input(),
+      ruleType: (map['ruleType'] as String).input(),
     );
   }
 }

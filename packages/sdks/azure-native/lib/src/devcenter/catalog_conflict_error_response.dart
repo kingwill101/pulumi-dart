@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An individual conflict error.
 class CatalogConflictErrorResponse {
   /// Name of the conflicting catalog item.
-  final String name;
+  final pulumi.Input<String> name;
   /// The path of the file that has a conflicting name.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [CatalogConflictErrorResponse].
   /// [name] Name of the conflicting catalog item.
@@ -25,8 +26,8 @@ class CatalogConflictErrorResponse {
 
   factory CatalogConflictErrorResponse.fromMap(Map<String, dynamic> map) {
     return CatalogConflictErrorResponse(
-      name: map['name'] as String,
-      path: map['path'] as String,
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

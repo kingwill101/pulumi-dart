@@ -23,17 +23,12 @@ class PublicIpAddressPoolCidrBlockState {
   /// [publicIpAddressPoolId] The ID of the VPC Public IP address pool.
   /// [status] The status of the VPC Public Ip Address Pool Cidr Block.
   PublicIpAddressPoolCidrBlockState({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<int>? cidrMask,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? publicIpAddressPoolId,
-    pulumi.Output<String>? status,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      cidrMask = pulumi.Input.asOptionalInput<int>(cidrMask),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      publicIpAddressPoolId = pulumi.Input.asOptionalInput<String>(publicIpAddressPoolId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.cidrBlock,
+    this.cidrMask,
+    this.createTime,
+    this.publicIpAddressPoolId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class PublicIpAddressPoolCidrBlockState {
 
   factory PublicIpAddressPoolCidrBlockState.fromMap(Map<String, dynamic> map) {
     return PublicIpAddressPoolCidrBlockState(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      cidrMask: map['cidrMask'] == null ? null : pulumi.Output.create<int>(map['cidrMask'] as int),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : pulumi.Output.create<String>(map['publicIpAddressPoolId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : (map['publicIpAddressPoolId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

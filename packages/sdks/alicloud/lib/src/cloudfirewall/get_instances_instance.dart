@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The Creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The end time of the resource..
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The ID of the Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The first ID of the resource.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The payment type of the resource. Valid values: `Subscription`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// Automatic renewal period unit. Valid values: `Month`,`Year`.
-  final String renewalDurationUnit;
+  final pulumi.Input<String> renewalDurationUnit;
   /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
-  final String renewalStatus;
+  final pulumi.Input<String> renewalStatus;
   /// The Status of Instance.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetInstancesInstance].
   /// [createTime] The Creation time of the resource.
@@ -54,14 +55,14 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      createTime: map['createTime'] as String,
-      endTime: map['endTime'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      paymentType: map['paymentType'] as String,
-      renewalDurationUnit: map['renewalDurationUnit'] as String,
-      renewalStatus: map['renewalStatus'] as String,
-      status: map['status'] as String,
+      createTime: (map['createTime'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      renewalDurationUnit: (map['renewalDurationUnit'] as String).input(),
+      renewalStatus: (map['renewalStatus'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

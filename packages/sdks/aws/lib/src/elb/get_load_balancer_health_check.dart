@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerHealthCheck {
-  final int healthyThreshold;
-  final int interval;
-  final String target;
-  final int timeout;
-  final int unhealthyThreshold;
+  final pulumi.Input<int> healthyThreshold;
+  final pulumi.Input<int> interval;
+  final pulumi.Input<String> target;
+  final pulumi.Input<int> timeout;
+  final pulumi.Input<int> unhealthyThreshold;
 
   /// Creates a new [GetLoadBalancerHealthCheck].
   /// [healthyThreshold] Required.
@@ -34,11 +35,11 @@ class GetLoadBalancerHealthCheck {
 
   factory GetLoadBalancerHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerHealthCheck(
-      healthyThreshold: map['healthyThreshold'] as int,
-      interval: map['interval'] as int,
-      target: map['target'] as String,
-      timeout: map['timeout'] as int,
-      unhealthyThreshold: map['unhealthyThreshold'] as int,
+      healthyThreshold: (map['healthyThreshold'] as int).input(),
+      interval: (map['interval'] as int).input(),
+      target: (map['target'] as String).input(),
+      timeout: (map['timeout'] as int).input(),
+      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

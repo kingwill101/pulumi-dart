@@ -19,13 +19,10 @@ class PrivateKeyArgs {
   /// [ecdsaCurve] When `algorithm` is `ECDSA`, the name of the elliptic curve to use. Currently-supported values are: `P224`, `P256`, `P384`, `P521`. (default: `P224`).
   /// [rsaBits] When `algorithm` is `RSA`, the size of the generated RSA key, in bits (default: `2048`).
   PrivateKeyArgs({
-    required pulumi.Output<String> algorithm,
-    pulumi.Output<String>? ecdsaCurve,
-    pulumi.Output<int>? rsaBits,
-  }) :
-      algorithm = pulumi.Input.asInput<String>(algorithm),
-      ecdsaCurve = pulumi.Input.asOptionalInput<String>(ecdsaCurve),
-      rsaBits = pulumi.Input.asOptionalInput<int>(rsaBits);
+    required this.algorithm,
+    this.ecdsaCurve,
+    this.rsaBits,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PrivateKeyArgs {
 
   factory PrivateKeyArgs.fromMap(Map<String, dynamic> map) {
     return PrivateKeyArgs(
-      algorithm: pulumi.Output.create<String>(map['algorithm'] as String),
-      ecdsaCurve: map['ecdsaCurve'] == null ? null : pulumi.Output.create<String>(map['ecdsaCurve'] as String),
-      rsaBits: map['rsaBits'] == null ? null : pulumi.Output.create<int>(map['rsaBits'] as int),
+      algorithm: (map['algorithm'] as String).input(),
+      ecdsaCurve: map['ecdsaCurve'] == null ? null : (map['ecdsaCurve'] as String).input(),
+      rsaBits: map['rsaBits'] == null ? null : (map['rsaBits'] as int).input(),
     );
   }
 }

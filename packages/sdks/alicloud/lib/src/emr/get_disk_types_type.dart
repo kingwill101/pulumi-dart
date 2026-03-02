@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDiskTypesType {
   /// The maximum value of the data disk to supported the specific instance type
-  final int max;
+  final pulumi.Input<int> max;
   /// The mininum value of the data disk to supported the specific instance type
-  final int min;
+  final pulumi.Input<int> min;
   /// The value of the data disk or system disk
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetDiskTypesType].
   /// [max] The maximum value of the data disk to supported the specific instance type
@@ -29,9 +30,9 @@ class GetDiskTypesType {
 
   factory GetDiskTypesType.fromMap(Map<String, dynamic> map) {
     return GetDiskTypesType(
-      max: map['max'] as int,
-      min: map['min'] as int,
-      value: map['value'] as String,
+      max: (map['max'] as int).input(),
+      min: (map['min'] as int).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

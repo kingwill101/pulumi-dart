@@ -31,17 +31,12 @@ class AccountQueuePropertiesArgs {
   /// [minuteMetrics] A `minute_metrics` block as defined below.
   /// [storageAccountId] The ID of the Storage Account to set Queue Properties on. Changing this forces a new resource to be created.
   AccountQueuePropertiesArgs({
-    pulumi.Output<List<AccountQueuePropertiesCorsRule>>? corsRules,
-    pulumi.Output<AccountQueuePropertiesHourMetrics>? hourMetrics,
-    pulumi.Output<AccountQueuePropertiesLogging>? logging,
-    pulumi.Output<AccountQueuePropertiesMinuteMetrics>? minuteMetrics,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      corsRules = pulumi.Input.asOptionalInput<List<AccountQueuePropertiesCorsRule>>(corsRules),
-      hourMetrics = pulumi.Input.asOptionalInput<AccountQueuePropertiesHourMetrics>(hourMetrics),
-      logging = pulumi.Input.asOptionalInput<AccountQueuePropertiesLogging>(logging),
-      minuteMetrics = pulumi.Input.asOptionalInput<AccountQueuePropertiesMinuteMetrics>(minuteMetrics),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    this.corsRules,
+    this.hourMetrics,
+    this.logging,
+    this.minuteMetrics,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class AccountQueuePropertiesArgs {
 
   factory AccountQueuePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return AccountQueuePropertiesArgs(
-      corsRules: map['corsRules'] == null ? null : pulumi.Output.create<List<AccountQueuePropertiesCorsRule>>(pulumi.Input.decodeList<AccountQueuePropertiesCorsRule>(map['corsRules'], (value) => AccountQueuePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))),
-      hourMetrics: map['hourMetrics'] == null ? null : pulumi.Output.create<AccountQueuePropertiesHourMetrics>(AccountQueuePropertiesHourMetrics.fromMap((map['hourMetrics'] as Map).cast<String, dynamic>())),
-      logging: map['logging'] == null ? null : pulumi.Output.create<AccountQueuePropertiesLogging>(AccountQueuePropertiesLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())),
-      minuteMetrics: map['minuteMetrics'] == null ? null : pulumi.Output.create<AccountQueuePropertiesMinuteMetrics>(AccountQueuePropertiesMinuteMetrics.fromMap((map['minuteMetrics'] as Map).cast<String, dynamic>())),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<AccountQueuePropertiesCorsRule>(map['corsRules'], (value) => AccountQueuePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hourMetrics: map['hourMetrics'] == null ? null : (AccountQueuePropertiesHourMetrics.fromMap((map['hourMetrics'] as Map).cast<String, dynamic>())).input(),
+      logging: map['logging'] == null ? null : (AccountQueuePropertiesLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
+      minuteMetrics: map['minuteMetrics'] == null ? null : (AccountQueuePropertiesMinuteMetrics.fromMap((map['minuteMetrics'] as Map).cast<String, dynamic>())).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

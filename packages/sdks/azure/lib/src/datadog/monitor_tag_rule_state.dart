@@ -21,15 +21,11 @@ class MonitorTagRuleState {
   /// [metrics] A `metric` block as defined below.
   /// [name] The name of the Tag Rules configuration. The allowed value is `default`. Defaults to `default`.
   MonitorTagRuleState({
-    pulumi.Output<String>? datadogMonitorId,
-    pulumi.Output<List<MonitorTagRuleLog>>? logs,
-    pulumi.Output<List<MonitorTagRuleMetric>>? metrics,
-    pulumi.Output<String>? name,
-  }) :
-      datadogMonitorId = pulumi.Input.asOptionalInput<String>(datadogMonitorId),
-      logs = pulumi.Input.asOptionalInput<List<MonitorTagRuleLog>>(logs),
-      metrics = pulumi.Input.asOptionalInput<List<MonitorTagRuleMetric>>(metrics),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.datadogMonitorId,
+    this.logs,
+    this.metrics,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class MonitorTagRuleState {
 
   factory MonitorTagRuleState.fromMap(Map<String, dynamic> map) {
     return MonitorTagRuleState(
-      datadogMonitorId: map['datadogMonitorId'] == null ? null : pulumi.Output.create<String>(map['datadogMonitorId'] as String),
-      logs: map['logs'] == null ? null : pulumi.Output.create<List<MonitorTagRuleLog>>(pulumi.Input.decodeList<MonitorTagRuleLog>(map['logs'], (value) => MonitorTagRuleLog.fromMap((value as Map).cast<String, dynamic>()))),
-      metrics: map['metrics'] == null ? null : pulumi.Output.create<List<MonitorTagRuleMetric>>(pulumi.Input.decodeList<MonitorTagRuleMetric>(map['metrics'], (value) => MonitorTagRuleMetric.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      datadogMonitorId: map['datadogMonitorId'] == null ? null : (map['datadogMonitorId'] as String).input(),
+      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleLog>(map['logs'], (value) => MonitorTagRuleLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleMetric>(map['metrics'], (value) => MonitorTagRuleMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

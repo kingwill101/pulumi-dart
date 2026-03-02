@@ -19,13 +19,10 @@ class GetFirewallPolicyArgs {
   /// [firewallPolicyName] The name of the Firewall Policy.
   /// [resourceGroupName] The name of the resource group.
   GetFirewallPolicyArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> firewallPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      firewallPolicyName = pulumi.Input.asInput<String>(firewallPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.firewallPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFirewallPolicyArgs {
 
   factory GetFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      firewallPolicyName: pulumi.Output.create<String>(map['firewallPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

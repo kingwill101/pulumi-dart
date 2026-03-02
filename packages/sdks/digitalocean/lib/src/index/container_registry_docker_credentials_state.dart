@@ -22,17 +22,12 @@ class ContainerRegistryDockerCredentialsState {
   /// [registryName] The name of the container registry.
   /// [write] Allow for write access to the container registry. Defaults to false.
   ContainerRegistryDockerCredentialsState({
-    pulumi.Output<String>? credentialExpirationTime,
-    pulumi.Output<String>? dockerCredentials,
-    pulumi.Output<int>? expirySeconds,
-    pulumi.Output<String>? registryName,
-    pulumi.Output<bool>? write,
-  }) :
-      credentialExpirationTime = pulumi.Input.asOptionalInput<String>(credentialExpirationTime),
-      dockerCredentials = pulumi.Input.asOptionalInput<String>(dockerCredentials),
-      expirySeconds = pulumi.Input.asOptionalInput<int>(expirySeconds),
-      registryName = pulumi.Input.asOptionalInput<String>(registryName),
-      write = pulumi.Input.asOptionalInput<bool>(write);
+    this.credentialExpirationTime,
+    this.dockerCredentials,
+    this.expirySeconds,
+    this.registryName,
+    this.write,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ContainerRegistryDockerCredentialsState {
 
   factory ContainerRegistryDockerCredentialsState.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryDockerCredentialsState(
-      credentialExpirationTime: map['credentialExpirationTime'] == null ? null : pulumi.Output.create<String>(map['credentialExpirationTime'] as String),
-      dockerCredentials: map['dockerCredentials'] == null ? null : pulumi.Output.create<String>(map['dockerCredentials'] as String),
-      expirySeconds: map['expirySeconds'] == null ? null : pulumi.Output.create<int>(map['expirySeconds'] as int),
-      registryName: map['registryName'] == null ? null : pulumi.Output.create<String>(map['registryName'] as String),
-      write: map['write'] == null ? null : pulumi.Output.create<bool>(map['write'] as bool),
+      credentialExpirationTime: map['credentialExpirationTime'] == null ? null : (map['credentialExpirationTime'] as String).input(),
+      dockerCredentials: map['dockerCredentials'] == null ? null : (map['dockerCredentials'] as String).input(),
+      expirySeconds: map['expirySeconds'] == null ? null : (map['expirySeconds'] as int).input(),
+      registryName: map['registryName'] == null ? null : (map['registryName'] as String).input(),
+      write: map['write'] == null ? null : (map['write'] as bool).input(),
     );
   }
 }

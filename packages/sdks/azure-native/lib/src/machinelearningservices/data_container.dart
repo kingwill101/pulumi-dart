@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container for data asset versions.
 class DataContainer {
   /// [Required] Specifies the type of data.
-  final String dataType;
+  final pulumi.Input<String> dataType;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [DataContainer].
   /// [dataType] [Required] Specifies the type of data.
@@ -40,11 +41,11 @@ class DataContainer {
 
   factory DataContainer.fromMap(Map<String, dynamic> map) {
     return DataContainer(
-      dataType: map['dataType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      dataType: (map['dataType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

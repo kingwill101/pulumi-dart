@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeTemplateShieldedVmConfig {
   /// Enables secure boot for the runtime.
-  final bool? enableSecureBoot;
+  final pulumi.Input<bool>? enableSecureBoot;
 
   /// Creates a new [RuntimeTemplateShieldedVmConfig].
   /// [enableSecureBoot] Enables secure boot for the runtime.
@@ -19,7 +20,7 @@ class RuntimeTemplateShieldedVmConfig {
 
   factory RuntimeTemplateShieldedVmConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateShieldedVmConfig(
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
     );
   }
 }

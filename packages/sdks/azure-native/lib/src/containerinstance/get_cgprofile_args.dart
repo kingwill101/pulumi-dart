@@ -16,11 +16,9 @@ class GetCGProfileArgs {
   /// [containerGroupProfileName] ContainerGroupProfile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCGProfileArgs({
-    required pulumi.Output<String> containerGroupProfileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      containerGroupProfileName = pulumi.Input.asInput<String>(containerGroupProfileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.containerGroupProfileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCGProfileArgs {
 
   factory GetCGProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetCGProfileArgs(
-      containerGroupProfileName: pulumi.Output.create<String>(map['containerGroupProfileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      containerGroupProfileName: (map['containerGroupProfileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalClusterFleet {
   /// (Output)
   /// The name of the managed Hub Membership resource associated to this cluster.
   /// Membership names are formatted as
   /// `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
-  final String? membership;
+  final pulumi.Input<String>? membership;
 
   /// Creates a new [BareMetalClusterFleet].
   /// [membership] (Output)
@@ -22,7 +23,7 @@ class BareMetalClusterFleet {
 
   factory BareMetalClusterFleet.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterFleet(
-      membership: map['membership'] == null ? null : map['membership'] as String,
+      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
     );
   }
 }

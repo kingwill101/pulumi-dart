@@ -49,29 +49,18 @@ class ProtocolServiceState {
   /// [vpcId] The VpcId of the protocol service, which must be consistent with the VPC of the file system.
   /// [vswitchId] The VSwitchId of the protocol service.
   ProtocolServiceState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? protocolServiceId,
-    pulumi.Output<String>? protocolSpec,
-    pulumi.Output<int>? protocolThroughput,
-    pulumi.Output<String>? protocolType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      protocolServiceId = pulumi.Input.asOptionalInput<String>(protocolServiceId),
-      protocolSpec = pulumi.Input.asOptionalInput<String>(protocolSpec),
-      protocolThroughput = pulumi.Input.asOptionalInput<int>(protocolThroughput),
-      protocolType = pulumi.Input.asOptionalInput<String>(protocolType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.createTime,
+    this.description,
+    this.dryRun,
+    this.fileSystemId,
+    this.protocolServiceId,
+    this.protocolSpec,
+    this.protocolThroughput,
+    this.protocolType,
+    this.status,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class ProtocolServiceState {
 
   factory ProtocolServiceState.fromMap(Map<String, dynamic> map) {
     return ProtocolServiceState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      protocolServiceId: map['protocolServiceId'] == null ? null : pulumi.Output.create<String>(map['protocolServiceId'] as String),
-      protocolSpec: map['protocolSpec'] == null ? null : pulumi.Output.create<String>(map['protocolSpec'] as String),
-      protocolThroughput: map['protocolThroughput'] == null ? null : pulumi.Output.create<int>(map['protocolThroughput'] as int),
-      protocolType: map['protocolType'] == null ? null : pulumi.Output.create<String>(map['protocolType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      protocolServiceId: map['protocolServiceId'] == null ? null : (map['protocolServiceId'] as String).input(),
+      protocolSpec: map['protocolSpec'] == null ? null : (map['protocolSpec'] as String).input(),
+      protocolThroughput: map['protocolThroughput'] == null ? null : (map['protocolThroughput'] as int).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

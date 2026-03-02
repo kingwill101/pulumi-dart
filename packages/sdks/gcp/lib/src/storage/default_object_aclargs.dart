@@ -18,11 +18,9 @@ class DefaultObjectACLArgs {
   /// [bucket] The name of the bucket it applies to.
   /// [roleEntities] List of role/entity pairs in the form `ROLE:entity`.
   DefaultObjectACLArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<List<String>>? roleEntities,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      roleEntities = pulumi.Input.asOptionalInput<List<String>>(roleEntities);
+    required this.bucket,
+    this.roleEntities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class DefaultObjectACLArgs {
 
   factory DefaultObjectACLArgs.fromMap(Map<String, dynamic> map) {
     return DefaultObjectACLArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      roleEntities: map['roleEntities'] == null ? null : pulumi.Output.create<List<String>>((map['roleEntities'] as List).cast<String>()),
+      bucket: (map['bucket'] as String).input(),
+      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities'] as List).cast<String>()).input(),
     );
   }
 }

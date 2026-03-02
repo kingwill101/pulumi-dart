@@ -17,13 +17,10 @@ class ServiceConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceType] The resource type to which the default service config will be applied.
   ServiceConfigState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? resourceType,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.location,
+    this.project,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ServiceConfigState {
 
   factory ServiceConfigState.fromMap(Map<String, dynamic> map) {
     return ServiceConfigState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

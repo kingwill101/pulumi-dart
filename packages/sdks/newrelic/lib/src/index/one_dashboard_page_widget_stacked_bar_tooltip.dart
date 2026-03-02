@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OneDashboardPageWidgetStackedBarTooltip {
   /// (Required) The tooltip display mode. Valid values are:
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [OneDashboardPageWidgetStackedBarTooltip].
   /// [mode] (Required) The tooltip display mode. Valid values are:
@@ -19,7 +20,7 @@ class OneDashboardPageWidgetStackedBarTooltip {
 
   factory OneDashboardPageWidgetStackedBarTooltip.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetStackedBarTooltip(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

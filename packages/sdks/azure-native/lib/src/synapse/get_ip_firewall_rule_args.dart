@@ -19,13 +19,10 @@ class GetIpFirewallRuleArgs {
   /// [ruleName] The IP firewall rule name
   /// [workspaceName] The name of the workspace.
   GetIpFirewallRuleArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.ruleName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIpFirewallRuleArgs {
 
   factory GetIpFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetIpFirewallRuleArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

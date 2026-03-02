@@ -43,25 +43,16 @@ class AlertRuleAnomalyDuplicateArgs {
   /// [singleSelectObservations] A list of `single_select_observation` blocks as defined below.
   /// [thresholdObservations] A list of `threshold_observation` blocks as defined below.
   AlertRuleAnomalyDuplicateArgs({
-    required pulumi.Output<String> builtInRuleId,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    required pulumi.Output<String> mode,
-    pulumi.Output<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>? multiSelectObservations,
-    pulumi.Output<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>? prioritizedExcludeObservations,
-    pulumi.Output<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>? singleSelectObservations,
-    pulumi.Output<List<AlertRuleAnomalyDuplicateThresholdObservation>>? thresholdObservations,
-  }) :
-      builtInRuleId = pulumi.Input.asInput<String>(builtInRuleId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      mode = pulumi.Input.asInput<String>(mode),
-      multiSelectObservations = pulumi.Input.asOptionalInput<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>(multiSelectObservations),
-      prioritizedExcludeObservations = pulumi.Input.asOptionalInput<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>(prioritizedExcludeObservations),
-      singleSelectObservations = pulumi.Input.asOptionalInput<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>(singleSelectObservations),
-      thresholdObservations = pulumi.Input.asOptionalInput<List<AlertRuleAnomalyDuplicateThresholdObservation>>(thresholdObservations);
+    required this.builtInRuleId,
+    required this.displayName,
+    required this.enabled,
+    required this.logAnalyticsWorkspaceId,
+    required this.mode,
+    this.multiSelectObservations,
+    this.prioritizedExcludeObservations,
+    this.singleSelectObservations,
+    this.thresholdObservations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class AlertRuleAnomalyDuplicateArgs {
 
   factory AlertRuleAnomalyDuplicateArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicateArgs(
-      builtInRuleId: pulumi.Output.create<String>(map['builtInRuleId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      multiSelectObservations: map['multiSelectObservations'] == null ? null : pulumi.Output.create<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>(pulumi.Input.decodeList<AlertRuleAnomalyDuplicateMultiSelectObservation>(map['multiSelectObservations'], (value) => AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>()))),
-      prioritizedExcludeObservations: map['prioritizedExcludeObservations'] == null ? null : pulumi.Output.create<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>(pulumi.Input.decodeList<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>(map['prioritizedExcludeObservations'], (value) => AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>()))),
-      singleSelectObservations: map['singleSelectObservations'] == null ? null : pulumi.Output.create<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>(pulumi.Input.decodeList<AlertRuleAnomalyDuplicateSingleSelectObservation>(map['singleSelectObservations'], (value) => AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>()))),
-      thresholdObservations: map['thresholdObservations'] == null ? null : pulumi.Output.create<List<AlertRuleAnomalyDuplicateThresholdObservation>>(pulumi.Input.decodeList<AlertRuleAnomalyDuplicateThresholdObservation>(map['thresholdObservations'], (value) => AlertRuleAnomalyDuplicateThresholdObservation.fromMap((value as Map).cast<String, dynamic>()))),
+      builtInRuleId: (map['builtInRuleId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      multiSelectObservations: map['multiSelectObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateMultiSelectObservation>(map['multiSelectObservations'], (value) => AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prioritizedExcludeObservations: map['prioritizedExcludeObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>(map['prioritizedExcludeObservations'], (value) => AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      singleSelectObservations: map['singleSelectObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateSingleSelectObservation>(map['singleSelectObservations'], (value) => AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      thresholdObservations: map['thresholdObservations'] == null ? null : (pulumi.Input.decodeList<AlertRuleAnomalyDuplicateThresholdObservation>(map['thresholdObservations'], (value) => AlertRuleAnomalyDuplicateThresholdObservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

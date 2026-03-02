@@ -8,45 +8,45 @@ import 'get_service_metric_alarm_rules_rule_prometheus.dart';
 
 class GetServiceMetricAlarmRulesRule {
   /// The trigger conditions for multiple metrics.
-  final GetServiceMetricAlarmRulesRuleCompositeExpression compositeExpression;
+  final pulumi.Input<GetServiceMetricAlarmRulesRuleCompositeExpression> compositeExpression;
   /// The alert contact group.
-  final String contactGroups;
+  final pulumi.Input<String> contactGroups;
   /// The monitoring dimensions of the specified resource.
-  final String dimensions;
+  final pulumi.Input<String> dimensions;
   /// The time period during which the alert rule is effective.
-  final String effectiveInterval;
+  final pulumi.Input<String> effectiveInterval;
   /// The subject of the alert notification email.
-  final String emailSubject;
+  final pulumi.Input<String> emailSubject;
   /// The conditions for triggering different levels of alerts.
-  final GetServiceMetricAlarmRulesRuleEscalations escalations;
+  final pulumi.Input<GetServiceMetricAlarmRulesRuleEscalations> escalations;
   /// The ID of the alert rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The tags of the alert rule.
-  final List<GetServiceMetricAlarmRulesRuleLabel> labels;
+  final pulumi.Input<List<GetServiceMetricAlarmRulesRuleLabel>> labels;
   /// The name of the metric.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The namespace of the cloud service.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// The method that is used to handle alerts when no monitoring data is found.
-  final String noDataPolicy;
+  final pulumi.Input<String> noDataPolicy;
   /// The time period during which the alert rule is ineffective.
-  final String noEffectiveInterval;
+  final pulumi.Input<String> noEffectiveInterval;
   /// The aggregation period of the metric.
-  final String period;
+  final pulumi.Input<String> period;
   /// The Prometheus alerts.
-  final GetServiceMetricAlarmRulesRulePrometheus prometheus;
+  final pulumi.Input<GetServiceMetricAlarmRulesRulePrometheus> prometheus;
   /// The resources that are associated with the alert rule.
-  final String resources;
+  final pulumi.Input<String> resources;
   /// The name of the alert rule.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
   /// The mute period during which new alert notifications are not sent even if the trigger conditions are met.
-  final String silenceTime;
+  final pulumi.Input<String> silenceTime;
   /// The type of the alert rule.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
-  final bool status;
+  final pulumi.Input<bool> status;
   /// The callback URL.
-  final String webhook;
+  final pulumi.Input<String> webhook;
 
   /// Creates a new [GetServiceMetricAlarmRulesRule].
   /// [compositeExpression] The trigger conditions for multiple metrics.
@@ -94,20 +94,20 @@ class GetServiceMetricAlarmRulesRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compositeExpression': compositeExpression.toMap(),
+      'compositeExpression': pulumi.Input.mapInputValue<GetServiceMetricAlarmRulesRuleCompositeExpression, Map<String, dynamic>>(compositeExpression, (value) => value.toMap()),
       'contactGroups': contactGroups,
       'dimensions': dimensions,
       'effectiveInterval': effectiveInterval,
       'emailSubject': emailSubject,
-      'escalations': escalations.toMap(),
+      'escalations': pulumi.Input.mapInputValue<GetServiceMetricAlarmRulesRuleEscalations, Map<String, dynamic>>(escalations, (value) => value.toMap()),
       'id': id,
-      'labels': pulumi.Input.encodeList<GetServiceMetricAlarmRulesRuleLabel, Map<String, dynamic>>(labels, (value) => value.toMap()),
+      'labels': pulumi.Input.mapInputValue<List<GetServiceMetricAlarmRulesRuleLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<GetServiceMetricAlarmRulesRuleLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': metricName,
       'namespace': namespace,
       'noDataPolicy': noDataPolicy,
       'noEffectiveInterval': noEffectiveInterval,
       'period': period,
-      'prometheus': prometheus.toMap(),
+      'prometheus': pulumi.Input.mapInputValue<GetServiceMetricAlarmRulesRulePrometheus, Map<String, dynamic>>(prometheus, (value) => value.toMap()),
       'resources': resources,
       'ruleName': ruleName,
       'silenceTime': silenceTime,
@@ -119,26 +119,26 @@ class GetServiceMetricAlarmRulesRule {
 
   factory GetServiceMetricAlarmRulesRule.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesRule(
-      compositeExpression: GetServiceMetricAlarmRulesRuleCompositeExpression.fromMap((map['compositeExpression'] as Map).cast<String, dynamic>()),
-      contactGroups: map['contactGroups'] as String,
-      dimensions: map['dimensions'] as String,
-      effectiveInterval: map['effectiveInterval'] as String,
-      emailSubject: map['emailSubject'] as String,
-      escalations: GetServiceMetricAlarmRulesRuleEscalations.fromMap((map['escalations'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      labels: pulumi.Input.decodeList<GetServiceMetricAlarmRulesRuleLabel>(map['labels'], (value) => GetServiceMetricAlarmRulesRuleLabel.fromMap((value as Map).cast<String, dynamic>())),
-      metricName: map['metricName'] as String,
-      namespace: map['namespace'] as String,
-      noDataPolicy: map['noDataPolicy'] as String,
-      noEffectiveInterval: map['noEffectiveInterval'] as String,
-      period: map['period'] as String,
-      prometheus: GetServiceMetricAlarmRulesRulePrometheus.fromMap((map['prometheus'] as Map).cast<String, dynamic>()),
-      resources: map['resources'] as String,
-      ruleName: map['ruleName'] as String,
-      silenceTime: map['silenceTime'] as String,
-      sourceType: map['sourceType'] as String,
-      status: map['status'] as bool,
-      webhook: map['webhook'] as String,
+      compositeExpression: (GetServiceMetricAlarmRulesRuleCompositeExpression.fromMap((map['compositeExpression'] as Map).cast<String, dynamic>())).input(),
+      contactGroups: (map['contactGroups'] as String).input(),
+      dimensions: (map['dimensions'] as String).input(),
+      effectiveInterval: (map['effectiveInterval'] as String).input(),
+      emailSubject: (map['emailSubject'] as String).input(),
+      escalations: (GetServiceMetricAlarmRulesRuleEscalations.fromMap((map['escalations'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      labels: (pulumi.Input.decodeList<GetServiceMetricAlarmRulesRuleLabel>(map['labels'], (value) => GetServiceMetricAlarmRulesRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: (map['metricName'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      noDataPolicy: (map['noDataPolicy'] as String).input(),
+      noEffectiveInterval: (map['noEffectiveInterval'] as String).input(),
+      period: (map['period'] as String).input(),
+      prometheus: (GetServiceMetricAlarmRulesRulePrometheus.fromMap((map['prometheus'] as Map).cast<String, dynamic>())).input(),
+      resources: (map['resources'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      silenceTime: (map['silenceTime'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      status: (map['status'] as bool).input(),
+      webhook: (map['webhook'] as String).input(),
     );
   }
 }

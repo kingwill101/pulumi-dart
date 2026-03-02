@@ -13,11 +13,9 @@ class OrganizationAdminAccountState {
   /// [accountId] AWS account identifier to designate as a delegated administrator for Detective.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationAdminAccountState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class OrganizationAdminAccountState {
 
   factory OrganizationAdminAccountState.fromMap(Map<String, dynamic> map) {
     return OrganizationAdminAccountState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

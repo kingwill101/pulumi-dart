@@ -17,11 +17,9 @@ class ControlPolicyAttachmentState {
   /// [policyId] The ID of the access control policy.
   /// [targetId] The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
   ControlPolicyAttachmentState({
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? targetId,
-  }) :
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId);
+    this.policyId,
+    this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ControlPolicyAttachmentState {
 
   factory ControlPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return ControlPolicyAttachmentState(
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
     );
   }
 }

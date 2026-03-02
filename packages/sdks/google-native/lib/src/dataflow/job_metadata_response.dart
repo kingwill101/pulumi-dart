@@ -12,21 +12,21 @@ import 'spanner_iodetails_response.dart';
 /// Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 class JobMetadataResponse {
   /// Identification of a Cloud Bigtable source used in the Dataflow job.
-  final List<BigTableIODetailsResponse> bigTableDetails;
+  final pulumi.Input<List<BigTableIODetailsResponse>> bigTableDetails;
   /// Identification of a BigQuery source used in the Dataflow job.
-  final List<BigQueryIODetailsResponse> bigqueryDetails;
+  final pulumi.Input<List<BigQueryIODetailsResponse>> bigqueryDetails;
   /// Identification of a Datastore source used in the Dataflow job.
-  final List<DatastoreIODetailsResponse> datastoreDetails;
+  final pulumi.Input<List<DatastoreIODetailsResponse>> datastoreDetails;
   /// Identification of a File source used in the Dataflow job.
-  final List<FileIODetailsResponse> fileDetails;
+  final pulumi.Input<List<FileIODetailsResponse>> fileDetails;
   /// Identification of a Pub/Sub source used in the Dataflow job.
-  final List<PubSubIODetailsResponse> pubsubDetails;
+  final pulumi.Input<List<PubSubIODetailsResponse>> pubsubDetails;
   /// The SDK version used to run the job.
-  final SdkVersionResponse sdkVersion;
+  final pulumi.Input<SdkVersionResponse> sdkVersion;
   /// Identification of a Spanner source used in the Dataflow job.
-  final List<SpannerIODetailsResponse> spannerDetails;
+  final pulumi.Input<List<SpannerIODetailsResponse>> spannerDetails;
   /// List of display properties to help UI filter jobs.
-  final Map<String, String> userDisplayProperties;
+  final pulumi.Input<Map<String, String>> userDisplayProperties;
 
   /// Creates a new [JobMetadataResponse].
   /// [bigTableDetails] Identification of a Cloud Bigtable source used in the Dataflow job.
@@ -50,27 +50,27 @@ class JobMetadataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigTableDetails': pulumi.Input.encodeList<BigTableIODetailsResponse, Map<String, dynamic>>(bigTableDetails, (value) => value.toMap()),
-      'bigqueryDetails': pulumi.Input.encodeList<BigQueryIODetailsResponse, Map<String, dynamic>>(bigqueryDetails, (value) => value.toMap()),
-      'datastoreDetails': pulumi.Input.encodeList<DatastoreIODetailsResponse, Map<String, dynamic>>(datastoreDetails, (value) => value.toMap()),
-      'fileDetails': pulumi.Input.encodeList<FileIODetailsResponse, Map<String, dynamic>>(fileDetails, (value) => value.toMap()),
-      'pubsubDetails': pulumi.Input.encodeList<PubSubIODetailsResponse, Map<String, dynamic>>(pubsubDetails, (value) => value.toMap()),
-      'sdkVersion': sdkVersion.toMap(),
-      'spannerDetails': pulumi.Input.encodeList<SpannerIODetailsResponse, Map<String, dynamic>>(spannerDetails, (value) => value.toMap()),
+      'bigTableDetails': pulumi.Input.mapInputValue<List<BigTableIODetailsResponse>, List<Map<String, dynamic>>>(bigTableDetails, (value) => pulumi.Input.encodeList<BigTableIODetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bigqueryDetails': pulumi.Input.mapInputValue<List<BigQueryIODetailsResponse>, List<Map<String, dynamic>>>(bigqueryDetails, (value) => pulumi.Input.encodeList<BigQueryIODetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'datastoreDetails': pulumi.Input.mapInputValue<List<DatastoreIODetailsResponse>, List<Map<String, dynamic>>>(datastoreDetails, (value) => pulumi.Input.encodeList<DatastoreIODetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fileDetails': pulumi.Input.mapInputValue<List<FileIODetailsResponse>, List<Map<String, dynamic>>>(fileDetails, (value) => pulumi.Input.encodeList<FileIODetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pubsubDetails': pulumi.Input.mapInputValue<List<PubSubIODetailsResponse>, List<Map<String, dynamic>>>(pubsubDetails, (value) => pulumi.Input.encodeList<PubSubIODetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sdkVersion': pulumi.Input.mapInputValue<SdkVersionResponse, Map<String, dynamic>>(sdkVersion, (value) => value.toMap()),
+      'spannerDetails': pulumi.Input.mapInputValue<List<SpannerIODetailsResponse>, List<Map<String, dynamic>>>(spannerDetails, (value) => pulumi.Input.encodeList<SpannerIODetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'userDisplayProperties': userDisplayProperties,
     };
   }
 
   factory JobMetadataResponse.fromMap(Map<String, dynamic> map) {
     return JobMetadataResponse(
-      bigTableDetails: pulumi.Input.decodeList<BigTableIODetailsResponse>(map['bigTableDetails'], (value) => BigTableIODetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      bigqueryDetails: pulumi.Input.decodeList<BigQueryIODetailsResponse>(map['bigqueryDetails'], (value) => BigQueryIODetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      datastoreDetails: pulumi.Input.decodeList<DatastoreIODetailsResponse>(map['datastoreDetails'], (value) => DatastoreIODetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      fileDetails: pulumi.Input.decodeList<FileIODetailsResponse>(map['fileDetails'], (value) => FileIODetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      pubsubDetails: pulumi.Input.decodeList<PubSubIODetailsResponse>(map['pubsubDetails'], (value) => PubSubIODetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sdkVersion: SdkVersionResponse.fromMap((map['sdkVersion'] as Map).cast<String, dynamic>()),
-      spannerDetails: pulumi.Input.decodeList<SpannerIODetailsResponse>(map['spannerDetails'], (value) => SpannerIODetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      userDisplayProperties: (map['userDisplayProperties'] as Map).cast<String, String>(),
+      bigTableDetails: (pulumi.Input.decodeList<BigTableIODetailsResponse>(map['bigTableDetails'], (value) => BigTableIODetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bigqueryDetails: (pulumi.Input.decodeList<BigQueryIODetailsResponse>(map['bigqueryDetails'], (value) => BigQueryIODetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datastoreDetails: (pulumi.Input.decodeList<DatastoreIODetailsResponse>(map['datastoreDetails'], (value) => DatastoreIODetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileDetails: (pulumi.Input.decodeList<FileIODetailsResponse>(map['fileDetails'], (value) => FileIODetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pubsubDetails: (pulumi.Input.decodeList<PubSubIODetailsResponse>(map['pubsubDetails'], (value) => PubSubIODetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sdkVersion: (SdkVersionResponse.fromMap((map['sdkVersion'] as Map).cast<String, dynamic>())).input(),
+      spannerDetails: (pulumi.Input.decodeList<SpannerIODetailsResponse>(map['spannerDetails'], (value) => SpannerIODetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userDisplayProperties: ((map['userDisplayProperties'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -18,15 +18,11 @@ class GetNamespaceServiceIamPolicyArgs {
   /// [project] Optional.
   /// [serviceId] Required.
   GetNamespaceServiceIamPolicyArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    required this.location,
+    required this.namespaceId,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetNamespaceServiceIamPolicyArgs {
 
   factory GetNamespaceServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceServiceIamPolicyArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      location: (map['location'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

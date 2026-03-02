@@ -14,9 +14,8 @@ class AttackPathSensitiveAssetConfigArgs {
   /// Creates a new [AttackPathSensitiveAssetConfigArgs].
   /// [attackPathAssetLists] The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
   AttackPathSensitiveAssetConfigArgs({
-    required pulumi.Output<List<AttackPathSensitiveAssetConfigAttackPathAssetList>> attackPathAssetLists,
-  }) :
-      attackPathAssetLists = pulumi.Input.asInput<List<AttackPathSensitiveAssetConfigAttackPathAssetList>>(attackPathAssetLists);
+    required this.attackPathAssetLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class AttackPathSensitiveAssetConfigArgs {
 
   factory AttackPathSensitiveAssetConfigArgs.fromMap(Map<String, dynamic> map) {
     return AttackPathSensitiveAssetConfigArgs(
-      attackPathAssetLists: pulumi.Output.create<List<AttackPathSensitiveAssetConfigAttackPathAssetList>>(pulumi.Input.decodeList<AttackPathSensitiveAssetConfigAttackPathAssetList>(map['attackPathAssetLists'], (value) => AttackPathSensitiveAssetConfigAttackPathAssetList.fromMap((value as Map).cast<String, dynamic>()))),
+      attackPathAssetLists: (pulumi.Input.decodeList<AttackPathSensitiveAssetConfigAttackPathAssetList>(map['attackPathAssetLists'], (value) => AttackPathSensitiveAssetConfigAttackPathAssetList.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

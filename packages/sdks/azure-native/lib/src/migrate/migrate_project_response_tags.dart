@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the tags.
 class MigrateProjectResponseTags {
-  final String? additionalProperties;
+  final pulumi.Input<String>? additionalProperties;
 
   /// Creates a new [MigrateProjectResponseTags].
   /// [additionalProperties] Optional.
@@ -19,7 +20,7 @@ class MigrateProjectResponseTags {
 
   factory MigrateProjectResponseTags.fromMap(Map<String, dynamic> map) {
     return MigrateProjectResponseTags(
-      additionalProperties: map['additionalProperties'] == null ? null : map['additionalProperties'] as String,
+      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties'] as String).input(),
     );
   }
 }

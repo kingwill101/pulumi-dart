@@ -7,13 +7,13 @@ import 'subject_response.dart';
 /// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
 class SbomReferenceIntotoPayloadResponse {
   /// Additional parameters of the Predicate. Includes the actual data about the SBOM.
-  final SbomReferenceIntotoPredicateResponse predicate;
+  final pulumi.Input<SbomReferenceIntotoPredicateResponse> predicate;
   /// URI identifying the type of the Predicate.
-  final String predicateType;
+  final pulumi.Input<String> predicateType;
   /// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
-  final List<SubjectResponse> subject;
+  final pulumi.Input<List<SubjectResponse>> subject;
   /// Identifier for the schema of the Statement.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SbomReferenceIntotoPayloadResponse].
   /// [predicate] Additional parameters of the Predicate. Includes the actual data about the SBOM.
@@ -29,19 +29,19 @@ class SbomReferenceIntotoPayloadResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'predicate': predicate.toMap(),
+      'predicate': pulumi.Input.mapInputValue<SbomReferenceIntotoPredicateResponse, Map<String, dynamic>>(predicate, (value) => value.toMap()),
       'predicateType': predicateType,
-      'subject': pulumi.Input.encodeList<SubjectResponse, Map<String, dynamic>>(subject, (value) => value.toMap()),
+      'subject': pulumi.Input.mapInputValue<List<SubjectResponse>, List<Map<String, dynamic>>>(subject, (value) => pulumi.Input.encodeList<SubjectResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory SbomReferenceIntotoPayloadResponse.fromMap(Map<String, dynamic> map) {
     return SbomReferenceIntotoPayloadResponse(
-      predicate: SbomReferenceIntotoPredicateResponse.fromMap((map['predicate'] as Map).cast<String, dynamic>()),
-      predicateType: map['predicateType'] as String,
-      subject: pulumi.Input.decodeList<SubjectResponse>(map['subject'], (value) => SubjectResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      predicate: (SbomReferenceIntotoPredicateResponse.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
+      predicateType: (map['predicateType'] as String).input(),
+      subject: (pulumi.Input.decodeList<SubjectResponse>(map['subject'], (value) => SubjectResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

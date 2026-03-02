@@ -19,13 +19,10 @@ class NetworkGrantArgs {
   /// [cenId] The ID of the CEN instance.
   /// [cenUid] The ID of the account to which the CEN instance belongs.
   NetworkGrantArgs({
-    required pulumi.Output<String> ccnId,
-    required pulumi.Output<String> cenId,
-    required pulumi.Output<String> cenUid,
-  }) :
-      ccnId = pulumi.Input.asInput<String>(ccnId),
-      cenId = pulumi.Input.asInput<String>(cenId),
-      cenUid = pulumi.Input.asInput<String>(cenUid);
+    required this.ccnId,
+    required this.cenId,
+    required this.cenUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NetworkGrantArgs {
 
   factory NetworkGrantArgs.fromMap(Map<String, dynamic> map) {
     return NetworkGrantArgs(
-      ccnId: pulumi.Output.create<String>(map['ccnId'] as String),
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      cenUid: pulumi.Output.create<String>(map['cenUid'] as String),
+      ccnId: (map['ccnId'] as String).input(),
+      cenId: (map['cenId'] as String).input(),
+      cenUid: (map['cenUid'] as String).input(),
     );
   }
 }

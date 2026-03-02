@@ -19,15 +19,11 @@ class ImageState {
   /// [imageName] The name of the image.
   /// [status] The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
   ImageState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? desktopId,
-    pulumi.Output<String>? imageName,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      desktopId = pulumi.Input.asOptionalInput<String>(desktopId),
-      imageName = pulumi.Input.asOptionalInput<String>(imageName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.desktopId,
+    this.imageName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ImageState {
 
   factory ImageState.fromMap(Map<String, dynamic> map) {
     return ImageState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      desktopId: map['desktopId'] == null ? null : pulumi.Output.create<String>(map['desktopId'] as String),
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      desktopId: map['desktopId'] == null ? null : (map['desktopId'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

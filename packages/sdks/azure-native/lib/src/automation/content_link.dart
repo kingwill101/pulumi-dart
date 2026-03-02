@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'content_hash.dart';
 
 /// Definition of the content link.
 class ContentLink {
   /// Sets the hash.
-  final ContentHash? contentHash;
+  final pulumi.Input<ContentHash>? contentHash;
   /// Sets the uri of the content.
-  final String? uri;
+  final pulumi.Input<String>? uri;
   /// Sets the version of the content.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ContentLink].
   /// [contentHash] Sets the hash.
@@ -23,7 +24,7 @@ class ContentLink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contentHash': ?contentHash == null ? null : contentHash!.toMap(),
+      'contentHash': ?pulumi.Input.mapOptionalInputValue<ContentHash, Map<String, dynamic>>(contentHash, (value) => value.toMap()),
       'uri': ?uri,
       'version': ?version,
     };
@@ -31,9 +32,9 @@ class ContentLink {
 
   factory ContentLink.fromMap(Map<String, dynamic> map) {
     return ContentLink(
-      contentHash: map['contentHash'] == null ? null : ContentHash.fromMap((map['contentHash'] as Map).cast<String, dynamic>()),
-      uri: map['uri'] == null ? null : map['uri'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      contentHash: map['contentHash'] == null ? null : (ContentHash.fromMap((map['contentHash'] as Map).cast<String, dynamic>())).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

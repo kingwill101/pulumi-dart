@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GcfsConfig contains configurations of Google Container File System (image streaming).
 class GcfsConfig {
   /// Whether to use GCFS.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [GcfsConfig].
   /// [enabled] Whether to use GCFS.
@@ -20,7 +21,7 @@ class GcfsConfig {
 
   factory GcfsConfig.fromMap(Map<String, dynamic> map) {
     return GcfsConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

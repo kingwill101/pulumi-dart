@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevCapsNetIp {
   /// Sets the specific IP address assigned to the host device within the network configuration.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Defines the address family (IPv4 or IPv6) for the IP configuration of the host device.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// Specifies the prefix length for the IP address of the host device, determining the subnet.
-  final double? prefix;
+  final pulumi.Input<double>? prefix;
 
   /// Creates a new [DomainDevicesHostdevCapsNetIp].
   /// [address] Sets the specific IP address assigned to the host device within the network configuration.
@@ -29,9 +30,9 @@ class DomainDevicesHostdevCapsNetIp {
 
   factory DomainDevicesHostdevCapsNetIp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsNetIp(
-      address: map['address'] == null ? null : map['address'] as String,
-      family: map['family'] == null ? null : map['family'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as double,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
     );
   }
 }

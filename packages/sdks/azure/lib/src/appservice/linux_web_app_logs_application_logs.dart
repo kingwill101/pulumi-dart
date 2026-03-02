@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linux_web_app_logs_application_logs_azure_blob_storage.dart';
 
 class LinuxWebAppLogsApplicationLogs {
   /// An `azure_blob_storage` block as defined below.
-  final LinuxWebAppLogsApplicationLogsAzureBlobStorage? azureBlobStorage;
+  final pulumi.Input<LinuxWebAppLogsApplicationLogsAzureBlobStorage>? azureBlobStorage;
   /// Log level. Possible values include: `Off`, `Verbose`, `Information`, `Warning`, and `Error`.
-  final String fileSystemLevel;
+  final pulumi.Input<String> fileSystemLevel;
 
   /// Creates a new [LinuxWebAppLogsApplicationLogs].
   /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
@@ -18,15 +19,15 @@ class LinuxWebAppLogsApplicationLogs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlobStorage': ?azureBlobStorage == null ? null : azureBlobStorage!.toMap(),
+      'azureBlobStorage': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppLogsApplicationLogsAzureBlobStorage, Map<String, dynamic>>(azureBlobStorage, (value) => value.toMap()),
       'fileSystemLevel': fileSystemLevel,
     };
   }
 
   factory LinuxWebAppLogsApplicationLogs.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppLogsApplicationLogs(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : LinuxWebAppLogsApplicationLogsAzureBlobStorage.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>()),
-      fileSystemLevel: map['fileSystemLevel'] as String,
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (LinuxWebAppLogsApplicationLogsAzureBlobStorage.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
+      fileSystemLevel: (map['fileSystemLevel'] as String).input(),
     );
   }
 }

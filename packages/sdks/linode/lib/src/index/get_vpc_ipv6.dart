@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcIpv6 {
   /// The IPv6 range assigned to this VPC.
-  final String range;
+  final pulumi.Input<String> range;
 
   /// Creates a new [GetVpcIpv6].
   /// [range] The IPv6 range assigned to this VPC.
@@ -19,7 +20,7 @@ class GetVpcIpv6 {
 
   factory GetVpcIpv6.fromMap(Map<String, dynamic> map) {
     return GetVpcIpv6(
-      range: map['range'] as String,
+      range: (map['range'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Source SQL Connection
 class SqlConnectionInformationResponse {
   /// Authentication type.
-  final String? authentication;
+  final pulumi.Input<String>? authentication;
   /// Data source.
-  final String? dataSource;
+  final pulumi.Input<String>? dataSource;
   /// Whether to encrypt connection or not.
-  final bool? encryptConnection;
+  final pulumi.Input<bool>? encryptConnection;
   /// Password to connect to source SQL.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Whether to trust server certificate or not.
-  final bool? trustServerCertificate;
+  final pulumi.Input<bool>? trustServerCertificate;
   /// User name to connect to source SQL.
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [SqlConnectionInformationResponse].
   /// [authentication] Authentication type.
@@ -45,12 +46,12 @@ class SqlConnectionInformationResponse {
 
   factory SqlConnectionInformationResponse.fromMap(Map<String, dynamic> map) {
     return SqlConnectionInformationResponse(
-      authentication: map['authentication'] == null ? null : map['authentication'] as String,
-      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
-      encryptConnection: map['encryptConnection'] == null ? null : map['encryptConnection'] as bool,
-      password: map['password'] == null ? null : map['password'] as String,
-      trustServerCertificate: map['trustServerCertificate'] == null ? null : map['trustServerCertificate'] as bool,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection'] as bool).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate'] as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

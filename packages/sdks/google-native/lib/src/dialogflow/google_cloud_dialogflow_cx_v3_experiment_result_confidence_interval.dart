@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
 class GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
   /// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
-  final double? confidenceLevel;
+  final pulumi.Input<double>? confidenceLevel;
   /// Lower bound of the interval.
-  final double? lowerBound;
+  final pulumi.Input<double>? lowerBound;
   /// The percent change between an experiment metric's value and the value for its control.
-  final double? ratio;
+  final pulumi.Input<double>? ratio;
   /// Upper bound of the interval.
-  final double? upperBound;
+  final pulumi.Input<double>? upperBound;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval].
   /// [confidenceLevel] The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
@@ -35,10 +36,10 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
 
   factory GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval(
-      confidenceLevel: map['confidenceLevel'] == null ? null : map['confidenceLevel'] as double,
-      lowerBound: map['lowerBound'] == null ? null : map['lowerBound'] as double,
-      ratio: map['ratio'] == null ? null : map['ratio'] as double,
-      upperBound: map['upperBound'] == null ? null : map['upperBound'] as double,
+      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel'] as double).input(),
+      lowerBound: map['lowerBound'] == null ? null : (map['lowerBound'] as double).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio'] as double).input(),
+      upperBound: map['upperBound'] == null ? null : (map['upperBound'] as double).input(),
     );
   }
 }

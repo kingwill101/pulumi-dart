@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendAddressPoolTunnelInterface {
   /// The unique identifier of this Gateway Load Balancer Tunnel Interface.
-  final int identifier;
+  final pulumi.Input<int> identifier;
   /// The port number that this Gateway Load Balancer Tunnel Interface listens to.
-  final int port;
+  final pulumi.Input<int> port;
   /// The protocol used for this Gateway Load Balancer Tunnel Interface. Possible values are `None`, `Native` and `VXLAN`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The traffic type of this Gateway Load Balancer Tunnel Interface. Possible values are `None`, `Internal` and `External`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BackendAddressPoolTunnelInterface].
   /// [identifier] The unique identifier of this Gateway Load Balancer Tunnel Interface.
@@ -34,10 +35,10 @@ class BackendAddressPoolTunnelInterface {
 
   factory BackendAddressPoolTunnelInterface.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolTunnelInterface(
-      identifier: map['identifier'] as int,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
-      type: map['type'] as String,
+      identifier: (map['identifier'] as int).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

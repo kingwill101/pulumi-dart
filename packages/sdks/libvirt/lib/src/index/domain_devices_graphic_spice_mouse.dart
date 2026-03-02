@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicSpiceMouse {
   /// Sets the mode for mouse input handling within the Spice graphical environment.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [DomainDevicesGraphicSpiceMouse].
   /// [mode] Sets the mode for mouse input handling within the Spice graphical environment.
@@ -19,7 +20,7 @@ class DomainDevicesGraphicSpiceMouse {
 
   factory DomainDevicesGraphicSpiceMouse.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceMouse(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

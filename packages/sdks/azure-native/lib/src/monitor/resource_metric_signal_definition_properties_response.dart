@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'evaluation_rule_response.dart';
 
 /// Azure Resource Metric Signal Definition properties
 class ResourceMetricSignalDefinitionPropertiesResponse {
   /// Type of aggregation to apply to the metric
-  final String aggregationType;
+  final pulumi.Input<String> aggregationType;
   /// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-  final String? dataUnit;
+  final pulumi.Input<String>? dataUnit;
   /// Date when the signal definition was (soft-)deleted
-  final String deletionDate;
+  final pulumi.Input<String> deletionDate;
   /// Optional: Dimension to split by
-  final String? dimension;
+  final pulumi.Input<String>? dimension;
   /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
-  final String? dimensionFilter;
+  final pulumi.Input<String>? dimensionFilter;
   /// Display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Evaluation rules for the signal definition
-  final EvaluationRuleResponse evaluationRules;
+  final pulumi.Input<EvaluationRuleResponse> evaluationRules;
   /// Name of the metric
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// Metric namespace
-  final String metricNamespace;
+  final pulumi.Input<String> metricNamespace;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
-  final String? refreshInterval;
+  final pulumi.Input<String>? refreshInterval;
   /// Supported signal kinds as discriminator
   /// Expected value is 'AzureResourceMetric'.
-  final String signalKind;
+  final pulumi.Input<String> signalKind;
   /// Optional set of labels (key-value pairs)
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Time range of signal. ISO duration format like PT10M.
-  final String timeGrain;
+  final pulumi.Input<String> timeGrain;
 
   /// Creates a new [ResourceMetricSignalDefinitionPropertiesResponse].
   /// [aggregationType] Type of aggregation to apply to the metric
@@ -74,7 +75,7 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
       'dimension': ?dimension,
       'dimensionFilter': ?dimensionFilter,
       'displayName': ?displayName,
-      'evaluationRules': evaluationRules.toMap(),
+      'evaluationRules': pulumi.Input.mapInputValue<EvaluationRuleResponse, Map<String, dynamic>>(evaluationRules, (value) => value.toMap()),
       'metricName': metricName,
       'metricNamespace': metricNamespace,
       'provisioningState': provisioningState,
@@ -87,20 +88,20 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
 
   factory ResourceMetricSignalDefinitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMetricSignalDefinitionPropertiesResponse(
-      aggregationType: map['aggregationType'] as String,
-      dataUnit: map['dataUnit'] == null ? null : map['dataUnit'] as String,
-      deletionDate: map['deletionDate'] as String,
-      dimension: map['dimension'] == null ? null : map['dimension'] as String,
-      dimensionFilter: map['dimensionFilter'] == null ? null : map['dimensionFilter'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      evaluationRules: EvaluationRuleResponse.fromMap((map['evaluationRules'] as Map).cast<String, dynamic>()),
-      metricName: map['metricName'] as String,
-      metricNamespace: map['metricNamespace'] as String,
-      provisioningState: map['provisioningState'] as String,
-      refreshInterval: map['refreshInterval'] == null ? null : map['refreshInterval'] as String,
-      signalKind: map['signalKind'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timeGrain: map['timeGrain'] as String,
+      aggregationType: (map['aggregationType'] as String).input(),
+      dataUnit: map['dataUnit'] == null ? null : (map['dataUnit'] as String).input(),
+      deletionDate: (map['deletionDate'] as String).input(),
+      dimension: map['dimension'] == null ? null : (map['dimension'] as String).input(),
+      dimensionFilter: map['dimensionFilter'] == null ? null : (map['dimensionFilter'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      evaluationRules: (EvaluationRuleResponse.fromMap((map['evaluationRules'] as Map).cast<String, dynamic>())).input(),
+      metricName: (map['metricName'] as String).input(),
+      metricNamespace: (map['metricNamespace'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      refreshInterval: map['refreshInterval'] == null ? null : (map['refreshInterval'] as String).input(),
+      signalKind: (map['signalKind'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeGrain: (map['timeGrain'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_properties.dart';
 
 /// The properties of a source based trigger.
 class SourceTrigger {
   /// The name of the trigger.
-  final String name;
+  final pulumi.Input<String> name;
   /// The properties that describes the source(code) for the task.
-  final SourceProperties sourceRepository;
+  final pulumi.Input<SourceProperties> sourceRepository;
   /// The source event corresponding to the trigger.
-  final List<String> sourceTriggerEvents;
+  final pulumi.Input<List<String>> sourceTriggerEvents;
   /// The current status of trigger.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [SourceTrigger].
   /// [name] The name of the trigger.
@@ -28,7 +29,7 @@ class SourceTrigger {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'sourceRepository': sourceRepository.toMap(),
+      'sourceRepository': pulumi.Input.mapInputValue<SourceProperties, Map<String, dynamic>>(sourceRepository, (value) => value.toMap()),
       'sourceTriggerEvents': sourceTriggerEvents,
       'status': ?status,
     };
@@ -36,10 +37,10 @@ class SourceTrigger {
 
   factory SourceTrigger.fromMap(Map<String, dynamic> map) {
     return SourceTrigger(
-      name: map['name'] as String,
-      sourceRepository: SourceProperties.fromMap((map['sourceRepository'] as Map).cast<String, dynamic>()),
-      sourceTriggerEvents: (map['sourceTriggerEvents'] as List).cast<String>(),
-      status: map['status'] == null ? null : map['status'] as String,
+      name: (map['name'] as String).input(),
+      sourceRepository: (SourceProperties.fromMap((map['sourceRepository'] as Map).cast<String, dynamic>())).input(),
+      sourceTriggerEvents: ((map['sourceTriggerEvents'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

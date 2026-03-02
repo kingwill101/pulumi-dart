@@ -57,27 +57,17 @@ class WorkforcePoolState {
   /// [state] Output only. The state of the pool.
   /// [workforcePoolId] The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
   WorkforcePoolState({
-    pulumi.Output<WorkforcePoolAccessRestrictions>? accessRestrictions,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? sessionDuration,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? workforcePoolId,
-  }) :
-      accessRestrictions = pulumi.Input.asOptionalInput<WorkforcePoolAccessRestrictions>(accessRestrictions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      sessionDuration = pulumi.Input.asOptionalInput<String>(sessionDuration),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      workforcePoolId = pulumi.Input.asOptionalInput<String>(workforcePoolId);
+    this.accessRestrictions,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.location,
+    this.name,
+    this.parent,
+    this.sessionDuration,
+    this.state,
+    this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,16 +86,16 @@ class WorkforcePoolState {
 
   factory WorkforcePoolState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolState(
-      accessRestrictions: map['accessRestrictions'] == null ? null : pulumi.Output.create<WorkforcePoolAccessRestrictions>(WorkforcePoolAccessRestrictions.fromMap((map['accessRestrictions'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      sessionDuration: map['sessionDuration'] == null ? null : pulumi.Output.create<String>(map['sessionDuration'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      workforcePoolId: map['workforcePoolId'] == null ? null : pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      accessRestrictions: map['accessRestrictions'] == null ? null : (WorkforcePoolAccessRestrictions.fromMap((map['accessRestrictions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
     );
   }
 }

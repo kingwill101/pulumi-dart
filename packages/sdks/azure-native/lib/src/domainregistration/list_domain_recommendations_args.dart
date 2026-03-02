@@ -16,11 +16,9 @@ class ListDomainRecommendationsArgs {
   /// [keywords] Keywords to be used for generating domain recommendations.
   /// [maxDomainRecommendations] Maximum number of recommendations.
   ListDomainRecommendationsArgs({
-    pulumi.Output<String>? keywords,
-    pulumi.Output<int>? maxDomainRecommendations,
-  }) :
-      keywords = pulumi.Input.asOptionalInput<String>(keywords),
-      maxDomainRecommendations = pulumi.Input.asOptionalInput<int>(maxDomainRecommendations);
+    this.keywords,
+    this.maxDomainRecommendations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListDomainRecommendationsArgs {
 
   factory ListDomainRecommendationsArgs.fromMap(Map<String, dynamic> map) {
     return ListDomainRecommendationsArgs(
-      keywords: map['keywords'] == null ? null : pulumi.Output.create<String>(map['keywords'] as String),
-      maxDomainRecommendations: map['maxDomainRecommendations'] == null ? null : pulumi.Output.create<int>(map['maxDomainRecommendations'] as int),
+      keywords: map['keywords'] == null ? null : (map['keywords'] as String).input(),
+      maxDomainRecommendations: map['maxDomainRecommendations'] == null ? null : (map['maxDomainRecommendations'] as int).input(),
     );
   }
 }

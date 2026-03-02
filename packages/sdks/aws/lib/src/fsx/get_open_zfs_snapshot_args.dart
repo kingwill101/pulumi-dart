@@ -30,19 +30,13 @@ class GetOpenZfsSnapshotArgs {
   /// [snapshotIds] Returns information on a specific snapshot_id.
   /// [tags] List of Tag values, with a maximum of 50 elements.
   GetOpenZfsSnapshotArgs({
-    pulumi.Output<List<GetOpenZfsSnapshotFilter>>? filters,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? snapshotIds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetOpenZfsSnapshotFilter>>(filters),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotIds = pulumi.Input.asOptionalInput<List<String>>(snapshotIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.mostRecent,
+    this.name,
+    this.region,
+    this.snapshotIds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class GetOpenZfsSnapshotArgs {
 
   factory GetOpenZfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetOpenZfsSnapshotArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetOpenZfsSnapshotFilter>>(pulumi.Input.decodeList<GetOpenZfsSnapshotFilter>(map['filters'], (value) => GetOpenZfsSnapshotFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotIds: map['snapshotIds'] == null ? null : pulumi.Output.create<List<String>>((map['snapshotIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetOpenZfsSnapshotFilter>(map['filters'], (value) => GetOpenZfsSnapshotFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotIds: map['snapshotIds'] == null ? null : ((map['snapshotIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

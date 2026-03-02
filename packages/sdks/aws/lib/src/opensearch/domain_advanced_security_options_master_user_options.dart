@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAdvancedSecurityOptionsMasterUserOptions {
   /// ARN for the main user. Only specify if `internal_user_database_enabled` is not set or set to `false`.
-  final String? masterUserArn;
+  final pulumi.Input<String>? masterUserArn;
   /// Main user's username, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
-  final String? masterUserName;
+  final pulumi.Input<String>? masterUserName;
   /// Main user's password, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
-  final String? masterUserPassword;
+  final pulumi.Input<String>? masterUserPassword;
 
   /// Creates a new [DomainAdvancedSecurityOptionsMasterUserOptions].
   /// [masterUserArn] ARN for the main user. Only specify if `internal_user_database_enabled` is not set or set to `false`.
@@ -29,9 +30,9 @@ class DomainAdvancedSecurityOptionsMasterUserOptions {
 
   factory DomainAdvancedSecurityOptionsMasterUserOptions.fromMap(Map<String, dynamic> map) {
     return DomainAdvancedSecurityOptionsMasterUserOptions(
-      masterUserArn: map['masterUserArn'] == null ? null : map['masterUserArn'] as String,
-      masterUserName: map['masterUserName'] == null ? null : map['masterUserName'] as String,
-      masterUserPassword: map['masterUserPassword'] == null ? null : map['masterUserPassword'] as String,
+      masterUserArn: map['masterUserArn'] == null ? null : (map['masterUserArn'] as String).input(),
+      masterUserName: map['masterUserName'] == null ? null : (map['masterUserName'] as String).input(),
+      masterUserPassword: map['masterUserPassword'] == null ? null : (map['masterUserPassword'] as String).input(),
     );
   }
 }

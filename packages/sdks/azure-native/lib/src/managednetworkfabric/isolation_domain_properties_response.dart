@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Isolation Domain Properties.
 class IsolationDomainPropertiesResponse {
   /// Type of encapsulation.
-  final String? encapsulation;
+  final pulumi.Input<String>? encapsulation;
   /// List of Neighbor Group IDs.
-  final List<String>? neighborGroupIds;
+  final pulumi.Input<List<String>>? neighborGroupIds;
 
   /// Creates a new [IsolationDomainPropertiesResponse].
   /// [encapsulation] Type of encapsulation.
@@ -25,8 +26,8 @@ class IsolationDomainPropertiesResponse {
 
   factory IsolationDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IsolationDomainPropertiesResponse(
-      encapsulation: map['encapsulation'] == null ? null : map['encapsulation'] as String,
-      neighborGroupIds: map['neighborGroupIds'] == null ? null : (map['neighborGroupIds'] as List).cast<String>(),
+      encapsulation: map['encapsulation'] == null ? null : (map['encapsulation'] as String).input(),
+      neighborGroupIds: map['neighborGroupIds'] == null ? null : ((map['neighborGroupIds'] as List).cast<String>()).input(),
     );
   }
 }

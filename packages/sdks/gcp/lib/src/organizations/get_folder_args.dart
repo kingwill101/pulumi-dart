@@ -16,11 +16,9 @@ class GetFolderArgs {
   /// [folder] The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
   /// [lookupOrganization] `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
   GetFolderArgs({
-    required pulumi.Output<String> folder,
-    pulumi.Output<bool>? lookupOrganization,
-  }) :
-      folder = pulumi.Input.asInput<String>(folder),
-      lookupOrganization = pulumi.Input.asOptionalInput<bool>(lookupOrganization);
+    required this.folder,
+    this.lookupOrganization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFolderArgs {
 
   factory GetFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderArgs(
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      lookupOrganization: map['lookupOrganization'] == null ? null : pulumi.Output.create<bool>(map['lookupOrganization'] as bool),
+      folder: (map['folder'] as String).input(),
+      lookupOrganization: map['lookupOrganization'] == null ? null : (map['lookupOrganization'] as bool).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppLogHttpLogFileSystem {
   /// The retention period in days.
-  final int retentionInDays;
+  final pulumi.Input<int> retentionInDays;
   /// The maximum size in megabytes that log files can use.
-  final int retentionInMb;
+  final pulumi.Input<int> retentionInMb;
 
   /// Creates a new [GetWindowsWebAppLogHttpLogFileSystem].
   /// [retentionInDays] The retention period in days.
@@ -24,8 +25,8 @@ class GetWindowsWebAppLogHttpLogFileSystem {
 
   factory GetWindowsWebAppLogHttpLogFileSystem.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppLogHttpLogFileSystem(
-      retentionInDays: map['retentionInDays'] as int,
-      retentionInMb: map['retentionInMb'] as int,
+      retentionInDays: (map['retentionInDays'] as int).input(),
+      retentionInMb: (map['retentionInMb'] as int).input(),
     );
   }
 }

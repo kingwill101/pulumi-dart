@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// List of provisioning errors for a http route config object
 class HttpRouteProvisioningErrorsResponse {
   /// Description or error message
-  final String message;
+  final pulumi.Input<String> message;
   /// Timestamp error occured at
-  final String timestamp;
+  final pulumi.Input<String> timestamp;
 
   /// Creates a new [HttpRouteProvisioningErrorsResponse].
   /// [message] Description or error message
@@ -25,8 +26,8 @@ class HttpRouteProvisioningErrorsResponse {
 
   factory HttpRouteProvisioningErrorsResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteProvisioningErrorsResponse(
-      message: map['message'] as String,
-      timestamp: map['timestamp'] as String,
+      message: (map['message'] as String).input(),
+      timestamp: (map['timestamp'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_rules_response.dart';
 import 'metric_rules_response.dart';
 
 /// Definition of the properties for a TagRules resource.
 class MonitoringTagRulesPropertiesResponse {
   /// Configuration to enable/disable auto-muting flag
-  final bool? automuting;
+  final pulumi.Input<bool>? automuting;
   /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-  final bool? customMetrics;
+  final pulumi.Input<bool>? customMetrics;
   /// Set of rules for sending logs for the Monitor resource.
-  final LogRulesResponse? logRules;
+  final pulumi.Input<LogRulesResponse>? logRules;
   /// Set of rules for sending metrics for the Monitor resource.
-  final MetricRulesResponse? metricRules;
-  final String provisioningState;
+  final pulumi.Input<MetricRulesResponse>? metricRules;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [MonitoringTagRulesPropertiesResponse].
   /// [automuting] Configuration to enable/disable auto-muting flag
@@ -33,19 +34,19 @@ class MonitoringTagRulesPropertiesResponse {
     return <String, dynamic>{
       'automuting': ?automuting,
       'customMetrics': ?customMetrics,
-      'logRules': ?logRules == null ? null : logRules!.toMap(),
-      'metricRules': ?metricRules == null ? null : metricRules!.toMap(),
+      'logRules': ?pulumi.Input.mapOptionalInputValue<LogRulesResponse, Map<String, dynamic>>(logRules, (value) => value.toMap()),
+      'metricRules': ?pulumi.Input.mapOptionalInputValue<MetricRulesResponse, Map<String, dynamic>>(metricRules, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory MonitoringTagRulesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringTagRulesPropertiesResponse(
-      automuting: map['automuting'] == null ? null : map['automuting'] as bool,
-      customMetrics: map['customMetrics'] == null ? null : map['customMetrics'] as bool,
-      logRules: map['logRules'] == null ? null : LogRulesResponse.fromMap((map['logRules'] as Map).cast<String, dynamic>()),
-      metricRules: map['metricRules'] == null ? null : MetricRulesResponse.fromMap((map['metricRules'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
+      automuting: map['automuting'] == null ? null : (map['automuting'] as bool).input(),
+      customMetrics: map['customMetrics'] == null ? null : (map['customMetrics'] as bool).input(),
+      logRules: map['logRules'] == null ? null : (LogRulesResponse.fromMap((map['logRules'] as Map).cast<String, dynamic>())).input(),
+      metricRules: map['metricRules'] == null ? null : (MetricRulesResponse.fromMap((map['metricRules'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

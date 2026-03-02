@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading {
   /// The policy for kernel module loading.
-  final String policy;
+  final pulumi.Input<String> policy;
 
   /// Creates a new [GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading].
   /// [policy] The policy for kernel module loading.
@@ -19,7 +20,7 @@ class GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading {
 
   factory GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading(
-      policy: map['policy'] as String,
+      policy: (map['policy'] as String).input(),
     );
   }
 }

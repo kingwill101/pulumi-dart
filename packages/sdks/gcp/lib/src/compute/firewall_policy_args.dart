@@ -21,13 +21,10 @@ class FirewallPolicyArgs {
   /// [parent] The parent of the firewall policy.
   /// [shortName] User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
   FirewallPolicyArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> shortName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parent = pulumi.Input.asInput<String>(parent),
-      shortName = pulumi.Input.asInput<String>(shortName);
+    this.description,
+    required this.parent,
+    required this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class FirewallPolicyArgs {
 
   factory FirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      shortName: pulumi.Output.create<String>(map['shortName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

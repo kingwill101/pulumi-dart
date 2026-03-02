@@ -6,18 +6,18 @@ import 'metadata_item.dart';
 /// Azure blobFS write settings.
 class AzureBlobFSWriteSettings {
   /// Indicates the block size(MB) when writing data to blob. Type: integer (or Expression with resultType integer).
-  final dynamic blockSizeInMB;
+  final pulumi.Input<dynamic>? blockSizeInMB;
   /// The type of copy behavior for copy sink.
-  final dynamic copyBehavior;
+  final pulumi.Input<dynamic>? copyBehavior;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
-  final List<MetadataItem>? metadata;
+  final pulumi.Input<List<MetadataItem>>? metadata;
   /// The write setting type.
   /// Expected value is 'AzureBlobFSWriteSettings'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AzureBlobFSWriteSettings].
   /// [blockSizeInMB] Indicates the block size(MB) when writing data to blob. Type: integer (or Expression with resultType integer).
@@ -41,19 +41,19 @@ class AzureBlobFSWriteSettings {
       'copyBehavior': ?copyBehavior,
       'disableMetricsCollection': ?disableMetricsCollection,
       'maxConcurrentConnections': ?maxConcurrentConnections,
-      'metadata': ?metadata == null ? null : pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(metadata!, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<List<MetadataItem>, List<Map<String, dynamic>>>(metadata, (value) => pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory AzureBlobFSWriteSettings.fromMap(Map<String, dynamic> map) {
     return AzureBlobFSWriteSettings(
-      blockSizeInMB: map['blockSizeInMB'] == null ? null : map['blockSizeInMB'],
-      copyBehavior: map['copyBehavior'] == null ? null : map['copyBehavior'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      metadata: map['metadata'] == null ? null : pulumi.Input.decodeList<MetadataItem>(map['metadata'], (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      blockSizeInMB: map['blockSizeInMB'] == null ? null : (map['blockSizeInMB']).input(),
+      copyBehavior: map['copyBehavior'] == null ? null : (map['copyBehavior']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItem>(map['metadata'], (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

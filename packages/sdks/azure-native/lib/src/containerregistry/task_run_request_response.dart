@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'override_task_step_properties_response.dart';
 
 /// The parameters for a task run request.
 class TaskRunRequestResponse {
   /// The dedicated agent pool for the run.
-  final String? agentPoolName;
+  final pulumi.Input<String>? agentPoolName;
   /// The value that indicates whether archiving is enabled for the run or not.
-  final bool? isArchiveEnabled;
+  final pulumi.Input<bool>? isArchiveEnabled;
   /// The template that describes the repository and tag information for run log artifact.
-  final String? logTemplate;
+  final pulumi.Input<String>? logTemplate;
   /// Set of overridable parameters that can be passed when running a Task.
-  final OverrideTaskStepPropertiesResponse? overrideTaskStepProperties;
+  final pulumi.Input<OverrideTaskStepPropertiesResponse>? overrideTaskStepProperties;
   /// The resource ID of task against which run has to be queued.
-  final String taskId;
+  final pulumi.Input<String> taskId;
   /// The type of the run request.
   /// Expected value is 'TaskRunRequest'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TaskRunRequestResponse].
   /// [agentPoolName] The dedicated agent pool for the run.
@@ -39,7 +40,7 @@ class TaskRunRequestResponse {
       'agentPoolName': ?agentPoolName,
       'isArchiveEnabled': ?isArchiveEnabled,
       'logTemplate': ?logTemplate,
-      'overrideTaskStepProperties': ?overrideTaskStepProperties == null ? null : overrideTaskStepProperties!.toMap(),
+      'overrideTaskStepProperties': ?pulumi.Input.mapOptionalInputValue<OverrideTaskStepPropertiesResponse, Map<String, dynamic>>(overrideTaskStepProperties, (value) => value.toMap()),
       'taskId': taskId,
       'type': type,
     };
@@ -47,12 +48,12 @@ class TaskRunRequestResponse {
 
   factory TaskRunRequestResponse.fromMap(Map<String, dynamic> map) {
     return TaskRunRequestResponse(
-      agentPoolName: map['agentPoolName'] == null ? null : map['agentPoolName'] as String,
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : map['isArchiveEnabled'] as bool,
-      logTemplate: map['logTemplate'] == null ? null : map['logTemplate'] as String,
-      overrideTaskStepProperties: map['overrideTaskStepProperties'] == null ? null : OverrideTaskStepPropertiesResponse.fromMap((map['overrideTaskStepProperties'] as Map).cast<String, dynamic>()),
-      taskId: map['taskId'] as String,
-      type: map['type'] as String,
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
+      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate'] as String).input(),
+      overrideTaskStepProperties: map['overrideTaskStepProperties'] == null ? null : (OverrideTaskStepPropertiesResponse.fromMap((map['overrideTaskStepProperties'] as Map).cast<String, dynamic>())).input(),
+      taskId: (map['taskId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

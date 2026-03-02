@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType {
-  final String placeHolder;
+  final pulumi.Input<String> placeHolder;
 
   /// Creates a new [GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType].
   /// [placeHolder] Required.
@@ -18,7 +19,7 @@ class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType {
 
   factory GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType(
-      placeHolder: map['placeHolder'] as String,
+      placeHolder: (map['placeHolder'] as String).input(),
     );
   }
 }

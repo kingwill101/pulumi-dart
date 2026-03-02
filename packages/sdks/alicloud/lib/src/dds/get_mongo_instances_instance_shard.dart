@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMongoInstancesInstanceShard {
-  final String class_;
-  final String description;
-  final String nodeId;
-  final int storage;
+  final pulumi.Input<String> class_;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> nodeId;
+  final pulumi.Input<int> storage;
 
   /// Creates a new [GetMongoInstancesInstanceShard].
   /// [class_] Required.
@@ -30,10 +31,10 @@ class GetMongoInstancesInstanceShard {
 
   factory GetMongoInstancesInstanceShard.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesInstanceShard(
-      class_: map['class'] as String,
-      description: map['description'] as String,
-      nodeId: map['nodeId'] as String,
-      storage: map['storage'] as int,
+      class_: (map['class'] as String).input(),
+      description: (map['description'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      storage: (map['storage'] as int).input(),
     );
   }
 }

@@ -36,27 +36,17 @@ class SfdcChannelArgs {
   /// [project] Optional.
   /// [sfdcInstanceId] Required.
   SfdcChannelArgs({
-    pulumi.Output<String>? channelTopic,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? isActive,
-    pulumi.Output<String>? lastReplayId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sfdcInstanceId,
-  }) :
-      channelTopic = pulumi.Input.asOptionalInput<String>(channelTopic),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      isActive = pulumi.Input.asOptionalInput<bool>(isActive),
-      lastReplayId = pulumi.Input.asOptionalInput<String>(lastReplayId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sfdcInstanceId = pulumi.Input.asInput<String>(sfdcInstanceId);
+    this.channelTopic,
+    this.description,
+    this.displayName,
+    this.isActive,
+    this.lastReplayId,
+    this.location,
+    this.name,
+    required this.productId,
+    this.project,
+    required this.sfdcInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +65,16 @@ class SfdcChannelArgs {
 
   factory SfdcChannelArgs.fromMap(Map<String, dynamic> map) {
     return SfdcChannelArgs(
-      channelTopic: map['channelTopic'] == null ? null : pulumi.Output.create<String>(map['channelTopic'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      isActive: map['isActive'] == null ? null : pulumi.Output.create<bool>(map['isActive'] as bool),
-      lastReplayId: map['lastReplayId'] == null ? null : pulumi.Output.create<String>(map['lastReplayId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sfdcInstanceId: pulumi.Output.create<String>(map['sfdcInstanceId'] as String),
+      channelTopic: map['channelTopic'] == null ? null : (map['channelTopic'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
+      lastReplayId: map['lastReplayId'] == null ? null : (map['lastReplayId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sfdcInstanceId: (map['sfdcInstanceId'] as String).input(),
     );
   }
 }

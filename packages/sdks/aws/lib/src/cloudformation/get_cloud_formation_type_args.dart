@@ -25,17 +25,12 @@ class GetCloudFormationTypeArgs {
   /// [typeName] CloudFormation Type name. For example, `AWS::EC2::VPC`.
   /// [versionId] Identifier of the CloudFormation Type version.
   GetCloudFormationTypeArgs({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? typeName,
-    pulumi.Output<String>? versionId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      typeName = pulumi.Input.asOptionalInput<String>(typeName),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    this.arn,
+    this.region,
+    this.type,
+    this.typeName,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetCloudFormationTypeArgs {
 
   factory GetCloudFormationTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudFormationTypeArgs(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      typeName: map['typeName'] == null ? null : pulumi.Output.create<String>(map['typeName'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeName: map['typeName'] == null ? null : (map['typeName'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

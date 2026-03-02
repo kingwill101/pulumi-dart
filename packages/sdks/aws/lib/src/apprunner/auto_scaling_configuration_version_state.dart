@@ -44,33 +44,20 @@ class AutoScalingConfigurationVersionState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   AutoScalingConfigurationVersionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? autoScalingConfigurationName,
-    pulumi.Output<int>? autoScalingConfigurationRevision,
-    pulumi.Output<bool>? hasAssociatedService,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<bool>? latest,
-    pulumi.Output<int>? maxConcurrency,
-    pulumi.Output<int>? maxSize,
-    pulumi.Output<int>? minSize,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      autoScalingConfigurationName = pulumi.Input.asOptionalInput<String>(autoScalingConfigurationName),
-      autoScalingConfigurationRevision = pulumi.Input.asOptionalInput<int>(autoScalingConfigurationRevision),
-      hasAssociatedService = pulumi.Input.asOptionalInput<bool>(hasAssociatedService),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      maxConcurrency = pulumi.Input.asOptionalInput<int>(maxConcurrency),
-      maxSize = pulumi.Input.asOptionalInput<int>(maxSize),
-      minSize = pulumi.Input.asOptionalInput<int>(minSize),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.autoScalingConfigurationName,
+    this.autoScalingConfigurationRevision,
+    this.hasAssociatedService,
+    this.isDefault,
+    this.latest,
+    this.maxConcurrency,
+    this.maxSize,
+    this.minSize,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,19 +79,19 @@ class AutoScalingConfigurationVersionState {
 
   factory AutoScalingConfigurationVersionState.fromMap(Map<String, dynamic> map) {
     return AutoScalingConfigurationVersionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      autoScalingConfigurationName: map['autoScalingConfigurationName'] == null ? null : pulumi.Output.create<String>(map['autoScalingConfigurationName'] as String),
-      autoScalingConfigurationRevision: map['autoScalingConfigurationRevision'] == null ? null : pulumi.Output.create<int>(map['autoScalingConfigurationRevision'] as int),
-      hasAssociatedService: map['hasAssociatedService'] == null ? null : pulumi.Output.create<bool>(map['hasAssociatedService'] as bool),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      latest: map['latest'] == null ? null : pulumi.Output.create<bool>(map['latest'] as bool),
-      maxConcurrency: map['maxConcurrency'] == null ? null : pulumi.Output.create<int>(map['maxConcurrency'] as int),
-      maxSize: map['maxSize'] == null ? null : pulumi.Output.create<int>(map['maxSize'] as int),
-      minSize: map['minSize'] == null ? null : pulumi.Output.create<int>(map['minSize'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      autoScalingConfigurationName: map['autoScalingConfigurationName'] == null ? null : (map['autoScalingConfigurationName'] as String).input(),
+      autoScalingConfigurationRevision: map['autoScalingConfigurationRevision'] == null ? null : (map['autoScalingConfigurationRevision'] as int).input(),
+      hasAssociatedService: map['hasAssociatedService'] == null ? null : (map['hasAssociatedService'] as bool).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as int).input(),
+      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
+      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

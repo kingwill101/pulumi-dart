@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateImageOptions {
-  final bool? loginAsNonRoot;
+  final pulumi.Input<bool>? loginAsNonRoot;
 
   /// Creates a new [LaunchTemplateImageOptions].
   /// [loginAsNonRoot] Optional.
@@ -18,7 +19,7 @@ class LaunchTemplateImageOptions {
 
   factory LaunchTemplateImageOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateImageOptions(
-      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : map['loginAsNonRoot'] as bool,
+      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : (map['loginAsNonRoot'] as bool).input(),
     );
   }
 }

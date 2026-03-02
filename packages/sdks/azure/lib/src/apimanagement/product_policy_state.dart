@@ -22,17 +22,12 @@ class ProductPolicyState {
   /// [xmlContent] The XML Content for this Policy.
   /// [xmlLink] A link to a Policy XML Document, which must be publicly available.
   ProductPolicyState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? xmlContent,
-    pulumi.Output<String>? xmlLink,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      xmlContent = pulumi.Input.asOptionalInput<String>(xmlContent),
-      xmlLink = pulumi.Input.asOptionalInput<String>(xmlLink);
+    this.apiManagementName,
+    this.productId,
+    this.resourceGroupName,
+    this.xmlContent,
+    this.xmlLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ProductPolicyState {
 
   factory ProductPolicyState.fromMap(Map<String, dynamic> map) {
     return ProductPolicyState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      xmlContent: map['xmlContent'] == null ? null : pulumi.Output.create<String>(map['xmlContent'] as String),
-      xmlLink: map['xmlLink'] == null ? null : pulumi.Output.create<String>(map['xmlLink'] as String),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
+      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink'] as String).input(),
     );
   }
 }

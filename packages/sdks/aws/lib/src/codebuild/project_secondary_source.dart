@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_secondary_source_auth.dart';
 import 'project_secondary_source_build_status_config.dart';
 import 'project_secondary_source_git_submodules_config.dart';
@@ -7,36 +8,36 @@ import 'project_secondary_source_git_submodules_config.dart';
 class ProjectSecondarySource {
   /// Information about the strategy CodeBuild should use when authenticating with the source code host.
   /// Detailed below.
-  final ProjectSecondarySourceAuth? auth;
+  final pulumi.Input<ProjectSecondarySourceAuth>? auth;
   /// Configuration block that contains information that defines how the build project
   /// reports the build status to the source provider. This option is only used when the source provider is GitHub, GitHub
   /// Enterprise, GitLab, GitLab Self Managed, or Bitbucket. `build_status_config` blocks are documented below.
-  final ProjectSecondarySourceBuildStatusConfig? buildStatusConfig;
+  final pulumi.Input<ProjectSecondarySourceBuildStatusConfig>? buildStatusConfig;
   /// The build spec declaration to use for this build project's related builds. This must be set
   /// when `type` is `NO_SOURCE`. It can either be a path to a file residing in the repository to be built or a local file
   /// path leveraging the `file()` built-in.
-  final String? buildspec;
+  final pulumi.Input<String>? buildspec;
   /// Truncate git history to this many commits. Use `0` for a `Full` checkout which you need
   /// to run commands like `git branch --show-current`.
   /// See [AWS CodePipeline User Guide: Tutorial: Use full clone with a GitHub pipeline source](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-github-gitclone.html)
   /// for details.
-  final int? gitCloneDepth;
+  final pulumi.Input<int>? gitCloneDepth;
   /// Configuration block. Detailed below.
-  final ProjectSecondarySourceGitSubmodulesConfig? gitSubmodulesConfig;
+  final pulumi.Input<ProjectSecondarySourceGitSubmodulesConfig>? gitSubmodulesConfig;
   /// Ignore SSL warnings when connecting to source control.
-  final bool? insecureSsl;
+  final pulumi.Input<bool>? insecureSsl;
   /// Location of the source code from git or s3.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Whether to report the status of a build's start and finish to your source provider.
   /// This option is valid only when your source provider is GitHub, GitHub Enterprise, GitLab, GitLab Self Managed, or
   /// Bitbucket.
-  final bool? reportBuildStatus;
+  final pulumi.Input<bool>? reportBuildStatus;
   /// An identifier for this project source. The identifier can only contain alphanumeric
   /// characters and underscores, and must be less than 128 characters in length.
-  final String sourceIdentifier;
+  final pulumi.Input<String> sourceIdentifier;
   /// Type of repository that contains the source code to be built. Valid values: `BITBUCKET`,
   /// `CODECOMMIT`, `CODEPIPELINE`, `GITHUB`, `GITHUB_ENTERPRISE`, `GITLAB`, `GITLAB_SELF_MANAGED`, `NO_SOURCE`, `S3`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ProjectSecondarySource].
   /// [auth] Information about the strategy CodeBuild should use when authenticating with the source code host.
@@ -64,11 +65,11 @@ class ProjectSecondarySource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auth': ?auth == null ? null : auth!.toMap(),
-      'buildStatusConfig': ?buildStatusConfig == null ? null : buildStatusConfig!.toMap(),
+      'auth': ?pulumi.Input.mapOptionalInputValue<ProjectSecondarySourceAuth, Map<String, dynamic>>(auth, (value) => value.toMap()),
+      'buildStatusConfig': ?pulumi.Input.mapOptionalInputValue<ProjectSecondarySourceBuildStatusConfig, Map<String, dynamic>>(buildStatusConfig, (value) => value.toMap()),
       'buildspec': ?buildspec,
       'gitCloneDepth': ?gitCloneDepth,
-      'gitSubmodulesConfig': ?gitSubmodulesConfig == null ? null : gitSubmodulesConfig!.toMap(),
+      'gitSubmodulesConfig': ?pulumi.Input.mapOptionalInputValue<ProjectSecondarySourceGitSubmodulesConfig, Map<String, dynamic>>(gitSubmodulesConfig, (value) => value.toMap()),
       'insecureSsl': ?insecureSsl,
       'location': ?location,
       'reportBuildStatus': ?reportBuildStatus,
@@ -79,16 +80,16 @@ class ProjectSecondarySource {
 
   factory ProjectSecondarySource.fromMap(Map<String, dynamic> map) {
     return ProjectSecondarySource(
-      auth: map['auth'] == null ? null : ProjectSecondarySourceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>()),
-      buildStatusConfig: map['buildStatusConfig'] == null ? null : ProjectSecondarySourceBuildStatusConfig.fromMap((map['buildStatusConfig'] as Map).cast<String, dynamic>()),
-      buildspec: map['buildspec'] == null ? null : map['buildspec'] as String,
-      gitCloneDepth: map['gitCloneDepth'] == null ? null : map['gitCloneDepth'] as int,
-      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : ProjectSecondarySourceGitSubmodulesConfig.fromMap((map['gitSubmodulesConfig'] as Map).cast<String, dynamic>()),
-      insecureSsl: map['insecureSsl'] == null ? null : map['insecureSsl'] as bool,
-      location: map['location'] == null ? null : map['location'] as String,
-      reportBuildStatus: map['reportBuildStatus'] == null ? null : map['reportBuildStatus'] as bool,
-      sourceIdentifier: map['sourceIdentifier'] as String,
-      type: map['type'] as String,
+      auth: map['auth'] == null ? null : (ProjectSecondarySourceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
+      buildStatusConfig: map['buildStatusConfig'] == null ? null : (ProjectSecondarySourceBuildStatusConfig.fromMap((map['buildStatusConfig'] as Map).cast<String, dynamic>())).input(),
+      buildspec: map['buildspec'] == null ? null : (map['buildspec'] as String).input(),
+      gitCloneDepth: map['gitCloneDepth'] == null ? null : (map['gitCloneDepth'] as int).input(),
+      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : (ProjectSecondarySourceGitSubmodulesConfig.fromMap((map['gitSubmodulesConfig'] as Map).cast<String, dynamic>())).input(),
+      insecureSsl: map['insecureSsl'] == null ? null : (map['insecureSsl'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      reportBuildStatus: map['reportBuildStatus'] == null ? null : (map['reportBuildStatus'] as bool).input(),
+      sourceIdentifier: (map['sourceIdentifier'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

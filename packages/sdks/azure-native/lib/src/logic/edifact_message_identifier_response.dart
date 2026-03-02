@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact message identifier.
 class EdifactMessageIdentifierResponse {
   /// The message id on which this envelope settings has to be applied.
-  final String messageId;
+  final pulumi.Input<String> messageId;
 
   /// Creates a new [EdifactMessageIdentifierResponse].
   /// [messageId] The message id on which this envelope settings has to be applied.
@@ -20,7 +21,7 @@ class EdifactMessageIdentifierResponse {
 
   factory EdifactMessageIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return EdifactMessageIdentifierResponse(
-      messageId: map['messageId'] as String,
+      messageId: (map['messageId'] as String).input(),
     );
   }
 }

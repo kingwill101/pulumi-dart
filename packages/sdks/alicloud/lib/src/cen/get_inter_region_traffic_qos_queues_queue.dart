@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterRegionTrafficQosQueuesQueue {
   /// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-  final List<String> dscps;
-  final String id;
+  final pulumi.Input<List<String>> dscps;
+  final pulumi.Input<String> id;
   /// The description information of the traffic scheduling policy.
-  final String interRegionTrafficQosQueueDescription;
+  final pulumi.Input<String> interRegionTrafficQosQueueDescription;
   /// The ID of the resource.
-  final String interRegionTrafficQosQueueId;
+  final pulumi.Input<String> interRegionTrafficQosQueueId;
   /// The name of the traffic scheduling policy.
-  final String interRegionTrafficQosQueueName;
+  final pulumi.Input<String> interRegionTrafficQosQueueName;
   /// The percentage of cross-region bandwidth that the current queue can use.
-  final int remainBandwidthPercent;
+  final pulumi.Input<int> remainBandwidthPercent;
   /// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the traffic scheduling policy.
-  final String trafficQosPolicyId;
+  final pulumi.Input<String> trafficQosPolicyId;
 
   /// Creates a new [GetInterRegionTrafficQosQueuesQueue].
   /// [dscps] The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
@@ -53,14 +54,14 @@ class GetInterRegionTrafficQosQueuesQueue {
 
   factory GetInterRegionTrafficQosQueuesQueue.fromMap(Map<String, dynamic> map) {
     return GetInterRegionTrafficQosQueuesQueue(
-      dscps: (map['dscps'] as List).cast<String>(),
-      id: map['id'] as String,
-      interRegionTrafficQosQueueDescription: map['interRegionTrafficQosQueueDescription'] as String,
-      interRegionTrafficQosQueueId: map['interRegionTrafficQosQueueId'] as String,
-      interRegionTrafficQosQueueName: map['interRegionTrafficQosQueueName'] as String,
-      remainBandwidthPercent: map['remainBandwidthPercent'] as int,
-      status: map['status'] as String,
-      trafficQosPolicyId: map['trafficQosPolicyId'] as String,
+      dscps: ((map['dscps'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      interRegionTrafficQosQueueDescription: (map['interRegionTrafficQosQueueDescription'] as String).input(),
+      interRegionTrafficQosQueueId: (map['interRegionTrafficQosQueueId'] as String).input(),
+      interRegionTrafficQosQueueName: (map['interRegionTrafficQosQueueName'] as String).input(),
+      remainBandwidthPercent: (map['remainBandwidthPercent'] as int).input(),
+      status: (map['status'] as String).input(),
+      trafficQosPolicyId: (map['trafficQosPolicyId'] as String).input(),
     );
   }
 }

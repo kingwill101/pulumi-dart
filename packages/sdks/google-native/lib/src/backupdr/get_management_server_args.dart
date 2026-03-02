@@ -16,13 +16,10 @@ class GetManagementServerArgs {
   /// [managementServerId] Required.
   /// [project] Optional.
   GetManagementServerArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> managementServerId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      managementServerId = pulumi.Input.asInput<String>(managementServerId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.managementServerId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetManagementServerArgs {
 
   factory GetManagementServerArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementServerArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      managementServerId: pulumi.Output.create<String>(map['managementServerId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      managementServerId: (map['managementServerId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

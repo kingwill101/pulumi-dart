@@ -22,15 +22,11 @@ class GetAliasArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [statemachineArn] ARN of the State Machine.
   GetAliasArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> statemachineArn,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      statemachineArn = pulumi.Input.asInput<String>(statemachineArn);
+    this.description,
+    required this.name,
+    this.region,
+    required this.statemachineArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAliasArgs {
 
   factory GetAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetAliasArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      statemachineArn: pulumi.Output.create<String>(map['statemachineArn'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      statemachineArn: (map['statemachineArn'] as String).input(),
     );
   }
 }

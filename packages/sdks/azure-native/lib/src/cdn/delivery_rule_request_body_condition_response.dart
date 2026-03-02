@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'request_body_match_condition_parameters_response.dart';
 
 /// Defines the RequestBody condition for the delivery rule.
 class DeliveryRuleRequestBodyConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'RequestBody'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final RequestBodyMatchConditionParametersResponse parameters;
+  final pulumi.Input<RequestBodyMatchConditionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleRequestBodyConditionResponse].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleRequestBodyConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<RequestBodyMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleRequestBodyConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleRequestBodyConditionResponse(
-      name: map['name'] as String,
-      parameters: RequestBodyMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (RequestBodyMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

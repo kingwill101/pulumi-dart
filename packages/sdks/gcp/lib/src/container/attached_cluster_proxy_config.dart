@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attached_cluster_proxy_config_kubernetes_secret.dart';
 
 class AttachedClusterProxyConfig {
   /// The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
   /// Structure is documented below.
-  final AttachedClusterProxyConfigKubernetesSecret? kubernetesSecret;
+  final pulumi.Input<AttachedClusterProxyConfigKubernetesSecret>? kubernetesSecret;
 
   /// Creates a new [AttachedClusterProxyConfig].
   /// [kubernetesSecret] The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
@@ -15,13 +16,13 @@ class AttachedClusterProxyConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubernetesSecret': ?kubernetesSecret == null ? null : kubernetesSecret!.toMap(),
+      'kubernetesSecret': ?pulumi.Input.mapOptionalInputValue<AttachedClusterProxyConfigKubernetesSecret, Map<String, dynamic>>(kubernetesSecret, (value) => value.toMap()),
     };
   }
 
   factory AttachedClusterProxyConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterProxyConfig(
-      kubernetesSecret: map['kubernetesSecret'] == null ? null : AttachedClusterProxyConfigKubernetesSecret.fromMap((map['kubernetesSecret'] as Map).cast<String, dynamic>()),
+      kubernetesSecret: map['kubernetesSecret'] == null ? null : (AttachedClusterProxyConfigKubernetesSecret.fromMap((map['kubernetesSecret'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

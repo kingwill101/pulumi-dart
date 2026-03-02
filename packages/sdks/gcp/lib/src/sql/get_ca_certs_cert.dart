@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCaCertsCert {
   /// The CA certificate used to connect to the SQL instance via SSL.
-  final String cert;
+  final pulumi.Input<String> cert;
   /// The CN valid for the CA cert.
-  final String commonName;
+  final pulumi.Input<String> commonName;
   /// Creation time of the CA cert.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Expiration time of the CA cert.
-  final String expirationTime;
+  final pulumi.Input<String> expirationTime;
   /// SHA1 fingerprint of the CA cert.
-  final String sha1Fingerprint;
+  final pulumi.Input<String> sha1Fingerprint;
 
   /// Creates a new [GetCaCertsCert].
   /// [cert] The CA certificate used to connect to the SQL instance via SSL.
@@ -39,11 +40,11 @@ class GetCaCertsCert {
 
   factory GetCaCertsCert.fromMap(Map<String, dynamic> map) {
     return GetCaCertsCert(
-      cert: map['cert'] as String,
-      commonName: map['commonName'] as String,
-      createTime: map['createTime'] as String,
-      expirationTime: map['expirationTime'] as String,
-      sha1Fingerprint: map['sha1Fingerprint'] as String,
+      cert: (map['cert'] as String).input(),
+      commonName: (map['commonName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      expirationTime: (map['expirationTime'] as String).input(),
+      sha1Fingerprint: (map['sha1Fingerprint'] as String).input(),
     );
   }
 }

@@ -1,45 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'template_applications_quota_application_detail_period.dart';
 
 class TemplateApplicationsQuotaApplicationDetail {
   /// Alibaba Cloud account (primary account).
-  final String? aliyunUid;
+  final pulumi.Input<String>? aliyunUid;
   /// The ID of the quota promotion request.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// The approved quota value of the quota increase request.
-  final double? approveValue;
+  final pulumi.Input<double>? approveValue;
   /// Approval comments on quota increase applications.
-  final String? auditReason;
+  final pulumi.Input<String>? auditReason;
   /// Quota dimension. See `dimensions` below.
-  final Map<String, String>? dimensions;
+  final pulumi.Input<Map<String, String>>? dimensions;
   /// The language of the quota application result notification. Value:
   /// - zh (default): Chinese.
   /// - en: English.
-  final String? envLanguage;
+  final pulumi.Input<String>? envLanguage;
   /// Whether to send notification of quota application result. Value:
   /// - 0 (default): No.
   /// - 3: Yes.
-  final int? noticeType;
+  final pulumi.Input<int>? noticeType;
   /// Quota calculation period.
-  final TemplateApplicationsQuotaApplicationDetailPeriod? period;
+  final pulumi.Input<TemplateApplicationsQuotaApplicationDetailPeriod>? period;
   /// Quota ARN.
-  final String? quotaArn;
+  final pulumi.Input<String>? quotaArn;
   /// The quota description.
-  final String? quotaDescription;
+  final pulumi.Input<String>? quotaDescription;
   /// The quota name.
-  final String? quotaName;
+  final pulumi.Input<String>? quotaName;
   /// Quota unit.
-  final String? quotaUnit;
+  final pulumi.Input<String>? quotaUnit;
   /// Reason for quota application.
   /// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// The approval status of the quota promotion application. Value:
   /// - Disagree: reject.
   /// - Approve: approved.
   /// - Process: under review.
   /// - Cancel: Closed.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [TemplateApplicationsQuotaApplicationDetail].
   /// [aliyunUid] Alibaba Cloud account (primary account).
@@ -82,7 +83,7 @@ class TemplateApplicationsQuotaApplicationDetail {
       'dimensions': ?dimensions,
       'envLanguage': ?envLanguage,
       'noticeType': ?noticeType,
-      'period': ?period == null ? null : period!.toMap(),
+      'period': ?pulumi.Input.mapOptionalInputValue<TemplateApplicationsQuotaApplicationDetailPeriod, Map<String, dynamic>>(period, (value) => value.toMap()),
       'quotaArn': ?quotaArn,
       'quotaDescription': ?quotaDescription,
       'quotaName': ?quotaName,
@@ -94,20 +95,20 @@ class TemplateApplicationsQuotaApplicationDetail {
 
   factory TemplateApplicationsQuotaApplicationDetail.fromMap(Map<String, dynamic> map) {
     return TemplateApplicationsQuotaApplicationDetail(
-      aliyunUid: map['aliyunUid'] == null ? null : map['aliyunUid'] as String,
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      approveValue: map['approveValue'] == null ? null : map['approveValue'] as double,
-      auditReason: map['auditReason'] == null ? null : map['auditReason'] as String,
-      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as Map).cast<String, String>(),
-      envLanguage: map['envLanguage'] == null ? null : map['envLanguage'] as String,
-      noticeType: map['noticeType'] == null ? null : map['noticeType'] as int,
-      period: map['period'] == null ? null : TemplateApplicationsQuotaApplicationDetailPeriod.fromMap((map['period'] as Map).cast<String, dynamic>()),
-      quotaArn: map['quotaArn'] == null ? null : map['quotaArn'] as String,
-      quotaDescription: map['quotaDescription'] == null ? null : map['quotaDescription'] as String,
-      quotaName: map['quotaName'] == null ? null : map['quotaName'] as String,
-      quotaUnit: map['quotaUnit'] == null ? null : map['quotaUnit'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      aliyunUid: map['aliyunUid'] == null ? null : (map['aliyunUid'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      approveValue: map['approveValue'] == null ? null : (map['approveValue'] as double).input(),
+      auditReason: map['auditReason'] == null ? null : (map['auditReason'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      envLanguage: map['envLanguage'] == null ? null : (map['envLanguage'] as String).input(),
+      noticeType: map['noticeType'] == null ? null : (map['noticeType'] as int).input(),
+      period: map['period'] == null ? null : (TemplateApplicationsQuotaApplicationDetailPeriod.fromMap((map['period'] as Map).cast<String, dynamic>())).input(),
+      quotaArn: map['quotaArn'] == null ? null : (map['quotaArn'] as String).input(),
+      quotaDescription: map['quotaDescription'] == null ? null : (map['quotaDescription'] as String).input(),
+      quotaName: map['quotaName'] == null ? null : (map['quotaName'] as String).input(),
+      quotaUnit: map['quotaUnit'] == null ? null : (map['quotaUnit'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

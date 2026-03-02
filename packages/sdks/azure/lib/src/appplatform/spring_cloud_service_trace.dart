@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudServiceTrace {
   /// The connection string used for Application Insights.
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
   /// The sampling rate of Application Insights Agent. Must be between `0.0` and `100.0`. Defaults to `10.0`.
-  final double? sampleRate;
+  final pulumi.Input<double>? sampleRate;
 
   /// Creates a new [SpringCloudServiceTrace].
   /// [connectionString] The connection string used for Application Insights.
@@ -24,8 +25,8 @@ class SpringCloudServiceTrace {
 
   factory SpringCloudServiceTrace.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceTrace(
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
-      sampleRate: map['sampleRate'] == null ? null : map['sampleRate'] as double,
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
     );
   }
 }

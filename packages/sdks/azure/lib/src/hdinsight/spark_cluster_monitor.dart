@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkClusterMonitor {
   /// The Operations Management Suite (OMS) workspace ID.
-  final String logAnalyticsWorkspaceId;
+  final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// The Operations Management Suite (OMS) workspace key.
-  final String primaryKey;
+  final pulumi.Input<String> primaryKey;
 
   /// Creates a new [SparkClusterMonitor].
   /// [logAnalyticsWorkspaceId] The Operations Management Suite (OMS) workspace ID.
@@ -24,8 +25,8 @@ class SparkClusterMonitor {
 
   factory SparkClusterMonitor.fromMap(Map<String, dynamic> map) {
     return SparkClusterMonitor(
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] as String,
-      primaryKey: map['primaryKey'] as String,
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      primaryKey: (map['primaryKey'] as String).input(),
     );
   }
 }

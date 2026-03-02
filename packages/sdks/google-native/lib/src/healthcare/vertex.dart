@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A 2D coordinate in an image. The origin is the top-left.
 class Vertex {
   /// X coordinate.
-  final double? x;
+  final pulumi.Input<double>? x;
   /// Y coordinate.
-  final double? y;
+  final pulumi.Input<double>? y;
 
   /// Creates a new [Vertex].
   /// [x] X coordinate.
@@ -25,8 +26,8 @@ class Vertex {
 
   factory Vertex.fromMap(Map<String, dynamic> map) {
     return Vertex(
-      x: map['x'] == null ? null : map['x'] as double,
-      y: map['y'] == null ? null : map['y'] as double,
+      x: map['x'] == null ? null : (map['x'] as double).input(),
+      y: map['y'] == null ? null : (map['y'] as double).input(),
     );
   }
 }

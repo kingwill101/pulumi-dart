@@ -28,19 +28,13 @@ class RiskConfigurationState {
   /// [riskExceptionConfiguration] The configuration to override the risk decision. See details below.
   /// [userPoolId] The user pool ID.
   RiskConfigurationState({
-    pulumi.Output<RiskConfigurationAccountTakeoverRiskConfiguration>? accountTakeoverRiskConfiguration,
-    pulumi.Output<String>? clientId,
-    pulumi.Output<RiskConfigurationCompromisedCredentialsRiskConfiguration>? compromisedCredentialsRiskConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<RiskConfigurationRiskExceptionConfiguration>? riskExceptionConfiguration,
-    pulumi.Output<String>? userPoolId,
-  }) :
-      accountTakeoverRiskConfiguration = pulumi.Input.asOptionalInput<RiskConfigurationAccountTakeoverRiskConfiguration>(accountTakeoverRiskConfiguration),
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      compromisedCredentialsRiskConfiguration = pulumi.Input.asOptionalInput<RiskConfigurationCompromisedCredentialsRiskConfiguration>(compromisedCredentialsRiskConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      riskExceptionConfiguration = pulumi.Input.asOptionalInput<RiskConfigurationRiskExceptionConfiguration>(riskExceptionConfiguration),
-      userPoolId = pulumi.Input.asOptionalInput<String>(userPoolId);
+    this.accountTakeoverRiskConfiguration,
+    this.clientId,
+    this.compromisedCredentialsRiskConfiguration,
+    this.region,
+    this.riskExceptionConfiguration,
+    this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RiskConfigurationState {
 
   factory RiskConfigurationState.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationState(
-      accountTakeoverRiskConfiguration: map['accountTakeoverRiskConfiguration'] == null ? null : pulumi.Output.create<RiskConfigurationAccountTakeoverRiskConfiguration>(RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((map['accountTakeoverRiskConfiguration'] as Map).cast<String, dynamic>())),
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      compromisedCredentialsRiskConfiguration: map['compromisedCredentialsRiskConfiguration'] == null ? null : pulumi.Output.create<RiskConfigurationCompromisedCredentialsRiskConfiguration>(RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap((map['compromisedCredentialsRiskConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      riskExceptionConfiguration: map['riskExceptionConfiguration'] == null ? null : pulumi.Output.create<RiskConfigurationRiskExceptionConfiguration>(RiskConfigurationRiskExceptionConfiguration.fromMap((map['riskExceptionConfiguration'] as Map).cast<String, dynamic>())),
-      userPoolId: map['userPoolId'] == null ? null : pulumi.Output.create<String>(map['userPoolId'] as String),
+      accountTakeoverRiskConfiguration: map['accountTakeoverRiskConfiguration'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((map['accountTakeoverRiskConfiguration'] as Map).cast<String, dynamic>())).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      compromisedCredentialsRiskConfiguration: map['compromisedCredentialsRiskConfiguration'] == null ? null : (RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap((map['compromisedCredentialsRiskConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      riskExceptionConfiguration: map['riskExceptionConfiguration'] == null ? null : (RiskConfigurationRiskExceptionConfiguration.fromMap((map['riskExceptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
     );
   }
 }

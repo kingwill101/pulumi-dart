@@ -20,17 +20,12 @@ class GetInstanceAlloydbV1alphaArgs {
   /// [project] Optional.
   /// [view] Optional.
   GetInstanceAlloydbV1alphaArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? view,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.clusterId,
+    required this.instanceId,
+    required this.location,
+    this.project,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetInstanceAlloydbV1alphaArgs {
 
   factory GetInstanceAlloydbV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceAlloydbV1alphaArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

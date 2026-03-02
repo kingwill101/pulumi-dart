@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_workflow_step_parallel_config_step_document_db_config_ungraceful.dart';
 
 class PlanWorkflowStepParallelConfigStepDocumentDbConfig {
-  final String behavior;
-  final String? crossAccountRole;
-  final List<String> databaseClusterArns;
-  final String? externalId;
-  final String globalClusterIdentifier;
-  final int? timeoutMinutes;
-  final List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>? ungracefuls;
+  final pulumi.Input<String> behavior;
+  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<List<String>> databaseClusterArns;
+  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String> globalClusterIdentifier;
+  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepDocumentDbConfig].
   /// [behavior] Required.
@@ -38,19 +38,19 @@ class PlanWorkflowStepParallelConfigStepDocumentDbConfig {
       'externalId': ?externalId,
       'globalClusterIdentifier': globalClusterIdentifier,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungracefuls': ?ungracefuls == null ? null : pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful, Map<String, dynamic>>(ungracefuls!, (value) => value.toMap()),
+      'ungracefuls': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>, List<Map<String, dynamic>>>(ungracefuls, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PlanWorkflowStepParallelConfigStepDocumentDbConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepDocumentDbConfig(
-      behavior: map['behavior'] as String,
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
-      databaseClusterArns: (map['databaseClusterArns'] as List).cast<String>(),
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      globalClusterIdentifier: map['globalClusterIdentifier'] as String,
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
-      ungracefuls: map['ungracefuls'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful.fromMap((value as Map).cast<String, dynamic>())),
+      behavior: (map['behavior'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
+      databaseClusterArns: ((map['databaseClusterArns'] as List).cast<String>()).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      globalClusterIdentifier: (map['globalClusterIdentifier'] as String).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
+      ungracefuls: map['ungracefuls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

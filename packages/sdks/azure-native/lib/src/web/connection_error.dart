@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connection error
 class ConnectionError {
   /// Code of the status
-  final String? code;
+  final pulumi.Input<String>? code;
   /// Resource ETag
-  final String? etag;
+  final pulumi.Input<String>? etag;
   /// Resource location
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Description of the status
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Resource tags
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ConnectionError].
   /// [code] Code of the status
@@ -40,11 +41,11 @@ class ConnectionError {
 
   factory ConnectionError.fromMap(Map<String, dynamic> map) {
     return ConnectionError(
-      code: map['code'] == null ? null : map['code'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

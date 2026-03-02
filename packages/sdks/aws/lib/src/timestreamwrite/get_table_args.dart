@@ -19,13 +19,10 @@ class GetTableArgs {
   /// [name] Name of the Timestream table.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetTableArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.databaseName,
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class FleetTierArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tierName] Name of the tier.
   FleetTierArgs({
-    required pulumi.Output<String> fleetName,
-    pulumi.Output<FleetTierProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? tierName,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      properties = pulumi.Input.asOptionalInput<FleetTierProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tierName = pulumi.Input.asOptionalInput<String>(tierName);
+    required this.fleetName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tierName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FleetTierArgs {
 
   factory FleetTierArgs.fromMap(Map<String, dynamic> map) {
     return FleetTierArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<FleetTierProperties>(FleetTierProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tierName: map['tierName'] == null ? null : pulumi.Output.create<String>(map['tierName'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      properties: map['properties'] == null ? null : (FleetTierProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tierName: map['tierName'] == null ? null : (map['tierName'] as String).input(),
     );
   }
 }

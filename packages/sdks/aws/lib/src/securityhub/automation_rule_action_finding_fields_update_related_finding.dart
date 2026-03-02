@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleActionFindingFieldsUpdateRelatedFinding {
   /// The product-generated identifier for a related finding.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ARN of the product that generated a related finding.
-  final String productArn;
+  final pulumi.Input<String> productArn;
 
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateRelatedFinding].
   /// [id] The product-generated identifier for a related finding.
@@ -24,8 +25,8 @@ class AutomationRuleActionFindingFieldsUpdateRelatedFinding {
 
   factory AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdateRelatedFinding(
-      id: map['id'] as String,
-      productArn: map['productArn'] as String,
+      id: (map['id'] as String).input(),
+      productArn: (map['productArn'] as String).input(),
     );
   }
 }

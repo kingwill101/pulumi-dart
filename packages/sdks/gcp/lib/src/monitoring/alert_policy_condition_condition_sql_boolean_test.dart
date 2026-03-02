@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertPolicyConditionConditionSqlBooleanTest {
   /// The name of the column containing the boolean value. If the value in a row is
   /// NULL, that row is ignored.
-  final String column;
+  final pulumi.Input<String> column;
 
   /// Creates a new [AlertPolicyConditionConditionSqlBooleanTest].
   /// [column] The name of the column containing the boolean value. If the value in a row is
@@ -20,7 +21,7 @@ class AlertPolicyConditionConditionSqlBooleanTest {
 
   factory AlertPolicyConditionConditionSqlBooleanTest.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlBooleanTest(
-      column: map['column'] as String,
+      column: (map['column'] as String).input(),
     );
   }
 }

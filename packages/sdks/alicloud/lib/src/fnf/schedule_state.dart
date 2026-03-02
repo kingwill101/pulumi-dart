@@ -31,23 +31,15 @@ class ScheduleState {
   /// [scheduleId] The ID of the time-based schedule.
   /// [scheduleName] The name of the time-based schedule to be created.
   ScheduleState({
-    pulumi.Output<String>? cronExpression,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enable,
-    pulumi.Output<String>? flowName,
-    pulumi.Output<String>? lastModifiedTime,
-    pulumi.Output<String>? payload,
-    pulumi.Output<String>? scheduleId,
-    pulumi.Output<String>? scheduleName,
-  }) :
-      cronExpression = pulumi.Input.asOptionalInput<String>(cronExpression),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      flowName = pulumi.Input.asOptionalInput<String>(flowName),
-      lastModifiedTime = pulumi.Input.asOptionalInput<String>(lastModifiedTime),
-      payload = pulumi.Input.asOptionalInput<String>(payload),
-      scheduleId = pulumi.Input.asOptionalInput<String>(scheduleId),
-      scheduleName = pulumi.Input.asOptionalInput<String>(scheduleName);
+    this.cronExpression,
+    this.description,
+    this.enable,
+    this.flowName,
+    this.lastModifiedTime,
+    this.payload,
+    this.scheduleId,
+    this.scheduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ScheduleState {
 
   factory ScheduleState.fromMap(Map<String, dynamic> map) {
     return ScheduleState(
-      cronExpression: map['cronExpression'] == null ? null : pulumi.Output.create<String>(map['cronExpression'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      flowName: map['flowName'] == null ? null : pulumi.Output.create<String>(map['flowName'] as String),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastModifiedTime'] as String),
-      payload: map['payload'] == null ? null : pulumi.Output.create<String>(map['payload'] as String),
-      scheduleId: map['scheduleId'] == null ? null : pulumi.Output.create<String>(map['scheduleId'] as String),
-      scheduleName: map['scheduleName'] == null ? null : pulumi.Output.create<String>(map['scheduleName'] as String),
+      cronExpression: map['cronExpression'] == null ? null : (map['cronExpression'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      flowName: map['flowName'] == null ? null : (map['flowName'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
+      scheduleId: map['scheduleId'] == null ? null : (map['scheduleId'] as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
     );
   }
 }

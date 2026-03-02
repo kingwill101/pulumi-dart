@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties pertaining to the UnknownTarget
 class UnknownTargetResponse {
   /// Dictionary of string->string pairs containing information about the Storage Target.
-  final Map<String, String>? attributes;
+  final pulumi.Input<Map<String, String>>? attributes;
 
   /// Creates a new [UnknownTargetResponse].
   /// [attributes] Dictionary of string->string pairs containing information about the Storage Target.
@@ -20,7 +21,7 @@ class UnknownTargetResponse {
 
   factory UnknownTargetResponse.fromMap(Map<String, dynamic> map) {
     return UnknownTargetResponse(
-      attributes: map['attributes'] == null ? null : (map['attributes'] as Map).cast<String, String>(),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ReleaseChannelConfig exposes configuration for a release channel.
 class ReleaseChannelConfigResponse {
   /// The release channel this configuration applies to.
-  final String channel;
+  final pulumi.Input<String> channel;
   /// The default version for newly created clusters on the channel.
-  final String defaultVersion;
+  final pulumi.Input<String> defaultVersion;
   /// List of valid versions for the channel.
-  final List<String> validVersions;
+  final pulumi.Input<List<String>> validVersions;
 
   /// Creates a new [ReleaseChannelConfigResponse].
   /// [channel] The release channel this configuration applies to.
@@ -30,9 +31,9 @@ class ReleaseChannelConfigResponse {
 
   factory ReleaseChannelConfigResponse.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelConfigResponse(
-      channel: map['channel'] as String,
-      defaultVersion: map['defaultVersion'] as String,
-      validVersions: (map['validVersions'] as List).cast<String>(),
+      channel: (map['channel'] as String).input(),
+      defaultVersion: (map['defaultVersion'] as String).input(),
+      validVersions: ((map['validVersions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceKmsAccess {
-  final String domainName;
-  final List<String> ipv4Addresses;
+  final pulumi.Input<String> domainName;
+  final pulumi.Input<List<String>> ipv4Addresses;
   /// Specifies the endpoint policy for KMS access from the ODB network.
-  final String kmsPolicyDocument;
+  final pulumi.Input<String> kmsPolicyDocument;
   /// The status of the network resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [NetworkManagedServiceKmsAccess].
   /// [domainName] Required.
@@ -32,10 +33,10 @@ class NetworkManagedServiceKmsAccess {
 
   factory NetworkManagedServiceKmsAccess.fromMap(Map<String, dynamic> map) {
     return NetworkManagedServiceKmsAccess(
-      domainName: map['domainName'] as String,
-      ipv4Addresses: (map['ipv4Addresses'] as List).cast<String>(),
-      kmsPolicyDocument: map['kmsPolicyDocument'] as String,
-      status: map['status'] as String,
+      domainName: (map['domainName'] as String).input(),
+      ipv4Addresses: ((map['ipv4Addresses'] as List).cast<String>()).input(),
+      kmsPolicyDocument: (map['kmsPolicyDocument'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

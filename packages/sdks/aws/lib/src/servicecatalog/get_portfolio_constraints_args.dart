@@ -24,15 +24,11 @@ class GetPortfolioConstraintsArgs {
   /// [productId] Product identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetPortfolioConstraintsArgs({
-    pulumi.Output<String>? acceptLanguage,
-    required pulumi.Output<String> portfolioId,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? region,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      portfolioId = pulumi.Input.asInput<String>(portfolioId),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.acceptLanguage,
+    required this.portfolioId,
+    this.productId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetPortfolioConstraintsArgs {
 
   factory GetPortfolioConstraintsArgs.fromMap(Map<String, dynamic> map) {
     return GetPortfolioConstraintsArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      portfolioId: pulumi.Output.create<String>(map['portfolioId'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      portfolioId: (map['portfolioId'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

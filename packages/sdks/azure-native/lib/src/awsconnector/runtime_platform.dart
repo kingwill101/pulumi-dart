@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of RuntimePlatform
 class RuntimePlatform {
   /// The CPU architecture. You can run your Linux tasks on an ARM-based platform by setting the value to ``ARM64``. This option is available for tasks that run on Linux Amazon EC2 instance or Linux containers on Fargate.
-  final String? cpuArchitecture;
+  final pulumi.Input<String>? cpuArchitecture;
   /// The operating system.
-  final String? operatingSystemFamily;
+  final pulumi.Input<String>? operatingSystemFamily;
 
   /// Creates a new [RuntimePlatform].
   /// [cpuArchitecture] The CPU architecture. You can run your Linux tasks on an ARM-based platform by setting the value to ``ARM64``. This option is available for tasks that run on Linux Amazon EC2 instance or Linux containers on Fargate.
@@ -25,8 +26,8 @@ class RuntimePlatform {
 
   factory RuntimePlatform.fromMap(Map<String, dynamic> map) {
     return RuntimePlatform(
-      cpuArchitecture: map['cpuArchitecture'] == null ? null : map['cpuArchitecture'] as String,
-      operatingSystemFamily: map['operatingSystemFamily'] == null ? null : map['operatingSystemFamily'] as String,
+      cpuArchitecture: map['cpuArchitecture'] == null ? null : (map['cpuArchitecture'] as String).input(),
+      operatingSystemFamily: map['operatingSystemFamily'] == null ? null : (map['operatingSystemFamily'] as String).input(),
     );
   }
 }

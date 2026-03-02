@@ -25,17 +25,12 @@ class GetTransitRouterVbrAttachmentsArgs {
   /// [status] The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
   /// [transitRouterId] ID of the transit router.
   GetTransitRouterVbrAttachmentsArgs({
-    required pulumi.Output<String> cenId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterId,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId);
+    required this.cenId,
+    this.ids,
+    this.outputFile,
+    this.status,
+    this.transitRouterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetTransitRouterVbrAttachmentsArgs {
 
   factory GetTransitRouterVbrAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterVbrAttachmentsArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
+      cenId: (map['cenId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
     );
   }
 }

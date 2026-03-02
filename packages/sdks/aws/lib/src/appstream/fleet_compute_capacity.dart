@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetComputeCapacity {
   /// Number of currently available instances that can be used to stream sessions.
-  final int? available;
+  final pulumi.Input<int>? available;
   /// Desired number of streaming instances.
-  final int? desiredInstances;
+  final pulumi.Input<int>? desiredInstances;
   /// Desired number of user sessions for a multi-session fleet. This is not allowed for single-session fleets.
-  final int? desiredSessions;
+  final pulumi.Input<int>? desiredSessions;
   /// Number of instances in use for streaming.
-  final int? inUse;
+  final pulumi.Input<int>? inUse;
   /// Total number of simultaneous streaming instances that are running.
-  final int? running;
+  final pulumi.Input<int>? running;
 
   /// Creates a new [FleetComputeCapacity].
   /// [available] Number of currently available instances that can be used to stream sessions.
@@ -39,11 +40,11 @@ class FleetComputeCapacity {
 
   factory FleetComputeCapacity.fromMap(Map<String, dynamic> map) {
     return FleetComputeCapacity(
-      available: map['available'] == null ? null : map['available'] as int,
-      desiredInstances: map['desiredInstances'] == null ? null : map['desiredInstances'] as int,
-      desiredSessions: map['desiredSessions'] == null ? null : map['desiredSessions'] as int,
-      inUse: map['inUse'] == null ? null : map['inUse'] as int,
-      running: map['running'] == null ? null : map['running'] as int,
+      available: map['available'] == null ? null : (map['available'] as int).input(),
+      desiredInstances: map['desiredInstances'] == null ? null : (map['desiredInstances'] as int).input(),
+      desiredSessions: map['desiredSessions'] == null ? null : (map['desiredSessions'] as int).input(),
+      inUse: map['inUse'] == null ? null : (map['inUse'] as int).input(),
+      running: map['running'] == null ? null : (map['running'] as int).input(),
     );
   }
 }

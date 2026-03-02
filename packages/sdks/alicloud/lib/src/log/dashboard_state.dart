@@ -23,17 +23,12 @@ class DashboardState {
   /// [displayName] Dashboard alias.
   /// [projectName] The name of the log project. It is the only in one Alicloud account.
   DashboardState({
-    pulumi.Output<String>? attribute,
-    pulumi.Output<String>? charList,
-    pulumi.Output<String>? dashboardName,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? projectName,
-  }) :
-      attribute = pulumi.Input.asOptionalInput<String>(attribute),
-      charList = pulumi.Input.asOptionalInput<String>(charList),
-      dashboardName = pulumi.Input.asOptionalInput<String>(dashboardName),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName);
+    this.attribute,
+    this.charList,
+    this.dashboardName,
+    this.displayName,
+    this.projectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class DashboardState {
 
   factory DashboardState.fromMap(Map<String, dynamic> map) {
     return DashboardState(
-      attribute: map['attribute'] == null ? null : pulumi.Output.create<String>(map['attribute'] as String),
-      charList: map['charList'] == null ? null : pulumi.Output.create<String>(map['charList'] as String),
-      dashboardName: map['dashboardName'] == null ? null : pulumi.Output.create<String>(map['dashboardName'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
+      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      charList: map['charList'] == null ? null : (map['charList'] as String).input(),
+      dashboardName: map['dashboardName'] == null ? null : (map['dashboardName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainPerfEvent {
   /// Controls whether performance monitoring events are enabled.
-  final String enabled;
+  final pulumi.Input<String> enabled;
   /// Sets the name of the performance monitoring event.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DomainPerfEvent].
   /// [enabled] Controls whether performance monitoring events are enabled.
@@ -24,8 +25,8 @@ class DomainPerfEvent {
 
   factory DomainPerfEvent.fromMap(Map<String, dynamic> map) {
     return DomainPerfEvent(
-      enabled: map['enabled'] as String,
-      name: map['name'] as String,
+      enabled: (map['enabled'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

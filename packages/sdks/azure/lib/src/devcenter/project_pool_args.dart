@@ -42,27 +42,17 @@ class ProjectPoolArgs {
   /// [stopOnDisconnectGracePeriodMinutes] The specified time in minutes to wait before stopping a Dev Center Dev Box once disconnect is detected. Possible values are between `60` and `480`.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Project Pool.
   ProjectPoolArgs({
-    required pulumi.Output<String> devBoxDefinitionName,
-    required pulumi.Output<String> devCenterAttachedNetworkName,
-    required pulumi.Output<String> devCenterProjectId,
-    required pulumi.Output<bool> localAdministratorEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedVirtualNetworkRegions,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? singleSignOnEnabled,
-    pulumi.Output<int>? stopOnDisconnectGracePeriodMinutes,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      devBoxDefinitionName = pulumi.Input.asInput<String>(devBoxDefinitionName),
-      devCenterAttachedNetworkName = pulumi.Input.asInput<String>(devCenterAttachedNetworkName),
-      devCenterProjectId = pulumi.Input.asInput<String>(devCenterProjectId),
-      localAdministratorEnabled = pulumi.Input.asInput<bool>(localAdministratorEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedVirtualNetworkRegions = pulumi.Input.asOptionalInput<String>(managedVirtualNetworkRegions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      singleSignOnEnabled = pulumi.Input.asOptionalInput<bool>(singleSignOnEnabled),
-      stopOnDisconnectGracePeriodMinutes = pulumi.Input.asOptionalInput<int>(stopOnDisconnectGracePeriodMinutes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.devBoxDefinitionName,
+    required this.devCenterAttachedNetworkName,
+    required this.devCenterProjectId,
+    required this.localAdministratorEnabled,
+    this.location,
+    this.managedVirtualNetworkRegions,
+    this.name,
+    this.singleSignOnEnabled,
+    this.stopOnDisconnectGracePeriodMinutes,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class ProjectPoolArgs {
 
   factory ProjectPoolArgs.fromMap(Map<String, dynamic> map) {
     return ProjectPoolArgs(
-      devBoxDefinitionName: pulumi.Output.create<String>(map['devBoxDefinitionName'] as String),
-      devCenterAttachedNetworkName: pulumi.Output.create<String>(map['devCenterAttachedNetworkName'] as String),
-      devCenterProjectId: pulumi.Output.create<String>(map['devCenterProjectId'] as String),
-      localAdministratorEnabled: pulumi.Output.create<bool>(map['localAdministratorEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedVirtualNetworkRegions: map['managedVirtualNetworkRegions'] == null ? null : pulumi.Output.create<String>(map['managedVirtualNetworkRegions'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : pulumi.Output.create<bool>(map['singleSignOnEnabled'] as bool),
-      stopOnDisconnectGracePeriodMinutes: map['stopOnDisconnectGracePeriodMinutes'] == null ? null : pulumi.Output.create<int>(map['stopOnDisconnectGracePeriodMinutes'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      devBoxDefinitionName: (map['devBoxDefinitionName'] as String).input(),
+      devCenterAttachedNetworkName: (map['devCenterAttachedNetworkName'] as String).input(),
+      devCenterProjectId: (map['devCenterProjectId'] as String).input(),
+      localAdministratorEnabled: (map['localAdministratorEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedVirtualNetworkRegions: map['managedVirtualNetworkRegions'] == null ? null : (map['managedVirtualNetworkRegions'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled'] as bool).input(),
+      stopOnDisconnectGracePeriodMinutes: map['stopOnDisconnectGracePeriodMinutes'] == null ? null : (map['stopOnDisconnectGracePeriodMinutes'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

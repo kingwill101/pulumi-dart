@@ -48,23 +48,15 @@ class MirroringEndpointGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of the endpoint group.
   MirroringEndpointGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? mirroringDeploymentGroup,
-    pulumi.Output<List<String>>? mirroringDeploymentGroups,
-    required pulumi.Output<String> mirroringEndpointGroupId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      mirroringDeploymentGroup = pulumi.Input.asOptionalInput<String>(mirroringDeploymentGroup),
-      mirroringDeploymentGroups = pulumi.Input.asOptionalInput<List<String>>(mirroringDeploymentGroups),
-      mirroringEndpointGroupId = pulumi.Input.asInput<String>(mirroringEndpointGroupId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.description,
+    this.labels,
+    required this.location,
+    this.mirroringDeploymentGroup,
+    this.mirroringDeploymentGroups,
+    required this.mirroringEndpointGroupId,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,14 +73,14 @@ class MirroringEndpointGroupArgs {
 
   factory MirroringEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mirroringDeploymentGroup: map['mirroringDeploymentGroup'] == null ? null : pulumi.Output.create<String>(map['mirroringDeploymentGroup'] as String),
-      mirroringDeploymentGroups: map['mirroringDeploymentGroups'] == null ? null : pulumi.Output.create<List<String>>((map['mirroringDeploymentGroups'] as List).cast<String>()),
-      mirroringEndpointGroupId: pulumi.Output.create<String>(map['mirroringEndpointGroupId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      mirroringDeploymentGroup: map['mirroringDeploymentGroup'] == null ? null : (map['mirroringDeploymentGroup'] as String).input(),
+      mirroringDeploymentGroups: map['mirroringDeploymentGroups'] == null ? null : ((map['mirroringDeploymentGroups'] as List).cast<String>()).input(),
+      mirroringEndpointGroupId: (map['mirroringEndpointGroupId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

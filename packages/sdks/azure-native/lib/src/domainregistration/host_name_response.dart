@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of a hostname derived from a domain.
 class HostNameResponse {
   /// Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
-  final String? azureResourceName;
+  final pulumi.Input<String>? azureResourceName;
   /// Type of the Azure resource the hostname is assigned to.
-  final String? azureResourceType;
+  final pulumi.Input<String>? azureResourceType;
   /// Type of the DNS record.
-  final String? customHostNameDnsRecordType;
+  final pulumi.Input<String>? customHostNameDnsRecordType;
   /// Type of the hostname.
-  final String? hostNameType;
+  final pulumi.Input<String>? hostNameType;
   /// Name of the hostname.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager.
-  final List<String>? siteNames;
+  final pulumi.Input<List<String>>? siteNames;
 
   /// Creates a new [HostNameResponse].
   /// [azureResourceName] Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
@@ -45,12 +46,12 @@ class HostNameResponse {
 
   factory HostNameResponse.fromMap(Map<String, dynamic> map) {
     return HostNameResponse(
-      azureResourceName: map['azureResourceName'] == null ? null : map['azureResourceName'] as String,
-      azureResourceType: map['azureResourceType'] == null ? null : map['azureResourceType'] as String,
-      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : map['customHostNameDnsRecordType'] as String,
-      hostNameType: map['hostNameType'] == null ? null : map['hostNameType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      siteNames: map['siteNames'] == null ? null : (map['siteNames'] as List).cast<String>(),
+      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName'] as String).input(),
+      azureResourceType: map['azureResourceType'] == null ? null : (map['azureResourceType'] as String).input(),
+      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : (map['customHostNameDnsRecordType'] as String).input(),
+      hostNameType: map['hostNameType'] == null ? null : (map['hostNameType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      siteNames: map['siteNames'] == null ? null : ((map['siteNames'] as List).cast<String>()).input(),
     );
   }
 }

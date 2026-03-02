@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A LUN(Logical Unit Number) range.
 class LunRangeResponse {
   /// Number of LUNs to create.
-  final int quantity;
+  final pulumi.Input<int> quantity;
   /// The requested size of each LUN, in GB.
-  final int sizeGb;
+  final pulumi.Input<int> sizeGb;
 
   /// Creates a new [LunRangeResponse].
   /// [quantity] Number of LUNs to create.
@@ -25,8 +26,8 @@ class LunRangeResponse {
 
   factory LunRangeResponse.fromMap(Map<String, dynamic> map) {
     return LunRangeResponse(
-      quantity: map['quantity'] as int,
-      sizeGb: map['sizeGb'] as int,
+      quantity: (map['quantity'] as int).input(),
+      sizeGb: (map['sizeGb'] as int).input(),
     );
   }
 }

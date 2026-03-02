@@ -19,13 +19,10 @@ class UserAttachmentArgs {
   /// [groupId] The ID of the group.
   /// [userId] The ID of the user.
   UserAttachmentArgs({
-    required pulumi.Output<String> directoryId,
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> userId,
-  }) :
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.directoryId,
+    required this.groupId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class UserAttachmentArgs {
 
   factory UserAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return UserAttachmentArgs(
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      directoryId: (map['directoryId'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

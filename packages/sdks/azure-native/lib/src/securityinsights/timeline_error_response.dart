@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Timeline Query Errors.
 class TimelineErrorResponse {
   /// the error message
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// the query kind
-  final String kind;
+  final pulumi.Input<String> kind;
   /// the query id
-  final String? queryId;
+  final pulumi.Input<String>? queryId;
 
   /// Creates a new [TimelineErrorResponse].
   /// [errorMessage] the error message
@@ -30,9 +31,9 @@ class TimelineErrorResponse {
 
   factory TimelineErrorResponse.fromMap(Map<String, dynamic> map) {
     return TimelineErrorResponse(
-      errorMessage: map['errorMessage'] as String,
-      kind: map['kind'] as String,
-      queryId: map['queryId'] == null ? null : map['queryId'] as String,
+      errorMessage: (map['errorMessage'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      queryId: map['queryId'] == null ? null : (map['queryId'] as String).input(),
     );
   }
 }

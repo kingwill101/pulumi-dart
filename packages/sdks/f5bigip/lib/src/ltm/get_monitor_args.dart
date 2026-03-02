@@ -16,11 +16,9 @@ class GetMonitorArgs {
   /// [name] Name of the ltm monitor
   /// [partition] partition of the ltm monitor
   GetMonitorArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> partition,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      partition = pulumi.Input.asInput<String>(partition);
+    required this.name,
+    required this.partition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMonitorArgs {
 
   factory GetMonitorArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      partition: pulumi.Output.create<String>(map['partition'] as String),
+      name: (map['name'] as String).input(),
+      partition: (map['partition'] as String).input(),
     );
   }
 }

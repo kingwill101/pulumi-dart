@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the create advanced schedule monthly occurrence.
 class AdvancedScheduleMonthlyOccurrenceResponse {
   /// Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
-  final String? day;
+  final pulumi.Input<String>? day;
   /// Occurrence of the week within the month. Must be between 1 and 5
-  final int? occurrence;
+  final pulumi.Input<int>? occurrence;
 
   /// Creates a new [AdvancedScheduleMonthlyOccurrenceResponse].
   /// [day] Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
@@ -25,8 +26,8 @@ class AdvancedScheduleMonthlyOccurrenceResponse {
 
   factory AdvancedScheduleMonthlyOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedScheduleMonthlyOccurrenceResponse(
-      day: map['day'] == null ? null : map['day'] as String,
-      occurrence: map['occurrence'] == null ? null : map['occurrence'] as int,
+      day: map['day'] == null ? null : (map['day'] as String).input(),
+      occurrence: map['occurrence'] == null ? null : (map['occurrence'] as int).input(),
     );
   }
 }

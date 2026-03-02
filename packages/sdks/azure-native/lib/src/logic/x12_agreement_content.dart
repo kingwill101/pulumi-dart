@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'x12_one_way_agreement.dart';
 
 /// The X12 agreement content.
 class X12AgreementContent {
   /// The X12 one-way receive agreement.
-  final X12OneWayAgreement receiveAgreement;
+  final pulumi.Input<X12OneWayAgreement> receiveAgreement;
   /// The X12 one-way send agreement.
-  final X12OneWayAgreement sendAgreement;
+  final pulumi.Input<X12OneWayAgreement> sendAgreement;
 
   /// Creates a new [X12AgreementContent].
   /// [receiveAgreement] The X12 one-way receive agreement.
@@ -19,15 +20,15 @@ class X12AgreementContent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'receiveAgreement': receiveAgreement.toMap(),
-      'sendAgreement': sendAgreement.toMap(),
+      'receiveAgreement': pulumi.Input.mapInputValue<X12OneWayAgreement, Map<String, dynamic>>(receiveAgreement, (value) => value.toMap()),
+      'sendAgreement': pulumi.Input.mapInputValue<X12OneWayAgreement, Map<String, dynamic>>(sendAgreement, (value) => value.toMap()),
     };
   }
 
   factory X12AgreementContent.fromMap(Map<String, dynamic> map) {
     return X12AgreementContent(
-      receiveAgreement: X12OneWayAgreement.fromMap((map['receiveAgreement'] as Map).cast<String, dynamic>()),
-      sendAgreement: X12OneWayAgreement.fromMap((map['sendAgreement'] as Map).cast<String, dynamic>()),
+      receiveAgreement: (X12OneWayAgreement.fromMap((map['receiveAgreement'] as Map).cast<String, dynamic>())).input(),
+      sendAgreement: (X12OneWayAgreement.fromMap((map['sendAgreement'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

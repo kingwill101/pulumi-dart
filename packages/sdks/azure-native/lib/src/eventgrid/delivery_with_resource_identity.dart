@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_function_event_subscription_destination.dart';
 import 'event_subscription_identity.dart';
 
@@ -7,9 +8,9 @@ import 'event_subscription_identity.dart';
 class DeliveryWithResourceIdentity {
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
-  final AzureFunctionEventSubscriptionDestination? destination;
+  final pulumi.Input<AzureFunctionEventSubscriptionDestination>? destination;
   /// The identity to use when delivering events.
-  final EventSubscriptionIdentity? identity;
+  final pulumi.Input<EventSubscriptionIdentity>? identity;
 
   /// Creates a new [DeliveryWithResourceIdentity].
   /// [destination] Information about the destination where events have to be delivered for the event subscription.
@@ -21,15 +22,15 @@ class DeliveryWithResourceIdentity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': ?destination == null ? null : destination!.toMap(),
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'destination': ?pulumi.Input.mapOptionalInputValue<AzureFunctionEventSubscriptionDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<EventSubscriptionIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
     };
   }
 
   factory DeliveryWithResourceIdentity.fromMap(Map<String, dynamic> map) {
     return DeliveryWithResourceIdentity(
-      destination: map['destination'] == null ? null : AzureFunctionEventSubscriptionDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      identity: map['identity'] == null ? null : EventSubscriptionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (EventSubscriptionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

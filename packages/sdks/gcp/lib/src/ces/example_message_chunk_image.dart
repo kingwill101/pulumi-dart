@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExampleMessageChunkImage {
   /// Raw bytes of the image.
-  final String data;
+  final pulumi.Input<String> data;
   /// The IANA standard MIME type of the source data.
   /// Supported image types includes:
   /// * image/png
   /// * image/jpeg
   /// * image/webp
-  final String mimeType;
+  final pulumi.Input<String> mimeType;
 
   /// Creates a new [ExampleMessageChunkImage].
   /// [data] Raw bytes of the image.
@@ -28,8 +29,8 @@ class ExampleMessageChunkImage {
 
   factory ExampleMessageChunkImage.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunkImage(
-      data: map['data'] as String,
-      mimeType: map['mimeType'] as String,
+      data: (map['data'] as String).input(),
+      mimeType: (map['mimeType'] as String).input(),
     );
   }
 }

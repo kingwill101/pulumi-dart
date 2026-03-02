@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureNodePoolAutoscaling {
   /// Maximum number of nodes in the node pool. Must be >= min_node_count.
-  final int maxNodeCount;
+  final pulumi.Input<int> maxNodeCount;
   /// Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
-  final int minNodeCount;
+  final pulumi.Input<int> minNodeCount;
 
   /// Creates a new [AzureNodePoolAutoscaling].
   /// [maxNodeCount] Maximum number of nodes in the node pool. Must be >= min_node_count.
@@ -24,8 +25,8 @@ class AzureNodePoolAutoscaling {
 
   factory AzureNodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolAutoscaling(
-      maxNodeCount: map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] as int,
+      maxNodeCount: (map['maxNodeCount'] as int).input(),
+      minNodeCount: (map['minNodeCount'] as int).input(),
     );
   }
 }

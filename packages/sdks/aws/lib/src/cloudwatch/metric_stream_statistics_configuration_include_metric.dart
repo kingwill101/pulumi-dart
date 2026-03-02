@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricStreamStatisticsConfigurationIncludeMetric {
   /// The name of the metric.
-  final String metricName;
-  final String namespace;
+  final pulumi.Input<String> metricName;
+  final pulumi.Input<String> namespace;
 
   /// Creates a new [MetricStreamStatisticsConfigurationIncludeMetric].
   /// [metricName] The name of the metric.
@@ -23,8 +24,8 @@ class MetricStreamStatisticsConfigurationIncludeMetric {
 
   factory MetricStreamStatisticsConfigurationIncludeMetric.fromMap(Map<String, dynamic> map) {
     return MetricStreamStatisticsConfigurationIncludeMetric(
-      metricName: map['metricName'] as String,
-      namespace: map['namespace'] as String,
+      metricName: (map['metricName'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

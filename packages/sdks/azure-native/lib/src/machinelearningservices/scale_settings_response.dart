@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// scale settings for AML Compute
 class ScaleSettingsResponse {
   /// Max number of nodes to use
-  final int maxNodeCount;
+  final pulumi.Input<int> maxNodeCount;
   /// Min number of nodes to use
-  final int? minNodeCount;
+  final pulumi.Input<int>? minNodeCount;
   /// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-  final String? nodeIdleTimeBeforeScaleDown;
+  final pulumi.Input<String>? nodeIdleTimeBeforeScaleDown;
 
   /// Creates a new [ScaleSettingsResponse].
   /// [maxNodeCount] Max number of nodes to use
@@ -30,9 +31,9 @@ class ScaleSettingsResponse {
 
   factory ScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ScaleSettingsResponse(
-      maxNodeCount: map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] == null ? null : map['minNodeCount'] as int,
-      nodeIdleTimeBeforeScaleDown: map['nodeIdleTimeBeforeScaleDown'] == null ? null : map['nodeIdleTimeBeforeScaleDown'] as String,
+      maxNodeCount: (map['maxNodeCount'] as int).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
+      nodeIdleTimeBeforeScaleDown: map['nodeIdleTimeBeforeScaleDown'] == null ? null : (map['nodeIdleTimeBeforeScaleDown'] as String).input(),
     );
   }
 }

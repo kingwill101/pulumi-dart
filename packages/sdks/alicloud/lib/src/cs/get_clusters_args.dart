@@ -46,25 +46,16 @@ class GetClustersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [profile] The subtype of the clusters to query. Valid values:
   GetClustersArgs({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? clusterSpec,
-    pulumi.Output<String>? clusterType,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? profile,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      clusterSpec = pulumi.Input.asOptionalInput<String>(clusterSpec),
-      clusterType = pulumi.Input.asOptionalInput<String>(clusterType),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      profile = pulumi.Input.asOptionalInput<String>(profile);
+    this.clusterId,
+    this.clusterName,
+    this.clusterSpec,
+    this.clusterType,
+    this.enableDetails,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.profile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,15 +73,15 @@ class GetClustersArgs {
 
   factory GetClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetClustersArgs(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterSpec: map['clusterSpec'] == null ? null : pulumi.Output.create<String>(map['clusterSpec'] as String),
-      clusterType: map['clusterType'] == null ? null : pulumi.Output.create<String>(map['clusterType'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      profile: map['profile'] == null ? null : pulumi.Output.create<String>(map['profile'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      clusterSpec: map['clusterSpec'] == null ? null : (map['clusterSpec'] as String).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
     );
   }
 }

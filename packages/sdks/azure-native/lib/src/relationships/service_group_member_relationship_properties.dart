@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ServiceGroupMember relationship properties.
 class ServiceGroupMemberRelationshipProperties {
   /// The relationship target resource id.
-  final String targetId;
+  final pulumi.Input<String> targetId;
   /// The relationship target tenant id.
-  final String? targetTenant;
+  final pulumi.Input<String>? targetTenant;
 
   /// Creates a new [ServiceGroupMemberRelationshipProperties].
   /// [targetId] The relationship target resource id.
@@ -25,8 +26,8 @@ class ServiceGroupMemberRelationshipProperties {
 
   factory ServiceGroupMemberRelationshipProperties.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMemberRelationshipProperties(
-      targetId: map['targetId'] as String,
-      targetTenant: map['targetTenant'] == null ? null : map['targetTenant'] as String,
+      targetId: (map['targetId'] as String).input(),
+      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant'] as String).input(),
     );
   }
 }

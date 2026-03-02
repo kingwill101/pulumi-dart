@@ -35,23 +35,15 @@ class SubscriptionDiagnosticSettingArgs {
   /// [storageAccountId] The resource ID of the storage account to which you would like to send Diagnostic Logs.
   /// [workspaceId] The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
   SubscriptionDiagnosticSettingArgs({
-    pulumi.Output<String>? eventHubAuthorizationRuleId,
-    pulumi.Output<String>? eventHubName,
-    pulumi.Output<List<SubscriptionLogSettings>>? logs,
-    pulumi.Output<String>? marketplacePartnerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serviceBusRuleId,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      eventHubAuthorizationRuleId = pulumi.Input.asOptionalInput<String>(eventHubAuthorizationRuleId),
-      eventHubName = pulumi.Input.asOptionalInput<String>(eventHubName),
-      logs = pulumi.Input.asOptionalInput<List<SubscriptionLogSettings>>(logs),
-      marketplacePartnerId = pulumi.Input.asOptionalInput<String>(marketplacePartnerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serviceBusRuleId = pulumi.Input.asOptionalInput<String>(serviceBusRuleId),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.eventHubAuthorizationRuleId,
+    this.eventHubName,
+    this.logs,
+    this.marketplacePartnerId,
+    this.name,
+    this.serviceBusRuleId,
+    this.storageAccountId,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class SubscriptionDiagnosticSettingArgs {
 
   factory SubscriptionDiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionDiagnosticSettingArgs(
-      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : pulumi.Output.create<String>(map['eventHubAuthorizationRuleId'] as String),
-      eventHubName: map['eventHubName'] == null ? null : pulumi.Output.create<String>(map['eventHubName'] as String),
-      logs: map['logs'] == null ? null : pulumi.Output.create<List<SubscriptionLogSettings>>(pulumi.Input.decodeList<SubscriptionLogSettings>(map['logs'], (value) => SubscriptionLogSettings.fromMap((value as Map).cast<String, dynamic>()))),
-      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : pulumi.Output.create<String>(map['marketplacePartnerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : pulumi.Output.create<String>(map['serviceBusRuleId'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : (map['eventHubAuthorizationRuleId'] as String).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
+      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<SubscriptionLogSettings>(map['logs'], (value) => SubscriptionLogSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : (map['marketplacePartnerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : (map['serviceBusRuleId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

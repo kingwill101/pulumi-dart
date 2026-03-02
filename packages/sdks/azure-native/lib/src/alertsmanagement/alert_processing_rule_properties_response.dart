@@ -8,17 +8,17 @@ import 'schedule_response.dart';
 /// Alert processing rule properties defining scopes, conditions and scheduling logic for alert processing rule.
 class AlertProcessingRulePropertiesResponse {
   /// Actions to be applied.
-  final List<AddActionGroupsResponse> actions;
+  final pulumi.Input<List<AddActionGroupsResponse>> actions;
   /// Conditions on which alerts will be filtered.
-  final List<ConditionResponse>? conditions;
+  final pulumi.Input<List<ConditionResponse>>? conditions;
   /// Description of alert processing rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Indicates if the given alert processing rule is enabled or disabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Scheduling for alert processing rule.
-  final ScheduleResponse? schedule;
+  final pulumi.Input<ScheduleResponse>? schedule;
   /// Scopes on which alert processing rule will apply.
-  final List<String> scopes;
+  final pulumi.Input<List<String>> scopes;
 
   /// Creates a new [AlertProcessingRulePropertiesResponse].
   /// [actions] Actions to be applied.
@@ -38,23 +38,23 @@ class AlertProcessingRulePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<AddActionGroupsResponse, Map<String, dynamic>>(actions, (value) => value.toMap()),
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'actions': pulumi.Input.mapInputValue<List<AddActionGroupsResponse>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<AddActionGroupsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'enabled': ?enabled,
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<ScheduleResponse, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'scopes': scopes,
     };
   }
 
   factory AlertProcessingRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRulePropertiesResponse(
-      actions: pulumi.Input.decodeList<AddActionGroupsResponse>(map['actions'], (value) => AddActionGroupsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ConditionResponse>(map['conditions'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      schedule: map['schedule'] == null ? null : ScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
-      scopes: (map['scopes'] as List).cast<String>(),
+      actions: (pulumi.Input.decodeList<AddActionGroupsResponse>(map['actions'], (value) => AddActionGroupsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionResponse>(map['conditions'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      schedule: map['schedule'] == null ? null : (ScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

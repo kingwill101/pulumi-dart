@@ -16,11 +16,9 @@ class GetVirtualEnclaveArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   GetVirtualEnclaveArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualEnclaveName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualEnclaveName = pulumi.Input.asInput<String>(virtualEnclaveName);
+    required this.resourceGroupName,
+    required this.virtualEnclaveName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualEnclaveArgs {
 
   factory GetVirtualEnclaveArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualEnclaveArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualEnclaveName: pulumi.Output.create<String>(map['virtualEnclaveName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
     );
   }
 }

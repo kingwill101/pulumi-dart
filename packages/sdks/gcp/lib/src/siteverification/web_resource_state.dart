@@ -24,15 +24,11 @@ class WebResourceState {
   /// [verificationMethod] The verification method for the Site Verification system to use to verify
   /// [webResourceId] The string used to identify this web resource.
   WebResourceState({
-    pulumi.Output<List<String>>? owners,
-    pulumi.Output<WebResourceSite>? site,
-    pulumi.Output<String>? verificationMethod,
-    pulumi.Output<String>? webResourceId,
-  }) :
-      owners = pulumi.Input.asOptionalInput<List<String>>(owners),
-      site = pulumi.Input.asOptionalInput<WebResourceSite>(site),
-      verificationMethod = pulumi.Input.asOptionalInput<String>(verificationMethod),
-      webResourceId = pulumi.Input.asOptionalInput<String>(webResourceId);
+    this.owners,
+    this.site,
+    this.verificationMethod,
+    this.webResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class WebResourceState {
 
   factory WebResourceState.fromMap(Map<String, dynamic> map) {
     return WebResourceState(
-      owners: map['owners'] == null ? null : pulumi.Output.create<List<String>>((map['owners'] as List).cast<String>()),
-      site: map['site'] == null ? null : pulumi.Output.create<WebResourceSite>(WebResourceSite.fromMap((map['site'] as Map).cast<String, dynamic>())),
-      verificationMethod: map['verificationMethod'] == null ? null : pulumi.Output.create<String>(map['verificationMethod'] as String),
-      webResourceId: map['webResourceId'] == null ? null : pulumi.Output.create<String>(map['webResourceId'] as String),
+      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
+      site: map['site'] == null ? null : (WebResourceSite.fromMap((map['site'] as Map).cast<String, dynamic>())).input(),
+      verificationMethod: map['verificationMethod'] == null ? null : (map['verificationMethod'] as String).input(),
+      webResourceId: map['webResourceId'] == null ? null : (map['webResourceId'] as String).input(),
     );
   }
 }

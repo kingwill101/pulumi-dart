@@ -40,27 +40,17 @@ class CapacityPoolVolumeQuotaRuleArgs {
   /// [volumeName] The name of the volume
   /// [volumeQuotaRuleName] The name of volume quota rule
   CapacityPoolVolumeQuotaRuleArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> poolName,
-    pulumi.Output<double>? quotaSizeInKiBs,
-    pulumi.Output<String>? quotaTarget,
-    pulumi.Output<String>? quotaType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> volumeName,
-    pulumi.Output<String>? volumeQuotaRuleName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      quotaSizeInKiBs = pulumi.Input.asOptionalInput<double>(quotaSizeInKiBs),
-      quotaTarget = pulumi.Input.asOptionalInput<String>(quotaTarget),
-      quotaType = pulumi.Input.asOptionalInput<String>(quotaType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      volumeName = pulumi.Input.asInput<String>(volumeName),
-      volumeQuotaRuleName = pulumi.Input.asOptionalInput<String>(volumeQuotaRuleName);
+    required this.accountName,
+    this.location,
+    required this.poolName,
+    this.quotaSizeInKiBs,
+    this.quotaTarget,
+    this.quotaType,
+    required this.resourceGroupName,
+    this.tags,
+    required this.volumeName,
+    this.volumeQuotaRuleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class CapacityPoolVolumeQuotaRuleArgs {
 
   factory CapacityPoolVolumeQuotaRuleArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolVolumeQuotaRuleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      quotaSizeInKiBs: map['quotaSizeInKiBs'] == null ? null : pulumi.Output.create<double>(map['quotaSizeInKiBs'] as double),
-      quotaTarget: map['quotaTarget'] == null ? null : pulumi.Output.create<String>(map['quotaTarget'] as String),
-      quotaType: map['quotaType'] == null ? null : pulumi.Output.create<String>(map['quotaType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
-      volumeQuotaRuleName: map['volumeQuotaRuleName'] == null ? null : pulumi.Output.create<String>(map['volumeQuotaRuleName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      quotaSizeInKiBs: map['quotaSizeInKiBs'] == null ? null : (map['quotaSizeInKiBs'] as double).input(),
+      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget'] as String).input(),
+      quotaType: map['quotaType'] == null ? null : (map['quotaType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      volumeName: (map['volumeName'] as String).input(),
+      volumeQuotaRuleName: map['volumeQuotaRuleName'] == null ? null : (map['volumeQuotaRuleName'] as String).input(),
     );
   }
 }

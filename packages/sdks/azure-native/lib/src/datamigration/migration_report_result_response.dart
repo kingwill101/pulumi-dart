@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Migration validation report result, contains the url for downloading the generated report.
 class MigrationReportResultResponse {
   /// Migration validation result identifier
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The url of the report.
-  final String? reportUrl;
+  final pulumi.Input<String>? reportUrl;
 
   /// Creates a new [MigrationReportResultResponse].
   /// [id] Migration validation result identifier
@@ -25,8 +26,8 @@ class MigrationReportResultResponse {
 
   factory MigrationReportResultResponse.fromMap(Map<String, dynamic> map) {
     return MigrationReportResultResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      reportUrl: map['reportUrl'] == null ? null : map['reportUrl'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      reportUrl: map['reportUrl'] == null ? null : (map['reportUrl'] as String).input(),
     );
   }
 }

@@ -8,37 +8,37 @@ import 'token_auth_configuration_response.dart';
 
 class ResourceTypeEndpointResponse {
   /// Api version.
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// The api versions.
-  final List<String>? apiVersions;
+  final pulumi.Input<List<String>>? apiVersions;
   /// The data boundary.
-  final String? dataBoundary;
+  final pulumi.Input<String>? dataBoundary;
   /// The dsts configuration.
-  final ResourceTypeEndpointDstsConfigurationResponse? dstsConfiguration;
+  final pulumi.Input<ResourceTypeEndpointDstsConfigurationResponse>? dstsConfiguration;
   /// Whether the endpoint is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The endpoint type.
-  final String? endpointType;
+  final pulumi.Input<String>? endpointType;
   /// The endpoint uri.
-  final String? endpointUri;
+  final pulumi.Input<String>? endpointUri;
   /// The extensions.
-  final List<ResourceTypeExtensionResponse>? extensions;
+  final pulumi.Input<List<ResourceTypeExtensionResponse>>? extensions;
   /// The features rule.
-  final ResourceTypeEndpointFeaturesRuleResponse? featuresRule;
+  final pulumi.Input<ResourceTypeEndpointFeaturesRuleResponse>? featuresRule;
   /// Resource type endpoint kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The locations.
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// The required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
   /// The sku link.
-  final String? skuLink;
+  final pulumi.Input<String>? skuLink;
   /// The timeout.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
   /// The token auth configuration.
-  final TokenAuthConfigurationResponse? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfigurationResponse>? tokenAuthConfiguration;
   /// List of zones.
-  final List<String>? zones;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [ResourceTypeEndpointResponse].
   /// [apiVersion] Api version.
@@ -81,40 +81,40 @@ class ResourceTypeEndpointResponse {
       'apiVersion': ?apiVersion,
       'apiVersions': ?apiVersions,
       'dataBoundary': ?dataBoundary,
-      'dstsConfiguration': ?dstsConfiguration == null ? null : dstsConfiguration!.toMap(),
+      'dstsConfiguration': ?pulumi.Input.mapOptionalInputValue<ResourceTypeEndpointDstsConfigurationResponse, Map<String, dynamic>>(dstsConfiguration, (value) => value.toMap()),
       'enabled': ?enabled,
       'endpointType': ?endpointType,
       'endpointUri': ?endpointUri,
-      'extensions': ?extensions == null ? null : pulumi.Input.encodeList<ResourceTypeExtensionResponse, Map<String, dynamic>>(extensions!, (value) => value.toMap()),
-      'featuresRule': ?featuresRule == null ? null : featuresRule!.toMap(),
+      'extensions': ?pulumi.Input.mapOptionalInputValue<List<ResourceTypeExtensionResponse>, List<Map<String, dynamic>>>(extensions, (value) => pulumi.Input.encodeList<ResourceTypeExtensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'featuresRule': ?pulumi.Input.mapOptionalInputValue<ResourceTypeEndpointFeaturesRuleResponse, Map<String, dynamic>>(featuresRule, (value) => value.toMap()),
       'kind': ?kind,
       'locations': ?locations,
       'requiredFeatures': ?requiredFeatures,
       'skuLink': ?skuLink,
       'timeout': ?timeout,
-      'tokenAuthConfiguration': ?tokenAuthConfiguration == null ? null : tokenAuthConfiguration!.toMap(),
+      'tokenAuthConfiguration': ?pulumi.Input.mapOptionalInputValue<TokenAuthConfigurationResponse, Map<String, dynamic>>(tokenAuthConfiguration, (value) => value.toMap()),
       'zones': ?zones,
     };
   }
 
   factory ResourceTypeEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeEndpointResponse(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      apiVersions: map['apiVersions'] == null ? null : (map['apiVersions'] as List).cast<String>(),
-      dataBoundary: map['dataBoundary'] == null ? null : map['dataBoundary'] as String,
-      dstsConfiguration: map['dstsConfiguration'] == null ? null : ResourceTypeEndpointDstsConfigurationResponse.fromMap((map['dstsConfiguration'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
-      endpointUri: map['endpointUri'] == null ? null : map['endpointUri'] as String,
-      extensions: map['extensions'] == null ? null : pulumi.Input.decodeList<ResourceTypeExtensionResponse>(map['extensions'], (value) => ResourceTypeExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      featuresRule: map['featuresRule'] == null ? null : ResourceTypeEndpointFeaturesRuleResponse.fromMap((map['featuresRule'] as Map).cast<String, dynamic>()),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
-      skuLink: map['skuLink'] == null ? null : map['skuLink'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
-      tokenAuthConfiguration: map['tokenAuthConfiguration'] == null ? null : TokenAuthConfigurationResponse.fromMap((map['tokenAuthConfiguration'] as Map).cast<String, dynamic>()),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions'] as List).cast<String>()).input(),
+      dataBoundary: map['dataBoundary'] == null ? null : (map['dataBoundary'] as String).input(),
+      dstsConfiguration: map['dstsConfiguration'] == null ? null : (ResourceTypeEndpointDstsConfigurationResponse.fromMap((map['dstsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<ResourceTypeExtensionResponse>(map['extensions'], (value) => ResourceTypeExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      featuresRule: map['featuresRule'] == null ? null : (ResourceTypeEndpointFeaturesRuleResponse.fromMap((map['featuresRule'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
+      skuLink: map['skuLink'] == null ? null : (map['skuLink'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      tokenAuthConfiguration: map['tokenAuthConfiguration'] == null ? null : (TokenAuthConfigurationResponse.fromMap((map['tokenAuthConfiguration'] as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

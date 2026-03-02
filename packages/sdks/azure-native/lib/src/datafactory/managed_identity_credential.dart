@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed identity credential.
 class ManagedIdentityCredential {
   /// List of tags that can be used for describing the Credential.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Credential description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The resource id of user assigned managed identity
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Type of credential.
   /// Expected value is 'ManagedIdentity'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedIdentityCredential].
   /// [annotations] List of tags that can be used for describing the Credential.
@@ -36,10 +37,10 @@ class ManagedIdentityCredential {
 
   factory ManagedIdentityCredential.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityCredential(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

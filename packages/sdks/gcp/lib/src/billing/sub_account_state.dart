@@ -28,19 +28,13 @@ class SubAccountState {
   /// [name] The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
   /// [open] `true` if the billing account is open, `false` if the billing account is closed.
   SubAccountState({
-    pulumi.Output<String>? billingAccountId,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? masterBillingAccount,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? open,
-  }) :
-      billingAccountId = pulumi.Input.asOptionalInput<String>(billingAccountId),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      masterBillingAccount = pulumi.Input.asOptionalInput<String>(masterBillingAccount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      open = pulumi.Input.asOptionalInput<bool>(open);
+    this.billingAccountId,
+    this.deletionPolicy,
+    this.displayName,
+    this.masterBillingAccount,
+    this.name,
+    this.open,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SubAccountState {
 
   factory SubAccountState.fromMap(Map<String, dynamic> map) {
     return SubAccountState(
-      billingAccountId: map['billingAccountId'] == null ? null : pulumi.Output.create<String>(map['billingAccountId'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      masterBillingAccount: map['masterBillingAccount'] == null ? null : pulumi.Output.create<String>(map['masterBillingAccount'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      open: map['open'] == null ? null : pulumi.Output.create<bool>(map['open'] as bool),
+      billingAccountId: map['billingAccountId'] == null ? null : (map['billingAccountId'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      masterBillingAccount: map['masterBillingAccount'] == null ? null : (map['masterBillingAccount'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      open: map['open'] == null ? null : (map['open'] as bool).input(),
     );
   }
 }

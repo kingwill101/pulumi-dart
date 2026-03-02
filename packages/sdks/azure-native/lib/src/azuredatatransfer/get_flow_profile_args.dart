@@ -19,13 +19,10 @@ class GetFlowProfileArgs {
   /// [pipelineName] The name of the pipeline on which to operate.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFlowProfileArgs({
-    required pulumi.Output<String> flowProfileName,
-    required pulumi.Output<String> pipelineName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      flowProfileName = pulumi.Input.asInput<String>(flowProfileName),
-      pipelineName = pulumi.Input.asInput<String>(pipelineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.flowProfileName,
+    required this.pipelineName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFlowProfileArgs {
 
   factory GetFlowProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowProfileArgs(
-      flowProfileName: pulumi.Output.create<String>(map['flowProfileName'] as String),
-      pipelineName: pulumi.Output.create<String>(map['pipelineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      flowProfileName: (map['flowProfileName'] as String).input(),
+      pipelineName: (map['pipelineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

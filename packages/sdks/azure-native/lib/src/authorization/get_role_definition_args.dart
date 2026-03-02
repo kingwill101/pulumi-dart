@@ -16,11 +16,9 @@ class GetRoleDefinitionArgs {
   /// [roleDefinitionId] The ID of the role definition.
   /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   GetRoleDefinitionArgs({
-    required pulumi.Output<String> roleDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.roleDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRoleDefinitionArgs {
 
   factory GetRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleDefinitionArgs(
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

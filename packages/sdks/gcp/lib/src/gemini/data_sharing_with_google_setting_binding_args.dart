@@ -34,21 +34,14 @@ class DataSharingWithGoogleSettingBindingArgs {
   /// [settingBindingId] Required. Id of the setting binding.
   /// [target] Target of the binding.
   DataSharingWithGoogleSettingBindingArgs({
-    required pulumi.Output<String> dataSharingWithGoogleSettingId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? product,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> settingBindingId,
-    required pulumi.Output<String> target,
-  }) :
-      dataSharingWithGoogleSettingId = pulumi.Input.asInput<String>(dataSharingWithGoogleSettingId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      product = pulumi.Input.asOptionalInput<String>(product),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      settingBindingId = pulumi.Input.asInput<String>(settingBindingId),
-      target = pulumi.Input.asInput<String>(target);
+    required this.dataSharingWithGoogleSettingId,
+    this.labels,
+    this.location,
+    this.product,
+    this.project,
+    required this.settingBindingId,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class DataSharingWithGoogleSettingBindingArgs {
 
   factory DataSharingWithGoogleSettingBindingArgs.fromMap(Map<String, dynamic> map) {
     return DataSharingWithGoogleSettingBindingArgs(
-      dataSharingWithGoogleSettingId: pulumi.Output.create<String>(map['dataSharingWithGoogleSettingId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      product: map['product'] == null ? null : pulumi.Output.create<String>(map['product'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      settingBindingId: pulumi.Output.create<String>(map['settingBindingId'] as String),
-      target: pulumi.Output.create<String>(map['target'] as String),
+      dataSharingWithGoogleSettingId: (map['dataSharingWithGoogleSettingId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      settingBindingId: (map['settingBindingId'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

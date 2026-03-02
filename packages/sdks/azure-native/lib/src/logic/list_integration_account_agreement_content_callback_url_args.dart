@@ -25,17 +25,12 @@ class ListIntegrationAccountAgreementContentCallbackUrlArgs {
   /// [notAfter] The expiry time.
   /// [resourceGroupName] The resource group name.
   ListIntegrationAccountAgreementContentCallbackUrlArgs({
-    required pulumi.Output<String> agreementName,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? keyType,
-    pulumi.Output<String>? notAfter,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      agreementName = pulumi.Input.asInput<String>(agreementName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      keyType = pulumi.Input.asOptionalInput<String>(keyType),
-      notAfter = pulumi.Input.asOptionalInput<String>(notAfter),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.agreementName,
+    required this.integrationAccountName,
+    this.keyType,
+    this.notAfter,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ListIntegrationAccountAgreementContentCallbackUrlArgs {
 
   factory ListIntegrationAccountAgreementContentCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListIntegrationAccountAgreementContentCallbackUrlArgs(
-      agreementName: pulumi.Output.create<String>(map['agreementName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      keyType: map['keyType'] == null ? null : pulumi.Output.create<String>(map['keyType'] as String),
-      notAfter: map['notAfter'] == null ? null : pulumi.Output.create<String>(map['notAfter'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      agreementName: (map['agreementName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

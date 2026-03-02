@@ -13,9 +13,8 @@ class BucketDataRedundancyTransitionArgs {
   /// Creates a new [BucketDataRedundancyTransitionArgs].
   /// [bucket] Storage space name.
   BucketDataRedundancyTransitionArgs({
-    required pulumi.Output<String> bucket,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket);
+    required this.bucket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class BucketDataRedundancyTransitionArgs {
 
   factory BucketDataRedundancyTransitionArgs.fromMap(Map<String, dynamic> map) {
     return BucketDataRedundancyTransitionArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
+      bucket: (map['bucket'] as String).input(),
     );
   }
 }

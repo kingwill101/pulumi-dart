@@ -6,22 +6,22 @@ import 'ssis_parameter_response.dart';
 /// Ssis Package.
 class SsisPackageResponse {
   /// Metadata description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Folder id which contains package.
-  final double? folderId;
+  final pulumi.Input<double>? folderId;
   /// Metadata id.
-  final double? id;
+  final pulumi.Input<double>? id;
   /// Metadata name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Parameters in package
-  final List<SsisParameterResponse>? parameters;
+  final pulumi.Input<List<SsisParameterResponse>>? parameters;
   /// Project id which contains package.
-  final double? projectId;
+  final pulumi.Input<double>? projectId;
   /// Project version which contains package.
-  final double? projectVersion;
+  final pulumi.Input<double>? projectVersion;
   /// The type of SSIS object metadata.
   /// Expected value is 'Package'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SsisPackageResponse].
   /// [description] Metadata description.
@@ -49,7 +49,7 @@ class SsisPackageResponse {
       'folderId': ?folderId,
       'id': ?id,
       'name': ?name,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<SsisParameterResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<SsisParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<SsisParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'projectId': ?projectId,
       'projectVersion': ?projectVersion,
       'type': type,
@@ -58,14 +58,14 @@ class SsisPackageResponse {
 
   factory SsisPackageResponse.fromMap(Map<String, dynamic> map) {
     return SsisPackageResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      folderId: map['folderId'] == null ? null : map['folderId'] as double,
-      id: map['id'] == null ? null : map['id'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<SsisParameterResponse>(map['parameters'], (value) => SsisParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      projectId: map['projectId'] == null ? null : map['projectId'] as double,
-      projectVersion: map['projectVersion'] == null ? null : map['projectVersion'] as double,
-      type: map['type'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as double).input(),
+      id: map['id'] == null ? null : (map['id'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SsisParameterResponse>(map['parameters'], (value) => SsisParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as double).input(),
+      projectVersion: map['projectVersion'] == null ? null : (map['projectVersion'] as double).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

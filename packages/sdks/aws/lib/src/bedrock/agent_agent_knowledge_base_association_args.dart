@@ -33,21 +33,14 @@ class AgentAgentKnowledgeBaseAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   AgentAgentKnowledgeBaseAssociationArgs({
-    required pulumi.Output<String> agentId,
-    pulumi.Output<String>? agentVersion,
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> knowledgeBaseId,
-    required pulumi.Output<String> knowledgeBaseState,
-    pulumi.Output<String>? region,
-    pulumi.Output<AgentAgentKnowledgeBaseAssociationTimeouts>? timeouts,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      agentVersion = pulumi.Input.asOptionalInput<String>(agentVersion),
-      description = pulumi.Input.asInput<String>(description),
-      knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
-      knowledgeBaseState = pulumi.Input.asInput<String>(knowledgeBaseState),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<AgentAgentKnowledgeBaseAssociationTimeouts>(timeouts);
+    required this.agentId,
+    this.agentVersion,
+    required this.description,
+    required this.knowledgeBaseId,
+    required this.knowledgeBaseState,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AgentAgentKnowledgeBaseAssociationArgs {
 
   factory AgentAgentKnowledgeBaseAssociationArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentKnowledgeBaseAssociationArgs(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      agentVersion: map['agentVersion'] == null ? null : pulumi.Output.create<String>(map['agentVersion'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      knowledgeBaseId: pulumi.Output.create<String>(map['knowledgeBaseId'] as String),
-      knowledgeBaseState: pulumi.Output.create<String>(map['knowledgeBaseState'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentAgentKnowledgeBaseAssociationTimeouts>(AgentAgentKnowledgeBaseAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      agentId: (map['agentId'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      description: (map['description'] as String).input(),
+      knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
+      knowledgeBaseState: (map['knowledgeBaseState'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentAgentKnowledgeBaseAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

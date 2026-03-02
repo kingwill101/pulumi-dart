@@ -42,21 +42,14 @@ class ScopeRbacRoleBindingArgs {
   /// [scopeRbacRoleBindingId] The client-provided identifier of the RBAC Role Binding.
   /// [user] Principal that is be authorized in the cluster (at least of one the oneof
   ScopeRbacRoleBindingArgs({
-    pulumi.Output<String>? group,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<ScopeRbacRoleBindingRole> role,
-    required pulumi.Output<String> scopeId,
-    required pulumi.Output<String> scopeRbacRoleBindingId,
-    pulumi.Output<String>? user,
-  }) :
-      group = pulumi.Input.asOptionalInput<String>(group),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<ScopeRbacRoleBindingRole>(role),
-      scopeId = pulumi.Input.asInput<String>(scopeId),
-      scopeRbacRoleBindingId = pulumi.Input.asInput<String>(scopeRbacRoleBindingId),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.group,
+    this.labels,
+    this.project,
+    required this.role,
+    required this.scopeId,
+    required this.scopeRbacRoleBindingId,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,13 +65,13 @@ class ScopeRbacRoleBindingArgs {
 
   factory ScopeRbacRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return ScopeRbacRoleBindingArgs(
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<ScopeRbacRoleBindingRole>(ScopeRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
-      scopeRbacRoleBindingId: pulumi.Output.create<String>(map['scopeRbacRoleBindingId'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (ScopeRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      scopeRbacRoleBindingId: (map['scopeRbacRoleBindingId'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

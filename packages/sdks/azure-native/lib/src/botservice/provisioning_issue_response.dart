@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'provisioning_issue_properties_response.dart';
 
 /// Describes Provisioning issue for given Network Security Perimeter configuration
 class ProvisioningIssueResponse {
   /// Name of the issue
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Properties of Provisioning Issue
-  final ProvisioningIssuePropertiesResponse properties;
+  final pulumi.Input<ProvisioningIssuePropertiesResponse> properties;
 
   /// Creates a new [ProvisioningIssueResponse].
   /// [name] Name of the issue
@@ -20,14 +21,14 @@ class ProvisioningIssueResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<ProvisioningIssuePropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory ProvisioningIssueResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningIssueResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      properties: ProvisioningIssuePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: (ProvisioningIssuePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

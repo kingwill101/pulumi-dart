@@ -45,29 +45,18 @@ class NetworkOptimizationArgs {
   /// [uploadMaxFilesize] Maximum upload file size, in MB, value range: 100～500.
   /// [websocket] Whether to enable Websocket, default is enabled. Value range:
   NetworkOptimizationArgs({
-    pulumi.Output<String>? grpc,
-    pulumi.Output<String>? http2Origin,
-    pulumi.Output<String>? rule,
-    pulumi.Output<String>? ruleEnable,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<int>? sequence,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<int>? siteVersion,
-    pulumi.Output<String>? smartRouting,
-    pulumi.Output<String>? uploadMaxFilesize,
-    pulumi.Output<String>? websocket,
-  }) :
-      grpc = pulumi.Input.asOptionalInput<String>(grpc),
-      http2Origin = pulumi.Input.asOptionalInput<String>(http2Origin),
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      ruleEnable = pulumi.Input.asOptionalInput<String>(ruleEnable),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      sequence = pulumi.Input.asOptionalInput<int>(sequence),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion),
-      smartRouting = pulumi.Input.asOptionalInput<String>(smartRouting),
-      uploadMaxFilesize = pulumi.Input.asOptionalInput<String>(uploadMaxFilesize),
-      websocket = pulumi.Input.asOptionalInput<String>(websocket);
+    this.grpc,
+    this.http2Origin,
+    this.rule,
+    this.ruleEnable,
+    this.ruleName,
+    this.sequence,
+    required this.siteId,
+    this.siteVersion,
+    this.smartRouting,
+    this.uploadMaxFilesize,
+    this.websocket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class NetworkOptimizationArgs {
 
   factory NetworkOptimizationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkOptimizationArgs(
-      grpc: map['grpc'] == null ? null : pulumi.Output.create<String>(map['grpc'] as String),
-      http2Origin: map['http2Origin'] == null ? null : pulumi.Output.create<String>(map['http2Origin'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      ruleEnable: map['ruleEnable'] == null ? null : pulumi.Output.create<String>(map['ruleEnable'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      sequence: map['sequence'] == null ? null : pulumi.Output.create<int>(map['sequence'] as int),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
-      smartRouting: map['smartRouting'] == null ? null : pulumi.Output.create<String>(map['smartRouting'] as String),
-      uploadMaxFilesize: map['uploadMaxFilesize'] == null ? null : pulumi.Output.create<String>(map['uploadMaxFilesize'] as String),
-      websocket: map['websocket'] == null ? null : pulumi.Output.create<String>(map['websocket'] as String),
+      grpc: map['grpc'] == null ? null : (map['grpc'] as String).input(),
+      http2Origin: map['http2Origin'] == null ? null : (map['http2Origin'] as String).input(),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      siteId: (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      smartRouting: map['smartRouting'] == null ? null : (map['smartRouting'] as String).input(),
+      uploadMaxFilesize: map['uploadMaxFilesize'] == null ? null : (map['uploadMaxFilesize'] as String).input(),
+      websocket: map['websocket'] == null ? null : (map['websocket'] as String).input(),
     );
   }
 }

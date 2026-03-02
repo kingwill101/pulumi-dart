@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountDataStore {
   /// The ID of the Storage Account that should be linked to this Azure Maps Account.
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
   /// The name given to the linked Storage Account.
-  final String uniqueName;
+  final pulumi.Input<String> uniqueName;
 
   /// Creates a new [AccountDataStore].
   /// [storageAccountId] The ID of the Storage Account that should be linked to this Azure Maps Account.
@@ -24,8 +25,8 @@ class AccountDataStore {
 
   factory AccountDataStore.fromMap(Map<String, dynamic> map) {
     return AccountDataStore(
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      uniqueName: map['uniqueName'] as String,
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      uniqueName: (map['uniqueName'] as String).input(),
     );
   }
 }

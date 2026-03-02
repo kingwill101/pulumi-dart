@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future.
 class TopologySelectorLabelRequirement {
   /// The label key that the selector applies to.
-  final String key;
+  final pulumi.Input<String> key;
   /// An array of string values. One value must match the label to be selected. Each entry in Values is ORed.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [TopologySelectorLabelRequirement].
   /// [key] The label key that the selector applies to.
@@ -25,8 +26,8 @@ class TopologySelectorLabelRequirement {
 
   factory TopologySelectorLabelRequirement.fromMap(Map<String, dynamic> map) {
     return TopologySelectorLabelRequirement(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

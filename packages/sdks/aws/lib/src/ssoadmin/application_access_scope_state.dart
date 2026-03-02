@@ -21,15 +21,11 @@ class ApplicationAccessScopeState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scope] Specifies the name of the access scope to be associated with the specified targets.
   ApplicationAccessScopeState({
-    pulumi.Output<String>? applicationArn,
-    pulumi.Output<List<String>>? authorizedTargets,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? scope,
-  }) :
-      applicationArn = pulumi.Input.asOptionalInput<String>(applicationArn),
-      authorizedTargets = pulumi.Input.asOptionalInput<List<String>>(authorizedTargets),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.applicationArn,
+    this.authorizedTargets,
+    this.region,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ApplicationAccessScopeState {
 
   factory ApplicationAccessScopeState.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessScopeState(
-      applicationArn: map['applicationArn'] == null ? null : pulumi.Output.create<String>(map['applicationArn'] as String),
-      authorizedTargets: map['authorizedTargets'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedTargets'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
+      authorizedTargets: map['authorizedTargets'] == null ? null : ((map['authorizedTargets'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

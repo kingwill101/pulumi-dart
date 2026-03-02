@@ -30,21 +30,14 @@ class DatabaseReplicaArgs {
   /// [storageSizeMib] Optional.
   /// [tags] A list of tag names to be applied to the database replica.
   DatabaseReplicaArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateNetworkUuid,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? size,
-    pulumi.Output<String>? storageSizeMib,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateNetworkUuid = pulumi.Input.asOptionalInput<String>(privateNetworkUuid),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      size = pulumi.Input.asOptionalInput<String>(size),
-      storageSizeMib = pulumi.Input.asOptionalInput<String>(storageSizeMib),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    required this.clusterId,
+    this.name,
+    this.privateNetworkUuid,
+    this.region,
+    this.size,
+    this.storageSizeMib,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class DatabaseReplicaArgs {
 
   factory DatabaseReplicaArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseReplicaArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : pulumi.Output.create<String>(map['privateNetworkUuid'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<String>(map['size'] as String),
-      storageSizeMib: map['storageSizeMib'] == null ? null : pulumi.Output.create<String>(map['storageSizeMib'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      clusterId: (map['clusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : (map['privateNetworkUuid'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      storageSizeMib: map['storageSizeMib'] == null ? null : (map['storageSizeMib'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicationInstanceKerberosAuthenticationSettings {
   /// ARN of the IAM role that grants AWS DMS access to the secret containing key cache file for the Kerberos authentication.
-  final String keyCacheSecretIamArn;
+  final pulumi.Input<String> keyCacheSecretIamArn;
   /// Secret ID that stores the key cache file required for Kerberos authentication.
-  final String keyCacheSecretId;
+  final pulumi.Input<String> keyCacheSecretId;
   /// Contents of krb5 configuration file required for Kerberos authentication.
-  final String krb5FileContents;
+  final pulumi.Input<String> krb5FileContents;
 
   /// Creates a new [ReplicationInstanceKerberosAuthenticationSettings].
   /// [keyCacheSecretIamArn] ARN of the IAM role that grants AWS DMS access to the secret containing key cache file for the Kerberos authentication.
@@ -29,9 +30,9 @@ class ReplicationInstanceKerberosAuthenticationSettings {
 
   factory ReplicationInstanceKerberosAuthenticationSettings.fromMap(Map<String, dynamic> map) {
     return ReplicationInstanceKerberosAuthenticationSettings(
-      keyCacheSecretIamArn: map['keyCacheSecretIamArn'] as String,
-      keyCacheSecretId: map['keyCacheSecretId'] as String,
-      krb5FileContents: map['krb5FileContents'] as String,
+      keyCacheSecretIamArn: (map['keyCacheSecretIamArn'] as String).input(),
+      keyCacheSecretId: (map['keyCacheSecretId'] as String).input(),
+      krb5FileContents: (map['krb5FileContents'] as String).input(),
     );
   }
 }

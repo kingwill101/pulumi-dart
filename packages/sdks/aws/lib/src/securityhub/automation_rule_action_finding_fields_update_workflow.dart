@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleActionFindingFieldsUpdateWorkflow {
   /// The status of the investigation into the finding. The allowed values are the following `NEW`, `NOTIFIED`, `RESOLVED` and `SUPPRESSED`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateWorkflow].
   /// [status] The status of the investigation into the finding. The allowed values are the following `NEW`, `NOTIFIED`, `RESOLVED` and `SUPPRESSED`.
@@ -19,7 +20,7 @@ class AutomationRuleActionFindingFieldsUpdateWorkflow {
 
   factory AutomationRuleActionFindingFieldsUpdateWorkflow.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdateWorkflow(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

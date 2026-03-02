@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolSourceDeviceFreeExtent {
   /// Indicates the end value for the free extents available in the source device.
-  final double end;
+  final pulumi.Input<double> end;
   /// Defines the starting point for the free extents in the source device.
-  final double start;
+  final pulumi.Input<double> start;
 
   /// Creates a new [PoolSourceDeviceFreeExtent].
   /// [end] Indicates the end value for the free extents available in the source device.
@@ -24,8 +25,8 @@ class PoolSourceDeviceFreeExtent {
 
   factory PoolSourceDeviceFreeExtent.fromMap(Map<String, dynamic> map) {
     return PoolSourceDeviceFreeExtent(
-      end: map['end'] as double,
-      start: map['start'] as double,
+      end: (map['end'] as double).input(),
+      start: (map['start'] as double).input(),
     );
   }
 }

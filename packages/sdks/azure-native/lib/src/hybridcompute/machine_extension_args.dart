@@ -29,19 +29,13 @@ class MachineExtensionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   MachineExtensionArgs({
-    pulumi.Output<String>? extensionName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> machineName,
-    pulumi.Output<MachineExtensionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extensionName = pulumi.Input.asOptionalInput<String>(extensionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      machineName = pulumi.Input.asInput<String>(machineName),
-      properties = pulumi.Input.asOptionalInput<MachineExtensionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extensionName,
+    this.location,
+    required this.machineName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class MachineExtensionArgs {
 
   factory MachineExtensionArgs.fromMap(Map<String, dynamic> map) {
     return MachineExtensionArgs(
-      extensionName: map['extensionName'] == null ? null : pulumi.Output.create<String>(map['extensionName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MachineExtensionProperties>(MachineExtensionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      properties: map['properties'] == null ? null : (MachineExtensionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

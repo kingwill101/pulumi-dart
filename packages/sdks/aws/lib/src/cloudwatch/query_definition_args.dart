@@ -22,15 +22,11 @@ class QueryDefinitionArgs {
   /// [queryString] The query to save. You can read more about CloudWatch Logs Query Syntax in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   QueryDefinitionArgs({
-    pulumi.Output<List<String>>? logGroupNames,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> queryString,
-    pulumi.Output<String>? region,
-  }) :
-      logGroupNames = pulumi.Input.asOptionalInput<List<String>>(logGroupNames),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryString = pulumi.Input.asInput<String>(queryString),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.logGroupNames,
+    this.name,
+    required this.queryString,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class QueryDefinitionArgs {
 
   factory QueryDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return QueryDefinitionArgs(
-      logGroupNames: map['logGroupNames'] == null ? null : pulumi.Output.create<List<String>>((map['logGroupNames'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryString: pulumi.Output.create<String>(map['queryString'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      logGroupNames: map['logGroupNames'] == null ? null : ((map['logGroupNames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryString: (map['queryString'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetExpressRoutePortArgs {
   /// [expressRoutePortName] The name of ExpressRoutePort.
   /// [resourceGroupName] The name of the resource group.
   GetExpressRoutePortArgs({
-    required pulumi.Output<String> expressRoutePortName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expressRoutePortName = pulumi.Input.asInput<String>(expressRoutePortName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.expressRoutePortName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetExpressRoutePortArgs {
 
   factory GetExpressRoutePortArgs.fromMap(Map<String, dynamic> map) {
     return GetExpressRoutePortArgs(
-      expressRoutePortName: pulumi.Output.create<String>(map['expressRoutePortName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expressRoutePortName: (map['expressRoutePortName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

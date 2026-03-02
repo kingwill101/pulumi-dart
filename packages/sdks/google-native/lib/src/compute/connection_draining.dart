@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message containing connection draining configuration.
 class ConnectionDraining {
   /// Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
-  final int? drainingTimeoutSec;
+  final pulumi.Input<int>? drainingTimeoutSec;
 
   /// Creates a new [ConnectionDraining].
   /// [drainingTimeoutSec] Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
@@ -20,7 +21,7 @@ class ConnectionDraining {
 
   factory ConnectionDraining.fromMap(Map<String, dynamic> map) {
     return ConnectionDraining(
-      drainingTimeoutSec: map['drainingTimeoutSec'] == null ? null : map['drainingTimeoutSec'] as int,
+      drainingTimeoutSec: map['drainingTimeoutSec'] == null ? null : (map['drainingTimeoutSec'] as int).input(),
     );
   }
 }

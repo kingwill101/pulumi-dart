@@ -42,21 +42,14 @@ class AnalysisRuleArgs {
   /// [location] Location of the resource.
   /// [project] The ID of the project in which the resource belongs.
   AnalysisRuleArgs({
-    pulumi.Output<bool>? active,
-    pulumi.Output<double>? analysisPercentage,
-    pulumi.Output<AnalysisRuleAnnotatorSelector>? annotatorSelector,
-    pulumi.Output<String>? conversationFilter,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      analysisPercentage = pulumi.Input.asOptionalInput<double>(analysisPercentage),
-      annotatorSelector = pulumi.Input.asOptionalInput<AnalysisRuleAnnotatorSelector>(annotatorSelector),
-      conversationFilter = pulumi.Input.asOptionalInput<String>(conversationFilter),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.active,
+    this.analysisPercentage,
+    this.annotatorSelector,
+    this.conversationFilter,
+    this.displayName,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,13 +65,13 @@ class AnalysisRuleArgs {
 
   factory AnalysisRuleArgs.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleArgs(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      analysisPercentage: map['analysisPercentage'] == null ? null : pulumi.Output.create<double>(map['analysisPercentage'] as double),
-      annotatorSelector: map['annotatorSelector'] == null ? null : pulumi.Output.create<AnalysisRuleAnnotatorSelector>(AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())),
-      conversationFilter: map['conversationFilter'] == null ? null : pulumi.Output.create<String>(map['conversationFilter'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      analysisPercentage: map['analysisPercentage'] == null ? null : (map['analysisPercentage'] as double).input(),
+      annotatorSelector: map['annotatorSelector'] == null ? null : (AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())).input(),
+      conversationFilter: map['conversationFilter'] == null ? null : (map['conversationFilter'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

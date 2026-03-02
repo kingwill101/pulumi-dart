@@ -19,13 +19,10 @@ class PartitionArgs {
   /// [name] Name of the partition.
   /// [routeDomainId] Route domain id of the partition.
   PartitionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> name,
-    pulumi.Output<int>? routeDomainId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asInput<String>(name),
-      routeDomainId = pulumi.Input.asOptionalInput<int>(routeDomainId);
+    this.description,
+    required this.name,
+    this.routeDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PartitionArgs {
 
   factory PartitionArgs.fromMap(Map<String, dynamic> map) {
     return PartitionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      routeDomainId: map['routeDomainId'] == null ? null : pulumi.Output.create<int>(map['routeDomainId'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      routeDomainId: map['routeDomainId'] == null ? null : (map['routeDomainId'] as int).input(),
     );
   }
 }

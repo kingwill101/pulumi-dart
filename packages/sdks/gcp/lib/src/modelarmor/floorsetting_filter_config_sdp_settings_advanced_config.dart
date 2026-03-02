@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// Optional Sensitive Data Protection Deidentify template resource name.
@@ -10,7 +11,7 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// in inspect template.
   /// e.g.
   /// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
-  final String? deidentifyTemplate;
+  final pulumi.Input<String>? deidentifyTemplate;
   /// Sensitive Data Protection inspect template resource name
   /// If only inspect template is provided (de-identify template not provided),
   /// then Sensitive Data Protection InspectContent action is performed during
@@ -18,7 +19,7 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// inspection will be returned as SdpFinding in SdpInsepctionResult.
   /// e.g:-
   /// `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
-  final String? inspectTemplate;
+  final pulumi.Input<String>? inspectTemplate;
 
   /// Creates a new [FloorsettingFilterConfigSdpSettingsAdvancedConfig].
   /// [deidentifyTemplate] Optional Sensitive Data Protection Deidentify template resource name.
@@ -37,8 +38,8 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
 
   factory FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigSdpSettingsAdvancedConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : map['deidentifyTemplate'] as String,
-      inspectTemplate: map['inspectTemplate'] == null ? null : map['inspectTemplate'] as String,
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate'] as String).input(),
+      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate'] as String).input(),
     );
   }
 }

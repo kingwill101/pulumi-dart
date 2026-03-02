@@ -64,33 +64,20 @@ class CertificateIssuanceConfigState {
   /// [rotationWindowPercentage] It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
   /// [updateTime] The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
   CertificateIssuanceConfigState({
-    pulumi.Output<CertificateIssuanceConfigCertificateAuthorityConfig>? certificateAuthorityConfig,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? keyAlgorithm,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? lifetime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<int>? rotationWindowPercentage,
-    pulumi.Output<String>? updateTime,
-  }) :
-      certificateAuthorityConfig = pulumi.Input.asOptionalInput<CertificateIssuanceConfigCertificateAuthorityConfig>(certificateAuthorityConfig),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      keyAlgorithm = pulumi.Input.asOptionalInput<String>(keyAlgorithm),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lifetime = pulumi.Input.asOptionalInput<String>(lifetime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      rotationWindowPercentage = pulumi.Input.asOptionalInput<int>(rotationWindowPercentage),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.certificateAuthorityConfig,
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.keyAlgorithm,
+    this.labels,
+    this.lifetime,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.rotationWindowPercentage,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,19 +99,19 @@ class CertificateIssuanceConfigState {
 
   factory CertificateIssuanceConfigState.fromMap(Map<String, dynamic> map) {
     return CertificateIssuanceConfigState(
-      certificateAuthorityConfig: map['certificateAuthorityConfig'] == null ? null : pulumi.Output.create<CertificateIssuanceConfigCertificateAuthorityConfig>(CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((map['certificateAuthorityConfig'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : pulumi.Output.create<String>(map['keyAlgorithm'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lifetime: map['lifetime'] == null ? null : pulumi.Output.create<String>(map['lifetime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      rotationWindowPercentage: map['rotationWindowPercentage'] == null ? null : pulumi.Output.create<int>(map['rotationWindowPercentage'] as int),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      certificateAuthorityConfig: map['certificateAuthorityConfig'] == null ? null : (CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((map['certificateAuthorityConfig'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      rotationWindowPercentage: map['rotationWindowPercentage'] == null ? null : (map['rotationWindowPercentage'] as int).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The config for email alert.
 class GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig {
   /// The email addresses to send the alert.
-  final List<String>? userEmails;
+  final pulumi.Input<List<String>>? userEmails;
 
   /// Creates a new [GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig].
   /// [userEmails] The email addresses to send the alert.
@@ -20,7 +21,7 @@ class GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig {
 
   factory GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig(
-      userEmails: map['userEmails'] == null ? null : (map['userEmails'] as List).cast<String>(),
+      userEmails: map['userEmails'] == null ? null : ((map['userEmails'] as List).cast<String>()).input(),
     );
   }
 }

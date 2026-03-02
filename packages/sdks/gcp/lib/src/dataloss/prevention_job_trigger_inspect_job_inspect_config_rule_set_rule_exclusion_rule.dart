@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusion_rule_dictionary.dart';
 import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusion_rule_exclude_by_hotword.dart';
 import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusion_rule_exclude_info_types.dart';
@@ -8,19 +9,19 @@ import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusio
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule {
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary? dictionary;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary>? dictionary;
   /// Drop if the hotword rule is contained in the proximate context.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword? excludeByHotword;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword>? excludeByHotword;
   /// Set of infoTypes for which findings would affect this rule.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes? excludeInfoTypes;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes>? excludeInfoTypes;
   /// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
   /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
-  final String matchingType;
+  final pulumi.Input<String> matchingType;
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex? regex;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex>? regex;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule].
   /// [dictionary] Dictionary which defines the rule.
@@ -38,21 +39,21 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dictionary': ?dictionary == null ? null : dictionary!.toMap(),
-      'excludeByHotword': ?excludeByHotword == null ? null : excludeByHotword!.toMap(),
-      'excludeInfoTypes': ?excludeInfoTypes == null ? null : excludeInfoTypes!.toMap(),
+      'dictionary': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary, Map<String, dynamic>>(dictionary, (value) => value.toMap()),
+      'excludeByHotword': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword, Map<String, dynamic>>(excludeByHotword, (value) => value.toMap()),
+      'excludeInfoTypes': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes, Map<String, dynamic>>(excludeInfoTypes, (value) => value.toMap()),
       'matchingType': matchingType,
-      'regex': ?regex == null ? null : regex!.toMap(),
+      'regex': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex, Map<String, dynamic>>(regex, (value) => value.toMap()),
     };
   }
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule(
-      dictionary: map['dictionary'] == null ? null : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>()),
-      excludeByHotword: map['excludeByHotword'] == null ? null : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.fromMap((map['excludeByHotword'] as Map).cast<String, dynamic>()),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.fromMap((map['excludeInfoTypes'] as Map).cast<String, dynamic>()),
-      matchingType: map['matchingType'] as String,
-      regex: map['regex'] == null ? null : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex.fromMap((map['regex'] as Map).cast<String, dynamic>()),
+      dictionary: map['dictionary'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
+      excludeByHotword: map['excludeByHotword'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.fromMap((map['excludeByHotword'] as Map).cast<String, dynamic>())).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.fromMap((map['excludeInfoTypes'] as Map).cast<String, dynamic>())).input(),
+      matchingType: (map['matchingType'] as String).input(),
+      regex: map['regex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

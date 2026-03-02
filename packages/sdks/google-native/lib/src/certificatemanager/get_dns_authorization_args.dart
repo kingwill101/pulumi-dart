@@ -16,13 +16,10 @@ class GetDnsAuthorizationArgs {
   /// [location] Required.
   /// [project] Optional.
   GetDnsAuthorizationArgs({
-    required pulumi.Output<String> dnsAuthorizationId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      dnsAuthorizationId = pulumi.Input.asInput<String>(dnsAuthorizationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dnsAuthorizationId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDnsAuthorizationArgs {
 
   factory GetDnsAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationArgs(
-      dnsAuthorizationId: pulumi.Output.create<String>(map['dnsAuthorizationId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dnsAuthorizationId: (map['dnsAuthorizationId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

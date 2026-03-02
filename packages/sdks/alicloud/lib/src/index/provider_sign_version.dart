@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderSignVersion {
-  final String? oss;
-  final String? sls;
+  final pulumi.Input<String>? oss;
+  final pulumi.Input<String>? sls;
 
   /// Creates a new [ProviderSignVersion].
   /// [oss] Optional.
@@ -22,8 +23,8 @@ class ProviderSignVersion {
 
   factory ProviderSignVersion.fromMap(Map<String, dynamic> map) {
     return ProviderSignVersion(
-      oss: map['oss'] == null ? null : map['oss'] as String,
-      sls: map['sls'] == null ? null : map['sls'] as String,
+      oss: map['oss'] == null ? null : (map['oss'] as String).input(),
+      sls: map['sls'] == null ? null : (map['sls'] as String).input(),
     );
   }
 }

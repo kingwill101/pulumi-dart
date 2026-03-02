@@ -19,13 +19,10 @@ class NotificationRegistrationArgs {
   /// [properties] Optional.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   NotificationRegistrationArgs({
-    pulumi.Output<String>? notificationRegistrationName,
-    pulumi.Output<NotificationRegistrationProperties>? properties,
-    required pulumi.Output<String> providerNamespace,
-  }) :
-      notificationRegistrationName = pulumi.Input.asOptionalInput<String>(notificationRegistrationName),
-      properties = pulumi.Input.asOptionalInput<NotificationRegistrationProperties>(properties),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace);
+    this.notificationRegistrationName,
+    this.properties,
+    required this.providerNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NotificationRegistrationArgs {
 
   factory NotificationRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationRegistrationArgs(
-      notificationRegistrationName: map['notificationRegistrationName'] == null ? null : pulumi.Output.create<String>(map['notificationRegistrationName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<NotificationRegistrationProperties>(NotificationRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
+      notificationRegistrationName: map['notificationRegistrationName'] == null ? null : (map['notificationRegistrationName'] as String).input(),
+      properties: map['properties'] == null ? null : (NotificationRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }
 }

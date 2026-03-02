@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
 class Gen2StorageConfigurationInput {
   /// The name of the storage account that will hold the environment's Gen2 data.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The value of the management key that grants the Time Series Insights service write access to the storage account. This property is not shown in environment responses.
-  final String managementKey;
+  final pulumi.Input<String> managementKey;
 
   /// Creates a new [Gen2StorageConfigurationInput].
   /// [accountName] The name of the storage account that will hold the environment's Gen2 data.
@@ -25,8 +26,8 @@ class Gen2StorageConfigurationInput {
 
   factory Gen2StorageConfigurationInput.fromMap(Map<String, dynamic> map) {
     return Gen2StorageConfigurationInput(
-      accountName: map['accountName'] as String,
-      managementKey: map['managementKey'] as String,
+      accountName: (map['accountName'] as String).input(),
+      managementKey: (map['managementKey'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GitRepoSource describes a repo and ref of a code repository.
 class GitRepoSourceResponse {
   /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
-  final String bitbucketServerConfig;
+  final pulumi.Input<String> bitbucketServerConfig;
   /// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
-  final String githubEnterpriseConfig;
+  final pulumi.Input<String> githubEnterpriseConfig;
   /// The branch or tag to use. Must start with "refs/" (required).
-  final String ref;
+  final pulumi.Input<String> ref;
   /// See RepoType below.
-  final String repoType;
+  final pulumi.Input<String> repoType;
   /// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
-  final String repository;
+  final pulumi.Input<String> repository;
   /// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GitRepoSourceResponse].
   /// [bitbucketServerConfig] The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
@@ -45,12 +46,12 @@ class GitRepoSourceResponse {
 
   factory GitRepoSourceResponse.fromMap(Map<String, dynamic> map) {
     return GitRepoSourceResponse(
-      bitbucketServerConfig: map['bitbucketServerConfig'] as String,
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] as String,
-      ref: map['ref'] as String,
-      repoType: map['repoType'] as String,
-      repository: map['repository'] as String,
-      uri: map['uri'] as String,
+      bitbucketServerConfig: (map['bitbucketServerConfig'] as String).input(),
+      githubEnterpriseConfig: (map['githubEnterpriseConfig'] as String).input(),
+      ref: (map['ref'] as String).input(),
+      repoType: (map['repoType'] as String).input(),
+      repository: (map['repository'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

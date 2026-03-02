@@ -27,17 +27,12 @@ class GetLayerVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Specific layer version. Conflicts with `compatible_runtime` and `compatible_architecture`. If omitted, the latest available layer version will be used.
   GetLayerVersionArgs({
-    pulumi.Output<String>? compatibleArchitecture,
-    pulumi.Output<String>? compatibleRuntime,
-    required pulumi.Output<String> layerName,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? version,
-  }) :
-      compatibleArchitecture = pulumi.Input.asOptionalInput<String>(compatibleArchitecture),
-      compatibleRuntime = pulumi.Input.asOptionalInput<String>(compatibleRuntime),
-      layerName = pulumi.Input.asInput<String>(layerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.compatibleArchitecture,
+    this.compatibleRuntime,
+    required this.layerName,
+    this.region,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetLayerVersionArgs {
 
   factory GetLayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetLayerVersionArgs(
-      compatibleArchitecture: map['compatibleArchitecture'] == null ? null : pulumi.Output.create<String>(map['compatibleArchitecture'] as String),
-      compatibleRuntime: map['compatibleRuntime'] == null ? null : pulumi.Output.create<String>(map['compatibleRuntime'] as String),
-      layerName: pulumi.Output.create<String>(map['layerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      compatibleArchitecture: map['compatibleArchitecture'] == null ? null : (map['compatibleArchitecture'] as String).input(),
+      compatibleRuntime: map['compatibleRuntime'] == null ? null : (map['compatibleRuntime'] as String).input(),
+      layerName: (map['layerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

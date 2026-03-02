@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secure_string_response.dart';
 
 /// Catalog information for managed dedicated integration runtime.
 class IntegrationRuntimeSsisCatalogInfoResponse {
   /// The password of the administrator user account of the catalog database.
-  final SecureStringResponse? catalogAdminPassword;
+  final pulumi.Input<SecureStringResponse>? catalogAdminPassword;
   /// The administrator user name of catalog database.
-  final String? catalogAdminUserName;
+  final pulumi.Input<String>? catalogAdminUserName;
   /// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
-  final String? catalogPricingTier;
+  final pulumi.Input<String>? catalogPricingTier;
   /// The catalog database server URL.
-  final String? catalogServerEndpoint;
+  final pulumi.Input<String>? catalogServerEndpoint;
 
   /// Creates a new [IntegrationRuntimeSsisCatalogInfoResponse].
   /// [catalogAdminPassword] The password of the administrator user account of the catalog database.
@@ -27,7 +28,7 @@ class IntegrationRuntimeSsisCatalogInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'catalogAdminPassword': ?catalogAdminPassword == null ? null : catalogAdminPassword!.toMap(),
+      'catalogAdminPassword': ?pulumi.Input.mapOptionalInputValue<SecureStringResponse, Map<String, dynamic>>(catalogAdminPassword, (value) => value.toMap()),
       'catalogAdminUserName': ?catalogAdminUserName,
       'catalogPricingTier': ?catalogPricingTier,
       'catalogServerEndpoint': ?catalogServerEndpoint,
@@ -36,10 +37,10 @@ class IntegrationRuntimeSsisCatalogInfoResponse {
 
   factory IntegrationRuntimeSsisCatalogInfoResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisCatalogInfoResponse(
-      catalogAdminPassword: map['catalogAdminPassword'] == null ? null : SecureStringResponse.fromMap((map['catalogAdminPassword'] as Map).cast<String, dynamic>()),
-      catalogAdminUserName: map['catalogAdminUserName'] == null ? null : map['catalogAdminUserName'] as String,
-      catalogPricingTier: map['catalogPricingTier'] == null ? null : map['catalogPricingTier'] as String,
-      catalogServerEndpoint: map['catalogServerEndpoint'] == null ? null : map['catalogServerEndpoint'] as String,
+      catalogAdminPassword: map['catalogAdminPassword'] == null ? null : (SecureStringResponse.fromMap((map['catalogAdminPassword'] as Map).cast<String, dynamic>())).input(),
+      catalogAdminUserName: map['catalogAdminUserName'] == null ? null : (map['catalogAdminUserName'] as String).input(),
+      catalogPricingTier: map['catalogPricingTier'] == null ? null : (map['catalogPricingTier'] as String).input(),
+      catalogServerEndpoint: map['catalogServerEndpoint'] == null ? null : (map['catalogServerEndpoint'] as String).input(),
     );
   }
 }

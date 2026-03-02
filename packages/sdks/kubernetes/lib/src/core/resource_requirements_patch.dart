@@ -10,11 +10,11 @@ class ResourceRequirementsPatch {
   /// This field depends on the DynamicResourceAllocation feature gate.
   ///
   /// This field is immutable. It can only be set for containers.
-  final List<ResourceClaimPatch>? claims;
+  final pulumi.Input<List<ResourceClaimPatch>>? claims;
   /// Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-  final Map<String, String>? limits;
+  final pulumi.Input<Map<String, String>>? limits;
   /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-  final Map<String, String>? requests;
+  final pulumi.Input<Map<String, String>>? requests;
 
   /// Creates a new [ResourceRequirementsPatch].
   /// [claims] Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.
@@ -28,7 +28,7 @@ class ResourceRequirementsPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'claims': ?claims == null ? null : pulumi.Input.encodeList<ResourceClaimPatch, Map<String, dynamic>>(claims!, (value) => value.toMap()),
+      'claims': ?pulumi.Input.mapOptionalInputValue<List<ResourceClaimPatch>, List<Map<String, dynamic>>>(claims, (value) => pulumi.Input.encodeList<ResourceClaimPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'limits': ?limits,
       'requests': ?requests,
     };
@@ -36,9 +36,9 @@ class ResourceRequirementsPatch {
 
   factory ResourceRequirementsPatch.fromMap(Map<String, dynamic> map) {
     return ResourceRequirementsPatch(
-      claims: map['claims'] == null ? null : pulumi.Input.decodeList<ResourceClaimPatch>(map['claims'], (value) => ResourceClaimPatch.fromMap((value as Map).cast<String, dynamic>())),
-      limits: map['limits'] == null ? null : (map['limits'] as Map).cast<String, String>(),
-      requests: map['requests'] == null ? null : (map['requests'] as Map).cast<String, String>(),
+      claims: map['claims'] == null ? null : (pulumi.Input.decodeList<ResourceClaimPatch>(map['claims'], (value) => ResourceClaimPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
+      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
     );
   }
 }

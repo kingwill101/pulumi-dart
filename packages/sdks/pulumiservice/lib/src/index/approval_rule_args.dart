@@ -28,17 +28,12 @@ class ApprovalRuleArgs {
   /// [name] The name of the approval rule.
   /// [targetActionTypes] The type of action this rule applies to.
   ApprovalRuleArgs({
-    required pulumi.Output<ApprovalRuleConfig> approvalRuleConfig,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<EnvironmentIdentifier> environmentIdentifier,
-    required pulumi.Output<String> name,
-    required pulumi.Output<List<TargetActionType>> targetActionTypes,
-  }) :
-      approvalRuleConfig = pulumi.Input.asInput<ApprovalRuleConfig>(approvalRuleConfig),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      environmentIdentifier = pulumi.Input.asInput<EnvironmentIdentifier>(environmentIdentifier),
-      name = pulumi.Input.asInput<String>(name),
-      targetActionTypes = pulumi.Input.asInput<List<TargetActionType>>(targetActionTypes);
+    required this.approvalRuleConfig,
+    required this.enabled,
+    required this.environmentIdentifier,
+    required this.name,
+    required this.targetActionTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ApprovalRuleArgs {
 
   factory ApprovalRuleArgs.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleArgs(
-      approvalRuleConfig: pulumi.Output.create<ApprovalRuleConfig>(ApprovalRuleConfig.fromMap((map['approvalRuleConfig'] as Map).cast<String, dynamic>())),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      environmentIdentifier: pulumi.Output.create<EnvironmentIdentifier>(EnvironmentIdentifier.fromMap((map['environmentIdentifier'] as Map).cast<String, dynamic>())),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      targetActionTypes: pulumi.Output.create<List<TargetActionType>>(pulumi.Input.decodeList<TargetActionType>(map['targetActionTypes'], (value) => TargetActionType.fromValue(value as String))),
+      approvalRuleConfig: (ApprovalRuleConfig.fromMap((map['approvalRuleConfig'] as Map).cast<String, dynamic>())).input(),
+      enabled: (map['enabled'] as bool).input(),
+      environmentIdentifier: (EnvironmentIdentifier.fromMap((map['environmentIdentifier'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      targetActionTypes: (pulumi.Input.decodeList<TargetActionType>(map['targetActionTypes'], (value) => TargetActionType.fromValue(value as String))).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec {
   /// The instance type.
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.
-  final String? lifecycleConfigArn;
+  final pulumi.Input<String>? lifecycleConfigArn;
   /// The Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.
-  final String? sagemakerImageArn;
+  final pulumi.Input<String>? sagemakerImageArn;
   /// The SageMaker AI Image Version Alias.
-  final String? sagemakerImageVersionAlias;
+  final pulumi.Input<String>? sagemakerImageVersionAlias;
   /// The ARN of the image version created on the instance.
-  final String? sagemakerImageVersionArn;
+  final pulumi.Input<String>? sagemakerImageVersionArn;
 
   /// Creates a new [SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec].
   /// [instanceType] The instance type.
@@ -39,11 +40,11 @@ class SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec {
 
   factory SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec(
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      lifecycleConfigArn: map['lifecycleConfigArn'] == null ? null : map['lifecycleConfigArn'] as String,
-      sagemakerImageArn: map['sagemakerImageArn'] == null ? null : map['sagemakerImageArn'] as String,
-      sagemakerImageVersionAlias: map['sagemakerImageVersionAlias'] == null ? null : map['sagemakerImageVersionAlias'] as String,
-      sagemakerImageVersionArn: map['sagemakerImageVersionArn'] == null ? null : map['sagemakerImageVersionArn'] as String,
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      lifecycleConfigArn: map['lifecycleConfigArn'] == null ? null : (map['lifecycleConfigArn'] as String).input(),
+      sagemakerImageArn: map['sagemakerImageArn'] == null ? null : (map['sagemakerImageArn'] as String).input(),
+      sagemakerImageVersionAlias: map['sagemakerImageVersionAlias'] == null ? null : (map['sagemakerImageVersionAlias'] as String).input(),
+      sagemakerImageVersionArn: map['sagemakerImageVersionArn'] == null ? null : (map['sagemakerImageVersionArn'] as String).input(),
     );
   }
 }

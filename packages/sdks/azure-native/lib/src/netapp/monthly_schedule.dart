@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Monthly Schedule properties
 class MonthlySchedule {
   /// Indicates which days of the month snapshot should be taken. A comma delimited string.
-  final String? daysOfMonth;
+  final pulumi.Input<String>? daysOfMonth;
   /// Indicates which hour in UTC timezone a snapshot should be taken
-  final int? hour;
+  final pulumi.Input<int>? hour;
   /// Indicates which minute snapshot should be taken
-  final int? minute;
+  final pulumi.Input<int>? minute;
   /// Monthly snapshot count to keep
-  final int? snapshotsToKeep;
+  final pulumi.Input<int>? snapshotsToKeep;
   /// Resource size in bytes, current storage usage for the volume in bytes
-  final double? usedBytes;
+  final pulumi.Input<double>? usedBytes;
 
   /// Creates a new [MonthlySchedule].
   /// [daysOfMonth] Indicates which days of the month snapshot should be taken. A comma delimited string.
@@ -40,11 +41,11 @@ class MonthlySchedule {
 
   factory MonthlySchedule.fromMap(Map<String, dynamic> map) {
     return MonthlySchedule(
-      daysOfMonth: map['daysOfMonth'] == null ? null : map['daysOfMonth'] as String,
-      hour: map['hour'] == null ? null : map['hour'] as int,
-      minute: map['minute'] == null ? null : map['minute'] as int,
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : map['snapshotsToKeep'] as int,
-      usedBytes: map['usedBytes'] == null ? null : map['usedBytes'] as double,
+      daysOfMonth: map['daysOfMonth'] == null ? null : (map['daysOfMonth'] as String).input(),
+      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
+      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
+      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes'] as double).input(),
     );
   }
 }

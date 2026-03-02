@@ -28,19 +28,13 @@ class ListWorkspacePolicyFragmentReferencesArgs {
   /// [top] Number of records to return.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   ListWorkspacePolicyFragmentReferencesArgs({
-    required pulumi.Output<String> id,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<int>? skip,
-    pulumi.Output<int>? top,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      skip = pulumi.Input.asOptionalInput<int>(skip),
-      top = pulumi.Input.asOptionalInput<int>(top),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.id,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.skip,
+    this.top,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ListWorkspacePolicyFragmentReferencesArgs {
 
   factory ListWorkspacePolicyFragmentReferencesArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkspacePolicyFragmentReferencesArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<int>(map['skip'] as int),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      id: (map['id'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

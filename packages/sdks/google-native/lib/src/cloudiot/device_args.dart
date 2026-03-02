@@ -44,29 +44,18 @@ class DeviceArgs {
   /// [project] Optional.
   /// [registryId] Required.
   DeviceArgs({
-    pulumi.Output<bool>? blocked,
-    pulumi.Output<DeviceConfig>? config,
-    pulumi.Output<List<DeviceCredential>>? credentials,
-    pulumi.Output<GatewayConfig>? gatewayConfig,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<DeviceLogLevel>? logLevel,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> registryId,
-  }) :
-      blocked = pulumi.Input.asOptionalInput<bool>(blocked),
-      config = pulumi.Input.asOptionalInput<DeviceConfig>(config),
-      credentials = pulumi.Input.asOptionalInput<List<DeviceCredential>>(credentials),
-      gatewayConfig = pulumi.Input.asOptionalInput<GatewayConfig>(gatewayConfig),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logLevel = pulumi.Input.asOptionalInput<DeviceLogLevel>(logLevel),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      registryId = pulumi.Input.asInput<String>(registryId);
+    this.blocked,
+    this.config,
+    this.credentials,
+    this.gatewayConfig,
+    this.id,
+    this.location,
+    this.logLevel,
+    this.metadata,
+    this.name,
+    this.project,
+    required this.registryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      blocked: map['blocked'] == null ? null : pulumi.Output.create<bool>(map['blocked'] as bool),
-      config: map['config'] == null ? null : pulumi.Output.create<DeviceConfig>(DeviceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<List<DeviceCredential>>(pulumi.Input.decodeList<DeviceCredential>(map['credentials'], (value) => DeviceCredential.fromMap((value as Map).cast<String, dynamic>()))),
-      gatewayConfig: map['gatewayConfig'] == null ? null : pulumi.Output.create<GatewayConfig>(GatewayConfig.fromMap((map['gatewayConfig'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logLevel: map['logLevel'] == null ? null : pulumi.Output.create<DeviceLogLevel>(DeviceLogLevel.fromValue(map['logLevel'] as String)),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      registryId: pulumi.Output.create<String>(map['registryId'] as String),
+      blocked: map['blocked'] == null ? null : (map['blocked'] as bool).input(),
+      config: map['config'] == null ? null : (DeviceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<DeviceCredential>(map['credentials'], (value) => DeviceCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gatewayConfig: map['gatewayConfig'] == null ? null : (GatewayConfig.fromMap((map['gatewayConfig'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (DeviceLogLevel.fromValue(map['logLevel'] as String)).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      registryId: (map['registryId'] as String).input(),
     );
   }
 }

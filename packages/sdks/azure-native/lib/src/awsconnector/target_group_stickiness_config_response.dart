@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of TargetGroupStickinessConfig
 class TargetGroupStickinessConfigResponse {
   /// The time period, in seconds, during which requests from a client should be routed to the same target group. The range is 1-604800 seconds (7 days).
-  final int? durationSeconds;
+  final pulumi.Input<int>? durationSeconds;
   /// Indicates whether target group stickiness is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [TargetGroupStickinessConfigResponse].
   /// [durationSeconds] The time period, in seconds, during which requests from a client should be routed to the same target group. The range is 1-604800 seconds (7 days).
@@ -25,8 +26,8 @@ class TargetGroupStickinessConfigResponse {
 
   factory TargetGroupStickinessConfigResponse.fromMap(Map<String, dynamic> map) {
     return TargetGroupStickinessConfigResponse(
-      durationSeconds: map['durationSeconds'] == null ? null : map['durationSeconds'] as int,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

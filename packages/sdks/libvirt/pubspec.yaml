@@ -3,7 +3,7 @@ description: A Pulumi provider dynamically bridged from libvirt.
 version: 0.9.3
 repository: https://github.com/dmacvicar/terraform-provider-libvirt
 environment:
-    sdk: ^3.10.0
+    sdk: ^3.11.0
 resolution: workspace
 dependencies:
     pulumi: 0.1.0

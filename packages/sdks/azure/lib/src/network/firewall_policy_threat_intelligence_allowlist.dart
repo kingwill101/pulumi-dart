@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyThreatIntelligenceAllowlist {
   /// A list of FQDNs that will be skipped for threat detection.
-  final List<String>? fqdns;
+  final pulumi.Input<List<String>>? fqdns;
   /// A list of IP addresses or CIDR ranges that will be skipped for threat detection.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
 
   /// Creates a new [FirewallPolicyThreatIntelligenceAllowlist].
   /// [fqdns] A list of FQDNs that will be skipped for threat detection.
@@ -24,8 +25,8 @@ class FirewallPolicyThreatIntelligenceAllowlist {
 
   factory FirewallPolicyThreatIntelligenceAllowlist.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyThreatIntelligenceAllowlist(
-      fqdns: map['fqdns'] == null ? null : (map['fqdns'] as List).cast<String>(),
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
     );
   }
 }

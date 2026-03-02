@@ -16,11 +16,9 @@ class DeployGroupArgs {
   /// [appId] The ID of the application that you want to deploy.
   /// [groupName] The name of the instance group that you want to create.
   DeployGroupArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> groupName,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      groupName = pulumi.Input.asInput<String>(groupName);
+    required this.appId,
+    required this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DeployGroupArgs {
 
   factory DeployGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeployGroupArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
+      appId: (map['appId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexingConfigurationThingIndexingConfigurationFilter {
   /// List of shadow names that you select to index.
-  final List<String>? namedShadowNames;
+  final pulumi.Input<List<String>>? namedShadowNames;
 
   /// Creates a new [IndexingConfigurationThingIndexingConfigurationFilter].
   /// [namedShadowNames] List of shadow names that you select to index.
@@ -19,7 +20,7 @@ class IndexingConfigurationThingIndexingConfigurationFilter {
 
   factory IndexingConfigurationThingIndexingConfigurationFilter.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationThingIndexingConfigurationFilter(
-      namedShadowNames: map['namedShadowNames'] == null ? null : (map['namedShadowNames'] as List).cast<String>(),
+      namedShadowNames: map['namedShadowNames'] == null ? null : ((map['namedShadowNames'] as List).cast<String>()).input(),
     );
   }
 }

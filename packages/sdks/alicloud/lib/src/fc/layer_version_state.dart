@@ -42,29 +42,18 @@ class LayerVersionState {
   /// [version] The version of Layer Version.
   /// [zipFile] The ZIP package of the function code that is encoded in the Base64 format.
   LayerVersionState({
-    pulumi.Output<String>? acl,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? codeCheckSum,
-    pulumi.Output<List<String>>? compatibleRuntimes,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? layerName,
-    pulumi.Output<String>? ossBucketName,
-    pulumi.Output<String>? ossObjectName,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<String>? version,
-    pulumi.Output<String>? zipFile,
-  }) :
-      acl = pulumi.Input.asOptionalInput<String>(acl),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      codeCheckSum = pulumi.Input.asOptionalInput<String>(codeCheckSum),
-      compatibleRuntimes = pulumi.Input.asOptionalInput<List<String>>(compatibleRuntimes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      layerName = pulumi.Input.asOptionalInput<String>(layerName),
-      ossBucketName = pulumi.Input.asOptionalInput<String>(ossBucketName),
-      ossObjectName = pulumi.Input.asOptionalInput<String>(ossObjectName),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      zipFile = pulumi.Input.asOptionalInput<String>(zipFile);
+    this.acl,
+    this.arn,
+    this.codeCheckSum,
+    this.compatibleRuntimes,
+    this.description,
+    this.layerName,
+    this.ossBucketName,
+    this.ossObjectName,
+    this.skipDestroy,
+    this.version,
+    this.zipFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class LayerVersionState {
 
   factory LayerVersionState.fromMap(Map<String, dynamic> map) {
     return LayerVersionState(
-      acl: map['acl'] == null ? null : pulumi.Output.create<String>(map['acl'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      codeCheckSum: map['codeCheckSum'] == null ? null : pulumi.Output.create<String>(map['codeCheckSum'] as String),
-      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : pulumi.Output.create<List<String>>((map['compatibleRuntimes'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      layerName: map['layerName'] == null ? null : pulumi.Output.create<String>(map['layerName'] as String),
-      ossBucketName: map['ossBucketName'] == null ? null : pulumi.Output.create<String>(map['ossBucketName'] as String),
-      ossObjectName: map['ossObjectName'] == null ? null : pulumi.Output.create<String>(map['ossObjectName'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      zipFile: map['zipFile'] == null ? null : pulumi.Output.create<String>(map['zipFile'] as String),
+      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      codeCheckSum: map['codeCheckSum'] == null ? null : (map['codeCheckSum'] as String).input(),
+      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : ((map['compatibleRuntimes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      layerName: map['layerName'] == null ? null : (map['layerName'] as String).input(),
+      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName'] as String).input(),
+      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class ControllerArgs {
   /// [targetContainerHostCredentialsBase64] Credentials of the target container host (base64).
   /// [targetContainerHostResourceId] Resource ID of the target container host
   ControllerArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetContainerHostCredentialsBase64,
-    required pulumi.Output<String> targetContainerHostResourceId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetContainerHostCredentialsBase64 = pulumi.Input.asInput<String>(targetContainerHostCredentialsBase64),
-      targetContainerHostResourceId = pulumi.Input.asInput<String>(targetContainerHostResourceId);
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+    required this.targetContainerHostCredentialsBase64,
+    required this.targetContainerHostResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ControllerArgs {
 
   factory ControllerArgs.fromMap(Map<String, dynamic> map) {
     return ControllerArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetContainerHostCredentialsBase64: pulumi.Output.create<String>(map['targetContainerHostCredentialsBase64'] as String),
-      targetContainerHostResourceId: pulumi.Output.create<String>(map['targetContainerHostResourceId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetContainerHostCredentialsBase64: (map['targetContainerHostCredentialsBase64'] as String).input(),
+      targetContainerHostResourceId: (map['targetContainerHostResourceId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCatalogTableStorageDescriptorSchemaReferenceSchemaId {
   /// Name of the schema registry that contains the schema.
-  final String registryName;
+  final pulumi.Input<String> registryName;
   /// ARN of the schema.
-  final String schemaArn;
+  final pulumi.Input<String> schemaArn;
   /// Name of the schema.
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
 
   /// Creates a new [GetCatalogTableStorageDescriptorSchemaReferenceSchemaId].
   /// [registryName] Name of the schema registry that contains the schema.
@@ -29,9 +30,9 @@ class GetCatalogTableStorageDescriptorSchemaReferenceSchemaId {
 
   factory GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableStorageDescriptorSchemaReferenceSchemaId(
-      registryName: map['registryName'] as String,
-      schemaArn: map['schemaArn'] as String,
-      schemaName: map['schemaName'] as String,
+      registryName: (map['registryName'] as String).input(),
+      schemaArn: (map['schemaArn'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
     );
   }
 }

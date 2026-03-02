@@ -20,13 +20,10 @@ class UserHierarchyStructureArgs {
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   UserHierarchyStructureArgs({
-    required pulumi.Output<UserHierarchyStructureHierarchyStructure> hierarchyStructure,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? region,
-  }) :
-      hierarchyStructure = pulumi.Input.asInput<UserHierarchyStructureHierarchyStructure>(hierarchyStructure),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.hierarchyStructure,
+    required this.instanceId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class UserHierarchyStructureArgs {
 
   factory UserHierarchyStructureArgs.fromMap(Map<String, dynamic> map) {
     return UserHierarchyStructureArgs(
-      hierarchyStructure: pulumi.Output.create<UserHierarchyStructureHierarchyStructure>(UserHierarchyStructureHierarchyStructure.fromMap((map['hierarchyStructure'] as Map).cast<String, dynamic>())),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      hierarchyStructure: (UserHierarchyStructureHierarchyStructure.fromMap((map['hierarchyStructure'] as Map).cast<String, dynamic>())).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

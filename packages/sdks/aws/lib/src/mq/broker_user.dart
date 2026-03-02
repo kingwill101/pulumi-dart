@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerUser {
   /// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engine_type` of `ActiveMQ` only.
-  final bool? consoleAccess;
+  final pulumi.Input<bool>? consoleAccess;
   /// List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to `engine_type` of `ActiveMQ` only.
-  final List<String>? groups;
+  final pulumi.Input<List<String>>? groups;
   /// Password of the user. Must be 12 to 250 characters long, contain at least 4 unique characters, and must not contain commas.
-  final String password;
+  final pulumi.Input<String> password;
   /// Whether to set replication user. Defaults to `false`.
-  final bool? replicationUser;
+  final pulumi.Input<bool>? replicationUser;
   /// Username of the user.
   ///
   /// The following arguments are optional:
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [BrokerUser].
   /// [consoleAccess] Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engine_type` of `ActiveMQ` only.
@@ -41,11 +42,11 @@ class BrokerUser {
 
   factory BrokerUser.fromMap(Map<String, dynamic> map) {
     return BrokerUser(
-      consoleAccess: map['consoleAccess'] == null ? null : map['consoleAccess'] as bool,
-      groups: map['groups'] == null ? null : (map['groups'] as List).cast<String>(),
-      password: map['password'] as String,
-      replicationUser: map['replicationUser'] == null ? null : map['replicationUser'] as bool,
-      username: map['username'] as String,
+      consoleAccess: map['consoleAccess'] == null ? null : (map['consoleAccess'] as bool).input(),
+      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
+      password: (map['password'] as String).input(),
+      replicationUser: map['replicationUser'] == null ? null : (map['replicationUser'] as bool).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

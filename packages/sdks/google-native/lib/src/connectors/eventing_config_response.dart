@@ -8,19 +8,19 @@ import 'destination_config_response.dart';
 /// Eventing Configuration of a connection
 class EventingConfigResponse {
   /// Additional eventing related field values
-  final List<ConfigVariableResponse> additionalVariables;
+  final pulumi.Input<List<ConfigVariableResponse>> additionalVariables;
   /// Auth details for the webhook adapter.
-  final AuthConfigResponse authConfig;
+  final pulumi.Input<AuthConfigResponse> authConfig;
   /// Encryption key (can be either Google managed or CMEK).
-  final ConfigVariableResponse encryptionKey;
+  final pulumi.Input<ConfigVariableResponse> encryptionKey;
   /// Enrichment Enabled.
-  final bool enrichmentEnabled;
+  final pulumi.Input<bool> enrichmentEnabled;
   /// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
-  final String eventsListenerIngressEndpoint;
+  final pulumi.Input<String> eventsListenerIngressEndpoint;
   /// Optional. Private Connectivity Enabled.
-  final bool privateConnectivityEnabled;
+  final pulumi.Input<bool> privateConnectivityEnabled;
   /// Registration endpoint for auto registration.
-  final DestinationConfigResponse registrationDestinationConfig;
+  final pulumi.Input<DestinationConfigResponse> registrationDestinationConfig;
 
   /// Creates a new [EventingConfigResponse].
   /// [additionalVariables] Additional eventing related field values
@@ -42,25 +42,25 @@ class EventingConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalVariables': pulumi.Input.encodeList<ConfigVariableResponse, Map<String, dynamic>>(additionalVariables, (value) => value.toMap()),
-      'authConfig': authConfig.toMap(),
-      'encryptionKey': encryptionKey.toMap(),
+      'additionalVariables': pulumi.Input.mapInputValue<List<ConfigVariableResponse>, List<Map<String, dynamic>>>(additionalVariables, (value) => pulumi.Input.encodeList<ConfigVariableResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'authConfig': pulumi.Input.mapInputValue<AuthConfigResponse, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
+      'encryptionKey': pulumi.Input.mapInputValue<ConfigVariableResponse, Map<String, dynamic>>(encryptionKey, (value) => value.toMap()),
       'enrichmentEnabled': enrichmentEnabled,
       'eventsListenerIngressEndpoint': eventsListenerIngressEndpoint,
       'privateConnectivityEnabled': privateConnectivityEnabled,
-      'registrationDestinationConfig': registrationDestinationConfig.toMap(),
+      'registrationDestinationConfig': pulumi.Input.mapInputValue<DestinationConfigResponse, Map<String, dynamic>>(registrationDestinationConfig, (value) => value.toMap()),
     };
   }
 
   factory EventingConfigResponse.fromMap(Map<String, dynamic> map) {
     return EventingConfigResponse(
-      additionalVariables: pulumi.Input.decodeList<ConfigVariableResponse>(map['additionalVariables'], (value) => ConfigVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
-      authConfig: AuthConfigResponse.fromMap((map['authConfig'] as Map).cast<String, dynamic>()),
-      encryptionKey: ConfigVariableResponse.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>()),
-      enrichmentEnabled: map['enrichmentEnabled'] as bool,
-      eventsListenerIngressEndpoint: map['eventsListenerIngressEndpoint'] as String,
-      privateConnectivityEnabled: map['privateConnectivityEnabled'] as bool,
-      registrationDestinationConfig: DestinationConfigResponse.fromMap((map['registrationDestinationConfig'] as Map).cast<String, dynamic>()),
+      additionalVariables: (pulumi.Input.decodeList<ConfigVariableResponse>(map['additionalVariables'], (value) => ConfigVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authConfig: (AuthConfigResponse.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
+      encryptionKey: (ConfigVariableResponse.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>())).input(),
+      enrichmentEnabled: (map['enrichmentEnabled'] as bool).input(),
+      eventsListenerIngressEndpoint: (map['eventsListenerIngressEndpoint'] as String).input(),
+      privateConnectivityEnabled: (map['privateConnectivityEnabled'] as bool).input(),
+      registrationDestinationConfig: (DestinationConfigResponse.fromMap((map['registrationDestinationConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

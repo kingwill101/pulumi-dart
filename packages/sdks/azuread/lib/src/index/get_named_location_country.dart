@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNamedLocationCountry {
-  final List<String> countriesAndRegions;
-  final String countryLookupMethod;
-  final bool includeUnknownCountriesAndRegions;
+  final pulumi.Input<List<String>> countriesAndRegions;
+  final pulumi.Input<String> countryLookupMethod;
+  final pulumi.Input<bool> includeUnknownCountriesAndRegions;
 
   /// Creates a new [GetNamedLocationCountry].
   /// [countriesAndRegions] Required.
@@ -26,9 +27,9 @@ class GetNamedLocationCountry {
 
   factory GetNamedLocationCountry.fromMap(Map<String, dynamic> map) {
     return GetNamedLocationCountry(
-      countriesAndRegions: (map['countriesAndRegions'] as List).cast<String>(),
-      countryLookupMethod: map['countryLookupMethod'] as String,
-      includeUnknownCountriesAndRegions: map['includeUnknownCountriesAndRegions'] as bool,
+      countriesAndRegions: ((map['countriesAndRegions'] as List).cast<String>()).input(),
+      countryLookupMethod: (map['countryLookupMethod'] as String).input(),
+      includeUnknownCountriesAndRegions: (map['includeUnknownCountriesAndRegions'] as bool).input(),
     );
   }
 }

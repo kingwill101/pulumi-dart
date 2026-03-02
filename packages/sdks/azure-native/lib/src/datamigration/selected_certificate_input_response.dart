@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Info for certificate to be exported for TDE enabled databases.
 class SelectedCertificateInputResponse {
   /// Name of certificate to be exported.
-  final String certificateName;
+  final pulumi.Input<String> certificateName;
   /// Password to use for encrypting the exported certificate.
-  final String password;
+  final pulumi.Input<String> password;
 
   /// Creates a new [SelectedCertificateInputResponse].
   /// [certificateName] Name of certificate to be exported.
@@ -25,8 +26,8 @@ class SelectedCertificateInputResponse {
 
   factory SelectedCertificateInputResponse.fromMap(Map<String, dynamic> map) {
     return SelectedCertificateInputResponse(
-      certificateName: map['certificateName'] as String,
-      password: map['password'] as String,
+      certificateName: (map['certificateName'] as String).input(),
+      password: (map['password'] as String).input(),
     );
   }
 }

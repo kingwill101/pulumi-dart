@@ -8,11 +8,11 @@ import 'postgre_sql_connection_info.dart';
 /// Input for the task that migrates Oracle databases to Azure Database for PostgreSQL for online migrations
 class MigrateOracleAzureDbPostgreSqlSyncTaskInput {
   /// Databases to migrate
-  final List<MigrateOracleAzureDbPostgreSqlSyncDatabaseInput> selectedDatabases;
+  final pulumi.Input<List<MigrateOracleAzureDbPostgreSqlSyncDatabaseInput>> selectedDatabases;
   /// Connection information for source Oracle
-  final OracleConnectionInfo sourceConnectionInfo;
+  final pulumi.Input<OracleConnectionInfo> sourceConnectionInfo;
   /// Connection information for target Azure Database for PostgreSQL
-  final PostgreSqlConnectionInfo targetConnectionInfo;
+  final pulumi.Input<PostgreSqlConnectionInfo> targetConnectionInfo;
 
   /// Creates a new [MigrateOracleAzureDbPostgreSqlSyncTaskInput].
   /// [selectedDatabases] Databases to migrate
@@ -26,17 +26,17 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'selectedDatabases': pulumi.Input.encodeList<MigrateOracleAzureDbPostgreSqlSyncDatabaseInput, Map<String, dynamic>>(selectedDatabases, (value) => value.toMap()),
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateOracleAzureDbPostgreSqlSyncDatabaseInput>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateOracleAzureDbPostgreSqlSyncDatabaseInput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<OracleConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory MigrateOracleAzureDbPostgreSqlSyncTaskInput.fromMap(Map<String, dynamic> map) {
     return MigrateOracleAzureDbPostgreSqlSyncTaskInput(
-      selectedDatabases: pulumi.Input.decodeList<MigrateOracleAzureDbPostgreSqlSyncDatabaseInput>(map['selectedDatabases'], (value) => MigrateOracleAzureDbPostgreSqlSyncDatabaseInput.fromMap((value as Map).cast<String, dynamic>())),
-      sourceConnectionInfo: OracleConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      targetConnectionInfo: PostgreSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      selectedDatabases: (pulumi.Input.decodeList<MigrateOracleAzureDbPostgreSqlSyncDatabaseInput>(map['selectedDatabases'], (value) => MigrateOracleAzureDbPostgreSqlSyncDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceConnectionInfo: (OracleConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      targetConnectionInfo: (PostgreSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

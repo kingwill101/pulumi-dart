@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IPConfigurationReference - Describes a IPConfiguration under the virtual network
 class VirtualNetworkPropertiesIpConfigurationReferences {
   /// IPConfigurationID
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [VirtualNetworkPropertiesIpConfigurationReferences].
   /// [id] IPConfigurationID
@@ -20,7 +21,7 @@ class VirtualNetworkPropertiesIpConfigurationReferences {
 
   factory VirtualNetworkPropertiesIpConfigurationReferences.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesIpConfigurationReferences(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

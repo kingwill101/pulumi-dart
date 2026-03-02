@@ -19,15 +19,11 @@ class ResolverVirtualNetworkLinkState {
   /// [name] Specifies the name which should be used for this Private DNS Resolver Virtual Network Link. Changing this forces a new Private DNS Resolver Virtual Network Link to be created.
   /// [virtualNetworkId] The ID of the Virtual Network that is linked to the Private DNS Resolver Virtual Network Link. Changing this forces a new resource to be created.
   ResolverVirtualNetworkLinkState({
-    pulumi.Output<String>? dnsForwardingRulesetId,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? virtualNetworkId,
-  }) :
-      dnsForwardingRulesetId = pulumi.Input.asOptionalInput<String>(dnsForwardingRulesetId),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      virtualNetworkId = pulumi.Input.asOptionalInput<String>(virtualNetworkId);
+    this.dnsForwardingRulesetId,
+    this.metadata,
+    this.name,
+    this.virtualNetworkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ResolverVirtualNetworkLinkState {
 
   factory ResolverVirtualNetworkLinkState.fromMap(Map<String, dynamic> map) {
     return ResolverVirtualNetworkLinkState(
-      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] == null ? null : pulumi.Output.create<String>(map['dnsForwardingRulesetId'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkId'] as String),
+      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] == null ? null : (map['dnsForwardingRulesetId'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
     );
   }
 }

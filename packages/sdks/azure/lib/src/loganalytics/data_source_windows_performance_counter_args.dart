@@ -31,21 +31,14 @@ class DataSourceWindowsPerformanceCounterArgs {
   /// [resourceGroupName] The name of the Resource Group where the Log Analytics Windows Performance Counter DataSource should exist. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
   /// [workspaceName] The name of the Log Analytics Workspace where the Log Analytics Windows Performance Counter DataSource should exist. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
   DataSourceWindowsPerformanceCounterArgs({
-    required pulumi.Output<String> counterName,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<int> intervalSeconds,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> objectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      counterName = pulumi.Input.asInput<String>(counterName),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      intervalSeconds = pulumi.Input.asInput<int>(intervalSeconds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      objectName = pulumi.Input.asInput<String>(objectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.counterName,
+    required this.instanceName,
+    required this.intervalSeconds,
+    this.name,
+    required this.objectName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DataSourceWindowsPerformanceCounterArgs {
 
   factory DataSourceWindowsPerformanceCounterArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceWindowsPerformanceCounterArgs(
-      counterName: pulumi.Output.create<String>(map['counterName'] as String),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      intervalSeconds: pulumi.Output.create<int>(map['intervalSeconds'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      objectName: pulumi.Output.create<String>(map['objectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      counterName: (map['counterName'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      intervalSeconds: (map['intervalSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      objectName: (map['objectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

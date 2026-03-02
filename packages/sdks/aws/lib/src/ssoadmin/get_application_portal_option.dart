@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_application_portal_option_sign_in_option.dart';
 
 class GetApplicationPortalOption {
-  final List<GetApplicationPortalOptionSignInOption> signInOptions;
-  final String visibility;
+  final pulumi.Input<List<GetApplicationPortalOptionSignInOption>> signInOptions;
+  final pulumi.Input<String> visibility;
 
   /// Creates a new [GetApplicationPortalOption].
   /// [signInOptions] Required.
@@ -17,15 +17,15 @@ class GetApplicationPortalOption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signInOptions': pulumi.Input.encodeList<GetApplicationPortalOptionSignInOption, Map<String, dynamic>>(signInOptions, (value) => value.toMap()),
+      'signInOptions': pulumi.Input.mapInputValue<List<GetApplicationPortalOptionSignInOption>, List<Map<String, dynamic>>>(signInOptions, (value) => pulumi.Input.encodeList<GetApplicationPortalOptionSignInOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'visibility': visibility,
     };
   }
 
   factory GetApplicationPortalOption.fromMap(Map<String, dynamic> map) {
     return GetApplicationPortalOption(
-      signInOptions: pulumi.Input.decodeList<GetApplicationPortalOptionSignInOption>(map['signInOptions'], (value) => GetApplicationPortalOptionSignInOption.fromMap((value as Map).cast<String, dynamic>())),
-      visibility: map['visibility'] as String,
+      signInOptions: (pulumi.Input.decodeList<GetApplicationPortalOptionSignInOption>(map['signInOptions'], (value) => GetApplicationPortalOptionSignInOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      visibility: (map['visibility'] as String).input(),
     );
   }
 }

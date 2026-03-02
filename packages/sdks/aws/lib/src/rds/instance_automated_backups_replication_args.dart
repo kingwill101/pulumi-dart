@@ -25,17 +25,12 @@ class InstanceAutomatedBackupsReplicationArgs {
   /// [retentionPeriod] The retention period for the replicated automated backups, defaults to `7`.
   /// [sourceDbInstanceArn] The Amazon Resource Name (ARN) of the source DB instance for the replicated automated backups, for example, `arn:aws:rds:us-west-2:123456789012:db:mydatabase`.
   InstanceAutomatedBackupsReplicationArgs({
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? preSignedUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionPeriod,
-    required pulumi.Output<String> sourceDbInstanceArn,
-  }) :
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      preSignedUrl = pulumi.Input.asOptionalInput<String>(preSignedUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod),
-      sourceDbInstanceArn = pulumi.Input.asInput<String>(sourceDbInstanceArn);
+    this.kmsKeyId,
+    this.preSignedUrl,
+    this.region,
+    this.retentionPeriod,
+    required this.sourceDbInstanceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class InstanceAutomatedBackupsReplicationArgs {
 
   factory InstanceAutomatedBackupsReplicationArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAutomatedBackupsReplicationArgs(
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      preSignedUrl: map['preSignedUrl'] == null ? null : pulumi.Output.create<String>(map['preSignedUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionPeriod: map['retentionPeriod'] == null ? null : pulumi.Output.create<int>(map['retentionPeriod'] as int),
-      sourceDbInstanceArn: pulumi.Output.create<String>(map['sourceDbInstanceArn'] as String),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      preSignedUrl: map['preSignedUrl'] == null ? null : (map['preSignedUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      sourceDbInstanceArn: (map['sourceDbInstanceArn'] as String).input(),
     );
   }
 }

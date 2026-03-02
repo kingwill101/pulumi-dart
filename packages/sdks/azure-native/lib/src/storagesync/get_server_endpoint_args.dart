@@ -22,15 +22,11 @@ class GetServerEndpointArgs {
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   /// [syncGroupName] Name of Sync Group resource.
   GetServerEndpointArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverEndpointName,
-    required pulumi.Output<String> storageSyncServiceName,
-    required pulumi.Output<String> syncGroupName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverEndpointName = pulumi.Input.asInput<String>(serverEndpointName),
-      storageSyncServiceName = pulumi.Input.asInput<String>(storageSyncServiceName),
-      syncGroupName = pulumi.Input.asInput<String>(syncGroupName);
+    required this.resourceGroupName,
+    required this.serverEndpointName,
+    required this.storageSyncServiceName,
+    required this.syncGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetServerEndpointArgs {
 
   factory GetServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetServerEndpointArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverEndpointName: pulumi.Output.create<String>(map['serverEndpointName'] as String),
-      storageSyncServiceName: pulumi.Output.create<String>(map['storageSyncServiceName'] as String),
-      syncGroupName: pulumi.Output.create<String>(map['syncGroupName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverEndpointName: (map['serverEndpointName'] as String).input(),
+      storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
+      syncGroupName: (map['syncGroupName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterStorageProfile {
   /// Is the Blob CSI driver enabled?
-  final bool blobDriverEnabled;
+  final pulumi.Input<bool> blobDriverEnabled;
   /// Is the Disk CSI driver enabled?
-  final bool diskDriverEnabled;
+  final pulumi.Input<bool> diskDriverEnabled;
   /// Is the File CSI driver enabled?
-  final bool fileDriverEnabled;
+  final pulumi.Input<bool> fileDriverEnabled;
   /// Is the Snapshot Controller enabled?
-  final bool snapshotControllerEnabled;
+  final pulumi.Input<bool> snapshotControllerEnabled;
 
   /// Creates a new [GetKubernetesClusterStorageProfile].
   /// [blobDriverEnabled] Is the Blob CSI driver enabled?
@@ -34,10 +35,10 @@ class GetKubernetesClusterStorageProfile {
 
   factory GetKubernetesClusterStorageProfile.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterStorageProfile(
-      blobDriverEnabled: map['blobDriverEnabled'] as bool,
-      diskDriverEnabled: map['diskDriverEnabled'] as bool,
-      fileDriverEnabled: map['fileDriverEnabled'] as bool,
-      snapshotControllerEnabled: map['snapshotControllerEnabled'] as bool,
+      blobDriverEnabled: (map['blobDriverEnabled'] as bool).input(),
+      diskDriverEnabled: (map['diskDriverEnabled'] as bool).input(),
+      fileDriverEnabled: (map['fileDriverEnabled'] as bool).input(),
+      snapshotControllerEnabled: (map['snapshotControllerEnabled'] as bool).input(),
     );
   }
 }

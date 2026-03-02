@@ -45,31 +45,19 @@ class CertificateArgs {
   /// [requestId] Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [subjectMode] Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
   CertificateArgs({
-    required pulumi.Output<String> caPoolId,
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? certificateTemplate,
-    pulumi.Output<CertificateConfig>? config,
-    pulumi.Output<String>? issuingCertificateAuthorityId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> lifetime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? pemCsr,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<CertificateSubjectMode>? subjectMode,
-  }) :
-      caPoolId = pulumi.Input.asInput<String>(caPoolId),
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      certificateTemplate = pulumi.Input.asOptionalInput<String>(certificateTemplate),
-      config = pulumi.Input.asOptionalInput<CertificateConfig>(config),
-      issuingCertificateAuthorityId = pulumi.Input.asOptionalInput<String>(issuingCertificateAuthorityId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lifetime = pulumi.Input.asInput<String>(lifetime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      pemCsr = pulumi.Input.asOptionalInput<String>(pemCsr),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      subjectMode = pulumi.Input.asOptionalInput<CertificateSubjectMode>(subjectMode);
+    required this.caPoolId,
+    this.certificateId,
+    this.certificateTemplate,
+    this.config,
+    this.issuingCertificateAuthorityId,
+    this.labels,
+    required this.lifetime,
+    this.location,
+    this.pemCsr,
+    this.project,
+    this.requestId,
+    this.subjectMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      caPoolId: pulumi.Output.create<String>(map['caPoolId'] as String),
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      certificateTemplate: map['certificateTemplate'] == null ? null : pulumi.Output.create<String>(map['certificateTemplate'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<CertificateConfig>(CertificateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      issuingCertificateAuthorityId: map['issuingCertificateAuthorityId'] == null ? null : pulumi.Output.create<String>(map['issuingCertificateAuthorityId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lifetime: pulumi.Output.create<String>(map['lifetime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      pemCsr: map['pemCsr'] == null ? null : pulumi.Output.create<String>(map['pemCsr'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      subjectMode: map['subjectMode'] == null ? null : pulumi.Output.create<CertificateSubjectMode>(CertificateSubjectMode.fromValue(map['subjectMode'] as String)),
+      caPoolId: (map['caPoolId'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateTemplate: map['certificateTemplate'] == null ? null : (map['certificateTemplate'] as String).input(),
+      config: map['config'] == null ? null : (CertificateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      issuingCertificateAuthorityId: map['issuingCertificateAuthorityId'] == null ? null : (map['issuingCertificateAuthorityId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lifetime: (map['lifetime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      pemCsr: map['pemCsr'] == null ? null : (map['pemCsr'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      subjectMode: map['subjectMode'] == null ? null : (CertificateSubjectMode.fromValue(map['subjectMode'] as String)).input(),
     );
   }
 }

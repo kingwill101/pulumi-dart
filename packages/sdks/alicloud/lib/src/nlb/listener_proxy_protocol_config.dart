@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerProxyProtocolConfig {
   /// Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
-  final bool? proxyProtocolConfigPrivateLinkEpIdEnabled;
+  final pulumi.Input<bool>? proxyProtocolConfigPrivateLinkEpIdEnabled;
   /// Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
-  final bool? proxyProtocolConfigPrivateLinkEpsIdEnabled;
+  final pulumi.Input<bool>? proxyProtocolConfigPrivateLinkEpsIdEnabled;
   /// Whether to enable carrying VpcId to backend servers through Proxy Protocol.
-  final bool? proxyProtocolConfigVpcIdEnabled;
+  final pulumi.Input<bool>? proxyProtocolConfigVpcIdEnabled;
 
   /// Creates a new [ListenerProxyProtocolConfig].
   /// [proxyProtocolConfigPrivateLinkEpIdEnabled] Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
@@ -29,9 +30,9 @@ class ListenerProxyProtocolConfig {
 
   factory ListenerProxyProtocolConfig.fromMap(Map<String, dynamic> map) {
     return ListenerProxyProtocolConfig(
-      proxyProtocolConfigPrivateLinkEpIdEnabled: map['proxyProtocolConfigPrivateLinkEpIdEnabled'] == null ? null : map['proxyProtocolConfigPrivateLinkEpIdEnabled'] as bool,
-      proxyProtocolConfigPrivateLinkEpsIdEnabled: map['proxyProtocolConfigPrivateLinkEpsIdEnabled'] == null ? null : map['proxyProtocolConfigPrivateLinkEpsIdEnabled'] as bool,
-      proxyProtocolConfigVpcIdEnabled: map['proxyProtocolConfigVpcIdEnabled'] == null ? null : map['proxyProtocolConfigVpcIdEnabled'] as bool,
+      proxyProtocolConfigPrivateLinkEpIdEnabled: map['proxyProtocolConfigPrivateLinkEpIdEnabled'] == null ? null : (map['proxyProtocolConfigPrivateLinkEpIdEnabled'] as bool).input(),
+      proxyProtocolConfigPrivateLinkEpsIdEnabled: map['proxyProtocolConfigPrivateLinkEpsIdEnabled'] == null ? null : (map['proxyProtocolConfigPrivateLinkEpsIdEnabled'] as bool).input(),
+      proxyProtocolConfigVpcIdEnabled: map['proxyProtocolConfigVpcIdEnabled'] == null ? null : (map['proxyProtocolConfigVpcIdEnabled'] as bool).input(),
     );
   }
 }

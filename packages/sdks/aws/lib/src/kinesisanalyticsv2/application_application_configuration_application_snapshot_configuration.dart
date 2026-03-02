@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationApplicationSnapshotConfiguration {
   /// Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
-  final bool snapshotsEnabled;
+  final pulumi.Input<bool> snapshotsEnabled;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationSnapshotConfiguration].
   /// [snapshotsEnabled] Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
@@ -19,7 +20,7 @@ class ApplicationApplicationConfigurationApplicationSnapshotConfiguration {
 
   factory ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationSnapshotConfiguration(
-      snapshotsEnabled: map['snapshotsEnabled'] as bool,
+      snapshotsEnabled: (map['snapshotsEnabled'] as bool).input(),
     );
   }
 }

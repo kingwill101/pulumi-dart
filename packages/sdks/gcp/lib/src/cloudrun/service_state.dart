@@ -57,23 +57,15 @@ class ServiceState {
   /// [template] template holds the latest specification for the Revision to
   /// [traffics] Traffic specifies how to distribute traffic over a collection of Knative Revisions
   ServiceState({
-    pulumi.Output<bool>? autogenerateRevisionName,
-    pulumi.Output<String>? location,
-    pulumi.Output<ServiceMetadata>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<ServiceStatus>>? statuses,
-    pulumi.Output<ServiceTemplate>? template,
-    pulumi.Output<List<ServiceTraffic>>? traffics,
-  }) :
-      autogenerateRevisionName = pulumi.Input.asOptionalInput<bool>(autogenerateRevisionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<ServiceMetadata>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      statuses = pulumi.Input.asOptionalInput<List<ServiceStatus>>(statuses),
-      template = pulumi.Input.asOptionalInput<ServiceTemplate>(template),
-      traffics = pulumi.Input.asOptionalInput<List<ServiceTraffic>>(traffics);
+    this.autogenerateRevisionName,
+    this.location,
+    this.metadata,
+    this.name,
+    this.project,
+    this.statuses,
+    this.template,
+    this.traffics,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,14 +82,14 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      autogenerateRevisionName: map['autogenerateRevisionName'] == null ? null : pulumi.Output.create<bool>(map['autogenerateRevisionName'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ServiceMetadata>(ServiceMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      statuses: map['statuses'] == null ? null : pulumi.Output.create<List<ServiceStatus>>(pulumi.Input.decodeList<ServiceStatus>(map['statuses'], (value) => ServiceStatus.fromMap((value as Map).cast<String, dynamic>()))),
-      template: map['template'] == null ? null : pulumi.Output.create<ServiceTemplate>(ServiceTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())),
-      traffics: map['traffics'] == null ? null : pulumi.Output.create<List<ServiceTraffic>>(pulumi.Input.decodeList<ServiceTraffic>(map['traffics'], (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>()))),
+      autogenerateRevisionName: map['autogenerateRevisionName'] == null ? null : (map['autogenerateRevisionName'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ServiceMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ServiceStatus>(map['statuses'], (value) => ServiceStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      template: map['template'] == null ? null : (ServiceTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      traffics: map['traffics'] == null ? null : (pulumi.Input.decodeList<ServiceTraffic>(map['traffics'], (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

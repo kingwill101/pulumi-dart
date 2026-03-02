@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_manager_standby_policy_mode.dart';
 
 class InstanceGroupManagerStandbyPolicy {
-  final int? initialDelaySec;
+  final pulumi.Input<int>? initialDelaySec;
   /// Defines behaviour of using instances from standby pool to resize MIG.
-  final InstanceGroupManagerStandbyPolicyMode? mode;
+  final pulumi.Input<InstanceGroupManagerStandbyPolicyMode>? mode;
 
   /// Creates a new [InstanceGroupManagerStandbyPolicy].
   /// [initialDelaySec] Optional.
@@ -18,14 +19,14 @@ class InstanceGroupManagerStandbyPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'initialDelaySec': ?initialDelaySec,
-      'mode': ?mode == null ? null : mode!.value,
+      'mode': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerStandbyPolicyMode, String>(mode, (value) => value.value),
     };
   }
 
   factory InstanceGroupManagerStandbyPolicy.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStandbyPolicy(
-      initialDelaySec: map['initialDelaySec'] == null ? null : map['initialDelaySec'] as int,
-      mode: map['mode'] == null ? null : InstanceGroupManagerStandbyPolicyMode.fromValue(map['mode'] as String),
+      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec'] as int).input(),
+      mode: map['mode'] == null ? null : (InstanceGroupManagerStandbyPolicyMode.fromValue(map['mode'] as String)).input(),
     );
   }
 }

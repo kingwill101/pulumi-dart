@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterNetworkProfileNatGatewayProfile {
   /// The outcome (resource IDs) of the specified arguments.
-  final List<String>? effectiveOutboundIps;
+  final pulumi.Input<List<String>>? effectiveOutboundIps;
   /// Desired outbound flow idle timeout in minutes for the managed nat gateway. Must be between `4` and `120` inclusive. Defaults to `4`.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// Count of desired managed outbound IPs for the managed nat gateway. Must be between `1` and `16` inclusive.
-  final int? managedOutboundIpCount;
+  final pulumi.Input<int>? managedOutboundIpCount;
 
   /// Creates a new [KubernetesClusterNetworkProfileNatGatewayProfile].
   /// [effectiveOutboundIps] The outcome (resource IDs) of the specified arguments.
@@ -29,9 +30,9 @@ class KubernetesClusterNetworkProfileNatGatewayProfile {
 
   factory KubernetesClusterNetworkProfileNatGatewayProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNetworkProfileNatGatewayProfile(
-      effectiveOutboundIps: map['effectiveOutboundIps'] == null ? null : (map['effectiveOutboundIps'] as List).cast<String>(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      managedOutboundIpCount: map['managedOutboundIpCount'] == null ? null : map['managedOutboundIpCount'] as int,
+      effectiveOutboundIps: map['effectiveOutboundIps'] == null ? null : ((map['effectiveOutboundIps'] as List).cast<String>()).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      managedOutboundIpCount: map['managedOutboundIpCount'] == null ? null : (map['managedOutboundIpCount'] as int).input(),
     );
   }
 }

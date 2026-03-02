@@ -25,17 +25,12 @@ class GetExtensionProvidersArgs {
   /// [serviceMeshId] The ID of the Service Mesh.
   /// [type] The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
   GetExtensionProvidersArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> serviceMeshId,
-    required pulumi.Output<String> type,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      serviceMeshId = pulumi.Input.asInput<String>(serviceMeshId),
-      type = pulumi.Input.asInput<String>(type);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    required this.serviceMeshId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetExtensionProvidersArgs {
 
   factory GetExtensionProvidersArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionProvidersArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      serviceMeshId: pulumi.Output.create<String>(map['serviceMeshId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      serviceMeshId: (map['serviceMeshId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class EndpointState {
   /// [port] Port that the endpoint is running on, must be in the
   /// [service] The resource name of the service that this endpoint provides.
   EndpointState({
-    pulumi.Output<String>? address,
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? service,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.address,
+    this.endpointId,
+    this.metadata,
+    this.name,
+    this.network,
+    this.port,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

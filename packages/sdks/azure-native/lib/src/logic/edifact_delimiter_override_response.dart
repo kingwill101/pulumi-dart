@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact delimiter override settings.
 class EdifactDelimiterOverrideResponse {
   /// The component separator.
-  final int componentSeparator;
+  final pulumi.Input<int> componentSeparator;
   /// The data element separator.
-  final int dataElementSeparator;
+  final pulumi.Input<int> dataElementSeparator;
   /// The decimal point indicator.
-  final String decimalPointIndicator;
+  final pulumi.Input<String> decimalPointIndicator;
   /// The message association assigned code.
-  final String? messageAssociationAssignedCode;
+  final pulumi.Input<String>? messageAssociationAssignedCode;
   /// The message id.
-  final String? messageId;
+  final pulumi.Input<String>? messageId;
   /// The message release.
-  final String? messageRelease;
+  final pulumi.Input<String>? messageRelease;
   /// The message version.
-  final String? messageVersion;
+  final pulumi.Input<String>? messageVersion;
   /// The release indicator.
-  final int releaseIndicator;
+  final pulumi.Input<int> releaseIndicator;
   /// The repetition separator.
-  final int repetitionSeparator;
+  final pulumi.Input<int> repetitionSeparator;
   /// The segment terminator.
-  final int segmentTerminator;
+  final pulumi.Input<int> segmentTerminator;
   /// The segment terminator suffix.
-  final String segmentTerminatorSuffix;
+  final pulumi.Input<String> segmentTerminatorSuffix;
   /// The target namespace on which this delimiter settings has to be applied.
-  final String? targetNamespace;
+  final pulumi.Input<String>? targetNamespace;
 
   /// Creates a new [EdifactDelimiterOverrideResponse].
   /// [componentSeparator] The component separator.
@@ -75,18 +76,18 @@ class EdifactDelimiterOverrideResponse {
 
   factory EdifactDelimiterOverrideResponse.fromMap(Map<String, dynamic> map) {
     return EdifactDelimiterOverrideResponse(
-      componentSeparator: map['componentSeparator'] as int,
-      dataElementSeparator: map['dataElementSeparator'] as int,
-      decimalPointIndicator: map['decimalPointIndicator'] as String,
-      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : map['messageAssociationAssignedCode'] as String,
-      messageId: map['messageId'] == null ? null : map['messageId'] as String,
-      messageRelease: map['messageRelease'] == null ? null : map['messageRelease'] as String,
-      messageVersion: map['messageVersion'] == null ? null : map['messageVersion'] as String,
-      releaseIndicator: map['releaseIndicator'] as int,
-      repetitionSeparator: map['repetitionSeparator'] as int,
-      segmentTerminator: map['segmentTerminator'] as int,
-      segmentTerminatorSuffix: map['segmentTerminatorSuffix'] as String,
-      targetNamespace: map['targetNamespace'] == null ? null : map['targetNamespace'] as String,
+      componentSeparator: (map['componentSeparator'] as int).input(),
+      dataElementSeparator: (map['dataElementSeparator'] as int).input(),
+      decimalPointIndicator: (map['decimalPointIndicator'] as String).input(),
+      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : (map['messageAssociationAssignedCode'] as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
+      messageRelease: map['messageRelease'] == null ? null : (map['messageRelease'] as String).input(),
+      messageVersion: map['messageVersion'] == null ? null : (map['messageVersion'] as String).input(),
+      releaseIndicator: (map['releaseIndicator'] as int).input(),
+      repetitionSeparator: (map['repetitionSeparator'] as int).input(),
+      segmentTerminator: (map['segmentTerminator'] as int).input(),
+      segmentTerminatorSuffix: (map['segmentTerminatorSuffix'] as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
     );
   }
 }

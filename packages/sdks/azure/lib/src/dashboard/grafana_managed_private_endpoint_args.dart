@@ -37,25 +37,16 @@ class GrafanaManagedPrivateEndpointArgs {
   /// [requestMessage] A message to provide in the request which will be seen by approvers.
   /// [tags] A mapping of tags which should be assigned to the Dashboard Grafana Managed Private Endpoint.
   GrafanaManagedPrivateEndpointArgs({
-    required pulumi.Output<String> grafanaId,
-    pulumi.Output<List<String>>? groupIds,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> privateLinkResourceId,
-    pulumi.Output<String>? privateLinkResourceRegion,
-    pulumi.Output<String>? privateLinkServiceUrl,
-    pulumi.Output<String>? requestMessage,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      grafanaId = pulumi.Input.asInput<String>(grafanaId),
-      groupIds = pulumi.Input.asOptionalInput<List<String>>(groupIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateLinkResourceId = pulumi.Input.asInput<String>(privateLinkResourceId),
-      privateLinkResourceRegion = pulumi.Input.asOptionalInput<String>(privateLinkResourceRegion),
-      privateLinkServiceUrl = pulumi.Input.asOptionalInput<String>(privateLinkServiceUrl),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.grafanaId,
+    this.groupIds,
+    this.location,
+    this.name,
+    required this.privateLinkResourceId,
+    this.privateLinkResourceRegion,
+    this.privateLinkServiceUrl,
+    this.requestMessage,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GrafanaManagedPrivateEndpointArgs {
 
   factory GrafanaManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GrafanaManagedPrivateEndpointArgs(
-      grafanaId: pulumi.Output.create<String>(map['grafanaId'] as String),
-      groupIds: map['groupIds'] == null ? null : pulumi.Output.create<List<String>>((map['groupIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateLinkResourceId: pulumi.Output.create<String>(map['privateLinkResourceId'] as String),
-      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : pulumi.Output.create<String>(map['privateLinkResourceRegion'] as String),
-      privateLinkServiceUrl: map['privateLinkServiceUrl'] == null ? null : pulumi.Output.create<String>(map['privateLinkServiceUrl'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      grafanaId: (map['grafanaId'] as String).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
+      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : (map['privateLinkResourceRegion'] as String).input(),
+      privateLinkServiceUrl: map['privateLinkServiceUrl'] == null ? null : (map['privateLinkServiceUrl'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

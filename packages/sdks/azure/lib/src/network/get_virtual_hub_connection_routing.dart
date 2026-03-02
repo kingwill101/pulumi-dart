@@ -6,19 +6,19 @@ import 'get_virtual_hub_connection_routing_static_vnet_route.dart';
 
 class GetVirtualHubConnectionRouting {
   /// The ID of the route table associated with this Virtual Hub connection.
-  final String associatedRouteTableId;
+  final pulumi.Input<String> associatedRouteTableId;
   /// The ID of the Route Map associated with this Routing Configuration for inbound learned routes.
-  final String inboundRouteMapId;
+  final pulumi.Input<String> inboundRouteMapId;
   /// The ID of the Route Map associated with this Routing Configuration for outbound advertised routes.
-  final String outboundRouteMapId;
+  final pulumi.Input<String> outboundRouteMapId;
   /// A `propagated_route_table` block as defined below.
-  final List<GetVirtualHubConnectionRoutingPropagatedRouteTable> propagatedRouteTables;
+  final pulumi.Input<List<GetVirtualHubConnectionRoutingPropagatedRouteTable>> propagatedRouteTables;
   /// The static VNet local route override criteria that is used to determine whether NVA in spoke VNet is bypassed for traffic with destination in spoke VNet.
-  final String staticVnetLocalRouteOverrideCriteria;
+  final pulumi.Input<String> staticVnetLocalRouteOverrideCriteria;
   /// Whether the static routes should be propagated to the Virtual Hub or not.
-  final bool staticVnetPropagateStaticRoutesEnabled;
+  final pulumi.Input<bool> staticVnetPropagateStaticRoutesEnabled;
   /// A `static_vnet_route` block as defined below.
-  final List<GetVirtualHubConnectionRoutingStaticVnetRoute> staticVnetRoutes;
+  final pulumi.Input<List<GetVirtualHubConnectionRoutingStaticVnetRoute>> staticVnetRoutes;
 
   /// Creates a new [GetVirtualHubConnectionRouting].
   /// [associatedRouteTableId] The ID of the route table associated with this Virtual Hub connection.
@@ -43,22 +43,22 @@ class GetVirtualHubConnectionRouting {
       'associatedRouteTableId': associatedRouteTableId,
       'inboundRouteMapId': inboundRouteMapId,
       'outboundRouteMapId': outboundRouteMapId,
-      'propagatedRouteTables': pulumi.Input.encodeList<GetVirtualHubConnectionRoutingPropagatedRouteTable, Map<String, dynamic>>(propagatedRouteTables, (value) => value.toMap()),
+      'propagatedRouteTables': pulumi.Input.mapInputValue<List<GetVirtualHubConnectionRoutingPropagatedRouteTable>, List<Map<String, dynamic>>>(propagatedRouteTables, (value) => pulumi.Input.encodeList<GetVirtualHubConnectionRoutingPropagatedRouteTable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'staticVnetLocalRouteOverrideCriteria': staticVnetLocalRouteOverrideCriteria,
       'staticVnetPropagateStaticRoutesEnabled': staticVnetPropagateStaticRoutesEnabled,
-      'staticVnetRoutes': pulumi.Input.encodeList<GetVirtualHubConnectionRoutingStaticVnetRoute, Map<String, dynamic>>(staticVnetRoutes, (value) => value.toMap()),
+      'staticVnetRoutes': pulumi.Input.mapInputValue<List<GetVirtualHubConnectionRoutingStaticVnetRoute>, List<Map<String, dynamic>>>(staticVnetRoutes, (value) => pulumi.Input.encodeList<GetVirtualHubConnectionRoutingStaticVnetRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualHubConnectionRouting.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubConnectionRouting(
-      associatedRouteTableId: map['associatedRouteTableId'] as String,
-      inboundRouteMapId: map['inboundRouteMapId'] as String,
-      outboundRouteMapId: map['outboundRouteMapId'] as String,
-      propagatedRouteTables: pulumi.Input.decodeList<GetVirtualHubConnectionRoutingPropagatedRouteTable>(map['propagatedRouteTables'], (value) => GetVirtualHubConnectionRoutingPropagatedRouteTable.fromMap((value as Map).cast<String, dynamic>())),
-      staticVnetLocalRouteOverrideCriteria: map['staticVnetLocalRouteOverrideCriteria'] as String,
-      staticVnetPropagateStaticRoutesEnabled: map['staticVnetPropagateStaticRoutesEnabled'] as bool,
-      staticVnetRoutes: pulumi.Input.decodeList<GetVirtualHubConnectionRoutingStaticVnetRoute>(map['staticVnetRoutes'], (value) => GetVirtualHubConnectionRoutingStaticVnetRoute.fromMap((value as Map).cast<String, dynamic>())),
+      associatedRouteTableId: (map['associatedRouteTableId'] as String).input(),
+      inboundRouteMapId: (map['inboundRouteMapId'] as String).input(),
+      outboundRouteMapId: (map['outboundRouteMapId'] as String).input(),
+      propagatedRouteTables: (pulumi.Input.decodeList<GetVirtualHubConnectionRoutingPropagatedRouteTable>(map['propagatedRouteTables'], (value) => GetVirtualHubConnectionRoutingPropagatedRouteTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      staticVnetLocalRouteOverrideCriteria: (map['staticVnetLocalRouteOverrideCriteria'] as String).input(),
+      staticVnetPropagateStaticRoutesEnabled: (map['staticVnetPropagateStaticRoutesEnabled'] as bool).input(),
+      staticVnetRoutes: (pulumi.Input.decodeList<GetVirtualHubConnectionRoutingStaticVnetRoute>(map['staticVnetRoutes'], (value) => GetVirtualHubConnectionRoutingStaticVnetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

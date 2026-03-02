@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCollectionRuleDestinationLogAnalytic {
   /// Specifies the name of the Data Collection Rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of a Log Analytic Workspace resource.
-  final String workspaceResourceId;
+  final pulumi.Input<String> workspaceResourceId;
 
   /// Creates a new [GetDataCollectionRuleDestinationLogAnalytic].
   /// [name] Specifies the name of the Data Collection Rule.
@@ -24,8 +25,8 @@ class GetDataCollectionRuleDestinationLogAnalytic {
 
   factory GetDataCollectionRuleDestinationLogAnalytic.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDestinationLogAnalytic(
-      name: map['name'] as String,
-      workspaceResourceId: map['workspaceResourceId'] as String,
+      name: (map['name'] as String).input(),
+      workspaceResourceId: (map['workspaceResourceId'] as String).input(),
     );
   }
 }

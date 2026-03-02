@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryAssociationRepositoryCodecommit {
   /// The name of the AWS CodeCommit repository.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [RepositoryAssociationRepositoryCodecommit].
   /// [name] The name of the AWS CodeCommit repository.
@@ -19,7 +20,7 @@ class RepositoryAssociationRepositoryCodecommit {
 
   factory RepositoryAssociationRepositoryCodecommit.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationRepositoryCodecommit(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

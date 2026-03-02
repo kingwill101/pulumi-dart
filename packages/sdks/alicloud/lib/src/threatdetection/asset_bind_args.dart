@@ -16,11 +16,9 @@ class AssetBindArgs {
   /// [authVersion] Bind version.
   /// [uuid] The first ID of the resource
   AssetBindArgs({
-    pulumi.Output<int>? authVersion,
-    pulumi.Output<String>? uuid,
-  }) :
-      authVersion = pulumi.Input.asOptionalInput<int>(authVersion),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.authVersion,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class AssetBindArgs {
 
   factory AssetBindArgs.fromMap(Map<String, dynamic> map) {
     return AssetBindArgs(
-      authVersion: map['authVersion'] == null ? null : pulumi.Output.create<int>(map['authVersion'] as int),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      authVersion: map['authVersion'] == null ? null : (map['authVersion'] as int).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

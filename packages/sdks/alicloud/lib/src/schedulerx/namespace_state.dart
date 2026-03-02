@@ -16,13 +16,10 @@ class NamespaceState {
   /// [namespaceName] Namespace name.
   /// [namespaceUid] namespace uid
   NamespaceState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? namespaceUid,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      namespaceUid = pulumi.Input.asOptionalInput<String>(namespaceUid);
+    this.description,
+    this.namespaceName,
+    this.namespaceUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      namespaceUid: map['namespaceUid'] == null ? null : pulumi.Output.create<String>(map['namespaceUid'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      namespaceUid: map['namespaceUid'] == null ? null : (map['namespaceUid'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetMachineLearningDatastoreArgs {
   /// [resourceGroupName] Name of the resource group in which workspace is located.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   GetMachineLearningDatastoreArgs({
-    required pulumi.Output<String> datastoreName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      datastoreName = pulumi.Input.asInput<String>(datastoreName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.datastoreName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMachineLearningDatastoreArgs {
 
   factory GetMachineLearningDatastoreArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineLearningDatastoreArgs(
-      datastoreName: pulumi.Output.create<String>(map['datastoreName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      datastoreName: (map['datastoreName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

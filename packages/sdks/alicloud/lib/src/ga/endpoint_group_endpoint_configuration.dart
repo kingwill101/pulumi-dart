@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointGroupEndpointConfiguration {
   /// Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
-  final bool? enableClientipPreservation;
+  final pulumi.Input<bool>? enableClientipPreservation;
   /// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
-  final bool? enableProxyProtocol;
+  final pulumi.Input<bool>? enableProxyProtocol;
   /// The IP address or domain name of Endpoint N in the endpoint group.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The private IP address of the ENI.
   /// > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
-  final String? subAddress;
+  final pulumi.Input<String>? subAddress;
   /// The type of Endpoint N in the endpoint group. Valid values:
   /// - `Domain`: A custom domain name.
   /// - `Ip`: A custom IP address.
@@ -22,14 +23,14 @@ class EndpointGroupEndpointConfiguration {
   /// - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
   /// - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
   /// - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
-  final String type;
+  final pulumi.Input<String> type;
   /// The ID of the VPC.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
   /// The IDs of vSwitches that are deployed in the VPC.
-  final List<String>? vswitchIds;
+  final pulumi.Input<List<String>>? vswitchIds;
   /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
   /// > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [EndpointGroupEndpointConfiguration].
   /// [enableClientipPreservation] Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
@@ -66,14 +67,14 @@ class EndpointGroupEndpointConfiguration {
 
   factory EndpointGroupEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointGroupEndpointConfiguration(
-      enableClientipPreservation: map['enableClientipPreservation'] == null ? null : map['enableClientipPreservation'] as bool,
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : map['enableProxyProtocol'] as bool,
-      endpoint: map['endpoint'] as String,
-      subAddress: map['subAddress'] == null ? null : map['subAddress'] as String,
-      type: map['type'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchIds: map['vswitchIds'] == null ? null : (map['vswitchIds'] as List).cast<String>(),
-      weight: map['weight'] as int,
+      enableClientipPreservation: map['enableClientipPreservation'] == null ? null : (map['enableClientipPreservation'] as bool).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      subAddress: map['subAddress'] == null ? null : (map['subAddress'] as String).input(),
+      type: (map['type'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

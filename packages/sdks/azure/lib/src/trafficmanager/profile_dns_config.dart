@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProfileDnsConfig {
   /// The relative domain name, this is combined with the domain name used by Traffic Manager to form the FQDN which is exported as documented below. Changing this forces a new resource to be created.
-  final String relativeName;
+  final pulumi.Input<String> relativeName;
   /// The TTL value of the Profile used by Local DNS resolvers and clients.
-  final int ttl;
+  final pulumi.Input<int> ttl;
 
   /// Creates a new [ProfileDnsConfig].
   /// [relativeName] The relative domain name, this is combined with the domain name used by Traffic Manager to form the FQDN which is exported as documented below. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class ProfileDnsConfig {
 
   factory ProfileDnsConfig.fromMap(Map<String, dynamic> map) {
     return ProfileDnsConfig(
-      relativeName: map['relativeName'] as String,
-      ttl: map['ttl'] as int,
+      relativeName: (map['relativeName'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
     );
   }
 }

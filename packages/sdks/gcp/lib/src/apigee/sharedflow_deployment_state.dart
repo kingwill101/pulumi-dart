@@ -25,17 +25,12 @@ class SharedflowDeploymentState {
   /// [serviceAccount] The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
   /// [sharedflowId] Id of the Sharedflow to be deployed.
   SharedflowDeploymentState({
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? revision,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<String>? sharedflowId,
-  }) :
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      revision = pulumi.Input.asOptionalInput<String>(revision),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      sharedflowId = pulumi.Input.asOptionalInput<String>(sharedflowId);
+    this.environment,
+    this.orgId,
+    this.revision,
+    this.serviceAccount,
+    this.sharedflowId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SharedflowDeploymentState {
 
   factory SharedflowDeploymentState.fromMap(Map<String, dynamic> map) {
     return SharedflowDeploymentState(
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      revision: map['revision'] == null ? null : pulumi.Output.create<String>(map['revision'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      sharedflowId: map['sharedflowId'] == null ? null : pulumi.Output.create<String>(map['sharedflowId'] as String),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      sharedflowId: map['sharedflowId'] == null ? null : (map['sharedflowId'] as String).input(),
     );
   }
 }

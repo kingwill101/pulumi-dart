@@ -25,17 +25,12 @@ class GetBuildServiceBuildResultLogArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   GetBuildServiceBuildResultLogArgs({
-    required pulumi.Output<String> buildName,
-    required pulumi.Output<String> buildResultName,
-    required pulumi.Output<String> buildServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      buildName = pulumi.Input.asInput<String>(buildName),
-      buildResultName = pulumi.Input.asInput<String>(buildResultName),
-      buildServiceName = pulumi.Input.asInput<String>(buildServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.buildName,
+    required this.buildResultName,
+    required this.buildServiceName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetBuildServiceBuildResultLogArgs {
 
   factory GetBuildServiceBuildResultLogArgs.fromMap(Map<String, dynamic> map) {
     return GetBuildServiceBuildResultLogArgs(
-      buildName: pulumi.Output.create<String>(map['buildName'] as String),
-      buildResultName: pulumi.Output.create<String>(map['buildResultName'] as String),
-      buildServiceName: pulumi.Output.create<String>(map['buildServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      buildName: (map['buildName'] as String).input(),
+      buildResultName: (map['buildResultName'] as String).input(),
+      buildServiceName: (map['buildServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

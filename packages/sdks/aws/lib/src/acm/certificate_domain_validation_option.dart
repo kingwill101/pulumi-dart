@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateDomainValidationOption {
   /// Fully qualified domain name (FQDN) in the certificate.
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// The name of the DNS record to create to validate the certificate
-  final String? resourceRecordName;
+  final pulumi.Input<String>? resourceRecordName;
   /// The type of DNS record to create
-  final String? resourceRecordType;
+  final pulumi.Input<String>? resourceRecordType;
   /// The value the DNS record needs to have
-  final String? resourceRecordValue;
+  final pulumi.Input<String>? resourceRecordValue;
 
   /// Creates a new [CertificateDomainValidationOption].
   /// [domainName] Fully qualified domain name (FQDN) in the certificate.
@@ -34,10 +35,10 @@ class CertificateDomainValidationOption {
 
   factory CertificateDomainValidationOption.fromMap(Map<String, dynamic> map) {
     return CertificateDomainValidationOption(
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      resourceRecordName: map['resourceRecordName'] == null ? null : map['resourceRecordName'] as String,
-      resourceRecordType: map['resourceRecordType'] == null ? null : map['resourceRecordType'] as String,
-      resourceRecordValue: map['resourceRecordValue'] == null ? null : map['resourceRecordValue'] as String,
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      resourceRecordName: map['resourceRecordName'] == null ? null : (map['resourceRecordName'] as String).input(),
+      resourceRecordType: map['resourceRecordType'] == null ? null : (map['resourceRecordType'] as String).input(),
+      resourceRecordValue: map['resourceRecordValue'] == null ? null : (map['resourceRecordValue'] as String).input(),
     );
   }
 }

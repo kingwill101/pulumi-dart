@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// File server read settings.
 class FileServerReadSettings {
   /// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic deleteFilesAfterCompletion;
+  final pulumi.Input<dynamic>? deleteFilesAfterCompletion;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
-  final dynamic enablePartitionDiscovery;
+  final pulumi.Input<dynamic>? enablePartitionDiscovery;
   /// Specify a filter to be used to select a subset of files in the folderPath rather than all files. Type: string (or Expression with resultType string).
-  final dynamic fileFilter;
+  final pulumi.Input<dynamic>? fileFilter;
   /// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
-  final dynamic fileListPath;
+  final pulumi.Input<dynamic>? fileListPath;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// The end of file's modified datetime. Type: string (or Expression with resultType string).
-  final dynamic modifiedDatetimeEnd;
+  final pulumi.Input<dynamic>? modifiedDatetimeEnd;
   /// The start of file's modified datetime. Type: string (or Expression with resultType string).
-  final dynamic modifiedDatetimeStart;
+  final pulumi.Input<dynamic>? modifiedDatetimeStart;
   /// Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
-  final dynamic partitionRootPath;
+  final pulumi.Input<dynamic>? partitionRootPath;
   /// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
-  final dynamic recursive;
+  final pulumi.Input<dynamic>? recursive;
   /// The read setting type.
   /// Expected value is 'FileServerReadSettings'.
-  final String type;
+  final pulumi.Input<String> type;
   /// FileServer wildcardFileName. Type: string (or Expression with resultType string).
-  final dynamic wildcardFileName;
+  final pulumi.Input<dynamic>? wildcardFileName;
   /// FileServer wildcardFolderPath. Type: string (or Expression with resultType string).
-  final dynamic wildcardFolderPath;
+  final pulumi.Input<dynamic>? wildcardFolderPath;
 
   /// Creates a new [FileServerReadSettings].
   /// [deleteFilesAfterCompletion] Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -81,19 +82,19 @@ class FileServerReadSettings {
 
   factory FileServerReadSettings.fromMap(Map<String, dynamic> map) {
     return FileServerReadSettings(
-      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : map['deleteFilesAfterCompletion'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : map['enablePartitionDiscovery'],
-      fileFilter: map['fileFilter'] == null ? null : map['fileFilter'],
-      fileListPath: map['fileListPath'] == null ? null : map['fileListPath'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : map['modifiedDatetimeEnd'],
-      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : map['modifiedDatetimeStart'],
-      partitionRootPath: map['partitionRootPath'] == null ? null : map['partitionRootPath'],
-      recursive: map['recursive'] == null ? null : map['recursive'],
-      type: map['type'] as String,
-      wildcardFileName: map['wildcardFileName'] == null ? null : map['wildcardFileName'],
-      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : map['wildcardFolderPath'],
+      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']).input(),
+      fileFilter: map['fileFilter'] == null ? null : (map['fileFilter']).input(),
+      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']).input(),
+      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']).input(),
+      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
+      type: (map['type'] as String).input(),
+      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']).input(),
+      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']).input(),
     );
   }
 }

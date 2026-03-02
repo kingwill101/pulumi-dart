@@ -5,9 +5,9 @@ import 'certificate_signing_request_condition_patch_certificates_k8s_io_v1beta1.
 
 class CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1 {
   /// If request was approved, the controller will place the issued certificate here.
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// Conditions applied to the request, such as approval or denial.
-  final List<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>? conditions;
+  final pulumi.Input<List<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>>? conditions;
 
   /// Creates a new [CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1].
   /// [certificate] If request was approved, the controller will place the issued certificate here.
@@ -20,14 +20,14 @@ class CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificate': ?certificate,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>(map['conditions'], (value) => CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>(map['conditions'], (value) => CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

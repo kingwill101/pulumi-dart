@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
 class AdvancedDatapathObservabilityConfigResponseContainerV1beta1 {
   /// Expose flow metrics on nodes
-  final bool enableMetrics;
+  final pulumi.Input<bool> enableMetrics;
   /// Method used to make Relay available
-  final String relayMode;
+  final pulumi.Input<String> relayMode;
 
   /// Creates a new [AdvancedDatapathObservabilityConfigResponseContainerV1beta1].
   /// [enableMetrics] Expose flow metrics on nodes
@@ -25,8 +26,8 @@ class AdvancedDatapathObservabilityConfigResponseContainerV1beta1 {
 
   factory AdvancedDatapathObservabilityConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdvancedDatapathObservabilityConfigResponseContainerV1beta1(
-      enableMetrics: map['enableMetrics'] as bool,
-      relayMode: map['relayMode'] as String,
+      enableMetrics: (map['enableMetrics'] as bool).input(),
+      relayMode: (map['relayMode'] as String).input(),
     );
   }
 }

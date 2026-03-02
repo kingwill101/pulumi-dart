@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTiersTier {
   /// The maximum disk size of this tier in bytes.
-  final int diskQuota;
+  final pulumi.Input<int> diskQuota;
   /// The maximum ram usage of this tier in bytes.
-  final int ram;
+  final pulumi.Input<int> ram;
   /// The applicable regions for this tier.
-  final List<String> regions;
+  final pulumi.Input<List<String>> regions;
   /// An identifier for the machine type, for example, db-custom-1-3840.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [GetTiersTier].
   /// [diskQuota] The maximum disk size of this tier in bytes.
@@ -34,10 +35,10 @@ class GetTiersTier {
 
   factory GetTiersTier.fromMap(Map<String, dynamic> map) {
     return GetTiersTier(
-      diskQuota: map['diskQuota'] as int,
-      ram: map['ram'] as int,
-      regions: (map['regions'] as List).cast<String>(),
-      tier: map['tier'] as String,
+      diskQuota: (map['diskQuota'] as int).input(),
+      ram: (map['ram'] as int).input(),
+      regions: ((map['regions'] as List).cast<String>()).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

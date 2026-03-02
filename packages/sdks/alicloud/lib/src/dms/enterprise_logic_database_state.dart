@@ -37,27 +37,17 @@ class EnterpriseLogicDatabaseState {
   /// [schemaName] Logical Library name.
   /// [searchName] Logical library search name.
   EnterpriseLogicDatabaseState({
-    pulumi.Output<String>? alias,
-    pulumi.Output<List<String>>? databaseIds,
-    pulumi.Output<String>? dbType,
-    pulumi.Output<String>? envType,
-    pulumi.Output<bool>? logic,
-    pulumi.Output<String>? logicDatabaseId,
-    pulumi.Output<List<String>>? ownerIdLists,
-    pulumi.Output<List<String>>? ownerNameLists,
-    pulumi.Output<String>? schemaName,
-    pulumi.Output<String>? searchName,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      databaseIds = pulumi.Input.asOptionalInput<List<String>>(databaseIds),
-      dbType = pulumi.Input.asOptionalInput<String>(dbType),
-      envType = pulumi.Input.asOptionalInput<String>(envType),
-      logic = pulumi.Input.asOptionalInput<bool>(logic),
-      logicDatabaseId = pulumi.Input.asOptionalInput<String>(logicDatabaseId),
-      ownerIdLists = pulumi.Input.asOptionalInput<List<String>>(ownerIdLists),
-      ownerNameLists = pulumi.Input.asOptionalInput<List<String>>(ownerNameLists),
-      schemaName = pulumi.Input.asOptionalInput<String>(schemaName),
-      searchName = pulumi.Input.asOptionalInput<String>(searchName);
+    this.alias,
+    this.databaseIds,
+    this.dbType,
+    this.envType,
+    this.logic,
+    this.logicDatabaseId,
+    this.ownerIdLists,
+    this.ownerNameLists,
+    this.schemaName,
+    this.searchName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class EnterpriseLogicDatabaseState {
 
   factory EnterpriseLogicDatabaseState.fromMap(Map<String, dynamic> map) {
     return EnterpriseLogicDatabaseState(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      databaseIds: map['databaseIds'] == null ? null : pulumi.Output.create<List<String>>((map['databaseIds'] as List).cast<String>()),
-      dbType: map['dbType'] == null ? null : pulumi.Output.create<String>(map['dbType'] as String),
-      envType: map['envType'] == null ? null : pulumi.Output.create<String>(map['envType'] as String),
-      logic: map['logic'] == null ? null : pulumi.Output.create<bool>(map['logic'] as bool),
-      logicDatabaseId: map['logicDatabaseId'] == null ? null : pulumi.Output.create<String>(map['logicDatabaseId'] as String),
-      ownerIdLists: map['ownerIdLists'] == null ? null : pulumi.Output.create<List<String>>((map['ownerIdLists'] as List).cast<String>()),
-      ownerNameLists: map['ownerNameLists'] == null ? null : pulumi.Output.create<List<String>>((map['ownerNameLists'] as List).cast<String>()),
-      schemaName: map['schemaName'] == null ? null : pulumi.Output.create<String>(map['schemaName'] as String),
-      searchName: map['searchName'] == null ? null : pulumi.Output.create<String>(map['searchName'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      databaseIds: map['databaseIds'] == null ? null : ((map['databaseIds'] as List).cast<String>()).input(),
+      dbType: map['dbType'] == null ? null : (map['dbType'] as String).input(),
+      envType: map['envType'] == null ? null : (map['envType'] as String).input(),
+      logic: map['logic'] == null ? null : (map['logic'] as bool).input(),
+      logicDatabaseId: map['logicDatabaseId'] == null ? null : (map['logicDatabaseId'] as String).input(),
+      ownerIdLists: map['ownerIdLists'] == null ? null : ((map['ownerIdLists'] as List).cast<String>()).input(),
+      ownerNameLists: map['ownerNameLists'] == null ? null : ((map['ownerNameLists'] as List).cast<String>()).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      searchName: map['searchName'] == null ? null : (map['searchName'] as String).input(),
     );
   }
 }

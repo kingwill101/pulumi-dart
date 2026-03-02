@@ -21,13 +21,10 @@ class GetSubscribedRuleGroupArgs {
   /// [name] Name of the WAF rule group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetSubscribedRuleGroupArgs({
-    pulumi.Output<String>? metricName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      metricName = pulumi.Input.asOptionalInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.metricName,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetSubscribedRuleGroupArgs {
 
   factory GetSubscribedRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscribedRuleGroupArgs(
-      metricName: map['metricName'] == null ? null : pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

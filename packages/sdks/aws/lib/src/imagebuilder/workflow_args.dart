@@ -42,27 +42,17 @@ class WorkflowArgs {
   /// [uri] S3 URI with data of the workflow. Exactly one of `data` and `uri` can be specified.
   /// [version] Version of the workflow.
   WorkflowArgs({
-    pulumi.Output<String>? changeDescription,
-    pulumi.Output<String>? data,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? uri,
-    required pulumi.Output<String> version,
-  }) :
-      changeDescription = pulumi.Input.asOptionalInput<String>(changeDescription),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type),
-      uri = pulumi.Input.asOptionalInput<String>(uri),
-      version = pulumi.Input.asInput<String>(version);
+    this.changeDescription,
+    this.data,
+    this.description,
+    this.kmsKeyId,
+    this.name,
+    this.region,
+    this.tags,
+    required this.type,
+    this.uri,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      changeDescription: map['changeDescription'] == null ? null : pulumi.Output.create<String>(map['changeDescription'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      changeDescription: map['changeDescription'] == null ? null : (map['changeDescription'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

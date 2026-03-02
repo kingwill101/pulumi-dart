@@ -7,16 +7,16 @@ import 'express_gateway_service_primary_container_repository_credentials.dart';
 import 'express_gateway_service_primary_container_secret.dart';
 
 class ExpressGatewayServicePrimaryContainer {
-  final List<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>? awsLogsConfigurations;
+  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>>? awsLogsConfigurations;
   /// Command to run in the container. Overrides the default command from the Docker image.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// Port on which the container listens for connections.
-  final int? containerPort;
-  final List<ExpressGatewayServicePrimaryContainerEnvironment>? environments;
+  final pulumi.Input<int>? containerPort;
+  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerEnvironment>>? environments;
   /// Docker image to use for the container.
-  final String image;
-  final ExpressGatewayServicePrimaryContainerRepositoryCredentials? repositoryCredentials;
-  final List<ExpressGatewayServicePrimaryContainerSecret>? secrets;
+  final pulumi.Input<String> image;
+  final pulumi.Input<ExpressGatewayServicePrimaryContainerRepositoryCredentials>? repositoryCredentials;
+  final pulumi.Input<List<ExpressGatewayServicePrimaryContainerSecret>>? secrets;
 
   /// Creates a new [ExpressGatewayServicePrimaryContainer].
   /// [awsLogsConfigurations] Optional.
@@ -38,25 +38,25 @@ class ExpressGatewayServicePrimaryContainer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsLogsConfigurations': ?awsLogsConfigurations == null ? null : pulumi.Input.encodeList<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration, Map<String, dynamic>>(awsLogsConfigurations!, (value) => value.toMap()),
+      'awsLogsConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>, List<Map<String, dynamic>>>(awsLogsConfigurations, (value) => pulumi.Input.encodeList<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'commands': ?commands,
       'containerPort': ?containerPort,
-      'environments': ?environments == null ? null : pulumi.Input.encodeList<ExpressGatewayServicePrimaryContainerEnvironment, Map<String, dynamic>>(environments!, (value) => value.toMap()),
+      'environments': ?pulumi.Input.mapOptionalInputValue<List<ExpressGatewayServicePrimaryContainerEnvironment>, List<Map<String, dynamic>>>(environments, (value) => pulumi.Input.encodeList<ExpressGatewayServicePrimaryContainerEnvironment, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': image,
-      'repositoryCredentials': ?repositoryCredentials == null ? null : repositoryCredentials!.toMap(),
-      'secrets': ?secrets == null ? null : pulumi.Input.encodeList<ExpressGatewayServicePrimaryContainerSecret, Map<String, dynamic>>(secrets!, (value) => value.toMap()),
+      'repositoryCredentials': ?pulumi.Input.mapOptionalInputValue<ExpressGatewayServicePrimaryContainerRepositoryCredentials, Map<String, dynamic>>(repositoryCredentials, (value) => value.toMap()),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<ExpressGatewayServicePrimaryContainerSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<ExpressGatewayServicePrimaryContainerSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExpressGatewayServicePrimaryContainer.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServicePrimaryContainer(
-      awsLogsConfigurations: map['awsLogsConfigurations'] == null ? null : pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>(map['awsLogsConfigurations'], (value) => ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      containerPort: map['containerPort'] == null ? null : map['containerPort'] as int,
-      environments: map['environments'] == null ? null : pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerEnvironment>(map['environments'], (value) => ExpressGatewayServicePrimaryContainerEnvironment.fromMap((value as Map).cast<String, dynamic>())),
-      image: map['image'] as String,
-      repositoryCredentials: map['repositoryCredentials'] == null ? null : ExpressGatewayServicePrimaryContainerRepositoryCredentials.fromMap((map['repositoryCredentials'] as Map).cast<String, dynamic>()),
-      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerSecret>(map['secrets'], (value) => ExpressGatewayServicePrimaryContainerSecret.fromMap((value as Map).cast<String, dynamic>())),
+      awsLogsConfigurations: map['awsLogsConfigurations'] == null ? null : (pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>(map['awsLogsConfigurations'], (value) => ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
+      environments: map['environments'] == null ? null : (pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerEnvironment>(map['environments'], (value) => ExpressGatewayServicePrimaryContainerEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: (map['image'] as String).input(),
+      repositoryCredentials: map['repositoryCredentials'] == null ? null : (ExpressGatewayServicePrimaryContainerRepositoryCredentials.fromMap((map['repositoryCredentials'] as Map).cast<String, dynamic>())).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<ExpressGatewayServicePrimaryContainerSecret>(map['secrets'], (value) => ExpressGatewayServicePrimaryContainerSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

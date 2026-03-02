@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The group by expression to be used in the report.
 class ReportConfigGrouping {
   /// The name of the column to group. This version supports subscription lowest possible grain.
-  final String name;
+  final pulumi.Input<String> name;
   /// Has type of the column to group.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ReportConfigGrouping].
   /// [name] The name of the column to group. This version supports subscription lowest possible grain.
@@ -25,8 +26,8 @@ class ReportConfigGrouping {
 
   factory ReportConfigGrouping.fromMap(Map<String, dynamic> map) {
     return ReportConfigGrouping(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

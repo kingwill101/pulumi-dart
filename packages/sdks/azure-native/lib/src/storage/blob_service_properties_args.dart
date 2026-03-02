@@ -51,31 +51,19 @@ class BlobServicePropertiesArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [restorePolicy] The blob service properties for blob restore policy.
   BlobServicePropertiesArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<bool>? automaticSnapshotPolicyEnabled,
-    pulumi.Output<String>? blobServicesName,
-    pulumi.Output<ChangeFeed>? changeFeed,
-    pulumi.Output<DeleteRetentionPolicy>? containerDeleteRetentionPolicy,
-    pulumi.Output<CorsRules>? cors,
-    pulumi.Output<String>? defaultServiceVersion,
-    pulumi.Output<DeleteRetentionPolicy>? deleteRetentionPolicy,
-    pulumi.Output<bool>? isVersioningEnabled,
-    pulumi.Output<LastAccessTimeTrackingPolicy>? lastAccessTimeTrackingPolicy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<RestorePolicyProperties>? restorePolicy,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      automaticSnapshotPolicyEnabled = pulumi.Input.asOptionalInput<bool>(automaticSnapshotPolicyEnabled),
-      blobServicesName = pulumi.Input.asOptionalInput<String>(blobServicesName),
-      changeFeed = pulumi.Input.asOptionalInput<ChangeFeed>(changeFeed),
-      containerDeleteRetentionPolicy = pulumi.Input.asOptionalInput<DeleteRetentionPolicy>(containerDeleteRetentionPolicy),
-      cors = pulumi.Input.asOptionalInput<CorsRules>(cors),
-      defaultServiceVersion = pulumi.Input.asOptionalInput<String>(defaultServiceVersion),
-      deleteRetentionPolicy = pulumi.Input.asOptionalInput<DeleteRetentionPolicy>(deleteRetentionPolicy),
-      isVersioningEnabled = pulumi.Input.asOptionalInput<bool>(isVersioningEnabled),
-      lastAccessTimeTrackingPolicy = pulumi.Input.asOptionalInput<LastAccessTimeTrackingPolicy>(lastAccessTimeTrackingPolicy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      restorePolicy = pulumi.Input.asOptionalInput<RestorePolicyProperties>(restorePolicy);
+    required this.accountName,
+    this.automaticSnapshotPolicyEnabled,
+    this.blobServicesName,
+    this.changeFeed,
+    this.containerDeleteRetentionPolicy,
+    this.cors,
+    this.defaultServiceVersion,
+    this.deleteRetentionPolicy,
+    this.isVersioningEnabled,
+    this.lastAccessTimeTrackingPolicy,
+    required this.resourceGroupName,
+    this.restorePolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class BlobServicePropertiesArgs {
 
   factory BlobServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return BlobServicePropertiesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      automaticSnapshotPolicyEnabled: map['automaticSnapshotPolicyEnabled'] == null ? null : pulumi.Output.create<bool>(map['automaticSnapshotPolicyEnabled'] as bool),
-      blobServicesName: map['blobServicesName'] == null ? null : pulumi.Output.create<String>(map['blobServicesName'] as String),
-      changeFeed: map['changeFeed'] == null ? null : pulumi.Output.create<ChangeFeed>(ChangeFeed.fromMap((map['changeFeed'] as Map).cast<String, dynamic>())),
-      containerDeleteRetentionPolicy: map['containerDeleteRetentionPolicy'] == null ? null : pulumi.Output.create<DeleteRetentionPolicy>(DeleteRetentionPolicy.fromMap((map['containerDeleteRetentionPolicy'] as Map).cast<String, dynamic>())),
-      cors: map['cors'] == null ? null : pulumi.Output.create<CorsRules>(CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      defaultServiceVersion: map['defaultServiceVersion'] == null ? null : pulumi.Output.create<String>(map['defaultServiceVersion'] as String),
-      deleteRetentionPolicy: map['deleteRetentionPolicy'] == null ? null : pulumi.Output.create<DeleteRetentionPolicy>(DeleteRetentionPolicy.fromMap((map['deleteRetentionPolicy'] as Map).cast<String, dynamic>())),
-      isVersioningEnabled: map['isVersioningEnabled'] == null ? null : pulumi.Output.create<bool>(map['isVersioningEnabled'] as bool),
-      lastAccessTimeTrackingPolicy: map['lastAccessTimeTrackingPolicy'] == null ? null : pulumi.Output.create<LastAccessTimeTrackingPolicy>(LastAccessTimeTrackingPolicy.fromMap((map['lastAccessTimeTrackingPolicy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      restorePolicy: map['restorePolicy'] == null ? null : pulumi.Output.create<RestorePolicyProperties>(RestorePolicyProperties.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())),
+      accountName: (map['accountName'] as String).input(),
+      automaticSnapshotPolicyEnabled: map['automaticSnapshotPolicyEnabled'] == null ? null : (map['automaticSnapshotPolicyEnabled'] as bool).input(),
+      blobServicesName: map['blobServicesName'] == null ? null : (map['blobServicesName'] as String).input(),
+      changeFeed: map['changeFeed'] == null ? null : (ChangeFeed.fromMap((map['changeFeed'] as Map).cast<String, dynamic>())).input(),
+      containerDeleteRetentionPolicy: map['containerDeleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['containerDeleteRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      defaultServiceVersion: map['defaultServiceVersion'] == null ? null : (map['defaultServiceVersion'] as String).input(),
+      deleteRetentionPolicy: map['deleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['deleteRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      isVersioningEnabled: map['isVersioningEnabled'] == null ? null : (map['isVersioningEnabled'] as bool).input(),
+      lastAccessTimeTrackingPolicy: map['lastAccessTimeTrackingPolicy'] == null ? null : (LastAccessTimeTrackingPolicy.fromMap((map['lastAccessTimeTrackingPolicy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (RestorePolicyProperties.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class TrafficControllerInterfaceArgs {
   /// [tags] Resource tags.
   /// [trafficControllerName] traffic controller name for path
   TrafficControllerInterfaceArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SecurityPolicyConfigurations>? securityPolicyConfigurations,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? trafficControllerName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityPolicyConfigurations = pulumi.Input.asOptionalInput<SecurityPolicyConfigurations>(securityPolicyConfigurations),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficControllerName = pulumi.Input.asOptionalInput<String>(trafficControllerName);
+    this.location,
+    required this.resourceGroupName,
+    this.securityPolicyConfigurations,
+    this.tags,
+    this.trafficControllerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class TrafficControllerInterfaceArgs {
 
   factory TrafficControllerInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return TrafficControllerInterfaceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityPolicyConfigurations: map['securityPolicyConfigurations'] == null ? null : pulumi.Output.create<SecurityPolicyConfigurations>(SecurityPolicyConfigurations.fromMap((map['securityPolicyConfigurations'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficControllerName: map['trafficControllerName'] == null ? null : pulumi.Output.create<String>(map['trafficControllerName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityPolicyConfigurations: map['securityPolicyConfigurations'] == null ? null : (SecurityPolicyConfigurations.fromMap((map['securityPolicyConfigurations'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficControllerName: map['trafficControllerName'] == null ? null : (map['trafficControllerName'] as String).input(),
     );
   }
 }

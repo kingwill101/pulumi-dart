@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayFrontendPort {
   /// The ID of the Rewrite Rule Set
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the Frontend Port.
-  final String name;
+  final pulumi.Input<String> name;
   /// The port used for this Frontend Port.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [ApplicationGatewayFrontendPort].
   /// [id] The ID of the Rewrite Rule Set
@@ -29,9 +30,9 @@ class ApplicationGatewayFrontendPort {
 
   factory ApplicationGatewayFrontendPort.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendPort(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
-      port: map['port'] as int,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureClusterControlPlaneProxyConfig {
   /// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
-  final String secretId;
+  final pulumi.Input<String> secretId;
 
   /// Creates a new [AzureClusterControlPlaneProxyConfig].
   /// [resourceGroupId] The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
@@ -24,8 +25,8 @@ class AzureClusterControlPlaneProxyConfig {
 
   factory AzureClusterControlPlaneProxyConfig.fromMap(Map<String, dynamic> map) {
     return AzureClusterControlPlaneProxyConfig(
-      resourceGroupId: map['resourceGroupId'] as String,
-      secretId: map['secretId'] as String,
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

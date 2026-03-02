@@ -7,14 +7,14 @@ import 'expression_response.dart';
 /// The expression root.
 class ExpressionRootResponse {
   /// The azure resource error info.
-  final AzureResourceErrorInfoResponse? error;
+  final pulumi.Input<AzureResourceErrorInfoResponse>? error;
   /// The path.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// The sub expressions.
-  final List<ExpressionResponse>? subexpressions;
+  final pulumi.Input<List<ExpressionResponse>>? subexpressions;
   /// The text.
-  final String? text;
-  final dynamic value;
+  final pulumi.Input<String>? text;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ExpressionRootResponse].
   /// [error] The azure resource error info.
@@ -32,9 +32,9 @@ class ExpressionRootResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<AzureResourceErrorInfoResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'path': ?path,
-      'subexpressions': ?subexpressions == null ? null : pulumi.Input.encodeList<ExpressionResponse, Map<String, dynamic>>(subexpressions!, (value) => value.toMap()),
+      'subexpressions': ?pulumi.Input.mapOptionalInputValue<List<ExpressionResponse>, List<Map<String, dynamic>>>(subexpressions, (value) => pulumi.Input.encodeList<ExpressionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'text': ?text,
       'value': ?value,
     };
@@ -42,11 +42,11 @@ class ExpressionRootResponse {
 
   factory ExpressionRootResponse.fromMap(Map<String, dynamic> map) {
     return ExpressionRootResponse(
-      error: map['error'] == null ? null : AzureResourceErrorInfoResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      path: map['path'] == null ? null : map['path'] as String,
-      subexpressions: map['subexpressions'] == null ? null : pulumi.Input.decodeList<ExpressionResponse>(map['subexpressions'], (value) => ExpressionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      text: map['text'] == null ? null : map['text'] as String,
-      value: map['value'] == null ? null : map['value'],
+      error: map['error'] == null ? null : (AzureResourceErrorInfoResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      subexpressions: map['subexpressions'] == null ? null : (pulumi.Input.decodeList<ExpressionResponse>(map['subexpressions'], (value) => ExpressionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
+      value: map['value'] == null ? null : (map['value']).input(),
     );
   }
 }

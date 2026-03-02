@@ -21,15 +21,11 @@ class GroupArgs {
   /// [name] The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}`
   /// [project] Optional.
   GroupArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.displayName,
+    this.groupId,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: (map['displayName'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

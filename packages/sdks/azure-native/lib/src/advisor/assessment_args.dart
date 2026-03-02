@@ -22,15 +22,11 @@ class AssessmentArgs {
   /// [typeId] Assessment Type Id.
   /// [workloadId] Workload Id.
   AssessmentArgs({
-    pulumi.Output<String>? assessmentName,
-    pulumi.Output<String>? locale,
-    pulumi.Output<String>? typeId,
-    pulumi.Output<String>? workloadId,
-  }) :
-      assessmentName = pulumi.Input.asOptionalInput<String>(assessmentName),
-      locale = pulumi.Input.asOptionalInput<String>(locale),
-      typeId = pulumi.Input.asOptionalInput<String>(typeId),
-      workloadId = pulumi.Input.asOptionalInput<String>(workloadId);
+    this.assessmentName,
+    this.locale,
+    this.typeId,
+    this.workloadId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      assessmentName: map['assessmentName'] == null ? null : pulumi.Output.create<String>(map['assessmentName'] as String),
-      locale: map['locale'] == null ? null : pulumi.Output.create<String>(map['locale'] as String),
-      typeId: map['typeId'] == null ? null : pulumi.Output.create<String>(map['typeId'] as String),
-      workloadId: map['workloadId'] == null ? null : pulumi.Output.create<String>(map['workloadId'] as String),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
+      typeId: map['typeId'] == null ? null : (map['typeId'] as String).input(),
+      workloadId: map['workloadId'] == null ? null : (map['workloadId'] as String).input(),
     );
   }
 }

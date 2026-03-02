@@ -24,15 +24,11 @@ class AccessKeyArgs {
   /// [status] The status of the AccessKey. Value:
   /// [userName] The RAM user name.
   AccessKeyArgs({
-    pulumi.Output<String>? pgpKey,
-    pulumi.Output<String>? secretFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? userName,
-  }) :
-      pgpKey = pulumi.Input.asOptionalInput<String>(pgpKey),
-      secretFile = pulumi.Input.asOptionalInput<String>(secretFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.pgpKey,
+    this.secretFile,
+    this.status,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class AccessKeyArgs {
 
   factory AccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccessKeyArgs(
-      pgpKey: map['pgpKey'] == null ? null : pulumi.Output.create<String>(map['pgpKey'] as String),
-      secretFile: map['secretFile'] == null ? null : pulumi.Output.create<String>(map['secretFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      secretFile: map['secretFile'] == null ? null : (map['secretFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

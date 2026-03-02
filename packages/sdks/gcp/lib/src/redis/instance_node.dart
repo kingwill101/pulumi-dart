@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceNode {
   /// (Output)
   /// Node identifying string. e.g. 'node-0', 'node-1'
-  final String? id;
+  final pulumi.Input<String>? id;
   /// (Output)
   /// Location of the node.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [InstanceNode].
   /// [id] (Output)
@@ -26,8 +27,8 @@ class InstanceNode {
 
   factory InstanceNode.fromMap(Map<String, dynamic> map) {
     return InstanceNode(
-      id: map['id'] == null ? null : map['id'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

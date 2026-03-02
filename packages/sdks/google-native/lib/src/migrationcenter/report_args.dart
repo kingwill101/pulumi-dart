@@ -36,25 +36,16 @@ class ReportArgs {
   /// [state] Report creation state.
   /// [type] Report type.
   ReportArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> reportConfigId,
-    required pulumi.Output<String> reportId,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<ReportState>? state,
-    pulumi.Output<ReportType>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
-      reportId = pulumi.Input.asInput<String>(reportId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      state = pulumi.Input.asOptionalInput<ReportState>(state),
-      type = pulumi.Input.asOptionalInput<ReportType>(type);
+    this.description,
+    this.displayName,
+    this.location,
+    this.project,
+    required this.reportConfigId,
+    required this.reportId,
+    this.requestId,
+    this.state,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class ReportArgs {
 
   factory ReportArgs.fromMap(Map<String, dynamic> map) {
     return ReportArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reportConfigId: pulumi.Output.create<String>(map['reportConfigId'] as String),
-      reportId: pulumi.Output.create<String>(map['reportId'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<ReportState>(ReportState.fromValue(map['state'] as String)),
-      type: map['type'] == null ? null : pulumi.Output.create<ReportType>(ReportType.fromValue(map['type'] as String)),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reportConfigId: (map['reportConfigId'] as String).input(),
+      reportId: (map['reportId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      state: map['state'] == null ? null : (ReportState.fromValue(map['state'] as String)).input(),
+      type: map['type'] == null ? null : (ReportType.fromValue(map['type'] as String)).input(),
     );
   }
 }

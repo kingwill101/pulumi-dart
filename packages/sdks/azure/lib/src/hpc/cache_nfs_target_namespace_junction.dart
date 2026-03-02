@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CacheNfsTargetNamespaceJunction {
   /// The name of the access policy applied to this target. Defaults to `default`.
-  final String? accessPolicyName;
+  final pulumi.Input<String>? accessPolicyName;
   /// The client-facing file path of this NFS target within the HPC Cache NFS Target.
-  final String namespacePath;
+  final pulumi.Input<String> namespacePath;
   /// The NFS export of this NFS target within the HPC Cache NFS Target.
-  final String nfsExport;
+  final pulumi.Input<String> nfsExport;
   /// The relative subdirectory path from the `nfs_export` to map to the `namespace_path`. Defaults to `""`, in which case the whole `nfs_export` is exported.
-  final String? targetPath;
+  final pulumi.Input<String>? targetPath;
 
   /// Creates a new [CacheNfsTargetNamespaceJunction].
   /// [accessPolicyName] The name of the access policy applied to this target. Defaults to `default`.
@@ -34,10 +35,10 @@ class CacheNfsTargetNamespaceJunction {
 
   factory CacheNfsTargetNamespaceJunction.fromMap(Map<String, dynamic> map) {
     return CacheNfsTargetNamespaceJunction(
-      accessPolicyName: map['accessPolicyName'] == null ? null : map['accessPolicyName'] as String,
-      namespacePath: map['namespacePath'] as String,
-      nfsExport: map['nfsExport'] as String,
-      targetPath: map['targetPath'] == null ? null : map['targetPath'] as String,
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
+      namespacePath: (map['namespacePath'] as String).input(),
+      nfsExport: (map['nfsExport'] as String).input(),
+      targetPath: map['targetPath'] == null ? null : (map['targetPath'] as String).input(),
     );
   }
 }

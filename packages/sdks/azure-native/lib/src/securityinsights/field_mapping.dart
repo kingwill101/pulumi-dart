@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A single field mapping of the mapped entity
 class FieldMapping {
   /// the column name to be mapped to the identifier
-  final String? columnName;
+  final pulumi.Input<String>? columnName;
   /// the V3 identifier of the entity
-  final String? identifier;
+  final pulumi.Input<String>? identifier;
 
   /// Creates a new [FieldMapping].
   /// [columnName] the column name to be mapped to the identifier
@@ -25,8 +26,8 @@ class FieldMapping {
 
   factory FieldMapping.fromMap(Map<String, dynamic> map) {
     return FieldMapping(
-      columnName: map['columnName'] == null ? null : map['columnName'] as String,
-      identifier: map['identifier'] == null ? null : map['identifier'] as String,
+      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
     );
   }
 }

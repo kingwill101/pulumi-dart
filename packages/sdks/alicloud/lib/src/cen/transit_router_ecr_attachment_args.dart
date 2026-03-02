@@ -31,21 +31,14 @@ class TransitRouterEcrAttachmentArgs {
   /// [transitRouterEcrAttachmentName] TransitRouterAttachmentName
   /// [transitRouterId] TransitRouterId
   TransitRouterEcrAttachmentArgs({
-    pulumi.Output<String>? cenId,
-    required pulumi.Output<String> ecrId,
-    pulumi.Output<int>? ecrOwnerId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitRouterAttachmentDescription,
-    pulumi.Output<String>? transitRouterEcrAttachmentName,
-    pulumi.Output<String>? transitRouterId,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      ecrId = pulumi.Input.asInput<String>(ecrId),
-      ecrOwnerId = pulumi.Input.asOptionalInput<int>(ecrOwnerId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitRouterAttachmentDescription = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentDescription),
-      transitRouterEcrAttachmentName = pulumi.Input.asOptionalInput<String>(transitRouterEcrAttachmentName),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId);
+    this.cenId,
+    required this.ecrId,
+    this.ecrOwnerId,
+    this.tags,
+    this.transitRouterAttachmentDescription,
+    this.transitRouterEcrAttachmentName,
+    this.transitRouterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class TransitRouterEcrAttachmentArgs {
 
   factory TransitRouterEcrAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterEcrAttachmentArgs(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      ecrId: pulumi.Output.create<String>(map['ecrId'] as String),
-      ecrOwnerId: map['ecrOwnerId'] == null ? null : pulumi.Output.create<int>(map['ecrOwnerId'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentDescription'] as String),
-      transitRouterEcrAttachmentName: map['transitRouterEcrAttachmentName'] == null ? null : pulumi.Output.create<String>(map['transitRouterEcrAttachmentName'] as String),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      ecrId: (map['ecrId'] as String).input(),
+      ecrOwnerId: map['ecrOwnerId'] == null ? null : (map['ecrOwnerId'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : (map['transitRouterAttachmentDescription'] as String).input(),
+      transitRouterEcrAttachmentName: map['transitRouterEcrAttachmentName'] == null ? null : (map['transitRouterEcrAttachmentName'] as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
     );
   }
 }

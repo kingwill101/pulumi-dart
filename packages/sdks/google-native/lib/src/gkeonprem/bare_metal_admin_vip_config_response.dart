@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BareMetalAdminVipConfig for bare metal load balancer configurations.
 class BareMetalAdminVipConfigResponse {
   /// The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster.
-  final String controlPlaneVip;
+  final pulumi.Input<String> controlPlaneVip;
 
   /// Creates a new [BareMetalAdminVipConfigResponse].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster.
@@ -20,7 +21,7 @@ class BareMetalAdminVipConfigResponse {
 
   factory BareMetalAdminVipConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminVipConfigResponse(
-      controlPlaneVip: map['controlPlaneVip'] as String,
+      controlPlaneVip: (map['controlPlaneVip'] as String).input(),
     );
   }
 }

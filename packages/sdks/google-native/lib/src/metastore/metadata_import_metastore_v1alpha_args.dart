@@ -32,23 +32,15 @@ class MetadataImportMetastoreV1alphaArgs {
   /// [requestId] Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
   /// [serviceId] Required.
   MetadataImportMetastoreV1alphaArgs({
-    pulumi.Output<DatabaseDumpMetastoreV1alpha>? databaseDump,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> metadataImportId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> serviceId,
-  }) :
-      databaseDump = pulumi.Input.asOptionalInput<DatabaseDumpMetastoreV1alpha>(databaseDump),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadataImportId = pulumi.Input.asInput<String>(metadataImportId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.databaseDump,
+    this.description,
+    this.location,
+    required this.metadataImportId,
+    this.name,
+    this.project,
+    this.requestId,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class MetadataImportMetastoreV1alphaArgs {
 
   factory MetadataImportMetastoreV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return MetadataImportMetastoreV1alphaArgs(
-      databaseDump: map['databaseDump'] == null ? null : pulumi.Output.create<DatabaseDumpMetastoreV1alpha>(DatabaseDumpMetastoreV1alpha.fromMap((map['databaseDump'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadataImportId: pulumi.Output.create<String>(map['metadataImportId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      databaseDump: map['databaseDump'] == null ? null : (DatabaseDumpMetastoreV1alpha.fromMap((map['databaseDump'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadataImportId: (map['metadataImportId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

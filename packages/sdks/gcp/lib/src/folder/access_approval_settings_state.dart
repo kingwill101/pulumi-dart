@@ -43,23 +43,15 @@ class AccessApprovalSettingsState {
   /// [name] The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
   AccessApprovalSettingsState({
-    pulumi.Output<String>? activeKeyVersion,
-    pulumi.Output<bool>? ancestorHasActiveKeyVersion,
-    pulumi.Output<bool>? enrolledAncestor,
-    pulumi.Output<List<AccessApprovalSettingsEnrolledService>>? enrolledServices,
-    pulumi.Output<String>? folderId,
-    pulumi.Output<bool>? invalidKeyVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? notificationEmails,
-  }) :
-      activeKeyVersion = pulumi.Input.asOptionalInput<String>(activeKeyVersion),
-      ancestorHasActiveKeyVersion = pulumi.Input.asOptionalInput<bool>(ancestorHasActiveKeyVersion),
-      enrolledAncestor = pulumi.Input.asOptionalInput<bool>(enrolledAncestor),
-      enrolledServices = pulumi.Input.asOptionalInput<List<AccessApprovalSettingsEnrolledService>>(enrolledServices),
-      folderId = pulumi.Input.asOptionalInput<String>(folderId),
-      invalidKeyVersion = pulumi.Input.asOptionalInput<bool>(invalidKeyVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationEmails = pulumi.Input.asOptionalInput<List<String>>(notificationEmails);
+    this.activeKeyVersion,
+    this.ancestorHasActiveKeyVersion,
+    this.enrolledAncestor,
+    this.enrolledServices,
+    this.folderId,
+    this.invalidKeyVersion,
+    this.name,
+    this.notificationEmails,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class AccessApprovalSettingsState {
 
   factory AccessApprovalSettingsState.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsState(
-      activeKeyVersion: map['activeKeyVersion'] == null ? null : pulumi.Output.create<String>(map['activeKeyVersion'] as String),
-      ancestorHasActiveKeyVersion: map['ancestorHasActiveKeyVersion'] == null ? null : pulumi.Output.create<bool>(map['ancestorHasActiveKeyVersion'] as bool),
-      enrolledAncestor: map['enrolledAncestor'] == null ? null : pulumi.Output.create<bool>(map['enrolledAncestor'] as bool),
-      enrolledServices: map['enrolledServices'] == null ? null : pulumi.Output.create<List<AccessApprovalSettingsEnrolledService>>(pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))),
-      folderId: map['folderId'] == null ? null : pulumi.Output.create<String>(map['folderId'] as String),
-      invalidKeyVersion: map['invalidKeyVersion'] == null ? null : pulumi.Output.create<bool>(map['invalidKeyVersion'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationEmails: map['notificationEmails'] == null ? null : pulumi.Output.create<List<String>>((map['notificationEmails'] as List).cast<String>()),
+      activeKeyVersion: map['activeKeyVersion'] == null ? null : (map['activeKeyVersion'] as String).input(),
+      ancestorHasActiveKeyVersion: map['ancestorHasActiveKeyVersion'] == null ? null : (map['ancestorHasActiveKeyVersion'] as bool).input(),
+      enrolledAncestor: map['enrolledAncestor'] == null ? null : (map['enrolledAncestor'] as bool).input(),
+      enrolledServices: map['enrolledServices'] == null ? null : (pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      invalidKeyVersion: map['invalidKeyVersion'] == null ? null : (map['invalidKeyVersion'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationEmails: map['notificationEmails'] == null ? null : ((map['notificationEmails'] as List).cast<String>()).input(),
     );
   }
 }

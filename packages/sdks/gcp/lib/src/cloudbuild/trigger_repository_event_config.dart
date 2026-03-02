@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_repository_event_config_pull_request.dart';
 import 'trigger_repository_event_config_push.dart';
 
 class TriggerRepositoryEventConfig {
   /// Contains filter properties for matching Pull Requests.
   /// Structure is documented below.
-  final TriggerRepositoryEventConfigPullRequest? pullRequest;
+  final pulumi.Input<TriggerRepositoryEventConfigPullRequest>? pullRequest;
   /// Contains filter properties for matching git pushes.
   /// Structure is documented below.
-  final TriggerRepositoryEventConfigPush? push;
+  final pulumi.Input<TriggerRepositoryEventConfigPush>? push;
   /// The resource name of the Repo API resource.
-  final String? repository;
+  final pulumi.Input<String>? repository;
 
   /// Creates a new [TriggerRepositoryEventConfig].
   /// [pullRequest] Contains filter properties for matching Pull Requests.
@@ -25,17 +26,17 @@ class TriggerRepositoryEventConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pullRequest': ?pullRequest == null ? null : pullRequest!.toMap(),
-      'push': ?push == null ? null : push!.toMap(),
+      'pullRequest': ?pulumi.Input.mapOptionalInputValue<TriggerRepositoryEventConfigPullRequest, Map<String, dynamic>>(pullRequest, (value) => value.toMap()),
+      'push': ?pulumi.Input.mapOptionalInputValue<TriggerRepositoryEventConfigPush, Map<String, dynamic>>(push, (value) => value.toMap()),
       'repository': ?repository,
     };
   }
 
   factory TriggerRepositoryEventConfig.fromMap(Map<String, dynamic> map) {
     return TriggerRepositoryEventConfig(
-      pullRequest: map['pullRequest'] == null ? null : TriggerRepositoryEventConfigPullRequest.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: map['push'] == null ? null : TriggerRepositoryEventConfigPush.fromMap((map['push'] as Map).cast<String, dynamic>()),
-      repository: map['repository'] == null ? null : map['repository'] as String,
+      pullRequest: map['pullRequest'] == null ? null : (TriggerRepositoryEventConfigPullRequest.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (TriggerRepositoryEventConfigPush.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
     );
   }
 }

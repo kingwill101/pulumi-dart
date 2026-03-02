@@ -42,29 +42,18 @@ class RouteServerEndpointState {
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC containing the endpoint.
   RouteServerEndpointState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? eniAddress,
-    pulumi.Output<String>? eniId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routeServerEndpointId,
-    pulumi.Output<String>? routeServerId,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<RouteServerEndpointTimeouts>? timeouts,
-    pulumi.Output<String>? vpcId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      eniAddress = pulumi.Input.asOptionalInput<String>(eniAddress),
-      eniId = pulumi.Input.asOptionalInput<String>(eniId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeServerEndpointId = pulumi.Input.asOptionalInput<String>(routeServerEndpointId),
-      routeServerId = pulumi.Input.asOptionalInput<String>(routeServerId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<RouteServerEndpointTimeouts>(timeouts),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.arn,
+    this.eniAddress,
+    this.eniId,
+    this.region,
+    this.routeServerEndpointId,
+    this.routeServerId,
+    this.subnetId,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class RouteServerEndpointState {
 
   factory RouteServerEndpointState.fromMap(Map<String, dynamic> map) {
     return RouteServerEndpointState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      eniAddress: map['eniAddress'] == null ? null : pulumi.Output.create<String>(map['eniAddress'] as String),
-      eniId: map['eniId'] == null ? null : pulumi.Output.create<String>(map['eniId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeServerEndpointId: map['routeServerEndpointId'] == null ? null : pulumi.Output.create<String>(map['routeServerEndpointId'] as String),
-      routeServerId: map['routeServerId'] == null ? null : pulumi.Output.create<String>(map['routeServerId'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RouteServerEndpointTimeouts>(RouteServerEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      eniAddress: map['eniAddress'] == null ? null : (map['eniAddress'] as String).input(),
+      eniId: map['eniId'] == null ? null : (map['eniId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeServerEndpointId: map['routeServerEndpointId'] == null ? null : (map['routeServerEndpointId'] as String).input(),
+      routeServerId: map['routeServerId'] == null ? null : (map['routeServerId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (RouteServerEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

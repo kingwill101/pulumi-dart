@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An empty spec for actuation feature. This is required since Feature proto requires a spec.
 class NamespaceActuationFeatureSpecResponse {
   /// actuation_mode controls the behavior of the controller
-  final String actuationMode;
+  final pulumi.Input<String> actuationMode;
 
   /// Creates a new [NamespaceActuationFeatureSpecResponse].
   /// [actuationMode] actuation_mode controls the behavior of the controller
@@ -20,7 +21,7 @@ class NamespaceActuationFeatureSpecResponse {
 
   factory NamespaceActuationFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceActuationFeatureSpecResponse(
-      actuationMode: map['actuationMode'] as String,
+      actuationMode: (map['actuationMode'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The device configuration. Eventually delivered to devices.
 class DeviceConfig {
   /// The device configuration data.
-  final String? binaryData;
+  final pulumi.Input<String>? binaryData;
 
   /// Creates a new [DeviceConfig].
   /// [binaryData] The device configuration data.
@@ -20,7 +21,7 @@ class DeviceConfig {
 
   factory DeviceConfig.fromMap(Map<String, dynamic> map) {
     return DeviceConfig(
-      binaryData: map['binaryData'] == null ? null : map['binaryData'] as String,
+      binaryData: map['binaryData'] == null ? null : (map['binaryData'] as String).input(),
     );
   }
 }

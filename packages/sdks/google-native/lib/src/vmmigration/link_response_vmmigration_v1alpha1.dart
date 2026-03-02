@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a URL link.
 class LinkResponseVmmigrationV1alpha1 {
   /// Describes what the link offers.
-  final String description;
+  final pulumi.Input<String> description;
   /// The URL of the link.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [LinkResponseVmmigrationV1alpha1].
   /// [description] Describes what the link offers.
@@ -25,8 +26,8 @@ class LinkResponseVmmigrationV1alpha1 {
 
   factory LinkResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return LinkResponseVmmigrationV1alpha1(
-      description: map['description'] as String,
-      url: map['url'] as String,
+      description: (map['description'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

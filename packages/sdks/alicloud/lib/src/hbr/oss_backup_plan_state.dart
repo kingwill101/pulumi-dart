@@ -41,29 +41,18 @@ class OssBackupPlanState {
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// [vaultId] The ID of backup vault.
   OssBackupPlanState({
-    pulumi.Output<String>? backupType,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? crossAccountRoleName,
-    pulumi.Output<String>? crossAccountType,
-    pulumi.Output<int>? crossAccountUserId,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? ossBackupPlanName,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? retention,
-    pulumi.Output<String>? schedule,
-    pulumi.Output<String>? vaultId,
-  }) :
-      backupType = pulumi.Input.asOptionalInput<String>(backupType),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      crossAccountRoleName = pulumi.Input.asOptionalInput<String>(crossAccountRoleName),
-      crossAccountType = pulumi.Input.asOptionalInput<String>(crossAccountType),
-      crossAccountUserId = pulumi.Input.asOptionalInput<int>(crossAccountUserId),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      ossBackupPlanName = pulumi.Input.asOptionalInput<String>(ossBackupPlanName),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      retention = pulumi.Input.asOptionalInput<String>(retention),
-      schedule = pulumi.Input.asOptionalInput<String>(schedule),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.backupType,
+    this.bucket,
+    this.crossAccountRoleName,
+    this.crossAccountType,
+    this.crossAccountUserId,
+    this.disabled,
+    this.ossBackupPlanName,
+    this.prefix,
+    this.retention,
+    this.schedule,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class OssBackupPlanState {
 
   factory OssBackupPlanState.fromMap(Map<String, dynamic> map) {
     return OssBackupPlanState(
-      backupType: map['backupType'] == null ? null : pulumi.Output.create<String>(map['backupType'] as String),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : pulumi.Output.create<String>(map['crossAccountRoleName'] as String),
-      crossAccountType: map['crossAccountType'] == null ? null : pulumi.Output.create<String>(map['crossAccountType'] as String),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : pulumi.Output.create<int>(map['crossAccountUserId'] as int),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      ossBackupPlanName: map['ossBackupPlanName'] == null ? null : pulumi.Output.create<String>(map['ossBackupPlanName'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      retention: map['retention'] == null ? null : pulumi.Output.create<String>(map['retention'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<String>(map['schedule'] as String),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      ossBackupPlanName: map['ossBackupPlanName'] == null ? null : (map['ossBackupPlanName'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

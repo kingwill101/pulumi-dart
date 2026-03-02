@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersBalancerLoadBalancerBillingConfig {
   /// The billing method of the ALB instance.
-  final String payType;
+  final pulumi.Input<String> payType;
 
   /// Creates a new [GetLoadBalancersBalancerLoadBalancerBillingConfig].
   /// [payType] The billing method of the ALB instance.
@@ -19,7 +20,7 @@ class GetLoadBalancersBalancerLoadBalancerBillingConfig {
 
   factory GetLoadBalancersBalancerLoadBalancerBillingConfig.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerLoadBalancerBillingConfig(
-      payType: map['payType'] as String,
+      payType: (map['payType'] as String).input(),
     );
   }
 }

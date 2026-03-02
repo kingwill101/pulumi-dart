@@ -16,11 +16,9 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs {
   /// [claimsMappingPolicyId] The ID of the claims mapping policy to assign.
   /// [servicePrincipalId] The ID of the service principal for the policy assignment.
   ServicePrincipalClaimsMappingPolicyAssignmentArgs({
-    required pulumi.Output<String> claimsMappingPolicyId,
-    required pulumi.Output<String> servicePrincipalId,
-  }) :
-      claimsMappingPolicyId = pulumi.Input.asInput<String>(claimsMappingPolicyId),
-      servicePrincipalId = pulumi.Input.asInput<String>(servicePrincipalId);
+    required this.claimsMappingPolicyId,
+    required this.servicePrincipalId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs {
 
   factory ServicePrincipalClaimsMappingPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalClaimsMappingPolicyAssignmentArgs(
-      claimsMappingPolicyId: pulumi.Output.create<String>(map['claimsMappingPolicyId'] as String),
-      servicePrincipalId: pulumi.Output.create<String>(map['servicePrincipalId'] as String),
+      claimsMappingPolicyId: (map['claimsMappingPolicyId'] as String).input(),
+      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_configuration_override_action_parameters_response.dart';
 
 /// Defines the route configuration override action for the delivery rule. Only applicable to Frontdoor Standard/Premium Profiles.
 class DeliveryRuleRouteConfigurationOverrideActionResponse {
   /// The name of the action for the delivery rule.
   /// Expected value is 'RouteConfigurationOverride'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the action.
-  final RouteConfigurationOverrideActionParametersResponse parameters;
+  final pulumi.Input<RouteConfigurationOverrideActionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleRouteConfigurationOverrideActionResponse].
   /// [name] The name of the action for the delivery rule.
@@ -21,14 +22,14 @@ class DeliveryRuleRouteConfigurationOverrideActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<RouteConfigurationOverrideActionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleRouteConfigurationOverrideActionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleRouteConfigurationOverrideActionResponse(
-      name: map['name'] as String,
-      parameters: RouteConfigurationOverrideActionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (RouteConfigurationOverrideActionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

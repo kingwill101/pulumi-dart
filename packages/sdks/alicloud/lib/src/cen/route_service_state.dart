@@ -30,21 +30,14 @@ class RouteServiceState {
   /// [hostVpcId] The VPC associated with the cloud service.
   /// [status] The status of the cloud service.
   RouteServiceState({
-    pulumi.Output<String>? accessRegionId,
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? hostRegionId,
-    pulumi.Output<String>? hostVpcId,
-    pulumi.Output<String>? status,
-  }) :
-      accessRegionId = pulumi.Input.asOptionalInput<String>(accessRegionId),
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      hostRegionId = pulumi.Input.asOptionalInput<String>(hostRegionId),
-      hostVpcId = pulumi.Input.asOptionalInput<String>(hostVpcId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accessRegionId,
+    this.cenId,
+    this.description,
+    this.host,
+    this.hostRegionId,
+    this.hostVpcId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class RouteServiceState {
 
   factory RouteServiceState.fromMap(Map<String, dynamic> map) {
     return RouteServiceState(
-      accessRegionId: map['accessRegionId'] == null ? null : pulumi.Output.create<String>(map['accessRegionId'] as String),
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      hostRegionId: map['hostRegionId'] == null ? null : pulumi.Output.create<String>(map['hostRegionId'] as String),
-      hostVpcId: map['hostVpcId'] == null ? null : pulumi.Output.create<String>(map['hostVpcId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId'] as String).input(),
+      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

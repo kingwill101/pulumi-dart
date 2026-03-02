@@ -17,41 +17,41 @@ import 'user_profile_user_settings_tensor_board_app_settings.dart';
 
 class UserProfileUserSettings {
   /// Indicates whether auto-mounting of an EFS volume is supported for the user profile. The `DefaultAsDomain` value is only supported for user profiles. Do not use the `DefaultAsDomain` value when setting this parameter for a domain. Valid values are: `Enabled`, `Disabled`, and `DefaultAsDomain`.
-  final String? autoMountHomeEfs;
+  final pulumi.Input<String>? autoMountHomeEfs;
   /// The Canvas app settings. See Canvas App Settings below.
-  final UserProfileUserSettingsCanvasAppSettings? canvasAppSettings;
+  final pulumi.Input<UserProfileUserSettingsCanvasAppSettings>? canvasAppSettings;
   /// The Code Editor application settings. See Code Editor App Settings below.
-  final UserProfileUserSettingsCodeEditorAppSettings? codeEditorAppSettings;
+  final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettings>? codeEditorAppSettings;
   /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See Custom File System Config below.
-  final List<UserProfileUserSettingsCustomFileSystemConfig>? customFileSystemConfigs;
+  final pulumi.Input<List<UserProfileUserSettingsCustomFileSystemConfig>>? customFileSystemConfigs;
   /// Details about the POSIX identity that is used for file system operations. See Custom Posix User Config below.
-  final UserProfileUserSettingsCustomPosixUserConfig? customPosixUserConfig;
+  final pulumi.Input<UserProfileUserSettingsCustomPosixUserConfig>? customPosixUserConfig;
   /// The default experience that the user is directed to when accessing the domain. The supported values are: `studio::`: Indicates that Studio is the default experience. This value can only be passed if StudioWebPortal is set to ENABLED. `app:JupyterServer:`: Indicates that Studio Classic is the default experience.
-  final String? defaultLandingUri;
+  final pulumi.Input<String>? defaultLandingUri;
   /// The execution role ARN for the user.
-  final String executionRole;
+  final pulumi.Input<String> executionRole;
   /// The settings for the JupyterLab application. See Jupyter Lab App Settings below.
-  final UserProfileUserSettingsJupyterLabAppSettings? jupyterLabAppSettings;
+  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettings>? jupyterLabAppSettings;
   /// The Jupyter server's app settings. See Jupyter Server App Settings below.
-  final UserProfileUserSettingsJupyterServerAppSettings? jupyterServerAppSettings;
+  final pulumi.Input<UserProfileUserSettingsJupyterServerAppSettings>? jupyterServerAppSettings;
   /// The kernel gateway app settings. See Kernel Gateway App Settings below.
-  final UserProfileUserSettingsKernelGatewayAppSettings? kernelGatewayAppSettings;
+  final pulumi.Input<UserProfileUserSettingsKernelGatewayAppSettings>? kernelGatewayAppSettings;
   /// The RSession app settings. See RSession App Settings below.
-  final UserProfileUserSettingsRSessionAppSettings? rSessionAppSettings;
+  final pulumi.Input<UserProfileUserSettingsRSessionAppSettings>? rSessionAppSettings;
   /// A collection of settings that configure user interaction with the RStudioServerPro app. See RStudioServerProAppSettings below.
-  final UserProfileUserSettingsRStudioServerProAppSettings? rStudioServerProAppSettings;
+  final pulumi.Input<UserProfileUserSettingsRStudioServerProAppSettings>? rStudioServerProAppSettings;
   /// A list of security group IDs that will be attached to the user.
-  final List<String>? securityGroups;
+  final pulumi.Input<List<String>>? securityGroups;
   /// The sharing settings. See Sharing Settings below.
-  final UserProfileUserSettingsSharingSettings? sharingSettings;
+  final pulumi.Input<UserProfileUserSettingsSharingSettings>? sharingSettings;
   /// The storage settings for a private space. See Space Storage Settings below.
-  final UserProfileUserSettingsSpaceStorageSettings? spaceStorageSettings;
+  final pulumi.Input<UserProfileUserSettingsSpaceStorageSettings>? spaceStorageSettings;
   /// Whether the user can access Studio. If this value is set to `DISABLED`, the user cannot access Studio, even if that is the default experience for the domain. Valid values are `ENABLED` and `DISABLED`.
-  final String? studioWebPortal;
+  final pulumi.Input<String>? studioWebPortal;
   /// The Studio Web Portal settings. See `studio_web_portal_settings` Block below.
-  final UserProfileUserSettingsStudioWebPortalSettings? studioWebPortalSettings;
+  final pulumi.Input<UserProfileUserSettingsStudioWebPortalSettings>? studioWebPortalSettings;
   /// The TensorBoard app settings. See TensorBoard App Settings below.
-  final UserProfileUserSettingsTensorBoardAppSettings? tensorBoardAppSettings;
+  final pulumi.Input<UserProfileUserSettingsTensorBoardAppSettings>? tensorBoardAppSettings;
 
   /// Creates a new [UserProfileUserSettings].
   /// [autoMountHomeEfs] Indicates whether auto-mounting of an EFS volume is supported for the user profile. The `DefaultAsDomain` value is only supported for user profiles. Do not use the `DefaultAsDomain` value when setting this parameter for a domain. Valid values are: `Enabled`, `Disabled`, and `DefaultAsDomain`.
@@ -96,46 +96,46 @@ class UserProfileUserSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoMountHomeEfs': ?autoMountHomeEfs,
-      'canvasAppSettings': ?canvasAppSettings == null ? null : canvasAppSettings!.toMap(),
-      'codeEditorAppSettings': ?codeEditorAppSettings == null ? null : codeEditorAppSettings!.toMap(),
-      'customFileSystemConfigs': ?customFileSystemConfigs == null ? null : pulumi.Input.encodeList<UserProfileUserSettingsCustomFileSystemConfig, Map<String, dynamic>>(customFileSystemConfigs!, (value) => value.toMap()),
-      'customPosixUserConfig': ?customPosixUserConfig == null ? null : customPosixUserConfig!.toMap(),
+      'canvasAppSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsCanvasAppSettings, Map<String, dynamic>>(canvasAppSettings, (value) => value.toMap()),
+      'codeEditorAppSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsCodeEditorAppSettings, Map<String, dynamic>>(codeEditorAppSettings, (value) => value.toMap()),
+      'customFileSystemConfigs': ?pulumi.Input.mapOptionalInputValue<List<UserProfileUserSettingsCustomFileSystemConfig>, List<Map<String, dynamic>>>(customFileSystemConfigs, (value) => pulumi.Input.encodeList<UserProfileUserSettingsCustomFileSystemConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customPosixUserConfig': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsCustomPosixUserConfig, Map<String, dynamic>>(customPosixUserConfig, (value) => value.toMap()),
       'defaultLandingUri': ?defaultLandingUri,
       'executionRole': executionRole,
-      'jupyterLabAppSettings': ?jupyterLabAppSettings == null ? null : jupyterLabAppSettings!.toMap(),
-      'jupyterServerAppSettings': ?jupyterServerAppSettings == null ? null : jupyterServerAppSettings!.toMap(),
-      'kernelGatewayAppSettings': ?kernelGatewayAppSettings == null ? null : kernelGatewayAppSettings!.toMap(),
-      'rSessionAppSettings': ?rSessionAppSettings == null ? null : rSessionAppSettings!.toMap(),
-      'rStudioServerProAppSettings': ?rStudioServerProAppSettings == null ? null : rStudioServerProAppSettings!.toMap(),
+      'jupyterLabAppSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsJupyterLabAppSettings, Map<String, dynamic>>(jupyterLabAppSettings, (value) => value.toMap()),
+      'jupyterServerAppSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsJupyterServerAppSettings, Map<String, dynamic>>(jupyterServerAppSettings, (value) => value.toMap()),
+      'kernelGatewayAppSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsKernelGatewayAppSettings, Map<String, dynamic>>(kernelGatewayAppSettings, (value) => value.toMap()),
+      'rSessionAppSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsRSessionAppSettings, Map<String, dynamic>>(rSessionAppSettings, (value) => value.toMap()),
+      'rStudioServerProAppSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsRStudioServerProAppSettings, Map<String, dynamic>>(rStudioServerProAppSettings, (value) => value.toMap()),
       'securityGroups': ?securityGroups,
-      'sharingSettings': ?sharingSettings == null ? null : sharingSettings!.toMap(),
-      'spaceStorageSettings': ?spaceStorageSettings == null ? null : spaceStorageSettings!.toMap(),
+      'sharingSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsSharingSettings, Map<String, dynamic>>(sharingSettings, (value) => value.toMap()),
+      'spaceStorageSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsSpaceStorageSettings, Map<String, dynamic>>(spaceStorageSettings, (value) => value.toMap()),
       'studioWebPortal': ?studioWebPortal,
-      'studioWebPortalSettings': ?studioWebPortalSettings == null ? null : studioWebPortalSettings!.toMap(),
-      'tensorBoardAppSettings': ?tensorBoardAppSettings == null ? null : tensorBoardAppSettings!.toMap(),
+      'studioWebPortalSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsStudioWebPortalSettings, Map<String, dynamic>>(studioWebPortalSettings, (value) => value.toMap()),
+      'tensorBoardAppSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsTensorBoardAppSettings, Map<String, dynamic>>(tensorBoardAppSettings, (value) => value.toMap()),
     };
   }
 
   factory UserProfileUserSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettings(
-      autoMountHomeEfs: map['autoMountHomeEfs'] == null ? null : map['autoMountHomeEfs'] as String,
-      canvasAppSettings: map['canvasAppSettings'] == null ? null : UserProfileUserSettingsCanvasAppSettings.fromMap((map['canvasAppSettings'] as Map).cast<String, dynamic>()),
-      codeEditorAppSettings: map['codeEditorAppSettings'] == null ? null : UserProfileUserSettingsCodeEditorAppSettings.fromMap((map['codeEditorAppSettings'] as Map).cast<String, dynamic>()),
-      customFileSystemConfigs: map['customFileSystemConfigs'] == null ? null : pulumi.Input.decodeList<UserProfileUserSettingsCustomFileSystemConfig>(map['customFileSystemConfigs'], (value) => UserProfileUserSettingsCustomFileSystemConfig.fromMap((value as Map).cast<String, dynamic>())),
-      customPosixUserConfig: map['customPosixUserConfig'] == null ? null : UserProfileUserSettingsCustomPosixUserConfig.fromMap((map['customPosixUserConfig'] as Map).cast<String, dynamic>()),
-      defaultLandingUri: map['defaultLandingUri'] == null ? null : map['defaultLandingUri'] as String,
-      executionRole: map['executionRole'] as String,
-      jupyterLabAppSettings: map['jupyterLabAppSettings'] == null ? null : UserProfileUserSettingsJupyterLabAppSettings.fromMap((map['jupyterLabAppSettings'] as Map).cast<String, dynamic>()),
-      jupyterServerAppSettings: map['jupyterServerAppSettings'] == null ? null : UserProfileUserSettingsJupyterServerAppSettings.fromMap((map['jupyterServerAppSettings'] as Map).cast<String, dynamic>()),
-      kernelGatewayAppSettings: map['kernelGatewayAppSettings'] == null ? null : UserProfileUserSettingsKernelGatewayAppSettings.fromMap((map['kernelGatewayAppSettings'] as Map).cast<String, dynamic>()),
-      rSessionAppSettings: map['rSessionAppSettings'] == null ? null : UserProfileUserSettingsRSessionAppSettings.fromMap((map['rSessionAppSettings'] as Map).cast<String, dynamic>()),
-      rStudioServerProAppSettings: map['rStudioServerProAppSettings'] == null ? null : UserProfileUserSettingsRStudioServerProAppSettings.fromMap((map['rStudioServerProAppSettings'] as Map).cast<String, dynamic>()),
-      securityGroups: map['securityGroups'] == null ? null : (map['securityGroups'] as List).cast<String>(),
-      sharingSettings: map['sharingSettings'] == null ? null : UserProfileUserSettingsSharingSettings.fromMap((map['sharingSettings'] as Map).cast<String, dynamic>()),
-      spaceStorageSettings: map['spaceStorageSettings'] == null ? null : UserProfileUserSettingsSpaceStorageSettings.fromMap((map['spaceStorageSettings'] as Map).cast<String, dynamic>()),
-      studioWebPortal: map['studioWebPortal'] == null ? null : map['studioWebPortal'] as String,
-      studioWebPortalSettings: map['studioWebPortalSettings'] == null ? null : UserProfileUserSettingsStudioWebPortalSettings.fromMap((map['studioWebPortalSettings'] as Map).cast<String, dynamic>()),
-      tensorBoardAppSettings: map['tensorBoardAppSettings'] == null ? null : UserProfileUserSettingsTensorBoardAppSettings.fromMap((map['tensorBoardAppSettings'] as Map).cast<String, dynamic>()),
+      autoMountHomeEfs: map['autoMountHomeEfs'] == null ? null : (map['autoMountHomeEfs'] as String).input(),
+      canvasAppSettings: map['canvasAppSettings'] == null ? null : (UserProfileUserSettingsCanvasAppSettings.fromMap((map['canvasAppSettings'] as Map).cast<String, dynamic>())).input(),
+      codeEditorAppSettings: map['codeEditorAppSettings'] == null ? null : (UserProfileUserSettingsCodeEditorAppSettings.fromMap((map['codeEditorAppSettings'] as Map).cast<String, dynamic>())).input(),
+      customFileSystemConfigs: map['customFileSystemConfigs'] == null ? null : (pulumi.Input.decodeList<UserProfileUserSettingsCustomFileSystemConfig>(map['customFileSystemConfigs'], (value) => UserProfileUserSettingsCustomFileSystemConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customPosixUserConfig: map['customPosixUserConfig'] == null ? null : (UserProfileUserSettingsCustomPosixUserConfig.fromMap((map['customPosixUserConfig'] as Map).cast<String, dynamic>())).input(),
+      defaultLandingUri: map['defaultLandingUri'] == null ? null : (map['defaultLandingUri'] as String).input(),
+      executionRole: (map['executionRole'] as String).input(),
+      jupyterLabAppSettings: map['jupyterLabAppSettings'] == null ? null : (UserProfileUserSettingsJupyterLabAppSettings.fromMap((map['jupyterLabAppSettings'] as Map).cast<String, dynamic>())).input(),
+      jupyterServerAppSettings: map['jupyterServerAppSettings'] == null ? null : (UserProfileUserSettingsJupyterServerAppSettings.fromMap((map['jupyterServerAppSettings'] as Map).cast<String, dynamic>())).input(),
+      kernelGatewayAppSettings: map['kernelGatewayAppSettings'] == null ? null : (UserProfileUserSettingsKernelGatewayAppSettings.fromMap((map['kernelGatewayAppSettings'] as Map).cast<String, dynamic>())).input(),
+      rSessionAppSettings: map['rSessionAppSettings'] == null ? null : (UserProfileUserSettingsRSessionAppSettings.fromMap((map['rSessionAppSettings'] as Map).cast<String, dynamic>())).input(),
+      rStudioServerProAppSettings: map['rStudioServerProAppSettings'] == null ? null : (UserProfileUserSettingsRStudioServerProAppSettings.fromMap((map['rStudioServerProAppSettings'] as Map).cast<String, dynamic>())).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      sharingSettings: map['sharingSettings'] == null ? null : (UserProfileUserSettingsSharingSettings.fromMap((map['sharingSettings'] as Map).cast<String, dynamic>())).input(),
+      spaceStorageSettings: map['spaceStorageSettings'] == null ? null : (UserProfileUserSettingsSpaceStorageSettings.fromMap((map['spaceStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      studioWebPortal: map['studioWebPortal'] == null ? null : (map['studioWebPortal'] as String).input(),
+      studioWebPortalSettings: map['studioWebPortalSettings'] == null ? null : (UserProfileUserSettingsStudioWebPortalSettings.fromMap((map['studioWebPortalSettings'] as Map).cast<String, dynamic>())).input(),
+      tensorBoardAppSettings: map['tensorBoardAppSettings'] == null ? null : (UserProfileUserSettingsTensorBoardAppSettings.fromMap((map['tensorBoardAppSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

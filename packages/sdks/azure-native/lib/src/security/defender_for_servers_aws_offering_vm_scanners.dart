@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vm_scanners_base_configuration.dart';
 
 /// The Microsoft Defender for Server VM scanning configuration
 class DefenderForServersAwsOfferingVmScanners {
   /// The cloud role ARN in AWS for this feature
-  final String? cloudRoleArn;
+  final pulumi.Input<String>? cloudRoleArn;
   /// Configuration for VM scanning
-  final VmScannersBaseConfiguration? configuration;
+  final pulumi.Input<VmScannersBaseConfiguration>? configuration;
   /// Is VM scanning enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderForServersAwsOfferingVmScanners].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
@@ -24,16 +25,16 @@ class DefenderForServersAwsOfferingVmScanners {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cloudRoleArn': ?cloudRoleArn,
-      'configuration': ?configuration == null ? null : configuration!.toMap(),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<VmScannersBaseConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
   factory DefenderForServersAwsOfferingVmScanners.fromMap(Map<String, dynamic> map) {
     return DefenderForServersAwsOfferingVmScanners(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
-      configuration: map['configuration'] == null ? null : VmScannersBaseConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      configuration: map['configuration'] == null ? null : (VmScannersBaseConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

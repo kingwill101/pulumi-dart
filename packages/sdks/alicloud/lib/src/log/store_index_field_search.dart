@@ -5,21 +5,21 @@ import 'store_index_field_search_json_key.dart';
 
 class StoreIndexFieldSearch {
   /// The alias of one field.
-  final String? alias;
+  final pulumi.Input<String>? alias;
   /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-  final bool? caseSensitive;
+  final pulumi.Input<bool>? caseSensitive;
   /// Whether to enable field analytics. Default to true.
-  final bool? enableAnalytics;
+  final pulumi.Input<bool>? enableAnalytics;
   /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-  final bool? includeChinese;
+  final pulumi.Input<bool>? includeChinese;
   /// Use nested index when type is json. See `json_keys` below.
-  final List<StoreIndexFieldSearchJsonKey>? jsonKeys;
+  final pulumi.Input<List<StoreIndexFieldSearchJsonKey>>? jsonKeys;
   /// When using the json_keys field, this field is required.
-  final String name;
+  final pulumi.Input<String> name;
   /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-  final String? token;
+  final pulumi.Input<String>? token;
   /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [StoreIndexFieldSearch].
   /// [alias] The alias of one field.
@@ -47,7 +47,7 @@ class StoreIndexFieldSearch {
       'caseSensitive': ?caseSensitive,
       'enableAnalytics': ?enableAnalytics,
       'includeChinese': ?includeChinese,
-      'jsonKeys': ?jsonKeys == null ? null : pulumi.Input.encodeList<StoreIndexFieldSearchJsonKey, Map<String, dynamic>>(jsonKeys!, (value) => value.toMap()),
+      'jsonKeys': ?pulumi.Input.mapOptionalInputValue<List<StoreIndexFieldSearchJsonKey>, List<Map<String, dynamic>>>(jsonKeys, (value) => pulumi.Input.encodeList<StoreIndexFieldSearchJsonKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'token': ?token,
       'type': ?type,
@@ -56,14 +56,14 @@ class StoreIndexFieldSearch {
 
   factory StoreIndexFieldSearch.fromMap(Map<String, dynamic> map) {
     return StoreIndexFieldSearch(
-      alias: map['alias'] == null ? null : map['alias'] as String,
-      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
-      enableAnalytics: map['enableAnalytics'] == null ? null : map['enableAnalytics'] as bool,
-      includeChinese: map['includeChinese'] == null ? null : map['includeChinese'] as bool,
-      jsonKeys: map['jsonKeys'] == null ? null : pulumi.Input.decodeList<StoreIndexFieldSearchJsonKey>(map['jsonKeys'], (value) => StoreIndexFieldSearchJsonKey.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      token: map['token'] == null ? null : map['token'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      enableAnalytics: map['enableAnalytics'] == null ? null : (map['enableAnalytics'] as bool).input(),
+      includeChinese: map['includeChinese'] == null ? null : (map['includeChinese'] as bool).input(),
+      jsonKeys: map['jsonKeys'] == null ? null : (pulumi.Input.decodeList<StoreIndexFieldSearchJsonKey>(map['jsonKeys'], (value) => StoreIndexFieldSearchJsonKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

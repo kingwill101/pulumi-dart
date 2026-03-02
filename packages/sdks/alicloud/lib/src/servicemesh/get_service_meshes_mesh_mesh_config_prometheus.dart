@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMeshesMeshMeshConfigPrometheus {
   /// The  service addresses of the Prometheus.
-  final String externalUrl;
+  final pulumi.Input<String> externalUrl;
   /// Whether to enable external Prometheus.
-  final bool useExternal;
+  final pulumi.Input<bool> useExternal;
 
   /// Creates a new [GetServiceMeshesMeshMeshConfigPrometheus].
   /// [externalUrl] The  service addresses of the Prometheus.
@@ -24,8 +25,8 @@ class GetServiceMeshesMeshMeshConfigPrometheus {
 
   factory GetServiceMeshesMeshMeshConfigPrometheus.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshMeshConfigPrometheus(
-      externalUrl: map['externalUrl'] as String,
-      useExternal: map['useExternal'] as bool,
+      externalUrl: (map['externalUrl'] as String).input(),
+      useExternal: (map['useExternal'] as bool).input(),
     );
   }
 }

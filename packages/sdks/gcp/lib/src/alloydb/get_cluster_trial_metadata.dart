@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterTrialMetadata {
   /// End time of the trial cluster.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Grace end time of the trial cluster.
-  final String graceEndTime;
+  final pulumi.Input<String> graceEndTime;
   /// Start time of the trial cluster.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Upgrade time of the trial cluster to standard cluster.
-  final String upgradeTime;
+  final pulumi.Input<String> upgradeTime;
 
   /// Creates a new [GetClusterTrialMetadata].
   /// [endTime] End time of the trial cluster.
@@ -34,10 +35,10 @@ class GetClusterTrialMetadata {
 
   factory GetClusterTrialMetadata.fromMap(Map<String, dynamic> map) {
     return GetClusterTrialMetadata(
-      endTime: map['endTime'] as String,
-      graceEndTime: map['graceEndTime'] as String,
-      startTime: map['startTime'] as String,
-      upgradeTime: map['upgradeTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      graceEndTime: (map['graceEndTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      upgradeTime: (map['upgradeTime'] as String).input(),
     );
   }
 }

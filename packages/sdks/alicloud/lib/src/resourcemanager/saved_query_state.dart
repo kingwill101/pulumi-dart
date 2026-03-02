@@ -19,15 +19,11 @@ class SavedQueryState {
   /// [expression] Query Expression.
   /// [savedQueryName] The name of the resource.
   SavedQueryState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expression,
-    pulumi.Output<String>? savedQueryName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expression = pulumi.Input.asOptionalInput<String>(expression),
-      savedQueryName = pulumi.Input.asOptionalInput<String>(savedQueryName);
+    this.createTime,
+    this.description,
+    this.expression,
+    this.savedQueryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SavedQueryState {
 
   factory SavedQueryState.fromMap(Map<String, dynamic> map) {
     return SavedQueryState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expression: map['expression'] == null ? null : pulumi.Output.create<String>(map['expression'] as String),
-      savedQueryName: map['savedQueryName'] == null ? null : pulumi.Output.create<String>(map['savedQueryName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      savedQueryName: map['savedQueryName'] == null ? null : (map['savedQueryName'] as String).input(),
     );
   }
 }

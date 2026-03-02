@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications {
   /// Notification mode for grant activated.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final String? grantActivated;
+  final pulumi.Input<String>? grantActivated;
   /// Notification mode for grant activation failed.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final String? grantActivationFailed;
+  final pulumi.Input<String>? grantActivationFailed;
   /// Notification mode for grant ended.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final String? grantEnded;
+  final pulumi.Input<String>? grantEnded;
   /// Notification mode for grant externally modified.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final String? grantExternallyModified;
+  final pulumi.Input<String>? grantExternallyModified;
 
   /// Creates a new [SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications].
   /// [grantActivated] Notification mode for grant activated.
@@ -38,10 +39,10 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificati
 
   factory SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications(
-      grantActivated: map['grantActivated'] == null ? null : map['grantActivated'] as String,
-      grantActivationFailed: map['grantActivationFailed'] == null ? null : map['grantActivationFailed'] as String,
-      grantEnded: map['grantEnded'] == null ? null : map['grantEnded'] as String,
-      grantExternallyModified: map['grantExternallyModified'] == null ? null : map['grantExternallyModified'] as String,
+      grantActivated: map['grantActivated'] == null ? null : (map['grantActivated'] as String).input(),
+      grantActivationFailed: map['grantActivationFailed'] == null ? null : (map['grantActivationFailed'] as String).input(),
+      grantEnded: map['grantEnded'] == null ? null : (map['grantEnded'] as String).input(),
+      grantExternallyModified: map['grantExternallyModified'] == null ? null : (map['grantExternallyModified'] as String).input(),
     );
   }
 }

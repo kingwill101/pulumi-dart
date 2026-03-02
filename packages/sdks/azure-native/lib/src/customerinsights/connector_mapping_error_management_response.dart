@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The error management.
 class ConnectorMappingErrorManagementResponse {
   /// The error limit allowed while importing data.
-  final int? errorLimit;
+  final pulumi.Input<int>? errorLimit;
   /// The type of error management to use for the mapping.
-  final String errorManagementType;
+  final pulumi.Input<String> errorManagementType;
 
   /// Creates a new [ConnectorMappingErrorManagementResponse].
   /// [errorLimit] The error limit allowed while importing data.
@@ -25,8 +26,8 @@ class ConnectorMappingErrorManagementResponse {
 
   factory ConnectorMappingErrorManagementResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingErrorManagementResponse(
-      errorLimit: map['errorLimit'] == null ? null : map['errorLimit'] as int,
-      errorManagementType: map['errorManagementType'] as String,
+      errorLimit: map['errorLimit'] == null ? null : (map['errorLimit'] as int).input(),
+      errorManagementType: (map['errorManagementType'] as String).input(),
     );
   }
 }

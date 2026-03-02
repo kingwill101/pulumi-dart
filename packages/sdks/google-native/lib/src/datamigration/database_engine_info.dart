@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_engine_info_engine.dart';
 
 /// The type and version of a source or destination database.
 class DatabaseEngineInfo {
   /// Engine type.
-  final DatabaseEngineInfoEngine engine;
+  final pulumi.Input<DatabaseEngineInfoEngine> engine;
   /// Engine version, for example "12.c.1".
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [DatabaseEngineInfo].
   /// [engine] Engine type.
@@ -19,15 +20,15 @@ class DatabaseEngineInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'engine': engine.value,
+      'engine': pulumi.Input.mapInputValue<DatabaseEngineInfoEngine, String>(engine, (value) => value.value),
       'version': version,
     };
   }
 
   factory DatabaseEngineInfo.fromMap(Map<String, dynamic> map) {
     return DatabaseEngineInfo(
-      engine: DatabaseEngineInfoEngine.fromValue(map['engine'] as String),
-      version: map['version'] as String,
+      engine: (DatabaseEngineInfoEngine.fromValue(map['engine'] as String)).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -37,19 +37,13 @@ class TagState {
   /// [template] The resource name of the tag template that this tag uses. Example:
   /// [templateDisplayname] The display name of the tag template.
   TagState({
-    pulumi.Output<String>? column,
-    pulumi.Output<List<TagField>>? fields,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? template,
-    pulumi.Output<String>? templateDisplayname,
-  }) :
-      column = pulumi.Input.asOptionalInput<String>(column),
-      fields = pulumi.Input.asOptionalInput<List<TagField>>(fields),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      template = pulumi.Input.asOptionalInput<String>(template),
-      templateDisplayname = pulumi.Input.asOptionalInput<String>(templateDisplayname);
+    this.column,
+    this.fields,
+    this.name,
+    this.parent,
+    this.template,
+    this.templateDisplayname,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,12 +58,12 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      column: map['column'] == null ? null : pulumi.Output.create<String>(map['column'] as String),
-      fields: map['fields'] == null ? null : pulumi.Output.create<List<TagField>>(pulumi.Input.decodeList<TagField>(map['fields'], (value) => TagField.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      template: map['template'] == null ? null : pulumi.Output.create<String>(map['template'] as String),
-      templateDisplayname: map['templateDisplayname'] == null ? null : pulumi.Output.create<String>(map['templateDisplayname'] as String),
+      column: map['column'] == null ? null : (map['column'] as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TagField>(map['fields'], (value) => TagField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      template: map['template'] == null ? null : (map['template'] as String).input(),
+      templateDisplayname: map['templateDisplayname'] == null ? null : (map['templateDisplayname'] as String).input(),
     );
   }
 }

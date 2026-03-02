@@ -34,23 +34,15 @@ class Ipv4GatewayArgs {
   /// [tags] The tags of the current resource.
   /// [vpcId] The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
   Ipv4GatewayArgs({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? internetMode,
-    pulumi.Output<String>? ipv4GatewayDescription,
-    pulumi.Output<String>? ipv4GatewayName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      internetMode = pulumi.Input.asOptionalInput<String>(internetMode),
-      ipv4GatewayDescription = pulumi.Input.asOptionalInput<String>(ipv4GatewayDescription),
-      ipv4GatewayName = pulumi.Input.asOptionalInput<String>(ipv4GatewayName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.dryRun,
+    this.enabled,
+    this.internetMode,
+    this.ipv4GatewayDescription,
+    this.ipv4GatewayName,
+    this.resourceGroupId,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class Ipv4GatewayArgs {
 
   factory Ipv4GatewayArgs.fromMap(Map<String, dynamic> map) {
     return Ipv4GatewayArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      internetMode: map['internetMode'] == null ? null : pulumi.Output.create<String>(map['internetMode'] as String),
-      ipv4GatewayDescription: map['ipv4GatewayDescription'] == null ? null : pulumi.Output.create<String>(map['ipv4GatewayDescription'] as String),
-      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : pulumi.Output.create<String>(map['ipv4GatewayName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      internetMode: map['internetMode'] == null ? null : (map['internetMode'] as String).input(),
+      ipv4GatewayDescription: map['ipv4GatewayDescription'] == null ? null : (map['ipv4GatewayDescription'] as String).input(),
+      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : (map['ipv4GatewayName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

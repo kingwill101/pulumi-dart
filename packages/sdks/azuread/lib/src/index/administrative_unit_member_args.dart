@@ -18,11 +18,9 @@ class AdministrativeUnitMemberArgs {
   /// [administrativeUnitObjectId] The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   /// [memberObjectId] The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   AdministrativeUnitMemberArgs({
-    pulumi.Output<String>? administrativeUnitObjectId,
-    pulumi.Output<String>? memberObjectId,
-  }) :
-      administrativeUnitObjectId = pulumi.Input.asOptionalInput<String>(administrativeUnitObjectId),
-      memberObjectId = pulumi.Input.asOptionalInput<String>(memberObjectId);
+    this.administrativeUnitObjectId,
+    this.memberObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class AdministrativeUnitMemberArgs {
 
   factory AdministrativeUnitMemberArgs.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitMemberArgs(
-      administrativeUnitObjectId: map['administrativeUnitObjectId'] == null ? null : pulumi.Output.create<String>(map['administrativeUnitObjectId'] as String),
-      memberObjectId: map['memberObjectId'] == null ? null : pulumi.Output.create<String>(map['memberObjectId'] as String),
+      administrativeUnitObjectId: map['administrativeUnitObjectId'] == null ? null : (map['administrativeUnitObjectId'] as String).input(),
+      memberObjectId: map['memberObjectId'] == null ? null : (map['memberObjectId'] as String).input(),
     );
   }
 }

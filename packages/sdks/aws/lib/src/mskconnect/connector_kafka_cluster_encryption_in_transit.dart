@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorKafkaClusterEncryptionInTransit {
   /// The type of encryption in transit to the Apache Kafka cluster. Valid values: `PLAINTEXT`, `TLS`. The default values is `PLAINTEXT`.
-  final String? encryptionType;
+  final pulumi.Input<String>? encryptionType;
 
   /// Creates a new [ConnectorKafkaClusterEncryptionInTransit].
   /// [encryptionType] The type of encryption in transit to the Apache Kafka cluster. Valid values: `PLAINTEXT`, `TLS`. The default values is `PLAINTEXT`.
@@ -19,7 +20,7 @@ class ConnectorKafkaClusterEncryptionInTransit {
 
   factory ConnectorKafkaClusterEncryptionInTransit.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaClusterEncryptionInTransit(
-      encryptionType: map['encryptionType'] == null ? null : map['encryptionType'] as String,
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
     );
   }
 }

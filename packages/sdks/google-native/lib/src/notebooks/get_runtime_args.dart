@@ -16,13 +16,10 @@ class GetRuntimeArgs {
   /// [project] Optional.
   /// [runtimeId] Required.
   GetRuntimeArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> runtimeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeId = pulumi.Input.asInput<String>(runtimeId);
+    required this.location,
+    this.project,
+    required this.runtimeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRuntimeArgs {
 
   factory GetRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeId: pulumi.Output.create<String>(map['runtimeId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeId: (map['runtimeId'] as String).input(),
     );
   }
 }

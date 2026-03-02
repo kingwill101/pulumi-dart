@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessPointsAccessPointVpcConfiguration {
   /// Access point will only allow connections from this VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetAccessPointsAccessPointVpcConfiguration].
   /// [vpcId] Access point will only allow connections from this VPC.
@@ -19,7 +20,7 @@ class GetAccessPointsAccessPointVpcConfiguration {
 
   factory GetAccessPointsAccessPointVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsAccessPointVpcConfiguration(
-      vpcId: map['vpcId'] as String,
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

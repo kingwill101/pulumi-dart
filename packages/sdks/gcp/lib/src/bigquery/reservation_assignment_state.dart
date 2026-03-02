@@ -30,21 +30,14 @@ class ReservationAssignmentState {
   /// [reservation] The reservation for the resource
   /// [state] Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
   ReservationAssignmentState({
-    pulumi.Output<String>? assignee,
-    pulumi.Output<String>? jobType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? reservation,
-    pulumi.Output<String>? state,
-  }) :
-      assignee = pulumi.Input.asOptionalInput<String>(assignee),
-      jobType = pulumi.Input.asOptionalInput<String>(jobType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservation = pulumi.Input.asOptionalInput<String>(reservation),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.assignee,
+    this.jobType,
+    this.location,
+    this.name,
+    this.project,
+    this.reservation,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ReservationAssignmentState {
 
   factory ReservationAssignmentState.fromMap(Map<String, dynamic> map) {
     return ReservationAssignmentState(
-      assignee: map['assignee'] == null ? null : pulumi.Output.create<String>(map['assignee'] as String),
-      jobType: map['jobType'] == null ? null : pulumi.Output.create<String>(map['jobType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservation: map['reservation'] == null ? null : pulumi.Output.create<String>(map['reservation'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      assignee: map['assignee'] == null ? null : (map['assignee'] as String).input(),
+      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservation: map['reservation'] == null ? null : (map['reservation'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

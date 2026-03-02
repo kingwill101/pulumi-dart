@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The selector expression.
 class SelectorResponse {
   /// The list of values to filter in.
-  final List<String>? in_;
+  final pulumi.Input<List<String>>? in_;
   /// The selector kind.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The list of values to filter out.
-  final List<String>? notIn;
+  final pulumi.Input<List<String>>? notIn;
 
   /// Creates a new [SelectorResponse].
   /// [in_] The list of values to filter in.
@@ -30,9 +31,9 @@ class SelectorResponse {
 
   factory SelectorResponse.fromMap(Map<String, dynamic> map) {
     return SelectorResponse(
-      in_: map['in'] == null ? null : (map['in'] as List).cast<String>(),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      notIn: map['notIn'] == null ? null : (map['notIn'] as List).cast<String>(),
+      in_: map['in'] == null ? null : ((map['in'] as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      notIn: map['notIn'] == null ? null : ((map['notIn'] as List).cast<String>()).input(),
     );
   }
 }

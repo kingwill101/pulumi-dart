@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
   /// Mode for how the GPU driver is installed.
-  final String gpuDriverVersion;
+  final pulumi.Input<String> gpuDriverVersion;
 
   /// Creates a new [NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
@@ -19,7 +20,7 @@ class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
 
   factory NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(
-      gpuDriverVersion: map['gpuDriverVersion'] as String,
+      gpuDriverVersion: (map['gpuDriverVersion'] as String).input(),
     );
   }
 }

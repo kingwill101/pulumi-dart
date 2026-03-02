@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryWorkspaceAccessProperties {
   /// Indicates whether users can use Android devices to access their WorkSpaces.
-  final String? deviceTypeAndroid;
+  final pulumi.Input<String>? deviceTypeAndroid;
   /// Indicates whether users can use Chromebooks to access their WorkSpaces.
-  final String? deviceTypeChromeos;
+  final pulumi.Input<String>? deviceTypeChromeos;
   /// Indicates whether users can use iOS devices to access their WorkSpaces.
-  final String? deviceTypeIos;
+  final pulumi.Input<String>? deviceTypeIos;
   /// Indicates whether users can use Linux clients to access their WorkSpaces.
-  final String? deviceTypeLinux;
+  final pulumi.Input<String>? deviceTypeLinux;
   /// Indicates whether users can use macOS clients to access their WorkSpaces.
-  final String? deviceTypeOsx;
+  final pulumi.Input<String>? deviceTypeOsx;
   /// Indicates whether users can access their WorkSpaces through a web browser.
-  final String? deviceTypeWeb;
+  final pulumi.Input<String>? deviceTypeWeb;
   /// Indicates whether users can use Windows clients to access their WorkSpaces.
-  final String? deviceTypeWindows;
+  final pulumi.Input<String>? deviceTypeWindows;
   /// Indicates whether users can use zero client devices to access their WorkSpaces.
-  final String? deviceTypeZeroclient;
+  final pulumi.Input<String>? deviceTypeZeroclient;
 
   /// Creates a new [DirectoryWorkspaceAccessProperties].
   /// [deviceTypeAndroid] Indicates whether users can use Android devices to access their WorkSpaces.
@@ -54,14 +55,14 @@ class DirectoryWorkspaceAccessProperties {
 
   factory DirectoryWorkspaceAccessProperties.fromMap(Map<String, dynamic> map) {
     return DirectoryWorkspaceAccessProperties(
-      deviceTypeAndroid: map['deviceTypeAndroid'] == null ? null : map['deviceTypeAndroid'] as String,
-      deviceTypeChromeos: map['deviceTypeChromeos'] == null ? null : map['deviceTypeChromeos'] as String,
-      deviceTypeIos: map['deviceTypeIos'] == null ? null : map['deviceTypeIos'] as String,
-      deviceTypeLinux: map['deviceTypeLinux'] == null ? null : map['deviceTypeLinux'] as String,
-      deviceTypeOsx: map['deviceTypeOsx'] == null ? null : map['deviceTypeOsx'] as String,
-      deviceTypeWeb: map['deviceTypeWeb'] == null ? null : map['deviceTypeWeb'] as String,
-      deviceTypeWindows: map['deviceTypeWindows'] == null ? null : map['deviceTypeWindows'] as String,
-      deviceTypeZeroclient: map['deviceTypeZeroclient'] == null ? null : map['deviceTypeZeroclient'] as String,
+      deviceTypeAndroid: map['deviceTypeAndroid'] == null ? null : (map['deviceTypeAndroid'] as String).input(),
+      deviceTypeChromeos: map['deviceTypeChromeos'] == null ? null : (map['deviceTypeChromeos'] as String).input(),
+      deviceTypeIos: map['deviceTypeIos'] == null ? null : (map['deviceTypeIos'] as String).input(),
+      deviceTypeLinux: map['deviceTypeLinux'] == null ? null : (map['deviceTypeLinux'] as String).input(),
+      deviceTypeOsx: map['deviceTypeOsx'] == null ? null : (map['deviceTypeOsx'] as String).input(),
+      deviceTypeWeb: map['deviceTypeWeb'] == null ? null : (map['deviceTypeWeb'] as String).input(),
+      deviceTypeWindows: map['deviceTypeWindows'] == null ? null : (map['deviceTypeWindows'] as String).input(),
+      deviceTypeZeroclient: map['deviceTypeZeroclient'] == null ? null : (map['deviceTypeZeroclient'] as String).input(),
     );
   }
 }

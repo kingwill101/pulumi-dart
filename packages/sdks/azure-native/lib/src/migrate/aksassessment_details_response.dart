@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data model of AKS Assessment Details.
 class AKSAssessmentDetailsResponse {
   /// Gets Confidence score.
-  final double confidenceRatingInPercentage;
+  final pulumi.Input<double> confidenceRatingInPercentage;
   /// Gets date and time when assessment was created.
-  final String createdTimestamp;
+  final pulumi.Input<String> createdTimestamp;
   /// Gets the number of machines.
-  final int machineCount;
+  final pulumi.Input<int> machineCount;
   /// Gets last time when rates were queried.
-  final String pricesTimestamp;
+  final pulumi.Input<String> pricesTimestamp;
   /// Gets assessment status.
-  final String status;
+  final pulumi.Input<String> status;
   /// Gets the total monthly cost.
-  final double totalMonthlyCost;
+  final pulumi.Input<double> totalMonthlyCost;
   /// Gets date and time when assessment was last updated.
-  final String updatedTimestamp;
+  final pulumi.Input<String> updatedTimestamp;
   /// Gets the number of web apps.
-  final int webAppCount;
+  final pulumi.Input<int> webAppCount;
   /// Gets the number of web servers.
-  final int webServerCount;
+  final pulumi.Input<int> webServerCount;
 
   /// Creates a new [AKSAssessmentDetailsResponse].
   /// [confidenceRatingInPercentage] Gets Confidence score.
@@ -60,15 +61,15 @@ class AKSAssessmentDetailsResponse {
 
   factory AKSAssessmentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AKSAssessmentDetailsResponse(
-      confidenceRatingInPercentage: map['confidenceRatingInPercentage'] as double,
-      createdTimestamp: map['createdTimestamp'] as String,
-      machineCount: map['machineCount'] as int,
-      pricesTimestamp: map['pricesTimestamp'] as String,
-      status: map['status'] as String,
-      totalMonthlyCost: map['totalMonthlyCost'] as double,
-      updatedTimestamp: map['updatedTimestamp'] as String,
-      webAppCount: map['webAppCount'] as int,
-      webServerCount: map['webServerCount'] as int,
+      confidenceRatingInPercentage: (map['confidenceRatingInPercentage'] as double).input(),
+      createdTimestamp: (map['createdTimestamp'] as String).input(),
+      machineCount: (map['machineCount'] as int).input(),
+      pricesTimestamp: (map['pricesTimestamp'] as String).input(),
+      status: (map['status'] as String).input(),
+      totalMonthlyCost: (map['totalMonthlyCost'] as double).input(),
+      updatedTimestamp: (map['updatedTimestamp'] as String).input(),
+      webAppCount: (map['webAppCount'] as int).input(),
+      webServerCount: (map['webServerCount'] as int).input(),
     );
   }
 }

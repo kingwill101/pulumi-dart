@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'code_configuration_response.dart';
 import 'data_collector_response.dart';
 import 'default_scale_settings_response.dart';
@@ -9,45 +10,45 @@ import 'probe_settings_response.dart';
 /// Properties specific to a ManagedOnlineDeployment.
 class ManagedOnlineDeploymentResponse {
   /// If true, enables Application Insights logging.
-  final bool? appInsightsEnabled;
+  final pulumi.Input<bool>? appInsightsEnabled;
   /// Code configuration for the endpoint deployment.
-  final CodeConfigurationResponse? codeConfiguration;
+  final pulumi.Input<CodeConfigurationResponse>? codeConfiguration;
   /// The mdc configuration, we disable mdc when it's null.
-  final DataCollectorResponse? dataCollector;
+  final pulumi.Input<DataCollectorResponse>? dataCollector;
   /// Description of the endpoint deployment.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
-  final String? egressPublicNetworkAccess;
+  final pulumi.Input<String>? egressPublicNetworkAccess;
   /// Enum to determine endpoint compute type.
   /// Expected value is 'Managed'.
-  final String endpointComputeType;
+  final pulumi.Input<String> endpointComputeType;
   /// ARM resource ID or AssetId of the environment specification for the endpoint deployment.
-  final String? environmentId;
+  final pulumi.Input<String>? environmentId;
   /// Environment variables configuration for the deployment.
-  final Map<String, String>? environmentVariables;
+  final pulumi.Input<Map<String, String>>? environmentVariables;
   /// Compute instance type. Default: Standard_F4s_v2.
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// Liveness probe monitors the health of the container regularly.
-  final ProbeSettingsResponse? livenessProbe;
+  final pulumi.Input<ProbeSettingsResponse>? livenessProbe;
   /// The URI path to the model.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// The path to mount the model in custom container.
-  final String? modelMountPath;
+  final pulumi.Input<String>? modelMountPath;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Provisioning state for the endpoint deployment.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
-  final ProbeSettingsResponse? readinessProbe;
+  final pulumi.Input<ProbeSettingsResponse>? readinessProbe;
   /// Request settings for the deployment.
-  final OnlineRequestSettingsResponse? requestSettings;
+  final pulumi.Input<OnlineRequestSettingsResponse>? requestSettings;
   /// Scale settings for the deployment.
   /// If it is null or not provided,
   /// it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
   /// and to DefaultScaleSettings for ManagedOnlineDeployment.
-  final DefaultScaleSettingsResponse? scaleSettings;
+  final pulumi.Input<DefaultScaleSettingsResponse>? scaleSettings;
   /// Startup probe verify whether an application within a container has started successfully.
-  final ProbeSettingsResponse? startupProbe;
+  final pulumi.Input<ProbeSettingsResponse>? startupProbe;
 
   /// Creates a new [ManagedOnlineDeploymentResponse].
   /// [appInsightsEnabled] If true, enables Application Insights logging.
@@ -92,46 +93,46 @@ class ManagedOnlineDeploymentResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appInsightsEnabled': ?appInsightsEnabled,
-      'codeConfiguration': ?codeConfiguration == null ? null : codeConfiguration!.toMap(),
-      'dataCollector': ?dataCollector == null ? null : dataCollector!.toMap(),
+      'codeConfiguration': ?pulumi.Input.mapOptionalInputValue<CodeConfigurationResponse, Map<String, dynamic>>(codeConfiguration, (value) => value.toMap()),
+      'dataCollector': ?pulumi.Input.mapOptionalInputValue<DataCollectorResponse, Map<String, dynamic>>(dataCollector, (value) => value.toMap()),
       'description': ?description,
       'egressPublicNetworkAccess': ?egressPublicNetworkAccess,
       'endpointComputeType': endpointComputeType,
       'environmentId': ?environmentId,
       'environmentVariables': ?environmentVariables,
       'instanceType': ?instanceType,
-      'livenessProbe': ?livenessProbe == null ? null : livenessProbe!.toMap(),
+      'livenessProbe': ?pulumi.Input.mapOptionalInputValue<ProbeSettingsResponse, Map<String, dynamic>>(livenessProbe, (value) => value.toMap()),
       'model': ?model,
       'modelMountPath': ?modelMountPath,
       'properties': ?properties,
       'provisioningState': provisioningState,
-      'readinessProbe': ?readinessProbe == null ? null : readinessProbe!.toMap(),
-      'requestSettings': ?requestSettings == null ? null : requestSettings!.toMap(),
-      'scaleSettings': ?scaleSettings == null ? null : scaleSettings!.toMap(),
-      'startupProbe': ?startupProbe == null ? null : startupProbe!.toMap(),
+      'readinessProbe': ?pulumi.Input.mapOptionalInputValue<ProbeSettingsResponse, Map<String, dynamic>>(readinessProbe, (value) => value.toMap()),
+      'requestSettings': ?pulumi.Input.mapOptionalInputValue<OnlineRequestSettingsResponse, Map<String, dynamic>>(requestSettings, (value) => value.toMap()),
+      'scaleSettings': ?pulumi.Input.mapOptionalInputValue<DefaultScaleSettingsResponse, Map<String, dynamic>>(scaleSettings, (value) => value.toMap()),
+      'startupProbe': ?pulumi.Input.mapOptionalInputValue<ProbeSettingsResponse, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
     };
   }
 
   factory ManagedOnlineDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return ManagedOnlineDeploymentResponse(
-      appInsightsEnabled: map['appInsightsEnabled'] == null ? null : map['appInsightsEnabled'] as bool,
-      codeConfiguration: map['codeConfiguration'] == null ? null : CodeConfigurationResponse.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>()),
-      dataCollector: map['dataCollector'] == null ? null : DataCollectorResponse.fromMap((map['dataCollector'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      egressPublicNetworkAccess: map['egressPublicNetworkAccess'] == null ? null : map['egressPublicNetworkAccess'] as String,
-      endpointComputeType: map['endpointComputeType'] as String,
-      environmentId: map['environmentId'] == null ? null : map['environmentId'] as String,
-      environmentVariables: map['environmentVariables'] == null ? null : (map['environmentVariables'] as Map).cast<String, String>(),
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      livenessProbe: map['livenessProbe'] == null ? null : ProbeSettingsResponse.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>()),
-      model: map['model'] == null ? null : map['model'] as String,
-      modelMountPath: map['modelMountPath'] == null ? null : map['modelMountPath'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      provisioningState: map['provisioningState'] as String,
-      readinessProbe: map['readinessProbe'] == null ? null : ProbeSettingsResponse.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>()),
-      requestSettings: map['requestSettings'] == null ? null : OnlineRequestSettingsResponse.fromMap((map['requestSettings'] as Map).cast<String, dynamic>()),
-      scaleSettings: map['scaleSettings'] == null ? null : DefaultScaleSettingsResponse.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>()),
-      startupProbe: map['startupProbe'] == null ? null : ProbeSettingsResponse.fromMap((map['startupProbe'] as Map).cast<String, dynamic>()),
+      appInsightsEnabled: map['appInsightsEnabled'] == null ? null : (map['appInsightsEnabled'] as bool).input(),
+      codeConfiguration: map['codeConfiguration'] == null ? null : (CodeConfigurationResponse.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      dataCollector: map['dataCollector'] == null ? null : (DataCollectorResponse.fromMap((map['dataCollector'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      egressPublicNetworkAccess: map['egressPublicNetworkAccess'] == null ? null : (map['egressPublicNetworkAccess'] as String).input(),
+      endpointComputeType: (map['endpointComputeType'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (ProbeSettingsResponse.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      modelMountPath: map['modelMountPath'] == null ? null : (map['modelMountPath'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      readinessProbe: map['readinessProbe'] == null ? null : (ProbeSettingsResponse.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>())).input(),
+      requestSettings: map['requestSettings'] == null ? null : (OnlineRequestSettingsResponse.fromMap((map['requestSettings'] as Map).cast<String, dynamic>())).input(),
+      scaleSettings: map['scaleSettings'] == null ? null : (DefaultScaleSettingsResponse.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (ProbeSettingsResponse.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

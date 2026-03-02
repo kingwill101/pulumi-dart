@@ -25,19 +25,13 @@ class AnnotationStoreArgs {
   /// [name] Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
   /// [project] Optional.
   AnnotationStoreArgs({
-    pulumi.Output<String>? annotationStoreId,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      annotationStoreId = pulumi.Input.asOptionalInput<String>(annotationStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotationStoreId,
+    required this.datasetId,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class AnnotationStoreArgs {
 
   factory AnnotationStoreArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationStoreArgs(
-      annotationStoreId: map['annotationStoreId'] == null ? null : pulumi.Output.create<String>(map['annotationStoreId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotationStoreId: map['annotationStoreId'] == null ? null : (map['annotationStoreId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

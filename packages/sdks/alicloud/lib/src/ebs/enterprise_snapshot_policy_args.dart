@@ -48,29 +48,18 @@ class EnterpriseSnapshotPolicyArgs {
   /// [tags] The tag of the resource.
   /// [targetType] Represents the target type of resource binding.
   EnterpriseSnapshotPolicyArgs({
-    pulumi.Output<EnterpriseSnapshotPolicyCrossRegionCopyInfo>? crossRegionCopyInfo,
-    pulumi.Output<String>? desc,
-    required pulumi.Output<String> enterpriseSnapshotPolicyName,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<EnterpriseSnapshotPolicyRetainRule> retainRule,
-    required pulumi.Output<EnterpriseSnapshotPolicySchedule> schedule,
-    pulumi.Output<EnterpriseSnapshotPolicySpecialRetainRules>? specialRetainRules,
-    pulumi.Output<String>? status,
-    pulumi.Output<EnterpriseSnapshotPolicyStorageRule>? storageRule,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetType,
-  }) :
-      crossRegionCopyInfo = pulumi.Input.asOptionalInput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>(crossRegionCopyInfo),
-      desc = pulumi.Input.asOptionalInput<String>(desc),
-      enterpriseSnapshotPolicyName = pulumi.Input.asInput<String>(enterpriseSnapshotPolicyName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      retainRule = pulumi.Input.asInput<EnterpriseSnapshotPolicyRetainRule>(retainRule),
-      schedule = pulumi.Input.asInput<EnterpriseSnapshotPolicySchedule>(schedule),
-      specialRetainRules = pulumi.Input.asOptionalInput<EnterpriseSnapshotPolicySpecialRetainRules>(specialRetainRules),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      storageRule = pulumi.Input.asOptionalInput<EnterpriseSnapshotPolicyStorageRule>(storageRule),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    this.crossRegionCopyInfo,
+    this.desc,
+    required this.enterpriseSnapshotPolicyName,
+    this.resourceGroupId,
+    required this.retainRule,
+    required this.schedule,
+    this.specialRetainRules,
+    this.status,
+    this.storageRule,
+    this.tags,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class EnterpriseSnapshotPolicyArgs {
 
   factory EnterpriseSnapshotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyArgs(
-      crossRegionCopyInfo: map['crossRegionCopyInfo'] == null ? null : pulumi.Output.create<EnterpriseSnapshotPolicyCrossRegionCopyInfo>(EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap((map['crossRegionCopyInfo'] as Map).cast<String, dynamic>())),
-      desc: map['desc'] == null ? null : pulumi.Output.create<String>(map['desc'] as String),
-      enterpriseSnapshotPolicyName: pulumi.Output.create<String>(map['enterpriseSnapshotPolicyName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      retainRule: pulumi.Output.create<EnterpriseSnapshotPolicyRetainRule>(EnterpriseSnapshotPolicyRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>())),
-      schedule: pulumi.Output.create<EnterpriseSnapshotPolicySchedule>(EnterpriseSnapshotPolicySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      specialRetainRules: map['specialRetainRules'] == null ? null : pulumi.Output.create<EnterpriseSnapshotPolicySpecialRetainRules>(EnterpriseSnapshotPolicySpecialRetainRules.fromMap((map['specialRetainRules'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      storageRule: map['storageRule'] == null ? null : pulumi.Output.create<EnterpriseSnapshotPolicyStorageRule>(EnterpriseSnapshotPolicyStorageRule.fromMap((map['storageRule'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      crossRegionCopyInfo: map['crossRegionCopyInfo'] == null ? null : (EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap((map['crossRegionCopyInfo'] as Map).cast<String, dynamic>())).input(),
+      desc: map['desc'] == null ? null : (map['desc'] as String).input(),
+      enterpriseSnapshotPolicyName: (map['enterpriseSnapshotPolicyName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      retainRule: (EnterpriseSnapshotPolicyRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>())).input(),
+      schedule: (EnterpriseSnapshotPolicySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      specialRetainRules: map['specialRetainRules'] == null ? null : (EnterpriseSnapshotPolicySpecialRetainRules.fromMap((map['specialRetainRules'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      storageRule: map['storageRule'] == null ? null : (EnterpriseSnapshotPolicyStorageRule.fromMap((map['storageRule'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

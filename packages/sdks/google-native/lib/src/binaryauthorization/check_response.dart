@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_allowlist_response.dart';
 import 'image_freshness_check_response.dart';
 import 'simple_signing_attestation_check_response.dart';
@@ -10,21 +11,21 @@ import 'vulnerability_check_response.dart';
 /// A single check to perform against a Pod. Checks are grouped into `CheckSet` objects, which are defined by the top-level policy.
 class CheckResponse {
   /// Optional. A special-case check that always denies. Note that this still only applies when the scope of the `CheckSet` applies and the image isn't exempted by an image allowlist. This check is primarily useful for testing, or to set the default behavior for all unmatched scopes to "deny".
-  final bool alwaysDeny;
+  final pulumi.Input<bool> alwaysDeny;
   /// Optional. A user-provided name for this check. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Optional. Images exempted from this check. If any of the patterns match the image url, the check will not be evaluated.
-  final ImageAllowlistResponse imageAllowlist;
+  final pulumi.Input<ImageAllowlistResponse> imageAllowlist;
   /// Optional. Require that an image is no older than a configured expiration time. Image age is determined by its upload time.
-  final ImageFreshnessCheckResponse imageFreshnessCheck;
+  final pulumi.Input<ImageFreshnessCheckResponse> imageFreshnessCheck;
   /// Optional. Require a SimpleSigning-type attestation for every image in the deployment.
-  final SimpleSigningAttestationCheckResponse simpleSigningAttestationCheck;
+  final pulumi.Input<SimpleSigningAttestationCheckResponse> simpleSigningAttestationCheck;
   /// Optional. Require that an image was built by a trusted builder (such as Google Cloud Build), meets requirements for Supply chain Levels for Software Artifacts (SLSA), and was built from a trusted source code repostitory.
-  final SlsaCheckResponse slsaCheck;
+  final pulumi.Input<SlsaCheckResponse> slsaCheck;
   /// Optional. Require that an image lives in a trusted directory.
-  final TrustedDirectoryCheckResponse trustedDirectoryCheck;
+  final pulumi.Input<TrustedDirectoryCheckResponse> trustedDirectoryCheck;
   /// Optional. Require that an image does not contain vulnerabilities that violate the configured rules, such as based on severity levels.
-  final VulnerabilityCheckResponse vulnerabilityCheck;
+  final pulumi.Input<VulnerabilityCheckResponse> vulnerabilityCheck;
 
   /// Creates a new [CheckResponse].
   /// [alwaysDeny] Optional. A special-case check that always denies. Note that this still only applies when the scope of the `CheckSet` applies and the image isn't exempted by an image allowlist. This check is primarily useful for testing, or to set the default behavior for all unmatched scopes to "deny".
@@ -50,25 +51,25 @@ class CheckResponse {
     return <String, dynamic>{
       'alwaysDeny': alwaysDeny,
       'displayName': displayName,
-      'imageAllowlist': imageAllowlist.toMap(),
-      'imageFreshnessCheck': imageFreshnessCheck.toMap(),
-      'simpleSigningAttestationCheck': simpleSigningAttestationCheck.toMap(),
-      'slsaCheck': slsaCheck.toMap(),
-      'trustedDirectoryCheck': trustedDirectoryCheck.toMap(),
-      'vulnerabilityCheck': vulnerabilityCheck.toMap(),
+      'imageAllowlist': pulumi.Input.mapInputValue<ImageAllowlistResponse, Map<String, dynamic>>(imageAllowlist, (value) => value.toMap()),
+      'imageFreshnessCheck': pulumi.Input.mapInputValue<ImageFreshnessCheckResponse, Map<String, dynamic>>(imageFreshnessCheck, (value) => value.toMap()),
+      'simpleSigningAttestationCheck': pulumi.Input.mapInputValue<SimpleSigningAttestationCheckResponse, Map<String, dynamic>>(simpleSigningAttestationCheck, (value) => value.toMap()),
+      'slsaCheck': pulumi.Input.mapInputValue<SlsaCheckResponse, Map<String, dynamic>>(slsaCheck, (value) => value.toMap()),
+      'trustedDirectoryCheck': pulumi.Input.mapInputValue<TrustedDirectoryCheckResponse, Map<String, dynamic>>(trustedDirectoryCheck, (value) => value.toMap()),
+      'vulnerabilityCheck': pulumi.Input.mapInputValue<VulnerabilityCheckResponse, Map<String, dynamic>>(vulnerabilityCheck, (value) => value.toMap()),
     };
   }
 
   factory CheckResponse.fromMap(Map<String, dynamic> map) {
     return CheckResponse(
-      alwaysDeny: map['alwaysDeny'] as bool,
-      displayName: map['displayName'] as String,
-      imageAllowlist: ImageAllowlistResponse.fromMap((map['imageAllowlist'] as Map).cast<String, dynamic>()),
-      imageFreshnessCheck: ImageFreshnessCheckResponse.fromMap((map['imageFreshnessCheck'] as Map).cast<String, dynamic>()),
-      simpleSigningAttestationCheck: SimpleSigningAttestationCheckResponse.fromMap((map['simpleSigningAttestationCheck'] as Map).cast<String, dynamic>()),
-      slsaCheck: SlsaCheckResponse.fromMap((map['slsaCheck'] as Map).cast<String, dynamic>()),
-      trustedDirectoryCheck: TrustedDirectoryCheckResponse.fromMap((map['trustedDirectoryCheck'] as Map).cast<String, dynamic>()),
-      vulnerabilityCheck: VulnerabilityCheckResponse.fromMap((map['vulnerabilityCheck'] as Map).cast<String, dynamic>()),
+      alwaysDeny: (map['alwaysDeny'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      imageAllowlist: (ImageAllowlistResponse.fromMap((map['imageAllowlist'] as Map).cast<String, dynamic>())).input(),
+      imageFreshnessCheck: (ImageFreshnessCheckResponse.fromMap((map['imageFreshnessCheck'] as Map).cast<String, dynamic>())).input(),
+      simpleSigningAttestationCheck: (SimpleSigningAttestationCheckResponse.fromMap((map['simpleSigningAttestationCheck'] as Map).cast<String, dynamic>())).input(),
+      slsaCheck: (SlsaCheckResponse.fromMap((map['slsaCheck'] as Map).cast<String, dynamic>())).input(),
+      trustedDirectoryCheck: (TrustedDirectoryCheckResponse.fromMap((map['trustedDirectoryCheck'] as Map).cast<String, dynamic>())).input(),
+      vulnerabilityCheck: (VulnerabilityCheckResponse.fromMap((map['vulnerabilityCheck'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

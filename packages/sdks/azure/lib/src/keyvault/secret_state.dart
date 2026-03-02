@@ -51,33 +51,20 @@ class SecretState {
   /// [version] The current version of the Key Vault Secret.
   /// [versionlessId] The Base ID of the Key Vault Secret.
   SecretState({
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<String>? keyVaultId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notBeforeDate,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceVersionlessId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? value,
-    pulumi.Output<String>? valueWo,
-    pulumi.Output<int>? valueWoVersion,
-    pulumi.Output<String>? version,
-    pulumi.Output<String>? versionlessId,
-  }) :
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notBeforeDate = pulumi.Input.asOptionalInput<String>(notBeforeDate),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceVersionlessId = pulumi.Input.asOptionalInput<String>(resourceVersionlessId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      value = pulumi.Input.asOptionalInput<String>(value),
-      valueWo = pulumi.Input.asOptionalInput<String>(valueWo),
-      valueWoVersion = pulumi.Input.asOptionalInput<int>(valueWoVersion),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      versionlessId = pulumi.Input.asOptionalInput<String>(versionlessId);
+    this.contentType,
+    this.expirationDate,
+    this.keyVaultId,
+    this.name,
+    this.notBeforeDate,
+    this.resourceId,
+    this.resourceVersionlessId,
+    this.tags,
+    this.value,
+    this.valueWo,
+    this.valueWoVersion,
+    this.version,
+    this.versionlessId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class SecretState {
 
   factory SecretState.fromMap(Map<String, dynamic> map) {
     return SecretState(
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notBeforeDate: map['notBeforeDate'] == null ? null : pulumi.Output.create<String>(map['notBeforeDate'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceVersionlessId: map['resourceVersionlessId'] == null ? null : pulumi.Output.create<String>(map['resourceVersionlessId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
-      valueWo: map['valueWo'] == null ? null : pulumi.Output.create<String>(map['valueWo'] as String),
-      valueWoVersion: map['valueWoVersion'] == null ? null : pulumi.Output.create<int>(map['valueWoVersion'] as int),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      versionlessId: map['versionlessId'] == null ? null : pulumi.Output.create<String>(map['versionlessId'] as String),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceVersionlessId: map['resourceVersionlessId'] == null ? null : (map['resourceVersionlessId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      valueWo: map['valueWo'] == null ? null : (map['valueWo'] as String).input(),
+      valueWoVersion: map['valueWoVersion'] == null ? null : (map['valueWoVersion'] as int).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      versionlessId: map['versionlessId'] == null ? null : (map['versionlessId'] as String).input(),
     );
   }
 }

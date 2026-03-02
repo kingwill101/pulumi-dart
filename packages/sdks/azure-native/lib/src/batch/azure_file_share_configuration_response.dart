@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information used to connect to an Azure Fileshare.
 class AzureFileShareConfigurationResponse {
   /// The Azure Storage account key.
-  final String accountKey;
+  final pulumi.Input<String> accountKey;
   /// The Azure Storage account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// This is of the form 'https://{account}.file.core.windows.net/'.
-  final String azureFileUrl;
+  final pulumi.Input<String> azureFileUrl;
   /// These are 'net use' options in Windows and 'mount' options in Linux.
-  final String? mountOptions;
+  final pulumi.Input<String>? mountOptions;
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
-  final String relativeMountPath;
+  final pulumi.Input<String> relativeMountPath;
 
   /// Creates a new [AzureFileShareConfigurationResponse].
   /// [accountKey] The Azure Storage account key.
@@ -40,11 +41,11 @@ class AzureFileShareConfigurationResponse {
 
   factory AzureFileShareConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AzureFileShareConfigurationResponse(
-      accountKey: map['accountKey'] as String,
-      accountName: map['accountName'] as String,
-      azureFileUrl: map['azureFileUrl'] as String,
-      mountOptions: map['mountOptions'] == null ? null : map['mountOptions'] as String,
-      relativeMountPath: map['relativeMountPath'] as String,
+      accountKey: (map['accountKey'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      azureFileUrl: (map['azureFileUrl'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
+      relativeMountPath: (map['relativeMountPath'] as String).input(),
     );
   }
 }

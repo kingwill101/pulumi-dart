@@ -32,23 +32,15 @@ class PolicyStoreState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [validationSettings] Validation settings for the policy store.
   PolicyStoreState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? deletionProtection,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? policyStoreId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<PolicyStoreValidationSettings>? validationSettings,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      deletionProtection = pulumi.Input.asOptionalInput<String>(deletionProtection),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      policyStoreId = pulumi.Input.asOptionalInput<String>(policyStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      validationSettings = pulumi.Input.asOptionalInput<PolicyStoreValidationSettings>(validationSettings);
+    this.arn,
+    this.deletionProtection,
+    this.description,
+    this.policyStoreId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.validationSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class PolicyStoreState {
 
   factory PolicyStoreState.fromMap(Map<String, dynamic> map) {
     return PolicyStoreState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<String>(map['deletionProtection'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      policyStoreId: map['policyStoreId'] == null ? null : pulumi.Output.create<String>(map['policyStoreId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      validationSettings: map['validationSettings'] == null ? null : pulumi.Output.create<PolicyStoreValidationSettings>(PolicyStoreValidationSettings.fromMap((map['validationSettings'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      validationSettings: map['validationSettings'] == null ? null : (PolicyStoreValidationSettings.fromMap((map['validationSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

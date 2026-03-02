@@ -47,29 +47,18 @@ class ContactProfileArgs {
   /// [tags] Resource tags.
   /// [thirdPartyConfigurations] Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
   ContactProfileArgs({
-    pulumi.Output<AutoTrackingConfiguration>? autoTrackingConfiguration,
-    pulumi.Output<String>? contactProfileName,
-    pulumi.Output<String>? eventHubUri,
-    required pulumi.Output<List<ContactProfileLink>> links,
-    pulumi.Output<String>? location,
-    pulumi.Output<double>? minimumElevationDegrees,
-    pulumi.Output<String>? minimumViableContactDuration,
-    required pulumi.Output<ContactProfilesPropertiesNetworkConfiguration> networkConfiguration,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<ContactProfileThirdPartyConfiguration>>? thirdPartyConfigurations,
-  }) :
-      autoTrackingConfiguration = pulumi.Input.asOptionalInput<AutoTrackingConfiguration>(autoTrackingConfiguration),
-      contactProfileName = pulumi.Input.asOptionalInput<String>(contactProfileName),
-      eventHubUri = pulumi.Input.asOptionalInput<String>(eventHubUri),
-      links = pulumi.Input.asInput<List<ContactProfileLink>>(links),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minimumElevationDegrees = pulumi.Input.asOptionalInput<double>(minimumElevationDegrees),
-      minimumViableContactDuration = pulumi.Input.asOptionalInput<String>(minimumViableContactDuration),
-      networkConfiguration = pulumi.Input.asInput<ContactProfilesPropertiesNetworkConfiguration>(networkConfiguration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      thirdPartyConfigurations = pulumi.Input.asOptionalInput<List<ContactProfileThirdPartyConfiguration>>(thirdPartyConfigurations);
+    this.autoTrackingConfiguration,
+    this.contactProfileName,
+    this.eventHubUri,
+    required this.links,
+    this.location,
+    this.minimumElevationDegrees,
+    this.minimumViableContactDuration,
+    required this.networkConfiguration,
+    required this.resourceGroupName,
+    this.tags,
+    this.thirdPartyConfigurations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class ContactProfileArgs {
 
   factory ContactProfileArgs.fromMap(Map<String, dynamic> map) {
     return ContactProfileArgs(
-      autoTrackingConfiguration: map['autoTrackingConfiguration'] == null ? null : pulumi.Output.create<AutoTrackingConfiguration>(AutoTrackingConfiguration.fromValue(map['autoTrackingConfiguration'] as String)),
-      contactProfileName: map['contactProfileName'] == null ? null : pulumi.Output.create<String>(map['contactProfileName'] as String),
-      eventHubUri: map['eventHubUri'] == null ? null : pulumi.Output.create<String>(map['eventHubUri'] as String),
-      links: pulumi.Output.create<List<ContactProfileLink>>(pulumi.Input.decodeList<ContactProfileLink>(map['links'], (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : pulumi.Output.create<double>(map['minimumElevationDegrees'] as double),
-      minimumViableContactDuration: map['minimumViableContactDuration'] == null ? null : pulumi.Output.create<String>(map['minimumViableContactDuration'] as String),
-      networkConfiguration: pulumi.Output.create<ContactProfilesPropertiesNetworkConfiguration>(ContactProfilesPropertiesNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      thirdPartyConfigurations: map['thirdPartyConfigurations'] == null ? null : pulumi.Output.create<List<ContactProfileThirdPartyConfiguration>>(pulumi.Input.decodeList<ContactProfileThirdPartyConfiguration>(map['thirdPartyConfigurations'], (value) => ContactProfileThirdPartyConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      autoTrackingConfiguration: map['autoTrackingConfiguration'] == null ? null : (AutoTrackingConfiguration.fromValue(map['autoTrackingConfiguration'] as String)).input(),
+      contactProfileName: map['contactProfileName'] == null ? null : (map['contactProfileName'] as String).input(),
+      eventHubUri: map['eventHubUri'] == null ? null : (map['eventHubUri'] as String).input(),
+      links: (pulumi.Input.decodeList<ContactProfileLink>(map['links'], (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : (map['minimumElevationDegrees'] as double).input(),
+      minimumViableContactDuration: map['minimumViableContactDuration'] == null ? null : (map['minimumViableContactDuration'] as String).input(),
+      networkConfiguration: (ContactProfilesPropertiesNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      thirdPartyConfigurations: map['thirdPartyConfigurations'] == null ? null : (pulumi.Input.decodeList<ContactProfileThirdPartyConfiguration>(map['thirdPartyConfigurations'], (value) => ContactProfileThirdPartyConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetOsPolicyAssignmentOsconfigV1alphaArgs {
   /// [osPolicyAssignmentId] Required.
   /// [project] Optional.
   GetOsPolicyAssignmentOsconfigV1alphaArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> osPolicyAssignmentId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      osPolicyAssignmentId = pulumi.Input.asInput<String>(osPolicyAssignmentId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.osPolicyAssignmentId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetOsPolicyAssignmentOsconfigV1alphaArgs {
 
   factory GetOsPolicyAssignmentOsconfigV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetOsPolicyAssignmentOsconfigV1alphaArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      osPolicyAssignmentId: pulumi.Output.create<String>(map['osPolicyAssignmentId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      osPolicyAssignmentId: (map['osPolicyAssignmentId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

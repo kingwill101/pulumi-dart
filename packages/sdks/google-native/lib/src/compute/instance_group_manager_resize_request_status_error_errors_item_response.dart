@@ -5,13 +5,13 @@ import 'instance_group_manager_resize_request_status_error_errors_item_error_det
 
 class InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse {
   /// The error type identifier for this error.
-  final String code;
+  final pulumi.Input<String> code;
   /// An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
-  final List<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse> errorDetails;
+  final pulumi.Input<List<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse>> errorDetails;
   /// Indicates the field in the request that caused the error. This property is optional.
-  final String location;
+  final pulumi.Input<String> location;
   /// An optional, human-readable error message.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse].
   /// [code] The error type identifier for this error.
@@ -28,7 +28,7 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'errorDetails': pulumi.Input.encodeList<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
+      'errorDetails': pulumi.Input.mapInputValue<List<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': location,
       'message': message,
     };
@@ -36,10 +36,10 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse {
 
   factory InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse(
-      code: map['code'] as String,
-      errorDetails: pulumi.Input.decodeList<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse>(map['errorDetails'], (value) => InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      errorDetails: (pulumi.Input.decodeList<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse>(map['errorDetails'], (value) => InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (map['location'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

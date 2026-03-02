@@ -49,25 +49,16 @@ class AccessApprovalSettingsState {
   /// [project] (Optional, Deprecated)
   /// [projectId] ID of the project of the access approval settings.
   AccessApprovalSettingsState({
-    pulumi.Output<String>? activeKeyVersion,
-    pulumi.Output<bool>? ancestorHasActiveKeyVersion,
-    pulumi.Output<bool>? enrolledAncestor,
-    pulumi.Output<List<AccessApprovalSettingsEnrolledService>>? enrolledServices,
-    pulumi.Output<bool>? invalidKeyVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? notificationEmails,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? projectId,
-  }) :
-      activeKeyVersion = pulumi.Input.asOptionalInput<String>(activeKeyVersion),
-      ancestorHasActiveKeyVersion = pulumi.Input.asOptionalInput<bool>(ancestorHasActiveKeyVersion),
-      enrolledAncestor = pulumi.Input.asOptionalInput<bool>(enrolledAncestor),
-      enrolledServices = pulumi.Input.asOptionalInput<List<AccessApprovalSettingsEnrolledService>>(enrolledServices),
-      invalidKeyVersion = pulumi.Input.asOptionalInput<bool>(invalidKeyVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationEmails = pulumi.Input.asOptionalInput<List<String>>(notificationEmails),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId);
+    this.activeKeyVersion,
+    this.ancestorHasActiveKeyVersion,
+    this.enrolledAncestor,
+    this.enrolledServices,
+    this.invalidKeyVersion,
+    this.name,
+    this.notificationEmails,
+    this.project,
+    this.projectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,15 +76,15 @@ class AccessApprovalSettingsState {
 
   factory AccessApprovalSettingsState.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsState(
-      activeKeyVersion: map['activeKeyVersion'] == null ? null : pulumi.Output.create<String>(map['activeKeyVersion'] as String),
-      ancestorHasActiveKeyVersion: map['ancestorHasActiveKeyVersion'] == null ? null : pulumi.Output.create<bool>(map['ancestorHasActiveKeyVersion'] as bool),
-      enrolledAncestor: map['enrolledAncestor'] == null ? null : pulumi.Output.create<bool>(map['enrolledAncestor'] as bool),
-      enrolledServices: map['enrolledServices'] == null ? null : pulumi.Output.create<List<AccessApprovalSettingsEnrolledService>>(pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))),
-      invalidKeyVersion: map['invalidKeyVersion'] == null ? null : pulumi.Output.create<bool>(map['invalidKeyVersion'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationEmails: map['notificationEmails'] == null ? null : pulumi.Output.create<List<String>>((map['notificationEmails'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
+      activeKeyVersion: map['activeKeyVersion'] == null ? null : (map['activeKeyVersion'] as String).input(),
+      ancestorHasActiveKeyVersion: map['ancestorHasActiveKeyVersion'] == null ? null : (map['ancestorHasActiveKeyVersion'] as bool).input(),
+      enrolledAncestor: map['enrolledAncestor'] == null ? null : (map['enrolledAncestor'] as bool).input(),
+      enrolledServices: map['enrolledServices'] == null ? null : (pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      invalidKeyVersion: map['invalidKeyVersion'] == null ? null : (map['invalidKeyVersion'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationEmails: map['notificationEmails'] == null ? null : ((map['notificationEmails'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

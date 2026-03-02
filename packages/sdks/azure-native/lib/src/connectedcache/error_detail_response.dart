@@ -6,15 +6,15 @@ import 'error_additional_info_response.dart';
 /// The error detail.
 class ErrorDetailResponse {
   /// The error additional info.
-  final List<ErrorAdditionalInfoResponse> additionalInfo;
+  final pulumi.Input<List<ErrorAdditionalInfoResponse>> additionalInfo;
   /// The error code.
-  final String code;
+  final pulumi.Input<String> code;
   /// The error details.
-  final List<ErrorDetailResponse> details;
+  final pulumi.Input<List<ErrorDetailResponse>> details;
   /// The error message.
-  final String message;
+  final pulumi.Input<String> message;
   /// The error target.
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [ErrorDetailResponse].
   /// [additionalInfo] The error additional info.
@@ -32,9 +32,9 @@ class ErrorDetailResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalInfo': pulumi.Input.encodeList<ErrorAdditionalInfoResponse, Map<String, dynamic>>(additionalInfo, (value) => value.toMap()),
+      'additionalInfo': pulumi.Input.mapInputValue<List<ErrorAdditionalInfoResponse>, List<Map<String, dynamic>>>(additionalInfo, (value) => pulumi.Input.encodeList<ErrorAdditionalInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'code': code,
-      'details': pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(details, (value) => value.toMap()),
+      'details': pulumi.Input.mapInputValue<List<ErrorDetailResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
       'target': target,
     };
@@ -42,11 +42,11 @@ class ErrorDetailResponse {
 
   factory ErrorDetailResponse.fromMap(Map<String, dynamic> map) {
     return ErrorDetailResponse(
-      additionalInfo: pulumi.Input.decodeList<ErrorAdditionalInfoResponse>(map['additionalInfo'], (value) => ErrorAdditionalInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      code: map['code'] as String,
-      details: pulumi.Input.decodeList<ErrorDetailResponse>(map['details'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
-      message: map['message'] as String,
-      target: map['target'] as String,
+      additionalInfo: (pulumi.Input.decodeList<ErrorAdditionalInfoResponse>(map['additionalInfo'], (value) => ErrorAdditionalInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      code: (map['code'] as String).input(),
+      details: (pulumi.Input.decodeList<ErrorDetailResponse>(map['details'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: (map['message'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

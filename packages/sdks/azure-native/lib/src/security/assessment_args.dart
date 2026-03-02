@@ -35,21 +35,14 @@ class AssessmentArgs {
   /// [resourceId] The identifier of the resource.
   /// [status] The result of the assessment
   AssessmentArgs({
-    pulumi.Output<Map<String, String>>? additionalData,
-    pulumi.Output<String>? assessmentName,
-    pulumi.Output<SecurityAssessmentMetadataProperties>? metadata,
-    pulumi.Output<SecurityAssessmentPartnerData>? partnersData,
-    required pulumi.Output<AzureResourceDetails> resourceDetails,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<AssessmentStatus> status,
-  }) :
-      additionalData = pulumi.Input.asOptionalInput<Map<String, String>>(additionalData),
-      assessmentName = pulumi.Input.asOptionalInput<String>(assessmentName),
-      metadata = pulumi.Input.asOptionalInput<SecurityAssessmentMetadataProperties>(metadata),
-      partnersData = pulumi.Input.asOptionalInput<SecurityAssessmentPartnerData>(partnersData),
-      resourceDetails = pulumi.Input.asInput<AzureResourceDetails>(resourceDetails),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      status = pulumi.Input.asInput<AssessmentStatus>(status);
+    this.additionalData,
+    this.assessmentName,
+    this.metadata,
+    this.partnersData,
+    required this.resourceDetails,
+    required this.resourceId,
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      additionalData: map['additionalData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalData'] as Map).cast<String, String>()),
-      assessmentName: map['assessmentName'] == null ? null : pulumi.Output.create<String>(map['assessmentName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<SecurityAssessmentMetadataProperties>(SecurityAssessmentMetadataProperties.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      partnersData: map['partnersData'] == null ? null : pulumi.Output.create<SecurityAssessmentPartnerData>(SecurityAssessmentPartnerData.fromMap((map['partnersData'] as Map).cast<String, dynamic>())),
-      resourceDetails: pulumi.Output.create<AzureResourceDetails>(AzureResourceDetails.fromMap((map['resourceDetails'] as Map).cast<String, dynamic>())),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      status: pulumi.Output.create<AssessmentStatus>(AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())),
+      additionalData: map['additionalData'] == null ? null : ((map['additionalData'] as Map).cast<String, String>()).input(),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      metadata: map['metadata'] == null ? null : (SecurityAssessmentMetadataProperties.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      partnersData: map['partnersData'] == null ? null : (SecurityAssessmentPartnerData.fromMap((map['partnersData'] as Map).cast<String, dynamic>())).input(),
+      resourceDetails: (AzureResourceDetails.fromMap((map['resourceDetails'] as Map).cast<String, dynamic>())).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      status: (AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

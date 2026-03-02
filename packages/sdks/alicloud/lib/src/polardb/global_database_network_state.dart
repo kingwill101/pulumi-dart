@@ -16,13 +16,10 @@ class GlobalDatabaseNetworkState {
   /// [description] The description of the Global Database Network.
   /// [status] The status of the Global Database Network.
   GlobalDatabaseNetworkState({
-    pulumi.Output<String>? dbClusterId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? status,
-  }) :
-      dbClusterId = pulumi.Input.asOptionalInput<String>(dbClusterId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.dbClusterId,
+    this.description,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GlobalDatabaseNetworkState {
 
   factory GlobalDatabaseNetworkState.fromMap(Map<String, dynamic> map) {
     return GlobalDatabaseNetworkState(
-      dbClusterId: map['dbClusterId'] == null ? null : pulumi.Output.create<String>(map['dbClusterId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

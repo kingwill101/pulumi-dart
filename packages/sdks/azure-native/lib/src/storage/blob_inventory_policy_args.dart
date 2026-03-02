@@ -23,15 +23,11 @@ class BlobInventoryPolicyArgs {
   /// [policy] The storage account blob inventory policy object. It is composed of policy rules.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   BlobInventoryPolicyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? blobInventoryPolicyName,
-    required pulumi.Output<BlobInventoryPolicySchema> policy,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      blobInventoryPolicyName = pulumi.Input.asOptionalInput<String>(blobInventoryPolicyName),
-      policy = pulumi.Input.asInput<BlobInventoryPolicySchema>(policy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.blobInventoryPolicyName,
+    required this.policy,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class BlobInventoryPolicyArgs {
 
   factory BlobInventoryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      blobInventoryPolicyName: map['blobInventoryPolicyName'] == null ? null : pulumi.Output.create<String>(map['blobInventoryPolicyName'] as String),
-      policy: pulumi.Output.create<BlobInventoryPolicySchema>(BlobInventoryPolicySchema.fromMap((map['policy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      blobInventoryPolicyName: map['blobInventoryPolicyName'] == null ? null : (map['blobInventoryPolicyName'] as String).input(),
+      policy: (BlobInventoryPolicySchema.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

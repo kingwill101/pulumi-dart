@@ -25,17 +25,12 @@ class GetImagesArgs {
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   /// [withStatuses] List only images with the specified status, could contain `creating` or `available`.
   GetImagesArgs({
-    pulumi.Output<bool>? includeDeprecated,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<List<String>>? withArchitectures,
-    pulumi.Output<String>? withSelector,
-    pulumi.Output<List<String>>? withStatuses,
-  }) :
-      includeDeprecated = pulumi.Input.asOptionalInput<bool>(includeDeprecated),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      withArchitectures = pulumi.Input.asOptionalInput<List<String>>(withArchitectures),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector),
-      withStatuses = pulumi.Input.asOptionalInput<List<String>>(withStatuses);
+    this.includeDeprecated,
+    this.mostRecent,
+    this.withArchitectures,
+    this.withSelector,
+    this.withStatuses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      includeDeprecated: map['includeDeprecated'] == null ? null : pulumi.Output.create<bool>(map['includeDeprecated'] as bool),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      withArchitectures: map['withArchitectures'] == null ? null : pulumi.Output.create<List<String>>((map['withArchitectures'] as List).cast<String>()),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
-      withStatuses: map['withStatuses'] == null ? null : pulumi.Output.create<List<String>>((map['withStatuses'] as List).cast<String>()),
+      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      withArchitectures: map['withArchitectures'] == null ? null : ((map['withArchitectures'] as List).cast<String>()).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
     );
   }
 }

@@ -222,27 +222,17 @@ class As3State {
   /// [tenantList] List of tenants currently deployed on the Big-Ip
   /// [tenantName] Name of Tenant. This name is used only in the case of Per-Application Deployment. If it is not provided, then a random name would be generated.
   As3State({
-    pulumi.Output<String>? applicationList,
-    pulumi.Output<String>? as3Json,
-    pulumi.Output<Map<String, String>>? controls,
-    pulumi.Output<As3DeleteApps>? deleteApps,
-    pulumi.Output<bool>? ignoreMetadata,
-    pulumi.Output<bool>? perAppMode,
-    pulumi.Output<String>? taskId,
-    pulumi.Output<String>? tenantFilter,
-    pulumi.Output<String>? tenantList,
-    pulumi.Output<String>? tenantName,
-  }) :
-      applicationList = pulumi.Input.asOptionalInput<String>(applicationList),
-      as3Json = pulumi.Input.asOptionalInput<String>(as3Json),
-      controls = pulumi.Input.asOptionalInput<Map<String, String>>(controls),
-      deleteApps = pulumi.Input.asOptionalInput<As3DeleteApps>(deleteApps),
-      ignoreMetadata = pulumi.Input.asOptionalInput<bool>(ignoreMetadata),
-      perAppMode = pulumi.Input.asOptionalInput<bool>(perAppMode),
-      taskId = pulumi.Input.asOptionalInput<String>(taskId),
-      tenantFilter = pulumi.Input.asOptionalInput<String>(tenantFilter),
-      tenantList = pulumi.Input.asOptionalInput<String>(tenantList),
-      tenantName = pulumi.Input.asOptionalInput<String>(tenantName);
+    this.applicationList,
+    this.as3Json,
+    this.controls,
+    this.deleteApps,
+    this.ignoreMetadata,
+    this.perAppMode,
+    this.taskId,
+    this.tenantFilter,
+    this.tenantList,
+    this.tenantName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -261,16 +251,16 @@ class As3State {
 
   factory As3State.fromMap(Map<String, dynamic> map) {
     return As3State(
-      applicationList: map['applicationList'] == null ? null : pulumi.Output.create<String>(map['applicationList'] as String),
-      as3Json: map['as3Json'] == null ? null : pulumi.Output.create<String>(map['as3Json'] as String),
-      controls: map['controls'] == null ? null : pulumi.Output.create<Map<String, String>>((map['controls'] as Map).cast<String, String>()),
-      deleteApps: map['deleteApps'] == null ? null : pulumi.Output.create<As3DeleteApps>(As3DeleteApps.fromMap((map['deleteApps'] as Map).cast<String, dynamic>())),
-      ignoreMetadata: map['ignoreMetadata'] == null ? null : pulumi.Output.create<bool>(map['ignoreMetadata'] as bool),
-      perAppMode: map['perAppMode'] == null ? null : pulumi.Output.create<bool>(map['perAppMode'] as bool),
-      taskId: map['taskId'] == null ? null : pulumi.Output.create<String>(map['taskId'] as String),
-      tenantFilter: map['tenantFilter'] == null ? null : pulumi.Output.create<String>(map['tenantFilter'] as String),
-      tenantList: map['tenantList'] == null ? null : pulumi.Output.create<String>(map['tenantList'] as String),
-      tenantName: map['tenantName'] == null ? null : pulumi.Output.create<String>(map['tenantName'] as String),
+      applicationList: map['applicationList'] == null ? null : (map['applicationList'] as String).input(),
+      as3Json: map['as3Json'] == null ? null : (map['as3Json'] as String).input(),
+      controls: map['controls'] == null ? null : ((map['controls'] as Map).cast<String, String>()).input(),
+      deleteApps: map['deleteApps'] == null ? null : (As3DeleteApps.fromMap((map['deleteApps'] as Map).cast<String, dynamic>())).input(),
+      ignoreMetadata: map['ignoreMetadata'] == null ? null : (map['ignoreMetadata'] as bool).input(),
+      perAppMode: map['perAppMode'] == null ? null : (map['perAppMode'] as bool).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      tenantFilter: map['tenantFilter'] == null ? null : (map['tenantFilter'] as String).input(),
+      tenantList: map['tenantList'] == null ? null : (map['tenantList'] as String).input(),
+      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
     );
   }
 }

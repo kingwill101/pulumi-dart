@@ -5,9 +5,9 @@ import 'domain_devices_disk_mirror_backing_store_source_vhost_user_pipe_sec_labe
 
 class DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe {
   /// Sets the path for the pipe source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final List<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
@@ -20,14 +20,14 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

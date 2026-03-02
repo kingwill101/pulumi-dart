@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleResourceTag {
   /// Tag key.
   ///
   /// The following argument is optional:
-  final String resourceTagKey;
+  final pulumi.Input<String> resourceTagKey;
   /// Tag value.
-  final String? resourceTagValue;
+  final pulumi.Input<String>? resourceTagValue;
 
   /// Creates a new [RuleResourceTag].
   /// [resourceTagKey] Tag key.
@@ -26,8 +27,8 @@ class RuleResourceTag {
 
   factory RuleResourceTag.fromMap(Map<String, dynamic> map) {
     return RuleResourceTag(
-      resourceTagKey: map['resourceTagKey'] as String,
-      resourceTagValue: map['resourceTagValue'] == null ? null : map['resourceTagValue'] as String,
+      resourceTagKey: (map['resourceTagKey'] as String).input(),
+      resourceTagValue: map['resourceTagValue'] == null ? null : (map['resourceTagValue'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupAlarmConfiguration {
   /// A list of alarms configured for the deployment group.
-  final List<String>? alarms;
+  final pulumi.Input<List<String>>? alarms;
   /// Indicates whether the alarm configuration is enabled. This option is useful when you want to temporarily deactivate alarm monitoring for a deployment group without having to add the same alarms again later.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Indicates whether a deployment should continue if information about the current state of alarms cannot be retrieved from CloudWatch. The default value is `false`.
-  final bool? ignorePollAlarmFailure;
+  final pulumi.Input<bool>? ignorePollAlarmFailure;
 
   /// Creates a new [DeploymentGroupAlarmConfiguration].
   /// [alarms] A list of alarms configured for the deployment group.
@@ -29,9 +30,9 @@ class DeploymentGroupAlarmConfiguration {
 
   factory DeploymentGroupAlarmConfiguration.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupAlarmConfiguration(
-      alarms: map['alarms'] == null ? null : (map['alarms'] as List).cast<String>(),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      ignorePollAlarmFailure: map['ignorePollAlarmFailure'] == null ? null : map['ignorePollAlarmFailure'] as bool,
+      alarms: map['alarms'] == null ? null : ((map['alarms'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      ignorePollAlarmFailure: map['ignorePollAlarmFailure'] == null ? null : (map['ignorePollAlarmFailure'] as bool).input(),
     );
   }
 }

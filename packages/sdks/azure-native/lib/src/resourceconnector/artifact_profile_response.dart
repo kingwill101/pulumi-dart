@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Appliance ArtifactProfile definition.
 class ArtifactProfileResponse {
   /// Endpoint is the URL to upload artifacts to.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [ArtifactProfileResponse].
   /// [endpoint] Endpoint is the URL to upload artifacts to.
@@ -20,7 +21,7 @@ class ArtifactProfileResponse {
 
   factory ArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactProfileResponse(
-      endpoint: map['endpoint'] as String,
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

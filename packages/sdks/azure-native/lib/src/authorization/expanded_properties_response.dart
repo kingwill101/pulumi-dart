@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'expanded_properties_response_principal.dart';
 import 'expanded_properties_response_role_definition.dart';
 import 'expanded_properties_response_scope.dart';
@@ -7,11 +8,11 @@ import 'expanded_properties_response_scope.dart';
 /// Expanded info of resource, role and principal
 class ExpandedPropertiesResponse {
   /// Details of the principal
-  final ExpandedPropertiesResponsePrincipal? principal;
+  final pulumi.Input<ExpandedPropertiesResponsePrincipal>? principal;
   /// Details of role definition
-  final ExpandedPropertiesResponseRoleDefinition? roleDefinition;
+  final pulumi.Input<ExpandedPropertiesResponseRoleDefinition>? roleDefinition;
   /// Details of the resource scope
-  final ExpandedPropertiesResponseScope? scope;
+  final pulumi.Input<ExpandedPropertiesResponseScope>? scope;
 
   /// Creates a new [ExpandedPropertiesResponse].
   /// [principal] Details of the principal
@@ -25,17 +26,17 @@ class ExpandedPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'principal': ?principal == null ? null : principal!.toMap(),
-      'roleDefinition': ?roleDefinition == null ? null : roleDefinition!.toMap(),
-      'scope': ?scope == null ? null : scope!.toMap(),
+      'principal': ?pulumi.Input.mapOptionalInputValue<ExpandedPropertiesResponsePrincipal, Map<String, dynamic>>(principal, (value) => value.toMap()),
+      'roleDefinition': ?pulumi.Input.mapOptionalInputValue<ExpandedPropertiesResponseRoleDefinition, Map<String, dynamic>>(roleDefinition, (value) => value.toMap()),
+      'scope': ?pulumi.Input.mapOptionalInputValue<ExpandedPropertiesResponseScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
     };
   }
 
   factory ExpandedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ExpandedPropertiesResponse(
-      principal: map['principal'] == null ? null : ExpandedPropertiesResponsePrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>()),
-      roleDefinition: map['roleDefinition'] == null ? null : ExpandedPropertiesResponseRoleDefinition.fromMap((map['roleDefinition'] as Map).cast<String, dynamic>()),
-      scope: map['scope'] == null ? null : ExpandedPropertiesResponseScope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
+      principal: map['principal'] == null ? null : (ExpandedPropertiesResponsePrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>())).input(),
+      roleDefinition: map['roleDefinition'] == null ? null : (ExpandedPropertiesResponseRoleDefinition.fromMap((map['roleDefinition'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (ExpandedPropertiesResponseScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

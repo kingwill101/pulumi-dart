@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_connection_configuration.dart';
 
 class AgentFlowDefinitionConnection {
   /// Configuration of the connection. See Connection Configuration for more information.
-  final AgentFlowDefinitionConnectionConfiguration? configuration;
+  final pulumi.Input<AgentFlowDefinitionConnectionConfiguration>? configuration;
   /// A name for the connection that you can reference.
-  final String name;
+  final pulumi.Input<String> name;
   /// The node that the connection starts at.
-  final String source;
+  final pulumi.Input<String> source;
   /// The node that the connection ends at.
-  final String target;
+  final pulumi.Input<String> target;
   /// Whether the source node that the connection begins from is a condition node `Conditional` or not `Data`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentFlowDefinitionConnection].
   /// [configuration] Configuration of the connection. See Connection Configuration for more information.
@@ -30,7 +31,7 @@ class AgentFlowDefinitionConnection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?configuration == null ? null : configuration!.toMap(),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionConnectionConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'name': name,
       'source': source,
       'target': target,
@@ -40,11 +41,11 @@ class AgentFlowDefinitionConnection {
 
   factory AgentFlowDefinitionConnection.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionConnection(
-      configuration: map['configuration'] == null ? null : AgentFlowDefinitionConnectionConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      source: map['source'] as String,
-      target: map['target'] as String,
-      type: map['type'] as String,
+      configuration: map['configuration'] == null ? null : (AgentFlowDefinitionConnectionConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      source: (map['source'] as String).input(),
+      target: (map['target'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

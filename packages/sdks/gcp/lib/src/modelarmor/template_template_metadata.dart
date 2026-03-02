@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'template_template_metadata_multi_language_detection.dart';
 
 class TemplateTemplateMetadata {
   /// Indicates the custom error code set by the user to be returned to the end
   /// user if the LLM response trips Model Armor filters.
-  final int? customLlmResponseSafetyErrorCode;
+  final pulumi.Input<int>? customLlmResponseSafetyErrorCode;
   /// Indicates the custom error message set by the user to be returned to the
   /// end user if the LLM response trips Model Armor filters.
-  final String? customLlmResponseSafetyErrorMessage;
+  final pulumi.Input<String>? customLlmResponseSafetyErrorMessage;
   /// Indicates the custom error code set by the user to be returned to the end
   /// user by the service extension if the prompt trips Model Armor filters.
-  final int? customPromptSafetyErrorCode;
+  final pulumi.Input<int>? customPromptSafetyErrorCode;
   /// Indicates the custom error message set by the user to be returned to the
   /// end user if the prompt trips Model Armor filters.
-  final String? customPromptSafetyErrorMessage;
+  final pulumi.Input<String>? customPromptSafetyErrorMessage;
   /// Possible values:
   /// INSPECT_ONLY
   /// INSPECT_AND_BLOCK
-  final String? enforcementType;
+  final pulumi.Input<String>? enforcementType;
   /// If true, partial detector failures should be ignored.
-  final bool? ignorePartialInvocationFailures;
+  final pulumi.Input<bool>? ignorePartialInvocationFailures;
   /// If true, log sanitize operations.
-  final bool? logSanitizeOperations;
+  final pulumi.Input<bool>? logSanitizeOperations;
   /// If true, log template crud operations.
-  final bool? logTemplateOperations;
+  final pulumi.Input<bool>? logTemplateOperations;
   /// Metadata to enable multi language detection via template.
   /// Structure is documented below.
-  final TemplateTemplateMetadataMultiLanguageDetection? multiLanguageDetection;
+  final pulumi.Input<TemplateTemplateMetadataMultiLanguageDetection>? multiLanguageDetection;
 
   /// Creates a new [TemplateTemplateMetadata].
   /// [customLlmResponseSafetyErrorCode] Indicates the custom error code set by the user to be returned to the end
@@ -61,21 +62,21 @@ class TemplateTemplateMetadata {
       'ignorePartialInvocationFailures': ?ignorePartialInvocationFailures,
       'logSanitizeOperations': ?logSanitizeOperations,
       'logTemplateOperations': ?logTemplateOperations,
-      'multiLanguageDetection': ?multiLanguageDetection == null ? null : multiLanguageDetection!.toMap(),
+      'multiLanguageDetection': ?pulumi.Input.mapOptionalInputValue<TemplateTemplateMetadataMultiLanguageDetection, Map<String, dynamic>>(multiLanguageDetection, (value) => value.toMap()),
     };
   }
 
   factory TemplateTemplateMetadata.fromMap(Map<String, dynamic> map) {
     return TemplateTemplateMetadata(
-      customLlmResponseSafetyErrorCode: map['customLlmResponseSafetyErrorCode'] == null ? null : map['customLlmResponseSafetyErrorCode'] as int,
-      customLlmResponseSafetyErrorMessage: map['customLlmResponseSafetyErrorMessage'] == null ? null : map['customLlmResponseSafetyErrorMessage'] as String,
-      customPromptSafetyErrorCode: map['customPromptSafetyErrorCode'] == null ? null : map['customPromptSafetyErrorCode'] as int,
-      customPromptSafetyErrorMessage: map['customPromptSafetyErrorMessage'] == null ? null : map['customPromptSafetyErrorMessage'] as String,
-      enforcementType: map['enforcementType'] == null ? null : map['enforcementType'] as String,
-      ignorePartialInvocationFailures: map['ignorePartialInvocationFailures'] == null ? null : map['ignorePartialInvocationFailures'] as bool,
-      logSanitizeOperations: map['logSanitizeOperations'] == null ? null : map['logSanitizeOperations'] as bool,
-      logTemplateOperations: map['logTemplateOperations'] == null ? null : map['logTemplateOperations'] as bool,
-      multiLanguageDetection: map['multiLanguageDetection'] == null ? null : TemplateTemplateMetadataMultiLanguageDetection.fromMap((map['multiLanguageDetection'] as Map).cast<String, dynamic>()),
+      customLlmResponseSafetyErrorCode: map['customLlmResponseSafetyErrorCode'] == null ? null : (map['customLlmResponseSafetyErrorCode'] as int).input(),
+      customLlmResponseSafetyErrorMessage: map['customLlmResponseSafetyErrorMessage'] == null ? null : (map['customLlmResponseSafetyErrorMessage'] as String).input(),
+      customPromptSafetyErrorCode: map['customPromptSafetyErrorCode'] == null ? null : (map['customPromptSafetyErrorCode'] as int).input(),
+      customPromptSafetyErrorMessage: map['customPromptSafetyErrorMessage'] == null ? null : (map['customPromptSafetyErrorMessage'] as String).input(),
+      enforcementType: map['enforcementType'] == null ? null : (map['enforcementType'] as String).input(),
+      ignorePartialInvocationFailures: map['ignorePartialInvocationFailures'] == null ? null : (map['ignorePartialInvocationFailures'] as bool).input(),
+      logSanitizeOperations: map['logSanitizeOperations'] == null ? null : (map['logSanitizeOperations'] as bool).input(),
+      logTemplateOperations: map['logTemplateOperations'] == null ? null : (map['logTemplateOperations'] as bool).input(),
+      multiLanguageDetection: map['multiLanguageDetection'] == null ? null : (TemplateTemplateMetadataMultiLanguageDetection.fromMap((map['multiLanguageDetection'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

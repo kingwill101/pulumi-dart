@@ -40,21 +40,14 @@ class RouteEntryState {
   /// [routeTableId] The ID of the Route Table.
   /// [routerId] This argument has been deprecated. Please use other arguments to launch a custom route entry.
   RouteEntryState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destinationCidrblock,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nexthopId,
-    pulumi.Output<String>? nexthopType,
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? routerId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationCidrblock = pulumi.Input.asOptionalInput<String>(destinationCidrblock),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nexthopId = pulumi.Input.asOptionalInput<String>(nexthopId),
-      nexthopType = pulumi.Input.asOptionalInput<String>(nexthopType),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId);
+    this.description,
+    this.destinationCidrblock,
+    this.name,
+    this.nexthopId,
+    this.nexthopType,
+    this.routeTableId,
+    this.routerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,13 +63,13 @@ class RouteEntryState {
 
   factory RouteEntryState.fromMap(Map<String, dynamic> map) {
     return RouteEntryState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationCidrblock: map['destinationCidrblock'] == null ? null : pulumi.Output.create<String>(map['destinationCidrblock'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nexthopId: map['nexthopId'] == null ? null : pulumi.Output.create<String>(map['nexthopId'] as String),
-      nexthopType: map['nexthopType'] == null ? null : pulumi.Output.create<String>(map['nexthopType'] as String),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationCidrblock: map['destinationCidrblock'] == null ? null : (map['destinationCidrblock'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId'] as String).input(),
+      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
     );
   }
 }

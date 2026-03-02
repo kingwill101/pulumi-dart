@@ -43,23 +43,15 @@ class CxGeneratorState {
   /// [placeholders] List of custom placeholders in the prompt text.
   /// [promptText] Prompt for the LLM model.
   CxGeneratorState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<CxGeneratorLlmModelSettings>? llmModelSettings,
-    pulumi.Output<CxGeneratorModelParameter>? modelParameter,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<List<CxGeneratorPlaceholder>>? placeholders,
-    pulumi.Output<CxGeneratorPromptText>? promptText,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      llmModelSettings = pulumi.Input.asOptionalInput<CxGeneratorLlmModelSettings>(llmModelSettings),
-      modelParameter = pulumi.Input.asOptionalInput<CxGeneratorModelParameter>(modelParameter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      placeholders = pulumi.Input.asOptionalInput<List<CxGeneratorPlaceholder>>(placeholders),
-      promptText = pulumi.Input.asOptionalInput<CxGeneratorPromptText>(promptText);
+    this.displayName,
+    this.languageCode,
+    this.llmModelSettings,
+    this.modelParameter,
+    this.name,
+    this.parent,
+    this.placeholders,
+    this.promptText,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class CxGeneratorState {
 
   factory CxGeneratorState.fromMap(Map<String, dynamic> map) {
     return CxGeneratorState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      llmModelSettings: map['llmModelSettings'] == null ? null : pulumi.Output.create<CxGeneratorLlmModelSettings>(CxGeneratorLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())),
-      modelParameter: map['modelParameter'] == null ? null : pulumi.Output.create<CxGeneratorModelParameter>(CxGeneratorModelParameter.fromMap((map['modelParameter'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      placeholders: map['placeholders'] == null ? null : pulumi.Output.create<List<CxGeneratorPlaceholder>>(pulumi.Input.decodeList<CxGeneratorPlaceholder>(map['placeholders'], (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>()))),
-      promptText: map['promptText'] == null ? null : pulumi.Output.create<CxGeneratorPromptText>(CxGeneratorPromptText.fromMap((map['promptText'] as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGeneratorLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
+      modelParameter: map['modelParameter'] == null ? null : (CxGeneratorModelParameter.fromMap((map['modelParameter'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      placeholders: map['placeholders'] == null ? null : (pulumi.Input.decodeList<CxGeneratorPlaceholder>(map['placeholders'], (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      promptText: map['promptText'] == null ? null : (CxGeneratorPromptText.fromMap((map['promptText'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

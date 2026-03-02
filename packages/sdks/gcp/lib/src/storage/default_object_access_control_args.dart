@@ -31,15 +31,11 @@ class DefaultObjectAccessControlArgs {
   /// [object] The name of the object, if applied to an object.
   /// [role] The access permission for the entity.
   DefaultObjectAccessControlArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> entity,
-    pulumi.Output<String>? object,
-    required pulumi.Output<String> role,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      entity = pulumi.Input.asInput<String>(entity),
-      object = pulumi.Input.asOptionalInput<String>(object),
-      role = pulumi.Input.asInput<String>(role);
+    required this.bucket,
+    required this.entity,
+    this.object,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,10 +48,10 @@ class DefaultObjectAccessControlArgs {
 
   factory DefaultObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return DefaultObjectAccessControlArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      entity: pulumi.Output.create<String>(map['entity'] as String),
-      object: map['object'] == null ? null : pulumi.Output.create<String>(map['object'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      bucket: (map['bucket'] as String).input(),
+      entity: (map['entity'] as String).input(),
+      object: map['object'] == null ? null : (map['object'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

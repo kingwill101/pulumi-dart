@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDnsAuthorizationDnsResourceRecord {
   /// Data of the DNS Resource Record.
-  final String data;
+  final pulumi.Input<String> data;
   /// The name of the DNS Authorization.
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of the DNS Resource Record.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDnsAuthorizationDnsResourceRecord].
   /// [data] Data of the DNS Resource Record.
@@ -29,9 +30,9 @@ class GetDnsAuthorizationDnsResourceRecord {
 
   factory GetDnsAuthorizationDnsResourceRecord.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationDnsResourceRecord(
-      data: map['data'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      data: (map['data'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

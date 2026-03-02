@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'next_generation_firewall_virtual_hub_local_rulestack_destination_nat_backend_config.dart';
 import 'next_generation_firewall_virtual_hub_local_rulestack_destination_nat_frontend_config.dart';
 
 class NextGenerationFirewallVirtualHubLocalRulestackDestinationNat {
   /// A `backend_config` block as defined above.
-  final NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig? backendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig>? backendConfig;
   /// A `frontend_config` block as defined below.
-  final NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig? frontendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig>? frontendConfig;
   /// The name which should be used for this NAT.
-  final String name;
+  final pulumi.Input<String> name;
   /// The protocol used for this Destination NAT. Possible values include `TCP` and `UDP`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [NextGenerationFirewallVirtualHubLocalRulestackDestinationNat].
   /// [backendConfig] A `backend_config` block as defined above.
@@ -27,8 +28,8 @@ class NextGenerationFirewallVirtualHubLocalRulestackDestinationNat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendConfig': ?backendConfig == null ? null : backendConfig!.toMap(),
-      'frontendConfig': ?frontendConfig == null ? null : frontendConfig!.toMap(),
+      'backendConfig': ?pulumi.Input.mapOptionalInputValue<NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig, Map<String, dynamic>>(backendConfig, (value) => value.toMap()),
+      'frontendConfig': ?pulumi.Input.mapOptionalInputValue<NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig, Map<String, dynamic>>(frontendConfig, (value) => value.toMap()),
       'name': name,
       'protocol': protocol,
     };
@@ -36,10 +37,10 @@ class NextGenerationFirewallVirtualHubLocalRulestackDestinationNat {
 
   factory NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubLocalRulestackDestinationNat(
-      backendConfig: map['backendConfig'] == null ? null : NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>()),
-      frontendConfig: map['frontendConfig'] == null ? null : NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig.fromMap((map['frontendConfig'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      protocol: map['protocol'] as String,
+      backendConfig: map['backendConfig'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>())).input(),
+      frontendConfig: map['frontendConfig'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig.fromMap((map['frontendConfig'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

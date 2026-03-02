@@ -20,15 +20,11 @@ class SynchronizationJobState {
   /// [servicePrincipalId] The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   /// [templateId] Identifier of the synchronization template this job is based on.
   SynchronizationJobState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<SynchronizationJobSchedule>>? schedules,
-    pulumi.Output<String>? servicePrincipalId,
-    pulumi.Output<String>? templateId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      schedules = pulumi.Input.asOptionalInput<List<SynchronizationJobSchedule>>(schedules),
-      servicePrincipalId = pulumi.Input.asOptionalInput<String>(servicePrincipalId),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.enabled,
+    this.schedules,
+    this.servicePrincipalId,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class SynchronizationJobState {
 
   factory SynchronizationJobState.fromMap(Map<String, dynamic> map) {
     return SynchronizationJobState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      schedules: map['schedules'] == null ? null : pulumi.Output.create<List<SynchronizationJobSchedule>>(pulumi.Input.decodeList<SynchronizationJobSchedule>(map['schedules'], (value) => SynchronizationJobSchedule.fromMap((value as Map).cast<String, dynamic>()))),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<SynchronizationJobSchedule>(map['schedules'], (value) => SynchronizationJobSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

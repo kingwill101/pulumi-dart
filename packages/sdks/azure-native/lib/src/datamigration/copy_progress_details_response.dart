@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details on progress of ADF copy activity
 class CopyProgressDetailsResponse {
   /// Copy Duration in seconds
-  final int copyDuration;
+  final pulumi.Input<int> copyDuration;
   /// Copy Start
-  final String copyStart;
+  final pulumi.Input<String> copyStart;
   /// Copy throughput in KBps
-  final double copyThroughput;
+  final pulumi.Input<double> copyThroughput;
   /// Bytes read
-  final double dataRead;
+  final pulumi.Input<double> dataRead;
   /// Bytes written
-  final double dataWritten;
+  final pulumi.Input<double> dataWritten;
   /// Type of parallel copy (Dynamic range, Physical partition, none).
-  final String parallelCopyType;
+  final pulumi.Input<String> parallelCopyType;
   /// Rows Copied
-  final double rowsCopied;
+  final pulumi.Input<double> rowsCopied;
   /// Rows read
-  final double rowsRead;
+  final pulumi.Input<double> rowsRead;
   /// Status of the Copy activity (InProgress, Succeeded, Failed, Canceled).
-  final String status;
+  final pulumi.Input<String> status;
   /// Table Name
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// The degree of parallelization.
-  final int usedParallelCopies;
+  final pulumi.Input<int> usedParallelCopies;
 
   /// Creates a new [CopyProgressDetailsResponse].
   /// [copyDuration] Copy Duration in seconds
@@ -70,17 +71,17 @@ class CopyProgressDetailsResponse {
 
   factory CopyProgressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CopyProgressDetailsResponse(
-      copyDuration: map['copyDuration'] as int,
-      copyStart: map['copyStart'] as String,
-      copyThroughput: map['copyThroughput'] as double,
-      dataRead: map['dataRead'] as double,
-      dataWritten: map['dataWritten'] as double,
-      parallelCopyType: map['parallelCopyType'] as String,
-      rowsCopied: map['rowsCopied'] as double,
-      rowsRead: map['rowsRead'] as double,
-      status: map['status'] as String,
-      tableName: map['tableName'] as String,
-      usedParallelCopies: map['usedParallelCopies'] as int,
+      copyDuration: (map['copyDuration'] as int).input(),
+      copyStart: (map['copyStart'] as String).input(),
+      copyThroughput: (map['copyThroughput'] as double).input(),
+      dataRead: (map['dataRead'] as double).input(),
+      dataWritten: (map['dataWritten'] as double).input(),
+      parallelCopyType: (map['parallelCopyType'] as String).input(),
+      rowsCopied: (map['rowsCopied'] as double).input(),
+      rowsRead: (map['rowsRead'] as double).input(),
+      status: (map['status'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      usedParallelCopies: (map['usedParallelCopies'] as int).input(),
     );
   }
 }

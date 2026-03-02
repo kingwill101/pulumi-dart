@@ -28,17 +28,12 @@ class OrganizationSecurityPolicyArgs {
   /// [shortName] User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
   /// [type] The type indicates the intended use of the security policy. This field can be set only at resource creation time.
   OrganizationSecurityPolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? shortName,
-    pulumi.Output<String>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      parent = pulumi.Input.asInput<String>(parent),
-      shortName = pulumi.Input.asOptionalInput<String>(shortName),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.description,
+    this.displayName,
+    required this.parent,
+    this.shortName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class OrganizationSecurityPolicyArgs {
 
   factory OrganizationSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      shortName: map['shortName'] == null ? null : pulumi.Output.create<String>(map['shortName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

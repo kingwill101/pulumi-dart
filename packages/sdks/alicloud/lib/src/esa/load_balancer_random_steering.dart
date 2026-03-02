@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerRandomSteering {
   /// The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
-  final int? defaultWeight;
+  final pulumi.Input<int>? defaultWeight;
   /// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
-  final Map<String, String>? poolWeights;
+  final pulumi.Input<Map<String, String>>? poolWeights;
 
   /// Creates a new [LoadBalancerRandomSteering].
   /// [defaultWeight] The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
@@ -24,8 +25,8 @@ class LoadBalancerRandomSteering {
 
   factory LoadBalancerRandomSteering.fromMap(Map<String, dynamic> map) {
     return LoadBalancerRandomSteering(
-      defaultWeight: map['defaultWeight'] == null ? null : map['defaultWeight'] as int,
-      poolWeights: map['poolWeights'] == null ? null : (map['poolWeights'] as Map).cast<String, String>(),
+      defaultWeight: map['defaultWeight'] == null ? null : (map['defaultWeight'] as int).input(),
+      poolWeights: map['poolWeights'] == null ? null : ((map['poolWeights'] as Map).cast<String, String>()).input(),
     );
   }
 }

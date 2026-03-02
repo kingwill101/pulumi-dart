@@ -32,21 +32,14 @@ class ApplicationArgs {
   /// [tags] Resource tags.
   /// [trackingDataStores] The tracking data stores.
   ApplicationArgs({
-    pulumi.Output<String>? applicationName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> spaceName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, TrackingDataStore>>? trackingDataStores,
-  }) :
-      applicationName = pulumi.Input.asOptionalInput<String>(applicationName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spaceName = pulumi.Input.asInput<String>(spaceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trackingDataStores = pulumi.Input.asOptionalInput<Map<String, TrackingDataStore>>(trackingDataStores);
+    this.applicationName,
+    this.description,
+    this.location,
+    required this.resourceGroupName,
+    required this.spaceName,
+    this.tags,
+    this.trackingDataStores,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationName: map['applicationName'] == null ? null : pulumi.Output.create<String>(map['applicationName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trackingDataStores: map['trackingDataStores'] == null ? null : pulumi.Output.create<Map<String, TrackingDataStore>>(pulumi.Input.decodeMapValues<TrackingDataStore>(map['trackingDataStores'], (value) => TrackingDataStore.fromMap((value as Map).cast<String, dynamic>()))),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trackingDataStores: map['trackingDataStores'] == null ? null : (pulumi.Input.decodeMapValues<TrackingDataStore>(map['trackingDataStores'], (value) => TrackingDataStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

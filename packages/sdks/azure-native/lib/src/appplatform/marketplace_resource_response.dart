@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Purchasing 3rd Party product for one Azure Spring Apps instance
 class MarketplaceResourceResponse {
   /// The plan id of the 3rd Party Artifact that is being procured.
-  final String? plan;
+  final pulumi.Input<String>? plan;
   /// The 3rd Party artifact that is being procured.
-  final String? product;
+  final pulumi.Input<String>? product;
   /// The publisher id of the 3rd Party Artifact that is being bought.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
 
   /// Creates a new [MarketplaceResourceResponse].
   /// [plan] The plan id of the 3rd Party Artifact that is being procured.
@@ -30,9 +31,9 @@ class MarketplaceResourceResponse {
 
   factory MarketplaceResourceResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceResourceResponse(
-      plan: map['plan'] == null ? null : map['plan'] as String,
-      product: map['product'] == null ? null : map['product'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
+      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
     );
   }
 }

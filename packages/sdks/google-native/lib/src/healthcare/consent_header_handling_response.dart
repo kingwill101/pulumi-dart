@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// How the server handles the consent header.
 class ConsentHeaderHandlingResponse {
   /// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
-  final String profile;
+  final pulumi.Input<String> profile;
 
   /// Creates a new [ConsentHeaderHandlingResponse].
   /// [profile] Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
@@ -20,7 +21,7 @@ class ConsentHeaderHandlingResponse {
 
   factory ConsentHeaderHandlingResponse.fromMap(Map<String, dynamic> map) {
     return ConsentHeaderHandlingResponse(
-      profile: map['profile'] as String,
+      profile: (map['profile'] as String).input(),
     );
   }
 }

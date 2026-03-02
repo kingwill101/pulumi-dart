@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterIdentity {
   /// A list of User Assigned Managed Identity IDs to be assigned to this Kusto Cluster.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The Principal ID associated with this System Assigned Managed Service Identity.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The Tenant ID associated with this System Assigned Managed Service Identity.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of Managed Service Identity that is configured on this Kusto Cluster.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetClusterIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this Kusto Cluster.
@@ -34,10 +35,10 @@ class GetClusterIdentity {
 
   factory GetClusterIdentity.fromMap(Map<String, dynamic> map) {
     return GetClusterIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
   /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
   /// - - -
-  final String? dataprocCluster;
+  final pulumi.Input<String>? dataprocCluster;
 
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig].
   /// [dataprocCluster] Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
@@ -20,7 +21,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
 
   factory ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null ? null : map['dataprocCluster'] as String,
+      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster'] as String).input(),
     );
   }
 }

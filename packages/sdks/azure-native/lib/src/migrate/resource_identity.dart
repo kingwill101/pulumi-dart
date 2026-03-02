@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_assigned_identity.dart';
 
 class ResourceIdentity {
-  final String? principalId;
-  final String? tenantId;
-  final String? type;
-  final Map<String, UserAssignedIdentity>? userAssignedIdentities;
+  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String>? type;
+  final pulumi.Input<Map<String, UserAssignedIdentity>>? userAssignedIdentities;
 
   /// Creates a new [ResourceIdentity].
   /// [principalId] Optional.
@@ -26,16 +26,16 @@ class ResourceIdentity {
       'principalId': ?principalId,
       'tenantId': ?tenantId,
       'type': ?type,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<UserAssignedIdentity, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserAssignedIdentity>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserAssignedIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceIdentity(
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<UserAssignedIdentity>(map['userAssignedIdentities'], (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentity>(map['userAssignedIdentities'], (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

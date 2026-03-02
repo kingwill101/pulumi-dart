@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesFilter {
   /// Name of the filter.
   /// For a full reference of filter names, see [describe-instances in the AWS CLI reference][1].
-  final String name;
+  final pulumi.Input<String> name;
   /// One or more values to match.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetInstancesFilter].
   /// [name] Name of the filter.
@@ -25,8 +26,8 @@ class GetInstancesFilter {
 
   factory GetInstancesFilter.fromMap(Map<String, dynamic> map) {
     return GetInstancesFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

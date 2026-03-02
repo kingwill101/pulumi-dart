@@ -44,27 +44,17 @@ class BgpGroupArgs {
   /// [routeLimit] The maximum number of routes supported by a BGP peer. Default value: 110.
   /// [routerId] The ID of the virtual border router (VBR) that is associated with the BGP group.
   BgpGroupArgs({
-    pulumi.Output<String>? authKey,
-    pulumi.Output<String>? bgpGroupName,
-    pulumi.Output<bool>? clearAuthKey,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<bool>? isFakeAsn,
-    pulumi.Output<int>? localAsn,
-    required pulumi.Output<int> peerAsn,
-    pulumi.Output<int>? routeLimit,
-    required pulumi.Output<String> routerId,
-  }) :
-      authKey = pulumi.Input.asOptionalInput<String>(authKey),
-      bgpGroupName = pulumi.Input.asOptionalInput<String>(bgpGroupName),
-      clearAuthKey = pulumi.Input.asOptionalInput<bool>(clearAuthKey),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      isFakeAsn = pulumi.Input.asOptionalInput<bool>(isFakeAsn),
-      localAsn = pulumi.Input.asOptionalInput<int>(localAsn),
-      peerAsn = pulumi.Input.asInput<int>(peerAsn),
-      routeLimit = pulumi.Input.asOptionalInput<int>(routeLimit),
-      routerId = pulumi.Input.asInput<String>(routerId);
+    this.authKey,
+    this.bgpGroupName,
+    this.clearAuthKey,
+    this.description,
+    this.ipVersion,
+    this.isFakeAsn,
+    this.localAsn,
+    required this.peerAsn,
+    this.routeLimit,
+    required this.routerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class BgpGroupArgs {
 
   factory BgpGroupArgs.fromMap(Map<String, dynamic> map) {
     return BgpGroupArgs(
-      authKey: map['authKey'] == null ? null : pulumi.Output.create<String>(map['authKey'] as String),
-      bgpGroupName: map['bgpGroupName'] == null ? null : pulumi.Output.create<String>(map['bgpGroupName'] as String),
-      clearAuthKey: map['clearAuthKey'] == null ? null : pulumi.Output.create<bool>(map['clearAuthKey'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      isFakeAsn: map['isFakeAsn'] == null ? null : pulumi.Output.create<bool>(map['isFakeAsn'] as bool),
-      localAsn: map['localAsn'] == null ? null : pulumi.Output.create<int>(map['localAsn'] as int),
-      peerAsn: pulumi.Output.create<int>(map['peerAsn'] as int),
-      routeLimit: map['routeLimit'] == null ? null : pulumi.Output.create<int>(map['routeLimit'] as int),
-      routerId: pulumi.Output.create<String>(map['routerId'] as String),
+      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
+      bgpGroupName: map['bgpGroupName'] == null ? null : (map['bgpGroupName'] as String).input(),
+      clearAuthKey: map['clearAuthKey'] == null ? null : (map['clearAuthKey'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      isFakeAsn: map['isFakeAsn'] == null ? null : (map['isFakeAsn'] as bool).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as int).input(),
+      peerAsn: (map['peerAsn'] as int).input(),
+      routeLimit: map['routeLimit'] == null ? null : (map['routeLimit'] as int).input(),
+      routerId: (map['routerId'] as String).input(),
     );
   }
 }

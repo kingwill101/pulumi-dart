@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The network interface definition.
 class NetworkInterface {
   /// Private Ip address of the interface
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
 
   /// Creates a new [NetworkInterface].
   /// [privateIpAddress] Private Ip address of the interface
@@ -20,7 +21,7 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
     );
   }
 }

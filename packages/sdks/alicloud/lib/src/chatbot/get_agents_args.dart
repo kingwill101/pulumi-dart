@@ -23,17 +23,12 @@ class GetAgentsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   GetAgentsArgs({
-    pulumi.Output<String>? agentName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-  }) :
-      agentName = pulumi.Input.asOptionalInput<String>(agentName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize);
+    this.agentName,
+    this.nameRegex,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class GetAgentsArgs {
 
   factory GetAgentsArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentsArgs(
-      agentName: map['agentName'] == null ? null : pulumi.Output.create<String>(map['agentName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
+      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
     );
   }
 }

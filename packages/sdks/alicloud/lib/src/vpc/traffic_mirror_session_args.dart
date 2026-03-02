@@ -51,33 +51,20 @@ class TrafficMirrorSessionArgs {
   /// [trafficMirrorTargetType] The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
   /// [virtualNetworkId] The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
   TrafficMirrorSessionArgs({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<int>? packetLength,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trafficMirrorFilterId,
-    pulumi.Output<String>? trafficMirrorSessionDescription,
-    pulumi.Output<String>? trafficMirrorSessionName,
-    required pulumi.Output<List<String>> trafficMirrorSourceIds,
-    required pulumi.Output<String> trafficMirrorTargetId,
-    required pulumi.Output<String> trafficMirrorTargetType,
-    pulumi.Output<int>? virtualNetworkId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      packetLength = pulumi.Input.asOptionalInput<int>(packetLength),
-      priority = pulumi.Input.asInput<int>(priority),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficMirrorFilterId = pulumi.Input.asInput<String>(trafficMirrorFilterId),
-      trafficMirrorSessionDescription = pulumi.Input.asOptionalInput<String>(trafficMirrorSessionDescription),
-      trafficMirrorSessionName = pulumi.Input.asOptionalInput<String>(trafficMirrorSessionName),
-      trafficMirrorSourceIds = pulumi.Input.asInput<List<String>>(trafficMirrorSourceIds),
-      trafficMirrorTargetId = pulumi.Input.asInput<String>(trafficMirrorTargetId),
-      trafficMirrorTargetType = pulumi.Input.asInput<String>(trafficMirrorTargetType),
-      virtualNetworkId = pulumi.Input.asOptionalInput<int>(virtualNetworkId);
+    this.dryRun,
+    this.enabled,
+    this.packetLength,
+    required this.priority,
+    this.resourceGroupId,
+    this.tags,
+    required this.trafficMirrorFilterId,
+    this.trafficMirrorSessionDescription,
+    this.trafficMirrorSessionName,
+    required this.trafficMirrorSourceIds,
+    required this.trafficMirrorTargetId,
+    required this.trafficMirrorTargetType,
+    this.virtualNetworkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class TrafficMirrorSessionArgs {
 
   factory TrafficMirrorSessionArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorSessionArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      packetLength: map['packetLength'] == null ? null : pulumi.Output.create<int>(map['packetLength'] as int),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficMirrorFilterId: pulumi.Output.create<String>(map['trafficMirrorFilterId'] as String),
-      trafficMirrorSessionDescription: map['trafficMirrorSessionDescription'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorSessionDescription'] as String),
-      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorSessionName'] as String),
-      trafficMirrorSourceIds: pulumi.Output.create<List<String>>((map['trafficMirrorSourceIds'] as List).cast<String>()),
-      trafficMirrorTargetId: pulumi.Output.create<String>(map['trafficMirrorTargetId'] as String),
-      trafficMirrorTargetType: pulumi.Output.create<String>(map['trafficMirrorTargetType'] as String),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : pulumi.Output.create<int>(map['virtualNetworkId'] as int),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      packetLength: map['packetLength'] == null ? null : (map['packetLength'] as int).input(),
+      priority: (map['priority'] as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficMirrorFilterId: (map['trafficMirrorFilterId'] as String).input(),
+      trafficMirrorSessionDescription: map['trafficMirrorSessionDescription'] == null ? null : (map['trafficMirrorSessionDescription'] as String).input(),
+      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : (map['trafficMirrorSessionName'] as String).input(),
+      trafficMirrorSourceIds: ((map['trafficMirrorSourceIds'] as List).cast<String>()).input(),
+      trafficMirrorTargetId: (map['trafficMirrorTargetId'] as String).input(),
+      trafficMirrorTargetType: (map['trafficMirrorTargetType'] as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as int).input(),
     );
   }
 }

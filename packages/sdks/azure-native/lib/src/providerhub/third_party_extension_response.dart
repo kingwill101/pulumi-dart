@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThirdPartyExtensionResponse {
   /// Name of third party extension.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ThirdPartyExtensionResponse].
   /// [name] Name of third party extension.
@@ -19,7 +20,7 @@ class ThirdPartyExtensionResponse {
 
   factory ThirdPartyExtensionResponse.fromMap(Map<String, dynamic> map) {
     return ThirdPartyExtensionResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

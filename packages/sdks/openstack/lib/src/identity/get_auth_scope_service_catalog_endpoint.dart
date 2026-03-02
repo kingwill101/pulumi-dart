@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAuthScopeServiceCatalogEndpoint {
   /// The ID of the endpoint.
-  final String id;
+  final pulumi.Input<String> id;
   /// The interface of the endpoint.
-  final String interface;
+  final pulumi.Input<String> interface;
   /// The region in which to obtain the V3 Identity client.
   /// A Identity client is needed to retrieve tokens IDs. If omitted, the
   /// `region` argument of the provider is used.
-  final String region;
+  final pulumi.Input<String> region;
   /// The region ID of the endpoint.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The URL of the endpoint.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GetAuthScopeServiceCatalogEndpoint].
   /// [id] The ID of the endpoint.
@@ -41,11 +42,11 @@ class GetAuthScopeServiceCatalogEndpoint {
 
   factory GetAuthScopeServiceCatalogEndpoint.fromMap(Map<String, dynamic> map) {
     return GetAuthScopeServiceCatalogEndpoint(
-      id: map['id'] as String,
-      interface: map['interface'] as String,
-      region: map['region'] as String,
-      regionId: map['regionId'] as String,
-      url: map['url'] as String,
+      id: (map['id'] as String).input(),
+      interface: (map['interface'] as String).input(),
+      region: (map['region'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

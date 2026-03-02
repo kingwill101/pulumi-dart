@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigGcfsConfig {
   /// Whether or not GCFS is enabled
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [NodePoolNodeConfigGcfsConfig].
   /// [enabled] Whether or not GCFS is enabled
@@ -19,7 +20,7 @@ class NodePoolNodeConfigGcfsConfig {
 
   factory NodePoolNodeConfigGcfsConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigGcfsConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -5,22 +5,22 @@ import 'app_version_snapshot_example_message_chunk_tool_response_toolset_tool.da
 
 class AppVersionSnapshotExampleMessageChunkToolResponse {
   /// The display name of the app version.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// (Output)
   /// The matching ID of the tool call the response is for.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// (Output)
   /// Represents a select subset of an OpenAPI 3.0 schema object.
   /// Structure is documented below.
-  final String? response;
+  final pulumi.Input<String>? response;
   /// (Output)
   /// The name of the tool to execute.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-  final String? tool;
+  final pulumi.Input<String>? tool;
   /// (Output)
   /// A tool that is created from a toolset.
   /// Structure is documented below.
-  final List<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool>? toolsetTools;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool>>? toolsetTools;
 
   /// Creates a new [AppVersionSnapshotExampleMessageChunkToolResponse].
   /// [displayName] The display name of the app version.
@@ -42,17 +42,17 @@ class AppVersionSnapshotExampleMessageChunkToolResponse {
       'id': ?id,
       'response': ?response,
       'tool': ?tool,
-      'toolsetTools': ?toolsetTools == null ? null : pulumi.Input.encodeList<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool, Map<String, dynamic>>(toolsetTools!, (value) => value.toMap()),
+      'toolsetTools': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool>, List<Map<String, dynamic>>>(toolsetTools, (value) => pulumi.Input.encodeList<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AppVersionSnapshotExampleMessageChunkToolResponse.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessageChunkToolResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      response: map['response'] == null ? null : map['response'] as String,
-      tool: map['tool'] == null ? null : map['tool'] as String,
-      toolsetTools: map['toolsetTools'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool>(map['toolsetTools'], (value) => AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool.fromMap((value as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      response: map['response'] == null ? null : (map['response'] as String).input(),
+      tool: map['tool'] == null ? null : (map['tool'] as String).input(),
+      toolsetTools: map['toolsetTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool>(map['toolsetTools'], (value) => AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

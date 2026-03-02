@@ -43,29 +43,18 @@ class SnapshotCopyArgs {
   /// [targetCustomAvailabilityZone] The external custom Availability Zone.
   /// [targetDbSnapshotIdentifier] The Identifier for the snapshot.
   SnapshotCopyArgs({
-    pulumi.Output<bool>? copyTags,
-    pulumi.Output<String>? destinationRegion,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? optionGroupName,
-    pulumi.Output<String>? presignedUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? sharedAccounts,
-    required pulumi.Output<String> sourceDbSnapshotIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetCustomAvailabilityZone,
-    required pulumi.Output<String> targetDbSnapshotIdentifier,
-  }) :
-      copyTags = pulumi.Input.asOptionalInput<bool>(copyTags),
-      destinationRegion = pulumi.Input.asOptionalInput<String>(destinationRegion),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      optionGroupName = pulumi.Input.asOptionalInput<String>(optionGroupName),
-      presignedUrl = pulumi.Input.asOptionalInput<String>(presignedUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedAccounts = pulumi.Input.asOptionalInput<List<String>>(sharedAccounts),
-      sourceDbSnapshotIdentifier = pulumi.Input.asInput<String>(sourceDbSnapshotIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetCustomAvailabilityZone = pulumi.Input.asOptionalInput<String>(targetCustomAvailabilityZone),
-      targetDbSnapshotIdentifier = pulumi.Input.asInput<String>(targetDbSnapshotIdentifier);
+    this.copyTags,
+    this.destinationRegion,
+    this.kmsKeyId,
+    this.optionGroupName,
+    this.presignedUrl,
+    this.region,
+    this.sharedAccounts,
+    required this.sourceDbSnapshotIdentifier,
+    this.tags,
+    this.targetCustomAvailabilityZone,
+    required this.targetDbSnapshotIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class SnapshotCopyArgs {
 
   factory SnapshotCopyArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyArgs(
-      copyTags: map['copyTags'] == null ? null : pulumi.Output.create<bool>(map['copyTags'] as bool),
-      destinationRegion: map['destinationRegion'] == null ? null : pulumi.Output.create<String>(map['destinationRegion'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      optionGroupName: map['optionGroupName'] == null ? null : pulumi.Output.create<String>(map['optionGroupName'] as String),
-      presignedUrl: map['presignedUrl'] == null ? null : pulumi.Output.create<String>(map['presignedUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharedAccounts: map['sharedAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['sharedAccounts'] as List).cast<String>()),
-      sourceDbSnapshotIdentifier: pulumi.Output.create<String>(map['sourceDbSnapshotIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetCustomAvailabilityZone: map['targetCustomAvailabilityZone'] == null ? null : pulumi.Output.create<String>(map['targetCustomAvailabilityZone'] as String),
-      targetDbSnapshotIdentifier: pulumi.Output.create<String>(map['targetDbSnapshotIdentifier'] as String),
+      copyTags: map['copyTags'] == null ? null : (map['copyTags'] as bool).input(),
+      destinationRegion: map['destinationRegion'] == null ? null : (map['destinationRegion'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      optionGroupName: map['optionGroupName'] == null ? null : (map['optionGroupName'] as String).input(),
+      presignedUrl: map['presignedUrl'] == null ? null : (map['presignedUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharedAccounts: map['sharedAccounts'] == null ? null : ((map['sharedAccounts'] as List).cast<String>()).input(),
+      sourceDbSnapshotIdentifier: (map['sourceDbSnapshotIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetCustomAvailabilityZone: map['targetCustomAvailabilityZone'] == null ? null : (map['targetCustomAvailabilityZone'] as String).input(),
+      targetDbSnapshotIdentifier: (map['targetDbSnapshotIdentifier'] as String).input(),
     );
   }
 }

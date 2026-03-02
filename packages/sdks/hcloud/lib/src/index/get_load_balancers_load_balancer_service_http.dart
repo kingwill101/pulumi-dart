@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersLoadBalancerServiceHttp {
-  final List<String> certificates;
-  final int cookieLifetime;
-  final String cookieName;
-  final bool redirectHttp;
-  final bool stickySessions;
+  final pulumi.Input<List<String>> certificates;
+  final pulumi.Input<int> cookieLifetime;
+  final pulumi.Input<String> cookieName;
+  final pulumi.Input<bool> redirectHttp;
+  final pulumi.Input<bool> stickySessions;
 
   /// Creates a new [GetLoadBalancersLoadBalancerServiceHttp].
   /// [certificates] Required.
@@ -34,11 +35,11 @@ class GetLoadBalancersLoadBalancerServiceHttp {
 
   factory GetLoadBalancersLoadBalancerServiceHttp.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerServiceHttp(
-      certificates: (map['certificates'] as List).cast<String>(),
-      cookieLifetime: map['cookieLifetime'] as int,
-      cookieName: map['cookieName'] as String,
-      redirectHttp: map['redirectHttp'] as bool,
-      stickySessions: map['stickySessions'] as bool,
+      certificates: ((map['certificates'] as List).cast<String>()).input(),
+      cookieLifetime: (map['cookieLifetime'] as int).input(),
+      cookieName: (map['cookieName'] as String).input(),
+      redirectHttp: (map['redirectHttp'] as bool).input(),
+      stickySessions: (map['stickySessions'] as bool).input(),
     );
   }
 }

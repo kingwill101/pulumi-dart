@@ -6,11 +6,11 @@ import 'resource_request.dart';
 /// DriverRequests describes all resources that are needed from one particular driver.
 class DriverRequests {
   /// DriverName is the name used by the DRA driver kubelet plugin.
-  final String? driverName;
+  final pulumi.Input<String>? driverName;
   /// Requests describes all resources that are needed from the driver.
-  final List<ResourceRequest>? requests;
+  final pulumi.Input<List<ResourceRequest>>? requests;
   /// VendorParameters are arbitrary setup parameters for all requests of the claim. They are ignored while allocating the claim.
-  final dynamic vendorParameters;
+  final pulumi.Input<dynamic>? vendorParameters;
 
   /// Creates a new [DriverRequests].
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.
@@ -25,16 +25,16 @@ class DriverRequests {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'driverName': ?driverName,
-      'requests': ?requests == null ? null : pulumi.Input.encodeList<ResourceRequest, Map<String, dynamic>>(requests!, (value) => value.toMap()),
+      'requests': ?pulumi.Input.mapOptionalInputValue<List<ResourceRequest>, List<Map<String, dynamic>>>(requests, (value) => pulumi.Input.encodeList<ResourceRequest, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vendorParameters': ?vendorParameters,
     };
   }
 
   factory DriverRequests.fromMap(Map<String, dynamic> map) {
     return DriverRequests(
-      driverName: map['driverName'] == null ? null : map['driverName'] as String,
-      requests: map['requests'] == null ? null : pulumi.Input.decodeList<ResourceRequest>(map['requests'], (value) => ResourceRequest.fromMap((value as Map).cast<String, dynamic>())),
-      vendorParameters: map['vendorParameters'] == null ? null : map['vendorParameters'],
+      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<ResourceRequest>(map['requests'], (value) => ResourceRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vendorParameters: map['vendorParameters'] == null ? null : (map['vendorParameters']).input(),
     );
   }
 }

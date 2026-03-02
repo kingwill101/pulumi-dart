@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AS2 agreement envelope settings.
 class AS2EnvelopeSettings {
   /// The value indicating whether to auto generate file name.
-  final bool autogenerateFileName;
+  final pulumi.Input<bool> autogenerateFileName;
   /// The template for file name.
-  final String fileNameTemplate;
+  final pulumi.Input<String> fileNameTemplate;
   /// The message content type.
-  final String messageContentType;
+  final pulumi.Input<String> messageContentType;
   /// The value indicating whether to suspend message on file name generation error.
-  final bool suspendMessageOnFileNameGenerationError;
+  final pulumi.Input<bool> suspendMessageOnFileNameGenerationError;
   /// The value indicating whether to transmit file name in mime header.
-  final bool transmitFileNameInMimeHeader;
+  final pulumi.Input<bool> transmitFileNameInMimeHeader;
 
   /// Creates a new [AS2EnvelopeSettings].
   /// [autogenerateFileName] The value indicating whether to auto generate file name.
@@ -40,11 +41,11 @@ class AS2EnvelopeSettings {
 
   factory AS2EnvelopeSettings.fromMap(Map<String, dynamic> map) {
     return AS2EnvelopeSettings(
-      autogenerateFileName: map['autogenerateFileName'] as bool,
-      fileNameTemplate: map['fileNameTemplate'] as String,
-      messageContentType: map['messageContentType'] as String,
-      suspendMessageOnFileNameGenerationError: map['suspendMessageOnFileNameGenerationError'] as bool,
-      transmitFileNameInMimeHeader: map['transmitFileNameInMimeHeader'] as bool,
+      autogenerateFileName: (map['autogenerateFileName'] as bool).input(),
+      fileNameTemplate: (map['fileNameTemplate'] as String).input(),
+      messageContentType: (map['messageContentType'] as String).input(),
+      suspendMessageOnFileNameGenerationError: (map['suspendMessageOnFileNameGenerationError'] as bool).input(),
+      transmitFileNameInMimeHeader: (map['transmitFileNameInMimeHeader'] as bool).input(),
     );
   }
 }

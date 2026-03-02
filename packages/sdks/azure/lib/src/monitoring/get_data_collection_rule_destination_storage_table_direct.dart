@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCollectionRuleDestinationStorageTableDirect {
   /// Specifies the name of the Data Collection Rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// The resource ID of the Storage Account.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
   /// The Storage Table name.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [GetDataCollectionRuleDestinationStorageTableDirect].
   /// [name] Specifies the name of the Data Collection Rule.
@@ -29,9 +30,9 @@ class GetDataCollectionRuleDestinationStorageTableDirect {
 
   factory GetDataCollectionRuleDestinationStorageTableDirect.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDestinationStorageTableDirect(
-      name: map['name'] as String,
-      storageAccountId: map['storageAccountId'] as String,
-      tableName: map['tableName'] as String,
+      name: (map['name'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUsersUser {
   /// Whether the account is enabled.
-  final bool accountEnabled;
+  final pulumi.Input<bool> accountEnabled;
   /// The display name of the user.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The employee identifier assigned to the user by the organisation.
-  final String employeeId;
+  final pulumi.Input<String> employeeId;
   /// The SMTP email address of the user.
-  final String mail;
+  final pulumi.Input<String> mail;
   /// The email alias of the user.
-  final String mailNickname;
+  final pulumi.Input<String> mailNickname;
   /// The object ID of the user.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
-  final String onpremisesImmutableId;
+  final pulumi.Input<String> onpremisesImmutableId;
   /// The on-premise SAM account name of the user.
-  final String onpremisesSamAccountName;
+  final pulumi.Input<String> onpremisesSamAccountName;
   /// The on-premise user principal name of the user.
-  final String onpremisesUserPrincipalName;
+  final pulumi.Input<String> onpremisesUserPrincipalName;
   /// The usage location of the user.
-  final String usageLocation;
+  final pulumi.Input<String> usageLocation;
   /// The user principal name (UPN) of the user.
-  final String userPrincipalName;
+  final pulumi.Input<String> userPrincipalName;
 
   /// Creates a new [GetUsersUser].
   /// [accountEnabled] Whether the account is enabled.
@@ -69,17 +70,17 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      accountEnabled: map['accountEnabled'] as bool,
-      displayName: map['displayName'] as String,
-      employeeId: map['employeeId'] as String,
-      mail: map['mail'] as String,
-      mailNickname: map['mailNickname'] as String,
-      objectId: map['objectId'] as String,
-      onpremisesImmutableId: map['onpremisesImmutableId'] as String,
-      onpremisesSamAccountName: map['onpremisesSamAccountName'] as String,
-      onpremisesUserPrincipalName: map['onpremisesUserPrincipalName'] as String,
-      usageLocation: map['usageLocation'] as String,
-      userPrincipalName: map['userPrincipalName'] as String,
+      accountEnabled: (map['accountEnabled'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      employeeId: (map['employeeId'] as String).input(),
+      mail: (map['mail'] as String).input(),
+      mailNickname: (map['mailNickname'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      onpremisesImmutableId: (map['onpremisesImmutableId'] as String).input(),
+      onpremisesSamAccountName: (map['onpremisesSamAccountName'] as String).input(),
+      onpremisesUserPrincipalName: (map['onpremisesUserPrincipalName'] as String).input(),
+      usageLocation: (map['usageLocation'] as String).input(),
+      userPrincipalName: (map['userPrincipalName'] as String).input(),
     );
   }
 }

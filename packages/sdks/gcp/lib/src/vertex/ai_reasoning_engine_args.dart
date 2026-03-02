@@ -35,19 +35,13 @@ class AiReasoningEngineArgs {
   /// [region] The region of the reasoning engine. eg us-central1
   /// [spec] Optional. Configurations of the ReasoningEngine.
   AiReasoningEngineArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<AiReasoningEngineEncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<AiReasoningEngineSpec>? spec,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<AiReasoningEngineEncryptionSpec>(encryptionSpec),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spec = pulumi.Input.asOptionalInput<AiReasoningEngineSpec>(spec);
+    this.description,
+    required this.displayName,
+    this.encryptionSpec,
+    this.project,
+    this.region,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class AiReasoningEngineArgs {
 
   factory AiReasoningEngineArgs.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiReasoningEngineEncryptionSpec>(AiReasoningEngineEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<AiReasoningEngineSpec>(AiReasoningEngineSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiReasoningEngineEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spec: map['spec'] == null ? null : (AiReasoningEngineSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

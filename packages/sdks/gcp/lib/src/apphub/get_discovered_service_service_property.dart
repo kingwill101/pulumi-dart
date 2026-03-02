@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDiscoveredServiceServiceProperty {
   /// The service project identifier that the underlying cloud resource resides in.
-  final String gcpProject;
+  final pulumi.Input<String> gcpProject;
   /// The location of the discovered service.
-  final String location;
+  final pulumi.Input<String> location;
   /// The location that the underlying resource resides in if it is zonal.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [GetDiscoveredServiceServiceProperty].
   /// [gcpProject] The service project identifier that the underlying cloud resource resides in.
@@ -29,9 +30,9 @@ class GetDiscoveredServiceServiceProperty {
 
   factory GetDiscoveredServiceServiceProperty.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredServiceServiceProperty(
-      gcpProject: map['gcpProject'] as String,
-      location: map['location'] as String,
-      zone: map['zone'] as String,
+      gcpProject: (map['gcpProject'] as String).input(),
+      location: (map['location'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

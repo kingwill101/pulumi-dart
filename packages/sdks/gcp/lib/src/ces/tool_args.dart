@@ -58,25 +58,16 @@ class ToolArgs {
   /// [pythonFunction] A Python function tool.
   /// [toolId] The ID to use for the tool, which will become the final component of
   ToolArgs({
-    required pulumi.Output<String> app,
-    pulumi.Output<ToolClientFunction>? clientFunction,
-    pulumi.Output<ToolDataStoreTool>? dataStoreTool,
-    pulumi.Output<String>? executionType,
-    pulumi.Output<ToolGoogleSearchTool>? googleSearchTool,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<ToolPythonFunction>? pythonFunction,
-    required pulumi.Output<String> toolId,
-  }) :
-      app = pulumi.Input.asInput<String>(app),
-      clientFunction = pulumi.Input.asOptionalInput<ToolClientFunction>(clientFunction),
-      dataStoreTool = pulumi.Input.asOptionalInput<ToolDataStoreTool>(dataStoreTool),
-      executionType = pulumi.Input.asOptionalInput<String>(executionType),
-      googleSearchTool = pulumi.Input.asOptionalInput<ToolGoogleSearchTool>(googleSearchTool),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pythonFunction = pulumi.Input.asOptionalInput<ToolPythonFunction>(pythonFunction),
-      toolId = pulumi.Input.asInput<String>(toolId);
+    required this.app,
+    this.clientFunction,
+    this.dataStoreTool,
+    this.executionType,
+    this.googleSearchTool,
+    required this.location,
+    this.project,
+    this.pythonFunction,
+    required this.toolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,15 +85,15 @@ class ToolArgs {
 
   factory ToolArgs.fromMap(Map<String, dynamic> map) {
     return ToolArgs(
-      app: pulumi.Output.create<String>(map['app'] as String),
-      clientFunction: map['clientFunction'] == null ? null : pulumi.Output.create<ToolClientFunction>(ToolClientFunction.fromMap((map['clientFunction'] as Map).cast<String, dynamic>())),
-      dataStoreTool: map['dataStoreTool'] == null ? null : pulumi.Output.create<ToolDataStoreTool>(ToolDataStoreTool.fromMap((map['dataStoreTool'] as Map).cast<String, dynamic>())),
-      executionType: map['executionType'] == null ? null : pulumi.Output.create<String>(map['executionType'] as String),
-      googleSearchTool: map['googleSearchTool'] == null ? null : pulumi.Output.create<ToolGoogleSearchTool>(ToolGoogleSearchTool.fromMap((map['googleSearchTool'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pythonFunction: map['pythonFunction'] == null ? null : pulumi.Output.create<ToolPythonFunction>(ToolPythonFunction.fromMap((map['pythonFunction'] as Map).cast<String, dynamic>())),
-      toolId: pulumi.Output.create<String>(map['toolId'] as String),
+      app: (map['app'] as String).input(),
+      clientFunction: map['clientFunction'] == null ? null : (ToolClientFunction.fromMap((map['clientFunction'] as Map).cast<String, dynamic>())).input(),
+      dataStoreTool: map['dataStoreTool'] == null ? null : (ToolDataStoreTool.fromMap((map['dataStoreTool'] as Map).cast<String, dynamic>())).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
+      googleSearchTool: map['googleSearchTool'] == null ? null : (ToolGoogleSearchTool.fromMap((map['googleSearchTool'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pythonFunction: map['pythonFunction'] == null ? null : (ToolPythonFunction.fromMap((map['pythonFunction'] as Map).cast<String, dynamic>())).input(),
+      toolId: (map['toolId'] as String).input(),
     );
   }
 }

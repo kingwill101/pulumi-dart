@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.
 class SubjectPatchRbacAuthorizationK8sIoV1alpha1 {
   /// APIVersion holds the API group and version of the referenced subject. Defaults to "v1" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io/v1alpha1" for User and Group subjects.
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind of object being referenced. Values defined by this API group are "User", "Group", and "ServiceAccount". If the Authorizer does not recognized the kind value, the Authorizer should report an error.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Name of the object being referenced.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Namespace of the referenced object.  If the object kind is non-namespace, such as "User" or "Group", and this value is not empty the Authorizer should report an error.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Creates a new [SubjectPatchRbacAuthorizationK8sIoV1alpha1].
   /// [apiVersion] APIVersion holds the API group and version of the referenced subject. Defaults to "v1" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io/v1alpha1" for User and Group subjects.
@@ -35,10 +36,10 @@ class SubjectPatchRbacAuthorizationK8sIoV1alpha1 {
 
   factory SubjectPatchRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return SubjectPatchRbacAuthorizationK8sIoV1alpha1(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
     );
   }
 }

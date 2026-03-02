@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The OptionalServices of AzureStackHCI Cluster.
 class OptionalServices {
   /// The name of custom location.
-  final String? customLocation;
+  final pulumi.Input<String>? customLocation;
 
   /// Creates a new [OptionalServices].
   /// [customLocation] The name of custom location.
@@ -20,7 +21,7 @@ class OptionalServices {
 
   factory OptionalServices.fromMap(Map<String, dynamic> map) {
     return OptionalServices(
-      customLocation: map['customLocation'] == null ? null : map['customLocation'] as String,
+      customLocation: map['customLocation'] == null ? null : (map['customLocation'] as String).input(),
     );
   }
 }

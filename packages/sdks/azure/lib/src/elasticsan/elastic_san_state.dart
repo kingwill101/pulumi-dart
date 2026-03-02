@@ -53,33 +53,20 @@ class ElasticSanState {
   /// [volumeGroupCount] Total number of volume groups in this Elastic SAN resource.
   /// [zones] Logical zone for the Elastic SAN resource. Changing this forces a new resource to be created.
   ElasticSanState({
-    pulumi.Output<int>? baseSizeInTib,
-    pulumi.Output<int>? extendedSizeInTib,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<ElasticSanSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? totalIops,
-    pulumi.Output<int>? totalMbps,
-    pulumi.Output<int>? totalSizeInTib,
-    pulumi.Output<int>? totalVolumeSizeInGib,
-    pulumi.Output<int>? volumeGroupCount,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      baseSizeInTib = pulumi.Input.asOptionalInput<int>(baseSizeInTib),
-      extendedSizeInTib = pulumi.Input.asOptionalInput<int>(extendedSizeInTib),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<ElasticSanSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      totalIops = pulumi.Input.asOptionalInput<int>(totalIops),
-      totalMbps = pulumi.Input.asOptionalInput<int>(totalMbps),
-      totalSizeInTib = pulumi.Input.asOptionalInput<int>(totalSizeInTib),
-      totalVolumeSizeInGib = pulumi.Input.asOptionalInput<int>(totalVolumeSizeInGib),
-      volumeGroupCount = pulumi.Input.asOptionalInput<int>(volumeGroupCount),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.baseSizeInTib,
+    this.extendedSizeInTib,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.totalIops,
+    this.totalMbps,
+    this.totalSizeInTib,
+    this.totalVolumeSizeInGib,
+    this.volumeGroupCount,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class ElasticSanState {
 
   factory ElasticSanState.fromMap(Map<String, dynamic> map) {
     return ElasticSanState(
-      baseSizeInTib: map['baseSizeInTib'] == null ? null : pulumi.Output.create<int>(map['baseSizeInTib'] as int),
-      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : pulumi.Output.create<int>(map['extendedSizeInTib'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ElasticSanSku>(ElasticSanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      totalIops: map['totalIops'] == null ? null : pulumi.Output.create<int>(map['totalIops'] as int),
-      totalMbps: map['totalMbps'] == null ? null : pulumi.Output.create<int>(map['totalMbps'] as int),
-      totalSizeInTib: map['totalSizeInTib'] == null ? null : pulumi.Output.create<int>(map['totalSizeInTib'] as int),
-      totalVolumeSizeInGib: map['totalVolumeSizeInGib'] == null ? null : pulumi.Output.create<int>(map['totalVolumeSizeInGib'] as int),
-      volumeGroupCount: map['volumeGroupCount'] == null ? null : pulumi.Output.create<int>(map['volumeGroupCount'] as int),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      baseSizeInTib: map['baseSizeInTib'] == null ? null : (map['baseSizeInTib'] as int).input(),
+      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : (map['extendedSizeInTib'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (ElasticSanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      totalIops: map['totalIops'] == null ? null : (map['totalIops'] as int).input(),
+      totalMbps: map['totalMbps'] == null ? null : (map['totalMbps'] as int).input(),
+      totalSizeInTib: map['totalSizeInTib'] == null ? null : (map['totalSizeInTib'] as int).input(),
+      totalVolumeSizeInGib: map['totalVolumeSizeInGib'] == null ? null : (map['totalVolumeSizeInGib'] as int).input(),
+      volumeGroupCount: map['volumeGroupCount'] == null ? null : (map['volumeGroupCount'] as int).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

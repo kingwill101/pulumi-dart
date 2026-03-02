@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetScalingConfigurationsConfigurationInstancePatternInfo {
   /// Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
-  final List<String> architectures;
+  final pulumi.Input<List<String>> architectures;
   /// Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
-  final String burstablePerformance;
+  final pulumi.Input<String> burstablePerformance;
   /// The number of vCPUs that are specified for an instance type in instancePatternInfo.
-  final int cores;
+  final pulumi.Input<int> cores;
   /// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
-  final List<String> excludedInstanceTypes;
+  final pulumi.Input<List<String>> excludedInstanceTypes;
   /// The instance family level in instancePatternInfo.
-  final String instanceFamilyLevel;
+  final pulumi.Input<String> instanceFamilyLevel;
   /// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
-  final double maxPrice;
+  final pulumi.Input<double> maxPrice;
   /// The memory size that is specified for an instance type in instancePatternInfo.
-  final double memory;
+  final pulumi.Input<double> memory;
 
   /// Creates a new [GetScalingConfigurationsConfigurationInstancePatternInfo].
   /// [architectures] Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
@@ -49,13 +50,13 @@ class GetScalingConfigurationsConfigurationInstancePatternInfo {
 
   factory GetScalingConfigurationsConfigurationInstancePatternInfo.fromMap(Map<String, dynamic> map) {
     return GetScalingConfigurationsConfigurationInstancePatternInfo(
-      architectures: (map['architectures'] as List).cast<String>(),
-      burstablePerformance: map['burstablePerformance'] as String,
-      cores: map['cores'] as int,
-      excludedInstanceTypes: (map['excludedInstanceTypes'] as List).cast<String>(),
-      instanceFamilyLevel: map['instanceFamilyLevel'] as String,
-      maxPrice: map['maxPrice'] as double,
-      memory: map['memory'] as double,
+      architectures: ((map['architectures'] as List).cast<String>()).input(),
+      burstablePerformance: (map['burstablePerformance'] as String).input(),
+      cores: (map['cores'] as int).input(),
+      excludedInstanceTypes: ((map['excludedInstanceTypes'] as List).cast<String>()).input(),
+      instanceFamilyLevel: (map['instanceFamilyLevel'] as String).input(),
+      maxPrice: (map['maxPrice'] as double).input(),
+      memory: (map['memory'] as double).input(),
     );
   }
 }

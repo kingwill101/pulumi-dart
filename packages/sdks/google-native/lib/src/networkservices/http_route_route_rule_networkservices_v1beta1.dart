@@ -7,9 +7,9 @@ import 'http_route_route_match_networkservices_v1beta1.dart';
 /// Specifies how to match traffic and how to route traffic when traffic is matched.
 class HttpRouteRouteRuleNetworkservicesV1beta1 {
   /// The detailed rule defining how to route matched traffic.
-  final HttpRouteRouteActionNetworkservicesV1beta1? action;
+  final pulumi.Input<HttpRouteRouteActionNetworkservicesV1beta1>? action;
   /// A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic. If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
-  final List<HttpRouteRouteMatchNetworkservicesV1beta1>? matches;
+  final pulumi.Input<List<HttpRouteRouteMatchNetworkservicesV1beta1>>? matches;
 
   /// Creates a new [HttpRouteRouteRuleNetworkservicesV1beta1].
   /// [action] The detailed rule defining how to route matched traffic.
@@ -21,15 +21,15 @@ class HttpRouteRouteRuleNetworkservicesV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.toMap(),
-      'matches': ?matches == null ? null : pulumi.Input.encodeList<HttpRouteRouteMatchNetworkservicesV1beta1, Map<String, dynamic>>(matches!, (value) => value.toMap()),
+      'action': ?pulumi.Input.mapOptionalInputValue<HttpRouteRouteActionNetworkservicesV1beta1, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'matches': ?pulumi.Input.mapOptionalInputValue<List<HttpRouteRouteMatchNetworkservicesV1beta1>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<HttpRouteRouteMatchNetworkservicesV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HttpRouteRouteRuleNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteRuleNetworkservicesV1beta1(
-      action: map['action'] == null ? null : HttpRouteRouteActionNetworkservicesV1beta1.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      matches: map['matches'] == null ? null : pulumi.Input.decodeList<HttpRouteRouteMatchNetworkservicesV1beta1>(map['matches'], (value) => HttpRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      action: map['action'] == null ? null : (HttpRouteRouteActionNetworkservicesV1beta1.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<HttpRouteRouteMatchNetworkservicesV1beta1>(map['matches'], (value) => HttpRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

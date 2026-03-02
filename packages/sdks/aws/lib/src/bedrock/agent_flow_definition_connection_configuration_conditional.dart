@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionConnectionConfigurationConditional {
-  final String condition;
+  final pulumi.Input<String> condition;
 
   /// Creates a new [AgentFlowDefinitionConnectionConfigurationConditional].
   /// [condition] Required.
@@ -18,7 +19,7 @@ class AgentFlowDefinitionConnectionConfigurationConditional {
 
   factory AgentFlowDefinitionConnectionConfigurationConditional.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionConnectionConfigurationConditional(
-      condition: map['condition'] as String,
+      condition: (map['condition'] as String).input(),
     );
   }
 }

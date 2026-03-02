@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretsFilter {
   /// Name of the filter field. Valid values can be found in the [Secrets Manager ListSecrets API Reference](https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_ListSecrets.html).
-  final String name;
+  final pulumi.Input<String> name;
   /// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetSecretsFilter].
   /// [name] Name of the filter field. Valid values can be found in the [Secrets Manager ListSecrets API Reference](https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_ListSecrets.html).
@@ -24,8 +25,8 @@ class GetSecretsFilter {
 
   factory GetSecretsFilter.fromMap(Map<String, dynamic> map) {
     return GetSecretsFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

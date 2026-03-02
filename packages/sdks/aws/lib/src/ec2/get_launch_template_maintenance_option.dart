@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateMaintenanceOption {
-  final String autoRecovery;
+  final pulumi.Input<String> autoRecovery;
 
   /// Creates a new [GetLaunchTemplateMaintenanceOption].
   /// [autoRecovery] Required.
@@ -18,7 +19,7 @@ class GetLaunchTemplateMaintenanceOption {
 
   factory GetLaunchTemplateMaintenanceOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateMaintenanceOption(
-      autoRecovery: map['autoRecovery'] as String,
+      autoRecovery: (map['autoRecovery'] as String).input(),
     );
   }
 }

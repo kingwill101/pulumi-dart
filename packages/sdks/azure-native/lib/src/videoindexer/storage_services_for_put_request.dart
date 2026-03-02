@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The storage services details
 class StorageServicesForPutRequest {
   /// The storage services resource id
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// The user assigned identity to be used to grant permissions
-  final String? userAssignedIdentity;
+  final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [StorageServicesForPutRequest].
   /// [resourceId] The storage services resource id
@@ -25,8 +26,8 @@ class StorageServicesForPutRequest {
 
   factory StorageServicesForPutRequest.fromMap(Map<String, dynamic> map) {
     return StorageServicesForPutRequest(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : map['userAssignedIdentity'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
     );
   }
 }

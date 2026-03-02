@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a file.
 class FileMetadataResponse {
   /// Indicates whether the file was deleted from the storage account.
-  final String deleteStatus;
+  final pulumi.Input<String> deleteStatus;
   /// A URI with a valid SAS token to allow uploading / downloading the file.
-  final String fileContentUri;
+  final pulumi.Input<String> fileContentUri;
   /// The format of the file
-  final String? fileFormat;
+  final pulumi.Input<String>? fileFormat;
   /// The name of the file.
-  final String? fileName;
+  final pulumi.Input<String>? fileName;
   /// The size of the file.
-  final int? fileSize;
+  final pulumi.Input<int>? fileSize;
 
   /// Creates a new [FileMetadataResponse].
   /// [deleteStatus] Indicates whether the file was deleted from the storage account.
@@ -40,11 +41,11 @@ class FileMetadataResponse {
 
   factory FileMetadataResponse.fromMap(Map<String, dynamic> map) {
     return FileMetadataResponse(
-      deleteStatus: map['deleteStatus'] as String,
-      fileContentUri: map['fileContentUri'] as String,
-      fileFormat: map['fileFormat'] == null ? null : map['fileFormat'] as String,
-      fileName: map['fileName'] == null ? null : map['fileName'] as String,
-      fileSize: map['fileSize'] == null ? null : map['fileSize'] as int,
+      deleteStatus: (map['deleteStatus'] as String).input(),
+      fileContentUri: (map['fileContentUri'] as String).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      fileSize: map['fileSize'] == null ? null : (map['fileSize'] as int).input(),
     );
   }
 }

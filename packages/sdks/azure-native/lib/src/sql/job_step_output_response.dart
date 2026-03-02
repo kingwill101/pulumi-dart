@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The output configuration of a job step.
 class JobStepOutputResponse {
   /// The resource ID of the credential to use to connect to the output destination.
-  final String? credential;
+  final pulumi.Input<String>? credential;
   /// The output destination database.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// The output destination resource group.
-  final String? resourceGroupName;
+  final pulumi.Input<String>? resourceGroupName;
   /// The output destination schema.
-  final String? schemaName;
+  final pulumi.Input<String>? schemaName;
   /// The output destination server name.
-  final String serverName;
+  final pulumi.Input<String> serverName;
   /// The output destination subscription id.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// The output destination table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// The output destination type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [JobStepOutputResponse].
   /// [credential] The resource ID of the credential to use to connect to the output destination.
@@ -55,14 +56,14 @@ class JobStepOutputResponse {
 
   factory JobStepOutputResponse.fromMap(Map<String, dynamic> map) {
     return JobStepOutputResponse(
-      credential: map['credential'] == null ? null : map['credential'] as String,
-      databaseName: map['databaseName'] as String,
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName'] as String,
-      schemaName: map['schemaName'] == null ? null : map['schemaName'] as String,
-      serverName: map['serverName'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tableName: map['tableName'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      credential: map['credential'] == null ? null : (map['credential'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -39,25 +39,16 @@ class RepositoryWorkflowConfigState {
   /// [repository] A reference to the Dataform repository
   /// [timeZone] Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
   RepositoryWorkflowConfigState({
-    pulumi.Output<String>? cronSchedule,
-    pulumi.Output<RepositoryWorkflowConfigInvocationConfig>? invocationConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>? recentScheduledExecutionRecords,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? releaseConfig,
-    pulumi.Output<String>? repository,
-    pulumi.Output<String>? timeZone,
-  }) :
-      cronSchedule = pulumi.Input.asOptionalInput<String>(cronSchedule),
-      invocationConfig = pulumi.Input.asOptionalInput<RepositoryWorkflowConfigInvocationConfig>(invocationConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recentScheduledExecutionRecords = pulumi.Input.asOptionalInput<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>(recentScheduledExecutionRecords),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      releaseConfig = pulumi.Input.asOptionalInput<String>(releaseConfig),
-      repository = pulumi.Input.asOptionalInput<String>(repository),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.cronSchedule,
+    this.invocationConfig,
+    this.name,
+    this.project,
+    this.recentScheduledExecutionRecords,
+    this.region,
+    this.releaseConfig,
+    this.repository,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class RepositoryWorkflowConfigState {
 
   factory RepositoryWorkflowConfigState.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigState(
-      cronSchedule: map['cronSchedule'] == null ? null : pulumi.Output.create<String>(map['cronSchedule'] as String),
-      invocationConfig: map['invocationConfig'] == null ? null : pulumi.Output.create<RepositoryWorkflowConfigInvocationConfig>(RepositoryWorkflowConfigInvocationConfig.fromMap((map['invocationConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recentScheduledExecutionRecords: map['recentScheduledExecutionRecords'] == null ? null : pulumi.Output.create<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>(pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecord>(map['recentScheduledExecutionRecords'], (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      releaseConfig: map['releaseConfig'] == null ? null : pulumi.Output.create<String>(map['releaseConfig'] as String),
-      repository: map['repository'] == null ? null : pulumi.Output.create<String>(map['repository'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
+      invocationConfig: map['invocationConfig'] == null ? null : (RepositoryWorkflowConfigInvocationConfig.fromMap((map['invocationConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recentScheduledExecutionRecords: map['recentScheduledExecutionRecords'] == null ? null : (pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecord>(map['recentScheduledExecutionRecords'], (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      releaseConfig: map['releaseConfig'] == null ? null : (map['releaseConfig'] as String).input(),
+      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

@@ -50,31 +50,19 @@ class MonitorState {
   /// [user] A `user` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   /// [userId] Specifies the user id. Changing this forces a new Azure Native New Relic Monitor to be created.
   MonitorState({
-    pulumi.Output<String>? accountCreationSource,
-    pulumi.Output<String>? accountId,
-    pulumi.Output<MonitorIdentity>? identity,
-    pulumi.Output<String>? ingestionKey,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgCreationSource,
-    pulumi.Output<String>? organizationId,
-    pulumi.Output<MonitorPlan>? plan,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<MonitorUser>? user,
-    pulumi.Output<String>? userId,
-  }) :
-      accountCreationSource = pulumi.Input.asOptionalInput<String>(accountCreationSource),
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      identity = pulumi.Input.asOptionalInput<MonitorIdentity>(identity),
-      ingestionKey = pulumi.Input.asOptionalInput<String>(ingestionKey),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgCreationSource = pulumi.Input.asOptionalInput<String>(orgCreationSource),
-      organizationId = pulumi.Input.asOptionalInput<String>(organizationId),
-      plan = pulumi.Input.asOptionalInput<MonitorPlan>(plan),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      user = pulumi.Input.asOptionalInput<MonitorUser>(user),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.accountCreationSource,
+    this.accountId,
+    this.identity,
+    this.ingestionKey,
+    this.location,
+    this.name,
+    this.orgCreationSource,
+    this.organizationId,
+    this.plan,
+    this.resourceGroupName,
+    this.user,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      accountCreationSource: map['accountCreationSource'] == null ? null : pulumi.Output.create<String>(map['accountCreationSource'] as String),
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<MonitorIdentity>(MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      ingestionKey: map['ingestionKey'] == null ? null : pulumi.Output.create<String>(map['ingestionKey'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgCreationSource: map['orgCreationSource'] == null ? null : pulumi.Output.create<String>(map['orgCreationSource'] as String),
-      organizationId: map['organizationId'] == null ? null : pulumi.Output.create<String>(map['organizationId'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<MonitorPlan>(MonitorPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<MonitorUser>(MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      accountCreationSource: map['accountCreationSource'] == null ? null : (map['accountCreationSource'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      ingestionKey: map['ingestionKey'] == null ? null : (map['ingestionKey'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgCreationSource: map['orgCreationSource'] == null ? null : (map['orgCreationSource'] as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
+      plan: map['plan'] == null ? null : (MonitorPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      user: map['user'] == null ? null : (MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

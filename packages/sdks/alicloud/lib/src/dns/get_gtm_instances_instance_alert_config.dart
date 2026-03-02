@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGtmInstancesInstanceAlertConfig {
   /// Whether to configure DingTalk notifications.
-  final bool dingtalkNotice;
+  final pulumi.Input<bool> dingtalkNotice;
   /// Whether to configure mail notification.
-  final bool emailNotice;
+  final pulumi.Input<bool> emailNotice;
   /// The Alarm Event Type.
-  final String noticeType;
+  final pulumi.Input<String> noticeType;
   /// Whether to configure SMS notification.
-  final bool smsNotice;
+  final pulumi.Input<bool> smsNotice;
 
   /// Creates a new [GetGtmInstancesInstanceAlertConfig].
   /// [dingtalkNotice] Whether to configure DingTalk notifications.
@@ -34,10 +35,10 @@ class GetGtmInstancesInstanceAlertConfig {
 
   factory GetGtmInstancesInstanceAlertConfig.fromMap(Map<String, dynamic> map) {
     return GetGtmInstancesInstanceAlertConfig(
-      dingtalkNotice: map['dingtalkNotice'] as bool,
-      emailNotice: map['emailNotice'] as bool,
-      noticeType: map['noticeType'] as String,
-      smsNotice: map['smsNotice'] as bool,
+      dingtalkNotice: (map['dingtalkNotice'] as bool).input(),
+      emailNotice: (map['emailNotice'] as bool).input(),
+      noticeType: (map['noticeType'] as String).input(),
+      smsNotice: (map['smsNotice'] as bool).input(),
     );
   }
 }

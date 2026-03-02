@@ -35,25 +35,16 @@ class CustomActionTypeArgs {
   /// [tags] Optional.
   /// [version] Required.
   CustomActionTypeArgs({
-    required pulumi.Output<String> category,
-    pulumi.Output<List<CustomActionTypeConfigurationProperty>>? configurationProperties,
-    required pulumi.Output<CustomActionTypeInputArtifactDetails> inputArtifactDetails,
-    required pulumi.Output<CustomActionTypeOutputArtifactDetails> outputArtifactDetails,
-    required pulumi.Output<String> providerName,
-    pulumi.Output<String>? region,
-    pulumi.Output<CustomActionTypeSettings>? settings,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> version,
-  }) :
-      category = pulumi.Input.asInput<String>(category),
-      configurationProperties = pulumi.Input.asOptionalInput<List<CustomActionTypeConfigurationProperty>>(configurationProperties),
-      inputArtifactDetails = pulumi.Input.asInput<CustomActionTypeInputArtifactDetails>(inputArtifactDetails),
-      outputArtifactDetails = pulumi.Input.asInput<CustomActionTypeOutputArtifactDetails>(outputArtifactDetails),
-      providerName = pulumi.Input.asInput<String>(providerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      settings = pulumi.Input.asOptionalInput<CustomActionTypeSettings>(settings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asInput<String>(version);
+    required this.category,
+    this.configurationProperties,
+    required this.inputArtifactDetails,
+    required this.outputArtifactDetails,
+    required this.providerName,
+    this.region,
+    this.settings,
+    this.tags,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class CustomActionTypeArgs {
 
   factory CustomActionTypeArgs.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeArgs(
-      category: pulumi.Output.create<String>(map['category'] as String),
-      configurationProperties: map['configurationProperties'] == null ? null : pulumi.Output.create<List<CustomActionTypeConfigurationProperty>>(pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(map['configurationProperties'], (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      inputArtifactDetails: pulumi.Output.create<CustomActionTypeInputArtifactDetails>(CustomActionTypeInputArtifactDetails.fromMap((map['inputArtifactDetails'] as Map).cast<String, dynamic>())),
-      outputArtifactDetails: pulumi.Output.create<CustomActionTypeOutputArtifactDetails>(CustomActionTypeOutputArtifactDetails.fromMap((map['outputArtifactDetails'] as Map).cast<String, dynamic>())),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<CustomActionTypeSettings>(CustomActionTypeSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      category: (map['category'] as String).input(),
+      configurationProperties: map['configurationProperties'] == null ? null : (pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(map['configurationProperties'], (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputArtifactDetails: (CustomActionTypeInputArtifactDetails.fromMap((map['inputArtifactDetails'] as Map).cast<String, dynamic>())).input(),
+      outputArtifactDetails: (CustomActionTypeOutputArtifactDetails.fromMap((map['outputArtifactDetails'] as Map).cast<String, dynamic>())).input(),
+      providerName: (map['providerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      settings: map['settings'] == null ? null : (CustomActionTypeSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

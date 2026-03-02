@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Device
 class DeviceResponse {
   /// The path inside the container at which to expose the host device.
-  final String? containerPath;
+  final pulumi.Input<String>? containerPath;
   /// The path for the device on the host container instance.
-  final String? hostPath;
+  final pulumi.Input<String>? hostPath;
   /// The explicit permissions to provide to the container for the device. By default, the container has permissions for ``read``, ``write``, and ``mknod`` for the device.
-  final List<String>? permissions;
+  final pulumi.Input<List<String>>? permissions;
 
   /// Creates a new [DeviceResponse].
   /// [containerPath] The path inside the container at which to expose the host device.
@@ -30,9 +31,9 @@ class DeviceResponse {
 
   factory DeviceResponse.fromMap(Map<String, dynamic> map) {
     return DeviceResponse(
-      containerPath: map['containerPath'] == null ? null : map['containerPath'] as String,
-      hostPath: map['hostPath'] == null ? null : map['hostPath'] as String,
-      permissions: map['permissions'] == null ? null : (map['permissions'] as List).cast<String>(),
+      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
+      hostPath: map['hostPath'] == null ? null : (map['hostPath'] as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyAssociation {
   /// The resource that the security policy is attached to.
-  final String? attachmentId;
+  final pulumi.Input<String>? attachmentId;
   /// The name for an association.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [SecurityPolicyAssociation].
   /// [attachmentId] The resource that the security policy is attached to.
@@ -24,8 +25,8 @@ class SecurityPolicyAssociation {
 
   factory SecurityPolicyAssociation.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAssociation(
-      attachmentId: map['attachmentId'] == null ? null : map['attachmentId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

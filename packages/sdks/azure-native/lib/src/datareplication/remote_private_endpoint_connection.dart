@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represent remote private endpoint connection.
 class RemotePrivateEndpointConnection {
   /// Gets or sets the remote private endpoint connection id.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [RemotePrivateEndpointConnection].
   /// [id] Gets or sets the remote private endpoint connection id.
@@ -20,7 +21,7 @@ class RemotePrivateEndpointConnection {
 
   factory RemotePrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return RemotePrivateEndpointConnection(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

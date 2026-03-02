@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicMessageStoragePolicy {
   /// A list of IDs of GCP regions where messages that are published to
@@ -8,12 +9,12 @@ class TopicMessageStoragePolicy {
   /// of GCP altogether) will be routed for storage in one of the
   /// allowed regions. An empty list means that no regions are allowed,
   /// and is not a valid configuration.
-  final List<String> allowedPersistenceRegions;
+  final pulumi.Input<List<String>> allowedPersistenceRegions;
   /// If true, `allowedPersistenceRegions` is also used to enforce in-transit
   /// guarantees for messages. That is, Pub/Sub will fail topics.publish
   /// operations on this topic and subscribe operations on any subscription
   /// attached to this topic in any region that is not in `allowedPersistenceRegions`.
-  final bool? enforceInTransit;
+  final pulumi.Input<bool>? enforceInTransit;
 
   /// Creates a new [TopicMessageStoragePolicy].
   /// [allowedPersistenceRegions] A list of IDs of GCP regions where messages that are published to
@@ -32,8 +33,8 @@ class TopicMessageStoragePolicy {
 
   factory TopicMessageStoragePolicy.fromMap(Map<String, dynamic> map) {
     return TopicMessageStoragePolicy(
-      allowedPersistenceRegions: (map['allowedPersistenceRegions'] as List).cast<String>(),
-      enforceInTransit: map['enforceInTransit'] == null ? null : map['enforceInTransit'] as bool,
+      allowedPersistenceRegions: ((map['allowedPersistenceRegions'] as List).cast<String>()).input(),
+      enforceInTransit: map['enforceInTransit'] == null ? null : (map['enforceInTransit'] as bool).input(),
     );
   }
 }

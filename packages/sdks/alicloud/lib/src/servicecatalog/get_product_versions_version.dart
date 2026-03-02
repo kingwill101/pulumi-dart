@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProductVersionsVersion {
   /// Whether the version is activated
-  final bool active;
+  final pulumi.Input<bool> active;
   /// The creation time of the resource
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Version description
-  final String description;
+  final pulumi.Input<String> description;
   /// Administrator guidance
-  final String guidance;
+  final pulumi.Input<String> guidance;
   /// ID of product version.
-  final String id;
+  final pulumi.Input<String> id;
   /// Product ID
-  final String productId;
+  final pulumi.Input<String> productId;
   /// The first ID of the resource
-  final String productVersionId;
+  final pulumi.Input<String> productVersionId;
   /// The name of the resource
-  final String productVersionName;
+  final pulumi.Input<String> productVersionName;
   /// Template Type
-  final String templateType;
+  final pulumi.Input<String> templateType;
   /// Template URL
-  final String templateUrl;
+  final pulumi.Input<String> templateUrl;
 
   /// Creates a new [GetProductVersionsVersion].
   /// [active] Whether the version is activated
@@ -64,16 +65,16 @@ class GetProductVersionsVersion {
 
   factory GetProductVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetProductVersionsVersion(
-      active: map['active'] as bool,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      guidance: map['guidance'] as String,
-      id: map['id'] as String,
-      productId: map['productId'] as String,
-      productVersionId: map['productVersionId'] as String,
-      productVersionName: map['productVersionName'] as String,
-      templateType: map['templateType'] as String,
-      templateUrl: map['templateUrl'] as String,
+      active: (map['active'] as bool).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      guidance: (map['guidance'] as String).input(),
+      id: (map['id'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      productVersionId: (map['productVersionId'] as String).input(),
+      productVersionName: (map['productVersionName'] as String).input(),
+      templateType: (map['templateType'] as String).input(),
+      templateUrl: (map['templateUrl'] as String).input(),
     );
   }
 }

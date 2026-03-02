@@ -29,19 +29,13 @@ class CiphertextArgs {
   /// [plaintextWoVersion] Used together with `plaintext_wo` to trigger a replacement. Modify this value when a replacement is required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   CiphertextArgs({
-    pulumi.Output<Map<String, String>>? context,
-    required pulumi.Output<String> keyId,
-    pulumi.Output<String>? plaintext,
-    pulumi.Output<String>? plaintextWo,
-    pulumi.Output<String>? plaintextWoVersion,
-    pulumi.Output<String>? region,
-  }) :
-      context = pulumi.Input.asOptionalInput<Map<String, String>>(context),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      plaintext = pulumi.Input.asOptionalInput<String>(plaintext),
-      plaintextWo = pulumi.Input.asOptionalInput<String>(plaintextWo),
-      plaintextWoVersion = pulumi.Input.asOptionalInput<String>(plaintextWoVersion),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.context,
+    required this.keyId,
+    this.plaintext,
+    this.plaintextWo,
+    this.plaintextWoVersion,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CiphertextArgs {
 
   factory CiphertextArgs.fromMap(Map<String, dynamic> map) {
     return CiphertextArgs(
-      context: map['context'] == null ? null : pulumi.Output.create<Map<String, String>>((map['context'] as Map).cast<String, String>()),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      plaintext: map['plaintext'] == null ? null : pulumi.Output.create<String>(map['plaintext'] as String),
-      plaintextWo: map['plaintextWo'] == null ? null : pulumi.Output.create<String>(map['plaintextWo'] as String),
-      plaintextWoVersion: map['plaintextWoVersion'] == null ? null : pulumi.Output.create<String>(map['plaintextWoVersion'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      context: map['context'] == null ? null : ((map['context'] as Map).cast<String, String>()).input(),
+      keyId: (map['keyId'] as String).input(),
+      plaintext: map['plaintext'] == null ? null : (map['plaintext'] as String).input(),
+      plaintextWo: map['plaintextWo'] == null ? null : (map['plaintextWo'] as String).input(),
+      plaintextWoVersion: map['plaintextWoVersion'] == null ? null : (map['plaintextWoVersion'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

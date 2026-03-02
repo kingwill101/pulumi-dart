@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Amazon S3 Compatible read settings.
 class AmazonS3CompatibleReadSettingsResponse {
   /// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic deleteFilesAfterCompletion;
+  final pulumi.Input<dynamic>? deleteFilesAfterCompletion;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
-  final dynamic enablePartitionDiscovery;
+  final pulumi.Input<dynamic>? enablePartitionDiscovery;
   /// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
-  final dynamic fileListPath;
+  final pulumi.Input<dynamic>? fileListPath;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// The end of file's modified datetime. Type: string (or Expression with resultType string).
-  final dynamic modifiedDatetimeEnd;
+  final pulumi.Input<dynamic>? modifiedDatetimeEnd;
   /// The start of file's modified datetime. Type: string (or Expression with resultType string).
-  final dynamic modifiedDatetimeStart;
+  final pulumi.Input<dynamic>? modifiedDatetimeStart;
   /// Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
-  final dynamic partitionRootPath;
+  final pulumi.Input<dynamic>? partitionRootPath;
   /// The prefix filter for the S3 Compatible object name. Type: string (or Expression with resultType string).
-  final dynamic prefix;
+  final pulumi.Input<dynamic>? prefix;
   /// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
-  final dynamic recursive;
+  final pulumi.Input<dynamic>? recursive;
   /// The read setting type.
   /// Expected value is 'AmazonS3CompatibleReadSettings'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Amazon S3 Compatible wildcardFileName. Type: string (or Expression with resultType string).
-  final dynamic wildcardFileName;
+  final pulumi.Input<dynamic>? wildcardFileName;
   /// Amazon S3 Compatible wildcardFolderPath. Type: string (or Expression with resultType string).
-  final dynamic wildcardFolderPath;
+  final pulumi.Input<dynamic>? wildcardFolderPath;
 
   /// Creates a new [AmazonS3CompatibleReadSettingsResponse].
   /// [deleteFilesAfterCompletion] Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -81,19 +82,19 @@ class AmazonS3CompatibleReadSettingsResponse {
 
   factory AmazonS3CompatibleReadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AmazonS3CompatibleReadSettingsResponse(
-      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : map['deleteFilesAfterCompletion'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : map['enablePartitionDiscovery'],
-      fileListPath: map['fileListPath'] == null ? null : map['fileListPath'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : map['modifiedDatetimeEnd'],
-      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : map['modifiedDatetimeStart'],
-      partitionRootPath: map['partitionRootPath'] == null ? null : map['partitionRootPath'],
-      prefix: map['prefix'] == null ? null : map['prefix'],
-      recursive: map['recursive'] == null ? null : map['recursive'],
-      type: map['type'] as String,
-      wildcardFileName: map['wildcardFileName'] == null ? null : map['wildcardFileName'],
-      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : map['wildcardFolderPath'],
+      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']).input(),
+      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']).input(),
+      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']).input(),
+      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
+      type: (map['type'] as String).input(),
+      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']).input(),
+      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']).input(),
     );
   }
 }

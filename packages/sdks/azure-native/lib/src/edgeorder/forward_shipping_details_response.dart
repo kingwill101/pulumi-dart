@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Forward shipment details.
 class ForwardShippingDetailsResponse {
   /// Carrier Name for display purpose. Not to be used for any processing.
-  final String carrierDisplayName;
+  final pulumi.Input<String> carrierDisplayName;
   /// Name of the carrier.
-  final String carrierName;
+  final pulumi.Input<String> carrierName;
   /// TrackingId of the package.
-  final String trackingId;
+  final pulumi.Input<String> trackingId;
   /// TrackingUrl of the package.
-  final String trackingUrl;
+  final pulumi.Input<String> trackingUrl;
 
   /// Creates a new [ForwardShippingDetailsResponse].
   /// [carrierDisplayName] Carrier Name for display purpose. Not to be used for any processing.
@@ -35,10 +36,10 @@ class ForwardShippingDetailsResponse {
 
   factory ForwardShippingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ForwardShippingDetailsResponse(
-      carrierDisplayName: map['carrierDisplayName'] as String,
-      carrierName: map['carrierName'] as String,
-      trackingId: map['trackingId'] as String,
-      trackingUrl: map['trackingUrl'] as String,
+      carrierDisplayName: (map['carrierDisplayName'] as String).input(),
+      carrierName: (map['carrierName'] as String).input(),
+      trackingId: (map['trackingId'] as String).input(),
+      trackingUrl: (map['trackingUrl'] as String).input(),
     );
   }
 }

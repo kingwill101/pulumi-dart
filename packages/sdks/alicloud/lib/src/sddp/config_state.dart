@@ -19,15 +19,11 @@ class ConfigState {
   /// [lang] The language of the request and response. Valid values: `zh`,`en`.
   /// [value] The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
   ConfigState({
-    pulumi.Output<String>? code,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? value,
-  }) :
-      code = pulumi.Input.asOptionalInput<String>(code),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.code,
+    this.description,
+    this.lang,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ConfigState {
 
   factory ConfigState.fromMap(Map<String, dynamic> map) {
     return ConfigState(
-      code: map['code'] == null ? null : pulumi.Output.create<String>(map['code'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

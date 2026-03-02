@@ -22,15 +22,11 @@ class ExternalDataServiceArgs {
   /// [serviceName] Service Name
   /// [serviceSpec] Service Specifications
   ExternalDataServiceArgs({
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? serviceDescription,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> serviceSpec,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      serviceDescription = pulumi.Input.asOptionalInput<String>(serviceDescription),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      serviceSpec = pulumi.Input.asInput<String>(serviceSpec);
+    required this.dbInstanceId,
+    this.serviceDescription,
+    required this.serviceName,
+    required this.serviceSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ExternalDataServiceArgs {
 
   factory ExternalDataServiceArgs.fromMap(Map<String, dynamic> map) {
     return ExternalDataServiceArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      serviceDescription: map['serviceDescription'] == null ? null : pulumi.Output.create<String>(map['serviceDescription'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceSpec: pulumi.Output.create<String>(map['serviceSpec'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      serviceSpec: (map['serviceSpec'] as String).input(),
     );
   }
 }

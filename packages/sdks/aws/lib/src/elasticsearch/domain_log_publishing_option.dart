@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainLogPublishingOption {
   /// ARN of the Cloudwatch log group to which log needs to be published.
-  final String cloudwatchLogGroupArn;
+  final pulumi.Input<String> cloudwatchLogGroupArn;
   /// Whether given log publishing option is enabled or not.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Type of Elasticsearch log. Valid values: `INDEX_SLOW_LOGS`, `SEARCH_SLOW_LOGS`, `ES_APPLICATION_LOGS`, `AUDIT_LOGS`.
-  final String logType;
+  final pulumi.Input<String> logType;
 
   /// Creates a new [DomainLogPublishingOption].
   /// [cloudwatchLogGroupArn] ARN of the Cloudwatch log group to which log needs to be published.
@@ -29,9 +30,9 @@ class DomainLogPublishingOption {
 
   factory DomainLogPublishingOption.fromMap(Map<String, dynamic> map) {
     return DomainLogPublishingOption(
-      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      logType: map['logType'] as String,
+      cloudwatchLogGroupArn: (map['cloudwatchLogGroupArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logType: (map['logType'] as String).input(),
     );
   }
 }

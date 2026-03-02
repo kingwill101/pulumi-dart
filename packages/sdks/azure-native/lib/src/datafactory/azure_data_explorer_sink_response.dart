@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity Azure Data Explorer sink.
 class AzureDataExplorerSinkResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// If set to true, any aggregation will be skipped. Default is false. Type: boolean.
-  final dynamic flushImmediately;
+  final pulumi.Input<dynamic>? flushImmediately;
   /// An explicit column mapping description provided in a json format. Type: string.
-  final dynamic ingestionMappingAsJson;
+  final pulumi.Input<dynamic>? ingestionMappingAsJson;
   /// A name of a pre-created csv mapping that was defined on the target Kusto table. Type: string.
-  final dynamic ingestionMappingName;
+  final pulumi.Input<dynamic>? ingestionMappingName;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Sink retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sinkRetryCount;
+  final pulumi.Input<dynamic>? sinkRetryCount;
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sinkRetryWait;
+  final pulumi.Input<dynamic>? sinkRetryWait;
   /// Copy sink type.
   /// Expected value is 'AzureDataExplorerSink'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic writeBatchSize;
+  final pulumi.Input<dynamic>? writeBatchSize;
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic writeBatchTimeout;
+  final pulumi.Input<dynamic>? writeBatchTimeout;
 
   /// Creates a new [AzureDataExplorerSinkResponse].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -66,16 +67,16 @@ class AzureDataExplorerSinkResponse {
 
   factory AzureDataExplorerSinkResponse.fromMap(Map<String, dynamic> map) {
     return AzureDataExplorerSinkResponse(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      flushImmediately: map['flushImmediately'] == null ? null : map['flushImmediately'],
-      ingestionMappingAsJson: map['ingestionMappingAsJson'] == null ? null : map['ingestionMappingAsJson'],
-      ingestionMappingName: map['ingestionMappingName'] == null ? null : map['ingestionMappingName'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : map['sinkRetryCount'],
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : map['sinkRetryWait'],
-      type: map['type'] as String,
-      writeBatchSize: map['writeBatchSize'] == null ? null : map['writeBatchSize'],
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : map['writeBatchTimeout'],
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      flushImmediately: map['flushImmediately'] == null ? null : (map['flushImmediately']).input(),
+      ingestionMappingAsJson: map['ingestionMappingAsJson'] == null ? null : (map['ingestionMappingAsJson']).input(),
+      ingestionMappingName: map['ingestionMappingName'] == null ? null : (map['ingestionMappingName']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
+      type: (map['type'] as String).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
     );
   }
 }

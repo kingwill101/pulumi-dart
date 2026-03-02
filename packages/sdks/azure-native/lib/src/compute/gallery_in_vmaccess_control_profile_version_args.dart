@@ -45,29 +45,18 @@ class GalleryInVMAccessControlProfileVersionArgs {
   /// [tags] Resource tags.
   /// [targetLocations] The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
   GalleryInVMAccessControlProfileVersionArgs({
-    required pulumi.Output<String> defaultAccess,
-    pulumi.Output<bool>? excludeFromLatest,
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> inVMAccessControlProfileName,
-    pulumi.Output<String>? inVMAccessControlProfileVersionName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> mode,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AccessControlRules>? rules,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<TargetRegion>>? targetLocations,
-  }) :
-      defaultAccess = pulumi.Input.asInput<String>(defaultAccess),
-      excludeFromLatest = pulumi.Input.asOptionalInput<bool>(excludeFromLatest),
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      inVMAccessControlProfileName = pulumi.Input.asInput<String>(inVMAccessControlProfileName),
-      inVMAccessControlProfileVersionName = pulumi.Input.asOptionalInput<String>(inVMAccessControlProfileVersionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mode = pulumi.Input.asInput<String>(mode),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rules = pulumi.Input.asOptionalInput<AccessControlRules>(rules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetLocations = pulumi.Input.asOptionalInput<List<TargetRegion>>(targetLocations);
+    required this.defaultAccess,
+    this.excludeFromLatest,
+    required this.galleryName,
+    required this.inVMAccessControlProfileName,
+    this.inVMAccessControlProfileVersionName,
+    this.location,
+    required this.mode,
+    required this.resourceGroupName,
+    this.rules,
+    this.tags,
+    this.targetLocations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class GalleryInVMAccessControlProfileVersionArgs {
 
   factory GalleryInVMAccessControlProfileVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryInVMAccessControlProfileVersionArgs(
-      defaultAccess: pulumi.Output.create<String>(map['defaultAccess'] as String),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : pulumi.Output.create<bool>(map['excludeFromLatest'] as bool),
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      inVMAccessControlProfileName: pulumi.Output.create<String>(map['inVMAccessControlProfileName'] as String),
-      inVMAccessControlProfileVersionName: map['inVMAccessControlProfileVersionName'] == null ? null : pulumi.Output.create<String>(map['inVMAccessControlProfileVersionName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<AccessControlRules>(AccessControlRules.fromMap((map['rules'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetLocations: map['targetLocations'] == null ? null : pulumi.Output.create<List<TargetRegion>>(pulumi.Input.decodeList<TargetRegion>(map['targetLocations'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))),
+      defaultAccess: (map['defaultAccess'] as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      galleryName: (map['galleryName'] as String).input(),
+      inVMAccessControlProfileName: (map['inVMAccessControlProfileName'] as String).input(),
+      inVMAccessControlProfileVersionName: map['inVMAccessControlProfileVersionName'] == null ? null : (map['inVMAccessControlProfileVersionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : (AccessControlRules.fromMap((map['rules'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetLocations: map['targetLocations'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetLocations'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

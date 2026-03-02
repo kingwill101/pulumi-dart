@@ -37,19 +37,13 @@ class InterceptEndpointGroupAssociationArgs {
   /// [network] The VPC network that is associated. for example:
   /// [project] The ID of the project in which the resource belongs.
   InterceptEndpointGroupAssociationArgs({
-    required pulumi.Output<String> interceptEndpointGroup,
-    pulumi.Output<String>? interceptEndpointGroupAssociationId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-  }) :
-      interceptEndpointGroup = pulumi.Input.asInput<String>(interceptEndpointGroup),
-      interceptEndpointGroupAssociationId = pulumi.Input.asOptionalInput<String>(interceptEndpointGroupAssociationId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.interceptEndpointGroup,
+    this.interceptEndpointGroupAssociationId,
+    this.labels,
+    required this.location,
+    required this.network,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,12 +58,12 @@ class InterceptEndpointGroupAssociationArgs {
 
   factory InterceptEndpointGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return InterceptEndpointGroupAssociationArgs(
-      interceptEndpointGroup: pulumi.Output.create<String>(map['interceptEndpointGroup'] as String),
-      interceptEndpointGroupAssociationId: map['interceptEndpointGroupAssociationId'] == null ? null : pulumi.Output.create<String>(map['interceptEndpointGroupAssociationId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      interceptEndpointGroup: (map['interceptEndpointGroup'] as String).input(),
+      interceptEndpointGroupAssociationId: map['interceptEndpointGroupAssociationId'] == null ? null : (map['interceptEndpointGroupAssociationId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

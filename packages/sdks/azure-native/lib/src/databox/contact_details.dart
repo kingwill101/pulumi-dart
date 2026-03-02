@@ -6,17 +6,17 @@ import 'notification_preference.dart';
 /// Contact Details.
 class ContactDetails {
   /// Contact name of the person.
-  final String contactName;
+  final pulumi.Input<String> contactName;
   /// List of Email-ids to be notified about job progress.
-  final List<String> emailList;
+  final pulumi.Input<List<String>> emailList;
   /// Mobile number of the contact person.
-  final String? mobile;
+  final pulumi.Input<String>? mobile;
   /// Notification preference for a job stage.
-  final List<NotificationPreference>? notificationPreference;
+  final pulumi.Input<List<NotificationPreference>>? notificationPreference;
   /// Phone number of the contact person.
-  final String phone;
+  final pulumi.Input<String> phone;
   /// Phone extension number of the contact person.
-  final String? phoneExtension;
+  final pulumi.Input<String>? phoneExtension;
 
   /// Creates a new [ContactDetails].
   /// [contactName] Contact name of the person.
@@ -39,7 +39,7 @@ class ContactDetails {
       'contactName': contactName,
       'emailList': emailList,
       'mobile': ?mobile,
-      'notificationPreference': ?notificationPreference == null ? null : pulumi.Input.encodeList<NotificationPreference, Map<String, dynamic>>(notificationPreference!, (value) => value.toMap()),
+      'notificationPreference': ?pulumi.Input.mapOptionalInputValue<List<NotificationPreference>, List<Map<String, dynamic>>>(notificationPreference, (value) => pulumi.Input.encodeList<NotificationPreference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'phone': phone,
       'phoneExtension': ?phoneExtension,
     };
@@ -47,12 +47,12 @@ class ContactDetails {
 
   factory ContactDetails.fromMap(Map<String, dynamic> map) {
     return ContactDetails(
-      contactName: map['contactName'] as String,
-      emailList: (map['emailList'] as List).cast<String>(),
-      mobile: map['mobile'] == null ? null : map['mobile'] as String,
-      notificationPreference: map['notificationPreference'] == null ? null : pulumi.Input.decodeList<NotificationPreference>(map['notificationPreference'], (value) => NotificationPreference.fromMap((value as Map).cast<String, dynamic>())),
-      phone: map['phone'] as String,
-      phoneExtension: map['phoneExtension'] == null ? null : map['phoneExtension'] as String,
+      contactName: (map['contactName'] as String).input(),
+      emailList: ((map['emailList'] as List).cast<String>()).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
+      notificationPreference: map['notificationPreference'] == null ? null : (pulumi.Input.decodeList<NotificationPreference>(map['notificationPreference'], (value) => NotificationPreference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      phone: (map['phone'] as String).input(),
+      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension'] as String).input(),
     );
   }
 }

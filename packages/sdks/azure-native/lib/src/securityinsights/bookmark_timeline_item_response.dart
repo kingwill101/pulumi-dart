@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_info_response.dart';
 
 /// Represents bookmark timeline item.
 class BookmarkTimelineItemResponse {
   /// The bookmark azure resource id.
-  final String azureResourceId;
+  final pulumi.Input<String> azureResourceId;
   /// Describes a user that created the bookmark
-  final UserInfoResponse? createdBy;
+  final pulumi.Input<UserInfoResponse>? createdBy;
   /// The bookmark display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The bookmark end time.
-  final String? endTimeUtc;
+  final pulumi.Input<String>? endTimeUtc;
   /// The bookmark event time.
-  final String? eventTime;
+  final pulumi.Input<String>? eventTime;
   /// The entity query kind
   /// Expected value is 'Bookmark'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// List of labels relevant to this bookmark
-  final List<String>? labels;
+  final pulumi.Input<List<String>>? labels;
   /// The notes of the bookmark
-  final String? notes;
+  final pulumi.Input<String>? notes;
   /// The bookmark start time.
-  final String? startTimeUtc;
+  final pulumi.Input<String>? startTimeUtc;
 
   /// Creates a new [BookmarkTimelineItemResponse].
   /// [azureResourceId] The bookmark azure resource id.
@@ -49,7 +50,7 @@ class BookmarkTimelineItemResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureResourceId': azureResourceId,
-      'createdBy': ?createdBy == null ? null : createdBy!.toMap(),
+      'createdBy': ?pulumi.Input.mapOptionalInputValue<UserInfoResponse, Map<String, dynamic>>(createdBy, (value) => value.toMap()),
       'displayName': ?displayName,
       'endTimeUtc': ?endTimeUtc,
       'eventTime': ?eventTime,
@@ -62,15 +63,15 @@ class BookmarkTimelineItemResponse {
 
   factory BookmarkTimelineItemResponse.fromMap(Map<String, dynamic> map) {
     return BookmarkTimelineItemResponse(
-      azureResourceId: map['azureResourceId'] as String,
-      createdBy: map['createdBy'] == null ? null : UserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      endTimeUtc: map['endTimeUtc'] == null ? null : map['endTimeUtc'] as String,
-      eventTime: map['eventTime'] == null ? null : map['eventTime'] as String,
-      kind: map['kind'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as List).cast<String>(),
-      notes: map['notes'] == null ? null : map['notes'] as String,
-      startTimeUtc: map['startTimeUtc'] == null ? null : map['startTimeUtc'] as String,
+      azureResourceId: (map['azureResourceId'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (UserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endTimeUtc: map['endTimeUtc'] == null ? null : (map['endTimeUtc'] as String).input(),
+      eventTime: map['eventTime'] == null ? null : (map['eventTime'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      startTimeUtc: map['startTimeUtc'] == null ? null : (map['startTimeUtc'] as String).input(),
     );
   }
 }

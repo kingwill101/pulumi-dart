@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseUserSettingOpensearchAcl {
-  final String index;
-  final String permission;
+  final pulumi.Input<String> index;
+  final pulumi.Input<String> permission;
 
   /// Creates a new [GetDatabaseUserSettingOpensearchAcl].
   /// [index] Required.
@@ -22,8 +23,8 @@ class GetDatabaseUserSettingOpensearchAcl {
 
   factory GetDatabaseUserSettingOpensearchAcl.fromMap(Map<String, dynamic> map) {
     return GetDatabaseUserSettingOpensearchAcl(
-      index: map['index'] as String,
-      permission: map['permission'] as String,
+      index: (map['index'] as String).input(),
+      permission: (map['permission'] as String).input(),
     );
   }
 }

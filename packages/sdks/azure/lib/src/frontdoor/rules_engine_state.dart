@@ -26,19 +26,13 @@ class RulesEngineState {
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [rules] A `rule` block as defined below.
   RulesEngineState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? frontdoorName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<RulesEngineRule>>? rules,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      frontdoorName = pulumi.Input.asOptionalInput<String>(frontdoorName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      rules = pulumi.Input.asOptionalInput<List<RulesEngineRule>>(rules);
+    this.enabled,
+    this.frontdoorName,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class RulesEngineState {
 
   factory RulesEngineState.fromMap(Map<String, dynamic> map) {
     return RulesEngineState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      frontdoorName: map['frontdoorName'] == null ? null : pulumi.Output.create<String>(map['frontdoorName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<RulesEngineRule>>(pulumi.Input.decodeList<RulesEngineRule>(map['rules'], (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      frontdoorName: map['frontdoorName'] == null ? null : (map['frontdoorName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRule>(map['rules'], (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpc_firewalls_firewall_peer_vpc_peer_vpc_cidr_table_list.dart';
 
 class GetVpcFirewallsFirewallPeerVpc {
-  final String eniId;
-  final String eniPrivateIpAddress;
+  final pulumi.Input<String> eniId;
+  final pulumi.Input<String> eniPrivateIpAddress;
   /// The network segment list of the peer VPC.
-  final List<GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList> peerVpcCidrTableLists;
+  final pulumi.Input<List<GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList>> peerVpcCidrTableLists;
   /// The region ID of the peer VPC.
-  final String regionNo;
-  final String routerInterfaceId;
+  final pulumi.Input<String> regionNo;
+  final pulumi.Input<String> routerInterfaceId;
   /// The ID of the peer VPC instance.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The instance name of the peer VPC.
-  final String vpcName;
+  final pulumi.Input<String> vpcName;
 
   /// Creates a new [GetVpcFirewallsFirewallPeerVpc].
   /// [eniId] Required.
@@ -38,7 +38,7 @@ class GetVpcFirewallsFirewallPeerVpc {
     return <String, dynamic>{
       'eniId': eniId,
       'eniPrivateIpAddress': eniPrivateIpAddress,
-      'peerVpcCidrTableLists': pulumi.Input.encodeList<GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList, Map<String, dynamic>>(peerVpcCidrTableLists, (value) => value.toMap()),
+      'peerVpcCidrTableLists': pulumi.Input.mapInputValue<List<GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList>, List<Map<String, dynamic>>>(peerVpcCidrTableLists, (value) => pulumi.Input.encodeList<GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regionNo': regionNo,
       'routerInterfaceId': routerInterfaceId,
       'vpcId': vpcId,
@@ -48,13 +48,13 @@ class GetVpcFirewallsFirewallPeerVpc {
 
   factory GetVpcFirewallsFirewallPeerVpc.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallsFirewallPeerVpc(
-      eniId: map['eniId'] as String,
-      eniPrivateIpAddress: map['eniPrivateIpAddress'] as String,
-      peerVpcCidrTableLists: pulumi.Input.decodeList<GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList>(map['peerVpcCidrTableLists'], (value) => GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList.fromMap((value as Map).cast<String, dynamic>())),
-      regionNo: map['regionNo'] as String,
-      routerInterfaceId: map['routerInterfaceId'] as String,
-      vpcId: map['vpcId'] as String,
-      vpcName: map['vpcName'] as String,
+      eniId: (map['eniId'] as String).input(),
+      eniPrivateIpAddress: (map['eniPrivateIpAddress'] as String).input(),
+      peerVpcCidrTableLists: (pulumi.Input.decodeList<GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList>(map['peerVpcCidrTableLists'], (value) => GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regionNo: (map['regionNo'] as String).input(),
+      routerInterfaceId: (map['routerInterfaceId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcName: (map['vpcName'] as String).input(),
     );
   }
 }

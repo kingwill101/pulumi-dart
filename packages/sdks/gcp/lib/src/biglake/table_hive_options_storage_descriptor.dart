@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableHiveOptionsStorageDescriptor {
   /// The fully qualified Java class name of the input format.
-  final String? inputFormat;
+  final pulumi.Input<String>? inputFormat;
   /// Cloud Storage folder URI where the table data is stored, starting with "gs://".
-  final String? locationUri;
+  final pulumi.Input<String>? locationUri;
   /// The fully qualified Java class name of the output format.
-  final String? outputFormat;
+  final pulumi.Input<String>? outputFormat;
 
   /// Creates a new [TableHiveOptionsStorageDescriptor].
   /// [inputFormat] The fully qualified Java class name of the input format.
@@ -29,9 +30,9 @@ class TableHiveOptionsStorageDescriptor {
 
   factory TableHiveOptionsStorageDescriptor.fromMap(Map<String, dynamic> map) {
     return TableHiveOptionsStorageDescriptor(
-      inputFormat: map['inputFormat'] == null ? null : map['inputFormat'] as String,
-      locationUri: map['locationUri'] == null ? null : map['locationUri'] as String,
-      outputFormat: map['outputFormat'] == null ? null : map['outputFormat'] as String,
+      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat'] as String).input(),
+      locationUri: map['locationUri'] == null ? null : (map['locationUri'] as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
     );
   }
 }

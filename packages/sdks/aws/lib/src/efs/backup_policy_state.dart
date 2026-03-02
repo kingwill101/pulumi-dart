@@ -17,13 +17,10 @@ class BackupPolicyState {
   /// [fileSystemId] The ID of the EFS file system.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BackupPolicyState({
-    pulumi.Output<BackupPolicyBackupPolicy>? backupPolicy,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? region,
-  }) :
-      backupPolicy = pulumi.Input.asOptionalInput<BackupPolicyBackupPolicy>(backupPolicy),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.backupPolicy,
+    this.fileSystemId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupPolicy: map['backupPolicy'] == null ? null : pulumi.Output.create<BackupPolicyBackupPolicy>(BackupPolicyBackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicyBackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

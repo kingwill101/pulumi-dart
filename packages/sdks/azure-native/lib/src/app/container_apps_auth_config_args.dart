@@ -43,25 +43,16 @@ class ContainerAppsAuthConfigArgs {
   /// [platform] The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ContainerAppsAuthConfigArgs({
-    pulumi.Output<String>? authConfigName,
-    required pulumi.Output<String> containerAppName,
-    pulumi.Output<EncryptionSettings>? encryptionSettings,
-    pulumi.Output<GlobalValidation>? globalValidation,
-    pulumi.Output<HttpSettings>? httpSettings,
-    pulumi.Output<IdentityProviders>? identityProviders,
-    pulumi.Output<Login>? login,
-    pulumi.Output<AuthPlatform>? platform,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authConfigName = pulumi.Input.asOptionalInput<String>(authConfigName),
-      containerAppName = pulumi.Input.asInput<String>(containerAppName),
-      encryptionSettings = pulumi.Input.asOptionalInput<EncryptionSettings>(encryptionSettings),
-      globalValidation = pulumi.Input.asOptionalInput<GlobalValidation>(globalValidation),
-      httpSettings = pulumi.Input.asOptionalInput<HttpSettings>(httpSettings),
-      identityProviders = pulumi.Input.asOptionalInput<IdentityProviders>(identityProviders),
-      login = pulumi.Input.asOptionalInput<Login>(login),
-      platform = pulumi.Input.asOptionalInput<AuthPlatform>(platform),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.authConfigName,
+    required this.containerAppName,
+    this.encryptionSettings,
+    this.globalValidation,
+    this.httpSettings,
+    this.identityProviders,
+    this.login,
+    this.platform,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class ContainerAppsAuthConfigArgs {
 
   factory ContainerAppsAuthConfigArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppsAuthConfigArgs(
-      authConfigName: map['authConfigName'] == null ? null : pulumi.Output.create<String>(map['authConfigName'] as String),
-      containerAppName: pulumi.Output.create<String>(map['containerAppName'] as String),
-      encryptionSettings: map['encryptionSettings'] == null ? null : pulumi.Output.create<EncryptionSettings>(EncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())),
-      globalValidation: map['globalValidation'] == null ? null : pulumi.Output.create<GlobalValidation>(GlobalValidation.fromMap((map['globalValidation'] as Map).cast<String, dynamic>())),
-      httpSettings: map['httpSettings'] == null ? null : pulumi.Output.create<HttpSettings>(HttpSettings.fromMap((map['httpSettings'] as Map).cast<String, dynamic>())),
-      identityProviders: map['identityProviders'] == null ? null : pulumi.Output.create<IdentityProviders>(IdentityProviders.fromMap((map['identityProviders'] as Map).cast<String, dynamic>())),
-      login: map['login'] == null ? null : pulumi.Output.create<Login>(Login.fromMap((map['login'] as Map).cast<String, dynamic>())),
-      platform: map['platform'] == null ? null : pulumi.Output.create<AuthPlatform>(AuthPlatform.fromMap((map['platform'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authConfigName: map['authConfigName'] == null ? null : (map['authConfigName'] as String).input(),
+      containerAppName: (map['containerAppName'] as String).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (EncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
+      globalValidation: map['globalValidation'] == null ? null : (GlobalValidation.fromMap((map['globalValidation'] as Map).cast<String, dynamic>())).input(),
+      httpSettings: map['httpSettings'] == null ? null : (HttpSettings.fromMap((map['httpSettings'] as Map).cast<String, dynamic>())).input(),
+      identityProviders: map['identityProviders'] == null ? null : (IdentityProviders.fromMap((map['identityProviders'] as Map).cast<String, dynamic>())).input(),
+      login: map['login'] == null ? null : (Login.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
+      platform: map['platform'] == null ? null : (AuthPlatform.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EncryptionConfiguration {
   /// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
-  final String? kmsKeyName;
+  final pulumi.Input<String>? kmsKeyName;
 
   /// Creates a new [EncryptionConfiguration].
   /// [kmsKeyName] Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -19,7 +20,7 @@ class EncryptionConfiguration {
 
   factory EncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return EncryptionConfiguration(
-      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
     );
   }
 }

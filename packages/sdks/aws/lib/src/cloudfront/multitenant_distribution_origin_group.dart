@@ -6,11 +6,11 @@ import 'multitenant_distribution_origin_group_member.dart';
 
 class MultitenantDistributionOriginGroup {
   /// Failover criteria for when to failover to the secondary origin. See Failover Criteria below.
-  final MultitenantDistributionOriginGroupFailoverCriteria failoverCriteria;
+  final pulumi.Input<MultitenantDistributionOriginGroupFailoverCriteria> failoverCriteria;
   /// Identifier for the distribution.
-  final String id;
+  final pulumi.Input<String> id;
   /// List of origins in this origin group. Must contain exactly 2 members. See Origin Group Member below.
-  final List<MultitenantDistributionOriginGroupMember> members;
+  final pulumi.Input<List<MultitenantDistributionOriginGroupMember>> members;
 
   /// Creates a new [MultitenantDistributionOriginGroup].
   /// [failoverCriteria] Failover criteria for when to failover to the secondary origin. See Failover Criteria below.
@@ -24,17 +24,17 @@ class MultitenantDistributionOriginGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'failoverCriteria': failoverCriteria.toMap(),
+      'failoverCriteria': pulumi.Input.mapInputValue<MultitenantDistributionOriginGroupFailoverCriteria, Map<String, dynamic>>(failoverCriteria, (value) => value.toMap()),
       'id': id,
-      'members': pulumi.Input.encodeList<MultitenantDistributionOriginGroupMember, Map<String, dynamic>>(members, (value) => value.toMap()),
+      'members': pulumi.Input.mapInputValue<List<MultitenantDistributionOriginGroupMember>, List<Map<String, dynamic>>>(members, (value) => pulumi.Input.encodeList<MultitenantDistributionOriginGroupMember, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MultitenantDistributionOriginGroup.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginGroup(
-      failoverCriteria: MultitenantDistributionOriginGroupFailoverCriteria.fromMap((map['failoverCriteria'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      members: pulumi.Input.decodeList<MultitenantDistributionOriginGroupMember>(map['members'], (value) => MultitenantDistributionOriginGroupMember.fromMap((value as Map).cast<String, dynamic>())),
+      failoverCriteria: (MultitenantDistributionOriginGroupFailoverCriteria.fromMap((map['failoverCriteria'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      members: (pulumi.Input.decodeList<MultitenantDistributionOriginGroupMember>(map['members'], (value) => MultitenantDistributionOriginGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

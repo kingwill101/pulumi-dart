@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
 class Certificate {
   /// The raw certificate bytes in DER format.
-  final String rawDer;
+  final pulumi.Input<String> rawDer;
 
   /// Creates a new [Certificate].
   /// [rawDer] The raw certificate bytes in DER format.
@@ -20,7 +21,7 @@ class Certificate {
 
   factory Certificate.fromMap(Map<String, dynamic> map) {
     return Certificate(
-      rawDer: map['rawDer'] as String,
+      rawDer: (map['rawDer'] as String).input(),
     );
   }
 }

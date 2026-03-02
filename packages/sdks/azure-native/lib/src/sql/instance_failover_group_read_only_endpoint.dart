@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Read-only endpoint of the failover group instance.
 class InstanceFailoverGroupReadOnlyEndpoint {
   /// Failover policy of the read-only endpoint for the failover group.
-  final String? failoverPolicy;
+  final pulumi.Input<String>? failoverPolicy;
 
   /// Creates a new [InstanceFailoverGroupReadOnlyEndpoint].
   /// [failoverPolicy] Failover policy of the read-only endpoint for the failover group.
@@ -20,7 +21,7 @@ class InstanceFailoverGroupReadOnlyEndpoint {
 
   factory InstanceFailoverGroupReadOnlyEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceFailoverGroupReadOnlyEndpoint(
-      failoverPolicy: map['failoverPolicy'] == null ? null : map['failoverPolicy'] as String,
+      failoverPolicy: map['failoverPolicy'] == null ? null : (map['failoverPolicy'] as String).input(),
     );
   }
 }

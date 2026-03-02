@@ -31,21 +31,14 @@ class ZoneQueuedResourceArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [zone] Optional.
   ZoneQueuedResourceArgs({
-    pulumi.Output<BulkInsertInstanceResource>? bulkInsertInstanceResource,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<QueuingPolicy>? queuingPolicy,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? zone,
-  }) :
-      bulkInsertInstanceResource = pulumi.Input.asOptionalInput<BulkInsertInstanceResource>(bulkInsertInstanceResource),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queuingPolicy = pulumi.Input.asOptionalInput<QueuingPolicy>(queuingPolicy),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.bulkInsertInstanceResource,
+    this.description,
+    this.name,
+    this.project,
+    this.queuingPolicy,
+    this.requestId,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ZoneQueuedResourceArgs {
 
   factory ZoneQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return ZoneQueuedResourceArgs(
-      bulkInsertInstanceResource: map['bulkInsertInstanceResource'] == null ? null : pulumi.Output.create<BulkInsertInstanceResource>(BulkInsertInstanceResource.fromMap((map['bulkInsertInstanceResource'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      queuingPolicy: map['queuingPolicy'] == null ? null : pulumi.Output.create<QueuingPolicy>(QueuingPolicy.fromMap((map['queuingPolicy'] as Map).cast<String, dynamic>())),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      bulkInsertInstanceResource: map['bulkInsertInstanceResource'] == null ? null : (BulkInsertInstanceResource.fromMap((map['bulkInsertInstanceResource'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      queuingPolicy: map['queuingPolicy'] == null ? null : (QueuingPolicy.fromMap((map['queuingPolicy'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

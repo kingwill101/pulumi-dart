@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionReadinessCheck {
   /// A maximum time limit on application initialization, measured from moment the application successfully
   /// replies to a healthcheck until it is ready to serve traffic. Default: "300s"
-  final String? appStartTimeout;
+  final pulumi.Input<String>? appStartTimeout;
   /// Interval between health checks.  Default: "5s".
-  final String? checkInterval;
+  final pulumi.Input<String>? checkInterval;
   /// Number of consecutive failed checks required before removing traffic. Default: 2.
-  final double? failureThreshold;
+  final pulumi.Input<double>? failureThreshold;
   /// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
-  final String? host;
+  final pulumi.Input<String>? host;
   /// The request path.
-  final String path;
+  final pulumi.Input<String> path;
   /// Number of consecutive successful checks required before receiving traffic. Default: 2.
-  final double? successThreshold;
+  final pulumi.Input<double>? successThreshold;
   /// Time before the check is considered failed. Default: "4s"
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [FlexibleAppVersionReadinessCheck].
   /// [appStartTimeout] A maximum time limit on application initialization, measured from moment the application successfully
@@ -50,13 +51,13 @@ class FlexibleAppVersionReadinessCheck {
 
   factory FlexibleAppVersionReadinessCheck.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionReadinessCheck(
-      appStartTimeout: map['appStartTimeout'] == null ? null : map['appStartTimeout'] as String,
-      checkInterval: map['checkInterval'] == null ? null : map['checkInterval'] as String,
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as double,
-      host: map['host'] == null ? null : map['host'] as String,
-      path: map['path'] as String,
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as double,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      appStartTimeout: map['appStartTimeout'] == null ? null : (map['appStartTimeout'] as String).input(),
+      checkInterval: map['checkInterval'] == null ? null : (map['checkInterval'] as String).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as double).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      path: (map['path'] as String).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as double).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

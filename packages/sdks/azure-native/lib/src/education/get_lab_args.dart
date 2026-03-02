@@ -22,15 +22,11 @@ class GetLabArgs {
   /// [includeBudget] May be used to include budget information.
   /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
   GetLabArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> billingProfileName,
-    pulumi.Output<bool>? includeBudget,
-    required pulumi.Output<String> invoiceSectionName,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingProfileName = pulumi.Input.asInput<String>(billingProfileName),
-      includeBudget = pulumi.Input.asOptionalInput<bool>(includeBudget),
-      invoiceSectionName = pulumi.Input.asInput<String>(invoiceSectionName);
+    required this.billingAccountName,
+    required this.billingProfileName,
+    this.includeBudget,
+    required this.invoiceSectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetLabArgs {
 
   factory GetLabArgs.fromMap(Map<String, dynamic> map) {
     return GetLabArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingProfileName: pulumi.Output.create<String>(map['billingProfileName'] as String),
-      includeBudget: map['includeBudget'] == null ? null : pulumi.Output.create<bool>(map['includeBudget'] as bool),
-      invoiceSectionName: pulumi.Output.create<String>(map['invoiceSectionName'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingProfileName: (map['billingProfileName'] as String).input(),
+      includeBudget: map['includeBudget'] == null ? null : (map['includeBudget'] as bool).input(),
+      invoiceSectionName: (map['invoiceSectionName'] as String).input(),
     );
   }
 }

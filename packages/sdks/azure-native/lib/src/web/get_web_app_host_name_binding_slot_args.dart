@@ -22,15 +22,11 @@ class GetWebAppHostNameBindingSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   GetWebAppHostNameBindingSlotArgs({
-    required pulumi.Output<String> hostName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      hostName = pulumi.Input.asInput<String>(hostName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    required this.hostName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWebAppHostNameBindingSlotArgs {
 
   factory GetWebAppHostNameBindingSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppHostNameBindingSlotArgs(
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      hostName: (map['hostName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

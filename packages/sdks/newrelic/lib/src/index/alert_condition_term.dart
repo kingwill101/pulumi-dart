@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertConditionTerm {
   /// In minutes, must be in the range of 5 to 120, inclusive.
-  final int duration;
+  final pulumi.Input<int> duration;
   /// One of (above, below, equal). Defaults to equal.
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// One of (critical, warning). Defaults to critical.
-  final String? priority;
+  final pulumi.Input<String>? priority;
   /// Must be 0 or greater.
-  final double threshold;
+  final pulumi.Input<double> threshold;
   /// One of (all, any).
-  final String timeFunction;
+  final pulumi.Input<String> timeFunction;
 
   /// Creates a new [AlertConditionTerm].
   /// [duration] In minutes, must be in the range of 5 to 120, inclusive.
@@ -39,11 +40,11 @@ class AlertConditionTerm {
 
   factory AlertConditionTerm.fromMap(Map<String, dynamic> map) {
     return AlertConditionTerm(
-      duration: map['duration'] as int,
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as String,
-      threshold: map['threshold'] as double,
-      timeFunction: map['timeFunction'] as String,
+      duration: (map['duration'] as int).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
+      threshold: (map['threshold'] as double).input(),
+      timeFunction: (map['timeFunction'] as String).input(),
     );
   }
 }

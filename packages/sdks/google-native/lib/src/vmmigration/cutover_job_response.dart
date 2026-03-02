@@ -9,27 +9,27 @@ import 'status_response.dart';
 /// CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
 class CutoverJobResponse {
   /// Details of the target Persistent Disks in Compute Engine.
-  final ComputeEngineDisksTargetDetailsResponse computeEngineDisksTargetDetails;
+  final pulumi.Input<ComputeEngineDisksTargetDetailsResponse> computeEngineDisksTargetDetails;
   /// Details of the target VM in Compute Engine.
-  final ComputeEngineTargetDetailsResponse computeEngineTargetDetails;
+  final pulumi.Input<ComputeEngineTargetDetailsResponse> computeEngineTargetDetails;
   /// The time the cutover job was created (as an API call, not when it was actually created in the target).
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The time the cutover job had finished.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Provides details for the errors that led to the Cutover Job's state.
-  final StatusResponse error;
+  final pulumi.Input<StatusResponse> error;
   /// The name of the cutover job.
-  final String name;
+  final pulumi.Input<String> name;
   /// The current progress in percentage of the cutover job.
-  final int progressPercent;
+  final pulumi.Input<int> progressPercent;
   /// State of the cutover job.
-  final String state;
+  final pulumi.Input<String> state;
   /// A message providing possible extra details about the current state.
-  final String stateMessage;
+  final pulumi.Input<String> stateMessage;
   /// The time the state was last updated.
-  final String stateTime;
+  final pulumi.Input<String> stateTime;
   /// The cutover steps list representing its progress.
-  final List<CutoverStepResponse> steps;
+  final pulumi.Input<List<CutoverStepResponse>> steps;
 
   /// Creates a new [CutoverJobResponse].
   /// [computeEngineDisksTargetDetails] Details of the target Persistent Disks in Compute Engine.
@@ -59,33 +59,33 @@ class CutoverJobResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails.toMap(),
-      'computeEngineTargetDetails': computeEngineTargetDetails.toMap(),
+      'computeEngineDisksTargetDetails': pulumi.Input.mapInputValue<ComputeEngineDisksTargetDetailsResponse, Map<String, dynamic>>(computeEngineDisksTargetDetails, (value) => value.toMap()),
+      'computeEngineTargetDetails': pulumi.Input.mapInputValue<ComputeEngineTargetDetailsResponse, Map<String, dynamic>>(computeEngineTargetDetails, (value) => value.toMap()),
       'createTime': createTime,
       'endTime': endTime,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'name': name,
       'progressPercent': progressPercent,
       'state': state,
       'stateMessage': stateMessage,
       'stateTime': stateTime,
-      'steps': pulumi.Input.encodeList<CutoverStepResponse, Map<String, dynamic>>(steps, (value) => value.toMap()),
+      'steps': pulumi.Input.mapInputValue<List<CutoverStepResponse>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<CutoverStepResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CutoverJobResponse.fromMap(Map<String, dynamic> map) {
     return CutoverJobResponse(
-      computeEngineDisksTargetDetails: ComputeEngineDisksTargetDetailsResponse.fromMap((map['computeEngineDisksTargetDetails'] as Map).cast<String, dynamic>()),
-      computeEngineTargetDetails: ComputeEngineTargetDetailsResponse.fromMap((map['computeEngineTargetDetails'] as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      endTime: map['endTime'] as String,
-      error: StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      progressPercent: map['progressPercent'] as int,
-      state: map['state'] as String,
-      stateMessage: map['stateMessage'] as String,
-      stateTime: map['stateTime'] as String,
-      steps: pulumi.Input.decodeList<CutoverStepResponse>(map['steps'], (value) => CutoverStepResponse.fromMap((value as Map).cast<String, dynamic>())),
+      computeEngineDisksTargetDetails: (ComputeEngineDisksTargetDetailsResponse.fromMap((map['computeEngineDisksTargetDetails'] as Map).cast<String, dynamic>())).input(),
+      computeEngineTargetDetails: (ComputeEngineTargetDetailsResponse.fromMap((map['computeEngineTargetDetails'] as Map).cast<String, dynamic>())).input(),
+      createTime: (map['createTime'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      error: (StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      progressPercent: (map['progressPercent'] as int).input(),
+      state: (map['state'] as String).input(),
+      stateMessage: (map['stateMessage'] as String).input(),
+      stateTime: (map['stateTime'] as String).input(),
+      steps: (pulumi.Input.decodeList<CutoverStepResponse>(map['steps'], (value) => CutoverStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -129,33 +129,20 @@ class WorkforcePoolProviderArgs {
   /// [scimUsage] Agentspace only. Specifies whether the workforce identity pool
   /// [workforcePoolId] The ID to use for the pool, which becomes the final component of the resource name.
   WorkforcePoolProviderArgs({
-    pulumi.Output<String>? attributeCondition,
-    pulumi.Output<Map<String, String>>? attributeMapping,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<WorkforcePoolProviderExtendedAttributesOauth2Client>? extendedAttributesOauth2Client,
-    pulumi.Output<WorkforcePoolProviderExtraAttributesOauth2Client>? extraAttributesOauth2Client,
-    required pulumi.Output<String> location,
-    pulumi.Output<WorkforcePoolProviderOidc>? oidc,
-    required pulumi.Output<String> providerId,
-    pulumi.Output<WorkforcePoolProviderSaml>? saml,
-    pulumi.Output<String>? scimUsage,
-    required pulumi.Output<String> workforcePoolId,
-  }) :
-      attributeCondition = pulumi.Input.asOptionalInput<String>(attributeCondition),
-      attributeMapping = pulumi.Input.asOptionalInput<Map<String, String>>(attributeMapping),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      extendedAttributesOauth2Client = pulumi.Input.asOptionalInput<WorkforcePoolProviderExtendedAttributesOauth2Client>(extendedAttributesOauth2Client),
-      extraAttributesOauth2Client = pulumi.Input.asOptionalInput<WorkforcePoolProviderExtraAttributesOauth2Client>(extraAttributesOauth2Client),
-      location = pulumi.Input.asInput<String>(location),
-      oidc = pulumi.Input.asOptionalInput<WorkforcePoolProviderOidc>(oidc),
-      providerId = pulumi.Input.asInput<String>(providerId),
-      saml = pulumi.Input.asOptionalInput<WorkforcePoolProviderSaml>(saml),
-      scimUsage = pulumi.Input.asOptionalInput<String>(scimUsage),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+    this.attributeCondition,
+    this.attributeMapping,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.extendedAttributesOauth2Client,
+    this.extraAttributesOauth2Client,
+    required this.location,
+    this.oidc,
+    required this.providerId,
+    this.saml,
+    this.scimUsage,
+    required this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -177,19 +164,19 @@ class WorkforcePoolProviderArgs {
 
   factory WorkforcePoolProviderArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderArgs(
-      attributeCondition: map['attributeCondition'] == null ? null : pulumi.Output.create<String>(map['attributeCondition'] as String),
-      attributeMapping: map['attributeMapping'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributeMapping'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      extendedAttributesOauth2Client: map['extendedAttributesOauth2Client'] == null ? null : pulumi.Output.create<WorkforcePoolProviderExtendedAttributesOauth2Client>(WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap((map['extendedAttributesOauth2Client'] as Map).cast<String, dynamic>())),
-      extraAttributesOauth2Client: map['extraAttributesOauth2Client'] == null ? null : pulumi.Output.create<WorkforcePoolProviderExtraAttributesOauth2Client>(WorkforcePoolProviderExtraAttributesOauth2Client.fromMap((map['extraAttributesOauth2Client'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      oidc: map['oidc'] == null ? null : pulumi.Output.create<WorkforcePoolProviderOidc>(WorkforcePoolProviderOidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())),
-      providerId: pulumi.Output.create<String>(map['providerId'] as String),
-      saml: map['saml'] == null ? null : pulumi.Output.create<WorkforcePoolProviderSaml>(WorkforcePoolProviderSaml.fromMap((map['saml'] as Map).cast<String, dynamic>())),
-      scimUsage: map['scimUsage'] == null ? null : pulumi.Output.create<String>(map['scimUsage'] as String),
-      workforcePoolId: pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition'] as String).input(),
+      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      extendedAttributesOauth2Client: map['extendedAttributesOauth2Client'] == null ? null : (WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap((map['extendedAttributesOauth2Client'] as Map).cast<String, dynamic>())).input(),
+      extraAttributesOauth2Client: map['extraAttributesOauth2Client'] == null ? null : (WorkforcePoolProviderExtraAttributesOauth2Client.fromMap((map['extraAttributesOauth2Client'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      oidc: map['oidc'] == null ? null : (WorkforcePoolProviderOidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
+      providerId: (map['providerId'] as String).input(),
+      saml: map['saml'] == null ? null : (WorkforcePoolProviderSaml.fromMap((map['saml'] as Map).cast<String, dynamic>())).input(),
+      scimUsage: map['scimUsage'] == null ? null : (map['scimUsage'] as String).input(),
+      workforcePoolId: (map['workforcePoolId'] as String).input(),
     );
   }
 }

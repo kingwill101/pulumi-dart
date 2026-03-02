@@ -38,17 +38,12 @@ class ConsentStoreArgs {
   /// [labels] User-supplied key-value pairs used to organize Consent stores.
   /// [name] The name of this ConsentStore, for example:
   ConsentStoreArgs({
-    required pulumi.Output<String> dataset,
-    pulumi.Output<String>? defaultConsentTtl,
-    pulumi.Output<bool>? enableConsentCreateOnUpdate,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-  }) :
-      dataset = pulumi.Input.asInput<String>(dataset),
-      defaultConsentTtl = pulumi.Input.asOptionalInput<String>(defaultConsentTtl),
-      enableConsentCreateOnUpdate = pulumi.Input.asOptionalInput<bool>(enableConsentCreateOnUpdate),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.dataset,
+    this.defaultConsentTtl,
+    this.enableConsentCreateOnUpdate,
+    this.labels,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,11 +57,11 @@ class ConsentStoreArgs {
 
   factory ConsentStoreArgs.fromMap(Map<String, dynamic> map) {
     return ConsentStoreArgs(
-      dataset: pulumi.Output.create<String>(map['dataset'] as String),
-      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : pulumi.Output.create<String>(map['defaultConsentTtl'] as String),
-      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : pulumi.Output.create<bool>(map['enableConsentCreateOnUpdate'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      dataset: (map['dataset'] as String).input(),
+      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : (map['defaultConsentTtl'] as String).input(),
+      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : (map['enableConsentCreateOnUpdate'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

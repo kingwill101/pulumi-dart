@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about Network Security Perimeter
 class NetworkSecurityPerimeterResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final pulumi.Input<String> id;
   /// Location of the Network Security Perimeter
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Guid of the Network Security Perimeter
-  final String? perimeterGuid;
+  final pulumi.Input<String>? perimeterGuid;
 
   /// Creates a new [NetworkSecurityPerimeterResponse].
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -30,9 +31,9 @@ class NetworkSecurityPerimeterResponse {
 
   factory NetworkSecurityPerimeterResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterResponse(
-      id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      perimeterGuid: map['perimeterGuid'] == null ? null : map['perimeterGuid'] as String,
+      id: (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      perimeterGuid: map['perimeterGuid'] == null ? null : (map['perimeterGuid'] as String).input(),
     );
   }
 }

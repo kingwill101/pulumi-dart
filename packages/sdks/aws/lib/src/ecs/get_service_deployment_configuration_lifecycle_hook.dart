@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceDeploymentConfigurationLifecycleHook {
   /// Additional details for the hook
-  final String hookDetails;
+  final pulumi.Input<String> hookDetails;
   /// ARN of the Lambda function to invoke
-  final String hookTargetArn;
+  final pulumi.Input<String> hookTargetArn;
   /// Deployment stages when hook is invoked
-  final List<String> lifecycleStages;
+  final pulumi.Input<List<String>> lifecycleStages;
   /// ARN of the IAM role that allows ECS to manage the target groups.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [GetServiceDeploymentConfigurationLifecycleHook].
   /// [hookDetails] Additional details for the hook
@@ -34,10 +35,10 @@ class GetServiceDeploymentConfigurationLifecycleHook {
 
   factory GetServiceDeploymentConfigurationLifecycleHook.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationLifecycleHook(
-      hookDetails: map['hookDetails'] as String,
-      hookTargetArn: map['hookTargetArn'] as String,
-      lifecycleStages: (map['lifecycleStages'] as List).cast<String>(),
-      roleArn: map['roleArn'] as String,
+      hookDetails: (map['hookDetails'] as String).input(),
+      hookTargetArn: (map['hookTargetArn'] as String).input(),
+      lifecycleStages: ((map['lifecycleStages'] as List).cast<String>()).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

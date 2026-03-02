@@ -39,25 +39,16 @@ class GetFloatingIpArgs {
   /// [tags] The list of floating IP tags to filter.
   /// [tenantId] The owner of the floating IP.
   GetFloatingIpArgs({
-    pulumi.Output<String>? address,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fixedIp,
-    pulumi.Output<String>? pool,
-    pulumi.Output<String>? portId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fixedIp = pulumi.Input.asOptionalInput<String>(fixedIp),
-      pool = pulumi.Input.asOptionalInput<String>(pool),
-      portId = pulumi.Input.asOptionalInput<String>(portId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.address,
+    this.description,
+    this.fixedIp,
+    this.pool,
+    this.portId,
+    this.region,
+    this.status,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class GetFloatingIpArgs {
 
   factory GetFloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpArgs(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fixedIp: map['fixedIp'] == null ? null : pulumi.Output.create<String>(map['fixedIp'] as String),
-      pool: map['pool'] == null ? null : pulumi.Output.create<String>(map['pool'] as String),
-      portId: map['portId'] == null ? null : pulumi.Output.create<String>(map['portId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
+      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

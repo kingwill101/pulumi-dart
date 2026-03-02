@@ -39,25 +39,16 @@ class ResourceGroupCostManagementExportArgs {
   /// [recurrenceType] How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
   /// [resourceGroupId] The id of the resource group on which to create an export. Changing this forces a new resource to be created.
   ResourceGroupCostManagementExportArgs({
-    pulumi.Output<bool>? active,
-    required pulumi.Output<ResourceGroupCostManagementExportExportDataOptions> exportDataOptions,
-    required pulumi.Output<ResourceGroupCostManagementExportExportDataStorageLocation> exportDataStorageLocation,
-    pulumi.Output<String>? fileFormat,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> recurrencePeriodEndDate,
-    required pulumi.Output<String> recurrencePeriodStartDate,
-    required pulumi.Output<String> recurrenceType,
-    required pulumi.Output<String> resourceGroupId,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      exportDataOptions = pulumi.Input.asInput<ResourceGroupCostManagementExportExportDataOptions>(exportDataOptions),
-      exportDataStorageLocation = pulumi.Input.asInput<ResourceGroupCostManagementExportExportDataStorageLocation>(exportDataStorageLocation),
-      fileFormat = pulumi.Input.asOptionalInput<String>(fileFormat),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recurrencePeriodEndDate = pulumi.Input.asInput<String>(recurrencePeriodEndDate),
-      recurrencePeriodStartDate = pulumi.Input.asInput<String>(recurrencePeriodStartDate),
-      recurrenceType = pulumi.Input.asInput<String>(recurrenceType),
-      resourceGroupId = pulumi.Input.asInput<String>(resourceGroupId);
+    this.active,
+    required this.exportDataOptions,
+    required this.exportDataStorageLocation,
+    this.fileFormat,
+    this.name,
+    required this.recurrencePeriodEndDate,
+    required this.recurrencePeriodStartDate,
+    required this.recurrenceType,
+    required this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ResourceGroupCostManagementExportArgs {
 
   factory ResourceGroupCostManagementExportArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupCostManagementExportArgs(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      exportDataOptions: pulumi.Output.create<ResourceGroupCostManagementExportExportDataOptions>(ResourceGroupCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())),
-      exportDataStorageLocation: pulumi.Output.create<ResourceGroupCostManagementExportExportDataStorageLocation>(ResourceGroupCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())),
-      fileFormat: map['fileFormat'] == null ? null : pulumi.Output.create<String>(map['fileFormat'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recurrencePeriodEndDate: pulumi.Output.create<String>(map['recurrencePeriodEndDate'] as String),
-      recurrencePeriodStartDate: pulumi.Output.create<String>(map['recurrencePeriodStartDate'] as String),
-      recurrenceType: pulumi.Output.create<String>(map['recurrenceType'] as String),
-      resourceGroupId: pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      exportDataOptions: (ResourceGroupCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())).input(),
+      exportDataStorageLocation: (ResourceGroupCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recurrencePeriodEndDate: (map['recurrencePeriodEndDate'] as String).input(),
+      recurrencePeriodStartDate: (map['recurrencePeriodStartDate'] as String).input(),
+      recurrenceType: (map['recurrenceType'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetMongoDBResourceMongoDBCollectionArgs {
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMongoDBResourceMongoDBCollectionArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> collectionName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      collectionName = pulumi.Input.asInput<String>(collectionName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.collectionName,
+    required this.databaseName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetMongoDBResourceMongoDBCollectionArgs {
 
   factory GetMongoDBResourceMongoDBCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetMongoDBResourceMongoDBCollectionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      collectionName: pulumi.Output.create<String>(map['collectionName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      collectionName: (map['collectionName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

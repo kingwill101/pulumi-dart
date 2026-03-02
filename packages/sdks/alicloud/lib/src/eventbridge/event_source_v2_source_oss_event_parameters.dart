@@ -5,11 +5,11 @@ import 'event_source_v2_source_oss_event_parameters_match_rule.dart';
 
 class EventSourceV2SourceOssEventParameters {
   /// OSS event type list.
-  final List<String>? eventTypes;
+  final pulumi.Input<List<String>>? eventTypes;
   /// Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
-  final List<List<EventSourceV2SourceOssEventParametersMatchRule>>? matchRules;
+  final pulumi.Input<List<List<EventSourceV2SourceOssEventParametersMatchRule>>>? matchRules;
   /// The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
-  final String? stsRoleArn;
+  final pulumi.Input<String>? stsRoleArn;
 
   /// Creates a new [EventSourceV2SourceOssEventParameters].
   /// [eventTypes] OSS event type list.
@@ -24,16 +24,16 @@ class EventSourceV2SourceOssEventParameters {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'eventTypes': ?eventTypes,
-      'matchRules': ?matchRules == null ? null : pulumi.Input.encodeList<List<EventSourceV2SourceOssEventParametersMatchRule>, List<Map<String, dynamic>>>(matchRules!, (value) => pulumi.Input.encodeList<EventSourceV2SourceOssEventParametersMatchRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'matchRules': ?pulumi.Input.mapOptionalInputValue<List<List<EventSourceV2SourceOssEventParametersMatchRule>>, List<List<Map<String, dynamic>>>>(matchRules, (value) => pulumi.Input.encodeList<List<EventSourceV2SourceOssEventParametersMatchRule>, List<Map<String, dynamic>>>(value, (value) => pulumi.Input.encodeList<EventSourceV2SourceOssEventParametersMatchRule, Map<String, dynamic>>(value, (value) => value.toMap()))),
       'stsRoleArn': ?stsRoleArn,
     };
   }
 
   factory EventSourceV2SourceOssEventParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceOssEventParameters(
-      eventTypes: map['eventTypes'] == null ? null : (map['eventTypes'] as List).cast<String>(),
-      matchRules: map['matchRules'] == null ? null : pulumi.Input.decodeList<List<EventSourceV2SourceOssEventParametersMatchRule>>(map['matchRules'], (value) => pulumi.Input.decodeList<EventSourceV2SourceOssEventParametersMatchRule>(value, (value) => EventSourceV2SourceOssEventParametersMatchRule.fromMap((value as Map).cast<String, dynamic>()))),
-      stsRoleArn: map['stsRoleArn'] == null ? null : map['stsRoleArn'] as String,
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
+      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<List<EventSourceV2SourceOssEventParametersMatchRule>>(map['matchRules'], (value) => pulumi.Input.decodeList<EventSourceV2SourceOssEventParametersMatchRule>(value, (value) => EventSourceV2SourceOssEventParametersMatchRule.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      stsRoleArn: map['stsRoleArn'] == null ? null : (map['stsRoleArn'] as String).input(),
     );
   }
 }

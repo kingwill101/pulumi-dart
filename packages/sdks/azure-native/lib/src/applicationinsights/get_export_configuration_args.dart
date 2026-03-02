@@ -19,13 +19,10 @@ class GetExportConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
   GetExportConfigurationArgs({
-    required pulumi.Output<String> exportId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      exportId = pulumi.Input.asInput<String>(exportId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.exportId,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExportConfigurationArgs {
 
   factory GetExportConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetExportConfigurationArgs(
-      exportId: pulumi.Output.create<String>(map['exportId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      exportId: (map['exportId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

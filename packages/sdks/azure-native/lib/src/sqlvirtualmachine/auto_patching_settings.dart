@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'day_of_week.dart';
 
 /// Set a patching window during which Windows and SQL patches will be applied.
 class AutoPatchingSettings {
   /// Additional Patch to be enable or enabled on the SQL Virtual Machine.
-  final String? additionalVmPatch;
+  final pulumi.Input<String>? additionalVmPatch;
   /// Day of week to apply the patch on.
-  final DayOfWeek? dayOfWeek;
+  final pulumi.Input<DayOfWeek>? dayOfWeek;
   /// Enable or disable autopatching on SQL virtual machine.
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
   /// Duration of patching.
-  final int? maintenanceWindowDuration;
+  final pulumi.Input<int>? maintenanceWindowDuration;
   /// Hour of the day when patching is initiated. Local VM time.
-  final int? maintenanceWindowStartingHour;
+  final pulumi.Input<int>? maintenanceWindowStartingHour;
 
   /// Creates a new [AutoPatchingSettings].
   /// [additionalVmPatch] Additional Patch to be enable or enabled on the SQL Virtual Machine.
@@ -32,7 +33,7 @@ class AutoPatchingSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalVmPatch': ?additionalVmPatch,
-      'dayOfWeek': ?dayOfWeek == null ? null : dayOfWeek!.value,
+      'dayOfWeek': ?pulumi.Input.mapOptionalInputValue<DayOfWeek, String>(dayOfWeek, (value) => value.value),
       'enable': ?enable,
       'maintenanceWindowDuration': ?maintenanceWindowDuration,
       'maintenanceWindowStartingHour': ?maintenanceWindowStartingHour,
@@ -41,11 +42,11 @@ class AutoPatchingSettings {
 
   factory AutoPatchingSettings.fromMap(Map<String, dynamic> map) {
     return AutoPatchingSettings(
-      additionalVmPatch: map['additionalVmPatch'] == null ? null : map['additionalVmPatch'] as String,
-      dayOfWeek: map['dayOfWeek'] == null ? null : DayOfWeek.fromValue(map['dayOfWeek'] as String),
-      enable: map['enable'] == null ? null : map['enable'] as bool,
-      maintenanceWindowDuration: map['maintenanceWindowDuration'] == null ? null : map['maintenanceWindowDuration'] as int,
-      maintenanceWindowStartingHour: map['maintenanceWindowStartingHour'] == null ? null : map['maintenanceWindowStartingHour'] as int,
+      additionalVmPatch: map['additionalVmPatch'] == null ? null : (map['additionalVmPatch'] as String).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (DayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      maintenanceWindowDuration: map['maintenanceWindowDuration'] == null ? null : (map['maintenanceWindowDuration'] as int).input(),
+      maintenanceWindowStartingHour: map['maintenanceWindowStartingHour'] == null ? null : (map['maintenanceWindowStartingHour'] as int).input(),
     );
   }
 }

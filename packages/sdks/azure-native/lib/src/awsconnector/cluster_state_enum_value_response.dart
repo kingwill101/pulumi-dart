@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ClusterStateEnumValue
 class ClusterStateEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ClusterStateEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class ClusterStateEnumValueResponse {
 
   factory ClusterStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ClusterStateEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

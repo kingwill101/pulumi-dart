@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The springbootsites resource definition.
 class SpringbootsitesProperties {
   /// The master site ID from Azure Migrate.
-  final String? masterSiteId;
+  final pulumi.Input<String>? masterSiteId;
   /// The migrate project ID from Azure Migrate.
-  final String? migrateProjectId;
+  final pulumi.Input<String>? migrateProjectId;
   /// The resource provisioning state.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
 
   /// Creates a new [SpringbootsitesProperties].
   /// [masterSiteId] The master site ID from Azure Migrate.
@@ -30,9 +31,9 @@ class SpringbootsitesProperties {
 
   factory SpringbootsitesProperties.fromMap(Map<String, dynamic> map) {
     return SpringbootsitesProperties(
-      masterSiteId: map['masterSiteId'] == null ? null : map['masterSiteId'] as String,
-      migrateProjectId: map['migrateProjectId'] == null ? null : map['migrateProjectId'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      masterSiteId: map['masterSiteId'] == null ? null : (map['masterSiteId'] as String).input(),
+      migrateProjectId: map['migrateProjectId'] == null ? null : (map['migrateProjectId'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
     );
   }
 }

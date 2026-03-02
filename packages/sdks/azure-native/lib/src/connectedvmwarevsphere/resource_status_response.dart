@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The resource status information.
 class ResourceStatusResponse {
   /// The last update time for this condition.
-  final String lastUpdatedAt;
+  final pulumi.Input<String> lastUpdatedAt;
   /// A human readable message indicating details about the status.
-  final String message;
+  final pulumi.Input<String> message;
   /// The reason for the condition's status.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// Severity with which to treat failures of this type of condition.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// Status of the condition.
-  final String status;
+  final pulumi.Input<String> status;
   /// The type of the condition.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ResourceStatusResponse].
   /// [lastUpdatedAt] The last update time for this condition.
@@ -45,12 +46,12 @@ class ResourceStatusResponse {
 
   factory ResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponse(
-      lastUpdatedAt: map['lastUpdatedAt'] as String,
-      message: map['message'] as String,
-      reason: map['reason'] as String,
-      severity: map['severity'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      lastUpdatedAt: (map['lastUpdatedAt'] as String).input(),
+      message: (map['message'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class Ipv6GatewayArgs {
   /// [tags] The tags for the resource.
   /// [vpcId] The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
   Ipv6GatewayArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipv6GatewayName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? spec,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipv6GatewayName = pulumi.Input.asOptionalInput<String>(ipv6GatewayName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      spec = pulumi.Input.asOptionalInput<String>(spec),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.description,
+    this.ipv6GatewayName,
+    this.resourceGroupId,
+    this.spec,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class Ipv6GatewayArgs {
 
   factory Ipv6GatewayArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6GatewayArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipv6GatewayName: map['ipv6GatewayName'] == null ? null : pulumi.Output.create<String>(map['ipv6GatewayName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<String>(map['spec'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipv6GatewayName: map['ipv6GatewayName'] == null ? null : (map['ipv6GatewayName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

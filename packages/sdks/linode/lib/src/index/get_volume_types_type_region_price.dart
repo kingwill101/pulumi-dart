@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVolumeTypesTypeRegionPrice {
-  final double hourly;
+  final pulumi.Input<double> hourly;
   /// The ID representing the Volume type.
-  final String id;
-  final double monthly;
+  final pulumi.Input<String> id;
+  final pulumi.Input<double> monthly;
 
   /// Creates a new [GetVolumeTypesTypeRegionPrice].
   /// [hourly] Required.
@@ -27,9 +28,9 @@ class GetVolumeTypesTypeRegionPrice {
 
   factory GetVolumeTypesTypeRegionPrice.fromMap(Map<String, dynamic> map) {
     return GetVolumeTypesTypeRegionPrice(
-      hourly: map['hourly'] as double,
-      id: map['id'] as String,
-      monthly: map['monthly'] as double,
+      hourly: (map['hourly'] as double).input(),
+      id: (map['id'] as String).input(),
+      monthly: (map['monthly'] as double).input(),
     );
   }
 }

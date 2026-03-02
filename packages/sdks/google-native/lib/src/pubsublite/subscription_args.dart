@@ -34,23 +34,15 @@ class SubscriptionArgs {
   /// [subscriptionId] Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
   /// [topic] The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
   SubscriptionArgs({
-    pulumi.Output<DeliveryConfig>? deliveryConfig,
-    pulumi.Output<ExportConfig>? exportConfig,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? skipBacklog,
-    required pulumi.Output<String> subscriptionId,
-    pulumi.Output<String>? topic,
-  }) :
-      deliveryConfig = pulumi.Input.asOptionalInput<DeliveryConfig>(deliveryConfig),
-      exportConfig = pulumi.Input.asOptionalInput<ExportConfig>(exportConfig),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      skipBacklog = pulumi.Input.asOptionalInput<bool>(skipBacklog),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId),
-      topic = pulumi.Input.asOptionalInput<String>(topic);
+    this.deliveryConfig,
+    this.exportConfig,
+    this.location,
+    this.name,
+    this.project,
+    this.skipBacklog,
+    required this.subscriptionId,
+    this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      deliveryConfig: map['deliveryConfig'] == null ? null : pulumi.Output.create<DeliveryConfig>(DeliveryConfig.fromMap((map['deliveryConfig'] as Map).cast<String, dynamic>())),
-      exportConfig: map['exportConfig'] == null ? null : pulumi.Output.create<ExportConfig>(ExportConfig.fromMap((map['exportConfig'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      skipBacklog: map['skipBacklog'] == null ? null : pulumi.Output.create<bool>(map['skipBacklog'] as bool),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
+      deliveryConfig: map['deliveryConfig'] == null ? null : (DeliveryConfig.fromMap((map['deliveryConfig'] as Map).cast<String, dynamic>())).input(),
+      exportConfig: map['exportConfig'] == null ? null : (ExportConfig.fromMap((map['exportConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      skipBacklog: map['skipBacklog'] == null ? null : (map['skipBacklog'] as bool).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

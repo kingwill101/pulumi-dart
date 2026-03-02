@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the source of connection monitor.
 class ConnectionMonitorSource {
   /// The source port used by connection monitor.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The ID of the resource used as the source by connection monitor.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [ConnectionMonitorSource].
   /// [port] The source port used by connection monitor.
@@ -25,8 +26,8 @@ class ConnectionMonitorSource {
 
   factory ConnectionMonitorSource.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorSource(
-      port: map['port'] == null ? null : map['port'] as int,
-      resourceId: map['resourceId'] as String,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

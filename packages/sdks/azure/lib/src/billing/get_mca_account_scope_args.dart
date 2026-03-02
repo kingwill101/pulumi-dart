@@ -19,13 +19,10 @@ class GetMcaAccountScopeArgs {
   /// [billingProfileName] The Billing Profile Name in the above Billing Account.
   /// [invoiceSectionName] The Invoice Section Name in the above Billing Profile.
   GetMcaAccountScopeArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> billingProfileName,
-    required pulumi.Output<String> invoiceSectionName,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingProfileName = pulumi.Input.asInput<String>(billingProfileName),
-      invoiceSectionName = pulumi.Input.asInput<String>(invoiceSectionName);
+    required this.billingAccountName,
+    required this.billingProfileName,
+    required this.invoiceSectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMcaAccountScopeArgs {
 
   factory GetMcaAccountScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetMcaAccountScopeArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingProfileName: pulumi.Output.create<String>(map['billingProfileName'] as String),
-      invoiceSectionName: pulumi.Output.create<String>(map['invoiceSectionName'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingProfileName: (map['billingProfileName'] as String).input(),
+      invoiceSectionName: (map['invoiceSectionName'] as String).input(),
     );
   }
 }

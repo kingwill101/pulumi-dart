@@ -60,31 +60,19 @@ class ConfigState {
   /// [signIn] Configuration related to local sign in methods.
   /// [smsRegionConfig] Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
   ConfigState({
-    pulumi.Output<List<String>>? authorizedDomains,
-    pulumi.Output<bool>? autodeleteAnonymousUsers,
-    pulumi.Output<ConfigBlockingFunctions>? blockingFunctions,
-    pulumi.Output<ConfigClient>? client,
-    pulumi.Output<ConfigMfa>? mfa,
-    pulumi.Output<ConfigMonitoring>? monitoring,
-    pulumi.Output<ConfigMultiTenant>? multiTenant,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ConfigQuota>? quota,
-    pulumi.Output<ConfigSignIn>? signIn,
-    pulumi.Output<ConfigSmsRegionConfig>? smsRegionConfig,
-  }) :
-      authorizedDomains = pulumi.Input.asOptionalInput<List<String>>(authorizedDomains),
-      autodeleteAnonymousUsers = pulumi.Input.asOptionalInput<bool>(autodeleteAnonymousUsers),
-      blockingFunctions = pulumi.Input.asOptionalInput<ConfigBlockingFunctions>(blockingFunctions),
-      client = pulumi.Input.asOptionalInput<ConfigClient>(client),
-      mfa = pulumi.Input.asOptionalInput<ConfigMfa>(mfa),
-      monitoring = pulumi.Input.asOptionalInput<ConfigMonitoring>(monitoring),
-      multiTenant = pulumi.Input.asOptionalInput<ConfigMultiTenant>(multiTenant),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      quota = pulumi.Input.asOptionalInput<ConfigQuota>(quota),
-      signIn = pulumi.Input.asOptionalInput<ConfigSignIn>(signIn),
-      smsRegionConfig = pulumi.Input.asOptionalInput<ConfigSmsRegionConfig>(smsRegionConfig);
+    this.authorizedDomains,
+    this.autodeleteAnonymousUsers,
+    this.blockingFunctions,
+    this.client,
+    this.mfa,
+    this.monitoring,
+    this.multiTenant,
+    this.name,
+    this.project,
+    this.quota,
+    this.signIn,
+    this.smsRegionConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,18 +93,18 @@ class ConfigState {
 
   factory ConfigState.fromMap(Map<String, dynamic> map) {
     return ConfigState(
-      authorizedDomains: map['authorizedDomains'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedDomains'] as List).cast<String>()),
-      autodeleteAnonymousUsers: map['autodeleteAnonymousUsers'] == null ? null : pulumi.Output.create<bool>(map['autodeleteAnonymousUsers'] as bool),
-      blockingFunctions: map['blockingFunctions'] == null ? null : pulumi.Output.create<ConfigBlockingFunctions>(ConfigBlockingFunctions.fromMap((map['blockingFunctions'] as Map).cast<String, dynamic>())),
-      client: map['client'] == null ? null : pulumi.Output.create<ConfigClient>(ConfigClient.fromMap((map['client'] as Map).cast<String, dynamic>())),
-      mfa: map['mfa'] == null ? null : pulumi.Output.create<ConfigMfa>(ConfigMfa.fromMap((map['mfa'] as Map).cast<String, dynamic>())),
-      monitoring: map['monitoring'] == null ? null : pulumi.Output.create<ConfigMonitoring>(ConfigMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())),
-      multiTenant: map['multiTenant'] == null ? null : pulumi.Output.create<ConfigMultiTenant>(ConfigMultiTenant.fromMap((map['multiTenant'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      quota: map['quota'] == null ? null : pulumi.Output.create<ConfigQuota>(ConfigQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())),
-      signIn: map['signIn'] == null ? null : pulumi.Output.create<ConfigSignIn>(ConfigSignIn.fromMap((map['signIn'] as Map).cast<String, dynamic>())),
-      smsRegionConfig: map['smsRegionConfig'] == null ? null : pulumi.Output.create<ConfigSmsRegionConfig>(ConfigSmsRegionConfig.fromMap((map['smsRegionConfig'] as Map).cast<String, dynamic>())),
+      authorizedDomains: map['authorizedDomains'] == null ? null : ((map['authorizedDomains'] as List).cast<String>()).input(),
+      autodeleteAnonymousUsers: map['autodeleteAnonymousUsers'] == null ? null : (map['autodeleteAnonymousUsers'] as bool).input(),
+      blockingFunctions: map['blockingFunctions'] == null ? null : (ConfigBlockingFunctions.fromMap((map['blockingFunctions'] as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (ConfigClient.fromMap((map['client'] as Map).cast<String, dynamic>())).input(),
+      mfa: map['mfa'] == null ? null : (ConfigMfa.fromMap((map['mfa'] as Map).cast<String, dynamic>())).input(),
+      monitoring: map['monitoring'] == null ? null : (ConfigMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
+      multiTenant: map['multiTenant'] == null ? null : (ConfigMultiTenant.fromMap((map['multiTenant'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      quota: map['quota'] == null ? null : (ConfigQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      signIn: map['signIn'] == null ? null : (ConfigSignIn.fromMap((map['signIn'] as Map).cast<String, dynamic>())).input(),
+      smsRegionConfig: map['smsRegionConfig'] == null ? null : (ConfigSmsRegionConfig.fromMap((map['smsRegionConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

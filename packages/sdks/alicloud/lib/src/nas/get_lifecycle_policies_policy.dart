@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLifecyclePoliciesPolicy {
   /// The time when the lifecycle management policy was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the file system.
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
   /// The ID of the Lifecycle Policy. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the lifecycle management policy.
-  final String lifecyclePolicyName;
+  final pulumi.Input<String> lifecyclePolicyName;
   /// The rules in the lifecycle management policy.
-  final String lifecycleRuleName;
+  final pulumi.Input<String> lifecycleRuleName;
   /// The list of absolute paths for multiple directories. In this case, you can associate a lifecycle management policy with each directory.
-  final List<String> paths;
+  final pulumi.Input<List<String>> paths;
   /// The storage type of the data that is dumped to the IA storage medium.
-  final String storageType;
+  final pulumi.Input<String> storageType;
 
   /// Creates a new [GetLifecyclePoliciesPolicy].
   /// [createTime] The time when the lifecycle management policy was created.
@@ -49,13 +50,13 @@ class GetLifecyclePoliciesPolicy {
 
   factory GetLifecyclePoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetLifecyclePoliciesPolicy(
-      createTime: map['createTime'] as String,
-      fileSystemId: map['fileSystemId'] as String,
-      id: map['id'] as String,
-      lifecyclePolicyName: map['lifecyclePolicyName'] as String,
-      lifecycleRuleName: map['lifecycleRuleName'] as String,
-      paths: (map['paths'] as List).cast<String>(),
-      storageType: map['storageType'] as String,
+      createTime: (map['createTime'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      id: (map['id'] as String).input(),
+      lifecyclePolicyName: (map['lifecyclePolicyName'] as String).input(),
+      lifecycleRuleName: (map['lifecycleRuleName'] as String).input(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
+      storageType: (map['storageType'] as String).input(),
     );
   }
 }

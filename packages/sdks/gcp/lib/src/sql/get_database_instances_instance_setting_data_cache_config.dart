@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstancesInstanceSettingDataCacheConfig {
   /// Whether data cache is enabled for the instance.
-  final bool dataCacheEnabled;
+  final pulumi.Input<bool> dataCacheEnabled;
 
   /// Creates a new [GetDatabaseInstancesInstanceSettingDataCacheConfig].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.
@@ -19,7 +20,7 @@ class GetDatabaseInstancesInstanceSettingDataCacheConfig {
 
   factory GetDatabaseInstancesInstanceSettingDataCacheConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingDataCacheConfig(
-      dataCacheEnabled: map['dataCacheEnabled'] as bool,
+      dataCacheEnabled: (map['dataCacheEnabled'] as bool).input(),
     );
   }
 }

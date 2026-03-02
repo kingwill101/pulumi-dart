@@ -19,13 +19,10 @@ class NfsSnapshotArgs {
   /// [region] The region where the NFS snapshot will be created.
   /// [shareId] The ID of the NFS share to snapshot.
   NfsSnapshotArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> shareId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asInput<String>(region),
-      shareId = pulumi.Input.asInput<String>(shareId);
+    this.name,
+    required this.region,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NfsSnapshotArgs {
 
   factory NfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return NfsSnapshotArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

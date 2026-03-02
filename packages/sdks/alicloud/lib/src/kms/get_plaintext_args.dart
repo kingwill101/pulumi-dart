@@ -16,11 +16,9 @@ class GetPlaintextArgs {
   /// [ciphertextBlob] The ciphertext to be decrypted.
   /// [encryptionContext] (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
   GetPlaintextArgs({
-    required pulumi.Output<String> ciphertextBlob,
-    pulumi.Output<Map<String, String>>? encryptionContext,
-  }) :
-      ciphertextBlob = pulumi.Input.asInput<String>(ciphertextBlob),
-      encryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(encryptionContext);
+    required this.ciphertextBlob,
+    this.encryptionContext,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPlaintextArgs {
 
   factory GetPlaintextArgs.fromMap(Map<String, dynamic> map) {
     return GetPlaintextArgs(
-      ciphertextBlob: pulumi.Output.create<String>(map['ciphertextBlob'] as String),
-      encryptionContext: map['encryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['encryptionContext'] as Map).cast<String, String>()),
+      ciphertextBlob: (map['ciphertextBlob'] as String).input(),
+      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext'] as Map).cast<String, String>()).input(),
     );
   }
 }

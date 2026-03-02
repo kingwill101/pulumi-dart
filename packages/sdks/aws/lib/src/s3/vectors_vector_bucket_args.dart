@@ -28,17 +28,12 @@ class VectorsVectorBucketArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vectorBucketName] Name of the vector bucket.
   VectorsVectorBucketArgs({
-    pulumi.Output<List<VectorsVectorBucketEncryptionConfiguration>>? encryptionConfigurations,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vectorBucketName,
-  }) :
-      encryptionConfigurations = pulumi.Input.asOptionalInput<List<VectorsVectorBucketEncryptionConfiguration>>(encryptionConfigurations),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vectorBucketName = pulumi.Input.asInput<String>(vectorBucketName);
+    this.encryptionConfigurations,
+    this.forceDestroy,
+    this.region,
+    this.tags,
+    required this.vectorBucketName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class VectorsVectorBucketArgs {
 
   factory VectorsVectorBucketArgs.fromMap(Map<String, dynamic> map) {
     return VectorsVectorBucketArgs(
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Output.create<List<VectorsVectorBucketEncryptionConfiguration>>(pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vectorBucketName: pulumi.Output.create<String>(map['vectorBucketName'] as String),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vectorBucketName: (map['vectorBucketName'] as String).input(),
     );
   }
 }

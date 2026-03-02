@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterLoggingConfigComponentConfig {
   /// Components of the logging configuration to be enabled.
-  final List<String>? enableComponents;
+  final pulumi.Input<List<String>>? enableComponents;
 
   /// Creates a new [AwsClusterLoggingConfigComponentConfig].
   /// [enableComponents] Components of the logging configuration to be enabled.
@@ -19,7 +20,7 @@ class AwsClusterLoggingConfigComponentConfig {
 
   factory AwsClusterLoggingConfigComponentConfig.fromMap(Map<String, dynamic> map) {
     return AwsClusterLoggingConfigComponentConfig(
-      enableComponents: map['enableComponents'] == null ? null : (map['enableComponents'] as List).cast<String>(),
+      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents'] as List).cast<String>()).input(),
     );
   }
 }

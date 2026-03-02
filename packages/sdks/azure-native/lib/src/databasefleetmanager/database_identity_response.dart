@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database Identity properties.
 class DatabaseIdentityResponse {
   /// Client Id of the database identity.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Principal Id of the database identity.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// Resource Id of the database identity.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [DatabaseIdentityResponse].
   /// [clientId] Client Id of the database identity.
@@ -30,9 +31,9 @@ class DatabaseIdentityResponse {
 
   factory DatabaseIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseIdentityResponse(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

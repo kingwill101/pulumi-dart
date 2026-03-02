@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceQueuesQueue {
   /// The total number of messages that are in the Active state in the queue. The value is an approximate number.
-  final int activeMessages;
+  final pulumi.Input<int> activeMessages;
   /// The time when the queue was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-  final int createTime;
+  final pulumi.Input<int> createTime;
   /// The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
-  final int delayMessages;
+  final pulumi.Input<int> delayMessages;
   /// The delay period after which all messages that are sent to the queue can be consumed. Unit: seconds.
-  final int delaySeconds;
+  final pulumi.Input<int> delaySeconds;
   /// The ID of the Queue. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
-  final int inactiveMessages;
+  final pulumi.Input<int> inactiveMessages;
   /// The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-  final int lastModifyTime;
+  final pulumi.Input<int> lastModifyTime;
   /// Indicates whether the log management feature is enabled for the queue.
-  final bool loggingEnabled;
+  final pulumi.Input<bool> loggingEnabled;
   /// The maximum size of a message body that can be sent to the queue. Unit: bytes.
-  final int maximumMessageSize;
+  final pulumi.Input<int> maximumMessageSize;
   /// The maximum period for which a message can be retained in the queue. A message that is sent to the queue can be retained for a specified period. After the specified period ends, the message is deleted no matter whether it is consumed. Unit: seconds.
-  final int messageRetentionPeriod;
+  final pulumi.Input<int> messageRetentionPeriod;
   /// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds.
-  final int pollingWaitSeconds;
+  final pulumi.Input<int> pollingWaitSeconds;
   /// The internal url of the queue.
-  final String queueInternalUrl;
+  final pulumi.Input<String> queueInternalUrl;
   /// The name of the queue.
-  final String queueName;
+  final pulumi.Input<String> queueName;
   /// The url of the queue.
-  final String queueUrl;
+  final pulumi.Input<String> queueUrl;
   /// The invisibility period for which the received message remains the Inactive state. Unit: seconds.
-  final int visibilityTimeout;
+  final pulumi.Input<int> visibilityTimeout;
 
   /// Creates a new [GetServiceQueuesQueue].
   /// [activeMessages] The total number of messages that are in the Active state in the queue. The value is an approximate number.
@@ -89,21 +90,21 @@ class GetServiceQueuesQueue {
 
   factory GetServiceQueuesQueue.fromMap(Map<String, dynamic> map) {
     return GetServiceQueuesQueue(
-      activeMessages: map['activeMessages'] as int,
-      createTime: map['createTime'] as int,
-      delayMessages: map['delayMessages'] as int,
-      delaySeconds: map['delaySeconds'] as int,
-      id: map['id'] as String,
-      inactiveMessages: map['inactiveMessages'] as int,
-      lastModifyTime: map['lastModifyTime'] as int,
-      loggingEnabled: map['loggingEnabled'] as bool,
-      maximumMessageSize: map['maximumMessageSize'] as int,
-      messageRetentionPeriod: map['messageRetentionPeriod'] as int,
-      pollingWaitSeconds: map['pollingWaitSeconds'] as int,
-      queueInternalUrl: map['queueInternalUrl'] as String,
-      queueName: map['queueName'] as String,
-      queueUrl: map['queueUrl'] as String,
-      visibilityTimeout: map['visibilityTimeout'] as int,
+      activeMessages: (map['activeMessages'] as int).input(),
+      createTime: (map['createTime'] as int).input(),
+      delayMessages: (map['delayMessages'] as int).input(),
+      delaySeconds: (map['delaySeconds'] as int).input(),
+      id: (map['id'] as String).input(),
+      inactiveMessages: (map['inactiveMessages'] as int).input(),
+      lastModifyTime: (map['lastModifyTime'] as int).input(),
+      loggingEnabled: (map['loggingEnabled'] as bool).input(),
+      maximumMessageSize: (map['maximumMessageSize'] as int).input(),
+      messageRetentionPeriod: (map['messageRetentionPeriod'] as int).input(),
+      pollingWaitSeconds: (map['pollingWaitSeconds'] as int).input(),
+      queueInternalUrl: (map['queueInternalUrl'] as String).input(),
+      queueName: (map['queueName'] as String).input(),
+      queueUrl: (map['queueUrl'] as String).input(),
+      visibilityTimeout: (map['visibilityTimeout'] as int).input(),
     );
   }
 }

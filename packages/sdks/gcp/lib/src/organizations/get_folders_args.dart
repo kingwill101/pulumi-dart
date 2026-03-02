@@ -13,9 +13,8 @@ class GetFoldersArgs {
   /// Creates a new [GetFoldersArgs].
   /// [parentId] A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
   GetFoldersArgs({
-    required pulumi.Output<String> parentId,
-  }) :
-      parentId = pulumi.Input.asInput<String>(parentId);
+    required this.parentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetFoldersArgs {
 
   factory GetFoldersArgs.fromMap(Map<String, dynamic> map) {
     return GetFoldersArgs(
-      parentId: pulumi.Output.create<String>(map['parentId'] as String),
+      parentId: (map['parentId'] as String).input(),
     );
   }
 }

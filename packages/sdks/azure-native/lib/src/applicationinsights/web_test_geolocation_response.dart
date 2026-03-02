@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Geo-physical location to run a WebTest from. You must specify one or more locations for the test to run from.
 class WebTestGeolocationResponse {
   /// Location ID for the WebTest to run from.
-  final String? location;
+  final pulumi.Input<String>? location;
 
   /// Creates a new [WebTestGeolocationResponse].
   /// [location] Location ID for the WebTest to run from.
@@ -20,7 +21,7 @@ class WebTestGeolocationResponse {
 
   factory WebTestGeolocationResponse.fromMap(Map<String, dynamic> map) {
     return WebTestGeolocationResponse(
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
     );
   }
 }

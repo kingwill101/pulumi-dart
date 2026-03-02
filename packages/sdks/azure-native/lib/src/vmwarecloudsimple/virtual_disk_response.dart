@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual disk model
 class VirtualDiskResponse {
   /// Disk's Controller id
-  final String controllerId;
+  final pulumi.Input<String> controllerId;
   /// Disk's independence mode type
-  final String independenceMode;
+  final pulumi.Input<String> independenceMode;
   /// Disk's total size
-  final int totalSize;
+  final pulumi.Input<int> totalSize;
   /// Disk's id
-  final String? virtualDiskId;
+  final pulumi.Input<String>? virtualDiskId;
   /// Disk's display name
-  final String virtualDiskName;
+  final pulumi.Input<String> virtualDiskName;
 
   /// Creates a new [VirtualDiskResponse].
   /// [controllerId] Disk's Controller id
@@ -40,11 +41,11 @@ class VirtualDiskResponse {
 
   factory VirtualDiskResponse.fromMap(Map<String, dynamic> map) {
     return VirtualDiskResponse(
-      controllerId: map['controllerId'] as String,
-      independenceMode: map['independenceMode'] as String,
-      totalSize: map['totalSize'] as int,
-      virtualDiskId: map['virtualDiskId'] == null ? null : map['virtualDiskId'] as String,
-      virtualDiskName: map['virtualDiskName'] as String,
+      controllerId: (map['controllerId'] as String).input(),
+      independenceMode: (map['independenceMode'] as String).input(),
+      totalSize: (map['totalSize'] as int).input(),
+      virtualDiskId: map['virtualDiskId'] == null ? null : (map['virtualDiskId'] as String).input(),
+      virtualDiskName: (map['virtualDiskName'] as String).input(),
     );
   }
 }

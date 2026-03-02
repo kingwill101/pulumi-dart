@@ -42,21 +42,14 @@ class UserStoreState {
   /// [project] The ID of the project in which the resource belongs.
   /// [userStoreId] The ID of the user store. Currently only accepts "default_user_store".
   UserStoreState({
-    pulumi.Output<String>? defaultLicenseConfig,
-    pulumi.Output<bool>? enableExpiredLicenseAutoUpdate,
-    pulumi.Output<bool>? enableLicenseAutoRegister,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? userStoreId,
-  }) :
-      defaultLicenseConfig = pulumi.Input.asOptionalInput<String>(defaultLicenseConfig),
-      enableExpiredLicenseAutoUpdate = pulumi.Input.asOptionalInput<bool>(enableExpiredLicenseAutoUpdate),
-      enableLicenseAutoRegister = pulumi.Input.asOptionalInput<bool>(enableLicenseAutoRegister),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userStoreId = pulumi.Input.asOptionalInput<String>(userStoreId);
+    this.defaultLicenseConfig,
+    this.enableExpiredLicenseAutoUpdate,
+    this.enableLicenseAutoRegister,
+    this.location,
+    this.name,
+    this.project,
+    this.userStoreId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,13 +65,13 @@ class UserStoreState {
 
   factory UserStoreState.fromMap(Map<String, dynamic> map) {
     return UserStoreState(
-      defaultLicenseConfig: map['defaultLicenseConfig'] == null ? null : pulumi.Output.create<String>(map['defaultLicenseConfig'] as String),
-      enableExpiredLicenseAutoUpdate: map['enableExpiredLicenseAutoUpdate'] == null ? null : pulumi.Output.create<bool>(map['enableExpiredLicenseAutoUpdate'] as bool),
-      enableLicenseAutoRegister: map['enableLicenseAutoRegister'] == null ? null : pulumi.Output.create<bool>(map['enableLicenseAutoRegister'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      userStoreId: map['userStoreId'] == null ? null : pulumi.Output.create<String>(map['userStoreId'] as String),
+      defaultLicenseConfig: map['defaultLicenseConfig'] == null ? null : (map['defaultLicenseConfig'] as String).input(),
+      enableExpiredLicenseAutoUpdate: map['enableExpiredLicenseAutoUpdate'] == null ? null : (map['enableExpiredLicenseAutoUpdate'] as bool).input(),
+      enableLicenseAutoRegister: map['enableLicenseAutoRegister'] == null ? null : (map['enableLicenseAutoRegister'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      userStoreId: map['userStoreId'] == null ? null : (map['userStoreId'] as String).input(),
     );
   }
 }

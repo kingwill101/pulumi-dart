@@ -19,13 +19,10 @@ class GetWorkflowAccessKeyArgs {
   /// [resourceGroupName] The resource group name.
   /// [workflowName] The workflow name.
   GetWorkflowAccessKeyArgs({
-    required pulumi.Output<String> accessKeyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workflowName,
-  }) :
-      accessKeyName = pulumi.Input.asInput<String>(accessKeyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workflowName = pulumi.Input.asInput<String>(workflowName);
+    required this.accessKeyName,
+    required this.resourceGroupName,
+    required this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWorkflowAccessKeyArgs {
 
   factory GetWorkflowAccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowAccessKeyArgs(
-      accessKeyName: pulumi.Output.create<String>(map['accessKeyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+      accessKeyName: (map['accessKeyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

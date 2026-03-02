@@ -23,15 +23,11 @@ class AFDTargetGroupArgs {
   /// [targetEndpoints] TargetEndpoint list referenced by this target group.
   /// [targetGroupName] Name of the Target Group under the profile.
   AFDTargetGroupArgs({
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<TargetEndpoint>> targetEndpoints,
-    pulumi.Output<String>? targetGroupName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetEndpoints = pulumi.Input.asInput<List<TargetEndpoint>>(targetEndpoints),
-      targetGroupName = pulumi.Input.asOptionalInput<String>(targetGroupName);
+    required this.profileName,
+    required this.resourceGroupName,
+    required this.targetEndpoints,
+    this.targetGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AFDTargetGroupArgs {
 
   factory AFDTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return AFDTargetGroupArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetEndpoints: pulumi.Output.create<List<TargetEndpoint>>(pulumi.Input.decodeList<TargetEndpoint>(map['targetEndpoints'], (value) => TargetEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      targetGroupName: map['targetGroupName'] == null ? null : pulumi.Output.create<String>(map['targetGroupName'] as String),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetEndpoints: (pulumi.Input.decodeList<TargetEndpoint>(map['targetEndpoints'], (value) => TargetEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetGroupName: map['targetGroupName'] == null ? null : (map['targetGroupName'] as String).input(),
     );
   }
 }

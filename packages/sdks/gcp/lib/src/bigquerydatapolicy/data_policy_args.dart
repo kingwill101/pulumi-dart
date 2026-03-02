@@ -32,19 +32,13 @@ class DataPolicyArgs {
   /// [policyTag] Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
   /// [project] The ID of the project in which the resource belongs.
   DataPolicyArgs({
-    pulumi.Output<DataPolicyDataMaskingPolicy>? dataMaskingPolicy,
-    required pulumi.Output<String> dataPolicyId,
-    required pulumi.Output<String> dataPolicyType,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> policyTag,
-    pulumi.Output<String>? project,
-  }) :
-      dataMaskingPolicy = pulumi.Input.asOptionalInput<DataPolicyDataMaskingPolicy>(dataMaskingPolicy),
-      dataPolicyId = pulumi.Input.asInput<String>(dataPolicyId),
-      dataPolicyType = pulumi.Input.asInput<String>(dataPolicyType),
-      location = pulumi.Input.asInput<String>(location),
-      policyTag = pulumi.Input.asInput<String>(policyTag),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.dataMaskingPolicy,
+    required this.dataPolicyId,
+    required this.dataPolicyType,
+    required this.location,
+    required this.policyTag,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class DataPolicyArgs {
 
   factory DataPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DataPolicyArgs(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : pulumi.Output.create<DataPolicyDataMaskingPolicy>(DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>())),
-      dataPolicyId: pulumi.Output.create<String>(map['dataPolicyId'] as String),
-      dataPolicyType: pulumi.Output.create<String>(map['dataPolicyType'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      policyTag: pulumi.Output.create<String>(map['policyTag'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>())).input(),
+      dataPolicyId: (map['dataPolicyId'] as String).input(),
+      dataPolicyType: (map['dataPolicyType'] as String).input(),
+      location: (map['location'] as String).input(),
+      policyTag: (map['policyTag'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

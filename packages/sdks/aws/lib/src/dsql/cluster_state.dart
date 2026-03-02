@@ -47,31 +47,19 @@ class ClusterState {
   /// [timeouts] Optional.
   /// [vpcEndpointServiceName] The DSQL Cluster's VPC endpoint service name.
   ClusterState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? deletionProtectionEnabled,
-    pulumi.Output<List<ClusterEncryptionDetail>>? encryptionDetails,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? identifier,
-    pulumi.Output<String>? kmsEncryptionKey,
-    pulumi.Output<ClusterMultiRegionProperties>? multiRegionProperties,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ClusterTimeouts>? timeouts,
-    pulumi.Output<String>? vpcEndpointServiceName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      deletionProtectionEnabled = pulumi.Input.asOptionalInput<bool>(deletionProtectionEnabled),
-      encryptionDetails = pulumi.Input.asOptionalInput<List<ClusterEncryptionDetail>>(encryptionDetails),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      identifier = pulumi.Input.asOptionalInput<String>(identifier),
-      kmsEncryptionKey = pulumi.Input.asOptionalInput<String>(kmsEncryptionKey),
-      multiRegionProperties = pulumi.Input.asOptionalInput<ClusterMultiRegionProperties>(multiRegionProperties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ClusterTimeouts>(timeouts),
-      vpcEndpointServiceName = pulumi.Input.asOptionalInput<String>(vpcEndpointServiceName);
+    this.arn,
+    this.deletionProtectionEnabled,
+    this.encryptionDetails,
+    this.forceDestroy,
+    this.identifier,
+    this.kmsEncryptionKey,
+    this.multiRegionProperties,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.vpcEndpointServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['deletionProtectionEnabled'] as bool),
-      encryptionDetails: map['encryptionDetails'] == null ? null : pulumi.Output.create<List<ClusterEncryptionDetail>>(pulumi.Input.decodeList<ClusterEncryptionDetail>(map['encryptionDetails'], (value) => ClusterEncryptionDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<String>(map['identifier'] as String),
-      kmsEncryptionKey: map['kmsEncryptionKey'] == null ? null : pulumi.Output.create<String>(map['kmsEncryptionKey'] as String),
-      multiRegionProperties: map['multiRegionProperties'] == null ? null : pulumi.Output.create<ClusterMultiRegionProperties>(ClusterMultiRegionProperties.fromMap((map['multiRegionProperties'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ClusterTimeouts>(ClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointServiceName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
+      encryptionDetails: map['encryptionDetails'] == null ? null : (pulumi.Input.decodeList<ClusterEncryptionDetail>(map['encryptionDetails'], (value) => ClusterEncryptionDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      kmsEncryptionKey: map['kmsEncryptionKey'] == null ? null : (map['kmsEncryptionKey'] as String).input(),
+      multiRegionProperties: map['multiRegionProperties'] == null ? null : (ClusterMultiRegionProperties.fromMap((map['multiRegionProperties'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : (map['vpcEndpointServiceName'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class BuilderArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   BuilderArgs({
-    pulumi.Output<String>? builderName,
-    pulumi.Output<List<ContainerRegistry>>? containerRegistries,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      builderName = pulumi.Input.asOptionalInput<String>(builderName),
-      containerRegistries = pulumi.Input.asOptionalInput<List<ContainerRegistry>>(containerRegistries),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.builderName,
+    this.containerRegistries,
+    required this.environmentId,
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class BuilderArgs {
 
   factory BuilderArgs.fromMap(Map<String, dynamic> map) {
     return BuilderArgs(
-      builderName: map['builderName'] == null ? null : pulumi.Output.create<String>(map['builderName'] as String),
-      containerRegistries: map['containerRegistries'] == null ? null : pulumi.Output.create<List<ContainerRegistry>>(pulumi.Input.decodeList<ContainerRegistry>(map['containerRegistries'], (value) => ContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      builderName: map['builderName'] == null ? null : (map['builderName'] as String).input(),
+      containerRegistries: map['containerRegistries'] == null ? null : (pulumi.Input.decodeList<ContainerRegistry>(map['containerRegistries'], (value) => ContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

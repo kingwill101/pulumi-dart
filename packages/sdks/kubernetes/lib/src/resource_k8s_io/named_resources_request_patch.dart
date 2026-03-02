@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NamedResourcesRequest is used in ResourceRequestModel.
 class NamedResourcesRequestPatch {
@@ -9,7 +10,7 @@ class NamedResourcesRequestPatch {
   ///
   /// attributes.quantity["a"].isGreaterThan(quantity("0")) &&
   /// attributes.stringslice["b"].isSorted()
-  final String? selector;
+  final pulumi.Input<String>? selector;
 
   /// Creates a new [NamedResourcesRequestPatch].
   /// [selector] Selector is a CEL expression which must evaluate to true if a resource instance is suitable. The language is as defined in https://kubernetes.io/docs/reference/using-api/cel/
@@ -25,7 +26,7 @@ class NamedResourcesRequestPatch {
 
   factory NamedResourcesRequestPatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesRequestPatch(
-      selector: map['selector'] == null ? null : map['selector'] as String,
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
     );
   }
 }

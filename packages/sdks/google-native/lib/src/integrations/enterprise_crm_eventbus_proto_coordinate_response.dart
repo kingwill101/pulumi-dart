@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents two-dimensional positions.
 class EnterpriseCrmEventbusProtoCoordinateResponse {
-  final int x;
-  final int y;
+  final pulumi.Input<int> x;
+  final pulumi.Input<int> y;
 
   /// Creates a new [EnterpriseCrmEventbusProtoCoordinateResponse].
   /// [x] Required.
@@ -23,8 +24,8 @@ class EnterpriseCrmEventbusProtoCoordinateResponse {
 
   factory EnterpriseCrmEventbusProtoCoordinateResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoCoordinateResponse(
-      x: map['x'] as int,
-      y: map['y'] as int,
+      x: (map['x'] as int).input(),
+      y: (map['y'] as int).input(),
     );
   }
 }

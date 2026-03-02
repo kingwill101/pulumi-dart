@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourcesConfigEventSourceAmazonCodeGuruProfiler {
   /// Status of the CodeGuru Profiler integration. Valid values are `ENABLED` and `DISABLED`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [EventSourcesConfigEventSourceAmazonCodeGuruProfiler].
   /// [status] Status of the CodeGuru Profiler integration. Valid values are `ENABLED` and `DISABLED`.
@@ -19,7 +20,7 @@ class EventSourcesConfigEventSourceAmazonCodeGuruProfiler {
 
   factory EventSourcesConfigEventSourceAmazonCodeGuruProfiler.fromMap(Map<String, dynamic> map) {
     return EventSourcesConfigEventSourceAmazonCodeGuruProfiler(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

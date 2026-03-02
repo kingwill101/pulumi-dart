@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 class ShieldedInstanceConfigResponseDataprocV1beta2 {
   /// Optional. Defines whether instances have integrity monitoring enabled.
-  final bool enableIntegrityMonitoring;
+  final pulumi.Input<bool> enableIntegrityMonitoring;
   /// Optional. Defines whether instances have Secure Boot enabled.
-  final bool enableSecureBoot;
+  final pulumi.Input<bool> enableSecureBoot;
   /// Optional. Defines whether instances have the vTPM enabled.
-  final bool enableVtpm;
+  final pulumi.Input<bool> enableVtpm;
 
   /// Creates a new [ShieldedInstanceConfigResponseDataprocV1beta2].
   /// [enableIntegrityMonitoring] Optional. Defines whether instances have integrity monitoring enabled.
@@ -30,9 +31,9 @@ class ShieldedInstanceConfigResponseDataprocV1beta2 {
 
   factory ShieldedInstanceConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfigResponseDataprocV1beta2(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] as bool,
-      enableVtpm: map['enableVtpm'] as bool,
+      enableIntegrityMonitoring: (map['enableIntegrityMonitoring'] as bool).input(),
+      enableSecureBoot: (map['enableSecureBoot'] as bool).input(),
+      enableVtpm: (map['enableVtpm'] as bool).input(),
     );
   }
 }

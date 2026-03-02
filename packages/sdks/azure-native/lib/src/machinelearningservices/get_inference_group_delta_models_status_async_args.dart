@@ -28,19 +28,13 @@ class GetInferenceGroupDeltaModelsStatusAsyncArgs {
   /// [targetBaseModel] Gets or sets target base model.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   GetInferenceGroupDeltaModelsStatusAsyncArgs({
-    pulumi.Output<List<String>>? deltaModels,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? targetBaseModel,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      deltaModels = pulumi.Input.asOptionalInput<List<String>>(deltaModels),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetBaseModel = pulumi.Input.asOptionalInput<String>(targetBaseModel),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.deltaModels,
+    required this.groupName,
+    required this.poolName,
+    required this.resourceGroupName,
+    this.targetBaseModel,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetInferenceGroupDeltaModelsStatusAsyncArgs {
 
   factory GetInferenceGroupDeltaModelsStatusAsyncArgs.fromMap(Map<String, dynamic> map) {
     return GetInferenceGroupDeltaModelsStatusAsyncArgs(
-      deltaModels: map['deltaModels'] == null ? null : pulumi.Output.create<List<String>>((map['deltaModels'] as List).cast<String>()),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetBaseModel: map['targetBaseModel'] == null ? null : pulumi.Output.create<String>(map['targetBaseModel'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      deltaModels: map['deltaModels'] == null ? null : ((map['deltaModels'] as List).cast<String>()).input(),
+      groupName: (map['groupName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetBaseModel: map['targetBaseModel'] == null ? null : (map['targetBaseModel'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

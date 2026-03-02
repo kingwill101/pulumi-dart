@@ -29,19 +29,13 @@ class PrivateDnsZoneGroupArgs {
   /// [privateEndpointName] The name of the private endpoint.
   /// [resourceGroupName] The name of the resource group.
   PrivateDnsZoneGroupArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<PrivateDnsZoneConfig>>? privateDnsZoneConfigs,
-    pulumi.Output<String>? privateDnsZoneGroupName,
-    required pulumi.Output<String> privateEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateDnsZoneConfigs = pulumi.Input.asOptionalInput<List<PrivateDnsZoneConfig>>(privateDnsZoneConfigs),
-      privateDnsZoneGroupName = pulumi.Input.asOptionalInput<String>(privateDnsZoneGroupName),
-      privateEndpointName = pulumi.Input.asInput<String>(privateEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.id,
+    this.name,
+    this.privateDnsZoneConfigs,
+    this.privateDnsZoneGroupName,
+    required this.privateEndpointName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class PrivateDnsZoneGroupArgs {
 
   factory PrivateDnsZoneGroupArgs.fromMap(Map<String, dynamic> map) {
     return PrivateDnsZoneGroupArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : pulumi.Output.create<List<PrivateDnsZoneConfig>>(pulumi.Input.decodeList<PrivateDnsZoneConfig>(map['privateDnsZoneConfigs'], (value) => PrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      privateDnsZoneGroupName: map['privateDnsZoneGroupName'] == null ? null : pulumi.Output.create<String>(map['privateDnsZoneGroupName'] as String),
-      privateEndpointName: pulumi.Output.create<String>(map['privateEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : (pulumi.Input.decodeList<PrivateDnsZoneConfig>(map['privateDnsZoneConfigs'], (value) => PrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateDnsZoneGroupName: map['privateDnsZoneGroupName'] == null ? null : (map['privateDnsZoneGroupName'] as String).input(),
+      privateEndpointName: (map['privateEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

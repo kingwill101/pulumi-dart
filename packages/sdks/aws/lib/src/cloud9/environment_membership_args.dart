@@ -22,15 +22,11 @@ class EnvironmentMembershipArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userArn] The Amazon Resource Name (ARN) of the environment member you want to add.
   EnvironmentMembershipArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> permissions,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> userArn,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      permissions = pulumi.Input.asInput<String>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userArn = pulumi.Input.asInput<String>(userArn);
+    required this.environmentId,
+    required this.permissions,
+    this.region,
+    required this.userArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EnvironmentMembershipArgs {
 
   factory EnvironmentMembershipArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentMembershipArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      permissions: pulumi.Output.create<String>(map['permissions'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userArn: pulumi.Output.create<String>(map['userArn'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userArn: (map['userArn'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationDestinationProperty {
   /// Notification property display key.
-  final String? displayValue;
+  final pulumi.Input<String>? displayValue;
   /// Notification property key.
-  final String key;
+  final pulumi.Input<String> key;
   /// Notification property label.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Notification property value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [NotificationDestinationProperty].
   /// [displayValue] Notification property display key.
@@ -34,10 +35,10 @@ class NotificationDestinationProperty {
 
   factory NotificationDestinationProperty.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationProperty(
-      displayValue: map['displayValue'] == null ? null : map['displayValue'] as String,
-      key: map['key'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      value: map['value'] as String,
+      displayValue: map['displayValue'] == null ? null : (map['displayValue'] as String).input(),
+      key: (map['key'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

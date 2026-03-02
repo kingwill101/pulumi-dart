@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about a service principal identity for the cluster to use for manipulating Azure APIs.
 class ManagedClusterServicePrincipalProfile {
   /// The ID for the service principal.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The secret password associated with the service principal in plain text.
-  final String? secret;
+  final pulumi.Input<String>? secret;
 
   /// Creates a new [ManagedClusterServicePrincipalProfile].
   /// [clientId] The ID for the service principal.
@@ -25,8 +26,8 @@ class ManagedClusterServicePrincipalProfile {
 
   factory ManagedClusterServicePrincipalProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterServicePrincipalProfile(
-      clientId: map['clientId'] as String,
-      secret: map['secret'] == null ? null : map['secret'] as String,
+      clientId: (map['clientId'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
     );
   }
 }

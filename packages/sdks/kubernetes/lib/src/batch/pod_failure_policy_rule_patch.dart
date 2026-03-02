@@ -17,11 +17,11 @@ class PodFailurePolicyRulePatch {
   /// - Count: indicates that the pod is handled in the default way - the
   /// counter towards the .backoffLimit is incremented.
   /// Additional values are considered to be added in the future. Clients should react to an unknown action by skipping the rule.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Represents the requirement on the container exit codes.
-  final PodFailurePolicyOnExitCodesRequirementPatch? onExitCodes;
+  final pulumi.Input<PodFailurePolicyOnExitCodesRequirementPatch>? onExitCodes;
   /// Represents the requirement on the pod conditions. The requirement is represented as a list of pod condition patterns. The requirement is satisfied if at least one pattern matches an actual pod condition. At most 20 elements are allowed.
-  final List<PodFailurePolicyOnPodConditionsPatternPatch>? onPodConditions;
+  final pulumi.Input<List<PodFailurePolicyOnPodConditionsPatternPatch>>? onPodConditions;
 
   /// Creates a new [PodFailurePolicyRulePatch].
   /// [action] Specifies the action taken on a pod failure when the requirements are satisfied. Possible values are:
@@ -36,16 +36,16 @@ class PodFailurePolicyRulePatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'onExitCodes': ?onExitCodes == null ? null : onExitCodes!.toMap(),
-      'onPodConditions': ?onPodConditions == null ? null : pulumi.Input.encodeList<PodFailurePolicyOnPodConditionsPatternPatch, Map<String, dynamic>>(onPodConditions!, (value) => value.toMap()),
+      'onExitCodes': ?pulumi.Input.mapOptionalInputValue<PodFailurePolicyOnExitCodesRequirementPatch, Map<String, dynamic>>(onExitCodes, (value) => value.toMap()),
+      'onPodConditions': ?pulumi.Input.mapOptionalInputValue<List<PodFailurePolicyOnPodConditionsPatternPatch>, List<Map<String, dynamic>>>(onPodConditions, (value) => pulumi.Input.encodeList<PodFailurePolicyOnPodConditionsPatternPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PodFailurePolicyRulePatch.fromMap(Map<String, dynamic> map) {
     return PodFailurePolicyRulePatch(
-      action: map['action'] == null ? null : map['action'] as String,
-      onExitCodes: map['onExitCodes'] == null ? null : PodFailurePolicyOnExitCodesRequirementPatch.fromMap((map['onExitCodes'] as Map).cast<String, dynamic>()),
-      onPodConditions: map['onPodConditions'] == null ? null : pulumi.Input.decodeList<PodFailurePolicyOnPodConditionsPatternPatch>(map['onPodConditions'], (value) => PodFailurePolicyOnPodConditionsPatternPatch.fromMap((value as Map).cast<String, dynamic>())),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      onExitCodes: map['onExitCodes'] == null ? null : (PodFailurePolicyOnExitCodesRequirementPatch.fromMap((map['onExitCodes'] as Map).cast<String, dynamic>())).input(),
+      onPodConditions: map['onPodConditions'] == null ? null : (pulumi.Input.decodeList<PodFailurePolicyOnPodConditionsPatternPatch>(map['onPodConditions'], (value) => PodFailurePolicyOnPodConditionsPatternPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

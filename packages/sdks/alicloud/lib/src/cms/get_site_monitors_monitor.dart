@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSiteMonitorsMonitor {
   /// Address.
-  final String address;
+  final pulumi.Input<String> address;
   /// CreateTime.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Monitoring frequency.
-  final String interval;
+  final pulumi.Input<String> interval;
   /// Task ID.
-  final String taskId;
+  final pulumi.Input<String> taskId;
   /// Task Name.
-  final String taskName;
+  final pulumi.Input<String> taskName;
   /// Task Type.
-  final String taskType;
+  final pulumi.Input<String> taskType;
 
   /// Creates a new [GetSiteMonitorsMonitor].
   /// [address] Address.
@@ -44,12 +45,12 @@ class GetSiteMonitorsMonitor {
 
   factory GetSiteMonitorsMonitor.fromMap(Map<String, dynamic> map) {
     return GetSiteMonitorsMonitor(
-      address: map['address'] as String,
-      createTime: map['createTime'] as String,
-      interval: map['interval'] as String,
-      taskId: map['taskId'] as String,
-      taskName: map['taskName'] as String,
-      taskType: map['taskType'] as String,
+      address: (map['address'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      interval: (map['interval'] as String).input(),
+      taskId: (map['taskId'] as String).input(),
+      taskName: (map['taskName'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

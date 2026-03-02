@@ -7,19 +7,19 @@ import 'tag.dart';
 /// Definition of awsMacieAllowList
 class AwsMacieAllowListProperties {
   /// AllowList ARN.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// AllowList criteria. The regex or s3 object to use for the AllowList.
-  final Criteria? criteria;
+  final pulumi.Input<Criteria>? criteria;
   /// Description of AllowList.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// AllowList ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of AllowList.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// AllowList status. The status for the AllowList
-  final String? status;
+  final pulumi.Input<String>? status;
   /// A collection of tags associated with a resource
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
 
   /// Creates a new [AwsMacieAllowListProperties].
   /// [arn] AllowList ARN.
@@ -42,24 +42,24 @@ class AwsMacieAllowListProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'criteria': ?criteria == null ? null : criteria!.toMap(),
+      'criteria': ?pulumi.Input.mapOptionalInputValue<Criteria, Map<String, dynamic>>(criteria, (value) => value.toMap()),
       'description': ?description,
       'id': ?id,
       'name': ?name,
       'status': ?status,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsMacieAllowListProperties.fromMap(Map<String, dynamic> map) {
     return AwsMacieAllowListProperties(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      criteria: map['criteria'] == null ? null : Criteria.fromMap((map['criteria'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      criteria: map['criteria'] == null ? null : (Criteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

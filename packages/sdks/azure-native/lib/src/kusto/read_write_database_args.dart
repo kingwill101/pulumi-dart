@@ -39,25 +39,16 @@ class ReadWriteDatabaseArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [softDeletePeriod] The time the data should be kept before it stops being accessible to queries in TimeSpan.
   ReadWriteDatabaseArgs({
-    pulumi.Output<String>? callerRole,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? hotCachePeriod,
-    pulumi.Output<KeyVaultProperties>? keyVaultProperties,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? softDeletePeriod,
-  }) :
-      callerRole = pulumi.Input.asOptionalInput<String>(callerRole),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      hotCachePeriod = pulumi.Input.asOptionalInput<String>(hotCachePeriod),
-      keyVaultProperties = pulumi.Input.asOptionalInput<KeyVaultProperties>(keyVaultProperties),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      softDeletePeriod = pulumi.Input.asOptionalInput<String>(softDeletePeriod);
+    this.callerRole,
+    required this.clusterName,
+    this.databaseName,
+    this.hotCachePeriod,
+    this.keyVaultProperties,
+    required this.kind,
+    this.location,
+    required this.resourceGroupName,
+    this.softDeletePeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ReadWriteDatabaseArgs {
 
   factory ReadWriteDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return ReadWriteDatabaseArgs(
-      callerRole: map['callerRole'] == null ? null : pulumi.Output.create<String>(map['callerRole'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : pulumi.Output.create<String>(map['hotCachePeriod'] as String),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : pulumi.Output.create<KeyVaultProperties>(KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      softDeletePeriod: map['softDeletePeriod'] == null ? null : pulumi.Output.create<String>(map['softDeletePeriod'] as String),
+      callerRole: map['callerRole'] == null ? null : (map['callerRole'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod'] as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod'] as String).input(),
     );
   }
 }

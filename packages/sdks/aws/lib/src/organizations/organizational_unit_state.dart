@@ -26,19 +26,13 @@ class OrganizationalUnitState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   OrganizationalUnitState({
-    pulumi.Output<List<OrganizationalUnitAccount>>? accounts,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accounts = pulumi.Input.asOptionalInput<List<OrganizationalUnitAccount>>(accounts),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentId = pulumi.Input.asOptionalInput<String>(parentId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accounts,
+    this.arn,
+    this.name,
+    this.parentId,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class OrganizationalUnitState {
 
   factory OrganizationalUnitState.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitState(
-      accounts: map['accounts'] == null ? null : pulumi.Output.create<List<OrganizationalUnitAccount>>(pulumi.Input.decodeList<OrganizationalUnitAccount>(map['accounts'], (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>()))),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentId: map['parentId'] == null ? null : pulumi.Output.create<String>(map['parentId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accounts: map['accounts'] == null ? null : (pulumi.Input.decodeList<OrganizationalUnitAccount>(map['accounts'], (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

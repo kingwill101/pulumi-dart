@@ -8,35 +8,35 @@ import 'schedule_target_ecs_parameters_placement_strategy.dart';
 
 class ScheduleTargetEcsParameters {
   /// Up to `6` capacity provider strategies to use for the task. Detailed below.
-  final List<ScheduleTargetEcsParametersCapacityProviderStrategy>? capacityProviderStrategies;
+  final pulumi.Input<List<ScheduleTargetEcsParametersCapacityProviderStrategy>>? capacityProviderStrategies;
   /// Specifies whether to enable Amazon ECS managed tags for the task. For more information, see [Tagging Your Amazon ECS Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html) in the Amazon ECS Developer Guide.
-  final bool? enableEcsManagedTags;
+  final pulumi.Input<bool>? enableEcsManagedTags;
   /// Specifies whether to enable the execute command functionality for the containers in this task.
-  final bool? enableExecuteCommand;
+  final pulumi.Input<bool>? enableExecuteCommand;
   /// Specifies an ECS task group for the task. At most 255 characters.
-  final String? group;
+  final pulumi.Input<String>? group;
   /// Specifies the launch type on which your task is running. The launch type that you specify here must match one of the launch type (compatibilities) of the target task. One of: `EC2`, `FARGATE`, `EXTERNAL`.
-  final String? launchType;
+  final pulumi.Input<String>? launchType;
   /// Configures the networking associated with the task. Detailed below.
-  final ScheduleTargetEcsParametersNetworkConfiguration? networkConfiguration;
+  final pulumi.Input<ScheduleTargetEcsParametersNetworkConfiguration>? networkConfiguration;
   /// A set of up to 10 placement constraints to use for the task. Detailed below.
-  final List<ScheduleTargetEcsParametersPlacementConstraint>? placementConstraints;
+  final pulumi.Input<List<ScheduleTargetEcsParametersPlacementConstraint>>? placementConstraints;
   /// A set of up to 5 placement strategies. Detailed below.
-  final List<ScheduleTargetEcsParametersPlacementStrategy>? placementStrategies;
+  final pulumi.Input<List<ScheduleTargetEcsParametersPlacementStrategy>>? placementStrategies;
   /// Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as `1.1.0`.
-  final String? platformVersion;
+  final pulumi.Input<String>? platformVersion;
   /// Specifies whether to propagate the tags from the task definition to the task. One of: `TASK_DEFINITION`.
-  final String? propagateTags;
+  final pulumi.Input<String>? propagateTags;
   /// Reference ID to use for the task.
-  final String? referenceId;
+  final pulumi.Input<String>? referenceId;
   /// The metadata that you apply to the task. Each tag consists of a key and an optional value. For more information, see [`RunTask`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) in the Amazon ECS API Reference.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The number of tasks to create. Ranges from `1` (default) to `10`.
-  final int? taskCount;
+  final pulumi.Input<int>? taskCount;
   /// ARN of the task definition to use.
   ///
   /// The following arguments are optional:
-  final String taskDefinitionArn;
+  final pulumi.Input<String> taskDefinitionArn;
 
   /// Creates a new [ScheduleTargetEcsParameters].
   /// [capacityProviderStrategies] Up to `6` capacity provider strategies to use for the task. Detailed below.
@@ -72,14 +72,14 @@ class ScheduleTargetEcsParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacityProviderStrategies': ?capacityProviderStrategies == null ? null : pulumi.Input.encodeList<ScheduleTargetEcsParametersCapacityProviderStrategy, Map<String, dynamic>>(capacityProviderStrategies!, (value) => value.toMap()),
+      'capacityProviderStrategies': ?pulumi.Input.mapOptionalInputValue<List<ScheduleTargetEcsParametersCapacityProviderStrategy>, List<Map<String, dynamic>>>(capacityProviderStrategies, (value) => pulumi.Input.encodeList<ScheduleTargetEcsParametersCapacityProviderStrategy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableEcsManagedTags': ?enableEcsManagedTags,
       'enableExecuteCommand': ?enableExecuteCommand,
       'group': ?group,
       'launchType': ?launchType,
-      'networkConfiguration': ?networkConfiguration == null ? null : networkConfiguration!.toMap(),
-      'placementConstraints': ?placementConstraints == null ? null : pulumi.Input.encodeList<ScheduleTargetEcsParametersPlacementConstraint, Map<String, dynamic>>(placementConstraints!, (value) => value.toMap()),
-      'placementStrategies': ?placementStrategies == null ? null : pulumi.Input.encodeList<ScheduleTargetEcsParametersPlacementStrategy, Map<String, dynamic>>(placementStrategies!, (value) => value.toMap()),
+      'networkConfiguration': ?pulumi.Input.mapOptionalInputValue<ScheduleTargetEcsParametersNetworkConfiguration, Map<String, dynamic>>(networkConfiguration, (value) => value.toMap()),
+      'placementConstraints': ?pulumi.Input.mapOptionalInputValue<List<ScheduleTargetEcsParametersPlacementConstraint>, List<Map<String, dynamic>>>(placementConstraints, (value) => pulumi.Input.encodeList<ScheduleTargetEcsParametersPlacementConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'placementStrategies': ?pulumi.Input.mapOptionalInputValue<List<ScheduleTargetEcsParametersPlacementStrategy>, List<Map<String, dynamic>>>(placementStrategies, (value) => pulumi.Input.encodeList<ScheduleTargetEcsParametersPlacementStrategy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'platformVersion': ?platformVersion,
       'propagateTags': ?propagateTags,
       'referenceId': ?referenceId,
@@ -91,20 +91,20 @@ class ScheduleTargetEcsParameters {
 
   factory ScheduleTargetEcsParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetEcsParameters(
-      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : pulumi.Input.decodeList<ScheduleTargetEcsParametersCapacityProviderStrategy>(map['capacityProviderStrategies'], (value) => ScheduleTargetEcsParametersCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())),
-      enableEcsManagedTags: map['enableEcsManagedTags'] == null ? null : map['enableEcsManagedTags'] as bool,
-      enableExecuteCommand: map['enableExecuteCommand'] == null ? null : map['enableExecuteCommand'] as bool,
-      group: map['group'] == null ? null : map['group'] as String,
-      launchType: map['launchType'] == null ? null : map['launchType'] as String,
-      networkConfiguration: map['networkConfiguration'] == null ? null : ScheduleTargetEcsParametersNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>()),
-      placementConstraints: map['placementConstraints'] == null ? null : pulumi.Input.decodeList<ScheduleTargetEcsParametersPlacementConstraint>(map['placementConstraints'], (value) => ScheduleTargetEcsParametersPlacementConstraint.fromMap((value as Map).cast<String, dynamic>())),
-      placementStrategies: map['placementStrategies'] == null ? null : pulumi.Input.decodeList<ScheduleTargetEcsParametersPlacementStrategy>(map['placementStrategies'], (value) => ScheduleTargetEcsParametersPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())),
-      platformVersion: map['platformVersion'] == null ? null : map['platformVersion'] as String,
-      propagateTags: map['propagateTags'] == null ? null : map['propagateTags'] as String,
-      referenceId: map['referenceId'] == null ? null : map['referenceId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      taskCount: map['taskCount'] == null ? null : map['taskCount'] as int,
-      taskDefinitionArn: map['taskDefinitionArn'] as String,
+      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : (pulumi.Input.decodeList<ScheduleTargetEcsParametersCapacityProviderStrategy>(map['capacityProviderStrategies'], (value) => ScheduleTargetEcsParametersCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableEcsManagedTags: map['enableEcsManagedTags'] == null ? null : (map['enableEcsManagedTags'] as bool).input(),
+      enableExecuteCommand: map['enableExecuteCommand'] == null ? null : (map['enableExecuteCommand'] as bool).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      launchType: map['launchType'] == null ? null : (map['launchType'] as String).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (ScheduleTargetEcsParametersNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      placementConstraints: map['placementConstraints'] == null ? null : (pulumi.Input.decodeList<ScheduleTargetEcsParametersPlacementConstraint>(map['placementConstraints'], (value) => ScheduleTargetEcsParametersPlacementConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placementStrategies: map['placementStrategies'] == null ? null : (pulumi.Input.decodeList<ScheduleTargetEcsParametersPlacementStrategy>(map['placementStrategies'], (value) => ScheduleTargetEcsParametersPlacementStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion'] as String).input(),
+      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags'] as String).input(),
+      referenceId: map['referenceId'] == null ? null : (map['referenceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      taskCount: map['taskCount'] == null ? null : (map['taskCount'] as int).input(),
+      taskDefinitionArn: (map['taskDefinitionArn'] as String).input(),
     );
   }
 }

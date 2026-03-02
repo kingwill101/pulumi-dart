@@ -19,13 +19,10 @@ class GetGtmInstancesArgs {
   /// [lang] The lang.
   /// [resourceGroupId] The ID of the resource group.
   GetGtmInstancesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? resourceGroupId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId);
+    this.ids,
+    this.lang,
+    this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGtmInstancesArgs {
 
   factory GetGtmInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetGtmInstancesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
   /// Whether or not Cloud Data Lineage integration is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [EnvironmentConfigSoftwareConfigCloudDataLineageIntegration].
   /// [enabled] Whether or not Cloud Data Lineage integration is enabled.
@@ -19,7 +20,7 @@ class EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
 
   factory EnvironmentConfigSoftwareConfigCloudDataLineageIntegration.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigSoftwareConfigCloudDataLineageIntegration(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

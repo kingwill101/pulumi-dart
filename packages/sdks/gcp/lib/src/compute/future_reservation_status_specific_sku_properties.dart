@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FutureReservationStatusSpecificSkuProperties {
   /// ID of the instance template used to populate the Future Reservation properties.
-  final String? sourceInstanceTemplateId;
+  final pulumi.Input<String>? sourceInstanceTemplateId;
 
   /// Creates a new [FutureReservationStatusSpecificSkuProperties].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate the Future Reservation properties.
@@ -19,7 +20,7 @@ class FutureReservationStatusSpecificSkuProperties {
 
   factory FutureReservationStatusSpecificSkuProperties.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusSpecificSkuProperties(
-      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] == null ? null : map['sourceInstanceTemplateId'] as String,
+      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] == null ? null : (map['sourceInstanceTemplateId'] as String).input(),
     );
   }
 }

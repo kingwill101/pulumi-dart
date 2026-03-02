@@ -6,15 +6,15 @@ import 'vm_sku_capabilities_response.dart';
 /// The profile for supported VM SKUs
 class VmSkuPropertiesResponse {
   /// The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc.
-  final List<VmSkuCapabilitiesResponse> capabilities;
+  final pulumi.Input<List<VmSkuCapabilitiesResponse>> capabilities;
   /// The name of the VM SKU
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of resource the SKU applies to.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The size of the VM SKU
-  final String size;
+  final pulumi.Input<String> size;
   /// The tier of the VM SKU
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [VmSkuPropertiesResponse].
   /// [capabilities] The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc.
@@ -32,7 +32,7 @@ class VmSkuPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capabilities': pulumi.Input.encodeList<VmSkuCapabilitiesResponse, Map<String, dynamic>>(capabilities, (value) => value.toMap()),
+      'capabilities': pulumi.Input.mapInputValue<List<VmSkuCapabilitiesResponse>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<VmSkuCapabilitiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'resourceType': resourceType,
       'size': size,
@@ -42,11 +42,11 @@ class VmSkuPropertiesResponse {
 
   factory VmSkuPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VmSkuPropertiesResponse(
-      capabilities: pulumi.Input.decodeList<VmSkuCapabilitiesResponse>(map['capabilities'], (value) => VmSkuCapabilitiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      resourceType: map['resourceType'] as String,
-      size: map['size'] as String,
-      tier: map['tier'] as String,
+      capabilities: (pulumi.Input.decodeList<VmSkuCapabilitiesResponse>(map['capabilities'], (value) => VmSkuCapabilitiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      size: (map['size'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

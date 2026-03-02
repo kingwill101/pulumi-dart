@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterNodePoolNode {
   /// The date and time when the node was created.
-  final String createdAt;
-  final String dropletId;
+  final pulumi.Input<String> createdAt;
+  final pulumi.Input<String> dropletId;
   /// A unique ID that can be used to identify and reference the node.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of Kubernetes cluster.
-  final String name;
+  final pulumi.Input<String> name;
   /// A string indicating the current status of the individual node.
-  final String status;
+  final pulumi.Input<String> status;
   /// The date and time when the node was last updated.
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
 
   /// Creates a new [GetKubernetesClusterNodePoolNode].
   /// [createdAt] The date and time when the node was created.
@@ -43,12 +44,12 @@ class GetKubernetesClusterNodePoolNode {
 
   factory GetKubernetesClusterNodePoolNode.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterNodePoolNode(
-      createdAt: map['createdAt'] as String,
-      dropletId: map['dropletId'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      status: map['status'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      dropletId: (map['dropletId'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
     );
   }
 }

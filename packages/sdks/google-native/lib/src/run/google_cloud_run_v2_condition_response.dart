@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a status condition for a resource.
 class GoogleCloudRunV2ConditionResponse {
   /// A reason for the execution condition.
-  final String executionReason;
+  final pulumi.Input<String> executionReason;
   /// Last time the condition transitioned from one status to another.
-  final String lastTransitionTime;
+  final pulumi.Input<String> lastTransitionTime;
   /// Human readable message indicating details about the current status.
-  final String message;
+  final pulumi.Input<String> message;
   /// A common (service-level) reason for this condition.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// A reason for the revision condition.
-  final String revisionReason;
+  final pulumi.Input<String> revisionReason;
   /// How to interpret failures of this condition, one of Error, Warning, Info
-  final String severity;
+  final pulumi.Input<String> severity;
   /// State of the condition.
-  final String state;
+  final pulumi.Input<String> state;
   /// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudRunV2ConditionResponse].
   /// [executionReason] A reason for the execution condition.
@@ -55,14 +56,14 @@ class GoogleCloudRunV2ConditionResponse {
 
   factory GoogleCloudRunV2ConditionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ConditionResponse(
-      executionReason: map['executionReason'] as String,
-      lastTransitionTime: map['lastTransitionTime'] as String,
-      message: map['message'] as String,
-      reason: map['reason'] as String,
-      revisionReason: map['revisionReason'] as String,
-      severity: map['severity'] as String,
-      state: map['state'] as String,
-      type: map['type'] as String,
+      executionReason: (map['executionReason'] as String).input(),
+      lastTransitionTime: (map['lastTransitionTime'] as String).input(),
+      message: (map['message'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      revisionReason: (map['revisionReason'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      state: (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

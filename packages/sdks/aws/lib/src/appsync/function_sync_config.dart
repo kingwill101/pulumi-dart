@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_sync_config_lambda_conflict_handler_config.dart';
 
 class FunctionSyncConfig {
   /// Conflict Detection strategy to use. Valid values are `NONE` and `VERSION`.
-  final String? conflictDetection;
+  final pulumi.Input<String>? conflictDetection;
   /// Conflict Resolution strategy to perform in the event of a conflict. Valid values are `NONE`, `OPTIMISTIC_CONCURRENCY`, `AUTOMERGE`, and `LAMBDA`.
-  final String? conflictHandler;
+  final pulumi.Input<String>? conflictHandler;
   /// Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See `lambda_conflict_handler_config` Block for details.
-  final FunctionSyncConfigLambdaConflictHandlerConfig? lambdaConflictHandlerConfig;
+  final pulumi.Input<FunctionSyncConfigLambdaConflictHandlerConfig>? lambdaConflictHandlerConfig;
 
   /// Creates a new [FunctionSyncConfig].
   /// [conflictDetection] Conflict Detection strategy to use. Valid values are `NONE` and `VERSION`.
@@ -24,15 +25,15 @@ class FunctionSyncConfig {
     return <String, dynamic>{
       'conflictDetection': ?conflictDetection,
       'conflictHandler': ?conflictHandler,
-      'lambdaConflictHandlerConfig': ?lambdaConflictHandlerConfig == null ? null : lambdaConflictHandlerConfig!.toMap(),
+      'lambdaConflictHandlerConfig': ?pulumi.Input.mapOptionalInputValue<FunctionSyncConfigLambdaConflictHandlerConfig, Map<String, dynamic>>(lambdaConflictHandlerConfig, (value) => value.toMap()),
     };
   }
 
   factory FunctionSyncConfig.fromMap(Map<String, dynamic> map) {
     return FunctionSyncConfig(
-      conflictDetection: map['conflictDetection'] == null ? null : map['conflictDetection'] as String,
-      conflictHandler: map['conflictHandler'] == null ? null : map['conflictHandler'] as String,
-      lambdaConflictHandlerConfig: map['lambdaConflictHandlerConfig'] == null ? null : FunctionSyncConfigLambdaConflictHandlerConfig.fromMap((map['lambdaConflictHandlerConfig'] as Map).cast<String, dynamic>()),
+      conflictDetection: map['conflictDetection'] == null ? null : (map['conflictDetection'] as String).input(),
+      conflictHandler: map['conflictHandler'] == null ? null : (map['conflictHandler'] as String).input(),
+      lambdaConflictHandlerConfig: map['lambdaConflictHandlerConfig'] == null ? null : (FunctionSyncConfigLambdaConflictHandlerConfig.fromMap((map['lambdaConflictHandlerConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

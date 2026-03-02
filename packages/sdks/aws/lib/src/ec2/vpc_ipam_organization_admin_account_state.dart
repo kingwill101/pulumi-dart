@@ -21,17 +21,12 @@ class VpcIpamOrganizationAdminAccountState {
   /// [name] The Organizations name for the delegate account.
   /// [servicePrincipal] The AWS service principal.
   VpcIpamOrganizationAdminAccountState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? delegatedAdminAccountId,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? servicePrincipal,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      delegatedAdminAccountId = pulumi.Input.asOptionalInput<String>(delegatedAdminAccountId),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      servicePrincipal = pulumi.Input.asOptionalInput<String>(servicePrincipal);
+    this.arn,
+    this.delegatedAdminAccountId,
+    this.email,
+    this.name,
+    this.servicePrincipal,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +40,11 @@ class VpcIpamOrganizationAdminAccountState {
 
   factory VpcIpamOrganizationAdminAccountState.fromMap(Map<String, dynamic> map) {
     return VpcIpamOrganizationAdminAccountState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : pulumi.Output.create<String>(map['delegatedAdminAccountId'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      servicePrincipal: map['servicePrincipal'] == null ? null : pulumi.Output.create<String>(map['servicePrincipal'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : (map['delegatedAdminAccountId'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal'] as String).input(),
     );
   }
 }

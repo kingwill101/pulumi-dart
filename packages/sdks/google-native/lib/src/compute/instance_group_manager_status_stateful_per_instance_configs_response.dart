@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
   /// A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-  final bool allEffective;
+  final pulumi.Input<bool> allEffective;
 
   /// Creates a new [InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse].
   /// [allEffective] A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
@@ -19,7 +20,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
 
   factory InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse(
-      allEffective: map['allEffective'] as bool,
+      allEffective: (map['allEffective'] as bool).input(),
     );
   }
 }

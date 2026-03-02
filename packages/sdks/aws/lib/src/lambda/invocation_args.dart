@@ -35,23 +35,15 @@ class InvocationArgs {
   /// [terraformKey] Optional.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
   InvocationArgs({
-    required pulumi.Output<String> functionName,
-    required pulumi.Output<String> input,
-    pulumi.Output<String>? lifecycleScope,
-    pulumi.Output<String>? qualifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? terraformKey,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      input = pulumi.Input.asInput<String>(input),
-      lifecycleScope = pulumi.Input.asOptionalInput<String>(lifecycleScope),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      terraformKey = pulumi.Input.asOptionalInput<String>(terraformKey),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    required this.functionName,
+    required this.input,
+    this.lifecycleScope,
+    this.qualifier,
+    this.region,
+    this.tenantId,
+    this.terraformKey,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class InvocationArgs {
 
   factory InvocationArgs.fromMap(Map<String, dynamic> map) {
     return InvocationArgs(
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      input: pulumi.Output.create<String>(map['input'] as String),
-      lifecycleScope: map['lifecycleScope'] == null ? null : pulumi.Output.create<String>(map['lifecycleScope'] as String),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      terraformKey: map['terraformKey'] == null ? null : pulumi.Output.create<String>(map['terraformKey'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      functionName: (map['functionName'] as String).input(),
+      input: (map['input'] as String).input(),
+      lifecycleScope: map['lifecycleScope'] == null ? null : (map['lifecycleScope'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      terraformKey: map['terraformKey'] == null ? null : (map['terraformKey'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

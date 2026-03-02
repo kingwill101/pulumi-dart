@@ -32,19 +32,13 @@ class PostureArgs {
   /// [postureId] Id of the posture. It is an immutable field.
   /// [state] State of the posture. Update to state field should not be triggered along with
   PostureArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<List<PosturePolicySet>> policySets,
-    required pulumi.Output<String> postureId,
-    required pulumi.Output<String> state,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asInput<String>(location),
-      parent = pulumi.Input.asInput<String>(parent),
-      policySets = pulumi.Input.asInput<List<PosturePolicySet>>(policySets),
-      postureId = pulumi.Input.asInput<String>(postureId),
-      state = pulumi.Input.asInput<String>(state);
+    this.description,
+    required this.location,
+    required this.parent,
+    required this.policySets,
+    required this.postureId,
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class PostureArgs {
 
   factory PostureArgs.fromMap(Map<String, dynamic> map) {
     return PostureArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      policySets: pulumi.Output.create<List<PosturePolicySet>>(pulumi.Input.decodeList<PosturePolicySet>(map['policySets'], (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>()))),
-      postureId: pulumi.Output.create<String>(map['postureId'] as String),
-      state: pulumi.Output.create<String>(map['state'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: (map['location'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      policySets: (pulumi.Input.decodeList<PosturePolicySet>(map['policySets'], (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      postureId: (map['postureId'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

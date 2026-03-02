@@ -25,15 +25,11 @@ class EngineSplitTrafficArgs {
   /// [service] The name of the service these settings apply to.
   /// [split] Mapping that defines fractional HTTP traffic diversion to different versions within the service.
   EngineSplitTrafficArgs({
-    pulumi.Output<bool>? migrateTraffic,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> service,
-    required pulumi.Output<EngineSplitTrafficSplit> split,
-  }) :
-      migrateTraffic = pulumi.Input.asOptionalInput<bool>(migrateTraffic),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service),
-      split = pulumi.Input.asInput<EngineSplitTrafficSplit>(split);
+    this.migrateTraffic,
+    this.project,
+    required this.service,
+    required this.split,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class EngineSplitTrafficArgs {
 
   factory EngineSplitTrafficArgs.fromMap(Map<String, dynamic> map) {
     return EngineSplitTrafficArgs(
-      migrateTraffic: map['migrateTraffic'] == null ? null : pulumi.Output.create<bool>(map['migrateTraffic'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
-      split: pulumi.Output.create<EngineSplitTrafficSplit>(EngineSplitTrafficSplit.fromMap((map['split'] as Map).cast<String, dynamic>())),
+      migrateTraffic: map['migrateTraffic'] == null ? null : (map['migrateTraffic'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
+      split: (EngineSplitTrafficSplit.fromMap((map['split'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

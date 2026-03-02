@@ -35,19 +35,13 @@ class MulticloudDataTransferConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [services] Maps services to their current or planned states. Service names are keys,
   MulticloudDataTransferConfigArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<MulticloudDataTransferConfigService>>? services,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      services = pulumi.Input.asOptionalInput<List<MulticloudDataTransferConfigService>>(services);
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.services,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class MulticloudDataTransferConfigArgs {
 
   factory MulticloudDataTransferConfigArgs.fromMap(Map<String, dynamic> map) {
     return MulticloudDataTransferConfigArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      services: map['services'] == null ? null : pulumi.Output.create<List<MulticloudDataTransferConfigService>>(pulumi.Input.decodeList<MulticloudDataTransferConfigService>(map['services'], (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<MulticloudDataTransferConfigService>(map['services'], (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

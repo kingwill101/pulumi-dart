@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_route_spec_http2_route_action_weighted_target.dart';
 
 class GetRouteSpecHttp2RouteAction {
-  final List<GetRouteSpecHttp2RouteActionWeightedTarget> weightedTargets;
+  final pulumi.Input<List<GetRouteSpecHttp2RouteActionWeightedTarget>> weightedTargets;
 
   /// Creates a new [GetRouteSpecHttp2RouteAction].
   /// [weightedTargets] Required.
@@ -14,13 +14,13 @@ class GetRouteSpecHttp2RouteAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weightedTargets': pulumi.Input.encodeList<GetRouteSpecHttp2RouteActionWeightedTarget, Map<String, dynamic>>(weightedTargets, (value) => value.toMap()),
+      'weightedTargets': pulumi.Input.mapInputValue<List<GetRouteSpecHttp2RouteActionWeightedTarget>, List<Map<String, dynamic>>>(weightedTargets, (value) => pulumi.Input.encodeList<GetRouteSpecHttp2RouteActionWeightedTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRouteSpecHttp2RouteAction.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteAction(
-      weightedTargets: pulumi.Input.decodeList<GetRouteSpecHttp2RouteActionWeightedTarget>(map['weightedTargets'], (value) => GetRouteSpecHttp2RouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>())),
+      weightedTargets: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteActionWeightedTarget>(map['weightedTargets'], (value) => GetRouteSpecHttp2RouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

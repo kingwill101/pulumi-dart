@@ -20,13 +20,10 @@ class TagValueArgs {
   /// [parent] Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
   /// [shortName] Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
   TagValueArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> shortName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parent = pulumi.Input.asInput<String>(parent),
-      shortName = pulumi.Input.asInput<String>(shortName);
+    this.description,
+    required this.parent,
+    required this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class TagValueArgs {
 
   factory TagValueArgs.fromMap(Map<String, dynamic> map) {
     return TagValueArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      shortName: pulumi.Output.create<String>(map['shortName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

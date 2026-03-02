@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A2A Cross-Cluster Migration enable protection input.
 class A2ACrossClusterMigrationEnableProtectionInput {
   /// The fabric specific object Id of the virtual machine.
-  final String? fabricObjectId;
+  final pulumi.Input<String>? fabricObjectId;
   /// The class type.
   /// Expected value is 'A2ACrossClusterMigration'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The recovery container Id.
-  final String? recoveryContainerId;
+  final pulumi.Input<String>? recoveryContainerId;
 
   /// Creates a new [A2ACrossClusterMigrationEnableProtectionInput].
   /// [fabricObjectId] The fabric specific object Id of the virtual machine.
@@ -31,9 +32,9 @@ class A2ACrossClusterMigrationEnableProtectionInput {
 
   factory A2ACrossClusterMigrationEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return A2ACrossClusterMigrationEnableProtectionInput(
-      fabricObjectId: map['fabricObjectId'] == null ? null : map['fabricObjectId'] as String,
-      instanceType: map['instanceType'] as String,
-      recoveryContainerId: map['recoveryContainerId'] == null ? null : map['recoveryContainerId'] as String,
+      fabricObjectId: map['fabricObjectId'] == null ? null : (map['fabricObjectId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      recoveryContainerId: map['recoveryContainerId'] == null ? null : (map['recoveryContainerId'] as String).input(),
     );
   }
 }

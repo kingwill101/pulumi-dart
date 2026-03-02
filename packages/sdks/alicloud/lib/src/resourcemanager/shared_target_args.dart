@@ -16,11 +16,9 @@ class SharedTargetArgs {
   /// [resourceShareId] The ID of the resource share.
   /// [targetId] The ID of the principal.
   SharedTargetArgs({
-    required pulumi.Output<String> resourceShareId,
-    required pulumi.Output<String> targetId,
-  }) :
-      resourceShareId = pulumi.Input.asInput<String>(resourceShareId),
-      targetId = pulumi.Input.asInput<String>(targetId);
+    required this.resourceShareId,
+    required this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class SharedTargetArgs {
 
   factory SharedTargetArgs.fromMap(Map<String, dynamic> map) {
     return SharedTargetArgs(
-      resourceShareId: pulumi.Output.create<String>(map['resourceShareId'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
+      resourceShareId: (map['resourceShareId'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
     );
   }
 }

@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetCostTypes {
   /// A boolean value whether to include credits in the cost budget. Defaults to `true`
-  final bool? includeCredit;
+  final pulumi.Input<bool>? includeCredit;
   /// Whether a budget includes discounts. Defaults to `true`
-  final bool? includeDiscount;
+  final pulumi.Input<bool>? includeDiscount;
   /// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
-  final bool? includeOtherSubscription;
+  final pulumi.Input<bool>? includeOtherSubscription;
   /// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
-  final bool? includeRecurring;
+  final pulumi.Input<bool>? includeRecurring;
   /// A boolean value whether to include refunds in the cost budget. Defaults to `true`
-  final bool? includeRefund;
+  final pulumi.Input<bool>? includeRefund;
   /// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
-  final bool? includeSubscription;
+  final pulumi.Input<bool>? includeSubscription;
   /// A boolean value whether to include support costs in the cost budget. Defaults to `true`
-  final bool? includeSupport;
+  final pulumi.Input<bool>? includeSupport;
   /// A boolean value whether to include tax in the cost budget. Defaults to `true`
-  final bool? includeTax;
+  final pulumi.Input<bool>? includeTax;
   /// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
-  final bool? includeUpfront;
+  final pulumi.Input<bool>? includeUpfront;
   /// Whether a budget uses the amortized rate. Defaults to `false`
-  final bool? useAmortized;
+  final pulumi.Input<bool>? useAmortized;
   /// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
-  final bool? useBlended;
+  final pulumi.Input<bool>? useBlended;
 
   /// Creates a new [BudgetCostTypes].
   /// [includeCredit] A boolean value whether to include credits in the cost budget. Defaults to `true`
@@ -69,17 +70,17 @@ class BudgetCostTypes {
 
   factory BudgetCostTypes.fromMap(Map<String, dynamic> map) {
     return BudgetCostTypes(
-      includeCredit: map['includeCredit'] == null ? null : map['includeCredit'] as bool,
-      includeDiscount: map['includeDiscount'] == null ? null : map['includeDiscount'] as bool,
-      includeOtherSubscription: map['includeOtherSubscription'] == null ? null : map['includeOtherSubscription'] as bool,
-      includeRecurring: map['includeRecurring'] == null ? null : map['includeRecurring'] as bool,
-      includeRefund: map['includeRefund'] == null ? null : map['includeRefund'] as bool,
-      includeSubscription: map['includeSubscription'] == null ? null : map['includeSubscription'] as bool,
-      includeSupport: map['includeSupport'] == null ? null : map['includeSupport'] as bool,
-      includeTax: map['includeTax'] == null ? null : map['includeTax'] as bool,
-      includeUpfront: map['includeUpfront'] == null ? null : map['includeUpfront'] as bool,
-      useAmortized: map['useAmortized'] == null ? null : map['useAmortized'] as bool,
-      useBlended: map['useBlended'] == null ? null : map['useBlended'] as bool,
+      includeCredit: map['includeCredit'] == null ? null : (map['includeCredit'] as bool).input(),
+      includeDiscount: map['includeDiscount'] == null ? null : (map['includeDiscount'] as bool).input(),
+      includeOtherSubscription: map['includeOtherSubscription'] == null ? null : (map['includeOtherSubscription'] as bool).input(),
+      includeRecurring: map['includeRecurring'] == null ? null : (map['includeRecurring'] as bool).input(),
+      includeRefund: map['includeRefund'] == null ? null : (map['includeRefund'] as bool).input(),
+      includeSubscription: map['includeSubscription'] == null ? null : (map['includeSubscription'] as bool).input(),
+      includeSupport: map['includeSupport'] == null ? null : (map['includeSupport'] as bool).input(),
+      includeTax: map['includeTax'] == null ? null : (map['includeTax'] as bool).input(),
+      includeUpfront: map['includeUpfront'] == null ? null : (map['includeUpfront'] as bool).input(),
+      useAmortized: map['useAmortized'] == null ? null : (map['useAmortized'] as bool).input(),
+      useBlended: map['useBlended'] == null ? null : (map['useBlended'] as bool).input(),
     );
   }
 }

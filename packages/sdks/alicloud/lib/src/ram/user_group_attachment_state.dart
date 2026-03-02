@@ -13,11 +13,9 @@ class UserGroupAttachmentState {
   /// [groupName] The name of group.
   /// [userName] The name of user.
   UserGroupAttachmentState({
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? userName,
-  }) :
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.groupName,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class UserGroupAttachmentState {
 
   factory UserGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return UserGroupAttachmentState(
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

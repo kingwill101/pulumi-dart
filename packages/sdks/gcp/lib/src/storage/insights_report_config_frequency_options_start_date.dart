@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsReportConfigFrequencyOptionsStartDate {
   /// The day of the month to start generating inventory reports.
-  final int day;
+  final pulumi.Input<int> day;
   /// The month to start generating inventory reports.
-  final int month;
+  final pulumi.Input<int> month;
   /// The year to start generating inventory reports
-  final int year;
+  final pulumi.Input<int> year;
 
   /// Creates a new [InsightsReportConfigFrequencyOptionsStartDate].
   /// [day] The day of the month to start generating inventory reports.
@@ -29,9 +30,9 @@ class InsightsReportConfigFrequencyOptionsStartDate {
 
   factory InsightsReportConfigFrequencyOptionsStartDate.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigFrequencyOptionsStartDate(
-      day: map['day'] as int,
-      month: map['month'] as int,
-      year: map['year'] as int,
+      day: (map['day'] as int).input(),
+      month: (map['month'] as int).input(),
+      year: (map['year'] as int).input(),
     );
   }
 }

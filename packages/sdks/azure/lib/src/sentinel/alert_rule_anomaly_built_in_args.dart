@@ -27,17 +27,12 @@ class AlertRuleAnomalyBuiltInArgs {
   /// [mode] mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   /// [name] The Name of the built-in Anomaly Alert Rule.
   AlertRuleAnomalyBuiltInArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    required pulumi.Output<String> mode,
-    pulumi.Output<String>? name,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      mode = pulumi.Input.asInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.displayName,
+    required this.enabled,
+    required this.logAnalyticsWorkspaceId,
+    required this.mode,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AlertRuleAnomalyBuiltInArgs {
 
   factory AlertRuleAnomalyBuiltInArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpokeReason {
   /// The code associated with this reason.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// Human-readable details about this reason.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Additional information provided by the user in the RejectSpoke call.
-  final String? userDetails;
+  final pulumi.Input<String>? userDetails;
 
   /// Creates a new [SpokeReason].
   /// [code] The code associated with this reason.
@@ -29,9 +30,9 @@ class SpokeReason {
 
   factory SpokeReason.fromMap(Map<String, dynamic> map) {
     return SpokeReason(
-      code: map['code'] == null ? null : map['code'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      userDetails: map['userDetails'] == null ? null : map['userDetails'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      userDetails: map['userDetails'] == null ? null : (map['userDetails'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class GetVersionsArgs {
   /// [repositoryId] The last part of the repository name to fetch from.
   /// [view] The view, which determines what version information is returned in a response. Possible values are `"BASIC"` and `"FULL"`. Defaults to `"BASIC"`.
   GetVersionsArgs({
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> packageName,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    pulumi.Output<String>? view,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      location = pulumi.Input.asInput<String>(location),
-      packageName = pulumi.Input.asInput<String>(packageName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    this.filter,
+    required this.location,
+    required this.packageName,
+    this.project,
+    required this.repositoryId,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetVersionsArgs {
 
   factory GetVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionsArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      packageName: pulumi.Output.create<String>(map['packageName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      location: (map['location'] as String).input(),
+      packageName: (map['packageName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

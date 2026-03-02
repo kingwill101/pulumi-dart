@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountNetworkProfileAccountAccessIpRule {
   /// Specifies the action of the ip rule. The only possible value is `Allow`. Defaults to `Allow`.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The CIDR block from which requests will match the rule.
-  final String ipRange;
+  final pulumi.Input<String> ipRange;
 
   /// Creates a new [AccountNetworkProfileAccountAccessIpRule].
   /// [action] Specifies the action of the ip rule. The only possible value is `Allow`. Defaults to `Allow`.
@@ -24,8 +25,8 @@ class AccountNetworkProfileAccountAccessIpRule {
 
   factory AccountNetworkProfileAccountAccessIpRule.fromMap(Map<String, dynamic> map) {
     return AccountNetworkProfileAccountAccessIpRule(
-      action: map['action'] == null ? null : map['action'] as String,
-      ipRange: map['ipRange'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      ipRange: (map['ipRange'] as String).input(),
     );
   }
 }

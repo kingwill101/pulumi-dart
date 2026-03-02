@@ -41,27 +41,17 @@ class PrometheusRuleGroupArgs {
   /// [scopes] Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
   /// [tags] Resource tags.
   PrometheusRuleGroupArgs({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? interval,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleGroupName,
-    required pulumi.Output<List<PrometheusRule>> rules,
-    required pulumi.Output<List<String>> scopes,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      interval = pulumi.Input.asOptionalInput<String>(interval),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleGroupName = pulumi.Input.asOptionalInput<String>(ruleGroupName),
-      rules = pulumi.Input.asInput<List<PrometheusRule>>(rules),
-      scopes = pulumi.Input.asInput<List<String>>(scopes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.clusterName,
+    this.description,
+    this.enabled,
+    this.interval,
+    this.location,
+    required this.resourceGroupName,
+    this.ruleGroupName,
+    required this.rules,
+    required this.scopes,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class PrometheusRuleGroupArgs {
 
   factory PrometheusRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return PrometheusRuleGroupArgs(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      interval: map['interval'] == null ? null : pulumi.Output.create<String>(map['interval'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleGroupName: map['ruleGroupName'] == null ? null : pulumi.Output.create<String>(map['ruleGroupName'] as String),
-      rules: pulumi.Output.create<List<PrometheusRule>>(pulumi.Input.decodeList<PrometheusRule>(map['rules'], (value) => PrometheusRule.fromMap((value as Map).cast<String, dynamic>()))),
-      scopes: pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleGroupName: map['ruleGroupName'] == null ? null : (map['ruleGroupName'] as String).input(),
+      rules: (pulumi.Input.decodeList<PrometheusRule>(map['rules'], (value) => PrometheusRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

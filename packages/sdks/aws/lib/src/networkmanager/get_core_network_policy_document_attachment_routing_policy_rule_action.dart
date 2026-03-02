@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction {
   /// Set of routing policy names to associate when the conditions match.
-  final List<String> associateRoutingPolicies;
+  final pulumi.Input<List<String>> associateRoutingPolicies;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction].
   /// [associateRoutingPolicies] Set of routing policy names to associate when the conditions match.
@@ -19,7 +20,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction {
 
   factory GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction(
-      associateRoutingPolicies: (map['associateRoutingPolicies'] as List).cast<String>(),
+      associateRoutingPolicies: ((map['associateRoutingPolicies'] as List).cast<String>()).input(),
     );
   }
 }

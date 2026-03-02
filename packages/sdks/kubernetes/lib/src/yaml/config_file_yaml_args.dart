@@ -19,13 +19,10 @@ class ConfigFileYamlArgs {
   /// [resourcePrefix] An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [transformations] A set of transformations to apply to Kubernetes resource definitions before registering with engine.
   ConfigFileYamlArgs({
-    required pulumi.Output<String> file,
-    pulumi.Output<String>? resourcePrefix,
-    pulumi.Output<List<dynamic>>? transformations,
-  }) :
-      file = pulumi.Input.asInput<String>(file),
-      resourcePrefix = pulumi.Input.asOptionalInput<String>(resourcePrefix),
-      transformations = pulumi.Input.asOptionalInput<List<dynamic>>(transformations);
+    required this.file,
+    this.resourcePrefix,
+    this.transformations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ConfigFileYamlArgs {
 
   factory ConfigFileYamlArgs.fromMap(Map<String, dynamic> map) {
     return ConfigFileYamlArgs(
-      file: pulumi.Output.create<String>(map['file'] as String),
-      resourcePrefix: map['resourcePrefix'] == null ? null : pulumi.Output.create<String>(map['resourcePrefix'] as String),
-      transformations: map['transformations'] == null ? null : pulumi.Output.create<List<dynamic>>((map['transformations'] as List).cast<dynamic>()),
+      file: (map['file'] as String).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
+      transformations: map['transformations'] == null ? null : ((map['transformations'] as List).cast<dynamic>()).input(),
     );
   }
 }

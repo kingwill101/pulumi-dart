@@ -31,19 +31,13 @@ class GetVpcEndpointServiceArgs {
   /// [serviceType] Service type, `Gateway` or `Interface`.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
   GetVpcEndpointServiceArgs({
-    pulumi.Output<List<GetVpcEndpointServiceFilter>>? filters,
-    pulumi.Output<String>? service,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<List<String>>? serviceRegions,
-    pulumi.Output<String>? serviceType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVpcEndpointServiceFilter>>(filters),
-      service = pulumi.Input.asOptionalInput<String>(service),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      serviceRegions = pulumi.Input.asOptionalInput<List<String>>(serviceRegions),
-      serviceType = pulumi.Input.asOptionalInput<String>(serviceType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.service,
+    this.serviceName,
+    this.serviceRegions,
+    this.serviceType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class GetVpcEndpointServiceArgs {
 
   factory GetVpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcEndpointServiceFilter>>(pulumi.Input.decodeList<GetVpcEndpointServiceFilter>(map['filters'], (value) => GetVpcEndpointServiceFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceRegions: map['serviceRegions'] == null ? null : pulumi.Output.create<List<String>>((map['serviceRegions'] as List).cast<String>()),
-      serviceType: map['serviceType'] == null ? null : pulumi.Output.create<String>(map['serviceType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcEndpointServiceFilter>(map['filters'], (value) => GetVpcEndpointServiceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceRegions: map['serviceRegions'] == null ? null : ((map['serviceRegions'] as List).cast<String>()).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -32,17 +32,12 @@ class SacRealmArgs {
   /// [securityService] SSE service provider associated with the realm.
   /// [symantecOptions] Configuration required for Symantec realms.
   SacRealmArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> securityService,
-    pulumi.Output<SacRealmSymantecOptions>? symantecOptions,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      securityService = pulumi.Input.asInput<String>(securityService),
-      symantecOptions = pulumi.Input.asOptionalInput<SacRealmSymantecOptions>(symantecOptions);
+    this.labels,
+    this.name,
+    this.project,
+    required this.securityService,
+    this.symantecOptions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class SacRealmArgs {
 
   factory SacRealmArgs.fromMap(Map<String, dynamic> map) {
     return SacRealmArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      securityService: pulumi.Output.create<String>(map['securityService'] as String),
-      symantecOptions: map['symantecOptions'] == null ? null : pulumi.Output.create<SacRealmSymantecOptions>(SacRealmSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      securityService: (map['securityService'] as String).input(),
+      symantecOptions: map['symantecOptions'] == null ? null : (SacRealmSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

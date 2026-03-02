@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomActionTypeConfigurationProperty {
   /// The description of the action configuration property.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Whether the configuration property is a key.
-  final bool key;
+  final pulumi.Input<bool> key;
   /// The name of the action configuration property.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates that the property will be used in conjunction with PollForJobs.
-  final bool? queryable;
+  final pulumi.Input<bool>? queryable;
   /// Whether the configuration property is a required value.
-  final bool required;
+  final pulumi.Input<bool> required;
   /// Whether the configuration property is secret.
-  final bool secret;
+  final pulumi.Input<bool> secret;
   /// The type of the configuration property. Valid values: `String`, `Number`, `Boolean`
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [CustomActionTypeConfigurationProperty].
   /// [description] The description of the action configuration property.
@@ -49,13 +50,13 @@ class CustomActionTypeConfigurationProperty {
 
   factory CustomActionTypeConfigurationProperty.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeConfigurationProperty(
-      description: map['description'] == null ? null : map['description'] as String,
-      key: map['key'] as bool,
-      name: map['name'] as String,
-      queryable: map['queryable'] == null ? null : map['queryable'] as bool,
-      required: map['required'] as bool,
-      secret: map['secret'] as bool,
-      type: map['type'] == null ? null : map['type'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      key: (map['key'] as bool).input(),
+      name: (map['name'] as String).input(),
+      queryable: map['queryable'] == null ? null : (map['queryable'] as bool).input(),
+      required: (map['required'] as bool).input(),
+      secret: (map['secret'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

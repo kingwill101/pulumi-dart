@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SSL certificate information.
 class CertificateInformation {
   /// Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// Subject of the certificate.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// Thumbprint of the certificate.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
 
   /// Creates a new [CertificateInformation].
   /// [expiry] Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
@@ -30,9 +31,9 @@ class CertificateInformation {
 
   factory CertificateInformation.fromMap(Map<String, dynamic> map) {
     return CertificateInformation(
-      expiry: map['expiry'] as String,
-      subject: map['subject'] as String,
-      thumbprint: map['thumbprint'] as String,
+      expiry: (map['expiry'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
     );
   }
 }

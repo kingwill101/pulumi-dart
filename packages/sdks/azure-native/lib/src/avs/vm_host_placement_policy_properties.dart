@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VM-Host placement policy properties
 class VmHostPlacementPolicyProperties {
   /// vm-host placement policy affinity strength (should/must)
-  final String? affinityStrength;
+  final pulumi.Input<String>? affinityStrength;
   /// placement policy affinity type
-  final String affinityType;
+  final pulumi.Input<String> affinityType;
   /// placement policy azure hybrid benefit opt-in type
-  final String? azureHybridBenefitType;
+  final pulumi.Input<String>? azureHybridBenefitType;
   /// Display name of the placement policy
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Host members list
-  final List<String> hostMembers;
+  final pulumi.Input<List<String>> hostMembers;
   /// Whether the placement policy is enabled or disabled
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Placement Policy type
   /// Expected value is 'VmHost'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Virtual machine members list
-  final List<String> vmMembers;
+  final pulumi.Input<List<String>> vmMembers;
 
   /// Creates a new [VmHostPlacementPolicyProperties].
   /// [affinityStrength] vm-host placement policy affinity strength (should/must)
@@ -56,14 +57,14 @@ class VmHostPlacementPolicyProperties {
 
   factory VmHostPlacementPolicyProperties.fromMap(Map<String, dynamic> map) {
     return VmHostPlacementPolicyProperties(
-      affinityStrength: map['affinityStrength'] == null ? null : map['affinityStrength'] as String,
-      affinityType: map['affinityType'] as String,
-      azureHybridBenefitType: map['azureHybridBenefitType'] == null ? null : map['azureHybridBenefitType'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      hostMembers: (map['hostMembers'] as List).cast<String>(),
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] as String,
-      vmMembers: (map['vmMembers'] as List).cast<String>(),
+      affinityStrength: map['affinityStrength'] == null ? null : (map['affinityStrength'] as String).input(),
+      affinityType: (map['affinityType'] as String).input(),
+      azureHybridBenefitType: map['azureHybridBenefitType'] == null ? null : (map['azureHybridBenefitType'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hostMembers: ((map['hostMembers'] as List).cast<String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      vmMembers: ((map['vmMembers'] as List).cast<String>()).input(),
     );
   }
 }

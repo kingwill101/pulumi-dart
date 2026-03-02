@@ -38,25 +38,16 @@ class AppleAppState {
   /// [project] The ID of the project in which the resource belongs.
   /// [teamId] The Apple Developer Team ID associated with the App in the App Store.
   AppleAppState({
-    pulumi.Output<String>? apiKeyId,
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? appStoreId,
-    pulumi.Output<String>? bundleId,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? teamId,
-  }) :
-      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      appStoreId = pulumi.Input.asOptionalInput<String>(appStoreId),
-      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      teamId = pulumi.Input.asOptionalInput<String>(teamId);
+    this.apiKeyId,
+    this.appId,
+    this.appStoreId,
+    this.bundleId,
+    this.deletionPolicy,
+    this.displayName,
+    this.name,
+    this.project,
+    this.teamId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class AppleAppState {
 
   factory AppleAppState.fromMap(Map<String, dynamic> map) {
     return AppleAppState(
-      apiKeyId: map['apiKeyId'] == null ? null : pulumi.Output.create<String>(map['apiKeyId'] as String),
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      appStoreId: map['appStoreId'] == null ? null : pulumi.Output.create<String>(map['appStoreId'] as String),
-      bundleId: map['bundleId'] == null ? null : pulumi.Output.create<String>(map['bundleId'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      teamId: map['teamId'] == null ? null : pulumi.Output.create<String>(map['teamId'] as String),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      appStoreId: map['appStoreId'] == null ? null : (map['appStoreId'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
     );
   }
 }

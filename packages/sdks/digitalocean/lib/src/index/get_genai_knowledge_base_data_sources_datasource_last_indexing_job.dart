@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob {
   /// Number of completed datasources in the last indexing job
-  final int? completedDatasources;
+  final pulumi.Input<int>? completedDatasources;
   /// Created At timestamp for the last indexing job
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Datasource UUIDs for the last indexing job
-  final List<String>? dataSourceUuids;
+  final pulumi.Input<List<String>>? dataSourceUuids;
   /// Timestamp when the last indexing job finished
-  final String finishedAt;
+  final pulumi.Input<String> finishedAt;
   /// UUID  of the Knowledge Base for the last indexing job
-  final String knowledgeBaseUuid;
+  final pulumi.Input<String> knowledgeBaseUuid;
   /// Phase of the last indexing job
-  final String? phase;
+  final pulumi.Input<String>? phase;
   /// Timestamp when the last indexing job started
-  final String startedAt;
+  final pulumi.Input<String> startedAt;
   /// Number of tokens processed in the last indexing job
-  final int? tokens;
+  final pulumi.Input<int>? tokens;
   /// Total number of datasources in the last indexing job
-  final int? totalDatasources;
+  final pulumi.Input<int>? totalDatasources;
   /// Timestamp when the last indexing job updated
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// UUID  of the last indexing job
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob].
   /// [completedDatasources] Number of completed datasources in the last indexing job
@@ -69,17 +70,17 @@ class GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob {
 
   factory GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob(
-      completedDatasources: map['completedDatasources'] == null ? null : map['completedDatasources'] as int,
-      createdAt: map['createdAt'] as String,
-      dataSourceUuids: map['dataSourceUuids'] == null ? null : (map['dataSourceUuids'] as List).cast<String>(),
-      finishedAt: map['finishedAt'] as String,
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] as String,
-      phase: map['phase'] == null ? null : map['phase'] as String,
-      startedAt: map['startedAt'] as String,
-      tokens: map['tokens'] == null ? null : map['tokens'] as int,
-      totalDatasources: map['totalDatasources'] == null ? null : map['totalDatasources'] as int,
-      updatedAt: map['updatedAt'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      completedDatasources: map['completedDatasources'] == null ? null : (map['completedDatasources'] as int).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      dataSourceUuids: map['dataSourceUuids'] == null ? null : ((map['dataSourceUuids'] as List).cast<String>()).input(),
+      finishedAt: (map['finishedAt'] as String).input(),
+      knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
+      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
+      startedAt: (map['startedAt'] as String).input(),
+      tokens: map['tokens'] == null ? null : (map['tokens'] as int).input(),
+      totalDatasources: map['totalDatasources'] == null ? null : (map['totalDatasources'] as int).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

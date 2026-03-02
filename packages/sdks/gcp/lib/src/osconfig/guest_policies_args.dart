@@ -56,23 +56,15 @@ class GuestPoliciesArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [recipes] A list of Recipes to install on the VM instance.
   GuestPoliciesArgs({
-    required pulumi.Output<GuestPoliciesAssignment> assignment,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> guestPolicyId,
-    pulumi.Output<List<GuestPoliciesPackageRepository>>? packageRepositories,
-    pulumi.Output<List<GuestPoliciesPackage>>? packages,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<GuestPoliciesRecipe>>? recipes,
-  }) :
-      assignment = pulumi.Input.asInput<GuestPoliciesAssignment>(assignment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      guestPolicyId = pulumi.Input.asInput<String>(guestPolicyId),
-      packageRepositories = pulumi.Input.asOptionalInput<List<GuestPoliciesPackageRepository>>(packageRepositories),
-      packages = pulumi.Input.asOptionalInput<List<GuestPoliciesPackage>>(packages),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recipes = pulumi.Input.asOptionalInput<List<GuestPoliciesRecipe>>(recipes);
+    required this.assignment,
+    this.description,
+    this.etag,
+    required this.guestPolicyId,
+    this.packageRepositories,
+    this.packages,
+    this.project,
+    this.recipes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,14 +81,14 @@ class GuestPoliciesArgs {
 
   factory GuestPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesArgs(
-      assignment: pulumi.Output.create<GuestPoliciesAssignment>(GuestPoliciesAssignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      guestPolicyId: pulumi.Output.create<String>(map['guestPolicyId'] as String),
-      packageRepositories: map['packageRepositories'] == null ? null : pulumi.Output.create<List<GuestPoliciesPackageRepository>>(pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories'], (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))),
-      packages: map['packages'] == null ? null : pulumi.Output.create<List<GuestPoliciesPackage>>(pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages'], (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recipes: map['recipes'] == null ? null : pulumi.Output.create<List<GuestPoliciesRecipe>>(pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes'], (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))),
+      assignment: (GuestPoliciesAssignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      guestPolicyId: (map['guestPolicyId'] as String).input(),
+      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories'], (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages'], (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes'], (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

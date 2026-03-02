@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'akri_connector_template_helm_configuration_settings_response.dart';
 
 /// AkriConnectorTemplateHelmConfiguration properties.
 class AkriConnectorTemplateHelmConfigurationResponse {
   /// The Helm configuration settings.
-  final AkriConnectorTemplateHelmConfigurationSettingsResponse helmConfigurationSettings;
+  final pulumi.Input<AkriConnectorTemplateHelmConfigurationSettingsResponse> helmConfigurationSettings;
   /// Runtime configuration types.
   /// Expected value is 'HelmConfiguration'.
-  final String runtimeConfigurationType;
+  final pulumi.Input<String> runtimeConfigurationType;
 
   /// Creates a new [AkriConnectorTemplateHelmConfigurationResponse].
   /// [helmConfigurationSettings] The Helm configuration settings.
@@ -20,15 +21,15 @@ class AkriConnectorTemplateHelmConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'helmConfigurationSettings': helmConfigurationSettings.toMap(),
+      'helmConfigurationSettings': pulumi.Input.mapInputValue<AkriConnectorTemplateHelmConfigurationSettingsResponse, Map<String, dynamic>>(helmConfigurationSettings, (value) => value.toMap()),
       'runtimeConfigurationType': runtimeConfigurationType,
     };
   }
 
   factory AkriConnectorTemplateHelmConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmConfigurationResponse(
-      helmConfigurationSettings: AkriConnectorTemplateHelmConfigurationSettingsResponse.fromMap((map['helmConfigurationSettings'] as Map).cast<String, dynamic>()),
-      runtimeConfigurationType: map['runtimeConfigurationType'] as String,
+      helmConfigurationSettings: (AkriConnectorTemplateHelmConfigurationSettingsResponse.fromMap((map['helmConfigurationSettings'] as Map).cast<String, dynamic>())).input(),
+      runtimeConfigurationType: (map['runtimeConfigurationType'] as String).input(),
     );
   }
 }

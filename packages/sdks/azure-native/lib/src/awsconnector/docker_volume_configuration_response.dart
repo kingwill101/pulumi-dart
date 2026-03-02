@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of DockerVolumeConfiguration
 class DockerVolumeConfigurationResponse {
   /// If this value is ``true``, the Docker volume is created if it doesn't already exist.  This field is only used if the ``scope`` is ``shared``.
-  final bool? autoprovision;
+  final pulumi.Input<bool>? autoprovision;
   /// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement. If the driver was installed using the Docker plugin CLI, use ``docker plugin ls`` to retrieve the driver name from your container instance. If the driver was installed using another method, use Docker plugin discovery to retrieve the driver name. For more information, see [Docker plugin discovery](https://docs.docker.com/engine/extend/plugin_api/#plugin-discovery). This parameter maps to ``Driver`` in the [Create a volume](https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``xxdriver`` option to [docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/).
-  final String? driver;
+  final pulumi.Input<String>? driver;
   /// A map of Docker driver-specific options passed through. This parameter maps to ``DriverOpts`` in the [Create a volume](https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``xxopt`` option to [docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/).
-  final dynamic driverOpts;
+  final pulumi.Input<dynamic>? driverOpts;
   /// Custom metadata to add to your Docker volume. This parameter maps to ``Labels`` in the [Create a volume](https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``xxlabel`` option to [docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/).
-  final dynamic labels;
+  final pulumi.Input<dynamic>? labels;
   /// The scope for the Docker volume that determines its lifecycle. Docker volumes that are scoped to a ``task`` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are scoped as ``shared`` persist after the task stops.
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [DockerVolumeConfigurationResponse].
   /// [autoprovision] If this value is ``true``, the Docker volume is created if it doesn't already exist.  This field is only used if the ``scope`` is ``shared``.
@@ -40,11 +41,11 @@ class DockerVolumeConfigurationResponse {
 
   factory DockerVolumeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DockerVolumeConfigurationResponse(
-      autoprovision: map['autoprovision'] == null ? null : map['autoprovision'] as bool,
-      driver: map['driver'] == null ? null : map['driver'] as String,
-      driverOpts: map['driverOpts'] == null ? null : map['driverOpts'],
-      labels: map['labels'] == null ? null : map['labels'],
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      autoprovision: map['autoprovision'] == null ? null : (map['autoprovision'] as bool).input(),
+      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
+      driverOpts: map['driverOpts'] == null ? null : (map['driverOpts']).input(),
+      labels: map['labels'] == null ? null : (map['labels']).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

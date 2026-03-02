@@ -49,31 +49,19 @@ class ReservationComputeBetaArgs {
   /// [specificReservationRequired] Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
   /// [zone] Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
   ReservationComputeBetaArgs({
-    pulumi.Output<AllocationAggregateReservationComputeBeta>? aggregateReservation,
-    pulumi.Output<DurationComputeBeta>? deleteAfterDuration,
-    pulumi.Output<String>? deleteAtTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<Map<String, String>>? resourcePolicies,
-    pulumi.Output<ShareSettingsComputeBeta>? shareSettings,
-    pulumi.Output<AllocationSpecificSKUReservationComputeBeta>? specificReservation,
-    pulumi.Output<bool>? specificReservationRequired,
-    pulumi.Output<String>? zone,
-  }) :
-      aggregateReservation = pulumi.Input.asOptionalInput<AllocationAggregateReservationComputeBeta>(aggregateReservation),
-      deleteAfterDuration = pulumi.Input.asOptionalInput<DurationComputeBeta>(deleteAfterDuration),
-      deleteAtTime = pulumi.Input.asOptionalInput<String>(deleteAtTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      resourcePolicies = pulumi.Input.asOptionalInput<Map<String, String>>(resourcePolicies),
-      shareSettings = pulumi.Input.asOptionalInput<ShareSettingsComputeBeta>(shareSettings),
-      specificReservation = pulumi.Input.asOptionalInput<AllocationSpecificSKUReservationComputeBeta>(specificReservation),
-      specificReservationRequired = pulumi.Input.asOptionalInput<bool>(specificReservationRequired),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.aggregateReservation,
+    this.deleteAfterDuration,
+    this.deleteAtTime,
+    this.description,
+    this.name,
+    this.project,
+    this.requestId,
+    this.resourcePolicies,
+    this.shareSettings,
+    this.specificReservation,
+    this.specificReservationRequired,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class ReservationComputeBetaArgs {
 
   factory ReservationComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return ReservationComputeBetaArgs(
-      aggregateReservation: map['aggregateReservation'] == null ? null : pulumi.Output.create<AllocationAggregateReservationComputeBeta>(AllocationAggregateReservationComputeBeta.fromMap((map['aggregateReservation'] as Map).cast<String, dynamic>())),
-      deleteAfterDuration: map['deleteAfterDuration'] == null ? null : pulumi.Output.create<DurationComputeBeta>(DurationComputeBeta.fromMap((map['deleteAfterDuration'] as Map).cast<String, dynamic>())),
-      deleteAtTime: map['deleteAtTime'] == null ? null : pulumi.Output.create<String>(map['deleteAtTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      resourcePolicies: map['resourcePolicies'] == null ? null : pulumi.Output.create<Map<String, String>>((map['resourcePolicies'] as Map).cast<String, String>()),
-      shareSettings: map['shareSettings'] == null ? null : pulumi.Output.create<ShareSettingsComputeBeta>(ShareSettingsComputeBeta.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())),
-      specificReservation: map['specificReservation'] == null ? null : pulumi.Output.create<AllocationSpecificSKUReservationComputeBeta>(AllocationSpecificSKUReservationComputeBeta.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())),
-      specificReservationRequired: map['specificReservationRequired'] == null ? null : pulumi.Output.create<bool>(map['specificReservationRequired'] as bool),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      aggregateReservation: map['aggregateReservation'] == null ? null : (AllocationAggregateReservationComputeBeta.fromMap((map['aggregateReservation'] as Map).cast<String, dynamic>())).input(),
+      deleteAfterDuration: map['deleteAfterDuration'] == null ? null : (DurationComputeBeta.fromMap((map['deleteAfterDuration'] as Map).cast<String, dynamic>())).input(),
+      deleteAtTime: map['deleteAtTime'] == null ? null : (map['deleteAtTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : ((map['resourcePolicies'] as Map).cast<String, String>()).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeBeta.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
+      specificReservation: map['specificReservation'] == null ? null : (AllocationSpecificSKUReservationComputeBeta.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
+      specificReservationRequired: map['specificReservationRequired'] == null ? null : (map['specificReservationRequired'] as bool).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

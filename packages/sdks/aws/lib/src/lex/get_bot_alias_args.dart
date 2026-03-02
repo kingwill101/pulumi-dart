@@ -19,13 +19,10 @@ class GetBotAliasArgs {
   /// [name] Name of the bot alias. The name is case sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetBotAliasArgs({
-    required pulumi.Output<String> botName,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      botName = pulumi.Input.asInput<String>(botName),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.botName,
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBotAliasArgs {
 
   factory GetBotAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetBotAliasArgs(
-      botName: pulumi.Output.create<String>(map['botName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      botName: (map['botName'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

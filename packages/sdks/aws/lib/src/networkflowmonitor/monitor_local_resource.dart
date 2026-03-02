@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorLocalResource {
   /// The identifier of the resource. For VPC resources, this is the VPC ARN.
-  final String identifier;
+  final pulumi.Input<String> identifier;
   /// The type of the resource. Valid values are `AWS::EC2::VPC`, `AWS::EC2::Subnet`, `AWS::EC2::AvailabilityZone`, `AWS::EC2::Region`, and `AWS::EKS::Cluster`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MonitorLocalResource].
   /// [identifier] The identifier of the resource. For VPC resources, this is the VPC ARN.
@@ -24,8 +25,8 @@ class MonitorLocalResource {
 
   factory MonitorLocalResource.fromMap(Map<String, dynamic> map) {
     return MonitorLocalResource(
-      identifier: map['identifier'] as String,
-      type: map['type'] as String,
+      identifier: (map['identifier'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

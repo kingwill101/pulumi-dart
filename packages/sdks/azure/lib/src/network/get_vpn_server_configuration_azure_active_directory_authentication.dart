@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpnServerConfigurationAzureActiveDirectoryAuthentication {
   /// The Audience which should be used for authentication.
-  final String audience;
+  final pulumi.Input<String> audience;
   /// The Issuer which should be used for authentication.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// The Tenant which should be used for authentication.
-  final String tenant;
+  final pulumi.Input<String> tenant;
 
   /// Creates a new [GetVpnServerConfigurationAzureActiveDirectoryAuthentication].
   /// [audience] The Audience which should be used for authentication.
@@ -29,9 +30,9 @@ class GetVpnServerConfigurationAzureActiveDirectoryAuthentication {
 
   factory GetVpnServerConfigurationAzureActiveDirectoryAuthentication.fromMap(Map<String, dynamic> map) {
     return GetVpnServerConfigurationAzureActiveDirectoryAuthentication(
-      audience: map['audience'] as String,
-      issuer: map['issuer'] as String,
-      tenant: map['tenant'] as String,
+      audience: (map['audience'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      tenant: (map['tenant'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetApiTagDescriptionArgs {
   /// [serviceName] The name of the API Management service.
   /// [tagDescriptionId] Tag description identifier. Used when creating tagDescription for API/Tag association. Based on API and Tag names.
   GetApiTagDescriptionArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> tagDescriptionId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tagDescriptionId = pulumi.Input.asInput<String>(tagDescriptionId);
+    required this.apiId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.tagDescriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetApiTagDescriptionArgs {
 
   factory GetApiTagDescriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetApiTagDescriptionArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tagDescriptionId: pulumi.Output.create<String>(map['tagDescriptionId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tagDescriptionId: (map['tagDescriptionId'] as String).input(),
     );
   }
 }

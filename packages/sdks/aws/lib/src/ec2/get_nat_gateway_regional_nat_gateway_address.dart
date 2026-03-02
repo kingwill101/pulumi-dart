@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNatGatewayRegionalNatGatewayAddress {
   /// Allocation ID of the Elastic IP address.
-  final String allocationId;
+  final pulumi.Input<String> allocationId;
   /// Association ID of the Elastic IP address.
-  final String associationId;
+  final pulumi.Input<String> associationId;
   /// Availability Zone where this specific NAT gateway configuration is active.
-  final String availabilityZone;
+  final pulumi.Input<String> availabilityZone;
   /// Availability Zone ID where this specific NAT gateway configuration is active
-  final String availabilityZoneId;
+  final pulumi.Input<String> availabilityZoneId;
   /// ID of the network interface.
-  final String networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
   /// Public IP address.
-  final String publicIp;
+  final pulumi.Input<String> publicIp;
   /// Status of the NAT gateway address.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetNatGatewayRegionalNatGatewayAddress].
   /// [allocationId] Allocation ID of the Elastic IP address.
@@ -49,13 +50,13 @@ class GetNatGatewayRegionalNatGatewayAddress {
 
   factory GetNatGatewayRegionalNatGatewayAddress.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayRegionalNatGatewayAddress(
-      allocationId: map['allocationId'] as String,
-      associationId: map['associationId'] as String,
-      availabilityZone: map['availabilityZone'] as String,
-      availabilityZoneId: map['availabilityZoneId'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      publicIp: map['publicIp'] as String,
-      status: map['status'] as String,
+      allocationId: (map['allocationId'] as String).input(),
+      associationId: (map['associationId'] as String).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      publicIp: (map['publicIp'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

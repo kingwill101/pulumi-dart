@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SourceControlSecurityTokenProperties {
   /// The access token.
-  final String? accessToken;
+  final pulumi.Input<String>? accessToken;
   /// The refresh token.
-  final String? refreshToken;
+  final pulumi.Input<String>? refreshToken;
   /// The token type. Must be either PersonalAccessToken or Oauth.
-  final String? tokenType;
+  final pulumi.Input<String>? tokenType;
 
   /// Creates a new [SourceControlSecurityTokenProperties].
   /// [accessToken] The access token.
@@ -29,9 +30,9 @@ class SourceControlSecurityTokenProperties {
 
   factory SourceControlSecurityTokenProperties.fromMap(Map<String, dynamic> map) {
     return SourceControlSecurityTokenProperties(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
-      tokenType: map['tokenType'] == null ? null : map['tokenType'] as String,
+      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      tokenType: map['tokenType'] == null ? null : (map['tokenType'] as String).input(),
     );
   }
 }

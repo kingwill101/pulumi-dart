@@ -14,11 +14,9 @@ class NetworkAclAttachmentState {
   /// [networkAclId] The id of the network acl, the field can't be changed.
   /// [resources] List of the resources associated with the network acl. The details see Block Resources.
   NetworkAclAttachmentState({
-    pulumi.Output<String>? networkAclId,
-    pulumi.Output<List<NetworkAclAttachmentResource>>? resources,
-  }) :
-      networkAclId = pulumi.Input.asOptionalInput<String>(networkAclId),
-      resources = pulumi.Input.asOptionalInput<List<NetworkAclAttachmentResource>>(resources);
+    this.networkAclId,
+    this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class NetworkAclAttachmentState {
 
   factory NetworkAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkAclAttachmentState(
-      networkAclId: map['networkAclId'] == null ? null : pulumi.Output.create<String>(map['networkAclId'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<NetworkAclAttachmentResource>>(pulumi.Input.decodeList<NetworkAclAttachmentResource>(map['resources'], (value) => NetworkAclAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))),
+      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<NetworkAclAttachmentResource>(map['resources'], (value) => NetworkAclAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

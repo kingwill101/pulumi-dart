@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterMaintenancePolicy {
   /// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
-  final String? day;
+  final pulumi.Input<String>? day;
   /// A string denoting the duration of the service window, e.g., "04:00".
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [KubernetesClusterMaintenancePolicy].
   /// [day] The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
@@ -29,9 +30,9 @@ class KubernetesClusterMaintenancePolicy {
 
   factory KubernetesClusterMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterMaintenancePolicy(
-      day: map['day'] == null ? null : map['day'] as String,
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      day: map['day'] == null ? null : (map['day'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

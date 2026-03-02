@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesResourceGroup {
-  final bool? preventDeletionIfContainsResources;
+  final pulumi.Input<bool>? preventDeletionIfContainsResources;
 
   /// Creates a new [FeaturesResourceGroup].
   /// [preventDeletionIfContainsResources] Optional.
@@ -18,7 +19,7 @@ class FeaturesResourceGroup {
 
   factory FeaturesResourceGroup.fromMap(Map<String, dynamic> map) {
     return FeaturesResourceGroup(
-      preventDeletionIfContainsResources: map['preventDeletionIfContainsResources'] == null ? null : map['preventDeletionIfContainsResources'] as bool,
+      preventDeletionIfContainsResources: map['preventDeletionIfContainsResources'] == null ? null : (map['preventDeletionIfContainsResources'] as bool).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue {
   /// The strings in the list.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue].
   /// [values] The strings in the list.
@@ -19,7 +20,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueS
 
   factory CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue(
-      values: (map['values'] as List).cast<String>(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

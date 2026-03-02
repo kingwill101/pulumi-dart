@@ -16,11 +16,9 @@ class GetProjectPoolArgs {
   /// [devCenterProjectId] The ID of the associated Dev Center Project.
   /// [name] The name of this Dev Center Project Pool.
   GetProjectPoolArgs({
-    required pulumi.Output<String> devCenterProjectId,
-    required pulumi.Output<String> name,
-  }) :
-      devCenterProjectId = pulumi.Input.asInput<String>(devCenterProjectId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.devCenterProjectId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetProjectPoolArgs {
 
   factory GetProjectPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectPoolArgs(
-      devCenterProjectId: pulumi.Output.create<String>(map['devCenterProjectId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      devCenterProjectId: (map['devCenterProjectId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

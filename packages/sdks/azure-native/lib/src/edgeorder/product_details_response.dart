@@ -12,23 +12,23 @@ import 'term_commitment_information_response.dart';
 /// Represents product details.
 class ProductDetailsResponse {
   /// Details of all child configurations that are part of the order item.
-  final List<ConfigurationDeviceDetailsResponse> childConfigurationDeviceDetails;
+  final pulumi.Input<List<ConfigurationDeviceDetailsResponse>> childConfigurationDeviceDetails;
   /// Display details of the product.
-  final DisplayInfoResponse? displayInfo;
+  final pulumi.Input<DisplayInfoResponse>? displayInfo;
   /// Hierarchy of the product which uniquely identifies the product.
-  final HierarchyInformationResponse hierarchyInformation;
+  final pulumi.Input<HierarchyInformationResponse> hierarchyInformation;
   /// Identification type of the configuration.
-  final String identificationType;
+  final pulumi.Input<String> identificationType;
   /// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
-  final List<AdditionalConfigurationResponse>? optInAdditionalConfigurations;
+  final pulumi.Input<List<AdditionalConfigurationResponse>>? optInAdditionalConfigurations;
   /// Device details of the parent configuration.
-  final DeviceDetailsResponse parentDeviceDetails;
+  final pulumi.Input<DeviceDetailsResponse> parentDeviceDetails;
   /// Device Provisioning Details for Parent.
-  final ProvisioningDetailsResponse? parentProvisioningDetails;
+  final pulumi.Input<ProvisioningDetailsResponse>? parentProvisioningDetails;
   /// Double encryption status of the configuration. Read-only field.
-  final String productDoubleEncryptionStatus;
+  final pulumi.Input<String> productDoubleEncryptionStatus;
   /// Term Commitment Information of the Device.
-  final TermCommitmentInformationResponse termCommitmentInformation;
+  final pulumi.Input<TermCommitmentInformationResponse> termCommitmentInformation;
 
   /// Creates a new [ProductDetailsResponse].
   /// [childConfigurationDeviceDetails] Details of all child configurations that are part of the order item.
@@ -54,29 +54,29 @@ class ProductDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'childConfigurationDeviceDetails': pulumi.Input.encodeList<ConfigurationDeviceDetailsResponse, Map<String, dynamic>>(childConfigurationDeviceDetails, (value) => value.toMap()),
-      'displayInfo': ?displayInfo == null ? null : displayInfo!.toMap(),
-      'hierarchyInformation': hierarchyInformation.toMap(),
+      'childConfigurationDeviceDetails': pulumi.Input.mapInputValue<List<ConfigurationDeviceDetailsResponse>, List<Map<String, dynamic>>>(childConfigurationDeviceDetails, (value) => pulumi.Input.encodeList<ConfigurationDeviceDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'displayInfo': ?pulumi.Input.mapOptionalInputValue<DisplayInfoResponse, Map<String, dynamic>>(displayInfo, (value) => value.toMap()),
+      'hierarchyInformation': pulumi.Input.mapInputValue<HierarchyInformationResponse, Map<String, dynamic>>(hierarchyInformation, (value) => value.toMap()),
       'identificationType': identificationType,
-      'optInAdditionalConfigurations': ?optInAdditionalConfigurations == null ? null : pulumi.Input.encodeList<AdditionalConfigurationResponse, Map<String, dynamic>>(optInAdditionalConfigurations!, (value) => value.toMap()),
-      'parentDeviceDetails': parentDeviceDetails.toMap(),
-      'parentProvisioningDetails': ?parentProvisioningDetails == null ? null : parentProvisioningDetails!.toMap(),
+      'optInAdditionalConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AdditionalConfigurationResponse>, List<Map<String, dynamic>>>(optInAdditionalConfigurations, (value) => pulumi.Input.encodeList<AdditionalConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parentDeviceDetails': pulumi.Input.mapInputValue<DeviceDetailsResponse, Map<String, dynamic>>(parentDeviceDetails, (value) => value.toMap()),
+      'parentProvisioningDetails': ?pulumi.Input.mapOptionalInputValue<ProvisioningDetailsResponse, Map<String, dynamic>>(parentProvisioningDetails, (value) => value.toMap()),
       'productDoubleEncryptionStatus': productDoubleEncryptionStatus,
-      'termCommitmentInformation': termCommitmentInformation.toMap(),
+      'termCommitmentInformation': pulumi.Input.mapInputValue<TermCommitmentInformationResponse, Map<String, dynamic>>(termCommitmentInformation, (value) => value.toMap()),
     };
   }
 
   factory ProductDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProductDetailsResponse(
-      childConfigurationDeviceDetails: pulumi.Input.decodeList<ConfigurationDeviceDetailsResponse>(map['childConfigurationDeviceDetails'], (value) => ConfigurationDeviceDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      displayInfo: map['displayInfo'] == null ? null : DisplayInfoResponse.fromMap((map['displayInfo'] as Map).cast<String, dynamic>()),
-      hierarchyInformation: HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>()),
-      identificationType: map['identificationType'] as String,
-      optInAdditionalConfigurations: map['optInAdditionalConfigurations'] == null ? null : pulumi.Input.decodeList<AdditionalConfigurationResponse>(map['optInAdditionalConfigurations'], (value) => AdditionalConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      parentDeviceDetails: DeviceDetailsResponse.fromMap((map['parentDeviceDetails'] as Map).cast<String, dynamic>()),
-      parentProvisioningDetails: map['parentProvisioningDetails'] == null ? null : ProvisioningDetailsResponse.fromMap((map['parentProvisioningDetails'] as Map).cast<String, dynamic>()),
-      productDoubleEncryptionStatus: map['productDoubleEncryptionStatus'] as String,
-      termCommitmentInformation: TermCommitmentInformationResponse.fromMap((map['termCommitmentInformation'] as Map).cast<String, dynamic>()),
+      childConfigurationDeviceDetails: (pulumi.Input.decodeList<ConfigurationDeviceDetailsResponse>(map['childConfigurationDeviceDetails'], (value) => ConfigurationDeviceDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayInfo: map['displayInfo'] == null ? null : (DisplayInfoResponse.fromMap((map['displayInfo'] as Map).cast<String, dynamic>())).input(),
+      hierarchyInformation: (HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
+      identificationType: (map['identificationType'] as String).input(),
+      optInAdditionalConfigurations: map['optInAdditionalConfigurations'] == null ? null : (pulumi.Input.decodeList<AdditionalConfigurationResponse>(map['optInAdditionalConfigurations'], (value) => AdditionalConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parentDeviceDetails: (DeviceDetailsResponse.fromMap((map['parentDeviceDetails'] as Map).cast<String, dynamic>())).input(),
+      parentProvisioningDetails: map['parentProvisioningDetails'] == null ? null : (ProvisioningDetailsResponse.fromMap((map['parentProvisioningDetails'] as Map).cast<String, dynamic>())).input(),
+      productDoubleEncryptionStatus: (map['productDoubleEncryptionStatus'] as String).input(),
+      termCommitmentInformation: (TermCommitmentInformationResponse.fromMap((map['termCommitmentInformation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

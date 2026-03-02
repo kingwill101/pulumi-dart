@@ -6,9 +6,9 @@ import 'sql_availability_group_database_replica_resource_properties_response.dar
 /// A list of Availability Group Database Replicas.
 class SqlServerAvailabilityGroupResourcePropertiesResponseDatabases {
   /// Link to retrieve next page of results.
-  final String nextLink;
+  final pulumi.Input<String> nextLink;
   /// Array of Availability Group Database Replicas.
-  final List<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>? value;
+  final pulumi.Input<List<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>>? value;
 
   /// Creates a new [SqlServerAvailabilityGroupResourcePropertiesResponseDatabases].
   /// [nextLink] Link to retrieve next page of results.
@@ -21,14 +21,14 @@ class SqlServerAvailabilityGroupResourcePropertiesResponseDatabases {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': ?value == null ? null : pulumi.Input.encodeList<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?pulumi.Input.mapOptionalInputValue<List<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>, List<Map<String, dynamic>>>(value, (value) => pulumi.Input.encodeList<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SqlServerAvailabilityGroupResourcePropertiesResponseDatabases.fromMap(Map<String, dynamic> map) {
     return SqlServerAvailabilityGroupResourcePropertiesResponseDatabases(
-      nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>(map['value'], (value) => SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (map['nextLink'] as String).input(),
+      value: map['value'] == null ? null : (pulumi.Input.decodeList<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>(map['value'], (value) => SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

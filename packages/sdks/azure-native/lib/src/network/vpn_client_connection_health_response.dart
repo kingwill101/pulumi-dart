@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VpnClientConnectionHealth properties.
 class VpnClientConnectionHealthResponse {
   /// List of allocated ip addresses to the connected p2s vpn clients.
-  final List<String>? allocatedIpAddresses;
+  final pulumi.Input<List<String>>? allocatedIpAddresses;
   /// Total of the Egress Bytes Transferred in this connection.
-  final double totalEgressBytesTransferred;
+  final pulumi.Input<double> totalEgressBytesTransferred;
   /// Total of the Ingress Bytes Transferred in this P2S Vpn connection.
-  final double totalIngressBytesTransferred;
+  final pulumi.Input<double> totalIngressBytesTransferred;
   /// The total of p2s vpn clients connected at this time to this P2SVpnGateway.
-  final int? vpnClientConnectionsCount;
+  final pulumi.Input<int>? vpnClientConnectionsCount;
 
   /// Creates a new [VpnClientConnectionHealthResponse].
   /// [allocatedIpAddresses] List of allocated ip addresses to the connected p2s vpn clients.
@@ -35,10 +36,10 @@ class VpnClientConnectionHealthResponse {
 
   factory VpnClientConnectionHealthResponse.fromMap(Map<String, dynamic> map) {
     return VpnClientConnectionHealthResponse(
-      allocatedIpAddresses: map['allocatedIpAddresses'] == null ? null : (map['allocatedIpAddresses'] as List).cast<String>(),
-      totalEgressBytesTransferred: map['totalEgressBytesTransferred'] as double,
-      totalIngressBytesTransferred: map['totalIngressBytesTransferred'] as double,
-      vpnClientConnectionsCount: map['vpnClientConnectionsCount'] == null ? null : map['vpnClientConnectionsCount'] as int,
+      allocatedIpAddresses: map['allocatedIpAddresses'] == null ? null : ((map['allocatedIpAddresses'] as List).cast<String>()).input(),
+      totalEgressBytesTransferred: (map['totalEgressBytesTransferred'] as double).input(),
+      totalIngressBytesTransferred: (map['totalIngressBytesTransferred'] as double).input(),
+      vpnClientConnectionsCount: map['vpnClientConnectionsCount'] == null ? null : (map['vpnClientConnectionsCount'] as int).input(),
     );
   }
 }

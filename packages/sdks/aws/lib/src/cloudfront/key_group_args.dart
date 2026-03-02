@@ -19,13 +19,10 @@ class KeyGroupArgs {
   /// [items] A list of the identifiers of the public keys in the key group.
   /// [name] A name to identify the key group.
   KeyGroupArgs({
-    pulumi.Output<String>? comment,
-    required pulumi.Output<List<String>> items,
-    pulumi.Output<String>? name,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      items = pulumi.Input.asInput<List<String>>(items),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.comment,
+    required this.items,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class KeyGroupArgs {
 
   factory KeyGroupArgs.fromMap(Map<String, dynamic> map) {
     return KeyGroupArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      items: pulumi.Output.create<List<String>>((map['items'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      items: ((map['items'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserSqlServerUserDetail {
   /// If the user has been disabled.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// The server roles for this user in the database.
-  final List<String>? serverRoles;
+  final pulumi.Input<List<String>>? serverRoles;
 
   /// Creates a new [UserSqlServerUserDetail].
   /// [disabled] If the user has been disabled.
@@ -24,8 +25,8 @@ class UserSqlServerUserDetail {
 
   factory UserSqlServerUserDetail.fromMap(Map<String, dynamic> map) {
     return UserSqlServerUserDetail(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      serverRoles: map['serverRoles'] == null ? null : (map['serverRoles'] as List).cast<String>(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      serverRoles: map['serverRoles'] == null ? null : ((map['serverRoles'] as List).cast<String>()).input(),
     );
   }
 }

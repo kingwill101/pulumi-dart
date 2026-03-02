@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A user that can be assigned to a compute instance.
 class AssignedUser {
   /// User’s AAD Object Id.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// User’s AAD Tenant Id.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [AssignedUser].
   /// [objectId] User’s AAD Object Id.
@@ -25,8 +26,8 @@ class AssignedUser {
 
   factory AssignedUser.fromMap(Map<String, dynamic> map) {
     return AssignedUser(
-      objectId: map['objectId'] as String,
-      tenantId: map['tenantId'] as String,
+      objectId: (map['objectId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetWebApplicationFirewallPolicyArgs {
   /// [policyName] The name of the policy.
   /// [resourceGroupName] The name of the resource group.
   GetWebApplicationFirewallPolicyArgs({
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      policyName = pulumi.Input.asInput<String>(policyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.policyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWebApplicationFirewallPolicyArgs {
 
   factory GetWebApplicationFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebApplicationFirewallPolicyArgs(
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      policyName: (map['policyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

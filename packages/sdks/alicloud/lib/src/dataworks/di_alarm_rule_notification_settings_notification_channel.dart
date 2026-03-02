@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiAlarmRuleNotificationSettingsNotificationChannel {
   /// Channel, optional enumeration value:
@@ -11,8 +12,8 @@ class DiAlarmRuleNotificationSettingsNotificationChannel {
   /// Sms (Sms)
   ///
   /// Ding (DingTalk)
-  final List<String>? channels;
-  final String? severity;
+  final pulumi.Input<List<String>>? channels;
+  final pulumi.Input<String>? severity;
 
   /// Creates a new [DiAlarmRuleNotificationSettingsNotificationChannel].
   /// [channels] Channel, optional enumeration value:
@@ -31,8 +32,8 @@ class DiAlarmRuleNotificationSettingsNotificationChannel {
 
   factory DiAlarmRuleNotificationSettingsNotificationChannel.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleNotificationSettingsNotificationChannel(
-      channels: map['channels'] == null ? null : (map['channels'] as List).cast<String>(),
-      severity: map['severity'] == null ? null : map['severity'] as String,
+      channels: map['channels'] == null ? null : ((map['channels'] as List).cast<String>()).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
     );
   }
 }

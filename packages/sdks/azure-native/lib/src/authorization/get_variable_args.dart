@@ -13,9 +13,8 @@ class GetVariableArgs {
   /// Creates a new [GetVariableArgs].
   /// [variableName] The name of the variable to operate on.
   GetVariableArgs({
-    required pulumi.Output<String> variableName,
-  }) :
-      variableName = pulumi.Input.asInput<String>(variableName);
+    required this.variableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetVariableArgs {
 
   factory GetVariableArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableArgs(
-      variableName: pulumi.Output.create<String>(map['variableName'] as String),
+      variableName: (map['variableName'] as String).input(),
     );
   }
 }

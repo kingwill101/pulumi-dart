@@ -25,17 +25,12 @@ class GetCapacityPoolVolumeGroupIdForLdapUserArgs {
   /// [username] username is required to fetch the group to which user is part of
   /// [volumeName] The name of the volume
   GetCapacityPoolVolumeGroupIdForLdapUserArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> username,
-    required pulumi.Output<String> volumeName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      username = pulumi.Input.asInput<String>(username),
-      volumeName = pulumi.Input.asInput<String>(volumeName);
+    required this.accountName,
+    required this.poolName,
+    required this.resourceGroupName,
+    required this.username,
+    required this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetCapacityPoolVolumeGroupIdForLdapUserArgs {
 
   factory GetCapacityPoolVolumeGroupIdForLdapUserArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolVolumeGroupIdForLdapUserArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      username: (map['username'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayHostnameBindingCertificateResponse {
   /// The expiration date of the certificate.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// The subject of the certificate.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The thumbprint of the certificate.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
 
   /// Creates a new [GatewayHostnameBindingCertificateResponse].
   /// [expiry] The expiration date of the certificate.
@@ -29,9 +30,9 @@ class GatewayHostnameBindingCertificateResponse {
 
   factory GatewayHostnameBindingCertificateResponse.fromMap(Map<String, dynamic> map) {
     return GatewayHostnameBindingCertificateResponse(
-      expiry: map['expiry'] as String,
-      subject: map['subject'] as String,
-      thumbprint: map['thumbprint'] as String,
+      expiry: (map['expiry'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
     );
   }
 }

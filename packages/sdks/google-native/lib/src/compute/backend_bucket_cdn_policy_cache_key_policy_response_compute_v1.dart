@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message containing what to include in the cache key for a request for Cloud CDN.
 class BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1 {
   /// Allows HTTP request headers (by name) to be used in the cache key.
-  final List<String> includeHttpHeaders;
+  final pulumi.Input<List<String>> includeHttpHeaders;
   /// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
-  final List<String> queryStringWhitelist;
+  final pulumi.Input<List<String>> queryStringWhitelist;
 
   /// Creates a new [BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1].
   /// [includeHttpHeaders] Allows HTTP request headers (by name) to be used in the cache key.
@@ -25,8 +26,8 @@ class BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1 {
 
   factory BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1(
-      includeHttpHeaders: (map['includeHttpHeaders'] as List).cast<String>(),
-      queryStringWhitelist: (map['queryStringWhitelist'] as List).cast<String>(),
+      includeHttpHeaders: ((map['includeHttpHeaders'] as List).cast<String>()).input(),
+      queryStringWhitelist: ((map['queryStringWhitelist'] as List).cast<String>()).input(),
     );
   }
 }

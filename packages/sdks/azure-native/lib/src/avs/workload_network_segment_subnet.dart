@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subnet configuration for segment
 class WorkloadNetworkSegmentSubnet {
   /// DHCP Range assigned for subnet.
-  final List<String>? dhcpRanges;
+  final pulumi.Input<List<String>>? dhcpRanges;
   /// Gateway address.
-  final String? gatewayAddress;
+  final pulumi.Input<String>? gatewayAddress;
 
   /// Creates a new [WorkloadNetworkSegmentSubnet].
   /// [dhcpRanges] DHCP Range assigned for subnet.
@@ -25,8 +26,8 @@ class WorkloadNetworkSegmentSubnet {
 
   factory WorkloadNetworkSegmentSubnet.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkSegmentSubnet(
-      dhcpRanges: map['dhcpRanges'] == null ? null : (map['dhcpRanges'] as List).cast<String>(),
-      gatewayAddress: map['gatewayAddress'] == null ? null : map['gatewayAddress'] as String,
+      dhcpRanges: map['dhcpRanges'] == null ? null : ((map['dhcpRanges'] as List).cast<String>()).input(),
+      gatewayAddress: map['gatewayAddress'] == null ? null : (map['gatewayAddress'] as String).input(),
     );
   }
 }

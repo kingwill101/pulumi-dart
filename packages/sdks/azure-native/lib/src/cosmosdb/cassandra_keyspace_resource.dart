@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cosmos DB Cassandra keyspace id object
 class CassandraKeyspaceResource {
   /// Name of the Cosmos DB Cassandra keyspace
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [CassandraKeyspaceResource].
   /// [id] Name of the Cosmos DB Cassandra keyspace
@@ -20,7 +21,7 @@ class CassandraKeyspaceResource {
 
   factory CassandraKeyspaceResource.fromMap(Map<String, dynamic> map) {
     return CassandraKeyspaceResource(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

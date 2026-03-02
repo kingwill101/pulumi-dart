@@ -27,19 +27,13 @@ class EngineNamespaceState {
   /// [namespaceId] The id of Namespace.
   /// [namespaceShowName] The name of the Engine Namespace.
   EngineNamespaceState({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? namespaceDesc,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? namespaceShowName,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      namespaceDesc = pulumi.Input.asOptionalInput<String>(namespaceDesc),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      namespaceShowName = pulumi.Input.asOptionalInput<String>(namespaceShowName);
+    this.acceptLanguage,
+    this.clusterId,
+    this.instanceId,
+    this.namespaceDesc,
+    this.namespaceId,
+    this.namespaceShowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class EngineNamespaceState {
 
   factory EngineNamespaceState.fromMap(Map<String, dynamic> map) {
     return EngineNamespaceState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      namespaceDesc: map['namespaceDesc'] == null ? null : pulumi.Output.create<String>(map['namespaceDesc'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      namespaceShowName: map['namespaceShowName'] == null ? null : pulumi.Output.create<String>(map['namespaceShowName'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      namespaceDesc: map['namespaceDesc'] == null ? null : (map['namespaceDesc'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      namespaceShowName: map['namespaceShowName'] == null ? null : (map['namespaceShowName'] as String).input(),
     );
   }
 }

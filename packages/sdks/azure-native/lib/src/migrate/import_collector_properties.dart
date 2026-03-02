@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImportCollectorProperties {
-  final String? discoverySiteId;
+  final pulumi.Input<String>? discoverySiteId;
 
   /// Creates a new [ImportCollectorProperties].
   /// [discoverySiteId] Optional.
@@ -18,7 +19,7 @@ class ImportCollectorProperties {
 
   factory ImportCollectorProperties.fromMap(Map<String, dynamic> map) {
     return ImportCollectorProperties(
-      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId'] as String,
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
     );
   }
 }

@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBandwidthPackagesPackage {
   /// The bandwidth value of bandwidth packet.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The Resource ID of the bandwidth.
-  final String bandwidthPackageId;
+  final pulumi.Input<String> bandwidthPackageId;
   /// The name of the bandwidth packet.
-  final String bandwidthPackageName;
+  final pulumi.Input<String> bandwidthPackageName;
   /// The bandwidth type of the bandwidth.
-  final String bandwidthType;
+  final pulumi.Input<String> bandwidthType;
   /// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter.
-  final String cbnGeographicRegionIda;
+  final pulumi.Input<String> cbnGeographicRegionIda;
   /// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter.
-  final String cbnGeographicRegionIdb;
+  final pulumi.Input<String> cbnGeographicRegionIdb;
   /// The description of bandwidth package.
-  final String description;
+  final pulumi.Input<String> description;
   /// Bandwidth package expiration time.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The ID of the Bandwidth Package.
-  final String id;
+  final pulumi.Input<String> id;
   /// The payment type of the bandwidth.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetBandwidthPackagesPackage].
   /// [bandwidth] The bandwidth value of bandwidth packet.
@@ -74,18 +75,18 @@ class GetBandwidthPackagesPackage {
 
   factory GetBandwidthPackagesPackage.fromMap(Map<String, dynamic> map) {
     return GetBandwidthPackagesPackage(
-      bandwidth: map['bandwidth'] as int,
-      bandwidthPackageId: map['bandwidthPackageId'] as String,
-      bandwidthPackageName: map['bandwidthPackageName'] as String,
-      bandwidthType: map['bandwidthType'] as String,
-      cbnGeographicRegionIda: map['cbnGeographicRegionIda'] as String,
-      cbnGeographicRegionIdb: map['cbnGeographicRegionIdb'] as String,
-      description: map['description'] as String,
-      expiredTime: map['expiredTime'] as String,
-      id: map['id'] as String,
-      paymentType: map['paymentType'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      bandwidth: (map['bandwidth'] as int).input(),
+      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
+      bandwidthPackageName: (map['bandwidthPackageName'] as String).input(),
+      bandwidthType: (map['bandwidthType'] as String).input(),
+      cbnGeographicRegionIda: (map['cbnGeographicRegionIda'] as String).input(),
+      cbnGeographicRegionIdb: (map['cbnGeographicRegionIdb'] as String).input(),
+      description: (map['description'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

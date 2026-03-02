@@ -14,7 +14,7 @@ class URLMapPathMatcherPathRuleRouteAction {
   /// The specification for allowing client side cross-origin requests. Please see W3C
   /// Recommendation for Cross Origin Resource Sharing
   /// Structure is documented below.
-  final URLMapPathMatcherPathRuleRouteActionCorsPolicy? corsPolicy;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionCorsPolicy>? corsPolicy;
   /// The specification for fault injection introduced into traffic to test the
   /// resiliency of clients to backend service failure. As part of fault injection,
   /// when clients send requests to a backend service, delays can be introduced by
@@ -23,33 +23,33 @@ class URLMapPathMatcherPathRuleRouteAction {
   /// Loadbalancer for a percentage of requests. timeout and retry_policy will be
   /// ignored by clients that are configured with a fault_injection_policy.
   /// Structure is documented below.
-  final URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy? faultInjectionPolicy;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy>? faultInjectionPolicy;
   /// Specifies the maximum duration (timeout) for streams on the selected route.
   /// Unlike the `Timeout` field where the timeout duration starts from the time the request
   /// has been fully processed (known as end-of-stream), the duration in this field
   /// is computed from the beginning of the stream until the response has been processed,
   /// including all retries. A stream that does not complete in this duration is closed.
   /// Structure is documented below.
-  final URLMapPathMatcherPathRuleRouteActionMaxStreamDuration? maxStreamDuration;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionMaxStreamDuration>? maxStreamDuration;
   /// Specifies the policy on how requests intended for the route's backends are
   /// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
   /// responses from the shadow service. Prior to sending traffic to the shadow
   /// service, the host / authority header is suffixed with -shadow.
   /// Structure is documented below.
-  final URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy? requestMirrorPolicy;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy>? requestMirrorPolicy;
   /// Specifies the retry policy associated with this route.
   /// Structure is documented below.
-  final URLMapPathMatcherPathRuleRouteActionRetryPolicy? retryPolicy;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionRetryPolicy>? retryPolicy;
   /// Specifies the timeout for the selected route. Timeout is computed from the time
   /// the request is has been fully processed (i.e. end-of-stream) up until the
   /// response has been completely processed. Timeout includes all retries. If not
   /// specified, the default value is 15 seconds.
   /// Structure is documented below.
-  final URLMapPathMatcherPathRuleRouteActionTimeout? timeout;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionTimeout>? timeout;
   /// The spec to modify the URL of the request, prior to forwarding the request to
   /// the matched service
   /// Structure is documented below.
-  final URLMapPathMatcherPathRuleRouteActionUrlRewrite? urlRewrite;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionUrlRewrite>? urlRewrite;
   /// A list of weighted backend services to send traffic to when a route match
   /// occurs. The weights determine the fraction of traffic that flows to their
   /// corresponding backend service. If all traffic needs to go to a single backend
@@ -59,7 +59,7 @@ class URLMapPathMatcherPathRuleRouteAction {
   /// transformations are applied depending on additional settings specified in this
   /// HttpRouteAction.
   /// Structure is documented below.
-  final List<URLMapPathMatcherPathRuleRouteActionWeightedBackendService>? weightedBackendServices;
+  final pulumi.Input<List<URLMapPathMatcherPathRuleRouteActionWeightedBackendService>>? weightedBackendServices;
 
   /// Creates a new [URLMapPathMatcherPathRuleRouteAction].
   /// [corsPolicy] The specification for allowing client side cross-origin requests. Please see W3C
@@ -83,27 +83,27 @@ class URLMapPathMatcherPathRuleRouteAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'corsPolicy': ?corsPolicy == null ? null : corsPolicy!.toMap(),
-      'faultInjectionPolicy': ?faultInjectionPolicy == null ? null : faultInjectionPolicy!.toMap(),
-      'maxStreamDuration': ?maxStreamDuration == null ? null : maxStreamDuration!.toMap(),
-      'requestMirrorPolicy': ?requestMirrorPolicy == null ? null : requestMirrorPolicy!.toMap(),
-      'retryPolicy': ?retryPolicy == null ? null : retryPolicy!.toMap(),
-      'timeout': ?timeout == null ? null : timeout!.toMap(),
-      'urlRewrite': ?urlRewrite == null ? null : urlRewrite!.toMap(),
-      'weightedBackendServices': ?weightedBackendServices == null ? null : pulumi.Input.encodeList<URLMapPathMatcherPathRuleRouteActionWeightedBackendService, Map<String, dynamic>>(weightedBackendServices!, (value) => value.toMap()),
+      'corsPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionCorsPolicy, Map<String, dynamic>>(corsPolicy, (value) => value.toMap()),
+      'faultInjectionPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy, Map<String, dynamic>>(faultInjectionPolicy, (value) => value.toMap()),
+      'maxStreamDuration': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionMaxStreamDuration, Map<String, dynamic>>(maxStreamDuration, (value) => value.toMap()),
+      'requestMirrorPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy, Map<String, dynamic>>(requestMirrorPolicy, (value) => value.toMap()),
+      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionRetryPolicy, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'timeout': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionTimeout, Map<String, dynamic>>(timeout, (value) => value.toMap()),
+      'urlRewrite': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherPathRuleRouteActionUrlRewrite, Map<String, dynamic>>(urlRewrite, (value) => value.toMap()),
+      'weightedBackendServices': ?pulumi.Input.mapOptionalInputValue<List<URLMapPathMatcherPathRuleRouteActionWeightedBackendService>, List<Map<String, dynamic>>>(weightedBackendServices, (value) => pulumi.Input.encodeList<URLMapPathMatcherPathRuleRouteActionWeightedBackendService, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory URLMapPathMatcherPathRuleRouteAction.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleRouteAction(
-      corsPolicy: map['corsPolicy'] == null ? null : URLMapPathMatcherPathRuleRouteActionCorsPolicy.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>()),
-      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>()),
-      maxStreamDuration: map['maxStreamDuration'] == null ? null : URLMapPathMatcherPathRuleRouteActionMaxStreamDuration.fromMap((map['maxStreamDuration'] as Map).cast<String, dynamic>()),
-      requestMirrorPolicy: map['requestMirrorPolicy'] == null ? null : URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy.fromMap((map['requestMirrorPolicy'] as Map).cast<String, dynamic>()),
-      retryPolicy: map['retryPolicy'] == null ? null : URLMapPathMatcherPathRuleRouteActionRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>()),
-      timeout: map['timeout'] == null ? null : URLMapPathMatcherPathRuleRouteActionTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>()),
-      urlRewrite: map['urlRewrite'] == null ? null : URLMapPathMatcherPathRuleRouteActionUrlRewrite.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>()),
-      weightedBackendServices: map['weightedBackendServices'] == null ? null : pulumi.Input.decodeList<URLMapPathMatcherPathRuleRouteActionWeightedBackendService>(map['weightedBackendServices'], (value) => URLMapPathMatcherPathRuleRouteActionWeightedBackendService.fromMap((value as Map).cast<String, dynamic>())),
+      corsPolicy: map['corsPolicy'] == null ? null : (URLMapPathMatcherPathRuleRouteActionCorsPolicy.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>())).input(),
+      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>())).input(),
+      maxStreamDuration: map['maxStreamDuration'] == null ? null : (URLMapPathMatcherPathRuleRouteActionMaxStreamDuration.fromMap((map['maxStreamDuration'] as Map).cast<String, dynamic>())).input(),
+      requestMirrorPolicy: map['requestMirrorPolicy'] == null ? null : (URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy.fromMap((map['requestMirrorPolicy'] as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (URLMapPathMatcherPathRuleRouteActionRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (URLMapPathMatcherPathRuleRouteActionTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
+      urlRewrite: map['urlRewrite'] == null ? null : (URLMapPathMatcherPathRuleRouteActionUrlRewrite.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>())).input(),
+      weightedBackendServices: map['weightedBackendServices'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherPathRuleRouteActionWeightedBackendService>(map['weightedBackendServices'], (value) => URLMapPathMatcherPathRuleRouteActionWeightedBackendService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

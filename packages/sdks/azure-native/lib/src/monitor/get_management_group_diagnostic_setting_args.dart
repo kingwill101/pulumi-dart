@@ -16,11 +16,9 @@ class GetManagementGroupDiagnosticSettingArgs {
   /// [managementGroupId] The management group id.
   /// [name] The name of the diagnostic setting.
   GetManagementGroupDiagnosticSettingArgs({
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<String> name,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.managementGroupId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagementGroupDiagnosticSettingArgs {
 
   factory GetManagementGroupDiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupDiagnosticSettingArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InstanceIpv6Prefix
 class InstanceIpv6Prefix {
   /// <p>One or more IPv6 prefixes assigned to the network interface.</p>
-  final String? ipv6Prefix;
+  final pulumi.Input<String>? ipv6Prefix;
 
   /// Creates a new [InstanceIpv6Prefix].
   /// [ipv6Prefix] <p>One or more IPv6 prefixes assigned to the network interface.</p>
@@ -20,7 +21,7 @@ class InstanceIpv6Prefix {
 
   factory InstanceIpv6Prefix.fromMap(Map<String, dynamic> map) {
     return InstanceIpv6Prefix(
-      ipv6Prefix: map['ipv6Prefix'] == null ? null : map['ipv6Prefix'] as String,
+      ipv6Prefix: map['ipv6Prefix'] == null ? null : (map['ipv6Prefix'] as String).input(),
     );
   }
 }

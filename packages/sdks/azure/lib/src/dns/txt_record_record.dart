@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TxtRecordRecord {
   /// The value of the record. Max length: 4096 characters
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [TxtRecordRecord].
   /// [value] The value of the record. Max length: 4096 characters
@@ -19,7 +20,7 @@ class TxtRecordRecord {
 
   factory TxtRecordRecord.fromMap(Map<String, dynamic> map) {
     return TxtRecordRecord(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

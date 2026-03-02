@@ -35,29 +35,18 @@ class DefaultVpcDhcpOptionsState {
   /// [tags] A map of tags to assign to the resource.
   /// [tagsAll] Optional.
   DefaultVpcDhcpOptionsState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? domainNameServers,
-    pulumi.Output<String>? ipv6AddressPreferredLeaseTime,
-    pulumi.Output<String>? netbiosNameServers,
-    pulumi.Output<String>? netbiosNodeType,
-    pulumi.Output<String>? ntpServers,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      domainNameServers = pulumi.Input.asOptionalInput<String>(domainNameServers),
-      ipv6AddressPreferredLeaseTime = pulumi.Input.asOptionalInput<String>(ipv6AddressPreferredLeaseTime),
-      netbiosNameServers = pulumi.Input.asOptionalInput<String>(netbiosNameServers),
-      netbiosNodeType = pulumi.Input.asOptionalInput<String>(netbiosNodeType),
-      ntpServers = pulumi.Input.asOptionalInput<String>(ntpServers),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.domainName,
+    this.domainNameServers,
+    this.ipv6AddressPreferredLeaseTime,
+    this.netbiosNameServers,
+    this.netbiosNodeType,
+    this.ntpServers,
+    this.ownerId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,17 +66,17 @@ class DefaultVpcDhcpOptionsState {
 
   factory DefaultVpcDhcpOptionsState.fromMap(Map<String, dynamic> map) {
     return DefaultVpcDhcpOptionsState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      domainNameServers: map['domainNameServers'] == null ? null : pulumi.Output.create<String>(map['domainNameServers'] as String),
-      ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] == null ? null : pulumi.Output.create<String>(map['ipv6AddressPreferredLeaseTime'] as String),
-      netbiosNameServers: map['netbiosNameServers'] == null ? null : pulumi.Output.create<String>(map['netbiosNameServers'] as String),
-      netbiosNodeType: map['netbiosNodeType'] == null ? null : pulumi.Output.create<String>(map['netbiosNodeType'] as String),
-      ntpServers: map['ntpServers'] == null ? null : pulumi.Output.create<String>(map['ntpServers'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainNameServers: map['domainNameServers'] == null ? null : (map['domainNameServers'] as String).input(),
+      ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] == null ? null : (map['ipv6AddressPreferredLeaseTime'] as String).input(),
+      netbiosNameServers: map['netbiosNameServers'] == null ? null : (map['netbiosNameServers'] as String).input(),
+      netbiosNodeType: map['netbiosNodeType'] == null ? null : (map['netbiosNodeType'] as String).input(),
+      ntpServers: map['ntpServers'] == null ? null : (map['ntpServers'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

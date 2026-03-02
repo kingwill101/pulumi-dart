@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ethereum_endpoints_response.dart';
 import 'geth_details_response.dart';
 
 /// Ethereum-specific blockchain node details.
 class EthereumDetailsResponse {
   /// Ethereum-specific endpoint information.
-  final EthereumEndpointsResponse additionalEndpoints;
+  final pulumi.Input<EthereumEndpointsResponse> additionalEndpoints;
   /// Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`.
-  final bool apiEnableAdmin;
+  final pulumi.Input<bool> apiEnableAdmin;
   /// Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.
-  final bool apiEnableDebug;
+  final pulumi.Input<bool> apiEnableDebug;
   /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-  final String beaconFeeRecipient;
+  final pulumi.Input<String> beaconFeeRecipient;
   /// Immutable. The consensus client.
-  final String consensusClient;
+  final pulumi.Input<String> consensusClient;
   /// Immutable. The execution client
-  final String executionClient;
+  final pulumi.Input<String> executionClient;
   /// Details for the Geth execution client.
-  final GethDetailsResponse gethDetails;
+  final pulumi.Input<GethDetailsResponse> gethDetails;
   /// Immutable. The Ethereum environment being accessed.
-  final String network;
+  final pulumi.Input<String> network;
   /// Immutable. The type of Ethereum node.
-  final String nodeType;
+  final pulumi.Input<String> nodeType;
 
   /// Creates a new [EthereumDetailsResponse].
   /// [additionalEndpoints] Ethereum-specific endpoint information.
@@ -48,13 +49,13 @@ class EthereumDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalEndpoints': additionalEndpoints.toMap(),
+      'additionalEndpoints': pulumi.Input.mapInputValue<EthereumEndpointsResponse, Map<String, dynamic>>(additionalEndpoints, (value) => value.toMap()),
       'apiEnableAdmin': apiEnableAdmin,
       'apiEnableDebug': apiEnableDebug,
       'beaconFeeRecipient': beaconFeeRecipient,
       'consensusClient': consensusClient,
       'executionClient': executionClient,
-      'gethDetails': gethDetails.toMap(),
+      'gethDetails': pulumi.Input.mapInputValue<GethDetailsResponse, Map<String, dynamic>>(gethDetails, (value) => value.toMap()),
       'network': network,
       'nodeType': nodeType,
     };
@@ -62,15 +63,15 @@ class EthereumDetailsResponse {
 
   factory EthereumDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EthereumDetailsResponse(
-      additionalEndpoints: EthereumEndpointsResponse.fromMap((map['additionalEndpoints'] as Map).cast<String, dynamic>()),
-      apiEnableAdmin: map['apiEnableAdmin'] as bool,
-      apiEnableDebug: map['apiEnableDebug'] as bool,
-      beaconFeeRecipient: map['beaconFeeRecipient'] as String,
-      consensusClient: map['consensusClient'] as String,
-      executionClient: map['executionClient'] as String,
-      gethDetails: GethDetailsResponse.fromMap((map['gethDetails'] as Map).cast<String, dynamic>()),
-      network: map['network'] as String,
-      nodeType: map['nodeType'] as String,
+      additionalEndpoints: (EthereumEndpointsResponse.fromMap((map['additionalEndpoints'] as Map).cast<String, dynamic>())).input(),
+      apiEnableAdmin: (map['apiEnableAdmin'] as bool).input(),
+      apiEnableDebug: (map['apiEnableDebug'] as bool).input(),
+      beaconFeeRecipient: (map['beaconFeeRecipient'] as String).input(),
+      consensusClient: (map['consensusClient'] as String).input(),
+      executionClient: (map['executionClient'] as String).input(),
+      gethDetails: (GethDetailsResponse.fromMap((map['gethDetails'] as Map).cast<String, dynamic>())).input(),
+      network: (map['network'] as String).input(),
+      nodeType: (map['nodeType'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ModernizeProjectModelResponseSystemData {
   /// Gets or sets the timestamp of resource creation (UTC).
-  final String? createdAt;
+  final pulumi.Input<String>? createdAt;
   /// Gets or sets identity that created the resource.
-  final String? createdBy;
+  final pulumi.Input<String>? createdBy;
   /// Gets or sets the type of identity that created the resource: user, application,
   /// managedIdentity.
-  final String? createdByType;
+  final pulumi.Input<String>? createdByType;
   /// Gets or sets the timestamp of resource last modification (UTC).
-  final String? lastModifiedAt;
+  final pulumi.Input<String>? lastModifiedAt;
   /// Gets or sets the identity that last modified the resource.
-  final String? lastModifiedBy;
+  final pulumi.Input<String>? lastModifiedBy;
   /// Gets or sets the type of identity that last modified the resource: user, application,
   /// managedIdentity.
-  final String? lastModifiedByType;
+  final pulumi.Input<String>? lastModifiedByType;
 
   /// Creates a new [ModernizeProjectModelResponseSystemData].
   /// [createdAt] Gets or sets the timestamp of resource creation (UTC).
@@ -46,12 +47,12 @@ class ModernizeProjectModelResponseSystemData {
 
   factory ModernizeProjectModelResponseSystemData.fromMap(Map<String, dynamic> map) {
     return ModernizeProjectModelResponseSystemData(
-      createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      createdBy: map['createdBy'] == null ? null : map['createdBy'] as String,
-      createdByType: map['createdByType'] == null ? null : map['createdByType'] as String,
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : map['lastModifiedAt'] as String,
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : map['lastModifiedBy'] as String,
-      lastModifiedByType: map['lastModifiedByType'] == null ? null : map['lastModifiedByType'] as String,
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      createdByType: map['createdByType'] == null ? null : (map['createdByType'] as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : (map['lastModifiedBy'] as String).input(),
+      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType'] as String).input(),
     );
   }
 }

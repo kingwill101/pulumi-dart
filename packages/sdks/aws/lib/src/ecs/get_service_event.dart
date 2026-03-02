@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceEvent {
   /// Time when task set was created (RFC3339 format)
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Task set ID
-  final String id;
+  final pulumi.Input<String> id;
   /// Event message
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [GetServiceEvent].
   /// [createdAt] Time when task set was created (RFC3339 format)
@@ -29,9 +30,9 @@ class GetServiceEvent {
 
   factory GetServiceEvent.fromMap(Map<String, dynamic> map) {
     return GetServiceEvent(
-      createdAt: map['createdAt'] as String,
-      id: map['id'] as String,
-      message: map['message'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      id: (map['id'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

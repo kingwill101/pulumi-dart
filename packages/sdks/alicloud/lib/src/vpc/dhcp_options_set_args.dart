@@ -48,27 +48,17 @@ class DhcpOptionsSetArgs {
   /// [resourceGroupId] The ID of the resource group to which the DHCP options set belongs.
   /// [tags] Tags of the current resource.
   DhcpOptionsSetArgs({
-    pulumi.Output<List<DhcpOptionsSetAssociateVpc>>? associateVpcs,
-    pulumi.Output<String>? dhcpOptionsSetDescription,
-    pulumi.Output<String>? dhcpOptionsSetName,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? domainNameServers,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? ipv6LeaseTime,
-    pulumi.Output<String>? leaseTime,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      associateVpcs = pulumi.Input.asOptionalInput<List<DhcpOptionsSetAssociateVpc>>(associateVpcs),
-      dhcpOptionsSetDescription = pulumi.Input.asOptionalInput<String>(dhcpOptionsSetDescription),
-      dhcpOptionsSetName = pulumi.Input.asOptionalInput<String>(dhcpOptionsSetName),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      domainNameServers = pulumi.Input.asOptionalInput<String>(domainNameServers),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      ipv6LeaseTime = pulumi.Input.asOptionalInput<String>(ipv6LeaseTime),
-      leaseTime = pulumi.Input.asOptionalInput<String>(leaseTime),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.associateVpcs,
+    this.dhcpOptionsSetDescription,
+    this.dhcpOptionsSetName,
+    this.domainName,
+    this.domainNameServers,
+    this.dryRun,
+    this.ipv6LeaseTime,
+    this.leaseTime,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,16 +77,16 @@ class DhcpOptionsSetArgs {
 
   factory DhcpOptionsSetArgs.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetArgs(
-      associateVpcs: map['associateVpcs'] == null ? null : pulumi.Output.create<List<DhcpOptionsSetAssociateVpc>>(pulumi.Input.decodeList<DhcpOptionsSetAssociateVpc>(map['associateVpcs'], (value) => DhcpOptionsSetAssociateVpc.fromMap((value as Map).cast<String, dynamic>()))),
-      dhcpOptionsSetDescription: map['dhcpOptionsSetDescription'] == null ? null : pulumi.Output.create<String>(map['dhcpOptionsSetDescription'] as String),
-      dhcpOptionsSetName: map['dhcpOptionsSetName'] == null ? null : pulumi.Output.create<String>(map['dhcpOptionsSetName'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      domainNameServers: map['domainNameServers'] == null ? null : pulumi.Output.create<String>(map['domainNameServers'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      ipv6LeaseTime: map['ipv6LeaseTime'] == null ? null : pulumi.Output.create<String>(map['ipv6LeaseTime'] as String),
-      leaseTime: map['leaseTime'] == null ? null : pulumi.Output.create<String>(map['leaseTime'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      associateVpcs: map['associateVpcs'] == null ? null : (pulumi.Input.decodeList<DhcpOptionsSetAssociateVpc>(map['associateVpcs'], (value) => DhcpOptionsSetAssociateVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dhcpOptionsSetDescription: map['dhcpOptionsSetDescription'] == null ? null : (map['dhcpOptionsSetDescription'] as String).input(),
+      dhcpOptionsSetName: map['dhcpOptionsSetName'] == null ? null : (map['dhcpOptionsSetName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainNameServers: map['domainNameServers'] == null ? null : (map['domainNameServers'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      ipv6LeaseTime: map['ipv6LeaseTime'] == null ? null : (map['ipv6LeaseTime'] as String).input(),
+      leaseTime: map['leaseTime'] == null ? null : (map['leaseTime'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskMirrorSourceReadahead {
   /// Configures the size of data that should be prefetched when reading from the network block device.
-  final String size;
+  final pulumi.Input<String> size;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceReadahead].
   /// [size] Configures the size of data that should be prefetched when reading from the network block device.
@@ -19,7 +20,7 @@ class DomainDevicesDiskMirrorSourceReadahead {
 
   factory DomainDevicesDiskMirrorSourceReadahead.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceReadahead(
-      size: map['size'] as String,
+      size: (map['size'] as String).input(),
     );
   }
 }

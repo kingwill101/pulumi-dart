@@ -23,15 +23,11 @@ class FleetUpdateStrategyArgs {
   /// [strategy] Defines the update sequence of the clusters.
   /// [updateStrategyName] The name of the UpdateStrategy resource.
   FleetUpdateStrategyArgs({
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<UpdateRunStrategy> strategy,
-    pulumi.Output<String>? updateStrategyName,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      strategy = pulumi.Input.asInput<UpdateRunStrategy>(strategy),
-      updateStrategyName = pulumi.Input.asOptionalInput<String>(updateStrategyName);
+    required this.fleetName,
+    required this.resourceGroupName,
+    required this.strategy,
+    this.updateStrategyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FleetUpdateStrategyArgs {
 
   factory FleetUpdateStrategyArgs.fromMap(Map<String, dynamic> map) {
     return FleetUpdateStrategyArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      strategy: pulumi.Output.create<UpdateRunStrategy>(UpdateRunStrategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())),
-      updateStrategyName: map['updateStrategyName'] == null ? null : pulumi.Output.create<String>(map['updateStrategyName'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      strategy: (UpdateRunStrategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
+      updateStrategyName: map['updateStrategyName'] == null ? null : (map['updateStrategyName'] as String).input(),
     );
   }
 }

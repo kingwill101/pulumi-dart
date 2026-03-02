@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PresetVideo {
   /// The display aspect ratio of the video in the output file. Valid values are: `auto`, `1:1`, `4:3`, `3:2`, `16:9`. (Note; to better control resolution and aspect ratio of output videos, we recommend that you use the values `max_width`, `max_height`, `sizing_policy`, `padding_policy`, and `display_aspect_ratio` instead of `resolution` and `aspect_ratio`.)
-  final String? aspectRatio;
+  final pulumi.Input<String>? aspectRatio;
   /// The bit rate of the video stream in the output file, in kilobits/second. You can configure variable bit rate or constant bit rate encoding.
-  final String? bitRate;
+  final pulumi.Input<String>? bitRate;
   /// The video codec for the output file. Valid values are `gif`, `H.264`, `mpeg2`, `vp8`, and `vp9`.
-  final String? codec;
+  final pulumi.Input<String>? codec;
   /// The value that Elastic Transcoder adds to the metadata in the output file. If you set DisplayAspectRatio to auto, Elastic Transcoder chooses an aspect ratio that ensures square pixels. If you specify another option, Elastic Transcoder sets that value in the output file.
-  final String? displayAspectRatio;
+  final pulumi.Input<String>? displayAspectRatio;
   /// Whether to use a fixed value for Video:FixedGOP. Not applicable for containers of type gif. Valid values are true and false. Also known as, Fixed Number of Frames Between Keyframes.
-  final String? fixedGop;
+  final pulumi.Input<String>? fixedGop;
   /// The frames per second for the video stream in the output file. The following values are valid: `auto`, `10`, `15`, `23.97`, `24`, `25`, `29.97`, `30`, `50`, `60`.
-  final String? frameRate;
+  final pulumi.Input<String>? frameRate;
   /// The maximum number of frames between key frames. Not applicable for containers of type gif.
-  final String? keyframesMaxDist;
+  final pulumi.Input<String>? keyframesMaxDist;
   /// If you specify auto for FrameRate, Elastic Transcoder uses the frame rate of the input video for the frame rate of the output video, up to the maximum frame rate. If you do not specify a MaxFrameRate, Elastic Transcoder will use a default of 30.
-  final String? maxFrameRate;
+  final pulumi.Input<String>? maxFrameRate;
   /// The maximum height of the output video in pixels. If you specify auto, Elastic Transcoder uses 1080 (Full HD) as the default value. If you specify a numeric value, enter an even integer between 96 and 3072, inclusive.
-  final String? maxHeight;
+  final pulumi.Input<String>? maxHeight;
   /// The maximum width of the output video in pixels. If you specify auto, Elastic Transcoder uses 1920 (Full HD) as the default value. If you specify a numeric value, enter an even integer between 128 and 4096, inclusive.
-  final String? maxWidth;
+  final pulumi.Input<String>? maxWidth;
   /// When you set PaddingPolicy to Pad, Elastic Transcoder might add black bars to the top and bottom and/or left and right sides of the output video to make the total size of the output video match the values that you specified for `max_width` and `max_height`.
-  final String? paddingPolicy;
+  final pulumi.Input<String>? paddingPolicy;
   /// The width and height of the video in the output file, in pixels. Valid values are `auto` and `widthxheight`. (see note for `aspect_ratio`)
-  final String? resolution;
+  final pulumi.Input<String>? resolution;
   /// A value that controls scaling of the output video. Valid values are: `Fit`, `Fill`, `Stretch`, `Keep`, `ShrinkToFit`, `ShrinkToFill`.
-  final String? sizingPolicy;
+  final pulumi.Input<String>? sizingPolicy;
 
   /// Creates a new [PresetVideo].
   /// [aspectRatio] The display aspect ratio of the video in the output file. Valid values are: `auto`, `1:1`, `4:3`, `3:2`, `16:9`. (Note; to better control resolution and aspect ratio of output videos, we recommend that you use the values `max_width`, `max_height`, `sizing_policy`, `padding_policy`, and `display_aspect_ratio` instead of `resolution` and `aspect_ratio`.)
@@ -79,19 +80,19 @@ class PresetVideo {
 
   factory PresetVideo.fromMap(Map<String, dynamic> map) {
     return PresetVideo(
-      aspectRatio: map['aspectRatio'] == null ? null : map['aspectRatio'] as String,
-      bitRate: map['bitRate'] == null ? null : map['bitRate'] as String,
-      codec: map['codec'] == null ? null : map['codec'] as String,
-      displayAspectRatio: map['displayAspectRatio'] == null ? null : map['displayAspectRatio'] as String,
-      fixedGop: map['fixedGop'] == null ? null : map['fixedGop'] as String,
-      frameRate: map['frameRate'] == null ? null : map['frameRate'] as String,
-      keyframesMaxDist: map['keyframesMaxDist'] == null ? null : map['keyframesMaxDist'] as String,
-      maxFrameRate: map['maxFrameRate'] == null ? null : map['maxFrameRate'] as String,
-      maxHeight: map['maxHeight'] == null ? null : map['maxHeight'] as String,
-      maxWidth: map['maxWidth'] == null ? null : map['maxWidth'] as String,
-      paddingPolicy: map['paddingPolicy'] == null ? null : map['paddingPolicy'] as String,
-      resolution: map['resolution'] == null ? null : map['resolution'] as String,
-      sizingPolicy: map['sizingPolicy'] == null ? null : map['sizingPolicy'] as String,
+      aspectRatio: map['aspectRatio'] == null ? null : (map['aspectRatio'] as String).input(),
+      bitRate: map['bitRate'] == null ? null : (map['bitRate'] as String).input(),
+      codec: map['codec'] == null ? null : (map['codec'] as String).input(),
+      displayAspectRatio: map['displayAspectRatio'] == null ? null : (map['displayAspectRatio'] as String).input(),
+      fixedGop: map['fixedGop'] == null ? null : (map['fixedGop'] as String).input(),
+      frameRate: map['frameRate'] == null ? null : (map['frameRate'] as String).input(),
+      keyframesMaxDist: map['keyframesMaxDist'] == null ? null : (map['keyframesMaxDist'] as String).input(),
+      maxFrameRate: map['maxFrameRate'] == null ? null : (map['maxFrameRate'] as String).input(),
+      maxHeight: map['maxHeight'] == null ? null : (map['maxHeight'] as String).input(),
+      maxWidth: map['maxWidth'] == null ? null : (map['maxWidth'] as String).input(),
+      paddingPolicy: map['paddingPolicy'] == null ? null : (map['paddingPolicy'] as String).input(),
+      resolution: map['resolution'] == null ? null : (map['resolution'] as String).input(),
+      sizingPolicy: map['sizingPolicy'] == null ? null : (map['sizingPolicy'] as String).input(),
     );
   }
 }

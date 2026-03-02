@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue {
   /// String.
-  final String? stringValue;
+  final pulumi.Input<String>? stringValue;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue].
   /// [stringValue] String.
@@ -19,7 +20,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLit
 
   factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValue(
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
     );
   }
 }

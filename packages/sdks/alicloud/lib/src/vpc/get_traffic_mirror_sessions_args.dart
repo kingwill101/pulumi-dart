@@ -40,27 +40,17 @@ class GetTrafficMirrorSessionsArgs {
   /// [trafficMirrorSourceId] The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
   /// [trafficMirrorTargetId] The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
   GetTrafficMirrorSessionsArgs({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? trafficMirrorFilterId,
-    pulumi.Output<String>? trafficMirrorSessionName,
-    pulumi.Output<String>? trafficMirrorSourceId,
-    pulumi.Output<String>? trafficMirrorTargetId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      trafficMirrorFilterId = pulumi.Input.asOptionalInput<String>(trafficMirrorFilterId),
-      trafficMirrorSessionName = pulumi.Input.asOptionalInput<String>(trafficMirrorSessionName),
-      trafficMirrorSourceId = pulumi.Input.asOptionalInput<String>(trafficMirrorSourceId),
-      trafficMirrorTargetId = pulumi.Input.asOptionalInput<String>(trafficMirrorTargetId);
+    this.enabled,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.priority,
+    this.status,
+    this.trafficMirrorFilterId,
+    this.trafficMirrorSessionName,
+    this.trafficMirrorSourceId,
+    this.trafficMirrorTargetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetTrafficMirrorSessionsArgs {
 
   factory GetTrafficMirrorSessionsArgs.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorSessionsArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorFilterId'] as String),
-      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorSessionName'] as String),
-      trafficMirrorSourceId: map['trafficMirrorSourceId'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorSourceId'] as String),
-      trafficMirrorTargetId: map['trafficMirrorTargetId'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorTargetId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : (map['trafficMirrorFilterId'] as String).input(),
+      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : (map['trafficMirrorSessionName'] as String).input(),
+      trafficMirrorSourceId: map['trafficMirrorSourceId'] == null ? null : (map['trafficMirrorSourceId'] as String).input(),
+      trafficMirrorTargetId: map['trafficMirrorTargetId'] == null ? null : (map['trafficMirrorTargetId'] as String).input(),
     );
   }
 }

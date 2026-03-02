@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleNrtAlertDetailsOverrideDynamicProperty {
   /// The name of the dynamic property. Possible values are `AlertLink`, `ConfidenceLevel`, `ConfidenceScore`, `ExtendedLinks`, `ProductComponentName`, `ProductName`, `ProviderName`, `RemediationSteps`, `SubTechniques` and `Techniques`.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the dynamic property. Pssible Values are `Caller`, `dcount_ResourceId` and `EventSubmissionTimestamp`.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AlertRuleNrtAlertDetailsOverrideDynamicProperty].
   /// [name] The name of the dynamic property. Possible values are `AlertLink`, `ConfidenceLevel`, `ConfidenceScore`, `ExtendedLinks`, `ProductComponentName`, `ProductName`, `ProviderName`, `RemediationSteps`, `SubTechniques` and `Techniques`.
@@ -24,8 +25,8 @@ class AlertRuleNrtAlertDetailsOverrideDynamicProperty {
 
   factory AlertRuleNrtAlertDetailsOverrideDynamicProperty.fromMap(Map<String, dynamic> map) {
     return AlertRuleNrtAlertDetailsOverrideDynamicProperty(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

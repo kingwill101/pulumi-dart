@@ -24,17 +24,12 @@ class ReplicationPolicyState {
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   ReplicationPolicyState({
-    pulumi.Output<int>? applicationConsistentSnapshotFrequencyInMinutes,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? recoveryPointRetentionInMinutes,
-    pulumi.Output<String>? recoveryVaultName,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      applicationConsistentSnapshotFrequencyInMinutes = pulumi.Input.asOptionalInput<int>(applicationConsistentSnapshotFrequencyInMinutes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryPointRetentionInMinutes = pulumi.Input.asOptionalInput<int>(recoveryPointRetentionInMinutes),
-      recoveryVaultName = pulumi.Input.asOptionalInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.applicationConsistentSnapshotFrequencyInMinutes,
+    this.name,
+    this.recoveryPointRetentionInMinutes,
+    this.recoveryVaultName,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ReplicationPolicyState {
 
   factory ReplicationPolicyState.fromMap(Map<String, dynamic> map) {
     return ReplicationPolicyState(
-      applicationConsistentSnapshotFrequencyInMinutes: map['applicationConsistentSnapshotFrequencyInMinutes'] == null ? null : pulumi.Output.create<int>(map['applicationConsistentSnapshotFrequencyInMinutes'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryPointRetentionInMinutes: map['recoveryPointRetentionInMinutes'] == null ? null : pulumi.Output.create<int>(map['recoveryPointRetentionInMinutes'] as int),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationConsistentSnapshotFrequencyInMinutes: map['applicationConsistentSnapshotFrequencyInMinutes'] == null ? null : (map['applicationConsistentSnapshotFrequencyInMinutes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryPointRetentionInMinutes: map['recoveryPointRetentionInMinutes'] == null ? null : (map['recoveryPointRetentionInMinutes'] as int).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

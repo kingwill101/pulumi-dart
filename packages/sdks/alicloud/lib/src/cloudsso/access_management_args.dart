@@ -31,21 +31,14 @@ class AccessManagementArgs {
   /// [targetId] The ID of the task object.
   /// [targetType] The type of the task object. Valid values: `RD-Account`.
   AccessManagementArgs({
-    required pulumi.Output<String> accessConfigurationId,
-    pulumi.Output<String>? deprovisionStrategy,
-    required pulumi.Output<String> directoryId,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> principalType,
-    required pulumi.Output<String> targetId,
-    required pulumi.Output<String> targetType,
-  }) :
-      accessConfigurationId = pulumi.Input.asInput<String>(accessConfigurationId),
-      deprovisionStrategy = pulumi.Input.asOptionalInput<String>(deprovisionStrategy),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      targetId = pulumi.Input.asInput<String>(targetId),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    required this.accessConfigurationId,
+    this.deprovisionStrategy,
+    required this.directoryId,
+    required this.principalId,
+    required this.principalType,
+    required this.targetId,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class AccessManagementArgs {
 
   factory AccessManagementArgs.fromMap(Map<String, dynamic> map) {
     return AccessManagementArgs(
-      accessConfigurationId: pulumi.Output.create<String>(map['accessConfigurationId'] as String),
-      deprovisionStrategy: map['deprovisionStrategy'] == null ? null : pulumi.Output.create<String>(map['deprovisionStrategy'] as String),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      accessConfigurationId: (map['accessConfigurationId'] as String).input(),
+      deprovisionStrategy: map['deprovisionStrategy'] == null ? null : (map['deprovisionStrategy'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

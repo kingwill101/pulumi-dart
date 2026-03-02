@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataLake Local Storage details.
 class DataLakeLocalStorage {
   /// Volume name to write to.
-  final String volumeName;
+  final pulumi.Input<String> volumeName;
 
   /// Creates a new [DataLakeLocalStorage].
   /// [volumeName] Volume name to write to.
@@ -20,7 +21,7 @@ class DataLakeLocalStorage {
 
   factory DataLakeLocalStorage.fromMap(Map<String, dynamic> map) {
     return DataLakeLocalStorage(
-      volumeName: map['volumeName'] as String,
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The object representing the state of the migration between the backup policies.
 class BackupPolicyMigrationState {
   /// Time at which the backup policy migration started (ISO-8601 format).
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Describes the status of migration between backup policy types.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Describes the target backup policy type of the backup policy migration.
-  final String? targetType;
+  final pulumi.Input<String>? targetType;
 
   /// Creates a new [BackupPolicyMigrationState].
   /// [startTime] Time at which the backup policy migration started (ISO-8601 format).
@@ -30,9 +31,9 @@ class BackupPolicyMigrationState {
 
   factory BackupPolicyMigrationState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyMigrationState(
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      targetType: map['targetType'] == null ? null : map['targetType'] as String,
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

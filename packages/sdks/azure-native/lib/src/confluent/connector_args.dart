@@ -37,23 +37,15 @@ class ConnectorArgs {
   /// [partnerConnectorInfo] The connection information consumed by applications.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ConnectorArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<ConnectorInfoBase>? connectorBasicInfo,
-    pulumi.Output<String>? connectorName,
-    pulumi.Output<AzureBlobStorageSinkConnectorServiceInfo>? connectorServiceTypeInfo,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> organizationName,
-    pulumi.Output<KafkaAzureBlobStorageSinkConnectorInfo>? partnerConnectorInfo,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      connectorBasicInfo = pulumi.Input.asOptionalInput<ConnectorInfoBase>(connectorBasicInfo),
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      connectorServiceTypeInfo = pulumi.Input.asOptionalInput<AzureBlobStorageSinkConnectorServiceInfo>(connectorServiceTypeInfo),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      partnerConnectorInfo = pulumi.Input.asOptionalInput<KafkaAzureBlobStorageSinkConnectorInfo>(partnerConnectorInfo),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterId,
+    this.connectorBasicInfo,
+    this.connectorName,
+    this.connectorServiceTypeInfo,
+    required this.environmentId,
+    required this.organizationName,
+    this.partnerConnectorInfo,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      connectorBasicInfo: map['connectorBasicInfo'] == null ? null : pulumi.Output.create<ConnectorInfoBase>(ConnectorInfoBase.fromMap((map['connectorBasicInfo'] as Map).cast<String, dynamic>())),
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      connectorServiceTypeInfo: map['connectorServiceTypeInfo'] == null ? null : pulumi.Output.create<AzureBlobStorageSinkConnectorServiceInfo>(AzureBlobStorageSinkConnectorServiceInfo.fromMap((map['connectorServiceTypeInfo'] as Map).cast<String, dynamic>())),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      partnerConnectorInfo: map['partnerConnectorInfo'] == null ? null : pulumi.Output.create<KafkaAzureBlobStorageSinkConnectorInfo>(KafkaAzureBlobStorageSinkConnectorInfo.fromMap((map['partnerConnectorInfo'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      connectorBasicInfo: map['connectorBasicInfo'] == null ? null : (ConnectorInfoBase.fromMap((map['connectorBasicInfo'] as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      connectorServiceTypeInfo: map['connectorServiceTypeInfo'] == null ? null : (AzureBlobStorageSinkConnectorServiceInfo.fromMap((map['connectorServiceTypeInfo'] as Map).cast<String, dynamic>())).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      partnerConnectorInfo: map['partnerConnectorInfo'] == null ? null : (KafkaAzureBlobStorageSinkConnectorInfo.fromMap((map['partnerConnectorInfo'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

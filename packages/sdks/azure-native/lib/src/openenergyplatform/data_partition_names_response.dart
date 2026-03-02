@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The list of Energy services resource's Data Partition Names.
 class DataPartitionNamesResponse {
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DataPartitionNamesResponse].
   /// [name] Optional.
@@ -19,7 +20,7 @@ class DataPartitionNamesResponse {
 
   factory DataPartitionNamesResponse.fromMap(Map<String, dynamic> map) {
     return DataPartitionNamesResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

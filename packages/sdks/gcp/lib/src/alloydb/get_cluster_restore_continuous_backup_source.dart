@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterRestoreContinuousBackupSource {
   /// The name of the source cluster that this cluster is restored from.
-  final String cluster;
+  final pulumi.Input<String> cluster;
   /// The point in time that this cluster is restored to, in RFC 3339 format.
-  final String pointInTime;
+  final pulumi.Input<String> pointInTime;
 
   /// Creates a new [GetClusterRestoreContinuousBackupSource].
   /// [cluster] The name of the source cluster that this cluster is restored from.
@@ -24,8 +25,8 @@ class GetClusterRestoreContinuousBackupSource {
 
   factory GetClusterRestoreContinuousBackupSource.fromMap(Map<String, dynamic> map) {
     return GetClusterRestoreContinuousBackupSource(
-      cluster: map['cluster'] as String,
-      pointInTime: map['pointInTime'] as String,
+      cluster: (map['cluster'] as String).input(),
+      pointInTime: (map['pointInTime'] as String).input(),
     );
   }
 }

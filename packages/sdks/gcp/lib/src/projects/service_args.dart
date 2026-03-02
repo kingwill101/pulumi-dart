@@ -30,17 +30,12 @@ class ServiceArgs {
   /// [project] The project ID. If not provided, the provider project
   /// [service] The service to enable.
   ServiceArgs({
-    pulumi.Output<bool>? checkIfServiceHasUsageOnDestroy,
-    pulumi.Output<bool>? disableDependentServices,
-    pulumi.Output<bool>? disableOnDestroy,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> service,
-  }) :
-      checkIfServiceHasUsageOnDestroy = pulumi.Input.asOptionalInput<bool>(checkIfServiceHasUsageOnDestroy),
-      disableDependentServices = pulumi.Input.asOptionalInput<bool>(disableDependentServices),
-      disableOnDestroy = pulumi.Input.asOptionalInput<bool>(disableOnDestroy),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service);
+    this.checkIfServiceHasUsageOnDestroy,
+    this.disableDependentServices,
+    this.disableOnDestroy,
+    this.project,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      checkIfServiceHasUsageOnDestroy: map['checkIfServiceHasUsageOnDestroy'] == null ? null : pulumi.Output.create<bool>(map['checkIfServiceHasUsageOnDestroy'] as bool),
-      disableDependentServices: map['disableDependentServices'] == null ? null : pulumi.Output.create<bool>(map['disableDependentServices'] as bool),
-      disableOnDestroy: map['disableOnDestroy'] == null ? null : pulumi.Output.create<bool>(map['disableOnDestroy'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      checkIfServiceHasUsageOnDestroy: map['checkIfServiceHasUsageOnDestroy'] == null ? null : (map['checkIfServiceHasUsageOnDestroy'] as bool).input(),
+      disableDependentServices: map['disableDependentServices'] == null ? null : (map['disableDependentServices'] as bool).input(),
+      disableOnDestroy: map['disableOnDestroy'] == null ? null : (map['disableOnDestroy'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

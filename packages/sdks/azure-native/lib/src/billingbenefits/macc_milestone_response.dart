@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automatic_shortfall_suppress_reason_response.dart';
 import 'price_response.dart';
 import 'shortfall_response.dart';
@@ -7,19 +8,19 @@ import 'shortfall_response.dart';
 /// MACC milestone represents interim targets within the period of MACC.
 class MaccMilestoneResponse {
   /// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
-  final String? automaticShortfall;
+  final pulumi.Input<String>? automaticShortfall;
   /// Optional field to record suppression reason for automatic shortfall.
-  final AutomaticShortfallSuppressReasonResponse? automaticShortfallSuppressReason;
+  final pulumi.Input<AutomaticShortfallSuppressReasonResponse>? automaticShortfallSuppressReason;
   /// Commitment associated with this milestone.
-  final PriceResponse? commitment;
+  final pulumi.Input<PriceResponse>? commitment;
   /// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
-  final String? endAt;
+  final pulumi.Input<String>? endAt;
   /// Globally unique identifier for the milestone. Format: {guid}
-  final String? milestoneId;
+  final pulumi.Input<String>? milestoneId;
   /// Details of the shortfall associated with this milestone.
-  final ShortfallResponse? shortfall;
+  final pulumi.Input<ShortfallResponse>? shortfall;
   /// Represents the current status of the Milestone.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [MaccMilestoneResponse].
   /// [automaticShortfall] Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
@@ -42,24 +43,24 @@ class MaccMilestoneResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automaticShortfall': ?automaticShortfall,
-      'automaticShortfallSuppressReason': ?automaticShortfallSuppressReason == null ? null : automaticShortfallSuppressReason!.toMap(),
-      'commitment': ?commitment == null ? null : commitment!.toMap(),
+      'automaticShortfallSuppressReason': ?pulumi.Input.mapOptionalInputValue<AutomaticShortfallSuppressReasonResponse, Map<String, dynamic>>(automaticShortfallSuppressReason, (value) => value.toMap()),
+      'commitment': ?pulumi.Input.mapOptionalInputValue<PriceResponse, Map<String, dynamic>>(commitment, (value) => value.toMap()),
       'endAt': ?endAt,
       'milestoneId': ?milestoneId,
-      'shortfall': ?shortfall == null ? null : shortfall!.toMap(),
+      'shortfall': ?pulumi.Input.mapOptionalInputValue<ShortfallResponse, Map<String, dynamic>>(shortfall, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory MaccMilestoneResponse.fromMap(Map<String, dynamic> map) {
     return MaccMilestoneResponse(
-      automaticShortfall: map['automaticShortfall'] == null ? null : map['automaticShortfall'] as String,
-      automaticShortfallSuppressReason: map['automaticShortfallSuppressReason'] == null ? null : AutomaticShortfallSuppressReasonResponse.fromMap((map['automaticShortfallSuppressReason'] as Map).cast<String, dynamic>()),
-      commitment: map['commitment'] == null ? null : PriceResponse.fromMap((map['commitment'] as Map).cast<String, dynamic>()),
-      endAt: map['endAt'] == null ? null : map['endAt'] as String,
-      milestoneId: map['milestoneId'] == null ? null : map['milestoneId'] as String,
-      shortfall: map['shortfall'] == null ? null : ShortfallResponse.fromMap((map['shortfall'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      automaticShortfall: map['automaticShortfall'] == null ? null : (map['automaticShortfall'] as String).input(),
+      automaticShortfallSuppressReason: map['automaticShortfallSuppressReason'] == null ? null : (AutomaticShortfallSuppressReasonResponse.fromMap((map['automaticShortfallSuppressReason'] as Map).cast<String, dynamic>())).input(),
+      commitment: map['commitment'] == null ? null : (PriceResponse.fromMap((map['commitment'] as Map).cast<String, dynamic>())).input(),
+      endAt: map['endAt'] == null ? null : (map['endAt'] as String).input(),
+      milestoneId: map['milestoneId'] == null ? null : (map['milestoneId'] as String).input(),
+      shortfall: map['shortfall'] == null ? null : (ShortfallResponse.fromMap((map['shortfall'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActivityLogAlertCriteriaServiceHealth {
   /// Events this alert will monitor Possible values are `Incident`, `Maintenance`, `Informational`, `ActionRequired` and `Security`.
-  final List<String>? events;
+  final pulumi.Input<List<String>>? events;
   /// Locations this alert will monitor. For example, `West Europe`.
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// Services this alert will monitor. For example, `Activity Logs & Alerts`, `Action Groups`. Defaults to all Services.
-  final List<String>? services;
+  final pulumi.Input<List<String>>? services;
 
   /// Creates a new [ActivityLogAlertCriteriaServiceHealth].
   /// [events] Events this alert will monitor Possible values are `Incident`, `Maintenance`, `Informational`, `ActionRequired` and `Security`.
@@ -29,9 +30,9 @@ class ActivityLogAlertCriteriaServiceHealth {
 
   factory ActivityLogAlertCriteriaServiceHealth.fromMap(Map<String, dynamic> map) {
     return ActivityLogAlertCriteriaServiceHealth(
-      events: map['events'] == null ? null : (map['events'] as List).cast<String>(),
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      services: map['services'] == null ? null : (map['services'] as List).cast<String>(),
+      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      services: map['services'] == null ? null : ((map['services'] as List).cast<String>()).input(),
     );
   }
 }

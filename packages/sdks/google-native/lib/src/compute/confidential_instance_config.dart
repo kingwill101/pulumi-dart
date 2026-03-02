@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'confidential_instance_config_confidential_instance_type.dart';
 
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
   /// Defines the type of technology used by the confidential instance.
-  final ConfidentialInstanceConfigConfidentialInstanceType? confidentialInstanceType;
+  final pulumi.Input<ConfidentialInstanceConfigConfidentialInstanceType>? confidentialInstanceType;
   /// Defines whether the instance should have confidential compute enabled.
-  final bool? enableConfidentialCompute;
+  final pulumi.Input<bool>? enableConfidentialCompute;
 
   /// Creates a new [ConfidentialInstanceConfig].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential instance.
@@ -19,15 +20,15 @@ class ConfidentialInstanceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'confidentialInstanceType': ?confidentialInstanceType == null ? null : confidentialInstanceType!.value,
+      'confidentialInstanceType': ?pulumi.Input.mapOptionalInputValue<ConfidentialInstanceConfigConfidentialInstanceType, String>(confidentialInstanceType, (value) => value.value),
       'enableConfidentialCompute': ?enableConfidentialCompute,
     };
   }
 
   factory ConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ConfidentialInstanceConfig(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : ConfidentialInstanceConfigConfidentialInstanceType.fromValue(map['confidentialInstanceType'] as String),
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (ConfidentialInstanceConfigConfidentialInstanceType.fromValue(map['confidentialInstanceType'] as String)).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
     );
   }
 }

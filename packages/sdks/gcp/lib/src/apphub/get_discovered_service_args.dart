@@ -19,13 +19,10 @@ class GetDiscoveredServiceArgs {
   /// [project] The host project of the discovered service.
   /// [serviceUri] The uri of the service.
   GetDiscoveredServiceArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceUri,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceUri = pulumi.Input.asInput<String>(serviceUri);
+    required this.location,
+    this.project,
+    required this.serviceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDiscoveredServiceArgs {
 
   factory GetDiscoveredServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredServiceArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceUri: pulumi.Output.create<String>(map['serviceUri'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceUri: (map['serviceUri'] as String).input(),
     );
   }
 }

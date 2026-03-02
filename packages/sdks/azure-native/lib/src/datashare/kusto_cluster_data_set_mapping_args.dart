@@ -32,21 +32,14 @@ class KustoClusterDataSetMappingArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the share subscription which will hold the data set sink.
   KustoClusterDataSetMappingArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> dataSetId,
-    pulumi.Output<String>? dataSetMappingName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> kustoClusterResourceId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareSubscriptionName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dataSetId = pulumi.Input.asInput<String>(dataSetId),
-      dataSetMappingName = pulumi.Input.asOptionalInput<String>(dataSetMappingName),
-      kind = pulumi.Input.asInput<String>(kind),
-      kustoClusterResourceId = pulumi.Input.asInput<String>(kustoClusterResourceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName);
+    required this.accountName,
+    required this.dataSetId,
+    this.dataSetMappingName,
+    required this.kind,
+    required this.kustoClusterResourceId,
+    required this.resourceGroupName,
+    required this.shareSubscriptionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class KustoClusterDataSetMappingArgs {
 
   factory KustoClusterDataSetMappingArgs.fromMap(Map<String, dynamic> map) {
     return KustoClusterDataSetMappingArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dataSetId: pulumi.Output.create<String>(map['dataSetId'] as String),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : pulumi.Output.create<String>(map['dataSetMappingName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      kustoClusterResourceId: pulumi.Output.create<String>(map['kustoClusterResourceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      dataSetId: (map['dataSetId'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      kustoClusterResourceId: (map['kustoClusterResourceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
     );
   }
 }

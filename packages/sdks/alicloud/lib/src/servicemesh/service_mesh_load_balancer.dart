@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceMeshLoadBalancer {
   /// The Instance ID of APIServer Load Balancer
-  final String? apiServerLoadbalancerId;
+  final pulumi.Input<String>? apiServerLoadbalancerId;
   /// Indicates whether to use the IP address of a public network exposed API Server
-  final bool? apiServerPublicEip;
+  final pulumi.Input<bool>? apiServerPublicEip;
   /// Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
-  final bool? pilotPublicEip;
+  final pulumi.Input<bool>? pilotPublicEip;
   /// the EIP instance id of Pilot load balancer.
-  final String? pilotPublicEipId;
+  final pulumi.Input<String>? pilotPublicEipId;
   /// The Instance ID of Pilot Load Balancer
-  final String? pilotPublicLoadbalancerId;
+  final pulumi.Input<String>? pilotPublicLoadbalancerId;
 
   /// Creates a new [ServiceMeshLoadBalancer].
   /// [apiServerLoadbalancerId] The Instance ID of APIServer Load Balancer
@@ -39,11 +40,11 @@ class ServiceMeshLoadBalancer {
 
   factory ServiceMeshLoadBalancer.fromMap(Map<String, dynamic> map) {
     return ServiceMeshLoadBalancer(
-      apiServerLoadbalancerId: map['apiServerLoadbalancerId'] == null ? null : map['apiServerLoadbalancerId'] as String,
-      apiServerPublicEip: map['apiServerPublicEip'] == null ? null : map['apiServerPublicEip'] as bool,
-      pilotPublicEip: map['pilotPublicEip'] == null ? null : map['pilotPublicEip'] as bool,
-      pilotPublicEipId: map['pilotPublicEipId'] == null ? null : map['pilotPublicEipId'] as String,
-      pilotPublicLoadbalancerId: map['pilotPublicLoadbalancerId'] == null ? null : map['pilotPublicLoadbalancerId'] as String,
+      apiServerLoadbalancerId: map['apiServerLoadbalancerId'] == null ? null : (map['apiServerLoadbalancerId'] as String).input(),
+      apiServerPublicEip: map['apiServerPublicEip'] == null ? null : (map['apiServerPublicEip'] as bool).input(),
+      pilotPublicEip: map['pilotPublicEip'] == null ? null : (map['pilotPublicEip'] as bool).input(),
+      pilotPublicEipId: map['pilotPublicEipId'] == null ? null : (map['pilotPublicEipId'] as String).input(),
+      pilotPublicLoadbalancerId: map['pilotPublicLoadbalancerId'] == null ? null : (map['pilotPublicLoadbalancerId'] as String).input(),
     );
   }
 }

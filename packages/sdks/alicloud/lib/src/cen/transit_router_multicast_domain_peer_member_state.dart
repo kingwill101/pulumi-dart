@@ -25,17 +25,12 @@ class TransitRouterMulticastDomainPeerMemberState {
   /// [status] The status of the multicast resource. Valid values:
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
   TransitRouterMulticastDomainPeerMemberState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? groupIpAddress,
-    pulumi.Output<String>? peerTransitRouterMulticastDomainId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterMulticastDomainId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      groupIpAddress = pulumi.Input.asOptionalInput<String>(groupIpAddress),
-      peerTransitRouterMulticastDomainId = pulumi.Input.asOptionalInput<String>(peerTransitRouterMulticastDomainId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterMulticastDomainId = pulumi.Input.asOptionalInput<String>(transitRouterMulticastDomainId);
+    this.dryRun,
+    this.groupIpAddress,
+    this.peerTransitRouterMulticastDomainId,
+    this.status,
+    this.transitRouterMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TransitRouterMulticastDomainPeerMemberState {
 
   factory TransitRouterMulticastDomainPeerMemberState.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainPeerMemberState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      groupIpAddress: map['groupIpAddress'] == null ? null : pulumi.Output.create<String>(map['groupIpAddress'] as String),
-      peerTransitRouterMulticastDomainId: map['peerTransitRouterMulticastDomainId'] == null ? null : pulumi.Output.create<String>(map['peerTransitRouterMulticastDomainId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : pulumi.Output.create<String>(map['transitRouterMulticastDomainId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress'] as String).input(),
+      peerTransitRouterMulticastDomainId: map['peerTransitRouterMulticastDomainId'] == null ? null : (map['peerTransitRouterMulticastDomainId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : (map['transitRouterMulticastDomainId'] as String).input(),
     );
   }
 }

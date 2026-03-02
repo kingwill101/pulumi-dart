@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines reference in reply.
 class GoogleCloudDiscoveryengineV1betaReplyReference {
   /// Anchor text.
-  final String? anchorText;
+  final pulumi.Input<String>? anchorText;
   /// Anchor text end index.
-  final int? end;
+  final pulumi.Input<int>? end;
   /// Anchor text start index.
-  final int? start;
+  final pulumi.Input<int>? start;
   /// URI link reference.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1betaReplyReference].
   /// [anchorText] Anchor text.
@@ -35,10 +36,10 @@ class GoogleCloudDiscoveryengineV1betaReplyReference {
 
   factory GoogleCloudDiscoveryengineV1betaReplyReference.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaReplyReference(
-      anchorText: map['anchorText'] == null ? null : map['anchorText'] as String,
-      end: map['end'] == null ? null : map['end'] as int,
-      start: map['start'] == null ? null : map['start'] as int,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      anchorText: map['anchorText'] == null ? null : (map['anchorText'] as String).input(),
+      end: map['end'] == null ? null : (map['end'] as int).input(),
+      start: map['start'] == null ? null : (map['start'] as int).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

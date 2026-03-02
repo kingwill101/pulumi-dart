@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
-  final String bucketName;
-  final String? bucketPrefix;
+  final pulumi.Input<String> bucketName;
+  final pulumi.Input<String>? bucketPrefix;
   /// The unique ID that's assigned to an Amazon Redshift cluster.
-  final String? clusterIdentifier;
+  final pulumi.Input<String>? clusterIdentifier;
   /// ARN of the IAM role that permits AppFlow to access the database through Data API.
-  final String? dataApiRoleArn;
+  final pulumi.Input<String>? dataApiRoleArn;
   /// The name of an Amazon Redshift database.
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
   /// The JDBC URL of the Amazon Redshift cluster.
-  final String? databaseUrl;
+  final pulumi.Input<String>? databaseUrl;
   /// ARN of the IAM role.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift].
   /// [bucketName] Required.
@@ -47,13 +48,13 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift(
-      bucketName: map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : map['clusterIdentifier'] as String,
-      dataApiRoleArn: map['dataApiRoleArn'] == null ? null : map['dataApiRoleArn'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      databaseUrl: map['databaseUrl'] == null ? null : map['databaseUrl'] as String,
-      roleArn: map['roleArn'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      dataApiRoleArn: map['dataApiRoleArn'] == null ? null : (map['dataApiRoleArn'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseUrl: map['databaseUrl'] == null ? null : (map['databaseUrl'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

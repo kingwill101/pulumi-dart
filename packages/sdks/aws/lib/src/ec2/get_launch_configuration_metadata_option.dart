@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchConfigurationMetadataOption {
   /// State of the metadata service: `enabled`, `disabled`.
-  final String httpEndpoint;
+  final pulumi.Input<String> httpEndpoint;
   /// The desired HTTP PUT response hop limit for instance metadata requests.
-  final int httpPutResponseHopLimit;
+  final pulumi.Input<int> httpPutResponseHopLimit;
   /// If session tokens are required: `optional`, `required`.
-  final String httpTokens;
+  final pulumi.Input<String> httpTokens;
 
   /// Creates a new [GetLaunchConfigurationMetadataOption].
   /// [httpEndpoint] State of the metadata service: `enabled`, `disabled`.
@@ -29,9 +30,9 @@ class GetLaunchConfigurationMetadataOption {
 
   factory GetLaunchConfigurationMetadataOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchConfigurationMetadataOption(
-      httpEndpoint: map['httpEndpoint'] as String,
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] as int,
-      httpTokens: map['httpTokens'] as String,
+      httpEndpoint: (map['httpEndpoint'] as String).input(),
+      httpPutResponseHopLimit: (map['httpPutResponseHopLimit'] as int).input(),
+      httpTokens: (map['httpTokens'] as String).input(),
     );
   }
 }

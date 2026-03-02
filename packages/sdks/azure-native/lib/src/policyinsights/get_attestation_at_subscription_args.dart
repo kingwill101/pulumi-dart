@@ -13,9 +13,8 @@ class GetAttestationAtSubscriptionArgs {
   /// Creates a new [GetAttestationAtSubscriptionArgs].
   /// [attestationName] The name of the attestation.
   GetAttestationAtSubscriptionArgs({
-    required pulumi.Output<String> attestationName,
-  }) :
-      attestationName = pulumi.Input.asInput<String>(attestationName);
+    required this.attestationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAttestationAtSubscriptionArgs {
 
   factory GetAttestationAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestationAtSubscriptionArgs(
-      attestationName: pulumi.Output.create<String>(map['attestationName'] as String),
+      attestationName: (map['attestationName'] as String).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class KubernetesPermissionArgs {
   /// [permissions] A list of user permission. See `permissions` below.
   /// [uid] The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
   KubernetesPermissionArgs({
-    pulumi.Output<List<KubernetesPermissionPermission>>? permissions,
-    required pulumi.Output<String> uid,
-  }) :
-      permissions = pulumi.Input.asOptionalInput<List<KubernetesPermissionPermission>>(permissions),
-      uid = pulumi.Input.asInput<String>(uid);
+    this.permissions,
+    required this.uid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class KubernetesPermissionArgs {
 
   factory KubernetesPermissionArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesPermissionArgs(
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<KubernetesPermissionPermission>>(pulumi.Input.decodeList<KubernetesPermissionPermission>(map['permissions'], (value) => KubernetesPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))),
-      uid: pulumi.Output.create<String>(map['uid'] as String),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<KubernetesPermissionPermission>(map['permissions'], (value) => KubernetesPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: (map['uid'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the properties of an existing shared private link resource managed by the Azure AI Search service.
 class SharedPrivateLinkResourcePropertiesResponse {
   /// The group ID from the provider of resource the shared private link resource is for.
-  final String? groupId;
+  final pulumi.Input<String>? groupId;
   /// The resource ID of the resource the shared private link resource is for.
-  final String? privateLinkResourceId;
+  final pulumi.Input<String>? privateLinkResourceId;
   /// The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// The message for requesting approval of the shared private link resource.
-  final String? requestMessage;
+  final pulumi.Input<String>? requestMessage;
   /// Optional. Can be used to specify the Azure Resource Manager location of the resource for which a shared private link is being created. This is only required for those resources whose DNS configuration are regional (such as Azure Kubernetes Service).
-  final String? resourceRegion;
+  final pulumi.Input<String>? resourceRegion;
   /// Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [SharedPrivateLinkResourcePropertiesResponse].
   /// [groupId] The group ID from the provider of resource the shared private link resource is for.
@@ -45,12 +46,12 @@ class SharedPrivateLinkResourcePropertiesResponse {
 
   factory SharedPrivateLinkResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourcePropertiesResponse(
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : map['privateLinkResourceId'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      requestMessage: map['requestMessage'] == null ? null : map['requestMessage'] as String,
-      resourceRegion: map['resourceRegion'] == null ? null : map['resourceRegion'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      resourceRegion: map['resourceRegion'] == null ? null : (map['resourceRegion'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

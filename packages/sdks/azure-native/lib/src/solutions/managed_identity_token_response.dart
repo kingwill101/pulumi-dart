@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The managed identity token for the managed app resource.
 class ManagedIdentityTokenResponse {
   /// The requested access token.
-  final String? accessToken;
+  final pulumi.Input<String>? accessToken;
   /// The aud (audience) the access token was request for. This is the same as what was provided in the listTokens request.
-  final String? authorizationAudience;
+  final pulumi.Input<String>? authorizationAudience;
   /// The number of seconds the access token will be valid.
-  final String? expiresIn;
+  final pulumi.Input<String>? expiresIn;
   /// The timespan when the access token expires. This is represented as the number of seconds from epoch.
-  final String? expiresOn;
+  final pulumi.Input<String>? expiresOn;
   /// The timespan when the access token takes effect. This is represented as the number of seconds from epoch.
-  final String? notBefore;
+  final pulumi.Input<String>? notBefore;
   /// The Azure resource ID for the issued token. This is either the managed application ID or the user-assigned identity ID.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// The type of the token.
-  final String? tokenType;
+  final pulumi.Input<String>? tokenType;
 
   /// Creates a new [ManagedIdentityTokenResponse].
   /// [accessToken] The requested access token.
@@ -50,13 +51,13 @@ class ManagedIdentityTokenResponse {
 
   factory ManagedIdentityTokenResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityTokenResponse(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
-      authorizationAudience: map['authorizationAudience'] == null ? null : map['authorizationAudience'] as String,
-      expiresIn: map['expiresIn'] == null ? null : map['expiresIn'] as String,
-      expiresOn: map['expiresOn'] == null ? null : map['expiresOn'] as String,
-      notBefore: map['notBefore'] == null ? null : map['notBefore'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      tokenType: map['tokenType'] == null ? null : map['tokenType'] as String,
+      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      authorizationAudience: map['authorizationAudience'] == null ? null : (map['authorizationAudience'] as String).input(),
+      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn'] as String).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      tokenType: map['tokenType'] == null ? null : (map['tokenType'] as String).input(),
     );
   }
 }

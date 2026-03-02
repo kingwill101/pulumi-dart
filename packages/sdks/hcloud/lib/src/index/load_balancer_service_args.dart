@@ -33,21 +33,14 @@ class LoadBalancerServiceArgs {
   /// [protocol] Protocol of the service. `http`, `https` or `tcp`
   /// [proxyprotocol] Enable proxyprotocol.
   LoadBalancerServiceArgs({
-    pulumi.Output<int>? destinationPort,
-    pulumi.Output<LoadBalancerServiceHealthCheck>? healthCheck,
-    pulumi.Output<LoadBalancerServiceHttp>? http,
-    pulumi.Output<int>? listenPort,
-    required pulumi.Output<String> loadBalancerId,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<bool>? proxyprotocol,
-  }) :
-      destinationPort = pulumi.Input.asOptionalInput<int>(destinationPort),
-      healthCheck = pulumi.Input.asOptionalInput<LoadBalancerServiceHealthCheck>(healthCheck),
-      http = pulumi.Input.asOptionalInput<LoadBalancerServiceHttp>(http),
-      listenPort = pulumi.Input.asOptionalInput<int>(listenPort),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      proxyprotocol = pulumi.Input.asOptionalInput<bool>(proxyprotocol);
+    this.destinationPort,
+    this.healthCheck,
+    this.http,
+    this.listenPort,
+    required this.loadBalancerId,
+    required this.protocol,
+    this.proxyprotocol,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class LoadBalancerServiceArgs {
 
   factory LoadBalancerServiceArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerServiceArgs(
-      destinationPort: map['destinationPort'] == null ? null : pulumi.Output.create<int>(map['destinationPort'] as int),
-      healthCheck: map['healthCheck'] == null ? null : pulumi.Output.create<LoadBalancerServiceHealthCheck>(LoadBalancerServiceHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())),
-      http: map['http'] == null ? null : pulumi.Output.create<LoadBalancerServiceHttp>(LoadBalancerServiceHttp.fromMap((map['http'] as Map).cast<String, dynamic>())),
-      listenPort: map['listenPort'] == null ? null : pulumi.Output.create<int>(map['listenPort'] as int),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      proxyprotocol: map['proxyprotocol'] == null ? null : pulumi.Output.create<bool>(map['proxyprotocol'] as bool),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      healthCheck: map['healthCheck'] == null ? null : (LoadBalancerServiceHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
+      http: map['http'] == null ? null : (LoadBalancerServiceHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      listenPort: map['listenPort'] == null ? null : (map['listenPort'] as int).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      proxyprotocol: map['proxyprotocol'] == null ? null : (map['proxyprotocol'] as bool).input(),
     );
   }
 }

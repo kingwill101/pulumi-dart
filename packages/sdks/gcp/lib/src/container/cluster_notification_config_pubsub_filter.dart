@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNotificationConfigPubsubFilter {
   /// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
-  final List<String> eventTypes;
+  final pulumi.Input<List<String>> eventTypes;
 
   /// Creates a new [ClusterNotificationConfigPubsubFilter].
   /// [eventTypes] Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT`, `SECURITY_BULLETIN_EVENT` and `UPGRADE_INFO_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
@@ -19,7 +20,7 @@ class ClusterNotificationConfigPubsubFilter {
 
   factory ClusterNotificationConfigPubsubFilter.fromMap(Map<String, dynamic> map) {
     return ClusterNotificationConfigPubsubFilter(
-      eventTypes: (map['eventTypes'] as List).cast<String>(),
+      eventTypes: ((map['eventTypes'] as List).cast<String>()).input(),
     );
   }
 }

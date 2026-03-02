@@ -37,23 +37,15 @@ class SpaceArgs {
   /// [spaceSharingSettings] A collection of space sharing settings. Required if `ownership_settings` is set. See `space_sharing_settings` Block below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   SpaceArgs({
-    required pulumi.Output<String> domainId,
-    pulumi.Output<SpaceOwnershipSettings>? ownershipSettings,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? spaceDisplayName,
-    required pulumi.Output<String> spaceName,
-    pulumi.Output<SpaceSpaceSettings>? spaceSettings,
-    pulumi.Output<SpaceSpaceSharingSettings>? spaceSharingSettings,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      domainId = pulumi.Input.asInput<String>(domainId),
-      ownershipSettings = pulumi.Input.asOptionalInput<SpaceOwnershipSettings>(ownershipSettings),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spaceDisplayName = pulumi.Input.asOptionalInput<String>(spaceDisplayName),
-      spaceName = pulumi.Input.asInput<String>(spaceName),
-      spaceSettings = pulumi.Input.asOptionalInput<SpaceSpaceSettings>(spaceSettings),
-      spaceSharingSettings = pulumi.Input.asOptionalInput<SpaceSpaceSharingSettings>(spaceSharingSettings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.domainId,
+    this.ownershipSettings,
+    this.region,
+    this.spaceDisplayName,
+    required this.spaceName,
+    this.spaceSettings,
+    this.spaceSharingSettings,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class SpaceArgs {
 
   factory SpaceArgs.fromMap(Map<String, dynamic> map) {
     return SpaceArgs(
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      ownershipSettings: map['ownershipSettings'] == null ? null : pulumi.Output.create<SpaceOwnershipSettings>(SpaceOwnershipSettings.fromMap((map['ownershipSettings'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spaceDisplayName: map['spaceDisplayName'] == null ? null : pulumi.Output.create<String>(map['spaceDisplayName'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
-      spaceSettings: map['spaceSettings'] == null ? null : pulumi.Output.create<SpaceSpaceSettings>(SpaceSpaceSettings.fromMap((map['spaceSettings'] as Map).cast<String, dynamic>())),
-      spaceSharingSettings: map['spaceSharingSettings'] == null ? null : pulumi.Output.create<SpaceSpaceSharingSettings>(SpaceSpaceSharingSettings.fromMap((map['spaceSharingSettings'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      domainId: (map['domainId'] as String).input(),
+      ownershipSettings: map['ownershipSettings'] == null ? null : (SpaceOwnershipSettings.fromMap((map['ownershipSettings'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spaceDisplayName: map['spaceDisplayName'] == null ? null : (map['spaceDisplayName'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
+      spaceSettings: map['spaceSettings'] == null ? null : (SpaceSpaceSettings.fromMap((map['spaceSettings'] as Map).cast<String, dynamic>())).input(),
+      spaceSharingSettings: map['spaceSharingSettings'] == null ? null : (SpaceSpaceSharingSettings.fromMap((map['spaceSharingSettings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

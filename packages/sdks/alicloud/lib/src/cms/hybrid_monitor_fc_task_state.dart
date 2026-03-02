@@ -19,15 +19,11 @@ class HybridMonitorFcTaskState {
   /// [targetUserId] The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
   /// [yarmConfig] The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
   HybridMonitorFcTaskState({
-    pulumi.Output<String>? hybridMonitorFcTaskId,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? targetUserId,
-    pulumi.Output<String>? yarmConfig,
-  }) :
-      hybridMonitorFcTaskId = pulumi.Input.asOptionalInput<String>(hybridMonitorFcTaskId),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      targetUserId = pulumi.Input.asOptionalInput<String>(targetUserId),
-      yarmConfig = pulumi.Input.asOptionalInput<String>(yarmConfig);
+    this.hybridMonitorFcTaskId,
+    this.namespace,
+    this.targetUserId,
+    this.yarmConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class HybridMonitorFcTaskState {
 
   factory HybridMonitorFcTaskState.fromMap(Map<String, dynamic> map) {
     return HybridMonitorFcTaskState(
-      hybridMonitorFcTaskId: map['hybridMonitorFcTaskId'] == null ? null : pulumi.Output.create<String>(map['hybridMonitorFcTaskId'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      targetUserId: map['targetUserId'] == null ? null : pulumi.Output.create<String>(map['targetUserId'] as String),
-      yarmConfig: map['yarmConfig'] == null ? null : pulumi.Output.create<String>(map['yarmConfig'] as String),
+      hybridMonitorFcTaskId: map['hybridMonitorFcTaskId'] == null ? null : (map['hybridMonitorFcTaskId'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId'] as String).input(),
+      yarmConfig: map['yarmConfig'] == null ? null : (map['yarmConfig'] as String).input(),
     );
   }
 }

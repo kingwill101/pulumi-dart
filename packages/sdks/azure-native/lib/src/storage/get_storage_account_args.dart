@@ -19,13 +19,10 @@ class GetStorageAccountArgs {
   /// [expand] May be used to expand the properties within account's properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetStorageAccountArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.expand,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStorageAccountArgs {
 
   factory GetStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageAccountArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

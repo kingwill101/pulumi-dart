@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resiliency Recommendation details
 class GatewayResiliencyRecommendationResponse {
   /// Link to the public documentation for the associated recommendation
-  final String? callToActionLink;
+  final pulumi.Input<String>? callToActionLink;
   /// Acton items to apply the recommendation
-  final String? callToActionText;
+  final pulumi.Input<String>? callToActionText;
   /// Recommendation Id
-  final String? recommendationId;
+  final pulumi.Input<String>? recommendationId;
   /// Recommendation details
-  final String? recommendationText;
+  final pulumi.Input<String>? recommendationText;
   /// Recommendation Title
-  final String? recommendationTitle;
+  final pulumi.Input<String>? recommendationTitle;
   /// Impact associated with the recommendation
-  final String? severity;
+  final pulumi.Input<String>? severity;
 
   /// Creates a new [GatewayResiliencyRecommendationResponse].
   /// [callToActionLink] Link to the public documentation for the associated recommendation
@@ -45,12 +46,12 @@ class GatewayResiliencyRecommendationResponse {
 
   factory GatewayResiliencyRecommendationResponse.fromMap(Map<String, dynamic> map) {
     return GatewayResiliencyRecommendationResponse(
-      callToActionLink: map['callToActionLink'] == null ? null : map['callToActionLink'] as String,
-      callToActionText: map['callToActionText'] == null ? null : map['callToActionText'] as String,
-      recommendationId: map['recommendationId'] == null ? null : map['recommendationId'] as String,
-      recommendationText: map['recommendationText'] == null ? null : map['recommendationText'] as String,
-      recommendationTitle: map['recommendationTitle'] == null ? null : map['recommendationTitle'] as String,
-      severity: map['severity'] == null ? null : map['severity'] as String,
+      callToActionLink: map['callToActionLink'] == null ? null : (map['callToActionLink'] as String).input(),
+      callToActionText: map['callToActionText'] == null ? null : (map['callToActionText'] as String).input(),
+      recommendationId: map['recommendationId'] == null ? null : (map['recommendationId'] as String).input(),
+      recommendationText: map['recommendationText'] == null ? null : (map['recommendationText'] as String).input(),
+      recommendationTitle: map['recommendationTitle'] == null ? null : (map['recommendationTitle'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
     );
   }
 }

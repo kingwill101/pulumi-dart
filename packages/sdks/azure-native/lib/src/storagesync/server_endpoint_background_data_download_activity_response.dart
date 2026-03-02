@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Background data download activity object
 class ServerEndpointBackgroundDataDownloadActivityResponse {
   /// Running count of bytes downloaded
-  final double downloadedBytes;
+  final pulumi.Input<double> downloadedBytes;
   /// Progress percentage
-  final int percentProgress;
+  final pulumi.Input<int> percentProgress;
   /// Timestamp when the operation started
-  final String startedTimestamp;
+  final pulumi.Input<String> startedTimestamp;
   /// Timestamp when properties were updated
-  final String timestamp;
+  final pulumi.Input<String> timestamp;
 
   /// Creates a new [ServerEndpointBackgroundDataDownloadActivityResponse].
   /// [downloadedBytes] Running count of bytes downloaded
@@ -35,10 +36,10 @@ class ServerEndpointBackgroundDataDownloadActivityResponse {
 
   factory ServerEndpointBackgroundDataDownloadActivityResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointBackgroundDataDownloadActivityResponse(
-      downloadedBytes: map['downloadedBytes'] as double,
-      percentProgress: map['percentProgress'] as int,
-      startedTimestamp: map['startedTimestamp'] as String,
-      timestamp: map['timestamp'] as String,
+      downloadedBytes: (map['downloadedBytes'] as double).input(),
+      percentProgress: (map['percentProgress'] as int).input(),
+      startedTimestamp: (map['startedTimestamp'] as String).input(),
+      timestamp: (map['timestamp'] as String).input(),
     );
   }
 }

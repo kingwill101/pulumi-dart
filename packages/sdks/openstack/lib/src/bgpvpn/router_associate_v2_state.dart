@@ -31,17 +31,12 @@ class RouterAssociateV2State {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [routerId] The ID of the router to be associated with the BGP
   RouterAssociateV2State({
-    pulumi.Output<bool>? advertiseExtraRoutes,
-    pulumi.Output<String>? bgpvpnId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routerId,
-  }) :
-      advertiseExtraRoutes = pulumi.Input.asOptionalInput<bool>(advertiseExtraRoutes),
-      bgpvpnId = pulumi.Input.asOptionalInput<String>(bgpvpnId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId);
+    this.advertiseExtraRoutes,
+    this.bgpvpnId,
+    this.projectId,
+    this.region,
+    this.routerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class RouterAssociateV2State {
 
   factory RouterAssociateV2State.fromMap(Map<String, dynamic> map) {
     return RouterAssociateV2State(
-      advertiseExtraRoutes: map['advertiseExtraRoutes'] == null ? null : pulumi.Output.create<bool>(map['advertiseExtraRoutes'] as bool),
-      bgpvpnId: map['bgpvpnId'] == null ? null : pulumi.Output.create<String>(map['bgpvpnId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
+      advertiseExtraRoutes: map['advertiseExtraRoutes'] == null ? null : (map['advertiseExtraRoutes'] as bool).input(),
+      bgpvpnId: map['bgpvpnId'] == null ? null : (map['bgpvpnId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fabric_option_bproperties.dart';
 import 'vpn_configuration_properties_option_aproperties.dart';
 
 /// Network and credential configuration currently applied on terminal server.
 class VpnConfigurationProperties {
   /// ARM Resource ID of the Network To Network Interconnect.
-  final String? networkToNetworkInterconnectId;
+  final pulumi.Input<String>? networkToNetworkInterconnectId;
   /// option A properties
-  final VpnConfigurationPropertiesOptionAProperties? optionAProperties;
+  final pulumi.Input<VpnConfigurationPropertiesOptionAProperties>? optionAProperties;
   /// option B properties
-  final FabricOptionBProperties? optionBProperties;
+  final pulumi.Input<FabricOptionBProperties>? optionBProperties;
   /// Peering option list.
-  final String peeringOption;
+  final pulumi.Input<String> peeringOption;
 
   /// Creates a new [VpnConfigurationProperties].
   /// [networkToNetworkInterconnectId] ARM Resource ID of the Network To Network Interconnect.
@@ -29,18 +30,18 @@ class VpnConfigurationProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'networkToNetworkInterconnectId': ?networkToNetworkInterconnectId,
-      'optionAProperties': ?optionAProperties == null ? null : optionAProperties!.toMap(),
-      'optionBProperties': ?optionBProperties == null ? null : optionBProperties!.toMap(),
+      'optionAProperties': ?pulumi.Input.mapOptionalInputValue<VpnConfigurationPropertiesOptionAProperties, Map<String, dynamic>>(optionAProperties, (value) => value.toMap()),
+      'optionBProperties': ?pulumi.Input.mapOptionalInputValue<FabricOptionBProperties, Map<String, dynamic>>(optionBProperties, (value) => value.toMap()),
       'peeringOption': peeringOption,
     };
   }
 
   factory VpnConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return VpnConfigurationProperties(
-      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : map['networkToNetworkInterconnectId'] as String,
-      optionAProperties: map['optionAProperties'] == null ? null : VpnConfigurationPropertiesOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>()),
-      optionBProperties: map['optionBProperties'] == null ? null : FabricOptionBProperties.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>()),
-      peeringOption: map['peeringOption'] as String,
+      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId'] as String).input(),
+      optionAProperties: map['optionAProperties'] == null ? null : (VpnConfigurationPropertiesOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>())).input(),
+      optionBProperties: map['optionBProperties'] == null ? null : (FabricOptionBProperties.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>())).input(),
+      peeringOption: (map['peeringOption'] as String).input(),
     );
   }
 }

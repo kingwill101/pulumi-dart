@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Volume relocation properties
 class VolumeRelocationProperties {
   /// Has relocation been requested for this volume
-  final bool? relocationRequested;
+  final pulumi.Input<bool>? relocationRequested;
 
   /// Creates a new [VolumeRelocationProperties].
   /// [relocationRequested] Has relocation been requested for this volume
@@ -20,7 +21,7 @@ class VolumeRelocationProperties {
 
   factory VolumeRelocationProperties.fromMap(Map<String, dynamic> map) {
     return VolumeRelocationProperties(
-      relocationRequested: map['relocationRequested'] == null ? null : map['relocationRequested'] as bool,
+      relocationRequested: map['relocationRequested'] == null ? null : (map['relocationRequested'] as bool).input(),
     );
   }
 }

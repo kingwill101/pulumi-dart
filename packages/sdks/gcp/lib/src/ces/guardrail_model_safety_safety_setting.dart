@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailModelSafetySafetySetting {
   /// The harm category.
@@ -9,7 +10,7 @@ class GuardrailModelSafetySafetySetting {
   /// HARM_CATEGORY_HARASSMENT
   /// HARM_CATEGORY_SEXUALLY_EXPLICIT
   /// Possible values are: `HARM_CATEGORY_HATE_SPEECH`, `HARM_CATEGORY_DANGEROUS_CONTENT`, `HARM_CATEGORY_HARASSMENT`, `HARM_CATEGORY_SEXUALLY_EXPLICIT`.
-  final String category;
+  final pulumi.Input<String> category;
   /// The harm block threshold.
   /// Possible values:
   /// BLOCK_LOW_AND_ABOVE
@@ -18,7 +19,7 @@ class GuardrailModelSafetySafetySetting {
   /// BLOCK_NONE
   /// OFF
   /// Possible values are: `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, `OFF`.
-  final String threshold;
+  final pulumi.Input<String> threshold;
 
   /// Creates a new [GuardrailModelSafetySafetySetting].
   /// [category] The harm category.
@@ -37,8 +38,8 @@ class GuardrailModelSafetySafetySetting {
 
   factory GuardrailModelSafetySafetySetting.fromMap(Map<String, dynamic> map) {
     return GuardrailModelSafetySafetySetting(
-      category: map['category'] as String,
-      threshold: map['threshold'] as String,
+      category: (map['category'] as String).input(),
+      threshold: (map['threshold'] as String).input(),
     );
   }
 }

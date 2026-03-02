@@ -19,13 +19,10 @@ class GetStaticAccountsArgs {
   /// [instanceId] InstanceId
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetStaticAccountsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    this.instanceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStaticAccountsArgs {
 
   factory GetStaticAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticAccountsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceVolumeConfigurationManagedEbsVolumeTagSpecification {
   /// Determines whether to propagate the tags from the task definition to the Amazon EBS volume.
-  final String? propagateTags;
+  final pulumi.Input<String>? propagateTags;
   /// The type of volume resource. Valid values, `volume`.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The tags applied to this Amazon EBS volume. `AmazonECSCreated` and `AmazonECSManaged` are reserved tags that can't be used.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ServiceVolumeConfigurationManagedEbsVolumeTagSpecification].
   /// [propagateTags] Determines whether to propagate the tags from the task definition to the Amazon EBS volume.
@@ -29,9 +30,9 @@ class ServiceVolumeConfigurationManagedEbsVolumeTagSpecification {
 
   factory ServiceVolumeConfigurationManagedEbsVolumeTagSpecification.fromMap(Map<String, dynamic> map) {
     return ServiceVolumeConfigurationManagedEbsVolumeTagSpecification(
-      propagateTags: map['propagateTags'] == null ? null : map['propagateTags'] as String,
-      resourceType: map['resourceType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_sett
 import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_prompt_attempts_specification.dart';
 
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification {
-  final bool? allowInterrupt;
-  final int maxRetries;
-  final List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup>? messageGroups;
-  final String? messageSelectionStrategy;
-  final List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>? promptAttemptsSpecifications;
+  final pulumi.Input<bool>? allowInterrupt;
+  final pulumi.Input<int> maxRetries;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup>>? messageGroups;
+  final pulumi.Input<String>? messageSelectionStrategy;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>>? promptAttemptsSpecifications;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification].
   /// [allowInterrupt] Optional.
@@ -29,19 +29,19 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
       'maxRetries': maxRetries,
-      'messageGroups': ?messageGroups == null ? null : pulumi.Input.encodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup, Map<String, dynamic>>(messageGroups!, (value) => value.toMap()),
+      'messageGroups': ?pulumi.Input.mapOptionalInputValue<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup>, List<Map<String, dynamic>>>(messageGroups, (value) => pulumi.Input.encodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'messageSelectionStrategy': ?messageSelectionStrategy,
-      'promptAttemptsSpecifications': ?promptAttemptsSpecifications == null ? null : pulumi.Input.encodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification, Map<String, dynamic>>(promptAttemptsSpecifications!, (value) => value.toMap()),
+      'promptAttemptsSpecifications': ?pulumi.Input.mapOptionalInputValue<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>, List<Map<String, dynamic>>>(promptAttemptsSpecifications, (value) => pulumi.Input.encodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
-      maxRetries: map['maxRetries'] as int,
-      messageGroups: map['messageGroups'] == null ? null : pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup>(map['messageGroups'], (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>())),
-      messageSelectionStrategy: map['messageSelectionStrategy'] == null ? null : map['messageSelectionStrategy'] as String,
-      promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null ? null : pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>(map['promptAttemptsSpecifications'], (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>())),
+      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
+      maxRetries: (map['maxRetries'] as int).input(),
+      messageGroups: map['messageGroups'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup>(map['messageGroups'], (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messageSelectionStrategy: map['messageSelectionStrategy'] == null ? null : (map['messageSelectionStrategy'] as String).input(),
+      promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>(map['promptAttemptsSpecifications'], (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

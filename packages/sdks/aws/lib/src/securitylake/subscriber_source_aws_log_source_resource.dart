@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriberSourceAwsLogSourceResource {
   /// The name for a AWS source. This must be a Regionally unique value. Valid values: `ROUTE53`, `VPC_FLOW`, `SH_FINDINGS`, `CLOUD_TRAIL_MGMT`, `LAMBDA_EXECUTION`, `S3_DATA`, `EKS_AUDIT` and `WAF`.
-  final String sourceName;
+  final pulumi.Input<String> sourceName;
   /// The version for a AWS source. This must be a Regionally unique value.
-  final String? sourceVersion;
+  final pulumi.Input<String>? sourceVersion;
 
   /// Creates a new [SubscriberSourceAwsLogSourceResource].
   /// [sourceName] The name for a AWS source. This must be a Regionally unique value. Valid values: `ROUTE53`, `VPC_FLOW`, `SH_FINDINGS`, `CLOUD_TRAIL_MGMT`, `LAMBDA_EXECUTION`, `S3_DATA`, `EKS_AUDIT` and `WAF`.
@@ -24,8 +25,8 @@ class SubscriberSourceAwsLogSourceResource {
 
   factory SubscriberSourceAwsLogSourceResource.fromMap(Map<String, dynamic> map) {
     return SubscriberSourceAwsLogSourceResource(
-      sourceName: map['sourceName'] as String,
-      sourceVersion: map['sourceVersion'] == null ? null : map['sourceVersion'] as String,
+      sourceName: (map['sourceName'] as String).input(),
+      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion'] as String).input(),
     );
   }
 }

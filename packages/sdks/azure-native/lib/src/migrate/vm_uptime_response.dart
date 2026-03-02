@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details on the total up-time for the VM.
 class VmUptimeResponse {
   /// Number of days in a month for VM uptime.
-  final double? daysPerMonth;
+  final pulumi.Input<double>? daysPerMonth;
   /// Number of hours per day for VM uptime.
-  final double? hoursPerDay;
+  final pulumi.Input<double>? hoursPerDay;
 
   /// Creates a new [VmUptimeResponse].
   /// [daysPerMonth] Number of days in a month for VM uptime.
@@ -25,8 +26,8 @@ class VmUptimeResponse {
 
   factory VmUptimeResponse.fromMap(Map<String, dynamic> map) {
     return VmUptimeResponse(
-      daysPerMonth: map['daysPerMonth'] == null ? null : map['daysPerMonth'] as double,
-      hoursPerDay: map['hoursPerDay'] == null ? null : map['hoursPerDay'] as double,
+      daysPerMonth: map['daysPerMonth'] == null ? null : (map['daysPerMonth'] as double).input(),
+      hoursPerDay: map['hoursPerDay'] == null ? null : (map['hoursPerDay'] as double).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetRegistryEnvironmentVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier. This is case-sensitive.
   GetRegistryEnvironmentVersionArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> version,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asInput<String>(version);
+    required this.environmentName,
+    required this.registryName,
+    required this.resourceGroupName,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRegistryEnvironmentVersionArgs {
 
   factory GetRegistryEnvironmentVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnvironmentVersionArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

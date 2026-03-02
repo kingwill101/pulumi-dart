@@ -25,17 +25,12 @@ class GetRegistryImageArgs {
   /// [region] The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
   /// [tag] The tag to fetch, if any.
   GetRegistryImageArgs({
-    pulumi.Output<String>? digest,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tag,
-  }) :
-      digest = pulumi.Input.asOptionalInput<String>(digest),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tag = pulumi.Input.asOptionalInput<String>(tag);
+    this.digest,
+    required this.name,
+    this.project,
+    this.region,
+    this.tag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetRegistryImageArgs {
 
   factory GetRegistryImageArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageArgs(
-      digest: map['digest'] == null ? null : pulumi.Output.create<String>(map['digest'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
+      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_context_capabilities_definition_response.dart';
 
 /// The security context for the container.
 class SecurityContextDefinitionResponse {
   /// A boolean value indicating whether the init process can elevate its privileges
-  final bool? allowPrivilegeEscalation;
+  final pulumi.Input<bool>? allowPrivilegeEscalation;
   /// The capabilities to add or drop from a container.
-  final SecurityContextCapabilitiesDefinitionResponse? capabilities;
+  final pulumi.Input<SecurityContextCapabilitiesDefinitionResponse>? capabilities;
   /// The flag to determine if the container permissions is elevated to Privileged.
-  final bool? privileged;
+  final pulumi.Input<bool>? privileged;
   /// Sets the User GID for the container.
-  final int? runAsGroup;
+  final pulumi.Input<int>? runAsGroup;
   /// Sets the User UID for the container.
-  final int? runAsUser;
+  final pulumi.Input<int>? runAsUser;
   /// a base64 encoded string containing the contents of the JSON in the seccomp profile
-  final String? seccompProfile;
+  final pulumi.Input<String>? seccompProfile;
 
   /// Creates a new [SecurityContextDefinitionResponse].
   /// [allowPrivilegeEscalation] A boolean value indicating whether the init process can elevate its privileges
@@ -36,7 +37,7 @@ class SecurityContextDefinitionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowPrivilegeEscalation': ?allowPrivilegeEscalation,
-      'capabilities': ?capabilities == null ? null : capabilities!.toMap(),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<SecurityContextCapabilitiesDefinitionResponse, Map<String, dynamic>>(capabilities, (value) => value.toMap()),
       'privileged': ?privileged,
       'runAsGroup': ?runAsGroup,
       'runAsUser': ?runAsUser,
@@ -46,12 +47,12 @@ class SecurityContextDefinitionResponse {
 
   factory SecurityContextDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return SecurityContextDefinitionResponse(
-      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : map['allowPrivilegeEscalation'] as bool,
-      capabilities: map['capabilities'] == null ? null : SecurityContextCapabilitiesDefinitionResponse.fromMap((map['capabilities'] as Map).cast<String, dynamic>()),
-      privileged: map['privileged'] == null ? null : map['privileged'] as bool,
-      runAsGroup: map['runAsGroup'] == null ? null : map['runAsGroup'] as int,
-      runAsUser: map['runAsUser'] == null ? null : map['runAsUser'] as int,
-      seccompProfile: map['seccompProfile'] == null ? null : map['seccompProfile'] as String,
+      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : (map['allowPrivilegeEscalation'] as bool).input(),
+      capabilities: map['capabilities'] == null ? null : (SecurityContextCapabilitiesDefinitionResponse.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
+      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup'] as int).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
+      seccompProfile: map['seccompProfile'] == null ? null : (map['seccompProfile'] as String).input(),
     );
   }
 }

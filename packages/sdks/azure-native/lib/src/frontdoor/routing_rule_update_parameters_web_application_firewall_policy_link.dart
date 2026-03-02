@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the Web Application Firewall policy for each routing rule (if applicable)
 class RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
 
   factory RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink.fromMap(Map<String, dynamic> map) {
     return RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

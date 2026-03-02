@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NodePoolAutoscaling config for the NodePool to allow for the kubernetes to scale NodePool.
 class VmwareNodePoolAutoscalingConfigResponse {
   /// Maximum number of replicas in the NodePool.
-  final int maxReplicas;
+  final pulumi.Input<int> maxReplicas;
   /// Minimum number of replicas in the NodePool.
-  final int minReplicas;
+  final pulumi.Input<int> minReplicas;
 
   /// Creates a new [VmwareNodePoolAutoscalingConfigResponse].
   /// [maxReplicas] Maximum number of replicas in the NodePool.
@@ -25,8 +26,8 @@ class VmwareNodePoolAutoscalingConfigResponse {
 
   factory VmwareNodePoolAutoscalingConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareNodePoolAutoscalingConfigResponse(
-      maxReplicas: map['maxReplicas'] as int,
-      minReplicas: map['minReplicas'] as int,
+      maxReplicas: (map['maxReplicas'] as int).input(),
+      minReplicas: (map['minReplicas'] as int).input(),
     );
   }
 }

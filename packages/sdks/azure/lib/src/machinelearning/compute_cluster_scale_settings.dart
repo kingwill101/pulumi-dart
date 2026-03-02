@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ComputeClusterScaleSettings {
   /// Maximum node count.
-  final int maxNodeCount;
+  final pulumi.Input<int> maxNodeCount;
   /// Minimal node count.
-  final int minNodeCount;
+  final pulumi.Input<int> minNodeCount;
   /// Node Idle Time Before Scale Down: defines the time until the compute is shutdown when it has gone into Idle state. Is defined according to W3C XML schema standard for duration.
-  final String scaleDownNodesAfterIdleDuration;
+  final pulumi.Input<String> scaleDownNodesAfterIdleDuration;
 
   /// Creates a new [ComputeClusterScaleSettings].
   /// [maxNodeCount] Maximum node count.
@@ -29,9 +30,9 @@ class ComputeClusterScaleSettings {
 
   factory ComputeClusterScaleSettings.fromMap(Map<String, dynamic> map) {
     return ComputeClusterScaleSettings(
-      maxNodeCount: map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] as int,
-      scaleDownNodesAfterIdleDuration: map['scaleDownNodesAfterIdleDuration'] as String,
+      maxNodeCount: (map['maxNodeCount'] as int).input(),
+      minNodeCount: (map['minNodeCount'] as int).input(),
+      scaleDownNodesAfterIdleDuration: (map['scaleDownNodesAfterIdleDuration'] as String).input(),
     );
   }
 }

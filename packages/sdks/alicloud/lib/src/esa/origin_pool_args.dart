@@ -23,15 +23,11 @@ class OriginPoolArgs {
   /// [origins] The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
   /// [siteId] The site ID.
   OriginPoolArgs({
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> originPoolName,
-    pulumi.Output<List<OriginPoolOrigin>>? origins,
-    required pulumi.Output<String> siteId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      originPoolName = pulumi.Input.asInput<String>(originPoolName),
-      origins = pulumi.Input.asOptionalInput<List<OriginPoolOrigin>>(origins),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    this.enabled,
+    required this.originPoolName,
+    this.origins,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class OriginPoolArgs {
 
   factory OriginPoolArgs.fromMap(Map<String, dynamic> map) {
     return OriginPoolArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      originPoolName: pulumi.Output.create<String>(map['originPoolName'] as String),
-      origins: map['origins'] == null ? null : pulumi.Output.create<List<OriginPoolOrigin>>(pulumi.Input.decodeList<OriginPoolOrigin>(map['origins'], (value) => OriginPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      originPoolName: (map['originPoolName'] as String).input(),
+      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<OriginPoolOrigin>(map['origins'], (value) => OriginPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

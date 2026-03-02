@@ -41,21 +41,14 @@ class GetAmiIdsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sortAscending] Used to sort AMIs by creation time.
   GetAmiIdsArgs({
-    pulumi.Output<List<String>>? executableUsers,
-    pulumi.Output<List<GetAmiIdsFilter>>? filters,
-    pulumi.Output<bool>? includeDeprecated,
-    pulumi.Output<String>? nameRegex,
-    required pulumi.Output<List<String>> owners,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? sortAscending,
-  }) :
-      executableUsers = pulumi.Input.asOptionalInput<List<String>>(executableUsers),
-      filters = pulumi.Input.asOptionalInput<List<GetAmiIdsFilter>>(filters),
-      includeDeprecated = pulumi.Input.asOptionalInput<bool>(includeDeprecated),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      owners = pulumi.Input.asInput<List<String>>(owners),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sortAscending = pulumi.Input.asOptionalInput<bool>(sortAscending);
+    this.executableUsers,
+    this.filters,
+    this.includeDeprecated,
+    this.nameRegex,
+    required this.owners,
+    this.region,
+    this.sortAscending,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +64,13 @@ class GetAmiIdsArgs {
 
   factory GetAmiIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiIdsArgs(
-      executableUsers: map['executableUsers'] == null ? null : pulumi.Output.create<List<String>>((map['executableUsers'] as List).cast<String>()),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetAmiIdsFilter>>(pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters'], (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      includeDeprecated: map['includeDeprecated'] == null ? null : pulumi.Output.create<bool>(map['includeDeprecated'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      owners: pulumi.Output.create<List<String>>((map['owners'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sortAscending: map['sortAscending'] == null ? null : pulumi.Output.create<bool>(map['sortAscending'] as bool),
+      executableUsers: map['executableUsers'] == null ? null : ((map['executableUsers'] as List).cast<String>()).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters'], (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      owners: ((map['owners'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sortAscending: map['sortAscending'] == null ? null : (map['sortAscending'] as bool).input(),
     );
   }
 }

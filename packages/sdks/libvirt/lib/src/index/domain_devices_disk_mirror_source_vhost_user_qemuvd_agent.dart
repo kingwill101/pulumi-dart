@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_disk_mirror_source_vhost_user_qemuvd_agent_clip_board.dart';
 import 'domain_devices_disk_mirror_source_vhost_user_qemuvd_agent_mouse.dart';
 
 class DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent {
   /// Configures clipboard sharing settings for the QEMU guest agent.
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard? clipBoard;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard>? clipBoard;
   /// Configures mouse settings for the QEMU guest agent in the random number generator setup.
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse? mouse;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse>? mouse;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent].
   /// [clipBoard] Configures clipboard sharing settings for the QEMU guest agent.
@@ -19,15 +20,15 @@ class DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clipBoard': ?clipBoard == null ? null : clipBoard!.toMap(),
-      'mouse': ?mouse == null ? null : mouse!.toMap(),
+      'clipBoard': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard, Map<String, dynamic>>(clipBoard, (value) => value.toMap()),
+      'mouse': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse, Map<String, dynamic>>(mouse, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent(
-      clipBoard: map['clipBoard'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard.fromMap((map['clipBoard'] as Map).cast<String, dynamic>()),
-      mouse: map['mouse'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse.fromMap((map['mouse'] as Map).cast<String, dynamic>()),
+      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard.fromMap((map['clipBoard'] as Map).cast<String, dynamic>())).input(),
+      mouse: map['mouse'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse.fromMap((map['mouse'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

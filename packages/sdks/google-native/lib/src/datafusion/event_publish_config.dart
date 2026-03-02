@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Confirguration of PubSubEventWriter.
 class EventPublishConfig {
   /// Option to enable Event Publishing.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [EventPublishConfig].
   /// [enabled] Option to enable Event Publishing.
@@ -25,8 +26,8 @@ class EventPublishConfig {
 
   factory EventPublishConfig.fromMap(Map<String, dynamic> map) {
     return EventPublishConfig(
-      enabled: map['enabled'] as bool,
-      topic: map['topic'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

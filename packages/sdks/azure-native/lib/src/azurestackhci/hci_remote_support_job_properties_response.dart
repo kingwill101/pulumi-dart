@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'remote_support_job_reported_properties_response.dart';
 
 /// Represents the properties of a remote support job for HCI.
 class HciRemoteSupportJobPropertiesResponse {
   /// Remote support access level.
-  final String accessLevel;
+  final pulumi.Input<String> accessLevel;
   /// Deployment mode to trigger job.
-  final String? deploymentMode;
+  final pulumi.Input<String>? deploymentMode;
   /// The UTC date and time at which the job completed.
-  final String endTimeUtc;
+  final pulumi.Input<String> endTimeUtc;
   /// Remote support expiration timestamp.
-  final String expirationTimestamp;
+  final pulumi.Input<String> expirationTimestamp;
   /// Unique, immutable job id.
-  final String jobId;
+  final pulumi.Input<String> jobId;
   /// Job Type supported.
   /// Expected value is 'RemoteSupport'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// Job provisioning state
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// log collection job reported properties.
-  final RemoteSupportJobReportedPropertiesResponse reportedProperties;
+  final pulumi.Input<RemoteSupportJobReportedPropertiesResponse> reportedProperties;
   /// The UTC date and time at which the job started.
-  final String startTimeUtc;
+  final pulumi.Input<String> startTimeUtc;
   /// Status of Edge device job.
-  final String status;
+  final pulumi.Input<String> status;
   /// Remote support type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [HciRemoteSupportJobPropertiesResponse].
   /// [accessLevel] Remote support access level.
@@ -63,7 +64,7 @@ class HciRemoteSupportJobPropertiesResponse {
       'jobId': jobId,
       'jobType': jobType,
       'provisioningState': provisioningState,
-      'reportedProperties': reportedProperties.toMap(),
+      'reportedProperties': pulumi.Input.mapInputValue<RemoteSupportJobReportedPropertiesResponse, Map<String, dynamic>>(reportedProperties, (value) => value.toMap()),
       'startTimeUtc': startTimeUtc,
       'status': status,
       'type': type,
@@ -72,17 +73,17 @@ class HciRemoteSupportJobPropertiesResponse {
 
   factory HciRemoteSupportJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HciRemoteSupportJobPropertiesResponse(
-      accessLevel: map['accessLevel'] as String,
-      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode'] as String,
-      endTimeUtc: map['endTimeUtc'] as String,
-      expirationTimestamp: map['expirationTimestamp'] as String,
-      jobId: map['jobId'] as String,
-      jobType: map['jobType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      reportedProperties: RemoteSupportJobReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>()),
-      startTimeUtc: map['startTimeUtc'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      accessLevel: (map['accessLevel'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      endTimeUtc: (map['endTimeUtc'] as String).input(),
+      expirationTimestamp: (map['expirationTimestamp'] as String).input(),
+      jobId: (map['jobId'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reportedProperties: (RemoteSupportJobReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
+      startTimeUtc: (map['startTimeUtc'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

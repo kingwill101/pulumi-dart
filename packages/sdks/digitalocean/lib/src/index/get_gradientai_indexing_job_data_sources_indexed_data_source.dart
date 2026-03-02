@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiIndexingJobDataSourcesIndexedDataSource {
   /// Timestamp when data source completed indexing
-  final String completedAt;
+  final pulumi.Input<String> completedAt;
   /// UUID of the indexed data source
-  final String dataSourceUuid;
+  final pulumi.Input<String> dataSourceUuid;
   /// Detailed error description
-  final String errorDetails;
+  final pulumi.Input<String> errorDetails;
   /// Error message if indexing failed
-  final String errorMsg;
+  final pulumi.Input<String> errorMsg;
   /// Total count of items that have failed
-  final String failedItemCount;
+  final pulumi.Input<String> failedItemCount;
   /// Total count of files that have been indexed
-  final String indexedFileCount;
+  final pulumi.Input<String> indexedFileCount;
   /// Total count of items that have been indexed
-  final String indexedItemCount;
+  final pulumi.Input<String> indexedItemCount;
   /// Total count of items that have been removed
-  final String removedItemCount;
+  final pulumi.Input<String> removedItemCount;
   /// Total count of items that have been skipped
-  final String skippedItemCount;
+  final pulumi.Input<String> skippedItemCount;
   /// Timestamp when data source started indexing
-  final String startedAt;
+  final pulumi.Input<String> startedAt;
   /// Status of the indexed data source
-  final String status;
+  final pulumi.Input<String> status;
   /// Total size of files in data source in bytes
-  final String totalBytes;
+  final pulumi.Input<String> totalBytes;
   /// Total size of indexed files in bytes
-  final String totalBytesIndexed;
+  final pulumi.Input<String> totalBytesIndexed;
   /// Total file count in the data source
-  final String totalFileCount;
+  final pulumi.Input<String> totalFileCount;
 
   /// Creates a new [GetGradientaiIndexingJobDataSourcesIndexedDataSource].
   /// [completedAt] Timestamp when data source completed indexing
@@ -84,20 +85,20 @@ class GetGradientaiIndexingJobDataSourcesIndexedDataSource {
 
   factory GetGradientaiIndexingJobDataSourcesIndexedDataSource.fromMap(Map<String, dynamic> map) {
     return GetGradientaiIndexingJobDataSourcesIndexedDataSource(
-      completedAt: map['completedAt'] as String,
-      dataSourceUuid: map['dataSourceUuid'] as String,
-      errorDetails: map['errorDetails'] as String,
-      errorMsg: map['errorMsg'] as String,
-      failedItemCount: map['failedItemCount'] as String,
-      indexedFileCount: map['indexedFileCount'] as String,
-      indexedItemCount: map['indexedItemCount'] as String,
-      removedItemCount: map['removedItemCount'] as String,
-      skippedItemCount: map['skippedItemCount'] as String,
-      startedAt: map['startedAt'] as String,
-      status: map['status'] as String,
-      totalBytes: map['totalBytes'] as String,
-      totalBytesIndexed: map['totalBytesIndexed'] as String,
-      totalFileCount: map['totalFileCount'] as String,
+      completedAt: (map['completedAt'] as String).input(),
+      dataSourceUuid: (map['dataSourceUuid'] as String).input(),
+      errorDetails: (map['errorDetails'] as String).input(),
+      errorMsg: (map['errorMsg'] as String).input(),
+      failedItemCount: (map['failedItemCount'] as String).input(),
+      indexedFileCount: (map['indexedFileCount'] as String).input(),
+      indexedItemCount: (map['indexedItemCount'] as String).input(),
+      removedItemCount: (map['removedItemCount'] as String).input(),
+      skippedItemCount: (map['skippedItemCount'] as String).input(),
+      startedAt: (map['startedAt'] as String).input(),
+      status: (map['status'] as String).input(),
+      totalBytes: (map['totalBytes'] as String).input(),
+      totalBytesIndexed: (map['totalBytesIndexed'] as String).input(),
+      totalFileCount: (map['totalFileCount'] as String).input(),
     );
   }
 }

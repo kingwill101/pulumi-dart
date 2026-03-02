@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This field is only present if Strata Cloud Manager is managing the policy for this firewall
 class StrataCloudManagerConfigResponse {
   /// Strata Cloud Manager name which is intended to manage the policy for this firewall.
-  final String cloudManagerName;
+  final pulumi.Input<String> cloudManagerName;
 
   /// Creates a new [StrataCloudManagerConfigResponse].
   /// [cloudManagerName] Strata Cloud Manager name which is intended to manage the policy for this firewall.
@@ -20,7 +21,7 @@ class StrataCloudManagerConfigResponse {
 
   factory StrataCloudManagerConfigResponse.fromMap(Map<String, dynamic> map) {
     return StrataCloudManagerConfigResponse(
-      cloudManagerName: map['cloudManagerName'] as String,
+      cloudManagerName: (map['cloudManagerName'] as String).input(),
     );
   }
 }

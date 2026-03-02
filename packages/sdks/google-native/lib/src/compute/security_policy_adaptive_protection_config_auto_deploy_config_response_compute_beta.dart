@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for Adaptive Protection auto-deploy feature.
 class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta {
-  final double confidenceThreshold;
-  final int expirationSec;
-  final double impactedBaselineThreshold;
-  final double loadThreshold;
+  final pulumi.Input<double> confidenceThreshold;
+  final pulumi.Input<int> expirationSec;
+  final pulumi.Input<double> impactedBaselineThreshold;
+  final pulumi.Input<double> loadThreshold;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta].
   /// [confidenceThreshold] Required.
@@ -31,10 +32,10 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta 
 
   factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta(
-      confidenceThreshold: map['confidenceThreshold'] as double,
-      expirationSec: map['expirationSec'] as int,
-      impactedBaselineThreshold: map['impactedBaselineThreshold'] as double,
-      loadThreshold: map['loadThreshold'] as double,
+      confidenceThreshold: (map['confidenceThreshold'] as double).input(),
+      expirationSec: (map['expirationSec'] as int).input(),
+      impactedBaselineThreshold: (map['impactedBaselineThreshold'] as double).input(),
+      loadThreshold: (map['loadThreshold'] as double).input(),
     );
   }
 }

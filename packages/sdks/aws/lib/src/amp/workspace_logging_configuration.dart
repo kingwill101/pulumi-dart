@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceLoggingConfiguration {
   /// The ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist. The ARN must end with `:*`
-  final String logGroupArn;
+  final pulumi.Input<String> logGroupArn;
 
   /// Creates a new [WorkspaceLoggingConfiguration].
   /// [logGroupArn] The ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist. The ARN must end with `:*`
@@ -19,7 +20,7 @@ class WorkspaceLoggingConfiguration {
 
   factory WorkspaceLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkspaceLoggingConfiguration(
-      logGroupArn: map['logGroupArn'] as String,
+      logGroupArn: (map['logGroupArn'] as String).input(),
     );
   }
 }

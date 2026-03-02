@@ -36,21 +36,14 @@ class BucketPublicAccessBlockArgs {
   /// [restrictPublicBuckets] Whether Amazon S3 should restrict public bucket policies for this bucket. Defaults to `false`. Enabling this setting does not affect the previously stored bucket policy, except that public and cross-account access within the public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`:
   /// [skipDestroy] Whether to retain the public access block upon destruction. If set to `true`, the resource is simply removed from state instead. This may be desirable in certain scenarios to prevent the removal of a public access block before deletion of the associated bucket.
   BucketPublicAccessBlockArgs({
-    pulumi.Output<bool>? blockPublicAcls,
-    pulumi.Output<bool>? blockPublicPolicy,
-    required pulumi.Output<String> bucket,
-    pulumi.Output<bool>? ignorePublicAcls,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? restrictPublicBuckets,
-    pulumi.Output<bool>? skipDestroy,
-  }) :
-      blockPublicAcls = pulumi.Input.asOptionalInput<bool>(blockPublicAcls),
-      blockPublicPolicy = pulumi.Input.asOptionalInput<bool>(blockPublicPolicy),
-      bucket = pulumi.Input.asInput<String>(bucket),
-      ignorePublicAcls = pulumi.Input.asOptionalInput<bool>(ignorePublicAcls),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restrictPublicBuckets = pulumi.Input.asOptionalInput<bool>(restrictPublicBuckets),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy);
+    this.blockPublicAcls,
+    this.blockPublicPolicy,
+    required this.bucket,
+    this.ignorePublicAcls,
+    this.region,
+    this.restrictPublicBuckets,
+    this.skipDestroy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class BucketPublicAccessBlockArgs {
 
   factory BucketPublicAccessBlockArgs.fromMap(Map<String, dynamic> map) {
     return BucketPublicAccessBlockArgs(
-      blockPublicAcls: map['blockPublicAcls'] == null ? null : pulumi.Output.create<bool>(map['blockPublicAcls'] as bool),
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : pulumi.Output.create<bool>(map['blockPublicPolicy'] as bool),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : pulumi.Output.create<bool>(map['ignorePublicAcls'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : pulumi.Output.create<bool>(map['restrictPublicBuckets'] as bool),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
+      blockPublicAcls: map['blockPublicAcls'] == null ? null : (map['blockPublicAcls'] as bool).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
+      bucket: (map['bucket'] as String).input(),
+      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : (map['ignorePublicAcls'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : (map['restrictPublicBuckets'] as bool).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
     );
   }
 }

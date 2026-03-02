@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties from the Kubernetes data controller
 class OnPremiseProperty {
   /// A globally unique ID identifying the associated Kubernetes cluster
-  final String id;
+  final pulumi.Input<String> id;
   /// Certificate that contains the Kubernetes cluster public key used to verify signing
-  final String publicSigningKey;
+  final pulumi.Input<String> publicSigningKey;
   /// Unique thumbprint returned to customer to verify the certificate being uploaded
-  final String? signingCertificateThumbprint;
+  final pulumi.Input<String>? signingCertificateThumbprint;
 
   /// Creates a new [OnPremiseProperty].
   /// [id] A globally unique ID identifying the associated Kubernetes cluster
@@ -30,9 +31,9 @@ class OnPremiseProperty {
 
   factory OnPremiseProperty.fromMap(Map<String, dynamic> map) {
     return OnPremiseProperty(
-      id: map['id'] as String,
-      publicSigningKey: map['publicSigningKey'] as String,
-      signingCertificateThumbprint: map['signingCertificateThumbprint'] == null ? null : map['signingCertificateThumbprint'] as String,
+      id: (map['id'] as String).input(),
+      publicSigningKey: (map['publicSigningKey'] as String).input(),
+      signingCertificateThumbprint: map['signingCertificateThumbprint'] == null ? null : (map['signingCertificateThumbprint'] as String).input(),
     );
   }
 }

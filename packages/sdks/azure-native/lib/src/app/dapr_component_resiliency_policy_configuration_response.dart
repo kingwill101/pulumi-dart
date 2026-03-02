@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dapr_component_resiliency_policy_circuit_breaker_policy_configuration_response.dart';
 import 'dapr_component_resiliency_policy_http_retry_policy_configuration_response.dart';
 import 'dapr_component_resiliency_policy_timeout_policy_configuration_response.dart';
@@ -7,11 +8,11 @@ import 'dapr_component_resiliency_policy_timeout_policy_configuration_response.d
 /// Dapr Component Resiliency Policy Configuration.
 class DaprComponentResiliencyPolicyConfigurationResponse {
   /// The optional circuit breaker policy configuration
-  final DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse? circuitBreakerPolicy;
+  final pulumi.Input<DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse>? circuitBreakerPolicy;
   /// The optional HTTP retry policy configuration
-  final DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse? httpRetryPolicy;
+  final pulumi.Input<DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse>? httpRetryPolicy;
   /// The optional timeout policy configuration
-  final DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse? timeoutPolicy;
+  final pulumi.Input<DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse>? timeoutPolicy;
 
   /// Creates a new [DaprComponentResiliencyPolicyConfigurationResponse].
   /// [circuitBreakerPolicy] The optional circuit breaker policy configuration
@@ -25,17 +26,17 @@ class DaprComponentResiliencyPolicyConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'circuitBreakerPolicy': ?circuitBreakerPolicy == null ? null : circuitBreakerPolicy!.toMap(),
-      'httpRetryPolicy': ?httpRetryPolicy == null ? null : httpRetryPolicy!.toMap(),
-      'timeoutPolicy': ?timeoutPolicy == null ? null : timeoutPolicy!.toMap(),
+      'circuitBreakerPolicy': ?pulumi.Input.mapOptionalInputValue<DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse, Map<String, dynamic>>(circuitBreakerPolicy, (value) => value.toMap()),
+      'httpRetryPolicy': ?pulumi.Input.mapOptionalInputValue<DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse, Map<String, dynamic>>(httpRetryPolicy, (value) => value.toMap()),
+      'timeoutPolicy': ?pulumi.Input.mapOptionalInputValue<DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse, Map<String, dynamic>>(timeoutPolicy, (value) => value.toMap()),
     };
   }
 
   factory DaprComponentResiliencyPolicyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyConfigurationResponse(
-      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse.fromMap((map['circuitBreakerPolicy'] as Map).cast<String, dynamic>()),
-      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse.fromMap((map['httpRetryPolicy'] as Map).cast<String, dynamic>()),
-      timeoutPolicy: map['timeoutPolicy'] == null ? null : DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse.fromMap((map['timeoutPolicy'] as Map).cast<String, dynamic>()),
+      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse.fromMap((map['circuitBreakerPolicy'] as Map).cast<String, dynamic>())).input(),
+      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse.fromMap((map['httpRetryPolicy'] as Map).cast<String, dynamic>())).input(),
+      timeoutPolicy: map['timeoutPolicy'] == null ? null : (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse.fromMap((map['timeoutPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

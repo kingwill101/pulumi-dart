@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Nested provisioning support.
 class ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport {
   /// Minimum API version.
-  final String? minimumApiVersion;
+  final pulumi.Input<String>? minimumApiVersion;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport].
   /// [minimumApiVersion] Minimum API version.
@@ -20,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvision
 
   factory ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport(
-      minimumApiVersion: map['minimumApiVersion'] == null ? null : map['minimumApiVersion'] as String,
+      minimumApiVersion: map['minimumApiVersion'] == null ? null : (map['minimumApiVersion'] as String).input(),
     );
   }
 }

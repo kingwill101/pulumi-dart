@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the network interfaces of a bare metal resource.
 class NetworkInterfaceResponse {
   /// Specifies the IP address of the network interface.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [ipAddress] Specifies the IP address of the network interface.
@@ -20,7 +21,7 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
     );
   }
 }

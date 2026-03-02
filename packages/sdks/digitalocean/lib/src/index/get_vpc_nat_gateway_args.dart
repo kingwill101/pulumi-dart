@@ -16,11 +16,9 @@ class GetVpcNatGatewayArgs {
   /// [id] The ID of VPC NAT Gateway.
   /// [name] The name of VPC NAT Gateway.
   GetVpcNatGatewayArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVpcNatGatewayArgs {
 
   factory GetVpcNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcNatGatewayArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

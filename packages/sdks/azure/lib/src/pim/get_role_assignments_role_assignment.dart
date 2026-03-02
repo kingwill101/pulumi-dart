@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRoleAssignmentsRoleAssignment {
   /// The condition that limits the resource the role can be assigned to.
-  final String condition;
+  final pulumi.Input<String> condition;
   /// The version of the condition.
-  final String conditionVersion;
+  final pulumi.Input<String> conditionVersion;
   /// The ID of the delegated managed identity resource.
-  final String delegatedManagedIdentityResourceId;
+  final pulumi.Input<String> delegatedManagedIdentityResourceId;
   /// The description for this Role Assignment.
-  final String description;
+  final pulumi.Input<String> description;
   /// The principal ID to filter the list of Role Assignments against.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The type of the `principal_id`.
-  final String principalType;
+  final pulumi.Input<String> principalType;
   /// The ID of the Role Assignment.
-  final String roleAssignmentId;
+  final pulumi.Input<String> roleAssignmentId;
   /// The name of the Role Assignment.
-  final String roleAssignmentName;
+  final pulumi.Input<String> roleAssignmentName;
   /// The scope of the Role Assignment.
-  final String roleAssignmentScope;
+  final pulumi.Input<String> roleAssignmentScope;
   /// The ID of the Role Definition.
-  final String roleDefinitionId;
+  final pulumi.Input<String> roleDefinitionId;
 
   /// Creates a new [GetRoleAssignmentsRoleAssignment].
   /// [condition] The condition that limits the resource the role can be assigned to.
@@ -64,16 +65,16 @@ class GetRoleAssignmentsRoleAssignment {
 
   factory GetRoleAssignmentsRoleAssignment.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentsRoleAssignment(
-      condition: map['condition'] as String,
-      conditionVersion: map['conditionVersion'] as String,
-      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] as String,
-      description: map['description'] as String,
-      principalId: map['principalId'] as String,
-      principalType: map['principalType'] as String,
-      roleAssignmentId: map['roleAssignmentId'] as String,
-      roleAssignmentName: map['roleAssignmentName'] as String,
-      roleAssignmentScope: map['roleAssignmentScope'] as String,
-      roleDefinitionId: map['roleDefinitionId'] as String,
+      condition: (map['condition'] as String).input(),
+      conditionVersion: (map['conditionVersion'] as String).input(),
+      delegatedManagedIdentityResourceId: (map['delegatedManagedIdentityResourceId'] as String).input(),
+      description: (map['description'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      roleAssignmentId: (map['roleAssignmentId'] as String).input(),
+      roleAssignmentName: (map['roleAssignmentName'] as String).input(),
+      roleAssignmentScope: (map['roleAssignmentScope'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

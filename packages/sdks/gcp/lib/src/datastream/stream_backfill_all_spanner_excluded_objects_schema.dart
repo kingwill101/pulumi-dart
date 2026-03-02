@@ -5,10 +5,10 @@ import 'stream_backfill_all_spanner_excluded_objects_schema_table.dart';
 
 class StreamBackfillAllSpannerExcludedObjectsSchema {
   /// Schema name.
-  final String schema;
+  final pulumi.Input<String> schema;
   /// Tables in the schema.
   /// Structure is documented below.
-  final List<StreamBackfillAllSpannerExcludedObjectsSchemaTable>? tables;
+  final pulumi.Input<List<StreamBackfillAllSpannerExcludedObjectsSchemaTable>>? tables;
 
   /// Creates a new [StreamBackfillAllSpannerExcludedObjectsSchema].
   /// [schema] Schema name.
@@ -21,14 +21,14 @@ class StreamBackfillAllSpannerExcludedObjectsSchema {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'schema': schema,
-      'tables': ?tables == null ? null : pulumi.Input.encodeList<StreamBackfillAllSpannerExcludedObjectsSchemaTable, Map<String, dynamic>>(tables!, (value) => value.toMap()),
+      'tables': ?pulumi.Input.mapOptionalInputValue<List<StreamBackfillAllSpannerExcludedObjectsSchemaTable>, List<Map<String, dynamic>>>(tables, (value) => pulumi.Input.encodeList<StreamBackfillAllSpannerExcludedObjectsSchemaTable, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StreamBackfillAllSpannerExcludedObjectsSchema.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSpannerExcludedObjectsSchema(
-      schema: map['schema'] as String,
-      tables: map['tables'] == null ? null : pulumi.Input.decodeList<StreamBackfillAllSpannerExcludedObjectsSchemaTable>(map['tables'], (value) => StreamBackfillAllSpannerExcludedObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>())),
+      schema: (map['schema'] as String).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSpannerExcludedObjectsSchemaTable>(map['tables'], (value) => StreamBackfillAllSpannerExcludedObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

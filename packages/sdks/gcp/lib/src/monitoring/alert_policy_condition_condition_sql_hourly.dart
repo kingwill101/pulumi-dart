@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertPolicyConditionConditionSqlHourly {
   /// The number of minutes after the hour (in UTC) to run the query.
   /// Must be greater than or equal to 0 minutes and less than or equal to
   /// 59 minutes.  If left unspecified, then an arbitrary offset is used.
-  final int? minuteOffset;
+  final pulumi.Input<int>? minuteOffset;
   /// Number of hours between runs. The interval must be greater than or
   /// equal to 1 hour and less than or equal to 48 hours.
-  final int periodicity;
+  final pulumi.Input<int> periodicity;
 
   /// Creates a new [AlertPolicyConditionConditionSqlHourly].
   /// [minuteOffset] The number of minutes after the hour (in UTC) to run the query.
@@ -27,8 +28,8 @@ class AlertPolicyConditionConditionSqlHourly {
 
   factory AlertPolicyConditionConditionSqlHourly.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlHourly(
-      minuteOffset: map['minuteOffset'] == null ? null : map['minuteOffset'] as int,
-      periodicity: map['periodicity'] as int,
+      minuteOffset: map['minuteOffset'] == null ? null : (map['minuteOffset'] as int).input(),
+      periodicity: (map['periodicity'] as int).input(),
     );
   }
 }

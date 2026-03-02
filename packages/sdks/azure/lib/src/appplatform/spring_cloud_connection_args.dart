@@ -30,21 +30,14 @@ class SpringCloudConnectionArgs {
   /// [targetResourceId] The ID of the target resource. Changing this forces a new resource to be created. Possible target resources are `Postgres`, `PostgresFlexible`, `Mysql`, `Sql`, `Redis`, `RedisEnterprise`, `CosmosCassandra`, `CosmosGremlin`, `CosmosMongo`, `CosmosSql`, `CosmosTable`, `StorageBlob`, `StorageQueue`, `StorageFile`, `StorageTable`, `AppConfig`, `EventHub`, `ServiceBus`, `SignalR`, `WebPubSub`, `ConfluentKafka`. The integration guide can be found [here](https://learn.microsoft.com/en-us/azure/service-connector/how-to-integrate-postgres).
   /// [vnetSolution] Optional.
   SpringCloudConnectionArgs({
-    required pulumi.Output<SpringCloudConnectionAuthentication> authentication,
-    pulumi.Output<String>? clientType,
-    pulumi.Output<String>? name,
-    pulumi.Output<SpringCloudConnectionSecretStore>? secretStore,
-    required pulumi.Output<String> springCloudId,
-    required pulumi.Output<String> targetResourceId,
-    pulumi.Output<String>? vnetSolution,
-  }) :
-      authentication = pulumi.Input.asInput<SpringCloudConnectionAuthentication>(authentication),
-      clientType = pulumi.Input.asOptionalInput<String>(clientType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      secretStore = pulumi.Input.asOptionalInput<SpringCloudConnectionSecretStore>(secretStore),
-      springCloudId = pulumi.Input.asInput<String>(springCloudId),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId),
-      vnetSolution = pulumi.Input.asOptionalInput<String>(vnetSolution);
+    required this.authentication,
+    this.clientType,
+    this.name,
+    this.secretStore,
+    required this.springCloudId,
+    required this.targetResourceId,
+    this.vnetSolution,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class SpringCloudConnectionArgs {
 
   factory SpringCloudConnectionArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudConnectionArgs(
-      authentication: pulumi.Output.create<SpringCloudConnectionAuthentication>(SpringCloudConnectionAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      clientType: map['clientType'] == null ? null : pulumi.Output.create<String>(map['clientType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      secretStore: map['secretStore'] == null ? null : pulumi.Output.create<SpringCloudConnectionSecretStore>(SpringCloudConnectionSecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())),
-      springCloudId: pulumi.Output.create<String>(map['springCloudId'] as String),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
-      vnetSolution: map['vnetSolution'] == null ? null : pulumi.Output.create<String>(map['vnetSolution'] as String),
+      authentication: (SpringCloudConnectionAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secretStore: map['secretStore'] == null ? null : (SpringCloudConnectionSecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
+      springCloudId: (map['springCloudId'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
+      vnetSolution: map['vnetSolution'] == null ? null : (map['vnetSolution'] as String).input(),
     );
   }
 }

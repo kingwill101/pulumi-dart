@@ -19,13 +19,10 @@ class GetTableEntityArgs {
   /// [rowKey] The key for the row where the entity will be retrieved.
   /// [storageTableId] The Storage Table ID where the entity exists.
   GetTableEntityArgs({
-    required pulumi.Output<String> partitionKey,
-    required pulumi.Output<String> rowKey,
-    required pulumi.Output<String> storageTableId,
-  }) :
-      partitionKey = pulumi.Input.asInput<String>(partitionKey),
-      rowKey = pulumi.Input.asInput<String>(rowKey),
-      storageTableId = pulumi.Input.asInput<String>(storageTableId);
+    required this.partitionKey,
+    required this.rowKey,
+    required this.storageTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTableEntityArgs {
 
   factory GetTableEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetTableEntityArgs(
-      partitionKey: pulumi.Output.create<String>(map['partitionKey'] as String),
-      rowKey: pulumi.Output.create<String>(map['rowKey'] as String),
-      storageTableId: pulumi.Output.create<String>(map['storageTableId'] as String),
+      partitionKey: (map['partitionKey'] as String).input(),
+      rowKey: (map['rowKey'] as String).input(),
+      storageTableId: (map['storageTableId'] as String).input(),
     );
   }
 }

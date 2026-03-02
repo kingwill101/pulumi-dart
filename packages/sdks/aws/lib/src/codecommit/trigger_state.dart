@@ -20,15 +20,11 @@ class TriggerState {
   /// [repositoryName] The name for the repository. This needs to be less than 100 characters.
   /// [triggers] The name of the trigger.
   TriggerState({
-    pulumi.Output<String>? configurationId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? repositoryName,
-    pulumi.Output<List<TriggerTrigger>>? triggers,
-  }) :
-      configurationId = pulumi.Input.asOptionalInput<String>(configurationId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryName = pulumi.Input.asOptionalInput<String>(repositoryName),
-      triggers = pulumi.Input.asOptionalInput<List<TriggerTrigger>>(triggers);
+    this.configurationId,
+    this.region,
+    this.repositoryName,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class TriggerState {
 
   factory TriggerState.fromMap(Map<String, dynamic> map) {
     return TriggerState(
-      configurationId: map['configurationId'] == null ? null : pulumi.Output.create<String>(map['configurationId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositoryName: map['repositoryName'] == null ? null : pulumi.Output.create<String>(map['repositoryName'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<List<TriggerTrigger>>(pulumi.Input.decodeList<TriggerTrigger>(map['triggers'], (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))),
+      configurationId: map['configurationId'] == null ? null : (map['configurationId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
+      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<TriggerTrigger>(map['triggers'], (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

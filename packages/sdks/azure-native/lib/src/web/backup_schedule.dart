@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frequency_unit.dart';
 
 /// Description of a backup schedule. Describes how often should be the backup performed and what should be the retention policy.
 class BackupSchedule {
   /// How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
-  final int frequencyInterval;
+  final pulumi.Input<int> frequencyInterval;
   /// The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
-  final FrequencyUnit frequencyUnit;
+  final pulumi.Input<FrequencyUnit> frequencyUnit;
   /// True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
-  final bool keepAtLeastOneBackup;
+  final pulumi.Input<bool> keepAtLeastOneBackup;
   /// After how many days backups should be deleted.
-  final int retentionPeriodInDays;
+  final pulumi.Input<int> retentionPeriodInDays;
   /// When the schedule should start working.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [BackupSchedule].
   /// [frequencyInterval] How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
@@ -32,7 +33,7 @@ class BackupSchedule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'frequencyInterval': frequencyInterval,
-      'frequencyUnit': frequencyUnit.value,
+      'frequencyUnit': pulumi.Input.mapInputValue<FrequencyUnit, String>(frequencyUnit, (value) => value.value),
       'keepAtLeastOneBackup': keepAtLeastOneBackup,
       'retentionPeriodInDays': retentionPeriodInDays,
       'startTime': ?startTime,
@@ -41,11 +42,11 @@ class BackupSchedule {
 
   factory BackupSchedule.fromMap(Map<String, dynamic> map) {
     return BackupSchedule(
-      frequencyInterval: map['frequencyInterval'] as int,
-      frequencyUnit: FrequencyUnit.fromValue(map['frequencyUnit'] as String),
-      keepAtLeastOneBackup: map['keepAtLeastOneBackup'] as bool,
-      retentionPeriodInDays: map['retentionPeriodInDays'] as int,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      frequencyInterval: (map['frequencyInterval'] as int).input(),
+      frequencyUnit: (FrequencyUnit.fromValue(map['frequencyUnit'] as String)).input(),
+      keepAtLeastOneBackup: (map['keepAtLeastOneBackup'] as bool).input(),
+      retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

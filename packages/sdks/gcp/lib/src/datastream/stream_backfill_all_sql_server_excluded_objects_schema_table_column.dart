@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
   /// Column name.
-  final String? column;
+  final pulumi.Input<String>? column;
   /// (Output)
   /// The Spanner data type. Full data types list can be found here:
   /// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// (Output)
   /// Column length.
-  final int? length;
+  final pulumi.Input<int>? length;
   /// (Output)
   /// Whether or not the column can accept a null value.
-  final bool? nullable;
+  final pulumi.Input<bool>? nullable;
   /// (Output)
   /// The ordinal position of the column in the table.
-  final int? ordinalPosition;
+  final pulumi.Input<int>? ordinalPosition;
   /// (Output)
   /// Column precision.
-  final int? precision;
+  final pulumi.Input<int>? precision;
   /// (Output)
   /// Whether or not the column represents a primary key.
-  final bool? primaryKey;
+  final pulumi.Input<bool>? primaryKey;
   /// (Output)
   /// Column scale.
-  final int? scale;
+  final pulumi.Input<int>? scale;
 
   /// Creates a new [StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn].
   /// [column] Column name.
@@ -62,14 +63,14 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
 
   factory StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn(
-      column: map['column'] == null ? null : map['column'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      length: map['length'] == null ? null : map['length'] as int,
-      nullable: map['nullable'] == null ? null : map['nullable'] as bool,
-      ordinalPosition: map['ordinalPosition'] == null ? null : map['ordinalPosition'] as int,
-      precision: map['precision'] == null ? null : map['precision'] as int,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as bool,
-      scale: map['scale'] == null ? null : map['scale'] as int,
+      column: map['column'] == null ? null : (map['column'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      length: map['length'] == null ? null : (map['length'] as int).input(),
+      nullable: map['nullable'] == null ? null : (map['nullable'] as bool).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
+      precision: map['precision'] == null ? null : (map['precision'] as int).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as bool).input(),
+      scale: map['scale'] == null ? null : (map['scale'] as int).input(),
     );
   }
 }

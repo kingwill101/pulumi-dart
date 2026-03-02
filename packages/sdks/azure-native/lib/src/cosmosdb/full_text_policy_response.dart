@@ -6,9 +6,9 @@ import 'full_text_path_response.dart';
 /// Cosmos DB FullText Policy
 class FullTextPolicyResponse {
   /// The default language for a full text paths.
-  final String? defaultLanguage;
+  final pulumi.Input<String>? defaultLanguage;
   /// List of FullText Paths
-  final List<FullTextPathResponse>? fullTextPaths;
+  final pulumi.Input<List<FullTextPathResponse>>? fullTextPaths;
 
   /// Creates a new [FullTextPolicyResponse].
   /// [defaultLanguage] The default language for a full text paths.
@@ -21,14 +21,14 @@ class FullTextPolicyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultLanguage': ?defaultLanguage,
-      'fullTextPaths': ?fullTextPaths == null ? null : pulumi.Input.encodeList<FullTextPathResponse, Map<String, dynamic>>(fullTextPaths!, (value) => value.toMap()),
+      'fullTextPaths': ?pulumi.Input.mapOptionalInputValue<List<FullTextPathResponse>, List<Map<String, dynamic>>>(fullTextPaths, (value) => pulumi.Input.encodeList<FullTextPathResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FullTextPolicyResponse.fromMap(Map<String, dynamic> map) {
     return FullTextPolicyResponse(
-      defaultLanguage: map['defaultLanguage'] == null ? null : map['defaultLanguage'] as String,
-      fullTextPaths: map['fullTextPaths'] == null ? null : pulumi.Input.decodeList<FullTextPathResponse>(map['fullTextPaths'], (value) => FullTextPathResponse.fromMap((value as Map).cast<String, dynamic>())),
+      defaultLanguage: map['defaultLanguage'] == null ? null : (map['defaultLanguage'] as String).input(),
+      fullTextPaths: map['fullTextPaths'] == null ? null : (pulumi.Input.decodeList<FullTextPathResponse>(map['fullTextPaths'], (value) => FullTextPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

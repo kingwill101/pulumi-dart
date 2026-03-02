@@ -16,13 +16,10 @@ class NetworkAclAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetId] The ID of the associated Subnet.
   NetworkAclAssociationState({
-    pulumi.Output<String>? networkAclId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-  }) :
-      networkAclId = pulumi.Input.asOptionalInput<String>(networkAclId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.networkAclId,
+    this.region,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class NetworkAclAssociationState {
 
   factory NetworkAclAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkAclAssociationState(
-      networkAclId: map['networkAclId'] == null ? null : pulumi.Output.create<String>(map['networkAclId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

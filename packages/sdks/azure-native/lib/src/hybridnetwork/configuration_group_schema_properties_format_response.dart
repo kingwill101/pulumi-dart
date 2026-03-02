@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration group schema properties.
 class ConfigurationGroupSchemaPropertiesFormatResponse {
   /// Description of what schema can contain.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The provisioning state of the Configuration group schema resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Name and value pairs that define the configuration value. It can be a well formed escaped JSON string.
-  final String? schemaDefinition;
+  final pulumi.Input<String>? schemaDefinition;
   /// The configuration group schema version state.
-  final String versionState;
+  final pulumi.Input<String> versionState;
 
   /// Creates a new [ConfigurationGroupSchemaPropertiesFormatResponse].
   /// [description] Description of what schema can contain.
@@ -35,10 +36,10 @@ class ConfigurationGroupSchemaPropertiesFormatResponse {
 
   factory ConfigurationGroupSchemaPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupSchemaPropertiesFormatResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      provisioningState: map['provisioningState'] as String,
-      schemaDefinition: map['schemaDefinition'] == null ? null : map['schemaDefinition'] as String,
-      versionState: map['versionState'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition'] as String).input(),
+      versionState: (map['versionState'] as String).input(),
     );
   }
 }

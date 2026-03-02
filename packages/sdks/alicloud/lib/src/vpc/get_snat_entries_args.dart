@@ -37,25 +37,16 @@ class GetSnatEntriesArgs {
   /// [sourceVswitchId] The source vswitch ID.
   /// [status] The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
   GetSnatEntriesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? snatEntryName,
-    pulumi.Output<String>? snatIp,
-    required pulumi.Output<String> snatTableId,
-    pulumi.Output<String>? sourceCidr,
-    pulumi.Output<String>? sourceVswitchId,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      snatEntryName = pulumi.Input.asOptionalInput<String>(snatEntryName),
-      snatIp = pulumi.Input.asOptionalInput<String>(snatIp),
-      snatTableId = pulumi.Input.asInput<String>(snatTableId),
-      sourceCidr = pulumi.Input.asOptionalInput<String>(sourceCidr),
-      sourceVswitchId = pulumi.Input.asOptionalInput<String>(sourceVswitchId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.snatEntryName,
+    this.snatIp,
+    required this.snatTableId,
+    this.sourceCidr,
+    this.sourceVswitchId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GetSnatEntriesArgs {
 
   factory GetSnatEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetSnatEntriesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      snatEntryName: map['snatEntryName'] == null ? null : pulumi.Output.create<String>(map['snatEntryName'] as String),
-      snatIp: map['snatIp'] == null ? null : pulumi.Output.create<String>(map['snatIp'] as String),
-      snatTableId: pulumi.Output.create<String>(map['snatTableId'] as String),
-      sourceCidr: map['sourceCidr'] == null ? null : pulumi.Output.create<String>(map['sourceCidr'] as String),
-      sourceVswitchId: map['sourceVswitchId'] == null ? null : pulumi.Output.create<String>(map['sourceVswitchId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName'] as String).input(),
+      snatIp: map['snatIp'] == null ? null : (map['snatIp'] as String).input(),
+      snatTableId: (map['snatTableId'] as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
+      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetGenaiOpenaiApiKeysArgs {
   /// [filters] Optional.
   /// [sorts] Optional.
   GetGenaiOpenaiApiKeysArgs({
-    pulumi.Output<List<GetGenaiOpenaiApiKeysFilter>>? filters,
-    pulumi.Output<List<GetGenaiOpenaiApiKeysSort>>? sorts,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetGenaiOpenaiApiKeysFilter>>(filters),
-      sorts = pulumi.Input.asOptionalInput<List<GetGenaiOpenaiApiKeysSort>>(sorts);
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGenaiOpenaiApiKeysArgs {
 
   factory GetGenaiOpenaiApiKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiOpenaiApiKeysArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetGenaiOpenaiApiKeysFilter>>(pulumi.Input.decodeList<GetGenaiOpenaiApiKeysFilter>(map['filters'], (value) => GetGenaiOpenaiApiKeysFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      sorts: map['sorts'] == null ? null : pulumi.Output.create<List<GetGenaiOpenaiApiKeysSort>>(pulumi.Input.decodeList<GetGenaiOpenaiApiKeysSort>(map['sorts'], (value) => GetGenaiOpenaiApiKeysSort.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiOpenaiApiKeysFilter>(map['filters'], (value) => GetGenaiOpenaiApiKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiOpenaiApiKeysSort>(map['sorts'], (value) => GetGenaiOpenaiApiKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

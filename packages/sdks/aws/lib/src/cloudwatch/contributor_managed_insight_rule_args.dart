@@ -25,17 +25,12 @@ class ContributorManagedInsightRuleArgs {
   /// [tags] Optional.
   /// [templateName] Template name for the managed Contributor Insights rule, as returned by ListManagedInsightRules.
   ContributorManagedInsightRuleArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> templateName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateName = pulumi.Input.asInput<String>(templateName);
+    this.region,
+    required this.resourceArn,
+    this.state,
+    this.tags,
+    required this.templateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ContributorManagedInsightRuleArgs {
 
   factory ContributorManagedInsightRuleArgs.fromMap(Map<String, dynamic> map) {
     return ContributorManagedInsightRuleArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateName: pulumi.Output.create<String>(map['templateName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateName: (map['templateName'] as String).input(),
     );
   }
 }

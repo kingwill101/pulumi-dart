@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
 class PodCIDROverprovisionConfigResponse {
   /// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
-  final bool disable;
+  final pulumi.Input<bool> disable;
 
   /// Creates a new [PodCIDROverprovisionConfigResponse].
   /// [disable] Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
@@ -20,7 +21,7 @@ class PodCIDROverprovisionConfigResponse {
 
   factory PodCIDROverprovisionConfigResponse.fromMap(Map<String, dynamic> map) {
     return PodCIDROverprovisionConfigResponse(
-      disable: map['disable'] as bool,
+      disable: (map['disable'] as bool).input(),
     );
   }
 }

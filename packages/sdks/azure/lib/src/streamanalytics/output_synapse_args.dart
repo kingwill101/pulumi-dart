@@ -34,23 +34,15 @@ class OutputSynapseArgs {
   /// [table] The name of the table in the Azure SQL database. Changing this forces a new resource to be created.
   /// [user] The user name that will be used to connect to the Azure SQL database. Changing this forces a new resource to be created.
   OutputSynapseArgs({
-    required pulumi.Output<String> database,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> password,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> server,
-    required pulumi.Output<String> streamAnalyticsJobName,
-    required pulumi.Output<String> table,
-    required pulumi.Output<String> user,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      server = pulumi.Input.asInput<String>(server),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName),
-      table = pulumi.Input.asInput<String>(table),
-      user = pulumi.Input.asInput<String>(user);
+    required this.database,
+    this.name,
+    required this.password,
+    required this.resourceGroupName,
+    required this.server,
+    required this.streamAnalyticsJobName,
+    required this.table,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class OutputSynapseArgs {
 
   factory OutputSynapseArgs.fromMap(Map<String, dynamic> map) {
     return OutputSynapseArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      server: pulumi.Output.create<String>(map['server'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      table: pulumi.Output.create<String>(map['table'] as String),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      database: (map['database'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      server: (map['server'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
+      table: (map['table'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

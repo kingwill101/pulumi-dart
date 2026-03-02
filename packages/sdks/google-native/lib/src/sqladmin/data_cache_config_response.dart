@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data cache configurations.
 class DataCacheConfigResponse {
   /// Whether data cache is enabled for the instance.
-  final bool dataCacheEnabled;
+  final pulumi.Input<bool> dataCacheEnabled;
 
   /// Creates a new [DataCacheConfigResponse].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.
@@ -20,7 +21,7 @@ class DataCacheConfigResponse {
 
   factory DataCacheConfigResponse.fromMap(Map<String, dynamic> map) {
     return DataCacheConfigResponse(
-      dataCacheEnabled: map['dataCacheEnabled'] as bool,
+      dataCacheEnabled: (map['dataCacheEnabled'] as bool).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxWebAppBackupSchedule {
   /// How often the backup will be executed.
-  final int frequencyInterval;
+  final pulumi.Input<int> frequencyInterval;
   /// The unit of time for how often the backup should take place.
-  final String frequencyUnit;
+  final pulumi.Input<String> frequencyUnit;
   /// Will the service keep at least one backup, regardless of age of backup.
-  final bool keepAtLeastOneBackup;
+  final pulumi.Input<bool> keepAtLeastOneBackup;
   /// The time of the last backup attempt.
-  final String lastExecutionTime;
+  final pulumi.Input<String> lastExecutionTime;
   /// After how many days backups should be deleted.
-  final int retentionPeriodDays;
+  final pulumi.Input<int> retentionPeriodDays;
   /// When the schedule should start in RFC-3339 format.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [GetLinuxWebAppBackupSchedule].
   /// [frequencyInterval] How often the backup will be executed.
@@ -44,12 +45,12 @@ class GetLinuxWebAppBackupSchedule {
 
   factory GetLinuxWebAppBackupSchedule.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppBackupSchedule(
-      frequencyInterval: map['frequencyInterval'] as int,
-      frequencyUnit: map['frequencyUnit'] as String,
-      keepAtLeastOneBackup: map['keepAtLeastOneBackup'] as bool,
-      lastExecutionTime: map['lastExecutionTime'] as String,
-      retentionPeriodDays: map['retentionPeriodDays'] as int,
-      startTime: map['startTime'] as String,
+      frequencyInterval: (map['frequencyInterval'] as int).input(),
+      frequencyUnit: (map['frequencyUnit'] as String).input(),
+      keepAtLeastOneBackup: (map['keepAtLeastOneBackup'] as bool).input(),
+      lastExecutionTime: (map['lastExecutionTime'] as String).input(),
+      retentionPeriodDays: (map['retentionPeriodDays'] as int).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

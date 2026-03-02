@@ -7,9 +7,9 @@ import 'vault_certificate.dart';
 /// Specifies set of certificates that should be installed onto the virtual machines.
 class VaultSecretGroup {
   /// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
-  final SubResource sourceVault;
+  final pulumi.Input<SubResource> sourceVault;
   /// The list of key vault references in SourceVault which contain certificates.
-  final List<VaultCertificate> vaultCertificates;
+  final pulumi.Input<List<VaultCertificate>> vaultCertificates;
 
   /// Creates a new [VaultSecretGroup].
   /// [sourceVault] The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
@@ -21,15 +21,15 @@ class VaultSecretGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceVault': sourceVault.toMap(),
-      'vaultCertificates': pulumi.Input.encodeList<VaultCertificate, Map<String, dynamic>>(vaultCertificates, (value) => value.toMap()),
+      'sourceVault': pulumi.Input.mapInputValue<SubResource, Map<String, dynamic>>(sourceVault, (value) => value.toMap()),
+      'vaultCertificates': pulumi.Input.mapInputValue<List<VaultCertificate>, List<Map<String, dynamic>>>(vaultCertificates, (value) => pulumi.Input.encodeList<VaultCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VaultSecretGroup.fromMap(Map<String, dynamic> map) {
     return VaultSecretGroup(
-      sourceVault: SubResource.fromMap((map['sourceVault'] as Map).cast<String, dynamic>()),
-      vaultCertificates: pulumi.Input.decodeList<VaultCertificate>(map['vaultCertificates'], (value) => VaultCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      sourceVault: (SubResource.fromMap((map['sourceVault'] as Map).cast<String, dynamic>())).input(),
+      vaultCertificates: (pulumi.Input.decodeList<VaultCertificate>(map['vaultCertificates'], (value) => VaultCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

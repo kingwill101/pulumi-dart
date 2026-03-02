@@ -55,33 +55,20 @@ class AmlFilesystemArgs {
   /// [tags] Resource tags.
   /// [zones] Availability zones for resources. This field should only contain a single element in the array.
   AmlFilesystemArgs({
-    pulumi.Output<String>? amlFilesystemName,
-    pulumi.Output<AmlFilesystemEncryptionSettings>? encryptionSettings,
-    required pulumi.Output<String> filesystemSubnet,
-    pulumi.Output<AmlFilesystemHsm>? hsm,
-    pulumi.Output<AmlFilesystemIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<AmlFilesystemMaintenanceWindow> maintenanceWindow,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AmlFilesystemRootSquashSettings>? rootSquashSettings,
-    pulumi.Output<SkuName>? sku,
-    required pulumi.Output<double> storageCapacityTiB,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      amlFilesystemName = pulumi.Input.asOptionalInput<String>(amlFilesystemName),
-      encryptionSettings = pulumi.Input.asOptionalInput<AmlFilesystemEncryptionSettings>(encryptionSettings),
-      filesystemSubnet = pulumi.Input.asInput<String>(filesystemSubnet),
-      hsm = pulumi.Input.asOptionalInput<AmlFilesystemHsm>(hsm),
-      identity = pulumi.Input.asOptionalInput<AmlFilesystemIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceWindow = pulumi.Input.asInput<AmlFilesystemMaintenanceWindow>(maintenanceWindow),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rootSquashSettings = pulumi.Input.asOptionalInput<AmlFilesystemRootSquashSettings>(rootSquashSettings),
-      sku = pulumi.Input.asOptionalInput<SkuName>(sku),
-      storageCapacityTiB = pulumi.Input.asInput<double>(storageCapacityTiB),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.amlFilesystemName,
+    this.encryptionSettings,
+    required this.filesystemSubnet,
+    this.hsm,
+    this.identity,
+    this.location,
+    required this.maintenanceWindow,
+    required this.resourceGroupName,
+    this.rootSquashSettings,
+    this.sku,
+    required this.storageCapacityTiB,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class AmlFilesystemArgs {
 
   factory AmlFilesystemArgs.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemArgs(
-      amlFilesystemName: map['amlFilesystemName'] == null ? null : pulumi.Output.create<String>(map['amlFilesystemName'] as String),
-      encryptionSettings: map['encryptionSettings'] == null ? null : pulumi.Output.create<AmlFilesystemEncryptionSettings>(AmlFilesystemEncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())),
-      filesystemSubnet: pulumi.Output.create<String>(map['filesystemSubnet'] as String),
-      hsm: map['hsm'] == null ? null : pulumi.Output.create<AmlFilesystemHsm>(AmlFilesystemHsm.fromMap((map['hsm'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AmlFilesystemIdentity>(AmlFilesystemIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceWindow: pulumi.Output.create<AmlFilesystemMaintenanceWindow>(AmlFilesystemMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rootSquashSettings: map['rootSquashSettings'] == null ? null : pulumi.Output.create<AmlFilesystemRootSquashSettings>(AmlFilesystemRootSquashSettings.fromMap((map['rootSquashSettings'] as Map).cast<String, dynamic>())),
-      sku: map['sku'] == null ? null : pulumi.Output.create<SkuName>(SkuName.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      storageCapacityTiB: pulumi.Output.create<double>(map['storageCapacityTiB'] as double),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      amlFilesystemName: map['amlFilesystemName'] == null ? null : (map['amlFilesystemName'] as String).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (AmlFilesystemEncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
+      filesystemSubnet: (map['filesystemSubnet'] as String).input(),
+      hsm: map['hsm'] == null ? null : (AmlFilesystemHsm.fromMap((map['hsm'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (AmlFilesystemIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceWindow: (AmlFilesystemMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rootSquashSettings: map['rootSquashSettings'] == null ? null : (AmlFilesystemRootSquashSettings.fromMap((map['rootSquashSettings'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (SkuName.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      storageCapacityTiB: (map['storageCapacityTiB'] as double).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

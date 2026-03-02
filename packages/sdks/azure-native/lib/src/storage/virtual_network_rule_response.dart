@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual Network rule.
 class VirtualNetworkRuleResponse {
   /// The action of virtual network rule.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Gets the state of virtual network rule.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-  final String virtualNetworkResourceId;
+  final pulumi.Input<String> virtualNetworkResourceId;
 
   /// Creates a new [VirtualNetworkRuleResponse].
   /// [action] The action of virtual network rule.
@@ -30,9 +31,9 @@ class VirtualNetworkRuleResponse {
 
   factory VirtualNetworkRuleResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleResponse(
-      action: map['action'] == null ? null : map['action'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      virtualNetworkResourceId: map['virtualNetworkResourceId'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      virtualNetworkResourceId: (map['virtualNetworkResourceId'] as String).input(),
     );
   }
 }

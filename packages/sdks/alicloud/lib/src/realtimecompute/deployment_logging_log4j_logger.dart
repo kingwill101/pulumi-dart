@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentLoggingLog4jLogger {
   /// Log output level
-  final String? loggerLevel;
+  final pulumi.Input<String>? loggerLevel;
   /// Class name for log output
-  final String? loggerName;
+  final pulumi.Input<String>? loggerName;
 
   /// Creates a new [DeploymentLoggingLog4jLogger].
   /// [loggerLevel] Log output level
@@ -24,8 +25,8 @@ class DeploymentLoggingLog4jLogger {
 
   factory DeploymentLoggingLog4jLogger.fromMap(Map<String, dynamic> map) {
     return DeploymentLoggingLog4jLogger(
-      loggerLevel: map['loggerLevel'] == null ? null : map['loggerLevel'] as String,
-      loggerName: map['loggerName'] == null ? null : map['loggerName'] as String,
+      loggerLevel: map['loggerLevel'] == null ? null : (map['loggerLevel'] as String).input(),
+      loggerName: map['loggerName'] == null ? null : (map['loggerName'] as String).input(),
     );
   }
 }

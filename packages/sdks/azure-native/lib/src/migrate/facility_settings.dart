@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Facility settings.
 class FacilitySettings {
   /// The facilities cost.
-  final double? facilitiesCostPerKwh;
+  final pulumi.Input<double>? facilitiesCostPerKwh;
 
   /// Creates a new [FacilitySettings].
   /// [facilitiesCostPerKwh] The facilities cost.
@@ -20,7 +21,7 @@ class FacilitySettings {
 
   factory FacilitySettings.fromMap(Map<String, dynamic> map) {
     return FacilitySettings(
-      facilitiesCostPerKwh: map['facilitiesCostPerKwh'] == null ? null : map['facilitiesCostPerKwh'] as double,
+      facilitiesCostPerKwh: map['facilitiesCostPerKwh'] == null ? null : (map['facilitiesCostPerKwh'] as double).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource for a regional service location.
 class DataTransferRegionalServiceResourceResponse {
   /// The location name.
-  final String location;
+  final pulumi.Input<String> location;
   /// The regional service name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Describes the status of a service.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [DataTransferRegionalServiceResourceResponse].
   /// [location] The location name.
@@ -30,9 +31,9 @@ class DataTransferRegionalServiceResourceResponse {
 
   factory DataTransferRegionalServiceResourceResponse.fromMap(Map<String, dynamic> map) {
     return DataTransferRegionalServiceResourceResponse(
-      location: map['location'] as String,
-      name: map['name'] as String,
-      status: map['status'] as String,
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

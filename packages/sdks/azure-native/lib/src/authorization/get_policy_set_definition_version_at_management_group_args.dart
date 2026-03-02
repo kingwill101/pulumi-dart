@@ -22,15 +22,11 @@ class GetPolicySetDefinitionVersionAtManagementGroupArgs {
   /// [policyDefinitionVersion] The policy set definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
   /// [policySetDefinitionName] The name of the policy set definition.
   GetPolicySetDefinitionVersionAtManagementGroupArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> managementGroupName,
-    required pulumi.Output<String> policyDefinitionVersion,
-    required pulumi.Output<String> policySetDefinitionName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      managementGroupName = pulumi.Input.asInput<String>(managementGroupName),
-      policyDefinitionVersion = pulumi.Input.asInput<String>(policyDefinitionVersion),
-      policySetDefinitionName = pulumi.Input.asInput<String>(policySetDefinitionName);
+    this.expand,
+    required this.managementGroupName,
+    required this.policyDefinitionVersion,
+    required this.policySetDefinitionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPolicySetDefinitionVersionAtManagementGroupArgs {
 
   factory GetPolicySetDefinitionVersionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionVersionAtManagementGroupArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      managementGroupName: pulumi.Output.create<String>(map['managementGroupName'] as String),
-      policyDefinitionVersion: pulumi.Output.create<String>(map['policyDefinitionVersion'] as String),
-      policySetDefinitionName: pulumi.Output.create<String>(map['policySetDefinitionName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      managementGroupName: (map['managementGroupName'] as String).input(),
+      policyDefinitionVersion: (map['policyDefinitionVersion'] as String).input(),
+      policySetDefinitionName: (map['policySetDefinitionName'] as String).input(),
     );
   }
 }

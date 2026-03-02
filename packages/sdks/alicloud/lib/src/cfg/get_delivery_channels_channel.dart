@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDeliveryChannelsChannel {
   /// The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
-  final String deliveryChannelAssumeRoleArn;
+  final pulumi.Input<String> deliveryChannelAssumeRoleArn;
   /// The rule attached to the delivery method. This parameter is applicable only to delivery methods of the Message Service (MNS) type.
-  final String deliveryChannelCondition;
+  final pulumi.Input<String> deliveryChannelCondition;
   /// The ID of the delivery channel.
-  final String deliveryChannelId;
+  final pulumi.Input<String> deliveryChannelId;
   /// The name of the delivery channel.
-  final String deliveryChannelName;
+  final pulumi.Input<String> deliveryChannelName;
   /// The ARN of the delivery destination.
-  final String deliveryChannelTargetArn;
+  final pulumi.Input<String> deliveryChannelTargetArn;
   /// The type of the delivery channel.
-  final String deliveryChannelType;
+  final pulumi.Input<String> deliveryChannelType;
   /// The description of the delivery channel.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Config Delivery Channel.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
-  final int status;
+  final pulumi.Input<int> status;
 
   /// Creates a new [GetDeliveryChannelsChannel].
   /// [deliveryChannelAssumeRoleArn] The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
@@ -59,15 +60,15 @@ class GetDeliveryChannelsChannel {
 
   factory GetDeliveryChannelsChannel.fromMap(Map<String, dynamic> map) {
     return GetDeliveryChannelsChannel(
-      deliveryChannelAssumeRoleArn: map['deliveryChannelAssumeRoleArn'] as String,
-      deliveryChannelCondition: map['deliveryChannelCondition'] as String,
-      deliveryChannelId: map['deliveryChannelId'] as String,
-      deliveryChannelName: map['deliveryChannelName'] as String,
-      deliveryChannelTargetArn: map['deliveryChannelTargetArn'] as String,
-      deliveryChannelType: map['deliveryChannelType'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      status: map['status'] as int,
+      deliveryChannelAssumeRoleArn: (map['deliveryChannelAssumeRoleArn'] as String).input(),
+      deliveryChannelCondition: (map['deliveryChannelCondition'] as String).input(),
+      deliveryChannelId: (map['deliveryChannelId'] as String).input(),
+      deliveryChannelName: (map['deliveryChannelName'] as String).input(),
+      deliveryChannelTargetArn: (map['deliveryChannelTargetArn'] as String).input(),
+      deliveryChannelType: (map['deliveryChannelType'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as int).input(),
     );
   }
 }

@@ -99,35 +99,21 @@ class RegionalSecretArgs {
   /// [versionAliases] Mapping from version alias to version name.
   /// [versionDestroyTtl] Secret Version TTL after destruction request.
   RegionalSecretArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<RegionalSecretCustomerManagedEncryption>? customerManagedEncryption,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<RegionalSecretRotation>? rotation,
-    required pulumi.Output<String> secretId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<RegionalSecretTopic>>? topics,
-    pulumi.Output<String>? ttl,
-    pulumi.Output<Map<String, String>>? versionAliases,
-    pulumi.Output<String>? versionDestroyTtl,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      customerManagedEncryption = pulumi.Input.asOptionalInput<RegionalSecretCustomerManagedEncryption>(customerManagedEncryption),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rotation = pulumi.Input.asOptionalInput<RegionalSecretRotation>(rotation),
-      secretId = pulumi.Input.asInput<String>(secretId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topics = pulumi.Input.asOptionalInput<List<RegionalSecretTopic>>(topics),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl),
-      versionAliases = pulumi.Input.asOptionalInput<Map<String, String>>(versionAliases),
-      versionDestroyTtl = pulumi.Input.asOptionalInput<String>(versionDestroyTtl);
+    this.annotations,
+    this.customerManagedEncryption,
+    this.deletionProtection,
+    this.expireTime,
+    this.labels,
+    required this.location,
+    this.project,
+    this.rotation,
+    required this.secretId,
+    this.tags,
+    this.topics,
+    this.ttl,
+    this.versionAliases,
+    this.versionDestroyTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -150,20 +136,20 @@ class RegionalSecretArgs {
 
   factory RegionalSecretArgs.fromMap(Map<String, dynamic> map) {
     return RegionalSecretArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : pulumi.Output.create<RegionalSecretCustomerManagedEncryption>(RegionalSecretCustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>())),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rotation: map['rotation'] == null ? null : pulumi.Output.create<RegionalSecretRotation>(RegionalSecretRotation.fromMap((map['rotation'] as Map).cast<String, dynamic>())),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topics: map['topics'] == null ? null : pulumi.Output.create<List<RegionalSecretTopic>>(pulumi.Input.decodeList<RegionalSecretTopic>(map['topics'], (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>()))),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
-      versionAliases: map['versionAliases'] == null ? null : pulumi.Output.create<Map<String, String>>((map['versionAliases'] as Map).cast<String, String>()),
-      versionDestroyTtl: map['versionDestroyTtl'] == null ? null : pulumi.Output.create<String>(map['versionDestroyTtl'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (RegionalSecretCustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>())).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rotation: map['rotation'] == null ? null : (RegionalSecretRotation.fromMap((map['rotation'] as Map).cast<String, dynamic>())).input(),
+      secretId: (map['secretId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<RegionalSecretTopic>(map['topics'], (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases'] as Map).cast<String, String>()).input(),
+      versionDestroyTtl: map['versionDestroyTtl'] == null ? null : (map['versionDestroyTtl'] as String).input(),
     );
   }
 }

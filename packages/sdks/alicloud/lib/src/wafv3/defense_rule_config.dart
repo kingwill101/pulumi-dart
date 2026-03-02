@@ -10,13 +10,13 @@ import 'defense_rule_config_waf_base_config.dart';
 
 class DefenseRuleConfig {
   /// The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
-  final String? abroadRegions;
+  final pulumi.Input<String>? abroadRegions;
   /// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
-  final List<DefenseRuleConfigAccountIdentifier>? accountIdentifiers;
+  final pulumi.Input<List<DefenseRuleConfigAccountIdentifier>>? accountIdentifiers;
   /// Whether the new Web core protection rules are automatically updated. Values:
-  final bool? autoUpdate;
+  final pulumi.Input<bool>? autoUpdate;
   /// The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
-  final List<String>? bypassRegularRules;
+  final pulumi.Input<List<String>>? bypassRegularRules;
   /// The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
   /// - sqli: Indicates SQL injection.
   /// - xss: Indicates cross-site scripting (XSS).
@@ -41,7 +41,7 @@ class DefenseRuleConfig {
   /// - csrf: indicates cross-site request forgery.
   /// - crlf: indicates CRLF.
   /// - other: indicates other.
-  final List<String>? bypassRegularTypes;
+  final pulumi.Input<List<String>>? bypassRegularTypes;
   /// The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
   /// - waf: indicates all modules.
   /// - customrule: indicates custom rules.
@@ -57,55 +57,55 @@ class DefenseRuleConfig {
   /// - dlp: indicates information leakage prevention.
   /// - tamperproof: indicates web tamper-proofing.
   /// - spike_throttle: indicates peak traffic throttling.
-  final List<String>? bypassTags;
+  final pulumi.Input<List<String>>? bypassTags;
   /// Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
   /// - service: indicates that the effective object is a protected object.
   /// - rule: indicates that the effective object is a single rule.
-  final String? ccEffect;
+  final pulumi.Input<String>? ccEffect;
   /// Whether to open the speed limit. Value:
   /// - 0: indicates that the speed limit is off.
   /// - 1: Indicates that the speed limit is on.
-  final int? ccStatus;
+  final pulumi.Input<int>? ccStatus;
   /// The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
-  final String? cnRegions;
+  final pulumi.Input<String>? cnRegions;
   /// The type to enable decoding. Value:
-  final List<String>? codecLists;
+  final pulumi.Input<List<String>>? codecLists;
   /// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
-  final List<DefenseRuleConfigCondition>? conditions;
+  final pulumi.Input<List<DefenseRuleConfigCondition>>? conditions;
   /// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `gray_config` below.
-  final DefenseRuleConfigGrayConfig? grayConfig;
+  final pulumi.Input<DefenseRuleConfigGrayConfig>? grayConfig;
   /// Specifies whether to enable canary release for the rule. Valid values:
   /// - 0 (default): disables canary release.
   /// - 1: enables canary release.
-  final int? grayStatus;
+  final pulumi.Input<int>? grayStatus;
   /// The HTTP flood protection mode. Valid values:
   /// - 0 (default): indicates normal protection.
   /// - 1: indicates emergency protection.
-  final int? mode;
+  final pulumi.Input<int>? mode;
   /// The protocol type of the cached page address. Valid values: http, https.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
-  final DefenseRuleConfigRateLimit? rateLimit;
+  final pulumi.Input<DefenseRuleConfigRateLimit>? rateLimit;
   /// The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
-  final List<String>? remoteAddrs;
+  final pulumi.Input<List<String>>? remoteAddrs;
   /// Web core protection rule action. Valid values:
-  final String? ruleAction;
+  final pulumi.Input<String>? ruleAction;
   /// The throttling threshold. Valid values:
   /// - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
   /// - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
-  final int? throttleThrehold;
+  final pulumi.Input<int>? throttleThrehold;
   /// The throttling method. Valid values:
   /// - qps: indicates throttling based on queries per second (QPS).
   /// - ratio (default): indicates throttling based on percentage.
-  final String? throttleType;
+  final pulumi.Input<String>? throttleType;
   /// The scheduled rule configuration. The value is a JSON.  See `time_config` below.
-  final DefenseRuleConfigTimeConfig? timeConfig;
+  final pulumi.Input<DefenseRuleConfigTimeConfig>? timeConfig;
   /// The User-Agent string that is allowed for access to the address.
-  final String? ua;
+  final pulumi.Input<String>? ua;
   /// The address of the cached page.
-  final String? url;
+  final pulumi.Input<String>? url;
   /// The configuration of the Web core protection rules to be modified. See `waf_base_config` below.
-  final List<DefenseRuleConfigWafBaseConfig>? wafBaseConfigs;
+  final pulumi.Input<List<DefenseRuleConfigWafBaseConfig>>? wafBaseConfigs;
 
   /// Creates a new [DefenseRuleConfig].
   /// [abroadRegions] The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
@@ -162,7 +162,7 @@ class DefenseRuleConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'abroadRegions': ?abroadRegions,
-      'accountIdentifiers': ?accountIdentifiers == null ? null : pulumi.Input.encodeList<DefenseRuleConfigAccountIdentifier, Map<String, dynamic>>(accountIdentifiers!, (value) => value.toMap()),
+      'accountIdentifiers': ?pulumi.Input.mapOptionalInputValue<List<DefenseRuleConfigAccountIdentifier>, List<Map<String, dynamic>>>(accountIdentifiers, (value) => pulumi.Input.encodeList<DefenseRuleConfigAccountIdentifier, Map<String, dynamic>>(value, (value) => value.toMap())),
       'autoUpdate': ?autoUpdate,
       'bypassRegularRules': ?bypassRegularRules,
       'bypassRegularTypes': ?bypassRegularTypes,
@@ -171,49 +171,49 @@ class DefenseRuleConfig {
       'ccStatus': ?ccStatus,
       'cnRegions': ?cnRegions,
       'codecLists': ?codecLists,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<DefenseRuleConfigCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
-      'grayConfig': ?grayConfig == null ? null : grayConfig!.toMap(),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<DefenseRuleConfigCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<DefenseRuleConfigCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'grayConfig': ?pulumi.Input.mapOptionalInputValue<DefenseRuleConfigGrayConfig, Map<String, dynamic>>(grayConfig, (value) => value.toMap()),
       'grayStatus': ?grayStatus,
       'mode': ?mode,
       'protocol': ?protocol,
-      'rateLimit': ?rateLimit == null ? null : rateLimit!.toMap(),
+      'rateLimit': ?pulumi.Input.mapOptionalInputValue<DefenseRuleConfigRateLimit, Map<String, dynamic>>(rateLimit, (value) => value.toMap()),
       'remoteAddrs': ?remoteAddrs,
       'ruleAction': ?ruleAction,
       'throttleThrehold': ?throttleThrehold,
       'throttleType': ?throttleType,
-      'timeConfig': ?timeConfig == null ? null : timeConfig!.toMap(),
+      'timeConfig': ?pulumi.Input.mapOptionalInputValue<DefenseRuleConfigTimeConfig, Map<String, dynamic>>(timeConfig, (value) => value.toMap()),
       'ua': ?ua,
       'url': ?url,
-      'wafBaseConfigs': ?wafBaseConfigs == null ? null : pulumi.Input.encodeList<DefenseRuleConfigWafBaseConfig, Map<String, dynamic>>(wafBaseConfigs!, (value) => value.toMap()),
+      'wafBaseConfigs': ?pulumi.Input.mapOptionalInputValue<List<DefenseRuleConfigWafBaseConfig>, List<Map<String, dynamic>>>(wafBaseConfigs, (value) => pulumi.Input.encodeList<DefenseRuleConfigWafBaseConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DefenseRuleConfig.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfig(
-      abroadRegions: map['abroadRegions'] == null ? null : map['abroadRegions'] as String,
-      accountIdentifiers: map['accountIdentifiers'] == null ? null : pulumi.Input.decodeList<DefenseRuleConfigAccountIdentifier>(map['accountIdentifiers'], (value) => DefenseRuleConfigAccountIdentifier.fromMap((value as Map).cast<String, dynamic>())),
-      autoUpdate: map['autoUpdate'] == null ? null : map['autoUpdate'] as bool,
-      bypassRegularRules: map['bypassRegularRules'] == null ? null : (map['bypassRegularRules'] as List).cast<String>(),
-      bypassRegularTypes: map['bypassRegularTypes'] == null ? null : (map['bypassRegularTypes'] as List).cast<String>(),
-      bypassTags: map['bypassTags'] == null ? null : (map['bypassTags'] as List).cast<String>(),
-      ccEffect: map['ccEffect'] == null ? null : map['ccEffect'] as String,
-      ccStatus: map['ccStatus'] == null ? null : map['ccStatus'] as int,
-      cnRegions: map['cnRegions'] == null ? null : map['cnRegions'] as String,
-      codecLists: map['codecLists'] == null ? null : (map['codecLists'] as List).cast<String>(),
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<DefenseRuleConfigCondition>(map['conditions'], (value) => DefenseRuleConfigCondition.fromMap((value as Map).cast<String, dynamic>())),
-      grayConfig: map['grayConfig'] == null ? null : DefenseRuleConfigGrayConfig.fromMap((map['grayConfig'] as Map).cast<String, dynamic>()),
-      grayStatus: map['grayStatus'] == null ? null : map['grayStatus'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      rateLimit: map['rateLimit'] == null ? null : DefenseRuleConfigRateLimit.fromMap((map['rateLimit'] as Map).cast<String, dynamic>()),
-      remoteAddrs: map['remoteAddrs'] == null ? null : (map['remoteAddrs'] as List).cast<String>(),
-      ruleAction: map['ruleAction'] == null ? null : map['ruleAction'] as String,
-      throttleThrehold: map['throttleThrehold'] == null ? null : map['throttleThrehold'] as int,
-      throttleType: map['throttleType'] == null ? null : map['throttleType'] as String,
-      timeConfig: map['timeConfig'] == null ? null : DefenseRuleConfigTimeConfig.fromMap((map['timeConfig'] as Map).cast<String, dynamic>()),
-      ua: map['ua'] == null ? null : map['ua'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      wafBaseConfigs: map['wafBaseConfigs'] == null ? null : pulumi.Input.decodeList<DefenseRuleConfigWafBaseConfig>(map['wafBaseConfigs'], (value) => DefenseRuleConfigWafBaseConfig.fromMap((value as Map).cast<String, dynamic>())),
+      abroadRegions: map['abroadRegions'] == null ? null : (map['abroadRegions'] as String).input(),
+      accountIdentifiers: map['accountIdentifiers'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigAccountIdentifier>(map['accountIdentifiers'], (value) => DefenseRuleConfigAccountIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoUpdate: map['autoUpdate'] == null ? null : (map['autoUpdate'] as bool).input(),
+      bypassRegularRules: map['bypassRegularRules'] == null ? null : ((map['bypassRegularRules'] as List).cast<String>()).input(),
+      bypassRegularTypes: map['bypassRegularTypes'] == null ? null : ((map['bypassRegularTypes'] as List).cast<String>()).input(),
+      bypassTags: map['bypassTags'] == null ? null : ((map['bypassTags'] as List).cast<String>()).input(),
+      ccEffect: map['ccEffect'] == null ? null : (map['ccEffect'] as String).input(),
+      ccStatus: map['ccStatus'] == null ? null : (map['ccStatus'] as int).input(),
+      cnRegions: map['cnRegions'] == null ? null : (map['cnRegions'] as String).input(),
+      codecLists: map['codecLists'] == null ? null : ((map['codecLists'] as List).cast<String>()).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigCondition>(map['conditions'], (value) => DefenseRuleConfigCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grayConfig: map['grayConfig'] == null ? null : (DefenseRuleConfigGrayConfig.fromMap((map['grayConfig'] as Map).cast<String, dynamic>())).input(),
+      grayStatus: map['grayStatus'] == null ? null : (map['grayStatus'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      rateLimit: map['rateLimit'] == null ? null : (DefenseRuleConfigRateLimit.fromMap((map['rateLimit'] as Map).cast<String, dynamic>())).input(),
+      remoteAddrs: map['remoteAddrs'] == null ? null : ((map['remoteAddrs'] as List).cast<String>()).input(),
+      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
+      throttleThrehold: map['throttleThrehold'] == null ? null : (map['throttleThrehold'] as int).input(),
+      throttleType: map['throttleType'] == null ? null : (map['throttleType'] as String).input(),
+      timeConfig: map['timeConfig'] == null ? null : (DefenseRuleConfigTimeConfig.fromMap((map['timeConfig'] as Map).cast<String, dynamic>())).input(),
+      ua: map['ua'] == null ? null : (map['ua'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      wafBaseConfigs: map['wafBaseConfigs'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigWafBaseConfig>(map['wafBaseConfigs'], (value) => DefenseRuleConfigWafBaseConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

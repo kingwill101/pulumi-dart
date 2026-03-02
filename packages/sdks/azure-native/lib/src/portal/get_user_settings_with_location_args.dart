@@ -16,11 +16,9 @@ class GetUserSettingsWithLocationArgs {
   /// [location] The provider location
   /// [userSettingsName] The name of the user settings
   GetUserSettingsWithLocationArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> userSettingsName,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      userSettingsName = pulumi.Input.asInput<String>(userSettingsName);
+    required this.location,
+    required this.userSettingsName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetUserSettingsWithLocationArgs {
 
   factory GetUserSettingsWithLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetUserSettingsWithLocationArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      userSettingsName: pulumi.Output.create<String>(map['userSettingsName'] as String),
+      location: (map['location'] as String).input(),
+      userSettingsName: (map['userSettingsName'] as String).input(),
     );
   }
 }

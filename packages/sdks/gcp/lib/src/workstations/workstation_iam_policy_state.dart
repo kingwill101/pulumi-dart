@@ -35,21 +35,14 @@ class WorkstationIamPolicyState {
   /// [workstationConfigId] The ID of the parent workstation cluster config.
   /// [workstationId] Used to find the parent resource to bind the IAM policy to
   WorkstationIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? workstationClusterId,
-    pulumi.Output<String>? workstationConfigId,
-    pulumi.Output<String>? workstationId,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workstationClusterId = pulumi.Input.asOptionalInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asOptionalInput<String>(workstationConfigId),
-      workstationId = pulumi.Input.asOptionalInput<String>(workstationId);
+    this.etag,
+    this.location,
+    this.policyData,
+    this.project,
+    this.workstationClusterId,
+    this.workstationConfigId,
+    this.workstationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class WorkstationIamPolicyState {
 
   factory WorkstationIamPolicyState.fromMap(Map<String, dynamic> map) {
     return WorkstationIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workstationClusterId: map['workstationClusterId'] == null ? null : pulumi.Output.create<String>(map['workstationClusterId'] as String),
-      workstationConfigId: map['workstationConfigId'] == null ? null : pulumi.Output.create<String>(map['workstationConfigId'] as String),
-      workstationId: map['workstationId'] == null ? null : pulumi.Output.create<String>(map['workstationId'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workstationClusterId: map['workstationClusterId'] == null ? null : (map['workstationClusterId'] as String).input(),
+      workstationConfigId: map['workstationConfigId'] == null ? null : (map['workstationConfigId'] as String).input(),
+      workstationId: map['workstationId'] == null ? null : (map['workstationId'] as String).input(),
     );
   }
 }

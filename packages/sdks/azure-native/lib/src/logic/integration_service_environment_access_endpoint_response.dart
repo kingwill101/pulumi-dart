@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The integration service environment access endpoint.
 class IntegrationServiceEnvironmentAccessEndpointResponse {
   /// The access endpoint type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [IntegrationServiceEnvironmentAccessEndpointResponse].
   /// [type] The access endpoint type.
@@ -20,7 +21,7 @@ class IntegrationServiceEnvironmentAccessEndpointResponse {
 
   factory IntegrationServiceEnvironmentAccessEndpointResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentAccessEndpointResponse(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

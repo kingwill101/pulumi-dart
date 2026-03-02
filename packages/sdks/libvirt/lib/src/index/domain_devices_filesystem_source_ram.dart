@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemSourceRam {
   /// Defines the units for the RAM source of the filesystem.
-  final String? units;
+  final pulumi.Input<String>? units;
   /// Specifies the usage type for the RAM source of the filesystem.
-  final double usage;
+  final pulumi.Input<double> usage;
 
   /// Creates a new [DomainDevicesFilesystemSourceRam].
   /// [units] Defines the units for the RAM source of the filesystem.
@@ -24,8 +25,8 @@ class DomainDevicesFilesystemSourceRam {
 
   factory DomainDevicesFilesystemSourceRam.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceRam(
-      units: map['units'] == null ? null : map['units'] as String,
-      usage: map['usage'] as double,
+      units: map['units'] == null ? null : (map['units'] as String).input(),
+      usage: (map['usage'] as double).input(),
     );
   }
 }

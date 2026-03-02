@@ -19,13 +19,10 @@ class GetDnsSecurityRuleArgs {
   /// [dnsSecurityRuleName] The name of the DNS security rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDnsSecurityRuleArgs({
-    required pulumi.Output<String> dnsResolverPolicyName,
-    required pulumi.Output<String> dnsSecurityRuleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dnsResolverPolicyName = pulumi.Input.asInput<String>(dnsResolverPolicyName),
-      dnsSecurityRuleName = pulumi.Input.asInput<String>(dnsSecurityRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dnsResolverPolicyName,
+    required this.dnsSecurityRuleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDnsSecurityRuleArgs {
 
   factory GetDnsSecurityRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsSecurityRuleArgs(
-      dnsResolverPolicyName: pulumi.Output.create<String>(map['dnsResolverPolicyName'] as String),
-      dnsSecurityRuleName: pulumi.Output.create<String>(map['dnsSecurityRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dnsResolverPolicyName: (map['dnsResolverPolicyName'] as String).input(),
+      dnsSecurityRuleName: (map['dnsSecurityRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

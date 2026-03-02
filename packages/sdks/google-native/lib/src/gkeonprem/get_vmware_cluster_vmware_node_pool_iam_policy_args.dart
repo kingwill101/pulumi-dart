@@ -20,17 +20,12 @@ class GetVmwareClusterVmwareNodePoolIamPolicyArgs {
   /// [vmwareClusterId] Required.
   /// [vmwareNodePoolId] Required.
   GetVmwareClusterVmwareNodePoolIamPolicyArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> vmwareClusterId,
-    required pulumi.Output<String> vmwareNodePoolId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
-      vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.vmwareClusterId,
+    required this.vmwareNodePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetVmwareClusterVmwareNodePoolIamPolicyArgs {
 
   factory GetVmwareClusterVmwareNodePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareClusterVmwareNodePoolIamPolicyArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      vmwareClusterId: pulumi.Output.create<String>(map['vmwareClusterId'] as String),
-      vmwareNodePoolId: pulumi.Output.create<String>(map['vmwareNodePoolId'] as String),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      vmwareClusterId: (map['vmwareClusterId'] as String).input(),
+      vmwareNodePoolId: (map['vmwareNodePoolId'] as String).input(),
     );
   }
 }

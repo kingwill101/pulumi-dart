@@ -22,15 +22,11 @@ class GetBgpNetworksArgs {
   /// [routerId] The ID of the router to which the route table belongs.
   /// [status] The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
   GetBgpNetworksArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.outputFile,
+    this.routerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBgpNetworksArgs {
 
   factory GetBgpNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetBgpNetworksArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

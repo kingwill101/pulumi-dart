@@ -46,29 +46,18 @@ class ListenerRuleState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ListenerRuleState({
-    pulumi.Output<ListenerRuleAction>? action,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? listenerIdentifier,
-    pulumi.Output<ListenerRuleMatch>? match,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? ruleId,
-    pulumi.Output<String>? serviceIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      action = pulumi.Input.asOptionalInput<ListenerRuleAction>(action),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      listenerIdentifier = pulumi.Input.asOptionalInput<String>(listenerIdentifier),
-      match = pulumi.Input.asOptionalInput<ListenerRuleMatch>(match),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId),
-      serviceIdentifier = pulumi.Input.asOptionalInput<String>(serviceIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.action,
+    this.arn,
+    this.listenerIdentifier,
+    this.match,
+    this.name,
+    this.priority,
+    this.region,
+    this.ruleId,
+    this.serviceIdentifier,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class ListenerRuleState {
 
   factory ListenerRuleState.fromMap(Map<String, dynamic> map) {
     return ListenerRuleState(
-      action: map['action'] == null ? null : pulumi.Output.create<ListenerRuleAction>(ListenerRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      listenerIdentifier: map['listenerIdentifier'] == null ? null : pulumi.Output.create<String>(map['listenerIdentifier'] as String),
-      match: map['match'] == null ? null : pulumi.Output.create<ListenerRuleMatch>(ListenerRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
-      serviceIdentifier: map['serviceIdentifier'] == null ? null : pulumi.Output.create<String>(map['serviceIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      action: map['action'] == null ? null : (ListenerRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      listenerIdentifier: map['listenerIdentifier'] == null ? null : (map['listenerIdentifier'] as String).input(),
+      match: map['match'] == null ? null : (ListenerRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      serviceIdentifier: map['serviceIdentifier'] == null ? null : (map['serviceIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

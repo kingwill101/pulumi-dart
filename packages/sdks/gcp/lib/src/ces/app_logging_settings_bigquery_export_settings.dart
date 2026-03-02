@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppLoggingSettingsBigqueryExportSettings {
   /// The BigQuery dataset to export the data to.
-  final String? dataset;
+  final pulumi.Input<String>? dataset;
   /// Indicates whether the BigQuery export is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The project ID of the BigQuery dataset to export the data to.
   /// Note: If the BigQuery dataset is in a different project from the app, you should grant
   /// roles/bigquery.admin role to the CES service agent service-<PROJECT-
   /// NUMBER>@gcp-sa-ces.iam.gserviceaccount.com.
-  final String? project;
+  final pulumi.Input<String>? project;
 
   /// Creates a new [AppLoggingSettingsBigqueryExportSettings].
   /// [dataset] The BigQuery dataset to export the data to.
@@ -32,9 +33,9 @@ class AppLoggingSettingsBigqueryExportSettings {
 
   factory AppLoggingSettingsBigqueryExportSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsBigqueryExportSettings(
-      dataset: map['dataset'] == null ? null : map['dataset'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      project: map['project'] == null ? null : map['project'] as String,
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

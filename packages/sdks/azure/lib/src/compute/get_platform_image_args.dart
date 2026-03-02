@@ -25,17 +25,12 @@ class GetPlatformImageArgs {
   /// [sku] Specifies the SKU of the Platform Image.
   /// [version] The version of the Platform Image.
   GetPlatformImageArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> offer,
-    required pulumi.Output<String> publisher,
-    required pulumi.Output<String> sku,
-    pulumi.Output<String>? version,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      offer = pulumi.Input.asInput<String>(offer),
-      publisher = pulumi.Input.asInput<String>(publisher),
-      sku = pulumi.Input.asInput<String>(sku),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.location,
+    required this.offer,
+    required this.publisher,
+    required this.sku,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetPlatformImageArgs {
 
   factory GetPlatformImageArgs.fromMap(Map<String, dynamic> map) {
     return GetPlatformImageArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      offer: pulumi.Output.create<String>(map['offer'] as String),
-      publisher: pulumi.Output.create<String>(map['publisher'] as String),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      location: (map['location'] as String).input(),
+      offer: (map['offer'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      sku: (map['sku'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

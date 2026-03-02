@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_compute_config.dart';
 
 /// Configuration Options for EKS Auto Mode. If EKS Auto Mode is enabled, AWS will manage cluster infrastructure on your behalf.
@@ -7,12 +8,12 @@ import 'cluster_compute_config.dart';
 /// For more information, see: https://docs.aws.amazon.com/eks/latest/userguide/automode.html
 class AutoModeOptions {
   /// Compute configuration for EKS Auto Mode.
-  final ClusterComputeConfig? computeConfig;
+  final pulumi.Input<ClusterComputeConfig>? computeConfig;
   /// Whether to create an IAM role for the EKS Auto Mode node group if none is provided in `computeConfig`.
-  final bool? createNodeRole;
+  final pulumi.Input<bool>? createNodeRole;
   /// Whether to enable EKS Auto Mode. If enabled, EKS will manage node pools, EBS volumes and Load Balancers for you.
   /// When enabled, the vpc-cni and kube-proxy will not be enabled by default because EKS Auto Mode includes pod networking capabilities.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [AutoModeOptions].
   /// [computeConfig] Compute configuration for EKS Auto Mode.
@@ -26,7 +27,7 @@ class AutoModeOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeConfig': ?computeConfig == null ? null : computeConfig!.toMap(),
+      'computeConfig': ?pulumi.Input.mapOptionalInputValue<ClusterComputeConfig, Map<String, dynamic>>(computeConfig, (value) => value.toMap()),
       'createNodeRole': ?createNodeRole,
       'enabled': enabled,
     };
@@ -34,9 +35,9 @@ class AutoModeOptions {
 
   factory AutoModeOptions.fromMap(Map<String, dynamic> map) {
     return AutoModeOptions(
-      computeConfig: map['computeConfig'] == null ? null : ClusterComputeConfig.fromMap((map['computeConfig'] as Map).cast<String, dynamic>()),
-      createNodeRole: map['createNodeRole'] == null ? null : map['createNodeRole'] as bool,
-      enabled: map['enabled'] as bool,
+      computeConfig: map['computeConfig'] == null ? null : (ClusterComputeConfig.fromMap((map['computeConfig'] as Map).cast<String, dynamic>())).input(),
+      createNodeRole: map['createNodeRole'] == null ? null : (map['createNodeRole'] as bool).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

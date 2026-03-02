@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_external_catalog_table_options_storage_descriptor.dart';
 
 class TableExternalCatalogTableOptions {
@@ -8,14 +9,14 @@ class TableExternalCatalogTableOptions {
   /// connection is needed to read the open source table from BigQuery Engine. The
   /// connection_id can have the form `<project_id>.<location_id>.<connection_id>`
   /// or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
-  final String? connectionId;
+  final pulumi.Input<String>? connectionId;
   /// A map of key value pairs defining the parameters and
   /// properties of the open source table. Corresponds with hive meta store table
   /// parameters. Maximum size of 4Mib.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// A storage descriptor containing information
   /// about the physical storage of this table. Structure is documented below.
-  final TableExternalCatalogTableOptionsStorageDescriptor? storageDescriptor;
+  final pulumi.Input<TableExternalCatalogTableOptionsStorageDescriptor>? storageDescriptor;
 
   /// Creates a new [TableExternalCatalogTableOptions].
   /// [connectionId] The connection specifying the credentials to be
@@ -31,15 +32,15 @@ class TableExternalCatalogTableOptions {
     return <String, dynamic>{
       'connectionId': ?connectionId,
       'parameters': ?parameters,
-      'storageDescriptor': ?storageDescriptor == null ? null : storageDescriptor!.toMap(),
+      'storageDescriptor': ?pulumi.Input.mapOptionalInputValue<TableExternalCatalogTableOptionsStorageDescriptor, Map<String, dynamic>>(storageDescriptor, (value) => value.toMap()),
     };
   }
 
   factory TableExternalCatalogTableOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalCatalogTableOptions(
-      connectionId: map['connectionId'] == null ? null : map['connectionId'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      storageDescriptor: map['storageDescriptor'] == null ? null : TableExternalCatalogTableOptionsStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>()),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : (TableExternalCatalogTableOptionsStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

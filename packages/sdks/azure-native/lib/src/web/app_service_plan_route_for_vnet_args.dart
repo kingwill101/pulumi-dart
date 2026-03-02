@@ -39,23 +39,15 @@ class AppServicePlanRouteForVnetArgs {
   /// [startAddress] The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
   /// [vnetName] Name of the Virtual Network.
   AppServicePlanRouteForVnetArgs({
-    pulumi.Output<String>? endAddress,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routeName,
-    pulumi.Output<String>? routeType,
-    pulumi.Output<String>? startAddress,
-    required pulumi.Output<String> vnetName,
-  }) :
-      endAddress = pulumi.Input.asOptionalInput<String>(endAddress),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeName = pulumi.Input.asOptionalInput<String>(routeName),
-      routeType = pulumi.Input.asOptionalInput<String>(routeType),
-      startAddress = pulumi.Input.asOptionalInput<String>(startAddress),
-      vnetName = pulumi.Input.asInput<String>(vnetName);
+    this.endAddress,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    this.routeName,
+    this.routeType,
+    this.startAddress,
+    required this.vnetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class AppServicePlanRouteForVnetArgs {
 
   factory AppServicePlanRouteForVnetArgs.fromMap(Map<String, dynamic> map) {
     return AppServicePlanRouteForVnetArgs(
-      endAddress: map['endAddress'] == null ? null : pulumi.Output.create<String>(map['endAddress'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeName: map['routeName'] == null ? null : pulumi.Output.create<String>(map['routeName'] as String),
-      routeType: map['routeType'] == null ? null : pulumi.Output.create<String>(map['routeType'] as String),
-      startAddress: map['startAddress'] == null ? null : pulumi.Output.create<String>(map['startAddress'] as String),
-      vnetName: pulumi.Output.create<String>(map['vnetName'] as String),
+      endAddress: map['endAddress'] == null ? null : (map['endAddress'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
+      routeType: map['routeType'] == null ? null : (map['routeType'] as String).input(),
+      startAddress: map['startAddress'] == null ? null : (map['startAddress'] as String).input(),
+      vnetName: (map['vnetName'] as String).input(),
     );
   }
 }

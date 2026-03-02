@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apt_repository_response.dart';
 import 'docker_repository_response.dart';
 import 'maven_repository_response.dart';
@@ -11,21 +12,21 @@ import 'yum_repository_response.dart';
 /// Remote repository configuration.
 class RemoteRepositoryConfigResponse {
   /// Specific settings for an Apt remote repository.
-  final AptRepositoryResponse aptRepository;
+  final pulumi.Input<AptRepositoryResponse> aptRepository;
   /// The description of the remote source.
-  final String description;
+  final pulumi.Input<String> description;
   /// Specific settings for a Docker remote repository.
-  final DockerRepositoryResponse dockerRepository;
+  final pulumi.Input<DockerRepositoryResponse> dockerRepository;
   /// Specific settings for a Maven remote repository.
-  final MavenRepositoryResponse mavenRepository;
+  final pulumi.Input<MavenRepositoryResponse> mavenRepository;
   /// Specific settings for an Npm remote repository.
-  final NpmRepositoryResponse npmRepository;
+  final pulumi.Input<NpmRepositoryResponse> npmRepository;
   /// Specific settings for a Python remote repository.
-  final PythonRepositoryResponse pythonRepository;
+  final pulumi.Input<PythonRepositoryResponse> pythonRepository;
   /// Optional. The credentials used to access the remote repository.
-  final UpstreamCredentialsResponse upstreamCredentials;
+  final pulumi.Input<UpstreamCredentialsResponse> upstreamCredentials;
   /// Specific settings for a Yum remote repository.
-  final YumRepositoryResponse yumRepository;
+  final pulumi.Input<YumRepositoryResponse> yumRepository;
 
   /// Creates a new [RemoteRepositoryConfigResponse].
   /// [aptRepository] Specific settings for an Apt remote repository.
@@ -49,27 +50,27 @@ class RemoteRepositoryConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aptRepository': aptRepository.toMap(),
+      'aptRepository': pulumi.Input.mapInputValue<AptRepositoryResponse, Map<String, dynamic>>(aptRepository, (value) => value.toMap()),
       'description': description,
-      'dockerRepository': dockerRepository.toMap(),
-      'mavenRepository': mavenRepository.toMap(),
-      'npmRepository': npmRepository.toMap(),
-      'pythonRepository': pythonRepository.toMap(),
-      'upstreamCredentials': upstreamCredentials.toMap(),
-      'yumRepository': yumRepository.toMap(),
+      'dockerRepository': pulumi.Input.mapInputValue<DockerRepositoryResponse, Map<String, dynamic>>(dockerRepository, (value) => value.toMap()),
+      'mavenRepository': pulumi.Input.mapInputValue<MavenRepositoryResponse, Map<String, dynamic>>(mavenRepository, (value) => value.toMap()),
+      'npmRepository': pulumi.Input.mapInputValue<NpmRepositoryResponse, Map<String, dynamic>>(npmRepository, (value) => value.toMap()),
+      'pythonRepository': pulumi.Input.mapInputValue<PythonRepositoryResponse, Map<String, dynamic>>(pythonRepository, (value) => value.toMap()),
+      'upstreamCredentials': pulumi.Input.mapInputValue<UpstreamCredentialsResponse, Map<String, dynamic>>(upstreamCredentials, (value) => value.toMap()),
+      'yumRepository': pulumi.Input.mapInputValue<YumRepositoryResponse, Map<String, dynamic>>(yumRepository, (value) => value.toMap()),
     };
   }
 
   factory RemoteRepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return RemoteRepositoryConfigResponse(
-      aptRepository: AptRepositoryResponse.fromMap((map['aptRepository'] as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      dockerRepository: DockerRepositoryResponse.fromMap((map['dockerRepository'] as Map).cast<String, dynamic>()),
-      mavenRepository: MavenRepositoryResponse.fromMap((map['mavenRepository'] as Map).cast<String, dynamic>()),
-      npmRepository: NpmRepositoryResponse.fromMap((map['npmRepository'] as Map).cast<String, dynamic>()),
-      pythonRepository: PythonRepositoryResponse.fromMap((map['pythonRepository'] as Map).cast<String, dynamic>()),
-      upstreamCredentials: UpstreamCredentialsResponse.fromMap((map['upstreamCredentials'] as Map).cast<String, dynamic>()),
-      yumRepository: YumRepositoryResponse.fromMap((map['yumRepository'] as Map).cast<String, dynamic>()),
+      aptRepository: (AptRepositoryResponse.fromMap((map['aptRepository'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      dockerRepository: (DockerRepositoryResponse.fromMap((map['dockerRepository'] as Map).cast<String, dynamic>())).input(),
+      mavenRepository: (MavenRepositoryResponse.fromMap((map['mavenRepository'] as Map).cast<String, dynamic>())).input(),
+      npmRepository: (NpmRepositoryResponse.fromMap((map['npmRepository'] as Map).cast<String, dynamic>())).input(),
+      pythonRepository: (PythonRepositoryResponse.fromMap((map['pythonRepository'] as Map).cast<String, dynamic>())).input(),
+      upstreamCredentials: (UpstreamCredentialsResponse.fromMap((map['upstreamCredentials'] as Map).cast<String, dynamic>())).input(),
+      yumRepository: (YumRepositoryResponse.fromMap((map['yumRepository'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

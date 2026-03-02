@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiProfileResponse {
   /// The API version.
-  final String apiVersion;
+  final pulumi.Input<String> apiVersion;
   /// The profile version.
-  final String profileVersion;
+  final pulumi.Input<String> profileVersion;
 
   /// Creates a new [ApiProfileResponse].
   /// [apiVersion] The API version.
@@ -24,8 +25,8 @@ class ApiProfileResponse {
 
   factory ApiProfileResponse.fromMap(Map<String, dynamic> map) {
     return ApiProfileResponse(
-      apiVersion: map['apiVersion'] as String,
-      profileVersion: map['profileVersion'] as String,
+      apiVersion: (map['apiVersion'] as String).input(),
+      profileVersion: (map['profileVersion'] as String).input(),
     );
   }
 }

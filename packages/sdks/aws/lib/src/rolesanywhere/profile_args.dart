@@ -37,25 +37,16 @@ class ProfileArgs {
   /// [sessionPolicy] A session policy that applies to the trust boundary of the vended session credentials.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ProfileArgs({
-    pulumi.Output<bool>? acceptRoleSessionName,
-    pulumi.Output<int>? durationSeconds,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? managedPolicyArns,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? requireInstanceProperties,
-    pulumi.Output<List<String>>? roleArns,
-    pulumi.Output<String>? sessionPolicy,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      acceptRoleSessionName = pulumi.Input.asOptionalInput<bool>(acceptRoleSessionName),
-      durationSeconds = pulumi.Input.asOptionalInput<int>(durationSeconds),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      managedPolicyArns = pulumi.Input.asOptionalInput<List<String>>(managedPolicyArns),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      requireInstanceProperties = pulumi.Input.asOptionalInput<bool>(requireInstanceProperties),
-      roleArns = pulumi.Input.asOptionalInput<List<String>>(roleArns),
-      sessionPolicy = pulumi.Input.asOptionalInput<String>(sessionPolicy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.acceptRoleSessionName,
+    this.durationSeconds,
+    this.enabled,
+    this.managedPolicyArns,
+    this.name,
+    this.requireInstanceProperties,
+    this.roleArns,
+    this.sessionPolicy,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      acceptRoleSessionName: map['acceptRoleSessionName'] == null ? null : pulumi.Output.create<bool>(map['acceptRoleSessionName'] as bool),
-      durationSeconds: map['durationSeconds'] == null ? null : pulumi.Output.create<int>(map['durationSeconds'] as int),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      managedPolicyArns: map['managedPolicyArns'] == null ? null : pulumi.Output.create<List<String>>((map['managedPolicyArns'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      requireInstanceProperties: map['requireInstanceProperties'] == null ? null : pulumi.Output.create<bool>(map['requireInstanceProperties'] as bool),
-      roleArns: map['roleArns'] == null ? null : pulumi.Output.create<List<String>>((map['roleArns'] as List).cast<String>()),
-      sessionPolicy: map['sessionPolicy'] == null ? null : pulumi.Output.create<String>(map['sessionPolicy'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      acceptRoleSessionName: map['acceptRoleSessionName'] == null ? null : (map['acceptRoleSessionName'] as bool).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requireInstanceProperties: map['requireInstanceProperties'] == null ? null : (map['requireInstanceProperties'] as bool).input(),
+      roleArns: map['roleArns'] == null ? null : ((map['roleArns'] as List).cast<String>()).input(),
+      sessionPolicy: map['sessionPolicy'] == null ? null : (map['sessionPolicy'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

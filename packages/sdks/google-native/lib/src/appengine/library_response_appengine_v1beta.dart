@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Third-party Python runtime library that is required by the application.
 class LibraryResponseAppengineV1beta {
   /// Name of the library. Example: "django".
-  final String name;
+  final pulumi.Input<String> name;
   /// Version of the library to select, or "latest".
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [LibraryResponseAppengineV1beta].
   /// [name] Name of the library. Example: "django".
@@ -25,8 +26,8 @@ class LibraryResponseAppengineV1beta {
 
   factory LibraryResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return LibraryResponseAppengineV1beta(
-      name: map['name'] as String,
-      version: map['version'] as String,
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

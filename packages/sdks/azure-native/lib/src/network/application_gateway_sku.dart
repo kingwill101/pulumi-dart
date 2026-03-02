@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU of an application gateway.
 class ApplicationGatewaySku {
   /// Capacity (instance count) of an application gateway.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Family of an application gateway SKU.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// Name of an application gateway SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Tier of an application gateway.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [ApplicationGatewaySku].
   /// [capacity] Capacity (instance count) of an application gateway.
@@ -35,10 +36,10 @@ class ApplicationGatewaySku {
 
   factory ApplicationGatewaySku.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      family: map['family'] == null ? null : map['family'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

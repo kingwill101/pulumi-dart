@@ -26,17 +26,12 @@ class DataConnectorMicrosoftCloudAppSecurityState {
   /// [name] The name which should be used for this Microsoft Cloud App Security Data Connector. Changing this forces a new Microsoft Cloud App Security Data Connector to be created.
   /// [tenantId] The ID of the Tenant that this Microsoft Cloud App Security Data Connector connects to.
   DataConnectorMicrosoftCloudAppSecurityState({
-    pulumi.Output<bool>? alertsEnabled,
-    pulumi.Output<bool>? discoveryLogsEnabled,
-    pulumi.Output<String>? logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? tenantId,
-  }) :
-      alertsEnabled = pulumi.Input.asOptionalInput<bool>(alertsEnabled),
-      discoveryLogsEnabled = pulumi.Input.asOptionalInput<bool>(discoveryLogsEnabled),
-      logAnalyticsWorkspaceId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.alertsEnabled,
+    this.discoveryLogsEnabled,
+    this.logAnalyticsWorkspaceId,
+    this.name,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DataConnectorMicrosoftCloudAppSecurityState {
 
   factory DataConnectorMicrosoftCloudAppSecurityState.fromMap(Map<String, dynamic> map) {
     return DataConnectorMicrosoftCloudAppSecurityState(
-      alertsEnabled: map['alertsEnabled'] == null ? null : pulumi.Output.create<bool>(map['alertsEnabled'] as bool),
-      discoveryLogsEnabled: map['discoveryLogsEnabled'] == null ? null : pulumi.Output.create<bool>(map['discoveryLogsEnabled'] as bool),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      alertsEnabled: map['alertsEnabled'] == null ? null : (map['alertsEnabled'] as bool).input(),
+      discoveryLogsEnabled: map['discoveryLogsEnabled'] == null ? null : (map['discoveryLogsEnabled'] as bool).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

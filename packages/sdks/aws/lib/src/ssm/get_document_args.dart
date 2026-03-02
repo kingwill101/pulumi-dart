@@ -22,15 +22,11 @@ class GetDocumentArgs {
   /// [name] The name of the document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetDocumentArgs({
-    pulumi.Output<String>? documentFormat,
-    pulumi.Output<String>? documentVersion,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      documentFormat = pulumi.Input.asOptionalInput<String>(documentFormat),
-      documentVersion = pulumi.Input.asOptionalInput<String>(documentVersion),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.documentFormat,
+    this.documentVersion,
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDocumentArgs {
 
   factory GetDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentArgs(
-      documentFormat: map['documentFormat'] == null ? null : pulumi.Output.create<String>(map['documentFormat'] as String),
-      documentVersion: map['documentVersion'] == null ? null : pulumi.Output.create<String>(map['documentVersion'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      documentFormat: map['documentFormat'] == null ? null : (map['documentFormat'] as String).input(),
+      documentVersion: map['documentVersion'] == null ? null : (map['documentVersion'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -17,15 +17,11 @@ class FolderState {
   /// [projectId] The ID of the project.
   /// [projectIdentifier] Optional.
   FolderState({
-    pulumi.Output<String>? folderId,
-    pulumi.Output<String>? folderPath,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? projectIdentifier,
-  }) :
-      folderId = pulumi.Input.asOptionalInput<String>(folderId),
-      folderPath = pulumi.Input.asOptionalInput<String>(folderPath),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      projectIdentifier = pulumi.Input.asOptionalInput<String>(projectIdentifier);
+    this.folderId,
+    this.folderPath,
+    this.projectId,
+    this.projectIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,10 +34,10 @@ class FolderState {
 
   factory FolderState.fromMap(Map<String, dynamic> map) {
     return FolderState(
-      folderId: map['folderId'] == null ? null : pulumi.Output.create<String>(map['folderId'] as String),
-      folderPath: map['folderPath'] == null ? null : pulumi.Output.create<String>(map['folderPath'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      projectIdentifier: map['projectIdentifier'] == null ? null : pulumi.Output.create<String>(map['projectIdentifier'] as String),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectIdentifier: map['projectIdentifier'] == null ? null : (map['projectIdentifier'] as String).input(),
     );
   }
 }

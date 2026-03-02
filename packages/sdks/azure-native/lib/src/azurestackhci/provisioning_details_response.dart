@@ -7,9 +7,9 @@ import 'user_details_response.dart';
 /// Details for device provisioning.
 class ProvisioningDetailsResponse {
   /// Operating system profile.
-  final OsProvisionProfileResponse osProfile;
+  final pulumi.Input<OsProvisionProfileResponse> osProfile;
   /// User configuration.
-  final List<UserDetailsResponse>? userDetails;
+  final pulumi.Input<List<UserDetailsResponse>>? userDetails;
 
   /// Creates a new [ProvisioningDetailsResponse].
   /// [osProfile] Operating system profile.
@@ -21,15 +21,15 @@ class ProvisioningDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'osProfile': osProfile.toMap(),
-      'userDetails': ?userDetails == null ? null : pulumi.Input.encodeList<UserDetailsResponse, Map<String, dynamic>>(userDetails!, (value) => value.toMap()),
+      'osProfile': pulumi.Input.mapInputValue<OsProvisionProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'userDetails': ?pulumi.Input.mapOptionalInputValue<List<UserDetailsResponse>, List<Map<String, dynamic>>>(userDetails, (value) => pulumi.Input.encodeList<UserDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ProvisioningDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningDetailsResponse(
-      osProfile: OsProvisionProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      userDetails: map['userDetails'] == null ? null : pulumi.Input.decodeList<UserDetailsResponse>(map['userDetails'], (value) => UserDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      osProfile: (OsProvisionProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      userDetails: map['userDetails'] == null ? null : (pulumi.Input.decodeList<UserDetailsResponse>(map['userDetails'], (value) => UserDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class VariableAtManagementGroupArgs {
   /// [managementGroupId] The ID of the management group.
   /// [variableName] The name of the variable to operate on.
   VariableAtManagementGroupArgs({
-    required pulumi.Output<List<PolicyVariableColumn>> columns,
-    required pulumi.Output<String> managementGroupId,
-    pulumi.Output<String>? variableName,
-  }) :
-      columns = pulumi.Input.asInput<List<PolicyVariableColumn>>(columns),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      variableName = pulumi.Input.asOptionalInput<String>(variableName);
+    required this.columns,
+    required this.managementGroupId,
+    this.variableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class VariableAtManagementGroupArgs {
 
   factory VariableAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return VariableAtManagementGroupArgs(
-      columns: pulumi.Output.create<List<PolicyVariableColumn>>(pulumi.Input.decodeList<PolicyVariableColumn>(map['columns'], (value) => PolicyVariableColumn.fromMap((value as Map).cast<String, dynamic>()))),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      variableName: map['variableName'] == null ? null : pulumi.Output.create<String>(map['variableName'] as String),
+      columns: (pulumi.Input.decodeList<PolicyVariableColumn>(map['columns'], (value) => PolicyVariableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      variableName: map['variableName'] == null ? null : (map['variableName'] as String).input(),
     );
   }
 }

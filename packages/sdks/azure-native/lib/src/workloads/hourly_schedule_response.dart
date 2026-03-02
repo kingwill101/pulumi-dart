@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Hourly schedule.
 class HourlyScheduleResponse {
   /// Interval at which backup needs to be triggered. For hourly the value
   /// can be 4/6/8/12
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// To specify duration of the backup window
-  final int? scheduleWindowDuration;
+  final pulumi.Input<int>? scheduleWindowDuration;
   /// To specify start time of the backup window
-  final String? scheduleWindowStartTime;
+  final pulumi.Input<String>? scheduleWindowStartTime;
 
   /// Creates a new [HourlyScheduleResponse].
   /// [interval] Interval at which backup needs to be triggered. For hourly the value
@@ -31,9 +32,9 @@ class HourlyScheduleResponse {
 
   factory HourlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return HourlyScheduleResponse(
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      scheduleWindowDuration: map['scheduleWindowDuration'] == null ? null : map['scheduleWindowDuration'] as int,
-      scheduleWindowStartTime: map['scheduleWindowStartTime'] == null ? null : map['scheduleWindowStartTime'] as String,
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      scheduleWindowDuration: map['scheduleWindowDuration'] == null ? null : (map['scheduleWindowDuration'] as int).input(),
+      scheduleWindowStartTime: map['scheduleWindowStartTime'] == null ? null : (map['scheduleWindowStartTime'] as String).input(),
     );
   }
 }

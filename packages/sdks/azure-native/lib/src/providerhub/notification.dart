@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Notification {
   /// The notification type.
-  final String? notificationType;
+  final pulumi.Input<String>? notificationType;
   /// Whether notifications should be skipped.
-  final String? skipNotifications;
+  final pulumi.Input<String>? skipNotifications;
 
   /// Creates a new [Notification].
   /// [notificationType] The notification type.
@@ -24,8 +25,8 @@ class Notification {
 
   factory Notification.fromMap(Map<String, dynamic> map) {
     return Notification(
-      notificationType: map['notificationType'] == null ? null : map['notificationType'] as String,
-      skipNotifications: map['skipNotifications'] == null ? null : map['skipNotifications'] as String,
+      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
+      skipNotifications: map['skipNotifications'] == null ? null : (map['skipNotifications'] as String).input(),
     );
   }
 }

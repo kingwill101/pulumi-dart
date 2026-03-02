@@ -19,13 +19,10 @@ class GetAnomalySecurityMLAnalyticsSettingsArgs {
   /// [settingsResourceName] Security ML Analytics Settings resource name
   /// [workspaceName] The name of the workspace.
   GetAnomalySecurityMLAnalyticsSettingsArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> settingsResourceName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      settingsResourceName = pulumi.Input.asInput<String>(settingsResourceName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.settingsResourceName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAnomalySecurityMLAnalyticsSettingsArgs {
 
   factory GetAnomalySecurityMLAnalyticsSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetAnomalySecurityMLAnalyticsSettingsArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      settingsResourceName: pulumi.Output.create<String>(map['settingsResourceName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      settingsResourceName: (map['settingsResourceName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mutual_tls_response.dart';
 
 /// [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
 class PeerAuthenticationMethodResponse {
   /// Set if mTLS is used for peer authentication.
-  final MutualTlsResponse mtls;
+  final pulumi.Input<MutualTlsResponse> mtls;
 
   /// Creates a new [PeerAuthenticationMethodResponse].
   /// [mtls] Set if mTLS is used for peer authentication.
@@ -15,13 +16,13 @@ class PeerAuthenticationMethodResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mtls': mtls.toMap(),
+      'mtls': pulumi.Input.mapInputValue<MutualTlsResponse, Map<String, dynamic>>(mtls, (value) => value.toMap()),
     };
   }
 
   factory PeerAuthenticationMethodResponse.fromMap(Map<String, dynamic> map) {
     return PeerAuthenticationMethodResponse(
-      mtls: MutualTlsResponse.fromMap((map['mtls'] as Map).cast<String, dynamic>()),
+      mtls: (MutualTlsResponse.fromMap((map['mtls'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

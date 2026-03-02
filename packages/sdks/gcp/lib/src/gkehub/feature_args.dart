@@ -35,19 +35,13 @@ class FeatureArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [spec] Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   FeatureArgs({
-    pulumi.Output<FeatureFleetDefaultMemberConfig>? fleetDefaultMemberConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<FeatureSpec>? spec,
-  }) :
-      fleetDefaultMemberConfig = pulumi.Input.asOptionalInput<FeatureFleetDefaultMemberConfig>(fleetDefaultMemberConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spec = pulumi.Input.asOptionalInput<FeatureSpec>(spec);
+    this.fleetDefaultMemberConfig,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class FeatureArgs {
 
   factory FeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureArgs(
-      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : pulumi.Output.create<FeatureFleetDefaultMemberConfig>(FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<FeatureSpec>(FeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spec: map['spec'] == null ? null : (FeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

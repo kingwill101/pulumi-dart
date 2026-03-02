@@ -19,13 +19,10 @@ class GetNodeBalancerNodeArgs {
   /// [id] The node's ID.
   /// [nodebalancerId] The ID of the NodeBalancer that contains the node.
   GetNodeBalancerNodeArgs({
-    required pulumi.Output<int> configId,
-    required pulumi.Output<int> id,
-    required pulumi.Output<int> nodebalancerId,
-  }) :
-      configId = pulumi.Input.asInput<int>(configId),
-      id = pulumi.Input.asInput<int>(id),
-      nodebalancerId = pulumi.Input.asInput<int>(nodebalancerId);
+    required this.configId,
+    required this.id,
+    required this.nodebalancerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNodeBalancerNodeArgs {
 
   factory GetNodeBalancerNodeArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeBalancerNodeArgs(
-      configId: pulumi.Output.create<int>(map['configId'] as int),
-      id: pulumi.Output.create<int>(map['id'] as int),
-      nodebalancerId: pulumi.Output.create<int>(map['nodebalancerId'] as int),
+      configId: (map['configId'] as int).input(),
+      id: (map['id'] as int).input(),
+      nodebalancerId: (map['nodebalancerId'] as int).input(),
     );
   }
 }

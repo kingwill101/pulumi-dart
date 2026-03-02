@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGceSetupAcceleratorConfig {
   /// Optional. Count of cores of this accelerator.
-  final String? coreCount;
+  final pulumi.Input<String>? coreCount;
   /// Optional. Type of this accelerator.
   /// Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [InstanceGceSetupAcceleratorConfig].
   /// [coreCount] Optional. Count of cores of this accelerator.
@@ -25,8 +26,8 @@ class InstanceGceSetupAcceleratorConfig {
 
   factory InstanceGceSetupAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupAcceleratorConfig(
-      coreCount: map['coreCount'] == null ? null : map['coreCount'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

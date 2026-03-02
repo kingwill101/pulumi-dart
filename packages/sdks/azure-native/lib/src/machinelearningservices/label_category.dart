@@ -6,11 +6,11 @@ import 'label_class.dart';
 /// Label category definition
 class LabelCategory {
   /// Dictionary of label classes in this category.
-  final Map<String, LabelClass>? classes;
+  final pulumi.Input<Map<String, LabelClass>>? classes;
   /// Display name of the label category.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Indicates whether it is allowed to select multiple classes in this category.
-  final String? multiSelect;
+  final pulumi.Input<String>? multiSelect;
 
   /// Creates a new [LabelCategory].
   /// [classes] Dictionary of label classes in this category.
@@ -24,7 +24,7 @@ class LabelCategory {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'classes': ?classes == null ? null : pulumi.Input.encodeMapValues<LabelClass, Map<String, dynamic>>(classes!, (value) => value.toMap()),
+      'classes': ?pulumi.Input.mapOptionalInputValue<Map<String, LabelClass>, Map<String, Map<String, dynamic>>>(classes, (value) => pulumi.Input.encodeMapValues<LabelClass, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': ?displayName,
       'multiSelect': ?multiSelect,
     };
@@ -32,9 +32,9 @@ class LabelCategory {
 
   factory LabelCategory.fromMap(Map<String, dynamic> map) {
     return LabelCategory(
-      classes: map['classes'] == null ? null : pulumi.Input.decodeMapValues<LabelClass>(map['classes'], (value) => LabelClass.fromMap((value as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      multiSelect: map['multiSelect'] == null ? null : map['multiSelect'] as String,
+      classes: map['classes'] == null ? null : (pulumi.Input.decodeMapValues<LabelClass>(map['classes'], (value) => LabelClass.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      multiSelect: map['multiSelect'] == null ? null : (map['multiSelect'] as String).input(),
     );
   }
 }

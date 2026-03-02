@@ -22,15 +22,11 @@ class StandardsControlArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [standardsControlArn] The standards control ARN. See the AWS documentation for how to list existing controls using [`get-enabled-standards`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/securityhub/get-enabled-standards.html) and [`describe-standards-controls`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/securityhub/describe-standards-controls.html).
   StandardsControlArgs({
-    required pulumi.Output<String> controlStatus,
-    pulumi.Output<String>? disabledReason,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> standardsControlArn,
-  }) :
-      controlStatus = pulumi.Input.asInput<String>(controlStatus),
-      disabledReason = pulumi.Input.asOptionalInput<String>(disabledReason),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      standardsControlArn = pulumi.Input.asInput<String>(standardsControlArn);
+    required this.controlStatus,
+    this.disabledReason,
+    this.region,
+    required this.standardsControlArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class StandardsControlArgs {
 
   factory StandardsControlArgs.fromMap(Map<String, dynamic> map) {
     return StandardsControlArgs(
-      controlStatus: pulumi.Output.create<String>(map['controlStatus'] as String),
-      disabledReason: map['disabledReason'] == null ? null : pulumi.Output.create<String>(map['disabledReason'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      standardsControlArn: pulumi.Output.create<String>(map['standardsControlArn'] as String),
+      controlStatus: (map['controlStatus'] as String).input(),
+      disabledReason: map['disabledReason'] == null ? null : (map['disabledReason'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      standardsControlArn: (map['standardsControlArn'] as String).input(),
     );
   }
 }

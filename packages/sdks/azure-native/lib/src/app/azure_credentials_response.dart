@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container App credentials.
 class AzureCredentialsResponse {
   /// Subscription Id.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [AzureCredentialsResponse].
   /// [subscriptionId] Subscription Id.
@@ -20,7 +21,7 @@ class AzureCredentialsResponse {
 
   factory AzureCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return AzureCredentialsResponse(
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

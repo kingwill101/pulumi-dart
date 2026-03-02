@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BigLakeConfigurationResponse {
   /// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
-  final String connectionId;
+  final pulumi.Input<String> connectionId;
   /// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
-  final String fileFormat;
+  final pulumi.Input<String> fileFormat;
   /// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
-  final String storageUri;
+  final pulumi.Input<String> storageUri;
   /// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
-  final String tableFormat;
+  final pulumi.Input<String> tableFormat;
 
   /// Creates a new [BigLakeConfigurationResponse].
   /// [connectionId] [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
@@ -34,10 +35,10 @@ class BigLakeConfigurationResponse {
 
   factory BigLakeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BigLakeConfigurationResponse(
-      connectionId: map['connectionId'] as String,
-      fileFormat: map['fileFormat'] as String,
-      storageUri: map['storageUri'] as String,
-      tableFormat: map['tableFormat'] as String,
+      connectionId: (map['connectionId'] as String).input(),
+      fileFormat: (map['fileFormat'] as String).input(),
+      storageUri: (map['storageUri'] as String).input(),
+      tableFormat: (map['tableFormat'] as String).input(),
     );
   }
 }

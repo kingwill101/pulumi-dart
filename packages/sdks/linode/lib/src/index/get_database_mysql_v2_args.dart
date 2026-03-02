@@ -13,9 +13,8 @@ class GetDatabaseMysqlV2Args {
   /// Creates a new [GetDatabaseMysqlV2Args].
   /// [id] The ID of the MySQL database.
   GetDatabaseMysqlV2Args({
-    required pulumi.Output<String> id,
-  }) :
-      id = pulumi.Input.asInput<String>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDatabaseMysqlV2Args {
 
   factory GetDatabaseMysqlV2Args.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlV2Args(
-      id: pulumi.Output.create<String>(map['id'] as String),
+      id: (map['id'] as String).input(),
     );
   }
 }

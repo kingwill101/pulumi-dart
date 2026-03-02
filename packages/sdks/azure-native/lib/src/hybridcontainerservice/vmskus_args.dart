@@ -17,11 +17,9 @@ class VMSkusArgs {
   /// [customLocationResourceUri] The fully qualified Azure Resource Manager identifier of the custom location resource.
   /// [extendedLocation] Extended location pointing to the underlying infrastructure
   VMSkusArgs({
-    required pulumi.Output<String> customLocationResourceUri,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-  }) :
-      customLocationResourceUri = pulumi.Input.asInput<String>(customLocationResourceUri),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation);
+    required this.customLocationResourceUri,
+    this.extendedLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class VMSkusArgs {
 
   factory VMSkusArgs.fromMap(Map<String, dynamic> map) {
     return VMSkusArgs(
-      customLocationResourceUri: pulumi.Output.create<String>(map['customLocationResourceUri'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
+      customLocationResourceUri: (map['customLocationResourceUri'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

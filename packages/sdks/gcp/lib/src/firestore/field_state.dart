@@ -37,21 +37,14 @@ class FieldState {
   /// [project] The ID of the project in which the resource belongs.
   /// [ttlConfig] The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
   FieldState({
-    pulumi.Output<String>? collection,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? field,
-    pulumi.Output<FieldIndexConfig>? indexConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<FieldTtlConfig>? ttlConfig,
-  }) :
-      collection = pulumi.Input.asOptionalInput<String>(collection),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      field = pulumi.Input.asOptionalInput<String>(field),
-      indexConfig = pulumi.Input.asOptionalInput<FieldIndexConfig>(indexConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ttlConfig = pulumi.Input.asOptionalInput<FieldTtlConfig>(ttlConfig);
+    this.collection,
+    this.database,
+    this.field,
+    this.indexConfig,
+    this.name,
+    this.project,
+    this.ttlConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class FieldState {
 
   factory FieldState.fromMap(Map<String, dynamic> map) {
     return FieldState(
-      collection: map['collection'] == null ? null : pulumi.Output.create<String>(map['collection'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      field: map['field'] == null ? null : pulumi.Output.create<String>(map['field'] as String),
-      indexConfig: map['indexConfig'] == null ? null : pulumi.Output.create<FieldIndexConfig>(FieldIndexConfig.fromMap((map['indexConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      ttlConfig: map['ttlConfig'] == null ? null : pulumi.Output.create<FieldTtlConfig>(FieldTtlConfig.fromMap((map['ttlConfig'] as Map).cast<String, dynamic>())),
+      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      field: map['field'] == null ? null : (map['field'] as String).input(),
+      indexConfig: map['indexConfig'] == null ? null : (FieldIndexConfig.fromMap((map['indexConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      ttlConfig: map['ttlConfig'] == null ? null : (FieldTtlConfig.fromMap((map['ttlConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

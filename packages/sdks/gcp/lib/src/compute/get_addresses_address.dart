@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAddressesAddress {
   /// The IP address (for example `1.2.3.4`).
-  final String address;
+  final pulumi.Input<String> address;
   /// The IP address type, can be `EXTERNAL` or `INTERNAL`.
-  final String addressType;
+  final pulumi.Input<String> addressType;
   /// The IP address description.
-  final String description;
+  final pulumi.Input<String> description;
   /// A map containing IP labels.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The IP address name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The prefix length of the IP range. If not present, it means the address field is a single IP address.
-  final int prefixLength;
+  final pulumi.Input<int> prefixLength;
   /// Region that should be considered to search addresses.
   /// All regions are considered if missing.
-  final String region;
+  final pulumi.Input<String> region;
   /// The URI of the created resource.
-  final String selfLink;
+  final pulumi.Input<String> selfLink;
   /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetAddressesAddress].
   /// [address] The IP address (for example `1.2.3.4`).
@@ -60,15 +61,15 @@ class GetAddressesAddress {
 
   factory GetAddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetAddressesAddress(
-      address: map['address'] as String,
-      addressType: map['addressType'] as String,
-      description: map['description'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      prefixLength: map['prefixLength'] as int,
-      region: map['region'] as String,
-      selfLink: map['selfLink'] as String,
-      status: map['status'] as String,
+      address: (map['address'] as String).input(),
+      addressType: (map['addressType'] as String).input(),
+      description: (map['description'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      prefixLength: (map['prefixLength'] as int).input(),
+      region: (map['region'] as String).input(),
+      selfLink: (map['selfLink'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

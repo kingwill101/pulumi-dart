@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Remote Support Node Settings of the cluster.
 class RemoteSupportNodeSettingsResponse {
   /// Arc ResourceId of the Node
-  final String arcResourceId;
+  final pulumi.Input<String> arcResourceId;
   /// Remote Support Access Connection Error Message on the Node
-  final String connectionErrorMessage;
+  final pulumi.Input<String> connectionErrorMessage;
   /// Remote Support Access Connection Status on the Node
-  final String connectionStatus;
+  final pulumi.Input<String> connectionStatus;
   /// Remote Support Enablement Request Created TimeStamp on the Node
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Remote Support Access Connection State on the Node
-  final String state;
+  final pulumi.Input<String> state;
   /// Remote Support Transcript location on the node
-  final String transcriptLocation;
+  final pulumi.Input<String> transcriptLocation;
   /// Remote Support Enablement Request Updated TimeStamp on the Node
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
 
   /// Creates a new [RemoteSupportNodeSettingsResponse].
   /// [arcResourceId] Arc ResourceId of the Node
@@ -50,13 +51,13 @@ class RemoteSupportNodeSettingsResponse {
 
   factory RemoteSupportNodeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RemoteSupportNodeSettingsResponse(
-      arcResourceId: map['arcResourceId'] as String,
-      connectionErrorMessage: map['connectionErrorMessage'] as String,
-      connectionStatus: map['connectionStatus'] as String,
-      createdAt: map['createdAt'] as String,
-      state: map['state'] as String,
-      transcriptLocation: map['transcriptLocation'] as String,
-      updatedAt: map['updatedAt'] as String,
+      arcResourceId: (map['arcResourceId'] as String).input(),
+      connectionErrorMessage: (map['connectionErrorMessage'] as String).input(),
+      connectionStatus: (map['connectionStatus'] as String).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      state: (map['state'] as String).input(),
+      transcriptLocation: (map['transcriptLocation'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
     );
   }
 }

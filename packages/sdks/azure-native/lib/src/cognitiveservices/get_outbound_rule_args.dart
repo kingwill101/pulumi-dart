@@ -22,15 +22,11 @@ class GetOutboundRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] Name of the cognitive services account managed network outbound rule
   GetOutboundRuleArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> managedNetworkName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      managedNetworkName = pulumi.Input.asInput<String>(managedNetworkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asInput<String>(ruleName);
+    required this.accountName,
+    required this.managedNetworkName,
+    required this.resourceGroupName,
+    required this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetOutboundRuleArgs {
 
   factory GetOutboundRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetOutboundRuleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      managedNetworkName: pulumi.Output.create<String>(map['managedNetworkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      managedNetworkName: (map['managedNetworkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

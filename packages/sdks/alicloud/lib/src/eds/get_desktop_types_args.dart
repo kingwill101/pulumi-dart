@@ -31,21 +31,14 @@ class GetDesktopTypesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `SUFFICIENT`.
   GetDesktopTypesArgs({
-    pulumi.Output<int>? cpuCount,
-    pulumi.Output<double>? gpuCount,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceTypeFamily,
-    pulumi.Output<int>? memorySize,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      cpuCount = pulumi.Input.asOptionalInput<int>(cpuCount),
-      gpuCount = pulumi.Input.asOptionalInput<double>(gpuCount),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceTypeFamily = pulumi.Input.asOptionalInput<String>(instanceTypeFamily),
-      memorySize = pulumi.Input.asOptionalInput<int>(memorySize),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.cpuCount,
+    this.gpuCount,
+    this.ids,
+    this.instanceTypeFamily,
+    this.memorySize,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetDesktopTypesArgs {
 
   factory GetDesktopTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetDesktopTypesArgs(
-      cpuCount: map['cpuCount'] == null ? null : pulumi.Output.create<int>(map['cpuCount'] as int),
-      gpuCount: map['gpuCount'] == null ? null : pulumi.Output.create<double>(map['gpuCount'] as double),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceTypeFamily: map['instanceTypeFamily'] == null ? null : pulumi.Output.create<String>(map['instanceTypeFamily'] as String),
-      memorySize: map['memorySize'] == null ? null : pulumi.Output.create<int>(map['memorySize'] as int),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
+      gpuCount: map['gpuCount'] == null ? null : (map['gpuCount'] as double).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceTypeFamily: map['instanceTypeFamily'] == null ? null : (map['instanceTypeFamily'] as String).input(),
+      memorySize: map['memorySize'] == null ? null : (map['memorySize'] as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

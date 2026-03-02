@@ -21,15 +21,11 @@ class FileSystemPolicyState {
   /// [policy] The JSON formatted file system policy for the EFS file system. see [Docs](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies) for more info.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   FileSystemPolicyState({
-    pulumi.Output<bool>? bypassPolicyLockoutSafetyCheck,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-  }) :
-      bypassPolicyLockoutSafetyCheck = pulumi.Input.asOptionalInput<bool>(bypassPolicyLockoutSafetyCheck),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bypassPolicyLockoutSafetyCheck,
+    this.fileSystemId,
+    this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class FileSystemPolicyState {
 
   factory FileSystemPolicyState.fromMap(Map<String, dynamic> map) {
     return FileSystemPolicyState(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : pulumi.Output.create<bool>(map['bypassPolicyLockoutSafetyCheck'] as bool),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

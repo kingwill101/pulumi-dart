@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication certificates of an application gateway.
 class ApplicationGatewayAuthenticationCertificateResponse {
   /// Certificate public data.
-  final String? data;
+  final pulumi.Input<String>? data;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the authentication certificate that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the authentication certificate resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApplicationGatewayAuthenticationCertificateResponse].
   /// [data] Certificate public data.
@@ -45,12 +46,12 @@ class ApplicationGatewayAuthenticationCertificateResponse {
 
   factory ApplicationGatewayAuthenticationCertificateResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayAuthenticationCertificateResponse(
-      data: map['data'] == null ? null : map['data'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

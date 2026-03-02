@@ -22,15 +22,11 @@ class ProjectCloudresourcemanagerV3Args {
   /// [parent] Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
   /// [projectId] Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
   ProjectCloudresourcemanagerV3Args({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? projectId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId);
+    this.displayName,
+    this.labels,
+    this.parent,
+    this.projectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ProjectCloudresourcemanagerV3Args {
 
   factory ProjectCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return ProjectCloudresourcemanagerV3Args(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

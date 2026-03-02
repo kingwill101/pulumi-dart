@@ -26,19 +26,13 @@ class GetNetworkArgs {
   /// [name] Name of the Network.
   /// [withSelector] Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
   GetNetworkArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? ipRange,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? withSelector,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.id,
+    this.ipRange,
+    this.labels,
+    this.mostRecent,
+    this.name,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class GetNetworkArgs {
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

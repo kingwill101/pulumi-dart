@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility.
 class GroupVersionForDiscovery {
   /// groupVersion specifies the API group and version in the form "group/version"
-  final String groupVersion;
+  final pulumi.Input<String> groupVersion;
   /// version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GroupVersionForDiscovery].
   /// [groupVersion] groupVersion specifies the API group and version in the form "group/version"
@@ -25,8 +26,8 @@ class GroupVersionForDiscovery {
 
   factory GroupVersionForDiscovery.fromMap(Map<String, dynamic> map) {
     return GroupVersionForDiscovery(
-      groupVersion: map['groupVersion'] as String,
-      version: map['version'] as String,
+      groupVersion: (map['groupVersion'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

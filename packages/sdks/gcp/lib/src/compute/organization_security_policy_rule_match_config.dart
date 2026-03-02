@@ -6,16 +6,16 @@ import 'organization_security_policy_rule_match_config_layer4_config.dart';
 class OrganizationSecurityPolicyRuleMatchConfig {
   /// Destination IP address range in CIDR format. Required for
   /// EGRESS rules.
-  final List<String>? destIpRanges;
+  final pulumi.Input<List<String>>? destIpRanges;
   /// Pairs of IP protocols and ports that the rule should match.
   /// Structure is documented below.
   ///
   ///
   /// <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
-  final List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
+  final pulumi.Input<List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config>> layer4Configs;
   /// Source IP address range in CIDR format. Required for
   /// INGRESS rules.
-  final List<String>? srcIpRanges;
+  final pulumi.Input<List<String>>? srcIpRanges;
 
   /// Creates a new [OrganizationSecurityPolicyRuleMatchConfig].
   /// [destIpRanges] Destination IP address range in CIDR format. Required for
@@ -30,16 +30,16 @@ class OrganizationSecurityPolicyRuleMatchConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destIpRanges': ?destIpRanges,
-      'layer4Configs': pulumi.Input.encodeList<OrganizationSecurityPolicyRuleMatchConfigLayer4Config, Map<String, dynamic>>(layer4Configs, (value) => value.toMap()),
+      'layer4Configs': pulumi.Input.mapInputValue<List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config>, List<Map<String, dynamic>>>(layer4Configs, (value) => pulumi.Input.encodeList<OrganizationSecurityPolicyRuleMatchConfigLayer4Config, Map<String, dynamic>>(value, (value) => value.toMap())),
       'srcIpRanges': ?srcIpRanges,
     };
   }
 
   factory OrganizationSecurityPolicyRuleMatchConfig.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyRuleMatchConfig(
-      destIpRanges: map['destIpRanges'] == null ? null : (map['destIpRanges'] as List).cast<String>(),
-      layer4Configs: pulumi.Input.decodeList<OrganizationSecurityPolicyRuleMatchConfigLayer4Config>(map['layer4Configs'], (value) => OrganizationSecurityPolicyRuleMatchConfigLayer4Config.fromMap((value as Map).cast<String, dynamic>())),
-      srcIpRanges: map['srcIpRanges'] == null ? null : (map['srcIpRanges'] as List).cast<String>(),
+      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges'] as List).cast<String>()).input(),
+      layer4Configs: (pulumi.Input.decodeList<OrganizationSecurityPolicyRuleMatchConfigLayer4Config>(map['layer4Configs'], (value) => OrganizationSecurityPolicyRuleMatchConfigLayer4Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
     );
   }
 }

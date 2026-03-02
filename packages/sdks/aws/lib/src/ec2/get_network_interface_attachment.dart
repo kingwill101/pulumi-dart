@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkInterfaceAttachment {
   /// ID of the network interface attachment.
-  final String attachmentId;
+  final pulumi.Input<String> attachmentId;
   /// Device index of the network interface attachment on the instance.
-  final int deviceIndex;
+  final pulumi.Input<int> deviceIndex;
   /// ID of the instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// AWS account ID of the owner of the instance.
-  final String instanceOwnerId;
+  final pulumi.Input<String> instanceOwnerId;
   /// Index of the network card.
-  final int networkCardIndex;
+  final pulumi.Input<int> networkCardIndex;
 
   /// Creates a new [GetNetworkInterfaceAttachment].
   /// [attachmentId] ID of the network interface attachment.
@@ -39,11 +40,11 @@ class GetNetworkInterfaceAttachment {
 
   factory GetNetworkInterfaceAttachment.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceAttachment(
-      attachmentId: map['attachmentId'] as String,
-      deviceIndex: map['deviceIndex'] as int,
-      instanceId: map['instanceId'] as String,
-      instanceOwnerId: map['instanceOwnerId'] as String,
-      networkCardIndex: map['networkCardIndex'] as int,
+      attachmentId: (map['attachmentId'] as String).input(),
+      deviceIndex: (map['deviceIndex'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceOwnerId: (map['instanceOwnerId'] as String).input(),
+      networkCardIndex: (map['networkCardIndex'] as int).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionDeadLetterConfig {
   /// ARN of an SNS topic or SQS queue to notify when an invocation fails.
-  final String targetArn;
+  final pulumi.Input<String> targetArn;
 
   /// Creates a new [FunctionDeadLetterConfig].
   /// [targetArn] ARN of an SNS topic or SQS queue to notify when an invocation fails.
@@ -19,7 +20,7 @@ class FunctionDeadLetterConfig {
 
   factory FunctionDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return FunctionDeadLetterConfig(
-      targetArn: map['targetArn'] as String,
+      targetArn: (map['targetArn'] as String).input(),
     );
   }
 }

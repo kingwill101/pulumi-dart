@@ -22,17 +22,12 @@ class FrontdoorEndpointState {
   /// [name] The name which should be used for this Front Door Endpoint. Changing this forces a new Front Door Endpoint to be created.
   /// [tags] Specifies a mapping of tags which should be assigned to the Front Door Endpoint.
   FrontdoorEndpointState({
-    pulumi.Output<String>? cdnFrontdoorProfileId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cdnFrontdoorProfileId = pulumi.Input.asOptionalInput<String>(cdnFrontdoorProfileId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.cdnFrontdoorProfileId,
+    this.enabled,
+    this.hostName,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class FrontdoorEndpointState {
 
   factory FrontdoorEndpointState.fromMap(Map<String, dynamic> map) {
     return FrontdoorEndpointState(
-      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : pulumi.Output.create<String>(map['cdnFrontdoorProfileId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

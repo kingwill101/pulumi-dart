@@ -12,51 +12,51 @@ class GetListenersListener {
   /// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
   ///
   /// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
-  final bool accessLogRecordCustomizedHeadersEnabled;
+  final pulumi.Input<bool> accessLogRecordCustomizedHeadersEnabled;
   /// Xtrace Configuration Information.
-  final List<GetListenersListenerAccessLogTracingConfig> accessLogTracingConfigs;
+  final pulumi.Input<List<GetListenersListenerAccessLogTracingConfig>> accessLogTracingConfigs;
   /// The configurations of the access control lists (ACLs).
-  final List<GetListenersListenerAclConfig> aclConfigs;
+  final pulumi.Input<List<GetListenersListenerAclConfig>> aclConfigs;
   /// The Certificate List.
-  final List<GetListenersListenerCertificate> certificates;
+  final pulumi.Input<List<GetListenersListenerCertificate>> certificates;
   /// The Default Rule Action List.
-  final List<GetListenersListenerDefaultAction> defaultActions;
+  final pulumi.Input<List<GetListenersListenerDefaultAction>> defaultActions;
   /// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
-  final bool gzipEnabled;
+  final pulumi.Input<bool> gzipEnabled;
   /// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
   ///
   /// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
-  final bool http2Enabled;
+  final pulumi.Input<bool> http2Enabled;
   /// The ID of the Listener.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
-  final int idleTimeout;
+  final pulumi.Input<int> idleTimeout;
   /// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
-  final String listenerDescription;
+  final pulumi.Input<String> listenerDescription;
   /// on Behalf of the Resource Level Id of the Resources Property Fields.
-  final String listenerId;
+  final pulumi.Input<String> listenerId;
   /// The ALB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
-  final int listenerPort;
+  final pulumi.Input<int> listenerPort;
   /// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
-  final String listenerProtocol;
+  final pulumi.Input<String> listenerProtocol;
   /// The ALB Instance Id.
-  final String loadBalancerId;
+  final pulumi.Input<String> loadBalancerId;
   /// This Request Returned by the Maximum Number of Records.
-  final String maxResults;
+  final pulumi.Input<String> maxResults;
   /// The Current Call Returns to the Position of the Set to Null Represents the Data Has Been Read to the End of.
-  final String nextToken;
+  final pulumi.Input<String> nextToken;
   /// Configuration Associated with the QuIC Listening.
-  final List<GetListenersListenerQuicConfig> quicConfigs;
+  final pulumi.Input<List<GetListenersListenerQuicConfig>> quicConfigs;
   /// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
-  final int requestTimeout;
+  final pulumi.Input<int> requestTimeout;
   /// Security Policy.
   ///
   /// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
-  final String securityPolicyId;
+  final pulumi.Input<String> securityPolicyId;
   /// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
-  final String status;
+  final pulumi.Input<String> status;
   /// xforwardfor Related Attribute Configuration.
-  final List<GetListenersListenerXforwardedForConfig> xforwardedForConfigs;
+  final pulumi.Input<List<GetListenersListenerXforwardedForConfig>> xforwardedForConfigs;
 
   /// Creates a new [GetListenersListener].
   /// [accessLogRecordCustomizedHeadersEnabled] Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
@@ -107,10 +107,10 @@ class GetListenersListener {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessLogRecordCustomizedHeadersEnabled': accessLogRecordCustomizedHeadersEnabled,
-      'accessLogTracingConfigs': pulumi.Input.encodeList<GetListenersListenerAccessLogTracingConfig, Map<String, dynamic>>(accessLogTracingConfigs, (value) => value.toMap()),
-      'aclConfigs': pulumi.Input.encodeList<GetListenersListenerAclConfig, Map<String, dynamic>>(aclConfigs, (value) => value.toMap()),
-      'certificates': pulumi.Input.encodeList<GetListenersListenerCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
-      'defaultActions': pulumi.Input.encodeList<GetListenersListenerDefaultAction, Map<String, dynamic>>(defaultActions, (value) => value.toMap()),
+      'accessLogTracingConfigs': pulumi.Input.mapInputValue<List<GetListenersListenerAccessLogTracingConfig>, List<Map<String, dynamic>>>(accessLogTracingConfigs, (value) => pulumi.Input.encodeList<GetListenersListenerAccessLogTracingConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'aclConfigs': pulumi.Input.mapInputValue<List<GetListenersListenerAclConfig>, List<Map<String, dynamic>>>(aclConfigs, (value) => pulumi.Input.encodeList<GetListenersListenerAclConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'certificates': pulumi.Input.mapInputValue<List<GetListenersListenerCertificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<GetListenersListenerCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultActions': pulumi.Input.mapInputValue<List<GetListenersListenerDefaultAction>, List<Map<String, dynamic>>>(defaultActions, (value) => pulumi.Input.encodeList<GetListenersListenerDefaultAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'gzipEnabled': gzipEnabled,
       'http2Enabled': http2Enabled,
       'id': id,
@@ -122,37 +122,37 @@ class GetListenersListener {
       'loadBalancerId': loadBalancerId,
       'maxResults': maxResults,
       'nextToken': nextToken,
-      'quicConfigs': pulumi.Input.encodeList<GetListenersListenerQuicConfig, Map<String, dynamic>>(quicConfigs, (value) => value.toMap()),
+      'quicConfigs': pulumi.Input.mapInputValue<List<GetListenersListenerQuicConfig>, List<Map<String, dynamic>>>(quicConfigs, (value) => pulumi.Input.encodeList<GetListenersListenerQuicConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requestTimeout': requestTimeout,
       'securityPolicyId': securityPolicyId,
       'status': status,
-      'xforwardedForConfigs': pulumi.Input.encodeList<GetListenersListenerXforwardedForConfig, Map<String, dynamic>>(xforwardedForConfigs, (value) => value.toMap()),
+      'xforwardedForConfigs': pulumi.Input.mapInputValue<List<GetListenersListenerXforwardedForConfig>, List<Map<String, dynamic>>>(xforwardedForConfigs, (value) => pulumi.Input.encodeList<GetListenersListenerXforwardedForConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetListenersListener.fromMap(Map<String, dynamic> map) {
     return GetListenersListener(
-      accessLogRecordCustomizedHeadersEnabled: map['accessLogRecordCustomizedHeadersEnabled'] as bool,
-      accessLogTracingConfigs: pulumi.Input.decodeList<GetListenersListenerAccessLogTracingConfig>(map['accessLogTracingConfigs'], (value) => GetListenersListenerAccessLogTracingConfig.fromMap((value as Map).cast<String, dynamic>())),
-      aclConfigs: pulumi.Input.decodeList<GetListenersListenerAclConfig>(map['aclConfigs'], (value) => GetListenersListenerAclConfig.fromMap((value as Map).cast<String, dynamic>())),
-      certificates: pulumi.Input.decodeList<GetListenersListenerCertificate>(map['certificates'], (value) => GetListenersListenerCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      defaultActions: pulumi.Input.decodeList<GetListenersListenerDefaultAction>(map['defaultActions'], (value) => GetListenersListenerDefaultAction.fromMap((value as Map).cast<String, dynamic>())),
-      gzipEnabled: map['gzipEnabled'] as bool,
-      http2Enabled: map['http2Enabled'] as bool,
-      id: map['id'] as String,
-      idleTimeout: map['idleTimeout'] as int,
-      listenerDescription: map['listenerDescription'] as String,
-      listenerId: map['listenerId'] as String,
-      listenerPort: map['listenerPort'] as int,
-      listenerProtocol: map['listenerProtocol'] as String,
-      loadBalancerId: map['loadBalancerId'] as String,
-      maxResults: map['maxResults'] as String,
-      nextToken: map['nextToken'] as String,
-      quicConfigs: pulumi.Input.decodeList<GetListenersListenerQuicConfig>(map['quicConfigs'], (value) => GetListenersListenerQuicConfig.fromMap((value as Map).cast<String, dynamic>())),
-      requestTimeout: map['requestTimeout'] as int,
-      securityPolicyId: map['securityPolicyId'] as String,
-      status: map['status'] as String,
-      xforwardedForConfigs: pulumi.Input.decodeList<GetListenersListenerXforwardedForConfig>(map['xforwardedForConfigs'], (value) => GetListenersListenerXforwardedForConfig.fromMap((value as Map).cast<String, dynamic>())),
+      accessLogRecordCustomizedHeadersEnabled: (map['accessLogRecordCustomizedHeadersEnabled'] as bool).input(),
+      accessLogTracingConfigs: (pulumi.Input.decodeList<GetListenersListenerAccessLogTracingConfig>(map['accessLogTracingConfigs'], (value) => GetListenersListenerAccessLogTracingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aclConfigs: (pulumi.Input.decodeList<GetListenersListenerAclConfig>(map['aclConfigs'], (value) => GetListenersListenerAclConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificates: (pulumi.Input.decodeList<GetListenersListenerCertificate>(map['certificates'], (value) => GetListenersListenerCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultActions: (pulumi.Input.decodeList<GetListenersListenerDefaultAction>(map['defaultActions'], (value) => GetListenersListenerDefaultAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gzipEnabled: (map['gzipEnabled'] as bool).input(),
+      http2Enabled: (map['http2Enabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      idleTimeout: (map['idleTimeout'] as int).input(),
+      listenerDescription: (map['listenerDescription'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      listenerPort: (map['listenerPort'] as int).input(),
+      listenerProtocol: (map['listenerProtocol'] as String).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      maxResults: (map['maxResults'] as String).input(),
+      nextToken: (map['nextToken'] as String).input(),
+      quicConfigs: (pulumi.Input.decodeList<GetListenersListenerQuicConfig>(map['quicConfigs'], (value) => GetListenersListenerQuicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestTimeout: (map['requestTimeout'] as int).input(),
+      securityPolicyId: (map['securityPolicyId'] as String).input(),
+      status: (map['status'] as String).input(),
+      xforwardedForConfigs: (pulumi.Input.decodeList<GetListenersListenerXforwardedForConfig>(map['xforwardedForConfigs'], (value) => GetListenersListenerXforwardedForConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

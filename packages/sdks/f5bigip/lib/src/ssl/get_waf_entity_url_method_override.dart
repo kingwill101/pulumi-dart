@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWafEntityUrlMethodOverride {
   /// Specifies that the system allows or disallows a method for this URL
-  final bool allow;
+  final pulumi.Input<bool> allow;
   /// Specifies an HTTP method.
-  final String method;
+  final pulumi.Input<String> method;
 
   /// Creates a new [GetWafEntityUrlMethodOverride].
   /// [allow] Specifies that the system allows or disallows a method for this URL
@@ -24,8 +25,8 @@ class GetWafEntityUrlMethodOverride {
 
   factory GetWafEntityUrlMethodOverride.fromMap(Map<String, dynamic> map) {
     return GetWafEntityUrlMethodOverride(
-      allow: map['allow'] as bool,
-      method: map['method'] as String,
+      allow: (map['allow'] as bool).input(),
+      method: (map['method'] as String).input(),
     );
   }
 }

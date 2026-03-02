@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_store_document_processing_config_parsing_config_override_layout_parsing_config.dart';
 import 'data_store_document_processing_config_parsing_config_override_ocr_parsing_config.dart';
 
 class DataStoreDocumentProcessingConfigParsingConfigOverride {
   /// Configurations applied to digital parser.
-  final Map<String, dynamic>? digitalParsingConfig;
+  final pulumi.Input<Map<String, dynamic>>? digitalParsingConfig;
   /// The identifier for this object. Format specified above.
-  final String fileType;
+  final pulumi.Input<String> fileType;
   /// Configurations applied to layout parser.
   /// Structure is documented below.
-  final DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig? layoutParsingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig>? layoutParsingConfig;
   /// Configurations applied to OCR parser. Currently it only applies to PDFs.
   /// Structure is documented below.
-  final DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig? ocrParsingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig>? ocrParsingConfig;
 
   /// Creates a new [DataStoreDocumentProcessingConfigParsingConfigOverride].
   /// [digitalParsingConfig] Configurations applied to digital parser.
@@ -31,17 +32,17 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride {
     return <String, dynamic>{
       'digitalParsingConfig': ?digitalParsingConfig,
       'fileType': fileType,
-      'layoutParsingConfig': ?layoutParsingConfig == null ? null : layoutParsingConfig!.toMap(),
-      'ocrParsingConfig': ?ocrParsingConfig == null ? null : ocrParsingConfig!.toMap(),
+      'layoutParsingConfig': ?pulumi.Input.mapOptionalInputValue<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig, Map<String, dynamic>>(layoutParsingConfig, (value) => value.toMap()),
+      'ocrParsingConfig': ?pulumi.Input.mapOptionalInputValue<DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig, Map<String, dynamic>>(ocrParsingConfig, (value) => value.toMap()),
     };
   }
 
   factory DataStoreDocumentProcessingConfigParsingConfigOverride.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigParsingConfigOverride(
-      digitalParsingConfig: map['digitalParsingConfig'] == null ? null : (map['digitalParsingConfig'] as Map).cast<String, dynamic>(),
-      fileType: map['fileType'] as String,
-      layoutParsingConfig: map['layoutParsingConfig'] == null ? null : DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig.fromMap((map['layoutParsingConfig'] as Map).cast<String, dynamic>()),
-      ocrParsingConfig: map['ocrParsingConfig'] == null ? null : DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig.fromMap((map['ocrParsingConfig'] as Map).cast<String, dynamic>()),
+      digitalParsingConfig: map['digitalParsingConfig'] == null ? null : ((map['digitalParsingConfig'] as Map).cast<String, dynamic>()).input(),
+      fileType: (map['fileType'] as String).input(),
+      layoutParsingConfig: map['layoutParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig.fromMap((map['layoutParsingConfig'] as Map).cast<String, dynamic>())).input(),
+      ocrParsingConfig: map['ocrParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig.fromMap((map['ocrParsingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

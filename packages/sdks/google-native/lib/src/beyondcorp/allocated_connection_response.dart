@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Allocated connection of the AppGateway.
 class AllocatedConnectionResponse {
   /// The ingress port of an allocated connection
-  final int ingressPort;
+  final pulumi.Input<int> ingressPort;
   /// The PSC uri of an allocated connection
-  final String pscUri;
+  final pulumi.Input<String> pscUri;
 
   /// Creates a new [AllocatedConnectionResponse].
   /// [ingressPort] The ingress port of an allocated connection
@@ -25,8 +26,8 @@ class AllocatedConnectionResponse {
 
   factory AllocatedConnectionResponse.fromMap(Map<String, dynamic> map) {
     return AllocatedConnectionResponse(
-      ingressPort: map['ingressPort'] as int,
-      pscUri: map['pscUri'] as String,
+      ingressPort: (map['ingressPort'] as int).input(),
+      pscUri: (map['pscUri'] as String).input(),
     );
   }
 }

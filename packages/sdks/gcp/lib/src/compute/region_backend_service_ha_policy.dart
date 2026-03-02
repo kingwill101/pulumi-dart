@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_backend_service_ha_policy_leader.dart';
 
 class RegionBackendServiceHaPolicy {
@@ -16,11 +17,11 @@ class RegionBackendServiceHaPolicy {
   /// forwarding rule IP address with that VM, and both new and in-flight packets
   /// are quickly delivered to that VM.
   /// Possible values are: `DISABLED`, `GARP_RA`.
-  final String? fastIpMove;
+  final pulumi.Input<String>? fastIpMove;
   /// Selects one of the network endpoints attached to the backend NEGs of this service as the
   /// active endpoint (the leader) that receives all traffic.
   /// Structure is documented below.
-  final RegionBackendServiceHaPolicyLeader? leader;
+  final pulumi.Input<RegionBackendServiceHaPolicyLeader>? leader;
 
   /// Creates a new [RegionBackendServiceHaPolicy].
   /// [fastIpMove] Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
@@ -33,14 +34,14 @@ class RegionBackendServiceHaPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fastIpMove': ?fastIpMove,
-      'leader': ?leader == null ? null : leader!.toMap(),
+      'leader': ?pulumi.Input.mapOptionalInputValue<RegionBackendServiceHaPolicyLeader, Map<String, dynamic>>(leader, (value) => value.toMap()),
     };
   }
 
   factory RegionBackendServiceHaPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceHaPolicy(
-      fastIpMove: map['fastIpMove'] == null ? null : map['fastIpMove'] as String,
-      leader: map['leader'] == null ? null : RegionBackendServiceHaPolicyLeader.fromMap((map['leader'] as Map).cast<String, dynamic>()),
+      fastIpMove: map['fastIpMove'] == null ? null : (map['fastIpMove'] as String).input(),
+      leader: map['leader'] == null ? null : (RegionBackendServiceHaPolicyLeader.fromMap((map['leader'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to Aks Resource
 class AksProfileResponse {
   /// Resource Id of AKS Resource
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [AksProfileResponse].
   /// [id] Resource Id of AKS Resource
@@ -20,7 +21,7 @@ class AksProfileResponse {
 
   factory AksProfileResponse.fromMap(Map<String, dynamic> map) {
     return AksProfileResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

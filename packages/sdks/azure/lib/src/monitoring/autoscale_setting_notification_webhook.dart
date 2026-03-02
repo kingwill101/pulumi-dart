@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoscaleSettingNotificationWebhook {
   /// A map of settings.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// The HTTPS URI which should receive scale notifications.
-  final String serviceUri;
+  final pulumi.Input<String> serviceUri;
 
   /// Creates a new [AutoscaleSettingNotificationWebhook].
   /// [properties] A map of settings.
@@ -24,8 +25,8 @@ class AutoscaleSettingNotificationWebhook {
 
   factory AutoscaleSettingNotificationWebhook.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingNotificationWebhook(
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      serviceUri: map['serviceUri'] as String,
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      serviceUri: (map['serviceUri'] as String).input(),
     );
   }
 }

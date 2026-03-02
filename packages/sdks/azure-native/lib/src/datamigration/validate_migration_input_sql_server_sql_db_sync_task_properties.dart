@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'validate_sync_migration_input_sql_server_task_input.dart';
 
 /// Properties for task that validates migration input for SQL to Azure SQL DB sync migrations
 class ValidateMigrationInputSqlServerSqlDbSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final Map<String, String>? clientData;
+  final pulumi.Input<Map<String, String>>? clientData;
   /// Task input
-  final ValidateSyncMigrationInputSqlServerTaskInput? input;
+  final pulumi.Input<ValidateSyncMigrationInputSqlServerTaskInput>? input;
   /// Task type.
   /// Expected value is 'ValidateMigrationInput.SqlServer.SqlDb.Sync'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
 
   /// Creates a new [ValidateMigrationInputSqlServerSqlDbSyncTaskProperties].
   /// [clientData] Key value pairs of client data to attach meta data information to task
@@ -25,16 +26,16 @@ class ValidateMigrationInputSqlServerSqlDbSyncTaskProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientData': ?clientData,
-      'input': ?input == null ? null : input!.toMap(),
+      'input': ?pulumi.Input.mapOptionalInputValue<ValidateSyncMigrationInputSqlServerTaskInput, Map<String, dynamic>>(input, (value) => value.toMap()),
       'taskType': taskType,
     };
   }
 
   factory ValidateMigrationInputSqlServerSqlDbSyncTaskProperties.fromMap(Map<String, dynamic> map) {
     return ValidateMigrationInputSqlServerSqlDbSyncTaskProperties(
-      clientData: map['clientData'] == null ? null : (map['clientData'] as Map).cast<String, String>(),
-      input: map['input'] == null ? null : ValidateSyncMigrationInputSqlServerTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      taskType: map['taskType'] as String,
+      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (ValidateSyncMigrationInputSqlServerTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

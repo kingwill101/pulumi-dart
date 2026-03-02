@@ -25,19 +25,13 @@ class SyncState {
   /// [resourceGroupName] The name of the Resource Group where the Storage Sync should exist. Changing this forces a new Storage Sync to be created.
   /// [tags] A mapping of tags which should be assigned to the Storage Sync.
   SyncState({
-    pulumi.Output<String>? incomingTrafficPolicy,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? registeredServers,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      incomingTrafficPolicy = pulumi.Input.asOptionalInput<String>(incomingTrafficPolicy),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      registeredServers = pulumi.Input.asOptionalInput<List<String>>(registeredServers),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.incomingTrafficPolicy,
+    this.location,
+    this.name,
+    this.registeredServers,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SyncState {
 
   factory SyncState.fromMap(Map<String, dynamic> map) {
     return SyncState(
-      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : pulumi.Output.create<String>(map['incomingTrafficPolicy'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      registeredServers: map['registeredServers'] == null ? null : pulumi.Output.create<List<String>>((map['registeredServers'] as List).cast<String>()),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : (map['incomingTrafficPolicy'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      registeredServers: map['registeredServers'] == null ? null : ((map['registeredServers'] as List).cast<String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

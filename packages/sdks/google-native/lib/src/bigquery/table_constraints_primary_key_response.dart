@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Optional] The primary key of the table.
 class TableConstraintsPrimaryKeyResponse {
-  final List<String> columns;
+  final pulumi.Input<List<String>> columns;
 
   /// Creates a new [TableConstraintsPrimaryKeyResponse].
   /// [columns] Required.
@@ -19,7 +20,7 @@ class TableConstraintsPrimaryKeyResponse {
 
   factory TableConstraintsPrimaryKeyResponse.fromMap(Map<String, dynamic> map) {
     return TableConstraintsPrimaryKeyResponse(
-      columns: (map['columns'] as List).cast<String>(),
+      columns: ((map['columns'] as List).cast<String>()).input(),
     );
   }
 }

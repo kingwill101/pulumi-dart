@@ -16,11 +16,9 @@ class GetAlertChannelArgs {
   /// [accountId] The New Relic account ID to operate on.  This allows you to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   /// [name] The name of the alert channel in New Relic.
   GetAlertChannelArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      name = pulumi.Input.asInput<String>(name);
+    this.accountId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAlertChannelArgs {
 
   factory GetAlertChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertChannelArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Server endpoint recall error object
 class ServerEndpointRecallErrorResponse {
   /// Count of occurences of the error
-  final double count;
+  final pulumi.Input<double> count;
   /// Error code (HResult)
-  final int errorCode;
+  final pulumi.Input<int> errorCode;
 
   /// Creates a new [ServerEndpointRecallErrorResponse].
   /// [count] Count of occurences of the error
@@ -25,8 +26,8 @@ class ServerEndpointRecallErrorResponse {
 
   factory ServerEndpointRecallErrorResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointRecallErrorResponse(
-      count: map['count'] as double,
-      errorCode: map['errorCode'] as int,
+      count: (map['count'] as double).input(),
+      errorCode: (map['errorCode'] as int).input(),
     );
   }
 }

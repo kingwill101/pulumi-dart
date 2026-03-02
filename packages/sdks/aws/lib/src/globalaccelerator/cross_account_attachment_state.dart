@@ -34,23 +34,15 @@ class CrossAccountAttachmentState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   CrossAccountAttachmentState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdTime,
-    pulumi.Output<String>? lastModifiedTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? principals,
-    pulumi.Output<List<CrossAccountAttachmentResource>>? resources,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdTime = pulumi.Input.asOptionalInput<String>(createdTime),
-      lastModifiedTime = pulumi.Input.asOptionalInput<String>(lastModifiedTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principals = pulumi.Input.asOptionalInput<List<String>>(principals),
-      resources = pulumi.Input.asOptionalInput<List<CrossAccountAttachmentResource>>(resources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdTime,
+    this.lastModifiedTime,
+    this.name,
+    this.principals,
+    this.resources,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class CrossAccountAttachmentState {
 
   factory CrossAccountAttachmentState.fromMap(Map<String, dynamic> map) {
     return CrossAccountAttachmentState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdTime: map['createdTime'] == null ? null : pulumi.Output.create<String>(map['createdTime'] as String),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastModifiedTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principals: map['principals'] == null ? null : pulumi.Output.create<List<String>>((map['principals'] as List).cast<String>()),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<CrossAccountAttachmentResource>>(pulumi.Input.decodeList<CrossAccountAttachmentResource>(map['resources'], (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<CrossAccountAttachmentResource>(map['resources'], (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

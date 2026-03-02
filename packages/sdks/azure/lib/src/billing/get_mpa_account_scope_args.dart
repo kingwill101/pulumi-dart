@@ -16,11 +16,9 @@ class GetMpaAccountScopeArgs {
   /// [billingAccountName] The Billing Account Name of the MPA account.
   /// [customerName] The Customer Name in the above Billing Account.
   GetMpaAccountScopeArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> customerName,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      customerName = pulumi.Input.asInput<String>(customerName);
+    required this.billingAccountName,
+    required this.customerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMpaAccountScopeArgs {
 
   factory GetMpaAccountScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetMpaAccountScopeArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      customerName: pulumi.Output.create<String>(map['customerName'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      customerName: (map['customerName'] as String).input(),
     );
   }
 }

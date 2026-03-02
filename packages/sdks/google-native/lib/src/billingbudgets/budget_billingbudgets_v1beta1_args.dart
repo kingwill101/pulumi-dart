@@ -37,23 +37,15 @@ class BudgetBillingbudgetsV1beta1Args {
   /// [ownershipScope] Optional.
   /// [thresholdRules] Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
   BudgetBillingbudgetsV1beta1Args({
-    pulumi.Output<GoogleCloudBillingBudgetsV1beta1AllUpdatesRule>? allUpdatesRule,
-    required pulumi.Output<GoogleCloudBillingBudgetsV1beta1BudgetAmount> amount,
-    required pulumi.Output<String> billingAccountId,
-    pulumi.Output<GoogleCloudBillingBudgetsV1beta1Filter>? budgetFilter,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<BudgetOwnershipScopeBillingbudgetsV1beta1>? ownershipScope,
-    pulumi.Output<List<GoogleCloudBillingBudgetsV1beta1ThresholdRule>>? thresholdRules,
-  }) :
-      allUpdatesRule = pulumi.Input.asOptionalInput<GoogleCloudBillingBudgetsV1beta1AllUpdatesRule>(allUpdatesRule),
-      amount = pulumi.Input.asInput<GoogleCloudBillingBudgetsV1beta1BudgetAmount>(amount),
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      budgetFilter = pulumi.Input.asOptionalInput<GoogleCloudBillingBudgetsV1beta1Filter>(budgetFilter),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      ownershipScope = pulumi.Input.asOptionalInput<BudgetOwnershipScopeBillingbudgetsV1beta1>(ownershipScope),
-      thresholdRules = pulumi.Input.asOptionalInput<List<GoogleCloudBillingBudgetsV1beta1ThresholdRule>>(thresholdRules);
+    this.allUpdatesRule,
+    required this.amount,
+    required this.billingAccountId,
+    this.budgetFilter,
+    this.displayName,
+    this.etag,
+    this.ownershipScope,
+    this.thresholdRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class BudgetBillingbudgetsV1beta1Args {
 
   factory BudgetBillingbudgetsV1beta1Args.fromMap(Map<String, dynamic> map) {
     return BudgetBillingbudgetsV1beta1Args(
-      allUpdatesRule: map['allUpdatesRule'] == null ? null : pulumi.Output.create<GoogleCloudBillingBudgetsV1beta1AllUpdatesRule>(GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromMap((map['allUpdatesRule'] as Map).cast<String, dynamic>())),
-      amount: pulumi.Output.create<GoogleCloudBillingBudgetsV1beta1BudgetAmount>(GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromMap((map['amount'] as Map).cast<String, dynamic>())),
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      budgetFilter: map['budgetFilter'] == null ? null : pulumi.Output.create<GoogleCloudBillingBudgetsV1beta1Filter>(GoogleCloudBillingBudgetsV1beta1Filter.fromMap((map['budgetFilter'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      ownershipScope: map['ownershipScope'] == null ? null : pulumi.Output.create<BudgetOwnershipScopeBillingbudgetsV1beta1>(BudgetOwnershipScopeBillingbudgetsV1beta1.fromValue(map['ownershipScope'] as String)),
-      thresholdRules: map['thresholdRules'] == null ? null : pulumi.Output.create<List<GoogleCloudBillingBudgetsV1beta1ThresholdRule>>(pulumi.Input.decodeList<GoogleCloudBillingBudgetsV1beta1ThresholdRule>(map['thresholdRules'], (value) => GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromMap((value as Map).cast<String, dynamic>()))),
+      allUpdatesRule: map['allUpdatesRule'] == null ? null : (GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromMap((map['allUpdatesRule'] as Map).cast<String, dynamic>())).input(),
+      amount: (GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromMap((map['amount'] as Map).cast<String, dynamic>())).input(),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      budgetFilter: map['budgetFilter'] == null ? null : (GoogleCloudBillingBudgetsV1beta1Filter.fromMap((map['budgetFilter'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      ownershipScope: map['ownershipScope'] == null ? null : (BudgetOwnershipScopeBillingbudgetsV1beta1.fromValue(map['ownershipScope'] as String)).input(),
+      thresholdRules: map['thresholdRules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudBillingBudgetsV1beta1ThresholdRule>(map['thresholdRules'], (value) => GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

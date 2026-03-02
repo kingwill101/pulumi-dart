@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'transfer_job_transfer_spec_aws_s3_compatible_data_source.dart';
 import 'transfer_job_transfer_spec_aws_s3_data_source.dart';
 import 'transfer_job_transfer_spec_azure_blob_storage_data_source.dart';
@@ -15,33 +16,33 @@ import 'transfer_job_transfer_spec_transfer_options.dart';
 
 class TransferJobTransferSpec {
   /// An AWS S3 Compatible data source. Structure documented below.
-  final TransferJobTransferSpecAwsS3CompatibleDataSource? awsS3CompatibleDataSource;
+  final pulumi.Input<TransferJobTransferSpecAwsS3CompatibleDataSource>? awsS3CompatibleDataSource;
   /// An AWS S3 data source. Structure documented below.
-  final TransferJobTransferSpecAwsS3DataSource? awsS3DataSource;
+  final pulumi.Input<TransferJobTransferSpecAwsS3DataSource>? awsS3DataSource;
   /// An Azure Blob Storage data source. Structure documented below.
-  final TransferJobTransferSpecAzureBlobStorageDataSource? azureBlobStorageDataSource;
+  final pulumi.Input<TransferJobTransferSpecAzureBlobStorageDataSource>? azureBlobStorageDataSource;
   /// A Google Cloud Storage data sink. Structure documented below.
-  final TransferJobTransferSpecGcsDataSink? gcsDataSink;
+  final pulumi.Input<TransferJobTransferSpecGcsDataSink>? gcsDataSink;
   /// A Google Cloud Storage data source. Structure documented below.
-  final TransferJobTransferSpecGcsDataSource? gcsDataSource;
+  final pulumi.Input<TransferJobTransferSpecGcsDataSource>? gcsDataSource;
   /// An HDFS data source. Structure documented below.
-  final TransferJobTransferSpecHdfsDataSource? hdfsDataSource;
+  final pulumi.Input<TransferJobTransferSpecHdfsDataSource>? hdfsDataSource;
   /// A HTTP URL data source. Structure documented below.
-  final TransferJobTransferSpecHttpDataSource? httpDataSource;
+  final pulumi.Input<TransferJobTransferSpecHttpDataSource>? httpDataSource;
   /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
-  final TransferJobTransferSpecObjectConditions? objectConditions;
+  final pulumi.Input<TransferJobTransferSpecObjectConditions>? objectConditions;
   /// A POSIX data sink. Structure documented below.
-  final TransferJobTransferSpecPosixDataSink? posixDataSink;
+  final pulumi.Input<TransferJobTransferSpecPosixDataSink>? posixDataSink;
   /// A POSIX filesystem data source. Structure documented below.
-  final TransferJobTransferSpecPosixDataSource? posixDataSource;
+  final pulumi.Input<TransferJobTransferSpecPosixDataSource>? posixDataSource;
   /// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
-  final String? sinkAgentPoolName;
+  final pulumi.Input<String>? sinkAgentPoolName;
   /// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
-  final String? sourceAgentPoolName;
+  final pulumi.Input<String>? sourceAgentPoolName;
   /// Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
-  final TransferJobTransferSpecTransferManifest? transferManifest;
+  final pulumi.Input<TransferJobTransferSpecTransferManifest>? transferManifest;
   /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
-  final TransferJobTransferSpecTransferOptions? transferOptions;
+  final pulumi.Input<TransferJobTransferSpecTransferOptions>? transferOptions;
 
   /// Creates a new [TransferJobTransferSpec].
   /// [awsS3CompatibleDataSource] An AWS S3 Compatible data source. Structure documented below.
@@ -77,39 +78,39 @@ class TransferJobTransferSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsS3CompatibleDataSource': ?awsS3CompatibleDataSource == null ? null : awsS3CompatibleDataSource!.toMap(),
-      'awsS3DataSource': ?awsS3DataSource == null ? null : awsS3DataSource!.toMap(),
-      'azureBlobStorageDataSource': ?azureBlobStorageDataSource == null ? null : azureBlobStorageDataSource!.toMap(),
-      'gcsDataSink': ?gcsDataSink == null ? null : gcsDataSink!.toMap(),
-      'gcsDataSource': ?gcsDataSource == null ? null : gcsDataSource!.toMap(),
-      'hdfsDataSource': ?hdfsDataSource == null ? null : hdfsDataSource!.toMap(),
-      'httpDataSource': ?httpDataSource == null ? null : httpDataSource!.toMap(),
-      'objectConditions': ?objectConditions == null ? null : objectConditions!.toMap(),
-      'posixDataSink': ?posixDataSink == null ? null : posixDataSink!.toMap(),
-      'posixDataSource': ?posixDataSource == null ? null : posixDataSource!.toMap(),
+      'awsS3CompatibleDataSource': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecAwsS3CompatibleDataSource, Map<String, dynamic>>(awsS3CompatibleDataSource, (value) => value.toMap()),
+      'awsS3DataSource': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecAwsS3DataSource, Map<String, dynamic>>(awsS3DataSource, (value) => value.toMap()),
+      'azureBlobStorageDataSource': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecAzureBlobStorageDataSource, Map<String, dynamic>>(azureBlobStorageDataSource, (value) => value.toMap()),
+      'gcsDataSink': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecGcsDataSink, Map<String, dynamic>>(gcsDataSink, (value) => value.toMap()),
+      'gcsDataSource': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecGcsDataSource, Map<String, dynamic>>(gcsDataSource, (value) => value.toMap()),
+      'hdfsDataSource': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecHdfsDataSource, Map<String, dynamic>>(hdfsDataSource, (value) => value.toMap()),
+      'httpDataSource': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecHttpDataSource, Map<String, dynamic>>(httpDataSource, (value) => value.toMap()),
+      'objectConditions': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecObjectConditions, Map<String, dynamic>>(objectConditions, (value) => value.toMap()),
+      'posixDataSink': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecPosixDataSink, Map<String, dynamic>>(posixDataSink, (value) => value.toMap()),
+      'posixDataSource': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecPosixDataSource, Map<String, dynamic>>(posixDataSource, (value) => value.toMap()),
       'sinkAgentPoolName': ?sinkAgentPoolName,
       'sourceAgentPoolName': ?sourceAgentPoolName,
-      'transferManifest': ?transferManifest == null ? null : transferManifest!.toMap(),
-      'transferOptions': ?transferOptions == null ? null : transferOptions!.toMap(),
+      'transferManifest': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecTransferManifest, Map<String, dynamic>>(transferManifest, (value) => value.toMap()),
+      'transferOptions': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecTransferOptions, Map<String, dynamic>>(transferOptions, (value) => value.toMap()),
     };
   }
 
   factory TransferJobTransferSpec.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpec(
-      awsS3CompatibleDataSource: map['awsS3CompatibleDataSource'] == null ? null : TransferJobTransferSpecAwsS3CompatibleDataSource.fromMap((map['awsS3CompatibleDataSource'] as Map).cast<String, dynamic>()),
-      awsS3DataSource: map['awsS3DataSource'] == null ? null : TransferJobTransferSpecAwsS3DataSource.fromMap((map['awsS3DataSource'] as Map).cast<String, dynamic>()),
-      azureBlobStorageDataSource: map['azureBlobStorageDataSource'] == null ? null : TransferJobTransferSpecAzureBlobStorageDataSource.fromMap((map['azureBlobStorageDataSource'] as Map).cast<String, dynamic>()),
-      gcsDataSink: map['gcsDataSink'] == null ? null : TransferJobTransferSpecGcsDataSink.fromMap((map['gcsDataSink'] as Map).cast<String, dynamic>()),
-      gcsDataSource: map['gcsDataSource'] == null ? null : TransferJobTransferSpecGcsDataSource.fromMap((map['gcsDataSource'] as Map).cast<String, dynamic>()),
-      hdfsDataSource: map['hdfsDataSource'] == null ? null : TransferJobTransferSpecHdfsDataSource.fromMap((map['hdfsDataSource'] as Map).cast<String, dynamic>()),
-      httpDataSource: map['httpDataSource'] == null ? null : TransferJobTransferSpecHttpDataSource.fromMap((map['httpDataSource'] as Map).cast<String, dynamic>()),
-      objectConditions: map['objectConditions'] == null ? null : TransferJobTransferSpecObjectConditions.fromMap((map['objectConditions'] as Map).cast<String, dynamic>()),
-      posixDataSink: map['posixDataSink'] == null ? null : TransferJobTransferSpecPosixDataSink.fromMap((map['posixDataSink'] as Map).cast<String, dynamic>()),
-      posixDataSource: map['posixDataSource'] == null ? null : TransferJobTransferSpecPosixDataSource.fromMap((map['posixDataSource'] as Map).cast<String, dynamic>()),
-      sinkAgentPoolName: map['sinkAgentPoolName'] == null ? null : map['sinkAgentPoolName'] as String,
-      sourceAgentPoolName: map['sourceAgentPoolName'] == null ? null : map['sourceAgentPoolName'] as String,
-      transferManifest: map['transferManifest'] == null ? null : TransferJobTransferSpecTransferManifest.fromMap((map['transferManifest'] as Map).cast<String, dynamic>()),
-      transferOptions: map['transferOptions'] == null ? null : TransferJobTransferSpecTransferOptions.fromMap((map['transferOptions'] as Map).cast<String, dynamic>()),
+      awsS3CompatibleDataSource: map['awsS3CompatibleDataSource'] == null ? null : (TransferJobTransferSpecAwsS3CompatibleDataSource.fromMap((map['awsS3CompatibleDataSource'] as Map).cast<String, dynamic>())).input(),
+      awsS3DataSource: map['awsS3DataSource'] == null ? null : (TransferJobTransferSpecAwsS3DataSource.fromMap((map['awsS3DataSource'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorageDataSource: map['azureBlobStorageDataSource'] == null ? null : (TransferJobTransferSpecAzureBlobStorageDataSource.fromMap((map['azureBlobStorageDataSource'] as Map).cast<String, dynamic>())).input(),
+      gcsDataSink: map['gcsDataSink'] == null ? null : (TransferJobTransferSpecGcsDataSink.fromMap((map['gcsDataSink'] as Map).cast<String, dynamic>())).input(),
+      gcsDataSource: map['gcsDataSource'] == null ? null : (TransferJobTransferSpecGcsDataSource.fromMap((map['gcsDataSource'] as Map).cast<String, dynamic>())).input(),
+      hdfsDataSource: map['hdfsDataSource'] == null ? null : (TransferJobTransferSpecHdfsDataSource.fromMap((map['hdfsDataSource'] as Map).cast<String, dynamic>())).input(),
+      httpDataSource: map['httpDataSource'] == null ? null : (TransferJobTransferSpecHttpDataSource.fromMap((map['httpDataSource'] as Map).cast<String, dynamic>())).input(),
+      objectConditions: map['objectConditions'] == null ? null : (TransferJobTransferSpecObjectConditions.fromMap((map['objectConditions'] as Map).cast<String, dynamic>())).input(),
+      posixDataSink: map['posixDataSink'] == null ? null : (TransferJobTransferSpecPosixDataSink.fromMap((map['posixDataSink'] as Map).cast<String, dynamic>())).input(),
+      posixDataSource: map['posixDataSource'] == null ? null : (TransferJobTransferSpecPosixDataSource.fromMap((map['posixDataSource'] as Map).cast<String, dynamic>())).input(),
+      sinkAgentPoolName: map['sinkAgentPoolName'] == null ? null : (map['sinkAgentPoolName'] as String).input(),
+      sourceAgentPoolName: map['sourceAgentPoolName'] == null ? null : (map['sourceAgentPoolName'] as String).input(),
+      transferManifest: map['transferManifest'] == null ? null : (TransferJobTransferSpecTransferManifest.fromMap((map['transferManifest'] as Map).cast<String, dynamic>())).input(),
+      transferOptions: map['transferOptions'] == null ? null : (TransferJobTransferSpecTransferOptions.fromMap((map['transferOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

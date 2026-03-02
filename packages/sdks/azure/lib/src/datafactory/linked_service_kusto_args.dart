@@ -55,33 +55,20 @@ class LinkedServiceKustoArgs {
   /// [tenant] The service principal tenant id or name in which to authenticate against the Kusto Database.
   /// [useManagedIdentity] Whether to use the Data Factory's managed identity to authenticate against the Kusto Database.
   LinkedServiceKustoArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    required pulumi.Output<String> kustoDatabaseName,
-    required pulumi.Output<String> kustoEndpoint,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? servicePrincipalId,
-    pulumi.Output<String>? servicePrincipalKey,
-    pulumi.Output<String>? tenant,
-    pulumi.Output<bool>? useManagedIdentity,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      kustoDatabaseName = pulumi.Input.asInput<String>(kustoDatabaseName),
-      kustoEndpoint = pulumi.Input.asInput<String>(kustoEndpoint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      servicePrincipalId = pulumi.Input.asOptionalInput<String>(servicePrincipalId),
-      servicePrincipalKey = pulumi.Input.asOptionalInput<String>(servicePrincipalKey),
-      tenant = pulumi.Input.asOptionalInput<String>(tenant),
-      useManagedIdentity = pulumi.Input.asOptionalInput<bool>(useManagedIdentity);
+    this.additionalProperties,
+    this.annotations,
+    required this.dataFactoryId,
+    this.description,
+    this.integrationRuntimeName,
+    required this.kustoDatabaseName,
+    required this.kustoEndpoint,
+    this.name,
+    this.parameters,
+    this.servicePrincipalId,
+    this.servicePrincipalKey,
+    this.tenant,
+    this.useManagedIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class LinkedServiceKustoArgs {
 
   factory LinkedServiceKustoArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceKustoArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      kustoDatabaseName: pulumi.Output.create<String>(map['kustoDatabaseName'] as String),
-      kustoEndpoint: pulumi.Output.create<String>(map['kustoEndpoint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalKey'] as String),
-      tenant: map['tenant'] == null ? null : pulumi.Output.create<String>(map['tenant'] as String),
-      useManagedIdentity: map['useManagedIdentity'] == null ? null : pulumi.Output.create<bool>(map['useManagedIdentity'] as bool),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      kustoDatabaseName: (map['kustoDatabaseName'] as String).input(),
+      kustoEndpoint: (map['kustoEndpoint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey'] as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      useManagedIdentity: map['useManagedIdentity'] == null ? null : (map['useManagedIdentity'] as bool).input(),
     );
   }
 }

@@ -53,35 +53,21 @@ class IotHubDataConnectionArgs {
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   /// [workspaceName] The name of the workspace.
   IotHubDataConnectionArgs({
-    required pulumi.Output<String> consumerGroup,
-    pulumi.Output<String>? dataConnectionName,
-    pulumi.Output<String>? dataFormat,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<List<String>>? eventSystemProperties,
-    required pulumi.Output<String> iotHubResourceId,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> kustoPoolName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mappingRuleName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sharedAccessPolicyName,
-    pulumi.Output<String>? tableName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      consumerGroup = pulumi.Input.asInput<String>(consumerGroup),
-      dataConnectionName = pulumi.Input.asOptionalInput<String>(dataConnectionName),
-      dataFormat = pulumi.Input.asOptionalInput<String>(dataFormat),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      eventSystemProperties = pulumi.Input.asOptionalInput<List<String>>(eventSystemProperties),
-      iotHubResourceId = pulumi.Input.asInput<String>(iotHubResourceId),
-      kind = pulumi.Input.asInput<String>(kind),
-      kustoPoolName = pulumi.Input.asInput<String>(kustoPoolName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mappingRuleName = pulumi.Input.asOptionalInput<String>(mappingRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sharedAccessPolicyName = pulumi.Input.asInput<String>(sharedAccessPolicyName),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.consumerGroup,
+    this.dataConnectionName,
+    this.dataFormat,
+    required this.databaseName,
+    this.eventSystemProperties,
+    required this.iotHubResourceId,
+    required this.kind,
+    required this.kustoPoolName,
+    this.location,
+    this.mappingRuleName,
+    required this.resourceGroupName,
+    required this.sharedAccessPolicyName,
+    this.tableName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class IotHubDataConnectionArgs {
 
   factory IotHubDataConnectionArgs.fromMap(Map<String, dynamic> map) {
     return IotHubDataConnectionArgs(
-      consumerGroup: pulumi.Output.create<String>(map['consumerGroup'] as String),
-      dataConnectionName: map['dataConnectionName'] == null ? null : pulumi.Output.create<String>(map['dataConnectionName'] as String),
-      dataFormat: map['dataFormat'] == null ? null : pulumi.Output.create<String>(map['dataFormat'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      eventSystemProperties: map['eventSystemProperties'] == null ? null : pulumi.Output.create<List<String>>((map['eventSystemProperties'] as List).cast<String>()),
-      iotHubResourceId: pulumi.Output.create<String>(map['iotHubResourceId'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      kustoPoolName: pulumi.Output.create<String>(map['kustoPoolName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mappingRuleName: map['mappingRuleName'] == null ? null : pulumi.Output.create<String>(map['mappingRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharedAccessPolicyName: pulumi.Output.create<String>(map['sharedAccessPolicyName'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      consumerGroup: (map['consumerGroup'] as String).input(),
+      dataConnectionName: map['dataConnectionName'] == null ? null : (map['dataConnectionName'] as String).input(),
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      eventSystemProperties: map['eventSystemProperties'] == null ? null : ((map['eventSystemProperties'] as List).cast<String>()).input(),
+      iotHubResourceId: (map['iotHubResourceId'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      kustoPoolName: (map['kustoPoolName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sharedAccessPolicyName: (map['sharedAccessPolicyName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

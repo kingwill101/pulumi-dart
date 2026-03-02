@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotGuardrailContentFilter {
   /// (Output)
   /// List of banned phrases. Applies to both user inputs and agent responses.
-  final List<String>? bannedContents;
+  final pulumi.Input<List<String>>? bannedContents;
   /// (Output)
   /// List of banned phrases. Applies only to agent responses.
-  final List<String>? bannedContentsInAgentResponses;
+  final pulumi.Input<List<String>>? bannedContentsInAgentResponses;
   /// (Output)
   /// List of banned phrases. Applies only to user inputs.
-  final List<String>? bannedContentsInUserInputs;
+  final pulumi.Input<List<String>>? bannedContentsInUserInputs;
   /// (Output)
   /// If true, diacritics are ignored during matching.
-  final bool? disregardDiacritics;
+  final pulumi.Input<bool>? disregardDiacritics;
   /// (Output)
   /// Match type for the content filter.
   /// Possible values:
   /// SIMPLE_STRING_MATCH
   /// WORD_BOUNDARY_STRING_MATCH
   /// REGEXP_MATCH
-  final String? matchType;
+  final pulumi.Input<String>? matchType;
 
   /// Creates a new [AppVersionSnapshotGuardrailContentFilter].
   /// [bannedContents] (Output)
@@ -48,11 +49,11 @@ class AppVersionSnapshotGuardrailContentFilter {
 
   factory AppVersionSnapshotGuardrailContentFilter.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailContentFilter(
-      bannedContents: map['bannedContents'] == null ? null : (map['bannedContents'] as List).cast<String>(),
-      bannedContentsInAgentResponses: map['bannedContentsInAgentResponses'] == null ? null : (map['bannedContentsInAgentResponses'] as List).cast<String>(),
-      bannedContentsInUserInputs: map['bannedContentsInUserInputs'] == null ? null : (map['bannedContentsInUserInputs'] as List).cast<String>(),
-      disregardDiacritics: map['disregardDiacritics'] == null ? null : map['disregardDiacritics'] as bool,
-      matchType: map['matchType'] == null ? null : map['matchType'] as String,
+      bannedContents: map['bannedContents'] == null ? null : ((map['bannedContents'] as List).cast<String>()).input(),
+      bannedContentsInAgentResponses: map['bannedContentsInAgentResponses'] == null ? null : ((map['bannedContentsInAgentResponses'] as List).cast<String>()).input(),
+      bannedContentsInUserInputs: map['bannedContentsInUserInputs'] == null ? null : ((map['bannedContentsInUserInputs'] as List).cast<String>()).input(),
+      disregardDiacritics: map['disregardDiacritics'] == null ? null : (map['disregardDiacritics'] as bool).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
     );
   }
 }

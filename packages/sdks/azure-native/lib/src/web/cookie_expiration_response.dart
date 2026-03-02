@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the session cookie's expiration.
 class CookieExpirationResponse {
   /// The convention used when determining the session cookie's expiration.
-  final String? convention;
+  final pulumi.Input<String>? convention;
   /// The time after the request is made when the session cookie should expire.
-  final String? timeToExpiration;
+  final pulumi.Input<String>? timeToExpiration;
 
   /// Creates a new [CookieExpirationResponse].
   /// [convention] The convention used when determining the session cookie's expiration.
@@ -25,8 +26,8 @@ class CookieExpirationResponse {
 
   factory CookieExpirationResponse.fromMap(Map<String, dynamic> map) {
     return CookieExpirationResponse(
-      convention: map['convention'] == null ? null : map['convention'] as String,
-      timeToExpiration: map['timeToExpiration'] == null ? null : map['timeToExpiration'] as String,
+      convention: map['convention'] == null ? null : (map['convention'] as String).input(),
+      timeToExpiration: map['timeToExpiration'] == null ? null : (map['timeToExpiration'] as String).input(),
     );
   }
 }

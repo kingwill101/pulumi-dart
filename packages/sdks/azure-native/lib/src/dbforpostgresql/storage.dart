@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage properties of a server.
 class Storage {
   /// Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
-  final String? autoGrow;
+  final pulumi.Input<String>? autoGrow;
   /// Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
-  final int? iops;
+  final pulumi.Input<int>? iops;
   /// Size of storage assigned to a server.
-  final int? storageSizeGB;
+  final pulumi.Input<int>? storageSizeGB;
   /// Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
-  final int? throughput;
+  final pulumi.Input<int>? throughput;
   /// Storage tier of a server.
-  final String? tier;
+  final pulumi.Input<String>? tier;
   /// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [Storage].
   /// [autoGrow] Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
@@ -45,12 +46,12 @@ class Storage {
 
   factory Storage.fromMap(Map<String, dynamic> map) {
     return Storage(
-      autoGrow: map['autoGrow'] == null ? null : map['autoGrow'] as String,
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      storageSizeGB: map['storageSizeGB'] == null ? null : map['storageSizeGB'] as int,
-      throughput: map['throughput'] == null ? null : map['throughput'] as int,
-      tier: map['tier'] == null ? null : map['tier'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      autoGrow: map['autoGrow'] == null ? null : (map['autoGrow'] as String).input(),
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      storageSizeGB: map['storageSizeGB'] == null ? null : (map['storageSizeGB'] as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

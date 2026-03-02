@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcSubnetIpv6 {
   /// The IPv6 range assigned to this subnet.
-  final String? allocatedRange;
+  final pulumi.Input<String>? allocatedRange;
   /// An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
-  final String? range;
+  final pulumi.Input<String>? range;
 
   /// Creates a new [VpcSubnetIpv6].
   /// [allocatedRange] The IPv6 range assigned to this subnet.
@@ -24,8 +25,8 @@ class VpcSubnetIpv6 {
 
   factory VpcSubnetIpv6.fromMap(Map<String, dynamic> map) {
     return VpcSubnetIpv6(
-      allocatedRange: map['allocatedRange'] == null ? null : map['allocatedRange'] as String,
-      range: map['range'] == null ? null : map['range'] as String,
+      allocatedRange: map['allocatedRange'] == null ? null : (map['allocatedRange'] as String).input(),
+      range: map['range'] == null ? null : (map['range'] as String).input(),
     );
   }
 }

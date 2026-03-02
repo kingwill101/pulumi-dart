@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleCompliance {
   /// The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
-  final String? complianceType;
+  final pulumi.Input<String>? complianceType;
   /// The count of compliance.
-  final int? count;
+  final pulumi.Input<int>? count;
 
   /// Creates a new [RuleCompliance].
   /// [complianceType] The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
@@ -24,8 +25,8 @@ class RuleCompliance {
 
   factory RuleCompliance.fromMap(Map<String, dynamic> map) {
     return RuleCompliance(
-      complianceType: map['complianceType'] == null ? null : map['complianceType'] as String,
-      count: map['count'] == null ? null : map['count'] as int,
+      complianceType: map['complianceType'] == null ? null : (map['complianceType'] as String).input(),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
     );
   }
 }

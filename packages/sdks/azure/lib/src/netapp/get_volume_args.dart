@@ -25,17 +25,12 @@ class GetVolumeArgs {
   /// [resourceGroupName] The Name of the Resource Group where the NetApp Volume exists.
   /// [securityStyle] Volume security style
   GetVolumeArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? securityStyle,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      name = pulumi.Input.asInput<String>(name),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityStyle = pulumi.Input.asOptionalInput<String>(securityStyle);
+    required this.accountName,
+    required this.name,
+    required this.poolName,
+    required this.resourceGroupName,
+    this.securityStyle,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityStyle: map['securityStyle'] == null ? null : pulumi.Output.create<String>(map['securityStyle'] as String),
+      accountName: (map['accountName'] as String).input(),
+      name: (map['name'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityStyle: map['securityStyle'] == null ? null : (map['securityStyle'] as String).input(),
     );
   }
 }

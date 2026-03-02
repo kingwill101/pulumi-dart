@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepEcsCapacityIncreaseConfigService {
-  final String clusterArn;
-  final String? crossAccountRole;
-  final String? externalId;
+  final pulumi.Input<String> clusterArn;
+  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<String>? externalId;
   /// ARN of the ECS service.
-  final String serviceArn;
+  final pulumi.Input<String> serviceArn;
 
   /// Creates a new [PlanWorkflowStepEcsCapacityIncreaseConfigService].
   /// [clusterArn] Required.
@@ -31,10 +32,10 @@ class PlanWorkflowStepEcsCapacityIncreaseConfigService {
 
   factory PlanWorkflowStepEcsCapacityIncreaseConfigService.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEcsCapacityIncreaseConfigService(
-      clusterArn: map['clusterArn'] as String,
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      serviceArn: map['serviceArn'] as String,
+      clusterArn: (map['clusterArn'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      serviceArn: (map['serviceArn'] as String).input(),
     );
   }
 }

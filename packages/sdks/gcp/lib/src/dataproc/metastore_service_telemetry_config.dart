@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetastoreServiceTelemetryConfig {
   /// The output format of the Dataproc Metastore service's logs.
   /// Default value is `JSON`.
   /// Possible values are: `LEGACY`, `JSON`.
-  final String? logFormat;
+  final pulumi.Input<String>? logFormat;
 
   /// Creates a new [MetastoreServiceTelemetryConfig].
   /// [logFormat] The output format of the Dataproc Metastore service's logs.
@@ -21,7 +22,7 @@ class MetastoreServiceTelemetryConfig {
 
   factory MetastoreServiceTelemetryConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceTelemetryConfig(
-      logFormat: map['logFormat'] == null ? null : map['logFormat'] as String,
+      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
     );
   }
 }

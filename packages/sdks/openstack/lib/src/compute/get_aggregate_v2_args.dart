@@ -23,15 +23,11 @@ class GetAggregateV2Args {
   /// [name] The name of the host aggregate.
   /// [region] The region in which to obtain the V2 Compute client.
   GetAggregateV2Args({
-    pulumi.Output<List<String>>? hosts,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      hosts = pulumi.Input.asOptionalInput<List<String>>(hosts),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.hosts,
+    this.metadata,
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetAggregateV2Args {
 
   factory GetAggregateV2Args.fromMap(Map<String, dynamic> map) {
     return GetAggregateV2Args(
-      hosts: map['hosts'] == null ? null : pulumi.Output.create<List<String>>((map['hosts'] as List).cast<String>()),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

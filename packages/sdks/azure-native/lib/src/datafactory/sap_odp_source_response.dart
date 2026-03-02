@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity source for SAP ODP source.
 class SapOdpSourceResponse {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The extraction mode. Allowed value include: Full, Delta and Recovery. The default value is Full. Type: string (or Expression with resultType string).
-  final dynamic extractionMode;
+  final pulumi.Input<dynamic>? extractionMode;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specifies the columns to be selected from source data. Type: array of objects(projection) (or Expression with resultType array of objects).
-  final dynamic projection;
+  final pulumi.Input<dynamic>? projection;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic queryTimeout;
+  final pulumi.Input<dynamic>? queryTimeout;
   /// Specifies the selection conditions from source data. Type: array of objects(selection) (or Expression with resultType array of objects).
-  final dynamic selection;
+  final pulumi.Input<dynamic>? selection;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// The subscriber process to manage the delta process. Type: string (or Expression with resultType string).
-  final dynamic subscriberProcess;
+  final pulumi.Input<dynamic>? subscriberProcess;
   /// Copy source type.
   /// Expected value is 'SapOdpSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SapOdpSourceResponse].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -71,17 +72,17 @@ class SapOdpSourceResponse {
 
   factory SapOdpSourceResponse.fromMap(Map<String, dynamic> map) {
     return SapOdpSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      extractionMode: map['extractionMode'] == null ? null : map['extractionMode'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      projection: map['projection'] == null ? null : map['projection'],
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
-      selection: map['selection'] == null ? null : map['selection'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      subscriberProcess: map['subscriberProcess'] == null ? null : map['subscriberProcess'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      extractionMode: map['extractionMode'] == null ? null : (map['extractionMode']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      projection: map['projection'] == null ? null : (map['projection']).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
+      selection: map['selection'] == null ? null : (map['selection']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      subscriberProcess: map['subscriberProcess'] == null ? null : (map['subscriberProcess']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

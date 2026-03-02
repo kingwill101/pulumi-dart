@@ -34,25 +34,16 @@ class ConnectionState {
   /// [scopes] The Scopes at which the connection should be applied.
   /// [serviceProviderName] The name of the service provider that will be associated with this connection. Changing this forces a new resource to be created.
   ConnectionState({
-    pulumi.Output<String>? botName,
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? scopes,
-    pulumi.Output<String>? serviceProviderName,
-  }) :
-      botName = pulumi.Input.asOptionalInput<String>(botName),
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      scopes = pulumi.Input.asOptionalInput<String>(scopes),
-      serviceProviderName = pulumi.Input.asOptionalInput<String>(serviceProviderName);
+    this.botName,
+    this.clientId,
+    this.clientSecret,
+    this.location,
+    this.name,
+    this.parameters,
+    this.resourceGroupName,
+    this.scopes,
+    this.serviceProviderName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      botName: map['botName'] == null ? null : pulumi.Output.create<String>(map['botName'] as String),
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<String>(map['scopes'] as String),
-      serviceProviderName: map['serviceProviderName'] == null ? null : pulumi.Output.create<String>(map['serviceProviderName'] as String),
+      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
+      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName'] as String).input(),
     );
   }
 }

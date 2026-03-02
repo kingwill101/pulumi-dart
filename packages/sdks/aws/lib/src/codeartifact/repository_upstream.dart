@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryUpstream {
   /// The name of an upstream repository.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
 
   /// Creates a new [RepositoryUpstream].
   /// [repositoryName] The name of an upstream repository.
@@ -19,7 +20,7 @@ class RepositoryUpstream {
 
   factory RepositoryUpstream.fromMap(Map<String, dynamic> map) {
     return RepositoryUpstream(
-      repositoryName: map['repositoryName'] as String,
+      repositoryName: (map['repositoryName'] as String).input(),
     );
   }
 }

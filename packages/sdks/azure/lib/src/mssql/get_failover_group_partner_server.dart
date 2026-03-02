@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFailoverGroupPartnerServer {
   /// The ID of the partner SQL server.
-  final String id;
+  final pulumi.Input<String> id;
   /// The location of the partner server.
-  final String location;
+  final pulumi.Input<String> location;
   /// The replication role of the partner server.
-  final String role;
+  final pulumi.Input<String> role;
 
   /// Creates a new [GetFailoverGroupPartnerServer].
   /// [id] The ID of the partner SQL server.
@@ -29,9 +30,9 @@ class GetFailoverGroupPartnerServer {
 
   factory GetFailoverGroupPartnerServer.fromMap(Map<String, dynamic> map) {
     return GetFailoverGroupPartnerServer(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      role: map['role'] as String,
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

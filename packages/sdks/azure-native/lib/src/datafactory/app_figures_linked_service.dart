@@ -8,24 +8,24 @@ import 'parameter_specification.dart';
 /// Linked service for AppFigures.
 class AppFiguresLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The client key for the AppFigures source.
-  final AzureKeyVaultSecretReference clientKey;
+  final pulumi.Input<AzureKeyVaultSecretReference> clientKey;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The password of the AppFigures source.
-  final AzureKeyVaultSecretReference password;
+  final pulumi.Input<AzureKeyVaultSecretReference> password;
   /// Type of linked service.
   /// Expected value is 'AppFigures'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The username of the Appfigures source. Type: string (or Expression with resultType string).
-  final dynamic userName;
+  final pulumi.Input<dynamic> userName;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AppFiguresLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -52,11 +52,11 @@ class AppFiguresLinkedService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'clientKey': clientKey.toMap(),
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'clientKey': pulumi.Input.mapInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(clientKey, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': password.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': pulumi.Input.mapInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'type': type,
       'userName': userName,
       'version': ?version,
@@ -65,15 +65,15 @@ class AppFiguresLinkedService {
 
   factory AppFiguresLinkedService.fromMap(Map<String, dynamic> map) {
     return AppFiguresLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      clientKey: AzureKeyVaultSecretReference.fromMap((map['clientKey'] as Map).cast<String, dynamic>()),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      userName: map['userName'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      clientKey: (AzureKeyVaultSecretReference.fromMap((map['clientKey'] as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      userName: (map['userName']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

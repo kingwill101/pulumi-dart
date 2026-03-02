@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'format_types.dart';
 
 /// Connector mapping property format.
 class ConnectorMappingFormat {
   /// The oData language.
-  final String? acceptLanguage;
+  final pulumi.Input<String>? acceptLanguage;
   /// Character separating array elements.
-  final String? arraySeparator;
+  final pulumi.Input<String>? arraySeparator;
   /// The character that signifies a break between columns.
-  final String? columnDelimiter;
+  final pulumi.Input<String>? columnDelimiter;
   /// The type mapping format.
-  final FormatTypes formatType;
+  final pulumi.Input<FormatTypes> formatType;
   /// Quote character, used to indicate enquoted fields.
-  final String? quoteCharacter;
+  final pulumi.Input<String>? quoteCharacter;
   /// Escape character for quotes, can be the same as the quoteCharacter.
-  final String? quoteEscapeCharacter;
+  final pulumi.Input<String>? quoteEscapeCharacter;
 
   /// Creates a new [ConnectorMappingFormat].
   /// [acceptLanguage] The oData language.
@@ -38,7 +39,7 @@ class ConnectorMappingFormat {
       'acceptLanguage': ?acceptLanguage,
       'arraySeparator': ?arraySeparator,
       'columnDelimiter': ?columnDelimiter,
-      'formatType': formatType.value,
+      'formatType': pulumi.Input.mapInputValue<FormatTypes, String>(formatType, (value) => value.value),
       'quoteCharacter': ?quoteCharacter,
       'quoteEscapeCharacter': ?quoteEscapeCharacter,
     };
@@ -46,12 +47,12 @@ class ConnectorMappingFormat {
 
   factory ConnectorMappingFormat.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingFormat(
-      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
-      arraySeparator: map['arraySeparator'] == null ? null : map['arraySeparator'] as String,
-      columnDelimiter: map['columnDelimiter'] == null ? null : map['columnDelimiter'] as String,
-      formatType: FormatTypes.fromValue(map['formatType'] as String),
-      quoteCharacter: map['quoteCharacter'] == null ? null : map['quoteCharacter'] as String,
-      quoteEscapeCharacter: map['quoteEscapeCharacter'] == null ? null : map['quoteEscapeCharacter'] as String,
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      arraySeparator: map['arraySeparator'] == null ? null : (map['arraySeparator'] as String).input(),
+      columnDelimiter: map['columnDelimiter'] == null ? null : (map['columnDelimiter'] as String).input(),
+      formatType: (FormatTypes.fromValue(map['formatType'] as String)).input(),
+      quoteCharacter: map['quoteCharacter'] == null ? null : (map['quoteCharacter'] as String).input(),
+      quoteEscapeCharacter: map['quoteEscapeCharacter'] == null ? null : (map['quoteEscapeCharacter'] as String).input(),
     );
   }
 }

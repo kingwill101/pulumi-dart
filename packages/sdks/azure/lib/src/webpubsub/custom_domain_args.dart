@@ -24,15 +24,11 @@ class CustomDomainArgs {
   /// [webPubsubCustomCertificateId] Specifies the Web PubSub Custom Certificate ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   /// [webPubsubId] Specifies the Web PubSub ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   CustomDomainArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> webPubsubCustomCertificateId,
-    required pulumi.Output<String> webPubsubId,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      webPubsubCustomCertificateId = pulumi.Input.asInput<String>(webPubsubCustomCertificateId),
-      webPubsubId = pulumi.Input.asInput<String>(webPubsubId);
+    required this.domainName,
+    this.name,
+    required this.webPubsubCustomCertificateId,
+    required this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      webPubsubCustomCertificateId: pulumi.Output.create<String>(map['webPubsubCustomCertificateId'] as String),
-      webPubsubId: pulumi.Output.create<String>(map['webPubsubId'] as String),
+      domainName: (map['domainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      webPubsubCustomCertificateId: (map['webPubsubCustomCertificateId'] as String).input(),
+      webPubsubId: (map['webPubsubId'] as String).input(),
     );
   }
 }

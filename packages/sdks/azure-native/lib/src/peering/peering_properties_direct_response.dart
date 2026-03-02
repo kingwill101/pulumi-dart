@@ -7,13 +7,13 @@ import 'sub_resource_response.dart';
 /// The properties that define a direct peering.
 class PeeringPropertiesDirectResponse {
   /// The set of connections that constitute a direct peering.
-  final List<DirectConnectionResponse>? connections;
+  final pulumi.Input<List<DirectConnectionResponse>>? connections;
   /// The type of direct peering.
-  final String? directPeeringType;
+  final pulumi.Input<String>? directPeeringType;
   /// The reference of the peer ASN.
-  final SubResourceResponse? peerAsn;
+  final pulumi.Input<SubResourceResponse>? peerAsn;
   /// The flag that indicates whether or not the peering is used for peering service.
-  final bool useForPeeringService;
+  final pulumi.Input<bool> useForPeeringService;
 
   /// Creates a new [PeeringPropertiesDirectResponse].
   /// [connections] The set of connections that constitute a direct peering.
@@ -29,19 +29,19 @@ class PeeringPropertiesDirectResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections': ?connections == null ? null : pulumi.Input.encodeList<DirectConnectionResponse, Map<String, dynamic>>(connections!, (value) => value.toMap()),
+      'connections': ?pulumi.Input.mapOptionalInputValue<List<DirectConnectionResponse>, List<Map<String, dynamic>>>(connections, (value) => pulumi.Input.encodeList<DirectConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'directPeeringType': ?directPeeringType,
-      'peerAsn': ?peerAsn == null ? null : peerAsn!.toMap(),
+      'peerAsn': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(peerAsn, (value) => value.toMap()),
       'useForPeeringService': useForPeeringService,
     };
   }
 
   factory PeeringPropertiesDirectResponse.fromMap(Map<String, dynamic> map) {
     return PeeringPropertiesDirectResponse(
-      connections: map['connections'] == null ? null : pulumi.Input.decodeList<DirectConnectionResponse>(map['connections'], (value) => DirectConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      directPeeringType: map['directPeeringType'] == null ? null : map['directPeeringType'] as String,
-      peerAsn: map['peerAsn'] == null ? null : SubResourceResponse.fromMap((map['peerAsn'] as Map).cast<String, dynamic>()),
-      useForPeeringService: map['useForPeeringService'] as bool,
+      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<DirectConnectionResponse>(map['connections'], (value) => DirectConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      directPeeringType: map['directPeeringType'] == null ? null : (map['directPeeringType'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (SubResourceResponse.fromMap((map['peerAsn'] as Map).cast<String, dynamic>())).input(),
+      useForPeeringService: (map['useForPeeringService'] as bool).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class LockArgs {
   /// [entityType] The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
   /// [lockType] The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
   LockArgs({
-    required pulumi.Output<int> entityId,
-    required pulumi.Output<String> entityType,
-    required pulumi.Output<String> lockType,
-  }) :
-      entityId = pulumi.Input.asInput<int>(entityId),
-      entityType = pulumi.Input.asInput<String>(entityType),
-      lockType = pulumi.Input.asInput<String>(lockType);
+    required this.entityId,
+    required this.entityType,
+    required this.lockType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LockArgs {
 
   factory LockArgs.fromMap(Map<String, dynamic> map) {
     return LockArgs(
-      entityId: pulumi.Output.create<int>(map['entityId'] as int),
-      entityType: pulumi.Output.create<String>(map['entityType'] as String),
-      lockType: pulumi.Output.create<String>(map['lockType'] as String),
+      entityId: (map['entityId'] as int).input(),
+      entityType: (map['entityType'] as String).input(),
+      lockType: (map['lockType'] as String).input(),
     );
   }
 }

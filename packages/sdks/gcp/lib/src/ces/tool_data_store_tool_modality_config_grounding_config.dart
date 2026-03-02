@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolDataStoreToolModalityConfigGroundingConfig {
   /// Whether grounding is disabled.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// The groundedness threshold of the answer based on the retrieved sources.
   /// The value has a configurable range of [1, 5]. The level is used to
   /// threshold the groundedness of the answer, meaning that all responses with
@@ -11,7 +12,7 @@ class ToolDataStoreToolModalityConfigGroundingConfig {
   /// relevant snippets only.
   /// For example, a level of 3 means that the groundedness score must be
   /// 3 or higher for the response to be returned.
-  final double? groundingLevel;
+  final pulumi.Input<double>? groundingLevel;
 
   /// Creates a new [ToolDataStoreToolModalityConfigGroundingConfig].
   /// [disabled] Whether grounding is disabled.
@@ -30,8 +31,8 @@ class ToolDataStoreToolModalityConfigGroundingConfig {
 
   factory ToolDataStoreToolModalityConfigGroundingConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolModalityConfigGroundingConfig(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      groundingLevel: map['groundingLevel'] == null ? null : map['groundingLevel'] as double,
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      groundingLevel: map['groundingLevel'] == null ? null : (map['groundingLevel'] as double).input(),
     );
   }
 }

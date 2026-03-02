@@ -17,11 +17,9 @@ class ImagePipelineExecutionArgs {
   /// [imagePipelineId] The ID of the image template.
   /// [status] The status of the image build task. Valid values:
   ImagePipelineExecutionArgs({
-    required pulumi.Output<String> imagePipelineId,
-    pulumi.Output<String>? status,
-  }) :
-      imagePipelineId = pulumi.Input.asInput<String>(imagePipelineId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.imagePipelineId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ImagePipelineExecutionArgs {
 
   factory ImagePipelineExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ImagePipelineExecutionArgs(
-      imagePipelineId: pulumi.Output.create<String>(map['imagePipelineId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      imagePipelineId: (map['imagePipelineId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

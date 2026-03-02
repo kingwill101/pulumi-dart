@@ -37,23 +37,15 @@ class JobArgs {
   /// [trainingInput] Input parameters to create a training job.
   /// [trainingOutput] The current training job result.
   JobArgs({
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> jobId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<GoogleCloudMlV1PredictionInput>? predictionInput,
-    pulumi.Output<GoogleCloudMlV1PredictionOutput>? predictionOutput,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudMlV1TrainingInput>? trainingInput,
-    pulumi.Output<GoogleCloudMlV1TrainingOutput>? trainingOutput,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      jobId = pulumi.Input.asInput<String>(jobId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      predictionInput = pulumi.Input.asOptionalInput<GoogleCloudMlV1PredictionInput>(predictionInput),
-      predictionOutput = pulumi.Input.asOptionalInput<GoogleCloudMlV1PredictionOutput>(predictionOutput),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trainingInput = pulumi.Input.asOptionalInput<GoogleCloudMlV1TrainingInput>(trainingInput),
-      trainingOutput = pulumi.Input.asOptionalInput<GoogleCloudMlV1TrainingOutput>(trainingOutput);
+    this.etag,
+    required this.jobId,
+    this.labels,
+    this.predictionInput,
+    this.predictionOutput,
+    this.project,
+    this.trainingInput,
+    this.trainingOutput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      jobId: pulumi.Output.create<String>(map['jobId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      predictionInput: map['predictionInput'] == null ? null : pulumi.Output.create<GoogleCloudMlV1PredictionInput>(GoogleCloudMlV1PredictionInput.fromMap((map['predictionInput'] as Map).cast<String, dynamic>())),
-      predictionOutput: map['predictionOutput'] == null ? null : pulumi.Output.create<GoogleCloudMlV1PredictionOutput>(GoogleCloudMlV1PredictionOutput.fromMap((map['predictionOutput'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trainingInput: map['trainingInput'] == null ? null : pulumi.Output.create<GoogleCloudMlV1TrainingInput>(GoogleCloudMlV1TrainingInput.fromMap((map['trainingInput'] as Map).cast<String, dynamic>())),
-      trainingOutput: map['trainingOutput'] == null ? null : pulumi.Output.create<GoogleCloudMlV1TrainingOutput>(GoogleCloudMlV1TrainingOutput.fromMap((map['trainingOutput'] as Map).cast<String, dynamic>())),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      jobId: (map['jobId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      predictionInput: map['predictionInput'] == null ? null : (GoogleCloudMlV1PredictionInput.fromMap((map['predictionInput'] as Map).cast<String, dynamic>())).input(),
+      predictionOutput: map['predictionOutput'] == null ? null : (GoogleCloudMlV1PredictionOutput.fromMap((map['predictionOutput'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trainingInput: map['trainingInput'] == null ? null : (GoogleCloudMlV1TrainingInput.fromMap((map['trainingInput'] as Map).cast<String, dynamic>())).input(),
+      trainingOutput: map['trainingOutput'] == null ? null : (GoogleCloudMlV1TrainingOutput.fromMap((map['trainingOutput'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

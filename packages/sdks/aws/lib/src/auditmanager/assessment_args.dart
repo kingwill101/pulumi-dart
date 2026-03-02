@@ -39,23 +39,15 @@ class AssessmentArgs {
   /// [scope] Amazon Web Services accounts and services that are in scope for the assessment. See `scope` below.
   /// [tags] A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AssessmentArgs({
-    pulumi.Output<AssessmentAssessmentReportsDestination>? assessmentReportsDestination,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> frameworkId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<AssessmentRole>> roles,
-    pulumi.Output<AssessmentScope>? scope,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      assessmentReportsDestination = pulumi.Input.asOptionalInput<AssessmentAssessmentReportsDestination>(assessmentReportsDestination),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      frameworkId = pulumi.Input.asInput<String>(frameworkId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roles = pulumi.Input.asInput<List<AssessmentRole>>(roles),
-      scope = pulumi.Input.asOptionalInput<AssessmentScope>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.assessmentReportsDestination,
+    this.description,
+    required this.frameworkId,
+    this.name,
+    this.region,
+    required this.roles,
+    this.scope,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      assessmentReportsDestination: map['assessmentReportsDestination'] == null ? null : pulumi.Output.create<AssessmentAssessmentReportsDestination>(AssessmentAssessmentReportsDestination.fromMap((map['assessmentReportsDestination'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      frameworkId: pulumi.Output.create<String>(map['frameworkId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roles: pulumi.Output.create<List<AssessmentRole>>(pulumi.Input.decodeList<AssessmentRole>(map['roles'], (value) => AssessmentRole.fromMap((value as Map).cast<String, dynamic>()))),
-      scope: map['scope'] == null ? null : pulumi.Output.create<AssessmentScope>(AssessmentScope.fromMap((map['scope'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      assessmentReportsDestination: map['assessmentReportsDestination'] == null ? null : (AssessmentAssessmentReportsDestination.fromMap((map['assessmentReportsDestination'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      frameworkId: (map['frameworkId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roles: (pulumi.Input.decodeList<AssessmentRole>(map['roles'], (value) => AssessmentRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scope: map['scope'] == null ? null : (AssessmentScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

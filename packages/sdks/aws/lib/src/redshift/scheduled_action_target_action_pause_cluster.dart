@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledActionTargetActionPauseCluster {
   /// The identifier of the cluster to be paused.
-  final String clusterIdentifier;
+  final pulumi.Input<String> clusterIdentifier;
 
   /// Creates a new [ScheduledActionTargetActionPauseCluster].
   /// [clusterIdentifier] The identifier of the cluster to be paused.
@@ -19,7 +20,7 @@ class ScheduledActionTargetActionPauseCluster {
 
   factory ScheduledActionTargetActionPauseCluster.fromMap(Map<String, dynamic> map) {
     return ScheduledActionTargetActionPauseCluster(
-      clusterIdentifier: map['clusterIdentifier'] as String,
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
     );
   }
 }

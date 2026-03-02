@@ -43,29 +43,18 @@ class DeveloperArgs {
   /// [organizationId] Required.
   /// [userName] User name of the developer. Not used by Apigee hybrid.
   DeveloperArgs({
-    pulumi.Output<String>? accessType,
-    pulumi.Output<String>? appFamily,
-    pulumi.Output<List<String>>? apps,
-    pulumi.Output<List<GoogleCloudApigeeV1Attribute>>? attributes,
-    pulumi.Output<List<String>>? companies,
-    pulumi.Output<String>? developerId,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> firstName,
-    required pulumi.Output<String> lastName,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> userName,
-  }) :
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      appFamily = pulumi.Input.asOptionalInput<String>(appFamily),
-      apps = pulumi.Input.asOptionalInput<List<String>>(apps),
-      attributes = pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(attributes),
-      companies = pulumi.Input.asOptionalInput<List<String>>(companies),
-      developerId = pulumi.Input.asOptionalInput<String>(developerId),
-      email = pulumi.Input.asInput<String>(email),
-      firstName = pulumi.Input.asInput<String>(firstName),
-      lastName = pulumi.Input.asInput<String>(lastName),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.accessType,
+    this.appFamily,
+    this.apps,
+    this.attributes,
+    this.companies,
+    this.developerId,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.organizationId,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class DeveloperArgs {
 
   factory DeveloperArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperArgs(
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      appFamily: map['appFamily'] == null ? null : pulumi.Output.create<String>(map['appFamily'] as String),
-      apps: map['apps'] == null ? null : pulumi.Output.create<List<String>>((map['apps'] as List).cast<String>()),
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<GoogleCloudApigeeV1Attribute>>(pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))),
-      companies: map['companies'] == null ? null : pulumi.Output.create<List<String>>((map['companies'] as List).cast<String>()),
-      developerId: map['developerId'] == null ? null : pulumi.Output.create<String>(map['developerId'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      firstName: pulumi.Output.create<String>(map['firstName'] as String),
-      lastName: pulumi.Output.create<String>(map['lastName'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      appFamily: map['appFamily'] == null ? null : (map['appFamily'] as String).input(),
+      apps: map['apps'] == null ? null : ((map['apps'] as List).cast<String>()).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      companies: map['companies'] == null ? null : ((map['companies'] as List).cast<String>()).input(),
+      developerId: map['developerId'] == null ? null : (map['developerId'] as String).input(),
+      email: (map['email'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class ProactiveEngagementState {
   /// [emergencyContacts] One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
   /// [enabled] Boolean value indicating if Proactive Engagement should be enabled or not.
   ProactiveEngagementState({
-    pulumi.Output<List<ProactiveEngagementEmergencyContact>>? emergencyContacts,
-    pulumi.Output<bool>? enabled,
-  }) :
-      emergencyContacts = pulumi.Input.asOptionalInput<List<ProactiveEngagementEmergencyContact>>(emergencyContacts),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled);
+    this.emergencyContacts,
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class ProactiveEngagementState {
 
   factory ProactiveEngagementState.fromMap(Map<String, dynamic> map) {
     return ProactiveEngagementState(
-      emergencyContacts: map['emergencyContacts'] == null ? null : pulumi.Output.create<List<ProactiveEngagementEmergencyContact>>(pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(map['emergencyContacts'], (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>()))),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
+      emergencyContacts: map['emergencyContacts'] == null ? null : (pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(map['emergencyContacts'], (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

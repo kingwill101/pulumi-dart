@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipe_target_parameters_batch_job_parameters.dart';
 import 'pipe_target_parameters_cloudwatch_logs_parameters.dart';
 import 'pipe_target_parameters_ecs_task_parameters.dart';
@@ -14,29 +15,29 @@ import 'pipe_target_parameters_step_function_state_machine_parameters.dart';
 
 class PipeTargetParameters {
   /// The parameters for using an AWS Batch job as a target. Detailed below.
-  final PipeTargetParametersBatchJobParameters? batchJobParameters;
+  final pulumi.Input<PipeTargetParametersBatchJobParameters>? batchJobParameters;
   /// The parameters for using an CloudWatch Logs log stream as a target. Detailed below.
-  final PipeTargetParametersCloudwatchLogsParameters? cloudwatchLogsParameters;
+  final pulumi.Input<PipeTargetParametersCloudwatchLogsParameters>? cloudwatchLogsParameters;
   /// The parameters for using an Amazon ECS task as a target. Detailed below.
-  final PipeTargetParametersEcsTaskParameters? ecsTaskParameters;
+  final pulumi.Input<PipeTargetParametersEcsTaskParameters>? ecsTaskParameters;
   /// The parameters for using an EventBridge event bus as a target. Detailed below.
-  final PipeTargetParametersEventbridgeEventBusParameters? eventbridgeEventBusParameters;
+  final pulumi.Input<PipeTargetParametersEventbridgeEventBusParameters>? eventbridgeEventBusParameters;
   /// These are custom parameter to be used when the target is an API Gateway REST APIs or EventBridge ApiDestinations. Detailed below.
-  final PipeTargetParametersHttpParameters? httpParameters;
+  final pulumi.Input<PipeTargetParametersHttpParameters>? httpParameters;
   /// Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. Maximum length of 8192 characters.
-  final String? inputTemplate;
+  final pulumi.Input<String>? inputTemplate;
   /// The parameters for using a Kinesis stream as a source. Detailed below.
-  final PipeTargetParametersKinesisStreamParameters? kinesisStreamParameters;
+  final pulumi.Input<PipeTargetParametersKinesisStreamParameters>? kinesisStreamParameters;
   /// The parameters for using a Lambda function as a target. Detailed below.
-  final PipeTargetParametersLambdaFunctionParameters? lambdaFunctionParameters;
+  final pulumi.Input<PipeTargetParametersLambdaFunctionParameters>? lambdaFunctionParameters;
   /// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the Amazon Redshift Data API BatchExecuteStatement. Detailed below.
-  final PipeTargetParametersRedshiftDataParameters? redshiftDataParameters;
+  final pulumi.Input<PipeTargetParametersRedshiftDataParameters>? redshiftDataParameters;
   /// The parameters for using a SageMaker AI pipeline as a target. Detailed below.
-  final PipeTargetParametersSagemakerPipelineParameters? sagemakerPipelineParameters;
+  final pulumi.Input<PipeTargetParametersSagemakerPipelineParameters>? sagemakerPipelineParameters;
   /// The parameters for using a Amazon SQS stream as a target. Detailed below.
-  final PipeTargetParametersSqsQueueParameters? sqsQueueParameters;
+  final pulumi.Input<PipeTargetParametersSqsQueueParameters>? sqsQueueParameters;
   /// The parameters for using a Step Functions state machine as a target. Detailed below.
-  final PipeTargetParametersStepFunctionStateMachineParameters? stepFunctionStateMachineParameters;
+  final pulumi.Input<PipeTargetParametersStepFunctionStateMachineParameters>? stepFunctionStateMachineParameters;
 
   /// Creates a new [PipeTargetParameters].
   /// [batchJobParameters] The parameters for using an AWS Batch job as a target. Detailed below.
@@ -68,35 +69,35 @@ class PipeTargetParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'batchJobParameters': ?batchJobParameters == null ? null : batchJobParameters!.toMap(),
-      'cloudwatchLogsParameters': ?cloudwatchLogsParameters == null ? null : cloudwatchLogsParameters!.toMap(),
-      'ecsTaskParameters': ?ecsTaskParameters == null ? null : ecsTaskParameters!.toMap(),
-      'eventbridgeEventBusParameters': ?eventbridgeEventBusParameters == null ? null : eventbridgeEventBusParameters!.toMap(),
-      'httpParameters': ?httpParameters == null ? null : httpParameters!.toMap(),
+      'batchJobParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersBatchJobParameters, Map<String, dynamic>>(batchJobParameters, (value) => value.toMap()),
+      'cloudwatchLogsParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersCloudwatchLogsParameters, Map<String, dynamic>>(cloudwatchLogsParameters, (value) => value.toMap()),
+      'ecsTaskParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersEcsTaskParameters, Map<String, dynamic>>(ecsTaskParameters, (value) => value.toMap()),
+      'eventbridgeEventBusParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersEventbridgeEventBusParameters, Map<String, dynamic>>(eventbridgeEventBusParameters, (value) => value.toMap()),
+      'httpParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersHttpParameters, Map<String, dynamic>>(httpParameters, (value) => value.toMap()),
       'inputTemplate': ?inputTemplate,
-      'kinesisStreamParameters': ?kinesisStreamParameters == null ? null : kinesisStreamParameters!.toMap(),
-      'lambdaFunctionParameters': ?lambdaFunctionParameters == null ? null : lambdaFunctionParameters!.toMap(),
-      'redshiftDataParameters': ?redshiftDataParameters == null ? null : redshiftDataParameters!.toMap(),
-      'sagemakerPipelineParameters': ?sagemakerPipelineParameters == null ? null : sagemakerPipelineParameters!.toMap(),
-      'sqsQueueParameters': ?sqsQueueParameters == null ? null : sqsQueueParameters!.toMap(),
-      'stepFunctionStateMachineParameters': ?stepFunctionStateMachineParameters == null ? null : stepFunctionStateMachineParameters!.toMap(),
+      'kinesisStreamParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersKinesisStreamParameters, Map<String, dynamic>>(kinesisStreamParameters, (value) => value.toMap()),
+      'lambdaFunctionParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersLambdaFunctionParameters, Map<String, dynamic>>(lambdaFunctionParameters, (value) => value.toMap()),
+      'redshiftDataParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersRedshiftDataParameters, Map<String, dynamic>>(redshiftDataParameters, (value) => value.toMap()),
+      'sagemakerPipelineParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersSagemakerPipelineParameters, Map<String, dynamic>>(sagemakerPipelineParameters, (value) => value.toMap()),
+      'sqsQueueParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersSqsQueueParameters, Map<String, dynamic>>(sqsQueueParameters, (value) => value.toMap()),
+      'stepFunctionStateMachineParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParametersStepFunctionStateMachineParameters, Map<String, dynamic>>(stepFunctionStateMachineParameters, (value) => value.toMap()),
     };
   }
 
   factory PipeTargetParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParameters(
-      batchJobParameters: map['batchJobParameters'] == null ? null : PipeTargetParametersBatchJobParameters.fromMap((map['batchJobParameters'] as Map).cast<String, dynamic>()),
-      cloudwatchLogsParameters: map['cloudwatchLogsParameters'] == null ? null : PipeTargetParametersCloudwatchLogsParameters.fromMap((map['cloudwatchLogsParameters'] as Map).cast<String, dynamic>()),
-      ecsTaskParameters: map['ecsTaskParameters'] == null ? null : PipeTargetParametersEcsTaskParameters.fromMap((map['ecsTaskParameters'] as Map).cast<String, dynamic>()),
-      eventbridgeEventBusParameters: map['eventbridgeEventBusParameters'] == null ? null : PipeTargetParametersEventbridgeEventBusParameters.fromMap((map['eventbridgeEventBusParameters'] as Map).cast<String, dynamic>()),
-      httpParameters: map['httpParameters'] == null ? null : PipeTargetParametersHttpParameters.fromMap((map['httpParameters'] as Map).cast<String, dynamic>()),
-      inputTemplate: map['inputTemplate'] == null ? null : map['inputTemplate'] as String,
-      kinesisStreamParameters: map['kinesisStreamParameters'] == null ? null : PipeTargetParametersKinesisStreamParameters.fromMap((map['kinesisStreamParameters'] as Map).cast<String, dynamic>()),
-      lambdaFunctionParameters: map['lambdaFunctionParameters'] == null ? null : PipeTargetParametersLambdaFunctionParameters.fromMap((map['lambdaFunctionParameters'] as Map).cast<String, dynamic>()),
-      redshiftDataParameters: map['redshiftDataParameters'] == null ? null : PipeTargetParametersRedshiftDataParameters.fromMap((map['redshiftDataParameters'] as Map).cast<String, dynamic>()),
-      sagemakerPipelineParameters: map['sagemakerPipelineParameters'] == null ? null : PipeTargetParametersSagemakerPipelineParameters.fromMap((map['sagemakerPipelineParameters'] as Map).cast<String, dynamic>()),
-      sqsQueueParameters: map['sqsQueueParameters'] == null ? null : PipeTargetParametersSqsQueueParameters.fromMap((map['sqsQueueParameters'] as Map).cast<String, dynamic>()),
-      stepFunctionStateMachineParameters: map['stepFunctionStateMachineParameters'] == null ? null : PipeTargetParametersStepFunctionStateMachineParameters.fromMap((map['stepFunctionStateMachineParameters'] as Map).cast<String, dynamic>()),
+      batchJobParameters: map['batchJobParameters'] == null ? null : (PipeTargetParametersBatchJobParameters.fromMap((map['batchJobParameters'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogsParameters: map['cloudwatchLogsParameters'] == null ? null : (PipeTargetParametersCloudwatchLogsParameters.fromMap((map['cloudwatchLogsParameters'] as Map).cast<String, dynamic>())).input(),
+      ecsTaskParameters: map['ecsTaskParameters'] == null ? null : (PipeTargetParametersEcsTaskParameters.fromMap((map['ecsTaskParameters'] as Map).cast<String, dynamic>())).input(),
+      eventbridgeEventBusParameters: map['eventbridgeEventBusParameters'] == null ? null : (PipeTargetParametersEventbridgeEventBusParameters.fromMap((map['eventbridgeEventBusParameters'] as Map).cast<String, dynamic>())).input(),
+      httpParameters: map['httpParameters'] == null ? null : (PipeTargetParametersHttpParameters.fromMap((map['httpParameters'] as Map).cast<String, dynamic>())).input(),
+      inputTemplate: map['inputTemplate'] == null ? null : (map['inputTemplate'] as String).input(),
+      kinesisStreamParameters: map['kinesisStreamParameters'] == null ? null : (PipeTargetParametersKinesisStreamParameters.fromMap((map['kinesisStreamParameters'] as Map).cast<String, dynamic>())).input(),
+      lambdaFunctionParameters: map['lambdaFunctionParameters'] == null ? null : (PipeTargetParametersLambdaFunctionParameters.fromMap((map['lambdaFunctionParameters'] as Map).cast<String, dynamic>())).input(),
+      redshiftDataParameters: map['redshiftDataParameters'] == null ? null : (PipeTargetParametersRedshiftDataParameters.fromMap((map['redshiftDataParameters'] as Map).cast<String, dynamic>())).input(),
+      sagemakerPipelineParameters: map['sagemakerPipelineParameters'] == null ? null : (PipeTargetParametersSagemakerPipelineParameters.fromMap((map['sagemakerPipelineParameters'] as Map).cast<String, dynamic>())).input(),
+      sqsQueueParameters: map['sqsQueueParameters'] == null ? null : (PipeTargetParametersSqsQueueParameters.fromMap((map['sqsQueueParameters'] as Map).cast<String, dynamic>())).input(),
+      stepFunctionStateMachineParameters: map['stepFunctionStateMachineParameters'] == null ? null : (PipeTargetParametersStepFunctionStateMachineParameters.fromMap((map['stepFunctionStateMachineParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

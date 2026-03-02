@@ -35,23 +35,15 @@ class ProtectionContainerArgs {
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
   ProtectionContainerArgs({
-    pulumi.Output<String>? containerName,
-    pulumi.Output<String>? eTag,
-    required pulumi.Output<String> fabricName,
-    pulumi.Output<String>? location,
-    pulumi.Output<AzureBackupServerContainer>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vaultName,
-  }) :
-      containerName = pulumi.Input.asOptionalInput<String>(containerName),
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<AzureBackupServerContainer>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    this.containerName,
+    this.eTag,
+    required this.fabricName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ProtectionContainerArgs {
 
   factory ProtectionContainerArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerArgs(
-      containerName: map['containerName'] == null ? null : pulumi.Output.create<String>(map['containerName'] as String),
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AzureBackupServerContainer>(AzureBackupServerContainer.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      fabricName: (map['fabricName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (AzureBackupServerContainer.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZoneRecordsRecord {
   /// The ID of the Private Zone Record.
-  final String id;
+  final pulumi.Input<String> id;
   /// The priority of the MX record.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The ID of the Record.
-  final String recordId;
+  final pulumi.Input<String> recordId;
   /// The description of the Private Zone Record.
-  final String remark;
+  final pulumi.Input<String> remark;
   /// The hostname of the Private Zone Record.
-  final String resourceRecord;
+  final pulumi.Input<String> resourceRecord;
   /// The hostname of the Private Zone Record.
-  final String rr;
+  final pulumi.Input<String> rr;
   /// The status of the Resolve record. Valid values:
   /// - `ENABLE`: Enable resolution.
   /// - `DISABLE`: Pause parsing.
-  final String status;
+  final pulumi.Input<String> status;
   /// The time to live (TTL) of the Private Zone Record.
-  final int ttl;
+  final pulumi.Input<int> ttl;
   /// The type of the Private Zone Record.
-  final String type;
+  final pulumi.Input<String> type;
   /// The value of the Private Zone Record.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetZoneRecordsRecord].
   /// [id] The ID of the Private Zone Record.
@@ -66,16 +67,16 @@ class GetZoneRecordsRecord {
 
   factory GetZoneRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetZoneRecordsRecord(
-      id: map['id'] as String,
-      priority: map['priority'] as int,
-      recordId: map['recordId'] as String,
-      remark: map['remark'] as String,
-      resourceRecord: map['resourceRecord'] as String,
-      rr: map['rr'] as String,
-      status: map['status'] as String,
-      ttl: map['ttl'] as int,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      id: (map['id'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      recordId: (map['recordId'] as String).input(),
+      remark: (map['remark'] as String).input(),
+      resourceRecord: (map['resourceRecord'] as String).input(),
+      rr: (map['rr'] as String).input(),
+      status: (map['status'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

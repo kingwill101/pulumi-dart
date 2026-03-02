@@ -22,15 +22,11 @@ class HoneyPotArgs {
   /// [honeypotName] Honeypot custom name.
   /// [nodeId] The ID of the honeypot management node.
   HoneyPotArgs({
-    required pulumi.Output<String> honeypotImageId,
-    required pulumi.Output<String> honeypotImageName,
-    required pulumi.Output<String> honeypotName,
-    required pulumi.Output<String> nodeId,
-  }) :
-      honeypotImageId = pulumi.Input.asInput<String>(honeypotImageId),
-      honeypotImageName = pulumi.Input.asInput<String>(honeypotImageName),
-      honeypotName = pulumi.Input.asInput<String>(honeypotName),
-      nodeId = pulumi.Input.asInput<String>(nodeId);
+    required this.honeypotImageId,
+    required this.honeypotImageName,
+    required this.honeypotName,
+    required this.nodeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class HoneyPotArgs {
 
   factory HoneyPotArgs.fromMap(Map<String, dynamic> map) {
     return HoneyPotArgs(
-      honeypotImageId: pulumi.Output.create<String>(map['honeypotImageId'] as String),
-      honeypotImageName: pulumi.Output.create<String>(map['honeypotImageName'] as String),
-      honeypotName: pulumi.Output.create<String>(map['honeypotName'] as String),
-      nodeId: pulumi.Output.create<String>(map['nodeId'] as String),
+      honeypotImageId: (map['honeypotImageId'] as String).input(),
+      honeypotImageName: (map['honeypotImageName'] as String).input(),
+      honeypotName: (map['honeypotName'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
     );
   }
 }

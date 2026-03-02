@@ -25,17 +25,12 @@ class IdentityPoolProviderPrincipalTagArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [useDefaults] use default (username and clientID) attribute mappings.
   IdentityPoolProviderPrincipalTagArgs({
-    required pulumi.Output<String> identityPoolId,
-    required pulumi.Output<String> identityProviderName,
-    pulumi.Output<Map<String, String>>? principalTags,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? useDefaults,
-  }) :
-      identityPoolId = pulumi.Input.asInput<String>(identityPoolId),
-      identityProviderName = pulumi.Input.asInput<String>(identityProviderName),
-      principalTags = pulumi.Input.asOptionalInput<Map<String, String>>(principalTags),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      useDefaults = pulumi.Input.asOptionalInput<bool>(useDefaults);
+    required this.identityPoolId,
+    required this.identityProviderName,
+    this.principalTags,
+    this.region,
+    this.useDefaults,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class IdentityPoolProviderPrincipalTagArgs {
 
   factory IdentityPoolProviderPrincipalTagArgs.fromMap(Map<String, dynamic> map) {
     return IdentityPoolProviderPrincipalTagArgs(
-      identityPoolId: pulumi.Output.create<String>(map['identityPoolId'] as String),
-      identityProviderName: pulumi.Output.create<String>(map['identityProviderName'] as String),
-      principalTags: map['principalTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['principalTags'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      useDefaults: map['useDefaults'] == null ? null : pulumi.Output.create<bool>(map['useDefaults'] as bool),
+      identityPoolId: (map['identityPoolId'] as String).input(),
+      identityProviderName: (map['identityProviderName'] as String).input(),
+      principalTags: map['principalTags'] == null ? null : ((map['principalTags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      useDefaults: map['useDefaults'] == null ? null : (map['useDefaults'] as bool).input(),
     );
   }
 }

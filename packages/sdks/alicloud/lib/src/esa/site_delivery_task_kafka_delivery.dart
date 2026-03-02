@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SiteDeliveryTaskKafkaDelivery {
-  final String? balancer;
-  final List<String>? brokers;
+  final pulumi.Input<String>? balancer;
+  final pulumi.Input<List<String>>? brokers;
   /// The compression method. By default, data is not compressed.
-  final String? compress;
-  final String? machanismType;
-  final String? password;
-  final String? topic;
-  final bool? userAuth;
-  final String? userName;
+  final pulumi.Input<String>? compress;
+  final pulumi.Input<String>? machanismType;
+  final pulumi.Input<String>? password;
+  final pulumi.Input<String>? topic;
+  final pulumi.Input<bool>? userAuth;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [SiteDeliveryTaskKafkaDelivery].
   /// [balancer] Optional.
@@ -47,14 +48,14 @@ class SiteDeliveryTaskKafkaDelivery {
 
   factory SiteDeliveryTaskKafkaDelivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskKafkaDelivery(
-      balancer: map['balancer'] == null ? null : map['balancer'] as String,
-      brokers: map['brokers'] == null ? null : (map['brokers'] as List).cast<String>(),
-      compress: map['compress'] == null ? null : map['compress'] as String,
-      machanismType: map['machanismType'] == null ? null : map['machanismType'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      topic: map['topic'] == null ? null : map['topic'] as String,
-      userAuth: map['userAuth'] == null ? null : map['userAuth'] as bool,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      balancer: map['balancer'] == null ? null : (map['balancer'] as String).input(),
+      brokers: map['brokers'] == null ? null : ((map['brokers'] as List).cast<String>()).input(),
+      compress: map['compress'] == null ? null : (map['compress'] as String).input(),
+      machanismType: map['machanismType'] == null ? null : (map['machanismType'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      userAuth: map['userAuth'] == null ? null : (map['userAuth'] as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

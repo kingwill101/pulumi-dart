@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The sharding properties of the cluster. This includes the shard count and scaling options for the cluster.
 class ShardingPropertiesResponse {
   /// Number of shards to provision on the cluster.
-  final int? shardCount;
+  final pulumi.Input<int>? shardCount;
 
   /// Creates a new [ShardingPropertiesResponse].
   /// [shardCount] Number of shards to provision on the cluster.
@@ -20,7 +21,7 @@ class ShardingPropertiesResponse {
 
   factory ShardingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ShardingPropertiesResponse(
-      shardCount: map['shardCount'] == null ? null : map['shardCount'] as int,
+      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as int).input(),
     );
   }
 }

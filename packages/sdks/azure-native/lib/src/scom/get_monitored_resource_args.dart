@@ -19,13 +19,10 @@ class GetMonitoredResourceArgs {
   /// [monitoredResourceName] The monitored resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMonitoredResourceArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> monitoredResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      monitoredResourceName = pulumi.Input.asInput<String>(monitoredResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.instanceName,
+    required this.monitoredResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMonitoredResourceArgs {
 
   factory GetMonitoredResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitoredResourceArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      monitoredResourceName: pulumi.Output.create<String>(map['monitoredResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      monitoredResourceName: (map['monitoredResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

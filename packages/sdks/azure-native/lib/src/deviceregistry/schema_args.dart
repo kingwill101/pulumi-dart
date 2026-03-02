@@ -34,23 +34,15 @@ class SchemaArgs {
   /// [schemaType] Type of the schema.
   /// [tags] Schema tags.
   SchemaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> format,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? schemaName,
-    required pulumi.Output<String> schemaRegistryName,
-    required pulumi.Output<String> schemaType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      format = pulumi.Input.asInput<String>(format),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asOptionalInput<String>(schemaName),
-      schemaRegistryName = pulumi.Input.asInput<String>(schemaRegistryName),
-      schemaType = pulumi.Input.asInput<String>(schemaType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.displayName,
+    required this.format,
+    required this.resourceGroupName,
+    this.schemaName,
+    required this.schemaRegistryName,
+    required this.schemaType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      format: pulumi.Output.create<String>(map['format'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: map['schemaName'] == null ? null : pulumi.Output.create<String>(map['schemaName'] as String),
-      schemaRegistryName: pulumi.Output.create<String>(map['schemaRegistryName'] as String),
-      schemaType: pulumi.Output.create<String>(map['schemaType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      format: (map['format'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      schemaRegistryName: (map['schemaRegistryName'] as String).input(),
+      schemaType: (map['schemaType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetRolePolicyAttachmentsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [roleName] The RAM role name.
   GetRolePolicyAttachmentsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> roleName,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      roleName = pulumi.Input.asInput<String>(roleName);
+    this.ids,
+    this.outputFile,
+    required this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRolePolicyAttachmentsArgs {
 
   factory GetRolePolicyAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetRolePolicyAttachmentsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

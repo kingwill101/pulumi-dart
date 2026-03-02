@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A machine reference with a hint of the machine's name and operating system.
 class MachineReferenceWithHintsResponse {
   /// Last known display name.
-  final String displayNameHint;
+  final pulumi.Input<String> displayNameHint;
   /// Resource URI.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specifies the sub-class of the reference.
   /// Expected value is 'ref:machinewithhints'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Last known operating system family.
-  final String osFamilyHint;
+  final pulumi.Input<String> osFamilyHint;
   /// Resource type qualifier.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MachineReferenceWithHintsResponse].
   /// [displayNameHint] Last known display name.
@@ -46,12 +47,12 @@ class MachineReferenceWithHintsResponse {
 
   factory MachineReferenceWithHintsResponse.fromMap(Map<String, dynamic> map) {
     return MachineReferenceWithHintsResponse(
-      displayNameHint: map['displayNameHint'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      osFamilyHint: map['osFamilyHint'] as String,
-      type: map['type'] as String,
+      displayNameHint: (map['displayNameHint'] as String).input(),
+      id: (map['id'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      osFamilyHint: (map['osFamilyHint'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

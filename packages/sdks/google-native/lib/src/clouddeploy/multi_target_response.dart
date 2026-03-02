@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information specifying a multiTarget.
 class MultiTargetResponse {
   /// The target_ids of this multiTarget.
-  final List<String> targetIds;
+  final pulumi.Input<List<String>> targetIds;
 
   /// Creates a new [MultiTargetResponse].
   /// [targetIds] The target_ids of this multiTarget.
@@ -20,7 +21,7 @@ class MultiTargetResponse {
 
   factory MultiTargetResponse.fromMap(Map<String, dynamic> map) {
     return MultiTargetResponse(
-      targetIds: (map['targetIds'] as List).cast<String>(),
+      targetIds: ((map['targetIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessGroupsGroup {
   /// The length of `description` does not exceed 100 bytes.
-  final String accessGroupId;
+  final pulumi.Input<String> accessGroupId;
   /// The Name of Access Group. The length Of `access_group_name` does not exceed 100 bytes.
-  final String accessGroupName;
+  final pulumi.Input<String> accessGroupName;
   /// The CreateTime of Access Group.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The Description of Access Group. The length Of `description` does not exceed 100 bytes.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Access Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Number of attached mountpoint.
-  final int mountPointCount;
+  final pulumi.Input<int> mountPointCount;
   /// The NetworkType of Access Group. Valid values: `VPC`.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The Number of access rule.
-  final int ruleCount;
+  final pulumi.Input<int> ruleCount;
 
   /// Creates a new [GetAccessGroupsGroup].
   /// [accessGroupId] The length of `description` does not exceed 100 bytes.
@@ -54,14 +55,14 @@ class GetAccessGroupsGroup {
 
   factory GetAccessGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetAccessGroupsGroup(
-      accessGroupId: map['accessGroupId'] as String,
-      accessGroupName: map['accessGroupName'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      mountPointCount: map['mountPointCount'] as int,
-      networkType: map['networkType'] as String,
-      ruleCount: map['ruleCount'] as int,
+      accessGroupId: (map['accessGroupId'] as String).input(),
+      accessGroupName: (map['accessGroupName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      mountPointCount: (map['mountPointCount'] as int).input(),
+      networkType: (map['networkType'] as String).input(),
+      ruleCount: (map['ruleCount'] as int).input(),
     );
   }
 }

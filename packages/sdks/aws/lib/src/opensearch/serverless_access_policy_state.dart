@@ -27,19 +27,13 @@ class ServerlessAccessPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of access policy. Must be `data`.
   ServerlessAccessPolicyState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? policyVersion,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      policyVersion = pulumi.Input.asOptionalInput<String>(policyVersion),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.description,
+    this.name,
+    this.policy,
+    this.policyVersion,
+    this.region,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class ServerlessAccessPolicyState {
 
   factory ServerlessAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return ServerlessAccessPolicyState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      policyVersion: map['policyVersion'] == null ? null : pulumi.Output.create<String>(map['policyVersion'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policyVersion: map['policyVersion'] == null ? null : (map['policyVersion'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

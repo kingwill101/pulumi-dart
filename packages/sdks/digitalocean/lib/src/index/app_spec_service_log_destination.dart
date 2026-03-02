@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_spec_service_log_destination_datadog.dart';
 import 'app_spec_service_log_destination_logtail.dart';
 import 'app_spec_service_log_destination_open_search.dart';
@@ -7,15 +8,15 @@ import 'app_spec_service_log_destination_papertrail.dart';
 
 class AppSpecServiceLogDestination {
   /// Datadog configuration.
-  final AppSpecServiceLogDestinationDatadog? datadog;
+  final pulumi.Input<AppSpecServiceLogDestinationDatadog>? datadog;
   /// Logtail configuration.
-  final AppSpecServiceLogDestinationLogtail? logtail;
+  final pulumi.Input<AppSpecServiceLogDestinationLogtail>? logtail;
   /// Name of the log destination. Minimum length: 2. Maximum length: 42.
-  final String name;
+  final pulumi.Input<String> name;
   /// OpenSearch configuration.
-  final AppSpecServiceLogDestinationOpenSearch? openSearch;
+  final pulumi.Input<AppSpecServiceLogDestinationOpenSearch>? openSearch;
   /// Papertrail configuration.
-  final AppSpecServiceLogDestinationPapertrail? papertrail;
+  final pulumi.Input<AppSpecServiceLogDestinationPapertrail>? papertrail;
 
   /// Creates a new [AppSpecServiceLogDestination].
   /// [datadog] Datadog configuration.
@@ -33,21 +34,21 @@ class AppSpecServiceLogDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datadog': ?datadog == null ? null : datadog!.toMap(),
-      'logtail': ?logtail == null ? null : logtail!.toMap(),
+      'datadog': ?pulumi.Input.mapOptionalInputValue<AppSpecServiceLogDestinationDatadog, Map<String, dynamic>>(datadog, (value) => value.toMap()),
+      'logtail': ?pulumi.Input.mapOptionalInputValue<AppSpecServiceLogDestinationLogtail, Map<String, dynamic>>(logtail, (value) => value.toMap()),
       'name': name,
-      'openSearch': ?openSearch == null ? null : openSearch!.toMap(),
-      'papertrail': ?papertrail == null ? null : papertrail!.toMap(),
+      'openSearch': ?pulumi.Input.mapOptionalInputValue<AppSpecServiceLogDestinationOpenSearch, Map<String, dynamic>>(openSearch, (value) => value.toMap()),
+      'papertrail': ?pulumi.Input.mapOptionalInputValue<AppSpecServiceLogDestinationPapertrail, Map<String, dynamic>>(papertrail, (value) => value.toMap()),
     };
   }
 
   factory AppSpecServiceLogDestination.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceLogDestination(
-      datadog: map['datadog'] == null ? null : AppSpecServiceLogDestinationDatadog.fromMap((map['datadog'] as Map).cast<String, dynamic>()),
-      logtail: map['logtail'] == null ? null : AppSpecServiceLogDestinationLogtail.fromMap((map['logtail'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      openSearch: map['openSearch'] == null ? null : AppSpecServiceLogDestinationOpenSearch.fromMap((map['openSearch'] as Map).cast<String, dynamic>()),
-      papertrail: map['papertrail'] == null ? null : AppSpecServiceLogDestinationPapertrail.fromMap((map['papertrail'] as Map).cast<String, dynamic>()),
+      datadog: map['datadog'] == null ? null : (AppSpecServiceLogDestinationDatadog.fromMap((map['datadog'] as Map).cast<String, dynamic>())).input(),
+      logtail: map['logtail'] == null ? null : (AppSpecServiceLogDestinationLogtail.fromMap((map['logtail'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      openSearch: map['openSearch'] == null ? null : (AppSpecServiceLogDestinationOpenSearch.fromMap((map['openSearch'] as Map).cast<String, dynamic>())).input(),
+      papertrail: map['papertrail'] == null ? null : (AppSpecServiceLogDestinationPapertrail.fromMap((map['papertrail'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'day_response.dart';
 /// Daily retention format.
 class DailyRetentionFormatResponse {
   /// List of days of the month.
-  final List<DayResponse>? daysOfTheMonth;
+  final pulumi.Input<List<DayResponse>>? daysOfTheMonth;
 
   /// Creates a new [DailyRetentionFormatResponse].
   /// [daysOfTheMonth] List of days of the month.
@@ -16,13 +16,13 @@ class DailyRetentionFormatResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'daysOfTheMonth': ?daysOfTheMonth == null ? null : pulumi.Input.encodeList<DayResponse, Map<String, dynamic>>(daysOfTheMonth!, (value) => value.toMap()),
+      'daysOfTheMonth': ?pulumi.Input.mapOptionalInputValue<List<DayResponse>, List<Map<String, dynamic>>>(daysOfTheMonth, (value) => pulumi.Input.encodeList<DayResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DailyRetentionFormatResponse.fromMap(Map<String, dynamic> map) {
     return DailyRetentionFormatResponse(
-      daysOfTheMonth: map['daysOfTheMonth'] == null ? null : pulumi.Input.decodeList<DayResponse>(map['daysOfTheMonth'], (value) => DayResponse.fromMap((value as Map).cast<String, dynamic>())),
+      daysOfTheMonth: map['daysOfTheMonth'] == null ? null : (pulumi.Input.decodeList<DayResponse>(map['daysOfTheMonth'], (value) => DayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

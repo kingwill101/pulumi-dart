@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayRouteSpecGrpcRouteMatch {
-  final int port;
-  final String serviceName;
+  final pulumi.Input<int> port;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [GetGatewayRouteSpecGrpcRouteMatch].
   /// [port] Required.
@@ -22,8 +23,8 @@ class GetGatewayRouteSpecGrpcRouteMatch {
 
   factory GetGatewayRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRouteMatch(
-      port: map['port'] as int,
-      serviceName: map['serviceName'] as String,
+      port: (map['port'] as int).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

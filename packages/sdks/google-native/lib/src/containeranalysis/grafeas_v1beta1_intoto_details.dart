@@ -6,8 +6,8 @@ import 'link.dart';
 
 /// This corresponds to a signed in-toto link - it is made up of one or more signatures and the in-toto link itself. This is used for occurrences of a Grafeas in-toto note.
 class GrafeasV1beta1IntotoDetails {
-  final List<GrafeasV1beta1IntotoSignature>? signatures;
-  final Link? signed;
+  final pulumi.Input<List<GrafeasV1beta1IntotoSignature>>? signatures;
+  final pulumi.Input<Link>? signed;
 
   /// Creates a new [GrafeasV1beta1IntotoDetails].
   /// [signatures] Optional.
@@ -19,15 +19,15 @@ class GrafeasV1beta1IntotoDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signatures': ?signatures == null ? null : pulumi.Input.encodeList<GrafeasV1beta1IntotoSignature, Map<String, dynamic>>(signatures!, (value) => value.toMap()),
-      'signed': ?signed == null ? null : signed!.toMap(),
+      'signatures': ?pulumi.Input.mapOptionalInputValue<List<GrafeasV1beta1IntotoSignature>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<GrafeasV1beta1IntotoSignature, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'signed': ?pulumi.Input.mapOptionalInputValue<Link, Map<String, dynamic>>(signed, (value) => value.toMap()),
     };
   }
 
   factory GrafeasV1beta1IntotoDetails.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoDetails(
-      signatures: map['signatures'] == null ? null : pulumi.Input.decodeList<GrafeasV1beta1IntotoSignature>(map['signatures'], (value) => GrafeasV1beta1IntotoSignature.fromMap((value as Map).cast<String, dynamic>())),
-      signed: map['signed'] == null ? null : Link.fromMap((map['signed'] as Map).cast<String, dynamic>()),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<GrafeasV1beta1IntotoSignature>(map['signatures'], (value) => GrafeasV1beta1IntotoSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      signed: map['signed'] == null ? null : (Link.fromMap((map['signed'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

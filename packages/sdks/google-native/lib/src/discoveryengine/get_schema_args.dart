@@ -20,17 +20,12 @@ class GetSchemaArgs {
   /// [project] Optional.
   /// [schemaId] Required.
   GetSchemaArgs({
-    required pulumi.Output<String> collectionId,
-    required pulumi.Output<String> dataStoreId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> schemaId,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaId = pulumi.Input.asInput<String>(schemaId);
+    required this.collectionId,
+    required this.dataStoreId,
+    required this.location,
+    this.project,
+    required this.schemaId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetSchemaArgs {
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaArgs(
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      dataStoreId: pulumi.Output.create<String>(map['dataStoreId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaId: pulumi.Output.create<String>(map['schemaId'] as String),
+      collectionId: (map['collectionId'] as String).input(),
+      dataStoreId: (map['dataStoreId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
     );
   }
 }

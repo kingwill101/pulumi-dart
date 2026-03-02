@@ -28,19 +28,13 @@ class NetworkExperimentProfileArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [tags] Resource tags.
   NetworkExperimentProfileArgs({
-    pulumi.Output<String>? enabledState,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      enabledState = pulumi.Input.asOptionalInput<String>(enabledState),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profileName = pulumi.Input.asOptionalInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.enabledState,
+    this.location,
+    this.name,
+    this.profileName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class NetworkExperimentProfileArgs {
 
   factory NetworkExperimentProfileArgs.fromMap(Map<String, dynamic> map) {
     return NetworkExperimentProfileArgs(
-      enabledState: map['enabledState'] == null ? null : pulumi.Output.create<String>(map['enabledState'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profileName: map['profileName'] == null ? null : pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

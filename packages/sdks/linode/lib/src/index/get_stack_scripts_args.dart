@@ -24,15 +24,11 @@ class GetStackScriptsArgs {
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
   GetStackScriptsArgs({
-    pulumi.Output<List<GetStackScriptsFilter>>? filters,
-    pulumi.Output<bool>? latest,
-    pulumi.Output<String>? order,
-    pulumi.Output<String>? orderBy,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetStackScriptsFilter>>(filters),
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      order = pulumi.Input.asOptionalInput<String>(order),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy);
+    this.filters,
+    this.latest,
+    this.order,
+    this.orderBy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetStackScriptsArgs {
 
   factory GetStackScriptsArgs.fromMap(Map<String, dynamic> map) {
     return GetStackScriptsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetStackScriptsFilter>>(pulumi.Input.decodeList<GetStackScriptsFilter>(map['filters'], (value) => GetStackScriptsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      latest: map['latest'] == null ? null : pulumi.Output.create<bool>(map['latest'] as bool),
-      order: map['order'] == null ? null : pulumi.Output.create<String>(map['order'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetStackScriptsFilter>(map['filters'], (value) => GetStackScriptsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
     );
   }
 }

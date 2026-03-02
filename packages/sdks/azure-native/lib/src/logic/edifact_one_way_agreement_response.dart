@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'business_identity_response.dart';
 import 'edifact_protocol_settings_response.dart';
 
 /// The Edifact one way agreement.
 class EdifactOneWayAgreementResponse {
   /// The EDIFACT protocol settings.
-  final EdifactProtocolSettingsResponse protocolSettings;
+  final pulumi.Input<EdifactProtocolSettingsResponse> protocolSettings;
   /// The receiver business identity
-  final BusinessIdentityResponse receiverBusinessIdentity;
+  final pulumi.Input<BusinessIdentityResponse> receiverBusinessIdentity;
   /// The sender business identity
-  final BusinessIdentityResponse senderBusinessIdentity;
+  final pulumi.Input<BusinessIdentityResponse> senderBusinessIdentity;
 
   /// Creates a new [EdifactOneWayAgreementResponse].
   /// [protocolSettings] The EDIFACT protocol settings.
@@ -24,17 +25,17 @@ class EdifactOneWayAgreementResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'protocolSettings': protocolSettings.toMap(),
-      'receiverBusinessIdentity': receiverBusinessIdentity.toMap(),
-      'senderBusinessIdentity': senderBusinessIdentity.toMap(),
+      'protocolSettings': pulumi.Input.mapInputValue<EdifactProtocolSettingsResponse, Map<String, dynamic>>(protocolSettings, (value) => value.toMap()),
+      'receiverBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(receiverBusinessIdentity, (value) => value.toMap()),
+      'senderBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(senderBusinessIdentity, (value) => value.toMap()),
     };
   }
 
   factory EdifactOneWayAgreementResponse.fromMap(Map<String, dynamic> map) {
     return EdifactOneWayAgreementResponse(
-      protocolSettings: EdifactProtocolSettingsResponse.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>()),
-      receiverBusinessIdentity: BusinessIdentityResponse.fromMap((map['receiverBusinessIdentity'] as Map).cast<String, dynamic>()),
-      senderBusinessIdentity: BusinessIdentityResponse.fromMap((map['senderBusinessIdentity'] as Map).cast<String, dynamic>()),
+      protocolSettings: (EdifactProtocolSettingsResponse.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>())).input(),
+      receiverBusinessIdentity: (BusinessIdentityResponse.fromMap((map['receiverBusinessIdentity'] as Map).cast<String, dynamic>())).input(),
+      senderBusinessIdentity: (BusinessIdentityResponse.fromMap((map['senderBusinessIdentity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

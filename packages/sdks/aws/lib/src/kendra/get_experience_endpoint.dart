@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExperienceEndpoint {
   /// Endpoint of your Amazon Kendra Experience.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// Type of endpoint for your Amazon Kendra Experience.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
 
   /// Creates a new [GetExperienceEndpoint].
   /// [endpoint] Endpoint of your Amazon Kendra Experience.
@@ -24,8 +25,8 @@ class GetExperienceEndpoint {
 
   factory GetExperienceEndpoint.fromMap(Map<String, dynamic> map) {
     return GetExperienceEndpoint(
-      endpoint: map['endpoint'] as String,
-      endpointType: map['endpointType'] as String,
+      endpoint: (map['endpoint'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
     );
   }
 }

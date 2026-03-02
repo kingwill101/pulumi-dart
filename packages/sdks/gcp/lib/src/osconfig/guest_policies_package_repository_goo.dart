@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesPackageRepositoryGoo {
   /// The name of the repository.
-  final String name;
+  final pulumi.Input<String> name;
   /// The url of the repository.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GuestPoliciesPackageRepositoryGoo].
   /// [name] The name of the repository.
@@ -24,8 +25,8 @@ class GuestPoliciesPackageRepositoryGoo {
 
   factory GuestPoliciesPackageRepositoryGoo.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesPackageRepositoryGoo(
-      name: map['name'] as String,
-      url: map['url'] as String,
+      name: (map['name'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

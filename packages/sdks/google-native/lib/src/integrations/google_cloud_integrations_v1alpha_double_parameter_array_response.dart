@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This message only contains a field of double number array.
 class GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse {
   /// Double number array.
-  final List<double> doubleValues;
+  final pulumi.Input<List<double>> doubleValues;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse].
   /// [doubleValues] Double number array.
@@ -20,7 +21,7 @@ class GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse {
 
   factory GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse(
-      doubleValues: (map['doubleValues'] as List).cast<double>(),
+      doubleValues: ((map['doubleValues'] as List).cast<double>()).input(),
     );
   }
 }

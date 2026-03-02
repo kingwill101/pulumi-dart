@@ -57,35 +57,21 @@ class SqlContainerState {
   /// [throughput] The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
   /// [uniqueKeys] One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
   SqlContainerState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<int>? analyticalStorageTtl,
-    pulumi.Output<SqlContainerAutoscaleSettings>? autoscaleSettings,
-    pulumi.Output<SqlContainerConflictResolutionPolicy>? conflictResolutionPolicy,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<int>? defaultTtl,
-    pulumi.Output<SqlContainerIndexingPolicy>? indexingPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partitionKeyKind,
-    pulumi.Output<List<String>>? partitionKeyPaths,
-    pulumi.Output<int>? partitionKeyVersion,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<int>? throughput,
-    pulumi.Output<List<SqlContainerUniqueKey>>? uniqueKeys,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      analyticalStorageTtl = pulumi.Input.asOptionalInput<int>(analyticalStorageTtl),
-      autoscaleSettings = pulumi.Input.asOptionalInput<SqlContainerAutoscaleSettings>(autoscaleSettings),
-      conflictResolutionPolicy = pulumi.Input.asOptionalInput<SqlContainerConflictResolutionPolicy>(conflictResolutionPolicy),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      defaultTtl = pulumi.Input.asOptionalInput<int>(defaultTtl),
-      indexingPolicy = pulumi.Input.asOptionalInput<SqlContainerIndexingPolicy>(indexingPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionKeyKind = pulumi.Input.asOptionalInput<String>(partitionKeyKind),
-      partitionKeyPaths = pulumi.Input.asOptionalInput<List<String>>(partitionKeyPaths),
-      partitionKeyVersion = pulumi.Input.asOptionalInput<int>(partitionKeyVersion),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      throughput = pulumi.Input.asOptionalInput<int>(throughput),
-      uniqueKeys = pulumi.Input.asOptionalInput<List<SqlContainerUniqueKey>>(uniqueKeys);
+    this.accountName,
+    this.analyticalStorageTtl,
+    this.autoscaleSettings,
+    this.conflictResolutionPolicy,
+    this.databaseName,
+    this.defaultTtl,
+    this.indexingPolicy,
+    this.name,
+    this.partitionKeyKind,
+    this.partitionKeyPaths,
+    this.partitionKeyVersion,
+    this.resourceGroupName,
+    this.throughput,
+    this.uniqueKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class SqlContainerState {
 
   factory SqlContainerState.fromMap(Map<String, dynamic> map) {
     return SqlContainerState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : pulumi.Output.create<int>(map['analyticalStorageTtl'] as int),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : pulumi.Output.create<SqlContainerAutoscaleSettings>(SqlContainerAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())),
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : pulumi.Output.create<SqlContainerConflictResolutionPolicy>(SqlContainerConflictResolutionPolicy.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>())),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      defaultTtl: map['defaultTtl'] == null ? null : pulumi.Output.create<int>(map['defaultTtl'] as int),
-      indexingPolicy: map['indexingPolicy'] == null ? null : pulumi.Output.create<SqlContainerIndexingPolicy>(SqlContainerIndexingPolicy.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionKeyKind: map['partitionKeyKind'] == null ? null : pulumi.Output.create<String>(map['partitionKeyKind'] as String),
-      partitionKeyPaths: map['partitionKeyPaths'] == null ? null : pulumi.Output.create<List<String>>((map['partitionKeyPaths'] as List).cast<String>()),
-      partitionKeyVersion: map['partitionKeyVersion'] == null ? null : pulumi.Output.create<int>(map['partitionKeyVersion'] as int),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      throughput: map['throughput'] == null ? null : pulumi.Output.create<int>(map['throughput'] as int),
-      uniqueKeys: map['uniqueKeys'] == null ? null : pulumi.Output.create<List<SqlContainerUniqueKey>>(pulumi.Input.decodeList<SqlContainerUniqueKey>(map['uniqueKeys'], (value) => SqlContainerUniqueKey.fromMap((value as Map).cast<String, dynamic>()))),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (SqlContainerAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (SqlContainerConflictResolutionPolicy.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>())).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      indexingPolicy: map['indexingPolicy'] == null ? null : (SqlContainerIndexingPolicy.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionKeyKind: map['partitionKeyKind'] == null ? null : (map['partitionKeyKind'] as String).input(),
+      partitionKeyPaths: map['partitionKeyPaths'] == null ? null : ((map['partitionKeyPaths'] as List).cast<String>()).input(),
+      partitionKeyVersion: map['partitionKeyVersion'] == null ? null : (map['partitionKeyVersion'] as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      uniqueKeys: map['uniqueKeys'] == null ? null : (pulumi.Input.decodeList<SqlContainerUniqueKey>(map['uniqueKeys'], (value) => SqlContainerUniqueKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

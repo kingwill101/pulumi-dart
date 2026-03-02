@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsConfigArtifactConfigGoogleArtifactRegistry {
   /// The name of the artifact registry package.
-  final String artifactRegistryPackage;
+  final pulumi.Input<String> artifactRegistryPackage;
   /// The host project of Artifact Registry.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [InsightsConfigArtifactConfigGoogleArtifactRegistry].
   /// [artifactRegistryPackage] The name of the artifact registry package.
@@ -24,8 +25,8 @@ class InsightsConfigArtifactConfigGoogleArtifactRegistry {
 
   factory InsightsConfigArtifactConfigGoogleArtifactRegistry.fromMap(Map<String, dynamic> map) {
     return InsightsConfigArtifactConfigGoogleArtifactRegistry(
-      artifactRegistryPackage: map['artifactRegistryPackage'] as String,
-      projectId: map['projectId'] as String,
+      artifactRegistryPackage: (map['artifactRegistryPackage'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

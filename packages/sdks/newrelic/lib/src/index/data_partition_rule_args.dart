@@ -28,19 +28,13 @@ class DataPartitionRuleArgs {
   /// [retentionPolicy] The retention policy of the data partition data. Valid values are `SECONDARY` and `STANDARD`.
   /// [targetDataPartition] The name of the data partition where logs will be allocated once the rule is enabled.
   DataPartitionRuleArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> nrql,
-    required pulumi.Output<String> retentionPolicy,
-    required pulumi.Output<String> targetDataPartition,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      nrql = pulumi.Input.asInput<String>(nrql),
-      retentionPolicy = pulumi.Input.asInput<String>(retentionPolicy),
-      targetDataPartition = pulumi.Input.asInput<String>(targetDataPartition);
+    this.accountId,
+    this.description,
+    required this.enabled,
+    required this.nrql,
+    required this.retentionPolicy,
+    required this.targetDataPartition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class DataPartitionRuleArgs {
 
   factory DataPartitionRuleArgs.fromMap(Map<String, dynamic> map) {
     return DataPartitionRuleArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      nrql: pulumi.Output.create<String>(map['nrql'] as String),
-      retentionPolicy: pulumi.Output.create<String>(map['retentionPolicy'] as String),
-      targetDataPartition: pulumi.Output.create<String>(map['targetDataPartition'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      nrql: (map['nrql'] as String).input(),
+      retentionPolicy: (map['retentionPolicy'] as String).input(),
+      targetDataPartition: (map['targetDataPartition'] as String).input(),
     );
   }
 }

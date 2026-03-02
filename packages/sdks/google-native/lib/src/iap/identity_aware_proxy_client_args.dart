@@ -17,13 +17,10 @@ class IdentityAwareProxyClientArgs {
   /// [displayName] Human-friendly name given to the OAuth client.
   /// [project] Optional.
   IdentityAwareProxyClientArgs({
-    required pulumi.Output<String> brandId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? project,
-  }) :
-      brandId = pulumi.Input.asInput<String>(brandId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.brandId,
+    this.displayName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class IdentityAwareProxyClientArgs {
 
   factory IdentityAwareProxyClientArgs.fromMap(Map<String, dynamic> map) {
     return IdentityAwareProxyClientArgs(
-      brandId: pulumi.Output.create<String>(map['brandId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      brandId: (map['brandId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

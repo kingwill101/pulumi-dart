@@ -29,15 +29,11 @@ class ClusterArgs {
   /// [nodeTypeConfigs] The map of cluster node types in this cluster,
   /// [parent] The resource name of the private cloud to create a new cluster in.
   ClusterArgs({
-    pulumi.Output<ClusterAutoscalingSettings>? autoscalingSettings,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ClusterNodeTypeConfig>>? nodeTypeConfigs,
-    required pulumi.Output<String> parent,
-  }) :
-      autoscalingSettings = pulumi.Input.asOptionalInput<ClusterAutoscalingSettings>(autoscalingSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeTypeConfigs = pulumi.Input.asOptionalInput<List<ClusterNodeTypeConfig>>(nodeTypeConfigs),
-      parent = pulumi.Input.asInput<String>(parent);
+    this.autoscalingSettings,
+    this.name,
+    this.nodeTypeConfigs,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,10 +46,10 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      autoscalingSettings: map['autoscalingSettings'] == null ? null : pulumi.Output.create<ClusterAutoscalingSettings>(ClusterAutoscalingSettings.fromMap((map['autoscalingSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : pulumi.Output.create<List<ClusterNodeTypeConfig>>(pulumi.Input.decodeList<ClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      autoscalingSettings: map['autoscalingSettings'] == null ? null : (ClusterAutoscalingSettings.fromMap((map['autoscalingSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesFleetManagerHubProfile {
-  final String dnsPrefix;
-  final String? fqdn;
-  final String? kubernetesVersion;
+  final pulumi.Input<String> dnsPrefix;
+  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String>? kubernetesVersion;
 
   /// Creates a new [KubernetesFleetManagerHubProfile].
   /// [dnsPrefix] Required.
@@ -26,9 +27,9 @@ class KubernetesFleetManagerHubProfile {
 
   factory KubernetesFleetManagerHubProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesFleetManagerHubProfile(
-      dnsPrefix: map['dnsPrefix'] as String,
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : map['kubernetesVersion'] as String,
+      dnsPrefix: (map['dnsPrefix'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
     );
   }
 }

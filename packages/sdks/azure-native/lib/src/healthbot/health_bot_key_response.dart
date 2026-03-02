@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An entry of HealthBotKeysResponse
 class HealthBotKeyResponse {
   /// The name of the key.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// The value of the key.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [HealthBotKeyResponse].
   /// [keyName] The name of the key.
@@ -25,8 +26,8 @@ class HealthBotKeyResponse {
 
   factory HealthBotKeyResponse.fromMap(Map<String, dynamic> map) {
     return HealthBotKeyResponse(
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
 class MaintenanceScheduleResponseRedisV1beta1 {
   /// If the scheduled maintenance can be rescheduled, default is true.
-  final bool canReschedule;
+  final pulumi.Input<bool> canReschedule;
   /// The end time of any upcoming scheduled maintenance for this instance.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
-  final String scheduleDeadlineTime;
+  final pulumi.Input<String> scheduleDeadlineTime;
   /// The start time of any upcoming scheduled maintenance for this instance.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [MaintenanceScheduleResponseRedisV1beta1].
   /// [canReschedule] If the scheduled maintenance can be rescheduled, default is true.
@@ -35,10 +36,10 @@ class MaintenanceScheduleResponseRedisV1beta1 {
 
   factory MaintenanceScheduleResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return MaintenanceScheduleResponseRedisV1beta1(
-      canReschedule: map['canReschedule'] as bool,
-      endTime: map['endTime'] as String,
-      scheduleDeadlineTime: map['scheduleDeadlineTime'] as String,
-      startTime: map['startTime'] as String,
+      canReschedule: (map['canReschedule'] as bool).input(),
+      endTime: (map['endTime'] as String).input(),
+      scheduleDeadlineTime: (map['scheduleDeadlineTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

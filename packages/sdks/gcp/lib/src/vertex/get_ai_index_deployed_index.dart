@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAiIndexDeployedIndex {
   /// The ID of the DeployedIndex in the above IndexEndpoint.
-  final String deployedIndexId;
+  final pulumi.Input<String> deployedIndexId;
   /// A resource name of the IndexEndpoint.
-  final String indexEndpoint;
+  final pulumi.Input<String> indexEndpoint;
 
   /// Creates a new [GetAiIndexDeployedIndex].
   /// [deployedIndexId] The ID of the DeployedIndex in the above IndexEndpoint.
@@ -24,8 +25,8 @@ class GetAiIndexDeployedIndex {
 
   factory GetAiIndexDeployedIndex.fromMap(Map<String, dynamic> map) {
     return GetAiIndexDeployedIndex(
-      deployedIndexId: map['deployedIndexId'] as String,
-      indexEndpoint: map['indexEndpoint'] as String,
+      deployedIndexId: (map['deployedIndexId'] as String).input(),
+      indexEndpoint: (map['indexEndpoint'] as String).input(),
     );
   }
 }

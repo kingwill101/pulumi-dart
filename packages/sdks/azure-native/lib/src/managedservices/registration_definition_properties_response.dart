@@ -7,23 +7,23 @@ import 'eligible_authorization_response.dart';
 /// The properties of a registration definition.
 class RegistrationDefinitionPropertiesResponse {
   /// The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  final List<AuthorizationResponse> authorizations;
+  final pulumi.Input<List<AuthorizationResponse>> authorizations;
   /// The description of the registration definition.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  final List<EligibleAuthorizationResponse>? eligibleAuthorizations;
+  final pulumi.Input<List<EligibleAuthorizationResponse>>? eligibleAuthorizations;
   /// The identifier of the managedBy tenant.
-  final String managedByTenantId;
+  final pulumi.Input<String> managedByTenantId;
   /// The name of the managedBy tenant.
-  final String managedByTenantName;
+  final pulumi.Input<String> managedByTenantName;
   /// The identifier of the managed tenant.
-  final String manageeTenantId;
+  final pulumi.Input<String> manageeTenantId;
   /// The name of the managed tenant.
-  final String manageeTenantName;
+  final pulumi.Input<String> manageeTenantName;
   /// The current provisioning state of the registration definition.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The name of the registration definition.
-  final String? registrationDefinitionName;
+  final pulumi.Input<String>? registrationDefinitionName;
 
   /// Creates a new [RegistrationDefinitionPropertiesResponse].
   /// [authorizations] The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
@@ -49,9 +49,9 @@ class RegistrationDefinitionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizations': pulumi.Input.encodeList<AuthorizationResponse, Map<String, dynamic>>(authorizations, (value) => value.toMap()),
+      'authorizations': pulumi.Input.mapInputValue<List<AuthorizationResponse>, List<Map<String, dynamic>>>(authorizations, (value) => pulumi.Input.encodeList<AuthorizationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'eligibleAuthorizations': ?eligibleAuthorizations == null ? null : pulumi.Input.encodeList<EligibleAuthorizationResponse, Map<String, dynamic>>(eligibleAuthorizations!, (value) => value.toMap()),
+      'eligibleAuthorizations': ?pulumi.Input.mapOptionalInputValue<List<EligibleAuthorizationResponse>, List<Map<String, dynamic>>>(eligibleAuthorizations, (value) => pulumi.Input.encodeList<EligibleAuthorizationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'managedByTenantId': managedByTenantId,
       'managedByTenantName': managedByTenantName,
       'manageeTenantId': manageeTenantId,
@@ -63,15 +63,15 @@ class RegistrationDefinitionPropertiesResponse {
 
   factory RegistrationDefinitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RegistrationDefinitionPropertiesResponse(
-      authorizations: pulumi.Input.decodeList<AuthorizationResponse>(map['authorizations'], (value) => AuthorizationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : pulumi.Input.decodeList<EligibleAuthorizationResponse>(map['eligibleAuthorizations'], (value) => EligibleAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      managedByTenantId: map['managedByTenantId'] as String,
-      managedByTenantName: map['managedByTenantName'] as String,
-      manageeTenantId: map['manageeTenantId'] as String,
-      manageeTenantName: map['manageeTenantName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : map['registrationDefinitionName'] as String,
+      authorizations: (pulumi.Input.decodeList<AuthorizationResponse>(map['authorizations'], (value) => AuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<EligibleAuthorizationResponse>(map['eligibleAuthorizations'], (value) => EligibleAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedByTenantId: (map['managedByTenantId'] as String).input(),
+      managedByTenantName: (map['managedByTenantName'] as String).input(),
+      manageeTenantId: (map['manageeTenantId'] as String).input(),
+      manageeTenantName: (map['manageeTenantName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : (map['registrationDefinitionName'] as String).input(),
     );
   }
 }

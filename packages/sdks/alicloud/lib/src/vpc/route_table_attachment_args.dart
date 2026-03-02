@@ -16,11 +16,9 @@ class RouteTableAttachmentArgs {
   /// [routeTableId] The ID of the route table to be bound to the switch.
   /// [vswitchId] The ID of the switch to bind the route table.
   RouteTableAttachmentArgs({
-    required pulumi.Output<String> routeTableId,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      routeTableId = pulumi.Input.asInput<String>(routeTableId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.routeTableId,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class RouteTableAttachmentArgs {
 
   factory RouteTableAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableAttachmentArgs(
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      routeTableId: (map['routeTableId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

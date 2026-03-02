@@ -41,27 +41,17 @@ class SavedSearchArgs {
   /// [version] The version number of the query language. The current version is 2 and is the default.
   /// [workspaceName] The name of the workspace.
   SavedSearchArgs({
-    required pulumi.Output<String> category,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? functionAlias,
-    pulumi.Output<String>? functionParameters,
-    required pulumi.Output<String> query,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? savedSearchId,
-    pulumi.Output<List<Tag>>? tags,
-    pulumi.Output<double>? version,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      category = pulumi.Input.asInput<String>(category),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      functionAlias = pulumi.Input.asOptionalInput<String>(functionAlias),
-      functionParameters = pulumi.Input.asOptionalInput<String>(functionParameters),
-      query = pulumi.Input.asInput<String>(query),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      savedSearchId = pulumi.Input.asOptionalInput<String>(savedSearchId),
-      tags = pulumi.Input.asOptionalInput<List<Tag>>(tags),
-      version = pulumi.Input.asOptionalInput<double>(version),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.category,
+    required this.displayName,
+    this.functionAlias,
+    this.functionParameters,
+    required this.query,
+    required this.resourceGroupName,
+    this.savedSearchId,
+    this.tags,
+    this.version,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class SavedSearchArgs {
 
   factory SavedSearchArgs.fromMap(Map<String, dynamic> map) {
     return SavedSearchArgs(
-      category: pulumi.Output.create<String>(map['category'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      functionAlias: map['functionAlias'] == null ? null : pulumi.Output.create<String>(map['functionAlias'] as String),
-      functionParameters: map['functionParameters'] == null ? null : pulumi.Output.create<String>(map['functionParameters'] as String),
-      query: pulumi.Output.create<String>(map['query'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      savedSearchId: map['savedSearchId'] == null ? null : pulumi.Output.create<String>(map['savedSearchId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<Tag>>(pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<double>(map['version'] as double),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      category: (map['category'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
+      functionParameters: map['functionParameters'] == null ? null : (map['functionParameters'] as String).input(),
+      query: (map['query'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      savedSearchId: map['savedSearchId'] == null ? null : (map['savedSearchId'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as double).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

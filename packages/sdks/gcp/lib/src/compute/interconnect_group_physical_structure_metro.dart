@@ -8,12 +8,12 @@ class InterconnectGroupPhysicalStructureMetro {
   /// Facilities used to explain this blocker in more detail.
   /// Like physicalStructure.metros.facilities.facility, this is a numeric
   /// string like "5467".
-  final List<InterconnectGroupPhysicalStructureMetroFacility>? facilities;
+  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetroFacility>>? facilities;
   /// (Output)
   /// The name of the metro, as a three-letter lowercase string
   /// like "iad". This is the first component of the location of
   /// Interconnects underneath this.
-  final String? metro;
+  final pulumi.Input<String>? metro;
 
   /// Creates a new [InterconnectGroupPhysicalStructureMetro].
   /// [facilities] (Output)
@@ -25,15 +25,15 @@ class InterconnectGroupPhysicalStructureMetro {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'facilities': ?facilities == null ? null : pulumi.Input.encodeList<InterconnectGroupPhysicalStructureMetroFacility, Map<String, dynamic>>(facilities!, (value) => value.toMap()),
+      'facilities': ?pulumi.Input.mapOptionalInputValue<List<InterconnectGroupPhysicalStructureMetroFacility>, List<Map<String, dynamic>>>(facilities, (value) => pulumi.Input.encodeList<InterconnectGroupPhysicalStructureMetroFacility, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metro': ?metro,
     };
   }
 
   factory InterconnectGroupPhysicalStructureMetro.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupPhysicalStructureMetro(
-      facilities: map['facilities'] == null ? null : pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetroFacility>(map['facilities'], (value) => InterconnectGroupPhysicalStructureMetroFacility.fromMap((value as Map).cast<String, dynamic>())),
-      metro: map['metro'] == null ? null : map['metro'] as String,
+      facilities: map['facilities'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetroFacility>(map['facilities'], (value) => InterconnectGroupPhysicalStructureMetroFacility.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metro: map['metro'] == null ? null : (map['metro'] as String).input(),
     );
   }
 }

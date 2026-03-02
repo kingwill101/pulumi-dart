@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesHyperVVpIndex {
   /// Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DomainFeaturesHyperVVpIndex].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
@@ -19,7 +20,7 @@ class DomainFeaturesHyperVVpIndex {
 
   factory DomainFeaturesHyperVVpIndex.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVVpIndex(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

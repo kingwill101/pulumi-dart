@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Constraints applied to pods.
 class MaxPodsConstraint {
   /// Constraint enforced on the max num of pods per node.
-  final String? maxPodsPerNode;
+  final pulumi.Input<String>? maxPodsPerNode;
 
   /// Creates a new [MaxPodsConstraint].
   /// [maxPodsPerNode] Constraint enforced on the max num of pods per node.
@@ -20,7 +21,7 @@ class MaxPodsConstraint {
 
   factory MaxPodsConstraint.fromMap(Map<String, dynamic> map) {
     return MaxPodsConstraint(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : map['maxPodsPerNode'] as String,
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as String).input(),
     );
   }
 }

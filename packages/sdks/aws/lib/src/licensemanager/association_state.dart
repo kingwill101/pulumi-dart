@@ -16,13 +16,10 @@ class AssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the resource associated with the license configuration.
   AssociationState({
-    pulumi.Output<String>? licenseConfigurationArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-  }) :
-      licenseConfigurationArn = pulumi.Input.asOptionalInput<String>(licenseConfigurationArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn);
+    this.licenseConfigurationArn,
+    this.region,
+    this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AssociationState {
 
   factory AssociationState.fromMap(Map<String, dynamic> map) {
     return AssociationState(
-      licenseConfigurationArn: map['licenseConfigurationArn'] == null ? null : pulumi.Output.create<String>(map['licenseConfigurationArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
+      licenseConfigurationArn: map['licenseConfigurationArn'] == null ? null : (map['licenseConfigurationArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

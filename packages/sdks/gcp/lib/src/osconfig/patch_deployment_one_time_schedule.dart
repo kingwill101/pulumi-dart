@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PatchDeploymentOneTimeSchedule {
   /// The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final String executeTime;
+  final pulumi.Input<String> executeTime;
 
   /// Creates a new [PatchDeploymentOneTimeSchedule].
   /// [executeTime] The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
@@ -20,7 +21,7 @@ class PatchDeploymentOneTimeSchedule {
 
   factory PatchDeploymentOneTimeSchedule.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentOneTimeSchedule(
-      executeTime: map['executeTime'] as String,
+      executeTime: (map['executeTime'] as String).input(),
     );
   }
 }

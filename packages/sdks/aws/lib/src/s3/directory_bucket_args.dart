@@ -32,21 +32,14 @@ class DirectoryBucketArgs {
   /// [tags] Map of tags to assign to the bucket. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Bucket type. Valid values: `Directory`.
   DirectoryBucketArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? dataRedundancy,
-    pulumi.Output<bool>? forceDestroy,
-    required pulumi.Output<DirectoryBucketLocation> location,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      dataRedundancy = pulumi.Input.asOptionalInput<String>(dataRedundancy),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      location = pulumi.Input.asInput<DirectoryBucketLocation>(location),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.bucket,
+    this.dataRedundancy,
+    this.forceDestroy,
+    required this.location,
+    this.region,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DirectoryBucketArgs {
 
   factory DirectoryBucketArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryBucketArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      dataRedundancy: map['dataRedundancy'] == null ? null : pulumi.Output.create<String>(map['dataRedundancy'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      location: pulumi.Output.create<DirectoryBucketLocation>(DirectoryBucketLocation.fromMap((map['location'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      bucket: (map['bucket'] as String).input(),
+      dataRedundancy: map['dataRedundancy'] == null ? null : (map['dataRedundancy'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      location: (DirectoryBucketLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

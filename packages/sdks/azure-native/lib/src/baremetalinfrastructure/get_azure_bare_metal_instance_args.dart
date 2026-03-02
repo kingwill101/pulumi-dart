@@ -16,11 +16,9 @@ class GetAzureBareMetalInstanceArgs {
   /// [azureBareMetalInstanceName] Name of the Azure Bare Metal Instance, also known as the ResourceName.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAzureBareMetalInstanceArgs({
-    required pulumi.Output<String> azureBareMetalInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureBareMetalInstanceName = pulumi.Input.asInput<String>(azureBareMetalInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureBareMetalInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAzureBareMetalInstanceArgs {
 
   factory GetAzureBareMetalInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureBareMetalInstanceArgs(
-      azureBareMetalInstanceName: pulumi.Output.create<String>(map['azureBareMetalInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureBareMetalInstanceName: (map['azureBareMetalInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppAuthSettingsV2FacebookV2 {
   /// The App ID of the Facebook app used for login.
-  final String appId;
+  final pulumi.Input<String> appId;
   /// The app setting name that contains the `app_secret` value used for Facebook login.
-  final String appSecretSettingName;
+  final pulumi.Input<String> appSecretSettingName;
   /// The version of the Facebook API to be used while logging in.
-  final String graphApiVersion;
+  final pulumi.Input<String> graphApiVersion;
   /// The list of Login scopes that are requested as part of Microsoft Account authentication.
-  final List<String> loginScopes;
+  final pulumi.Input<List<String>> loginScopes;
 
   /// Creates a new [GetWindowsWebAppAuthSettingsV2FacebookV2].
   /// [appId] The App ID of the Facebook app used for login.
@@ -34,10 +35,10 @@ class GetWindowsWebAppAuthSettingsV2FacebookV2 {
 
   factory GetWindowsWebAppAuthSettingsV2FacebookV2.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppAuthSettingsV2FacebookV2(
-      appId: map['appId'] as String,
-      appSecretSettingName: map['appSecretSettingName'] as String,
-      graphApiVersion: map['graphApiVersion'] as String,
-      loginScopes: (map['loginScopes'] as List).cast<String>(),
+      appId: (map['appId'] as String).input(),
+      appSecretSettingName: (map['appSecretSettingName'] as String).input(),
+      graphApiVersion: (map['graphApiVersion'] as String).input(),
+      loginScopes: ((map['loginScopes'] as List).cast<String>()).input(),
     );
   }
 }

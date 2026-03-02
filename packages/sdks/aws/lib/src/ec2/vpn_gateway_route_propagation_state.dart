@@ -16,13 +16,10 @@ class VpnGatewayRoutePropagationState {
   /// [routeTableId] The id of the `aws.ec2.RouteTable` to propagate routes into.
   /// [vpnGatewayId] The id of the `aws.ec2.VpnGateway` to propagate routes from.
   VpnGatewayRoutePropagationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? vpnGatewayId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      vpnGatewayId = pulumi.Input.asOptionalInput<String>(vpnGatewayId);
+    this.region,
+    this.routeTableId,
+    this.vpnGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class VpnGatewayRoutePropagationState {
 
   factory VpnGatewayRoutePropagationState.fromMap(Map<String, dynamic> map) {
     return VpnGatewayRoutePropagationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : pulumi.Output.create<String>(map['vpnGatewayId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
     );
   }
 }

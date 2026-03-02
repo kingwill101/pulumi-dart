@@ -46,31 +46,19 @@ class GetSubnetsArgs {
   /// [vpdId] The Eflo VPD ID.
   /// [zoneId] The zone ID of the resource.
   GetSubnetsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<String>? subnetName,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? vpdId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      subnetName = pulumi.Input.asOptionalInput<String>(subnetName),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vpdId = pulumi.Input.asOptionalInput<String>(vpdId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.resourceGroupId,
+    this.status,
+    this.subnetId,
+    this.subnetName,
+    this.type,
+    this.vpdId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class GetSubnetsArgs {
 
   factory GetSubnetsArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      subnetName: map['subnetName'] == null ? null : pulumi.Output.create<String>(map['subnetName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vpdId: map['vpdId'] == null ? null : pulumi.Output.create<String>(map['vpdId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      subnetName: map['subnetName'] == null ? null : (map['subnetName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vpdId: map['vpdId'] == null ? null : (map['vpdId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

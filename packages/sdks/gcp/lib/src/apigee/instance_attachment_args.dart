@@ -17,11 +17,9 @@ class InstanceAttachmentArgs {
   /// [environment] The resource ID of the environment.
   /// [instanceId] The Apigee instance associated with the Apigee environment,
   InstanceAttachmentArgs({
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> instanceId,
-  }) :
-      environment = pulumi.Input.asInput<String>(environment),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.environment,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class InstanceAttachmentArgs {
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentArgs(
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      environment: (map['environment'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

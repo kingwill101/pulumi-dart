@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_key_vault_secret_reference_response.dart';
 
 /// A WebLinkedService that uses client certificate based authentication to communicate with an HTTP endpoint. This scheme follows mutual authentication; the server must also provide valid credentials to the client.
 class WebClientCertificateAuthenticationResponse {
   /// Type of authentication used to connect to the web table source.
   /// Expected value is 'ClientCertificate'.
-  final String authenticationType;
+  final pulumi.Input<String> authenticationType;
   /// Password for the PFX file.
-  final AzureKeyVaultSecretReferenceResponse password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse> password;
   /// Base64-encoded contents of a PFX file.
-  final AzureKeyVaultSecretReferenceResponse pfx;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse> pfx;
   /// The URL of the web service endpoint, e.g. https://www.microsoft.com . Type: string (or Expression with resultType string).
-  final dynamic url;
+  final pulumi.Input<dynamic> url;
 
   /// Creates a new [WebClientCertificateAuthenticationResponse].
   /// [authenticationType] Type of authentication used to connect to the web table source.
@@ -29,18 +30,18 @@ class WebClientCertificateAuthenticationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authenticationType': authenticationType,
-      'password': password.toMap(),
-      'pfx': pfx.toMap(),
+      'password': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'pfx': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(pfx, (value) => value.toMap()),
       'url': url,
     };
   }
 
   factory WebClientCertificateAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return WebClientCertificateAuthenticationResponse(
-      authenticationType: map['authenticationType'] as String,
-      password: AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      pfx: AzureKeyVaultSecretReferenceResponse.fromMap((map['pfx'] as Map).cast<String, dynamic>()),
-      url: map['url'],
+      authenticationType: (map['authenticationType'] as String).input(),
+      password: (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      pfx: (AzureKeyVaultSecretReferenceResponse.fromMap((map['pfx'] as Map).cast<String, dynamic>())).input(),
+      url: (map['url']).input(),
     );
   }
 }

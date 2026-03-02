@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OneDashboardPageWidgetMarkdownInitialSorting {
   /// (Required) Defines the sort order. Accepted values are `asc` for ascending or `desc` for descending.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The title of the dashboard.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OneDashboardPageWidgetMarkdownInitialSorting].
   /// [direction] (Required) Defines the sort order. Accepted values are `asc` for ascending or `desc` for descending.
@@ -24,8 +25,8 @@ class OneDashboardPageWidgetMarkdownInitialSorting {
 
   factory OneDashboardPageWidgetMarkdownInitialSorting.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetMarkdownInitialSorting(
-      direction: map['direction'] as String,
-      name: map['name'] as String,
+      direction: (map['direction'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

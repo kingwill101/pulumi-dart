@@ -42,23 +42,15 @@ class MetastoreFederationArgs {
   /// [tags] A map of resource manager tags.
   /// [version] The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
   MetastoreFederationArgs({
-    required pulumi.Output<List<MetastoreFederationBackendMetastore>> backendMetastores,
-    pulumi.Output<bool>? deletionProtection,
-    required pulumi.Output<String> federationId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> version,
-  }) :
-      backendMetastores = pulumi.Input.asInput<List<MetastoreFederationBackendMetastore>>(backendMetastores),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      federationId = pulumi.Input.asInput<String>(federationId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asInput<String>(version);
+    required this.backendMetastores,
+    this.deletionProtection,
+    required this.federationId,
+    this.labels,
+    this.location,
+    this.project,
+    this.tags,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class MetastoreFederationArgs {
 
   factory MetastoreFederationArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreFederationArgs(
-      backendMetastores: pulumi.Output.create<List<MetastoreFederationBackendMetastore>>(pulumi.Input.decodeList<MetastoreFederationBackendMetastore>(map['backendMetastores'], (value) => MetastoreFederationBackendMetastore.fromMap((value as Map).cast<String, dynamic>()))),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      federationId: pulumi.Output.create<String>(map['federationId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      backendMetastores: (pulumi.Input.decodeList<MetastoreFederationBackendMetastore>(map['backendMetastores'], (value) => MetastoreFederationBackendMetastore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      federationId: (map['federationId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

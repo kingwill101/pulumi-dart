@@ -5,9 +5,9 @@ import 'access_package_assignment_policy_question_choice_display_value_localized
 
 class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
   /// The default text of this question
-  final String defaultText;
+  final pulumi.Input<String> defaultText;
   /// The localized text of this question
-  final List<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>? localizedTexts;
+  final pulumi.Input<List<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>>? localizedTexts;
 
   /// Creates a new [AccessPackageAssignmentPolicyQuestionChoiceDisplayValue].
   /// [defaultText] The default text of this question
@@ -20,14 +20,14 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultText': defaultText,
-      'localizedTexts': ?localizedTexts == null ? null : pulumi.Input.encodeList<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText, Map<String, dynamic>>(localizedTexts!, (value) => value.toMap()),
+      'localizedTexts': ?pulumi.Input.mapOptionalInputValue<List<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>, List<Map<String, dynamic>>>(localizedTexts, (value) => pulumi.Input.encodeList<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AccessPackageAssignmentPolicyQuestionChoiceDisplayValue.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(
-      defaultText: map['defaultText'] as String,
-      localizedTexts: map['localizedTexts'] == null ? null : pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>(map['localizedTexts'], (value) => AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText.fromMap((value as Map).cast<String, dynamic>())),
+      defaultText: (map['defaultText'] as String).input(),
+      localizedTexts: map['localizedTexts'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>(map['localizedTexts'], (value) => AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

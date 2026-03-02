@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceOpensearchserviceConfig {
   /// HTTP endpoint of the OpenSearch domain.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// AWS region of the OpenSearch domain. Defaults to current region.
-  final String? region;
+  final pulumi.Input<String>? region;
 
   /// Creates a new [DataSourceOpensearchserviceConfig].
   /// [endpoint] HTTP endpoint of the OpenSearch domain.
@@ -24,8 +25,8 @@ class DataSourceOpensearchserviceConfig {
 
   factory DataSourceOpensearchserviceConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceOpensearchserviceConfig(
-      endpoint: map['endpoint'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      endpoint: (map['endpoint'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

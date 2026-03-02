@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration {
   /// A list of up to three IP addresses of DNS servers or domain controllers in the self-managed AD directory.
-  final List<String> dnsIps;
+  final pulumi.Input<List<String>> dnsIps;
   /// The fully qualified domain name of the self-managed AD directory.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The name of the domain group whose members have administrative privileges for the FSx file system.
-  final String fileSystemAdministratorsGroup;
+  final pulumi.Input<String> fileSystemAdministratorsGroup;
   /// The fully qualified distinguished name of the organizational unit within the self-managed AD directory to which the Windows File Server or ONTAP storage virtual machine (SVM) instance is joined.
-  final String organizationalUnitDistinguishedName;
+  final pulumi.Input<String> organizationalUnitDistinguishedName;
   /// The user name for the service account on your self-managed AD domain that FSx uses to join to your AD domain.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration].
   /// [dnsIps] A list of up to three IP addresses of DNS servers or domain controllers in the self-managed AD directory.
@@ -39,11 +40,11 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActive
 
   factory GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration(
-      dnsIps: (map['dnsIps'] as List).cast<String>(),
-      domainName: map['domainName'] as String,
-      fileSystemAdministratorsGroup: map['fileSystemAdministratorsGroup'] as String,
-      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] as String,
-      username: map['username'] as String,
+      dnsIps: ((map['dnsIps'] as List).cast<String>()).input(),
+      domainName: (map['domainName'] as String).input(),
+      fileSystemAdministratorsGroup: (map['fileSystemAdministratorsGroup'] as String).input(),
+      organizationalUnitDistinguishedName: (map['organizationalUnitDistinguishedName'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetOrganizationPolicyArgs {
   /// [constraint] (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   /// [project] The project ID.
   GetOrganizationPolicyArgs({
-    required pulumi.Output<String> constraint,
-    required pulumi.Output<String> project,
-  }) :
-      constraint = pulumi.Input.asInput<String>(constraint),
-      project = pulumi.Input.asInput<String>(project);
+    required this.constraint,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetOrganizationPolicyArgs {
 
   factory GetOrganizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyArgs(
-      constraint: pulumi.Output.create<String>(map['constraint'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      constraint: (map['constraint'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

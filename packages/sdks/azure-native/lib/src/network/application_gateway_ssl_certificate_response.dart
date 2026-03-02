@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SSL certificates of an application gateway.
 class ApplicationGatewaySslCertificateResponse {
   /// Base-64 encoded pfx certificate. Only applicable in PUT Request.
-  final String? data;
+  final pulumi.Input<String>? data;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
-  final String? keyVaultSecretId;
+  final pulumi.Input<String>? keyVaultSecretId;
   /// Name of the SSL certificate that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Password for the pfx file specified in data. Only applicable in PUT request.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The provisioning state of the SSL certificate resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
-  final String publicCertData;
+  final pulumi.Input<String> publicCertData;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApplicationGatewaySslCertificateResponse].
   /// [data] Base-64 encoded pfx certificate. Only applicable in PUT Request.
@@ -60,15 +61,15 @@ class ApplicationGatewaySslCertificateResponse {
 
   factory ApplicationGatewaySslCertificateResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslCertificateResponse(
-      data: map['data'] == null ? null : map['data'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : map['keyVaultSecretId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publicCertData: map['publicCertData'] as String,
-      type: map['type'] as String,
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicCertData: (map['publicCertData'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

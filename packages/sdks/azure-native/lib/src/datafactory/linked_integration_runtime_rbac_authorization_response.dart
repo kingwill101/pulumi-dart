@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'credential_reference_response.dart';
 
 /// The role based access control (RBAC) authorization type integration runtime.
 class LinkedIntegrationRuntimeRbacAuthorizationResponse {
   /// The authorization type for integration runtime sharing.
   /// Expected value is 'RBAC'.
-  final String authorizationType;
+  final pulumi.Input<String> authorizationType;
   /// The credential reference containing authentication information.
-  final CredentialReferenceResponse? credential;
+  final pulumi.Input<CredentialReferenceResponse>? credential;
   /// The resource identifier of the integration runtime to be shared.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [LinkedIntegrationRuntimeRbacAuthorizationResponse].
   /// [authorizationType] The authorization type for integration runtime sharing.
@@ -25,16 +26,16 @@ class LinkedIntegrationRuntimeRbacAuthorizationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authorizationType': authorizationType,
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'resourceId': resourceId,
     };
   }
 
   factory LinkedIntegrationRuntimeRbacAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return LinkedIntegrationRuntimeRbacAuthorizationResponse(
-      authorizationType: map['authorizationType'] as String,
-      credential: map['credential'] == null ? null : CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      resourceId: map['resourceId'] as String,
+      authorizationType: (map['authorizationType'] as String).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

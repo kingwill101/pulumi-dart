@@ -28,17 +28,12 @@ class BucketMetadataConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   BucketMetadataConfigurationArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? expectedBucketOwner,
-    required pulumi.Output<BucketMetadataConfigurationMetadataConfiguration> metadataConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<BucketMetadataConfigurationTimeouts>? timeouts,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      metadataConfiguration = pulumi.Input.asInput<BucketMetadataConfigurationMetadataConfiguration>(metadataConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<BucketMetadataConfigurationTimeouts>(timeouts);
+    required this.bucket,
+    this.expectedBucketOwner,
+    required this.metadataConfiguration,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class BucketMetadataConfigurationArgs {
 
   factory BucketMetadataConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      metadataConfiguration: pulumi.Output.create<BucketMetadataConfigurationMetadataConfiguration>(BucketMetadataConfigurationMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<BucketMetadataConfigurationTimeouts>(BucketMetadataConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      bucket: (map['bucket'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      metadataConfiguration: (BucketMetadataConfigurationMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (BucketMetadataConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

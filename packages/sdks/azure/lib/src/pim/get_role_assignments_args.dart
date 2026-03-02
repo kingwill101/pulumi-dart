@@ -22,15 +22,11 @@ class GetRoleAssignmentsArgs {
   /// [scope] The scope at which to list Role Assignments.
   /// [tenantId] The tenant ID for cross-tenant requests.
   GetRoleAssignmentsArgs({
-    pulumi.Output<bool>? limitAtScope,
-    pulumi.Output<String>? principalId,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? tenantId,
-  }) :
-      limitAtScope = pulumi.Input.asOptionalInput<bool>(limitAtScope),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      scope = pulumi.Input.asInput<String>(scope),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.limitAtScope,
+    this.principalId,
+    required this.scope,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRoleAssignmentsArgs {
 
   factory GetRoleAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentsArgs(
-      limitAtScope: map['limitAtScope'] == null ? null : pulumi.Output.create<bool>(map['limitAtScope'] as bool),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      limitAtScope: map['limitAtScope'] == null ? null : (map['limitAtScope'] as bool).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

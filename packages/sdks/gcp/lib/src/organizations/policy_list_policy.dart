@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_list_policy_allow.dart';
 import 'policy_list_policy_deny.dart';
 
 class PolicyListPolicy {
   /// or `deny` - (Optional) One or the other must be set.
-  final PolicyListPolicyAllow? allow;
+  final pulumi.Input<PolicyListPolicyAllow>? allow;
   /// One or the other must be set.
-  final PolicyListPolicyDeny? deny;
+  final pulumi.Input<PolicyListPolicyDeny>? deny;
   /// If set to true, the values from the effective Policy of the parent resource
   /// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
   ///
   /// The `allow` or `deny` blocks support:
-  final bool? inheritFromParent;
+  final pulumi.Input<bool>? inheritFromParent;
   /// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
-  final String? suggestedValue;
+  final pulumi.Input<String>? suggestedValue;
 
   /// Creates a new [PolicyListPolicy].
   /// [allow] or `deny` - (Optional) One or the other must be set.
@@ -30,8 +31,8 @@ class PolicyListPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allow': ?allow == null ? null : allow!.toMap(),
-      'deny': ?deny == null ? null : deny!.toMap(),
+      'allow': ?pulumi.Input.mapOptionalInputValue<PolicyListPolicyAllow, Map<String, dynamic>>(allow, (value) => value.toMap()),
+      'deny': ?pulumi.Input.mapOptionalInputValue<PolicyListPolicyDeny, Map<String, dynamic>>(deny, (value) => value.toMap()),
       'inheritFromParent': ?inheritFromParent,
       'suggestedValue': ?suggestedValue,
     };
@@ -39,10 +40,10 @@ class PolicyListPolicy {
 
   factory PolicyListPolicy.fromMap(Map<String, dynamic> map) {
     return PolicyListPolicy(
-      allow: map['allow'] == null ? null : PolicyListPolicyAllow.fromMap((map['allow'] as Map).cast<String, dynamic>()),
-      deny: map['deny'] == null ? null : PolicyListPolicyDeny.fromMap((map['deny'] as Map).cast<String, dynamic>()),
-      inheritFromParent: map['inheritFromParent'] == null ? null : map['inheritFromParent'] as bool,
-      suggestedValue: map['suggestedValue'] == null ? null : map['suggestedValue'] as String,
+      allow: map['allow'] == null ? null : (PolicyListPolicyAllow.fromMap((map['allow'] as Map).cast<String, dynamic>())).input(),
+      deny: map['deny'] == null ? null : (PolicyListPolicyDeny.fromMap((map['deny'] as Map).cast<String, dynamic>())).input(),
+      inheritFromParent: map['inheritFromParent'] == null ? null : (map['inheritFromParent'] as bool).input(),
+      suggestedValue: map['suggestedValue'] == null ? null : (map['suggestedValue'] as String).input(),
     );
   }
 }

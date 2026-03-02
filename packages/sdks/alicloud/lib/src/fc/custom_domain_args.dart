@@ -24,15 +24,11 @@ class CustomDomainArgs {
   /// [protocol] The protocol, `HTTP` or `HTTP,HTTPS`.
   /// [routeConfigs] The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
   CustomDomainArgs({
-    pulumi.Output<CustomDomainCertConfig>? certConfig,
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<List<CustomDomainRouteConfig>>? routeConfigs,
-  }) :
-      certConfig = pulumi.Input.asOptionalInput<CustomDomainCertConfig>(certConfig),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      routeConfigs = pulumi.Input.asOptionalInput<List<CustomDomainRouteConfig>>(routeConfigs);
+    this.certConfig,
+    required this.domainName,
+    required this.protocol,
+    this.routeConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      certConfig: map['certConfig'] == null ? null : pulumi.Output.create<CustomDomainCertConfig>(CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      routeConfigs: map['routeConfigs'] == null ? null : pulumi.Output.create<List<CustomDomainRouteConfig>>(pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs'], (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      certConfig: map['certConfig'] == null ? null : (CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
+      domainName: (map['domainName'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      routeConfigs: map['routeConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs'], (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

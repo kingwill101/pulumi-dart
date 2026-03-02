@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkManagerScope {
   /// A list of management group IDs used a scope for the Network Manager.
-  final List<String> managementGroupIds;
+  final pulumi.Input<List<String>> managementGroupIds;
   /// A list of subscription IDs used as the scope for the Network Manager.
-  final List<String> subscriptionIds;
+  final pulumi.Input<List<String>> subscriptionIds;
 
   /// Creates a new [GetNetworkManagerScope].
   /// [managementGroupIds] A list of management group IDs used a scope for the Network Manager.
@@ -24,8 +25,8 @@ class GetNetworkManagerScope {
 
   factory GetNetworkManagerScope.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerScope(
-      managementGroupIds: (map['managementGroupIds'] as List).cast<String>(),
-      subscriptionIds: (map['subscriptionIds'] as List).cast<String>(),
+      managementGroupIds: ((map['managementGroupIds'] as List).cast<String>()).input(),
+      subscriptionIds: ((map['subscriptionIds'] as List).cast<String>()).input(),
     );
   }
 }

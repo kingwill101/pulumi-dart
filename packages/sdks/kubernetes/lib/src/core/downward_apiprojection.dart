@@ -6,7 +6,7 @@ import 'downward_apivolume_file.dart';
 /// Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode.
 class DownwardAPIProjection {
   /// Items is a list of DownwardAPIVolume file
-  final List<DownwardAPIVolumeFile>? items;
+  final pulumi.Input<List<DownwardAPIVolumeFile>>? items;
 
   /// Creates a new [DownwardAPIProjection].
   /// [items] Items is a list of DownwardAPIVolume file
@@ -16,13 +16,13 @@ class DownwardAPIProjection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?items == null ? null : pulumi.Input.encodeList<DownwardAPIVolumeFile, Map<String, dynamic>>(items!, (value) => value.toMap()),
+      'items': ?pulumi.Input.mapOptionalInputValue<List<DownwardAPIVolumeFile>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<DownwardAPIVolumeFile, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DownwardAPIProjection.fromMap(Map<String, dynamic> map) {
     return DownwardAPIProjection(
-      items: map['items'] == null ? null : pulumi.Input.decodeList<DownwardAPIVolumeFile>(map['items'], (value) => DownwardAPIVolumeFile.fromMap((value as Map).cast<String, dynamic>())),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<DownwardAPIVolumeFile>(map['items'], (value) => DownwardAPIVolumeFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
 class BareMetalParallelUpgradeConfigResponse {
   /// The maximum number of nodes that can be upgraded at once.
-  final int concurrentNodes;
+  final pulumi.Input<int> concurrentNodes;
   /// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
-  final int minimumAvailableNodes;
+  final pulumi.Input<int> minimumAvailableNodes;
 
   /// Creates a new [BareMetalParallelUpgradeConfigResponse].
   /// [concurrentNodes] The maximum number of nodes that can be upgraded at once.
@@ -25,8 +26,8 @@ class BareMetalParallelUpgradeConfigResponse {
 
   factory BareMetalParallelUpgradeConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalParallelUpgradeConfigResponse(
-      concurrentNodes: map['concurrentNodes'] as int,
-      minimumAvailableNodes: map['minimumAvailableNodes'] as int,
+      concurrentNodes: (map['concurrentNodes'] as int).input(),
+      minimumAvailableNodes: (map['minimumAvailableNodes'] as int).input(),
     );
   }
 }

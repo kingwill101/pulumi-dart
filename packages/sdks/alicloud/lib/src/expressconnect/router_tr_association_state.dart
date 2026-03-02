@@ -34,25 +34,16 @@ class RouterTrAssociationState {
   /// [transitRouterId] The ID of the forwarding router instance.
   /// [transitRouterOwnerId] The ID of the Alibaba Cloud account to which the forwarding router belongs.
   RouterTrAssociationState({
-    pulumi.Output<List<String>>? allowedPrefixes,
-    pulumi.Output<String>? associationId,
-    pulumi.Output<String>? associationRegionId,
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? ecrId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterId,
-    pulumi.Output<int>? transitRouterOwnerId,
-  }) :
-      allowedPrefixes = pulumi.Input.asOptionalInput<List<String>>(allowedPrefixes),
-      associationId = pulumi.Input.asOptionalInput<String>(associationId),
-      associationRegionId = pulumi.Input.asOptionalInput<String>(associationRegionId),
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      ecrId = pulumi.Input.asOptionalInput<String>(ecrId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId),
-      transitRouterOwnerId = pulumi.Input.asOptionalInput<int>(transitRouterOwnerId);
+    this.allowedPrefixes,
+    this.associationId,
+    this.associationRegionId,
+    this.cenId,
+    this.createTime,
+    this.ecrId,
+    this.status,
+    this.transitRouterId,
+    this.transitRouterOwnerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class RouterTrAssociationState {
 
   factory RouterTrAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterTrAssociationState(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['allowedPrefixes'] as List).cast<String>()),
-      associationId: map['associationId'] == null ? null : pulumi.Output.create<String>(map['associationId'] as String),
-      associationRegionId: map['associationRegionId'] == null ? null : pulumi.Output.create<String>(map['associationRegionId'] as String),
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      ecrId: map['ecrId'] == null ? null : pulumi.Output.create<String>(map['ecrId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
-      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : pulumi.Output.create<int>(map['transitRouterOwnerId'] as int),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      associationRegionId: map['associationRegionId'] == null ? null : (map['associationRegionId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      ecrId: map['ecrId'] == null ? null : (map['ecrId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : (map['transitRouterOwnerId'] as int).input(),
     );
   }
 }

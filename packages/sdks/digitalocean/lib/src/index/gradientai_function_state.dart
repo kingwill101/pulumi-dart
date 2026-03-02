@@ -31,23 +31,15 @@ class GradientaiFunctionState {
   /// [inputSchema] The input schema of the GradientAI resource.
   /// [outputSchema] The output schema of the GradientAI resource.
   GradientaiFunctionState({
-    pulumi.Output<String>? agentId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? faasName,
-    pulumi.Output<String>? faasNamespace,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<String>? functionUuid,
-    pulumi.Output<String>? inputSchema,
-    pulumi.Output<String>? outputSchema,
-  }) :
-      agentId = pulumi.Input.asOptionalInput<String>(agentId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      faasName = pulumi.Input.asOptionalInput<String>(faasName),
-      faasNamespace = pulumi.Input.asOptionalInput<String>(faasNamespace),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      functionUuid = pulumi.Input.asOptionalInput<String>(functionUuid),
-      inputSchema = pulumi.Input.asOptionalInput<String>(inputSchema),
-      outputSchema = pulumi.Input.asOptionalInput<String>(outputSchema);
+    this.agentId,
+    this.description,
+    this.faasName,
+    this.faasNamespace,
+    this.functionName,
+    this.functionUuid,
+    this.inputSchema,
+    this.outputSchema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class GradientaiFunctionState {
 
   factory GradientaiFunctionState.fromMap(Map<String, dynamic> map) {
     return GradientaiFunctionState(
-      agentId: map['agentId'] == null ? null : pulumi.Output.create<String>(map['agentId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      faasName: map['faasName'] == null ? null : pulumi.Output.create<String>(map['faasName'] as String),
-      faasNamespace: map['faasNamespace'] == null ? null : pulumi.Output.create<String>(map['faasNamespace'] as String),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      functionUuid: map['functionUuid'] == null ? null : pulumi.Output.create<String>(map['functionUuid'] as String),
-      inputSchema: map['inputSchema'] == null ? null : pulumi.Output.create<String>(map['inputSchema'] as String),
-      outputSchema: map['outputSchema'] == null ? null : pulumi.Output.create<String>(map['outputSchema'] as String),
+      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      faasName: map['faasName'] == null ? null : (map['faasName'] as String).input(),
+      faasNamespace: map['faasNamespace'] == null ? null : (map['faasNamespace'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      functionUuid: map['functionUuid'] == null ? null : (map['functionUuid'] as String).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
+      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema'] as String).input(),
     );
   }
 }

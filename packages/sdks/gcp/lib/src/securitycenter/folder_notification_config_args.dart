@@ -28,17 +28,12 @@ class FolderNotificationConfigArgs {
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
   FolderNotificationConfigArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> folder,
-    required pulumi.Output<String> pubsubTopic,
-    required pulumi.Output<FolderNotificationConfigStreamingConfig> streamingConfig,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asInput<String>(folder),
-      pubsubTopic = pulumi.Input.asInput<String>(pubsubTopic),
-      streamingConfig = pulumi.Input.asInput<FolderNotificationConfigStreamingConfig>(streamingConfig);
+    required this.configId,
+    this.description,
+    required this.folder,
+    required this.pubsubTopic,
+    required this.streamingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class FolderNotificationConfigArgs {
 
   factory FolderNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return FolderNotificationConfigArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      pubsubTopic: pulumi.Output.create<String>(map['pubsubTopic'] as String),
-      streamingConfig: pulumi.Output.create<FolderNotificationConfigStreamingConfig>(FolderNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())),
+      configId: (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: (map['folder'] as String).input(),
+      pubsubTopic: (map['pubsubTopic'] as String).input(),
+      streamingConfig: (FolderNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

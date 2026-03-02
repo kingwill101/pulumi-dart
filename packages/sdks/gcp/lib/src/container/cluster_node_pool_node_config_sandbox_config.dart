@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolNodeConfigSandboxConfig {
   /// Which sandbox to use for pods in the node pool.
   /// Accepted values are:
   ///
   /// * `"gvisor"`: Pods run within a gVisor sandbox.
-  final String sandboxType;
+  final pulumi.Input<String> sandboxType;
 
   /// Creates a new [ClusterNodePoolNodeConfigSandboxConfig].
   /// [sandboxType] Which sandbox to use for pods in the node pool.
@@ -22,7 +23,7 @@ class ClusterNodePoolNodeConfigSandboxConfig {
 
   factory ClusterNodePoolNodeConfigSandboxConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigSandboxConfig(
-      sandboxType: map['sandboxType'] as String,
+      sandboxType: (map['sandboxType'] as String).input(),
     );
   }
 }

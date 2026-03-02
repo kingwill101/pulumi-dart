@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateAuthorityRevocationConfigurationOcspConfiguration {
   /// Boolean value that specifies whether a custom OCSP responder is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A CNAME specifying a customized OCSP domain.
-  final String ocspCustomCname;
+  final pulumi.Input<String> ocspCustomCname;
 
   /// Creates a new [GetCertificateAuthorityRevocationConfigurationOcspConfiguration].
   /// [enabled] Boolean value that specifies whether a custom OCSP responder is enabled.
@@ -24,8 +25,8 @@ class GetCertificateAuthorityRevocationConfigurationOcspConfiguration {
 
   factory GetCertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap(Map<String, dynamic> map) {
     return GetCertificateAuthorityRevocationConfigurationOcspConfiguration(
-      enabled: map['enabled'] as bool,
-      ocspCustomCname: map['ocspCustomCname'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      ocspCustomCname: (map['ocspCustomCname'] as String).input(),
     );
   }
 }

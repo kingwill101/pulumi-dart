@@ -22,13 +22,10 @@ class GetAutonomousDatabaseArgs {
   /// [location] The location of the resource.
   /// [project] The project to which the resource belongs. If it
   GetAutonomousDatabaseArgs({
-    required pulumi.Output<String> autonomousDatabaseId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      autonomousDatabaseId = pulumi.Input.asInput<String>(autonomousDatabaseId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.autonomousDatabaseId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetAutonomousDatabaseArgs {
 
   factory GetAutonomousDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseArgs(
-      autonomousDatabaseId: pulumi.Output.create<String>(map['autonomousDatabaseId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      autonomousDatabaseId: (map['autonomousDatabaseId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

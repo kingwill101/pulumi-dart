@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ModuleNetworkProfile {
   /// The private IPv4 address of the network interface. Changing this forces a new Dedicated Hardware Security Module to be created.
-  final List<String> networkInterfacePrivateIpAddresses;
+  final pulumi.Input<List<String>> networkInterfacePrivateIpAddresses;
   /// The ID of the subnet. Changing this forces a new Dedicated Hardware Security Module to be created.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [ModuleNetworkProfile].
   /// [networkInterfacePrivateIpAddresses] The private IPv4 address of the network interface. Changing this forces a new Dedicated Hardware Security Module to be created.
@@ -24,8 +25,8 @@ class ModuleNetworkProfile {
 
   factory ModuleNetworkProfile.fromMap(Map<String, dynamic> map) {
     return ModuleNetworkProfile(
-      networkInterfacePrivateIpAddresses: (map['networkInterfacePrivateIpAddresses'] as List).cast<String>(),
-      subnetId: map['subnetId'] as String,
+      networkInterfacePrivateIpAddresses: ((map['networkInterfacePrivateIpAddresses'] as List).cast<String>()).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

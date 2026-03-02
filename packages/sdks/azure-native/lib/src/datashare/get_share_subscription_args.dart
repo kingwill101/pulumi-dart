@@ -19,13 +19,10 @@ class GetShareSubscriptionArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
   GetShareSubscriptionArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareSubscriptionName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.shareSubscriptionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetShareSubscriptionArgs {
 
   factory GetShareSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetShareSubscriptionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
     );
   }
 }

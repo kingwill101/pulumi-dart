@@ -7,13 +7,13 @@ import 'rule_group_rule_group_rules_source_stateless_rules_and_custom_actions.da
 
 class RuleGroupRuleGroupRulesSource {
   /// A configuration block containing **stateful** inspection criteria for a domain list rule group. See Rules Source List below for details.
-  final RuleGroupRuleGroupRulesSourceRulesSourceList? rulesSourceList;
+  final pulumi.Input<RuleGroupRuleGroupRulesSourceRulesSourceList>? rulesSourceList;
   /// Stateful inspection criteria, provided in Suricata compatible rules. These rules contain the inspection criteria and the action to take for traffic that matches the criteria, so this type of rule group doesn’t have a separate action setting.
-  final String? rulesString;
+  final pulumi.Input<String>? rulesString;
   /// Set of configuration blocks containing **stateful** inspection criteria for 5-tuple rules to be used together in a rule group. See Stateful Rule below for details.
-  final List<RuleGroupRuleGroupRulesSourceStatefulRule>? statefulRules;
+  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatefulRule>>? statefulRules;
   /// A configuration block containing **stateless** inspection criteria for a stateless rule group. See Stateless Rules and Custom Actions below for details.
-  final RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions? statelessRulesAndCustomActions;
+  final pulumi.Input<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions>? statelessRulesAndCustomActions;
 
   /// Creates a new [RuleGroupRuleGroupRulesSource].
   /// [rulesSourceList] A configuration block containing **stateful** inspection criteria for a domain list rule group. See Rules Source List below for details.
@@ -29,19 +29,19 @@ class RuleGroupRuleGroupRulesSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rulesSourceList': ?rulesSourceList == null ? null : rulesSourceList!.toMap(),
+      'rulesSourceList': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleGroupRulesSourceRulesSourceList, Map<String, dynamic>>(rulesSourceList, (value) => value.toMap()),
       'rulesString': ?rulesString,
-      'statefulRules': ?statefulRules == null ? null : pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatefulRule, Map<String, dynamic>>(statefulRules!, (value) => value.toMap()),
-      'statelessRulesAndCustomActions': ?statelessRulesAndCustomActions == null ? null : statelessRulesAndCustomActions!.toMap(),
+      'statefulRules': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleGroupRulesSourceStatefulRule>, List<Map<String, dynamic>>>(statefulRules, (value) => pulumi.Input.encodeList<RuleGroupRuleGroupRulesSourceStatefulRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statelessRulesAndCustomActions': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions, Map<String, dynamic>>(statelessRulesAndCustomActions, (value) => value.toMap()),
     };
   }
 
   factory RuleGroupRuleGroupRulesSource.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSource(
-      rulesSourceList: map['rulesSourceList'] == null ? null : RuleGroupRuleGroupRulesSourceRulesSourceList.fromMap((map['rulesSourceList'] as Map).cast<String, dynamic>()),
-      rulesString: map['rulesString'] == null ? null : map['rulesString'] as String,
-      statefulRules: map['statefulRules'] == null ? null : pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatefulRule>(map['statefulRules'], (value) => RuleGroupRuleGroupRulesSourceStatefulRule.fromMap((value as Map).cast<String, dynamic>())),
-      statelessRulesAndCustomActions: map['statelessRulesAndCustomActions'] == null ? null : RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions.fromMap((map['statelessRulesAndCustomActions'] as Map).cast<String, dynamic>()),
+      rulesSourceList: map['rulesSourceList'] == null ? null : (RuleGroupRuleGroupRulesSourceRulesSourceList.fromMap((map['rulesSourceList'] as Map).cast<String, dynamic>())).input(),
+      rulesString: map['rulesString'] == null ? null : (map['rulesString'] as String).input(),
+      statefulRules: map['statefulRules'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatefulRule>(map['statefulRules'], (value) => RuleGroupRuleGroupRulesSourceStatefulRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statelessRulesAndCustomActions: map['statelessRulesAndCustomActions'] == null ? null : (RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions.fromMap((map['statelessRulesAndCustomActions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

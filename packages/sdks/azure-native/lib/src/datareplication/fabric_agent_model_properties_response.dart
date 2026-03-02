@@ -8,27 +8,27 @@ import 'vmware_fabric_agent_model_custom_properties_response.dart';
 /// Fabric agent model properties.
 class FabricAgentModelPropertiesResponse {
   /// Identity model.
-  final IdentityModelResponse authenticationIdentity;
+  final pulumi.Input<IdentityModelResponse> authenticationIdentity;
   /// Gets or sets the fabric agent correlation Id.
-  final String correlationId;
+  final pulumi.Input<String> correlationId;
   /// Fabric agent model custom properties.
-  final VMwareFabricAgentModelCustomPropertiesResponse customProperties;
+  final pulumi.Input<VMwareFabricAgentModelCustomPropertiesResponse> customProperties;
   /// Gets or sets the list of health errors.
-  final List<HealthErrorModelResponse> healthErrors;
+  final pulumi.Input<List<HealthErrorModelResponse>> healthErrors;
   /// Gets or sets a value indicating whether the fabric agent is responsive.
-  final bool isResponsive;
+  final pulumi.Input<bool> isResponsive;
   /// Gets or sets the time when last heartbeat was sent by the fabric agent.
-  final String lastHeartbeat;
+  final pulumi.Input<String> lastHeartbeat;
   /// Gets or sets the machine Id where fabric agent is running.
-  final String machineId;
+  final pulumi.Input<String> machineId;
   /// Gets or sets the machine name where fabric agent is running.
-  final String machineName;
+  final pulumi.Input<String> machineName;
   /// Gets or sets the provisioning state of the fabric agent.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Identity model.
-  final IdentityModelResponse resourceAccessIdentity;
+  final pulumi.Input<IdentityModelResponse> resourceAccessIdentity;
   /// Gets or sets the fabric agent version.
-  final String versionNumber;
+  final pulumi.Input<String> versionNumber;
 
   /// Creates a new [FabricAgentModelPropertiesResponse].
   /// [authenticationIdentity] Identity model.
@@ -58,33 +58,33 @@ class FabricAgentModelPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationIdentity': authenticationIdentity.toMap(),
+      'authenticationIdentity': pulumi.Input.mapInputValue<IdentityModelResponse, Map<String, dynamic>>(authenticationIdentity, (value) => value.toMap()),
       'correlationId': correlationId,
-      'customProperties': customProperties.toMap(),
-      'healthErrors': pulumi.Input.encodeList<HealthErrorModelResponse, Map<String, dynamic>>(healthErrors, (value) => value.toMap()),
+      'customProperties': pulumi.Input.mapInputValue<VMwareFabricAgentModelCustomPropertiesResponse, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
+      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorModelResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorModelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isResponsive': isResponsive,
       'lastHeartbeat': lastHeartbeat,
       'machineId': machineId,
       'machineName': machineName,
       'provisioningState': provisioningState,
-      'resourceAccessIdentity': resourceAccessIdentity.toMap(),
+      'resourceAccessIdentity': pulumi.Input.mapInputValue<IdentityModelResponse, Map<String, dynamic>>(resourceAccessIdentity, (value) => value.toMap()),
       'versionNumber': versionNumber,
     };
   }
 
   factory FabricAgentModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FabricAgentModelPropertiesResponse(
-      authenticationIdentity: IdentityModelResponse.fromMap((map['authenticationIdentity'] as Map).cast<String, dynamic>()),
-      correlationId: map['correlationId'] as String,
-      customProperties: VMwareFabricAgentModelCustomPropertiesResponse.fromMap((map['customProperties'] as Map).cast<String, dynamic>()),
-      healthErrors: pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors'], (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>())),
-      isResponsive: map['isResponsive'] as bool,
-      lastHeartbeat: map['lastHeartbeat'] as String,
-      machineId: map['machineId'] as String,
-      machineName: map['machineName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceAccessIdentity: IdentityModelResponse.fromMap((map['resourceAccessIdentity'] as Map).cast<String, dynamic>()),
-      versionNumber: map['versionNumber'] as String,
+      authenticationIdentity: (IdentityModelResponse.fromMap((map['authenticationIdentity'] as Map).cast<String, dynamic>())).input(),
+      correlationId: (map['correlationId'] as String).input(),
+      customProperties: (VMwareFabricAgentModelCustomPropertiesResponse.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
+      healthErrors: (pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors'], (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isResponsive: (map['isResponsive'] as bool).input(),
+      lastHeartbeat: (map['lastHeartbeat'] as String).input(),
+      machineId: (map['machineId'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceAccessIdentity: (IdentityModelResponse.fromMap((map['resourceAccessIdentity'] as Map).cast<String, dynamic>())).input(),
+      versionNumber: (map['versionNumber'] as String).input(),
     );
   }
 }

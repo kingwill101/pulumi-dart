@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rule to restrict incoming IP address.
 class IpSecurityRestrictionRuleResponse {
   /// Allow or Deny rules to determine for incoming IP. Note: Rules can only consist of ALL Allow or ALL Deny
-  final String action;
+  final pulumi.Input<String> action;
   /// Describe the IP restriction rule that is being sent to the container-app. This is an optional field.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// CIDR notation to match incoming IP address
-  final String ipAddressRange;
+  final pulumi.Input<String> ipAddressRange;
   /// Name for the IP restriction rule.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [IpSecurityRestrictionRuleResponse].
   /// [action] Allow or Deny rules to determine for incoming IP. Note: Rules can only consist of ALL Allow or ALL Deny
@@ -35,10 +36,10 @@ class IpSecurityRestrictionRuleResponse {
 
   factory IpSecurityRestrictionRuleResponse.fromMap(Map<String, dynamic> map) {
     return IpSecurityRestrictionRuleResponse(
-      action: map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      ipAddressRange: map['ipAddressRange'] as String,
-      name: map['name'] as String,
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipAddressRange: (map['ipAddressRange'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

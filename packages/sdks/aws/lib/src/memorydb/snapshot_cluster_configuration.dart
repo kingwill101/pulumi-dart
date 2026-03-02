@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SnapshotClusterConfiguration {
   /// Description for the cluster.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The engine that will run on cluster nodes.
-  final String? engine;
+  final pulumi.Input<String>? engine;
   /// Version number of the engine used by the cluster.
-  final String? engineVersion;
+  final pulumi.Input<String>? engineVersion;
   /// The weekly time range during which maintenance on the cluster is performed.
-  final String? maintenanceWindow;
+  final pulumi.Input<String>? maintenanceWindow;
   /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Compute and memory capacity of the nodes in the cluster.
-  final String? nodeType;
+  final pulumi.Input<String>? nodeType;
   /// Number of shards in the cluster.
-  final int? numShards;
+  final pulumi.Input<int>? numShards;
   /// Name of the parameter group associated with the cluster.
-  final String? parameterGroupName;
+  final pulumi.Input<String>? parameterGroupName;
   /// Port number on which the cluster accepts connections.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Number of days for which MemoryDB retains automatic snapshots before deleting them.
-  final int? snapshotRetentionLimit;
+  final pulumi.Input<int>? snapshotRetentionLimit;
   /// The daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of the shard.
-  final String? snapshotWindow;
+  final pulumi.Input<String>? snapshotWindow;
   /// Name of the subnet group used by the cluster.
-  final String? subnetGroupName;
+  final pulumi.Input<String>? subnetGroupName;
   /// ARN of the SNS topic to which cluster notifications are sent.
-  final String? topicArn;
+  final pulumi.Input<String>? topicArn;
   /// The VPC in which the cluster exists.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [SnapshotClusterConfiguration].
   /// [description] Description for the cluster.
@@ -84,20 +85,20 @@ class SnapshotClusterConfiguration {
 
   factory SnapshotClusterConfiguration.fromMap(Map<String, dynamic> map) {
     return SnapshotClusterConfiguration(
-      description: map['description'] == null ? null : map['description'] as String,
-      engine: map['engine'] == null ? null : map['engine'] as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : map['maintenanceWindow'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nodeType: map['nodeType'] == null ? null : map['nodeType'] as String,
-      numShards: map['numShards'] == null ? null : map['numShards'] as int,
-      parameterGroupName: map['parameterGroupName'] == null ? null : map['parameterGroupName'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null ? null : map['snapshotRetentionLimit'] as int,
-      snapshotWindow: map['snapshotWindow'] == null ? null : map['snapshotWindow'] as String,
-      subnetGroupName: map['subnetGroupName'] == null ? null : map['subnetGroupName'] as String,
-      topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
+      numShards: map['numShards'] == null ? null : (map['numShards'] as int).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null ? null : (map['snapshotRetentionLimit'] as int).input(),
+      snapshotWindow: map['snapshotWindow'] == null ? null : (map['snapshotWindow'] as String).input(),
+      subnetGroupName: map['subnetGroupName'] == null ? null : (map['subnetGroupName'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

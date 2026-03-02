@@ -19,13 +19,10 @@ class GetRaiBlocklistArgs {
   /// [raiBlocklistName] The name of the RaiBlocklist associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetRaiBlocklistArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> raiBlocklistName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      raiBlocklistName = pulumi.Input.asInput<String>(raiBlocklistName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.raiBlocklistName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRaiBlocklistArgs {
 
   factory GetRaiBlocklistArgs.fromMap(Map<String, dynamic> map) {
     return GetRaiBlocklistArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      raiBlocklistName: pulumi.Output.create<String>(map['raiBlocklistName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      raiBlocklistName: (map['raiBlocklistName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

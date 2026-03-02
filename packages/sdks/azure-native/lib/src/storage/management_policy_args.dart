@@ -23,15 +23,11 @@ class ManagementPolicyArgs {
   /// [policy] The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   ManagementPolicyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? managementPolicyName,
-    required pulumi.Output<ManagementPolicySchema> policy,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      managementPolicyName = pulumi.Input.asOptionalInput<String>(managementPolicyName),
-      policy = pulumi.Input.asInput<ManagementPolicySchema>(policy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.managementPolicyName,
+    required this.policy,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagementPolicyArgs {
 
   factory ManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      managementPolicyName: map['managementPolicyName'] == null ? null : pulumi.Output.create<String>(map['managementPolicyName'] as String),
-      policy: pulumi.Output.create<ManagementPolicySchema>(ManagementPolicySchema.fromMap((map['policy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      managementPolicyName: map['managementPolicyName'] == null ? null : (map['managementPolicyName'] as String).input(),
+      policy: (ManagementPolicySchema.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

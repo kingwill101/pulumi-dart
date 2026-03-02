@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildMetadataResponse {
-  final String finishedOn;
-  final String invocationId;
-  final String startedOn;
+  final pulumi.Input<String> finishedOn;
+  final pulumi.Input<String> invocationId;
+  final pulumi.Input<String> startedOn;
 
   /// Creates a new [BuildMetadataResponse].
   /// [finishedOn] Required.
@@ -26,9 +27,9 @@ class BuildMetadataResponse {
 
   factory BuildMetadataResponse.fromMap(Map<String, dynamic> map) {
     return BuildMetadataResponse(
-      finishedOn: map['finishedOn'] as String,
-      invocationId: map['invocationId'] as String,
-      startedOn: map['startedOn'] as String,
+      finishedOn: (map['finishedOn'] as String).input(),
+      invocationId: (map['invocationId'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
     );
   }
 }

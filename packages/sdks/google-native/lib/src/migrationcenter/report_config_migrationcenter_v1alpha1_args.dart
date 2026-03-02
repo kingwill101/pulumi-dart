@@ -30,21 +30,14 @@ class ReportConfigMigrationcenterV1alpha1Args {
   /// [reportConfigId] Required. User specified ID for the report config. It will become the last component of the report config name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?.
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   ReportConfigMigrationcenterV1alpha1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<List<ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1>> groupPreferencesetAssignments,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> reportConfigId,
-    pulumi.Output<String>? requestId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      groupPreferencesetAssignments = pulumi.Input.asInput<List<ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1>>(groupPreferencesetAssignments),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.description,
+    this.displayName,
+    required this.groupPreferencesetAssignments,
+    this.location,
+    this.project,
+    required this.reportConfigId,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ReportConfigMigrationcenterV1alpha1Args {
 
   factory ReportConfigMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ReportConfigMigrationcenterV1alpha1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      groupPreferencesetAssignments: pulumi.Output.create<List<ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1>>(pulumi.Input.decodeList<ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1>(map['groupPreferencesetAssignments'], (value) => ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reportConfigId: pulumi.Output.create<String>(map['reportConfigId'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      groupPreferencesetAssignments: (pulumi.Input.decodeList<ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1>(map['groupPreferencesetAssignments'], (value) => ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reportConfigId: (map['reportConfigId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

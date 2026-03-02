@@ -33,23 +33,15 @@ class AppConnectorIamPolicyBeyondcorpV1alphaArgs {
   /// [updateMask] OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
   /// [version] Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   AppConnectorIamPolicyBeyondcorpV1alphaArgs({
-    required pulumi.Output<String> appConnectorId,
-    pulumi.Output<List<GoogleIamV1AuditConfigBeyondcorpV1alpha>>? auditConfigs,
-    pulumi.Output<List<GoogleIamV1BindingBeyondcorpV1alpha>>? bindings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateMask,
-    pulumi.Output<int>? version,
-  }) :
-      appConnectorId = pulumi.Input.asInput<String>(appConnectorId),
-      auditConfigs = pulumi.Input.asOptionalInput<List<GoogleIamV1AuditConfigBeyondcorpV1alpha>>(auditConfigs),
-      bindings = pulumi.Input.asOptionalInput<List<GoogleIamV1BindingBeyondcorpV1alpha>>(bindings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateMask = pulumi.Input.asOptionalInput<String>(updateMask),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    required this.appConnectorId,
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.location,
+    this.project,
+    this.updateMask,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class AppConnectorIamPolicyBeyondcorpV1alphaArgs {
 
   factory AppConnectorIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return AppConnectorIamPolicyBeyondcorpV1alphaArgs(
-      appConnectorId: pulumi.Output.create<String>(map['appConnectorId'] as String),
-      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Output.create<List<GoogleIamV1AuditConfigBeyondcorpV1alpha>>(pulumi.Input.decodeList<GoogleIamV1AuditConfigBeyondcorpV1alpha>(map['auditConfigs'], (value) => GoogleIamV1AuditConfigBeyondcorpV1alpha.fromMap((value as Map).cast<String, dynamic>()))),
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<GoogleIamV1BindingBeyondcorpV1alpha>>(pulumi.Input.decodeList<GoogleIamV1BindingBeyondcorpV1alpha>(map['bindings'], (value) => GoogleIamV1BindingBeyondcorpV1alpha.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateMask: map['updateMask'] == null ? null : pulumi.Output.create<String>(map['updateMask'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      appConnectorId: (map['appConnectorId'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfigBeyondcorpV1alpha>(map['auditConfigs'], (value) => GoogleIamV1AuditConfigBeyondcorpV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingBeyondcorpV1alpha>(map['bindings'], (value) => GoogleIamV1BindingBeyondcorpV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

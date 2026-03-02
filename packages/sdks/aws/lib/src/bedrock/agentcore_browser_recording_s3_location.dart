@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreBrowserRecordingS3Location {
   /// Name of the S3 bucket where recordings are stored.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// S3 key prefix for recording files.
-  final String prefix;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [AgentcoreBrowserRecordingS3Location].
   /// [bucket] Name of the S3 bucket where recordings are stored.
@@ -24,8 +25,8 @@ class AgentcoreBrowserRecordingS3Location {
 
   factory AgentcoreBrowserRecordingS3Location.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserRecordingS3Location(
-      bucket: map['bucket'] as String,
-      prefix: map['prefix'] as String,
+      bucket: (map['bucket'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

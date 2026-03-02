@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the variables available to group the rate limit requests
 class GroupByVariable {
   /// Describes the supported variable for group by
-  final String variableName;
+  final pulumi.Input<String> variableName;
 
   /// Creates a new [GroupByVariable].
   /// [variableName] Describes the supported variable for group by
@@ -20,7 +21,7 @@ class GroupByVariable {
 
   factory GroupByVariable.fromMap(Map<String, dynamic> map) {
     return GroupByVariable(
-      variableName: map['variableName'] as String,
+      variableName: (map['variableName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionOnDeployUpdatePolicy {
   /// The runtime version which was used during latest function deployment.
-  final String runtimeVersion;
+  final pulumi.Input<String> runtimeVersion;
 
   /// Creates a new [GetFunctionOnDeployUpdatePolicy].
   /// [runtimeVersion] The runtime version which was used during latest function deployment.
@@ -19,7 +20,7 @@ class GetFunctionOnDeployUpdatePolicy {
 
   factory GetFunctionOnDeployUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return GetFunctionOnDeployUpdatePolicy(
-      runtimeVersion: map['runtimeVersion'] as String,
+      runtimeVersion: (map['runtimeVersion'] as String).input(),
     );
   }
 }

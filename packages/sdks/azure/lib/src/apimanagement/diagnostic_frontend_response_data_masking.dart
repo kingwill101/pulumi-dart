@@ -6,9 +6,9 @@ import 'diagnostic_frontend_response_data_masking_query_param.dart';
 
 class DiagnosticFrontendResponseDataMasking {
   /// A `headers` block as defined below.
-  final List<DiagnosticFrontendResponseDataMaskingHeader>? headers;
+  final pulumi.Input<List<DiagnosticFrontendResponseDataMaskingHeader>>? headers;
   /// A `query_params` block as defined below.
-  final List<DiagnosticFrontendResponseDataMaskingQueryParam>? queryParams;
+  final pulumi.Input<List<DiagnosticFrontendResponseDataMaskingQueryParam>>? queryParams;
 
   /// Creates a new [DiagnosticFrontendResponseDataMasking].
   /// [headers] A `headers` block as defined below.
@@ -20,15 +20,15 @@ class DiagnosticFrontendResponseDataMasking {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<DiagnosticFrontendResponseDataMaskingHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
-      'queryParams': ?queryParams == null ? null : pulumi.Input.encodeList<DiagnosticFrontendResponseDataMaskingQueryParam, Map<String, dynamic>>(queryParams!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<DiagnosticFrontendResponseDataMaskingHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<DiagnosticFrontendResponseDataMaskingHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'queryParams': ?pulumi.Input.mapOptionalInputValue<List<DiagnosticFrontendResponseDataMaskingQueryParam>, List<Map<String, dynamic>>>(queryParams, (value) => pulumi.Input.encodeList<DiagnosticFrontendResponseDataMaskingQueryParam, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DiagnosticFrontendResponseDataMasking.fromMap(Map<String, dynamic> map) {
     return DiagnosticFrontendResponseDataMasking(
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<DiagnosticFrontendResponseDataMaskingHeader>(map['headers'], (value) => DiagnosticFrontendResponseDataMaskingHeader.fromMap((value as Map).cast<String, dynamic>())),
-      queryParams: map['queryParams'] == null ? null : pulumi.Input.decodeList<DiagnosticFrontendResponseDataMaskingQueryParam>(map['queryParams'], (value) => DiagnosticFrontendResponseDataMaskingQueryParam.fromMap((value as Map).cast<String, dynamic>())),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<DiagnosticFrontendResponseDataMaskingHeader>(map['headers'], (value) => DiagnosticFrontendResponseDataMaskingHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryParams: map['queryParams'] == null ? null : (pulumi.Input.decodeList<DiagnosticFrontendResponseDataMaskingQueryParam>(map['queryParams'], (value) => DiagnosticFrontendResponseDataMaskingQueryParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

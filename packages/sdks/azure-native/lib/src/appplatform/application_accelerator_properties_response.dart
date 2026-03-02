@@ -6,9 +6,9 @@ import 'application_accelerator_component_response.dart';
 /// Application accelerator properties payload
 class ApplicationAcceleratorPropertiesResponse {
   /// Collection of components belong to application accelerator.
-  final List<ApplicationAcceleratorComponentResponse> components;
+  final pulumi.Input<List<ApplicationAcceleratorComponentResponse>> components;
   /// State of the application accelerator.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ApplicationAcceleratorPropertiesResponse].
   /// [components] Collection of components belong to application accelerator.
@@ -20,15 +20,15 @@ class ApplicationAcceleratorPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'components': pulumi.Input.encodeList<ApplicationAcceleratorComponentResponse, Map<String, dynamic>>(components, (value) => value.toMap()),
+      'components': pulumi.Input.mapInputValue<List<ApplicationAcceleratorComponentResponse>, List<Map<String, dynamic>>>(components, (value) => pulumi.Input.encodeList<ApplicationAcceleratorComponentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
     };
   }
 
   factory ApplicationAcceleratorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationAcceleratorPropertiesResponse(
-      components: pulumi.Input.decodeList<ApplicationAcceleratorComponentResponse>(map['components'], (value) => ApplicationAcceleratorComponentResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      components: (pulumi.Input.decodeList<ApplicationAcceleratorComponentResponse>(map['components'], (value) => ApplicationAcceleratorComponentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

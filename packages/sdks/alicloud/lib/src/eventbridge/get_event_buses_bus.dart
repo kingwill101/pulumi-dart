@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEventBusesBus {
   /// The time of this bus was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of event bus.
-  final String description;
+  final pulumi.Input<String> description;
   /// The name of event bus.
-  final String eventBusName;
+  final pulumi.Input<String> eventBusName;
   /// The ID of the Event Bus. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetEventBusesBus].
   /// [createTime] The time of this bus was created.
@@ -34,10 +35,10 @@ class GetEventBusesBus {
 
   factory GetEventBusesBus.fromMap(Map<String, dynamic> map) {
     return GetEventBusesBus(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      eventBusName: map['eventBusName'] as String,
-      id: map['id'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      eventBusName: (map['eventBusName'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

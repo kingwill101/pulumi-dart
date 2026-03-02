@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceSkuResponse {
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ResourceSkuResponse].
   /// [name] Required.
@@ -18,7 +19,7 @@ class ResourceSkuResponse {
 
   factory ResourceSkuResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSkuResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

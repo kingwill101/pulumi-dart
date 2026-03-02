@@ -5,9 +5,9 @@ import 'get_cluster_secret_sync_config_rotation_config.dart';
 
 class GetClusterSecretSyncConfig {
   /// Enable the Sync as k8s secret add-on.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Configuration for Secret Sync auto rotation.
-  final List<GetClusterSecretSyncConfigRotationConfig> rotationConfigs;
+  final pulumi.Input<List<GetClusterSecretSyncConfigRotationConfig>> rotationConfigs;
 
   /// Creates a new [GetClusterSecretSyncConfig].
   /// [enabled] Enable the Sync as k8s secret add-on.
@@ -20,14 +20,14 @@ class GetClusterSecretSyncConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'rotationConfigs': pulumi.Input.encodeList<GetClusterSecretSyncConfigRotationConfig, Map<String, dynamic>>(rotationConfigs, (value) => value.toMap()),
+      'rotationConfigs': pulumi.Input.mapInputValue<List<GetClusterSecretSyncConfigRotationConfig>, List<Map<String, dynamic>>>(rotationConfigs, (value) => pulumi.Input.encodeList<GetClusterSecretSyncConfigRotationConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClusterSecretSyncConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterSecretSyncConfig(
-      enabled: map['enabled'] as bool,
-      rotationConfigs: pulumi.Input.decodeList<GetClusterSecretSyncConfigRotationConfig>(map['rotationConfigs'], (value) => GetClusterSecretSyncConfigRotationConfig.fromMap((value as Map).cast<String, dynamic>())),
+      enabled: (map['enabled'] as bool).input(),
+      rotationConfigs: (pulumi.Input.decodeList<GetClusterSecretSyncConfigRotationConfig>(map['rotationConfigs'], (value) => GetClusterSecretSyncConfigRotationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

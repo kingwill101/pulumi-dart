@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'local_object_reference_response.dart';
 
 /// Not supported by Cloud Run.
 class ConfigMapKeySelectorResponse {
   /// Not supported by Cloud Run.
-  final String key;
+  final pulumi.Input<String> key;
   /// Not supported by Cloud Run.
-  final LocalObjectReferenceResponse localObjectReference;
+  final pulumi.Input<LocalObjectReferenceResponse> localObjectReference;
   /// Not supported by Cloud Run.
-  final String name;
+  final pulumi.Input<String> name;
   /// Not supported by Cloud Run.
-  final bool optional;
+  final pulumi.Input<bool> optional;
 
   /// Creates a new [ConfigMapKeySelectorResponse].
   /// [key] Not supported by Cloud Run.
@@ -28,7 +29,7 @@ class ConfigMapKeySelectorResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'key': key,
-      'localObjectReference': localObjectReference.toMap(),
+      'localObjectReference': pulumi.Input.mapInputValue<LocalObjectReferenceResponse, Map<String, dynamic>>(localObjectReference, (value) => value.toMap()),
       'name': name,
       'optional': optional,
     };
@@ -36,10 +37,10 @@ class ConfigMapKeySelectorResponse {
 
   factory ConfigMapKeySelectorResponse.fromMap(Map<String, dynamic> map) {
     return ConfigMapKeySelectorResponse(
-      key: map['key'] as String,
-      localObjectReference: LocalObjectReferenceResponse.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      optional: map['optional'] as bool,
+      key: (map['key'] as String).input(),
+      localObjectReference: (LocalObjectReferenceResponse.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      optional: (map['optional'] as bool).input(),
     );
   }
 }

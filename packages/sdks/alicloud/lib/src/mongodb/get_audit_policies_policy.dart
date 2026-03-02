@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAuditPoliciesPolicy {
   /// The status of the log audit feature.
-  final String auditStatus;
+  final pulumi.Input<String> auditStatus;
   /// The ID of the instance.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// The ID of the Audit Policy.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetAuditPoliciesPolicy].
   /// [auditStatus] The status of the log audit feature.
@@ -29,9 +30,9 @@ class GetAuditPoliciesPolicy {
 
   factory GetAuditPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetAuditPoliciesPolicy(
-      auditStatus: map['auditStatus'] as String,
-      dbInstanceId: map['dbInstanceId'] as String,
-      id: map['id'] as String,
+      auditStatus: (map['auditStatus'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

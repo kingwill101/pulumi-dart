@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailContextualGroundingPolicyConfigFiltersConfig {
   /// The threshold for this filter.
-  final double threshold;
+  final pulumi.Input<double> threshold;
   /// Type of contextual grounding filter.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GuardrailContextualGroundingPolicyConfigFiltersConfig].
   /// [threshold] The threshold for this filter.
@@ -24,8 +25,8 @@ class GuardrailContextualGroundingPolicyConfigFiltersConfig {
 
   factory GuardrailContextualGroundingPolicyConfigFiltersConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContextualGroundingPolicyConfigFiltersConfig(
-      threshold: map['threshold'] as double,
-      type: map['type'] as String,
+      threshold: (map['threshold'] as double).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

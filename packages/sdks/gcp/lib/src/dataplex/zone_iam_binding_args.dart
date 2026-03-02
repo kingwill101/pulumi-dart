@@ -47,21 +47,14 @@ class ZoneIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   ZoneIamBindingArgs({
-    pulumi.Output<ZoneIamBindingCondition>? condition,
-    required pulumi.Output<String> dataplexZone,
-    required pulumi.Output<String> lake,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ZoneIamBindingCondition>(condition),
-      dataplexZone = pulumi.Input.asInput<String>(dataplexZone),
-      lake = pulumi.Input.asInput<String>(lake),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.dataplexZone,
+    required this.lake,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,13 +70,13 @@ class ZoneIamBindingArgs {
 
   factory ZoneIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ZoneIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ZoneIamBindingCondition>(ZoneIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      dataplexZone: pulumi.Output.create<String>(map['dataplexZone'] as String),
-      lake: pulumi.Output.create<String>(map['lake'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (ZoneIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      dataplexZone: (map['dataplexZone'] as String).input(),
+      lake: (map['lake'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

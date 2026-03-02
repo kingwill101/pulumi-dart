@@ -23,15 +23,11 @@ class HciDeploymentSettingArgs {
   /// [stackHciClusterId] The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [version] The deployment template version. The format must be a set of numbers separated by dots such as `10.0.0.0`. Changing this forces a new Stack HCI Deployment Setting to be created.
   HciDeploymentSettingArgs({
-    required pulumi.Output<List<String>> arcResourceIds,
-    required pulumi.Output<List<HciDeploymentSettingScaleUnit>> scaleUnits,
-    required pulumi.Output<String> stackHciClusterId,
-    required pulumi.Output<String> version,
-  }) :
-      arcResourceIds = pulumi.Input.asInput<List<String>>(arcResourceIds),
-      scaleUnits = pulumi.Input.asInput<List<HciDeploymentSettingScaleUnit>>(scaleUnits),
-      stackHciClusterId = pulumi.Input.asInput<String>(stackHciClusterId),
-      version = pulumi.Input.asInput<String>(version);
+    required this.arcResourceIds,
+    required this.scaleUnits,
+    required this.stackHciClusterId,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class HciDeploymentSettingArgs {
 
   factory HciDeploymentSettingArgs.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingArgs(
-      arcResourceIds: pulumi.Output.create<List<String>>((map['arcResourceIds'] as List).cast<String>()),
-      scaleUnits: pulumi.Output.create<List<HciDeploymentSettingScaleUnit>>(pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(map['scaleUnits'], (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>()))),
-      stackHciClusterId: pulumi.Output.create<String>(map['stackHciClusterId'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      arcResourceIds: ((map['arcResourceIds'] as List).cast<String>()).input(),
+      scaleUnits: (pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(map['scaleUnits'], (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stackHciClusterId: (map['stackHciClusterId'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

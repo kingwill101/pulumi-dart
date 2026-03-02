@@ -29,17 +29,12 @@ class TriggerHttpRequestArgs {
   /// [relativePath] Specifies the Relative Path used for this Request.
   /// [schema] A JSON Blob defining the Schema of the incoming request. This needs to be valid JSON.
   TriggerHttpRequestArgs({
-    required pulumi.Output<String> logicAppId,
-    pulumi.Output<String>? method,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? relativePath,
-    required pulumi.Output<String> schema,
-  }) :
-      logicAppId = pulumi.Input.asInput<String>(logicAppId),
-      method = pulumi.Input.asOptionalInput<String>(method),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      relativePath = pulumi.Input.asOptionalInput<String>(relativePath),
-      schema = pulumi.Input.asInput<String>(schema);
+    required this.logicAppId,
+    this.method,
+    this.name,
+    this.relativePath,
+    required this.schema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class TriggerHttpRequestArgs {
 
   factory TriggerHttpRequestArgs.fromMap(Map<String, dynamic> map) {
     return TriggerHttpRequestArgs(
-      logicAppId: pulumi.Output.create<String>(map['logicAppId'] as String),
-      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      relativePath: map['relativePath'] == null ? null : pulumi.Output.create<String>(map['relativePath'] as String),
-      schema: pulumi.Output.create<String>(map['schema'] as String),
+      logicAppId: (map['logicAppId'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      schema: (map['schema'] as String).input(),
     );
   }
 }

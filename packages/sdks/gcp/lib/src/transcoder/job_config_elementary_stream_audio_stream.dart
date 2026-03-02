@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobConfigElementaryStreamAudioStream {
   /// Audio bitrate in bits per second.
-  final int bitrateBps;
+  final pulumi.Input<int> bitrateBps;
   /// Number of audio channels. The default is `2`.
-  final int? channelCount;
+  final pulumi.Input<int>? channelCount;
   /// A list of channel names specifying layout of the audio channels. The default is ["fl", "fr"].
-  final List<String>? channelLayouts;
+  final pulumi.Input<List<String>>? channelLayouts;
   /// The codec for this audio stream. The default is `aac`.
-  final String? codec;
+  final pulumi.Input<String>? codec;
   /// The audio sample rate in Hertz. The default is `48000`.
-  final int? sampleRateHertz;
+  final pulumi.Input<int>? sampleRateHertz;
 
   /// Creates a new [JobConfigElementaryStreamAudioStream].
   /// [bitrateBps] Audio bitrate in bits per second.
@@ -39,11 +40,11 @@ class JobConfigElementaryStreamAudioStream {
 
   factory JobConfigElementaryStreamAudioStream.fromMap(Map<String, dynamic> map) {
     return JobConfigElementaryStreamAudioStream(
-      bitrateBps: map['bitrateBps'] as int,
-      channelCount: map['channelCount'] == null ? null : map['channelCount'] as int,
-      channelLayouts: map['channelLayouts'] == null ? null : (map['channelLayouts'] as List).cast<String>(),
-      codec: map['codec'] == null ? null : map['codec'] as String,
-      sampleRateHertz: map['sampleRateHertz'] == null ? null : map['sampleRateHertz'] as int,
+      bitrateBps: (map['bitrateBps'] as int).input(),
+      channelCount: map['channelCount'] == null ? null : (map['channelCount'] as int).input(),
+      channelLayouts: map['channelLayouts'] == null ? null : ((map['channelLayouts'] as List).cast<String>()).input(),
+      codec: map['codec'] == null ? null : (map['codec'] as String).input(),
+      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz'] as int).input(),
     );
   }
 }

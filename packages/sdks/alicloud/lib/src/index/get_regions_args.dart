@@ -22,13 +22,10 @@ class GetRegionsArgs {
   /// [name] The name of the region to select, such as `eu-central-1`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetRegionsArgs({
-    pulumi.Output<bool>? current,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? outputFile,
-  }) :
-      current = pulumi.Input.asOptionalInput<bool>(current),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.current,
+    this.name,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      current: map['current'] == null ? null : pulumi.Output.create<bool>(map['current'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      current: map['current'] == null ? null : (map['current'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -42,27 +42,17 @@ class IngressArgs {
   /// [rules] Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
   /// [slbId] SLB ID.
   IngressArgs({
-    pulumi.Output<String>? certId,
-    pulumi.Output<String>? certIds,
-    pulumi.Output<IngressDefaultRule>? defaultRule,
-    pulumi.Output<String>? description,
-    required pulumi.Output<int> listenerPort,
-    pulumi.Output<String>? listenerProtocol,
-    pulumi.Output<String>? loadBalanceType,
-    required pulumi.Output<String> namespaceId,
-    required pulumi.Output<List<IngressRule>> rules,
-    required pulumi.Output<String> slbId,
-  }) :
-      certId = pulumi.Input.asOptionalInput<String>(certId),
-      certIds = pulumi.Input.asOptionalInput<String>(certIds),
-      defaultRule = pulumi.Input.asOptionalInput<IngressDefaultRule>(defaultRule),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      listenerPort = pulumi.Input.asInput<int>(listenerPort),
-      listenerProtocol = pulumi.Input.asOptionalInput<String>(listenerProtocol),
-      loadBalanceType = pulumi.Input.asOptionalInput<String>(loadBalanceType),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      rules = pulumi.Input.asInput<List<IngressRule>>(rules),
-      slbId = pulumi.Input.asInput<String>(slbId);
+    this.certId,
+    this.certIds,
+    this.defaultRule,
+    this.description,
+    required this.listenerPort,
+    this.listenerProtocol,
+    this.loadBalanceType,
+    required this.namespaceId,
+    required this.rules,
+    required this.slbId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class IngressArgs {
 
   factory IngressArgs.fromMap(Map<String, dynamic> map) {
     return IngressArgs(
-      certId: map['certId'] == null ? null : pulumi.Output.create<String>(map['certId'] as String),
-      certIds: map['certIds'] == null ? null : pulumi.Output.create<String>(map['certIds'] as String),
-      defaultRule: map['defaultRule'] == null ? null : pulumi.Output.create<IngressDefaultRule>(IngressDefaultRule.fromMap((map['defaultRule'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      listenerPort: pulumi.Output.create<int>(map['listenerPort'] as int),
-      listenerProtocol: map['listenerProtocol'] == null ? null : pulumi.Output.create<String>(map['listenerProtocol'] as String),
-      loadBalanceType: map['loadBalanceType'] == null ? null : pulumi.Output.create<String>(map['loadBalanceType'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      rules: pulumi.Output.create<List<IngressRule>>(pulumi.Input.decodeList<IngressRule>(map['rules'], (value) => IngressRule.fromMap((value as Map).cast<String, dynamic>()))),
-      slbId: pulumi.Output.create<String>(map['slbId'] as String),
+      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
+      certIds: map['certIds'] == null ? null : (map['certIds'] as String).input(),
+      defaultRule: map['defaultRule'] == null ? null : (IngressDefaultRule.fromMap((map['defaultRule'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      listenerPort: (map['listenerPort'] as int).input(),
+      listenerProtocol: map['listenerProtocol'] == null ? null : (map['listenerProtocol'] as String).input(),
+      loadBalanceType: map['loadBalanceType'] == null ? null : (map['loadBalanceType'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      rules: (pulumi.Input.decodeList<IngressRule>(map['rules'], (value) => IngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slbId: (map['slbId'] as String).input(),
     );
   }
 }

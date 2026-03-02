@@ -45,29 +45,18 @@ class AppProfileArgs {
   /// [singleClusterRouting] Use a single-cluster routing policy.
   /// [standardIsolation] The standard options used for isolating this app profile's traffic from other use cases.
   AppProfileArgs({
-    required pulumi.Output<String> appProfileId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<bool>? ignoreWarnings,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<MultiClusterRoutingUseAny>? multiClusterRoutingUseAny,
-    pulumi.Output<String>? name,
-    pulumi.Output<AppProfilePriority>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<SingleClusterRouting>? singleClusterRouting,
-    pulumi.Output<StandardIsolation>? standardIsolation,
-  }) :
-      appProfileId = pulumi.Input.asInput<String>(appProfileId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      ignoreWarnings = pulumi.Input.asOptionalInput<bool>(ignoreWarnings),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      multiClusterRoutingUseAny = pulumi.Input.asOptionalInput<MultiClusterRoutingUseAny>(multiClusterRoutingUseAny),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<AppProfilePriority>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      singleClusterRouting = pulumi.Input.asOptionalInput<SingleClusterRouting>(singleClusterRouting),
-      standardIsolation = pulumi.Input.asOptionalInput<StandardIsolation>(standardIsolation);
+    required this.appProfileId,
+    this.description,
+    this.etag,
+    this.ignoreWarnings,
+    required this.instanceId,
+    this.multiClusterRoutingUseAny,
+    this.name,
+    this.priority,
+    this.project,
+    this.singleClusterRouting,
+    this.standardIsolation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class AppProfileArgs {
 
   factory AppProfileArgs.fromMap(Map<String, dynamic> map) {
     return AppProfileArgs(
-      appProfileId: pulumi.Output.create<String>(map['appProfileId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : pulumi.Output.create<bool>(map['ignoreWarnings'] as bool),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : pulumi.Output.create<MultiClusterRoutingUseAny>(MultiClusterRoutingUseAny.fromMap((map['multiClusterRoutingUseAny'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<AppProfilePriority>(AppProfilePriority.fromValue(map['priority'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      singleClusterRouting: map['singleClusterRouting'] == null ? null : pulumi.Output.create<SingleClusterRouting>(SingleClusterRouting.fromMap((map['singleClusterRouting'] as Map).cast<String, dynamic>())),
-      standardIsolation: map['standardIsolation'] == null ? null : pulumi.Output.create<StandardIsolation>(StandardIsolation.fromMap((map['standardIsolation'] as Map).cast<String, dynamic>())),
+      appProfileId: (map['appProfileId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : (MultiClusterRoutingUseAny.fromMap((map['multiClusterRoutingUseAny'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (AppProfilePriority.fromValue(map['priority'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      singleClusterRouting: map['singleClusterRouting'] == null ? null : (SingleClusterRouting.fromMap((map['singleClusterRouting'] as Map).cast<String, dynamic>())).input(),
+      standardIsolation: map['standardIsolation'] == null ? null : (StandardIsolation.fromMap((map['standardIsolation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

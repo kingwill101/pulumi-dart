@@ -25,17 +25,12 @@ class FirewallRuleArgs {
   /// [serverName] The name of the server.
   /// [startIpAddress] IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
   FirewallRuleArgs({
-    required pulumi.Output<String> endIpAddress,
-    pulumi.Output<String>? firewallRuleName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> startIpAddress,
-  }) :
-      endIpAddress = pulumi.Input.asInput<String>(endIpAddress),
-      firewallRuleName = pulumi.Input.asOptionalInput<String>(firewallRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      startIpAddress = pulumi.Input.asInput<String>(startIpAddress);
+    required this.endIpAddress,
+    this.firewallRuleName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      endIpAddress: pulumi.Output.create<String>(map['endIpAddress'] as String),
-      firewallRuleName: map['firewallRuleName'] == null ? null : pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      startIpAddress: pulumi.Output.create<String>(map['startIpAddress'] as String),
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }
 }

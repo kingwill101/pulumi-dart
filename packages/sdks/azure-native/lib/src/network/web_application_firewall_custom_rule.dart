@@ -7,23 +7,23 @@ import 'match_condition.dart';
 /// Defines contents of a web application rule.
 class WebApplicationFirewallCustomRule {
   /// Type of Actions.
-  final String action;
+  final pulumi.Input<String> action;
   /// List of user session identifier group by clauses.
-  final List<GroupByUserSession>? groupByUserSession;
+  final pulumi.Input<List<GroupByUserSession>>? groupByUserSession;
   /// List of match conditions.
-  final List<MatchCondition> matchConditions;
+  final pulumi.Input<List<MatchCondition>> matchConditions;
   /// The name of the resource that is unique within a policy. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.
-  final String? rateLimitDuration;
+  final pulumi.Input<String>? rateLimitDuration;
   /// Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1
-  final int? rateLimitThreshold;
+  final pulumi.Input<int>? rateLimitThreshold;
   /// The rule type.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
   /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [WebApplicationFirewallCustomRule].
   /// [action] Type of Actions.
@@ -50,8 +50,8 @@ class WebApplicationFirewallCustomRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'groupByUserSession': ?groupByUserSession == null ? null : pulumi.Input.encodeList<GroupByUserSession, Map<String, dynamic>>(groupByUserSession!, (value) => value.toMap()),
-      'matchConditions': pulumi.Input.encodeList<MatchCondition, Map<String, dynamic>>(matchConditions, (value) => value.toMap()),
+      'groupByUserSession': ?pulumi.Input.mapOptionalInputValue<List<GroupByUserSession>, List<Map<String, dynamic>>>(groupByUserSession, (value) => pulumi.Input.encodeList<GroupByUserSession, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'matchConditions': pulumi.Input.mapInputValue<List<MatchCondition>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<MatchCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'priority': priority,
       'rateLimitDuration': ?rateLimitDuration,
@@ -63,15 +63,15 @@ class WebApplicationFirewallCustomRule {
 
   factory WebApplicationFirewallCustomRule.fromMap(Map<String, dynamic> map) {
     return WebApplicationFirewallCustomRule(
-      action: map['action'] as String,
-      groupByUserSession: map['groupByUserSession'] == null ? null : pulumi.Input.decodeList<GroupByUserSession>(map['groupByUserSession'], (value) => GroupByUserSession.fromMap((value as Map).cast<String, dynamic>())),
-      matchConditions: pulumi.Input.decodeList<MatchCondition>(map['matchConditions'], (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] as int,
-      rateLimitDuration: map['rateLimitDuration'] == null ? null : map['rateLimitDuration'] as String,
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : map['rateLimitThreshold'] as int,
-      ruleType: map['ruleType'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      action: (map['action'] as String).input(),
+      groupByUserSession: map['groupByUserSession'] == null ? null : (pulumi.Input.decodeList<GroupByUserSession>(map['groupByUserSession'], (value) => GroupByUserSession.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchConditions: (pulumi.Input.decodeList<MatchCondition>(map['matchConditions'], (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      rateLimitDuration: map['rateLimitDuration'] == null ? null : (map['rateLimitDuration'] as String).input(),
+      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold'] as int).input(),
+      ruleType: (map['ruleType'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

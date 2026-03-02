@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceCredentialsCredentialPair {
   /// Password, maximum length of 1024 characters.
-  final String password;
+  final pulumi.Input<String> password;
   /// User name, maximum length of 64 characters.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [DataSourceCredentialsCredentialPair].
   /// [password] Password, maximum length of 1024 characters.
@@ -24,8 +25,8 @@ class DataSourceCredentialsCredentialPair {
 
   factory DataSourceCredentialsCredentialPair.fromMap(Map<String, dynamic> map) {
     return DataSourceCredentialsCredentialPair(
-      password: map['password'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

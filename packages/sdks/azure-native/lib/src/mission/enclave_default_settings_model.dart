@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual Enclave Default Settings
 class EnclaveDefaultSettingsModel {
   /// Diagnostic Destination.
-  final String? diagnosticDestination;
+  final pulumi.Input<String>? diagnosticDestination;
 
   /// Creates a new [EnclaveDefaultSettingsModel].
   /// [diagnosticDestination] Diagnostic Destination.
@@ -20,7 +21,7 @@ class EnclaveDefaultSettingsModel {
 
   factory EnclaveDefaultSettingsModel.fromMap(Map<String, dynamic> map) {
     return EnclaveDefaultSettingsModel(
-      diagnosticDestination: map['diagnosticDestination'] == null ? null : map['diagnosticDestination'] as String,
+      diagnosticDestination: map['diagnosticDestination'] == null ? null : (map['diagnosticDestination'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class SpringCloudAppMysqlAssociationArgs {
   /// [springCloudAppId] Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
   /// [username] Specifies the username which should be used when connecting to the MySQL Database from the Spring Cloud App.
   SpringCloudAppMysqlAssociationArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> mysqlServerId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> password,
-    required pulumi.Output<String> springCloudAppId,
-    required pulumi.Output<String> username,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      mysqlServerId = pulumi.Input.asInput<String>(mysqlServerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asInput<String>(password),
-      springCloudAppId = pulumi.Input.asInput<String>(springCloudAppId),
-      username = pulumi.Input.asInput<String>(username);
+    required this.databaseName,
+    required this.mysqlServerId,
+    this.name,
+    required this.password,
+    required this.springCloudAppId,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SpringCloudAppMysqlAssociationArgs {
 
   factory SpringCloudAppMysqlAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppMysqlAssociationArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      mysqlServerId: pulumi.Output.create<String>(map['mysqlServerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      springCloudAppId: pulumi.Output.create<String>(map['springCloudAppId'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      mysqlServerId: (map['mysqlServerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
+      springCloudAppId: (map['springCloudAppId'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

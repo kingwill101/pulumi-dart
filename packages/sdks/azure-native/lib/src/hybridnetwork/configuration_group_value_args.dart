@@ -26,17 +26,12 @@ class ConfigurationGroupValueArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   ConfigurationGroupValueArgs({
-    pulumi.Output<String>? configurationGroupValueName,
-    pulumi.Output<String>? location,
-    pulumi.Output<ConfigurationValueWithSecrets>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      configurationGroupValueName = pulumi.Input.asOptionalInput<String>(configurationGroupValueName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ConfigurationValueWithSecrets>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.configurationGroupValueName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ConfigurationGroupValueArgs {
 
   factory ConfigurationGroupValueArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupValueArgs(
-      configurationGroupValueName: map['configurationGroupValueName'] == null ? null : pulumi.Output.create<String>(map['configurationGroupValueName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConfigurationValueWithSecrets>(ConfigurationValueWithSecrets.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      configurationGroupValueName: map['configurationGroupValueName'] == null ? null : (map['configurationGroupValueName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationValueWithSecrets.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

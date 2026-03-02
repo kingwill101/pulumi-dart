@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGceSetupContainerImage {
   /// The path to the container image repository.
   /// For example: gcr.io/{project_id}/{imageName}
-  final String repository;
+  final pulumi.Input<String> repository;
   /// The tag of the container image. If not specified, this defaults to the latest tag.
-  final String? tag;
+  final pulumi.Input<String>? tag;
 
   /// Creates a new [InstanceGceSetupContainerImage].
   /// [repository] The path to the container image repository.
@@ -25,8 +26,8 @@ class InstanceGceSetupContainerImage {
 
   factory InstanceGceSetupContainerImage.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupContainerImage(
-      repository: map['repository'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
+      repository: (map['repository'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
     );
   }
 }

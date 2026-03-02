@@ -24,15 +24,11 @@ class NetworkManagerNetworkGroupArgs {
   /// [name] Specifies the name which should be used for this Network Manager Network Group. Changing this forces a new Network Manager Network Group to be created.
   /// [networkManagerId] Specifies the ID of the Network Manager. Changing this forces a new Network Manager Network Group to be created.
   NetworkManagerNetworkGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? memberType,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkManagerId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      memberType = pulumi.Input.asOptionalInput<String>(memberType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkManagerId = pulumi.Input.asInput<String>(networkManagerId);
+    this.description,
+    this.memberType,
+    this.name,
+    required this.networkManagerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class NetworkManagerNetworkGroupArgs {
 
   factory NetworkManagerNetworkGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerNetworkGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      memberType: map['memberType'] == null ? null : pulumi.Output.create<String>(map['memberType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: pulumi.Output.create<String>(map['networkManagerId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      memberType: map['memberType'] == null ? null : (map['memberType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkManagerId: (map['networkManagerId'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class SpringCloudStorageState {
   /// [storageAccountKey] The access key of the Azure Storage Account.
   /// [storageAccountName] The account name of the Azure Storage Account.
   SpringCloudStorageState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? springCloudServiceId,
-    pulumi.Output<String>? storageAccountKey,
-    pulumi.Output<String>? storageAccountName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudServiceId = pulumi.Input.asOptionalInput<String>(springCloudServiceId),
-      storageAccountKey = pulumi.Input.asOptionalInput<String>(storageAccountKey),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName);
+    this.name,
+    this.springCloudServiceId,
+    this.storageAccountKey,
+    this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SpringCloudStorageState {
 
   factory SpringCloudStorageState.fromMap(Map<String, dynamic> map) {
     return SpringCloudStorageState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : pulumi.Output.create<String>(map['springCloudServiceId'] as String),
-      storageAccountKey: map['storageAccountKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

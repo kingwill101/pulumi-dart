@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneIoThreadPin {
   /// Specifies which CPUs IO threads can be pinned to, allowing for optimized resource allocation in IO operations.
-  final String cpuSet;
+  final pulumi.Input<String> cpuSet;
   /// Identifies the specific IO thread that can be pinned to designated CPUs, impacting data processing efficiency.
-  final double ioThread;
+  final pulumi.Input<double> ioThread;
 
   /// Creates a new [DomainCpuTuneIoThreadPin].
   /// [cpuSet] Specifies which CPUs IO threads can be pinned to, allowing for optimized resource allocation in IO operations.
@@ -24,8 +25,8 @@ class DomainCpuTuneIoThreadPin {
 
   factory DomainCpuTuneIoThreadPin.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneIoThreadPin(
-      cpuSet: map['cpuSet'] as String,
-      ioThread: map['ioThread'] as double,
+      cpuSet: (map['cpuSet'] as String).input(),
+      ioThread: (map['ioThread'] as double).input(),
     );
   }
 }

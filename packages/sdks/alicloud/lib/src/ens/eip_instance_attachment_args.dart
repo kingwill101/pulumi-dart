@@ -28,15 +28,11 @@ class EipInstanceAttachmentArgs {
   /// [instanceType] The type of the EIP instance. Value:
   /// [standby] Indicates whether the EIP is a backup EIP. Value:
   EipInstanceAttachmentArgs({
-    required pulumi.Output<String> allocationId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<bool>? standby,
-  }) :
-      allocationId = pulumi.Input.asInput<String>(allocationId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      standby = pulumi.Input.asOptionalInput<bool>(standby);
+    required this.allocationId,
+    required this.instanceId,
+    this.instanceType,
+    this.standby,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class EipInstanceAttachmentArgs {
 
   factory EipInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EipInstanceAttachmentArgs(
-      allocationId: pulumi.Output.create<String>(map['allocationId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      standby: map['standby'] == null ? null : pulumi.Output.create<bool>(map['standby'] as bool),
+      allocationId: (map['allocationId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      standby: map['standby'] == null ? null : (map['standby'] as bool).input(),
     );
   }
 }

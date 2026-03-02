@@ -5,9 +5,9 @@ import 'get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies
 
 class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
   /// Determines whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values are `none`, `whitelist`, `allExcept`, `all`.
-  final String cookieBehavior;
+  final pulumi.Input<String> cookieBehavior;
   /// Object that contains a list of cookie names. See Items for more information.
-  final List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie> cookies;
+  final pulumi.Input<List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie>> cookies;
 
   /// Creates a new [GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig].
   /// [cookieBehavior] Determines whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values are `none`, `whitelist`, `allExcept`, `all`.
@@ -20,14 +20,14 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cookieBehavior': cookieBehavior,
-      'cookies': pulumi.Input.encodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie, Map<String, dynamic>>(cookies, (value) => value.toMap()),
+      'cookies': pulumi.Input.mapInputValue<List<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie>, List<Map<String, dynamic>>>(cookies, (value) => pulumi.Input.encodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap(Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig(
-      cookieBehavior: map['cookieBehavior'] as String,
-      cookies: pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie>(map['cookies'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie.fromMap((value as Map).cast<String, dynamic>())),
+      cookieBehavior: (map['cookieBehavior'] as String).input(),
+      cookies: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie>(map['cookies'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

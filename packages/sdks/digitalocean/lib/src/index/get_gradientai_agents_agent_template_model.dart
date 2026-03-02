@@ -6,31 +6,31 @@ import 'get_gradientai_agents_agent_template_model_version.dart';
 
 class GetGradientaiAgentsAgentTemplateModel {
   /// Agreement information for the model
-  final List<GetGradientaiAgentsAgentTemplateModelAgreement>? agreements;
+  final pulumi.Input<List<GetGradientaiAgentsAgentTemplateModelAgreement>>? agreements;
   /// Created At timestamp for the Knowledge Base
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Inference name of the model
-  final String? inferenceName;
+  final pulumi.Input<String>? inferenceName;
   /// Infernce version of the model
-  final String? inferenceVersion;
+  final pulumi.Input<String>? inferenceVersion;
   /// Indicates if the Model Base is foundational
-  final bool? isFoundational;
+  final pulumi.Input<bool>? isFoundational;
   /// Name of the Knowledge Base
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Parent UUID of the Model
-  final String? parentUuid;
+  final pulumi.Input<String>? parentUuid;
   /// Provider of the Model
-  final String? provider;
+  final pulumi.Input<String>? provider;
   /// Timestamp when the Knowledge Base was updated
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// Indicates if the Model upload is complete
-  final bool? uploadComplete;
+  final pulumi.Input<bool>? uploadComplete;
   /// URL of the Model
-  final String? url;
+  final pulumi.Input<String>? url;
   /// List of Usecases for the Model
-  final List<String>? usecases;
+  final pulumi.Input<List<String>>? usecases;
   /// URL of the Model
-  final List<GetGradientaiAgentsAgentTemplateModelVersion>? versions;
+  final pulumi.Input<List<GetGradientaiAgentsAgentTemplateModelVersion>>? versions;
 
   /// Creates a new [GetGradientaiAgentsAgentTemplateModel].
   /// [agreements] Agreement information for the model
@@ -64,7 +64,7 @@ class GetGradientaiAgentsAgentTemplateModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agreements': ?agreements == null ? null : pulumi.Input.encodeList<GetGradientaiAgentsAgentTemplateModelAgreement, Map<String, dynamic>>(agreements!, (value) => value.toMap()),
+      'agreements': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsAgentTemplateModelAgreement>, List<Map<String, dynamic>>>(agreements, (value) => pulumi.Input.encodeList<GetGradientaiAgentsAgentTemplateModelAgreement, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createdAt': createdAt,
       'inferenceName': ?inferenceName,
       'inferenceVersion': ?inferenceVersion,
@@ -76,25 +76,25 @@ class GetGradientaiAgentsAgentTemplateModel {
       'uploadComplete': ?uploadComplete,
       'url': ?url,
       'usecases': ?usecases,
-      'versions': ?versions == null ? null : pulumi.Input.encodeList<GetGradientaiAgentsAgentTemplateModelVersion, Map<String, dynamic>>(versions!, (value) => value.toMap()),
+      'versions': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsAgentTemplateModelVersion>, List<Map<String, dynamic>>>(versions, (value) => pulumi.Input.encodeList<GetGradientaiAgentsAgentTemplateModelVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetGradientaiAgentsAgentTemplateModel.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentTemplateModel(
-      agreements: map['agreements'] == null ? null : pulumi.Input.decodeList<GetGradientaiAgentsAgentTemplateModelAgreement>(map['agreements'], (value) => GetGradientaiAgentsAgentTemplateModelAgreement.fromMap((value as Map).cast<String, dynamic>())),
-      createdAt: map['createdAt'] as String,
-      inferenceName: map['inferenceName'] == null ? null : map['inferenceName'] as String,
-      inferenceVersion: map['inferenceVersion'] == null ? null : map['inferenceVersion'] as String,
-      isFoundational: map['isFoundational'] == null ? null : map['isFoundational'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      parentUuid: map['parentUuid'] == null ? null : map['parentUuid'] as String,
-      provider: map['provider'] == null ? null : map['provider'] as String,
-      updatedAt: map['updatedAt'] as String,
-      uploadComplete: map['uploadComplete'] == null ? null : map['uploadComplete'] as bool,
-      url: map['url'] == null ? null : map['url'] as String,
-      usecases: map['usecases'] == null ? null : (map['usecases'] as List).cast<String>(),
-      versions: map['versions'] == null ? null : pulumi.Input.decodeList<GetGradientaiAgentsAgentTemplateModelVersion>(map['versions'], (value) => GetGradientaiAgentsAgentTemplateModelVersion.fromMap((value as Map).cast<String, dynamic>())),
+      agreements: map['agreements'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsAgentTemplateModelAgreement>(map['agreements'], (value) => GetGradientaiAgentsAgentTemplateModelAgreement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      inferenceName: map['inferenceName'] == null ? null : (map['inferenceName'] as String).input(),
+      inferenceVersion: map['inferenceVersion'] == null ? null : (map['inferenceVersion'] as String).input(),
+      isFoundational: map['isFoundational'] == null ? null : (map['isFoundational'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid'] as String).input(),
+      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      uploadComplete: map['uploadComplete'] == null ? null : (map['uploadComplete'] as bool).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      usecases: map['usecases'] == null ? null : ((map['usecases'] as List).cast<String>()).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsAgentTemplateModelVersion>(map['versions'], (value) => GetGradientaiAgentsAgentTemplateModelVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

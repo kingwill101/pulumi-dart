@@ -47,31 +47,19 @@ class DbInstanceArgs {
   /// [vswitchId] The ID of attaching vswitch to instance.
   /// [zoneId] The zone ID of the resource.
   DbInstanceArgs({
-    required pulumi.Output<String> dbInstanceCategory,
-    pulumi.Output<String>? dbInstanceDescription,
-    pulumi.Output<List<DbInstanceDbInstanceIpArray>>? dbInstanceIpArrays,
-    required pulumi.Output<String> dbInstanceNetworkType,
-    required pulumi.Output<String> dbInstanceStorageType,
-    required pulumi.Output<String> dbNodeClass,
-    required pulumi.Output<int> dbNodeStorage,
-    required pulumi.Output<String> dbVersion,
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      dbInstanceCategory = pulumi.Input.asInput<String>(dbInstanceCategory),
-      dbInstanceDescription = pulumi.Input.asOptionalInput<String>(dbInstanceDescription),
-      dbInstanceIpArrays = pulumi.Input.asOptionalInput<List<DbInstanceDbInstanceIpArray>>(dbInstanceIpArrays),
-      dbInstanceNetworkType = pulumi.Input.asInput<String>(dbInstanceNetworkType),
-      dbInstanceStorageType = pulumi.Input.asInput<String>(dbInstanceStorageType),
-      dbNodeClass = pulumi.Input.asInput<String>(dbNodeClass),
-      dbNodeStorage = pulumi.Input.asInput<int>(dbNodeStorage),
-      dbVersion = pulumi.Input.asInput<String>(dbVersion),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    required this.dbInstanceCategory,
+    this.dbInstanceDescription,
+    this.dbInstanceIpArrays,
+    required this.dbInstanceNetworkType,
+    required this.dbInstanceStorageType,
+    required this.dbNodeClass,
+    required this.dbNodeStorage,
+    required this.dbVersion,
+    required this.paymentType,
+    this.vpcId,
+    this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class DbInstanceArgs {
 
   factory DbInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceArgs(
-      dbInstanceCategory: pulumi.Output.create<String>(map['dbInstanceCategory'] as String),
-      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : pulumi.Output.create<String>(map['dbInstanceDescription'] as String),
-      dbInstanceIpArrays: map['dbInstanceIpArrays'] == null ? null : pulumi.Output.create<List<DbInstanceDbInstanceIpArray>>(pulumi.Input.decodeList<DbInstanceDbInstanceIpArray>(map['dbInstanceIpArrays'], (value) => DbInstanceDbInstanceIpArray.fromMap((value as Map).cast<String, dynamic>()))),
-      dbInstanceNetworkType: pulumi.Output.create<String>(map['dbInstanceNetworkType'] as String),
-      dbInstanceStorageType: pulumi.Output.create<String>(map['dbInstanceStorageType'] as String),
-      dbNodeClass: pulumi.Output.create<String>(map['dbNodeClass'] as String),
-      dbNodeStorage: pulumi.Output.create<int>(map['dbNodeStorage'] as int),
-      dbVersion: pulumi.Output.create<String>(map['dbVersion'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      dbInstanceCategory: (map['dbInstanceCategory'] as String).input(),
+      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription'] as String).input(),
+      dbInstanceIpArrays: map['dbInstanceIpArrays'] == null ? null : (pulumi.Input.decodeList<DbInstanceDbInstanceIpArray>(map['dbInstanceIpArrays'], (value) => DbInstanceDbInstanceIpArray.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbInstanceNetworkType: (map['dbInstanceNetworkType'] as String).input(),
+      dbInstanceStorageType: (map['dbInstanceStorageType'] as String).input(),
+      dbNodeClass: (map['dbNodeClass'] as String).input(),
+      dbNodeStorage: (map['dbNodeStorage'] as int).input(),
+      dbVersion: (map['dbVersion'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

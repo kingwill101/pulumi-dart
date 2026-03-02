@@ -23,13 +23,10 @@ class ServiceCustomCertificateArgs {
   /// [name] The name of the SignalR Custom Certificate. Changing this forces a new resource to be created.
   /// [signalrServiceId] The SignalR ID of the SignalR Custom Certificate. Changing this forces a new resource to be created.
   ServiceCustomCertificateArgs({
-    required pulumi.Output<String> customCertificateId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> signalrServiceId,
-  }) :
-      customCertificateId = pulumi.Input.asInput<String>(customCertificateId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      signalrServiceId = pulumi.Input.asInput<String>(signalrServiceId);
+    required this.customCertificateId,
+    this.name,
+    required this.signalrServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class ServiceCustomCertificateArgs {
 
   factory ServiceCustomCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServiceCustomCertificateArgs(
-      customCertificateId: pulumi.Output.create<String>(map['customCertificateId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      signalrServiceId: pulumi.Output.create<String>(map['signalrServiceId'] as String),
+      customCertificateId: (map['customCertificateId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      signalrServiceId: (map['signalrServiceId'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefaultSecurityGroupIngress {
   /// List of CIDR blocks.
-  final List<String>? cidrBlocks;
+  final pulumi.Input<List<String>>? cidrBlocks;
   /// Description of the security group.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Start port (or ICMP type number if protocol is `icmp`)
-  final int fromPort;
+  final pulumi.Input<int> fromPort;
   /// List of IPv6 CIDR blocks.
-  final List<String>? ipv6CidrBlocks;
+  final pulumi.Input<List<String>>? ipv6CidrBlocks;
   /// List of prefix list IDs (for allowing access to VPC endpoints)
-  final List<String>? prefixListIds;
+  final pulumi.Input<List<String>>? prefixListIds;
   /// Protocol. If you select a protocol of "-1" (semantically equivalent to `all`, which is not a valid value here), you must specify a `from_port` and `to_port` equal to `0`. If not `icmp`, `tcp`, `udp`, or `-1` use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// List of security groups. A group name can be used relative to the default VPC. Otherwise, group ID.
-  final List<String>? securityGroups;
+  final pulumi.Input<List<String>>? securityGroups;
   /// Whether the security group itself will be added as a source to this egress rule.
-  final bool? self;
+  final pulumi.Input<bool>? self;
   /// End range port (or ICMP code if protocol is `icmp`).
-  final int toPort;
+  final pulumi.Input<int> toPort;
 
   /// Creates a new [DefaultSecurityGroupIngress].
   /// [cidrBlocks] List of CIDR blocks.
@@ -59,15 +60,15 @@ class DefaultSecurityGroupIngress {
 
   factory DefaultSecurityGroupIngress.fromMap(Map<String, dynamic> map) {
     return DefaultSecurityGroupIngress(
-      cidrBlocks: map['cidrBlocks'] == null ? null : (map['cidrBlocks'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      fromPort: map['fromPort'] as int,
-      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : (map['ipv6CidrBlocks'] as List).cast<String>(),
-      prefixListIds: map['prefixListIds'] == null ? null : (map['prefixListIds'] as List).cast<String>(),
-      protocol: map['protocol'] as String,
-      securityGroups: map['securityGroups'] == null ? null : (map['securityGroups'] as List).cast<String>(),
-      self: map['self'] == null ? null : map['self'] as bool,
-      toPort: map['toPort'] as int,
+      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fromPort: (map['fromPort'] as int).input(),
+      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : ((map['ipv6CidrBlocks'] as List).cast<String>()).input(),
+      prefixListIds: map['prefixListIds'] == null ? null : ((map['prefixListIds'] as List).cast<String>()).input(),
+      protocol: (map['protocol'] as String).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      self: map['self'] == null ? null : (map['self'] as bool).input(),
+      toPort: (map['toPort'] as int).input(),
     );
   }
 }

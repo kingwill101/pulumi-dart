@@ -19,15 +19,11 @@ class AccessGroupState {
   /// [description] The permission group description.  No more than 32 characters in length.
   /// [networkType] The permission group type. Only VPC (VPC) is supported.
   AccessGroupState({
-    pulumi.Output<String>? accessGroupName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? networkType,
-  }) :
-      accessGroupName = pulumi.Input.asOptionalInput<String>(accessGroupName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType);
+    this.accessGroupName,
+    this.createTime,
+    this.description,
+    this.networkType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AccessGroupState {
 
   factory AccessGroupState.fromMap(Map<String, dynamic> map) {
     return AccessGroupState(
-      accessGroupName: map['accessGroupName'] == null ? null : pulumi.Output.create<String>(map['accessGroupName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
     );
   }
 }

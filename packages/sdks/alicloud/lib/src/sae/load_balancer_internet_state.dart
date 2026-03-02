@@ -20,15 +20,11 @@ class LoadBalancerInternetState {
   /// [internetSlbId] The internet SLB ID.
   /// [internets] The bound private network SLB. See `internet` below.
   LoadBalancerInternetState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? internetIp,
-    pulumi.Output<String>? internetSlbId,
-    pulumi.Output<List<LoadBalancerInternetInternet>>? internets,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      internetIp = pulumi.Input.asOptionalInput<String>(internetIp),
-      internetSlbId = pulumi.Input.asOptionalInput<String>(internetSlbId),
-      internets = pulumi.Input.asOptionalInput<List<LoadBalancerInternetInternet>>(internets);
+    this.appId,
+    this.internetIp,
+    this.internetSlbId,
+    this.internets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class LoadBalancerInternetState {
 
   factory LoadBalancerInternetState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerInternetState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      internetIp: map['internetIp'] == null ? null : pulumi.Output.create<String>(map['internetIp'] as String),
-      internetSlbId: map['internetSlbId'] == null ? null : pulumi.Output.create<String>(map['internetSlbId'] as String),
-      internets: map['internets'] == null ? null : pulumi.Output.create<List<LoadBalancerInternetInternet>>(pulumi.Input.decodeList<LoadBalancerInternetInternet>(map['internets'], (value) => LoadBalancerInternetInternet.fromMap((value as Map).cast<String, dynamic>()))),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
+      internetSlbId: map['internetSlbId'] == null ? null : (map['internetSlbId'] as String).input(),
+      internets: map['internets'] == null ? null : (pulumi.Input.decodeList<LoadBalancerInternetInternet>(map['internets'], (value) => LoadBalancerInternetInternet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

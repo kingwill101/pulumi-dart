@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryMfaAuthenticationSettingInfo {
   /// Global MFA validation policy
-  final String? mfaAuthenticationAdvanceSettings;
+  final pulumi.Input<String>? mfaAuthenticationAdvanceSettings;
   /// MFA verification policy for abnormal logon.
-  final String? operationForRiskLogin;
+  final pulumi.Input<String>? operationForRiskLogin;
 
   /// Creates a new [DirectoryMfaAuthenticationSettingInfo].
   /// [mfaAuthenticationAdvanceSettings] Global MFA validation policy
@@ -24,8 +25,8 @@ class DirectoryMfaAuthenticationSettingInfo {
 
   factory DirectoryMfaAuthenticationSettingInfo.fromMap(Map<String, dynamic> map) {
     return DirectoryMfaAuthenticationSettingInfo(
-      mfaAuthenticationAdvanceSettings: map['mfaAuthenticationAdvanceSettings'] == null ? null : map['mfaAuthenticationAdvanceSettings'] as String,
-      operationForRiskLogin: map['operationForRiskLogin'] == null ? null : map['operationForRiskLogin'] as String,
+      mfaAuthenticationAdvanceSettings: map['mfaAuthenticationAdvanceSettings'] == null ? null : (map['mfaAuthenticationAdvanceSettings'] as String).input(),
+      operationForRiskLogin: map['operationForRiskLogin'] == null ? null : (map['operationForRiskLogin'] as String).input(),
     );
   }
 }

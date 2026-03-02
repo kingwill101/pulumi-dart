@@ -7,11 +7,11 @@ class GetBackendServiceStrongSessionAffinityCooky {
   /// The name of the Backend Service.
   ///
   /// - - -
-  final String name;
+  final pulumi.Input<String> name;
   /// Path to set for the cookie.
-  final String path;
+  final pulumi.Input<String> path;
   /// Lifetime of the cookie.
-  final List<GetBackendServiceStrongSessionAffinityCookyTtl> ttls;
+  final pulumi.Input<List<GetBackendServiceStrongSessionAffinityCookyTtl>> ttls;
 
   /// Creates a new [GetBackendServiceStrongSessionAffinityCooky].
   /// [name] The name of the Backend Service.
@@ -27,15 +27,15 @@ class GetBackendServiceStrongSessionAffinityCooky {
     return <String, dynamic>{
       'name': name,
       'path': path,
-      'ttls': pulumi.Input.encodeList<GetBackendServiceStrongSessionAffinityCookyTtl, Map<String, dynamic>>(ttls, (value) => value.toMap()),
+      'ttls': pulumi.Input.mapInputValue<List<GetBackendServiceStrongSessionAffinityCookyTtl>, List<Map<String, dynamic>>>(ttls, (value) => pulumi.Input.encodeList<GetBackendServiceStrongSessionAffinityCookyTtl, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetBackendServiceStrongSessionAffinityCooky.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceStrongSessionAffinityCooky(
-      name: map['name'] as String,
-      path: map['path'] as String,
-      ttls: pulumi.Input.decodeList<GetBackendServiceStrongSessionAffinityCookyTtl>(map['ttls'], (value) => GetBackendServiceStrongSessionAffinityCookyTtl.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
+      ttls: (pulumi.Input.decodeList<GetBackendServiceStrongSessionAffinityCookyTtl>(map['ttls'], (value) => GetBackendServiceStrongSessionAffinityCookyTtl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

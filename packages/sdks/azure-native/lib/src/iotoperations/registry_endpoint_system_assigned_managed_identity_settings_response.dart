@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// System assigned managed identity properties
 class RegistryEndpointSystemAssignedManagedIdentitySettingsResponse {
   /// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-  final String? audience;
+  final pulumi.Input<String>? audience;
 
   /// Creates a new [RegistryEndpointSystemAssignedManagedIdentitySettingsResponse].
   /// [audience] Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
@@ -20,7 +21,7 @@ class RegistryEndpointSystemAssignedManagedIdentitySettingsResponse {
 
   factory RegistryEndpointSystemAssignedManagedIdentitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointSystemAssignedManagedIdentitySettingsResponse(
-      audience: map['audience'] == null ? null : map['audience'] as String,
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
     );
   }
 }

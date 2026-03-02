@@ -22,17 +22,12 @@ class ClusterState {
   /// [networkMode] The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   /// [vpcId] The ID of the Virtual Private Cloud (VPC) for the cluster.
   ClusterState({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<int>? clusterType,
-    pulumi.Output<String>? logicalRegionId,
-    pulumi.Output<int>? networkMode,
-    pulumi.Output<String>? vpcId,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      clusterType = pulumi.Input.asOptionalInput<int>(clusterType),
-      logicalRegionId = pulumi.Input.asOptionalInput<String>(logicalRegionId),
-      networkMode = pulumi.Input.asOptionalInput<int>(networkMode),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.clusterName,
+    this.clusterType,
+    this.logicalRegionId,
+    this.networkMode,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterType: map['clusterType'] == null ? null : pulumi.Output.create<int>(map['clusterType'] as int),
-      logicalRegionId: map['logicalRegionId'] == null ? null : pulumi.Output.create<String>(map['logicalRegionId'] as String),
-      networkMode: map['networkMode'] == null ? null : pulumi.Output.create<int>(map['networkMode'] as int),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as int).input(),
+      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId'] as String).input(),
+      networkMode: map['networkMode'] == null ? null : (map['networkMode'] as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

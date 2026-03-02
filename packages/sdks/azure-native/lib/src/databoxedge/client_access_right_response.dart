@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The mapping between a particular client IP and the type of access client has on the NFS share.
 class ClientAccessRightResponse {
   /// Type of access to be allowed for the client.
-  final String accessPermission;
+  final pulumi.Input<String> accessPermission;
   /// IP of the client.
-  final String client;
+  final pulumi.Input<String> client;
 
   /// Creates a new [ClientAccessRightResponse].
   /// [accessPermission] Type of access to be allowed for the client.
@@ -25,8 +26,8 @@ class ClientAccessRightResponse {
 
   factory ClientAccessRightResponse.fromMap(Map<String, dynamic> map) {
     return ClientAccessRightResponse(
-      accessPermission: map['accessPermission'] as String,
-      client: map['client'] as String,
+      accessPermission: (map['accessPermission'] as String).input(),
+      client: (map['client'] as String).input(),
     );
   }
 }

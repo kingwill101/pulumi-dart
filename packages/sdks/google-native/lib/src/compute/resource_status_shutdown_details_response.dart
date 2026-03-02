@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration_response.dart';
 
 /// Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance stopping scheduled.
 class ResourceStatusShutdownDetailsResponse {
   /// Duration for graceful shutdown. Only applicable when `stop_state=SHUTTING_DOWN`.
-  final DurationResponse maxDuration;
+  final pulumi.Input<DurationResponse> maxDuration;
   /// Past timestamp indicating the beginning of current `stopState` in RFC3339 text format.
-  final String requestTimestamp;
+  final pulumi.Input<String> requestTimestamp;
   /// Current stopping state of the instance.
-  final String stopState;
+  final pulumi.Input<String> stopState;
   /// Target instance state.
-  final String targetState;
+  final pulumi.Input<String> targetState;
 
   /// Creates a new [ResourceStatusShutdownDetailsResponse].
   /// [maxDuration] Duration for graceful shutdown. Only applicable when `stop_state=SHUTTING_DOWN`.
@@ -27,7 +28,7 @@ class ResourceStatusShutdownDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxDuration': maxDuration.toMap(),
+      'maxDuration': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(maxDuration, (value) => value.toMap()),
       'requestTimestamp': requestTimestamp,
       'stopState': stopState,
       'targetState': targetState,
@@ -36,10 +37,10 @@ class ResourceStatusShutdownDetailsResponse {
 
   factory ResourceStatusShutdownDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusShutdownDetailsResponse(
-      maxDuration: DurationResponse.fromMap((map['maxDuration'] as Map).cast<String, dynamic>()),
-      requestTimestamp: map['requestTimestamp'] as String,
-      stopState: map['stopState'] as String,
-      targetState: map['targetState'] as String,
+      maxDuration: (DurationResponse.fromMap((map['maxDuration'] as Map).cast<String, dynamic>())).input(),
+      requestTimestamp: (map['requestTimestamp'] as String).input(),
+      stopState: (map['stopState'] as String).input(),
+      targetState: (map['targetState'] as String).input(),
     );
   }
 }

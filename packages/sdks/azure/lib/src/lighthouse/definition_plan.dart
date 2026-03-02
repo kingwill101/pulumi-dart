@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefinitionPlan {
   /// The plan name of the marketplace offer.
-  final String name;
+  final pulumi.Input<String> name;
   /// The product code of the plan.
-  final String product;
+  final pulumi.Input<String> product;
   /// The publisher ID of the plan.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// The version of the plan.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [DefinitionPlan].
   /// [name] The plan name of the marketplace offer.
@@ -34,10 +35,10 @@ class DefinitionPlan {
 
   factory DefinitionPlan.fromMap(Map<String, dynamic> map) {
     return DefinitionPlan(
-      name: map['name'] as String,
-      product: map['product'] as String,
-      publisher: map['publisher'] as String,
-      version: map['version'] as String,
+      name: (map['name'] as String).input(),
+      product: (map['product'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

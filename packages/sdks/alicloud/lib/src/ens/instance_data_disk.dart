@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceDataDisk {
   /// Data disk type. Optional values:
@@ -7,15 +8,15 @@ class InstanceDataDisk {
   /// - cloud_ssd: Full Flash cloud disk
   /// - local_hdd: local hdd disk
   /// - local_ssd: local disk ssd.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Cloud Disk ID.
-  final String? diskId;
+  final pulumi.Input<String>? diskId;
   /// The ID of the KMS key used by the cloud disk.
-  final String? encryptKeyId;
+  final pulumi.Input<String>? encryptKeyId;
   /// Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
-  final bool? encrypted;
+  final pulumi.Input<bool>? encrypted;
   /// Data disk size, unit: GB.
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [InstanceDataDisk].
   /// [category] Data disk type. Optional values:
@@ -43,11 +44,11 @@ class InstanceDataDisk {
 
   factory InstanceDataDisk.fromMap(Map<String, dynamic> map) {
     return InstanceDataDisk(
-      category: map['category'] == null ? null : map['category'] as String,
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
-      encryptKeyId: map['encryptKeyId'] == null ? null : map['encryptKeyId'] as String,
-      encrypted: map['encrypted'] == null ? null : map['encrypted'] as bool,
-      size: map['size'] == null ? null : map['size'] as int,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      encryptKeyId: map['encryptKeyId'] == null ? null : (map['encryptKeyId'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

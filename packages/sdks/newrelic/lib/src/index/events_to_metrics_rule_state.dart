@@ -25,19 +25,13 @@ class EventsToMetricsRuleState {
   /// [nrql] Explains how to create metrics from events.
   /// [ruleId] The id, uniquely identifying the rule.
   EventsToMetricsRuleState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nrql,
-    pulumi.Output<String>? ruleId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nrql = pulumi.Input.asOptionalInput<String>(nrql),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId);
+    this.accountId,
+    this.description,
+    this.enabled,
+    this.name,
+    this.nrql,
+    this.ruleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class EventsToMetricsRuleState {
 
   factory EventsToMetricsRuleState.fromMap(Map<String, dynamic> map) {
     return EventsToMetricsRuleState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nrql: map['nrql'] == null ? null : pulumi.Output.create<String>(map['nrql'] as String),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nrql: map['nrql'] == null ? null : (map['nrql'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
     );
   }
 }

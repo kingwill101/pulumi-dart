@@ -6,9 +6,9 @@ import 'device_messaging_endpoint_response.dart';
 /// Property bag contains the device's outbound endpoints
 class OutboundEndpointsResponse {
   /// Endpoints the device can connect to.
-  final Map<String, DeviceMessagingEndpointResponse> assigned;
+  final pulumi.Input<Map<String, DeviceMessagingEndpointResponse>> assigned;
   /// Set of most recently removed endpoints.
-  final Map<String, DeviceMessagingEndpointResponse>? unassigned;
+  final pulumi.Input<Map<String, DeviceMessagingEndpointResponse>>? unassigned;
 
   /// Creates a new [OutboundEndpointsResponse].
   /// [assigned] Endpoints the device can connect to.
@@ -20,15 +20,15 @@ class OutboundEndpointsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assigned': pulumi.Input.encodeMapValues<DeviceMessagingEndpointResponse, Map<String, dynamic>>(assigned, (value) => value.toMap()),
-      'unassigned': ?unassigned == null ? null : pulumi.Input.encodeMapValues<DeviceMessagingEndpointResponse, Map<String, dynamic>>(unassigned!, (value) => value.toMap()),
+      'assigned': pulumi.Input.mapInputValue<Map<String, DeviceMessagingEndpointResponse>, Map<String, Map<String, dynamic>>>(assigned, (value) => pulumi.Input.encodeMapValues<DeviceMessagingEndpointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'unassigned': ?pulumi.Input.mapOptionalInputValue<Map<String, DeviceMessagingEndpointResponse>, Map<String, Map<String, dynamic>>>(unassigned, (value) => pulumi.Input.encodeMapValues<DeviceMessagingEndpointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OutboundEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return OutboundEndpointsResponse(
-      assigned: pulumi.Input.decodeMapValues<DeviceMessagingEndpointResponse>(map['assigned'], (value) => DeviceMessagingEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      unassigned: map['unassigned'] == null ? null : pulumi.Input.decodeMapValues<DeviceMessagingEndpointResponse>(map['unassigned'], (value) => DeviceMessagingEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
+      assigned: (pulumi.Input.decodeMapValues<DeviceMessagingEndpointResponse>(map['assigned'], (value) => DeviceMessagingEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unassigned: map['unassigned'] == null ? null : (pulumi.Input.decodeMapValues<DeviceMessagingEndpointResponse>(map['unassigned'], (value) => DeviceMessagingEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

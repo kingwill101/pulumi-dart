@@ -9,32 +9,32 @@ import 'user_property.dart';
 /// Azure Function activity.
 class AzureFunctionActivity {
   /// Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
-  final dynamic body;
+  final pulumi.Input<dynamic>? body;
   /// Activity depends on condition.
-  final List<ActivityDependency>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
-  final dynamic functionName;
+  final pulumi.Input<dynamic> functionName;
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-  final Map<String, dynamic>? headers;
+  final pulumi.Input<Map<String, dynamic>>? headers;
   /// Linked service reference.
-  final LinkedServiceReference? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Rest API method for target endpoint.
-  final String method;
+  final pulumi.Input<String> method;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Activity policy.
-  final ActivityPolicy? policy;
+  final pulumi.Input<ActivityPolicy>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Type of activity.
   /// Expected value is 'AzureFunctionActivity'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserProperty>? userProperties;
+  final pulumi.Input<List<UserProperty>>? userProperties;
 
   /// Creates a new [AzureFunctionActivity].
   /// [body] Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
@@ -69,36 +69,36 @@ class AzureFunctionActivity {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'body': ?body,
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'functionName': functionName,
       'headers': ?headers,
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'method': method,
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'state': ?state,
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AzureFunctionActivity.fromMap(Map<String, dynamic> map) {
     return AzureFunctionActivity(
-      body: map['body'] == null ? null : map['body'],
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      functionName: map['functionName'],
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, dynamic>(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      method: map['method'] as String,
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      policy: map['policy'] == null ? null : ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>())),
+      body: map['body'] == null ? null : (map['body']).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionName: (map['functionName']).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, dynamic>()).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      method: (map['method'] as String).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

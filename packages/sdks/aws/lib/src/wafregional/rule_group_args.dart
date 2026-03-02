@@ -26,17 +26,12 @@ class RuleGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RuleGroupArgs({
-    pulumi.Output<List<RuleGroupActivatedRule>>? activatedRules,
-    required pulumi.Output<String> metricName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      activatedRules = pulumi.Input.asOptionalInput<List<RuleGroupActivatedRule>>(activatedRules),
-      metricName = pulumi.Input.asInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.activatedRules,
+    required this.metricName,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RuleGroupArgs {
 
   factory RuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return RuleGroupArgs(
-      activatedRules: map['activatedRules'] == null ? null : pulumi.Output.create<List<RuleGroupActivatedRule>>(pulumi.Input.decodeList<RuleGroupActivatedRule>(map['activatedRules'], (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>()))),
-      metricName: pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      activatedRules: map['activatedRules'] == null ? null : (pulumi.Input.decodeList<RuleGroupActivatedRule>(map['activatedRules'], (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IoTHubEnrichment {
   /// The list of endpoints which will be enriched.
-  final List<String> endpointNames;
+  final pulumi.Input<List<String>> endpointNames;
   /// The key of the enrichment.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the enrichment. Value can be any static string, the name of the IoT Hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [IoTHubEnrichment].
   /// [endpointNames] The list of endpoints which will be enriched.
@@ -29,9 +30,9 @@ class IoTHubEnrichment {
 
   factory IoTHubEnrichment.fromMap(Map<String, dynamic> map) {
     return IoTHubEnrichment(
-      endpointNames: (map['endpointNames'] as List).cast<String>(),
-      key: map['key'] as String,
-      value: map['value'] as String,
+      endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

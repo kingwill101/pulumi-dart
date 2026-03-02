@@ -35,19 +35,13 @@ class ResourceClassPatchArgs {
   /// [parametersRef] ParametersRef references an arbitrary separate object that may hold parameters that will be used by the driver when allocating a resource that uses this class. A dynamic resource driver can distinguish between parameters stored here and and those stored in ResourceClaimSpec.
   /// [suitableNodes] Only nodes matching the selector will be considered by the scheduler when trying to find a Node that fits a Pod when that Pod uses a ResourceClaim that has not been allocated yet.
   ResourceClassPatchArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? driverName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<ResourceClassParametersReferencePatch>? parametersRef,
-    pulumi.Output<NodeSelectorPatch>? suitableNodes,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      driverName = pulumi.Input.asOptionalInput<String>(driverName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      parametersRef = pulumi.Input.asOptionalInput<ResourceClassParametersReferencePatch>(parametersRef),
-      suitableNodes = pulumi.Input.asOptionalInput<NodeSelectorPatch>(suitableNodes);
+    this.apiVersion,
+    this.driverName,
+    this.kind,
+    this.metadata,
+    this.parametersRef,
+    this.suitableNodes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class ResourceClassPatchArgs {
 
   factory ResourceClassPatchArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClassPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      driverName: map['driverName'] == null ? null : pulumi.Output.create<String>(map['driverName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      parametersRef: map['parametersRef'] == null ? null : pulumi.Output.create<ResourceClassParametersReferencePatch>(ResourceClassParametersReferencePatch.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())),
-      suitableNodes: map['suitableNodes'] == null ? null : pulumi.Output.create<NodeSelectorPatch>(NodeSelectorPatch.fromMap((map['suitableNodes'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      parametersRef: map['parametersRef'] == null ? null : (ResourceClassParametersReferencePatch.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())).input(),
+      suitableNodes: map['suitableNodes'] == null ? null : (NodeSelectorPatch.fromMap((map['suitableNodes'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

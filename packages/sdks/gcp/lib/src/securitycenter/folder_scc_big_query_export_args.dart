@@ -46,17 +46,12 @@ class FolderSccBigQueryExportArgs {
   /// [filter] Expression that defines the filter to apply across create/update
   /// [folder] The folder where Cloud Security Command Center Big Query Export
   FolderSccBigQueryExportArgs({
-    required pulumi.Output<String> bigQueryExportId,
-    required pulumi.Output<String> dataset,
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> filter,
-    required pulumi.Output<String> folder,
-  }) :
-      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-      dataset = pulumi.Input.asInput<String>(dataset),
-      description = pulumi.Input.asInput<String>(description),
-      filter = pulumi.Input.asInput<String>(filter),
-      folder = pulumi.Input.asInput<String>(folder);
+    required this.bigQueryExportId,
+    required this.dataset,
+    required this.description,
+    required this.filter,
+    required this.folder,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,11 +65,11 @@ class FolderSccBigQueryExportArgs {
 
   factory FolderSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return FolderSccBigQueryExportArgs(
-      bigQueryExportId: pulumi.Output.create<String>(map['bigQueryExportId'] as String),
-      dataset: pulumi.Output.create<String>(map['dataset'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
+      bigQueryExportId: (map['bigQueryExportId'] as String).input(),
+      dataset: (map['dataset'] as String).input(),
+      description: (map['description'] as String).input(),
+      filter: (map['filter'] as String).input(),
+      folder: (map['folder'] as String).input(),
     );
   }
 }

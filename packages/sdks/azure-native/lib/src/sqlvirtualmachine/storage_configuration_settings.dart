@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sqlstorage_settings.dart';
 import 'sqltemp_db_settings.dart';
 
 /// Storage Configurations for SQL Data, Log and TempDb.
 class StorageConfigurationSettings {
   /// Disk configuration to apply to SQL Server.
-  final String? diskConfigurationType;
+  final pulumi.Input<String>? diskConfigurationType;
   /// Enable SQL IaaS Agent storage configuration blade in Azure Portal.
-  final bool? enableStorageConfigBlade;
+  final pulumi.Input<bool>? enableStorageConfigBlade;
   /// SQL Server Data Storage Settings.
-  final SQLStorageSettings? sqlDataSettings;
+  final pulumi.Input<SQLStorageSettings>? sqlDataSettings;
   /// SQL Server Log Storage Settings.
-  final SQLStorageSettings? sqlLogSettings;
+  final pulumi.Input<SQLStorageSettings>? sqlLogSettings;
   /// SQL Server SystemDb Storage on DataPool if true.
-  final bool? sqlSystemDbOnDataDisk;
+  final pulumi.Input<bool>? sqlSystemDbOnDataDisk;
   /// SQL Server TempDb Storage Settings.
-  final SQLTempDbSettings? sqlTempDbSettings;
+  final pulumi.Input<SQLTempDbSettings>? sqlTempDbSettings;
   /// Storage workload type.
-  final String? storageWorkloadType;
+  final pulumi.Input<String>? storageWorkloadType;
 
   /// Creates a new [StorageConfigurationSettings].
   /// [diskConfigurationType] Disk configuration to apply to SQL Server.
@@ -42,23 +43,23 @@ class StorageConfigurationSettings {
     return <String, dynamic>{
       'diskConfigurationType': ?diskConfigurationType,
       'enableStorageConfigBlade': ?enableStorageConfigBlade,
-      'sqlDataSettings': ?sqlDataSettings == null ? null : sqlDataSettings!.toMap(),
-      'sqlLogSettings': ?sqlLogSettings == null ? null : sqlLogSettings!.toMap(),
+      'sqlDataSettings': ?pulumi.Input.mapOptionalInputValue<SQLStorageSettings, Map<String, dynamic>>(sqlDataSettings, (value) => value.toMap()),
+      'sqlLogSettings': ?pulumi.Input.mapOptionalInputValue<SQLStorageSettings, Map<String, dynamic>>(sqlLogSettings, (value) => value.toMap()),
       'sqlSystemDbOnDataDisk': ?sqlSystemDbOnDataDisk,
-      'sqlTempDbSettings': ?sqlTempDbSettings == null ? null : sqlTempDbSettings!.toMap(),
+      'sqlTempDbSettings': ?pulumi.Input.mapOptionalInputValue<SQLTempDbSettings, Map<String, dynamic>>(sqlTempDbSettings, (value) => value.toMap()),
       'storageWorkloadType': ?storageWorkloadType,
     };
   }
 
   factory StorageConfigurationSettings.fromMap(Map<String, dynamic> map) {
     return StorageConfigurationSettings(
-      diskConfigurationType: map['diskConfigurationType'] == null ? null : map['diskConfigurationType'] as String,
-      enableStorageConfigBlade: map['enableStorageConfigBlade'] == null ? null : map['enableStorageConfigBlade'] as bool,
-      sqlDataSettings: map['sqlDataSettings'] == null ? null : SQLStorageSettings.fromMap((map['sqlDataSettings'] as Map).cast<String, dynamic>()),
-      sqlLogSettings: map['sqlLogSettings'] == null ? null : SQLStorageSettings.fromMap((map['sqlLogSettings'] as Map).cast<String, dynamic>()),
-      sqlSystemDbOnDataDisk: map['sqlSystemDbOnDataDisk'] == null ? null : map['sqlSystemDbOnDataDisk'] as bool,
-      sqlTempDbSettings: map['sqlTempDbSettings'] == null ? null : SQLTempDbSettings.fromMap((map['sqlTempDbSettings'] as Map).cast<String, dynamic>()),
-      storageWorkloadType: map['storageWorkloadType'] == null ? null : map['storageWorkloadType'] as String,
+      diskConfigurationType: map['diskConfigurationType'] == null ? null : (map['diskConfigurationType'] as String).input(),
+      enableStorageConfigBlade: map['enableStorageConfigBlade'] == null ? null : (map['enableStorageConfigBlade'] as bool).input(),
+      sqlDataSettings: map['sqlDataSettings'] == null ? null : (SQLStorageSettings.fromMap((map['sqlDataSettings'] as Map).cast<String, dynamic>())).input(),
+      sqlLogSettings: map['sqlLogSettings'] == null ? null : (SQLStorageSettings.fromMap((map['sqlLogSettings'] as Map).cast<String, dynamic>())).input(),
+      sqlSystemDbOnDataDisk: map['sqlSystemDbOnDataDisk'] == null ? null : (map['sqlSystemDbOnDataDisk'] as bool).input(),
+      sqlTempDbSettings: map['sqlTempDbSettings'] == null ? null : (SQLTempDbSettings.fromMap((map['sqlTempDbSettings'] as Map).cast<String, dynamic>())).input(),
+      storageWorkloadType: map['storageWorkloadType'] == null ? null : (map['storageWorkloadType'] as String).input(),
     );
   }
 }

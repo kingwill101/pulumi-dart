@@ -33,21 +33,14 @@ class SitemapState {
   /// [sitemapId] The unique id of the sitemap.
   /// [uri] Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
   SitemapState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataStoreId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? sitemapId,
-    pulumi.Output<String>? uri,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataStoreId = pulumi.Input.asOptionalInput<String>(dataStoreId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sitemapId = pulumi.Input.asOptionalInput<String>(sitemapId),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.createTime,
+    this.dataStoreId,
+    this.location,
+    this.name,
+    this.project,
+    this.sitemapId,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class SitemapState {
 
   factory SitemapState.fromMap(Map<String, dynamic> map) {
     return SitemapState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataStoreId: map['dataStoreId'] == null ? null : pulumi.Output.create<String>(map['dataStoreId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sitemapId: map['sitemapId'] == null ? null : pulumi.Output.create<String>(map['sitemapId'] as String),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sitemapId: map['sitemapId'] == null ? null : (map['sitemapId'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

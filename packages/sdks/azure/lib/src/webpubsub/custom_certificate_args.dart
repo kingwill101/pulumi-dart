@@ -23,13 +23,10 @@ class CustomCertificateArgs {
   /// [name] The name of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   /// [webPubsubId] The Web PubSub ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   CustomCertificateArgs({
-    required pulumi.Output<String> customCertificateId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> webPubsubId,
-  }) :
-      customCertificateId = pulumi.Input.asInput<String>(customCertificateId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      webPubsubId = pulumi.Input.asInput<String>(webPubsubId);
+    required this.customCertificateId,
+    this.name,
+    required this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class CustomCertificateArgs {
 
   factory CustomCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CustomCertificateArgs(
-      customCertificateId: pulumi.Output.create<String>(map['customCertificateId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      webPubsubId: pulumi.Output.create<String>(map['webPubsubId'] as String),
+      customCertificateId: (map['customCertificateId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      webPubsubId: (map['webPubsubId'] as String).input(),
     );
   }
 }

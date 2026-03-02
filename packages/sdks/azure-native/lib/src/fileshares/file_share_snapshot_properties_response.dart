@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// FileShareSnapshot properties
 class FileShareSnapshotPropertiesResponse {
   /// The initiator of the FileShareSnapshot. This is a user-defined value.
-  final String initiatorId;
+  final pulumi.Input<String> initiatorId;
   /// The metadata
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
   /// The FileShareSnapshot time in UTC in string representation
-  final String snapshotTime;
+  final pulumi.Input<String> snapshotTime;
 
   /// Creates a new [FileShareSnapshotPropertiesResponse].
   /// [initiatorId] The initiator of the FileShareSnapshot. This is a user-defined value.
@@ -30,9 +31,9 @@ class FileShareSnapshotPropertiesResponse {
 
   factory FileShareSnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FileShareSnapshotPropertiesResponse(
-      initiatorId: map['initiatorId'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      snapshotTime: map['snapshotTime'] as String,
+      initiatorId: (map['initiatorId'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      snapshotTime: (map['snapshotTime'] as String).input(),
     );
   }
 }

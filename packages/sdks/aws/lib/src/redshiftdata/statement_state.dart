@@ -39,27 +39,17 @@ class StatementState {
   /// [withEvent] A value that indicates whether to send an event to the Amazon EventBridge event bus after the SQL statement runs.
   /// [workgroupName] The serverless workgroup name. This parameter is required when connecting to a serverless workgroup and authenticating using either Secrets Manager or temporary credentials.
   StatementState({
-    pulumi.Output<String>? clusterIdentifier,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? dbUser,
-    pulumi.Output<List<StatementParameter>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretArn,
-    pulumi.Output<String>? sql,
-    pulumi.Output<String>? statementName,
-    pulumi.Output<bool>? withEvent,
-    pulumi.Output<String>? workgroupName,
-  }) :
-      clusterIdentifier = pulumi.Input.asOptionalInput<String>(clusterIdentifier),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      dbUser = pulumi.Input.asOptionalInput<String>(dbUser),
-      parameters = pulumi.Input.asOptionalInput<List<StatementParameter>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretArn = pulumi.Input.asOptionalInput<String>(secretArn),
-      sql = pulumi.Input.asOptionalInput<String>(sql),
-      statementName = pulumi.Input.asOptionalInput<String>(statementName),
-      withEvent = pulumi.Input.asOptionalInput<bool>(withEvent),
-      workgroupName = pulumi.Input.asOptionalInput<String>(workgroupName);
+    this.clusterIdentifier,
+    this.database,
+    this.dbUser,
+    this.parameters,
+    this.region,
+    this.secretArn,
+    this.sql,
+    this.statementName,
+    this.withEvent,
+    this.workgroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class StatementState {
 
   factory StatementState.fromMap(Map<String, dynamic> map) {
     return StatementState(
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      dbUser: map['dbUser'] == null ? null : pulumi.Output.create<String>(map['dbUser'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<StatementParameter>>(pulumi.Input.decodeList<StatementParameter>(map['parameters'], (value) => StatementParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretArn: map['secretArn'] == null ? null : pulumi.Output.create<String>(map['secretArn'] as String),
-      sql: map['sql'] == null ? null : pulumi.Output.create<String>(map['sql'] as String),
-      statementName: map['statementName'] == null ? null : pulumi.Output.create<String>(map['statementName'] as String),
-      withEvent: map['withEvent'] == null ? null : pulumi.Output.create<bool>(map['withEvent'] as bool),
-      workgroupName: map['workgroupName'] == null ? null : pulumi.Output.create<String>(map['workgroupName'] as String),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      dbUser: map['dbUser'] == null ? null : (map['dbUser'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<StatementParameter>(map['parameters'], (value) => StatementParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      sql: map['sql'] == null ? null : (map['sql'] as String).input(),
+      statementName: map['statementName'] == null ? null : (map['statementName'] as String).input(),
+      withEvent: map['withEvent'] == null ? null : (map['withEvent'] as bool).input(),
+      workgroupName: map['workgroupName'] == null ? null : (map['workgroupName'] as String).input(),
     );
   }
 }

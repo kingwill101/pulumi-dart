@@ -27,19 +27,13 @@ class AppEngineVersionIamPolicyState {
   /// [service] Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
   /// [versionId] Used to find the parent resource to bind the IAM policy to
   AppEngineVersionIamPolicyState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? service,
-    pulumi.Output<String>? versionId,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asOptionalInput<String>(service),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    this.appId,
+    this.etag,
+    this.policyData,
+    this.project,
+    this.service,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class AppEngineVersionIamPolicyState {
 
   factory AppEngineVersionIamPolicyState.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionIamPolicyState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

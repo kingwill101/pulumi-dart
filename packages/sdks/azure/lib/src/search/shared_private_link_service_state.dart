@@ -27,19 +27,13 @@ class SharedPrivateLinkServiceState {
   /// [subresourceName] Specify the sub resource name which the Azure Search Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] Specify the ID of the Shared Private Link Enabled Remote Resource which this Azure Search Private Endpoint should be connected to. Changing this forces a new resource to be created.
   SharedPrivateLinkServiceState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? requestMessage,
-    pulumi.Output<String>? searchServiceId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? subresourceName,
-    pulumi.Output<String>? targetResourceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      searchServiceId = pulumi.Input.asOptionalInput<String>(searchServiceId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subresourceName = pulumi.Input.asOptionalInput<String>(subresourceName),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId);
+    this.name,
+    this.requestMessage,
+    this.searchServiceId,
+    this.status,
+    this.subresourceName,
+    this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class SharedPrivateLinkServiceState {
 
   factory SharedPrivateLinkServiceState.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkServiceState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      searchServiceId: map['searchServiceId'] == null ? null : pulumi.Output.create<String>(map['searchServiceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subresourceName: map['subresourceName'] == null ? null : pulumi.Output.create<String>(map['subresourceName'] as String),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      searchServiceId: map['searchServiceId'] == null ? null : (map['searchServiceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
     );
   }
 }

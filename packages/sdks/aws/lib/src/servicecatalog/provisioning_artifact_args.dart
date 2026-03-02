@@ -45,29 +45,18 @@ class ProvisioningArtifactArgs {
   /// [templateUrl] Template source as URL of the CloudFormation template in Amazon S3.
   /// [type] Type of provisioning artifact. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_ProvisioningArtifactProperties.html) for valid list of values.
   ProvisioningArtifactArgs({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableTemplateValidation,
-    pulumi.Output<String>? guidance,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? templatePhysicalId,
-    pulumi.Output<String>? templateUrl,
-    pulumi.Output<String>? type,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableTemplateValidation = pulumi.Input.asOptionalInput<bool>(disableTemplateValidation),
-      guidance = pulumi.Input.asOptionalInput<String>(guidance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productId = pulumi.Input.asInput<String>(productId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      templatePhysicalId = pulumi.Input.asOptionalInput<String>(templatePhysicalId),
-      templateUrl = pulumi.Input.asOptionalInput<String>(templateUrl),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.acceptLanguage,
+    this.active,
+    this.description,
+    this.disableTemplateValidation,
+    this.guidance,
+    this.name,
+    required this.productId,
+    this.region,
+    this.templatePhysicalId,
+    this.templateUrl,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class ProvisioningArtifactArgs {
 
   factory ProvisioningArtifactArgs.fromMap(Map<String, dynamic> map) {
     return ProvisioningArtifactArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableTemplateValidation: map['disableTemplateValidation'] == null ? null : pulumi.Output.create<bool>(map['disableTemplateValidation'] as bool),
-      guidance: map['guidance'] == null ? null : pulumi.Output.create<String>(map['guidance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      templatePhysicalId: map['templatePhysicalId'] == null ? null : pulumi.Output.create<String>(map['templatePhysicalId'] as String),
-      templateUrl: map['templateUrl'] == null ? null : pulumi.Output.create<String>(map['templateUrl'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableTemplateValidation: map['disableTemplateValidation'] == null ? null : (map['disableTemplateValidation'] as bool).input(),
+      guidance: map['guidance'] == null ? null : (map['guidance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      templatePhysicalId: map['templatePhysicalId'] == null ? null : (map['templatePhysicalId'] as String).input(),
+      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

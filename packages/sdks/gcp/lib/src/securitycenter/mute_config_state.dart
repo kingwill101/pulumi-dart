@@ -56,27 +56,17 @@ class MuteConfigState {
   /// [type] The type of the mute config, which determines what type of mute state the config affects.
   /// [updateTime] Output only. The most recent time at which the mute config was
   MuteConfigState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expiryTime,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? mostRecentEditor,
-    pulumi.Output<String>? muteConfigId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expiryTime = pulumi.Input.asOptionalInput<String>(expiryTime),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      mostRecentEditor = pulumi.Input.asOptionalInput<String>(mostRecentEditor),
-      muteConfigId = pulumi.Input.asOptionalInput<String>(muteConfigId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.expiryTime,
+    this.filter,
+    this.mostRecentEditor,
+    this.muteConfigId,
+    this.name,
+    this.parent,
+    this.type,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,16 +85,16 @@ class MuteConfigState {
 
   factory MuteConfigState.fromMap(Map<String, dynamic> map) {
     return MuteConfigState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expiryTime: map['expiryTime'] == null ? null : pulumi.Output.create<String>(map['expiryTime'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      mostRecentEditor: map['mostRecentEditor'] == null ? null : pulumi.Output.create<String>(map['mostRecentEditor'] as String),
-      muteConfigId: map['muteConfigId'] == null ? null : pulumi.Output.create<String>(map['muteConfigId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      mostRecentEditor: map['mostRecentEditor'] == null ? null : (map['mostRecentEditor'] as String).input(),
+      muteConfigId: map['muteConfigId'] == null ? null : (map['muteConfigId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

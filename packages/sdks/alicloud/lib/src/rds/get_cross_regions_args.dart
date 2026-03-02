@@ -12,9 +12,8 @@ class GetCrossRegionsArgs {
   /// Creates a new [GetCrossRegionsArgs].
   /// [outputFile] Optional.
   GetCrossRegionsArgs({
-    pulumi.Output<String>? outputFile,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetCrossRegionsArgs {
 
   factory GetCrossRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionsArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

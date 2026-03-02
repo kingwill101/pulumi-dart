@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings {
   /// Maximum bitrate.
-  final int? maximumBitrate;
+  final pulumi.Input<int>? maximumBitrate;
   /// Minimum bitrate.
-  final int? minimumBitrate;
+  final pulumi.Input<int>? minimumBitrate;
   /// Priority value.
-  final int? priority;
+  final pulumi.Input<int>? priority;
 
   /// Creates a new [MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings].
   /// [maximumBitrate] Maximum bitrate.
@@ -29,9 +30,9 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings {
 
   factory MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings(
-      maximumBitrate: map['maximumBitrate'] == null ? null : map['maximumBitrate'] as int,
-      minimumBitrate: map['minimumBitrate'] == null ? null : map['minimumBitrate'] as int,
-      priority: map['priority'] == null ? null : map['priority'] as int,
+      maximumBitrate: map['maximumBitrate'] == null ? null : (map['maximumBitrate'] as int).input(),
+      minimumBitrate: map['minimumBitrate'] == null ? null : (map['minimumBitrate'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
     );
   }
 }

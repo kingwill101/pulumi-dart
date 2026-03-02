@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_os_nv_ram_source_reservations_source_dbus.dart';
 import 'domain_os_nv_ram_source_reservations_source_dev.dart';
 import 'domain_os_nv_ram_source_reservations_source_file.dart';
@@ -14,35 +15,35 @@ import 'domain_os_nv_ram_source_reservations_source_unix.dart';
 
 class DomainOsNvRamSourceReservationsSource {
   /// Configures the DBus source for the EGD backend.
-  final DomainOsNvRamSourceReservationsSourceDbus? dbus;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceDbus>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final DomainOsNvRamSourceReservationsSourceDev? dev;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceDev>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final DomainOsNvRamSourceReservationsSourceFile? file;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceFile>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final DomainOsNvRamSourceReservationsSourceNmdm? nmdm;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceNmdm>? nmdm;
   /// Configures settings for a null device used in reservations for storage.
-  final bool? null_;
+  final pulumi.Input<bool>? null_;
   /// Defines a pipe source for the EGD backend.
-  final DomainOsNvRamSourceReservationsSourcePipe? pipe;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourcePipe>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final DomainOsNvRamSourceReservationsSourcePty? pty;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourcePty>? pty;
   /// Configures the QEMU guest agent for the random number generator backend.
-  final DomainOsNvRamSourceReservationsSourceQemuvdAgent? qemuvdAgent;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceQemuvdAgent>? qemuvdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final DomainOsNvRamSourceReservationsSourceSpicePort? spicePort;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceSpicePort>? spicePort;
   /// Configures settings for the SPICE VMC used in reservations related to disk mirroring.
-  final bool? spiceVmc;
+  final pulumi.Input<bool>? spiceVmc;
   /// Manages standard I/O settings for the reservations in disk mirroring.
-  final bool? stdIo;
+  final pulumi.Input<bool>? stdIo;
   /// Configures TCP settings for the random number generator backend.
-  final DomainOsNvRamSourceReservationsSourceTcp? tcp;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceTcp>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final DomainOsNvRamSourceReservationsSourceUdp? udp;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceUdp>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final DomainOsNvRamSourceReservationsSourceUnix? unix;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSourceUnix>? unix;
   /// Configures settings for the VC source in the backing store for disk mirroring reservations.
-  final bool? vc;
+  final pulumi.Input<bool>? vc;
 
   /// Creates a new [DomainOsNvRamSourceReservationsSource].
   /// [dbus] Configures the DBus source for the EGD backend.
@@ -80,41 +81,41 @@ class DomainOsNvRamSourceReservationsSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbus': ?dbus == null ? null : dbus!.toMap(),
-      'dev': ?dev == null ? null : dev!.toMap(),
-      'file': ?file == null ? null : file!.toMap(),
-      'nmdm': ?nmdm == null ? null : nmdm!.toMap(),
+      'dbus': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceDbus, Map<String, dynamic>>(dbus, (value) => value.toMap()),
+      'dev': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceDev, Map<String, dynamic>>(dev, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'nmdm': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceNmdm, Map<String, dynamic>>(nmdm, (value) => value.toMap()),
       'null': ?null_,
-      'pipe': ?pipe == null ? null : pipe!.toMap(),
-      'pty': ?pty == null ? null : pty!.toMap(),
-      'qemuvdAgent': ?qemuvdAgent == null ? null : qemuvdAgent!.toMap(),
-      'spicePort': ?spicePort == null ? null : spicePort!.toMap(),
+      'pipe': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourcePipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
+      'pty': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourcePty, Map<String, dynamic>>(pty, (value) => value.toMap()),
+      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
-      'tcp': ?tcp == null ? null : tcp!.toMap(),
-      'udp': ?udp == null ? null : udp!.toMap(),
-      'unix': ?unix == null ? null : unix!.toMap(),
+      'tcp': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceTcp, Map<String, dynamic>>(tcp, (value) => value.toMap()),
+      'udp': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceUdp, Map<String, dynamic>>(udp, (value) => value.toMap()),
+      'unix': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSourceUnix, Map<String, dynamic>>(unix, (value) => value.toMap()),
       'vc': ?vc,
     };
   }
 
   factory DomainOsNvRamSourceReservationsSource.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceReservationsSource(
-      dbus: map['dbus'] == null ? null : DomainOsNvRamSourceReservationsSourceDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>()),
-      dev: map['dev'] == null ? null : DomainOsNvRamSourceReservationsSourceDev.fromMap((map['dev'] as Map).cast<String, dynamic>()),
-      file: map['file'] == null ? null : DomainOsNvRamSourceReservationsSourceFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      nmdm: map['nmdm'] == null ? null : DomainOsNvRamSourceReservationsSourceNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>()),
-      null_: map['null'] == null ? null : map['null'] as bool,
-      pipe: map['pipe'] == null ? null : DomainOsNvRamSourceReservationsSourcePipe.fromMap((map['pipe'] as Map).cast<String, dynamic>()),
-      pty: map['pty'] == null ? null : DomainOsNvRamSourceReservationsSourcePty.fromMap((map['pty'] as Map).cast<String, dynamic>()),
-      qemuvdAgent: map['qemuvdAgent'] == null ? null : DomainOsNvRamSourceReservationsSourceQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>()),
-      spicePort: map['spicePort'] == null ? null : DomainOsNvRamSourceReservationsSourceSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>()),
-      spiceVmc: map['spiceVmc'] == null ? null : map['spiceVmc'] as bool,
-      stdIo: map['stdIo'] == null ? null : map['stdIo'] as bool,
-      tcp: map['tcp'] == null ? null : DomainOsNvRamSourceReservationsSourceTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>()),
-      udp: map['udp'] == null ? null : DomainOsNvRamSourceReservationsSourceUdp.fromMap((map['udp'] as Map).cast<String, dynamic>()),
-      unix: map['unix'] == null ? null : DomainOsNvRamSourceReservationsSourceUnix.fromMap((map['unix'] as Map).cast<String, dynamic>()),
-      vc: map['vc'] == null ? null : map['vc'] as bool,
+      dbus: map['dbus'] == null ? null : (DomainOsNvRamSourceReservationsSourceDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>())).input(),
+      dev: map['dev'] == null ? null : (DomainOsNvRamSourceReservationsSourceDev.fromMap((map['dev'] as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainOsNvRamSourceReservationsSourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      nmdm: map['nmdm'] == null ? null : (DomainOsNvRamSourceReservationsSourceNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>())).input(),
+      null_: map['null'] == null ? null : (map['null'] as bool).input(),
+      pipe: map['pipe'] == null ? null : (DomainOsNvRamSourceReservationsSourcePipe.fromMap((map['pipe'] as Map).cast<String, dynamic>())).input(),
+      pty: map['pty'] == null ? null : (DomainOsNvRamSourceReservationsSourcePty.fromMap((map['pty'] as Map).cast<String, dynamic>())).input(),
+      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainOsNvRamSourceReservationsSourceQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>())).input(),
+      spicePort: map['spicePort'] == null ? null : (DomainOsNvRamSourceReservationsSourceSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>())).input(),
+      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc'] as bool).input(),
+      stdIo: map['stdIo'] == null ? null : (map['stdIo'] as bool).input(),
+      tcp: map['tcp'] == null ? null : (DomainOsNvRamSourceReservationsSourceTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (DomainOsNvRamSourceReservationsSourceUdp.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
+      unix: map['unix'] == null ? null : (DomainOsNvRamSourceReservationsSourceUnix.fromMap((map['unix'] as Map).cast<String, dynamic>())).input(),
+      vc: map['vc'] == null ? null : (map['vc'] as bool).input(),
     );
   }
 }

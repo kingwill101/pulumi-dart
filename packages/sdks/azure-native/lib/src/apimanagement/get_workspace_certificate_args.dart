@@ -22,15 +22,11 @@ class GetWorkspaceCertificateArgs {
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   GetWorkspaceCertificateArgs({
-    required pulumi.Output<String> certificateId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      certificateId = pulumi.Input.asInput<String>(certificateId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.certificateId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWorkspaceCertificateArgs {
 
   factory GetWorkspaceCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceCertificateArgs(
-      certificateId: pulumi.Output.create<String>(map['certificateId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      certificateId: (map['certificateId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

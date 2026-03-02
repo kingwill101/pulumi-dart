@@ -28,19 +28,13 @@ class RegistryImageArgs {
   /// [tag] The tag to use for the pushed image. If not provided, it defaults to `latest`.
   /// [triggers] A map of arbitrary strings that, when changed, will force the `docker.RegistryImage` resource to be replaced. This can be used to repush a local image
   RegistryImageArgs({
-    pulumi.Output<bool>? insecureSkipVerify,
-    pulumi.Output<bool>? keepRemotely,
-    required pulumi.Output<String> repositoryUrl,
-    required pulumi.Output<String> sourceImage,
-    pulumi.Output<String>? tag,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      insecureSkipVerify = pulumi.Input.asOptionalInput<bool>(insecureSkipVerify),
-      keepRemotely = pulumi.Input.asOptionalInput<bool>(keepRemotely),
-      repositoryUrl = pulumi.Input.asInput<String>(repositoryUrl),
-      sourceImage = pulumi.Input.asInput<String>(sourceImage),
-      tag = pulumi.Input.asOptionalInput<String>(tag),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    this.insecureSkipVerify,
+    this.keepRemotely,
+    required this.repositoryUrl,
+    required this.sourceImage,
+    this.tag,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RegistryImageArgs {
 
   factory RegistryImageArgs.fromMap(Map<String, dynamic> map) {
     return RegistryImageArgs(
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : pulumi.Output.create<bool>(map['insecureSkipVerify'] as bool),
-      keepRemotely: map['keepRemotely'] == null ? null : pulumi.Output.create<bool>(map['keepRemotely'] as bool),
-      repositoryUrl: pulumi.Output.create<String>(map['repositoryUrl'] as String),
-      sourceImage: pulumi.Output.create<String>(map['sourceImage'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
+      keepRemotely: map['keepRemotely'] == null ? null : (map['keepRemotely'] as bool).input(),
+      repositoryUrl: (map['repositoryUrl'] as String).input(),
+      sourceImage: (map['sourceImage'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

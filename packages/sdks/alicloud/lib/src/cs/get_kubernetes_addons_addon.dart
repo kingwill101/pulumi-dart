@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesAddonsAddon {
   /// The current custom configuration of the addon. **Note:** Available in v1.166.0+
-  final String currentConfig;
+  final pulumi.Input<String> currentConfig;
   /// The current version of addon, if this field is an empty string, it means that the addon is not installed.
-  final String currentVersion;
+  final pulumi.Input<String> currentVersion;
   /// The name of addon.
-  final String name;
+  final pulumi.Input<String> name;
   /// The next version of this addon can be upgraded to.
-  final String nextVersion;
+  final pulumi.Input<String> nextVersion;
   /// Whether the addon is a system addon.
-  final bool required;
+  final pulumi.Input<bool> required;
 
   /// Creates a new [GetKubernetesAddonsAddon].
   /// [currentConfig] The current custom configuration of the addon. **Note:** Available in v1.166.0+
@@ -39,11 +40,11 @@ class GetKubernetesAddonsAddon {
 
   factory GetKubernetesAddonsAddon.fromMap(Map<String, dynamic> map) {
     return GetKubernetesAddonsAddon(
-      currentConfig: map['currentConfig'] as String,
-      currentVersion: map['currentVersion'] as String,
-      name: map['name'] as String,
-      nextVersion: map['nextVersion'] as String,
-      required: map['required'] as bool,
+      currentConfig: (map['currentConfig'] as String).input(),
+      currentVersion: (map['currentVersion'] as String).input(),
+      name: (map['name'] as String).input(),
+      nextVersion: (map['nextVersion'] as String).input(),
+      required: (map['required'] as bool).input(),
     );
   }
 }

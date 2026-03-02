@@ -26,19 +26,13 @@ class AliasState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingConfigurations] The StateMachine alias' route configuration settings. Fields documented below
   AliasState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? creationDate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<AliasRoutingConfiguration>>? routingConfigurations,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      creationDate = pulumi.Input.asOptionalInput<String>(creationDate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingConfigurations = pulumi.Input.asOptionalInput<List<AliasRoutingConfiguration>>(routingConfigurations);
+    this.arn,
+    this.creationDate,
+    this.description,
+    this.name,
+    this.region,
+    this.routingConfigurations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      creationDate: map['creationDate'] == null ? null : pulumi.Output.create<String>(map['creationDate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingConfigurations: map['routingConfigurations'] == null ? null : pulumi.Output.create<List<AliasRoutingConfiguration>>(pulumi.Input.decodeList<AliasRoutingConfiguration>(map['routingConfigurations'], (value) => AliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingConfigurations: map['routingConfigurations'] == null ? null : (pulumi.Input.decodeList<AliasRoutingConfiguration>(map['routingConfigurations'], (value) => AliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

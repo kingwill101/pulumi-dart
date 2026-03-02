@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupLaunchTemplate {
   /// ID of the launch template.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specify the exact name of the desired autoscaling group.
-  final String name;
+  final pulumi.Input<String> name;
   /// Template version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetGroupLaunchTemplate].
   /// [id] ID of the launch template.
@@ -29,9 +30,9 @@ class GetGroupLaunchTemplate {
 
   factory GetGroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return GetGroupLaunchTemplate(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      version: map['version'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

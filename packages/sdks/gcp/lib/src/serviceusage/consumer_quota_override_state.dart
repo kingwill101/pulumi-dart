@@ -35,23 +35,15 @@ class ConsumerQuotaOverrideState {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service that the metrics belong to, e.g. `compute.googleapis.com`.
   ConsumerQuotaOverrideState({
-    pulumi.Output<Map<String, String>>? dimensions,
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? limit,
-    pulumi.Output<String>? metric,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? overrideValue,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? service,
-  }) :
-      dimensions = pulumi.Input.asOptionalInput<Map<String, String>>(dimensions),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      limit = pulumi.Input.asOptionalInput<String>(limit),
-      metric = pulumi.Input.asOptionalInput<String>(metric),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      overrideValue = pulumi.Input.asOptionalInput<String>(overrideValue),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.dimensions,
+    this.force,
+    this.limit,
+    this.metric,
+    this.name,
+    this.overrideValue,
+    this.project,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ConsumerQuotaOverrideState {
 
   factory ConsumerQuotaOverrideState.fromMap(Map<String, dynamic> map) {
     return ConsumerQuotaOverrideState(
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['dimensions'] as Map).cast<String, String>()),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      limit: map['limit'] == null ? null : pulumi.Output.create<String>(map['limit'] as String),
-      metric: map['metric'] == null ? null : pulumi.Output.create<String>(map['metric'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      overrideValue: map['overrideValue'] == null ? null : pulumi.Output.create<String>(map['overrideValue'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      limit: map['limit'] == null ? null : (map['limit'] as String).input(),
+      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      overrideValue: map['overrideValue'] == null ? null : (map['overrideValue'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

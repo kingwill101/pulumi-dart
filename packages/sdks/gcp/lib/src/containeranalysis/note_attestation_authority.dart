@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'note_attestation_authority_hint.dart';
 
 class NoteAttestationAuthority {
@@ -12,7 +13,7 @@ class NoteAttestationAuthority {
   /// in security sensitive contexts, such as when looking up
   /// Attestations to verify.
   /// Structure is documented below.
-  final NoteAttestationAuthorityHint hint;
+  final pulumi.Input<NoteAttestationAuthorityHint> hint;
 
   /// Creates a new [NoteAttestationAuthority].
   /// [hint] This submessage provides human-readable hints about the purpose of
@@ -22,13 +23,13 @@ class NoteAttestationAuthority {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint': hint.toMap(),
+      'hint': pulumi.Input.mapInputValue<NoteAttestationAuthorityHint, Map<String, dynamic>>(hint, (value) => value.toMap()),
     };
   }
 
   factory NoteAttestationAuthority.fromMap(Map<String, dynamic> map) {
     return NoteAttestationAuthority(
-      hint: NoteAttestationAuthorityHint.fromMap((map['hint'] as Map).cast<String, dynamic>()),
+      hint: (NoteAttestationAuthorityHint.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

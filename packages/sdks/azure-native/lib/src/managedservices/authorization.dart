@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Active Directory principal identifier and Azure built-in role that describes the access the principal will receive on the delegated resource in the managed tenant.
 class Authorization {
   /// The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.
-  final List<String>? delegatedRoleDefinitionIds;
+  final pulumi.Input<List<String>>? delegatedRoleDefinitionIds;
   /// The identifier of the Azure Active Directory principal.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The display name of the Azure Active Directory principal.
-  final String? principalIdDisplayName;
+  final pulumi.Input<String>? principalIdDisplayName;
   /// The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
-  final String roleDefinitionId;
+  final pulumi.Input<String> roleDefinitionId;
 
   /// Creates a new [Authorization].
   /// [delegatedRoleDefinitionIds] The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.
@@ -35,10 +36,10 @@ class Authorization {
 
   factory Authorization.fromMap(Map<String, dynamic> map) {
     return Authorization(
-      delegatedRoleDefinitionIds: map['delegatedRoleDefinitionIds'] == null ? null : (map['delegatedRoleDefinitionIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : map['principalIdDisplayName'] as String,
-      roleDefinitionId: map['roleDefinitionId'] as String,
+      delegatedRoleDefinitionIds: map['delegatedRoleDefinitionIds'] == null ? null : ((map['delegatedRoleDefinitionIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

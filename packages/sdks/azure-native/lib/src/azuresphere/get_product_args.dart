@@ -19,13 +19,10 @@ class GetProductArgs {
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetProductArgs({
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> productName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      productName = pulumi.Input.asInput<String>(productName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.catalogName,
+    required this.productName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetProductArgs {
 
   factory GetProductArgs.fromMap(Map<String, dynamic> map) {
     return GetProductArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      productName: pulumi.Output.create<String>(map['productName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      productName: (map['productName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

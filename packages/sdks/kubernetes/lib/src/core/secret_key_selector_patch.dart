@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SecretKeySelector selects a key of a Secret.
 class SecretKeySelectorPatch {
   /// The key of the secret to select from.  Must be a valid secret key.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Specify whether the Secret or its key must be defined
-  final bool? optional;
+  final pulumi.Input<bool>? optional;
 
   /// Creates a new [SecretKeySelectorPatch].
   /// [key] The key of the secret to select from.  Must be a valid secret key.
@@ -30,9 +31,9 @@ class SecretKeySelectorPatch {
 
   factory SecretKeySelectorPatch.fromMap(Map<String, dynamic> map) {
     return SecretKeySelectorPatch(
-      key: map['key'] == null ? null : map['key'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      optional: map['optional'] == null ? null : map['optional'] as bool,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
     );
   }
 }

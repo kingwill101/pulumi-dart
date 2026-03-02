@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A service account that acts as an identity.
 class ServiceAccount {
   /// Optional. Email address of the service account.
-  final String? email;
+  final pulumi.Input<String>? email;
 
   /// Creates a new [ServiceAccount].
   /// [email] Optional. Email address of the service account.
@@ -20,7 +21,7 @@ class ServiceAccount {
 
   factory ServiceAccount.fromMap(Map<String, dynamic> map) {
     return ServiceAccount(
-      email: map['email'] == null ? null : map['email'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
     );
   }
 }

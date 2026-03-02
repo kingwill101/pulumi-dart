@@ -47,33 +47,20 @@ class ArtifactArgs {
   /// [state] The state of this Artifact. This is a property of the Artifact, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines), and the system does not prescribe or check the validity of state transitions.
   /// [uri] The uniform resource identifier of the artifact file. May be empty if there is no actual artifact file.
   ArtifactArgs({
-    pulumi.Output<String>? artifactId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> metadataStoreId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? schemaTitle,
-    pulumi.Output<String>? schemaVersion,
-    pulumi.Output<ArtifactState>? state,
-    pulumi.Output<String>? uri,
-  }) :
-      artifactId = pulumi.Input.asOptionalInput<String>(artifactId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaTitle = pulumi.Input.asOptionalInput<String>(schemaTitle),
-      schemaVersion = pulumi.Input.asOptionalInput<String>(schemaVersion),
-      state = pulumi.Input.asOptionalInput<ArtifactState>(state),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.artifactId,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.location,
+    this.metadata,
+    required this.metadataStoreId,
+    this.project,
+    this.schemaTitle,
+    this.schemaVersion,
+    this.state,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class ArtifactArgs {
 
   factory ArtifactArgs.fromMap(Map<String, dynamic> map) {
     return ArtifactArgs(
-      artifactId: map['artifactId'] == null ? null : pulumi.Output.create<String>(map['artifactId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      metadataStoreId: pulumi.Output.create<String>(map['metadataStoreId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaTitle: map['schemaTitle'] == null ? null : pulumi.Output.create<String>(map['schemaTitle'] as String),
-      schemaVersion: map['schemaVersion'] == null ? null : pulumi.Output.create<String>(map['schemaVersion'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<ArtifactState>(ArtifactState.fromValue(map['state'] as String)),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      artifactId: map['artifactId'] == null ? null : (map['artifactId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadataStoreId: (map['metadataStoreId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaTitle: map['schemaTitle'] == null ? null : (map['schemaTitle'] as String).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
+      state: map['state'] == null ? null : (ArtifactState.fromValue(map['state'] as String)).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class PolicyArgs {
   /// [policyType] The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
   /// [rules] A list of policy rules See `rules` below.
   PolicyArgs({
-    pulumi.Output<String>? policyDescription,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<List<PolicyRule>>? rules,
-  }) :
-      policyDescription = pulumi.Input.asOptionalInput<String>(policyDescription),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      rules = pulumi.Input.asOptionalInput<List<PolicyRule>>(rules);
+    this.policyDescription,
+    this.policyName,
+    this.policyType,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      policyDescription: map['policyDescription'] == null ? null : pulumi.Output.create<String>(map['policyDescription'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<PolicyRule>>(pulumi.Input.decodeList<PolicyRule>(map['rules'], (value) => PolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
+      policyDescription: map['policyDescription'] == null ? null : (map['policyDescription'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRule>(map['rules'], (value) => PolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

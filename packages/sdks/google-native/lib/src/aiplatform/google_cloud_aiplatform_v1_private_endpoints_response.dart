@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PrivateEndpoints proto is used to provide paths for users to send requests privately. To send request via private service access, use predict_http_uri, explain_http_uri or health_http_uri. To send request via private service connect, use service_attachment.
 class GoogleCloudAiplatformV1PrivateEndpointsResponse {
   /// Http(s) path to send explain requests.
-  final String explainHttpUri;
+  final pulumi.Input<String> explainHttpUri;
   /// Http(s) path to send health check requests.
-  final String healthHttpUri;
+  final pulumi.Input<String> healthHttpUri;
   /// Http(s) path to send prediction requests.
-  final String predictHttpUri;
+  final pulumi.Input<String> predictHttpUri;
   /// The name of the service attachment resource. Populated if private service connect is enabled.
-  final String serviceAttachment;
+  final pulumi.Input<String> serviceAttachment;
 
   /// Creates a new [GoogleCloudAiplatformV1PrivateEndpointsResponse].
   /// [explainHttpUri] Http(s) path to send explain requests.
@@ -35,10 +36,10 @@ class GoogleCloudAiplatformV1PrivateEndpointsResponse {
 
   factory GoogleCloudAiplatformV1PrivateEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1PrivateEndpointsResponse(
-      explainHttpUri: map['explainHttpUri'] as String,
-      healthHttpUri: map['healthHttpUri'] as String,
-      predictHttpUri: map['predictHttpUri'] as String,
-      serviceAttachment: map['serviceAttachment'] as String,
+      explainHttpUri: (map['explainHttpUri'] as String).input(),
+      healthHttpUri: (map['healthHttpUri'] as String).input(),
+      predictHttpUri: (map['predictHttpUri'] as String).input(),
+      serviceAttachment: (map['serviceAttachment'] as String).input(),
     );
   }
 }

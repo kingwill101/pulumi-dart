@@ -6,13 +6,13 @@ import 'network_interface_ipconfiguration_response.dart';
 /// Network interface properties.
 class NetworkInterfaceResponse {
   /// A list of IP configurations of the network interface.
-  final List<NetworkInterfaceIPConfigurationResponse>? ipConfigurations;
+  final pulumi.Input<List<NetworkInterfaceIPConfigurationResponse>>? ipConfigurations;
   /// The MAC address of the network interface.
-  final String? macAddress;
+  final pulumi.Input<String>? macAddress;
   /// The name of the network interface.
-  final String? networkInterfaceName;
+  final pulumi.Input<String>? networkInterfaceName;
   /// The type of the VM switch.
-  final String? vmSwitchType;
+  final pulumi.Input<String>? vmSwitchType;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [ipConfigurations] A list of IP configurations of the network interface.
@@ -28,7 +28,7 @@ class NetworkInterfaceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
+      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceIPConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'macAddress': ?macAddress,
       'networkInterfaceName': ?networkInterfaceName,
       'vmSwitchType': ?vmSwitchType,
@@ -37,10 +37,10 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(map['ipConfigurations'], (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      macAddress: map['macAddress'] == null ? null : map['macAddress'] as String,
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : map['networkInterfaceName'] as String,
-      vmSwitchType: map['vmSwitchType'] == null ? null : map['vmSwitchType'] as String,
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(map['ipConfigurations'], (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
+      vmSwitchType: map['vmSwitchType'] == null ? null : (map['vmSwitchType'] as String).input(),
     );
   }
 }

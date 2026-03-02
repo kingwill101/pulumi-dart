@@ -19,13 +19,10 @@ class GetTrustedIdProviderArgs {
   /// [resourceGroupName] The name of the Azure resource group.
   /// [trustedIdProviderName] The name of the trusted identity provider to retrieve.
   GetTrustedIdProviderArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> trustedIdProviderName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      trustedIdProviderName = pulumi.Input.asInput<String>(trustedIdProviderName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.trustedIdProviderName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTrustedIdProviderArgs {
 
   factory GetTrustedIdProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetTrustedIdProviderArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      trustedIdProviderName: pulumi.Output.create<String>(map['trustedIdProviderName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      trustedIdProviderName: (map['trustedIdProviderName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HadoopClusterRolesEdgeNodeInstallScriptAction {
   /// The name of the install script action.
-  final String name;
+  final pulumi.Input<String> name;
   /// The parameters for the script.
-  final String? parameters;
+  final pulumi.Input<String>? parameters;
   /// The URI pointing to the script to run during the installation of the edge node.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [HadoopClusterRolesEdgeNodeInstallScriptAction].
   /// [name] The name of the install script action.
@@ -29,9 +30,9 @@ class HadoopClusterRolesEdgeNodeInstallScriptAction {
 
   factory HadoopClusterRolesEdgeNodeInstallScriptAction.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesEdgeNodeInstallScriptAction(
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : map['parameters'] as String,
-      uri: map['uri'] as String,
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHanaBackupClientsHanaBackupClient {
   /// The alert settings.
-  final String alertSetting;
+  final pulumi.Input<String> alertSetting;
   /// The ID of the backup client.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The name of the backup client.
-  final String clientName;
+  final pulumi.Input<String> clientName;
   /// The type of the backup client.
-  final String clientType;
+  final pulumi.Input<String> clientType;
   /// The version number of the backup client.
-  final String clientVersion;
+  final pulumi.Input<String> clientVersion;
   /// The ID of the SAP HANA instance.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the ECS instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The maximum version number of the backup client.
-  final String maxVersion;
+  final pulumi.Input<String> maxVersion;
   /// The network type.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The status information.
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
   /// Indicates whether data is transmitted over HTTPS.
-  final bool useHttps;
+  final pulumi.Input<bool> useHttps;
   /// The ID of the backup vault.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
 
   /// Creates a new [GetHanaBackupClientsHanaBackupClient].
   /// [alertSetting] The alert settings.
@@ -89,21 +90,21 @@ class GetHanaBackupClientsHanaBackupClient {
 
   factory GetHanaBackupClientsHanaBackupClient.fromMap(Map<String, dynamic> map) {
     return GetHanaBackupClientsHanaBackupClient(
-      alertSetting: map['alertSetting'] as String,
-      clientId: map['clientId'] as String,
-      clientName: map['clientName'] as String,
-      clientType: map['clientType'] as String,
-      clientVersion: map['clientVersion'] as String,
-      clusterId: map['clusterId'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      maxVersion: map['maxVersion'] as String,
-      networkType: map['networkType'] as String,
-      status: map['status'] as String,
-      statusMessage: map['statusMessage'] as String,
-      useHttps: map['useHttps'] as bool,
-      vaultId: map['vaultId'] as String,
+      alertSetting: (map['alertSetting'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientName: (map['clientName'] as String).input(),
+      clientType: (map['clientType'] as String).input(),
+      clientVersion: (map['clientVersion'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      maxVersion: (map['maxVersion'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
+      useHttps: (map['useHttps'] as bool).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

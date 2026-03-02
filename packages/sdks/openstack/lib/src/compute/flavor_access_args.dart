@@ -22,13 +22,10 @@ class FlavorAccessArgs {
   /// [region] The region in which to obtain the V2 Compute client.
   /// [tenantId] The UUID of tenant which is allowed to use the flavor.
   FlavorAccessArgs({
-    required pulumi.Output<String> flavorId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tenantId,
-  }) :
-      flavorId = pulumi.Input.asInput<String>(flavorId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.flavorId,
+    this.region,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class FlavorAccessArgs {
 
   factory FlavorAccessArgs.fromMap(Map<String, dynamic> map) {
     return FlavorAccessArgs(
-      flavorId: pulumi.Output.create<String>(map['flavorId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      flavorId: (map['flavorId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

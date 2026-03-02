@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionCacheBehaviorTrustedKeyGroups {
   /// Whether the distribution is enabled to accept end user requests for content.
-  final bool? enabled;
-  final List<String>? items;
+  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<List<String>>? items;
 
   /// Creates a new [MultitenantDistributionCacheBehaviorTrustedKeyGroups].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
@@ -23,8 +24,8 @@ class MultitenantDistributionCacheBehaviorTrustedKeyGroups {
 
   factory MultitenantDistributionCacheBehaviorTrustedKeyGroups.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionCacheBehaviorTrustedKeyGroups(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'urlmap_path_matcher_route_rule_route_action_fault_injection_policy_delay_fixed_delay.dart';
 
 class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
   /// Specifies the value of the fixed delay interval.
   /// Structure is documented below.
-  final URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay? fixedDelay;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay>? fixedDelay;
   /// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
   /// The value must be between 0.0 and 100.0 inclusive.
-  final double? percentage;
+  final pulumi.Input<double>? percentage;
 
   /// Creates a new [URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay].
   /// [fixedDelay] Specifies the value of the fixed delay interval.
@@ -20,15 +21,15 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedDelay': ?fixedDelay == null ? null : fixedDelay!.toMap(),
+      'fixedDelay': ?pulumi.Input.mapOptionalInputValue<URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay, Map<String, dynamic>>(fixedDelay, (value) => value.toMap()),
       'percentage': ?percentage,
     };
   }
 
   factory URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(
-      fixedDelay: map['fixedDelay'] == null ? null : URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>()),
-      percentage: map['percentage'] == null ? null : map['percentage'] as double,
+      fixedDelay: map['fixedDelay'] == null ? null : (URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>())).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database connection string value to type pair.
 class ConnStringValueTypePairResponse {
   /// Type of database.
-  final String type;
+  final pulumi.Input<String> type;
   /// Value of pair.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ConnStringValueTypePairResponse].
   /// [type] Type of database.
@@ -25,8 +26,8 @@ class ConnStringValueTypePairResponse {
 
   factory ConnStringValueTypePairResponse.fromMap(Map<String, dynamic> map) {
     return ConnStringValueTypePairResponse(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

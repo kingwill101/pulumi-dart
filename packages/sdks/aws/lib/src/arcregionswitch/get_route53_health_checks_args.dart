@@ -16,11 +16,9 @@ class GetRoute53HealthChecksArgs {
   /// [planArn] ARN of the ARC Region Switch Plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetRoute53HealthChecksArgs({
-    required pulumi.Output<String> planArn,
-    pulumi.Output<String>? region,
-  }) :
-      planArn = pulumi.Input.asInput<String>(planArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.planArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRoute53HealthChecksArgs {
 
   factory GetRoute53HealthChecksArgs.fromMap(Map<String, dynamic> map) {
     return GetRoute53HealthChecksArgs(
-      planArn: pulumi.Output.create<String>(map['planArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      planArn: (map['planArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

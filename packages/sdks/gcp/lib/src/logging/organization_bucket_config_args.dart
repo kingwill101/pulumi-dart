@@ -33,21 +33,14 @@ class OrganizationBucketConfigArgs {
   /// [organization] The parent resource that contains the logging bucket.
   /// [retentionDays] Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
   OrganizationBucketConfigArgs({
-    required pulumi.Output<String> bucketId,
-    pulumi.Output<OrganizationBucketConfigCmekSettings>? cmekSettings,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<OrganizationBucketConfigIndexConfig>>? indexConfigs,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organization,
-    pulumi.Output<int>? retentionDays,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      cmekSettings = pulumi.Input.asOptionalInput<OrganizationBucketConfigCmekSettings>(cmekSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexConfigs = pulumi.Input.asOptionalInput<List<OrganizationBucketConfigIndexConfig>>(indexConfigs),
-      location = pulumi.Input.asInput<String>(location),
-      organization = pulumi.Input.asInput<String>(organization),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
+    required this.bucketId,
+    this.cmekSettings,
+    this.description,
+    this.indexConfigs,
+    required this.location,
+    required this.organization,
+    this.retentionDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class OrganizationBucketConfigArgs {
 
   factory OrganizationBucketConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationBucketConfigArgs(
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      cmekSettings: map['cmekSettings'] == null ? null : pulumi.Output.create<OrganizationBucketConfigCmekSettings>(OrganizationBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexConfigs: map['indexConfigs'] == null ? null : pulumi.Output.create<List<OrganizationBucketConfigIndexConfig>>(pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(map['indexConfigs'], (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
+      bucketId: (map['bucketId'] as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (OrganizationBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(map['indexConfigs'], (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (map['location'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
     );
   }
 }

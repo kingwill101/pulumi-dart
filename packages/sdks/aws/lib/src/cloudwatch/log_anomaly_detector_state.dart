@@ -39,29 +39,18 @@ class LogAnomalyDetectorState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   LogAnomalyDetectorState({
-    pulumi.Output<int>? anomalyVisibilityTime,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? detectorName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? evaluationFrequency,
-    pulumi.Output<String>? filterPattern,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<List<String>>? logGroupArnLists,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      anomalyVisibilityTime = pulumi.Input.asOptionalInput<int>(anomalyVisibilityTime),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      detectorName = pulumi.Input.asOptionalInput<String>(detectorName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      evaluationFrequency = pulumi.Input.asOptionalInput<String>(evaluationFrequency),
-      filterPattern = pulumi.Input.asOptionalInput<String>(filterPattern),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      logGroupArnLists = pulumi.Input.asOptionalInput<List<String>>(logGroupArnLists),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.anomalyVisibilityTime,
+    this.arn,
+    this.detectorName,
+    this.enabled,
+    this.evaluationFrequency,
+    this.filterPattern,
+    this.kmsKeyId,
+    this.logGroupArnLists,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,17 +70,17 @@ class LogAnomalyDetectorState {
 
   factory LogAnomalyDetectorState.fromMap(Map<String, dynamic> map) {
     return LogAnomalyDetectorState(
-      anomalyVisibilityTime: map['anomalyVisibilityTime'] == null ? null : pulumi.Output.create<int>(map['anomalyVisibilityTime'] as int),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      detectorName: map['detectorName'] == null ? null : pulumi.Output.create<String>(map['detectorName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : pulumi.Output.create<String>(map['evaluationFrequency'] as String),
-      filterPattern: map['filterPattern'] == null ? null : pulumi.Output.create<String>(map['filterPattern'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      logGroupArnLists: map['logGroupArnLists'] == null ? null : pulumi.Output.create<List<String>>((map['logGroupArnLists'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      anomalyVisibilityTime: map['anomalyVisibilityTime'] == null ? null : (map['anomalyVisibilityTime'] as int).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      detectorName: map['detectorName'] == null ? null : (map['detectorName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency'] as String).input(),
+      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      logGroupArnLists: map['logGroupArnLists'] == null ? null : ((map['logGroupArnLists'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

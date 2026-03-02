@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the disallowed disk types.
 class DisallowedResponse {
   /// A list of disk types.
-  final List<String>? diskTypes;
+  final pulumi.Input<List<String>>? diskTypes;
 
   /// Creates a new [DisallowedResponse].
   /// [diskTypes] A list of disk types.
@@ -20,7 +21,7 @@ class DisallowedResponse {
 
   factory DisallowedResponse.fromMap(Map<String, dynamic> map) {
     return DisallowedResponse(
-      diskTypes: map['diskTypes'] == null ? null : (map['diskTypes'] as List).cast<String>(),
+      diskTypes: map['diskTypes'] == null ? null : ((map['diskTypes'] as List).cast<String>()).input(),
     );
   }
 }

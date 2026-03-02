@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayTrustedClientCertificate {
   /// The base-64 encoded certificate.
-  final String data;
+  final pulumi.Input<String> data;
   /// The ID of the Rewrite Rule Set
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the Trusted Client Certificate that is unique within this Application Gateway.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ApplicationGatewayTrustedClientCertificate].
   /// [data] The base-64 encoded certificate.
@@ -29,9 +30,9 @@ class ApplicationGatewayTrustedClientCertificate {
 
   factory ApplicationGatewayTrustedClientCertificate.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayTrustedClientCertificate(
-      data: map['data'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
+      data: (map['data'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

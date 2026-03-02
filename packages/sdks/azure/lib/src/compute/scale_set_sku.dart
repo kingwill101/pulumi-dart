@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetSku {
   /// Specifies the number of virtual machines in the scale set.
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// Specifies the size of virtual machines in a scale set.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the tier of virtual machines in a scale set. Possible values, `standard` or `basic`.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [ScaleSetSku].
   /// [capacity] Specifies the number of virtual machines in the scale set.
@@ -29,9 +30,9 @@ class ScaleSetSku {
 
   factory ScaleSetSku.fromMap(Map<String, dynamic> map) {
     return ScaleSetSku(
-      capacity: map['capacity'] as int,
-      name: map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

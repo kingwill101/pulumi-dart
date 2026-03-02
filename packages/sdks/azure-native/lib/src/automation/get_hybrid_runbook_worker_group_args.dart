@@ -19,13 +19,10 @@ class GetHybridRunbookWorkerGroupArgs {
   /// [hybridRunbookWorkerGroupName] The hybrid runbook worker group name
   /// [resourceGroupName] Name of an Azure Resource group.
   GetHybridRunbookWorkerGroupArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> hybridRunbookWorkerGroupName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      hybridRunbookWorkerGroupName = pulumi.Input.asInput<String>(hybridRunbookWorkerGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.hybridRunbookWorkerGroupName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHybridRunbookWorkerGroupArgs {
 
   factory GetHybridRunbookWorkerGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridRunbookWorkerGroupArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      hybridRunbookWorkerGroupName: pulumi.Output.create<String>(map['hybridRunbookWorkerGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      hybridRunbookWorkerGroupName: (map['hybridRunbookWorkerGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

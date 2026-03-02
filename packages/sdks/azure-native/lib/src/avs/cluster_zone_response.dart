@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Zone and associated hosts info
 class ClusterZoneResponse {
   /// List of hosts belonging to the availability zone in a cluster
-  final List<String> hosts;
+  final pulumi.Input<List<String>> hosts;
   /// Availability zone identifier
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [ClusterZoneResponse].
   /// [hosts] List of hosts belonging to the availability zone in a cluster
@@ -25,8 +26,8 @@ class ClusterZoneResponse {
 
   factory ClusterZoneResponse.fromMap(Map<String, dynamic> map) {
     return ClusterZoneResponse(
-      hosts: (map['hosts'] as List).cast<String>(),
-      zone: map['zone'] as String,
+      hosts: ((map['hosts'] as List).cast<String>()).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

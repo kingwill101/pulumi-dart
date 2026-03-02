@@ -45,29 +45,18 @@ class DomainArgs {
   /// [tags] Optional.
   /// [timeouts] Optional.
   DomainArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainExecutionRole,
-    pulumi.Output<String>? domainVersion,
-    pulumi.Output<String>? kmsKeyIdentifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceRole,
-    pulumi.Output<DomainSingleSignOn>? singleSignOn,
-    pulumi.Output<bool>? skipDeletionCheck,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<DomainTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainExecutionRole = pulumi.Input.asInput<String>(domainExecutionRole),
-      domainVersion = pulumi.Input.asOptionalInput<String>(domainVersion),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceRole = pulumi.Input.asOptionalInput<String>(serviceRole),
-      singleSignOn = pulumi.Input.asOptionalInput<DomainSingleSignOn>(singleSignOn),
-      skipDeletionCheck = pulumi.Input.asOptionalInput<bool>(skipDeletionCheck),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<DomainTimeouts>(timeouts);
+    this.description,
+    required this.domainExecutionRole,
+    this.domainVersion,
+    this.kmsKeyIdentifier,
+    this.name,
+    this.region,
+    this.serviceRole,
+    this.singleSignOn,
+    this.skipDeletionCheck,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainExecutionRole: pulumi.Output.create<String>(map['domainExecutionRole'] as String),
-      domainVersion: map['domainVersion'] == null ? null : pulumi.Output.create<String>(map['domainVersion'] as String),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceRole: map['serviceRole'] == null ? null : pulumi.Output.create<String>(map['serviceRole'] as String),
-      singleSignOn: map['singleSignOn'] == null ? null : pulumi.Output.create<DomainSingleSignOn>(DomainSingleSignOn.fromMap((map['singleSignOn'] as Map).cast<String, dynamic>())),
-      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : pulumi.Output.create<bool>(map['skipDeletionCheck'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DomainTimeouts>(DomainTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainExecutionRole: (map['domainExecutionRole'] as String).input(),
+      domainVersion: map['domainVersion'] == null ? null : (map['domainVersion'] as String).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
+      singleSignOn: map['singleSignOn'] == null ? null : (DomainSingleSignOn.fromMap((map['singleSignOn'] as Map).cast<String, dynamic>())).input(),
+      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : (map['skipDeletionCheck'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (DomainTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

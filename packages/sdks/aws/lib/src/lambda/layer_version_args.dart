@@ -48,31 +48,19 @@ class LayerVersionArgs {
   /// [skipDestroy] Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_architectures`, `compatible_runtimes`, `description`, `filename`, `layer_name`, `license_info`, `s3_bucket`, `s3_key`, `s3_object_version`, or `source_code_hash` forces deletion of the existing layer version and creation of a new layer version.
   /// [sourceCodeHash] Virtual attribute used to trigger replacement when source code changes. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3_key`. The usual way to set this is `filebase64sha256("file.zip")` or `base64sha256(file("file.zip"))`, where "file.zip" is the local filename of the lambda layer source archive.
   LayerVersionArgs({
-    pulumi.Output<dynamic>? code,
-    pulumi.Output<List<String>>? compatibleArchitectures,
-    pulumi.Output<List<String>>? compatibleRuntimes,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> layerName,
-    pulumi.Output<String>? licenseInfo,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? s3Bucket,
-    pulumi.Output<String>? s3Key,
-    pulumi.Output<String>? s3ObjectVersion,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<String>? sourceCodeHash,
-  }) :
-      code = pulumi.Input.asOptionalInput<dynamic>(code),
-      compatibleArchitectures = pulumi.Input.asOptionalInput<List<String>>(compatibleArchitectures),
-      compatibleRuntimes = pulumi.Input.asOptionalInput<List<String>>(compatibleRuntimes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      layerName = pulumi.Input.asInput<String>(layerName),
-      licenseInfo = pulumi.Input.asOptionalInput<String>(licenseInfo),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3Bucket = pulumi.Input.asOptionalInput<String>(s3Bucket),
-      s3Key = pulumi.Input.asOptionalInput<String>(s3Key),
-      s3ObjectVersion = pulumi.Input.asOptionalInput<String>(s3ObjectVersion),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      sourceCodeHash = pulumi.Input.asOptionalInput<String>(sourceCodeHash);
+    this.code,
+    this.compatibleArchitectures,
+    this.compatibleRuntimes,
+    this.description,
+    required this.layerName,
+    this.licenseInfo,
+    this.region,
+    this.s3Bucket,
+    this.s3Key,
+    this.s3ObjectVersion,
+    this.skipDestroy,
+    this.sourceCodeHash,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class LayerVersionArgs {
 
   factory LayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return LayerVersionArgs(
-      code: map['code'] == null ? null : pulumi.Output.create<dynamic>(map['code']),
-      compatibleArchitectures: map['compatibleArchitectures'] == null ? null : pulumi.Output.create<List<String>>((map['compatibleArchitectures'] as List).cast<String>()),
-      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : pulumi.Output.create<List<String>>((map['compatibleRuntimes'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      layerName: pulumi.Output.create<String>(map['layerName'] as String),
-      licenseInfo: map['licenseInfo'] == null ? null : pulumi.Output.create<String>(map['licenseInfo'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3Bucket: map['s3Bucket'] == null ? null : pulumi.Output.create<String>(map['s3Bucket'] as String),
-      s3Key: map['s3Key'] == null ? null : pulumi.Output.create<String>(map['s3Key'] as String),
-      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : pulumi.Output.create<String>(map['s3ObjectVersion'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      sourceCodeHash: map['sourceCodeHash'] == null ? null : pulumi.Output.create<String>(map['sourceCodeHash'] as String),
+      code: map['code'] == null ? null : (map['code']).input(),
+      compatibleArchitectures: map['compatibleArchitectures'] == null ? null : ((map['compatibleArchitectures'] as List).cast<String>()).input(),
+      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : ((map['compatibleRuntimes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      layerName: (map['layerName'] as String).input(),
+      licenseInfo: map['licenseInfo'] == null ? null : (map['licenseInfo'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
+      s3Key: map['s3Key'] == null ? null : (map['s3Key'] as String).input(),
+      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : (map['s3ObjectVersion'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      sourceCodeHash: map['sourceCodeHash'] == null ? null : (map['sourceCodeHash'] as String).input(),
     );
   }
 }

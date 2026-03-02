@@ -23,17 +23,12 @@ class PolicyState {
   /// [policyStoreId] The Policy Store ID of the policy store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PolicyState({
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<PolicyDefinition>? definition,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? policyStoreId,
-    pulumi.Output<String>? region,
-  }) :
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      definition = pulumi.Input.asOptionalInput<PolicyDefinition>(definition),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      policyStoreId = pulumi.Input.asOptionalInput<String>(policyStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.createdDate,
+    this.definition,
+    this.policyId,
+    this.policyStoreId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      definition: map['definition'] == null ? null : pulumi.Output.create<PolicyDefinition>(PolicyDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      policyStoreId: map['policyStoreId'] == null ? null : pulumi.Output.create<String>(map['policyStoreId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      definition: map['definition'] == null ? null : (PolicyDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

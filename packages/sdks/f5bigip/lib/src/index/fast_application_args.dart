@@ -16,11 +16,9 @@ class FastApplicationArgs {
   /// [fastJson] Path/Filename of Declarative FAST JSON which is a json file used with builtin ```file``` function
   /// [template] Name of installed FAST template used to create FAST application. This parameter is required when creating new resource.
   FastApplicationArgs({
-    required pulumi.Output<String> fastJson,
-    pulumi.Output<String>? template,
-  }) :
-      fastJson = pulumi.Input.asInput<String>(fastJson),
-      template = pulumi.Input.asOptionalInput<String>(template);
+    required this.fastJson,
+    this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class FastApplicationArgs {
 
   factory FastApplicationArgs.fromMap(Map<String, dynamic> map) {
     return FastApplicationArgs(
-      fastJson: pulumi.Output.create<String>(map['fastJson'] as String),
-      template: map['template'] == null ? null : pulumi.Output.create<String>(map['template'] as String),
+      fastJson: (map['fastJson'] as String).input(),
+      template: map['template'] == null ? null : (map['template'] as String).input(),
     );
   }
 }

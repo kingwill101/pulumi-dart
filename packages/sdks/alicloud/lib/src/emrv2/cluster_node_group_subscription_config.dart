@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeGroupSubscriptionConfig {
   /// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
-  final bool? autoPayOrder;
+  final pulumi.Input<bool>? autoPayOrder;
   /// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-  final bool? autoRenew;
+  final pulumi.Input<bool>? autoRenew;
   /// If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
-  final int? autoRenewDuration;
+  final pulumi.Input<int>? autoRenewDuration;
   /// If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-  final String? autoRenewDurationUnit;
+  final pulumi.Input<String>? autoRenewDurationUnit;
   /// If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
-  final int paymentDuration;
+  final pulumi.Input<int> paymentDuration;
   /// If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-  final String paymentDurationUnit;
+  final pulumi.Input<String> paymentDurationUnit;
 
   /// Creates a new [ClusterNodeGroupSubscriptionConfig].
   /// [autoPayOrder] Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
@@ -44,12 +45,12 @@ class ClusterNodeGroupSubscriptionConfig {
 
   factory ClusterNodeGroupSubscriptionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupSubscriptionConfig(
-      autoPayOrder: map['autoPayOrder'] == null ? null : map['autoPayOrder'] as bool,
-      autoRenew: map['autoRenew'] == null ? null : map['autoRenew'] as bool,
-      autoRenewDuration: map['autoRenewDuration'] == null ? null : map['autoRenewDuration'] as int,
-      autoRenewDurationUnit: map['autoRenewDurationUnit'] == null ? null : map['autoRenewDurationUnit'] as String,
-      paymentDuration: map['paymentDuration'] as int,
-      paymentDurationUnit: map['paymentDurationUnit'] as String,
+      autoPayOrder: map['autoPayOrder'] == null ? null : (map['autoPayOrder'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      autoRenewDuration: map['autoRenewDuration'] == null ? null : (map['autoRenewDuration'] as int).input(),
+      autoRenewDurationUnit: map['autoRenewDurationUnit'] == null ? null : (map['autoRenewDurationUnit'] as String).input(),
+      paymentDuration: (map['paymentDuration'] as int).input(),
+      paymentDurationUnit: (map['paymentDurationUnit'] as String).input(),
     );
   }
 }

@@ -27,19 +27,13 @@ class RegionNotificationEndpointComputeBetaArgs {
   /// [region] Required.
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   RegionNotificationEndpointComputeBetaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<NotificationEndpointGrpcSettingsComputeBeta>? grpcSettings,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      grpcSettings = pulumi.Input.asOptionalInput<NotificationEndpointGrpcSettingsComputeBeta>(grpcSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.description,
+    this.grpcSettings,
+    this.name,
+    this.project,
+    required this.region,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class RegionNotificationEndpointComputeBetaArgs {
 
   factory RegionNotificationEndpointComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return RegionNotificationEndpointComputeBetaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      grpcSettings: map['grpcSettings'] == null ? null : pulumi.Output.create<NotificationEndpointGrpcSettingsComputeBeta>(NotificationEndpointGrpcSettingsComputeBeta.fromMap((map['grpcSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      grpcSettings: map['grpcSettings'] == null ? null : (NotificationEndpointGrpcSettingsComputeBeta.fromMap((map['grpcSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

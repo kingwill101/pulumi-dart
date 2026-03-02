@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMeshCertificates {
   /// Controls the issuance of workload mTLS certificates. It is enabled by default. Workload Identity is required, see workload_config.
-  final bool enableCertificates;
+  final pulumi.Input<bool> enableCertificates;
 
   /// Creates a new [ClusterMeshCertificates].
   /// [enableCertificates] Controls the issuance of workload mTLS certificates. It is enabled by default. Workload Identity is required, see workload_config.
@@ -19,7 +20,7 @@ class ClusterMeshCertificates {
 
   factory ClusterMeshCertificates.fromMap(Map<String, dynamic> map) {
     return ClusterMeshCertificates(
-      enableCertificates: map['enableCertificates'] as bool,
+      enableCertificates: (map['enableCertificates'] as bool).input(),
     );
   }
 }

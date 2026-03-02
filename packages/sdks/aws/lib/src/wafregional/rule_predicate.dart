@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RulePredicate {
-  final String dataId;
-  final bool negated;
-  final String type;
+  final pulumi.Input<String> dataId;
+  final pulumi.Input<bool> negated;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RulePredicate].
   /// [dataId] Required.
@@ -26,9 +27,9 @@ class RulePredicate {
 
   factory RulePredicate.fromMap(Map<String, dynamic> map) {
     return RulePredicate(
-      dataId: map['dataId'] as String,
-      negated: map['negated'] as bool,
-      type: map['type'] as String,
+      dataId: (map['dataId'] as String).input(),
+      negated: (map['negated'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

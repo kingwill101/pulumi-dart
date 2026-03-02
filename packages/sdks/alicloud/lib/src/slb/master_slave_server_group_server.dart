@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MasterSlaveServerGroupServer {
   /// Determine if the server is executing. Valid value 0, 1.
-  final int? isBackup;
+  final pulumi.Input<int>? isBackup;
   /// The port used by the backend server. Valid value range: [1-65535].
-  final int port;
+  final pulumi.Input<int> port;
   /// A list backend server ID (ECS instance ID).
-  final String serverId;
+  final pulumi.Input<String> serverId;
   /// The server type of the backend server. Valid value Master, Slave.
-  final String? serverType;
+  final pulumi.Input<String>? serverType;
   /// Type of the backend server. Valid value ecs, eni. Default to eni.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Weight of the backend server. Valid value range: [0-100]. Default to 100.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [MasterSlaveServerGroupServer].
   /// [isBackup] Determine if the server is executing. Valid value 0, 1.
@@ -44,12 +45,12 @@ class MasterSlaveServerGroupServer {
 
   factory MasterSlaveServerGroupServer.fromMap(Map<String, dynamic> map) {
     return MasterSlaveServerGroupServer(
-      isBackup: map['isBackup'] == null ? null : map['isBackup'] as int,
-      port: map['port'] as int,
-      serverId: map['serverId'] as String,
-      serverType: map['serverType'] == null ? null : map['serverType'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      isBackup: map['isBackup'] == null ? null : (map['isBackup'] as int).input(),
+      port: (map['port'] as int).input(),
+      serverId: (map['serverId'] as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

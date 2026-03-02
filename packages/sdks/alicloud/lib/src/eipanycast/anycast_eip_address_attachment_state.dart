@@ -39,25 +39,16 @@ class AnycastEipAddressAttachmentState {
   /// [privateIpAddress] The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
   /// [status] The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
   AnycastEipAddressAttachmentState({
-    pulumi.Output<String>? anycastId,
-    pulumi.Output<String>? associationMode,
-    pulumi.Output<String>? bindInstanceId,
-    pulumi.Output<String>? bindInstanceRegionId,
-    pulumi.Output<String>? bindInstanceType,
-    pulumi.Output<String>? bindTime,
-    pulumi.Output<List<AnycastEipAddressAttachmentPopLocation>>? popLocations,
-    pulumi.Output<String>? privateIpAddress,
-    pulumi.Output<String>? status,
-  }) :
-      anycastId = pulumi.Input.asOptionalInput<String>(anycastId),
-      associationMode = pulumi.Input.asOptionalInput<String>(associationMode),
-      bindInstanceId = pulumi.Input.asOptionalInput<String>(bindInstanceId),
-      bindInstanceRegionId = pulumi.Input.asOptionalInput<String>(bindInstanceRegionId),
-      bindInstanceType = pulumi.Input.asOptionalInput<String>(bindInstanceType),
-      bindTime = pulumi.Input.asOptionalInput<String>(bindTime),
-      popLocations = pulumi.Input.asOptionalInput<List<AnycastEipAddressAttachmentPopLocation>>(popLocations),
-      privateIpAddress = pulumi.Input.asOptionalInput<String>(privateIpAddress),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.anycastId,
+    this.associationMode,
+    this.bindInstanceId,
+    this.bindInstanceRegionId,
+    this.bindInstanceType,
+    this.bindTime,
+    this.popLocations,
+    this.privateIpAddress,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class AnycastEipAddressAttachmentState {
 
   factory AnycastEipAddressAttachmentState.fromMap(Map<String, dynamic> map) {
     return AnycastEipAddressAttachmentState(
-      anycastId: map['anycastId'] == null ? null : pulumi.Output.create<String>(map['anycastId'] as String),
-      associationMode: map['associationMode'] == null ? null : pulumi.Output.create<String>(map['associationMode'] as String),
-      bindInstanceId: map['bindInstanceId'] == null ? null : pulumi.Output.create<String>(map['bindInstanceId'] as String),
-      bindInstanceRegionId: map['bindInstanceRegionId'] == null ? null : pulumi.Output.create<String>(map['bindInstanceRegionId'] as String),
-      bindInstanceType: map['bindInstanceType'] == null ? null : pulumi.Output.create<String>(map['bindInstanceType'] as String),
-      bindTime: map['bindTime'] == null ? null : pulumi.Output.create<String>(map['bindTime'] as String),
-      popLocations: map['popLocations'] == null ? null : pulumi.Output.create<List<AnycastEipAddressAttachmentPopLocation>>(pulumi.Input.decodeList<AnycastEipAddressAttachmentPopLocation>(map['popLocations'], (value) => AnycastEipAddressAttachmentPopLocation.fromMap((value as Map).cast<String, dynamic>()))),
-      privateIpAddress: map['privateIpAddress'] == null ? null : pulumi.Output.create<String>(map['privateIpAddress'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      anycastId: map['anycastId'] == null ? null : (map['anycastId'] as String).input(),
+      associationMode: map['associationMode'] == null ? null : (map['associationMode'] as String).input(),
+      bindInstanceId: map['bindInstanceId'] == null ? null : (map['bindInstanceId'] as String).input(),
+      bindInstanceRegionId: map['bindInstanceRegionId'] == null ? null : (map['bindInstanceRegionId'] as String).input(),
+      bindInstanceType: map['bindInstanceType'] == null ? null : (map['bindInstanceType'] as String).input(),
+      bindTime: map['bindTime'] == null ? null : (map['bindTime'] as String).input(),
+      popLocations: map['popLocations'] == null ? null : (pulumi.Input.decodeList<AnycastEipAddressAttachmentPopLocation>(map['popLocations'], (value) => AnycastEipAddressAttachmentPopLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

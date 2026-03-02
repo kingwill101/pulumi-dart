@@ -6,18 +6,18 @@ import 'ssis_variable_response.dart';
 /// Ssis environment.
 class SsisEnvironmentResponse {
   /// Metadata description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Folder id which contains environment.
-  final double? folderId;
+  final pulumi.Input<double>? folderId;
   /// Metadata id.
-  final double? id;
+  final pulumi.Input<double>? id;
   /// Metadata name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of SSIS object metadata.
   /// Expected value is 'Environment'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Variable in environment
-  final List<SsisVariableResponse>? variables;
+  final pulumi.Input<List<SsisVariableResponse>>? variables;
 
   /// Creates a new [SsisEnvironmentResponse].
   /// [description] Metadata description.
@@ -42,18 +42,18 @@ class SsisEnvironmentResponse {
       'id': ?id,
       'name': ?name,
       'type': type,
-      'variables': ?variables == null ? null : pulumi.Input.encodeList<SsisVariableResponse, Map<String, dynamic>>(variables!, (value) => value.toMap()),
+      'variables': ?pulumi.Input.mapOptionalInputValue<List<SsisVariableResponse>, List<Map<String, dynamic>>>(variables, (value) => pulumi.Input.encodeList<SsisVariableResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SsisEnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return SsisEnvironmentResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      folderId: map['folderId'] == null ? null : map['folderId'] as double,
-      id: map['id'] == null ? null : map['id'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] as String,
-      variables: map['variables'] == null ? null : pulumi.Input.decodeList<SsisVariableResponse>(map['variables'], (value) => SsisVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as double).input(),
+      id: map['id'] == null ? null : (map['id'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
+      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<SsisVariableResponse>(map['variables'], (value) => SsisVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

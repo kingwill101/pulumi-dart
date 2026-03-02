@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectorEgressConfigVpcLattice {
   /// Port number for connecting to the SFTP server through VPC Lattice.
-  final int portNumber;
+  final pulumi.Input<int> portNumber;
   /// ARN of the VPC Lattice Resource Configuration.
-  final String resourceConfigurationArn;
+  final pulumi.Input<String> resourceConfigurationArn;
 
   /// Creates a new [GetConnectorEgressConfigVpcLattice].
   /// [portNumber] Port number for connecting to the SFTP server through VPC Lattice.
@@ -24,8 +25,8 @@ class GetConnectorEgressConfigVpcLattice {
 
   factory GetConnectorEgressConfigVpcLattice.fromMap(Map<String, dynamic> map) {
     return GetConnectorEgressConfigVpcLattice(
-      portNumber: map['portNumber'] as int,
-      resourceConfigurationArn: map['resourceConfigurationArn'] as String,
+      portNumber: (map['portNumber'] as int).input(),
+      resourceConfigurationArn: (map['resourceConfigurationArn'] as String).input(),
     );
   }
 }

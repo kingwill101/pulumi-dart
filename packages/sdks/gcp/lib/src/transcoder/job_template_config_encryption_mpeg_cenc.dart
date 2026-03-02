@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigEncryptionMpegCenc {
   /// Specify the encryption scheme.
-  final String scheme;
+  final pulumi.Input<String> scheme;
 
   /// Creates a new [JobTemplateConfigEncryptionMpegCenc].
   /// [scheme] Specify the encryption scheme.
@@ -19,7 +20,7 @@ class JobTemplateConfigEncryptionMpegCenc {
 
   factory JobTemplateConfigEncryptionMpegCenc.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigEncryptionMpegCenc(
-      scheme: map['scheme'] as String,
+      scheme: (map['scheme'] as String).input(),
     );
   }
 }

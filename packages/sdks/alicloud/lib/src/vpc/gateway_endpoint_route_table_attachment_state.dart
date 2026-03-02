@@ -16,13 +16,10 @@ class GatewayEndpointRouteTableAttachmentState {
   /// [routeTableId] Routing table ID.
   /// [status] Status of the gateway endpoint.
   GatewayEndpointRouteTableAttachmentState({
-    pulumi.Output<String>? gatewayEndpointId,
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? status,
-  }) :
-      gatewayEndpointId = pulumi.Input.asOptionalInput<String>(gatewayEndpointId),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.gatewayEndpointId,
+    this.routeTableId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GatewayEndpointRouteTableAttachmentState {
 
   factory GatewayEndpointRouteTableAttachmentState.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointRouteTableAttachmentState(
-      gatewayEndpointId: map['gatewayEndpointId'] == null ? null : pulumi.Output.create<String>(map['gatewayEndpointId'] as String),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      gatewayEndpointId: map['gatewayEndpointId'] == null ? null : (map['gatewayEndpointId'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

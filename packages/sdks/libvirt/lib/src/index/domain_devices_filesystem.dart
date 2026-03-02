@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_filesystem_acpi.dart';
 import 'domain_devices_filesystem_alias.dart';
 import 'domain_devices_filesystem_binary.dart';
@@ -11,43 +12,43 @@ import 'domain_devices_filesystem_target.dart';
 
 class DomainDevicesFilesystem {
   /// Sets the access mode for filesystem devices, controlling permissions.
-  final String? accessMode;
+  final pulumi.Input<String>? accessMode;
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final DomainDevicesFilesystemAcpi? acpi;
+  final pulumi.Input<DomainDevicesFilesystemAcpi>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final Map<String, dynamic>? address;
+  final pulumi.Input<Map<String, dynamic>>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final DomainDevicesFilesystemAlias? alias;
+  final pulumi.Input<DomainDevicesFilesystemAlias>? alias;
   /// Configures binary options for the filesystem device, including cache settings.
-  final DomainDevicesFilesystemBinary? binary;
+  final pulumi.Input<DomainDevicesFilesystemBinary>? binary;
   /// Configures the boot settings for the redirected device, controlling its initialization at domain startup.
-  final DomainDevicesFilesystemBoot? boot;
+  final pulumi.Input<DomainDevicesFilesystemBoot>? boot;
   /// Configures the directory mode for the filesystem.
-  final String? dmode;
+  final pulumi.Input<String>? dmode;
   /// Specifies the driver used for the filesystem.
-  final DomainDevicesFilesystemDriver? driver;
+  final pulumi.Input<DomainDevicesFilesystemDriver>? driver;
   /// Configures the file mode for the filesystem.
-  final String? fmode;
+  final pulumi.Input<String>? fmode;
   /// Sets up ID mapping for the filesystem to control access permissions.
-  final DomainDevicesFilesystemIdMap? idMap;
+  final pulumi.Input<DomainDevicesFilesystemIdMap>? idMap;
   /// Sets the emulated model for the filesystem.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// Configures whether multiple devices can be attached to the filesystem.
-  final String? multiDevs;
+  final pulumi.Input<String>? multiDevs;
   /// Specifies if the filesystem is read-only.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// Defines the source for the filesystem.
-  final DomainDevicesFilesystemSource? source;
+  final pulumi.Input<DomainDevicesFilesystemSource>? source;
   /// Configures the hard limit on the space allocated for the filesystem.
-  final double? spaceHardLimit;
+  final pulumi.Input<double>? spaceHardLimit;
   /// Sets the unit of measure for the hard limit space allocation for the filesystem.
-  final String? spaceHardLimitUnit;
+  final pulumi.Input<String>? spaceHardLimitUnit;
   /// Configures the soft limit on the space allocated for the filesystem.
-  final double? spaceSoftLimit;
+  final pulumi.Input<double>? spaceSoftLimit;
   /// Sets the unit of measure for the soft limit space allocation for the filesystem.
-  final String? spaceSoftLimitUnit;
+  final pulumi.Input<String>? spaceSoftLimitUnit;
   /// Specifies the target element defining where the filesystem is mounted in the guest.
-  final DomainDevicesFilesystemTarget? target;
+  final pulumi.Input<DomainDevicesFilesystemTarget>? target;
 
   /// Creates a new [DomainDevicesFilesystem].
   /// [accessMode] Sets the access mode for filesystem devices, controlling permissions.
@@ -94,48 +95,48 @@ class DomainDevicesFilesystem {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessMode': ?accessMode,
-      'acpi': ?acpi == null ? null : acpi!.toMap(),
+      'acpi': ?pulumi.Input.mapOptionalInputValue<DomainDevicesFilesystemAcpi, Map<String, dynamic>>(acpi, (value) => value.toMap()),
       'address': ?address,
-      'alias': ?alias == null ? null : alias!.toMap(),
-      'binary': ?binary == null ? null : binary!.toMap(),
-      'boot': ?boot == null ? null : boot!.toMap(),
+      'alias': ?pulumi.Input.mapOptionalInputValue<DomainDevicesFilesystemAlias, Map<String, dynamic>>(alias, (value) => value.toMap()),
+      'binary': ?pulumi.Input.mapOptionalInputValue<DomainDevicesFilesystemBinary, Map<String, dynamic>>(binary, (value) => value.toMap()),
+      'boot': ?pulumi.Input.mapOptionalInputValue<DomainDevicesFilesystemBoot, Map<String, dynamic>>(boot, (value) => value.toMap()),
       'dmode': ?dmode,
-      'driver': ?driver == null ? null : driver!.toMap(),
+      'driver': ?pulumi.Input.mapOptionalInputValue<DomainDevicesFilesystemDriver, Map<String, dynamic>>(driver, (value) => value.toMap()),
       'fmode': ?fmode,
-      'idMap': ?idMap == null ? null : idMap!.toMap(),
+      'idMap': ?pulumi.Input.mapOptionalInputValue<DomainDevicesFilesystemIdMap, Map<String, dynamic>>(idMap, (value) => value.toMap()),
       'model': ?model,
       'multiDevs': ?multiDevs,
       'readOnly': ?readOnly,
-      'source': ?source == null ? null : source!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesFilesystemSource, Map<String, dynamic>>(source, (value) => value.toMap()),
       'spaceHardLimit': ?spaceHardLimit,
       'spaceHardLimitUnit': ?spaceHardLimitUnit,
       'spaceSoftLimit': ?spaceSoftLimit,
       'spaceSoftLimitUnit': ?spaceSoftLimitUnit,
-      'target': ?target == null ? null : target!.toMap(),
+      'target': ?pulumi.Input.mapOptionalInputValue<DomainDevicesFilesystemTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesFilesystem.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystem(
-      accessMode: map['accessMode'] == null ? null : map['accessMode'] as String,
-      acpi: map['acpi'] == null ? null : DomainDevicesFilesystemAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>()),
-      address: map['address'] == null ? null : (map['address'] as Map).cast<String, dynamic>(),
-      alias: map['alias'] == null ? null : DomainDevicesFilesystemAlias.fromMap((map['alias'] as Map).cast<String, dynamic>()),
-      binary: map['binary'] == null ? null : DomainDevicesFilesystemBinary.fromMap((map['binary'] as Map).cast<String, dynamic>()),
-      boot: map['boot'] == null ? null : DomainDevicesFilesystemBoot.fromMap((map['boot'] as Map).cast<String, dynamic>()),
-      dmode: map['dmode'] == null ? null : map['dmode'] as String,
-      driver: map['driver'] == null ? null : DomainDevicesFilesystemDriver.fromMap((map['driver'] as Map).cast<String, dynamic>()),
-      fmode: map['fmode'] == null ? null : map['fmode'] as String,
-      idMap: map['idMap'] == null ? null : DomainDevicesFilesystemIdMap.fromMap((map['idMap'] as Map).cast<String, dynamic>()),
-      model: map['model'] == null ? null : map['model'] as String,
-      multiDevs: map['multiDevs'] == null ? null : map['multiDevs'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      source: map['source'] == null ? null : DomainDevicesFilesystemSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      spaceHardLimit: map['spaceHardLimit'] == null ? null : map['spaceHardLimit'] as double,
-      spaceHardLimitUnit: map['spaceHardLimitUnit'] == null ? null : map['spaceHardLimitUnit'] as String,
-      spaceSoftLimit: map['spaceSoftLimit'] == null ? null : map['spaceSoftLimit'] as double,
-      spaceSoftLimitUnit: map['spaceSoftLimitUnit'] == null ? null : map['spaceSoftLimitUnit'] as String,
-      target: map['target'] == null ? null : DomainDevicesFilesystemTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesFilesystemAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesFilesystemAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      binary: map['binary'] == null ? null : (DomainDevicesFilesystemBinary.fromMap((map['binary'] as Map).cast<String, dynamic>())).input(),
+      boot: map['boot'] == null ? null : (DomainDevicesFilesystemBoot.fromMap((map['boot'] as Map).cast<String, dynamic>())).input(),
+      dmode: map['dmode'] == null ? null : (map['dmode'] as String).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesFilesystemDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
+      fmode: map['fmode'] == null ? null : (map['fmode'] as String).input(),
+      idMap: map['idMap'] == null ? null : (DomainDevicesFilesystemIdMap.fromMap((map['idMap'] as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      multiDevs: map['multiDevs'] == null ? null : (map['multiDevs'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      source: map['source'] == null ? null : (DomainDevicesFilesystemSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      spaceHardLimit: map['spaceHardLimit'] == null ? null : (map['spaceHardLimit'] as double).input(),
+      spaceHardLimitUnit: map['spaceHardLimitUnit'] == null ? null : (map['spaceHardLimitUnit'] as String).input(),
+      spaceSoftLimit: map['spaceSoftLimit'] == null ? null : (map['spaceSoftLimit'] as double).input(),
+      spaceSoftLimitUnit: map['spaceSoftLimitUnit'] == null ? null : (map['spaceSoftLimitUnit'] as String).input(),
+      target: map['target'] == null ? null : (DomainDevicesFilesystemTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

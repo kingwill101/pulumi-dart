@@ -18,13 +18,10 @@ class GcpLinkAccountState {
   /// [name] The name of the GCP account in New Relic.
   /// [projectId] Project ID of the GCP account.
   GcpLinkAccountState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId);
+    this.accountId,
+    this.name,
+    this.projectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GcpLinkAccountState {
 
   factory GcpLinkAccountState.fromMap(Map<String, dynamic> map) {
     return GcpLinkAccountState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

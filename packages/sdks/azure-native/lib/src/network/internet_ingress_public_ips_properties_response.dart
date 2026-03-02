@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource Uri of Public Ip for Standard Load Balancer Frontend End.
 class InternetIngressPublicIpsPropertiesResponse {
   /// Resource Uri of Public Ip
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [InternetIngressPublicIpsPropertiesResponse].
   /// [id] Resource Uri of Public Ip
@@ -20,7 +21,7 @@ class InternetIngressPublicIpsPropertiesResponse {
 
   factory InternetIngressPublicIpsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InternetIngressPublicIpsPropertiesResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

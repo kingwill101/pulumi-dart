@@ -36,19 +36,13 @@ class NamespaceArgs {
   /// [scopeId] Id of the scope
   /// [scopeNamespaceId] The client-provided identifier of the namespace.
   NamespaceArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<Map<String, String>>? namespaceLabels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> scopeId,
-    required pulumi.Output<String> scopeNamespaceId,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      namespaceLabels = pulumi.Input.asOptionalInput<Map<String, String>>(namespaceLabels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scope = pulumi.Input.asInput<String>(scope),
-      scopeId = pulumi.Input.asInput<String>(scopeId),
-      scopeNamespaceId = pulumi.Input.asInput<String>(scopeNamespaceId);
+    this.labels,
+    this.namespaceLabels,
+    this.project,
+    required this.scope,
+    required this.scopeId,
+    required this.scopeNamespaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,12 +57,12 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      namespaceLabels: map['namespaceLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['namespaceLabels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
-      scopeNamespaceId: pulumi.Output.create<String>(map['scopeNamespaceId'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      scopeNamespaceId: (map['scopeNamespaceId'] as String).input(),
     );
   }
 }

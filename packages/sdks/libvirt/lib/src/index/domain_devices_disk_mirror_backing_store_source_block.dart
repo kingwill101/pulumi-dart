@@ -5,9 +5,9 @@ import 'domain_devices_disk_mirror_backing_store_source_block_sec_label.dart';
 
 class DomainDevicesDiskMirrorBackingStoreSourceBlock {
   /// Sets the device path for the block source of the backing store, defining the physical location of the data.
-  final String? dev;
+  final pulumi.Input<String>? dev;
   /// Specifies security label settings for the block source in the backing store, managing access controls.
-  final List<DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceBlock].
   /// [dev] Sets the device path for the block source of the backing store, defining the physical location of the data.
@@ -20,14 +20,14 @@ class DomainDevicesDiskMirrorBackingStoreSourceBlock {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dev': ?dev,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskMirrorBackingStoreSourceBlock.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceBlock(
-      dev: map['dev'] == null ? null : map['dev'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

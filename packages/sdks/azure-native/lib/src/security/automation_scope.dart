@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A single automation scope.
 class AutomationScope {
   /// The resources scope description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The resources scope path. Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs).
-  final String? scopePath;
+  final pulumi.Input<String>? scopePath;
 
   /// Creates a new [AutomationScope].
   /// [description] The resources scope description.
@@ -25,8 +26,8 @@ class AutomationScope {
 
   factory AutomationScope.fromMap(Map<String, dynamic> map) {
     return AutomationScope(
-      description: map['description'] == null ? null : map['description'] as String,
-      scopePath: map['scopePath'] == null ? null : map['scopePath'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      scopePath: map['scopePath'] == null ? null : (map['scopePath'] as String).input(),
     );
   }
 }

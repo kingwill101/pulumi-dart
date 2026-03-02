@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Grouping configuration property bag.
 class GroupingConfiguration {
   /// Grouping enabled
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A list of alert details to group by (when matchingMethod is Selected)
-  final List<String>? groupByAlertDetails;
+  final pulumi.Input<List<String>>? groupByAlertDetails;
   /// A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
-  final List<String>? groupByCustomDetails;
+  final pulumi.Input<List<String>>? groupByCustomDetails;
   /// A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
-  final List<String>? groupByEntities;
+  final pulumi.Input<List<String>>? groupByEntities;
   /// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
-  final String lookbackDuration;
+  final pulumi.Input<String> lookbackDuration;
   /// Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
-  final String matchingMethod;
+  final pulumi.Input<String> matchingMethod;
   /// Re-open closed matching incidents
-  final bool reopenClosedIncident;
+  final pulumi.Input<bool> reopenClosedIncident;
 
   /// Creates a new [GroupingConfiguration].
   /// [enabled] Grouping enabled
@@ -50,13 +51,13 @@ class GroupingConfiguration {
 
   factory GroupingConfiguration.fromMap(Map<String, dynamic> map) {
     return GroupingConfiguration(
-      enabled: map['enabled'] as bool,
-      groupByAlertDetails: map['groupByAlertDetails'] == null ? null : (map['groupByAlertDetails'] as List).cast<String>(),
-      groupByCustomDetails: map['groupByCustomDetails'] == null ? null : (map['groupByCustomDetails'] as List).cast<String>(),
-      groupByEntities: map['groupByEntities'] == null ? null : (map['groupByEntities'] as List).cast<String>(),
-      lookbackDuration: map['lookbackDuration'] as String,
-      matchingMethod: map['matchingMethod'] as String,
-      reopenClosedIncident: map['reopenClosedIncident'] as bool,
+      enabled: (map['enabled'] as bool).input(),
+      groupByAlertDetails: map['groupByAlertDetails'] == null ? null : ((map['groupByAlertDetails'] as List).cast<String>()).input(),
+      groupByCustomDetails: map['groupByCustomDetails'] == null ? null : ((map['groupByCustomDetails'] as List).cast<String>()).input(),
+      groupByEntities: map['groupByEntities'] == null ? null : ((map['groupByEntities'] as List).cast<String>()).input(),
+      lookbackDuration: (map['lookbackDuration'] as String).input(),
+      matchingMethod: (map['matchingMethod'] as String).input(),
+      reopenClosedIncident: (map['reopenClosedIncident'] as bool).input(),
     );
   }
 }

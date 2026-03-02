@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleSharedActionsResponse {
-  final int? code;
+  final pulumi.Input<int>? code;
   /// The internal unique ID of the WAF rule.
-  final int? id;
+  final pulumi.Input<int>? id;
 
   /// Creates a new [WafRuleSharedActionsResponse].
   /// [code] Optional.
@@ -23,8 +24,8 @@ class WafRuleSharedActionsResponse {
 
   factory WafRuleSharedActionsResponse.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedActionsResponse(
-      code: map['code'] == null ? null : map['code'] as int,
-      id: map['id'] == null ? null : map['id'] as int,
+      code: map['code'] == null ? null : (map['code'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
     );
   }
 }

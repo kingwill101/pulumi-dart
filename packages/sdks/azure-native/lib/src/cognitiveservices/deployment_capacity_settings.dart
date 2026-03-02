@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Internal use only.
 class DeploymentCapacitySettings {
   /// The designated capacity.
-  final int? designatedCapacity;
+  final pulumi.Input<int>? designatedCapacity;
   /// The priority of this capacity setting.
-  final int? priority;
+  final pulumi.Input<int>? priority;
 
   /// Creates a new [DeploymentCapacitySettings].
   /// [designatedCapacity] The designated capacity.
@@ -25,8 +26,8 @@ class DeploymentCapacitySettings {
 
   factory DeploymentCapacitySettings.fromMap(Map<String, dynamic> map) {
     return DeploymentCapacitySettings(
-      designatedCapacity: map['designatedCapacity'] == null ? null : map['designatedCapacity'] as int,
-      priority: map['priority'] == null ? null : map['priority'] as int,
+      designatedCapacity: map['designatedCapacity'] == null ? null : (map['designatedCapacity'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
     );
   }
 }

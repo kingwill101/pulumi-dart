@@ -16,13 +16,10 @@ class VolumeAttachmentState {
   /// [serverId] Server to attach the Volume to.
   /// [volumeId] ID of the Volume.
   VolumeAttachmentState({
-    pulumi.Output<bool>? automount,
-    pulumi.Output<int>? serverId,
-    pulumi.Output<int>? volumeId,
-  }) :
-      automount = pulumi.Input.asOptionalInput<bool>(automount),
-      serverId = pulumi.Input.asOptionalInput<int>(serverId),
-      volumeId = pulumi.Input.asOptionalInput<int>(volumeId);
+    this.automount,
+    this.serverId,
+    this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class VolumeAttachmentState {
 
   factory VolumeAttachmentState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentState(
-      automount: map['automount'] == null ? null : pulumi.Output.create<bool>(map['automount'] as bool),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<int>(map['serverId'] as int),
-      volumeId: map['volumeId'] == null ? null : pulumi.Output.create<int>(map['volumeId'] as int),
+      automount: map['automount'] == null ? null : (map['automount'] as bool).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as int).input(),
     );
   }
 }

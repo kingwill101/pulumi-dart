@@ -21,13 +21,10 @@ class GetKeyTransactionArgs {
   /// [guid] GUID of the key transaction in New Relic.
   /// [name] The name of the key transaction in New Relic.
   GetKeyTransactionArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? guid,
-    required pulumi.Output<String> name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      guid = pulumi.Input.asOptionalInput<String>(guid),
-      name = pulumi.Input.asInput<String>(name);
+    this.accountId,
+    this.guid,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetKeyTransactionArgs {
 
   factory GetKeyTransactionArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyTransactionArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      guid: map['guid'] == null ? null : pulumi.Output.create<String>(map['guid'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

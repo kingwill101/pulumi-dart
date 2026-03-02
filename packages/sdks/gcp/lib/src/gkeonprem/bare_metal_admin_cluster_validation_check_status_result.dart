@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterValidationCheckStatusResult {
   /// (Output)
   /// The category of the validation.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// A human readable description of this Bare Metal Admin Cluster.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// (Output)
   /// Detailed failure information, which might be unformatted.
-  final String? details;
+  final pulumi.Input<String>? details;
   /// (Output)
   /// Options used for the validation check.
-  final String? options;
+  final pulumi.Input<String>? options;
   /// (Output)
   /// A human-readable message of the check failure.
-  final String? reason;
+  final pulumi.Input<String>? reason;
 
   /// Creates a new [BareMetalAdminClusterValidationCheckStatusResult].
   /// [category] (Output)
@@ -43,11 +44,11 @@ class BareMetalAdminClusterValidationCheckStatusResult {
 
   factory BareMetalAdminClusterValidationCheckStatusResult.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterValidationCheckStatusResult(
-      category: map['category'] == null ? null : map['category'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      details: map['details'] == null ? null : map['details'] as String,
-      options: map['options'] == null ? null : map['options'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      details: map['details'] == null ? null : (map['details'] as String).input(),
+      options: map['options'] == null ? null : (map['options'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
     );
   }
 }

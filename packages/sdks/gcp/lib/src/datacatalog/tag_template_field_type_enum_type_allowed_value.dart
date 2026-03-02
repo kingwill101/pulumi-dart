@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TagTemplateFieldTypeEnumTypeAllowedValue {
   /// The display name of the enum value.
-  final String displayName;
+  final pulumi.Input<String> displayName;
 
   /// Creates a new [TagTemplateFieldTypeEnumTypeAllowedValue].
   /// [displayName] The display name of the enum value.
@@ -19,7 +20,7 @@ class TagTemplateFieldTypeEnumTypeAllowedValue {
 
   factory TagTemplateFieldTypeEnumTypeAllowedValue.fromMap(Map<String, dynamic> map) {
     return TagTemplateFieldTypeEnumTypeAllowedValue(
-      displayName: map['displayName'] as String,
+      displayName: (map['displayName'] as String).input(),
     );
   }
 }

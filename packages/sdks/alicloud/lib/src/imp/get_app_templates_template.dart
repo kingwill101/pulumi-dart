@@ -5,29 +5,29 @@ import 'get_app_templates_template_config_list.dart';
 
 class GetAppTemplatesTemplate {
   /// Apply template creator.
-  final String appTemplateCreator;
+  final pulumi.Input<String> appTemplateCreator;
   /// The first ID of the resource.
-  final String appTemplateId;
+  final pulumi.Input<String> appTemplateId;
   /// The name of the resource.
-  final String appTemplateName;
+  final pulumi.Input<String> appTemplateName;
   /// List of components.
-  final List<String> componentLists;
+  final pulumi.Input<List<String>> componentLists;
   /// List of config.
-  final List<GetAppTemplatesTemplateConfigList> configLists;
+  final pulumi.Input<List<GetAppTemplatesTemplateConfigList>> configLists;
   /// Creation time.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the App Template.
-  final String id;
+  final pulumi.Input<String> id;
   /// Integration mode (Integrated SDK:paasSDK, Model Room: standardRoom).
-  final String integrationMode;
+  final pulumi.Input<String> integrationMode;
   /// Application Template scenario, e-commerce business, classroom classroom.
-  final String scene;
+  final pulumi.Input<String> scene;
   /// SDK information.
-  final String sdkInfo;
+  final pulumi.Input<String> sdkInfo;
   /// Model room information.
-  final String standardRoomInfo;
+  final pulumi.Input<String> standardRoomInfo;
   /// Application template usage status.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetAppTemplatesTemplate].
   /// [appTemplateCreator] Apply template creator.
@@ -63,7 +63,7 @@ class GetAppTemplatesTemplate {
       'appTemplateId': appTemplateId,
       'appTemplateName': appTemplateName,
       'componentLists': componentLists,
-      'configLists': pulumi.Input.encodeList<GetAppTemplatesTemplateConfigList, Map<String, dynamic>>(configLists, (value) => value.toMap()),
+      'configLists': pulumi.Input.mapInputValue<List<GetAppTemplatesTemplateConfigList>, List<Map<String, dynamic>>>(configLists, (value) => pulumi.Input.encodeList<GetAppTemplatesTemplateConfigList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': createTime,
       'id': id,
       'integrationMode': integrationMode,
@@ -76,18 +76,18 @@ class GetAppTemplatesTemplate {
 
   factory GetAppTemplatesTemplate.fromMap(Map<String, dynamic> map) {
     return GetAppTemplatesTemplate(
-      appTemplateCreator: map['appTemplateCreator'] as String,
-      appTemplateId: map['appTemplateId'] as String,
-      appTemplateName: map['appTemplateName'] as String,
-      componentLists: (map['componentLists'] as List).cast<String>(),
-      configLists: pulumi.Input.decodeList<GetAppTemplatesTemplateConfigList>(map['configLists'], (value) => GetAppTemplatesTemplateConfigList.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      integrationMode: map['integrationMode'] as String,
-      scene: map['scene'] as String,
-      sdkInfo: map['sdkInfo'] as String,
-      standardRoomInfo: map['standardRoomInfo'] as String,
-      status: map['status'] as String,
+      appTemplateCreator: (map['appTemplateCreator'] as String).input(),
+      appTemplateId: (map['appTemplateId'] as String).input(),
+      appTemplateName: (map['appTemplateName'] as String).input(),
+      componentLists: ((map['componentLists'] as List).cast<String>()).input(),
+      configLists: (pulumi.Input.decodeList<GetAppTemplatesTemplateConfigList>(map['configLists'], (value) => GetAppTemplatesTemplateConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      integrationMode: (map['integrationMode'] as String).input(),
+      scene: (map['scene'] as String).input(),
+      sdkInfo: (map['sdkInfo'] as String).input(),
+      standardRoomInfo: (map['standardRoomInfo'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

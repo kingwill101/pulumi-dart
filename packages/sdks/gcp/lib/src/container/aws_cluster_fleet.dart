@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterFleet {
   /// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
-  final String? membership;
+  final pulumi.Input<String>? membership;
   /// The number of the Fleet host project where this cluster will be registered.
-  final String? project;
+  final pulumi.Input<String>? project;
 
   /// Creates a new [AwsClusterFleet].
   /// [membership] The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
@@ -24,8 +25,8 @@ class AwsClusterFleet {
 
   factory AwsClusterFleet.fromMap(Map<String, dynamic> map) {
     return AwsClusterFleet(
-      membership: map['membership'] == null ? null : map['membership'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

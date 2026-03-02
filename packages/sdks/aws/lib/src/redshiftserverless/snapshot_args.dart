@@ -22,15 +22,11 @@ class SnapshotArgs {
   /// [retentionPeriod] How long to retain the created snapshot. Default value is `-1`.
   /// [snapshotName] The name of the snapshot.
   SnapshotArgs({
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionPeriod,
-    required pulumi.Output<String> snapshotName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod),
-      snapshotName = pulumi.Input.asInput<String>(snapshotName);
+    required this.namespaceName,
+    this.region,
+    this.retentionPeriod,
+    required this.snapshotName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionPeriod: map['retentionPeriod'] == null ? null : pulumi.Output.create<int>(map['retentionPeriod'] as int),
-      snapshotName: pulumi.Output.create<String>(map['snapshotName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      snapshotName: (map['snapshotName'] as String).input(),
     );
   }
 }

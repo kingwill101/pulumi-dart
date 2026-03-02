@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceDeploymentConfigurationAlarm {
   /// List of CloudWatch alarm names
-  final List<String> alarmNames;
+  final pulumi.Input<List<String>> alarmNames;
   /// Whether circuit breaker is enabled
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// Whether to rollback on failure
-  final bool rollback;
+  final pulumi.Input<bool> rollback;
 
   /// Creates a new [GetServiceDeploymentConfigurationAlarm].
   /// [alarmNames] List of CloudWatch alarm names
@@ -29,9 +30,9 @@ class GetServiceDeploymentConfigurationAlarm {
 
   factory GetServiceDeploymentConfigurationAlarm.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationAlarm(
-      alarmNames: (map['alarmNames'] as List).cast<String>(),
-      enable: map['enable'] as bool,
-      rollback: map['rollback'] as bool,
+      alarmNames: ((map['alarmNames'] as List).cast<String>()).input(),
+      enable: (map['enable'] as bool).input(),
+      rollback: (map['rollback'] as bool).input(),
     );
   }
 }

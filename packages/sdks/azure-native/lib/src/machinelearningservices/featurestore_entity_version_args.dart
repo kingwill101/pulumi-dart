@@ -26,17 +26,12 @@ class FeaturestoreEntityVersionArgs {
   /// [version] Version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   FeaturestoreEntityVersionArgs({
-    required pulumi.Output<FeaturestoreEntityVersionMachinelearningservices> featurestoreEntityVersionProperties,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? version,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      featurestoreEntityVersionProperties = pulumi.Input.asInput<FeaturestoreEntityVersionMachinelearningservices>(featurestoreEntityVersionProperties),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.featurestoreEntityVersionProperties,
+    required this.name,
+    required this.resourceGroupName,
+    this.version,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class FeaturestoreEntityVersionArgs {
 
   factory FeaturestoreEntityVersionArgs.fromMap(Map<String, dynamic> map) {
     return FeaturestoreEntityVersionArgs(
-      featurestoreEntityVersionProperties: pulumi.Output.create<FeaturestoreEntityVersionMachinelearningservices>(map['featurestoreEntityVersionProperties'] as FeaturestoreEntityVersionMachinelearningservices),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      featurestoreEntityVersionProperties: (map['featurestoreEntityVersionProperties'] as FeaturestoreEntityVersionMachinelearningservices).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class ScheduleArgs {
   /// [scheduleProperties] [Required] Additional attributes of the entity.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   ScheduleArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ScheduleMachinelearningservices> scheduleProperties,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleProperties = pulumi.Input.asInput<ScheduleMachinelearningservices>(scheduleProperties),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.name,
+    required this.resourceGroupName,
+    required this.scheduleProperties,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleProperties: pulumi.Output.create<ScheduleMachinelearningservices>(map['scheduleProperties'] as ScheduleMachinelearningservices),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleProperties: (map['scheduleProperties'] as ScheduleMachinelearningservices).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

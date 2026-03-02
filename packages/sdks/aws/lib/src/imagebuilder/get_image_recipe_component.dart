@@ -5,9 +5,9 @@ import 'get_image_recipe_component_parameter.dart';
 
 class GetImageRecipeComponent {
   /// ARN of the Image Builder Component.
-  final String componentArn;
+  final pulumi.Input<String> componentArn;
   /// Set of parameters that are used to configure the component.
-  final List<GetImageRecipeComponentParameter> parameters;
+  final pulumi.Input<List<GetImageRecipeComponentParameter>> parameters;
 
   /// Creates a new [GetImageRecipeComponent].
   /// [componentArn] ARN of the Image Builder Component.
@@ -20,14 +20,14 @@ class GetImageRecipeComponent {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'componentArn': componentArn,
-      'parameters': pulumi.Input.encodeList<GetImageRecipeComponentParameter, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<List<GetImageRecipeComponentParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GetImageRecipeComponentParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetImageRecipeComponent.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeComponent(
-      componentArn: map['componentArn'] as String,
-      parameters: pulumi.Input.decodeList<GetImageRecipeComponentParameter>(map['parameters'], (value) => GetImageRecipeComponentParameter.fromMap((value as Map).cast<String, dynamic>())),
+      componentArn: (map['componentArn'] as String).input(),
+      parameters: (pulumi.Input.decodeList<GetImageRecipeComponentParameter>(map['parameters'], (value) => GetImageRecipeComponentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

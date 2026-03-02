@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'justification_justification_type.dart';
 
 /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
 class Justification {
   /// Additional details on why this justification was chosen.
-  final String? details;
+  final pulumi.Input<String>? details;
   /// The justification type for this vulnerability.
-  final JustificationJustificationType? justificationType;
+  final pulumi.Input<JustificationJustificationType>? justificationType;
 
   /// Creates a new [Justification].
   /// [details] Additional details on why this justification was chosen.
@@ -20,14 +21,14 @@ class Justification {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'details': ?details,
-      'justificationType': ?justificationType == null ? null : justificationType!.value,
+      'justificationType': ?pulumi.Input.mapOptionalInputValue<JustificationJustificationType, String>(justificationType, (value) => value.value),
     };
   }
 
   factory Justification.fromMap(Map<String, dynamic> map) {
     return Justification(
-      details: map['details'] == null ? null : map['details'] as String,
-      justificationType: map['justificationType'] == null ? null : JustificationJustificationType.fromValue(map['justificationType'] as String),
+      details: map['details'] == null ? null : (map['details'] as String).input(),
+      justificationType: map['justificationType'] == null ? null : (JustificationJustificationType.fromValue(map['justificationType'] as String)).input(),
     );
   }
 }

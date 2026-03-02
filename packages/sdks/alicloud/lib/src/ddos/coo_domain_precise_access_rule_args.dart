@@ -27,17 +27,12 @@ class CooDomainPreciseAccessRuleArgs {
   /// [expires] Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
   /// [name] Rule name.
   CooDomainPreciseAccessRuleArgs({
-    required pulumi.Output<String> action,
-    required pulumi.Output<List<CooDomainPreciseAccessRuleCondition>> conditions,
-    required pulumi.Output<String> domain,
-    pulumi.Output<int>? expires,
-    pulumi.Output<String>? name,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      conditions = pulumi.Input.asInput<List<CooDomainPreciseAccessRuleCondition>>(conditions),
-      domain = pulumi.Input.asInput<String>(domain),
-      expires = pulumi.Input.asOptionalInput<int>(expires),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.action,
+    required this.conditions,
+    required this.domain,
+    this.expires,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class CooDomainPreciseAccessRuleArgs {
 
   factory CooDomainPreciseAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return CooDomainPreciseAccessRuleArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      conditions: pulumi.Output.create<List<CooDomainPreciseAccessRuleCondition>>(pulumi.Input.decodeList<CooDomainPreciseAccessRuleCondition>(map['conditions'], (value) => CooDomainPreciseAccessRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      expires: map['expires'] == null ? null : pulumi.Output.create<int>(map['expires'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      action: (map['action'] as String).input(),
+      conditions: (pulumi.Input.decodeList<CooDomainPreciseAccessRuleCondition>(map['conditions'], (value) => CooDomainPreciseAccessRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domain: (map['domain'] as String).input(),
+      expires: map['expires'] == null ? null : (map['expires'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -36,27 +36,17 @@ class DebugSessionArgs {
   /// [tracesize] Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
   /// [validity] Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
   DebugSessionArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<int>? count,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> revisionId,
-    pulumi.Output<String>? timeout,
-    pulumi.Output<int>? tracesize,
-    pulumi.Output<int>? validity,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      count = pulumi.Input.asOptionalInput<int>(count),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      revisionId = pulumi.Input.asInput<String>(revisionId),
-      timeout = pulumi.Input.asOptionalInput<String>(timeout),
-      tracesize = pulumi.Input.asOptionalInput<int>(tracesize),
-      validity = pulumi.Input.asOptionalInput<int>(validity);
+    required this.apiId,
+    this.count,
+    required this.environmentId,
+    this.filter,
+    this.name,
+    required this.organizationId,
+    required this.revisionId,
+    this.timeout,
+    this.tracesize,
+    this.validity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +65,16 @@ class DebugSessionArgs {
 
   factory DebugSessionArgs.fromMap(Map<String, dynamic> map) {
     return DebugSessionArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      count: map['count'] == null ? null : pulumi.Output.create<int>(map['count'] as int),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      revisionId: pulumi.Output.create<String>(map['revisionId'] as String),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<String>(map['timeout'] as String),
-      tracesize: map['tracesize'] == null ? null : pulumi.Output.create<int>(map['tracesize'] as int),
-      validity: map['validity'] == null ? null : pulumi.Output.create<int>(map['validity'] as int),
+      apiId: (map['apiId'] as String).input(),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      revisionId: (map['revisionId'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      tracesize: map['tracesize'] == null ? null : (map['tracesize'] as int).input(),
+      validity: map['validity'] == null ? null : (map['validity'] as int).input(),
     );
   }
 }

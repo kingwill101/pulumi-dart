@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slo_windows_based_sli_metric_mean_in_range_range.dart';
 
 class SloWindowsBasedSliMetricMeanInRange {
@@ -11,14 +12,14 @@ class SloWindowsBasedSliMetricMeanInRange {
   /// values should satisfy `range.min <= X <= range.max` for a
   /// good service.
   /// Structure is documented below.
-  final SloWindowsBasedSliMetricMeanInRangeRange range;
+  final pulumi.Input<SloWindowsBasedSliMetricMeanInRangeRange> range;
   /// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying the TimeSeries to use for evaluating window
   /// The provided TimeSeries must have ValueType = INT64 or
   /// ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
   /// should satisfy `range.min <= X <= range.max`
   /// under good service.
-  final String timeSeries;
+  final pulumi.Input<String> timeSeries;
 
   /// Creates a new [SloWindowsBasedSliMetricMeanInRange].
   /// [range] Range of numerical values. The computed good_service
@@ -30,15 +31,15 @@ class SloWindowsBasedSliMetricMeanInRange {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'range': range.toMap(),
+      'range': pulumi.Input.mapInputValue<SloWindowsBasedSliMetricMeanInRangeRange, Map<String, dynamic>>(range, (value) => value.toMap()),
       'timeSeries': timeSeries,
     };
   }
 
   factory SloWindowsBasedSliMetricMeanInRange.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliMetricMeanInRange(
-      range: SloWindowsBasedSliMetricMeanInRangeRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
-      timeSeries: map['timeSeries'] as String,
+      range: (SloWindowsBasedSliMetricMeanInRangeRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
+      timeSeries: (map['timeSeries'] as String).input(),
     );
   }
 }

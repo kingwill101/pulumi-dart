@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterfaceVlan {
   /// The VLAN interface's private IPv4 address in CIDR notation.
-  final String? ipamAddress;
+  final pulumi.Input<String>? ipamAddress;
   /// The VLAN's unique label. Must be between 1 and 64 characters.
-  final String vlanLabel;
+  final pulumi.Input<String> vlanLabel;
 
   /// Creates a new [InterfaceVlan].
   /// [ipamAddress] The VLAN interface's private IPv4 address in CIDR notation.
@@ -24,8 +25,8 @@ class InterfaceVlan {
 
   factory InterfaceVlan.fromMap(Map<String, dynamic> map) {
     return InterfaceVlan(
-      ipamAddress: map['ipamAddress'] == null ? null : map['ipamAddress'] as String,
-      vlanLabel: map['vlanLabel'] as String,
+      ipamAddress: map['ipamAddress'] == null ? null : (map['ipamAddress'] as String).input(),
+      vlanLabel: (map['vlanLabel'] as String).input(),
     );
   }
 }

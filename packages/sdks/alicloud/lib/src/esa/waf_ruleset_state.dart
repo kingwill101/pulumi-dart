@@ -24,19 +24,13 @@ class WafRulesetState {
   /// [siteVersion] Optional.
   /// [status] Rule Set Status
   WafRulesetState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? phase,
-    pulumi.Output<int>? rulesetId,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<int>? siteVersion,
-    pulumi.Output<String>? status,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      phase = pulumi.Input.asOptionalInput<String>(phase),
-      rulesetId = pulumi.Input.asOptionalInput<int>(rulesetId),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.name,
+    this.phase,
+    this.rulesetId,
+    this.siteId,
+    this.siteVersion,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class WafRulesetState {
 
   factory WafRulesetState.fromMap(Map<String, dynamic> map) {
     return WafRulesetState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      phase: map['phase'] == null ? null : pulumi.Output.create<String>(map['phase'] as String),
-      rulesetId: map['rulesetId'] == null ? null : pulumi.Output.create<int>(map['rulesetId'] as int),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
+      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId'] as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

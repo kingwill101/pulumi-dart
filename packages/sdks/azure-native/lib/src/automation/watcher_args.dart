@@ -40,27 +40,17 @@ class WatcherArgs {
   /// [tags] Resource tags.
   /// [watcherName] The watcher name.
   WatcherArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? description,
-    pulumi.Output<double>? executionFrequencyInSeconds,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scriptName,
-    pulumi.Output<Map<String, String>>? scriptParameters,
-    pulumi.Output<String>? scriptRunOn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? watcherName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionFrequencyInSeconds = pulumi.Input.asOptionalInput<double>(executionFrequencyInSeconds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scriptName = pulumi.Input.asOptionalInput<String>(scriptName),
-      scriptParameters = pulumi.Input.asOptionalInput<Map<String, String>>(scriptParameters),
-      scriptRunOn = pulumi.Input.asOptionalInput<String>(scriptRunOn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      watcherName = pulumi.Input.asOptionalInput<String>(watcherName);
+    required this.automationAccountName,
+    this.description,
+    this.executionFrequencyInSeconds,
+    this.location,
+    required this.resourceGroupName,
+    this.scriptName,
+    this.scriptParameters,
+    this.scriptRunOn,
+    this.tags,
+    this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class WatcherArgs {
 
   factory WatcherArgs.fromMap(Map<String, dynamic> map) {
     return WatcherArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionFrequencyInSeconds: map['executionFrequencyInSeconds'] == null ? null : pulumi.Output.create<double>(map['executionFrequencyInSeconds'] as double),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scriptName: map['scriptName'] == null ? null : pulumi.Output.create<String>(map['scriptName'] as String),
-      scriptParameters: map['scriptParameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['scriptParameters'] as Map).cast<String, String>()),
-      scriptRunOn: map['scriptRunOn'] == null ? null : pulumi.Output.create<String>(map['scriptRunOn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      watcherName: map['watcherName'] == null ? null : pulumi.Output.create<String>(map['watcherName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionFrequencyInSeconds: map['executionFrequencyInSeconds'] == null ? null : (map['executionFrequencyInSeconds'] as double).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scriptName: map['scriptName'] == null ? null : (map['scriptName'] as String).input(),
+      scriptParameters: map['scriptParameters'] == null ? null : ((map['scriptParameters'] as Map).cast<String, String>()).input(),
+      scriptRunOn: map['scriptRunOn'] == null ? null : (map['scriptRunOn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      watcherName: map['watcherName'] == null ? null : (map['watcherName'] as String).input(),
     );
   }
 }

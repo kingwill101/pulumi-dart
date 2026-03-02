@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleConditionHttpRequestMethod {
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ListenerRuleConditionHttpRequestMethod].
   /// [values] Required.
@@ -18,7 +19,7 @@ class ListenerRuleConditionHttpRequestMethod {
 
   factory ListenerRuleConditionHttpRequestMethod.fromMap(Map<String, dynamic> map) {
     return ListenerRuleConditionHttpRequestMethod(
-      values: (map['values'] as List).cast<String>(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

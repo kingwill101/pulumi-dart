@@ -7,28 +7,28 @@ import 'error_response_response.dart';
 /// An Azure Machine Learning compute.
 class AmlComputeResponse {
   /// Location for the underlying compute
-  final String? computeLocation;
+  final pulumi.Input<String>? computeLocation;
   /// The type of compute
   /// Expected value is 'AmlCompute'.
-  final String computeType;
+  final pulumi.Input<String> computeType;
   /// The time at which the compute was created.
-  final String createdOn;
+  final pulumi.Input<String> createdOn;
   /// The description of the Machine Learning compute.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-  final bool? disableLocalAuth;
+  final pulumi.Input<bool>? disableLocalAuth;
   /// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-  final bool isAttachedCompute;
+  final pulumi.Input<bool> isAttachedCompute;
   /// The time at which the compute was last modified.
-  final String modifiedOn;
+  final pulumi.Input<String> modifiedOn;
   /// Properties of AmlCompute
-  final AmlComputePropertiesResponse? properties;
+  final pulumi.Input<AmlComputePropertiesResponse>? properties;
   /// Errors during provisioning
-  final List<ErrorResponseResponse> provisioningErrors;
+  final pulumi.Input<List<ErrorResponseResponse>> provisioningErrors;
   /// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// ARM resource id of the underlying compute
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [AmlComputeResponse].
   /// [computeLocation] Location for the underlying compute
@@ -65,8 +65,8 @@ class AmlComputeResponse {
       'disableLocalAuth': ?disableLocalAuth,
       'isAttachedCompute': isAttachedCompute,
       'modifiedOn': modifiedOn,
-      'properties': ?properties == null ? null : properties!.toMap(),
-      'provisioningErrors': pulumi.Input.encodeList<ErrorResponseResponse, Map<String, dynamic>>(provisioningErrors, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<AmlComputePropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'provisioningErrors': pulumi.Input.mapInputValue<List<ErrorResponseResponse>, List<Map<String, dynamic>>>(provisioningErrors, (value) => pulumi.Input.encodeList<ErrorResponseResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'resourceId': ?resourceId,
     };
@@ -74,17 +74,17 @@ class AmlComputeResponse {
 
   factory AmlComputeResponse.fromMap(Map<String, dynamic> map) {
     return AmlComputeResponse(
-      computeLocation: map['computeLocation'] == null ? null : map['computeLocation'] as String,
-      computeType: map['computeType'] as String,
-      createdOn: map['createdOn'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth'] as bool,
-      isAttachedCompute: map['isAttachedCompute'] as bool,
-      modifiedOn: map['modifiedOn'] as String,
-      properties: map['properties'] == null ? null : AmlComputePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      provisioningErrors: pulumi.Input.decodeList<ErrorResponseResponse>(map['provisioningErrors'], (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      computeLocation: map['computeLocation'] == null ? null : (map['computeLocation'] as String).input(),
+      computeType: (map['computeType'] as String).input(),
+      createdOn: (map['createdOn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      isAttachedCompute: (map['isAttachedCompute'] as bool).input(),
+      modifiedOn: (map['modifiedOn'] as String).input(),
+      properties: map['properties'] == null ? null : (AmlComputePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      provisioningErrors: (pulumi.Input.decodeList<ErrorResponseResponse>(map['provisioningErrors'], (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

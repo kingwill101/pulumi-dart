@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration {
   /// Enables managed log persistence for monitoring logs.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The KMS key ARN to encrypt the logs stored in managed persistence.
-  final String? encryptionKeyArn;
+  final pulumi.Input<String>? encryptionKeyArn;
 
   /// Creates a new [ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration].
   /// [enabled] Enables managed log persistence for monitoring logs.
@@ -24,8 +25,8 @@ class ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguratio
 
   factory ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : map['encryptionKeyArn'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : (map['encryptionKeyArn'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Error details
 class ErrorInfoResponse {
   /// Error code.
-  final String code;
+  final pulumi.Input<String> code;
   /// Error message.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [ErrorInfoResponse].
   /// [code] Error code.
@@ -25,8 +26,8 @@ class ErrorInfoResponse {
 
   factory ErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return ErrorInfoResponse(
-      code: map['code'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

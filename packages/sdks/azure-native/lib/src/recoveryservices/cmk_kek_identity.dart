@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details of the identity used for CMK
 class CmkKekIdentity {
   /// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
-  final bool? useSystemAssignedIdentity;
+  final pulumi.Input<bool>? useSystemAssignedIdentity;
   /// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
-  final String? userAssignedIdentity;
+  final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [CmkKekIdentity].
   /// [useSystemAssignedIdentity] Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
@@ -25,8 +26,8 @@ class CmkKekIdentity {
 
   factory CmkKekIdentity.fromMap(Map<String, dynamic> map) {
     return CmkKekIdentity(
-      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : map['useSystemAssignedIdentity'] as bool,
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : map['userAssignedIdentity'] as String,
+      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : (map['useSystemAssignedIdentity'] as bool).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
     );
   }
 }

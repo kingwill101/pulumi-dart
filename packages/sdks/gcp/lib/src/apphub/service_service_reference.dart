@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceServiceReference {
   /// (Output)
   /// Output only. The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
   /// and Backend Service).
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ServiceServiceReference].
   /// [uri] (Output)
@@ -21,7 +22,7 @@ class ServiceServiceReference {
 
   factory ServiceServiceReference.fromMap(Map<String, dynamic> map) {
     return ServiceServiceReference(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

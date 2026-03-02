@@ -52,27 +52,17 @@ class RegistrationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [yearlyPrice] Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
   RegistrationArgs({
-    pulumi.Output<List<String>>? contactNotices,
-    required pulumi.Output<RegistrationContactSettings> contactSettings,
-    pulumi.Output<RegistrationDnsSettings>? dnsSettings,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<List<String>>? domainNotices,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<RegistrationManagementSettings>? managementSettings,
-    pulumi.Output<String>? project,
-    required pulumi.Output<RegistrationYearlyPrice> yearlyPrice,
-  }) :
-      contactNotices = pulumi.Input.asOptionalInput<List<String>>(contactNotices),
-      contactSettings = pulumi.Input.asInput<RegistrationContactSettings>(contactSettings),
-      dnsSettings = pulumi.Input.asOptionalInput<RegistrationDnsSettings>(dnsSettings),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainNotices = pulumi.Input.asOptionalInput<List<String>>(domainNotices),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      managementSettings = pulumi.Input.asOptionalInput<RegistrationManagementSettings>(managementSettings),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      yearlyPrice = pulumi.Input.asInput<RegistrationYearlyPrice>(yearlyPrice);
+    this.contactNotices,
+    required this.contactSettings,
+    this.dnsSettings,
+    required this.domainName,
+    this.domainNotices,
+    this.labels,
+    required this.location,
+    this.managementSettings,
+    this.project,
+    required this.yearlyPrice,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,16 +81,16 @@ class RegistrationArgs {
 
   factory RegistrationArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationArgs(
-      contactNotices: map['contactNotices'] == null ? null : pulumi.Output.create<List<String>>((map['contactNotices'] as List).cast<String>()),
-      contactSettings: pulumi.Output.create<RegistrationContactSettings>(RegistrationContactSettings.fromMap((map['contactSettings'] as Map).cast<String, dynamic>())),
-      dnsSettings: map['dnsSettings'] == null ? null : pulumi.Output.create<RegistrationDnsSettings>(RegistrationDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainNotices: map['domainNotices'] == null ? null : pulumi.Output.create<List<String>>((map['domainNotices'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      managementSettings: map['managementSettings'] == null ? null : pulumi.Output.create<RegistrationManagementSettings>(RegistrationManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      yearlyPrice: pulumi.Output.create<RegistrationYearlyPrice>(RegistrationYearlyPrice.fromMap((map['yearlyPrice'] as Map).cast<String, dynamic>())),
+      contactNotices: map['contactNotices'] == null ? null : ((map['contactNotices'] as List).cast<String>()).input(),
+      contactSettings: (RegistrationContactSettings.fromMap((map['contactSettings'] as Map).cast<String, dynamic>())).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (RegistrationDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainNotices: map['domainNotices'] == null ? null : ((map['domainNotices'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      managementSettings: map['managementSettings'] == null ? null : (RegistrationManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      yearlyPrice: (RegistrationYearlyPrice.fromMap((map['yearlyPrice'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

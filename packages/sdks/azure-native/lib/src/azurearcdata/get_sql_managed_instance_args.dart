@@ -16,11 +16,9 @@ class GetSqlManagedInstanceArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlManagedInstanceName] Name of SQL Managed Instance
   GetSqlManagedInstanceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlManagedInstanceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlManagedInstanceName = pulumi.Input.asInput<String>(sqlManagedInstanceName);
+    required this.resourceGroupName,
+    required this.sqlManagedInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSqlManagedInstanceArgs {
 
   factory GetSqlManagedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlManagedInstanceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlManagedInstanceName: pulumi.Output.create<String>(map['sqlManagedInstanceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlManagedInstanceName: (map['sqlManagedInstanceName'] as String).input(),
     );
   }
 }

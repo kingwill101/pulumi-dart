@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Session network configuration.
 class SessionNetworkConfigurationResponse {
   /// Network status for the sessions.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [SessionNetworkConfigurationResponse].
   /// [status] Network status for the sessions.
@@ -20,7 +21,7 @@ class SessionNetworkConfigurationResponse {
 
   factory SessionNetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SessionNetworkConfigurationResponse(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

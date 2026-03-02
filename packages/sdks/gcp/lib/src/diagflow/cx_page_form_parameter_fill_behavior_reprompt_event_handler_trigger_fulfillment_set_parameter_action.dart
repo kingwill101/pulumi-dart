@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction {
   /// Display name of the parameter.
-  final String? parameter;
+  final pulumi.Input<String>? parameter;
   /// The new JSON-encoded value of the parameter. A null value clears the parameter.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction].
   /// [parameter] Display name of the parameter.
@@ -24,8 +25,8 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetPa
 
   factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction(
-      parameter: map['parameter'] == null ? null : map['parameter'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      parameter: map['parameter'] == null ? null : (map['parameter'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

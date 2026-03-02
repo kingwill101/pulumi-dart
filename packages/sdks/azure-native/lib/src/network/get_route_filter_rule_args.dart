@@ -19,13 +19,10 @@ class GetRouteFilterRuleArgs {
   /// [routeFilterName] The name of the route filter.
   /// [ruleName] The name of the rule.
   GetRouteFilterRuleArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> routeFilterName,
-    required pulumi.Output<String> ruleName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeFilterName = pulumi.Input.asInput<String>(routeFilterName),
-      ruleName = pulumi.Input.asInput<String>(ruleName);
+    required this.resourceGroupName,
+    required this.routeFilterName,
+    required this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRouteFilterRuleArgs {
 
   factory GetRouteFilterRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteFilterRuleArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeFilterName: pulumi.Output.create<String>(map['routeFilterName'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeFilterName: (map['routeFilterName'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

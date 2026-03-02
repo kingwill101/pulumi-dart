@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount {
   /// (Optional)
-  final String? email;
+  final pulumi.Input<String>? email;
   /// (Optional)
-  final List<String>? scopes;
+  final pulumi.Input<List<String>>? scopes;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount].
   /// [email] (Optional)
@@ -24,8 +25,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount(
-      email: map['email'] == null ? null : map['email'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

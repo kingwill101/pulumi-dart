@@ -25,17 +25,12 @@ class ConsumerGroupArgs {
   /// [resourceGroupName] The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists. Changing this forces a new resource to be created.
   /// [userMetadata] Specifies the user metadata.
   ConsumerGroupArgs({
-    required pulumi.Output<String> eventhubName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? userMetadata,
-  }) :
-      eventhubName = pulumi.Input.asInput<String>(eventhubName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userMetadata = pulumi.Input.asOptionalInput<String>(userMetadata);
+    required this.eventhubName,
+    this.name,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.userMetadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ConsumerGroupArgs {
 
   factory ConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupArgs(
-      eventhubName: pulumi.Output.create<String>(map['eventhubName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userMetadata: map['userMetadata'] == null ? null : pulumi.Output.create<String>(map['userMetadata'] as String),
+      eventhubName: (map['eventhubName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
     );
   }
 }

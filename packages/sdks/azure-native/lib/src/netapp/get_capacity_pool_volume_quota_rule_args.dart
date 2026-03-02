@@ -25,17 +25,12 @@ class GetCapacityPoolVolumeQuotaRuleArgs {
   /// [volumeName] The name of the volume
   /// [volumeQuotaRuleName] The name of volume quota rule
   GetCapacityPoolVolumeQuotaRuleArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> volumeName,
-    required pulumi.Output<String> volumeQuotaRuleName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      volumeName = pulumi.Input.asInput<String>(volumeName),
-      volumeQuotaRuleName = pulumi.Input.asInput<String>(volumeQuotaRuleName);
+    required this.accountName,
+    required this.poolName,
+    required this.resourceGroupName,
+    required this.volumeName,
+    required this.volumeQuotaRuleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetCapacityPoolVolumeQuotaRuleArgs {
 
   factory GetCapacityPoolVolumeQuotaRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolVolumeQuotaRuleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
-      volumeQuotaRuleName: pulumi.Output.create<String>(map['volumeQuotaRuleName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
+      volumeQuotaRuleName: (map['volumeQuotaRuleName'] as String).input(),
     );
   }
 }

@@ -30,19 +30,13 @@ class GuestAgentArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualMachineName] Name of the vm.
   GuestAgentArgs({
-    pulumi.Output<GuestCredential>? credentials,
-    pulumi.Output<String>? guestAgentName,
-    pulumi.Output<HttpProxyConfiguration>? httpProxyConfig,
-    pulumi.Output<String>? provisioningAction,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<GuestCredential>(credentials),
-      guestAgentName = pulumi.Input.asOptionalInput<String>(guestAgentName),
-      httpProxyConfig = pulumi.Input.asOptionalInput<HttpProxyConfiguration>(httpProxyConfig),
-      provisioningAction = pulumi.Input.asOptionalInput<String>(provisioningAction),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    this.credentials,
+    this.guestAgentName,
+    this.httpProxyConfig,
+    this.provisioningAction,
+    required this.resourceGroupName,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class GuestAgentArgs {
 
   factory GuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return GuestAgentArgs(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<GuestCredential>(GuestCredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      guestAgentName: map['guestAgentName'] == null ? null : pulumi.Output.create<String>(map['guestAgentName'] as String),
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : pulumi.Output.create<HttpProxyConfiguration>(HttpProxyConfiguration.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())),
-      provisioningAction: map['provisioningAction'] == null ? null : pulumi.Output.create<String>(map['provisioningAction'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      credentials: map['credentials'] == null ? null : (GuestCredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      guestAgentName: map['guestAgentName'] == null ? null : (map['guestAgentName'] as String).input(),
+      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())).input(),
+      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

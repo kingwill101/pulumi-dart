@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Database Fleet properties.
 class FleetProperties {
   /// Fleet description.
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [FleetProperties].
   /// [description] Fleet description.
@@ -20,7 +21,7 @@ class FleetProperties {
 
   factory FleetProperties.fromMap(Map<String, dynamic> map) {
     return FleetProperties(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

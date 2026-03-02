@@ -14,9 +14,8 @@ class SdkvoiceGlobalSettingsArgs {
   /// Creates a new [SdkvoiceGlobalSettingsArgs].
   /// [voiceConnector] The Voice Connector settings. See voice_connector.
   SdkvoiceGlobalSettingsArgs({
-    required pulumi.Output<SdkvoiceGlobalSettingsVoiceConnector> voiceConnector,
-  }) :
-      voiceConnector = pulumi.Input.asInput<SdkvoiceGlobalSettingsVoiceConnector>(voiceConnector);
+    required this.voiceConnector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class SdkvoiceGlobalSettingsArgs {
 
   factory SdkvoiceGlobalSettingsArgs.fromMap(Map<String, dynamic> map) {
     return SdkvoiceGlobalSettingsArgs(
-      voiceConnector: pulumi.Output.create<SdkvoiceGlobalSettingsVoiceConnector>(SdkvoiceGlobalSettingsVoiceConnector.fromMap((map['voiceConnector'] as Map).cast<String, dynamic>())),
+      voiceConnector: (SdkvoiceGlobalSettingsVoiceConnector.fromMap((map['voiceConnector'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

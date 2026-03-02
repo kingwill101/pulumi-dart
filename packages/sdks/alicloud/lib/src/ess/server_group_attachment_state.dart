@@ -26,19 +26,13 @@ class ServerGroupAttachmentState {
   /// [type] The type of server group N. Valid values: ALB, NLB.
   /// [weight] The weight of an ECS instance attached to the Server Group.
   ServerGroupAttachmentState({
-    pulumi.Output<bool>? forceAttach,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? scalingGroupId,
-    pulumi.Output<String>? serverGroupId,
-    pulumi.Output<String>? type,
-    pulumi.Output<int>? weight,
-  }) :
-      forceAttach = pulumi.Input.asOptionalInput<bool>(forceAttach),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      scalingGroupId = pulumi.Input.asOptionalInput<String>(scalingGroupId),
-      serverGroupId = pulumi.Input.asOptionalInput<String>(serverGroupId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.forceAttach,
+    this.port,
+    this.scalingGroupId,
+    this.serverGroupId,
+    this.type,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ServerGroupAttachmentState {
 
   factory ServerGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return ServerGroupAttachmentState(
-      forceAttach: map['forceAttach'] == null ? null : pulumi.Output.create<bool>(map['forceAttach'] as bool),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      scalingGroupId: map['scalingGroupId'] == null ? null : pulumi.Output.create<String>(map['scalingGroupId'] as String),
-      serverGroupId: map['serverGroupId'] == null ? null : pulumi.Output.create<String>(map['serverGroupId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

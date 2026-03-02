@@ -22,15 +22,11 @@ class AutonomousDatabaseBackupArgs {
   /// [retentionPeriodInDays] (Updatable) The number of days to retain the backup. Must be between 90 and 3650 days.
   /// [type] The type of backup to create.Currently, only `LongTerm` backup operations are supported through the Oracle database At azure service. Defaults to `LongTerm`. Changing this forces a new resource to be created.
   AutonomousDatabaseBackupArgs({
-    required pulumi.Output<String> autonomousDatabaseId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> retentionPeriodInDays,
-    pulumi.Output<String>? type,
-  }) :
-      autonomousDatabaseId = pulumi.Input.asInput<String>(autonomousDatabaseId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      retentionPeriodInDays = pulumi.Input.asInput<int>(retentionPeriodInDays),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.autonomousDatabaseId,
+    this.name,
+    required this.retentionPeriodInDays,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AutonomousDatabaseBackupArgs {
 
   factory AutonomousDatabaseBackupArgs.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseBackupArgs(
-      autonomousDatabaseId: pulumi.Output.create<String>(map['autonomousDatabaseId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      retentionPeriodInDays: pulumi.Output.create<int>(map['retentionPeriodInDays'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      autonomousDatabaseId: (map['autonomousDatabaseId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

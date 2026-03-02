@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Plugin certificates information for Service Mesh.
 class IstioPluginCertificateAuthorityResponse {
   /// Certificate chain object name in Azure Key Vault.
-  final String? certChainObjectName;
+  final pulumi.Input<String>? certChainObjectName;
   /// Intermediate certificate object name in Azure Key Vault.
-  final String? certObjectName;
+  final pulumi.Input<String>? certObjectName;
   /// Intermediate certificate private key object name in Azure Key Vault.
-  final String? keyObjectName;
+  final pulumi.Input<String>? keyObjectName;
   /// The resource ID of the Key Vault.
-  final String? keyVaultId;
+  final pulumi.Input<String>? keyVaultId;
   /// Root certificate object name in Azure Key Vault.
-  final String? rootCertObjectName;
+  final pulumi.Input<String>? rootCertObjectName;
 
   /// Creates a new [IstioPluginCertificateAuthorityResponse].
   /// [certChainObjectName] Certificate chain object name in Azure Key Vault.
@@ -40,11 +41,11 @@ class IstioPluginCertificateAuthorityResponse {
 
   factory IstioPluginCertificateAuthorityResponse.fromMap(Map<String, dynamic> map) {
     return IstioPluginCertificateAuthorityResponse(
-      certChainObjectName: map['certChainObjectName'] == null ? null : map['certChainObjectName'] as String,
-      certObjectName: map['certObjectName'] == null ? null : map['certObjectName'] as String,
-      keyObjectName: map['keyObjectName'] == null ? null : map['keyObjectName'] as String,
-      keyVaultId: map['keyVaultId'] == null ? null : map['keyVaultId'] as String,
-      rootCertObjectName: map['rootCertObjectName'] == null ? null : map['rootCertObjectName'] as String,
+      certChainObjectName: map['certChainObjectName'] == null ? null : (map['certChainObjectName'] as String).input(),
+      certObjectName: map['certObjectName'] == null ? null : (map['certObjectName'] as String).input(),
+      keyObjectName: map['keyObjectName'] == null ? null : (map['keyObjectName'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      rootCertObjectName: map['rootCertObjectName'] == null ? null : (map['rootCertObjectName'] as String).input(),
     );
   }
 }

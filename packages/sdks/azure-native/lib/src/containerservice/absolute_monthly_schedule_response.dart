@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
 class AbsoluteMonthlyScheduleResponse {
   /// The date of the month.
-  final int dayOfMonth;
+  final pulumi.Input<int> dayOfMonth;
   /// Specifies the number of months between each set of occurrences.
-  final int intervalMonths;
+  final pulumi.Input<int> intervalMonths;
 
   /// Creates a new [AbsoluteMonthlyScheduleResponse].
   /// [dayOfMonth] The date of the month.
@@ -25,8 +26,8 @@ class AbsoluteMonthlyScheduleResponse {
 
   factory AbsoluteMonthlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return AbsoluteMonthlyScheduleResponse(
-      dayOfMonth: map['dayOfMonth'] as int,
-      intervalMonths: map['intervalMonths'] as int,
+      dayOfMonth: (map['dayOfMonth'] as int).input(),
+      intervalMonths: (map['intervalMonths'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromMachineImageShieldedInstanceConfig {
   /// Whether integrity monitoring is enabled for the instance.
-  final bool? enableIntegrityMonitoring;
+  final pulumi.Input<bool>? enableIntegrityMonitoring;
   /// Whether secure boot is enabled for the instance.
-  final bool? enableSecureBoot;
+  final pulumi.Input<bool>? enableSecureBoot;
   /// Whether the instance uses vTPM.
-  final bool? enableVtpm;
+  final pulumi.Input<bool>? enableVtpm;
 
   /// Creates a new [InstanceFromMachineImageShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Whether integrity monitoring is enabled for the instance.
@@ -29,9 +30,9 @@ class InstanceFromMachineImageShieldedInstanceConfig {
 
   factory InstanceFromMachineImageShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
-      enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring'] as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableVtpm: map['enableVtpm'] == null ? null : (map['enableVtpm'] as bool).input(),
     );
   }
 }

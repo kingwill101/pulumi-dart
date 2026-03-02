@@ -9,29 +9,29 @@ import 'time_aggregation_type.dart';
 /// The trigger that results in a scaling action.
 class MetricTrigger {
   /// List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
-  final List<ScaleRuleMetricDimension>? dimensions;
+  final pulumi.Input<List<ScaleRuleMetricDimension>>? dimensions;
   /// a value indicating whether metric should divide per instance.
-  final bool? dividePerInstance;
+  final pulumi.Input<bool>? dividePerInstance;
   /// the name of the metric that defines what the rule monitors.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// the namespace of the metric that defines what the rule monitors.
-  final String? metricNamespace;
+  final pulumi.Input<String>? metricNamespace;
   /// the location of the resource the rule monitors.
-  final String? metricResourceLocation;
+  final pulumi.Input<String>? metricResourceLocation;
   /// the resource identifier of the resource the rule monitors.
-  final String metricResourceUri;
+  final pulumi.Input<String> metricResourceUri;
   /// the operator that is used to compare the metric data and the threshold.
-  final ComparisonOperationType operator;
+  final pulumi.Input<ComparisonOperationType> operator;
   /// the metric statistic type. How the metrics from multiple instances are combined.
-  final MetricStatisticType statistic;
+  final pulumi.Input<MetricStatisticType> statistic;
   /// the threshold of the metric that triggers the scale action.
-  final double threshold;
+  final pulumi.Input<double> threshold;
   /// time aggregation type. How the data that is collected should be combined over time. The default value is Average.
-  final TimeAggregationType timeAggregation;
+  final pulumi.Input<TimeAggregationType> timeAggregation;
   /// the granularity of metrics the rule monitors. Must be one of the predefined values returned from metric definitions for the metric. Must be between 12 hours and 1 minute.
-  final String timeGrain;
+  final pulumi.Input<String> timeGrain;
   /// the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
-  final String timeWindow;
+  final pulumi.Input<String> timeWindow;
 
   /// Creates a new [MetricTrigger].
   /// [dimensions] List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
@@ -63,16 +63,16 @@ class MetricTrigger {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<ScaleRuleMetricDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<ScaleRuleMetricDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<ScaleRuleMetricDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dividePerInstance': ?dividePerInstance,
       'metricName': metricName,
       'metricNamespace': ?metricNamespace,
       'metricResourceLocation': ?metricResourceLocation,
       'metricResourceUri': metricResourceUri,
-      'operator': operator.value,
-      'statistic': statistic.value,
+      'operator': pulumi.Input.mapInputValue<ComparisonOperationType, String>(operator, (value) => value.value),
+      'statistic': pulumi.Input.mapInputValue<MetricStatisticType, String>(statistic, (value) => value.value),
       'threshold': threshold,
-      'timeAggregation': timeAggregation.value,
+      'timeAggregation': pulumi.Input.mapInputValue<TimeAggregationType, String>(timeAggregation, (value) => value.value),
       'timeGrain': timeGrain,
       'timeWindow': timeWindow,
     };
@@ -80,18 +80,18 @@ class MetricTrigger {
 
   factory MetricTrigger.fromMap(Map<String, dynamic> map) {
     return MetricTrigger(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<ScaleRuleMetricDimension>(map['dimensions'], (value) => ScaleRuleMetricDimension.fromMap((value as Map).cast<String, dynamic>())),
-      dividePerInstance: map['dividePerInstance'] == null ? null : map['dividePerInstance'] as bool,
-      metricName: map['metricName'] as String,
-      metricNamespace: map['metricNamespace'] == null ? null : map['metricNamespace'] as String,
-      metricResourceLocation: map['metricResourceLocation'] == null ? null : map['metricResourceLocation'] as String,
-      metricResourceUri: map['metricResourceUri'] as String,
-      operator: ComparisonOperationType.fromValue(map['operator'] as String),
-      statistic: MetricStatisticType.fromValue(map['statistic'] as String),
-      threshold: map['threshold'] as double,
-      timeAggregation: TimeAggregationType.fromValue(map['timeAggregation'] as String),
-      timeGrain: map['timeGrain'] as String,
-      timeWindow: map['timeWindow'] as String,
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScaleRuleMetricDimension>(map['dimensions'], (value) => ScaleRuleMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dividePerInstance: map['dividePerInstance'] == null ? null : (map['dividePerInstance'] as bool).input(),
+      metricName: (map['metricName'] as String).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
+      metricResourceLocation: map['metricResourceLocation'] == null ? null : (map['metricResourceLocation'] as String).input(),
+      metricResourceUri: (map['metricResourceUri'] as String).input(),
+      operator: (ComparisonOperationType.fromValue(map['operator'] as String)).input(),
+      statistic: (MetricStatisticType.fromValue(map['statistic'] as String)).input(),
+      threshold: (map['threshold'] as double).input(),
+      timeAggregation: (TimeAggregationType.fromValue(map['timeAggregation'] as String)).input(),
+      timeGrain: (map['timeGrain'] as String).input(),
+      timeWindow: (map['timeWindow'] as String).input(),
     );
   }
 }

@@ -21,13 +21,10 @@ class AccessPolicyArgs {
   /// [scopes] Folder or project on which this policy is applicable.
   /// [title] Human readable title. Does not affect behavior.
   AccessPolicyArgs({
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? scopes,
-    required pulumi.Output<String> title,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      scopes = pulumi.Input.asOptionalInput<String>(scopes),
-      title = pulumi.Input.asInput<String>(title);
+    required this.parent,
+    this.scopes,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<String>(map['scopes'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      parent: (map['parent'] as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

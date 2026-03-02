@@ -19,13 +19,10 @@ class DatasetKustoDatabaseArgs {
   /// [name] The name which should be used for this Data Share Kusto Database Dataset. Changing this forces a new Data Share Kusto Database Dataset to be created.
   /// [shareId] The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created. Changing this forces a new Data Share Kusto Database Dataset to be created.
   DatasetKustoDatabaseArgs({
-    required pulumi.Output<String> kustoDatabaseId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> shareId,
-  }) :
-      kustoDatabaseId = pulumi.Input.asInput<String>(kustoDatabaseId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      shareId = pulumi.Input.asInput<String>(shareId);
+    required this.kustoDatabaseId,
+    this.name,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DatasetKustoDatabaseArgs {
 
   factory DatasetKustoDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatasetKustoDatabaseArgs(
-      kustoDatabaseId: pulumi.Output.create<String>(map['kustoDatabaseId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
+      kustoDatabaseId: (map['kustoDatabaseId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

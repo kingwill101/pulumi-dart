@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The claim mapping expression for JWTAuthenticator.
 class JWTAuthenticatorClaimMappingExpression {
   /// The CEL expression used to access token claims.
-  final String expression;
+  final pulumi.Input<String> expression;
 
   /// Creates a new [JWTAuthenticatorClaimMappingExpression].
   /// [expression] The CEL expression used to access token claims.
@@ -20,7 +21,7 @@ class JWTAuthenticatorClaimMappingExpression {
 
   factory JWTAuthenticatorClaimMappingExpression.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorClaimMappingExpression(
-      expression: map['expression'] as String,
+      expression: (map['expression'] as String).input(),
     );
   }
 }

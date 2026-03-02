@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigReservationAffinity {
   /// The type of reservation consumption
@@ -9,11 +10,11 @@ class ClusterNodeConfigReservationAffinity {
   /// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
   /// * `"ANY_RESERVATION"`: Consume any reservation available.
   /// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
-  final String consumeReservationType;
+  final pulumi.Input<String> consumeReservationType;
   /// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ClusterNodeConfigReservationAffinity].
   /// [consumeReservationType] The type of reservation consumption
@@ -35,9 +36,9 @@ class ClusterNodeConfigReservationAffinity {
 
   factory ClusterNodeConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigReservationAffinity(
-      consumeReservationType: map['consumeReservationType'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      consumeReservationType: (map['consumeReservationType'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

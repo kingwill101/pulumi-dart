@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_network_performance_config.dart';
 import 'default_snat_status.dart';
 import 'dnsconfig.dart';
@@ -11,27 +12,27 @@ import 'service_external_ips_config.dart';
 /// NetworkConfig reports the relative names of network & subnetwork.
 class NetworkConfig {
   /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-  final NetworkConfigDatapathProvider? datapathProvider;
+  final pulumi.Input<NetworkConfigDatapathProvider>? datapathProvider;
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
-  final DefaultSnatStatus? defaultSnatStatus;
+  final pulumi.Input<DefaultSnatStatus>? defaultSnatStatus;
   /// DNSConfig contains clusterDNS config for this cluster.
-  final DNSConfig? dnsConfig;
+  final pulumi.Input<DNSConfig>? dnsConfig;
   /// Whether FQDN Network Policy is enabled on this cluster.
-  final bool? enableFqdnNetworkPolicy;
+  final pulumi.Input<bool>? enableFqdnNetworkPolicy;
   /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
-  final bool? enableIntraNodeVisibility;
+  final pulumi.Input<bool>? enableIntraNodeVisibility;
   /// Whether L4ILB Subsetting is enabled for this cluster.
-  final bool? enableL4ilbSubsetting;
+  final pulumi.Input<bool>? enableL4ilbSubsetting;
   /// Whether multi-networking is enabled for this cluster.
-  final bool? enableMultiNetworking;
+  final pulumi.Input<bool>? enableMultiNetworking;
   /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
-  final GatewayAPIConfig? gatewayApiConfig;
+  final pulumi.Input<GatewayAPIConfig>? gatewayApiConfig;
   /// Network bandwidth tier configuration.
-  final ClusterNetworkPerformanceConfig? networkPerformanceConfig;
+  final pulumi.Input<ClusterNetworkPerformanceConfig>? networkPerformanceConfig;
   /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-  final NetworkConfigPrivateIpv6GoogleAccess? privateIpv6GoogleAccess;
+  final pulumi.Input<NetworkConfigPrivateIpv6GoogleAccess>? privateIpv6GoogleAccess;
   /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
-  final ServiceExternalIPsConfig? serviceExternalIpsConfig;
+  final pulumi.Input<ServiceExternalIPsConfig>? serviceExternalIpsConfig;
 
   /// Creates a new [NetworkConfig].
   /// [datapathProvider] The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -61,33 +62,33 @@ class NetworkConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datapathProvider': ?datapathProvider == null ? null : datapathProvider!.value,
-      'defaultSnatStatus': ?defaultSnatStatus == null ? null : defaultSnatStatus!.toMap(),
-      'dnsConfig': ?dnsConfig == null ? null : dnsConfig!.toMap(),
+      'datapathProvider': ?pulumi.Input.mapOptionalInputValue<NetworkConfigDatapathProvider, String>(datapathProvider, (value) => value.value),
+      'defaultSnatStatus': ?pulumi.Input.mapOptionalInputValue<DefaultSnatStatus, Map<String, dynamic>>(defaultSnatStatus, (value) => value.toMap()),
+      'dnsConfig': ?pulumi.Input.mapOptionalInputValue<DNSConfig, Map<String, dynamic>>(dnsConfig, (value) => value.toMap()),
       'enableFqdnNetworkPolicy': ?enableFqdnNetworkPolicy,
       'enableIntraNodeVisibility': ?enableIntraNodeVisibility,
       'enableL4ilbSubsetting': ?enableL4ilbSubsetting,
       'enableMultiNetworking': ?enableMultiNetworking,
-      'gatewayApiConfig': ?gatewayApiConfig == null ? null : gatewayApiConfig!.toMap(),
-      'networkPerformanceConfig': ?networkPerformanceConfig == null ? null : networkPerformanceConfig!.toMap(),
-      'privateIpv6GoogleAccess': ?privateIpv6GoogleAccess == null ? null : privateIpv6GoogleAccess!.value,
-      'serviceExternalIpsConfig': ?serviceExternalIpsConfig == null ? null : serviceExternalIpsConfig!.toMap(),
+      'gatewayApiConfig': ?pulumi.Input.mapOptionalInputValue<GatewayAPIConfig, Map<String, dynamic>>(gatewayApiConfig, (value) => value.toMap()),
+      'networkPerformanceConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNetworkPerformanceConfig, Map<String, dynamic>>(networkPerformanceConfig, (value) => value.toMap()),
+      'privateIpv6GoogleAccess': ?pulumi.Input.mapOptionalInputValue<NetworkConfigPrivateIpv6GoogleAccess, String>(privateIpv6GoogleAccess, (value) => value.value),
+      'serviceExternalIpsConfig': ?pulumi.Input.mapOptionalInputValue<ServiceExternalIPsConfig, Map<String, dynamic>>(serviceExternalIpsConfig, (value) => value.toMap()),
     };
   }
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      datapathProvider: map['datapathProvider'] == null ? null : NetworkConfigDatapathProvider.fromValue(map['datapathProvider'] as String),
-      defaultSnatStatus: map['defaultSnatStatus'] == null ? null : DefaultSnatStatus.fromMap((map['defaultSnatStatus'] as Map).cast<String, dynamic>()),
-      dnsConfig: map['dnsConfig'] == null ? null : DNSConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>()),
-      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] == null ? null : map['enableFqdnNetworkPolicy'] as bool,
-      enableIntraNodeVisibility: map['enableIntraNodeVisibility'] == null ? null : map['enableIntraNodeVisibility'] as bool,
-      enableL4ilbSubsetting: map['enableL4ilbSubsetting'] == null ? null : map['enableL4ilbSubsetting'] as bool,
-      enableMultiNetworking: map['enableMultiNetworking'] == null ? null : map['enableMultiNetworking'] as bool,
-      gatewayApiConfig: map['gatewayApiConfig'] == null ? null : GatewayAPIConfig.fromMap((map['gatewayApiConfig'] as Map).cast<String, dynamic>()),
-      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : ClusterNetworkPerformanceConfig.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : NetworkConfigPrivateIpv6GoogleAccess.fromValue(map['privateIpv6GoogleAccess'] as String),
-      serviceExternalIpsConfig: map['serviceExternalIpsConfig'] == null ? null : ServiceExternalIPsConfig.fromMap((map['serviceExternalIpsConfig'] as Map).cast<String, dynamic>()),
+      datapathProvider: map['datapathProvider'] == null ? null : (NetworkConfigDatapathProvider.fromValue(map['datapathProvider'] as String)).input(),
+      defaultSnatStatus: map['defaultSnatStatus'] == null ? null : (DefaultSnatStatus.fromMap((map['defaultSnatStatus'] as Map).cast<String, dynamic>())).input(),
+      dnsConfig: map['dnsConfig'] == null ? null : (DNSConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
+      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] == null ? null : (map['enableFqdnNetworkPolicy'] as bool).input(),
+      enableIntraNodeVisibility: map['enableIntraNodeVisibility'] == null ? null : (map['enableIntraNodeVisibility'] as bool).input(),
+      enableL4ilbSubsetting: map['enableL4ilbSubsetting'] == null ? null : (map['enableL4ilbSubsetting'] as bool).input(),
+      enableMultiNetworking: map['enableMultiNetworking'] == null ? null : (map['enableMultiNetworking'] as bool).input(),
+      gatewayApiConfig: map['gatewayApiConfig'] == null ? null : (GatewayAPIConfig.fromMap((map['gatewayApiConfig'] as Map).cast<String, dynamic>())).input(),
+      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : (ClusterNetworkPerformanceConfig.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>())).input(),
+      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (NetworkConfigPrivateIpv6GoogleAccess.fromValue(map['privateIpv6GoogleAccess'] as String)).input(),
+      serviceExternalIpsConfig: map['serviceExternalIpsConfig'] == null ? null : (ServiceExternalIPsConfig.fromMap((map['serviceExternalIpsConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

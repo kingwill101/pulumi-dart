@@ -16,11 +16,9 @@ class GetDeploymentAtScopeArgs {
   /// [deploymentName] The name of the deployment.
   /// [scope] The resource scope.
   GetDeploymentAtScopeArgs({
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> scope,
-  }) :
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.deploymentName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeploymentAtScopeArgs {
 
   factory GetDeploymentAtScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentAtScopeArgs(
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      deploymentName: (map['deploymentName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

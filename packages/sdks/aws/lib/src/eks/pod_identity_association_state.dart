@@ -45,31 +45,19 @@ class PodIdentityAssociationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetRoleArn] The Amazon Resource Name (ARN) of the IAM role to be chained to the the IAM role specified as `role_arn`.
   PodIdentityAssociationState({
-    pulumi.Output<String>? associationArn,
-    pulumi.Output<String>? associationId,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<bool>? disableSessionTags,
-    pulumi.Output<String>? externalId,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? targetRoleArn,
-  }) :
-      associationArn = pulumi.Input.asOptionalInput<String>(associationArn),
-      associationId = pulumi.Input.asOptionalInput<String>(associationId),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      disableSessionTags = pulumi.Input.asOptionalInput<bool>(disableSessionTags),
-      externalId = pulumi.Input.asOptionalInput<String>(externalId),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetRoleArn = pulumi.Input.asOptionalInput<String>(targetRoleArn);
+    this.associationArn,
+    this.associationId,
+    this.clusterName,
+    this.disableSessionTags,
+    this.externalId,
+    this.namespace,
+    this.region,
+    this.roleArn,
+    this.serviceAccount,
+    this.tags,
+    this.tagsAll,
+    this.targetRoleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class PodIdentityAssociationState {
 
   factory PodIdentityAssociationState.fromMap(Map<String, dynamic> map) {
     return PodIdentityAssociationState(
-      associationArn: map['associationArn'] == null ? null : pulumi.Output.create<String>(map['associationArn'] as String),
-      associationId: map['associationId'] == null ? null : pulumi.Output.create<String>(map['associationId'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      disableSessionTags: map['disableSessionTags'] == null ? null : pulumi.Output.create<bool>(map['disableSessionTags'] as bool),
-      externalId: map['externalId'] == null ? null : pulumi.Output.create<String>(map['externalId'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetRoleArn: map['targetRoleArn'] == null ? null : pulumi.Output.create<String>(map['targetRoleArn'] as String),
+      associationArn: map['associationArn'] == null ? null : (map['associationArn'] as String).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      disableSessionTags: map['disableSessionTags'] == null ? null : (map['disableSessionTags'] as bool).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetRoleArn: map['targetRoleArn'] == null ? null : (map['targetRoleArn'] as String).input(),
     );
   }
 }

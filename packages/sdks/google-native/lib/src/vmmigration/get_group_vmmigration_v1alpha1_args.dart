@@ -16,13 +16,10 @@ class GetGroupVmmigrationV1alpha1Args {
   /// [location] Required.
   /// [project] Optional.
   GetGroupVmmigrationV1alpha1Args({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.groupId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetGroupVmmigrationV1alpha1Args {
 
   factory GetGroupVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetGroupVmmigrationV1alpha1Args(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      groupId: (map['groupId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

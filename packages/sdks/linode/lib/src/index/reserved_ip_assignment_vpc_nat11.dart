@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReservedIpAssignmentVpcNat11 {
-  final String address;
-  final int subnetId;
-  final int vpcId;
+  final pulumi.Input<String> address;
+  final pulumi.Input<int> subnetId;
+  final pulumi.Input<int> vpcId;
 
   /// Creates a new [ReservedIpAssignmentVpcNat11].
   /// [address] Required.
@@ -26,9 +27,9 @@ class ReservedIpAssignmentVpcNat11 {
 
   factory ReservedIpAssignmentVpcNat11.fromMap(Map<String, dynamic> map) {
     return ReservedIpAssignmentVpcNat11(
-      address: map['address'] as String,
-      subnetId: map['subnetId'] as int,
-      vpcId: map['vpcId'] as int,
+      address: (map['address'] as String).input(),
+      subnetId: (map['subnetId'] as int).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

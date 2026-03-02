@@ -18,13 +18,10 @@ class GetReplicationSubnetGroupArgs {
   /// [replicationSubnetGroupId] Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
   /// [tags] Optional.
   GetReplicationSubnetGroupArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> replicationSubnetGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationSubnetGroupId = pulumi.Input.asInput<String>(replicationSubnetGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.replicationSubnetGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetReplicationSubnetGroupArgs {
 
   factory GetReplicationSubnetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationSubnetGroupArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationSubnetGroupId: pulumi.Output.create<String>(map['replicationSubnetGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationSubnetGroupId: (map['replicationSubnetGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

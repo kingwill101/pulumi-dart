@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteTableRoutesRoute {
   /// The CIDR used for route destination matches.
-  final String destinationCidrBlock;
+  final pulumi.Input<String> destinationCidrBlock;
   /// The ID of the prefix list used for destination matches.
-  final String prefixListId;
+  final pulumi.Input<String> prefixListId;
   /// The current state of the route, can be `active`, `deleted`, `pending`, `blackhole`, `deleting`.
-  final String state;
+  final pulumi.Input<String> state;
   /// The id of the transit gateway route table announcement, most of the time it is an empty string.
-  final String transitGatewayRouteTableAnnouncementId;
+  final pulumi.Input<String> transitGatewayRouteTableAnnouncementId;
   /// The type of the route, can be `propagated` or `static`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetRouteTableRoutesRoute].
   /// [destinationCidrBlock] The CIDR used for route destination matches.
@@ -39,11 +40,11 @@ class GetRouteTableRoutesRoute {
 
   factory GetRouteTableRoutesRoute.fromMap(Map<String, dynamic> map) {
     return GetRouteTableRoutesRoute(
-      destinationCidrBlock: map['destinationCidrBlock'] as String,
-      prefixListId: map['prefixListId'] as String,
-      state: map['state'] as String,
-      transitGatewayRouteTableAnnouncementId: map['transitGatewayRouteTableAnnouncementId'] as String,
-      type: map['type'] as String,
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      prefixListId: (map['prefixListId'] as String).input(),
+      state: (map['state'] as String).input(),
+      transitGatewayRouteTableAnnouncementId: (map['transitGatewayRouteTableAnnouncementId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

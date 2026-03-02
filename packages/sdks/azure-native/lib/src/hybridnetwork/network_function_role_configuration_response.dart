@@ -9,23 +9,23 @@ import 'storage_profile_response.dart';
 /// Network function role configuration.
 class NetworkFunctionRoleConfigurationResponse {
   /// Specifies the custom settings for the virtual machine.
-  final CustomProfileResponse? customProfile;
+  final pulumi.Input<CustomProfileResponse>? customProfile;
   /// The network interface configurations.
-  final List<NetworkInterfaceResponse>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceResponse>>? networkInterfaces;
   /// Specifies the operating system settings for the role instance. This value can be updated during the deployment of network function.
-  final OsProfileResponse? osProfile;
+  final pulumi.Input<OsProfileResponse>? osProfile;
   /// The name of the network function role.
-  final String? roleName;
+  final pulumi.Input<String>? roleName;
   /// Role type.
-  final String? roleType;
+  final pulumi.Input<String>? roleType;
   /// Specifies the storage settings for the virtual machine disks.
-  final StorageProfileResponse? storageProfile;
+  final pulumi.Input<StorageProfileResponse>? storageProfile;
   /// The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
-  final dynamic userDataParameters;
+  final pulumi.Input<dynamic>? userDataParameters;
   /// The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
-  final dynamic userDataTemplate;
+  final pulumi.Input<dynamic>? userDataTemplate;
   /// The size of the virtual machine.
-  final String? virtualMachineSize;
+  final pulumi.Input<String>? virtualMachineSize;
 
   /// Creates a new [NetworkFunctionRoleConfigurationResponse].
   /// [customProfile] Specifies the custom settings for the virtual machine.
@@ -51,12 +51,12 @@ class NetworkFunctionRoleConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customProfile': ?customProfile == null ? null : customProfile!.toMap(),
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
-      'osProfile': ?osProfile == null ? null : osProfile!.toMap(),
+      'customProfile': ?pulumi.Input.mapOptionalInputValue<CustomProfileResponse, Map<String, dynamic>>(customProfile, (value) => value.toMap()),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'osProfile': ?pulumi.Input.mapOptionalInputValue<OsProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
       'roleName': ?roleName,
       'roleType': ?roleType,
-      'storageProfile': ?storageProfile == null ? null : storageProfile!.toMap(),
+      'storageProfile': ?pulumi.Input.mapOptionalInputValue<StorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
       'userDataParameters': ?userDataParameters,
       'userDataTemplate': ?userDataTemplate,
       'virtualMachineSize': ?virtualMachineSize,
@@ -65,15 +65,15 @@ class NetworkFunctionRoleConfigurationResponse {
 
   factory NetworkFunctionRoleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionRoleConfigurationResponse(
-      customProfile: map['customProfile'] == null ? null : CustomProfileResponse.fromMap((map['customProfile'] as Map).cast<String, dynamic>()),
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      osProfile: map['osProfile'] == null ? null : OsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      roleName: map['roleName'] == null ? null : map['roleName'] as String,
-      roleType: map['roleType'] == null ? null : map['roleType'] as String,
-      storageProfile: map['storageProfile'] == null ? null : StorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
-      userDataParameters: map['userDataParameters'] == null ? null : map['userDataParameters'],
-      userDataTemplate: map['userDataTemplate'] == null ? null : map['userDataTemplate'],
-      virtualMachineSize: map['virtualMachineSize'] == null ? null : map['virtualMachineSize'] as String,
+      customProfile: map['customProfile'] == null ? null : (CustomProfileResponse.fromMap((map['customProfile'] as Map).cast<String, dynamic>())).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      userDataParameters: map['userDataParameters'] == null ? null : (map['userDataParameters']).input(),
+      userDataTemplate: map['userDataTemplate'] == null ? null : (map['userDataTemplate']).input(),
+      virtualMachineSize: map['virtualMachineSize'] == null ? null : (map['virtualMachineSize'] as String).input(),
     );
   }
 }

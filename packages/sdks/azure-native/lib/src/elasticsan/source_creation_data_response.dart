@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data source used when creating the volume.
 class SourceCreationDataResponse {
   /// This enumerates the possible sources of a volume creation.
-  final String? createSource;
+  final pulumi.Input<String>? createSource;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String? sourceId;
+  final pulumi.Input<String>? sourceId;
 
   /// Creates a new [SourceCreationDataResponse].
   /// [createSource] This enumerates the possible sources of a volume creation.
@@ -25,8 +26,8 @@ class SourceCreationDataResponse {
 
   factory SourceCreationDataResponse.fromMap(Map<String, dynamic> map) {
     return SourceCreationDataResponse(
-      createSource: map['createSource'] == null ? null : map['createSource'] as String,
-      sourceId: map['sourceId'] == null ? null : map['sourceId'] as String,
+      createSource: map['createSource'] == null ? null : (map['createSource'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
     );
   }
 }

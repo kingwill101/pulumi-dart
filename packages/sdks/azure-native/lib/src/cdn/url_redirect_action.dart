@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'url_redirect_action_parameters.dart';
 
 /// Defines the url redirect action for the delivery rule.
 class UrlRedirectAction {
   /// The name of the action for the delivery rule.
   /// Expected value is 'UrlRedirect'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the action.
-  final UrlRedirectActionParameters parameters;
+  final pulumi.Input<UrlRedirectActionParameters> parameters;
 
   /// Creates a new [UrlRedirectAction].
   /// [name] The name of the action for the delivery rule.
@@ -21,14 +22,14 @@ class UrlRedirectAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<UrlRedirectActionParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory UrlRedirectAction.fromMap(Map<String, dynamic> map) {
     return UrlRedirectAction(
-      name: map['name'] as String,
-      parameters: UrlRedirectActionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (UrlRedirectActionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

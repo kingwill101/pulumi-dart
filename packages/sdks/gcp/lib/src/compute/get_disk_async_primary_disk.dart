@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDiskAsyncPrimaryDisk {
   /// Primary disk for asynchronous disk replication.
-  final String disk;
+  final pulumi.Input<String> disk;
 
   /// Creates a new [GetDiskAsyncPrimaryDisk].
   /// [disk] Primary disk for asynchronous disk replication.
@@ -19,7 +20,7 @@ class GetDiskAsyncPrimaryDisk {
 
   factory GetDiskAsyncPrimaryDisk.fromMap(Map<String, dynamic> map) {
     return GetDiskAsyncPrimaryDisk(
-      disk: map['disk'] as String,
+      disk: (map['disk'] as String).input(),
     );
   }
 }

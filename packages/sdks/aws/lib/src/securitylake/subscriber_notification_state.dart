@@ -23,17 +23,12 @@ class SubscriberNotificationState {
   /// [subscriberEndpoint] The subscriber endpoint to which exception messages are posted.
   /// [subscriberId] The subscriber ID for the notification subscription.
   SubscriberNotificationState({
-    pulumi.Output<SubscriberNotificationConfiguration>? configuration,
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subscriberEndpoint,
-    pulumi.Output<String>? subscriberId,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<SubscriberNotificationConfiguration>(configuration),
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subscriberEndpoint = pulumi.Input.asOptionalInput<String>(subscriberEndpoint),
-      subscriberId = pulumi.Input.asOptionalInput<String>(subscriberId);
+    this.configuration,
+    this.endpointId,
+    this.region,
+    this.subscriberEndpoint,
+    this.subscriberId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class SubscriberNotificationState {
 
   factory SubscriberNotificationState.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationState(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<SubscriberNotificationConfiguration>(SubscriberNotificationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subscriberEndpoint: map['subscriberEndpoint'] == null ? null : pulumi.Output.create<String>(map['subscriberEndpoint'] as String),
-      subscriberId: map['subscriberId'] == null ? null : pulumi.Output.create<String>(map['subscriberId'] as String),
+      configuration: map['configuration'] == null ? null : (SubscriberNotificationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subscriberEndpoint: map['subscriberEndpoint'] == null ? null : (map['subscriberEndpoint'] as String).input(),
+      subscriberId: map['subscriberId'] == null ? null : (map['subscriberId'] as String).input(),
     );
   }
 }

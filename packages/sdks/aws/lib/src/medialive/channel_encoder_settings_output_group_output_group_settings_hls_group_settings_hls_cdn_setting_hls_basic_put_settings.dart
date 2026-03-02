@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings {
   /// Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
-  final int? connectionRetryInterval;
-  final int? filecacheDuration;
+  final pulumi.Input<int>? connectionRetryInterval;
+  final pulumi.Input<int>? filecacheDuration;
   /// Number of retry attempts.
-  final int? numRetries;
+  final pulumi.Input<int>? numRetries;
   /// Number of seconds to wait until a restart is initiated.
-  final int? restartDelay;
+  final pulumi.Input<int>? restartDelay;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings].
   /// [connectionRetryInterval] Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
@@ -33,10 +34,10 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings(
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : map['connectionRetryInterval'] as int,
-      filecacheDuration: map['filecacheDuration'] == null ? null : map['filecacheDuration'] as int,
-      numRetries: map['numRetries'] == null ? null : map['numRetries'] as int,
-      restartDelay: map['restartDelay'] == null ? null : map['restartDelay'] as int,
+      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : (map['connectionRetryInterval'] as int).input(),
+      filecacheDuration: map['filecacheDuration'] == null ? null : (map['filecacheDuration'] as int).input(),
+      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
+      restartDelay: map['restartDelay'] == null ? null : (map['restartDelay'] as int).input(),
     );
   }
 }

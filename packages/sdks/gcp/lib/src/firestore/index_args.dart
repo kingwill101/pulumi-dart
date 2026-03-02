@@ -50,25 +50,16 @@ class IndexArgs {
   /// [queryScope] The scope at which a query is run.
   /// [unique] Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
   IndexArgs({
-    pulumi.Output<String>? apiScope,
-    required pulumi.Output<String> collection,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? density,
-    required pulumi.Output<List<IndexField>> fields,
-    pulumi.Output<bool>? multikey,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? queryScope,
-    pulumi.Output<bool>? unique,
-  }) :
-      apiScope = pulumi.Input.asOptionalInput<String>(apiScope),
-      collection = pulumi.Input.asInput<String>(collection),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      density = pulumi.Input.asOptionalInput<String>(density),
-      fields = pulumi.Input.asInput<List<IndexField>>(fields),
-      multikey = pulumi.Input.asOptionalInput<bool>(multikey),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queryScope = pulumi.Input.asOptionalInput<String>(queryScope),
-      unique = pulumi.Input.asOptionalInput<bool>(unique);
+    this.apiScope,
+    required this.collection,
+    this.database,
+    this.density,
+    required this.fields,
+    this.multikey,
+    this.project,
+    this.queryScope,
+    this.unique,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,15 +77,15 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      apiScope: map['apiScope'] == null ? null : pulumi.Output.create<String>(map['apiScope'] as String),
-      collection: pulumi.Output.create<String>(map['collection'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      density: map['density'] == null ? null : pulumi.Output.create<String>(map['density'] as String),
-      fields: pulumi.Output.create<List<IndexField>>(pulumi.Input.decodeList<IndexField>(map['fields'], (value) => IndexField.fromMap((value as Map).cast<String, dynamic>()))),
-      multikey: map['multikey'] == null ? null : pulumi.Output.create<bool>(map['multikey'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      queryScope: map['queryScope'] == null ? null : pulumi.Output.create<String>(map['queryScope'] as String),
-      unique: map['unique'] == null ? null : pulumi.Output.create<bool>(map['unique'] as bool),
+      apiScope: map['apiScope'] == null ? null : (map['apiScope'] as String).input(),
+      collection: (map['collection'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      density: map['density'] == null ? null : (map['density'] as String).input(),
+      fields: (pulumi.Input.decodeList<IndexField>(map['fields'], (value) => IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      multikey: map['multikey'] == null ? null : (map['multikey'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      queryScope: map['queryScope'] == null ? null : (map['queryScope'] as String).input(),
+      unique: map['unique'] == null ? null : (map['unique'] as bool).input(),
     );
   }
 }

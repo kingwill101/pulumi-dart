@@ -46,23 +46,15 @@ class RuleDeploymentArgs {
   /// [rule] The Rule ID of the rule.
   /// [runFrequency] The run frequency of the rule deployment.
   RuleDeploymentArgs({
-    pulumi.Output<bool>? alerting,
-    pulumi.Output<bool>? archived,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> rule,
-    pulumi.Output<String>? runFrequency,
-  }) :
-      alerting = pulumi.Input.asOptionalInput<bool>(alerting),
-      archived = pulumi.Input.asOptionalInput<bool>(archived),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      instance = pulumi.Input.asInput<String>(instance),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rule = pulumi.Input.asInput<String>(rule),
-      runFrequency = pulumi.Input.asOptionalInput<String>(runFrequency);
+    this.alerting,
+    this.archived,
+    this.enabled,
+    required this.instance,
+    required this.location,
+    this.project,
+    required this.rule,
+    this.runFrequency,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class RuleDeploymentArgs {
 
   factory RuleDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return RuleDeploymentArgs(
-      alerting: map['alerting'] == null ? null : pulumi.Output.create<bool>(map['alerting'] as bool),
-      archived: map['archived'] == null ? null : pulumi.Output.create<bool>(map['archived'] as bool),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rule: pulumi.Output.create<String>(map['rule'] as String),
-      runFrequency: map['runFrequency'] == null ? null : pulumi.Output.create<String>(map['runFrequency'] as String),
+      alerting: map['alerting'] == null ? null : (map['alerting'] as bool).input(),
+      archived: map['archived'] == null ? null : (map['archived'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      instance: (map['instance'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rule: (map['rule'] as String).input(),
+      runFrequency: map['runFrequency'] == null ? null : (map['runFrequency'] as String).input(),
     );
   }
 }

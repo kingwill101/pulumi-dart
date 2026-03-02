@@ -34,23 +34,15 @@ class GetDevEnvironmentArgs {
   /// [spaceName] The name of the space.
   /// [tags] Optional.
   GetDevEnvironmentArgs({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? creatorId,
-    required pulumi.Output<String> envId,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<GetDevEnvironmentRepository>>? repositories,
-    required pulumi.Output<String> spaceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      creatorId = pulumi.Input.asOptionalInput<String>(creatorId),
-      envId = pulumi.Input.asInput<String>(envId),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositories = pulumi.Input.asOptionalInput<List<GetDevEnvironmentRepository>>(repositories),
-      spaceName = pulumi.Input.asInput<String>(spaceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.alias,
+    this.creatorId,
+    required this.envId,
+    required this.projectName,
+    this.region,
+    this.repositories,
+    required this.spaceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetDevEnvironmentArgs {
 
   factory GetDevEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetDevEnvironmentArgs(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      creatorId: map['creatorId'] == null ? null : pulumi.Output.create<String>(map['creatorId'] as String),
-      envId: pulumi.Output.create<String>(map['envId'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositories: map['repositories'] == null ? null : pulumi.Output.create<List<GetDevEnvironmentRepository>>(pulumi.Input.decodeList<GetDevEnvironmentRepository>(map['repositories'], (value) => GetDevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      creatorId: map['creatorId'] == null ? null : (map['creatorId'] as String).input(),
+      envId: (map['envId'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<GetDevEnvironmentRepository>(map['repositories'], (value) => GetDevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spaceName: (map['spaceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

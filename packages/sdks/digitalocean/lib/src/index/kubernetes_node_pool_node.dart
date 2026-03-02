@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesNodePoolNode {
   /// The date and time when the node was created.
-  final String? createdAt;
+  final pulumi.Input<String>? createdAt;
   /// The id of the node's droplet
-  final String? dropletId;
+  final pulumi.Input<String>? dropletId;
   /// A unique ID that can be used to identify and reference the node.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// A name for the node pool.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// A string indicating the current status of the individual node.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The date and time when the node was last updated.
-  final String? updatedAt;
+  final pulumi.Input<String>? updatedAt;
 
   /// Creates a new [KubernetesNodePoolNode].
   /// [createdAt] The date and time when the node was created.
@@ -44,12 +45,12 @@ class KubernetesNodePoolNode {
 
   factory KubernetesNodePoolNode.fromMap(Map<String, dynamic> map) {
     return KubernetesNodePoolNode(
-      createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      dropletId: map['dropletId'] == null ? null : map['dropletId'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      updatedAt: map['updatedAt'] == null ? null : map['updatedAt'] as String,
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

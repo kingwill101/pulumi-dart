@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationPvtzDiscoverySvcPortProtocol {
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The protocol. Valid values: `TCP` and `UDP`.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [ApplicationPvtzDiscoverySvcPortProtocol].
   /// [port] Optional.
@@ -23,8 +24,8 @@ class ApplicationPvtzDiscoverySvcPortProtocol {
 
   factory ApplicationPvtzDiscoverySvcPortProtocol.fromMap(Map<String, dynamic> map) {
     return ApplicationPvtzDiscoverySvcPortProtocol(
-      port: map['port'] == null ? null : map['port'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

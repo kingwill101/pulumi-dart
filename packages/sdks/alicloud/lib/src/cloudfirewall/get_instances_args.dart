@@ -16,11 +16,9 @@ class GetInstancesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [paymentType] The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
   GetInstancesArgs({
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? paymentType,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType);
+    this.outputFile,
+    this.paymentType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
     );
   }
 }

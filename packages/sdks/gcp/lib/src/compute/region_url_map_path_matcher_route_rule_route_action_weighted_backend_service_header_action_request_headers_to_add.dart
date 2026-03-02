@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
   /// The name of the header.
-  final String headerName;
+  final pulumi.Input<String> headerName;
   /// The value of the header to add.
-  final String headerValue;
+  final pulumi.Input<String> headerValue;
   /// If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
   /// The default value is false.
-  final bool replace;
+  final pulumi.Input<bool> replace;
 
   /// Creates a new [RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd].
   /// [headerName] The name of the header.
@@ -30,9 +31,9 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
 
   factory RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(
-      headerName: map['headerName'] as String,
-      headerValue: map['headerValue'] as String,
-      replace: map['replace'] as bool,
+      headerName: (map['headerName'] as String).input(),
+      headerValue: (map['headerValue'] as String).input(),
+      replace: (map['replace'] as bool).input(),
     );
   }
 }

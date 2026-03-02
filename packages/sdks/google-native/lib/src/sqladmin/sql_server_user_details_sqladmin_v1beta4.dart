@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Sql Server user on the Cloud SQL instance.
 class SqlServerUserDetailsSqladminV1beta4 {
   /// If the user has been disabled
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// The server roles for this user
-  final List<String>? serverRoles;
+  final pulumi.Input<List<String>>? serverRoles;
 
   /// Creates a new [SqlServerUserDetailsSqladminV1beta4].
   /// [disabled] If the user has been disabled
@@ -25,8 +26,8 @@ class SqlServerUserDetailsSqladminV1beta4 {
 
   factory SqlServerUserDetailsSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return SqlServerUserDetailsSqladminV1beta4(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      serverRoles: map['serverRoles'] == null ? null : (map['serverRoles'] as List).cast<String>(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      serverRoles: map['serverRoles'] == null ? null : ((map['serverRoles'] as List).cast<String>()).input(),
     );
   }
 }

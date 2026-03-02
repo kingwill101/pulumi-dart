@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An entry for an Access Control list.
 class SqlAclEntry {
   /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`.
-  final String? expireTime;
+  final pulumi.Input<String>? expireTime;
   /// A label to identify this entry.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Input only. The time-to-leave of this access control entry.
-  final String? ttl;
+  final pulumi.Input<String>? ttl;
   /// The allowlisted value for the access control list.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [SqlAclEntry].
   /// [expireTime] The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`.
@@ -35,10 +36,10 @@ class SqlAclEntry {
 
   factory SqlAclEntry.fromMap(Map<String, dynamic> map) {
     return SqlAclEntry(
-      expireTime: map['expireTime'] == null ? null : map['expireTime'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      ttl: map['ttl'] == null ? null : map['ttl'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

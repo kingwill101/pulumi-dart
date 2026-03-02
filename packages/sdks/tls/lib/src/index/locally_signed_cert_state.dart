@@ -48,35 +48,21 @@ class LocallySignedCertState {
   /// [validityPeriodHours] Number of hours, after initial issuing, that the certificate will remain valid for.
   /// [validityStartTime] The time after which the certificate is valid, expressed as an [RFC3339](https://tools.ietf.org/html/rfc3339) timestamp.
   LocallySignedCertState({
-    pulumi.Output<List<String>>? allowedUses,
-    pulumi.Output<String>? caCertPem,
-    pulumi.Output<String>? caKeyAlgorithm,
-    pulumi.Output<String>? caPrivateKeyPem,
-    pulumi.Output<String>? certPem,
-    pulumi.Output<String>? certRequestPem,
-    pulumi.Output<int>? earlyRenewalHours,
-    pulumi.Output<bool>? isCaCertificate,
-    pulumi.Output<int>? maxPathLength,
-    pulumi.Output<bool>? readyForRenewal,
-    pulumi.Output<bool>? setSubjectKeyId,
-    pulumi.Output<String>? validityEndTime,
-    pulumi.Output<int>? validityPeriodHours,
-    pulumi.Output<String>? validityStartTime,
-  }) :
-      allowedUses = pulumi.Input.asOptionalInput<List<String>>(allowedUses),
-      caCertPem = pulumi.Input.asOptionalInput<String>(caCertPem),
-      caKeyAlgorithm = pulumi.Input.asOptionalInput<String>(caKeyAlgorithm),
-      caPrivateKeyPem = pulumi.Input.asOptionalInput<String>(caPrivateKeyPem),
-      certPem = pulumi.Input.asOptionalInput<String>(certPem),
-      certRequestPem = pulumi.Input.asOptionalInput<String>(certRequestPem),
-      earlyRenewalHours = pulumi.Input.asOptionalInput<int>(earlyRenewalHours),
-      isCaCertificate = pulumi.Input.asOptionalInput<bool>(isCaCertificate),
-      maxPathLength = pulumi.Input.asOptionalInput<int>(maxPathLength),
-      readyForRenewal = pulumi.Input.asOptionalInput<bool>(readyForRenewal),
-      setSubjectKeyId = pulumi.Input.asOptionalInput<bool>(setSubjectKeyId),
-      validityEndTime = pulumi.Input.asOptionalInput<String>(validityEndTime),
-      validityPeriodHours = pulumi.Input.asOptionalInput<int>(validityPeriodHours),
-      validityStartTime = pulumi.Input.asOptionalInput<String>(validityStartTime);
+    this.allowedUses,
+    this.caCertPem,
+    this.caKeyAlgorithm,
+    this.caPrivateKeyPem,
+    this.certPem,
+    this.certRequestPem,
+    this.earlyRenewalHours,
+    this.isCaCertificate,
+    this.maxPathLength,
+    this.readyForRenewal,
+    this.setSubjectKeyId,
+    this.validityEndTime,
+    this.validityPeriodHours,
+    this.validityStartTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,20 +85,20 @@ class LocallySignedCertState {
 
   factory LocallySignedCertState.fromMap(Map<String, dynamic> map) {
     return LocallySignedCertState(
-      allowedUses: map['allowedUses'] == null ? null : pulumi.Output.create<List<String>>((map['allowedUses'] as List).cast<String>()),
-      caCertPem: map['caCertPem'] == null ? null : pulumi.Output.create<String>(map['caCertPem'] as String),
-      caKeyAlgorithm: map['caKeyAlgorithm'] == null ? null : pulumi.Output.create<String>(map['caKeyAlgorithm'] as String),
-      caPrivateKeyPem: map['caPrivateKeyPem'] == null ? null : pulumi.Output.create<String>(map['caPrivateKeyPem'] as String),
-      certPem: map['certPem'] == null ? null : pulumi.Output.create<String>(map['certPem'] as String),
-      certRequestPem: map['certRequestPem'] == null ? null : pulumi.Output.create<String>(map['certRequestPem'] as String),
-      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : pulumi.Output.create<int>(map['earlyRenewalHours'] as int),
-      isCaCertificate: map['isCaCertificate'] == null ? null : pulumi.Output.create<bool>(map['isCaCertificate'] as bool),
-      maxPathLength: map['maxPathLength'] == null ? null : pulumi.Output.create<int>(map['maxPathLength'] as int),
-      readyForRenewal: map['readyForRenewal'] == null ? null : pulumi.Output.create<bool>(map['readyForRenewal'] as bool),
-      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : pulumi.Output.create<bool>(map['setSubjectKeyId'] as bool),
-      validityEndTime: map['validityEndTime'] == null ? null : pulumi.Output.create<String>(map['validityEndTime'] as String),
-      validityPeriodHours: map['validityPeriodHours'] == null ? null : pulumi.Output.create<int>(map['validityPeriodHours'] as int),
-      validityStartTime: map['validityStartTime'] == null ? null : pulumi.Output.create<String>(map['validityStartTime'] as String),
+      allowedUses: map['allowedUses'] == null ? null : ((map['allowedUses'] as List).cast<String>()).input(),
+      caCertPem: map['caCertPem'] == null ? null : (map['caCertPem'] as String).input(),
+      caKeyAlgorithm: map['caKeyAlgorithm'] == null ? null : (map['caKeyAlgorithm'] as String).input(),
+      caPrivateKeyPem: map['caPrivateKeyPem'] == null ? null : (map['caPrivateKeyPem'] as String).input(),
+      certPem: map['certPem'] == null ? null : (map['certPem'] as String).input(),
+      certRequestPem: map['certRequestPem'] == null ? null : (map['certRequestPem'] as String).input(),
+      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : (map['earlyRenewalHours'] as int).input(),
+      isCaCertificate: map['isCaCertificate'] == null ? null : (map['isCaCertificate'] as bool).input(),
+      maxPathLength: map['maxPathLength'] == null ? null : (map['maxPathLength'] as int).input(),
+      readyForRenewal: map['readyForRenewal'] == null ? null : (map['readyForRenewal'] as bool).input(),
+      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : (map['setSubjectKeyId'] as bool).input(),
+      validityEndTime: map['validityEndTime'] == null ? null : (map['validityEndTime'] as String).input(),
+      validityPeriodHours: map['validityPeriodHours'] == null ? null : (map['validityPeriodHours'] as int).input(),
+      validityStartTime: map['validityStartTime'] == null ? null : (map['validityStartTime'] as String).input(),
     );
   }
 }

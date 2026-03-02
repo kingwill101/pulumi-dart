@@ -16,13 +16,10 @@ class ApplicationLayerAutomaticResponseState {
   /// [resourceArn] ARN of the resource to protect (Cloudfront Distributions and ALBs only at this time).
   /// [timeouts] Optional.
   ApplicationLayerAutomaticResponseState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<ApplicationLayerAutomaticResponseTimeouts>? timeouts,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      timeouts = pulumi.Input.asOptionalInput<ApplicationLayerAutomaticResponseTimeouts>(timeouts);
+    this.action,
+    this.resourceArn,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ApplicationLayerAutomaticResponseState {
 
   factory ApplicationLayerAutomaticResponseState.fromMap(Map<String, dynamic> map) {
     return ApplicationLayerAutomaticResponseState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ApplicationLayerAutomaticResponseTimeouts>(ApplicationLayerAutomaticResponseTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ApplicationLayerAutomaticResponseTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetInstanceNotebooksV2Args {
   /// [location] Required.
   /// [project] Optional.
   GetInstanceNotebooksV2Args({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.instanceId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetInstanceNotebooksV2Args {
 
   factory GetInstanceNotebooksV2Args.fromMap(Map<String, dynamic> map) {
     return GetInstanceNotebooksV2Args(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure OpenAI Content Filter.
 class RaiPolicyContentFilter {
   /// The action types to apply to the content filters
-  final String? action;
+  final pulumi.Input<String>? action;
   /// If blocking would occur.
-  final bool? blocking;
+  final pulumi.Input<bool>? blocking;
   /// If the ContentFilter is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Name of ContentFilter.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Level at which content is filtered.
-  final String? severityThreshold;
+  final pulumi.Input<String>? severityThreshold;
   /// Content source to apply the Content Filters.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [RaiPolicyContentFilter].
   /// [action] The action types to apply to the content filters
@@ -45,12 +46,12 @@ class RaiPolicyContentFilter {
 
   factory RaiPolicyContentFilter.fromMap(Map<String, dynamic> map) {
     return RaiPolicyContentFilter(
-      action: map['action'] == null ? null : map['action'] as String,
-      blocking: map['blocking'] == null ? null : map['blocking'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      severityThreshold: map['severityThreshold'] == null ? null : map['severityThreshold'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      severityThreshold: map['severityThreshold'] == null ? null : (map['severityThreshold'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

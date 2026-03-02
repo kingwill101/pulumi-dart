@@ -47,31 +47,19 @@ class TrafficMirrorFilterEgressRuleState {
   /// [trafficMirrorFilterEgressRuleId] The ID of the outbound rule.
   /// [trafficMirrorFilterId] The ID of the filter.
   TrafficMirrorFilterEgressRuleState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? destinationCidrBlock,
-    pulumi.Output<String>? destinationPortRange,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? ruleAction,
-    pulumi.Output<String>? sourceCidrBlock,
-    pulumi.Output<String>? sourcePortRange,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? trafficMirrorFilterEgressRuleId,
-    pulumi.Output<String>? trafficMirrorFilterId,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      destinationCidrBlock = pulumi.Input.asOptionalInput<String>(destinationCidrBlock),
-      destinationPortRange = pulumi.Input.asOptionalInput<String>(destinationPortRange),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      ruleAction = pulumi.Input.asOptionalInput<String>(ruleAction),
-      sourceCidrBlock = pulumi.Input.asOptionalInput<String>(sourceCidrBlock),
-      sourcePortRange = pulumi.Input.asOptionalInput<String>(sourcePortRange),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      trafficMirrorFilterEgressRuleId = pulumi.Input.asOptionalInput<String>(trafficMirrorFilterEgressRuleId),
-      trafficMirrorFilterId = pulumi.Input.asOptionalInput<String>(trafficMirrorFilterId);
+    this.action,
+    this.destinationCidrBlock,
+    this.destinationPortRange,
+    this.dryRun,
+    this.priority,
+    this.protocol,
+    this.ruleAction,
+    this.sourceCidrBlock,
+    this.sourcePortRange,
+    this.status,
+    this.trafficMirrorFilterEgressRuleId,
+    this.trafficMirrorFilterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class TrafficMirrorFilterEgressRuleState {
 
   factory TrafficMirrorFilterEgressRuleState.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterEgressRuleState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      destinationPortRange: map['destinationPortRange'] == null ? null : pulumi.Output.create<String>(map['destinationPortRange'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      ruleAction: map['ruleAction'] == null ? null : pulumi.Output.create<String>(map['ruleAction'] as String),
-      sourceCidrBlock: map['sourceCidrBlock'] == null ? null : pulumi.Output.create<String>(map['sourceCidrBlock'] as String),
-      sourcePortRange: map['sourcePortRange'] == null ? null : pulumi.Output.create<String>(map['sourcePortRange'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      trafficMirrorFilterEgressRuleId: map['trafficMirrorFilterEgressRuleId'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorFilterEgressRuleId'] as String),
-      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorFilterId'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
+      sourceCidrBlock: map['sourceCidrBlock'] == null ? null : (map['sourceCidrBlock'] as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      trafficMirrorFilterEgressRuleId: map['trafficMirrorFilterEgressRuleId'] == null ? null : (map['trafficMirrorFilterEgressRuleId'] as String).input(),
+      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : (map['trafficMirrorFilterId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Human Review information of the document.
 class GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse {
   /// Human review state. e.g. `requested`, `succeeded`, `rejected`.
-  final String state;
+  final pulumi.Input<String> state;
   /// A message providing more details about the current state of processing. For example, the rejection reason when the state is `rejected`.
-  final String stateMessage;
+  final pulumi.Input<String> stateMessage;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse].
   /// [state] Human review state. e.g. `requested`, `succeeded`, `rejected`.
@@ -25,8 +26,8 @@ class GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse {
 
   factory GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse(
-      state: map['state'] as String,
-      stateMessage: map['stateMessage'] as String,
+      state: (map['state'] as String).input(),
+      stateMessage: (map['stateMessage'] as String).input(),
     );
   }
 }

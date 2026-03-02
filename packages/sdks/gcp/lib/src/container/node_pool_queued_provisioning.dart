@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolQueuedProvisioning {
   /// Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [NodePoolQueuedProvisioning].
   /// [enabled] Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
@@ -19,7 +20,7 @@ class NodePoolQueuedProvisioning {
 
   factory NodePoolQueuedProvisioning.fromMap(Map<String, dynamic> map) {
     return NodePoolQueuedProvisioning(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

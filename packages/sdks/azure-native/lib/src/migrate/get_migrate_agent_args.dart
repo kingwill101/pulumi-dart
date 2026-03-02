@@ -22,15 +22,11 @@ class GetMigrateAgentArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [subscriptionId] Azure Subscription Id in which project was created.
   GetMigrateAgentArgs({
-    required pulumi.Output<String> agentName,
-    required pulumi.Output<String> modernizeProjectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      agentName = pulumi.Input.asInput<String>(agentName),
-      modernizeProjectName = pulumi.Input.asInput<String>(modernizeProjectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    required this.agentName,
+    required this.modernizeProjectName,
+    required this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetMigrateAgentArgs {
 
   factory GetMigrateAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetMigrateAgentArgs(
-      agentName: pulumi.Output.create<String>(map['agentName'] as String),
-      modernizeProjectName: pulumi.Output.create<String>(map['modernizeProjectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      agentName: (map['agentName'] as String).input(),
+      modernizeProjectName: (map['modernizeProjectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

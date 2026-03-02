@@ -16,11 +16,9 @@ class GetMaccArgs {
   /// [maccName] Name of primary MACC.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMaccArgs({
-    required pulumi.Output<String> maccName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      maccName = pulumi.Input.asInput<String>(maccName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.maccName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMaccArgs {
 
   factory GetMaccArgs.fromMap(Map<String, dynamic> map) {
     return GetMaccArgs(
-      maccName: pulumi.Output.create<String>(map['maccName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      maccName: (map['maccName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

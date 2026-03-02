@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
 class PatchInstanceFilterGroupLabelResponseOsconfigV1beta {
   /// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
 
   /// Creates a new [PatchInstanceFilterGroupLabelResponseOsconfigV1beta].
   /// [labels] Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
@@ -20,7 +21,7 @@ class PatchInstanceFilterGroupLabelResponseOsconfigV1beta {
 
   factory PatchInstanceFilterGroupLabelResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return PatchInstanceFilterGroupLabelResponseOsconfigV1beta(
-      labels: (map['labels'] as Map).cast<String, String>(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
     );
   }
 }

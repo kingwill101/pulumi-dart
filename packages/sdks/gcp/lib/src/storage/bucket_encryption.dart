@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketEncryption {
   /// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -16,7 +17,7 @@ class BucketEncryption {
   /// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
   /// state of the project.
   /// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
-  final String defaultKmsKeyName;
+  final pulumi.Input<String> defaultKmsKeyName;
 
   /// Creates a new [BucketEncryption].
   /// [defaultKmsKeyName] The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -32,7 +33,7 @@ class BucketEncryption {
 
   factory BucketEncryption.fromMap(Map<String, dynamic> map) {
     return BucketEncryption(
-      defaultKmsKeyName: map['defaultKmsKeyName'] as String,
+      defaultKmsKeyName: (map['defaultKmsKeyName'] as String).input(),
     );
   }
 }

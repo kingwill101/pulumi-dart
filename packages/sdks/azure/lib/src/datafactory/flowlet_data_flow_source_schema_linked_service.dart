@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowletDataFlowSourceSchemaLinkedService {
   /// The name for the Data Factory Linked Service with schema.
-  final String name;
+  final pulumi.Input<String> name;
   /// A map of parameters to associate with the Data Factory Linked Service.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
 
   /// Creates a new [FlowletDataFlowSourceSchemaLinkedService].
   /// [name] The name for the Data Factory Linked Service with schema.
@@ -24,8 +25,8 @@ class FlowletDataFlowSourceSchemaLinkedService {
 
   factory FlowletDataFlowSourceSchemaLinkedService.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowSourceSchemaLinkedService(
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class CustomRoutingEndpointGroupState {
   /// [listenerId] The ID of the custom routing listener.
   /// [status] The status of the Custom Routing Endpoint Group.
   CustomRoutingEndpointGroupState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? customRoutingEndpointGroupName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endpointGroupRegion,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? status,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      customRoutingEndpointGroupName = pulumi.Input.asOptionalInput<String>(customRoutingEndpointGroupName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointGroupRegion = pulumi.Input.asOptionalInput<String>(endpointGroupRegion),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.acceleratorId,
+    this.customRoutingEndpointGroupName,
+    this.description,
+    this.endpointGroupRegion,
+    this.listenerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class CustomRoutingEndpointGroupState {
 
   factory CustomRoutingEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : pulumi.Output.create<String>(map['customRoutingEndpointGroupName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : pulumi.Output.create<String>(map['endpointGroupRegion'] as String),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : (map['customRoutingEndpointGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

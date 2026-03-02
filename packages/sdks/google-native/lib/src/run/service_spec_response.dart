@@ -7,9 +7,9 @@ import 'traffic_target_response.dart';
 /// ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
 class ServiceSpecResponse {
   /// Holds the latest specification for the Revision to be stamped out.
-  final RevisionTemplateResponse template;
+  final pulumi.Input<RevisionTemplateResponse> template;
   /// Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
-  final List<TrafficTargetResponse> traffic;
+  final pulumi.Input<List<TrafficTargetResponse>> traffic;
 
   /// Creates a new [ServiceSpecResponse].
   /// [template] Holds the latest specification for the Revision to be stamped out.
@@ -21,15 +21,15 @@ class ServiceSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'template': template.toMap(),
-      'traffic': pulumi.Input.encodeList<TrafficTargetResponse, Map<String, dynamic>>(traffic, (value) => value.toMap()),
+      'template': pulumi.Input.mapInputValue<RevisionTemplateResponse, Map<String, dynamic>>(template, (value) => value.toMap()),
+      'traffic': pulumi.Input.mapInputValue<List<TrafficTargetResponse>, List<Map<String, dynamic>>>(traffic, (value) => pulumi.Input.encodeList<TrafficTargetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceSpecResponse.fromMap(Map<String, dynamic> map) {
     return ServiceSpecResponse(
-      template: RevisionTemplateResponse.fromMap((map['template'] as Map).cast<String, dynamic>()),
-      traffic: pulumi.Input.decodeList<TrafficTargetResponse>(map['traffic'], (value) => TrafficTargetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      template: (RevisionTemplateResponse.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      traffic: (pulumi.Input.decodeList<TrafficTargetResponse>(map['traffic'], (value) => TrafficTargetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

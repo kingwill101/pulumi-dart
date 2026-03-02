@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
   /// Target IP.
-  final String dip;
+  final pulumi.Input<String> dip;
   /// Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// The health check retry interval, in seconds.
-  final int interval;
+  final pulumi.Input<int> interval;
   /// Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// Number of retries for health check.
-  final int retry;
+  final pulumi.Input<int> retry;
   /// SOURCE IP.
-  final String sip;
+  final pulumi.Input<String> sip;
   /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetGatewayVpnAttachmentsAttachmentHealthCheckConfig].
   /// [dip] Target IP.
@@ -49,13 +50,13 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
 
   factory GetGatewayVpnAttachmentsAttachmentHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return GetGatewayVpnAttachmentsAttachmentHealthCheckConfig(
-      dip: map['dip'] as String,
-      enable: map['enable'] as bool,
-      interval: map['interval'] as int,
-      policy: map['policy'] as String,
-      retry: map['retry'] as int,
-      sip: map['sip'] as String,
-      status: map['status'] as String,
+      dip: (map['dip'] as String).input(),
+      enable: (map['enable'] as bool).input(),
+      interval: (map['interval'] as int).input(),
+      policy: (map['policy'] as String).input(),
+      retry: (map['retry'] as int).input(),
+      sip: (map['sip'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

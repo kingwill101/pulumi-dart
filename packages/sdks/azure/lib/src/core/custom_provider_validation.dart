@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomProviderValidation {
   /// The endpoint where the validation specification is located.
-  final String specification;
+  final pulumi.Input<String> specification;
 
   /// Creates a new [CustomProviderValidation].
   /// [specification] The endpoint where the validation specification is located.
@@ -19,7 +20,7 @@ class CustomProviderValidation {
 
   factory CustomProviderValidation.fromMap(Map<String, dynamic> map) {
     return CustomProviderValidation(
-      specification: map['specification'] as String,
+      specification: (map['specification'] as String).input(),
     );
   }
 }

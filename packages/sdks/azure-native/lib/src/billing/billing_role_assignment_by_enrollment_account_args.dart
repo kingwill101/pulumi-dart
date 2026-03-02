@@ -26,17 +26,12 @@ class BillingRoleAssignmentByEnrollmentAccountArgs {
   /// [properties] The properties of the billing role assignment.
   /// [tags] Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
   BillingRoleAssignmentByEnrollmentAccountArgs({
-    required pulumi.Output<String> billingAccountName,
-    pulumi.Output<String>? billingRoleAssignmentName,
-    required pulumi.Output<String> enrollmentAccountName,
-    pulumi.Output<BillingRoleAssignmentProperties>? properties,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingRoleAssignmentName = pulumi.Input.asOptionalInput<String>(billingRoleAssignmentName),
-      enrollmentAccountName = pulumi.Input.asInput<String>(enrollmentAccountName),
-      properties = pulumi.Input.asOptionalInput<BillingRoleAssignmentProperties>(properties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.billingAccountName,
+    this.billingRoleAssignmentName,
+    required this.enrollmentAccountName,
+    this.properties,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class BillingRoleAssignmentByEnrollmentAccountArgs {
 
   factory BillingRoleAssignmentByEnrollmentAccountArgs.fromMap(Map<String, dynamic> map) {
     return BillingRoleAssignmentByEnrollmentAccountArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingRoleAssignmentName: map['billingRoleAssignmentName'] == null ? null : pulumi.Output.create<String>(map['billingRoleAssignmentName'] as String),
-      enrollmentAccountName: pulumi.Output.create<String>(map['enrollmentAccountName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BillingRoleAssignmentProperties>(BillingRoleAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingRoleAssignmentName: map['billingRoleAssignmentName'] == null ? null : (map['billingRoleAssignmentName'] as String).input(),
+      enrollmentAccountName: (map['enrollmentAccountName'] as String).input(),
+      properties: map['properties'] == null ? null : (BillingRoleAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

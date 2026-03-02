@@ -5,11 +5,11 @@ import 'error_proto_response.dart';
 
 class JobStatusResponse {
   /// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
-  final ErrorProtoResponse errorResult;
+  final pulumi.Input<ErrorProtoResponse> errorResult;
   /// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
-  final List<ErrorProtoResponse> errors;
+  final pulumi.Input<List<ErrorProtoResponse>> errors;
   /// Running state of the job.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [JobStatusResponse].
   /// [errorResult] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
@@ -23,17 +23,17 @@ class JobStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorResult': errorResult.toMap(),
-      'errors': pulumi.Input.encodeList<ErrorProtoResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errorResult': pulumi.Input.mapInputValue<ErrorProtoResponse, Map<String, dynamic>>(errorResult, (value) => value.toMap()),
+      'errors': pulumi.Input.mapInputValue<List<ErrorProtoResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ErrorProtoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': state,
     };
   }
 
   factory JobStatusResponse.fromMap(Map<String, dynamic> map) {
     return JobStatusResponse(
-      errorResult: ErrorProtoResponse.fromMap((map['errorResult'] as Map).cast<String, dynamic>()),
-      errors: pulumi.Input.decodeList<ErrorProtoResponse>(map['errors'], (value) => ErrorProtoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
+      errorResult: (ErrorProtoResponse.fromMap((map['errorResult'] as Map).cast<String, dynamic>())).input(),
+      errors: (pulumi.Input.decodeList<ErrorProtoResponse>(map['errors'], (value) => ErrorProtoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

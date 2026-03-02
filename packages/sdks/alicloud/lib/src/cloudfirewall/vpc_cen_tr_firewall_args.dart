@@ -50,31 +50,19 @@ class VpcCenTrFirewallArgs {
   /// [trAttachmentSlaveZone] The secondary zone of the vSwitch.
   /// [transitRouterId] The ID of the Transit Router instance.
   VpcCenTrFirewallArgs({
-    required pulumi.Output<String> cenId,
-    pulumi.Output<String>? firewallDescription,
-    required pulumi.Output<String> firewallName,
-    required pulumi.Output<String> firewallSubnetCidr,
-    required pulumi.Output<String> firewallVpcCidr,
-    required pulumi.Output<String> regionNo,
-    required pulumi.Output<String> routeMode,
-    required pulumi.Output<String> trAttachmentMasterCidr,
-    pulumi.Output<String>? trAttachmentMasterZone,
-    required pulumi.Output<String> trAttachmentSlaveCidr,
-    pulumi.Output<String>? trAttachmentSlaveZone,
-    required pulumi.Output<String> transitRouterId,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      firewallDescription = pulumi.Input.asOptionalInput<String>(firewallDescription),
-      firewallName = pulumi.Input.asInput<String>(firewallName),
-      firewallSubnetCidr = pulumi.Input.asInput<String>(firewallSubnetCidr),
-      firewallVpcCidr = pulumi.Input.asInput<String>(firewallVpcCidr),
-      regionNo = pulumi.Input.asInput<String>(regionNo),
-      routeMode = pulumi.Input.asInput<String>(routeMode),
-      trAttachmentMasterCidr = pulumi.Input.asInput<String>(trAttachmentMasterCidr),
-      trAttachmentMasterZone = pulumi.Input.asOptionalInput<String>(trAttachmentMasterZone),
-      trAttachmentSlaveCidr = pulumi.Input.asInput<String>(trAttachmentSlaveCidr),
-      trAttachmentSlaveZone = pulumi.Input.asOptionalInput<String>(trAttachmentSlaveZone),
-      transitRouterId = pulumi.Input.asInput<String>(transitRouterId);
+    required this.cenId,
+    this.firewallDescription,
+    required this.firewallName,
+    required this.firewallSubnetCidr,
+    required this.firewallVpcCidr,
+    required this.regionNo,
+    required this.routeMode,
+    required this.trAttachmentMasterCidr,
+    this.trAttachmentMasterZone,
+    required this.trAttachmentSlaveCidr,
+    this.trAttachmentSlaveZone,
+    required this.transitRouterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class VpcCenTrFirewallArgs {
 
   factory VpcCenTrFirewallArgs.fromMap(Map<String, dynamic> map) {
     return VpcCenTrFirewallArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      firewallDescription: map['firewallDescription'] == null ? null : pulumi.Output.create<String>(map['firewallDescription'] as String),
-      firewallName: pulumi.Output.create<String>(map['firewallName'] as String),
-      firewallSubnetCidr: pulumi.Output.create<String>(map['firewallSubnetCidr'] as String),
-      firewallVpcCidr: pulumi.Output.create<String>(map['firewallVpcCidr'] as String),
-      regionNo: pulumi.Output.create<String>(map['regionNo'] as String),
-      routeMode: pulumi.Output.create<String>(map['routeMode'] as String),
-      trAttachmentMasterCidr: pulumi.Output.create<String>(map['trAttachmentMasterCidr'] as String),
-      trAttachmentMasterZone: map['trAttachmentMasterZone'] == null ? null : pulumi.Output.create<String>(map['trAttachmentMasterZone'] as String),
-      trAttachmentSlaveCidr: pulumi.Output.create<String>(map['trAttachmentSlaveCidr'] as String),
-      trAttachmentSlaveZone: map['trAttachmentSlaveZone'] == null ? null : pulumi.Output.create<String>(map['trAttachmentSlaveZone'] as String),
-      transitRouterId: pulumi.Output.create<String>(map['transitRouterId'] as String),
+      cenId: (map['cenId'] as String).input(),
+      firewallDescription: map['firewallDescription'] == null ? null : (map['firewallDescription'] as String).input(),
+      firewallName: (map['firewallName'] as String).input(),
+      firewallSubnetCidr: (map['firewallSubnetCidr'] as String).input(),
+      firewallVpcCidr: (map['firewallVpcCidr'] as String).input(),
+      regionNo: (map['regionNo'] as String).input(),
+      routeMode: (map['routeMode'] as String).input(),
+      trAttachmentMasterCidr: (map['trAttachmentMasterCidr'] as String).input(),
+      trAttachmentMasterZone: map['trAttachmentMasterZone'] == null ? null : (map['trAttachmentMasterZone'] as String).input(),
+      trAttachmentSlaveCidr: (map['trAttachmentSlaveCidr'] as String).input(),
+      trAttachmentSlaveZone: map['trAttachmentSlaveZone'] == null ? null : (map['trAttachmentSlaveZone'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

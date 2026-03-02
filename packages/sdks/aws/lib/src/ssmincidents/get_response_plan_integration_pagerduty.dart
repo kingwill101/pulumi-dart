@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponsePlanIntegrationPagerduty {
   /// The name of the PagerDuty configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the AWS Secrets Manager secret that stores your PagerDuty key &mdash; either a General Access REST API Key or User Token REST API Key &mdash; and other user credentials.
-  final String secretId;
+  final pulumi.Input<String> secretId;
   /// The ID of the PagerDuty service that the response plan associates with an incident when it launches.
-  final String serviceId;
+  final pulumi.Input<String> serviceId;
 
   /// Creates a new [GetResponsePlanIntegrationPagerduty].
   /// [name] The name of the PagerDuty configuration.
@@ -29,9 +30,9 @@ class GetResponsePlanIntegrationPagerduty {
 
   factory GetResponsePlanIntegrationPagerduty.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanIntegrationPagerduty(
-      name: map['name'] as String,
-      secretId: map['secretId'] as String,
-      serviceId: map['serviceId'] as String,
+      name: (map['name'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

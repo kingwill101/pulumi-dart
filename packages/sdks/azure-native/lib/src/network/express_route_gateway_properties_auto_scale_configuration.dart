@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_route_gateway_properties_bounds.dart';
 
 /// Configuration for auto scaling.
 class ExpressRouteGatewayPropertiesAutoScaleConfiguration {
   /// Minimum and maximum number of scale units to deploy.
-  final ExpressRouteGatewayPropertiesBounds? bounds;
+  final pulumi.Input<ExpressRouteGatewayPropertiesBounds>? bounds;
 
   /// Creates a new [ExpressRouteGatewayPropertiesAutoScaleConfiguration].
   /// [bounds] Minimum and maximum number of scale units to deploy.
@@ -15,13 +16,13 @@ class ExpressRouteGatewayPropertiesAutoScaleConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bounds': ?bounds == null ? null : bounds!.toMap(),
+      'bounds': ?pulumi.Input.mapOptionalInputValue<ExpressRouteGatewayPropertiesBounds, Map<String, dynamic>>(bounds, (value) => value.toMap()),
     };
   }
 
   factory ExpressRouteGatewayPropertiesAutoScaleConfiguration.fromMap(Map<String, dynamic> map) {
     return ExpressRouteGatewayPropertiesAutoScaleConfiguration(
-      bounds: map['bounds'] == null ? null : ExpressRouteGatewayPropertiesBounds.fromMap((map['bounds'] as Map).cast<String, dynamic>()),
+      bounds: map['bounds'] == null ? null : (ExpressRouteGatewayPropertiesBounds.fromMap((map['bounds'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

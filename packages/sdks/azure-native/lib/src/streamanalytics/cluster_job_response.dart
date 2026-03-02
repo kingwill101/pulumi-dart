@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A streaming job.
 class ClusterJobResponse {
   /// Resource ID of the streaming job.
-  final String id;
+  final pulumi.Input<String> id;
   /// The current execution state of the streaming job.
-  final String jobState;
+  final pulumi.Input<String> jobState;
   /// The number of streaming units that are used by the streaming job.
-  final int streamingUnits;
+  final pulumi.Input<int> streamingUnits;
 
   /// Creates a new [ClusterJobResponse].
   /// [id] Resource ID of the streaming job.
@@ -30,9 +31,9 @@ class ClusterJobResponse {
 
   factory ClusterJobResponse.fromMap(Map<String, dynamic> map) {
     return ClusterJobResponse(
-      id: map['id'] as String,
-      jobState: map['jobState'] as String,
-      streamingUnits: map['streamingUnits'] as int,
+      id: (map['id'] as String).input(),
+      jobState: (map['jobState'] as String).input(),
+      streamingUnits: (map['streamingUnits'] as int).input(),
     );
   }
 }

@@ -22,11 +22,9 @@ class GetAppEngineServiceArgs {
   /// [moduleId] The ID of the App Engine module underlying this
   /// [project] The ID of the project in which the resource belongs.
   GetAppEngineServiceArgs({
-    required pulumi.Output<String> moduleId,
-    pulumi.Output<String>? project,
-  }) :
-      moduleId = pulumi.Input.asInput<String>(moduleId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.moduleId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,8 +35,8 @@ class GetAppEngineServiceArgs {
 
   factory GetAppEngineServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetAppEngineServiceArgs(
-      moduleId: pulumi.Output.create<String>(map['moduleId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      moduleId: (map['moduleId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

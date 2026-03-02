@@ -19,15 +19,11 @@ class ApplicationAssignmentState {
   /// [principalType] Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ApplicationAssignmentState({
-    pulumi.Output<String>? applicationArn,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? region,
-  }) :
-      applicationArn = pulumi.Input.asOptionalInput<String>(applicationArn),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.applicationArn,
+    this.principalId,
+    this.principalType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ApplicationAssignmentState {
 
   factory ApplicationAssignmentState.fromMap(Map<String, dynamic> map) {
     return ApplicationAssignmentState(
-      applicationArn: map['applicationArn'] == null ? null : pulumi.Output.create<String>(map['applicationArn'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

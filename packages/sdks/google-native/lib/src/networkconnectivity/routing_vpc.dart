@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
 class RoutingVPC {
   /// The URI of the VPC network.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [RoutingVPC].
   /// [uri] The URI of the VPC network.
@@ -20,7 +21,7 @@ class RoutingVPC {
 
   factory RoutingVPC.fromMap(Map<String, dynamic> map) {
     return RoutingVPC(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

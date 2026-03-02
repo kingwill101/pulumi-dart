@@ -22,17 +22,12 @@ class StorageBoxSnapshotState {
   /// [name] Name of the Storage Box Snapshot.
   /// [storageBoxId] ID of the Storage Box.
   StorageBoxSnapshotState({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? isAutomatic,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? storageBoxId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isAutomatic = pulumi.Input.asOptionalInput<bool>(isAutomatic),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageBoxId = pulumi.Input.asOptionalInput<int>(storageBoxId);
+    this.description,
+    this.isAutomatic,
+    this.labels,
+    this.name,
+    this.storageBoxId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class StorageBoxSnapshotState {
 
   factory StorageBoxSnapshotState.fromMap(Map<String, dynamic> map) {
     return StorageBoxSnapshotState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isAutomatic: map['isAutomatic'] == null ? null : pulumi.Output.create<bool>(map['isAutomatic'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageBoxId: map['storageBoxId'] == null ? null : pulumi.Output.create<int>(map['storageBoxId'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isAutomatic: map['isAutomatic'] == null ? null : (map['isAutomatic'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageBoxId: map['storageBoxId'] == null ? null : (map['storageBoxId'] as int).input(),
     );
   }
 }

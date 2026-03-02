@@ -16,11 +16,9 @@ class GetVolumeSnapshotArgs {
   /// [name] The name of the Elastic SAN Volume Snapshot.
   /// [volumeGroupId] The Elastic SAN Volume Group ID within which the Elastic SAN Volume Snapshot exists.
   GetVolumeSnapshotArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> volumeGroupId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      volumeGroupId = pulumi.Input.asInput<String>(volumeGroupId);
+    required this.name,
+    required this.volumeGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVolumeSnapshotArgs {
 
   factory GetVolumeSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeSnapshotArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      volumeGroupId: pulumi.Output.create<String>(map['volumeGroupId'] as String),
+      name: (map['name'] as String).input(),
+      volumeGroupId: (map['volumeGroupId'] as String).input(),
     );
   }
 }

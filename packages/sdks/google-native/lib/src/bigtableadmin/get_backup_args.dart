@@ -18,15 +18,11 @@ class GetBackupArgs {
   /// [instanceId] Required.
   /// [project] Optional.
   GetBackupArgs({
-    required pulumi.Output<String> backupId,
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? project,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backupId,
+    required this.clusterId,
+    required this.instanceId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetBackupArgs {
 
   factory GetBackupArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupArgs(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupId: (map['backupId'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

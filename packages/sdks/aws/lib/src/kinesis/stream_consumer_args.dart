@@ -21,15 +21,11 @@ class StreamConsumerArgs {
   /// [streamArn] Amazon Resource Name (ARN) of the data stream the consumer is registered with.
   /// [tags] Optional.
   StreamConsumerArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> streamArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      streamArn = pulumi.Input.asInput<String>(streamArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    this.region,
+    required this.streamArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class StreamConsumerArgs {
 
   factory StreamConsumerArgs.fromMap(Map<String, dynamic> map) {
     return StreamConsumerArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      streamArn: pulumi.Output.create<String>(map['streamArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      streamArn: (map['streamArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

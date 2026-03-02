@@ -19,15 +19,11 @@ class BasicAccelerateIpEndpointRelationState {
   /// [endpointId] The ID of the Basic Endpoint.
   /// [status] The status of the Basic Accelerate Ip Endpoint Relation.
   BasicAccelerateIpEndpointRelationState({
-    pulumi.Output<String>? accelerateIpId,
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<String>? status,
-  }) :
-      accelerateIpId = pulumi.Input.asOptionalInput<String>(accelerateIpId),
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accelerateIpId,
+    this.acceleratorId,
+    this.endpointId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BasicAccelerateIpEndpointRelationState {
 
   factory BasicAccelerateIpEndpointRelationState.fromMap(Map<String, dynamic> map) {
     return BasicAccelerateIpEndpointRelationState(
-      accelerateIpId: map['accelerateIpId'] == null ? null : pulumi.Output.create<String>(map['accelerateIpId'] as String),
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

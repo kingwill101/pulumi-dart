@@ -34,15 +34,11 @@ class DatasetIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   DatasetIamMemberArgs({
-    pulumi.Output<DatasetIamMemberCondition>? condition,
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<DatasetIamMemberCondition>(condition),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.datasetId,
+    required this.member,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,10 +51,10 @@ class DatasetIamMemberArgs {
 
   factory DatasetIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return DatasetIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<DatasetIamMemberCondition>(DatasetIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (DatasetIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

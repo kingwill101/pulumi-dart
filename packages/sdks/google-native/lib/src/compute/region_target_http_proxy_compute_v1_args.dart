@@ -32,23 +32,15 @@ class RegionTargetHttpProxyComputeV1Args {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to the BackendService.
   RegionTargetHttpProxyComputeV1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? httpKeepAliveTimeoutSec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? proxyBind,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? urlMap,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpKeepAliveTimeoutSec = pulumi.Input.asOptionalInput<int>(httpKeepAliveTimeoutSec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyBind = pulumi.Input.asOptionalInput<bool>(proxyBind),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      urlMap = pulumi.Input.asOptionalInput<String>(urlMap);
+    this.description,
+    this.httpKeepAliveTimeoutSec,
+    this.name,
+    this.project,
+    this.proxyBind,
+    required this.region,
+    this.requestId,
+    this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class RegionTargetHttpProxyComputeV1Args {
 
   factory RegionTargetHttpProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpProxyComputeV1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : pulumi.Output.create<int>(map['httpKeepAliveTimeoutSec'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyBind: map['proxyBind'] == null ? null : pulumi.Output.create<bool>(map['proxyBind'] as bool),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      urlMap: map['urlMap'] == null ? null : pulumi.Output.create<String>(map['urlMap'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
     );
   }
 }

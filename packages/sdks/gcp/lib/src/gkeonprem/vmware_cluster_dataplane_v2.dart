@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareClusterDataplaneV2 {
   /// Enable advanced networking which requires dataplane_v2_enabled to be set true.
-  final bool? advancedNetworking;
+  final pulumi.Input<bool>? advancedNetworking;
   /// Enables Dataplane V2.
-  final bool? dataplaneV2Enabled;
+  final pulumi.Input<bool>? dataplaneV2Enabled;
   /// Enable Dataplane V2 for clusters with Windows nodes.
-  final bool? windowsDataplaneV2Enabled;
+  final pulumi.Input<bool>? windowsDataplaneV2Enabled;
 
   /// Creates a new [VMwareClusterDataplaneV2].
   /// [advancedNetworking] Enable advanced networking which requires dataplane_v2_enabled to be set true.
@@ -29,9 +30,9 @@ class VMwareClusterDataplaneV2 {
 
   factory VMwareClusterDataplaneV2.fromMap(Map<String, dynamic> map) {
     return VMwareClusterDataplaneV2(
-      advancedNetworking: map['advancedNetworking'] == null ? null : map['advancedNetworking'] as bool,
-      dataplaneV2Enabled: map['dataplaneV2Enabled'] == null ? null : map['dataplaneV2Enabled'] as bool,
-      windowsDataplaneV2Enabled: map['windowsDataplaneV2Enabled'] == null ? null : map['windowsDataplaneV2Enabled'] as bool,
+      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking'] as bool).input(),
+      dataplaneV2Enabled: map['dataplaneV2Enabled'] == null ? null : (map['dataplaneV2Enabled'] as bool).input(),
+      windowsDataplaneV2Enabled: map['windowsDataplaneV2Enabled'] == null ? null : (map['windowsDataplaneV2Enabled'] as bool).input(),
     );
   }
 }

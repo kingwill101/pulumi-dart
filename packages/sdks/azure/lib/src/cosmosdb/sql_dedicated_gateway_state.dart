@@ -16,13 +16,10 @@ class SqlDedicatedGatewayState {
   /// [instanceCount] The instance count for the CosmosDB SQL Dedicated Gateway. Possible value is between `1` and `5`.
   /// [instanceSize] The instance size for the CosmosDB SQL Dedicated Gateway. Changing this forces a new resource to be created. Possible values are `Cosmos.D4s`, `Cosmos.D8s` and `Cosmos.D16s`.
   SqlDedicatedGatewayState({
-    pulumi.Output<String>? cosmosdbAccountId,
-    pulumi.Output<int>? instanceCount,
-    pulumi.Output<String>? instanceSize,
-  }) :
-      cosmosdbAccountId = pulumi.Input.asOptionalInput<String>(cosmosdbAccountId),
-      instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
-      instanceSize = pulumi.Input.asOptionalInput<String>(instanceSize);
+    this.cosmosdbAccountId,
+    this.instanceCount,
+    this.instanceSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class SqlDedicatedGatewayState {
 
   factory SqlDedicatedGatewayState.fromMap(Map<String, dynamic> map) {
     return SqlDedicatedGatewayState(
-      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : pulumi.Output.create<String>(map['cosmosdbAccountId'] as String),
-      instanceCount: map['instanceCount'] == null ? null : pulumi.Output.create<int>(map['instanceCount'] as int),
-      instanceSize: map['instanceSize'] == null ? null : pulumi.Output.create<String>(map['instanceSize'] as String),
+      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : (map['cosmosdbAccountId'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
     );
   }
 }

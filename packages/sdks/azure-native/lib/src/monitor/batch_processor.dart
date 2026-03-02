@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Batch processor.
 class BatchProcessor {
   /// Size of the batch.
-  final int? batchSize;
+  final pulumi.Input<int>? batchSize;
   /// Timeout in milliseconds.
-  final int? timeout;
+  final pulumi.Input<int>? timeout;
 
   /// Creates a new [BatchProcessor].
   /// [batchSize] Size of the batch.
@@ -25,8 +26,8 @@ class BatchProcessor {
 
   factory BatchProcessor.fromMap(Map<String, dynamic> map) {
     return BatchProcessor(
-      batchSize: map['batchSize'] == null ? null : map['batchSize'] as int,
-      timeout: map['timeout'] == null ? null : map['timeout'] as int,
+      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

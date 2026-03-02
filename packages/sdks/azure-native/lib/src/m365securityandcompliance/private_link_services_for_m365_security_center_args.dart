@@ -34,21 +34,14 @@ class PrivateLinkServicesForM365SecurityCenterArgs {
   /// [resourceName] The name of the service instance.
   /// [tags] The resource tags.
   PrivateLinkServicesForM365SecurityCenterArgs({
-    pulumi.Output<ServicesResourceIdentity>? identity,
-    required pulumi.Output<Kind> kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<ServicesProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ServicesResourceIdentity>(identity),
-      kind = pulumi.Input.asInput<Kind>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ServicesProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    required this.kind,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class PrivateLinkServicesForM365SecurityCenterArgs {
 
   factory PrivateLinkServicesForM365SecurityCenterArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServicesForM365SecurityCenterArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ServicesResourceIdentity>(ServicesResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<Kind>(Kind.fromValue(map['kind'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ServicesProperties>(ServicesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (ServicesResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: (Kind.fromValue(map['kind'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ServicesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

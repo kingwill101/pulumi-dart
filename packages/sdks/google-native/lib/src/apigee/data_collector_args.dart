@@ -25,17 +25,12 @@ class DataCollectorArgs {
   /// [organizationId] Required.
   /// [type] Immutable. The type of data this data collector will collect.
   DataCollectorArgs({
-    pulumi.Output<String>? dataCollectorId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<DataCollectorType>? type,
-  }) :
-      dataCollectorId = pulumi.Input.asOptionalInput<String>(dataCollectorId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      type = pulumi.Input.asOptionalInput<DataCollectorType>(type);
+    this.dataCollectorId,
+    this.description,
+    this.name,
+    required this.organizationId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DataCollectorArgs {
 
   factory DataCollectorArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectorArgs(
-      dataCollectorId: map['dataCollectorId'] == null ? null : pulumi.Output.create<String>(map['dataCollectorId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<DataCollectorType>(DataCollectorType.fromValue(map['type'] as String)),
+      dataCollectorId: map['dataCollectorId'] == null ? null : (map['dataCollectorId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      type: map['type'] == null ? null : (DataCollectorType.fromValue(map['type'] as String)).input(),
     );
   }
 }

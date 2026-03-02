@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Trigger reference type.
 class TriggerReference {
   /// Reference trigger name.
-  final String referenceName;
+  final pulumi.Input<String> referenceName;
   /// Trigger reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TriggerReference].
   /// [referenceName] Reference trigger name.
@@ -25,8 +26,8 @@ class TriggerReference {
 
   factory TriggerReference.fromMap(Map<String, dynamic> map) {
     return TriggerReference(
-      referenceName: map['referenceName'] as String,
-      type: map['type'] as String,
+      referenceName: (map['referenceName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

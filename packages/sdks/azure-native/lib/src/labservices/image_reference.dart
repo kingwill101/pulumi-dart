@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Image reference information. Used in the virtual machine profile.
 class ImageReference {
   /// Image resource ID
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The image offer if applicable.
-  final String? offer;
+  final pulumi.Input<String>? offer;
   /// The image publisher
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// The image SKU
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// The image version specified on creation.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ImageReference].
   /// [id] Image resource ID
@@ -40,11 +41,11 @@ class ImageReference {
 
   factory ImageReference.fromMap(Map<String, dynamic> map) {
     return ImageReference(
-      id: map['id'] == null ? null : map['id'] as String,
-      offer: map['offer'] == null ? null : map['offer'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

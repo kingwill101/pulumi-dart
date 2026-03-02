@@ -25,17 +25,12 @@ class MetricsDestinationArgs {
   /// [iamRoleArn] This parameter is required if Destination is Evidently. If Destination is CloudWatch, do not use this parameter.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   MetricsDestinationArgs({
-    required pulumi.Output<String> appMonitorName,
-    required pulumi.Output<String> destination,
-    pulumi.Output<String>? destinationArn,
-    pulumi.Output<String>? iamRoleArn,
-    pulumi.Output<String>? region,
-  }) :
-      appMonitorName = pulumi.Input.asInput<String>(appMonitorName),
-      destination = pulumi.Input.asInput<String>(destination),
-      destinationArn = pulumi.Input.asOptionalInput<String>(destinationArn),
-      iamRoleArn = pulumi.Input.asOptionalInput<String>(iamRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.appMonitorName,
+    required this.destination,
+    this.destinationArn,
+    this.iamRoleArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class MetricsDestinationArgs {
 
   factory MetricsDestinationArgs.fromMap(Map<String, dynamic> map) {
     return MetricsDestinationArgs(
-      appMonitorName: pulumi.Output.create<String>(map['appMonitorName'] as String),
-      destination: pulumi.Output.create<String>(map['destination'] as String),
-      destinationArn: map['destinationArn'] == null ? null : pulumi.Output.create<String>(map['destinationArn'] as String),
-      iamRoleArn: map['iamRoleArn'] == null ? null : pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      appMonitorName: (map['appMonitorName'] as String).input(),
+      destination: (map['destination'] as String).input(),
+      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

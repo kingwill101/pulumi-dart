@@ -5,11 +5,11 @@ import 'route_source_details_response.dart';
 
 class GatewayRouteSetResponse {
   /// List of different Route Sources
-  final Map<String, List<RouteSourceDetailsResponse>>? details;
+  final pulumi.Input<Map<String, List<RouteSourceDetailsResponse>>>? details;
   /// List of different locations from where the routes are learned
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// Route Set name
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [GatewayRouteSetResponse].
   /// [details] List of different Route Sources
@@ -23,7 +23,7 @@ class GatewayRouteSetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'details': ?details == null ? null : pulumi.Input.encodeMapValues<List<RouteSourceDetailsResponse>, List<Map<String, dynamic>>>(details!, (value) => pulumi.Input.encodeList<RouteSourceDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'details': ?pulumi.Input.mapOptionalInputValue<Map<String, List<RouteSourceDetailsResponse>>, Map<String, List<Map<String, dynamic>>>>(details, (value) => pulumi.Input.encodeMapValues<List<RouteSourceDetailsResponse>, List<Map<String, dynamic>>>(value, (value) => pulumi.Input.encodeList<RouteSourceDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap()))),
       'locations': ?locations,
       'name': ?name,
     };
@@ -31,9 +31,9 @@ class GatewayRouteSetResponse {
 
   factory GatewayRouteSetResponse.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSetResponse(
-      details: map['details'] == null ? null : pulumi.Input.decodeMapValues<List<RouteSourceDetailsResponse>>(map['details'], (value) => pulumi.Input.decodeList<RouteSourceDetailsResponse>(value, (value) => RouteSourceDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      details: map['details'] == null ? null : (pulumi.Input.decodeMapValues<List<RouteSourceDetailsResponse>>(map['details'], (value) => pulumi.Input.decodeList<RouteSourceDetailsResponse>(value, (value) => RouteSourceDetailsResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ApplicationKnownClientsArgs {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [knownClientIds] A set of client IDs for the known applications.
   ApplicationKnownClientsArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<List<String>> knownClientIds,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      knownClientIds = pulumi.Input.asInput<List<String>>(knownClientIds);
+    required this.applicationId,
+    required this.knownClientIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ApplicationKnownClientsArgs {
 
   factory ApplicationKnownClientsArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationKnownClientsArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      knownClientIds: pulumi.Output.create<List<String>>((map['knownClientIds'] as List).cast<String>()),
+      applicationId: (map['applicationId'] as String).input(),
+      knownClientIds: ((map['knownClientIds'] as List).cast<String>()).input(),
     );
   }
 }

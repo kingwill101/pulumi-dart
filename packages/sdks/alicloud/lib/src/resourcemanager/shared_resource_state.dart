@@ -32,21 +32,14 @@ class SharedResourceState {
   /// [resourceType] The type of the shared resource.
   /// [status] The association status.
   SharedResourceState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? permissionName,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceShareId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      permissionName = pulumi.Input.asOptionalInput<String>(permissionName),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceShareId = pulumi.Input.asOptionalInput<String>(resourceShareId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.permissionName,
+    this.resourceArn,
+    this.resourceId,
+    this.resourceShareId,
+    this.resourceType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SharedResourceState {
 
   factory SharedResourceState.fromMap(Map<String, dynamic> map) {
     return SharedResourceState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      permissionName: map['permissionName'] == null ? null : pulumi.Output.create<String>(map['permissionName'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceShareId: map['resourceShareId'] == null ? null : pulumi.Output.create<String>(map['resourceShareId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      permissionName: map['permissionName'] == null ? null : (map['permissionName'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

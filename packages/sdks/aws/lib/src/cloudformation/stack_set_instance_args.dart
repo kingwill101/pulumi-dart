@@ -39,25 +39,16 @@ class StackSetInstanceArgs {
   /// [stackSetInstanceRegion] Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
   /// [stackSetName] Name of the StackSet.
   StackSetInstanceArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? callAs,
-    pulumi.Output<StackSetInstanceDeploymentTargets>? deploymentTargets,
-    pulumi.Output<StackSetInstanceOperationPreferences>? operationPreferences,
-    pulumi.Output<Map<String, String>>? parameterOverrides,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? retainStack,
-    pulumi.Output<String>? stackSetInstanceRegion,
-    required pulumi.Output<String> stackSetName,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      callAs = pulumi.Input.asOptionalInput<String>(callAs),
-      deploymentTargets = pulumi.Input.asOptionalInput<StackSetInstanceDeploymentTargets>(deploymentTargets),
-      operationPreferences = pulumi.Input.asOptionalInput<StackSetInstanceOperationPreferences>(operationPreferences),
-      parameterOverrides = pulumi.Input.asOptionalInput<Map<String, String>>(parameterOverrides),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retainStack = pulumi.Input.asOptionalInput<bool>(retainStack),
-      stackSetInstanceRegion = pulumi.Input.asOptionalInput<String>(stackSetInstanceRegion),
-      stackSetName = pulumi.Input.asInput<String>(stackSetName);
+    this.accountId,
+    this.callAs,
+    this.deploymentTargets,
+    this.operationPreferences,
+    this.parameterOverrides,
+    this.region,
+    this.retainStack,
+    this.stackSetInstanceRegion,
+    required this.stackSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class StackSetInstanceArgs {
 
   factory StackSetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return StackSetInstanceArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      callAs: map['callAs'] == null ? null : pulumi.Output.create<String>(map['callAs'] as String),
-      deploymentTargets: map['deploymentTargets'] == null ? null : pulumi.Output.create<StackSetInstanceDeploymentTargets>(StackSetInstanceDeploymentTargets.fromMap((map['deploymentTargets'] as Map).cast<String, dynamic>())),
-      operationPreferences: map['operationPreferences'] == null ? null : pulumi.Output.create<StackSetInstanceOperationPreferences>(StackSetInstanceOperationPreferences.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>())),
-      parameterOverrides: map['parameterOverrides'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameterOverrides'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retainStack: map['retainStack'] == null ? null : pulumi.Output.create<bool>(map['retainStack'] as bool),
-      stackSetInstanceRegion: map['stackSetInstanceRegion'] == null ? null : pulumi.Output.create<String>(map['stackSetInstanceRegion'] as String),
-      stackSetName: pulumi.Output.create<String>(map['stackSetName'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      callAs: map['callAs'] == null ? null : (map['callAs'] as String).input(),
+      deploymentTargets: map['deploymentTargets'] == null ? null : (StackSetInstanceDeploymentTargets.fromMap((map['deploymentTargets'] as Map).cast<String, dynamic>())).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : (StackSetInstanceOperationPreferences.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>())).input(),
+      parameterOverrides: map['parameterOverrides'] == null ? null : ((map['parameterOverrides'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retainStack: map['retainStack'] == null ? null : (map['retainStack'] as bool).input(),
+      stackSetInstanceRegion: map['stackSetInstanceRegion'] == null ? null : (map['stackSetInstanceRegion'] as String).input(),
+      stackSetName: (map['stackSetName'] as String).input(),
     );
   }
 }

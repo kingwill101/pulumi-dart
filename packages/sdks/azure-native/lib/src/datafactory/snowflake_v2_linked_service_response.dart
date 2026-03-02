@@ -8,52 +8,52 @@ import 'parameter_specification_response.dart';
 /// Snowflake linked service.
 class SnowflakeV2LinkedServiceResponse {
   /// The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
-  final dynamic accountIdentifier;
+  final pulumi.Input<dynamic> accountIdentifier;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The type used for authentication. Type: string.
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
-  final dynamic clientId;
+  final pulumi.Input<dynamic>? clientId;
   /// The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
-  final AzureKeyVaultSecretReferenceResponse? clientSecret;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? clientSecret;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The name of the Snowflake database.
-  final dynamic database;
+  final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The host name of the Snowflake account. Type: string (or Expression with resultType string).
-  final dynamic host;
+  final pulumi.Input<dynamic>? host;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// The Azure key vault secret reference of password in connection string.
-  final AzureKeyVaultSecretReferenceResponse? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
   /// The Azure key vault secret reference of privateKey for KeyPair auth.
-  final AzureKeyVaultSecretReferenceResponse? privateKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? privateKey;
   /// The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
-  final AzureKeyVaultSecretReferenceResponse? privateKeyPassphrase;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? privateKeyPassphrase;
   /// The default access control role to use in the Snowflake session. Type: string (or Expression with resultType string).
-  final dynamic role;
+  final pulumi.Input<dynamic>? role;
   /// Schema name for connection. Type: string (or Expression with resultType string).
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
-  final dynamic scope;
+  final pulumi.Input<dynamic>? scope;
   /// The tenant ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
-  final dynamic tenantId;
+  final pulumi.Input<dynamic>? tenantId;
   /// Type of linked service.
   /// Expected value is 'SnowflakeV2'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
-  final dynamic useUtcTimestamps;
+  final pulumi.Input<dynamic>? useUtcTimestamps;
   /// The name of the Snowflake user.
-  final dynamic user;
+  final pulumi.Input<dynamic>? user;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
   /// The name of the Snowflake warehouse.
-  final dynamic warehouse;
+  final pulumi.Input<dynamic> warehouse;
 
   /// Creates a new [SnowflakeV2LinkedServiceResponse].
   /// [accountIdentifier] The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
@@ -111,16 +111,16 @@ class SnowflakeV2LinkedServiceResponse {
       'annotations': ?annotations,
       'authenticationType': ?authenticationType,
       'clientId': ?clientId,
-      'clientSecret': ?clientSecret == null ? null : clientSecret!.toMap(),
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'clientSecret': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'database': database,
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'host': ?host,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
-      'privateKey': ?privateKey == null ? null : privateKey!.toMap(),
-      'privateKeyPassphrase': ?privateKeyPassphrase == null ? null : privateKeyPassphrase!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'privateKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(privateKey, (value) => value.toMap()),
+      'privateKeyPassphrase': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(privateKeyPassphrase, (value) => value.toMap()),
       'role': ?role,
       'schema': ?schema,
       'scope': ?scope,
@@ -135,29 +135,29 @@ class SnowflakeV2LinkedServiceResponse {
 
   factory SnowflakeV2LinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return SnowflakeV2LinkedServiceResponse(
-      accountIdentifier: map['accountIdentifier'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'],
-      clientSecret: map['clientSecret'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      database: map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      host: map['host'] == null ? null : map['host'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      privateKey: map['privateKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['privateKey'] as Map).cast<String, dynamic>()),
-      privateKeyPassphrase: map['privateKeyPassphrase'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['privateKeyPassphrase'] as Map).cast<String, dynamic>()),
-      role: map['role'] == null ? null : map['role'],
-      schema: map['schema'] == null ? null : map['schema'],
-      scope: map['scope'] == null ? null : map['scope'],
-      tenantId: map['tenantId'] == null ? null : map['tenantId'],
-      type: map['type'] as String,
-      useUtcTimestamps: map['useUtcTimestamps'] == null ? null : map['useUtcTimestamps'],
-      user: map['user'] == null ? null : map['user'],
-      version: map['version'] == null ? null : map['version'] as String,
-      warehouse: map['warehouse'],
+      accountIdentifier: (map['accountIdentifier']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']).input(),
+      clientSecret: map['clientSecret'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      database: (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      host: map['host'] == null ? null : (map['host']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      privateKey: map['privateKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['privateKey'] as Map).cast<String, dynamic>())).input(),
+      privateKeyPassphrase: map['privateKeyPassphrase'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['privateKeyPassphrase'] as Map).cast<String, dynamic>())).input(),
+      role: map['role'] == null ? null : (map['role']).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      scope: map['scope'] == null ? null : (map['scope']).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']).input(),
+      type: (map['type'] as String).input(),
+      useUtcTimestamps: map['useUtcTimestamps'] == null ? null : (map['useUtcTimestamps']).input(),
+      user: map['user'] == null ? null : (map['user']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      warehouse: (map['warehouse']).input(),
     );
   }
 }

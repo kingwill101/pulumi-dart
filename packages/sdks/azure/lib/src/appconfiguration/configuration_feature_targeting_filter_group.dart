@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationFeatureTargetingFilterGroup {
   /// The name of the group.
-  final String name;
+  final pulumi.Input<String> name;
   /// Rollout percentage of the group.
-  final int rolloutPercentage;
+  final pulumi.Input<int> rolloutPercentage;
 
   /// Creates a new [ConfigurationFeatureTargetingFilterGroup].
   /// [name] The name of the group.
@@ -24,8 +25,8 @@ class ConfigurationFeatureTargetingFilterGroup {
 
   factory ConfigurationFeatureTargetingFilterGroup.fromMap(Map<String, dynamic> map) {
     return ConfigurationFeatureTargetingFilterGroup(
-      name: map['name'] as String,
-      rolloutPercentage: map['rolloutPercentage'] as int,
+      name: (map['name'] as String).input(),
+      rolloutPercentage: (map['rolloutPercentage'] as int).input(),
     );
   }
 }

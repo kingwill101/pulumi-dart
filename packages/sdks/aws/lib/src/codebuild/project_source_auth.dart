@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectSourceAuth {
   /// The ARN of the resource to use for authentication. For type `CODECONNECTIONS` this should be
   /// an AWS CodeStar Connection. For type `SECRETS_MANAGER` this should be an AWS Secrets Manager secret.
-  final String resource;
+  final pulumi.Input<String> resource;
   /// The type of authentication AWS CodeBuild should perform. Valid values are `CODECONNECTIONS` and
   /// `SECRETS_MANAGER`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ProjectSourceAuth].
   /// [resource] The ARN of the resource to use for authentication. For type `CODECONNECTIONS` this should be
@@ -26,8 +27,8 @@ class ProjectSourceAuth {
 
   factory ProjectSourceAuth.fromMap(Map<String, dynamic> map) {
     return ProjectSourceAuth(
-      resource: map['resource'] as String,
-      type: map['type'] as String,
+      resource: (map['resource'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

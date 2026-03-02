@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage mapping properties.
 class StorageClassificationMappingPropertiesResponse {
   /// Target storage object Id.
-  final String? targetStorageClassificationId;
+  final pulumi.Input<String>? targetStorageClassificationId;
 
   /// Creates a new [StorageClassificationMappingPropertiesResponse].
   /// [targetStorageClassificationId] Target storage object Id.
@@ -20,7 +21,7 @@ class StorageClassificationMappingPropertiesResponse {
 
   factory StorageClassificationMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StorageClassificationMappingPropertiesResponse(
-      targetStorageClassificationId: map['targetStorageClassificationId'] == null ? null : map['targetStorageClassificationId'] as String,
+      targetStorageClassificationId: map['targetStorageClassificationId'] == null ? null : (map['targetStorageClassificationId'] as String).input(),
     );
   }
 }

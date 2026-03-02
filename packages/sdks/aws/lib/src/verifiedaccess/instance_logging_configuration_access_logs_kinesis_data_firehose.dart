@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceLoggingConfigurationAccessLogsKinesisDataFirehose {
   /// The name of the delivery stream.
-  final String? deliveryStream;
+  final pulumi.Input<String>? deliveryStream;
   /// Indicates whether logging is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [InstanceLoggingConfigurationAccessLogsKinesisDataFirehose].
   /// [deliveryStream] The name of the delivery stream.
@@ -24,8 +25,8 @@ class InstanceLoggingConfigurationAccessLogsKinesisDataFirehose {
 
   factory InstanceLoggingConfigurationAccessLogsKinesisDataFirehose.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationAccessLogsKinesisDataFirehose(
-      deliveryStream: map['deliveryStream'] == null ? null : map['deliveryStream'] as String,
-      enabled: map['enabled'] as bool,
+      deliveryStream: map['deliveryStream'] == null ? null : (map['deliveryStream'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

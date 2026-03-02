@@ -23,15 +23,11 @@ class SecurityConfigurationArgs {
   /// [namePrefix] Creates a unique name beginning with the specified
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   SecurityConfigurationArgs({
-    required pulumi.Output<String> configuration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-  }) :
-      configuration = pulumi.Input.asInput<String>(configuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.configuration,
+    this.name,
+    this.namePrefix,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SecurityConfigurationArgs {
 
   factory SecurityConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationArgs(
-      configuration: pulumi.Output.create<String>(map['configuration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      configuration: (map['configuration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

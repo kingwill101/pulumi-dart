@@ -19,13 +19,10 @@ class GetAppServiceCertificateOrderCertificateArgs {
   /// [name] Name of the certificate.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetAppServiceCertificateOrderCertificateArgs({
-    required pulumi.Output<String> certificateOrderName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateOrderName = pulumi.Input.asInput<String>(certificateOrderName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.certificateOrderName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAppServiceCertificateOrderCertificateArgs {
 
   factory GetAppServiceCertificateOrderCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetAppServiceCertificateOrderCertificateArgs(
-      certificateOrderName: pulumi.Output.create<String>(map['certificateOrderName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateOrderName: (map['certificateOrderName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

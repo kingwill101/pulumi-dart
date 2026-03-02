@@ -21,13 +21,10 @@ class ContainerStorageAccountArgs {
   /// [resourceGroupName] Name of the resource group where the vault is located. Changing this forces a new resource to be created.
   /// [storageAccountId] The ID of the Storage Account to be registered Changing this forces a new resource to be created.
   ContainerStorageAccountArgs({
-    required pulumi.Output<String> recoveryVaultName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      recoveryVaultName = pulumi.Input.asInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    required this.recoveryVaultName,
+    required this.resourceGroupName,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ContainerStorageAccountArgs {
 
   factory ContainerStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return ContainerStorageAccountArgs(
-      recoveryVaultName: pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      recoveryVaultName: (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

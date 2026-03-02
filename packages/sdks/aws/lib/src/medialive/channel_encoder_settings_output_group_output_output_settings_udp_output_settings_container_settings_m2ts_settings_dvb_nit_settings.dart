@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings {
-  final int networkId;
-  final String networkName;
-  final int? repInterval;
+  final pulumi.Input<int> networkId;
+  final pulumi.Input<String> networkName;
+  final pulumi.Input<int>? repInterval;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings].
   /// [networkId] Required.
@@ -26,9 +27,9 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings(
-      networkId: map['networkId'] as int,
-      networkName: map['networkName'] as String,
-      repInterval: map['repInterval'] == null ? null : map['repInterval'] as int,
+      networkId: (map['networkId'] as int).input(),
+      networkName: (map['networkName'] as String).input(),
+      repInterval: map['repInterval'] == null ? null : (map['repInterval'] as int).input(),
     );
   }
 }

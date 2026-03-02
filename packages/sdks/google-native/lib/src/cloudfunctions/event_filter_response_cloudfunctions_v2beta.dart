@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Filters events based on exact matches on the CloudEvents attributes.
 class EventFilterResponseCloudfunctionsV2beta {
   /// The name of a CloudEvents attribute.
-  final String attribute;
+  final pulumi.Input<String> attribute;
   /// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The value for the attribute.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [EventFilterResponseCloudfunctionsV2beta].
   /// [attribute] The name of a CloudEvents attribute.
@@ -30,9 +31,9 @@ class EventFilterResponseCloudfunctionsV2beta {
 
   factory EventFilterResponseCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return EventFilterResponseCloudfunctionsV2beta(
-      attribute: map['attribute'] as String,
-      operator: map['operator'] as String,
-      value: map['value'] as String,
+      attribute: (map['attribute'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

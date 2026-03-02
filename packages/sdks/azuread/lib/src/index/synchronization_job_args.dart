@@ -19,13 +19,10 @@ class SynchronizationJobArgs {
   /// [servicePrincipalId] The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   /// [templateId] Identifier of the synchronization template this job is based on.
   SynchronizationJobArgs({
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> servicePrincipalId,
-    required pulumi.Output<String> templateId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      servicePrincipalId = pulumi.Input.asInput<String>(servicePrincipalId),
-      templateId = pulumi.Input.asInput<String>(templateId);
+    this.enabled,
+    required this.servicePrincipalId,
+    required this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SynchronizationJobArgs {
 
   factory SynchronizationJobArgs.fromMap(Map<String, dynamic> map) {
     return SynchronizationJobArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      servicePrincipalId: pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
     );
   }
 }

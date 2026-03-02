@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The predicted changes to the deployment stack management status of the resource.
 class DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange {
   /// The predicted value after the deployment is executed.
-  final String? after;
+  final pulumi.Input<String>? after;
   /// The predicted value before the deployment is executed.
-  final String? before;
+  final pulumi.Input<String>? before;
 
   /// Creates a new [DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange].
   /// [after] The predicted value after the deployment is executed.
@@ -25,8 +26,8 @@ class DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange {
 
   factory DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange(
-      after: map['after'] == null ? null : map['after'] as String,
-      before: map['before'] == null ? null : map['before'] as String,
+      after: map['after'] == null ? null : (map['after'] as String).input(),
+      before: map['before'] == null ? null : (map['before'] as String).input(),
     );
   }
 }

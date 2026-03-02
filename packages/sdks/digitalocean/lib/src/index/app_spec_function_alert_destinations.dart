@@ -5,9 +5,9 @@ import 'app_spec_function_alert_destinations_slack_webhook.dart';
 
 class AppSpecFunctionAlertDestinations {
   /// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
-  final List<String>? emails;
+  final pulumi.Input<List<String>>? emails;
   /// Determines which slack channels or users receive alerts.
-  final List<AppSpecFunctionAlertDestinationsSlackWebhook>? slackWebhooks;
+  final pulumi.Input<List<AppSpecFunctionAlertDestinationsSlackWebhook>>? slackWebhooks;
 
   /// Creates a new [AppSpecFunctionAlertDestinations].
   /// [emails] Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
@@ -20,14 +20,14 @@ class AppSpecFunctionAlertDestinations {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'emails': ?emails,
-      'slackWebhooks': ?slackWebhooks == null ? null : pulumi.Input.encodeList<AppSpecFunctionAlertDestinationsSlackWebhook, Map<String, dynamic>>(slackWebhooks!, (value) => value.toMap()),
+      'slackWebhooks': ?pulumi.Input.mapOptionalInputValue<List<AppSpecFunctionAlertDestinationsSlackWebhook>, List<Map<String, dynamic>>>(slackWebhooks, (value) => pulumi.Input.encodeList<AppSpecFunctionAlertDestinationsSlackWebhook, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AppSpecFunctionAlertDestinations.fromMap(Map<String, dynamic> map) {
     return AppSpecFunctionAlertDestinations(
-      emails: map['emails'] == null ? null : (map['emails'] as List).cast<String>(),
-      slackWebhooks: map['slackWebhooks'] == null ? null : pulumi.Input.decodeList<AppSpecFunctionAlertDestinationsSlackWebhook>(map['slackWebhooks'], (value) => AppSpecFunctionAlertDestinationsSlackWebhook.fromMap((value as Map).cast<String, dynamic>())),
+      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
+      slackWebhooks: map['slackWebhooks'] == null ? null : (pulumi.Input.decodeList<AppSpecFunctionAlertDestinationsSlackWebhook>(map['slackWebhooks'], (value) => AppSpecFunctionAlertDestinationsSlackWebhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

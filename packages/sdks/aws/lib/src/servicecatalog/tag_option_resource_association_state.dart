@@ -28,21 +28,14 @@ class TagOptionResourceAssociationState {
   /// [resourceName] Description of the resource.
   /// [tagOptionId] Tag Option identifier.
   TagOptionResourceAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? resourceCreatedTime,
-    pulumi.Output<String>? resourceDescription,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<String>? tagOptionId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      resourceCreatedTime = pulumi.Input.asOptionalInput<String>(resourceCreatedTime),
-      resourceDescription = pulumi.Input.asOptionalInput<String>(resourceDescription),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tagOptionId = pulumi.Input.asOptionalInput<String>(tagOptionId);
+    this.region,
+    this.resourceArn,
+    this.resourceCreatedTime,
+    this.resourceDescription,
+    this.resourceId,
+    this.resourceName,
+    this.tagOptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class TagOptionResourceAssociationState {
 
   factory TagOptionResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return TagOptionResourceAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      resourceCreatedTime: map['resourceCreatedTime'] == null ? null : pulumi.Output.create<String>(map['resourceCreatedTime'] as String),
-      resourceDescription: map['resourceDescription'] == null ? null : pulumi.Output.create<String>(map['resourceDescription'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tagOptionId: map['tagOptionId'] == null ? null : pulumi.Output.create<String>(map['tagOptionId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      resourceCreatedTime: map['resourceCreatedTime'] == null ? null : (map['resourceCreatedTime'] as String).input(),
+      resourceDescription: map['resourceDescription'] == null ? null : (map['resourceDescription'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tagOptionId: map['tagOptionId'] == null ? null : (map['tagOptionId'] as String).input(),
     );
   }
 }

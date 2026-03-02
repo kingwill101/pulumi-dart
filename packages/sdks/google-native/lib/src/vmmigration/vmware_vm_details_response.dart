@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VmwareVmDetails describes a VM in vCenter.
 class VmwareVmDetailsResponse {
   /// The VM Boot Option.
-  final String bootOption;
+  final pulumi.Input<String> bootOption;
   /// The total size of the storage allocated to the VM in MB.
-  final String committedStorageMb;
+  final pulumi.Input<String> committedStorageMb;
   /// The number of cpus in the VM.
-  final int cpuCount;
+  final pulumi.Input<int> cpuCount;
   /// The descriptive name of the vCenter's datacenter this VM is contained in.
-  final String datacenterDescription;
+  final pulumi.Input<String> datacenterDescription;
   /// The id of the vCenter's datacenter this VM is contained in.
-  final String datacenterId;
+  final pulumi.Input<String> datacenterId;
   /// The number of disks the VM has.
-  final int diskCount;
+  final pulumi.Input<int> diskCount;
   /// The display name of the VM. Note that this is not necessarily unique.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
-  final String guestDescription;
+  final pulumi.Input<String> guestDescription;
   /// The size of the memory of the VM in MB.
-  final int memoryMb;
+  final pulumi.Input<int> memoryMb;
   /// The power state of the VM at the moment list was taken.
-  final String powerState;
+  final pulumi.Input<String> powerState;
   /// The unique identifier of the VM in vCenter.
-  final String uuid;
+  final pulumi.Input<String> uuid;
   /// The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
-  final String vmId;
+  final pulumi.Input<String> vmId;
 
   /// Creates a new [VmwareVmDetailsResponse].
   /// [bootOption] The VM Boot Option.
@@ -75,18 +76,18 @@ class VmwareVmDetailsResponse {
 
   factory VmwareVmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VmwareVmDetailsResponse(
-      bootOption: map['bootOption'] as String,
-      committedStorageMb: map['committedStorageMb'] as String,
-      cpuCount: map['cpuCount'] as int,
-      datacenterDescription: map['datacenterDescription'] as String,
-      datacenterId: map['datacenterId'] as String,
-      diskCount: map['diskCount'] as int,
-      displayName: map['displayName'] as String,
-      guestDescription: map['guestDescription'] as String,
-      memoryMb: map['memoryMb'] as int,
-      powerState: map['powerState'] as String,
-      uuid: map['uuid'] as String,
-      vmId: map['vmId'] as String,
+      bootOption: (map['bootOption'] as String).input(),
+      committedStorageMb: (map['committedStorageMb'] as String).input(),
+      cpuCount: (map['cpuCount'] as int).input(),
+      datacenterDescription: (map['datacenterDescription'] as String).input(),
+      datacenterId: (map['datacenterId'] as String).input(),
+      diskCount: (map['diskCount'] as int).input(),
+      displayName: (map['displayName'] as String).input(),
+      guestDescription: (map['guestDescription'] as String).input(),
+      memoryMb: (map['memoryMb'] as int).input(),
+      powerState: (map['powerState'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
+      vmId: (map['vmId'] as String).input(),
     );
   }
 }

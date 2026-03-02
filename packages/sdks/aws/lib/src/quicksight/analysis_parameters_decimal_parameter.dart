@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalysisParametersDecimalParameter {
   /// Display name for the analysis.
   ///
   /// The following arguments are optional:
-  final String name;
-  final List<double> values;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<double>> values;
 
   /// Creates a new [AnalysisParametersDecimalParameter].
   /// [name] Display name for the analysis.
@@ -25,8 +26,8 @@ class AnalysisParametersDecimalParameter {
 
   factory AnalysisParametersDecimalParameter.fromMap(Map<String, dynamic> map) {
     return AnalysisParametersDecimalParameter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<double>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<double>()).input(),
     );
   }
 }

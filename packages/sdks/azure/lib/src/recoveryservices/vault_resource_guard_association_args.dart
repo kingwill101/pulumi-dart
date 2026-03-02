@@ -16,11 +16,9 @@ class VaultResourceGuardAssociationArgs {
   /// [resourceGuardId] ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.
   /// [vaultId] ID of the Recovery Services Vault which should be associated with. Changing this forces a new resource to be created.
   VaultResourceGuardAssociationArgs({
-    required pulumi.Output<String> resourceGuardId,
-    required pulumi.Output<String> vaultId,
-  }) :
-      resourceGuardId = pulumi.Input.asInput<String>(resourceGuardId),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    required this.resourceGuardId,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class VaultResourceGuardAssociationArgs {
 
   factory VaultResourceGuardAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VaultResourceGuardAssociationArgs(
-      resourceGuardId: pulumi.Output.create<String>(map['resourceGuardId'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      resourceGuardId: (map['resourceGuardId'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

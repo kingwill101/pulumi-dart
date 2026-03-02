@@ -16,11 +16,9 @@ class GetDeploymentStackAtResourceGroupArgs {
   /// [deploymentStackName] Name of the deployment stack.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDeploymentStackAtResourceGroupArgs({
-    required pulumi.Output<String> deploymentStackName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      deploymentStackName = pulumi.Input.asInput<String>(deploymentStackName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.deploymentStackName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeploymentStackAtResourceGroupArgs {
 
   factory GetDeploymentStackAtResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentStackAtResourceGroupArgs(
-      deploymentStackName: pulumi.Output.create<String>(map['deploymentStackName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      deploymentStackName: (map['deploymentStackName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

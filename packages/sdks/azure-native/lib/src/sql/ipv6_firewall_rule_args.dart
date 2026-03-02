@@ -28,19 +28,13 @@ class IPv6FirewallRuleArgs {
   /// [serverName] The name of the server.
   /// [startIPv6Address] The start IP address of the firewall rule. Must be IPv6 format.
   IPv6FirewallRuleArgs({
-    pulumi.Output<String>? endIPv6Address,
-    pulumi.Output<String>? firewallRuleName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? startIPv6Address,
-  }) :
-      endIPv6Address = pulumi.Input.asOptionalInput<String>(endIPv6Address),
-      firewallRuleName = pulumi.Input.asOptionalInput<String>(firewallRuleName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      startIPv6Address = pulumi.Input.asOptionalInput<String>(startIPv6Address);
+    this.endIPv6Address,
+    this.firewallRuleName,
+    this.name,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.startIPv6Address,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class IPv6FirewallRuleArgs {
 
   factory IPv6FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return IPv6FirewallRuleArgs(
-      endIPv6Address: map['endIPv6Address'] == null ? null : pulumi.Output.create<String>(map['endIPv6Address'] as String),
-      firewallRuleName: map['firewallRuleName'] == null ? null : pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      startIPv6Address: map['startIPv6Address'] == null ? null : pulumi.Output.create<String>(map['startIPv6Address'] as String),
+      endIPv6Address: map['endIPv6Address'] == null ? null : (map['endIPv6Address'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      startIPv6Address: map['startIPv6Address'] == null ? null : (map['startIPv6Address'] as String).input(),
     );
   }
 }

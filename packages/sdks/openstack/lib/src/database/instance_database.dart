@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceDatabase {
   /// Database character set. Changing this creates a
   /// new instance.
-  final String? charset;
+  final pulumi.Input<String>? charset;
   /// Database collation. Changing this creates a new instance.
-  final String? collate;
+  final pulumi.Input<String>? collate;
   /// Database to be created on new instance. Changing this creates a
   /// new instance.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [InstanceDatabase].
   /// [charset] Database character set. Changing this creates a
@@ -31,9 +32,9 @@ class InstanceDatabase {
 
   factory InstanceDatabase.fromMap(Map<String, dynamic> map) {
     return InstanceDatabase(
-      charset: map['charset'] == null ? null : map['charset'] as String,
-      collate: map['collate'] == null ? null : map['collate'] as String,
-      name: map['name'] as String,
+      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
+      collate: map['collate'] == null ? null : (map['collate'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

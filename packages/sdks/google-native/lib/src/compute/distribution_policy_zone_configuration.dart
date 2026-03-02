@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionPolicyZoneConfiguration {
   /// The URL of the zone. The zone must exist in the region where the managed instance group is located.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [DistributionPolicyZoneConfiguration].
   /// [zone] The URL of the zone. The zone must exist in the region where the managed instance group is located.
@@ -19,7 +20,7 @@ class DistributionPolicyZoneConfiguration {
 
   factory DistributionPolicyZoneConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionPolicyZoneConfiguration(
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

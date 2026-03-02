@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Replica for this Secret.
 class ReplicaResponseSecretmanagerV1beta1 {
   /// The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [ReplicaResponseSecretmanagerV1beta1].
   /// [location] The canonical IDs of the location to replicate data. For example: `"us-east1"`.
@@ -20,7 +21,7 @@ class ReplicaResponseSecretmanagerV1beta1 {
 
   factory ReplicaResponseSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
     return ReplicaResponseSecretmanagerV1beta1(
-      location: map['location'] as String,
+      location: (map['location'] as String).input(),
     );
   }
 }

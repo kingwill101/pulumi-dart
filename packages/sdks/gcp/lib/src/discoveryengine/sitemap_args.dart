@@ -24,15 +24,11 @@ class SitemapArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [uri] Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
   SitemapArgs({
-    required pulumi.Output<String> dataStoreId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? uri,
-  }) :
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    required this.dataStoreId,
+    required this.location,
+    this.project,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class SitemapArgs {
 
   factory SitemapArgs.fromMap(Map<String, dynamic> map) {
     return SitemapArgs(
-      dataStoreId: pulumi.Output.create<String>(map['dataStoreId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      dataStoreId: (map['dataStoreId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

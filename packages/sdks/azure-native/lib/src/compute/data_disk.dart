@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_entity_reference.dart';
 import 'caching_types.dart';
 import 'managed_disk_parameters.dart';
@@ -8,31 +9,31 @@ import 'virtual_hard_disk.dart';
 /// Describes a data disk.
 class DataDisk {
   /// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The defaulting behavior is: **None for Standard storage. ReadOnly for Premium storage.**
-  final CachingTypes? caching;
+  final pulumi.Input<CachingTypes>? caching;
   /// Specifies how the virtual machine disk should be created. Possible values are **Attach:** This value is used when you are using a specialized disk to create the virtual machine. **FromImage:** This value is used when you are using an image to create the virtual machine data disk. If you are using a platform image, you should also use the imageReference element described above. If you are using a marketplace image, you should also use the plan element previously described. **Empty:** This value is used when creating an empty data disk. **Copy:** This value is used to create a data disk from a snapshot or another disk. **Restore:** This value is used to create a data disk from a disk restore point.
-  final String createOption;
+  final pulumi.Input<String> createOption;
   /// Specifies whether data disk should be deleted or detached upon VM deletion. Possible values are: **Delete.** If this value is used, the data disk is deleted when VM is deleted. **Detach.** If this value is used, the data disk is retained after VM is deleted. The default value is set to **Detach**.
-  final String? deleteOption;
+  final pulumi.Input<String>? deleteOption;
   /// Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. **This feature is still in preview**. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
-  final String? detachOption;
+  final pulumi.Input<String>? detachOption;
   /// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
-  final int? diskSizeGB;
+  final pulumi.Input<int>? diskSizeGB;
   /// The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
-  final VirtualHardDisk? image;
+  final pulumi.Input<VirtualHardDisk>? image;
   /// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
-  final int lun;
+  final pulumi.Input<int> lun;
   /// The managed disk parameters.
-  final ManagedDiskParameters? managedDisk;
+  final pulumi.Input<ManagedDiskParameters>? managedDisk;
   /// The disk name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The source resource identifier. It can be a snapshot, or disk restore point from which to create a disk.
-  final ApiEntityReference? sourceResource;
+  final pulumi.Input<ApiEntityReference>? sourceResource;
   /// Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
-  final bool? toBeDetached;
+  final pulumi.Input<bool>? toBeDetached;
   /// The virtual hard disk.
-  final VirtualHardDisk? vhd;
+  final pulumi.Input<VirtualHardDisk>? vhd;
   /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  final bool? writeAcceleratorEnabled;
+  final pulumi.Input<bool>? writeAcceleratorEnabled;
 
   /// Creates a new [DataDisk].
   /// [caching] Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The defaulting behavior is: **None for Standard storage. ReadOnly for Premium storage.**
@@ -66,37 +67,37 @@ class DataDisk {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caching': ?caching == null ? null : caching!.value,
+      'caching': ?pulumi.Input.mapOptionalInputValue<CachingTypes, String>(caching, (value) => value.value),
       'createOption': createOption,
       'deleteOption': ?deleteOption,
       'detachOption': ?detachOption,
       'diskSizeGB': ?diskSizeGB,
-      'image': ?image == null ? null : image!.toMap(),
+      'image': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(image, (value) => value.toMap()),
       'lun': lun,
-      'managedDisk': ?managedDisk == null ? null : managedDisk!.toMap(),
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<ManagedDiskParameters, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
       'name': ?name,
-      'sourceResource': ?sourceResource == null ? null : sourceResource!.toMap(),
+      'sourceResource': ?pulumi.Input.mapOptionalInputValue<ApiEntityReference, Map<String, dynamic>>(sourceResource, (value) => value.toMap()),
       'toBeDetached': ?toBeDetached,
-      'vhd': ?vhd == null ? null : vhd!.toMap(),
+      'vhd': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(vhd, (value) => value.toMap()),
       'writeAcceleratorEnabled': ?writeAcceleratorEnabled,
     };
   }
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      caching: map['caching'] == null ? null : CachingTypes.fromValue(map['caching'] as String),
-      createOption: map['createOption'] as String,
-      deleteOption: map['deleteOption'] == null ? null : map['deleteOption'] as String,
-      detachOption: map['detachOption'] == null ? null : map['detachOption'] as String,
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
-      image: map['image'] == null ? null : VirtualHardDisk.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      lun: map['lun'] as int,
-      managedDisk: map['managedDisk'] == null ? null : ManagedDiskParameters.fromMap((map['managedDisk'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      sourceResource: map['sourceResource'] == null ? null : ApiEntityReference.fromMap((map['sourceResource'] as Map).cast<String, dynamic>()),
-      toBeDetached: map['toBeDetached'] == null ? null : map['toBeDetached'] as bool,
-      vhd: map['vhd'] == null ? null : VirtualHardDisk.fromMap((map['vhd'] as Map).cast<String, dynamic>()),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : map['writeAcceleratorEnabled'] as bool,
+      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching'] as String)).input(),
+      createOption: (map['createOption'] as String).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
+      detachOption: map['detachOption'] == null ? null : (map['detachOption'] as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      image: map['image'] == null ? null : (VirtualHardDisk.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      lun: (map['lun'] as int).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParameters.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceResource: map['sourceResource'] == null ? null : (ApiEntityReference.fromMap((map['sourceResource'] as Map).cast<String, dynamic>())).input(),
+      toBeDetached: map['toBeDetached'] == null ? null : (map['toBeDetached'] as bool).input(),
+      vhd: map['vhd'] == null ? null : (VirtualHardDisk.fromMap((map['vhd'] as Map).cast<String, dynamic>())).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
     );
   }
 }

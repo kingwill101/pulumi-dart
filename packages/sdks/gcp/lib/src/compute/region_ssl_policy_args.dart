@@ -58,21 +58,14 @@ class RegionSslPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region where the regional SSL policy resides.
   RegionSslPolicyArgs({
-    pulumi.Output<List<String>>? customFeatures,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? minTlsVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? profile,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      customFeatures = pulumi.Input.asOptionalInput<List<String>>(customFeatures),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      minTlsVersion = pulumi.Input.asOptionalInput<String>(minTlsVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profile = pulumi.Input.asOptionalInput<String>(profile),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.customFeatures,
+    this.description,
+    this.minTlsVersion,
+    this.name,
+    this.profile,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,13 +81,13 @@ class RegionSslPolicyArgs {
 
   factory RegionSslPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionSslPolicyArgs(
-      customFeatures: map['customFeatures'] == null ? null : pulumi.Output.create<List<String>>((map['customFeatures'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      minTlsVersion: map['minTlsVersion'] == null ? null : pulumi.Output.create<String>(map['minTlsVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profile: map['profile'] == null ? null : pulumi.Output.create<String>(map['profile'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

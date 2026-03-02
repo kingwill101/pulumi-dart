@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HoneypotProbeHoneypotBindListBindPortList {
   /// Whether to bind the port.
-  final bool? bindPort;
+  final pulumi.Input<bool>? bindPort;
   /// End port.
-  final int? endPort;
+  final pulumi.Input<int>? endPort;
   /// Whether the port is fixed.
-  final bool? fixed;
+  final pulumi.Input<bool>? fixed;
   /// Start port.
-  final int? startPort;
+  final pulumi.Input<int>? startPort;
   /// Destination port.
-  final int? targetPort;
+  final pulumi.Input<int>? targetPort;
 
   /// Creates a new [HoneypotProbeHoneypotBindListBindPortList].
   /// [bindPort] Whether to bind the port.
@@ -39,11 +40,11 @@ class HoneypotProbeHoneypotBindListBindPortList {
 
   factory HoneypotProbeHoneypotBindListBindPortList.fromMap(Map<String, dynamic> map) {
     return HoneypotProbeHoneypotBindListBindPortList(
-      bindPort: map['bindPort'] == null ? null : map['bindPort'] as bool,
-      endPort: map['endPort'] == null ? null : map['endPort'] as int,
-      fixed: map['fixed'] == null ? null : map['fixed'] as bool,
-      startPort: map['startPort'] == null ? null : map['startPort'] as int,
-      targetPort: map['targetPort'] == null ? null : map['targetPort'] as int,
+      bindPort: map['bindPort'] == null ? null : (map['bindPort'] as bool).input(),
+      endPort: map['endPort'] == null ? null : (map['endPort'] as int).input(),
+      fixed: map['fixed'] == null ? null : (map['fixed'] as bool).input(),
+      startPort: map['startPort'] == null ? null : (map['startPort'] as int).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
     );
   }
 }

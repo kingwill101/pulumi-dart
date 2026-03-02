@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to a public IP address.
 class ReferencedPublicIpAddressResponse {
   /// The PublicIPAddress Reference.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ReferencedPublicIpAddressResponse].
   /// [id] The PublicIPAddress Reference.
@@ -20,7 +21,7 @@ class ReferencedPublicIpAddressResponse {
 
   factory ReferencedPublicIpAddressResponse.fromMap(Map<String, dynamic> map) {
     return ReferencedPublicIpAddressResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class ResponseArgs {
   /// [restApiId] String identifier of the associated REST API.
   /// [statusCode] HTTP status code of the Gateway Response.
   ResponseArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? responseParameters,
-    pulumi.Output<Map<String, String>>? responseTemplates,
-    required pulumi.Output<String> responseType,
-    required pulumi.Output<String> restApiId,
-    pulumi.Output<String>? statusCode,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      responseParameters = pulumi.Input.asOptionalInput<Map<String, String>>(responseParameters),
-      responseTemplates = pulumi.Input.asOptionalInput<Map<String, String>>(responseTemplates),
-      responseType = pulumi.Input.asInput<String>(responseType),
-      restApiId = pulumi.Input.asInput<String>(restApiId),
-      statusCode = pulumi.Input.asOptionalInput<String>(statusCode);
+    this.region,
+    this.responseParameters,
+    this.responseTemplates,
+    required this.responseType,
+    required this.restApiId,
+    this.statusCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ResponseArgs {
 
   factory ResponseArgs.fromMap(Map<String, dynamic> map) {
     return ResponseArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      responseParameters: map['responseParameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['responseParameters'] as Map).cast<String, String>()),
-      responseTemplates: map['responseTemplates'] == null ? null : pulumi.Output.create<Map<String, String>>((map['responseTemplates'] as Map).cast<String, String>()),
-      responseType: pulumi.Output.create<String>(map['responseType'] as String),
-      restApiId: pulumi.Output.create<String>(map['restApiId'] as String),
-      statusCode: map['statusCode'] == null ? null : pulumi.Output.create<String>(map['statusCode'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, String>()).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
+      responseType: (map['responseType'] as String).input(),
+      restApiId: (map['restApiId'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
     );
   }
 }

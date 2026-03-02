@@ -24,15 +24,11 @@ class PodSchedulingContextResourceK8sIoV1alpha3Args {
   /// [metadata] Standard object metadata
   /// [spec] Spec describes where resources for the Pod are needed.
   PodSchedulingContextResourceK8sIoV1alpha3Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    required pulumi.Output<PodSchedulingContextSpecResourceK8sIoV1alpha3> spec,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      spec = pulumi.Input.asInput<PodSchedulingContextSpecResourceK8sIoV1alpha3>(spec);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    required this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class PodSchedulingContextResourceK8sIoV1alpha3Args {
 
   factory PodSchedulingContextResourceK8sIoV1alpha3Args.fromMap(Map<String, dynamic> map) {
     return PodSchedulingContextResourceK8sIoV1alpha3Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      spec: pulumi.Output.create<PodSchedulingContextSpecResourceK8sIoV1alpha3>(PodSchedulingContextSpecResourceK8sIoV1alpha3.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: (PodSchedulingContextSpecResourceK8sIoV1alpha3.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -31,23 +31,15 @@ class ManagementDnsZoneBindingArgs {
   /// [vmwareEngineNetwork] Network to bind is a VMware Engine network. Specify the name in the following form for VMware engine network: `projects/{project}/locations/global/vmwareEngineNetworks/{vmware_engine_network_id}`. `{project}` can either be a project number or a project ID.
   /// [vpcNetwork] Network to bind is a standard consumer VPC. Specify the name in the following form for consumer VPC network: `projects/{project}/global/networks/{network_id}`. `{project}` can either be a project number or a project ID.
   ManagementDnsZoneBindingArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> managementDnsZoneBindingId,
-    required pulumi.Output<String> privateCloudId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? vmwareEngineNetwork,
-    pulumi.Output<String>? vpcNetwork,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementDnsZoneBindingId = pulumi.Input.asInput<String>(managementDnsZoneBindingId),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      vmwareEngineNetwork = pulumi.Input.asOptionalInput<String>(vmwareEngineNetwork),
-      vpcNetwork = pulumi.Input.asOptionalInput<String>(vpcNetwork);
+    this.description,
+    this.location,
+    required this.managementDnsZoneBindingId,
+    required this.privateCloudId,
+    this.project,
+    this.requestId,
+    this.vmwareEngineNetwork,
+    this.vpcNetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ManagementDnsZoneBindingArgs {
 
   factory ManagementDnsZoneBindingArgs.fromMap(Map<String, dynamic> map) {
     return ManagementDnsZoneBindingArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementDnsZoneBindingId: pulumi.Output.create<String>(map['managementDnsZoneBindingId'] as String),
-      privateCloudId: pulumi.Output.create<String>(map['privateCloudId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : pulumi.Output.create<String>(map['vmwareEngineNetwork'] as String),
-      vpcNetwork: map['vpcNetwork'] == null ? null : pulumi.Output.create<String>(map['vpcNetwork'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementDnsZoneBindingId: (map['managementDnsZoneBindingId'] as String).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
+      vpcNetwork: map['vpcNetwork'] == null ? null : (map['vpcNetwork'] as String).input(),
     );
   }
 }

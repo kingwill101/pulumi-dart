@@ -13,42 +13,42 @@ import 'get_service_template_spec_container_volume_mount.dart';
 class GetServiceTemplateSpecContainer {
   /// Arguments to the entrypoint.
   /// The docker image's CMD is used if this is not provided.
-  final List<String> args;
+  final pulumi.Input<List<String>> args;
   /// Entrypoint array. Not executed within a shell.
   /// The docker image's ENTRYPOINT is used if this is not provided.
-  final List<String> commands;
+  final pulumi.Input<List<String>> commands;
   /// List of sources to populate environment variables in the container.
   /// All invalid keys will be reported as an event when the container is starting.
   /// When a key exists in multiple sources, the value associated with the last source will
   /// take precedence. Values defined by an Env with a duplicate key will take
   /// precedence.
-  final List<GetServiceTemplateSpecContainerEnvFrom> envFroms;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerEnvFrom>> envFroms;
   /// List of environment variables to set in the container.
-  final List<GetServiceTemplateSpecContainerEnv> envs;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerEnv>> envs;
   /// Docker image name. This is most often a reference to a container located
   /// in the container registry, such as gcr.io/cloudrun/hello
-  final String image;
+  final pulumi.Input<String> image;
   /// Periodic probe of container liveness. Container will be restarted if the probe fails.
-  final List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerLivenessProbe>> livenessProbes;
   /// The name of the Cloud Run Service.
-  final String name;
+  final pulumi.Input<String> name;
   /// List of open ports in the container.
-  final List<GetServiceTemplateSpecContainerPort> ports;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerPort>> ports;
   /// Periodic probe of container readiness.
-  final List<GetServiceTemplateSpecContainerReadinessProbe> readinessProbes;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerReadinessProbe>> readinessProbes;
   /// Compute Resources required by this container. Used to set values such as max memory
-  final List<GetServiceTemplateSpecContainerResource> resources;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerResource>> resources;
   /// Startup probe of application within the container.
   /// All other probes are disabled if a startup probe is provided, until it
   /// succeeds. Container will not be added to service endpoints if the probe fails.
-  final List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerStartupProbe>> startupProbes;
   /// Volume to mount into the container's filesystem.
   /// Only supports SecretVolumeSources.
-  final List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts;
+  final pulumi.Input<List<GetServiceTemplateSpecContainerVolumeMount>> volumeMounts;
   /// Container's working directory.
   /// If not specified, the container runtime's default will be used, which
   /// might be configured in the container image.
-  final String workingDir;
+  final pulumi.Input<String> workingDir;
 
   /// Creates a new [GetServiceTemplateSpecContainer].
   /// [args] Arguments to the entrypoint.
@@ -84,35 +84,35 @@ class GetServiceTemplateSpecContainer {
     return <String, dynamic>{
       'args': args,
       'commands': commands,
-      'envFroms': pulumi.Input.encodeList<GetServiceTemplateSpecContainerEnvFrom, Map<String, dynamic>>(envFroms, (value) => value.toMap()),
-      'envs': pulumi.Input.encodeList<GetServiceTemplateSpecContainerEnv, Map<String, dynamic>>(envs, (value) => value.toMap()),
+      'envFroms': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerEnvFrom>, List<Map<String, dynamic>>>(envFroms, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerEnvFrom, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'envs': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerEnv>, List<Map<String, dynamic>>>(envs, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': image,
-      'livenessProbes': pulumi.Input.encodeList<GetServiceTemplateSpecContainerLivenessProbe, Map<String, dynamic>>(livenessProbes, (value) => value.toMap()),
+      'livenessProbes': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerLivenessProbe>, List<Map<String, dynamic>>>(livenessProbes, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerLivenessProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
-      'ports': pulumi.Input.encodeList<GetServiceTemplateSpecContainerPort, Map<String, dynamic>>(ports, (value) => value.toMap()),
-      'readinessProbes': pulumi.Input.encodeList<GetServiceTemplateSpecContainerReadinessProbe, Map<String, dynamic>>(readinessProbes, (value) => value.toMap()),
-      'resources': pulumi.Input.encodeList<GetServiceTemplateSpecContainerResource, Map<String, dynamic>>(resources, (value) => value.toMap()),
-      'startupProbes': pulumi.Input.encodeList<GetServiceTemplateSpecContainerStartupProbe, Map<String, dynamic>>(startupProbes, (value) => value.toMap()),
-      'volumeMounts': pulumi.Input.encodeList<GetServiceTemplateSpecContainerVolumeMount, Map<String, dynamic>>(volumeMounts, (value) => value.toMap()),
+      'ports': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerPort, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'readinessProbes': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerReadinessProbe>, List<Map<String, dynamic>>>(readinessProbes, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerReadinessProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'startupProbes': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerStartupProbe>, List<Map<String, dynamic>>>(startupProbes, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerStartupProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumeMounts': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workingDir': workingDir,
     };
   }
 
   factory GetServiceTemplateSpecContainer.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainer(
-      args: (map['args'] as List).cast<String>(),
-      commands: (map['commands'] as List).cast<String>(),
-      envFroms: pulumi.Input.decodeList<GetServiceTemplateSpecContainerEnvFrom>(map['envFroms'], (value) => GetServiceTemplateSpecContainerEnvFrom.fromMap((value as Map).cast<String, dynamic>())),
-      envs: pulumi.Input.decodeList<GetServiceTemplateSpecContainerEnv>(map['envs'], (value) => GetServiceTemplateSpecContainerEnv.fromMap((value as Map).cast<String, dynamic>())),
-      image: map['image'] as String,
-      livenessProbes: pulumi.Input.decodeList<GetServiceTemplateSpecContainerLivenessProbe>(map['livenessProbes'], (value) => GetServiceTemplateSpecContainerLivenessProbe.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      ports: pulumi.Input.decodeList<GetServiceTemplateSpecContainerPort>(map['ports'], (value) => GetServiceTemplateSpecContainerPort.fromMap((value as Map).cast<String, dynamic>())),
-      readinessProbes: pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbe>(map['readinessProbes'], (value) => GetServiceTemplateSpecContainerReadinessProbe.fromMap((value as Map).cast<String, dynamic>())),
-      resources: pulumi.Input.decodeList<GetServiceTemplateSpecContainerResource>(map['resources'], (value) => GetServiceTemplateSpecContainerResource.fromMap((value as Map).cast<String, dynamic>())),
-      startupProbes: pulumi.Input.decodeList<GetServiceTemplateSpecContainerStartupProbe>(map['startupProbes'], (value) => GetServiceTemplateSpecContainerStartupProbe.fromMap((value as Map).cast<String, dynamic>())),
-      volumeMounts: pulumi.Input.decodeList<GetServiceTemplateSpecContainerVolumeMount>(map['volumeMounts'], (value) => GetServiceTemplateSpecContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>())),
-      workingDir: map['workingDir'] as String,
+      args: ((map['args'] as List).cast<String>()).input(),
+      commands: ((map['commands'] as List).cast<String>()).input(),
+      envFroms: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerEnvFrom>(map['envFroms'], (value) => GetServiceTemplateSpecContainerEnvFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      envs: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerEnv>(map['envs'], (value) => GetServiceTemplateSpecContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: (map['image'] as String).input(),
+      livenessProbes: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerLivenessProbe>(map['livenessProbes'], (value) => GetServiceTemplateSpecContainerLivenessProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      ports: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerPort>(map['ports'], (value) => GetServiceTemplateSpecContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readinessProbes: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbe>(map['readinessProbes'], (value) => GetServiceTemplateSpecContainerReadinessProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerResource>(map['resources'], (value) => GetServiceTemplateSpecContainerResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startupProbes: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerStartupProbe>(map['startupProbes'], (value) => GetServiceTemplateSpecContainerStartupProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: (pulumi.Input.decodeList<GetServiceTemplateSpecContainerVolumeMount>(map['volumeMounts'], (value) => GetServiceTemplateSpecContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: (map['workingDir'] as String).input(),
     );
   }
 }

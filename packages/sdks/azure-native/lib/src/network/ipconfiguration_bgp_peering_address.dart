@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of IPConfigurationBgpPeeringAddress.
 class IPConfigurationBgpPeeringAddress {
   /// The list of custom BGP peering addresses which belong to IP configuration.
-  final List<String>? customBgpIpAddresses;
+  final pulumi.Input<List<String>>? customBgpIpAddresses;
   /// The ID of IP configuration which belongs to gateway.
-  final String? ipconfigurationId;
+  final pulumi.Input<String>? ipconfigurationId;
 
   /// Creates a new [IPConfigurationBgpPeeringAddress].
   /// [customBgpIpAddresses] The list of custom BGP peering addresses which belong to IP configuration.
@@ -25,8 +26,8 @@ class IPConfigurationBgpPeeringAddress {
 
   factory IPConfigurationBgpPeeringAddress.fromMap(Map<String, dynamic> map) {
     return IPConfigurationBgpPeeringAddress(
-      customBgpIpAddresses: map['customBgpIpAddresses'] == null ? null : (map['customBgpIpAddresses'] as List).cast<String>(),
-      ipconfigurationId: map['ipconfigurationId'] == null ? null : map['ipconfigurationId'] as String,
+      customBgpIpAddresses: map['customBgpIpAddresses'] == null ? null : ((map['customBgpIpAddresses'] as List).cast<String>()).input(),
+      ipconfigurationId: map['ipconfigurationId'] == null ? null : (map['ipconfigurationId'] as String).input(),
     );
   }
 }

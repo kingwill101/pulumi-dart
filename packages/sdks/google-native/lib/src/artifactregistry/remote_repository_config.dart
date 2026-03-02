@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apt_repository.dart';
 import 'docker_repository.dart';
 import 'maven_repository.dart';
@@ -11,21 +12,21 @@ import 'yum_repository.dart';
 /// Remote repository configuration.
 class RemoteRepositoryConfig {
   /// Specific settings for an Apt remote repository.
-  final AptRepository? aptRepository;
+  final pulumi.Input<AptRepository>? aptRepository;
   /// The description of the remote source.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specific settings for a Docker remote repository.
-  final DockerRepository? dockerRepository;
+  final pulumi.Input<DockerRepository>? dockerRepository;
   /// Specific settings for a Maven remote repository.
-  final MavenRepository? mavenRepository;
+  final pulumi.Input<MavenRepository>? mavenRepository;
   /// Specific settings for an Npm remote repository.
-  final NpmRepository? npmRepository;
+  final pulumi.Input<NpmRepository>? npmRepository;
   /// Specific settings for a Python remote repository.
-  final PythonRepository? pythonRepository;
+  final pulumi.Input<PythonRepository>? pythonRepository;
   /// Optional. The credentials used to access the remote repository.
-  final UpstreamCredentials? upstreamCredentials;
+  final pulumi.Input<UpstreamCredentials>? upstreamCredentials;
   /// Specific settings for a Yum remote repository.
-  final YumRepository? yumRepository;
+  final pulumi.Input<YumRepository>? yumRepository;
 
   /// Creates a new [RemoteRepositoryConfig].
   /// [aptRepository] Specific settings for an Apt remote repository.
@@ -49,27 +50,27 @@ class RemoteRepositoryConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aptRepository': ?aptRepository == null ? null : aptRepository!.toMap(),
+      'aptRepository': ?pulumi.Input.mapOptionalInputValue<AptRepository, Map<String, dynamic>>(aptRepository, (value) => value.toMap()),
       'description': ?description,
-      'dockerRepository': ?dockerRepository == null ? null : dockerRepository!.toMap(),
-      'mavenRepository': ?mavenRepository == null ? null : mavenRepository!.toMap(),
-      'npmRepository': ?npmRepository == null ? null : npmRepository!.toMap(),
-      'pythonRepository': ?pythonRepository == null ? null : pythonRepository!.toMap(),
-      'upstreamCredentials': ?upstreamCredentials == null ? null : upstreamCredentials!.toMap(),
-      'yumRepository': ?yumRepository == null ? null : yumRepository!.toMap(),
+      'dockerRepository': ?pulumi.Input.mapOptionalInputValue<DockerRepository, Map<String, dynamic>>(dockerRepository, (value) => value.toMap()),
+      'mavenRepository': ?pulumi.Input.mapOptionalInputValue<MavenRepository, Map<String, dynamic>>(mavenRepository, (value) => value.toMap()),
+      'npmRepository': ?pulumi.Input.mapOptionalInputValue<NpmRepository, Map<String, dynamic>>(npmRepository, (value) => value.toMap()),
+      'pythonRepository': ?pulumi.Input.mapOptionalInputValue<PythonRepository, Map<String, dynamic>>(pythonRepository, (value) => value.toMap()),
+      'upstreamCredentials': ?pulumi.Input.mapOptionalInputValue<UpstreamCredentials, Map<String, dynamic>>(upstreamCredentials, (value) => value.toMap()),
+      'yumRepository': ?pulumi.Input.mapOptionalInputValue<YumRepository, Map<String, dynamic>>(yumRepository, (value) => value.toMap()),
     };
   }
 
   factory RemoteRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RemoteRepositoryConfig(
-      aptRepository: map['aptRepository'] == null ? null : AptRepository.fromMap((map['aptRepository'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      dockerRepository: map['dockerRepository'] == null ? null : DockerRepository.fromMap((map['dockerRepository'] as Map).cast<String, dynamic>()),
-      mavenRepository: map['mavenRepository'] == null ? null : MavenRepository.fromMap((map['mavenRepository'] as Map).cast<String, dynamic>()),
-      npmRepository: map['npmRepository'] == null ? null : NpmRepository.fromMap((map['npmRepository'] as Map).cast<String, dynamic>()),
-      pythonRepository: map['pythonRepository'] == null ? null : PythonRepository.fromMap((map['pythonRepository'] as Map).cast<String, dynamic>()),
-      upstreamCredentials: map['upstreamCredentials'] == null ? null : UpstreamCredentials.fromMap((map['upstreamCredentials'] as Map).cast<String, dynamic>()),
-      yumRepository: map['yumRepository'] == null ? null : YumRepository.fromMap((map['yumRepository'] as Map).cast<String, dynamic>()),
+      aptRepository: map['aptRepository'] == null ? null : (AptRepository.fromMap((map['aptRepository'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dockerRepository: map['dockerRepository'] == null ? null : (DockerRepository.fromMap((map['dockerRepository'] as Map).cast<String, dynamic>())).input(),
+      mavenRepository: map['mavenRepository'] == null ? null : (MavenRepository.fromMap((map['mavenRepository'] as Map).cast<String, dynamic>())).input(),
+      npmRepository: map['npmRepository'] == null ? null : (NpmRepository.fromMap((map['npmRepository'] as Map).cast<String, dynamic>())).input(),
+      pythonRepository: map['pythonRepository'] == null ? null : (PythonRepository.fromMap((map['pythonRepository'] as Map).cast<String, dynamic>())).input(),
+      upstreamCredentials: map['upstreamCredentials'] == null ? null : (UpstreamCredentials.fromMap((map['upstreamCredentials'] as Map).cast<String, dynamic>())).input(),
+      yumRepository: map['yumRepository'] == null ? null : (YumRepository.fromMap((map['yumRepository'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class MongoClusterFirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startIpAddress] The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
   MongoClusterFirewallRuleArgs({
-    required pulumi.Output<String> endIpAddress,
-    pulumi.Output<String>? firewallRuleName,
-    required pulumi.Output<String> mongoClusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> startIpAddress,
-  }) :
-      endIpAddress = pulumi.Input.asInput<String>(endIpAddress),
-      firewallRuleName = pulumi.Input.asOptionalInput<String>(firewallRuleName),
-      mongoClusterName = pulumi.Input.asInput<String>(mongoClusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startIpAddress = pulumi.Input.asInput<String>(startIpAddress);
+    required this.endIpAddress,
+    this.firewallRuleName,
+    required this.mongoClusterName,
+    required this.resourceGroupName,
+    required this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class MongoClusterFirewallRuleArgs {
 
   factory MongoClusterFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return MongoClusterFirewallRuleArgs(
-      endIpAddress: pulumi.Output.create<String>(map['endIpAddress'] as String),
-      firewallRuleName: map['firewallRuleName'] == null ? null : pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      mongoClusterName: pulumi.Output.create<String>(map['mongoClusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startIpAddress: pulumi.Output.create<String>(map['startIpAddress'] as String),
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      mongoClusterName: (map['mongoClusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }
 }

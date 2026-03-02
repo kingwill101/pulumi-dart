@@ -1,64 +1,65 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sysctl settings for Linux agent nodes.
 class SysctlConfig {
   /// Sysctl setting fs.aio-max-nr.
-  final int? fsAioMaxNr;
+  final pulumi.Input<int>? fsAioMaxNr;
   /// Sysctl setting fs.file-max.
-  final int? fsFileMax;
+  final pulumi.Input<int>? fsFileMax;
   /// Sysctl setting fs.inotify.max_user_watches.
-  final int? fsInotifyMaxUserWatches;
+  final pulumi.Input<int>? fsInotifyMaxUserWatches;
   /// Sysctl setting fs.nr_open.
-  final int? fsNrOpen;
+  final pulumi.Input<int>? fsNrOpen;
   /// Sysctl setting kernel.threads-max.
-  final int? kernelThreadsMax;
+  final pulumi.Input<int>? kernelThreadsMax;
   /// Sysctl setting net.core.netdev_max_backlog.
-  final int? netCoreNetdevMaxBacklog;
+  final pulumi.Input<int>? netCoreNetdevMaxBacklog;
   /// Sysctl setting net.core.optmem_max.
-  final int? netCoreOptmemMax;
+  final pulumi.Input<int>? netCoreOptmemMax;
   /// Sysctl setting net.core.rmem_default.
-  final int? netCoreRmemDefault;
+  final pulumi.Input<int>? netCoreRmemDefault;
   /// Sysctl setting net.core.rmem_max.
-  final int? netCoreRmemMax;
+  final pulumi.Input<int>? netCoreRmemMax;
   /// Sysctl setting net.core.somaxconn.
-  final int? netCoreSomaxconn;
+  final pulumi.Input<int>? netCoreSomaxconn;
   /// Sysctl setting net.core.wmem_default.
-  final int? netCoreWmemDefault;
+  final pulumi.Input<int>? netCoreWmemDefault;
   /// Sysctl setting net.core.wmem_max.
-  final int? netCoreWmemMax;
+  final pulumi.Input<int>? netCoreWmemMax;
   /// Sysctl setting net.ipv4.ip_local_port_range.
-  final String? netIpv4IpLocalPortRange;
+  final pulumi.Input<String>? netIpv4IpLocalPortRange;
   /// Sysctl setting net.ipv4.neigh.default.gc_thresh1.
-  final int? netIpv4NeighDefaultGcThresh1;
+  final pulumi.Input<int>? netIpv4NeighDefaultGcThresh1;
   /// Sysctl setting net.ipv4.neigh.default.gc_thresh2.
-  final int? netIpv4NeighDefaultGcThresh2;
+  final pulumi.Input<int>? netIpv4NeighDefaultGcThresh2;
   /// Sysctl setting net.ipv4.neigh.default.gc_thresh3.
-  final int? netIpv4NeighDefaultGcThresh3;
+  final pulumi.Input<int>? netIpv4NeighDefaultGcThresh3;
   /// Sysctl setting net.ipv4.tcp_fin_timeout.
-  final int? netIpv4TcpFinTimeout;
+  final pulumi.Input<int>? netIpv4TcpFinTimeout;
   /// Sysctl setting net.ipv4.tcp_keepalive_probes.
-  final int? netIpv4TcpKeepaliveProbes;
+  final pulumi.Input<int>? netIpv4TcpKeepaliveProbes;
   /// Sysctl setting net.ipv4.tcp_keepalive_time.
-  final int? netIpv4TcpKeepaliveTime;
+  final pulumi.Input<int>? netIpv4TcpKeepaliveTime;
   /// Sysctl setting net.ipv4.tcp_max_syn_backlog.
-  final int? netIpv4TcpMaxSynBacklog;
+  final pulumi.Input<int>? netIpv4TcpMaxSynBacklog;
   /// Sysctl setting net.ipv4.tcp_max_tw_buckets.
-  final int? netIpv4TcpMaxTwBuckets;
+  final pulumi.Input<int>? netIpv4TcpMaxTwBuckets;
   /// Sysctl setting net.ipv4.tcp_tw_reuse.
-  final bool? netIpv4TcpTwReuse;
+  final pulumi.Input<bool>? netIpv4TcpTwReuse;
   /// Sysctl setting net.ipv4.tcp_keepalive_intvl.
-  final int? netIpv4TcpkeepaliveIntvl;
+  final pulumi.Input<int>? netIpv4TcpkeepaliveIntvl;
   /// Sysctl setting net.netfilter.nf_conntrack_buckets.
-  final int? netNetfilterNfConntrackBuckets;
+  final pulumi.Input<int>? netNetfilterNfConntrackBuckets;
   /// Sysctl setting net.netfilter.nf_conntrack_max.
-  final int? netNetfilterNfConntrackMax;
+  final pulumi.Input<int>? netNetfilterNfConntrackMax;
   /// Sysctl setting vm.max_map_count.
-  final int? vmMaxMapCount;
+  final pulumi.Input<int>? vmMaxMapCount;
   /// Sysctl setting vm.swappiness.
-  final int? vmSwappiness;
+  final pulumi.Input<int>? vmSwappiness;
   /// Sysctl setting vm.vfs_cache_pressure.
-  final int? vmVfsCachePressure;
+  final pulumi.Input<int>? vmVfsCachePressure;
 
   /// Creates a new [SysctlConfig].
   /// [fsAioMaxNr] Sysctl setting fs.aio-max-nr.
@@ -155,34 +156,34 @@ class SysctlConfig {
 
   factory SysctlConfig.fromMap(Map<String, dynamic> map) {
     return SysctlConfig(
-      fsAioMaxNr: map['fsAioMaxNr'] == null ? null : map['fsAioMaxNr'] as int,
-      fsFileMax: map['fsFileMax'] == null ? null : map['fsFileMax'] as int,
-      fsInotifyMaxUserWatches: map['fsInotifyMaxUserWatches'] == null ? null : map['fsInotifyMaxUserWatches'] as int,
-      fsNrOpen: map['fsNrOpen'] == null ? null : map['fsNrOpen'] as int,
-      kernelThreadsMax: map['kernelThreadsMax'] == null ? null : map['kernelThreadsMax'] as int,
-      netCoreNetdevMaxBacklog: map['netCoreNetdevMaxBacklog'] == null ? null : map['netCoreNetdevMaxBacklog'] as int,
-      netCoreOptmemMax: map['netCoreOptmemMax'] == null ? null : map['netCoreOptmemMax'] as int,
-      netCoreRmemDefault: map['netCoreRmemDefault'] == null ? null : map['netCoreRmemDefault'] as int,
-      netCoreRmemMax: map['netCoreRmemMax'] == null ? null : map['netCoreRmemMax'] as int,
-      netCoreSomaxconn: map['netCoreSomaxconn'] == null ? null : map['netCoreSomaxconn'] as int,
-      netCoreWmemDefault: map['netCoreWmemDefault'] == null ? null : map['netCoreWmemDefault'] as int,
-      netCoreWmemMax: map['netCoreWmemMax'] == null ? null : map['netCoreWmemMax'] as int,
-      netIpv4IpLocalPortRange: map['netIpv4IpLocalPortRange'] == null ? null : map['netIpv4IpLocalPortRange'] as String,
-      netIpv4NeighDefaultGcThresh1: map['netIpv4NeighDefaultGcThresh1'] == null ? null : map['netIpv4NeighDefaultGcThresh1'] as int,
-      netIpv4NeighDefaultGcThresh2: map['netIpv4NeighDefaultGcThresh2'] == null ? null : map['netIpv4NeighDefaultGcThresh2'] as int,
-      netIpv4NeighDefaultGcThresh3: map['netIpv4NeighDefaultGcThresh3'] == null ? null : map['netIpv4NeighDefaultGcThresh3'] as int,
-      netIpv4TcpFinTimeout: map['netIpv4TcpFinTimeout'] == null ? null : map['netIpv4TcpFinTimeout'] as int,
-      netIpv4TcpKeepaliveProbes: map['netIpv4TcpKeepaliveProbes'] == null ? null : map['netIpv4TcpKeepaliveProbes'] as int,
-      netIpv4TcpKeepaliveTime: map['netIpv4TcpKeepaliveTime'] == null ? null : map['netIpv4TcpKeepaliveTime'] as int,
-      netIpv4TcpMaxSynBacklog: map['netIpv4TcpMaxSynBacklog'] == null ? null : map['netIpv4TcpMaxSynBacklog'] as int,
-      netIpv4TcpMaxTwBuckets: map['netIpv4TcpMaxTwBuckets'] == null ? null : map['netIpv4TcpMaxTwBuckets'] as int,
-      netIpv4TcpTwReuse: map['netIpv4TcpTwReuse'] == null ? null : map['netIpv4TcpTwReuse'] as bool,
-      netIpv4TcpkeepaliveIntvl: map['netIpv4TcpkeepaliveIntvl'] == null ? null : map['netIpv4TcpkeepaliveIntvl'] as int,
-      netNetfilterNfConntrackBuckets: map['netNetfilterNfConntrackBuckets'] == null ? null : map['netNetfilterNfConntrackBuckets'] as int,
-      netNetfilterNfConntrackMax: map['netNetfilterNfConntrackMax'] == null ? null : map['netNetfilterNfConntrackMax'] as int,
-      vmMaxMapCount: map['vmMaxMapCount'] == null ? null : map['vmMaxMapCount'] as int,
-      vmSwappiness: map['vmSwappiness'] == null ? null : map['vmSwappiness'] as int,
-      vmVfsCachePressure: map['vmVfsCachePressure'] == null ? null : map['vmVfsCachePressure'] as int,
+      fsAioMaxNr: map['fsAioMaxNr'] == null ? null : (map['fsAioMaxNr'] as int).input(),
+      fsFileMax: map['fsFileMax'] == null ? null : (map['fsFileMax'] as int).input(),
+      fsInotifyMaxUserWatches: map['fsInotifyMaxUserWatches'] == null ? null : (map['fsInotifyMaxUserWatches'] as int).input(),
+      fsNrOpen: map['fsNrOpen'] == null ? null : (map['fsNrOpen'] as int).input(),
+      kernelThreadsMax: map['kernelThreadsMax'] == null ? null : (map['kernelThreadsMax'] as int).input(),
+      netCoreNetdevMaxBacklog: map['netCoreNetdevMaxBacklog'] == null ? null : (map['netCoreNetdevMaxBacklog'] as int).input(),
+      netCoreOptmemMax: map['netCoreOptmemMax'] == null ? null : (map['netCoreOptmemMax'] as int).input(),
+      netCoreRmemDefault: map['netCoreRmemDefault'] == null ? null : (map['netCoreRmemDefault'] as int).input(),
+      netCoreRmemMax: map['netCoreRmemMax'] == null ? null : (map['netCoreRmemMax'] as int).input(),
+      netCoreSomaxconn: map['netCoreSomaxconn'] == null ? null : (map['netCoreSomaxconn'] as int).input(),
+      netCoreWmemDefault: map['netCoreWmemDefault'] == null ? null : (map['netCoreWmemDefault'] as int).input(),
+      netCoreWmemMax: map['netCoreWmemMax'] == null ? null : (map['netCoreWmemMax'] as int).input(),
+      netIpv4IpLocalPortRange: map['netIpv4IpLocalPortRange'] == null ? null : (map['netIpv4IpLocalPortRange'] as String).input(),
+      netIpv4NeighDefaultGcThresh1: map['netIpv4NeighDefaultGcThresh1'] == null ? null : (map['netIpv4NeighDefaultGcThresh1'] as int).input(),
+      netIpv4NeighDefaultGcThresh2: map['netIpv4NeighDefaultGcThresh2'] == null ? null : (map['netIpv4NeighDefaultGcThresh2'] as int).input(),
+      netIpv4NeighDefaultGcThresh3: map['netIpv4NeighDefaultGcThresh3'] == null ? null : (map['netIpv4NeighDefaultGcThresh3'] as int).input(),
+      netIpv4TcpFinTimeout: map['netIpv4TcpFinTimeout'] == null ? null : (map['netIpv4TcpFinTimeout'] as int).input(),
+      netIpv4TcpKeepaliveProbes: map['netIpv4TcpKeepaliveProbes'] == null ? null : (map['netIpv4TcpKeepaliveProbes'] as int).input(),
+      netIpv4TcpKeepaliveTime: map['netIpv4TcpKeepaliveTime'] == null ? null : (map['netIpv4TcpKeepaliveTime'] as int).input(),
+      netIpv4TcpMaxSynBacklog: map['netIpv4TcpMaxSynBacklog'] == null ? null : (map['netIpv4TcpMaxSynBacklog'] as int).input(),
+      netIpv4TcpMaxTwBuckets: map['netIpv4TcpMaxTwBuckets'] == null ? null : (map['netIpv4TcpMaxTwBuckets'] as int).input(),
+      netIpv4TcpTwReuse: map['netIpv4TcpTwReuse'] == null ? null : (map['netIpv4TcpTwReuse'] as bool).input(),
+      netIpv4TcpkeepaliveIntvl: map['netIpv4TcpkeepaliveIntvl'] == null ? null : (map['netIpv4TcpkeepaliveIntvl'] as int).input(),
+      netNetfilterNfConntrackBuckets: map['netNetfilterNfConntrackBuckets'] == null ? null : (map['netNetfilterNfConntrackBuckets'] as int).input(),
+      netNetfilterNfConntrackMax: map['netNetfilterNfConntrackMax'] == null ? null : (map['netNetfilterNfConntrackMax'] as int).input(),
+      vmMaxMapCount: map['vmMaxMapCount'] == null ? null : (map['vmMaxMapCount'] as int).input(),
+      vmSwappiness: map['vmSwappiness'] == null ? null : (map['vmSwappiness'] as int).input(),
+      vmVfsCachePressure: map['vmVfsCachePressure'] == null ? null : (map['vmVfsCachePressure'] as int).input(),
     );
   }
 }

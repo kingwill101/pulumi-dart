@@ -25,19 +25,13 @@ class VscState {
   /// [vscName] The name of the Vsc.
   /// [vscType] The type of the Vsc. Default value: `primary`. Valid values: `primary`.
   VscState({
-    pulumi.Output<String>? nodeId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vscName,
-    pulumi.Output<String>? vscType,
-  }) :
-      nodeId = pulumi.Input.asOptionalInput<String>(nodeId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vscName = pulumi.Input.asOptionalInput<String>(vscName),
-      vscType = pulumi.Input.asOptionalInput<String>(vscType);
+    this.nodeId,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.vscName,
+    this.vscType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class VscState {
 
   factory VscState.fromMap(Map<String, dynamic> map) {
     return VscState(
-      nodeId: map['nodeId'] == null ? null : pulumi.Output.create<String>(map['nodeId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vscName: map['vscName'] == null ? null : pulumi.Output.create<String>(map['vscName'] as String),
-      vscType: map['vscType'] == null ? null : pulumi.Output.create<String>(map['vscType'] as String),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vscName: map['vscName'] == null ? null : (map['vscName'] as String).input(),
+      vscType: map['vscType'] == null ? null : (map['vscType'] as String).input(),
     );
   }
 }

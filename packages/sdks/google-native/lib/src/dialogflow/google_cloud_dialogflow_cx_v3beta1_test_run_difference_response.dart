@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The description of differences between original and replayed agent output.
 class GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse {
   /// A human readable description of the diff, showing the actual output vs expected output.
-  final String description;
+  final pulumi.Input<String> description;
   /// The type of diff.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse].
   /// [description] A human readable description of the diff, showing the actual output vs expected output.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse {
 
   factory GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse(
-      description: map['description'] as String,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

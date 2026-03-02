@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_model.dart';
 
 /// VMware DRA model custom properties.
 class VMwareDraModelCustomProperties {
   /// Gets or sets the BIOS Id of the DRA machine.
-  final String biosId;
+  final pulumi.Input<String> biosId;
   /// Gets or sets the instance type.
   /// Expected value is 'VMware'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Identity model.
-  final IdentityModel marsAuthenticationIdentity;
+  final pulumi.Input<IdentityModel> marsAuthenticationIdentity;
 
   /// Creates a new [VMwareDraModelCustomProperties].
   /// [biosId] Gets or sets the BIOS Id of the DRA machine.
@@ -26,15 +27,15 @@ class VMwareDraModelCustomProperties {
     return <String, dynamic>{
       'biosId': biosId,
       'instanceType': instanceType,
-      'marsAuthenticationIdentity': marsAuthenticationIdentity.toMap(),
+      'marsAuthenticationIdentity': pulumi.Input.mapInputValue<IdentityModel, Map<String, dynamic>>(marsAuthenticationIdentity, (value) => value.toMap()),
     };
   }
 
   factory VMwareDraModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return VMwareDraModelCustomProperties(
-      biosId: map['biosId'] as String,
-      instanceType: map['instanceType'] as String,
-      marsAuthenticationIdentity: IdentityModel.fromMap((map['marsAuthenticationIdentity'] as Map).cast<String, dynamic>()),
+      biosId: (map['biosId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      marsAuthenticationIdentity: (IdentityModel.fromMap((map['marsAuthenticationIdentity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

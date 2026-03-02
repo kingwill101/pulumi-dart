@@ -16,11 +16,9 @@ class GetElasticLoadBalancingV2LoadBalancerArgs {
   /// [name] Name of ElasticLoadBalancingV2LoadBalancer
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetElasticLoadBalancingV2LoadBalancerArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetElasticLoadBalancingV2LoadBalancerArgs {
 
   factory GetElasticLoadBalancingV2LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticLoadBalancingV2LoadBalancerArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionDefaultCacheBehaviorLambdaFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
-  final String eventType;
+  final pulumi.Input<String> eventType;
   /// When set to true it exposes the request body to the lambda function. Defaults to false. Valid values: `true`, `false`.
-  final bool? includeBody;
+  final pulumi.Input<bool>? includeBody;
   /// ARN of the Lambda function.
-  final String lambdaArn;
+  final pulumi.Input<String> lambdaArn;
 
   /// Creates a new [DistributionDefaultCacheBehaviorLambdaFunctionAssociation].
   /// [eventType] Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
@@ -29,9 +30,9 @@ class DistributionDefaultCacheBehaviorLambdaFunctionAssociation {
 
   factory DistributionDefaultCacheBehaviorLambdaFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return DistributionDefaultCacheBehaviorLambdaFunctionAssociation(
-      eventType: map['eventType'] as String,
-      includeBody: map['includeBody'] == null ? null : map['includeBody'] as bool,
-      lambdaArn: map['lambdaArn'] as String,
+      eventType: (map['eventType'] as String).input(),
+      includeBody: map['includeBody'] == null ? null : (map['includeBody'] as bool).input(),
+      lambdaArn: (map['lambdaArn'] as String).input(),
     );
   }
 }

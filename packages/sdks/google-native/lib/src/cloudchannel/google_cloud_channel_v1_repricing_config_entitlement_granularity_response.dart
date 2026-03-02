@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Applies the repricing configuration at the entitlement level.
 class GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse {
   /// Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
-  final String entitlement;
+  final pulumi.Input<String> entitlement;
 
   /// Creates a new [GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse].
   /// [entitlement] Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
@@ -20,7 +21,7 @@ class GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse {
 
   factory GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse(
-      entitlement: map['entitlement'] as String,
+      entitlement: (map['entitlement'] as String).input(),
     );
   }
 }

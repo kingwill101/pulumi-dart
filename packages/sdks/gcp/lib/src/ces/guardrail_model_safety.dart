@@ -6,7 +6,7 @@ import 'guardrail_model_safety_safety_setting.dart';
 class GuardrailModelSafety {
   /// List of safety settings.
   /// Structure is documented below.
-  final List<GuardrailModelSafetySafetySetting> safetySettings;
+  final pulumi.Input<List<GuardrailModelSafetySafetySetting>> safetySettings;
 
   /// Creates a new [GuardrailModelSafety].
   /// [safetySettings] List of safety settings.
@@ -16,13 +16,13 @@ class GuardrailModelSafety {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'safetySettings': pulumi.Input.encodeList<GuardrailModelSafetySafetySetting, Map<String, dynamic>>(safetySettings, (value) => value.toMap()),
+      'safetySettings': pulumi.Input.mapInputValue<List<GuardrailModelSafetySafetySetting>, List<Map<String, dynamic>>>(safetySettings, (value) => pulumi.Input.encodeList<GuardrailModelSafetySafetySetting, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GuardrailModelSafety.fromMap(Map<String, dynamic> map) {
     return GuardrailModelSafety(
-      safetySettings: pulumi.Input.decodeList<GuardrailModelSafetySafetySetting>(map['safetySettings'], (value) => GuardrailModelSafetySafetySetting.fromMap((value as Map).cast<String, dynamic>())),
+      safetySettings: (pulumi.Input.decodeList<GuardrailModelSafetySafetySetting>(map['safetySettings'], (value) => GuardrailModelSafetySafetySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class SynapseWorkspaceSqlPoolTableDataSetMappingArgs {
   /// [shareSubscriptionName] The name of the share subscription which will hold the data set sink.
   /// [synapseWorkspaceSqlPoolTableResourceId] Resource id of the Synapse Workspace SQL Pool Table
   SynapseWorkspaceSqlPoolTableDataSetMappingArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> dataSetId,
-    pulumi.Output<String>? dataSetMappingName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareSubscriptionName,
-    required pulumi.Output<String> synapseWorkspaceSqlPoolTableResourceId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dataSetId = pulumi.Input.asInput<String>(dataSetId),
-      dataSetMappingName = pulumi.Input.asOptionalInput<String>(dataSetMappingName),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName),
-      synapseWorkspaceSqlPoolTableResourceId = pulumi.Input.asInput<String>(synapseWorkspaceSqlPoolTableResourceId);
+    required this.accountName,
+    required this.dataSetId,
+    this.dataSetMappingName,
+    required this.kind,
+    required this.resourceGroupName,
+    required this.shareSubscriptionName,
+    required this.synapseWorkspaceSqlPoolTableResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SynapseWorkspaceSqlPoolTableDataSetMappingArgs {
 
   factory SynapseWorkspaceSqlPoolTableDataSetMappingArgs.fromMap(Map<String, dynamic> map) {
     return SynapseWorkspaceSqlPoolTableDataSetMappingArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dataSetId: pulumi.Output.create<String>(map['dataSetId'] as String),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : pulumi.Output.create<String>(map['dataSetMappingName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
-      synapseWorkspaceSqlPoolTableResourceId: pulumi.Output.create<String>(map['synapseWorkspaceSqlPoolTableResourceId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      dataSetId: (map['dataSetId'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
+      synapseWorkspaceSqlPoolTableResourceId: (map['synapseWorkspaceSqlPoolTableResourceId'] as String).input(),
     );
   }
 }

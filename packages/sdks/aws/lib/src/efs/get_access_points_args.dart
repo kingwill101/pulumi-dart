@@ -16,11 +16,9 @@ class GetAccessPointsArgs {
   /// [fileSystemId] EFS File System identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetAccessPointsArgs({
-    required pulumi.Output<String> fileSystemId,
-    pulumi.Output<String>? region,
-  }) :
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.fileSystemId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAccessPointsArgs {
 
   factory GetAccessPointsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsArgs(
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

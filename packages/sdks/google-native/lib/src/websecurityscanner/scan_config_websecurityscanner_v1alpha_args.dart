@@ -47,29 +47,18 @@ class ScanConfigWebsecurityscannerV1alphaArgs {
   /// [targetPlatforms] Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
   /// [userAgent] The user agent used during scanning.
   ScanConfigWebsecurityscannerV1alphaArgs({
-    pulumi.Output<AuthenticationWebsecurityscannerV1alpha>? authentication,
-    pulumi.Output<List<String>>? blacklistPatterns,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<ScanRun>? latestRun,
-    pulumi.Output<int>? maxQps,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ScheduleWebsecurityscannerV1alpha>? schedule,
-    required pulumi.Output<List<String>> startingUrls,
-    pulumi.Output<List<ScanConfigTargetPlatformsItem>>? targetPlatforms,
-    pulumi.Output<ScanConfigUserAgentWebsecurityscannerV1alpha>? userAgent,
-  }) :
-      authentication = pulumi.Input.asOptionalInput<AuthenticationWebsecurityscannerV1alpha>(authentication),
-      blacklistPatterns = pulumi.Input.asOptionalInput<List<String>>(blacklistPatterns),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      latestRun = pulumi.Input.asOptionalInput<ScanRun>(latestRun),
-      maxQps = pulumi.Input.asOptionalInput<int>(maxQps),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schedule = pulumi.Input.asOptionalInput<ScheduleWebsecurityscannerV1alpha>(schedule),
-      startingUrls = pulumi.Input.asInput<List<String>>(startingUrls),
-      targetPlatforms = pulumi.Input.asOptionalInput<List<ScanConfigTargetPlatformsItem>>(targetPlatforms),
-      userAgent = pulumi.Input.asOptionalInput<ScanConfigUserAgentWebsecurityscannerV1alpha>(userAgent);
+    this.authentication,
+    this.blacklistPatterns,
+    required this.displayName,
+    this.latestRun,
+    this.maxQps,
+    this.name,
+    this.project,
+    this.schedule,
+    required this.startingUrls,
+    this.targetPlatforms,
+    this.userAgent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class ScanConfigWebsecurityscannerV1alphaArgs {
 
   factory ScanConfigWebsecurityscannerV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return ScanConfigWebsecurityscannerV1alphaArgs(
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<AuthenticationWebsecurityscannerV1alpha>(AuthenticationWebsecurityscannerV1alpha.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      blacklistPatterns: map['blacklistPatterns'] == null ? null : pulumi.Output.create<List<String>>((map['blacklistPatterns'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      latestRun: map['latestRun'] == null ? null : pulumi.Output.create<ScanRun>(ScanRun.fromMap((map['latestRun'] as Map).cast<String, dynamic>())),
-      maxQps: map['maxQps'] == null ? null : pulumi.Output.create<int>(map['maxQps'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<ScheduleWebsecurityscannerV1alpha>(ScheduleWebsecurityscannerV1alpha.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      startingUrls: pulumi.Output.create<List<String>>((map['startingUrls'] as List).cast<String>()),
-      targetPlatforms: map['targetPlatforms'] == null ? null : pulumi.Output.create<List<ScanConfigTargetPlatformsItem>>(pulumi.Input.decodeList<ScanConfigTargetPlatformsItem>(map['targetPlatforms'], (value) => ScanConfigTargetPlatformsItem.fromValue(value as String))),
-      userAgent: map['userAgent'] == null ? null : pulumi.Output.create<ScanConfigUserAgentWebsecurityscannerV1alpha>(ScanConfigUserAgentWebsecurityscannerV1alpha.fromValue(map['userAgent'] as String)),
+      authentication: map['authentication'] == null ? null : (AuthenticationWebsecurityscannerV1alpha.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      latestRun: map['latestRun'] == null ? null : (ScanRun.fromMap((map['latestRun'] as Map).cast<String, dynamic>())).input(),
+      maxQps: map['maxQps'] == null ? null : (map['maxQps'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schedule: map['schedule'] == null ? null : (ScheduleWebsecurityscannerV1alpha.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      startingUrls: ((map['startingUrls'] as List).cast<String>()).input(),
+      targetPlatforms: map['targetPlatforms'] == null ? null : (pulumi.Input.decodeList<ScanConfigTargetPlatformsItem>(map['targetPlatforms'], (value) => ScanConfigTargetPlatformsItem.fromValue(value as String))).input(),
+      userAgent: map['userAgent'] == null ? null : (ScanConfigUserAgentWebsecurityscannerV1alpha.fromValue(map['userAgent'] as String)).input(),
     );
   }
 }

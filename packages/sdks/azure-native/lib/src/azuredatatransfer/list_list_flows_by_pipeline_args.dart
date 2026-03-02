@@ -19,13 +19,10 @@ class ListListFlowsByPipelineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [value] Connection ID to target
   ListListFlowsByPipelineArgs({
-    required pulumi.Output<String> pipelineName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? value,
-  }) :
-      pipelineName = pulumi.Input.asInput<String>(pipelineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      value = pulumi.Input.asOptionalInput<List<String>>(value);
+    required this.pipelineName,
+    required this.resourceGroupName,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListListFlowsByPipelineArgs {
 
   factory ListListFlowsByPipelineArgs.fromMap(Map<String, dynamic> map) {
     return ListListFlowsByPipelineArgs(
-      pipelineName: pulumi.Output.create<String>(map['pipelineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<List<String>>((map['value'] as List).cast<String>()),
+      pipelineName: (map['pipelineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      value: map['value'] == null ? null : ((map['value'] as List).cast<String>()).input(),
     );
   }
 }

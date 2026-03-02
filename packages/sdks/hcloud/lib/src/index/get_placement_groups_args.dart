@@ -16,11 +16,9 @@ class GetPlacementGroupsArgs {
   /// [mostRecent] Sorts list by date.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   GetPlacementGroupsArgs({
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? withSelector,
-  }) :
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.mostRecent,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPlacementGroupsArgs {
 
   factory GetPlacementGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsArgs(
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

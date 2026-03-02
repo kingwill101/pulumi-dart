@@ -38,23 +38,15 @@ class WebAclRuleGroupAssociationArgs {
   /// [timeouts] Optional.
   /// [webAclArn] ARN of the Web ACL to associate the Rule Group with.
   WebAclRuleGroupAssociationArgs({
-    pulumi.Output<WebAclRuleGroupAssociationManagedRuleGroup>? managedRuleGroup,
-    pulumi.Output<String>? overrideAction,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? region,
-    pulumi.Output<WebAclRuleGroupAssociationRuleGroupReference>? ruleGroupReference,
-    required pulumi.Output<String> ruleName,
-    pulumi.Output<WebAclRuleGroupAssociationTimeouts>? timeouts,
-    required pulumi.Output<String> webAclArn,
-  }) :
-      managedRuleGroup = pulumi.Input.asOptionalInput<WebAclRuleGroupAssociationManagedRuleGroup>(managedRuleGroup),
-      overrideAction = pulumi.Input.asOptionalInput<String>(overrideAction),
-      priority = pulumi.Input.asInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleGroupReference = pulumi.Input.asOptionalInput<WebAclRuleGroupAssociationRuleGroupReference>(ruleGroupReference),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      timeouts = pulumi.Input.asOptionalInput<WebAclRuleGroupAssociationTimeouts>(timeouts),
-      webAclArn = pulumi.Input.asInput<String>(webAclArn);
+    this.managedRuleGroup,
+    this.overrideAction,
+    required this.priority,
+    this.region,
+    this.ruleGroupReference,
+    required this.ruleName,
+    this.timeouts,
+    required this.webAclArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class WebAclRuleGroupAssociationArgs {
 
   factory WebAclRuleGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationArgs(
-      managedRuleGroup: map['managedRuleGroup'] == null ? null : pulumi.Output.create<WebAclRuleGroupAssociationManagedRuleGroup>(WebAclRuleGroupAssociationManagedRuleGroup.fromMap((map['managedRuleGroup'] as Map).cast<String, dynamic>())),
-      overrideAction: map['overrideAction'] == null ? null : pulumi.Output.create<String>(map['overrideAction'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleGroupReference: map['ruleGroupReference'] == null ? null : pulumi.Output.create<WebAclRuleGroupAssociationRuleGroupReference>(WebAclRuleGroupAssociationRuleGroupReference.fromMap((map['ruleGroupReference'] as Map).cast<String, dynamic>())),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<WebAclRuleGroupAssociationTimeouts>(WebAclRuleGroupAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      webAclArn: pulumi.Output.create<String>(map['webAclArn'] as String),
+      managedRuleGroup: map['managedRuleGroup'] == null ? null : (WebAclRuleGroupAssociationManagedRuleGroup.fromMap((map['managedRuleGroup'] as Map).cast<String, dynamic>())).input(),
+      overrideAction: map['overrideAction'] == null ? null : (map['overrideAction'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleGroupReference: map['ruleGroupReference'] == null ? null : (WebAclRuleGroupAssociationRuleGroupReference.fromMap((map['ruleGroupReference'] as Map).cast<String, dynamic>())).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (WebAclRuleGroupAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      webAclArn: (map['webAclArn'] as String).input(),
     );
   }
 }

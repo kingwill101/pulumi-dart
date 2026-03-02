@@ -33,21 +33,14 @@ class CollectorPolicyArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   CollectorPolicyArgs({
-    required pulumi.Output<String> azureTrafficCollectorName,
-    pulumi.Output<String>? collectorPolicyName,
-    pulumi.Output<List<EmissionPoliciesPropertiesFormat>>? emissionPolicies,
-    pulumi.Output<IngestionPolicyPropertiesFormat>? ingestionPolicy,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      azureTrafficCollectorName = pulumi.Input.asInput<String>(azureTrafficCollectorName),
-      collectorPolicyName = pulumi.Input.asOptionalInput<String>(collectorPolicyName),
-      emissionPolicies = pulumi.Input.asOptionalInput<List<EmissionPoliciesPropertiesFormat>>(emissionPolicies),
-      ingestionPolicy = pulumi.Input.asOptionalInput<IngestionPolicyPropertiesFormat>(ingestionPolicy),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.azureTrafficCollectorName,
+    this.collectorPolicyName,
+    this.emissionPolicies,
+    this.ingestionPolicy,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class CollectorPolicyArgs {
 
   factory CollectorPolicyArgs.fromMap(Map<String, dynamic> map) {
     return CollectorPolicyArgs(
-      azureTrafficCollectorName: pulumi.Output.create<String>(map['azureTrafficCollectorName'] as String),
-      collectorPolicyName: map['collectorPolicyName'] == null ? null : pulumi.Output.create<String>(map['collectorPolicyName'] as String),
-      emissionPolicies: map['emissionPolicies'] == null ? null : pulumi.Output.create<List<EmissionPoliciesPropertiesFormat>>(pulumi.Input.decodeList<EmissionPoliciesPropertiesFormat>(map['emissionPolicies'], (value) => EmissionPoliciesPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))),
-      ingestionPolicy: map['ingestionPolicy'] == null ? null : pulumi.Output.create<IngestionPolicyPropertiesFormat>(IngestionPolicyPropertiesFormat.fromMap((map['ingestionPolicy'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      azureTrafficCollectorName: (map['azureTrafficCollectorName'] as String).input(),
+      collectorPolicyName: map['collectorPolicyName'] == null ? null : (map['collectorPolicyName'] as String).input(),
+      emissionPolicies: map['emissionPolicies'] == null ? null : (pulumi.Input.decodeList<EmissionPoliciesPropertiesFormat>(map['emissionPolicies'], (value) => EmissionPoliciesPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingestionPolicy: map['ingestionPolicy'] == null ? null : (IngestionPolicyPropertiesFormat.fromMap((map['ingestionPolicy'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

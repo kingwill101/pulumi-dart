@@ -24,15 +24,11 @@ class Ipv4CidrBlockArgs {
   /// [secondaryCidrMask] Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
   /// [vpcId] The ID of the VPC.
   Ipv4CidrBlockArgs({
-    pulumi.Output<String>? ipv4IpamPoolId,
-    pulumi.Output<String>? secondaryCidrBlock,
-    pulumi.Output<int>? secondaryCidrMask,
-    required pulumi.Output<String> vpcId,
-  }) :
-      ipv4IpamPoolId = pulumi.Input.asOptionalInput<String>(ipv4IpamPoolId),
-      secondaryCidrBlock = pulumi.Input.asOptionalInput<String>(secondaryCidrBlock),
-      secondaryCidrMask = pulumi.Input.asOptionalInput<int>(secondaryCidrMask),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.ipv4IpamPoolId,
+    this.secondaryCidrBlock,
+    this.secondaryCidrMask,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class Ipv4CidrBlockArgs {
 
   factory Ipv4CidrBlockArgs.fromMap(Map<String, dynamic> map) {
     return Ipv4CidrBlockArgs(
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipv4IpamPoolId'] as String),
-      secondaryCidrBlock: map['secondaryCidrBlock'] == null ? null : pulumi.Output.create<String>(map['secondaryCidrBlock'] as String),
-      secondaryCidrMask: map['secondaryCidrMask'] == null ? null : pulumi.Output.create<int>(map['secondaryCidrMask'] as int),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
+      secondaryCidrBlock: map['secondaryCidrBlock'] == null ? null : (map['secondaryCidrBlock'] as String).input(),
+      secondaryCidrMask: map['secondaryCidrMask'] == null ? null : (map['secondaryCidrMask'] as int).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

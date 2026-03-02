@@ -19,13 +19,10 @@ class GetVirtualMachineConfigurationAssignmentArgs {
   /// [resourceGroupName] Specifies the Name of the Resource Group where the Guest Configuration Assignment exists.
   /// [virtualMachineName] Only retrieve Policy Set Definitions from this Management Group.
   GetVirtualMachineConfigurationAssignmentArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    required this.name,
+    required this.resourceGroupName,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualMachineConfigurationAssignmentArgs {
 
   factory GetVirtualMachineConfigurationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineConfigurationAssignmentArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

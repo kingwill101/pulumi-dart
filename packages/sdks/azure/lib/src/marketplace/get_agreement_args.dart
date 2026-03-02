@@ -19,13 +19,10 @@ class GetAgreementArgs {
   /// [plan] The Plan of the Marketplace Image.
   /// [publisher] The Publisher of the Marketplace Image.
   GetAgreementArgs({
-    required pulumi.Output<String> offer,
-    required pulumi.Output<String> plan,
-    required pulumi.Output<String> publisher,
-  }) :
-      offer = pulumi.Input.asInput<String>(offer),
-      plan = pulumi.Input.asInput<String>(plan),
-      publisher = pulumi.Input.asInput<String>(publisher);
+    required this.offer,
+    required this.plan,
+    required this.publisher,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAgreementArgs {
 
   factory GetAgreementArgs.fromMap(Map<String, dynamic> map) {
     return GetAgreementArgs(
-      offer: pulumi.Output.create<String>(map['offer'] as String),
-      plan: pulumi.Output.create<String>(map['plan'] as String),
-      publisher: pulumi.Output.create<String>(map['publisher'] as String),
+      offer: (map['offer'] as String).input(),
+      plan: (map['plan'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
     );
   }
 }

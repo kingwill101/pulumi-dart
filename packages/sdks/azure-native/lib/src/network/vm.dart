@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a Virtual Machine.
 class VM {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [VM].
   /// [id] Resource ID.
@@ -30,9 +31,9 @@ class VM {
 
   factory VM.fromMap(Map<String, dynamic> map) {
     return VM(
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

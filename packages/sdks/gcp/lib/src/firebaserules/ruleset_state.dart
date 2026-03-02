@@ -24,17 +24,12 @@ class RulesetState {
   /// [project] The project for the resource
   /// [source] `Source` for the `Ruleset`.
   RulesetState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<List<RulesetMetadata>>? metadatas,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<RulesetSource>? source,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      metadatas = pulumi.Input.asOptionalInput<List<RulesetMetadata>>(metadatas),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      source = pulumi.Input.asOptionalInput<RulesetSource>(source);
+    this.createTime,
+    this.metadatas,
+    this.name,
+    this.project,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class RulesetState {
 
   factory RulesetState.fromMap(Map<String, dynamic> map) {
     return RulesetState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      metadatas: map['metadatas'] == null ? null : pulumi.Output.create<List<RulesetMetadata>>(pulumi.Input.decodeList<RulesetMetadata>(map['metadatas'], (value) => RulesetMetadata.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<RulesetSource>(RulesetSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<RulesetMetadata>(map['metadatas'], (value) => RulesetMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      source: map['source'] == null ? null : (RulesetSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

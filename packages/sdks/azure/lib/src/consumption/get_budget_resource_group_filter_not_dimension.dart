@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBudgetResourceGroupFilterNotDimension {
   /// The name of this Consumption Budget.
-  final String name;
+  final pulumi.Input<String> name;
   /// The operator used for comparison.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// A list of values for the tag.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetBudgetResourceGroupFilterNotDimension].
   /// [name] The name of this Consumption Budget.
@@ -29,9 +30,9 @@ class GetBudgetResourceGroupFilterNotDimension {
 
   factory GetBudgetResourceGroupFilterNotDimension.fromMap(Map<String, dynamic> map) {
     return GetBudgetResourceGroupFilterNotDimension(
-      name: map['name'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

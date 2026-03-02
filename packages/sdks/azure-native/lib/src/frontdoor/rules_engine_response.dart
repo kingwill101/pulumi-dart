@@ -6,15 +6,15 @@ import 'rules_engine_rule_response.dart';
 /// A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
 class RulesEngineResponse {
   /// Resource ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Resource status.
-  final String resourceState;
+  final pulumi.Input<String> resourceState;
   /// A list of rules that define a particular Rules Engine Configuration.
-  final List<RulesEngineRuleResponse>? rules;
+  final pulumi.Input<List<RulesEngineRuleResponse>>? rules;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RulesEngineResponse].
   /// [id] Resource ID.
@@ -35,18 +35,18 @@ class RulesEngineResponse {
       'id': id,
       'name': name,
       'resourceState': resourceState,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<RulesEngineRuleResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<RulesEngineRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RulesEngineRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory RulesEngineResponse.fromMap(Map<String, dynamic> map) {
     return RulesEngineResponse(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      resourceState: map['resourceState'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RulesEngineRuleResponse>(map['rules'], (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceState: (map['resourceState'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleResponse>(map['rules'], (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

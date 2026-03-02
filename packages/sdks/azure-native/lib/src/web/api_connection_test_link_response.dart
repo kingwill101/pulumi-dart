@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// API connection properties
 class ApiConnectionTestLinkResponse {
   /// HTTP Method
-  final String? method;
+  final pulumi.Input<String>? method;
   /// Test link request URI
-  final String? requestUri;
+  final pulumi.Input<String>? requestUri;
 
   /// Creates a new [ApiConnectionTestLinkResponse].
   /// [method] HTTP Method
@@ -25,8 +26,8 @@ class ApiConnectionTestLinkResponse {
 
   factory ApiConnectionTestLinkResponse.fromMap(Map<String, dynamic> map) {
     return ApiConnectionTestLinkResponse(
-      method: map['method'] == null ? null : map['method'] as String,
-      requestUri: map['requestUri'] == null ? null : map['requestUri'] as String,
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      requestUri: map['requestUri'] == null ? null : (map['requestUri'] as String).input(),
     );
   }
 }

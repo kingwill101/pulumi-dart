@@ -16,11 +16,9 @@ class GetLinkerArgs {
   /// [linkerName] The name Linker resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource to be connected.
   GetLinkerArgs({
-    required pulumi.Output<String> linkerName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      linkerName = pulumi.Input.asInput<String>(linkerName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.linkerName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLinkerArgs {
 
   factory GetLinkerArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkerArgs(
-      linkerName: pulumi.Output.create<String>(map['linkerName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      linkerName: (map['linkerName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

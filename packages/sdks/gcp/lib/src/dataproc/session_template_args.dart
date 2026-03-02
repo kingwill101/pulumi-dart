@@ -45,23 +45,15 @@ class SessionTemplateArgs {
   /// [runtimeConfig] Runtime configuration for the session template.
   /// [sparkConnectSession] Spark connect configuration for an interactive session.
   SessionTemplateArgs({
-    pulumi.Output<SessionTemplateEnvironmentConfig>? environmentConfig,
-    pulumi.Output<SessionTemplateJupyterSession>? jupyterSession,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<SessionTemplateRuntimeConfig>? runtimeConfig,
-    pulumi.Output<Map<String, dynamic>>? sparkConnectSession,
-  }) :
-      environmentConfig = pulumi.Input.asOptionalInput<SessionTemplateEnvironmentConfig>(environmentConfig),
-      jupyterSession = pulumi.Input.asOptionalInput<SessionTemplateJupyterSession>(jupyterSession),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeConfig = pulumi.Input.asOptionalInput<SessionTemplateRuntimeConfig>(runtimeConfig),
-      sparkConnectSession = pulumi.Input.asOptionalInput<Map<String, dynamic>>(sparkConnectSession);
+    this.environmentConfig,
+    this.jupyterSession,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.runtimeConfig,
+    this.sparkConnectSession,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,14 +70,14 @@ class SessionTemplateArgs {
 
   factory SessionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return SessionTemplateArgs(
-      environmentConfig: map['environmentConfig'] == null ? null : pulumi.Output.create<SessionTemplateEnvironmentConfig>(SessionTemplateEnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())),
-      jupyterSession: map['jupyterSession'] == null ? null : pulumi.Output.create<SessionTemplateJupyterSession>(SessionTemplateJupyterSession.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeConfig: map['runtimeConfig'] == null ? null : pulumi.Output.create<SessionTemplateRuntimeConfig>(SessionTemplateRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())),
-      sparkConnectSession: map['sparkConnectSession'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['sparkConnectSession'] as Map).cast<String, dynamic>()),
+      environmentConfig: map['environmentConfig'] == null ? null : (SessionTemplateEnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())).input(),
+      jupyterSession: map['jupyterSession'] == null ? null : (SessionTemplateJupyterSession.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (SessionTemplateRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
+      sparkConnectSession: map['sparkConnectSession'] == null ? null : ((map['sparkConnectSession'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

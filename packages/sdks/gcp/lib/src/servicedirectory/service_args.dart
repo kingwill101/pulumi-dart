@@ -23,13 +23,10 @@ class ServiceArgs {
   /// [namespace] The resource name of the namespace this service will belong to.
   /// [serviceId] The Resource ID must be 1-63 characters long, including digits,
   ServiceArgs({
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> namespace,
-    required pulumi.Output<String> serviceId,
-  }) :
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.metadata,
+    required this.namespace,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      namespace: (map['namespace'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

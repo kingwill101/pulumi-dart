@@ -40,25 +40,16 @@ class MountTargetState {
   /// [vpcId] VPC ID.
   /// [vswitchId] The ID of the switch.
   MountTargetState({
-    pulumi.Output<String>? accessGroupName,
-    pulumi.Output<bool>? dualStack,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? mountTargetDomain,
-    pulumi.Output<String>? networkType,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      accessGroupName = pulumi.Input.asOptionalInput<String>(accessGroupName),
-      dualStack = pulumi.Input.asOptionalInput<bool>(dualStack),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      mountTargetDomain = pulumi.Input.asOptionalInput<String>(mountTargetDomain),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.accessGroupName,
+    this.dualStack,
+    this.fileSystemId,
+    this.mountTargetDomain,
+    this.networkType,
+    this.securityGroupId,
+    this.status,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class MountTargetState {
 
   factory MountTargetState.fromMap(Map<String, dynamic> map) {
     return MountTargetState(
-      accessGroupName: map['accessGroupName'] == null ? null : pulumi.Output.create<String>(map['accessGroupName'] as String),
-      dualStack: map['dualStack'] == null ? null : pulumi.Output.create<bool>(map['dualStack'] as bool),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : pulumi.Output.create<String>(map['mountTargetDomain'] as String),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
+      dualStack: map['dualStack'] == null ? null : (map['dualStack'] as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

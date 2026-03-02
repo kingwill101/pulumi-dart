@@ -27,17 +27,12 @@ class GetInvocationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tenantId] Tenant Id to serve invocations from specified tenant.
   GetInvocationArgs({
-    required pulumi.Output<String> functionName,
-    required pulumi.Output<String> input,
-    pulumi.Output<String>? qualifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tenantId,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      input = pulumi.Input.asInput<String>(input),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    required this.functionName,
+    required this.input,
+    this.qualifier,
+    this.region,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetInvocationArgs {
 
   factory GetInvocationArgs.fromMap(Map<String, dynamic> map) {
     return GetInvocationArgs(
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      input: pulumi.Output.create<String>(map['input'] as String),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      functionName: (map['functionName'] as String).input(),
+      input: (map['input'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

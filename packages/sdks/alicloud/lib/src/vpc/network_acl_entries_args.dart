@@ -21,13 +21,10 @@ class NetworkAclEntriesArgs {
   /// [ingresses] List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
   /// [networkAclId] The id of the network acl, the field can't be changed.
   NetworkAclEntriesArgs({
-    pulumi.Output<List<NetworkAclEntriesEgress>>? egresses,
-    pulumi.Output<List<NetworkAclEntriesIngress>>? ingresses,
-    required pulumi.Output<String> networkAclId,
-  }) :
-      egresses = pulumi.Input.asOptionalInput<List<NetworkAclEntriesEgress>>(egresses),
-      ingresses = pulumi.Input.asOptionalInput<List<NetworkAclEntriesIngress>>(ingresses),
-      networkAclId = pulumi.Input.asInput<String>(networkAclId);
+    this.egresses,
+    this.ingresses,
+    required this.networkAclId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class NetworkAclEntriesArgs {
 
   factory NetworkAclEntriesArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclEntriesArgs(
-      egresses: map['egresses'] == null ? null : pulumi.Output.create<List<NetworkAclEntriesEgress>>(pulumi.Input.decodeList<NetworkAclEntriesEgress>(map['egresses'], (value) => NetworkAclEntriesEgress.fromMap((value as Map).cast<String, dynamic>()))),
-      ingresses: map['ingresses'] == null ? null : pulumi.Output.create<List<NetworkAclEntriesIngress>>(pulumi.Input.decodeList<NetworkAclEntriesIngress>(map['ingresses'], (value) => NetworkAclEntriesIngress.fromMap((value as Map).cast<String, dynamic>()))),
-      networkAclId: pulumi.Output.create<String>(map['networkAclId'] as String),
+      egresses: map['egresses'] == null ? null : (pulumi.Input.decodeList<NetworkAclEntriesEgress>(map['egresses'], (value) => NetworkAclEntriesEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingresses: map['ingresses'] == null ? null : (pulumi.Input.decodeList<NetworkAclEntriesIngress>(map['ingresses'], (value) => NetworkAclEntriesIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkAclId: (map['networkAclId'] as String).input(),
     );
   }
 }

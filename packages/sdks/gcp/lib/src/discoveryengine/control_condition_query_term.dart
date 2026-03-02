@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlConditionQueryTerm {
   /// If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
-  final bool? fullMatch;
+  final pulumi.Input<bool>? fullMatch;
   /// The value of the query term.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ControlConditionQueryTerm].
   /// [fullMatch] If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
@@ -24,8 +25,8 @@ class ControlConditionQueryTerm {
 
   factory ControlConditionQueryTerm.fromMap(Map<String, dynamic> map) {
     return ControlConditionQueryTerm(
-      fullMatch: map['fullMatch'] == null ? null : map['fullMatch'] as bool,
-      value: map['value'] == null ? null : map['value'] as String,
+      fullMatch: map['fullMatch'] == null ? null : (map['fullMatch'] as bool).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

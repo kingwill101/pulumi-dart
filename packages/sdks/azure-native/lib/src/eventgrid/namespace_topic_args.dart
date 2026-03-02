@@ -29,19 +29,13 @@ class NamespaceTopicArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the namespace topic.
   NamespaceTopicArgs({
-    pulumi.Output<int>? eventRetentionInDays,
-    pulumi.Output<String>? inputSchema,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? publisherType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? topicName,
-  }) :
-      eventRetentionInDays = pulumi.Input.asOptionalInput<int>(eventRetentionInDays),
-      inputSchema = pulumi.Input.asOptionalInput<String>(inputSchema),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      publisherType = pulumi.Input.asOptionalInput<String>(publisherType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    this.eventRetentionInDays,
+    this.inputSchema,
+    required this.namespaceName,
+    this.publisherType,
+    required this.resourceGroupName,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class NamespaceTopicArgs {
 
   factory NamespaceTopicArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicArgs(
-      eventRetentionInDays: map['eventRetentionInDays'] == null ? null : pulumi.Output.create<int>(map['eventRetentionInDays'] as int),
-      inputSchema: map['inputSchema'] == null ? null : pulumi.Output.create<String>(map['inputSchema'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      publisherType: map['publisherType'] == null ? null : pulumi.Output.create<String>(map['publisherType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      eventRetentionInDays: map['eventRetentionInDays'] == null ? null : (map['eventRetentionInDays'] as int).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      publisherType: map['publisherType'] == null ? null : (map['publisherType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

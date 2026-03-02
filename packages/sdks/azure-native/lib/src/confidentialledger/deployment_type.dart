@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Object representing DeploymentType for Managed CCF.
 class DeploymentType {
   /// Source Uri containing ManagedCCF code
-  final String? appSourceUri;
+  final pulumi.Input<String>? appSourceUri;
   /// Unique name for the Managed CCF.
-  final String? languageRuntime;
+  final pulumi.Input<String>? languageRuntime;
 
   /// Creates a new [DeploymentType].
   /// [appSourceUri] Source Uri containing ManagedCCF code
@@ -25,8 +26,8 @@ class DeploymentType {
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      appSourceUri: map['appSourceUri'] == null ? null : map['appSourceUri'] as String,
-      languageRuntime: map['languageRuntime'] == null ? null : map['languageRuntime'] as String,
+      appSourceUri: map['appSourceUri'] == null ? null : (map['appSourceUri'] as String).input(),
+      languageRuntime: map['languageRuntime'] == null ? null : (map['languageRuntime'] as String).input(),
     );
   }
 }

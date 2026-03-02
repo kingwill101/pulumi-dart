@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketAclV2AccessControlPolicyGrantGrantee {
   /// Display name of the owner.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Email address of the grantee. See [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) for supported AWS regions where this argument can be specified.
-  final String? emailAddress;
+  final pulumi.Input<String>? emailAddress;
   /// Canonical user ID of the grantee.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Type of grantee. Valid values: `CanonicalUser`, `AmazonCustomerByEmail`, `Group`.
-  final String type;
+  final pulumi.Input<String> type;
   /// URI of the grantee group.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [BucketAclV2AccessControlPolicyGrantGrantee].
   /// [displayName] Display name of the owner.
@@ -39,11 +40,11 @@ class BucketAclV2AccessControlPolicyGrantGrantee {
 
   factory BucketAclV2AccessControlPolicyGrantGrantee.fromMap(Map<String, dynamic> map) {
     return BucketAclV2AccessControlPolicyGrantGrantee(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      emailAddress: map['emailAddress'] == null ? null : map['emailAddress'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      type: map['type'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

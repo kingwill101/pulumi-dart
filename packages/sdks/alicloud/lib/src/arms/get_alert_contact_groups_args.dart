@@ -28,19 +28,13 @@ class GetAlertContactGroupsArgs {
   /// [nameRegex] A regex string to filter results by Alert Contact Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetAlertContactGroupsArgs({
-    pulumi.Output<String>? alertContactGroupName,
-    pulumi.Output<String>? contactId,
-    pulumi.Output<String>? contactName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      alertContactGroupName = pulumi.Input.asOptionalInput<String>(alertContactGroupName),
-      contactId = pulumi.Input.asOptionalInput<String>(contactId),
-      contactName = pulumi.Input.asOptionalInput<String>(contactName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.alertContactGroupName,
+    this.contactId,
+    this.contactName,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetAlertContactGroupsArgs {
 
   factory GetAlertContactGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertContactGroupsArgs(
-      alertContactGroupName: map['alertContactGroupName'] == null ? null : pulumi.Output.create<String>(map['alertContactGroupName'] as String),
-      contactId: map['contactId'] == null ? null : pulumi.Output.create<String>(map['contactId'] as String),
-      contactName: map['contactName'] == null ? null : pulumi.Output.create<String>(map['contactName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      alertContactGroupName: map['alertContactGroupName'] == null ? null : (map['alertContactGroupName'] as String).input(),
+      contactId: map['contactId'] == null ? null : (map['contactId'] as String).input(),
+      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -25,15 +25,11 @@ class KeyHandleArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceTypeSelector] Selector of the resource type where we want to protect resources.
   KeyHandleArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> resourceTypeSelector,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceTypeSelector = pulumi.Input.asInput<String>(resourceTypeSelector);
+    required this.location,
+    this.name,
+    this.project,
+    required this.resourceTypeSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class KeyHandleArgs {
 
   factory KeyHandleArgs.fromMap(Map<String, dynamic> map) {
     return KeyHandleArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceTypeSelector: pulumi.Output.create<String>(map['resourceTypeSelector'] as String),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceTypeSelector: (map['resourceTypeSelector'] as String).input(),
     );
   }
 }

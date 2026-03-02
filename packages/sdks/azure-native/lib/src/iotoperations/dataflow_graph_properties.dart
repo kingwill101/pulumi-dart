@@ -7,13 +7,13 @@ import 'dataflow_graph_node_connection.dart';
 /// DataflowGraph properties.
 class DataflowGraphProperties {
   /// The mode of the dataflow graph.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// List of connections between nodes in the dataflow graph.
-  final List<DataflowGraphNodeConnection> nodeConnections;
+  final pulumi.Input<List<DataflowGraphNodeConnection>> nodeConnections;
   /// List of nodes in the dataflow graph.
-  final List<DataflowGraphDestinationNode> nodes;
+  final pulumi.Input<List<DataflowGraphDestinationNode>> nodes;
   /// Disk persistence mode.
-  final String? requestDiskPersistence;
+  final pulumi.Input<String>? requestDiskPersistence;
 
   /// Creates a new [DataflowGraphProperties].
   /// [mode] The mode of the dataflow graph.
@@ -30,18 +30,18 @@ class DataflowGraphProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'mode': ?mode,
-      'nodeConnections': pulumi.Input.encodeList<DataflowGraphNodeConnection, Map<String, dynamic>>(nodeConnections, (value) => value.toMap()),
-      'nodes': pulumi.Input.encodeList<DataflowGraphDestinationNode, Map<String, dynamic>>(nodes, (value) => value.toMap()),
+      'nodeConnections': pulumi.Input.mapInputValue<List<DataflowGraphNodeConnection>, List<Map<String, dynamic>>>(nodeConnections, (value) => pulumi.Input.encodeList<DataflowGraphNodeConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodes': pulumi.Input.mapInputValue<List<DataflowGraphDestinationNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<DataflowGraphDestinationNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requestDiskPersistence': ?requestDiskPersistence,
     };
   }
 
   factory DataflowGraphProperties.fromMap(Map<String, dynamic> map) {
     return DataflowGraphProperties(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      nodeConnections: pulumi.Input.decodeList<DataflowGraphNodeConnection>(map['nodeConnections'], (value) => DataflowGraphNodeConnection.fromMap((value as Map).cast<String, dynamic>())),
-      nodes: pulumi.Input.decodeList<DataflowGraphDestinationNode>(map['nodes'], (value) => DataflowGraphDestinationNode.fromMap((value as Map).cast<String, dynamic>())),
-      requestDiskPersistence: map['requestDiskPersistence'] == null ? null : map['requestDiskPersistence'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      nodeConnections: (pulumi.Input.decodeList<DataflowGraphNodeConnection>(map['nodeConnections'], (value) => DataflowGraphNodeConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodes: (pulumi.Input.decodeList<DataflowGraphDestinationNode>(map['nodes'], (value) => DataflowGraphDestinationNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestDiskPersistence: map['requestDiskPersistence'] == null ? null : (map['requestDiskPersistence'] as String).input(),
     );
   }
 }

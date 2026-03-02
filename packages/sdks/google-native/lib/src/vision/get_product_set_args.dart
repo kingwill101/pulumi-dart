@@ -16,13 +16,10 @@ class GetProductSetArgs {
   /// [productSetId] Required.
   /// [project] Optional.
   GetProductSetArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> productSetId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      productSetId = pulumi.Input.asInput<String>(productSetId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.productSetId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetProductSetArgs {
 
   factory GetProductSetArgs.fromMap(Map<String, dynamic> map) {
     return GetProductSetArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      productSetId: pulumi.Output.create<String>(map['productSetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      productSetId: (map['productSetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

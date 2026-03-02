@@ -45,27 +45,17 @@ class InterconnectAttachmentArgs {
   /// [vlanId] VLAN ID provided by user. Must be site-wise unique.
   /// [zone] The name of the target Distributed Cloud Edge zone.
   InterconnectAttachmentArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> interconnect,
-    required pulumi.Output<String> interconnectAttachmentId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? mtu,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-    required pulumi.Output<int> vlanId,
-    required pulumi.Output<String> zone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      interconnect = pulumi.Input.asInput<String>(interconnect),
-      interconnectAttachmentId = pulumi.Input.asInput<String>(interconnectAttachmentId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      mtu = pulumi.Input.asOptionalInput<int>(mtu),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vlanId = pulumi.Input.asInput<int>(vlanId),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.description,
+    required this.interconnect,
+    required this.interconnectAttachmentId,
+    this.labels,
+    required this.location,
+    this.mtu,
+    required this.network,
+    this.project,
+    required this.vlanId,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class InterconnectAttachmentArgs {
 
   factory InterconnectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      interconnect: pulumi.Output.create<String>(map['interconnect'] as String),
-      interconnectAttachmentId: pulumi.Output.create<String>(map['interconnectAttachmentId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mtu: map['mtu'] == null ? null : pulumi.Output.create<int>(map['mtu'] as int),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      vlanId: pulumi.Output.create<int>(map['vlanId'] as int),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      interconnect: (map['interconnect'] as String).input(),
+      interconnectAttachmentId: (map['interconnectAttachmentId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

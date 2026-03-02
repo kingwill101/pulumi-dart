@@ -16,11 +16,9 @@ class GetMapArgs {
   /// [mapName] Maps resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMapArgs({
-    required pulumi.Output<String> mapName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      mapName = pulumi.Input.asInput<String>(mapName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.mapName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMapArgs {
 
   factory GetMapArgs.fromMap(Map<String, dynamic> map) {
     return GetMapArgs(
-      mapName: pulumi.Output.create<String>(map['mapName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      mapName: (map['mapName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

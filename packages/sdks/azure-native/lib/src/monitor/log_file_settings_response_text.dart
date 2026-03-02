@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Text settings
 class LogFileSettingsResponseText {
   /// One of the supported timestamp formats
-  final String recordStartTimestampFormat;
+  final pulumi.Input<String> recordStartTimestampFormat;
 
   /// Creates a new [LogFileSettingsResponseText].
   /// [recordStartTimestampFormat] One of the supported timestamp formats
@@ -20,7 +21,7 @@ class LogFileSettingsResponseText {
 
   factory LogFileSettingsResponseText.fromMap(Map<String, dynamic> map) {
     return LogFileSettingsResponseText(
-      recordStartTimestampFormat: map['recordStartTimestampFormat'] as String,
+      recordStartTimestampFormat: (map['recordStartTimestampFormat'] as String).input(),
     );
   }
 }

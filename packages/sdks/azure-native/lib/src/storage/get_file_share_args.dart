@@ -22,15 +22,11 @@ class GetFileShareArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [shareName] The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   GetFileShareArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareName = pulumi.Input.asInput<String>(shareName);
+    required this.accountName,
+    this.expand,
+    required this.resourceGroupName,
+    required this.shareName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFileShareArgs {
 
   factory GetFileShareArgs.fromMap(Map<String, dynamic> map) {
     return GetFileShareArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
     );
   }
 }

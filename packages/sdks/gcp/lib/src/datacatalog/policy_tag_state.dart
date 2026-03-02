@@ -33,19 +33,13 @@ class PolicyTagState {
   /// [parentPolicyTag] Resource name of this policy tag's parent policy tag.
   /// [taxonomy] Taxonomy the policy tag is associated with
   PolicyTagState({
-    pulumi.Output<List<String>>? childPolicyTags,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentPolicyTag,
-    pulumi.Output<String>? taxonomy,
-  }) :
-      childPolicyTags = pulumi.Input.asOptionalInput<List<String>>(childPolicyTags),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentPolicyTag = pulumi.Input.asOptionalInput<String>(parentPolicyTag),
-      taxonomy = pulumi.Input.asOptionalInput<String>(taxonomy);
+    this.childPolicyTags,
+    this.description,
+    this.displayName,
+    this.name,
+    this.parentPolicyTag,
+    this.taxonomy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class PolicyTagState {
 
   factory PolicyTagState.fromMap(Map<String, dynamic> map) {
     return PolicyTagState(
-      childPolicyTags: map['childPolicyTags'] == null ? null : pulumi.Output.create<List<String>>((map['childPolicyTags'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentPolicyTag: map['parentPolicyTag'] == null ? null : pulumi.Output.create<String>(map['parentPolicyTag'] as String),
-      taxonomy: map['taxonomy'] == null ? null : pulumi.Output.create<String>(map['taxonomy'] as String),
+      childPolicyTags: map['childPolicyTags'] == null ? null : ((map['childPolicyTags'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag'] as String).input(),
+      taxonomy: map['taxonomy'] == null ? null : (map['taxonomy'] as String).input(),
     );
   }
 }

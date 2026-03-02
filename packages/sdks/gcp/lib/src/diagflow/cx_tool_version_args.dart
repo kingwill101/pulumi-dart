@@ -22,13 +22,10 @@ class CxToolVersionArgs {
   /// [parent] The tool to create a Version for.
   /// [tool] Snapshot of the tool to be associated with this version.
   CxToolVersionArgs({
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<CxToolVersionTool> tool,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      parent = pulumi.Input.asInput<String>(parent),
-      tool = pulumi.Input.asInput<CxToolVersionTool>(tool);
+    required this.displayName,
+    required this.parent,
+    required this.tool,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class CxToolVersionArgs {
 
   factory CxToolVersionArgs.fromMap(Map<String, dynamic> map) {
     return CxToolVersionArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      tool: pulumi.Output.create<CxToolVersionTool>(CxToolVersionTool.fromMap((map['tool'] as Map).cast<String, dynamic>())),
+      displayName: (map['displayName'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      tool: (CxToolVersionTool.fromMap((map['tool'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of an hourly schedule.
 class HourDetailsResponse {
   /// Minutes of the hour the schedule will run.
-  final int? minute;
+  final pulumi.Input<int>? minute;
 
   /// Creates a new [HourDetailsResponse].
   /// [minute] Minutes of the hour the schedule will run.
@@ -20,7 +21,7 @@ class HourDetailsResponse {
 
   factory HourDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HourDetailsResponse(
-      minute: map['minute'] == null ? null : map['minute'] as int,
+      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
     );
   }
 }

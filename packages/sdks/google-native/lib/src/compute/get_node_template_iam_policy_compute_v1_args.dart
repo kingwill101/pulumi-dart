@@ -18,15 +18,11 @@ class GetNodeTemplateIamPolicyComputeV1Args {
   /// [region] Required.
   /// [resource] Required.
   GetNodeTemplateIamPolicyComputeV1Args({
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> resource,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      resource = pulumi.Input.asInput<String>(resource);
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.region,
+    required this.resource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetNodeTemplateIamPolicyComputeV1Args {
 
   factory GetNodeTemplateIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNodeTemplateIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      resource: pulumi.Output.create<String>(map['resource'] as String),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      resource: (map['resource'] as String).input(),
     );
   }
 }

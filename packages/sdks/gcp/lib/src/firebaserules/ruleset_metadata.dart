@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RulesetMetadata {
   /// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-  final List<String>? services;
+  final pulumi.Input<List<String>>? services;
 
   /// Creates a new [RulesetMetadata].
   /// [services] Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
@@ -19,7 +20,7 @@ class RulesetMetadata {
 
   factory RulesetMetadata.fromMap(Map<String, dynamic> map) {
     return RulesetMetadata(
-      services: map['services'] == null ? null : (map['services'] as List).cast<String>(),
+      services: map['services'] == null ? null : ((map['services'] as List).cast<String>()).input(),
     );
   }
 }

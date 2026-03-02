@@ -25,17 +25,12 @@ class DedicatedBlockStorageClusterArgs {
   /// [type] The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
   /// [zoneId] The zone ID  of the resource
   DedicatedBlockStorageClusterArgs({
-    required pulumi.Output<String> dedicatedBlockStorageClusterName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> totalCapacity,
-    required pulumi.Output<String> type,
-    required pulumi.Output<String> zoneId,
-  }) :
-      dedicatedBlockStorageClusterName = pulumi.Input.asInput<String>(dedicatedBlockStorageClusterName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      totalCapacity = pulumi.Input.asInput<String>(totalCapacity),
-      type = pulumi.Input.asInput<String>(type),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    required this.dedicatedBlockStorageClusterName,
+    this.description,
+    required this.totalCapacity,
+    required this.type,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DedicatedBlockStorageClusterArgs {
 
   factory DedicatedBlockStorageClusterArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedBlockStorageClusterArgs(
-      dedicatedBlockStorageClusterName: pulumi.Output.create<String>(map['dedicatedBlockStorageClusterName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      totalCapacity: pulumi.Output.create<String>(map['totalCapacity'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      dedicatedBlockStorageClusterName: (map['dedicatedBlockStorageClusterName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      totalCapacity: (map['totalCapacity'] as String).input(),
+      type: (map['type'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2VmAcceleratorConfig {
   /// Topology of TPU in chips.
-  final String topology;
+  final pulumi.Input<String> topology;
   /// Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [V2VmAcceleratorConfig].
   /// [topology] Topology of TPU in chips.
@@ -24,8 +25,8 @@ class V2VmAcceleratorConfig {
 
   factory V2VmAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return V2VmAcceleratorConfig(
-      topology: map['topology'] as String,
-      type: map['type'] as String,
+      topology: (map['topology'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ClusterTrustedAccessRoleBindingArgs {
   /// [roles] A list of roles to bind, each item is a resource type qualified role name.
   /// [sourceResourceId] The ARM resource ID of source resource that trusted access is configured for. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.
   ClusterTrustedAccessRoleBindingArgs({
-    required pulumi.Output<String> kubernetesClusterId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> roles,
-    required pulumi.Output<String> sourceResourceId,
-  }) :
-      kubernetesClusterId = pulumi.Input.asInput<String>(kubernetesClusterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      roles = pulumi.Input.asInput<List<String>>(roles),
-      sourceResourceId = pulumi.Input.asInput<String>(sourceResourceId);
+    required this.kubernetesClusterId,
+    this.name,
+    required this.roles,
+    required this.sourceResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ClusterTrustedAccessRoleBindingArgs {
 
   factory ClusterTrustedAccessRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return ClusterTrustedAccessRoleBindingArgs(
-      kubernetesClusterId: pulumi.Output.create<String>(map['kubernetesClusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      roles: pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
-      sourceResourceId: pulumi.Output.create<String>(map['sourceResourceId'] as String),
+      kubernetesClusterId: (map['kubernetesClusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      roles: ((map['roles'] as List).cast<String>()).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
     );
   }
 }

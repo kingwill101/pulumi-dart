@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Valid enum values in case of an enum property.
 class ProfileEnumValidValuesFormatResponse {
   /// Localized names of the enum member.
-  final Map<String, String>? localizedValueNames;
+  final pulumi.Input<Map<String, String>>? localizedValueNames;
   /// The integer value of the enum member.
-  final int? value;
+  final pulumi.Input<int>? value;
 
   /// Creates a new [ProfileEnumValidValuesFormatResponse].
   /// [localizedValueNames] Localized names of the enum member.
@@ -25,8 +26,8 @@ class ProfileEnumValidValuesFormatResponse {
 
   factory ProfileEnumValidValuesFormatResponse.fromMap(Map<String, dynamic> map) {
     return ProfileEnumValidValuesFormatResponse(
-      localizedValueNames: map['localizedValueNames'] == null ? null : (map['localizedValueNames'] as Map).cast<String, String>(),
-      value: map['value'] == null ? null : map['value'] as int,
+      localizedValueNames: map['localizedValueNames'] == null ? null : ((map['localizedValueNames'] as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as int).input(),
     );
   }
 }

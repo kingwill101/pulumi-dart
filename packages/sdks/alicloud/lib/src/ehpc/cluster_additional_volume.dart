@@ -5,25 +5,25 @@ import 'cluster_additional_volume_role.dart';
 
 class ClusterAdditionalVolume {
   /// The queue of the nodes to which the additional file system is attached.
-  final String? jobQueue;
+  final pulumi.Input<String>? jobQueue;
   /// The local directory on which the additional file system is mounted.
-  final String? localDirectory;
+  final pulumi.Input<String>? localDirectory;
   /// The type of the cluster. Valid value: `PublicCloud`.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The remote directory to which the additional file system is mounted.
-  final String? remoteDirectory;
+  final pulumi.Input<String>? remoteDirectory;
   /// The roles. See `roles` below.
-  final List<ClusterAdditionalVolumeRole>? roles;
+  final pulumi.Input<List<ClusterAdditionalVolumeRole>>? roles;
   /// The ID of the additional file system.
-  final String? volumeId;
+  final pulumi.Input<String>? volumeId;
   /// The mount options of the file system.
-  final String? volumeMountOption;
+  final pulumi.Input<String>? volumeMountOption;
   /// The mount target of the additional file system.
-  final String? volumeMountpoint;
+  final pulumi.Input<String>? volumeMountpoint;
   /// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
-  final String? volumeProtocol;
+  final pulumi.Input<String>? volumeProtocol;
   /// The type of the additional shared storage. Only NAS file systems are supported.
-  final String? volumeType;
+  final pulumi.Input<String>? volumeType;
 
   /// Creates a new [ClusterAdditionalVolume].
   /// [jobQueue] The queue of the nodes to which the additional file system is attached.
@@ -55,7 +55,7 @@ class ClusterAdditionalVolume {
       'localDirectory': ?localDirectory,
       'location': ?location,
       'remoteDirectory': ?remoteDirectory,
-      'roles': ?roles == null ? null : pulumi.Input.encodeList<ClusterAdditionalVolumeRole, Map<String, dynamic>>(roles!, (value) => value.toMap()),
+      'roles': ?pulumi.Input.mapOptionalInputValue<List<ClusterAdditionalVolumeRole>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<ClusterAdditionalVolumeRole, Map<String, dynamic>>(value, (value) => value.toMap())),
       'volumeId': ?volumeId,
       'volumeMountOption': ?volumeMountOption,
       'volumeMountpoint': ?volumeMountpoint,
@@ -66,16 +66,16 @@ class ClusterAdditionalVolume {
 
   factory ClusterAdditionalVolume.fromMap(Map<String, dynamic> map) {
     return ClusterAdditionalVolume(
-      jobQueue: map['jobQueue'] == null ? null : map['jobQueue'] as String,
-      localDirectory: map['localDirectory'] == null ? null : map['localDirectory'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      remoteDirectory: map['remoteDirectory'] == null ? null : map['remoteDirectory'] as String,
-      roles: map['roles'] == null ? null : pulumi.Input.decodeList<ClusterAdditionalVolumeRole>(map['roles'], (value) => ClusterAdditionalVolumeRole.fromMap((value as Map).cast<String, dynamic>())),
-      volumeId: map['volumeId'] == null ? null : map['volumeId'] as String,
-      volumeMountOption: map['volumeMountOption'] == null ? null : map['volumeMountOption'] as String,
-      volumeMountpoint: map['volumeMountpoint'] == null ? null : map['volumeMountpoint'] as String,
-      volumeProtocol: map['volumeProtocol'] == null ? null : map['volumeProtocol'] as String,
-      volumeType: map['volumeType'] == null ? null : map['volumeType'] as String,
+      jobQueue: map['jobQueue'] == null ? null : (map['jobQueue'] as String).input(),
+      localDirectory: map['localDirectory'] == null ? null : (map['localDirectory'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      remoteDirectory: map['remoteDirectory'] == null ? null : (map['remoteDirectory'] as String).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ClusterAdditionalVolumeRole>(map['roles'], (value) => ClusterAdditionalVolumeRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      volumeMountOption: map['volumeMountOption'] == null ? null : (map['volumeMountOption'] as String).input(),
+      volumeMountpoint: map['volumeMountpoint'] == null ? null : (map['volumeMountpoint'] as String).input(),
+      volumeProtocol: map['volumeProtocol'] == null ? null : (map['volumeProtocol'] as String).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
     );
   }
 }

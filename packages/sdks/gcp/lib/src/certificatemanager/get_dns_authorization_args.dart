@@ -22,15 +22,11 @@ class GetDnsAuthorizationArgs {
   /// [name] The name of the DNS Authorization.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   GetDnsAuthorizationArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.domain,
+    this.location,
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDnsAuthorizationArgs {
 
   factory GetDnsAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      domain: (map['domain'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

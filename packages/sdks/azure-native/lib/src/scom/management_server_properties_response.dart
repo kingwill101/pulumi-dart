@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of management server
 class ManagementServerPropertiesResponse {
   /// Management server Fully Qualified Domain Name.
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// Management server health state.
-  final String healthState;
+  final pulumi.Input<String> healthState;
   /// Management server Name
-  final String serverName;
+  final pulumi.Input<String> serverName;
   /// Represent whether the Server is a Management Server and/or Web Console Server.
-  final String serverRoles;
+  final pulumi.Input<String> serverRoles;
   /// Azure VM Resource Id of the Management server.
-  final String vmResId;
+  final pulumi.Input<String> vmResId;
 
   /// Creates a new [ManagementServerPropertiesResponse].
   /// [fqdn] Management server Fully Qualified Domain Name.
@@ -40,11 +41,11 @@ class ManagementServerPropertiesResponse {
 
   factory ManagementServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagementServerPropertiesResponse(
-      fqdn: map['fqdn'] as String,
-      healthState: map['healthState'] as String,
-      serverName: map['serverName'] as String,
-      serverRoles: map['serverRoles'] as String,
-      vmResId: map['vmResId'] as String,
+      fqdn: (map['fqdn'] as String).input(),
+      healthState: (map['healthState'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      serverRoles: (map['serverRoles'] as String).input(),
+      vmResId: (map['vmResId'] as String).input(),
     );
   }
 }

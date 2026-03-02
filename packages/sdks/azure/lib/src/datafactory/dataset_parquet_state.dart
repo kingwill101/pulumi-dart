@@ -57,35 +57,21 @@ class DatasetParquetState {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
   /// [schemaColumns] A `schema_column` block as defined below.
   DatasetParquetState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<DatasetParquetAzureBlobFsLocation>? azureBlobFsLocation,
-    pulumi.Output<DatasetParquetAzureBlobStorageLocation>? azureBlobStorageLocation,
-    pulumi.Output<String>? compressionCodec,
-    pulumi.Output<String>? compressionLevel,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    pulumi.Output<DatasetParquetHttpServerLocation>? httpServerLocation,
-    pulumi.Output<String>? linkedServiceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<List<DatasetParquetSchemaColumn>>? schemaColumns,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      azureBlobFsLocation = pulumi.Input.asOptionalInput<DatasetParquetAzureBlobFsLocation>(azureBlobFsLocation),
-      azureBlobStorageLocation = pulumi.Input.asOptionalInput<DatasetParquetAzureBlobStorageLocation>(azureBlobStorageLocation),
-      compressionCodec = pulumi.Input.asOptionalInput<String>(compressionCodec),
-      compressionLevel = pulumi.Input.asOptionalInput<String>(compressionLevel),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      httpServerLocation = pulumi.Input.asOptionalInput<DatasetParquetHttpServerLocation>(httpServerLocation),
-      linkedServiceName = pulumi.Input.asOptionalInput<String>(linkedServiceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      schemaColumns = pulumi.Input.asOptionalInput<List<DatasetParquetSchemaColumn>>(schemaColumns);
+    this.additionalProperties,
+    this.annotations,
+    this.azureBlobFsLocation,
+    this.azureBlobStorageLocation,
+    this.compressionCodec,
+    this.compressionLevel,
+    this.dataFactoryId,
+    this.description,
+    this.folder,
+    this.httpServerLocation,
+    this.linkedServiceName,
+    this.name,
+    this.parameters,
+    this.schemaColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class DatasetParquetState {
 
   factory DatasetParquetState.fromMap(Map<String, dynamic> map) {
     return DatasetParquetState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      azureBlobFsLocation: map['azureBlobFsLocation'] == null ? null : pulumi.Output.create<DatasetParquetAzureBlobFsLocation>(DatasetParquetAzureBlobFsLocation.fromMap((map['azureBlobFsLocation'] as Map).cast<String, dynamic>())),
-      azureBlobStorageLocation: map['azureBlobStorageLocation'] == null ? null : pulumi.Output.create<DatasetParquetAzureBlobStorageLocation>(DatasetParquetAzureBlobStorageLocation.fromMap((map['azureBlobStorageLocation'] as Map).cast<String, dynamic>())),
-      compressionCodec: map['compressionCodec'] == null ? null : pulumi.Output.create<String>(map['compressionCodec'] as String),
-      compressionLevel: map['compressionLevel'] == null ? null : pulumi.Output.create<String>(map['compressionLevel'] as String),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      httpServerLocation: map['httpServerLocation'] == null ? null : pulumi.Output.create<DatasetParquetHttpServerLocation>(DatasetParquetHttpServerLocation.fromMap((map['httpServerLocation'] as Map).cast<String, dynamic>())),
-      linkedServiceName: map['linkedServiceName'] == null ? null : pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      schemaColumns: map['schemaColumns'] == null ? null : pulumi.Output.create<List<DatasetParquetSchemaColumn>>(pulumi.Input.decodeList<DatasetParquetSchemaColumn>(map['schemaColumns'], (value) => DatasetParquetSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      azureBlobFsLocation: map['azureBlobFsLocation'] == null ? null : (DatasetParquetAzureBlobFsLocation.fromMap((map['azureBlobFsLocation'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorageLocation: map['azureBlobStorageLocation'] == null ? null : (DatasetParquetAzureBlobStorageLocation.fromMap((map['azureBlobStorageLocation'] as Map).cast<String, dynamic>())).input(),
+      compressionCodec: map['compressionCodec'] == null ? null : (map['compressionCodec'] as String).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel'] as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      httpServerLocation: map['httpServerLocation'] == null ? null : (DatasetParquetHttpServerLocation.fromMap((map['httpServerLocation'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (map['linkedServiceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetParquetSchemaColumn>(map['schemaColumns'], (value) => DatasetParquetSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -24,13 +24,10 @@ class CryptoKeyVersionArgs {
   /// [externalProtectionLevelOptions] ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// [state] The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
   CryptoKeyVersionArgs({
-    required pulumi.Output<String> cryptoKey,
-    pulumi.Output<CryptoKeyVersionExternalProtectionLevelOptions>? externalProtectionLevelOptions,
-    pulumi.Output<String>? state,
-  }) :
-      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
-      externalProtectionLevelOptions = pulumi.Input.asOptionalInput<CryptoKeyVersionExternalProtectionLevelOptions>(externalProtectionLevelOptions),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    required this.cryptoKey,
+    this.externalProtectionLevelOptions,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class CryptoKeyVersionArgs {
 
   factory CryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionArgs(
-      cryptoKey: pulumi.Output.create<String>(map['cryptoKey'] as String),
-      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : pulumi.Output.create<CryptoKeyVersionExternalProtectionLevelOptions>(CryptoKeyVersionExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      cryptoKey: (map['cryptoKey'] as String).input(),
+      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (CryptoKeyVersionExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

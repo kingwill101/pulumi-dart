@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
-  final String httpInternalEndpoint;
+  final pulumi.Input<String> httpInternalEndpoint;
   /// The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
-  final String httpInternetEndpoint;
+  final pulumi.Input<String> httpInternetEndpoint;
   /// The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
-  final String httpInternetSecureEndpoint;
+  final pulumi.Input<String> httpInternetSecureEndpoint;
   /// ID of the instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
-  final bool independentNaming;
+  final pulumi.Input<bool> independentNaming;
   /// ID of the instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Name of the instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
-  final int instanceStatus;
+  final pulumi.Input<int> instanceStatus;
   /// The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
-  final int instanceType;
+  final pulumi.Input<int> instanceType;
   /// The automatic release time of an Enterprise Platinum Edition instance.
-  final String releaseTime;
+  final pulumi.Input<String> releaseTime;
   /// This attribute is a concise description of instance.
-  final String remark;
+  final pulumi.Input<String> remark;
   /// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
-  final int status;
+  final pulumi.Input<int> status;
   /// A map of tags assigned to the Ons instance.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
-  final String tcpEndpoint;
+  final pulumi.Input<String> tcpEndpoint;
 
   /// Creates a new [GetInstancesInstance].
   /// [httpInternalEndpoint] The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
@@ -84,20 +85,20 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      httpInternalEndpoint: map['httpInternalEndpoint'] as String,
-      httpInternetEndpoint: map['httpInternetEndpoint'] as String,
-      httpInternetSecureEndpoint: map['httpInternetSecureEndpoint'] as String,
-      id: map['id'] as String,
-      independentNaming: map['independentNaming'] as bool,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      instanceStatus: map['instanceStatus'] as int,
-      instanceType: map['instanceType'] as int,
-      releaseTime: map['releaseTime'] as String,
-      remark: map['remark'] as String,
-      status: map['status'] as int,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      tcpEndpoint: map['tcpEndpoint'] as String,
+      httpInternalEndpoint: (map['httpInternalEndpoint'] as String).input(),
+      httpInternetEndpoint: (map['httpInternetEndpoint'] as String).input(),
+      httpInternetSecureEndpoint: (map['httpInternetSecureEndpoint'] as String).input(),
+      id: (map['id'] as String).input(),
+      independentNaming: (map['independentNaming'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      instanceStatus: (map['instanceStatus'] as int).input(),
+      instanceType: (map['instanceType'] as int).input(),
+      releaseTime: (map['releaseTime'] as String).input(),
+      remark: (map['remark'] as String).input(),
+      status: (map['status'] as int).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      tcpEndpoint: (map['tcpEndpoint'] as String).input(),
     );
   }
 }

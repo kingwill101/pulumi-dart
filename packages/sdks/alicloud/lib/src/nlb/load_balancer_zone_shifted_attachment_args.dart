@@ -19,13 +19,10 @@ class LoadBalancerZoneShiftedAttachmentArgs {
   /// [vswitchId] The list of zones and vSwitch mappings
   /// [zoneId] ZoneId
   LoadBalancerZoneShiftedAttachmentArgs({
-    required pulumi.Output<String> loadBalancerId,
-    required pulumi.Output<String> vswitchId,
-    required pulumi.Output<String> zoneId,
-  }) :
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    required this.loadBalancerId,
+    required this.vswitchId,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LoadBalancerZoneShiftedAttachmentArgs {
 
   factory LoadBalancerZoneShiftedAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneShiftedAttachmentArgs(
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableExternalDataConfigurationCsvOption {
   /// Indicates if BigQuery should accept rows that are missing trailing optional columns.
-  final bool allowJaggedRows;
+  final pulumi.Input<bool> allowJaggedRows;
   /// Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
-  final bool allowQuotedNewlines;
+  final pulumi.Input<bool> allowQuotedNewlines;
   /// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
-  final String encoding;
+  final pulumi.Input<String> encoding;
   /// The separator for fields in a CSV file.
-  final String fieldDelimiter;
-  final String quote;
+  final pulumi.Input<String> fieldDelimiter;
+  final pulumi.Input<String> quote;
   /// The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
-  final int skipLeadingRows;
+  final pulumi.Input<int> skipLeadingRows;
   /// Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
-  final String sourceColumnMatch;
+  final pulumi.Input<String> sourceColumnMatch;
 
   /// Creates a new [GetTableExternalDataConfigurationCsvOption].
   /// [allowJaggedRows] Indicates if BigQuery should accept rows that are missing trailing optional columns.
@@ -48,13 +49,13 @@ class GetTableExternalDataConfigurationCsvOption {
 
   factory GetTableExternalDataConfigurationCsvOption.fromMap(Map<String, dynamic> map) {
     return GetTableExternalDataConfigurationCsvOption(
-      allowJaggedRows: map['allowJaggedRows'] as bool,
-      allowQuotedNewlines: map['allowQuotedNewlines'] as bool,
-      encoding: map['encoding'] as String,
-      fieldDelimiter: map['fieldDelimiter'] as String,
-      quote: map['quote'] as String,
-      skipLeadingRows: map['skipLeadingRows'] as int,
-      sourceColumnMatch: map['sourceColumnMatch'] as String,
+      allowJaggedRows: (map['allowJaggedRows'] as bool).input(),
+      allowQuotedNewlines: (map['allowQuotedNewlines'] as bool).input(),
+      encoding: (map['encoding'] as String).input(),
+      fieldDelimiter: (map['fieldDelimiter'] as String).input(),
+      quote: (map['quote'] as String).input(),
+      skipLeadingRows: (map['skipLeadingRows'] as int).input(),
+      sourceColumnMatch: (map['sourceColumnMatch'] as String).input(),
     );
   }
 }

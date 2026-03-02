@@ -37,25 +37,16 @@ class CloudConnectorArgs {
   /// [reportId] Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
   /// [subscriptionId] Billing SubscriptionId
   CloudConnectorArgs({
-    pulumi.Output<String>? billingModel,
-    pulumi.Output<String>? connectorName,
-    pulumi.Output<String>? credentialsKey,
-    pulumi.Output<String>? credentialsSecret,
-    pulumi.Output<String>? defaultManagementGroupId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? reportId,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      billingModel = pulumi.Input.asOptionalInput<String>(billingModel),
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      credentialsKey = pulumi.Input.asOptionalInput<String>(credentialsKey),
-      credentialsSecret = pulumi.Input.asOptionalInput<String>(credentialsSecret),
-      defaultManagementGroupId = pulumi.Input.asOptionalInput<String>(defaultManagementGroupId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      reportId = pulumi.Input.asOptionalInput<String>(reportId),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.billingModel,
+    this.connectorName,
+    this.credentialsKey,
+    this.credentialsSecret,
+    this.defaultManagementGroupId,
+    this.displayName,
+    this.kind,
+    this.reportId,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class CloudConnectorArgs {
 
   factory CloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return CloudConnectorArgs(
-      billingModel: map['billingModel'] == null ? null : pulumi.Output.create<String>(map['billingModel'] as String),
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      credentialsKey: map['credentialsKey'] == null ? null : pulumi.Output.create<String>(map['credentialsKey'] as String),
-      credentialsSecret: map['credentialsSecret'] == null ? null : pulumi.Output.create<String>(map['credentialsSecret'] as String),
-      defaultManagementGroupId: map['defaultManagementGroupId'] == null ? null : pulumi.Output.create<String>(map['defaultManagementGroupId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      reportId: map['reportId'] == null ? null : pulumi.Output.create<String>(map['reportId'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      billingModel: map['billingModel'] == null ? null : (map['billingModel'] as String).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      credentialsKey: map['credentialsKey'] == null ? null : (map['credentialsKey'] as String).input(),
+      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret'] as String).input(),
+      defaultManagementGroupId: map['defaultManagementGroupId'] == null ? null : (map['defaultManagementGroupId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      reportId: map['reportId'] == null ? null : (map['reportId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_deidentify_template_deidentify_config_record_transformations_record_suppression_condition_expressions.dart';
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition {
   /// An expression, consisting of an operator and conditions.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions? expressions;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions>? expressions;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition].
   /// [expressions] An expression, consisting of an operator and conditions.
@@ -15,13 +16,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressions': ?expressions == null ? null : expressions!.toMap(),
+      'expressions': ?pulumi.Input.mapOptionalInputValue<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions, Map<String, dynamic>>(expressions, (value) => value.toMap()),
     };
   }
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition(
-      expressions: map['expressions'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: map['expressions'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainInputMappingField {
   /// Specifies the default data version of the EventGrid Event associated with the domain.
-  final String dataVersion;
+  final pulumi.Input<String> dataVersion;
   /// Specifies the event time of the EventGrid Event associated with the domain.
-  final String eventTime;
+  final pulumi.Input<String> eventTime;
   /// Specifies the default event type of the EventGrid Event associated with the domain.
-  final String eventType;
+  final pulumi.Input<String> eventType;
   /// Specifies the id of the EventGrid Event associated with the domain.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specifies the default subject of the EventGrid Event associated with the domain.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// Specifies the topic of the EventGrid Event associated with the domain.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [GetDomainInputMappingField].
   /// [dataVersion] Specifies the default data version of the EventGrid Event associated with the domain.
@@ -44,12 +45,12 @@ class GetDomainInputMappingField {
 
   factory GetDomainInputMappingField.fromMap(Map<String, dynamic> map) {
     return GetDomainInputMappingField(
-      dataVersion: map['dataVersion'] as String,
-      eventTime: map['eventTime'] as String,
-      eventType: map['eventType'] as String,
-      id: map['id'] as String,
-      subject: map['subject'] as String,
-      topic: map['topic'] as String,
+      dataVersion: (map['dataVersion'] as String).input(),
+      eventTime: (map['eventTime'] as String).input(),
+      eventType: (map['eventType'] as String).input(),
+      id: (map['id'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

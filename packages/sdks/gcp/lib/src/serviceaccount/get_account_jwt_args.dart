@@ -22,15 +22,11 @@ class GetAccountJwtArgs {
   /// [payload] The JSON-encoded JWT claims set to include in the self-signed JWT.
   /// [targetServiceAccount] The email of the service account that will sign the JWT.
   GetAccountJwtArgs({
-    pulumi.Output<List<String>>? delegates,
-    pulumi.Output<int>? expiresIn,
-    required pulumi.Output<String> payload,
-    required pulumi.Output<String> targetServiceAccount,
-  }) :
-      delegates = pulumi.Input.asOptionalInput<List<String>>(delegates),
-      expiresIn = pulumi.Input.asOptionalInput<int>(expiresIn),
-      payload = pulumi.Input.asInput<String>(payload),
-      targetServiceAccount = pulumi.Input.asInput<String>(targetServiceAccount);
+    this.delegates,
+    this.expiresIn,
+    required this.payload,
+    required this.targetServiceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAccountJwtArgs {
 
   factory GetAccountJwtArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountJwtArgs(
-      delegates: map['delegates'] == null ? null : pulumi.Output.create<List<String>>((map['delegates'] as List).cast<String>()),
-      expiresIn: map['expiresIn'] == null ? null : pulumi.Output.create<int>(map['expiresIn'] as int),
-      payload: pulumi.Output.create<String>(map['payload'] as String),
-      targetServiceAccount: pulumi.Output.create<String>(map['targetServiceAccount'] as String),
+      delegates: map['delegates'] == null ? null : ((map['delegates'] as List).cast<String>()).input(),
+      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn'] as int).input(),
+      payload: (map['payload'] as String).input(),
+      targetServiceAccount: (map['targetServiceAccount'] as String).input(),
     );
   }
 }

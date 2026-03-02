@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysMDevSourceAddress {
   /// Configures the UUID for the address of the multimedia subsystem device source.
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [DomainDevicesHostdevSubsysMDevSourceAddress].
   /// [uuid] Configures the UUID for the address of the multimedia subsystem device source.
@@ -19,7 +20,7 @@ class DomainDevicesHostdevSubsysMDevSourceAddress {
 
   factory DomainDevicesHostdevSubsysMDevSourceAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysMDevSourceAddress(
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssignmentDynamicScopeFilterTag {
   /// Specifies the tag to filter by.
-  final String tag;
+  final pulumi.Input<String> tag;
   /// Specifies a list of values the defined tag can have.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [AssignmentDynamicScopeFilterTag].
   /// [tag] Specifies the tag to filter by.
@@ -24,8 +25,8 @@ class AssignmentDynamicScopeFilterTag {
 
   factory AssignmentDynamicScopeFilterTag.fromMap(Map<String, dynamic> map) {
     return AssignmentDynamicScopeFilterTag(
-      tag: map['tag'] as String,
-      values: (map['values'] as List).cast<String>(),
+      tag: (map['tag'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

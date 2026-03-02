@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceServicePropertyRegistrationType {
   /// (Output)
   /// Output only. The registration type of a service.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ServiceServicePropertyRegistrationType].
   /// [type] (Output)
@@ -20,7 +21,7 @@ class ServiceServicePropertyRegistrationType {
 
   factory ServiceServicePropertyRegistrationType.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyRegistrationType(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

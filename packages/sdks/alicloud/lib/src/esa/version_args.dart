@@ -19,13 +19,10 @@ class VersionArgs {
   /// [originVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   /// [siteId] The site ID, which can be obtained by calling the ListSites API.
   VersionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<int> originVersion,
-    required pulumi.Output<String> siteId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      originVersion = pulumi.Input.asInput<int>(originVersion),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    this.description,
+    required this.originVersion,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VersionArgs {
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      originVersion: pulumi.Output.create<int>(map['originVersion'] as int),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      originVersion: (map['originVersion'] as int).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExpressRouteCircuitPeering {
   /// The Either a 16-bit or a 32-bit ASN for Azure.
-  final int azureAsn;
+  final pulumi.Input<int> azureAsn;
   /// The Either a 16-bit or a 32-bit ASN. Can either be public or private.
-  final int peerAsn;
+  final pulumi.Input<int> peerAsn;
   /// The type of the ExpressRoute Circuit Peering. Acceptable values include `AzurePrivatePeering`, `AzurePublicPeering` and `MicrosoftPeering`. Changing this forces a new resource to be created.
-  final String peeringType;
+  final pulumi.Input<String> peeringType;
   /// A `/30` subnet for the primary link.
-  final String primaryPeerAddressPrefix;
+  final pulumi.Input<String> primaryPeerAddressPrefix;
   /// A `/30` subnet for the secondary link.
-  final String secondaryPeerAddressPrefix;
+  final pulumi.Input<String> secondaryPeerAddressPrefix;
   /// The shared key. Can be a maximum of 25 characters.
-  final String sharedKey;
+  final pulumi.Input<String> sharedKey;
   /// A valid VLAN ID to establish this peering on.
-  final int vlanId;
+  final pulumi.Input<int> vlanId;
 
   /// Creates a new [GetExpressRouteCircuitPeering].
   /// [azureAsn] The Either a 16-bit or a 32-bit ASN for Azure.
@@ -49,13 +50,13 @@ class GetExpressRouteCircuitPeering {
 
   factory GetExpressRouteCircuitPeering.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitPeering(
-      azureAsn: map['azureAsn'] as int,
-      peerAsn: map['peerAsn'] as int,
-      peeringType: map['peeringType'] as String,
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] as String,
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] as String,
-      sharedKey: map['sharedKey'] as String,
-      vlanId: map['vlanId'] as int,
+      azureAsn: (map['azureAsn'] as int).input(),
+      peerAsn: (map['peerAsn'] as int).input(),
+      peeringType: (map['peeringType'] as String).input(),
+      primaryPeerAddressPrefix: (map['primaryPeerAddressPrefix'] as String).input(),
+      secondaryPeerAddressPrefix: (map['secondaryPeerAddressPrefix'] as String).input(),
+      sharedKey: (map['sharedKey'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
     );
   }
 }

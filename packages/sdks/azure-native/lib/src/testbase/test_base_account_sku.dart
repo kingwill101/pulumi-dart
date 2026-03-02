@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a Test Base Account SKU.
 class TestBaseAccountSKU {
   /// The locations that the SKU is available.
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// The name of the SKU. This is typically a letter + number code, such as B0 or S0.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of resource the SKU applies to.
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
   /// The tier of this particular SKU.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [TestBaseAccountSKU].
   /// [locations] The locations that the SKU is available.
@@ -35,10 +36,10 @@ class TestBaseAccountSKU {
 
   factory TestBaseAccountSKU.fromMap(Map<String, dynamic> map) {
     return TestBaseAccountSKU(
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      name: map['name'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      tier: map['tier'] as String,
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

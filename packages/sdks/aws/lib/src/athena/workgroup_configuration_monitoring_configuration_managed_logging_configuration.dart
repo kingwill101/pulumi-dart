@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration {
   /// Boolean whether managed log persistence is enabled for the workgroup.
-  final bool enabled;
-  final String? kmsKey;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<String>? kmsKey;
 
   /// Creates a new [WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration].
   /// [enabled] Boolean whether managed log persistence is enabled for the workgroup.
@@ -23,8 +24,8 @@ class WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration {
 
   factory WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration(
-      enabled: map['enabled'] as bool,
-      kmsKey: map['kmsKey'] == null ? null : map['kmsKey'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
     );
   }
 }

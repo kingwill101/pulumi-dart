@@ -31,21 +31,14 @@ class TargetTcpProxyComputeV1Args {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [service] URL to the BackendService resource.
   TargetTcpProxyComputeV1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? proxyBind,
-    pulumi.Output<TargetTcpProxyProxyHeaderComputeV1>? proxyHeader,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? service,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyBind = pulumi.Input.asOptionalInput<bool>(proxyBind),
-      proxyHeader = pulumi.Input.asOptionalInput<TargetTcpProxyProxyHeaderComputeV1>(proxyHeader),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.description,
+    this.name,
+    this.project,
+    this.proxyBind,
+    this.proxyHeader,
+    this.requestId,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class TargetTcpProxyComputeV1Args {
 
   factory TargetTcpProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return TargetTcpProxyComputeV1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyBind: map['proxyBind'] == null ? null : pulumi.Output.create<bool>(map['proxyBind'] as bool),
-      proxyHeader: map['proxyHeader'] == null ? null : pulumi.Output.create<TargetTcpProxyProxyHeaderComputeV1>(TargetTcpProxyProxyHeaderComputeV1.fromValue(map['proxyHeader'] as String)),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (TargetTcpProxyProxyHeaderComputeV1.fromValue(map['proxyHeader'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

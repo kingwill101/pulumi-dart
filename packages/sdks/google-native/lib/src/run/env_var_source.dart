@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_map_key_selector.dart';
 import 'secret_key_selector.dart';
 
 /// EnvVarSource represents a source for the value of an EnvVar.
 class EnvVarSource {
   /// Not supported by Cloud Run. Not supported in Cloud Run.
-  final ConfigMapKeySelector? configMapKeyRef;
+  final pulumi.Input<ConfigMapKeySelector>? configMapKeyRef;
   /// Selects a key (version) of a secret in Secret Manager.
-  final SecretKeySelector? secretKeyRef;
+  final pulumi.Input<SecretKeySelector>? secretKeyRef;
 
   /// Creates a new [EnvVarSource].
   /// [configMapKeyRef] Not supported by Cloud Run. Not supported in Cloud Run.
@@ -20,15 +21,15 @@ class EnvVarSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configMapKeyRef': ?configMapKeyRef == null ? null : configMapKeyRef!.toMap(),
-      'secretKeyRef': ?secretKeyRef == null ? null : secretKeyRef!.toMap(),
+      'configMapKeyRef': ?pulumi.Input.mapOptionalInputValue<ConfigMapKeySelector, Map<String, dynamic>>(configMapKeyRef, (value) => value.toMap()),
+      'secretKeyRef': ?pulumi.Input.mapOptionalInputValue<SecretKeySelector, Map<String, dynamic>>(secretKeyRef, (value) => value.toMap()),
     };
   }
 
   factory EnvVarSource.fromMap(Map<String, dynamic> map) {
     return EnvVarSource(
-      configMapKeyRef: map['configMapKeyRef'] == null ? null : ConfigMapKeySelector.fromMap((map['configMapKeyRef'] as Map).cast<String, dynamic>()),
-      secretKeyRef: map['secretKeyRef'] == null ? null : SecretKeySelector.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
+      configMapKeyRef: map['configMapKeyRef'] == null ? null : (ConfigMapKeySelector.fromMap((map['configMapKeyRef'] as Map).cast<String, dynamic>())).input(),
+      secretKeyRef: map['secretKeyRef'] == null ? null : (SecretKeySelector.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

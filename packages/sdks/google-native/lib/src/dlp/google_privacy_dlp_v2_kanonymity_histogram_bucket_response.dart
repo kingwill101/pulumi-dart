@@ -6,15 +6,15 @@ import 'google_privacy_dlp_v2_kanonymity_equivalence_class_response.dart';
 /// Histogram of k-anonymity equivalence classes.
 class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse {
   /// Total number of equivalence classes in this bucket.
-  final String bucketSize;
+  final pulumi.Input<String> bucketSize;
   /// Total number of distinct equivalence classes in this bucket.
-  final String bucketValueCount;
+  final pulumi.Input<String> bucketValueCount;
   /// Sample of equivalence classes in this bucket. The total number of classes returned per bucket is capped at 20.
-  final List<GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse> bucketValues;
+  final pulumi.Input<List<GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse>> bucketValues;
   /// Lower bound on the size of the equivalence classes in this bucket.
-  final String equivalenceClassSizeLowerBound;
+  final pulumi.Input<String> equivalenceClassSizeLowerBound;
   /// Upper bound on the size of the equivalence classes in this bucket.
-  final String equivalenceClassSizeUpperBound;
+  final pulumi.Input<String> equivalenceClassSizeUpperBound;
 
   /// Creates a new [GooglePrivacyDlpV2KAnonymityHistogramBucketResponse].
   /// [bucketSize] Total number of equivalence classes in this bucket.
@@ -34,7 +34,7 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse {
     return <String, dynamic>{
       'bucketSize': bucketSize,
       'bucketValueCount': bucketValueCount,
-      'bucketValues': pulumi.Input.encodeList<GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse, Map<String, dynamic>>(bucketValues, (value) => value.toMap()),
+      'bucketValues': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse>, List<Map<String, dynamic>>>(bucketValues, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'equivalenceClassSizeLowerBound': equivalenceClassSizeLowerBound,
       'equivalenceClassSizeUpperBound': equivalenceClassSizeUpperBound,
     };
@@ -42,11 +42,11 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse {
 
   factory GooglePrivacyDlpV2KAnonymityHistogramBucketResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KAnonymityHistogramBucketResponse(
-      bucketSize: map['bucketSize'] as String,
-      bucketValueCount: map['bucketValueCount'] as String,
-      bucketValues: pulumi.Input.decodeList<GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse>(map['bucketValues'], (value) => GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse.fromMap((value as Map).cast<String, dynamic>())),
-      equivalenceClassSizeLowerBound: map['equivalenceClassSizeLowerBound'] as String,
-      equivalenceClassSizeUpperBound: map['equivalenceClassSizeUpperBound'] as String,
+      bucketSize: (map['bucketSize'] as String).input(),
+      bucketValueCount: (map['bucketValueCount'] as String).input(),
+      bucketValues: (pulumi.Input.decodeList<GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse>(map['bucketValues'], (value) => GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      equivalenceClassSizeLowerBound: (map['equivalenceClassSizeLowerBound'] as String).input(),
+      equivalenceClassSizeUpperBound: (map['equivalenceClassSizeUpperBound'] as String).input(),
     );
   }
 }

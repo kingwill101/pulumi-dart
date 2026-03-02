@@ -5,13 +5,13 @@ import 'export_export_destination_configuration_s3_destination_s3_output_configu
 
 class ExportExportDestinationConfigurationS3Destination {
   /// Name of the Amazon S3 bucket used as the destination of a data export file.
-  final String s3Bucket;
+  final pulumi.Input<String> s3Bucket;
   /// Output configuration for the data export. See the `s3_output_configurations` argument reference below.
-  final List<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>? s3OutputConfigurations;
+  final pulumi.Input<List<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>>? s3OutputConfigurations;
   /// S3 path prefix you want prepended to the name of your data export.
-  final String s3Prefix;
+  final pulumi.Input<String> s3Prefix;
   /// S3 bucket region.
-  final String s3Region;
+  final pulumi.Input<String> s3Region;
 
   /// Creates a new [ExportExportDestinationConfigurationS3Destination].
   /// [s3Bucket] Name of the Amazon S3 bucket used as the destination of a data export file.
@@ -28,7 +28,7 @@ class ExportExportDestinationConfigurationS3Destination {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       's3Bucket': s3Bucket,
-      's3OutputConfigurations': ?s3OutputConfigurations == null ? null : pulumi.Input.encodeList<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration, Map<String, dynamic>>(s3OutputConfigurations!, (value) => value.toMap()),
+      's3OutputConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>, List<Map<String, dynamic>>>(s3OutputConfigurations, (value) => pulumi.Input.encodeList<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       's3Prefix': s3Prefix,
       's3Region': s3Region,
     };
@@ -36,10 +36,10 @@ class ExportExportDestinationConfigurationS3Destination {
 
   factory ExportExportDestinationConfigurationS3Destination.fromMap(Map<String, dynamic> map) {
     return ExportExportDestinationConfigurationS3Destination(
-      s3Bucket: map['s3Bucket'] as String,
-      s3OutputConfigurations: map['s3OutputConfigurations'] == null ? null : pulumi.Input.decodeList<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>(map['s3OutputConfigurations'], (value) => ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      s3Prefix: map['s3Prefix'] as String,
-      s3Region: map['s3Region'] as String,
+      s3Bucket: (map['s3Bucket'] as String).input(),
+      s3OutputConfigurations: map['s3OutputConfigurations'] == null ? null : (pulumi.Input.decodeList<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>(map['s3OutputConfigurations'], (value) => ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3Prefix: (map['s3Prefix'] as String).input(),
+      s3Region: (map['s3Region'] as String).input(),
     );
   }
 }

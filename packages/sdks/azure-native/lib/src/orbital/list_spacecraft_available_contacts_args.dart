@@ -29,19 +29,13 @@ class ListSpacecraftAvailableContactsArgs {
   /// [spacecraftName] Spacecraft ID.
   /// [startTime] Start time of a contact (ISO 8601 UTC standard).
   ListSpacecraftAvailableContactsArgs({
-    required pulumi.Output<ContactParametersContactProfile> contactProfile,
-    required pulumi.Output<String> endTime,
-    required pulumi.Output<String> groundStationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> spacecraftName,
-    required pulumi.Output<String> startTime,
-  }) :
-      contactProfile = pulumi.Input.asInput<ContactParametersContactProfile>(contactProfile),
-      endTime = pulumi.Input.asInput<String>(endTime),
-      groundStationName = pulumi.Input.asInput<String>(groundStationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spacecraftName = pulumi.Input.asInput<String>(spacecraftName),
-      startTime = pulumi.Input.asInput<String>(startTime);
+    required this.contactProfile,
+    required this.endTime,
+    required this.groundStationName,
+    required this.resourceGroupName,
+    required this.spacecraftName,
+    required this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ListSpacecraftAvailableContactsArgs {
 
   factory ListSpacecraftAvailableContactsArgs.fromMap(Map<String, dynamic> map) {
     return ListSpacecraftAvailableContactsArgs(
-      contactProfile: pulumi.Output.create<ContactParametersContactProfile>(ContactParametersContactProfile.fromMap((map['contactProfile'] as Map).cast<String, dynamic>())),
-      endTime: pulumi.Output.create<String>(map['endTime'] as String),
-      groundStationName: pulumi.Output.create<String>(map['groundStationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spacecraftName: pulumi.Output.create<String>(map['spacecraftName'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
+      contactProfile: (ContactParametersContactProfile.fromMap((map['contactProfile'] as Map).cast<String, dynamic>())).input(),
+      endTime: (map['endTime'] as String).input(),
+      groundStationName: (map['groundStationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spacecraftName: (map['spacecraftName'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

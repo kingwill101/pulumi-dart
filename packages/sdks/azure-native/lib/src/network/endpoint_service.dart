@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identifies the service being brought into the virtual network.
 class EndpointService {
   /// A unique identifier of the service being referenced by the interface endpoint.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [EndpointService].
   /// [id] A unique identifier of the service being referenced by the interface endpoint.
@@ -20,7 +21,7 @@ class EndpointService {
 
   factory EndpointService.fromMap(Map<String, dynamic> map) {
     return EndpointService(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

@@ -22,13 +22,10 @@ class GetAiFeaturestoreIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   GetAiFeaturestoreIamPolicyArgs({
-    required pulumi.Output<String> featurestore,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      featurestore = pulumi.Input.asInput<String>(featurestore),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.featurestore,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetAiFeaturestoreIamPolicyArgs {
 
   factory GetAiFeaturestoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAiFeaturestoreIamPolicyArgs(
-      featurestore: pulumi.Output.create<String>(map['featurestore'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      featurestore: (map['featurestore'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

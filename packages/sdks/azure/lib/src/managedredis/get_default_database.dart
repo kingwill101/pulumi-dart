@@ -5,31 +5,31 @@ import 'get_default_database_module.dart';
 
 class GetDefaultDatabase {
   /// Whether access key authentication is enabled for the database.
-  final bool accessKeysAuthenticationEnabled;
+  final pulumi.Input<bool> accessKeysAuthenticationEnabled;
   /// The client protocol used by the database (either `Encrypted` or `Plaintext`).
-  final String clientProtocol;
+  final pulumi.Input<String> clientProtocol;
   /// The clustering policy used by the database.
-  final String clusteringPolicy;
+  final pulumi.Input<String> clusteringPolicy;
   /// The Redis eviction policy used by the database.
-  final String evictionPolicy;
+  final pulumi.Input<String> evictionPolicy;
   /// The name of the geo-replication group.
-  final String geoReplicationGroupName;
+  final pulumi.Input<String> geoReplicationGroupName;
   /// A list of linked database IDs for geo-replication.
-  final List<String> geoReplicationLinkedDatabaseIds;
+  final pulumi.Input<List<String>> geoReplicationLinkedDatabaseIds;
   /// The ID of the Managed Redis Database Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// A list of `module` blocks as defined below.
-  final List<GetDefaultDatabaseModule> modules;
+  final pulumi.Input<List<GetDefaultDatabaseModule>> modules;
   /// The frequency of Append Only File (AOF) backups.
-  final String persistenceAppendOnlyFileBackupFrequency;
+  final pulumi.Input<String> persistenceAppendOnlyFileBackupFrequency;
   /// The frequency of Redis Database (RDB) backups.
-  final String persistenceRedisDatabaseBackupFrequency;
+  final pulumi.Input<String> persistenceRedisDatabaseBackupFrequency;
   /// The TCP port of the database endpoint.
-  final int port;
+  final pulumi.Input<int> port;
   /// The Primary Access Key for the Managed Redis Database instance.
-  final String primaryAccessKey;
+  final pulumi.Input<String> primaryAccessKey;
   /// The Secondary Access Key for the Managed Redis Database instance.
-  final String secondaryAccessKey;
+  final pulumi.Input<String> secondaryAccessKey;
 
   /// Creates a new [GetDefaultDatabase].
   /// [accessKeysAuthenticationEnabled] Whether access key authentication is enabled for the database.
@@ -70,7 +70,7 @@ class GetDefaultDatabase {
       'geoReplicationGroupName': geoReplicationGroupName,
       'geoReplicationLinkedDatabaseIds': geoReplicationLinkedDatabaseIds,
       'id': id,
-      'modules': pulumi.Input.encodeList<GetDefaultDatabaseModule, Map<String, dynamic>>(modules, (value) => value.toMap()),
+      'modules': pulumi.Input.mapInputValue<List<GetDefaultDatabaseModule>, List<Map<String, dynamic>>>(modules, (value) => pulumi.Input.encodeList<GetDefaultDatabaseModule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'persistenceAppendOnlyFileBackupFrequency': persistenceAppendOnlyFileBackupFrequency,
       'persistenceRedisDatabaseBackupFrequency': persistenceRedisDatabaseBackupFrequency,
       'port': port,
@@ -81,19 +81,19 @@ class GetDefaultDatabase {
 
   factory GetDefaultDatabase.fromMap(Map<String, dynamic> map) {
     return GetDefaultDatabase(
-      accessKeysAuthenticationEnabled: map['accessKeysAuthenticationEnabled'] as bool,
-      clientProtocol: map['clientProtocol'] as String,
-      clusteringPolicy: map['clusteringPolicy'] as String,
-      evictionPolicy: map['evictionPolicy'] as String,
-      geoReplicationGroupName: map['geoReplicationGroupName'] as String,
-      geoReplicationLinkedDatabaseIds: (map['geoReplicationLinkedDatabaseIds'] as List).cast<String>(),
-      id: map['id'] as String,
-      modules: pulumi.Input.decodeList<GetDefaultDatabaseModule>(map['modules'], (value) => GetDefaultDatabaseModule.fromMap((value as Map).cast<String, dynamic>())),
-      persistenceAppendOnlyFileBackupFrequency: map['persistenceAppendOnlyFileBackupFrequency'] as String,
-      persistenceRedisDatabaseBackupFrequency: map['persistenceRedisDatabaseBackupFrequency'] as String,
-      port: map['port'] as int,
-      primaryAccessKey: map['primaryAccessKey'] as String,
-      secondaryAccessKey: map['secondaryAccessKey'] as String,
+      accessKeysAuthenticationEnabled: (map['accessKeysAuthenticationEnabled'] as bool).input(),
+      clientProtocol: (map['clientProtocol'] as String).input(),
+      clusteringPolicy: (map['clusteringPolicy'] as String).input(),
+      evictionPolicy: (map['evictionPolicy'] as String).input(),
+      geoReplicationGroupName: (map['geoReplicationGroupName'] as String).input(),
+      geoReplicationLinkedDatabaseIds: ((map['geoReplicationLinkedDatabaseIds'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      modules: (pulumi.Input.decodeList<GetDefaultDatabaseModule>(map['modules'], (value) => GetDefaultDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      persistenceAppendOnlyFileBackupFrequency: (map['persistenceAppendOnlyFileBackupFrequency'] as String).input(),
+      persistenceRedisDatabaseBackupFrequency: (map['persistenceRedisDatabaseBackupFrequency'] as String).input(),
+      port: (map['port'] as int).input(),
+      primaryAccessKey: (map['primaryAccessKey'] as String).input(),
+      secondaryAccessKey: (map['secondaryAccessKey'] as String).input(),
     );
   }
 }

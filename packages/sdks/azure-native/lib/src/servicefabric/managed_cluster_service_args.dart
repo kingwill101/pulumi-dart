@@ -32,21 +32,14 @@ class ManagedClusterServiceArgs {
   /// [serviceName] The name of the service resource in the format of {applicationName}~{serviceName}.
   /// [tags] Azure resource tags.
   ManagedClusterServiceArgs({
-    required pulumi.Output<String> applicationName,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? location,
-    pulumi.Output<StatefulServiceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<StatefulServiceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.applicationName,
+    required this.clusterName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.serviceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ManagedClusterServiceArgs {
 
   factory ManagedClusterServiceArgs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterServiceArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<StatefulServiceProperties>(StatefulServiceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationName: (map['applicationName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (StatefulServiceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

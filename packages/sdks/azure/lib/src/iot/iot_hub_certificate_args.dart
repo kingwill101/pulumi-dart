@@ -25,17 +25,12 @@ class IotHubCertificateArgs {
   /// [name] Specifies the name of the Iot Device Provisioning Service Certificate resource. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the Iot Device Provisioning Service Certificate resource has to be created. Changing this forces a new resource to be created.
   IotHubCertificateArgs({
-    required pulumi.Output<String> certificateContent,
-    required pulumi.Output<String> iotDpsName,
-    pulumi.Output<bool>? isVerified,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateContent = pulumi.Input.asInput<String>(certificateContent),
-      iotDpsName = pulumi.Input.asInput<String>(iotDpsName),
-      isVerified = pulumi.Input.asOptionalInput<bool>(isVerified),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.certificateContent,
+    required this.iotDpsName,
+    this.isVerified,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class IotHubCertificateArgs {
 
   factory IotHubCertificateArgs.fromMap(Map<String, dynamic> map) {
     return IotHubCertificateArgs(
-      certificateContent: pulumi.Output.create<String>(map['certificateContent'] as String),
-      iotDpsName: pulumi.Output.create<String>(map['iotDpsName'] as String),
-      isVerified: map['isVerified'] == null ? null : pulumi.Output.create<bool>(map['isVerified'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateContent: (map['certificateContent'] as String).input(),
+      iotDpsName: (map['iotDpsName'] as String).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

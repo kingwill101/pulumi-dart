@@ -40,27 +40,17 @@ class OpenIdConnectProviderArgs {
   /// [useInApiDocumentation] If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
   /// [useInTestConsole] If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
   OpenIdConnectProviderArgs({
-    required pulumi.Output<String> clientId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> metadataEndpoint,
-    pulumi.Output<String>? opid,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<bool>? useInApiDocumentation,
-    pulumi.Output<bool>? useInTestConsole,
-  }) :
-      clientId = pulumi.Input.asInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      metadataEndpoint = pulumi.Input.asInput<String>(metadataEndpoint),
-      opid = pulumi.Input.asOptionalInput<String>(opid),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      useInApiDocumentation = pulumi.Input.asOptionalInput<bool>(useInApiDocumentation),
-      useInTestConsole = pulumi.Input.asOptionalInput<bool>(useInTestConsole);
+    required this.clientId,
+    this.clientSecret,
+    this.description,
+    required this.displayName,
+    required this.metadataEndpoint,
+    this.opid,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.useInApiDocumentation,
+    this.useInTestConsole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class OpenIdConnectProviderArgs {
 
   factory OpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectProviderArgs(
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      metadataEndpoint: pulumi.Output.create<String>(map['metadataEndpoint'] as String),
-      opid: map['opid'] == null ? null : pulumi.Output.create<String>(map['opid'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      useInApiDocumentation: map['useInApiDocumentation'] == null ? null : pulumi.Output.create<bool>(map['useInApiDocumentation'] as bool),
-      useInTestConsole: map['useInTestConsole'] == null ? null : pulumi.Output.create<bool>(map['useInTestConsole'] as bool),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      metadataEndpoint: (map['metadataEndpoint'] as String).input(),
+      opid: map['opid'] == null ? null : (map['opid'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      useInApiDocumentation: map['useInApiDocumentation'] == null ? null : (map['useInApiDocumentation'] as bool).input(),
+      useInTestConsole: map['useInTestConsole'] == null ? null : (map['useInTestConsole'] as bool).input(),
     );
   }
 }

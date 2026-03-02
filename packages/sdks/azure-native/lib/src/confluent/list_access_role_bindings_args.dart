@@ -19,13 +19,10 @@ class ListAccessRoleBindingsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [searchFilters] Search filters for the request
   ListAccessRoleBindingsArgs({
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? searchFilters,
-  }) :
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      searchFilters = pulumi.Input.asOptionalInput<Map<String, String>>(searchFilters);
+    required this.organizationName,
+    required this.resourceGroupName,
+    this.searchFilters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListAccessRoleBindingsArgs {
 
   factory ListAccessRoleBindingsArgs.fromMap(Map<String, dynamic> map) {
     return ListAccessRoleBindingsArgs(
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      searchFilters: map['searchFilters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['searchFilters'] as Map).cast<String, String>()),
+      organizationName: (map['organizationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      searchFilters: map['searchFilters'] == null ? null : ((map['searchFilters'] as Map).cast<String, String>()).input(),
     );
   }
 }

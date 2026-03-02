@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleConditionPathPattern {
   /// Set of regular expressions to compare against the request URL.
-  final List<String> regexValues;
+  final pulumi.Input<List<String>> regexValues;
   /// Set of `key`-`value` pairs indicating the query string parameters to match.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetListenerRuleConditionPathPattern].
   /// [regexValues] Set of regular expressions to compare against the request URL.
@@ -24,8 +25,8 @@ class GetListenerRuleConditionPathPattern {
 
   factory GetListenerRuleConditionPathPattern.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleConditionPathPattern(
-      regexValues: (map['regexValues'] as List).cast<String>(),
-      values: (map['values'] as List).cast<String>(),
+      regexValues: ((map['regexValues'] as List).cast<String>()).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

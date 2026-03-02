@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The private link service connection state of the private endpoint connection
 class PrivateLinkServiceConnectionStateResponse {
   /// Action required on the private connection state
-  final String actionsRequired;
+  final pulumi.Input<String> actionsRequired;
   /// Description of the private Connection state
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The status of the Batch private endpoint connection
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [PrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] Action required on the private connection state
@@ -30,9 +31,9 @@ class PrivateLinkServiceConnectionStateResponse {
 
   factory PrivateLinkServiceConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionStateResponse(
-      actionsRequired: map['actionsRequired'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      status: map['status'] as String,
+      actionsRequired: (map['actionsRequired'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

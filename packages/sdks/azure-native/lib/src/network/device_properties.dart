@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// List of properties of the device.
 class DeviceProperties {
   /// Model of the device.
-  final String? deviceModel;
+  final pulumi.Input<String>? deviceModel;
   /// Name of the device Vendor.
-  final String? deviceVendor;
+  final pulumi.Input<String>? deviceVendor;
   /// Link speed.
-  final int? linkSpeedInMbps;
+  final pulumi.Input<int>? linkSpeedInMbps;
 
   /// Creates a new [DeviceProperties].
   /// [deviceModel] Model of the device.
@@ -30,9 +31,9 @@ class DeviceProperties {
 
   factory DeviceProperties.fromMap(Map<String, dynamic> map) {
     return DeviceProperties(
-      deviceModel: map['deviceModel'] == null ? null : map['deviceModel'] as String,
-      deviceVendor: map['deviceVendor'] == null ? null : map['deviceVendor'] as String,
-      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : map['linkSpeedInMbps'] as int,
+      deviceModel: map['deviceModel'] == null ? null : (map['deviceModel'] as String).input(),
+      deviceVendor: map['deviceVendor'] == null ? null : (map['deviceVendor'] as String).input(),
+      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : (map['linkSpeedInMbps'] as int).input(),
     );
   }
 }

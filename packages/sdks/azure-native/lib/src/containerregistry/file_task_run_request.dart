@@ -9,31 +9,31 @@ import 'set_value.dart';
 /// The request parameters for a scheduling run against a task file.
 class FileTaskRunRequest {
   /// The machine configuration of the run agent.
-  final AgentProperties? agentConfiguration;
+  final pulumi.Input<AgentProperties>? agentConfiguration;
   /// The dedicated agent pool for the run.
-  final String? agentPoolName;
+  final pulumi.Input<String>? agentPoolName;
   /// The properties that describes a set of credentials that will be used when this run is invoked.
-  final Credentials? credentials;
+  final pulumi.Input<Credentials>? credentials;
   /// The value that indicates whether archiving is enabled for the run or not.
-  final bool? isArchiveEnabled;
+  final pulumi.Input<bool>? isArchiveEnabled;
   /// The template that describes the repository and tag information for run log artifact.
-  final String? logTemplate;
+  final pulumi.Input<String>? logTemplate;
   /// The platform properties against which the run has to happen.
-  final PlatformProperties platform;
+  final pulumi.Input<PlatformProperties> platform;
   /// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
   /// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
-  final String? sourceLocation;
+  final pulumi.Input<String>? sourceLocation;
   /// The template/definition file path relative to the source.
-  final String taskFilePath;
+  final pulumi.Input<String> taskFilePath;
   /// Run timeout in seconds.
-  final int? timeout;
+  final pulumi.Input<int>? timeout;
   /// The type of the run request.
   /// Expected value is 'FileTaskRunRequest'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The collection of overridable values that can be passed when running a task.
-  final List<SetValue>? values;
+  final pulumi.Input<List<SetValue>>? values;
   /// The values/parameters file path relative to the source.
-  final String? valuesFilePath;
+  final pulumi.Input<String>? valuesFilePath;
 
   /// Creates a new [FileTaskRunRequest].
   /// [agentConfiguration] The machine configuration of the run agent.
@@ -65,35 +65,35 @@ class FileTaskRunRequest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentConfiguration': ?agentConfiguration == null ? null : agentConfiguration!.toMap(),
+      'agentConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentProperties, Map<String, dynamic>>(agentConfiguration, (value) => value.toMap()),
       'agentPoolName': ?agentPoolName,
-      'credentials': ?credentials == null ? null : credentials!.toMap(),
+      'credentials': ?pulumi.Input.mapOptionalInputValue<Credentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'isArchiveEnabled': ?isArchiveEnabled,
       'logTemplate': ?logTemplate,
-      'platform': platform.toMap(),
+      'platform': pulumi.Input.mapInputValue<PlatformProperties, Map<String, dynamic>>(platform, (value) => value.toMap()),
       'sourceLocation': ?sourceLocation,
       'taskFilePath': taskFilePath,
       'timeout': ?timeout,
       'type': type,
-      'values': ?values == null ? null : pulumi.Input.encodeList<SetValue, Map<String, dynamic>>(values!, (value) => value.toMap()),
+      'values': ?pulumi.Input.mapOptionalInputValue<List<SetValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<SetValue, Map<String, dynamic>>(value, (value) => value.toMap())),
       'valuesFilePath': ?valuesFilePath,
     };
   }
 
   factory FileTaskRunRequest.fromMap(Map<String, dynamic> map) {
     return FileTaskRunRequest(
-      agentConfiguration: map['agentConfiguration'] == null ? null : AgentProperties.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>()),
-      agentPoolName: map['agentPoolName'] == null ? null : map['agentPoolName'] as String,
-      credentials: map['credentials'] == null ? null : Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : map['isArchiveEnabled'] as bool,
-      logTemplate: map['logTemplate'] == null ? null : map['logTemplate'] as String,
-      platform: PlatformProperties.fromMap((map['platform'] as Map).cast<String, dynamic>()),
-      sourceLocation: map['sourceLocation'] == null ? null : map['sourceLocation'] as String,
-      taskFilePath: map['taskFilePath'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as int,
-      type: map['type'] as String,
-      values: map['values'] == null ? null : pulumi.Input.decodeList<SetValue>(map['values'], (value) => SetValue.fromMap((value as Map).cast<String, dynamic>())),
-      valuesFilePath: map['valuesFilePath'] == null ? null : map['valuesFilePath'] as String,
+      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
+      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
+      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate'] as String).input(),
+      platform: (PlatformProperties.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation'] as String).input(),
+      taskFilePath: (map['taskFilePath'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      type: (map['type'] as String).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values'], (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      valuesFilePath: map['valuesFilePath'] == null ? null : (map['valuesFilePath'] as String).input(),
     );
   }
 }

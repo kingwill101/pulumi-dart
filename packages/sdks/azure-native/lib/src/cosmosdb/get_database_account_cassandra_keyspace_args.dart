@@ -19,13 +19,10 @@ class GetDatabaseAccountCassandraKeyspaceArgs {
   /// [keyspaceName] Cosmos DB keyspace name.
   /// [resourceGroupName] Name of an Azure resource group.
   GetDatabaseAccountCassandraKeyspaceArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> keyspaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      keyspaceName = pulumi.Input.asInput<String>(keyspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.keyspaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDatabaseAccountCassandraKeyspaceArgs {
 
   factory GetDatabaseAccountCassandraKeyspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountCassandraKeyspaceArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      keyspaceName: pulumi.Output.create<String>(map['keyspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      keyspaceName: (map['keyspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

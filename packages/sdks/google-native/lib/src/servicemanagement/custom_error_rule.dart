@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A custom error rule.
 class CustomErrorRule {
   /// Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
-  final bool? isErrorType;
+  final pulumi.Input<bool>? isErrorType;
   /// Selects messages to which this rule applies. Refer to selector for syntax details.
-  final String? selector;
+  final pulumi.Input<String>? selector;
 
   /// Creates a new [CustomErrorRule].
   /// [isErrorType] Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
@@ -25,8 +26,8 @@ class CustomErrorRule {
 
   factory CustomErrorRule.fromMap(Map<String, dynamic> map) {
     return CustomErrorRule(
-      isErrorType: map['isErrorType'] == null ? null : map['isErrorType'] as bool,
-      selector: map['selector'] == null ? null : map['selector'] as String,
+      isErrorType: map['isErrorType'] == null ? null : (map['isErrorType'] as bool).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
     );
   }
 }

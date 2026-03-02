@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineBufferOptions {
   /// Whether persistent buffering should be enabled.
-  final bool persistentBufferEnabled;
+  final pulumi.Input<bool> persistentBufferEnabled;
 
   /// Creates a new [PipelineBufferOptions].
   /// [persistentBufferEnabled] Whether persistent buffering should be enabled.
@@ -19,7 +20,7 @@ class PipelineBufferOptions {
 
   factory PipelineBufferOptions.fromMap(Map<String, dynamic> map) {
     return PipelineBufferOptions(
-      persistentBufferEnabled: map['persistentBufferEnabled'] as bool,
+      persistentBufferEnabled: (map['persistentBufferEnabled'] as bool).input(),
     );
   }
 }

@@ -27,13 +27,10 @@ class GetAuthScopeArgs {
   /// [region] The region in which to obtain the V3 Identity client.
   /// [setTokenId] A boolean argument that determines whether to
   GetAuthScopeArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? setTokenId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      setTokenId = pulumi.Input.asOptionalInput<bool>(setTokenId);
+    required this.name,
+    this.region,
+    this.setTokenId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,9 +42,9 @@ class GetAuthScopeArgs {
 
   factory GetAuthScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthScopeArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      setTokenId: map['setTokenId'] == null ? null : pulumi.Output.create<bool>(map['setTokenId'] as bool),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      setTokenId: map['setTokenId'] == null ? null : (map['setTokenId'] as bool).input(),
     );
   }
 }

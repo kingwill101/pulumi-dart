@@ -44,29 +44,18 @@ class DiscoveryVirtualInstanceArgs {
   /// [sapProduct] The SAP Product type for the SAP Discovery Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the SAP Discovery Virtual Instance.
   DiscoveryVirtualInstanceArgs({
-    required pulumi.Output<String> centralServerVirtualMachineId,
-    required pulumi.Output<String> environment,
-    pulumi.Output<DiscoveryVirtualInstanceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedResourceGroupName,
-    pulumi.Output<String>? managedResourcesNetworkAccessType,
-    pulumi.Output<String>? managedStorageAccountName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sapProduct,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      centralServerVirtualMachineId = pulumi.Input.asInput<String>(centralServerVirtualMachineId),
-      environment = pulumi.Input.asInput<String>(environment),
-      identity = pulumi.Input.asOptionalInput<DiscoveryVirtualInstanceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedResourceGroupName = pulumi.Input.asOptionalInput<String>(managedResourceGroupName),
-      managedResourcesNetworkAccessType = pulumi.Input.asOptionalInput<String>(managedResourcesNetworkAccessType),
-      managedStorageAccountName = pulumi.Input.asOptionalInput<String>(managedStorageAccountName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sapProduct = pulumi.Input.asInput<String>(sapProduct),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.centralServerVirtualMachineId,
+    required this.environment,
+    this.identity,
+    this.location,
+    this.managedResourceGroupName,
+    this.managedResourcesNetworkAccessType,
+    this.managedStorageAccountName,
+    this.name,
+    required this.resourceGroupName,
+    required this.sapProduct,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class DiscoveryVirtualInstanceArgs {
 
   factory DiscoveryVirtualInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveryVirtualInstanceArgs(
-      centralServerVirtualMachineId: pulumi.Output.create<String>(map['centralServerVirtualMachineId'] as String),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<DiscoveryVirtualInstanceIdentity>(DiscoveryVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : pulumi.Output.create<String>(map['managedResourceGroupName'] as String),
-      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : pulumi.Output.create<String>(map['managedResourcesNetworkAccessType'] as String),
-      managedStorageAccountName: map['managedStorageAccountName'] == null ? null : pulumi.Output.create<String>(map['managedStorageAccountName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapProduct: pulumi.Output.create<String>(map['sapProduct'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      centralServerVirtualMachineId: (map['centralServerVirtualMachineId'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      identity: map['identity'] == null ? null : (DiscoveryVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
+      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType'] as String).input(),
+      managedStorageAccountName: map['managedStorageAccountName'] == null ? null : (map['managedStorageAccountName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sapProduct: (map['sapProduct'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

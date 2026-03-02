@@ -63,33 +63,20 @@ class GetInstanceClassesArgs {
   /// [storageType] It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
   /// [zoneId] The Zone to launch the DB instance.
   GetInstanceClassesArgs({
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? commodityCode,
-    pulumi.Output<String>? dbInstanceClass,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? dbInstanceStorageType,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<String>? instanceChargeType,
-    pulumi.Output<bool>? multiZone,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? sortedBy,
-    pulumi.Output<String>? storageType,
-    pulumi.Output<String>? zoneId,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      commodityCode = pulumi.Input.asOptionalInput<String>(commodityCode),
-      dbInstanceClass = pulumi.Input.asOptionalInput<String>(dbInstanceClass),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      dbInstanceStorageType = pulumi.Input.asOptionalInput<String>(dbInstanceStorageType),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      instanceChargeType = pulumi.Input.asOptionalInput<String>(instanceChargeType),
-      multiZone = pulumi.Input.asOptionalInput<bool>(multiZone),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      sortedBy = pulumi.Input.asOptionalInput<String>(sortedBy),
-      storageType = pulumi.Input.asOptionalInput<String>(storageType),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.category,
+    this.commodityCode,
+    this.dbInstanceClass,
+    this.dbInstanceId,
+    this.dbInstanceStorageType,
+    this.engine,
+    this.engineVersion,
+    this.instanceChargeType,
+    this.multiZone,
+    this.outputFile,
+    this.sortedBy,
+    this.storageType,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,19 +98,19 @@ class GetInstanceClassesArgs {
 
   factory GetInstanceClassesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassesArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      commodityCode: map['commodityCode'] == null ? null : pulumi.Output.create<String>(map['commodityCode'] as String),
-      dbInstanceClass: map['dbInstanceClass'] == null ? null : pulumi.Output.create<String>(map['dbInstanceClass'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : pulumi.Output.create<String>(map['dbInstanceStorageType'] as String),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      instanceChargeType: map['instanceChargeType'] == null ? null : pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      multiZone: map['multiZone'] == null ? null : pulumi.Output.create<bool>(map['multiZone'] as bool),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      sortedBy: map['sortedBy'] == null ? null : pulumi.Output.create<String>(map['sortedBy'] as String),
-      storageType: map['storageType'] == null ? null : pulumi.Output.create<String>(map['storageType'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      commodityCode: map['commodityCode'] == null ? null : (map['commodityCode'] as String).input(),
+      dbInstanceClass: map['dbInstanceClass'] == null ? null : (map['dbInstanceClass'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      multiZone: map['multiZone'] == null ? null : (map['multiZone'] as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      sortedBy: map['sortedBy'] == null ? null : (map['sortedBy'] as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

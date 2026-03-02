@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBundleUserStorage {
   /// Size of the user storage.
-  final String capacity;
+  final pulumi.Input<String> capacity;
 
   /// Creates a new [GetBundleUserStorage].
   /// [capacity] Size of the user storage.
@@ -19,7 +20,7 @@ class GetBundleUserStorage {
 
   factory GetBundleUserStorage.fromMap(Map<String, dynamic> map) {
     return GetBundleUserStorage(
-      capacity: map['capacity'] as String,
+      capacity: (map['capacity'] as String).input(),
     );
   }
 }

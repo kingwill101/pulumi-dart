@@ -47,31 +47,19 @@ class VaultState {
   /// [vaultType] The type of Vault. Valid values:
   /// [wormEnabled] Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
   VaultState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? encryptType,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vaultName,
-    pulumi.Output<String>? vaultStorageClass,
-    pulumi.Output<String>? vaultType,
-    pulumi.Output<bool>? wormEnabled,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptType = pulumi.Input.asOptionalInput<String>(encryptType),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vaultName = pulumi.Input.asOptionalInput<String>(vaultName),
-      vaultStorageClass = pulumi.Input.asOptionalInput<String>(vaultStorageClass),
-      vaultType = pulumi.Input.asOptionalInput<String>(vaultType),
-      wormEnabled = pulumi.Input.asOptionalInput<bool>(wormEnabled);
+    this.createTime,
+    this.description,
+    this.encryptType,
+    this.kmsKeyId,
+    this.regionId,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.vaultName,
+    this.vaultStorageClass,
+    this.vaultType,
+    this.wormEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class VaultState {
 
   factory VaultState.fromMap(Map<String, dynamic> map) {
     return VaultState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptType: map['encryptType'] == null ? null : pulumi.Output.create<String>(map['encryptType'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vaultName: map['vaultName'] == null ? null : pulumi.Output.create<String>(map['vaultName'] as String),
-      vaultStorageClass: map['vaultStorageClass'] == null ? null : pulumi.Output.create<String>(map['vaultStorageClass'] as String),
-      vaultType: map['vaultType'] == null ? null : pulumi.Output.create<String>(map['vaultType'] as String),
-      wormEnabled: map['wormEnabled'] == null ? null : pulumi.Output.create<bool>(map['wormEnabled'] as bool),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptType: map['encryptType'] == null ? null : (map['encryptType'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vaultName: map['vaultName'] == null ? null : (map['vaultName'] as String).input(),
+      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass'] as String).input(),
+      vaultType: map['vaultType'] == null ? null : (map['vaultType'] as String).input(),
+      wormEnabled: map['wormEnabled'] == null ? null : (map['wormEnabled'] as bool).input(),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'delivery_channel_resource_snapshot_delivery_sls_properties.dart';
 
 class DeliveryChannelResourceSnapshotDelivery {
   /// The custom expression.
-  final String? customExpression;
+  final pulumi.Input<String>? customExpression;
   /// The delivery time.
-  final String? deliveryTime;
+  final pulumi.Input<String>? deliveryTime;
   /// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
   /// - true
   /// - false
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The Simple Log Service configurations. See `sls_properties` below.
-  final DeliveryChannelResourceSnapshotDeliverySlsProperties? slsProperties;
+  final pulumi.Input<DeliveryChannelResourceSnapshotDeliverySlsProperties>? slsProperties;
   /// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
   /// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
   /// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
-  final String? targetArn;
+  final pulumi.Input<String>? targetArn;
   /// The type of the delivery destination.
   ///
   /// Valid values:
   /// - `OSS` for standard delivery
   /// - `OSS` or `SLS` for custom delivery
-  final String? targetType;
+  final pulumi.Input<String>? targetType;
 
   /// Creates a new [DeliveryChannelResourceSnapshotDelivery].
   /// [customExpression] The custom expression.
@@ -45,7 +46,7 @@ class DeliveryChannelResourceSnapshotDelivery {
       'customExpression': ?customExpression,
       'deliveryTime': ?deliveryTime,
       'enabled': ?enabled,
-      'slsProperties': ?slsProperties == null ? null : slsProperties!.toMap(),
+      'slsProperties': ?pulumi.Input.mapOptionalInputValue<DeliveryChannelResourceSnapshotDeliverySlsProperties, Map<String, dynamic>>(slsProperties, (value) => value.toMap()),
       'targetArn': ?targetArn,
       'targetType': ?targetType,
     };
@@ -53,12 +54,12 @@ class DeliveryChannelResourceSnapshotDelivery {
 
   factory DeliveryChannelResourceSnapshotDelivery.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelResourceSnapshotDelivery(
-      customExpression: map['customExpression'] == null ? null : map['customExpression'] as String,
-      deliveryTime: map['deliveryTime'] == null ? null : map['deliveryTime'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      slsProperties: map['slsProperties'] == null ? null : DeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap((map['slsProperties'] as Map).cast<String, dynamic>()),
-      targetArn: map['targetArn'] == null ? null : map['targetArn'] as String,
-      targetType: map['targetType'] == null ? null : map['targetType'] as String,
+      customExpression: map['customExpression'] == null ? null : (map['customExpression'] as String).input(),
+      deliveryTime: map['deliveryTime'] == null ? null : (map['deliveryTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      slsProperties: map['slsProperties'] == null ? null : (DeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap((map['slsProperties'] as Map).cast<String, dynamic>())).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

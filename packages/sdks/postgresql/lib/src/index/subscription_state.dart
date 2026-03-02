@@ -25,19 +25,13 @@ class SubscriptionState {
   /// [publications] Names of the publications on the publisher to subscribe to
   /// [slotName] Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
   SubscriptionState({
-    pulumi.Output<String>? conninfo,
-    pulumi.Output<bool>? createSlot,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? publications,
-    pulumi.Output<String>? slotName,
-  }) :
-      conninfo = pulumi.Input.asOptionalInput<String>(conninfo),
-      createSlot = pulumi.Input.asOptionalInput<bool>(createSlot),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publications = pulumi.Input.asOptionalInput<List<String>>(publications),
-      slotName = pulumi.Input.asOptionalInput<String>(slotName);
+    this.conninfo,
+    this.createSlot,
+    this.database,
+    this.name,
+    this.publications,
+    this.slotName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      conninfo: map['conninfo'] == null ? null : pulumi.Output.create<String>(map['conninfo'] as String),
-      createSlot: map['createSlot'] == null ? null : pulumi.Output.create<bool>(map['createSlot'] as bool),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publications: map['publications'] == null ? null : pulumi.Output.create<List<String>>((map['publications'] as List).cast<String>()),
-      slotName: map['slotName'] == null ? null : pulumi.Output.create<String>(map['slotName'] as String),
+      conninfo: map['conninfo'] == null ? null : (map['conninfo'] as String).input(),
+      createSlot: map['createSlot'] == null ? null : (map['createSlot'] as bool).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publications: map['publications'] == null ? null : ((map['publications'] as List).cast<String>()).input(),
+      slotName: map['slotName'] == null ? null : (map['slotName'] as String).input(),
     );
   }
 }

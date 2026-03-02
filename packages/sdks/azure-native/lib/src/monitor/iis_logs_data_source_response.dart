@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Enables IIS logs to be collected by this data collection rule.
 class IisLogsDataSourceResponse {
   /// Absolute paths file location
-  final List<String>? logDirectories;
+  final pulumi.Input<List<String>>? logDirectories;
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// IIS streams
-  final List<String> streams;
+  final pulumi.Input<List<String>> streams;
 
   /// Creates a new [IisLogsDataSourceResponse].
   /// [logDirectories] Absolute paths file location
@@ -31,9 +32,9 @@ class IisLogsDataSourceResponse {
 
   factory IisLogsDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return IisLogsDataSourceResponse(
-      logDirectories: map['logDirectories'] == null ? null : (map['logDirectories'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      streams: (map['streams'] as List).cast<String>(),
+      logDirectories: map['logDirectories'] == null ? null : ((map['logDirectories'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      streams: ((map['streams'] as List).cast<String>()).input(),
     );
   }
 }

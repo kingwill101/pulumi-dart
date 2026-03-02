@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The share setting for reservations and sole tenancy node groups.
 class ShareSettingsResponseComputeBeta {
   /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-  final Map<String, String> projectMap;
+  final pulumi.Input<Map<String, String>> projectMap;
   /// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-  final List<String> projects;
+  final pulumi.Input<List<String>> projects;
   /// Type of sharing for this shared-reservation
-  final String shareType;
+  final pulumi.Input<String> shareType;
 
   /// Creates a new [ShareSettingsResponseComputeBeta].
   /// [projectMap] A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
@@ -30,9 +31,9 @@ class ShareSettingsResponseComputeBeta {
 
   factory ShareSettingsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ShareSettingsResponseComputeBeta(
-      projectMap: (map['projectMap'] as Map).cast<String, String>(),
-      projects: (map['projects'] as List).cast<String>(),
-      shareType: map['shareType'] as String,
+      projectMap: ((map['projectMap'] as Map).cast<String, String>()).input(),
+      projects: ((map['projects'] as List).cast<String>()).input(),
+      shareType: (map['shareType'] as String).input(),
     );
   }
 }

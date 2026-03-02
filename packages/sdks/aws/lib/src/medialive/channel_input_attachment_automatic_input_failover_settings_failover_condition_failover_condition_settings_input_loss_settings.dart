@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings {
   /// The amount of time (in milliseconds) that no input is detected. After that time, an input failover will occur.
-  final int? inputLossThresholdMsec;
+  final pulumi.Input<int>? inputLossThresholdMsec;
 
   /// Creates a new [ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings].
   /// [inputLossThresholdMsec] The amount of time (in milliseconds) that no input is detected. After that time, an input failover will occur.
@@ -19,7 +20,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings(
-      inputLossThresholdMsec: map['inputLossThresholdMsec'] == null ? null : map['inputLossThresholdMsec'] as int,
+      inputLossThresholdMsec: map['inputLossThresholdMsec'] == null ? null : (map['inputLossThresholdMsec'] as int).input(),
     );
   }
 }

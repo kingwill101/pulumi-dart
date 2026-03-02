@@ -39,27 +39,17 @@ class TrafficManagerAzureEndpointState {
   /// [targetResourceId] The ID of the Azure Resource which should be used as a target.
   /// [weight] Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
   TrafficManagerAzureEndpointState({
-    pulumi.Output<bool>? alwaysServeEnabled,
-    pulumi.Output<List<TrafficManagerAzureEndpointCustomHeader>>? customHeaders,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? geoMappings,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? profileId,
-    pulumi.Output<List<TrafficManagerAzureEndpointSubnet>>? subnets,
-    pulumi.Output<String>? targetResourceId,
-    pulumi.Output<int>? weight,
-  }) :
-      alwaysServeEnabled = pulumi.Input.asOptionalInput<bool>(alwaysServeEnabled),
-      customHeaders = pulumi.Input.asOptionalInput<List<TrafficManagerAzureEndpointCustomHeader>>(customHeaders),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      geoMappings = pulumi.Input.asOptionalInput<List<String>>(geoMappings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      profileId = pulumi.Input.asOptionalInput<String>(profileId),
-      subnets = pulumi.Input.asOptionalInput<List<TrafficManagerAzureEndpointSubnet>>(subnets),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.alwaysServeEnabled,
+    this.customHeaders,
+    this.enabled,
+    this.geoMappings,
+    this.name,
+    this.priority,
+    this.profileId,
+    this.subnets,
+    this.targetResourceId,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class TrafficManagerAzureEndpointState {
 
   factory TrafficManagerAzureEndpointState.fromMap(Map<String, dynamic> map) {
     return TrafficManagerAzureEndpointState(
-      alwaysServeEnabled: map['alwaysServeEnabled'] == null ? null : pulumi.Output.create<bool>(map['alwaysServeEnabled'] as bool),
-      customHeaders: map['customHeaders'] == null ? null : pulumi.Output.create<List<TrafficManagerAzureEndpointCustomHeader>>(pulumi.Input.decodeList<TrafficManagerAzureEndpointCustomHeader>(map['customHeaders'], (value) => TrafficManagerAzureEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>()))),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      geoMappings: map['geoMappings'] == null ? null : pulumi.Output.create<List<String>>((map['geoMappings'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      profileId: map['profileId'] == null ? null : pulumi.Output.create<String>(map['profileId'] as String),
-      subnets: map['subnets'] == null ? null : pulumi.Output.create<List<TrafficManagerAzureEndpointSubnet>>(pulumi.Input.decodeList<TrafficManagerAzureEndpointSubnet>(map['subnets'], (value) => TrafficManagerAzureEndpointSubnet.fromMap((value as Map).cast<String, dynamic>()))),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      alwaysServeEnabled: map['alwaysServeEnabled'] == null ? null : (map['alwaysServeEnabled'] as bool).input(),
+      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<TrafficManagerAzureEndpointCustomHeader>(map['customHeaders'], (value) => TrafficManagerAzureEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      geoMappings: map['geoMappings'] == null ? null : ((map['geoMappings'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<TrafficManagerAzureEndpointSubnet>(map['subnets'], (value) => TrafficManagerAzureEndpointSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_response_customer_managed_key_encryption.dart';
 
 /// All encryption configuration for a resource.
 class EncryptionResponse {
   /// All Customer-managed key encryption properties for the resource.
-  final EncryptionResponseCustomerManagedKeyEncryption? customerManagedKeyEncryption;
+  final pulumi.Input<EncryptionResponseCustomerManagedKeyEncryption>? customerManagedKeyEncryption;
   /// (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled.
-  final String? infrastructureEncryption;
+  final pulumi.Input<String>? infrastructureEncryption;
 
   /// Creates a new [EncryptionResponse].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource.
@@ -19,15 +20,15 @@ class EncryptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedKeyEncryption': ?customerManagedKeyEncryption == null ? null : customerManagedKeyEncryption!.toMap(),
+      'customerManagedKeyEncryption': ?pulumi.Input.mapOptionalInputValue<EncryptionResponseCustomerManagedKeyEncryption, Map<String, dynamic>>(customerManagedKeyEncryption, (value) => value.toMap()),
       'infrastructureEncryption': ?infrastructureEncryption,
     };
   }
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : EncryptionResponseCustomerManagedKeyEncryption.fromMap((map['customerManagedKeyEncryption'] as Map).cast<String, dynamic>()),
-      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : map['infrastructureEncryption'] as String,
+      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : (EncryptionResponseCustomerManagedKeyEncryption.fromMap((map['customerManagedKeyEncryption'] as Map).cast<String, dynamic>())).input(),
+      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption'] as String).input(),
     );
   }
 }

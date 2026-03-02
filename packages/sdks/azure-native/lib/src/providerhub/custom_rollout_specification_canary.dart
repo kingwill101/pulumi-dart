@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The canary region configuration.
 class CustomRolloutSpecificationCanary {
-  final List<String>? regions;
+  final pulumi.Input<List<String>>? regions;
 
   /// Creates a new [CustomRolloutSpecificationCanary].
   /// [regions] Optional.
@@ -19,7 +20,7 @@ class CustomRolloutSpecificationCanary {
 
   factory CustomRolloutSpecificationCanary.fromMap(Map<String, dynamic> map) {
     return CustomRolloutSpecificationCanary(
-      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity for the resource.
 class ManagedCassandraManagedServiceIdentity {
   /// The type of the resource.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ManagedCassandraManagedServiceIdentity].
   /// [type] The type of the resource.
@@ -20,7 +21,7 @@ class ManagedCassandraManagedServiceIdentity {
 
   factory ManagedCassandraManagedServiceIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedCassandraManagedServiceIdentity(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectivityTestsConnectivityTestDestination {
   /// A Cloud SQL instance URI.
-  final String cloudSqlInstance;
+  final pulumi.Input<String> cloudSqlInstance;
   /// Forwarding rule URI. Forwarding rules are frontends for load balancers,
   /// PSC endpoints, and Protocol Forwarding.
-  final String forwardingRule;
+  final pulumi.Input<String> forwardingRule;
   /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
-  final String gkeMasterCluster;
+  final pulumi.Input<String> gkeMasterCluster;
   /// A Compute Engine instance URI.
-  final String instance;
+  final pulumi.Input<String> instance;
   /// The IP address of the endpoint.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// A VPC network URI.
-  final String network;
+  final pulumi.Input<String> network;
   /// The IP protocol port of the endpoint.
-  final int port;
+  final pulumi.Input<int> port;
   /// Project ID where the endpoint is located.
-  final String projectId;
+  final pulumi.Input<String> projectId;
   /// A Redis Cluster URI.
-  final String redisCluster;
+  final pulumi.Input<String> redisCluster;
   /// A Redis Instance URI.
-  final String redisInstance;
+  final pulumi.Input<String> redisInstance;
 
   /// Creates a new [GetConnectivityTestsConnectivityTestDestination].
   /// [cloudSqlInstance] A Cloud SQL instance URI.
@@ -70,17 +71,17 @@ class GetConnectivityTestsConnectivityTestDestination {
 
   factory GetConnectivityTestsConnectivityTestDestination.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestsConnectivityTestDestination(
-      cloudSqlInstance: map['cloudSqlInstance'] as String,
-      forwardingRule: map['forwardingRule'] as String,
-      fqdn: map['fqdn'] as String,
-      gkeMasterCluster: map['gkeMasterCluster'] as String,
-      instance: map['instance'] as String,
-      ipAddress: map['ipAddress'] as String,
-      network: map['network'] as String,
-      port: map['port'] as int,
-      projectId: map['projectId'] as String,
-      redisCluster: map['redisCluster'] as String,
-      redisInstance: map['redisInstance'] as String,
+      cloudSqlInstance: (map['cloudSqlInstance'] as String).input(),
+      forwardingRule: (map['forwardingRule'] as String).input(),
+      fqdn: (map['fqdn'] as String).input(),
+      gkeMasterCluster: (map['gkeMasterCluster'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      network: (map['network'] as String).input(),
+      port: (map['port'] as int).input(),
+      projectId: (map['projectId'] as String).input(),
+      redisCluster: (map['redisCluster'] as String).input(),
+      redisInstance: (map['redisInstance'] as String).input(),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'boolean_condition_properties_response.dart';
 /// Describes automation rule triggering logic.
 class AutomationRuleTriggeringLogicResponse {
   /// The conditions to evaluate to determine if the automation rule should be triggered on a given object.
-  final List<BooleanConditionPropertiesResponse>? conditions;
+  final pulumi.Input<List<BooleanConditionPropertiesResponse>>? conditions;
   /// Determines when the automation rule should automatically expire and be disabled.
-  final String? expirationTimeUtc;
+  final pulumi.Input<String>? expirationTimeUtc;
   /// Determines whether the automation rule is enabled or disabled.
-  final bool isEnabled;
-  final String triggersOn;
-  final String triggersWhen;
+  final pulumi.Input<bool> isEnabled;
+  final pulumi.Input<String> triggersOn;
+  final pulumi.Input<String> triggersWhen;
 
   /// Creates a new [AutomationRuleTriggeringLogicResponse].
   /// [conditions] The conditions to evaluate to determine if the automation rule should be triggered on a given object.
@@ -30,7 +30,7 @@ class AutomationRuleTriggeringLogicResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<BooleanConditionPropertiesResponse, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<BooleanConditionPropertiesResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<BooleanConditionPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'expirationTimeUtc': ?expirationTimeUtc,
       'isEnabled': isEnabled,
       'triggersOn': triggersOn,
@@ -40,11 +40,11 @@ class AutomationRuleTriggeringLogicResponse {
 
   factory AutomationRuleTriggeringLogicResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleTriggeringLogicResponse(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(map['conditions'], (value) => BooleanConditionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : map['expirationTimeUtc'] as String,
-      isEnabled: map['isEnabled'] as bool,
-      triggersOn: map['triggersOn'] as String,
-      triggersWhen: map['triggersWhen'] as String,
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(map['conditions'], (value) => BooleanConditionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      triggersOn: (map['triggersOn'] as String).input(),
+      triggersWhen: (map['triggersWhen'] as String).input(),
     );
   }
 }

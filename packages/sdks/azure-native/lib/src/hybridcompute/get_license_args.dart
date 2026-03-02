@@ -16,11 +16,9 @@ class GetLicenseArgs {
   /// [licenseName] The name of the license.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLicenseArgs({
-    required pulumi.Output<String> licenseName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      licenseName = pulumi.Input.asInput<String>(licenseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.licenseName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLicenseArgs {
 
   factory GetLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseArgs(
-      licenseName: pulumi.Output.create<String>(map['licenseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      licenseName: (map['licenseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -44,29 +44,18 @@ class ProjectArgs {
   /// [targetConnectionInfo] Information for connecting to target
   /// [targetPlatform] Target platform for the project
   ProjectArgs({
-    pulumi.Output<AzureActiveDirectoryApp>? azureAuthenticationInfo,
-    pulumi.Output<List<DatabaseInfo>>? databasesInfo,
-    required pulumi.Output<String> groupName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? projectName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<MiSqlConnectionInfo>? sourceConnectionInfo,
-    required pulumi.Output<String> sourcePlatform,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<MiSqlConnectionInfo>? targetConnectionInfo,
-    required pulumi.Output<String> targetPlatform,
-  }) :
-      azureAuthenticationInfo = pulumi.Input.asOptionalInput<AzureActiveDirectoryApp>(azureAuthenticationInfo),
-      databasesInfo = pulumi.Input.asOptionalInput<List<DatabaseInfo>>(databasesInfo),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      sourceConnectionInfo = pulumi.Input.asOptionalInput<MiSqlConnectionInfo>(sourceConnectionInfo),
-      sourcePlatform = pulumi.Input.asInput<String>(sourcePlatform),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetConnectionInfo = pulumi.Input.asOptionalInput<MiSqlConnectionInfo>(targetConnectionInfo),
-      targetPlatform = pulumi.Input.asInput<String>(targetPlatform);
+    this.azureAuthenticationInfo,
+    this.databasesInfo,
+    required this.groupName,
+    this.location,
+    this.projectName,
+    required this.serviceName,
+    this.sourceConnectionInfo,
+    required this.sourcePlatform,
+    this.tags,
+    this.targetConnectionInfo,
+    required this.targetPlatform,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      azureAuthenticationInfo: map['azureAuthenticationInfo'] == null ? null : pulumi.Output.create<AzureActiveDirectoryApp>(AzureActiveDirectoryApp.fromMap((map['azureAuthenticationInfo'] as Map).cast<String, dynamic>())),
-      databasesInfo: map['databasesInfo'] == null ? null : pulumi.Output.create<List<DatabaseInfo>>(pulumi.Input.decodeList<DatabaseInfo>(map['databasesInfo'], (value) => DatabaseInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      sourceConnectionInfo: map['sourceConnectionInfo'] == null ? null : pulumi.Output.create<MiSqlConnectionInfo>(MiSqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())),
-      sourcePlatform: pulumi.Output.create<String>(map['sourcePlatform'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetConnectionInfo: map['targetConnectionInfo'] == null ? null : pulumi.Output.create<MiSqlConnectionInfo>(MiSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())),
-      targetPlatform: pulumi.Output.create<String>(map['targetPlatform'] as String),
+      azureAuthenticationInfo: map['azureAuthenticationInfo'] == null ? null : (AzureActiveDirectoryApp.fromMap((map['azureAuthenticationInfo'] as Map).cast<String, dynamic>())).input(),
+      databasesInfo: map['databasesInfo'] == null ? null : (pulumi.Input.decodeList<DatabaseInfo>(map['databasesInfo'], (value) => DatabaseInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupName: (map['groupName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      sourceConnectionInfo: map['sourceConnectionInfo'] == null ? null : (MiSqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      sourcePlatform: (map['sourcePlatform'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetConnectionInfo: map['targetConnectionInfo'] == null ? null : (MiSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      targetPlatform: (map['targetPlatform'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetMembershipGkehubV1betaArgs {
   /// [membershipId] Required.
   /// [project] Optional.
   GetMembershipGkehubV1betaArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.membershipId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetMembershipGkehubV1betaArgs {
 
   factory GetMembershipGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetMembershipGkehubV1betaArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

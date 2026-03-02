@@ -27,17 +27,12 @@ class CapacityReservationArgs {
   /// [targetDpus] Number of data processing units requested. Must be at least `24` units.
   /// [timeouts] Optional.
   CapacityReservationArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<int> targetDpus,
-    pulumi.Output<CapacityReservationTimeouts>? timeouts,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetDpus = pulumi.Input.asInput<int>(targetDpus),
-      timeouts = pulumi.Input.asOptionalInput<CapacityReservationTimeouts>(timeouts);
+    this.name,
+    this.region,
+    this.tags,
+    required this.targetDpus,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class CapacityReservationArgs {
 
   factory CapacityReservationArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetDpus: pulumi.Output.create<int>(map['targetDpus'] as int),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CapacityReservationTimeouts>(CapacityReservationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetDpus: (map['targetDpus'] as int).input(),
+      timeouts: map['timeouts'] == null ? null : (CapacityReservationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

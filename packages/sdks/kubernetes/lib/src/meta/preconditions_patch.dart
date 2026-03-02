@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.
 class PreconditionsPatch {
   /// Specifies the target ResourceVersion
-  final String? resourceVersion;
+  final pulumi.Input<String>? resourceVersion;
   /// Specifies the target UID.
-  final String? uid;
+  final pulumi.Input<String>? uid;
 
   /// Creates a new [PreconditionsPatch].
   /// [resourceVersion] Specifies the target ResourceVersion
@@ -25,8 +26,8 @@ class PreconditionsPatch {
 
   factory PreconditionsPatch.fromMap(Map<String, dynamic> map) {
     return PreconditionsPatch(
-      resourceVersion: map['resourceVersion'] == null ? null : map['resourceVersion'] as String,
-      uid: map['uid'] == null ? null : map['uid'] as String,
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

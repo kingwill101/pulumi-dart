@@ -40,19 +40,13 @@ class ExternalVpnGatewayArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [redundancyType] Indicates the redundancy type of this external VPN gateway
   ExternalVpnGatewayArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<ExternalVpnGatewayInterface>>? interfaces,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? redundancyType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      interfaces = pulumi.Input.asOptionalInput<List<ExternalVpnGatewayInterface>>(interfaces),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      redundancyType = pulumi.Input.asOptionalInput<String>(redundancyType);
+    this.description,
+    this.interfaces,
+    this.labels,
+    this.name,
+    this.project,
+    this.redundancyType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,12 +61,12 @@ class ExternalVpnGatewayArgs {
 
   factory ExternalVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ExternalVpnGatewayArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      interfaces: map['interfaces'] == null ? null : pulumi.Output.create<List<ExternalVpnGatewayInterface>>(pulumi.Input.decodeList<ExternalVpnGatewayInterface>(map['interfaces'], (value) => ExternalVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      redundancyType: map['redundancyType'] == null ? null : pulumi.Output.create<String>(map['redundancyType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<ExternalVpnGatewayInterface>(map['interfaces'], (value) => ExternalVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      redundancyType: map['redundancyType'] == null ? null : (map['redundancyType'] as String).input(),
     );
   }
 }

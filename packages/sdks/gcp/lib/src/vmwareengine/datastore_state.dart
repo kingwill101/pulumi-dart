@@ -56,27 +56,17 @@ class DatastoreState {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
   DatastoreState({
-    pulumi.Output<List<String>>? clusters,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<DatastoreNfsDatastore>? nfsDatastore,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      clusters = pulumi.Input.asOptionalInput<List<String>>(clusters),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nfsDatastore = pulumi.Input.asOptionalInput<DatastoreNfsDatastore>(nfsDatastore),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.clusters,
+    this.createTime,
+    this.description,
+    this.location,
+    this.name,
+    this.nfsDatastore,
+    this.project,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,16 +85,16 @@ class DatastoreState {
 
   factory DatastoreState.fromMap(Map<String, dynamic> map) {
     return DatastoreState(
-      clusters: map['clusters'] == null ? null : pulumi.Output.create<List<String>>((map['clusters'] as List).cast<String>()),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nfsDatastore: map['nfsDatastore'] == null ? null : pulumi.Output.create<DatastoreNfsDatastore>(DatastoreNfsDatastore.fromMap((map['nfsDatastore'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      clusters: map['clusters'] == null ? null : ((map['clusters'] as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nfsDatastore: map['nfsDatastore'] == null ? null : (DatastoreNfsDatastore.fromMap((map['nfsDatastore'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

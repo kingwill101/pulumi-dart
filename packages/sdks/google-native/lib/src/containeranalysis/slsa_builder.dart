@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SlsaBuilder {
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [SlsaBuilder].
   /// [id] Optional.
@@ -18,7 +19,7 @@ class SlsaBuilder {
 
   factory SlsaBuilder.fromMap(Map<String, dynamic> map) {
     return SlsaBuilder(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

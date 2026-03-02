@@ -19,13 +19,10 @@ class GetSelectionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [selectionId] Backup selection ID.
   GetSelectionArgs({
-    required pulumi.Output<String> planId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> selectionId,
-  }) :
-      planId = pulumi.Input.asInput<String>(planId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selectionId = pulumi.Input.asInput<String>(selectionId);
+    required this.planId,
+    this.region,
+    required this.selectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSelectionArgs {
 
   factory GetSelectionArgs.fromMap(Map<String, dynamic> map) {
     return GetSelectionArgs(
-      planId: pulumi.Output.create<String>(map['planId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selectionId: pulumi.Output.create<String>(map['selectionId'] as String),
+      planId: (map['planId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selectionId: (map['selectionId'] as String).input(),
     );
   }
 }

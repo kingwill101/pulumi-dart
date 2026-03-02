@@ -25,19 +25,13 @@ class NatIpCidrState {
   /// [natIpCidrName] The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
   /// [status] The status of the CIDR block of the NAT gateway. Valid values: `Available`.
   NatIpCidrState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? natGatewayId,
-    pulumi.Output<String>? natIpCidr,
-    pulumi.Output<String>? natIpCidrDescription,
-    pulumi.Output<String>? natIpCidrName,
-    pulumi.Output<String>? status,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      natGatewayId = pulumi.Input.asOptionalInput<String>(natGatewayId),
-      natIpCidr = pulumi.Input.asOptionalInput<String>(natIpCidr),
-      natIpCidrDescription = pulumi.Input.asOptionalInput<String>(natIpCidrDescription),
-      natIpCidrName = pulumi.Input.asOptionalInput<String>(natIpCidrName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.dryRun,
+    this.natGatewayId,
+    this.natIpCidr,
+    this.natIpCidrDescription,
+    this.natIpCidrName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class NatIpCidrState {
 
   factory NatIpCidrState.fromMap(Map<String, dynamic> map) {
     return NatIpCidrState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      natGatewayId: map['natGatewayId'] == null ? null : pulumi.Output.create<String>(map['natGatewayId'] as String),
-      natIpCidr: map['natIpCidr'] == null ? null : pulumi.Output.create<String>(map['natIpCidr'] as String),
-      natIpCidrDescription: map['natIpCidrDescription'] == null ? null : pulumi.Output.create<String>(map['natIpCidrDescription'] as String),
-      natIpCidrName: map['natIpCidrName'] == null ? null : pulumi.Output.create<String>(map['natIpCidrName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
+      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr'] as String).input(),
+      natIpCidrDescription: map['natIpCidrDescription'] == null ? null : (map['natIpCidrDescription'] as String).input(),
+      natIpCidrName: map['natIpCidrName'] == null ? null : (map['natIpCidrName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cpu_utilization_response.dart';
 import 'disk_utilization_response.dart';
 import 'network_utilization_response.dart';
@@ -9,31 +10,31 @@ import 'standard_scheduler_settings_response.dart';
 /// Automatic scaling is based on request rate, response latencies, and other application metrics.
 class AutomaticScalingResponse {
   /// The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
-  final String coolDownPeriod;
+  final pulumi.Input<String> coolDownPeriod;
   /// Target scaling by CPU usage.
-  final CpuUtilizationResponse cpuUtilization;
+  final pulumi.Input<CpuUtilizationResponse> cpuUtilization;
   /// Target scaling by disk usage.
-  final DiskUtilizationResponse diskUtilization;
+  final pulumi.Input<DiskUtilizationResponse> diskUtilization;
   /// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value.
-  final int maxConcurrentRequests;
+  final pulumi.Input<int> maxConcurrentRequests;
   /// Maximum number of idle instances that should be maintained for this version.
-  final int maxIdleInstances;
+  final pulumi.Input<int> maxIdleInstances;
   /// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
-  final String maxPendingLatency;
+  final pulumi.Input<String> maxPendingLatency;
   /// Maximum number of instances that should be started to handle requests for this version.
-  final int maxTotalInstances;
+  final pulumi.Input<int> maxTotalInstances;
   /// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
-  final int minIdleInstances;
+  final pulumi.Input<int> minIdleInstances;
   /// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
-  final String minPendingLatency;
+  final pulumi.Input<String> minPendingLatency;
   /// Minimum number of running instances that should be maintained for this version.
-  final int minTotalInstances;
+  final pulumi.Input<int> minTotalInstances;
   /// Target scaling by network usage.
-  final NetworkUtilizationResponse networkUtilization;
+  final pulumi.Input<NetworkUtilizationResponse> networkUtilization;
   /// Target scaling by request utilization.
-  final RequestUtilizationResponse requestUtilization;
+  final pulumi.Input<RequestUtilizationResponse> requestUtilization;
   /// Scheduler settings for standard environment.
-  final StandardSchedulerSettingsResponse standardSchedulerSettings;
+  final pulumi.Input<StandardSchedulerSettingsResponse> standardSchedulerSettings;
 
   /// Creates a new [AutomaticScalingResponse].
   /// [coolDownPeriod] The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
@@ -68,8 +69,8 @@ class AutomaticScalingResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'coolDownPeriod': coolDownPeriod,
-      'cpuUtilization': cpuUtilization.toMap(),
-      'diskUtilization': diskUtilization.toMap(),
+      'cpuUtilization': pulumi.Input.mapInputValue<CpuUtilizationResponse, Map<String, dynamic>>(cpuUtilization, (value) => value.toMap()),
+      'diskUtilization': pulumi.Input.mapInputValue<DiskUtilizationResponse, Map<String, dynamic>>(diskUtilization, (value) => value.toMap()),
       'maxConcurrentRequests': maxConcurrentRequests,
       'maxIdleInstances': maxIdleInstances,
       'maxPendingLatency': maxPendingLatency,
@@ -77,27 +78,27 @@ class AutomaticScalingResponse {
       'minIdleInstances': minIdleInstances,
       'minPendingLatency': minPendingLatency,
       'minTotalInstances': minTotalInstances,
-      'networkUtilization': networkUtilization.toMap(),
-      'requestUtilization': requestUtilization.toMap(),
-      'standardSchedulerSettings': standardSchedulerSettings.toMap(),
+      'networkUtilization': pulumi.Input.mapInputValue<NetworkUtilizationResponse, Map<String, dynamic>>(networkUtilization, (value) => value.toMap()),
+      'requestUtilization': pulumi.Input.mapInputValue<RequestUtilizationResponse, Map<String, dynamic>>(requestUtilization, (value) => value.toMap()),
+      'standardSchedulerSettings': pulumi.Input.mapInputValue<StandardSchedulerSettingsResponse, Map<String, dynamic>>(standardSchedulerSettings, (value) => value.toMap()),
     };
   }
 
   factory AutomaticScalingResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticScalingResponse(
-      coolDownPeriod: map['coolDownPeriod'] as String,
-      cpuUtilization: CpuUtilizationResponse.fromMap((map['cpuUtilization'] as Map).cast<String, dynamic>()),
-      diskUtilization: DiskUtilizationResponse.fromMap((map['diskUtilization'] as Map).cast<String, dynamic>()),
-      maxConcurrentRequests: map['maxConcurrentRequests'] as int,
-      maxIdleInstances: map['maxIdleInstances'] as int,
-      maxPendingLatency: map['maxPendingLatency'] as String,
-      maxTotalInstances: map['maxTotalInstances'] as int,
-      minIdleInstances: map['minIdleInstances'] as int,
-      minPendingLatency: map['minPendingLatency'] as String,
-      minTotalInstances: map['minTotalInstances'] as int,
-      networkUtilization: NetworkUtilizationResponse.fromMap((map['networkUtilization'] as Map).cast<String, dynamic>()),
-      requestUtilization: RequestUtilizationResponse.fromMap((map['requestUtilization'] as Map).cast<String, dynamic>()),
-      standardSchedulerSettings: StandardSchedulerSettingsResponse.fromMap((map['standardSchedulerSettings'] as Map).cast<String, dynamic>()),
+      coolDownPeriod: (map['coolDownPeriod'] as String).input(),
+      cpuUtilization: (CpuUtilizationResponse.fromMap((map['cpuUtilization'] as Map).cast<String, dynamic>())).input(),
+      diskUtilization: (DiskUtilizationResponse.fromMap((map['diskUtilization'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentRequests: (map['maxConcurrentRequests'] as int).input(),
+      maxIdleInstances: (map['maxIdleInstances'] as int).input(),
+      maxPendingLatency: (map['maxPendingLatency'] as String).input(),
+      maxTotalInstances: (map['maxTotalInstances'] as int).input(),
+      minIdleInstances: (map['minIdleInstances'] as int).input(),
+      minPendingLatency: (map['minPendingLatency'] as String).input(),
+      minTotalInstances: (map['minTotalInstances'] as int).input(),
+      networkUtilization: (NetworkUtilizationResponse.fromMap((map['networkUtilization'] as Map).cast<String, dynamic>())).input(),
+      requestUtilization: (RequestUtilizationResponse.fromMap((map['requestUtilization'] as Map).cast<String, dynamic>())).input(),
+      standardSchedulerSettings: (StandardSchedulerSettingsResponse.fromMap((map['standardSchedulerSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

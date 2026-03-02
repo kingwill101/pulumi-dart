@@ -25,17 +25,12 @@ class ResourceShareArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ResourceShareArgs({
-    pulumi.Output<bool>? allowExternalPrincipals,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? permissionArns,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allowExternalPrincipals = pulumi.Input.asOptionalInput<bool>(allowExternalPrincipals),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissionArns = pulumi.Input.asOptionalInput<List<String>>(permissionArns),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.allowExternalPrincipals,
+    this.name,
+    this.permissionArns,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ResourceShareArgs {
 
   factory ResourceShareArgs.fromMap(Map<String, dynamic> map) {
     return ResourceShareArgs(
-      allowExternalPrincipals: map['allowExternalPrincipals'] == null ? null : pulumi.Output.create<bool>(map['allowExternalPrincipals'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissionArns: map['permissionArns'] == null ? null : pulumi.Output.create<List<String>>((map['permissionArns'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allowExternalPrincipals: map['allowExternalPrincipals'] == null ? null : (map['allowExternalPrincipals'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissionArns: map['permissionArns'] == null ? null : ((map['permissionArns'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

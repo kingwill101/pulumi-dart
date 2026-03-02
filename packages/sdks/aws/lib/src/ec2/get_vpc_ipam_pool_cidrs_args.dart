@@ -20,13 +20,10 @@ class GetVpcIpamPoolCidrsArgs {
   /// [ipamPoolId] ID of the IPAM pool you would like the list of provisioned CIDRs.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetVpcIpamPoolCidrsArgs({
-    pulumi.Output<List<GetVpcIpamPoolCidrsFilter>>? filters,
-    required pulumi.Output<String> ipamPoolId,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVpcIpamPoolCidrsFilter>>(filters),
-      ipamPoolId = pulumi.Input.asInput<String>(ipamPoolId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    required this.ipamPoolId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetVpcIpamPoolCidrsArgs {
 
   factory GetVpcIpamPoolCidrsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolCidrsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcIpamPoolCidrsFilter>>(pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(map['filters'], (value) => GetVpcIpamPoolCidrsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      ipamPoolId: pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(map['filters'], (value) => GetVpcIpamPoolCidrsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipamPoolId: (map['ipamPoolId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

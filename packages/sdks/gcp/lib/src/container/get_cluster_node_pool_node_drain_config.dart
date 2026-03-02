@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeDrainConfig {
   /// Whether to respect PodDisruptionBudget policy during node pool deletion.
-  final bool respectPdbDuringNodePoolDeletion;
+  final pulumi.Input<bool> respectPdbDuringNodePoolDeletion;
 
   /// Creates a new [GetClusterNodePoolNodeDrainConfig].
   /// [respectPdbDuringNodePoolDeletion] Whether to respect PodDisruptionBudget policy during node pool deletion.
@@ -19,7 +20,7 @@ class GetClusterNodePoolNodeDrainConfig {
 
   factory GetClusterNodePoolNodeDrainConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeDrainConfig(
-      respectPdbDuringNodePoolDeletion: map['respectPdbDuringNodePoolDeletion'] as bool,
+      respectPdbDuringNodePoolDeletion: (map['respectPdbDuringNodePoolDeletion'] as bool).input(),
     );
   }
 }

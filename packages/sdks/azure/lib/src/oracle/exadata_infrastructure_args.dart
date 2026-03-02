@@ -50,33 +50,20 @@ class ExadataInfrastructureArgs {
   /// [tags] A mapping of tags which should be assigned to the Cloud Exadata Infrastructure.
   /// [zones] Cloud Exadata Infrastructure zones. Changing this forces a new Cloud Exadata Infrastructure to be created.
   ExadataInfrastructureArgs({
-    required pulumi.Output<int> computeCount,
-    pulumi.Output<List<String>>? customerContacts,
-    pulumi.Output<String>? databaseServerType,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<ExadataInfrastructureMaintenanceWindow>>? maintenanceWindows,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shape,
-    required pulumi.Output<int> storageCount,
-    pulumi.Output<String>? storageServerType,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<String>> zones,
-  }) :
-      computeCount = pulumi.Input.asInput<int>(computeCount),
-      customerContacts = pulumi.Input.asOptionalInput<List<String>>(customerContacts),
-      databaseServerType = pulumi.Input.asOptionalInput<String>(databaseServerType),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceWindows = pulumi.Input.asOptionalInput<List<ExadataInfrastructureMaintenanceWindow>>(maintenanceWindows),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shape = pulumi.Input.asInput<String>(shape),
-      storageCount = pulumi.Input.asInput<int>(storageCount),
-      storageServerType = pulumi.Input.asOptionalInput<String>(storageServerType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asInput<List<String>>(zones);
+    required this.computeCount,
+    this.customerContacts,
+    this.databaseServerType,
+    required this.displayName,
+    this.location,
+    this.maintenanceWindows,
+    this.name,
+    required this.resourceGroupName,
+    required this.shape,
+    required this.storageCount,
+    this.storageServerType,
+    this.tags,
+    required this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class ExadataInfrastructureArgs {
 
   factory ExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return ExadataInfrastructureArgs(
-      computeCount: pulumi.Output.create<int>(map['computeCount'] as int),
-      customerContacts: map['customerContacts'] == null ? null : pulumi.Output.create<List<String>>((map['customerContacts'] as List).cast<String>()),
-      databaseServerType: map['databaseServerType'] == null ? null : pulumi.Output.create<String>(map['databaseServerType'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceWindows: map['maintenanceWindows'] == null ? null : pulumi.Output.create<List<ExadataInfrastructureMaintenanceWindow>>(pulumi.Input.decodeList<ExadataInfrastructureMaintenanceWindow>(map['maintenanceWindows'], (value) => ExadataInfrastructureMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shape: pulumi.Output.create<String>(map['shape'] as String),
-      storageCount: pulumi.Output.create<int>(map['storageCount'] as int),
-      storageServerType: map['storageServerType'] == null ? null : pulumi.Output.create<String>(map['storageServerType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      computeCount: (map['computeCount'] as int).input(),
+      customerContacts: map['customerContacts'] == null ? null : ((map['customerContacts'] as List).cast<String>()).input(),
+      databaseServerType: map['databaseServerType'] == null ? null : (map['databaseServerType'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceWindows: map['maintenanceWindows'] == null ? null : (pulumi.Input.decodeList<ExadataInfrastructureMaintenanceWindow>(map['maintenanceWindows'], (value) => ExadataInfrastructureMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shape: (map['shape'] as String).input(),
+      storageCount: (map['storageCount'] as int).input(),
+      storageServerType: map['storageServerType'] == null ? null : (map['storageServerType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

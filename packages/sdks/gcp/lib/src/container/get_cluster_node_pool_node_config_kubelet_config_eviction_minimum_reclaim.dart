@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim {
   /// Defines percentage of minimum reclaim for imagefs.available.
-  final String imagefsAvailable;
+  final pulumi.Input<String> imagefsAvailable;
   /// Defines percentage of minimum reclaim for imagefs.inodesFree.
-  final String imagefsInodesFree;
+  final pulumi.Input<String> imagefsInodesFree;
   /// Defines percentage of minimum reclaim for memory.available.
-  final String memoryAvailable;
+  final pulumi.Input<String> memoryAvailable;
   /// Defines percentage of minimum reclaim for nodefs.available.
-  final String nodefsAvailable;
+  final pulumi.Input<String> nodefsAvailable;
   /// Defines percentage of minimum reclaim for nodefs.inodesFree.
-  final String nodefsInodesFree;
+  final pulumi.Input<String> nodefsInodesFree;
   /// Defines percentage of minimum reclaim for pid.available.
-  final String pidAvailable;
+  final pulumi.Input<String> pidAvailable;
 
   /// Creates a new [GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim].
   /// [imagefsAvailable] Defines percentage of minimum reclaim for imagefs.available.
@@ -44,12 +45,12 @@ class GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim {
 
   factory GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim(
-      imagefsAvailable: map['imagefsAvailable'] as String,
-      imagefsInodesFree: map['imagefsInodesFree'] as String,
-      memoryAvailable: map['memoryAvailable'] as String,
-      nodefsAvailable: map['nodefsAvailable'] as String,
-      nodefsInodesFree: map['nodefsInodesFree'] as String,
-      pidAvailable: map['pidAvailable'] as String,
+      imagefsAvailable: (map['imagefsAvailable'] as String).input(),
+      imagefsInodesFree: (map['imagefsInodesFree'] as String).input(),
+      memoryAvailable: (map['memoryAvailable'] as String).input(),
+      nodefsAvailable: (map['nodefsAvailable'] as String).input(),
+      nodefsInodesFree: (map['nodefsInodesFree'] as String).input(),
+      pidAvailable: (map['pidAvailable'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduler_sku_response.dart';
 
 /// Details of the Scheduler
 class SchedulerPropertiesResponse {
   /// URL of the durable task scheduler
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR
-  final List<String> ipAllowlist;
+  final pulumi.Input<List<String>> ipAllowlist;
   /// The status of the last operation
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// SKU of the durable task scheduler
-  final SchedulerSkuResponse sku;
+  final pulumi.Input<SchedulerSkuResponse> sku;
 
   /// Creates a new [SchedulerPropertiesResponse].
   /// [endpoint] URL of the durable task scheduler
@@ -30,16 +31,16 @@ class SchedulerPropertiesResponse {
       'endpoint': endpoint,
       'ipAllowlist': ipAllowlist,
       'provisioningState': provisioningState,
-      'sku': sku.toMap(),
+      'sku': pulumi.Input.mapInputValue<SchedulerSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
     };
   }
 
   factory SchedulerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SchedulerPropertiesResponse(
-      endpoint: map['endpoint'] as String,
-      ipAllowlist: (map['ipAllowlist'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      sku: SchedulerSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      endpoint: (map['endpoint'] as String).input(),
+      ipAllowlist: ((map['ipAllowlist'] as List).cast<String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      sku: (SchedulerSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

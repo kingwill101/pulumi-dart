@@ -32,21 +32,14 @@ class ResourceDirectoryState {
   /// [rootFolderId] The ID of the root folder
   /// [status] ScpStatus
   ResourceDirectoryState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? masterAccountId,
-    pulumi.Output<String>? masterAccountName,
-    pulumi.Output<String>? memberAccountDisplayNameSyncStatus,
-    pulumi.Output<String>? memberDeletionStatus,
-    pulumi.Output<String>? rootFolderId,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      masterAccountId = pulumi.Input.asOptionalInput<String>(masterAccountId),
-      masterAccountName = pulumi.Input.asOptionalInput<String>(masterAccountName),
-      memberAccountDisplayNameSyncStatus = pulumi.Input.asOptionalInput<String>(memberAccountDisplayNameSyncStatus),
-      memberDeletionStatus = pulumi.Input.asOptionalInput<String>(memberDeletionStatus),
-      rootFolderId = pulumi.Input.asOptionalInput<String>(rootFolderId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.masterAccountId,
+    this.masterAccountName,
+    this.memberAccountDisplayNameSyncStatus,
+    this.memberDeletionStatus,
+    this.rootFolderId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ResourceDirectoryState {
 
   factory ResourceDirectoryState.fromMap(Map<String, dynamic> map) {
     return ResourceDirectoryState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      masterAccountId: map['masterAccountId'] == null ? null : pulumi.Output.create<String>(map['masterAccountId'] as String),
-      masterAccountName: map['masterAccountName'] == null ? null : pulumi.Output.create<String>(map['masterAccountName'] as String),
-      memberAccountDisplayNameSyncStatus: map['memberAccountDisplayNameSyncStatus'] == null ? null : pulumi.Output.create<String>(map['memberAccountDisplayNameSyncStatus'] as String),
-      memberDeletionStatus: map['memberDeletionStatus'] == null ? null : pulumi.Output.create<String>(map['memberDeletionStatus'] as String),
-      rootFolderId: map['rootFolderId'] == null ? null : pulumi.Output.create<String>(map['rootFolderId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId'] as String).input(),
+      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName'] as String).input(),
+      memberAccountDisplayNameSyncStatus: map['memberAccountDisplayNameSyncStatus'] == null ? null : (map['memberAccountDisplayNameSyncStatus'] as String).input(),
+      memberDeletionStatus: map['memberDeletionStatus'] == null ? null : (map['memberDeletionStatus'] as String).input(),
+      rootFolderId: map['rootFolderId'] == null ? null : (map['rootFolderId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

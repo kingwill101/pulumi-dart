@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'os_policy_assignment_os_policy_resource_group_resource_pkg_rpm_source.dart';
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
   /// Whether dependencies should also be installed. -
   /// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
   /// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
-  final bool? pullDeps;
+  final pulumi.Input<bool>? pullDeps;
   /// An rpm package. Structure is
   /// documented below.
-  final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource source;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource> source;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm].
   /// [pullDeps] Whether dependencies should also be installed. -
@@ -22,14 +23,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'pullDeps': ?pullDeps,
-      'source': source.toMap(),
+      'source': pulumi.Input.mapInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(
-      pullDeps: map['pullDeps'] == null ? null : map['pullDeps'] as bool,
-      source: OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps'] as bool).input(),
+      source: (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

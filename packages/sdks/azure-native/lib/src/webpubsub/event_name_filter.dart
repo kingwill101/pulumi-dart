@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Filter events by their name.
 class EventNameFilter {
   /// Gets or sets a list of system events. Supported events: "connected" and "disconnected". Blocking event "connect" is not supported because it requires a response.
-  final List<String>? systemEvents;
+  final pulumi.Input<List<String>>? systemEvents;
   /// Expected value is 'EventName'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Gets or sets a matching pattern for event names.
   /// There are 3 kinds of patterns supported:
   /// 1. "*", it matches any event name
   /// 2. Combine multiple events with ",", for example "event1,event2", it matches events "event1" and "event2"
   /// 3. A single event name, for example, "event1", it matches "event1"
-  final String? userEventPattern;
+  final pulumi.Input<String>? userEventPattern;
 
   /// Creates a new [EventNameFilter].
   /// [systemEvents] Gets or sets a list of system events. Supported events: "connected" and "disconnected". Blocking event "connect" is not supported because it requires a response.
@@ -34,9 +35,9 @@ class EventNameFilter {
 
   factory EventNameFilter.fromMap(Map<String, dynamic> map) {
     return EventNameFilter(
-      systemEvents: map['systemEvents'] == null ? null : (map['systemEvents'] as List).cast<String>(),
-      type: map['type'] as String,
-      userEventPattern: map['userEventPattern'] == null ? null : map['userEventPattern'] as String,
+      systemEvents: map['systemEvents'] == null ? null : ((map['systemEvents'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
+      userEventPattern: map['userEventPattern'] == null ? null : (map['userEventPattern'] as String).input(),
     );
   }
 }

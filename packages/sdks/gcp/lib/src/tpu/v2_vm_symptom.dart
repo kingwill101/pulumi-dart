@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2VmSymptom {
   /// (Output)
   /// Timestamp when the Symptom is created.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// (Output)
   /// Detailed information of the current Symptom.
-  final String? details;
+  final pulumi.Input<String>? details;
   /// (Output)
   /// Type of the Symptom.
-  final String? symptomType;
+  final pulumi.Input<String>? symptomType;
   /// (Output)
   /// A string used to uniquely distinguish a worker within a TPU node.
-  final String? workerId;
+  final pulumi.Input<String>? workerId;
 
   /// Creates a new [V2VmSymptom].
   /// [createTime] (Output)
@@ -38,10 +39,10 @@ class V2VmSymptom {
 
   factory V2VmSymptom.fromMap(Map<String, dynamic> map) {
     return V2VmSymptom(
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      details: map['details'] == null ? null : map['details'] as String,
-      symptomType: map['symptomType'] == null ? null : map['symptomType'] as String,
-      workerId: map['workerId'] == null ? null : map['workerId'] as String,
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      details: map['details'] == null ? null : (map['details'] as String).input(),
+      symptomType: map['symptomType'] == null ? null : (map['symptomType'] as String).input(),
+      workerId: map['workerId'] == null ? null : (map['workerId'] as String).input(),
     );
   }
 }

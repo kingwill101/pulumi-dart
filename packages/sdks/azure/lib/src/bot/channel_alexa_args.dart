@@ -22,15 +22,11 @@ class ChannelAlexaArgs {
   /// [resourceGroupName] The name of the resource group where the Alexa Channel should be created. Changing this forces a new resource to be created.
   /// [skillId] The Alexa skill ID for the Alexa Channel.
   ChannelAlexaArgs({
-    required pulumi.Output<String> botName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skillId,
-  }) :
-      botName = pulumi.Input.asInput<String>(botName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skillId = pulumi.Input.asInput<String>(skillId);
+    required this.botName,
+    this.location,
+    required this.resourceGroupName,
+    required this.skillId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ChannelAlexaArgs {
 
   factory ChannelAlexaArgs.fromMap(Map<String, dynamic> map) {
     return ChannelAlexaArgs(
-      botName: pulumi.Output.create<String>(map['botName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skillId: pulumi.Output.create<String>(map['skillId'] as String),
+      botName: (map['botName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skillId: (map['skillId'] as String).input(),
     );
   }
 }

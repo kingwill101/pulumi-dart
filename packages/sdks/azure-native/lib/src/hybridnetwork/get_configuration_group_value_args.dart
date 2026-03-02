@@ -16,11 +16,9 @@ class GetConfigurationGroupValueArgs {
   /// [configurationGroupValueName] The name of the configuration group value.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetConfigurationGroupValueArgs({
-    required pulumi.Output<String> configurationGroupValueName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationGroupValueName = pulumi.Input.asInput<String>(configurationGroupValueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configurationGroupValueName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetConfigurationGroupValueArgs {
 
   factory GetConfigurationGroupValueArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationGroupValueArgs(
-      configurationGroupValueName: pulumi.Output.create<String>(map['configurationGroupValueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationGroupValueName: (map['configurationGroupValueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

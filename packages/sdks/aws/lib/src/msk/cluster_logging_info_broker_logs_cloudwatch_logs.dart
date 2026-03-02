@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterLoggingInfoBrokerLogsCloudwatchLogs {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Name of the Cloudwatch Log Group to deliver logs to.
-  final String? logGroup;
+  final pulumi.Input<String>? logGroup;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogsCloudwatchLogs].
   /// [enabled] Required.
@@ -23,8 +24,8 @@ class ClusterLoggingInfoBrokerLogsCloudwatchLogs {
 
   factory ClusterLoggingInfoBrokerLogsCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingInfoBrokerLogsCloudwatchLogs(
-      enabled: map['enabled'] as bool,
-      logGroup: map['logGroup'] == null ? null : map['logGroup'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
     );
   }
 }

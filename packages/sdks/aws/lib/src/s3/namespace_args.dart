@@ -21,13 +21,10 @@ class NamespaceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
   NamespaceArgs({
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tableBucketArn,
-  }) :
-      namespace = pulumi.Input.asInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn);
+    required this.namespace,
+    this.region,
+    required this.tableBucketArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableBucketArn: pulumi.Output.create<String>(map['tableBucketArn'] as String),
+      namespace: (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableBucketArn: (map['tableBucketArn'] as String).input(),
     );
   }
 }

@@ -56,35 +56,21 @@ class NotebookRuntimeTemplateArgs {
   /// [project] Optional.
   /// [serviceAccount] The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
   NotebookRuntimeTemplateArgs({
-    pulumi.Output<GoogleCloudAiplatformV1PersistentDiskSpec>? dataPersistentDiskSpec,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<GoogleCloudAiplatformV1NotebookEucConfig>? eucConfig,
-    pulumi.Output<GoogleCloudAiplatformV1NotebookIdleShutdownConfig>? idleShutdownConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudAiplatformV1MachineSpec>? machineSpec,
-    pulumi.Output<GoogleCloudAiplatformV1NetworkSpec>? networkSpec,
-    pulumi.Output<String>? notebookRuntimeTemplateId,
-    pulumi.Output<NotebookRuntimeTemplateNotebookRuntimeType>? notebookRuntimeType,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceAccount,
-  }) :
-      dataPersistentDiskSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1PersistentDiskSpec>(dataPersistentDiskSpec),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      eucConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1NotebookEucConfig>(eucConfig),
-      idleShutdownConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1NotebookIdleShutdownConfig>(idleShutdownConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      machineSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1MachineSpec>(machineSpec),
-      networkSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1NetworkSpec>(networkSpec),
-      notebookRuntimeTemplateId = pulumi.Input.asOptionalInput<String>(notebookRuntimeTemplateId),
-      notebookRuntimeType = pulumi.Input.asOptionalInput<NotebookRuntimeTemplateNotebookRuntimeType>(notebookRuntimeType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount);
+    this.dataPersistentDiskSpec,
+    this.description,
+    required this.displayName,
+    this.etag,
+    this.eucConfig,
+    this.idleShutdownConfig,
+    this.labels,
+    this.location,
+    this.machineSpec,
+    this.networkSpec,
+    this.notebookRuntimeTemplateId,
+    this.notebookRuntimeType,
+    this.project,
+    this.serviceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class NotebookRuntimeTemplateArgs {
 
   factory NotebookRuntimeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return NotebookRuntimeTemplateArgs(
-      dataPersistentDiskSpec: map['dataPersistentDiskSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1PersistentDiskSpec>(GoogleCloudAiplatformV1PersistentDiskSpec.fromMap((map['dataPersistentDiskSpec'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      eucConfig: map['eucConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1NotebookEucConfig>(GoogleCloudAiplatformV1NotebookEucConfig.fromMap((map['eucConfig'] as Map).cast<String, dynamic>())),
-      idleShutdownConfig: map['idleShutdownConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1NotebookIdleShutdownConfig>(GoogleCloudAiplatformV1NotebookIdleShutdownConfig.fromMap((map['idleShutdownConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      machineSpec: map['machineSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1MachineSpec>(GoogleCloudAiplatformV1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())),
-      networkSpec: map['networkSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1NetworkSpec>(GoogleCloudAiplatformV1NetworkSpec.fromMap((map['networkSpec'] as Map).cast<String, dynamic>())),
-      notebookRuntimeTemplateId: map['notebookRuntimeTemplateId'] == null ? null : pulumi.Output.create<String>(map['notebookRuntimeTemplateId'] as String),
-      notebookRuntimeType: map['notebookRuntimeType'] == null ? null : pulumi.Output.create<NotebookRuntimeTemplateNotebookRuntimeType>(NotebookRuntimeTemplateNotebookRuntimeType.fromValue(map['notebookRuntimeType'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
+      dataPersistentDiskSpec: map['dataPersistentDiskSpec'] == null ? null : (GoogleCloudAiplatformV1PersistentDiskSpec.fromMap((map['dataPersistentDiskSpec'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      eucConfig: map['eucConfig'] == null ? null : (GoogleCloudAiplatformV1NotebookEucConfig.fromMap((map['eucConfig'] as Map).cast<String, dynamic>())).input(),
+      idleShutdownConfig: map['idleShutdownConfig'] == null ? null : (GoogleCloudAiplatformV1NotebookIdleShutdownConfig.fromMap((map['idleShutdownConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      machineSpec: map['machineSpec'] == null ? null : (GoogleCloudAiplatformV1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
+      networkSpec: map['networkSpec'] == null ? null : (GoogleCloudAiplatformV1NetworkSpec.fromMap((map['networkSpec'] as Map).cast<String, dynamic>())).input(),
+      notebookRuntimeTemplateId: map['notebookRuntimeTemplateId'] == null ? null : (map['notebookRuntimeTemplateId'] as String).input(),
+      notebookRuntimeType: map['notebookRuntimeType'] == null ? null : (NotebookRuntimeTemplateNotebookRuntimeType.fromValue(map['notebookRuntimeType'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
     );
   }
 }

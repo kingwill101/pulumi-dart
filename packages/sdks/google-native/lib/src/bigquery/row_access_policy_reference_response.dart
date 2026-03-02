@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RowAccessPolicyReferenceResponse {
   /// The ID of the dataset containing this row access policy.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-  final String policyId;
+  final pulumi.Input<String> policyId;
   /// The ID of the project containing this row access policy.
-  final String project;
+  final pulumi.Input<String> project;
   /// The ID of the table containing this row access policy.
-  final String tableId;
+  final pulumi.Input<String> tableId;
 
   /// Creates a new [RowAccessPolicyReferenceResponse].
   /// [datasetId] The ID of the dataset containing this row access policy.
@@ -34,10 +35,10 @@ class RowAccessPolicyReferenceResponse {
 
   factory RowAccessPolicyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return RowAccessPolicyReferenceResponse(
-      datasetId: map['datasetId'] as String,
-      policyId: map['policyId'] as String,
-      project: map['project'] as String,
-      tableId: map['tableId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      project: (map['project'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

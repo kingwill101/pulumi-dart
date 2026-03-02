@@ -21,15 +21,11 @@ class ListenerAclAttachmentState {
   /// [listenerId] Listener instance ID.
   /// [status] Listener Status.
   ListenerAclAttachmentState({
-    pulumi.Output<String>? aclId,
-    pulumi.Output<String>? aclType,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? status,
-  }) :
-      aclId = pulumi.Input.asOptionalInput<String>(aclId),
-      aclType = pulumi.Input.asOptionalInput<String>(aclType),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aclId,
+    this.aclType,
+    this.listenerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ListenerAclAttachmentState {
 
   factory ListenerAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return ListenerAclAttachmentState(
-      aclId: map['aclId'] == null ? null : pulumi.Output.create<String>(map['aclId'] as String),
-      aclType: map['aclType'] == null ? null : pulumi.Output.create<String>(map['aclType'] as String),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
+      aclType: map['aclType'] == null ? null : (map['aclType'] as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

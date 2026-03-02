@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
   /// The number of hours between snapshots.
-  final int hoursInCycle;
+  final pulumi.Input<int> hoursInCycle;
   /// Time within the window to start the operations.
   /// It must be in an hourly format "HH:MM",
   /// where HH : [00-23] and MM : [00] GMT. eg: 21:00
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule].
   /// [hoursInCycle] The number of hours between snapshots.
@@ -26,8 +27,8 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
 
   factory ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(
-      hoursInCycle: map['hoursInCycle'] as int,
-      startTime: map['startTime'] as String,
+      hoursInCycle: (map['hoursInCycle'] as int).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

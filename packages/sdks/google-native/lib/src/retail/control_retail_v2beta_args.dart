@@ -41,27 +41,17 @@ class ControlRetailV2betaArgs {
   /// [searchSolutionUseCase] Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
   /// [solutionTypes] Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
   ControlRetailV2betaArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> controlId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudRetailV2betaSearchRequestFacetSpec>? facetSpec,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudRetailV2betaRule>? rule,
-    pulumi.Output<List<ControlSearchSolutionUseCaseItemRetailV2beta>>? searchSolutionUseCase,
-    required pulumi.Output<List<ControlSolutionTypesItemRetailV2beta>> solutionTypes,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      controlId = pulumi.Input.asInput<String>(controlId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      facetSpec = pulumi.Input.asOptionalInput<GoogleCloudRetailV2betaSearchRequestFacetSpec>(facetSpec),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rule = pulumi.Input.asOptionalInput<GoogleCloudRetailV2betaRule>(rule),
-      searchSolutionUseCase = pulumi.Input.asOptionalInput<List<ControlSearchSolutionUseCaseItemRetailV2beta>>(searchSolutionUseCase),
-      solutionTypes = pulumi.Input.asInput<List<ControlSolutionTypesItemRetailV2beta>>(solutionTypes);
+    required this.catalogId,
+    required this.controlId,
+    required this.displayName,
+    this.facetSpec,
+    this.location,
+    this.name,
+    this.project,
+    this.rule,
+    this.searchSolutionUseCase,
+    required this.solutionTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ControlRetailV2betaArgs {
 
   factory ControlRetailV2betaArgs.fromMap(Map<String, dynamic> map) {
     return ControlRetailV2betaArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      controlId: pulumi.Output.create<String>(map['controlId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      facetSpec: map['facetSpec'] == null ? null : pulumi.Output.create<GoogleCloudRetailV2betaSearchRequestFacetSpec>(GoogleCloudRetailV2betaSearchRequestFacetSpec.fromMap((map['facetSpec'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<GoogleCloudRetailV2betaRule>(GoogleCloudRetailV2betaRule.fromMap((map['rule'] as Map).cast<String, dynamic>())),
-      searchSolutionUseCase: map['searchSolutionUseCase'] == null ? null : pulumi.Output.create<List<ControlSearchSolutionUseCaseItemRetailV2beta>>(pulumi.Input.decodeList<ControlSearchSolutionUseCaseItemRetailV2beta>(map['searchSolutionUseCase'], (value) => ControlSearchSolutionUseCaseItemRetailV2beta.fromValue(value as String))),
-      solutionTypes: pulumi.Output.create<List<ControlSolutionTypesItemRetailV2beta>>(pulumi.Input.decodeList<ControlSolutionTypesItemRetailV2beta>(map['solutionTypes'], (value) => ControlSolutionTypesItemRetailV2beta.fromValue(value as String))),
+      catalogId: (map['catalogId'] as String).input(),
+      controlId: (map['controlId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      facetSpec: map['facetSpec'] == null ? null : (GoogleCloudRetailV2betaSearchRequestFacetSpec.fromMap((map['facetSpec'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rule: map['rule'] == null ? null : (GoogleCloudRetailV2betaRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      searchSolutionUseCase: map['searchSolutionUseCase'] == null ? null : (pulumi.Input.decodeList<ControlSearchSolutionUseCaseItemRetailV2beta>(map['searchSolutionUseCase'], (value) => ControlSearchSolutionUseCaseItemRetailV2beta.fromValue(value as String))).input(),
+      solutionTypes: (pulumi.Input.decodeList<ControlSolutionTypesItemRetailV2beta>(map['solutionTypes'], (value) => ControlSolutionTypesItemRetailV2beta.fromValue(value as String))).input(),
     );
   }
 }

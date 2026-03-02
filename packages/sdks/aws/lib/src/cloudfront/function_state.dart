@@ -39,27 +39,17 @@ class FunctionState {
   /// [runtime] Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   /// [status] Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
   FunctionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? code,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? keyValueStoreAssociations,
-    pulumi.Output<String>? liveStageEtag,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publish,
-    pulumi.Output<String>? runtime,
-    pulumi.Output<String>? status,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      code = pulumi.Input.asOptionalInput<String>(code),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      keyValueStoreAssociations = pulumi.Input.asOptionalInput<List<String>>(keyValueStoreAssociations),
-      liveStageEtag = pulumi.Input.asOptionalInput<String>(liveStageEtag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publish = pulumi.Input.asOptionalInput<bool>(publish),
-      runtime = pulumi.Input.asOptionalInput<String>(runtime),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.arn,
+    this.code,
+    this.comment,
+    this.etag,
+    this.keyValueStoreAssociations,
+    this.liveStageEtag,
+    this.name,
+    this.publish,
+    this.runtime,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class FunctionState {
 
   factory FunctionState.fromMap(Map<String, dynamic> map) {
     return FunctionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      code: map['code'] == null ? null : pulumi.Output.create<String>(map['code'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      keyValueStoreAssociations: map['keyValueStoreAssociations'] == null ? null : pulumi.Output.create<List<String>>((map['keyValueStoreAssociations'] as List).cast<String>()),
-      liveStageEtag: map['liveStageEtag'] == null ? null : pulumi.Output.create<String>(map['liveStageEtag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publish: map['publish'] == null ? null : pulumi.Output.create<bool>(map['publish'] as bool),
-      runtime: map['runtime'] == null ? null : pulumi.Output.create<String>(map['runtime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      keyValueStoreAssociations: map['keyValueStoreAssociations'] == null ? null : ((map['keyValueStoreAssociations'] as List).cast<String>()).input(),
+      liveStageEtag: map['liveStageEtag'] == null ? null : (map['liveStageEtag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

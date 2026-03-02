@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesHyperVVendorId {
   /// Sets the value for the vendor ID used in Hyper-V.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DomainFeaturesHyperVVendorId].
   /// [value] Sets the value for the vendor ID used in Hyper-V.
@@ -19,7 +20,7 @@ class DomainFeaturesHyperVVendorId {
 
   factory DomainFeaturesHyperVVendorId.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVVendorId(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

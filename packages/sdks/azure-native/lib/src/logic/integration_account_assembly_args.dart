@@ -29,19 +29,13 @@ class IntegrationAccountAssemblyArgs {
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
   IntegrationAccountAssemblyArgs({
-    pulumi.Output<String>? assemblyArtifactName,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<AssemblyProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      assemblyArtifactName = pulumi.Input.asOptionalInput<String>(assemblyArtifactName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<AssemblyProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.assemblyArtifactName,
+    required this.integrationAccountName,
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class IntegrationAccountAssemblyArgs {
 
   factory IntegrationAccountAssemblyArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAssemblyArgs(
-      assemblyArtifactName: map['assemblyArtifactName'] == null ? null : pulumi.Output.create<String>(map['assemblyArtifactName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<AssemblyProperties>(AssemblyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      assemblyArtifactName: map['assemblyArtifactName'] == null ? null : (map['assemblyArtifactName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (AssemblyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

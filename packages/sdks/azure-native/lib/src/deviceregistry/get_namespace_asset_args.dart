@@ -19,13 +19,10 @@ class GetNamespaceAssetArgs {
   /// [namespaceName] The name of the namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNamespaceAssetArgs({
-    required pulumi.Output<String> assetName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assetName = pulumi.Input.asInput<String>(assetName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.assetName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNamespaceAssetArgs {
 
   factory GetNamespaceAssetArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceAssetArgs(
-      assetName: pulumi.Output.create<String>(map['assetName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assetName: (map['assetName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

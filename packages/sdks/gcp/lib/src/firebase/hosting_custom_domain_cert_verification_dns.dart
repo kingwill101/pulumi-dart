@@ -7,12 +7,12 @@ import 'hosting_custom_domain_cert_verification_dns_discovered.dart';
 class HostingCustomDomainCertVerificationDns {
   /// (Output)
   /// The last time Hosting checked your CustomDomain's DNS records.
-  final String? checkTime;
+  final pulumi.Input<String>? checkTime;
   /// A text string to serve at the path.
-  final List<HostingCustomDomainCertVerificationDnsDesired>? desireds;
+  final pulumi.Input<List<HostingCustomDomainCertVerificationDnsDesired>>? desireds;
   /// Whether Hosting was able to find the required file contents on the
   /// specified path during its last check.
-  final List<HostingCustomDomainCertVerificationDnsDiscovered>? discovereds;
+  final pulumi.Input<List<HostingCustomDomainCertVerificationDnsDiscovered>>? discovereds;
 
   /// Creates a new [HostingCustomDomainCertVerificationDns].
   /// [checkTime] (Output)
@@ -27,16 +27,16 @@ class HostingCustomDomainCertVerificationDns {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'checkTime': ?checkTime,
-      'desireds': ?desireds == null ? null : pulumi.Input.encodeList<HostingCustomDomainCertVerificationDnsDesired, Map<String, dynamic>>(desireds!, (value) => value.toMap()),
-      'discovereds': ?discovereds == null ? null : pulumi.Input.encodeList<HostingCustomDomainCertVerificationDnsDiscovered, Map<String, dynamic>>(discovereds!, (value) => value.toMap()),
+      'desireds': ?pulumi.Input.mapOptionalInputValue<List<HostingCustomDomainCertVerificationDnsDesired>, List<Map<String, dynamic>>>(desireds, (value) => pulumi.Input.encodeList<HostingCustomDomainCertVerificationDnsDesired, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'discovereds': ?pulumi.Input.mapOptionalInputValue<List<HostingCustomDomainCertVerificationDnsDiscovered>, List<Map<String, dynamic>>>(discovereds, (value) => pulumi.Input.encodeList<HostingCustomDomainCertVerificationDnsDiscovered, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HostingCustomDomainCertVerificationDns.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainCertVerificationDns(
-      checkTime: map['checkTime'] == null ? null : map['checkTime'] as String,
-      desireds: map['desireds'] == null ? null : pulumi.Input.decodeList<HostingCustomDomainCertVerificationDnsDesired>(map['desireds'], (value) => HostingCustomDomainCertVerificationDnsDesired.fromMap((value as Map).cast<String, dynamic>())),
-      discovereds: map['discovereds'] == null ? null : pulumi.Input.decodeList<HostingCustomDomainCertVerificationDnsDiscovered>(map['discovereds'], (value) => HostingCustomDomainCertVerificationDnsDiscovered.fromMap((value as Map).cast<String, dynamic>())),
+      checkTime: map['checkTime'] == null ? null : (map['checkTime'] as String).input(),
+      desireds: map['desireds'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainCertVerificationDnsDesired>(map['desireds'], (value) => HostingCustomDomainCertVerificationDnsDesired.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discovereds: map['discovereds'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainCertVerificationDnsDiscovered>(map['discovereds'], (value) => HostingCustomDomainCertVerificationDnsDiscovered.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

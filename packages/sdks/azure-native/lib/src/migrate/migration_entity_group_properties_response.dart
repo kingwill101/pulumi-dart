@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Migration Entity Group Properties class.
 class MigrationEntityGroupPropertiesResponse {
   /// Display Name of the Workload.
-  final String applicationDisplayName;
+  final pulumi.Input<String> applicationDisplayName;
   /// Application id
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// Associated Assessment Id
-  final String? associatedAssessmentId;
+  final pulumi.Input<String>? associatedAssessmentId;
   /// associated Wave Id
-  final List<String>? associatedWaveIds;
+  final pulumi.Input<List<String>>? associatedWaveIds;
   /// Execution Start Date
-  final String executionStartDate;
+  final pulumi.Input<String> executionStartDate;
   /// Migration Entity Group Status
-  final String executionStatus;
+  final pulumi.Input<String> executionStatus;
   /// Migration path
-  final String? migrationPath;
+  final pulumi.Input<String>? migrationPath;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [MigrationEntityGroupPropertiesResponse].
   /// [applicationDisplayName] Display Name of the Workload.
@@ -55,14 +56,14 @@ class MigrationEntityGroupPropertiesResponse {
 
   factory MigrationEntityGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrationEntityGroupPropertiesResponse(
-      applicationDisplayName: map['applicationDisplayName'] as String,
-      applicationId: map['applicationId'] as String,
-      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : map['associatedAssessmentId'] as String,
-      associatedWaveIds: map['associatedWaveIds'] == null ? null : (map['associatedWaveIds'] as List).cast<String>(),
-      executionStartDate: map['executionStartDate'] as String,
-      executionStatus: map['executionStatus'] as String,
-      migrationPath: map['migrationPath'] == null ? null : map['migrationPath'] as String,
-      provisioningState: map['provisioningState'] as String,
+      applicationDisplayName: (map['applicationDisplayName'] as String).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : (map['associatedAssessmentId'] as String).input(),
+      associatedWaveIds: map['associatedWaveIds'] == null ? null : ((map['associatedWaveIds'] as List).cast<String>()).input(),
+      executionStartDate: (map['executionStartDate'] as String).input(),
+      executionStatus: (map['executionStatus'] as String).input(),
+      migrationPath: map['migrationPath'] == null ? null : (map['migrationPath'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

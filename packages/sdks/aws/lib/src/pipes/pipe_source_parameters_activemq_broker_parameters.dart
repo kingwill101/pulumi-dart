@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipe_source_parameters_activemq_broker_parameters_credentials.dart';
 
 class PipeSourceParametersActivemqBrokerParameters {
   /// The maximum number of records to include in each batch. Maximum value of 10000.
-  final int? batchSize;
+  final pulumi.Input<int>? batchSize;
   /// The credentials needed to access the resource. Detailed below.
-  final PipeSourceParametersActivemqBrokerParametersCredentials credentials;
+  final pulumi.Input<PipeSourceParametersActivemqBrokerParametersCredentials> credentials;
   /// The maximum length of a time to wait for events. Maximum value of 300.
-  final int? maximumBatchingWindowInSeconds;
+  final pulumi.Input<int>? maximumBatchingWindowInSeconds;
   /// The name of the destination queue to consume. Maximum length of 1000.
-  final String queueName;
+  final pulumi.Input<String> queueName;
 
   /// Creates a new [PipeSourceParametersActivemqBrokerParameters].
   /// [batchSize] The maximum number of records to include in each batch. Maximum value of 10000.
@@ -27,7 +28,7 @@ class PipeSourceParametersActivemqBrokerParameters {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'batchSize': ?batchSize,
-      'credentials': credentials.toMap(),
+      'credentials': pulumi.Input.mapInputValue<PipeSourceParametersActivemqBrokerParametersCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'maximumBatchingWindowInSeconds': ?maximumBatchingWindowInSeconds,
       'queueName': queueName,
     };
@@ -35,10 +36,10 @@ class PipeSourceParametersActivemqBrokerParameters {
 
   factory PipeSourceParametersActivemqBrokerParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersActivemqBrokerParameters(
-      batchSize: map['batchSize'] == null ? null : map['batchSize'] as int,
-      credentials: PipeSourceParametersActivemqBrokerParametersCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : map['maximumBatchingWindowInSeconds'] as int,
-      queueName: map['queueName'] as String,
+      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
+      credentials: (PipeSourceParametersActivemqBrokerParametersCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
+      queueName: (map['queueName'] as String).input(),
     );
   }
 }

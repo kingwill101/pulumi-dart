@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping {
-  final int captionChannel;
-  final String languageCode;
+  final pulumi.Input<int> captionChannel;
+  final pulumi.Input<String> languageCode;
   /// Human readable information to indicate captions available for players (eg. English, or Spanish).
-  final String languageDescription;
+  final pulumi.Input<String> languageDescription;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping].
   /// [captionChannel] Required.
@@ -27,9 +28,9 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptio
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping(
-      captionChannel: map['captionChannel'] as int,
-      languageCode: map['languageCode'] as String,
-      languageDescription: map['languageDescription'] as String,
+      captionChannel: (map['captionChannel'] as int).input(),
+      languageCode: (map['languageCode'] as String).input(),
+      languageDescription: (map['languageDescription'] as String).input(),
     );
   }
 }

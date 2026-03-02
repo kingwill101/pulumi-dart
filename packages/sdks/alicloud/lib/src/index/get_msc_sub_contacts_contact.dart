@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMscSubContactsContact {
   /// UID.
-  final String accountUid;
+  final pulumi.Input<String> accountUid;
   /// The first ID of the resource.
-  final String contactId;
+  final pulumi.Input<String> contactId;
   /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
-  final String contactName;
+  final pulumi.Input<String> contactName;
   /// The User's Contact Email Address.
-  final String email;
+  final pulumi.Input<String> email;
   /// The ID of the Contact.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates Whether the BGP Group Is the Account Itself.
-  final bool isAccount;
+  final pulumi.Input<bool> isAccount;
   /// Whether They Have Expired Or Not.
-  final bool isObsolete;
+  final pulumi.Input<bool> isObsolete;
   /// Email Validation for.
-  final bool isVerifiedEmail;
+  final pulumi.Input<bool> isVerifiedEmail;
   /// If the Phone Verification.
-  final bool isVerifiedMobile;
+  final pulumi.Input<bool> isVerifiedMobile;
   /// Last Verification Email Transmission Time.
-  final String lastEmailVerificationTimeStamp;
+  final pulumi.Input<String> lastEmailVerificationTimeStamp;
   /// The Pieces of Authentication SMS Sending Time.
-  final String lastMobileVerificationTimeStamp;
+  final pulumi.Input<String> lastMobileVerificationTimeStamp;
   /// The User's Telephone.
-  final String mobile;
+  final pulumi.Input<String> mobile;
   /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-  final String position;
+  final pulumi.Input<String> position;
 
   /// Creates a new [GetMscSubContactsContact].
   /// [accountUid] UID.
@@ -79,19 +80,19 @@ class GetMscSubContactsContact {
 
   factory GetMscSubContactsContact.fromMap(Map<String, dynamic> map) {
     return GetMscSubContactsContact(
-      accountUid: map['accountUid'] as String,
-      contactId: map['contactId'] as String,
-      contactName: map['contactName'] as String,
-      email: map['email'] as String,
-      id: map['id'] as String,
-      isAccount: map['isAccount'] as bool,
-      isObsolete: map['isObsolete'] as bool,
-      isVerifiedEmail: map['isVerifiedEmail'] as bool,
-      isVerifiedMobile: map['isVerifiedMobile'] as bool,
-      lastEmailVerificationTimeStamp: map['lastEmailVerificationTimeStamp'] as String,
-      lastMobileVerificationTimeStamp: map['lastMobileVerificationTimeStamp'] as String,
-      mobile: map['mobile'] as String,
-      position: map['position'] as String,
+      accountUid: (map['accountUid'] as String).input(),
+      contactId: (map['contactId'] as String).input(),
+      contactName: (map['contactName'] as String).input(),
+      email: (map['email'] as String).input(),
+      id: (map['id'] as String).input(),
+      isAccount: (map['isAccount'] as bool).input(),
+      isObsolete: (map['isObsolete'] as bool).input(),
+      isVerifiedEmail: (map['isVerifiedEmail'] as bool).input(),
+      isVerifiedMobile: (map['isVerifiedMobile'] as bool).input(),
+      lastEmailVerificationTimeStamp: (map['lastEmailVerificationTimeStamp'] as String).input(),
+      lastMobileVerificationTimeStamp: (map['lastMobileVerificationTimeStamp'] as String).input(),
+      mobile: (map['mobile'] as String).input(),
+      position: (map['position'] as String).input(),
     );
   }
 }

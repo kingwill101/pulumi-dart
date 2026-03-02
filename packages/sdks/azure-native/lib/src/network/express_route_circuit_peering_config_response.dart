@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the peering configuration.
 class ExpressRouteCircuitPeeringConfigResponse {
   /// The communities of bgp peering. Specified for microsoft peering.
-  final List<String>? advertisedCommunities;
+  final pulumi.Input<List<String>>? advertisedCommunities;
   /// The reference to AdvertisedPublicPrefixes.
-  final List<String>? advertisedPublicPrefixes;
+  final pulumi.Input<List<String>>? advertisedPublicPrefixes;
   /// The advertised public prefix state of the Peering resource.
-  final String advertisedPublicPrefixesState;
+  final pulumi.Input<String> advertisedPublicPrefixesState;
   /// The CustomerASN of the peering.
-  final int? customerASN;
+  final pulumi.Input<int>? customerASN;
   /// The legacy mode of the peering.
-  final int? legacyMode;
+  final pulumi.Input<int>? legacyMode;
   /// The RoutingRegistryName of the configuration.
-  final String? routingRegistryName;
+  final pulumi.Input<String>? routingRegistryName;
 
   /// Creates a new [ExpressRouteCircuitPeeringConfigResponse].
   /// [advertisedCommunities] The communities of bgp peering. Specified for microsoft peering.
@@ -45,12 +46,12 @@ class ExpressRouteCircuitPeeringConfigResponse {
 
   factory ExpressRouteCircuitPeeringConfigResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringConfigResponse(
-      advertisedCommunities: map['advertisedCommunities'] == null ? null : (map['advertisedCommunities'] as List).cast<String>(),
-      advertisedPublicPrefixes: map['advertisedPublicPrefixes'] == null ? null : (map['advertisedPublicPrefixes'] as List).cast<String>(),
-      advertisedPublicPrefixesState: map['advertisedPublicPrefixesState'] as String,
-      customerASN: map['customerASN'] == null ? null : map['customerASN'] as int,
-      legacyMode: map['legacyMode'] == null ? null : map['legacyMode'] as int,
-      routingRegistryName: map['routingRegistryName'] == null ? null : map['routingRegistryName'] as String,
+      advertisedCommunities: map['advertisedCommunities'] == null ? null : ((map['advertisedCommunities'] as List).cast<String>()).input(),
+      advertisedPublicPrefixes: map['advertisedPublicPrefixes'] == null ? null : ((map['advertisedPublicPrefixes'] as List).cast<String>()).input(),
+      advertisedPublicPrefixesState: (map['advertisedPublicPrefixesState'] as String).input(),
+      customerASN: map['customerASN'] == null ? null : (map['customerASN'] as int).input(),
+      legacyMode: map['legacyMode'] == null ? null : (map['legacyMode'] as int).input(),
+      routingRegistryName: map['routingRegistryName'] == null ? null : (map['routingRegistryName'] as String).input(),
     );
   }
 }

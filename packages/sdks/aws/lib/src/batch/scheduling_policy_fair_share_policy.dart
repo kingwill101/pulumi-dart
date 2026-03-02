@@ -5,10 +5,10 @@ import 'scheduling_policy_fair_share_policy_share_distribution.dart';
 
 class SchedulingPolicyFairSharePolicy {
   /// A value used to reserve some of the available maximum vCPU for fair share identifiers that have not yet been used. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html).
-  final int? computeReservation;
-  final int? shareDecaySeconds;
+  final pulumi.Input<int>? computeReservation;
+  final pulumi.Input<int>? shareDecaySeconds;
   /// One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The `share_distribution` block is documented below.
-  final List<SchedulingPolicyFairSharePolicyShareDistribution>? shareDistributions;
+  final pulumi.Input<List<SchedulingPolicyFairSharePolicyShareDistribution>>? shareDistributions;
 
   /// Creates a new [SchedulingPolicyFairSharePolicy].
   /// [computeReservation] A value used to reserve some of the available maximum vCPU for fair share identifiers that have not yet been used. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html).
@@ -24,15 +24,15 @@ class SchedulingPolicyFairSharePolicy {
     return <String, dynamic>{
       'computeReservation': ?computeReservation,
       'shareDecaySeconds': ?shareDecaySeconds,
-      'shareDistributions': ?shareDistributions == null ? null : pulumi.Input.encodeList<SchedulingPolicyFairSharePolicyShareDistribution, Map<String, dynamic>>(shareDistributions!, (value) => value.toMap()),
+      'shareDistributions': ?pulumi.Input.mapOptionalInputValue<List<SchedulingPolicyFairSharePolicyShareDistribution>, List<Map<String, dynamic>>>(shareDistributions, (value) => pulumi.Input.encodeList<SchedulingPolicyFairSharePolicyShareDistribution, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SchedulingPolicyFairSharePolicy.fromMap(Map<String, dynamic> map) {
     return SchedulingPolicyFairSharePolicy(
-      computeReservation: map['computeReservation'] == null ? null : map['computeReservation'] as int,
-      shareDecaySeconds: map['shareDecaySeconds'] == null ? null : map['shareDecaySeconds'] as int,
-      shareDistributions: map['shareDistributions'] == null ? null : pulumi.Input.decodeList<SchedulingPolicyFairSharePolicyShareDistribution>(map['shareDistributions'], (value) => SchedulingPolicyFairSharePolicyShareDistribution.fromMap((value as Map).cast<String, dynamic>())),
+      computeReservation: map['computeReservation'] == null ? null : (map['computeReservation'] as int).input(),
+      shareDecaySeconds: map['shareDecaySeconds'] == null ? null : (map['shareDecaySeconds'] as int).input(),
+      shareDistributions: map['shareDistributions'] == null ? null : (pulumi.Input.decodeList<SchedulingPolicyFairSharePolicyShareDistribution>(map['shareDistributions'], (value) => SchedulingPolicyFairSharePolicyShareDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

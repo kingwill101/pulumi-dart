@@ -39,25 +39,16 @@ class VpcNatGatewayArgs {
   /// [udpTimeoutSeconds] The egress timeout value for UDP connections of the VPC NAT Gateway.
   /// [vpcs] The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
   VpcNatGatewayArgs({
-    pulumi.Output<int>? icmpTimeoutSeconds,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    required pulumi.Output<String> region,
-    required pulumi.Output<int> size,
-    pulumi.Output<int>? tcpTimeoutSeconds,
-    required pulumi.Output<String> type,
-    pulumi.Output<int>? udpTimeoutSeconds,
-    required pulumi.Output<List<VpcNatGatewayVpc>> vpcs,
-  }) :
-      icmpTimeoutSeconds = pulumi.Input.asOptionalInput<int>(icmpTimeoutSeconds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asInput<String>(region),
-      size = pulumi.Input.asInput<int>(size),
-      tcpTimeoutSeconds = pulumi.Input.asOptionalInput<int>(tcpTimeoutSeconds),
-      type = pulumi.Input.asInput<String>(type),
-      udpTimeoutSeconds = pulumi.Input.asOptionalInput<int>(udpTimeoutSeconds),
-      vpcs = pulumi.Input.asInput<List<VpcNatGatewayVpc>>(vpcs);
+    this.icmpTimeoutSeconds,
+    this.name,
+    this.projectId,
+    required this.region,
+    required this.size,
+    this.tcpTimeoutSeconds,
+    required this.type,
+    this.udpTimeoutSeconds,
+    required this.vpcs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class VpcNatGatewayArgs {
 
   factory VpcNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayArgs(
-      icmpTimeoutSeconds: map['icmpTimeoutSeconds'] == null ? null : pulumi.Output.create<int>(map['icmpTimeoutSeconds'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      size: pulumi.Output.create<int>(map['size'] as int),
-      tcpTimeoutSeconds: map['tcpTimeoutSeconds'] == null ? null : pulumi.Output.create<int>(map['tcpTimeoutSeconds'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      udpTimeoutSeconds: map['udpTimeoutSeconds'] == null ? null : pulumi.Output.create<int>(map['udpTimeoutSeconds'] as int),
-      vpcs: pulumi.Output.create<List<VpcNatGatewayVpc>>(pulumi.Input.decodeList<VpcNatGatewayVpc>(map['vpcs'], (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()))),
+      icmpTimeoutSeconds: map['icmpTimeoutSeconds'] == null ? null : (map['icmpTimeoutSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: (map['region'] as String).input(),
+      size: (map['size'] as int).input(),
+      tcpTimeoutSeconds: map['tcpTimeoutSeconds'] == null ? null : (map['tcpTimeoutSeconds'] as int).input(),
+      type: (map['type'] as String).input(),
+      udpTimeoutSeconds: map['udpTimeoutSeconds'] == null ? null : (map['udpTimeoutSeconds'] as int).input(),
+      vpcs: (pulumi.Input.decodeList<VpcNatGatewayVpc>(map['vpcs'], (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

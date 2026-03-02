@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateCertificatePolicyIssuerParameter {
   /// Specifies the name of the Key Vault Certificate.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetCertificateCertificatePolicyIssuerParameter].
   /// [name] Specifies the name of the Key Vault Certificate.
@@ -19,7 +20,7 @@ class GetCertificateCertificatePolicyIssuerParameter {
 
   factory GetCertificateCertificatePolicyIssuerParameter.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyIssuerParameter(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

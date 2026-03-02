@@ -27,19 +27,13 @@ class FrameworkShareState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of the share request.
   FrameworkShareState({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? destinationAccount,
-    pulumi.Output<String>? destinationRegion,
-    pulumi.Output<String>? frameworkId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      destinationAccount = pulumi.Input.asOptionalInput<String>(destinationAccount),
-      destinationRegion = pulumi.Input.asOptionalInput<String>(destinationRegion),
-      frameworkId = pulumi.Input.asOptionalInput<String>(frameworkId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.comment,
+    this.destinationAccount,
+    this.destinationRegion,
+    this.frameworkId,
+    this.region,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class FrameworkShareState {
 
   factory FrameworkShareState.fromMap(Map<String, dynamic> map) {
     return FrameworkShareState(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      destinationAccount: map['destinationAccount'] == null ? null : pulumi.Output.create<String>(map['destinationAccount'] as String),
-      destinationRegion: map['destinationRegion'] == null ? null : pulumi.Output.create<String>(map['destinationRegion'] as String),
-      frameworkId: map['frameworkId'] == null ? null : pulumi.Output.create<String>(map['frameworkId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      destinationAccount: map['destinationAccount'] == null ? null : (map['destinationAccount'] as String).input(),
+      destinationRegion: map['destinationRegion'] == null ? null : (map['destinationRegion'] as String).input(),
+      frameworkId: map['frameworkId'] == null ? null : (map['frameworkId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -47,29 +47,18 @@ class RemediationConfigurationArgs {
   /// [targetType] Type of the target. Target executes remediation. For example, SSM document.
   /// [targetVersion] Version of the target. For example, version of the SSM document
   RemediationConfigurationArgs({
-    pulumi.Output<bool>? automatic,
-    required pulumi.Output<String> configRuleName,
-    pulumi.Output<RemediationConfigurationExecutionControls>? executionControls,
-    pulumi.Output<int>? maximumAutomaticAttempts,
-    pulumi.Output<List<RemediationConfigurationParameter>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<int>? retryAttemptSeconds,
-    required pulumi.Output<String> targetId,
-    required pulumi.Output<String> targetType,
-    pulumi.Output<String>? targetVersion,
-  }) :
-      automatic = pulumi.Input.asOptionalInput<bool>(automatic),
-      configRuleName = pulumi.Input.asInput<String>(configRuleName),
-      executionControls = pulumi.Input.asOptionalInput<RemediationConfigurationExecutionControls>(executionControls),
-      maximumAutomaticAttempts = pulumi.Input.asOptionalInput<int>(maximumAutomaticAttempts),
-      parameters = pulumi.Input.asOptionalInput<List<RemediationConfigurationParameter>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      retryAttemptSeconds = pulumi.Input.asOptionalInput<int>(retryAttemptSeconds),
-      targetId = pulumi.Input.asInput<String>(targetId),
-      targetType = pulumi.Input.asInput<String>(targetType),
-      targetVersion = pulumi.Input.asOptionalInput<String>(targetVersion);
+    this.automatic,
+    required this.configRuleName,
+    this.executionControls,
+    this.maximumAutomaticAttempts,
+    this.parameters,
+    this.region,
+    this.resourceType,
+    this.retryAttemptSeconds,
+    required this.targetId,
+    required this.targetType,
+    this.targetVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class RemediationConfigurationArgs {
 
   factory RemediationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationArgs(
-      automatic: map['automatic'] == null ? null : pulumi.Output.create<bool>(map['automatic'] as bool),
-      configRuleName: pulumi.Output.create<String>(map['configRuleName'] as String),
-      executionControls: map['executionControls'] == null ? null : pulumi.Output.create<RemediationConfigurationExecutionControls>(RemediationConfigurationExecutionControls.fromMap((map['executionControls'] as Map).cast<String, dynamic>())),
-      maximumAutomaticAttempts: map['maximumAutomaticAttempts'] == null ? null : pulumi.Output.create<int>(map['maximumAutomaticAttempts'] as int),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<RemediationConfigurationParameter>>(pulumi.Input.decodeList<RemediationConfigurationParameter>(map['parameters'], (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      retryAttemptSeconds: map['retryAttemptSeconds'] == null ? null : pulumi.Output.create<int>(map['retryAttemptSeconds'] as int),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
-      targetVersion: map['targetVersion'] == null ? null : pulumi.Output.create<String>(map['targetVersion'] as String),
+      automatic: map['automatic'] == null ? null : (map['automatic'] as bool).input(),
+      configRuleName: (map['configRuleName'] as String).input(),
+      executionControls: map['executionControls'] == null ? null : (RemediationConfigurationExecutionControls.fromMap((map['executionControls'] as Map).cast<String, dynamic>())).input(),
+      maximumAutomaticAttempts: map['maximumAutomaticAttempts'] == null ? null : (map['maximumAutomaticAttempts'] as int).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RemediationConfigurationParameter>(map['parameters'], (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      retryAttemptSeconds: map['retryAttemptSeconds'] == null ? null : (map['retryAttemptSeconds'] as int).input(),
+      targetId: (map['targetId'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
+      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion'] as String).input(),
     );
   }
 }

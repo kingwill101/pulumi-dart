@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for overrides when upgrading a cluster.
 class UpgradeOverrideSettingsResponse {
   /// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
-  final bool? forceUpgrade;
+  final pulumi.Input<bool>? forceUpgrade;
   /// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-  final String? until;
+  final pulumi.Input<String>? until;
 
   /// Creates a new [UpgradeOverrideSettingsResponse].
   /// [forceUpgrade] Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
@@ -25,8 +26,8 @@ class UpgradeOverrideSettingsResponse {
 
   factory UpgradeOverrideSettingsResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeOverrideSettingsResponse(
-      forceUpgrade: map['forceUpgrade'] == null ? null : map['forceUpgrade'] as bool,
-      until: map['until'] == null ? null : map['until'] as String,
+      forceUpgrade: map['forceUpgrade'] == null ? null : (map['forceUpgrade'] as bool).input(),
+      until: map['until'] == null ? null : (map['until'] as String).input(),
     );
   }
 }

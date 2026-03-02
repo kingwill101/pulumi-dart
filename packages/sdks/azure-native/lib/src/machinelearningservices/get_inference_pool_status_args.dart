@@ -19,13 +19,10 @@ class GetInferencePoolStatusArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   GetInferencePoolStatusArgs({
-    required pulumi.Output<String> inferencePoolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      inferencePoolName = pulumi.Input.asInput<String>(inferencePoolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.inferencePoolName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetInferencePoolStatusArgs {
 
   factory GetInferencePoolStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetInferencePoolStatusArgs(
-      inferencePoolName: pulumi.Output.create<String>(map['inferencePoolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      inferencePoolName: (map['inferencePoolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

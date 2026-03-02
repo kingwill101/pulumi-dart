@@ -17,11 +17,9 @@ class SizeConstraintSetArgs {
   /// [name] Name or description of the Size Constraint Set.
   /// [sizeConstraints] Parts of web requests that you want to inspect the size of.
   SizeConstraintSetArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SizeConstraintSetSizeConstraint>>? sizeConstraints,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sizeConstraints = pulumi.Input.asOptionalInput<List<SizeConstraintSetSizeConstraint>>(sizeConstraints);
+    this.name,
+    this.sizeConstraints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class SizeConstraintSetArgs {
 
   factory SizeConstraintSetArgs.fromMap(Map<String, dynamic> map) {
     return SizeConstraintSetArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sizeConstraints: map['sizeConstraints'] == null ? null : pulumi.Output.create<List<SizeConstraintSetSizeConstraint>>(pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints'], (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>()))),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sizeConstraints: map['sizeConstraints'] == null ? null : (pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(map['sizeConstraints'], (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

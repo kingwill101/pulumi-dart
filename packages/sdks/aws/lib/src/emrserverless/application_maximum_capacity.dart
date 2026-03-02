@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationMaximumCapacity {
   /// The maximum allowed CPU for an application.
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// The maximum allowed disk for an application.
-  final String? disk;
+  final pulumi.Input<String>? disk;
   /// The maximum allowed resources for an application.
-  final String memory;
+  final pulumi.Input<String> memory;
 
   /// Creates a new [ApplicationMaximumCapacity].
   /// [cpu] The maximum allowed CPU for an application.
@@ -29,9 +30,9 @@ class ApplicationMaximumCapacity {
 
   factory ApplicationMaximumCapacity.fromMap(Map<String, dynamic> map) {
     return ApplicationMaximumCapacity(
-      cpu: map['cpu'] as String,
-      disk: map['disk'] == null ? null : map['disk'] as String,
-      memory: map['memory'] as String,
+      cpu: (map['cpu'] as String).input(),
+      disk: map['disk'] == null ? null : (map['disk'] as String).input(),
+      memory: (map['memory'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetReservationComputeBetaArgs {
   /// [reservation] Required.
   /// [zone] Required.
   GetReservationComputeBetaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> reservation,
-    required pulumi.Output<String> zone,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservation = pulumi.Input.asInput<String>(reservation),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.project,
+    required this.reservation,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetReservationComputeBetaArgs {
 
   factory GetReservationComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationComputeBetaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservation: pulumi.Output.create<String>(map['reservation'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservation: (map['reservation'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

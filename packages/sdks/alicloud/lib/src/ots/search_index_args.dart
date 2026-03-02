@@ -27,17 +27,12 @@ class SearchIndexArgs {
   /// [tableName] The name of the OTS table. If changed, a new table would be created.
   /// [timeToLive] The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
   SearchIndexArgs({
-    required pulumi.Output<String> indexName,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<List<SearchIndexSchema>> schemas,
-    required pulumi.Output<String> tableName,
-    pulumi.Output<int>? timeToLive,
-  }) :
-      indexName = pulumi.Input.asInput<String>(indexName),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      schemas = pulumi.Input.asInput<List<SearchIndexSchema>>(schemas),
-      tableName = pulumi.Input.asInput<String>(tableName),
-      timeToLive = pulumi.Input.asOptionalInput<int>(timeToLive);
+    required this.indexName,
+    required this.instanceName,
+    required this.schemas,
+    required this.tableName,
+    this.timeToLive,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class SearchIndexArgs {
 
   factory SearchIndexArgs.fromMap(Map<String, dynamic> map) {
     return SearchIndexArgs(
-      indexName: pulumi.Output.create<String>(map['indexName'] as String),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      schemas: pulumi.Output.create<List<SearchIndexSchema>>(pulumi.Input.decodeList<SearchIndexSchema>(map['schemas'], (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
-      timeToLive: map['timeToLive'] == null ? null : pulumi.Output.create<int>(map['timeToLive'] as int),
+      indexName: (map['indexName'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      schemas: (pulumi.Input.decodeList<SearchIndexSchema>(map['schemas'], (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableName: (map['tableName'] as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
     );
   }
 }

@@ -9,23 +9,23 @@ import 'google_cloud_contactcenterinsights_v1_sentiment_data_response.dart';
 /// A segment of a full transcript.
 class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse {
   /// For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono.
-  final int channelTag;
+  final pulumi.Input<int> channelTag;
   /// A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates that the value is unset.
-  final double confidence;
+  final pulumi.Input<double> confidence;
   /// CCAI metadata relating to the current transcript segment.
-  final GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse dialogflowSegmentMetadata;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse> dialogflowSegmentMetadata;
   /// The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
-  final String languageCode;
+  final pulumi.Input<String> languageCode;
   /// The time that the message occurred, if provided.
-  final String messageTime;
+  final pulumi.Input<String> messageTime;
   /// The participant of this segment.
-  final GoogleCloudContactcenterinsightsV1ConversationParticipantResponse segmentParticipant;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1ConversationParticipantResponse> segmentParticipant;
   /// The sentiment for this transcript segment.
-  final GoogleCloudContactcenterinsightsV1SentimentDataResponse sentiment;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1SentimentDataResponse> sentiment;
   /// The text of this segment.
-  final String text;
+  final pulumi.Input<String> text;
   /// A list of the word-specific information for each word in the segment.
-  final List<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse> words;
+  final pulumi.Input<List<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse>> words;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse].
   /// [channelTag] For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono.
@@ -53,27 +53,27 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
     return <String, dynamic>{
       'channelTag': channelTag,
       'confidence': confidence,
-      'dialogflowSegmentMetadata': dialogflowSegmentMetadata.toMap(),
+      'dialogflowSegmentMetadata': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse, Map<String, dynamic>>(dialogflowSegmentMetadata, (value) => value.toMap()),
       'languageCode': languageCode,
       'messageTime': messageTime,
-      'segmentParticipant': segmentParticipant.toMap(),
-      'sentiment': sentiment.toMap(),
+      'segmentParticipant': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1ConversationParticipantResponse, Map<String, dynamic>>(segmentParticipant, (value) => value.toMap()),
+      'sentiment': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1SentimentDataResponse, Map<String, dynamic>>(sentiment, (value) => value.toMap()),
       'text': text,
-      'words': pulumi.Input.encodeList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse, Map<String, dynamic>>(words, (value) => value.toMap()),
+      'words': pulumi.Input.mapInputValue<List<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse>, List<Map<String, dynamic>>>(words, (value) => pulumi.Input.encodeList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse(
-      channelTag: map['channelTag'] as int,
-      confidence: map['confidence'] as double,
-      dialogflowSegmentMetadata: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.fromMap((map['dialogflowSegmentMetadata'] as Map).cast<String, dynamic>()),
-      languageCode: map['languageCode'] as String,
-      messageTime: map['messageTime'] as String,
-      segmentParticipant: GoogleCloudContactcenterinsightsV1ConversationParticipantResponse.fromMap((map['segmentParticipant'] as Map).cast<String, dynamic>()),
-      sentiment: GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap((map['sentiment'] as Map).cast<String, dynamic>()),
-      text: map['text'] as String,
-      words: pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse>(map['words'], (value) => GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      channelTag: (map['channelTag'] as int).input(),
+      confidence: (map['confidence'] as double).input(),
+      dialogflowSegmentMetadata: (GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.fromMap((map['dialogflowSegmentMetadata'] as Map).cast<String, dynamic>())).input(),
+      languageCode: (map['languageCode'] as String).input(),
+      messageTime: (map['messageTime'] as String).input(),
+      segmentParticipant: (GoogleCloudContactcenterinsightsV1ConversationParticipantResponse.fromMap((map['segmentParticipant'] as Map).cast<String, dynamic>())).input(),
+      sentiment: (GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap((map['sentiment'] as Map).cast<String, dynamic>())).input(),
+      text: (map['text'] as String).input(),
+      words: (pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse>(map['words'], (value) => GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

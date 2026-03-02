@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableLocalSecondaryIndex {
   /// Name of the index
-  final String name;
+  final pulumi.Input<String> name;
   /// Only required with `INCLUDE` as a projection type; a list of attributes to project into the index. These do not need to be defined as attributes on the table.
-  final List<String>? nonKeyAttributes;
+  final pulumi.Input<List<String>>? nonKeyAttributes;
   /// One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects  into the index only the table and index hash_key and sort_key attributes ,  `INCLUDE` projects into the index all of the attributes that are defined in `non_key_attributes` in addition to the attributes that that`KEYS_ONLY` project.
-  final String projectionType;
+  final pulumi.Input<String> projectionType;
   /// Name of the range key.
-  final String rangeKey;
+  final pulumi.Input<String> rangeKey;
 
   /// Creates a new [TableLocalSecondaryIndex].
   /// [name] Name of the index
@@ -34,10 +35,10 @@ class TableLocalSecondaryIndex {
 
   factory TableLocalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return TableLocalSecondaryIndex(
-      name: map['name'] as String,
-      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : (map['nonKeyAttributes'] as List).cast<String>(),
-      projectionType: map['projectionType'] as String,
-      rangeKey: map['rangeKey'] as String,
+      name: (map['name'] as String).input(),
+      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : ((map['nonKeyAttributes'] as List).cast<String>()).input(),
+      projectionType: (map['projectionType'] as String).input(),
+      rangeKey: (map['rangeKey'] as String).input(),
     );
   }
 }

@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountsAccount {
   /// The Alibaba Cloud account ID of the member.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// (Available since v1.264.0) The deletion status of the member.
-  final String deletionStatus;
+  final pulumi.Input<String> deletionStatus;
   /// The display name of the member.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The ID of the folder.
-  final String folderId;
+  final pulumi.Input<String> folderId;
   /// The ID of the Account.
-  final String id;
+  final pulumi.Input<String> id;
   /// The way in which the member joins the resource directory.
-  final String joinMethod;
+  final pulumi.Input<String> joinMethod;
   /// The time when the member joined the resource directory.
-  final String joinTime;
+  final pulumi.Input<String> joinTime;
   /// The time when the member was modified.
-  final String modifyTime;
+  final pulumi.Input<String> modifyTime;
   /// (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
-  final String payerAccountId;
+  final pulumi.Input<String> payerAccountId;
   /// The ID of the resource directory.
-  final String resourceDirectoryId;
+  final pulumi.Input<String> resourceDirectoryId;
   /// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The type of the member.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAccountsAccount].
   /// [accountId] The Alibaba Cloud account ID of the member.
@@ -84,20 +85,20 @@ class GetAccountsAccount {
 
   factory GetAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccount(
-      accountId: map['accountId'] as String,
-      accountName: map['accountName'] as String,
-      deletionStatus: map['deletionStatus'] as String,
-      displayName: map['displayName'] as String,
-      folderId: map['folderId'] as String,
-      id: map['id'] as String,
-      joinMethod: map['joinMethod'] as String,
-      joinTime: map['joinTime'] as String,
-      modifyTime: map['modifyTime'] as String,
-      payerAccountId: map['payerAccountId'] as String,
-      resourceDirectoryId: map['resourceDirectoryId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      accountId: (map['accountId'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      deletionStatus: (map['deletionStatus'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      id: (map['id'] as String).input(),
+      joinMethod: (map['joinMethod'] as String).input(),
+      joinTime: (map['joinTime'] as String).input(),
+      modifyTime: (map['modifyTime'] as String).input(),
+      payerAccountId: (map['payerAccountId'] as String).input(),
+      resourceDirectoryId: (map['resourceDirectoryId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

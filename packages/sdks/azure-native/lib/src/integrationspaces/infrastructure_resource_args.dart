@@ -25,17 +25,12 @@ class InfrastructureResourceArgs {
   /// [resourceType] The type of the infrastructure resource.
   /// [spaceName] The name of the space
   InfrastructureResourceArgs({
-    pulumi.Output<String>? infrastructureResourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<String> spaceName,
-  }) :
-      infrastructureResourceName = pulumi.Input.asOptionalInput<String>(infrastructureResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      spaceName = pulumi.Input.asInput<String>(spaceName);
+    this.infrastructureResourceName,
+    required this.resourceGroupName,
+    required this.resourceId,
+    required this.resourceType,
+    required this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class InfrastructureResourceArgs {
 
   factory InfrastructureResourceArgs.fromMap(Map<String, dynamic> map) {
     return InfrastructureResourceArgs(
-      infrastructureResourceName: map['infrastructureResourceName'] == null ? null : pulumi.Output.create<String>(map['infrastructureResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
+      infrastructureResourceName: map['infrastructureResourceName'] == null ? null : (map['infrastructureResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
     );
   }
 }

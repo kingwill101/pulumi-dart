@@ -20,13 +20,10 @@ class GetGatewayHostNameConfigurationArgs {
   /// [gatewayName] The name of the API Management Gateway.
   /// [name] The name of the API Management Gateway Host Name Configuration.
   GetGatewayHostNameConfigurationArgs({
-    required pulumi.Output<String> apiManagementId,
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> name,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      name = pulumi.Input.asInput<String>(name);
+    required this.apiManagementId,
+    required this.gatewayName,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetGatewayHostNameConfigurationArgs {
 
   factory GetGatewayHostNameConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayHostNameConfigurationArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      gatewayName: (map['gatewayName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

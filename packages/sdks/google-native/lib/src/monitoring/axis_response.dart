@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A chart axis.
 class AxisResponse {
   /// The label of the axis.
-  final String label;
+  final pulumi.Input<String> label;
   /// The axis scale. By default, a linear scale is used.
-  final String scale;
+  final pulumi.Input<String> scale;
 
   /// Creates a new [AxisResponse].
   /// [label] The label of the axis.
@@ -25,8 +26,8 @@ class AxisResponse {
 
   factory AxisResponse.fromMap(Map<String, dynamic> map) {
     return AxisResponse(
-      label: map['label'] as String,
-      scale: map['scale'] as String,
+      label: (map['label'] as String).input(),
+      scale: (map['scale'] as String).input(),
     );
   }
 }

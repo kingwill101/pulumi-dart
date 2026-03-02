@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMeshesMeshEndpoint {
   /// The internal address of the API Server.
-  final String intranetApiServerEndpoint;
+  final pulumi.Input<String> intranetApiServerEndpoint;
   /// The internal address of the Istio Pilot.
-  final String intranetPilotEndpoint;
+  final pulumi.Input<String> intranetPilotEndpoint;
   /// The public address of the API Server.
-  final String publicApiServerEndpoint;
+  final pulumi.Input<String> publicApiServerEndpoint;
   /// The public address of the Istio Pilot.
-  final String publicPilotEndpoint;
+  final pulumi.Input<String> publicPilotEndpoint;
 
   /// Creates a new [GetServiceMeshesMeshEndpoint].
   /// [intranetApiServerEndpoint] The internal address of the API Server.
@@ -34,10 +35,10 @@ class GetServiceMeshesMeshEndpoint {
 
   factory GetServiceMeshesMeshEndpoint.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshEndpoint(
-      intranetApiServerEndpoint: map['intranetApiServerEndpoint'] as String,
-      intranetPilotEndpoint: map['intranetPilotEndpoint'] as String,
-      publicApiServerEndpoint: map['publicApiServerEndpoint'] as String,
-      publicPilotEndpoint: map['publicPilotEndpoint'] as String,
+      intranetApiServerEndpoint: (map['intranetApiServerEndpoint'] as String).input(),
+      intranetPilotEndpoint: (map['intranetPilotEndpoint'] as String).input(),
+      publicApiServerEndpoint: (map['publicApiServerEndpoint'] as String).input(),
+      publicPilotEndpoint: (map['publicPilotEndpoint'] as String).input(),
     );
   }
 }

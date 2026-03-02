@@ -36,19 +36,13 @@ class InboundSamlConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [spConfig] SAML SP (Service Provider) configuration when the project acts as the relying party to receive
   InboundSamlConfigArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<InboundSamlConfigIdpConfig> idpConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<InboundSamlConfigSpConfig> spConfig,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      idpConfig = pulumi.Input.asInput<InboundSamlConfigIdpConfig>(idpConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spConfig = pulumi.Input.asInput<InboundSamlConfigSpConfig>(spConfig);
+    required this.displayName,
+    this.enabled,
+    required this.idpConfig,
+    this.name,
+    this.project,
+    required this.spConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,12 +57,12 @@ class InboundSamlConfigArgs {
 
   factory InboundSamlConfigArgs.fromMap(Map<String, dynamic> map) {
     return InboundSamlConfigArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      idpConfig: pulumi.Output.create<InboundSamlConfigIdpConfig>(InboundSamlConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spConfig: pulumi.Output.create<InboundSamlConfigSpConfig>(InboundSamlConfigSpConfig.fromMap((map['spConfig'] as Map).cast<String, dynamic>())),
+      displayName: (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      idpConfig: (InboundSamlConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spConfig: (InboundSamlConfigSpConfig.fromMap((map['spConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

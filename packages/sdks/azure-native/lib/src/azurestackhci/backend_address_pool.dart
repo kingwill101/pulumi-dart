@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_address_pool_properties.dart';
 
 /// Backend address pool for the load balancer.
 class BackendAddressPool {
   /// name of the backend pool.
-  final String name;
+  final pulumi.Input<String> name;
   /// properties for the backend pool
-  final BackendAddressPoolProperties properties;
+  final pulumi.Input<BackendAddressPoolProperties> properties;
 
   /// Creates a new [BackendAddressPool].
   /// [name] name of the backend pool.
@@ -20,14 +21,14 @@ class BackendAddressPool {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<BackendAddressPoolProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory BackendAddressPool.fromMap(Map<String, dynamic> map) {
     return BackendAddressPool(
-      name: map['name'] as String,
-      properties: BackendAddressPoolProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      properties: (BackendAddressPoolProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

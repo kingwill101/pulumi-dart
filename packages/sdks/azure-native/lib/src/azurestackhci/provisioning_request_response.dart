@@ -9,17 +9,17 @@ import 'user_details_response.dart';
 /// Represents a provisioning request.
 class ProvisioningRequestResponse {
   /// Base64 encoded custom configuration for CAPI to use
-  final String? customConfiguration;
+  final pulumi.Input<String>? customConfiguration;
   /// Device configuration.
-  final TargetDeviceConfigurationResponse? deviceConfiguration;
+  final pulumi.Input<TargetDeviceConfigurationResponse>? deviceConfiguration;
   /// Onboarding configuration.
-  final OnboardingConfigurationResponse? onboardingConfiguration;
+  final pulumi.Input<OnboardingConfigurationResponse>? onboardingConfiguration;
   /// Operating system profile.
-  final OsProvisionProfileResponse osProfile;
+  final pulumi.Input<OsProvisionProfileResponse> osProfile;
   /// Target operating system to support polymorphic resource.
-  final String target;
+  final pulumi.Input<String> target;
   /// User configuration.
-  final List<UserDetailsResponse>? userDetails;
+  final pulumi.Input<List<UserDetailsResponse>>? userDetails;
 
   /// Creates a new [ProvisioningRequestResponse].
   /// [customConfiguration] Base64 encoded custom configuration for CAPI to use
@@ -40,22 +40,22 @@ class ProvisioningRequestResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customConfiguration': ?customConfiguration,
-      'deviceConfiguration': ?deviceConfiguration == null ? null : deviceConfiguration!.toMap(),
-      'onboardingConfiguration': ?onboardingConfiguration == null ? null : onboardingConfiguration!.toMap(),
-      'osProfile': osProfile.toMap(),
+      'deviceConfiguration': ?pulumi.Input.mapOptionalInputValue<TargetDeviceConfigurationResponse, Map<String, dynamic>>(deviceConfiguration, (value) => value.toMap()),
+      'onboardingConfiguration': ?pulumi.Input.mapOptionalInputValue<OnboardingConfigurationResponse, Map<String, dynamic>>(onboardingConfiguration, (value) => value.toMap()),
+      'osProfile': pulumi.Input.mapInputValue<OsProvisionProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
       'target': target,
-      'userDetails': ?userDetails == null ? null : pulumi.Input.encodeList<UserDetailsResponse, Map<String, dynamic>>(userDetails!, (value) => value.toMap()),
+      'userDetails': ?pulumi.Input.mapOptionalInputValue<List<UserDetailsResponse>, List<Map<String, dynamic>>>(userDetails, (value) => pulumi.Input.encodeList<UserDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ProvisioningRequestResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningRequestResponse(
-      customConfiguration: map['customConfiguration'] == null ? null : map['customConfiguration'] as String,
-      deviceConfiguration: map['deviceConfiguration'] == null ? null : TargetDeviceConfigurationResponse.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>()),
-      onboardingConfiguration: map['onboardingConfiguration'] == null ? null : OnboardingConfigurationResponse.fromMap((map['onboardingConfiguration'] as Map).cast<String, dynamic>()),
-      osProfile: OsProvisionProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      target: map['target'] as String,
-      userDetails: map['userDetails'] == null ? null : pulumi.Input.decodeList<UserDetailsResponse>(map['userDetails'], (value) => UserDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      customConfiguration: map['customConfiguration'] == null ? null : (map['customConfiguration'] as String).input(),
+      deviceConfiguration: map['deviceConfiguration'] == null ? null : (TargetDeviceConfigurationResponse.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      onboardingConfiguration: map['onboardingConfiguration'] == null ? null : (OnboardingConfigurationResponse.fromMap((map['onboardingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      osProfile: (OsProvisionProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      target: (map['target'] as String).input(),
+      userDetails: map['userDetails'] == null ? null : (pulumi.Input.decodeList<UserDetailsResponse>(map['userDetails'], (value) => UserDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

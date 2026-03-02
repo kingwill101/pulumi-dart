@@ -21,13 +21,10 @@ class IAMAuditConfigArgs {
   /// [project] The project id of the target project. This is not
   /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   IAMAuditConfigArgs({
-    required pulumi.Output<List<IAMAuditConfigAuditLogConfig>> auditLogConfigs,
-    required pulumi.Output<String> project,
-    required pulumi.Output<String> service,
-  }) :
-      auditLogConfigs = pulumi.Input.asInput<List<IAMAuditConfigAuditLogConfig>>(auditLogConfigs),
-      project = pulumi.Input.asInput<String>(project),
-      service = pulumi.Input.asInput<String>(service);
+    required this.auditLogConfigs,
+    required this.project,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class IAMAuditConfigArgs {
 
   factory IAMAuditConfigArgs.fromMap(Map<String, dynamic> map) {
     return IAMAuditConfigArgs(
-      auditLogConfigs: pulumi.Output.create<List<IAMAuditConfigAuditLogConfig>>(pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      auditLogConfigs: (pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

@@ -39,23 +39,15 @@ class UserState {
   /// [userId] The database role name of the user.
   /// [userType] The type of this user.
   UserState({
-    pulumi.Output<String>? cluster,
-    pulumi.Output<List<String>>? databaseRoles,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? passwordWo,
-    pulumi.Output<String>? passwordWoVersion,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? userType,
-  }) :
-      cluster = pulumi.Input.asOptionalInput<String>(cluster),
-      databaseRoles = pulumi.Input.asOptionalInput<List<String>>(databaseRoles),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordWo = pulumi.Input.asOptionalInput<String>(passwordWo),
-      passwordWoVersion = pulumi.Input.asOptionalInput<String>(passwordWoVersion),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      userType = pulumi.Input.asOptionalInput<String>(userType);
+    this.cluster,
+    this.databaseRoles,
+    this.name,
+    this.password,
+    this.passwordWo,
+    this.passwordWoVersion,
+    this.userId,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      cluster: map['cluster'] == null ? null : pulumi.Output.create<String>(map['cluster'] as String),
-      databaseRoles: map['databaseRoles'] == null ? null : pulumi.Output.create<List<String>>((map['databaseRoles'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordWo: map['passwordWo'] == null ? null : pulumi.Output.create<String>(map['passwordWo'] as String),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : pulumi.Output.create<String>(map['passwordWoVersion'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      databaseRoles: map['databaseRoles'] == null ? null : ((map['databaseRoles'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo'] as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

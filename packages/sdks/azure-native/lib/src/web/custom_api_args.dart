@@ -29,19 +29,13 @@ class CustomApiArgs {
   /// [subscriptionId] Subscription Id
   /// [tags] Resource tags
   CustomApiArgs({
-    pulumi.Output<String>? apiName,
-    pulumi.Output<String>? location,
-    pulumi.Output<CustomApiPropertiesDefinition>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      apiName = pulumi.Input.asOptionalInput<String>(apiName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<CustomApiPropertiesDefinition>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.apiName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.subscriptionId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CustomApiArgs {
 
   factory CustomApiArgs.fromMap(Map<String, dynamic> map) {
     return CustomApiArgs(
-      apiName: map['apiName'] == null ? null : pulumi.Output.create<String>(map['apiName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CustomApiPropertiesDefinition>(CustomApiPropertiesDefinition.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (CustomApiPropertiesDefinition.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

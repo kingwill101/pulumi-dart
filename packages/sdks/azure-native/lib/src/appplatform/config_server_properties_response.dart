@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_server_settings_response.dart';
 import 'error_response.dart';
 
 /// Config server git properties payload
 class ConfigServerPropertiesResponse {
   /// Settings of config server.
-  final ConfigServerSettingsResponse? configServer;
+  final pulumi.Input<ConfigServerSettingsResponse>? configServer;
   /// Enabled state of the config server. This is only used in Consumption tier.
-  final String? enabledState;
+  final pulumi.Input<String>? enabledState;
   /// Error when apply config server settings.
-  final ErrorResponse? error;
+  final pulumi.Input<ErrorResponse>? error;
   /// State of the config server.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ConfigServerPropertiesResponse].
   /// [configServer] Settings of config server.
@@ -28,19 +29,19 @@ class ConfigServerPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configServer': ?configServer == null ? null : configServer!.toMap(),
+      'configServer': ?pulumi.Input.mapOptionalInputValue<ConfigServerSettingsResponse, Map<String, dynamic>>(configServer, (value) => value.toMap()),
       'enabledState': ?enabledState,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory ConfigServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigServerPropertiesResponse(
-      configServer: map['configServer'] == null ? null : ConfigServerSettingsResponse.fromMap((map['configServer'] as Map).cast<String, dynamic>()),
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      error: map['error'] == null ? null : ErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
+      configServer: map['configServer'] == null ? null : (ConfigServerSettingsResponse.fromMap((map['configServer'] as Map).cast<String, dynamic>())).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      error: map['error'] == null ? null : (ErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration {
   /// SQS queue to deliver results.
-  final String insightsTarget;
+  final pulumi.Input<String> insightsTarget;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration].
   /// [insightsTarget] SQS queue to deliver results.
@@ -19,7 +20,7 @@ class MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration {
 
   factory MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementSqsQueueSinkConfiguration(
-      insightsTarget: map['insightsTarget'] as String,
+      insightsTarget: (map['insightsTarget'] as String).input(),
     );
   }
 }

@@ -20,17 +20,12 @@ class GetContentitemArgs {
   /// [project] Optional.
   /// [view] Optional.
   GetContentitemArgs({
-    required pulumi.Output<String> contentitemId,
-    required pulumi.Output<String> lakeId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? view,
-  }) :
-      contentitemId = pulumi.Input.asInput<String>(contentitemId),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.contentitemId,
+    required this.lakeId,
+    required this.location,
+    this.project,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetContentitemArgs {
 
   factory GetContentitemArgs.fromMap(Map<String, dynamic> map) {
     return GetContentitemArgs(
-      contentitemId: pulumi.Output.create<String>(map['contentitemId'] as String),
-      lakeId: pulumi.Output.create<String>(map['lakeId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      contentitemId: (map['contentitemId'] as String).input(),
+      lakeId: (map['lakeId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

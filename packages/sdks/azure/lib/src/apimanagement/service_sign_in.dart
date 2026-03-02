@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceSignIn {
   /// Should anonymous users be redirected to the sign in page?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ServiceSignIn].
   /// [enabled] Should anonymous users be redirected to the sign in page?
@@ -19,7 +20,7 @@ class ServiceSignIn {
 
   factory ServiceSignIn.fromMap(Map<String, dynamic> map) {
     return ServiceSignIn(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -61,35 +61,21 @@ class VolumeQuotaRuleState {
   /// [type] Types of Quota Rule.
   /// [volumeName] Name of the volume to create the quotaRule in.
   VolumeQuotaRuleState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? diskLimitMib,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? stateDetails,
-    pulumi.Output<String>? target,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? volumeName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskLimitMib = pulumi.Input.asOptionalInput<int>(diskLimitMib),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      stateDetails = pulumi.Input.asOptionalInput<String>(stateDetails),
-      target = pulumi.Input.asOptionalInput<String>(target),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      volumeName = pulumi.Input.asOptionalInput<String>(volumeName);
+    this.createTime,
+    this.description,
+    this.diskLimitMib,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.state,
+    this.stateDetails,
+    this.target,
+    this.type,
+    this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,20 +98,20 @@ class VolumeQuotaRuleState {
 
   factory VolumeQuotaRuleState.fromMap(Map<String, dynamic> map) {
     return VolumeQuotaRuleState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskLimitMib: map['diskLimitMib'] == null ? null : pulumi.Output.create<int>(map['diskLimitMib'] as int),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      stateDetails: map['stateDetails'] == null ? null : pulumi.Output.create<String>(map['stateDetails'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      volumeName: map['volumeName'] == null ? null : pulumi.Output.create<String>(map['volumeName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskLimitMib: map['diskLimitMib'] == null ? null : (map['diskLimitMib'] as int).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      stateDetails: map['stateDetails'] == null ? null : (map['stateDetails'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
     );
   }
 }

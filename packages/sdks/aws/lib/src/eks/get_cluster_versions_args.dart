@@ -29,19 +29,13 @@ class GetClusterVersionsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [versionStatus] Status of the EKS cluster versions to list.
   GetClusterVersionsArgs({
-    pulumi.Output<String>? clusterType,
-    pulumi.Output<List<String>>? clusterVersionsOnlies,
-    pulumi.Output<bool>? defaultOnly,
-    pulumi.Output<bool>? includeAll,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? versionStatus,
-  }) :
-      clusterType = pulumi.Input.asOptionalInput<String>(clusterType),
-      clusterVersionsOnlies = pulumi.Input.asOptionalInput<List<String>>(clusterVersionsOnlies),
-      defaultOnly = pulumi.Input.asOptionalInput<bool>(defaultOnly),
-      includeAll = pulumi.Input.asOptionalInput<bool>(includeAll),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      versionStatus = pulumi.Input.asOptionalInput<String>(versionStatus);
+    this.clusterType,
+    this.clusterVersionsOnlies,
+    this.defaultOnly,
+    this.includeAll,
+    this.region,
+    this.versionStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GetClusterVersionsArgs {
 
   factory GetClusterVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsArgs(
-      clusterType: map['clusterType'] == null ? null : pulumi.Output.create<String>(map['clusterType'] as String),
-      clusterVersionsOnlies: map['clusterVersionsOnlies'] == null ? null : pulumi.Output.create<List<String>>((map['clusterVersionsOnlies'] as List).cast<String>()),
-      defaultOnly: map['defaultOnly'] == null ? null : pulumi.Output.create<bool>(map['defaultOnly'] as bool),
-      includeAll: map['includeAll'] == null ? null : pulumi.Output.create<bool>(map['includeAll'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      versionStatus: map['versionStatus'] == null ? null : pulumi.Output.create<String>(map['versionStatus'] as String),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
+      clusterVersionsOnlies: map['clusterVersionsOnlies'] == null ? null : ((map['clusterVersionsOnlies'] as List).cast<String>()).input(),
+      defaultOnly: map['defaultOnly'] == null ? null : (map['defaultOnly'] as bool).input(),
+      includeAll: map['includeAll'] == null ? null : (map['includeAll'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      versionStatus: map['versionStatus'] == null ? null : (map['versionStatus'] as String).input(),
     );
   }
 }

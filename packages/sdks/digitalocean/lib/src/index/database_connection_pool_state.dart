@@ -43,31 +43,19 @@ class DatabaseConnectionPoolState {
   /// [uri] The full URI for connecting to the database connection pool.
   /// [user] The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
   DatabaseConnectionPoolState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? dbName,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? privateHost,
-    pulumi.Output<String>? privateUri,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? uri,
-    pulumi.Output<String>? user,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      dbName = pulumi.Input.asOptionalInput<String>(dbName),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      privateHost = pulumi.Input.asOptionalInput<String>(privateHost),
-      privateUri = pulumi.Input.asOptionalInput<String>(privateUri),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      uri = pulumi.Input.asOptionalInput<String>(uri),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.clusterId,
+    this.dbName,
+    this.host,
+    this.mode,
+    this.name,
+    this.password,
+    this.port,
+    this.privateHost,
+    this.privateUri,
+    this.size,
+    this.uri,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class DatabaseConnectionPoolState {
 
   factory DatabaseConnectionPoolState.fromMap(Map<String, dynamic> map) {
     return DatabaseConnectionPoolState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      dbName: map['dbName'] == null ? null : pulumi.Output.create<String>(map['dbName'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      privateHost: map['privateHost'] == null ? null : pulumi.Output.create<String>(map['privateHost'] as String),
-      privateUri: map['privateUri'] == null ? null : pulumi.Output.create<String>(map['privateUri'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      privateHost: map['privateHost'] == null ? null : (map['privateHost'] as String).input(),
+      privateUri: map['privateUri'] == null ? null : (map['privateUri'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'test_targets_for_shard_response.dart';
 
 /// Output only. Details about the shard.
 class ShardResponse {
   /// The estimated shard duration based on previous test case timing records, if available.
-  final String estimatedShardDuration;
+  final pulumi.Input<String> estimatedShardDuration;
   /// The total number of shards.
-  final int numShards;
+  final pulumi.Input<int> numShards;
   /// The index of the shard among all the shards.
-  final int shardIndex;
+  final pulumi.Input<int> shardIndex;
   /// Test targets for each shard. Only set for manual sharding.
-  final TestTargetsForShardResponse testTargetsForShard;
+  final pulumi.Input<TestTargetsForShardResponse> testTargetsForShard;
 
   /// Creates a new [ShardResponse].
   /// [estimatedShardDuration] The estimated shard duration based on previous test case timing records, if available.
@@ -30,16 +31,16 @@ class ShardResponse {
       'estimatedShardDuration': estimatedShardDuration,
       'numShards': numShards,
       'shardIndex': shardIndex,
-      'testTargetsForShard': testTargetsForShard.toMap(),
+      'testTargetsForShard': pulumi.Input.mapInputValue<TestTargetsForShardResponse, Map<String, dynamic>>(testTargetsForShard, (value) => value.toMap()),
     };
   }
 
   factory ShardResponse.fromMap(Map<String, dynamic> map) {
     return ShardResponse(
-      estimatedShardDuration: map['estimatedShardDuration'] as String,
-      numShards: map['numShards'] as int,
-      shardIndex: map['shardIndex'] as int,
-      testTargetsForShard: TestTargetsForShardResponse.fromMap((map['testTargetsForShard'] as Map).cast<String, dynamic>()),
+      estimatedShardDuration: (map['estimatedShardDuration'] as String).input(),
+      numShards: (map['numShards'] as int).input(),
+      shardIndex: (map['shardIndex'] as int).input(),
+      testTargetsForShard: (TestTargetsForShardResponse.fromMap((map['testTargetsForShard'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

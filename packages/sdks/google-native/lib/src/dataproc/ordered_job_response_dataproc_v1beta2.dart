@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hadoop_job_response_dataproc_v1beta2.dart';
 import 'hive_job_response_dataproc_v1beta2.dart';
 import 'job_scheduling_response_dataproc_v1beta2.dart';
@@ -13,29 +14,29 @@ import 'spark_sql_job_response_dataproc_v1beta2.dart';
 /// A job executed by the workflow.
 class OrderedJobResponseDataprocV1beta2 {
   /// Optional. Job is a Hadoop job.
-  final HadoopJobResponseDataprocV1beta2 hadoopJob;
+  final pulumi.Input<HadoopJobResponseDataprocV1beta2> hadoopJob;
   /// Optional. Job is a Hive job.
-  final HiveJobResponseDataprocV1beta2 hiveJob;
+  final pulumi.Input<HiveJobResponseDataprocV1beta2> hiveJob;
   /// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Optional. Job is a Pig job.
-  final PigJobResponseDataprocV1beta2 pigJob;
+  final pulumi.Input<PigJobResponseDataprocV1beta2> pigJob;
   /// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
-  final List<String> prerequisiteStepIds;
+  final pulumi.Input<List<String>> prerequisiteStepIds;
   /// Optional. Job is a Presto job.
-  final PrestoJobResponseDataprocV1beta2 prestoJob;
+  final pulumi.Input<PrestoJobResponseDataprocV1beta2> prestoJob;
   /// Optional. Job is a PySpark job.
-  final PySparkJobResponseDataprocV1beta2 pysparkJob;
+  final pulumi.Input<PySparkJobResponseDataprocV1beta2> pysparkJob;
   /// Optional. Job scheduling configuration.
-  final JobSchedulingResponseDataprocV1beta2 scheduling;
+  final pulumi.Input<JobSchedulingResponseDataprocV1beta2> scheduling;
   /// Optional. Job is a Spark job.
-  final SparkJobResponseDataprocV1beta2 sparkJob;
+  final pulumi.Input<SparkJobResponseDataprocV1beta2> sparkJob;
   /// Optional. Job is a SparkR job.
-  final SparkRJobResponseDataprocV1beta2 sparkRJob;
+  final pulumi.Input<SparkRJobResponseDataprocV1beta2> sparkRJob;
   /// Optional. Job is a SparkSql job.
-  final SparkSqlJobResponseDataprocV1beta2 sparkSqlJob;
+  final pulumi.Input<SparkSqlJobResponseDataprocV1beta2> sparkSqlJob;
   /// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-  final String stepId;
+  final pulumi.Input<String> stepId;
 
   /// Creates a new [OrderedJobResponseDataprocV1beta2].
   /// [hadoopJob] Optional. Job is a Hadoop job.
@@ -67,35 +68,35 @@ class OrderedJobResponseDataprocV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hadoopJob': hadoopJob.toMap(),
-      'hiveJob': hiveJob.toMap(),
+      'hadoopJob': pulumi.Input.mapInputValue<HadoopJobResponseDataprocV1beta2, Map<String, dynamic>>(hadoopJob, (value) => value.toMap()),
+      'hiveJob': pulumi.Input.mapInputValue<HiveJobResponseDataprocV1beta2, Map<String, dynamic>>(hiveJob, (value) => value.toMap()),
       'labels': labels,
-      'pigJob': pigJob.toMap(),
+      'pigJob': pulumi.Input.mapInputValue<PigJobResponseDataprocV1beta2, Map<String, dynamic>>(pigJob, (value) => value.toMap()),
       'prerequisiteStepIds': prerequisiteStepIds,
-      'prestoJob': prestoJob.toMap(),
-      'pysparkJob': pysparkJob.toMap(),
-      'scheduling': scheduling.toMap(),
-      'sparkJob': sparkJob.toMap(),
-      'sparkRJob': sparkRJob.toMap(),
-      'sparkSqlJob': sparkSqlJob.toMap(),
+      'prestoJob': pulumi.Input.mapInputValue<PrestoJobResponseDataprocV1beta2, Map<String, dynamic>>(prestoJob, (value) => value.toMap()),
+      'pysparkJob': pulumi.Input.mapInputValue<PySparkJobResponseDataprocV1beta2, Map<String, dynamic>>(pysparkJob, (value) => value.toMap()),
+      'scheduling': pulumi.Input.mapInputValue<JobSchedulingResponseDataprocV1beta2, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
+      'sparkJob': pulumi.Input.mapInputValue<SparkJobResponseDataprocV1beta2, Map<String, dynamic>>(sparkJob, (value) => value.toMap()),
+      'sparkRJob': pulumi.Input.mapInputValue<SparkRJobResponseDataprocV1beta2, Map<String, dynamic>>(sparkRJob, (value) => value.toMap()),
+      'sparkSqlJob': pulumi.Input.mapInputValue<SparkSqlJobResponseDataprocV1beta2, Map<String, dynamic>>(sparkSqlJob, (value) => value.toMap()),
       'stepId': stepId,
     };
   }
 
   factory OrderedJobResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return OrderedJobResponseDataprocV1beta2(
-      hadoopJob: HadoopJobResponseDataprocV1beta2.fromMap((map['hadoopJob'] as Map).cast<String, dynamic>()),
-      hiveJob: HiveJobResponseDataprocV1beta2.fromMap((map['hiveJob'] as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      pigJob: PigJobResponseDataprocV1beta2.fromMap((map['pigJob'] as Map).cast<String, dynamic>()),
-      prerequisiteStepIds: (map['prerequisiteStepIds'] as List).cast<String>(),
-      prestoJob: PrestoJobResponseDataprocV1beta2.fromMap((map['prestoJob'] as Map).cast<String, dynamic>()),
-      pysparkJob: PySparkJobResponseDataprocV1beta2.fromMap((map['pysparkJob'] as Map).cast<String, dynamic>()),
-      scheduling: JobSchedulingResponseDataprocV1beta2.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
-      sparkJob: SparkJobResponseDataprocV1beta2.fromMap((map['sparkJob'] as Map).cast<String, dynamic>()),
-      sparkRJob: SparkRJobResponseDataprocV1beta2.fromMap((map['sparkRJob'] as Map).cast<String, dynamic>()),
-      sparkSqlJob: SparkSqlJobResponseDataprocV1beta2.fromMap((map['sparkSqlJob'] as Map).cast<String, dynamic>()),
-      stepId: map['stepId'] as String,
+      hadoopJob: (HadoopJobResponseDataprocV1beta2.fromMap((map['hadoopJob'] as Map).cast<String, dynamic>())).input(),
+      hiveJob: (HiveJobResponseDataprocV1beta2.fromMap((map['hiveJob'] as Map).cast<String, dynamic>())).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      pigJob: (PigJobResponseDataprocV1beta2.fromMap((map['pigJob'] as Map).cast<String, dynamic>())).input(),
+      prerequisiteStepIds: ((map['prerequisiteStepIds'] as List).cast<String>()).input(),
+      prestoJob: (PrestoJobResponseDataprocV1beta2.fromMap((map['prestoJob'] as Map).cast<String, dynamic>())).input(),
+      pysparkJob: (PySparkJobResponseDataprocV1beta2.fromMap((map['pysparkJob'] as Map).cast<String, dynamic>())).input(),
+      scheduling: (JobSchedulingResponseDataprocV1beta2.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
+      sparkJob: (SparkJobResponseDataprocV1beta2.fromMap((map['sparkJob'] as Map).cast<String, dynamic>())).input(),
+      sparkRJob: (SparkRJobResponseDataprocV1beta2.fromMap((map['sparkRJob'] as Map).cast<String, dynamic>())).input(),
+      sparkSqlJob: (SparkSqlJobResponseDataprocV1beta2.fromMap((map['sparkSqlJob'] as Map).cast<String, dynamic>())).input(),
+      stepId: (map['stepId'] as String).input(),
     );
   }
 }

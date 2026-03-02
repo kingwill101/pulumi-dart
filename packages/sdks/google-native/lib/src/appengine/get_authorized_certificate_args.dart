@@ -16,13 +16,10 @@ class GetAuthorizedCertificateArgs {
   /// [authorizedCertificateId] Required.
   /// [view] Optional.
   GetAuthorizedCertificateArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> authorizedCertificateId,
-    pulumi.Output<String>? view,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      authorizedCertificateId = pulumi.Input.asInput<String>(authorizedCertificateId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.appId,
+    required this.authorizedCertificateId,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetAuthorizedCertificateArgs {
 
   factory GetAuthorizedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizedCertificateArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      authorizedCertificateId: pulumi.Output.create<String>(map['authorizedCertificateId'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      appId: (map['appId'] as String).input(),
+      authorizedCertificateId: (map['authorizedCertificateId'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

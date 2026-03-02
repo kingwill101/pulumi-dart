@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretsSecret {
   /// An optional mapping that makes up the Encryption Context for the secret.
-  final Map<String, String>? context;
+  final pulumi.Input<Map<String, String>>? context;
   /// The encryption algorithm that will be used to decrypt the ciphertext. This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key. Valid Values: SYMMETRIC_DEFAULT | RSAES_OAEP_SHA_1 | RSAES_OAEP_SHA_256 | SM2PKE
-  final String? encryptionAlgorithm;
+  final pulumi.Input<String>? encryptionAlgorithm;
   /// An optional list of Grant Tokens for the secret.
-  final List<String>? grantTokens;
+  final pulumi.Input<List<String>>? grantTokens;
   /// Specifies the KMS key that AWS KMS uses to decrypt the ciphertext. This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key.
   ///
   /// For more information on `context` and `grant_tokens` see the [KMS
   /// Concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html)
-  final String? keyId;
+  final pulumi.Input<String>? keyId;
   /// Name to export this secret under in the attributes.
-  final String name;
+  final pulumi.Input<String> name;
   /// Base64 encoded payload, as returned from a KMS encrypt operation.
-  final String payload;
+  final pulumi.Input<String> payload;
 
   /// Creates a new [GetSecretsSecret].
   /// [context] An optional mapping that makes up the Encryption Context for the secret.
@@ -47,12 +48,12 @@ class GetSecretsSecret {
 
   factory GetSecretsSecret.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecret(
-      context: map['context'] == null ? null : (map['context'] as Map).cast<String, String>(),
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : map['encryptionAlgorithm'] as String,
-      grantTokens: map['grantTokens'] == null ? null : (map['grantTokens'] as List).cast<String>(),
-      keyId: map['keyId'] == null ? null : map['keyId'] as String,
-      name: map['name'] as String,
-      payload: map['payload'] as String,
+      context: map['context'] == null ? null : ((map['context'] as Map).cast<String, String>()).input(),
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm'] as String).input(),
+      grantTokens: map['grantTokens'] == null ? null : ((map['grantTokens'] as List).cast<String>()).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      name: (map['name'] as String).input(),
+      payload: (map['payload'] as String).input(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'defense_rule_config_time_config_week_time_period_day_period.dart';
 
 class DefenseRuleConfigTimeConfigWeekTimePeriod {
   /// The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
-  final String? day;
+  final pulumi.Input<String>? day;
   /// The time period of each day when the rule is effective.  See `day_periods` below.
-  final List<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod>? dayPeriods;
+  final pulumi.Input<List<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod>>? dayPeriods;
 
   /// Creates a new [DefenseRuleConfigTimeConfigWeekTimePeriod].
   /// [day] The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
@@ -20,14 +20,14 @@ class DefenseRuleConfigTimeConfigWeekTimePeriod {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'day': ?day,
-      'dayPeriods': ?dayPeriods == null ? null : pulumi.Input.encodeList<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod, Map<String, dynamic>>(dayPeriods!, (value) => value.toMap()),
+      'dayPeriods': ?pulumi.Input.mapOptionalInputValue<List<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod>, List<Map<String, dynamic>>>(dayPeriods, (value) => pulumi.Input.encodeList<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DefenseRuleConfigTimeConfigWeekTimePeriod.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigTimeConfigWeekTimePeriod(
-      day: map['day'] == null ? null : map['day'] as String,
-      dayPeriods: map['dayPeriods'] == null ? null : pulumi.Input.decodeList<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod>(map['dayPeriods'], (value) => DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod.fromMap((value as Map).cast<String, dynamic>())),
+      day: map['day'] == null ? null : (map['day'] as String).input(),
+      dayPeriods: map['dayPeriods'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod>(map['dayPeriods'], (value) => DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

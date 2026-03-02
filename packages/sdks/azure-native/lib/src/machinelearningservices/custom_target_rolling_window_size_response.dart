@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomTargetRollingWindowSizeResponse {
   /// Target rolling windows size mode.
   /// Expected value is 'Custom'.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// [Required] TargetRollingWindowSize value.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [CustomTargetRollingWindowSizeResponse].
   /// [mode] Target rolling windows size mode.
@@ -25,8 +26,8 @@ class CustomTargetRollingWindowSizeResponse {
 
   factory CustomTargetRollingWindowSizeResponse.fromMap(Map<String, dynamic> map) {
     return CustomTargetRollingWindowSizeResponse(
-      mode: map['mode'] as String,
-      value: map['value'] as int,
+      mode: (map['mode'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

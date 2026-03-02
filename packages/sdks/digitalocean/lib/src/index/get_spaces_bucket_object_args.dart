@@ -24,17 +24,12 @@ class GetSpacesBucketObjectArgs {
   /// [region] The slug of the region where the bucket is stored.
   /// [versionId] Specific version ID of the object returned (defaults to latest version)
   GetSpacesBucketObjectArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? range,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? versionId,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      key = pulumi.Input.asInput<String>(key),
-      range = pulumi.Input.asOptionalInput<String>(range),
-      region = pulumi.Input.asInput<String>(region),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    required this.bucket,
+    required this.key,
+    this.range,
+    required this.region,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GetSpacesBucketObjectArgs {
 
   factory GetSpacesBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetSpacesBucketObjectArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      range: map['range'] == null ? null : pulumi.Output.create<String>(map['range'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
+      range: map['range'] == null ? null : (map['range'] as String).input(),
+      region: (map['region'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

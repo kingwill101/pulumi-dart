@@ -43,23 +43,15 @@ class RestorePlanArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [restoreConfig] Defines the configuration of Restores created via this RestorePlan.
   RestorePlanArgs({
-    required pulumi.Output<String> backupPlan,
-    required pulumi.Output<String> cluster,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<RestorePlanRestoreConfig> restoreConfig,
-  }) :
-      backupPlan = pulumi.Input.asInput<String>(backupPlan),
-      cluster = pulumi.Input.asInput<String>(cluster),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      restoreConfig = pulumi.Input.asInput<RestorePlanRestoreConfig>(restoreConfig);
+    required this.backupPlan,
+    required this.cluster,
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    required this.restoreConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class RestorePlanArgs {
 
   factory RestorePlanArgs.fromMap(Map<String, dynamic> map) {
     return RestorePlanArgs(
-      backupPlan: pulumi.Output.create<String>(map['backupPlan'] as String),
-      cluster: pulumi.Output.create<String>(map['cluster'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      restoreConfig: pulumi.Output.create<RestorePlanRestoreConfig>(RestorePlanRestoreConfig.fromMap((map['restoreConfig'] as Map).cast<String, dynamic>())),
+      backupPlan: (map['backupPlan'] as String).input(),
+      cluster: (map['cluster'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      restoreConfig: (RestorePlanRestoreConfig.fromMap((map['restoreConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

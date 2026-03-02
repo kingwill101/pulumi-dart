@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference {
   /// Total number of CIDR blocks used by the IP set references in a firewall.
-  final int resolvedCidrCount;
+  final pulumi.Input<int> resolvedCidrCount;
 
   /// Creates a new [GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference].
   /// [resolvedCidrCount] Total number of CIDR blocks used by the IP set references in a firewall.
@@ -19,7 +20,7 @@ class GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference {
 
   factory GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference(
-      resolvedCidrCount: map['resolvedCidrCount'] as int,
+      resolvedCidrCount: (map['resolvedCidrCount'] as int).input(),
     );
   }
 }

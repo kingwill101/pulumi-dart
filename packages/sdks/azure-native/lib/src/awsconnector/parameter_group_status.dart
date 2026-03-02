@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ParameterGroupStatus
 class ParameterGroupStatus {
   /// <p>The node IDs of one or more nodes to be rebooted.</p>
-  final List<String>? nodeIdsToReboot;
+  final pulumi.Input<List<String>>? nodeIdsToReboot;
   /// <p>The status of parameter updates. </p>
-  final String? parameterApplyStatus;
+  final pulumi.Input<String>? parameterApplyStatus;
   /// <p>The name of the parameter group.</p>
-  final String? parameterGroupName;
+  final pulumi.Input<String>? parameterGroupName;
 
   /// Creates a new [ParameterGroupStatus].
   /// [nodeIdsToReboot] <p>The node IDs of one or more nodes to be rebooted.</p>
@@ -30,9 +31,9 @@ class ParameterGroupStatus {
 
   factory ParameterGroupStatus.fromMap(Map<String, dynamic> map) {
     return ParameterGroupStatus(
-      nodeIdsToReboot: map['nodeIdsToReboot'] == null ? null : (map['nodeIdsToReboot'] as List).cast<String>(),
-      parameterApplyStatus: map['parameterApplyStatus'] == null ? null : map['parameterApplyStatus'] as String,
-      parameterGroupName: map['parameterGroupName'] == null ? null : map['parameterGroupName'] as String,
+      nodeIdsToReboot: map['nodeIdsToReboot'] == null ? null : ((map['nodeIdsToReboot'] as List).cast<String>()).input(),
+      parameterApplyStatus: map['parameterApplyStatus'] == null ? null : (map['parameterApplyStatus'] as String).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
     );
   }
 }

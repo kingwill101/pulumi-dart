@@ -14,11 +14,9 @@ class GetUptimeCheckConfigArgs {
   /// [project] Optional.
   /// [uptimeCheckConfigId] Required.
   GetUptimeCheckConfigArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> uptimeCheckConfigId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      uptimeCheckConfigId = pulumi.Input.asInput<String>(uptimeCheckConfigId);
+    this.project,
+    required this.uptimeCheckConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetUptimeCheckConfigArgs {
 
   factory GetUptimeCheckConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetUptimeCheckConfigArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      uptimeCheckConfigId: pulumi.Output.create<String>(map['uptimeCheckConfigId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      uptimeCheckConfigId: (map['uptimeCheckConfigId'] as String).input(),
     );
   }
 }

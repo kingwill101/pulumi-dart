@@ -21,13 +21,10 @@ class RouterRoutesV2State {
   /// [routerId] ID of the router these routing entries belong to.
   /// [routes] A set of routing entries to add to the router.
   RouterRoutesV2State({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<List<RouterRoutesV2Route>>? routes,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      routes = pulumi.Input.asOptionalInput<List<RouterRoutesV2Route>>(routes);
+    this.region,
+    this.routerId,
+    this.routes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class RouterRoutesV2State {
 
   factory RouterRoutesV2State.fromMap(Map<String, dynamic> map) {
     return RouterRoutesV2State(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<RouterRoutesV2Route>>(pulumi.Input.decodeList<RouterRoutesV2Route>(map['routes'], (value) => RouterRoutesV2Route.fromMap((value as Map).cast<String, dynamic>()))),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouterRoutesV2Route>(map['routes'], (value) => RouterRoutesV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

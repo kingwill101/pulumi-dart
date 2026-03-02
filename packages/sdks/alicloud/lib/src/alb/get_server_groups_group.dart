@@ -7,27 +7,27 @@ import 'get_server_groups_group_sticky_session_config.dart';
 
 class GetServerGroupsGroup {
   /// The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
-  final List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs;
+  final pulumi.Input<List<GetServerGroupsGroupHealthCheckConfig>> healthCheckConfigs;
   /// The ID of the Server Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// The backend protocol.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The scheduling algorithm.
-  final String scheduler;
+  final pulumi.Input<String> scheduler;
   /// The ID of the Server Group.
-  final String serverGroupId;
+  final pulumi.Input<String> serverGroupId;
   /// The names of the Server Group.
-  final String serverGroupName;
+  final pulumi.Input<String> serverGroupName;
   /// The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
-  final List<GetServerGroupsGroupServer> servers;
+  final pulumi.Input<List<GetServerGroupsGroupServer>> servers;
   /// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
-  final List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs;
+  final pulumi.Input<List<GetServerGroupsGroupStickySessionConfig>> stickySessionConfigs;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The ID of the virtual private cloud (VPC).
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetServerGroupsGroup].
   /// [healthCheckConfigs] The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
@@ -57,15 +57,15 @@ class GetServerGroupsGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'healthCheckConfigs': pulumi.Input.encodeList<GetServerGroupsGroupHealthCheckConfig, Map<String, dynamic>>(healthCheckConfigs, (value) => value.toMap()),
+      'healthCheckConfigs': pulumi.Input.mapInputValue<List<GetServerGroupsGroupHealthCheckConfig>, List<Map<String, dynamic>>>(healthCheckConfigs, (value) => pulumi.Input.encodeList<GetServerGroupsGroupHealthCheckConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'protocol': protocol,
       'scheduler': scheduler,
       'serverGroupId': serverGroupId,
       'serverGroupName': serverGroupName,
-      'servers': pulumi.Input.encodeList<GetServerGroupsGroupServer, Map<String, dynamic>>(servers, (value) => value.toMap()),
+      'servers': pulumi.Input.mapInputValue<List<GetServerGroupsGroupServer>, List<Map<String, dynamic>>>(servers, (value) => pulumi.Input.encodeList<GetServerGroupsGroupServer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
-      'stickySessionConfigs': pulumi.Input.encodeList<GetServerGroupsGroupStickySessionConfig, Map<String, dynamic>>(stickySessionConfigs, (value) => value.toMap()),
+      'stickySessionConfigs': pulumi.Input.mapInputValue<List<GetServerGroupsGroupStickySessionConfig>, List<Map<String, dynamic>>>(stickySessionConfigs, (value) => pulumi.Input.encodeList<GetServerGroupsGroupStickySessionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': tags,
       'vpcId': vpcId,
     };
@@ -73,17 +73,17 @@ class GetServerGroupsGroup {
 
   factory GetServerGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsGroup(
-      healthCheckConfigs: pulumi.Input.decodeList<GetServerGroupsGroupHealthCheckConfig>(map['healthCheckConfigs'], (value) => GetServerGroupsGroupHealthCheckConfig.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      protocol: map['protocol'] as String,
-      scheduler: map['scheduler'] as String,
-      serverGroupId: map['serverGroupId'] as String,
-      serverGroupName: map['serverGroupName'] as String,
-      servers: pulumi.Input.decodeList<GetServerGroupsGroupServer>(map['servers'], (value) => GetServerGroupsGroupServer.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      stickySessionConfigs: pulumi.Input.decodeList<GetServerGroupsGroupStickySessionConfig>(map['stickySessionConfigs'], (value) => GetServerGroupsGroupStickySessionConfig.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
+      healthCheckConfigs: (pulumi.Input.decodeList<GetServerGroupsGroupHealthCheckConfig>(map['healthCheckConfigs'], (value) => GetServerGroupsGroupHealthCheckConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      scheduler: (map['scheduler'] as String).input(),
+      serverGroupId: (map['serverGroupId'] as String).input(),
+      serverGroupName: (map['serverGroupName'] as String).input(),
+      servers: (pulumi.Input.decodeList<GetServerGroupsGroupServer>(map['servers'], (value) => GetServerGroupsGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      stickySessionConfigs: (pulumi.Input.decodeList<GetServerGroupsGroupStickySessionConfig>(map['stickySessionConfigs'], (value) => GetServerGroupsGroupStickySessionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

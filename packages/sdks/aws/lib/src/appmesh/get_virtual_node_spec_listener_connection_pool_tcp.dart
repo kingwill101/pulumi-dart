@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecListenerConnectionPoolTcp {
-  final int maxConnections;
+  final pulumi.Input<int> maxConnections;
 
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolTcp].
   /// [maxConnections] Required.
@@ -18,7 +19,7 @@ class GetVirtualNodeSpecListenerConnectionPoolTcp {
 
   factory GetVirtualNodeSpecListenerConnectionPoolTcp.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerConnectionPoolTcp(
-      maxConnections: map['maxConnections'] as int,
+      maxConnections: (map['maxConnections'] as int).input(),
     );
   }
 }

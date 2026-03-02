@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Encryption Key
 class EncryptionKeyVaultPropertiesResponse {
   /// The auto-detected version of the key if versionType is auto-detected.
-  final String autoDetectedKeyVersion;
+  final pulumi.Input<String> autoDetectedKeyVersion;
   /// The name of the key.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// The state of key provided
-  final String keyState;
+  final pulumi.Input<String> keyState;
   /// The URL of the vault.
-  final String? keyVaultUrl;
+  final pulumi.Input<String>? keyVaultUrl;
   /// The version of the key.
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
   /// Property of the key if user provided or auto detected
-  final String versionType;
+  final pulumi.Input<String> versionType;
 
   /// Creates a new [EncryptionKeyVaultPropertiesResponse].
   /// [autoDetectedKeyVersion] The auto-detected version of the key if versionType is auto-detected.
@@ -45,12 +46,12 @@ class EncryptionKeyVaultPropertiesResponse {
 
   factory EncryptionKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyVaultPropertiesResponse(
-      autoDetectedKeyVersion: map['autoDetectedKeyVersion'] as String,
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyState: map['keyState'] as String,
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : map['keyVaultUrl'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
-      versionType: map['versionType'] as String,
+      autoDetectedKeyVersion: (map['autoDetectedKeyVersion'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyState: (map['keyState'] as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      versionType: (map['versionType'] as String).input(),
     );
   }
 }

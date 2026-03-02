@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a project.
 class ProjectProperties {
   /// Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
-  final String? assessmentSolutionId;
+  final pulumi.Input<String>? assessmentSolutionId;
   /// The ARM id of the storage account used for interactions when public access is disabled.
-  final String? customerStorageAccountArmId;
+  final pulumi.Input<String>? customerStorageAccountArmId;
   /// The ARM id of service map workspace created by customer.
-  final String? customerWorkspaceId;
+  final pulumi.Input<String>? customerWorkspaceId;
   /// Location of service map workspace created by customer.
-  final String? customerWorkspaceLocation;
+  final pulumi.Input<String>? customerWorkspaceLocation;
   /// Assessment project status.
-  final String? projectStatus;
+  final pulumi.Input<String>? projectStatus;
   /// This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
 
   /// Creates a new [ProjectProperties].
   /// [assessmentSolutionId] Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
@@ -45,12 +46,12 @@ class ProjectProperties {
 
   factory ProjectProperties.fromMap(Map<String, dynamic> map) {
     return ProjectProperties(
-      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : map['assessmentSolutionId'] as String,
-      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : map['customerStorageAccountArmId'] as String,
-      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : map['customerWorkspaceId'] as String,
-      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : map['customerWorkspaceLocation'] as String,
-      projectStatus: map['projectStatus'] == null ? null : map['projectStatus'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : (map['assessmentSolutionId'] as String).input(),
+      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId'] as String).input(),
+      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : (map['customerWorkspaceId'] as String).input(),
+      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : (map['customerWorkspaceLocation'] as String).input(),
+      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
     );
   }
 }

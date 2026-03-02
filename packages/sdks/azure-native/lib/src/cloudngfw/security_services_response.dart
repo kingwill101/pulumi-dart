@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// security services
 class SecurityServicesResponse {
   /// Anti spyware Profile data
-  final String? antiSpywareProfile;
+  final pulumi.Input<String>? antiSpywareProfile;
   /// anti virus profile data
-  final String? antiVirusProfile;
+  final pulumi.Input<String>? antiVirusProfile;
   /// DNS Subscription profile data
-  final String? dnsSubscription;
+  final pulumi.Input<String>? dnsSubscription;
   /// File blocking profile data
-  final String? fileBlockingProfile;
+  final pulumi.Input<String>? fileBlockingProfile;
   /// Trusted Egress Decryption profile data
-  final String? outboundTrustCertificate;
+  final pulumi.Input<String>? outboundTrustCertificate;
   /// Untrusted Egress Decryption profile data
-  final String? outboundUnTrustCertificate;
+  final pulumi.Input<String>? outboundUnTrustCertificate;
   /// URL filtering profile data
-  final String? urlFilteringProfile;
+  final pulumi.Input<String>? urlFilteringProfile;
   /// IPs Vulnerability Profile Data
-  final String? vulnerabilityProfile;
+  final pulumi.Input<String>? vulnerabilityProfile;
 
   /// Creates a new [SecurityServicesResponse].
   /// [antiSpywareProfile] Anti spyware Profile data
@@ -55,14 +56,14 @@ class SecurityServicesResponse {
 
   factory SecurityServicesResponse.fromMap(Map<String, dynamic> map) {
     return SecurityServicesResponse(
-      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : map['antiSpywareProfile'] as String,
-      antiVirusProfile: map['antiVirusProfile'] == null ? null : map['antiVirusProfile'] as String,
-      dnsSubscription: map['dnsSubscription'] == null ? null : map['dnsSubscription'] as String,
-      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : map['fileBlockingProfile'] as String,
-      outboundTrustCertificate: map['outboundTrustCertificate'] == null ? null : map['outboundTrustCertificate'] as String,
-      outboundUnTrustCertificate: map['outboundUnTrustCertificate'] == null ? null : map['outboundUnTrustCertificate'] as String,
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : map['urlFilteringProfile'] as String,
-      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : map['vulnerabilityProfile'] as String,
+      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : (map['antiSpywareProfile'] as String).input(),
+      antiVirusProfile: map['antiVirusProfile'] == null ? null : (map['antiVirusProfile'] as String).input(),
+      dnsSubscription: map['dnsSubscription'] == null ? null : (map['dnsSubscription'] as String).input(),
+      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : (map['fileBlockingProfile'] as String).input(),
+      outboundTrustCertificate: map['outboundTrustCertificate'] == null ? null : (map['outboundTrustCertificate'] as String).input(),
+      outboundUnTrustCertificate: map['outboundUnTrustCertificate'] == null ? null : (map['outboundUnTrustCertificate'] as String).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile'] as String).input(),
+      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : (map['vulnerabilityProfile'] as String).input(),
     );
   }
 }

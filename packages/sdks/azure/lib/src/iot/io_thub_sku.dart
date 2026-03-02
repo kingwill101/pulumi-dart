@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IoTHubSku {
   /// The number of provisioned IoT Hub units.
   ///
   /// > **Note:** Only one IotHub can be on the `Free` tier per subscription.
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// The name of the sku. Possible values are `B1`, `B2`, `B3`, `F1`, `S1`, `S2`, and `S3`.
   ///
   /// > **Note:** The `F1` sku is on `Free` tier.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [IoTHubSku].
   /// [capacity] The number of provisioned IoT Hub units.
@@ -28,8 +29,8 @@ class IoTHubSku {
 
   factory IoTHubSku.fromMap(Map<String, dynamic> map) {
     return IoTHubSku(
-      capacity: map['capacity'] as int,
-      name: map['name'] as String,
+      capacity: (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

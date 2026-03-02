@@ -20,15 +20,11 @@ class ModuleState {
   /// [name] Specifies the name of the Module. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
   ModuleState({
-    pulumi.Output<String>? automationAccountName,
-    pulumi.Output<ModuleModuleLink>? moduleLink,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asOptionalInput<String>(automationAccountName),
-      moduleLink = pulumi.Input.asOptionalInput<ModuleModuleLink>(moduleLink),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.automationAccountName,
+    this.moduleLink,
+    this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class ModuleState {
 
   factory ModuleState.fromMap(Map<String, dynamic> map) {
     return ModuleState(
-      automationAccountName: map['automationAccountName'] == null ? null : pulumi.Output.create<String>(map['automationAccountName'] as String),
-      moduleLink: map['moduleLink'] == null ? null : pulumi.Output.create<ModuleModuleLink>(ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
+      moduleLink: map['moduleLink'] == null ? null : (ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

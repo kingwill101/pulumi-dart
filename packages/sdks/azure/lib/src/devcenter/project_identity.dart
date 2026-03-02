@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectIdentity {
   /// The ID of the User Assigned Identity which should be assigned to this Dev Center Project.
   ///
   /// > **Note:** `identity_ids` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
-  final List<String>? identityIds;
+  final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID for the Service Principal associated with the Identity of this Dev Center Project.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// The Tenant ID for the Service Principal associated with the Identity of this Dev Center Project.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The type of identity used for this Dev Center Project. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ProjectIdentity].
   /// [identityIds] The ID of the User Assigned Identity which should be assigned to this Dev Center Project.
@@ -36,10 +37,10 @@ class ProjectIdentity {
 
   factory ProjectIdentity.fromMap(Map<String, dynamic> map) {
     return ProjectIdentity(
-      identityIds: map['identityIds'] == null ? null : (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: map['identityIds'] == null ? null : ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

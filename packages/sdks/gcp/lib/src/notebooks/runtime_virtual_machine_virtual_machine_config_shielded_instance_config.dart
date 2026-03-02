@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
@@ -8,16 +9,16 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
   /// integrity policy baseline. This baseline is initially derived
   /// from the implicitly trusted boot image when the instance is
   /// created. Enabled by default.
-  final bool? enableIntegrityMonitoring;
+  final pulumi.Input<bool>? enableIntegrityMonitoring;
   /// Defines whether the instance has Secure Boot enabled.Secure
   /// Boot helps ensure that the system only runs authentic software
   /// by verifying the digital signature of all boot components, and
   /// halting the boot process if signature verification fails.
   /// Disabled by default.
-  final bool? enableSecureBoot;
+  final pulumi.Input<bool>? enableSecureBoot;
   /// Defines whether the instance has the vTPM enabled. Enabled by
   /// default.
-  final bool? enableVtpm;
+  final pulumi.Input<bool>? enableVtpm;
 
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.
@@ -39,9 +40,9 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
 
   factory RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
-      enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring'] as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableVtpm: map['enableVtpm'] == null ? null : (map['enableVtpm'] as bool).input(),
     );
   }
 }

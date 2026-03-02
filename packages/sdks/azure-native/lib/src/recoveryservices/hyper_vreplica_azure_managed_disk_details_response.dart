@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Hyper-V Managed disk details.
 class HyperVReplicaAzureManagedDiskDetailsResponse {
   /// The disk encryption set ARM Id.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// The disk Id.
-  final String? diskId;
+  final pulumi.Input<String>? diskId;
   /// The replica disk type.
-  final String? replicaDiskType;
+  final pulumi.Input<String>? replicaDiskType;
   /// The logical sector size (in bytes), 512 by default.
-  final int? sectorSizeInBytes;
+  final pulumi.Input<int>? sectorSizeInBytes;
   /// Seed managed disk Id.
-  final String? seedManagedDiskId;
+  final pulumi.Input<String>? seedManagedDiskId;
   /// The disk type.
-  final String? targetDiskAccountType;
+  final pulumi.Input<String>? targetDiskAccountType;
 
   /// Creates a new [HyperVReplicaAzureManagedDiskDetailsResponse].
   /// [diskEncryptionSetId] The disk encryption set ARM Id.
@@ -45,12 +46,12 @@ class HyperVReplicaAzureManagedDiskDetailsResponse {
 
   factory HyperVReplicaAzureManagedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaAzureManagedDiskDetailsResponse(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
-      replicaDiskType: map['replicaDiskType'] == null ? null : map['replicaDiskType'] as String,
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : map['sectorSizeInBytes'] as int,
-      seedManagedDiskId: map['seedManagedDiskId'] == null ? null : map['seedManagedDiskId'] as String,
-      targetDiskAccountType: map['targetDiskAccountType'] == null ? null : map['targetDiskAccountType'] as String,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      replicaDiskType: map['replicaDiskType'] == null ? null : (map['replicaDiskType'] as String).input(),
+      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes'] as int).input(),
+      seedManagedDiskId: map['seedManagedDiskId'] == null ? null : (map['seedManagedDiskId'] as String).input(),
+      targetDiskAccountType: map['targetDiskAccountType'] == null ? null : (map['targetDiskAccountType'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class SyncCloudEndpointArgs {
   /// [storageAccountTenantId] The Tenant ID of the Storage Account where the Storage Share exists. Changing this forces a new Storage Sync Cloud Endpoint to be created. Defaults to the current tenant id.
   /// [storageSyncGroupId] The ID of the Storage Sync Group where this Cloud Endpoint should be created. Changing this forces a new Storage Sync Cloud Endpoint to be created.
   SyncCloudEndpointArgs({
-    required pulumi.Output<String> fileShareName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> storageAccountId,
-    pulumi.Output<String>? storageAccountTenantId,
-    required pulumi.Output<String> storageSyncGroupId,
-  }) :
-      fileShareName = pulumi.Input.asInput<String>(fileShareName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId),
-      storageAccountTenantId = pulumi.Input.asOptionalInput<String>(storageAccountTenantId),
-      storageSyncGroupId = pulumi.Input.asInput<String>(storageSyncGroupId);
+    required this.fileShareName,
+    this.name,
+    required this.storageAccountId,
+    this.storageAccountTenantId,
+    required this.storageSyncGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SyncCloudEndpointArgs {
 
   factory SyncCloudEndpointArgs.fromMap(Map<String, dynamic> map) {
     return SyncCloudEndpointArgs(
-      fileShareName: pulumi.Output.create<String>(map['fileShareName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : pulumi.Output.create<String>(map['storageAccountTenantId'] as String),
-      storageSyncGroupId: pulumi.Output.create<String>(map['storageSyncGroupId'] as String),
+      fileShareName: (map['fileShareName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId'] as String).input(),
+      storageSyncGroupId: (map['storageSyncGroupId'] as String).input(),
     );
   }
 }

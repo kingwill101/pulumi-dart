@@ -19,13 +19,10 @@ class GetCaCertificateArgs {
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   GetCaCertificateArgs({
-    required pulumi.Output<String> caCertificateName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      caCertificateName = pulumi.Input.asInput<String>(caCertificateName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.caCertificateName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCaCertificateArgs {
 
   factory GetCaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCaCertificateArgs(
-      caCertificateName: pulumi.Output.create<String>(map['caCertificateName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      caCertificateName: (map['caCertificateName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRemoteWritesRemoteWrite {
   /// The ID of the Prometheus instance.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The ID of the Remote Write. It formats as `<cluster_id>:<remote_write_name>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the Remote Write configuration item.
-  final String remoteWriteName;
+  final pulumi.Input<String> remoteWriteName;
   /// The details of the Remote Write configuration item. The value is in the YAML format.
-  final String remoteWriteYaml;
+  final pulumi.Input<String> remoteWriteYaml;
 
   /// Creates a new [GetRemoteWritesRemoteWrite].
   /// [clusterId] The ID of the Prometheus instance.
@@ -34,10 +35,10 @@ class GetRemoteWritesRemoteWrite {
 
   factory GetRemoteWritesRemoteWrite.fromMap(Map<String, dynamic> map) {
     return GetRemoteWritesRemoteWrite(
-      clusterId: map['clusterId'] as String,
-      id: map['id'] as String,
-      remoteWriteName: map['remoteWriteName'] as String,
-      remoteWriteYaml: map['remoteWriteYaml'] as String,
+      clusterId: (map['clusterId'] as String).input(),
+      id: (map['id'] as String).input(),
+      remoteWriteName: (map['remoteWriteName'] as String).input(),
+      remoteWriteYaml: (map['remoteWriteYaml'] as String).input(),
     );
   }
 }

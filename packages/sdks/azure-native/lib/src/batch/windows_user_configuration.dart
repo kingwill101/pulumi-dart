@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'login_mode.dart';
 
 /// Properties used to create a user account on a Windows node.
 class WindowsUserConfiguration {
   /// Specifies login mode for the user. The default value is Interactive.
-  final LoginMode? loginMode;
+  final pulumi.Input<LoginMode>? loginMode;
 
   /// Creates a new [WindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user. The default value is Interactive.
@@ -15,13 +16,13 @@ class WindowsUserConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loginMode': ?loginMode == null ? null : loginMode!.value,
+      'loginMode': ?pulumi.Input.mapOptionalInputValue<LoginMode, String>(loginMode, (value) => value.value),
     };
   }
 
   factory WindowsUserConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsUserConfiguration(
-      loginMode: map['loginMode'] == null ? null : LoginMode.fromValue(map['loginMode'] as String),
+      loginMode: map['loginMode'] == null ? null : (LoginMode.fromValue(map['loginMode'] as String)).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetVirtualMachineTemplateArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [virtualMachineTemplateName] Name of the virtual machine template resource.
   GetVirtualMachineTemplateArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualMachineTemplateName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachineTemplateName = pulumi.Input.asInput<String>(virtualMachineTemplateName);
+    required this.resourceGroupName,
+    required this.virtualMachineTemplateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualMachineTemplateArgs {
 
   factory GetVirtualMachineTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineTemplateArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachineTemplateName: pulumi.Output.create<String>(map['virtualMachineTemplateName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachineTemplateName: (map['virtualMachineTemplateName'] as String).input(),
     );
   }
 }

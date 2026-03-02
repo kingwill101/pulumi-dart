@@ -28,17 +28,12 @@ class WebAppSitesControllerArgs {
   /// [siteName] Site name
   /// [webAppSiteName] Web app site name.
   WebAppSitesControllerArgs({
-    pulumi.Output<String>? discoveryScenario,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<SiteApplianceProperties>>? siteAppliancePropertiesCollection,
-    required pulumi.Output<String> siteName,
-    pulumi.Output<String>? webAppSiteName,
-  }) :
-      discoveryScenario = pulumi.Input.asOptionalInput<String>(discoveryScenario),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteAppliancePropertiesCollection = pulumi.Input.asOptionalInput<List<SiteApplianceProperties>>(siteAppliancePropertiesCollection),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      webAppSiteName = pulumi.Input.asOptionalInput<String>(webAppSiteName);
+    this.discoveryScenario,
+    required this.resourceGroupName,
+    this.siteAppliancePropertiesCollection,
+    required this.siteName,
+    this.webAppSiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class WebAppSitesControllerArgs {
 
   factory WebAppSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSitesControllerArgs(
-      discoveryScenario: map['discoveryScenario'] == null ? null : pulumi.Output.create<String>(map['discoveryScenario'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteAppliancePropertiesCollection: map['siteAppliancePropertiesCollection'] == null ? null : pulumi.Output.create<List<SiteApplianceProperties>>(pulumi.Input.decodeList<SiteApplianceProperties>(map['siteAppliancePropertiesCollection'], (value) => SiteApplianceProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      webAppSiteName: map['webAppSiteName'] == null ? null : pulumi.Output.create<String>(map['webAppSiteName'] as String),
+      discoveryScenario: map['discoveryScenario'] == null ? null : (map['discoveryScenario'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteAppliancePropertiesCollection: map['siteAppliancePropertiesCollection'] == null ? null : (pulumi.Input.decodeList<SiteApplianceProperties>(map['siteAppliancePropertiesCollection'], (value) => SiteApplianceProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteName: (map['siteName'] as String).input(),
+      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName'] as String).input(),
     );
   }
 }

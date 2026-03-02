@@ -22,13 +22,10 @@ class GetCloudVmClusterArgs {
   /// [location] The location of the resource.
   /// [project] The project in which the resource belongs. If it
   GetCloudVmClusterArgs({
-    required pulumi.Output<String> cloudVmClusterId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      cloudVmClusterId = pulumi.Input.asInput<String>(cloudVmClusterId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.cloudVmClusterId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetCloudVmClusterArgs {
 
   factory GetCloudVmClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterArgs(
-      cloudVmClusterId: pulumi.Output.create<String>(map['cloudVmClusterId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      cloudVmClusterId: (map['cloudVmClusterId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

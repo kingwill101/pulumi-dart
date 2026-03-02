@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHealthCheckHttpHealthCheck {
   /// The value of the host header in the HTTP health check request.
   /// If left empty (default value), the public IP on behalf of which this health
   /// check is performed will be used.
-  final String host;
+  final pulumi.Input<String> host;
   /// The TCP port number for the HTTP health check request.
   /// The default value is 80.
-  final int port;
+  final pulumi.Input<int> port;
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// port_name are defined, port takes precedence.
-  final String portName;
+  final pulumi.Input<String> portName;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   ///
@@ -26,17 +27,17 @@ class GetHealthCheckHttpHealthCheck {
   ///
   /// If not specified, HTTP health check follows behavior specified in 'port' and
   /// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
-  final String portSpecification;
+  final pulumi.Input<String> portSpecification;
   /// Specifies the type of proxy header to append before sending data to the
   /// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
-  final String proxyHeader;
+  final pulumi.Input<String> proxyHeader;
   /// The request path of the HTTP health check request.
   /// The default value is /.
-  final String requestPath;
+  final pulumi.Input<String> requestPath;
   /// The bytes to match against the beginning of the response data. If left empty
   /// (the default value), any response will indicate health. The response data
   /// can only be ASCII.
-  final String response;
+  final pulumi.Input<String> response;
 
   /// Creates a new [GetHealthCheckHttpHealthCheck].
   /// [host] The value of the host header in the HTTP health check request.
@@ -70,13 +71,13 @@ class GetHealthCheckHttpHealthCheck {
 
   factory GetHealthCheckHttpHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckHttpHealthCheck(
-      host: map['host'] as String,
-      port: map['port'] as int,
-      portName: map['portName'] as String,
-      portSpecification: map['portSpecification'] as String,
-      proxyHeader: map['proxyHeader'] as String,
-      requestPath: map['requestPath'] as String,
-      response: map['response'] as String,
+      host: (map['host'] as String).input(),
+      port: (map['port'] as int).input(),
+      portName: (map['portName'] as String).input(),
+      portSpecification: (map['portSpecification'] as String).input(),
+      proxyHeader: (map['proxyHeader'] as String).input(),
+      requestPath: (map['requestPath'] as String).input(),
+      response: (map['response'] as String).input(),
     );
   }
 }

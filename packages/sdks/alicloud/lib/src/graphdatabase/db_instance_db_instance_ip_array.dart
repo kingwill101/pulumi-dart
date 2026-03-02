@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DbInstanceDbInstanceIpArray {
   /// The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
-  final String? dbInstanceIpArrayAttribute;
+  final pulumi.Input<String>? dbInstanceIpArrayAttribute;
   /// IP ADDRESS whitelist group name.
-  final String? dbInstanceIpArrayName;
+  final pulumi.Input<String>? dbInstanceIpArrayName;
   /// IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
-  final String? securityIps;
+  final pulumi.Input<String>? securityIps;
 
   /// Creates a new [DbInstanceDbInstanceIpArray].
   /// [dbInstanceIpArrayAttribute] The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
@@ -29,9 +30,9 @@ class DbInstanceDbInstanceIpArray {
 
   factory DbInstanceDbInstanceIpArray.fromMap(Map<String, dynamic> map) {
     return DbInstanceDbInstanceIpArray(
-      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : map['dbInstanceIpArrayAttribute'] as String,
-      dbInstanceIpArrayName: map['dbInstanceIpArrayName'] == null ? null : map['dbInstanceIpArrayName'] as String,
-      securityIps: map['securityIps'] == null ? null : map['securityIps'] as String,
+      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute'] as String).input(),
+      dbInstanceIpArrayName: map['dbInstanceIpArrayName'] == null ? null : (map['dbInstanceIpArrayName'] as String).input(),
+      securityIps: map['securityIps'] == null ? null : (map['securityIps'] as String).input(),
     );
   }
 }

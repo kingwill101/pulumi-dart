@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Each logical network interface is effectively a network and IP pair.
 class LogicalNetworkInterfaceResponse {
   /// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
-  final bool defaultGateway;
+  final pulumi.Input<bool> defaultGateway;
   /// IP address in the network
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Name of the network
-  final String network;
+  final pulumi.Input<String> network;
   /// Type of network.
-  final String networkType;
+  final pulumi.Input<String> networkType;
 
   /// Creates a new [LogicalNetworkInterfaceResponse].
   /// [defaultGateway] Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
@@ -35,10 +36,10 @@ class LogicalNetworkInterfaceResponse {
 
   factory LogicalNetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkInterfaceResponse(
-      defaultGateway: map['defaultGateway'] as bool,
-      ipAddress: map['ipAddress'] as String,
-      network: map['network'] as String,
-      networkType: map['networkType'] as String,
+      defaultGateway: (map['defaultGateway'] as bool).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      network: (map['network'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
     );
   }
 }

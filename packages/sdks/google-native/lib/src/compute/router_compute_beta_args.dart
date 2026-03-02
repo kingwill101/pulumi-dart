@@ -49,31 +49,19 @@ class RouterComputeBetaArgs {
   /// [region] Required.
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   RouterComputeBetaArgs({
-    pulumi.Output<RouterBgpComputeBeta>? bgp,
-    pulumi.Output<List<RouterBgpPeerComputeBeta>>? bgpPeers,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? encryptedInterconnectRouter,
-    pulumi.Output<List<RouterInterfaceComputeBeta>>? interfaces,
-    pulumi.Output<List<RouterMd5AuthenticationKeyComputeBeta>>? md5AuthenticationKeys,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<RouterNatComputeBeta>>? nats,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-  }) :
-      bgp = pulumi.Input.asOptionalInput<RouterBgpComputeBeta>(bgp),
-      bgpPeers = pulumi.Input.asOptionalInput<List<RouterBgpPeerComputeBeta>>(bgpPeers),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptedInterconnectRouter = pulumi.Input.asOptionalInput<bool>(encryptedInterconnectRouter),
-      interfaces = pulumi.Input.asOptionalInput<List<RouterInterfaceComputeBeta>>(interfaces),
-      md5AuthenticationKeys = pulumi.Input.asOptionalInput<List<RouterMd5AuthenticationKeyComputeBeta>>(md5AuthenticationKeys),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nats = pulumi.Input.asOptionalInput<List<RouterNatComputeBeta>>(nats),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.bgp,
+    this.bgpPeers,
+    this.description,
+    this.encryptedInterconnectRouter,
+    this.interfaces,
+    this.md5AuthenticationKeys,
+    this.name,
+    this.nats,
+    this.network,
+    this.project,
+    required this.region,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class RouterComputeBetaArgs {
 
   factory RouterComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return RouterComputeBetaArgs(
-      bgp: map['bgp'] == null ? null : pulumi.Output.create<RouterBgpComputeBeta>(RouterBgpComputeBeta.fromMap((map['bgp'] as Map).cast<String, dynamic>())),
-      bgpPeers: map['bgpPeers'] == null ? null : pulumi.Output.create<List<RouterBgpPeerComputeBeta>>(pulumi.Input.decodeList<RouterBgpPeerComputeBeta>(map['bgpPeers'], (value) => RouterBgpPeerComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : pulumi.Output.create<bool>(map['encryptedInterconnectRouter'] as bool),
-      interfaces: map['interfaces'] == null ? null : pulumi.Output.create<List<RouterInterfaceComputeBeta>>(pulumi.Input.decodeList<RouterInterfaceComputeBeta>(map['interfaces'], (value) => RouterInterfaceComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : pulumi.Output.create<List<RouterMd5AuthenticationKeyComputeBeta>>(pulumi.Input.decodeList<RouterMd5AuthenticationKeyComputeBeta>(map['md5AuthenticationKeys'], (value) => RouterMd5AuthenticationKeyComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nats: map['nats'] == null ? null : pulumi.Output.create<List<RouterNatComputeBeta>>(pulumi.Input.decodeList<RouterNatComputeBeta>(map['nats'], (value) => RouterNatComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      bgp: map['bgp'] == null ? null : (RouterBgpComputeBeta.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
+      bgpPeers: map['bgpPeers'] == null ? null : (pulumi.Input.decodeList<RouterBgpPeerComputeBeta>(map['bgpPeers'], (value) => RouterBgpPeerComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : (map['encryptedInterconnectRouter'] as bool).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<RouterInterfaceComputeBeta>(map['interfaces'], (value) => RouterInterfaceComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : (pulumi.Input.decodeList<RouterMd5AuthenticationKeyComputeBeta>(map['md5AuthenticationKeys'], (value) => RouterMd5AuthenticationKeyComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nats: map['nats'] == null ? null : (pulumi.Input.decodeList<RouterNatComputeBeta>(map['nats'], (value) => RouterNatComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

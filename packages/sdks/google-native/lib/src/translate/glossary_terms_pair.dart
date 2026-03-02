@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'glossary_term.dart';
 
 /// Represents a single entry for an unidirectional glossary.
 class GlossaryTermsPair {
   /// The source term is the term that will get match in the text,
-  final GlossaryTerm? sourceTerm;
+  final pulumi.Input<GlossaryTerm>? sourceTerm;
   /// The term that will replace the match source term.
-  final GlossaryTerm? targetTerm;
+  final pulumi.Input<GlossaryTerm>? targetTerm;
 
   /// Creates a new [GlossaryTermsPair].
   /// [sourceTerm] The source term is the term that will get match in the text,
@@ -19,15 +20,15 @@ class GlossaryTermsPair {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceTerm': ?sourceTerm == null ? null : sourceTerm!.toMap(),
-      'targetTerm': ?targetTerm == null ? null : targetTerm!.toMap(),
+      'sourceTerm': ?pulumi.Input.mapOptionalInputValue<GlossaryTerm, Map<String, dynamic>>(sourceTerm, (value) => value.toMap()),
+      'targetTerm': ?pulumi.Input.mapOptionalInputValue<GlossaryTerm, Map<String, dynamic>>(targetTerm, (value) => value.toMap()),
     };
   }
 
   factory GlossaryTermsPair.fromMap(Map<String, dynamic> map) {
     return GlossaryTermsPair(
-      sourceTerm: map['sourceTerm'] == null ? null : GlossaryTerm.fromMap((map['sourceTerm'] as Map).cast<String, dynamic>()),
-      targetTerm: map['targetTerm'] == null ? null : GlossaryTerm.fromMap((map['targetTerm'] as Map).cast<String, dynamic>()),
+      sourceTerm: map['sourceTerm'] == null ? null : (GlossaryTerm.fromMap((map['sourceTerm'] as Map).cast<String, dynamic>())).input(),
+      targetTerm: map['targetTerm'] == null ? null : (GlossaryTerm.fromMap((map['targetTerm'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

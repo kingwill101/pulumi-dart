@@ -29,19 +29,13 @@ class EnterpriseMccCacheNodesOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   EnterpriseMccCacheNodesOperationArgs({
-    pulumi.Output<String>? cacheNodeResourceName,
-    required pulumi.Output<String> customerResourceName,
-    pulumi.Output<String>? location,
-    pulumi.Output<CacheNodeProperty>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cacheNodeResourceName = pulumi.Input.asOptionalInput<String>(cacheNodeResourceName),
-      customerResourceName = pulumi.Input.asInput<String>(customerResourceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<CacheNodeProperty>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.cacheNodeResourceName,
+    required this.customerResourceName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class EnterpriseMccCacheNodesOperationArgs {
 
   factory EnterpriseMccCacheNodesOperationArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseMccCacheNodesOperationArgs(
-      cacheNodeResourceName: map['cacheNodeResourceName'] == null ? null : pulumi.Output.create<String>(map['cacheNodeResourceName'] as String),
-      customerResourceName: pulumi.Output.create<String>(map['customerResourceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CacheNodeProperty>(CacheNodeProperty.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cacheNodeResourceName: map['cacheNodeResourceName'] == null ? null : (map['cacheNodeResourceName'] as String).input(),
+      customerResourceName: (map['customerResourceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (CacheNodeProperty.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

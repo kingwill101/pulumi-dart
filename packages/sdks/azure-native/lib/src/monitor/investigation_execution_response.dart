@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details about the execution of the investigation
 class InvestigationExecutionResponse {
   /// The time at which the investigation execution completed (in UTC)
-  final String? completedAt;
+  final pulumi.Input<String>? completedAt;
   /// The state of the investigation execution
-  final String runState;
+  final pulumi.Input<String> runState;
 
   /// Creates a new [InvestigationExecutionResponse].
   /// [completedAt] The time at which the investigation execution completed (in UTC)
@@ -25,8 +26,8 @@ class InvestigationExecutionResponse {
 
   factory InvestigationExecutionResponse.fromMap(Map<String, dynamic> map) {
     return InvestigationExecutionResponse(
-      completedAt: map['completedAt'] == null ? null : map['completedAt'] as String,
-      runState: map['runState'] as String,
+      completedAt: map['completedAt'] == null ? null : (map['completedAt'] as String).input(),
+      runState: (map['runState'] as String).input(),
     );
   }
 }

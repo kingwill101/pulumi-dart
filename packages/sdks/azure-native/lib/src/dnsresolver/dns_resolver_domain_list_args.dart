@@ -25,17 +25,12 @@ class DnsResolverDomainListArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   DnsResolverDomainListArgs({
-    pulumi.Output<String>? dnsResolverDomainListName,
-    required pulumi.Output<List<String>> domains,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dnsResolverDomainListName = pulumi.Input.asOptionalInput<String>(dnsResolverDomainListName),
-      domains = pulumi.Input.asInput<List<String>>(domains),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dnsResolverDomainListName,
+    required this.domains,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DnsResolverDomainListArgs {
 
   factory DnsResolverDomainListArgs.fromMap(Map<String, dynamic> map) {
     return DnsResolverDomainListArgs(
-      dnsResolverDomainListName: map['dnsResolverDomainListName'] == null ? null : pulumi.Output.create<String>(map['dnsResolverDomainListName'] as String),
-      domains: pulumi.Output.create<List<String>>((map['domains'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dnsResolverDomainListName: map['dnsResolverDomainListName'] == null ? null : (map['dnsResolverDomainListName'] as String).input(),
+      domains: ((map['domains'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

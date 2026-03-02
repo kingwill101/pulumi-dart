@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional, external documentation for the API.
 class ExternalDocumentation {
   /// Description of the documentation.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Title of the documentation.
-  final String? title;
+  final pulumi.Input<String>? title;
   /// URL pointing to the documentation.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [ExternalDocumentation].
   /// [description] Description of the documentation.
@@ -30,9 +31,9 @@ class ExternalDocumentation {
 
   factory ExternalDocumentation.fromMap(Map<String, dynamic> map) {
     return ExternalDocumentation(
-      description: map['description'] == null ? null : map['description'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
-      url: map['url'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

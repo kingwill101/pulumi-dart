@@ -26,17 +26,12 @@ class ConfigurationProfileArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   ConfigurationProfileArgs({
-    pulumi.Output<String>? configurationProfileName,
-    pulumi.Output<String>? location,
-    pulumi.Output<ConfigurationProfileProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      configurationProfileName = pulumi.Input.asOptionalInput<String>(configurationProfileName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ConfigurationProfileProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.configurationProfileName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ConfigurationProfileArgs {
 
   factory ConfigurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileArgs(
-      configurationProfileName: map['configurationProfileName'] == null ? null : pulumi.Output.create<String>(map['configurationProfileName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConfigurationProfileProperties>(ConfigurationProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      configurationProfileName: map['configurationProfileName'] == null ? null : (map['configurationProfileName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

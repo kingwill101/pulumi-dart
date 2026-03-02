@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The native cloud connection configuration
 class CspmMonitorAwsOfferingNativeCloudConnection {
   /// The cloud role ARN in AWS for this feature
-  final String? cloudRoleArn;
+  final pulumi.Input<String>? cloudRoleArn;
 
   /// Creates a new [CspmMonitorAwsOfferingNativeCloudConnection].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
@@ -20,7 +21,7 @@ class CspmMonitorAwsOfferingNativeCloudConnection {
 
   factory CspmMonitorAwsOfferingNativeCloudConnection.fromMap(Map<String, dynamic> map) {
     return CspmMonitorAwsOfferingNativeCloudConnection(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
     );
   }
 }

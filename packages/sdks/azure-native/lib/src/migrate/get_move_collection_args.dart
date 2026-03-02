@@ -16,11 +16,9 @@ class GetMoveCollectionArgs {
   /// [moveCollectionName] The Move Collection Name.
   /// [resourceGroupName] The Resource Group Name.
   GetMoveCollectionArgs({
-    required pulumi.Output<String> moveCollectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      moveCollectionName = pulumi.Input.asInput<String>(moveCollectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.moveCollectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMoveCollectionArgs {
 
   factory GetMoveCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetMoveCollectionArgs(
-      moveCollectionName: pulumi.Output.create<String>(map['moveCollectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      moveCollectionName: (map['moveCollectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

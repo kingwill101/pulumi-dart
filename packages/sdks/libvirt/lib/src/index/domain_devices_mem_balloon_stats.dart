@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesMemBalloonStats {
   /// Specifies the period for gathering statistics from the memory balloon device.
-  final double period;
+  final pulumi.Input<double> period;
 
   /// Creates a new [DomainDevicesMemBalloonStats].
   /// [period] Specifies the period for gathering statistics from the memory balloon device.
@@ -19,7 +20,7 @@ class DomainDevicesMemBalloonStats {
 
   factory DomainDevicesMemBalloonStats.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemBalloonStats(
-      period: map['period'] as double,
+      period: (map['period'] as double).input(),
     );
   }
 }

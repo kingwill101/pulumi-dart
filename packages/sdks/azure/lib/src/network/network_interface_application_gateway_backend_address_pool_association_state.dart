@@ -16,13 +16,10 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState {
   /// [ipConfigurationName] The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
   /// [networkInterfaceId] The ID of the Network Interface. Changing this forces a new resource to be created.
   NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState({
-    pulumi.Output<String>? backendAddressPoolId,
-    pulumi.Output<String>? ipConfigurationName,
-    pulumi.Output<String>? networkInterfaceId,
-  }) :
-      backendAddressPoolId = pulumi.Input.asOptionalInput<String>(backendAddressPoolId),
-      ipConfigurationName = pulumi.Input.asOptionalInput<String>(ipConfigurationName),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId);
+    this.backendAddressPoolId,
+    this.ipConfigurationName,
+    this.networkInterfaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState {
 
   factory NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState(
-      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : pulumi.Output.create<String>(map['backendAddressPoolId'] as String),
-      ipConfigurationName: map['ipConfigurationName'] == null ? null : pulumi.Output.create<String>(map['ipConfigurationName'] as String),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
+      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId'] as String).input(),
+      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
     );
   }
 }

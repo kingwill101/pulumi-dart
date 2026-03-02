@@ -16,13 +16,10 @@ class CoreNetworkPolicyAttachmentState {
   /// [policyDocument] Policy document for creating a core network. Note that updating this argument will result in the new policy document version being set as the `LATEST` and `LIVE` policy document. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
   /// [state] Current state of a core network.
   CoreNetworkPolicyAttachmentState({
-    pulumi.Output<String>? coreNetworkId,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? state,
-  }) :
-      coreNetworkId = pulumi.Input.asOptionalInput<String>(coreNetworkId),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.coreNetworkId,
+    this.policyDocument,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CoreNetworkPolicyAttachmentState {
 
   factory CoreNetworkPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return CoreNetworkPolicyAttachmentState(
-      coreNetworkId: map['coreNetworkId'] == null ? null : pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

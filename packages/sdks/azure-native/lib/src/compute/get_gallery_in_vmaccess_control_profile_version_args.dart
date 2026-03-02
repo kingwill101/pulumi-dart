@@ -22,15 +22,11 @@ class GetGalleryInVMAccessControlProfileVersionArgs {
   /// [inVMAccessControlProfileVersionName] The name of the gallery inVMAccessControlProfile version to be retrieved.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGalleryInVMAccessControlProfileVersionArgs({
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> inVMAccessControlProfileName,
-    required pulumi.Output<String> inVMAccessControlProfileVersionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      inVMAccessControlProfileName = pulumi.Input.asInput<String>(inVMAccessControlProfileName),
-      inVMAccessControlProfileVersionName = pulumi.Input.asInput<String>(inVMAccessControlProfileVersionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.galleryName,
+    required this.inVMAccessControlProfileName,
+    required this.inVMAccessControlProfileVersionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetGalleryInVMAccessControlProfileVersionArgs {
 
   factory GetGalleryInVMAccessControlProfileVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryInVMAccessControlProfileVersionArgs(
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      inVMAccessControlProfileName: pulumi.Output.create<String>(map['inVMAccessControlProfileName'] as String),
-      inVMAccessControlProfileVersionName: pulumi.Output.create<String>(map['inVMAccessControlProfileVersionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      galleryName: (map['galleryName'] as String).input(),
+      inVMAccessControlProfileName: (map['inVMAccessControlProfileName'] as String).input(),
+      inVMAccessControlProfileVersionName: (map['inVMAccessControlProfileVersionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

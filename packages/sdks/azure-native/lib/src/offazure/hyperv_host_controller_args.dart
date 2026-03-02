@@ -28,19 +28,13 @@ class HypervHostControllerArgs {
   /// [runAsAccountId] Gets or sets the run as account ID of the Hyper-V host.
   /// [siteName] Site name
   HypervHostControllerArgs({
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? runAsAccountId,
-    required pulumi.Output<String> siteName,
-  }) :
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runAsAccountId = pulumi.Input.asOptionalInput<String>(runAsAccountId),
-      siteName = pulumi.Input.asInput<String>(siteName);
+    this.fqdn,
+    this.hostName,
+    this.provisioningState,
+    required this.resourceGroupName,
+    this.runAsAccountId,
+    required this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class HypervHostControllerArgs {
 
   factory HypervHostControllerArgs.fromMap(Map<String, dynamic> map) {
     return HypervHostControllerArgs(
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runAsAccountId: map['runAsAccountId'] == null ? null : pulumi.Output.create<String>(map['runAsAccountId'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBrokerConfiguration {
   /// Configuration ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Revision of the Configuration.
-  final int revision;
+  final pulumi.Input<int> revision;
 
   /// Creates a new [GetBrokerConfiguration].
   /// [id] Configuration ID.
@@ -24,8 +25,8 @@ class GetBrokerConfiguration {
 
   factory GetBrokerConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBrokerConfiguration(
-      id: map['id'] as String,
-      revision: map['revision'] as int,
+      id: (map['id'] as String).input(),
+      revision: (map['revision'] as int).input(),
     );
   }
 }

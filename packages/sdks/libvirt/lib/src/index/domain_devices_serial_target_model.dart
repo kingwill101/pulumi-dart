@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesSerialTargetModel {
   /// Specifies the name attribute for the model of the target serial device.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DomainDevicesSerialTargetModel].
   /// [name] Specifies the name attribute for the model of the target serial device.
@@ -19,7 +20,7 @@ class DomainDevicesSerialTargetModel {
 
   factory DomainDevicesSerialTargetModel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialTargetModel(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

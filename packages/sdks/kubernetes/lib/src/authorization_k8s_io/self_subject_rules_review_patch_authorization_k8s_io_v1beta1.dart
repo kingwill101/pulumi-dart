@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'self_subject_rules_review_spec_patch_authorization_k8s_io_v1beta1.dart';
 import 'subject_rules_review_status_patch_authorization_k8s_io_v1beta1.dart';
@@ -7,14 +8,14 @@ import 'subject_rules_review_status_patch_authorization_k8s_io_v1beta1.dart';
 /// SelfSubjectRulesReview enumerates the set of actions the current user can perform within a namespace. The returned list of actions may be incomplete depending on the server's authorization mode, and any errors experienced during the evaluation. SelfSubjectRulesReview should be used by UIs to show/hide actions, or to quickly let an end user reason about their permissions. It should NOT Be used by external systems to drive authorization decisions as this raises confused deputy, cache lifetime/revocation, and correctness concerns. SubjectAccessReview, and LocalAccessReview are the correct way to defer authorization decisions to the API server.
 class SelfSubjectRulesReviewPatchAuthorizationK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
-  final ObjectMetaPatch? metadata;
+  final pulumi.Input<String>? kind;
+  final pulumi.Input<ObjectMetaPatch>? metadata;
   /// Spec holds information about the request being evaluated.
-  final SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1? spec;
+  final pulumi.Input<SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1>? spec;
   /// Status is filled in by the server and indicates the set of actions a user can perform.
-  final SubjectRulesReviewStatusPatchAuthorizationK8sIoV1beta1? status;
+  final pulumi.Input<SubjectRulesReviewStatusPatchAuthorizationK8sIoV1beta1>? status;
 
   /// Creates a new [SelfSubjectRulesReviewPatchAuthorizationK8sIoV1beta1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -34,19 +35,19 @@ class SelfSubjectRulesReviewPatchAuthorizationK8sIoV1beta1 {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': ?spec == null ? null : spec!.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<SubjectRulesReviewStatusPatchAuthorizationK8sIoV1beta1, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory SelfSubjectRulesReviewPatchAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SelfSubjectRulesReviewPatchAuthorizationK8sIoV1beta1(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: map['spec'] == null ? null : SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : SubjectRulesReviewStatusPatchAuthorizationK8sIoV1beta1.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (SelfSubjectRulesReviewSpecPatchAuthorizationK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (SubjectRulesReviewStatusPatchAuthorizationK8sIoV1beta1.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

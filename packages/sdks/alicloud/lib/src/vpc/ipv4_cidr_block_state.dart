@@ -24,17 +24,12 @@ class Ipv4CidrBlockState {
   /// [secondaryCidrMask] Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
   /// [vpcId] The ID of the VPC.
   Ipv4CidrBlockState({
-    pulumi.Output<String>? ipv4IpamPoolId,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? secondaryCidrBlock,
-    pulumi.Output<int>? secondaryCidrMask,
-    pulumi.Output<String>? vpcId,
-  }) :
-      ipv4IpamPoolId = pulumi.Input.asOptionalInput<String>(ipv4IpamPoolId),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      secondaryCidrBlock = pulumi.Input.asOptionalInput<String>(secondaryCidrBlock),
-      secondaryCidrMask = pulumi.Input.asOptionalInput<int>(secondaryCidrMask),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.ipv4IpamPoolId,
+    this.regionId,
+    this.secondaryCidrBlock,
+    this.secondaryCidrMask,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class Ipv4CidrBlockState {
 
   factory Ipv4CidrBlockState.fromMap(Map<String, dynamic> map) {
     return Ipv4CidrBlockState(
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipv4IpamPoolId'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      secondaryCidrBlock: map['secondaryCidrBlock'] == null ? null : pulumi.Output.create<String>(map['secondaryCidrBlock'] as String),
-      secondaryCidrMask: map['secondaryCidrMask'] == null ? null : pulumi.Output.create<int>(map['secondaryCidrMask'] as int),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      secondaryCidrBlock: map['secondaryCidrBlock'] == null ? null : (map['secondaryCidrBlock'] as String).input(),
+      secondaryCidrMask: map['secondaryCidrMask'] == null ? null : (map['secondaryCidrMask'] as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

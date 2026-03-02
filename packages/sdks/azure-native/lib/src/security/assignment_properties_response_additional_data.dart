@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional data about the assignment
 class AssignmentPropertiesResponseAdditionalData {
   /// Exemption category of this assignment
-  final String? exemptionCategory;
+  final pulumi.Input<String>? exemptionCategory;
 
   /// Creates a new [AssignmentPropertiesResponseAdditionalData].
   /// [exemptionCategory] Exemption category of this assignment
@@ -20,7 +21,7 @@ class AssignmentPropertiesResponseAdditionalData {
 
   factory AssignmentPropertiesResponseAdditionalData.fromMap(Map<String, dynamic> map) {
     return AssignmentPropertiesResponseAdditionalData(
-      exemptionCategory: map['exemptionCategory'] == null ? null : map['exemptionCategory'] as String,
+      exemptionCategory: map['exemptionCategory'] == null ? null : (map['exemptionCategory'] as String).input(),
     );
   }
 }

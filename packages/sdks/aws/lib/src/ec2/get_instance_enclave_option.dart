@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceEnclaveOption {
   /// Whether Nitro Enclaves are enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetInstanceEnclaveOption].
   /// [enabled] Whether Nitro Enclaves are enabled.
@@ -19,7 +20,7 @@ class GetInstanceEnclaveOption {
 
   factory GetInstanceEnclaveOption.fromMap(Map<String, dynamic> map) {
     return GetInstanceEnclaveOption(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

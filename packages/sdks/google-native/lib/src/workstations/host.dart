@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gce_instance.dart';
 
 /// Runtime host for a workstation.
 class Host {
   /// Specifies a Compute Engine instance as the host.
-  final GceInstance? gceInstance;
+  final pulumi.Input<GceInstance>? gceInstance;
 
   /// Creates a new [Host].
   /// [gceInstance] Specifies a Compute Engine instance as the host.
@@ -15,13 +16,13 @@ class Host {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gceInstance': ?gceInstance == null ? null : gceInstance!.toMap(),
+      'gceInstance': ?pulumi.Input.mapOptionalInputValue<GceInstance, Map<String, dynamic>>(gceInstance, (value) => value.toMap()),
     };
   }
 
   factory Host.fromMap(Map<String, dynamic> map) {
     return Host(
-      gceInstance: map['gceInstance'] == null ? null : GceInstance.fromMap((map['gceInstance'] as Map).cast<String, dynamic>()),
+      gceInstance: map['gceInstance'] == null ? null : (GceInstance.fromMap((map['gceInstance'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_disk_encryption_response_key_vault_properties.dart';
 
 /// The object that contains details of encryption used on the workspace.
 class ManagedDiskEncryptionResponse {
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
-  final String keySource;
+  final pulumi.Input<String> keySource;
   /// Key Vault input properties for encryption.
-  final ManagedDiskEncryptionResponseKeyVaultProperties keyVaultProperties;
+  final pulumi.Input<ManagedDiskEncryptionResponseKeyVaultProperties> keyVaultProperties;
   /// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
-  final bool? rotationToLatestKeyVersionEnabled;
+  final pulumi.Input<bool>? rotationToLatestKeyVersionEnabled;
 
   /// Creates a new [ManagedDiskEncryptionResponse].
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
@@ -24,16 +25,16 @@ class ManagedDiskEncryptionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keySource': keySource,
-      'keyVaultProperties': keyVaultProperties.toMap(),
+      'keyVaultProperties': pulumi.Input.mapInputValue<ManagedDiskEncryptionResponseKeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
       'rotationToLatestKeyVersionEnabled': ?rotationToLatestKeyVersionEnabled,
     };
   }
 
   factory ManagedDiskEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return ManagedDiskEncryptionResponse(
-      keySource: map['keySource'] as String,
-      keyVaultProperties: ManagedDiskEncryptionResponseKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>()),
-      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : map['rotationToLatestKeyVersionEnabled'] as bool,
+      keySource: (map['keySource'] as String).input(),
+      keyVaultProperties: (ManagedDiskEncryptionResponseKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled'] as bool).input(),
     );
   }
 }

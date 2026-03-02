@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The target of the event.
 class TargetResponse {
   /// The digest of the content, as defined by the Registry V2 HTTP API Specification.
-  final String? digest;
+  final pulumi.Input<String>? digest;
   /// The number of bytes of the content. Same as Size field.
-  final double? length;
+  final pulumi.Input<double>? length;
   /// The MIME type of the referenced object.
-  final String? mediaType;
+  final pulumi.Input<String>? mediaType;
   /// The name of the artifact.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The repository name.
-  final String? repository;
+  final pulumi.Input<String>? repository;
   /// The number of bytes of the content. Same as Length field.
-  final double? size;
+  final pulumi.Input<double>? size;
   /// The tag name.
-  final String? tag;
+  final pulumi.Input<String>? tag;
   /// The direct URL to the content.
-  final String? url;
+  final pulumi.Input<String>? url;
   /// The version of the artifact.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [TargetResponse].
   /// [digest] The digest of the content, as defined by the Registry V2 HTTP API Specification.
@@ -60,15 +61,15 @@ class TargetResponse {
 
   factory TargetResponse.fromMap(Map<String, dynamic> map) {
     return TargetResponse(
-      digest: map['digest'] == null ? null : map['digest'] as String,
-      length: map['length'] == null ? null : map['length'] as double,
-      mediaType: map['mediaType'] == null ? null : map['mediaType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      repository: map['repository'] == null ? null : map['repository'] as String,
-      size: map['size'] == null ? null : map['size'] as double,
-      tag: map['tag'] == null ? null : map['tag'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      length: map['length'] == null ? null : (map['length'] as double).input(),
+      mediaType: map['mediaType'] == null ? null : (map['mediaType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as double).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

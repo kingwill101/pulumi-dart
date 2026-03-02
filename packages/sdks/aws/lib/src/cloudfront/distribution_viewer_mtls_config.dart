@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_viewer_mtls_config_trust_store_config.dart';
 
 class DistributionViewerMtlsConfig {
   /// The mode for viewer mTLS. Valid values: `required`, `optional`.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The trust store configuration for viewer mTLS (maximum one).
-  final DistributionViewerMtlsConfigTrustStoreConfig? trustStoreConfig;
+  final pulumi.Input<DistributionViewerMtlsConfigTrustStoreConfig>? trustStoreConfig;
 
   /// Creates a new [DistributionViewerMtlsConfig].
   /// [mode] The mode for viewer mTLS. Valid values: `required`, `optional`.
@@ -19,14 +20,14 @@ class DistributionViewerMtlsConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'mode': ?mode,
-      'trustStoreConfig': ?trustStoreConfig == null ? null : trustStoreConfig!.toMap(),
+      'trustStoreConfig': ?pulumi.Input.mapOptionalInputValue<DistributionViewerMtlsConfigTrustStoreConfig, Map<String, dynamic>>(trustStoreConfig, (value) => value.toMap()),
     };
   }
 
   factory DistributionViewerMtlsConfig.fromMap(Map<String, dynamic> map) {
     return DistributionViewerMtlsConfig(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      trustStoreConfig: map['trustStoreConfig'] == null ? null : DistributionViewerMtlsConfigTrustStoreConfig.fromMap((map['trustStoreConfig'] as Map).cast<String, dynamic>()),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      trustStoreConfig: map['trustStoreConfig'] == null ? null : (DistributionViewerMtlsConfigTrustStoreConfig.fromMap((map['trustStoreConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

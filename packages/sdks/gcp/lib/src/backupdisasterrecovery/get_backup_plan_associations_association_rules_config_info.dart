@@ -5,13 +5,13 @@ import 'get_backup_plan_associations_association_rules_config_info_last_backup_e
 
 class GetBackupPlanAssociationsAssociationRulesConfigInfo {
   /// A block containing details of the last backup error, if any.
-  final List<GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError> lastBackupErrors;
+  final pulumi.Input<List<GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError>> lastBackupErrors;
   /// State of last backup taken.
-  final String lastBackupState;
+  final pulumi.Input<String> lastBackupState;
   /// The point in time when the last successful backup was captured from the source.
-  final String lastSuccessfulBackupConsistencyTime;
+  final pulumi.Input<String> lastSuccessfulBackupConsistencyTime;
   /// Backup Rule id fetched from backup plan.
-  final String ruleId;
+  final pulumi.Input<String> ruleId;
 
   /// Creates a new [GetBackupPlanAssociationsAssociationRulesConfigInfo].
   /// [lastBackupErrors] A block containing details of the last backup error, if any.
@@ -27,7 +27,7 @@ class GetBackupPlanAssociationsAssociationRulesConfigInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lastBackupErrors': pulumi.Input.encodeList<GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError, Map<String, dynamic>>(lastBackupErrors, (value) => value.toMap()),
+      'lastBackupErrors': pulumi.Input.mapInputValue<List<GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError>, List<Map<String, dynamic>>>(lastBackupErrors, (value) => pulumi.Input.encodeList<GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastBackupState': lastBackupState,
       'lastSuccessfulBackupConsistencyTime': lastSuccessfulBackupConsistencyTime,
       'ruleId': ruleId,
@@ -36,10 +36,10 @@ class GetBackupPlanAssociationsAssociationRulesConfigInfo {
 
   factory GetBackupPlanAssociationsAssociationRulesConfigInfo.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationsAssociationRulesConfigInfo(
-      lastBackupErrors: pulumi.Input.decodeList<GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError>(map['lastBackupErrors'], (value) => GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError.fromMap((value as Map).cast<String, dynamic>())),
-      lastBackupState: map['lastBackupState'] as String,
-      lastSuccessfulBackupConsistencyTime: map['lastSuccessfulBackupConsistencyTime'] as String,
-      ruleId: map['ruleId'] as String,
+      lastBackupErrors: (pulumi.Input.decodeList<GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError>(map['lastBackupErrors'], (value) => GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastBackupState: (map['lastBackupState'] as String).input(),
+      lastSuccessfulBackupConsistencyTime: (map['lastSuccessfulBackupConsistencyTime'] as String).input(),
+      ruleId: (map['ruleId'] as String).input(),
     );
   }
 }

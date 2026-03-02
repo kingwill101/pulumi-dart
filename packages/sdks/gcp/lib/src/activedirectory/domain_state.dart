@@ -52,31 +52,19 @@ class DomainState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [reservedIpRange] The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
   DomainState({
-    pulumi.Output<String>? admin,
-    pulumi.Output<List<String>>? authorizedNetworks,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<List<String>>? locations,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? reservedIpRange,
-  }) :
-      admin = pulumi.Input.asOptionalInput<String>(admin),
-      authorizedNetworks = pulumi.Input.asOptionalInput<List<String>>(authorizedNetworks),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      locations = pulumi.Input.asOptionalInput<List<String>>(locations),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      reservedIpRange = pulumi.Input.asOptionalInput<String>(reservedIpRange);
+    this.admin,
+    this.authorizedNetworks,
+    this.deletionProtection,
+    this.domainName,
+    this.effectiveLabels,
+    this.fqdn,
+    this.labels,
+    this.locations,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.reservedIpRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      admin: map['admin'] == null ? null : pulumi.Output.create<String>(map['admin'] as String),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedNetworks'] as List).cast<String>()),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      locations: map['locations'] == null ? null : pulumi.Output.create<List<String>>((map['locations'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      reservedIpRange: map['reservedIpRange'] == null ? null : pulumi.Output.create<String>(map['reservedIpRange'] as String),
+      admin: map['admin'] == null ? null : (map['admin'] as String).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : ((map['authorizedNetworks'] as List).cast<String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange'] as String).input(),
     );
   }
 }

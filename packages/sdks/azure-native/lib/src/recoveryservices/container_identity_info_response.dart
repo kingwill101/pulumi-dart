@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container identity information
 class ContainerIdentityInfoResponse {
   /// Protection container identity - AAD Tenant
-  final String? aadTenantId;
+  final pulumi.Input<String>? aadTenantId;
   /// Protection container identity - Audience
-  final String? audience;
+  final pulumi.Input<String>? audience;
   /// Protection container identity - AAD Service Principal
-  final String? servicePrincipalClientId;
+  final pulumi.Input<String>? servicePrincipalClientId;
   /// Unique name of the container
-  final String? uniqueName;
+  final pulumi.Input<String>? uniqueName;
 
   /// Creates a new [ContainerIdentityInfoResponse].
   /// [aadTenantId] Protection container identity - AAD Tenant
@@ -35,10 +36,10 @@ class ContainerIdentityInfoResponse {
 
   factory ContainerIdentityInfoResponse.fromMap(Map<String, dynamic> map) {
     return ContainerIdentityInfoResponse(
-      aadTenantId: map['aadTenantId'] == null ? null : map['aadTenantId'] as String,
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : map['servicePrincipalClientId'] as String,
-      uniqueName: map['uniqueName'] == null ? null : map['uniqueName'] as String,
+      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : (map['servicePrincipalClientId'] as String).input(),
+      uniqueName: map['uniqueName'] == null ? null : (map['uniqueName'] as String).input(),
     );
   }
 }

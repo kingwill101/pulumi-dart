@@ -20,13 +20,10 @@ class GetDatabaseIamPolicyArgs {
   /// [instance] The name of the Spanner instance the database belongs to.
   /// [project] The ID of the project in which the resource belongs. If it
   GetDatabaseIamPolicyArgs({
-    required pulumi.Output<String> database,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? project,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      instance = pulumi.Input.asInput<String>(instance),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.database,
+    required this.instance,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetDatabaseIamPolicyArgs {
 
   factory GetDatabaseIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseIamPolicyArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      database: (map['database'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

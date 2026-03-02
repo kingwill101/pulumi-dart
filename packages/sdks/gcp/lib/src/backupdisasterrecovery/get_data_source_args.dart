@@ -22,15 +22,11 @@ class GetDataSourceArgs {
   /// [location] The location in which the Data Source belongs.
   /// [project] The Google Cloud Project in which the Data Source belongs.
   GetDataSourceArgs({
-    required pulumi.Output<String> backupVaultId,
-    required pulumi.Output<String> dataSourceId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> project,
-  }) :
-      backupVaultId = pulumi.Input.asInput<String>(backupVaultId),
-      dataSourceId = pulumi.Input.asInput<String>(dataSourceId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asInput<String>(project);
+    required this.backupVaultId,
+    required this.dataSourceId,
+    required this.location,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDataSourceArgs {
 
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
-      backupVaultId: pulumi.Output.create<String>(map['backupVaultId'] as String),
-      dataSourceId: pulumi.Output.create<String>(map['dataSourceId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      backupVaultId: (map['backupVaultId'] as String).input(),
+      dataSourceId: (map['dataSourceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

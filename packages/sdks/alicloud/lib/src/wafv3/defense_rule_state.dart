@@ -45,27 +45,17 @@ class DefenseRuleState {
   /// [ruleStatus] Protection rule status.
   /// [templateId] The protection template ID of the protection rule to be created.
   DefenseRuleState({
-    pulumi.Output<DefenseRuleConfig>? config,
-    pulumi.Output<String>? defenseOrigin,
-    pulumi.Output<String>? defenseScene,
-    pulumi.Output<String>? defenseType,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? resource,
-    pulumi.Output<int>? ruleId,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<int>? ruleStatus,
-    pulumi.Output<int>? templateId,
-  }) :
-      config = pulumi.Input.asOptionalInput<DefenseRuleConfig>(config),
-      defenseOrigin = pulumi.Input.asOptionalInput<String>(defenseOrigin),
-      defenseScene = pulumi.Input.asOptionalInput<String>(defenseScene),
-      defenseType = pulumi.Input.asOptionalInput<String>(defenseType),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      resource = pulumi.Input.asOptionalInput<String>(resource),
-      ruleId = pulumi.Input.asOptionalInput<int>(ruleId),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      ruleStatus = pulumi.Input.asOptionalInput<int>(ruleStatus),
-      templateId = pulumi.Input.asOptionalInput<int>(templateId);
+    this.config,
+    this.defenseOrigin,
+    this.defenseScene,
+    this.defenseType,
+    this.instanceId,
+    this.resource,
+    this.ruleId,
+    this.ruleName,
+    this.ruleStatus,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class DefenseRuleState {
 
   factory DefenseRuleState.fromMap(Map<String, dynamic> map) {
     return DefenseRuleState(
-      config: map['config'] == null ? null : pulumi.Output.create<DefenseRuleConfig>(DefenseRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      defenseOrigin: map['defenseOrigin'] == null ? null : pulumi.Output.create<String>(map['defenseOrigin'] as String),
-      defenseScene: map['defenseScene'] == null ? null : pulumi.Output.create<String>(map['defenseScene'] as String),
-      defenseType: map['defenseType'] == null ? null : pulumi.Output.create<String>(map['defenseType'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      resource: map['resource'] == null ? null : pulumi.Output.create<String>(map['resource'] as String),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<int>(map['ruleId'] as int),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      ruleStatus: map['ruleStatus'] == null ? null : pulumi.Output.create<int>(map['ruleStatus'] as int),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<int>(map['templateId'] as int),
+      config: map['config'] == null ? null : (DefenseRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      defenseOrigin: map['defenseOrigin'] == null ? null : (map['defenseOrigin'] as String).input(),
+      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene'] as String).input(),
+      defenseType: map['defenseType'] == null ? null : (map['defenseType'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as int).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus'] as int).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as int).input(),
     );
   }
 }

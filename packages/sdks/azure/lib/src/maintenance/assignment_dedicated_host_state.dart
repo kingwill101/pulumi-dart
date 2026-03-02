@@ -16,13 +16,10 @@ class AssignmentDedicatedHostState {
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [maintenanceConfigurationId] Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
   AssignmentDedicatedHostState({
-    pulumi.Output<String>? dedicatedHostId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? maintenanceConfigurationId,
-  }) :
-      dedicatedHostId = pulumi.Input.asOptionalInput<String>(dedicatedHostId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceConfigurationId = pulumi.Input.asOptionalInput<String>(maintenanceConfigurationId);
+    this.dedicatedHostId,
+    this.location,
+    this.maintenanceConfigurationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AssignmentDedicatedHostState {
 
   factory AssignmentDedicatedHostState.fromMap(Map<String, dynamic> map) {
     return AssignmentDedicatedHostState(
-      dedicatedHostId: map['dedicatedHostId'] == null ? null : pulumi.Output.create<String>(map['dedicatedHostId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : pulumi.Output.create<String>(map['maintenanceConfigurationId'] as String),
+      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
     );
   }
 }

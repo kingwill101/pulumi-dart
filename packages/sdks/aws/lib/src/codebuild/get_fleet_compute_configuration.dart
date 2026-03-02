@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFleetComputeConfiguration {
   /// Amount of disk space of the instance type included in the fleet.
-  final int disk;
+  final pulumi.Input<int> disk;
   /// EC2 instance type in the fleet.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Machine type of the instance type included in the fleet.
-  final String machineType;
+  final pulumi.Input<String> machineType;
   /// Amount of memory of the instance type included in the fleet.
-  final int memory;
+  final pulumi.Input<int> memory;
   /// Number of vCPUs of the instance type included in the fleet.
-  final int vcpu;
+  final pulumi.Input<int> vcpu;
 
   /// Creates a new [GetFleetComputeConfiguration].
   /// [disk] Amount of disk space of the instance type included in the fleet.
@@ -39,11 +40,11 @@ class GetFleetComputeConfiguration {
 
   factory GetFleetComputeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFleetComputeConfiguration(
-      disk: map['disk'] as int,
-      instanceType: map['instanceType'] as String,
-      machineType: map['machineType'] as String,
-      memory: map['memory'] as int,
-      vcpu: map['vcpu'] as int,
+      disk: (map['disk'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      machineType: (map['machineType'] as String).input(),
+      memory: (map['memory'] as int).input(),
+      vcpu: (map['vcpu'] as int).input(),
     );
   }
 }

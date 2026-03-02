@@ -16,13 +16,10 @@ class NetworkInterfaceSecurityGroupAttachmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupId] The ID of the security group.
   NetworkInterfaceSecurityGroupAttachmentState({
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityGroupId,
-  }) :
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId);
+    this.networkInterfaceId,
+    this.region,
+    this.securityGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class NetworkInterfaceSecurityGroupAttachmentState {
 
   factory NetworkInterfaceSecurityGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceSecurityGroupAttachmentState(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
     );
   }
 }

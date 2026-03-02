@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of Compliance Security Profile feature.
 class ComplianceSecurityProfileDefinition {
   /// Compliance standards associated with the workspace.
-  final List<String>? complianceStandards;
-  final String? value;
+  final pulumi.Input<List<String>>? complianceStandards;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ComplianceSecurityProfileDefinition].
   /// [complianceStandards] Compliance standards associated with the workspace.
@@ -24,8 +25,8 @@ class ComplianceSecurityProfileDefinition {
 
   factory ComplianceSecurityProfileDefinition.fromMap(Map<String, dynamic> map) {
     return ComplianceSecurityProfileDefinition(
-      complianceStandards: map['complianceStandards'] == null ? null : (map['complianceStandards'] as List).cast<String>(),
-      value: map['value'] == null ? null : map['value'] as String,
+      complianceStandards: map['complianceStandards'] == null ? null : ((map['complianceStandards'] as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

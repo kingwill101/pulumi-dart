@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The authentication info when auth_type is AzureCosmosDBSourceConnector
 class AzureCosmosDBSourceConnectorServiceInfo {
   /// The connector service type.
   /// Expected value is 'AzureCosmosDBSourceConnector'.
-  final String connectorServiceType;
+  final pulumi.Input<String> connectorServiceType;
   /// Azure Cosmos Database Connection Endpoint
-  final String? cosmosConnectionEndpoint;
+  final pulumi.Input<String>? cosmosConnectionEndpoint;
   /// Azure Cosmos Database Containers Topic Mapping
-  final String? cosmosContainersTopicMapping;
+  final pulumi.Input<String>? cosmosContainersTopicMapping;
   /// Azure Cosmos Database Name
-  final String? cosmosDatabaseName;
+  final pulumi.Input<String>? cosmosDatabaseName;
   /// Azure Cosmos Database Master Key
-  final String? cosmosMasterKey;
+  final pulumi.Input<String>? cosmosMasterKey;
   /// Azure Cosmos Database Message Key Enabled
-  final bool? cosmosMessageKeyEnabled;
+  final pulumi.Input<bool>? cosmosMessageKeyEnabled;
   /// Azure Cosmos Database Message Key Field
-  final String? cosmosMessageKeyField;
+  final pulumi.Input<String>? cosmosMessageKeyField;
 
   /// Creates a new [AzureCosmosDBSourceConnectorServiceInfo].
   /// [connectorServiceType] The connector service type.
@@ -51,13 +52,13 @@ class AzureCosmosDBSourceConnectorServiceInfo {
 
   factory AzureCosmosDBSourceConnectorServiceInfo.fromMap(Map<String, dynamic> map) {
     return AzureCosmosDBSourceConnectorServiceInfo(
-      connectorServiceType: map['connectorServiceType'] as String,
-      cosmosConnectionEndpoint: map['cosmosConnectionEndpoint'] == null ? null : map['cosmosConnectionEndpoint'] as String,
-      cosmosContainersTopicMapping: map['cosmosContainersTopicMapping'] == null ? null : map['cosmosContainersTopicMapping'] as String,
-      cosmosDatabaseName: map['cosmosDatabaseName'] == null ? null : map['cosmosDatabaseName'] as String,
-      cosmosMasterKey: map['cosmosMasterKey'] == null ? null : map['cosmosMasterKey'] as String,
-      cosmosMessageKeyEnabled: map['cosmosMessageKeyEnabled'] == null ? null : map['cosmosMessageKeyEnabled'] as bool,
-      cosmosMessageKeyField: map['cosmosMessageKeyField'] == null ? null : map['cosmosMessageKeyField'] as String,
+      connectorServiceType: (map['connectorServiceType'] as String).input(),
+      cosmosConnectionEndpoint: map['cosmosConnectionEndpoint'] == null ? null : (map['cosmosConnectionEndpoint'] as String).input(),
+      cosmosContainersTopicMapping: map['cosmosContainersTopicMapping'] == null ? null : (map['cosmosContainersTopicMapping'] as String).input(),
+      cosmosDatabaseName: map['cosmosDatabaseName'] == null ? null : (map['cosmosDatabaseName'] as String).input(),
+      cosmosMasterKey: map['cosmosMasterKey'] == null ? null : (map['cosmosMasterKey'] as String).input(),
+      cosmosMessageKeyEnabled: map['cosmosMessageKeyEnabled'] == null ? null : (map['cosmosMessageKeyEnabled'] as bool).input(),
+      cosmosMessageKeyField: map['cosmosMessageKeyField'] == null ? null : (map['cosmosMessageKeyField'] as String).input(),
     );
   }
 }

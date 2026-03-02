@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets the application HTTP endpoints.
 class ApplicationGetHttpsEndpointResponse {
   /// The list of access modes for the application.
-  final List<String>? accessModes;
+  final pulumi.Input<List<String>>? accessModes;
   /// The destination port to connect to.
-  final int? destinationPort;
+  final pulumi.Input<int>? destinationPort;
   /// The value indicates whether to disable GatewayAuth.
-  final bool? disableGatewayAuth;
+  final pulumi.Input<bool>? disableGatewayAuth;
   /// The location of the endpoint.
-  final String location;
+  final pulumi.Input<String> location;
   /// The private ip address of the endpoint.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// The public port to connect to.
-  final int publicPort;
+  final pulumi.Input<int> publicPort;
 
   /// Creates a new [ApplicationGetHttpsEndpointResponse].
   /// [accessModes] The list of access modes for the application.
@@ -45,12 +46,12 @@ class ApplicationGetHttpsEndpointResponse {
 
   factory ApplicationGetHttpsEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGetHttpsEndpointResponse(
-      accessModes: map['accessModes'] == null ? null : (map['accessModes'] as List).cast<String>(),
-      destinationPort: map['destinationPort'] == null ? null : map['destinationPort'] as int,
-      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : map['disableGatewayAuth'] as bool,
-      location: map['location'] as String,
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      publicPort: map['publicPort'] as int,
+      accessModes: map['accessModes'] == null ? null : ((map['accessModes'] as List).cast<String>()).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth'] as bool).input(),
+      location: (map['location'] as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      publicPort: (map['publicPort'] as int).input(),
     );
   }
 }

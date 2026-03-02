@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkResourceConfigurationResponse {
   /// Optional type of VM used as supported by the compute target.
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// Version of spark runtime used for the job.
-  final String? runtimeVersion;
+  final pulumi.Input<String>? runtimeVersion;
 
   /// Creates a new [SparkResourceConfigurationResponse].
   /// [instanceType] Optional type of VM used as supported by the compute target.
@@ -24,8 +25,8 @@ class SparkResourceConfigurationResponse {
 
   factory SparkResourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SparkResourceConfigurationResponse(
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
     );
   }
 }

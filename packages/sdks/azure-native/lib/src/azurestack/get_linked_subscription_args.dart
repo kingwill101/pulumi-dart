@@ -16,11 +16,9 @@ class GetLinkedSubscriptionArgs {
   /// [linkedSubscriptionName] Name of the Linked Subscription resource.
   /// [resourceGroup] Name of the resource group.
   GetLinkedSubscriptionArgs({
-    required pulumi.Output<String> linkedSubscriptionName,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      linkedSubscriptionName = pulumi.Input.asInput<String>(linkedSubscriptionName),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.linkedSubscriptionName,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLinkedSubscriptionArgs {
 
   factory GetLinkedSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkedSubscriptionArgs(
-      linkedSubscriptionName: pulumi.Output.create<String>(map['linkedSubscriptionName'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      linkedSubscriptionName: (map['linkedSubscriptionName'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

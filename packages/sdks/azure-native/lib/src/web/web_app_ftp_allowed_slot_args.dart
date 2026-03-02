@@ -24,17 +24,12 @@ class WebAppFtpAllowedSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Required.
   WebAppFtpAllowedSlotArgs({
-    required pulumi.Output<bool> allow,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      allow = pulumi.Input.asInput<bool>(allow),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    required this.allow,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class WebAppFtpAllowedSlotArgs {
 
   factory WebAppFtpAllowedSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppFtpAllowedSlotArgs(
-      allow: pulumi.Output.create<bool>(map['allow'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      allow: (map['allow'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

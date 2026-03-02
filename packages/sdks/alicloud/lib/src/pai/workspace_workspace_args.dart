@@ -27,15 +27,11 @@ class WorkspaceWorkspaceArgs {
   /// [envTypes] Environments contained in the workspace:
   /// [workspaceName] The workspace name. The format is as follows:
   WorkspaceWorkspaceArgs({
-    required pulumi.Output<String> description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<List<String>> envTypes,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      envTypes = pulumi.Input.asInput<List<String>>(envTypes),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.description,
+    this.displayName,
+    required this.envTypes,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class WorkspaceWorkspaceArgs {
 
   factory WorkspaceWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceWorkspaceArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      envTypes: pulumi.Output.create<List<String>>((map['envTypes'] as List).cast<String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      description: (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      envTypes: ((map['envTypes'] as List).cast<String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

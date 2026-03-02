@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interval_response.dart';
 
 /// Defines the policy of the QueuedRequest.
 class QueueingPolicyResponse {
   /// A relative time after which resources may be created.
-  final String validAfterDuration;
+  final pulumi.Input<String> validAfterDuration;
   /// An absolute time at which resources may be created.
-  final String validAfterTime;
+  final pulumi.Input<String> validAfterTime;
   /// An absolute time interval within which resources may be created.
-  final IntervalResponse validInterval;
+  final pulumi.Input<IntervalResponse> validInterval;
   /// A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
-  final String validUntilDuration;
+  final pulumi.Input<String> validUntilDuration;
   /// An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
-  final String validUntilTime;
+  final pulumi.Input<String> validUntilTime;
 
   /// Creates a new [QueueingPolicyResponse].
   /// [validAfterDuration] A relative time after which resources may be created.
@@ -33,7 +34,7 @@ class QueueingPolicyResponse {
     return <String, dynamic>{
       'validAfterDuration': validAfterDuration,
       'validAfterTime': validAfterTime,
-      'validInterval': validInterval.toMap(),
+      'validInterval': pulumi.Input.mapInputValue<IntervalResponse, Map<String, dynamic>>(validInterval, (value) => value.toMap()),
       'validUntilDuration': validUntilDuration,
       'validUntilTime': validUntilTime,
     };
@@ -41,11 +42,11 @@ class QueueingPolicyResponse {
 
   factory QueueingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return QueueingPolicyResponse(
-      validAfterDuration: map['validAfterDuration'] as String,
-      validAfterTime: map['validAfterTime'] as String,
-      validInterval: IntervalResponse.fromMap((map['validInterval'] as Map).cast<String, dynamic>()),
-      validUntilDuration: map['validUntilDuration'] as String,
-      validUntilTime: map['validUntilTime'] as String,
+      validAfterDuration: (map['validAfterDuration'] as String).input(),
+      validAfterTime: (map['validAfterTime'] as String).input(),
+      validInterval: (IntervalResponse.fromMap((map['validInterval'] as Map).cast<String, dynamic>())).input(),
+      validUntilDuration: (map['validUntilDuration'] as String).input(),
+      validUntilTime: (map['validUntilTime'] as String).input(),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNetworking {
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these
   /// blocks. Only a single block is supported. This field cannot be changed
   /// after creation.
-  final List<String> clusterIpv4CidrBlocks;
+  final pulumi.Input<List<String>> clusterIpv4CidrBlocks;
   /// If specified, dual stack mode is enabled and all pods in the cluster are
   /// assigned an IPv6 address from these blocks alongside from an IPv4
   /// address. Only a single block is supported. This field cannot be changed
   /// after creation.
-  final List<String>? clusterIpv6CidrBlocks;
+  final pulumi.Input<List<String>>? clusterIpv6CidrBlocks;
   /// (Output)
   /// IP addressing type of this cluster i.e. SINGLESTACK_V4 vs DUALSTACK_V4_V6.
-  final String? networkType;
+  final pulumi.Input<String>? networkType;
   /// All services in the cluster are assigned an RFC1918 IPv4 address from these
   /// blocks. Only a single block is supported. This field cannot be changed
   /// after creation.
-  final List<String> servicesIpv4CidrBlocks;
+  final pulumi.Input<List<String>> servicesIpv4CidrBlocks;
   /// If specified, dual stack mode is enabled and all services in the cluster are
   /// assigned an IPv6 address from these blocks alongside from an IPv4
   /// address. Only a single block is supported. This field cannot be changed
   /// after creation.
-  final List<String>? servicesIpv6CidrBlocks;
+  final pulumi.Input<List<String>>? servicesIpv6CidrBlocks;
 
   /// Creates a new [ClusterNetworking].
   /// [clusterIpv4CidrBlocks] All pods in the cluster are assigned an RFC1918 IPv4 address from these
@@ -50,11 +51,11 @@ class ClusterNetworking {
 
   factory ClusterNetworking.fromMap(Map<String, dynamic> map) {
     return ClusterNetworking(
-      clusterIpv4CidrBlocks: (map['clusterIpv4CidrBlocks'] as List).cast<String>(),
-      clusterIpv6CidrBlocks: map['clusterIpv6CidrBlocks'] == null ? null : (map['clusterIpv6CidrBlocks'] as List).cast<String>(),
-      networkType: map['networkType'] == null ? null : map['networkType'] as String,
-      servicesIpv4CidrBlocks: (map['servicesIpv4CidrBlocks'] as List).cast<String>(),
-      servicesIpv6CidrBlocks: map['servicesIpv6CidrBlocks'] == null ? null : (map['servicesIpv6CidrBlocks'] as List).cast<String>(),
+      clusterIpv4CidrBlocks: ((map['clusterIpv4CidrBlocks'] as List).cast<String>()).input(),
+      clusterIpv6CidrBlocks: map['clusterIpv6CidrBlocks'] == null ? null : ((map['clusterIpv6CidrBlocks'] as List).cast<String>()).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      servicesIpv4CidrBlocks: ((map['servicesIpv4CidrBlocks'] as List).cast<String>()).input(),
+      servicesIpv6CidrBlocks: map['servicesIpv6CidrBlocks'] == null ? null : ((map['servicesIpv6CidrBlocks'] as List).cast<String>()).input(),
     );
   }
 }

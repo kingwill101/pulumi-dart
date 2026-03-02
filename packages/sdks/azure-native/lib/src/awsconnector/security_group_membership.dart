@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of SecurityGroupMembership
 class SecurityGroupMembership {
   /// <p>The unique ID for this security group.</p>
-  final String? securityGroupIdentifier;
+  final pulumi.Input<String>? securityGroupIdentifier;
   /// <p>The status of this security group.</p>
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [SecurityGroupMembership].
   /// [securityGroupIdentifier] <p>The unique ID for this security group.</p>
@@ -25,8 +26,8 @@ class SecurityGroupMembership {
 
   factory SecurityGroupMembership.fromMap(Map<String, dynamic> map) {
     return SecurityGroupMembership(
-      securityGroupIdentifier: map['securityGroupIdentifier'] == null ? null : map['securityGroupIdentifier'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      securityGroupIdentifier: map['securityGroupIdentifier'] == null ? null : (map['securityGroupIdentifier'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

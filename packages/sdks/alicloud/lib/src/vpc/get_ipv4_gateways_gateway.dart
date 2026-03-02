@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpv4GatewaysGateway {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Indicates whether the IPv4 gateway is activated.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The ID of the Ipv4 Gateway.
-  final String id;
+  final pulumi.Input<String> id;
   /// The description of the IPv4 gateway.
-  final String ipv4GatewayDescription;
+  final pulumi.Input<String> ipv4GatewayDescription;
   /// The resource attribute field that represents the resource level 1 ID.
-  final String ipv4GatewayId;
+  final pulumi.Input<String> ipv4GatewayId;
   /// The name of the IPv4 gateway.
-  final String ipv4GatewayName;
+  final pulumi.Input<String> ipv4GatewayName;
   /// ID of the route table associated with IPv4 Gateway.
-  final String ipv4GatewayRouteTableId;
+  final pulumi.Input<String> ipv4GatewayRouteTableId;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the VPC associated with the IPv4 Gateway.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetIpv4GatewaysGateway].
   /// [createTime] The creation time of the resource.
@@ -59,15 +60,15 @@ class GetIpv4GatewaysGateway {
 
   factory GetIpv4GatewaysGateway.fromMap(Map<String, dynamic> map) {
     return GetIpv4GatewaysGateway(
-      createTime: map['createTime'] as String,
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      ipv4GatewayDescription: map['ipv4GatewayDescription'] as String,
-      ipv4GatewayId: map['ipv4GatewayId'] as String,
-      ipv4GatewayName: map['ipv4GatewayName'] as String,
-      ipv4GatewayRouteTableId: map['ipv4GatewayRouteTableId'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
+      createTime: (map['createTime'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      ipv4GatewayDescription: (map['ipv4GatewayDescription'] as String).input(),
+      ipv4GatewayId: (map['ipv4GatewayId'] as String).input(),
+      ipv4GatewayName: (map['ipv4GatewayName'] as String).input(),
+      ipv4GatewayRouteTableId: (map['ipv4GatewayRouteTableId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

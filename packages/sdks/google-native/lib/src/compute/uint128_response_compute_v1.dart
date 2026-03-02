@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Uint128ResponseComputeV1 {
-  final String high;
-  final String low;
+  final pulumi.Input<String> high;
+  final pulumi.Input<String> low;
 
   /// Creates a new [Uint128ResponseComputeV1].
   /// [high] Required.
@@ -22,8 +23,8 @@ class Uint128ResponseComputeV1 {
 
   factory Uint128ResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return Uint128ResponseComputeV1(
-      high: map['high'] as String,
-      low: map['low'] as String,
+      high: (map['high'] as String).input(),
+      low: (map['low'] as String).input(),
     );
   }
 }

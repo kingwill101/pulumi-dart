@@ -16,13 +16,10 @@ class VpcEndpointSubnetAssociationState {
   /// [subnetId] The ID of the subnet to be associated with the VPC endpoint.
   /// [vpcEndpointId] The ID of the VPC endpoint with which the subnet will be associated.
   VpcEndpointSubnetAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<String>? vpcEndpointId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      vpcEndpointId = pulumi.Input.asOptionalInput<String>(vpcEndpointId);
+    this.region,
+    this.subnetId,
+    this.vpcEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class VpcEndpointSubnetAssociationState {
 
   factory VpcEndpointSubnetAssociationState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointSubnetAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
     );
   }
 }

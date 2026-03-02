@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
 class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
   /// Version of the database engine.
-  final String? databaseVersion;
+  final pulumi.Input<String>? databaseVersion;
   /// Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
-  final String? instanceHost;
+  final pulumi.Input<String>? instanceHost;
   /// SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
-  final String? sqlEngine;
+  final pulumi.Input<String>? sqlEngine;
 
   /// Creates a new [GoogleCloudDatacatalogV1SqlDatabaseSystemSpec].
   /// [databaseVersion] Version of the database engine.
@@ -30,9 +31,9 @@ class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
 
   factory GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1SqlDatabaseSystemSpec(
-      databaseVersion: map['databaseVersion'] == null ? null : map['databaseVersion'] as String,
-      instanceHost: map['instanceHost'] == null ? null : map['instanceHost'] as String,
-      sqlEngine: map['sqlEngine'] == null ? null : map['sqlEngine'] as String,
+      databaseVersion: map['databaseVersion'] == null ? null : (map['databaseVersion'] as String).input(),
+      instanceHost: map['instanceHost'] == null ? null : (map['instanceHost'] as String).input(),
+      sqlEngine: map['sqlEngine'] == null ? null : (map['sqlEngine'] as String).input(),
     );
   }
 }

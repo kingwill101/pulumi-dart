@@ -21,15 +21,11 @@ class SiteArgs {
   /// [project] Optional.
   /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
   SiteArgs({
-    pulumi.Output<String>? appId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> siteId,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    this.appId,
+    this.labels,
+    this.project,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class SiteArgs {
 
   factory SiteArgs.fromMap(Map<String, dynamic> map) {
     return SiteArgs(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

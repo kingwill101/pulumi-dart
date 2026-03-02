@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Fabric one lake names.
 class FabricNamesResponse {
   /// Fabric one lake house name.
-  final String lakehouseName;
+  final pulumi.Input<String> lakehouseName;
   /// Fabric one lake workspace name.
-  final String workspaceName;
+  final pulumi.Input<String> workspaceName;
 
   /// Creates a new [FabricNamesResponse].
   /// [lakehouseName] Fabric one lake house name.
@@ -25,8 +26,8 @@ class FabricNamesResponse {
 
   factory FabricNamesResponse.fromMap(Map<String, dynamic> map) {
     return FabricNamesResponse(
-      lakehouseName: map['lakehouseName'] as String,
-      workspaceName: map['workspaceName'] as String,
+      lakehouseName: (map['lakehouseName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

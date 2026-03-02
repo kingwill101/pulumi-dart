@@ -20,13 +20,10 @@ class FieldLevelEncryptionProfileArgs {
   /// [encryptionEntities] The encryption entities config block for field-level encryption profiles that contains an attribute `items` which includes the encryption key and field pattern specifications.
   /// [name] The name of the Field Level Encryption Profile.
   FieldLevelEncryptionProfileArgs({
-    pulumi.Output<String>? comment,
-    required pulumi.Output<FieldLevelEncryptionProfileEncryptionEntities> encryptionEntities,
-    pulumi.Output<String>? name,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      encryptionEntities = pulumi.Input.asInput<FieldLevelEncryptionProfileEncryptionEntities>(encryptionEntities),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.comment,
+    required this.encryptionEntities,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class FieldLevelEncryptionProfileArgs {
 
   factory FieldLevelEncryptionProfileArgs.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      encryptionEntities: pulumi.Output.create<FieldLevelEncryptionProfileEncryptionEntities>(FieldLevelEncryptionProfileEncryptionEntities.fromMap((map['encryptionEntities'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      encryptionEntities: (FieldLevelEncryptionProfileEncryptionEntities.fromMap((map['encryptionEntities'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

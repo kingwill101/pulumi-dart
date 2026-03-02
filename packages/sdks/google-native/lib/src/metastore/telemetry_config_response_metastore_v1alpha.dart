@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Telemetry Configuration for the Dataproc Metastore service.
 class TelemetryConfigResponseMetastoreV1alpha {
   /// The output format of the Dataproc Metastore service's logs.
-  final String logFormat;
+  final pulumi.Input<String> logFormat;
 
   /// Creates a new [TelemetryConfigResponseMetastoreV1alpha].
   /// [logFormat] The output format of the Dataproc Metastore service's logs.
@@ -20,7 +21,7 @@ class TelemetryConfigResponseMetastoreV1alpha {
 
   factory TelemetryConfigResponseMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return TelemetryConfigResponseMetastoreV1alpha(
-      logFormat: map['logFormat'] as String,
+      logFormat: (map['logFormat'] as String).input(),
     );
   }
 }

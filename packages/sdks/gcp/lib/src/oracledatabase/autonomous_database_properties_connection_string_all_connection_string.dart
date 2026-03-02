@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutonomousDatabasePropertiesConnectionStringAllConnectionString {
   /// The database service provides the highest level of resources to each SQL
   /// statement.
-  final String? high;
+  final pulumi.Input<String>? high;
   /// The database service provides the least level of resources to each SQL
   /// statement.
-  final String? low;
+  final pulumi.Input<String>? low;
   /// The database service provides a lower level of resources to each SQL
   /// statement.
-  final String? medium;
+  final pulumi.Input<String>? medium;
 
   /// Creates a new [AutonomousDatabasePropertiesConnectionStringAllConnectionString].
   /// [high] The database service provides the highest level of resources to each SQL
@@ -32,9 +33,9 @@ class AutonomousDatabasePropertiesConnectionStringAllConnectionString {
 
   factory AutonomousDatabasePropertiesConnectionStringAllConnectionString.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesConnectionStringAllConnectionString(
-      high: map['high'] == null ? null : map['high'] as String,
-      low: map['low'] == null ? null : map['low'] as String,
-      medium: map['medium'] == null ? null : map['medium'] as String,
+      high: map['high'] == null ? null : (map['high'] as String).input(),
+      low: map['low'] == null ? null : (map['low'] as String).input(),
+      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
     );
   }
 }

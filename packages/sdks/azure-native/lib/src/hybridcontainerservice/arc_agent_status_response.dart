@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the observed Arc Agent status that is resourceSynced back to the ARM resource.
 class ArcAgentStatusResponse {
   /// Version of the Arc agents currently running on the Provisioned cluster resource.
-  final String? agentVersion;
+  final pulumi.Input<String>? agentVersion;
   /// Number of CPU cores present in the Provisioned cluster resource
-  final double? coreCount;
+  final pulumi.Input<double>? coreCount;
   /// Observed deployment state of the Arc Agents on the target cluster. Possible values include: 'pending', 'provisioning', 'provisioned', 'deleting', 'failed', 'upgrading'
-  final String? deploymentState;
+  final pulumi.Input<String>? deploymentState;
   /// Error messages while onboarding/upgrading/uninstalling the Arc agents
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
   /// Last connected timestamp of the Provisioned cluster resource.
-  final String? lastConnectivityTime;
+  final pulumi.Input<String>? lastConnectivityTime;
   /// ManagedIdentity certificate expiration time (ValidUntil).
-  final String? managedIdentityCertificateExpirationTime;
+  final pulumi.Input<String>? managedIdentityCertificateExpirationTime;
   /// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster. Will be used to create the hybridIdentityMetadata proxy resource and will not be persisted.
-  final String? onboardingPublicKey;
+  final pulumi.Input<String>? onboardingPublicKey;
 
   /// Creates a new [ArcAgentStatusResponse].
   /// [agentVersion] Version of the Arc agents currently running on the Provisioned cluster resource.
@@ -50,13 +51,13 @@ class ArcAgentStatusResponse {
 
   factory ArcAgentStatusResponse.fromMap(Map<String, dynamic> map) {
     return ArcAgentStatusResponse(
-      agentVersion: map['agentVersion'] == null ? null : map['agentVersion'] as String,
-      coreCount: map['coreCount'] == null ? null : map['coreCount'] as double,
-      deploymentState: map['deploymentState'] == null ? null : map['deploymentState'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      lastConnectivityTime: map['lastConnectivityTime'] == null ? null : map['lastConnectivityTime'] as String,
-      managedIdentityCertificateExpirationTime: map['managedIdentityCertificateExpirationTime'] == null ? null : map['managedIdentityCertificateExpirationTime'] as String,
-      onboardingPublicKey: map['onboardingPublicKey'] == null ? null : map['onboardingPublicKey'] as String,
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as double).input(),
+      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      lastConnectivityTime: map['lastConnectivityTime'] == null ? null : (map['lastConnectivityTime'] as String).input(),
+      managedIdentityCertificateExpirationTime: map['managedIdentityCertificateExpirationTime'] == null ? null : (map['managedIdentityCertificateExpirationTime'] as String).input(),
+      onboardingPublicKey: map['onboardingPublicKey'] == null ? null : (map['onboardingPublicKey'] as String).input(),
     );
   }
 }

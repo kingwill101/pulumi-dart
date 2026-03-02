@@ -16,11 +16,9 @@ class GetMonitorDefaultApplicationKeyArgs {
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMonitorDefaultApplicationKeyArgs({
-    required pulumi.Output<String> monitorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.monitorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMonitorDefaultApplicationKeyArgs {
 
   factory GetMonitorDefaultApplicationKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorDefaultApplicationKeyArgs(
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      monitorName: (map['monitorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

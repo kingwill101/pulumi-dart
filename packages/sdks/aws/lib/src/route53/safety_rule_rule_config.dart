@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SafetyRuleRuleConfig {
   /// Logical negation of the rule.
-  final bool inverted;
+  final pulumi.Input<bool> inverted;
   /// Number of controls that must be set when you specify an `ATLEAST` type rule.
-  final int threshold;
+  final pulumi.Input<int> threshold;
   /// Rule type. Valid values are `ATLEAST`, `AND`, and `OR`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SafetyRuleRuleConfig].
   /// [inverted] Logical negation of the rule.
@@ -29,9 +30,9 @@ class SafetyRuleRuleConfig {
 
   factory SafetyRuleRuleConfig.fromMap(Map<String, dynamic> map) {
     return SafetyRuleRuleConfig(
-      inverted: map['inverted'] as bool,
-      threshold: map['threshold'] as int,
-      type: map['type'] as String,
+      inverted: (map['inverted'] as bool).input(),
+      threshold: (map['threshold'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

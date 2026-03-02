@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the SAP Enqueue Server properties.
 class EnqueueServerPropertiesResponse {
   /// Defines the health of SAP Instances.
-  final String health;
+  final pulumi.Input<String> health;
   /// Enqueue Server SAP Hostname.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Enqueue Server SAP IP Address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Enqueue Server Port.
-  final double port;
+  final pulumi.Input<double> port;
 
   /// Creates a new [EnqueueServerPropertiesResponse].
   /// [health] Defines the health of SAP Instances.
@@ -35,10 +36,10 @@ class EnqueueServerPropertiesResponse {
 
   factory EnqueueServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnqueueServerPropertiesResponse(
-      health: map['health'] as String,
-      hostname: map['hostname'] as String,
-      ipAddress: map['ipAddress'] as String,
-      port: map['port'] as double,
+      health: (map['health'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      port: (map['port'] as double).input(),
     );
   }
 }

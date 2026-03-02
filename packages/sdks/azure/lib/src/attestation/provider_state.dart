@@ -44,29 +44,18 @@ class ProviderState {
   /// [tpmPolicyBase64] Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
   /// [trustModel] Trust model used for the Attestation Service.
   ProviderState({
-    pulumi.Output<String>? attestationUri,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? openEnclavePolicyBase64,
-    pulumi.Output<String>? policySigningCertificateData,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sevSnpPolicyBase64,
-    pulumi.Output<String>? sgxEnclavePolicyBase64,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tpmPolicyBase64,
-    pulumi.Output<String>? trustModel,
-  }) :
-      attestationUri = pulumi.Input.asOptionalInput<String>(attestationUri),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      openEnclavePolicyBase64 = pulumi.Input.asOptionalInput<String>(openEnclavePolicyBase64),
-      policySigningCertificateData = pulumi.Input.asOptionalInput<String>(policySigningCertificateData),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sevSnpPolicyBase64 = pulumi.Input.asOptionalInput<String>(sevSnpPolicyBase64),
-      sgxEnclavePolicyBase64 = pulumi.Input.asOptionalInput<String>(sgxEnclavePolicyBase64),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tpmPolicyBase64 = pulumi.Input.asOptionalInput<String>(tpmPolicyBase64),
-      trustModel = pulumi.Input.asOptionalInput<String>(trustModel);
+    this.attestationUri,
+    this.location,
+    this.name,
+    this.openEnclavePolicyBase64,
+    this.policySigningCertificateData,
+    this.resourceGroupName,
+    this.sevSnpPolicyBase64,
+    this.sgxEnclavePolicyBase64,
+    this.tags,
+    this.tpmPolicyBase64,
+    this.trustModel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class ProviderState {
 
   factory ProviderState.fromMap(Map<String, dynamic> map) {
     return ProviderState(
-      attestationUri: map['attestationUri'] == null ? null : pulumi.Output.create<String>(map['attestationUri'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      openEnclavePolicyBase64: map['openEnclavePolicyBase64'] == null ? null : pulumi.Output.create<String>(map['openEnclavePolicyBase64'] as String),
-      policySigningCertificateData: map['policySigningCertificateData'] == null ? null : pulumi.Output.create<String>(map['policySigningCertificateData'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sevSnpPolicyBase64: map['sevSnpPolicyBase64'] == null ? null : pulumi.Output.create<String>(map['sevSnpPolicyBase64'] as String),
-      sgxEnclavePolicyBase64: map['sgxEnclavePolicyBase64'] == null ? null : pulumi.Output.create<String>(map['sgxEnclavePolicyBase64'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tpmPolicyBase64: map['tpmPolicyBase64'] == null ? null : pulumi.Output.create<String>(map['tpmPolicyBase64'] as String),
-      trustModel: map['trustModel'] == null ? null : pulumi.Output.create<String>(map['trustModel'] as String),
+      attestationUri: map['attestationUri'] == null ? null : (map['attestationUri'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      openEnclavePolicyBase64: map['openEnclavePolicyBase64'] == null ? null : (map['openEnclavePolicyBase64'] as String).input(),
+      policySigningCertificateData: map['policySigningCertificateData'] == null ? null : (map['policySigningCertificateData'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sevSnpPolicyBase64: map['sevSnpPolicyBase64'] == null ? null : (map['sevSnpPolicyBase64'] as String).input(),
+      sgxEnclavePolicyBase64: map['sgxEnclavePolicyBase64'] == null ? null : (map['sgxEnclavePolicyBase64'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tpmPolicyBase64: map['tpmPolicyBase64'] == null ? null : (map['tpmPolicyBase64'] as String).input(),
+      trustModel: map['trustModel'] == null ? null : (map['trustModel'] as String).input(),
     );
   }
 }

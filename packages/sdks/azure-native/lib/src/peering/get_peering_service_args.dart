@@ -16,11 +16,9 @@ class GetPeeringServiceArgs {
   /// [peeringServiceName] The name of the peering.
   /// [resourceGroupName] The name of the resource group.
   GetPeeringServiceArgs({
-    required pulumi.Output<String> peeringServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      peeringServiceName = pulumi.Input.asInput<String>(peeringServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.peeringServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPeeringServiceArgs {
 
   factory GetPeeringServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeringServiceArgs(
-      peeringServiceName: pulumi.Output.create<String>(map['peeringServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      peeringServiceName: (map['peeringServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

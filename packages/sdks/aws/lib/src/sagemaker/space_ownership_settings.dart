@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpaceOwnershipSettings {
   /// The user profile who is the owner of the private space.
-  final String ownerUserProfileName;
+  final pulumi.Input<String> ownerUserProfileName;
 
   /// Creates a new [SpaceOwnershipSettings].
   /// [ownerUserProfileName] The user profile who is the owner of the private space.
@@ -19,7 +20,7 @@ class SpaceOwnershipSettings {
 
   factory SpaceOwnershipSettings.fromMap(Map<String, dynamic> map) {
     return SpaceOwnershipSettings(
-      ownerUserProfileName: map['ownerUserProfileName'] as String,
+      ownerUserProfileName: (map['ownerUserProfileName'] as String).input(),
     );
   }
 }

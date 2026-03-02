@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_route_spec_grpc_route_action_weighted_target.dart';
 
 class GetRouteSpecGrpcRouteAction {
-  final List<GetRouteSpecGrpcRouteActionWeightedTarget> weightedTargets;
+  final pulumi.Input<List<GetRouteSpecGrpcRouteActionWeightedTarget>> weightedTargets;
 
   /// Creates a new [GetRouteSpecGrpcRouteAction].
   /// [weightedTargets] Required.
@@ -14,13 +14,13 @@ class GetRouteSpecGrpcRouteAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weightedTargets': pulumi.Input.encodeList<GetRouteSpecGrpcRouteActionWeightedTarget, Map<String, dynamic>>(weightedTargets, (value) => value.toMap()),
+      'weightedTargets': pulumi.Input.mapInputValue<List<GetRouteSpecGrpcRouteActionWeightedTarget>, List<Map<String, dynamic>>>(weightedTargets, (value) => pulumi.Input.encodeList<GetRouteSpecGrpcRouteActionWeightedTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRouteSpecGrpcRouteAction.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteAction(
-      weightedTargets: pulumi.Input.decodeList<GetRouteSpecGrpcRouteActionWeightedTarget>(map['weightedTargets'], (value) => GetRouteSpecGrpcRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>())),
+      weightedTargets: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteActionWeightedTarget>(map['weightedTargets'], (value) => GetRouteSpecGrpcRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

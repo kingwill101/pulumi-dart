@@ -30,21 +30,14 @@ class GlossaryEntryArgs {
   /// [termsPair] Used for an unidirectional glossary.
   /// [termsSet] Used for an equivalent term sets glossary.
   GlossaryEntryArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> glossaryId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GlossaryTermsPair>? termsPair,
-    pulumi.Output<GlossaryTermsSet>? termsSet,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      glossaryId = pulumi.Input.asInput<String>(glossaryId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      termsPair = pulumi.Input.asOptionalInput<GlossaryTermsPair>(termsPair),
-      termsSet = pulumi.Input.asOptionalInput<GlossaryTermsSet>(termsSet);
+    this.description,
+    required this.glossaryId,
+    this.location,
+    this.name,
+    this.project,
+    this.termsPair,
+    this.termsSet,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class GlossaryEntryArgs {
 
   factory GlossaryEntryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryEntryArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      glossaryId: pulumi.Output.create<String>(map['glossaryId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      termsPair: map['termsPair'] == null ? null : pulumi.Output.create<GlossaryTermsPair>(GlossaryTermsPair.fromMap((map['termsPair'] as Map).cast<String, dynamic>())),
-      termsSet: map['termsSet'] == null ? null : pulumi.Output.create<GlossaryTermsSet>(GlossaryTermsSet.fromMap((map['termsSet'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      glossaryId: (map['glossaryId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      termsPair: map['termsPair'] == null ? null : (GlossaryTermsPair.fromMap((map['termsPair'] as Map).cast<String, dynamic>())).input(),
+      termsSet: map['termsSet'] == null ? null : (GlossaryTermsSet.fromMap((map['termsSet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

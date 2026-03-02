@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetSuspendedState {
   /// Whether scale in by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
-  final bool? dynamicScalingInSuspended;
+  final pulumi.Input<bool>? dynamicScalingInSuspended;
   /// Whether scale out by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
-  final bool? dynamicScalingOutSuspended;
+  final pulumi.Input<bool>? dynamicScalingOutSuspended;
   /// Whether scheduled scaling is suspended. Default is `false`.
-  final bool? scheduledScalingSuspended;
+  final pulumi.Input<bool>? scheduledScalingSuspended;
 
   /// Creates a new [TargetSuspendedState].
   /// [dynamicScalingInSuspended] Whether scale in by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
@@ -29,9 +30,9 @@ class TargetSuspendedState {
 
   factory TargetSuspendedState.fromMap(Map<String, dynamic> map) {
     return TargetSuspendedState(
-      dynamicScalingInSuspended: map['dynamicScalingInSuspended'] == null ? null : map['dynamicScalingInSuspended'] as bool,
-      dynamicScalingOutSuspended: map['dynamicScalingOutSuspended'] == null ? null : map['dynamicScalingOutSuspended'] as bool,
-      scheduledScalingSuspended: map['scheduledScalingSuspended'] == null ? null : map['scheduledScalingSuspended'] as bool,
+      dynamicScalingInSuspended: map['dynamicScalingInSuspended'] == null ? null : (map['dynamicScalingInSuspended'] as bool).input(),
+      dynamicScalingOutSuspended: map['dynamicScalingOutSuspended'] == null ? null : (map['dynamicScalingOutSuspended'] as bool).input(),
+      scheduledScalingSuspended: map['scheduledScalingSuspended'] == null ? null : (map['scheduledScalingSuspended'] as bool).input(),
     );
   }
 }

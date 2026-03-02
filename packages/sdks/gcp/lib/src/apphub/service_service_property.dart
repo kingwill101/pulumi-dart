@@ -10,27 +10,27 @@ class ServiceServiceProperty {
   /// (Output)
   /// Output only. Additional metadata specific to the resource type.
   /// Structure is documented below.
-  final List<ServiceServicePropertyExtendedMetadata>? extendedMetadatas;
+  final pulumi.Input<List<ServiceServicePropertyExtendedMetadata>>? extendedMetadatas;
   /// (Output)
   /// Output only. The type of the service.
   /// Structure is documented below.
-  final List<ServiceServicePropertyFunctionalType>? functionalTypes;
+  final pulumi.Input<List<ServiceServicePropertyFunctionalType>>? functionalTypes;
   /// (Output)
   /// Output only. The service project identifier that the underlying cloud resource resides in.
-  final String? gcpProject;
+  final pulumi.Input<String>? gcpProject;
   /// (Output)
   /// The identity associated with the service.
   /// Structure is documented below.
-  final List<ServiceServicePropertyIdentity>? identities;
+  final pulumi.Input<List<ServiceServicePropertyIdentity>>? identities;
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  final String? location;
+  final pulumi.Input<String>? location;
   /// (Output)
   /// Output only. The registration type of the service.
   /// Structure is documented below.
-  final List<ServiceServicePropertyRegistrationType>? registrationTypes;
+  final pulumi.Input<List<ServiceServicePropertyRegistrationType>>? registrationTypes;
   /// (Output)
   /// Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [ServiceServiceProperty].
   /// [extendedMetadatas] (Output)
@@ -52,25 +52,25 @@ class ServiceServiceProperty {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedMetadatas': ?extendedMetadatas == null ? null : pulumi.Input.encodeList<ServiceServicePropertyExtendedMetadata, Map<String, dynamic>>(extendedMetadatas!, (value) => value.toMap()),
-      'functionalTypes': ?functionalTypes == null ? null : pulumi.Input.encodeList<ServiceServicePropertyFunctionalType, Map<String, dynamic>>(functionalTypes!, (value) => value.toMap()),
+      'extendedMetadatas': ?pulumi.Input.mapOptionalInputValue<List<ServiceServicePropertyExtendedMetadata>, List<Map<String, dynamic>>>(extendedMetadatas, (value) => pulumi.Input.encodeList<ServiceServicePropertyExtendedMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'functionalTypes': ?pulumi.Input.mapOptionalInputValue<List<ServiceServicePropertyFunctionalType>, List<Map<String, dynamic>>>(functionalTypes, (value) => pulumi.Input.encodeList<ServiceServicePropertyFunctionalType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'gcpProject': ?gcpProject,
-      'identities': ?identities == null ? null : pulumi.Input.encodeList<ServiceServicePropertyIdentity, Map<String, dynamic>>(identities!, (value) => value.toMap()),
+      'identities': ?pulumi.Input.mapOptionalInputValue<List<ServiceServicePropertyIdentity>, List<Map<String, dynamic>>>(identities, (value) => pulumi.Input.encodeList<ServiceServicePropertyIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
-      'registrationTypes': ?registrationTypes == null ? null : pulumi.Input.encodeList<ServiceServicePropertyRegistrationType, Map<String, dynamic>>(registrationTypes!, (value) => value.toMap()),
+      'registrationTypes': ?pulumi.Input.mapOptionalInputValue<List<ServiceServicePropertyRegistrationType>, List<Map<String, dynamic>>>(registrationTypes, (value) => pulumi.Input.encodeList<ServiceServicePropertyRegistrationType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'zone': ?zone,
     };
   }
 
   factory ServiceServiceProperty.fromMap(Map<String, dynamic> map) {
     return ServiceServiceProperty(
-      extendedMetadatas: map['extendedMetadatas'] == null ? null : pulumi.Input.decodeList<ServiceServicePropertyExtendedMetadata>(map['extendedMetadatas'], (value) => ServiceServicePropertyExtendedMetadata.fromMap((value as Map).cast<String, dynamic>())),
-      functionalTypes: map['functionalTypes'] == null ? null : pulumi.Input.decodeList<ServiceServicePropertyFunctionalType>(map['functionalTypes'], (value) => ServiceServicePropertyFunctionalType.fromMap((value as Map).cast<String, dynamic>())),
-      gcpProject: map['gcpProject'] == null ? null : map['gcpProject'] as String,
-      identities: map['identities'] == null ? null : pulumi.Input.decodeList<ServiceServicePropertyIdentity>(map['identities'], (value) => ServiceServicePropertyIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      registrationTypes: map['registrationTypes'] == null ? null : pulumi.Input.decodeList<ServiceServicePropertyRegistrationType>(map['registrationTypes'], (value) => ServiceServicePropertyRegistrationType.fromMap((value as Map).cast<String, dynamic>())),
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      extendedMetadatas: map['extendedMetadatas'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyExtendedMetadata>(map['extendedMetadatas'], (value) => ServiceServicePropertyExtendedMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionalTypes: map['functionalTypes'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyFunctionalType>(map['functionalTypes'], (value) => ServiceServicePropertyFunctionalType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gcpProject: map['gcpProject'] == null ? null : (map['gcpProject'] as String).input(),
+      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyIdentity>(map['identities'], (value) => ServiceServicePropertyIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      registrationTypes: map['registrationTypes'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyRegistrationType>(map['registrationTypes'], (value) => ServiceServicePropertyRegistrationType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

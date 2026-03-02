@@ -25,17 +25,12 @@ class GetSqlResourceSqlStoredProcedureArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storedProcedureName] Cosmos DB storedProcedure name.
   GetSqlResourceSqlStoredProcedureArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storedProcedureName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storedProcedureName = pulumi.Input.asInput<String>(storedProcedureName);
+    required this.accountName,
+    required this.containerName,
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.storedProcedureName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSqlResourceSqlStoredProcedureArgs {
 
   factory GetSqlResourceSqlStoredProcedureArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlResourceSqlStoredProcedureArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storedProcedureName: pulumi.Output.create<String>(map['storedProcedureName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storedProcedureName: (map['storedProcedureName'] as String).input(),
     );
   }
 }

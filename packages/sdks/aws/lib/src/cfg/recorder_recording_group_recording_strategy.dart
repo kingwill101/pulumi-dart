@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecorderRecordingGroupRecordingStrategy {
-  final String? useOnly;
+  final pulumi.Input<String>? useOnly;
 
   /// Creates a new [RecorderRecordingGroupRecordingStrategy].
   /// [useOnly] Optional.
@@ -18,7 +19,7 @@ class RecorderRecordingGroupRecordingStrategy {
 
   factory RecorderRecordingGroupRecordingStrategy.fromMap(Map<String, dynamic> map) {
     return RecorderRecordingGroupRecordingStrategy(
-      useOnly: map['useOnly'] == null ? null : map['useOnly'] as String,
+      useOnly: map['useOnly'] == null ? null : (map['useOnly'] as String).input(),
     );
   }
 }

@@ -49,31 +49,19 @@ class GalleryApplicationVersionArgs {
   /// [tags] A mapping of tags to assign to the Gallery Application Version.
   /// [targetRegions] One or more `target_region` blocks as defined below.
   GalleryApplicationVersionArgs({
-    pulumi.Output<String>? configFile,
-    pulumi.Output<bool>? enableHealthCheck,
-    pulumi.Output<String>? endOfLifeDate,
-    pulumi.Output<bool>? excludeFromLatest,
-    required pulumi.Output<String> galleryApplicationId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<GalleryApplicationVersionManageAction> manageAction,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? packageFile,
-    required pulumi.Output<GalleryApplicationVersionSource> source,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<GalleryApplicationVersionTargetRegion>> targetRegions,
-  }) :
-      configFile = pulumi.Input.asOptionalInput<String>(configFile),
-      enableHealthCheck = pulumi.Input.asOptionalInput<bool>(enableHealthCheck),
-      endOfLifeDate = pulumi.Input.asOptionalInput<String>(endOfLifeDate),
-      excludeFromLatest = pulumi.Input.asOptionalInput<bool>(excludeFromLatest),
-      galleryApplicationId = pulumi.Input.asInput<String>(galleryApplicationId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      manageAction = pulumi.Input.asInput<GalleryApplicationVersionManageAction>(manageAction),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      packageFile = pulumi.Input.asOptionalInput<String>(packageFile),
-      source = pulumi.Input.asInput<GalleryApplicationVersionSource>(source),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetRegions = pulumi.Input.asInput<List<GalleryApplicationVersionTargetRegion>>(targetRegions);
+    this.configFile,
+    this.enableHealthCheck,
+    this.endOfLifeDate,
+    this.excludeFromLatest,
+    required this.galleryApplicationId,
+    this.location,
+    required this.manageAction,
+    this.name,
+    this.packageFile,
+    required this.source,
+    this.tags,
+    required this.targetRegions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class GalleryApplicationVersionArgs {
 
   factory GalleryApplicationVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionArgs(
-      configFile: map['configFile'] == null ? null : pulumi.Output.create<String>(map['configFile'] as String),
-      enableHealthCheck: map['enableHealthCheck'] == null ? null : pulumi.Output.create<bool>(map['enableHealthCheck'] as bool),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : pulumi.Output.create<String>(map['endOfLifeDate'] as String),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : pulumi.Output.create<bool>(map['excludeFromLatest'] as bool),
-      galleryApplicationId: pulumi.Output.create<String>(map['galleryApplicationId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      manageAction: pulumi.Output.create<GalleryApplicationVersionManageAction>(GalleryApplicationVersionManageAction.fromMap((map['manageAction'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      packageFile: map['packageFile'] == null ? null : pulumi.Output.create<String>(map['packageFile'] as String),
-      source: pulumi.Output.create<GalleryApplicationVersionSource>(GalleryApplicationVersionSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetRegions: pulumi.Output.create<List<GalleryApplicationVersionTargetRegion>>(pulumi.Input.decodeList<GalleryApplicationVersionTargetRegion>(map['targetRegions'], (value) => GalleryApplicationVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>()))),
+      configFile: map['configFile'] == null ? null : (map['configFile'] as String).input(),
+      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck'] as bool).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      galleryApplicationId: (map['galleryApplicationId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      manageAction: (GalleryApplicationVersionManageAction.fromMap((map['manageAction'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packageFile: map['packageFile'] == null ? null : (map['packageFile'] as String).input(),
+      source: (GalleryApplicationVersionSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetRegions: (pulumi.Input.decodeList<GalleryApplicationVersionTargetRegion>(map['targetRegions'], (value) => GalleryApplicationVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

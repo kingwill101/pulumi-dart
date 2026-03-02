@@ -34,23 +34,15 @@ class SavedSearchArgs {
   /// [query] The query expression for the saved search. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Logs Analytics Saved Search. Changing this forces a new resource to be created.
   SavedSearchArgs({
-    required pulumi.Output<String> category,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? functionAlias,
-    pulumi.Output<List<String>>? functionParameters,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> query,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      category = pulumi.Input.asInput<String>(category),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      functionAlias = pulumi.Input.asOptionalInput<String>(functionAlias),
-      functionParameters = pulumi.Input.asOptionalInput<List<String>>(functionParameters),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      query = pulumi.Input.asInput<String>(query),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.category,
+    required this.displayName,
+    this.functionAlias,
+    this.functionParameters,
+    required this.logAnalyticsWorkspaceId,
+    this.name,
+    required this.query,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SavedSearchArgs {
 
   factory SavedSearchArgs.fromMap(Map<String, dynamic> map) {
     return SavedSearchArgs(
-      category: pulumi.Output.create<String>(map['category'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      functionAlias: map['functionAlias'] == null ? null : pulumi.Output.create<String>(map['functionAlias'] as String),
-      functionParameters: map['functionParameters'] == null ? null : pulumi.Output.create<List<String>>((map['functionParameters'] as List).cast<String>()),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      query: pulumi.Output.create<String>(map['query'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      category: (map['category'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
+      functionParameters: map['functionParameters'] == null ? null : ((map['functionParameters'] as List).cast<String>()).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      query: (map['query'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

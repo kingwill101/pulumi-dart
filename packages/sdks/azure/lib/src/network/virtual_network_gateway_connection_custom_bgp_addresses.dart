@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayConnectionCustomBgpAddresses {
   /// single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (first one)
-  final String primary;
+  final pulumi.Input<String> primary;
   /// single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (second one)
-  final String? secondary;
+  final pulumi.Input<String>? secondary;
 
   /// Creates a new [VirtualNetworkGatewayConnectionCustomBgpAddresses].
   /// [primary] single IP address that is part of the `azure.network.VirtualNetworkGateway` ip_configuration (first one)
@@ -24,8 +25,8 @@ class VirtualNetworkGatewayConnectionCustomBgpAddresses {
 
   factory VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayConnectionCustomBgpAddresses(
-      primary: map['primary'] as String,
-      secondary: map['secondary'] == null ? null : map['secondary'] as String,
+      primary: (map['primary'] as String).input(),
+      secondary: map['secondary'] == null ? null : (map['secondary'] as String).input(),
     );
   }
 }

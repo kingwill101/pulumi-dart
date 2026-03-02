@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontend_endpoint_update_parameters_web_application_firewall_policy_link.dart';
 
 /// A frontend endpoint used for routing.
 class FrontendEndpoint {
   /// The host name of the frontendEndpoint. Must be a domain name.
-  final String? hostName;
+  final pulumi.Input<String>? hostName;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Resource name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
-  final String? sessionAffinityEnabledState;
+  final pulumi.Input<String>? sessionAffinityEnabledState;
   /// UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.
-  final int? sessionAffinityTtlSeconds;
+  final pulumi.Input<int>? sessionAffinityTtlSeconds;
   /// Defines the Web Application Firewall policy for each host (if applicable)
-  final FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink? webApplicationFirewallPolicyLink;
+  final pulumi.Input<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink>? webApplicationFirewallPolicyLink;
 
   /// Creates a new [FrontendEndpoint].
   /// [hostName] The host name of the frontendEndpoint. Must be a domain name.
@@ -40,18 +41,18 @@ class FrontendEndpoint {
       'name': ?name,
       'sessionAffinityEnabledState': ?sessionAffinityEnabledState,
       'sessionAffinityTtlSeconds': ?sessionAffinityTtlSeconds,
-      'webApplicationFirewallPolicyLink': ?webApplicationFirewallPolicyLink == null ? null : webApplicationFirewallPolicyLink!.toMap(),
+      'webApplicationFirewallPolicyLink': ?pulumi.Input.mapOptionalInputValue<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink, Map<String, dynamic>>(webApplicationFirewallPolicyLink, (value) => value.toMap()),
     };
   }
 
   factory FrontendEndpoint.fromMap(Map<String, dynamic> map) {
     return FrontendEndpoint(
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      sessionAffinityEnabledState: map['sessionAffinityEnabledState'] == null ? null : map['sessionAffinityEnabledState'] as String,
-      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : map['sessionAffinityTtlSeconds'] as int,
-      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink'] as Map).cast<String, dynamic>()),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sessionAffinityEnabledState: map['sessionAffinityEnabledState'] == null ? null : (map['sessionAffinityEnabledState'] as String).input(),
+      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : (map['sessionAffinityTtlSeconds'] as int).input(),
+      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : (FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

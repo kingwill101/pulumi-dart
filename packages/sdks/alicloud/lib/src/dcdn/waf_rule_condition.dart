@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleCondition {
   /// The match field.
-  final String key;
+  final pulumi.Input<String> key;
   /// The logical symbol.
-  final String opValue;
+  final pulumi.Input<String> opValue;
   /// The match subfield.
-  final String? subKey;
+  final pulumi.Input<String>? subKey;
   /// The match content. Separate multiple values with commas (,).
-  final String? values;
+  final pulumi.Input<String>? values;
 
   /// Creates a new [WafRuleCondition].
   /// [key] The match field.
@@ -34,10 +35,10 @@ class WafRuleCondition {
 
   factory WafRuleCondition.fromMap(Map<String, dynamic> map) {
     return WafRuleCondition(
-      key: map['key'] as String,
-      opValue: map['opValue'] as String,
-      subKey: map['subKey'] == null ? null : map['subKey'] as String,
-      values: map['values'] == null ? null : map['values'] as String,
+      key: (map['key'] as String).input(),
+      opValue: (map['opValue'] as String).input(),
+      subKey: map['subKey'] == null ? null : (map['subKey'] as String).input(),
+      values: map['values'] == null ? null : (map['values'] as String).input(),
     );
   }
 }

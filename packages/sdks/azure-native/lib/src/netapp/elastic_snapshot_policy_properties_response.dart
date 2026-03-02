@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'elastic_snapshot_policy_daily_schedule_response.dart';
 import 'elastic_snapshot_policy_hourly_schedule_response.dart';
 import 'elastic_snapshot_policy_monthly_schedule_response.dart';
@@ -8,17 +9,17 @@ import 'elastic_snapshot_policy_weekly_schedule_response.dart';
 /// Elastic Snapshot policy properties
 class ElasticSnapshotPolicyPropertiesResponse {
   /// Schedule for daily snapshots
-  final ElasticSnapshotPolicyDailyScheduleResponse? dailySchedule;
+  final pulumi.Input<ElasticSnapshotPolicyDailyScheduleResponse>? dailySchedule;
   /// Schedule for hourly snapshots
-  final ElasticSnapshotPolicyHourlyScheduleResponse? hourlySchedule;
+  final pulumi.Input<ElasticSnapshotPolicyHourlyScheduleResponse>? hourlySchedule;
   /// Schedule for monthly snapshots
-  final ElasticSnapshotPolicyMonthlyScheduleResponse? monthlySchedule;
+  final pulumi.Input<ElasticSnapshotPolicyMonthlyScheduleResponse>? monthlySchedule;
   /// Configures if the snapshot policy is enabled on the volumes connected to the policy.
-  final String? policyStatus;
+  final pulumi.Input<String>? policyStatus;
   /// Azure lifecycle management.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Schedule for weekly snapshots
-  final ElasticSnapshotPolicyWeeklyScheduleResponse? weeklySchedule;
+  final pulumi.Input<ElasticSnapshotPolicyWeeklyScheduleResponse>? weeklySchedule;
 
   /// Creates a new [ElasticSnapshotPolicyPropertiesResponse].
   /// [dailySchedule] Schedule for daily snapshots
@@ -38,23 +39,23 @@ class ElasticSnapshotPolicyPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailySchedule': ?dailySchedule == null ? null : dailySchedule!.toMap(),
-      'hourlySchedule': ?hourlySchedule == null ? null : hourlySchedule!.toMap(),
-      'monthlySchedule': ?monthlySchedule == null ? null : monthlySchedule!.toMap(),
+      'dailySchedule': ?pulumi.Input.mapOptionalInputValue<ElasticSnapshotPolicyDailyScheduleResponse, Map<String, dynamic>>(dailySchedule, (value) => value.toMap()),
+      'hourlySchedule': ?pulumi.Input.mapOptionalInputValue<ElasticSnapshotPolicyHourlyScheduleResponse, Map<String, dynamic>>(hourlySchedule, (value) => value.toMap()),
+      'monthlySchedule': ?pulumi.Input.mapOptionalInputValue<ElasticSnapshotPolicyMonthlyScheduleResponse, Map<String, dynamic>>(monthlySchedule, (value) => value.toMap()),
       'policyStatus': ?policyStatus,
       'provisioningState': provisioningState,
-      'weeklySchedule': ?weeklySchedule == null ? null : weeklySchedule!.toMap(),
+      'weeklySchedule': ?pulumi.Input.mapOptionalInputValue<ElasticSnapshotPolicyWeeklyScheduleResponse, Map<String, dynamic>>(weeklySchedule, (value) => value.toMap()),
     };
   }
 
   factory ElasticSnapshotPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyPropertiesResponse(
-      dailySchedule: map['dailySchedule'] == null ? null : ElasticSnapshotPolicyDailyScheduleResponse.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
-      hourlySchedule: map['hourlySchedule'] == null ? null : ElasticSnapshotPolicyHourlyScheduleResponse.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
-      monthlySchedule: map['monthlySchedule'] == null ? null : ElasticSnapshotPolicyMonthlyScheduleResponse.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>()),
-      policyStatus: map['policyStatus'] == null ? null : map['policyStatus'] as String,
-      provisioningState: map['provisioningState'] as String,
-      weeklySchedule: map['weeklySchedule'] == null ? null : ElasticSnapshotPolicyWeeklyScheduleResponse.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: map['dailySchedule'] == null ? null : (ElasticSnapshotPolicyDailyScheduleResponse.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (ElasticSnapshotPolicyHourlyScheduleResponse.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
+      monthlySchedule: map['monthlySchedule'] == null ? null : (ElasticSnapshotPolicyMonthlyScheduleResponse.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>())).input(),
+      policyStatus: map['policyStatus'] == null ? null : (map['policyStatus'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (ElasticSnapshotPolicyWeeklyScheduleResponse.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

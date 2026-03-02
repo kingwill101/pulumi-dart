@@ -46,29 +46,18 @@ class GraphArgs {
   /// [timeouts] Optional.
   /// [vectorSearchConfiguration] Vector Search Configuration (see below for nested schema of vector_search_configuration)
   GraphArgs({
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? graphName,
-    pulumi.Output<String>? graphNamePrefix,
-    pulumi.Output<String>? kmsKeyIdentifier,
-    required pulumi.Output<int> provisionedMemory,
-    pulumi.Output<bool>? publicConnectivity,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? replicaCount,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<GraphTimeouts>? timeouts,
-    pulumi.Output<GraphVectorSearchConfiguration>? vectorSearchConfiguration,
-  }) :
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      graphName = pulumi.Input.asOptionalInput<String>(graphName),
-      graphNamePrefix = pulumi.Input.asOptionalInput<String>(graphNamePrefix),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      provisionedMemory = pulumi.Input.asInput<int>(provisionedMemory),
-      publicConnectivity = pulumi.Input.asOptionalInput<bool>(publicConnectivity),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicaCount = pulumi.Input.asOptionalInput<int>(replicaCount),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<GraphTimeouts>(timeouts),
-      vectorSearchConfiguration = pulumi.Input.asOptionalInput<GraphVectorSearchConfiguration>(vectorSearchConfiguration);
+    this.deletionProtection,
+    this.graphName,
+    this.graphNamePrefix,
+    this.kmsKeyIdentifier,
+    required this.provisionedMemory,
+    this.publicConnectivity,
+    this.region,
+    this.replicaCount,
+    this.tags,
+    this.timeouts,
+    this.vectorSearchConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class GraphArgs {
 
   factory GraphArgs.fromMap(Map<String, dynamic> map) {
     return GraphArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      graphName: map['graphName'] == null ? null : pulumi.Output.create<String>(map['graphName'] as String),
-      graphNamePrefix: map['graphNamePrefix'] == null ? null : pulumi.Output.create<String>(map['graphNamePrefix'] as String),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
-      provisionedMemory: pulumi.Output.create<int>(map['provisionedMemory'] as int),
-      publicConnectivity: map['publicConnectivity'] == null ? null : pulumi.Output.create<bool>(map['publicConnectivity'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicaCount: map['replicaCount'] == null ? null : pulumi.Output.create<int>(map['replicaCount'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<GraphTimeouts>(GraphTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vectorSearchConfiguration: map['vectorSearchConfiguration'] == null ? null : pulumi.Output.create<GraphVectorSearchConfiguration>(GraphVectorSearchConfiguration.fromMap((map['vectorSearchConfiguration'] as Map).cast<String, dynamic>())),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      graphName: map['graphName'] == null ? null : (map['graphName'] as String).input(),
+      graphNamePrefix: map['graphNamePrefix'] == null ? null : (map['graphNamePrefix'] as String).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      provisionedMemory: (map['provisionedMemory'] as int).input(),
+      publicConnectivity: map['publicConnectivity'] == null ? null : (map['publicConnectivity'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (GraphTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vectorSearchConfiguration: map['vectorSearchConfiguration'] == null ? null : (GraphVectorSearchConfiguration.fromMap((map['vectorSearchConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

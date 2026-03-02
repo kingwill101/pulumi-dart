@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_cycle_response.dart';
 
 /// CutoverStep holds information about the cutover step progress.
 class CutoverStepResponse {
   /// The time the step has ended.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Final sync step.
-  final ReplicationCycleResponse finalSync;
+  final pulumi.Input<ReplicationCycleResponse> finalSync;
   /// Instantiating migrated VM step.
-  final Map<String, dynamic> instantiatingMigratedVm;
+  final pulumi.Input<Map<String, dynamic>> instantiatingMigratedVm;
   /// Preparing VM disks step.
-  final Map<String, dynamic> preparingVmDisks;
+  final pulumi.Input<Map<String, dynamic>> preparingVmDisks;
   /// A replication cycle prior cutover step.
-  final ReplicationCycleResponse previousReplicationCycle;
+  final pulumi.Input<ReplicationCycleResponse> previousReplicationCycle;
   /// Shutting down VM step.
-  final Map<String, dynamic> shuttingDownSourceVm;
+  final pulumi.Input<Map<String, dynamic>> shuttingDownSourceVm;
   /// The time the step has started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [CutoverStepResponse].
   /// [endTime] The time the step has ended.
@@ -40,10 +41,10 @@ class CutoverStepResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': endTime,
-      'finalSync': finalSync.toMap(),
+      'finalSync': pulumi.Input.mapInputValue<ReplicationCycleResponse, Map<String, dynamic>>(finalSync, (value) => value.toMap()),
       'instantiatingMigratedVm': instantiatingMigratedVm,
       'preparingVmDisks': preparingVmDisks,
-      'previousReplicationCycle': previousReplicationCycle.toMap(),
+      'previousReplicationCycle': pulumi.Input.mapInputValue<ReplicationCycleResponse, Map<String, dynamic>>(previousReplicationCycle, (value) => value.toMap()),
       'shuttingDownSourceVm': shuttingDownSourceVm,
       'startTime': startTime,
     };
@@ -51,13 +52,13 @@ class CutoverStepResponse {
 
   factory CutoverStepResponse.fromMap(Map<String, dynamic> map) {
     return CutoverStepResponse(
-      endTime: map['endTime'] as String,
-      finalSync: ReplicationCycleResponse.fromMap((map['finalSync'] as Map).cast<String, dynamic>()),
-      instantiatingMigratedVm: (map['instantiatingMigratedVm'] as Map).cast<String, dynamic>(),
-      preparingVmDisks: (map['preparingVmDisks'] as Map).cast<String, dynamic>(),
-      previousReplicationCycle: ReplicationCycleResponse.fromMap((map['previousReplicationCycle'] as Map).cast<String, dynamic>()),
-      shuttingDownSourceVm: (map['shuttingDownSourceVm'] as Map).cast<String, dynamic>(),
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      finalSync: (ReplicationCycleResponse.fromMap((map['finalSync'] as Map).cast<String, dynamic>())).input(),
+      instantiatingMigratedVm: ((map['instantiatingMigratedVm'] as Map).cast<String, dynamic>()).input(),
+      preparingVmDisks: ((map['preparingVmDisks'] as Map).cast<String, dynamic>()).input(),
+      previousReplicationCycle: (ReplicationCycleResponse.fromMap((map['previousReplicationCycle'] as Map).cast<String, dynamic>())).input(),
+      shuttingDownSourceVm: ((map['shuttingDownSourceVm'] as Map).cast<String, dynamic>()).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

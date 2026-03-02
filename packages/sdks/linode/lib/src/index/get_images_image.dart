@@ -6,41 +6,41 @@ import 'get_images_image_replication.dart';
 
 class GetImagesImage {
   /// The capabilities of this Image.
-  final List<String> capabilities;
+  final pulumi.Input<List<String>> capabilities;
   /// When this Image was created.
-  final String created;
+  final pulumi.Input<String> created;
   /// The name of the User who created this Image, or "linode" for official Images.
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-  final bool deprecated;
+  final pulumi.Input<bool> deprecated;
   /// A detailed description of this Image.
-  final String description;
+  final pulumi.Input<String> description;
   /// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
-  final GetImagesImageImageSharing imageSharing;
+  final pulumi.Input<GetImagesImageImageSharing> imageSharing;
   /// True if the Image is public.
-  final bool isPublic;
+  final pulumi.Input<bool> isPublic;
   /// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
-  final bool isShared;
+  final pulumi.Input<bool> isShared;
   /// A short description of the Image.
-  final String label;
+  final pulumi.Input<String> label;
   /// A list of image replication regions and corresponding status.
-  final List<GetImagesImageReplication> replications;
+  final pulumi.Input<List<GetImagesImageReplication>> replications;
   /// The minimum size this Image needs to deploy. Size is in MB. example: 2500
-  final int size;
+  final pulumi.Input<int> size;
   /// The status of an image replica.
-  final String status;
+  final pulumi.Input<String> status;
   /// A list of customized tags.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
   /// The total size of the image in all available regions.
-  final int totalSize;
+  final pulumi.Input<int> totalSize;
   /// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-  final String type;
+  final pulumi.Input<String> type;
   /// The upstream distribution vendor. `None` for private Images.
-  final String vendor;
+  final pulumi.Input<String> vendor;
 
   /// Creates a new [GetImagesImage].
   /// [capabilities] The capabilities of this Image.
@@ -91,11 +91,11 @@ class GetImagesImage {
       'description': description,
       'expiry': expiry,
       'id': id,
-      'imageSharing': imageSharing.toMap(),
+      'imageSharing': pulumi.Input.mapInputValue<GetImagesImageImageSharing, Map<String, dynamic>>(imageSharing, (value) => value.toMap()),
       'isPublic': isPublic,
       'isShared': isShared,
       'label': label,
-      'replications': pulumi.Input.encodeList<GetImagesImageReplication, Map<String, dynamic>>(replications, (value) => value.toMap()),
+      'replications': pulumi.Input.mapInputValue<List<GetImagesImageReplication>, List<Map<String, dynamic>>>(replications, (value) => pulumi.Input.encodeList<GetImagesImageReplication, Map<String, dynamic>>(value, (value) => value.toMap())),
       'size': size,
       'status': status,
       'tags': tags,
@@ -107,24 +107,24 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      capabilities: (map['capabilities'] as List).cast<String>(),
-      created: map['created'] as String,
-      createdBy: map['createdBy'] as String,
-      deprecated: map['deprecated'] as bool,
-      description: map['description'] as String,
-      expiry: map['expiry'] as String,
-      id: map['id'] as String,
-      imageSharing: GetImagesImageImageSharing.fromMap((map['imageSharing'] as Map).cast<String, dynamic>()),
-      isPublic: map['isPublic'] as bool,
-      isShared: map['isShared'] as bool,
-      label: map['label'] as String,
-      replications: pulumi.Input.decodeList<GetImagesImageReplication>(map['replications'], (value) => GetImagesImageReplication.fromMap((value as Map).cast<String, dynamic>())),
-      size: map['size'] as int,
-      status: map['status'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      totalSize: map['totalSize'] as int,
-      type: map['type'] as String,
-      vendor: map['vendor'] as String,
+      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
+      created: (map['created'] as String).input(),
+      createdBy: (map['createdBy'] as String).input(),
+      deprecated: (map['deprecated'] as bool).input(),
+      description: (map['description'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageSharing: (GetImagesImageImageSharing.fromMap((map['imageSharing'] as Map).cast<String, dynamic>())).input(),
+      isPublic: (map['isPublic'] as bool).input(),
+      isShared: (map['isShared'] as bool).input(),
+      label: (map['label'] as String).input(),
+      replications: (pulumi.Input.decodeList<GetImagesImageReplication>(map['replications'], (value) => GetImagesImageReplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      size: (map['size'] as int).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      totalSize: (map['totalSize'] as int).input(),
+      type: (map['type'] as String).input(),
+      vendor: (map['vendor'] as String).input(),
     );
   }
 }

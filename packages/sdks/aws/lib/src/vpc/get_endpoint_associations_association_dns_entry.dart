@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointAssociationsAssociationDnsEntry {
   /// DNS name.
-  final String dnsName;
+  final pulumi.Input<String> dnsName;
   /// ID of the private hosted zone.
-  final String hostedZoneId;
+  final pulumi.Input<String> hostedZoneId;
 
   /// Creates a new [GetEndpointAssociationsAssociationDnsEntry].
   /// [dnsName] DNS name.
@@ -24,8 +25,8 @@ class GetEndpointAssociationsAssociationDnsEntry {
 
   factory GetEndpointAssociationsAssociationDnsEntry.fromMap(Map<String, dynamic> map) {
     return GetEndpointAssociationsAssociationDnsEntry(
-      dnsName: map['dnsName'] as String,
-      hostedZoneId: map['hostedZoneId'] as String,
+      dnsName: (map['dnsName'] as String).input(),
+      hostedZoneId: (map['hostedZoneId'] as String).input(),
     );
   }
 }

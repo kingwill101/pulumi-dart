@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourcesSearchAllResult {
   /// Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
-  final List<String> additionalAttributes;
+  final pulumi.Input<List<String>> additionalAttributes;
   /// The type of this resource.
-  final String assetType;
+  final pulumi.Input<String> assetType;
   /// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
-  final String description;
+  final pulumi.Input<String> description;
   /// The display name of this resource.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Labels associated with this resource.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
-  final String location;
+  final pulumi.Input<String> location;
   /// The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
-  final String name;
+  final pulumi.Input<String> name;
   /// Network tags associated with this resource.
-  final List<String> networkTags;
+  final pulumi.Input<List<String>> networkTags;
   /// The project that this resource belongs to, in the form of `projects/{project_number}`.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [GetResourcesSearchAllResult].
   /// [additionalAttributes] Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
@@ -59,15 +60,15 @@ class GetResourcesSearchAllResult {
 
   factory GetResourcesSearchAllResult.fromMap(Map<String, dynamic> map) {
     return GetResourcesSearchAllResult(
-      additionalAttributes: (map['additionalAttributes'] as List).cast<String>(),
-      assetType: map['assetType'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      networkTags: (map['networkTags'] as List).cast<String>(),
-      project: map['project'] as String,
+      additionalAttributes: ((map['additionalAttributes'] as List).cast<String>()).input(),
+      assetType: (map['assetType'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      networkTags: ((map['networkTags'] as List).cast<String>()).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

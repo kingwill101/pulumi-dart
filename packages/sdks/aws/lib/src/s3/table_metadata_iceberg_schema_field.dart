@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableMetadataIcebergSchemaField {
   /// The name of the field.
-  final String name;
+  final pulumi.Input<String> name;
   /// A Boolean value that specifies whether values are required for each row in this field. Defaults to `false`.
-  final bool? required;
+  final pulumi.Input<bool>? required;
   /// The field type. S3 Tables supports all Apache Iceberg primitive types including: `boolean`, `int`, `long`, `float`, `double`, `decimal(precision,scale)`, `date`, `time`, `timestamp`, `timestamptz`, `string`, `uuid`, `fixed(length)`, `binary`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TableMetadataIcebergSchemaField].
   /// [name] The name of the field.
@@ -29,9 +30,9 @@ class TableMetadataIcebergSchemaField {
 
   factory TableMetadataIcebergSchemaField.fromMap(Map<String, dynamic> map) {
     return TableMetadataIcebergSchemaField(
-      name: map['name'] as String,
-      required: map['required'] == null ? null : map['required'] as bool,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

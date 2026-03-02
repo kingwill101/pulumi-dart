@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Info about origin if it is linked.
 class LinkedInfoResponse {
   /// LinkedId id.
-  final String? linkedId;
+  final pulumi.Input<String>? linkedId;
   /// Linked resource name.
-  final String? linkedResourceName;
+  final pulumi.Input<String>? linkedResourceName;
   /// Datastore origin
-  final String? origin;
+  final pulumi.Input<String>? origin;
 
   /// Creates a new [LinkedInfoResponse].
   /// [linkedId] LinkedId id.
@@ -30,9 +31,9 @@ class LinkedInfoResponse {
 
   factory LinkedInfoResponse.fromMap(Map<String, dynamic> map) {
     return LinkedInfoResponse(
-      linkedId: map['linkedId'] == null ? null : map['linkedId'] as String,
-      linkedResourceName: map['linkedResourceName'] == null ? null : map['linkedResourceName'] as String,
-      origin: map['origin'] == null ? null : map['origin'] as String,
+      linkedId: map['linkedId'] == null ? null : (map['linkedId'] as String).input(),
+      linkedResourceName: map['linkedResourceName'] == null ? null : (map['linkedResourceName'] as String).input(),
+      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
     );
   }
 }

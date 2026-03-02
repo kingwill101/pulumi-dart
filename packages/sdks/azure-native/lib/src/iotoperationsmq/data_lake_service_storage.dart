@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_lake_service_storage_authentication.dart';
 
 /// DataLake Service Storage details.
 class DataLakeServiceStorage {
   /// DataLake service storage authentication details. NOTE - Enum only one method is supported.
-  final DataLakeServiceStorageAuthentication authentication;
+  final pulumi.Input<DataLakeServiceStorageAuthentication> authentication;
   /// DataLake service storage endpoint to use.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [DataLakeServiceStorage].
   /// [authentication] DataLake service storage authentication details. NOTE - Enum only one method is supported.
@@ -19,15 +20,15 @@ class DataLakeServiceStorage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': authentication.toMap(),
+      'authentication': pulumi.Input.mapInputValue<DataLakeServiceStorageAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'endpoint': endpoint,
     };
   }
 
   factory DataLakeServiceStorage.fromMap(Map<String, dynamic> map) {
     return DataLakeServiceStorage(
-      authentication: DataLakeServiceStorageAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      endpoint: map['endpoint'] as String,
+      authentication: (DataLakeServiceStorageAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

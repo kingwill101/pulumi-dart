@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateInstanceRequirementsNetworkInterfaceCount {
   /// Maximum.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// Minimum.
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [LaunchTemplateInstanceRequirementsNetworkInterfaceCount].
   /// [max] Maximum.
@@ -24,8 +25,8 @@ class LaunchTemplateInstanceRequirementsNetworkInterfaceCount {
 
   factory LaunchTemplateInstanceRequirementsNetworkInterfaceCount.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceRequirementsNetworkInterfaceCount(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

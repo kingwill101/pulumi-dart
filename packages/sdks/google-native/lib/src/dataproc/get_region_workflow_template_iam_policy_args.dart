@@ -16,13 +16,10 @@ class GetRegionWorkflowTemplateIamPolicyArgs {
   /// [regionId] Required.
   /// [workflowTemplateId] Required.
   GetRegionWorkflowTemplateIamPolicyArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> regionId,
-    required pulumi.Output<String> workflowTemplateId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId),
-      workflowTemplateId = pulumi.Input.asInput<String>(workflowTemplateId);
+    this.project,
+    required this.regionId,
+    required this.workflowTemplateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionWorkflowTemplateIamPolicyArgs {
 
   factory GetRegionWorkflowTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionWorkflowTemplateIamPolicyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regionId: pulumi.Output.create<String>(map['regionId'] as String),
-      workflowTemplateId: pulumi.Output.create<String>(map['workflowTemplateId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      workflowTemplateId: (map['workflowTemplateId'] as String).input(),
     );
   }
 }

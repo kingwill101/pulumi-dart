@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Policy to set request timeouts
 class TimeoutPolicy {
   /// Timeout, in seconds, for a request to initiate a connection
-  final int? connectionTimeoutInSeconds;
+  final pulumi.Input<int>? connectionTimeoutInSeconds;
   /// Timeout, in seconds, for a request to respond
-  final int? responseTimeoutInSeconds;
+  final pulumi.Input<int>? responseTimeoutInSeconds;
 
   /// Creates a new [TimeoutPolicy].
   /// [connectionTimeoutInSeconds] Timeout, in seconds, for a request to initiate a connection
@@ -25,8 +26,8 @@ class TimeoutPolicy {
 
   factory TimeoutPolicy.fromMap(Map<String, dynamic> map) {
     return TimeoutPolicy(
-      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : map['connectionTimeoutInSeconds'] as int,
-      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : map['responseTimeoutInSeconds'] as int,
+      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : (map['connectionTimeoutInSeconds'] as int).input(),
+      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : (map['responseTimeoutInSeconds'] as int).input(),
     );
   }
 }

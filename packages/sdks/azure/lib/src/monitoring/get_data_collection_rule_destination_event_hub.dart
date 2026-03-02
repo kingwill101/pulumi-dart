@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCollectionRuleDestinationEventHub {
   /// The resource ID of the Event Hub.
-  final String eventHubId;
+  final pulumi.Input<String> eventHubId;
   /// Specifies the name of the Data Collection Rule.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetDataCollectionRuleDestinationEventHub].
   /// [eventHubId] The resource ID of the Event Hub.
@@ -24,8 +25,8 @@ class GetDataCollectionRuleDestinationEventHub {
 
   factory GetDataCollectionRuleDestinationEventHub.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDestinationEventHub(
-      eventHubId: map['eventHubId'] as String,
-      name: map['name'] as String,
+      eventHubId: (map['eventHubId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

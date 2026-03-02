@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBrokerUser {
   /// Whether to enable access to the ActiveMQ Web Console for the user.
-  final bool consoleAccess;
+  final pulumi.Input<bool> consoleAccess;
   /// List of groups to which the ActiveMQ user belongs.
-  final List<String> groups;
+  final pulumi.Input<List<String>> groups;
   /// Whether to set replication user.
-  final bool replicationUser;
+  final pulumi.Input<bool> replicationUser;
   /// Username of the user.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetBrokerUser].
   /// [consoleAccess] Whether to enable access to the ActiveMQ Web Console for the user.
@@ -34,10 +35,10 @@ class GetBrokerUser {
 
   factory GetBrokerUser.fromMap(Map<String, dynamic> map) {
     return GetBrokerUser(
-      consoleAccess: map['consoleAccess'] as bool,
-      groups: (map['groups'] as List).cast<String>(),
-      replicationUser: map['replicationUser'] as bool,
-      username: map['username'] as String,
+      consoleAccess: (map['consoleAccess'] as bool).input(),
+      groups: ((map['groups'] as List).cast<String>()).input(),
+      replicationUser: (map['replicationUser'] as bool).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

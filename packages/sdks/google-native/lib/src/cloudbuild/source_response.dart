@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connected_repository_response.dart';
 import 'git_source_response.dart';
 import 'repo_source_response.dart';
@@ -9,15 +10,15 @@ import 'storage_source_response.dart';
 /// Location of the source in a supported storage service.
 class SourceResponse {
   /// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
-  final ConnectedRepositoryResponse connectedRepository;
+  final pulumi.Input<ConnectedRepositoryResponse> connectedRepository;
   /// If provided, get the source from this Git repository.
-  final GitSourceResponse gitSource;
+  final pulumi.Input<GitSourceResponse> gitSource;
   /// If provided, get the source from this location in a Cloud Source Repository.
-  final RepoSourceResponse repoSource;
+  final pulumi.Input<RepoSourceResponse> repoSource;
   /// If provided, get the source from this location in Cloud Storage.
-  final StorageSourceResponse storageSource;
+  final pulumi.Input<StorageSourceResponse> storageSource;
   /// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-  final StorageSourceManifestResponse storageSourceManifest;
+  final pulumi.Input<StorageSourceManifestResponse> storageSourceManifest;
 
   /// Creates a new [SourceResponse].
   /// [connectedRepository] Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
@@ -35,21 +36,21 @@ class SourceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectedRepository': connectedRepository.toMap(),
-      'gitSource': gitSource.toMap(),
-      'repoSource': repoSource.toMap(),
-      'storageSource': storageSource.toMap(),
-      'storageSourceManifest': storageSourceManifest.toMap(),
+      'connectedRepository': pulumi.Input.mapInputValue<ConnectedRepositoryResponse, Map<String, dynamic>>(connectedRepository, (value) => value.toMap()),
+      'gitSource': pulumi.Input.mapInputValue<GitSourceResponse, Map<String, dynamic>>(gitSource, (value) => value.toMap()),
+      'repoSource': pulumi.Input.mapInputValue<RepoSourceResponse, Map<String, dynamic>>(repoSource, (value) => value.toMap()),
+      'storageSource': pulumi.Input.mapInputValue<StorageSourceResponse, Map<String, dynamic>>(storageSource, (value) => value.toMap()),
+      'storageSourceManifest': pulumi.Input.mapInputValue<StorageSourceManifestResponse, Map<String, dynamic>>(storageSourceManifest, (value) => value.toMap()),
     };
   }
 
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
     return SourceResponse(
-      connectedRepository: ConnectedRepositoryResponse.fromMap((map['connectedRepository'] as Map).cast<String, dynamic>()),
-      gitSource: GitSourceResponse.fromMap((map['gitSource'] as Map).cast<String, dynamic>()),
-      repoSource: RepoSourceResponse.fromMap((map['repoSource'] as Map).cast<String, dynamic>()),
-      storageSource: StorageSourceResponse.fromMap((map['storageSource'] as Map).cast<String, dynamic>()),
-      storageSourceManifest: StorageSourceManifestResponse.fromMap((map['storageSourceManifest'] as Map).cast<String, dynamic>()),
+      connectedRepository: (ConnectedRepositoryResponse.fromMap((map['connectedRepository'] as Map).cast<String, dynamic>())).input(),
+      gitSource: (GitSourceResponse.fromMap((map['gitSource'] as Map).cast<String, dynamic>())).input(),
+      repoSource: (RepoSourceResponse.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
+      storageSource: (StorageSourceResponse.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
+      storageSourceManifest: (StorageSourceManifestResponse.fromMap((map['storageSourceManifest'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

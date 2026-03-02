@@ -14,11 +14,9 @@ class GetSshPublicKeyArgs {
   /// [sshPublicKeyId] Required.
   /// [userId] Required.
   GetSshPublicKeyArgs({
-    required pulumi.Output<String> sshPublicKeyId,
-    required pulumi.Output<String> userId,
-  }) :
-      sshPublicKeyId = pulumi.Input.asInput<String>(sshPublicKeyId),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.sshPublicKeyId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetSshPublicKeyArgs {
 
   factory GetSshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshPublicKeyArgs(
-      sshPublicKeyId: pulumi.Output.create<String>(map['sshPublicKeyId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      sshPublicKeyId: (map['sshPublicKeyId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

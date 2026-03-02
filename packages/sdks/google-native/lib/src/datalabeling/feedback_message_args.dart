@@ -34,27 +34,17 @@ class FeedbackMessageArgs {
   /// [project] Optional.
   /// [requesterFeedbackMetadata] Optional.
   FeedbackMessageArgs({
-    required pulumi.Output<String> annotatedDatasetId,
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? createTime,
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> feedbackThreadId,
-    pulumi.Output<String>? image,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, dynamic>>? operatorFeedbackMetadata,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, dynamic>>? requesterFeedbackMetadata,
-  }) :
-      annotatedDatasetId = pulumi.Input.asInput<String>(annotatedDatasetId),
-      body = pulumi.Input.asOptionalInput<String>(body),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      feedbackThreadId = pulumi.Input.asInput<String>(feedbackThreadId),
-      image = pulumi.Input.asOptionalInput<String>(image),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operatorFeedbackMetadata = pulumi.Input.asOptionalInput<Map<String, dynamic>>(operatorFeedbackMetadata),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requesterFeedbackMetadata = pulumi.Input.asOptionalInput<Map<String, dynamic>>(requesterFeedbackMetadata);
+    required this.annotatedDatasetId,
+    this.body,
+    this.createTime,
+    required this.datasetId,
+    required this.feedbackThreadId,
+    this.image,
+    this.name,
+    this.operatorFeedbackMetadata,
+    this.project,
+    this.requesterFeedbackMetadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,16 +63,16 @@ class FeedbackMessageArgs {
 
   factory FeedbackMessageArgs.fromMap(Map<String, dynamic> map) {
     return FeedbackMessageArgs(
-      annotatedDatasetId: pulumi.Output.create<String>(map['annotatedDatasetId'] as String),
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      feedbackThreadId: pulumi.Output.create<String>(map['feedbackThreadId'] as String),
-      image: map['image'] == null ? null : pulumi.Output.create<String>(map['image'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operatorFeedbackMetadata: map['operatorFeedbackMetadata'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['operatorFeedbackMetadata'] as Map).cast<String, dynamic>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requesterFeedbackMetadata: map['requesterFeedbackMetadata'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['requesterFeedbackMetadata'] as Map).cast<String, dynamic>()),
+      annotatedDatasetId: (map['annotatedDatasetId'] as String).input(),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      feedbackThreadId: (map['feedbackThreadId'] as String).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operatorFeedbackMetadata: map['operatorFeedbackMetadata'] == null ? null : ((map['operatorFeedbackMetadata'] as Map).cast<String, dynamic>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requesterFeedbackMetadata: map['requesterFeedbackMetadata'] == null ? null : ((map['requesterFeedbackMetadata'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

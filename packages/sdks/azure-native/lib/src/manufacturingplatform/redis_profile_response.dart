@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to Azure Redis Cache Resource
 class RedisProfileResponse {
   /// Resource Id of Azure Redis Cache Resource
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [RedisProfileResponse].
   /// [id] Resource Id of Azure Redis Cache Resource
@@ -20,7 +21,7 @@ class RedisProfileResponse {
 
   factory RedisProfileResponse.fromMap(Map<String, dynamic> map) {
     return RedisProfileResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

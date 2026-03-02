@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTrustedSignerItem {
   /// AWS account ID or `self`
-  final String? awsAccountNumber;
+  final pulumi.Input<String>? awsAccountNumber;
   /// Set of active CloudFront key pairs associated with the signer account
-  final List<String>? keyPairIds;
+  final pulumi.Input<List<String>>? keyPairIds;
 
   /// Creates a new [DistributionTrustedSignerItem].
   /// [awsAccountNumber] AWS account ID or `self`
@@ -24,8 +25,8 @@ class DistributionTrustedSignerItem {
 
   factory DistributionTrustedSignerItem.fromMap(Map<String, dynamic> map) {
     return DistributionTrustedSignerItem(
-      awsAccountNumber: map['awsAccountNumber'] == null ? null : map['awsAccountNumber'] as String,
-      keyPairIds: map['keyPairIds'] == null ? null : (map['keyPairIds'] as List).cast<String>(),
+      awsAccountNumber: map['awsAccountNumber'] == null ? null : (map['awsAccountNumber'] as String).input(),
+      keyPairIds: map['keyPairIds'] == null ? null : ((map['keyPairIds'] as List).cast<String>()).input(),
     );
   }
 }

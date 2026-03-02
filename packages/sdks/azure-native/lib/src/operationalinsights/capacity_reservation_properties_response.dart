@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Capacity Reservation properties.
 class CapacityReservationPropertiesResponse {
   /// The last time Sku was updated.
-  final String lastSkuUpdate;
+  final pulumi.Input<String> lastSkuUpdate;
   /// Minimum CapacityReservation value in Gigabytes.
-  final double minCapacity;
+  final pulumi.Input<double> minCapacity;
 
   /// Creates a new [CapacityReservationPropertiesResponse].
   /// [lastSkuUpdate] The last time Sku was updated.
@@ -25,8 +26,8 @@ class CapacityReservationPropertiesResponse {
 
   factory CapacityReservationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationPropertiesResponse(
-      lastSkuUpdate: map['lastSkuUpdate'] as String,
-      minCapacity: map['minCapacity'] as double,
+      lastSkuUpdate: (map['lastSkuUpdate'] as String).input(),
+      minCapacity: (map['minCapacity'] as double).input(),
     );
   }
 }

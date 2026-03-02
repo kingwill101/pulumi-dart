@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_type.dart';
 
 /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
 class AcceleratorConfig {
   /// Count of cores of this accelerator.
-  final String? coreCount;
+  final pulumi.Input<String>? coreCount;
   /// Type of this accelerator.
-  final AcceleratorConfigType? type;
+  final pulumi.Input<AcceleratorConfigType>? type;
 
   /// Creates a new [AcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
@@ -20,14 +21,14 @@ class AcceleratorConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'coreCount': ?coreCount,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<AcceleratorConfigType, String>(type, (value) => value.value),
     };
   }
 
   factory AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfig(
-      coreCount: map['coreCount'] == null ? null : map['coreCount'] as String,
-      type: map['type'] == null ? null : AcceleratorConfigType.fromValue(map['type'] as String),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as String).input(),
+      type: map['type'] == null ? null : (AcceleratorConfigType.fromValue(map['type'] as String)).input(),
     );
   }
 }

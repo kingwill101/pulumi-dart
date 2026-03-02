@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom error of an application gateway.
 class ApplicationGatewayCustomError {
   /// Error page URL of the application gateway custom error.
-  final String? customErrorPageUrl;
+  final pulumi.Input<String>? customErrorPageUrl;
   /// Status code of the application gateway custom error.
-  final String? statusCode;
+  final pulumi.Input<String>? statusCode;
 
   /// Creates a new [ApplicationGatewayCustomError].
   /// [customErrorPageUrl] Error page URL of the application gateway custom error.
@@ -25,8 +26,8 @@ class ApplicationGatewayCustomError {
 
   factory ApplicationGatewayCustomError.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayCustomError(
-      customErrorPageUrl: map['customErrorPageUrl'] == null ? null : map['customErrorPageUrl'] as String,
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
+      customErrorPageUrl: map['customErrorPageUrl'] == null ? null : (map['customErrorPageUrl'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
     );
   }
 }

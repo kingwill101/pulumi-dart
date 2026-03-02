@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Disk Details.
 class OSDetailsResponse {
   /// The OS Major Version.
-  final String? oSMajorVersion;
+  final pulumi.Input<String>? oSMajorVersion;
   /// The OS Minor Version.
-  final String? oSMinorVersion;
+  final pulumi.Input<String>? oSMinorVersion;
   /// The OS Version.
-  final String? oSVersion;
+  final pulumi.Input<String>? oSVersion;
   /// The OSEdition.
-  final String? osEdition;
+  final pulumi.Input<String>? osEdition;
   /// VM Disk details.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// Product type.
-  final String? productType;
+  final pulumi.Input<String>? productType;
   /// The OS name selected by user.
-  final String? userSelectedOSName;
+  final pulumi.Input<String>? userSelectedOSName;
 
   /// Creates a new [OSDetailsResponse].
   /// [oSMajorVersion] The OS Major Version.
@@ -50,13 +51,13 @@ class OSDetailsResponse {
 
   factory OSDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OSDetailsResponse(
-      oSMajorVersion: map['oSMajorVersion'] == null ? null : map['oSMajorVersion'] as String,
-      oSMinorVersion: map['oSMinorVersion'] == null ? null : map['oSMinorVersion'] as String,
-      oSVersion: map['oSVersion'] == null ? null : map['oSVersion'] as String,
-      osEdition: map['osEdition'] == null ? null : map['osEdition'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      productType: map['productType'] == null ? null : map['productType'] as String,
-      userSelectedOSName: map['userSelectedOSName'] == null ? null : map['userSelectedOSName'] as String,
+      oSMajorVersion: map['oSMajorVersion'] == null ? null : (map['oSMajorVersion'] as String).input(),
+      oSMinorVersion: map['oSMinorVersion'] == null ? null : (map['oSMinorVersion'] as String).input(),
+      oSVersion: map['oSVersion'] == null ? null : (map['oSVersion'] as String).input(),
+      osEdition: map['osEdition'] == null ? null : (map['osEdition'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      userSelectedOSName: map['userSelectedOSName'] == null ? null : (map['userSelectedOSName'] as String).input(),
     );
   }
 }

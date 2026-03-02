@@ -12,7 +12,7 @@ import 'update_stage_response.dart';
 /// A valid strategy contains no duplicate groups within or across stages.
 class UpdateRunStrategyResponse {
   /// The list of stages that compose this update run. Min size: 1.
-  final List<UpdateStageResponse> stages;
+  final pulumi.Input<List<UpdateStageResponse>> stages;
 
   /// Creates a new [UpdateRunStrategyResponse].
   /// [stages] The list of stages that compose this update run. Min size: 1.
@@ -22,13 +22,13 @@ class UpdateRunStrategyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stages': pulumi.Input.encodeList<UpdateStageResponse, Map<String, dynamic>>(stages, (value) => value.toMap()),
+      'stages': pulumi.Input.mapInputValue<List<UpdateStageResponse>, List<Map<String, dynamic>>>(stages, (value) => pulumi.Input.encodeList<UpdateStageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UpdateRunStrategyResponse.fromMap(Map<String, dynamic> map) {
     return UpdateRunStrategyResponse(
-      stages: pulumi.Input.decodeList<UpdateStageResponse>(map['stages'], (value) => UpdateStageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      stages: (pulumi.Input.decodeList<UpdateStageResponse>(map['stages'], (value) => UpdateStageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

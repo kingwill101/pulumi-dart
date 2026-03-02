@@ -20,13 +20,10 @@ class GuestAgentArgs {
   /// [provisioningAction] The guest agent provisioning action.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GuestAgentArgs({
-    pulumi.Output<GuestCredential>? credentials,
-    pulumi.Output<String>? provisioningAction,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<GuestCredential>(credentials),
-      provisioningAction = pulumi.Input.asOptionalInput<String>(provisioningAction),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.credentials,
+    this.provisioningAction,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GuestAgentArgs {
 
   factory GuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return GuestAgentArgs(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<GuestCredential>(GuestCredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      provisioningAction: map['provisioningAction'] == null ? null : pulumi.Output.create<String>(map['provisioningAction'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      credentials: map['credentials'] == null ? null : (GuestCredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

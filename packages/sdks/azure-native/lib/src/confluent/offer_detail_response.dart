@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Confluent Offer detail
 class OfferDetailResponse {
   /// Offer Id
-  final String id;
+  final pulumi.Input<String> id;
   /// Offer Plan Id
-  final String planId;
+  final pulumi.Input<String> planId;
   /// Offer Plan Name
-  final String planName;
+  final pulumi.Input<String> planName;
   /// Private Offer Id
-  final String? privateOfferId;
+  final pulumi.Input<String>? privateOfferId;
   /// Array of Private Offer Ids
-  final List<String>? privateOfferIds;
+  final pulumi.Input<List<String>>? privateOfferIds;
   /// Publisher Id
-  final String publisherId;
+  final pulumi.Input<String> publisherId;
   /// SaaS Offer Status
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Offer Plan Term Id
-  final String? termId;
+  final pulumi.Input<String>? termId;
   /// Offer Plan Term unit
-  final String termUnit;
+  final pulumi.Input<String> termUnit;
 
   /// Creates a new [OfferDetailResponse].
   /// [id] Offer Id
@@ -60,15 +61,15 @@ class OfferDetailResponse {
 
   factory OfferDetailResponse.fromMap(Map<String, dynamic> map) {
     return OfferDetailResponse(
-      id: map['id'] as String,
-      planId: map['planId'] as String,
-      planName: map['planName'] as String,
-      privateOfferId: map['privateOfferId'] == null ? null : map['privateOfferId'] as String,
-      privateOfferIds: map['privateOfferIds'] == null ? null : (map['privateOfferIds'] as List).cast<String>(),
-      publisherId: map['publisherId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      termId: map['termId'] == null ? null : map['termId'] as String,
-      termUnit: map['termUnit'] as String,
+      id: (map['id'] as String).input(),
+      planId: (map['planId'] as String).input(),
+      planName: (map['planName'] as String).input(),
+      privateOfferId: map['privateOfferId'] == null ? null : (map['privateOfferId'] as String).input(),
+      privateOfferIds: map['privateOfferIds'] == null ? null : ((map['privateOfferIds'] as List).cast<String>()).input(),
+      publisherId: (map['publisherId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      termId: map['termId'] == null ? null : (map['termId'] as String).input(),
+      termUnit: (map['termUnit'] as String).input(),
     );
   }
 }

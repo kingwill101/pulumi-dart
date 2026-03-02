@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepCustomActionLambdaConfigUngraceful {
   /// Behavior when ungraceful. Valid values: `skip`.
-  final String behavior;
+  final pulumi.Input<String> behavior;
 
   /// Creates a new [PlanWorkflowStepCustomActionLambdaConfigUngraceful].
   /// [behavior] Behavior when ungraceful. Valid values: `skip`.
@@ -19,7 +20,7 @@ class PlanWorkflowStepCustomActionLambdaConfigUngraceful {
 
   factory PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepCustomActionLambdaConfigUngraceful(
-      behavior: map['behavior'] as String,
+      behavior: (map['behavior'] as String).input(),
     );
   }
 }

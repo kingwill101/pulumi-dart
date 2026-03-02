@@ -38,25 +38,16 @@ class VendorSkusArgs {
   /// [skuType] The sku type.
   /// [vendorName] The name of the vendor.
   VendorSkusArgs({
-    pulumi.Output<String>? deploymentMode,
-    pulumi.Output<dynamic>? managedApplicationParameters,
-    pulumi.Output<dynamic>? managedApplicationTemplate,
-    pulumi.Output<NetworkFunctionTemplate>? networkFunctionTemplate,
-    pulumi.Output<String>? networkFunctionType,
-    pulumi.Output<bool>? preview,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<String>? skuType,
-    required pulumi.Output<String> vendorName,
-  }) :
-      deploymentMode = pulumi.Input.asOptionalInput<String>(deploymentMode),
-      managedApplicationParameters = pulumi.Input.asOptionalInput<dynamic>(managedApplicationParameters),
-      managedApplicationTemplate = pulumi.Input.asOptionalInput<dynamic>(managedApplicationTemplate),
-      networkFunctionTemplate = pulumi.Input.asOptionalInput<NetworkFunctionTemplate>(networkFunctionTemplate),
-      networkFunctionType = pulumi.Input.asOptionalInput<String>(networkFunctionType),
-      preview = pulumi.Input.asOptionalInput<bool>(preview),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      skuType = pulumi.Input.asOptionalInput<String>(skuType),
-      vendorName = pulumi.Input.asInput<String>(vendorName);
+    this.deploymentMode,
+    this.managedApplicationParameters,
+    this.managedApplicationTemplate,
+    this.networkFunctionTemplate,
+    this.networkFunctionType,
+    this.preview,
+    this.skuName,
+    this.skuType,
+    required this.vendorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class VendorSkusArgs {
 
   factory VendorSkusArgs.fromMap(Map<String, dynamic> map) {
     return VendorSkusArgs(
-      deploymentMode: map['deploymentMode'] == null ? null : pulumi.Output.create<String>(map['deploymentMode'] as String),
-      managedApplicationParameters: map['managedApplicationParameters'] == null ? null : pulumi.Output.create<dynamic>(map['managedApplicationParameters']),
-      managedApplicationTemplate: map['managedApplicationTemplate'] == null ? null : pulumi.Output.create<dynamic>(map['managedApplicationTemplate']),
-      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : pulumi.Output.create<NetworkFunctionTemplate>(NetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>())),
-      networkFunctionType: map['networkFunctionType'] == null ? null : pulumi.Output.create<String>(map['networkFunctionType'] as String),
-      preview: map['preview'] == null ? null : pulumi.Output.create<bool>(map['preview'] as bool),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      skuType: map['skuType'] == null ? null : pulumi.Output.create<String>(map['skuType'] as String),
-      vendorName: pulumi.Output.create<String>(map['vendorName'] as String),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      managedApplicationParameters: map['managedApplicationParameters'] == null ? null : (map['managedApplicationParameters']).input(),
+      managedApplicationTemplate: map['managedApplicationTemplate'] == null ? null : (map['managedApplicationTemplate']).input(),
+      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (NetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>())).input(),
+      networkFunctionType: map['networkFunctionType'] == null ? null : (map['networkFunctionType'] as String).input(),
+      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      skuType: map['skuType'] == null ? null : (map['skuType'] as String).input(),
+      vendorName: (map['vendorName'] as String).input(),
     );
   }
 }

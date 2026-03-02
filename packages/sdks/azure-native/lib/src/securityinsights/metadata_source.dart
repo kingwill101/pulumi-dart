@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The original source of the content item, where it comes from.
 class MetadataSource {
   /// Source type of the content
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Name of the content source.  The repo name, solution name, LA workspace name etc.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// ID of the content source.  The solution ID, workspace ID, etc
-  final String? sourceId;
+  final pulumi.Input<String>? sourceId;
 
   /// Creates a new [MetadataSource].
   /// [kind] Source type of the content
@@ -30,9 +31,9 @@ class MetadataSource {
 
   factory MetadataSource.fromMap(Map<String, dynamic> map) {
     return MetadataSource(
-      kind: map['kind'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      sourceId: map['sourceId'] == null ? null : map['sourceId'] as String,
+      kind: (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class OneDashboardRawArgs {
   /// [pages] A nested block that describes a page. See Nested page blocks below for details.
   /// [permissions] Determines who can see the dashboard in an account. Valid values are `private`, `public_read_only`, or `public_read_write`. Defaults to `public_read_only`.
   OneDashboardRawArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<OneDashboardRawPage>> pages,
-    pulumi.Output<String>? permissions,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pages = pulumi.Input.asInput<List<OneDashboardRawPage>>(pages),
-      permissions = pulumi.Input.asOptionalInput<String>(permissions);
+    this.accountId,
+    this.description,
+    this.name,
+    required this.pages,
+    this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class OneDashboardRawArgs {
 
   factory OneDashboardRawArgs.fromMap(Map<String, dynamic> map) {
     return OneDashboardRawArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pages: pulumi.Output.create<List<OneDashboardRawPage>>(pulumi.Input.decodeList<OneDashboardRawPage>(map['pages'], (value) => OneDashboardRawPage.fromMap((value as Map).cast<String, dynamic>()))),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<String>(map['permissions'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pages: (pulumi.Input.decodeList<OneDashboardRawPage>(map['pages'], (value) => OneDashboardRawPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
     );
   }
 }

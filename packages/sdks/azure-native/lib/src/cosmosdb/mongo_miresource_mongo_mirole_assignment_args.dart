@@ -28,19 +28,13 @@ class MongoMIResourceMongoMIRoleAssignmentArgs {
   /// [roleDefinitionId] The unique identifier for the associated Role Definition.
   /// [scope] The data plane resource path for which access is being granted through this MongoMI Role Assignment.
   MongoMIResourceMongoMIRoleAssignmentArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? principalId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? roleAssignmentId,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<String>? scope,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleAssignmentId = pulumi.Input.asOptionalInput<String>(roleAssignmentId),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    required this.accountName,
+    this.principalId,
+    required this.resourceGroupName,
+    this.roleAssignmentId,
+    this.roleDefinitionId,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class MongoMIResourceMongoMIRoleAssignmentArgs {
 
   factory MongoMIResourceMongoMIRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return MongoMIResourceMongoMIRoleAssignmentArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleAssignmentId: map['roleAssignmentId'] == null ? null : pulumi.Output.create<String>(map['roleAssignmentId'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      accountName: (map['accountName'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleAssignmentId: map['roleAssignmentId'] == null ? null : (map['roleAssignmentId'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

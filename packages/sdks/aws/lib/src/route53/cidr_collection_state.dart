@@ -16,13 +16,10 @@ class CidrCollectionState {
   /// [name] Unique name for the CIDR collection.
   /// [version] The lastest version of the CIDR collection.
   CidrCollectionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.arn,
+    this.name,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CidrCollectionState {
 
   factory CidrCollectionState.fromMap(Map<String, dynamic> map) {
     return CidrCollectionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

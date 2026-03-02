@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancePersistenceConfigAofConfig {
   /// Optional. The fsync mode.
@@ -7,7 +8,7 @@ class GetInstancePersistenceConfigAofConfig {
   /// NEVER
   /// EVERY_SEC
   /// ALWAYS
-  final String appendFsync;
+  final pulumi.Input<String> appendFsync;
 
   /// Creates a new [GetInstancePersistenceConfigAofConfig].
   /// [appendFsync] Optional. The fsync mode.
@@ -23,7 +24,7 @@ class GetInstancePersistenceConfigAofConfig {
 
   factory GetInstancePersistenceConfigAofConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePersistenceConfigAofConfig(
-      appendFsync: map['appendFsync'] as String,
+      appendFsync: (map['appendFsync'] as String).input(),
     );
   }
 }

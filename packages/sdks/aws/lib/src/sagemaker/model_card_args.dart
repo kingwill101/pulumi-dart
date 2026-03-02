@@ -32,21 +32,14 @@ class ModelCardArgs {
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   ModelCardArgs({
-    required pulumi.Output<String> content,
-    required pulumi.Output<String> modelCardName,
-    required pulumi.Output<String> modelCardStatus,
-    pulumi.Output<String>? region,
-    pulumi.Output<ModelCardSecurityConfig>? securityConfig,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ModelCardTimeouts>? timeouts,
-  }) :
-      content = pulumi.Input.asInput<String>(content),
-      modelCardName = pulumi.Input.asInput<String>(modelCardName),
-      modelCardStatus = pulumi.Input.asInput<String>(modelCardStatus),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityConfig = pulumi.Input.asOptionalInput<ModelCardSecurityConfig>(securityConfig),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ModelCardTimeouts>(timeouts);
+    required this.content,
+    required this.modelCardName,
+    required this.modelCardStatus,
+    this.region,
+    this.securityConfig,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ModelCardArgs {
 
   factory ModelCardArgs.fromMap(Map<String, dynamic> map) {
     return ModelCardArgs(
-      content: pulumi.Output.create<String>(map['content'] as String),
-      modelCardName: pulumi.Output.create<String>(map['modelCardName'] as String),
-      modelCardStatus: pulumi.Output.create<String>(map['modelCardStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityConfig: map['securityConfig'] == null ? null : pulumi.Output.create<ModelCardSecurityConfig>(ModelCardSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ModelCardTimeouts>(ModelCardTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      content: (map['content'] as String).input(),
+      modelCardName: (map['modelCardName'] as String).input(),
+      modelCardStatus: (map['modelCardStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityConfig: map['securityConfig'] == null ? null : (ModelCardSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ModelCardTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

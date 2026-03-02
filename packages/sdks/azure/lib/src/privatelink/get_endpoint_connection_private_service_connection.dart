@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointConnectionPrivateServiceConnection {
   /// Specifies the Name of the private endpoint.
-  final String name;
+  final pulumi.Input<String> name;
   /// The private IP address associated with the private endpoint, note that you will have a private IP address assigned to the private endpoint even if the connection request was `Rejected`.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// Possible values are as follows:
   /// Value | Meaning
   /// -- | --
   /// `Auto-Approved` | The remote resource owner has added you to the `Auto-Approved` RBAC permission list for the remote resource, all private endpoint connection requests will be automatically `Approved`.
   /// `Deleted state` | The resource owner has `Rejected` the private endpoint connection request and has removed your private endpoint request from the remote resource.
   /// `request/response message` | If you submitted a manual private endpoint connection request, while in the `Pending` status the `request_response` will display the same text from your `request_message` in the `private_service_connection` block above. If the private endpoint connection request was `Rejected` by the owner of the remote resource, the text for the rejection will be displayed as the `request_response` text, if the private endpoint connection request was `Approved` by the owner of the remote resource, the text for the approval will be displayed as the `request_response` text
-  final String requestResponse;
+  final pulumi.Input<String> requestResponse;
   /// The current status of the private endpoint request, possible values will be `Pending`, `Approved`, `Rejected`, or `Disconnected`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetEndpointConnectionPrivateServiceConnection].
   /// [name] Specifies the Name of the private endpoint.
@@ -39,10 +40,10 @@ class GetEndpointConnectionPrivateServiceConnection {
 
   factory GetEndpointConnectionPrivateServiceConnection.fromMap(Map<String, dynamic> map) {
     return GetEndpointConnectionPrivateServiceConnection(
-      name: map['name'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
-      requestResponse: map['requestResponse'] as String,
-      status: map['status'] as String,
+      name: (map['name'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      requestResponse: (map['requestResponse'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

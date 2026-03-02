@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rule to filter client IP address.
 class IPRuleResponse {
   /// Action when client IP address is matched.
-  final String action;
+  final pulumi.Input<String> action;
   /// IPv4 address, or IPv4 address range in CIDR format.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [IPRuleResponse].
   /// [action] Action when client IP address is matched.
@@ -25,8 +26,8 @@ class IPRuleResponse {
 
   factory IPRuleResponse.fromMap(Map<String, dynamic> map) {
     return IPRuleResponse(
-      action: map['action'] as String,
-      value: map['value'] as String,
+      action: (map['action'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

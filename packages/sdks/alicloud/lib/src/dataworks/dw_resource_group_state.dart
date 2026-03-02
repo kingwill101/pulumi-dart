@@ -46,33 +46,20 @@ class DwResourceGroupState {
   /// [status] Resource group status:
   /// [tags] The tag of the resource
   DwResourceGroupState({
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? defaultVpcId,
-    pulumi.Output<String>? defaultVswitchId,
-    pulumi.Output<int>? paymentDuration,
-    pulumi.Output<String>? paymentDurationUnit,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<int>? specification,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      defaultVpcId = pulumi.Input.asOptionalInput<String>(defaultVpcId),
-      defaultVswitchId = pulumi.Input.asOptionalInput<String>(defaultVswitchId),
-      paymentDuration = pulumi.Input.asOptionalInput<int>(paymentDuration),
-      paymentDurationUnit = pulumi.Input.asOptionalInput<String>(paymentDurationUnit),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      specification = pulumi.Input.asOptionalInput<int>(specification),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoRenew,
+    this.createTime,
+    this.defaultVpcId,
+    this.defaultVswitchId,
+    this.paymentDuration,
+    this.paymentDurationUnit,
+    this.paymentType,
+    this.remark,
+    this.resourceGroupId,
+    this.resourceGroupName,
+    this.specification,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,19 +81,19 @@ class DwResourceGroupState {
 
   factory DwResourceGroupState.fromMap(Map<String, dynamic> map) {
     return DwResourceGroupState(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      defaultVpcId: map['defaultVpcId'] == null ? null : pulumi.Output.create<String>(map['defaultVpcId'] as String),
-      defaultVswitchId: map['defaultVswitchId'] == null ? null : pulumi.Output.create<String>(map['defaultVswitchId'] as String),
-      paymentDuration: map['paymentDuration'] == null ? null : pulumi.Output.create<int>(map['paymentDuration'] as int),
-      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : pulumi.Output.create<String>(map['paymentDurationUnit'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      specification: map['specification'] == null ? null : pulumi.Output.create<int>(map['specification'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      defaultVpcId: map['defaultVpcId'] == null ? null : (map['defaultVpcId'] as String).input(),
+      defaultVswitchId: map['defaultVswitchId'] == null ? null : (map['defaultVswitchId'] as String).input(),
+      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration'] as int).input(),
+      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a load balancing rule.
 class LoadBalancingRuleResponse {
   /// The port used for internal connections on the endpoint. Acceptable values are between 1 and 65535.
-  final int backendPort;
+  final pulumi.Input<int> backendPort;
   /// The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values are between 1 and 65534.
-  final int frontendPort;
+  final pulumi.Input<int> frontendPort;
   /// The load distribution policy for this rule.
-  final String? loadDistribution;
+  final pulumi.Input<String>? loadDistribution;
   /// The prob port used by the load balancing rule. Acceptable values are between 1 and 65535.
-  final int? probePort;
+  final pulumi.Input<int>? probePort;
   /// the reference to the load balancer probe used by the load balancing rule.
-  final String probeProtocol;
+  final pulumi.Input<String> probeProtocol;
   /// The probe request path. Only supported for HTTP/HTTPS probes.
-  final String? probeRequestPath;
+  final pulumi.Input<String>? probeRequestPath;
   /// The reference to the transport protocol used by the load balancing rule.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [LoadBalancingRuleResponse].
   /// [backendPort] The port used for internal connections on the endpoint. Acceptable values are between 1 and 65535.
@@ -50,13 +51,13 @@ class LoadBalancingRuleResponse {
 
   factory LoadBalancingRuleResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancingRuleResponse(
-      backendPort: map['backendPort'] as int,
-      frontendPort: map['frontendPort'] as int,
-      loadDistribution: map['loadDistribution'] == null ? null : map['loadDistribution'] as String,
-      probePort: map['probePort'] == null ? null : map['probePort'] as int,
-      probeProtocol: map['probeProtocol'] as String,
-      probeRequestPath: map['probeRequestPath'] == null ? null : map['probeRequestPath'] as String,
-      protocol: map['protocol'] as String,
+      backendPort: (map['backendPort'] as int).input(),
+      frontendPort: (map['frontendPort'] as int).input(),
+      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution'] as String).input(),
+      probePort: map['probePort'] == null ? null : (map['probePort'] as int).input(),
+      probeProtocol: (map['probeProtocol'] as String).input(),
+      probeRequestPath: map['probeRequestPath'] == null ? null : (map['probeRequestPath'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

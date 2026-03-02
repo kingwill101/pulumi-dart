@@ -56,35 +56,21 @@ class SourceArgs {
   /// [status] Status of the credit
   /// [tags] Resource tags.
   SourceArgs({
-    pulumi.Output<Commitment>? credit,
-    required pulumi.Output<String> creditName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? impactedBillingPeriod,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedBy,
-    pulumi.Output<Plan>? plan,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<String>? sourceName,
-    pulumi.Output<String>? sourceResourceId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      credit = pulumi.Input.asOptionalInput<Commitment>(credit),
-      creditName = pulumi.Input.asInput<String>(creditName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      impactedBillingPeriod = pulumi.Input.asOptionalInput<String>(impactedBillingPeriod),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedBy = pulumi.Input.asOptionalInput<String>(managedBy),
-      plan = pulumi.Input.asOptionalInput<Plan>(plan),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      sourceName = pulumi.Input.asOptionalInput<String>(sourceName),
-      sourceResourceId = pulumi.Input.asOptionalInput<String>(sourceResourceId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.credit,
+    required this.creditName,
+    this.identity,
+    this.impactedBillingPeriod,
+    this.kind,
+    this.location,
+    this.managedBy,
+    this.plan,
+    required this.resourceGroupName,
+    this.sku,
+    this.sourceName,
+    this.sourceResourceId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class SourceArgs {
 
   factory SourceArgs.fromMap(Map<String, dynamic> map) {
     return SourceArgs(
-      credit: map['credit'] == null ? null : pulumi.Output.create<Commitment>(Commitment.fromMap((map['credit'] as Map).cast<String, dynamic>())),
-      creditName: pulumi.Output.create<String>(map['creditName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      impactedBillingPeriod: map['impactedBillingPeriod'] == null ? null : pulumi.Output.create<String>(map['impactedBillingPeriod'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedBy: map['managedBy'] == null ? null : pulumi.Output.create<String>(map['managedBy'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<Plan>(Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      sourceName: map['sourceName'] == null ? null : pulumi.Output.create<String>(map['sourceName'] as String),
-      sourceResourceId: map['sourceResourceId'] == null ? null : pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      credit: map['credit'] == null ? null : (Commitment.fromMap((map['credit'] as Map).cast<String, dynamic>())).input(),
+      creditName: (map['creditName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      impactedBillingPeriod: map['impactedBillingPeriod'] == null ? null : (map['impactedBillingPeriod'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

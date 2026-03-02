@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZnodesZnode {
   /// The ID of the Cluster.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The Node data.
-  final String data;
+  final pulumi.Input<String> data;
   /// Node list information, the value is as follows:
-  final bool dir;
+  final pulumi.Input<bool> dir;
   /// The ID of the Znode. The value formats as `<cluster_id>:<path>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Node path.
-  final String path;
+  final pulumi.Input<String> path;
   /// The Node name.
-  final String znodeName;
+  final pulumi.Input<String> znodeName;
 
   /// Creates a new [GetZnodesZnode].
   /// [clusterId] The ID of the Cluster.
@@ -44,12 +45,12 @@ class GetZnodesZnode {
 
   factory GetZnodesZnode.fromMap(Map<String, dynamic> map) {
     return GetZnodesZnode(
-      clusterId: map['clusterId'] as String,
-      data: map['data'] as String,
-      dir: map['dir'] as bool,
-      id: map['id'] as String,
-      path: map['path'] as String,
-      znodeName: map['znodeName'] as String,
+      clusterId: (map['clusterId'] as String).input(),
+      data: (map['data'] as String).input(),
+      dir: (map['dir'] as bool).input(),
+      id: (map['id'] as String).input(),
+      path: (map['path'] as String).input(),
+      znodeName: (map['znodeName'] as String).input(),
     );
   }
 }

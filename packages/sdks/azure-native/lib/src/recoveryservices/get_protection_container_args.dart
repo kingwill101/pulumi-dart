@@ -22,15 +22,11 @@ class GetProtectionContainerArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [vaultName] The name of the recovery services vault.
   GetProtectionContainerArgs({
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> fabricName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      containerName = pulumi.Input.asInput<String>(containerName),
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.containerName,
+    required this.fabricName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetProtectionContainerArgs {
 
   factory GetProtectionContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionContainerArgs(
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      containerName: (map['containerName'] as String).input(),
+      fabricName: (map['fabricName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

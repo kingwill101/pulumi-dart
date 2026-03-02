@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
 class GoogleCloudRunV2ExecutionReferenceResponse {
   /// Creation timestamp of the execution.
-  final String completionTime;
+  final pulumi.Input<String> completionTime;
   /// Creation timestamp of the execution.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Name of the execution.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GoogleCloudRunV2ExecutionReferenceResponse].
   /// [completionTime] Creation timestamp of the execution.
@@ -30,9 +31,9 @@ class GoogleCloudRunV2ExecutionReferenceResponse {
 
   factory GoogleCloudRunV2ExecutionReferenceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ExecutionReferenceResponse(
-      completionTime: map['completionTime'] as String,
-      createTime: map['createTime'] as String,
-      name: map['name'] as String,
+      completionTime: (map['completionTime'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsite {
   /// Behaves as the bucket's directory index where
   /// missing objects are treated as potential directories.
-  final String? mainPageSuffix;
+  final pulumi.Input<String>? mainPageSuffix;
   /// The custom object to return when a requested
   /// resource is not found.
-  final String? notFoundPage;
+  final pulumi.Input<String>? notFoundPage;
 
   /// Creates a new [BucketWebsite].
   /// [mainPageSuffix] Behaves as the bucket's directory index where
@@ -26,8 +27,8 @@ class BucketWebsite {
 
   factory BucketWebsite.fromMap(Map<String, dynamic> map) {
     return BucketWebsite(
-      mainPageSuffix: map['mainPageSuffix'] == null ? null : map['mainPageSuffix'] as String,
-      notFoundPage: map['notFoundPage'] == null ? null : map['notFoundPage'] as String,
+      mainPageSuffix: map['mainPageSuffix'] == null ? null : (map['mainPageSuffix'] as String).input(),
+      notFoundPage: map['notFoundPage'] == null ? null : (map['notFoundPage'] as String).input(),
     );
   }
 }

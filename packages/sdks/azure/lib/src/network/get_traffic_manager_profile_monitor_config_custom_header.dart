@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrafficManagerProfileMonitorConfigCustomHeader {
   /// Specifies the name of the Traffic Manager Profile.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of custom header. Applicable for HTTP and HTTPS protocol.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetTrafficManagerProfileMonitorConfigCustomHeader].
   /// [name] Specifies the name of the Traffic Manager Profile.
@@ -24,8 +25,8 @@ class GetTrafficManagerProfileMonitorConfigCustomHeader {
 
   factory GetTrafficManagerProfileMonitorConfigCustomHeader.fromMap(Map<String, dynamic> map) {
     return GetTrafficManagerProfileMonitorConfigCustomHeader(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

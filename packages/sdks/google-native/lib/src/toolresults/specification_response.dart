@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'android_test_response.dart';
 import 'ios_test_response.dart';
 
 /// The details about how to run the execution.
 class SpecificationResponse {
   /// An Android mobile test execution specification.
-  final AndroidTestResponse androidTest;
+  final pulumi.Input<AndroidTestResponse> androidTest;
   /// An iOS mobile test execution specification.
-  final IosTestResponse iosTest;
+  final pulumi.Input<IosTestResponse> iosTest;
 
   /// Creates a new [SpecificationResponse].
   /// [androidTest] An Android mobile test execution specification.
@@ -20,15 +21,15 @@ class SpecificationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidTest': androidTest.toMap(),
-      'iosTest': iosTest.toMap(),
+      'androidTest': pulumi.Input.mapInputValue<AndroidTestResponse, Map<String, dynamic>>(androidTest, (value) => value.toMap()),
+      'iosTest': pulumi.Input.mapInputValue<IosTestResponse, Map<String, dynamic>>(iosTest, (value) => value.toMap()),
     };
   }
 
   factory SpecificationResponse.fromMap(Map<String, dynamic> map) {
     return SpecificationResponse(
-      androidTest: AndroidTestResponse.fromMap((map['androidTest'] as Map).cast<String, dynamic>()),
-      iosTest: IosTestResponse.fromMap((map['iosTest'] as Map).cast<String, dynamic>()),
+      androidTest: (AndroidTestResponse.fromMap((map['androidTest'] as Map).cast<String, dynamic>())).input(),
+      iosTest: (IosTestResponse.fromMap((map['iosTest'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class ServiceGroupMonitoringAgentProcessArgs {
   /// [matchExpresses] The expressions used to match instances. See `match_express` below.
   /// [processName] The name of the process.
   ServiceGroupMonitoringAgentProcessArgs({
-    required pulumi.Output<List<ServiceGroupMonitoringAgentProcessAlertConfig>> alertConfigs,
-    required pulumi.Output<String> groupId,
-    pulumi.Output<String>? matchExpressFilterRelation,
-    pulumi.Output<List<ServiceGroupMonitoringAgentProcessMatchExpress>>? matchExpresses,
-    required pulumi.Output<String> processName,
-  }) :
-      alertConfigs = pulumi.Input.asInput<List<ServiceGroupMonitoringAgentProcessAlertConfig>>(alertConfigs),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      matchExpressFilterRelation = pulumi.Input.asOptionalInput<String>(matchExpressFilterRelation),
-      matchExpresses = pulumi.Input.asOptionalInput<List<ServiceGroupMonitoringAgentProcessMatchExpress>>(matchExpresses),
-      processName = pulumi.Input.asInput<String>(processName);
+    required this.alertConfigs,
+    required this.groupId,
+    this.matchExpressFilterRelation,
+    this.matchExpresses,
+    required this.processName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ServiceGroupMonitoringAgentProcessArgs {
 
   factory ServiceGroupMonitoringAgentProcessArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMonitoringAgentProcessArgs(
-      alertConfigs: pulumi.Output.create<List<ServiceGroupMonitoringAgentProcessAlertConfig>>(pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessAlertConfig>(map['alertConfigs'], (value) => ServiceGroupMonitoringAgentProcessAlertConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : pulumi.Output.create<String>(map['matchExpressFilterRelation'] as String),
-      matchExpresses: map['matchExpresses'] == null ? null : pulumi.Output.create<List<ServiceGroupMonitoringAgentProcessMatchExpress>>(pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessMatchExpress>(map['matchExpresses'], (value) => ServiceGroupMonitoringAgentProcessMatchExpress.fromMap((value as Map).cast<String, dynamic>()))),
-      processName: pulumi.Output.create<String>(map['processName'] as String),
+      alertConfigs: (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessAlertConfig>(map['alertConfigs'], (value) => ServiceGroupMonitoringAgentProcessAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupId: (map['groupId'] as String).input(),
+      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation'] as String).input(),
+      matchExpresses: map['matchExpresses'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessMatchExpress>(map['matchExpresses'], (value) => ServiceGroupMonitoringAgentProcessMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      processName: (map['processName'] as String).input(),
     );
   }
 }

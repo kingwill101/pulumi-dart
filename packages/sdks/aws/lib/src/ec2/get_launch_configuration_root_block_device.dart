@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchConfigurationRootBlockDevice {
   /// Whether the EBS Volume will be deleted on instance termination.
-  final bool deleteOnTermination;
+  final pulumi.Input<bool> deleteOnTermination;
   /// Whether the volume is Encrypted.
-  final bool encrypted;
+  final pulumi.Input<bool> encrypted;
   /// Provisioned IOPs of the volume.
-  final int iops;
+  final pulumi.Input<int> iops;
   /// Throughput of the volume.
-  final int throughput;
+  final pulumi.Input<int> throughput;
   /// Size of the volume.
-  final int volumeSize;
+  final pulumi.Input<int> volumeSize;
   /// Type of the volume.
-  final String volumeType;
+  final pulumi.Input<String> volumeType;
 
   /// Creates a new [GetLaunchConfigurationRootBlockDevice].
   /// [deleteOnTermination] Whether the EBS Volume will be deleted on instance termination.
@@ -44,12 +45,12 @@ class GetLaunchConfigurationRootBlockDevice {
 
   factory GetLaunchConfigurationRootBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetLaunchConfigurationRootBlockDevice(
-      deleteOnTermination: map['deleteOnTermination'] as bool,
-      encrypted: map['encrypted'] as bool,
-      iops: map['iops'] as int,
-      throughput: map['throughput'] as int,
-      volumeSize: map['volumeSize'] as int,
-      volumeType: map['volumeType'] as String,
+      deleteOnTermination: (map['deleteOnTermination'] as bool).input(),
+      encrypted: (map['encrypted'] as bool).input(),
+      iops: (map['iops'] as int).input(),
+      throughput: (map['throughput'] as int).input(),
+      volumeSize: (map['volumeSize'] as int).input(),
+      volumeType: (map['volumeType'] as String).input(),
     );
   }
 }

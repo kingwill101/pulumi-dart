@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Loaded certificate payload
 class LoadedCertificate {
   /// Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
-  final bool? loadTrustStore;
+  final pulumi.Input<bool>? loadTrustStore;
   /// Resource Id of loaded certificate
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [LoadedCertificate].
   /// [loadTrustStore] Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
@@ -25,8 +26,8 @@ class LoadedCertificate {
 
   factory LoadedCertificate.fromMap(Map<String, dynamic> map) {
     return LoadedCertificate(
-      loadTrustStore: map['loadTrustStore'] == null ? null : map['loadTrustStore'] as bool,
-      resourceId: map['resourceId'] as String,
+      loadTrustStore: map['loadTrustStore'] == null ? null : (map['loadTrustStore'] as bool).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

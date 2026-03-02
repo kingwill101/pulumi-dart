@@ -32,21 +32,14 @@ class HoursOfOperationArgs {
   /// [tags] Tags to apply to the Hours of Operation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeZone] Specifies the time zone of the Hours of Operation.
   HoursOfOperationArgs({
-    required pulumi.Output<List<HoursOfOperationConfig>> configs,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> timeZone,
-  }) :
-      configs = pulumi.Input.asInput<List<HoursOfOperationConfig>>(configs),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeZone = pulumi.Input.asInput<String>(timeZone);
+    required this.configs,
+    this.description,
+    required this.instanceId,
+    this.name,
+    this.region,
+    this.tags,
+    required this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class HoursOfOperationArgs {
 
   factory HoursOfOperationArgs.fromMap(Map<String, dynamic> map) {
     return HoursOfOperationArgs(
-      configs: pulumi.Output.create<List<HoursOfOperationConfig>>(pulumi.Input.decodeList<HoursOfOperationConfig>(map['configs'], (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeZone: pulumi.Output.create<String>(map['timeZone'] as String),
+      configs: (pulumi.Input.decodeList<HoursOfOperationConfig>(map['configs'], (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeZone: (map['timeZone'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetManagedHardwareSecurityModuleArgs {
   /// [name] The name of the Key Vault Managed Hardware Security Module.
   /// [resourceGroupName] The name of the Resource Group in which the Key Vault Managed Hardware Security Module exists.
   GetManagedHardwareSecurityModuleArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagedHardwareSecurityModuleArgs {
 
   factory GetManagedHardwareSecurityModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedHardwareSecurityModuleArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

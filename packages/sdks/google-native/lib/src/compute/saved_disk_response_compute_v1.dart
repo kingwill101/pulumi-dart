@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An instance-attached disk resource.
 class SavedDiskResponseComputeV1 {
   /// The architecture of the attached disk.
-  final String architecture;
+  final pulumi.Input<String> architecture;
   /// Type of the resource. Always compute#savedDisk for attached disks.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Specifies a URL of the disk attached to the source instance.
-  final String sourceDisk;
+  final pulumi.Input<String> sourceDisk;
   /// Size of the individual disk snapshot used by this machine image.
-  final String storageBytes;
+  final pulumi.Input<String> storageBytes;
   /// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
-  final String storageBytesStatus;
+  final pulumi.Input<String> storageBytesStatus;
 
   /// Creates a new [SavedDiskResponseComputeV1].
   /// [architecture] The architecture of the attached disk.
@@ -40,11 +41,11 @@ class SavedDiskResponseComputeV1 {
 
   factory SavedDiskResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return SavedDiskResponseComputeV1(
-      architecture: map['architecture'] as String,
-      kind: map['kind'] as String,
-      sourceDisk: map['sourceDisk'] as String,
-      storageBytes: map['storageBytes'] as String,
-      storageBytesStatus: map['storageBytesStatus'] as String,
+      architecture: (map['architecture'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      sourceDisk: (map['sourceDisk'] as String).input(),
+      storageBytes: (map['storageBytes'] as String).input(),
+      storageBytesStatus: (map['storageBytesStatus'] as String).input(),
     );
   }
 }

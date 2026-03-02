@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppLoggingSettingsCloudLoggingSettings {
   /// Whether to enable Cloud Logging for the sessions.
-  final bool? enableCloudLogging;
+  final pulumi.Input<bool>? enableCloudLogging;
 
   /// Creates a new [AppLoggingSettingsCloudLoggingSettings].
   /// [enableCloudLogging] Whether to enable Cloud Logging for the sessions.
@@ -19,7 +20,7 @@ class AppLoggingSettingsCloudLoggingSettings {
 
   factory AppLoggingSettingsCloudLoggingSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsCloudLoggingSettings(
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : map['enableCloudLogging'] as bool,
+      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging'] as bool).input(),
     );
   }
 }

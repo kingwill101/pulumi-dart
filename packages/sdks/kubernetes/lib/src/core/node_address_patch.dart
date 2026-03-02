@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NodeAddress contains information for the node's address.
 class NodeAddressPatch {
   /// The node address.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Node address type, one of Hostname, ExternalIP or InternalIP.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [NodeAddressPatch].
   /// [address] The node address.
@@ -25,8 +26,8 @@ class NodeAddressPatch {
 
   factory NodeAddressPatch.fromMap(Map<String, dynamic> map) {
     return NodeAddressPatch(
-      address: map['address'] == null ? null : map['address'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

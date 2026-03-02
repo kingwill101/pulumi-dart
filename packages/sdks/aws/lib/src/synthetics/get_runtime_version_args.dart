@@ -24,15 +24,11 @@ class GetRuntimeVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of the runtime to be fetched (for example, `9.0`). Conflicts with `latest`.
   GetRuntimeVersionArgs({
-    pulumi.Output<bool>? latest,
-    required pulumi.Output<String> prefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? version,
-  }) :
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      prefix = pulumi.Input.asInput<String>(prefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.latest,
+    required this.prefix,
+    this.region,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetRuntimeVersionArgs {
 
   factory GetRuntimeVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeVersionArgs(
-      latest: map['latest'] == null ? null : pulumi.Output.create<bool>(map['latest'] as bool),
-      prefix: pulumi.Output.create<String>(map['prefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      prefix: (map['prefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

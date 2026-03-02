@@ -41,19 +41,13 @@ class MachineImageIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   MachineImageIamMemberState({
-    pulumi.Output<MachineImageIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? machineImage,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<MachineImageIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      machineImage = pulumi.Input.asOptionalInput<String>(machineImage),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.etag,
+    this.machineImage,
+    this.member,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +62,12 @@ class MachineImageIamMemberState {
 
   factory MachineImageIamMemberState.fromMap(Map<String, dynamic> map) {
     return MachineImageIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<MachineImageIamMemberCondition>(MachineImageIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      machineImage: map['machineImage'] == null ? null : pulumi.Output.create<String>(map['machineImage'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (MachineImageIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      machineImage: map['machineImage'] == null ? null : (map['machineImage'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

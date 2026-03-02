@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceClientNodeConfiguration {
   /// Number of disks in the Elasticsearch cluster coordination node
-  final int? amount;
+  final pulumi.Input<int>? amount;
   /// Elasticsearch cluster coordinates node disk size
-  final int? disk;
+  final pulumi.Input<int>? disk;
   /// Elasticsearch cluster coordination node disk type
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// Elasticsearch cluster coordination node specification
-  final String? spec;
+  final pulumi.Input<String>? spec;
 
   /// Creates a new [InstanceClientNodeConfiguration].
   /// [amount] Number of disks in the Elasticsearch cluster coordination node
@@ -34,10 +35,10 @@ class InstanceClientNodeConfiguration {
 
   factory InstanceClientNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceClientNodeConfiguration(
-      amount: map['amount'] == null ? null : map['amount'] as int,
-      disk: map['disk'] == null ? null : map['disk'] as int,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      spec: map['spec'] == null ? null : map['spec'] as String,
+      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
+      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
     );
   }
 }

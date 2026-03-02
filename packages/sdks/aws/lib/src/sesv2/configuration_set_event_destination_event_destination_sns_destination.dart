@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetEventDestinationEventDestinationSnsDestination {
   /// The Amazon Resource Name (ARN) of the Amazon SNS topic to publish email events to.
-  final String topicArn;
+  final pulumi.Input<String> topicArn;
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationSnsDestination].
   /// [topicArn] The Amazon Resource Name (ARN) of the Amazon SNS topic to publish email events to.
@@ -19,7 +20,7 @@ class ConfigurationSetEventDestinationEventDestinationSnsDestination {
 
   factory ConfigurationSetEventDestinationEventDestinationSnsDestination.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationEventDestinationSnsDestination(
-      topicArn: map['topicArn'] as String,
+      topicArn: (map['topicArn'] as String).input(),
     );
   }
 }

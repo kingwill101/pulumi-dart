@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceCapacityProviderStrategy {
   /// Number of tasks using the specified capacity provider
-  final int base;
+  final pulumi.Input<int> base;
   /// Name of the capacity provider
-  final String capacityProvider;
+  final pulumi.Input<String> capacityProvider;
   /// Relative percentage of total tasks to launch
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetServiceCapacityProviderStrategy].
   /// [base] Number of tasks using the specified capacity provider
@@ -29,9 +30,9 @@ class GetServiceCapacityProviderStrategy {
 
   factory GetServiceCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return GetServiceCapacityProviderStrategy(
-      base: map['base'] as int,
-      capacityProvider: map['capacityProvider'] as String,
-      weight: map['weight'] as int,
+      base: (map['base'] as int).input(),
+      capacityProvider: (map['capacityProvider'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

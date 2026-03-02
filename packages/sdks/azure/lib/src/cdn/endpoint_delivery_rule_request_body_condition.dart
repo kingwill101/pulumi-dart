@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleRequestBodyCondition {
   /// List of string values. This is required if `operator` is not `Any`.
-  final List<String>? matchValues;
+  final pulumi.Input<List<String>>? matchValues;
   /// Defaults to `false`.
-  final bool? negateCondition;
+  final pulumi.Input<bool>? negateCondition;
   /// Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// A list of transforms. Valid values are `Lowercase` and `Uppercase`.
-  final List<String>? transforms;
+  final pulumi.Input<List<String>>? transforms;
 
   /// Creates a new [EndpointDeliveryRuleRequestBodyCondition].
   /// [matchValues] List of string values. This is required if `operator` is not `Any`.
@@ -34,10 +35,10 @@ class EndpointDeliveryRuleRequestBodyCondition {
 
   factory EndpointDeliveryRuleRequestBodyCondition.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleRequestBodyCondition(
-      matchValues: map['matchValues'] == null ? null : (map['matchValues'] as List).cast<String>(),
-      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
-      operator: map['operator'] as String,
-      transforms: map['transforms'] == null ? null : (map['transforms'] as List).cast<String>(),
+      matchValues: map['matchValues'] == null ? null : ((map['matchValues'] as List).cast<String>()).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      operator: (map['operator'] as String).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
     );
   }
 }

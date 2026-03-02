@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountNetworkAclVirtualNetworkRule {
   /// Whether missing vnet service endpoint is ignored or not.
-  final bool ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool> ignoreMissingVnetServiceEndpoint;
   /// The ID of the subnet which is able to access this Cognitive Services Account.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetAccountNetworkAclVirtualNetworkRule].
   /// [ignoreMissingVnetServiceEndpoint] Whether missing vnet service endpoint is ignored or not.
@@ -24,8 +25,8 @@ class GetAccountNetworkAclVirtualNetworkRule {
 
   factory GetAccountNetworkAclVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return GetAccountNetworkAclVirtualNetworkRule(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] as bool,
-      subnetId: map['subnetId'] as String,
+      ignoreMissingVnetServiceEndpoint: (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

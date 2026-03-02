@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStateConfigurationsConfiguration {
   /// The configuration mode.
-  final String configureMode;
+  final pulumi.Input<String> configureMode;
   /// The creation time.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the State Configuration.
-  final String id;
+  final pulumi.Input<String> id;
   /// The parameters.
-  final String parameters;
+  final pulumi.Input<String> parameters;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The schedule expression.
-  final String scheduleExpression;
+  final pulumi.Input<String> scheduleExpression;
   /// The schedule type.
-  final String scheduleType;
+  final pulumi.Input<String> scheduleType;
   /// The ID of the final state configuration.
-  final String stateConfigurationId;
+  final pulumi.Input<String> stateConfigurationId;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The target resource.
-  final String targets;
+  final pulumi.Input<String> targets;
   /// The ID of the template.
-  final String templateId;
+  final pulumi.Input<String> templateId;
   /// The name of the template.
-  final String templateName;
+  final pulumi.Input<String> templateName;
   /// The version of the template.
-  final String templateVersion;
+  final pulumi.Input<String> templateVersion;
   /// The time when the configuration is updated.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GetStateConfigurationsConfiguration].
   /// [configureMode] The configuration mode.
@@ -89,21 +90,21 @@ class GetStateConfigurationsConfiguration {
 
   factory GetStateConfigurationsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetStateConfigurationsConfiguration(
-      configureMode: map['configureMode'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      parameters: map['parameters'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      scheduleExpression: map['scheduleExpression'] as String,
-      scheduleType: map['scheduleType'] as String,
-      stateConfigurationId: map['stateConfigurationId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      targets: map['targets'] as String,
-      templateId: map['templateId'] as String,
-      templateName: map['templateName'] as String,
-      templateVersion: map['templateVersion'] as String,
-      updateTime: map['updateTime'] as String,
+      configureMode: (map['configureMode'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      parameters: (map['parameters'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      scheduleExpression: (map['scheduleExpression'] as String).input(),
+      scheduleType: (map['scheduleType'] as String).input(),
+      stateConfigurationId: (map['stateConfigurationId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      targets: (map['targets'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
+      templateVersion: (map['templateVersion'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

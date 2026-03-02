@@ -38,25 +38,16 @@ class SaasBotDefenseProfileArgs {
   /// [sslProfile] Specifies a server-side SSL profile that is different from what the application pool uses
   /// [tenantId] Specifies the tenant ID, enter the value provided by F5 Support
   SaasBotDefenseProfileArgs({
-    required pulumi.Output<String> apiKey,
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> name,
-    required pulumi.Output<List<SaasBotDefenseProfileProtectedEndpoint>> protectedEndpoints,
-    required pulumi.Output<String> shapeProtectionPool,
-    required pulumi.Output<String> sslProfile,
-    required pulumi.Output<String> tenantId,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asInput<String>(name),
-      protectedEndpoints = pulumi.Input.asInput<List<SaasBotDefenseProfileProtectedEndpoint>>(protectedEndpoints),
-      shapeProtectionPool = pulumi.Input.asInput<String>(shapeProtectionPool),
-      sslProfile = pulumi.Input.asInput<String>(sslProfile),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.apiKey,
+    required this.applicationId,
+    this.defaultsFrom,
+    this.description,
+    required this.name,
+    required this.protectedEndpoints,
+    required this.shapeProtectionPool,
+    required this.sslProfile,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class SaasBotDefenseProfileArgs {
 
   factory SaasBotDefenseProfileArgs.fromMap(Map<String, dynamic> map) {
     return SaasBotDefenseProfileArgs(
-      apiKey: pulumi.Output.create<String>(map['apiKey'] as String),
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      protectedEndpoints: pulumi.Output.create<List<SaasBotDefenseProfileProtectedEndpoint>>(pulumi.Input.decodeList<SaasBotDefenseProfileProtectedEndpoint>(map['protectedEndpoints'], (value) => SaasBotDefenseProfileProtectedEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      shapeProtectionPool: pulumi.Output.create<String>(map['shapeProtectionPool'] as String),
-      sslProfile: pulumi.Output.create<String>(map['sslProfile'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      apiKey: (map['apiKey'] as String).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      protectedEndpoints: (pulumi.Input.decodeList<SaasBotDefenseProfileProtectedEndpoint>(map['protectedEndpoints'], (value) => SaasBotDefenseProfileProtectedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shapeProtectionPool: (map['shapeProtectionPool'] as String).input(),
+      sslProfile: (map['sslProfile'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

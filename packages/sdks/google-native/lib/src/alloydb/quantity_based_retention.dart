@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A quantity based policy specifies that a certain number of the most recent successful backups should be retained.
 class QuantityBasedRetention {
   /// The number of backups to retain.
-  final int? count;
+  final pulumi.Input<int>? count;
 
   /// Creates a new [QuantityBasedRetention].
   /// [count] The number of backups to retain.
@@ -20,7 +21,7 @@ class QuantityBasedRetention {
 
   factory QuantityBasedRetention.fromMap(Map<String, dynamic> map) {
     return QuantityBasedRetention(
-      count: map['count'] == null ? null : map['count'] as int,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
     );
   }
 }

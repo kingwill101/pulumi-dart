@@ -19,13 +19,10 @@ class GetMachineRunCommandArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runCommandName] The name of the run command.
   GetMachineRunCommandArgs({
-    required pulumi.Output<String> machineName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> runCommandName,
-  }) :
-      machineName = pulumi.Input.asInput<String>(machineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runCommandName = pulumi.Input.asInput<String>(runCommandName);
+    required this.machineName,
+    required this.resourceGroupName,
+    required this.runCommandName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMachineRunCommandArgs {
 
   factory GetMachineRunCommandArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineRunCommandArgs(
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runCommandName: pulumi.Output.create<String>(map['runCommandName'] as String),
+      machineName: (map['machineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runCommandName: (map['runCommandName'] as String).input(),
     );
   }
 }

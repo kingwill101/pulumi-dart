@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesVideoAcpi {
   /// Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  final double? index;
+  final pulumi.Input<double>? index;
 
   /// Creates a new [DomainDevicesVideoAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
@@ -19,7 +20,7 @@ class DomainDevicesVideoAcpi {
 
   factory DomainDevicesVideoAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideoAcpi(
-      index: map['index'] == null ? null : map['index'] as double,
+      index: map['index'] == null ? null : (map['index'] as double).input(),
     );
   }
 }

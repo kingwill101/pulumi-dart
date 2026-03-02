@@ -26,17 +26,12 @@ class RestorePointCollectionArgs {
   /// [source] The properties of the source resource that this restore point collection is created from.
   /// [tags] Resource tags.
   RestorePointCollectionArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? restorePointCollectionName,
-    pulumi.Output<RestorePointCollectionSourceProperties>? source,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      restorePointCollectionName = pulumi.Input.asOptionalInput<String>(restorePointCollectionName),
-      source = pulumi.Input.asOptionalInput<RestorePointCollectionSourceProperties>(source),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.resourceGroupName,
+    this.restorePointCollectionName,
+    this.source,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RestorePointCollectionArgs {
 
   factory RestorePointCollectionArgs.fromMap(Map<String, dynamic> map) {
     return RestorePointCollectionArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      restorePointCollectionName: map['restorePointCollectionName'] == null ? null : pulumi.Output.create<String>(map['restorePointCollectionName'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<RestorePointCollectionSourceProperties>(RestorePointCollectionSourceProperties.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      restorePointCollectionName: map['restorePointCollectionName'] == null ? null : (map['restorePointCollectionName'] as String).input(),
+      source: map['source'] == null ? null : (RestorePointCollectionSourceProperties.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

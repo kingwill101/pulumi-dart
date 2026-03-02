@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Code asset version details.
 class CodeVersion {
   /// Uri where code is located
-  final String? codeUri;
+  final pulumi.Input<String>? codeUri;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// If the name version are system generated (anonymous registration).
-  final bool? isAnonymous;
+  final pulumi.Input<bool>? isAnonymous;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [CodeVersion].
   /// [codeUri] Uri where code is located
@@ -45,12 +46,12 @@ class CodeVersion {
 
   factory CodeVersion.fromMap(Map<String, dynamic> map) {
     return CodeVersion(
-      codeUri: map['codeUri'] == null ? null : map['codeUri'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      isAnonymous: map['isAnonymous'] == null ? null : map['isAnonymous'] as bool,
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      codeUri: map['codeUri'] == null ? null : (map['codeUri'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

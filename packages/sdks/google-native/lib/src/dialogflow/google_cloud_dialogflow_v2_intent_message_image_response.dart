@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The image response message.
 class GoogleCloudDialogflowV2IntentMessageImageResponse {
   /// Optional. A text description of the image to be used for accessibility, e.g., screen readers.
-  final String accessibilityText;
+  final pulumi.Input<String> accessibilityText;
   /// Optional. The public URI to an image file.
-  final String imageUri;
+  final pulumi.Input<String> imageUri;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageImageResponse].
   /// [accessibilityText] Optional. A text description of the image to be used for accessibility, e.g., screen readers.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowV2IntentMessageImageResponse {
 
   factory GoogleCloudDialogflowV2IntentMessageImageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageImageResponse(
-      accessibilityText: map['accessibilityText'] as String,
-      imageUri: map['imageUri'] as String,
+      accessibilityText: (map['accessibilityText'] as String).input(),
+      imageUri: (map['imageUri'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointMongodbSettings {
   /// Authentication mechanism to access the MongoDB source endpoint. Default is `default`.
-  final String? authMechanism;
+  final pulumi.Input<String>? authMechanism;
   /// Authentication database name. Not used when `auth_type` is `no`. Default is `admin`.
-  final String? authSource;
+  final pulumi.Input<String>? authSource;
   /// Authentication type to access the MongoDB source endpoint. Default is `password`.
-  final String? authType;
+  final pulumi.Input<String>? authType;
   /// Number of documents to preview to determine the document organization. Use this setting when `nesting_level` is set to `one`. Default is `1000`.
-  final String? docsToInvestigate;
+  final pulumi.Input<String>? docsToInvestigate;
   /// Document ID. Use this setting when `nesting_level` is set to `none`. Default is `false`.
-  final String? extractDocId;
+  final pulumi.Input<String>? extractDocId;
   /// Specifies either document or table mode. Default is `none`. Valid values are `one` (table mode) and `none` (document mode).
-  final String? nestingLevel;
+  final pulumi.Input<String>? nestingLevel;
   /// If `true`, DMS retrieves the entire document from the MongoDB source during migration. Default is `false`.
-  final bool? useUpdateLookup;
+  final pulumi.Input<bool>? useUpdateLookup;
 
   /// Creates a new [EndpointMongodbSettings].
   /// [authMechanism] Authentication mechanism to access the MongoDB source endpoint. Default is `default`.
@@ -49,13 +50,13 @@ class EndpointMongodbSettings {
 
   factory EndpointMongodbSettings.fromMap(Map<String, dynamic> map) {
     return EndpointMongodbSettings(
-      authMechanism: map['authMechanism'] == null ? null : map['authMechanism'] as String,
-      authSource: map['authSource'] == null ? null : map['authSource'] as String,
-      authType: map['authType'] == null ? null : map['authType'] as String,
-      docsToInvestigate: map['docsToInvestigate'] == null ? null : map['docsToInvestigate'] as String,
-      extractDocId: map['extractDocId'] == null ? null : map['extractDocId'] as String,
-      nestingLevel: map['nestingLevel'] == null ? null : map['nestingLevel'] as String,
-      useUpdateLookup: map['useUpdateLookup'] == null ? null : map['useUpdateLookup'] as bool,
+      authMechanism: map['authMechanism'] == null ? null : (map['authMechanism'] as String).input(),
+      authSource: map['authSource'] == null ? null : (map['authSource'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      docsToInvestigate: map['docsToInvestigate'] == null ? null : (map['docsToInvestigate'] as String).input(),
+      extractDocId: map['extractDocId'] == null ? null : (map['extractDocId'] as String).input(),
+      nestingLevel: map['nestingLevel'] == null ? null : (map['nestingLevel'] as String).input(),
+      useUpdateLookup: map['useUpdateLookup'] == null ? null : (map['useUpdateLookup'] as bool).input(),
     );
   }
 }

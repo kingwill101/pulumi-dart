@@ -33,23 +33,15 @@ class TrustConfigArgs {
   /// [trustConfigId] Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
   /// [trustStores] Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
   TrustConfigArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> trustConfigId,
-    pulumi.Output<List<TrustStore>>? trustStores,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trustConfigId = pulumi.Input.asInput<String>(trustConfigId),
-      trustStores = pulumi.Input.asOptionalInput<List<TrustStore>>(trustStores);
+    this.description,
+    this.etag,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    required this.trustConfigId,
+    this.trustStores,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class TrustConfigArgs {
 
   factory TrustConfigArgs.fromMap(Map<String, dynamic> map) {
     return TrustConfigArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trustConfigId: pulumi.Output.create<String>(map['trustConfigId'] as String),
-      trustStores: map['trustStores'] == null ? null : pulumi.Output.create<List<TrustStore>>(pulumi.Input.decodeList<TrustStore>(map['trustStores'], (value) => TrustStore.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trustConfigId: (map['trustConfigId'] as String).input(),
+      trustStores: map['trustStores'] == null ? null : (pulumi.Input.decodeList<TrustStore>(map['trustStores'], (value) => TrustStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

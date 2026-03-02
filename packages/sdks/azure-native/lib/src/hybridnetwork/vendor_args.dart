@@ -13,9 +13,8 @@ class VendorArgs {
   /// Creates a new [VendorArgs].
   /// [vendorName] The name of the vendor.
   VendorArgs({
-    pulumi.Output<String>? vendorName,
-  }) :
-      vendorName = pulumi.Input.asOptionalInput<String>(vendorName);
+    this.vendorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class VendorArgs {
 
   factory VendorArgs.fromMap(Map<String, dynamic> map) {
     return VendorArgs(
-      vendorName: map['vendorName'] == null ? null : pulumi.Output.create<String>(map['vendorName'] as String),
+      vendorName: map['vendorName'] == null ? null : (map['vendorName'] as String).input(),
     );
   }
 }

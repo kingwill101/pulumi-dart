@@ -7,9 +7,9 @@ import 'resource_info_definition.dart';
 /// BasicRules of AuthorizationConfig Polar rules are not supported
 class AuthorizationBasicRule {
   /// This subfield defines the broker resources that the Basic Rule is applied on.
-  final List<ResourceInfoDefinition> brokerResources;
+  final pulumi.Input<List<ResourceInfoDefinition>> brokerResources;
   /// This subfield defines the identities that represent the clients.
-  final PrincipalDefinition principals;
+  final pulumi.Input<PrincipalDefinition> principals;
 
   /// Creates a new [AuthorizationBasicRule].
   /// [brokerResources] This subfield defines the broker resources that the Basic Rule is applied on.
@@ -21,15 +21,15 @@ class AuthorizationBasicRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'brokerResources': pulumi.Input.encodeList<ResourceInfoDefinition, Map<String, dynamic>>(brokerResources, (value) => value.toMap()),
-      'principals': principals.toMap(),
+      'brokerResources': pulumi.Input.mapInputValue<List<ResourceInfoDefinition>, List<Map<String, dynamic>>>(brokerResources, (value) => pulumi.Input.encodeList<ResourceInfoDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'principals': pulumi.Input.mapInputValue<PrincipalDefinition, Map<String, dynamic>>(principals, (value) => value.toMap()),
     };
   }
 
   factory AuthorizationBasicRule.fromMap(Map<String, dynamic> map) {
     return AuthorizationBasicRule(
-      brokerResources: pulumi.Input.decodeList<ResourceInfoDefinition>(map['brokerResources'], (value) => ResourceInfoDefinition.fromMap((value as Map).cast<String, dynamic>())),
-      principals: PrincipalDefinition.fromMap((map['principals'] as Map).cast<String, dynamic>()),
+      brokerResources: (pulumi.Input.decodeList<ResourceInfoDefinition>(map['brokerResources'], (value) => ResourceInfoDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principals: (PrincipalDefinition.fromMap((map['principals'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

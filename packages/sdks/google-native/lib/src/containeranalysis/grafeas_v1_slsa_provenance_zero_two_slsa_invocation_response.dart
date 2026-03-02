@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grafeas_v1_slsa_provenance_zero_two_slsa_config_source_response.dart';
 
 /// Identifies the event that kicked off the build.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
-  final GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse configSource;
-  final Map<String, String> environment;
-  final Map<String, String> parameters;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse> configSource;
+  final pulumi.Input<Map<String, String>> environment;
+  final pulumi.Input<Map<String, String>> parameters;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse].
   /// [configSource] Required.
@@ -20,7 +21,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configSource': configSource.toMap(),
+      'configSource': pulumi.Input.mapInputValue<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse, Map<String, dynamic>>(configSource, (value) => value.toMap()),
       'environment': environment,
       'parameters': parameters,
     };
@@ -28,9 +29,9 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse(
-      configSource: GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap((map['configSource'] as Map).cast<String, dynamic>()),
-      environment: (map['environment'] as Map).cast<String, String>(),
-      parameters: (map['parameters'] as Map).cast<String, String>(),
+      configSource: (GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap((map['configSource'] as Map).cast<String, dynamic>())).input(),
+      environment: ((map['environment'] as Map).cast<String, String>()).input(),
+      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

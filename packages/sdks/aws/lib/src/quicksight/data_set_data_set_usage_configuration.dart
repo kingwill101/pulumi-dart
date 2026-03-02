@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetDataSetUsageConfiguration {
   /// Controls whether a child dataset of a direct query can use this dataset as a source.
-  final bool? disableUseAsDirectQuerySource;
+  final pulumi.Input<bool>? disableUseAsDirectQuerySource;
   /// Controls whether a child dataset that's stored in QuickSight can use this dataset as a source.
-  final bool? disableUseAsImportedSource;
+  final pulumi.Input<bool>? disableUseAsImportedSource;
 
   /// Creates a new [DataSetDataSetUsageConfiguration].
   /// [disableUseAsDirectQuerySource] Controls whether a child dataset of a direct query can use this dataset as a source.
@@ -24,8 +25,8 @@ class DataSetDataSetUsageConfiguration {
 
   factory DataSetDataSetUsageConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSetDataSetUsageConfiguration(
-      disableUseAsDirectQuerySource: map['disableUseAsDirectQuerySource'] == null ? null : map['disableUseAsDirectQuerySource'] as bool,
-      disableUseAsImportedSource: map['disableUseAsImportedSource'] == null ? null : map['disableUseAsImportedSource'] as bool,
+      disableUseAsDirectQuerySource: map['disableUseAsDirectQuerySource'] == null ? null : (map['disableUseAsDirectQuerySource'] as bool).input(),
+      disableUseAsImportedSource: map['disableUseAsImportedSource'] == null ? null : (map['disableUseAsImportedSource'] as bool).input(),
     );
   }
 }

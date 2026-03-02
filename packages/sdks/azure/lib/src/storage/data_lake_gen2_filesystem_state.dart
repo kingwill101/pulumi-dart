@@ -31,21 +31,14 @@ class DataLakeGen2FilesystemState {
   /// [properties] A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
   /// [storageAccountId] Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
   DataLakeGen2FilesystemState({
-    pulumi.Output<List<DataLakeGen2FilesystemAce>>? aces,
-    pulumi.Output<String>? defaultEncryptionScope,
-    pulumi.Output<String>? group,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? owner,
-    pulumi.Output<Map<String, String>>? properties,
-    pulumi.Output<String>? storageAccountId,
-  }) :
-      aces = pulumi.Input.asOptionalInput<List<DataLakeGen2FilesystemAce>>(aces),
-      defaultEncryptionScope = pulumi.Input.asOptionalInput<String>(defaultEncryptionScope),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      properties = pulumi.Input.asOptionalInput<Map<String, String>>(properties),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId);
+    this.aces,
+    this.defaultEncryptionScope,
+    this.group,
+    this.name,
+    this.owner,
+    this.properties,
+    this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DataLakeGen2FilesystemState {
 
   factory DataLakeGen2FilesystemState.fromMap(Map<String, dynamic> map) {
     return DataLakeGen2FilesystemState(
-      aces: map['aces'] == null ? null : pulumi.Output.create<List<DataLakeGen2FilesystemAce>>(pulumi.Input.decodeList<DataLakeGen2FilesystemAce>(map['aces'], (value) => DataLakeGen2FilesystemAce.fromMap((value as Map).cast<String, dynamic>()))),
-      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : pulumi.Output.create<String>(map['defaultEncryptionScope'] as String),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['properties'] as Map).cast<String, String>()),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
+      aces: map['aces'] == null ? null : (pulumi.Input.decodeList<DataLakeGen2FilesystemAce>(map['aces'], (value) => DataLakeGen2FilesystemAce.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope'] as String).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
     );
   }
 }

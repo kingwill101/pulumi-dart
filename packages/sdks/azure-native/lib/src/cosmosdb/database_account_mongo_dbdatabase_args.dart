@@ -26,17 +26,12 @@ class DatabaseAccountMongoDBDatabaseArgs {
   /// [resource] The standard JSON format of a MongoDB database
   /// [resourceGroupName] Name of an Azure resource group.
   DatabaseAccountMongoDBDatabaseArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? databaseName,
-    required pulumi.Output<Map<String, String>> options,
-    required pulumi.Output<MongoDBDatabaseResource> resource,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      options = pulumi.Input.asInput<Map<String, String>>(options),
-      resource = pulumi.Input.asInput<MongoDBDatabaseResource>(resource),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.databaseName,
+    required this.options,
+    required this.resource,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DatabaseAccountMongoDBDatabaseArgs {
 
   factory DatabaseAccountMongoDBDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountMongoDBDatabaseArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      options: pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      resource: pulumi.Output.create<MongoDBDatabaseResource>(MongoDBDatabaseResource.fromMap((map['resource'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      options: ((map['options'] as Map).cast<String, String>()).input(),
+      resource: (MongoDBDatabaseResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class ActiveDirectoryAdministratorArgs {
   /// [serverName] The name of the PostgreSQL Server on which to set the administrator. Changing this forces a new resource to be created.
   /// [tenantId] The Azure Tenant ID
   ActiveDirectoryAdministratorArgs({
-    required pulumi.Output<String> login,
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> tenantId,
-  }) :
-      login = pulumi.Input.asInput<String>(login),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.login,
+    required this.objectId,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ActiveDirectoryAdministratorArgs {
 
   factory ActiveDirectoryAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryAdministratorArgs(
-      login: pulumi.Output.create<String>(map['login'] as String),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      login: (map['login'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

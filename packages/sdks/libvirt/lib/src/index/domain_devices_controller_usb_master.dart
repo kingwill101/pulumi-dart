@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesControllerUsbMaster {
   /// Sets the starting port number for the master USB controller device configuration.
-  final double startPort;
+  final pulumi.Input<double> startPort;
 
   /// Creates a new [DomainDevicesControllerUsbMaster].
   /// [startPort] Sets the starting port number for the master USB controller device configuration.
@@ -19,7 +20,7 @@ class DomainDevicesControllerUsbMaster {
 
   factory DomainDevicesControllerUsbMaster.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerUsbMaster(
-      startPort: map['startPort'] as double,
+      startPort: (map['startPort'] as double).input(),
     );
   }
 }

@@ -22,17 +22,12 @@ class NetworkManagerSubscriptionConnectionState {
   /// [networkManagerId] Specifies the ID of the Network Manager which the Subscription is connected to.
   /// [subscriptionId] Specifies the ID of the target Subscription. Changing this forces a new resource to be created.
   NetworkManagerSubscriptionConnectionState({
-    pulumi.Output<String>? connectionState,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkManagerId,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      connectionState = pulumi.Input.asOptionalInput<String>(connectionState),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkManagerId = pulumi.Input.asOptionalInput<String>(networkManagerId),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.connectionState,
+    this.description,
+    this.name,
+    this.networkManagerId,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class NetworkManagerSubscriptionConnectionState {
 
   factory NetworkManagerSubscriptionConnectionState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerSubscriptionConnectionState(
-      connectionState: map['connectionState'] == null ? null : pulumi.Output.create<String>(map['connectionState'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: map['networkManagerId'] == null ? null : pulumi.Output.create<String>(map['networkManagerId'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      connectionState: map['connectionState'] == null ? null : (map['connectionState'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

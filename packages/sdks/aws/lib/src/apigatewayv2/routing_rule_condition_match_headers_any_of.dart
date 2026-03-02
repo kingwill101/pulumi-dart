@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoutingRuleConditionMatchHeadersAnyOf {
   /// The case insensitive header name to be matched. The header name must be less than 40 characters and the only allowed characters are a-z, A-Z, 0-9, and the following special characters: *?-!#$%&'.^_`|~.
-  final String header;
+  final pulumi.Input<String> header;
   /// The case sensitive header glob value to be matched against entire header value. The header glob value must be less than 128 characters and the only allowed characters are a-z, A-Z, 0-9, and the following special characters: \*?-!#$%&'.^_`|~. Wildcard matching is supported for header glob values but must be for \*prefix-match, suffix-match*, or \*infix*-match.
-  final String valueGlob;
+  final pulumi.Input<String> valueGlob;
 
   /// Creates a new [RoutingRuleConditionMatchHeadersAnyOf].
   /// [header] The case insensitive header name to be matched. The header name must be less than 40 characters and the only allowed characters are a-z, A-Z, 0-9, and the following special characters: *?-!#$%&'.^_`|~.
@@ -24,8 +25,8 @@ class RoutingRuleConditionMatchHeadersAnyOf {
 
   factory RoutingRuleConditionMatchHeadersAnyOf.fromMap(Map<String, dynamic> map) {
     return RoutingRuleConditionMatchHeadersAnyOf(
-      header: map['header'] as String,
-      valueGlob: map['valueGlob'] as String,
+      header: (map['header'] as String).input(),
+      valueGlob: (map['valueGlob'] as String).input(),
     );
   }
 }

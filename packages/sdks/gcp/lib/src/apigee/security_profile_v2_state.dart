@@ -32,21 +32,14 @@ class SecurityProfileV2State {
   /// [profileId] Resource ID of the security profile.
   /// [updateTime] The timestamp at which this profile was most recently updated.
   SecurityProfileV2State({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<List<SecurityProfileV2ProfileAssessmentConfig>>? profileAssessmentConfigs,
-    pulumi.Output<String>? profileId,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      profileAssessmentConfigs = pulumi.Input.asOptionalInput<List<SecurityProfileV2ProfileAssessmentConfig>>(profileAssessmentConfigs),
-      profileId = pulumi.Input.asOptionalInput<String>(profileId),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.name,
+    this.orgId,
+    this.profileAssessmentConfigs,
+    this.profileId,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SecurityProfileV2State {
 
   factory SecurityProfileV2State.fromMap(Map<String, dynamic> map) {
     return SecurityProfileV2State(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      profileAssessmentConfigs: map['profileAssessmentConfigs'] == null ? null : pulumi.Output.create<List<SecurityProfileV2ProfileAssessmentConfig>>(pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(map['profileAssessmentConfigs'], (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      profileId: map['profileId'] == null ? null : pulumi.Output.create<String>(map['profileId'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      profileAssessmentConfigs: map['profileAssessmentConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(map['profileAssessmentConfigs'], (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

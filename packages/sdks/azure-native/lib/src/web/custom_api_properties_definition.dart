@@ -9,29 +9,29 @@ import 'wsdl_definition.dart';
 /// Custom API properties
 class CustomApiPropertiesDefinition {
   /// API Definitions
-  final ApiResourceDefinitions? apiDefinitions;
+  final pulumi.Input<ApiResourceDefinitions>? apiDefinitions;
   /// The API type
-  final String? apiType;
+  final pulumi.Input<String>? apiType;
   /// The API backend service
-  final ApiResourceBackendService? backendService;
+  final pulumi.Input<ApiResourceBackendService>? backendService;
   /// Brand color
-  final String? brandColor;
+  final pulumi.Input<String>? brandColor;
   /// The custom API capabilities
-  final List<String>? capabilities;
+  final pulumi.Input<List<String>>? capabilities;
   /// Connection parameters
-  final Map<String, ConnectionParameter>? connectionParameters;
+  final pulumi.Input<Map<String, ConnectionParameter>>? connectionParameters;
   /// The custom API description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The icon URI
-  final String? iconUri;
+  final pulumi.Input<String>? iconUri;
   /// Runtime URLs
-  final List<String>? runtimeUrls;
+  final pulumi.Input<List<String>>? runtimeUrls;
   /// The JSON representation of the swagger
-  final dynamic swagger;
+  final pulumi.Input<dynamic>? swagger;
   /// The WSDL definition
-  final WsdlDefinition? wsdlDefinition;
+  final pulumi.Input<WsdlDefinition>? wsdlDefinition;
 
   /// Creates a new [CustomApiPropertiesDefinition].
   /// [apiDefinitions] API Definitions
@@ -63,35 +63,35 @@ class CustomApiPropertiesDefinition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiDefinitions': ?apiDefinitions == null ? null : apiDefinitions!.toMap(),
+      'apiDefinitions': ?pulumi.Input.mapOptionalInputValue<ApiResourceDefinitions, Map<String, dynamic>>(apiDefinitions, (value) => value.toMap()),
       'apiType': ?apiType,
-      'backendService': ?backendService == null ? null : backendService!.toMap(),
+      'backendService': ?pulumi.Input.mapOptionalInputValue<ApiResourceBackendService, Map<String, dynamic>>(backendService, (value) => value.toMap()),
       'brandColor': ?brandColor,
       'capabilities': ?capabilities,
-      'connectionParameters': ?connectionParameters == null ? null : pulumi.Input.encodeMapValues<ConnectionParameter, Map<String, dynamic>>(connectionParameters!, (value) => value.toMap()),
+      'connectionParameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ConnectionParameter>, Map<String, Map<String, dynamic>>>(connectionParameters, (value) => pulumi.Input.encodeMapValues<ConnectionParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'displayName': ?displayName,
       'iconUri': ?iconUri,
       'runtimeUrls': ?runtimeUrls,
       'swagger': ?swagger,
-      'wsdlDefinition': ?wsdlDefinition == null ? null : wsdlDefinition!.toMap(),
+      'wsdlDefinition': ?pulumi.Input.mapOptionalInputValue<WsdlDefinition, Map<String, dynamic>>(wsdlDefinition, (value) => value.toMap()),
     };
   }
 
   factory CustomApiPropertiesDefinition.fromMap(Map<String, dynamic> map) {
     return CustomApiPropertiesDefinition(
-      apiDefinitions: map['apiDefinitions'] == null ? null : ApiResourceDefinitions.fromMap((map['apiDefinitions'] as Map).cast<String, dynamic>()),
-      apiType: map['apiType'] == null ? null : map['apiType'] as String,
-      backendService: map['backendService'] == null ? null : ApiResourceBackendService.fromMap((map['backendService'] as Map).cast<String, dynamic>()),
-      brandColor: map['brandColor'] == null ? null : map['brandColor'] as String,
-      capabilities: map['capabilities'] == null ? null : (map['capabilities'] as List).cast<String>(),
-      connectionParameters: map['connectionParameters'] == null ? null : pulumi.Input.decodeMapValues<ConnectionParameter>(map['connectionParameters'], (value) => ConnectionParameter.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      iconUri: map['iconUri'] == null ? null : map['iconUri'] as String,
-      runtimeUrls: map['runtimeUrls'] == null ? null : (map['runtimeUrls'] as List).cast<String>(),
-      swagger: map['swagger'] == null ? null : map['swagger'],
-      wsdlDefinition: map['wsdlDefinition'] == null ? null : WsdlDefinition.fromMap((map['wsdlDefinition'] as Map).cast<String, dynamic>()),
+      apiDefinitions: map['apiDefinitions'] == null ? null : (ApiResourceDefinitions.fromMap((map['apiDefinitions'] as Map).cast<String, dynamic>())).input(),
+      apiType: map['apiType'] == null ? null : (map['apiType'] as String).input(),
+      backendService: map['backendService'] == null ? null : (ApiResourceBackendService.fromMap((map['backendService'] as Map).cast<String, dynamic>())).input(),
+      brandColor: map['brandColor'] == null ? null : (map['brandColor'] as String).input(),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
+      connectionParameters: map['connectionParameters'] == null ? null : (pulumi.Input.decodeMapValues<ConnectionParameter>(map['connectionParameters'], (value) => ConnectionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      iconUri: map['iconUri'] == null ? null : (map['iconUri'] as String).input(),
+      runtimeUrls: map['runtimeUrls'] == null ? null : ((map['runtimeUrls'] as List).cast<String>()).input(),
+      swagger: map['swagger'] == null ? null : (map['swagger']).input(),
+      wsdlDefinition: map['wsdlDefinition'] == null ? null : (WsdlDefinition.fromMap((map['wsdlDefinition'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 class RelationshipNoteResponse {
   /// The type of relationship between the source and target SPDX elements
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RelationshipNoteResponse].
   /// [type] The type of relationship between the source and target SPDX elements
@@ -20,7 +21,7 @@ class RelationshipNoteResponse {
 
   factory RelationshipNoteResponse.fromMap(Map<String, dynamic> map) {
     return RelationshipNoteResponse(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

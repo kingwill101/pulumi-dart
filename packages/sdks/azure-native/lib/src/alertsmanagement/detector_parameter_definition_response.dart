@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The detector parameter definition.
 class DetectorParameterDefinitionResponse {
   /// The detector parameter description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The detector parameter display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// A value indicating whether this detector parameter is mandatory.
-  final bool? isMandatory;
+  final pulumi.Input<bool>? isMandatory;
   /// The detector parameter name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The detector parameter type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DetectorParameterDefinitionResponse].
   /// [description] The detector parameter description.
@@ -40,11 +41,11 @@ class DetectorParameterDefinitionResponse {
 
   factory DetectorParameterDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return DetectorParameterDefinitionResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      isMandatory: map['isMandatory'] == null ? null : map['isMandatory'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      isMandatory: map['isMandatory'] == null ? null : (map['isMandatory'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

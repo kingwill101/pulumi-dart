@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesRuleRuleActionTrafficLimitConfig {
   /// The Number of requests per second.
-  final int qps;
+  final pulumi.Input<int> qps;
 
   /// Creates a new [GetRulesRuleRuleActionTrafficLimitConfig].
   /// [qps] The Number of requests per second.
@@ -19,7 +20,7 @@ class GetRulesRuleRuleActionTrafficLimitConfig {
 
   factory GetRulesRuleRuleActionTrafficLimitConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleActionTrafficLimitConfig(
-      qps: map['qps'] as int,
+      qps: (map['qps'] as int).input(),
     );
   }
 }

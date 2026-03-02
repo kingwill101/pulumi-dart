@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration to set up an ICA.
 class CertificateAuthorityConfigurationResponse {
   /// Crypto type: ECC.
-  final String keyType;
+  final pulumi.Input<String> keyType;
   /// Certificate subject.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// Certificate is valid not after this date. Format ISO8601. Generated based on validity period.
-  final String validityNotAfter;
+  final pulumi.Input<String> validityNotAfter;
   /// Certificate is valid not before this date. Format ISO8601. Generated based on on validity period.
-  final String validityNotBefore;
+  final pulumi.Input<String> validityNotBefore;
 
   /// Creates a new [CertificateAuthorityConfigurationResponse].
   /// [keyType] Crypto type: ECC.
@@ -35,10 +36,10 @@ class CertificateAuthorityConfigurationResponse {
 
   factory CertificateAuthorityConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityConfigurationResponse(
-      keyType: map['keyType'] as String,
-      subject: map['subject'] as String,
-      validityNotAfter: map['validityNotAfter'] as String,
-      validityNotBefore: map['validityNotBefore'] as String,
+      keyType: (map['keyType'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      validityNotAfter: (map['validityNotAfter'] as String).input(),
+      validityNotBefore: (map['validityNotBefore'] as String).input(),
     );
   }
 }

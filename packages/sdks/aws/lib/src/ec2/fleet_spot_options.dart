@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_spot_options_maintenance_strategies.dart';
 
 class FleetSpotOptions {
   /// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`, `capacity-optimized`, `capacity-optimized-prioritized` and `price-capacity-optimized`. Default: `lowestPrice`.
-  final String? allocationStrategy;
+  final pulumi.Input<String>? allocationStrategy;
   /// Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
-  final String? instanceInterruptionBehavior;
+  final pulumi.Input<String>? instanceInterruptionBehavior;
   /// Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
-  final int? instancePoolsToUseCount;
+  final pulumi.Input<int>? instancePoolsToUseCount;
   /// Nested argument containing maintenance strategies for managing your Spot Instances that are at an elevated risk of being interrupted. Defined below.
-  final FleetSpotOptionsMaintenanceStrategies? maintenanceStrategies;
+  final pulumi.Input<FleetSpotOptionsMaintenanceStrategies>? maintenanceStrategies;
   /// The maximum amount per hour for Spot Instances that you're willing to pay.
-  final String? maxTotalPrice;
+  final pulumi.Input<String>? maxTotalPrice;
   /// The minimum target capacity for Spot Instances in the fleet. If the minimum target capacity is not reached, the fleet launches no instances. Supported only for fleets of type `instant`.
-  final int? minTargetCapacity;
+  final pulumi.Input<int>? minTargetCapacity;
   /// Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for fleets of type `instant`.
-  final bool? singleAvailabilityZone;
+  final pulumi.Input<bool>? singleAvailabilityZone;
   /// Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported only for fleets of type `instant`.
-  final bool? singleInstanceType;
+  final pulumi.Input<bool>? singleInstanceType;
 
   /// Creates a new [FleetSpotOptions].
   /// [allocationStrategy] How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`, `capacity-optimized`, `capacity-optimized-prioritized` and `price-capacity-optimized`. Default: `lowestPrice`.
@@ -45,7 +46,7 @@ class FleetSpotOptions {
       'allocationStrategy': ?allocationStrategy,
       'instanceInterruptionBehavior': ?instanceInterruptionBehavior,
       'instancePoolsToUseCount': ?instancePoolsToUseCount,
-      'maintenanceStrategies': ?maintenanceStrategies == null ? null : maintenanceStrategies!.toMap(),
+      'maintenanceStrategies': ?pulumi.Input.mapOptionalInputValue<FleetSpotOptionsMaintenanceStrategies, Map<String, dynamic>>(maintenanceStrategies, (value) => value.toMap()),
       'maxTotalPrice': ?maxTotalPrice,
       'minTargetCapacity': ?minTargetCapacity,
       'singleAvailabilityZone': ?singleAvailabilityZone,
@@ -55,14 +56,14 @@ class FleetSpotOptions {
 
   factory FleetSpotOptions.fromMap(Map<String, dynamic> map) {
     return FleetSpotOptions(
-      allocationStrategy: map['allocationStrategy'] == null ? null : map['allocationStrategy'] as String,
-      instanceInterruptionBehavior: map['instanceInterruptionBehavior'] == null ? null : map['instanceInterruptionBehavior'] as String,
-      instancePoolsToUseCount: map['instancePoolsToUseCount'] == null ? null : map['instancePoolsToUseCount'] as int,
-      maintenanceStrategies: map['maintenanceStrategies'] == null ? null : FleetSpotOptionsMaintenanceStrategies.fromMap((map['maintenanceStrategies'] as Map).cast<String, dynamic>()),
-      maxTotalPrice: map['maxTotalPrice'] == null ? null : map['maxTotalPrice'] as String,
-      minTargetCapacity: map['minTargetCapacity'] == null ? null : map['minTargetCapacity'] as int,
-      singleAvailabilityZone: map['singleAvailabilityZone'] == null ? null : map['singleAvailabilityZone'] as bool,
-      singleInstanceType: map['singleInstanceType'] == null ? null : map['singleInstanceType'] as bool,
+      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy'] as String).input(),
+      instanceInterruptionBehavior: map['instanceInterruptionBehavior'] == null ? null : (map['instanceInterruptionBehavior'] as String).input(),
+      instancePoolsToUseCount: map['instancePoolsToUseCount'] == null ? null : (map['instancePoolsToUseCount'] as int).input(),
+      maintenanceStrategies: map['maintenanceStrategies'] == null ? null : (FleetSpotOptionsMaintenanceStrategies.fromMap((map['maintenanceStrategies'] as Map).cast<String, dynamic>())).input(),
+      maxTotalPrice: map['maxTotalPrice'] == null ? null : (map['maxTotalPrice'] as String).input(),
+      minTargetCapacity: map['minTargetCapacity'] == null ? null : (map['minTargetCapacity'] as int).input(),
+      singleAvailabilityZone: map['singleAvailabilityZone'] == null ? null : (map['singleAvailabilityZone'] as bool).input(),
+      singleInstanceType: map['singleInstanceType'] == null ? null : (map['singleInstanceType'] as bool).input(),
     );
   }
 }

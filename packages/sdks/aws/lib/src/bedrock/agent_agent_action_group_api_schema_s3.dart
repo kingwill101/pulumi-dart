@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentAgentActionGroupApiSchemaS3 {
   /// Name of the S3 bucket.
-  final String? s3BucketName;
+  final pulumi.Input<String>? s3BucketName;
   /// S3 object key containing the resource.
-  final String? s3ObjectKey;
+  final pulumi.Input<String>? s3ObjectKey;
 
   /// Creates a new [AgentAgentActionGroupApiSchemaS3].
   /// [s3BucketName] Name of the S3 bucket.
@@ -24,8 +25,8 @@ class AgentAgentActionGroupApiSchemaS3 {
 
   factory AgentAgentActionGroupApiSchemaS3.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupApiSchemaS3(
-      s3BucketName: map['s3BucketName'] == null ? null : map['s3BucketName'] as String,
-      s3ObjectKey: map['s3ObjectKey'] == null ? null : map['s3ObjectKey'] as String,
+      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName'] as String).input(),
+      s3ObjectKey: map['s3ObjectKey'] == null ? null : (map['s3ObjectKey'] as String).input(),
     );
   }
 }

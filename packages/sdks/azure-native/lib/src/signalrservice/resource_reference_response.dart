@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to a resource.
 class ResourceReferenceResponse {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ResourceReferenceResponse].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class ResourceReferenceResponse {
 
   factory ResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ResourceReferenceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSigningProfileSigningMaterial {
   /// ARN of the certificate used for signing.
-  final String certificateArn;
+  final pulumi.Input<String> certificateArn;
 
   /// Creates a new [GetSigningProfileSigningMaterial].
   /// [certificateArn] ARN of the certificate used for signing.
@@ -19,7 +20,7 @@ class GetSigningProfileSigningMaterial {
 
   factory GetSigningProfileSigningMaterial.fromMap(Map<String, dynamic> map) {
     return GetSigningProfileSigningMaterial(
-      certificateArn: map['certificateArn'] as String,
+      certificateArn: (map['certificateArn'] as String).input(),
     );
   }
 }

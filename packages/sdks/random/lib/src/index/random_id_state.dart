@@ -28,21 +28,14 @@ class RandomIdState {
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [prefix] Arbitrary string to prefix the output value with. This string is supplied as-is, meaning it is not guaranteed to be URL-safe or base64 encoded.
   RandomIdState({
-    pulumi.Output<String>? b64Std,
-    pulumi.Output<String>? b64Url,
-    pulumi.Output<int>? byteLength,
-    pulumi.Output<String>? dec,
-    pulumi.Output<String>? hex,
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<String>? prefix,
-  }) :
-      b64Std = pulumi.Input.asOptionalInput<String>(b64Std),
-      b64Url = pulumi.Input.asOptionalInput<String>(b64Url),
-      byteLength = pulumi.Input.asOptionalInput<int>(byteLength),
-      dec = pulumi.Input.asOptionalInput<String>(dec),
-      hex = pulumi.Input.asOptionalInput<String>(hex),
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix);
+    this.b64Std,
+    this.b64Url,
+    this.byteLength,
+    this.dec,
+    this.hex,
+    this.keepers,
+    this.prefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class RandomIdState {
 
   factory RandomIdState.fromMap(Map<String, dynamic> map) {
     return RandomIdState(
-      b64Std: map['b64Std'] == null ? null : pulumi.Output.create<String>(map['b64Std'] as String),
-      b64Url: map['b64Url'] == null ? null : pulumi.Output.create<String>(map['b64Url'] as String),
-      byteLength: map['byteLength'] == null ? null : pulumi.Output.create<int>(map['byteLength'] as int),
-      dec: map['dec'] == null ? null : pulumi.Output.create<String>(map['dec'] as String),
-      hex: map['hex'] == null ? null : pulumi.Output.create<String>(map['hex'] as String),
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
+      b64Std: map['b64Std'] == null ? null : (map['b64Std'] as String).input(),
+      b64Url: map['b64Url'] == null ? null : (map['b64Url'] as String).input(),
+      byteLength: map['byteLength'] == null ? null : (map['byteLength'] as int).input(),
+      dec: map['dec'] == null ? null : (map['dec'] as String).input(),
+      hex: map['hex'] == null ? null : (map['hex'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

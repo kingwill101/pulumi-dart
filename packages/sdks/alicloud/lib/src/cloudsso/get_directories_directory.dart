@@ -6,23 +6,23 @@ import 'get_directories_directory_task.dart';
 
 class GetDirectoriesDirectory {
   /// The CreateTime of the CloudSSO directory.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The DirectoryId of the CloudSSO directory.
-  final String directoryId;
+  final pulumi.Input<String> directoryId;
   /// The name of the CloudSSO directory.
-  final String directoryName;
+  final pulumi.Input<String> directoryName;
   /// The ID of the Directory.
-  final String id;
+  final pulumi.Input<String> id;
   /// The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-  final String mfaAuthenticationStatus;
+  final pulumi.Input<String> mfaAuthenticationStatus;
   /// The Region of the CloudSSO directory.
-  final String region;
+  final pulumi.Input<String> region;
   /// The saml identity provider configuration.
-  final List<GetDirectoriesDirectorySamlIdentityProviderConfiguration> samlIdentityProviderConfigurations;
+  final pulumi.Input<List<GetDirectoriesDirectorySamlIdentityProviderConfiguration>> samlIdentityProviderConfigurations;
   /// The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-  final String scimSynchronizationStatus;
+  final pulumi.Input<String> scimSynchronizationStatus;
   /// Asynchronous Task Information Array.
-  final List<GetDirectoriesDirectoryTask> tasks;
+  final pulumi.Input<List<GetDirectoriesDirectoryTask>> tasks;
 
   /// Creates a new [GetDirectoriesDirectory].
   /// [createTime] The CreateTime of the CloudSSO directory.
@@ -54,23 +54,23 @@ class GetDirectoriesDirectory {
       'id': id,
       'mfaAuthenticationStatus': mfaAuthenticationStatus,
       'region': region,
-      'samlIdentityProviderConfigurations': pulumi.Input.encodeList<GetDirectoriesDirectorySamlIdentityProviderConfiguration, Map<String, dynamic>>(samlIdentityProviderConfigurations, (value) => value.toMap()),
+      'samlIdentityProviderConfigurations': pulumi.Input.mapInputValue<List<GetDirectoriesDirectorySamlIdentityProviderConfiguration>, List<Map<String, dynamic>>>(samlIdentityProviderConfigurations, (value) => pulumi.Input.encodeList<GetDirectoriesDirectorySamlIdentityProviderConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scimSynchronizationStatus': scimSynchronizationStatus,
-      'tasks': pulumi.Input.encodeList<GetDirectoriesDirectoryTask, Map<String, dynamic>>(tasks, (value) => value.toMap()),
+      'tasks': pulumi.Input.mapInputValue<List<GetDirectoriesDirectoryTask>, List<Map<String, dynamic>>>(tasks, (value) => pulumi.Input.encodeList<GetDirectoriesDirectoryTask, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetDirectoriesDirectory.fromMap(Map<String, dynamic> map) {
     return GetDirectoriesDirectory(
-      createTime: map['createTime'] as String,
-      directoryId: map['directoryId'] as String,
-      directoryName: map['directoryName'] as String,
-      id: map['id'] as String,
-      mfaAuthenticationStatus: map['mfaAuthenticationStatus'] as String,
-      region: map['region'] as String,
-      samlIdentityProviderConfigurations: pulumi.Input.decodeList<GetDirectoriesDirectorySamlIdentityProviderConfiguration>(map['samlIdentityProviderConfigurations'], (value) => GetDirectoriesDirectorySamlIdentityProviderConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      scimSynchronizationStatus: map['scimSynchronizationStatus'] as String,
-      tasks: pulumi.Input.decodeList<GetDirectoriesDirectoryTask>(map['tasks'], (value) => GetDirectoriesDirectoryTask.fromMap((value as Map).cast<String, dynamic>())),
+      createTime: (map['createTime'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      directoryName: (map['directoryName'] as String).input(),
+      id: (map['id'] as String).input(),
+      mfaAuthenticationStatus: (map['mfaAuthenticationStatus'] as String).input(),
+      region: (map['region'] as String).input(),
+      samlIdentityProviderConfigurations: (pulumi.Input.decodeList<GetDirectoriesDirectorySamlIdentityProviderConfiguration>(map['samlIdentityProviderConfigurations'], (value) => GetDirectoriesDirectorySamlIdentityProviderConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scimSynchronizationStatus: (map['scimSynchronizationStatus'] as String).input(),
+      tasks: (pulumi.Input.decodeList<GetDirectoriesDirectoryTask>(map['tasks'], (value) => GetDirectoriesDirectoryTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

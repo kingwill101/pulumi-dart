@@ -65,33 +65,20 @@ class MemberArgs {
   /// [tenantId] Required for admins. The UUID of the tenant who owns
   /// [weight] A positive integer value that indicates the relative
   MemberArgs({
-    required pulumi.Output<String> address,
-    pulumi.Output<bool>? adminStateUp,
-    pulumi.Output<bool>? backup,
-    pulumi.Output<String>? monitorAddress,
-    pulumi.Output<int>? monitorPort,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> poolId,
-    required pulumi.Output<int> protocolPort,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<int>? weight,
-  }) :
-      address = pulumi.Input.asInput<String>(address),
-      adminStateUp = pulumi.Input.asOptionalInput<bool>(adminStateUp),
-      backup = pulumi.Input.asOptionalInput<bool>(backup),
-      monitorAddress = pulumi.Input.asOptionalInput<String>(monitorAddress),
-      monitorPort = pulumi.Input.asOptionalInput<int>(monitorPort),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      poolId = pulumi.Input.asInput<String>(poolId),
-      protocolPort = pulumi.Input.asInput<int>(protocolPort),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    required this.address,
+    this.adminStateUp,
+    this.backup,
+    this.monitorAddress,
+    this.monitorPort,
+    this.name,
+    required this.poolId,
+    required this.protocolPort,
+    this.region,
+    this.subnetId,
+    this.tags,
+    this.tenantId,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -113,19 +100,19 @@ class MemberArgs {
 
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
-      address: pulumi.Output.create<String>(map['address'] as String),
-      adminStateUp: map['adminStateUp'] == null ? null : pulumi.Output.create<bool>(map['adminStateUp'] as bool),
-      backup: map['backup'] == null ? null : pulumi.Output.create<bool>(map['backup'] as bool),
-      monitorAddress: map['monitorAddress'] == null ? null : pulumi.Output.create<String>(map['monitorAddress'] as String),
-      monitorPort: map['monitorPort'] == null ? null : pulumi.Output.create<int>(map['monitorPort'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      poolId: pulumi.Output.create<String>(map['poolId'] as String),
-      protocolPort: pulumi.Output.create<int>(map['protocolPort'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      address: (map['address'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      backup: map['backup'] == null ? null : (map['backup'] as bool).input(),
+      monitorAddress: map['monitorAddress'] == null ? null : (map['monitorAddress'] as String).input(),
+      monitorPort: map['monitorPort'] == null ? null : (map['monitorPort'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      poolId: (map['poolId'] as String).input(),
+      protocolPort: (map['protocolPort'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

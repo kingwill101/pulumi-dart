@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage {
   /// The full name of the Shared Storage Account. Changing this forces a new resource to be created.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// The full name of Private Endpoint for the Shared Storage Account. Changing this forces a new resource to be created.
-  final String? privateEndpointName;
+  final pulumi.Input<String>? privateEndpointName;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage].
   /// [accountName] The full name of the Shared Storage Account. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage {
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      privateEndpointName: map['privateEndpointName'] == null ? null : map['privateEndpointName'] as String,
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName'] as String).input(),
     );
   }
 }

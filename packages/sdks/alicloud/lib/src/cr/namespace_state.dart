@@ -16,13 +16,10 @@ class NamespaceState {
   /// [defaultVisibility] `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
   /// [name] Name of Container Registry namespace.
   NamespaceState({
-    pulumi.Output<bool>? autoCreate,
-    pulumi.Output<String>? defaultVisibility,
-    pulumi.Output<String>? name,
-  }) :
-      autoCreate = pulumi.Input.asOptionalInput<bool>(autoCreate),
-      defaultVisibility = pulumi.Input.asOptionalInput<String>(defaultVisibility),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.autoCreate,
+    this.defaultVisibility,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      autoCreate: map['autoCreate'] == null ? null : pulumi.Output.create<bool>(map['autoCreate'] as bool),
-      defaultVisibility: map['defaultVisibility'] == null ? null : pulumi.Output.create<String>(map['defaultVisibility'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate'] as bool).input(),
+      defaultVisibility: map['defaultVisibility'] == null ? null : (map['defaultVisibility'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

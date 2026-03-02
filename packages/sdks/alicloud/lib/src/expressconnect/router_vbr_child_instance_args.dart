@@ -30,19 +30,13 @@ class RouterVbrChildInstanceArgs {
   /// [description] Resource attribute fields that represent descriptive information
   /// [ecrId] ID of the representative leased line gateway instance.
   RouterVbrChildInstanceArgs({
-    required pulumi.Output<String> childInstanceId,
-    pulumi.Output<String>? childInstanceOwnerId,
-    required pulumi.Output<String> childInstanceRegionId,
-    required pulumi.Output<String> childInstanceType,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> ecrId,
-  }) :
-      childInstanceId = pulumi.Input.asInput<String>(childInstanceId),
-      childInstanceOwnerId = pulumi.Input.asOptionalInput<String>(childInstanceOwnerId),
-      childInstanceRegionId = pulumi.Input.asInput<String>(childInstanceRegionId),
-      childInstanceType = pulumi.Input.asInput<String>(childInstanceType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ecrId = pulumi.Input.asInput<String>(ecrId);
+    required this.childInstanceId,
+    this.childInstanceOwnerId,
+    required this.childInstanceRegionId,
+    required this.childInstanceType,
+    this.description,
+    required this.ecrId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class RouterVbrChildInstanceArgs {
 
   factory RouterVbrChildInstanceArgs.fromMap(Map<String, dynamic> map) {
     return RouterVbrChildInstanceArgs(
-      childInstanceId: pulumi.Output.create<String>(map['childInstanceId'] as String),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : pulumi.Output.create<String>(map['childInstanceOwnerId'] as String),
-      childInstanceRegionId: pulumi.Output.create<String>(map['childInstanceRegionId'] as String),
-      childInstanceType: pulumi.Output.create<String>(map['childInstanceType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ecrId: pulumi.Output.create<String>(map['ecrId'] as String),
+      childInstanceId: (map['childInstanceId'] as String).input(),
+      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId'] as String).input(),
+      childInstanceRegionId: (map['childInstanceRegionId'] as String).input(),
+      childInstanceType: (map['childInstanceType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ecrId: (map['ecrId'] as String).input(),
     );
   }
 }

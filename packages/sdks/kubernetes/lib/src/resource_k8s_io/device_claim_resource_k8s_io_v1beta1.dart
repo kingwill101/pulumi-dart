@@ -8,11 +8,11 @@ import 'device_request_resource_k8s_io_v1beta1.dart';
 /// DeviceClaim defines how to request devices with a ResourceClaim.
 class DeviceClaimResourceK8sIoV1beta1 {
   /// This field holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim.
-  final List<DeviceClaimConfigurationResourceK8sIoV1beta1>? config;
+  final pulumi.Input<List<DeviceClaimConfigurationResourceK8sIoV1beta1>>? config;
   /// These constraints must be satisfied by the set of devices that get allocated for the claim.
-  final List<DeviceConstraintResourceK8sIoV1beta1>? constraints;
+  final pulumi.Input<List<DeviceConstraintResourceK8sIoV1beta1>>? constraints;
   /// Requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated.
-  final List<DeviceRequestResourceK8sIoV1beta1>? requests;
+  final pulumi.Input<List<DeviceRequestResourceK8sIoV1beta1>>? requests;
 
   /// Creates a new [DeviceClaimResourceK8sIoV1beta1].
   /// [config] This field holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim.
@@ -26,17 +26,17 @@ class DeviceClaimResourceK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': ?config == null ? null : pulumi.Input.encodeList<DeviceClaimConfigurationResourceK8sIoV1beta1, Map<String, dynamic>>(config!, (value) => value.toMap()),
-      'constraints': ?constraints == null ? null : pulumi.Input.encodeList<DeviceConstraintResourceK8sIoV1beta1, Map<String, dynamic>>(constraints!, (value) => value.toMap()),
-      'requests': ?requests == null ? null : pulumi.Input.encodeList<DeviceRequestResourceK8sIoV1beta1, Map<String, dynamic>>(requests!, (value) => value.toMap()),
+      'config': ?pulumi.Input.mapOptionalInputValue<List<DeviceClaimConfigurationResourceK8sIoV1beta1>, List<Map<String, dynamic>>>(config, (value) => pulumi.Input.encodeList<DeviceClaimConfigurationResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'constraints': ?pulumi.Input.mapOptionalInputValue<List<DeviceConstraintResourceK8sIoV1beta1>, List<Map<String, dynamic>>>(constraints, (value) => pulumi.Input.encodeList<DeviceConstraintResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requests': ?pulumi.Input.mapOptionalInputValue<List<DeviceRequestResourceK8sIoV1beta1>, List<Map<String, dynamic>>>(requests, (value) => pulumi.Input.encodeList<DeviceRequestResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeviceClaimResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return DeviceClaimResourceK8sIoV1beta1(
-      config: map['config'] == null ? null : pulumi.Input.decodeList<DeviceClaimConfigurationResourceK8sIoV1beta1>(map['config'], (value) => DeviceClaimConfigurationResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      constraints: map['constraints'] == null ? null : pulumi.Input.decodeList<DeviceConstraintResourceK8sIoV1beta1>(map['constraints'], (value) => DeviceConstraintResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      requests: map['requests'] == null ? null : pulumi.Input.decodeList<DeviceRequestResourceK8sIoV1beta1>(map['requests'], (value) => DeviceRequestResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClaimConfigurationResourceK8sIoV1beta1>(map['config'], (value) => DeviceClaimConfigurationResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<DeviceConstraintResourceK8sIoV1beta1>(map['constraints'], (value) => DeviceConstraintResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<DeviceRequestResourceK8sIoV1beta1>(map['requests'], (value) => DeviceRequestResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

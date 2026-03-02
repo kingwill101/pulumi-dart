@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDependency {
   /// The domain name of the dependency.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The port of this endpoint.
-  final double? port;
+  final pulumi.Input<double>? port;
 
   /// Creates a new [EndpointDependency].
   /// [domainName] The domain name of the dependency.
@@ -24,8 +25,8 @@ class EndpointDependency {
 
   factory EndpointDependency.fromMap(Map<String, dynamic> map) {
     return EndpointDependency(
-      domainName: map['domainName'] as String,
-      port: map['port'] == null ? null : map['port'] as double,
+      domainName: (map['domainName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
     );
   }
 }

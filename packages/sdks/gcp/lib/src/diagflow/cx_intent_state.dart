@@ -73,35 +73,21 @@ class CxIntentState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [trainingPhrases] The collection of training phrases the agent is trained on to identify the intent.
   CxIntentState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<bool>? isDefaultNegativeIntent,
-    pulumi.Output<bool>? isDefaultWelcomeIntent,
-    pulumi.Output<bool>? isFallback,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<CxIntentParameter>>? parameters,
-    pulumi.Output<String>? parent,
-    pulumi.Output<int>? priority,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<CxIntentTrainingPhrase>>? trainingPhrases,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      isDefaultNegativeIntent = pulumi.Input.asOptionalInput<bool>(isDefaultNegativeIntent),
-      isDefaultWelcomeIntent = pulumi.Input.asOptionalInput<bool>(isDefaultWelcomeIntent),
-      isFallback = pulumi.Input.asOptionalInput<bool>(isFallback),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<List<CxIntentParameter>>(parameters),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      trainingPhrases = pulumi.Input.asOptionalInput<List<CxIntentTrainingPhrase>>(trainingPhrases);
+    this.description,
+    this.displayName,
+    this.effectiveLabels,
+    this.isDefaultNegativeIntent,
+    this.isDefaultWelcomeIntent,
+    this.isFallback,
+    this.labels,
+    this.languageCode,
+    this.name,
+    this.parameters,
+    this.parent,
+    this.priority,
+    this.pulumiLabels,
+    this.trainingPhrases,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -124,20 +110,20 @@ class CxIntentState {
 
   factory CxIntentState.fromMap(Map<String, dynamic> map) {
     return CxIntentState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      isDefaultNegativeIntent: map['isDefaultNegativeIntent'] == null ? null : pulumi.Output.create<bool>(map['isDefaultNegativeIntent'] as bool),
-      isDefaultWelcomeIntent: map['isDefaultWelcomeIntent'] == null ? null : pulumi.Output.create<bool>(map['isDefaultWelcomeIntent'] as bool),
-      isFallback: map['isFallback'] == null ? null : pulumi.Output.create<bool>(map['isFallback'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<CxIntentParameter>>(pulumi.Input.decodeList<CxIntentParameter>(map['parameters'], (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      trainingPhrases: map['trainingPhrases'] == null ? null : pulumi.Output.create<List<CxIntentTrainingPhrase>>(pulumi.Input.decodeList<CxIntentTrainingPhrase>(map['trainingPhrases'], (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      isDefaultNegativeIntent: map['isDefaultNegativeIntent'] == null ? null : (map['isDefaultNegativeIntent'] as bool).input(),
+      isDefaultWelcomeIntent: map['isDefaultWelcomeIntent'] == null ? null : (map['isDefaultWelcomeIntent'] as bool).input(),
+      isFallback: map['isFallback'] == null ? null : (map['isFallback'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<CxIntentParameter>(map['parameters'], (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<CxIntentTrainingPhrase>(map['trainingPhrases'], (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

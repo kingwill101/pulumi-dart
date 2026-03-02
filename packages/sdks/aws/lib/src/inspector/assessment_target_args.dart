@@ -19,13 +19,10 @@ class AssessmentTargetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceGroupArn] Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
   AssessmentTargetArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceGroupArn,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceGroupArn = pulumi.Input.asOptionalInput<String>(resourceGroupArn);
+    this.name,
+    this.region,
+    this.resourceGroupArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AssessmentTargetArgs {
 
   factory AssessmentTargetArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentTargetArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceGroupArn: map['resourceGroupArn'] == null ? null : pulumi.Output.create<String>(map['resourceGroupArn'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceGroupArn: map['resourceGroupArn'] == null ? null : (map['resourceGroupArn'] as String).input(),
     );
   }
 }

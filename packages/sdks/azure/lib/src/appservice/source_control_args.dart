@@ -39,23 +39,15 @@ class SourceControlArgs {
   /// [useManualIntegration] Should code be deployed manually. Set to `false` to enable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
   /// [useMercurial] The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
   SourceControlArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? branch,
-    pulumi.Output<SourceControlGithubActionConfiguration>? githubActionConfiguration,
-    pulumi.Output<String>? repoUrl,
-    pulumi.Output<bool>? rollbackEnabled,
-    pulumi.Output<bool>? useLocalGit,
-    pulumi.Output<bool>? useManualIntegration,
-    pulumi.Output<bool>? useMercurial,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      branch = pulumi.Input.asOptionalInput<String>(branch),
-      githubActionConfiguration = pulumi.Input.asOptionalInput<SourceControlGithubActionConfiguration>(githubActionConfiguration),
-      repoUrl = pulumi.Input.asOptionalInput<String>(repoUrl),
-      rollbackEnabled = pulumi.Input.asOptionalInput<bool>(rollbackEnabled),
-      useLocalGit = pulumi.Input.asOptionalInput<bool>(useLocalGit),
-      useManualIntegration = pulumi.Input.asOptionalInput<bool>(useManualIntegration),
-      useMercurial = pulumi.Input.asOptionalInput<bool>(useMercurial);
+    required this.appId,
+    this.branch,
+    this.githubActionConfiguration,
+    this.repoUrl,
+    this.rollbackEnabled,
+    this.useLocalGit,
+    this.useManualIntegration,
+    this.useMercurial,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class SourceControlArgs {
 
   factory SourceControlArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      branch: map['branch'] == null ? null : pulumi.Output.create<String>(map['branch'] as String),
-      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : pulumi.Output.create<SourceControlGithubActionConfiguration>(SourceControlGithubActionConfiguration.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>())),
-      repoUrl: map['repoUrl'] == null ? null : pulumi.Output.create<String>(map['repoUrl'] as String),
-      rollbackEnabled: map['rollbackEnabled'] == null ? null : pulumi.Output.create<bool>(map['rollbackEnabled'] as bool),
-      useLocalGit: map['useLocalGit'] == null ? null : pulumi.Output.create<bool>(map['useLocalGit'] as bool),
-      useManualIntegration: map['useManualIntegration'] == null ? null : pulumi.Output.create<bool>(map['useManualIntegration'] as bool),
-      useMercurial: map['useMercurial'] == null ? null : pulumi.Output.create<bool>(map['useMercurial'] as bool),
+      appId: (map['appId'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : (SourceControlGithubActionConfiguration.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      rollbackEnabled: map['rollbackEnabled'] == null ? null : (map['rollbackEnabled'] as bool).input(),
+      useLocalGit: map['useLocalGit'] == null ? null : (map['useLocalGit'] as bool).input(),
+      useManualIntegration: map['useManualIntegration'] == null ? null : (map['useManualIntegration'] as bool).input(),
+      useMercurial: map['useMercurial'] == null ? null : (map['useMercurial'] as bool).input(),
     );
   }
 }

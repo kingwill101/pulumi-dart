@@ -21,15 +21,11 @@ class LockState {
   /// [notes] Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   /// [scope] Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
   LockState({
-    pulumi.Output<String>? lockLevel,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notes,
-    pulumi.Output<String>? scope,
-  }) :
-      lockLevel = pulumi.Input.asOptionalInput<String>(lockLevel),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.lockLevel,
+    this.name,
+    this.notes,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class LockState {
 
   factory LockState.fromMap(Map<String, dynamic> map) {
     return LockState(
-      lockLevel: map['lockLevel'] == null ? null : pulumi.Output.create<String>(map['lockLevel'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      lockLevel: map['lockLevel'] == null ? null : (map['lockLevel'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

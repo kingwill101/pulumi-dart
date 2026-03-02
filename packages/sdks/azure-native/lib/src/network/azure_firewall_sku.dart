@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU of an Azure Firewall.
 class AzureFirewallSku {
   /// Name of an Azure Firewall SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Tier of an Azure Firewall.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [AzureFirewallSku].
   /// [name] Name of an Azure Firewall SKU.
@@ -25,8 +26,8 @@ class AzureFirewallSku {
 
   factory AzureFirewallSku.fromMap(Map<String, dynamic> map) {
     return AzureFirewallSku(
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

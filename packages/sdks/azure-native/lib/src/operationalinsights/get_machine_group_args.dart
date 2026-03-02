@@ -25,17 +25,12 @@ class GetMachineGroupArgs {
   /// [startTime] UTC date and time specifying the start time of an interval. When not specified the service uses DateTime.UtcNow - 10m
   /// [workspaceName] OMS workspace containing the resources of interest.
   GetMachineGroupArgs({
-    pulumi.Output<String>? endTime,
-    required pulumi.Output<String> machineGroupName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? startTime,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      machineGroupName = pulumi.Input.asInput<String>(machineGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.endTime,
+    required this.machineGroupName,
+    required this.resourceGroupName,
+    this.startTime,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetMachineGroupArgs {
 
   factory GetMachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupArgs(
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      machineGroupName: pulumi.Output.create<String>(map['machineGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      machineGroupName: (map['machineGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

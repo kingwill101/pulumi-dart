@@ -26,17 +26,12 @@ class DetectorArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DetectorArgs({
-    pulumi.Output<DetectorDatasources>? datasources,
-    pulumi.Output<bool>? enable,
-    pulumi.Output<String>? findingPublishingFrequency,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      datasources = pulumi.Input.asOptionalInput<DetectorDatasources>(datasources),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      findingPublishingFrequency = pulumi.Input.asOptionalInput<String>(findingPublishingFrequency),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.datasources,
+    this.enable,
+    this.findingPublishingFrequency,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DetectorArgs {
 
   factory DetectorArgs.fromMap(Map<String, dynamic> map) {
     return DetectorArgs(
-      datasources: map['datasources'] == null ? null : pulumi.Output.create<DetectorDatasources>(DetectorDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : pulumi.Output.create<String>(map['findingPublishingFrequency'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      datasources: map['datasources'] == null ? null : (DetectorDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : (map['findingPublishingFrequency'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

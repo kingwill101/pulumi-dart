@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity Azure Table source.
 class AzureTableSource {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// Azure Table source ignore table not found. Type: boolean (or Expression with resultType boolean).
-  final dynamic azureTableSourceIgnoreTableNotFound;
+  final pulumi.Input<dynamic>? azureTableSourceIgnoreTableNotFound;
   /// Azure Table source query. Type: string (or Expression with resultType string).
-  final dynamic azureTableSourceQuery;
+  final pulumi.Input<dynamic>? azureTableSourceQuery;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic queryTimeout;
+  final pulumi.Input<dynamic>? queryTimeout;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'AzureTableSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AzureTableSource].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -61,15 +62,15 @@ class AzureTableSource {
 
   factory AzureTableSource.fromMap(Map<String, dynamic> map) {
     return AzureTableSource(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      azureTableSourceIgnoreTableNotFound: map['azureTableSourceIgnoreTableNotFound'] == null ? null : map['azureTableSourceIgnoreTableNotFound'],
-      azureTableSourceQuery: map['azureTableSourceQuery'] == null ? null : map['azureTableSourceQuery'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      azureTableSourceIgnoreTableNotFound: map['azureTableSourceIgnoreTableNotFound'] == null ? null : (map['azureTableSourceIgnoreTableNotFound']).input(),
+      azureTableSourceQuery: map['azureTableSourceQuery'] == null ? null : (map['azureTableSourceQuery']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

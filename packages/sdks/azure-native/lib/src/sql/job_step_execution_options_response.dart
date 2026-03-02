@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The execution options of a job step.
 class JobStepExecutionOptionsResponse {
   /// Initial delay between retries for job step execution.
-  final int? initialRetryIntervalSeconds;
+  final pulumi.Input<int>? initialRetryIntervalSeconds;
   /// The maximum amount of time to wait between retries for job step execution.
-  final int? maximumRetryIntervalSeconds;
+  final pulumi.Input<int>? maximumRetryIntervalSeconds;
   /// Maximum number of times the job step will be reattempted if the first attempt fails.
-  final int? retryAttempts;
+  final pulumi.Input<int>? retryAttempts;
   /// The backoff multiplier for the time between retries.
-  final double? retryIntervalBackoffMultiplier;
+  final pulumi.Input<double>? retryIntervalBackoffMultiplier;
   /// Execution timeout for the job step.
-  final int? timeoutSeconds;
+  final pulumi.Input<int>? timeoutSeconds;
 
   /// Creates a new [JobStepExecutionOptionsResponse].
   /// [initialRetryIntervalSeconds] Initial delay between retries for job step execution.
@@ -40,11 +41,11 @@ class JobStepExecutionOptionsResponse {
 
   factory JobStepExecutionOptionsResponse.fromMap(Map<String, dynamic> map) {
     return JobStepExecutionOptionsResponse(
-      initialRetryIntervalSeconds: map['initialRetryIntervalSeconds'] == null ? null : map['initialRetryIntervalSeconds'] as int,
-      maximumRetryIntervalSeconds: map['maximumRetryIntervalSeconds'] == null ? null : map['maximumRetryIntervalSeconds'] as int,
-      retryAttempts: map['retryAttempts'] == null ? null : map['retryAttempts'] as int,
-      retryIntervalBackoffMultiplier: map['retryIntervalBackoffMultiplier'] == null ? null : map['retryIntervalBackoffMultiplier'] as double,
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
+      initialRetryIntervalSeconds: map['initialRetryIntervalSeconds'] == null ? null : (map['initialRetryIntervalSeconds'] as int).input(),
+      maximumRetryIntervalSeconds: map['maximumRetryIntervalSeconds'] == null ? null : (map['maximumRetryIntervalSeconds'] as int).input(),
+      retryAttempts: map['retryAttempts'] == null ? null : (map['retryAttempts'] as int).input(),
+      retryIntervalBackoffMultiplier: map['retryIntervalBackoffMultiplier'] == null ? null : (map['retryIntervalBackoffMultiplier'] as double).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

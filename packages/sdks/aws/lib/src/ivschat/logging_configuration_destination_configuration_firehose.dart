@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoggingConfigurationDestinationConfigurationFirehose {
   /// Name of the Amazon Kinesis Firehose delivery stream where chat activity will be logged.
-  final String deliveryStreamName;
+  final pulumi.Input<String> deliveryStreamName;
 
   /// Creates a new [LoggingConfigurationDestinationConfigurationFirehose].
   /// [deliveryStreamName] Name of the Amazon Kinesis Firehose delivery stream where chat activity will be logged.
@@ -19,7 +20,7 @@ class LoggingConfigurationDestinationConfigurationFirehose {
 
   factory LoggingConfigurationDestinationConfigurationFirehose.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationDestinationConfigurationFirehose(
-      deliveryStreamName: map['deliveryStreamName'] as String,
+      deliveryStreamName: (map['deliveryStreamName'] as String).input(),
     );
   }
 }

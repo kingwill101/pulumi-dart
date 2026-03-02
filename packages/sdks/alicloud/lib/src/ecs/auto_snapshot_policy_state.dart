@@ -58,35 +58,21 @@ class AutoSnapshotPolicyState {
   /// [targetCopyRegions] The destination region to which to copy the snapshot. You can specify only a single destination region.
   /// [timePoints] The points in time of the day at which to create automatic snapshots.
   AutoSnapshotPolicyState({
-    pulumi.Output<String>? autoSnapshotPolicyName,
-    pulumi.Output<int>? copiedSnapshotsRetentionDays,
-    pulumi.Output<AutoSnapshotPolicyCopyEncryptionConfiguration>? copyEncryptionConfiguration,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? enableCrossRegionCopy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<List<String>>? repeatWeekdays,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? targetCopyRegions,
-    pulumi.Output<List<String>>? timePoints,
-  }) :
-      autoSnapshotPolicyName = pulumi.Input.asOptionalInput<String>(autoSnapshotPolicyName),
-      copiedSnapshotsRetentionDays = pulumi.Input.asOptionalInput<int>(copiedSnapshotsRetentionDays),
-      copyEncryptionConfiguration = pulumi.Input.asOptionalInput<AutoSnapshotPolicyCopyEncryptionConfiguration>(copyEncryptionConfiguration),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      enableCrossRegionCopy = pulumi.Input.asOptionalInput<bool>(enableCrossRegionCopy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      repeatWeekdays = pulumi.Input.asOptionalInput<List<String>>(repeatWeekdays),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetCopyRegions = pulumi.Input.asOptionalInput<List<String>>(targetCopyRegions),
-      timePoints = pulumi.Input.asOptionalInput<List<String>>(timePoints);
+    this.autoSnapshotPolicyName,
+    this.copiedSnapshotsRetentionDays,
+    this.copyEncryptionConfiguration,
+    this.createTime,
+    this.enableCrossRegionCopy,
+    this.name,
+    this.regionId,
+    this.repeatWeekdays,
+    this.resourceGroupId,
+    this.retentionDays,
+    this.status,
+    this.tags,
+    this.targetCopyRegions,
+    this.timePoints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class AutoSnapshotPolicyState {
 
   factory AutoSnapshotPolicyState.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotPolicyState(
-      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : pulumi.Output.create<String>(map['autoSnapshotPolicyName'] as String),
-      copiedSnapshotsRetentionDays: map['copiedSnapshotsRetentionDays'] == null ? null : pulumi.Output.create<int>(map['copiedSnapshotsRetentionDays'] as int),
-      copyEncryptionConfiguration: map['copyEncryptionConfiguration'] == null ? null : pulumi.Output.create<AutoSnapshotPolicyCopyEncryptionConfiguration>(AutoSnapshotPolicyCopyEncryptionConfiguration.fromMap((map['copyEncryptionConfiguration'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      enableCrossRegionCopy: map['enableCrossRegionCopy'] == null ? null : pulumi.Output.create<bool>(map['enableCrossRegionCopy'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      repeatWeekdays: map['repeatWeekdays'] == null ? null : pulumi.Output.create<List<String>>((map['repeatWeekdays'] as List).cast<String>()),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetCopyRegions: map['targetCopyRegions'] == null ? null : pulumi.Output.create<List<String>>((map['targetCopyRegions'] as List).cast<String>()),
-      timePoints: map['timePoints'] == null ? null : pulumi.Output.create<List<String>>((map['timePoints'] as List).cast<String>()),
+      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName'] as String).input(),
+      copiedSnapshotsRetentionDays: map['copiedSnapshotsRetentionDays'] == null ? null : (map['copiedSnapshotsRetentionDays'] as int).input(),
+      copyEncryptionConfiguration: map['copyEncryptionConfiguration'] == null ? null : (AutoSnapshotPolicyCopyEncryptionConfiguration.fromMap((map['copyEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      enableCrossRegionCopy: map['enableCrossRegionCopy'] == null ? null : (map['enableCrossRegionCopy'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays'] as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetCopyRegions: map['targetCopyRegions'] == null ? null : ((map['targetCopyRegions'] as List).cast<String>()).input(),
+      timePoints: map['timePoints'] == null ? null : ((map['timePoints'] as List).cast<String>()).input(),
     );
   }
 }

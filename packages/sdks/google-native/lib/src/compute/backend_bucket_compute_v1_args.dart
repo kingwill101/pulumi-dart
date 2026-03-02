@@ -41,27 +41,17 @@ class BackendBucketComputeV1Args {
   /// [project] Optional.
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   BackendBucketComputeV1Args({
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<BackendBucketCdnPolicyComputeV1>? cdnPolicy,
-    pulumi.Output<BackendBucketCompressionModeComputeV1>? compressionMode,
-    pulumi.Output<List<String>>? customResponseHeaders,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableCdn,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-  }) :
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      cdnPolicy = pulumi.Input.asOptionalInput<BackendBucketCdnPolicyComputeV1>(cdnPolicy),
-      compressionMode = pulumi.Input.asOptionalInput<BackendBucketCompressionModeComputeV1>(compressionMode),
-      customResponseHeaders = pulumi.Input.asOptionalInput<List<String>>(customResponseHeaders),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableCdn = pulumi.Input.asOptionalInput<bool>(enableCdn),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.bucketName,
+    this.cdnPolicy,
+    this.compressionMode,
+    this.customResponseHeaders,
+    this.description,
+    this.enableCdn,
+    this.kind,
+    this.name,
+    this.project,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class BackendBucketComputeV1Args {
 
   factory BackendBucketComputeV1Args.fromMap(Map<String, dynamic> map) {
     return BackendBucketComputeV1Args(
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      cdnPolicy: map['cdnPolicy'] == null ? null : pulumi.Output.create<BackendBucketCdnPolicyComputeV1>(BackendBucketCdnPolicyComputeV1.fromMap((map['cdnPolicy'] as Map).cast<String, dynamic>())),
-      compressionMode: map['compressionMode'] == null ? null : pulumi.Output.create<BackendBucketCompressionModeComputeV1>(BackendBucketCompressionModeComputeV1.fromValue(map['compressionMode'] as String)),
-      customResponseHeaders: map['customResponseHeaders'] == null ? null : pulumi.Output.create<List<String>>((map['customResponseHeaders'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableCdn: map['enableCdn'] == null ? null : pulumi.Output.create<bool>(map['enableCdn'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      cdnPolicy: map['cdnPolicy'] == null ? null : (BackendBucketCdnPolicyComputeV1.fromMap((map['cdnPolicy'] as Map).cast<String, dynamic>())).input(),
+      compressionMode: map['compressionMode'] == null ? null : (BackendBucketCompressionModeComputeV1.fromValue(map['compressionMode'] as String)).input(),
+      customResponseHeaders: map['customResponseHeaders'] == null ? null : ((map['customResponseHeaders'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableCdn: map['enableCdn'] == null ? null : (map['enableCdn'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

@@ -19,153 +19,153 @@ import 'virtual_application_response.dart';
 /// Configuration of an App Service app.
 class SiteConfigResponse {
   /// Flag to use Managed Identity Creds for ACR pull
-  final bool? acrUseManagedIdentityCreds;
+  final pulumi.Input<bool>? acrUseManagedIdentityCreds;
   /// If using user managed identity, the user managed identity ClientId
-  final String? acrUserManagedIdentityID;
+  final pulumi.Input<String>? acrUserManagedIdentityID;
   /// <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
-  final bool? alwaysOn;
+  final pulumi.Input<bool>? alwaysOn;
   /// Information about the formal API definition for the app.
-  final ApiDefinitionInfoResponse? apiDefinition;
+  final pulumi.Input<ApiDefinitionInfoResponse>? apiDefinition;
   /// Azure API management settings linked to the app.
-  final ApiManagementConfigResponse? apiManagementConfig;
+  final pulumi.Input<ApiManagementConfigResponse>? apiManagementConfig;
   /// App command line to launch.
-  final String? appCommandLine;
+  final pulumi.Input<String>? appCommandLine;
   /// Application settings.
-  final List<NameValuePairResponse>? appSettings;
+  final pulumi.Input<List<NameValuePairResponse>>? appSettings;
   /// <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
-  final bool? autoHealEnabled;
+  final pulumi.Input<bool>? autoHealEnabled;
   /// Auto Heal rules.
-  final AutoHealRulesResponse? autoHealRules;
+  final pulumi.Input<AutoHealRulesResponse>? autoHealRules;
   /// Auto-swap slot name.
-  final String? autoSwapSlotName;
+  final pulumi.Input<String>? autoSwapSlotName;
   /// List of Azure Storage Accounts.
-  final Map<String, AzureStorageInfoValueResponse>? azureStorageAccounts;
+  final pulumi.Input<Map<String, AzureStorageInfoValueResponse>>? azureStorageAccounts;
   /// Connection strings.
-  final List<ConnStringInfoResponse>? connectionStrings;
+  final pulumi.Input<List<ConnStringInfoResponse>>? connectionStrings;
   /// Cross-Origin Resource Sharing (CORS) settings.
-  final CorsSettingsResponse? cors;
+  final pulumi.Input<CorsSettingsResponse>? cors;
   /// Default documents.
-  final List<String>? defaultDocuments;
+  final pulumi.Input<List<String>>? defaultDocuments;
   /// <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
-  final bool? detailedErrorLoggingEnabled;
+  final pulumi.Input<bool>? detailedErrorLoggingEnabled;
   /// Document root.
-  final String? documentRoot;
+  final pulumi.Input<String>? documentRoot;
   /// Maximum number of workers that a site can scale out to.
   /// This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  final int? elasticWebAppScaleLimit;
+  final pulumi.Input<int>? elasticWebAppScaleLimit;
   /// This is work around for polymorphic types.
-  final ExperimentsResponse? experiments;
+  final pulumi.Input<ExperimentsResponse>? experiments;
   /// State of FTP / FTPS service
-  final String? ftpsState;
+  final pulumi.Input<String>? ftpsState;
   /// Maximum number of workers that a site can scale out to.
   /// This setting only applies to the Consumption and Elastic Premium Plans
-  final int? functionAppScaleLimit;
+  final pulumi.Input<int>? functionAppScaleLimit;
   /// Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,
   /// the ScaleController will not monitor event sources directly, but will instead call to the
   /// runtime to get scale status.
-  final bool? functionsRuntimeScaleMonitoringEnabled;
+  final pulumi.Input<bool>? functionsRuntimeScaleMonitoringEnabled;
   /// Handler mappings.
-  final List<HandlerMappingResponse>? handlerMappings;
+  final pulumi.Input<List<HandlerMappingResponse>>? handlerMappings;
   /// Health check path
-  final String? healthCheckPath;
+  final pulumi.Input<String>? healthCheckPath;
   /// Http20Enabled: configures a web site to allow clients to connect over http2.0
-  final bool? http20Enabled;
+  final pulumi.Input<bool>? http20Enabled;
   /// <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  final bool? httpLoggingEnabled;
+  final pulumi.Input<bool>? httpLoggingEnabled;
   /// IP security restrictions for main.
-  final List<IpSecurityRestrictionResponse>? ipSecurityRestrictions;
+  final pulumi.Input<List<IpSecurityRestrictionResponse>>? ipSecurityRestrictions;
   /// Default action for main access restriction if no rules are matched.
-  final String? ipSecurityRestrictionsDefaultAction;
+  final pulumi.Input<String>? ipSecurityRestrictionsDefaultAction;
   /// Java container.
-  final String? javaContainer;
+  final pulumi.Input<String>? javaContainer;
   /// Java container version.
-  final String? javaContainerVersion;
+  final pulumi.Input<String>? javaContainerVersion;
   /// Java version.
-  final String? javaVersion;
+  final pulumi.Input<String>? javaVersion;
   /// Identity to use for Key Vault Reference authentication.
-  final String? keyVaultReferenceIdentity;
+  final pulumi.Input<String>? keyVaultReferenceIdentity;
   /// Site limits.
-  final SiteLimitsResponse? limits;
+  final pulumi.Input<SiteLimitsResponse>? limits;
   /// Linux App Framework and version
-  final String? linuxFxVersion;
+  final pulumi.Input<String>? linuxFxVersion;
   /// Site load balancing.
-  final String? loadBalancing;
+  final pulumi.Input<String>? loadBalancing;
   /// <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
-  final bool? localMySqlEnabled;
+  final pulumi.Input<bool>? localMySqlEnabled;
   /// HTTP logs directory size limit.
-  final int? logsDirectorySizeLimit;
+  final pulumi.Input<int>? logsDirectorySizeLimit;
   /// Site MachineKey.
-  final SiteMachineKeyResponse machineKey;
+  final pulumi.Input<SiteMachineKeyResponse> machineKey;
   /// Managed pipeline mode.
-  final String? managedPipelineMode;
+  final pulumi.Input<String>? managedPipelineMode;
   /// Managed Service Identity Id
-  final int? managedServiceIdentityId;
+  final pulumi.Input<int>? managedServiceIdentityId;
   /// The minimum strength TLS cipher suite allowed for an application
-  final String? minTlsCipherSuite;
+  final pulumi.Input<String>? minTlsCipherSuite;
   /// MinTlsVersion: configures the minimum version of TLS required for SSL requests
-  final String? minTlsVersion;
+  final pulumi.Input<String>? minTlsVersion;
   /// Number of minimum instance count for a site
   /// This setting only applies to the Elastic Plans
-  final int? minimumElasticInstanceCount;
+  final pulumi.Input<int>? minimumElasticInstanceCount;
   /// .NET Framework version.
-  final String? netFrameworkVersion;
+  final pulumi.Input<String>? netFrameworkVersion;
   /// Version of Node.js.
-  final String? nodeVersion;
+  final pulumi.Input<String>? nodeVersion;
   /// Number of workers.
-  final int? numberOfWorkers;
+  final pulumi.Input<int>? numberOfWorkers;
   /// Version of PHP.
-  final String? phpVersion;
+  final pulumi.Input<String>? phpVersion;
   /// Version of PowerShell.
-  final String? powerShellVersion;
+  final pulumi.Input<String>? powerShellVersion;
   /// Number of preWarmed instances.
   /// This setting only applies to the Consumption and Elastic Plans
-  final int? preWarmedInstanceCount;
+  final pulumi.Input<int>? preWarmedInstanceCount;
   /// Property to allow or block all public traffic.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// Publishing user name.
-  final String? publishingUsername;
+  final pulumi.Input<String>? publishingUsername;
   /// Push endpoint settings.
-  final PushSettingsResponse? push;
+  final pulumi.Input<PushSettingsResponse>? push;
   /// Version of Python.
-  final String? pythonVersion;
+  final pulumi.Input<String>? pythonVersion;
   /// <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
-  final bool? remoteDebuggingEnabled;
+  final pulumi.Input<bool>? remoteDebuggingEnabled;
   /// Remote debugging version.
-  final String? remoteDebuggingVersion;
+  final pulumi.Input<String>? remoteDebuggingVersion;
   /// <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
-  final bool? requestTracingEnabled;
+  final pulumi.Input<bool>? requestTracingEnabled;
   /// Request tracing expiration time.
-  final String? requestTracingExpirationTime;
+  final pulumi.Input<String>? requestTracingExpirationTime;
   /// IP security restrictions for scm.
-  final List<IpSecurityRestrictionResponse>? scmIpSecurityRestrictions;
+  final pulumi.Input<List<IpSecurityRestrictionResponse>>? scmIpSecurityRestrictions;
   /// Default action for scm access restriction if no rules are matched.
-  final String? scmIpSecurityRestrictionsDefaultAction;
+  final pulumi.Input<String>? scmIpSecurityRestrictionsDefaultAction;
   /// IP security restrictions for scm to use main.
-  final bool? scmIpSecurityRestrictionsUseMain;
+  final pulumi.Input<bool>? scmIpSecurityRestrictionsUseMain;
   /// ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  final String? scmMinTlsVersion;
+  final pulumi.Input<String>? scmMinTlsVersion;
   /// SCM type.
-  final String? scmType;
+  final pulumi.Input<String>? scmType;
   /// Tracing options.
-  final String? tracingOptions;
+  final pulumi.Input<String>? tracingOptions;
   /// <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  final bool? use32BitWorkerProcess;
+  final pulumi.Input<bool>? use32BitWorkerProcess;
   /// Virtual applications.
-  final List<VirtualApplicationResponse>? virtualApplications;
+  final pulumi.Input<List<VirtualApplicationResponse>>? virtualApplications;
   /// Virtual Network name.
-  final String? vnetName;
+  final pulumi.Input<String>? vnetName;
   /// The number of private ports assigned to this app. These will be assigned dynamically on runtime.
-  final int? vnetPrivatePortsCount;
+  final pulumi.Input<int>? vnetPrivatePortsCount;
   /// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-  final bool? vnetRouteAllEnabled;
+  final pulumi.Input<bool>? vnetRouteAllEnabled;
   /// <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
-  final bool? webSocketsEnabled;
+  final pulumi.Input<bool>? webSocketsEnabled;
   /// Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
-  final String? websiteTimeZone;
+  final pulumi.Input<String>? websiteTimeZone;
   /// Xenon App Framework and version
-  final String? windowsFxVersion;
+  final pulumi.Input<String>? windowsFxVersion;
   /// Explicit Managed Service Identity Id
-  final int? xManagedServiceIdentityId;
+  final pulumi.Input<int>? xManagedServiceIdentityId;
 
   /// Creates a new [SiteConfigResponse].
   /// [acrUseManagedIdentityCreds] Flag to use Managed Identity Creds for ACR pull
@@ -318,40 +318,40 @@ class SiteConfigResponse {
       'acrUseManagedIdentityCreds': ?acrUseManagedIdentityCreds,
       'acrUserManagedIdentityID': ?acrUserManagedIdentityID,
       'alwaysOn': ?alwaysOn,
-      'apiDefinition': ?apiDefinition == null ? null : apiDefinition!.toMap(),
-      'apiManagementConfig': ?apiManagementConfig == null ? null : apiManagementConfig!.toMap(),
+      'apiDefinition': ?pulumi.Input.mapOptionalInputValue<ApiDefinitionInfoResponse, Map<String, dynamic>>(apiDefinition, (value) => value.toMap()),
+      'apiManagementConfig': ?pulumi.Input.mapOptionalInputValue<ApiManagementConfigResponse, Map<String, dynamic>>(apiManagementConfig, (value) => value.toMap()),
       'appCommandLine': ?appCommandLine,
-      'appSettings': ?appSettings == null ? null : pulumi.Input.encodeList<NameValuePairResponse, Map<String, dynamic>>(appSettings!, (value) => value.toMap()),
+      'appSettings': ?pulumi.Input.mapOptionalInputValue<List<NameValuePairResponse>, List<Map<String, dynamic>>>(appSettings, (value) => pulumi.Input.encodeList<NameValuePairResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'autoHealEnabled': ?autoHealEnabled,
-      'autoHealRules': ?autoHealRules == null ? null : autoHealRules!.toMap(),
+      'autoHealRules': ?pulumi.Input.mapOptionalInputValue<AutoHealRulesResponse, Map<String, dynamic>>(autoHealRules, (value) => value.toMap()),
       'autoSwapSlotName': ?autoSwapSlotName,
-      'azureStorageAccounts': ?azureStorageAccounts == null ? null : pulumi.Input.encodeMapValues<AzureStorageInfoValueResponse, Map<String, dynamic>>(azureStorageAccounts!, (value) => value.toMap()),
-      'connectionStrings': ?connectionStrings == null ? null : pulumi.Input.encodeList<ConnStringInfoResponse, Map<String, dynamic>>(connectionStrings!, (value) => value.toMap()),
-      'cors': ?cors == null ? null : cors!.toMap(),
+      'azureStorageAccounts': ?pulumi.Input.mapOptionalInputValue<Map<String, AzureStorageInfoValueResponse>, Map<String, Map<String, dynamic>>>(azureStorageAccounts, (value) => pulumi.Input.encodeMapValues<AzureStorageInfoValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectionStrings': ?pulumi.Input.mapOptionalInputValue<List<ConnStringInfoResponse>, List<Map<String, dynamic>>>(connectionStrings, (value) => pulumi.Input.encodeList<ConnStringInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cors': ?pulumi.Input.mapOptionalInputValue<CorsSettingsResponse, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'defaultDocuments': ?defaultDocuments,
       'detailedErrorLoggingEnabled': ?detailedErrorLoggingEnabled,
       'documentRoot': ?documentRoot,
       'elasticWebAppScaleLimit': ?elasticWebAppScaleLimit,
-      'experiments': ?experiments == null ? null : experiments!.toMap(),
+      'experiments': ?pulumi.Input.mapOptionalInputValue<ExperimentsResponse, Map<String, dynamic>>(experiments, (value) => value.toMap()),
       'ftpsState': ?ftpsState,
       'functionAppScaleLimit': ?functionAppScaleLimit,
       'functionsRuntimeScaleMonitoringEnabled': ?functionsRuntimeScaleMonitoringEnabled,
-      'handlerMappings': ?handlerMappings == null ? null : pulumi.Input.encodeList<HandlerMappingResponse, Map<String, dynamic>>(handlerMappings!, (value) => value.toMap()),
+      'handlerMappings': ?pulumi.Input.mapOptionalInputValue<List<HandlerMappingResponse>, List<Map<String, dynamic>>>(handlerMappings, (value) => pulumi.Input.encodeList<HandlerMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'healthCheckPath': ?healthCheckPath,
       'http20Enabled': ?http20Enabled,
       'httpLoggingEnabled': ?httpLoggingEnabled,
-      'ipSecurityRestrictions': ?ipSecurityRestrictions == null ? null : pulumi.Input.encodeList<IpSecurityRestrictionResponse, Map<String, dynamic>>(ipSecurityRestrictions!, (value) => value.toMap()),
+      'ipSecurityRestrictions': ?pulumi.Input.mapOptionalInputValue<List<IpSecurityRestrictionResponse>, List<Map<String, dynamic>>>(ipSecurityRestrictions, (value) => pulumi.Input.encodeList<IpSecurityRestrictionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipSecurityRestrictionsDefaultAction': ?ipSecurityRestrictionsDefaultAction,
       'javaContainer': ?javaContainer,
       'javaContainerVersion': ?javaContainerVersion,
       'javaVersion': ?javaVersion,
       'keyVaultReferenceIdentity': ?keyVaultReferenceIdentity,
-      'limits': ?limits == null ? null : limits!.toMap(),
+      'limits': ?pulumi.Input.mapOptionalInputValue<SiteLimitsResponse, Map<String, dynamic>>(limits, (value) => value.toMap()),
       'linuxFxVersion': ?linuxFxVersion,
       'loadBalancing': ?loadBalancing,
       'localMySqlEnabled': ?localMySqlEnabled,
       'logsDirectorySizeLimit': ?logsDirectorySizeLimit,
-      'machineKey': machineKey.toMap(),
+      'machineKey': pulumi.Input.mapInputValue<SiteMachineKeyResponse, Map<String, dynamic>>(machineKey, (value) => value.toMap()),
       'managedPipelineMode': ?managedPipelineMode,
       'managedServiceIdentityId': ?managedServiceIdentityId,
       'minTlsCipherSuite': ?minTlsCipherSuite,
@@ -365,20 +365,20 @@ class SiteConfigResponse {
       'preWarmedInstanceCount': ?preWarmedInstanceCount,
       'publicNetworkAccess': ?publicNetworkAccess,
       'publishingUsername': ?publishingUsername,
-      'push': ?push == null ? null : push!.toMap(),
+      'push': ?pulumi.Input.mapOptionalInputValue<PushSettingsResponse, Map<String, dynamic>>(push, (value) => value.toMap()),
       'pythonVersion': ?pythonVersion,
       'remoteDebuggingEnabled': ?remoteDebuggingEnabled,
       'remoteDebuggingVersion': ?remoteDebuggingVersion,
       'requestTracingEnabled': ?requestTracingEnabled,
       'requestTracingExpirationTime': ?requestTracingExpirationTime,
-      'scmIpSecurityRestrictions': ?scmIpSecurityRestrictions == null ? null : pulumi.Input.encodeList<IpSecurityRestrictionResponse, Map<String, dynamic>>(scmIpSecurityRestrictions!, (value) => value.toMap()),
+      'scmIpSecurityRestrictions': ?pulumi.Input.mapOptionalInputValue<List<IpSecurityRestrictionResponse>, List<Map<String, dynamic>>>(scmIpSecurityRestrictions, (value) => pulumi.Input.encodeList<IpSecurityRestrictionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scmIpSecurityRestrictionsDefaultAction': ?scmIpSecurityRestrictionsDefaultAction,
       'scmIpSecurityRestrictionsUseMain': ?scmIpSecurityRestrictionsUseMain,
       'scmMinTlsVersion': ?scmMinTlsVersion,
       'scmType': ?scmType,
       'tracingOptions': ?tracingOptions,
       'use32BitWorkerProcess': ?use32BitWorkerProcess,
-      'virtualApplications': ?virtualApplications == null ? null : pulumi.Input.encodeList<VirtualApplicationResponse, Map<String, dynamic>>(virtualApplications!, (value) => value.toMap()),
+      'virtualApplications': ?pulumi.Input.mapOptionalInputValue<List<VirtualApplicationResponse>, List<Map<String, dynamic>>>(virtualApplications, (value) => pulumi.Input.encodeList<VirtualApplicationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vnetName': ?vnetName,
       'vnetPrivatePortsCount': ?vnetPrivatePortsCount,
       'vnetRouteAllEnabled': ?vnetRouteAllEnabled,
@@ -391,77 +391,77 @@ class SiteConfigResponse {
 
   factory SiteConfigResponse.fromMap(Map<String, dynamic> map) {
     return SiteConfigResponse(
-      acrUseManagedIdentityCreds: map['acrUseManagedIdentityCreds'] == null ? null : map['acrUseManagedIdentityCreds'] as bool,
-      acrUserManagedIdentityID: map['acrUserManagedIdentityID'] == null ? null : map['acrUserManagedIdentityID'] as String,
-      alwaysOn: map['alwaysOn'] == null ? null : map['alwaysOn'] as bool,
-      apiDefinition: map['apiDefinition'] == null ? null : ApiDefinitionInfoResponse.fromMap((map['apiDefinition'] as Map).cast<String, dynamic>()),
-      apiManagementConfig: map['apiManagementConfig'] == null ? null : ApiManagementConfigResponse.fromMap((map['apiManagementConfig'] as Map).cast<String, dynamic>()),
-      appCommandLine: map['appCommandLine'] == null ? null : map['appCommandLine'] as String,
-      appSettings: map['appSettings'] == null ? null : pulumi.Input.decodeList<NameValuePairResponse>(map['appSettings'], (value) => NameValuePairResponse.fromMap((value as Map).cast<String, dynamic>())),
-      autoHealEnabled: map['autoHealEnabled'] == null ? null : map['autoHealEnabled'] as bool,
-      autoHealRules: map['autoHealRules'] == null ? null : AutoHealRulesResponse.fromMap((map['autoHealRules'] as Map).cast<String, dynamic>()),
-      autoSwapSlotName: map['autoSwapSlotName'] == null ? null : map['autoSwapSlotName'] as String,
-      azureStorageAccounts: map['azureStorageAccounts'] == null ? null : pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(map['azureStorageAccounts'], (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      connectionStrings: map['connectionStrings'] == null ? null : pulumi.Input.decodeList<ConnStringInfoResponse>(map['connectionStrings'], (value) => ConnStringInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      cors: map['cors'] == null ? null : CorsSettingsResponse.fromMap((map['cors'] as Map).cast<String, dynamic>()),
-      defaultDocuments: map['defaultDocuments'] == null ? null : (map['defaultDocuments'] as List).cast<String>(),
-      detailedErrorLoggingEnabled: map['detailedErrorLoggingEnabled'] == null ? null : map['detailedErrorLoggingEnabled'] as bool,
-      documentRoot: map['documentRoot'] == null ? null : map['documentRoot'] as String,
-      elasticWebAppScaleLimit: map['elasticWebAppScaleLimit'] == null ? null : map['elasticWebAppScaleLimit'] as int,
-      experiments: map['experiments'] == null ? null : ExperimentsResponse.fromMap((map['experiments'] as Map).cast<String, dynamic>()),
-      ftpsState: map['ftpsState'] == null ? null : map['ftpsState'] as String,
-      functionAppScaleLimit: map['functionAppScaleLimit'] == null ? null : map['functionAppScaleLimit'] as int,
-      functionsRuntimeScaleMonitoringEnabled: map['functionsRuntimeScaleMonitoringEnabled'] == null ? null : map['functionsRuntimeScaleMonitoringEnabled'] as bool,
-      handlerMappings: map['handlerMappings'] == null ? null : pulumi.Input.decodeList<HandlerMappingResponse>(map['handlerMappings'], (value) => HandlerMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      healthCheckPath: map['healthCheckPath'] == null ? null : map['healthCheckPath'] as String,
-      http20Enabled: map['http20Enabled'] == null ? null : map['http20Enabled'] as bool,
-      httpLoggingEnabled: map['httpLoggingEnabled'] == null ? null : map['httpLoggingEnabled'] as bool,
-      ipSecurityRestrictions: map['ipSecurityRestrictions'] == null ? null : pulumi.Input.decodeList<IpSecurityRestrictionResponse>(map['ipSecurityRestrictions'], (value) => IpSecurityRestrictionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      ipSecurityRestrictionsDefaultAction: map['ipSecurityRestrictionsDefaultAction'] == null ? null : map['ipSecurityRestrictionsDefaultAction'] as String,
-      javaContainer: map['javaContainer'] == null ? null : map['javaContainer'] as String,
-      javaContainerVersion: map['javaContainerVersion'] == null ? null : map['javaContainerVersion'] as String,
-      javaVersion: map['javaVersion'] == null ? null : map['javaVersion'] as String,
-      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : map['keyVaultReferenceIdentity'] as String,
-      limits: map['limits'] == null ? null : SiteLimitsResponse.fromMap((map['limits'] as Map).cast<String, dynamic>()),
-      linuxFxVersion: map['linuxFxVersion'] == null ? null : map['linuxFxVersion'] as String,
-      loadBalancing: map['loadBalancing'] == null ? null : map['loadBalancing'] as String,
-      localMySqlEnabled: map['localMySqlEnabled'] == null ? null : map['localMySqlEnabled'] as bool,
-      logsDirectorySizeLimit: map['logsDirectorySizeLimit'] == null ? null : map['logsDirectorySizeLimit'] as int,
-      machineKey: SiteMachineKeyResponse.fromMap((map['machineKey'] as Map).cast<String, dynamic>()),
-      managedPipelineMode: map['managedPipelineMode'] == null ? null : map['managedPipelineMode'] as String,
-      managedServiceIdentityId: map['managedServiceIdentityId'] == null ? null : map['managedServiceIdentityId'] as int,
-      minTlsCipherSuite: map['minTlsCipherSuite'] == null ? null : map['minTlsCipherSuite'] as String,
-      minTlsVersion: map['minTlsVersion'] == null ? null : map['minTlsVersion'] as String,
-      minimumElasticInstanceCount: map['minimumElasticInstanceCount'] == null ? null : map['minimumElasticInstanceCount'] as int,
-      netFrameworkVersion: map['netFrameworkVersion'] == null ? null : map['netFrameworkVersion'] as String,
-      nodeVersion: map['nodeVersion'] == null ? null : map['nodeVersion'] as String,
-      numberOfWorkers: map['numberOfWorkers'] == null ? null : map['numberOfWorkers'] as int,
-      phpVersion: map['phpVersion'] == null ? null : map['phpVersion'] as String,
-      powerShellVersion: map['powerShellVersion'] == null ? null : map['powerShellVersion'] as String,
-      preWarmedInstanceCount: map['preWarmedInstanceCount'] == null ? null : map['preWarmedInstanceCount'] as int,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      publishingUsername: map['publishingUsername'] == null ? null : map['publishingUsername'] as String,
-      push: map['push'] == null ? null : PushSettingsResponse.fromMap((map['push'] as Map).cast<String, dynamic>()),
-      pythonVersion: map['pythonVersion'] == null ? null : map['pythonVersion'] as String,
-      remoteDebuggingEnabled: map['remoteDebuggingEnabled'] == null ? null : map['remoteDebuggingEnabled'] as bool,
-      remoteDebuggingVersion: map['remoteDebuggingVersion'] == null ? null : map['remoteDebuggingVersion'] as String,
-      requestTracingEnabled: map['requestTracingEnabled'] == null ? null : map['requestTracingEnabled'] as bool,
-      requestTracingExpirationTime: map['requestTracingExpirationTime'] == null ? null : map['requestTracingExpirationTime'] as String,
-      scmIpSecurityRestrictions: map['scmIpSecurityRestrictions'] == null ? null : pulumi.Input.decodeList<IpSecurityRestrictionResponse>(map['scmIpSecurityRestrictions'], (value) => IpSecurityRestrictionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      scmIpSecurityRestrictionsDefaultAction: map['scmIpSecurityRestrictionsDefaultAction'] == null ? null : map['scmIpSecurityRestrictionsDefaultAction'] as String,
-      scmIpSecurityRestrictionsUseMain: map['scmIpSecurityRestrictionsUseMain'] == null ? null : map['scmIpSecurityRestrictionsUseMain'] as bool,
-      scmMinTlsVersion: map['scmMinTlsVersion'] == null ? null : map['scmMinTlsVersion'] as String,
-      scmType: map['scmType'] == null ? null : map['scmType'] as String,
-      tracingOptions: map['tracingOptions'] == null ? null : map['tracingOptions'] as String,
-      use32BitWorkerProcess: map['use32BitWorkerProcess'] == null ? null : map['use32BitWorkerProcess'] as bool,
-      virtualApplications: map['virtualApplications'] == null ? null : pulumi.Input.decodeList<VirtualApplicationResponse>(map['virtualApplications'], (value) => VirtualApplicationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vnetName: map['vnetName'] == null ? null : map['vnetName'] as String,
-      vnetPrivatePortsCount: map['vnetPrivatePortsCount'] == null ? null : map['vnetPrivatePortsCount'] as int,
-      vnetRouteAllEnabled: map['vnetRouteAllEnabled'] == null ? null : map['vnetRouteAllEnabled'] as bool,
-      webSocketsEnabled: map['webSocketsEnabled'] == null ? null : map['webSocketsEnabled'] as bool,
-      websiteTimeZone: map['websiteTimeZone'] == null ? null : map['websiteTimeZone'] as String,
-      windowsFxVersion: map['windowsFxVersion'] == null ? null : map['windowsFxVersion'] as String,
-      xManagedServiceIdentityId: map['xManagedServiceIdentityId'] == null ? null : map['xManagedServiceIdentityId'] as int,
+      acrUseManagedIdentityCreds: map['acrUseManagedIdentityCreds'] == null ? null : (map['acrUseManagedIdentityCreds'] as bool).input(),
+      acrUserManagedIdentityID: map['acrUserManagedIdentityID'] == null ? null : (map['acrUserManagedIdentityID'] as String).input(),
+      alwaysOn: map['alwaysOn'] == null ? null : (map['alwaysOn'] as bool).input(),
+      apiDefinition: map['apiDefinition'] == null ? null : (ApiDefinitionInfoResponse.fromMap((map['apiDefinition'] as Map).cast<String, dynamic>())).input(),
+      apiManagementConfig: map['apiManagementConfig'] == null ? null : (ApiManagementConfigResponse.fromMap((map['apiManagementConfig'] as Map).cast<String, dynamic>())).input(),
+      appCommandLine: map['appCommandLine'] == null ? null : (map['appCommandLine'] as String).input(),
+      appSettings: map['appSettings'] == null ? null : (pulumi.Input.decodeList<NameValuePairResponse>(map['appSettings'], (value) => NameValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoHealEnabled: map['autoHealEnabled'] == null ? null : (map['autoHealEnabled'] as bool).input(),
+      autoHealRules: map['autoHealRules'] == null ? null : (AutoHealRulesResponse.fromMap((map['autoHealRules'] as Map).cast<String, dynamic>())).input(),
+      autoSwapSlotName: map['autoSwapSlotName'] == null ? null : (map['autoSwapSlotName'] as String).input(),
+      azureStorageAccounts: map['azureStorageAccounts'] == null ? null : (pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(map['azureStorageAccounts'], (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionStrings: map['connectionStrings'] == null ? null : (pulumi.Input.decodeList<ConnStringInfoResponse>(map['connectionStrings'], (value) => ConnStringInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cors: map['cors'] == null ? null : (CorsSettingsResponse.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      defaultDocuments: map['defaultDocuments'] == null ? null : ((map['defaultDocuments'] as List).cast<String>()).input(),
+      detailedErrorLoggingEnabled: map['detailedErrorLoggingEnabled'] == null ? null : (map['detailedErrorLoggingEnabled'] as bool).input(),
+      documentRoot: map['documentRoot'] == null ? null : (map['documentRoot'] as String).input(),
+      elasticWebAppScaleLimit: map['elasticWebAppScaleLimit'] == null ? null : (map['elasticWebAppScaleLimit'] as int).input(),
+      experiments: map['experiments'] == null ? null : (ExperimentsResponse.fromMap((map['experiments'] as Map).cast<String, dynamic>())).input(),
+      ftpsState: map['ftpsState'] == null ? null : (map['ftpsState'] as String).input(),
+      functionAppScaleLimit: map['functionAppScaleLimit'] == null ? null : (map['functionAppScaleLimit'] as int).input(),
+      functionsRuntimeScaleMonitoringEnabled: map['functionsRuntimeScaleMonitoringEnabled'] == null ? null : (map['functionsRuntimeScaleMonitoringEnabled'] as bool).input(),
+      handlerMappings: map['handlerMappings'] == null ? null : (pulumi.Input.decodeList<HandlerMappingResponse>(map['handlerMappings'], (value) => HandlerMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
+      http20Enabled: map['http20Enabled'] == null ? null : (map['http20Enabled'] as bool).input(),
+      httpLoggingEnabled: map['httpLoggingEnabled'] == null ? null : (map['httpLoggingEnabled'] as bool).input(),
+      ipSecurityRestrictions: map['ipSecurityRestrictions'] == null ? null : (pulumi.Input.decodeList<IpSecurityRestrictionResponse>(map['ipSecurityRestrictions'], (value) => IpSecurityRestrictionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipSecurityRestrictionsDefaultAction: map['ipSecurityRestrictionsDefaultAction'] == null ? null : (map['ipSecurityRestrictionsDefaultAction'] as String).input(),
+      javaContainer: map['javaContainer'] == null ? null : (map['javaContainer'] as String).input(),
+      javaContainerVersion: map['javaContainerVersion'] == null ? null : (map['javaContainerVersion'] as String).input(),
+      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion'] as String).input(),
+      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity'] as String).input(),
+      limits: map['limits'] == null ? null : (SiteLimitsResponse.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
+      linuxFxVersion: map['linuxFxVersion'] == null ? null : (map['linuxFxVersion'] as String).input(),
+      loadBalancing: map['loadBalancing'] == null ? null : (map['loadBalancing'] as String).input(),
+      localMySqlEnabled: map['localMySqlEnabled'] == null ? null : (map['localMySqlEnabled'] as bool).input(),
+      logsDirectorySizeLimit: map['logsDirectorySizeLimit'] == null ? null : (map['logsDirectorySizeLimit'] as int).input(),
+      machineKey: (SiteMachineKeyResponse.fromMap((map['machineKey'] as Map).cast<String, dynamic>())).input(),
+      managedPipelineMode: map['managedPipelineMode'] == null ? null : (map['managedPipelineMode'] as String).input(),
+      managedServiceIdentityId: map['managedServiceIdentityId'] == null ? null : (map['managedServiceIdentityId'] as int).input(),
+      minTlsCipherSuite: map['minTlsCipherSuite'] == null ? null : (map['minTlsCipherSuite'] as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
+      minimumElasticInstanceCount: map['minimumElasticInstanceCount'] == null ? null : (map['minimumElasticInstanceCount'] as int).input(),
+      netFrameworkVersion: map['netFrameworkVersion'] == null ? null : (map['netFrameworkVersion'] as String).input(),
+      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion'] as String).input(),
+      numberOfWorkers: map['numberOfWorkers'] == null ? null : (map['numberOfWorkers'] as int).input(),
+      phpVersion: map['phpVersion'] == null ? null : (map['phpVersion'] as String).input(),
+      powerShellVersion: map['powerShellVersion'] == null ? null : (map['powerShellVersion'] as String).input(),
+      preWarmedInstanceCount: map['preWarmedInstanceCount'] == null ? null : (map['preWarmedInstanceCount'] as int).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publishingUsername: map['publishingUsername'] == null ? null : (map['publishingUsername'] as String).input(),
+      push: map['push'] == null ? null : (PushSettingsResponse.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion'] as String).input(),
+      remoteDebuggingEnabled: map['remoteDebuggingEnabled'] == null ? null : (map['remoteDebuggingEnabled'] as bool).input(),
+      remoteDebuggingVersion: map['remoteDebuggingVersion'] == null ? null : (map['remoteDebuggingVersion'] as String).input(),
+      requestTracingEnabled: map['requestTracingEnabled'] == null ? null : (map['requestTracingEnabled'] as bool).input(),
+      requestTracingExpirationTime: map['requestTracingExpirationTime'] == null ? null : (map['requestTracingExpirationTime'] as String).input(),
+      scmIpSecurityRestrictions: map['scmIpSecurityRestrictions'] == null ? null : (pulumi.Input.decodeList<IpSecurityRestrictionResponse>(map['scmIpSecurityRestrictions'], (value) => IpSecurityRestrictionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scmIpSecurityRestrictionsDefaultAction: map['scmIpSecurityRestrictionsDefaultAction'] == null ? null : (map['scmIpSecurityRestrictionsDefaultAction'] as String).input(),
+      scmIpSecurityRestrictionsUseMain: map['scmIpSecurityRestrictionsUseMain'] == null ? null : (map['scmIpSecurityRestrictionsUseMain'] as bool).input(),
+      scmMinTlsVersion: map['scmMinTlsVersion'] == null ? null : (map['scmMinTlsVersion'] as String).input(),
+      scmType: map['scmType'] == null ? null : (map['scmType'] as String).input(),
+      tracingOptions: map['tracingOptions'] == null ? null : (map['tracingOptions'] as String).input(),
+      use32BitWorkerProcess: map['use32BitWorkerProcess'] == null ? null : (map['use32BitWorkerProcess'] as bool).input(),
+      virtualApplications: map['virtualApplications'] == null ? null : (pulumi.Input.decodeList<VirtualApplicationResponse>(map['virtualApplications'], (value) => VirtualApplicationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vnetName: map['vnetName'] == null ? null : (map['vnetName'] as String).input(),
+      vnetPrivatePortsCount: map['vnetPrivatePortsCount'] == null ? null : (map['vnetPrivatePortsCount'] as int).input(),
+      vnetRouteAllEnabled: map['vnetRouteAllEnabled'] == null ? null : (map['vnetRouteAllEnabled'] as bool).input(),
+      webSocketsEnabled: map['webSocketsEnabled'] == null ? null : (map['webSocketsEnabled'] as bool).input(),
+      websiteTimeZone: map['websiteTimeZone'] == null ? null : (map['websiteTimeZone'] as String).input(),
+      windowsFxVersion: map['windowsFxVersion'] == null ? null : (map['windowsFxVersion'] as String).input(),
+      xManagedServiceIdentityId: map['xManagedServiceIdentityId'] == null ? null : (map['xManagedServiceIdentityId'] as int).input(),
     );
   }
 }

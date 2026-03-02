@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HadoopClusterRolesWorkerNodeAutoscaleCapacity {
   /// The maximum number of worker nodes to autoscale to based on the cluster's activity.
-  final int maxInstanceCount;
+  final pulumi.Input<int> maxInstanceCount;
   /// The minimum number of worker nodes to autoscale to based on the cluster's activity.
-  final int minInstanceCount;
+  final pulumi.Input<int> minInstanceCount;
 
   /// Creates a new [HadoopClusterRolesWorkerNodeAutoscaleCapacity].
   /// [maxInstanceCount] The maximum number of worker nodes to autoscale to based on the cluster's activity.
@@ -24,8 +25,8 @@ class HadoopClusterRolesWorkerNodeAutoscaleCapacity {
 
   factory HadoopClusterRolesWorkerNodeAutoscaleCapacity.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesWorkerNodeAutoscaleCapacity(
-      maxInstanceCount: map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] as int,
+      maxInstanceCount: (map['maxInstanceCount'] as int).input(),
+      minInstanceCount: (map['minInstanceCount'] as int).input(),
     );
   }
 }

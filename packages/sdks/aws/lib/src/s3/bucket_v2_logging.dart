@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketV2Logging {
   /// Name of the bucket that will receive the log objects.
-  final String targetBucket;
+  final pulumi.Input<String> targetBucket;
   /// To specify a key prefix for log objects.
-  final String? targetPrefix;
+  final pulumi.Input<String>? targetPrefix;
 
   /// Creates a new [BucketV2Logging].
   /// [targetBucket] Name of the bucket that will receive the log objects.
@@ -24,8 +25,8 @@ class BucketV2Logging {
 
   factory BucketV2Logging.fromMap(Map<String, dynamic> map) {
     return BucketV2Logging(
-      targetBucket: map['targetBucket'] as String,
-      targetPrefix: map['targetPrefix'] == null ? null : map['targetPrefix'] as String,
+      targetBucket: (map['targetBucket'] as String).input(),
+      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix'] as String).input(),
     );
   }
 }

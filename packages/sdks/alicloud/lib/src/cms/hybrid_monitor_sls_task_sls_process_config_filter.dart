@@ -5,9 +5,9 @@ import 'hybrid_monitor_sls_task_sls_process_config_filter_filter.dart';
 
 class HybridMonitorSlsTaskSlsProcessConfigFilter {
   /// The conditions that are used to filter logs imported from Log Service. See `filters` below.
-  final List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter>? filters;
+  final pulumi.Input<List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter>>? filters;
   /// The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
-  final String? relation;
+  final pulumi.Input<String>? relation;
 
   /// Creates a new [HybridMonitorSlsTaskSlsProcessConfigFilter].
   /// [filters] The conditions that are used to filter logs imported from Log Service. See `filters` below.
@@ -19,15 +19,15 @@ class HybridMonitorSlsTaskSlsProcessConfigFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<HybridMonitorSlsTaskSlsProcessConfigFilterFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<HybridMonitorSlsTaskSlsProcessConfigFilterFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'relation': ?relation,
     };
   }
 
   factory HybridMonitorSlsTaskSlsProcessConfigFilter.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskSlsProcessConfigFilter(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigFilterFilter>(map['filters'], (value) => HybridMonitorSlsTaskSlsProcessConfigFilterFilter.fromMap((value as Map).cast<String, dynamic>())),
-      relation: map['relation'] == null ? null : map['relation'] as String,
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigFilterFilter>(map['filters'], (value) => HybridMonitorSlsTaskSlsProcessConfigFilterFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relation: map['relation'] == null ? null : (map['relation'] as String).input(),
     );
   }
 }

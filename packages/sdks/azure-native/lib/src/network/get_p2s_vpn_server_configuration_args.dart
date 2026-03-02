@@ -19,13 +19,10 @@ class GetP2sVpnServerConfigurationArgs {
   /// [resourceGroupName] The resource group name of the P2SVpnServerConfiguration.
   /// [virtualWanName] The name of the VirtualWan.
   GetP2sVpnServerConfigurationArgs({
-    required pulumi.Output<String> p2SVpnServerConfigurationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualWanName,
-  }) :
-      p2SVpnServerConfigurationName = pulumi.Input.asInput<String>(p2SVpnServerConfigurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualWanName = pulumi.Input.asInput<String>(virtualWanName);
+    required this.p2SVpnServerConfigurationName,
+    required this.resourceGroupName,
+    required this.virtualWanName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetP2sVpnServerConfigurationArgs {
 
   factory GetP2sVpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetP2sVpnServerConfigurationArgs(
-      p2SVpnServerConfigurationName: pulumi.Output.create<String>(map['p2SVpnServerConfigurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualWanName: pulumi.Output.create<String>(map['virtualWanName'] as String),
+      p2SVpnServerConfigurationName: (map['p2SVpnServerConfigurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualWanName: (map['virtualWanName'] as String).input(),
     );
   }
 }

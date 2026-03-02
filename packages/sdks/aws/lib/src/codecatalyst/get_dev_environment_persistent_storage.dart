@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDevEnvironmentPersistentStorage {
-  final int size;
+  final pulumi.Input<int> size;
 
   /// Creates a new [GetDevEnvironmentPersistentStorage].
   /// [size] Required.
@@ -18,7 +19,7 @@ class GetDevEnvironmentPersistentStorage {
 
   factory GetDevEnvironmentPersistentStorage.fromMap(Map<String, dynamic> map) {
     return GetDevEnvironmentPersistentStorage(
-      size: map['size'] as int,
+      size: (map['size'] as int).input(),
     );
   }
 }

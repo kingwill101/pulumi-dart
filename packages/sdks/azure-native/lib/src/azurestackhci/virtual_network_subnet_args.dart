@@ -27,17 +27,12 @@ class VirtualNetworkSubnetArgs {
   /// [subnetName] Name of the virtual network subnet
   /// [virtualNetworkName] Name of the virtual network
   VirtualNetworkSubnetArgs({
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<VirtualNetworkSubnetProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subnetName,
-    required pulumi.Output<String> virtualNetworkName,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      properties = pulumi.Input.asOptionalInput<VirtualNetworkSubnetProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnetName = pulumi.Input.asOptionalInput<String>(subnetName),
-      virtualNetworkName = pulumi.Input.asInput<String>(virtualNetworkName);
+    this.extendedLocation,
+    this.properties,
+    required this.resourceGroupName,
+    this.subnetName,
+    required this.virtualNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class VirtualNetworkSubnetArgs {
 
   factory VirtualNetworkSubnetArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : pulumi.Output.create<VirtualNetworkSubnetProperties>(VirtualNetworkSubnetProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnetName: map['subnetName'] == null ? null : pulumi.Output.create<String>(map['subnetName'] as String),
-      virtualNetworkName: pulumi.Output.create<String>(map['virtualNetworkName'] as String),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (VirtualNetworkSubnetProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnetName: map['subnetName'] == null ? null : (map['subnetName'] as String).input(),
+      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }
 }

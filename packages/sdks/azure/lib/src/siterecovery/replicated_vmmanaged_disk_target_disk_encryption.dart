@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replicated_vmmanaged_disk_target_disk_encryption_disk_encryption_key.dart';
 import 'replicated_vmmanaged_disk_target_disk_encryption_key_encryption_key.dart';
 
 class ReplicatedVMManagedDiskTargetDiskEncryption {
   /// A `disk_encryption_key` block as defined below.
-  final ReplicatedVMManagedDiskTargetDiskEncryptionDiskEncryptionKey diskEncryptionKey;
+  final pulumi.Input<ReplicatedVMManagedDiskTargetDiskEncryptionDiskEncryptionKey> diskEncryptionKey;
   /// A `key_encryption_key` block as defined below.
-  final ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey? keyEncryptionKey;
+  final pulumi.Input<ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey>? keyEncryptionKey;
 
   /// Creates a new [ReplicatedVMManagedDiskTargetDiskEncryption].
   /// [diskEncryptionKey] A `disk_encryption_key` block as defined below.
@@ -19,15 +20,15 @@ class ReplicatedVMManagedDiskTargetDiskEncryption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskEncryptionKey': diskEncryptionKey.toMap(),
-      'keyEncryptionKey': ?keyEncryptionKey == null ? null : keyEncryptionKey!.toMap(),
+      'diskEncryptionKey': pulumi.Input.mapInputValue<ReplicatedVMManagedDiskTargetDiskEncryptionDiskEncryptionKey, Map<String, dynamic>>(diskEncryptionKey, (value) => value.toMap()),
+      'keyEncryptionKey': ?pulumi.Input.mapOptionalInputValue<ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey, Map<String, dynamic>>(keyEncryptionKey, (value) => value.toMap()),
     };
   }
 
   factory ReplicatedVMManagedDiskTargetDiskEncryption.fromMap(Map<String, dynamic> map) {
     return ReplicatedVMManagedDiskTargetDiskEncryption(
-      diskEncryptionKey: ReplicatedVMManagedDiskTargetDiskEncryptionDiskEncryptionKey.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>()),
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>()),
+      diskEncryptionKey: (ReplicatedVMManagedDiskTargetDiskEncryptionDiskEncryptionKey.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

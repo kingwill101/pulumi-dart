@@ -16,13 +16,10 @@ class HostAttachmentState {
   /// [hostId] Specified to be part of a host group of host ID.
   /// [instanceId] The bastion host instance id.
   HostAttachmentState({
-    pulumi.Output<String>? hostGroupId,
-    pulumi.Output<String>? hostId,
-    pulumi.Output<String>? instanceId,
-  }) :
-      hostGroupId = pulumi.Input.asOptionalInput<String>(hostGroupId),
-      hostId = pulumi.Input.asOptionalInput<String>(hostId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId);
+    this.hostGroupId,
+    this.hostId,
+    this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class HostAttachmentState {
 
   factory HostAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostAttachmentState(
-      hostGroupId: map['hostGroupId'] == null ? null : pulumi.Output.create<String>(map['hostGroupId'] as String),
-      hostId: map['hostId'] == null ? null : pulumi.Output.create<String>(map['hostId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
+      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId'] as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
     );
   }
 }

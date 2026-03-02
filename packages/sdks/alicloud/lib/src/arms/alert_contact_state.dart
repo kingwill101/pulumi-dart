@@ -22,17 +22,12 @@ class AlertContactState {
   /// [phoneNum] The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
   /// [systemNoc] Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
   AlertContactState({
-    pulumi.Output<String>? alertContactName,
-    pulumi.Output<String>? dingRobotWebhookUrl,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? phoneNum,
-    pulumi.Output<bool>? systemNoc,
-  }) :
-      alertContactName = pulumi.Input.asOptionalInput<String>(alertContactName),
-      dingRobotWebhookUrl = pulumi.Input.asOptionalInput<String>(dingRobotWebhookUrl),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      phoneNum = pulumi.Input.asOptionalInput<String>(phoneNum),
-      systemNoc = pulumi.Input.asOptionalInput<bool>(systemNoc);
+    this.alertContactName,
+    this.dingRobotWebhookUrl,
+    this.email,
+    this.phoneNum,
+    this.systemNoc,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class AlertContactState {
 
   factory AlertContactState.fromMap(Map<String, dynamic> map) {
     return AlertContactState(
-      alertContactName: map['alertContactName'] == null ? null : pulumi.Output.create<String>(map['alertContactName'] as String),
-      dingRobotWebhookUrl: map['dingRobotWebhookUrl'] == null ? null : pulumi.Output.create<String>(map['dingRobotWebhookUrl'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      phoneNum: map['phoneNum'] == null ? null : pulumi.Output.create<String>(map['phoneNum'] as String),
-      systemNoc: map['systemNoc'] == null ? null : pulumi.Output.create<bool>(map['systemNoc'] as bool),
+      alertContactName: map['alertContactName'] == null ? null : (map['alertContactName'] as String).input(),
+      dingRobotWebhookUrl: map['dingRobotWebhookUrl'] == null ? null : (map['dingRobotWebhookUrl'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      phoneNum: map['phoneNum'] == null ? null : (map['phoneNum'] as String).input(),
+      systemNoc: map['systemNoc'] == null ? null : (map['systemNoc'] as bool).input(),
     );
   }
 }

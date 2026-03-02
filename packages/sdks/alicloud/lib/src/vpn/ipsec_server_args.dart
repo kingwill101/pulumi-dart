@@ -42,27 +42,17 @@ class IpsecServerArgs {
   /// [pskEnabled] Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
   /// [vpnGatewayId] The ID of the VPN gateway.
   IpsecServerArgs({
-    required pulumi.Output<String> clientIpPool,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<bool>? effectImmediately,
-    pulumi.Output<List<IpsecServerIkeConfig>>? ikeConfigs,
-    pulumi.Output<List<IpsecServerIpsecConfig>>? ipsecConfigs,
-    pulumi.Output<String>? ipsecServerName,
-    required pulumi.Output<String> localSubnet,
-    pulumi.Output<String>? psk,
-    pulumi.Output<bool>? pskEnabled,
-    required pulumi.Output<String> vpnGatewayId,
-  }) :
-      clientIpPool = pulumi.Input.asInput<String>(clientIpPool),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      effectImmediately = pulumi.Input.asOptionalInput<bool>(effectImmediately),
-      ikeConfigs = pulumi.Input.asOptionalInput<List<IpsecServerIkeConfig>>(ikeConfigs),
-      ipsecConfigs = pulumi.Input.asOptionalInput<List<IpsecServerIpsecConfig>>(ipsecConfigs),
-      ipsecServerName = pulumi.Input.asOptionalInput<String>(ipsecServerName),
-      localSubnet = pulumi.Input.asInput<String>(localSubnet),
-      psk = pulumi.Input.asOptionalInput<String>(psk),
-      pskEnabled = pulumi.Input.asOptionalInput<bool>(pskEnabled),
-      vpnGatewayId = pulumi.Input.asInput<String>(vpnGatewayId);
+    required this.clientIpPool,
+    this.dryRun,
+    this.effectImmediately,
+    this.ikeConfigs,
+    this.ipsecConfigs,
+    this.ipsecServerName,
+    required this.localSubnet,
+    this.psk,
+    this.pskEnabled,
+    required this.vpnGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class IpsecServerArgs {
 
   factory IpsecServerArgs.fromMap(Map<String, dynamic> map) {
     return IpsecServerArgs(
-      clientIpPool: pulumi.Output.create<String>(map['clientIpPool'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      effectImmediately: map['effectImmediately'] == null ? null : pulumi.Output.create<bool>(map['effectImmediately'] as bool),
-      ikeConfigs: map['ikeConfigs'] == null ? null : pulumi.Output.create<List<IpsecServerIkeConfig>>(pulumi.Input.decodeList<IpsecServerIkeConfig>(map['ikeConfigs'], (value) => IpsecServerIkeConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      ipsecConfigs: map['ipsecConfigs'] == null ? null : pulumi.Output.create<List<IpsecServerIpsecConfig>>(pulumi.Input.decodeList<IpsecServerIpsecConfig>(map['ipsecConfigs'], (value) => IpsecServerIpsecConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      ipsecServerName: map['ipsecServerName'] == null ? null : pulumi.Output.create<String>(map['ipsecServerName'] as String),
-      localSubnet: pulumi.Output.create<String>(map['localSubnet'] as String),
-      psk: map['psk'] == null ? null : pulumi.Output.create<String>(map['psk'] as String),
-      pskEnabled: map['pskEnabled'] == null ? null : pulumi.Output.create<bool>(map['pskEnabled'] as bool),
-      vpnGatewayId: pulumi.Output.create<String>(map['vpnGatewayId'] as String),
+      clientIpPool: (map['clientIpPool'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      effectImmediately: map['effectImmediately'] == null ? null : (map['effectImmediately'] as bool).input(),
+      ikeConfigs: map['ikeConfigs'] == null ? null : (pulumi.Input.decodeList<IpsecServerIkeConfig>(map['ikeConfigs'], (value) => IpsecServerIkeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipsecConfigs: map['ipsecConfigs'] == null ? null : (pulumi.Input.decodeList<IpsecServerIpsecConfig>(map['ipsecConfigs'], (value) => IpsecServerIpsecConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipsecServerName: map['ipsecServerName'] == null ? null : (map['ipsecServerName'] as String).input(),
+      localSubnet: (map['localSubnet'] as String).input(),
+      psk: map['psk'] == null ? null : (map['psk'] as String).input(),
+      pskEnabled: map['pskEnabled'] == null ? null : (map['pskEnabled'] as bool).input(),
+      vpnGatewayId: (map['vpnGatewayId'] as String).input(),
     );
   }
 }

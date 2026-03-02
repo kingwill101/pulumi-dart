@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteEntriesEntry {
   /// The destination CIDR block of the route entry.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// The instance ID of the next hop.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The type of the next hop.
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
   /// The ID of the router table to which the route entry belongs.
-  final String routeTableId;
+  final pulumi.Input<String> routeTableId;
   /// The status of the route entry.
-  final String status;
+  final pulumi.Input<String> status;
   /// The type of the route entry.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetRouteEntriesEntry].
   /// [cidrBlock] The destination CIDR block of the route entry.
@@ -44,12 +45,12 @@ class GetRouteEntriesEntry {
 
   factory GetRouteEntriesEntry.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesEntry(
-      cidrBlock: map['cidrBlock'] as String,
-      instanceId: map['instanceId'] as String,
-      nextHopType: map['nextHopType'] as String,
-      routeTableId: map['routeTableId'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

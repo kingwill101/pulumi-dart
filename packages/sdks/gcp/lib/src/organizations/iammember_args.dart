@@ -31,15 +31,11 @@ class IAMMemberArgs {
   /// [orgId] The organization id of the target organization.
   /// [role] The role that should be applied. Only one
   IAMMemberArgs({
-    pulumi.Output<IAMMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IAMMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.member,
+    required this.orgId,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,10 +48,10 @@ class IAMMemberArgs {
 
   factory IAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return IAMMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IAMMemberCondition>(IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

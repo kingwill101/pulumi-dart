@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHoneyPotsPot {
   /// Honeypot ID.
-  final String honeypotId;
+  final pulumi.Input<String> honeypotId;
   /// The image ID of the honeypot.
-  final String honeypotImageId;
+  final pulumi.Input<String> honeypotImageId;
   /// Honeypot mirror name.
-  final String honeypotImageName;
+  final pulumi.Input<String> honeypotImageName;
   /// Honeypot custom name.
-  final String honeypotName;
+  final pulumi.Input<String> honeypotName;
   /// Honeypot ID. The value is the same as `honeypot_id`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the honeypot management node.
-  final String nodeId;
+  final pulumi.Input<String> nodeId;
   /// The custom parameter ID of honeypot.
-  final String presetId;
+  final pulumi.Input<String> presetId;
   /// Honeypot status.
-  final List<String> states;
+  final pulumi.Input<List<String>> states;
   /// The status of the resource
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetHoneyPotsPot].
   /// [honeypotId] Honeypot ID.
@@ -59,15 +60,15 @@ class GetHoneyPotsPot {
 
   factory GetHoneyPotsPot.fromMap(Map<String, dynamic> map) {
     return GetHoneyPotsPot(
-      honeypotId: map['honeypotId'] as String,
-      honeypotImageId: map['honeypotImageId'] as String,
-      honeypotImageName: map['honeypotImageName'] as String,
-      honeypotName: map['honeypotName'] as String,
-      id: map['id'] as String,
-      nodeId: map['nodeId'] as String,
-      presetId: map['presetId'] as String,
-      states: (map['states'] as List).cast<String>(),
-      status: map['status'] as String,
+      honeypotId: (map['honeypotId'] as String).input(),
+      honeypotImageId: (map['honeypotImageId'] as String).input(),
+      honeypotImageName: (map['honeypotImageName'] as String).input(),
+      honeypotName: (map['honeypotName'] as String).input(),
+      id: (map['id'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      presetId: (map['presetId'] as String).input(),
+      states: ((map['states'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

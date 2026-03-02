@@ -30,21 +30,14 @@ class InstanceAttachmentState {
   /// [instanceId] The ID of the CEN.
   /// [status] The associating status of the network.
   InstanceAttachmentState({
-    pulumi.Output<int>? cenOwnerId,
-    pulumi.Output<String>? childInstanceId,
-    pulumi.Output<int>? childInstanceOwnerId,
-    pulumi.Output<String>? childInstanceRegionId,
-    pulumi.Output<String>? childInstanceType,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? status,
-  }) :
-      cenOwnerId = pulumi.Input.asOptionalInput<int>(cenOwnerId),
-      childInstanceId = pulumi.Input.asOptionalInput<String>(childInstanceId),
-      childInstanceOwnerId = pulumi.Input.asOptionalInput<int>(childInstanceOwnerId),
-      childInstanceRegionId = pulumi.Input.asOptionalInput<String>(childInstanceRegionId),
-      childInstanceType = pulumi.Input.asOptionalInput<String>(childInstanceType),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.cenOwnerId,
+    this.childInstanceId,
+    this.childInstanceOwnerId,
+    this.childInstanceRegionId,
+    this.childInstanceType,
+    this.instanceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      cenOwnerId: map['cenOwnerId'] == null ? null : pulumi.Output.create<int>(map['cenOwnerId'] as int),
-      childInstanceId: map['childInstanceId'] == null ? null : pulumi.Output.create<String>(map['childInstanceId'] as String),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : pulumi.Output.create<int>(map['childInstanceOwnerId'] as int),
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : pulumi.Output.create<String>(map['childInstanceRegionId'] as String),
-      childInstanceType: map['childInstanceType'] == null ? null : pulumi.Output.create<String>(map['childInstanceType'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as int).input(),
+      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId'] as String).input(),
+      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId'] as int).input(),
+      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId'] as String).input(),
+      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

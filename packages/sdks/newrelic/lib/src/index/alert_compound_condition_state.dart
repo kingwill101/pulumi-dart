@@ -37,25 +37,16 @@ class AlertCompoundConditionState {
   /// [thresholdDuration] The duration, in seconds, that the trigger expression must be true before the compound alert condition will activate. Between 30-86400 seconds.
   /// [triggerExpression] Expression that defines how component condition evaluations are combined. Valid operators are 'AND', 'OR', 'NOT'. For more complex expressions, use parentheses. Use the aliases from `component_conditions` to build expressions like `"A AND B"`, `"A OR B"`, `"(A AND B) OR C"`, or `"A AND (B OR C) AND NOT (D AND E)"`.
   AlertCompoundConditionState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<List<AlertCompoundConditionComponentCondition>>? componentConditions,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? facetMatchingBehavior,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? runbookUrl,
-    pulumi.Output<int>? thresholdDuration,
-    pulumi.Output<String>? triggerExpression,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      componentConditions = pulumi.Input.asOptionalInput<List<AlertCompoundConditionComponentCondition>>(componentConditions),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      facetMatchingBehavior = pulumi.Input.asOptionalInput<String>(facetMatchingBehavior),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      runbookUrl = pulumi.Input.asOptionalInput<String>(runbookUrl),
-      thresholdDuration = pulumi.Input.asOptionalInput<int>(thresholdDuration),
-      triggerExpression = pulumi.Input.asOptionalInput<String>(triggerExpression);
+    this.accountId,
+    this.componentConditions,
+    this.enabled,
+    this.facetMatchingBehavior,
+    this.name,
+    this.policyId,
+    this.runbookUrl,
+    this.thresholdDuration,
+    this.triggerExpression,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class AlertCompoundConditionState {
 
   factory AlertCompoundConditionState.fromMap(Map<String, dynamic> map) {
     return AlertCompoundConditionState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      componentConditions: map['componentConditions'] == null ? null : pulumi.Output.create<List<AlertCompoundConditionComponentCondition>>(pulumi.Input.decodeList<AlertCompoundConditionComponentCondition>(map['componentConditions'], (value) => AlertCompoundConditionComponentCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      facetMatchingBehavior: map['facetMatchingBehavior'] == null ? null : pulumi.Output.create<String>(map['facetMatchingBehavior'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      runbookUrl: map['runbookUrl'] == null ? null : pulumi.Output.create<String>(map['runbookUrl'] as String),
-      thresholdDuration: map['thresholdDuration'] == null ? null : pulumi.Output.create<int>(map['thresholdDuration'] as int),
-      triggerExpression: map['triggerExpression'] == null ? null : pulumi.Output.create<String>(map['triggerExpression'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      componentConditions: map['componentConditions'] == null ? null : (pulumi.Input.decodeList<AlertCompoundConditionComponentCondition>(map['componentConditions'], (value) => AlertCompoundConditionComponentCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      facetMatchingBehavior: map['facetMatchingBehavior'] == null ? null : (map['facetMatchingBehavior'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
+      thresholdDuration: map['thresholdDuration'] == null ? null : (map['thresholdDuration'] as int).input(),
+      triggerExpression: map['triggerExpression'] == null ? null : (map['triggerExpression'] as String).input(),
     );
   }
 }

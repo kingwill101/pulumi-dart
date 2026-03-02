@@ -16,11 +16,9 @@ class ListVendorSkusCredentialArgs {
   /// [skuName] The name of the sku.
   /// [vendorName] The name of the vendor.
   ListVendorSkusCredentialArgs({
-    required pulumi.Output<String> skuName,
-    required pulumi.Output<String> vendorName,
-  }) :
-      skuName = pulumi.Input.asInput<String>(skuName),
-      vendorName = pulumi.Input.asInput<String>(vendorName);
+    required this.skuName,
+    required this.vendorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListVendorSkusCredentialArgs {
 
   factory ListVendorSkusCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ListVendorSkusCredentialArgs(
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      vendorName: pulumi.Output.create<String>(map['vendorName'] as String),
+      skuName: (map['skuName'] as String).input(),
+      vendorName: (map['vendorName'] as String).input(),
     );
   }
 }

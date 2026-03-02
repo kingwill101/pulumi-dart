@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnConnectionDetailCloudRouter {
   /// The resource name of VPN connection
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [VpnConnectionDetailCloudRouter].
   /// [name] The resource name of VPN connection
@@ -19,7 +20,7 @@ class VpnConnectionDetailCloudRouter {
 
   factory VpnConnectionDetailCloudRouter.fromMap(Map<String, dynamic> map) {
     return VpnConnectionDetailCloudRouter(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

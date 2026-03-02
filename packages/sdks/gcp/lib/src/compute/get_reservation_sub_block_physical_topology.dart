@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReservationSubBlockPhysicalTopology {
   /// The hash of the capacity block within the cluster.
-  final String block;
+  final pulumi.Input<String> block;
   /// The cluster name of the reservation sub-block.
-  final String cluster;
+  final pulumi.Input<String> cluster;
   /// The hash of the capacity sub-block within the capacity block.
-  final String subBlock;
+  final pulumi.Input<String> subBlock;
 
   /// Creates a new [GetReservationSubBlockPhysicalTopology].
   /// [block] The hash of the capacity block within the cluster.
@@ -29,9 +30,9 @@ class GetReservationSubBlockPhysicalTopology {
 
   factory GetReservationSubBlockPhysicalTopology.fromMap(Map<String, dynamic> map) {
     return GetReservationSubBlockPhysicalTopology(
-      block: map['block'] as String,
-      cluster: map['cluster'] as String,
-      subBlock: map['subBlock'] as String,
+      block: (map['block'] as String).input(),
+      cluster: (map['cluster'] as String).input(),
+      subBlock: (map['subBlock'] as String).input(),
     );
   }
 }

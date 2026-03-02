@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallSubnetMapping {
   /// The unique identifier for the subnet.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetFirewallSubnetMapping].
   /// [subnetId] The unique identifier for the subnet.
@@ -19,7 +20,7 @@ class GetFirewallSubnetMapping {
 
   factory GetFirewallSubnetMapping.fromMap(Map<String, dynamic> map) {
     return GetFirewallSubnetMapping(
-      subnetId: map['subnetId'] as String,
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

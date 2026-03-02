@@ -44,27 +44,17 @@ class TempUrlState {
   /// [ttl] The TTL, in seconds, for the URL. For how long it should
   /// [url] The URL
   TempUrlState({
-    pulumi.Output<String>? container,
-    pulumi.Output<String>? digest,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? method,
-    pulumi.Output<String>? object,
-    pulumi.Output<bool>? regenerate,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? split,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? url,
-  }) :
-      container = pulumi.Input.asOptionalInput<String>(container),
-      digest = pulumi.Input.asOptionalInput<String>(digest),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      method = pulumi.Input.asOptionalInput<String>(method),
-      object = pulumi.Input.asOptionalInput<String>(object),
-      regenerate = pulumi.Input.asOptionalInput<bool>(regenerate),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      split = pulumi.Input.asOptionalInput<String>(split),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.container,
+    this.digest,
+    this.key,
+    this.method,
+    this.object,
+    this.regenerate,
+    this.region,
+    this.split,
+    this.ttl,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class TempUrlState {
 
   factory TempUrlState.fromMap(Map<String, dynamic> map) {
     return TempUrlState(
-      container: map['container'] == null ? null : pulumi.Output.create<String>(map['container'] as String),
-      digest: map['digest'] == null ? null : pulumi.Output.create<String>(map['digest'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
-      object: map['object'] == null ? null : pulumi.Output.create<String>(map['object'] as String),
-      regenerate: map['regenerate'] == null ? null : pulumi.Output.create<bool>(map['regenerate'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      split: map['split'] == null ? null : pulumi.Output.create<String>(map['split'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      container: map['container'] == null ? null : (map['container'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      object: map['object'] == null ? null : (map['object'] as String).input(),
+      regenerate: map['regenerate'] == null ? null : (map['regenerate'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      split: map['split'] == null ? null : (map['split'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

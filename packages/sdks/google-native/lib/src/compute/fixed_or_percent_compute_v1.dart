@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Encapsulates numeric value that can be either absolute or relative.
 class FixedOrPercentComputeV1 {
   /// Specifies a fixed number of VM instances. This must be a positive integer.
-  final int? fixed;
+  final pulumi.Input<int>? fixed;
   /// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
-  final int? percent;
+  final pulumi.Input<int>? percent;
 
   /// Creates a new [FixedOrPercentComputeV1].
   /// [fixed] Specifies a fixed number of VM instances. This must be a positive integer.
@@ -25,8 +26,8 @@ class FixedOrPercentComputeV1 {
 
   factory FixedOrPercentComputeV1.fromMap(Map<String, dynamic> map) {
     return FixedOrPercentComputeV1(
-      fixed: map['fixed'] == null ? null : map['fixed'] as int,
-      percent: map['percent'] == null ? null : map['percent'] as int,
+      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
+      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
     );
   }
 }

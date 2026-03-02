@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes information on user who created this ComputeInstance.
 class ComputeInstanceCreatedByResponse {
   /// Uniquely identifies the user within his/her organization.
-  final String userId;
+  final pulumi.Input<String> userId;
   /// Name of the user.
-  final String userName;
+  final pulumi.Input<String> userName;
   /// Uniquely identifies user' Azure Active Directory organization.
-  final String userOrgId;
+  final pulumi.Input<String> userOrgId;
 
   /// Creates a new [ComputeInstanceCreatedByResponse].
   /// [userId] Uniquely identifies the user within his/her organization.
@@ -30,9 +31,9 @@ class ComputeInstanceCreatedByResponse {
 
   factory ComputeInstanceCreatedByResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceCreatedByResponse(
-      userId: map['userId'] as String,
-      userName: map['userName'] as String,
-      userOrgId: map['userOrgId'] as String,
+      userId: (map['userId'] as String).input(),
+      userName: (map['userName'] as String).input(),
+      userOrgId: (map['userOrgId'] as String).input(),
     );
   }
 }

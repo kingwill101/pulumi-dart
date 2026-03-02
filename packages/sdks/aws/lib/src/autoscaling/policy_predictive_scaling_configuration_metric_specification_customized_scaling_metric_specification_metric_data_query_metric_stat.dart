@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_predictive_scaling_configuration_metric_specification_customized_scaling_metric_specification_metric_data_query_metric_stat_metric.dart';
 
 class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat {
   /// Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.
-  final PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric metric;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric> metric;
   /// Statistic of the metrics to return.
-  final String stat;
+  final pulumi.Input<String> stat;
   /// Unit of the metrics to return.
-  final String? unit;
+  final pulumi.Input<String>? unit;
 
   /// Creates a new [PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat].
   /// [metric] Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.
@@ -22,7 +23,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMe
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metric': metric.toMap(),
+      'metric': pulumi.Input.mapInputValue<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric, Map<String, dynamic>>(metric, (value) => value.toMap()),
       'stat': stat,
       'unit': ?unit,
     };
@@ -30,9 +31,9 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMe
 
   factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat(
-      metric: PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric.fromMap((map['metric'] as Map).cast<String, dynamic>()),
-      stat: map['stat'] as String,
-      unit: map['unit'] == null ? null : map['unit'] as String,
+      metric: (PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
+      stat: (map['stat'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
     );
   }
 }

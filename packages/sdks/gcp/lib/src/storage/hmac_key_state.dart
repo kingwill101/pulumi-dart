@@ -32,21 +32,14 @@ class HmacKeyState {
   /// [timeCreated] 'The creation time of the HMAC key in RFC 3339 format. '
   /// [updated] 'The last modification time of the HMAC key metadata in RFC 3339 format.'
   HmacKeyState({
-    pulumi.Output<String>? accessId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? secret,
-    pulumi.Output<String>? serviceAccountEmail,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? timeCreated,
-    pulumi.Output<String>? updated,
-  }) :
-      accessId = pulumi.Input.asOptionalInput<String>(accessId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      serviceAccountEmail = pulumi.Input.asOptionalInput<String>(serviceAccountEmail),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      timeCreated = pulumi.Input.asOptionalInput<String>(timeCreated),
-      updated = pulumi.Input.asOptionalInput<String>(updated);
+    this.accessId,
+    this.project,
+    this.secret,
+    this.serviceAccountEmail,
+    this.state,
+    this.timeCreated,
+    this.updated,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class HmacKeyState {
 
   factory HmacKeyState.fromMap(Map<String, dynamic> map) {
     return HmacKeyState(
-      accessId: map['accessId'] == null ? null : pulumi.Output.create<String>(map['accessId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : pulumi.Output.create<String>(map['serviceAccountEmail'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      timeCreated: map['timeCreated'] == null ? null : pulumi.Output.create<String>(map['timeCreated'] as String),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
+      accessId: map['accessId'] == null ? null : (map['accessId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'domain_os_acpi_table.dart';
 
 class DomainOsAcpi {
   /// Configures ACPI tables that can be provided to the guest, influencing power management features.
-  final List<DomainOsAcpiTable>? tables;
+  final pulumi.Input<List<DomainOsAcpiTable>>? tables;
 
   /// Creates a new [DomainOsAcpi].
   /// [tables] Configures ACPI tables that can be provided to the guest, influencing power management features.
@@ -15,13 +15,13 @@ class DomainOsAcpi {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'tables': ?tables == null ? null : pulumi.Input.encodeList<DomainOsAcpiTable, Map<String, dynamic>>(tables!, (value) => value.toMap()),
+      'tables': ?pulumi.Input.mapOptionalInputValue<List<DomainOsAcpiTable>, List<Map<String, dynamic>>>(tables, (value) => pulumi.Input.encodeList<DomainOsAcpiTable, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainOsAcpi.fromMap(Map<String, dynamic> map) {
     return DomainOsAcpi(
-      tables: map['tables'] == null ? null : pulumi.Input.decodeList<DomainOsAcpiTable>(map['tables'], (value) => DomainOsAcpiTable.fromMap((value as Map).cast<String, dynamic>())),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<DomainOsAcpiTable>(map['tables'], (value) => DomainOsAcpiTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

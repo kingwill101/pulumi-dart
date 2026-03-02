@@ -47,29 +47,18 @@ class AssessmentProjectsOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   AssessmentProjectsOperationArgs({
-    pulumi.Output<String>? assessmentSolutionId,
-    pulumi.Output<String>? customerStorageAccountArmId,
-    pulumi.Output<String>? customerWorkspaceId,
-    pulumi.Output<String>? customerWorkspaceLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? projectStatus,
-    pulumi.Output<String>? provisioningState,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      assessmentSolutionId = pulumi.Input.asOptionalInput<String>(assessmentSolutionId),
-      customerStorageAccountArmId = pulumi.Input.asOptionalInput<String>(customerStorageAccountArmId),
-      customerWorkspaceId = pulumi.Input.asOptionalInput<String>(customerWorkspaceId),
-      customerWorkspaceLocation = pulumi.Input.asOptionalInput<String>(customerWorkspaceLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      projectStatus = pulumi.Input.asOptionalInput<String>(projectStatus),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.assessmentSolutionId,
+    this.customerStorageAccountArmId,
+    this.customerWorkspaceId,
+    this.customerWorkspaceLocation,
+    this.location,
+    this.projectName,
+    this.projectStatus,
+    this.provisioningState,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class AssessmentProjectsOperationArgs {
 
   factory AssessmentProjectsOperationArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentProjectsOperationArgs(
-      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : pulumi.Output.create<String>(map['assessmentSolutionId'] as String),
-      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : pulumi.Output.create<String>(map['customerStorageAccountArmId'] as String),
-      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['customerWorkspaceId'] as String),
-      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : pulumi.Output.create<String>(map['customerWorkspaceLocation'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      projectStatus: map['projectStatus'] == null ? null : pulumi.Output.create<String>(map['projectStatus'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : (map['assessmentSolutionId'] as String).input(),
+      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId'] as String).input(),
+      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : (map['customerWorkspaceId'] as String).input(),
+      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : (map['customerWorkspaceLocation'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -49,29 +49,18 @@ class PolicyFileShareState {
   /// [snapshotRetentionInDays] The number of days to retain the snapshots. Defaults to `0`.
   /// [timezone] Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
   PolicyFileShareState({
-    pulumi.Output<PolicyFileShareBackup>? backup,
-    pulumi.Output<String>? backupTier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recoveryVaultName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<PolicyFileShareRetentionDaily>? retentionDaily,
-    pulumi.Output<PolicyFileShareRetentionMonthly>? retentionMonthly,
-    pulumi.Output<PolicyFileShareRetentionWeekly>? retentionWeekly,
-    pulumi.Output<PolicyFileShareRetentionYearly>? retentionYearly,
-    pulumi.Output<int>? snapshotRetentionInDays,
-    pulumi.Output<String>? timezone,
-  }) :
-      backup = pulumi.Input.asOptionalInput<PolicyFileShareBackup>(backup),
-      backupTier = pulumi.Input.asOptionalInput<String>(backupTier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryVaultName = pulumi.Input.asOptionalInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      retentionDaily = pulumi.Input.asOptionalInput<PolicyFileShareRetentionDaily>(retentionDaily),
-      retentionMonthly = pulumi.Input.asOptionalInput<PolicyFileShareRetentionMonthly>(retentionMonthly),
-      retentionWeekly = pulumi.Input.asOptionalInput<PolicyFileShareRetentionWeekly>(retentionWeekly),
-      retentionYearly = pulumi.Input.asOptionalInput<PolicyFileShareRetentionYearly>(retentionYearly),
-      snapshotRetentionInDays = pulumi.Input.asOptionalInput<int>(snapshotRetentionInDays),
-      timezone = pulumi.Input.asOptionalInput<String>(timezone);
+    this.backup,
+    this.backupTier,
+    this.name,
+    this.recoveryVaultName,
+    this.resourceGroupName,
+    this.retentionDaily,
+    this.retentionMonthly,
+    this.retentionWeekly,
+    this.retentionYearly,
+    this.snapshotRetentionInDays,
+    this.timezone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class PolicyFileShareState {
 
   factory PolicyFileShareState.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareState(
-      backup: map['backup'] == null ? null : pulumi.Output.create<PolicyFileShareBackup>(PolicyFileShareBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())),
-      backupTier: map['backupTier'] == null ? null : pulumi.Output.create<String>(map['backupTier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionDaily: map['retentionDaily'] == null ? null : pulumi.Output.create<PolicyFileShareRetentionDaily>(PolicyFileShareRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>())),
-      retentionMonthly: map['retentionMonthly'] == null ? null : pulumi.Output.create<PolicyFileShareRetentionMonthly>(PolicyFileShareRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>())),
-      retentionWeekly: map['retentionWeekly'] == null ? null : pulumi.Output.create<PolicyFileShareRetentionWeekly>(PolicyFileShareRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>())),
-      retentionYearly: map['retentionYearly'] == null ? null : pulumi.Output.create<PolicyFileShareRetentionYearly>(PolicyFileShareRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>())),
-      snapshotRetentionInDays: map['snapshotRetentionInDays'] == null ? null : pulumi.Output.create<int>(map['snapshotRetentionInDays'] as int),
-      timezone: map['timezone'] == null ? null : pulumi.Output.create<String>(map['timezone'] as String),
+      backup: map['backup'] == null ? null : (PolicyFileShareBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
+      backupTier: map['backupTier'] == null ? null : (map['backupTier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      retentionDaily: map['retentionDaily'] == null ? null : (PolicyFileShareRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>())).input(),
+      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyFileShareRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>())).input(),
+      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyFileShareRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>())).input(),
+      retentionYearly: map['retentionYearly'] == null ? null : (PolicyFileShareRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>())).input(),
+      snapshotRetentionInDays: map['snapshotRetentionInDays'] == null ? null : (map['snapshotRetentionInDays'] as int).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
     );
   }
 }

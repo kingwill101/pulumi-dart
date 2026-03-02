@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message storing the instance configuration.
 class InstanceConfigResponse {
   /// The instance size of this the instance configuration.
-  final String instanceSize;
+  final pulumi.Input<String> instanceSize;
 
   /// Creates a new [InstanceConfigResponse].
   /// [instanceSize] The instance size of this the instance configuration.
@@ -20,7 +21,7 @@ class InstanceConfigResponse {
 
   factory InstanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return InstanceConfigResponse(
-      instanceSize: map['instanceSize'] as String,
+      instanceSize: (map['instanceSize'] as String).input(),
     );
   }
 }

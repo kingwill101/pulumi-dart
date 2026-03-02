@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiConfigGrpcServiceSource {
   /// Base64 encoded content of the file.
-  final String contents;
+  final pulumi.Input<String> contents;
   /// The file path (full or relative path). This is typically the path of the file when it is uploaded.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [ApiConfigGrpcServiceSource].
   /// [contents] Base64 encoded content of the file.
@@ -24,8 +25,8 @@ class ApiConfigGrpcServiceSource {
 
   factory ApiConfigGrpcServiceSource.fromMap(Map<String, dynamic> map) {
     return ApiConfigGrpcServiceSource(
-      contents: map['contents'] as String,
-      path: map['path'] as String,
+      contents: (map['contents'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

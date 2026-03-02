@@ -24,19 +24,13 @@ class FederatedIdentityCredentialState {
   /// [resourceGroupName] Optional.
   /// [subject] Specifies the subject for this Federated Identity Credential.
   FederatedIdentityCredentialState({
-    pulumi.Output<String>? audience,
-    pulumi.Output<String>? issuer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? subject,
-  }) :
-      audience = pulumi.Input.asOptionalInput<String>(audience),
-      issuer = pulumi.Input.asOptionalInput<String>(issuer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentId = pulumi.Input.asOptionalInput<String>(parentId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      subject = pulumi.Input.asOptionalInput<String>(subject);
+    this.audience,
+    this.issuer,
+    this.name,
+    this.parentId,
+    this.resourceGroupName,
+    this.subject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class FederatedIdentityCredentialState {
 
   factory FederatedIdentityCredentialState.fromMap(Map<String, dynamic> map) {
     return FederatedIdentityCredentialState(
-      audience: map['audience'] == null ? null : pulumi.Output.create<String>(map['audience'] as String),
-      issuer: map['issuer'] == null ? null : pulumi.Output.create<String>(map['issuer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentId: map['parentId'] == null ? null : pulumi.Output.create<String>(map['parentId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subject: map['subject'] == null ? null : pulumi.Output.create<String>(map['subject'] as String),
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
     );
   }
 }

@@ -41,19 +41,13 @@ class DatasetIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   DatasetIamBindingState({
-    pulumi.Output<DatasetIamBindingCondition>? condition,
-    pulumi.Output<String>? datasetId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<DatasetIamBindingCondition>(condition),
-      datasetId = pulumi.Input.asOptionalInput<String>(datasetId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.datasetId,
+    this.etag,
+    this.members,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +62,12 @@ class DatasetIamBindingState {
 
   factory DatasetIamBindingState.fromMap(Map<String, dynamic> map) {
     return DatasetIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<DatasetIamBindingCondition>(DatasetIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      datasetId: map['datasetId'] == null ? null : pulumi.Output.create<String>(map['datasetId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (DatasetIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
 class PrivateEndpointDestination {
-  final String? serviceResourceId;
-  final bool? sparkEnabled;
+  final pulumi.Input<String>? serviceResourceId;
+  final pulumi.Input<bool>? sparkEnabled;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
-  final String? sparkStatus;
-  final String? subresourceTarget;
+  final pulumi.Input<String>? sparkStatus;
+  final pulumi.Input<String>? subresourceTarget;
 
   /// Creates a new [PrivateEndpointDestination].
   /// [serviceResourceId] Optional.
@@ -32,10 +33,10 @@ class PrivateEndpointDestination {
 
   factory PrivateEndpointDestination.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointDestination(
-      serviceResourceId: map['serviceResourceId'] == null ? null : map['serviceResourceId'] as String,
-      sparkEnabled: map['sparkEnabled'] == null ? null : map['sparkEnabled'] as bool,
-      sparkStatus: map['sparkStatus'] == null ? null : map['sparkStatus'] as String,
-      subresourceTarget: map['subresourceTarget'] == null ? null : map['subresourceTarget'] as String,
+      serviceResourceId: map['serviceResourceId'] == null ? null : (map['serviceResourceId'] as String).input(),
+      sparkEnabled: map['sparkEnabled'] == null ? null : (map['sparkEnabled'] as bool).input(),
+      sparkStatus: map['sparkStatus'] == null ? null : (map['sparkStatus'] as String).input(),
+      subresourceTarget: map['subresourceTarget'] == null ? null : (map['subresourceTarget'] as String).input(),
     );
   }
 }

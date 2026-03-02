@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesAia {
   /// Sets the value for AIA support, which may define its operational state or level of functionality.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DomainFeaturesAia].
   /// [value] Sets the value for AIA support, which may define its operational state or level of functionality.
@@ -19,7 +20,7 @@ class DomainFeaturesAia {
 
   factory DomainFeaturesAia.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesAia(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

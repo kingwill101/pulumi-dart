@@ -14,11 +14,9 @@ class GetNetworkFirewallPolicyComputeV1Args {
   /// [firewallPolicy] Required.
   /// [project] Optional.
   GetNetworkFirewallPolicyComputeV1Args({
-    required pulumi.Output<String> firewallPolicy,
-    pulumi.Output<String>? project,
-  }) :
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.firewallPolicy,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetNetworkFirewallPolicyComputeV1Args {
 
   factory GetNetworkFirewallPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNetworkFirewallPolicyComputeV1Args(
-      firewallPolicy: pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      firewallPolicy: (map['firewallPolicy'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_rollout_properties_specification.dart';
 import 'custom_rollout_properties_status.dart';
 
 class CustomRolloutProperties {
   /// The specification.
-  final CustomRolloutPropertiesSpecification specification;
+  final pulumi.Input<CustomRolloutPropertiesSpecification> specification;
   /// The status.
-  final CustomRolloutPropertiesStatus? status;
+  final pulumi.Input<CustomRolloutPropertiesStatus>? status;
 
   /// Creates a new [CustomRolloutProperties].
   /// [specification] The specification.
@@ -19,15 +20,15 @@ class CustomRolloutProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'specification': specification.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'specification': pulumi.Input.mapInputValue<CustomRolloutPropertiesSpecification, Map<String, dynamic>>(specification, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<CustomRolloutPropertiesStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory CustomRolloutProperties.fromMap(Map<String, dynamic> map) {
     return CustomRolloutProperties(
-      specification: CustomRolloutPropertiesSpecification.fromMap((map['specification'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : CustomRolloutPropertiesStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      specification: (CustomRolloutPropertiesSpecification.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (CustomRolloutPropertiesStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

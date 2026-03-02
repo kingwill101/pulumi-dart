@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStackInstancesInstanceParameterOverride {
   /// The key of override parameter.
-  final String parameterKey;
+  final pulumi.Input<String> parameterKey;
   /// The value of override parameter.
-  final String parameterValue;
+  final pulumi.Input<String> parameterValue;
 
   /// Creates a new [GetStackInstancesInstanceParameterOverride].
   /// [parameterKey] The key of override parameter.
@@ -24,8 +25,8 @@ class GetStackInstancesInstanceParameterOverride {
 
   factory GetStackInstancesInstanceParameterOverride.fromMap(Map<String, dynamic> map) {
     return GetStackInstancesInstanceParameterOverride(
-      parameterKey: map['parameterKey'] as String,
-      parameterValue: map['parameterValue'] as String,
+      parameterKey: (map['parameterKey'] as String).input(),
+      parameterValue: (map['parameterValue'] as String).input(),
     );
   }
 }

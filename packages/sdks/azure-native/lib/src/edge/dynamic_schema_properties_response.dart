@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DynamicSchema Properties
 class DynamicSchemaPropertiesResponse {
   /// Type of configuration model
-  final String configurationModel;
+  final pulumi.Input<String> configurationModel;
   /// Type of configuration
-  final String configurationType;
+  final pulumi.Input<String> configurationType;
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [DynamicSchemaPropertiesResponse].
   /// [configurationModel] Type of configuration model
@@ -30,9 +31,9 @@ class DynamicSchemaPropertiesResponse {
 
   factory DynamicSchemaPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DynamicSchemaPropertiesResponse(
-      configurationModel: map['configurationModel'] as String,
-      configurationType: map['configurationType'] as String,
-      provisioningState: map['provisioningState'] as String,
+      configurationModel: (map['configurationModel'] as String).input(),
+      configurationType: (map['configurationType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

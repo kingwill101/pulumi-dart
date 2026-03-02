@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthParametersBasicAuthParameters {
   /// The password for basic authentication.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The username for basic authentication.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ConnectionAuthParametersBasicAuthParameters].
   /// [password] The password for basic authentication.
@@ -24,8 +25,8 @@ class ConnectionAuthParametersBasicAuthParameters {
 
   factory ConnectionAuthParametersBasicAuthParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersBasicAuthParameters(
-      password: map['password'] == null ? null : map['password'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

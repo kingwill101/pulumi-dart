@@ -16,27 +16,27 @@ import 'sprite_sheet.dart';
 /// Job configuration
 class JobConfig {
   /// List of ad breaks. Specifies where to insert ad break tags in the output manifests.
-  final List<AdBreak>? adBreaks;
+  final pulumi.Input<List<AdBreak>>? adBreaks;
   /// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
-  final List<EditAtom>? editList;
+  final pulumi.Input<List<EditAtom>>? editList;
   /// List of elementary streams.
-  final List<ElementaryStream>? elementaryStreams;
+  final pulumi.Input<List<ElementaryStream>>? elementaryStreams;
   /// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
-  final List<Encryption>? encryptions;
+  final pulumi.Input<List<Encryption>>? encryptions;
   /// List of input assets stored in Cloud Storage.
-  final List<InputType>? inputs;
+  final pulumi.Input<List<InputType>>? inputs;
   /// List of output manifests.
-  final List<Manifest>? manifests;
+  final pulumi.Input<List<Manifest>>? manifests;
   /// List of multiplexing settings for output streams.
-  final List<MuxStream>? muxStreams;
+  final pulumi.Input<List<MuxStream>>? muxStreams;
   /// Output configuration.
-  final OutputType? output;
+  final pulumi.Input<OutputType>? output;
   /// List of overlays on the output video, in descending Z-order.
-  final List<Overlay>? overlays;
+  final pulumi.Input<List<Overlay>>? overlays;
   /// Destination on Pub/Sub.
-  final PubsubDestination? pubsubDestination;
+  final pulumi.Input<PubsubDestination>? pubsubDestination;
   /// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
-  final List<SpriteSheet>? spriteSheets;
+  final pulumi.Input<List<SpriteSheet>>? spriteSheets;
 
   /// Creates a new [JobConfig].
   /// [adBreaks] List of ad breaks. Specifies where to insert ad break tags in the output manifests.
@@ -66,33 +66,33 @@ class JobConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adBreaks': ?adBreaks == null ? null : pulumi.Input.encodeList<AdBreak, Map<String, dynamic>>(adBreaks!, (value) => value.toMap()),
-      'editList': ?editList == null ? null : pulumi.Input.encodeList<EditAtom, Map<String, dynamic>>(editList!, (value) => value.toMap()),
-      'elementaryStreams': ?elementaryStreams == null ? null : pulumi.Input.encodeList<ElementaryStream, Map<String, dynamic>>(elementaryStreams!, (value) => value.toMap()),
-      'encryptions': ?encryptions == null ? null : pulumi.Input.encodeList<Encryption, Map<String, dynamic>>(encryptions!, (value) => value.toMap()),
-      'inputs': ?inputs == null ? null : pulumi.Input.encodeList<InputType, Map<String, dynamic>>(inputs!, (value) => value.toMap()),
-      'manifests': ?manifests == null ? null : pulumi.Input.encodeList<Manifest, Map<String, dynamic>>(manifests!, (value) => value.toMap()),
-      'muxStreams': ?muxStreams == null ? null : pulumi.Input.encodeList<MuxStream, Map<String, dynamic>>(muxStreams!, (value) => value.toMap()),
-      'output': ?output == null ? null : output!.toMap(),
-      'overlays': ?overlays == null ? null : pulumi.Input.encodeList<Overlay, Map<String, dynamic>>(overlays!, (value) => value.toMap()),
-      'pubsubDestination': ?pubsubDestination == null ? null : pubsubDestination!.toMap(),
-      'spriteSheets': ?spriteSheets == null ? null : pulumi.Input.encodeList<SpriteSheet, Map<String, dynamic>>(spriteSheets!, (value) => value.toMap()),
+      'adBreaks': ?pulumi.Input.mapOptionalInputValue<List<AdBreak>, List<Map<String, dynamic>>>(adBreaks, (value) => pulumi.Input.encodeList<AdBreak, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'editList': ?pulumi.Input.mapOptionalInputValue<List<EditAtom>, List<Map<String, dynamic>>>(editList, (value) => pulumi.Input.encodeList<EditAtom, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'elementaryStreams': ?pulumi.Input.mapOptionalInputValue<List<ElementaryStream>, List<Map<String, dynamic>>>(elementaryStreams, (value) => pulumi.Input.encodeList<ElementaryStream, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'encryptions': ?pulumi.Input.mapOptionalInputValue<List<Encryption>, List<Map<String, dynamic>>>(encryptions, (value) => pulumi.Input.encodeList<Encryption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inputs': ?pulumi.Input.mapOptionalInputValue<List<InputType>, List<Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeList<InputType, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'manifests': ?pulumi.Input.mapOptionalInputValue<List<Manifest>, List<Map<String, dynamic>>>(manifests, (value) => pulumi.Input.encodeList<Manifest, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'muxStreams': ?pulumi.Input.mapOptionalInputValue<List<MuxStream>, List<Map<String, dynamic>>>(muxStreams, (value) => pulumi.Input.encodeList<MuxStream, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'output': ?pulumi.Input.mapOptionalInputValue<OutputType, Map<String, dynamic>>(output, (value) => value.toMap()),
+      'overlays': ?pulumi.Input.mapOptionalInputValue<List<Overlay>, List<Map<String, dynamic>>>(overlays, (value) => pulumi.Input.encodeList<Overlay, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pubsubDestination': ?pulumi.Input.mapOptionalInputValue<PubsubDestination, Map<String, dynamic>>(pubsubDestination, (value) => value.toMap()),
+      'spriteSheets': ?pulumi.Input.mapOptionalInputValue<List<SpriteSheet>, List<Map<String, dynamic>>>(spriteSheets, (value) => pulumi.Input.encodeList<SpriteSheet, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JobConfig.fromMap(Map<String, dynamic> map) {
     return JobConfig(
-      adBreaks: map['adBreaks'] == null ? null : pulumi.Input.decodeList<AdBreak>(map['adBreaks'], (value) => AdBreak.fromMap((value as Map).cast<String, dynamic>())),
-      editList: map['editList'] == null ? null : pulumi.Input.decodeList<EditAtom>(map['editList'], (value) => EditAtom.fromMap((value as Map).cast<String, dynamic>())),
-      elementaryStreams: map['elementaryStreams'] == null ? null : pulumi.Input.decodeList<ElementaryStream>(map['elementaryStreams'], (value) => ElementaryStream.fromMap((value as Map).cast<String, dynamic>())),
-      encryptions: map['encryptions'] == null ? null : pulumi.Input.decodeList<Encryption>(map['encryptions'], (value) => Encryption.fromMap((value as Map).cast<String, dynamic>())),
-      inputs: map['inputs'] == null ? null : pulumi.Input.decodeList<InputType>(map['inputs'], (value) => InputType.fromMap((value as Map).cast<String, dynamic>())),
-      manifests: map['manifests'] == null ? null : pulumi.Input.decodeList<Manifest>(map['manifests'], (value) => Manifest.fromMap((value as Map).cast<String, dynamic>())),
-      muxStreams: map['muxStreams'] == null ? null : pulumi.Input.decodeList<MuxStream>(map['muxStreams'], (value) => MuxStream.fromMap((value as Map).cast<String, dynamic>())),
-      output: map['output'] == null ? null : OutputType.fromMap((map['output'] as Map).cast<String, dynamic>()),
-      overlays: map['overlays'] == null ? null : pulumi.Input.decodeList<Overlay>(map['overlays'], (value) => Overlay.fromMap((value as Map).cast<String, dynamic>())),
-      pubsubDestination: map['pubsubDestination'] == null ? null : PubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
-      spriteSheets: map['spriteSheets'] == null ? null : pulumi.Input.decodeList<SpriteSheet>(map['spriteSheets'], (value) => SpriteSheet.fromMap((value as Map).cast<String, dynamic>())),
+      adBreaks: map['adBreaks'] == null ? null : (pulumi.Input.decodeList<AdBreak>(map['adBreaks'], (value) => AdBreak.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      editList: map['editList'] == null ? null : (pulumi.Input.decodeList<EditAtom>(map['editList'], (value) => EditAtom.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      elementaryStreams: map['elementaryStreams'] == null ? null : (pulumi.Input.decodeList<ElementaryStream>(map['elementaryStreams'], (value) => ElementaryStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptions: map['encryptions'] == null ? null : (pulumi.Input.decodeList<Encryption>(map['encryptions'], (value) => Encryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<InputType>(map['inputs'], (value) => InputType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manifests: map['manifests'] == null ? null : (pulumi.Input.decodeList<Manifest>(map['manifests'], (value) => Manifest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      muxStreams: map['muxStreams'] == null ? null : (pulumi.Input.decodeList<MuxStream>(map['muxStreams'], (value) => MuxStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      output: map['output'] == null ? null : (OutputType.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      overlays: map['overlays'] == null ? null : (pulumi.Input.decodeList<Overlay>(map['overlays'], (value) => Overlay.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pubsubDestination: map['pubsubDestination'] == null ? null : (PubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>())).input(),
+      spriteSheets: map['spriteSheets'] == null ? null : (pulumi.Input.decodeList<SpriteSheet>(map['spriteSheets'], (value) => SpriteSheet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

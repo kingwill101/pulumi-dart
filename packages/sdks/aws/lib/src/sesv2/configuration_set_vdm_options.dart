@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_set_vdm_options_dashboard_options.dart';
 import 'configuration_set_vdm_options_guardian_options.dart';
 
 class ConfigurationSetVdmOptions {
   /// Specifies additional settings for your VDM configuration as applicable to the Dashboard. See `dashboard_options` Block for details.
-  final ConfigurationSetVdmOptionsDashboardOptions? dashboardOptions;
+  final pulumi.Input<ConfigurationSetVdmOptionsDashboardOptions>? dashboardOptions;
   /// Specifies additional settings for your VDM configuration as applicable to the Guardian. See `guardian_options` Block for details.
-  final ConfigurationSetVdmOptionsGuardianOptions? guardianOptions;
+  final pulumi.Input<ConfigurationSetVdmOptionsGuardianOptions>? guardianOptions;
 
   /// Creates a new [ConfigurationSetVdmOptions].
   /// [dashboardOptions] Specifies additional settings for your VDM configuration as applicable to the Dashboard. See `dashboard_options` Block for details.
@@ -19,15 +20,15 @@ class ConfigurationSetVdmOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dashboardOptions': ?dashboardOptions == null ? null : dashboardOptions!.toMap(),
-      'guardianOptions': ?guardianOptions == null ? null : guardianOptions!.toMap(),
+      'dashboardOptions': ?pulumi.Input.mapOptionalInputValue<ConfigurationSetVdmOptionsDashboardOptions, Map<String, dynamic>>(dashboardOptions, (value) => value.toMap()),
+      'guardianOptions': ?pulumi.Input.mapOptionalInputValue<ConfigurationSetVdmOptionsGuardianOptions, Map<String, dynamic>>(guardianOptions, (value) => value.toMap()),
     };
   }
 
   factory ConfigurationSetVdmOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetVdmOptions(
-      dashboardOptions: map['dashboardOptions'] == null ? null : ConfigurationSetVdmOptionsDashboardOptions.fromMap((map['dashboardOptions'] as Map).cast<String, dynamic>()),
-      guardianOptions: map['guardianOptions'] == null ? null : ConfigurationSetVdmOptionsGuardianOptions.fromMap((map['guardianOptions'] as Map).cast<String, dynamic>()),
+      dashboardOptions: map['dashboardOptions'] == null ? null : (ConfigurationSetVdmOptionsDashboardOptions.fromMap((map['dashboardOptions'] as Map).cast<String, dynamic>())).input(),
+      guardianOptions: map['guardianOptions'] == null ? null : (ConfigurationSetVdmOptionsGuardianOptions.fromMap((map['guardianOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

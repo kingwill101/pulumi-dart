@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defender Cloud Security Posture Management (CSPM) service information.
 class DefenderCspmInformationResponse {
   /// Indicates whether the service is enabled.
-  final String enablementStatus;
+  final pulumi.Input<String> enablementStatus;
 
   /// Creates a new [DefenderCspmInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
@@ -20,7 +21,7 @@ class DefenderCspmInformationResponse {
 
   factory DefenderCspmInformationResponse.fromMap(Map<String, dynamic> map) {
     return DefenderCspmInformationResponse(
-      enablementStatus: map['enablementStatus'] as String,
+      enablementStatus: (map['enablementStatus'] as String).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class LbStickinessPolicyArgs {
   /// [lbName] Name of the load balancer to which you want to enable session stickiness.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LbStickinessPolicyArgs({
-    required pulumi.Output<int> cookieDuration,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> lbName,
-    pulumi.Output<String>? region,
-  }) :
-      cookieDuration = pulumi.Input.asInput<int>(cookieDuration),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      lbName = pulumi.Input.asInput<String>(lbName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.cookieDuration,
+    required this.enabled,
+    required this.lbName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class LbStickinessPolicyArgs {
 
   factory LbStickinessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LbStickinessPolicyArgs(
-      cookieDuration: pulumi.Output.create<int>(map['cookieDuration'] as int),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      lbName: pulumi.Output.create<String>(map['lbName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cookieDuration: (map['cookieDuration'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
+      lbName: (map['lbName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

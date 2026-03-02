@@ -31,23 +31,15 @@ class UserDataMappingHealthcareV1beta1Args {
   /// [resourceAttributes] Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
   /// [userId] User's UUID provided by the client.
   UserDataMappingHealthcareV1beta1Args({
-    required pulumi.Output<String> consentStoreId,
-    required pulumi.Output<String> dataId,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<AttributeHealthcareV1beta1>>? resourceAttributes,
-    required pulumi.Output<String> userId,
-  }) :
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      dataId = pulumi.Input.asInput<String>(dataId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceAttributes = pulumi.Input.asOptionalInput<List<AttributeHealthcareV1beta1>>(resourceAttributes),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.consentStoreId,
+    required this.dataId,
+    required this.datasetId,
+    this.location,
+    this.name,
+    this.project,
+    this.resourceAttributes,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class UserDataMappingHealthcareV1beta1Args {
 
   factory UserDataMappingHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return UserDataMappingHealthcareV1beta1Args(
-      consentStoreId: pulumi.Output.create<String>(map['consentStoreId'] as String),
-      dataId: pulumi.Output.create<String>(map['dataId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceAttributes: map['resourceAttributes'] == null ? null : pulumi.Output.create<List<AttributeHealthcareV1beta1>>(pulumi.Input.decodeList<AttributeHealthcareV1beta1>(map['resourceAttributes'], (value) => AttributeHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      consentStoreId: (map['consentStoreId'] as String).input(),
+      dataId: (map['dataId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (pulumi.Input.decodeList<AttributeHealthcareV1beta1>(map['resourceAttributes'], (value) => AttributeHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

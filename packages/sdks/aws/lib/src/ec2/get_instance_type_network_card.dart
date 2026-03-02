@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypeNetworkCard {
-  final double baselineBandwidth;
-  final int index;
-  final int maximumInterfaces;
-  final double peakBandwidth;
-  final String performance;
+  final pulumi.Input<double> baselineBandwidth;
+  final pulumi.Input<int> index;
+  final pulumi.Input<int> maximumInterfaces;
+  final pulumi.Input<double> peakBandwidth;
+  final pulumi.Input<String> performance;
 
   /// Creates a new [GetInstanceTypeNetworkCard].
   /// [baselineBandwidth] Required.
@@ -34,11 +35,11 @@ class GetInstanceTypeNetworkCard {
 
   factory GetInstanceTypeNetworkCard.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeNetworkCard(
-      baselineBandwidth: map['baselineBandwidth'] as double,
-      index: map['index'] as int,
-      maximumInterfaces: map['maximumInterfaces'] as int,
-      peakBandwidth: map['peakBandwidth'] as double,
-      performance: map['performance'] as String,
+      baselineBandwidth: (map['baselineBandwidth'] as double).input(),
+      index: (map['index'] as int).input(),
+      maximumInterfaces: (map['maximumInterfaces'] as int).input(),
+      peakBandwidth: (map['peakBandwidth'] as double).input(),
+      performance: (map['performance'] as String).input(),
     );
   }
 }

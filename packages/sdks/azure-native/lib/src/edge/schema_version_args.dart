@@ -23,15 +23,11 @@ class SchemaVersionArgs {
   /// [schemaName] The name of the Schema
   /// [schemaVersionName] The name of the SchemaVersion
   SchemaVersionArgs({
-    pulumi.Output<SchemaVersionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    pulumi.Output<String>? schemaVersionName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SchemaVersionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      schemaVersionName = pulumi.Input.asOptionalInput<String>(schemaVersionName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.schemaName,
+    this.schemaVersionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SchemaVersionArgs {
 
   factory SchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return SchemaVersionArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SchemaVersionProperties>(SchemaVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      schemaVersionName: map['schemaVersionName'] == null ? null : pulumi.Output.create<String>(map['schemaVersionName'] as String),
+      properties: map['properties'] == null ? null : (SchemaVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      schemaVersionName: map['schemaVersionName'] == null ? null : (map['schemaVersionName'] as String).input(),
     );
   }
 }

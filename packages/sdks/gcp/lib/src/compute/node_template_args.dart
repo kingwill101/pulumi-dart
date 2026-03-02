@@ -63,29 +63,18 @@ class NodeTemplateArgs {
   /// [region] Region where nodes using the node template will be created.
   /// [serverBinding] The server binding policy for nodes using this template. Determines
   NodeTemplateArgs({
-    pulumi.Output<List<NodeTemplateAccelerator>>? accelerators,
-    pulumi.Output<String>? cpuOvercommitType,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<NodeTemplateDisk>>? disks,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? nodeAffinityLabels,
-    pulumi.Output<String>? nodeType,
-    pulumi.Output<NodeTemplateNodeTypeFlexibility>? nodeTypeFlexibility,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<NodeTemplateServerBinding>? serverBinding,
-  }) :
-      accelerators = pulumi.Input.asOptionalInput<List<NodeTemplateAccelerator>>(accelerators),
-      cpuOvercommitType = pulumi.Input.asOptionalInput<String>(cpuOvercommitType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disks = pulumi.Input.asOptionalInput<List<NodeTemplateDisk>>(disks),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeAffinityLabels = pulumi.Input.asOptionalInput<Map<String, String>>(nodeAffinityLabels),
-      nodeType = pulumi.Input.asOptionalInput<String>(nodeType),
-      nodeTypeFlexibility = pulumi.Input.asOptionalInput<NodeTemplateNodeTypeFlexibility>(nodeTypeFlexibility),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverBinding = pulumi.Input.asOptionalInput<NodeTemplateServerBinding>(serverBinding);
+    this.accelerators,
+    this.cpuOvercommitType,
+    this.description,
+    this.disks,
+    this.name,
+    this.nodeAffinityLabels,
+    this.nodeType,
+    this.nodeTypeFlexibility,
+    this.project,
+    this.region,
+    this.serverBinding,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,17 +94,17 @@ class NodeTemplateArgs {
 
   factory NodeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return NodeTemplateArgs(
-      accelerators: map['accelerators'] == null ? null : pulumi.Output.create<List<NodeTemplateAccelerator>>(pulumi.Input.decodeList<NodeTemplateAccelerator>(map['accelerators'], (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>()))),
-      cpuOvercommitType: map['cpuOvercommitType'] == null ? null : pulumi.Output.create<String>(map['cpuOvercommitType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disks: map['disks'] == null ? null : pulumi.Output.create<List<NodeTemplateDisk>>(pulumi.Input.decodeList<NodeTemplateDisk>(map['disks'], (value) => NodeTemplateDisk.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeAffinityLabels: map['nodeAffinityLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['nodeAffinityLabels'] as Map).cast<String, String>()),
-      nodeType: map['nodeType'] == null ? null : pulumi.Output.create<String>(map['nodeType'] as String),
-      nodeTypeFlexibility: map['nodeTypeFlexibility'] == null ? null : pulumi.Output.create<NodeTemplateNodeTypeFlexibility>(NodeTemplateNodeTypeFlexibility.fromMap((map['nodeTypeFlexibility'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverBinding: map['serverBinding'] == null ? null : pulumi.Output.create<NodeTemplateServerBinding>(NodeTemplateServerBinding.fromMap((map['serverBinding'] as Map).cast<String, dynamic>())),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<NodeTemplateAccelerator>(map['accelerators'], (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpuOvercommitType: map['cpuOvercommitType'] == null ? null : (map['cpuOvercommitType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<NodeTemplateDisk>(map['disks'], (value) => NodeTemplateDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeAffinityLabels: map['nodeAffinityLabels'] == null ? null : ((map['nodeAffinityLabels'] as Map).cast<String, String>()).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
+      nodeTypeFlexibility: map['nodeTypeFlexibility'] == null ? null : (NodeTemplateNodeTypeFlexibility.fromMap((map['nodeTypeFlexibility'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverBinding: map['serverBinding'] == null ? null : (NodeTemplateServerBinding.fromMap((map['serverBinding'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

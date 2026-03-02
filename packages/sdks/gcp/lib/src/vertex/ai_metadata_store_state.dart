@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiMetadataStoreState {
   /// (Output)
   /// The disk utilization of the MetadataStore in bytes.
-  final String? diskUtilizationBytes;
+  final pulumi.Input<String>? diskUtilizationBytes;
 
   /// Creates a new [AiMetadataStoreState].
   /// [diskUtilizationBytes] (Output)
@@ -20,7 +21,7 @@ class AiMetadataStoreState {
 
   factory AiMetadataStoreState.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreState(
-      diskUtilizationBytes: map['diskUtilizationBytes'] == null ? null : map['diskUtilizationBytes'] as String,
+      diskUtilizationBytes: map['diskUtilizationBytes'] == null ? null : (map['diskUtilizationBytes'] as String).input(),
     );
   }
 }

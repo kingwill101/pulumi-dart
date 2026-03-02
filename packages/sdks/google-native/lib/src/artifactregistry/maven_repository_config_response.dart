@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 class MavenRepositoryConfigResponse {
   /// The repository with this flag will allow publishing the same snapshot versions.
-  final bool allowSnapshotOverwrites;
+  final pulumi.Input<bool> allowSnapshotOverwrites;
   /// Version policy defines the versions that the registry will accept.
-  final String versionPolicy;
+  final pulumi.Input<String> versionPolicy;
 
   /// Creates a new [MavenRepositoryConfigResponse].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same snapshot versions.
@@ -25,8 +26,8 @@ class MavenRepositoryConfigResponse {
 
   factory MavenRepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return MavenRepositoryConfigResponse(
-      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] as bool,
-      versionPolicy: map['versionPolicy'] as String,
+      allowSnapshotOverwrites: (map['allowSnapshotOverwrites'] as bool).input(),
+      versionPolicy: (map['versionPolicy'] as String).input(),
     );
   }
 }

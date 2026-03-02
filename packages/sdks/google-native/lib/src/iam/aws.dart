@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an Amazon Web Services identity provider.
 class Aws {
   /// The AWS account ID.
-  final String accountId;
+  final pulumi.Input<String> accountId;
 
   /// Creates a new [Aws].
   /// [accountId] The AWS account ID.
@@ -20,7 +21,7 @@ class Aws {
 
   factory Aws.fromMap(Map<String, dynamic> map) {
     return Aws(
-      accountId: map['accountId'] as String,
+      accountId: (map['accountId'] as String).input(),
     );
   }
 }

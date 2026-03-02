@@ -16,11 +16,9 @@ class GetJitRequestArgs {
   /// [jitRequestName] The name of the JIT request.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetJitRequestArgs({
-    required pulumi.Output<String> jitRequestName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      jitRequestName = pulumi.Input.asInput<String>(jitRequestName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.jitRequestName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetJitRequestArgs {
 
   factory GetJitRequestArgs.fromMap(Map<String, dynamic> map) {
     return GetJitRequestArgs(
-      jitRequestName: pulumi.Output.create<String>(map['jitRequestName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      jitRequestName: (map['jitRequestName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

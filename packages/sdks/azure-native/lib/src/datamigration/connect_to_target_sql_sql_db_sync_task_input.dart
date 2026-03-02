@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_connection_info.dart';
 
 /// Input for the task that validates connection to Azure SQL DB and target server requirements
 class ConnectToTargetSqlSqlDbSyncTaskInput {
   /// Connection information for source SQL Server
-  final SqlConnectionInfo sourceConnectionInfo;
+  final pulumi.Input<SqlConnectionInfo> sourceConnectionInfo;
   /// Connection information for target SQL DB
-  final SqlConnectionInfo targetConnectionInfo;
+  final pulumi.Input<SqlConnectionInfo> targetConnectionInfo;
 
   /// Creates a new [ConnectToTargetSqlSqlDbSyncTaskInput].
   /// [sourceConnectionInfo] Connection information for source SQL Server
@@ -19,15 +20,15 @@ class ConnectToTargetSqlSqlDbSyncTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory ConnectToTargetSqlSqlDbSyncTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlSqlDbSyncTaskInput(
-      sourceConnectionInfo: SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      targetConnectionInfo: SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

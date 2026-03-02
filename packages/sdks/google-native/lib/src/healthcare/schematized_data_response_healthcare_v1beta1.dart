@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The content of an HL7v2 message in a structured format as specified by a schema.
 class SchematizedDataResponseHealthcareV1beta1 {
   /// JSON output of the parser.
-  final String data;
+  final pulumi.Input<String> data;
   /// The error output of the parser.
-  final String error;
+  final pulumi.Input<String> error;
 
   /// Creates a new [SchematizedDataResponseHealthcareV1beta1].
   /// [data] JSON output of the parser.
@@ -25,8 +26,8 @@ class SchematizedDataResponseHealthcareV1beta1 {
 
   factory SchematizedDataResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return SchematizedDataResponseHealthcareV1beta1(
-      data: map['data'] as String,
-      error: map['error'] as String,
+      data: (map['data'] as String).input(),
+      error: (map['error'] as String).input(),
     );
   }
 }

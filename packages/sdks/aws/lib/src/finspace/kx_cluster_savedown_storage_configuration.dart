@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterSavedownStorageConfiguration {
   /// Size of temporary storage in gigabytes. Must be between 10 and 16000.
-  final int? size;
+  final pulumi.Input<int>? size;
   /// Type of writeable storage space for temporarily storing your savedown data. The valid values are:
   /// * SDS01 - This type represents 3000 IOPS and io2 ebs volume type.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The name of the kdb volume that you want to use as writeable save-down storage for clusters.
-  final String? volumeName;
+  final pulumi.Input<String>? volumeName;
 
   /// Creates a new [KxClusterSavedownStorageConfiguration].
   /// [size] Size of temporary storage in gigabytes. Must be between 10 and 16000.
@@ -30,9 +31,9 @@ class KxClusterSavedownStorageConfiguration {
 
   factory KxClusterSavedownStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterSavedownStorageConfiguration(
-      size: map['size'] == null ? null : map['size'] as int,
-      type: map['type'] == null ? null : map['type'] as String,
-      volumeName: map['volumeName'] == null ? null : map['volumeName'] as String,
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class GetImageVersionsArgs {
   /// [project] The ID of the project to list versions in.
   /// [region] The location to list versions in.
   GetImageVersionsArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetImageVersionsArgs {
 
   factory GetImageVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetImageVersionsArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

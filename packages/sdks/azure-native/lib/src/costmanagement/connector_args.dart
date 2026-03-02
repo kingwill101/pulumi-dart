@@ -40,27 +40,17 @@ class ConnectorArgs {
   /// [status] Connector status
   /// [tags] Resource tags.
   ConnectorArgs({
-    pulumi.Output<String>? connectorName,
-    pulumi.Output<String>? credentialsKey,
-    pulumi.Output<String>? credentialsSecret,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? reportId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      credentialsKey = pulumi.Input.asOptionalInput<String>(credentialsKey),
-      credentialsSecret = pulumi.Input.asOptionalInput<String>(credentialsSecret),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      reportId = pulumi.Input.asOptionalInput<String>(reportId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.connectorName,
+    this.credentialsKey,
+    this.credentialsSecret,
+    this.displayName,
+    this.kind,
+    this.location,
+    this.reportId,
+    required this.resourceGroupName,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      credentialsKey: map['credentialsKey'] == null ? null : pulumi.Output.create<String>(map['credentialsKey'] as String),
-      credentialsSecret: map['credentialsSecret'] == null ? null : pulumi.Output.create<String>(map['credentialsSecret'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      reportId: map['reportId'] == null ? null : pulumi.Output.create<String>(map['reportId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      credentialsKey: map['credentialsKey'] == null ? null : (map['credentialsKey'] as String).input(),
+      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      reportId: map['reportId'] == null ? null : (map['reportId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

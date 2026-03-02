@@ -27,17 +27,12 @@ class HsmArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetId] The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
   HsmArgs({
-    pulumi.Output<String>? availabilityZone,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.availabilityZone,
+    required this.clusterId,
+    this.ipAddress,
+    this.region,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class HsmArgs {
 
   factory HsmArgs.fromMap(Map<String, dynamic> map) {
     return HsmArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion {
   /// List of AWS account IDs to apply to the analysis rule criteria. The accounts cannot include the organization analyzer owner account. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers.
-  final List<String>? accountIds;
+  final pulumi.Input<List<String>>? accountIds;
   /// List of key-value pairs for resource tags to exclude from the analysis.
-  final List<Map<String, String>>? resourceTags;
+  final pulumi.Input<List<Map<String, String>>>? resourceTags;
 
   /// Creates a new [AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion].
   /// [accountIds] List of AWS account IDs to apply to the analysis rule criteria. The accounts cannot include the organization analyzer owner account. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers.
@@ -24,8 +25,8 @@ class AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion {
 
   factory AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion(
-      accountIds: map['accountIds'] == null ? null : (map['accountIds'] as List).cast<String>(),
-      resourceTags: map['resourceTags'] == null ? null : (map['resourceTags'] as List).cast<Map<String, String>>(),
+      accountIds: map['accountIds'] == null ? null : ((map['accountIds'] as List).cast<String>()).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as List).cast<Map<String, String>>()).input(),
     );
   }
 }

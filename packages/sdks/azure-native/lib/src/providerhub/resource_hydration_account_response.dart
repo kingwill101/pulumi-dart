@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceHydrationAccountResponse {
   /// The account name.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// The encrypted key.
-  final String? encryptedKey;
+  final pulumi.Input<String>? encryptedKey;
   /// The max child resource consistency job limit.
-  final double? maxChildResourceConsistencyJobLimit;
+  final pulumi.Input<double>? maxChildResourceConsistencyJobLimit;
   /// The subscription id.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [ResourceHydrationAccountResponse].
   /// [accountName] The account name.
@@ -34,10 +35,10 @@ class ResourceHydrationAccountResponse {
 
   factory ResourceHydrationAccountResponse.fromMap(Map<String, dynamic> map) {
     return ResourceHydrationAccountResponse(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      encryptedKey: map['encryptedKey'] == null ? null : map['encryptedKey'] as String,
-      maxChildResourceConsistencyJobLimit: map['maxChildResourceConsistencyJobLimit'] == null ? null : map['maxChildResourceConsistencyJobLimit'] as double,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      encryptedKey: map['encryptedKey'] == null ? null : (map['encryptedKey'] as String).input(),
+      maxChildResourceConsistencyJobLimit: map['maxChildResourceConsistencyJobLimit'] == null ? null : (map['maxChildResourceConsistencyJobLimit'] as double).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

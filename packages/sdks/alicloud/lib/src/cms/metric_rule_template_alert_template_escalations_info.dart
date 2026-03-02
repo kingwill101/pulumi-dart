@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricRuleTemplateAlertTemplateEscalationsInfo {
   /// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-  final String? comparisonOperator;
+  final pulumi.Input<String>? comparisonOperator;
   /// The statistical aggregation method for warn-level alerts.
-  final String? statistics;
+  final pulumi.Input<String>? statistics;
   /// The threshold for warn-level alerts.
-  final String? threshold;
+  final pulumi.Input<String>? threshold;
   /// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-  final String? times;
+  final pulumi.Input<String>? times;
 
   /// Creates a new [MetricRuleTemplateAlertTemplateEscalationsInfo].
   /// [comparisonOperator] The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -34,10 +35,10 @@ class MetricRuleTemplateAlertTemplateEscalationsInfo {
 
   factory MetricRuleTemplateAlertTemplateEscalationsInfo.fromMap(Map<String, dynamic> map) {
     return MetricRuleTemplateAlertTemplateEscalationsInfo(
-      comparisonOperator: map['comparisonOperator'] == null ? null : map['comparisonOperator'] as String,
-      statistics: map['statistics'] == null ? null : map['statistics'] as String,
-      threshold: map['threshold'] == null ? null : map['threshold'] as String,
-      times: map['times'] == null ? null : map['times'] as String,
+      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator'] as String).input(),
+      statistics: map['statistics'] == null ? null : (map['statistics'] as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
+      times: map['times'] == null ? null : (map['times'] as String).input(),
     );
   }
 }

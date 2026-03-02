@@ -39,25 +39,16 @@ class ResponseHeadersPolicyState {
   /// [securityHeadersConfig] A configuration for a set of security-related HTTP response headers. See Security Headers Config for more information.
   /// [serverTimingHeadersConfig] A configuration for enabling the Server-Timing header in HTTP responses sent from CloudFront. See Server Timing Headers Config for more information.
   ResponseHeadersPolicyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? comment,
-    pulumi.Output<ResponseHeadersPolicyCorsConfig>? corsConfig,
-    pulumi.Output<ResponseHeadersPolicyCustomHeadersConfig>? customHeadersConfig,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<ResponseHeadersPolicyRemoveHeadersConfig>? removeHeadersConfig,
-    pulumi.Output<ResponseHeadersPolicySecurityHeadersConfig>? securityHeadersConfig,
-    pulumi.Output<ResponseHeadersPolicyServerTimingHeadersConfig>? serverTimingHeadersConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      corsConfig = pulumi.Input.asOptionalInput<ResponseHeadersPolicyCorsConfig>(corsConfig),
-      customHeadersConfig = pulumi.Input.asOptionalInput<ResponseHeadersPolicyCustomHeadersConfig>(customHeadersConfig),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      removeHeadersConfig = pulumi.Input.asOptionalInput<ResponseHeadersPolicyRemoveHeadersConfig>(removeHeadersConfig),
-      securityHeadersConfig = pulumi.Input.asOptionalInput<ResponseHeadersPolicySecurityHeadersConfig>(securityHeadersConfig),
-      serverTimingHeadersConfig = pulumi.Input.asOptionalInput<ResponseHeadersPolicyServerTimingHeadersConfig>(serverTimingHeadersConfig);
+    this.arn,
+    this.comment,
+    this.corsConfig,
+    this.customHeadersConfig,
+    this.etag,
+    this.name,
+    this.removeHeadersConfig,
+    this.securityHeadersConfig,
+    this.serverTimingHeadersConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ResponseHeadersPolicyState {
 
   factory ResponseHeadersPolicyState.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      corsConfig: map['corsConfig'] == null ? null : pulumi.Output.create<ResponseHeadersPolicyCorsConfig>(ResponseHeadersPolicyCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())),
-      customHeadersConfig: map['customHeadersConfig'] == null ? null : pulumi.Output.create<ResponseHeadersPolicyCustomHeadersConfig>(ResponseHeadersPolicyCustomHeadersConfig.fromMap((map['customHeadersConfig'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      removeHeadersConfig: map['removeHeadersConfig'] == null ? null : pulumi.Output.create<ResponseHeadersPolicyRemoveHeadersConfig>(ResponseHeadersPolicyRemoveHeadersConfig.fromMap((map['removeHeadersConfig'] as Map).cast<String, dynamic>())),
-      securityHeadersConfig: map['securityHeadersConfig'] == null ? null : pulumi.Output.create<ResponseHeadersPolicySecurityHeadersConfig>(ResponseHeadersPolicySecurityHeadersConfig.fromMap((map['securityHeadersConfig'] as Map).cast<String, dynamic>())),
-      serverTimingHeadersConfig: map['serverTimingHeadersConfig'] == null ? null : pulumi.Output.create<ResponseHeadersPolicyServerTimingHeadersConfig>(ResponseHeadersPolicyServerTimingHeadersConfig.fromMap((map['serverTimingHeadersConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      corsConfig: map['corsConfig'] == null ? null : (ResponseHeadersPolicyCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())).input(),
+      customHeadersConfig: map['customHeadersConfig'] == null ? null : (ResponseHeadersPolicyCustomHeadersConfig.fromMap((map['customHeadersConfig'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      removeHeadersConfig: map['removeHeadersConfig'] == null ? null : (ResponseHeadersPolicyRemoveHeadersConfig.fromMap((map['removeHeadersConfig'] as Map).cast<String, dynamic>())).input(),
+      securityHeadersConfig: map['securityHeadersConfig'] == null ? null : (ResponseHeadersPolicySecurityHeadersConfig.fromMap((map['securityHeadersConfig'] as Map).cast<String, dynamic>())).input(),
+      serverTimingHeadersConfig: map['serverTimingHeadersConfig'] == null ? null : (ResponseHeadersPolicyServerTimingHeadersConfig.fromMap((map['serverTimingHeadersConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

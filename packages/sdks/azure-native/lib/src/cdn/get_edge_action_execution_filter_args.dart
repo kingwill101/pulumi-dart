@@ -19,13 +19,10 @@ class GetEdgeActionExecutionFilterArgs {
   /// [executionFilter] The name of the execution filter
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEdgeActionExecutionFilterArgs({
-    required pulumi.Output<String> edgeActionName,
-    required pulumi.Output<String> executionFilter,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      edgeActionName = pulumi.Input.asInput<String>(edgeActionName),
-      executionFilter = pulumi.Input.asInput<String>(executionFilter),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.edgeActionName,
+    required this.executionFilter,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEdgeActionExecutionFilterArgs {
 
   factory GetEdgeActionExecutionFilterArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeActionExecutionFilterArgs(
-      edgeActionName: pulumi.Output.create<String>(map['edgeActionName'] as String),
-      executionFilter: pulumi.Output.create<String>(map['executionFilter'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      edgeActionName: (map['edgeActionName'] as String).input(),
+      executionFilter: (map['executionFilter'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

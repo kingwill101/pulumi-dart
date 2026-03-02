@@ -19,13 +19,10 @@ class GetPrivateLinkScopedResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
   GetPrivateLinkScopedResourceArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scopeName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeName = pulumi.Input.asInput<String>(scopeName);
+    required this.name,
+    required this.resourceGroupName,
+    required this.scopeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateLinkScopedResourceArgs {
 
   factory GetPrivateLinkScopedResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkScopedResourceArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeName: pulumi.Output.create<String>(map['scopeName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeName: (map['scopeName'] as String).input(),
     );
   }
 }

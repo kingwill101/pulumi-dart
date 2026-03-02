@@ -19,13 +19,10 @@ class GetAutomationRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetAutomationRuleArgs({
-    required pulumi.Output<String> automationRuleId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      automationRuleId = pulumi.Input.asInput<String>(automationRuleId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.automationRuleId,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAutomationRuleArgs {
 
   factory GetAutomationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetAutomationRuleArgs(
-      automationRuleId: pulumi.Output.create<String>(map['automationRuleId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      automationRuleId: (map['automationRuleId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

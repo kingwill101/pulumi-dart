@@ -15,11 +15,9 @@ class KeyVersionState {
   /// [keyId] The id of the master key (CMK).
   /// [keyVersionId] The id of the Alikms key version.
   KeyVersionState({
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? keyVersionId,
-  }) :
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      keyVersionId = pulumi.Input.asOptionalInput<String>(keyVersionId);
+    this.keyId,
+    this.keyVersionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class KeyVersionState {
 
   factory KeyVersionState.fromMap(Map<String, dynamic> map) {
     return KeyVersionState(
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      keyVersionId: map['keyVersionId'] == null ? null : pulumi.Output.create<String>(map['keyVersionId'] as String),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyVersionId: map['keyVersionId'] == null ? null : (map['keyVersionId'] as String).input(),
     );
   }
 }

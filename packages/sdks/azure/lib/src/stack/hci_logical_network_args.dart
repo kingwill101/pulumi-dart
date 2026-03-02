@@ -35,23 +35,15 @@ class HciLogicalNetworkArgs {
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Logical Network.
   /// [virtualSwitchName] The name of the virtual switch on the cluster used to associate with the Azure Stack HCI Logical Network. Possible switch names can be retrieved by following this [Azure guide](https://learn.microsoft.com/azure-stack/hci/manage/create-logical-networks?tabs=azurecli#prerequisites). Changing this forces a new resource to be created.
   HciLogicalNetworkArgs({
-    required pulumi.Output<String> customLocationId,
-    pulumi.Output<List<String>>? dnsServers,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<HciLogicalNetworkSubnet> subnet,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualSwitchName,
-  }) :
-      customLocationId = pulumi.Input.asInput<String>(customLocationId),
-      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnet = pulumi.Input.asInput<HciLogicalNetworkSubnet>(subnet),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualSwitchName = pulumi.Input.asInput<String>(virtualSwitchName);
+    required this.customLocationId,
+    this.dnsServers,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.subnet,
+    this.tags,
+    required this.virtualSwitchName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class HciLogicalNetworkArgs {
 
   factory HciLogicalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return HciLogicalNetworkArgs(
-      customLocationId: pulumi.Output.create<String>(map['customLocationId'] as String),
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnet: pulumi.Output.create<HciLogicalNetworkSubnet>(HciLogicalNetworkSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualSwitchName: pulumi.Output.create<String>(map['virtualSwitchName'] as String),
+      customLocationId: (map['customLocationId'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnet: (HciLogicalNetworkSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualSwitchName: (map['virtualSwitchName'] as String).input(),
     );
   }
 }

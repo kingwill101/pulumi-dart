@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_run.dart';
 import 'gke.dart';
 import 'http_endpoint.dart';
@@ -8,17 +9,17 @@ import 'network_config.dart';
 /// Represents a target of an invocation over HTTP.
 class Destination {
   /// The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
-  final String? cloudFunction;
+  final pulumi.Input<String>? cloudFunction;
   /// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
-  final CloudRun? cloudRun;
+  final pulumi.Input<CloudRun>? cloudRun;
   /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
-  final GKE? gke;
+  final pulumi.Input<GKE>? gke;
   /// An HTTP endpoint destination described by an URI.
-  final HttpEndpoint? httpEndpoint;
+  final pulumi.Input<HttpEndpoint>? httpEndpoint;
   /// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
-  final NetworkConfig? networkConfig;
+  final pulumi.Input<NetworkConfig>? networkConfig;
   /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
-  final String? workflow;
+  final pulumi.Input<String>? workflow;
 
   /// Creates a new [Destination].
   /// [cloudFunction] The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
@@ -39,22 +40,22 @@ class Destination {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cloudFunction': ?cloudFunction,
-      'cloudRun': ?cloudRun == null ? null : cloudRun!.toMap(),
-      'gke': ?gke == null ? null : gke!.toMap(),
-      'httpEndpoint': ?httpEndpoint == null ? null : httpEndpoint!.toMap(),
-      'networkConfig': ?networkConfig == null ? null : networkConfig!.toMap(),
+      'cloudRun': ?pulumi.Input.mapOptionalInputValue<CloudRun, Map<String, dynamic>>(cloudRun, (value) => value.toMap()),
+      'gke': ?pulumi.Input.mapOptionalInputValue<GKE, Map<String, dynamic>>(gke, (value) => value.toMap()),
+      'httpEndpoint': ?pulumi.Input.mapOptionalInputValue<HttpEndpoint, Map<String, dynamic>>(httpEndpoint, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<NetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
       'workflow': ?workflow,
     };
   }
 
   factory Destination.fromMap(Map<String, dynamic> map) {
     return Destination(
-      cloudFunction: map['cloudFunction'] == null ? null : map['cloudFunction'] as String,
-      cloudRun: map['cloudRun'] == null ? null : CloudRun.fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
-      gke: map['gke'] == null ? null : GKE.fromMap((map['gke'] as Map).cast<String, dynamic>()),
-      httpEndpoint: map['httpEndpoint'] == null ? null : HttpEndpoint.fromMap((map['httpEndpoint'] as Map).cast<String, dynamic>()),
-      networkConfig: map['networkConfig'] == null ? null : NetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
-      workflow: map['workflow'] == null ? null : map['workflow'] as String,
+      cloudFunction: map['cloudFunction'] == null ? null : (map['cloudFunction'] as String).input(),
+      cloudRun: map['cloudRun'] == null ? null : (CloudRun.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
+      gke: map['gke'] == null ? null : (GKE.fromMap((map['gke'] as Map).cast<String, dynamic>())).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : (HttpEndpoint.fromMap((map['httpEndpoint'] as Map).cast<String, dynamic>())).input(),
+      networkConfig: map['networkConfig'] == null ? null : (NetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      workflow: map['workflow'] == null ? null : (map['workflow'] as String).input(),
     );
   }
 }

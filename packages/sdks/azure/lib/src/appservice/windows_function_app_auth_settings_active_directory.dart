@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsFunctionAppAuthSettingsActiveDirectory {
   /// Specifies a list of Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
   ///
   /// > **Note:** The `client_id` value is always considered an allowed audience.
-  final List<String>? allowedAudiences;
+  final pulumi.Input<List<String>>? allowedAudiences;
   /// The ID of the Client to use to authenticate with Azure Active Directory.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The Client Secret for the Client ID. Cannot be used with `client_secret_setting_name`.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// The App Setting name that contains the client secret of the Client. Cannot be used with `client_secret`.
-  final String? clientSecretSettingName;
+  final pulumi.Input<String>? clientSecretSettingName;
 
   /// Creates a new [WindowsFunctionAppAuthSettingsActiveDirectory].
   /// [allowedAudiences] Specifies a list of Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
@@ -36,10 +37,10 @@ class WindowsFunctionAppAuthSettingsActiveDirectory {
 
   factory WindowsFunctionAppAuthSettingsActiveDirectory.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppAuthSettingsActiveDirectory(
-      allowedAudiences: map['allowedAudiences'] == null ? null : (map['allowedAudiences'] as List).cast<String>(),
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : map['clientSecretSettingName'] as String,
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
     );
   }
 }

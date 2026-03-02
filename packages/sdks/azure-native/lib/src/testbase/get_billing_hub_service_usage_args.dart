@@ -24,19 +24,13 @@ class GetBillingHubServiceUsageArgs {
   /// [startTimeStamp] Required.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   GetBillingHubServiceUsageArgs({
-    required pulumi.Output<String> endTimeStamp,
-    pulumi.Output<int>? pageIndex,
-    pulumi.Output<int>? pageSize,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> startTimeStamp,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      endTimeStamp = pulumi.Input.asInput<String>(endTimeStamp),
-      pageIndex = pulumi.Input.asOptionalInput<int>(pageIndex),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startTimeStamp = pulumi.Input.asInput<String>(startTimeStamp),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    required this.endTimeStamp,
+    this.pageIndex,
+    this.pageSize,
+    required this.resourceGroupName,
+    required this.startTimeStamp,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class GetBillingHubServiceUsageArgs {
 
   factory GetBillingHubServiceUsageArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingHubServiceUsageArgs(
-      endTimeStamp: pulumi.Output.create<String>(map['endTimeStamp'] as String),
-      pageIndex: map['pageIndex'] == null ? null : pulumi.Output.create<int>(map['pageIndex'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startTimeStamp: pulumi.Output.create<String>(map['startTimeStamp'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      endTimeStamp: (map['endTimeStamp'] as String).input(),
+      pageIndex: map['pageIndex'] == null ? null : (map['pageIndex'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startTimeStamp: (map['startTimeStamp'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

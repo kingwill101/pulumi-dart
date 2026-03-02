@@ -53,35 +53,21 @@ class NetworkInsightsPathState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   NetworkInsightsPathState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? destination,
-    pulumi.Output<String>? destinationArn,
-    pulumi.Output<String>? destinationIp,
-    pulumi.Output<int>? destinationPort,
-    pulumi.Output<NetworkInsightsPathFilterAtDestination>? filterAtDestination,
-    pulumi.Output<NetworkInsightsPathFilterAtSource>? filterAtSource,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? sourceArn,
-    pulumi.Output<String>? sourceIp,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      destinationArn = pulumi.Input.asOptionalInput<String>(destinationArn),
-      destinationIp = pulumi.Input.asOptionalInput<String>(destinationIp),
-      destinationPort = pulumi.Input.asOptionalInput<int>(destinationPort),
-      filterAtDestination = pulumi.Input.asOptionalInput<NetworkInsightsPathFilterAtDestination>(filterAtDestination),
-      filterAtSource = pulumi.Input.asOptionalInput<NetworkInsightsPathFilterAtSource>(filterAtSource),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      sourceArn = pulumi.Input.asOptionalInput<String>(sourceArn),
-      sourceIp = pulumi.Input.asOptionalInput<String>(sourceIp),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.destination,
+    this.destinationArn,
+    this.destinationIp,
+    this.destinationPort,
+    this.filterAtDestination,
+    this.filterAtSource,
+    this.protocol,
+    this.region,
+    this.source,
+    this.sourceArn,
+    this.sourceIp,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class NetworkInsightsPathState {
 
   factory NetworkInsightsPathState.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsPathState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      destinationArn: map['destinationArn'] == null ? null : pulumi.Output.create<String>(map['destinationArn'] as String),
-      destinationIp: map['destinationIp'] == null ? null : pulumi.Output.create<String>(map['destinationIp'] as String),
-      destinationPort: map['destinationPort'] == null ? null : pulumi.Output.create<int>(map['destinationPort'] as int),
-      filterAtDestination: map['filterAtDestination'] == null ? null : pulumi.Output.create<NetworkInsightsPathFilterAtDestination>(NetworkInsightsPathFilterAtDestination.fromMap((map['filterAtDestination'] as Map).cast<String, dynamic>())),
-      filterAtSource: map['filterAtSource'] == null ? null : pulumi.Output.create<NetworkInsightsPathFilterAtSource>(NetworkInsightsPathFilterAtSource.fromMap((map['filterAtSource'] as Map).cast<String, dynamic>())),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      sourceArn: map['sourceArn'] == null ? null : pulumi.Output.create<String>(map['sourceArn'] as String),
-      sourceIp: map['sourceIp'] == null ? null : pulumi.Output.create<String>(map['sourceIp'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
+      destinationIp: map['destinationIp'] == null ? null : (map['destinationIp'] as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      filterAtDestination: map['filterAtDestination'] == null ? null : (NetworkInsightsPathFilterAtDestination.fromMap((map['filterAtDestination'] as Map).cast<String, dynamic>())).input(),
+      filterAtSource: map['filterAtSource'] == null ? null : (NetworkInsightsPathFilterAtSource.fromMap((map['filterAtSource'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

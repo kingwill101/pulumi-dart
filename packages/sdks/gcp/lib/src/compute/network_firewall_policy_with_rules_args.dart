@@ -36,17 +36,12 @@ class NetworkFirewallPolicyWithRulesArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] A list of firewall policy rules.
   NetworkFirewallPolicyWithRulesArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<NetworkFirewallPolicyWithRulesRule>> rules,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asInput<List<NetworkFirewallPolicyWithRulesRule>>(rules);
+    this.description,
+    this.name,
+    this.policyType,
+    this.project,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,11 +55,11 @@ class NetworkFirewallPolicyWithRulesArgs {
 
   factory NetworkFirewallPolicyWithRulesArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyWithRulesArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: pulumi.Output.create<List<NetworkFirewallPolicyWithRulesRule>>(pulumi.Input.decodeList<NetworkFirewallPolicyWithRulesRule>(map['rules'], (value) => NetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: (pulumi.Input.decodeList<NetworkFirewallPolicyWithRulesRule>(map['rules'], (value) => NetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,25 +36,16 @@ class SearchIndexState {
   /// [tableName] The name of the OTS table. If changed, a new table would be created.
   /// [timeToLive] The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
   SearchIndexState({
-    pulumi.Output<int>? createTime,
-    pulumi.Output<int>? currentSyncTimestamp,
-    pulumi.Output<String>? indexId,
-    pulumi.Output<String>? indexName,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<List<SearchIndexSchema>>? schemas,
-    pulumi.Output<String>? syncPhase,
-    pulumi.Output<String>? tableName,
-    pulumi.Output<int>? timeToLive,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      currentSyncTimestamp = pulumi.Input.asOptionalInput<int>(currentSyncTimestamp),
-      indexId = pulumi.Input.asOptionalInput<String>(indexId),
-      indexName = pulumi.Input.asOptionalInput<String>(indexName),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      schemas = pulumi.Input.asOptionalInput<List<SearchIndexSchema>>(schemas),
-      syncPhase = pulumi.Input.asOptionalInput<String>(syncPhase),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName),
-      timeToLive = pulumi.Input.asOptionalInput<int>(timeToLive);
+    this.createTime,
+    this.currentSyncTimestamp,
+    this.indexId,
+    this.indexName,
+    this.instanceName,
+    this.schemas,
+    this.syncPhase,
+    this.tableName,
+    this.timeToLive,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class SearchIndexState {
 
   factory SearchIndexState.fromMap(Map<String, dynamic> map) {
     return SearchIndexState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      currentSyncTimestamp: map['currentSyncTimestamp'] == null ? null : pulumi.Output.create<int>(map['currentSyncTimestamp'] as int),
-      indexId: map['indexId'] == null ? null : pulumi.Output.create<String>(map['indexId'] as String),
-      indexName: map['indexName'] == null ? null : pulumi.Output.create<String>(map['indexName'] as String),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      schemas: map['schemas'] == null ? null : pulumi.Output.create<List<SearchIndexSchema>>(pulumi.Input.decodeList<SearchIndexSchema>(map['schemas'], (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))),
-      syncPhase: map['syncPhase'] == null ? null : pulumi.Output.create<String>(map['syncPhase'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
-      timeToLive: map['timeToLive'] == null ? null : pulumi.Output.create<int>(map['timeToLive'] as int),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      currentSyncTimestamp: map['currentSyncTimestamp'] == null ? null : (map['currentSyncTimestamp'] as int).input(),
+      indexId: map['indexId'] == null ? null : (map['indexId'] as String).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchema>(map['schemas'], (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      syncPhase: map['syncPhase'] == null ? null : (map['syncPhase'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
     );
   }
 }

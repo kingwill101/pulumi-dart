@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoliciesPolicy {
   /// The number of references to the policy.
-  final int attachmentCount;
+  final pulumi.Input<int> attachmentCount;
   /// The time when the policy was created.
-  final String createDate;
+  final pulumi.Input<String> createDate;
   /// The default version of the policy.
-  final String defaultVersion;
+  final pulumi.Input<String> defaultVersion;
   /// The description of the policy.
-  final String description;
+  final pulumi.Input<String> description;
   /// The document of the policy. **Note:** `document` takes effect only if `enable_details` is set to `true`.
-  final String document;
+  final pulumi.Input<String> document;
   /// (Available since v1.114.0) The ID of the Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the policy.
-  final String name;
+  final pulumi.Input<String> name;
   /// (Available since v1.114.0) The document of the policy. **Note:** `policy_document` takes effect only if `enable_details` is set to `true`.
-  final String policyDocument;
+  final pulumi.Input<String> policyDocument;
   /// (Available since v1.114.0) The name of the policy.
-  final String policyName;
+  final pulumi.Input<String> policyName;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The type of the policy. Valid values: `System` and `Custom`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The time when the policy was modified.
-  final String updateDate;
+  final pulumi.Input<String> updateDate;
   /// The name of the RAM user.
-  final String userName;
+  final pulumi.Input<String> userName;
   /// (Available since v1.114.0) The ID of the default policy version. **Note:** `version_id` takes effect only if `enable_details` is set to `true`.
-  final String versionId;
+  final pulumi.Input<String> versionId;
 
   /// Creates a new [GetPoliciesPolicy].
   /// [attachmentCount] The number of references to the policy.
@@ -84,20 +85,20 @@ class GetPoliciesPolicy {
 
   factory GetPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetPoliciesPolicy(
-      attachmentCount: map['attachmentCount'] as int,
-      createDate: map['createDate'] as String,
-      defaultVersion: map['defaultVersion'] as String,
-      description: map['description'] as String,
-      document: map['document'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      policyDocument: map['policyDocument'] as String,
-      policyName: map['policyName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      updateDate: map['updateDate'] as String,
-      userName: map['userName'] as String,
-      versionId: map['versionId'] as String,
+      attachmentCount: (map['attachmentCount'] as int).input(),
+      createDate: (map['createDate'] as String).input(),
+      defaultVersion: (map['defaultVersion'] as String).input(),
+      description: (map['description'] as String).input(),
+      document: (map['document'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      policyDocument: (map['policyDocument'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      updateDate: (map['updateDate'] as String).input(),
+      userName: (map['userName'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines parameters for http connection pooling
 class HttpConnectionPoolResponse {
   /// Maximum number of pending http1 requests allowed
-  final int? http1MaxPendingRequests;
+  final pulumi.Input<int>? http1MaxPendingRequests;
   /// Maximum number of http2 requests allowed
-  final int? http2MaxRequests;
+  final pulumi.Input<int>? http2MaxRequests;
 
   /// Creates a new [HttpConnectionPoolResponse].
   /// [http1MaxPendingRequests] Maximum number of pending http1 requests allowed
@@ -25,8 +26,8 @@ class HttpConnectionPoolResponse {
 
   factory HttpConnectionPoolResponse.fromMap(Map<String, dynamic> map) {
     return HttpConnectionPoolResponse(
-      http1MaxPendingRequests: map['http1MaxPendingRequests'] == null ? null : map['http1MaxPendingRequests'] as int,
-      http2MaxRequests: map['http2MaxRequests'] == null ? null : map['http2MaxRequests'] as int,
+      http1MaxPendingRequests: map['http1MaxPendingRequests'] == null ? null : (map['http1MaxPendingRequests'] as int).input(),
+      http2MaxRequests: map['http2MaxRequests'] == null ? null : (map['http2MaxRequests'] as int).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'web_application_firewall_scrubbing_rules.dart';
 /// To scrub sensitive log fields
 class PolicySettingsLogScrubbing {
   /// The rules that are applied to the logs for scrubbing.
-  final List<WebApplicationFirewallScrubbingRules>? scrubbingRules;
+  final pulumi.Input<List<WebApplicationFirewallScrubbingRules>>? scrubbingRules;
   /// State of the log scrubbing config. Default value is Enabled.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [PolicySettingsLogScrubbing].
   /// [scrubbingRules] The rules that are applied to the logs for scrubbing.
@@ -20,15 +20,15 @@ class PolicySettingsLogScrubbing {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scrubbingRules': ?scrubbingRules == null ? null : pulumi.Input.encodeList<WebApplicationFirewallScrubbingRules, Map<String, dynamic>>(scrubbingRules!, (value) => value.toMap()),
+      'scrubbingRules': ?pulumi.Input.mapOptionalInputValue<List<WebApplicationFirewallScrubbingRules>, List<Map<String, dynamic>>>(scrubbingRules, (value) => pulumi.Input.encodeList<WebApplicationFirewallScrubbingRules, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': ?state,
     };
   }
 
   factory PolicySettingsLogScrubbing.fromMap(Map<String, dynamic> map) {
     return PolicySettingsLogScrubbing(
-      scrubbingRules: map['scrubbingRules'] == null ? null : pulumi.Input.decodeList<WebApplicationFirewallScrubbingRules>(map['scrubbingRules'], (value) => WebApplicationFirewallScrubbingRules.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : map['state'] as String,
+      scrubbingRules: map['scrubbingRules'] == null ? null : (pulumi.Input.decodeList<WebApplicationFirewallScrubbingRules>(map['scrubbingRules'], (value) => WebApplicationFirewallScrubbingRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

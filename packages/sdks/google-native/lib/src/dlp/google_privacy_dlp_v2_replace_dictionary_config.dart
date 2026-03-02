@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_word_list.dart';
 
 /// Replace each input value with a value randomly selected from the dictionary.
 class GooglePrivacyDlpV2ReplaceDictionaryConfig {
   /// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-  final GooglePrivacyDlpV2WordList? wordList;
+  final pulumi.Input<GooglePrivacyDlpV2WordList>? wordList;
 
   /// Creates a new [GooglePrivacyDlpV2ReplaceDictionaryConfig].
   /// [wordList] A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
@@ -15,13 +16,13 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'wordList': ?wordList == null ? null : wordList!.toMap(),
+      'wordList': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2WordList, Map<String, dynamic>>(wordList, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ReplaceDictionaryConfig(
-      wordList: map['wordList'] == null ? null : GooglePrivacyDlpV2WordList.fromMap((map['wordList'] as Map).cast<String, dynamic>()),
+      wordList: map['wordList'] == null ? null : (GooglePrivacyDlpV2WordList.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

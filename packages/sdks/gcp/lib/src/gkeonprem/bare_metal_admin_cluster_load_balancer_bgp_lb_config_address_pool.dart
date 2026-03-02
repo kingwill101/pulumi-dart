@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
   /// The addresses that are part of this pool.
-  final List<String>? addresses;
+  final pulumi.Input<List<String>>? addresses;
   /// This avoids buggy consumer devices mistakenly
   /// dropping IPv4 traffic for those special IP addresses.
-  final bool? avoidBuggyIps;
+  final pulumi.Input<bool>? avoidBuggyIps;
   /// If true, prevent IP addresses from being automatically assigned.
-  final bool? manualAssign;
+  final pulumi.Input<bool>? manualAssign;
   /// (Optional)
-  final String? pool;
+  final pulumi.Input<String>? pool;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool].
   /// [addresses] The addresses that are part of this pool.
@@ -35,10 +36,10 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool(
-      addresses: map['addresses'] == null ? null : (map['addresses'] as List).cast<String>(),
-      avoidBuggyIps: map['avoidBuggyIps'] == null ? null : map['avoidBuggyIps'] as bool,
-      manualAssign: map['manualAssign'] == null ? null : map['manualAssign'] as bool,
-      pool: map['pool'] == null ? null : map['pool'] as String,
+      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
+      avoidBuggyIps: map['avoidBuggyIps'] == null ? null : (map['avoidBuggyIps'] as bool).input(),
+      manualAssign: map['manualAssign'] == null ? null : (map['manualAssign'] as bool).input(),
+      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
     );
   }
 }

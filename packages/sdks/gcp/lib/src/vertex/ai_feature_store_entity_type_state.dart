@@ -50,31 +50,19 @@ class AiFeatureStoreEntityTypeState {
   /// [region] The region of the EntityType.
   /// [updateTime] The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   AiFeatureStoreEntityTypeState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? featurestore,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<AiFeatureStoreEntityTypeMonitoringConfig>? monitoringConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? offlineStorageTtlDays,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featurestore = pulumi.Input.asOptionalInput<String>(featurestore),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      monitoringConfig = pulumi.Input.asOptionalInput<AiFeatureStoreEntityTypeMonitoringConfig>(monitoringConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      offlineStorageTtlDays = pulumi.Input.asOptionalInput<int>(offlineStorageTtlDays),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.etag,
+    this.featurestore,
+    this.labels,
+    this.monitoringConfig,
+    this.name,
+    this.offlineStorageTtlDays,
+    this.pulumiLabels,
+    this.region,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class AiFeatureStoreEntityTypeState {
 
   factory AiFeatureStoreEntityTypeState.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featurestore: map['featurestore'] == null ? null : pulumi.Output.create<String>(map['featurestore'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      monitoringConfig: map['monitoringConfig'] == null ? null : pulumi.Output.create<AiFeatureStoreEntityTypeMonitoringConfig>(AiFeatureStoreEntityTypeMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : pulumi.Output.create<int>(map['offlineStorageTtlDays'] as int),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featurestore: map['featurestore'] == null ? null : (map['featurestore'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : (map['offlineStorageTtlDays'] as int).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class BotArgs {
   /// [sku] SKU of the Azure Health Bot.
   /// [tags] Resource tags.
   BotArgs({
-    pulumi.Output<String>? botName,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<HealthBotProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      botName = pulumi.Input.asOptionalInput<String>(botName),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<HealthBotProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.botName,
+    this.identity,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class BotArgs {
 
   factory BotArgs.fromMap(Map<String, dynamic> map) {
     return BotArgs(
-      botName: map['botName'] == null ? null : pulumi.Output.create<String>(map['botName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<HealthBotProperties>(HealthBotProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (HealthBotProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupPolicyAssignmentNonComplianceMessage {
   /// The non-compliance message text. When assigning policy sets (initiatives), unless `policy_definition_reference_id` is specified then this message will be the default for all policies.
-  final String content;
+  final pulumi.Input<String> content;
   /// When assigning policy sets (initiatives), this is the ID of the policy definition that the non-compliance message applies to.
-  final String? policyDefinitionReferenceId;
+  final pulumi.Input<String>? policyDefinitionReferenceId;
 
   /// Creates a new [GroupPolicyAssignmentNonComplianceMessage].
   /// [content] The non-compliance message text. When assigning policy sets (initiatives), unless `policy_definition_reference_id` is specified then this message will be the default for all policies.
@@ -24,8 +25,8 @@ class GroupPolicyAssignmentNonComplianceMessage {
 
   factory GroupPolicyAssignmentNonComplianceMessage.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAssignmentNonComplianceMessage(
-      content: map['content'] as String,
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : map['policyDefinitionReferenceId'] as String,
+      content: (map['content'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
     );
   }
 }

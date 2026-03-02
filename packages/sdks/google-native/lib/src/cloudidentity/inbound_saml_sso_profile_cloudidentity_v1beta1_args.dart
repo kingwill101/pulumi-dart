@@ -23,15 +23,11 @@ class InboundSamlSsoProfileCloudidentityV1beta1Args {
   /// [idpConfig] SAML identity provider configuration.
   /// [spConfig] SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
   InboundSamlSsoProfileCloudidentityV1beta1Args({
-    pulumi.Output<String>? customer,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<SamlIdpConfigCloudidentityV1beta1>? idpConfig,
-    pulumi.Output<Map<String, dynamic>>? spConfig,
-  }) :
-      customer = pulumi.Input.asOptionalInput<String>(customer),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      idpConfig = pulumi.Input.asOptionalInput<SamlIdpConfigCloudidentityV1beta1>(idpConfig),
-      spConfig = pulumi.Input.asOptionalInput<Map<String, dynamic>>(spConfig);
+    this.customer,
+    this.displayName,
+    this.idpConfig,
+    this.spConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class InboundSamlSsoProfileCloudidentityV1beta1Args {
 
   factory InboundSamlSsoProfileCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return InboundSamlSsoProfileCloudidentityV1beta1Args(
-      customer: map['customer'] == null ? null : pulumi.Output.create<String>(map['customer'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      idpConfig: map['idpConfig'] == null ? null : pulumi.Output.create<SamlIdpConfigCloudidentityV1beta1>(SamlIdpConfigCloudidentityV1beta1.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())),
-      spConfig: map['spConfig'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['spConfig'] as Map).cast<String, dynamic>()),
+      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      idpConfig: map['idpConfig'] == null ? null : (SamlIdpConfigCloudidentityV1beta1.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
+      spConfig: map['spConfig'] == null ? null : ((map['spConfig'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

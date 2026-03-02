@@ -1,42 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure settings for a business case.
 class AzureSettings {
   /// Gets Avs labour cost percentage.
-  final double? avsLaborCostPercentage;
+  final pulumi.Input<double>? avsLaborCostPercentage;
   /// Migration Strategy.
-  final String? businessCaseType;
+  final pulumi.Input<String>? businessCaseType;
   /// Gets comfort factor.
-  final double? comfortFactor;
+  final pulumi.Input<double>? comfortFactor;
   /// Business case Currency.
-  final String currency;
+  final pulumi.Input<String> currency;
   /// Gets azure Discount percentage.
-  final double? discountPercentage;
+  final pulumi.Input<double>? discountPercentage;
   /// Gets IaaS labour cost percentage.
-  final double? iaasLaborCostPercentage;
+  final pulumi.Input<double>? iaasLaborCostPercentage;
   /// Gets infrastructure growth rate.
-  final double? infrastructureGrowthRate;
+  final pulumi.Input<double>? infrastructureGrowthRate;
   /// Gets network cost percentage.
-  final double? networkCostPercentage;
+  final pulumi.Input<double>? networkCostPercentage;
   /// Gets PaaS labour cost percentage.
-  final double? paasLaborCostPercentage;
+  final pulumi.Input<double>? paasLaborCostPercentage;
   /// Gets migration completion percentage per year.
-  final Map<String, double>? perYearMigrationCompletionPercentage;
+  final pulumi.Input<Map<String, double>>? perYearMigrationCompletionPercentage;
   /// Gets end time to use for performance.
-  final String? performanceDataEndTime;
+  final pulumi.Input<String>? performanceDataEndTime;
   /// Gets start time to use for performance.
-  final String? performanceDataStartTime;
+  final pulumi.Input<String>? performanceDataStartTime;
   /// Gets utilization percentile for performance.
-  final double? performanceUtilizationPercentile;
+  final pulumi.Input<double>? performanceUtilizationPercentile;
   /// Gets the business case savings option type.
-  final String? savingsOption;
+  final pulumi.Input<String>? savingsOption;
   /// Gets or sets azure location.
-  final String targetLocation;
+  final pulumi.Input<String> targetLocation;
   /// Gets wACC percentage.
-  final double? wacc;
+  final pulumi.Input<double>? wacc;
   /// Workload discovery source.
-  final String? workloadDiscoverySource;
+  final pulumi.Input<String>? workloadDiscoverySource;
 
   /// Creates a new [AzureSettings].
   /// [avsLaborCostPercentage] Gets Avs labour cost percentage.
@@ -100,23 +101,23 @@ class AzureSettings {
 
   factory AzureSettings.fromMap(Map<String, dynamic> map) {
     return AzureSettings(
-      avsLaborCostPercentage: map['avsLaborCostPercentage'] == null ? null : map['avsLaborCostPercentage'] as double,
-      businessCaseType: map['businessCaseType'] == null ? null : map['businessCaseType'] as String,
-      comfortFactor: map['comfortFactor'] == null ? null : map['comfortFactor'] as double,
-      currency: map['currency'] as String,
-      discountPercentage: map['discountPercentage'] == null ? null : map['discountPercentage'] as double,
-      iaasLaborCostPercentage: map['iaasLaborCostPercentage'] == null ? null : map['iaasLaborCostPercentage'] as double,
-      infrastructureGrowthRate: map['infrastructureGrowthRate'] == null ? null : map['infrastructureGrowthRate'] as double,
-      networkCostPercentage: map['networkCostPercentage'] == null ? null : map['networkCostPercentage'] as double,
-      paasLaborCostPercentage: map['paasLaborCostPercentage'] == null ? null : map['paasLaborCostPercentage'] as double,
-      perYearMigrationCompletionPercentage: map['perYearMigrationCompletionPercentage'] == null ? null : (map['perYearMigrationCompletionPercentage'] as Map).cast<String, double>(),
-      performanceDataEndTime: map['performanceDataEndTime'] == null ? null : map['performanceDataEndTime'] as String,
-      performanceDataStartTime: map['performanceDataStartTime'] == null ? null : map['performanceDataStartTime'] as String,
-      performanceUtilizationPercentile: map['performanceUtilizationPercentile'] == null ? null : map['performanceUtilizationPercentile'] as double,
-      savingsOption: map['savingsOption'] == null ? null : map['savingsOption'] as String,
-      targetLocation: map['targetLocation'] as String,
-      wacc: map['wacc'] == null ? null : map['wacc'] as double,
-      workloadDiscoverySource: map['workloadDiscoverySource'] == null ? null : map['workloadDiscoverySource'] as String,
+      avsLaborCostPercentage: map['avsLaborCostPercentage'] == null ? null : (map['avsLaborCostPercentage'] as double).input(),
+      businessCaseType: map['businessCaseType'] == null ? null : (map['businessCaseType'] as String).input(),
+      comfortFactor: map['comfortFactor'] == null ? null : (map['comfortFactor'] as double).input(),
+      currency: (map['currency'] as String).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
+      iaasLaborCostPercentage: map['iaasLaborCostPercentage'] == null ? null : (map['iaasLaborCostPercentage'] as double).input(),
+      infrastructureGrowthRate: map['infrastructureGrowthRate'] == null ? null : (map['infrastructureGrowthRate'] as double).input(),
+      networkCostPercentage: map['networkCostPercentage'] == null ? null : (map['networkCostPercentage'] as double).input(),
+      paasLaborCostPercentage: map['paasLaborCostPercentage'] == null ? null : (map['paasLaborCostPercentage'] as double).input(),
+      perYearMigrationCompletionPercentage: map['perYearMigrationCompletionPercentage'] == null ? null : ((map['perYearMigrationCompletionPercentage'] as Map).cast<String, double>()).input(),
+      performanceDataEndTime: map['performanceDataEndTime'] == null ? null : (map['performanceDataEndTime'] as String).input(),
+      performanceDataStartTime: map['performanceDataStartTime'] == null ? null : (map['performanceDataStartTime'] as String).input(),
+      performanceUtilizationPercentile: map['performanceUtilizationPercentile'] == null ? null : (map['performanceUtilizationPercentile'] as double).input(),
+      savingsOption: map['savingsOption'] == null ? null : (map['savingsOption'] as String).input(),
+      targetLocation: (map['targetLocation'] as String).input(),
+      wacc: map['wacc'] == null ? null : (map['wacc'] as double).input(),
+      workloadDiscoverySource: map['workloadDiscoverySource'] == null ? null : (map['workloadDiscoverySource'] as String).input(),
     );
   }
 }

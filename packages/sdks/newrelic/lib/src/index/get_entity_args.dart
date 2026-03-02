@@ -38,23 +38,15 @@ class GetEntityArgs {
   /// [tags] A tag applied to the entity. See Nested tag blocks below for details.
   /// [type] The entity's type. Valid values are APPLICATION, DASHBOARD, HOST, MONITOR, WORKLOAD, AWSLAMBDAFUNCTION, SERVICE_LEVEL, and KEY_TRANSACTION. Note: Other entity types may also be queryable as the list of entity types may fluctuate over time.
   GetEntityArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? entityTags,
-    pulumi.Output<bool>? ignoreCase,
-    pulumi.Output<bool>? ignoreNotFound,
-    required pulumi.Output<String> name,
-    pulumi.Output<List<GetEntityTag>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      entityTags = pulumi.Input.asOptionalInput<String>(entityTags),
-      ignoreCase = pulumi.Input.asOptionalInput<bool>(ignoreCase),
-      ignoreNotFound = pulumi.Input.asOptionalInput<bool>(ignoreNotFound),
-      name = pulumi.Input.asInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<List<GetEntityTag>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.accountId,
+    this.domain,
+    this.entityTags,
+    this.ignoreCase,
+    this.ignoreNotFound,
+    required this.name,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class GetEntityArgs {
 
   factory GetEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      entityTags: map['entityTags'] == null ? null : pulumi.Output.create<String>(map['entityTags'] as String),
-      ignoreCase: map['ignoreCase'] == null ? null : pulumi.Output.create<bool>(map['ignoreCase'] as bool),
-      ignoreNotFound: map['ignoreNotFound'] == null ? null : pulumi.Output.create<bool>(map['ignoreNotFound'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<GetEntityTag>>(pulumi.Input.decodeList<GetEntityTag>(map['tags'], (value) => GetEntityTag.fromMap((value as Map).cast<String, dynamic>()))),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      entityTags: map['entityTags'] == null ? null : (map['entityTags'] as String).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
+      ignoreNotFound: map['ignoreNotFound'] == null ? null : (map['ignoreNotFound'] as bool).input(),
+      name: (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<GetEntityTag>(map['tags'], (value) => GetEntityTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

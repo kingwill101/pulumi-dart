@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Tiering Policy for a target tier.
 /// If the policy is not specified for a given target tier, service retains the existing configured tiering policy for that tier
 class TieringPolicyResponse {
   /// Number of days/weeks/months/years to retain backups in current tier before tiering.
   /// Used only if TieringMode is set to TierAfter
-  final int? duration;
+  final pulumi.Input<int>? duration;
   /// Retention duration type: days/weeks/months/years
   /// Used only if TieringMode is set to TierAfter
-  final String? durationType;
+  final pulumi.Input<String>? durationType;
   /// Tiering Mode to control automatic tiering of recovery points. Supported values are:
   /// 1. TierRecommended: Tier all recovery points recommended to be tiered
   /// 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
   /// 3. DoNotTier: Do not tier any recovery points
-  final String? tieringMode;
+  final pulumi.Input<String>? tieringMode;
 
   /// Creates a new [TieringPolicyResponse].
   /// [duration] Number of days/weeks/months/years to retain backups in current tier before tiering.
@@ -36,9 +37,9 @@ class TieringPolicyResponse {
 
   factory TieringPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TieringPolicyResponse(
-      duration: map['duration'] == null ? null : map['duration'] as int,
-      durationType: map['durationType'] == null ? null : map['durationType'] as String,
-      tieringMode: map['tieringMode'] == null ? null : map['tieringMode'] as String,
+      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
+      durationType: map['durationType'] == null ? null : (map['durationType'] as String).input(),
+      tieringMode: map['tieringMode'] == null ? null : (map['tieringMode'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_rule_properties_response.dart';
 
 /// LoadBalancer Rules
 class LoadBalancerRuleResponse {
   /// name of the load balancer rule
-  final String name;
+  final pulumi.Input<String> name;
   /// load balancer rule properties
-  final LoadBalancerRulePropertiesResponse properties;
+  final pulumi.Input<LoadBalancerRulePropertiesResponse> properties;
 
   /// Creates a new [LoadBalancerRuleResponse].
   /// [name] name of the load balancer rule
@@ -20,14 +21,14 @@ class LoadBalancerRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<LoadBalancerRulePropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory LoadBalancerRuleResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerRuleResponse(
-      name: map['name'] as String,
-      properties: LoadBalancerRulePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      properties: (LoadBalancerRulePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'investigation_execution_response.dart';
 import 'run_parameters_response.dart';
 
 /// Properties of the current investigation
 class InvestigationMetadataResponse {
   /// The creation time of the investigation (in UTC)
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// The execution details of the investigation
-  final InvestigationExecutionResponse execution;
+  final pulumi.Input<InvestigationExecutionResponse> execution;
   /// The unique identifier of the investigation
-  final String id;
+  final pulumi.Input<String> id;
   /// The parameters that were used to start the investigation
-  final RunParametersResponse runParameters;
+  final pulumi.Input<RunParametersResponse> runParameters;
 
   /// Creates a new [InvestigationMetadataResponse].
   /// [createdAt] The creation time of the investigation (in UTC)
@@ -29,18 +30,18 @@ class InvestigationMetadataResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createdAt': createdAt,
-      'execution': execution.toMap(),
+      'execution': pulumi.Input.mapInputValue<InvestigationExecutionResponse, Map<String, dynamic>>(execution, (value) => value.toMap()),
       'id': id,
-      'runParameters': runParameters.toMap(),
+      'runParameters': pulumi.Input.mapInputValue<RunParametersResponse, Map<String, dynamic>>(runParameters, (value) => value.toMap()),
     };
   }
 
   factory InvestigationMetadataResponse.fromMap(Map<String, dynamic> map) {
     return InvestigationMetadataResponse(
-      createdAt: map['createdAt'] as String,
-      execution: InvestigationExecutionResponse.fromMap((map['execution'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      runParameters: RunParametersResponse.fromMap((map['runParameters'] as Map).cast<String, dynamic>()),
+      createdAt: (map['createdAt'] as String).input(),
+      execution: (InvestigationExecutionResponse.fromMap((map['execution'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      runParameters: (RunParametersResponse.fromMap((map['runParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

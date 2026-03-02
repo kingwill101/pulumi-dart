@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PodDNSConfigOption defines DNS resolver options of a pod.
 class PodDNSConfigOption {
   /// Name is this DNS resolver option's name. Required.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Value is this DNS resolver option's value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [PodDNSConfigOption].
   /// [name] Name is this DNS resolver option's name. Required.
@@ -25,8 +26,8 @@ class PodDNSConfigOption {
 
   factory PodDNSConfigOption.fromMap(Map<String, dynamic> map) {
     return PodDNSConfigOption(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

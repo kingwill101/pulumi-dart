@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_file_volume_response.dart';
 
 /// Contains information about the volumes that can be mounted by Containers in the Container Groups.
 class NGroupCGPropertyVolumeResponse {
   /// The Azure File volume.
-  final AzureFileVolumeResponse? azureFile;
+  final pulumi.Input<AzureFileVolumeResponse>? azureFile;
   /// The name of the volume.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [NGroupCGPropertyVolumeResponse].
   /// [azureFile] The Azure File volume.
@@ -19,15 +20,15 @@ class NGroupCGPropertyVolumeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureFile': ?azureFile == null ? null : azureFile!.toMap(),
+      'azureFile': ?pulumi.Input.mapOptionalInputValue<AzureFileVolumeResponse, Map<String, dynamic>>(azureFile, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory NGroupCGPropertyVolumeResponse.fromMap(Map<String, dynamic> map) {
     return NGroupCGPropertyVolumeResponse(
-      azureFile: map['azureFile'] == null ? null : AzureFileVolumeResponse.fromMap((map['azureFile'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      azureFile: map['azureFile'] == null ? null : (AzureFileVolumeResponse.fromMap((map['azureFile'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

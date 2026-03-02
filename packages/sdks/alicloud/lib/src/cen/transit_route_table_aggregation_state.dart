@@ -38,21 +38,14 @@ class TransitRouteTableAggregationState {
   /// [transitRouteTableAggregationScopeLists] Aggregation Route Scopes
   /// [transitRouteTableId] The list of route table IDs of the Enterprise Edition transit router.
   TransitRouteTableAggregationState({
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouteTableAggregationCidr,
-    pulumi.Output<String>? transitRouteTableAggregationDescription,
-    pulumi.Output<String>? transitRouteTableAggregationName,
-    pulumi.Output<String>? transitRouteTableAggregationScope,
-    pulumi.Output<List<String>>? transitRouteTableAggregationScopeLists,
-    pulumi.Output<String>? transitRouteTableId,
-  }) :
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouteTableAggregationCidr = pulumi.Input.asOptionalInput<String>(transitRouteTableAggregationCidr),
-      transitRouteTableAggregationDescription = pulumi.Input.asOptionalInput<String>(transitRouteTableAggregationDescription),
-      transitRouteTableAggregationName = pulumi.Input.asOptionalInput<String>(transitRouteTableAggregationName),
-      transitRouteTableAggregationScope = pulumi.Input.asOptionalInput<String>(transitRouteTableAggregationScope),
-      transitRouteTableAggregationScopeLists = pulumi.Input.asOptionalInput<List<String>>(transitRouteTableAggregationScopeLists),
-      transitRouteTableId = pulumi.Input.asOptionalInput<String>(transitRouteTableId);
+    this.status,
+    this.transitRouteTableAggregationCidr,
+    this.transitRouteTableAggregationDescription,
+    this.transitRouteTableAggregationName,
+    this.transitRouteTableAggregationScope,
+    this.transitRouteTableAggregationScopeLists,
+    this.transitRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class TransitRouteTableAggregationState {
 
   factory TransitRouteTableAggregationState.fromMap(Map<String, dynamic> map) {
     return TransitRouteTableAggregationState(
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : pulumi.Output.create<String>(map['transitRouteTableAggregationCidr'] as String),
-      transitRouteTableAggregationDescription: map['transitRouteTableAggregationDescription'] == null ? null : pulumi.Output.create<String>(map['transitRouteTableAggregationDescription'] as String),
-      transitRouteTableAggregationName: map['transitRouteTableAggregationName'] == null ? null : pulumi.Output.create<String>(map['transitRouteTableAggregationName'] as String),
-      transitRouteTableAggregationScope: map['transitRouteTableAggregationScope'] == null ? null : pulumi.Output.create<String>(map['transitRouteTableAggregationScope'] as String),
-      transitRouteTableAggregationScopeLists: map['transitRouteTableAggregationScopeLists'] == null ? null : pulumi.Output.create<List<String>>((map['transitRouteTableAggregationScopeLists'] as List).cast<String>()),
-      transitRouteTableId: map['transitRouteTableId'] == null ? null : pulumi.Output.create<String>(map['transitRouteTableId'] as String),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : (map['transitRouteTableAggregationCidr'] as String).input(),
+      transitRouteTableAggregationDescription: map['transitRouteTableAggregationDescription'] == null ? null : (map['transitRouteTableAggregationDescription'] as String).input(),
+      transitRouteTableAggregationName: map['transitRouteTableAggregationName'] == null ? null : (map['transitRouteTableAggregationName'] as String).input(),
+      transitRouteTableAggregationScope: map['transitRouteTableAggregationScope'] == null ? null : (map['transitRouteTableAggregationScope'] as String).input(),
+      transitRouteTableAggregationScopeLists: map['transitRouteTableAggregationScopeLists'] == null ? null : ((map['transitRouteTableAggregationScopeLists'] as List).cast<String>()).input(),
+      transitRouteTableId: map['transitRouteTableId'] == null ? null : (map['transitRouteTableId'] as String).input(),
     );
   }
 }

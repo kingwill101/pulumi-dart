@@ -5,26 +5,26 @@ import 'get_application_gateway_url_path_map_path_rule.dart';
 
 class GetApplicationGatewayUrlPathMap {
   /// The ID of the Default Backend Address Pool.
-  final String defaultBackendAddressPoolId;
+  final pulumi.Input<String> defaultBackendAddressPoolId;
   /// The Name of the Default Backend Address Pool which is used for this URL Path Map.
-  final String defaultBackendAddressPoolName;
+  final pulumi.Input<String> defaultBackendAddressPoolName;
   /// The ID of the Default Backend HTTP Settings Collection.
-  final String defaultBackendHttpSettingsId;
+  final pulumi.Input<String> defaultBackendHttpSettingsId;
   /// The Name of the Default Backend HTTP Settings Collection which is used for this URL Path Map.
-  final String defaultBackendHttpSettingsName;
+  final pulumi.Input<String> defaultBackendHttpSettingsName;
   /// The ID of the Default Redirect Configuration.
-  final String defaultRedirectConfigurationId;
+  final pulumi.Input<String> defaultRedirectConfigurationId;
   /// The Name of the Default Redirect Configuration which is used for this URL Path Map.
-  final String defaultRedirectConfigurationName;
-  final String defaultRewriteRuleSetId;
+  final pulumi.Input<String> defaultRedirectConfigurationName;
+  final pulumi.Input<String> defaultRewriteRuleSetId;
   /// The Name of the Default Rewrite Rule Set which is used for this URL Path Map.
-  final String defaultRewriteRuleSetName;
+  final pulumi.Input<String> defaultRewriteRuleSetName;
   /// The ID of the Rewrite Rule Set
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of this Application Gateway.
-  final String name;
+  final pulumi.Input<String> name;
   /// One or more `path_rule` blocks as defined above.
-  final List<GetApplicationGatewayUrlPathMapPathRule> pathRules;
+  final pulumi.Input<List<GetApplicationGatewayUrlPathMapPathRule>> pathRules;
 
   /// Creates a new [GetApplicationGatewayUrlPathMap].
   /// [defaultBackendAddressPoolId] The ID of the Default Backend Address Pool.
@@ -64,23 +64,23 @@ class GetApplicationGatewayUrlPathMap {
       'defaultRewriteRuleSetName': defaultRewriteRuleSetName,
       'id': id,
       'name': name,
-      'pathRules': pulumi.Input.encodeList<GetApplicationGatewayUrlPathMapPathRule, Map<String, dynamic>>(pathRules, (value) => value.toMap()),
+      'pathRules': pulumi.Input.mapInputValue<List<GetApplicationGatewayUrlPathMapPathRule>, List<Map<String, dynamic>>>(pathRules, (value) => pulumi.Input.encodeList<GetApplicationGatewayUrlPathMapPathRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetApplicationGatewayUrlPathMap.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayUrlPathMap(
-      defaultBackendAddressPoolId: map['defaultBackendAddressPoolId'] as String,
-      defaultBackendAddressPoolName: map['defaultBackendAddressPoolName'] as String,
-      defaultBackendHttpSettingsId: map['defaultBackendHttpSettingsId'] as String,
-      defaultBackendHttpSettingsName: map['defaultBackendHttpSettingsName'] as String,
-      defaultRedirectConfigurationId: map['defaultRedirectConfigurationId'] as String,
-      defaultRedirectConfigurationName: map['defaultRedirectConfigurationName'] as String,
-      defaultRewriteRuleSetId: map['defaultRewriteRuleSetId'] as String,
-      defaultRewriteRuleSetName: map['defaultRewriteRuleSetName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      pathRules: pulumi.Input.decodeList<GetApplicationGatewayUrlPathMapPathRule>(map['pathRules'], (value) => GetApplicationGatewayUrlPathMapPathRule.fromMap((value as Map).cast<String, dynamic>())),
+      defaultBackendAddressPoolId: (map['defaultBackendAddressPoolId'] as String).input(),
+      defaultBackendAddressPoolName: (map['defaultBackendAddressPoolName'] as String).input(),
+      defaultBackendHttpSettingsId: (map['defaultBackendHttpSettingsId'] as String).input(),
+      defaultBackendHttpSettingsName: (map['defaultBackendHttpSettingsName'] as String).input(),
+      defaultRedirectConfigurationId: (map['defaultRedirectConfigurationId'] as String).input(),
+      defaultRedirectConfigurationName: (map['defaultRedirectConfigurationName'] as String).input(),
+      defaultRewriteRuleSetId: (map['defaultRewriteRuleSetId'] as String).input(),
+      defaultRewriteRuleSetName: (map['defaultRewriteRuleSetName'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      pathRules: (pulumi.Input.decodeList<GetApplicationGatewayUrlPathMapPathRule>(map['pathRules'], (value) => GetApplicationGatewayUrlPathMapPathRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

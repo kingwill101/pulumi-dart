@@ -45,27 +45,17 @@ class AssignmentArgs {
   /// [targetSubscriptionId] The Subscription ID the Blueprint Published Version is to be applied to. Changing this forces a new resource to be created.
   /// [versionId] The ID of the Published Version of the blueprint to be assigned.
   AssignmentArgs({
-    required pulumi.Output<AssignmentIdentity> identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? lockExcludeActions,
-    pulumi.Output<List<String>>? lockExcludePrincipals,
-    pulumi.Output<String>? lockMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parameterValues,
-    pulumi.Output<String>? resourceGroups,
-    required pulumi.Output<String> targetSubscriptionId,
-    required pulumi.Output<String> versionId,
-  }) :
-      identity = pulumi.Input.asInput<AssignmentIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      lockExcludeActions = pulumi.Input.asOptionalInput<List<String>>(lockExcludeActions),
-      lockExcludePrincipals = pulumi.Input.asOptionalInput<List<String>>(lockExcludePrincipals),
-      lockMode = pulumi.Input.asOptionalInput<String>(lockMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameterValues = pulumi.Input.asOptionalInput<String>(parameterValues),
-      resourceGroups = pulumi.Input.asOptionalInput<String>(resourceGroups),
-      targetSubscriptionId = pulumi.Input.asInput<String>(targetSubscriptionId),
-      versionId = pulumi.Input.asInput<String>(versionId);
+    required this.identity,
+    this.location,
+    this.lockExcludeActions,
+    this.lockExcludePrincipals,
+    this.lockMode,
+    this.name,
+    this.parameterValues,
+    this.resourceGroups,
+    required this.targetSubscriptionId,
+    required this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class AssignmentArgs {
 
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
-      identity: pulumi.Output.create<AssignmentIdentity>(AssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      lockExcludeActions: map['lockExcludeActions'] == null ? null : pulumi.Output.create<List<String>>((map['lockExcludeActions'] as List).cast<String>()),
-      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : pulumi.Output.create<List<String>>((map['lockExcludePrincipals'] as List).cast<String>()),
-      lockMode: map['lockMode'] == null ? null : pulumi.Output.create<String>(map['lockMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameterValues: map['parameterValues'] == null ? null : pulumi.Output.create<String>(map['parameterValues'] as String),
-      resourceGroups: map['resourceGroups'] == null ? null : pulumi.Output.create<String>(map['resourceGroups'] as String),
-      targetSubscriptionId: pulumi.Output.create<String>(map['targetSubscriptionId'] as String),
-      versionId: pulumi.Output.create<String>(map['versionId'] as String),
+      identity: (AssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      lockExcludeActions: map['lockExcludeActions'] == null ? null : ((map['lockExcludeActions'] as List).cast<String>()).input(),
+      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : ((map['lockExcludePrincipals'] as List).cast<String>()).input(),
+      lockMode: map['lockMode'] == null ? null : (map['lockMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups'] as String).input(),
+      targetSubscriptionId: (map['targetSubscriptionId'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

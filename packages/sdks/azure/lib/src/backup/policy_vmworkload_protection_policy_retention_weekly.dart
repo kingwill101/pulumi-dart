@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyVMWorkloadProtectionPolicyRetentionWeekly {
   /// The number of weekly backups to keep. Possible values are between `1` and `5163`.
-  final int count;
+  final pulumi.Input<int> count;
   /// The weekday backups to retain. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
-  final List<String> weekdays;
+  final pulumi.Input<List<String>> weekdays;
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicyRetentionWeekly].
   /// [count] The number of weekly backups to keep. Possible values are between `1` and `5163`.
@@ -24,8 +25,8 @@ class PolicyVMWorkloadProtectionPolicyRetentionWeekly {
 
   factory PolicyVMWorkloadProtectionPolicyRetentionWeekly.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicyRetentionWeekly(
-      count: map['count'] as int,
-      weekdays: (map['weekdays'] as List).cast<String>(),
+      count: (map['count'] as int).input(),
+      weekdays: ((map['weekdays'] as List).cast<String>()).input(),
     );
   }
 }

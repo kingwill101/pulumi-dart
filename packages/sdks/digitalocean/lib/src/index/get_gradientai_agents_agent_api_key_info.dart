@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsAgentApiKeyInfo {
   /// API Key value
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Created By user ID for the API Key
-  final String? createdBy;
+  final pulumi.Input<String>? createdBy;
   /// Deleted At timestamp for the API Key
-  final String deletedAt;
+  final pulumi.Input<String> deletedAt;
   /// Name of the API Key
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Updated At timestamp for the API Key
-  final String? secretKey;
+  final pulumi.Input<String>? secretKey;
   /// API Key value
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [GetGradientaiAgentsAgentApiKeyInfo].
   /// [createdAt] API Key value
@@ -44,12 +45,12 @@ class GetGradientaiAgentsAgentApiKeyInfo {
 
   factory GetGradientaiAgentsAgentApiKeyInfo.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentApiKeyInfo(
-      createdAt: map['createdAt'] as String,
-      createdBy: map['createdBy'] == null ? null : map['createdBy'] as String,
-      deletedAt: map['deletedAt'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      secretKey: map['secretKey'] == null ? null : map['secretKey'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      deletedAt: (map['deletedAt'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

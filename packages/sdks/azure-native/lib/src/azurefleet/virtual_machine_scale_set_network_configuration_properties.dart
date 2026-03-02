@@ -9,29 +9,29 @@ import 'virtual_machine_scale_set_network_configuration_dns_settings.dart';
 class VirtualMachineScaleSetNetworkConfigurationProperties {
   /// Specifies whether the Auxiliary mode is enabled for the Network Interface
   /// resource.
-  final String? auxiliaryMode;
+  final pulumi.Input<String>? auxiliaryMode;
   /// Specifies whether the Auxiliary sku is enabled for the Network Interface
   /// resource.
-  final String? auxiliarySku;
+  final pulumi.Input<String>? auxiliarySku;
   /// Specify what happens to the network interface when the VM is deleted
-  final String? deleteOption;
+  final pulumi.Input<String>? deleteOption;
   /// Specifies whether the network interface is disabled for tcp state tracking.
-  final bool? disableTcpStateTracking;
+  final pulumi.Input<bool>? disableTcpStateTracking;
   /// The dns settings to be applied on the network interfaces.
-  final VirtualMachineScaleSetNetworkConfigurationDnsSettings? dnsSettings;
+  final pulumi.Input<VirtualMachineScaleSetNetworkConfigurationDnsSettings>? dnsSettings;
   /// Specifies whether the network interface is accelerated networking-enabled.
-  final bool? enableAcceleratedNetworking;
+  final pulumi.Input<bool>? enableAcceleratedNetworking;
   /// Specifies whether the network interface is FPGA networking-enabled.
-  final bool? enableFpga;
+  final pulumi.Input<bool>? enableFpga;
   /// Whether IP forwarding enabled on this NIC.
-  final bool? enableIPForwarding;
+  final pulumi.Input<bool>? enableIPForwarding;
   /// Specifies the IP configurations of the network interface.
-  final List<VirtualMachineScaleSetIPConfiguration> ipConfigurations;
+  final pulumi.Input<List<VirtualMachineScaleSetIPConfiguration>> ipConfigurations;
   /// The network security group.
-  final SubResource? networkSecurityGroup;
+  final pulumi.Input<SubResource>? networkSecurityGroup;
   /// Specifies the primary network interface in case the virtual machine has more
   /// than 1 network interface.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
 
   /// Creates a new [VirtualMachineScaleSetNetworkConfigurationProperties].
   /// [auxiliaryMode] Specifies whether the Auxiliary mode is enabled for the Network Interface
@@ -65,29 +65,29 @@ class VirtualMachineScaleSetNetworkConfigurationProperties {
       'auxiliarySku': ?auxiliarySku,
       'deleteOption': ?deleteOption,
       'disableTcpStateTracking': ?disableTcpStateTracking,
-      'dnsSettings': ?dnsSettings == null ? null : dnsSettings!.toMap(),
+      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetNetworkConfigurationDnsSettings, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
       'enableAcceleratedNetworking': ?enableAcceleratedNetworking,
       'enableFpga': ?enableFpga,
       'enableIPForwarding': ?enableIPForwarding,
-      'ipConfigurations': pulumi.Input.encodeList<VirtualMachineScaleSetIPConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
-      'networkSecurityGroup': ?networkSecurityGroup == null ? null : networkSecurityGroup!.toMap(),
+      'ipConfigurations': pulumi.Input.mapInputValue<List<VirtualMachineScaleSetIPConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<VirtualMachineScaleSetIPConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkSecurityGroup': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(networkSecurityGroup, (value) => value.toMap()),
       'primary': ?primary,
     };
   }
 
   factory VirtualMachineScaleSetNetworkConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetNetworkConfigurationProperties(
-      auxiliaryMode: map['auxiliaryMode'] == null ? null : map['auxiliaryMode'] as String,
-      auxiliarySku: map['auxiliarySku'] == null ? null : map['auxiliarySku'] as String,
-      deleteOption: map['deleteOption'] == null ? null : map['deleteOption'] as String,
-      disableTcpStateTracking: map['disableTcpStateTracking'] == null ? null : map['disableTcpStateTracking'] as bool,
-      dnsSettings: map['dnsSettings'] == null ? null : VirtualMachineScaleSetNetworkConfigurationDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>()),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : map['enableAcceleratedNetworking'] as bool,
-      enableFpga: map['enableFpga'] == null ? null : map['enableFpga'] as bool,
-      enableIPForwarding: map['enableIPForwarding'] == null ? null : map['enableIPForwarding'] as bool,
-      ipConfigurations: pulumi.Input.decodeList<VirtualMachineScaleSetIPConfiguration>(map['ipConfigurations'], (value) => VirtualMachineScaleSetIPConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : SubResource.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>()),
-      primary: map['primary'] == null ? null : map['primary'] as bool,
+      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode'] as String).input(),
+      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku'] as String).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
+      disableTcpStateTracking: map['disableTcpStateTracking'] == null ? null : (map['disableTcpStateTracking'] as bool).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (VirtualMachineScaleSetNetworkConfigurationDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
+      enableFpga: map['enableFpga'] == null ? null : (map['enableFpga'] as bool).input(),
+      enableIPForwarding: map['enableIPForwarding'] == null ? null : (map['enableIPForwarding'] as bool).input(),
+      ipConfigurations: (pulumi.Input.decodeList<VirtualMachineScaleSetIPConfiguration>(map['ipConfigurations'], (value) => VirtualMachineScaleSetIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (SubResource.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
     );
   }
 }

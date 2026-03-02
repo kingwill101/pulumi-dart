@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This defines account-level immutability policy properties.
 class AccountImmutabilityPolicyProperties {
   /// This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
-  final bool? allowProtectedAppendWrites;
+  final pulumi.Input<bool>? allowProtectedAppendWrites;
   /// The immutability period for the blobs in the container since the policy creation, in days.
-  final int? immutabilityPeriodSinceCreationInDays;
+  final pulumi.Input<int>? immutabilityPeriodSinceCreationInDays;
   /// The ImmutabilityPolicy state defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [AccountImmutabilityPolicyProperties].
   /// [allowProtectedAppendWrites] This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
@@ -30,9 +31,9 @@ class AccountImmutabilityPolicyProperties {
 
   factory AccountImmutabilityPolicyProperties.fromMap(Map<String, dynamic> map) {
     return AccountImmutabilityPolicyProperties(
-      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : map['allowProtectedAppendWrites'] as bool,
-      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : map['immutabilityPeriodSinceCreationInDays'] as int,
-      state: map['state'] == null ? null : map['state'] as String,
+      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites'] as bool).input(),
+      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : (map['immutabilityPeriodSinceCreationInDays'] as int).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ResourceArgs {
   /// [resourceCode] Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
   /// [resourceId] If there is a parent resource, you need to enter the id of the parent resource, for example, in the VPC::VSwtich resource, you need to enter the id of the VPC: vpc-dexadfe3r4ad. If there are more than one level of parent resources, you need to use `:` to split.
   ResourceArgs({
-    pulumi.Output<String>? desireAttributes,
-    required pulumi.Output<String> product,
-    required pulumi.Output<String> resourceCode,
-    pulumi.Output<String>? resourceId,
-  }) :
-      desireAttributes = pulumi.Input.asOptionalInput<String>(desireAttributes),
-      product = pulumi.Input.asInput<String>(product),
-      resourceCode = pulumi.Input.asInput<String>(resourceCode),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId);
+    this.desireAttributes,
+    required this.product,
+    required this.resourceCode,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      desireAttributes: map['desireAttributes'] == null ? null : pulumi.Output.create<String>(map['desireAttributes'] as String),
-      product: pulumi.Output.create<String>(map['product'] as String),
-      resourceCode: pulumi.Output.create<String>(map['resourceCode'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
+      desireAttributes: map['desireAttributes'] == null ? null : (map['desireAttributes'] as String).input(),
+      product: (map['product'] as String).input(),
+      resourceCode: (map['resourceCode'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

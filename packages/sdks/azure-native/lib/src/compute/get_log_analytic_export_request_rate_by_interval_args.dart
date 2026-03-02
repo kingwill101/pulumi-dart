@@ -41,27 +41,17 @@ class GetLogAnalyticExportRequestRateByIntervalArgs {
   /// [location] The name of Azure region.
   /// [toTime] To time of the query
   GetLogAnalyticExportRequestRateByIntervalArgs({
-    required pulumi.Output<String> blobContainerSasUri,
-    required pulumi.Output<String> fromTime,
-    pulumi.Output<bool>? groupByClientApplicationId,
-    pulumi.Output<bool>? groupByOperationName,
-    pulumi.Output<bool>? groupByResourceName,
-    pulumi.Output<bool>? groupByThrottlePolicy,
-    pulumi.Output<bool>? groupByUserAgent,
-    required pulumi.Output<IntervalInMins> intervalLength,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> toTime,
-  }) :
-      blobContainerSasUri = pulumi.Input.asInput<String>(blobContainerSasUri),
-      fromTime = pulumi.Input.asInput<String>(fromTime),
-      groupByClientApplicationId = pulumi.Input.asOptionalInput<bool>(groupByClientApplicationId),
-      groupByOperationName = pulumi.Input.asOptionalInput<bool>(groupByOperationName),
-      groupByResourceName = pulumi.Input.asOptionalInput<bool>(groupByResourceName),
-      groupByThrottlePolicy = pulumi.Input.asOptionalInput<bool>(groupByThrottlePolicy),
-      groupByUserAgent = pulumi.Input.asOptionalInput<bool>(groupByUserAgent),
-      intervalLength = pulumi.Input.asInput<IntervalInMins>(intervalLength),
-      location = pulumi.Input.asInput<String>(location),
-      toTime = pulumi.Input.asInput<String>(toTime);
+    required this.blobContainerSasUri,
+    required this.fromTime,
+    this.groupByClientApplicationId,
+    this.groupByOperationName,
+    this.groupByResourceName,
+    this.groupByThrottlePolicy,
+    this.groupByUserAgent,
+    required this.intervalLength,
+    required this.location,
+    required this.toTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class GetLogAnalyticExportRequestRateByIntervalArgs {
 
   factory GetLogAnalyticExportRequestRateByIntervalArgs.fromMap(Map<String, dynamic> map) {
     return GetLogAnalyticExportRequestRateByIntervalArgs(
-      blobContainerSasUri: pulumi.Output.create<String>(map['blobContainerSasUri'] as String),
-      fromTime: pulumi.Output.create<String>(map['fromTime'] as String),
-      groupByClientApplicationId: map['groupByClientApplicationId'] == null ? null : pulumi.Output.create<bool>(map['groupByClientApplicationId'] as bool),
-      groupByOperationName: map['groupByOperationName'] == null ? null : pulumi.Output.create<bool>(map['groupByOperationName'] as bool),
-      groupByResourceName: map['groupByResourceName'] == null ? null : pulumi.Output.create<bool>(map['groupByResourceName'] as bool),
-      groupByThrottlePolicy: map['groupByThrottlePolicy'] == null ? null : pulumi.Output.create<bool>(map['groupByThrottlePolicy'] as bool),
-      groupByUserAgent: map['groupByUserAgent'] == null ? null : pulumi.Output.create<bool>(map['groupByUserAgent'] as bool),
-      intervalLength: pulumi.Output.create<IntervalInMins>(IntervalInMins.fromValue(map['intervalLength'] as String)),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      toTime: pulumi.Output.create<String>(map['toTime'] as String),
+      blobContainerSasUri: (map['blobContainerSasUri'] as String).input(),
+      fromTime: (map['fromTime'] as String).input(),
+      groupByClientApplicationId: map['groupByClientApplicationId'] == null ? null : (map['groupByClientApplicationId'] as bool).input(),
+      groupByOperationName: map['groupByOperationName'] == null ? null : (map['groupByOperationName'] as bool).input(),
+      groupByResourceName: map['groupByResourceName'] == null ? null : (map['groupByResourceName'] as bool).input(),
+      groupByThrottlePolicy: map['groupByThrottlePolicy'] == null ? null : (map['groupByThrottlePolicy'] as bool).input(),
+      groupByUserAgent: map['groupByUserAgent'] == null ? null : (map['groupByUserAgent'] as bool).input(),
+      intervalLength: (IntervalInMins.fromValue(map['intervalLength'] as String)).input(),
+      location: (map['location'] as String).input(),
+      toTime: (map['toTime'] as String).input(),
     );
   }
 }

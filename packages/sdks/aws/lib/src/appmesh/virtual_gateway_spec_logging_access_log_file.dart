@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_logging_access_log_file_format.dart';
 
 class VirtualGatewaySpecLoggingAccessLogFile {
   /// The specified format for the logs.
-  final VirtualGatewaySpecLoggingAccessLogFileFormat? format;
+  final pulumi.Input<VirtualGatewaySpecLoggingAccessLogFileFormat>? format;
   /// File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLogFile].
   /// [format] The specified format for the logs.
@@ -18,15 +19,15 @@ class VirtualGatewaySpecLoggingAccessLogFile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'format': ?format == null ? null : format!.toMap(),
+      'format': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecLoggingAccessLogFileFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
       'path': path,
     };
   }
 
   factory VirtualGatewaySpecLoggingAccessLogFile.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecLoggingAccessLogFile(
-      format: map['format'] == null ? null : VirtualGatewaySpecLoggingAccessLogFileFormat.fromMap((map['format'] as Map).cast<String, dynamic>()),
-      path: map['path'] as String,
+      format: map['format'] == null ? null : (VirtualGatewaySpecLoggingAccessLogFileFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

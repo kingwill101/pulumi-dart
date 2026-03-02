@@ -25,17 +25,12 @@ class GetEventBusesArgs {
   /// [nameRegex] A regex string to filter results by Event Bus name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetEventBusesArgs({
-    pulumi.Output<String>? eventBusType,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      eventBusType = pulumi.Input.asOptionalInput<String>(eventBusType),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.eventBusType,
+    this.ids,
+    this.namePrefix,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetEventBusesArgs {
 
   factory GetEventBusesArgs.fromMap(Map<String, dynamic> map) {
     return GetEventBusesArgs(
-      eventBusType: map['eventBusType'] == null ? null : pulumi.Output.create<String>(map['eventBusType'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      eventBusType: map['eventBusType'] == null ? null : (map['eventBusType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

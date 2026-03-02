@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity for the resource.
 class Identity {
   /// The identity type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [Identity].
   /// [type] The identity type.
@@ -20,7 +21,7 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

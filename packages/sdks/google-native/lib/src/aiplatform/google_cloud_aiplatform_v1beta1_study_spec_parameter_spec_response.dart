@@ -10,19 +10,19 @@ import 'google_cloud_aiplatform_v1beta1_study_spec_parameter_spec_integer_value_
 /// Represents a single parameter to optimize.
 class GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse {
   /// The value spec for a 'CATEGORICAL' parameter.
-  final GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse categoricalValueSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse> categoricalValueSpec;
   /// A conditional parameter node is active if the parameter's value matches the conditional node's parent_value_condition. If two items in conditional_parameter_specs have the same name, they must have disjoint parent_value_condition.
-  final List<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse> conditionalParameterSpecs;
+  final pulumi.Input<List<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse>> conditionalParameterSpecs;
   /// The value spec for a 'DISCRETE' parameter.
-  final GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse discreteValueSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse> discreteValueSpec;
   /// The value spec for a 'DOUBLE' parameter.
-  final GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse doubleValueSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse> doubleValueSpec;
   /// The value spec for an 'INTEGER' parameter.
-  final GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse integerValueSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse> integerValueSpec;
   /// The ID of the parameter. Must not contain whitespaces and must be unique amongst all ParameterSpecs.
-  final String parameterId;
+  final pulumi.Input<String> parameterId;
   /// How the parameter should be scaled. Leave unset for `CATEGORICAL` parameters.
-  final String scaleType;
+  final pulumi.Input<String> scaleType;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse].
   /// [categoricalValueSpec] The value spec for a 'CATEGORICAL' parameter.
@@ -44,11 +44,11 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categoricalValueSpec': categoricalValueSpec.toMap(),
-      'conditionalParameterSpecs': pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse, Map<String, dynamic>>(conditionalParameterSpecs, (value) => value.toMap()),
-      'discreteValueSpec': discreteValueSpec.toMap(),
-      'doubleValueSpec': doubleValueSpec.toMap(),
-      'integerValueSpec': integerValueSpec.toMap(),
+      'categoricalValueSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse, Map<String, dynamic>>(categoricalValueSpec, (value) => value.toMap()),
+      'conditionalParameterSpecs': pulumi.Input.mapInputValue<List<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse>, List<Map<String, dynamic>>>(conditionalParameterSpecs, (value) => pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'discreteValueSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse, Map<String, dynamic>>(discreteValueSpec, (value) => value.toMap()),
+      'doubleValueSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse, Map<String, dynamic>>(doubleValueSpec, (value) => value.toMap()),
+      'integerValueSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse, Map<String, dynamic>>(integerValueSpec, (value) => value.toMap()),
       'parameterId': parameterId,
       'scaleType': scaleType,
     };
@@ -56,13 +56,13 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse {
 
   factory GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse(
-      categoricalValueSpec: GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse.fromMap((map['categoricalValueSpec'] as Map).cast<String, dynamic>()),
-      conditionalParameterSpecs: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse>(map['conditionalParameterSpecs'], (value) => GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse.fromMap((value as Map).cast<String, dynamic>())),
-      discreteValueSpec: GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse.fromMap((map['discreteValueSpec'] as Map).cast<String, dynamic>()),
-      doubleValueSpec: GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse.fromMap((map['doubleValueSpec'] as Map).cast<String, dynamic>()),
-      integerValueSpec: GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse.fromMap((map['integerValueSpec'] as Map).cast<String, dynamic>()),
-      parameterId: map['parameterId'] as String,
-      scaleType: map['scaleType'] as String,
+      categoricalValueSpec: (GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse.fromMap((map['categoricalValueSpec'] as Map).cast<String, dynamic>())).input(),
+      conditionalParameterSpecs: (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse>(map['conditionalParameterSpecs'], (value) => GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discreteValueSpec: (GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse.fromMap((map['discreteValueSpec'] as Map).cast<String, dynamic>())).input(),
+      doubleValueSpec: (GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse.fromMap((map['doubleValueSpec'] as Map).cast<String, dynamic>())).input(),
+      integerValueSpec: (GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse.fromMap((map['integerValueSpec'] as Map).cast<String, dynamic>())).input(),
+      parameterId: (map['parameterId'] as String).input(),
+      scaleType: (map['scaleType'] as String).input(),
     );
   }
 }

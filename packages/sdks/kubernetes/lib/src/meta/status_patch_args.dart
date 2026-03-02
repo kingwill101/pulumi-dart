@@ -33,21 +33,14 @@ class StatusPatchArgs {
   /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [reason] A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
   StatusPatchArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<int>? code,
-    pulumi.Output<StatusDetailsPatch>? details,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? message,
-    pulumi.Output<ListMetaPatch>? metadata,
-    pulumi.Output<String>? reason,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      code = pulumi.Input.asOptionalInput<int>(code),
-      details = pulumi.Input.asOptionalInput<StatusDetailsPatch>(details),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      metadata = pulumi.Input.asOptionalInput<ListMetaPatch>(metadata),
-      reason = pulumi.Input.asOptionalInput<String>(reason);
+    this.apiVersion,
+    this.code,
+    this.details,
+    this.kind,
+    this.message,
+    this.metadata,
+    this.reason,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class StatusPatchArgs {
 
   factory StatusPatchArgs.fromMap(Map<String, dynamic> map) {
     return StatusPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      code: map['code'] == null ? null : pulumi.Output.create<int>(map['code'] as int),
-      details: map['details'] == null ? null : pulumi.Output.create<StatusDetailsPatch>(StatusDetailsPatch.fromMap((map['details'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ListMetaPatch>(ListMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      reason: map['reason'] == null ? null : pulumi.Output.create<String>(map['reason'] as String),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      code: map['code'] == null ? null : (map['code'] as int).input(),
+      details: map['details'] == null ? null : (StatusDetailsPatch.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
     );
   }
 }

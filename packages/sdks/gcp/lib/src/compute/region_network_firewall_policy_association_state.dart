@@ -26,19 +26,13 @@ class RegionNetworkFirewallPolicyAssociationState {
   /// [region] The location of this resource.
   /// [shortName] The short name of the firewall policy of the association.
   RegionNetworkFirewallPolicyAssociationState({
-    pulumi.Output<String>? attachmentTarget,
-    pulumi.Output<String>? firewallPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shortName,
-  }) :
-      attachmentTarget = pulumi.Input.asOptionalInput<String>(attachmentTarget),
-      firewallPolicy = pulumi.Input.asOptionalInput<String>(firewallPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shortName = pulumi.Input.asOptionalInput<String>(shortName);
+    this.attachmentTarget,
+    this.firewallPolicy,
+    this.name,
+    this.project,
+    this.region,
+    this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class RegionNetworkFirewallPolicyAssociationState {
 
   factory RegionNetworkFirewallPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyAssociationState(
-      attachmentTarget: map['attachmentTarget'] == null ? null : pulumi.Output.create<String>(map['attachmentTarget'] as String),
-      firewallPolicy: map['firewallPolicy'] == null ? null : pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shortName: map['shortName'] == null ? null : pulumi.Output.create<String>(map['shortName'] as String),
+      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget'] as String).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (map['firewallPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
     );
   }
 }

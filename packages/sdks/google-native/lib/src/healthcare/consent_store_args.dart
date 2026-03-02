@@ -31,23 +31,15 @@ class ConsentStoreArgs {
   /// [name] Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
   /// [project] Optional.
   ConsentStoreArgs({
-    required pulumi.Output<String> consentStoreId,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? defaultConsentTtl,
-    pulumi.Output<bool>? enableConsentCreateOnUpdate,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      defaultConsentTtl = pulumi.Input.asOptionalInput<String>(defaultConsentTtl),
-      enableConsentCreateOnUpdate = pulumi.Input.asOptionalInput<bool>(enableConsentCreateOnUpdate),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.consentStoreId,
+    required this.datasetId,
+    this.defaultConsentTtl,
+    this.enableConsentCreateOnUpdate,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ConsentStoreArgs {
 
   factory ConsentStoreArgs.fromMap(Map<String, dynamic> map) {
     return ConsentStoreArgs(
-      consentStoreId: pulumi.Output.create<String>(map['consentStoreId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : pulumi.Output.create<String>(map['defaultConsentTtl'] as String),
-      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : pulumi.Output.create<bool>(map['enableConsentCreateOnUpdate'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      consentStoreId: (map['consentStoreId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : (map['defaultConsentTtl'] as String).input(),
+      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : (map['enableConsentCreateOnUpdate'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

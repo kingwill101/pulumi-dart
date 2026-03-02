@@ -44,31 +44,19 @@ class GlobalClusterState {
   /// [status] Optional.
   /// [storageEncrypted] Specifies whether the DB cluster is encrypted. The default is `false` unless `source_db_cluster_identifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
   GlobalClusterState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<String>? globalClusterIdentifier,
-    pulumi.Output<List<GlobalClusterGlobalClusterMember>>? globalClusterMembers,
-    pulumi.Output<String>? globalClusterResourceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceDbClusterIdentifier,
-    pulumi.Output<String>? status,
-    pulumi.Output<bool>? storageEncrypted,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      globalClusterIdentifier = pulumi.Input.asOptionalInput<String>(globalClusterIdentifier),
-      globalClusterMembers = pulumi.Input.asOptionalInput<List<GlobalClusterGlobalClusterMember>>(globalClusterMembers),
-      globalClusterResourceId = pulumi.Input.asOptionalInput<String>(globalClusterResourceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceDbClusterIdentifier = pulumi.Input.asOptionalInput<String>(sourceDbClusterIdentifier),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      storageEncrypted = pulumi.Input.asOptionalInput<bool>(storageEncrypted);
+    this.arn,
+    this.databaseName,
+    this.deletionProtection,
+    this.engine,
+    this.engineVersion,
+    this.globalClusterIdentifier,
+    this.globalClusterMembers,
+    this.globalClusterResourceId,
+    this.region,
+    this.sourceDbClusterIdentifier,
+    this.status,
+    this.storageEncrypted,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class GlobalClusterState {
 
   factory GlobalClusterState.fromMap(Map<String, dynamic> map) {
     return GlobalClusterState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      globalClusterIdentifier: map['globalClusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['globalClusterIdentifier'] as String),
-      globalClusterMembers: map['globalClusterMembers'] == null ? null : pulumi.Output.create<List<GlobalClusterGlobalClusterMember>>(pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(map['globalClusterMembers'], (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>()))),
-      globalClusterResourceId: map['globalClusterResourceId'] == null ? null : pulumi.Output.create<String>(map['globalClusterResourceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['sourceDbClusterIdentifier'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      storageEncrypted: map['storageEncrypted'] == null ? null : pulumi.Output.create<bool>(map['storageEncrypted'] as bool),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      globalClusterIdentifier: map['globalClusterIdentifier'] == null ? null : (map['globalClusterIdentifier'] as String).input(),
+      globalClusterMembers: map['globalClusterMembers'] == null ? null : (pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(map['globalClusterMembers'], (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      globalClusterResourceId: map['globalClusterResourceId'] == null ? null : (map['globalClusterResourceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : (map['sourceDbClusterIdentifier'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      storageEncrypted: map['storageEncrypted'] == null ? null : (map['storageEncrypted'] as bool).input(),
     );
   }
 }

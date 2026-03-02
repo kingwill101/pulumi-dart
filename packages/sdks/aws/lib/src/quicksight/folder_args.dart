@@ -37,23 +37,15 @@ class FolderArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   FolderArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<String>? folderType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentFolderArn,
-    pulumi.Output<List<FolderPermission>>? permissions,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      folderType = pulumi.Input.asOptionalInput<String>(folderType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentFolderArn = pulumi.Input.asOptionalInput<String>(parentFolderArn),
-      permissions = pulumi.Input.asOptionalInput<List<FolderPermission>>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.awsAccountId,
+    required this.folderId,
+    this.folderType,
+    this.name,
+    this.parentFolderArn,
+    this.permissions,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class FolderArgs {
 
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      folderType: map['folderType'] == null ? null : pulumi.Output.create<String>(map['folderType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentFolderArn: map['parentFolderArn'] == null ? null : pulumi.Output.create<String>(map['parentFolderArn'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<FolderPermission>>(pulumi.Input.decodeList<FolderPermission>(map['permissions'], (value) => FolderPermission.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      folderType: map['folderType'] == null ? null : (map['folderType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentFolderArn: map['parentFolderArn'] == null ? null : (map['parentFolderArn'] as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<FolderPermission>(map['permissions'], (value) => FolderPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

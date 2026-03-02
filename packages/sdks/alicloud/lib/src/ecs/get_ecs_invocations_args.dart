@@ -29,21 +29,14 @@ class GetEcsInvocationsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   GetEcsInvocationsArgs({
-    pulumi.Output<String>? commandId,
-    pulumi.Output<String>? contentEncoding,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? invokeStatus,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-  }) :
-      commandId = pulumi.Input.asOptionalInput<String>(commandId),
-      contentEncoding = pulumi.Input.asOptionalInput<String>(contentEncoding),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      invokeStatus = pulumi.Input.asOptionalInput<String>(invokeStatus),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize);
+    this.commandId,
+    this.contentEncoding,
+    this.ids,
+    this.invokeStatus,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class GetEcsInvocationsArgs {
 
   factory GetEcsInvocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsInvocationsArgs(
-      commandId: map['commandId'] == null ? null : pulumi.Output.create<String>(map['commandId'] as String),
-      contentEncoding: map['contentEncoding'] == null ? null : pulumi.Output.create<String>(map['contentEncoding'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      invokeStatus: map['invokeStatus'] == null ? null : pulumi.Output.create<String>(map['invokeStatus'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
+      commandId: map['commandId'] == null ? null : (map['commandId'] as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      invokeStatus: map['invokeStatus'] == null ? null : (map['invokeStatus'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
     );
   }
 }

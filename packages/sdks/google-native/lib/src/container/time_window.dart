@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_exclusion_options.dart';
 
 /// Represents an arbitrary window of time.
 class TimeWindow {
   /// The time that the window ends. The end time should take place after the start time.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
-  final MaintenanceExclusionOptions? maintenanceExclusionOptions;
+  final pulumi.Input<MaintenanceExclusionOptions>? maintenanceExclusionOptions;
   /// The time that the window first starts.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [TimeWindow].
   /// [endTime] The time that the window ends. The end time should take place after the start time.
@@ -24,16 +25,16 @@ class TimeWindow {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': ?endTime,
-      'maintenanceExclusionOptions': ?maintenanceExclusionOptions == null ? null : maintenanceExclusionOptions!.toMap(),
+      'maintenanceExclusionOptions': ?pulumi.Input.mapOptionalInputValue<MaintenanceExclusionOptions, Map<String, dynamic>>(maintenanceExclusionOptions, (value) => value.toMap()),
       'startTime': ?startTime,
     };
   }
 
   factory TimeWindow.fromMap(Map<String, dynamic> map) {
     return TimeWindow(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      maintenanceExclusionOptions: map['maintenanceExclusionOptions'] == null ? null : MaintenanceExclusionOptions.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      maintenanceExclusionOptions: map['maintenanceExclusionOptions'] == null ? null : (MaintenanceExclusionOptions.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

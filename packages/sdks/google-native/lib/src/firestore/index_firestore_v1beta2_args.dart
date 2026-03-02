@@ -24,17 +24,12 @@ class IndexFirestoreV1beta2Args {
   /// [project] Optional.
   /// [queryScope] Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
   IndexFirestoreV1beta2Args({
-    required pulumi.Output<String> collectionGroupId,
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<List<GoogleFirestoreAdminV1beta2IndexField>>? fields,
-    pulumi.Output<String>? project,
-    pulumi.Output<IndexQueryScopeFirestoreV1beta2>? queryScope,
-  }) :
-      collectionGroupId = pulumi.Input.asInput<String>(collectionGroupId),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      fields = pulumi.Input.asOptionalInput<List<GoogleFirestoreAdminV1beta2IndexField>>(fields),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queryScope = pulumi.Input.asOptionalInput<IndexQueryScopeFirestoreV1beta2>(queryScope);
+    required this.collectionGroupId,
+    required this.databaseId,
+    this.fields,
+    this.project,
+    this.queryScope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class IndexFirestoreV1beta2Args {
 
   factory IndexFirestoreV1beta2Args.fromMap(Map<String, dynamic> map) {
     return IndexFirestoreV1beta2Args(
-      collectionGroupId: pulumi.Output.create<String>(map['collectionGroupId'] as String),
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      fields: map['fields'] == null ? null : pulumi.Output.create<List<GoogleFirestoreAdminV1beta2IndexField>>(pulumi.Input.decodeList<GoogleFirestoreAdminV1beta2IndexField>(map['fields'], (value) => GoogleFirestoreAdminV1beta2IndexField.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      queryScope: map['queryScope'] == null ? null : pulumi.Output.create<IndexQueryScopeFirestoreV1beta2>(IndexQueryScopeFirestoreV1beta2.fromValue(map['queryScope'] as String)),
+      collectionGroupId: (map['collectionGroupId'] as String).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleFirestoreAdminV1beta2IndexField>(map['fields'], (value) => GoogleFirestoreAdminV1beta2IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      queryScope: map['queryScope'] == null ? null : (IndexQueryScopeFirestoreV1beta2.fromValue(map['queryScope'] as String)).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom domain of app resource payload.
 class CustomDomainPropertiesResponse {
   /// The app name of domain.
-  final String appName;
+  final pulumi.Input<String> appName;
   /// The bound certificate name of domain.
-  final String? certName;
+  final pulumi.Input<String>? certName;
   /// Provisioning state of the Domain
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The thumbprint of bound certificate.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [CustomDomainPropertiesResponse].
   /// [appName] The app name of domain.
@@ -35,10 +36,10 @@ class CustomDomainPropertiesResponse {
 
   factory CustomDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainPropertiesResponse(
-      appName: map['appName'] as String,
-      certName: map['certName'] == null ? null : map['certName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      appName: (map['appName'] as String).input(),
+      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

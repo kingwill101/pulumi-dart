@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_sli_response.dart';
 import 'request_based_sli_response.dart';
 
 /// A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
 class PerformanceThresholdResponse {
   /// BasicSli to evaluate to judge window quality.
-  final BasicSliResponse basicSliPerformance;
+  final pulumi.Input<BasicSliResponse> basicSliPerformance;
   /// RequestBasedSli to evaluate to judge window quality.
-  final RequestBasedSliResponse performance;
+  final pulumi.Input<RequestBasedSliResponse> performance;
   /// If window performance >= threshold, the window is counted as good.
-  final double threshold;
+  final pulumi.Input<double> threshold;
 
   /// Creates a new [PerformanceThresholdResponse].
   /// [basicSliPerformance] BasicSli to evaluate to judge window quality.
@@ -24,17 +25,17 @@ class PerformanceThresholdResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicSliPerformance': basicSliPerformance.toMap(),
-      'performance': performance.toMap(),
+      'basicSliPerformance': pulumi.Input.mapInputValue<BasicSliResponse, Map<String, dynamic>>(basicSliPerformance, (value) => value.toMap()),
+      'performance': pulumi.Input.mapInputValue<RequestBasedSliResponse, Map<String, dynamic>>(performance, (value) => value.toMap()),
       'threshold': threshold,
     };
   }
 
   factory PerformanceThresholdResponse.fromMap(Map<String, dynamic> map) {
     return PerformanceThresholdResponse(
-      basicSliPerformance: BasicSliResponse.fromMap((map['basicSliPerformance'] as Map).cast<String, dynamic>()),
-      performance: RequestBasedSliResponse.fromMap((map['performance'] as Map).cast<String, dynamic>()),
-      threshold: map['threshold'] as double,
+      basicSliPerformance: (BasicSliResponse.fromMap((map['basicSliPerformance'] as Map).cast<String, dynamic>())).input(),
+      performance: (RequestBasedSliResponse.fromMap((map['performance'] as Map).cast<String, dynamic>())).input(),
+      threshold: (map['threshold'] as double).input(),
     );
   }
 }

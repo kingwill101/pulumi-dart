@@ -14,11 +14,9 @@ class GetBillingAccountSinkArgs {
   /// [billingAccountId] Required.
   /// [sinkId] Required.
   GetBillingAccountSinkArgs({
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<String> sinkId,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      sinkId = pulumi.Input.asInput<String>(sinkId);
+    required this.billingAccountId,
+    required this.sinkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetBillingAccountSinkArgs {
 
   factory GetBillingAccountSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountSinkArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      sinkId: pulumi.Output.create<String>(map['sinkId'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      sinkId: (map['sinkId'] as String).input(),
     );
   }
 }

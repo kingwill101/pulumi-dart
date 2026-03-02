@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TokenAuthConfigurationResponse {
   /// The authentication scheme.
-  final String? authenticationScheme;
+  final pulumi.Input<String>? authenticationScheme;
   /// Whether certification authentication fallback is disabled.
-  final bool? disableCertificateAuthenticationFallback;
+  final pulumi.Input<bool>? disableCertificateAuthenticationFallback;
   /// The signed request scope.
-  final String? signedRequestScope;
+  final pulumi.Input<String>? signedRequestScope;
 
   /// Creates a new [TokenAuthConfigurationResponse].
   /// [authenticationScheme] The authentication scheme.
@@ -29,9 +30,9 @@ class TokenAuthConfigurationResponse {
 
   factory TokenAuthConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TokenAuthConfigurationResponse(
-      authenticationScheme: map['authenticationScheme'] == null ? null : map['authenticationScheme'] as String,
-      disableCertificateAuthenticationFallback: map['disableCertificateAuthenticationFallback'] == null ? null : map['disableCertificateAuthenticationFallback'] as bool,
-      signedRequestScope: map['signedRequestScope'] == null ? null : map['signedRequestScope'] as String,
+      authenticationScheme: map['authenticationScheme'] == null ? null : (map['authenticationScheme'] as String).input(),
+      disableCertificateAuthenticationFallback: map['disableCertificateAuthenticationFallback'] == null ? null : (map['disableCertificateAuthenticationFallback'] as bool).input(),
+      signedRequestScope: map['signedRequestScope'] == null ? null : (map['signedRequestScope'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class SubscriptionRuleState {
   /// [sqlFilterCompatibilityLevel] Optional.
   /// [subscriptionId] The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
   SubscriptionRuleState({
-    pulumi.Output<String>? action,
-    pulumi.Output<SubscriptionRuleCorrelationFilter>? correlationFilter,
-    pulumi.Output<String>? filterType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? sqlFilter,
-    pulumi.Output<int>? sqlFilterCompatibilityLevel,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      correlationFilter = pulumi.Input.asOptionalInput<SubscriptionRuleCorrelationFilter>(correlationFilter),
-      filterType = pulumi.Input.asOptionalInput<String>(filterType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sqlFilter = pulumi.Input.asOptionalInput<String>(sqlFilter),
-      sqlFilterCompatibilityLevel = pulumi.Input.asOptionalInput<int>(sqlFilterCompatibilityLevel),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.action,
+    this.correlationFilter,
+    this.filterType,
+    this.name,
+    this.sqlFilter,
+    this.sqlFilterCompatibilityLevel,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class SubscriptionRuleState {
 
   factory SubscriptionRuleState.fromMap(Map<String, dynamic> map) {
     return SubscriptionRuleState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      correlationFilter: map['correlationFilter'] == null ? null : pulumi.Output.create<SubscriptionRuleCorrelationFilter>(SubscriptionRuleCorrelationFilter.fromMap((map['correlationFilter'] as Map).cast<String, dynamic>())),
-      filterType: map['filterType'] == null ? null : pulumi.Output.create<String>(map['filterType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sqlFilter: map['sqlFilter'] == null ? null : pulumi.Output.create<String>(map['sqlFilter'] as String),
-      sqlFilterCompatibilityLevel: map['sqlFilterCompatibilityLevel'] == null ? null : pulumi.Output.create<int>(map['sqlFilterCompatibilityLevel'] as int),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      correlationFilter: map['correlationFilter'] == null ? null : (SubscriptionRuleCorrelationFilter.fromMap((map['correlationFilter'] as Map).cast<String, dynamic>())).input(),
+      filterType: map['filterType'] == null ? null : (map['filterType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sqlFilter: map['sqlFilter'] == null ? null : (map['sqlFilter'] as String).input(),
+      sqlFilterCompatibilityLevel: map['sqlFilterCompatibilityLevel'] == null ? null : (map['sqlFilterCompatibilityLevel'] as int).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

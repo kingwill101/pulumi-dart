@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkManagerCrossTenantScope {
   /// A list of management groups used as cross tenant scope for the Network Manager.
-  final List<String> managementGroups;
+  final pulumi.Input<List<String>> managementGroups;
   /// A list of subscriptions used as cross tenant scope for the Network Manager.
-  final List<String> subscriptions;
+  final pulumi.Input<List<String>> subscriptions;
   /// The tenant ID of the cross tenant scope.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetNetworkManagerCrossTenantScope].
   /// [managementGroups] A list of management groups used as cross tenant scope for the Network Manager.
@@ -29,9 +30,9 @@ class GetNetworkManagerCrossTenantScope {
 
   factory GetNetworkManagerCrossTenantScope.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerCrossTenantScope(
-      managementGroups: (map['managementGroups'] as List).cast<String>(),
-      subscriptions: (map['subscriptions'] as List).cast<String>(),
-      tenantId: map['tenantId'] as String,
+      managementGroups: ((map['managementGroups'] as List).cast<String>()).input(),
+      subscriptions: ((map['subscriptions'] as List).cast<String>()).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

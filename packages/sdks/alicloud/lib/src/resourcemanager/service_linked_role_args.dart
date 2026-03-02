@@ -19,13 +19,10 @@ class ServiceLinkedRoleArgs {
   /// [description] The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
   /// [serviceName] The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
   ServiceLinkedRoleArgs({
-    pulumi.Output<String>? customSuffix,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> serviceName,
-  }) :
-      customSuffix = pulumi.Input.asOptionalInput<String>(customSuffix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.customSuffix,
+    this.description,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ServiceLinkedRoleArgs {
 
   factory ServiceLinkedRoleArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleArgs(
-      customSuffix: map['customSuffix'] == null ? null : pulumi.Output.create<String>(map['customSuffix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

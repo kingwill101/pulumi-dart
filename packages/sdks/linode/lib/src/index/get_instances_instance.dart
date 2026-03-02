@@ -9,61 +9,61 @@ import 'get_instances_instance_placement_group.dart';
 import 'get_instances_instance_spec.dart';
 
 class GetInstancesInstance {
-  final GetInstancesInstanceAlerts alerts;
+  final pulumi.Input<GetInstancesInstanceAlerts> alerts;
   /// Information about this Linode's backups status.
-  final List<GetInstancesInstanceBackup> backups;
+  final pulumi.Input<List<GetInstancesInstanceBackup>> backups;
   /// The Label of the Instance Config that should be used to boot the Linode instance.
-  final String bootConfigLabel;
+  final pulumi.Input<String> bootConfigLabel;
   /// A list of capabilities of this Linode instance.
-  final List<String> capabilities;
+  final pulumi.Input<List<String>> capabilities;
   /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
-  final List<GetInstancesInstanceConfig> configs;
+  final pulumi.Input<List<GetInstancesInstanceConfig>> configs;
   /// The disk encryption policy for this instance.
-  final String diskEncryption;
+  final pulumi.Input<String> diskEncryption;
   /// Disks associated with this Linode.
-  final List<GetInstancesInstanceDisk> disks;
+  final pulumi.Input<List<GetInstancesInstanceDisk>> disks;
   /// The display group of the Linode instance.
-  final String group;
+  final pulumi.Input<String> group;
   /// Whether this Instance was created with user-data.
-  final bool hasUserData;
+  final pulumi.Input<bool> hasUserData;
   /// The Linode’s host machine, as a UUID.
-  final String hostUuid;
+  final pulumi.Input<String> hostUuid;
   /// The ID of the Placement Group in the Linode API.
-  final int id;
+  final pulumi.Input<int> id;
   /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
-  final String image;
+  final pulumi.Input<String> image;
   /// The interface type for this Instance. (`linode`, `legacy_config`)
-  final String interfaceGeneration;
+  final pulumi.Input<String> interfaceGeneration;
   /// (Deprecated) A string containing the Linode's public IP address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-  final List<String> ipv4s;
+  final pulumi.Input<List<String>> ipv4s;
   /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
-  final String ipv6;
+  final pulumi.Input<String> ipv6;
   /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-  final String label;
+  final pulumi.Input<String> label;
   /// If applicable, the ID of the LKE cluster this instance is a part of.
-  final int lkeClusterId;
+  final pulumi.Input<int> lkeClusterId;
   /// A list of locks applied to this Linode.
-  final List<String> locks;
+  final pulumi.Input<List<String>> locks;
   /// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
-  final String maintenancePolicy;
-  final List<GetInstancesInstancePlacementGroup> placementGroups;
+  final pulumi.Input<String> maintenancePolicy;
+  final pulumi.Input<List<GetInstancesInstancePlacementGroup>> placementGroups;
   /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
-  final String region;
-  final List<GetInstancesInstanceSpec> specs;
+  final pulumi.Input<String> region;
+  final pulumi.Input<List<GetInstancesInstanceSpec>> specs;
   /// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
-  final String status;
+  final pulumi.Input<String> status;
   /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
-  final int swapSize;
+  final pulumi.Input<int> swapSize;
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
   /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
-  final String type;
+  final pulumi.Input<String> type;
   /// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
-  final bool watchdogEnabled;
+  final pulumi.Input<bool> watchdogEnabled;
 
   /// Creates a new [GetInstancesInstance].
   /// [alerts] Required.
@@ -129,13 +129,13 @@ class GetInstancesInstance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alerts': alerts.toMap(),
-      'backups': pulumi.Input.encodeList<GetInstancesInstanceBackup, Map<String, dynamic>>(backups, (value) => value.toMap()),
+      'alerts': pulumi.Input.mapInputValue<GetInstancesInstanceAlerts, Map<String, dynamic>>(alerts, (value) => value.toMap()),
+      'backups': pulumi.Input.mapInputValue<List<GetInstancesInstanceBackup>, List<Map<String, dynamic>>>(backups, (value) => pulumi.Input.encodeList<GetInstancesInstanceBackup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bootConfigLabel': bootConfigLabel,
       'capabilities': capabilities,
-      'configs': pulumi.Input.encodeList<GetInstancesInstanceConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
+      'configs': pulumi.Input.mapInputValue<List<GetInstancesInstanceConfig>, List<Map<String, dynamic>>>(configs, (value) => pulumi.Input.encodeList<GetInstancesInstanceConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'diskEncryption': diskEncryption,
-      'disks': pulumi.Input.encodeList<GetInstancesInstanceDisk, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks': pulumi.Input.mapInputValue<List<GetInstancesInstanceDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<GetInstancesInstanceDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'group': group,
       'hasUserData': hasUserData,
       'hostUuid': hostUuid,
@@ -149,10 +149,10 @@ class GetInstancesInstance {
       'lkeClusterId': lkeClusterId,
       'locks': locks,
       'maintenancePolicy': maintenancePolicy,
-      'placementGroups': pulumi.Input.encodeList<GetInstancesInstancePlacementGroup, Map<String, dynamic>>(placementGroups, (value) => value.toMap()),
+      'placementGroups': pulumi.Input.mapInputValue<List<GetInstancesInstancePlacementGroup>, List<Map<String, dynamic>>>(placementGroups, (value) => pulumi.Input.encodeList<GetInstancesInstancePlacementGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'privateIpAddress': privateIpAddress,
       'region': region,
-      'specs': pulumi.Input.encodeList<GetInstancesInstanceSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
+      'specs': pulumi.Input.mapInputValue<List<GetInstancesInstanceSpec>, List<Map<String, dynamic>>>(specs, (value) => pulumi.Input.encodeList<GetInstancesInstanceSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
       'swapSize': swapSize,
       'tags': tags,
@@ -163,35 +163,35 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      alerts: GetInstancesInstanceAlerts.fromMap((map['alerts'] as Map).cast<String, dynamic>()),
-      backups: pulumi.Input.decodeList<GetInstancesInstanceBackup>(map['backups'], (value) => GetInstancesInstanceBackup.fromMap((value as Map).cast<String, dynamic>())),
-      bootConfigLabel: map['bootConfigLabel'] as String,
-      capabilities: (map['capabilities'] as List).cast<String>(),
-      configs: pulumi.Input.decodeList<GetInstancesInstanceConfig>(map['configs'], (value) => GetInstancesInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      diskEncryption: map['diskEncryption'] as String,
-      disks: pulumi.Input.decodeList<GetInstancesInstanceDisk>(map['disks'], (value) => GetInstancesInstanceDisk.fromMap((value as Map).cast<String, dynamic>())),
-      group: map['group'] as String,
-      hasUserData: map['hasUserData'] as bool,
-      hostUuid: map['hostUuid'] as String,
-      id: map['id'] as int,
-      image: map['image'] as String,
-      interfaceGeneration: map['interfaceGeneration'] as String,
-      ipAddress: map['ipAddress'] as String,
-      ipv4s: (map['ipv4s'] as List).cast<String>(),
-      ipv6: map['ipv6'] as String,
-      label: map['label'] as String,
-      lkeClusterId: map['lkeClusterId'] as int,
-      locks: (map['locks'] as List).cast<String>(),
-      maintenancePolicy: map['maintenancePolicy'] as String,
-      placementGroups: pulumi.Input.decodeList<GetInstancesInstancePlacementGroup>(map['placementGroups'], (value) => GetInstancesInstancePlacementGroup.fromMap((value as Map).cast<String, dynamic>())),
-      privateIpAddress: map['privateIpAddress'] as String,
-      region: map['region'] as String,
-      specs: pulumi.Input.decodeList<GetInstancesInstanceSpec>(map['specs'], (value) => GetInstancesInstanceSpec.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      swapSize: map['swapSize'] as int,
-      tags: (map['tags'] as List).cast<String>(),
-      type: map['type'] as String,
-      watchdogEnabled: map['watchdogEnabled'] as bool,
+      alerts: (GetInstancesInstanceAlerts.fromMap((map['alerts'] as Map).cast<String, dynamic>())).input(),
+      backups: (pulumi.Input.decodeList<GetInstancesInstanceBackup>(map['backups'], (value) => GetInstancesInstanceBackup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootConfigLabel: (map['bootConfigLabel'] as String).input(),
+      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
+      configs: (pulumi.Input.decodeList<GetInstancesInstanceConfig>(map['configs'], (value) => GetInstancesInstanceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskEncryption: (map['diskEncryption'] as String).input(),
+      disks: (pulumi.Input.decodeList<GetInstancesInstanceDisk>(map['disks'], (value) => GetInstancesInstanceDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      group: (map['group'] as String).input(),
+      hasUserData: (map['hasUserData'] as bool).input(),
+      hostUuid: (map['hostUuid'] as String).input(),
+      id: (map['id'] as int).input(),
+      image: (map['image'] as String).input(),
+      interfaceGeneration: (map['interfaceGeneration'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      ipv4s: ((map['ipv4s'] as List).cast<String>()).input(),
+      ipv6: (map['ipv6'] as String).input(),
+      label: (map['label'] as String).input(),
+      lkeClusterId: (map['lkeClusterId'] as int).input(),
+      locks: ((map['locks'] as List).cast<String>()).input(),
+      maintenancePolicy: (map['maintenancePolicy'] as String).input(),
+      placementGroups: (pulumi.Input.decodeList<GetInstancesInstancePlacementGroup>(map['placementGroups'], (value) => GetInstancesInstancePlacementGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      region: (map['region'] as String).input(),
+      specs: (pulumi.Input.decodeList<GetInstancesInstanceSpec>(map['specs'], (value) => GetInstancesInstanceSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      swapSize: (map['swapSize'] as int).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
+      watchdogEnabled: (map['watchdogEnabled'] as bool).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Agent Errors if any during agent or system component upgrade.
 class AgentErrorResponse {
   /// Agent component where error message occured.
-  final String component;
+  final pulumi.Input<String> component;
   /// Agent error message.
-  final String message;
+  final pulumi.Input<String> message;
   /// Severity of the error message.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// The timestamp of error occured (UTC).
-  final String time;
+  final pulumi.Input<String> time;
 
   /// Creates a new [AgentErrorResponse].
   /// [component] Agent component where error message occured.
@@ -35,10 +36,10 @@ class AgentErrorResponse {
 
   factory AgentErrorResponse.fromMap(Map<String, dynamic> map) {
     return AgentErrorResponse(
-      component: map['component'] as String,
-      message: map['message'] as String,
-      severity: map['severity'] as String,
-      time: map['time'] as String,
+      component: (map['component'] as String).input(),
+      message: (map['message'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      time: (map['time'] as String).input(),
     );
   }
 }

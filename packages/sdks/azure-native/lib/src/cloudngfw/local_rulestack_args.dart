@@ -51,33 +51,20 @@ class LocalRulestackArgs {
   /// [securityServices] Security Profile
   /// [tags] Resource tags.
   LocalRulestackArgs({
-    pulumi.Output<List<String>>? associatedSubscriptions,
-    pulumi.Output<String>? defaultMode,
-    pulumi.Output<String>? description,
-    pulumi.Output<AzureResourceManagerManagedIdentityProperties>? identity,
-    pulumi.Output<String>? localRulestackName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? minAppIdVersion,
-    pulumi.Output<String>? panEtag,
-    pulumi.Output<String>? panLocation,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scope,
-    pulumi.Output<SecurityServices>? securityServices,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      associatedSubscriptions = pulumi.Input.asOptionalInput<List<String>>(associatedSubscriptions),
-      defaultMode = pulumi.Input.asOptionalInput<String>(defaultMode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      identity = pulumi.Input.asOptionalInput<AzureResourceManagerManagedIdentityProperties>(identity),
-      localRulestackName = pulumi.Input.asOptionalInput<String>(localRulestackName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minAppIdVersion = pulumi.Input.asOptionalInput<String>(minAppIdVersion),
-      panEtag = pulumi.Input.asOptionalInput<String>(panEtag),
-      panLocation = pulumi.Input.asOptionalInput<String>(panLocation),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      securityServices = pulumi.Input.asOptionalInput<SecurityServices>(securityServices),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.associatedSubscriptions,
+    this.defaultMode,
+    this.description,
+    this.identity,
+    this.localRulestackName,
+    this.location,
+    this.minAppIdVersion,
+    this.panEtag,
+    this.panLocation,
+    required this.resourceGroupName,
+    this.scope,
+    this.securityServices,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class LocalRulestackArgs {
 
   factory LocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackArgs(
-      associatedSubscriptions: map['associatedSubscriptions'] == null ? null : pulumi.Output.create<List<String>>((map['associatedSubscriptions'] as List).cast<String>()),
-      defaultMode: map['defaultMode'] == null ? null : pulumi.Output.create<String>(map['defaultMode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AzureResourceManagerManagedIdentityProperties>(AzureResourceManagerManagedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localRulestackName: map['localRulestackName'] == null ? null : pulumi.Output.create<String>(map['localRulestackName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minAppIdVersion: map['minAppIdVersion'] == null ? null : pulumi.Output.create<String>(map['minAppIdVersion'] as String),
-      panEtag: map['panEtag'] == null ? null : pulumi.Output.create<String>(map['panEtag'] as String),
-      panLocation: map['panLocation'] == null ? null : pulumi.Output.create<String>(map['panLocation'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      securityServices: map['securityServices'] == null ? null : pulumi.Output.create<SecurityServices>(SecurityServices.fromMap((map['securityServices'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      associatedSubscriptions: map['associatedSubscriptions'] == null ? null : ((map['associatedSubscriptions'] as List).cast<String>()).input(),
+      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      identity: map['identity'] == null ? null : (AzureResourceManagerManagedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localRulestackName: map['localRulestackName'] == null ? null : (map['localRulestackName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minAppIdVersion: map['minAppIdVersion'] == null ? null : (map['minAppIdVersion'] as String).input(),
+      panEtag: map['panEtag'] == null ? null : (map['panEtag'] as String).input(),
+      panLocation: map['panLocation'] == null ? null : (map['panLocation'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      securityServices: map['securityServices'] == null ? null : (SecurityServices.fromMap((map['securityServices'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

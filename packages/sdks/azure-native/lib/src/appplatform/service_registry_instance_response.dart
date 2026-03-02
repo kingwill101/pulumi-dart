@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Collection of instances belong to the Service Registry
 class ServiceRegistryInstanceResponse {
   /// Name of the Service Registry instance
-  final String name;
+  final pulumi.Input<String> name;
   /// Status of the Service Registry instance
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ServiceRegistryInstanceResponse].
   /// [name] Name of the Service Registry instance
@@ -25,8 +26,8 @@ class ServiceRegistryInstanceResponse {
 
   factory ServiceRegistryInstanceResponse.fromMap(Map<String, dynamic> map) {
     return ServiceRegistryInstanceResponse(
-      name: map['name'] as String,
-      status: map['status'] as String,
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

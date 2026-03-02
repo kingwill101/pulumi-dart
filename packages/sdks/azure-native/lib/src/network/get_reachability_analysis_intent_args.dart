@@ -22,15 +22,11 @@ class GetReachabilityAnalysisIntentArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceName] Workspace name.
   GetReachabilityAnalysisIntentArgs({
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> reachabilityAnalysisIntentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      reachabilityAnalysisIntentName = pulumi.Input.asInput<String>(reachabilityAnalysisIntentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.networkManagerName,
+    required this.reachabilityAnalysisIntentName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetReachabilityAnalysisIntentArgs {
 
   factory GetReachabilityAnalysisIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetReachabilityAnalysisIntentArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      reachabilityAnalysisIntentName: pulumi.Output.create<String>(map['reachabilityAnalysisIntentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      reachabilityAnalysisIntentName: (map['reachabilityAnalysisIntentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

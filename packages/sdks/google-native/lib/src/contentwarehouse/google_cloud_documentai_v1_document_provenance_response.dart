@@ -6,11 +6,11 @@ import 'google_cloud_documentai_v1_document_provenance_parent_response.dart';
 /// Structure to identify provenance relationships between annotations in different revisions.
 class GoogleCloudDocumentaiV1DocumentProvenanceResponse {
   /// References to the original elements that are replaced.
-  final List<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse> parents;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse>> parents;
   /// The index of the revision that produced this element.
-  final int revision;
+  final pulumi.Input<int> revision;
   /// The type of provenance operation.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentProvenanceResponse].
   /// [parents] References to the original elements that are replaced.
@@ -24,7 +24,7 @@ class GoogleCloudDocumentaiV1DocumentProvenanceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parents': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse, Map<String, dynamic>>(parents, (value) => value.toMap()),
+      'parents': pulumi.Input.mapInputValue<List<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse>, List<Map<String, dynamic>>>(parents, (value) => pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'revision': revision,
       'type': type,
     };
@@ -32,9 +32,9 @@ class GoogleCloudDocumentaiV1DocumentProvenanceResponse {
 
   factory GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentProvenanceResponse(
-      parents: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse>(map['parents'], (value) => GoogleCloudDocumentaiV1DocumentProvenanceParentResponse.fromMap((value as Map).cast<String, dynamic>())),
-      revision: map['revision'] as int,
-      type: map['type'] as String,
+      parents: (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse>(map['parents'], (value) => GoogleCloudDocumentaiV1DocumentProvenanceParentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      revision: (map['revision'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

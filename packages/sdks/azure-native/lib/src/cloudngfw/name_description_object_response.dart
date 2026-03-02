@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// object type info
 class NameDescriptionObjectResponse {
   /// description value
-  final String? description;
+  final pulumi.Input<String>? description;
   /// name value
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [NameDescriptionObjectResponse].
   /// [description] description value
@@ -25,8 +26,8 @@ class NameDescriptionObjectResponse {
 
   factory NameDescriptionObjectResponse.fromMap(Map<String, dynamic> map) {
     return NameDescriptionObjectResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

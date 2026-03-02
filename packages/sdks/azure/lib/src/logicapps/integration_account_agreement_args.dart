@@ -42,27 +42,17 @@ class IntegrationAccountAgreementArgs {
   /// [name] The name which should be used for this Logic App Integration Account Agreement. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Agreement should exist. Changing this forces a new resource to be created.
   IntegrationAccountAgreementArgs({
-    required pulumi.Output<String> agreementType,
-    required pulumi.Output<String> content,
-    required pulumi.Output<IntegrationAccountAgreementGuestIdentity> guestIdentity,
-    required pulumi.Output<String> guestPartnerName,
-    required pulumi.Output<IntegrationAccountAgreementHostIdentity> hostIdentity,
-    required pulumi.Output<String> hostPartnerName,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      agreementType = pulumi.Input.asInput<String>(agreementType),
-      content = pulumi.Input.asInput<String>(content),
-      guestIdentity = pulumi.Input.asInput<IntegrationAccountAgreementGuestIdentity>(guestIdentity),
-      guestPartnerName = pulumi.Input.asInput<String>(guestPartnerName),
-      hostIdentity = pulumi.Input.asInput<IntegrationAccountAgreementHostIdentity>(hostIdentity),
-      hostPartnerName = pulumi.Input.asInput<String>(hostPartnerName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.agreementType,
+    required this.content,
+    required this.guestIdentity,
+    required this.guestPartnerName,
+    required this.hostIdentity,
+    required this.hostPartnerName,
+    required this.integrationAccountName,
+    this.metadata,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class IntegrationAccountAgreementArgs {
 
   factory IntegrationAccountAgreementArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAgreementArgs(
-      agreementType: pulumi.Output.create<String>(map['agreementType'] as String),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      guestIdentity: pulumi.Output.create<IntegrationAccountAgreementGuestIdentity>(IntegrationAccountAgreementGuestIdentity.fromMap((map['guestIdentity'] as Map).cast<String, dynamic>())),
-      guestPartnerName: pulumi.Output.create<String>(map['guestPartnerName'] as String),
-      hostIdentity: pulumi.Output.create<IntegrationAccountAgreementHostIdentity>(IntegrationAccountAgreementHostIdentity.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>())),
-      hostPartnerName: pulumi.Output.create<String>(map['hostPartnerName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      agreementType: (map['agreementType'] as String).input(),
+      content: (map['content'] as String).input(),
+      guestIdentity: (IntegrationAccountAgreementGuestIdentity.fromMap((map['guestIdentity'] as Map).cast<String, dynamic>())).input(),
+      guestPartnerName: (map['guestPartnerName'] as String).input(),
+      hostIdentity: (IntegrationAccountAgreementHostIdentity.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>())).input(),
+      hostPartnerName: (map['hostPartnerName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

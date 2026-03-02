@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleErrorActionTimestreamTimestamp {
   /// The precision of the timestamp value that results from the expression described in value. Valid values: `SECONDS`, `MILLISECONDS`, `MICROSECONDS`, `NANOSECONDS`.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// An expression that returns a long epoch time value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [TopicRuleErrorActionTimestreamTimestamp].
   /// [unit] The precision of the timestamp value that results from the expression described in value. Valid values: `SECONDS`, `MILLISECONDS`, `MICROSECONDS`, `NANOSECONDS`.
@@ -24,8 +25,8 @@ class TopicRuleErrorActionTimestreamTimestamp {
 
   factory TopicRuleErrorActionTimestreamTimestamp.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionTimestreamTimestamp(
-      unit: map['unit'] as String,
-      value: map['value'] as String,
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

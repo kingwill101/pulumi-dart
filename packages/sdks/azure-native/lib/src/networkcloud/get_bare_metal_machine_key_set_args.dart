@@ -19,13 +19,10 @@ class GetBareMetalMachineKeySetArgs {
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetBareMetalMachineKeySetArgs({
-    required pulumi.Output<String> bareMetalMachineKeySetName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      bareMetalMachineKeySetName = pulumi.Input.asInput<String>(bareMetalMachineKeySetName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.bareMetalMachineKeySetName,
+    required this.clusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBareMetalMachineKeySetArgs {
 
   factory GetBareMetalMachineKeySetArgs.fromMap(Map<String, dynamic> map) {
     return GetBareMetalMachineKeySetArgs(
-      bareMetalMachineKeySetName: pulumi.Output.create<String>(map['bareMetalMachineKeySetName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      bareMetalMachineKeySetName: (map['bareMetalMachineKeySetName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

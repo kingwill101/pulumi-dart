@@ -25,17 +25,12 @@ class PermissionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceAccount] ID of the calling account
   PermissionArgs({
-    required pulumi.Output<List<String>> actions,
-    required pulumi.Output<String> certificateAuthorityArn,
-    required pulumi.Output<String> principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceAccount,
-  }) :
-      actions = pulumi.Input.asInput<List<String>>(actions),
-      certificateAuthorityArn = pulumi.Input.asInput<String>(certificateAuthorityArn),
-      principal = pulumi.Input.asInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceAccount = pulumi.Input.asOptionalInput<String>(sourceAccount);
+    required this.actions,
+    required this.certificateAuthorityArn,
+    required this.principal,
+    this.region,
+    this.sourceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PermissionArgs {
 
   factory PermissionArgs.fromMap(Map<String, dynamic> map) {
     return PermissionArgs(
-      actions: pulumi.Output.create<List<String>>((map['actions'] as List).cast<String>()),
-      certificateAuthorityArn: pulumi.Output.create<String>(map['certificateAuthorityArn'] as String),
-      principal: pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceAccount: map['sourceAccount'] == null ? null : pulumi.Output.create<String>(map['sourceAccount'] as String),
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
+      principal: (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount'] as String).input(),
     );
   }
 }

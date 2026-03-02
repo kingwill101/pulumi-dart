@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details the service to which the subnet is delegated.
 class DelegationResponse {
   /// The actions permitted to the service upon delegation.
-  final List<String> actions;
+  final pulumi.Input<List<String>> actions;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a subnet. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the service delegation resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers).
-  final String? serviceName;
+  final pulumi.Input<String>? serviceName;
   /// Resource type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DelegationResponse].
   /// [actions] The actions permitted to the service upon delegation.
@@ -50,13 +51,13 @@ class DelegationResponse {
 
   factory DelegationResponse.fromMap(Map<String, dynamic> map) {
     return DelegationResponse(
-      actions: (map['actions'] as List).cast<String>(),
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

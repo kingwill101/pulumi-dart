@@ -17,11 +17,9 @@ class ReplicationConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationConfiguration] Replication configuration for a registry. See Replication Configuration.
   ReplicationConfigurationArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<ReplicationConfigurationReplicationConfiguration>? replicationConfiguration,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationConfiguration = pulumi.Input.asOptionalInput<ReplicationConfigurationReplicationConfiguration>(replicationConfiguration);
+    this.region,
+    this.replicationConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ReplicationConfigurationArgs {
 
   factory ReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationConfiguration: map['replicationConfiguration'] == null ? null : pulumi.Output.create<ReplicationConfigurationReplicationConfiguration>(ReplicationConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationConfiguration: map['replicationConfiguration'] == null ? null : (ReplicationConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

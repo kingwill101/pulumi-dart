@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterIngressProfile {
   /// The IP Address the Ingress Profile is associated with.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The name of the Azure Red Hat OpenShift Cluster to create. Changing this forces a new resource to be created.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Cluster Ingress visibility. Supported values are `Public` and `Private`. Changing this forces a new resource to be created.
-  final String visibility;
+  final pulumi.Input<String> visibility;
 
   /// Creates a new [ClusterIngressProfile].
   /// [ipAddress] The IP Address the Ingress Profile is associated with.
@@ -29,9 +30,9 @@ class ClusterIngressProfile {
 
   factory ClusterIngressProfile.fromMap(Map<String, dynamic> map) {
     return ClusterIngressProfile(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      visibility: map['visibility'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      visibility: (map['visibility'] as String).input(),
     );
   }
 }

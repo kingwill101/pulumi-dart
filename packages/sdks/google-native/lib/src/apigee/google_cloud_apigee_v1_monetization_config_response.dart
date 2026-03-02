@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Monetization add-on.
 class GoogleCloudApigeeV1MonetizationConfigResponse {
   /// Flag that specifies whether the Monetization add-on is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GoogleCloudApigeeV1MonetizationConfigResponse].
   /// [enabled] Flag that specifies whether the Monetization add-on is enabled.
@@ -20,7 +21,7 @@ class GoogleCloudApigeeV1MonetizationConfigResponse {
 
   factory GoogleCloudApigeeV1MonetizationConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1MonetizationConfigResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VmwareSourceDetails message describes a specific source details for the vmware source type.
 class VmwareSourceDetailsResponse {
   /// Input only. The credentials password. This is write only and can not be read in a GET operation.
-  final String password;
+  final pulumi.Input<String> password;
   /// The hostname of the vcenter.
-  final String resolvedVcenterHost;
+  final pulumi.Input<String> resolvedVcenterHost;
   /// The thumbprint representing the certificate for the vcenter.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// The credentials username.
-  final String username;
+  final pulumi.Input<String> username;
   /// The ip address of the vcenter this Source represents.
-  final String vcenterIp;
+  final pulumi.Input<String> vcenterIp;
 
   /// Creates a new [VmwareSourceDetailsResponse].
   /// [password] Input only. The credentials password. This is write only and can not be read in a GET operation.
@@ -40,11 +41,11 @@ class VmwareSourceDetailsResponse {
 
   factory VmwareSourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VmwareSourceDetailsResponse(
-      password: map['password'] as String,
-      resolvedVcenterHost: map['resolvedVcenterHost'] as String,
-      thumbprint: map['thumbprint'] as String,
-      username: map['username'] as String,
-      vcenterIp: map['vcenterIp'] as String,
+      password: (map['password'] as String).input(),
+      resolvedVcenterHost: (map['resolvedVcenterHost'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      username: (map['username'] as String).input(),
+      vcenterIp: (map['vcenterIp'] as String).input(),
     );
   }
 }

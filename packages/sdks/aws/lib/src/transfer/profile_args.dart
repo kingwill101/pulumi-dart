@@ -25,17 +25,12 @@ class ProfileArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ProfileArgs({
-    required pulumi.Output<String> as2Id,
-    pulumi.Output<List<String>>? certificateIds,
-    required pulumi.Output<String> profileType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      as2Id = pulumi.Input.asInput<String>(as2Id),
-      certificateIds = pulumi.Input.asOptionalInput<List<String>>(certificateIds),
-      profileType = pulumi.Input.asInput<String>(profileType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.as2Id,
+    this.certificateIds,
+    required this.profileType,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      as2Id: pulumi.Output.create<String>(map['as2Id'] as String),
-      certificateIds: map['certificateIds'] == null ? null : pulumi.Output.create<List<String>>((map['certificateIds'] as List).cast<String>()),
-      profileType: pulumi.Output.create<String>(map['profileType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      as2Id: (map['as2Id'] as String).input(),
+      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
+      profileType: (map['profileType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

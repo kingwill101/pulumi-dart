@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Billing address.
 class BillingProfilePropertiesBillTo {
   /// Address line 1.
-  final String addressLine1;
+  final pulumi.Input<String> addressLine1;
   /// Address line 2.
-  final String? addressLine2;
+  final pulumi.Input<String>? addressLine2;
   /// Address line 3.
-  final String? addressLine3;
+  final pulumi.Input<String>? addressLine3;
   /// Address city.
-  final String? city;
+  final pulumi.Input<String>? city;
   /// Company name. Optional for MCA Individual (Pay-as-you-go).
-  final String? companyName;
+  final pulumi.Input<String>? companyName;
   /// Country code uses ISO 3166-1 Alpha-2 format.
-  final String country;
+  final pulumi.Input<String> country;
   /// Address district.
-  final String? district;
+  final pulumi.Input<String>? district;
   /// Email address.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// First name. Optional for MCA Enterprise.
-  final String? firstName;
+  final pulumi.Input<String>? firstName;
   /// Indicates if the address is incomplete.
-  final bool? isValidAddress;
+  final pulumi.Input<bool>? isValidAddress;
   /// Last name. Optional for MCA Enterprise.
-  final String? lastName;
+  final pulumi.Input<String>? lastName;
   /// Middle name.
-  final String? middleName;
+  final pulumi.Input<String>? middleName;
   /// Phone number.
-  final String? phoneNumber;
+  final pulumi.Input<String>? phoneNumber;
   /// Postal code.
-  final String? postalCode;
+  final pulumi.Input<String>? postalCode;
   /// Address region.
-  final String? region;
+  final pulumi.Input<String>? region;
 
   /// Creates a new [BillingProfilePropertiesBillTo].
   /// [addressLine1] Address line 1.
@@ -90,21 +91,21 @@ class BillingProfilePropertiesBillTo {
 
   factory BillingProfilePropertiesBillTo.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesBillTo(
-      addressLine1: map['addressLine1'] as String,
-      addressLine2: map['addressLine2'] == null ? null : map['addressLine2'] as String,
-      addressLine3: map['addressLine3'] == null ? null : map['addressLine3'] as String,
-      city: map['city'] == null ? null : map['city'] as String,
-      companyName: map['companyName'] == null ? null : map['companyName'] as String,
-      country: map['country'] as String,
-      district: map['district'] == null ? null : map['district'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      firstName: map['firstName'] == null ? null : map['firstName'] as String,
-      isValidAddress: map['isValidAddress'] == null ? null : map['isValidAddress'] as bool,
-      lastName: map['lastName'] == null ? null : map['lastName'] as String,
-      middleName: map['middleName'] == null ? null : map['middleName'] as String,
-      phoneNumber: map['phoneNumber'] == null ? null : map['phoneNumber'] as String,
-      postalCode: map['postalCode'] == null ? null : map['postalCode'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      addressLine1: (map['addressLine1'] as String).input(),
+      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2'] as String).input(),
+      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3'] as String).input(),
+      city: map['city'] == null ? null : (map['city'] as String).input(),
+      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
+      country: (map['country'] as String).input(),
+      district: map['district'] == null ? null : (map['district'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      isValidAddress: map['isValidAddress'] == null ? null : (map['isValidAddress'] as bool).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      middleName: map['middleName'] == null ? null : (map['middleName'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

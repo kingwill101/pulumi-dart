@@ -28,21 +28,14 @@ class StreamingDataServiceState {
   /// [serviceSpec] Resource Specifications
   /// [status] The status of the resource
   StreamingDataServiceState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? serviceDescription,
-    pulumi.Output<String>? serviceId,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<String>? serviceSpec,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      serviceDescription = pulumi.Input.asOptionalInput<String>(serviceDescription),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      serviceSpec = pulumi.Input.asOptionalInput<String>(serviceSpec),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.dbInstanceId,
+    this.serviceDescription,
+    this.serviceId,
+    this.serviceName,
+    this.serviceSpec,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class StreamingDataServiceState {
 
   factory StreamingDataServiceState.fromMap(Map<String, dynamic> map) {
     return StreamingDataServiceState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      serviceDescription: map['serviceDescription'] == null ? null : pulumi.Output.create<String>(map['serviceDescription'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceSpec: map['serviceSpec'] == null ? null : pulumi.Output.create<String>(map['serviceSpec'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceSpec: map['serviceSpec'] == null ? null : (map['serviceSpec'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

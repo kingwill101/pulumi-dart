@@ -38,25 +38,16 @@ class FeatureArgs {
   /// [tags] Tags to apply to the feature. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [variations] One or more blocks that contain the configuration of the feature's different variations. Detailed below
   FeatureArgs({
-    pulumi.Output<String>? defaultVariation,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? entityOverrides,
-    pulumi.Output<String>? evaluationStrategy,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> project,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<FeatureVariation>> variations,
-  }) :
-      defaultVariation = pulumi.Input.asOptionalInput<String>(defaultVariation),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      entityOverrides = pulumi.Input.asOptionalInput<Map<String, String>>(entityOverrides),
-      evaluationStrategy = pulumi.Input.asOptionalInput<String>(evaluationStrategy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      variations = pulumi.Input.asInput<List<FeatureVariation>>(variations);
+    this.defaultVariation,
+    this.description,
+    this.entityOverrides,
+    this.evaluationStrategy,
+    this.name,
+    required this.project,
+    this.region,
+    this.tags,
+    required this.variations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class FeatureArgs {
 
   factory FeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureArgs(
-      defaultVariation: map['defaultVariation'] == null ? null : pulumi.Output.create<String>(map['defaultVariation'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      entityOverrides: map['entityOverrides'] == null ? null : pulumi.Output.create<Map<String, String>>((map['entityOverrides'] as Map).cast<String, String>()),
-      evaluationStrategy: map['evaluationStrategy'] == null ? null : pulumi.Output.create<String>(map['evaluationStrategy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      variations: pulumi.Output.create<List<FeatureVariation>>(pulumi.Input.decodeList<FeatureVariation>(map['variations'], (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>()))),
+      defaultVariation: map['defaultVariation'] == null ? null : (map['defaultVariation'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      entityOverrides: map['entityOverrides'] == null ? null : ((map['entityOverrides'] as Map).cast<String, String>()).input(),
+      evaluationStrategy: map['evaluationStrategy'] == null ? null : (map['evaluationStrategy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      variations: (pulumi.Input.decodeList<FeatureVariation>(map['variations'], (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

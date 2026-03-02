@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU of the cognitive services account.
 class SkuResponse {
   /// The sku name
-  final String name;
+  final pulumi.Input<String> name;
   /// Gets the sku tier. This is based on the SKU name.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [SkuResponse].
   /// [name] The sku name
@@ -25,8 +26,8 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      name: map['name'] as String,
-      tier: map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

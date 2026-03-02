@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleTargetSagemakerPipelineParametersPipelineParameter {
   /// Name of parameter to start execution of a SageMaker AI Model Building Pipeline.
-  final String name;
+  final pulumi.Input<String> name;
   /// Value of parameter to start execution of a SageMaker AI Model Building Pipeline.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ScheduleTargetSagemakerPipelineParametersPipelineParameter].
   /// [name] Name of parameter to start execution of a SageMaker AI Model Building Pipeline.
@@ -24,8 +25,8 @@ class ScheduleTargetSagemakerPipelineParametersPipelineParameter {
 
   factory ScheduleTargetSagemakerPipelineParametersPipelineParameter.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetSagemakerPipelineParametersPipelineParameter(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

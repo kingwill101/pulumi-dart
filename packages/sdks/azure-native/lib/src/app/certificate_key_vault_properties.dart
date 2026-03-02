@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for a certificate stored in a Key Vault.
 class CertificateKeyVaultProperties {
   /// Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// URL pointing to the Azure Key Vault secret that holds the certificate.
-  final String? keyVaultUrl;
+  final pulumi.Input<String>? keyVaultUrl;
 
   /// Creates a new [CertificateKeyVaultProperties].
   /// [identity] Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
@@ -25,8 +26,8 @@ class CertificateKeyVaultProperties {
 
   factory CertificateKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return CertificateKeyVaultProperties(
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : map['keyVaultUrl'] as String,
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
     );
   }
 }

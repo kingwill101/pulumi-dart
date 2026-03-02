@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceEnclaveOptions {
   /// Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
   ///
   /// For more information, see the documentation on [Nitro Enclaves](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html).
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [InstanceEnclaveOptions].
   /// [enabled] Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
@@ -21,7 +22,7 @@ class InstanceEnclaveOptions {
 
   factory InstanceEnclaveOptions.fromMap(Map<String, dynamic> map) {
     return InstanceEnclaveOptions(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

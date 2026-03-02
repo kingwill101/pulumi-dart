@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Set workload type to optimize storage for SQL Server.
 class SqlWorkloadTypeUpdateSettingsResponse {
   /// SQL Server workload type.
-  final String? sqlWorkloadType;
+  final pulumi.Input<String>? sqlWorkloadType;
 
   /// Creates a new [SqlWorkloadTypeUpdateSettingsResponse].
   /// [sqlWorkloadType] SQL Server workload type.
@@ -20,7 +21,7 @@ class SqlWorkloadTypeUpdateSettingsResponse {
 
   factory SqlWorkloadTypeUpdateSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlWorkloadTypeUpdateSettingsResponse(
-      sqlWorkloadType: map['sqlWorkloadType'] == null ? null : map['sqlWorkloadType'] as String,
+      sqlWorkloadType: map['sqlWorkloadType'] == null ? null : (map['sqlWorkloadType'] as String).input(),
     );
   }
 }

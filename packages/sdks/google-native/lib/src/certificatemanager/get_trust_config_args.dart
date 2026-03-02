@@ -16,13 +16,10 @@ class GetTrustConfigArgs {
   /// [project] Optional.
   /// [trustConfigId] Required.
   GetTrustConfigArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> trustConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trustConfigId = pulumi.Input.asInput<String>(trustConfigId);
+    required this.location,
+    this.project,
+    required this.trustConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTrustConfigArgs {
 
   factory GetTrustConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetTrustConfigArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trustConfigId: pulumi.Output.create<String>(map['trustConfigId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trustConfigId: (map['trustConfigId'] as String).input(),
     );
   }
 }

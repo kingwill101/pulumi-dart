@@ -25,17 +25,12 @@ class GetWorkspaceTagProductLinkArgs {
   /// [tagId] Tag identifier. Must be unique in the current API Management service instance.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   GetWorkspaceTagProductLinkArgs({
-    required pulumi.Output<String> productLinkId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> tagId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      productLinkId = pulumi.Input.asInput<String>(productLinkId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tagId = pulumi.Input.asInput<String>(tagId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.productLinkId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.tagId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetWorkspaceTagProductLinkArgs {
 
   factory GetWorkspaceTagProductLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceTagProductLinkArgs(
-      productLinkId: pulumi.Output.create<String>(map['productLinkId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tagId: pulumi.Output.create<String>(map['tagId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      productLinkId: (map['productLinkId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tagId: (map['tagId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

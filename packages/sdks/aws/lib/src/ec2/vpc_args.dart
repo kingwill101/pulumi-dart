@@ -52,35 +52,21 @@ class VpcArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   VpcArgs({
-    pulumi.Output<bool>? assignGeneratedIpv6CidrBlock,
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<bool>? enableDnsHostnames,
-    pulumi.Output<bool>? enableDnsSupport,
-    pulumi.Output<bool>? enableNetworkAddressUsageMetrics,
-    pulumi.Output<String>? instanceTenancy,
-    pulumi.Output<String>? ipv4IpamPoolId,
-    pulumi.Output<int>? ipv4NetmaskLength,
-    pulumi.Output<String>? ipv6CidrBlock,
-    pulumi.Output<String>? ipv6CidrBlockNetworkBorderGroup,
-    pulumi.Output<String>? ipv6IpamPoolId,
-    pulumi.Output<int>? ipv6NetmaskLength,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      assignGeneratedIpv6CidrBlock = pulumi.Input.asOptionalInput<bool>(assignGeneratedIpv6CidrBlock),
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      enableDnsHostnames = pulumi.Input.asOptionalInput<bool>(enableDnsHostnames),
-      enableDnsSupport = pulumi.Input.asOptionalInput<bool>(enableDnsSupport),
-      enableNetworkAddressUsageMetrics = pulumi.Input.asOptionalInput<bool>(enableNetworkAddressUsageMetrics),
-      instanceTenancy = pulumi.Input.asOptionalInput<String>(instanceTenancy),
-      ipv4IpamPoolId = pulumi.Input.asOptionalInput<String>(ipv4IpamPoolId),
-      ipv4NetmaskLength = pulumi.Input.asOptionalInput<int>(ipv4NetmaskLength),
-      ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
-      ipv6CidrBlockNetworkBorderGroup = pulumi.Input.asOptionalInput<String>(ipv6CidrBlockNetworkBorderGroup),
-      ipv6IpamPoolId = pulumi.Input.asOptionalInput<String>(ipv6IpamPoolId),
-      ipv6NetmaskLength = pulumi.Input.asOptionalInput<int>(ipv6NetmaskLength),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.assignGeneratedIpv6CidrBlock,
+    this.cidrBlock,
+    this.enableDnsHostnames,
+    this.enableDnsSupport,
+    this.enableNetworkAddressUsageMetrics,
+    this.instanceTenancy,
+    this.ipv4IpamPoolId,
+    this.ipv4NetmaskLength,
+    this.ipv6CidrBlock,
+    this.ipv6CidrBlockNetworkBorderGroup,
+    this.ipv6IpamPoolId,
+    this.ipv6NetmaskLength,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class VpcArgs {
 
   factory VpcArgs.fromMap(Map<String, dynamic> map) {
     return VpcArgs(
-      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : pulumi.Output.create<bool>(map['assignGeneratedIpv6CidrBlock'] as bool),
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      enableDnsHostnames: map['enableDnsHostnames'] == null ? null : pulumi.Output.create<bool>(map['enableDnsHostnames'] as bool),
-      enableDnsSupport: map['enableDnsSupport'] == null ? null : pulumi.Output.create<bool>(map['enableDnsSupport'] as bool),
-      enableNetworkAddressUsageMetrics: map['enableNetworkAddressUsageMetrics'] == null ? null : pulumi.Output.create<bool>(map['enableNetworkAddressUsageMetrics'] as bool),
-      instanceTenancy: map['instanceTenancy'] == null ? null : pulumi.Output.create<String>(map['instanceTenancy'] as String),
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipv4IpamPoolId'] as String),
-      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : pulumi.Output.create<int>(map['ipv4NetmaskLength'] as int),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrBlock'] as String),
-      ipv6CidrBlockNetworkBorderGroup: map['ipv6CidrBlockNetworkBorderGroup'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrBlockNetworkBorderGroup'] as String),
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipv6IpamPoolId'] as String),
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : pulumi.Output.create<int>(map['ipv6NetmaskLength'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : (map['assignGeneratedIpv6CidrBlock'] as bool).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      enableDnsHostnames: map['enableDnsHostnames'] == null ? null : (map['enableDnsHostnames'] as bool).input(),
+      enableDnsSupport: map['enableDnsSupport'] == null ? null : (map['enableDnsSupport'] as bool).input(),
+      enableNetworkAddressUsageMetrics: map['enableNetworkAddressUsageMetrics'] == null ? null : (map['enableNetworkAddressUsageMetrics'] as bool).input(),
+      instanceTenancy: map['instanceTenancy'] == null ? null : (map['instanceTenancy'] as String).input(),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
+      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : (map['ipv4NetmaskLength'] as int).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      ipv6CidrBlockNetworkBorderGroup: map['ipv6CidrBlockNetworkBorderGroup'] == null ? null : (map['ipv6CidrBlockNetworkBorderGroup'] as String).input(),
+      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : (map['ipv6IpamPoolId'] as String).input(),
+      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : (map['ipv6NetmaskLength'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

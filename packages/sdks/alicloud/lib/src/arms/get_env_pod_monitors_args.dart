@@ -22,15 +22,11 @@ class GetEnvPodMonitorsArgs {
   /// [nameRegex] A regex string to filter results by ARMS Env Pod Monitor name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetEnvPodMonitorsArgs({
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.environmentId,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetEnvPodMonitorsArgs {
 
   factory GetEnvPodMonitorsArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvPodMonitorsArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

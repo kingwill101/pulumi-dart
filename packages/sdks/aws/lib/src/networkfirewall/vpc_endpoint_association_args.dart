@@ -32,21 +32,14 @@ class VpcEndpointAssociationArgs {
   /// [timeouts] Optional.
   /// [vpcId] The unique identifier of the VPC for the endpoint association.
   VpcEndpointAssociationArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> firewallArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<VpcEndpointAssociationSubnetMapping> subnetMapping,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<VpcEndpointAssociationTimeouts>? timeouts,
-    required pulumi.Output<String> vpcId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      firewallArn = pulumi.Input.asInput<String>(firewallArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetMapping = pulumi.Input.asInput<VpcEndpointAssociationSubnetMapping>(subnetMapping),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<VpcEndpointAssociationTimeouts>(timeouts),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.description,
+    required this.firewallArn,
+    this.region,
+    required this.subnetMapping,
+    this.tags,
+    this.timeouts,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VpcEndpointAssociationArgs {
 
   factory VpcEndpointAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointAssociationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      firewallArn: pulumi.Output.create<String>(map['firewallArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetMapping: pulumi.Output.create<VpcEndpointAssociationSubnetMapping>(VpcEndpointAssociationSubnetMapping.fromMap((map['subnetMapping'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<VpcEndpointAssociationTimeouts>(VpcEndpointAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      firewallArn: (map['firewallArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetMapping: (VpcEndpointAssociationSubnetMapping.fromMap((map['subnetMapping'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VpcEndpointAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

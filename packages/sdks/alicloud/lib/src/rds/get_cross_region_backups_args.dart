@@ -39,25 +39,16 @@ class GetCrossRegionBackupsArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [startTime] The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
   GetCrossRegionBackupsArgs({
-    pulumi.Output<String>? backupId,
-    pulumi.Output<String>? crossBackupId,
-    pulumi.Output<String>? crossBackupRegion,
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? startTime,
-  }) :
-      backupId = pulumi.Input.asOptionalInput<String>(backupId),
-      crossBackupId = pulumi.Input.asOptionalInput<String>(crossBackupId),
-      crossBackupRegion = pulumi.Input.asOptionalInput<String>(crossBackupRegion),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime);
+    this.backupId,
+    this.crossBackupId,
+    this.crossBackupRegion,
+    required this.dbInstanceId,
+    this.endTime,
+    this.ids,
+    this.outputFile,
+    this.resourceGroupId,
+    this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class GetCrossRegionBackupsArgs {
 
   factory GetCrossRegionBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionBackupsArgs(
-      backupId: map['backupId'] == null ? null : pulumi.Output.create<String>(map['backupId'] as String),
-      crossBackupId: map['crossBackupId'] == null ? null : pulumi.Output.create<String>(map['crossBackupId'] as String),
-      crossBackupRegion: map['crossBackupRegion'] == null ? null : pulumi.Output.create<String>(map['crossBackupRegion'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
+      backupId: map['backupId'] == null ? null : (map['backupId'] as String).input(),
+      crossBackupId: map['crossBackupId'] == null ? null : (map['crossBackupId'] as String).input(),
+      crossBackupRegion: map['crossBackupRegion'] == null ? null : (map['crossBackupRegion'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

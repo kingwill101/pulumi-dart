@@ -29,19 +29,13 @@ class RepositoryGroupIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryGroupId] Used to find the parent resource to bind the IAM policy to
   RepositoryGroupIamPolicyState({
-    pulumi.Output<String>? codeRepositoryIndex,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? repositoryGroupId,
-  }) :
-      codeRepositoryIndex = pulumi.Input.asOptionalInput<String>(codeRepositoryIndex),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryGroupId = pulumi.Input.asOptionalInput<String>(repositoryGroupId);
+    this.codeRepositoryIndex,
+    this.etag,
+    this.location,
+    this.policyData,
+    this.project,
+    this.repositoryGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class RepositoryGroupIamPolicyState {
 
   factory RepositoryGroupIamPolicyState.fromMap(Map<String, dynamic> map) {
     return RepositoryGroupIamPolicyState(
-      codeRepositoryIndex: map['codeRepositoryIndex'] == null ? null : pulumi.Output.create<String>(map['codeRepositoryIndex'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryGroupId: map['repositoryGroupId'] == null ? null : pulumi.Output.create<String>(map['repositoryGroupId'] as String),
+      codeRepositoryIndex: map['codeRepositoryIndex'] == null ? null : (map['codeRepositoryIndex'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryGroupId: map['repositoryGroupId'] == null ? null : (map['repositoryGroupId'] as String).input(),
     );
   }
 }

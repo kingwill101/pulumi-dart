@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupUser {
   /// User ARN.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Path to the IAM user.
-  final String path;
+  final pulumi.Input<String> path;
   /// Stable and unique string identifying the IAM user.
-  final String userId;
+  final pulumi.Input<String> userId;
   /// Name of the IAM user.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [GetGroupUser].
   /// [arn] User ARN.
@@ -34,10 +35,10 @@ class GetGroupUser {
 
   factory GetGroupUser.fromMap(Map<String, dynamic> map) {
     return GetGroupUser(
-      arn: map['arn'] as String,
-      path: map['path'] as String,
-      userId: map['userId'] as String,
-      userName: map['userName'] as String,
+      arn: (map['arn'] as String).input(),
+      path: (map['path'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

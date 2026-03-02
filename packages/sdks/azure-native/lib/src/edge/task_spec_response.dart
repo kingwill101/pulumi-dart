@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Task Spec
 class TaskSpecResponse {
   /// Name of Task
-  final String name;
+  final pulumi.Input<String> name;
   /// Task specification
-  final dynamic specification;
+  final pulumi.Input<dynamic> specification;
   /// Target ARM id
-  final String? targetId;
+  final pulumi.Input<String>? targetId;
 
   /// Creates a new [TaskSpecResponse].
   /// [name] Name of Task
@@ -30,9 +31,9 @@ class TaskSpecResponse {
 
   factory TaskSpecResponse.fromMap(Map<String, dynamic> map) {
     return TaskSpecResponse(
-      name: map['name'] as String,
-      specification: map['specification'],
-      targetId: map['targetId'] == null ? null : map['targetId'] as String,
+      name: (map['name'] as String).input(),
+      specification: (map['specification']).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
     );
   }
 }

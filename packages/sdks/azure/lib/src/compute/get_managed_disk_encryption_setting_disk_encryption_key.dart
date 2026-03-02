@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetManagedDiskEncryptionSettingDiskEncryptionKey {
   /// The URL to the Key Vault Secret used as the Disk Encryption Key.
-  final String secretUrl;
+  final pulumi.Input<String> secretUrl;
   /// The ID of the source Key Vault.
-  final String sourceVaultId;
+  final pulumi.Input<String> sourceVaultId;
 
   /// Creates a new [GetManagedDiskEncryptionSettingDiskEncryptionKey].
   /// [secretUrl] The URL to the Key Vault Secret used as the Disk Encryption Key.
@@ -24,8 +25,8 @@ class GetManagedDiskEncryptionSettingDiskEncryptionKey {
 
   factory GetManagedDiskEncryptionSettingDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
     return GetManagedDiskEncryptionSettingDiskEncryptionKey(
-      secretUrl: map['secretUrl'] as String,
-      sourceVaultId: map['sourceVaultId'] as String,
+      secretUrl: (map['secretUrl'] as String).input(),
+      sourceVaultId: (map['sourceVaultId'] as String).input(),
     );
   }
 }

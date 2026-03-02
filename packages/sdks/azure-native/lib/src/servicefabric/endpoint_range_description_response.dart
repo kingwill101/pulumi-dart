@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Port range details
 class EndpointRangeDescriptionResponse {
   /// End port of a range of ports
-  final int endPort;
+  final pulumi.Input<int> endPort;
   /// Starting port of a range of ports
-  final int startPort;
+  final pulumi.Input<int> startPort;
 
   /// Creates a new [EndpointRangeDescriptionResponse].
   /// [endPort] End port of a range of ports
@@ -25,8 +26,8 @@ class EndpointRangeDescriptionResponse {
 
   factory EndpointRangeDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return EndpointRangeDescriptionResponse(
-      endPort: map['endPort'] as int,
-      startPort: map['startPort'] as int,
+      endPort: (map['endPort'] as int).input(),
+      startPort: (map['startPort'] as int).input(),
     );
   }
 }

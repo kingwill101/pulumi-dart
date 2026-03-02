@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details about the SaaS offer purchased from the marketplace.
 class SaasProperties {
   /// Resource ID of the SaaS offer purchased from the marketplace.
-  final String? saasResourceId;
+  final pulumi.Input<String>? saasResourceId;
   /// Subscription ID of the SaaS offer purchased from the marketplace.
-  final String? saasSubscriptionId;
+  final pulumi.Input<String>? saasSubscriptionId;
 
   /// Creates a new [SaasProperties].
   /// [saasResourceId] Resource ID of the SaaS offer purchased from the marketplace.
@@ -25,8 +26,8 @@ class SaasProperties {
 
   factory SaasProperties.fromMap(Map<String, dynamic> map) {
     return SaasProperties(
-      saasResourceId: map['saasResourceId'] == null ? null : map['saasResourceId'] as String,
-      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : map['saasSubscriptionId'] as String,
+      saasResourceId: map['saasResourceId'] == null ? null : (map['saasResourceId'] as String).input(),
+      saasSubscriptionId: map['saasSubscriptionId'] == null ? null : (map['saasSubscriptionId'] as String).input(),
     );
   }
 }

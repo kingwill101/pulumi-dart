@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Event Hub endpoint.
 /// The managed identity of Web PubSub service must be enabled, and the identity should have the "Azure Event Hubs Data sender" role to access Event Hub.
 class EventHubEndpointResponse {
   /// The name of the Event Hub.
-  final String eventHubName;
+  final pulumi.Input<String> eventHubName;
   /// The fully qualified namespace name of the Event Hub resource. For example, "example.servicebus.windows.net".
-  final String fullyQualifiedNamespace;
+  final pulumi.Input<String> fullyQualifiedNamespace;
   /// Expected value is 'EventHub'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EventHubEndpointResponse].
   /// [eventHubName] The name of the Event Hub.
@@ -31,9 +32,9 @@ class EventHubEndpointResponse {
 
   factory EventHubEndpointResponse.fromMap(Map<String, dynamic> map) {
     return EventHubEndpointResponse(
-      eventHubName: map['eventHubName'] as String,
-      fullyQualifiedNamespace: map['fullyQualifiedNamespace'] as String,
-      type: map['type'] as String,
+      eventHubName: (map['eventHubName'] as String).input(),
+      fullyQualifiedNamespace: (map['fullyQualifiedNamespace'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

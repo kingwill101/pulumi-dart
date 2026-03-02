@@ -46,31 +46,19 @@ class CatalogItemArgs {
   /// [tags] Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
   /// [title] Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
   CatalogItemArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>> categoryHierarchies,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> id,
-    pulumi.Output<GoogleCloudRecommendationengineV1beta1FeatureMap>? itemAttributes,
-    pulumi.Output<String>? itemGroupId,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudRecommendationengineV1beta1ProductCatalogItem>? productMetadata,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? tags,
-    required pulumi.Output<String> title,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      categoryHierarchies = pulumi.Input.asInput<List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>>(categoryHierarchies),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      id = pulumi.Input.asInput<String>(id),
-      itemAttributes = pulumi.Input.asOptionalInput<GoogleCloudRecommendationengineV1beta1FeatureMap>(itemAttributes),
-      itemGroupId = pulumi.Input.asOptionalInput<String>(itemGroupId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      productMetadata = pulumi.Input.asOptionalInput<GoogleCloudRecommendationengineV1beta1ProductCatalogItem>(productMetadata),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      title = pulumi.Input.asInput<String>(title);
+    required this.catalogId,
+    required this.categoryHierarchies,
+    this.description,
+    required this.id,
+    this.itemAttributes,
+    this.itemGroupId,
+    this.languageCode,
+    this.location,
+    this.productMetadata,
+    this.project,
+    this.tags,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class CatalogItemArgs {
 
   factory CatalogItemArgs.fromMap(Map<String, dynamic> map) {
     return CatalogItemArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      categoryHierarchies: pulumi.Output.create<List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>>(pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>(map['categoryHierarchies'], (value) => GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      itemAttributes: map['itemAttributes'] == null ? null : pulumi.Output.create<GoogleCloudRecommendationengineV1beta1FeatureMap>(GoogleCloudRecommendationengineV1beta1FeatureMap.fromMap((map['itemAttributes'] as Map).cast<String, dynamic>())),
-      itemGroupId: map['itemGroupId'] == null ? null : pulumi.Output.create<String>(map['itemGroupId'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      productMetadata: map['productMetadata'] == null ? null : pulumi.Output.create<GoogleCloudRecommendationengineV1beta1ProductCatalogItem>(GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromMap((map['productMetadata'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      categoryHierarchies: (pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>(map['categoryHierarchies'], (value) => GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      itemAttributes: map['itemAttributes'] == null ? null : (GoogleCloudRecommendationengineV1beta1FeatureMap.fromMap((map['itemAttributes'] as Map).cast<String, dynamic>())).input(),
+      itemGroupId: map['itemGroupId'] == null ? null : (map['itemGroupId'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      productMetadata: map['productMetadata'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromMap((map['productMetadata'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

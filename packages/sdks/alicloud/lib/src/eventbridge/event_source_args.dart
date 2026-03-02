@@ -41,19 +41,13 @@ class EventSourceArgs {
   /// [externalSourceType] The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
   /// [linkedExternalSource] Specifies whether to connect to an external data source. Default value: `false`.
   EventSourceArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> eventBusName,
-    required pulumi.Output<String> eventSourceName,
-    pulumi.Output<Map<String, String>>? externalSourceConfig,
-    pulumi.Output<String>? externalSourceType,
-    pulumi.Output<bool>? linkedExternalSource,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventBusName = pulumi.Input.asInput<String>(eventBusName),
-      eventSourceName = pulumi.Input.asInput<String>(eventSourceName),
-      externalSourceConfig = pulumi.Input.asOptionalInput<Map<String, String>>(externalSourceConfig),
-      externalSourceType = pulumi.Input.asOptionalInput<String>(externalSourceType),
-      linkedExternalSource = pulumi.Input.asOptionalInput<bool>(linkedExternalSource);
+    this.description,
+    required this.eventBusName,
+    required this.eventSourceName,
+    this.externalSourceConfig,
+    this.externalSourceType,
+    this.linkedExternalSource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +62,12 @@ class EventSourceArgs {
 
   factory EventSourceArgs.fromMap(Map<String, dynamic> map) {
     return EventSourceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventBusName: pulumi.Output.create<String>(map['eventBusName'] as String),
-      eventSourceName: pulumi.Output.create<String>(map['eventSourceName'] as String),
-      externalSourceConfig: map['externalSourceConfig'] == null ? null : pulumi.Output.create<Map<String, String>>((map['externalSourceConfig'] as Map).cast<String, String>()),
-      externalSourceType: map['externalSourceType'] == null ? null : pulumi.Output.create<String>(map['externalSourceType'] as String),
-      linkedExternalSource: map['linkedExternalSource'] == null ? null : pulumi.Output.create<bool>(map['linkedExternalSource'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventBusName: (map['eventBusName'] as String).input(),
+      eventSourceName: (map['eventSourceName'] as String).input(),
+      externalSourceConfig: map['externalSourceConfig'] == null ? null : ((map['externalSourceConfig'] as Map).cast<String, String>()).input(),
+      externalSourceType: map['externalSourceType'] == null ? null : (map['externalSourceType'] as String).input(),
+      linkedExternalSource: map['linkedExternalSource'] == null ? null : (map['linkedExternalSource'] as bool).input(),
     );
   }
 }

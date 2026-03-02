@@ -1,75 +1,76 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// AutoRenew.
-  final String autoRenew;
+  final pulumi.Input<String> autoRenew;
   /// The cold storage capacity of the instance. Unit: GB.
-  final int coldStorage;
+  final pulumi.Input<int> coldStorage;
   /// The creation date of Instance.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The deletion protection of instance.
-  final bool deletionProection;
+  final pulumi.Input<bool> deletionProection;
   /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
-  final String diskCategory;
+  final pulumi.Input<String> diskCategory;
   /// The usage of disk.
-  final String diskUsage;
+  final pulumi.Input<String> diskUsage;
   /// The threshold of disk.
-  final String diskWarningThreshold;
+  final pulumi.Input<String> diskWarningThreshold;
   /// The type of Instance engine .
-  final int engineType;
+  final pulumi.Input<int> engineType;
   /// The expiration time of Instance.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The count of file engine.
-  final int fileEngineNodeCount;
+  final pulumi.Input<int> fileEngineNodeCount;
   /// The specification of file engine. Valid values: `lindorm.c.xlarge`.
-  final String fileEngineSpecification;
+  final pulumi.Input<String> fileEngineSpecification;
   /// The ID of the Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
-  final String instanceStorage;
+  final pulumi.Input<String> instanceStorage;
   /// The ip white list of instance.
-  final List<String> ipWhiteLists;
+  final pulumi.Input<List<String>> ipWhiteLists;
   /// The count of lindorm tunnel service.
-  final int ltsNodeCount;
+  final pulumi.Input<int> ltsNodeCount;
   /// The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
-  final String ltsNodeSpecification;
+  final pulumi.Input<String> ltsNodeSpecification;
   /// Instance network type, enumerative.VPC.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The count of phoenix.
-  final int phoenixNodeCount;
+  final pulumi.Input<int> phoenixNodeCount;
   /// The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-  final String phoenixNodeSpecification;
+  final pulumi.Input<String> phoenixNodeSpecification;
   /// The owner id of resource.
-  final String resourceOwnerId;
+  final pulumi.Input<String> resourceOwnerId;
   /// The count of search engine.
-  final int searchEngineNodeCount;
+  final pulumi.Input<int> searchEngineNodeCount;
   /// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-  final String searchEngineSpecification;
+  final pulumi.Input<String> searchEngineSpecification;
   /// The service type of Instance, Valid values:  `lindorm`, `serverless_lindorm`, `lindorm_standalone`.
-  final String serviceType;
+  final pulumi.Input<String> serviceType;
   /// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The count of table engine.
-  final int tableEngineNodeCount;
+  final pulumi.Input<int> tableEngineNodeCount;
   /// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-  final String tableEngineSpecification;
+  final pulumi.Input<String> tableEngineSpecification;
   /// The count of time series engine.
-  final int timeSeriesEngineNodeCount;
+  final pulumi.Input<int> timeSeriesEngineNodeCount;
   /// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-  final String timeSeriresEngineSpecification;
+  final pulumi.Input<String> timeSeriresEngineSpecification;
   /// The ID of the virtual private cloud (VPC) that is connected to the instance.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The zone ID of the instance.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstancesInstance].
   /// [autoRenew] AutoRenew.
@@ -184,40 +185,40 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      autoRenew: map['autoRenew'] as String,
-      coldStorage: map['coldStorage'] as int,
-      createTime: map['createTime'] as String,
-      deletionProection: map['deletionProection'] as bool,
-      diskCategory: map['diskCategory'] as String,
-      diskUsage: map['diskUsage'] as String,
-      diskWarningThreshold: map['diskWarningThreshold'] as String,
-      engineType: map['engineType'] as int,
-      expiredTime: map['expiredTime'] as String,
-      fileEngineNodeCount: map['fileEngineNodeCount'] as int,
-      fileEngineSpecification: map['fileEngineSpecification'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      instanceStorage: map['instanceStorage'] as String,
-      ipWhiteLists: (map['ipWhiteLists'] as List).cast<String>(),
-      ltsNodeCount: map['ltsNodeCount'] as int,
-      ltsNodeSpecification: map['ltsNodeSpecification'] as String,
-      networkType: map['networkType'] as String,
-      paymentType: map['paymentType'] as String,
-      phoenixNodeCount: map['phoenixNodeCount'] as int,
-      phoenixNodeSpecification: map['phoenixNodeSpecification'] as String,
-      resourceOwnerId: map['resourceOwnerId'] as String,
-      searchEngineNodeCount: map['searchEngineNodeCount'] as int,
-      searchEngineSpecification: map['searchEngineSpecification'] as String,
-      serviceType: map['serviceType'] as String,
-      status: map['status'] as String,
-      tableEngineNodeCount: map['tableEngineNodeCount'] as int,
-      tableEngineSpecification: map['tableEngineSpecification'] as String,
-      timeSeriesEngineNodeCount: map['timeSeriesEngineNodeCount'] as int,
-      timeSeriresEngineSpecification: map['timeSeriresEngineSpecification'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      autoRenew: (map['autoRenew'] as String).input(),
+      coldStorage: (map['coldStorage'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      deletionProection: (map['deletionProection'] as bool).input(),
+      diskCategory: (map['diskCategory'] as String).input(),
+      diskUsage: (map['diskUsage'] as String).input(),
+      diskWarningThreshold: (map['diskWarningThreshold'] as String).input(),
+      engineType: (map['engineType'] as int).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      fileEngineNodeCount: (map['fileEngineNodeCount'] as int).input(),
+      fileEngineSpecification: (map['fileEngineSpecification'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      instanceStorage: (map['instanceStorage'] as String).input(),
+      ipWhiteLists: ((map['ipWhiteLists'] as List).cast<String>()).input(),
+      ltsNodeCount: (map['ltsNodeCount'] as int).input(),
+      ltsNodeSpecification: (map['ltsNodeSpecification'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      phoenixNodeCount: (map['phoenixNodeCount'] as int).input(),
+      phoenixNodeSpecification: (map['phoenixNodeSpecification'] as String).input(),
+      resourceOwnerId: (map['resourceOwnerId'] as String).input(),
+      searchEngineNodeCount: (map['searchEngineNodeCount'] as int).input(),
+      searchEngineSpecification: (map['searchEngineSpecification'] as String).input(),
+      serviceType: (map['serviceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      tableEngineNodeCount: (map['tableEngineNodeCount'] as int).input(),
+      tableEngineSpecification: (map['tableEngineSpecification'] as String).input(),
+      timeSeriesEngineNodeCount: (map['timeSeriesEngineNodeCount'] as int).input(),
+      timeSeriresEngineSpecification: (map['timeSeriresEngineSpecification'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

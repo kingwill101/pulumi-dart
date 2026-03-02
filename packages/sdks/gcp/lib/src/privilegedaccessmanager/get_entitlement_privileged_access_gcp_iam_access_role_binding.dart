@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
   /// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
   /// https://cloud.google.com/iam/docs/conditions-overview#attributes.
-  final String conditionExpression;
+  final pulumi.Input<String> conditionExpression;
   /// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
-  final String id;
+  final pulumi.Input<String> id;
   /// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
-  final String role;
+  final pulumi.Input<String> role;
 
   /// Creates a new [GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding].
   /// [conditionExpression] The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
@@ -30,9 +31,9 @@ class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
 
   factory GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding.fromMap(Map<String, dynamic> map) {
     return GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding(
-      conditionExpression: map['conditionExpression'] as String,
-      id: map['id'] as String,
-      role: map['role'] as String,
+      conditionExpression: (map['conditionExpression'] as String).input(),
+      id: (map['id'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlarmTarget {
   /// The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
@@ -7,13 +8,13 @@ class AlarmTarget {
   /// - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
   /// - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
   /// - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The parameters of the alert callback. The parameters are in the JSON format.
-  final String? jsonParams;
+  final pulumi.Input<String>? jsonParams;
   /// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-  final String? level;
+  final pulumi.Input<String>? level;
   /// The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
-  final String? targetId;
+  final pulumi.Input<String>? targetId;
 
   /// Creates a new [AlarmTarget].
   /// [arn] The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
@@ -38,10 +39,10 @@ class AlarmTarget {
 
   factory AlarmTarget.fromMap(Map<String, dynamic> map) {
     return AlarmTarget(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      jsonParams: map['jsonParams'] == null ? null : map['jsonParams'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
-      targetId: map['targetId'] == null ? null : map['targetId'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
     );
   }
 }

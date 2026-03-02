@@ -22,15 +22,11 @@ class DefaultServiceAccountsState {
   /// [restorePolicy] The action to be performed in the default service accounts on the resource destroy.
   /// [serviceAccounts] The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
   DefaultServiceAccountsState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? restorePolicy,
-    pulumi.Output<Map<String, String>>? serviceAccounts,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      restorePolicy = pulumi.Input.asOptionalInput<String>(restorePolicy),
-      serviceAccounts = pulumi.Input.asOptionalInput<Map<String, String>>(serviceAccounts);
+    this.action,
+    this.project,
+    this.restorePolicy,
+    this.serviceAccounts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DefaultServiceAccountsState {
 
   factory DefaultServiceAccountsState.fromMap(Map<String, dynamic> map) {
     return DefaultServiceAccountsState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      restorePolicy: map['restorePolicy'] == null ? null : pulumi.Output.create<String>(map['restorePolicy'] as String),
-      serviceAccounts: map['serviceAccounts'] == null ? null : pulumi.Output.create<Map<String, String>>((map['serviceAccounts'] as Map).cast<String, String>()),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (map['restorePolicy'] as String).input(),
+      serviceAccounts: map['serviceAccounts'] == null ? null : ((map['serviceAccounts'] as Map).cast<String, String>()).input(),
     );
   }
 }

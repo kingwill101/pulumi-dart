@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Skip error file.
 class SkipErrorFileResponse {
   /// Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic dataInconsistency;
+  final pulumi.Input<dynamic>? dataInconsistency;
   /// Skip if file is deleted by other client during copy. Default is true. Type: boolean (or Expression with resultType boolean).
-  final dynamic fileMissing;
+  final pulumi.Input<dynamic>? fileMissing;
 
   /// Creates a new [SkipErrorFileResponse].
   /// [dataInconsistency] Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -25,8 +26,8 @@ class SkipErrorFileResponse {
 
   factory SkipErrorFileResponse.fromMap(Map<String, dynamic> map) {
     return SkipErrorFileResponse(
-      dataInconsistency: map['dataInconsistency'] == null ? null : map['dataInconsistency'],
-      fileMissing: map['fileMissing'] == null ? null : map['fileMissing'],
+      dataInconsistency: map['dataInconsistency'] == null ? null : (map['dataInconsistency']).input(),
+      fileMissing: map['fileMissing'] == null ? null : (map['fileMissing']).input(),
     );
   }
 }

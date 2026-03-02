@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPublicIpAddressPoolsPool {
   /// The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the Vpc Public Ip Address Pool.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Vpc Public Ip Address Pool.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
-  final bool ipAddressRemaining;
+  final pulumi.Input<bool> ipAddressRemaining;
   /// The Internet service provider.
-  final String isp;
+  final pulumi.Input<String> isp;
   /// The ID of the Vpc Public Ip Address Pool.
-  final String publicIpAddressPoolId;
+  final pulumi.Input<String> publicIpAddressPoolId;
   /// The name of the Vpc Public Ip Address Pool.
-  final String publicIpAddressPoolName;
+  final pulumi.Input<String> publicIpAddressPoolName;
   /// The region ID of the Vpc Public Ip Address Pool.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The status of the Vpc Public Ip Address Pool.
-  final String status;
+  final pulumi.Input<String> status;
   /// The total number of IP addresses in the Vpc Public Ip Address Pool.
-  final int totalIpNum;
+  final pulumi.Input<int> totalIpNum;
   /// The number of occupied IP addresses in the Vpc Public Ip Address Pool.
-  final int usedIpNum;
+  final pulumi.Input<int> usedIpNum;
   /// The user type.
-  final String userType;
+  final pulumi.Input<String> userType;
 
   /// Creates a new [GetPublicIpAddressPoolsPool].
   /// [createTime] The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
@@ -74,18 +75,18 @@ class GetPublicIpAddressPoolsPool {
 
   factory GetPublicIpAddressPoolsPool.fromMap(Map<String, dynamic> map) {
     return GetPublicIpAddressPoolsPool(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      ipAddressRemaining: map['ipAddressRemaining'] as bool,
-      isp: map['isp'] as String,
-      publicIpAddressPoolId: map['publicIpAddressPoolId'] as String,
-      publicIpAddressPoolName: map['publicIpAddressPoolName'] as String,
-      regionId: map['regionId'] as String,
-      status: map['status'] as String,
-      totalIpNum: map['totalIpNum'] as int,
-      usedIpNum: map['usedIpNum'] as int,
-      userType: map['userType'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipAddressRemaining: (map['ipAddressRemaining'] as bool).input(),
+      isp: (map['isp'] as String).input(),
+      publicIpAddressPoolId: (map['publicIpAddressPoolId'] as String).input(),
+      publicIpAddressPoolName: (map['publicIpAddressPoolName'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      status: (map['status'] as String).input(),
+      totalIpNum: (map['totalIpNum'] as int).input(),
+      usedIpNum: (map['usedIpNum'] as int).input(),
+      userType: (map['userType'] as String).input(),
     );
   }
 }

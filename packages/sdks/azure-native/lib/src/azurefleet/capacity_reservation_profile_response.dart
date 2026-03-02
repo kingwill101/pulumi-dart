@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource_response.dart';
 
 /// The parameters of a capacity reservation Profile.
@@ -8,7 +9,7 @@ class CapacityReservationProfileResponse {
   /// allocating the virtual machine or scaleset vm instances provided enough
   /// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
   /// for more details.
-  final SubResourceResponse? capacityReservationGroup;
+  final pulumi.Input<SubResourceResponse>? capacityReservationGroup;
 
   /// Creates a new [CapacityReservationProfileResponse].
   /// [capacityReservationGroup] Specifies the capacity reservation group resource id that should be used for
@@ -18,13 +19,13 @@ class CapacityReservationProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacityReservationGroup': ?capacityReservationGroup == null ? null : capacityReservationGroup!.toMap(),
+      'capacityReservationGroup': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(capacityReservationGroup, (value) => value.toMap()),
     };
   }
 
   factory CapacityReservationProfileResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationProfileResponse(
-      capacityReservationGroup: map['capacityReservationGroup'] == null ? null : SubResourceResponse.fromMap((map['capacityReservationGroup'] as Map).cast<String, dynamic>()),
+      capacityReservationGroup: map['capacityReservationGroup'] == null ? null : (SubResourceResponse.fromMap((map['capacityReservationGroup'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

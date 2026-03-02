@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'multi_node_params_response.dart';
 import 'node_response.dart';
 
 /// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
 class NodeSpecResponse {
   /// Optional. Fields to specify in case of multi-node request.
-  final MultiNodeParamsResponse multiNodeParams;
+  final pulumi.Input<MultiNodeParamsResponse> multiNodeParams;
   /// The node.
-  final NodeResponse node;
+  final pulumi.Input<NodeResponse> node;
   /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
-  final String nodeId;
+  final pulumi.Input<String> nodeId;
   /// The parent resource name.
-  final String parent;
+  final pulumi.Input<String> parent;
 
   /// Creates a new [NodeSpecResponse].
   /// [multiNodeParams] Optional. Fields to specify in case of multi-node request.
@@ -28,8 +29,8 @@ class NodeSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'multiNodeParams': multiNodeParams.toMap(),
-      'node': node.toMap(),
+      'multiNodeParams': pulumi.Input.mapInputValue<MultiNodeParamsResponse, Map<String, dynamic>>(multiNodeParams, (value) => value.toMap()),
+      'node': pulumi.Input.mapInputValue<NodeResponse, Map<String, dynamic>>(node, (value) => value.toMap()),
       'nodeId': nodeId,
       'parent': parent,
     };
@@ -37,10 +38,10 @@ class NodeSpecResponse {
 
   factory NodeSpecResponse.fromMap(Map<String, dynamic> map) {
     return NodeSpecResponse(
-      multiNodeParams: MultiNodeParamsResponse.fromMap((map['multiNodeParams'] as Map).cast<String, dynamic>()),
-      node: NodeResponse.fromMap((map['node'] as Map).cast<String, dynamic>()),
-      nodeId: map['nodeId'] as String,
-      parent: map['parent'] as String,
+      multiNodeParams: (MultiNodeParamsResponse.fromMap((map['multiNodeParams'] as Map).cast<String, dynamic>())).input(),
+      node: (NodeResponse.fromMap((map['node'] as Map).cast<String, dynamic>())).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

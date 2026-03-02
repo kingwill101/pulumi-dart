@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainNameEndpointConfiguration {
   /// The IP address types that can invoke a DomainName. Valid values: `ipv4`, `dualstack`. Use `ipv4` to allow only IPv4 addresses to invoke a DomainName, or use `dualstack` to allow both IPv4 and IPv6 addresses to invoke a DomainName. For the `PRIVATE` endpoint type, only `dualstack` is supported. Terraform performs drift detection for this argument only when the value is provided.
-  final String? ipAddressType;
+  final pulumi.Input<String>? ipAddressType;
   /// A list of endpoint types of an API or its custom domain name. For an edge-optimized API and its custom domain name, the endpoint type is `EDGE`. For a regional API and its custom domain name, the endpoint type is `REGIONAL`. For a private API, the endpoint type is `PRIVATE`.
-  final String types;
+  final pulumi.Input<String> types;
 
   /// Creates a new [DomainNameEndpointConfiguration].
   /// [ipAddressType] The IP address types that can invoke a DomainName. Valid values: `ipv4`, `dualstack`. Use `ipv4` to allow only IPv4 addresses to invoke a DomainName, or use `dualstack` to allow both IPv4 and IPv6 addresses to invoke a DomainName. For the `PRIVATE` endpoint type, only `dualstack` is supported. Terraform performs drift detection for this argument only when the value is provided.
@@ -24,8 +25,8 @@ class DomainNameEndpointConfiguration {
 
   factory DomainNameEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return DomainNameEndpointConfiguration(
-      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
-      types: map['types'] as String,
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      types: (map['types'] as String).input(),
     );
   }
 }

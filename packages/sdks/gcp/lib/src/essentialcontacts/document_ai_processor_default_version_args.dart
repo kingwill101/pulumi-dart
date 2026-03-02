@@ -17,11 +17,9 @@ class DocumentAiProcessorDefaultVersionArgs {
   /// [processor] The processor to set the version on.
   /// [version] The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
   DocumentAiProcessorDefaultVersionArgs({
-    required pulumi.Output<String> processor,
-    required pulumi.Output<String> version,
-  }) :
-      processor = pulumi.Input.asInput<String>(processor),
-      version = pulumi.Input.asInput<String>(version);
+    required this.processor,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class DocumentAiProcessorDefaultVersionArgs {
 
   factory DocumentAiProcessorDefaultVersionArgs.fromMap(Map<String, dynamic> map) {
     return DocumentAiProcessorDefaultVersionArgs(
-      processor: pulumi.Output.create<String>(map['processor'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      processor: (map['processor'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

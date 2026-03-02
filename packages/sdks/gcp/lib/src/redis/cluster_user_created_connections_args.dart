@@ -25,15 +25,11 @@ class ClusterUserCreatedConnectionsArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The name of the region of the Redis cluster these endpoints should be added to.
   ClusterUserCreatedConnectionsArgs({
-    pulumi.Output<List<ClusterUserCreatedConnectionsClusterEndpoint>>? clusterEndpoints,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      clusterEndpoints = pulumi.Input.asOptionalInput<List<ClusterUserCreatedConnectionsClusterEndpoint>>(clusterEndpoints),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    this.clusterEndpoints,
+    this.name,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class ClusterUserCreatedConnectionsArgs {
 
   factory ClusterUserCreatedConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return ClusterUserCreatedConnectionsArgs(
-      clusterEndpoints: map['clusterEndpoints'] == null ? null : pulumi.Output.create<List<ClusterUserCreatedConnectionsClusterEndpoint>>(pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(map['clusterEndpoints'], (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      clusterEndpoints: map['clusterEndpoints'] == null ? null : (pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(map['clusterEndpoints'], (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

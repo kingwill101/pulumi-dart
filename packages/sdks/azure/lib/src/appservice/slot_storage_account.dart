@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SlotStorageAccount {
   /// The access key for the storage account.
-  final String accessKey;
+  final pulumi.Input<String> accessKey;
   /// The name of the storage account.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The path to mount the storage within the site's runtime environment.
-  final String? mountPath;
+  final pulumi.Input<String>? mountPath;
   /// The name of the storage account identifier.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the file share (container name, for Blob storage).
-  final String shareName;
+  final pulumi.Input<String> shareName;
   /// The type of storage. Possible values are `AzureBlob` and `AzureFiles`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SlotStorageAccount].
   /// [accessKey] The access key for the storage account.
@@ -44,12 +45,12 @@ class SlotStorageAccount {
 
   factory SlotStorageAccount.fromMap(Map<String, dynamic> map) {
     return SlotStorageAccount(
-      accessKey: map['accessKey'] as String,
-      accountName: map['accountName'] as String,
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      name: map['name'] as String,
-      shareName: map['shareName'] as String,
-      type: map['type'] as String,
+      accessKey: (map['accessKey'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      name: (map['name'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class TestLineArgs {
   /// [tags] Resource tags.
   /// [testLineName] Unique identifier for this test line
   TestLineArgs({
-    required pulumi.Output<String> communicationsGatewayName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> phoneNumber,
-    required pulumi.Output<String> purpose,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? testLineName,
-  }) :
-      communicationsGatewayName = pulumi.Input.asInput<String>(communicationsGatewayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      phoneNumber = pulumi.Input.asInput<String>(phoneNumber),
-      purpose = pulumi.Input.asInput<String>(purpose),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      testLineName = pulumi.Input.asOptionalInput<String>(testLineName);
+    required this.communicationsGatewayName,
+    this.location,
+    required this.phoneNumber,
+    required this.purpose,
+    required this.resourceGroupName,
+    this.tags,
+    this.testLineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class TestLineArgs {
 
   factory TestLineArgs.fromMap(Map<String, dynamic> map) {
     return TestLineArgs(
-      communicationsGatewayName: pulumi.Output.create<String>(map['communicationsGatewayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      phoneNumber: pulumi.Output.create<String>(map['phoneNumber'] as String),
-      purpose: pulumi.Output.create<String>(map['purpose'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      testLineName: map['testLineName'] == null ? null : pulumi.Output.create<String>(map['testLineName'] as String),
+      communicationsGatewayName: (map['communicationsGatewayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
+      purpose: (map['purpose'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      testLineName: map['testLineName'] == null ? null : (map['testLineName'] as String).input(),
     );
   }
 }

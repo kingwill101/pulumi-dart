@@ -27,17 +27,12 @@ class ServiceTopicArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [topicName] The name of the topic.
   ServiceTopicArgs({
-    pulumi.Output<bool>? enableLogging,
-    pulumi.Output<bool>? loggingEnabled,
-    pulumi.Output<int>? maxMessageSize,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> topicName,
-  }) :
-      enableLogging = pulumi.Input.asOptionalInput<bool>(enableLogging),
-      loggingEnabled = pulumi.Input.asOptionalInput<bool>(loggingEnabled),
-      maxMessageSize = pulumi.Input.asOptionalInput<int>(maxMessageSize),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    this.enableLogging,
+    this.loggingEnabled,
+    this.maxMessageSize,
+    this.tags,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ServiceTopicArgs {
 
   factory ServiceTopicArgs.fromMap(Map<String, dynamic> map) {
     return ServiceTopicArgs(
-      enableLogging: map['enableLogging'] == null ? null : pulumi.Output.create<bool>(map['enableLogging'] as bool),
-      loggingEnabled: map['loggingEnabled'] == null ? null : pulumi.Output.create<bool>(map['loggingEnabled'] as bool),
-      maxMessageSize: map['maxMessageSize'] == null ? null : pulumi.Output.create<int>(map['maxMessageSize'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
+      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled'] as bool).input(),
+      maxMessageSize: map['maxMessageSize'] == null ? null : (map['maxMessageSize'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

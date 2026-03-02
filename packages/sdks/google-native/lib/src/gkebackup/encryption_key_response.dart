@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 class EncryptionKeyResponse {
   /// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-  final String gcpKmsEncryptionKey;
+  final pulumi.Input<String> gcpKmsEncryptionKey;
 
   /// Creates a new [EncryptionKeyResponse].
   /// [gcpKmsEncryptionKey] Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
@@ -20,7 +21,7 @@ class EncryptionKeyResponse {
 
   factory EncryptionKeyResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyResponse(
-      gcpKmsEncryptionKey: map['gcpKmsEncryptionKey'] as String,
+      gcpKmsEncryptionKey: (map['gcpKmsEncryptionKey'] as String).input(),
     );
   }
 }

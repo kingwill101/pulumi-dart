@@ -19,13 +19,10 @@ class ServiceSettingArgs {
   /// [settingId] ID of the service setting. Valid values are shown in the [AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetServiceSetting.html#API_GetServiceSetting_RequestSyntax).
   /// [settingValue] Value of the service setting.
   ServiceSettingArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> settingId,
-    required pulumi.Output<String> settingValue,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      settingId = pulumi.Input.asInput<String>(settingId),
-      settingValue = pulumi.Input.asInput<String>(settingValue);
+    this.region,
+    required this.settingId,
+    required this.settingValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ServiceSettingArgs {
 
   factory ServiceSettingArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSettingArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      settingId: pulumi.Output.create<String>(map['settingId'] as String),
-      settingValue: pulumi.Output.create<String>(map['settingValue'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      settingId: (map['settingId'] as String).input(),
+      settingValue: (map['settingValue'] as String).input(),
     );
   }
 }

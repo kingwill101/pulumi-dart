@@ -6,7 +6,7 @@ import 'column.dart';
 /// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
 class ColumnLayout {
   /// The columns of content to display.
-  final List<Column>? columns;
+  final pulumi.Input<List<Column>>? columns;
 
   /// Creates a new [ColumnLayout].
   /// [columns] The columns of content to display.
@@ -16,13 +16,13 @@ class ColumnLayout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': ?columns == null ? null : pulumi.Input.encodeList<Column, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+      'columns': ?pulumi.Input.mapOptionalInputValue<List<Column>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<Column, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ColumnLayout.fromMap(Map<String, dynamic> map) {
     return ColumnLayout(
-      columns: map['columns'] == null ? null : pulumi.Input.decodeList<Column>(map['columns'], (value) => Column.fromMap((value as Map).cast<String, dynamic>())),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<Column>(map['columns'], (value) => Column.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

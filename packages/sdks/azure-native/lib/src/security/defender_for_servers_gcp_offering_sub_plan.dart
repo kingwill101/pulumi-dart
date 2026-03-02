@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// configuration for the servers offering subPlan
 class DefenderForServersGcpOfferingSubPlan {
   /// The available sub plans
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DefenderForServersGcpOfferingSubPlan].
   /// [type] The available sub plans
@@ -20,7 +21,7 @@ class DefenderForServersGcpOfferingSubPlan {
 
   factory DefenderForServersGcpOfferingSubPlan.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingSubPlan(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

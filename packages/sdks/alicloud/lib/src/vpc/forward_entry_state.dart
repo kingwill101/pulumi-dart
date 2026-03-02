@@ -42,29 +42,18 @@ class ForwardEntryState {
   /// [portBreak] Specifies whether to remove limits on the port range. Default value is `false`.
   /// [status] (Available since v1.119.1) The status of forward entry.
   ForwardEntryState({
-    pulumi.Output<String>? externalIp,
-    pulumi.Output<String>? externalPort,
-    pulumi.Output<String>? forwardEntryId,
-    pulumi.Output<String>? forwardEntryName,
-    pulumi.Output<String>? forwardTableId,
-    pulumi.Output<String>? internalIp,
-    pulumi.Output<String>? internalPort,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? portBreak,
-    pulumi.Output<String>? status,
-  }) :
-      externalIp = pulumi.Input.asOptionalInput<String>(externalIp),
-      externalPort = pulumi.Input.asOptionalInput<String>(externalPort),
-      forwardEntryId = pulumi.Input.asOptionalInput<String>(forwardEntryId),
-      forwardEntryName = pulumi.Input.asOptionalInput<String>(forwardEntryName),
-      forwardTableId = pulumi.Input.asOptionalInput<String>(forwardTableId),
-      internalIp = pulumi.Input.asOptionalInput<String>(internalIp),
-      internalPort = pulumi.Input.asOptionalInput<String>(internalPort),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portBreak = pulumi.Input.asOptionalInput<bool>(portBreak),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.externalIp,
+    this.externalPort,
+    this.forwardEntryId,
+    this.forwardEntryName,
+    this.forwardTableId,
+    this.internalIp,
+    this.internalPort,
+    this.ipProtocol,
+    this.name,
+    this.portBreak,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ForwardEntryState {
 
   factory ForwardEntryState.fromMap(Map<String, dynamic> map) {
     return ForwardEntryState(
-      externalIp: map['externalIp'] == null ? null : pulumi.Output.create<String>(map['externalIp'] as String),
-      externalPort: map['externalPort'] == null ? null : pulumi.Output.create<String>(map['externalPort'] as String),
-      forwardEntryId: map['forwardEntryId'] == null ? null : pulumi.Output.create<String>(map['forwardEntryId'] as String),
-      forwardEntryName: map['forwardEntryName'] == null ? null : pulumi.Output.create<String>(map['forwardEntryName'] as String),
-      forwardTableId: map['forwardTableId'] == null ? null : pulumi.Output.create<String>(map['forwardTableId'] as String),
-      internalIp: map['internalIp'] == null ? null : pulumi.Output.create<String>(map['internalIp'] as String),
-      internalPort: map['internalPort'] == null ? null : pulumi.Output.create<String>(map['internalPort'] as String),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portBreak: map['portBreak'] == null ? null : pulumi.Output.create<bool>(map['portBreak'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as String).input(),
+      forwardEntryId: map['forwardEntryId'] == null ? null : (map['forwardEntryId'] as String).input(),
+      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName'] as String).input(),
+      forwardTableId: map['forwardTableId'] == null ? null : (map['forwardTableId'] as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portBreak: map['portBreak'] == null ? null : (map['portBreak'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Action to perform once matching of routes is done
 class HttpRouteAction {
   /// Rewrite prefix, default is no rewrites
-  final String? prefixRewrite;
+  final pulumi.Input<String>? prefixRewrite;
 
   /// Creates a new [HttpRouteAction].
   /// [prefixRewrite] Rewrite prefix, default is no rewrites
@@ -20,7 +21,7 @@ class HttpRouteAction {
 
   factory HttpRouteAction.fromMap(Map<String, dynamic> map) {
     return HttpRouteAction(
-      prefixRewrite: map['prefixRewrite'] == null ? null : map['prefixRewrite'] as String,
+      prefixRewrite: map['prefixRewrite'] == null ? null : (map['prefixRewrite'] as String).input(),
     );
   }
 }

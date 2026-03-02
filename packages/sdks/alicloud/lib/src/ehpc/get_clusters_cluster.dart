@@ -6,74 +6,74 @@ import 'get_clusters_cluster_post_install_script.dart';
 
 class GetClustersCluster {
   /// The server type of the account.
-  final String accountType;
+  final pulumi.Input<String> accountType;
   /// A list of clustered applications.
-  final List<GetClustersClusterApplication> applications;
+  final pulumi.Input<List<GetClustersClusterApplication>> applications;
   /// The version number of the client used by the cluster.
-  final String clientVersion;
+  final pulumi.Input<String> clientVersion;
   /// The id of E-HPC Cluster.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The name of E-HPC cluster.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The number of compute nodes in the cluster.
-  final int computeCount;
+  final pulumi.Input<int> computeCount;
   /// Cluster compute node specifications.
-  final String computeInstanceType;
+  final pulumi.Input<String> computeInstanceType;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Cluster deployment mode. Possible values:
   /// - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
   /// - Advanced:HA mode deployment.
   /// - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
   /// - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
   /// - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
-  final String deployMode;
+  final pulumi.Input<String> deployMode;
   /// The description of E-HPC cluster.
-  final String description;
+  final pulumi.Input<String> description;
   /// Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
-  final bool haEnable;
+  final pulumi.Input<bool> haEnable;
   /// The ID of the Cluster.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Image.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// The type of the image.
-  final String imageOwnerAlias;
+  final pulumi.Input<String> imageOwnerAlias;
   /// The number of cluster login nodes. Only configuration 1 is supported.
-  final int loginCount;
+  final pulumi.Input<int> loginCount;
   /// Cluster login node specifications.
-  final String loginInstanceType;
+  final pulumi.Input<String> loginInstanceType;
   /// The number of control nodes.
-  final int managerCount;
+  final pulumi.Input<int> managerCount;
   /// The instance type of manager nodes.
-  final String managerInstanceType;
+  final pulumi.Input<String> managerInstanceType;
   /// The image tag of the operating system.
-  final String osTag;
+  final pulumi.Input<String> osTag;
   /// List of post-installation scripts.
-  final List<GetClustersClusterPostInstallScript> postInstallScripts;
+  final pulumi.Input<List<GetClustersClusterPostInstallScript>> postInstallScripts;
   /// Mount the remote directory of the shared storage.
-  final String remoteDirectory;
+  final pulumi.Input<String> remoteDirectory;
   /// The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
-  final String sccClusterId;
+  final pulumi.Input<String> sccClusterId;
   /// Dispatch server type.
-  final String schedulerType;
+  final pulumi.Input<String> schedulerType;
   /// The ID of the security group.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The status of the resource. Valid values:
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
-  final String volumeId;
+  final pulumi.Input<String> volumeId;
   /// The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
-  final String volumeMountpoint;
+  final pulumi.Input<String> volumeMountpoint;
   /// The type of the protocol that is used by the file system.
-  final String volumeProtocol;
+  final pulumi.Input<String> volumeProtocol;
   /// The type of the network shared storage. Valid value: NAS.
-  final String volumeType;
+  final pulumi.Input<String> volumeType;
   /// The ID of the VPC network.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The available zone ID.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetClustersCluster].
   /// [accountType] The server type of the account.
@@ -146,7 +146,7 @@ class GetClustersCluster {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountType': accountType,
-      'applications': pulumi.Input.encodeList<GetClustersClusterApplication, Map<String, dynamic>>(applications, (value) => value.toMap()),
+      'applications': pulumi.Input.mapInputValue<List<GetClustersClusterApplication>, List<Map<String, dynamic>>>(applications, (value) => pulumi.Input.encodeList<GetClustersClusterApplication, Map<String, dynamic>>(value, (value) => value.toMap())),
       'clientVersion': clientVersion,
       'clusterId': clusterId,
       'clusterName': clusterName,
@@ -164,7 +164,7 @@ class GetClustersCluster {
       'managerCount': managerCount,
       'managerInstanceType': managerInstanceType,
       'osTag': osTag,
-      'postInstallScripts': pulumi.Input.encodeList<GetClustersClusterPostInstallScript, Map<String, dynamic>>(postInstallScripts, (value) => value.toMap()),
+      'postInstallScripts': pulumi.Input.mapInputValue<List<GetClustersClusterPostInstallScript>, List<Map<String, dynamic>>>(postInstallScripts, (value) => pulumi.Input.encodeList<GetClustersClusterPostInstallScript, Map<String, dynamic>>(value, (value) => value.toMap())),
       'remoteDirectory': remoteDirectory,
       'sccClusterId': sccClusterId,
       'schedulerType': schedulerType,
@@ -182,38 +182,38 @@ class GetClustersCluster {
 
   factory GetClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetClustersCluster(
-      accountType: map['accountType'] as String,
-      applications: pulumi.Input.decodeList<GetClustersClusterApplication>(map['applications'], (value) => GetClustersClusterApplication.fromMap((value as Map).cast<String, dynamic>())),
-      clientVersion: map['clientVersion'] as String,
-      clusterId: map['clusterId'] as String,
-      clusterName: map['clusterName'] as String,
-      computeCount: map['computeCount'] as int,
-      computeInstanceType: map['computeInstanceType'] as String,
-      createTime: map['createTime'] as String,
-      deployMode: map['deployMode'] as String,
-      description: map['description'] as String,
-      haEnable: map['haEnable'] as bool,
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      imageOwnerAlias: map['imageOwnerAlias'] as String,
-      loginCount: map['loginCount'] as int,
-      loginInstanceType: map['loginInstanceType'] as String,
-      managerCount: map['managerCount'] as int,
-      managerInstanceType: map['managerInstanceType'] as String,
-      osTag: map['osTag'] as String,
-      postInstallScripts: pulumi.Input.decodeList<GetClustersClusterPostInstallScript>(map['postInstallScripts'], (value) => GetClustersClusterPostInstallScript.fromMap((value as Map).cast<String, dynamic>())),
-      remoteDirectory: map['remoteDirectory'] as String,
-      sccClusterId: map['sccClusterId'] as String,
-      schedulerType: map['schedulerType'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      status: map['status'] as String,
-      volumeId: map['volumeId'] as String,
-      volumeMountpoint: map['volumeMountpoint'] as String,
-      volumeProtocol: map['volumeProtocol'] as String,
-      volumeType: map['volumeType'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      accountType: (map['accountType'] as String).input(),
+      applications: (pulumi.Input.decodeList<GetClustersClusterApplication>(map['applications'], (value) => GetClustersClusterApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientVersion: (map['clientVersion'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      computeCount: (map['computeCount'] as int).input(),
+      computeInstanceType: (map['computeInstanceType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      deployMode: (map['deployMode'] as String).input(),
+      description: (map['description'] as String).input(),
+      haEnable: (map['haEnable'] as bool).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      imageOwnerAlias: (map['imageOwnerAlias'] as String).input(),
+      loginCount: (map['loginCount'] as int).input(),
+      loginInstanceType: (map['loginInstanceType'] as String).input(),
+      managerCount: (map['managerCount'] as int).input(),
+      managerInstanceType: (map['managerInstanceType'] as String).input(),
+      osTag: (map['osTag'] as String).input(),
+      postInstallScripts: (pulumi.Input.decodeList<GetClustersClusterPostInstallScript>(map['postInstallScripts'], (value) => GetClustersClusterPostInstallScript.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remoteDirectory: (map['remoteDirectory'] as String).input(),
+      sccClusterId: (map['sccClusterId'] as String).input(),
+      schedulerType: (map['schedulerType'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      volumeId: (map['volumeId'] as String).input(),
+      volumeMountpoint: (map['volumeMountpoint'] as String).input(),
+      volumeProtocol: (map['volumeProtocol'] as String).input(),
+      volumeType: (map['volumeType'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

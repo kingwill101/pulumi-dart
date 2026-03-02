@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Anonymous authentication
 class RegistryEndpointAnonymousAuthenticationResponse {
   /// Anonymous authentication properties
-  final dynamic anonymousSettings;
+  final pulumi.Input<dynamic> anonymousSettings;
   /// The authentication method.
   /// Expected value is 'Anonymous'.
-  final String method;
+  final pulumi.Input<String> method;
 
   /// Creates a new [RegistryEndpointAnonymousAuthenticationResponse].
   /// [anonymousSettings] Anonymous authentication properties
@@ -26,8 +27,8 @@ class RegistryEndpointAnonymousAuthenticationResponse {
 
   factory RegistryEndpointAnonymousAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointAnonymousAuthenticationResponse(
-      anonymousSettings: map['anonymousSettings'],
-      method: map['method'] as String,
+      anonymousSettings: (map['anonymousSettings']).input(),
+      method: (map['method'] as String).input(),
     );
   }
 }

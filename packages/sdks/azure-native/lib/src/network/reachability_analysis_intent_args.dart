@@ -26,17 +26,12 @@ class ReachabilityAnalysisIntentArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceName] Workspace name.
   ReachabilityAnalysisIntentArgs({
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<ReachabilityAnalysisIntentProperties> properties,
-    pulumi.Output<String>? reachabilityAnalysisIntentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      properties = pulumi.Input.asInput<ReachabilityAnalysisIntentProperties>(properties),
-      reachabilityAnalysisIntentName = pulumi.Input.asOptionalInput<String>(reachabilityAnalysisIntentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.networkManagerName,
+    required this.properties,
+    this.reachabilityAnalysisIntentName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ReachabilityAnalysisIntentArgs {
 
   factory ReachabilityAnalysisIntentArgs.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisIntentArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      properties: pulumi.Output.create<ReachabilityAnalysisIntentProperties>(ReachabilityAnalysisIntentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      reachabilityAnalysisIntentName: map['reachabilityAnalysisIntentName'] == null ? null : pulumi.Output.create<String>(map['reachabilityAnalysisIntentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      properties: (ReachabilityAnalysisIntentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      reachabilityAnalysisIntentName: map['reachabilityAnalysisIntentName'] == null ? null : (map['reachabilityAnalysisIntentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -5,24 +5,24 @@ import 'get_address_books_book_ecs_tag.dart';
 
 class GetAddressBooksBook {
   /// The addresses in the Address Book.
-  final List<String> addressLists;
+  final pulumi.Input<List<String>> addressLists;
   /// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
-  final int autoAddTagEcs;
+  final pulumi.Input<int> autoAddTagEcs;
   /// The description of the Address Book.
-  final String description;
+  final pulumi.Input<String> description;
   /// The logical relation among the ECS tags that to be matchedh.
-  final List<GetAddressBooksBookEcsTag> ecsTags;
+  final pulumi.Input<List<GetAddressBooksBookEcsTag>> ecsTags;
   /// The name of the Address Book.
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
   /// **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
-  final String groupType;
+  final pulumi.Input<String> groupType;
   /// The ID of the Address Book.
-  final String groupUuid;
+  final pulumi.Input<String> groupUuid;
   /// The ID of the Address Book.
-  final String id;
+  final pulumi.Input<String> id;
   /// One or more tags for the relationship between.
-  final String tagRelation;
+  final pulumi.Input<String> tagRelation;
 
   /// Creates a new [GetAddressBooksBook].
   /// [addressLists] The addresses in the Address Book.
@@ -51,7 +51,7 @@ class GetAddressBooksBook {
       'addressLists': addressLists,
       'autoAddTagEcs': autoAddTagEcs,
       'description': description,
-      'ecsTags': pulumi.Input.encodeList<GetAddressBooksBookEcsTag, Map<String, dynamic>>(ecsTags, (value) => value.toMap()),
+      'ecsTags': pulumi.Input.mapInputValue<List<GetAddressBooksBookEcsTag>, List<Map<String, dynamic>>>(ecsTags, (value) => pulumi.Input.encodeList<GetAddressBooksBookEcsTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'groupName': groupName,
       'groupType': groupType,
       'groupUuid': groupUuid,
@@ -62,15 +62,15 @@ class GetAddressBooksBook {
 
   factory GetAddressBooksBook.fromMap(Map<String, dynamic> map) {
     return GetAddressBooksBook(
-      addressLists: (map['addressLists'] as List).cast<String>(),
-      autoAddTagEcs: map['autoAddTagEcs'] as int,
-      description: map['description'] as String,
-      ecsTags: pulumi.Input.decodeList<GetAddressBooksBookEcsTag>(map['ecsTags'], (value) => GetAddressBooksBookEcsTag.fromMap((value as Map).cast<String, dynamic>())),
-      groupName: map['groupName'] as String,
-      groupType: map['groupType'] as String,
-      groupUuid: map['groupUuid'] as String,
-      id: map['id'] as String,
-      tagRelation: map['tagRelation'] as String,
+      addressLists: ((map['addressLists'] as List).cast<String>()).input(),
+      autoAddTagEcs: (map['autoAddTagEcs'] as int).input(),
+      description: (map['description'] as String).input(),
+      ecsTags: (pulumi.Input.decodeList<GetAddressBooksBookEcsTag>(map['ecsTags'], (value) => GetAddressBooksBookEcsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupName: (map['groupName'] as String).input(),
+      groupType: (map['groupType'] as String).input(),
+      groupUuid: (map['groupUuid'] as String).input(),
+      id: (map['id'] as String).input(),
+      tagRelation: (map['tagRelation'] as String).input(),
     );
   }
 }

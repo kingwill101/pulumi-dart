@@ -31,21 +31,14 @@ class EipArgs {
   /// [isp] The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
   /// [paymentType] The billing method of the EIP. Valid value: `PayAsYouGo`.
   EipArgs({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eipName,
-    required pulumi.Output<String> ensRegionId,
-    required pulumi.Output<String> internetChargeType,
-    pulumi.Output<String>? isp,
-    required pulumi.Output<String> paymentType,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eipName = pulumi.Input.asOptionalInput<String>(eipName),
-      ensRegionId = pulumi.Input.asInput<String>(ensRegionId),
-      internetChargeType = pulumi.Input.asInput<String>(internetChargeType),
-      isp = pulumi.Input.asOptionalInput<String>(isp),
-      paymentType = pulumi.Input.asInput<String>(paymentType);
+    this.bandwidth,
+    this.description,
+    this.eipName,
+    required this.ensRegionId,
+    required this.internetChargeType,
+    this.isp,
+    required this.paymentType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class EipArgs {
 
   factory EipArgs.fromMap(Map<String, dynamic> map) {
     return EipArgs(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eipName: map['eipName'] == null ? null : pulumi.Output.create<String>(map['eipName'] as String),
-      ensRegionId: pulumi.Output.create<String>(map['ensRegionId'] as String),
-      internetChargeType: pulumi.Output.create<String>(map['internetChargeType'] as String),
-      isp: map['isp'] == null ? null : pulumi.Output.create<String>(map['isp'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eipName: map['eipName'] == null ? null : (map['eipName'] as String).input(),
+      ensRegionId: (map['ensRegionId'] as String).input(),
+      internetChargeType: (map['internetChargeType'] as String).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
     );
   }
 }

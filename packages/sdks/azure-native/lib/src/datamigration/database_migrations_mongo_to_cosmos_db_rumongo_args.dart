@@ -45,29 +45,18 @@ class DatabaseMigrationsMongoToCosmosDbRUMongoArgs {
   /// [targetMongoConnection] Target Cosmos DB Mongo connection details.
   /// [targetResourceName] The name of the target resource/account.
   DatabaseMigrationsMongoToCosmosDbRUMongoArgs({
-    pulumi.Output<List<MongoMigrationCollection>>? collectionList,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? migrationName,
-    pulumi.Output<String>? migrationOperationId,
-    pulumi.Output<String>? migrationService,
-    pulumi.Output<String>? provisioningError,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scope,
-    pulumi.Output<MongoConnectionInformation>? sourceMongoConnection,
-    pulumi.Output<MongoConnectionInformation>? targetMongoConnection,
-    required pulumi.Output<String> targetResourceName,
-  }) :
-      collectionList = pulumi.Input.asOptionalInput<List<MongoMigrationCollection>>(collectionList),
-      kind = pulumi.Input.asInput<String>(kind),
-      migrationName = pulumi.Input.asOptionalInput<String>(migrationName),
-      migrationOperationId = pulumi.Input.asOptionalInput<String>(migrationOperationId),
-      migrationService = pulumi.Input.asOptionalInput<String>(migrationService),
-      provisioningError = pulumi.Input.asOptionalInput<String>(provisioningError),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      sourceMongoConnection = pulumi.Input.asOptionalInput<MongoConnectionInformation>(sourceMongoConnection),
-      targetMongoConnection = pulumi.Input.asOptionalInput<MongoConnectionInformation>(targetMongoConnection),
-      targetResourceName = pulumi.Input.asInput<String>(targetResourceName);
+    this.collectionList,
+    required this.kind,
+    this.migrationName,
+    this.migrationOperationId,
+    this.migrationService,
+    this.provisioningError,
+    required this.resourceGroupName,
+    this.scope,
+    this.sourceMongoConnection,
+    this.targetMongoConnection,
+    required this.targetResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class DatabaseMigrationsMongoToCosmosDbRUMongoArgs {
 
   factory DatabaseMigrationsMongoToCosmosDbRUMongoArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsMongoToCosmosDbRUMongoArgs(
-      collectionList: map['collectionList'] == null ? null : pulumi.Output.create<List<MongoMigrationCollection>>(pulumi.Input.decodeList<MongoMigrationCollection>(map['collectionList'], (value) => MongoMigrationCollection.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      migrationName: map['migrationName'] == null ? null : pulumi.Output.create<String>(map['migrationName'] as String),
-      migrationOperationId: map['migrationOperationId'] == null ? null : pulumi.Output.create<String>(map['migrationOperationId'] as String),
-      migrationService: map['migrationService'] == null ? null : pulumi.Output.create<String>(map['migrationService'] as String),
-      provisioningError: map['provisioningError'] == null ? null : pulumi.Output.create<String>(map['provisioningError'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      sourceMongoConnection: map['sourceMongoConnection'] == null ? null : pulumi.Output.create<MongoConnectionInformation>(MongoConnectionInformation.fromMap((map['sourceMongoConnection'] as Map).cast<String, dynamic>())),
-      targetMongoConnection: map['targetMongoConnection'] == null ? null : pulumi.Output.create<MongoConnectionInformation>(MongoConnectionInformation.fromMap((map['targetMongoConnection'] as Map).cast<String, dynamic>())),
-      targetResourceName: pulumi.Output.create<String>(map['targetResourceName'] as String),
+      collectionList: map['collectionList'] == null ? null : (pulumi.Input.decodeList<MongoMigrationCollection>(map['collectionList'], (value) => MongoMigrationCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: (map['kind'] as String).input(),
+      migrationName: map['migrationName'] == null ? null : (map['migrationName'] as String).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
+      migrationService: map['migrationService'] == null ? null : (map['migrationService'] as String).input(),
+      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      sourceMongoConnection: map['sourceMongoConnection'] == null ? null : (MongoConnectionInformation.fromMap((map['sourceMongoConnection'] as Map).cast<String, dynamic>())).input(),
+      targetMongoConnection: map['targetMongoConnection'] == null ? null : (MongoConnectionInformation.fromMap((map['targetMongoConnection'] as Map).cast<String, dynamic>())).input(),
+      targetResourceName: (map['targetResourceName'] as String).input(),
     );
   }
 }

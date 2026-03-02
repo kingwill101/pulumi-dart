@@ -19,13 +19,10 @@ class GetOpenAIArgs {
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetOpenAIArgs({
-    required pulumi.Output<String> integrationName,
-    required pulumi.Output<String> monitorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      integrationName = pulumi.Input.asInput<String>(integrationName),
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.integrationName,
+    required this.monitorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetOpenAIArgs {
 
   factory GetOpenAIArgs.fromMap(Map<String, dynamic> map) {
     return GetOpenAIArgs(
-      integrationName: pulumi.Output.create<String>(map['integrationName'] as String),
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      integrationName: (map['integrationName'] as String).input(),
+      monitorName: (map['monitorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

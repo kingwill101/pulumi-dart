@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference {
   /// Set of Managed Prefix IP ARN(s)
-  final String referenceArn;
+  final pulumi.Input<String> referenceArn;
 
   /// Creates a new [RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference].
   /// [referenceArn] Set of Managed Prefix IP ARN(s)
@@ -19,7 +20,7 @@ class RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference {
 
   factory RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference(
-      referenceArn: map['referenceArn'] as String,
+      referenceArn: (map['referenceArn'] as String).input(),
     );
   }
 }

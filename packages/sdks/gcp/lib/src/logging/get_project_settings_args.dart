@@ -13,9 +13,8 @@ class GetProjectSettingsArgs {
   /// Creates a new [GetProjectSettingsArgs].
   /// [project] The ID of the project for which to retrieve settings.
   GetProjectSettingsArgs({
-    required pulumi.Output<String> project,
-  }) :
-      project = pulumi.Input.asInput<String>(project);
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetProjectSettingsArgs {
 
   factory GetProjectSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectSettingsArgs(
-      project: pulumi.Output.create<String>(map['project'] as String),
+      project: (map['project'] as String).input(),
     );
   }
 }

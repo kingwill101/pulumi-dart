@@ -6,7 +6,7 @@ import 'network_interfaces_response.dart';
 /// Defines the resource properties.
 class NetworkProfileResponse {
   /// Gets or sets the list of network interfaces associated with the virtual machine.
-  final List<NetworkInterfacesResponse>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfacesResponse>>? networkInterfaces;
 
   /// Creates a new [NetworkProfileResponse].
   /// [networkInterfaces] Gets or sets the list of network interfaces associated with the virtual machine.
@@ -16,13 +16,13 @@ class NetworkProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterfacesResponse, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfacesResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfacesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterfacesResponse>(map['networkInterfaces'], (value) => NetworkInterfacesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfacesResponse>(map['networkInterfaces'], (value) => NetworkInterfacesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

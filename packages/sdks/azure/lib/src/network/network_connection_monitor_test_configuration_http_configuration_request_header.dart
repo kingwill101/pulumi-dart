@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader {
   /// The name of the HTTP header.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the HTTP header.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader].
   /// [name] The name of the HTTP header.
@@ -24,8 +25,8 @@ class NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader {
 
   factory NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

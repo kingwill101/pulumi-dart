@@ -61,33 +61,20 @@ class OdbSubnetState {
   /// [purpose] Purpose of the subnet.
   /// [state] State of the ODB Subnet.
   OdbSubnetState({
-    pulumi.Output<String>? cidrRange,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? odbSubnetId,
-    pulumi.Output<String>? odbnetwork,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? purpose,
-    pulumi.Output<String>? state,
-  }) :
-      cidrRange = pulumi.Input.asOptionalInput<String>(cidrRange),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      odbSubnetId = pulumi.Input.asOptionalInput<String>(odbSubnetId),
-      odbnetwork = pulumi.Input.asOptionalInput<String>(odbnetwork),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      purpose = pulumi.Input.asOptionalInput<String>(purpose),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.cidrRange,
+    this.createTime,
+    this.deletionProtection,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.name,
+    this.odbSubnetId,
+    this.odbnetwork,
+    this.project,
+    this.pulumiLabels,
+    this.purpose,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,19 +96,19 @@ class OdbSubnetState {
 
   factory OdbSubnetState.fromMap(Map<String, dynamic> map) {
     return OdbSubnetState(
-      cidrRange: map['cidrRange'] == null ? null : pulumi.Output.create<String>(map['cidrRange'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      odbSubnetId: map['odbSubnetId'] == null ? null : pulumi.Output.create<String>(map['odbSubnetId'] as String),
-      odbnetwork: map['odbnetwork'] == null ? null : pulumi.Output.create<String>(map['odbnetwork'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<String>(map['purpose'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      cidrRange: map['cidrRange'] == null ? null : (map['cidrRange'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      odbSubnetId: map['odbSubnetId'] == null ? null : (map['odbSubnetId'] as String).input(),
+      odbnetwork: map['odbnetwork'] == null ? null : (map['odbnetwork'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

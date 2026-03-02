@@ -38,27 +38,17 @@ class GatewayEndpointState {
   /// [tags] The tags of the resource.
   /// [vpcId] The ID of the VPC.
   GatewayEndpointState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? gatewayEndpointDescrption,
-    pulumi.Output<String>? gatewayEndpointName,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? routeTables,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      gatewayEndpointDescrption = pulumi.Input.asOptionalInput<String>(gatewayEndpointDescrption),
-      gatewayEndpointName = pulumi.Input.asOptionalInput<String>(gatewayEndpointName),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      routeTables = pulumi.Input.asOptionalInput<List<String>>(routeTables),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.createTime,
+    this.gatewayEndpointDescrption,
+    this.gatewayEndpointName,
+    this.policyDocument,
+    this.resourceGroupId,
+    this.routeTables,
+    this.serviceName,
+    this.status,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class GatewayEndpointState {
 
   factory GatewayEndpointState.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : pulumi.Output.create<String>(map['gatewayEndpointDescrption'] as String),
-      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : pulumi.Output.create<String>(map['gatewayEndpointName'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      routeTables: map['routeTables'] == null ? null : pulumi.Output.create<List<String>>((map['routeTables'] as List).cast<String>()),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : (map['gatewayEndpointDescrption'] as String).input(),
+      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : (map['gatewayEndpointName'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      routeTables: map['routeTables'] == null ? null : ((map['routeTables'] as List).cast<String>()).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

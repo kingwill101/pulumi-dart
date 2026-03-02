@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDefaultUserSettingsStudioWebPortalSettings {
   /// The Applications supported in Studio that are hidden from the Studio left navigation pane.
-  final List<String>? hiddenAppTypes;
+  final pulumi.Input<List<String>>? hiddenAppTypes;
   /// The instance types you are hiding from the Studio user interface.
-  final List<String>? hiddenInstanceTypes;
+  final pulumi.Input<List<String>>? hiddenInstanceTypes;
   /// The machine learning tools that are hidden from the Studio left navigation pane.
-  final List<String>? hiddenMlTools;
+  final pulumi.Input<List<String>>? hiddenMlTools;
 
   /// Creates a new [DomainDefaultUserSettingsStudioWebPortalSettings].
   /// [hiddenAppTypes] The Applications supported in Studio that are hidden from the Studio left navigation pane.
@@ -29,9 +30,9 @@ class DomainDefaultUserSettingsStudioWebPortalSettings {
 
   factory DomainDefaultUserSettingsStudioWebPortalSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsStudioWebPortalSettings(
-      hiddenAppTypes: map['hiddenAppTypes'] == null ? null : (map['hiddenAppTypes'] as List).cast<String>(),
-      hiddenInstanceTypes: map['hiddenInstanceTypes'] == null ? null : (map['hiddenInstanceTypes'] as List).cast<String>(),
-      hiddenMlTools: map['hiddenMlTools'] == null ? null : (map['hiddenMlTools'] as List).cast<String>(),
+      hiddenAppTypes: map['hiddenAppTypes'] == null ? null : ((map['hiddenAppTypes'] as List).cast<String>()).input(),
+      hiddenInstanceTypes: map['hiddenInstanceTypes'] == null ? null : ((map['hiddenInstanceTypes'] as List).cast<String>()).input(),
+      hiddenMlTools: map['hiddenMlTools'] == null ? null : ((map['hiddenMlTools'] as List).cast<String>()).input(),
     );
   }
 }

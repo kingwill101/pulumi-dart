@@ -6,11 +6,11 @@ import 'google_cloud_ml_v1_measurement_metric_response.dart';
 /// A message representing a measurement.
 class GoogleCloudMlV1MeasurementResponse {
   /// Time that the trial has been running at the point of this measurement.
-  final String elapsedTime;
+  final pulumi.Input<String> elapsedTime;
   /// Provides a list of metrics that act as inputs into the objective function.
-  final List<GoogleCloudMlV1MeasurementMetricResponse> metrics;
+  final pulumi.Input<List<GoogleCloudMlV1MeasurementMetricResponse>> metrics;
   /// The number of steps a machine learning model has been trained for. Must be non-negative.
-  final String stepCount;
+  final pulumi.Input<String> stepCount;
 
   /// Creates a new [GoogleCloudMlV1MeasurementResponse].
   /// [elapsedTime] Time that the trial has been running at the point of this measurement.
@@ -25,16 +25,16 @@ class GoogleCloudMlV1MeasurementResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'elapsedTime': elapsedTime,
-      'metrics': pulumi.Input.encodeList<GoogleCloudMlV1MeasurementMetricResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'metrics': pulumi.Input.mapInputValue<List<GoogleCloudMlV1MeasurementMetricResponse>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<GoogleCloudMlV1MeasurementMetricResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'stepCount': stepCount,
     };
   }
 
   factory GoogleCloudMlV1MeasurementResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1MeasurementResponse(
-      elapsedTime: map['elapsedTime'] as String,
-      metrics: pulumi.Input.decodeList<GoogleCloudMlV1MeasurementMetricResponse>(map['metrics'], (value) => GoogleCloudMlV1MeasurementMetricResponse.fromMap((value as Map).cast<String, dynamic>())),
-      stepCount: map['stepCount'] as String,
+      elapsedTime: (map['elapsedTime'] as String).input(),
+      metrics: (pulumi.Input.decodeList<GoogleCloudMlV1MeasurementMetricResponse>(map['metrics'], (value) => GoogleCloudMlV1MeasurementMetricResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stepCount: (map['stepCount'] as String).input(),
     );
   }
 }

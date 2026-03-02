@@ -21,15 +21,11 @@ class NamespaceSchemaGroupState {
   /// [schemaCompatibility] Specifies the compatibility of this schema group. Possible values are `None`, `Backward`, `Forward`. Changing this forces a new resource to be created.
   /// [schemaType] Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
   NamespaceSchemaGroupState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? schemaCompatibility,
-    pulumi.Output<String>? schemaType,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      schemaCompatibility = pulumi.Input.asOptionalInput<String>(schemaCompatibility),
-      schemaType = pulumi.Input.asOptionalInput<String>(schemaType);
+    this.name,
+    this.namespaceId,
+    this.schemaCompatibility,
+    this.schemaType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class NamespaceSchemaGroupState {
 
   factory NamespaceSchemaGroupState.fromMap(Map<String, dynamic> map) {
     return NamespaceSchemaGroupState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      schemaCompatibility: map['schemaCompatibility'] == null ? null : pulumi.Output.create<String>(map['schemaCompatibility'] as String),
-      schemaType: map['schemaType'] == null ? null : pulumi.Output.create<String>(map['schemaType'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      schemaCompatibility: map['schemaCompatibility'] == null ? null : (map['schemaCompatibility'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
     );
   }
 }

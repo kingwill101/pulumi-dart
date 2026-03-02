@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterAvailableResourcesResource {
   /// (Available since v1.225.0) The list of available zones.
-  final List<String> availableZones;
+  final pulumi.Input<List<String>> availableZones;
   /// The list of primary zones.
-  final List<String> masterZones;
+  final pulumi.Input<List<String>> masterZones;
   /// The list of secondary zones.
-  final List<String> slaveZones;
+  final pulumi.Input<List<String>> slaveZones;
   /// Specifies whether to query only the zones in which the multicast feature is supported.
-  final bool supportMulticast;
+  final pulumi.Input<bool> supportMulticast;
 
   /// Creates a new [GetTransitRouterAvailableResourcesResource].
   /// [availableZones] (Available since v1.225.0) The list of available zones.
@@ -34,10 +35,10 @@ class GetTransitRouterAvailableResourcesResource {
 
   factory GetTransitRouterAvailableResourcesResource.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterAvailableResourcesResource(
-      availableZones: (map['availableZones'] as List).cast<String>(),
-      masterZones: (map['masterZones'] as List).cast<String>(),
-      slaveZones: (map['slaveZones'] as List).cast<String>(),
-      supportMulticast: map['supportMulticast'] as bool,
+      availableZones: ((map['availableZones'] as List).cast<String>()).input(),
+      masterZones: ((map['masterZones'] as List).cast<String>()).input(),
+      slaveZones: ((map['slaveZones'] as List).cast<String>()).input(),
+      supportMulticast: (map['supportMulticast'] as bool).input(),
     );
   }
 }

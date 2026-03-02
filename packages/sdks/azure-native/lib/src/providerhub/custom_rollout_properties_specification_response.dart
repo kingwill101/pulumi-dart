@@ -9,19 +9,19 @@ import 'resource_type_registration_response.dart';
 /// The specification.
 class CustomRolloutPropertiesSpecificationResponse {
   /// The auto provisioning configuration.
-  final CustomRolloutSpecificationAutoProvisionConfigResponse? autoProvisionConfig;
+  final pulumi.Input<CustomRolloutSpecificationAutoProvisionConfigResponse>? autoProvisionConfig;
   /// The canary region configuration.
-  final CustomRolloutSpecificationCanaryResponse? canary;
+  final pulumi.Input<CustomRolloutSpecificationCanaryResponse>? canary;
   /// The provider registration.
-  final CustomRolloutSpecificationProviderRegistrationResponse? providerRegistration;
+  final pulumi.Input<CustomRolloutSpecificationProviderRegistrationResponse>? providerRegistration;
   /// Whether refreshing subscription registration is enabled or disabled.
-  final bool? refreshSubscriptionRegistration;
+  final pulumi.Input<bool>? refreshSubscriptionRegistration;
   /// The list of ARM regions scoped for the release.
-  final List<String>? releaseScopes;
+  final pulumi.Input<List<String>>? releaseScopes;
   /// The resource type registrations.
-  final List<ResourceTypeRegistrationResponse>? resourceTypeRegistrations;
+  final pulumi.Input<List<ResourceTypeRegistrationResponse>>? resourceTypeRegistrations;
   /// Whether release scope validation should be skipped.
-  final bool? skipReleaseScopeValidation;
+  final pulumi.Input<bool>? skipReleaseScopeValidation;
 
   /// Creates a new [CustomRolloutPropertiesSpecificationResponse].
   /// [autoProvisionConfig] The auto provisioning configuration.
@@ -43,25 +43,25 @@ class CustomRolloutPropertiesSpecificationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoProvisionConfig': ?autoProvisionConfig == null ? null : autoProvisionConfig!.toMap(),
-      'canary': ?canary == null ? null : canary!.toMap(),
-      'providerRegistration': ?providerRegistration == null ? null : providerRegistration!.toMap(),
+      'autoProvisionConfig': ?pulumi.Input.mapOptionalInputValue<CustomRolloutSpecificationAutoProvisionConfigResponse, Map<String, dynamic>>(autoProvisionConfig, (value) => value.toMap()),
+      'canary': ?pulumi.Input.mapOptionalInputValue<CustomRolloutSpecificationCanaryResponse, Map<String, dynamic>>(canary, (value) => value.toMap()),
+      'providerRegistration': ?pulumi.Input.mapOptionalInputValue<CustomRolloutSpecificationProviderRegistrationResponse, Map<String, dynamic>>(providerRegistration, (value) => value.toMap()),
       'refreshSubscriptionRegistration': ?refreshSubscriptionRegistration,
       'releaseScopes': ?releaseScopes,
-      'resourceTypeRegistrations': ?resourceTypeRegistrations == null ? null : pulumi.Input.encodeList<ResourceTypeRegistrationResponse, Map<String, dynamic>>(resourceTypeRegistrations!, (value) => value.toMap()),
+      'resourceTypeRegistrations': ?pulumi.Input.mapOptionalInputValue<List<ResourceTypeRegistrationResponse>, List<Map<String, dynamic>>>(resourceTypeRegistrations, (value) => pulumi.Input.encodeList<ResourceTypeRegistrationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'skipReleaseScopeValidation': ?skipReleaseScopeValidation,
     };
   }
 
   factory CustomRolloutPropertiesSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return CustomRolloutPropertiesSpecificationResponse(
-      autoProvisionConfig: map['autoProvisionConfig'] == null ? null : CustomRolloutSpecificationAutoProvisionConfigResponse.fromMap((map['autoProvisionConfig'] as Map).cast<String, dynamic>()),
-      canary: map['canary'] == null ? null : CustomRolloutSpecificationCanaryResponse.fromMap((map['canary'] as Map).cast<String, dynamic>()),
-      providerRegistration: map['providerRegistration'] == null ? null : CustomRolloutSpecificationProviderRegistrationResponse.fromMap((map['providerRegistration'] as Map).cast<String, dynamic>()),
-      refreshSubscriptionRegistration: map['refreshSubscriptionRegistration'] == null ? null : map['refreshSubscriptionRegistration'] as bool,
-      releaseScopes: map['releaseScopes'] == null ? null : (map['releaseScopes'] as List).cast<String>(),
-      resourceTypeRegistrations: map['resourceTypeRegistrations'] == null ? null : pulumi.Input.decodeList<ResourceTypeRegistrationResponse>(map['resourceTypeRegistrations'], (value) => ResourceTypeRegistrationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      skipReleaseScopeValidation: map['skipReleaseScopeValidation'] == null ? null : map['skipReleaseScopeValidation'] as bool,
+      autoProvisionConfig: map['autoProvisionConfig'] == null ? null : (CustomRolloutSpecificationAutoProvisionConfigResponse.fromMap((map['autoProvisionConfig'] as Map).cast<String, dynamic>())).input(),
+      canary: map['canary'] == null ? null : (CustomRolloutSpecificationCanaryResponse.fromMap((map['canary'] as Map).cast<String, dynamic>())).input(),
+      providerRegistration: map['providerRegistration'] == null ? null : (CustomRolloutSpecificationProviderRegistrationResponse.fromMap((map['providerRegistration'] as Map).cast<String, dynamic>())).input(),
+      refreshSubscriptionRegistration: map['refreshSubscriptionRegistration'] == null ? null : (map['refreshSubscriptionRegistration'] as bool).input(),
+      releaseScopes: map['releaseScopes'] == null ? null : ((map['releaseScopes'] as List).cast<String>()).input(),
+      resourceTypeRegistrations: map['resourceTypeRegistrations'] == null ? null : (pulumi.Input.decodeList<ResourceTypeRegistrationResponse>(map['resourceTypeRegistrations'], (value) => ResourceTypeRegistrationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      skipReleaseScopeValidation: map['skipReleaseScopeValidation'] == null ? null : (map['skipReleaseScopeValidation'] as bool).input(),
     );
   }
 }

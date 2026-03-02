@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobLocalVariable {
   /// Local variables name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Local variables value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [JobLocalVariable].
   /// [name] Local variables name
@@ -24,8 +25,8 @@ class JobLocalVariable {
 
   factory JobLocalVariable.fromMap(Map<String, dynamic> map) {
     return JobLocalVariable(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

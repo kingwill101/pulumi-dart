@@ -27,19 +27,13 @@ class LoggingState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3KeyPrefix] Prefix applied to the log file names.
   LoggingState({
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<String>? clusterIdentifier,
-    pulumi.Output<String>? logDestinationType,
-    pulumi.Output<List<String>>? logExports,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? s3KeyPrefix,
-  }) :
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      clusterIdentifier = pulumi.Input.asOptionalInput<String>(clusterIdentifier),
-      logDestinationType = pulumi.Input.asOptionalInput<String>(logDestinationType),
-      logExports = pulumi.Input.asOptionalInput<List<String>>(logExports),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3KeyPrefix = pulumi.Input.asOptionalInput<String>(s3KeyPrefix);
+    this.bucketName,
+    this.clusterIdentifier,
+    this.logDestinationType,
+    this.logExports,
+    this.region,
+    this.s3KeyPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class LoggingState {
 
   factory LoggingState.fromMap(Map<String, dynamic> map) {
     return LoggingState(
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      logDestinationType: map['logDestinationType'] == null ? null : pulumi.Output.create<String>(map['logDestinationType'] as String),
-      logExports: map['logExports'] == null ? null : pulumi.Output.create<List<String>>((map['logExports'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : pulumi.Output.create<String>(map['s3KeyPrefix'] as String),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      logDestinationType: map['logDestinationType'] == null ? null : (map['logDestinationType'] as String).input(),
+      logExports: map['logExports'] == null ? null : ((map['logExports'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
     );
   }
 }

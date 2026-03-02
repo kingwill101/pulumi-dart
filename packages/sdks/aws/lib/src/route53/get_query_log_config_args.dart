@@ -28,17 +28,12 @@ class GetQueryLogConfigArgs {
   /// [resolverQueryLogConfigId] ID of the Route53 Resolver Query Logging Configuration.
   /// [tags] Map of tags to assign to the service.
   GetQueryLogConfigArgs({
-    pulumi.Output<List<GetQueryLogConfigFilter>>? filters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resolverQueryLogConfigId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetQueryLogConfigFilter>>(filters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverQueryLogConfigId = pulumi.Input.asOptionalInput<String>(resolverQueryLogConfigId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.name,
+    this.region,
+    this.resolverQueryLogConfigId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class GetQueryLogConfigArgs {
 
   factory GetQueryLogConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetQueryLogConfigArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetQueryLogConfigFilter>>(pulumi.Input.decodeList<GetQueryLogConfigFilter>(map['filters'], (value) => GetQueryLogConfigFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resolverQueryLogConfigId: map['resolverQueryLogConfigId'] == null ? null : pulumi.Output.create<String>(map['resolverQueryLogConfigId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetQueryLogConfigFilter>(map['filters'], (value) => GetQueryLogConfigFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resolverQueryLogConfigId: map['resolverQueryLogConfigId'] == null ? null : (map['resolverQueryLogConfigId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

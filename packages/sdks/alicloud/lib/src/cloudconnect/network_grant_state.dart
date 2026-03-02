@@ -16,13 +16,10 @@ class NetworkGrantState {
   /// [cenId] The ID of the CEN instance.
   /// [cenUid] The ID of the account to which the CEN instance belongs.
   NetworkGrantState({
-    pulumi.Output<String>? ccnId,
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? cenUid,
-  }) :
-      ccnId = pulumi.Input.asOptionalInput<String>(ccnId),
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      cenUid = pulumi.Input.asOptionalInput<String>(cenUid);
+    this.ccnId,
+    this.cenId,
+    this.cenUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class NetworkGrantState {
 
   factory NetworkGrantState.fromMap(Map<String, dynamic> map) {
     return NetworkGrantState(
-      ccnId: map['ccnId'] == null ? null : pulumi.Output.create<String>(map['ccnId'] as String),
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      cenUid: map['cenUid'] == null ? null : pulumi.Output.create<String>(map['cenUid'] as String),
+      ccnId: map['ccnId'] == null ? null : (map['ccnId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      cenUid: map['cenUid'] == null ? null : (map['cenUid'] as String).input(),
     );
   }
 }

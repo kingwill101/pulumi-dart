@@ -22,15 +22,11 @@ class ImageArgs {
   /// [instanceId] The ID of the instance.
   /// [targetOssRegionId] The region of the target OSS where the image is to be stored.
   ImageArgs({
-    pulumi.Output<String>? deleteAfterImageUpload,
-    required pulumi.Output<String> imageName,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? targetOssRegionId,
-  }) :
-      deleteAfterImageUpload = pulumi.Input.asOptionalInput<String>(deleteAfterImageUpload),
-      imageName = pulumi.Input.asInput<String>(imageName),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      targetOssRegionId = pulumi.Input.asOptionalInput<String>(targetOssRegionId);
+    this.deleteAfterImageUpload,
+    required this.imageName,
+    this.instanceId,
+    this.targetOssRegionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      deleteAfterImageUpload: map['deleteAfterImageUpload'] == null ? null : pulumi.Output.create<String>(map['deleteAfterImageUpload'] as String),
-      imageName: pulumi.Output.create<String>(map['imageName'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      targetOssRegionId: map['targetOssRegionId'] == null ? null : pulumi.Output.create<String>(map['targetOssRegionId'] as String),
+      deleteAfterImageUpload: map['deleteAfterImageUpload'] == null ? null : (map['deleteAfterImageUpload'] as String).input(),
+      imageName: (map['imageName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      targetOssRegionId: map['targetOssRegionId'] == null ? null : (map['targetOssRegionId'] as String).input(),
     );
   }
 }

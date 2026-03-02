@@ -36,25 +36,16 @@ class CertificateArgs {
   /// [rawCertificate] Input only. Raw client certificate which would be registered with trawler
   /// [requestorId] Immutable. Requestor ID to be used to register certificate with trawler
   CertificateArgs({
-    pulumi.Output<CertificateCertificateStatus>? certificateStatus,
-    pulumi.Output<String>? credentialId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudIntegrationsV1alphaClientCertificate>? rawCertificate,
-    pulumi.Output<String>? requestorId,
-  }) :
-      certificateStatus = pulumi.Input.asOptionalInput<CertificateCertificateStatus>(certificateStatus),
-      credentialId = pulumi.Input.asOptionalInput<String>(credentialId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rawCertificate = pulumi.Input.asOptionalInput<GoogleCloudIntegrationsV1alphaClientCertificate>(rawCertificate),
-      requestorId = pulumi.Input.asOptionalInput<String>(requestorId);
+    this.certificateStatus,
+    this.credentialId,
+    this.description,
+    required this.displayName,
+    this.location,
+    required this.productId,
+    this.project,
+    this.rawCertificate,
+    this.requestorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateStatus: map['certificateStatus'] == null ? null : pulumi.Output.create<CertificateCertificateStatus>(CertificateCertificateStatus.fromValue(map['certificateStatus'] as String)),
-      credentialId: map['credentialId'] == null ? null : pulumi.Output.create<String>(map['credentialId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rawCertificate: map['rawCertificate'] == null ? null : pulumi.Output.create<GoogleCloudIntegrationsV1alphaClientCertificate>(GoogleCloudIntegrationsV1alphaClientCertificate.fromMap((map['rawCertificate'] as Map).cast<String, dynamic>())),
-      requestorId: map['requestorId'] == null ? null : pulumi.Output.create<String>(map['requestorId'] as String),
+      certificateStatus: map['certificateStatus'] == null ? null : (CertificateCertificateStatus.fromValue(map['certificateStatus'] as String)).input(),
+      credentialId: map['credentialId'] == null ? null : (map['credentialId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rawCertificate: map['rawCertificate'] == null ? null : (GoogleCloudIntegrationsV1alphaClientCertificate.fromMap((map['rawCertificate'] as Map).cast<String, dynamic>())).input(),
+      requestorId: map['requestorId'] == null ? null : (map['requestorId'] as String).input(),
     );
   }
 }

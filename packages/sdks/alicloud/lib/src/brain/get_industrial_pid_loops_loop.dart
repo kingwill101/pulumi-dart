@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndustrialPidLoopsLoop {
   /// The ID of the Pid Loop.
-  final String id;
-  final String pidLoopConfiguration;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> pidLoopConfiguration;
   /// The dcs type of Pid Loop.
-  final String pidLoopDcsType;
-  final String pidLoopDesc;
+  final pulumi.Input<String> pidLoopDcsType;
+  final pulumi.Input<String> pidLoopDesc;
   /// The ID of the Pid Loop.
-  final String pidLoopId;
+  final pulumi.Input<String> pidLoopId;
   /// Whether is crucial Pid Loop.
-  final bool pidLoopIsCrucial;
+  final pulumi.Input<bool> pidLoopIsCrucial;
   /// The name of Pid Loop.
-  final String pidLoopName;
+  final pulumi.Input<String> pidLoopName;
   /// The type of Pid Loop.
-  final String pidLoopType;
+  final pulumi.Input<String> pidLoopType;
   /// The pid project id.
-  final String pidProjectId;
+  final pulumi.Input<String> pidProjectId;
   /// The status of Pid Loop.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetIndustrialPidLoopsLoop].
   /// [id] The ID of the Pid Loop.
@@ -62,16 +63,16 @@ class GetIndustrialPidLoopsLoop {
 
   factory GetIndustrialPidLoopsLoop.fromMap(Map<String, dynamic> map) {
     return GetIndustrialPidLoopsLoop(
-      id: map['id'] as String,
-      pidLoopConfiguration: map['pidLoopConfiguration'] as String,
-      pidLoopDcsType: map['pidLoopDcsType'] as String,
-      pidLoopDesc: map['pidLoopDesc'] as String,
-      pidLoopId: map['pidLoopId'] as String,
-      pidLoopIsCrucial: map['pidLoopIsCrucial'] as bool,
-      pidLoopName: map['pidLoopName'] as String,
-      pidLoopType: map['pidLoopType'] as String,
-      pidProjectId: map['pidProjectId'] as String,
-      status: map['status'] as String,
+      id: (map['id'] as String).input(),
+      pidLoopConfiguration: (map['pidLoopConfiguration'] as String).input(),
+      pidLoopDcsType: (map['pidLoopDcsType'] as String).input(),
+      pidLoopDesc: (map['pidLoopDesc'] as String).input(),
+      pidLoopId: (map['pidLoopId'] as String).input(),
+      pidLoopIsCrucial: (map['pidLoopIsCrucial'] as bool).input(),
+      pidLoopName: (map['pidLoopName'] as String).input(),
+      pidLoopType: (map['pidLoopType'] as String).input(),
+      pidProjectId: (map['pidProjectId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

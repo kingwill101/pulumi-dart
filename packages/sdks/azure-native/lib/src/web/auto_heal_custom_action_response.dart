@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom action to be executed
 /// when an auto heal rule is triggered.
 class AutoHealCustomActionResponse {
   /// Executable to be run.
-  final String? exe;
+  final pulumi.Input<String>? exe;
   /// Parameters for the executable.
-  final String? parameters;
+  final pulumi.Input<String>? parameters;
 
   /// Creates a new [AutoHealCustomActionResponse].
   /// [exe] Executable to be run.
@@ -26,8 +27,8 @@ class AutoHealCustomActionResponse {
 
   factory AutoHealCustomActionResponse.fromMap(Map<String, dynamic> map) {
     return AutoHealCustomActionResponse(
-      exe: map['exe'] == null ? null : map['exe'] as String,
-      parameters: map['parameters'] == null ? null : map['parameters'] as String,
+      exe: map['exe'] == null ? null : (map['exe'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
     );
   }
 }

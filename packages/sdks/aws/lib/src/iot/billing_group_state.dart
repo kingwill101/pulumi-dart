@@ -31,23 +31,15 @@ class BillingGroupState {
   /// [tagsAll] Optional.
   /// [version] The current version of the Billing Group record in the registry.
   BillingGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<BillingGroupMetadata>>? metadatas,
-    pulumi.Output<String>? name,
-    pulumi.Output<BillingGroupProperties>? properties,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<int>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      metadatas = pulumi.Input.asOptionalInput<List<BillingGroupMetadata>>(metadatas),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<BillingGroupProperties>(properties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.arn,
+    this.metadatas,
+    this.name,
+    this.properties,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class BillingGroupState {
 
   factory BillingGroupState.fromMap(Map<String, dynamic> map) {
     return BillingGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      metadatas: map['metadatas'] == null ? null : pulumi.Output.create<List<BillingGroupMetadata>>(pulumi.Input.decodeList<BillingGroupMetadata>(map['metadatas'], (value) => BillingGroupMetadata.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BillingGroupProperties>(BillingGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<BillingGroupMetadata>(map['metadatas'], (value) => BillingGroupMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (BillingGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetAccountLoginsArgs {
   /// Creates a new [GetAccountLoginsArgs].
   /// [filters] Optional.
   GetAccountLoginsArgs({
-    pulumi.Output<List<GetAccountLoginsFilter>>? filters,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetAccountLoginsFilter>>(filters);
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAccountLoginsArgs {
 
   factory GetAccountLoginsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountLoginsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetAccountLoginsFilter>>(pulumi.Input.decodeList<GetAccountLoginsFilter>(map['filters'], (value) => GetAccountLoginsFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAccountLoginsFilter>(map['filters'], (value) => GetAccountLoginsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

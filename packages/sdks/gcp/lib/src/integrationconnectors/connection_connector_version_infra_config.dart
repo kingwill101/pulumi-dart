@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionConnectorVersionInfraConfig {
   /// (Output)
   /// Max QPS supported by the connector version before throttling of requests.
-  final String? ratelimitThreshold;
+  final pulumi.Input<String>? ratelimitThreshold;
 
   /// Creates a new [ConnectionConnectorVersionInfraConfig].
   /// [ratelimitThreshold] (Output)
@@ -20,7 +21,7 @@ class ConnectionConnectorVersionInfraConfig {
 
   factory ConnectionConnectorVersionInfraConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionConnectorVersionInfraConfig(
-      ratelimitThreshold: map['ratelimitThreshold'] == null ? null : map['ratelimitThreshold'] as String,
+      ratelimitThreshold: map['ratelimitThreshold'] == null ? null : (map['ratelimitThreshold'] as String).input(),
     );
   }
 }

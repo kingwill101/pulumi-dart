@@ -19,13 +19,10 @@ class GetInstanceAttachmentsArgs {
   /// [nameRegex] A regex string to filter results by vpc name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetInstanceAttachmentsArgs({
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.instanceName,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetInstanceAttachmentsArgs {
 
   factory GetInstanceAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

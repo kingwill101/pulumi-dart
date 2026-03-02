@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RealtimeLogConfigEndpointKinesisStreamConfig {
   /// The ARN of an IAM role that CloudFront can use to send real-time log data to the Kinesis data stream.
   /// See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html#understand-real-time-log-config-iam-role) for more information.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The ARN of the Kinesis data stream.
-  final String streamArn;
+  final pulumi.Input<String> streamArn;
 
   /// Creates a new [RealtimeLogConfigEndpointKinesisStreamConfig].
   /// [roleArn] The ARN of an IAM role that CloudFront can use to send real-time log data to the Kinesis data stream.
@@ -25,8 +26,8 @@ class RealtimeLogConfigEndpointKinesisStreamConfig {
 
   factory RealtimeLogConfigEndpointKinesisStreamConfig.fromMap(Map<String, dynamic> map) {
     return RealtimeLogConfigEndpointKinesisStreamConfig(
-      roleArn: map['roleArn'] as String,
-      streamArn: map['streamArn'] as String,
+      roleArn: (map['roleArn'] as String).input(),
+      streamArn: (map['streamArn'] as String).input(),
     );
   }
 }

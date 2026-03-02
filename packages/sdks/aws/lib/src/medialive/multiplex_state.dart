@@ -33,23 +33,15 @@ class MultiplexState {
   /// [tags] A map of tags to assign to the Multiplex. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   MultiplexState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<String>>? availabilityZones,
-    pulumi.Output<MultiplexMultiplexSettings>? multiplexSettings,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? startMultiplex,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      availabilityZones = pulumi.Input.asOptionalInput<List<String>>(availabilityZones),
-      multiplexSettings = pulumi.Input.asOptionalInput<MultiplexMultiplexSettings>(multiplexSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      startMultiplex = pulumi.Input.asOptionalInput<bool>(startMultiplex),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.availabilityZones,
+    this.multiplexSettings,
+    this.name,
+    this.region,
+    this.startMultiplex,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class MultiplexState {
 
   factory MultiplexState.fromMap(Map<String, dynamic> map) {
     return MultiplexState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      availabilityZones: map['availabilityZones'] == null ? null : pulumi.Output.create<List<String>>((map['availabilityZones'] as List).cast<String>()),
-      multiplexSettings: map['multiplexSettings'] == null ? null : pulumi.Output.create<MultiplexMultiplexSettings>(MultiplexMultiplexSettings.fromMap((map['multiplexSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      startMultiplex: map['startMultiplex'] == null ? null : pulumi.Output.create<bool>(map['startMultiplex'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      multiplexSettings: map['multiplexSettings'] == null ? null : (MultiplexMultiplexSettings.fromMap((map['multiplexSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      startMultiplex: map['startMultiplex'] == null ? null : (map['startMultiplex'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

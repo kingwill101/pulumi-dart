@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the Key Vault which hosts CMK
 class CmkKeyVaultProperties {
   /// The key uri of the Customer Managed Key
-  final String? keyUri;
+  final pulumi.Input<String>? keyUri;
 
   /// Creates a new [CmkKeyVaultProperties].
   /// [keyUri] The key uri of the Customer Managed Key
@@ -20,7 +21,7 @@ class CmkKeyVaultProperties {
 
   factory CmkKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return CmkKeyVaultProperties(
-      keyUri: map['keyUri'] == null ? null : map['keyUri'] as String,
+      keyUri: map['keyUri'] == null ? null : (map['keyUri'] as String).input(),
     );
   }
 }

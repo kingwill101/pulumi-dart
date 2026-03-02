@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterApplicationConfig {
   /// The application name of EMR cluster which has installed.
-  final String applicationName;
+  final pulumi.Input<String> applicationName;
   /// The configuration description of application installed.
-  final String? configDescription;
+  final pulumi.Input<String>? configDescription;
   /// The configuration file name of application installed.
-  final String configFileName;
+  final pulumi.Input<String> configFileName;
   /// The configuration item key of application installed.
-  final String configItemKey;
+  final pulumi.Input<String> configItemKey;
   /// The configuration item value of application installed.
-  final String configItemValue;
+  final pulumi.Input<String> configItemValue;
   /// The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
-  final String? configScope;
+  final pulumi.Input<String>? configScope;
   /// The configuration effected which node group id of emr cluster.
-  final String? nodeGroupId;
+  final pulumi.Input<String>? nodeGroupId;
   /// The configuration effected which node group name of emr cluster.
-  final String? nodeGroupName;
+  final pulumi.Input<String>? nodeGroupName;
 
   /// Creates a new [ClusterApplicationConfig].
   /// [applicationName] The application name of EMR cluster which has installed.
@@ -54,14 +55,14 @@ class ClusterApplicationConfig {
 
   factory ClusterApplicationConfig.fromMap(Map<String, dynamic> map) {
     return ClusterApplicationConfig(
-      applicationName: map['applicationName'] as String,
-      configDescription: map['configDescription'] == null ? null : map['configDescription'] as String,
-      configFileName: map['configFileName'] as String,
-      configItemKey: map['configItemKey'] as String,
-      configItemValue: map['configItemValue'] as String,
-      configScope: map['configScope'] == null ? null : map['configScope'] as String,
-      nodeGroupId: map['nodeGroupId'] == null ? null : map['nodeGroupId'] as String,
-      nodeGroupName: map['nodeGroupName'] == null ? null : map['nodeGroupName'] as String,
+      applicationName: (map['applicationName'] as String).input(),
+      configDescription: map['configDescription'] == null ? null : (map['configDescription'] as String).input(),
+      configFileName: (map['configFileName'] as String).input(),
+      configItemKey: (map['configItemKey'] as String).input(),
+      configItemValue: (map['configItemValue'] as String).input(),
+      configScope: map['configScope'] == null ? null : (map['configScope'] as String).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
+      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName'] as String).input(),
     );
   }
 }

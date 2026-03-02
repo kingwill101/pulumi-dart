@@ -20,13 +20,10 @@ class QuotaScheduleArgs {
   /// [scheduleLists] schedule list See `schedule_list` below.
   /// [timezone] Time zone, reference value: UTC +8
   QuotaScheduleArgs({
-    required pulumi.Output<String> nickname,
-    pulumi.Output<List<QuotaScheduleScheduleList>>? scheduleLists,
-    required pulumi.Output<String> timezone,
-  }) :
-      nickname = pulumi.Input.asInput<String>(nickname),
-      scheduleLists = pulumi.Input.asOptionalInput<List<QuotaScheduleScheduleList>>(scheduleLists),
-      timezone = pulumi.Input.asInput<String>(timezone);
+    required this.nickname,
+    this.scheduleLists,
+    required this.timezone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class QuotaScheduleArgs {
 
   factory QuotaScheduleArgs.fromMap(Map<String, dynamic> map) {
     return QuotaScheduleArgs(
-      nickname: pulumi.Output.create<String>(map['nickname'] as String),
-      scheduleLists: map['scheduleLists'] == null ? null : pulumi.Output.create<List<QuotaScheduleScheduleList>>(pulumi.Input.decodeList<QuotaScheduleScheduleList>(map['scheduleLists'], (value) => QuotaScheduleScheduleList.fromMap((value as Map).cast<String, dynamic>()))),
-      timezone: pulumi.Output.create<String>(map['timezone'] as String),
+      nickname: (map['nickname'] as String).input(),
+      scheduleLists: map['scheduleLists'] == null ? null : (pulumi.Input.decodeList<QuotaScheduleScheduleList>(map['scheduleLists'], (value) => QuotaScheduleScheduleList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timezone: (map['timezone'] as String).input(),
     );
   }
 }

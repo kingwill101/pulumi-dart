@@ -6,11 +6,11 @@ import 'users_or_service_principal_set_response.dart';
 /// The PIM Only Mode settings.
 class PIMOnlyModeSettingsResponse {
   /// The list of excluded assignment types allowed.
-  final List<String>? excludedAssignmentTypes;
+  final pulumi.Input<List<String>>? excludedAssignmentTypes;
   /// The list of excluded entities that the rule does not apply to.
-  final List<UsersOrServicePrincipalSetResponse>? excludes;
+  final pulumi.Input<List<UsersOrServicePrincipalSetResponse>>? excludes;
   /// Determines whether the setting is enabled, disabled or report only.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [PIMOnlyModeSettingsResponse].
   /// [excludedAssignmentTypes] The list of excluded assignment types allowed.
@@ -25,16 +25,16 @@ class PIMOnlyModeSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'excludedAssignmentTypes': ?excludedAssignmentTypes,
-      'excludes': ?excludes == null ? null : pulumi.Input.encodeList<UsersOrServicePrincipalSetResponse, Map<String, dynamic>>(excludes!, (value) => value.toMap()),
+      'excludes': ?pulumi.Input.mapOptionalInputValue<List<UsersOrServicePrincipalSetResponse>, List<Map<String, dynamic>>>(excludes, (value) => pulumi.Input.encodeList<UsersOrServicePrincipalSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mode': ?mode,
     };
   }
 
   factory PIMOnlyModeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PIMOnlyModeSettingsResponse(
-      excludedAssignmentTypes: map['excludedAssignmentTypes'] == null ? null : (map['excludedAssignmentTypes'] as List).cast<String>(),
-      excludes: map['excludes'] == null ? null : pulumi.Input.decodeList<UsersOrServicePrincipalSetResponse>(map['excludes'], (value) => UsersOrServicePrincipalSetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      excludedAssignmentTypes: map['excludedAssignmentTypes'] == null ? null : ((map['excludedAssignmentTypes'] as List).cast<String>()).input(),
+      excludes: map['excludes'] == null ? null : (pulumi.Input.decodeList<UsersOrServicePrincipalSetResponse>(map['excludes'], (value) => UsersOrServicePrincipalSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

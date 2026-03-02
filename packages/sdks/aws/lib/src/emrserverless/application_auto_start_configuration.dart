@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationAutoStartConfiguration {
   /// Enables the application to automatically start on job submission. Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ApplicationAutoStartConfiguration].
   /// [enabled] Enables the application to automatically start on job submission. Defaults to `true`.
@@ -19,7 +20,7 @@ class ApplicationAutoStartConfiguration {
 
   factory ApplicationAutoStartConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationAutoStartConfiguration(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

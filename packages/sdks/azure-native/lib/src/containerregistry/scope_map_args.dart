@@ -27,17 +27,12 @@ class ScopeMapArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeMapName] The name of the scope map.
   ScopeMapArgs({
-    required pulumi.Output<List<String>> actions,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scopeMapName,
-  }) :
-      actions = pulumi.Input.asInput<List<String>>(actions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeMapName = pulumi.Input.asOptionalInput<String>(scopeMapName);
+    required this.actions,
+    this.description,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.scopeMapName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ScopeMapArgs {
 
   factory ScopeMapArgs.fromMap(Map<String, dynamic> map) {
     return ScopeMapArgs(
-      actions: pulumi.Output.create<List<String>>((map['actions'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeMapName: map['scopeMapName'] == null ? null : pulumi.Output.create<String>(map['scopeMapName'] as String),
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeMapName: map['scopeMapName'] == null ? null : (map['scopeMapName'] as String).input(),
     );
   }
 }

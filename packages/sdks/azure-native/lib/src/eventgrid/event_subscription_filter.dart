@@ -6,21 +6,21 @@ import 'bool_equals_advanced_filter.dart';
 /// Filter for the Event Subscription.
 class EventSubscriptionFilter {
   /// An array of advanced filters that are used for filtering event subscriptions.
-  final List<BoolEqualsAdvancedFilter>? advancedFilters;
+  final pulumi.Input<List<BoolEqualsAdvancedFilter>>? advancedFilters;
   /// Allows advanced filters to be evaluated against an array of values instead of expecting a singular value.
-  final bool? enableAdvancedFilteringOnArrays;
+  final pulumi.Input<bool>? enableAdvancedFilteringOnArrays;
   /// A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
-  final List<String>? includedEventTypes;
+  final pulumi.Input<List<String>>? includedEventTypes;
   /// Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filter
   /// should be compared in a case sensitive manner.
-  final bool? isSubjectCaseSensitive;
+  final pulumi.Input<bool>? isSubjectCaseSensitive;
   /// An optional string to filter events for an event subscription based on a resource path prefix.
   /// The format of this depends on the publisher of the events.
   /// Wildcard characters are not supported in this path.
-  final String? subjectBeginsWith;
+  final pulumi.Input<String>? subjectBeginsWith;
   /// An optional string to filter events for an event subscription based on a resource path suffix.
   /// Wildcard characters are not supported in this path.
-  final String? subjectEndsWith;
+  final pulumi.Input<String>? subjectEndsWith;
 
   /// Creates a new [EventSubscriptionFilter].
   /// [advancedFilters] An array of advanced filters that are used for filtering event subscriptions.
@@ -40,7 +40,7 @@ class EventSubscriptionFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedFilters': ?advancedFilters == null ? null : pulumi.Input.encodeList<BoolEqualsAdvancedFilter, Map<String, dynamic>>(advancedFilters!, (value) => value.toMap()),
+      'advancedFilters': ?pulumi.Input.mapOptionalInputValue<List<BoolEqualsAdvancedFilter>, List<Map<String, dynamic>>>(advancedFilters, (value) => pulumi.Input.encodeList<BoolEqualsAdvancedFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableAdvancedFilteringOnArrays': ?enableAdvancedFilteringOnArrays,
       'includedEventTypes': ?includedEventTypes,
       'isSubjectCaseSensitive': ?isSubjectCaseSensitive,
@@ -51,12 +51,12 @@ class EventSubscriptionFilter {
 
   factory EventSubscriptionFilter.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionFilter(
-      advancedFilters: map['advancedFilters'] == null ? null : pulumi.Input.decodeList<BoolEqualsAdvancedFilter>(map['advancedFilters'], (value) => BoolEqualsAdvancedFilter.fromMap((value as Map).cast<String, dynamic>())),
-      enableAdvancedFilteringOnArrays: map['enableAdvancedFilteringOnArrays'] == null ? null : map['enableAdvancedFilteringOnArrays'] as bool,
-      includedEventTypes: map['includedEventTypes'] == null ? null : (map['includedEventTypes'] as List).cast<String>(),
-      isSubjectCaseSensitive: map['isSubjectCaseSensitive'] == null ? null : map['isSubjectCaseSensitive'] as bool,
-      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : map['subjectBeginsWith'] as String,
-      subjectEndsWith: map['subjectEndsWith'] == null ? null : map['subjectEndsWith'] as String,
+      advancedFilters: map['advancedFilters'] == null ? null : (pulumi.Input.decodeList<BoolEqualsAdvancedFilter>(map['advancedFilters'], (value) => BoolEqualsAdvancedFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableAdvancedFilteringOnArrays: map['enableAdvancedFilteringOnArrays'] == null ? null : (map['enableAdvancedFilteringOnArrays'] as bool).input(),
+      includedEventTypes: map['includedEventTypes'] == null ? null : ((map['includedEventTypes'] as List).cast<String>()).input(),
+      isSubjectCaseSensitive: map['isSubjectCaseSensitive'] == null ? null : (map['isSubjectCaseSensitive'] as bool).input(),
+      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith'] as String).input(),
+      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith'] as String).input(),
     );
   }
 }

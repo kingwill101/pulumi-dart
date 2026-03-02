@@ -22,15 +22,11 @@ class FrontdoorEndpointArgs {
   /// [name] The name which should be used for this Front Door Endpoint. Changing this forces a new Front Door Endpoint to be created.
   /// [tags] Specifies a mapping of tags which should be assigned to the Front Door Endpoint.
   FrontdoorEndpointArgs({
-    required pulumi.Output<String> cdnFrontdoorProfileId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cdnFrontdoorProfileId = pulumi.Input.asInput<String>(cdnFrontdoorProfileId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.cdnFrontdoorProfileId,
+    this.enabled,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class FrontdoorEndpointArgs {
 
   factory FrontdoorEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorEndpointArgs(
-      cdnFrontdoorProfileId: pulumi.Output.create<String>(map['cdnFrontdoorProfileId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

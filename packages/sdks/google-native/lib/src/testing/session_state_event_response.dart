@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A message encapsulating a series of Session states and the time that the DeviceSession first entered those states.
 class SessionStateEventResponse {
   /// The time that the session_state first encountered that state.
-  final String eventTime;
+  final pulumi.Input<String> eventTime;
   /// The session_state tracked by this event
-  final String sessionState;
+  final pulumi.Input<String> sessionState;
   /// A human-readable message to explain the state.
-  final String stateMessage;
+  final pulumi.Input<String> stateMessage;
 
   /// Creates a new [SessionStateEventResponse].
   /// [eventTime] The time that the session_state first encountered that state.
@@ -30,9 +31,9 @@ class SessionStateEventResponse {
 
   factory SessionStateEventResponse.fromMap(Map<String, dynamic> map) {
     return SessionStateEventResponse(
-      eventTime: map['eventTime'] as String,
-      sessionState: map['sessionState'] as String,
-      stateMessage: map['stateMessage'] as String,
+      eventTime: (map['eventTime'] as String).input(),
+      sessionState: (map['sessionState'] as String).input(),
+      stateMessage: (map['stateMessage'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceSpecificationsSpecification {
   /// CPU Size, Specifications for Micronucleus.
-  final int cpu;
+  final pulumi.Input<int> cpu;
   /// Whether the instance is available. The value description is as follows:
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// The ID of the Instance Specification.
-  final String id;
+  final pulumi.Input<String> id;
   /// The first ID of the resource.
-  final String instanceSpecificationId;
+  final pulumi.Input<String> instanceSpecificationId;
   /// The Memory specifications for the MB.
-  final int memory;
+  final pulumi.Input<int> memory;
   /// The specification configuration name.
-  final String specInfo;
+  final pulumi.Input<String> specInfo;
   /// The specification configuration version.
-  final int version;
+  final pulumi.Input<int> version;
 
   /// Creates a new [GetInstanceSpecificationsSpecification].
   /// [cpu] CPU Size, Specifications for Micronucleus.
@@ -49,13 +50,13 @@ class GetInstanceSpecificationsSpecification {
 
   factory GetInstanceSpecificationsSpecification.fromMap(Map<String, dynamic> map) {
     return GetInstanceSpecificationsSpecification(
-      cpu: map['cpu'] as int,
-      enable: map['enable'] as bool,
-      id: map['id'] as String,
-      instanceSpecificationId: map['instanceSpecificationId'] as String,
-      memory: map['memory'] as int,
-      specInfo: map['specInfo'] as String,
-      version: map['version'] as int,
+      cpu: (map['cpu'] as int).input(),
+      enable: (map['enable'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instanceSpecificationId: (map['instanceSpecificationId'] as String).input(),
+      memory: (map['memory'] as int).input(),
+      specInfo: (map['specInfo'] as String).input(),
+      version: (map['version'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterfaceVpcIpv6AssignedSlaac {
   /// The assigned IPv4 address.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The IPv6 network range in CIDR notation.
-  final String? range;
+  final pulumi.Input<String>? range;
 
   /// Creates a new [InterfaceVpcIpv6AssignedSlaac].
   /// [address] The assigned IPv4 address.
@@ -24,8 +25,8 @@ class InterfaceVpcIpv6AssignedSlaac {
 
   factory InterfaceVpcIpv6AssignedSlaac.fromMap(Map<String, dynamic> map) {
     return InterfaceVpcIpv6AssignedSlaac(
-      address: map['address'] == null ? null : map['address'] as String,
-      range: map['range'] == null ? null : map['range'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      range: map['range'] == null ? null : (map['range'] as String).input(),
     );
   }
 }

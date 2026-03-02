@@ -24,11 +24,9 @@ class IAMPolicyArgs {
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
   /// [project] The project id of the target project. This is not
   IAMPolicyArgs({
-    required pulumi.Output<String> policyData,
-    required pulumi.Output<String> project,
-  }) :
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asInput<String>(project);
+    required this.policyData,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,8 +37,8 @@ class IAMPolicyArgs {
 
   factory IAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return IAMPolicyArgs(
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      policyData: (map['policyData'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppHostingTrafficCurrentSplit {
   /// The build that traffic is being routed to.
-  final String? build;
+  final pulumi.Input<String>? build;
   /// The percentage of traffic to send to the build. Currently must be 100 or 0.
-  final int? percent;
+  final pulumi.Input<int>? percent;
 
   /// Creates a new [AppHostingTrafficCurrentSplit].
   /// [build] The build that traffic is being routed to.
@@ -24,8 +25,8 @@ class AppHostingTrafficCurrentSplit {
 
   factory AppHostingTrafficCurrentSplit.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficCurrentSplit(
-      build: map['build'] == null ? null : map['build'] as String,
-      percent: map['percent'] == null ? null : map['percent'] as int,
+      build: map['build'] == null ? null : (map['build'] as String).input(),
+      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
     );
   }
 }

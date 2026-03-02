@@ -24,17 +24,12 @@ class WebAppCustomizationState {
   /// [title] Title of the web app. Must be between 1 and 100 characters in length (an empty string is not allowed). To remove the title, omit this argument from your configuration.
   /// [webAppId] The identifier of the web app to be customized.
   WebAppCustomizationState({
-    pulumi.Output<String>? faviconFile,
-    pulumi.Output<String>? logoFile,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? title,
-    pulumi.Output<String>? webAppId,
-  }) :
-      faviconFile = pulumi.Input.asOptionalInput<String>(faviconFile),
-      logoFile = pulumi.Input.asOptionalInput<String>(logoFile),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      title = pulumi.Input.asOptionalInput<String>(title),
-      webAppId = pulumi.Input.asOptionalInput<String>(webAppId);
+    this.faviconFile,
+    this.logoFile,
+    this.region,
+    this.title,
+    this.webAppId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class WebAppCustomizationState {
 
   factory WebAppCustomizationState.fromMap(Map<String, dynamic> map) {
     return WebAppCustomizationState(
-      faviconFile: map['faviconFile'] == null ? null : pulumi.Output.create<String>(map['faviconFile'] as String),
-      logoFile: map['logoFile'] == null ? null : pulumi.Output.create<String>(map['logoFile'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
-      webAppId: map['webAppId'] == null ? null : pulumi.Output.create<String>(map['webAppId'] as String),
+      faviconFile: map['faviconFile'] == null ? null : (map['faviconFile'] as String).input(),
+      logoFile: map['logoFile'] == null ? null : (map['logoFile'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      webAppId: map['webAppId'] == null ? null : (map['webAppId'] as String).input(),
     );
   }
 }

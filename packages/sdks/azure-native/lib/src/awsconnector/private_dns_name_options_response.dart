@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hostname_type_enum_value.dart';
 
 /// Definition of PrivateDnsNameOptionsResponse
 class PrivateDnsNameOptionsResponse {
   /// <p>Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.</p>
-  final bool? enableResourceNameDnsAAAARecord;
+  final pulumi.Input<bool>? enableResourceNameDnsAAAARecord;
   /// <p>Indicates whether to respond to DNS queries for instance hostnames with DNS A records.</p>
-  final bool? enableResourceNameDnsARecord;
+  final pulumi.Input<bool>? enableResourceNameDnsARecord;
   /// <p>The type of hostname to assign to an instance.</p>
-  final HostnameTypeEnumValue? hostnameType;
+  final pulumi.Input<HostnameTypeEnumValue>? hostnameType;
 
   /// Creates a new [PrivateDnsNameOptionsResponse].
   /// [enableResourceNameDnsAAAARecord] <p>Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.</p>
@@ -25,15 +26,15 @@ class PrivateDnsNameOptionsResponse {
     return <String, dynamic>{
       'enableResourceNameDnsAAAARecord': ?enableResourceNameDnsAAAARecord,
       'enableResourceNameDnsARecord': ?enableResourceNameDnsARecord,
-      'hostnameType': ?hostnameType == null ? null : hostnameType!.toMap(),
+      'hostnameType': ?pulumi.Input.mapOptionalInputValue<HostnameTypeEnumValue, Map<String, dynamic>>(hostnameType, (value) => value.toMap()),
     };
   }
 
   factory PrivateDnsNameOptionsResponse.fromMap(Map<String, dynamic> map) {
     return PrivateDnsNameOptionsResponse(
-      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : map['enableResourceNameDnsAAAARecord'] as bool,
-      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : map['enableResourceNameDnsARecord'] as bool,
-      hostnameType: map['hostnameType'] == null ? null : HostnameTypeEnumValue.fromMap((map['hostnameType'] as Map).cast<String, dynamic>()),
+      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : (map['enableResourceNameDnsAAAARecord'] as bool).input(),
+      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : (map['enableResourceNameDnsARecord'] as bool).input(),
+      hostnameType: map['hostnameType'] == null ? null : (HostnameTypeEnumValue.fromMap((map['hostnameType'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

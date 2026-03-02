@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Performance data class.
 class PerformanceData {
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
-  final String? percentile;
+  final pulumi.Input<String>? percentile;
   /// Gets or sets the end time to consider performance data for assessment.
-  final String? perfDataEndTime;
+  final pulumi.Input<String>? perfDataEndTime;
   /// Gets or sets the start time to consider performance data for assessment.
-  final String? perfDataStartTime;
+  final pulumi.Input<String>? perfDataStartTime;
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
-  final String? timeRange;
+  final pulumi.Input<String>? timeRange;
 
   /// Creates a new [PerformanceData].
   /// [percentile] Percentile of the utilization data values to be considered while assessing
@@ -37,10 +38,10 @@ class PerformanceData {
 
   factory PerformanceData.fromMap(Map<String, dynamic> map) {
     return PerformanceData(
-      percentile: map['percentile'] == null ? null : map['percentile'] as String,
-      perfDataEndTime: map['perfDataEndTime'] == null ? null : map['perfDataEndTime'] as String,
-      perfDataStartTime: map['perfDataStartTime'] == null ? null : map['perfDataStartTime'] as String,
-      timeRange: map['timeRange'] == null ? null : map['timeRange'] as String,
+      percentile: map['percentile'] == null ? null : (map['percentile'] as String).input(),
+      perfDataEndTime: map['perfDataEndTime'] == null ? null : (map['perfDataEndTime'] as String).input(),
+      perfDataStartTime: map['perfDataStartTime'] == null ? null : (map['perfDataStartTime'] as String).input(),
+      timeRange: map['timeRange'] == null ? null : (map['timeRange'] as String).input(),
     );
   }
 }

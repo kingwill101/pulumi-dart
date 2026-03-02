@@ -42,29 +42,18 @@ class EvaluationArgs {
   /// [ruleNames] the name of the rule
   /// [schedule] crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
   EvaluationArgs({
-    pulumi.Output<String>? customRulesBucket,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> evaluationId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<ResourceFilter>? resourceFilter,
-    pulumi.Output<List<String>>? ruleNames,
-    pulumi.Output<String>? schedule,
-  }) :
-      customRulesBucket = pulumi.Input.asOptionalInput<String>(customRulesBucket),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      evaluationId = pulumi.Input.asInput<String>(evaluationId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      resourceFilter = pulumi.Input.asOptionalInput<ResourceFilter>(resourceFilter),
-      ruleNames = pulumi.Input.asOptionalInput<List<String>>(ruleNames),
-      schedule = pulumi.Input.asOptionalInput<String>(schedule);
+    this.customRulesBucket,
+    this.description,
+    required this.evaluationId,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    this.resourceFilter,
+    this.ruleNames,
+    this.schedule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class EvaluationArgs {
 
   factory EvaluationArgs.fromMap(Map<String, dynamic> map) {
     return EvaluationArgs(
-      customRulesBucket: map['customRulesBucket'] == null ? null : pulumi.Output.create<String>(map['customRulesBucket'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      evaluationId: pulumi.Output.create<String>(map['evaluationId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      resourceFilter: map['resourceFilter'] == null ? null : pulumi.Output.create<ResourceFilter>(ResourceFilter.fromMap((map['resourceFilter'] as Map).cast<String, dynamic>())),
-      ruleNames: map['ruleNames'] == null ? null : pulumi.Output.create<List<String>>((map['ruleNames'] as List).cast<String>()),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<String>(map['schedule'] as String),
+      customRulesBucket: map['customRulesBucket'] == null ? null : (map['customRulesBucket'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      evaluationId: (map['evaluationId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      resourceFilter: map['resourceFilter'] == null ? null : (ResourceFilter.fromMap((map['resourceFilter'] as Map).cast<String, dynamic>())).input(),
+      ruleNames: map['ruleNames'] == null ? null : ((map['ruleNames'] as List).cast<String>()).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
     );
   }
 }

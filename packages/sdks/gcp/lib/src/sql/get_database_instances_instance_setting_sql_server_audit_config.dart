@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstancesInstanceSettingSqlServerAuditConfig {
   /// The name of the destination bucket (e.g., gs://mybucket).
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
-  final String retentionInterval;
+  final pulumi.Input<String> retentionInterval;
   /// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final String uploadInterval;
+  final pulumi.Input<String> uploadInterval;
 
   /// Creates a new [GetDatabaseInstancesInstanceSettingSqlServerAuditConfig].
   /// [bucket] The name of the destination bucket (e.g., gs://mybucket).
@@ -29,9 +30,9 @@ class GetDatabaseInstancesInstanceSettingSqlServerAuditConfig {
 
   factory GetDatabaseInstancesInstanceSettingSqlServerAuditConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingSqlServerAuditConfig(
-      bucket: map['bucket'] as String,
-      retentionInterval: map['retentionInterval'] as String,
-      uploadInterval: map['uploadInterval'] as String,
+      bucket: (map['bucket'] as String).input(),
+      retentionInterval: (map['retentionInterval'] as String).input(),
+      uploadInterval: (map['uploadInterval'] as String).input(),
     );
   }
 }

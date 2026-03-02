@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTablesTable {
   /// The table name.
-  final String objectName;
+  final pulumi.Input<String> objectName;
   /// The parent schema.
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
   /// The table type as defined in ``information_schema.tables``.
-  final String tableType;
+  final pulumi.Input<String> tableType;
 
   /// Creates a new [GetTablesTable].
   /// [objectName] The table name.
@@ -29,9 +30,9 @@ class GetTablesTable {
 
   factory GetTablesTable.fromMap(Map<String, dynamic> map) {
     return GetTablesTable(
-      objectName: map['objectName'] as String,
-      schemaName: map['schemaName'] as String,
-      tableType: map['tableType'] as String,
+      objectName: (map['objectName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      tableType: (map['tableType'] as String).input(),
     );
   }
 }

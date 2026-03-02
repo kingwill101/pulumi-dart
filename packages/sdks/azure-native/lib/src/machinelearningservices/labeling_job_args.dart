@@ -23,15 +23,11 @@ class LabelingJobArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   LabelingJobArgs({
-    pulumi.Output<String>? id,
-    required pulumi.Output<LabelingJobMachinelearningservices> labelingJobProperties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      labelingJobProperties = pulumi.Input.asInput<LabelingJobMachinelearningservices>(labelingJobProperties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.id,
+    required this.labelingJobProperties,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class LabelingJobArgs {
 
   factory LabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return LabelingJobArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      labelingJobProperties: pulumi.Output.create<LabelingJobMachinelearningservices>(map['labelingJobProperties'] as LabelingJobMachinelearningservices),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      labelingJobProperties: (map['labelingJobProperties'] as LabelingJobMachinelearningservices).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

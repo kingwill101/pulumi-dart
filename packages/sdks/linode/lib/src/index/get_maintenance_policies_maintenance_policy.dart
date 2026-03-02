@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMaintenancePoliciesMaintenancePolicy {
   /// Description of this policy
-  final String description;
+  final pulumi.Input<String> description;
   /// Whether this is the default policy for the account.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// The label for this policy.
-  final String label;
+  final pulumi.Input<String> label;
   /// The notification lead time in seconds.
-  final int notificationPeriodSec;
+  final pulumi.Input<int> notificationPeriodSec;
   /// Unique identifier for this policy
-  final String slug;
+  final pulumi.Input<String> slug;
   /// The type of action taken during maintenance.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetMaintenancePoliciesMaintenancePolicy].
   /// [description] Description of this policy
@@ -44,12 +45,12 @@ class GetMaintenancePoliciesMaintenancePolicy {
 
   factory GetMaintenancePoliciesMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GetMaintenancePoliciesMaintenancePolicy(
-      description: map['description'] as String,
-      isDefault: map['isDefault'] as bool,
-      label: map['label'] as String,
-      notificationPeriodSec: map['notificationPeriodSec'] as int,
-      slug: map['slug'] as String,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      label: (map['label'] as String).input(),
+      notificationPeriodSec: (map['notificationPeriodSec'] as int).input(),
+      slug: (map['slug'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

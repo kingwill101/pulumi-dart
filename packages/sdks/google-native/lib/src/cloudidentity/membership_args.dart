@@ -20,13 +20,10 @@ class MembershipArgs {
   /// [preferredMemberKey] Immutable. The `EntityKey` of the member.
   /// [roles] The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
   MembershipArgs({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<EntityKey> preferredMemberKey,
-    pulumi.Output<List<MembershipRole>>? roles,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      preferredMemberKey = pulumi.Input.asInput<EntityKey>(preferredMemberKey),
-      roles = pulumi.Input.asOptionalInput<List<MembershipRole>>(roles);
+    required this.groupId,
+    required this.preferredMemberKey,
+    this.roles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class MembershipArgs {
 
   factory MembershipArgs.fromMap(Map<String, dynamic> map) {
     return MembershipArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      preferredMemberKey: pulumi.Output.create<EntityKey>(EntityKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<MembershipRole>>(pulumi.Input.decodeList<MembershipRole>(map['roles'], (value) => MembershipRole.fromMap((value as Map).cast<String, dynamic>()))),
+      groupId: (map['groupId'] as String).input(),
+      preferredMemberKey: (EntityKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<MembershipRole>(map['roles'], (value) => MembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

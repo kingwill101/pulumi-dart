@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_channel_v1_value.dart';
 
 /// Definition for extended entitlement parameters.
 class GoogleCloudChannelV1Parameter {
   /// Name of the parameter.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Value of the parameter.
-  final GoogleCloudChannelV1Value? value;
+  final pulumi.Input<GoogleCloudChannelV1Value>? value;
 
   /// Creates a new [GoogleCloudChannelV1Parameter].
   /// [name] Name of the parameter.
@@ -20,14 +21,14 @@ class GoogleCloudChannelV1Parameter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'value': ?value == null ? null : value!.toMap(),
+      'value': ?pulumi.Input.mapOptionalInputValue<GoogleCloudChannelV1Value, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudChannelV1Parameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1Parameter(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : GoogleCloudChannelV1Value.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (GoogleCloudChannelV1Value.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

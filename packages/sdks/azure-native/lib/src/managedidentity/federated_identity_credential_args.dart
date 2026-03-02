@@ -28,19 +28,13 @@ class FederatedIdentityCredentialArgs {
   /// [resourceName] The name of the identity resource.
   /// [subject] The identifier of the external identity.
   FederatedIdentityCredentialArgs({
-    required pulumi.Output<List<String>> audiences,
-    pulumi.Output<String>? federatedIdentityCredentialResourceName,
-    required pulumi.Output<String> issuer,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> subject,
-  }) :
-      audiences = pulumi.Input.asInput<List<String>>(audiences),
-      federatedIdentityCredentialResourceName = pulumi.Input.asOptionalInput<String>(federatedIdentityCredentialResourceName),
-      issuer = pulumi.Input.asInput<String>(issuer),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      subject = pulumi.Input.asInput<String>(subject);
+    required this.audiences,
+    this.federatedIdentityCredentialResourceName,
+    required this.issuer,
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.subject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class FederatedIdentityCredentialArgs {
 
   factory FederatedIdentityCredentialArgs.fromMap(Map<String, dynamic> map) {
     return FederatedIdentityCredentialArgs(
-      audiences: pulumi.Output.create<List<String>>((map['audiences'] as List).cast<String>()),
-      federatedIdentityCredentialResourceName: map['federatedIdentityCredentialResourceName'] == null ? null : pulumi.Output.create<String>(map['federatedIdentityCredentialResourceName'] as String),
-      issuer: pulumi.Output.create<String>(map['issuer'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      subject: pulumi.Output.create<String>(map['subject'] as String),
+      audiences: ((map['audiences'] as List).cast<String>()).input(),
+      federatedIdentityCredentialResourceName: map['federatedIdentityCredentialResourceName'] == null ? null : (map['federatedIdentityCredentialResourceName'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      subject: (map['subject'] as String).input(),
     );
   }
 }

@@ -1,41 +1,42 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFileSystemsSystem {
   /// (Optional, Available in v1.140.0+) The capacity of the file system.
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// Time of creation.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Description of the FileSystem.
-  final String description;
+  final pulumi.Input<String> description;
   /// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
   /// * Valid values:
-  final int encryptType;
+  final pulumi.Input<int> encryptType;
   /// The type of the file system.
   /// Valid values:
   /// `standard` (Default),
   /// `extreme`.
-  final String fileSystemType;
+  final pulumi.Input<String> fileSystemType;
   /// ID of the FileSystem.
-  final String id;
+  final pulumi.Input<String> id;
   /// (Optional, Available in v1.140.0+) The id of the KMS key.
-  final String kmsKeyId;
+  final pulumi.Input<String> kmsKeyId;
   /// MeteredSize of the FileSystem.
-  final int meteredSize;
+  final pulumi.Input<int> meteredSize;
   /// The protocol type of the file system.
   /// Valid values:
   /// `NFS`,
   /// `SMB` (Available when the `file_system_type` is `standard`).
-  final String protocolType;
+  final pulumi.Input<String> protocolType;
   /// ID of the region where the FileSystem is located.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The storage type of the file system.
   /// * Valid values:
   /// * `Performance` (Available when the `file_system_type` is `standard`)
   /// * `Capacity` (Available when the `file_system_type` is `standard`)
-  final String storageType;
+  final pulumi.Input<String> storageType;
   /// (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetFileSystemsSystem].
   /// [capacity] (Optional, Available in v1.140.0+) The capacity of the file system.
@@ -84,18 +85,18 @@ class GetFileSystemsSystem {
 
   factory GetFileSystemsSystem.fromMap(Map<String, dynamic> map) {
     return GetFileSystemsSystem(
-      capacity: map['capacity'] as int,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      encryptType: map['encryptType'] as int,
-      fileSystemType: map['fileSystemType'] as String,
-      id: map['id'] as String,
-      kmsKeyId: map['kmsKeyId'] as String,
-      meteredSize: map['meteredSize'] as int,
-      protocolType: map['protocolType'] as String,
-      regionId: map['regionId'] as String,
-      storageType: map['storageType'] as String,
-      zoneId: map['zoneId'] as String,
+      capacity: (map['capacity'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      encryptType: (map['encryptType'] as int).input(),
+      fileSystemType: (map['fileSystemType'] as String).input(),
+      id: (map['id'] as String).input(),
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
+      meteredSize: (map['meteredSize'] as int).input(),
+      protocolType: (map['protocolType'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      storageType: (map['storageType'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

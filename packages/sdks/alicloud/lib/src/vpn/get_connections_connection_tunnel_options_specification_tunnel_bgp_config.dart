@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig {
-  final String bgpStatus;
+  final pulumi.Input<String> bgpStatus;
   /// Local asn.
-  final String localAsn;
+  final pulumi.Input<String> localAsn;
   /// Local bgp IP.
-  final String localBgpIp;
+  final pulumi.Input<String> localBgpIp;
   /// The counterpart autonomous system number.
-  final String peerAsn;
+  final pulumi.Input<String> peerAsn;
   /// The BGP address on the other side.
-  final String peerBgpIp;
+  final pulumi.Input<String> peerBgpIp;
   /// BGP Tunnel CIDR.
-  final String tunnelCidr;
+  final pulumi.Input<String> tunnelCidr;
 
   /// Creates a new [GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig].
   /// [bgpStatus] Required.
@@ -43,12 +44,12 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig {
 
   factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig(
-      bgpStatus: map['bgpStatus'] as String,
-      localAsn: map['localAsn'] as String,
-      localBgpIp: map['localBgpIp'] as String,
-      peerAsn: map['peerAsn'] as String,
-      peerBgpIp: map['peerBgpIp'] as String,
-      tunnelCidr: map['tunnelCidr'] as String,
+      bgpStatus: (map['bgpStatus'] as String).input(),
+      localAsn: (map['localAsn'] as String).input(),
+      localBgpIp: (map['localBgpIp'] as String).input(),
+      peerAsn: (map['peerAsn'] as String).input(),
+      peerBgpIp: (map['peerBgpIp'] as String).input(),
+      tunnelCidr: (map['tunnelCidr'] as String).input(),
     );
   }
 }

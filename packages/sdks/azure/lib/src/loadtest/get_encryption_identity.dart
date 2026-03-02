@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEncryptionIdentity {
   /// The User Assigned Identity ID that is assigned to this Load Test Encryption.
-  final String identityId;
+  final pulumi.Input<String> identityId;
   /// Type of Managed Service Identity that is assigned to this Load Test Encryption.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetEncryptionIdentity].
   /// [identityId] The User Assigned Identity ID that is assigned to this Load Test Encryption.
@@ -24,8 +25,8 @@ class GetEncryptionIdentity {
 
   factory GetEncryptionIdentity.fromMap(Map<String, dynamic> map) {
     return GetEncryptionIdentity(
-      identityId: map['identityId'] as String,
-      type: map['type'] as String,
+      identityId: (map['identityId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

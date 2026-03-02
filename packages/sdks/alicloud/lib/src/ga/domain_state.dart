@@ -16,13 +16,10 @@ class DomainState {
   /// [domain] The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
   /// [status] The status of the resource
   DomainState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? status,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.acceleratorId,
+    this.domain,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetMachineExtensionArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualMachineName] The name of the machine where the extension should be created or updated.
   GetMachineExtensionArgs({
-    required pulumi.Output<String> extensionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      extensionName = pulumi.Input.asInput<String>(extensionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    required this.extensionName,
+    required this.resourceGroupName,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMachineExtensionArgs {
 
   factory GetMachineExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineExtensionArgs(
-      extensionName: pulumi.Output.create<String>(map['extensionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      extensionName: (map['extensionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

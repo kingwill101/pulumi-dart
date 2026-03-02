@@ -6,7 +6,7 @@ import 'location_profile.dart';
 /// Represents the configuration for additional locations where Fleet resources may be deployed.
 class AdditionalLocationsProfile {
   /// The list of location profiles.
-  final List<LocationProfile> locationProfiles;
+  final pulumi.Input<List<LocationProfile>> locationProfiles;
 
   /// Creates a new [AdditionalLocationsProfile].
   /// [locationProfiles] The list of location profiles.
@@ -16,13 +16,13 @@ class AdditionalLocationsProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'locationProfiles': pulumi.Input.encodeList<LocationProfile, Map<String, dynamic>>(locationProfiles, (value) => value.toMap()),
+      'locationProfiles': pulumi.Input.mapInputValue<List<LocationProfile>, List<Map<String, dynamic>>>(locationProfiles, (value) => pulumi.Input.encodeList<LocationProfile, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AdditionalLocationsProfile.fromMap(Map<String, dynamic> map) {
     return AdditionalLocationsProfile(
-      locationProfiles: pulumi.Input.decodeList<LocationProfile>(map['locationProfiles'], (value) => LocationProfile.fromMap((value as Map).cast<String, dynamic>())),
+      locationProfiles: (pulumi.Input.decodeList<LocationProfile>(map['locationProfiles'], (value) => LocationProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

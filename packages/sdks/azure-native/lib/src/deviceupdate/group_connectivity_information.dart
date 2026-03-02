@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Group connectivity details.
 class GroupConnectivityInformation {
   /// List of customer visible FQDNs.
-  final List<String>? customerVisibleFqdns;
+  final pulumi.Input<List<String>>? customerVisibleFqdns;
   /// PrivateLinkService ARM region.
-  final String? privateLinkServiceArmRegion;
+  final pulumi.Input<String>? privateLinkServiceArmRegion;
   /// Redirect map ID.
-  final String? redirectMapId;
+  final pulumi.Input<String>? redirectMapId;
 
   /// Creates a new [GroupConnectivityInformation].
   /// [customerVisibleFqdns] List of customer visible FQDNs.
@@ -30,9 +31,9 @@ class GroupConnectivityInformation {
 
   factory GroupConnectivityInformation.fromMap(Map<String, dynamic> map) {
     return GroupConnectivityInformation(
-      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : (map['customerVisibleFqdns'] as List).cast<String>(),
-      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : map['privateLinkServiceArmRegion'] as String,
-      redirectMapId: map['redirectMapId'] == null ? null : map['redirectMapId'] as String,
+      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : ((map['customerVisibleFqdns'] as List).cast<String>()).input(),
+      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : (map['privateLinkServiceArmRegion'] as String).input(),
+      redirectMapId: map['redirectMapId'] == null ? null : (map['redirectMapId'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterRegionTrafficQosPoliciesPolicy {
   /// The ID of the Inter Region Traffic Qos Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The description of the Inter Region Traffic Qos Policy.
-  final String interRegionTrafficQosPolicyDescription;
+  final pulumi.Input<String> interRegionTrafficQosPolicyDescription;
   /// The ID of the Inter Region Traffic Qos Policy.
-  final String interRegionTrafficQosPolicyId;
+  final pulumi.Input<String> interRegionTrafficQosPolicyId;
   /// The name of the Inter Region Traffic Qos Policy.
-  final String interRegionTrafficQosPolicyName;
+  final pulumi.Input<String> interRegionTrafficQosPolicyName;
   /// The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the inter-region connection.
-  final String transitRouterAttachmentId;
+  final pulumi.Input<String> transitRouterAttachmentId;
   /// The ID of the transit router.
-  final String transitRouterId;
+  final pulumi.Input<String> transitRouterId;
 
   /// Creates a new [GetInterRegionTrafficQosPoliciesPolicy].
   /// [id] The ID of the Inter Region Traffic Qos Policy.
@@ -49,13 +50,13 @@ class GetInterRegionTrafficQosPoliciesPolicy {
 
   factory GetInterRegionTrafficQosPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetInterRegionTrafficQosPoliciesPolicy(
-      id: map['id'] as String,
-      interRegionTrafficQosPolicyDescription: map['interRegionTrafficQosPolicyDescription'] as String,
-      interRegionTrafficQosPolicyId: map['interRegionTrafficQosPolicyId'] as String,
-      interRegionTrafficQosPolicyName: map['interRegionTrafficQosPolicyName'] as String,
-      status: map['status'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
-      transitRouterId: map['transitRouterId'] as String,
+      id: (map['id'] as String).input(),
+      interRegionTrafficQosPolicyDescription: (map['interRegionTrafficQosPolicyDescription'] as String).input(),
+      interRegionTrafficQosPolicyId: (map['interRegionTrafficQosPolicyId'] as String).input(),
+      interRegionTrafficQosPolicyName: (map['interRegionTrafficQosPolicyName'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

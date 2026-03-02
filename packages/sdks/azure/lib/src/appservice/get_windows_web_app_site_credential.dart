@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteCredential {
   /// The name of this Windows Web App.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Site Credentials Password used for publishing.
-  final String password;
+  final pulumi.Input<String> password;
 
   /// Creates a new [GetWindowsWebAppSiteCredential].
   /// [name] The name of this Windows Web App.
@@ -24,8 +25,8 @@ class GetWindowsWebAppSiteCredential {
 
   factory GetWindowsWebAppSiteCredential.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteCredential(
-      name: map['name'] as String,
-      password: map['password'] as String,
+      name: (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
     );
   }
 }

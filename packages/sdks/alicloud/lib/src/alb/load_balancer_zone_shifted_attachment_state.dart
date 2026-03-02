@@ -19,15 +19,11 @@ class LoadBalancerZoneShiftedAttachmentState {
   /// [vswitchId] The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
   /// [zoneId] The ID of the zone.
   LoadBalancerZoneShiftedAttachmentState({
-    pulumi.Output<String>? loadBalancerId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      loadBalancerId = pulumi.Input.asOptionalInput<String>(loadBalancerId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.loadBalancerId,
+    this.status,
+    this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class LoadBalancerZoneShiftedAttachmentState {
 
   factory LoadBalancerZoneShiftedAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneShiftedAttachmentState(
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

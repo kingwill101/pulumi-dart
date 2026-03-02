@@ -35,25 +35,16 @@ class AScriptState {
   /// [scriptContent] AScript script content.
   /// [status] Script status
   AScriptState({
-    pulumi.Output<String>? ascriptName,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? extAttributeEnabled,
-    pulumi.Output<List<AScriptExtAttribute>>? extAttributes,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? position,
-    pulumi.Output<String>? scriptContent,
-    pulumi.Output<String>? status,
-  }) :
-      ascriptName = pulumi.Input.asOptionalInput<String>(ascriptName),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      extAttributeEnabled = pulumi.Input.asOptionalInput<bool>(extAttributeEnabled),
-      extAttributes = pulumi.Input.asOptionalInput<List<AScriptExtAttribute>>(extAttributes),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      position = pulumi.Input.asOptionalInput<String>(position),
-      scriptContent = pulumi.Input.asOptionalInput<String>(scriptContent),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ascriptName,
+    this.dryRun,
+    this.enabled,
+    this.extAttributeEnabled,
+    this.extAttributes,
+    this.listenerId,
+    this.position,
+    this.scriptContent,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class AScriptState {
 
   factory AScriptState.fromMap(Map<String, dynamic> map) {
     return AScriptState(
-      ascriptName: map['ascriptName'] == null ? null : pulumi.Output.create<String>(map['ascriptName'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      extAttributeEnabled: map['extAttributeEnabled'] == null ? null : pulumi.Output.create<bool>(map['extAttributeEnabled'] as bool),
-      extAttributes: map['extAttributes'] == null ? null : pulumi.Output.create<List<AScriptExtAttribute>>(pulumi.Input.decodeList<AScriptExtAttribute>(map['extAttributes'], (value) => AScriptExtAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      position: map['position'] == null ? null : pulumi.Output.create<String>(map['position'] as String),
-      scriptContent: map['scriptContent'] == null ? null : pulumi.Output.create<String>(map['scriptContent'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ascriptName: map['ascriptName'] == null ? null : (map['ascriptName'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      extAttributeEnabled: map['extAttributeEnabled'] == null ? null : (map['extAttributeEnabled'] as bool).input(),
+      extAttributes: map['extAttributes'] == null ? null : (pulumi.Input.decodeList<AScriptExtAttribute>(map['extAttributes'], (value) => AScriptExtAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      position: map['position'] == null ? null : (map['position'] as String).input(),
+      scriptContent: map['scriptContent'] == null ? null : (map['scriptContent'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

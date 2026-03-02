@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RocketMQInstanceSoftware {
   /// Upgrade time period.
-  final String? maintainTime;
+  final pulumi.Input<String>? maintainTime;
   /// Software version.
-  final String? softwareVersion;
+  final pulumi.Input<String>? softwareVersion;
   /// Upgrade method.
-  final String? upgradeMethod;
+  final pulumi.Input<String>? upgradeMethod;
 
   /// Creates a new [RocketMQInstanceSoftware].
   /// [maintainTime] Upgrade time period.
@@ -29,9 +30,9 @@ class RocketMQInstanceSoftware {
 
   factory RocketMQInstanceSoftware.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceSoftware(
-      maintainTime: map['maintainTime'] == null ? null : map['maintainTime'] as String,
-      softwareVersion: map['softwareVersion'] == null ? null : map['softwareVersion'] as String,
-      upgradeMethod: map['upgradeMethod'] == null ? null : map['upgradeMethod'] as String,
+      maintainTime: map['maintainTime'] == null ? null : (map['maintainTime'] as String).input(),
+      softwareVersion: map['softwareVersion'] == null ? null : (map['softwareVersion'] as String).input(),
+      upgradeMethod: map['upgradeMethod'] == null ? null : (map['upgradeMethod'] as String).input(),
     );
   }
 }

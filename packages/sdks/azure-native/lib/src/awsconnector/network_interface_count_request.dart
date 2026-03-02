@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of NetworkInterfaceCountRequest
 class NetworkInterfaceCountRequest {
   /// The maximum number of network interfaces.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// The minimum number of network interfaces.
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [NetworkInterfaceCountRequest].
   /// [max] The maximum number of network interfaces.
@@ -25,8 +26,8 @@ class NetworkInterfaceCountRequest {
 
   factory NetworkInterfaceCountRequest.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceCountRequest(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

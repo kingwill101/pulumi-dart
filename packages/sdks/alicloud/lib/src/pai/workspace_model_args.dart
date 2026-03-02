@@ -49,31 +49,19 @@ class WorkspaceModelArgs {
   /// [task] The task of the model. Describes the specific problem that the model solves. Example: text-classification.
   /// [workspaceId] The ID of the workspace.
   WorkspaceModelArgs({
-    pulumi.Output<String>? accessibility,
-    pulumi.Output<String>? domain,
-    pulumi.Output<Map<String, String>>? extraInfo,
-    pulumi.Output<List<WorkspaceModelLabel>>? labels,
-    pulumi.Output<String>? modelDescription,
-    pulumi.Output<String>? modelDoc,
-    required pulumi.Output<String> modelName,
-    pulumi.Output<String>? modelType,
-    pulumi.Output<int>? orderNumber,
-    pulumi.Output<String>? origin,
-    pulumi.Output<String>? task,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      accessibility = pulumi.Input.asOptionalInput<String>(accessibility),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      extraInfo = pulumi.Input.asOptionalInput<Map<String, String>>(extraInfo),
-      labels = pulumi.Input.asOptionalInput<List<WorkspaceModelLabel>>(labels),
-      modelDescription = pulumi.Input.asOptionalInput<String>(modelDescription),
-      modelDoc = pulumi.Input.asOptionalInput<String>(modelDoc),
-      modelName = pulumi.Input.asInput<String>(modelName),
-      modelType = pulumi.Input.asOptionalInput<String>(modelType),
-      orderNumber = pulumi.Input.asOptionalInput<int>(orderNumber),
-      origin = pulumi.Input.asOptionalInput<String>(origin),
-      task = pulumi.Input.asOptionalInput<String>(task),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.accessibility,
+    this.domain,
+    this.extraInfo,
+    this.labels,
+    this.modelDescription,
+    this.modelDoc,
+    required this.modelName,
+    this.modelType,
+    this.orderNumber,
+    this.origin,
+    this.task,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class WorkspaceModelArgs {
 
   factory WorkspaceModelArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceModelArgs(
-      accessibility: map['accessibility'] == null ? null : pulumi.Output.create<String>(map['accessibility'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      extraInfo: map['extraInfo'] == null ? null : pulumi.Output.create<Map<String, String>>((map['extraInfo'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<WorkspaceModelLabel>>(pulumi.Input.decodeList<WorkspaceModelLabel>(map['labels'], (value) => WorkspaceModelLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      modelDescription: map['modelDescription'] == null ? null : pulumi.Output.create<String>(map['modelDescription'] as String),
-      modelDoc: map['modelDoc'] == null ? null : pulumi.Output.create<String>(map['modelDoc'] as String),
-      modelName: pulumi.Output.create<String>(map['modelName'] as String),
-      modelType: map['modelType'] == null ? null : pulumi.Output.create<String>(map['modelType'] as String),
-      orderNumber: map['orderNumber'] == null ? null : pulumi.Output.create<int>(map['orderNumber'] as int),
-      origin: map['origin'] == null ? null : pulumi.Output.create<String>(map['origin'] as String),
-      task: map['task'] == null ? null : pulumi.Output.create<String>(map['task'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      extraInfo: map['extraInfo'] == null ? null : ((map['extraInfo'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceModelLabel>(map['labels'], (value) => WorkspaceModelLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modelDescription: map['modelDescription'] == null ? null : (map['modelDescription'] as String).input(),
+      modelDoc: map['modelDoc'] == null ? null : (map['modelDoc'] as String).input(),
+      modelName: (map['modelName'] as String).input(),
+      modelType: map['modelType'] == null ? null : (map['modelType'] as String).input(),
+      orderNumber: map['orderNumber'] == null ? null : (map['orderNumber'] as int).input(),
+      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
+      task: map['task'] == null ? null : (map['task'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetDataCatalogEncryptionSettingsArgs {
   /// [catalogId] ID of the Data Catalog. This is typically the AWS account ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetDataCatalogEncryptionSettingsArgs({
-    required pulumi.Output<String> catalogId,
-    pulumi.Output<String>? region,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.catalogId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDataCatalogEncryptionSettingsArgs {
 
   factory GetDataCatalogEncryptionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationDestinationAuthToken {
   /// The prefix of the URL.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// Specifies the token for integrating.
-  final String token;
+  final pulumi.Input<String> token;
 
   /// Creates a new [NotificationDestinationAuthToken].
   /// [prefix] The prefix of the URL.
@@ -24,8 +25,8 @@ class NotificationDestinationAuthToken {
 
   factory NotificationDestinationAuthToken.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationAuthToken(
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      token: map['token'] as String,
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      token: (map['token'] as String).input(),
     );
   }
 }

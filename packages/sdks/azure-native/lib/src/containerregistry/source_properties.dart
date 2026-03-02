@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_info.dart';
 
 /// The properties of the source code repository.
 class SourceProperties {
   /// The branch name of the source code.
-  final String? branch;
+  final pulumi.Input<String>? branch;
   /// The full URL to the source code repository
-  final String repositoryUrl;
+  final pulumi.Input<String> repositoryUrl;
   /// The authorization properties for accessing the source code repository and to set up
   /// webhooks for notifications.
-  final AuthInfo? sourceControlAuthProperties;
+  final pulumi.Input<AuthInfo>? sourceControlAuthProperties;
   /// The type of source control service.
-  final String sourceControlType;
+  final pulumi.Input<String> sourceControlType;
 
   /// Creates a new [SourceProperties].
   /// [branch] The branch name of the source code.
@@ -30,17 +31,17 @@ class SourceProperties {
     return <String, dynamic>{
       'branch': ?branch,
       'repositoryUrl': repositoryUrl,
-      'sourceControlAuthProperties': ?sourceControlAuthProperties == null ? null : sourceControlAuthProperties!.toMap(),
+      'sourceControlAuthProperties': ?pulumi.Input.mapOptionalInputValue<AuthInfo, Map<String, dynamic>>(sourceControlAuthProperties, (value) => value.toMap()),
       'sourceControlType': sourceControlType,
     };
   }
 
   factory SourceProperties.fromMap(Map<String, dynamic> map) {
     return SourceProperties(
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      repositoryUrl: map['repositoryUrl'] as String,
-      sourceControlAuthProperties: map['sourceControlAuthProperties'] == null ? null : AuthInfo.fromMap((map['sourceControlAuthProperties'] as Map).cast<String, dynamic>()),
-      sourceControlType: map['sourceControlType'] as String,
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      repositoryUrl: (map['repositoryUrl'] as String).input(),
+      sourceControlAuthProperties: map['sourceControlAuthProperties'] == null ? null : (AuthInfo.fromMap((map['sourceControlAuthProperties'] as Map).cast<String, dynamic>())).input(),
+      sourceControlType: (map['sourceControlType'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class SigningJobArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [source] The S3 bucket that contains the object to sign. See Source below for details.
   SigningJobArgs({
-    required pulumi.Output<SigningJobDestination> destination,
-    pulumi.Output<bool>? ignoreSigningJobFailure,
-    required pulumi.Output<String> profileName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<SigningJobSource> source,
-  }) :
-      destination = pulumi.Input.asInput<SigningJobDestination>(destination),
-      ignoreSigningJobFailure = pulumi.Input.asOptionalInput<bool>(ignoreSigningJobFailure),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      source = pulumi.Input.asInput<SigningJobSource>(source);
+    required this.destination,
+    this.ignoreSigningJobFailure,
+    required this.profileName,
+    this.region,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class SigningJobArgs {
 
   factory SigningJobArgs.fromMap(Map<String, dynamic> map) {
     return SigningJobArgs(
-      destination: pulumi.Output.create<SigningJobDestination>(SigningJobDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      ignoreSigningJobFailure: map['ignoreSigningJobFailure'] == null ? null : pulumi.Output.create<bool>(map['ignoreSigningJobFailure'] as bool),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      source: pulumi.Output.create<SigningJobSource>(SigningJobSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
+      destination: (SigningJobDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      ignoreSigningJobFailure: map['ignoreSigningJobFailure'] == null ? null : (map['ignoreSigningJobFailure'] as bool).input(),
+      profileName: (map['profileName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      source: (SigningJobSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

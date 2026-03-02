@@ -7,15 +7,15 @@ import 'azure_firewall_rcaction.dart';
 /// Network rule collection resource.
 class AzureFirewallNetworkRuleCollection {
   /// The action type of a rule collection.
-  final AzureFirewallRCAction? action;
+  final pulumi.Input<AzureFirewallRCAction>? action;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Priority of the network rule collection resource.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// Collection of rules used by a network rule collection.
-  final List<AzureFirewallNetworkRule>? rules;
+  final pulumi.Input<List<AzureFirewallNetworkRule>>? rules;
 
   /// Creates a new [AzureFirewallNetworkRuleCollection].
   /// [action] The action type of a rule collection.
@@ -33,21 +33,21 @@ class AzureFirewallNetworkRuleCollection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.toMap(),
+      'action': ?pulumi.Input.mapOptionalInputValue<AzureFirewallRCAction, Map<String, dynamic>>(action, (value) => value.toMap()),
       'id': ?id,
       'name': ?name,
       'priority': ?priority,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<AzureFirewallNetworkRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<AzureFirewallNetworkRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AzureFirewallNetworkRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AzureFirewallNetworkRuleCollection.fromMap(Map<String, dynamic> map) {
     return AzureFirewallNetworkRuleCollection(
-      action: map['action'] == null ? null : AzureFirewallRCAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<AzureFirewallNetworkRule>(map['rules'], (value) => AzureFirewallNetworkRule.fromMap((value as Map).cast<String, dynamic>())),
+      action: map['action'] == null ? null : (AzureFirewallRCAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AzureFirewallNetworkRule>(map['rules'], (value) => AzureFirewallNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

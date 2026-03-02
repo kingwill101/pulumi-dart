@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeGroupTaint {
   /// The effect of the taint.
-  final String effect;
+  final pulumi.Input<String> effect;
   /// The key of the taint.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the taint.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetNodeGroupTaint].
   /// [effect] The effect of the taint.
@@ -29,9 +30,9 @@ class GetNodeGroupTaint {
 
   factory GetNodeGroupTaint.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupTaint(
-      effect: map['effect'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      effect: (map['effect'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

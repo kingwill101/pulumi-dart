@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxIntentTrainingPhrasePart {
   /// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
-  final String? parameterId;
+  final pulumi.Input<String>? parameterId;
   /// The text for this part.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [CxIntentTrainingPhrasePart].
   /// [parameterId] The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
@@ -24,8 +25,8 @@ class CxIntentTrainingPhrasePart {
 
   factory CxIntentTrainingPhrasePart.fromMap(Map<String, dynamic> map) {
     return CxIntentTrainingPhrasePart(
-      parameterId: map['parameterId'] == null ? null : map['parameterId'] as String,
-      text: map['text'] as String,
+      parameterId: map['parameterId'] == null ? null : (map['parameterId'] as String).input(),
+      text: (map['text'] as String).input(),
     );
   }
 }

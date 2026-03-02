@@ -19,15 +19,11 @@ class DefenseResourceGroupState {
   /// [instanceId] The ID of the WAF instance.
   /// [resourceLists] The names of the protected objects that are added to the protected object group.
   DefenseResourceGroupState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<List<String>>? resourceLists,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      resourceLists = pulumi.Input.asOptionalInput<List<String>>(resourceLists);
+    this.description,
+    this.groupName,
+    this.instanceId,
+    this.resourceLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DefenseResourceGroupState {
 
   factory DefenseResourceGroupState.fromMap(Map<String, dynamic> map) {
     return DefenseResourceGroupState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      resourceLists: map['resourceLists'] == null ? null : pulumi.Output.create<List<String>>((map['resourceLists'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      resourceLists: map['resourceLists'] == null ? null : ((map['resourceLists'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The JSON object that contains the properties to send health probes to origin.
 class HealthProbeParametersResponse {
   /// The number of seconds between health probes.Default is 240sec.
-  final int? probeIntervalInSeconds;
+  final pulumi.Input<int>? probeIntervalInSeconds;
   /// The path relative to the origin that is used to determine the health of the origin.
-  final String? probePath;
+  final pulumi.Input<String>? probePath;
   /// Protocol to use for health probe.
-  final String? probeProtocol;
+  final pulumi.Input<String>? probeProtocol;
   /// The type of health probe request that is made.
-  final String? probeRequestType;
+  final pulumi.Input<String>? probeRequestType;
 
   /// Creates a new [HealthProbeParametersResponse].
   /// [probeIntervalInSeconds] The number of seconds between health probes.Default is 240sec.
@@ -35,10 +36,10 @@ class HealthProbeParametersResponse {
 
   factory HealthProbeParametersResponse.fromMap(Map<String, dynamic> map) {
     return HealthProbeParametersResponse(
-      probeIntervalInSeconds: map['probeIntervalInSeconds'] == null ? null : map['probeIntervalInSeconds'] as int,
-      probePath: map['probePath'] == null ? null : map['probePath'] as String,
-      probeProtocol: map['probeProtocol'] == null ? null : map['probeProtocol'] as String,
-      probeRequestType: map['probeRequestType'] == null ? null : map['probeRequestType'] as String,
+      probeIntervalInSeconds: map['probeIntervalInSeconds'] == null ? null : (map['probeIntervalInSeconds'] as int).input(),
+      probePath: map['probePath'] == null ? null : (map['probePath'] as String).input(),
+      probeProtocol: map['probeProtocol'] == null ? null : (map['probeProtocol'] as String).input(),
+      probeRequestType: map['probeRequestType'] == null ? null : (map['probeRequestType'] as String).input(),
     );
   }
 }

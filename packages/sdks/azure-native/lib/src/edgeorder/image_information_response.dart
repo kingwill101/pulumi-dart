@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Image for the product.
 class ImageInformationResponse {
   /// Type of the image.
-  final String imageType;
+  final pulumi.Input<String> imageType;
   /// Url of the image.
-  final String imageUrl;
+  final pulumi.Input<String> imageUrl;
 
   /// Creates a new [ImageInformationResponse].
   /// [imageType] Type of the image.
@@ -25,8 +26,8 @@ class ImageInformationResponse {
 
   factory ImageInformationResponse.fromMap(Map<String, dynamic> map) {
     return ImageInformationResponse(
-      imageType: map['imageType'] as String,
-      imageUrl: map['imageUrl'] as String,
+      imageType: (map['imageType'] as String).input(),
+      imageUrl: (map['imageUrl'] as String).input(),
     );
   }
 }

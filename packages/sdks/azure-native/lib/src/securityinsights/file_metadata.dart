@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a file.
 class FileMetadata {
   /// The format of the file
-  final String? fileFormat;
+  final pulumi.Input<String>? fileFormat;
   /// The name of the file.
-  final String? fileName;
+  final pulumi.Input<String>? fileName;
   /// The size of the file.
-  final int? fileSize;
+  final pulumi.Input<int>? fileSize;
 
   /// Creates a new [FileMetadata].
   /// [fileFormat] The format of the file
@@ -30,9 +31,9 @@ class FileMetadata {
 
   factory FileMetadata.fromMap(Map<String, dynamic> map) {
     return FileMetadata(
-      fileFormat: map['fileFormat'] == null ? null : map['fileFormat'] as String,
-      fileName: map['fileName'] == null ? null : map['fileName'] as String,
-      fileSize: map['fileSize'] == null ? null : map['fileSize'] as int,
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      fileSize: map['fileSize'] == null ? null : (map['fileSize'] as int).input(),
     );
   }
 }

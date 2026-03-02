@@ -23,15 +23,11 @@ class MonitoringConfigArgs {
   /// [resourceGroupName] The resource group name.
   /// [roleName] The role name.
   MonitoringConfigArgs({
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<List<MetricConfiguration>> metricConfigurations,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleName,
-  }) :
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      metricConfigurations = pulumi.Input.asInput<List<MetricConfiguration>>(metricConfigurations),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleName = pulumi.Input.asInput<String>(roleName);
+    required this.deviceName,
+    required this.metricConfigurations,
+    required this.resourceGroupName,
+    required this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class MonitoringConfigArgs {
 
   factory MonitoringConfigArgs.fromMap(Map<String, dynamic> map) {
     return MonitoringConfigArgs(
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      metricConfigurations: pulumi.Output.create<List<MetricConfiguration>>(pulumi.Input.decodeList<MetricConfiguration>(map['metricConfigurations'], (value) => MetricConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+      deviceName: (map['deviceName'] as String).input(),
+      metricConfigurations: (pulumi.Input.decodeList<MetricConfiguration>(map['metricConfigurations'], (value) => MetricConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

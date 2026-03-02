@@ -16,11 +16,9 @@ class GetDeploymentAtManagementGroupScopeArgs {
   /// [deploymentName] The name of the deployment.
   /// [groupId] The management group ID.
   GetDeploymentAtManagementGroupScopeArgs({
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> groupId,
-  }) :
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      groupId = pulumi.Input.asInput<String>(groupId);
+    required this.deploymentName,
+    required this.groupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeploymentAtManagementGroupScopeArgs {
 
   factory GetDeploymentAtManagementGroupScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentAtManagementGroupScopeArgs(
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
+      deploymentName: (map['deploymentName'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
     );
   }
 }

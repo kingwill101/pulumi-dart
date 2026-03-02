@@ -16,11 +16,9 @@ class ServiceConfigArgs {
   /// [data] Base64-url-safe-encoded config data
   /// [name] User-defined name of the config
   ServiceConfigArgs({
-    required pulumi.Output<String> data,
-    pulumi.Output<String>? name,
-  }) :
-      data = pulumi.Input.asInput<String>(data),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.data,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ServiceConfigArgs {
 
   factory ServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConfigArgs(
-      data: pulumi.Output.create<String>(map['data'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      data: (map['data'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

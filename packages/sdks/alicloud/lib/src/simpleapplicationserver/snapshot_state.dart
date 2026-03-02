@@ -16,13 +16,10 @@ class SnapshotState {
   /// [snapshotName] The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
   /// [status] The status of the snapshot. Valid values: `Progressing`, `Accomplished` and `Failed`.
   SnapshotState({
-    pulumi.Output<String>? diskId,
-    pulumi.Output<String>? snapshotName,
-    pulumi.Output<String>? status,
-  }) :
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.diskId,
+    this.snapshotName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

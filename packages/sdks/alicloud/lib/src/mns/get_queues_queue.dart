@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetQueuesQueue {
   /// This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued.
-  final int delaySeconds;
+  final pulumi.Input<int> delaySeconds;
   /// The id of the queue, The value is set to `name`.
-  final String id;
+  final pulumi.Input<String> id;
   /// This indicates the maximum length, in bytes, of any message body sent to the queue.
-  final int maximumMessageSize;
+  final pulumi.Input<int> maximumMessageSize;
   /// Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue.
-  final int messageRetentionPeriod;
+  final pulumi.Input<int> messageRetentionPeriod;
   /// The name of the queue
-  final String name;
+  final pulumi.Input<String> name;
   /// Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out.
-  final int pollingWaitSeconds;
+  final pulumi.Input<int> pollingWaitSeconds;
   /// Dequeued messages change from active (visible) status to inactive (invisible) status. This attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period.
-  final int visibilityTimeouts;
+  final pulumi.Input<int> visibilityTimeouts;
 
   /// Creates a new [GetQueuesQueue].
   /// [delaySeconds] This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued.
@@ -49,13 +50,13 @@ class GetQueuesQueue {
 
   factory GetQueuesQueue.fromMap(Map<String, dynamic> map) {
     return GetQueuesQueue(
-      delaySeconds: map['delaySeconds'] as int,
-      id: map['id'] as String,
-      maximumMessageSize: map['maximumMessageSize'] as int,
-      messageRetentionPeriod: map['messageRetentionPeriod'] as int,
-      name: map['name'] as String,
-      pollingWaitSeconds: map['pollingWaitSeconds'] as int,
-      visibilityTimeouts: map['visibilityTimeouts'] as int,
+      delaySeconds: (map['delaySeconds'] as int).input(),
+      id: (map['id'] as String).input(),
+      maximumMessageSize: (map['maximumMessageSize'] as int).input(),
+      messageRetentionPeriod: (map['messageRetentionPeriod'] as int).input(),
+      name: (map['name'] as String).input(),
+      pollingWaitSeconds: (map['pollingWaitSeconds'] as int).input(),
+      visibilityTimeouts: (map['visibilityTimeouts'] as int).input(),
     );
   }
 }

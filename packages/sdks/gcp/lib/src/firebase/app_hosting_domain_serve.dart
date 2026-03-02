@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_hosting_domain_serve_redirect.dart';
 
 class AppHostingDomainServe {
   /// Specifies redirect behavior for a domain.
   /// Structure is documented below.
-  final AppHostingDomainServeRedirect? redirect;
+  final pulumi.Input<AppHostingDomainServeRedirect>? redirect;
 
   /// Creates a new [AppHostingDomainServe].
   /// [redirect] Specifies redirect behavior for a domain.
@@ -15,13 +16,13 @@ class AppHostingDomainServe {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'redirect': ?redirect == null ? null : redirect!.toMap(),
+      'redirect': ?pulumi.Input.mapOptionalInputValue<AppHostingDomainServeRedirect, Map<String, dynamic>>(redirect, (value) => value.toMap()),
     };
   }
 
   factory AppHostingDomainServe.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainServe(
-      redirect: map['redirect'] == null ? null : AppHostingDomainServeRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>()),
+      redirect: map['redirect'] == null ? null : (AppHostingDomainServeRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

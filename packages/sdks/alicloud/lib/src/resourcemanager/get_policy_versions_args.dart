@@ -25,17 +25,12 @@ class GetPolicyVersionsArgs {
   /// [policyName] The name of the policy.
   /// [policyType] The type of the policy. Valid values:`Custom` and `System`.
   GetPolicyVersionsArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> policyType,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      policyType = pulumi.Input.asInput<String>(policyType);
+    this.enableDetails,
+    this.ids,
+    this.outputFile,
+    required this.policyName,
+    required this.policyType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetPolicyVersionsArgs {
 
   factory GetPolicyVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyVersionsArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: pulumi.Output.create<String>(map['policyType'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class V3ConcurrencyConfigState {
   /// [functionName] Function Name
   /// [reservedConcurrency] Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
   V3ConcurrencyConfigState({
-    pulumi.Output<String>? functionArn,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<int>? reservedConcurrency,
-  }) :
-      functionArn = pulumi.Input.asOptionalInput<String>(functionArn),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      reservedConcurrency = pulumi.Input.asOptionalInput<int>(reservedConcurrency);
+    this.functionArn,
+    this.functionName,
+    this.reservedConcurrency,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class V3ConcurrencyConfigState {
 
   factory V3ConcurrencyConfigState.fromMap(Map<String, dynamic> map) {
     return V3ConcurrencyConfigState(
-      functionArn: map['functionArn'] == null ? null : pulumi.Output.create<String>(map['functionArn'] as String),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      reservedConcurrency: map['reservedConcurrency'] == null ? null : pulumi.Output.create<int>(map['reservedConcurrency'] as int),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      reservedConcurrency: map['reservedConcurrency'] == null ? null : (map['reservedConcurrency'] as int).input(),
     );
   }
 }

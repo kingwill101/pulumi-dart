@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for FHIR BigQuery time-partitioned tables.
 class TimePartitioningResponseHealthcareV1beta1 {
   /// Number of milliseconds for which to keep the storage for a partition.
-  final String expirationMs;
+  final pulumi.Input<String> expirationMs;
   /// Type of partitioning.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TimePartitioningResponseHealthcareV1beta1].
   /// [expirationMs] Number of milliseconds for which to keep the storage for a partition.
@@ -25,8 +26,8 @@ class TimePartitioningResponseHealthcareV1beta1 {
 
   factory TimePartitioningResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return TimePartitioningResponseHealthcareV1beta1(
-      expirationMs: map['expirationMs'] as String,
-      type: map['type'] as String,
+      expirationMs: (map['expirationMs'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

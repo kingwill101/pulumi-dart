@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceUpgradeServiceDetailInfo {
   /// The Current2OpenSourceVersion of the instance.
-  final String current2OpenSourceVersion;
+  final pulumi.Input<String> current2OpenSourceVersion;
 
   /// Creates a new [GetInstancesInstanceUpgradeServiceDetailInfo].
   /// [current2OpenSourceVersion] The Current2OpenSourceVersion of the instance.
@@ -19,7 +20,7 @@ class GetInstancesInstanceUpgradeServiceDetailInfo {
 
   factory GetInstancesInstanceUpgradeServiceDetailInfo.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceUpgradeServiceDetailInfo(
-      current2OpenSourceVersion: map['current2OpenSourceVersion'] as String,
+      current2OpenSourceVersion: (map['current2OpenSourceVersion'] as String).input(),
     );
   }
 }

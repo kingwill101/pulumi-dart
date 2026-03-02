@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identity properties.
 class IdentityProperties {
   /// Managed identity type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [IdentityProperties].
   /// [type] Managed identity type.
@@ -20,7 +21,7 @@ class IdentityProperties {
 
   factory IdentityProperties.fromMap(Map<String, dynamic> map) {
     return IdentityProperties(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

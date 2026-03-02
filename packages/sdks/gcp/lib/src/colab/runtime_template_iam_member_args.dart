@@ -44,19 +44,13 @@ class RuntimeTemplateIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [runtimeTemplate] Used to find the parent resource to bind the IAM policy to
   RuntimeTemplateIamMemberArgs({
-    pulumi.Output<RuntimeTemplateIamMemberCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> runtimeTemplate,
-  }) :
-      condition = pulumi.Input.asOptionalInput<RuntimeTemplateIamMemberCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      runtimeTemplate = pulumi.Input.asInput<String>(runtimeTemplate);
+    this.condition,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.runtimeTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,12 +65,12 @@ class RuntimeTemplateIamMemberArgs {
 
   factory RuntimeTemplateIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<RuntimeTemplateIamMemberCondition>(RuntimeTemplateIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      runtimeTemplate: pulumi.Output.create<String>(map['runtimeTemplate'] as String),
+      condition: map['condition'] == null ? null : (RuntimeTemplateIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      runtimeTemplate: (map['runtimeTemplate'] as String).input(),
     );
   }
 }

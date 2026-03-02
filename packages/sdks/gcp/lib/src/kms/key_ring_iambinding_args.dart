@@ -36,15 +36,11 @@ class KeyRingIAMBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   KeyRingIAMBindingArgs({
-    pulumi.Output<KeyRingIAMBindingCondition>? condition,
-    required pulumi.Output<String> keyRingId,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<KeyRingIAMBindingCondition>(condition),
-      keyRingId = pulumi.Input.asInput<String>(keyRingId),
-      members = pulumi.Input.asInput<List<String>>(members),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.keyRingId,
+    required this.members,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,10 +53,10 @@ class KeyRingIAMBindingArgs {
 
   factory KeyRingIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return KeyRingIAMBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<KeyRingIAMBindingCondition>(KeyRingIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      keyRingId: pulumi.Output.create<String>(map['keyRingId'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (KeyRingIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      keyRingId: (map['keyRingId'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

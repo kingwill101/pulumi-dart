@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclLoggingConfigurationRedactedFieldSingleHeader {
   /// Name of the query header to redact. This setting must be provided in lowercase characters.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [WebAclLoggingConfigurationRedactedFieldSingleHeader].
   /// [name] Name of the query header to redact. This setting must be provided in lowercase characters.
@@ -19,7 +20,7 @@ class WebAclLoggingConfigurationRedactedFieldSingleHeader {
 
   factory WebAclLoggingConfigurationRedactedFieldSingleHeader.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationRedactedFieldSingleHeader(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

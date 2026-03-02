@@ -40,29 +40,18 @@ class QosPolicyState {
   /// [sourcePortRange] The source port range of the transport layer.
   /// [startTime] The time when the quintuple rule takes effect.
   QosPolicyState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destCidr,
-    pulumi.Output<String>? destPortRange,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? qosId,
-    pulumi.Output<String>? sourceCidr,
-    pulumi.Output<String>? sourcePortRange,
-    pulumi.Output<String>? startTime,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destCidr = pulumi.Input.asOptionalInput<String>(destCidr),
-      destPortRange = pulumi.Input.asOptionalInput<String>(destPortRange),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      qosId = pulumi.Input.asOptionalInput<String>(qosId),
-      sourceCidr = pulumi.Input.asOptionalInput<String>(sourceCidr),
-      sourcePortRange = pulumi.Input.asOptionalInput<String>(sourcePortRange),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime);
+    this.description,
+    this.destCidr,
+    this.destPortRange,
+    this.endTime,
+    this.ipProtocol,
+    this.name,
+    this.priority,
+    this.qosId,
+    this.sourceCidr,
+    this.sourcePortRange,
+    this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class QosPolicyState {
 
   factory QosPolicyState.fromMap(Map<String, dynamic> map) {
     return QosPolicyState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destCidr: map['destCidr'] == null ? null : pulumi.Output.create<String>(map['destCidr'] as String),
-      destPortRange: map['destPortRange'] == null ? null : pulumi.Output.create<String>(map['destPortRange'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      qosId: map['qosId'] == null ? null : pulumi.Output.create<String>(map['qosId'] as String),
-      sourceCidr: map['sourceCidr'] == null ? null : pulumi.Output.create<String>(map['sourceCidr'] as String),
-      sourcePortRange: map['sourcePortRange'] == null ? null : pulumi.Output.create<String>(map['sourcePortRange'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destCidr: map['destCidr'] == null ? null : (map['destCidr'] as String).input(),
+      destPortRange: map['destPortRange'] == null ? null : (map['destPortRange'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

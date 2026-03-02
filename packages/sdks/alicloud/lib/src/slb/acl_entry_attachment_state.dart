@@ -16,13 +16,10 @@ class AclEntryAttachmentState {
   /// [comment] The comment of the entry.
   /// [entry] The CIDR blocks.
   AclEntryAttachmentState({
-    pulumi.Output<String>? aclId,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? entry,
-  }) :
-      aclId = pulumi.Input.asOptionalInput<String>(aclId),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      entry = pulumi.Input.asOptionalInput<String>(entry);
+    this.aclId,
+    this.comment,
+    this.entry,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AclEntryAttachmentState {
 
   factory AclEntryAttachmentState.fromMap(Map<String, dynamic> map) {
     return AclEntryAttachmentState(
-      aclId: map['aclId'] == null ? null : pulumi.Output.create<String>(map['aclId'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      entry: map['entry'] == null ? null : pulumi.Output.create<String>(map['entry'] as String),
+      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      entry: map['entry'] == null ? null : (map['entry'] as String).input(),
     );
   }
 }

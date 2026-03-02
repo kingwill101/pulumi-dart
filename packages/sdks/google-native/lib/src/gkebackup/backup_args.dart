@@ -31,23 +31,15 @@ class BackupArgs {
   /// [project] Optional.
   /// [retainDays] Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
   BackupArgs({
-    pulumi.Output<String>? backupId,
-    required pulumi.Output<String> backupPlanId,
-    pulumi.Output<int>? deleteLockDays,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? retainDays,
-  }) :
-      backupId = pulumi.Input.asOptionalInput<String>(backupId),
-      backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
-      deleteLockDays = pulumi.Input.asOptionalInput<int>(deleteLockDays),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retainDays = pulumi.Input.asOptionalInput<int>(retainDays);
+    this.backupId,
+    required this.backupPlanId,
+    this.deleteLockDays,
+    this.description,
+    this.labels,
+    this.location,
+    this.project,
+    this.retainDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupId: map['backupId'] == null ? null : pulumi.Output.create<String>(map['backupId'] as String),
-      backupPlanId: pulumi.Output.create<String>(map['backupPlanId'] as String),
-      deleteLockDays: map['deleteLockDays'] == null ? null : pulumi.Output.create<int>(map['deleteLockDays'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      retainDays: map['retainDays'] == null ? null : pulumi.Output.create<int>(map['retainDays'] as int),
+      backupId: map['backupId'] == null ? null : (map['backupId'] as String).input(),
+      backupPlanId: (map['backupPlanId'] as String).input(),
+      deleteLockDays: map['deleteLockDays'] == null ? null : (map['deleteLockDays'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      retainDays: map['retainDays'] == null ? null : (map['retainDays'] as int).input(),
     );
   }
 }

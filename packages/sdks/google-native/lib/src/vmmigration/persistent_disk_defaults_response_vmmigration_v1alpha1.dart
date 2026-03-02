@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_response_vmmigration_v1alpha1.dart';
 import 'vm_attachment_details_response_vmmigration_v1alpha1.dart';
 
 /// Details for creation of a Persistent Disk.
 class PersistentDiskDefaultsResponseVmmigrationV1alpha1 {
   /// A map of labels to associate with the Persistent Disk.
-  final Map<String, String> additionalLabels;
+  final pulumi.Input<Map<String, String>> additionalLabels;
   /// Optional. The name of the Persistent Disk to create.
-  final String diskName;
+  final pulumi.Input<String> diskName;
   /// The disk type to use.
-  final String diskType;
+  final pulumi.Input<String> diskType;
   /// Optional. The encryption to apply to the disk.
-  final EncryptionResponseVmmigrationV1alpha1 encryption;
+  final pulumi.Input<EncryptionResponseVmmigrationV1alpha1> encryption;
   /// The ordinal number of the source VM disk.
-  final int sourceDiskNumber;
+  final pulumi.Input<int> sourceDiskNumber;
   /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
-  final VmAttachmentDetailsResponseVmmigrationV1alpha1 vmAttachmentDetails;
+  final pulumi.Input<VmAttachmentDetailsResponseVmmigrationV1alpha1> vmAttachmentDetails;
 
   /// Creates a new [PersistentDiskDefaultsResponseVmmigrationV1alpha1].
   /// [additionalLabels] A map of labels to associate with the Persistent Disk.
@@ -39,20 +40,20 @@ class PersistentDiskDefaultsResponseVmmigrationV1alpha1 {
       'additionalLabels': additionalLabels,
       'diskName': diskName,
       'diskType': diskType,
-      'encryption': encryption.toMap(),
+      'encryption': pulumi.Input.mapInputValue<EncryptionResponseVmmigrationV1alpha1, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'sourceDiskNumber': sourceDiskNumber,
-      'vmAttachmentDetails': vmAttachmentDetails.toMap(),
+      'vmAttachmentDetails': pulumi.Input.mapInputValue<VmAttachmentDetailsResponseVmmigrationV1alpha1, Map<String, dynamic>>(vmAttachmentDetails, (value) => value.toMap()),
     };
   }
 
   factory PersistentDiskDefaultsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return PersistentDiskDefaultsResponseVmmigrationV1alpha1(
-      additionalLabels: (map['additionalLabels'] as Map).cast<String, String>(),
-      diskName: map['diskName'] as String,
-      diskType: map['diskType'] as String,
-      encryption: EncryptionResponseVmmigrationV1alpha1.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      sourceDiskNumber: map['sourceDiskNumber'] as int,
-      vmAttachmentDetails: VmAttachmentDetailsResponseVmmigrationV1alpha1.fromMap((map['vmAttachmentDetails'] as Map).cast<String, dynamic>()),
+      additionalLabels: ((map['additionalLabels'] as Map).cast<String, String>()).input(),
+      diskName: (map['diskName'] as String).input(),
+      diskType: (map['diskType'] as String).input(),
+      encryption: (EncryptionResponseVmmigrationV1alpha1.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      sourceDiskNumber: (map['sourceDiskNumber'] as int).input(),
+      vmAttachmentDetails: (VmAttachmentDetailsResponseVmmigrationV1alpha1.fromMap((map['vmAttachmentDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

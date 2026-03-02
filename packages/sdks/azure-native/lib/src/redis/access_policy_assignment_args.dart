@@ -28,19 +28,13 @@ class AccessPolicyAssignmentArgs {
   /// [objectIdAlias] User friendly name for object id. Also represents username for token based authentication
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AccessPolicyAssignmentArgs({
-    pulumi.Output<String>? accessPolicyAssignmentName,
-    required pulumi.Output<String> accessPolicyName,
-    required pulumi.Output<String> cacheName,
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> objectIdAlias,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accessPolicyAssignmentName = pulumi.Input.asOptionalInput<String>(accessPolicyAssignmentName),
-      accessPolicyName = pulumi.Input.asInput<String>(accessPolicyName),
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      objectIdAlias = pulumi.Input.asInput<String>(objectIdAlias),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.accessPolicyAssignmentName,
+    required this.accessPolicyName,
+    required this.cacheName,
+    required this.objectId,
+    required this.objectIdAlias,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AccessPolicyAssignmentArgs {
 
   factory AccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentArgs(
-      accessPolicyAssignmentName: map['accessPolicyAssignmentName'] == null ? null : pulumi.Output.create<String>(map['accessPolicyAssignmentName'] as String),
-      accessPolicyName: pulumi.Output.create<String>(map['accessPolicyName'] as String),
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      objectIdAlias: pulumi.Output.create<String>(map['objectIdAlias'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accessPolicyAssignmentName: map['accessPolicyAssignmentName'] == null ? null : (map['accessPolicyAssignmentName'] as String).input(),
+      accessPolicyName: (map['accessPolicyName'] as String).input(),
+      cacheName: (map['cacheName'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      objectIdAlias: (map['objectIdAlias'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

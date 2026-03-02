@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobLoadDestinationTable {
   /// The ID of the dataset containing this table.
-  final String? datasetId;
+  final pulumi.Input<String>? datasetId;
   /// The ID of the project containing this table.
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
   /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-  final String tableId;
+  final pulumi.Input<String> tableId;
 
   /// Creates a new [JobLoadDestinationTable].
   /// [datasetId] The ID of the dataset containing this table.
@@ -30,9 +31,9 @@ class JobLoadDestinationTable {
 
   factory JobLoadDestinationTable.fromMap(Map<String, dynamic> map) {
     return JobLoadDestinationTable(
-      datasetId: map['datasetId'] == null ? null : map['datasetId'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
-      tableId: map['tableId'] as String,
+      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

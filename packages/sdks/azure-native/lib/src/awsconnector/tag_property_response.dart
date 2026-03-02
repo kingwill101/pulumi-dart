@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of TagProperty
 class TagPropertyResponse {
   /// The tag key.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Set to ``true`` if you want CloudFormation to copy the tag to EC2 instances that are launched as part of the Auto Scaling group. Set to ``false`` if you want the tag attached only to the Auto Scaling group and not copied to any instances launched as part of the Auto Scaling group.
-  final bool? propagateAtLaunch;
+  final pulumi.Input<bool>? propagateAtLaunch;
   /// The tag value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [TagPropertyResponse].
   /// [key] The tag key.
@@ -30,9 +31,9 @@ class TagPropertyResponse {
 
   factory TagPropertyResponse.fromMap(Map<String, dynamic> map) {
     return TagPropertyResponse(
-      key: map['key'] == null ? null : map['key'] as String,
-      propagateAtLaunch: map['propagateAtLaunch'] == null ? null : map['propagateAtLaunch'] as bool,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      propagateAtLaunch: map['propagateAtLaunch'] == null ? null : (map['propagateAtLaunch'] as bool).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

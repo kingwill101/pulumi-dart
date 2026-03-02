@@ -34,19 +34,13 @@ class GatewayArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the gateway for the API.
   GatewayArgs({
-    required pulumi.Output<String> apiConfig,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> gatewayId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      apiConfig = pulumi.Input.asInput<String>(apiConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.apiConfig,
+    this.displayName,
+    required this.gatewayId,
+    this.labels,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      apiConfig: pulumi.Output.create<String>(map['apiConfig'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      apiConfig: (map['apiConfig'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ApplicationArgs {
   /// [displayName] display name of the application
   /// [sourceResourceType] The application source, what it affects, e.g. Assessments
   ApplicationArgs({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> sourceResourceType,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      sourceResourceType = pulumi.Input.asInput<String>(sourceResourceType);
+    this.applicationId,
+    this.description,
+    this.displayName,
+    required this.sourceResourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      sourceResourceType: pulumi.Output.create<String>(map['sourceResourceType'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      sourceResourceType: (map['sourceResourceType'] as String).input(),
     );
   }
 }

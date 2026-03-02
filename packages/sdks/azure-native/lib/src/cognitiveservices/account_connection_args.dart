@@ -23,15 +23,11 @@ class AccountConnectionArgs {
   /// [properties] Connection property base schema.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AccountConnectionArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? connectionName,
-    required pulumi.Output<AADAuthTypeConnectionProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      properties = pulumi.Input.asInput<AADAuthTypeConnectionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.connectionName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AccountConnectionArgs {
 
   factory AccountConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AccountConnectionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      properties: pulumi.Output.create<AADAuthTypeConnectionProperties>(AADAuthTypeConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      properties: (AADAuthTypeConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

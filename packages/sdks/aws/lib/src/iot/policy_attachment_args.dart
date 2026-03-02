@@ -19,13 +19,10 @@ class PolicyAttachmentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [target] The identity to which the policy is attached.
   PolicyAttachmentArgs({
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> target,
-  }) :
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      target = pulumi.Input.asInput<String>(target);
+    required this.policy,
+    this.region,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PolicyAttachmentArgs {
 
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      target: pulumi.Output.create<String>(map['target'] as String),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

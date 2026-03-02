@@ -23,15 +23,11 @@ class RegistryEnvironmentContainerArgs {
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   RegistryEnvironmentContainerArgs({
-    required pulumi.Output<EnvironmentContainerMachinelearningservices> environmentContainerProperties,
-    pulumi.Output<String>? environmentName,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentContainerProperties = pulumi.Input.asInput<EnvironmentContainerMachinelearningservices>(environmentContainerProperties),
-      environmentName = pulumi.Input.asOptionalInput<String>(environmentName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentContainerProperties,
+    this.environmentName,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class RegistryEnvironmentContainerArgs {
 
   factory RegistryEnvironmentContainerArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnvironmentContainerArgs(
-      environmentContainerProperties: pulumi.Output.create<EnvironmentContainerMachinelearningservices>(map['environmentContainerProperties'] as EnvironmentContainerMachinelearningservices),
-      environmentName: map['environmentName'] == null ? null : pulumi.Output.create<String>(map['environmentName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentContainerProperties: (map['environmentContainerProperties'] as EnvironmentContainerMachinelearningservices).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

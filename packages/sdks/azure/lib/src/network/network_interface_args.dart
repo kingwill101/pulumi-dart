@@ -57,31 +57,19 @@ class NetworkInterfaceArgs {
   /// [resourceGroupName] The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   NetworkInterfaceArgs({
-    pulumi.Output<bool>? acceleratedNetworkingEnabled,
-    pulumi.Output<String>? auxiliaryMode,
-    pulumi.Output<String>? auxiliarySku,
-    pulumi.Output<List<String>>? dnsServers,
-    pulumi.Output<String>? edgeZone,
-    pulumi.Output<String>? internalDnsNameLabel,
-    required pulumi.Output<List<NetworkInterfaceIpConfiguration>> ipConfigurations,
-    pulumi.Output<bool>? ipForwardingEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      acceleratedNetworkingEnabled = pulumi.Input.asOptionalInput<bool>(acceleratedNetworkingEnabled),
-      auxiliaryMode = pulumi.Input.asOptionalInput<String>(auxiliaryMode),
-      auxiliarySku = pulumi.Input.asOptionalInput<String>(auxiliarySku),
-      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
-      edgeZone = pulumi.Input.asOptionalInput<String>(edgeZone),
-      internalDnsNameLabel = pulumi.Input.asOptionalInput<String>(internalDnsNameLabel),
-      ipConfigurations = pulumi.Input.asInput<List<NetworkInterfaceIpConfiguration>>(ipConfigurations),
-      ipForwardingEnabled = pulumi.Input.asOptionalInput<bool>(ipForwardingEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.acceleratedNetworkingEnabled,
+    this.auxiliaryMode,
+    this.auxiliarySku,
+    this.dnsServers,
+    this.edgeZone,
+    this.internalDnsNameLabel,
+    required this.ipConfigurations,
+    this.ipForwardingEnabled,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,18 +90,18 @@ class NetworkInterfaceArgs {
 
   factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceArgs(
-      acceleratedNetworkingEnabled: map['acceleratedNetworkingEnabled'] == null ? null : pulumi.Output.create<bool>(map['acceleratedNetworkingEnabled'] as bool),
-      auxiliaryMode: map['auxiliaryMode'] == null ? null : pulumi.Output.create<String>(map['auxiliaryMode'] as String),
-      auxiliarySku: map['auxiliarySku'] == null ? null : pulumi.Output.create<String>(map['auxiliarySku'] as String),
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
-      edgeZone: map['edgeZone'] == null ? null : pulumi.Output.create<String>(map['edgeZone'] as String),
-      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : pulumi.Output.create<String>(map['internalDnsNameLabel'] as String),
-      ipConfigurations: pulumi.Output.create<List<NetworkInterfaceIpConfiguration>>(pulumi.Input.decodeList<NetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => NetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      ipForwardingEnabled: map['ipForwardingEnabled'] == null ? null : pulumi.Output.create<bool>(map['ipForwardingEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      acceleratedNetworkingEnabled: map['acceleratedNetworkingEnabled'] == null ? null : (map['acceleratedNetworkingEnabled'] as bool).input(),
+      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode'] as String).input(),
+      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone'] as String).input(),
+      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : (map['internalDnsNameLabel'] as String).input(),
+      ipConfigurations: (pulumi.Input.decodeList<NetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => NetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipForwardingEnabled: map['ipForwardingEnabled'] == null ? null : (map['ipForwardingEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

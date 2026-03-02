@@ -25,17 +25,12 @@ class ReplicationSubnetGroupArgs {
   /// [subnetIds] List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ReplicationSubnetGroupArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> replicationSubnetGroupDescription,
-    required pulumi.Output<String> replicationSubnetGroupId,
-    required pulumi.Output<List<String>> subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationSubnetGroupDescription = pulumi.Input.asInput<String>(replicationSubnetGroupDescription),
-      replicationSubnetGroupId = pulumi.Input.asInput<String>(replicationSubnetGroupId),
-      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.replicationSubnetGroupDescription,
+    required this.replicationSubnetGroupId,
+    required this.subnetIds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ReplicationSubnetGroupArgs {
 
   factory ReplicationSubnetGroupArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSubnetGroupArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationSubnetGroupDescription: pulumi.Output.create<String>(map['replicationSubnetGroupDescription'] as String),
-      replicationSubnetGroupId: pulumi.Output.create<String>(map['replicationSubnetGroupId'] as String),
-      subnetIds: pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationSubnetGroupDescription: (map['replicationSubnetGroupDescription'] as String).input(),
+      replicationSubnetGroupId: (map['replicationSubnetGroupId'] as String).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

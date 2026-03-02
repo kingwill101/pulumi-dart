@@ -19,13 +19,10 @@ class GetNodebalancersArgs {
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
   GetNodebalancersArgs({
-    pulumi.Output<List<GetNodebalancersFilter>>? filters,
-    pulumi.Output<String>? order,
-    pulumi.Output<String>? orderBy,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNodebalancersFilter>>(filters),
-      order = pulumi.Input.asOptionalInput<String>(order),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy);
+    this.filters,
+    this.order,
+    this.orderBy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNodebalancersArgs {
 
   factory GetNodebalancersArgs.fromMap(Map<String, dynamic> map) {
     return GetNodebalancersArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNodebalancersFilter>>(pulumi.Input.decodeList<GetNodebalancersFilter>(map['filters'], (value) => GetNodebalancersFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      order: map['order'] == null ? null : pulumi.Output.create<String>(map['order'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNodebalancersFilter>(map['filters'], (value) => GetNodebalancersFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
     );
   }
 }

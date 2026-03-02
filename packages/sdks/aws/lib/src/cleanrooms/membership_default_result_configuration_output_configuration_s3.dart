@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MembershipDefaultResultConfigurationOutputConfigurationS3 {
-  final String bucket;
-  final String? keyPrefix;
-  final String resultFormat;
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<String>? keyPrefix;
+  final pulumi.Input<String> resultFormat;
 
   /// Creates a new [MembershipDefaultResultConfigurationOutputConfigurationS3].
   /// [bucket] Required.
@@ -26,9 +27,9 @@ class MembershipDefaultResultConfigurationOutputConfigurationS3 {
 
   factory MembershipDefaultResultConfigurationOutputConfigurationS3.fromMap(Map<String, dynamic> map) {
     return MembershipDefaultResultConfigurationOutputConfigurationS3(
-      bucket: map['bucket'] as String,
-      keyPrefix: map['keyPrefix'] == null ? null : map['keyPrefix'] as String,
-      resultFormat: map['resultFormat'] as String,
+      bucket: (map['bucket'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      resultFormat: (map['resultFormat'] as String).input(),
     );
   }
 }

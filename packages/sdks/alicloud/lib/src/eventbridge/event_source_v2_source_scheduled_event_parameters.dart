@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceV2SourceScheduledEventParameters {
   /// Cron expression
-  final String? schedule;
+  final pulumi.Input<String>? schedule;
   /// The Cron execution time zone.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
   /// JSON string
-  final String? userData;
+  final pulumi.Input<String>? userData;
 
   /// Creates a new [EventSourceV2SourceScheduledEventParameters].
   /// [schedule] Cron expression
@@ -29,9 +30,9 @@ class EventSourceV2SourceScheduledEventParameters {
 
   factory EventSourceV2SourceScheduledEventParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceScheduledEventParameters(
-      schedule: map['schedule'] == null ? null : map['schedule'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
-      userData: map['userData'] == null ? null : map['userData'] as String,
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
     );
   }
 }

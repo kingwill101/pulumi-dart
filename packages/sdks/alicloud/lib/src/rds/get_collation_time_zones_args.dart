@@ -18,11 +18,9 @@ class GetCollationTimeZonesArgs {
   /// [collationTimeZones] An array that consists of the character set collations and time zones that are available for
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
   GetCollationTimeZonesArgs({
-    pulumi.Output<List<GetCollationTimeZonesCollationTimeZone>>? collationTimeZones,
-    pulumi.Output<String>? outputFile,
-  }) :
-      collationTimeZones = pulumi.Input.asOptionalInput<List<GetCollationTimeZonesCollationTimeZone>>(collationTimeZones),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.collationTimeZones,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetCollationTimeZonesArgs {
 
   factory GetCollationTimeZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetCollationTimeZonesArgs(
-      collationTimeZones: map['collationTimeZones'] == null ? null : pulumi.Output.create<List<GetCollationTimeZonesCollationTimeZone>>(pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(map['collationTimeZones'], (value) => GetCollationTimeZonesCollationTimeZone.fromMap((value as Map).cast<String, dynamic>()))),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      collationTimeZones: map['collationTimeZones'] == null ? null : (pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(map['collationTimeZones'], (value) => GetCollationTimeZonesCollationTimeZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

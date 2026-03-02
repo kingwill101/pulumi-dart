@@ -5,9 +5,9 @@ import 'get_vpc_firewalls_firewall_local_vpc_local_vpc_cidr_table_list_local_rou
 
 class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList {
   /// The list of route entries of the local VPC.
-  final List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists;
+  final pulumi.Input<List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList>> localRouteEntryLists;
   /// The ID of the route table of the local VPC.
-  final String localRouteTableId;
+  final pulumi.Input<String> localRouteTableId;
 
   /// Creates a new [GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList].
   /// [localRouteEntryLists] The list of route entries of the local VPC.
@@ -19,15 +19,15 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'localRouteEntryLists': pulumi.Input.encodeList<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList, Map<String, dynamic>>(localRouteEntryLists, (value) => value.toMap()),
+      'localRouteEntryLists': pulumi.Input.mapInputValue<List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList>, List<Map<String, dynamic>>>(localRouteEntryLists, (value) => pulumi.Input.encodeList<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'localRouteTableId': localRouteTableId,
     };
   }
 
   factory GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList(
-      localRouteEntryLists: pulumi.Input.decodeList<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList>(map['localRouteEntryLists'], (value) => GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList.fromMap((value as Map).cast<String, dynamic>())),
-      localRouteTableId: map['localRouteTableId'] as String,
+      localRouteEntryLists: (pulumi.Input.decodeList<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList>(map['localRouteEntryLists'], (value) => GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localRouteTableId: (map['localRouteTableId'] as String).input(),
     );
   }
 }

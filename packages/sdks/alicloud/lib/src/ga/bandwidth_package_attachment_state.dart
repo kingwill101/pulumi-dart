@@ -19,15 +19,11 @@ class BandwidthPackageAttachmentState {
   /// [bandwidthPackageId] The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
   /// [status] State of Bandwidth Package.
   BandwidthPackageAttachmentState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<List<String>>? accelerators,
-    pulumi.Output<String>? bandwidthPackageId,
-    pulumi.Output<String>? status,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      accelerators = pulumi.Input.asOptionalInput<List<String>>(accelerators),
-      bandwidthPackageId = pulumi.Input.asOptionalInput<String>(bandwidthPackageId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.acceleratorId,
+    this.accelerators,
+    this.bandwidthPackageId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BandwidthPackageAttachmentState {
 
   factory BandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageAttachmentState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      accelerators: map['accelerators'] == null ? null : pulumi.Output.create<List<String>>((map['accelerators'] as List).cast<String>()),
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : pulumi.Output.create<String>(map['bandwidthPackageId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      accelerators: map['accelerators'] == null ? null : ((map['accelerators'] as List).cast<String>()).input(),
+      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

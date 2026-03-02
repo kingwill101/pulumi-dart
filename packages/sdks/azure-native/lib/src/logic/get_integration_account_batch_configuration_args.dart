@@ -19,13 +19,10 @@ class GetIntegrationAccountBatchConfigurationArgs {
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
   GetIntegrationAccountBatchConfigurationArgs({
-    required pulumi.Output<String> batchConfigurationName,
-    required pulumi.Output<String> integrationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      batchConfigurationName = pulumi.Input.asInput<String>(batchConfigurationName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.batchConfigurationName,
+    required this.integrationAccountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIntegrationAccountBatchConfigurationArgs {
 
   factory GetIntegrationAccountBatchConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountBatchConfigurationArgs(
-      batchConfigurationName: pulumi.Output.create<String>(map['batchConfigurationName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      batchConfigurationName: (map['batchConfigurationName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

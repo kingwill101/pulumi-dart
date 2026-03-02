@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomTargetLagsResponse {
   /// Target lags selection modes.
   /// Expected value is 'Custom'.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// [Required] Set target lags values.
-  final List<int> values;
+  final pulumi.Input<List<int>> values;
 
   /// Creates a new [CustomTargetLagsResponse].
   /// [mode] Target lags selection modes.
@@ -25,8 +26,8 @@ class CustomTargetLagsResponse {
 
   factory CustomTargetLagsResponse.fromMap(Map<String, dynamic> map) {
     return CustomTargetLagsResponse(
-      mode: map['mode'] as String,
-      values: (map['values'] as List).cast<int>(),
+      mode: (map['mode'] as String).input(),
+      values: ((map['values'] as List).cast<int>()).input(),
     );
   }
 }

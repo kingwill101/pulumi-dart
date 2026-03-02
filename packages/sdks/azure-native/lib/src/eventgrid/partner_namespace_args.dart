@@ -44,27 +44,17 @@ class PartnerNamespaceArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
   PartnerNamespaceArgs({
-    pulumi.Output<bool>? disableLocalAuth,
-    pulumi.Output<List<InboundIpRule>>? inboundIpRules,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? minimumTlsVersionAllowed,
-    pulumi.Output<String>? partnerNamespaceName,
-    pulumi.Output<String>? partnerRegistrationFullyQualifiedId,
-    pulumi.Output<String>? partnerTopicRoutingMode,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      disableLocalAuth = pulumi.Input.asOptionalInput<bool>(disableLocalAuth),
-      inboundIpRules = pulumi.Input.asOptionalInput<List<InboundIpRule>>(inboundIpRules),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minimumTlsVersionAllowed = pulumi.Input.asOptionalInput<String>(minimumTlsVersionAllowed),
-      partnerNamespaceName = pulumi.Input.asOptionalInput<String>(partnerNamespaceName),
-      partnerRegistrationFullyQualifiedId = pulumi.Input.asOptionalInput<String>(partnerRegistrationFullyQualifiedId),
-      partnerTopicRoutingMode = pulumi.Input.asOptionalInput<String>(partnerTopicRoutingMode),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.disableLocalAuth,
+    this.inboundIpRules,
+    this.location,
+    this.minimumTlsVersionAllowed,
+    this.partnerNamespaceName,
+    this.partnerRegistrationFullyQualifiedId,
+    this.partnerTopicRoutingMode,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class PartnerNamespaceArgs {
 
   factory PartnerNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return PartnerNamespaceArgs(
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : pulumi.Output.create<bool>(map['disableLocalAuth'] as bool),
-      inboundIpRules: map['inboundIpRules'] == null ? null : pulumi.Output.create<List<InboundIpRule>>(pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules'], (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : pulumi.Output.create<String>(map['minimumTlsVersionAllowed'] as String),
-      partnerNamespaceName: map['partnerNamespaceName'] == null ? null : pulumi.Output.create<String>(map['partnerNamespaceName'] as String),
-      partnerRegistrationFullyQualifiedId: map['partnerRegistrationFullyQualifiedId'] == null ? null : pulumi.Output.create<String>(map['partnerRegistrationFullyQualifiedId'] as String),
-      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : pulumi.Output.create<String>(map['partnerTopicRoutingMode'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules'], (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed'] as String).input(),
+      partnerNamespaceName: map['partnerNamespaceName'] == null ? null : (map['partnerNamespaceName'] as String).input(),
+      partnerRegistrationFullyQualifiedId: map['partnerRegistrationFullyQualifiedId'] == null ? null : (map['partnerRegistrationFullyQualifiedId'] as String).input(),
+      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : (map['partnerTopicRoutingMode'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

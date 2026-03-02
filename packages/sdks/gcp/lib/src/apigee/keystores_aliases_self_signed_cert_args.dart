@@ -43,25 +43,16 @@ class KeystoresAliasesSelfSignedCertArgs {
   /// [subject] Subject details.
   /// [subjectAlternativeDnsNames] List of alternative host names. Maximum length is 255 characters for each value.
   KeystoresAliasesSelfSignedCertArgs({
-    required pulumi.Output<String> alias,
-    pulumi.Output<int>? certValidityInDays,
-    required pulumi.Output<String> environment,
-    pulumi.Output<String>? keySize,
-    required pulumi.Output<String> keystore,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> sigAlg,
-    required pulumi.Output<KeystoresAliasesSelfSignedCertSubject> subject,
-    pulumi.Output<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>? subjectAlternativeDnsNames,
-  }) :
-      alias = pulumi.Input.asInput<String>(alias),
-      certValidityInDays = pulumi.Input.asOptionalInput<int>(certValidityInDays),
-      environment = pulumi.Input.asInput<String>(environment),
-      keySize = pulumi.Input.asOptionalInput<String>(keySize),
-      keystore = pulumi.Input.asInput<String>(keystore),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      sigAlg = pulumi.Input.asInput<String>(sigAlg),
-      subject = pulumi.Input.asInput<KeystoresAliasesSelfSignedCertSubject>(subject),
-      subjectAlternativeDnsNames = pulumi.Input.asOptionalInput<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>(subjectAlternativeDnsNames);
+    required this.alias,
+    this.certValidityInDays,
+    required this.environment,
+    this.keySize,
+    required this.keystore,
+    required this.orgId,
+    required this.sigAlg,
+    required this.subject,
+    this.subjectAlternativeDnsNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class KeystoresAliasesSelfSignedCertArgs {
 
   factory KeystoresAliasesSelfSignedCertArgs.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertArgs(
-      alias: pulumi.Output.create<String>(map['alias'] as String),
-      certValidityInDays: map['certValidityInDays'] == null ? null : pulumi.Output.create<int>(map['certValidityInDays'] as int),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      keySize: map['keySize'] == null ? null : pulumi.Output.create<String>(map['keySize'] as String),
-      keystore: pulumi.Output.create<String>(map['keystore'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      sigAlg: pulumi.Output.create<String>(map['sigAlg'] as String),
-      subject: pulumi.Output.create<KeystoresAliasesSelfSignedCertSubject>(KeystoresAliasesSelfSignedCertSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())),
-      subjectAlternativeDnsNames: map['subjectAlternativeDnsNames'] == null ? null : pulumi.Output.create<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((map['subjectAlternativeDnsNames'] as Map).cast<String, dynamic>())),
+      alias: (map['alias'] as String).input(),
+      certValidityInDays: map['certValidityInDays'] == null ? null : (map['certValidityInDays'] as int).input(),
+      environment: (map['environment'] as String).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize'] as String).input(),
+      keystore: (map['keystore'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      sigAlg: (map['sigAlg'] as String).input(),
+      subject: (KeystoresAliasesSelfSignedCertSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeDnsNames: map['subjectAlternativeDnsNames'] == null ? null : (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((map['subjectAlternativeDnsNames'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

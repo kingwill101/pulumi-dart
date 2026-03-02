@@ -46,31 +46,19 @@ class SpringCloudNewRelicApplicationPerformanceMonitoringArgs {
   /// [name] The name which should be used for this Spring Cloud Application Performance Monitoring resource for New Relic. Changing this forces a new resource to be created.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   SpringCloudNewRelicApplicationPerformanceMonitoringArgs({
-    pulumi.Output<bool>? agentEnabled,
-    required pulumi.Output<String> appName,
-    pulumi.Output<int>? appServerPort,
-    pulumi.Output<bool>? auditModeEnabled,
-    pulumi.Output<bool>? autoAppNamingEnabled,
-    pulumi.Output<bool>? autoTransactionNamingEnabled,
-    pulumi.Output<bool>? customTracingEnabled,
-    pulumi.Output<bool>? globallyEnabled,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> licenseKey,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> springCloudServiceId,
-  }) :
-      agentEnabled = pulumi.Input.asOptionalInput<bool>(agentEnabled),
-      appName = pulumi.Input.asInput<String>(appName),
-      appServerPort = pulumi.Input.asOptionalInput<int>(appServerPort),
-      auditModeEnabled = pulumi.Input.asOptionalInput<bool>(auditModeEnabled),
-      autoAppNamingEnabled = pulumi.Input.asOptionalInput<bool>(autoAppNamingEnabled),
-      autoTransactionNamingEnabled = pulumi.Input.asOptionalInput<bool>(autoTransactionNamingEnabled),
-      customTracingEnabled = pulumi.Input.asOptionalInput<bool>(customTracingEnabled),
-      globallyEnabled = pulumi.Input.asOptionalInput<bool>(globallyEnabled),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      licenseKey = pulumi.Input.asInput<String>(licenseKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudServiceId = pulumi.Input.asInput<String>(springCloudServiceId);
+    this.agentEnabled,
+    required this.appName,
+    this.appServerPort,
+    this.auditModeEnabled,
+    this.autoAppNamingEnabled,
+    this.autoTransactionNamingEnabled,
+    this.customTracingEnabled,
+    this.globallyEnabled,
+    this.labels,
+    required this.licenseKey,
+    this.name,
+    required this.springCloudServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class SpringCloudNewRelicApplicationPerformanceMonitoringArgs {
 
   factory SpringCloudNewRelicApplicationPerformanceMonitoringArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudNewRelicApplicationPerformanceMonitoringArgs(
-      agentEnabled: map['agentEnabled'] == null ? null : pulumi.Output.create<bool>(map['agentEnabled'] as bool),
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      appServerPort: map['appServerPort'] == null ? null : pulumi.Output.create<int>(map['appServerPort'] as int),
-      auditModeEnabled: map['auditModeEnabled'] == null ? null : pulumi.Output.create<bool>(map['auditModeEnabled'] as bool),
-      autoAppNamingEnabled: map['autoAppNamingEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoAppNamingEnabled'] as bool),
-      autoTransactionNamingEnabled: map['autoTransactionNamingEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoTransactionNamingEnabled'] as bool),
-      customTracingEnabled: map['customTracingEnabled'] == null ? null : pulumi.Output.create<bool>(map['customTracingEnabled'] as bool),
-      globallyEnabled: map['globallyEnabled'] == null ? null : pulumi.Output.create<bool>(map['globallyEnabled'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      licenseKey: pulumi.Output.create<String>(map['licenseKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudServiceId: pulumi.Output.create<String>(map['springCloudServiceId'] as String),
+      agentEnabled: map['agentEnabled'] == null ? null : (map['agentEnabled'] as bool).input(),
+      appName: (map['appName'] as String).input(),
+      appServerPort: map['appServerPort'] == null ? null : (map['appServerPort'] as int).input(),
+      auditModeEnabled: map['auditModeEnabled'] == null ? null : (map['auditModeEnabled'] as bool).input(),
+      autoAppNamingEnabled: map['autoAppNamingEnabled'] == null ? null : (map['autoAppNamingEnabled'] as bool).input(),
+      autoTransactionNamingEnabled: map['autoTransactionNamingEnabled'] == null ? null : (map['autoTransactionNamingEnabled'] as bool).input(),
+      customTracingEnabled: map['customTracingEnabled'] == null ? null : (map['customTracingEnabled'] as bool).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      licenseKey: (map['licenseKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudServiceId: (map['springCloudServiceId'] as String).input(),
     );
   }
 }

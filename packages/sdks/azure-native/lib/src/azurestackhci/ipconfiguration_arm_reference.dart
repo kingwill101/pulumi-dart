@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Resource ID of an IPConfiguration resource
 class IPConfigurationArmReference {
   /// The Azure Resource ID of an IPConfiguration resource
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [IPConfigurationArmReference].
   /// [resourceId] The Azure Resource ID of an IPConfiguration resource
@@ -20,7 +21,7 @@ class IPConfigurationArmReference {
 
   factory IPConfigurationArmReference.fromMap(Map<String, dynamic> map) {
     return IPConfigurationArmReference(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

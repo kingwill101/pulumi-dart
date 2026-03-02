@@ -16,11 +16,9 @@ class EcsSessionManagerStatusArgs {
   /// [sessionManagerStatusName] The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
   /// [status] The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
   EcsSessionManagerStatusArgs({
-    required pulumi.Output<String> sessionManagerStatusName,
-    required pulumi.Output<String> status,
-  }) :
-      sessionManagerStatusName = pulumi.Input.asInput<String>(sessionManagerStatusName),
-      status = pulumi.Input.asInput<String>(status);
+    required this.sessionManagerStatusName,
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class EcsSessionManagerStatusArgs {
 
   factory EcsSessionManagerStatusArgs.fromMap(Map<String, dynamic> map) {
     return EcsSessionManagerStatusArgs(
-      sessionManagerStatusName: pulumi.Output.create<String>(map['sessionManagerStatusName'] as String),
-      status: pulumi.Output.create<String>(map['status'] as String),
+      sessionManagerStatusName: (map['sessionManagerStatusName'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

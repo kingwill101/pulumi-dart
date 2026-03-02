@@ -50,23 +50,15 @@ class InstanceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [workforceIdentityFederationConfig] Configuration for Workforce Identity Federation to support third party identity provider.
   InstanceArgs({
-    pulumi.Output<String>? deletionPolicy,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<InstancePrivateConfig>? privateConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<InstanceWorkforceIdentityFederationConfig>? workforceIdentityFederationConfig,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      privateConfig = pulumi.Input.asOptionalInput<InstancePrivateConfig>(privateConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workforceIdentityFederationConfig = pulumi.Input.asOptionalInput<InstanceWorkforceIdentityFederationConfig>(workforceIdentityFederationConfig);
+    this.deletionPolicy,
+    required this.instanceId,
+    this.kmsKey,
+    this.labels,
+    required this.location,
+    this.privateConfig,
+    this.project,
+    this.workforceIdentityFederationConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,14 +75,14 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      privateConfig: map['privateConfig'] == null ? null : pulumi.Output.create<InstancePrivateConfig>(InstancePrivateConfig.fromMap((map['privateConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workforceIdentityFederationConfig: map['workforceIdentityFederationConfig'] == null ? null : pulumi.Output.create<InstanceWorkforceIdentityFederationConfig>(InstanceWorkforceIdentityFederationConfig.fromMap((map['workforceIdentityFederationConfig'] as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      privateConfig: map['privateConfig'] == null ? null : (InstancePrivateConfig.fromMap((map['privateConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workforceIdentityFederationConfig: map['workforceIdentityFederationConfig'] == null ? null : (InstanceWorkforceIdentityFederationConfig.fromMap((map['workforceIdentityFederationConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

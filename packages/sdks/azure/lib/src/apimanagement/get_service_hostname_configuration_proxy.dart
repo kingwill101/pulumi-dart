@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceHostnameConfigurationProxy {
   /// Is this the default SSL Binding?
-  final bool defaultSslBinding;
+  final pulumi.Input<bool> defaultSslBinding;
   /// The Hostname used for the SCM URL.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// The ID of the Key Vault Secret which contains the SSL Certificate.
-  final String keyVaultCertificateId;
-  final String keyVaultId;
+  final pulumi.Input<String> keyVaultCertificateId;
+  final pulumi.Input<String> keyVaultId;
   /// Is Client Certificate Negotiation enabled?
-  final bool negotiateClientCertificate;
+  final pulumi.Input<bool> negotiateClientCertificate;
 
   /// Creates a new [GetServiceHostnameConfigurationProxy].
   /// [defaultSslBinding] Is this the default SSL Binding?
@@ -38,11 +39,11 @@ class GetServiceHostnameConfigurationProxy {
 
   factory GetServiceHostnameConfigurationProxy.fromMap(Map<String, dynamic> map) {
     return GetServiceHostnameConfigurationProxy(
-      defaultSslBinding: map['defaultSslBinding'] as bool,
-      hostName: map['hostName'] as String,
-      keyVaultCertificateId: map['keyVaultCertificateId'] as String,
-      keyVaultId: map['keyVaultId'] as String,
-      negotiateClientCertificate: map['negotiateClientCertificate'] as bool,
+      defaultSslBinding: (map['defaultSslBinding'] as bool).input(),
+      hostName: (map['hostName'] as String).input(),
+      keyVaultCertificateId: (map['keyVaultCertificateId'] as String).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      negotiateClientCertificate: (map['negotiateClientCertificate'] as bool).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern {
   /// if unset, this property matches all datasets
-  final String? datasetIdRegex;
+  final pulumi.Input<String>? datasetIdRegex;
   /// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
-  final String? projectIdRegex;
+  final pulumi.Input<String>? projectIdRegex;
   /// if unset, this property matches all tables
-  final String? tableIdRegex;
+  final pulumi.Input<String>? tableIdRegex;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern].
   /// [datasetIdRegex] if unset, this property matches all datasets
@@ -29,9 +30,9 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPat
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern(
-      datasetIdRegex: map['datasetIdRegex'] == null ? null : map['datasetIdRegex'] as String,
-      projectIdRegex: map['projectIdRegex'] == null ? null : map['projectIdRegex'] as String,
-      tableIdRegex: map['tableIdRegex'] == null ? null : map['tableIdRegex'] as String,
+      datasetIdRegex: map['datasetIdRegex'] == null ? null : (map['datasetIdRegex'] as String).input(),
+      projectIdRegex: map['projectIdRegex'] == null ? null : (map['projectIdRegex'] as String).input(),
+      tableIdRegex: map['tableIdRegex'] == null ? null : (map['tableIdRegex'] as String).input(),
     );
   }
 }

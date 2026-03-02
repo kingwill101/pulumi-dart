@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
   /// Map of custom parameters to include in OAuth requests.
-  final Map<String, String>? customParameters;
+  final pulumi.Input<Map<String, String>>? customParameters;
   /// ARN of the OIDC provider for OAuth authentication.
-  final String providerArn;
+  final pulumi.Input<String> providerArn;
   /// Set of OAuth scopes to request.
-  final List<String> scopes;
+  final pulumi.Input<List<String>> scopes;
 
   /// Creates a new [AgentcoreGatewayTargetCredentialProviderConfigurationOauth].
   /// [customParameters] Map of custom parameters to include in OAuth requests.
@@ -29,9 +30,9 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
 
   factory AgentcoreGatewayTargetCredentialProviderConfigurationOauth.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetCredentialProviderConfigurationOauth(
-      customParameters: map['customParameters'] == null ? null : (map['customParameters'] as Map).cast<String, String>(),
-      providerArn: map['providerArn'] as String,
-      scopes: (map['scopes'] as List).cast<String>(),
+      customParameters: map['customParameters'] == null ? null : ((map['customParameters'] as Map).cast<String, String>()).input(),
+      providerArn: (map['providerArn'] as String).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

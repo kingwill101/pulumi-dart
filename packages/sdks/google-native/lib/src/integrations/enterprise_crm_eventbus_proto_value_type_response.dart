@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_double_array_response.dart';
 import 'enterprise_crm_eventbus_proto_int_array_response.dart';
 import 'enterprise_crm_eventbus_proto_string_array_response.dart';
 
 /// Used for define type for values. Currently supported value types include int, string, double, array, and any proto message.
 class EnterpriseCrmEventbusProtoValueTypeResponse {
-  final bool booleanValue;
-  final EnterpriseCrmEventbusProtoDoubleArrayResponse doubleArray;
-  final double doubleValue;
-  final EnterpriseCrmEventbusProtoIntArrayResponse intArray;
-  final String intValue;
-  final Map<String, String> protoValue;
-  final EnterpriseCrmEventbusProtoStringArrayResponse stringArray;
-  final String stringValue;
+  final pulumi.Input<bool> booleanValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoDoubleArrayResponse> doubleArray;
+  final pulumi.Input<double> doubleValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoIntArrayResponse> intArray;
+  final pulumi.Input<String> intValue;
+  final pulumi.Input<Map<String, String>> protoValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoStringArrayResponse> stringArray;
+  final pulumi.Input<String> stringValue;
 
   /// Creates a new [EnterpriseCrmEventbusProtoValueTypeResponse].
   /// [booleanValue] Required.
@@ -38,26 +39,26 @@ class EnterpriseCrmEventbusProtoValueTypeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': booleanValue,
-      'doubleArray': doubleArray.toMap(),
+      'doubleArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoDoubleArrayResponse, Map<String, dynamic>>(doubleArray, (value) => value.toMap()),
       'doubleValue': doubleValue,
-      'intArray': intArray.toMap(),
+      'intArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoIntArrayResponse, Map<String, dynamic>>(intArray, (value) => value.toMap()),
       'intValue': intValue,
       'protoValue': protoValue,
-      'stringArray': stringArray.toMap(),
+      'stringArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoStringArrayResponse, Map<String, dynamic>>(stringArray, (value) => value.toMap()),
       'stringValue': stringValue,
     };
   }
 
   factory EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoValueTypeResponse(
-      booleanValue: map['booleanValue'] as bool,
-      doubleArray: EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>()),
-      doubleValue: map['doubleValue'] as double,
-      intArray: EnterpriseCrmEventbusProtoIntArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>()),
-      intValue: map['intValue'] as String,
-      protoValue: (map['protoValue'] as Map).cast<String, String>(),
-      stringArray: EnterpriseCrmEventbusProtoStringArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>()),
-      stringValue: map['stringValue'] as String,
+      booleanValue: (map['booleanValue'] as bool).input(),
+      doubleArray: (EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>())).input(),
+      doubleValue: (map['doubleValue'] as double).input(),
+      intArray: (EnterpriseCrmEventbusProtoIntArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>())).input(),
+      intValue: (map['intValue'] as String).input(),
+      protoValue: ((map['protoValue'] as Map).cast<String, String>()).input(),
+      stringArray: (EnterpriseCrmEventbusProtoStringArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>())).input(),
+      stringValue: (map['stringValue'] as String).input(),
     );
   }
 }

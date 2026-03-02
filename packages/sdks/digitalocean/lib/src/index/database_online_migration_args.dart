@@ -23,15 +23,11 @@ class DatabaseOnlineMigrationArgs {
   /// [ignoreDbs] A list of databases that should be ignored during migration.
   /// [source] Configuration for migration
   DatabaseOnlineMigrationArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<bool>? disableSsl,
-    pulumi.Output<List<String>>? ignoreDbs,
-    required pulumi.Output<DatabaseOnlineMigrationSource> source,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      disableSsl = pulumi.Input.asOptionalInput<bool>(disableSsl),
-      ignoreDbs = pulumi.Input.asOptionalInput<List<String>>(ignoreDbs),
-      source = pulumi.Input.asInput<DatabaseOnlineMigrationSource>(source);
+    required this.clusterId,
+    this.disableSsl,
+    this.ignoreDbs,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DatabaseOnlineMigrationArgs {
 
   factory DatabaseOnlineMigrationArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseOnlineMigrationArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      disableSsl: map['disableSsl'] == null ? null : pulumi.Output.create<bool>(map['disableSsl'] as bool),
-      ignoreDbs: map['ignoreDbs'] == null ? null : pulumi.Output.create<List<String>>((map['ignoreDbs'] as List).cast<String>()),
-      source: pulumi.Output.create<DatabaseOnlineMigrationSource>(DatabaseOnlineMigrationSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
+      clusterId: (map['clusterId'] as String).input(),
+      disableSsl: map['disableSsl'] == null ? null : (map['disableSsl'] as bool).input(),
+      ignoreDbs: map['ignoreDbs'] == null ? null : ((map['ignoreDbs'] as List).cast<String>()).input(),
+      source: (DatabaseOnlineMigrationSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

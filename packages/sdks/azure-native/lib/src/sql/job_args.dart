@@ -29,19 +29,13 @@ class JobArgs {
   /// [schedule] Schedule properties of the job.
   /// [serverName] The name of the server.
   JobArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> jobAgentName,
-    pulumi.Output<String>? jobName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<JobSchedule>? schedule,
-    required pulumi.Output<String> serverName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      jobAgentName = pulumi.Input.asInput<String>(jobAgentName),
-      jobName = pulumi.Input.asOptionalInput<String>(jobName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schedule = pulumi.Input.asOptionalInput<JobSchedule>(schedule),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    this.description,
+    required this.jobAgentName,
+    this.jobName,
+    required this.resourceGroupName,
+    this.schedule,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      jobAgentName: pulumi.Output.create<String>(map['jobAgentName'] as String),
-      jobName: map['jobName'] == null ? null : pulumi.Output.create<String>(map['jobName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<JobSchedule>(JobSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      jobAgentName: (map['jobAgentName'] as String).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schedule: map['schedule'] == null ? null : (JobSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_authorization_header_credentials_response.dart';
 
 /// Details of the Credentials used to connect to Backend.
 class BackendCredentialsContractResponse {
   /// Authorization header authentication
-  final BackendAuthorizationHeaderCredentialsResponse? authorization;
+  final pulumi.Input<BackendAuthorizationHeaderCredentialsResponse>? authorization;
   /// List of Client Certificate Thumbprints. Will be ignored if certificatesIds are provided.
-  final List<String>? certificate;
+  final pulumi.Input<List<String>>? certificate;
   /// List of Client Certificate Ids.
-  final List<String>? certificateIds;
+  final pulumi.Input<List<String>>? certificateIds;
   /// Header Parameter description.
-  final Map<String, List<String>>? header;
+  final pulumi.Input<Map<String, List<String>>>? header;
   /// Query Parameter description.
-  final Map<String, List<String>>? query;
+  final pulumi.Input<Map<String, List<String>>>? query;
 
   /// Creates a new [BackendCredentialsContractResponse].
   /// [authorization] Authorization header authentication
@@ -31,7 +32,7 @@ class BackendCredentialsContractResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorization': ?authorization == null ? null : authorization!.toMap(),
+      'authorization': ?pulumi.Input.mapOptionalInputValue<BackendAuthorizationHeaderCredentialsResponse, Map<String, dynamic>>(authorization, (value) => value.toMap()),
       'certificate': ?certificate,
       'certificateIds': ?certificateIds,
       'header': ?header,
@@ -41,11 +42,11 @@ class BackendCredentialsContractResponse {
 
   factory BackendCredentialsContractResponse.fromMap(Map<String, dynamic> map) {
     return BackendCredentialsContractResponse(
-      authorization: map['authorization'] == null ? null : BackendAuthorizationHeaderCredentialsResponse.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
-      certificate: map['certificate'] == null ? null : (map['certificate'] as List).cast<String>(),
-      certificateIds: map['certificateIds'] == null ? null : (map['certificateIds'] as List).cast<String>(),
-      header: map['header'] == null ? null : (map['header'] as Map).cast<String, List<String>>(),
-      query: map['query'] == null ? null : (map['query'] as Map).cast<String, List<String>>(),
+      authorization: map['authorization'] == null ? null : (BackendAuthorizationHeaderCredentialsResponse.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
+      certificate: map['certificate'] == null ? null : ((map['certificate'] as List).cast<String>()).input(),
+      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
+      header: map['header'] == null ? null : ((map['header'] as Map).cast<String, List<String>>()).input(),
+      query: map['query'] == null ? null : ((map['query'] as Map).cast<String, List<String>>()).input(),
     );
   }
 }

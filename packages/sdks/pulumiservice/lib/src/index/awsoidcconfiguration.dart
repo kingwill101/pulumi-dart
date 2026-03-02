@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AWSOIDCConfiguration {
   /// Duration of the assume-role session in “XhYmZs” format
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// Optional set of IAM policy ARNs that further restrict the assume-role session
-  final List<String>? policyARNs;
+  final pulumi.Input<List<String>>? policyARNs;
   /// The ARN of the role to assume using the OIDC token.
-  final String roleARN;
+  final pulumi.Input<String> roleARN;
   /// The name of the assume-role session.
-  final String sessionName;
+  final pulumi.Input<String> sessionName;
 
   /// Creates a new [AWSOIDCConfiguration].
   /// [duration] Duration of the assume-role session in “XhYmZs” format
@@ -34,10 +35,10 @@ class AWSOIDCConfiguration {
 
   factory AWSOIDCConfiguration.fromMap(Map<String, dynamic> map) {
     return AWSOIDCConfiguration(
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      policyARNs: map['policyARNs'] == null ? null : (map['policyARNs'] as List).cast<String>(),
-      roleARN: map['roleARN'] as String,
-      sessionName: map['sessionName'] as String,
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      policyARNs: map['policyARNs'] == null ? null : ((map['policyARNs'] as List).cast<String>()).input(),
+      roleARN: (map['roleARN'] as String).input(),
+      sessionName: (map['sessionName'] as String).input(),
     );
   }
 }

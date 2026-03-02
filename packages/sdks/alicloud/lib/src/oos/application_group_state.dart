@@ -26,19 +26,13 @@ class ApplicationGroupState {
   /// [importTagKey] The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
   /// [importTagValue] The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
   ApplicationGroupState({
-    pulumi.Output<String>? applicationGroupName,
-    pulumi.Output<String>? applicationName,
-    pulumi.Output<String>? deployRegionId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? importTagKey,
-    pulumi.Output<String>? importTagValue,
-  }) :
-      applicationGroupName = pulumi.Input.asOptionalInput<String>(applicationGroupName),
-      applicationName = pulumi.Input.asOptionalInput<String>(applicationName),
-      deployRegionId = pulumi.Input.asOptionalInput<String>(deployRegionId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      importTagKey = pulumi.Input.asOptionalInput<String>(importTagKey),
-      importTagValue = pulumi.Input.asOptionalInput<String>(importTagValue);
+    this.applicationGroupName,
+    this.applicationName,
+    this.deployRegionId,
+    this.description,
+    this.importTagKey,
+    this.importTagValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ApplicationGroupState {
 
   factory ApplicationGroupState.fromMap(Map<String, dynamic> map) {
     return ApplicationGroupState(
-      applicationGroupName: map['applicationGroupName'] == null ? null : pulumi.Output.create<String>(map['applicationGroupName'] as String),
-      applicationName: map['applicationName'] == null ? null : pulumi.Output.create<String>(map['applicationName'] as String),
-      deployRegionId: map['deployRegionId'] == null ? null : pulumi.Output.create<String>(map['deployRegionId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      importTagKey: map['importTagKey'] == null ? null : pulumi.Output.create<String>(map['importTagKey'] as String),
-      importTagValue: map['importTagValue'] == null ? null : pulumi.Output.create<String>(map['importTagValue'] as String),
+      applicationGroupName: map['applicationGroupName'] == null ? null : (map['applicationGroupName'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      deployRegionId: map['deployRegionId'] == null ? null : (map['deployRegionId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      importTagKey: map['importTagKey'] == null ? null : (map['importTagKey'] as String).input(),
+      importTagValue: map['importTagValue'] == null ? null : (map['importTagValue'] as String).input(),
     );
   }
 }

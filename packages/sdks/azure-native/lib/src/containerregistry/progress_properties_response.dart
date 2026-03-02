@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProgressPropertiesResponse {
   /// The percentage complete of the copy operation.
-  final String? percentage;
+  final pulumi.Input<String>? percentage;
 
   /// Creates a new [ProgressPropertiesResponse].
   /// [percentage] The percentage complete of the copy operation.
@@ -19,7 +20,7 @@ class ProgressPropertiesResponse {
 
   factory ProgressPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProgressPropertiesResponse(
-      percentage: map['percentage'] == null ? null : map['percentage'] as String,
+      percentage: map['percentage'] == null ? null : (map['percentage'] as String).input(),
     );
   }
 }

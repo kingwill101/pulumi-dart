@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AML Token identity configuration.
 class AmlToken {
   /// Enum to determine identity framework.
   /// Expected value is 'AMLToken'.
-  final String identityType;
+  final pulumi.Input<String> identityType;
 
   /// Creates a new [AmlToken].
   /// [identityType] Enum to determine identity framework.
@@ -21,7 +22,7 @@ class AmlToken {
 
   factory AmlToken.fromMap(Map<String, dynamic> map) {
     return AmlToken(
-      identityType: map['identityType'] as String,
+      identityType: (map['identityType'] as String).input(),
     );
   }
 }

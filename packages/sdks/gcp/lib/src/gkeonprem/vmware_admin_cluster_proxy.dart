@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterProxy {
   /// A comma-separated list of IP addresses, IP address ranges,
   /// host names, and domain names that should not go through the proxy server.
-  final String? noProxy;
+  final pulumi.Input<String>? noProxy;
   /// The proxy url.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [VmwareAdminClusterProxy].
   /// [noProxy] A comma-separated list of IP addresses, IP address ranges,
@@ -25,8 +26,8 @@ class VmwareAdminClusterProxy {
 
   factory VmwareAdminClusterProxy.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterProxy(
-      noProxy: map['noProxy'] == null ? null : map['noProxy'] as String,
-      url: map['url'] as String,
+      noProxy: map['noProxy'] == null ? null : (map['noProxy'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

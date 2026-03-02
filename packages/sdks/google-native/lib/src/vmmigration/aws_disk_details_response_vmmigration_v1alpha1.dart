@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details of an AWS instance disk.
 class AwsDiskDetailsResponseVmmigrationV1alpha1 {
   /// The ordinal number of the disk.
-  final int diskNumber;
+  final pulumi.Input<int> diskNumber;
   /// Size in GB.
-  final String sizeGb;
+  final pulumi.Input<String> sizeGb;
   /// AWS volume ID.
-  final String volumeId;
+  final pulumi.Input<String> volumeId;
 
   /// Creates a new [AwsDiskDetailsResponseVmmigrationV1alpha1].
   /// [diskNumber] The ordinal number of the disk.
@@ -30,9 +31,9 @@ class AwsDiskDetailsResponseVmmigrationV1alpha1 {
 
   factory AwsDiskDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return AwsDiskDetailsResponseVmmigrationV1alpha1(
-      diskNumber: map['diskNumber'] as int,
-      sizeGb: map['sizeGb'] as String,
-      volumeId: map['volumeId'] as String,
+      diskNumber: (map['diskNumber'] as int).input(),
+      sizeGb: (map['sizeGb'] as String).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

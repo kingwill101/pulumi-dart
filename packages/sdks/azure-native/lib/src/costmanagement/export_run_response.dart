@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'common_export_properties_response.dart';
 import 'error_details_response.dart';
 
 /// An export run.
 class ExportRunResponse {
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-  final String? eTag;
+  final pulumi.Input<String>? eTag;
   /// The details of any error.
-  final ErrorDetailsResponse? error;
+  final pulumi.Input<ErrorDetailsResponse>? error;
   /// The type of the export run.
-  final String? executionType;
+  final pulumi.Input<String>? executionType;
   /// The name of the exported file.
-  final String? fileName;
+  final pulumi.Input<String>? fileName;
   /// Resource Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The time when the export run finished.
-  final String? processingEndTime;
+  final pulumi.Input<String>? processingEndTime;
   /// The time when export was picked up to be run.
-  final String? processingStartTime;
+  final pulumi.Input<String>? processingStartTime;
   /// The export settings that were in effect for this run.
-  final CommonExportPropertiesResponse? runSettings;
+  final pulumi.Input<CommonExportPropertiesResponse>? runSettings;
   /// The last known status of the export run.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The identifier for the entity that triggered the export. For on-demand runs it is the user email. For scheduled runs it is 'System'.
-  final String? submittedBy;
+  final pulumi.Input<String>? submittedBy;
   /// The time when export was queued to be run.
-  final String? submittedTime;
+  final pulumi.Input<String>? submittedTime;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ExportRunResponse].
   /// [eTag] eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -65,14 +66,14 @@ class ExportRunResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'eTag': ?eTag,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorDetailsResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'executionType': ?executionType,
       'fileName': ?fileName,
       'id': id,
       'name': name,
       'processingEndTime': ?processingEndTime,
       'processingStartTime': ?processingStartTime,
-      'runSettings': ?runSettings == null ? null : runSettings!.toMap(),
+      'runSettings': ?pulumi.Input.mapOptionalInputValue<CommonExportPropertiesResponse, Map<String, dynamic>>(runSettings, (value) => value.toMap()),
       'status': ?status,
       'submittedBy': ?submittedBy,
       'submittedTime': ?submittedTime,
@@ -82,19 +83,19 @@ class ExportRunResponse {
 
   factory ExportRunResponse.fromMap(Map<String, dynamic> map) {
     return ExportRunResponse(
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
-      error: map['error'] == null ? null : ErrorDetailsResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      executionType: map['executionType'] == null ? null : map['executionType'] as String,
-      fileName: map['fileName'] == null ? null : map['fileName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      processingEndTime: map['processingEndTime'] == null ? null : map['processingEndTime'] as String,
-      processingStartTime: map['processingStartTime'] == null ? null : map['processingStartTime'] as String,
-      runSettings: map['runSettings'] == null ? null : CommonExportPropertiesResponse.fromMap((map['runSettings'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
-      submittedBy: map['submittedBy'] == null ? null : map['submittedBy'] as String,
-      submittedTime: map['submittedTime'] == null ? null : map['submittedTime'] as String,
-      type: map['type'] as String,
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      error: map['error'] == null ? null : (ErrorDetailsResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      processingEndTime: map['processingEndTime'] == null ? null : (map['processingEndTime'] as String).input(),
+      processingStartTime: map['processingStartTime'] == null ? null : (map['processingStartTime'] as String).input(),
+      runSettings: map['runSettings'] == null ? null : (CommonExportPropertiesResponse.fromMap((map['runSettings'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      submittedBy: map['submittedBy'] == null ? null : (map['submittedBy'] as String).input(),
+      submittedTime: map['submittedTime'] == null ? null : (map['submittedTime'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

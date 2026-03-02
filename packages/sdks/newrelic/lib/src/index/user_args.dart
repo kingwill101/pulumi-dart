@@ -26,15 +26,11 @@ class UserArgs {
   /// [name] The name of the user to be created.
   /// [userType] The tier to which the user to be created would belong. Accepted values for this argument are `BASIC_USER_TIER`, `CORE_USER_TIER`, or `FULL_USER_TIER`. If not specified in the configuration, the argument would default to `BASIC_USER_TIER`.
   UserArgs({
-    required pulumi.Output<String> authenticationDomainId,
-    required pulumi.Output<String> emailId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? userType,
-  }) :
-      authenticationDomainId = pulumi.Input.asInput<String>(authenticationDomainId),
-      emailId = pulumi.Input.asInput<String>(emailId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      userType = pulumi.Input.asOptionalInput<String>(userType);
+    required this.authenticationDomainId,
+    required this.emailId,
+    this.name,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      authenticationDomainId: pulumi.Output.create<String>(map['authenticationDomainId'] as String),
-      emailId: pulumi.Output.create<String>(map['emailId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+      authenticationDomainId: (map['authenticationDomainId'] as String).input(),
+      emailId: (map['emailId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

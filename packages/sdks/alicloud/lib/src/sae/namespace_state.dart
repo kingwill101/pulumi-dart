@@ -22,17 +22,12 @@ class NamespaceState {
   /// [namespaceName] The Name of Namespace.
   /// [namespaceShortId] The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
   NamespaceState({
-    pulumi.Output<bool>? enableMicroRegistration,
-    pulumi.Output<String>? namespaceDescription,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? namespaceShortId,
-  }) :
-      enableMicroRegistration = pulumi.Input.asOptionalInput<bool>(enableMicroRegistration),
-      namespaceDescription = pulumi.Input.asOptionalInput<String>(namespaceDescription),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      namespaceShortId = pulumi.Input.asOptionalInput<String>(namespaceShortId);
+    this.enableMicroRegistration,
+    this.namespaceDescription,
+    this.namespaceId,
+    this.namespaceName,
+    this.namespaceShortId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      enableMicroRegistration: map['enableMicroRegistration'] == null ? null : pulumi.Output.create<bool>(map['enableMicroRegistration'] as bool),
-      namespaceDescription: map['namespaceDescription'] == null ? null : pulumi.Output.create<String>(map['namespaceDescription'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      namespaceShortId: map['namespaceShortId'] == null ? null : pulumi.Output.create<String>(map['namespaceShortId'] as String),
+      enableMicroRegistration: map['enableMicroRegistration'] == null ? null : (map['enableMicroRegistration'] as bool).input(),
+      namespaceDescription: map['namespaceDescription'] == null ? null : (map['namespaceDescription'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      namespaceShortId: map['namespaceShortId'] == null ? null : (map['namespaceShortId'] as String).input(),
     );
   }
 }

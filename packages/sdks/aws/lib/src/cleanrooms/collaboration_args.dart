@@ -44,27 +44,17 @@ class CollaborationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key value pairs which tag the collaboration.
   CollaborationArgs({
-    pulumi.Output<String>? analyticsEngine,
-    required pulumi.Output<String> creatorDisplayName,
-    required pulumi.Output<List<String>> creatorMemberAbilities,
-    pulumi.Output<CollaborationDataEncryptionMetadata>? dataEncryptionMetadata,
-    required pulumi.Output<String> description,
-    pulumi.Output<List<CollaborationMember>>? members,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> queryLogStatus,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      analyticsEngine = pulumi.Input.asOptionalInput<String>(analyticsEngine),
-      creatorDisplayName = pulumi.Input.asInput<String>(creatorDisplayName),
-      creatorMemberAbilities = pulumi.Input.asInput<List<String>>(creatorMemberAbilities),
-      dataEncryptionMetadata = pulumi.Input.asOptionalInput<CollaborationDataEncryptionMetadata>(dataEncryptionMetadata),
-      description = pulumi.Input.asInput<String>(description),
-      members = pulumi.Input.asOptionalInput<List<CollaborationMember>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryLogStatus = pulumi.Input.asInput<String>(queryLogStatus),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.analyticsEngine,
+    required this.creatorDisplayName,
+    required this.creatorMemberAbilities,
+    this.dataEncryptionMetadata,
+    required this.description,
+    this.members,
+    this.name,
+    required this.queryLogStatus,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class CollaborationArgs {
 
   factory CollaborationArgs.fromMap(Map<String, dynamic> map) {
     return CollaborationArgs(
-      analyticsEngine: map['analyticsEngine'] == null ? null : pulumi.Output.create<String>(map['analyticsEngine'] as String),
-      creatorDisplayName: pulumi.Output.create<String>(map['creatorDisplayName'] as String),
-      creatorMemberAbilities: pulumi.Output.create<List<String>>((map['creatorMemberAbilities'] as List).cast<String>()),
-      dataEncryptionMetadata: map['dataEncryptionMetadata'] == null ? null : pulumi.Output.create<CollaborationDataEncryptionMetadata>(CollaborationDataEncryptionMetadata.fromMap((map['dataEncryptionMetadata'] as Map).cast<String, dynamic>())),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<CollaborationMember>>(pulumi.Input.decodeList<CollaborationMember>(map['members'], (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryLogStatus: pulumi.Output.create<String>(map['queryLogStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      analyticsEngine: map['analyticsEngine'] == null ? null : (map['analyticsEngine'] as String).input(),
+      creatorDisplayName: (map['creatorDisplayName'] as String).input(),
+      creatorMemberAbilities: ((map['creatorMemberAbilities'] as List).cast<String>()).input(),
+      dataEncryptionMetadata: map['dataEncryptionMetadata'] == null ? null : (CollaborationDataEncryptionMetadata.fromMap((map['dataEncryptionMetadata'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      members: map['members'] == null ? null : (pulumi.Input.decodeList<CollaborationMember>(map['members'], (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryLogStatus: (map['queryLogStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

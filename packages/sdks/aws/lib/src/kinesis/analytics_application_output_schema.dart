@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationOutputSchema {
   /// The Format Type of the records on the output stream. Can be `CSV` or `JSON`.
-  final String recordFormatType;
+  final pulumi.Input<String> recordFormatType;
 
   /// Creates a new [AnalyticsApplicationOutputSchema].
   /// [recordFormatType] The Format Type of the records on the output stream. Can be `CSV` or `JSON`.
@@ -19,7 +20,7 @@ class AnalyticsApplicationOutputSchema {
 
   factory AnalyticsApplicationOutputSchema.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationOutputSchema(
-      recordFormatType: map['recordFormatType'] as String,
+      recordFormatType: (map['recordFormatType'] as String).input(),
     );
   }
 }

@@ -37,23 +37,15 @@ class HciNetworkInterfaceArgs {
   /// [resourceGroupName] The name of the Resource Group where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Network Interface.
   HciNetworkInterfaceArgs({
-    required pulumi.Output<String> customLocationId,
-    pulumi.Output<List<String>>? dnsServers,
-    required pulumi.Output<HciNetworkInterfaceIpConfiguration> ipConfiguration,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? macAddress,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customLocationId = pulumi.Input.asInput<String>(customLocationId),
-      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
-      ipConfiguration = pulumi.Input.asInput<HciNetworkInterfaceIpConfiguration>(ipConfiguration),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      macAddress = pulumi.Input.asOptionalInput<String>(macAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.customLocationId,
+    this.dnsServers,
+    required this.ipConfiguration,
+    this.location,
+    this.macAddress,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class HciNetworkInterfaceArgs {
 
   factory HciNetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return HciNetworkInterfaceArgs(
-      customLocationId: pulumi.Output.create<String>(map['customLocationId'] as String),
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
-      ipConfiguration: pulumi.Output.create<HciNetworkInterfaceIpConfiguration>(HciNetworkInterfaceIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      macAddress: map['macAddress'] == null ? null : pulumi.Output.create<String>(map['macAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customLocationId: (map['customLocationId'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      ipConfiguration: (HciNetworkInterfaceIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

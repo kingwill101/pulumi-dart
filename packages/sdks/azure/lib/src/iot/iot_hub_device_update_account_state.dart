@@ -32,23 +32,15 @@ class IotHubDeviceUpdateAccountState {
   /// [sku] Sku of the IoT Hub Device Update Account. Possible values are `Free` and `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the IoT Hub Device Update Account.
   IotHubDeviceUpdateAccountState({
-    pulumi.Output<String>? hostName,
-    pulumi.Output<IotHubDeviceUpdateAccountIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      identity = pulumi.Input.asOptionalInput<IotHubDeviceUpdateAccountIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.hostName,
+    this.identity,
+    this.location,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class IotHubDeviceUpdateAccountState {
 
   factory IotHubDeviceUpdateAccountState.fromMap(Map<String, dynamic> map) {
     return IotHubDeviceUpdateAccountState(
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<IotHubDeviceUpdateAccountIdentity>(IotHubDeviceUpdateAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      identity: map['identity'] == null ? null : (IotHubDeviceUpdateAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -18,13 +18,10 @@ class FolderReplayPolicysimulatorV1betaArgs {
   /// [folderId] Required.
   /// [location] Optional.
   FolderReplayPolicysimulatorV1betaArgs({
-    required pulumi.Output<GoogleCloudPolicysimulatorV1betaReplayConfig> config,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<String>? location,
-  }) :
-      config = pulumi.Input.asInput<GoogleCloudPolicysimulatorV1betaReplayConfig>(config),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      location = pulumi.Input.asOptionalInput<String>(location);
+    required this.config,
+    required this.folderId,
+    this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class FolderReplayPolicysimulatorV1betaArgs {
 
   factory FolderReplayPolicysimulatorV1betaArgs.fromMap(Map<String, dynamic> map) {
     return FolderReplayPolicysimulatorV1betaArgs(
-      config: pulumi.Output.create<GoogleCloudPolicysimulatorV1betaReplayConfig>(GoogleCloudPolicysimulatorV1betaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      config: (GoogleCloudPolicysimulatorV1betaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      folderId: (map['folderId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
     );
   }
 }

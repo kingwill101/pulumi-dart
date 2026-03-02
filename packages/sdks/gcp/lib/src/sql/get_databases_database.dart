@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabasesDatabase {
   /// The charset value. See MySQL's
@@ -7,28 +8,28 @@ class GetDatabasesDatabase {
   /// and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
   /// for more details and supported values. Postgres databases only support
   /// a value of 'UTF8' at creation time.
-  final String charset;
+  final pulumi.Input<String> charset;
   /// The collation value. See MySQL's
   /// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
   /// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
   /// for more details and supported values. Postgres databases only support
   /// a value of 'en_US.UTF8' at creation time.
-  final String collation;
+  final pulumi.Input<String> collation;
   /// The deletion policy for the database. Setting ABANDON allows the resource
   /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
   /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
   /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
-  final String deletionPolicy;
+  final pulumi.Input<String> deletionPolicy;
   /// The name of the Cloud SQL database instance in which the database belongs.
-  final String instance;
+  final pulumi.Input<String> instance;
   /// The name of the database in the Cloud SQL instance.
   /// This does not include the project ID or instance name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the project in which the instance belongs.
   ///
   /// > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
-  final String project;
-  final String selfLink;
+  final pulumi.Input<String> project;
+  final pulumi.Input<String> selfLink;
 
   /// Creates a new [GetDatabasesDatabase].
   /// [charset] The charset value. See MySQL's
@@ -62,13 +63,13 @@ class GetDatabasesDatabase {
 
   factory GetDatabasesDatabase.fromMap(Map<String, dynamic> map) {
     return GetDatabasesDatabase(
-      charset: map['charset'] as String,
-      collation: map['collation'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      instance: map['instance'] as String,
-      name: map['name'] as String,
-      project: map['project'] as String,
-      selfLink: map['selfLink'] as String,
+      charset: (map['charset'] as String).input(),
+      collation: (map['collation'] as String).input(),
+      deletionPolicy: (map['deletionPolicy'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: (map['project'] as String).input(),
+      selfLink: (map['selfLink'] as String).input(),
     );
   }
 }

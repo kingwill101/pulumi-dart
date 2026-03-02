@@ -22,17 +22,12 @@ class SessionArgs {
   /// [labels] The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
   /// [project] Optional.
   SessionArgs({
-    pulumi.Output<String>? creatorRole,
-    required pulumi.Output<String> databaseId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-  }) :
-      creatorRole = pulumi.Input.asOptionalInput<String>(creatorRole),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.creatorRole,
+    required this.databaseId,
+    required this.instanceId,
+    this.labels,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class SessionArgs {
 
   factory SessionArgs.fromMap(Map<String, dynamic> map) {
     return SessionArgs(
-      creatorRole: map['creatorRole'] == null ? null : pulumi.Output.create<String>(map['creatorRole'] as String),
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      creatorRole: map['creatorRole'] == null ? null : (map['creatorRole'] as String).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

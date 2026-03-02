@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a Compute Engine VPN tunnel.
 class VpnTunnelInfoResponseNetworkmanagementV1beta1 {
   /// Name of a VPN tunnel.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// URI of a Compute Engine network where the VPN tunnel is configured.
-  final String networkUri;
+  final pulumi.Input<String> networkUri;
   /// Name of a Google Cloud region where this VPN tunnel is configured.
-  final String region;
+  final pulumi.Input<String> region;
   /// URI of a VPN gateway at remote end of the tunnel.
-  final String remoteGateway;
+  final pulumi.Input<String> remoteGateway;
   /// Remote VPN gateway's IP address.
-  final String remoteGatewayIp;
+  final pulumi.Input<String> remoteGatewayIp;
   /// Type of the routing policy.
-  final String routingType;
+  final pulumi.Input<String> routingType;
   /// URI of the VPN gateway at local end of the tunnel.
-  final String sourceGateway;
+  final pulumi.Input<String> sourceGateway;
   /// Local VPN gateway's IP address.
-  final String sourceGatewayIp;
+  final pulumi.Input<String> sourceGatewayIp;
   /// URI of a VPN tunnel.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [VpnTunnelInfoResponseNetworkmanagementV1beta1].
   /// [displayName] Name of a VPN tunnel.
@@ -60,15 +61,15 @@ class VpnTunnelInfoResponseNetworkmanagementV1beta1 {
 
   factory VpnTunnelInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return VpnTunnelInfoResponseNetworkmanagementV1beta1(
-      displayName: map['displayName'] as String,
-      networkUri: map['networkUri'] as String,
-      region: map['region'] as String,
-      remoteGateway: map['remoteGateway'] as String,
-      remoteGatewayIp: map['remoteGatewayIp'] as String,
-      routingType: map['routingType'] as String,
-      sourceGateway: map['sourceGateway'] as String,
-      sourceGatewayIp: map['sourceGatewayIp'] as String,
-      uri: map['uri'] as String,
+      displayName: (map['displayName'] as String).input(),
+      networkUri: (map['networkUri'] as String).input(),
+      region: (map['region'] as String).input(),
+      remoteGateway: (map['remoteGateway'] as String).input(),
+      remoteGatewayIp: (map['remoteGatewayIp'] as String).input(),
+      routingType: (map['routingType'] as String).input(),
+      sourceGateway: (map['sourceGateway'] as String).input(),
+      sourceGatewayIp: (map['sourceGatewayIp'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

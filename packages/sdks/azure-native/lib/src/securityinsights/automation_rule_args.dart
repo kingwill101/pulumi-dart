@@ -33,21 +33,14 @@ class AutomationRuleArgs {
   /// [triggeringLogic] Describes automation rule triggering logic.
   /// [workspaceName] The name of the workspace.
   AutomationRuleArgs({
-    required pulumi.Output<List<AutomationRuleAddIncidentTaskAction>> actions,
-    pulumi.Output<String>? automationRuleId,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<int> order,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<AutomationRuleTriggeringLogic> triggeringLogic,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      actions = pulumi.Input.asInput<List<AutomationRuleAddIncidentTaskAction>>(actions),
-      automationRuleId = pulumi.Input.asOptionalInput<String>(automationRuleId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      order = pulumi.Input.asInput<int>(order),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      triggeringLogic = pulumi.Input.asInput<AutomationRuleTriggeringLogic>(triggeringLogic),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.actions,
+    this.automationRuleId,
+    required this.displayName,
+    required this.order,
+    required this.resourceGroupName,
+    required this.triggeringLogic,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AutomationRuleArgs {
 
   factory AutomationRuleArgs.fromMap(Map<String, dynamic> map) {
     return AutomationRuleArgs(
-      actions: pulumi.Output.create<List<AutomationRuleAddIncidentTaskAction>>(pulumi.Input.decodeList<AutomationRuleAddIncidentTaskAction>(map['actions'], (value) => AutomationRuleAddIncidentTaskAction.fromMap((value as Map).cast<String, dynamic>()))),
-      automationRuleId: map['automationRuleId'] == null ? null : pulumi.Output.create<String>(map['automationRuleId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      order: pulumi.Output.create<int>(map['order'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      triggeringLogic: pulumi.Output.create<AutomationRuleTriggeringLogic>(AutomationRuleTriggeringLogic.fromMap((map['triggeringLogic'] as Map).cast<String, dynamic>())),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      actions: (pulumi.Input.decodeList<AutomationRuleAddIncidentTaskAction>(map['actions'], (value) => AutomationRuleAddIncidentTaskAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      automationRuleId: map['automationRuleId'] == null ? null : (map['automationRuleId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      order: (map['order'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      triggeringLogic: (AutomationRuleTriggeringLogic.fromMap((map['triggeringLogic'] as Map).cast<String, dynamic>())).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

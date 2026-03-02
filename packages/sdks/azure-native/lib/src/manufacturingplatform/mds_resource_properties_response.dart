@@ -20,53 +20,53 @@ import 'user_managed_open_aiprofile_response.dart';
 /// Details of the ManufacturingPlatform MdsResource.
 class MdsResourcePropertiesResponse {
   /// AAD Application Id.
-  final String aadApplicationId;
+  final pulumi.Input<String> aadApplicationId;
   /// Profile of Adx Created.
-  final AdxProfileResponse adxProfile;
+  final pulumi.Input<AdxProfileResponse> adxProfile;
   /// AKS Admin Group Id.
-  final String? aksAdminGroupId;
+  final pulumi.Input<String>? aksAdminGroupId;
   /// Profile of AKS Created.
-  final AksProfileResponse aksProfile;
+  final pulumi.Input<AksProfileResponse> aksProfile;
   /// Profile of CMK Settings.
-  final CmkProfileResponse? cmkProfile;
+  final pulumi.Input<CmkProfileResponse>? cmkProfile;
   /// Profile of Database Created.
-  final DatabaseProfileResponse databaseProfile;
+  final pulumi.Input<DatabaseProfileResponse> databaseProfile;
   /// Deny Assignments exclusion list.
-  final List<DenyAssignmentExclusionResponse>? denyAssignmentExclusions;
+  final pulumi.Input<List<DenyAssignmentExclusionResponse>>? denyAssignmentExclusions;
   /// Enable Copilot.
-  final bool? enableCopilot;
+  final pulumi.Input<bool>? enableCopilot;
   /// Enable Diagnostic Settings.
-  final bool? enableDiagnosticSettings;
+  final pulumi.Input<bool>? enableDiagnosticSettings;
   /// Profile of EventHub Resource.
-  final EventHubProfileResponse eventHubProfile;
+  final pulumi.Input<EventHubProfileResponse> eventHubProfile;
   /// Profile of Fabric resources.
-  final FabricProfileResponse? fabricProfile;
+  final pulumi.Input<FabricProfileResponse>? fabricProfile;
   /// Profile of Function App Resource.
-  final FunctionAppProfileResponse functionAppProfile;
+  final pulumi.Input<FunctionAppProfileResponse> functionAppProfile;
   /// Managed On Behalf Of Configuration.
-  final ManagedOnBehalfOfConfigurationResponse managedOnBehalfOfConfiguration;
+  final pulumi.Input<ManagedOnBehalfOfConfigurationResponse> managedOnBehalfOfConfiguration;
   /// Configuration of the managed resource group associated with the resource.
-  final ManagedResourceGroupConfigurationResponse managedResourceGroupConfiguration;
+  final pulumi.Input<ManagedResourceGroupConfigurationResponse> managedResourceGroupConfiguration;
   /// Profile of Monitoring Resource Created.
-  final MonitoringProfileResponse monitoringProfile;
+  final pulumi.Input<MonitoringProfileResponse> monitoringProfile;
   /// Profile of OpenAI Resource.
-  final OpenAIProfileResponse? openAIProfile;
+  final pulumi.Input<OpenAIProfileResponse>? openAIProfile;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Profile of Azure Redis Created.
-  final RedisProfileResponse redisProfile;
+  final pulumi.Input<RedisProfileResponse> redisProfile;
   /// Zone redundancy state for resources
-  final String? redundancyState;
+  final pulumi.Input<String>? redundancyState;
   /// State of the resource
-  final String? resourceState;
+  final pulumi.Input<String>? resourceState;
   /// Service Url
-  final String serviceUrl;
+  final pulumi.Input<String> serviceUrl;
   /// Profile of Storage Created.
-  final StorageProfileResponse storageProfile;
+  final pulumi.Input<StorageProfileResponse> storageProfile;
   /// Profile of User Managed OpenAI Resource.
-  final UserManagedOpenAIProfileResponse? userManagedOpenAIProfile;
+  final pulumi.Input<UserManagedOpenAIProfileResponse>? userManagedOpenAIProfile;
   /// Mds Resource Version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MdsResourcePropertiesResponse].
   /// [aadApplicationId] AAD Application Id.
@@ -123,58 +123,58 @@ class MdsResourcePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aadApplicationId': aadApplicationId,
-      'adxProfile': adxProfile.toMap(),
+      'adxProfile': pulumi.Input.mapInputValue<AdxProfileResponse, Map<String, dynamic>>(adxProfile, (value) => value.toMap()),
       'aksAdminGroupId': ?aksAdminGroupId,
-      'aksProfile': aksProfile.toMap(),
-      'cmkProfile': ?cmkProfile == null ? null : cmkProfile!.toMap(),
-      'databaseProfile': databaseProfile.toMap(),
-      'denyAssignmentExclusions': ?denyAssignmentExclusions == null ? null : pulumi.Input.encodeList<DenyAssignmentExclusionResponse, Map<String, dynamic>>(denyAssignmentExclusions!, (value) => value.toMap()),
+      'aksProfile': pulumi.Input.mapInputValue<AksProfileResponse, Map<String, dynamic>>(aksProfile, (value) => value.toMap()),
+      'cmkProfile': ?pulumi.Input.mapOptionalInputValue<CmkProfileResponse, Map<String, dynamic>>(cmkProfile, (value) => value.toMap()),
+      'databaseProfile': pulumi.Input.mapInputValue<DatabaseProfileResponse, Map<String, dynamic>>(databaseProfile, (value) => value.toMap()),
+      'denyAssignmentExclusions': ?pulumi.Input.mapOptionalInputValue<List<DenyAssignmentExclusionResponse>, List<Map<String, dynamic>>>(denyAssignmentExclusions, (value) => pulumi.Input.encodeList<DenyAssignmentExclusionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableCopilot': ?enableCopilot,
       'enableDiagnosticSettings': ?enableDiagnosticSettings,
-      'eventHubProfile': eventHubProfile.toMap(),
-      'fabricProfile': ?fabricProfile == null ? null : fabricProfile!.toMap(),
-      'functionAppProfile': functionAppProfile.toMap(),
-      'managedOnBehalfOfConfiguration': managedOnBehalfOfConfiguration.toMap(),
-      'managedResourceGroupConfiguration': managedResourceGroupConfiguration.toMap(),
-      'monitoringProfile': monitoringProfile.toMap(),
-      'openAIProfile': ?openAIProfile == null ? null : openAIProfile!.toMap(),
+      'eventHubProfile': pulumi.Input.mapInputValue<EventHubProfileResponse, Map<String, dynamic>>(eventHubProfile, (value) => value.toMap()),
+      'fabricProfile': ?pulumi.Input.mapOptionalInputValue<FabricProfileResponse, Map<String, dynamic>>(fabricProfile, (value) => value.toMap()),
+      'functionAppProfile': pulumi.Input.mapInputValue<FunctionAppProfileResponse, Map<String, dynamic>>(functionAppProfile, (value) => value.toMap()),
+      'managedOnBehalfOfConfiguration': pulumi.Input.mapInputValue<ManagedOnBehalfOfConfigurationResponse, Map<String, dynamic>>(managedOnBehalfOfConfiguration, (value) => value.toMap()),
+      'managedResourceGroupConfiguration': pulumi.Input.mapInputValue<ManagedResourceGroupConfigurationResponse, Map<String, dynamic>>(managedResourceGroupConfiguration, (value) => value.toMap()),
+      'monitoringProfile': pulumi.Input.mapInputValue<MonitoringProfileResponse, Map<String, dynamic>>(monitoringProfile, (value) => value.toMap()),
+      'openAIProfile': ?pulumi.Input.mapOptionalInputValue<OpenAIProfileResponse, Map<String, dynamic>>(openAIProfile, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'redisProfile': redisProfile.toMap(),
+      'redisProfile': pulumi.Input.mapInputValue<RedisProfileResponse, Map<String, dynamic>>(redisProfile, (value) => value.toMap()),
       'redundancyState': ?redundancyState,
       'resourceState': ?resourceState,
       'serviceUrl': serviceUrl,
-      'storageProfile': storageProfile.toMap(),
-      'userManagedOpenAIProfile': ?userManagedOpenAIProfile == null ? null : userManagedOpenAIProfile!.toMap(),
+      'storageProfile': pulumi.Input.mapInputValue<StorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
+      'userManagedOpenAIProfile': ?pulumi.Input.mapOptionalInputValue<UserManagedOpenAIProfileResponse, Map<String, dynamic>>(userManagedOpenAIProfile, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory MdsResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MdsResourcePropertiesResponse(
-      aadApplicationId: map['aadApplicationId'] as String,
-      adxProfile: AdxProfileResponse.fromMap((map['adxProfile'] as Map).cast<String, dynamic>()),
-      aksAdminGroupId: map['aksAdminGroupId'] == null ? null : map['aksAdminGroupId'] as String,
-      aksProfile: AksProfileResponse.fromMap((map['aksProfile'] as Map).cast<String, dynamic>()),
-      cmkProfile: map['cmkProfile'] == null ? null : CmkProfileResponse.fromMap((map['cmkProfile'] as Map).cast<String, dynamic>()),
-      databaseProfile: DatabaseProfileResponse.fromMap((map['databaseProfile'] as Map).cast<String, dynamic>()),
-      denyAssignmentExclusions: map['denyAssignmentExclusions'] == null ? null : pulumi.Input.decodeList<DenyAssignmentExclusionResponse>(map['denyAssignmentExclusions'], (value) => DenyAssignmentExclusionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      enableCopilot: map['enableCopilot'] == null ? null : map['enableCopilot'] as bool,
-      enableDiagnosticSettings: map['enableDiagnosticSettings'] == null ? null : map['enableDiagnosticSettings'] as bool,
-      eventHubProfile: EventHubProfileResponse.fromMap((map['eventHubProfile'] as Map).cast<String, dynamic>()),
-      fabricProfile: map['fabricProfile'] == null ? null : FabricProfileResponse.fromMap((map['fabricProfile'] as Map).cast<String, dynamic>()),
-      functionAppProfile: FunctionAppProfileResponse.fromMap((map['functionAppProfile'] as Map).cast<String, dynamic>()),
-      managedOnBehalfOfConfiguration: ManagedOnBehalfOfConfigurationResponse.fromMap((map['managedOnBehalfOfConfiguration'] as Map).cast<String, dynamic>()),
-      managedResourceGroupConfiguration: ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>()),
-      monitoringProfile: MonitoringProfileResponse.fromMap((map['monitoringProfile'] as Map).cast<String, dynamic>()),
-      openAIProfile: map['openAIProfile'] == null ? null : OpenAIProfileResponse.fromMap((map['openAIProfile'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      redisProfile: RedisProfileResponse.fromMap((map['redisProfile'] as Map).cast<String, dynamic>()),
-      redundancyState: map['redundancyState'] == null ? null : map['redundancyState'] as String,
-      resourceState: map['resourceState'] == null ? null : map['resourceState'] as String,
-      serviceUrl: map['serviceUrl'] as String,
-      storageProfile: StorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
-      userManagedOpenAIProfile: map['userManagedOpenAIProfile'] == null ? null : UserManagedOpenAIProfileResponse.fromMap((map['userManagedOpenAIProfile'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      aadApplicationId: (map['aadApplicationId'] as String).input(),
+      adxProfile: (AdxProfileResponse.fromMap((map['adxProfile'] as Map).cast<String, dynamic>())).input(),
+      aksAdminGroupId: map['aksAdminGroupId'] == null ? null : (map['aksAdminGroupId'] as String).input(),
+      aksProfile: (AksProfileResponse.fromMap((map['aksProfile'] as Map).cast<String, dynamic>())).input(),
+      cmkProfile: map['cmkProfile'] == null ? null : (CmkProfileResponse.fromMap((map['cmkProfile'] as Map).cast<String, dynamic>())).input(),
+      databaseProfile: (DatabaseProfileResponse.fromMap((map['databaseProfile'] as Map).cast<String, dynamic>())).input(),
+      denyAssignmentExclusions: map['denyAssignmentExclusions'] == null ? null : (pulumi.Input.decodeList<DenyAssignmentExclusionResponse>(map['denyAssignmentExclusions'], (value) => DenyAssignmentExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableCopilot: map['enableCopilot'] == null ? null : (map['enableCopilot'] as bool).input(),
+      enableDiagnosticSettings: map['enableDiagnosticSettings'] == null ? null : (map['enableDiagnosticSettings'] as bool).input(),
+      eventHubProfile: (EventHubProfileResponse.fromMap((map['eventHubProfile'] as Map).cast<String, dynamic>())).input(),
+      fabricProfile: map['fabricProfile'] == null ? null : (FabricProfileResponse.fromMap((map['fabricProfile'] as Map).cast<String, dynamic>())).input(),
+      functionAppProfile: (FunctionAppProfileResponse.fromMap((map['functionAppProfile'] as Map).cast<String, dynamic>())).input(),
+      managedOnBehalfOfConfiguration: (ManagedOnBehalfOfConfigurationResponse.fromMap((map['managedOnBehalfOfConfiguration'] as Map).cast<String, dynamic>())).input(),
+      managedResourceGroupConfiguration: (ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      monitoringProfile: (MonitoringProfileResponse.fromMap((map['monitoringProfile'] as Map).cast<String, dynamic>())).input(),
+      openAIProfile: map['openAIProfile'] == null ? null : (OpenAIProfileResponse.fromMap((map['openAIProfile'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      redisProfile: (RedisProfileResponse.fromMap((map['redisProfile'] as Map).cast<String, dynamic>())).input(),
+      redundancyState: map['redundancyState'] == null ? null : (map['redundancyState'] as String).input(),
+      resourceState: map['resourceState'] == null ? null : (map['resourceState'] as String).input(),
+      serviceUrl: (map['serviceUrl'] as String).input(),
+      storageProfile: (StorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      userManagedOpenAIProfile: map['userManagedOpenAIProfile'] == null ? null : (UserManagedOpenAIProfileResponse.fromMap((map['userManagedOpenAIProfile'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

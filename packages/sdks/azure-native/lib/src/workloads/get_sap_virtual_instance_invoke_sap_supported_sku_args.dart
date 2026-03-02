@@ -31,21 +31,14 @@ class GetSapVirtualInstanceInvokeSapSupportedSkuArgs {
   /// [location] The name of the Azure region.
   /// [sapProduct] Defines the SAP Product type.
   GetSapVirtualInstanceInvokeSapSupportedSkuArgs({
-    required pulumi.Output<String> appLocation,
-    required pulumi.Output<String> databaseType,
-    required pulumi.Output<String> deploymentType,
-    required pulumi.Output<String> environment,
-    pulumi.Output<String>? highAvailabilityType,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> sapProduct,
-  }) :
-      appLocation = pulumi.Input.asInput<String>(appLocation),
-      databaseType = pulumi.Input.asInput<String>(databaseType),
-      deploymentType = pulumi.Input.asInput<String>(deploymentType),
-      environment = pulumi.Input.asInput<String>(environment),
-      highAvailabilityType = pulumi.Input.asOptionalInput<String>(highAvailabilityType),
-      location = pulumi.Input.asInput<String>(location),
-      sapProduct = pulumi.Input.asInput<String>(sapProduct);
+    required this.appLocation,
+    required this.databaseType,
+    required this.deploymentType,
+    required this.environment,
+    this.highAvailabilityType,
+    required this.location,
+    required this.sapProduct,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetSapVirtualInstanceInvokeSapSupportedSkuArgs {
 
   factory GetSapVirtualInstanceInvokeSapSupportedSkuArgs.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceInvokeSapSupportedSkuArgs(
-      appLocation: pulumi.Output.create<String>(map['appLocation'] as String),
-      databaseType: pulumi.Output.create<String>(map['databaseType'] as String),
-      deploymentType: pulumi.Output.create<String>(map['deploymentType'] as String),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      highAvailabilityType: map['highAvailabilityType'] == null ? null : pulumi.Output.create<String>(map['highAvailabilityType'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      sapProduct: pulumi.Output.create<String>(map['sapProduct'] as String),
+      appLocation: (map['appLocation'] as String).input(),
+      databaseType: (map['databaseType'] as String).input(),
+      deploymentType: (map['deploymentType'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      highAvailabilityType: map['highAvailabilityType'] == null ? null : (map['highAvailabilityType'] as String).input(),
+      location: (map['location'] as String).input(),
+      sapProduct: (map['sapProduct'] as String).input(),
     );
   }
 }

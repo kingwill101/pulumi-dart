@@ -28,19 +28,13 @@ class RepositoryArgs {
   /// [repositoryName] The name for the repository. This needs to be less than 100 characters.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RepositoryArgs({
-    pulumi.Output<String>? defaultBranch,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> repositoryName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultBranch = pulumi.Input.asOptionalInput<String>(defaultBranch),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.defaultBranch,
+    this.description,
+    this.kmsKeyId,
+    this.region,
+    required this.repositoryName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      defaultBranch: map['defaultBranch'] == null ? null : pulumi.Output.create<String>(map['defaultBranch'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositoryName: pulumi.Output.create<String>(map['repositoryName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultBranch: map['defaultBranch'] == null ? null : (map['defaultBranch'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

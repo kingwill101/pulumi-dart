@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alias_context_response.dart';
 import 'repo_id_response.dart';
 
 /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
 class CloudRepoSourceContextResponse {
   /// An alias, which may be a branch or tag.
-  final AliasContextResponse aliasContext;
+  final pulumi.Input<AliasContextResponse> aliasContext;
   /// The ID of the repo.
-  final RepoIdResponse repoId;
+  final pulumi.Input<RepoIdResponse> repoId;
   /// A revision ID.
-  final String revisionId;
+  final pulumi.Input<String> revisionId;
 
   /// Creates a new [CloudRepoSourceContextResponse].
   /// [aliasContext] An alias, which may be a branch or tag.
@@ -24,17 +25,17 @@ class CloudRepoSourceContextResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliasContext': aliasContext.toMap(),
-      'repoId': repoId.toMap(),
+      'aliasContext': pulumi.Input.mapInputValue<AliasContextResponse, Map<String, dynamic>>(aliasContext, (value) => value.toMap()),
+      'repoId': pulumi.Input.mapInputValue<RepoIdResponse, Map<String, dynamic>>(repoId, (value) => value.toMap()),
       'revisionId': revisionId,
     };
   }
 
   factory CloudRepoSourceContextResponse.fromMap(Map<String, dynamic> map) {
     return CloudRepoSourceContextResponse(
-      aliasContext: AliasContextResponse.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
-      repoId: RepoIdResponse.fromMap((map['repoId'] as Map).cast<String, dynamic>()),
-      revisionId: map['revisionId'] as String,
+      aliasContext: (AliasContextResponse.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
+      repoId: (RepoIdResponse.fromMap((map['repoId'] as Map).cast<String, dynamic>())).input(),
+      revisionId: (map['revisionId'] as String).input(),
     );
   }
 }

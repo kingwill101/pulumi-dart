@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec {
   /// Command is the command line to execute inside the container, the working
@@ -8,7 +9,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeEx
   /// traditional shell instructions ('|', etc) won't work. To use a shell, you
   /// need to explicitly call out to that shell. Exit status of 0 is treated as
   /// live/healthy and non-zero is unhealthy.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec].
   /// [commands] Command is the command line to execute inside the container, the working
@@ -24,7 +25,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeEx
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec(
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
     );
   }
 }

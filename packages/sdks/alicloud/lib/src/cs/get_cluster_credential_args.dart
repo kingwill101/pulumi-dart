@@ -19,13 +19,10 @@ class GetClusterCredentialArgs {
   /// [outputFile] File name where to save the returned KubeConfig (after running `pulumi preview`).
   /// [temporaryDurationMinutes] Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
   GetClusterCredentialArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? temporaryDurationMinutes,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      temporaryDurationMinutes = pulumi.Input.asOptionalInput<int>(temporaryDurationMinutes);
+    required this.clusterId,
+    this.outputFile,
+    this.temporaryDurationMinutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetClusterCredentialArgs {
 
   factory GetClusterCredentialArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterCredentialArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      temporaryDurationMinutes: map['temporaryDurationMinutes'] == null ? null : pulumi.Output.create<int>(map['temporaryDurationMinutes'] as int),
+      clusterId: (map['clusterId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      temporaryDurationMinutes: map['temporaryDurationMinutes'] == null ? null : (map['temporaryDurationMinutes'] as int).input(),
     );
   }
 }

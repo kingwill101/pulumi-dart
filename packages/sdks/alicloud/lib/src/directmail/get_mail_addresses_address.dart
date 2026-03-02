@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMailAddressesAddress {
   /// The sender address.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The creation of the record time.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// On the quota limit.
-  final String dailyCount;
+  final pulumi.Input<String> dailyCount;
   /// On the quota.
-  final String dailyReqCount;
+  final pulumi.Input<String> dailyReqCount;
   /// Domain name status. Valid values: `0`, `1`.
-  final String domainStatus;
+  final pulumi.Input<String> domainStatus;
   /// The ID of the Mail Address.
-  final String id;
+  final pulumi.Input<String> id;
   /// The sender address ID.
-  final String mailAddressId;
+  final pulumi.Input<String> mailAddressId;
   /// Monthly quota limit.
-  final String monthCount;
+  final pulumi.Input<String> monthCount;
   /// Months amount.
-  final String monthReqCount;
+  final pulumi.Input<String> monthReqCount;
   /// Return address.
-  final String replyAddress;
+  final pulumi.Input<String> replyAddress;
   /// If using STMP address status.
-  final String replyStatus;
+  final pulumi.Input<String> replyStatus;
   /// Account type.
-  final String sendtype;
+  final pulumi.Input<String> sendtype;
   /// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetMailAddressesAddress].
   /// [accountName] The sender address.
@@ -79,19 +80,19 @@ class GetMailAddressesAddress {
 
   factory GetMailAddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetMailAddressesAddress(
-      accountName: map['accountName'] as String,
-      createTime: map['createTime'] as String,
-      dailyCount: map['dailyCount'] as String,
-      dailyReqCount: map['dailyReqCount'] as String,
-      domainStatus: map['domainStatus'] as String,
-      id: map['id'] as String,
-      mailAddressId: map['mailAddressId'] as String,
-      monthCount: map['monthCount'] as String,
-      monthReqCount: map['monthReqCount'] as String,
-      replyAddress: map['replyAddress'] as String,
-      replyStatus: map['replyStatus'] as String,
-      sendtype: map['sendtype'] as String,
-      status: map['status'] as String,
+      accountName: (map['accountName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dailyCount: (map['dailyCount'] as String).input(),
+      dailyReqCount: (map['dailyReqCount'] as String).input(),
+      domainStatus: (map['domainStatus'] as String).input(),
+      id: (map['id'] as String).input(),
+      mailAddressId: (map['mailAddressId'] as String).input(),
+      monthCount: (map['monthCount'] as String).input(),
+      monthReqCount: (map['monthReqCount'] as String).input(),
+      replyAddress: (map['replyAddress'] as String).input(),
+      replyStatus: (map['replyStatus'] as String).input(),
+      sendtype: (map['sendtype'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

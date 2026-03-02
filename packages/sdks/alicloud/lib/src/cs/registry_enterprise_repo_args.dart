@@ -30,19 +30,13 @@ class RegistryEnterpriseRepoArgs {
   /// [repoType] The type of the repository. Valid values:
   /// [summary] The summary about the repository.
   RegistryEnterpriseRepoArgs({
-    pulumi.Output<String>? detail,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespace,
-    required pulumi.Output<String> repoType,
-    required pulumi.Output<String> summary,
-  }) :
-      detail = pulumi.Input.asOptionalInput<String>(detail),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      repoType = pulumi.Input.asInput<String>(repoType),
-      summary = pulumi.Input.asInput<String>(summary);
+    this.detail,
+    required this.instanceId,
+    this.name,
+    required this.namespace,
+    required this.repoType,
+    required this.summary,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class RegistryEnterpriseRepoArgs {
 
   factory RegistryEnterpriseRepoArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseRepoArgs(
-      detail: map['detail'] == null ? null : pulumi.Output.create<String>(map['detail'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      repoType: pulumi.Output.create<String>(map['repoType'] as String),
-      summary: pulumi.Output.create<String>(map['summary'] as String),
+      detail: map['detail'] == null ? null : (map['detail'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      repoType: (map['repoType'] as String).input(),
+      summary: (map['summary'] as String).input(),
     );
   }
 }

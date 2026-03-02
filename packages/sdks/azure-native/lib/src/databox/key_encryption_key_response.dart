@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_properties_response.dart';
 
 /// Encryption key containing details about key to encrypt different keys.
 class KeyEncryptionKeyResponse {
   /// Managed identity properties used for key encryption.
-  final IdentityPropertiesResponse? identityProperties;
+  final pulumi.Input<IdentityPropertiesResponse>? identityProperties;
   /// Type of encryption key used for key encryption.
-  final String kekType;
+  final pulumi.Input<String> kekType;
   /// Key encryption key. It is required in case of Customer managed KekType.
-  final String? kekUrl;
+  final pulumi.Input<String>? kekUrl;
   /// Kek vault resource id. It is required in case of Customer managed KekType.
-  final String? kekVaultResourceID;
+  final pulumi.Input<String>? kekVaultResourceID;
 
   /// Creates a new [KeyEncryptionKeyResponse].
   /// [identityProperties] Managed identity properties used for key encryption.
@@ -27,7 +28,7 @@ class KeyEncryptionKeyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityProperties': ?identityProperties == null ? null : identityProperties!.toMap(),
+      'identityProperties': ?pulumi.Input.mapOptionalInputValue<IdentityPropertiesResponse, Map<String, dynamic>>(identityProperties, (value) => value.toMap()),
       'kekType': kekType,
       'kekUrl': ?kekUrl,
       'kekVaultResourceID': ?kekVaultResourceID,
@@ -36,10 +37,10 @@ class KeyEncryptionKeyResponse {
 
   factory KeyEncryptionKeyResponse.fromMap(Map<String, dynamic> map) {
     return KeyEncryptionKeyResponse(
-      identityProperties: map['identityProperties'] == null ? null : IdentityPropertiesResponse.fromMap((map['identityProperties'] as Map).cast<String, dynamic>()),
-      kekType: map['kekType'] as String,
-      kekUrl: map['kekUrl'] == null ? null : map['kekUrl'] as String,
-      kekVaultResourceID: map['kekVaultResourceID'] == null ? null : map['kekVaultResourceID'] as String,
+      identityProperties: map['identityProperties'] == null ? null : (IdentityPropertiesResponse.fromMap((map['identityProperties'] as Map).cast<String, dynamic>())).input(),
+      kekType: (map['kekType'] as String).input(),
+      kekUrl: map['kekUrl'] == null ? null : (map['kekUrl'] as String).input(),
+      kekVaultResourceID: map['kekVaultResourceID'] == null ? null : (map['kekVaultResourceID'] as String).input(),
     );
   }
 }

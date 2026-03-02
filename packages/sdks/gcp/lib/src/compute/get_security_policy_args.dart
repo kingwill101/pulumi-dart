@@ -19,13 +19,10 @@ class GetSecurityPolicyArgs {
   /// [project] The project in which the resource belongs. If it is not provided, the provider project is used.
   /// [selfLink] The self_link of the security policy. Provide either this or a `name`
   GetSecurityPolicyArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.name,
+    this.project,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSecurityPolicyArgs {
 
   factory GetSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

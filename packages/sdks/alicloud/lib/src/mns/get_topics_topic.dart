@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTopicsTopic {
   /// The id of the topic. The value is set to `name`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether to enable logging.
-  final bool loggingEnabled;
+  final pulumi.Input<bool> loggingEnabled;
   /// This indicates the maximum length, in bytes, of any message body sent to the topic.
-  final int maximumMessageSize;
+  final pulumi.Input<int> maximumMessageSize;
   /// The name of the topic.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetTopicsTopic].
   /// [id] The id of the topic. The value is set to `name`.
@@ -34,10 +35,10 @@ class GetTopicsTopic {
 
   factory GetTopicsTopic.fromMap(Map<String, dynamic> map) {
     return GetTopicsTopic(
-      id: map['id'] as String,
-      loggingEnabled: map['loggingEnabled'] as bool,
-      maximumMessageSize: map['maximumMessageSize'] as int,
-      name: map['name'] as String,
+      id: (map['id'] as String).input(),
+      loggingEnabled: (map['loggingEnabled'] as bool).input(),
+      maximumMessageSize: (map['maximumMessageSize'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -40,27 +40,17 @@ class EmailIdentityState {
   /// [verificationStatus] The verification status of the identity. The status can be one of the following: `PENDING`, `SUCCESS`, `FAILED`, `TEMPORARY_FAILURE`, and `NOT_STARTED`.
   /// [verifiedForSendingStatus] Specifies whether or not the identity is verified.
   EmailIdentityState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? configurationSetName,
-    pulumi.Output<EmailIdentityDkimSigningAttributes>? dkimSigningAttributes,
-    pulumi.Output<String>? emailIdentity,
-    pulumi.Output<String>? identityType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? verificationStatus,
-    pulumi.Output<bool>? verifiedForSendingStatus,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configurationSetName = pulumi.Input.asOptionalInput<String>(configurationSetName),
-      dkimSigningAttributes = pulumi.Input.asOptionalInput<EmailIdentityDkimSigningAttributes>(dkimSigningAttributes),
-      emailIdentity = pulumi.Input.asOptionalInput<String>(emailIdentity),
-      identityType = pulumi.Input.asOptionalInput<String>(identityType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      verificationStatus = pulumi.Input.asOptionalInput<String>(verificationStatus),
-      verifiedForSendingStatus = pulumi.Input.asOptionalInput<bool>(verifiedForSendingStatus);
+    this.arn,
+    this.configurationSetName,
+    this.dkimSigningAttributes,
+    this.emailIdentity,
+    this.identityType,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.verificationStatus,
+    this.verifiedForSendingStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class EmailIdentityState {
 
   factory EmailIdentityState.fromMap(Map<String, dynamic> map) {
     return EmailIdentityState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configurationSetName: map['configurationSetName'] == null ? null : pulumi.Output.create<String>(map['configurationSetName'] as String),
-      dkimSigningAttributes: map['dkimSigningAttributes'] == null ? null : pulumi.Output.create<EmailIdentityDkimSigningAttributes>(EmailIdentityDkimSigningAttributes.fromMap((map['dkimSigningAttributes'] as Map).cast<String, dynamic>())),
-      emailIdentity: map['emailIdentity'] == null ? null : pulumi.Output.create<String>(map['emailIdentity'] as String),
-      identityType: map['identityType'] == null ? null : pulumi.Output.create<String>(map['identityType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      verificationStatus: map['verificationStatus'] == null ? null : pulumi.Output.create<String>(map['verificationStatus'] as String),
-      verifiedForSendingStatus: map['verifiedForSendingStatus'] == null ? null : pulumi.Output.create<bool>(map['verifiedForSendingStatus'] as bool),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configurationSetName: map['configurationSetName'] == null ? null : (map['configurationSetName'] as String).input(),
+      dkimSigningAttributes: map['dkimSigningAttributes'] == null ? null : (EmailIdentityDkimSigningAttributes.fromMap((map['dkimSigningAttributes'] as Map).cast<String, dynamic>())).input(),
+      emailIdentity: map['emailIdentity'] == null ? null : (map['emailIdentity'] as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      verificationStatus: map['verificationStatus'] == null ? null : (map['verificationStatus'] as String).input(),
+      verifiedForSendingStatus: map['verifiedForSendingStatus'] == null ? null : (map['verifiedForSendingStatus'] as bool).input(),
     );
   }
 }

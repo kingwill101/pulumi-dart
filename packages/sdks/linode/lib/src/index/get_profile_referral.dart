@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProfileReferral {
   /// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
-  final String code;
+  final pulumi.Input<String> code;
   /// The number of completed signups with the referral code.
-  final int completed;
+  final pulumi.Input<int> completed;
   /// The amount of account credit in US Dollars issued to the account through the referral program.
-  final double credit;
+  final pulumi.Input<double> credit;
   /// The number of pending signups for the referral code. To receive credit the signups must be completed.
-  final int pending;
+  final pulumi.Input<int> pending;
   /// The number of users who have signed up with the referral code.
-  final int total;
+  final pulumi.Input<int> total;
   /// The referral URL.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GetProfileReferral].
   /// [code] The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
@@ -44,12 +45,12 @@ class GetProfileReferral {
 
   factory GetProfileReferral.fromMap(Map<String, dynamic> map) {
     return GetProfileReferral(
-      code: map['code'] as String,
-      completed: map['completed'] as int,
-      credit: map['credit'] as double,
-      pending: map['pending'] as int,
-      total: map['total'] as int,
-      url: map['url'] as String,
+      code: (map['code'] as String).input(),
+      completed: (map['completed'] as int).input(),
+      credit: (map['credit'] as double).input(),
+      pending: (map['pending'] as int).input(),
+      total: (map['total'] as int).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

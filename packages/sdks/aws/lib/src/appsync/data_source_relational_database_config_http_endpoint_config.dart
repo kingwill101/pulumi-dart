@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
   /// AWS secret store ARN for database credentials.
-  final String awsSecretStoreArn;
+  final pulumi.Input<String> awsSecretStoreArn;
   /// Logical database name.
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
   /// Amazon RDS cluster identifier.
-  final String dbClusterIdentifier;
+  final pulumi.Input<String> dbClusterIdentifier;
   /// AWS Region for RDS HTTP endpoint. Defaults to current region.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// Logical schema name.
-  final String? schema;
+  final pulumi.Input<String>? schema;
 
   /// Creates a new [DataSourceRelationalDatabaseConfigHttpEndpointConfig].
   /// [awsSecretStoreArn] AWS secret store ARN for database credentials.
@@ -39,11 +40,11 @@ class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
 
   factory DataSourceRelationalDatabaseConfigHttpEndpointConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceRelationalDatabaseConfigHttpEndpointConfig(
-      awsSecretStoreArn: map['awsSecretStoreArn'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      dbClusterIdentifier: map['dbClusterIdentifier'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      schema: map['schema'] == null ? null : map['schema'] as String,
+      awsSecretStoreArn: (map['awsSecretStoreArn'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the GKE cluster from which this Backup was created.
 class ClusterMetadataResponse {
   /// Anthos version
-  final String anthosVersion;
+  final pulumi.Input<String> anthosVersion;
   /// A list of the Backup for GKE CRD versions found in the cluster.
-  final Map<String, String> backupCrdVersions;
+  final pulumi.Input<Map<String, String>> backupCrdVersions;
   /// The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
-  final String cluster;
+  final pulumi.Input<String> cluster;
   /// GKE version
-  final String gkeVersion;
+  final pulumi.Input<String> gkeVersion;
   /// The Kubernetes server version of the source cluster.
-  final String k8sVersion;
+  final pulumi.Input<String> k8sVersion;
 
   /// Creates a new [ClusterMetadataResponse].
   /// [anthosVersion] Anthos version
@@ -40,11 +41,11 @@ class ClusterMetadataResponse {
 
   factory ClusterMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ClusterMetadataResponse(
-      anthosVersion: map['anthosVersion'] as String,
-      backupCrdVersions: (map['backupCrdVersions'] as Map).cast<String, String>(),
-      cluster: map['cluster'] as String,
-      gkeVersion: map['gkeVersion'] as String,
-      k8sVersion: map['k8sVersion'] as String,
+      anthosVersion: (map['anthosVersion'] as String).input(),
+      backupCrdVersions: ((map['backupCrdVersions'] as Map).cast<String, String>()).input(),
+      cluster: (map['cluster'] as String).input(),
+      gkeVersion: (map['gkeVersion'] as String).input(),
+      k8sVersion: (map['k8sVersion'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceCorsConfiguration {
   /// Are credentials are allowed via CORS?
-  final bool allowCredentials;
+  final pulumi.Input<bool> allowCredentials;
   /// The set of headers to be allowed via CORS.
-  final List<String> allowedHeaders;
+  final pulumi.Input<List<String>> allowedHeaders;
   /// The methods to be allowed via CORS.
-  final List<String> allowedMethods;
+  final pulumi.Input<List<String>> allowedMethods;
   /// The set of origins to be allowed via CORS.
-  final List<String> allowedOrigins;
+  final pulumi.Input<List<String>> allowedOrigins;
   /// The max age to be allowed via CORS.
-  final int maxAgeInSeconds;
+  final pulumi.Input<int> maxAgeInSeconds;
 
   /// Creates a new [GetServiceCorsConfiguration].
   /// [allowCredentials] Are credentials are allowed via CORS?
@@ -39,11 +40,11 @@ class GetServiceCorsConfiguration {
 
   factory GetServiceCorsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceCorsConfiguration(
-      allowCredentials: map['allowCredentials'] as bool,
-      allowedHeaders: (map['allowedHeaders'] as List).cast<String>(),
-      allowedMethods: (map['allowedMethods'] as List).cast<String>(),
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] as int,
+      allowCredentials: (map['allowCredentials'] as bool).input(),
+      allowedHeaders: ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
+      maxAgeInSeconds: (map['maxAgeInSeconds'] as int).input(),
     );
   }
 }

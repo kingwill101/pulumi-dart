@@ -16,11 +16,9 @@ class DefaultAutoScalingConfigurationVersionArgs {
   /// [autoScalingConfigurationArn] The ARN of the App Runner auto scaling configuration that you want to set as the default.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DefaultAutoScalingConfigurationVersionArgs({
-    required pulumi.Output<String> autoScalingConfigurationArn,
-    pulumi.Output<String>? region,
-  }) :
-      autoScalingConfigurationArn = pulumi.Input.asInput<String>(autoScalingConfigurationArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.autoScalingConfigurationArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DefaultAutoScalingConfigurationVersionArgs {
 
   factory DefaultAutoScalingConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return DefaultAutoScalingConfigurationVersionArgs(
-      autoScalingConfigurationArn: pulumi.Output.create<String>(map['autoScalingConfigurationArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoScalingConfigurationArn: (map['autoScalingConfigurationArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

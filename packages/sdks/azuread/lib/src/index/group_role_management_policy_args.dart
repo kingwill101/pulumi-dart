@@ -32,19 +32,13 @@ class GroupRoleManagementPolicyArgs {
   /// [notificationRules] A `notification_rules` block as defined below.
   /// [roleId] The type of assignment this policy coveres. Can be either `member` or `owner`.
   GroupRoleManagementPolicyArgs({
-    pulumi.Output<GroupRoleManagementPolicyActivationRules>? activationRules,
-    pulumi.Output<GroupRoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules,
-    pulumi.Output<GroupRoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules,
-    required pulumi.Output<String> groupId,
-    pulumi.Output<GroupRoleManagementPolicyNotificationRules>? notificationRules,
-    required pulumi.Output<String> roleId,
-  }) :
-      activationRules = pulumi.Input.asOptionalInput<GroupRoleManagementPolicyActivationRules>(activationRules),
-      activeAssignmentRules = pulumi.Input.asOptionalInput<GroupRoleManagementPolicyActiveAssignmentRules>(activeAssignmentRules),
-      eligibleAssignmentRules = pulumi.Input.asOptionalInput<GroupRoleManagementPolicyEligibleAssignmentRules>(eligibleAssignmentRules),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      notificationRules = pulumi.Input.asOptionalInput<GroupRoleManagementPolicyNotificationRules>(notificationRules),
-      roleId = pulumi.Input.asInput<String>(roleId);
+    this.activationRules,
+    this.activeAssignmentRules,
+    this.eligibleAssignmentRules,
+    required this.groupId,
+    this.notificationRules,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class GroupRoleManagementPolicyArgs {
 
   factory GroupRoleManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyArgs(
-      activationRules: map['activationRules'] == null ? null : pulumi.Output.create<GroupRoleManagementPolicyActivationRules>(GroupRoleManagementPolicyActivationRules.fromMap((map['activationRules'] as Map).cast<String, dynamic>())),
-      activeAssignmentRules: map['activeAssignmentRules'] == null ? null : pulumi.Output.create<GroupRoleManagementPolicyActiveAssignmentRules>(GroupRoleManagementPolicyActiveAssignmentRules.fromMap((map['activeAssignmentRules'] as Map).cast<String, dynamic>())),
-      eligibleAssignmentRules: map['eligibleAssignmentRules'] == null ? null : pulumi.Output.create<GroupRoleManagementPolicyEligibleAssignmentRules>(GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((map['eligibleAssignmentRules'] as Map).cast<String, dynamic>())),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      notificationRules: map['notificationRules'] == null ? null : pulumi.Output.create<GroupRoleManagementPolicyNotificationRules>(GroupRoleManagementPolicyNotificationRules.fromMap((map['notificationRules'] as Map).cast<String, dynamic>())),
-      roleId: pulumi.Output.create<String>(map['roleId'] as String),
+      activationRules: map['activationRules'] == null ? null : (GroupRoleManagementPolicyActivationRules.fromMap((map['activationRules'] as Map).cast<String, dynamic>())).input(),
+      activeAssignmentRules: map['activeAssignmentRules'] == null ? null : (GroupRoleManagementPolicyActiveAssignmentRules.fromMap((map['activeAssignmentRules'] as Map).cast<String, dynamic>())).input(),
+      eligibleAssignmentRules: map['eligibleAssignmentRules'] == null ? null : (GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((map['eligibleAssignmentRules'] as Map).cast<String, dynamic>())).input(),
+      groupId: (map['groupId'] as String).input(),
+      notificationRules: map['notificationRules'] == null ? null : (GroupRoleManagementPolicyNotificationRules.fromMap((map['notificationRules'] as Map).cast<String, dynamic>())).input(),
+      roleId: (map['roleId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetPrivateLinkAssociationArgs {
   /// [groupId] The management group ID.
   /// [plaId] The ID of the PLA
   GetPrivateLinkAssociationArgs({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> plaId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      plaId = pulumi.Input.asInput<String>(plaId);
+    required this.groupId,
+    required this.plaId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPrivateLinkAssociationArgs {
 
   factory GetPrivateLinkAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkAssociationArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      plaId: pulumi.Output.create<String>(map['plaId'] as String),
+      groupId: (map['groupId'] as String).input(),
+      plaId: (map['plaId'] as String).input(),
     );
   }
 }

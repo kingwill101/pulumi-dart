@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// List of properties of a link provider.
 class VpnLinkProviderPropertiesResponse {
   /// Name of the link provider.
-  final String? linkProviderName;
+  final pulumi.Input<String>? linkProviderName;
   /// Link speed.
-  final int? linkSpeedInMbps;
+  final pulumi.Input<int>? linkSpeedInMbps;
 
   /// Creates a new [VpnLinkProviderPropertiesResponse].
   /// [linkProviderName] Name of the link provider.
@@ -25,8 +26,8 @@ class VpnLinkProviderPropertiesResponse {
 
   factory VpnLinkProviderPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VpnLinkProviderPropertiesResponse(
-      linkProviderName: map['linkProviderName'] == null ? null : map['linkProviderName'] as String,
-      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : map['linkSpeedInMbps'] as int,
+      linkProviderName: map['linkProviderName'] == null ? null : (map['linkProviderName'] as String).input(),
+      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : (map['linkSpeedInMbps'] as int).input(),
     );
   }
 }

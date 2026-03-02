@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterRemoteNetworkConfigRemoteNodeNetwork {
   /// List of network CIDRs that can contain pods that run Kubernetes webhooks on hybrid nodes.
-  final List<String> cidrs;
+  final pulumi.Input<List<String>> cidrs;
 
   /// Creates a new [GetClusterRemoteNetworkConfigRemoteNodeNetwork].
   /// [cidrs] List of network CIDRs that can contain pods that run Kubernetes webhooks on hybrid nodes.
@@ -19,7 +20,7 @@ class GetClusterRemoteNetworkConfigRemoteNodeNetwork {
 
   factory GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap(Map<String, dynamic> map) {
     return GetClusterRemoteNetworkConfigRemoteNodeNetwork(
-      cidrs: (map['cidrs'] as List).cast<String>(),
+      cidrs: ((map['cidrs'] as List).cast<String>()).input(),
     );
   }
 }

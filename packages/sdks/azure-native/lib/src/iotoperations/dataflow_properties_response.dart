@@ -6,11 +6,11 @@ import 'dataflow_operation_response.dart';
 /// Dataflow Resource properties
 class DataflowPropertiesResponse {
   /// Mode for Dataflow. Optional; defaults to Enabled.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// List of operations including source and destination references as well as transformation.
-  final List<DataflowOperationResponse> operations;
+  final pulumi.Input<List<DataflowOperationResponse>> operations;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [DataflowPropertiesResponse].
   /// [mode] Mode for Dataflow. Optional; defaults to Enabled.
@@ -25,16 +25,16 @@ class DataflowPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'mode': ?mode,
-      'operations': pulumi.Input.encodeList<DataflowOperationResponse, Map<String, dynamic>>(operations, (value) => value.toMap()),
+      'operations': pulumi.Input.mapInputValue<List<DataflowOperationResponse>, List<Map<String, dynamic>>>(operations, (value) => pulumi.Input.encodeList<DataflowOperationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
     };
   }
 
   factory DataflowPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataflowPropertiesResponse(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      operations: pulumi.Input.decodeList<DataflowOperationResponse>(map['operations'], (value) => DataflowOperationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      operations: (pulumi.Input.decodeList<DataflowOperationResponse>(map['operations'], (value) => DataflowOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

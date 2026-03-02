@@ -33,19 +33,13 @@ class SchemaBundleArgs {
   /// [schemaBundleId] The unique name of the schema bundle in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   /// [table] The name of the table to create the schema bundle within.
   SchemaBundleArgs({
-    pulumi.Output<bool>? ignoreWarnings,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? project,
-    required pulumi.Output<SchemaBundleProtoSchema> protoSchema,
-    required pulumi.Output<String> schemaBundleId,
-    pulumi.Output<String>? table,
-  }) :
-      ignoreWarnings = pulumi.Input.asOptionalInput<bool>(ignoreWarnings),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      protoSchema = pulumi.Input.asInput<SchemaBundleProtoSchema>(protoSchema),
-      schemaBundleId = pulumi.Input.asInput<String>(schemaBundleId),
-      table = pulumi.Input.asOptionalInput<String>(table);
+    this.ignoreWarnings,
+    this.instance,
+    this.project,
+    required this.protoSchema,
+    required this.schemaBundleId,
+    this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class SchemaBundleArgs {
 
   factory SchemaBundleArgs.fromMap(Map<String, dynamic> map) {
     return SchemaBundleArgs(
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : pulumi.Output.create<bool>(map['ignoreWarnings'] as bool),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      protoSchema: pulumi.Output.create<SchemaBundleProtoSchema>(SchemaBundleProtoSchema.fromMap((map['protoSchema'] as Map).cast<String, dynamic>())),
-      schemaBundleId: pulumi.Output.create<String>(map['schemaBundleId'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
+      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings'] as bool).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      protoSchema: (SchemaBundleProtoSchema.fromMap((map['protoSchema'] as Map).cast<String, dynamic>())).input(),
+      schemaBundleId: (map['schemaBundleId'] as String).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
     );
   }
 }

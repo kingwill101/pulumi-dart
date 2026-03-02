@@ -38,25 +38,16 @@ class CertificateArgs {
   /// [scope] Immutable. The scope of the certificate.
   /// [selfManaged] If set, defines data of a self-managed certificate.
   CertificateArgs({
-    required pulumi.Output<String> certificateId,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<ManagedCertificate>? managed,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<CertificateScope>? scope,
-    pulumi.Output<SelfManagedCertificate>? selfManaged,
-  }) :
-      certificateId = pulumi.Input.asInput<String>(certificateId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managed = pulumi.Input.asOptionalInput<ManagedCertificate>(managed),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scope = pulumi.Input.asOptionalInput<CertificateScope>(scope),
-      selfManaged = pulumi.Input.asOptionalInput<SelfManagedCertificate>(selfManaged);
+    required this.certificateId,
+    this.description,
+    this.labels,
+    this.location,
+    this.managed,
+    this.name,
+    this.project,
+    this.scope,
+    this.selfManaged,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateId: pulumi.Output.create<String>(map['certificateId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managed: map['managed'] == null ? null : pulumi.Output.create<ManagedCertificate>(ManagedCertificate.fromMap((map['managed'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<CertificateScope>(CertificateScope.fromValue(map['scope'] as String)),
-      selfManaged: map['selfManaged'] == null ? null : pulumi.Output.create<SelfManagedCertificate>(SelfManagedCertificate.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())),
+      certificateId: (map['certificateId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managed: map['managed'] == null ? null : (ManagedCertificate.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scope: map['scope'] == null ? null : (CertificateScope.fromValue(map['scope'] as String)).input(),
+      selfManaged: map['selfManaged'] == null ? null : (SelfManagedCertificate.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_object_response.dart';
 import 'volume_backup_properties_response.dart';
 import 'volume_relocation_properties_response.dart';
@@ -8,13 +9,13 @@ import 'volume_snapshot_properties_response.dart';
 /// DataProtection type volumes include an object containing details of the replication
 class VolumePropertiesResponseDataProtection {
   /// Backup Properties
-  final VolumeBackupPropertiesResponse? backup;
+  final pulumi.Input<VolumeBackupPropertiesResponse>? backup;
   /// Replication properties
-  final ReplicationObjectResponse? replication;
+  final pulumi.Input<ReplicationObjectResponse>? replication;
   /// Snapshot properties.
-  final VolumeSnapshotPropertiesResponse? snapshot;
+  final pulumi.Input<VolumeSnapshotPropertiesResponse>? snapshot;
   /// VolumeRelocation properties
-  final VolumeRelocationPropertiesResponse? volumeRelocation;
+  final pulumi.Input<VolumeRelocationPropertiesResponse>? volumeRelocation;
 
   /// Creates a new [VolumePropertiesResponseDataProtection].
   /// [backup] Backup Properties
@@ -30,19 +31,19 @@ class VolumePropertiesResponseDataProtection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backup': ?backup == null ? null : backup!.toMap(),
-      'replication': ?replication == null ? null : replication!.toMap(),
-      'snapshot': ?snapshot == null ? null : snapshot!.toMap(),
-      'volumeRelocation': ?volumeRelocation == null ? null : volumeRelocation!.toMap(),
+      'backup': ?pulumi.Input.mapOptionalInputValue<VolumeBackupPropertiesResponse, Map<String, dynamic>>(backup, (value) => value.toMap()),
+      'replication': ?pulumi.Input.mapOptionalInputValue<ReplicationObjectResponse, Map<String, dynamic>>(replication, (value) => value.toMap()),
+      'snapshot': ?pulumi.Input.mapOptionalInputValue<VolumeSnapshotPropertiesResponse, Map<String, dynamic>>(snapshot, (value) => value.toMap()),
+      'volumeRelocation': ?pulumi.Input.mapOptionalInputValue<VolumeRelocationPropertiesResponse, Map<String, dynamic>>(volumeRelocation, (value) => value.toMap()),
     };
   }
 
   factory VolumePropertiesResponseDataProtection.fromMap(Map<String, dynamic> map) {
     return VolumePropertiesResponseDataProtection(
-      backup: map['backup'] == null ? null : VolumeBackupPropertiesResponse.fromMap((map['backup'] as Map).cast<String, dynamic>()),
-      replication: map['replication'] == null ? null : ReplicationObjectResponse.fromMap((map['replication'] as Map).cast<String, dynamic>()),
-      snapshot: map['snapshot'] == null ? null : VolumeSnapshotPropertiesResponse.fromMap((map['snapshot'] as Map).cast<String, dynamic>()),
-      volumeRelocation: map['volumeRelocation'] == null ? null : VolumeRelocationPropertiesResponse.fromMap((map['volumeRelocation'] as Map).cast<String, dynamic>()),
+      backup: map['backup'] == null ? null : (VolumeBackupPropertiesResponse.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
+      replication: map['replication'] == null ? null : (ReplicationObjectResponse.fromMap((map['replication'] as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (VolumeSnapshotPropertiesResponse.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
+      volumeRelocation: map['volumeRelocation'] == null ? null : (VolumeRelocationPropertiesResponse.fromMap((map['volumeRelocation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

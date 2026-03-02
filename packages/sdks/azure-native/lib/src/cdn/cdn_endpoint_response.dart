@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the ARM Resource ID for the linked endpoints
 class CdnEndpointResponse {
   /// ARM Resource ID string.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [CdnEndpointResponse].
   /// [id] ARM Resource ID string.
@@ -20,7 +21,7 @@ class CdnEndpointResponse {
 
   factory CdnEndpointResponse.fromMap(Map<String, dynamic> map) {
     return CdnEndpointResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

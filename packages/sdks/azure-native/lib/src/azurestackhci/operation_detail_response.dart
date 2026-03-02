@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_detail_response.dart';
 
 /// operation detail.
 class OperationDetailResponse {
   /// operation description.
-  final String description;
+  final pulumi.Input<String> description;
   /// error details.
-  final ErrorDetailResponse error;
+  final pulumi.Input<ErrorDetailResponse> error;
   /// operation id.
-  final String id;
+  final pulumi.Input<String> id;
   /// operation name.
-  final String name;
+  final pulumi.Input<String> name;
   /// operation resource id.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// operation status.
-  final String status;
+  final pulumi.Input<String> status;
   /// operation type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OperationDetailResponse].
   /// [description] operation description.
@@ -40,7 +41,7 @@ class OperationDetailResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'id': id,
       'name': name,
       'resourceId': resourceId,
@@ -51,13 +52,13 @@ class OperationDetailResponse {
 
   factory OperationDetailResponse.fromMap(Map<String, dynamic> map) {
     return OperationDetailResponse(
-      description: map['description'] as String,
-      error: ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      resourceId: map['resourceId'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

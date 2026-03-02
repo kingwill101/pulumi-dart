@@ -53,31 +53,19 @@ class DatasetJsonArgs {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
   /// [schemaColumns] A `schema_column` block as defined below.
   DatasetJsonArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<DatasetJsonAzureBlobStorageLocation>? azureBlobStorageLocation,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? encoding,
-    pulumi.Output<String>? folder,
-    pulumi.Output<DatasetJsonHttpServerLocation>? httpServerLocation,
-    required pulumi.Output<String> linkedServiceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<List<DatasetJsonSchemaColumn>>? schemaColumns,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      azureBlobStorageLocation = pulumi.Input.asOptionalInput<DatasetJsonAzureBlobStorageLocation>(azureBlobStorageLocation),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encoding = pulumi.Input.asOptionalInput<String>(encoding),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      httpServerLocation = pulumi.Input.asOptionalInput<DatasetJsonHttpServerLocation>(httpServerLocation),
-      linkedServiceName = pulumi.Input.asInput<String>(linkedServiceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      schemaColumns = pulumi.Input.asOptionalInput<List<DatasetJsonSchemaColumn>>(schemaColumns);
+    this.additionalProperties,
+    this.annotations,
+    this.azureBlobStorageLocation,
+    required this.dataFactoryId,
+    this.description,
+    this.encoding,
+    this.folder,
+    this.httpServerLocation,
+    required this.linkedServiceName,
+    this.name,
+    this.parameters,
+    this.schemaColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class DatasetJsonArgs {
 
   factory DatasetJsonArgs.fromMap(Map<String, dynamic> map) {
     return DatasetJsonArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      azureBlobStorageLocation: map['azureBlobStorageLocation'] == null ? null : pulumi.Output.create<DatasetJsonAzureBlobStorageLocation>(DatasetJsonAzureBlobStorageLocation.fromMap((map['azureBlobStorageLocation'] as Map).cast<String, dynamic>())),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encoding: map['encoding'] == null ? null : pulumi.Output.create<String>(map['encoding'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      httpServerLocation: map['httpServerLocation'] == null ? null : pulumi.Output.create<DatasetJsonHttpServerLocation>(DatasetJsonHttpServerLocation.fromMap((map['httpServerLocation'] as Map).cast<String, dynamic>())),
-      linkedServiceName: pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      schemaColumns: map['schemaColumns'] == null ? null : pulumi.Output.create<List<DatasetJsonSchemaColumn>>(pulumi.Input.decodeList<DatasetJsonSchemaColumn>(map['schemaColumns'], (value) => DatasetJsonSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      azureBlobStorageLocation: map['azureBlobStorageLocation'] == null ? null : (DatasetJsonAzureBlobStorageLocation.fromMap((map['azureBlobStorageLocation'] as Map).cast<String, dynamic>())).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      httpServerLocation: map['httpServerLocation'] == null ? null : (DatasetJsonHttpServerLocation.fromMap((map['httpServerLocation'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetJsonSchemaColumn>(map['schemaColumns'], (value) => DatasetJsonSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

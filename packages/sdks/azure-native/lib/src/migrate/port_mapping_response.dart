@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// WebApplication port mapping.
 class PortMappingResponse {
   /// Gets or sets the External Port.
-  final int? externalPort;
+  final pulumi.Input<int>? externalPort;
   /// Gets or sets the Internal Port.
-  final int? internalPort;
+  final pulumi.Input<int>? internalPort;
 
   /// Creates a new [PortMappingResponse].
   /// [externalPort] Gets or sets the External Port.
@@ -25,8 +26,8 @@ class PortMappingResponse {
 
   factory PortMappingResponse.fromMap(Map<String, dynamic> map) {
     return PortMappingResponse(
-      externalPort: map['externalPort'] == null ? null : map['externalPort'] as int,
-      internalPort: map['internalPort'] == null ? null : map['internalPort'] as int,
+      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as int).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetFleetUpdateStrategyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updateStrategyName] The name of the UpdateStrategy resource.
   GetFleetUpdateStrategyArgs({
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> updateStrategyName,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      updateStrategyName = pulumi.Input.asInput<String>(updateStrategyName);
+    required this.fleetName,
+    required this.resourceGroupName,
+    required this.updateStrategyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFleetUpdateStrategyArgs {
 
   factory GetFleetUpdateStrategyArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetUpdateStrategyArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      updateStrategyName: pulumi.Output.create<String>(map['updateStrategyName'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      updateStrategyName: (map['updateStrategyName'] as String).input(),
     );
   }
 }

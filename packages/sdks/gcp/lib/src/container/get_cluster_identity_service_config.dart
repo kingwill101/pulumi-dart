@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterIdentityServiceConfig {
   /// Whether to enable the Identity Service component.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterIdentityServiceConfig].
   /// [enabled] Whether to enable the Identity Service component.
@@ -19,7 +20,7 @@ class GetClusterIdentityServiceConfig {
 
   factory GetClusterIdentityServiceConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterIdentityServiceConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

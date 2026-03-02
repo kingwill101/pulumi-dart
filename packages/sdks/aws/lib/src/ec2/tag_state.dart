@@ -19,15 +19,11 @@ class TagState {
   /// [resourceId] The ID of the EC2 resource to manage the tag for.
   /// [value] The value of the tag.
   TagState({
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? value,
-  }) :
-      key = pulumi.Input.asOptionalInput<String>(key),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.key,
+    this.region,
+    this.resourceId,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

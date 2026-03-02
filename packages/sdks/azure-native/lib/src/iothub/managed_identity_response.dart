@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the Managed identity.
 class ManagedIdentityResponse {
   /// The user assigned identity.
-  final String? userAssignedIdentity;
+  final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [ManagedIdentityResponse].
   /// [userAssignedIdentity] The user assigned identity.
@@ -20,7 +21,7 @@ class ManagedIdentityResponse {
 
   factory ManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityResponse(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : map['userAssignedIdentity'] as String,
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
     );
   }
 }

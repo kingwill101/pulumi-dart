@@ -17,11 +17,9 @@ class GetProjectServiceAccountArgs {
   /// [project] The project the unique service account was created for. If it is not provided, the provider project is used.
   /// [userProject] The project the lookup originates from. This field is used if you are making the request
   GetProjectServiceAccountArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? userProject,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    this.project,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetProjectServiceAccountArgs {
 
   factory GetProjectServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectServiceAccountArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

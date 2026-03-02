@@ -34,23 +34,15 @@ class OutputFunctionArgs {
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Output should exist. Changing this forces a new resource to be created.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   OutputFunctionArgs({
-    required pulumi.Output<String> apiKey,
-    pulumi.Output<int>? batchMaxCount,
-    pulumi.Output<int>? batchMaxInBytes,
-    required pulumi.Output<String> functionApp,
-    required pulumi.Output<String> functionName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> streamAnalyticsJobName,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      batchMaxCount = pulumi.Input.asOptionalInput<int>(batchMaxCount),
-      batchMaxInBytes = pulumi.Input.asOptionalInput<int>(batchMaxInBytes),
-      functionApp = pulumi.Input.asInput<String>(functionApp),
-      functionName = pulumi.Input.asInput<String>(functionName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName);
+    required this.apiKey,
+    this.batchMaxCount,
+    this.batchMaxInBytes,
+    required this.functionApp,
+    required this.functionName,
+    this.name,
+    required this.resourceGroupName,
+    required this.streamAnalyticsJobName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class OutputFunctionArgs {
 
   factory OutputFunctionArgs.fromMap(Map<String, dynamic> map) {
     return OutputFunctionArgs(
-      apiKey: pulumi.Output.create<String>(map['apiKey'] as String),
-      batchMaxCount: map['batchMaxCount'] == null ? null : pulumi.Output.create<int>(map['batchMaxCount'] as int),
-      batchMaxInBytes: map['batchMaxInBytes'] == null ? null : pulumi.Output.create<int>(map['batchMaxInBytes'] as int),
-      functionApp: pulumi.Output.create<String>(map['functionApp'] as String),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
+      apiKey: (map['apiKey'] as String).input(),
+      batchMaxCount: map['batchMaxCount'] == null ? null : (map['batchMaxCount'] as int).input(),
+      batchMaxInBytes: map['batchMaxInBytes'] == null ? null : (map['batchMaxInBytes'] as int).input(),
+      functionApp: (map['functionApp'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
     );
   }
 }

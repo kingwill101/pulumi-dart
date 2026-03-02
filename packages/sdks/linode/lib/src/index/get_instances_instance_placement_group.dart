@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstancePlacementGroup {
   /// The ID of the Placement Group in the Linode API.
-  final int id;
+  final pulumi.Input<int> id;
   /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-  final String label;
+  final pulumi.Input<String> label;
   /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
-  final String placementGroupPolicy;
+  final pulumi.Input<String> placementGroupPolicy;
   /// The placement group type to use when placing Linodes in this group.
-  final String placementGroupType;
+  final pulumi.Input<String> placementGroupType;
 
   /// Creates a new [GetInstancesInstancePlacementGroup].
   /// [id] The ID of the Placement Group in the Linode API.
@@ -34,10 +35,10 @@ class GetInstancesInstancePlacementGroup {
 
   factory GetInstancesInstancePlacementGroup.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstancePlacementGroup(
-      id: map['id'] as int,
-      label: map['label'] as String,
-      placementGroupPolicy: map['placementGroupPolicy'] as String,
-      placementGroupType: map['placementGroupType'] as String,
+      id: (map['id'] as int).input(),
+      label: (map['label'] as String).input(),
+      placementGroupPolicy: (map['placementGroupPolicy'] as String).input(),
+      placementGroupType: (map['placementGroupType'] as String).input(),
     );
   }
 }

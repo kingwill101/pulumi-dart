@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 
 /// An device resource belonging to a device group resource.
 class DeviceResponse {
   /// SKU of the chip
-  final String chipSku;
+  final pulumi.Input<String> chipSku;
   /// Device ID
-  final String? deviceId;
+  final pulumi.Input<String>? deviceId;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// OS version available for installation when update requested
-  final String lastAvailableOsVersion;
+  final pulumi.Input<String> lastAvailableOsVersion;
   /// OS version running on device when update requested
-  final String lastInstalledOsVersion;
+  final pulumi.Input<String> lastInstalledOsVersion;
   /// Time when update requested and new OS version available
-  final String lastOsUpdateUtc;
+  final pulumi.Input<String> lastOsUpdateUtc;
   /// Time when update was last requested
-  final String lastUpdateRequestUtc;
+  final pulumi.Input<String> lastUpdateRequestUtc;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DeviceResponse].
   /// [chipSku] SKU of the chip
@@ -64,24 +65,24 @@ class DeviceResponse {
       'lastUpdateRequestUtc': lastUpdateRequestUtc,
       'name': name,
       'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory DeviceResponse.fromMap(Map<String, dynamic> map) {
     return DeviceResponse(
-      chipSku: map['chipSku'] as String,
-      deviceId: map['deviceId'] == null ? null : map['deviceId'] as String,
-      id: map['id'] as String,
-      lastAvailableOsVersion: map['lastAvailableOsVersion'] as String,
-      lastInstalledOsVersion: map['lastInstalledOsVersion'] as String,
-      lastOsUpdateUtc: map['lastOsUpdateUtc'] as String,
-      lastUpdateRequestUtc: map['lastUpdateRequestUtc'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      chipSku: (map['chipSku'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastAvailableOsVersion: (map['lastAvailableOsVersion'] as String).input(),
+      lastInstalledOsVersion: (map['lastInstalledOsVersion'] as String).input(),
+      lastOsUpdateUtc: (map['lastOsUpdateUtc'] as String).input(),
+      lastUpdateRequestUtc: (map['lastUpdateRequestUtc'] as String).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -56,35 +56,21 @@ class VolumeArgs {
   /// [type] Type of EBS volume. Can be `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1` or `st1` (Default: `gp2`).
   /// [volumeInitializationRate] EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume. This argument can only be set if `snapshot_id` is specified.
   VolumeArgs({
-    required pulumi.Output<String> availabilityZone,
-    pulumi.Output<bool>? encrypted,
-    pulumi.Output<bool>? finalSnapshot,
-    pulumi.Output<int>? iops,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<bool>? multiAttachEnabled,
-    pulumi.Output<String>? outpostArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? throughput,
-    pulumi.Output<String>? type,
-    pulumi.Output<int>? volumeInitializationRate,
-  }) :
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      encrypted = pulumi.Input.asOptionalInput<bool>(encrypted),
-      finalSnapshot = pulumi.Input.asOptionalInput<bool>(finalSnapshot),
-      iops = pulumi.Input.asOptionalInput<int>(iops),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      multiAttachEnabled = pulumi.Input.asOptionalInput<bool>(multiAttachEnabled),
-      outpostArn = pulumi.Input.asOptionalInput<String>(outpostArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      throughput = pulumi.Input.asOptionalInput<int>(throughput),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      volumeInitializationRate = pulumi.Input.asOptionalInput<int>(volumeInitializationRate);
+    required this.availabilityZone,
+    this.encrypted,
+    this.finalSnapshot,
+    this.iops,
+    this.kmsKeyId,
+    this.multiAttachEnabled,
+    this.outpostArn,
+    this.region,
+    this.size,
+    this.snapshotId,
+    this.tags,
+    this.throughput,
+    this.type,
+    this.volumeInitializationRate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      availabilityZone: pulumi.Output.create<String>(map['availabilityZone'] as String),
-      encrypted: map['encrypted'] == null ? null : pulumi.Output.create<bool>(map['encrypted'] as bool),
-      finalSnapshot: map['finalSnapshot'] == null ? null : pulumi.Output.create<bool>(map['finalSnapshot'] as bool),
-      iops: map['iops'] == null ? null : pulumi.Output.create<int>(map['iops'] as int),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      multiAttachEnabled: map['multiAttachEnabled'] == null ? null : pulumi.Output.create<bool>(map['multiAttachEnabled'] as bool),
-      outpostArn: map['outpostArn'] == null ? null : pulumi.Output.create<String>(map['outpostArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      throughput: map['throughput'] == null ? null : pulumi.Output.create<int>(map['throughput'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      volumeInitializationRate: map['volumeInitializationRate'] == null ? null : pulumi.Output.create<int>(map['volumeInitializationRate'] as int),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      finalSnapshot: map['finalSnapshot'] == null ? null : (map['finalSnapshot'] as bool).input(),
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      multiAttachEnabled: map['multiAttachEnabled'] == null ? null : (map['multiAttachEnabled'] as bool).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      volumeInitializationRate: map['volumeInitializationRate'] == null ? null : (map['volumeInitializationRate'] as int).input(),
     );
   }
 }

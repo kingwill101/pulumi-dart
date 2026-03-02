@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecuritySolutionAdditionalWorkspace {
   /// A list of data types which sent to workspace. Possible values are `Alerts` and `RawEvents`.
-  final List<String> dataTypes;
+  final pulumi.Input<List<String>> dataTypes;
   /// The resource ID of the Log Analytics Workspace.
-  final String workspaceId;
+  final pulumi.Input<String> workspaceId;
 
   /// Creates a new [SecuritySolutionAdditionalWorkspace].
   /// [dataTypes] A list of data types which sent to workspace. Possible values are `Alerts` and `RawEvents`.
@@ -24,8 +25,8 @@ class SecuritySolutionAdditionalWorkspace {
 
   factory SecuritySolutionAdditionalWorkspace.fromMap(Map<String, dynamic> map) {
     return SecuritySolutionAdditionalWorkspace(
-      dataTypes: (map['dataTypes'] as List).cast<String>(),
-      workspaceId: map['workspaceId'] as String,
+      dataTypes: ((map['dataTypes'] as List).cast<String>()).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

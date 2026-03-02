@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduled_query_rules_alert_trigger_metric_trigger.dart';
 
 class ScheduledQueryRulesAlertTrigger {
   /// A `metric_trigger` block as defined above. Trigger condition for metric query rule.
-  final ScheduledQueryRulesAlertTriggerMetricTrigger? metricTrigger;
+  final pulumi.Input<ScheduledQueryRulesAlertTriggerMetricTrigger>? metricTrigger;
   /// Evaluation operation for rule - 'GreaterThan', GreaterThanOrEqual', 'LessThan', or 'LessThanOrEqual'.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Result or count threshold based on which rule should be triggered. Values must be between 0 and 10000 inclusive.
-  final double threshold;
+  final pulumi.Input<double> threshold;
 
   /// Creates a new [ScheduledQueryRulesAlertTrigger].
   /// [metricTrigger] A `metric_trigger` block as defined above. Trigger condition for metric query rule.
@@ -22,7 +23,7 @@ class ScheduledQueryRulesAlertTrigger {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricTrigger': ?metricTrigger == null ? null : metricTrigger!.toMap(),
+      'metricTrigger': ?pulumi.Input.mapOptionalInputValue<ScheduledQueryRulesAlertTriggerMetricTrigger, Map<String, dynamic>>(metricTrigger, (value) => value.toMap()),
       'operator': operator,
       'threshold': threshold,
     };
@@ -30,9 +31,9 @@ class ScheduledQueryRulesAlertTrigger {
 
   factory ScheduledQueryRulesAlertTrigger.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertTrigger(
-      metricTrigger: map['metricTrigger'] == null ? null : ScheduledQueryRulesAlertTriggerMetricTrigger.fromMap((map['metricTrigger'] as Map).cast<String, dynamic>()),
-      operator: map['operator'] as String,
-      threshold: map['threshold'] as double,
+      metricTrigger: map['metricTrigger'] == null ? null : (ScheduledQueryRulesAlertTriggerMetricTrigger.fromMap((map['metricTrigger'] as Map).cast<String, dynamic>())).input(),
+      operator: (map['operator'] as String).input(),
+      threshold: (map['threshold'] as double).input(),
     );
   }
 }

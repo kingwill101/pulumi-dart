@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OpenApiImageCacheImageRegistryCredential {
-  final String? password;
-  final String? server;
-  final String? userName;
+  final pulumi.Input<String>? password;
+  final pulumi.Input<String>? server;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [OpenApiImageCacheImageRegistryCredential].
   /// [password] Optional.
@@ -26,9 +27,9 @@ class OpenApiImageCacheImageRegistryCredential {
 
   factory OpenApiImageCacheImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return OpenApiImageCacheImageRegistryCredential(
-      password: map['password'] == null ? null : map['password'] as String,
-      server: map['server'] == null ? null : map['server'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

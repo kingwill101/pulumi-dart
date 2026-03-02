@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainAutoTuneOptionMaintenanceScheduleDuration {
   /// Unit of time.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// Duration of an Auto-Tune maintenance window.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [GetDomainAutoTuneOptionMaintenanceScheduleDuration].
   /// [unit] Unit of time.
@@ -24,8 +25,8 @@ class GetDomainAutoTuneOptionMaintenanceScheduleDuration {
 
   factory GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap(Map<String, dynamic> map) {
     return GetDomainAutoTuneOptionMaintenanceScheduleDuration(
-      unit: map['unit'] as String,
-      value: map['value'] as int,
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerZoneMapping {
   /// The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
-  final String? allocationId;
+  final pulumi.Input<String>? allocationId;
   /// The ID of the elastic network interface (ENI).
-  final String? eniId;
+  final pulumi.Input<String>? eniId;
   /// IPv4 Local address list. The list of addresses that NLB interacts with backend services.
-  final List<String>? ipv4LocalAddresses;
+  final pulumi.Input<List<String>>? ipv4LocalAddresses;
   /// The IPv6 address of the NLB instance.
-  final String? ipv6Address;
+  final pulumi.Input<String>? ipv6Address;
   /// IPv6 Local address list. The list of addresses that NLB interacts with backend services.
-  final List<String>? ipv6LocalAddresses;
+  final pulumi.Input<List<String>>? ipv6LocalAddresses;
   /// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
-  final String? privateIpv4Address;
+  final pulumi.Input<String>? privateIpv4Address;
   /// The public IPv4 address of the NLB instance.
-  final String? publicIpv4Address;
+  final pulumi.Input<String>? publicIpv4Address;
   /// Zone Status
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
   /// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [LoadBalancerZoneMapping].
   /// [allocationId] The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
@@ -65,16 +66,16 @@ class LoadBalancerZoneMapping {
 
   factory LoadBalancerZoneMapping.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneMapping(
-      allocationId: map['allocationId'] == null ? null : map['allocationId'] as String,
-      eniId: map['eniId'] == null ? null : map['eniId'] as String,
-      ipv4LocalAddresses: map['ipv4LocalAddresses'] == null ? null : (map['ipv4LocalAddresses'] as List).cast<String>(),
-      ipv6Address: map['ipv6Address'] == null ? null : map['ipv6Address'] as String,
-      ipv6LocalAddresses: map['ipv6LocalAddresses'] == null ? null : (map['ipv6LocalAddresses'] as List).cast<String>(),
-      privateIpv4Address: map['privateIpv4Address'] == null ? null : map['privateIpv4Address'] as String,
-      publicIpv4Address: map['publicIpv4Address'] == null ? null : map['publicIpv4Address'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      eniId: map['eniId'] == null ? null : (map['eniId'] as String).input(),
+      ipv4LocalAddresses: map['ipv4LocalAddresses'] == null ? null : ((map['ipv4LocalAddresses'] as List).cast<String>()).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      ipv6LocalAddresses: map['ipv6LocalAddresses'] == null ? null : ((map['ipv6LocalAddresses'] as List).cast<String>()).input(),
+      privateIpv4Address: map['privateIpv4Address'] == null ? null : (map['privateIpv4Address'] as String).input(),
+      publicIpv4Address: map['publicIpv4Address'] == null ? null : (map['publicIpv4Address'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAnonymousAuthenticationConfig {
   /// Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [ClusterAnonymousAuthenticationConfig].
   /// [mode] Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
@@ -19,7 +20,7 @@ class ClusterAnonymousAuthenticationConfig {
 
   factory ClusterAnonymousAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAnonymousAuthenticationConfig(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

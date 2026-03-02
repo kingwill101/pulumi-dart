@@ -25,17 +25,12 @@ class PrivateAtlaseArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
   PrivateAtlaseArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? privateAtlasName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateAtlasName = pulumi.Input.asOptionalInput<String>(privateAtlasName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.location,
+    this.privateAtlasName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PrivateAtlaseArgs {
 
   factory PrivateAtlaseArgs.fromMap(Map<String, dynamic> map) {
     return PrivateAtlaseArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateAtlasName: map['privateAtlasName'] == null ? null : pulumi.Output.create<String>(map['privateAtlasName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateAtlasName: map['privateAtlasName'] == null ? null : (map['privateAtlasName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

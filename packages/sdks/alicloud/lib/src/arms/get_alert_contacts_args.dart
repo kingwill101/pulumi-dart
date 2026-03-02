@@ -28,19 +28,13 @@ class GetAlertContactsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [phoneNum] The mobile number of the alert contact.
   GetAlertContactsArgs({
-    pulumi.Output<String>? alertContactName,
-    pulumi.Output<String>? email,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? phoneNum,
-  }) :
-      alertContactName = pulumi.Input.asOptionalInput<String>(alertContactName),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      phoneNum = pulumi.Input.asOptionalInput<String>(phoneNum);
+    this.alertContactName,
+    this.email,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.phoneNum,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetAlertContactsArgs {
 
   factory GetAlertContactsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertContactsArgs(
-      alertContactName: map['alertContactName'] == null ? null : pulumi.Output.create<String>(map['alertContactName'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      phoneNum: map['phoneNum'] == null ? null : pulumi.Output.create<String>(map['phoneNum'] as String),
+      alertContactName: map['alertContactName'] == null ? null : (map['alertContactName'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      phoneNum: map['phoneNum'] == null ? null : (map['phoneNum'] as String).input(),
     );
   }
 }

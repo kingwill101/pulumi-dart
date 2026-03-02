@@ -19,13 +19,10 @@ class RegionSettingsArgs {
   /// [resourceTypeManagementPreference] A map of service names to their full management preferences for the Region. For more information, see the AWS Documentation on [what full management is](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#full-management) and [which services support full management](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-resource).
   /// [resourceTypeOptInPreference] A map of service names to their opt-in preferences for the Region. See [AWS Documentation on which services support backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html).
   RegionSettingsArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, bool>>? resourceTypeManagementPreference,
-    required pulumi.Output<Map<String, bool>> resourceTypeOptInPreference,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceTypeManagementPreference = pulumi.Input.asOptionalInput<Map<String, bool>>(resourceTypeManagementPreference),
-      resourceTypeOptInPreference = pulumi.Input.asInput<Map<String, bool>>(resourceTypeOptInPreference);
+    this.region,
+    this.resourceTypeManagementPreference,
+    required this.resourceTypeOptInPreference,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RegionSettingsArgs {
 
   factory RegionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return RegionSettingsArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceTypeManagementPreference: map['resourceTypeManagementPreference'] == null ? null : pulumi.Output.create<Map<String, bool>>((map['resourceTypeManagementPreference'] as Map).cast<String, bool>()),
-      resourceTypeOptInPreference: pulumi.Output.create<Map<String, bool>>((map['resourceTypeOptInPreference'] as Map).cast<String, bool>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceTypeManagementPreference: map['resourceTypeManagementPreference'] == null ? null : ((map['resourceTypeManagementPreference'] as Map).cast<String, bool>()).input(),
+      resourceTypeOptInPreference: ((map['resourceTypeOptInPreference'] as Map).cast<String, bool>()).input(),
     );
   }
 }

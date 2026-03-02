@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoscalingPolicySecondaryWorkerConfig {
   /// Maximum number of instances for this group. Note that by default, clusters will not use
   /// secondary workers. Required for secondary workers if the minimum secondary instances is set.
   /// Bounds: [minInstances, ). Defaults to 0.
-  final int? maxInstances;
+  final pulumi.Input<int>? maxInstances;
   /// Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
-  final int? minInstances;
+  final pulumi.Input<int>? minInstances;
   /// Weight for the instance group, which is used to determine the fraction of total workers
   /// in the cluster from this instance group. For example, if primary workers have weight 2,
   /// and secondary workers have weight 1, the cluster will have approximately 2 primary workers
@@ -20,7 +21,7 @@ class AutoscalingPolicySecondaryWorkerConfig {
   /// within the configured size bounds for each group. If weight is set for one group only,
   /// the cluster will default to zero weight on the unset group. For example if weight is set
   /// only on primary workers, the cluster will use primary workers only and no secondary workers.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [AutoscalingPolicySecondaryWorkerConfig].
   /// [maxInstances] Maximum number of instances for this group. Note that by default, clusters will not use
@@ -42,9 +43,9 @@ class AutoscalingPolicySecondaryWorkerConfig {
 
   factory AutoscalingPolicySecondaryWorkerConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicySecondaryWorkerConfig(
-      maxInstances: map['maxInstances'] == null ? null : map['maxInstances'] as int,
-      minInstances: map['minInstances'] == null ? null : map['minInstances'] as int,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

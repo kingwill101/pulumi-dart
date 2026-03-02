@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate {
   /// The Secret URL of a Key Vault Certificate.
   ///
   /// > **Note:** This can be sourced from the `secret_id` field within the `azure.keyvault.Certificate` Resource.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate].
   /// [url] The Secret URL of a Key Vault Certificate.
@@ -21,7 +22,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertifi
 
   factory OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate(
-      url: map['url'] as String,
+      url: (map['url'] as String).input(),
     );
   }
 }

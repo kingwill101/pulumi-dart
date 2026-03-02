@@ -23,15 +23,11 @@ class ManagedPrivateEndpointState {
   /// [synapseWorkspaceId] The ID of the Synapse Workspace on which to create the Managed Private Endpoint. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Private Link Enabled Remote Resource which this Synapse Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ManagedPrivateEndpointState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? subresourceName,
-    pulumi.Output<String>? synapseWorkspaceId,
-    pulumi.Output<String>? targetResourceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      subresourceName = pulumi.Input.asOptionalInput<String>(subresourceName),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId);
+    this.name,
+    this.subresourceName,
+    this.synapseWorkspaceId,
+    this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagedPrivateEndpointState {
 
   factory ManagedPrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      subresourceName: map['subresourceName'] == null ? null : pulumi.Output.create<String>(map['subresourceName'] as String),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
     );
   }
 }

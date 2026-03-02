@@ -27,17 +27,12 @@ class RecorderArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] Amazon Resource Name (ARN) of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
   RecorderArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<RecorderRecordingGroup>? recordingGroup,
-    pulumi.Output<RecorderRecordingMode>? recordingMode,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recordingGroup = pulumi.Input.asOptionalInput<RecorderRecordingGroup>(recordingGroup),
-      recordingMode = pulumi.Input.asOptionalInput<RecorderRecordingMode>(recordingMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn);
+    this.name,
+    this.recordingGroup,
+    this.recordingMode,
+    this.region,
+    required this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class RecorderArgs {
 
   factory RecorderArgs.fromMap(Map<String, dynamic> map) {
     return RecorderArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recordingGroup: map['recordingGroup'] == null ? null : pulumi.Output.create<RecorderRecordingGroup>(RecorderRecordingGroup.fromMap((map['recordingGroup'] as Map).cast<String, dynamic>())),
-      recordingMode: map['recordingMode'] == null ? null : pulumi.Output.create<RecorderRecordingMode>(RecorderRecordingMode.fromMap((map['recordingMode'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recordingGroup: map['recordingGroup'] == null ? null : (RecorderRecordingGroup.fromMap((map['recordingGroup'] as Map).cast<String, dynamic>())).input(),
+      recordingMode: map['recordingMode'] == null ? null : (RecorderRecordingMode.fromMap((map['recordingMode'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

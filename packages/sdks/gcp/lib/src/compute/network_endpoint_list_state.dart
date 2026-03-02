@@ -24,15 +24,11 @@ class NetworkEndpointListState {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Zone where the containing network endpoint group is located.
   NetworkEndpointListState({
-    pulumi.Output<String>? networkEndpointGroup,
-    pulumi.Output<List<NetworkEndpointListNetworkEndpoint>>? networkEndpoints,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      networkEndpointGroup = pulumi.Input.asOptionalInput<String>(networkEndpointGroup),
-      networkEndpoints = pulumi.Input.asOptionalInput<List<NetworkEndpointListNetworkEndpoint>>(networkEndpoints),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.networkEndpointGroup,
+    this.networkEndpoints,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class NetworkEndpointListState {
 
   factory NetworkEndpointListState.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointListState(
-      networkEndpointGroup: map['networkEndpointGroup'] == null ? null : pulumi.Output.create<String>(map['networkEndpointGroup'] as String),
-      networkEndpoints: map['networkEndpoints'] == null ? null : pulumi.Output.create<List<NetworkEndpointListNetworkEndpoint>>(pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(map['networkEndpoints'], (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      networkEndpointGroup: map['networkEndpointGroup'] == null ? null : (map['networkEndpointGroup'] as String).input(),
+      networkEndpoints: map['networkEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(map['networkEndpoints'], (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

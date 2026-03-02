@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The virtual network properties.
 class VirtualNetworkProfile {
   /// The ID of the virtual network.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the subnet.
-  final String? subnet;
+  final pulumi.Input<String>? subnet;
 
   /// Creates a new [VirtualNetworkProfile].
   /// [id] The ID of the virtual network.
@@ -25,8 +26,8 @@ class VirtualNetworkProfile {
 
   factory VirtualNetworkProfile.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkProfile(
-      id: map['id'] == null ? null : map['id'] as String,
-      subnet: map['subnet'] == null ? null : map['subnet'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
     );
   }
 }

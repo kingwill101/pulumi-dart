@@ -28,17 +28,12 @@ class ReportArgs {
   /// [reportName] Report Name.
   /// [schedule] Has schedule information for the report.
   ReportArgs({
-    required pulumi.Output<ReportDefinition> definition,
-    required pulumi.Output<ReportDeliveryInfo> deliveryInfo,
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? reportName,
-    pulumi.Output<ReportSchedule>? schedule,
-  }) :
-      definition = pulumi.Input.asInput<ReportDefinition>(definition),
-      deliveryInfo = pulumi.Input.asInput<ReportDeliveryInfo>(deliveryInfo),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      reportName = pulumi.Input.asOptionalInput<String>(reportName),
-      schedule = pulumi.Input.asOptionalInput<ReportSchedule>(schedule);
+    required this.definition,
+    required this.deliveryInfo,
+    this.format,
+    this.reportName,
+    this.schedule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ReportArgs {
 
   factory ReportArgs.fromMap(Map<String, dynamic> map) {
     return ReportArgs(
-      definition: pulumi.Output.create<ReportDefinition>(ReportDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      deliveryInfo: pulumi.Output.create<ReportDeliveryInfo>(ReportDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      reportName: map['reportName'] == null ? null : pulumi.Output.create<String>(map['reportName'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<ReportSchedule>(ReportSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
+      definition: (ReportDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      deliveryInfo: (ReportDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      reportName: map['reportName'] == null ? null : (map['reportName'] as String).input(),
+      schedule: map['schedule'] == null ? null : (ReportSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

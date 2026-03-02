@@ -52,35 +52,21 @@ class AgentFlowState {
   /// [updatedAt] The time at which the flow was last updated.
   /// [version] The version of the flow.
   AgentFlowState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? customerEncryptionKeyArn,
-    pulumi.Output<AgentFlowDefinition>? definition,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? executionRoleArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<AgentFlowTimeouts>? timeouts,
-    pulumi.Output<String>? updatedAt,
-    pulumi.Output<String>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      customerEncryptionKeyArn = pulumi.Input.asOptionalInput<String>(customerEncryptionKeyArn),
-      definition = pulumi.Input.asOptionalInput<AgentFlowDefinition>(definition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionRoleArn = pulumi.Input.asOptionalInput<String>(executionRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<AgentFlowTimeouts>(timeouts),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.arn,
+    this.createdAt,
+    this.customerEncryptionKeyArn,
+    this.definition,
+    this.description,
+    this.executionRoleArn,
+    this.name,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.updatedAt,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class AgentFlowState {
 
   factory AgentFlowState.fromMap(Map<String, dynamic> map) {
     return AgentFlowState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : pulumi.Output.create<String>(map['customerEncryptionKeyArn'] as String),
-      definition: map['definition'] == null ? null : pulumi.Output.create<AgentFlowDefinition>(AgentFlowDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionRoleArn: map['executionRoleArn'] == null ? null : pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentFlowTimeouts>(AgentFlowTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : (map['customerEncryptionKeyArn'] as String).input(),
+      definition: map['definition'] == null ? null : (AgentFlowDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentFlowTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

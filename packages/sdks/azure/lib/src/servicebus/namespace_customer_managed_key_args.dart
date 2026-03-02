@@ -19,13 +19,10 @@ class NamespaceCustomerManagedKeyArgs {
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Encrypt the data in this Service Bus Namespace.
   /// [namespaceId] The ID of the Service Bus namespace. Changing this forces a new resource to be created.
   NamespaceCustomerManagedKeyArgs({
-    pulumi.Output<bool>? infrastructureEncryptionEnabled,
-    required pulumi.Output<String> keyVaultKeyId,
-    required pulumi.Output<String> namespaceId,
-  }) :
-      infrastructureEncryptionEnabled = pulumi.Input.asOptionalInput<bool>(infrastructureEncryptionEnabled),
-      keyVaultKeyId = pulumi.Input.asInput<String>(keyVaultKeyId),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId);
+    this.infrastructureEncryptionEnabled,
+    required this.keyVaultKeyId,
+    required this.namespaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NamespaceCustomerManagedKeyArgs {
 
   factory NamespaceCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKeyArgs(
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : pulumi.Output.create<bool>(map['infrastructureEncryptionEnabled'] as bool),
-      keyVaultKeyId: pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
+      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled'] as bool).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
     );
   }
 }

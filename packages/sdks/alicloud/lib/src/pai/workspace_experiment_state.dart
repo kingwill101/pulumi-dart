@@ -22,17 +22,12 @@ class WorkspaceExperimentState {
   /// [experimentName] Name is the name of the experiment, unique in a namespace
   /// [workspaceId] WorkspaceId is the workspace id which contains the experiment
   WorkspaceExperimentState({
-    pulumi.Output<String>? accessibility,
-    pulumi.Output<String>? artifactUri,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? experimentName,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      accessibility = pulumi.Input.asOptionalInput<String>(accessibility),
-      artifactUri = pulumi.Input.asOptionalInput<String>(artifactUri),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      experimentName = pulumi.Input.asOptionalInput<String>(experimentName),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.accessibility,
+    this.artifactUri,
+    this.createTime,
+    this.experimentName,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class WorkspaceExperimentState {
 
   factory WorkspaceExperimentState.fromMap(Map<String, dynamic> map) {
     return WorkspaceExperimentState(
-      accessibility: map['accessibility'] == null ? null : pulumi.Output.create<String>(map['accessibility'] as String),
-      artifactUri: map['artifactUri'] == null ? null : pulumi.Output.create<String>(map['artifactUri'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      experimentName: map['experimentName'] == null ? null : pulumi.Output.create<String>(map['experimentName'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      artifactUri: map['artifactUri'] == null ? null : (map['artifactUri'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class ConnectedEnvironmentsCertificateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   ConnectedEnvironmentsCertificateArgs({
-    pulumi.Output<String>? certificateName,
-    required pulumi.Output<String> connectedEnvironmentName,
-    pulumi.Output<String>? location,
-    pulumi.Output<CertificateProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      connectedEnvironmentName = pulumi.Input.asInput<String>(connectedEnvironmentName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<CertificateProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.certificateName,
+    required this.connectedEnvironmentName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ConnectedEnvironmentsCertificateArgs {
 
   factory ConnectedEnvironmentsCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentsCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      connectedEnvironmentName: pulumi.Output.create<String>(map['connectedEnvironmentName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CertificateProperties>(CertificateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      connectedEnvironmentName: (map['connectedEnvironmentName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (CertificateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

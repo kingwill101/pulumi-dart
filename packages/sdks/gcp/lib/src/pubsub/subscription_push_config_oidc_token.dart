@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionPushConfigOidcToken {
   /// Audience to be used when generating OIDC token. The audience claim
@@ -8,12 +9,12 @@ class SubscriptionPushConfigOidcToken {
   /// for the audience field is not supported. More info about the OIDC JWT
   /// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
   /// Note: if not specified, the Push endpoint URL will be used.
-  final String? audience;
+  final pulumi.Input<String>? audience;
   /// Service account email to be used for generating the OIDC token.
   /// The caller (for subscriptions.create, subscriptions.patch, and
   /// subscriptions.modifyPushConfig RPCs) must have the
   /// iam.serviceAccounts.actAs permission for the service account.
-  final String serviceAccountEmail;
+  final pulumi.Input<String> serviceAccountEmail;
 
   /// Creates a new [SubscriptionPushConfigOidcToken].
   /// [audience] Audience to be used when generating OIDC token. The audience claim
@@ -32,8 +33,8 @@ class SubscriptionPushConfigOidcToken {
 
   factory SubscriptionPushConfigOidcToken.fromMap(Map<String, dynamic> map) {
     return SubscriptionPushConfigOidcToken(
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      serviceAccountEmail: map['serviceAccountEmail'] as String,
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
     );
   }
 }

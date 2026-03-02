@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_cluster_addon_profile_response_identity.dart';
 
 /// A Kubernetes add-on profile for a managed cluster.
 class ManagedClusterAddonProfileResponse {
   /// Key-value pairs for configuring an add-on.
-  final Map<String, String>? config;
+  final pulumi.Input<Map<String, String>>? config;
   /// Whether the add-on is enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Information of user assigned identity used by this add-on.
-  final ManagedClusterAddonProfileResponseIdentity identity;
+  final pulumi.Input<ManagedClusterAddonProfileResponseIdentity> identity;
 
   /// Creates a new [ManagedClusterAddonProfileResponse].
   /// [config] Key-value pairs for configuring an add-on.
@@ -25,15 +26,15 @@ class ManagedClusterAddonProfileResponse {
     return <String, dynamic>{
       'config': ?config,
       'enabled': enabled,
-      'identity': identity.toMap(),
+      'identity': pulumi.Input.mapInputValue<ManagedClusterAddonProfileResponseIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterAddonProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAddonProfileResponse(
-      config: map['config'] == null ? null : (map['config'] as Map).cast<String, String>(),
-      enabled: map['enabled'] as bool,
-      identity: ManagedClusterAddonProfileResponseIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      config: map['config'] == null ? null : ((map['config'] as Map).cast<String, String>()).input(),
+      enabled: (map['enabled'] as bool).input(),
+      identity: (ManagedClusterAddonProfileResponseIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

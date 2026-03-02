@@ -47,21 +47,14 @@ class AiFeatureOnlineStoreFeatureviewIamBindingArgs {
   /// [region] The region for the resource. It should be the same as the featureonlinestore region. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
   AiFeatureOnlineStoreFeatureviewIamBindingArgs({
-    pulumi.Output<AiFeatureOnlineStoreFeatureviewIamBindingCondition>? condition,
-    required pulumi.Output<String> featureOnlineStore,
-    required pulumi.Output<String> featureView,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreFeatureviewIamBindingCondition>(condition),
-      featureOnlineStore = pulumi.Input.asInput<String>(featureOnlineStore),
-      featureView = pulumi.Input.asInput<String>(featureView),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.featureOnlineStore,
+    required this.featureView,
+    required this.members,
+    this.project,
+    this.region,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,13 +70,13 @@ class AiFeatureOnlineStoreFeatureviewIamBindingArgs {
 
   factory AiFeatureOnlineStoreFeatureviewIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreFeatureviewIamBindingCondition>(AiFeatureOnlineStoreFeatureviewIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      featureOnlineStore: pulumi.Output.create<String>(map['featureOnlineStore'] as String),
-      featureView: pulumi.Output.create<String>(map['featureView'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AiFeatureOnlineStoreFeatureviewIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      featureOnlineStore: (map['featureOnlineStore'] as String).input(),
+      featureView: (map['featureView'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

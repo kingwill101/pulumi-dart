@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalysisParametersIntegerParameter {
   /// Display name for the analysis.
   ///
   /// The following arguments are optional:
-  final String name;
-  final List<int> values;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<int>> values;
 
   /// Creates a new [AnalysisParametersIntegerParameter].
   /// [name] Display name for the analysis.
@@ -25,8 +26,8 @@ class AnalysisParametersIntegerParameter {
 
   factory AnalysisParametersIntegerParameter.fromMap(Map<String, dynamic> map) {
     return AnalysisParametersIntegerParameter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<int>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<int>()).input(),
     );
   }
 }

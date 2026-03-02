@@ -70,23 +70,15 @@ class ServicePerimeterArgs {
   /// [title] Human readable title. Must be unique within the Policy.
   /// [useExplicitDryRunSpec] Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   ServicePerimeterArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? perimeterType,
-    pulumi.Output<ServicePerimeterSpec>? spec,
-    pulumi.Output<ServicePerimeterStatus>? status,
-    required pulumi.Output<String> title,
-    pulumi.Output<bool>? useExplicitDryRunSpec,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      perimeterType = pulumi.Input.asOptionalInput<String>(perimeterType),
-      spec = pulumi.Input.asOptionalInput<ServicePerimeterSpec>(spec),
-      status = pulumi.Input.asOptionalInput<ServicePerimeterStatus>(status),
-      title = pulumi.Input.asInput<String>(title),
-      useExplicitDryRunSpec = pulumi.Input.asOptionalInput<bool>(useExplicitDryRunSpec);
+    this.description,
+    this.name,
+    required this.parent,
+    this.perimeterType,
+    this.spec,
+    this.status,
+    required this.title,
+    this.useExplicitDryRunSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,14 +95,14 @@ class ServicePerimeterArgs {
 
   factory ServicePerimeterArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      perimeterType: map['perimeterType'] == null ? null : pulumi.Output.create<String>(map['perimeterType'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<ServicePerimeterSpec>(ServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<ServicePerimeterStatus>(ServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>())),
-      title: pulumi.Output.create<String>(map['title'] as String),
-      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : pulumi.Output.create<bool>(map['useExplicitDryRunSpec'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      perimeterType: map['perimeterType'] == null ? null : (map['perimeterType'] as String).input(),
+      spec: map['spec'] == null ? null : (ServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      title: (map['title'] as String).input(),
+      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : (map['useExplicitDryRunSpec'] as bool).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AcsChat channel definition
 class AcsChatChannel {
   /// The channel name
   /// Expected value is 'AcsChatChannel'.
-  final String channelName;
+  final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final String? etag;
+  final pulumi.Input<String>? etag;
   /// Specifies the location of the resource.
-  final String? location;
+  final pulumi.Input<String>? location;
 
   /// Creates a new [AcsChatChannel].
   /// [channelName] The channel name
@@ -31,9 +32,9 @@ class AcsChatChannel {
 
   factory AcsChatChannel.fromMap(Map<String, dynamic> map) {
     return AcsChatChannel(
-      channelName: map['channelName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      channelName: (map['channelName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
     );
   }
 }

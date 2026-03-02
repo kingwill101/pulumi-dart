@@ -16,13 +16,10 @@ class GetFunctionCloudfunctionsV2Args {
   /// [location] Required.
   /// [project] Optional.
   GetFunctionCloudfunctionsV2Args({
-    required pulumi.Output<String> functionId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      functionId = pulumi.Input.asInput<String>(functionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.functionId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetFunctionCloudfunctionsV2Args {
 
   factory GetFunctionCloudfunctionsV2Args.fromMap(Map<String, dynamic> map) {
     return GetFunctionCloudfunctionsV2Args(
-      functionId: pulumi.Output.create<String>(map['functionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      functionId: (map['functionId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

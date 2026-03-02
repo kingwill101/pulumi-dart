@@ -13,9 +13,8 @@ class GetNodeDeviceInfoArgs {
   /// Creates a new [GetNodeDeviceInfoArgs].
   /// [name] Device name from `libvirt.getNodeDevices` data source (e.g., `pci_0000_00_1f_2`).
   GetNodeDeviceInfoArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetNodeDeviceInfoArgs {
 
   factory GetNodeDeviceInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeDeviceInfoArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

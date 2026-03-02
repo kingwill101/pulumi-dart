@@ -37,27 +37,17 @@ class RegistryWebhookState {
   /// [status] Specifies if this Webhook triggers notifications or not. Valid values: `enabled` and `disabled`. Default is `enabled`.
   /// [tags] A mapping of tags to assign to the resource.
   RegistryWebhookState({
-    pulumi.Output<List<String>>? actions,
-    pulumi.Output<Map<String, String>>? customHeaders,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? registryName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? scope,
-    pulumi.Output<String>? serviceUri,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<String>>(actions),
-      customHeaders = pulumi.Input.asOptionalInput<Map<String, String>>(customHeaders),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      registryName = pulumi.Input.asOptionalInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      serviceUri = pulumi.Input.asOptionalInput<String>(serviceUri),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.actions,
+    this.customHeaders,
+    this.location,
+    this.name,
+    this.registryName,
+    this.resourceGroupName,
+    this.scope,
+    this.serviceUri,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class RegistryWebhookState {
 
   factory RegistryWebhookState.fromMap(Map<String, dynamic> map) {
     return RegistryWebhookState(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<String>>((map['actions'] as List).cast<String>()),
-      customHeaders: map['customHeaders'] == null ? null : pulumi.Output.create<Map<String, String>>((map['customHeaders'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      registryName: map['registryName'] == null ? null : pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      serviceUri: map['serviceUri'] == null ? null : pulumi.Output.create<String>(map['serviceUri'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      customHeaders: map['customHeaders'] == null ? null : ((map['customHeaders'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      registryName: map['registryName'] == null ? null : (map['registryName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

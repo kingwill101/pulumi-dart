@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersBalancerListenerPortsAndProtocal {
-  final int listenerPort;
-  final String listenerProtocal;
+  final pulumi.Input<int> listenerPort;
+  final pulumi.Input<String> listenerProtocal;
 
   /// Creates a new [GetLoadBalancersBalancerListenerPortsAndProtocal].
   /// [listenerPort] Required.
@@ -22,8 +23,8 @@ class GetLoadBalancersBalancerListenerPortsAndProtocal {
 
   factory GetLoadBalancersBalancerListenerPortsAndProtocal.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerListenerPortsAndProtocal(
-      listenerPort: map['listenerPort'] as int,
-      listenerProtocal: map['listenerProtocal'] as String,
+      listenerPort: (map['listenerPort'] as int).input(),
+      listenerProtocal: (map['listenerProtocal'] as String).input(),
     );
   }
 }

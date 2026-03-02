@@ -16,13 +16,10 @@ class CapabilityState {
   /// [capabilityUrn] The Unique Resource Name of the Capability.
   /// [chaosStudioTargetId] The Chaos Studio Target that the capability should be applied to. Changing this forces a new Chaos Studio Capability to be created.
   CapabilityState({
-    pulumi.Output<String>? capabilityType,
-    pulumi.Output<String>? capabilityUrn,
-    pulumi.Output<String>? chaosStudioTargetId,
-  }) :
-      capabilityType = pulumi.Input.asOptionalInput<String>(capabilityType),
-      capabilityUrn = pulumi.Input.asOptionalInput<String>(capabilityUrn),
-      chaosStudioTargetId = pulumi.Input.asOptionalInput<String>(chaosStudioTargetId);
+    this.capabilityType,
+    this.capabilityUrn,
+    this.chaosStudioTargetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CapabilityState {
 
   factory CapabilityState.fromMap(Map<String, dynamic> map) {
     return CapabilityState(
-      capabilityType: map['capabilityType'] == null ? null : pulumi.Output.create<String>(map['capabilityType'] as String),
-      capabilityUrn: map['capabilityUrn'] == null ? null : pulumi.Output.create<String>(map['capabilityUrn'] as String),
-      chaosStudioTargetId: map['chaosStudioTargetId'] == null ? null : pulumi.Output.create<String>(map['chaosStudioTargetId'] as String),
+      capabilityType: map['capabilityType'] == null ? null : (map['capabilityType'] as String).input(),
+      capabilityUrn: map['capabilityUrn'] == null ? null : (map['capabilityUrn'] as String).input(),
+      chaosStudioTargetId: map['chaosStudioTargetId'] == null ? null : (map['chaosStudioTargetId'] as String).input(),
     );
   }
 }

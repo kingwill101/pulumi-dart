@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateHibernationOptions {
   /// If set to `true`, the launched EC2 instance will hibernation enabled.
-  final bool configured;
+  final pulumi.Input<bool> configured;
 
   /// Creates a new [LaunchTemplateHibernationOptions].
   /// [configured] If set to `true`, the launched EC2 instance will hibernation enabled.
@@ -19,7 +20,7 @@ class LaunchTemplateHibernationOptions {
 
   factory LaunchTemplateHibernationOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateHibernationOptions(
-      configured: map['configured'] as bool,
+      configured: (map['configured'] as bool).input(),
     );
   }
 }

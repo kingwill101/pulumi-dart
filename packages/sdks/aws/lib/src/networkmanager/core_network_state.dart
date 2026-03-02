@@ -72,31 +72,19 @@ class CoreNetworkState {
   /// [tags] Key-value tags for the Core Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   CoreNetworkState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? basePolicyDocument,
-    pulumi.Output<List<String>>? basePolicyRegions,
-    pulumi.Output<bool>? createBasePolicy,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<CoreNetworkEdge>>? edges,
-    pulumi.Output<String>? globalNetworkId,
-    pulumi.Output<List<CoreNetworkSegment>>? segments,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      basePolicyDocument = pulumi.Input.asOptionalInput<String>(basePolicyDocument),
-      basePolicyRegions = pulumi.Input.asOptionalInput<List<String>>(basePolicyRegions),
-      createBasePolicy = pulumi.Input.asOptionalInput<bool>(createBasePolicy),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      edges = pulumi.Input.asOptionalInput<List<CoreNetworkEdge>>(edges),
-      globalNetworkId = pulumi.Input.asOptionalInput<String>(globalNetworkId),
-      segments = pulumi.Input.asOptionalInput<List<CoreNetworkSegment>>(segments),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.basePolicyDocument,
+    this.basePolicyRegions,
+    this.createBasePolicy,
+    this.createdAt,
+    this.description,
+    this.edges,
+    this.globalNetworkId,
+    this.segments,
+    this.state,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,18 +105,18 @@ class CoreNetworkState {
 
   factory CoreNetworkState.fromMap(Map<String, dynamic> map) {
     return CoreNetworkState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      basePolicyDocument: map['basePolicyDocument'] == null ? null : pulumi.Output.create<String>(map['basePolicyDocument'] as String),
-      basePolicyRegions: map['basePolicyRegions'] == null ? null : pulumi.Output.create<List<String>>((map['basePolicyRegions'] as List).cast<String>()),
-      createBasePolicy: map['createBasePolicy'] == null ? null : pulumi.Output.create<bool>(map['createBasePolicy'] as bool),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      edges: map['edges'] == null ? null : pulumi.Output.create<List<CoreNetworkEdge>>(pulumi.Input.decodeList<CoreNetworkEdge>(map['edges'], (value) => CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>()))),
-      globalNetworkId: map['globalNetworkId'] == null ? null : pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      segments: map['segments'] == null ? null : pulumi.Output.create<List<CoreNetworkSegment>>(pulumi.Input.decodeList<CoreNetworkSegment>(map['segments'], (value) => CoreNetworkSegment.fromMap((value as Map).cast<String, dynamic>()))),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      basePolicyDocument: map['basePolicyDocument'] == null ? null : (map['basePolicyDocument'] as String).input(),
+      basePolicyRegions: map['basePolicyRegions'] == null ? null : ((map['basePolicyRegions'] as List).cast<String>()).input(),
+      createBasePolicy: map['createBasePolicy'] == null ? null : (map['createBasePolicy'] as bool).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      edges: map['edges'] == null ? null : (pulumi.Input.decodeList<CoreNetworkEdge>(map['edges'], (value) => CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
+      segments: map['segments'] == null ? null : (pulumi.Input.decodeList<CoreNetworkSegment>(map['segments'], (value) => CoreNetworkSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

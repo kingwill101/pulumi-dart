@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsGovcloudIntegrationsS3 {
   /// Determine if extra inventory data be collected or not. May affect total data collection time and contribute to the Cloud provider API rate limit.
-  final bool? fetchExtendedInventory;
+  final pulumi.Input<bool>? fetchExtendedInventory;
   /// Specify if tags should be collected. May affect total data collection time and contribute to the Cloud provider API rate limit.
-  final bool? fetchTags;
+  final pulumi.Input<bool>? fetchTags;
   /// The data polling interval in seconds
-  final int? metricsPollingInterval;
+  final pulumi.Input<int>? metricsPollingInterval;
   /// Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
-  final String? tagKey;
+  final pulumi.Input<String>? tagKey;
   /// Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
-  final String? tagValue;
+  final pulumi.Input<String>? tagValue;
 
   /// Creates a new [AwsGovcloudIntegrationsS3].
   /// [fetchExtendedInventory] Determine if extra inventory data be collected or not. May affect total data collection time and contribute to the Cloud provider API rate limit.
@@ -39,11 +40,11 @@ class AwsGovcloudIntegrationsS3 {
 
   factory AwsGovcloudIntegrationsS3.fromMap(Map<String, dynamic> map) {
     return AwsGovcloudIntegrationsS3(
-      fetchExtendedInventory: map['fetchExtendedInventory'] == null ? null : map['fetchExtendedInventory'] as bool,
-      fetchTags: map['fetchTags'] == null ? null : map['fetchTags'] as bool,
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
-      tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
-      tagValue: map['tagValue'] == null ? null : map['tagValue'] as String,
+      fetchExtendedInventory: map['fetchExtendedInventory'] == null ? null : (map['fetchExtendedInventory'] as bool).input(),
+      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags'] as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
     );
   }
 }

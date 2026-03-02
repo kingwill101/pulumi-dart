@@ -28,19 +28,13 @@ class TapePoolArgs {
   /// [storageClass] The storage class that is associated with the new custom pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class that corresponds to the pool. Possible values are `DEEP_ARCHIVE` or `GLACIER`.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   TapePoolArgs({
-    required pulumi.Output<String> poolName,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionLockTimeInDays,
-    pulumi.Output<String>? retentionLockType,
-    required pulumi.Output<String> storageClass,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      poolName = pulumi.Input.asInput<String>(poolName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionLockTimeInDays = pulumi.Input.asOptionalInput<int>(retentionLockTimeInDays),
-      retentionLockType = pulumi.Input.asOptionalInput<String>(retentionLockType),
-      storageClass = pulumi.Input.asInput<String>(storageClass),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.poolName,
+    this.region,
+    this.retentionLockTimeInDays,
+    this.retentionLockType,
+    required this.storageClass,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class TapePoolArgs {
 
   factory TapePoolArgs.fromMap(Map<String, dynamic> map) {
     return TapePoolArgs(
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : pulumi.Output.create<int>(map['retentionLockTimeInDays'] as int),
-      retentionLockType: map['retentionLockType'] == null ? null : pulumi.Output.create<String>(map['retentionLockType'] as String),
-      storageClass: pulumi.Output.create<String>(map['storageClass'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      poolName: (map['poolName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : (map['retentionLockTimeInDays'] as int).input(),
+      retentionLockType: map['retentionLockType'] == null ? null : (map['retentionLockType'] as String).input(),
+      storageClass: (map['storageClass'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

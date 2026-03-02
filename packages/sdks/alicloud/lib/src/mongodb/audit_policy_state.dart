@@ -19,15 +19,11 @@ class AuditPolicyState {
   /// [filter] The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
   /// [storagePeriod] Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
   AuditPolicyState({
-    pulumi.Output<String>? auditStatus,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? filter,
-    pulumi.Output<int>? storagePeriod,
-  }) :
-      auditStatus = pulumi.Input.asOptionalInput<String>(auditStatus),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      storagePeriod = pulumi.Input.asOptionalInput<int>(storagePeriod);
+    this.auditStatus,
+    this.dbInstanceId,
+    this.filter,
+    this.storagePeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AuditPolicyState {
 
   factory AuditPolicyState.fromMap(Map<String, dynamic> map) {
     return AuditPolicyState(
-      auditStatus: map['auditStatus'] == null ? null : pulumi.Output.create<String>(map['auditStatus'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      storagePeriod: map['storagePeriod'] == null ? null : pulumi.Output.create<int>(map['storagePeriod'] as int),
+      auditStatus: map['auditStatus'] == null ? null : (map['auditStatus'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      storagePeriod: map['storagePeriod'] == null ? null : (map['storagePeriod'] as int).input(),
     );
   }
 }

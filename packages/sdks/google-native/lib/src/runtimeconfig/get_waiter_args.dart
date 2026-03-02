@@ -16,13 +16,10 @@ class GetWaiterArgs {
   /// [project] Optional.
   /// [waiterId] Required.
   GetWaiterArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> waiterId,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      waiterId = pulumi.Input.asInput<String>(waiterId);
+    required this.configId,
+    this.project,
+    required this.waiterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetWaiterArgs {
 
   factory GetWaiterArgs.fromMap(Map<String, dynamic> map) {
     return GetWaiterArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      waiterId: pulumi.Output.create<String>(map['waiterId'] as String),
+      configId: (map['configId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      waiterId: (map['waiterId'] as String).input(),
     );
   }
 }

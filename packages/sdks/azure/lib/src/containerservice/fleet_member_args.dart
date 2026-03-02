@@ -22,15 +22,11 @@ class FleetMemberArgs {
   /// [kubernetesFleetId] Specifies the Kubernetes Fleet Id within which this Kubernetes Fleet Member should exist. Changing this forces a new Kubernetes Fleet Member to be created.
   /// [name] Specifies the name of this Kubernetes Fleet Member. Changing this forces a new Kubernetes Fleet Member to be created.
   FleetMemberArgs({
-    pulumi.Output<String>? group,
-    required pulumi.Output<String> kubernetesClusterId,
-    required pulumi.Output<String> kubernetesFleetId,
-    pulumi.Output<String>? name,
-  }) :
-      group = pulumi.Input.asOptionalInput<String>(group),
-      kubernetesClusterId = pulumi.Input.asInput<String>(kubernetesClusterId),
-      kubernetesFleetId = pulumi.Input.asInput<String>(kubernetesFleetId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.group,
+    required this.kubernetesClusterId,
+    required this.kubernetesFleetId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class FleetMemberArgs {
 
   factory FleetMemberArgs.fromMap(Map<String, dynamic> map) {
     return FleetMemberArgs(
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      kubernetesClusterId: pulumi.Output.create<String>(map['kubernetesClusterId'] as String),
-      kubernetesFleetId: pulumi.Output.create<String>(map['kubernetesFleetId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      kubernetesClusterId: (map['kubernetesClusterId'] as String).input(),
+      kubernetesFleetId: (map['kubernetesFleetId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

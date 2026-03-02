@@ -14,11 +14,9 @@ class GetPolicyBasedRouteArgs {
   /// [policyBasedRouteId] Required.
   /// [project] Optional.
   GetPolicyBasedRouteArgs({
-    required pulumi.Output<String> policyBasedRouteId,
-    pulumi.Output<String>? project,
-  }) :
-      policyBasedRouteId = pulumi.Input.asInput<String>(policyBasedRouteId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.policyBasedRouteId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetPolicyBasedRouteArgs {
 
   factory GetPolicyBasedRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyBasedRouteArgs(
-      policyBasedRouteId: pulumi.Output.create<String>(map['policyBasedRouteId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      policyBasedRouteId: (map['policyBasedRouteId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

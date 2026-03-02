@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_acfp_rule_set_request_inspection.dart';
 import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_acfp_rule_set_response_inspection.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet {
   /// The path of the account creation endpoint for your application. This is the page on your website that accepts the completed registration form for a new user. This page must accept POST requests.
-  final String creationPath;
+  final pulumi.Input<String> creationPath;
   /// Whether or not to allow the use of regular expressions in the login page path.
-  final bool? enableRegexInPath;
+  final pulumi.Input<bool>? enableRegexInPath;
   /// The path of the account registration endpoint for your application. This is the page on your website that presents the registration form to new users. This page must accept GET text/html requests.
-  final String registrationPagePath;
+  final pulumi.Input<String> registrationPagePath;
   /// The criteria for inspecting login requests, used by the ATP rule group to validate credentials usage. See `request_inspection` for more details.
-  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection requestInspection;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection> requestInspection;
   /// The criteria for inspecting responses to login requests, used by the ATP rule group to track login failure rates. Note that Response Inspection is available only on web ACLs that protect CloudFront distributions. See `response_inspection` for more details.
-  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspection? responseInspection;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspection>? responseInspection;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet].
   /// [creationPath] The path of the account creation endpoint for your application. This is the page on your website that accepts the completed registration form for a new user. This page must accept POST requests.
@@ -34,18 +35,18 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
       'creationPath': creationPath,
       'enableRegexInPath': ?enableRegexInPath,
       'registrationPagePath': registrationPagePath,
-      'requestInspection': requestInspection.toMap(),
-      'responseInspection': ?responseInspection == null ? null : responseInspection!.toMap(),
+      'requestInspection': pulumi.Input.mapInputValue<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection, Map<String, dynamic>>(requestInspection, (value) => value.toMap()),
+      'responseInspection': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspection, Map<String, dynamic>>(responseInspection, (value) => value.toMap()),
     };
   }
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet(
-      creationPath: map['creationPath'] as String,
-      enableRegexInPath: map['enableRegexInPath'] == null ? null : map['enableRegexInPath'] as bool,
-      registrationPagePath: map['registrationPagePath'] as String,
-      requestInspection: WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection.fromMap((map['requestInspection'] as Map).cast<String, dynamic>()),
-      responseInspection: map['responseInspection'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspection.fromMap((map['responseInspection'] as Map).cast<String, dynamic>()),
+      creationPath: (map['creationPath'] as String).input(),
+      enableRegexInPath: map['enableRegexInPath'] == null ? null : (map['enableRegexInPath'] as bool).input(),
+      registrationPagePath: (map['registrationPagePath'] as String).input(),
+      requestInspection: (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection.fromMap((map['requestInspection'] as Map).cast<String, dynamic>())).input(),
+      responseInspection: map['responseInspection'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspection.fromMap((map['responseInspection'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

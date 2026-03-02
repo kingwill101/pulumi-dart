@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_task_assignment_execution_context.dart';
 import 'storage_task_assignment_report.dart';
 
 /// Properties of the storage task assignment.
 class StorageTaskAssignmentProperties {
   /// Text that describes the purpose of the storage task assignment
-  final String description;
+  final pulumi.Input<String> description;
   /// Whether the storage task assignment is enabled or not
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The storage task assignment execution context
-  final StorageTaskAssignmentExecutionContext executionContext;
+  final pulumi.Input<StorageTaskAssignmentExecutionContext> executionContext;
   /// The storage task assignment report
-  final StorageTaskAssignmentReport report;
+  final pulumi.Input<StorageTaskAssignmentReport> report;
   /// Id of the corresponding storage task
-  final String taskId;
+  final pulumi.Input<String> taskId;
 
   /// Creates a new [StorageTaskAssignmentProperties].
   /// [description] Text that describes the purpose of the storage task assignment
@@ -34,19 +35,19 @@ class StorageTaskAssignmentProperties {
     return <String, dynamic>{
       'description': description,
       'enabled': enabled,
-      'executionContext': executionContext.toMap(),
-      'report': report.toMap(),
+      'executionContext': pulumi.Input.mapInputValue<StorageTaskAssignmentExecutionContext, Map<String, dynamic>>(executionContext, (value) => value.toMap()),
+      'report': pulumi.Input.mapInputValue<StorageTaskAssignmentReport, Map<String, dynamic>>(report, (value) => value.toMap()),
       'taskId': taskId,
     };
   }
 
   factory StorageTaskAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return StorageTaskAssignmentProperties(
-      description: map['description'] as String,
-      enabled: map['enabled'] as bool,
-      executionContext: StorageTaskAssignmentExecutionContext.fromMap((map['executionContext'] as Map).cast<String, dynamic>()),
-      report: StorageTaskAssignmentReport.fromMap((map['report'] as Map).cast<String, dynamic>()),
-      taskId: map['taskId'] as String,
+      description: (map['description'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      executionContext: (StorageTaskAssignmentExecutionContext.fromMap((map['executionContext'] as Map).cast<String, dynamic>())).input(),
+      report: (StorageTaskAssignmentReport.fromMap((map['report'] as Map).cast<String, dynamic>())).input(),
+      taskId: (map['taskId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableComment {
   /// A description of the table.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [TableComment].
   /// [message] A description of the table.
@@ -19,7 +20,7 @@ class TableComment {
 
   factory TableComment.fromMap(Map<String, dynamic> map) {
     return TableComment(
-      message: map['message'] == null ? null : map['message'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

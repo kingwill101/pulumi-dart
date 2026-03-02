@@ -6,11 +6,11 @@ import 'ingress_port_status.dart';
 /// IngressLoadBalancerIngress represents the status of a load-balancer ingress point.
 class IngressLoadBalancerIngress {
   /// hostname is set for load-balancer ingress points that are DNS based.
-  final String? hostname;
+  final pulumi.Input<String>? hostname;
   /// ip is set for load-balancer ingress points that are IP based.
-  final String? ip;
+  final pulumi.Input<String>? ip;
   /// ports provides information about the ports exposed by this LoadBalancer.
-  final List<IngressPortStatus>? ports;
+  final pulumi.Input<List<IngressPortStatus>>? ports;
 
   /// Creates a new [IngressLoadBalancerIngress].
   /// [hostname] hostname is set for load-balancer ingress points that are DNS based.
@@ -26,15 +26,15 @@ class IngressLoadBalancerIngress {
     return <String, dynamic>{
       'hostname': ?hostname,
       'ip': ?ip,
-      'ports': ?ports == null ? null : pulumi.Input.encodeList<IngressPortStatus, Map<String, dynamic>>(ports!, (value) => value.toMap()),
+      'ports': ?pulumi.Input.mapOptionalInputValue<List<IngressPortStatus>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<IngressPortStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory IngressLoadBalancerIngress.fromMap(Map<String, dynamic> map) {
     return IngressLoadBalancerIngress(
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      ip: map['ip'] == null ? null : map['ip'] as String,
-      ports: map['ports'] == null ? null : pulumi.Input.decodeList<IngressPortStatus>(map['ports'], (value) => IngressPortStatus.fromMap((value as Map).cast<String, dynamic>())),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<IngressPortStatus>(map['ports'], (value) => IngressPortStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -39,27 +39,17 @@ class EndpointArgs {
   /// [threatExceptions] List of threat IDs to be excepted from generating alerts.
   /// [trafficLogs] Whether the endpoint should report traffic logs in addition to threat logs.
   EndpointArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> endpointId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<EndpointSeverity> severity,
-    pulumi.Output<List<String>>? threatExceptions,
-    pulumi.Output<bool>? trafficLogs,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      severity = pulumi.Input.asInput<EndpointSeverity>(severity),
-      threatExceptions = pulumi.Input.asOptionalInput<List<String>>(threatExceptions),
-      trafficLogs = pulumi.Input.asOptionalInput<bool>(trafficLogs);
+    this.description,
+    required this.endpointId,
+    this.labels,
+    this.location,
+    required this.network,
+    this.project,
+    this.requestId,
+    required this.severity,
+    this.threatExceptions,
+    this.trafficLogs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      severity: pulumi.Output.create<EndpointSeverity>(EndpointSeverity.fromValue(map['severity'] as String)),
-      threatExceptions: map['threatExceptions'] == null ? null : pulumi.Output.create<List<String>>((map['threatExceptions'] as List).cast<String>()),
-      trafficLogs: map['trafficLogs'] == null ? null : pulumi.Output.create<bool>(map['trafficLogs'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      severity: (EndpointSeverity.fromValue(map['severity'] as String)).input(),
+      threatExceptions: map['threatExceptions'] == null ? null : ((map['threatExceptions'] as List).cast<String>()).input(),
+      trafficLogs: map['trafficLogs'] == null ? null : (map['trafficLogs'] as bool).input(),
     );
   }
 }

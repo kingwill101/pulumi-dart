@@ -19,13 +19,10 @@ class GetLicenseProfileArgs {
   /// [machineName] The name of the hybrid machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLicenseProfileArgs({
-    required pulumi.Output<String> licenseProfileName,
-    required pulumi.Output<String> machineName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      licenseProfileName = pulumi.Input.asInput<String>(licenseProfileName),
-      machineName = pulumi.Input.asInput<String>(machineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.licenseProfileName,
+    required this.machineName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLicenseProfileArgs {
 
   factory GetLicenseProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseProfileArgs(
-      licenseProfileName: pulumi.Output.create<String>(map['licenseProfileName'] as String),
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      licenseProfileName: (map['licenseProfileName'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

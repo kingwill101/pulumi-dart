@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An image freshness check, which rejects images that were uploaded before the set number of days ago to the supported repositories.
 class ImageFreshnessCheckResponse {
   /// The max number of days that is allowed since the image was uploaded. Must be greater than zero.
-  final int maxUploadAgeDays;
+  final pulumi.Input<int> maxUploadAgeDays;
 
   /// Creates a new [ImageFreshnessCheckResponse].
   /// [maxUploadAgeDays] The max number of days that is allowed since the image was uploaded. Must be greater than zero.
@@ -20,7 +21,7 @@ class ImageFreshnessCheckResponse {
 
   factory ImageFreshnessCheckResponse.fromMap(Map<String, dynamic> map) {
     return ImageFreshnessCheckResponse(
-      maxUploadAgeDays: map['maxUploadAgeDays'] as int,
+      maxUploadAgeDays: (map['maxUploadAgeDays'] as int).input(),
     );
   }
 }

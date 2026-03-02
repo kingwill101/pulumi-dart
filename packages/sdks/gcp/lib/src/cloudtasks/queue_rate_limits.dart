@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueRateLimits {
   /// (Output)
@@ -8,15 +9,15 @@ class QueueRateLimits {
   /// in the queue and the rate is high. This field allows the queue to have a high
   /// rate so processing starts shortly after a task is enqueued, but still limits
   /// resource usage when many tasks are enqueued in a short period of time.
-  final int? maxBurstSize;
+  final pulumi.Input<int>? maxBurstSize;
   /// The maximum number of concurrent tasks that Cloud Tasks allows to
   /// be dispatched for this queue. After this threshold has been
   /// reached, Cloud Tasks stops dispatching tasks until the number of
   /// concurrent requests decreases.
-  final int? maxConcurrentDispatches;
+  final pulumi.Input<int>? maxConcurrentDispatches;
   /// The maximum rate at which tasks are dispatched from this queue.
   /// If unspecified when the queue is created, Cloud Tasks will pick the default.
-  final double? maxDispatchesPerSecond;
+  final pulumi.Input<double>? maxDispatchesPerSecond;
 
   /// Creates a new [QueueRateLimits].
   /// [maxBurstSize] (Output)
@@ -38,9 +39,9 @@ class QueueRateLimits {
 
   factory QueueRateLimits.fromMap(Map<String, dynamic> map) {
     return QueueRateLimits(
-      maxBurstSize: map['maxBurstSize'] == null ? null : map['maxBurstSize'] as int,
-      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null ? null : map['maxConcurrentDispatches'] as int,
-      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null ? null : map['maxDispatchesPerSecond'] as double,
+      maxBurstSize: map['maxBurstSize'] == null ? null : (map['maxBurstSize'] as int).input(),
+      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null ? null : (map['maxConcurrentDispatches'] as int).input(),
+      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null ? null : (map['maxDispatchesPerSecond'] as double).input(),
     );
   }
 }

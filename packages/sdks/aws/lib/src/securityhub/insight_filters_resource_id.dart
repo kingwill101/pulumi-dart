@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersResourceId {
-  final String comparison;
-  final String value;
+  final pulumi.Input<String> comparison;
+  final pulumi.Input<String> value;
 
   /// Creates a new [InsightFiltersResourceId].
   /// [comparison] Required.
@@ -22,8 +23,8 @@ class InsightFiltersResourceId {
 
   factory InsightFiltersResourceId.fromMap(Map<String, dynamic> map) {
     return InsightFiltersResourceId(
-      comparison: map['comparison'] as String,
-      value: map['value'] as String,
+      comparison: (map['comparison'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

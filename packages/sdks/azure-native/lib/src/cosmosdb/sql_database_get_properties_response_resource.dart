@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_restore_parameters_response.dart';
 
 class SqlDatabaseGetPropertiesResponseResource {
   /// A system generated property that specified the addressable path of the collections resource.
-  final String? colls;
+  final pulumi.Input<String>? colls;
   /// Enum to indicate the mode of resource creation.
-  final String? createMode;
+  final pulumi.Input<String>? createMode;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Name of the Cosmos DB SQL database
-  final String id;
+  final pulumi.Input<String> id;
   /// Parameters to indicate the information about the restore
-  final ResourceRestoreParametersResponse? restoreParameters;
+  final pulumi.Input<ResourceRestoreParametersResponse>? restoreParameters;
   /// A system generated property. A unique identifier.
-  final String rid;
+  final pulumi.Input<String> rid;
   /// A system generated property that denotes the last updated timestamp of the resource.
-  final double ts;
+  final pulumi.Input<double> ts;
   /// A system generated property that specifies the addressable path of the users resource.
-  final String? users;
+  final pulumi.Input<String>? users;
 
   /// Creates a new [SqlDatabaseGetPropertiesResponseResource].
   /// [colls] A system generated property that specified the addressable path of the collections resource.
@@ -46,7 +47,7 @@ class SqlDatabaseGetPropertiesResponseResource {
       'createMode': ?createMode,
       'etag': etag,
       'id': id,
-      'restoreParameters': ?restoreParameters == null ? null : restoreParameters!.toMap(),
+      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParametersResponse, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
       'rid': rid,
       'ts': ts,
       'users': ?users,
@@ -55,14 +56,14 @@ class SqlDatabaseGetPropertiesResponseResource {
 
   factory SqlDatabaseGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return SqlDatabaseGetPropertiesResponseResource(
-      colls: map['colls'] == null ? null : map['colls'] as String,
-      createMode: map['createMode'] == null ? null : map['createMode'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      restoreParameters: map['restoreParameters'] == null ? null : ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>()),
-      rid: map['rid'] as String,
-      ts: map['ts'] as double,
-      users: map['users'] == null ? null : map['users'] as String,
+      colls: map['colls'] == null ? null : (map['colls'] as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      rid: (map['rid'] as String).input(),
+      ts: (map['ts'] as double).input(),
+      users: map['users'] == null ? null : (map['users'] as String).input(),
     );
   }
 }

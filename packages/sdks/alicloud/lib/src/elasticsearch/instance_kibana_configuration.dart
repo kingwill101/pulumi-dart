@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceKibanaConfiguration {
   /// The number of disks of the Elasticsearch Kibana node. The default value is 1.
-  final int? amount;
+  final pulumi.Input<int>? amount;
   /// Elasticsearch Kibana node disk size
-  final int? disk;
+  final pulumi.Input<int>? disk;
   /// Elasticsearch Kibana node disk specifications
-  final String spec;
+  final pulumi.Input<String> spec;
 
   /// Creates a new [InstanceKibanaConfiguration].
   /// [amount] The number of disks of the Elasticsearch Kibana node. The default value is 1.
@@ -29,9 +30,9 @@ class InstanceKibanaConfiguration {
 
   factory InstanceKibanaConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceKibanaConfiguration(
-      amount: map['amount'] == null ? null : map['amount'] as int,
-      disk: map['disk'] == null ? null : map['disk'] as int,
-      spec: map['spec'] as String,
+      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
+      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
+      spec: (map['spec'] as String).input(),
     );
   }
 }

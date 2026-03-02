@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'statement_action_properties.dart';
 import 'statement_condition_properties.dart';
 
 /// Route Policy Statement properties.
 class RoutePolicyStatementProperties {
   /// Route policy action properties.
-  final StatementActionProperties action;
+  final pulumi.Input<StatementActionProperties> action;
   /// Switch configuration description.
-  final String? annotation;
+  final pulumi.Input<String>? annotation;
   /// Route policy condition properties.
-  final StatementConditionProperties condition;
+  final pulumi.Input<StatementConditionProperties> condition;
   /// Sequence to insert to/delete from existing route.
-  final double sequenceNumber;
+  final pulumi.Input<double> sequenceNumber;
 
   /// Creates a new [RoutePolicyStatementProperties].
   /// [action] Route policy action properties.
@@ -28,19 +29,19 @@ class RoutePolicyStatementProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.toMap(),
+      'action': pulumi.Input.mapInputValue<StatementActionProperties, Map<String, dynamic>>(action, (value) => value.toMap()),
       'annotation': ?annotation,
-      'condition': condition.toMap(),
+      'condition': pulumi.Input.mapInputValue<StatementConditionProperties, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'sequenceNumber': sequenceNumber,
     };
   }
 
   factory RoutePolicyStatementProperties.fromMap(Map<String, dynamic> map) {
     return RoutePolicyStatementProperties(
-      action: StatementActionProperties.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
-      condition: StatementConditionProperties.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      sequenceNumber: map['sequenceNumber'] as double,
+      action: (StatementActionProperties.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      condition: (StatementConditionProperties.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      sequenceNumber: (map['sequenceNumber'] as double).input(),
     );
   }
 }

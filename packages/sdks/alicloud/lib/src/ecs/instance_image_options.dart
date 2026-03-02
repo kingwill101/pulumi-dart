@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceImageOptions {
   /// Whether to allow the instance logging in with the ecs-user user.
-  final bool? loginAsNonRoot;
+  final pulumi.Input<bool>? loginAsNonRoot;
 
   /// Creates a new [InstanceImageOptions].
   /// [loginAsNonRoot] Whether to allow the instance logging in with the ecs-user user.
@@ -19,7 +20,7 @@ class InstanceImageOptions {
 
   factory InstanceImageOptions.fromMap(Map<String, dynamic> map) {
     return InstanceImageOptions(
-      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : map['loginAsNonRoot'] as bool,
+      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : (map['loginAsNonRoot'] as bool).input(),
     );
   }
 }

@@ -50,27 +50,17 @@ class GetSecretArgs {
   /// [secretType] The Secret type. For more information see
   /// [updatedAtFilter] Date filter to select the Secret with
   GetSecretArgs({
-    pulumi.Output<bool>? aclOnly,
-    pulumi.Output<String>? algorithm,
-    pulumi.Output<int>? bitLength,
-    pulumi.Output<String>? createdAtFilter,
-    pulumi.Output<String>? expirationFilter,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretType,
-    pulumi.Output<String>? updatedAtFilter,
-  }) :
-      aclOnly = pulumi.Input.asOptionalInput<bool>(aclOnly),
-      algorithm = pulumi.Input.asOptionalInput<String>(algorithm),
-      bitLength = pulumi.Input.asOptionalInput<int>(bitLength),
-      createdAtFilter = pulumi.Input.asOptionalInput<String>(createdAtFilter),
-      expirationFilter = pulumi.Input.asOptionalInput<String>(expirationFilter),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretType = pulumi.Input.asOptionalInput<String>(secretType),
-      updatedAtFilter = pulumi.Input.asOptionalInput<String>(updatedAtFilter);
+    this.aclOnly,
+    this.algorithm,
+    this.bitLength,
+    this.createdAtFilter,
+    this.expirationFilter,
+    this.mode,
+    this.name,
+    this.region,
+    this.secretType,
+    this.updatedAtFilter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,16 +79,16 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      aclOnly: map['aclOnly'] == null ? null : pulumi.Output.create<bool>(map['aclOnly'] as bool),
-      algorithm: map['algorithm'] == null ? null : pulumi.Output.create<String>(map['algorithm'] as String),
-      bitLength: map['bitLength'] == null ? null : pulumi.Output.create<int>(map['bitLength'] as int),
-      createdAtFilter: map['createdAtFilter'] == null ? null : pulumi.Output.create<String>(map['createdAtFilter'] as String),
-      expirationFilter: map['expirationFilter'] == null ? null : pulumi.Output.create<String>(map['expirationFilter'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretType: map['secretType'] == null ? null : pulumi.Output.create<String>(map['secretType'] as String),
-      updatedAtFilter: map['updatedAtFilter'] == null ? null : pulumi.Output.create<String>(map['updatedAtFilter'] as String),
+      aclOnly: map['aclOnly'] == null ? null : (map['aclOnly'] as bool).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
+      bitLength: map['bitLength'] == null ? null : (map['bitLength'] as int).input(),
+      createdAtFilter: map['createdAtFilter'] == null ? null : (map['createdAtFilter'] as String).input(),
+      expirationFilter: map['expirationFilter'] == null ? null : (map['expirationFilter'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretType: map['secretType'] == null ? null : (map['secretType'] as String).input(),
+      updatedAtFilter: map['updatedAtFilter'] == null ? null : (map['updatedAtFilter'] as String).input(),
     );
   }
 }

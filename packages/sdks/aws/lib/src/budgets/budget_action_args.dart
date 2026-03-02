@@ -43,27 +43,17 @@ class BudgetActionArgs {
   /// [subscribers] A list of subscribers. See Subscriber.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   BudgetActionArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<BudgetActionActionThreshold> actionThreshold,
-    required pulumi.Output<String> actionType,
-    required pulumi.Output<String> approvalModel,
-    required pulumi.Output<String> budgetName,
-    required pulumi.Output<BudgetActionDefinition> definition,
-    required pulumi.Output<String> executionRoleArn,
-    required pulumi.Output<String> notificationType,
-    required pulumi.Output<List<BudgetActionSubscriber>> subscribers,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      actionThreshold = pulumi.Input.asInput<BudgetActionActionThreshold>(actionThreshold),
-      actionType = pulumi.Input.asInput<String>(actionType),
-      approvalModel = pulumi.Input.asInput<String>(approvalModel),
-      budgetName = pulumi.Input.asInput<String>(budgetName),
-      definition = pulumi.Input.asInput<BudgetActionDefinition>(definition),
-      executionRoleArn = pulumi.Input.asInput<String>(executionRoleArn),
-      notificationType = pulumi.Input.asInput<String>(notificationType),
-      subscribers = pulumi.Input.asInput<List<BudgetActionSubscriber>>(subscribers),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountId,
+    required this.actionThreshold,
+    required this.actionType,
+    required this.approvalModel,
+    required this.budgetName,
+    required this.definition,
+    required this.executionRoleArn,
+    required this.notificationType,
+    required this.subscribers,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class BudgetActionArgs {
 
   factory BudgetActionArgs.fromMap(Map<String, dynamic> map) {
     return BudgetActionArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      actionThreshold: pulumi.Output.create<BudgetActionActionThreshold>(BudgetActionActionThreshold.fromMap((map['actionThreshold'] as Map).cast<String, dynamic>())),
-      actionType: pulumi.Output.create<String>(map['actionType'] as String),
-      approvalModel: pulumi.Output.create<String>(map['approvalModel'] as String),
-      budgetName: pulumi.Output.create<String>(map['budgetName'] as String),
-      definition: pulumi.Output.create<BudgetActionDefinition>(BudgetActionDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      executionRoleArn: pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      notificationType: pulumi.Output.create<String>(map['notificationType'] as String),
-      subscribers: pulumi.Output.create<List<BudgetActionSubscriber>>(pulumi.Input.decodeList<BudgetActionSubscriber>(map['subscribers'], (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      actionThreshold: (BudgetActionActionThreshold.fromMap((map['actionThreshold'] as Map).cast<String, dynamic>())).input(),
+      actionType: (map['actionType'] as String).input(),
+      approvalModel: (map['approvalModel'] as String).input(),
+      budgetName: (map['budgetName'] as String).input(),
+      definition: (BudgetActionDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      executionRoleArn: (map['executionRoleArn'] as String).input(),
+      notificationType: (map['notificationType'] as String).input(),
+      subscribers: (pulumi.Input.decodeList<BudgetActionSubscriber>(map['subscribers'], (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

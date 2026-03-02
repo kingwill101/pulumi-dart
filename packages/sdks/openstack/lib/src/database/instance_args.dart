@@ -54,27 +54,17 @@ class InstanceArgs {
   /// [users] An array of username, password, host and databases. The user
   /// [volumeType] Specifies the volume type to use. If you want to
   InstanceArgs({
-    pulumi.Output<String>? configurationId,
-    pulumi.Output<List<InstanceDatabase>>? databases,
-    required pulumi.Output<InstanceDatastore> datastore,
-    pulumi.Output<String>? flavorId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<InstanceNetwork>>? networks,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> size,
-    pulumi.Output<List<InstanceUser>>? users,
-    pulumi.Output<String>? volumeType,
-  }) :
-      configurationId = pulumi.Input.asOptionalInput<String>(configurationId),
-      databases = pulumi.Input.asOptionalInput<List<InstanceDatabase>>(databases),
-      datastore = pulumi.Input.asInput<InstanceDatastore>(datastore),
-      flavorId = pulumi.Input.asOptionalInput<String>(flavorId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networks = pulumi.Input.asOptionalInput<List<InstanceNetwork>>(networks),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      size = pulumi.Input.asInput<int>(size),
-      users = pulumi.Input.asOptionalInput<List<InstanceUser>>(users),
-      volumeType = pulumi.Input.asOptionalInput<String>(volumeType);
+    this.configurationId,
+    this.databases,
+    required this.datastore,
+    this.flavorId,
+    this.name,
+    this.networks,
+    this.region,
+    required this.size,
+    this.users,
+    this.volumeType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,16 +83,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      configurationId: map['configurationId'] == null ? null : pulumi.Output.create<String>(map['configurationId'] as String),
-      databases: map['databases'] == null ? null : pulumi.Output.create<List<InstanceDatabase>>(pulumi.Input.decodeList<InstanceDatabase>(map['databases'], (value) => InstanceDatabase.fromMap((value as Map).cast<String, dynamic>()))),
-      datastore: pulumi.Output.create<InstanceDatastore>(InstanceDatastore.fromMap((map['datastore'] as Map).cast<String, dynamic>())),
-      flavorId: map['flavorId'] == null ? null : pulumi.Output.create<String>(map['flavorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networks: map['networks'] == null ? null : pulumi.Output.create<List<InstanceNetwork>>(pulumi.Input.decodeList<InstanceNetwork>(map['networks'], (value) => InstanceNetwork.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      size: pulumi.Output.create<int>(map['size'] as int),
-      users: map['users'] == null ? null : pulumi.Output.create<List<InstanceUser>>(pulumi.Input.decodeList<InstanceUser>(map['users'], (value) => InstanceUser.fromMap((value as Map).cast<String, dynamic>()))),
-      volumeType: map['volumeType'] == null ? null : pulumi.Output.create<String>(map['volumeType'] as String),
+      configurationId: map['configurationId'] == null ? null : (map['configurationId'] as String).input(),
+      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<InstanceDatabase>(map['databases'], (value) => InstanceDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datastore: (InstanceDatastore.fromMap((map['datastore'] as Map).cast<String, dynamic>())).input(),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<InstanceNetwork>(map['networks'], (value) => InstanceNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      size: (map['size'] as int).input(),
+      users: map['users'] == null ? null : (pulumi.Input.decodeList<InstanceUser>(map['users'], (value) => InstanceUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey {
   /// The URL to the Key Vault Key used as the Key Encryption Key that the Managed Disk will be associated with. This can be found as `id` on the `azure.keyvault.Key` resource. Changing this forces a new resource to be created.
-  final String keyUrl;
+  final pulumi.Input<String> keyUrl;
   /// The ID of the Key Vault. This can be found as `id` on the `azure.keyvault.KeyVault` resource. Changing this forces a new resource to be created.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
 
   /// Creates a new [ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey].
   /// [keyUrl] The URL to the Key Vault Key used as the Key Encryption Key that the Managed Disk will be associated with. This can be found as `id` on the `azure.keyvault.Key` resource. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey {
 
   factory ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey.fromMap(Map<String, dynamic> map) {
     return ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey(
-      keyUrl: map['keyUrl'] as String,
-      vaultId: map['vaultId'] as String,
+      keyUrl: (map['keyUrl'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetExpressRouteCircuitConnectionArgs {
   /// [peeringName] The name of the peering.
   /// [resourceGroupName] The name of the resource group.
   GetExpressRouteCircuitConnectionArgs({
-    required pulumi.Output<String> circuitName,
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<String> peeringName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      circuitName = pulumi.Input.asInput<String>(circuitName),
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      peeringName = pulumi.Input.asInput<String>(peeringName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.circuitName,
+    required this.connectionName,
+    required this.peeringName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetExpressRouteCircuitConnectionArgs {
 
   factory GetExpressRouteCircuitConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitConnectionArgs(
-      circuitName: pulumi.Output.create<String>(map['circuitName'] as String),
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      peeringName: pulumi.Output.create<String>(map['peeringName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      circuitName: (map['circuitName'] as String).input(),
+      connectionName: (map['connectionName'] as String).input(),
+      peeringName: (map['peeringName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

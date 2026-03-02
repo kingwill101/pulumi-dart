@@ -40,27 +40,17 @@ class AssetTypeState {
   /// [revision] The revision of the asset type.
   /// [timeouts] Optional.
   AssetTypeState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainIdentifier,
-    pulumi.Output<List<AssetTypeFormsInput>>? formsInputs,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? owningProjectIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? revision,
-    pulumi.Output<AssetTypeTimeouts>? timeouts,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asOptionalInput<String>(domainIdentifier),
-      formsInputs = pulumi.Input.asOptionalInput<List<AssetTypeFormsInput>>(formsInputs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owningProjectIdentifier = pulumi.Input.asOptionalInput<String>(owningProjectIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revision = pulumi.Input.asOptionalInput<String>(revision),
-      timeouts = pulumi.Input.asOptionalInput<AssetTypeTimeouts>(timeouts);
+    this.createdAt,
+    this.createdBy,
+    this.description,
+    this.domainIdentifier,
+    this.formsInputs,
+    this.name,
+    this.owningProjectIdentifier,
+    this.region,
+    this.revision,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class AssetTypeState {
 
   factory AssetTypeState.fromMap(Map<String, dynamic> map) {
     return AssetTypeState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: map['domainIdentifier'] == null ? null : pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      formsInputs: map['formsInputs'] == null ? null : pulumi.Output.create<List<AssetTypeFormsInput>>(pulumi.Input.decodeList<AssetTypeFormsInput>(map['formsInputs'], (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owningProjectIdentifier: map['owningProjectIdentifier'] == null ? null : pulumi.Output.create<String>(map['owningProjectIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revision: map['revision'] == null ? null : pulumi.Output.create<String>(map['revision'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AssetTypeTimeouts>(AssetTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
+      formsInputs: map['formsInputs'] == null ? null : (pulumi.Input.decodeList<AssetTypeFormsInput>(map['formsInputs'], (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owningProjectIdentifier: map['owningProjectIdentifier'] == null ? null : (map['owningProjectIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (AssetTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

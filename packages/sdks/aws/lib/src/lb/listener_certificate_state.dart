@@ -16,13 +16,10 @@ class ListenerCertificateState {
   /// [listenerArn] The ARN of the listener to which to attach the certificate.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ListenerCertificateState({
-    pulumi.Output<String>? certificateArn,
-    pulumi.Output<String>? listenerArn,
-    pulumi.Output<String>? region,
-  }) :
-      certificateArn = pulumi.Input.asOptionalInput<String>(certificateArn),
-      listenerArn = pulumi.Input.asOptionalInput<String>(listenerArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.certificateArn,
+    this.listenerArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ListenerCertificateState {
 
   factory ListenerCertificateState.fromMap(Map<String, dynamic> map) {
     return ListenerCertificateState(
-      certificateArn: map['certificateArn'] == null ? null : pulumi.Output.create<String>(map['certificateArn'] as String),
-      listenerArn: map['listenerArn'] == null ? null : pulumi.Output.create<String>(map['listenerArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
+      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

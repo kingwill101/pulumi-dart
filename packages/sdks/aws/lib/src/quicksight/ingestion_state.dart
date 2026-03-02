@@ -30,21 +30,14 @@ class IngestionState {
   /// [ingestionType] Type of ingestion to be created. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   IngestionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? dataSetId,
-    pulumi.Output<String>? ingestionId,
-    pulumi.Output<String>? ingestionStatus,
-    pulumi.Output<String>? ingestionType,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      dataSetId = pulumi.Input.asOptionalInput<String>(dataSetId),
-      ingestionId = pulumi.Input.asOptionalInput<String>(ingestionId),
-      ingestionStatus = pulumi.Input.asOptionalInput<String>(ingestionStatus),
-      ingestionType = pulumi.Input.asOptionalInput<String>(ingestionType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.awsAccountId,
+    this.dataSetId,
+    this.ingestionId,
+    this.ingestionStatus,
+    this.ingestionType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class IngestionState {
 
   factory IngestionState.fromMap(Map<String, dynamic> map) {
     return IngestionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      dataSetId: map['dataSetId'] == null ? null : pulumi.Output.create<String>(map['dataSetId'] as String),
-      ingestionId: map['ingestionId'] == null ? null : pulumi.Output.create<String>(map['ingestionId'] as String),
-      ingestionStatus: map['ingestionStatus'] == null ? null : pulumi.Output.create<String>(map['ingestionStatus'] as String),
-      ingestionType: map['ingestionType'] == null ? null : pulumi.Output.create<String>(map['ingestionType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      dataSetId: map['dataSetId'] == null ? null : (map['dataSetId'] as String).input(),
+      ingestionId: map['ingestionId'] == null ? null : (map['ingestionId'] as String).input(),
+      ingestionStatus: map['ingestionStatus'] == null ? null : (map['ingestionStatus'] as String).input(),
+      ingestionType: map['ingestionType'] == null ? null : (map['ingestionType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

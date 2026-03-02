@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of EventBridgeConfiguration
 class EventBridgeConfiguration {
   /// Enables delivery of events to Amazon EventBridge.
-  final bool? eventBridgeEnabled;
+  final pulumi.Input<bool>? eventBridgeEnabled;
 
   /// Creates a new [EventBridgeConfiguration].
   /// [eventBridgeEnabled] Enables delivery of events to Amazon EventBridge.
@@ -20,7 +21,7 @@ class EventBridgeConfiguration {
 
   factory EventBridgeConfiguration.fromMap(Map<String, dynamic> map) {
     return EventBridgeConfiguration(
-      eventBridgeEnabled: map['eventBridgeEnabled'] == null ? null : map['eventBridgeEnabled'] as bool,
+      eventBridgeEnabled: map['eventBridgeEnabled'] == null ? null : (map['eventBridgeEnabled'] as bool).input(),
     );
   }
 }

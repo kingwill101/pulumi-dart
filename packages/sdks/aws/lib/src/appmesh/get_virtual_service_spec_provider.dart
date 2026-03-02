@@ -5,8 +5,8 @@ import 'get_virtual_service_spec_provider_virtual_node.dart';
 import 'get_virtual_service_spec_provider_virtual_router.dart';
 
 class GetVirtualServiceSpecProvider {
-  final List<GetVirtualServiceSpecProviderVirtualNode> virtualNodes;
-  final List<GetVirtualServiceSpecProviderVirtualRouter> virtualRouters;
+  final pulumi.Input<List<GetVirtualServiceSpecProviderVirtualNode>> virtualNodes;
+  final pulumi.Input<List<GetVirtualServiceSpecProviderVirtualRouter>> virtualRouters;
 
   /// Creates a new [GetVirtualServiceSpecProvider].
   /// [virtualNodes] Required.
@@ -18,15 +18,15 @@ class GetVirtualServiceSpecProvider {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'virtualNodes': pulumi.Input.encodeList<GetVirtualServiceSpecProviderVirtualNode, Map<String, dynamic>>(virtualNodes, (value) => value.toMap()),
-      'virtualRouters': pulumi.Input.encodeList<GetVirtualServiceSpecProviderVirtualRouter, Map<String, dynamic>>(virtualRouters, (value) => value.toMap()),
+      'virtualNodes': pulumi.Input.mapInputValue<List<GetVirtualServiceSpecProviderVirtualNode>, List<Map<String, dynamic>>>(virtualNodes, (value) => pulumi.Input.encodeList<GetVirtualServiceSpecProviderVirtualNode, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'virtualRouters': pulumi.Input.mapInputValue<List<GetVirtualServiceSpecProviderVirtualRouter>, List<Map<String, dynamic>>>(virtualRouters, (value) => pulumi.Input.encodeList<GetVirtualServiceSpecProviderVirtualRouter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualServiceSpecProvider.fromMap(Map<String, dynamic> map) {
     return GetVirtualServiceSpecProvider(
-      virtualNodes: pulumi.Input.decodeList<GetVirtualServiceSpecProviderVirtualNode>(map['virtualNodes'], (value) => GetVirtualServiceSpecProviderVirtualNode.fromMap((value as Map).cast<String, dynamic>())),
-      virtualRouters: pulumi.Input.decodeList<GetVirtualServiceSpecProviderVirtualRouter>(map['virtualRouters'], (value) => GetVirtualServiceSpecProviderVirtualRouter.fromMap((value as Map).cast<String, dynamic>())),
+      virtualNodes: (pulumi.Input.decodeList<GetVirtualServiceSpecProviderVirtualNode>(map['virtualNodes'], (value) => GetVirtualServiceSpecProviderVirtualNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualRouters: (pulumi.Input.decodeList<GetVirtualServiceSpecProviderVirtualRouter>(map['virtualRouters'], (value) => GetVirtualServiceSpecProviderVirtualRouter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

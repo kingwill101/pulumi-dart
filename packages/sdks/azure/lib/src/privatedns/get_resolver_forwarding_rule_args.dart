@@ -16,11 +16,9 @@ class GetResolverForwardingRuleArgs {
   /// [dnsForwardingRulesetId] ID of the Private DNS Resolver Forwarding Ruleset.
   /// [name] Name of the Private DNS Resolver Forwarding Rule.
   GetResolverForwardingRuleArgs({
-    required pulumi.Output<String> dnsForwardingRulesetId,
-    required pulumi.Output<String> name,
-  }) :
-      dnsForwardingRulesetId = pulumi.Input.asInput<String>(dnsForwardingRulesetId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.dnsForwardingRulesetId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResolverForwardingRuleArgs {
 
   factory GetResolverForwardingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverForwardingRuleArgs(
-      dnsForwardingRulesetId: pulumi.Output.create<String>(map['dnsForwardingRulesetId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      dnsForwardingRulesetId: (map['dnsForwardingRulesetId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

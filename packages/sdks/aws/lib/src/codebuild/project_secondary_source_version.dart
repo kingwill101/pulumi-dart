@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectSecondarySourceVersion {
   /// An identifier for a source in the build project.
-  final String sourceIdentifier;
+  final pulumi.Input<String> sourceIdentifier;
   /// The source version for the corresponding source identifier.
   /// See [AWS docs](https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ProjectSourceVersion.html#CodeBuild-Type-ProjectSourceVersion-sourceVersion)
   /// for more details.
-  final String sourceVersion;
+  final pulumi.Input<String> sourceVersion;
 
   /// Creates a new [ProjectSecondarySourceVersion].
   /// [sourceIdentifier] An identifier for a source in the build project.
@@ -26,8 +27,8 @@ class ProjectSecondarySourceVersion {
 
   factory ProjectSecondarySourceVersion.fromMap(Map<String, dynamic> map) {
     return ProjectSecondarySourceVersion(
-      sourceIdentifier: map['sourceIdentifier'] as String,
-      sourceVersion: map['sourceVersion'] as String,
+      sourceIdentifier: (map['sourceIdentifier'] as String).input(),
+      sourceVersion: (map['sourceVersion'] as String).input(),
     );
   }
 }

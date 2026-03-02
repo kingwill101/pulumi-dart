@@ -31,21 +31,14 @@ class GetAccessAssignmentsArgs {
   /// [targetId] The ID of the target to create the resource range.
   /// [targetType] The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
   GetAccessAssignmentsArgs({
-    pulumi.Output<String>? accessConfigurationId,
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? targetId,
-    pulumi.Output<String>? targetType,
-  }) :
-      accessConfigurationId = pulumi.Input.asOptionalInput<String>(accessConfigurationId),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType);
+    this.accessConfigurationId,
+    required this.directoryId,
+    this.ids,
+    this.outputFile,
+    this.principalType,
+    this.targetId,
+    this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetAccessAssignmentsArgs {
 
   factory GetAccessAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessAssignmentsArgs(
-      accessConfigurationId: map['accessConfigurationId'] == null ? null : pulumi.Output.create<String>(map['accessConfigurationId'] as String),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

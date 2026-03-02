@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The resource names object for load balancer and related resources.
 class LoadBalancerResourceNamesResponse {
   /// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
-  final List<String>? backendPoolNames;
+  final pulumi.Input<List<String>>? backendPoolNames;
   /// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
-  final List<String>? frontendIpConfigurationNames;
+  final pulumi.Input<List<String>>? frontendIpConfigurationNames;
   /// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
-  final List<String>? healthProbeNames;
+  final pulumi.Input<List<String>>? healthProbeNames;
   /// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
-  final String? loadBalancerName;
+  final pulumi.Input<String>? loadBalancerName;
 
   /// Creates a new [LoadBalancerResourceNamesResponse].
   /// [backendPoolNames] The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
@@ -35,10 +36,10 @@ class LoadBalancerResourceNamesResponse {
 
   factory LoadBalancerResourceNamesResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerResourceNamesResponse(
-      backendPoolNames: map['backendPoolNames'] == null ? null : (map['backendPoolNames'] as List).cast<String>(),
-      frontendIpConfigurationNames: map['frontendIpConfigurationNames'] == null ? null : (map['frontendIpConfigurationNames'] as List).cast<String>(),
-      healthProbeNames: map['healthProbeNames'] == null ? null : (map['healthProbeNames'] as List).cast<String>(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : map['loadBalancerName'] as String,
+      backendPoolNames: map['backendPoolNames'] == null ? null : ((map['backendPoolNames'] as List).cast<String>()).input(),
+      frontendIpConfigurationNames: map['frontendIpConfigurationNames'] == null ? null : ((map['frontendIpConfigurationNames'] as List).cast<String>()).input(),
+      healthProbeNames: map['healthProbeNames'] == null ? null : ((map['healthProbeNames'] as List).cast<String>()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
     );
   }
 }

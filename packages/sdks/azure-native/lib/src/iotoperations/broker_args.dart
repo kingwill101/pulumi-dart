@@ -27,17 +27,12 @@ class BrokerArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   BrokerArgs({
-    pulumi.Output<String>? brokerName,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<BrokerProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      brokerName = pulumi.Input.asOptionalInput<String>(brokerName),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      properties = pulumi.Input.asOptionalInput<BrokerProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.brokerName,
+    required this.extendedLocation,
+    required this.instanceName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class BrokerArgs {
 
   factory BrokerArgs.fromMap(Map<String, dynamic> map) {
     return BrokerArgs(
-      brokerName: map['brokerName'] == null ? null : pulumi.Output.create<String>(map['brokerName'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BrokerProperties>(BrokerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      brokerName: map['brokerName'] == null ? null : (map['brokerName'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      properties: map['properties'] == null ? null : (BrokerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

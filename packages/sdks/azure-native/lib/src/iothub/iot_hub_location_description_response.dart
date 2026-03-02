@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Public representation of one of the locations where a resource is provisioned.
 class IotHubLocationDescriptionResponse {
   /// The name of the Azure region
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to.
-  final String? role;
+  final pulumi.Input<String>? role;
 
   /// Creates a new [IotHubLocationDescriptionResponse].
   /// [location] The name of the Azure region
@@ -25,8 +26,8 @@ class IotHubLocationDescriptionResponse {
 
   factory IotHubLocationDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return IotHubLocationDescriptionResponse(
-      location: map['location'] == null ? null : map['location'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

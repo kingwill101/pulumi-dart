@@ -16,11 +16,9 @@ class GetEmailIdentityMailFromAttributesArgs {
   /// [emailIdentity] The name of the email identity.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetEmailIdentityMailFromAttributesArgs({
-    required pulumi.Output<String> emailIdentity,
-    pulumi.Output<String>? region,
-  }) :
-      emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.emailIdentity,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEmailIdentityMailFromAttributesArgs {
 
   factory GetEmailIdentityMailFromAttributesArgs.fromMap(Map<String, dynamic> map) {
     return GetEmailIdentityMailFromAttributesArgs(
-      emailIdentity: pulumi.Output.create<String>(map['emailIdentity'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      emailIdentity: (map['emailIdentity'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

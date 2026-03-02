@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_route_circuit_peering_ipv6_microsoft_peering.dart';
 
 class ExpressRouteCircuitPeeringIpv6 {
   /// A boolean value indicating whether the IPv6 peering is enabled. Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// A `microsoft_peering` block as defined below.
-  final ExpressRouteCircuitPeeringIpv6MicrosoftPeering? microsoftPeering;
+  final pulumi.Input<ExpressRouteCircuitPeeringIpv6MicrosoftPeering>? microsoftPeering;
   /// A subnet for the primary link.
-  final String primaryPeerAddressPrefix;
+  final pulumi.Input<String> primaryPeerAddressPrefix;
   /// The ID of the Route Filter. Only available when `peering_type` is set to `MicrosoftPeering`.
   ///
   /// > **Note:** `ipv6` can be specified when `peering_type` is `MicrosoftPeering` or `AzurePrivatePeering`
-  final String? routeFilterId;
+  final pulumi.Input<String>? routeFilterId;
   /// A subnet for the secondary link.
-  final String secondaryPeerAddressPrefix;
+  final pulumi.Input<String> secondaryPeerAddressPrefix;
 
   /// Creates a new [ExpressRouteCircuitPeeringIpv6].
   /// [enabled] A boolean value indicating whether the IPv6 peering is enabled. Defaults to `true`.
@@ -33,7 +34,7 @@ class ExpressRouteCircuitPeeringIpv6 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'microsoftPeering': ?microsoftPeering == null ? null : microsoftPeering!.toMap(),
+      'microsoftPeering': ?pulumi.Input.mapOptionalInputValue<ExpressRouteCircuitPeeringIpv6MicrosoftPeering, Map<String, dynamic>>(microsoftPeering, (value) => value.toMap()),
       'primaryPeerAddressPrefix': primaryPeerAddressPrefix,
       'routeFilterId': ?routeFilterId,
       'secondaryPeerAddressPrefix': secondaryPeerAddressPrefix,
@@ -42,11 +43,11 @@ class ExpressRouteCircuitPeeringIpv6 {
 
   factory ExpressRouteCircuitPeeringIpv6.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringIpv6(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      microsoftPeering: map['microsoftPeering'] == null ? null : ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap((map['microsoftPeering'] as Map).cast<String, dynamic>()),
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] as String,
-      routeFilterId: map['routeFilterId'] == null ? null : map['routeFilterId'] as String,
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      microsoftPeering: map['microsoftPeering'] == null ? null : (ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap((map['microsoftPeering'] as Map).cast<String, dynamic>())).input(),
+      primaryPeerAddressPrefix: (map['primaryPeerAddressPrefix'] as String).input(),
+      routeFilterId: map['routeFilterId'] == null ? null : (map['routeFilterId'] as String).input(),
+      secondaryPeerAddressPrefix: (map['secondaryPeerAddressPrefix'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class EmbeddedState {
   /// [skuName] Sets the PowerBI Embedded's pricing level's SKU. Possible values include: `A1`, `A2`, `A3`, `A4`, `A5`, `A6`, `A7` and `A8`.
   /// [tags] A mapping of tags to assign to the resource.
   EmbeddedState({
-    pulumi.Output<List<String>>? administrators,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      administrators = pulumi.Input.asOptionalInput<List<String>>(administrators),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.administrators,
+    this.location,
+    this.mode,
+    this.name,
+    this.resourceGroupName,
+    this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class EmbeddedState {
 
   factory EmbeddedState.fromMap(Map<String, dynamic> map) {
     return EmbeddedState(
-      administrators: map['administrators'] == null ? null : pulumi.Output.create<List<String>>((map['administrators'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      administrators: map['administrators'] == null ? null : ((map['administrators'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

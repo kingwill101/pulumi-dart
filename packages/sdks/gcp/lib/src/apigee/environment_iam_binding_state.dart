@@ -40,19 +40,13 @@ class EnvironmentIamBindingState {
   /// [orgId] The Apigee Organization associated with the Apigee environment,
   /// [role] The role that should be applied. Only one
   EnvironmentIamBindingState({
-    pulumi.Output<EnvironmentIamBindingCondition>? condition,
-    pulumi.Output<String>? envId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<EnvironmentIamBindingCondition>(condition),
-      envId = pulumi.Input.asOptionalInput<String>(envId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.envId,
+    this.etag,
+    this.members,
+    this.orgId,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,12 +61,12 @@ class EnvironmentIamBindingState {
 
   factory EnvironmentIamBindingState.fromMap(Map<String, dynamic> map) {
     return EnvironmentIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<EnvironmentIamBindingCondition>(EnvironmentIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      envId: map['envId'] == null ? null : pulumi.Output.create<String>(map['envId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (EnvironmentIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

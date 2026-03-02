@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndexServerSideEncryptionConfiguration {
   /// Identifier of the AWS KMScustomer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
-  final String kmsKeyId;
+  final pulumi.Input<String> kmsKeyId;
 
   /// Creates a new [GetIndexServerSideEncryptionConfiguration].
   /// [kmsKeyId] Identifier of the AWS KMScustomer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
@@ -19,7 +20,7 @@ class GetIndexServerSideEncryptionConfiguration {
 
   factory GetIndexServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexServerSideEncryptionConfiguration(
-      kmsKeyId: map['kmsKeyId'] as String,
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
     );
   }
 }

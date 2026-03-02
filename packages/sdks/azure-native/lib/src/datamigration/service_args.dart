@@ -42,29 +42,18 @@ class ServiceArgs {
   /// [virtualNicId] The ID of the Microsoft.Network/networkInterfaces resource which the service have
   /// [virtualSubnetId] The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
   ServiceArgs({
-    pulumi.Output<String>? autoStopDelay,
-    pulumi.Output<bool>? deleteResourcesOnStop,
-    required pulumi.Output<String> groupName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<ServiceSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualNicId,
-    pulumi.Output<String>? virtualSubnetId,
-  }) :
-      autoStopDelay = pulumi.Input.asOptionalInput<String>(autoStopDelay),
-      deleteResourcesOnStop = pulumi.Input.asOptionalInput<bool>(deleteResourcesOnStop),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      sku = pulumi.Input.asOptionalInput<ServiceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualNicId = pulumi.Input.asOptionalInput<String>(virtualNicId),
-      virtualSubnetId = pulumi.Input.asOptionalInput<String>(virtualSubnetId);
+    this.autoStopDelay,
+    this.deleteResourcesOnStop,
+    required this.groupName,
+    this.kind,
+    this.location,
+    this.publicKey,
+    this.serviceName,
+    this.sku,
+    this.tags,
+    this.virtualNicId,
+    this.virtualSubnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      autoStopDelay: map['autoStopDelay'] == null ? null : pulumi.Output.create<String>(map['autoStopDelay'] as String),
-      deleteResourcesOnStop: map['deleteResourcesOnStop'] == null ? null : pulumi.Output.create<bool>(map['deleteResourcesOnStop'] as bool),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ServiceSku>(ServiceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualNicId: map['virtualNicId'] == null ? null : pulumi.Output.create<String>(map['virtualNicId'] as String),
-      virtualSubnetId: map['virtualSubnetId'] == null ? null : pulumi.Output.create<String>(map['virtualSubnetId'] as String),
+      autoStopDelay: map['autoStopDelay'] == null ? null : (map['autoStopDelay'] as String).input(),
+      deleteResourcesOnStop: map['deleteResourcesOnStop'] == null ? null : (map['deleteResourcesOnStop'] as bool).input(),
+      groupName: (map['groupName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      sku: map['sku'] == null ? null : (ServiceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNicId: map['virtualNicId'] == null ? null : (map['virtualNicId'] as String).input(),
+      virtualSubnetId: map['virtualSubnetId'] == null ? null : (map['virtualSubnetId'] as String).input(),
     );
   }
 }

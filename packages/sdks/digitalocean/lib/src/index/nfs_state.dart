@@ -35,27 +35,17 @@ class NfsState {
   /// [vpcId] The ID of the VPC where the NFS share will be created.
   /// [vpcIds] Optional.
   NfsState({
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? mountPath,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? performanceTier,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<List<String>>? vpcIds,
-  }) :
-      host = pulumi.Input.asOptionalInput<String>(host),
-      mountPath = pulumi.Input.asOptionalInput<String>(mountPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      performanceTier = pulumi.Input.asOptionalInput<String>(performanceTier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpcIds = pulumi.Input.asOptionalInput<List<String>>(vpcIds);
+    this.host,
+    this.mountPath,
+    this.name,
+    this.performanceTier,
+    this.region,
+    this.size,
+    this.status,
+    this.tags,
+    this.vpcId,
+    this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,16 +64,16 @@ class NfsState {
 
   factory NfsState.fromMap(Map<String, dynamic> map) {
     return NfsState(
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      mountPath: map['mountPath'] == null ? null : pulumi.Output.create<String>(map['mountPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      performanceTier: map['performanceTier'] == null ? null : pulumi.Output.create<String>(map['performanceTier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcIds: map['vpcIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      performanceTier: map['performanceTier'] == null ? null : (map['performanceTier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
     );
   }
 }

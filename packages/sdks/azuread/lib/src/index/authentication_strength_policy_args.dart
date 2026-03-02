@@ -19,13 +19,10 @@ class AuthenticationStrengthPolicyArgs {
   /// [description] The description for this authentication strength policy.
   /// [displayName] The friendly name for this authentication strength policy.
   AuthenticationStrengthPolicyArgs({
-    required pulumi.Output<List<String>> allowedCombinations,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-  }) :
-      allowedCombinations = pulumi.Input.asInput<List<String>>(allowedCombinations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName);
+    required this.allowedCombinations,
+    this.description,
+    required this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AuthenticationStrengthPolicyArgs {
 
   factory AuthenticationStrengthPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthenticationStrengthPolicyArgs(
-      allowedCombinations: pulumi.Output.create<List<String>>((map['allowedCombinations'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      allowedCombinations: ((map['allowedCombinations'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_response_data_path.dart';
 import 'dataset_state_response.dart';
 import 'user_info_response.dart';
@@ -7,41 +8,41 @@ import 'user_info_response.dart';
 /// Last created Dataset definition.
 class DatasetResponseLatest {
   /// User who created.
-  final UserInfoResponse? createdBy;
+  final pulumi.Input<UserInfoResponse>? createdBy;
   /// The dataset creation time (UTC).
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// Datastore and reference to location of data such as relativePath, Sql Query and etc.
-  final DatasetResponseDataPath? dataPath;
+  final pulumi.Input<DatasetResponseDataPath>? dataPath;
   /// Dataflow Json
-  final String dataflow;
+  final pulumi.Input<String> dataflow;
   /// Dataset state
-  final DatasetStateResponse? datasetDefinitionState;
+  final pulumi.Input<DatasetStateResponse>? datasetDefinitionState;
   /// Unique Dataset identifier.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// Description about the dataset.
-  final String description;
+  final pulumi.Input<String> description;
   /// eTag description
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Dataset FileType, specified by user.
-  final String fileType;
+  final pulumi.Input<String> fileType;
   /// The dataset last modified time (UTC).
-  final String modifiedTime;
+  final pulumi.Input<String> modifiedTime;
   /// Summary of Definition changes.
-  final String notes;
+  final pulumi.Input<String> notes;
   /// Indicates how the source data is partitioned. This is defined to filter on a range of partitioned data before performing actions or materialization.
-  final bool partitionFormatInPath;
+  final pulumi.Input<bool> partitionFormatInPath;
   /// Properties stores information like name of time series column for time series dataset.
-  final Map<String, dynamic>? properties;
+  final pulumi.Input<Map<String, dynamic>>? properties;
   /// Indicates the saved dataset this definition is mapping to, populated on Get.
-  final String savedDatasetId;
+  final pulumi.Input<String> savedDatasetId;
   /// Tags associated with the dataset.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Telemetry information about the dataset including information like which service the dataset was created from.
-  final Map<String, String> telemetryInfo;
+  final pulumi.Input<Map<String, String>> telemetryInfo;
   /// Whether to use description and tags from the definition level as opposed to dataset level (old behavior).
-  final bool useDescriptionTagsFromDefinition;
+  final pulumi.Input<bool> useDescriptionTagsFromDefinition;
   /// An identifier uniquely identifies a definition change.
-  final String versionId;
+  final pulumi.Input<String> versionId;
 
   /// Creates a new [DatasetResponseLatest].
   /// [createdBy] User who created.
@@ -85,11 +86,11 @@ class DatasetResponseLatest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createdBy': ?createdBy == null ? null : createdBy!.toMap(),
+      'createdBy': ?pulumi.Input.mapOptionalInputValue<UserInfoResponse, Map<String, dynamic>>(createdBy, (value) => value.toMap()),
       'createdTime': createdTime,
-      'dataPath': ?dataPath == null ? null : dataPath!.toMap(),
+      'dataPath': ?pulumi.Input.mapOptionalInputValue<DatasetResponseDataPath, Map<String, dynamic>>(dataPath, (value) => value.toMap()),
       'dataflow': dataflow,
-      'datasetDefinitionState': ?datasetDefinitionState == null ? null : datasetDefinitionState!.toMap(),
+      'datasetDefinitionState': ?pulumi.Input.mapOptionalInputValue<DatasetStateResponse, Map<String, dynamic>>(datasetDefinitionState, (value) => value.toMap()),
       'datasetId': datasetId,
       'description': description,
       'etag': etag,
@@ -108,24 +109,24 @@ class DatasetResponseLatest {
 
   factory DatasetResponseLatest.fromMap(Map<String, dynamic> map) {
     return DatasetResponseLatest(
-      createdBy: map['createdBy'] == null ? null : UserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>()),
-      createdTime: map['createdTime'] as String,
-      dataPath: map['dataPath'] == null ? null : DatasetResponseDataPath.fromMap((map['dataPath'] as Map).cast<String, dynamic>()),
-      dataflow: map['dataflow'] as String,
-      datasetDefinitionState: map['datasetDefinitionState'] == null ? null : DatasetStateResponse.fromMap((map['datasetDefinitionState'] as Map).cast<String, dynamic>()),
-      datasetId: map['datasetId'] as String,
-      description: map['description'] as String,
-      etag: map['etag'] as String,
-      fileType: map['fileType'] as String,
-      modifiedTime: map['modifiedTime'] as String,
-      notes: map['notes'] as String,
-      partitionFormatInPath: map['partitionFormatInPath'] as bool,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, dynamic>(),
-      savedDatasetId: map['savedDatasetId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      telemetryInfo: (map['telemetryInfo'] as Map).cast<String, String>(),
-      useDescriptionTagsFromDefinition: map['useDescriptionTagsFromDefinition'] as bool,
-      versionId: map['versionId'] as String,
+      createdBy: map['createdBy'] == null ? null : (UserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      dataPath: map['dataPath'] == null ? null : (DatasetResponseDataPath.fromMap((map['dataPath'] as Map).cast<String, dynamic>())).input(),
+      dataflow: (map['dataflow'] as String).input(),
+      datasetDefinitionState: map['datasetDefinitionState'] == null ? null : (DatasetStateResponse.fromMap((map['datasetDefinitionState'] as Map).cast<String, dynamic>())).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      description: (map['description'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      fileType: (map['fileType'] as String).input(),
+      modifiedTime: (map['modifiedTime'] as String).input(),
+      notes: (map['notes'] as String).input(),
+      partitionFormatInPath: (map['partitionFormatInPath'] as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, dynamic>()).input(),
+      savedDatasetId: (map['savedDatasetId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      telemetryInfo: ((map['telemetryInfo'] as Map).cast<String, String>()).input(),
+      useDescriptionTagsFromDefinition: (map['useDescriptionTagsFromDefinition'] as bool).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

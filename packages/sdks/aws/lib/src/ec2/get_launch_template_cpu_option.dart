@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateCpuOption {
-  final String amdSevSnp;
-  final int coreCount;
-  final String nestedVirtualization;
-  final int threadsPerCore;
+  final pulumi.Input<String> amdSevSnp;
+  final pulumi.Input<int> coreCount;
+  final pulumi.Input<String> nestedVirtualization;
+  final pulumi.Input<int> threadsPerCore;
 
   /// Creates a new [GetLaunchTemplateCpuOption].
   /// [amdSevSnp] Required.
@@ -30,10 +31,10 @@ class GetLaunchTemplateCpuOption {
 
   factory GetLaunchTemplateCpuOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateCpuOption(
-      amdSevSnp: map['amdSevSnp'] as String,
-      coreCount: map['coreCount'] as int,
-      nestedVirtualization: map['nestedVirtualization'] as String,
-      threadsPerCore: map['threadsPerCore'] as int,
+      amdSevSnp: (map['amdSevSnp'] as String).input(),
+      coreCount: (map['coreCount'] as int).input(),
+      nestedVirtualization: (map['nestedVirtualization'] as String).input(),
+      threadsPerCore: (map['threadsPerCore'] as int).input(),
     );
   }
 }

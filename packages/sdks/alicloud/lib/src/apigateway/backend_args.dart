@@ -22,15 +22,11 @@ class BackendArgs {
   /// [createEventBridgeServiceLinkedRole] Whether to create an Event bus service association role.
   /// [description] The description of the Backend.
   BackendArgs({
-    required pulumi.Output<String> backendName,
-    required pulumi.Output<String> backendType,
-    pulumi.Output<bool>? createEventBridgeServiceLinkedRole,
-    pulumi.Output<String>? description,
-  }) :
-      backendName = pulumi.Input.asInput<String>(backendName),
-      backendType = pulumi.Input.asInput<String>(backendType),
-      createEventBridgeServiceLinkedRole = pulumi.Input.asOptionalInput<bool>(createEventBridgeServiceLinkedRole),
-      description = pulumi.Input.asOptionalInput<String>(description);
+    required this.backendName,
+    required this.backendType,
+    this.createEventBridgeServiceLinkedRole,
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class BackendArgs {
 
   factory BackendArgs.fromMap(Map<String, dynamic> map) {
     return BackendArgs(
-      backendName: pulumi.Output.create<String>(map['backendName'] as String),
-      backendType: pulumi.Output.create<String>(map['backendType'] as String),
-      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : pulumi.Output.create<bool>(map['createEventBridgeServiceLinkedRole'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      backendName: (map['backendName'] as String).input(),
+      backendType: (map['backendType'] as String).input(),
+      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : (map['createEventBridgeServiceLinkedRole'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

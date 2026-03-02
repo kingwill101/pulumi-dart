@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CredentialProviderTypeEnumValue
 class CredentialProviderTypeEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [CredentialProviderTypeEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class CredentialProviderTypeEnumValueResponse {
 
   factory CredentialProviderTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return CredentialProviderTypeEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

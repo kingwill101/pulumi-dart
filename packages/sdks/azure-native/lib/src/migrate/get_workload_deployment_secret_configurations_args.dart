@@ -22,15 +22,11 @@ class GetWorkloadDeploymentSecretConfigurationsArgs {
   /// [subscriptionId] Azure Subscription Id in which project was created.
   /// [workloadDeploymentName] Workload deployment name.
   GetWorkloadDeploymentSecretConfigurationsArgs({
-    required pulumi.Output<String> modernizeProjectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-    required pulumi.Output<String> workloadDeploymentName,
-  }) :
-      modernizeProjectName = pulumi.Input.asInput<String>(modernizeProjectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      workloadDeploymentName = pulumi.Input.asInput<String>(workloadDeploymentName);
+    required this.modernizeProjectName,
+    required this.resourceGroupName,
+    this.subscriptionId,
+    required this.workloadDeploymentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWorkloadDeploymentSecretConfigurationsArgs {
 
   factory GetWorkloadDeploymentSecretConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadDeploymentSecretConfigurationsArgs(
-      modernizeProjectName: pulumi.Output.create<String>(map['modernizeProjectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      workloadDeploymentName: pulumi.Output.create<String>(map['workloadDeploymentName'] as String),
+      modernizeProjectName: (map['modernizeProjectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      workloadDeploymentName: (map['workloadDeploymentName'] as String).input(),
     );
   }
 }

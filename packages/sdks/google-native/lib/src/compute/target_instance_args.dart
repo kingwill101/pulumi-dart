@@ -33,23 +33,15 @@ class TargetInstanceArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [zone] Optional.
   TargetInstanceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? name,
-    pulumi.Output<TargetInstanceNatPolicy>? natPolicy,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? zone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      natPolicy = pulumi.Input.asOptionalInput<TargetInstanceNatPolicy>(natPolicy),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.description,
+    this.instance,
+    this.name,
+    this.natPolicy,
+    this.network,
+    this.project,
+    this.requestId,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class TargetInstanceArgs {
 
   factory TargetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return TargetInstanceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      natPolicy: map['natPolicy'] == null ? null : pulumi.Output.create<TargetInstanceNatPolicy>(TargetInstanceNatPolicy.fromValue(map['natPolicy'] as String)),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      natPolicy: map['natPolicy'] == null ? null : (TargetInstanceNatPolicy.fromValue(map['natPolicy'] as String)).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

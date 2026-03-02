@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Certificate chains needed to verify the attestation. Certificates in chains are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#section-7.4.2.
 class CertificateChainsResponse {
   /// Cavium certificate chain corresponding to the attestation.
-  final List<String> caviumCerts;
+  final pulumi.Input<List<String>> caviumCerts;
   /// Google card certificate chain corresponding to the attestation.
-  final List<String> googleCardCerts;
+  final pulumi.Input<List<String>> googleCardCerts;
   /// Google partition certificate chain corresponding to the attestation.
-  final List<String> googlePartitionCerts;
+  final pulumi.Input<List<String>> googlePartitionCerts;
 
   /// Creates a new [CertificateChainsResponse].
   /// [caviumCerts] Cavium certificate chain corresponding to the attestation.
@@ -30,9 +31,9 @@ class CertificateChainsResponse {
 
   factory CertificateChainsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateChainsResponse(
-      caviumCerts: (map['caviumCerts'] as List).cast<String>(),
-      googleCardCerts: (map['googleCardCerts'] as List).cast<String>(),
-      googlePartitionCerts: (map['googlePartitionCerts'] as List).cast<String>(),
+      caviumCerts: ((map['caviumCerts'] as List).cast<String>()).input(),
+      googleCardCerts: ((map['googleCardCerts'] as List).cast<String>()).input(),
+      googlePartitionCerts: ((map['googlePartitionCerts'] as List).cast<String>()).input(),
     );
   }
 }

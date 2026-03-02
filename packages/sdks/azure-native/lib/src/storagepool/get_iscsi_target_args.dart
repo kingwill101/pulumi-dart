@@ -19,13 +19,10 @@ class GetIscsiTargetArgs {
   /// [iscsiTargetName] The name of the iSCSI Target.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetIscsiTargetArgs({
-    required pulumi.Output<String> diskPoolName,
-    required pulumi.Output<String> iscsiTargetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      diskPoolName = pulumi.Input.asInput<String>(diskPoolName),
-      iscsiTargetName = pulumi.Input.asInput<String>(iscsiTargetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.diskPoolName,
+    required this.iscsiTargetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIscsiTargetArgs {
 
   factory GetIscsiTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetIscsiTargetArgs(
-      diskPoolName: pulumi.Output.create<String>(map['diskPoolName'] as String),
-      iscsiTargetName: pulumi.Output.create<String>(map['iscsiTargetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      diskPoolName: (map['diskPoolName'] as String).input(),
+      iscsiTargetName: (map['iscsiTargetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

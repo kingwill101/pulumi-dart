@@ -23,13 +23,10 @@ class NotificationChannelArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sns] SNS noficiation channel configurations. See the `sns` argument reference below.
   NotificationChannelArgs({
-    pulumi.Output<NotificationChannelFilters>? filters,
-    pulumi.Output<String>? region,
-    required pulumi.Output<NotificationChannelSns> sns,
-  }) :
-      filters = pulumi.Input.asOptionalInput<NotificationChannelFilters>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sns = pulumi.Input.asInput<NotificationChannelSns>(sns);
+    this.filters,
+    this.region,
+    required this.sns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class NotificationChannelArgs {
 
   factory NotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return NotificationChannelArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<NotificationChannelFilters>(NotificationChannelFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sns: pulumi.Output.create<NotificationChannelSns>(NotificationChannelSns.fromMap((map['sns'] as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : (NotificationChannelFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sns: (NotificationChannelSns.fromMap((map['sns'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

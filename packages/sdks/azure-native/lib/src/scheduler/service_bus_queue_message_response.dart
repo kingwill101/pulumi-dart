@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_bus_authentication_response.dart';
 import 'service_bus_brokered_message_properties_response.dart';
 
 class ServiceBusQueueMessageResponse {
   /// Gets or sets the Service Bus authentication.
-  final ServiceBusAuthenticationResponse? authentication;
+  final pulumi.Input<ServiceBusAuthenticationResponse>? authentication;
   /// Gets or sets the brokered message properties.
-  final ServiceBusBrokeredMessagePropertiesResponse? brokeredMessageProperties;
+  final pulumi.Input<ServiceBusBrokeredMessagePropertiesResponse>? brokeredMessageProperties;
   /// Gets or sets the custom message properties.
-  final Map<String, String>? customMessageProperties;
+  final pulumi.Input<Map<String, String>>? customMessageProperties;
   /// Gets or sets the message.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Gets or sets the namespace.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// Gets or sets the queue name.
-  final String? queueName;
+  final pulumi.Input<String>? queueName;
   /// Gets or sets the transport type.
-  final String? transportType;
+  final pulumi.Input<String>? transportType;
 
   /// Creates a new [ServiceBusQueueMessageResponse].
   /// [authentication] Gets or sets the Service Bus authentication.
@@ -39,8 +40,8 @@ class ServiceBusQueueMessageResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?authentication == null ? null : authentication!.toMap(),
-      'brokeredMessageProperties': ?brokeredMessageProperties == null ? null : brokeredMessageProperties!.toMap(),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<ServiceBusAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'brokeredMessageProperties': ?pulumi.Input.mapOptionalInputValue<ServiceBusBrokeredMessagePropertiesResponse, Map<String, dynamic>>(brokeredMessageProperties, (value) => value.toMap()),
       'customMessageProperties': ?customMessageProperties,
       'message': ?message,
       'namespace': ?namespace,
@@ -51,13 +52,13 @@ class ServiceBusQueueMessageResponse {
 
   factory ServiceBusQueueMessageResponse.fromMap(Map<String, dynamic> map) {
     return ServiceBusQueueMessageResponse(
-      authentication: map['authentication'] == null ? null : ServiceBusAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      brokeredMessageProperties: map['brokeredMessageProperties'] == null ? null : ServiceBusBrokeredMessagePropertiesResponse.fromMap((map['brokeredMessageProperties'] as Map).cast<String, dynamic>()),
-      customMessageProperties: map['customMessageProperties'] == null ? null : (map['customMessageProperties'] as Map).cast<String, String>(),
-      message: map['message'] == null ? null : map['message'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      queueName: map['queueName'] == null ? null : map['queueName'] as String,
-      transportType: map['transportType'] == null ? null : map['transportType'] as String,
+      authentication: map['authentication'] == null ? null : (ServiceBusAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      brokeredMessageProperties: map['brokeredMessageProperties'] == null ? null : (ServiceBusBrokeredMessagePropertiesResponse.fromMap((map['brokeredMessageProperties'] as Map).cast<String, dynamic>())).input(),
+      customMessageProperties: map['customMessageProperties'] == null ? null : ((map['customMessageProperties'] as Map).cast<String, String>()).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      transportType: map['transportType'] == null ? null : (map['transportType'] as String).input(),
     );
   }
 }

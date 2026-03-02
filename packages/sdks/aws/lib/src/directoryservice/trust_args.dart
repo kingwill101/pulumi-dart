@@ -46,25 +46,16 @@ class TrustArgs {
   /// [trustPassword] Password for the Trust.
   /// [trustType] Type of the Trust relationship.
   TrustArgs({
-    pulumi.Output<List<String>>? conditionalForwarderIpAddrs,
-    pulumi.Output<bool>? deleteAssociatedConditionalForwarder,
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> remoteDomainName,
-    pulumi.Output<String>? selectiveAuth,
-    required pulumi.Output<String> trustDirection,
-    required pulumi.Output<String> trustPassword,
-    pulumi.Output<String>? trustType,
-  }) :
-      conditionalForwarderIpAddrs = pulumi.Input.asOptionalInput<List<String>>(conditionalForwarderIpAddrs),
-      deleteAssociatedConditionalForwarder = pulumi.Input.asOptionalInput<bool>(deleteAssociatedConditionalForwarder),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      remoteDomainName = pulumi.Input.asInput<String>(remoteDomainName),
-      selectiveAuth = pulumi.Input.asOptionalInput<String>(selectiveAuth),
-      trustDirection = pulumi.Input.asInput<String>(trustDirection),
-      trustPassword = pulumi.Input.asInput<String>(trustPassword),
-      trustType = pulumi.Input.asOptionalInput<String>(trustType);
+    this.conditionalForwarderIpAddrs,
+    this.deleteAssociatedConditionalForwarder,
+    required this.directoryId,
+    this.region,
+    required this.remoteDomainName,
+    this.selectiveAuth,
+    required this.trustDirection,
+    required this.trustPassword,
+    this.trustType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,15 +73,15 @@ class TrustArgs {
 
   factory TrustArgs.fromMap(Map<String, dynamic> map) {
     return TrustArgs(
-      conditionalForwarderIpAddrs: map['conditionalForwarderIpAddrs'] == null ? null : pulumi.Output.create<List<String>>((map['conditionalForwarderIpAddrs'] as List).cast<String>()),
-      deleteAssociatedConditionalForwarder: map['deleteAssociatedConditionalForwarder'] == null ? null : pulumi.Output.create<bool>(map['deleteAssociatedConditionalForwarder'] as bool),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      remoteDomainName: pulumi.Output.create<String>(map['remoteDomainName'] as String),
-      selectiveAuth: map['selectiveAuth'] == null ? null : pulumi.Output.create<String>(map['selectiveAuth'] as String),
-      trustDirection: pulumi.Output.create<String>(map['trustDirection'] as String),
-      trustPassword: pulumi.Output.create<String>(map['trustPassword'] as String),
-      trustType: map['trustType'] == null ? null : pulumi.Output.create<String>(map['trustType'] as String),
+      conditionalForwarderIpAddrs: map['conditionalForwarderIpAddrs'] == null ? null : ((map['conditionalForwarderIpAddrs'] as List).cast<String>()).input(),
+      deleteAssociatedConditionalForwarder: map['deleteAssociatedConditionalForwarder'] == null ? null : (map['deleteAssociatedConditionalForwarder'] as bool).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      remoteDomainName: (map['remoteDomainName'] as String).input(),
+      selectiveAuth: map['selectiveAuth'] == null ? null : (map['selectiveAuth'] as String).input(),
+      trustDirection: (map['trustDirection'] as String).input(),
+      trustPassword: (map['trustPassword'] as String).input(),
+      trustType: map['trustType'] == null ? null : (map['trustType'] as String).input(),
     );
   }
 }

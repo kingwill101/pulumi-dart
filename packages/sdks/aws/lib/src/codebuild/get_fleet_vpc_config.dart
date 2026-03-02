@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFleetVpcConfig {
   /// A list of one or more security groups IDs in your Amazon VPC.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// A list of one or more subnet IDs in your Amazon VPC.
-  final List<String> subnets;
+  final pulumi.Input<List<String>> subnets;
   /// The ID of the Amazon VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetFleetVpcConfig].
   /// [securityGroupIds] A list of one or more security groups IDs in your Amazon VPC.
@@ -29,9 +30,9 @@ class GetFleetVpcConfig {
 
   factory GetFleetVpcConfig.fromMap(Map<String, dynamic> map) {
     return GetFleetVpcConfig(
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnets: (map['subnets'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

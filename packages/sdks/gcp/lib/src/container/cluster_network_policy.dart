@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNetworkPolicy {
   /// Whether network policy is enabled on the cluster.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
-  final String? provider;
+  final pulumi.Input<String>? provider;
 
   /// Creates a new [ClusterNetworkPolicy].
   /// [enabled] Whether network policy is enabled on the cluster.
@@ -24,8 +25,8 @@ class ClusterNetworkPolicy {
 
   factory ClusterNetworkPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkPolicy(
-      enabled: map['enabled'] as bool,
-      provider: map['provider'] == null ? null : map['provider'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
     );
   }
 }

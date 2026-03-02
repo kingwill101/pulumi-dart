@@ -36,23 +36,15 @@ class PodIdentityAssociationArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetRoleArn] The Amazon Resource Name (ARN) of the IAM role to be chained to the the IAM role specified as `role_arn`.
   PodIdentityAssociationArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<bool>? disableSessionTags,
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<String> serviceAccount,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetRoleArn,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      disableSessionTags = pulumi.Input.asOptionalInput<bool>(disableSessionTags),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      serviceAccount = pulumi.Input.asInput<String>(serviceAccount),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetRoleArn = pulumi.Input.asOptionalInput<String>(targetRoleArn);
+    required this.clusterName,
+    this.disableSessionTags,
+    required this.namespace,
+    this.region,
+    required this.roleArn,
+    required this.serviceAccount,
+    this.tags,
+    this.targetRoleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class PodIdentityAssociationArgs {
 
   factory PodIdentityAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PodIdentityAssociationArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      disableSessionTags: map['disableSessionTags'] == null ? null : pulumi.Output.create<bool>(map['disableSessionTags'] as bool),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      serviceAccount: pulumi.Output.create<String>(map['serviceAccount'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetRoleArn: map['targetRoleArn'] == null ? null : pulumi.Output.create<String>(map['targetRoleArn'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      disableSessionTags: map['disableSessionTags'] == null ? null : (map['disableSessionTags'] as bool).input(),
+      namespace: (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetRoleArn: map['targetRoleArn'] == null ? null : (map['targetRoleArn'] as String).input(),
     );
   }
 }

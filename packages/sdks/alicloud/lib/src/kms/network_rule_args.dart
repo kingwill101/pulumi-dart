@@ -19,13 +19,10 @@ class NetworkRuleArgs {
   /// [networkRuleName] Network Rule Name.
   /// [sourcePrivateIps] Allowed private network addresses.
   NetworkRuleArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? networkRuleName,
-    required pulumi.Output<List<String>> sourcePrivateIps,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkRuleName = pulumi.Input.asOptionalInput<String>(networkRuleName),
-      sourcePrivateIps = pulumi.Input.asInput<List<String>>(sourcePrivateIps);
+    this.description,
+    this.networkRuleName,
+    required this.sourcePrivateIps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NetworkRuleArgs {
 
   factory NetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkRuleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkRuleName: map['networkRuleName'] == null ? null : pulumi.Output.create<String>(map['networkRuleName'] as String),
-      sourcePrivateIps: pulumi.Output.create<List<String>>((map['sourcePrivateIps'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkRuleName: map['networkRuleName'] == null ? null : (map['networkRuleName'] as String).input(),
+      sourcePrivateIps: ((map['sourcePrivateIps'] as List).cast<String>()).input(),
     );
   }
 }

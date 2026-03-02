@@ -23,15 +23,11 @@ class JavaComponentArgs {
   /// [properties] Java Component resource specific properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   JavaComponentArgs({
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<String>? name,
-    pulumi.Output<NacosComponent>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<NacosComponent>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    this.name,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class JavaComponentArgs {
 
   factory JavaComponentArgs.fromMap(Map<String, dynamic> map) {
     return JavaComponentArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<NacosComponent>(NacosComponent.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (NacosComponent.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

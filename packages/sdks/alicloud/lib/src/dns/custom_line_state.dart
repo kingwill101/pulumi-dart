@@ -20,15 +20,11 @@ class CustomLineState {
   /// [ipSegmentLists] The IP segment list. See `ip_segment_list` below for details.
   /// [lang] The lang.
   CustomLineState({
-    pulumi.Output<String>? customLineName,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<List<CustomLineIpSegmentList>>? ipSegmentLists,
-    pulumi.Output<String>? lang,
-  }) :
-      customLineName = pulumi.Input.asOptionalInput<String>(customLineName),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      ipSegmentLists = pulumi.Input.asOptionalInput<List<CustomLineIpSegmentList>>(ipSegmentLists),
-      lang = pulumi.Input.asOptionalInput<String>(lang);
+    this.customLineName,
+    this.domainName,
+    this.ipSegmentLists,
+    this.lang,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class CustomLineState {
 
   factory CustomLineState.fromMap(Map<String, dynamic> map) {
     return CustomLineState(
-      customLineName: map['customLineName'] == null ? null : pulumi.Output.create<String>(map['customLineName'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      ipSegmentLists: map['ipSegmentLists'] == null ? null : pulumi.Output.create<List<CustomLineIpSegmentList>>(pulumi.Input.decodeList<CustomLineIpSegmentList>(map['ipSegmentLists'], (value) => CustomLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>()))),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
+      customLineName: map['customLineName'] == null ? null : (map['customLineName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      ipSegmentLists: map['ipSegmentLists'] == null ? null : (pulumi.Input.decodeList<CustomLineIpSegmentList>(map['ipSegmentLists'], (value) => CustomLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataQualityColumnResult provides a more detailed, per-column view of the results.
 class GoogleCloudDataplexV1DataQualityColumnResultResponse {
   /// The column specified in the DataQualityRule.
-  final String column;
+  final pulumi.Input<String> column;
   /// The column-level data quality score for this data scan job if and only if the 'column' field is set.The score ranges between between 0, 100 (up to two decimal points).
-  final double score;
+  final pulumi.Input<double> score;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityColumnResultResponse].
   /// [column] The column specified in the DataQualityRule.
@@ -25,8 +26,8 @@ class GoogleCloudDataplexV1DataQualityColumnResultResponse {
 
   factory GoogleCloudDataplexV1DataQualityColumnResultResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityColumnResultResponse(
-      column: map['column'] as String,
-      score: map['score'] as double,
+      column: (map['column'] as String).input(),
+      score: (map['score'] as double).input(),
     );
   }
 }

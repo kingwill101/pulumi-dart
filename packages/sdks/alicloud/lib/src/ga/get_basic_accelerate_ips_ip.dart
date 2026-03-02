@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBasicAccelerateIpsIp {
   /// The address of the Basic Accelerate IP.
-  final String accelerateIpAddress;
+  final pulumi.Input<String> accelerateIpAddress;
   /// The id of the Basic Accelerate IP.
-  final String accelerateIpId;
+  final pulumi.Input<String> accelerateIpId;
   /// The id of the Global Accelerator Basic Accelerator instance.
-  final String acceleratorId;
+  final pulumi.Input<String> acceleratorId;
   /// The id of the Basic Accelerate IP.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Basic Ip Set.
-  final String ipSetId;
+  final pulumi.Input<String> ipSetId;
   /// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBasicAccelerateIpsIp].
   /// [accelerateIpAddress] The address of the Basic Accelerate IP.
@@ -44,12 +45,12 @@ class GetBasicAccelerateIpsIp {
 
   factory GetBasicAccelerateIpsIp.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpsIp(
-      accelerateIpAddress: map['accelerateIpAddress'] as String,
-      accelerateIpId: map['accelerateIpId'] as String,
-      acceleratorId: map['acceleratorId'] as String,
-      id: map['id'] as String,
-      ipSetId: map['ipSetId'] as String,
-      status: map['status'] as String,
+      accelerateIpAddress: (map['accelerateIpAddress'] as String).input(),
+      accelerateIpId: (map['accelerateIpId'] as String).input(),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipSetId: (map['ipSetId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed service identity.
 class IdentityResponse {
   /// The principal id of managed service identity.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant of managed service identity.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of managed service identity.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] The principal id of managed service identity.
@@ -30,9 +31,9 @@ class IdentityResponse {
 
   factory IdentityResponse.fromMap(Map<String, dynamic> map) {
     return IdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

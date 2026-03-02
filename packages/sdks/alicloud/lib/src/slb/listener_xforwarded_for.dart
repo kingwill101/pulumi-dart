@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerXForwardedFor {
   /// Whether to retrieve the client ip.
-  final bool? retriveClientIp;
+  final pulumi.Input<bool>? retriveClientIp;
   /// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
-  final bool? retriveSlbId;
+  final pulumi.Input<bool>? retriveSlbId;
   /// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
-  final bool? retriveSlbIp;
+  final pulumi.Input<bool>? retriveSlbIp;
   /// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
-  final bool? retriveSlbProto;
+  final pulumi.Input<bool>? retriveSlbProto;
 
   /// Creates a new [ListenerXForwardedFor].
   /// [retriveClientIp] Whether to retrieve the client ip.
@@ -34,10 +35,10 @@ class ListenerXForwardedFor {
 
   factory ListenerXForwardedFor.fromMap(Map<String, dynamic> map) {
     return ListenerXForwardedFor(
-      retriveClientIp: map['retriveClientIp'] == null ? null : map['retriveClientIp'] as bool,
-      retriveSlbId: map['retriveSlbId'] == null ? null : map['retriveSlbId'] as bool,
-      retriveSlbIp: map['retriveSlbIp'] == null ? null : map['retriveSlbIp'] as bool,
-      retriveSlbProto: map['retriveSlbProto'] == null ? null : map['retriveSlbProto'] as bool,
+      retriveClientIp: map['retriveClientIp'] == null ? null : (map['retriveClientIp'] as bool).input(),
+      retriveSlbId: map['retriveSlbId'] == null ? null : (map['retriveSlbId'] as bool).input(),
+      retriveSlbIp: map['retriveSlbIp'] == null ? null : (map['retriveSlbIp'] as bool).input(),
+      retriveSlbProto: map['retriveSlbProto'] == null ? null : (map['retriveSlbProto'] as bool).input(),
     );
   }
 }

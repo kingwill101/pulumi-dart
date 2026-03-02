@@ -44,11 +44,9 @@ class GetBudgetArgs {
   /// [budgetName] Budget Name.
   /// [scope] The scope associated with budget operations.
   GetBudgetArgs({
-    required pulumi.Output<String> budgetName,
-    required pulumi.Output<String> scope,
-  }) :
-      budgetName = pulumi.Input.asInput<String>(budgetName),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.budgetName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,8 +57,8 @@ class GetBudgetArgs {
 
   factory GetBudgetArgs.fromMap(Map<String, dynamic> map) {
     return GetBudgetArgs(
-      budgetName: pulumi.Output.create<String>(map['budgetName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      budgetName: (map['budgetName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

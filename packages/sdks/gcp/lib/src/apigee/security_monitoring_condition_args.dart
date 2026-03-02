@@ -26,17 +26,12 @@ class SecurityMonitoringConditionArgs {
   /// [profile] ID of security profile of the security monitoring condition.
   /// [scope] ID of security profile of the security monitoring condition.
   SecurityMonitoringConditionArgs({
-    required pulumi.Output<String> conditionId,
-    pulumi.Output<Map<String, dynamic>>? includeAllResources,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> profile,
-    required pulumi.Output<String> scope,
-  }) :
-      conditionId = pulumi.Input.asInput<String>(conditionId),
-      includeAllResources = pulumi.Input.asOptionalInput<Map<String, dynamic>>(includeAllResources),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      profile = pulumi.Input.asInput<String>(profile),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.conditionId,
+    this.includeAllResources,
+    required this.orgId,
+    required this.profile,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SecurityMonitoringConditionArgs {
 
   factory SecurityMonitoringConditionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityMonitoringConditionArgs(
-      conditionId: pulumi.Output.create<String>(map['conditionId'] as String),
-      includeAllResources: map['includeAllResources'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['includeAllResources'] as Map).cast<String, dynamic>()),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      profile: pulumi.Output.create<String>(map['profile'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      conditionId: (map['conditionId'] as String).input(),
+      includeAllResources: map['includeAllResources'] == null ? null : ((map['includeAllResources'] as Map).cast<String, dynamic>()).input(),
+      orgId: (map['orgId'] as String).input(),
+      profile: (map['profile'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

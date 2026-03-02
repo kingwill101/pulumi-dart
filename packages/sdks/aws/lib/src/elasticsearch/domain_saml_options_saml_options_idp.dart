@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSamlOptionsSamlOptionsIdp {
   /// The unique Entity ID of the application in SAML Identity Provider.
-  final String entityId;
+  final pulumi.Input<String> entityId;
   /// The Metadata of the SAML application in xml format.
-  final String metadataContent;
+  final pulumi.Input<String> metadataContent;
 
   /// Creates a new [DomainSamlOptionsSamlOptionsIdp].
   /// [entityId] The unique Entity ID of the application in SAML Identity Provider.
@@ -24,8 +25,8 @@ class DomainSamlOptionsSamlOptionsIdp {
 
   factory DomainSamlOptionsSamlOptionsIdp.fromMap(Map<String, dynamic> map) {
     return DomainSamlOptionsSamlOptionsIdp(
-      entityId: map['entityId'] as String,
-      metadataContent: map['metadataContent'] as String,
+      entityId: (map['entityId'] as String).input(),
+      metadataContent: (map['metadataContent'] as String).input(),
     );
   }
 }

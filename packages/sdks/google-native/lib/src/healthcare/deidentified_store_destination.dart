@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deidentify_config.dart';
 
 /// Contains configuration for streaming de-identified FHIR export.
 class DeidentifiedStoreDestination {
   /// The configuration to use when de-identifying resources that are added to this store.
-  final DeidentifyConfig? config;
+  final pulumi.Input<DeidentifyConfig>? config;
   /// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
-  final String? store;
+  final pulumi.Input<String>? store;
 
   /// Creates a new [DeidentifiedStoreDestination].
   /// [config] The configuration to use when de-identifying resources that are added to this store.
@@ -19,15 +20,15 @@ class DeidentifiedStoreDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': ?config == null ? null : config!.toMap(),
+      'config': ?pulumi.Input.mapOptionalInputValue<DeidentifyConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'store': ?store,
     };
   }
 
   factory DeidentifiedStoreDestination.fromMap(Map<String, dynamic> map) {
     return DeidentifiedStoreDestination(
-      config: map['config'] == null ? null : DeidentifyConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
-      store: map['store'] == null ? null : map['store'] as String,
+      config: map['config'] == null ? null : (DeidentifyConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      store: map['store'] == null ? null : (map['store'] as String).input(),
     );
   }
 }

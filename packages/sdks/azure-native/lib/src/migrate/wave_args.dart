@@ -23,15 +23,11 @@ class WaveArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [waveName] Migration Wave Resource
   WaveArgs({
-    required pulumi.Output<String> projectName,
-    pulumi.Output<WaveProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? waveName,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<WaveProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      waveName = pulumi.Input.asOptionalInput<String>(waveName);
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+    this.waveName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class WaveArgs {
 
   factory WaveArgs.fromMap(Map<String, dynamic> map) {
     return WaveArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<WaveProperties>(WaveProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      waveName: map['waveName'] == null ? null : pulumi.Output.create<String>(map['waveName'] as String),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (WaveProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      waveName: map['waveName'] == null ? null : (map['waveName'] as String).input(),
     );
   }
 }

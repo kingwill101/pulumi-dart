@@ -46,29 +46,18 @@ class JobStepArgs {
   /// [stepName] The name of the job step.
   /// [targetGroup] The resource ID of the target group that the job step will be executed on.
   JobStepArgs({
-    required pulumi.Output<JobStepAction> action,
-    pulumi.Output<String>? credential,
-    pulumi.Output<JobStepExecutionOptions>? executionOptions,
-    required pulumi.Output<String> jobAgentName,
-    required pulumi.Output<String> jobName,
-    pulumi.Output<JobStepOutput>? output,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<int>? stepId,
-    pulumi.Output<String>? stepName,
-    required pulumi.Output<String> targetGroup,
-  }) :
-      action = pulumi.Input.asInput<JobStepAction>(action),
-      credential = pulumi.Input.asOptionalInput<String>(credential),
-      executionOptions = pulumi.Input.asOptionalInput<JobStepExecutionOptions>(executionOptions),
-      jobAgentName = pulumi.Input.asInput<String>(jobAgentName),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      output = pulumi.Input.asOptionalInput<JobStepOutput>(output),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      stepId = pulumi.Input.asOptionalInput<int>(stepId),
-      stepName = pulumi.Input.asOptionalInput<String>(stepName),
-      targetGroup = pulumi.Input.asInput<String>(targetGroup);
+    required this.action,
+    this.credential,
+    this.executionOptions,
+    required this.jobAgentName,
+    required this.jobName,
+    this.output,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.stepId,
+    this.stepName,
+    required this.targetGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class JobStepArgs {
 
   factory JobStepArgs.fromMap(Map<String, dynamic> map) {
     return JobStepArgs(
-      action: pulumi.Output.create<JobStepAction>(JobStepAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      credential: map['credential'] == null ? null : pulumi.Output.create<String>(map['credential'] as String),
-      executionOptions: map['executionOptions'] == null ? null : pulumi.Output.create<JobStepExecutionOptions>(JobStepExecutionOptions.fromMap((map['executionOptions'] as Map).cast<String, dynamic>())),
-      jobAgentName: pulumi.Output.create<String>(map['jobAgentName'] as String),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      output: map['output'] == null ? null : pulumi.Output.create<JobStepOutput>(JobStepOutput.fromMap((map['output'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      stepId: map['stepId'] == null ? null : pulumi.Output.create<int>(map['stepId'] as int),
-      stepName: map['stepName'] == null ? null : pulumi.Output.create<String>(map['stepName'] as String),
-      targetGroup: pulumi.Output.create<String>(map['targetGroup'] as String),
+      action: (JobStepAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (map['credential'] as String).input(),
+      executionOptions: map['executionOptions'] == null ? null : (JobStepExecutionOptions.fromMap((map['executionOptions'] as Map).cast<String, dynamic>())).input(),
+      jobAgentName: (map['jobAgentName'] as String).input(),
+      jobName: (map['jobName'] as String).input(),
+      output: map['output'] == null ? null : (JobStepOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      stepId: map['stepId'] == null ? null : (map['stepId'] as int).input(),
+      stepName: map['stepName'] == null ? null : (map['stepName'] as String).input(),
+      targetGroup: (map['targetGroup'] as String).input(),
     );
   }
 }

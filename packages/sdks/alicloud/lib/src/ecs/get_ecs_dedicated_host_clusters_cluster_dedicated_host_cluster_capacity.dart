@@ -5,15 +5,15 @@ import 'get_ecs_dedicated_host_clusters_cluster_dedicated_host_cluster_capacity_
 
 class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
   /// The available memory size. Unit: `GiB`.
-  final int availableMemory;
+  final pulumi.Input<int> availableMemory;
   /// The number of available vCPUs.
-  final int availableVcpus;
+  final pulumi.Input<int> availableVcpus;
   /// The local storage.
-  final List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities;
+  final pulumi.Input<List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity>> localStorageCapacities;
   /// The total memory size. Unit: `GiB`.
-  final int totalMemory;
+  final pulumi.Input<int> totalMemory;
   /// The total number of vCPUs.
-  final int totalVcpus;
+  final pulumi.Input<int> totalVcpus;
 
   /// Creates a new [GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity].
   /// [availableMemory] The available memory size. Unit: `GiB`.
@@ -33,7 +33,7 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
     return <String, dynamic>{
       'availableMemory': availableMemory,
       'availableVcpus': availableVcpus,
-      'localStorageCapacities': pulumi.Input.encodeList<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity, Map<String, dynamic>>(localStorageCapacities, (value) => value.toMap()),
+      'localStorageCapacities': pulumi.Input.mapInputValue<List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity>, List<Map<String, dynamic>>>(localStorageCapacities, (value) => pulumi.Input.encodeList<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'totalMemory': totalMemory,
       'totalVcpus': totalVcpus,
     };
@@ -41,11 +41,11 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
 
   factory GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity.fromMap(Map<String, dynamic> map) {
     return GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity(
-      availableMemory: map['availableMemory'] as int,
-      availableVcpus: map['availableVcpus'] as int,
-      localStorageCapacities: pulumi.Input.decodeList<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity>(map['localStorageCapacities'], (value) => GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity.fromMap((value as Map).cast<String, dynamic>())),
-      totalMemory: map['totalMemory'] as int,
-      totalVcpus: map['totalVcpus'] as int,
+      availableMemory: (map['availableMemory'] as int).input(),
+      availableVcpus: (map['availableVcpus'] as int).input(),
+      localStorageCapacities: (pulumi.Input.decodeList<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity>(map['localStorageCapacities'], (value) => GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      totalMemory: (map['totalMemory'] as int).input(),
+      totalVcpus: (map['totalVcpus'] as int).input(),
     );
   }
 }

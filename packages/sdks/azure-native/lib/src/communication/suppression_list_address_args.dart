@@ -37,25 +37,16 @@ class SuppressionListAddressArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [suppressionListName] The name of the suppression list.
   SuppressionListAddressArgs({
-    pulumi.Output<String>? addressId,
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> emailServiceName,
-    pulumi.Output<String>? firstName,
-    pulumi.Output<String>? lastName,
-    pulumi.Output<String>? notes,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> suppressionListName,
-  }) :
-      addressId = pulumi.Input.asOptionalInput<String>(addressId),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      email = pulumi.Input.asInput<String>(email),
-      emailServiceName = pulumi.Input.asInput<String>(emailServiceName),
-      firstName = pulumi.Input.asOptionalInput<String>(firstName),
-      lastName = pulumi.Input.asOptionalInput<String>(lastName),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      suppressionListName = pulumi.Input.asInput<String>(suppressionListName);
+    this.addressId,
+    required this.domainName,
+    required this.email,
+    required this.emailServiceName,
+    this.firstName,
+    this.lastName,
+    this.notes,
+    required this.resourceGroupName,
+    required this.suppressionListName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class SuppressionListAddressArgs {
 
   factory SuppressionListAddressArgs.fromMap(Map<String, dynamic> map) {
     return SuppressionListAddressArgs(
-      addressId: map['addressId'] == null ? null : pulumi.Output.create<String>(map['addressId'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      emailServiceName: pulumi.Output.create<String>(map['emailServiceName'] as String),
-      firstName: map['firstName'] == null ? null : pulumi.Output.create<String>(map['firstName'] as String),
-      lastName: map['lastName'] == null ? null : pulumi.Output.create<String>(map['lastName'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      suppressionListName: pulumi.Output.create<String>(map['suppressionListName'] as String),
+      addressId: map['addressId'] == null ? null : (map['addressId'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      email: (map['email'] as String).input(),
+      emailServiceName: (map['emailServiceName'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      suppressionListName: (map['suppressionListName'] as String).input(),
     );
   }
 }

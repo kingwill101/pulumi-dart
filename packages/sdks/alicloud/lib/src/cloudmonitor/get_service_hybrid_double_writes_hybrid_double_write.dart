@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceHybridDoubleWritesHybridDoubleWrite {
   /// The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Target Namespace.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// Source Namespace.
-  final String sourceNamespace;
+  final pulumi.Input<String> sourceNamespace;
   /// Source UserId.
-  final String sourceUserId;
+  final pulumi.Input<String> sourceUserId;
   /// Target UserId.
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [GetServiceHybridDoubleWritesHybridDoubleWrite].
   /// [id] The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
@@ -39,11 +40,11 @@ class GetServiceHybridDoubleWritesHybridDoubleWrite {
 
   factory GetServiceHybridDoubleWritesHybridDoubleWrite.fromMap(Map<String, dynamic> map) {
     return GetServiceHybridDoubleWritesHybridDoubleWrite(
-      id: map['id'] as String,
-      namespace: map['namespace'] as String,
-      sourceNamespace: map['sourceNamespace'] as String,
-      sourceUserId: map['sourceUserId'] as String,
-      userId: map['userId'] as String,
+      id: (map['id'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      sourceNamespace: (map['sourceNamespace'] as String).input(),
+      sourceUserId: (map['sourceUserId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

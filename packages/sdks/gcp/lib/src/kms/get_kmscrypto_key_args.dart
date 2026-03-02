@@ -17,11 +17,9 @@ class GetKMSCryptoKeyArgs {
   /// [keyRing] The `id` of the Google Cloud Platform KeyRing to which the key belongs.
   /// [name] The CryptoKey's name.
   GetKMSCryptoKeyArgs({
-    required pulumi.Output<String> keyRing,
-    required pulumi.Output<String> name,
-  }) :
-      keyRing = pulumi.Input.asInput<String>(keyRing),
-      name = pulumi.Input.asInput<String>(name);
+    required this.keyRing,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetKMSCryptoKeyArgs {
 
   factory GetKMSCryptoKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSCryptoKeyArgs(
-      keyRing: pulumi.Output.create<String>(map['keyRing'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      keyRing: (map['keyRing'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

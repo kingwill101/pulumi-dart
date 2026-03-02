@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Library requirements for a Big Data pool powered by Apache Spark
 class LibraryRequirements {
   /// The library requirements.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The filename of the library requirements file.
-  final String? filename;
+  final pulumi.Input<String>? filename;
 
   /// Creates a new [LibraryRequirements].
   /// [content] The library requirements.
@@ -25,8 +26,8 @@ class LibraryRequirements {
 
   factory LibraryRequirements.fromMap(Map<String, dynamic> map) {
     return LibraryRequirements(
-      content: map['content'] == null ? null : map['content'] as String,
-      filename: map['filename'] == null ? null : map['filename'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
     );
   }
 }

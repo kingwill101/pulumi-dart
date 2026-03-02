@@ -43,31 +43,19 @@ class CertificateState {
   /// [status] Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
   /// [type] Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
   CertificateState({
-    pulumi.Output<String>? casId,
-    pulumi.Output<String>? certId,
-    pulumi.Output<String>? certName,
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? createdType,
-    pulumi.Output<String>? domains,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-  }) :
-      casId = pulumi.Input.asOptionalInput<String>(casId),
-      certId = pulumi.Input.asOptionalInput<String>(certId),
-      certName = pulumi.Input.asOptionalInput<String>(certName),
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      createdType = pulumi.Input.asOptionalInput<String>(createdType),
-      domains = pulumi.Input.asOptionalInput<String>(domains),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.casId,
+    this.certId,
+    this.certName,
+    this.certificate,
+    this.createTime,
+    this.createdType,
+    this.domains,
+    this.privateKey,
+    this.region,
+    this.siteId,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      casId: map['casId'] == null ? null : pulumi.Output.create<String>(map['casId'] as String),
-      certId: map['certId'] == null ? null : pulumi.Output.create<String>(map['certId'] as String),
-      certName: map['certName'] == null ? null : pulumi.Output.create<String>(map['certName'] as String),
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      createdType: map['createdType'] == null ? null : pulumi.Output.create<String>(map['createdType'] as String),
-      domains: map['domains'] == null ? null : pulumi.Output.create<String>(map['domains'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      casId: map['casId'] == null ? null : (map['casId'] as String).input(),
+      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
+      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      createdType: map['createdType'] == null ? null : (map['createdType'] as String).input(),
+      domains: map['domains'] == null ? null : (map['domains'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

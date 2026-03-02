@@ -13,9 +13,8 @@ class GetKvAccountArgs {
   /// Creates a new [GetKvAccountArgs].
   /// [status] The status of the KV feature for your account. Valid values: `online`, `offline`.
   GetKvAccountArgs({
-    pulumi.Output<String>? status,
-  }) :
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetKvAccountArgs {
 
   factory GetKvAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetKvAccountArgs(
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

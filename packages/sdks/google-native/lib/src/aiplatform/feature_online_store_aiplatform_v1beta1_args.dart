@@ -38,25 +38,16 @@ class FeatureOnlineStoreAiplatformV1beta1Args {
   /// [optimized] Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
   /// [project] Optional.
   FeatureOnlineStoreAiplatformV1beta1Args({
-    pulumi.Output<GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable>? bigtable,
-    pulumi.Output<GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint>? dedicatedServingEndpoint,
-    pulumi.Output<GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement>? embeddingManagement,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> featureOnlineStoreId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, dynamic>>? optimized,
-    pulumi.Output<String>? project,
-  }) :
-      bigtable = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable>(bigtable),
-      dedicatedServingEndpoint = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint>(dedicatedServingEndpoint),
-      embeddingManagement = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement>(embeddingManagement),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureOnlineStoreId = pulumi.Input.asInput<String>(featureOnlineStoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      optimized = pulumi.Input.asOptionalInput<Map<String, dynamic>>(optimized),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.bigtable,
+    this.dedicatedServingEndpoint,
+    this.embeddingManagement,
+    this.etag,
+    required this.featureOnlineStoreId,
+    this.labels,
+    this.location,
+    this.optimized,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class FeatureOnlineStoreAiplatformV1beta1Args {
 
   factory FeatureOnlineStoreAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return FeatureOnlineStoreAiplatformV1beta1Args(
-      bigtable: map['bigtable'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable>(GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())),
-      dedicatedServingEndpoint: map['dedicatedServingEndpoint'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint>(GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint.fromMap((map['dedicatedServingEndpoint'] as Map).cast<String, dynamic>())),
-      embeddingManagement: map['embeddingManagement'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement>(GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement.fromMap((map['embeddingManagement'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureOnlineStoreId: pulumi.Output.create<String>(map['featureOnlineStoreId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      optimized: map['optimized'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['optimized'] as Map).cast<String, dynamic>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bigtable: map['bigtable'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())).input(),
+      dedicatedServingEndpoint: map['dedicatedServingEndpoint'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint.fromMap((map['dedicatedServingEndpoint'] as Map).cast<String, dynamic>())).input(),
+      embeddingManagement: map['embeddingManagement'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement.fromMap((map['embeddingManagement'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureOnlineStoreId: (map['featureOnlineStoreId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      optimized: map['optimized'] == null ? null : ((map['optimized'] as Map).cast<String, dynamic>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUsersUserGlobalGrant {
   /// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
-  final String accountAccess;
+  final pulumi.Input<String> accountAccess;
   /// If true, this User may add Managed Databases.
-  final bool addDatabases;
+  final pulumi.Input<bool> addDatabases;
   /// If true, this User may add Domains.
-  final bool addDomains;
+  final pulumi.Input<bool> addDomains;
   /// If true, this User may add Firewalls.
-  final bool addFirewalls;
+  final pulumi.Input<bool> addFirewalls;
   /// If true, this User may add Images.
-  final bool addImages;
+  final pulumi.Input<bool> addImages;
   /// If true, this User may create Linodes.
-  final bool addLinodes;
+  final pulumi.Input<bool> addLinodes;
   /// If true, this User may create Longview clients and view the current plan.
-  final bool addLongview;
+  final pulumi.Input<bool> addLongview;
   /// If true, this User may add NodeBalancers.
-  final bool addNodebalancers;
-  final bool addStackscripts;
+  final pulumi.Input<bool> addNodebalancers;
+  final pulumi.Input<bool> addStackscripts;
   /// If true, this User may add Volumes.
-  final bool addVolumes;
+  final pulumi.Input<bool> addVolumes;
   /// If true, this User may add Virtual Private Clouds (VPCs).
-  final bool addVpcs;
+  final pulumi.Input<bool> addVpcs;
   /// If true, this User may cancel the entire Account.
-  final bool cancelAccount;
+  final pulumi.Input<bool> cancelAccount;
   /// If true, this User may manage the Account’s Longview subscription.
-  final bool longviewSubscription;
+  final pulumi.Input<bool> longviewSubscription;
 
   /// Creates a new [GetUsersUserGlobalGrant].
   /// [accountAccess] The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
@@ -78,19 +79,19 @@ class GetUsersUserGlobalGrant {
 
   factory GetUsersUserGlobalGrant.fromMap(Map<String, dynamic> map) {
     return GetUsersUserGlobalGrant(
-      accountAccess: map['accountAccess'] as String,
-      addDatabases: map['addDatabases'] as bool,
-      addDomains: map['addDomains'] as bool,
-      addFirewalls: map['addFirewalls'] as bool,
-      addImages: map['addImages'] as bool,
-      addLinodes: map['addLinodes'] as bool,
-      addLongview: map['addLongview'] as bool,
-      addNodebalancers: map['addNodebalancers'] as bool,
-      addStackscripts: map['addStackscripts'] as bool,
-      addVolumes: map['addVolumes'] as bool,
-      addVpcs: map['addVpcs'] as bool,
-      cancelAccount: map['cancelAccount'] as bool,
-      longviewSubscription: map['longviewSubscription'] as bool,
+      accountAccess: (map['accountAccess'] as String).input(),
+      addDatabases: (map['addDatabases'] as bool).input(),
+      addDomains: (map['addDomains'] as bool).input(),
+      addFirewalls: (map['addFirewalls'] as bool).input(),
+      addImages: (map['addImages'] as bool).input(),
+      addLinodes: (map['addLinodes'] as bool).input(),
+      addLongview: (map['addLongview'] as bool).input(),
+      addNodebalancers: (map['addNodebalancers'] as bool).input(),
+      addStackscripts: (map['addStackscripts'] as bool).input(),
+      addVolumes: (map['addVolumes'] as bool).input(),
+      addVpcs: (map['addVpcs'] as bool).input(),
+      cancelAccount: (map['cancelAccount'] as bool).input(),
+      longviewSubscription: (map['longviewSubscription'] as bool).input(),
     );
   }
 }

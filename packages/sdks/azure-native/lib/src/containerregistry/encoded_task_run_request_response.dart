@@ -9,31 +9,31 @@ import 'set_value_response.dart';
 /// The parameters for a quick task run request.
 class EncodedTaskRunRequestResponse {
   /// The machine configuration of the run agent.
-  final AgentPropertiesResponse? agentConfiguration;
+  final pulumi.Input<AgentPropertiesResponse>? agentConfiguration;
   /// The dedicated agent pool for the run.
-  final String? agentPoolName;
+  final pulumi.Input<String>? agentPoolName;
   /// The properties that describes a set of credentials that will be used when this run is invoked.
-  final CredentialsResponse? credentials;
+  final pulumi.Input<CredentialsResponse>? credentials;
   /// Base64 encoded value of the template/definition file content.
-  final String encodedTaskContent;
+  final pulumi.Input<String> encodedTaskContent;
   /// Base64 encoded value of the parameters/values file content.
-  final String? encodedValuesContent;
+  final pulumi.Input<String>? encodedValuesContent;
   /// The value that indicates whether archiving is enabled for the run or not.
-  final bool? isArchiveEnabled;
+  final pulumi.Input<bool>? isArchiveEnabled;
   /// The template that describes the repository and tag information for run log artifact.
-  final String? logTemplate;
+  final pulumi.Input<String>? logTemplate;
   /// The platform properties against which the run has to happen.
-  final PlatformPropertiesResponse platform;
+  final pulumi.Input<PlatformPropertiesResponse> platform;
   /// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
   /// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
-  final String? sourceLocation;
+  final pulumi.Input<String>? sourceLocation;
   /// Run timeout in seconds.
-  final int? timeout;
+  final pulumi.Input<int>? timeout;
   /// The type of the run request.
   /// Expected value is 'EncodedTaskRunRequest'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The collection of overridable values that can be passed when running a task.
-  final List<SetValueResponse>? values;
+  final pulumi.Input<List<SetValueResponse>>? values;
 
   /// Creates a new [EncodedTaskRunRequestResponse].
   /// [agentConfiguration] The machine configuration of the run agent.
@@ -65,35 +65,35 @@ class EncodedTaskRunRequestResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentConfiguration': ?agentConfiguration == null ? null : agentConfiguration!.toMap(),
+      'agentConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentPropertiesResponse, Map<String, dynamic>>(agentConfiguration, (value) => value.toMap()),
       'agentPoolName': ?agentPoolName,
-      'credentials': ?credentials == null ? null : credentials!.toMap(),
+      'credentials': ?pulumi.Input.mapOptionalInputValue<CredentialsResponse, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'encodedTaskContent': encodedTaskContent,
       'encodedValuesContent': ?encodedValuesContent,
       'isArchiveEnabled': ?isArchiveEnabled,
       'logTemplate': ?logTemplate,
-      'platform': platform.toMap(),
+      'platform': pulumi.Input.mapInputValue<PlatformPropertiesResponse, Map<String, dynamic>>(platform, (value) => value.toMap()),
       'sourceLocation': ?sourceLocation,
       'timeout': ?timeout,
       'type': type,
-      'values': ?values == null ? null : pulumi.Input.encodeList<SetValueResponse, Map<String, dynamic>>(values!, (value) => value.toMap()),
+      'values': ?pulumi.Input.mapOptionalInputValue<List<SetValueResponse>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<SetValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EncodedTaskRunRequestResponse.fromMap(Map<String, dynamic> map) {
     return EncodedTaskRunRequestResponse(
-      agentConfiguration: map['agentConfiguration'] == null ? null : AgentPropertiesResponse.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>()),
-      agentPoolName: map['agentPoolName'] == null ? null : map['agentPoolName'] as String,
-      credentials: map['credentials'] == null ? null : CredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      encodedTaskContent: map['encodedTaskContent'] as String,
-      encodedValuesContent: map['encodedValuesContent'] == null ? null : map['encodedValuesContent'] as String,
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : map['isArchiveEnabled'] as bool,
-      logTemplate: map['logTemplate'] == null ? null : map['logTemplate'] as String,
-      platform: PlatformPropertiesResponse.fromMap((map['platform'] as Map).cast<String, dynamic>()),
-      sourceLocation: map['sourceLocation'] == null ? null : map['sourceLocation'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as int,
-      type: map['type'] as String,
-      values: map['values'] == null ? null : pulumi.Input.decodeList<SetValueResponse>(map['values'], (value) => SetValueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentPropertiesResponse.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
+      credentials: map['credentials'] == null ? null : (CredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      encodedTaskContent: (map['encodedTaskContent'] as String).input(),
+      encodedValuesContent: map['encodedValuesContent'] == null ? null : (map['encodedValuesContent'] as String).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
+      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate'] as String).input(),
+      platform: (PlatformPropertiesResponse.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      type: (map['type'] as String).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValueResponse>(map['values'], (value) => SetValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

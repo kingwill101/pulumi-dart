@@ -10,7 +10,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'eks',
           name,
-          const <String, dynamic>{},
+          const <String, pulumi.Input<dynamic>>{},
           options ?? pulumi.CustomResourceOptions(),
         );
 }

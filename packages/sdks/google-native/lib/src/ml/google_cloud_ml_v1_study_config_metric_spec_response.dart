@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a metric to optimize.
 class GoogleCloudMlV1StudyConfigMetricSpecResponse {
   /// The optimization goal of the metric.
-  final String goal;
+  final pulumi.Input<String> goal;
   /// The name of the metric.
-  final String metric;
+  final pulumi.Input<String> metric;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigMetricSpecResponse].
   /// [goal] The optimization goal of the metric.
@@ -25,8 +26,8 @@ class GoogleCloudMlV1StudyConfigMetricSpecResponse {
 
   factory GoogleCloudMlV1StudyConfigMetricSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigMetricSpecResponse(
-      goal: map['goal'] as String,
-      metric: map['metric'] as String,
+      goal: (map['goal'] as String).input(),
+      metric: (map['metric'] as String).input(),
     );
   }
 }

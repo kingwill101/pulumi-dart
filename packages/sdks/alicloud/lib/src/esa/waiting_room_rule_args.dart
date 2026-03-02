@@ -27,17 +27,12 @@ class WaitingRoomRuleArgs {
   /// [status] Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// [waitingRoomId] Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
   WaitingRoomRuleArgs({
-    required pulumi.Output<String> rule,
-    required pulumi.Output<String> ruleName,
-    required pulumi.Output<String> siteId,
-    required pulumi.Output<String> status,
-    required pulumi.Output<String> waitingRoomId,
-  }) :
-      rule = pulumi.Input.asInput<String>(rule),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      status = pulumi.Input.asInput<String>(status),
-      waitingRoomId = pulumi.Input.asInput<String>(waitingRoomId);
+    required this.rule,
+    required this.ruleName,
+    required this.siteId,
+    required this.status,
+    required this.waitingRoomId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class WaitingRoomRuleArgs {
 
   factory WaitingRoomRuleArgs.fromMap(Map<String, dynamic> map) {
     return WaitingRoomRuleArgs(
-      rule: pulumi.Output.create<String>(map['rule'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      status: pulumi.Output.create<String>(map['status'] as String),
-      waitingRoomId: pulumi.Output.create<String>(map['waitingRoomId'] as String),
+      rule: (map['rule'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      status: (map['status'] as String).input(),
+      waitingRoomId: (map['waitingRoomId'] as String).input(),
     );
   }
 }

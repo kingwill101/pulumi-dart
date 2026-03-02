@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkforceWorkforceVpcConfig {
   /// The VPC security group IDs. The security groups must be for the same VPC as specified in the subnet.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
   /// The ID of the subnets in the VPC that you want to connect.
-  final List<String>? subnets;
+  final pulumi.Input<List<String>>? subnets;
   /// The IDs for the VPC service endpoints of your VPC workforce.
-  final String? vpcEndpointId;
+  final pulumi.Input<String>? vpcEndpointId;
   /// The ID of the VPC that the workforce uses for communication.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [WorkforceWorkforceVpcConfig].
   /// [securityGroupIds] The VPC security group IDs. The security groups must be for the same VPC as specified in the subnet.
@@ -34,10 +35,10 @@ class WorkforceWorkforceVpcConfig {
 
   factory WorkforceWorkforceVpcConfig.fromMap(Map<String, dynamic> map) {
     return WorkforceWorkforceVpcConfig(
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      subnets: map['subnets'] == null ? null : (map['subnets'] as List).cast<String>(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : map['vpcEndpointId'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnets: map['subnets'] == null ? null : ((map['subnets'] as List).cast<String>()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

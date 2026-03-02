@@ -24,19 +24,13 @@ class ListLocalRulestackAppIdsArgs {
   /// [skip] Optional.
   /// [top] Optional.
   ListLocalRulestackAppIdsArgs({
-    pulumi.Output<String>? appIdVersion,
-    pulumi.Output<String>? appPrefix,
-    required pulumi.Output<String> localRulestackName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skip,
-    pulumi.Output<int>? top,
-  }) :
-      appIdVersion = pulumi.Input.asOptionalInput<String>(appIdVersion),
-      appPrefix = pulumi.Input.asOptionalInput<String>(appPrefix),
-      localRulestackName = pulumi.Input.asInput<String>(localRulestackName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skip = pulumi.Input.asOptionalInput<String>(skip),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    this.appIdVersion,
+    this.appPrefix,
+    required this.localRulestackName,
+    required this.resourceGroupName,
+    this.skip,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class ListLocalRulestackAppIdsArgs {
 
   factory ListLocalRulestackAppIdsArgs.fromMap(Map<String, dynamic> map) {
     return ListLocalRulestackAppIdsArgs(
-      appIdVersion: map['appIdVersion'] == null ? null : pulumi.Output.create<String>(map['appIdVersion'] as String),
-      appPrefix: map['appPrefix'] == null ? null : pulumi.Output.create<String>(map['appPrefix'] as String),
-      localRulestackName: pulumi.Output.create<String>(map['localRulestackName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<String>(map['skip'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      appIdVersion: map['appIdVersion'] == null ? null : (map['appIdVersion'] as String).input(),
+      appPrefix: map['appPrefix'] == null ? null : (map['appPrefix'] as String).input(),
+      localRulestackName: (map['localRulestackName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An arm role receiver.
 class ArmRoleReceiver {
   /// The name of the arm role receiver. Names must be unique across all receivers within an action group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The arm role id.
-  final String roleId;
+  final pulumi.Input<String> roleId;
   /// Indicates whether to use common alert schema.
-  final bool? useCommonAlertSchema;
+  final pulumi.Input<bool>? useCommonAlertSchema;
 
   /// Creates a new [ArmRoleReceiver].
   /// [name] The name of the arm role receiver. Names must be unique across all receivers within an action group.
@@ -30,9 +31,9 @@ class ArmRoleReceiver {
 
   factory ArmRoleReceiver.fromMap(Map<String, dynamic> map) {
     return ArmRoleReceiver(
-      name: map['name'] as String,
-      roleId: map['roleId'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : map['useCommonAlertSchema'] as bool,
+      name: (map['name'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

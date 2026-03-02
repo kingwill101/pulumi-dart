@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of NFS share endpoint.
 class NfsMountEndpointProperties {
   /// A description for the Endpoint.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The Endpoint resource type.
   /// Expected value is 'NfsMount'.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The directory being exported from the server.
-  final String export;
+  final pulumi.Input<String> export;
   /// The host name or IP address of the server exporting the file system.
-  final String host;
+  final pulumi.Input<String> host;
   /// The NFS protocol version.
-  final String? nfsVersion;
+  final pulumi.Input<String>? nfsVersion;
 
   /// Creates a new [NfsMountEndpointProperties].
   /// [description] A description for the Endpoint.
@@ -41,11 +42,11 @@ class NfsMountEndpointProperties {
 
   factory NfsMountEndpointProperties.fromMap(Map<String, dynamic> map) {
     return NfsMountEndpointProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      endpointType: map['endpointType'] as String,
-      export: map['export'] as String,
-      host: map['host'] as String,
-      nfsVersion: map['nfsVersion'] == null ? null : map['nfsVersion'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      export: (map['export'] as String).input(),
+      host: (map['host'] as String).input(),
+      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion'] as String).input(),
     );
   }
 }

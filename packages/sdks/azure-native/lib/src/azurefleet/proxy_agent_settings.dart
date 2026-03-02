@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies ProxyAgent settings while creating the virtual machine. Minimum
 /// api-version: 2023-09-01.
 class ProxyAgentSettings {
   /// Specifies whether ProxyAgent feature should be enabled on the virtual machine
   /// or virtual machine scale set.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Increase the value of this property allows user to reset the key used for
   /// securing communication channel between guest and host.
-  final int? keyIncarnationId;
+  final pulumi.Input<int>? keyIncarnationId;
   /// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
   /// ProxyAgent will start to audit or monitor but not enforce access control over
   /// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
   /// access control. The default value is Enforce mode.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [ProxyAgentSettings].
   /// [enabled] Specifies whether ProxyAgent feature should be enabled on the virtual machine
@@ -36,9 +37,9 @@ class ProxyAgentSettings {
 
   factory ProxyAgentSettings.fromMap(Map<String, dynamic> map) {
     return ProxyAgentSettings(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      keyIncarnationId: map['keyIncarnationId'] == null ? null : map['keyIncarnationId'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      keyIncarnationId: map['keyIncarnationId'] == null ? null : (map['keyIncarnationId'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

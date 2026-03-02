@@ -19,13 +19,10 @@ class GetSiteReferenceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteReferenceName] The name of the SiteReference
   GetSiteReferenceArgs({
-    required pulumi.Output<String> contextName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteReferenceName,
-  }) :
-      contextName = pulumi.Input.asInput<String>(contextName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteReferenceName = pulumi.Input.asInput<String>(siteReferenceName);
+    required this.contextName,
+    required this.resourceGroupName,
+    required this.siteReferenceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSiteReferenceArgs {
 
   factory GetSiteReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteReferenceArgs(
-      contextName: pulumi.Output.create<String>(map['contextName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteReferenceName: pulumi.Output.create<String>(map['siteReferenceName'] as String),
+      contextName: (map['contextName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteReferenceName: (map['siteReferenceName'] as String).input(),
     );
   }
 }

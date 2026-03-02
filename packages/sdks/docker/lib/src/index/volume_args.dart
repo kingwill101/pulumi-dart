@@ -27,17 +27,12 @@ class VolumeArgs {
   /// [labels] User-defined key/value metadata
   /// [name] The name of the Docker volume (will be generated if not provided).
   VolumeArgs({
-    pulumi.Output<VolumeCluster>? cluster,
-    pulumi.Output<String>? driver,
-    pulumi.Output<Map<String, String>>? driverOpts,
-    pulumi.Output<List<VolumeLabel>>? labels,
-    pulumi.Output<String>? name,
-  }) :
-      cluster = pulumi.Input.asOptionalInput<VolumeCluster>(cluster),
-      driver = pulumi.Input.asOptionalInput<String>(driver),
-      driverOpts = pulumi.Input.asOptionalInput<Map<String, String>>(driverOpts),
-      labels = pulumi.Input.asOptionalInput<List<VolumeLabel>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.cluster,
+    this.driver,
+    this.driverOpts,
+    this.labels,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      cluster: map['cluster'] == null ? null : pulumi.Output.create<VolumeCluster>(VolumeCluster.fromMap((map['cluster'] as Map).cast<String, dynamic>())),
-      driver: map['driver'] == null ? null : pulumi.Output.create<String>(map['driver'] as String),
-      driverOpts: map['driverOpts'] == null ? null : pulumi.Output.create<Map<String, String>>((map['driverOpts'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<VolumeLabel>>(pulumi.Input.decodeList<VolumeLabel>(map['labels'], (value) => VolumeLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      cluster: map['cluster'] == null ? null : (VolumeCluster.fromMap((map['cluster'] as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
+      driverOpts: map['driverOpts'] == null ? null : ((map['driverOpts'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<VolumeLabel>(map['labels'], (value) => VolumeLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

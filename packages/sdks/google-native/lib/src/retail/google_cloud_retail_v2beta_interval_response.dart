@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A floating point interval.
 class GoogleCloudRetailV2betaIntervalResponse {
   /// Exclusive upper bound.
-  final double exclusiveMaximum;
+  final pulumi.Input<double> exclusiveMaximum;
   /// Exclusive lower bound.
-  final double exclusiveMinimum;
+  final pulumi.Input<double> exclusiveMinimum;
   /// Inclusive upper bound.
-  final double maximum;
+  final pulumi.Input<double> maximum;
   /// Inclusive lower bound.
-  final double minimum;
+  final pulumi.Input<double> minimum;
 
   /// Creates a new [GoogleCloudRetailV2betaIntervalResponse].
   /// [exclusiveMaximum] Exclusive upper bound.
@@ -35,10 +36,10 @@ class GoogleCloudRetailV2betaIntervalResponse {
 
   factory GoogleCloudRetailV2betaIntervalResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaIntervalResponse(
-      exclusiveMaximum: map['exclusiveMaximum'] as double,
-      exclusiveMinimum: map['exclusiveMinimum'] as double,
-      maximum: map['maximum'] as double,
-      minimum: map['minimum'] as double,
+      exclusiveMaximum: (map['exclusiveMaximum'] as double).input(),
+      exclusiveMinimum: (map['exclusiveMinimum'] as double).input(),
+      maximum: (map['maximum'] as double).input(),
+      minimum: (map['minimum'] as double).input(),
     );
   }
 }

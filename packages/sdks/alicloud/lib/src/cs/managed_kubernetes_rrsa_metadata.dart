@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedKubernetesRrsaMetadata {
   /// Whether the RRSA feature has been enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The arn of OIDC provider that was registered in RAM.
-  final String? ramOidcProviderArn;
+  final pulumi.Input<String>? ramOidcProviderArn;
   /// The name of OIDC Provider that was registered in RAM.
-  final String? ramOidcProviderName;
+  final pulumi.Input<String>? ramOidcProviderName;
   /// The issuer URL of RRSA OIDC Token.
-  final String? rrsaOidcIssuerUrl;
+  final pulumi.Input<String>? rrsaOidcIssuerUrl;
 
   /// Creates a new [ManagedKubernetesRrsaMetadata].
   /// [enabled] Whether the RRSA feature has been enabled.
@@ -34,10 +35,10 @@ class ManagedKubernetesRrsaMetadata {
 
   factory ManagedKubernetesRrsaMetadata.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesRrsaMetadata(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      ramOidcProviderArn: map['ramOidcProviderArn'] == null ? null : map['ramOidcProviderArn'] as String,
-      ramOidcProviderName: map['ramOidcProviderName'] == null ? null : map['ramOidcProviderName'] as String,
-      rrsaOidcIssuerUrl: map['rrsaOidcIssuerUrl'] == null ? null : map['rrsaOidcIssuerUrl'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      ramOidcProviderArn: map['ramOidcProviderArn'] == null ? null : (map['ramOidcProviderArn'] as String).input(),
+      ramOidcProviderName: map['ramOidcProviderName'] == null ? null : (map['ramOidcProviderName'] as String).input(),
+      rrsaOidcIssuerUrl: map['rrsaOidcIssuerUrl'] == null ? null : (map['rrsaOidcIssuerUrl'] as String).input(),
     );
   }
 }

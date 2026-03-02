@@ -28,58 +28,58 @@ import 'cluster_node_pool_node_config_workload_metadata_config.dart';
 class ClusterNodePoolNodeConfig {
   /// Specifies options for controlling
   /// advanced machine features. Structure is documented below.
-  final ClusterNodePoolNodeConfigAdvancedMachineFeatures? advancedMachineFeatures;
+  final pulumi.Input<ClusterNodePoolNodeConfigAdvancedMachineFeatures>? advancedMachineFeatures;
   /// Configuration of the node pool boot disk. Structure is documented below
-  final ClusterNodePoolNodeConfigBootDisk? bootDisk;
+  final pulumi.Input<ClusterNodePoolNodeConfigBootDisk>? bootDisk;
   /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
-  final String? bootDiskKmsKey;
+  final pulumi.Input<String>? bootDiskKmsKey;
   /// Configuration for Confidential Nodes feature. Structure is documented below.
-  final ClusterNodePoolNodeConfigConfidentialNodes? confidentialNodes;
+  final pulumi.Input<ClusterNodePoolNodeConfigConfidentialNodes>? confidentialNodes;
   /// Parameters to customize containerd runtime. Structure is documented below.
-  final ClusterNodePoolNodeConfigContainerdConfig? containerdConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigContainerdConfig>? containerdConfig;
   /// Size of the disk attached to each node, specified
   /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
   /// Prefer configuring `boot_disk`.
-  final int? diskSizeGb;
+  final pulumi.Input<int>? diskSizeGb;
   /// Type of the disk attached to each node
   /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// List of kubernetes taints applied to each node.
-  final List<ClusterNodePoolNodeConfigEffectiveTaint>? effectiveTaints;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigEffectiveTaint>>? effectiveTaints;
   /// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
-  final bool? enableConfidentialStorage;
+  final pulumi.Input<bool>? enableConfidentialStorage;
   /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-  final ClusterNodePoolNodeConfigEphemeralStorageConfig? ephemeralStorageConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigEphemeralStorageConfig>? ephemeralStorageConfig;
   /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-  final ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig? ephemeralStorageLocalSsdConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig>? ephemeralStorageLocalSsdConfig;
   /// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
   /// Node Pool must enable gvnic.
   /// GKE version 1.25.2-gke.1700 or later.
   /// Structure is documented below.
-  final ClusterNodePoolNodeConfigFastSocket? fastSocket;
+  final pulumi.Input<ClusterNodePoolNodeConfigFastSocket>? fastSocket;
   /// Enables Flex Start provisioning model for the node pool.
-  final bool? flexStart;
+  final pulumi.Input<bool>? flexStart;
   /// Parameters for the Google Container Filesystem (GCFS).
   /// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
   /// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
   /// A `machine_type` that has more than 16 GiB of memory is also recommended.
   /// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
   /// Structure is documented below.
-  final ClusterNodePoolNodeConfigGcfsConfig? gcfsConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigGcfsConfig>? gcfsConfig;
   /// List of the type and count of accelerator cards attached to the instance.
   /// Structure documented below.
-  final List<ClusterNodePoolNodeConfigGuestAccelerator>? guestAccelerators;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigGuestAccelerator>>? guestAccelerators;
   /// Google Virtual NIC (gVNIC) is a virtual network interface.
   /// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
   /// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
   /// GKE node version 1.15.11-gke.15 or later
   /// Structure is documented below.
-  final ClusterNodePoolNodeConfigGvnic? gvnic;
+  final pulumi.Input<ClusterNodePoolNodeConfigGvnic>? gvnic;
   /// The maintenance policy for the hosts on which the GKE VMs run on.
-  final ClusterNodePoolNodeConfigHostMaintenancePolicy? hostMaintenancePolicy;
+  final pulumi.Input<ClusterNodePoolNodeConfigHostMaintenancePolicy>? hostMaintenancePolicy;
   /// The image type to use for this node. Note that changing the image type
   /// will delete and recreate all nodes in the node pool.
-  final String? imageType;
+  final pulumi.Input<String>? imageType;
   /// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
   /// Structure is documented below.
   ///
@@ -91,81 +91,81 @@ class ClusterNodePoolNodeConfig {
   /// pod_pids_limit       = 1024
   /// }
   /// ```
-  final ClusterNodePoolNodeConfigKubeletConfig? kubeletConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigKubeletConfig>? kubeletConfig;
   /// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
   /// reserved by Kubernetes Core components and cannot be specified.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// Parameters that can be configured on Linux nodes. Structure is documented below.
-  final ClusterNodePoolNodeConfigLinuxNodeConfig? linuxNodeConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfig>? linuxNodeConfig;
   /// Parameters for the local NVMe SSDs. Structure is documented below.
-  final ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig? localNvmeSsdBlockConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig>? localNvmeSsdBlockConfig;
   /// The amount of local SSD disks that will be
   /// attached to each cluster node. Defaults to 0.
-  final int? localSsdCount;
+  final pulumi.Input<int>? localSsdCount;
   /// Possible Local SSD encryption modes:
   /// Accepted values are:
   /// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
   /// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
-  final String? localSsdEncryptionMode;
+  final pulumi.Input<String>? localSsdEncryptionMode;
   /// Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
-  final String? loggingVariant;
+  final pulumi.Input<String>? loggingVariant;
   /// The name of a Google Compute Engine machine type.
   /// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
   /// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-  final String? machineType;
+  final pulumi.Input<String>? machineType;
   /// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
-  final String? maxRunDuration;
+  final pulumi.Input<String>? maxRunDuration;
   /// The metadata key/value pairs assigned to instances in
   /// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
   /// `true` by the API; if `metadata` is set but that default value is not
   /// included, the provider will attempt to unset the value. To avoid this, set the
   /// value in your config.
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
   /// Minimum CPU platform to be used by this instance.
   /// The instance may be scheduled on the specified or newer CPU platform. Applicable
   /// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
   /// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
   /// for more information.
-  final String? minCpuPlatform;
+  final pulumi.Input<String>? minCpuPlatform;
   /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
-  final String? nodeGroup;
+  final pulumi.Input<String>? nodeGroup;
   /// The set of Google API scopes to be made available
   /// on all of the node VMs under the "default" service account.
   /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
   ///
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
-  final List<String>? oauthScopes;
+  final pulumi.Input<List<String>>? oauthScopes;
   /// A boolean that represents whether or not the underlying node VMs
   /// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
   /// for more information. Defaults to false.
-  final bool? preemptible;
+  final pulumi.Input<bool>? preemptible;
   /// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
-  final ClusterNodePoolNodeConfigReservationAffinity? reservationAffinity;
+  final pulumi.Input<ClusterNodePoolNodeConfigReservationAffinity>? reservationAffinity;
   /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
   /// for how these labels are applied to clusters, node pools and nodes.
-  final Map<String, String>? resourceLabels;
+  final pulumi.Input<Map<String, String>>? resourceLabels;
   /// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-  final Map<String, String>? resourceManagerTags;
+  final pulumi.Input<Map<String, String>>? resourceManagerTags;
   /// Sandbox configuration for this node.
-  final ClusterNodePoolNodeConfigSandboxConfig? sandboxConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigSandboxConfig>? sandboxConfig;
   /// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
-  final List<ClusterNodePoolNodeConfigSecondaryBootDisk>? secondaryBootDisks;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigSecondaryBootDisk>>? secondaryBootDisks;
   /// The service account to be used by the Node VMs.
   /// If not specified, the "default" service account is used.
-  final String? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
   /// Shielded Instance options. Structure is documented below.
-  final ClusterNodePoolNodeConfigShieldedInstanceConfig? shieldedInstanceConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigShieldedInstanceConfig>? shieldedInstanceConfig;
   /// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
-  final ClusterNodePoolNodeConfigSoleTenantConfig? soleTenantConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigSoleTenantConfig>? soleTenantConfig;
   /// A boolean that represents whether the underlying node VMs are spot.
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
   /// for more information. Defaults to false.
-  final bool? spot;
+  final pulumi.Input<bool>? spot;
   /// The list of Storage Pools where boot disks are provisioned.
-  final List<String>? storagePools;
+  final pulumi.Input<List<String>>? storagePools;
   /// The list of instance tags applied to all nodes. Tags are used to identify
   /// valid sources or targets for network firewalls.
-  final List<String>? tags;
+  final pulumi.Input<List<String>>? tags;
   /// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
   /// to apply to nodes. GKE's API can only set this field on cluster creation.
   /// However, GKE will add taints to your nodes if you enable certain features such
@@ -174,12 +174,12 @@ class ClusterNodePoolNodeConfig {
   /// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
   /// this field to manage taints. If you do, `lifecycle.ignore_changes` is
   /// recommended. Structure is documented below.
-  final List<ClusterNodePoolNodeConfigTaint>? taints;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigTaint>>? taints;
   /// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
-  final ClusterNodePoolNodeConfigWindowsNodeConfig? windowsNodeConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigWindowsNodeConfig>? windowsNodeConfig;
   /// Metadata configuration to expose to workloads on the node pool.
   /// Structure is documented below.
-  final ClusterNodePoolNodeConfigWorkloadMetadataConfig? workloadMetadataConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigWorkloadMetadataConfig>? workloadMetadataConfig;
 
   /// Creates a new [ClusterNodePoolNodeConfig].
   /// [advancedMachineFeatures] Specifies options for controlling
@@ -279,28 +279,28 @@ class ClusterNodePoolNodeConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedMachineFeatures': ?advancedMachineFeatures == null ? null : advancedMachineFeatures!.toMap(),
-      'bootDisk': ?bootDisk == null ? null : bootDisk!.toMap(),
+      'advancedMachineFeatures': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigAdvancedMachineFeatures, Map<String, dynamic>>(advancedMachineFeatures, (value) => value.toMap()),
+      'bootDisk': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigBootDisk, Map<String, dynamic>>(bootDisk, (value) => value.toMap()),
       'bootDiskKmsKey': ?bootDiskKmsKey,
-      'confidentialNodes': ?confidentialNodes == null ? null : confidentialNodes!.toMap(),
-      'containerdConfig': ?containerdConfig == null ? null : containerdConfig!.toMap(),
+      'confidentialNodes': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigConfidentialNodes, Map<String, dynamic>>(confidentialNodes, (value) => value.toMap()),
+      'containerdConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigContainerdConfig, Map<String, dynamic>>(containerdConfig, (value) => value.toMap()),
       'diskSizeGb': ?diskSizeGb,
       'diskType': ?diskType,
-      'effectiveTaints': ?effectiveTaints == null ? null : pulumi.Input.encodeList<ClusterNodePoolNodeConfigEffectiveTaint, Map<String, dynamic>>(effectiveTaints!, (value) => value.toMap()),
+      'effectiveTaints': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodePoolNodeConfigEffectiveTaint>, List<Map<String, dynamic>>>(effectiveTaints, (value) => pulumi.Input.encodeList<ClusterNodePoolNodeConfigEffectiveTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableConfidentialStorage': ?enableConfidentialStorage,
-      'ephemeralStorageConfig': ?ephemeralStorageConfig == null ? null : ephemeralStorageConfig!.toMap(),
-      'ephemeralStorageLocalSsdConfig': ?ephemeralStorageLocalSsdConfig == null ? null : ephemeralStorageLocalSsdConfig!.toMap(),
-      'fastSocket': ?fastSocket == null ? null : fastSocket!.toMap(),
+      'ephemeralStorageConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigEphemeralStorageConfig, Map<String, dynamic>>(ephemeralStorageConfig, (value) => value.toMap()),
+      'ephemeralStorageLocalSsdConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig, Map<String, dynamic>>(ephemeralStorageLocalSsdConfig, (value) => value.toMap()),
+      'fastSocket': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigFastSocket, Map<String, dynamic>>(fastSocket, (value) => value.toMap()),
       'flexStart': ?flexStart,
-      'gcfsConfig': ?gcfsConfig == null ? null : gcfsConfig!.toMap(),
-      'guestAccelerators': ?guestAccelerators == null ? null : pulumi.Input.encodeList<ClusterNodePoolNodeConfigGuestAccelerator, Map<String, dynamic>>(guestAccelerators!, (value) => value.toMap()),
-      'gvnic': ?gvnic == null ? null : gvnic!.toMap(),
-      'hostMaintenancePolicy': ?hostMaintenancePolicy == null ? null : hostMaintenancePolicy!.toMap(),
+      'gcfsConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigGcfsConfig, Map<String, dynamic>>(gcfsConfig, (value) => value.toMap()),
+      'guestAccelerators': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodePoolNodeConfigGuestAccelerator>, List<Map<String, dynamic>>>(guestAccelerators, (value) => pulumi.Input.encodeList<ClusterNodePoolNodeConfigGuestAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'gvnic': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigGvnic, Map<String, dynamic>>(gvnic, (value) => value.toMap()),
+      'hostMaintenancePolicy': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigHostMaintenancePolicy, Map<String, dynamic>>(hostMaintenancePolicy, (value) => value.toMap()),
       'imageType': ?imageType,
-      'kubeletConfig': ?kubeletConfig == null ? null : kubeletConfig!.toMap(),
+      'kubeletConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigKubeletConfig, Map<String, dynamic>>(kubeletConfig, (value) => value.toMap()),
       'labels': ?labels,
-      'linuxNodeConfig': ?linuxNodeConfig == null ? null : linuxNodeConfig!.toMap(),
-      'localNvmeSsdBlockConfig': ?localNvmeSsdBlockConfig == null ? null : localNvmeSsdBlockConfig!.toMap(),
+      'linuxNodeConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigLinuxNodeConfig, Map<String, dynamic>>(linuxNodeConfig, (value) => value.toMap()),
+      'localNvmeSsdBlockConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig, Map<String, dynamic>>(localNvmeSsdBlockConfig, (value) => value.toMap()),
       'localSsdCount': ?localSsdCount,
       'localSsdEncryptionMode': ?localSsdEncryptionMode,
       'loggingVariant': ?loggingVariant,
@@ -311,71 +311,71 @@ class ClusterNodePoolNodeConfig {
       'nodeGroup': ?nodeGroup,
       'oauthScopes': ?oauthScopes,
       'preemptible': ?preemptible,
-      'reservationAffinity': ?reservationAffinity == null ? null : reservationAffinity!.toMap(),
+      'reservationAffinity': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigReservationAffinity, Map<String, dynamic>>(reservationAffinity, (value) => value.toMap()),
       'resourceLabels': ?resourceLabels,
       'resourceManagerTags': ?resourceManagerTags,
-      'sandboxConfig': ?sandboxConfig == null ? null : sandboxConfig!.toMap(),
-      'secondaryBootDisks': ?secondaryBootDisks == null ? null : pulumi.Input.encodeList<ClusterNodePoolNodeConfigSecondaryBootDisk, Map<String, dynamic>>(secondaryBootDisks!, (value) => value.toMap()),
+      'sandboxConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigSandboxConfig, Map<String, dynamic>>(sandboxConfig, (value) => value.toMap()),
+      'secondaryBootDisks': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodePoolNodeConfigSecondaryBootDisk>, List<Map<String, dynamic>>>(secondaryBootDisks, (value) => pulumi.Input.encodeList<ClusterNodePoolNodeConfigSecondaryBootDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceAccount': ?serviceAccount,
-      'shieldedInstanceConfig': ?shieldedInstanceConfig == null ? null : shieldedInstanceConfig!.toMap(),
-      'soleTenantConfig': ?soleTenantConfig == null ? null : soleTenantConfig!.toMap(),
+      'shieldedInstanceConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfig, (value) => value.toMap()),
+      'soleTenantConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigSoleTenantConfig, Map<String, dynamic>>(soleTenantConfig, (value) => value.toMap()),
       'spot': ?spot,
       'storagePools': ?storagePools,
       'tags': ?tags,
-      'taints': ?taints == null ? null : pulumi.Input.encodeList<ClusterNodePoolNodeConfigTaint, Map<String, dynamic>>(taints!, (value) => value.toMap()),
-      'windowsNodeConfig': ?windowsNodeConfig == null ? null : windowsNodeConfig!.toMap(),
-      'workloadMetadataConfig': ?workloadMetadataConfig == null ? null : workloadMetadataConfig!.toMap(),
+      'taints': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodePoolNodeConfigTaint>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<ClusterNodePoolNodeConfigTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'windowsNodeConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigWindowsNodeConfig, Map<String, dynamic>>(windowsNodeConfig, (value) => value.toMap()),
+      'workloadMetadataConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolNodeConfigWorkloadMetadataConfig, Map<String, dynamic>>(workloadMetadataConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterNodePoolNodeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfig(
-      advancedMachineFeatures: map['advancedMachineFeatures'] == null ? null : ClusterNodePoolNodeConfigAdvancedMachineFeatures.fromMap((map['advancedMachineFeatures'] as Map).cast<String, dynamic>()),
-      bootDisk: map['bootDisk'] == null ? null : ClusterNodePoolNodeConfigBootDisk.fromMap((map['bootDisk'] as Map).cast<String, dynamic>()),
-      bootDiskKmsKey: map['bootDiskKmsKey'] == null ? null : map['bootDiskKmsKey'] as String,
-      confidentialNodes: map['confidentialNodes'] == null ? null : ClusterNodePoolNodeConfigConfidentialNodes.fromMap((map['confidentialNodes'] as Map).cast<String, dynamic>()),
-      containerdConfig: map['containerdConfig'] == null ? null : ClusterNodePoolNodeConfigContainerdConfig.fromMap((map['containerdConfig'] as Map).cast<String, dynamic>()),
-      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as int,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      effectiveTaints: map['effectiveTaints'] == null ? null : pulumi.Input.decodeList<ClusterNodePoolNodeConfigEffectiveTaint>(map['effectiveTaints'], (value) => ClusterNodePoolNodeConfigEffectiveTaint.fromMap((value as Map).cast<String, dynamic>())),
-      enableConfidentialStorage: map['enableConfidentialStorage'] == null ? null : map['enableConfidentialStorage'] as bool,
-      ephemeralStorageConfig: map['ephemeralStorageConfig'] == null ? null : ClusterNodePoolNodeConfigEphemeralStorageConfig.fromMap((map['ephemeralStorageConfig'] as Map).cast<String, dynamic>()),
-      ephemeralStorageLocalSsdConfig: map['ephemeralStorageLocalSsdConfig'] == null ? null : ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap((map['ephemeralStorageLocalSsdConfig'] as Map).cast<String, dynamic>()),
-      fastSocket: map['fastSocket'] == null ? null : ClusterNodePoolNodeConfigFastSocket.fromMap((map['fastSocket'] as Map).cast<String, dynamic>()),
-      flexStart: map['flexStart'] == null ? null : map['flexStart'] as bool,
-      gcfsConfig: map['gcfsConfig'] == null ? null : ClusterNodePoolNodeConfigGcfsConfig.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>()),
-      guestAccelerators: map['guestAccelerators'] == null ? null : pulumi.Input.decodeList<ClusterNodePoolNodeConfigGuestAccelerator>(map['guestAccelerators'], (value) => ClusterNodePoolNodeConfigGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())),
-      gvnic: map['gvnic'] == null ? null : ClusterNodePoolNodeConfigGvnic.fromMap((map['gvnic'] as Map).cast<String, dynamic>()),
-      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : ClusterNodePoolNodeConfigHostMaintenancePolicy.fromMap((map['hostMaintenancePolicy'] as Map).cast<String, dynamic>()),
-      imageType: map['imageType'] == null ? null : map['imageType'] as String,
-      kubeletConfig: map['kubeletConfig'] == null ? null : ClusterNodePoolNodeConfigKubeletConfig.fromMap((map['kubeletConfig'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      linuxNodeConfig: map['linuxNodeConfig'] == null ? null : ClusterNodePoolNodeConfigLinuxNodeConfig.fromMap((map['linuxNodeConfig'] as Map).cast<String, dynamic>()),
-      localNvmeSsdBlockConfig: map['localNvmeSsdBlockConfig'] == null ? null : ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap((map['localNvmeSsdBlockConfig'] as Map).cast<String, dynamic>()),
-      localSsdCount: map['localSsdCount'] == null ? null : map['localSsdCount'] as int,
-      localSsdEncryptionMode: map['localSsdEncryptionMode'] == null ? null : map['localSsdEncryptionMode'] as String,
-      loggingVariant: map['loggingVariant'] == null ? null : map['loggingVariant'] as String,
-      machineType: map['machineType'] == null ? null : map['machineType'] as String,
-      maxRunDuration: map['maxRunDuration'] == null ? null : map['maxRunDuration'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : map['minCpuPlatform'] as String,
-      nodeGroup: map['nodeGroup'] == null ? null : map['nodeGroup'] as String,
-      oauthScopes: map['oauthScopes'] == null ? null : (map['oauthScopes'] as List).cast<String>(),
-      preemptible: map['preemptible'] == null ? null : map['preemptible'] as bool,
-      reservationAffinity: map['reservationAffinity'] == null ? null : ClusterNodePoolNodeConfigReservationAffinity.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>()),
-      resourceLabels: map['resourceLabels'] == null ? null : (map['resourceLabels'] as Map).cast<String, String>(),
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : (map['resourceManagerTags'] as Map).cast<String, String>(),
-      sandboxConfig: map['sandboxConfig'] == null ? null : ClusterNodePoolNodeConfigSandboxConfig.fromMap((map['sandboxConfig'] as Map).cast<String, dynamic>()),
-      secondaryBootDisks: map['secondaryBootDisks'] == null ? null : pulumi.Input.decodeList<ClusterNodePoolNodeConfigSecondaryBootDisk>(map['secondaryBootDisks'], (value) => ClusterNodePoolNodeConfigSecondaryBootDisk.fromMap((value as Map).cast<String, dynamic>())),
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : ClusterNodePoolNodeConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
-      soleTenantConfig: map['soleTenantConfig'] == null ? null : ClusterNodePoolNodeConfigSoleTenantConfig.fromMap((map['soleTenantConfig'] as Map).cast<String, dynamic>()),
-      spot: map['spot'] == null ? null : map['spot'] as bool,
-      storagePools: map['storagePools'] == null ? null : (map['storagePools'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
-      taints: map['taints'] == null ? null : pulumi.Input.decodeList<ClusterNodePoolNodeConfigTaint>(map['taints'], (value) => ClusterNodePoolNodeConfigTaint.fromMap((value as Map).cast<String, dynamic>())),
-      windowsNodeConfig: map['windowsNodeConfig'] == null ? null : ClusterNodePoolNodeConfigWindowsNodeConfig.fromMap((map['windowsNodeConfig'] as Map).cast<String, dynamic>()),
-      workloadMetadataConfig: map['workloadMetadataConfig'] == null ? null : ClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap((map['workloadMetadataConfig'] as Map).cast<String, dynamic>()),
+      advancedMachineFeatures: map['advancedMachineFeatures'] == null ? null : (ClusterNodePoolNodeConfigAdvancedMachineFeatures.fromMap((map['advancedMachineFeatures'] as Map).cast<String, dynamic>())).input(),
+      bootDisk: map['bootDisk'] == null ? null : (ClusterNodePoolNodeConfigBootDisk.fromMap((map['bootDisk'] as Map).cast<String, dynamic>())).input(),
+      bootDiskKmsKey: map['bootDiskKmsKey'] == null ? null : (map['bootDiskKmsKey'] as String).input(),
+      confidentialNodes: map['confidentialNodes'] == null ? null : (ClusterNodePoolNodeConfigConfidentialNodes.fromMap((map['confidentialNodes'] as Map).cast<String, dynamic>())).input(),
+      containerdConfig: map['containerdConfig'] == null ? null : (ClusterNodePoolNodeConfigContainerdConfig.fromMap((map['containerdConfig'] as Map).cast<String, dynamic>())).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      effectiveTaints: map['effectiveTaints'] == null ? null : (pulumi.Input.decodeList<ClusterNodePoolNodeConfigEffectiveTaint>(map['effectiveTaints'], (value) => ClusterNodePoolNodeConfigEffectiveTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableConfidentialStorage: map['enableConfidentialStorage'] == null ? null : (map['enableConfidentialStorage'] as bool).input(),
+      ephemeralStorageConfig: map['ephemeralStorageConfig'] == null ? null : (ClusterNodePoolNodeConfigEphemeralStorageConfig.fromMap((map['ephemeralStorageConfig'] as Map).cast<String, dynamic>())).input(),
+      ephemeralStorageLocalSsdConfig: map['ephemeralStorageLocalSsdConfig'] == null ? null : (ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap((map['ephemeralStorageLocalSsdConfig'] as Map).cast<String, dynamic>())).input(),
+      fastSocket: map['fastSocket'] == null ? null : (ClusterNodePoolNodeConfigFastSocket.fromMap((map['fastSocket'] as Map).cast<String, dynamic>())).input(),
+      flexStart: map['flexStart'] == null ? null : (map['flexStart'] as bool).input(),
+      gcfsConfig: map['gcfsConfig'] == null ? null : (ClusterNodePoolNodeConfigGcfsConfig.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>())).input(),
+      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<ClusterNodePoolNodeConfigGuestAccelerator>(map['guestAccelerators'], (value) => ClusterNodePoolNodeConfigGuestAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gvnic: map['gvnic'] == null ? null : (ClusterNodePoolNodeConfigGvnic.fromMap((map['gvnic'] as Map).cast<String, dynamic>())).input(),
+      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (ClusterNodePoolNodeConfigHostMaintenancePolicy.fromMap((map['hostMaintenancePolicy'] as Map).cast<String, dynamic>())).input(),
+      imageType: map['imageType'] == null ? null : (map['imageType'] as String).input(),
+      kubeletConfig: map['kubeletConfig'] == null ? null : (ClusterNodePoolNodeConfigKubeletConfig.fromMap((map['kubeletConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      linuxNodeConfig: map['linuxNodeConfig'] == null ? null : (ClusterNodePoolNodeConfigLinuxNodeConfig.fromMap((map['linuxNodeConfig'] as Map).cast<String, dynamic>())).input(),
+      localNvmeSsdBlockConfig: map['localNvmeSsdBlockConfig'] == null ? null : (ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap((map['localNvmeSsdBlockConfig'] as Map).cast<String, dynamic>())).input(),
+      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount'] as int).input(),
+      localSsdEncryptionMode: map['localSsdEncryptionMode'] == null ? null : (map['localSsdEncryptionMode'] as String).input(),
+      loggingVariant: map['loggingVariant'] == null ? null : (map['loggingVariant'] as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      maxRunDuration: map['maxRunDuration'] == null ? null : (map['maxRunDuration'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
+      nodeGroup: map['nodeGroup'] == null ? null : (map['nodeGroup'] as String).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
+      reservationAffinity: map['reservationAffinity'] == null ? null : (ClusterNodePoolNodeConfigReservationAffinity.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>())).input(),
+      resourceLabels: map['resourceLabels'] == null ? null : ((map['resourceLabels'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      sandboxConfig: map['sandboxConfig'] == null ? null : (ClusterNodePoolNodeConfigSandboxConfig.fromMap((map['sandboxConfig'] as Map).cast<String, dynamic>())).input(),
+      secondaryBootDisks: map['secondaryBootDisks'] == null ? null : (pulumi.Input.decodeList<ClusterNodePoolNodeConfigSecondaryBootDisk>(map['secondaryBootDisks'], (value) => ClusterNodePoolNodeConfigSecondaryBootDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (ClusterNodePoolNodeConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
+      soleTenantConfig: map['soleTenantConfig'] == null ? null : (ClusterNodePoolNodeConfigSoleTenantConfig.fromMap((map['soleTenantConfig'] as Map).cast<String, dynamic>())).input(),
+      spot: map['spot'] == null ? null : (map['spot'] as bool).input(),
+      storagePools: map['storagePools'] == null ? null : ((map['storagePools'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<ClusterNodePoolNodeConfigTaint>(map['taints'], (value) => ClusterNodePoolNodeConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowsNodeConfig: map['windowsNodeConfig'] == null ? null : (ClusterNodePoolNodeConfigWindowsNodeConfig.fromMap((map['windowsNodeConfig'] as Map).cast<String, dynamic>())).input(),
+      workloadMetadataConfig: map['workloadMetadataConfig'] == null ? null : (ClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap((map['workloadMetadataConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

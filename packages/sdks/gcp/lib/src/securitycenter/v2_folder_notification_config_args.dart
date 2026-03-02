@@ -31,19 +31,13 @@ class V2FolderNotificationConfigArgs {
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
   V2FolderNotificationConfigArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> folder,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> pubsubTopic,
-    required pulumi.Output<V2FolderNotificationConfigStreamingConfig> streamingConfig,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asInput<String>(folder),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      pubsubTopic = pulumi.Input.asInput<String>(pubsubTopic),
-      streamingConfig = pulumi.Input.asInput<V2FolderNotificationConfigStreamingConfig>(streamingConfig);
+    required this.configId,
+    this.description,
+    required this.folder,
+    this.location,
+    required this.pubsubTopic,
+    required this.streamingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class V2FolderNotificationConfigArgs {
 
   factory V2FolderNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderNotificationConfigArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      pubsubTopic: pulumi.Output.create<String>(map['pubsubTopic'] as String),
-      streamingConfig: pulumi.Output.create<V2FolderNotificationConfigStreamingConfig>(V2FolderNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())),
+      configId: (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: (map['folder'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      pubsubTopic: (map['pubsubTopic'] as String).input(),
+      streamingConfig: (V2FolderNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

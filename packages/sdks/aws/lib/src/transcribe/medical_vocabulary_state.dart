@@ -32,23 +32,15 @@ class MedicalVocabularyState {
   /// [vocabularyFileUri] The Amazon S3 location (URI) of the text file that contains your custom medical vocabulary.
   /// [vocabularyName] The name of the Medical Vocabulary.
   MedicalVocabularyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? downloadUri,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vocabularyFileUri,
-    pulumi.Output<String>? vocabularyName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      downloadUri = pulumi.Input.asOptionalInput<String>(downloadUri),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vocabularyFileUri = pulumi.Input.asOptionalInput<String>(vocabularyFileUri),
-      vocabularyName = pulumi.Input.asOptionalInput<String>(vocabularyName);
+    this.arn,
+    this.downloadUri,
+    this.languageCode,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.vocabularyFileUri,
+    this.vocabularyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class MedicalVocabularyState {
 
   factory MedicalVocabularyState.fromMap(Map<String, dynamic> map) {
     return MedicalVocabularyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      downloadUri: map['downloadUri'] == null ? null : pulumi.Output.create<String>(map['downloadUri'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : pulumi.Output.create<String>(map['vocabularyFileUri'] as String),
-      vocabularyName: map['vocabularyName'] == null ? null : pulumi.Output.create<String>(map['vocabularyName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      downloadUri: map['downloadUri'] == null ? null : (map['downloadUri'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : (map['vocabularyFileUri'] as String).input(),
+      vocabularyName: map['vocabularyName'] == null ? null : (map['vocabularyName'] as String).input(),
     );
   }
 }

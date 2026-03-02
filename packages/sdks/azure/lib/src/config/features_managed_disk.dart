@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesManagedDisk {
-  final bool? expandWithoutDowntime;
+  final pulumi.Input<bool>? expandWithoutDowntime;
 
   /// Creates a new [FeaturesManagedDisk].
   /// [expandWithoutDowntime] Optional.
@@ -18,7 +19,7 @@ class FeaturesManagedDisk {
 
   factory FeaturesManagedDisk.fromMap(Map<String, dynamic> map) {
     return FeaturesManagedDisk(
-      expandWithoutDowntime: map['expandWithoutDowntime'] == null ? null : map['expandWithoutDowntime'] as bool,
+      expandWithoutDowntime: map['expandWithoutDowntime'] == null ? null : (map['expandWithoutDowntime'] as bool).input(),
     );
   }
 }

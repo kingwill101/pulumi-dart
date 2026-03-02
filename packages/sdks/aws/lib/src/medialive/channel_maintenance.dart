@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelMaintenance {
   /// The day of the week to use for maintenance.
-  final String maintenanceDay;
+  final pulumi.Input<String> maintenanceDay;
   /// The hour maintenance will start.
-  final String maintenanceStartTime;
+  final pulumi.Input<String> maintenanceStartTime;
 
   /// Creates a new [ChannelMaintenance].
   /// [maintenanceDay] The day of the week to use for maintenance.
@@ -24,8 +25,8 @@ class ChannelMaintenance {
 
   factory ChannelMaintenance.fromMap(Map<String, dynamic> map) {
     return ChannelMaintenance(
-      maintenanceDay: map['maintenanceDay'] as String,
-      maintenanceStartTime: map['maintenanceStartTime'] as String,
+      maintenanceDay: (map['maintenanceDay'] as String).input(),
+      maintenanceStartTime: (map['maintenanceStartTime'] as String).input(),
     );
   }
 }

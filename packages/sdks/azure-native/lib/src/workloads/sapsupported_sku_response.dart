@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SAP supported SKU.
 class SAPSupportedSkuResponse {
   /// True if the Sku is certified for App server in the SAP system.
-  final bool? isAppServerCertified;
+  final pulumi.Input<bool>? isAppServerCertified;
   /// True if the Sku is certified for Database server in the SAP system.
-  final bool? isDatabaseCertified;
+  final pulumi.Input<bool>? isDatabaseCertified;
   /// The VM Sku.
-  final String? vmSku;
+  final pulumi.Input<String>? vmSku;
 
   /// Creates a new [SAPSupportedSkuResponse].
   /// [isAppServerCertified] True if the Sku is certified for App server in the SAP system.
@@ -30,9 +31,9 @@ class SAPSupportedSkuResponse {
 
   factory SAPSupportedSkuResponse.fromMap(Map<String, dynamic> map) {
     return SAPSupportedSkuResponse(
-      isAppServerCertified: map['isAppServerCertified'] == null ? null : map['isAppServerCertified'] as bool,
-      isDatabaseCertified: map['isDatabaseCertified'] == null ? null : map['isDatabaseCertified'] as bool,
-      vmSku: map['vmSku'] == null ? null : map['vmSku'] as String,
+      isAppServerCertified: map['isAppServerCertified'] == null ? null : (map['isAppServerCertified'] as bool).input(),
+      isDatabaseCertified: map['isDatabaseCertified'] == null ? null : (map['isDatabaseCertified'] as bool).input(),
+      vmSku: map['vmSku'] == null ? null : (map['vmSku'] as String).input(),
     );
   }
 }

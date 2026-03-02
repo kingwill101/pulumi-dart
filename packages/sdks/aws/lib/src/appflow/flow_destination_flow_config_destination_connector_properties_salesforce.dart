@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_destination_flow_config_destination_connector_properties_salesforce_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce {
-  final String? dataTransferApi;
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig? errorHandlingConfig;
-  final List<String>? idFieldNames;
-  final String object;
-  final String? writeOperationType;
+  final pulumi.Input<String>? dataTransferApi;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig>? errorHandlingConfig;
+  final pulumi.Input<List<String>>? idFieldNames;
+  final pulumi.Input<String> object;
+  final pulumi.Input<String>? writeOperationType;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce].
   /// [dataTransferApi] Optional.
@@ -26,7 +27,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataTransferApi': ?dataTransferApi,
-      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?pulumi.Input.mapOptionalInputValue<FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig, Map<String, dynamic>>(errorHandlingConfig, (value) => value.toMap()),
       'idFieldNames': ?idFieldNames,
       'object': object,
       'writeOperationType': ?writeOperationType,
@@ -35,11 +36,11 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce {
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce(
-      dataTransferApi: map['dataTransferApi'] == null ? null : map['dataTransferApi'] as String,
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
-      idFieldNames: map['idFieldNames'] == null ? null : (map['idFieldNames'] as List).cast<String>(),
-      object: map['object'] as String,
-      writeOperationType: map['writeOperationType'] == null ? null : map['writeOperationType'] as String,
+      dataTransferApi: map['dataTransferApi'] == null ? null : (map['dataTransferApi'] as String).input(),
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
+      idFieldNames: map['idFieldNames'] == null ? null : ((map['idFieldNames'] as List).cast<String>()).input(),
+      object: (map['object'] as String).input(),
+      writeOperationType: map['writeOperationType'] == null ? null : (map['writeOperationType'] as String).input(),
     );
   }
 }

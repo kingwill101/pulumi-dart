@@ -12,11 +12,9 @@ class WorkspaceCustomerManagedKeyState {
   /// [keyVaultKeyId] Optional.
   /// [workspaceId] The unique identifier of the databricks workspace in Databricks control plane.
   WorkspaceCustomerManagedKeyState({
-    pulumi.Output<String>? keyVaultKeyId,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      keyVaultKeyId = pulumi.Input.asOptionalInput<String>(keyVaultKeyId),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.keyVaultKeyId,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,8 +25,8 @@ class WorkspaceCustomerManagedKeyState {
 
   factory WorkspaceCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomerManagedKeyState(
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

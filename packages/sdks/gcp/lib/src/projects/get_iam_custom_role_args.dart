@@ -16,11 +16,9 @@ class GetIamCustomRoleArgs {
   /// [project] The project were the custom role has been created in. Defaults to the provider project configuration.
   /// [roleId] The role id that has been used for this role.
   GetIamCustomRoleArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> roleId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      roleId = pulumi.Input.asInput<String>(roleId);
+    this.project,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIamCustomRoleArgs {
 
   factory GetIamCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRoleArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      roleId: pulumi.Output.create<String>(map['roleId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
     );
   }
 }

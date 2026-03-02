@@ -40,27 +40,17 @@ class LbTrafficExtensionArgs {
   /// [project] Optional.
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   LbTrafficExtensionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<ExtensionChain>> extensionChains,
-    required pulumi.Output<List<String>> forwardingRules,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> lbTrafficExtensionId,
-    required pulumi.Output<LbTrafficExtensionLoadBalancingScheme> loadBalancingScheme,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      extensionChains = pulumi.Input.asInput<List<ExtensionChain>>(extensionChains),
-      forwardingRules = pulumi.Input.asInput<List<String>>(forwardingRules),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lbTrafficExtensionId = pulumi.Input.asInput<String>(lbTrafficExtensionId),
-      loadBalancingScheme = pulumi.Input.asInput<LbTrafficExtensionLoadBalancingScheme>(loadBalancingScheme),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.description,
+    required this.extensionChains,
+    required this.forwardingRules,
+    this.labels,
+    required this.lbTrafficExtensionId,
+    required this.loadBalancingScheme,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class LbTrafficExtensionArgs {
 
   factory LbTrafficExtensionArgs.fromMap(Map<String, dynamic> map) {
     return LbTrafficExtensionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      extensionChains: pulumi.Output.create<List<ExtensionChain>>(pulumi.Input.decodeList<ExtensionChain>(map['extensionChains'], (value) => ExtensionChain.fromMap((value as Map).cast<String, dynamic>()))),
-      forwardingRules: pulumi.Output.create<List<String>>((map['forwardingRules'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lbTrafficExtensionId: pulumi.Output.create<String>(map['lbTrafficExtensionId'] as String),
-      loadBalancingScheme: pulumi.Output.create<LbTrafficExtensionLoadBalancingScheme>(LbTrafficExtensionLoadBalancingScheme.fromValue(map['loadBalancingScheme'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      extensionChains: (pulumi.Input.decodeList<ExtensionChain>(map['extensionChains'], (value) => ExtensionChain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forwardingRules: ((map['forwardingRules'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lbTrafficExtensionId: (map['lbTrafficExtensionId'] as String).input(),
+      loadBalancingScheme: (LbTrafficExtensionLoadBalancingScheme.fromValue(map['loadBalancingScheme'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

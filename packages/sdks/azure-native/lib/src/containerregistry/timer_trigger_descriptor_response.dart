@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TimerTriggerDescriptorResponse {
   /// The occurrence that triggered the run.
-  final String? scheduleOccurrence;
+  final pulumi.Input<String>? scheduleOccurrence;
   /// The timer trigger name that caused the run.
-  final String? timerTriggerName;
+  final pulumi.Input<String>? timerTriggerName;
 
   /// Creates a new [TimerTriggerDescriptorResponse].
   /// [scheduleOccurrence] The occurrence that triggered the run.
@@ -24,8 +25,8 @@ class TimerTriggerDescriptorResponse {
 
   factory TimerTriggerDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return TimerTriggerDescriptorResponse(
-      scheduleOccurrence: map['scheduleOccurrence'] == null ? null : map['scheduleOccurrence'] as String,
-      timerTriggerName: map['timerTriggerName'] == null ? null : map['timerTriggerName'] as String,
+      scheduleOccurrence: map['scheduleOccurrence'] == null ? null : (map['scheduleOccurrence'] as String).input(),
+      timerTriggerName: map['timerTriggerName'] == null ? null : (map['timerTriggerName'] as String).input(),
     );
   }
 }

@@ -26,19 +26,13 @@ class GetTopicAuthorizationRuleArgs {
   /// [topicId] Optional.
   /// [topicName] The name of the ServiceBus Topic.
   GetTopicAuthorizationRuleArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? queueName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? topicId,
-    pulumi.Output<String>? topicName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      queueName = pulumi.Input.asOptionalInput<String>(queueName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      topicId = pulumi.Input.asOptionalInput<String>(topicId),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    required this.name,
+    this.namespaceName,
+    this.queueName,
+    this.resourceGroupName,
+    this.topicId,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class GetTopicAuthorizationRuleArgs {
 
   factory GetTopicAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicAuthorizationRuleArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      queueName: map['queueName'] == null ? null : pulumi.Output.create<String>(map['queueName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicId: map['topicId'] == null ? null : pulumi.Output.create<String>(map['topicId'] as String),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      name: (map['name'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Oracle database profile.
 class OracleProfileDatastreamV1alpha1 {
   /// Connection string attributes
-  final Map<String, String>? connectionAttributes;
+  final pulumi.Input<Map<String, String>>? connectionAttributes;
   /// Database for the Oracle connection.
-  final String databaseService;
+  final pulumi.Input<String> databaseService;
   /// Hostname for the Oracle connection.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Password for the Oracle connection.
-  final String password;
+  final pulumi.Input<String> password;
   /// Port for the Oracle connection, default value is 1521.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Username for the Oracle connection.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [OracleProfileDatastreamV1alpha1].
   /// [connectionAttributes] Connection string attributes
@@ -45,12 +46,12 @@ class OracleProfileDatastreamV1alpha1 {
 
   factory OracleProfileDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleProfileDatastreamV1alpha1(
-      connectionAttributes: map['connectionAttributes'] == null ? null : (map['connectionAttributes'] as Map).cast<String, String>(),
-      databaseService: map['databaseService'] as String,
-      hostname: map['hostname'] as String,
-      password: map['password'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      username: map['username'] as String,
+      connectionAttributes: map['connectionAttributes'] == null ? null : ((map['connectionAttributes'] as Map).cast<String, String>()).input(),
+      databaseService: (map['databaseService'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      password: (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -9,21 +9,21 @@ import 'virtual_machine_scale_set_public_ipaddress_configuration_dns_settings_re
 /// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
 class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   /// Specify what happens to the public IP when the VM is deleted
-  final String? deleteOption;
+  final pulumi.Input<String>? deleteOption;
   /// The dns settings to be applied on the publicIP addresses .
-  final VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse? dnsSettings;
+  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse>? dnsSettings;
   /// The idle timeout of the public IP address.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// The list of IP tags associated with the public IP address.
-  final List<VirtualMachineScaleSetIpTagResponse>? ipTags;
+  final pulumi.Input<List<VirtualMachineScaleSetIpTagResponse>>? ipTags;
   /// The publicIP address configuration name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
-  final String? publicIPAddressVersion;
+  final pulumi.Input<String>? publicIPAddressVersion;
   /// The PublicIPPrefix from which to allocate publicIP addresses.
-  final SubResourceResponse? publicIPPrefix;
+  final pulumi.Input<SubResourceResponse>? publicIPPrefix;
   /// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
-  final PublicIPAddressSkuResponse? sku;
+  final pulumi.Input<PublicIPAddressSkuResponse>? sku;
 
   /// Creates a new [VirtualMachineScaleSetPublicIPAddressConfigurationResponse].
   /// [deleteOption] Specify what happens to the public IP when the VM is deleted
@@ -48,26 +48,26 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deleteOption': ?deleteOption,
-      'dnsSettings': ?dnsSettings == null ? null : dnsSettings!.toMap(),
+      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
-      'ipTags': ?ipTags == null ? null : pulumi.Input.encodeList<VirtualMachineScaleSetIpTagResponse, Map<String, dynamic>>(ipTags!, (value) => value.toMap()),
+      'ipTags': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineScaleSetIpTagResponse>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<VirtualMachineScaleSetIpTagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'publicIPAddressVersion': ?publicIPAddressVersion,
-      'publicIPPrefix': ?publicIPPrefix == null ? null : publicIPPrefix!.toMap(),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'publicIPPrefix': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(publicIPPrefix, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetPublicIPAddressConfigurationResponse(
-      deleteOption: map['deleteOption'] == null ? null : map['deleteOption'] as String,
-      dnsSettings: map['dnsSettings'] == null ? null : VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>()),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      ipTags: map['ipTags'] == null ? null : pulumi.Input.decodeList<VirtualMachineScaleSetIpTagResponse>(map['ipTags'], (value) => VirtualMachineScaleSetIpTagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : map['publicIPAddressVersion'] as String,
-      publicIPPrefix: map['publicIPPrefix'] == null ? null : SubResourceResponse.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : PublicIPAddressSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetIpTagResponse>(map['ipTags'], (value) => VirtualMachineScaleSetIpTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
+      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResourceResponse.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (PublicIPAddressSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

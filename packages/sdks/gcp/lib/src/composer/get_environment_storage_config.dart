@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnvironmentStorageConfig {
   /// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
-  final String bucket;
+  final pulumi.Input<String> bucket;
 
   /// Creates a new [GetEnvironmentStorageConfig].
   /// [bucket] Optional. Name of an existing Cloud Storage bucket to be used by the environment.
@@ -19,7 +20,7 @@ class GetEnvironmentStorageConfig {
 
   factory GetEnvironmentStorageConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentStorageConfig(
-      bucket: map['bucket'] as String,
+      bucket: (map['bucket'] as String).input(),
     );
   }
 }

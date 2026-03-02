@@ -6,9 +6,9 @@ import 'rules_engine_rule_action_response_header.dart';
 
 class RulesEngineRuleAction {
   /// A `request_header` block as defined below.
-  final List<RulesEngineRuleActionRequestHeader>? requestHeaders;
+  final pulumi.Input<List<RulesEngineRuleActionRequestHeader>>? requestHeaders;
   /// A `response_header` block as defined below.
-  final List<RulesEngineRuleActionResponseHeader>? responseHeaders;
+  final pulumi.Input<List<RulesEngineRuleActionResponseHeader>>? responseHeaders;
 
   /// Creates a new [RulesEngineRuleAction].
   /// [requestHeaders] A `request_header` block as defined below.
@@ -20,15 +20,15 @@ class RulesEngineRuleAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeaders': ?requestHeaders == null ? null : pulumi.Input.encodeList<RulesEngineRuleActionRequestHeader, Map<String, dynamic>>(requestHeaders!, (value) => value.toMap()),
-      'responseHeaders': ?responseHeaders == null ? null : pulumi.Input.encodeList<RulesEngineRuleActionResponseHeader, Map<String, dynamic>>(responseHeaders!, (value) => value.toMap()),
+      'requestHeaders': ?pulumi.Input.mapOptionalInputValue<List<RulesEngineRuleActionRequestHeader>, List<Map<String, dynamic>>>(requestHeaders, (value) => pulumi.Input.encodeList<RulesEngineRuleActionRequestHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'responseHeaders': ?pulumi.Input.mapOptionalInputValue<List<RulesEngineRuleActionResponseHeader>, List<Map<String, dynamic>>>(responseHeaders, (value) => pulumi.Input.encodeList<RulesEngineRuleActionResponseHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RulesEngineRuleAction.fromMap(Map<String, dynamic> map) {
     return RulesEngineRuleAction(
-      requestHeaders: map['requestHeaders'] == null ? null : pulumi.Input.decodeList<RulesEngineRuleActionRequestHeader>(map['requestHeaders'], (value) => RulesEngineRuleActionRequestHeader.fromMap((value as Map).cast<String, dynamic>())),
-      responseHeaders: map['responseHeaders'] == null ? null : pulumi.Input.decodeList<RulesEngineRuleActionResponseHeader>(map['responseHeaders'], (value) => RulesEngineRuleActionResponseHeader.fromMap((value as Map).cast<String, dynamic>())),
+      requestHeaders: map['requestHeaders'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleActionRequestHeader>(map['requestHeaders'], (value) => RulesEngineRuleActionRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleActionResponseHeader>(map['responseHeaders'], (value) => RulesEngineRuleActionResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_gateway_spec_backend_default_client_policy_tl.dart';
 
 class GetVirtualGatewaySpecBackendDefaultClientPolicy {
-  final List<GetVirtualGatewaySpecBackendDefaultClientPolicyTl> tls;
+  final pulumi.Input<List<GetVirtualGatewaySpecBackendDefaultClientPolicyTl>> tls;
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicy].
   /// [tls] Required.
@@ -14,13 +14,13 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'tls': pulumi.Input.encodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTl, Map<String, dynamic>>(tls, (value) => value.toMap()),
+      'tls': pulumi.Input.mapInputValue<List<GetVirtualGatewaySpecBackendDefaultClientPolicyTl>, List<Map<String, dynamic>>>(tls, (value) => pulumi.Input.encodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTl, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualGatewaySpecBackendDefaultClientPolicy.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicy(
-      tls: pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTl>(map['tls'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTl.fromMap((value as Map).cast<String, dynamic>())),
+      tls: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTl>(map['tls'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

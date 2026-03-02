@@ -30,15 +30,11 @@ class NotificationConfigurationArgs {
   /// [name] Name of the NotificationConfiguration. Supports RFC 3986's unreserved characters. Length
   /// [tags] Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
   NotificationConfigurationArgs({
-    pulumi.Output<String>? aggregationDuration,
-    required pulumi.Output<String> description,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      aggregationDuration = pulumi.Input.asOptionalInput<String>(aggregationDuration),
-      description = pulumi.Input.asInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.aggregationDuration,
+    required this.description,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,10 +47,10 @@ class NotificationConfigurationArgs {
 
   factory NotificationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationConfigurationArgs(
-      aggregationDuration: map['aggregationDuration'] == null ? null : pulumi.Output.create<String>(map['aggregationDuration'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      aggregationDuration: map['aggregationDuration'] == null ? null : (map['aggregationDuration'] as String).input(),
+      description: (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectoryVpcSetting {
-  final List<String> availabilityZones;
+  final pulumi.Input<List<String>> availabilityZones;
   /// Identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
   /// ID of the VPC that the connector is in.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetDirectoryVpcSetting].
   /// [availabilityZones] Required.
@@ -28,9 +29,9 @@ class GetDirectoryVpcSetting {
 
   factory GetDirectoryVpcSetting.fromMap(Map<String, dynamic> map) {
     return GetDirectoryVpcSetting(
-      availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
+      availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

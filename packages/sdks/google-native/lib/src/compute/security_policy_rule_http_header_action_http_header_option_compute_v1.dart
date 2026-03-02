@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeV1 {
   /// The name of the header to set.
-  final String? headerName;
+  final pulumi.Input<String>? headerName;
   /// The value to set the named header to.
-  final String? headerValue;
+  final pulumi.Input<String>? headerValue;
 
   /// Creates a new [SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeV1].
   /// [headerName] The name of the header to set.
@@ -24,8 +25,8 @@ class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeV1 {
 
   factory SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeV1(
-      headerName: map['headerName'] == null ? null : map['headerName'] as String,
-      headerValue: map['headerValue'] == null ? null : map['headerValue'] as String,
+      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
+      headerValue: map['headerValue'] == null ? null : (map['headerValue'] as String).input(),
     );
   }
 }

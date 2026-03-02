@@ -19,15 +19,11 @@ class ResourceRecordState {
   /// [tag] The record's tag, can be used for search.
   /// [value] The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
   ResourceRecordState({
-    pulumi.Output<String>? recordId,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<String>? tag,
-    pulumi.Output<String>? value,
-  }) :
-      recordId = pulumi.Input.asOptionalInput<String>(recordId),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tag = pulumi.Input.asOptionalInput<String>(tag),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.recordId,
+    this.resourceName,
+    this.tag,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ResourceRecordState {
 
   factory ResourceRecordState.fromMap(Map<String, dynamic> map) {
     return ResourceRecordState(
-      recordId: map['recordId'] == null ? null : pulumi.Output.create<String>(map['recordId'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      recordId: map['recordId'] == null ? null : (map['recordId'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

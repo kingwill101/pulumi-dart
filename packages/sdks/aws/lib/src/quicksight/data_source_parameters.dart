@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_source_parameters_amazon_elasticsearch.dart';
 import 'data_source_parameters_athena.dart';
 import 'data_source_parameters_aurora.dart';
@@ -24,47 +25,47 @@ import 'data_source_parameters_twitter.dart';
 
 class DataSourceParameters {
   /// Parameters for connecting to Amazon Elasticsearch.
-  final DataSourceParametersAmazonElasticsearch? amazonElasticsearch;
+  final pulumi.Input<DataSourceParametersAmazonElasticsearch>? amazonElasticsearch;
   /// Parameters for connecting to Athena.
-  final DataSourceParametersAthena? athena;
+  final pulumi.Input<DataSourceParametersAthena>? athena;
   /// Parameters for connecting to Aurora MySQL.
-  final DataSourceParametersAurora? aurora;
+  final pulumi.Input<DataSourceParametersAurora>? aurora;
   /// Parameters for connecting to Aurora Postgresql.
-  final DataSourceParametersAuroraPostgresql? auroraPostgresql;
+  final pulumi.Input<DataSourceParametersAuroraPostgresql>? auroraPostgresql;
   /// Parameters for connecting to AWS IOT Analytics.
-  final DataSourceParametersAwsIotAnalytics? awsIotAnalytics;
+  final pulumi.Input<DataSourceParametersAwsIotAnalytics>? awsIotAnalytics;
   /// Parameters for connecting to Databricks.
-  final DataSourceParametersDatabricks? databricks;
+  final pulumi.Input<DataSourceParametersDatabricks>? databricks;
   /// Parameters for connecting to Jira.
-  final DataSourceParametersJira? jira;
+  final pulumi.Input<DataSourceParametersJira>? jira;
   /// Parameters for connecting to MariaDB.
-  final DataSourceParametersMariaDb? mariaDb;
+  final pulumi.Input<DataSourceParametersMariaDb>? mariaDb;
   /// Parameters for connecting to MySQL.
-  final DataSourceParametersMysql? mysql;
+  final pulumi.Input<DataSourceParametersMysql>? mysql;
   /// Parameters for connecting to Oracle.
-  final DataSourceParametersOracle? oracle;
+  final pulumi.Input<DataSourceParametersOracle>? oracle;
   /// Parameters for connecting to Postgresql.
-  final DataSourceParametersPostgresql? postgresql;
+  final pulumi.Input<DataSourceParametersPostgresql>? postgresql;
   /// Parameters for connecting to Presto.
-  final DataSourceParametersPresto? presto;
+  final pulumi.Input<DataSourceParametersPresto>? presto;
   /// Parameters for connecting to RDS.
-  final DataSourceParametersRds? rds;
+  final pulumi.Input<DataSourceParametersRds>? rds;
   /// Parameters for connecting to Redshift.
-  final DataSourceParametersRedshift? redshift;
+  final pulumi.Input<DataSourceParametersRedshift>? redshift;
   /// Parameters for connecting to S3.
-  final DataSourceParametersS3? s3;
+  final pulumi.Input<DataSourceParametersS3>? s3;
   /// Parameters for connecting to ServiceNow.
-  final DataSourceParametersServiceNow? serviceNow;
+  final pulumi.Input<DataSourceParametersServiceNow>? serviceNow;
   /// Parameters for connecting to Snowflake.
-  final DataSourceParametersSnowflake? snowflake;
+  final pulumi.Input<DataSourceParametersSnowflake>? snowflake;
   /// Parameters for connecting to Spark.
-  final DataSourceParametersSpark? spark;
+  final pulumi.Input<DataSourceParametersSpark>? spark;
   /// Parameters for connecting to SQL Server.
-  final DataSourceParametersSqlServer? sqlServer;
+  final pulumi.Input<DataSourceParametersSqlServer>? sqlServer;
   /// Parameters for connecting to Teradata.
-  final DataSourceParametersTeradata? teradata;
+  final pulumi.Input<DataSourceParametersTeradata>? teradata;
   /// Parameters for connecting to Twitter.
-  final DataSourceParametersTwitter? twitter;
+  final pulumi.Input<DataSourceParametersTwitter>? twitter;
 
   /// Creates a new [DataSourceParameters].
   /// [amazonElasticsearch] Parameters for connecting to Amazon Elasticsearch.
@@ -114,53 +115,53 @@ class DataSourceParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amazonElasticsearch': ?amazonElasticsearch == null ? null : amazonElasticsearch!.toMap(),
-      'athena': ?athena == null ? null : athena!.toMap(),
-      'aurora': ?aurora == null ? null : aurora!.toMap(),
-      'auroraPostgresql': ?auroraPostgresql == null ? null : auroraPostgresql!.toMap(),
-      'awsIotAnalytics': ?awsIotAnalytics == null ? null : awsIotAnalytics!.toMap(),
-      'databricks': ?databricks == null ? null : databricks!.toMap(),
-      'jira': ?jira == null ? null : jira!.toMap(),
-      'mariaDb': ?mariaDb == null ? null : mariaDb!.toMap(),
-      'mysql': ?mysql == null ? null : mysql!.toMap(),
-      'oracle': ?oracle == null ? null : oracle!.toMap(),
-      'postgresql': ?postgresql == null ? null : postgresql!.toMap(),
-      'presto': ?presto == null ? null : presto!.toMap(),
-      'rds': ?rds == null ? null : rds!.toMap(),
-      'redshift': ?redshift == null ? null : redshift!.toMap(),
-      's3': ?s3 == null ? null : s3!.toMap(),
-      'serviceNow': ?serviceNow == null ? null : serviceNow!.toMap(),
-      'snowflake': ?snowflake == null ? null : snowflake!.toMap(),
-      'spark': ?spark == null ? null : spark!.toMap(),
-      'sqlServer': ?sqlServer == null ? null : sqlServer!.toMap(),
-      'teradata': ?teradata == null ? null : teradata!.toMap(),
-      'twitter': ?twitter == null ? null : twitter!.toMap(),
+      'amazonElasticsearch': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersAmazonElasticsearch, Map<String, dynamic>>(amazonElasticsearch, (value) => value.toMap()),
+      'athena': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersAthena, Map<String, dynamic>>(athena, (value) => value.toMap()),
+      'aurora': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersAurora, Map<String, dynamic>>(aurora, (value) => value.toMap()),
+      'auroraPostgresql': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersAuroraPostgresql, Map<String, dynamic>>(auroraPostgresql, (value) => value.toMap()),
+      'awsIotAnalytics': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersAwsIotAnalytics, Map<String, dynamic>>(awsIotAnalytics, (value) => value.toMap()),
+      'databricks': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersDatabricks, Map<String, dynamic>>(databricks, (value) => value.toMap()),
+      'jira': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersJira, Map<String, dynamic>>(jira, (value) => value.toMap()),
+      'mariaDb': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersMariaDb, Map<String, dynamic>>(mariaDb, (value) => value.toMap()),
+      'mysql': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersMysql, Map<String, dynamic>>(mysql, (value) => value.toMap()),
+      'oracle': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersOracle, Map<String, dynamic>>(oracle, (value) => value.toMap()),
+      'postgresql': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersPostgresql, Map<String, dynamic>>(postgresql, (value) => value.toMap()),
+      'presto': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersPresto, Map<String, dynamic>>(presto, (value) => value.toMap()),
+      'rds': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersRds, Map<String, dynamic>>(rds, (value) => value.toMap()),
+      'redshift': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersRedshift, Map<String, dynamic>>(redshift, (value) => value.toMap()),
+      's3': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersS3, Map<String, dynamic>>(s3, (value) => value.toMap()),
+      'serviceNow': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersServiceNow, Map<String, dynamic>>(serviceNow, (value) => value.toMap()),
+      'snowflake': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersSnowflake, Map<String, dynamic>>(snowflake, (value) => value.toMap()),
+      'spark': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersSpark, Map<String, dynamic>>(spark, (value) => value.toMap()),
+      'sqlServer': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersSqlServer, Map<String, dynamic>>(sqlServer, (value) => value.toMap()),
+      'teradata': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersTeradata, Map<String, dynamic>>(teradata, (value) => value.toMap()),
+      'twitter': ?pulumi.Input.mapOptionalInputValue<DataSourceParametersTwitter, Map<String, dynamic>>(twitter, (value) => value.toMap()),
     };
   }
 
   factory DataSourceParameters.fromMap(Map<String, dynamic> map) {
     return DataSourceParameters(
-      amazonElasticsearch: map['amazonElasticsearch'] == null ? null : DataSourceParametersAmazonElasticsearch.fromMap((map['amazonElasticsearch'] as Map).cast<String, dynamic>()),
-      athena: map['athena'] == null ? null : DataSourceParametersAthena.fromMap((map['athena'] as Map).cast<String, dynamic>()),
-      aurora: map['aurora'] == null ? null : DataSourceParametersAurora.fromMap((map['aurora'] as Map).cast<String, dynamic>()),
-      auroraPostgresql: map['auroraPostgresql'] == null ? null : DataSourceParametersAuroraPostgresql.fromMap((map['auroraPostgresql'] as Map).cast<String, dynamic>()),
-      awsIotAnalytics: map['awsIotAnalytics'] == null ? null : DataSourceParametersAwsIotAnalytics.fromMap((map['awsIotAnalytics'] as Map).cast<String, dynamic>()),
-      databricks: map['databricks'] == null ? null : DataSourceParametersDatabricks.fromMap((map['databricks'] as Map).cast<String, dynamic>()),
-      jira: map['jira'] == null ? null : DataSourceParametersJira.fromMap((map['jira'] as Map).cast<String, dynamic>()),
-      mariaDb: map['mariaDb'] == null ? null : DataSourceParametersMariaDb.fromMap((map['mariaDb'] as Map).cast<String, dynamic>()),
-      mysql: map['mysql'] == null ? null : DataSourceParametersMysql.fromMap((map['mysql'] as Map).cast<String, dynamic>()),
-      oracle: map['oracle'] == null ? null : DataSourceParametersOracle.fromMap((map['oracle'] as Map).cast<String, dynamic>()),
-      postgresql: map['postgresql'] == null ? null : DataSourceParametersPostgresql.fromMap((map['postgresql'] as Map).cast<String, dynamic>()),
-      presto: map['presto'] == null ? null : DataSourceParametersPresto.fromMap((map['presto'] as Map).cast<String, dynamic>()),
-      rds: map['rds'] == null ? null : DataSourceParametersRds.fromMap((map['rds'] as Map).cast<String, dynamic>()),
-      redshift: map['redshift'] == null ? null : DataSourceParametersRedshift.fromMap((map['redshift'] as Map).cast<String, dynamic>()),
-      s3: map['s3'] == null ? null : DataSourceParametersS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
-      serviceNow: map['serviceNow'] == null ? null : DataSourceParametersServiceNow.fromMap((map['serviceNow'] as Map).cast<String, dynamic>()),
-      snowflake: map['snowflake'] == null ? null : DataSourceParametersSnowflake.fromMap((map['snowflake'] as Map).cast<String, dynamic>()),
-      spark: map['spark'] == null ? null : DataSourceParametersSpark.fromMap((map['spark'] as Map).cast<String, dynamic>()),
-      sqlServer: map['sqlServer'] == null ? null : DataSourceParametersSqlServer.fromMap((map['sqlServer'] as Map).cast<String, dynamic>()),
-      teradata: map['teradata'] == null ? null : DataSourceParametersTeradata.fromMap((map['teradata'] as Map).cast<String, dynamic>()),
-      twitter: map['twitter'] == null ? null : DataSourceParametersTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>()),
+      amazonElasticsearch: map['amazonElasticsearch'] == null ? null : (DataSourceParametersAmazonElasticsearch.fromMap((map['amazonElasticsearch'] as Map).cast<String, dynamic>())).input(),
+      athena: map['athena'] == null ? null : (DataSourceParametersAthena.fromMap((map['athena'] as Map).cast<String, dynamic>())).input(),
+      aurora: map['aurora'] == null ? null : (DataSourceParametersAurora.fromMap((map['aurora'] as Map).cast<String, dynamic>())).input(),
+      auroraPostgresql: map['auroraPostgresql'] == null ? null : (DataSourceParametersAuroraPostgresql.fromMap((map['auroraPostgresql'] as Map).cast<String, dynamic>())).input(),
+      awsIotAnalytics: map['awsIotAnalytics'] == null ? null : (DataSourceParametersAwsIotAnalytics.fromMap((map['awsIotAnalytics'] as Map).cast<String, dynamic>())).input(),
+      databricks: map['databricks'] == null ? null : (DataSourceParametersDatabricks.fromMap((map['databricks'] as Map).cast<String, dynamic>())).input(),
+      jira: map['jira'] == null ? null : (DataSourceParametersJira.fromMap((map['jira'] as Map).cast<String, dynamic>())).input(),
+      mariaDb: map['mariaDb'] == null ? null : (DataSourceParametersMariaDb.fromMap((map['mariaDb'] as Map).cast<String, dynamic>())).input(),
+      mysql: map['mysql'] == null ? null : (DataSourceParametersMysql.fromMap((map['mysql'] as Map).cast<String, dynamic>())).input(),
+      oracle: map['oracle'] == null ? null : (DataSourceParametersOracle.fromMap((map['oracle'] as Map).cast<String, dynamic>())).input(),
+      postgresql: map['postgresql'] == null ? null : (DataSourceParametersPostgresql.fromMap((map['postgresql'] as Map).cast<String, dynamic>())).input(),
+      presto: map['presto'] == null ? null : (DataSourceParametersPresto.fromMap((map['presto'] as Map).cast<String, dynamic>())).input(),
+      rds: map['rds'] == null ? null : (DataSourceParametersRds.fromMap((map['rds'] as Map).cast<String, dynamic>())).input(),
+      redshift: map['redshift'] == null ? null : (DataSourceParametersRedshift.fromMap((map['redshift'] as Map).cast<String, dynamic>())).input(),
+      s3: map['s3'] == null ? null : (DataSourceParametersS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      serviceNow: map['serviceNow'] == null ? null : (DataSourceParametersServiceNow.fromMap((map['serviceNow'] as Map).cast<String, dynamic>())).input(),
+      snowflake: map['snowflake'] == null ? null : (DataSourceParametersSnowflake.fromMap((map['snowflake'] as Map).cast<String, dynamic>())).input(),
+      spark: map['spark'] == null ? null : (DataSourceParametersSpark.fromMap((map['spark'] as Map).cast<String, dynamic>())).input(),
+      sqlServer: map['sqlServer'] == null ? null : (DataSourceParametersSqlServer.fromMap((map['sqlServer'] as Map).cast<String, dynamic>())).input(),
+      teradata: map['teradata'] == null ? null : (DataSourceParametersTeradata.fromMap((map['teradata'] as Map).cast<String, dynamic>())).input(),
+      twitter: map['twitter'] == null ? null : (DataSourceParametersTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

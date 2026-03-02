@@ -40,25 +40,16 @@ class LaunchArgs {
   /// [scheduledSplitsConfig] A block that defines the traffic allocation percentages among the feature variations during each step of the launch. Detailed below.
   /// [tags] Tags to apply to the launch. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LaunchArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<LaunchGroup>> groups,
-    pulumi.Output<List<LaunchMetricMonitor>>? metricMonitors,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> project,
-    pulumi.Output<String>? randomizationSalt,
-    pulumi.Output<String>? region,
-    pulumi.Output<LaunchScheduledSplitsConfig>? scheduledSplitsConfig,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      groups = pulumi.Input.asInput<List<LaunchGroup>>(groups),
-      metricMonitors = pulumi.Input.asOptionalInput<List<LaunchMetricMonitor>>(metricMonitors),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asInput<String>(project),
-      randomizationSalt = pulumi.Input.asOptionalInput<String>(randomizationSalt),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduledSplitsConfig = pulumi.Input.asOptionalInput<LaunchScheduledSplitsConfig>(scheduledSplitsConfig),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.groups,
+    this.metricMonitors,
+    this.name,
+    required this.project,
+    this.randomizationSalt,
+    this.region,
+    this.scheduledSplitsConfig,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class LaunchArgs {
 
   factory LaunchArgs.fromMap(Map<String, dynamic> map) {
     return LaunchArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      groups: pulumi.Output.create<List<LaunchGroup>>(pulumi.Input.decodeList<LaunchGroup>(map['groups'], (value) => LaunchGroup.fromMap((value as Map).cast<String, dynamic>()))),
-      metricMonitors: map['metricMonitors'] == null ? null : pulumi.Output.create<List<LaunchMetricMonitor>>(pulumi.Input.decodeList<LaunchMetricMonitor>(map['metricMonitors'], (value) => LaunchMetricMonitor.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      randomizationSalt: map['randomizationSalt'] == null ? null : pulumi.Output.create<String>(map['randomizationSalt'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduledSplitsConfig: map['scheduledSplitsConfig'] == null ? null : pulumi.Output.create<LaunchScheduledSplitsConfig>(LaunchScheduledSplitsConfig.fromMap((map['scheduledSplitsConfig'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      groups: (pulumi.Input.decodeList<LaunchGroup>(map['groups'], (value) => LaunchGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricMonitors: map['metricMonitors'] == null ? null : (pulumi.Input.decodeList<LaunchMetricMonitor>(map['metricMonitors'], (value) => LaunchMetricMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: (map['project'] as String).input(),
+      randomizationSalt: map['randomizationSalt'] == null ? null : (map['randomizationSalt'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduledSplitsConfig: map['scheduledSplitsConfig'] == null ? null : (LaunchScheduledSplitsConfig.fromMap((map['scheduledSplitsConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

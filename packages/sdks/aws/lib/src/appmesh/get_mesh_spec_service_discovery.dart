@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMeshSpecServiceDiscovery {
-  final String ipPreference;
+  final pulumi.Input<String> ipPreference;
 
   /// Creates a new [GetMeshSpecServiceDiscovery].
   /// [ipPreference] Required.
@@ -18,7 +19,7 @@ class GetMeshSpecServiceDiscovery {
 
   factory GetMeshSpecServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return GetMeshSpecServiceDiscovery(
-      ipPreference: map['ipPreference'] as String,
+      ipPreference: (map['ipPreference'] as String).input(),
     );
   }
 }

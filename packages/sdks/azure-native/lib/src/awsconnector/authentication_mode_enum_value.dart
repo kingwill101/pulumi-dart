@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of AuthenticationModeEnumValue
 class AuthenticationModeEnumValue {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [AuthenticationModeEnumValue].
   /// [value] Property value
@@ -20,7 +21,7 @@ class AuthenticationModeEnumValue {
 
   factory AuthenticationModeEnumValue.fromMap(Map<String, dynamic> map) {
     return AuthenticationModeEnumValue(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

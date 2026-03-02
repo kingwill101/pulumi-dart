@@ -5,21 +5,21 @@ import 'get_service_meshes_mesh_mesh_config_sidecar_injector_init_cni_configurat
 
 class GetServiceMeshesMeshMeshConfigSidecarInjector {
   /// Whether to enable by Pod Annotations automatic injection Sidecar.
-  final bool autoInjectionPolicyEnabled;
+  final pulumi.Input<bool> autoInjectionPolicyEnabled;
   /// Whether it is the all namespaces you turn on the auto injection capabilities.
-  final bool enableNamespacesByDefault;
+  final pulumi.Input<bool> enableNamespacesByDefault;
   /// The configuration of the CNI
-  final List<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfigurations;
+  final pulumi.Input<List<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration>> initCniConfigurations;
   /// Sidecar injector Pods on the throttle.
-  final String limitCpu;
+  final pulumi.Input<String> limitCpu;
   /// The memory limit  of the Sidecar injector Pods.
-  final String limitMemory;
+  final pulumi.Input<String> limitMemory;
   /// The requested cpu the Sidecar injector Pods.
-  final String requestCpu;
+  final pulumi.Input<String> requestCpu;
   /// The requested memory the Sidecar injector Pods.
-  final String requestMemory;
+  final pulumi.Input<String> requestMemory;
   /// Other automatic injection Sidecar configuration (in YAML format).
-  final String sidecarInjectorWebhookAsYaml;
+  final pulumi.Input<String> sidecarInjectorWebhookAsYaml;
 
   /// Creates a new [GetServiceMeshesMeshMeshConfigSidecarInjector].
   /// [autoInjectionPolicyEnabled] Whether to enable by Pod Annotations automatic injection Sidecar.
@@ -45,7 +45,7 @@ class GetServiceMeshesMeshMeshConfigSidecarInjector {
     return <String, dynamic>{
       'autoInjectionPolicyEnabled': autoInjectionPolicyEnabled,
       'enableNamespacesByDefault': enableNamespacesByDefault,
-      'initCniConfigurations': pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration, Map<String, dynamic>>(initCniConfigurations, (value) => value.toMap()),
+      'initCniConfigurations': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration>, List<Map<String, dynamic>>>(initCniConfigurations, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'limitCpu': limitCpu,
       'limitMemory': limitMemory,
       'requestCpu': requestCpu,
@@ -56,14 +56,14 @@ class GetServiceMeshesMeshMeshConfigSidecarInjector {
 
   factory GetServiceMeshesMeshMeshConfigSidecarInjector.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshMeshConfigSidecarInjector(
-      autoInjectionPolicyEnabled: map['autoInjectionPolicyEnabled'] as bool,
-      enableNamespacesByDefault: map['enableNamespacesByDefault'] as bool,
-      initCniConfigurations: pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration>(map['initCniConfigurations'], (value) => GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      limitCpu: map['limitCpu'] as String,
-      limitMemory: map['limitMemory'] as String,
-      requestCpu: map['requestCpu'] as String,
-      requestMemory: map['requestMemory'] as String,
-      sidecarInjectorWebhookAsYaml: map['sidecarInjectorWebhookAsYaml'] as String,
+      autoInjectionPolicyEnabled: (map['autoInjectionPolicyEnabled'] as bool).input(),
+      enableNamespacesByDefault: (map['enableNamespacesByDefault'] as bool).input(),
+      initCniConfigurations: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration>(map['initCniConfigurations'], (value) => GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limitCpu: (map['limitCpu'] as String).input(),
+      limitMemory: (map['limitMemory'] as String).input(),
+      requestCpu: (map['requestCpu'] as String).input(),
+      requestMemory: (map['requestMemory'] as String).input(),
+      sidecarInjectorWebhookAsYaml: (map['sidecarInjectorWebhookAsYaml'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetRedisLinkedServerArgs {
   /// [name] The name of the redis cache.
   /// [resourceGroupName] The name of the resource group.
   GetRedisLinkedServerArgs({
-    required pulumi.Output<String> linkedServerName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      linkedServerName = pulumi.Input.asInput<String>(linkedServerName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.linkedServerName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRedisLinkedServerArgs {
 
   factory GetRedisLinkedServerArgs.fromMap(Map<String, dynamic> map) {
     return GetRedisLinkedServerArgs(
-      linkedServerName: pulumi.Output.create<String>(map['linkedServerName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      linkedServerName: (map['linkedServerName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

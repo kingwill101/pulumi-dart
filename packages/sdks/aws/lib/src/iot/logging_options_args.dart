@@ -22,15 +22,11 @@ class LoggingOptionsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The ARN of the role that allows IoT to write to Cloudwatch logs.
   LoggingOptionsArgs({
-    required pulumi.Output<String> defaultLogLevel,
-    pulumi.Output<bool>? disableAllLogs,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-  }) :
-      defaultLogLevel = pulumi.Input.asInput<String>(defaultLogLevel),
-      disableAllLogs = pulumi.Input.asOptionalInput<bool>(disableAllLogs),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn);
+    required this.defaultLogLevel,
+    this.disableAllLogs,
+    this.region,
+    required this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class LoggingOptionsArgs {
 
   factory LoggingOptionsArgs.fromMap(Map<String, dynamic> map) {
     return LoggingOptionsArgs(
-      defaultLogLevel: pulumi.Output.create<String>(map['defaultLogLevel'] as String),
-      disableAllLogs: map['disableAllLogs'] == null ? null : pulumi.Output.create<bool>(map['disableAllLogs'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
+      defaultLogLevel: (map['defaultLogLevel'] as String).input(),
+      disableAllLogs: map['disableAllLogs'] == null ? null : (map['disableAllLogs'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

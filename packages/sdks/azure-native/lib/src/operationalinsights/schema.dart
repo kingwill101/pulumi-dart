@@ -6,13 +6,13 @@ import 'column.dart';
 /// Table's schema.
 class Schema {
   /// A list of table custom columns.
-  final List<Column>? columns;
+  final pulumi.Input<List<Column>>? columns;
   /// Table description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Table display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Table name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [Schema].
   /// [columns] A list of table custom columns.
@@ -28,7 +28,7 @@ class Schema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': ?columns == null ? null : pulumi.Input.encodeList<Column, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+      'columns': ?pulumi.Input.mapOptionalInputValue<List<Column>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<Column, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'displayName': ?displayName,
       'name': ?name,
@@ -37,10 +37,10 @@ class Schema {
 
   factory Schema.fromMap(Map<String, dynamic> map) {
     return Schema(
-      columns: map['columns'] == null ? null : pulumi.Input.decodeList<Column>(map['columns'], (value) => Column.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<Column>(map['columns'], (value) => Column.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

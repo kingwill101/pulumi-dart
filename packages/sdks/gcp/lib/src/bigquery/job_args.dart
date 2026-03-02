@@ -53,27 +53,17 @@ class JobArgs {
   /// [query] Configures a query job.
   /// [reservation] The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
   JobArgs({
-    pulumi.Output<JobCopy>? copy,
-    pulumi.Output<JobExtract>? extract,
-    required pulumi.Output<String> jobId,
-    pulumi.Output<String>? jobTimeoutMs,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<JobLoad>? load,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<JobQuery>? query,
-    pulumi.Output<String>? reservation,
-  }) :
-      copy = pulumi.Input.asOptionalInput<JobCopy>(copy),
-      extract = pulumi.Input.asOptionalInput<JobExtract>(extract),
-      jobId = pulumi.Input.asInput<String>(jobId),
-      jobTimeoutMs = pulumi.Input.asOptionalInput<String>(jobTimeoutMs),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      load = pulumi.Input.asOptionalInput<JobLoad>(load),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      query = pulumi.Input.asOptionalInput<JobQuery>(query),
-      reservation = pulumi.Input.asOptionalInput<String>(reservation);
+    this.copy,
+    this.extract,
+    required this.jobId,
+    this.jobTimeoutMs,
+    this.labels,
+    this.load,
+    this.location,
+    this.project,
+    this.query,
+    this.reservation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,16 +82,16 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      copy: map['copy'] == null ? null : pulumi.Output.create<JobCopy>(JobCopy.fromMap((map['copy'] as Map).cast<String, dynamic>())),
-      extract: map['extract'] == null ? null : pulumi.Output.create<JobExtract>(JobExtract.fromMap((map['extract'] as Map).cast<String, dynamic>())),
-      jobId: pulumi.Output.create<String>(map['jobId'] as String),
-      jobTimeoutMs: map['jobTimeoutMs'] == null ? null : pulumi.Output.create<String>(map['jobTimeoutMs'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      load: map['load'] == null ? null : pulumi.Output.create<JobLoad>(JobLoad.fromMap((map['load'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      query: map['query'] == null ? null : pulumi.Output.create<JobQuery>(JobQuery.fromMap((map['query'] as Map).cast<String, dynamic>())),
-      reservation: map['reservation'] == null ? null : pulumi.Output.create<String>(map['reservation'] as String),
+      copy: map['copy'] == null ? null : (JobCopy.fromMap((map['copy'] as Map).cast<String, dynamic>())).input(),
+      extract: map['extract'] == null ? null : (JobExtract.fromMap((map['extract'] as Map).cast<String, dynamic>())).input(),
+      jobId: (map['jobId'] as String).input(),
+      jobTimeoutMs: map['jobTimeoutMs'] == null ? null : (map['jobTimeoutMs'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      load: map['load'] == null ? null : (JobLoad.fromMap((map['load'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      query: map['query'] == null ? null : (JobQuery.fromMap((map['query'] as Map).cast<String, dynamic>())).input(),
+      reservation: map['reservation'] == null ? null : (map['reservation'] as String).input(),
     );
   }
 }

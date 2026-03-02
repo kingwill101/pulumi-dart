@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse {
   /// The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition".
-  final String fullName;
+  final pulumi.Input<String> fullName;
   /// Path to the proto file that contains the message type's definition.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse].
   /// [fullName] The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition".
@@ -24,8 +25,8 @@ class EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse {
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse(
-      fullName: map['fullName'] as String,
-      path: map['path'] as String,
+      fullName: (map['fullName'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

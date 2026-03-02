@@ -49,25 +49,16 @@ class L7RuleV2Args {
   /// [type] The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
   /// [value] The value to use for the comparison. For example, the file type to
   L7RuleV2Args({
-    pulumi.Output<bool>? adminStateUp,
-    required pulumi.Output<String> compareType,
-    pulumi.Output<bool>? invert,
-    pulumi.Output<String>? key,
-    required pulumi.Output<String> l7policyId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tenantId,
-    required pulumi.Output<String> type,
-    required pulumi.Output<String> value,
-  }) :
-      adminStateUp = pulumi.Input.asOptionalInput<bool>(adminStateUp),
-      compareType = pulumi.Input.asInput<String>(compareType),
-      invert = pulumi.Input.asOptionalInput<bool>(invert),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      l7policyId = pulumi.Input.asInput<String>(l7policyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      type = pulumi.Input.asInput<String>(type),
-      value = pulumi.Input.asInput<String>(value);
+    this.adminStateUp,
+    required this.compareType,
+    this.invert,
+    this.key,
+    required this.l7policyId,
+    this.region,
+    this.tenantId,
+    required this.type,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,15 +76,15 @@ class L7RuleV2Args {
 
   factory L7RuleV2Args.fromMap(Map<String, dynamic> map) {
     return L7RuleV2Args(
-      adminStateUp: map['adminStateUp'] == null ? null : pulumi.Output.create<bool>(map['adminStateUp'] as bool),
-      compareType: pulumi.Output.create<String>(map['compareType'] as String),
-      invert: map['invert'] == null ? null : pulumi.Output.create<bool>(map['invert'] as bool),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      l7policyId: pulumi.Output.create<String>(map['l7policyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      compareType: (map['compareType'] as String).input(),
+      invert: map['invert'] == null ? null : (map['invert'] as bool).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      l7policyId: (map['l7policyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

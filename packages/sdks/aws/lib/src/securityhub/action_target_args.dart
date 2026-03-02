@@ -22,15 +22,11 @@ class ActionTargetArgs {
   /// [name] The description for the custom action target.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ActionTargetArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> identifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      identifier = pulumi.Input.asInput<String>(identifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.description,
+    required this.identifier,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ActionTargetArgs {
 
   factory ActionTargetArgs.fromMap(Map<String, dynamic> map) {
     return ActionTargetArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      identifier: pulumi.Output.create<String>(map['identifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      description: (map['description'] as String).input(),
+      identifier: (map['identifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

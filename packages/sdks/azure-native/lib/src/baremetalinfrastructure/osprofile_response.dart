@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the operating system settings for the Azure Bare Metal instance.
 class OSProfileResponse {
   /// Specifies the host OS name of the Azure Bare Metal instance.
-  final String? computerName;
+  final pulumi.Input<String>? computerName;
   /// This property allows you to specify the type of the OS.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// Specifies the SSH public key used to access the operating system.
-  final String? sshPublicKey;
+  final pulumi.Input<String>? sshPublicKey;
   /// Specifies version of operating system.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [OSProfileResponse].
   /// [computerName] Specifies the host OS name of the Azure Bare Metal instance.
@@ -35,10 +36,10 @@ class OSProfileResponse {
 
   factory OSProfileResponse.fromMap(Map<String, dynamic> map) {
     return OSProfileResponse(
-      computerName: map['computerName'] == null ? null : map['computerName'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      sshPublicKey: map['sshPublicKey'] == null ? null : map['sshPublicKey'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      sshPublicKey: map['sshPublicKey'] == null ? null : (map['sshPublicKey'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_access_policy.dart';
 
 /// Object to set Table Access Policy.
 class TableSignedIdentifier {
   /// Access policy
-  final TableAccessPolicy? accessPolicy;
+  final pulumi.Input<TableAccessPolicy>? accessPolicy;
   /// unique-64-character-value of the stored access policy.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [TableSignedIdentifier].
   /// [accessPolicy] Access policy
@@ -19,15 +20,15 @@ class TableSignedIdentifier {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPolicy': ?accessPolicy == null ? null : accessPolicy!.toMap(),
+      'accessPolicy': ?pulumi.Input.mapOptionalInputValue<TableAccessPolicy, Map<String, dynamic>>(accessPolicy, (value) => value.toMap()),
       'id': id,
     };
   }
 
   factory TableSignedIdentifier.fromMap(Map<String, dynamic> map) {
     return TableSignedIdentifier(
-      accessPolicy: map['accessPolicy'] == null ? null : TableAccessPolicy.fromMap((map['accessPolicy'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
+      accessPolicy: map['accessPolicy'] == null ? null : (TableAccessPolicy.fromMap((map['accessPolicy'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

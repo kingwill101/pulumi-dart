@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FargateProfileSelector {
   /// Key-value map of Kubernetes labels for selection.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// Kubernetes namespace for selection.
   ///
   /// The following arguments are optional:
-  final String namespace;
+  final pulumi.Input<String> namespace;
 
   /// Creates a new [FargateProfileSelector].
   /// [labels] Key-value map of Kubernetes labels for selection.
@@ -26,8 +27,8 @@ class FargateProfileSelector {
 
   factory FargateProfileSelector.fromMap(Map<String, dynamic> map) {
     return FargateProfileSelector(
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      namespace: map['namespace'] as String,
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

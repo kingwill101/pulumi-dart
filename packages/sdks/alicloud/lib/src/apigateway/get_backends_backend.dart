@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackendsBackend {
   /// The id of the Backend.
-  final String backendId;
+  final pulumi.Input<String> backendId;
   /// The name of the Backend.
-  final String backendName;
+  final pulumi.Input<String> backendName;
   /// The type of the Backend.
-  final String backendType;
+  final pulumi.Input<String> backendType;
   /// The created time of the Backend.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the Backend.
-  final String description;
-  final String id;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> id;
   /// The modified time of the Backend.
-  final String modifiedTime;
+  final pulumi.Input<String> modifiedTime;
 
   /// Creates a new [GetBackendsBackend].
   /// [backendId] The id of the Backend.
@@ -48,13 +49,13 @@ class GetBackendsBackend {
 
   factory GetBackendsBackend.fromMap(Map<String, dynamic> map) {
     return GetBackendsBackend(
-      backendId: map['backendId'] as String,
-      backendName: map['backendName'] as String,
-      backendType: map['backendType'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      modifiedTime: map['modifiedTime'] as String,
+      backendId: (map['backendId'] as String).input(),
+      backendName: (map['backendName'] as String).input(),
+      backendType: (map['backendType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      modifiedTime: (map['modifiedTime'] as String).input(),
     );
   }
 }

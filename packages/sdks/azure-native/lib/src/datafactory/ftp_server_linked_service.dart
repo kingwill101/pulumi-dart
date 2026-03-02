@@ -8,34 +8,34 @@ import 'parameter_specification.dart';
 /// A FTP server Linked Service.
 class FtpServerLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The authentication type to be used to connect to the FTP server.
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// If true, validate the FTP server SSL certificate when connect over SSL/TLS channel. Default value is true. Type: boolean (or Expression with resultType boolean).
-  final dynamic enableServerCertificateValidation;
+  final pulumi.Input<dynamic>? enableServerCertificateValidation;
   /// If true, connect to the FTP server over SSL/TLS channel. Default value is true. Type: boolean (or Expression with resultType boolean).
-  final dynamic enableSsl;
+  final pulumi.Input<dynamic>? enableSsl;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Host name of the FTP server. Type: string (or Expression with resultType string).
-  final dynamic host;
+  final pulumi.Input<dynamic> host;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// Password to logon the FTP server.
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// The TCP port number that the FTP server uses to listen for client connections. Default value is 21. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic port;
+  final pulumi.Input<dynamic>? port;
   /// Type of linked service.
   /// Expected value is 'FtpServer'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Username to logon the FTP server. Type: string (or Expression with resultType string).
-  final dynamic userName;
+  final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [FtpServerLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -73,14 +73,14 @@ class FtpServerLinkedService {
     return <String, dynamic>{
       'annotations': ?annotations,
       'authenticationType': ?authenticationType,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'enableServerCertificateValidation': ?enableServerCertificateValidation,
       'enableSsl': ?enableSsl,
       'encryptedCredential': ?encryptedCredential,
       'host': host,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'port': ?port,
       'type': type,
       'userName': ?userName,
@@ -90,20 +90,20 @@ class FtpServerLinkedService {
 
   factory FtpServerLinkedService.fromMap(Map<String, dynamic> map) {
     return FtpServerLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      enableServerCertificateValidation: map['enableServerCertificateValidation'] == null ? null : map['enableServerCertificateValidation'],
-      enableSsl: map['enableSsl'] == null ? null : map['enableSsl'],
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      host: map['host'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'],
-      type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableServerCertificateValidation: map['enableServerCertificateValidation'] == null ? null : (map['enableServerCertificateValidation']).input(),
+      enableSsl: map['enableSsl'] == null ? null : (map['enableSsl']).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      host: (map['host']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']).input(),
+      type: (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

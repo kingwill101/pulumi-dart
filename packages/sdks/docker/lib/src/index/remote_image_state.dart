@@ -34,25 +34,16 @@ class RemoteImageState {
   /// [repoDigest] The image sha256 digest in the form of `repo[:tag]@sha256:<hash>`. This may not be populated when building an image, because it is read from the local Docker client and so may be available only when the image was either pulled from the repo or pushed to the repo (perhaps using `docker.RegistryImage`) in a previous run.
   /// [triggers] A map of arbitrary strings that, when changed, will force the `docker.RemoteImage` resource to be replaced. This can be used to rebuild an image when contents of source code folders change
   RemoteImageState({
-    pulumi.Output<RemoteImageBuild>? build,
-    pulumi.Output<bool>? forceRemove,
-    pulumi.Output<String>? imageId,
-    pulumi.Output<bool>? keepLocally,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? platform,
-    pulumi.Output<List<String>>? pullTriggers,
-    pulumi.Output<String>? repoDigest,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      build = pulumi.Input.asOptionalInput<RemoteImageBuild>(build),
-      forceRemove = pulumi.Input.asOptionalInput<bool>(forceRemove),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      keepLocally = pulumi.Input.asOptionalInput<bool>(keepLocally),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      platform = pulumi.Input.asOptionalInput<String>(platform),
-      pullTriggers = pulumi.Input.asOptionalInput<List<String>>(pullTriggers),
-      repoDigest = pulumi.Input.asOptionalInput<String>(repoDigest),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    this.build,
+    this.forceRemove,
+    this.imageId,
+    this.keepLocally,
+    this.name,
+    this.platform,
+    this.pullTriggers,
+    this.repoDigest,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class RemoteImageState {
 
   factory RemoteImageState.fromMap(Map<String, dynamic> map) {
     return RemoteImageState(
-      build: map['build'] == null ? null : pulumi.Output.create<RemoteImageBuild>(RemoteImageBuild.fromMap((map['build'] as Map).cast<String, dynamic>())),
-      forceRemove: map['forceRemove'] == null ? null : pulumi.Output.create<bool>(map['forceRemove'] as bool),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      keepLocally: map['keepLocally'] == null ? null : pulumi.Output.create<bool>(map['keepLocally'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
-      pullTriggers: map['pullTriggers'] == null ? null : pulumi.Output.create<List<String>>((map['pullTriggers'] as List).cast<String>()),
-      repoDigest: map['repoDigest'] == null ? null : pulumi.Output.create<String>(map['repoDigest'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      build: map['build'] == null ? null : (RemoteImageBuild.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
+      forceRemove: map['forceRemove'] == null ? null : (map['forceRemove'] as bool).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      keepLocally: map['keepLocally'] == null ? null : (map['keepLocally'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      pullTriggers: map['pullTriggers'] == null ? null : ((map['pullTriggers'] as List).cast<String>()).input(),
+      repoDigest: map['repoDigest'] == null ? null : (map['repoDigest'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

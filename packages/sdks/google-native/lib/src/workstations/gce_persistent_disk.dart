@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An EphemeralDirectory is backed by a Compute Engine persistent disk.
 class GcePersistentDisk {
   /// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
-  final String? sourceImage;
+  final pulumi.Input<String>? sourceImage;
   /// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
-  final String? sourceSnapshot;
+  final pulumi.Input<String>? sourceSnapshot;
 
   /// Creates a new [GcePersistentDisk].
   /// [diskType] Optional. Type of the disk to use. Defaults to `"pd-standard"`.
@@ -35,10 +36,10 @@ class GcePersistentDisk {
 
   factory GcePersistentDisk.fromMap(Map<String, dynamic> map) {
     return GcePersistentDisk(
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      sourceImage: map['sourceImage'] == null ? null : map['sourceImage'] as String,
-      sourceSnapshot: map['sourceSnapshot'] == null ? null : map['sourceSnapshot'] as String,
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      sourceImage: map['sourceImage'] == null ? null : (map['sourceImage'] as String).input(),
+      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot'] as String).input(),
     );
   }
 }

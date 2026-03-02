@@ -16,13 +16,10 @@ class GetConversationArgs {
   /// [location] Required.
   /// [project] Optional.
   GetConversationArgs({
-    required pulumi.Output<String> conversationId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      conversationId = pulumi.Input.asInput<String>(conversationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.conversationId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetConversationArgs {
 
   factory GetConversationArgs.fromMap(Map<String, dynamic> map) {
     return GetConversationArgs(
-      conversationId: pulumi.Output.create<String>(map['conversationId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      conversationId: (map['conversationId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

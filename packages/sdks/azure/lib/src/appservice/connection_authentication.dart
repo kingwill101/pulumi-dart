@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthentication {
   /// Service principal certificate for `servicePrincipal` auth. Should be specified when `type` is set to `servicePrincipalCertificate`.
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// Client ID for `userAssignedIdentity` or `servicePrincipal` auth. Should be specified when `type` is set to `servicePrincipalSecret` or `servicePrincipalCertificate`. When `type` is set to `userAssignedIdentity`, `client_id` and `subscription_id` should be either both specified or both not specified.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Username or account name for secret auth. `name` and `secret` should be either both specified or both not specified when `type` is set to `secret`.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Principal ID for `servicePrincipal` auth. Should be specified when `type` is set to `servicePrincipalSecret` or `servicePrincipalCertificate`.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// Password or account key for secret auth. `secret` and `name` should be either both specified or both not specified when `type` is set to `secret`.
-  final String? secret;
+  final pulumi.Input<String>? secret;
   /// Subscription ID for `userAssignedIdentity`. `subscription_id` and `client_id` should be either both specified or both not specified.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// The authentication type. Possible values are `systemAssignedIdentity`, `userAssignedIdentity`, `servicePrincipalSecret`, `servicePrincipalCertificate`, `secret`. Changing this forces a new resource to be created.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ConnectionAuthentication].
   /// [certificate] Service principal certificate for `servicePrincipal` auth. Should be specified when `type` is set to `servicePrincipalCertificate`.
@@ -49,13 +50,13 @@ class ConnectionAuthentication {
 
   factory ConnectionAuthentication.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthentication(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      secret: map['secret'] == null ? null : map['secret'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      type: map['type'] as String,
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

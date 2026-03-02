@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schedule_create_notebook_execution_job_request_notebook_execution_job.dart';
 
 class ScheduleCreateNotebookExecutionJobRequest {
   /// The NotebookExecutionJob to create.
   /// Structure is documented below.
-  final ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob notebookExecutionJob;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob> notebookExecutionJob;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequest].
   /// [notebookExecutionJob] The NotebookExecutionJob to create.
@@ -15,13 +16,13 @@ class ScheduleCreateNotebookExecutionJobRequest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'notebookExecutionJob': notebookExecutionJob.toMap(),
+      'notebookExecutionJob': pulumi.Input.mapInputValue<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob, Map<String, dynamic>>(notebookExecutionJob, (value) => value.toMap()),
     };
   }
 
   factory ScheduleCreateNotebookExecutionJobRequest.fromMap(Map<String, dynamic> map) {
     return ScheduleCreateNotebookExecutionJobRequest(
-      notebookExecutionJob: ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap((map['notebookExecutionJob'] as Map).cast<String, dynamic>()),
+      notebookExecutionJob: (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap((map['notebookExecutionJob'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

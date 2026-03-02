@@ -23,15 +23,11 @@ class ManagementLockAtSubscriptionLevelArgs {
   /// [notes] Notes about the lock. Maximum of 512 characters.
   /// [owners] The owners of the lock.
   ManagementLockAtSubscriptionLevelArgs({
-    required pulumi.Output<String> level,
-    pulumi.Output<String>? lockName,
-    pulumi.Output<String>? notes,
-    pulumi.Output<List<ManagementLockOwner>>? owners,
-  }) :
-      level = pulumi.Input.asInput<String>(level),
-      lockName = pulumi.Input.asOptionalInput<String>(lockName),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      owners = pulumi.Input.asOptionalInput<List<ManagementLockOwner>>(owners);
+    required this.level,
+    this.lockName,
+    this.notes,
+    this.owners,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagementLockAtSubscriptionLevelArgs {
 
   factory ManagementLockAtSubscriptionLevelArgs.fromMap(Map<String, dynamic> map) {
     return ManagementLockAtSubscriptionLevelArgs(
-      level: pulumi.Output.create<String>(map['level'] as String),
-      lockName: map['lockName'] == null ? null : pulumi.Output.create<String>(map['lockName'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      owners: map['owners'] == null ? null : pulumi.Output.create<List<ManagementLockOwner>>(pulumi.Input.decodeList<ManagementLockOwner>(map['owners'], (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))),
+      level: (map['level'] as String).input(),
+      lockName: map['lockName'] == null ? null : (map['lockName'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      owners: map['owners'] == null ? null : (pulumi.Input.decodeList<ManagementLockOwner>(map['owners'], (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

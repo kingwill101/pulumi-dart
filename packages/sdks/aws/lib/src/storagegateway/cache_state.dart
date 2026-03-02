@@ -16,13 +16,10 @@ class CacheState {
   /// [gatewayArn] The Amazon Resource Name (ARN) of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   CacheState({
-    pulumi.Output<String>? diskId,
-    pulumi.Output<String>? gatewayArn,
-    pulumi.Output<String>? region,
-  }) :
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      gatewayArn = pulumi.Input.asOptionalInput<String>(gatewayArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.diskId,
+    this.gatewayArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CacheState {
 
   factory CacheState.fromMap(Map<String, dynamic> map) {
     return CacheState(
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      gatewayArn: map['gatewayArn'] == null ? null : pulumi.Output.create<String>(map['gatewayArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      gatewayArn: map['gatewayArn'] == null ? null : (map['gatewayArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

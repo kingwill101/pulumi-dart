@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnServerConfigurationClientRootCertificate {
   /// A name used to uniquely identify this certificate.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Public Key Data associated with the Certificate.
-  final String publicCertData;
+  final pulumi.Input<String> publicCertData;
 
   /// Creates a new [VpnServerConfigurationClientRootCertificate].
   /// [name] A name used to uniquely identify this certificate.
@@ -24,8 +25,8 @@ class VpnServerConfigurationClientRootCertificate {
 
   factory VpnServerConfigurationClientRootCertificate.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationClientRootCertificate(
-      name: map['name'] as String,
-      publicCertData: map['publicCertData'] as String,
+      name: (map['name'] as String).input(),
+      publicCertData: (map['publicCertData'] as String).input(),
     );
   }
 }

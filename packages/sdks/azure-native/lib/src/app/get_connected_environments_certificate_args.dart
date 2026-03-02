@@ -19,13 +19,10 @@ class GetConnectedEnvironmentsCertificateArgs {
   /// [connectedEnvironmentName] Name of the Connected Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetConnectedEnvironmentsCertificateArgs({
-    required pulumi.Output<String> certificateName,
-    required pulumi.Output<String> connectedEnvironmentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateName = pulumi.Input.asInput<String>(certificateName),
-      connectedEnvironmentName = pulumi.Input.asInput<String>(connectedEnvironmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.certificateName,
+    required this.connectedEnvironmentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConnectedEnvironmentsCertificateArgs {
 
   factory GetConnectedEnvironmentsCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectedEnvironmentsCertificateArgs(
-      certificateName: pulumi.Output.create<String>(map['certificateName'] as String),
-      connectedEnvironmentName: pulumi.Output.create<String>(map['connectedEnvironmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateName: (map['certificateName'] as String).input(),
+      connectedEnvironmentName: (map['connectedEnvironmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

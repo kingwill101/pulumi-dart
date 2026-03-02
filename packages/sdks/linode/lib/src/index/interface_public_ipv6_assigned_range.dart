@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterfacePublicIpv6AssignedRange {
   /// The IPv6 network range in CIDR notation.
-  final String? range;
+  final pulumi.Input<String>? range;
   /// The public IPv6 address that the range is routed to.
-  final String? routeTarget;
+  final pulumi.Input<String>? routeTarget;
 
   /// Creates a new [InterfacePublicIpv6AssignedRange].
   /// [range] The IPv6 network range in CIDR notation.
@@ -24,8 +25,8 @@ class InterfacePublicIpv6AssignedRange {
 
   factory InterfacePublicIpv6AssignedRange.fromMap(Map<String, dynamic> map) {
     return InterfacePublicIpv6AssignedRange(
-      range: map['range'] == null ? null : map['range'] as String,
-      routeTarget: map['routeTarget'] == null ? null : map['routeTarget'] as String,
+      range: map['range'] == null ? null : (map['range'] as String).input(),
+      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget'] as String).input(),
     );
   }
 }

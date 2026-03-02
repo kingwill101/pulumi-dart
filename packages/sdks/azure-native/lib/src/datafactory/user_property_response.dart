@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User property.
 class UserPropertyResponse {
   /// User property name.
-  final String name;
+  final pulumi.Input<String> name;
   /// User property value. Type: string (or Expression with resultType string).
-  final dynamic value;
+  final pulumi.Input<dynamic> value;
 
   /// Creates a new [UserPropertyResponse].
   /// [name] User property name.
@@ -25,8 +26,8 @@ class UserPropertyResponse {
 
   factory UserPropertyResponse.fromMap(Map<String, dynamic> map) {
     return UserPropertyResponse(
-      name: map['name'] as String,
-      value: map['value'],
+      name: (map['name'] as String).input(),
+      value: (map['value']).input(),
     );
   }
 }

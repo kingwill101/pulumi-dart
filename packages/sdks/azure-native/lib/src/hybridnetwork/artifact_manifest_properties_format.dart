@@ -6,7 +6,7 @@ import 'manifest_artifact_format.dart';
 /// Artifact manifest properties.
 class ArtifactManifestPropertiesFormat {
   /// The artifacts list.
-  final List<ManifestArtifactFormat>? artifacts;
+  final pulumi.Input<List<ManifestArtifactFormat>>? artifacts;
 
   /// Creates a new [ArtifactManifestPropertiesFormat].
   /// [artifacts] The artifacts list.
@@ -16,13 +16,13 @@ class ArtifactManifestPropertiesFormat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifacts': ?artifacts == null ? null : pulumi.Input.encodeList<ManifestArtifactFormat, Map<String, dynamic>>(artifacts!, (value) => value.toMap()),
+      'artifacts': ?pulumi.Input.mapOptionalInputValue<List<ManifestArtifactFormat>, List<Map<String, dynamic>>>(artifacts, (value) => pulumi.Input.encodeList<ManifestArtifactFormat, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ArtifactManifestPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ArtifactManifestPropertiesFormat(
-      artifacts: map['artifacts'] == null ? null : pulumi.Input.decodeList<ManifestArtifactFormat>(map['artifacts'], (value) => ManifestArtifactFormat.fromMap((value as Map).cast<String, dynamic>())),
+      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<ManifestArtifactFormat>(map['artifacts'], (value) => ManifestArtifactFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

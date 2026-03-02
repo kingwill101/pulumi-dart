@@ -33,23 +33,15 @@ class ApplicationScalingRuleState {
   /// [scalingRuleTimer] Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
   /// [scalingRuleType] Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
   ApplicationScalingRuleState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<int>? minReadyInstanceRatio,
-    pulumi.Output<int>? minReadyInstances,
-    pulumi.Output<bool>? scalingRuleEnable,
-    pulumi.Output<ApplicationScalingRuleScalingRuleMetric>? scalingRuleMetric,
-    pulumi.Output<String>? scalingRuleName,
-    pulumi.Output<ApplicationScalingRuleScalingRuleTimer>? scalingRuleTimer,
-    pulumi.Output<String>? scalingRuleType,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      minReadyInstanceRatio = pulumi.Input.asOptionalInput<int>(minReadyInstanceRatio),
-      minReadyInstances = pulumi.Input.asOptionalInput<int>(minReadyInstances),
-      scalingRuleEnable = pulumi.Input.asOptionalInput<bool>(scalingRuleEnable),
-      scalingRuleMetric = pulumi.Input.asOptionalInput<ApplicationScalingRuleScalingRuleMetric>(scalingRuleMetric),
-      scalingRuleName = pulumi.Input.asOptionalInput<String>(scalingRuleName),
-      scalingRuleTimer = pulumi.Input.asOptionalInput<ApplicationScalingRuleScalingRuleTimer>(scalingRuleTimer),
-      scalingRuleType = pulumi.Input.asOptionalInput<String>(scalingRuleType);
+    this.appId,
+    this.minReadyInstanceRatio,
+    this.minReadyInstances,
+    this.scalingRuleEnable,
+    this.scalingRuleMetric,
+    this.scalingRuleName,
+    this.scalingRuleTimer,
+    this.scalingRuleType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ApplicationScalingRuleState {
 
   factory ApplicationScalingRuleState.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      minReadyInstanceRatio: map['minReadyInstanceRatio'] == null ? null : pulumi.Output.create<int>(map['minReadyInstanceRatio'] as int),
-      minReadyInstances: map['minReadyInstances'] == null ? null : pulumi.Output.create<int>(map['minReadyInstances'] as int),
-      scalingRuleEnable: map['scalingRuleEnable'] == null ? null : pulumi.Output.create<bool>(map['scalingRuleEnable'] as bool),
-      scalingRuleMetric: map['scalingRuleMetric'] == null ? null : pulumi.Output.create<ApplicationScalingRuleScalingRuleMetric>(ApplicationScalingRuleScalingRuleMetric.fromMap((map['scalingRuleMetric'] as Map).cast<String, dynamic>())),
-      scalingRuleName: map['scalingRuleName'] == null ? null : pulumi.Output.create<String>(map['scalingRuleName'] as String),
-      scalingRuleTimer: map['scalingRuleTimer'] == null ? null : pulumi.Output.create<ApplicationScalingRuleScalingRuleTimer>(ApplicationScalingRuleScalingRuleTimer.fromMap((map['scalingRuleTimer'] as Map).cast<String, dynamic>())),
-      scalingRuleType: map['scalingRuleType'] == null ? null : pulumi.Output.create<String>(map['scalingRuleType'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      minReadyInstanceRatio: map['minReadyInstanceRatio'] == null ? null : (map['minReadyInstanceRatio'] as int).input(),
+      minReadyInstances: map['minReadyInstances'] == null ? null : (map['minReadyInstances'] as int).input(),
+      scalingRuleEnable: map['scalingRuleEnable'] == null ? null : (map['scalingRuleEnable'] as bool).input(),
+      scalingRuleMetric: map['scalingRuleMetric'] == null ? null : (ApplicationScalingRuleScalingRuleMetric.fromMap((map['scalingRuleMetric'] as Map).cast<String, dynamic>())).input(),
+      scalingRuleName: map['scalingRuleName'] == null ? null : (map['scalingRuleName'] as String).input(),
+      scalingRuleTimer: map['scalingRuleTimer'] == null ? null : (ApplicationScalingRuleScalingRuleTimer.fromMap((map['scalingRuleTimer'] as Map).cast<String, dynamic>())).input(),
+      scalingRuleType: map['scalingRuleType'] == null ? null : (map['scalingRuleType'] as String).input(),
     );
   }
 }

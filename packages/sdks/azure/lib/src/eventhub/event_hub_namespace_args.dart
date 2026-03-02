@@ -56,35 +56,21 @@ class EventHubNamespaceArgs {
   /// [sku] Defines which tier to use. Valid options are `Basic`, `Standard`, and `Premium`. Please note that setting this field to `Premium` will force the creation of a new resource.
   /// [tags] A mapping of tags to assign to the resource.
   EventHubNamespaceArgs({
-    pulumi.Output<bool>? autoInflateEnabled,
-    pulumi.Output<int>? capacity,
-    pulumi.Output<String>? dedicatedClusterId,
-    pulumi.Output<EventHubNamespaceIdentity>? identity,
-    pulumi.Output<bool>? localAuthenticationEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? maximumThroughputUnits,
-    pulumi.Output<String>? minimumTlsVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<EventHubNamespaceNetworkRulesets>? networkRulesets,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoInflateEnabled = pulumi.Input.asOptionalInput<bool>(autoInflateEnabled),
-      capacity = pulumi.Input.asOptionalInput<int>(capacity),
-      dedicatedClusterId = pulumi.Input.asOptionalInput<String>(dedicatedClusterId),
-      identity = pulumi.Input.asOptionalInput<EventHubNamespaceIdentity>(identity),
-      localAuthenticationEnabled = pulumi.Input.asOptionalInput<bool>(localAuthenticationEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maximumThroughputUnits = pulumi.Input.asOptionalInput<int>(maximumThroughputUnits),
-      minimumTlsVersion = pulumi.Input.asOptionalInput<String>(minimumTlsVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkRulesets = pulumi.Input.asOptionalInput<EventHubNamespaceNetworkRulesets>(networkRulesets),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<String>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoInflateEnabled,
+    this.capacity,
+    this.dedicatedClusterId,
+    this.identity,
+    this.localAuthenticationEnabled,
+    this.location,
+    this.maximumThroughputUnits,
+    this.minimumTlsVersion,
+    this.name,
+    this.networkRulesets,
+    this.publicNetworkAccessEnabled,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class EventHubNamespaceArgs {
 
   factory EventHubNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return EventHubNamespaceArgs(
-      autoInflateEnabled: map['autoInflateEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoInflateEnabled'] as bool),
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<int>(map['capacity'] as int),
-      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : pulumi.Output.create<String>(map['dedicatedClusterId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<EventHubNamespaceIdentity>(EventHubNamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthenticationEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maximumThroughputUnits: map['maximumThroughputUnits'] == null ? null : pulumi.Output.create<int>(map['maximumThroughputUnits'] as int),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : pulumi.Output.create<String>(map['minimumTlsVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkRulesets: map['networkRulesets'] == null ? null : pulumi.Output.create<EventHubNamespaceNetworkRulesets>(EventHubNamespaceNetworkRulesets.fromMap((map['networkRulesets'] as Map).cast<String, dynamic>())),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoInflateEnabled: map['autoInflateEnabled'] == null ? null : (map['autoInflateEnabled'] as bool).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : (map['dedicatedClusterId'] as String).input(),
+      identity: map['identity'] == null ? null : (EventHubNamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maximumThroughputUnits: map['maximumThroughputUnits'] == null ? null : (map['maximumThroughputUnits'] as int).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkRulesets: map['networkRulesets'] == null ? null : (EventHubNamespaceNetworkRulesets.fromMap((map['networkRulesets'] as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

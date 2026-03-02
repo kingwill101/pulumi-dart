@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket {
   /// The list of cloud storage bucket names to include in the DatasetConfig.
   /// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The list of regex patterns for bucket names matching the regex.
   /// Regex should follow the syntax specified in google/re2 on GitHub.
   /// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
-  final String bucketPrefixRegex;
+  final pulumi.Input<String> bucketPrefixRegex;
 
   /// Creates a new [GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket].
   /// [bucketName] The list of cloud storage bucket names to include in the DatasetConfig.
@@ -27,8 +28,8 @@ class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket {
 
   factory GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket.fromMap(Map<String, dynamic> map) {
     return GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket(
-      bucketName: map['bucketName'] as String,
-      bucketPrefixRegex: map['bucketPrefixRegex'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPrefixRegex: (map['bucketPrefixRegex'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class FrameworkShareArgs {
   /// [frameworkId] Unique identifier for the shared custom framework.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   FrameworkShareArgs({
-    pulumi.Output<String>? comment,
-    required pulumi.Output<String> destinationAccount,
-    required pulumi.Output<String> destinationRegion,
-    required pulumi.Output<String> frameworkId,
-    pulumi.Output<String>? region,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      destinationAccount = pulumi.Input.asInput<String>(destinationAccount),
-      destinationRegion = pulumi.Input.asInput<String>(destinationRegion),
-      frameworkId = pulumi.Input.asInput<String>(frameworkId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.comment,
+    required this.destinationAccount,
+    required this.destinationRegion,
+    required this.frameworkId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class FrameworkShareArgs {
 
   factory FrameworkShareArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkShareArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      destinationAccount: pulumi.Output.create<String>(map['destinationAccount'] as String),
-      destinationRegion: pulumi.Output.create<String>(map['destinationRegion'] as String),
-      frameworkId: pulumi.Output.create<String>(map['frameworkId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      destinationAccount: (map['destinationAccount'] as String).input(),
+      destinationRegion: (map['destinationRegion'] as String).input(),
+      frameworkId: (map['frameworkId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

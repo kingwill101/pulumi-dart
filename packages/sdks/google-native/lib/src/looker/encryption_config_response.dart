@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Encryption configuration (i.e. CMEK).
 class EncryptionConfigResponse {
   /// Name of the CMEK key in KMS (input parameter).
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
   /// Full name and version of the CMEK key currently in use to encrypt Looker data. Format: `projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. Empty if CMEK is not configured in this instance.
-  final String kmsKeyNameVersion;
+  final pulumi.Input<String> kmsKeyNameVersion;
   /// Status of the CMEK key.
-  final String kmsKeyState;
+  final pulumi.Input<String> kmsKeyState;
 
   /// Creates a new [EncryptionConfigResponse].
   /// [kmsKeyName] Name of the CMEK key in KMS (input parameter).
@@ -30,9 +31,9 @@ class EncryptionConfigResponse {
 
   factory EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigResponse(
-      kmsKeyName: map['kmsKeyName'] as String,
-      kmsKeyNameVersion: map['kmsKeyNameVersion'] as String,
-      kmsKeyState: map['kmsKeyState'] as String,
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyNameVersion: (map['kmsKeyNameVersion'] as String).input(),
+      kmsKeyState: (map['kmsKeyState'] as String).input(),
     );
   }
 }

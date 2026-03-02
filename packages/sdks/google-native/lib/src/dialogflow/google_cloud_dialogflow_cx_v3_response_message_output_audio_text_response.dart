@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
 class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse {
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-  final bool allowPlaybackInterruption;
+  final pulumi.Input<bool> allowPlaybackInterruption;
   /// The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).
-  final String ssml;
+  final pulumi.Input<String> ssml;
   /// The raw text to be synthesized.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse].
   /// [allowPlaybackInterruption] Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
@@ -30,9 +31,9 @@ class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse {
 
   factory GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] as bool,
-      ssml: map['ssml'] as String,
-      text: map['text'] as String,
+      allowPlaybackInterruption: (map['allowPlaybackInterruption'] as bool).input(),
+      ssml: (map['ssml'] as String).input(),
+      text: (map['text'] as String).input(),
     );
   }
 }

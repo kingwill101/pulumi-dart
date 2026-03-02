@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppGroupOrder {
   /// Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
-  final bool? autoRenew;
+  final pulumi.Input<bool>? autoRenew;
   /// Order cycle. The minimum value is not less than 0.
-  final int? duration;
+  final pulumi.Input<int>? duration;
   /// Order cycle unit. Valid values: `Year` and `Month`.
-  final String? pricingCycle;
+  final pulumi.Input<String>? pricingCycle;
 
   /// Creates a new [AppGroupOrder].
   /// [autoRenew] Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
@@ -29,9 +30,9 @@ class AppGroupOrder {
 
   factory AppGroupOrder.fromMap(Map<String, dynamic> map) {
     return AppGroupOrder(
-      autoRenew: map['autoRenew'] == null ? null : map['autoRenew'] as bool,
-      duration: map['duration'] == null ? null : map['duration'] as int,
-      pricingCycle: map['pricingCycle'] == null ? null : map['pricingCycle'] as String,
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
     );
   }
 }

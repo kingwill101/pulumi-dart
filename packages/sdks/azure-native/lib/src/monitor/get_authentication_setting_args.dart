@@ -22,15 +22,11 @@ class GetAuthenticationSettingArgs {
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAuthenticationSettingArgs({
-    required pulumi.Output<String> authenticationSettingName,
-    required pulumi.Output<String> azureMonitorWorkspaceName,
-    required pulumi.Output<String> healthModelName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authenticationSettingName = pulumi.Input.asInput<String>(authenticationSettingName),
-      azureMonitorWorkspaceName = pulumi.Input.asInput<String>(azureMonitorWorkspaceName),
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authenticationSettingName,
+    required this.azureMonitorWorkspaceName,
+    required this.healthModelName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAuthenticationSettingArgs {
 
   factory GetAuthenticationSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthenticationSettingArgs(
-      authenticationSettingName: pulumi.Output.create<String>(map['authenticationSettingName'] as String),
-      azureMonitorWorkspaceName: pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authenticationSettingName: (map['authenticationSettingName'] as String).input(),
+      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
+      healthModelName: (map['healthModelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class RdsServiceLinkedRoleState {
   /// [roleName] The name of the role.
   /// [serviceName] The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
   RdsServiceLinkedRoleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? roleId,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<String>? serviceName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
+    this.arn,
+    this.roleId,
+    this.roleName,
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class RdsServiceLinkedRoleState {
 
   factory RdsServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return RdsServiceLinkedRoleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

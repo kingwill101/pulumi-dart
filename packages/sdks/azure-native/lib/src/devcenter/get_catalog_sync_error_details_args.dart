@@ -19,13 +19,10 @@ class GetCatalogSyncErrorDetailsArgs {
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCatalogSyncErrorDetailsArgs({
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.catalogName,
+    required this.devCenterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCatalogSyncErrorDetailsArgs {
 
   factory GetCatalogSyncErrorDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogSyncErrorDetailsArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

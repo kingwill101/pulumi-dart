@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayRouteSpecHttpRouteActionRewritePath {
-  final String exact;
+  final pulumi.Input<String> exact;
 
   /// Creates a new [GetGatewayRouteSpecHttpRouteActionRewritePath].
   /// [exact] Required.
@@ -18,7 +19,7 @@ class GetGatewayRouteSpecHttpRouteActionRewritePath {
 
   factory GetGatewayRouteSpecHttpRouteActionRewritePath.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteActionRewritePath(
-      exact: map['exact'] as String,
+      exact: (map['exact'] as String).input(),
     );
   }
 }

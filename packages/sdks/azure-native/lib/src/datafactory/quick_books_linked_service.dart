@@ -8,38 +8,38 @@ import 'parameter_specification.dart';
 /// QuickBooks server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 class QuickBooksLinkedService {
   /// The access token for OAuth 2.0 authentication.
-  final AzureKeyVaultSecretReference? accessToken;
+  final pulumi.Input<AzureKeyVaultSecretReference>? accessToken;
   /// The access token secret is deprecated for OAuth 1.0 authentication. Only used for version 1.0.
-  final AzureKeyVaultSecretReference? accessTokenSecret;
+  final pulumi.Input<AzureKeyVaultSecretReference>? accessTokenSecret;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The company ID of the QuickBooks company to authorize.
-  final dynamic companyId;
+  final pulumi.Input<dynamic>? companyId;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Properties used to connect to QuickBooks. It is mutually exclusive with any other properties in the linked service. Type: object.
-  final dynamic connectionProperties;
+  final pulumi.Input<dynamic>? connectionProperties;
   /// The consumer key for OAuth 2.0 authentication.
-  final dynamic consumerKey;
+  final pulumi.Input<dynamic>? consumerKey;
   /// The consumer secret for OAuth 2.0 authentication.
-  final AzureKeyVaultSecretReference? consumerSecret;
+  final pulumi.Input<AzureKeyVaultSecretReference>? consumerSecret;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The endpoint of the QuickBooks server. (i.e. quickbooks.api.intuit.com)
-  final dynamic endpoint;
+  final pulumi.Input<dynamic>? endpoint;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The refresh token for OAuth 2.0 authentication.
-  final AzureKeyVaultSecretReference? refreshToken;
+  final pulumi.Input<AzureKeyVaultSecretReference>? refreshToken;
   /// Type of linked service.
   /// Expected value is 'QuickBooks'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
-  final dynamic useEncryptedEndpoints;
+  final pulumi.Input<dynamic>? useEncryptedEndpoints;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [QuickBooksLinkedService].
   /// [accessToken] The access token for OAuth 2.0 authentication.
@@ -79,19 +79,19 @@ class QuickBooksLinkedService {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessToken': ?accessToken == null ? null : accessToken!.toMap(),
-      'accessTokenSecret': ?accessTokenSecret == null ? null : accessTokenSecret!.toMap(),
+      'accessToken': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(accessToken, (value) => value.toMap()),
+      'accessTokenSecret': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(accessTokenSecret, (value) => value.toMap()),
       'annotations': ?annotations,
       'companyId': ?companyId,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionProperties': ?connectionProperties,
       'consumerKey': ?consumerKey,
-      'consumerSecret': ?consumerSecret == null ? null : consumerSecret!.toMap(),
+      'consumerSecret': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(consumerSecret, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'endpoint': ?endpoint,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'refreshToken': ?refreshToken == null ? null : refreshToken!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'refreshToken': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(refreshToken, (value) => value.toMap()),
       'type': type,
       'useEncryptedEndpoints': ?useEncryptedEndpoints,
       'version': ?version,
@@ -100,22 +100,22 @@ class QuickBooksLinkedService {
 
   factory QuickBooksLinkedService.fromMap(Map<String, dynamic> map) {
     return QuickBooksLinkedService(
-      accessToken: map['accessToken'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['accessToken'] as Map).cast<String, dynamic>()),
-      accessTokenSecret: map['accessTokenSecret'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['accessTokenSecret'] as Map).cast<String, dynamic>()),
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      companyId: map['companyId'] == null ? null : map['companyId'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionProperties: map['connectionProperties'] == null ? null : map['connectionProperties'],
-      consumerKey: map['consumerKey'] == null ? null : map['consumerKey'],
-      consumerSecret: map['consumerSecret'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['consumerSecret'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      refreshToken: map['refreshToken'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['refreshToken'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : map['useEncryptedEndpoints'],
-      version: map['version'] == null ? null : map['version'] as String,
+      accessToken: map['accessToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['accessToken'] as Map).cast<String, dynamic>())).input(),
+      accessTokenSecret: map['accessTokenSecret'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['accessTokenSecret'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      companyId: map['companyId'] == null ? null : (map['companyId']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties']).input(),
+      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey']).input(),
+      consumerSecret: map['consumerSecret'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['consumerSecret'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      refreshToken: map['refreshToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['refreshToken'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity Salesforce Service Cloud V2 source.
 class SalesforceServiceCloudV2SourceResponse {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic includeDeletedObjects;
+  final pulumi.Input<dynamic>? includeDeletedObjects;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
-  final dynamic query;
+  final pulumi.Input<dynamic>? query;
   /// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
-  final dynamic sOQLQuery;
+  final pulumi.Input<dynamic>? sOQLQuery;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'SalesforceServiceCloudV2Source'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SalesforceServiceCloudV2SourceResponse].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -61,15 +62,15 @@ class SalesforceServiceCloudV2SourceResponse {
 
   factory SalesforceServiceCloudV2SourceResponse.fromMap(Map<String, dynamic> map) {
     return SalesforceServiceCloudV2SourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      includeDeletedObjects: map['includeDeletedObjects'] == null ? null : map['includeDeletedObjects'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      query: map['query'] == null ? null : map['query'],
-      sOQLQuery: map['sOQLQuery'] == null ? null : map['sOQLQuery'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      includeDeletedObjects: map['includeDeletedObjects'] == null ? null : (map['includeDeletedObjects']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      query: map['query'] == null ? null : (map['query']).input(),
+      sOQLQuery: map['sOQLQuery'] == null ? null : (map['sOQLQuery']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

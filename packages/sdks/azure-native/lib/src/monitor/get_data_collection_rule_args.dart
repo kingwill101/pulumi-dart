@@ -16,11 +16,9 @@ class GetDataCollectionRuleArgs {
   /// [dataCollectionRuleName] The name of the data collection rule. The name is case insensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDataCollectionRuleArgs({
-    required pulumi.Output<String> dataCollectionRuleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataCollectionRuleName = pulumi.Input.asInput<String>(dataCollectionRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dataCollectionRuleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDataCollectionRuleArgs {
 
   factory GetDataCollectionRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleArgs(
-      dataCollectionRuleName: pulumi.Output.create<String>(map['dataCollectionRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataCollectionRuleName: (map['dataCollectionRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

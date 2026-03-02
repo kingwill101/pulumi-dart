@@ -13,11 +13,9 @@ class VirtualHostState {
   /// [instanceId] InstanceId.
   /// [virtualHostName] VirtualHostName.
   VirtualHostState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? virtualHostName,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      virtualHostName = pulumi.Input.asOptionalInput<String>(virtualHostName);
+    this.instanceId,
+    this.virtualHostName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class VirtualHostState {
 
   factory VirtualHostState.fromMap(Map<String, dynamic> map) {
     return VirtualHostState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      virtualHostName: map['virtualHostName'] == null ? null : pulumi.Output.create<String>(map['virtualHostName'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName'] as String).input(),
     );
   }
 }

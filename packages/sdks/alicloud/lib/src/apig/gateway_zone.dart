@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayZone {
   /// The zone name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The vswitch ID.
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
   /// The zone ID.
-  final String? zoneId;
+  final pulumi.Input<String>? zoneId;
 
   /// Creates a new [GatewayZone].
   /// [name] The zone name.
@@ -29,9 +30,9 @@ class GatewayZone {
 
   factory GatewayZone.fromMap(Map<String, dynamic> map) {
     return GatewayZone(
-      name: map['name'] == null ? null : map['name'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

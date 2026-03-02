@@ -34,23 +34,15 @@ class SourceApiAssociationArgs {
   /// [sourceApiId] ID of the source API. One of `source_api_arn` or `source_api_id` must be specified.
   /// [timeouts] Optional.
   SourceApiAssociationArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? mergedApiArn,
-    pulumi.Output<String>? mergedApiId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceApiArn,
-    pulumi.Output<List<SourceApiAssociationSourceApiAssociationConfig>>? sourceApiAssociationConfigs,
-    pulumi.Output<String>? sourceApiId,
-    pulumi.Output<SourceApiAssociationTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      mergedApiArn = pulumi.Input.asOptionalInput<String>(mergedApiArn),
-      mergedApiId = pulumi.Input.asOptionalInput<String>(mergedApiId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceApiArn = pulumi.Input.asOptionalInput<String>(sourceApiArn),
-      sourceApiAssociationConfigs = pulumi.Input.asOptionalInput<List<SourceApiAssociationSourceApiAssociationConfig>>(sourceApiAssociationConfigs),
-      sourceApiId = pulumi.Input.asOptionalInput<String>(sourceApiId),
-      timeouts = pulumi.Input.asOptionalInput<SourceApiAssociationTimeouts>(timeouts);
+    this.description,
+    this.mergedApiArn,
+    this.mergedApiId,
+    this.region,
+    this.sourceApiArn,
+    this.sourceApiAssociationConfigs,
+    this.sourceApiId,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SourceApiAssociationArgs {
 
   factory SourceApiAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SourceApiAssociationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      mergedApiArn: map['mergedApiArn'] == null ? null : pulumi.Output.create<String>(map['mergedApiArn'] as String),
-      mergedApiId: map['mergedApiId'] == null ? null : pulumi.Output.create<String>(map['mergedApiId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceApiArn: map['sourceApiArn'] == null ? null : pulumi.Output.create<String>(map['sourceApiArn'] as String),
-      sourceApiAssociationConfigs: map['sourceApiAssociationConfigs'] == null ? null : pulumi.Output.create<List<SourceApiAssociationSourceApiAssociationConfig>>(pulumi.Input.decodeList<SourceApiAssociationSourceApiAssociationConfig>(map['sourceApiAssociationConfigs'], (value) => SourceApiAssociationSourceApiAssociationConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      sourceApiId: map['sourceApiId'] == null ? null : pulumi.Output.create<String>(map['sourceApiId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<SourceApiAssociationTimeouts>(SourceApiAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      mergedApiArn: map['mergedApiArn'] == null ? null : (map['mergedApiArn'] as String).input(),
+      mergedApiId: map['mergedApiId'] == null ? null : (map['mergedApiId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceApiArn: map['sourceApiArn'] == null ? null : (map['sourceApiArn'] as String).input(),
+      sourceApiAssociationConfigs: map['sourceApiAssociationConfigs'] == null ? null : (pulumi.Input.decodeList<SourceApiAssociationSourceApiAssociationConfig>(map['sourceApiAssociationConfigs'], (value) => SourceApiAssociationSourceApiAssociationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceApiId: map['sourceApiId'] == null ? null : (map['sourceApiId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (SourceApiAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

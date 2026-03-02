@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureStatusResponse {
   /// The status representing the state of this feature.
-  final String detailedStatus;
+  final pulumi.Input<String> detailedStatus;
   /// The descriptive message about the current detailed status.
-  final String detailedStatusMessage;
+  final pulumi.Input<String> detailedStatusMessage;
   /// The name of the feature.
-  final String name;
+  final pulumi.Input<String> name;
   /// The version of the feature.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [FeatureStatusResponse].
   /// [detailedStatus] The status representing the state of this feature.
@@ -34,10 +35,10 @@ class FeatureStatusResponse {
 
   factory FeatureStatusResponse.fromMap(Map<String, dynamic> map) {
     return FeatureStatusResponse(
-      detailedStatus: map['detailedStatus'] as String,
-      detailedStatusMessage: map['detailedStatusMessage'] as String,
-      name: map['name'] as String,
-      version: map['version'] as String,
+      detailedStatus: (map['detailedStatus'] as String).input(),
+      detailedStatusMessage: (map['detailedStatusMessage'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

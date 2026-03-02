@@ -33,21 +33,14 @@ class ManagedStorageAccountArgs {
   /// [storageAccountKey] Which Storage Account access key that is managed by Key Vault. Possible values are `key1` and `key2`.
   /// [tags] A mapping of tags which should be assigned to the Key Vault Managed Storage Account. Changing this forces a new resource to be created.
   ManagedStorageAccountArgs({
-    required pulumi.Output<String> keyVaultId,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? regenerateKeyAutomatically,
-    pulumi.Output<String>? regenerationPeriod,
-    required pulumi.Output<String> storageAccountId,
-    required pulumi.Output<String> storageAccountKey,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regenerateKeyAutomatically = pulumi.Input.asOptionalInput<bool>(regenerateKeyAutomatically),
-      regenerationPeriod = pulumi.Input.asOptionalInput<String>(regenerationPeriod),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId),
-      storageAccountKey = pulumi.Input.asInput<String>(storageAccountKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.keyVaultId,
+    this.name,
+    this.regenerateKeyAutomatically,
+    this.regenerationPeriod,
+    required this.storageAccountId,
+    required this.storageAccountKey,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ManagedStorageAccountArgs {
 
   factory ManagedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return ManagedStorageAccountArgs(
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regenerateKeyAutomatically: map['regenerateKeyAutomatically'] == null ? null : pulumi.Output.create<bool>(map['regenerateKeyAutomatically'] as bool),
-      regenerationPeriod: map['regenerationPeriod'] == null ? null : pulumi.Output.create<String>(map['regenerationPeriod'] as String),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountKey: pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regenerateKeyAutomatically: map['regenerateKeyAutomatically'] == null ? null : (map['regenerateKeyAutomatically'] as bool).input(),
+      regenerationPeriod: map['regenerationPeriod'] == null ? null : (map['regenerationPeriod'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      storageAccountKey: (map['storageAccountKey'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Namespace messaging endpoint model used by a device to connect to a service.
 class MessagingEndpointResponse {
   /// The endpoint address to connect to.
-  final String address;
+  final pulumi.Input<String> address;
   /// Type of connection used for messaging endpoint.
-  final String? endpointType;
+  final pulumi.Input<String>? endpointType;
   /// The messaging endpoint Azure resource Id.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [MessagingEndpointResponse].
   /// [address] The endpoint address to connect to.
@@ -30,9 +31,9 @@ class MessagingEndpointResponse {
 
   factory MessagingEndpointResponse.fromMap(Map<String, dynamic> map) {
     return MessagingEndpointResponse(
-      address: map['address'] as String,
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      address: (map['address'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

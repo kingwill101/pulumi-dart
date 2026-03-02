@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Links relevant to the assessment
 class AssessmentLinksResponse {
   /// Link to assessment in Azure Portal
-  final String azurePortalUri;
+  final pulumi.Input<String> azurePortalUri;
 
   /// Creates a new [AssessmentLinksResponse].
   /// [azurePortalUri] Link to assessment in Azure Portal
@@ -20,7 +21,7 @@ class AssessmentLinksResponse {
 
   factory AssessmentLinksResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentLinksResponse(
-      azurePortalUri: map['azurePortalUri'] as String,
+      azurePortalUri: (map['azurePortalUri'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_config_mux_stream_segment_settings.dart';
 
 class JobConfigMuxStream {
   /// The container format. The default is `mp4`.
-  final String? container;
+  final pulumi.Input<String>? container;
   /// List of ElementaryStream.key values multiplexed in this stream.
-  final List<String>? elementaryStreams;
+  final pulumi.Input<List<String>>? elementaryStreams;
   /// Identifier of the encryption configuration to use.
-  final String? encryptionId;
+  final pulumi.Input<String>? encryptionId;
   /// The name of the generated file.
-  final String? fileName;
+  final pulumi.Input<String>? fileName;
   /// A unique key for this multiplexed stream.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Segment settings for ts, fmp4 and vtt.
   /// Structure is documented below.
-  final JobConfigMuxStreamSegmentSettings? segmentSettings;
+  final pulumi.Input<JobConfigMuxStreamSegmentSettings>? segmentSettings;
 
   /// Creates a new [JobConfigMuxStream].
   /// [container] The container format. The default is `mp4`.
@@ -40,18 +41,18 @@ class JobConfigMuxStream {
       'encryptionId': ?encryptionId,
       'fileName': ?fileName,
       'key': ?key,
-      'segmentSettings': ?segmentSettings == null ? null : segmentSettings!.toMap(),
+      'segmentSettings': ?pulumi.Input.mapOptionalInputValue<JobConfigMuxStreamSegmentSettings, Map<String, dynamic>>(segmentSettings, (value) => value.toMap()),
     };
   }
 
   factory JobConfigMuxStream.fromMap(Map<String, dynamic> map) {
     return JobConfigMuxStream(
-      container: map['container'] == null ? null : map['container'] as String,
-      elementaryStreams: map['elementaryStreams'] == null ? null : (map['elementaryStreams'] as List).cast<String>(),
-      encryptionId: map['encryptionId'] == null ? null : map['encryptionId'] as String,
-      fileName: map['fileName'] == null ? null : map['fileName'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      segmentSettings: map['segmentSettings'] == null ? null : JobConfigMuxStreamSegmentSettings.fromMap((map['segmentSettings'] as Map).cast<String, dynamic>()),
+      container: map['container'] == null ? null : (map['container'] as String).input(),
+      elementaryStreams: map['elementaryStreams'] == null ? null : ((map['elementaryStreams'] as List).cast<String>()).input(),
+      encryptionId: map['encryptionId'] == null ? null : (map['encryptionId'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      segmentSettings: map['segmentSettings'] == null ? null : (JobConfigMuxStreamSegmentSettings.fromMap((map['segmentSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

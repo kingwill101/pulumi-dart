@@ -19,13 +19,10 @@ class GetCacheRuleArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCacheRuleArgs({
-    required pulumi.Output<String> cacheRuleName,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cacheRuleName = pulumi.Input.asInput<String>(cacheRuleName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cacheRuleName,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCacheRuleArgs {
 
   factory GetCacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetCacheRuleArgs(
-      cacheRuleName: pulumi.Output.create<String>(map['cacheRuleName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cacheRuleName: (map['cacheRuleName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

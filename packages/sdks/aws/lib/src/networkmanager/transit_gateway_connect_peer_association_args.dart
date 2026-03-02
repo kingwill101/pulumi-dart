@@ -24,15 +24,11 @@ class TransitGatewayConnectPeerAssociationArgs {
   /// [linkId] ID of the link.
   /// [transitGatewayConnectPeerArn] ARN of the Connect peer.
   TransitGatewayConnectPeerAssociationArgs({
-    required pulumi.Output<String> deviceId,
-    required pulumi.Output<String> globalNetworkId,
-    pulumi.Output<String>? linkId,
-    required pulumi.Output<String> transitGatewayConnectPeerArn,
-  }) :
-      deviceId = pulumi.Input.asInput<String>(deviceId),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      linkId = pulumi.Input.asOptionalInput<String>(linkId),
-      transitGatewayConnectPeerArn = pulumi.Input.asInput<String>(transitGatewayConnectPeerArn);
+    required this.deviceId,
+    required this.globalNetworkId,
+    this.linkId,
+    required this.transitGatewayConnectPeerArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class TransitGatewayConnectPeerAssociationArgs {
 
   factory TransitGatewayConnectPeerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayConnectPeerAssociationArgs(
-      deviceId: pulumi.Output.create<String>(map['deviceId'] as String),
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      linkId: map['linkId'] == null ? null : pulumi.Output.create<String>(map['linkId'] as String),
-      transitGatewayConnectPeerArn: pulumi.Output.create<String>(map['transitGatewayConnectPeerArn'] as String),
+      deviceId: (map['deviceId'] as String).input(),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
+      transitGatewayConnectPeerArn: (map['transitGatewayConnectPeerArn'] as String).input(),
     );
   }
 }

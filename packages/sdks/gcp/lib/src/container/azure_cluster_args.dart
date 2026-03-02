@@ -61,35 +61,21 @@ class AzureClusterArgs {
   /// [project] The project for the resource
   /// [resourceGroupId] The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
   AzureClusterArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<AzureClusterAuthorization> authorization,
-    required pulumi.Output<String> azureRegion,
-    pulumi.Output<AzureClusterAzureServicesAuthentication>? azureServicesAuthentication,
-    pulumi.Output<String>? client,
-    required pulumi.Output<AzureClusterControlPlane> controlPlane,
-    pulumi.Output<String>? description,
-    required pulumi.Output<AzureClusterFleet> fleet,
-    required pulumi.Output<String> location,
-    pulumi.Output<AzureClusterLoggingConfig>? loggingConfig,
-    pulumi.Output<String>? name,
-    required pulumi.Output<AzureClusterNetworking> networking,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> resourceGroupId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      authorization = pulumi.Input.asInput<AzureClusterAuthorization>(authorization),
-      azureRegion = pulumi.Input.asInput<String>(azureRegion),
-      azureServicesAuthentication = pulumi.Input.asOptionalInput<AzureClusterAzureServicesAuthentication>(azureServicesAuthentication),
-      client = pulumi.Input.asOptionalInput<String>(client),
-      controlPlane = pulumi.Input.asInput<AzureClusterControlPlane>(controlPlane),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fleet = pulumi.Input.asInput<AzureClusterFleet>(fleet),
-      location = pulumi.Input.asInput<String>(location),
-      loggingConfig = pulumi.Input.asOptionalInput<AzureClusterLoggingConfig>(loggingConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networking = pulumi.Input.asInput<AzureClusterNetworking>(networking),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceGroupId = pulumi.Input.asInput<String>(resourceGroupId);
+    this.annotations,
+    required this.authorization,
+    required this.azureRegion,
+    this.azureServicesAuthentication,
+    this.client,
+    required this.controlPlane,
+    this.description,
+    required this.fleet,
+    required this.location,
+    this.loggingConfig,
+    this.name,
+    required this.networking,
+    this.project,
+    required this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,20 +98,20 @@ class AzureClusterArgs {
 
   factory AzureClusterArgs.fromMap(Map<String, dynamic> map) {
     return AzureClusterArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      authorization: pulumi.Output.create<AzureClusterAuthorization>(AzureClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())),
-      azureRegion: pulumi.Output.create<String>(map['azureRegion'] as String),
-      azureServicesAuthentication: map['azureServicesAuthentication'] == null ? null : pulumi.Output.create<AzureClusterAzureServicesAuthentication>(AzureClusterAzureServicesAuthentication.fromMap((map['azureServicesAuthentication'] as Map).cast<String, dynamic>())),
-      client: map['client'] == null ? null : pulumi.Output.create<String>(map['client'] as String),
-      controlPlane: pulumi.Output.create<AzureClusterControlPlane>(AzureClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fleet: pulumi.Output.create<AzureClusterFleet>(AzureClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<AzureClusterLoggingConfig>(AzureClusterLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networking: pulumi.Output.create<AzureClusterNetworking>(AzureClusterNetworking.fromMap((map['networking'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceGroupId: pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      authorization: (AzureClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
+      azureRegion: (map['azureRegion'] as String).input(),
+      azureServicesAuthentication: map['azureServicesAuthentication'] == null ? null : (AzureClusterAzureServicesAuthentication.fromMap((map['azureServicesAuthentication'] as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (map['client'] as String).input(),
+      controlPlane: (AzureClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fleet: (AzureClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (AzureClusterLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networking: (AzureClusterNetworking.fromMap((map['networking'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
     );
   }
 }

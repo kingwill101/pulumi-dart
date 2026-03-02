@@ -6,19 +6,19 @@ import 'cluster_master_instance_fleet_launch_specifications.dart';
 
 class ClusterMasterInstanceFleet {
   /// ID of the cluster.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Configuration block for instance fleet.
-  final List<ClusterMasterInstanceFleetInstanceTypeConfig>? instanceTypeConfigs;
+  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfig>>? instanceTypeConfigs;
   /// Configuration block for launch specification.
-  final ClusterMasterInstanceFleetLaunchSpecifications? launchSpecifications;
+  final pulumi.Input<ClusterMasterInstanceFleetLaunchSpecifications>? launchSpecifications;
   /// Friendly name given to the instance fleet.
-  final String? name;
-  final int? provisionedOnDemandCapacity;
-  final int? provisionedSpotCapacity;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<int>? provisionedOnDemandCapacity;
+  final pulumi.Input<int>? provisionedSpotCapacity;
   /// Target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
-  final int? targetOnDemandCapacity;
+  final pulumi.Input<int>? targetOnDemandCapacity;
   /// Target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
-  final int? targetSpotCapacity;
+  final pulumi.Input<int>? targetSpotCapacity;
 
   /// Creates a new [ClusterMasterInstanceFleet].
   /// [id] ID of the cluster.
@@ -43,8 +43,8 @@ class ClusterMasterInstanceFleet {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'instanceTypeConfigs': ?instanceTypeConfigs == null ? null : pulumi.Input.encodeList<ClusterMasterInstanceFleetInstanceTypeConfig, Map<String, dynamic>>(instanceTypeConfigs!, (value) => value.toMap()),
-      'launchSpecifications': ?launchSpecifications == null ? null : launchSpecifications!.toMap(),
+      'instanceTypeConfigs': ?pulumi.Input.mapOptionalInputValue<List<ClusterMasterInstanceFleetInstanceTypeConfig>, List<Map<String, dynamic>>>(instanceTypeConfigs, (value) => pulumi.Input.encodeList<ClusterMasterInstanceFleetInstanceTypeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'launchSpecifications': ?pulumi.Input.mapOptionalInputValue<ClusterMasterInstanceFleetLaunchSpecifications, Map<String, dynamic>>(launchSpecifications, (value) => value.toMap()),
       'name': ?name,
       'provisionedOnDemandCapacity': ?provisionedOnDemandCapacity,
       'provisionedSpotCapacity': ?provisionedSpotCapacity,
@@ -55,14 +55,14 @@ class ClusterMasterInstanceFleet {
 
   factory ClusterMasterInstanceFleet.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceFleet(
-      id: map['id'] == null ? null : map['id'] as String,
-      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs'], (value) => ClusterMasterInstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      launchSpecifications: map['launchSpecifications'] == null ? null : ClusterMasterInstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      provisionedOnDemandCapacity: map['provisionedOnDemandCapacity'] == null ? null : map['provisionedOnDemandCapacity'] as int,
-      provisionedSpotCapacity: map['provisionedSpotCapacity'] == null ? null : map['provisionedSpotCapacity'] as int,
-      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : map['targetOnDemandCapacity'] as int,
-      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : map['targetSpotCapacity'] as int,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs'], (value) => ClusterMasterInstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchSpecifications: map['launchSpecifications'] == null ? null : (ClusterMasterInstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisionedOnDemandCapacity: map['provisionedOnDemandCapacity'] == null ? null : (map['provisionedOnDemandCapacity'] as int).input(),
+      provisionedSpotCapacity: map['provisionedSpotCapacity'] == null ? null : (map['provisionedSpotCapacity'] as int).input(),
+      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : (map['targetOnDemandCapacity'] as int).input(),
+      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : (map['targetSpotCapacity'] as int).input(),
     );
   }
 }

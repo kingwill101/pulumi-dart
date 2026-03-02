@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Define match conditions
 class MatchCondition {
   /// List of possible match values.
-  final List<String> matchValue;
+  final pulumi.Input<List<String>> matchValue;
   /// Match variable to compare against.
-  final String matchVariable;
+  final pulumi.Input<String> matchVariable;
   /// Describes if the result of this condition should be negated.
-  final bool? negateCondition;
+  final pulumi.Input<bool>? negateCondition;
   /// Describes operator to be matched
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Selector can used to match a specific key for QueryString, Cookies, RequestHeader or PostArgs.
-  final String? selector;
+  final pulumi.Input<String>? selector;
   /// List of transforms.
-  final List<String>? transforms;
+  final pulumi.Input<List<String>>? transforms;
 
   /// Creates a new [MatchCondition].
   /// [matchValue] List of possible match values.
@@ -45,12 +46,12 @@ class MatchCondition {
 
   factory MatchCondition.fromMap(Map<String, dynamic> map) {
     return MatchCondition(
-      matchValue: (map['matchValue'] as List).cast<String>(),
-      matchVariable: map['matchVariable'] as String,
-      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
-      operator: map['operator'] as String,
-      selector: map['selector'] == null ? null : map['selector'] as String,
-      transforms: map['transforms'] == null ? null : (map['transforms'] as List).cast<String>(),
+      matchValue: ((map['matchValue'] as List).cast<String>()).input(),
+      matchVariable: (map['matchVariable'] as String).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      operator: (map['operator'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
     );
   }
 }

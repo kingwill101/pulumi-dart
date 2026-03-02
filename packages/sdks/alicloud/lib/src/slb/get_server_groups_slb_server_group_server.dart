@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerGroupsSlbServerGroupServer {
   /// ID of the attached ECS instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Weight associated to the ECS instance.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetServerGroupsSlbServerGroupServer].
   /// [instanceId] ID of the attached ECS instance.
@@ -24,8 +25,8 @@ class GetServerGroupsSlbServerGroupServer {
 
   factory GetServerGroupsSlbServerGroupServer.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsSlbServerGroupServer(
-      instanceId: map['instanceId'] as String,
-      weight: map['weight'] as int,
+      instanceId: (map['instanceId'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

@@ -48,31 +48,19 @@ class RouterInterfaceArgs {
   /// [routerType] Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
   /// [specification] Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
   RouterInterfaceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? healthCheckSourceIp,
-    pulumi.Output<String>? healthCheckTargetIp,
-    pulumi.Output<String>? instanceChargeType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? oppositeAccessPointId,
-    required pulumi.Output<String> oppositeRegion,
-    pulumi.Output<int>? period,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> routerId,
-    required pulumi.Output<String> routerType,
-    pulumi.Output<String>? specification,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      healthCheckSourceIp = pulumi.Input.asOptionalInput<String>(healthCheckSourceIp),
-      healthCheckTargetIp = pulumi.Input.asOptionalInput<String>(healthCheckTargetIp),
-      instanceChargeType = pulumi.Input.asOptionalInput<String>(instanceChargeType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oppositeAccessPointId = pulumi.Input.asOptionalInput<String>(oppositeAccessPointId),
-      oppositeRegion = pulumi.Input.asInput<String>(oppositeRegion),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      role = pulumi.Input.asInput<String>(role),
-      routerId = pulumi.Input.asInput<String>(routerId),
-      routerType = pulumi.Input.asInput<String>(routerType),
-      specification = pulumi.Input.asOptionalInput<String>(specification);
+    this.description,
+    this.healthCheckSourceIp,
+    this.healthCheckTargetIp,
+    this.instanceChargeType,
+    this.name,
+    this.oppositeAccessPointId,
+    required this.oppositeRegion,
+    this.period,
+    required this.role,
+    required this.routerId,
+    required this.routerType,
+    this.specification,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class RouterInterfaceArgs {
 
   factory RouterInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : pulumi.Output.create<String>(map['healthCheckSourceIp'] as String),
-      healthCheckTargetIp: map['healthCheckTargetIp'] == null ? null : pulumi.Output.create<String>(map['healthCheckTargetIp'] as String),
-      instanceChargeType: map['instanceChargeType'] == null ? null : pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      oppositeAccessPointId: map['oppositeAccessPointId'] == null ? null : pulumi.Output.create<String>(map['oppositeAccessPointId'] as String),
-      oppositeRegion: pulumi.Output.create<String>(map['oppositeRegion'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      routerId: pulumi.Output.create<String>(map['routerId'] as String),
-      routerType: pulumi.Output.create<String>(map['routerType'] as String),
-      specification: map['specification'] == null ? null : pulumi.Output.create<String>(map['specification'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp'] as String).input(),
+      healthCheckTargetIp: map['healthCheckTargetIp'] == null ? null : (map['healthCheckTargetIp'] as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      oppositeAccessPointId: map['oppositeAccessPointId'] == null ? null : (map['oppositeAccessPointId'] as String).input(),
+      oppositeRegion: (map['oppositeRegion'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      role: (map['role'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      routerType: (map['routerType'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
     );
   }
 }

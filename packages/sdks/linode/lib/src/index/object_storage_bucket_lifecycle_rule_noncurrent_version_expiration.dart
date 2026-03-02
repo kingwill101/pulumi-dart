@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
   /// Specifies the number of days non-current object versions expire.
-  final int days;
+  final pulumi.Input<int> days;
 
   /// Creates a new [ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration].
   /// [days] Specifies the number of days non-current object versions expire.
@@ -19,7 +20,7 @@ class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
 
   factory ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration(
-      days: map['days'] as int,
+      days: (map['days'] as int).input(),
     );
   }
 }

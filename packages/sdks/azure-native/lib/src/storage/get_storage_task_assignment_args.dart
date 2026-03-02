@@ -19,13 +19,10 @@ class GetStorageTaskAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageTaskAssignmentName] The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   GetStorageTaskAssignmentArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageTaskAssignmentName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageTaskAssignmentName = pulumi.Input.asInput<String>(storageTaskAssignmentName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.storageTaskAssignmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStorageTaskAssignmentArgs {
 
   factory GetStorageTaskAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageTaskAssignmentArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageTaskAssignmentName: pulumi.Output.create<String>(map['storageTaskAssignmentName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageTaskAssignmentName: (map['storageTaskAssignmentName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatadogInstallMethodResponse {
   /// The installer version.
-  final String? installerVersion;
+  final pulumi.Input<String>? installerVersion;
   /// The tool.
-  final String? tool;
+  final pulumi.Input<String>? tool;
   /// The tool version.
-  final String? toolVersion;
+  final pulumi.Input<String>? toolVersion;
 
   /// Creates a new [DatadogInstallMethodResponse].
   /// [installerVersion] The installer version.
@@ -29,9 +30,9 @@ class DatadogInstallMethodResponse {
 
   factory DatadogInstallMethodResponse.fromMap(Map<String, dynamic> map) {
     return DatadogInstallMethodResponse(
-      installerVersion: map['installerVersion'] == null ? null : map['installerVersion'] as String,
-      tool: map['tool'] == null ? null : map['tool'] as String,
-      toolVersion: map['toolVersion'] == null ? null : map['toolVersion'] as String,
+      installerVersion: map['installerVersion'] == null ? null : (map['installerVersion'] as String).input(),
+      tool: map['tool'] == null ? null : (map['tool'] as String).input(),
+      toolVersion: map['toolVersion'] == null ? null : (map['toolVersion'] as String).input(),
     );
   }
 }

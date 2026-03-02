@@ -31,21 +31,14 @@ class ApiToolArgs {
   /// [serviceName] The name of the API Management service.
   /// [toolId] Tool identifier within an API. Must be unique in the current API Management service instance.
   ApiToolArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? operationId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? toolId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      operationId = pulumi.Input.asOptionalInput<String>(operationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      toolId = pulumi.Input.asOptionalInput<String>(toolId);
+    required this.apiId,
+    this.description,
+    this.displayName,
+    this.operationId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.toolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ApiToolArgs {
 
   factory ApiToolArgs.fromMap(Map<String, dynamic> map) {
     return ApiToolArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      operationId: map['operationId'] == null ? null : pulumi.Output.create<String>(map['operationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      toolId: map['toolId'] == null ? null : pulumi.Output.create<String>(map['toolId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      toolId: map['toolId'] == null ? null : (map['toolId'] as String).input(),
     );
   }
 }

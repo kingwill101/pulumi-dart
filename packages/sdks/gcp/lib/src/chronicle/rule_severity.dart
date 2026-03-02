@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSeverity {
   /// The display name of the severity level. Extracted from the meta section of
   /// the rule text.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Creates a new [RuleSeverity].
   /// [displayName] The display name of the severity level. Extracted from the meta section of
@@ -20,7 +21,7 @@ class RuleSeverity {
 
   factory RuleSeverity.fromMap(Map<String, dynamic> map) {
     return RuleSeverity(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

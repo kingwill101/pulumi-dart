@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Server Migration Specific properties base model.
 class ServerMigrationSpecificPropertiesResponse {
   /// A type definition that refers the id to an Azure Resource Manager resource.
-  final String? currentJobId;
+  final pulumi.Input<String>? currentJobId;
   /// A type definition that refers the id to an Azure Resource Manager resource.
-  final String? drApplianceInventoryId;
+  final pulumi.Input<String>? drApplianceInventoryId;
   /// Migration Specific Properties Instance Types.
   /// Expected value is 'ServerMigration'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [ServerMigrationSpecificPropertiesResponse].
   /// [currentJobId] A type definition that refers the id to an Azure Resource Manager resource.
@@ -31,9 +32,9 @@ class ServerMigrationSpecificPropertiesResponse {
 
   factory ServerMigrationSpecificPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServerMigrationSpecificPropertiesResponse(
-      currentJobId: map['currentJobId'] == null ? null : map['currentJobId'] as String,
-      drApplianceInventoryId: map['drApplianceInventoryId'] == null ? null : map['drApplianceInventoryId'] as String,
-      instanceType: map['instanceType'] as String,
+      currentJobId: map['currentJobId'] == null ? null : (map['currentJobId'] as String).input(),
+      drApplianceInventoryId: map['drApplianceInventoryId'] == null ? null : (map['drApplianceInventoryId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

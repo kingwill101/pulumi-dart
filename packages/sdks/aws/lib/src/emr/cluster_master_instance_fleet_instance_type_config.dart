@@ -6,17 +6,17 @@ import 'cluster_master_instance_fleet_instance_type_config_ebs_config.dart';
 
 class ClusterMasterInstanceFleetInstanceTypeConfig {
   /// Bid price for each EC2 Spot instance type as defined by `instance_type`. Expressed in USD. If neither `bid_price` nor `bid_price_as_percentage_of_on_demand_price` is provided, `bid_price_as_percentage_of_on_demand_price` defaults to 100%.
-  final String? bidPrice;
+  final pulumi.Input<String>? bidPrice;
   /// Bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by `instance_type`. Expressed as a number (for example, 20 specifies 20%). If neither `bid_price` nor `bid_price_as_percentage_of_on_demand_price` is provided, `bid_price_as_percentage_of_on_demand_price` defaults to 100%.
-  final double? bidPriceAsPercentageOfOnDemandPrice;
+  final pulumi.Input<double>? bidPriceAsPercentageOfOnDemandPrice;
   /// Configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster. List of `configuration` blocks.
-  final List<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>? configurations;
+  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>>? configurations;
   /// Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
-  final List<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig>? ebsConfigs;
+  final pulumi.Input<List<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig>>? ebsConfigs;
   /// EC2 instance type, such as m4.xlarge.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in `aws.emr.InstanceFleet`.
-  final int? weightedCapacity;
+  final pulumi.Input<int>? weightedCapacity;
 
   /// Creates a new [ClusterMasterInstanceFleetInstanceTypeConfig].
   /// [bidPrice] Bid price for each EC2 Spot instance type as defined by `instance_type`. Expressed in USD. If neither `bid_price` nor `bid_price_as_percentage_of_on_demand_price` is provided, `bid_price_as_percentage_of_on_demand_price` defaults to 100%.
@@ -38,8 +38,8 @@ class ClusterMasterInstanceFleetInstanceTypeConfig {
     return <String, dynamic>{
       'bidPrice': ?bidPrice,
       'bidPriceAsPercentageOfOnDemandPrice': ?bidPriceAsPercentageOfOnDemandPrice,
-      'configurations': ?configurations == null ? null : pulumi.Input.encodeList<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration, Map<String, dynamic>>(configurations!, (value) => value.toMap()),
-      'ebsConfigs': ?ebsConfigs == null ? null : pulumi.Input.encodeList<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig, Map<String, dynamic>>(ebsConfigs!, (value) => value.toMap()),
+      'configurations': ?pulumi.Input.mapOptionalInputValue<List<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ebsConfigs': ?pulumi.Input.mapOptionalInputValue<List<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig>, List<Map<String, dynamic>>>(ebsConfigs, (value) => pulumi.Input.encodeList<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceType': instanceType,
       'weightedCapacity': ?weightedCapacity,
     };
@@ -47,12 +47,12 @@ class ClusterMasterInstanceFleetInstanceTypeConfig {
 
   factory ClusterMasterInstanceFleetInstanceTypeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceFleetInstanceTypeConfig(
-      bidPrice: map['bidPrice'] == null ? null : map['bidPrice'] as String,
-      bidPriceAsPercentageOfOnDemandPrice: map['bidPriceAsPercentageOfOnDemandPrice'] == null ? null : map['bidPriceAsPercentageOfOnDemandPrice'] as double,
-      configurations: map['configurations'] == null ? null : pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>(map['configurations'], (value) => ClusterMasterInstanceFleetInstanceTypeConfigConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      ebsConfigs: map['ebsConfigs'] == null ? null : pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig>(map['ebsConfigs'], (value) => ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      instanceType: map['instanceType'] as String,
-      weightedCapacity: map['weightedCapacity'] == null ? null : map['weightedCapacity'] as int,
+      bidPrice: map['bidPrice'] == null ? null : (map['bidPrice'] as String).input(),
+      bidPriceAsPercentageOfOnDemandPrice: map['bidPriceAsPercentageOfOnDemandPrice'] == null ? null : (map['bidPriceAsPercentageOfOnDemandPrice'] as double).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfigConfiguration>(map['configurations'], (value) => ClusterMasterInstanceFleetInstanceTypeConfigConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ebsConfigs: map['ebsConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig>(map['ebsConfigs'], (value) => ClusterMasterInstanceFleetInstanceTypeConfigEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as int).input(),
     );
   }
 }

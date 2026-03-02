@@ -23,17 +23,12 @@ class DebugTokenArgs {
   /// [project] Optional.
   /// [token] Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
   DebugTokenArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> token,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      token = pulumi.Input.asInput<String>(token);
+    required this.appId,
+    required this.displayName,
+    this.name,
+    this.project,
+    required this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class DebugTokenArgs {
 
   factory DebugTokenArgs.fromMap(Map<String, dynamic> map) {
     return DebugTokenArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      token: pulumi.Output.create<String>(map['token'] as String),
+      appId: (map['appId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      token: (map['token'] as String).input(),
     );
   }
 }

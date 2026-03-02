@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerServiceDeploymentVersionContainer {
   /// Launch command for the container. A list of strings.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// Name of the container.
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// Key-value map of the environment variables of the container.
-  final Map<String, String>? environment;
+  final pulumi.Input<Map<String, String>>? environment;
   /// Name of the image used for the container. Container images sourced from your Lightsail container service, that are registered and stored on your service, start with a colon (`:`). For example, `:container-service-1.mystaticwebsite.1`. Container images sourced from a public registry like Docker Hub don't start with a colon. For example, `nginx:latest` or `nginx`.
-  final String image;
+  final pulumi.Input<String> image;
   /// Key-value map of the open firewall ports of the container. Valid values: `HTTP`, `HTTPS`, `TCP`, `UDP`.
-  final Map<String, String>? ports;
+  final pulumi.Input<Map<String, String>>? ports;
 
   /// Creates a new [ContainerServiceDeploymentVersionContainer].
   /// [commands] Launch command for the container. A list of strings.
@@ -39,11 +40,11 @@ class ContainerServiceDeploymentVersionContainer {
 
   factory ContainerServiceDeploymentVersionContainer.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionContainer(
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      containerName: map['containerName'] as String,
-      environment: map['environment'] == null ? null : (map['environment'] as Map).cast<String, String>(),
-      image: map['image'] as String,
-      ports: map['ports'] == null ? null : (map['ports'] as Map).cast<String, String>(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      containerName: (map['containerName'] as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
+      image: (map['image'] as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class ResourceClaimPatchArgs {
   /// [metadata] Standard object metadata
   /// [spec] Spec describes what is being requested and how to configure it. The spec is immutable.
   ResourceClaimPatchArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<ResourceClaimSpecPatch>? spec,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      spec = pulumi.Input.asOptionalInput<ResourceClaimSpecPatch>(spec);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ResourceClaimPatchArgs {
 
   factory ResourceClaimPatchArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClaimPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      spec: map['spec'] == null ? null : pulumi.Output.create<ResourceClaimSpecPatch>(ResourceClaimSpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ResourceClaimSpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

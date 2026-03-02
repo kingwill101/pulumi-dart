@@ -49,27 +49,17 @@ class ExternalAccessRuleArgs {
   /// [sourceIpRanges] If source ranges are specified, the external access rule applies only to
   /// [sourcePorts] A list of source ports to which the external access rule applies.
   ExternalAccessRuleArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<ExternalAccessRuleDestinationIpRange>> destinationIpRanges,
-    required pulumi.Output<List<String>> destinationPorts,
-    required pulumi.Output<String> ipProtocol,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<int> priority,
-    required pulumi.Output<List<ExternalAccessRuleSourceIpRange>> sourceIpRanges,
-    required pulumi.Output<List<String>> sourcePorts,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationIpRanges = pulumi.Input.asInput<List<ExternalAccessRuleDestinationIpRange>>(destinationIpRanges),
-      destinationPorts = pulumi.Input.asInput<List<String>>(destinationPorts),
-      ipProtocol = pulumi.Input.asInput<String>(ipProtocol),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      priority = pulumi.Input.asInput<int>(priority),
-      sourceIpRanges = pulumi.Input.asInput<List<ExternalAccessRuleSourceIpRange>>(sourceIpRanges),
-      sourcePorts = pulumi.Input.asInput<List<String>>(sourcePorts);
+    required this.action,
+    this.description,
+    required this.destinationIpRanges,
+    required this.destinationPorts,
+    required this.ipProtocol,
+    this.name,
+    required this.parent,
+    required this.priority,
+    required this.sourceIpRanges,
+    required this.sourcePorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,16 +78,16 @@ class ExternalAccessRuleArgs {
 
   factory ExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationIpRanges: pulumi.Output.create<List<ExternalAccessRuleDestinationIpRange>>(pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges'], (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      destinationPorts: pulumi.Output.create<List<String>>((map['destinationPorts'] as List).cast<String>()),
-      ipProtocol: pulumi.Output.create<String>(map['ipProtocol'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      sourceIpRanges: pulumi.Output.create<List<ExternalAccessRuleSourceIpRange>>(pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges'], (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      sourcePorts: pulumi.Output.create<List<String>>((map['sourcePorts'] as List).cast<String>()),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationIpRanges: (pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges'], (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPorts: ((map['destinationPorts'] as List).cast<String>()).input(),
+      ipProtocol: (map['ipProtocol'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      sourceIpRanges: (pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges'], (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePorts: ((map['sourcePorts'] as List).cast<String>()).input(),
     );
   }
 }

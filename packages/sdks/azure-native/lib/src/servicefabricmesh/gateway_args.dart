@@ -40,25 +40,16 @@ class GatewayArgs {
   /// [tags] Resource tags.
   /// [tcp] Configuration for tcp connectivity for this gateway.
   GatewayArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<NetworkRef> destinationNetwork,
-    pulumi.Output<String>? gatewayResourceName,
-    pulumi.Output<List<HttpConfig>>? http,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<NetworkRef> sourceNetwork,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<TcpConfig>>? tcp,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationNetwork = pulumi.Input.asInput<NetworkRef>(destinationNetwork),
-      gatewayResourceName = pulumi.Input.asOptionalInput<String>(gatewayResourceName),
-      http = pulumi.Input.asOptionalInput<List<HttpConfig>>(http),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceNetwork = pulumi.Input.asInput<NetworkRef>(sourceNetwork),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tcp = pulumi.Input.asOptionalInput<List<TcpConfig>>(tcp);
+    this.description,
+    required this.destinationNetwork,
+    this.gatewayResourceName,
+    this.http,
+    this.location,
+    required this.resourceGroupName,
+    required this.sourceNetwork,
+    this.tags,
+    this.tcp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationNetwork: pulumi.Output.create<NetworkRef>(NetworkRef.fromMap((map['destinationNetwork'] as Map).cast<String, dynamic>())),
-      gatewayResourceName: map['gatewayResourceName'] == null ? null : pulumi.Output.create<String>(map['gatewayResourceName'] as String),
-      http: map['http'] == null ? null : pulumi.Output.create<List<HttpConfig>>(pulumi.Input.decodeList<HttpConfig>(map['http'], (value) => HttpConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceNetwork: pulumi.Output.create<NetworkRef>(NetworkRef.fromMap((map['sourceNetwork'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tcp: map['tcp'] == null ? null : pulumi.Output.create<List<TcpConfig>>(pulumi.Input.decodeList<TcpConfig>(map['tcp'], (value) => TcpConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationNetwork: (NetworkRef.fromMap((map['destinationNetwork'] as Map).cast<String, dynamic>())).input(),
+      gatewayResourceName: map['gatewayResourceName'] == null ? null : (map['gatewayResourceName'] as String).input(),
+      http: map['http'] == null ? null : (pulumi.Input.decodeList<HttpConfig>(map['http'], (value) => HttpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceNetwork: (NetworkRef.fromMap((map['sourceNetwork'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tcp: map['tcp'] == null ? null : (pulumi.Input.decodeList<TcpConfig>(map['tcp'], (value) => TcpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

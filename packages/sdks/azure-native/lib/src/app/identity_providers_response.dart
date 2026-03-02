@@ -13,22 +13,22 @@ import 'twitter_response.dart';
 /// The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
 class IdentityProvidersResponse {
   /// The configuration settings of the Apple provider.
-  final AppleResponse? apple;
+  final pulumi.Input<AppleResponse>? apple;
   /// The configuration settings of the Azure Active directory provider.
-  final AzureActiveDirectoryResponse? azureActiveDirectory;
+  final pulumi.Input<AzureActiveDirectoryResponse>? azureActiveDirectory;
   /// The configuration settings of the Azure Static Web Apps provider.
-  final AzureStaticWebAppsResponse? azureStaticWebApps;
+  final pulumi.Input<AzureStaticWebAppsResponse>? azureStaticWebApps;
   /// The map of the name of the alias of each custom Open ID Connect provider to the
   /// configuration settings of the custom Open ID Connect provider.
-  final Map<String, CustomOpenIdConnectProviderResponse>? customOpenIdConnectProviders;
+  final pulumi.Input<Map<String, CustomOpenIdConnectProviderResponse>>? customOpenIdConnectProviders;
   /// The configuration settings of the Facebook provider.
-  final FacebookResponse? facebook;
+  final pulumi.Input<FacebookResponse>? facebook;
   /// The configuration settings of the GitHub provider.
-  final GitHubResponse? gitHub;
+  final pulumi.Input<GitHubResponse>? gitHub;
   /// The configuration settings of the Google provider.
-  final GoogleResponse? google;
+  final pulumi.Input<GoogleResponse>? google;
   /// The configuration settings of the Twitter provider.
-  final TwitterResponse? twitter;
+  final pulumi.Input<TwitterResponse>? twitter;
 
   /// Creates a new [IdentityProvidersResponse].
   /// [apple] The configuration settings of the Apple provider.
@@ -52,27 +52,27 @@ class IdentityProvidersResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apple': ?apple == null ? null : apple!.toMap(),
-      'azureActiveDirectory': ?azureActiveDirectory == null ? null : azureActiveDirectory!.toMap(),
-      'azureStaticWebApps': ?azureStaticWebApps == null ? null : azureStaticWebApps!.toMap(),
-      'customOpenIdConnectProviders': ?customOpenIdConnectProviders == null ? null : pulumi.Input.encodeMapValues<CustomOpenIdConnectProviderResponse, Map<String, dynamic>>(customOpenIdConnectProviders!, (value) => value.toMap()),
-      'facebook': ?facebook == null ? null : facebook!.toMap(),
-      'gitHub': ?gitHub == null ? null : gitHub!.toMap(),
-      'google': ?google == null ? null : google!.toMap(),
-      'twitter': ?twitter == null ? null : twitter!.toMap(),
+      'apple': ?pulumi.Input.mapOptionalInputValue<AppleResponse, Map<String, dynamic>>(apple, (value) => value.toMap()),
+      'azureActiveDirectory': ?pulumi.Input.mapOptionalInputValue<AzureActiveDirectoryResponse, Map<String, dynamic>>(azureActiveDirectory, (value) => value.toMap()),
+      'azureStaticWebApps': ?pulumi.Input.mapOptionalInputValue<AzureStaticWebAppsResponse, Map<String, dynamic>>(azureStaticWebApps, (value) => value.toMap()),
+      'customOpenIdConnectProviders': ?pulumi.Input.mapOptionalInputValue<Map<String, CustomOpenIdConnectProviderResponse>, Map<String, Map<String, dynamic>>>(customOpenIdConnectProviders, (value) => pulumi.Input.encodeMapValues<CustomOpenIdConnectProviderResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'facebook': ?pulumi.Input.mapOptionalInputValue<FacebookResponse, Map<String, dynamic>>(facebook, (value) => value.toMap()),
+      'gitHub': ?pulumi.Input.mapOptionalInputValue<GitHubResponse, Map<String, dynamic>>(gitHub, (value) => value.toMap()),
+      'google': ?pulumi.Input.mapOptionalInputValue<GoogleResponse, Map<String, dynamic>>(google, (value) => value.toMap()),
+      'twitter': ?pulumi.Input.mapOptionalInputValue<TwitterResponse, Map<String, dynamic>>(twitter, (value) => value.toMap()),
     };
   }
 
   factory IdentityProvidersResponse.fromMap(Map<String, dynamic> map) {
     return IdentityProvidersResponse(
-      apple: map['apple'] == null ? null : AppleResponse.fromMap((map['apple'] as Map).cast<String, dynamic>()),
-      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : AzureActiveDirectoryResponse.fromMap((map['azureActiveDirectory'] as Map).cast<String, dynamic>()),
-      azureStaticWebApps: map['azureStaticWebApps'] == null ? null : AzureStaticWebAppsResponse.fromMap((map['azureStaticWebApps'] as Map).cast<String, dynamic>()),
-      customOpenIdConnectProviders: map['customOpenIdConnectProviders'] == null ? null : pulumi.Input.decodeMapValues<CustomOpenIdConnectProviderResponse>(map['customOpenIdConnectProviders'], (value) => CustomOpenIdConnectProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
-      facebook: map['facebook'] == null ? null : FacebookResponse.fromMap((map['facebook'] as Map).cast<String, dynamic>()),
-      gitHub: map['gitHub'] == null ? null : GitHubResponse.fromMap((map['gitHub'] as Map).cast<String, dynamic>()),
-      google: map['google'] == null ? null : GoogleResponse.fromMap((map['google'] as Map).cast<String, dynamic>()),
-      twitter: map['twitter'] == null ? null : TwitterResponse.fromMap((map['twitter'] as Map).cast<String, dynamic>()),
+      apple: map['apple'] == null ? null : (AppleResponse.fromMap((map['apple'] as Map).cast<String, dynamic>())).input(),
+      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : (AzureActiveDirectoryResponse.fromMap((map['azureActiveDirectory'] as Map).cast<String, dynamic>())).input(),
+      azureStaticWebApps: map['azureStaticWebApps'] == null ? null : (AzureStaticWebAppsResponse.fromMap((map['azureStaticWebApps'] as Map).cast<String, dynamic>())).input(),
+      customOpenIdConnectProviders: map['customOpenIdConnectProviders'] == null ? null : (pulumi.Input.decodeMapValues<CustomOpenIdConnectProviderResponse>(map['customOpenIdConnectProviders'], (value) => CustomOpenIdConnectProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      facebook: map['facebook'] == null ? null : (FacebookResponse.fromMap((map['facebook'] as Map).cast<String, dynamic>())).input(),
+      gitHub: map['gitHub'] == null ? null : (GitHubResponse.fromMap((map['gitHub'] as Map).cast<String, dynamic>())).input(),
+      google: map['google'] == null ? null : (GoogleResponse.fromMap((map['google'] as Map).cast<String, dynamic>())).input(),
+      twitter: map['twitter'] == null ? null : (TwitterResponse.fromMap((map['twitter'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

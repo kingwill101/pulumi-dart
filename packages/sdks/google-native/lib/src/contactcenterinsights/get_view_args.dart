@@ -16,13 +16,10 @@ class GetViewArgs {
   /// [project] Optional.
   /// [viewId] Required.
   GetViewArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> viewId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      viewId = pulumi.Input.asInput<String>(viewId);
+    required this.location,
+    this.project,
+    required this.viewId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetViewArgs {
 
   factory GetViewArgs.fromMap(Map<String, dynamic> map) {
     return GetViewArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      viewId: pulumi.Output.create<String>(map['viewId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      viewId: (map['viewId'] as String).input(),
     );
   }
 }

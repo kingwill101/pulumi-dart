@@ -19,13 +19,10 @@ class GetVmwareCollectorsOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmWareCollectorName] VMware collector ARM name
   GetVmwareCollectorsOperationArgs({
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmWareCollectorName,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmWareCollectorName = pulumi.Input.asInput<String>(vmWareCollectorName);
+    required this.projectName,
+    required this.resourceGroupName,
+    required this.vmWareCollectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVmwareCollectorsOperationArgs {
 
   factory GetVmwareCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareCollectorsOperationArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmWareCollectorName: pulumi.Output.create<String>(map['vmWareCollectorName'] as String),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmWareCollectorName: (map['vmWareCollectorName'] as String).input(),
     );
   }
 }

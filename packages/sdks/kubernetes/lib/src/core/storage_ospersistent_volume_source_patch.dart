@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_reference_patch.dart';
 
 /// Represents a StorageOS persistent volume resource.
 class StorageOSPersistentVolumeSourcePatch {
   /// fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
-  final String? fsType;
+  final pulumi.Input<String>? fsType;
   /// readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
-  final ObjectReferencePatch? secretRef;
+  final pulumi.Input<ObjectReferencePatch>? secretRef;
   /// volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.
-  final String? volumeName;
+  final pulumi.Input<String>? volumeName;
   /// volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.
-  final String? volumeNamespace;
+  final pulumi.Input<String>? volumeNamespace;
 
   /// Creates a new [StorageOSPersistentVolumeSourcePatch].
   /// [fsType] fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
@@ -33,7 +34,7 @@ class StorageOSPersistentVolumeSourcePatch {
     return <String, dynamic>{
       'fsType': ?fsType,
       'readOnly': ?readOnly,
-      'secretRef': ?secretRef == null ? null : secretRef!.toMap(),
+      'secretRef': ?pulumi.Input.mapOptionalInputValue<ObjectReferencePatch, Map<String, dynamic>>(secretRef, (value) => value.toMap()),
       'volumeName': ?volumeName,
       'volumeNamespace': ?volumeNamespace,
     };
@@ -41,11 +42,11 @@ class StorageOSPersistentVolumeSourcePatch {
 
   factory StorageOSPersistentVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return StorageOSPersistentVolumeSourcePatch(
-      fsType: map['fsType'] == null ? null : map['fsType'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      secretRef: map['secretRef'] == null ? null : ObjectReferencePatch.fromMap((map['secretRef'] as Map).cast<String, dynamic>()),
-      volumeName: map['volumeName'] == null ? null : map['volumeName'] as String,
-      volumeNamespace: map['volumeNamespace'] == null ? null : map['volumeNamespace'] as String,
+      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (ObjectReferencePatch.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      volumeNamespace: map['volumeNamespace'] == null ? null : (map['volumeNamespace'] as String).input(),
     );
   }
 }

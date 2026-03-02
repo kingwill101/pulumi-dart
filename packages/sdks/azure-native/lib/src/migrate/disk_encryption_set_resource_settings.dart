@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the disk encryption set resource settings.
 class DiskEncryptionSetResourceSettings {
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Compute/diskEncryptionSets'.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Gets or sets the target resource group name.
-  final String? targetResourceGroupName;
+  final pulumi.Input<String>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final String? targetResourceName;
+  final pulumi.Input<String>? targetResourceName;
 
   /// Creates a new [DiskEncryptionSetResourceSettings].
   /// [resourceType] The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -31,9 +32,9 @@ class DiskEncryptionSetResourceSettings {
 
   factory DiskEncryptionSetResourceSettings.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetResourceSettings(
-      resourceType: map['resourceType'] as String,
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : map['targetResourceGroupName'] as String,
-      targetResourceName: map['targetResourceName'] == null ? null : map['targetResourceName'] as String,
+      resourceType: (map['resourceType'] as String).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
     );
   }
 }

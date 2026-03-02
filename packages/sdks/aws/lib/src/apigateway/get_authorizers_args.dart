@@ -16,11 +16,9 @@ class GetAuthorizersArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the associated REST API.
   GetAuthorizersArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApiId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asInput<String>(restApiId);
+    this.region,
+    required this.restApiId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAuthorizersArgs {
 
   factory GetAuthorizersArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizersArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: pulumi.Output.create<String>(map['restApiId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: (map['restApiId'] as String).input(),
     );
   }
 }

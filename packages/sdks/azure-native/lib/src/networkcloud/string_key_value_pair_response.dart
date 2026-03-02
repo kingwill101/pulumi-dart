@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StringKeyValuePairResponse {
   /// The key to the mapped value.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the mapping key.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [StringKeyValuePairResponse].
   /// [key] The key to the mapped value.
@@ -24,8 +25,8 @@ class StringKeyValuePairResponse {
 
   factory StringKeyValuePairResponse.fromMap(Map<String, dynamic> map) {
     return StringKeyValuePairResponse(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

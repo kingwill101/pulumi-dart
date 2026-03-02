@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryGibPerVcpu {
-  final double? max;
-  final double? min;
+  final pulumi.Input<double>? max;
+  final pulumi.Input<double>? min;
 
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryGibPerVcpu].
   /// [max] Optional.
@@ -22,8 +23,8 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryG
 
   factory GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryGibPerVcpu.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryGibPerVcpu(
-      max: map['max'] == null ? null : map['max'] as double,
-      min: map['min'] == null ? null : map['min'] as double,
+      max: map['max'] == null ? null : (map['max'] as double).input(),
+      min: map['min'] == null ? null : (map['min'] as double).input(),
     );
   }
 }

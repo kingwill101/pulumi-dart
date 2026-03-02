@@ -18,15 +18,11 @@ class GetCryptoKeyArgs {
   /// [location] Required.
   /// [project] Optional.
   GetCryptoKeyArgs({
-    required pulumi.Output<String> cryptoKeyId,
-    required pulumi.Output<String> keyRingId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId),
-      keyRingId = pulumi.Input.asInput<String>(keyRingId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.cryptoKeyId,
+    required this.keyRingId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetCryptoKeyArgs {
 
   factory GetCryptoKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyArgs(
-      cryptoKeyId: pulumi.Output.create<String>(map['cryptoKeyId'] as String),
-      keyRingId: pulumi.Output.create<String>(map['keyRingId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      cryptoKeyId: (map['cryptoKeyId'] as String).input(),
+      keyRingId: (map['keyRingId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

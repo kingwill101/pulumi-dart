@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FutureReservationTimeWindowDuration {
   /// Span of time that's a fraction of a second at nanosecond resolution.
-  final int? nanos;
+  final pulumi.Input<int>? nanos;
   /// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-  final String? seconds;
+  final pulumi.Input<String>? seconds;
 
   /// Creates a new [FutureReservationTimeWindowDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond resolution.
@@ -24,8 +25,8 @@ class FutureReservationTimeWindowDuration {
 
   factory FutureReservationTimeWindowDuration.fromMap(Map<String, dynamic> map) {
     return FutureReservationTimeWindowDuration(
-      nanos: map['nanos'] == null ? null : map['nanos'] as int,
-      seconds: map['seconds'] == null ? null : map['seconds'] as String,
+      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds'] as String).input(),
     );
   }
 }

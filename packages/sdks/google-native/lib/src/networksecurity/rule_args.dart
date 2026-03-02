@@ -44,31 +44,19 @@ class RuleArgs {
   /// [sessionMatcher] CEL expression for matching on session criteria.
   /// [tlsInspectionEnabled] Optional. Flag to enable TLS inspection of traffic matching on , can only be true if the parent GatewaySecurityPolicy references a TLSInspectionConfig.
   RuleArgs({
-    pulumi.Output<String>? applicationMatcher,
-    required pulumi.Output<RuleBasicProfile> basicProfile,
-    pulumi.Output<String>? description,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> gatewaySecurityPolicyId,
-    pulumi.Output<String>? gatewaySecurityPolicyRuleId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> name,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sessionMatcher,
-    pulumi.Output<bool>? tlsInspectionEnabled,
-  }) :
-      applicationMatcher = pulumi.Input.asOptionalInput<String>(applicationMatcher),
-      basicProfile = pulumi.Input.asInput<RuleBasicProfile>(basicProfile),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      gatewaySecurityPolicyId = pulumi.Input.asInput<String>(gatewaySecurityPolicyId),
-      gatewaySecurityPolicyRuleId = pulumi.Input.asOptionalInput<String>(gatewaySecurityPolicyRuleId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asInput<String>(name),
-      priority = pulumi.Input.asInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionMatcher = pulumi.Input.asInput<String>(sessionMatcher),
-      tlsInspectionEnabled = pulumi.Input.asOptionalInput<bool>(tlsInspectionEnabled);
+    this.applicationMatcher,
+    required this.basicProfile,
+    this.description,
+    required this.enabled,
+    required this.gatewaySecurityPolicyId,
+    this.gatewaySecurityPolicyRuleId,
+    this.location,
+    required this.name,
+    required this.priority,
+    this.project,
+    required this.sessionMatcher,
+    this.tlsInspectionEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      applicationMatcher: map['applicationMatcher'] == null ? null : pulumi.Output.create<String>(map['applicationMatcher'] as String),
-      basicProfile: pulumi.Output.create<RuleBasicProfile>(RuleBasicProfile.fromValue(map['basicProfile'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      gatewaySecurityPolicyId: pulumi.Output.create<String>(map['gatewaySecurityPolicyId'] as String),
-      gatewaySecurityPolicyRuleId: map['gatewaySecurityPolicyRuleId'] == null ? null : pulumi.Output.create<String>(map['gatewaySecurityPolicyRuleId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sessionMatcher: pulumi.Output.create<String>(map['sessionMatcher'] as String),
-      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['tlsInspectionEnabled'] as bool),
+      applicationMatcher: map['applicationMatcher'] == null ? null : (map['applicationMatcher'] as String).input(),
+      basicProfile: (RuleBasicProfile.fromValue(map['basicProfile'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      gatewaySecurityPolicyId: (map['gatewaySecurityPolicyId'] as String).input(),
+      gatewaySecurityPolicyRuleId: map['gatewaySecurityPolicyRuleId'] == null ? null : (map['gatewaySecurityPolicyRuleId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sessionMatcher: (map['sessionMatcher'] as String).input(),
+      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : (map['tlsInspectionEnabled'] as bool).input(),
     );
   }
 }

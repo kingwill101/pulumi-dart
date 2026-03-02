@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionResourcesVolume {
   /// Unique name for the volume.
-  final String name;
+  final pulumi.Input<String> name;
   /// Volume size in gigabytes.
-  final int sizeGb;
+  final pulumi.Input<int> sizeGb;
   /// Underlying volume type, e.g. 'tmpfs'.
-  final String volumeType;
+  final pulumi.Input<String> volumeType;
 
   /// Creates a new [FlexibleAppVersionResourcesVolume].
   /// [name] Unique name for the volume.
@@ -29,9 +30,9 @@ class FlexibleAppVersionResourcesVolume {
 
   factory FlexibleAppVersionResourcesVolume.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionResourcesVolume(
-      name: map['name'] as String,
-      sizeGb: map['sizeGb'] as int,
-      volumeType: map['volumeType'] as String,
+      name: (map['name'] as String).input(),
+      sizeGb: (map['sizeGb'] as int).input(),
+      volumeType: (map['volumeType'] as String).input(),
     );
   }
 }

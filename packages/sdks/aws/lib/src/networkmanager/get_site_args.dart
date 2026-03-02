@@ -19,13 +19,10 @@ class GetSiteArgs {
   /// [siteId] ID of the specific site to retrieve.
   /// [tags] Key-value tags for the Site.
   GetSiteArgs({
-    required pulumi.Output<String> globalNetworkId,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.globalNetworkId,
+    required this.siteId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSiteArgs {
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteArgs(
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

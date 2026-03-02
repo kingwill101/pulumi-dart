@@ -53,33 +53,20 @@ class DataQualityJobDefinitionState {
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DataQualityJobDefinitionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<DataQualityJobDefinitionDataQualityAppSpecification>? dataQualityAppSpecification,
-    pulumi.Output<DataQualityJobDefinitionDataQualityBaselineConfig>? dataQualityBaselineConfig,
-    pulumi.Output<DataQualityJobDefinitionDataQualityJobInput>? dataQualityJobInput,
-    pulumi.Output<DataQualityJobDefinitionDataQualityJobOutputConfig>? dataQualityJobOutputConfig,
-    pulumi.Output<DataQualityJobDefinitionJobResources>? jobResources,
-    pulumi.Output<String>? name,
-    pulumi.Output<DataQualityJobDefinitionNetworkConfig>? networkConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<DataQualityJobDefinitionStoppingCondition>? stoppingCondition,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      dataQualityAppSpecification = pulumi.Input.asOptionalInput<DataQualityJobDefinitionDataQualityAppSpecification>(dataQualityAppSpecification),
-      dataQualityBaselineConfig = pulumi.Input.asOptionalInput<DataQualityJobDefinitionDataQualityBaselineConfig>(dataQualityBaselineConfig),
-      dataQualityJobInput = pulumi.Input.asOptionalInput<DataQualityJobDefinitionDataQualityJobInput>(dataQualityJobInput),
-      dataQualityJobOutputConfig = pulumi.Input.asOptionalInput<DataQualityJobDefinitionDataQualityJobOutputConfig>(dataQualityJobOutputConfig),
-      jobResources = pulumi.Input.asOptionalInput<DataQualityJobDefinitionJobResources>(jobResources),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfig = pulumi.Input.asOptionalInput<DataQualityJobDefinitionNetworkConfig>(networkConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      stoppingCondition = pulumi.Input.asOptionalInput<DataQualityJobDefinitionStoppingCondition>(stoppingCondition),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.dataQualityAppSpecification,
+    this.dataQualityBaselineConfig,
+    this.dataQualityJobInput,
+    this.dataQualityJobOutputConfig,
+    this.jobResources,
+    this.name,
+    this.networkConfig,
+    this.region,
+    this.roleArn,
+    this.stoppingCondition,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class DataQualityJobDefinitionState {
 
   factory DataQualityJobDefinitionState.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      dataQualityAppSpecification: map['dataQualityAppSpecification'] == null ? null : pulumi.Output.create<DataQualityJobDefinitionDataQualityAppSpecification>(DataQualityJobDefinitionDataQualityAppSpecification.fromMap((map['dataQualityAppSpecification'] as Map).cast<String, dynamic>())),
-      dataQualityBaselineConfig: map['dataQualityBaselineConfig'] == null ? null : pulumi.Output.create<DataQualityJobDefinitionDataQualityBaselineConfig>(DataQualityJobDefinitionDataQualityBaselineConfig.fromMap((map['dataQualityBaselineConfig'] as Map).cast<String, dynamic>())),
-      dataQualityJobInput: map['dataQualityJobInput'] == null ? null : pulumi.Output.create<DataQualityJobDefinitionDataQualityJobInput>(DataQualityJobDefinitionDataQualityJobInput.fromMap((map['dataQualityJobInput'] as Map).cast<String, dynamic>())),
-      dataQualityJobOutputConfig: map['dataQualityJobOutputConfig'] == null ? null : pulumi.Output.create<DataQualityJobDefinitionDataQualityJobOutputConfig>(DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap((map['dataQualityJobOutputConfig'] as Map).cast<String, dynamic>())),
-      jobResources: map['jobResources'] == null ? null : pulumi.Output.create<DataQualityJobDefinitionJobResources>(DataQualityJobDefinitionJobResources.fromMap((map['jobResources'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfig: map['networkConfig'] == null ? null : pulumi.Output.create<DataQualityJobDefinitionNetworkConfig>(DataQualityJobDefinitionNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      stoppingCondition: map['stoppingCondition'] == null ? null : pulumi.Output.create<DataQualityJobDefinitionStoppingCondition>(DataQualityJobDefinitionStoppingCondition.fromMap((map['stoppingCondition'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      dataQualityAppSpecification: map['dataQualityAppSpecification'] == null ? null : (DataQualityJobDefinitionDataQualityAppSpecification.fromMap((map['dataQualityAppSpecification'] as Map).cast<String, dynamic>())).input(),
+      dataQualityBaselineConfig: map['dataQualityBaselineConfig'] == null ? null : (DataQualityJobDefinitionDataQualityBaselineConfig.fromMap((map['dataQualityBaselineConfig'] as Map).cast<String, dynamic>())).input(),
+      dataQualityJobInput: map['dataQualityJobInput'] == null ? null : (DataQualityJobDefinitionDataQualityJobInput.fromMap((map['dataQualityJobInput'] as Map).cast<String, dynamic>())).input(),
+      dataQualityJobOutputConfig: map['dataQualityJobOutputConfig'] == null ? null : (DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap((map['dataQualityJobOutputConfig'] as Map).cast<String, dynamic>())).input(),
+      jobResources: map['jobResources'] == null ? null : (DataQualityJobDefinitionJobResources.fromMap((map['jobResources'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (DataQualityJobDefinitionNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      stoppingCondition: map['stoppingCondition'] == null ? null : (DataQualityJobDefinitionStoppingCondition.fromMap((map['stoppingCondition'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

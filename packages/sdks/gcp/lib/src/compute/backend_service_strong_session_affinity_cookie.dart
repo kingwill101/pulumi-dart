@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_strong_session_affinity_cookie_ttl.dart';
 
 class BackendServiceStrongSessionAffinityCookie {
   /// Name of the cookie.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Path to set for the cookie.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Lifetime of the cookie.
   /// Structure is documented below.
-  final BackendServiceStrongSessionAffinityCookieTtl? ttl;
+  final pulumi.Input<BackendServiceStrongSessionAffinityCookieTtl>? ttl;
 
   /// Creates a new [BackendServiceStrongSessionAffinityCookie].
   /// [name] Name of the cookie.
@@ -25,15 +26,15 @@ class BackendServiceStrongSessionAffinityCookie {
     return <String, dynamic>{
       'name': ?name,
       'path': ?path,
-      'ttl': ?ttl == null ? null : ttl!.toMap(),
+      'ttl': ?pulumi.Input.mapOptionalInputValue<BackendServiceStrongSessionAffinityCookieTtl, Map<String, dynamic>>(ttl, (value) => value.toMap()),
     };
   }
 
   factory BackendServiceStrongSessionAffinityCookie.fromMap(Map<String, dynamic> map) {
     return BackendServiceStrongSessionAffinityCookie(
-      name: map['name'] == null ? null : map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      ttl: map['ttl'] == null ? null : BackendServiceStrongSessionAffinityCookieTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      ttl: map['ttl'] == null ? null : (BackendServiceStrongSessionAffinityCookieTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

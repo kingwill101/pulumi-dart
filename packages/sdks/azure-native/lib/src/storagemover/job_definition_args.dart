@@ -43,29 +43,18 @@ class JobDefinitionArgs {
   /// [targetName] The name of the target Endpoint.
   /// [targetSubpath] The subpath to use when writing to the target Endpoint.
   JobDefinitionArgs({
-    pulumi.Output<String>? agentName,
-    required pulumi.Output<String> copyMode,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? jobDefinitionName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sourceName,
-    pulumi.Output<String>? sourceSubpath,
-    required pulumi.Output<String> storageMoverName,
-    required pulumi.Output<String> targetName,
-    pulumi.Output<String>? targetSubpath,
-  }) :
-      agentName = pulumi.Input.asOptionalInput<String>(agentName),
-      copyMode = pulumi.Input.asInput<String>(copyMode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      jobDefinitionName = pulumi.Input.asOptionalInput<String>(jobDefinitionName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceName = pulumi.Input.asInput<String>(sourceName),
-      sourceSubpath = pulumi.Input.asOptionalInput<String>(sourceSubpath),
-      storageMoverName = pulumi.Input.asInput<String>(storageMoverName),
-      targetName = pulumi.Input.asInput<String>(targetName),
-      targetSubpath = pulumi.Input.asOptionalInput<String>(targetSubpath);
+    this.agentName,
+    required this.copyMode,
+    this.description,
+    this.jobDefinitionName,
+    required this.projectName,
+    required this.resourceGroupName,
+    required this.sourceName,
+    this.sourceSubpath,
+    required this.storageMoverName,
+    required this.targetName,
+    this.targetSubpath,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class JobDefinitionArgs {
 
   factory JobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return JobDefinitionArgs(
-      agentName: map['agentName'] == null ? null : pulumi.Output.create<String>(map['agentName'] as String),
-      copyMode: pulumi.Output.create<String>(map['copyMode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      jobDefinitionName: map['jobDefinitionName'] == null ? null : pulumi.Output.create<String>(map['jobDefinitionName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceName: pulumi.Output.create<String>(map['sourceName'] as String),
-      sourceSubpath: map['sourceSubpath'] == null ? null : pulumi.Output.create<String>(map['sourceSubpath'] as String),
-      storageMoverName: pulumi.Output.create<String>(map['storageMoverName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
-      targetSubpath: map['targetSubpath'] == null ? null : pulumi.Output.create<String>(map['targetSubpath'] as String),
+      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      copyMode: (map['copyMode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      jobDefinitionName: map['jobDefinitionName'] == null ? null : (map['jobDefinitionName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceName: (map['sourceName'] as String).input(),
+      sourceSubpath: map['sourceSubpath'] == null ? null : (map['sourceSubpath'] as String).input(),
+      storageMoverName: (map['storageMoverName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
+      targetSubpath: map['targetSubpath'] == null ? null : (map['targetSubpath'] as String).input(),
     );
   }
 }

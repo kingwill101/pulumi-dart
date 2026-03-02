@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'docker_build.dart';
 import 'inference_container_properties.dart';
 
@@ -8,19 +9,19 @@ import 'inference_container_properties.dart';
 class EnvironmentSpecificationVersion {
   /// Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
   /// <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
-  final String? condaFile;
+  final pulumi.Input<String>? condaFile;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Configuration settings for Docker.
-  final DockerBuild? docker;
+  final pulumi.Input<DockerBuild>? docker;
   /// Defines configuration specific to inference.
-  final InferenceContainerProperties? inferenceContainerProperties;
+  final pulumi.Input<InferenceContainerProperties>? inferenceContainerProperties;
   /// If the name version are system generated (anonymous registration).
-  final bool? isAnonymous;
+  final pulumi.Input<bool>? isAnonymous;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [EnvironmentSpecificationVersion].
   /// [condaFile] Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
@@ -44,8 +45,8 @@ class EnvironmentSpecificationVersion {
     return <String, dynamic>{
       'condaFile': ?condaFile,
       'description': ?description,
-      'docker': ?docker == null ? null : docker!.toMap(),
-      'inferenceContainerProperties': ?inferenceContainerProperties == null ? null : inferenceContainerProperties!.toMap(),
+      'docker': ?pulumi.Input.mapOptionalInputValue<DockerBuild, Map<String, dynamic>>(docker, (value) => value.toMap()),
+      'inferenceContainerProperties': ?pulumi.Input.mapOptionalInputValue<InferenceContainerProperties, Map<String, dynamic>>(inferenceContainerProperties, (value) => value.toMap()),
       'isAnonymous': ?isAnonymous,
       'properties': ?properties,
       'tags': ?tags,
@@ -54,13 +55,13 @@ class EnvironmentSpecificationVersion {
 
   factory EnvironmentSpecificationVersion.fromMap(Map<String, dynamic> map) {
     return EnvironmentSpecificationVersion(
-      condaFile: map['condaFile'] == null ? null : map['condaFile'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      docker: map['docker'] == null ? null : DockerBuild.fromMap((map['docker'] as Map).cast<String, dynamic>()),
-      inferenceContainerProperties: map['inferenceContainerProperties'] == null ? null : InferenceContainerProperties.fromMap((map['inferenceContainerProperties'] as Map).cast<String, dynamic>()),
-      isAnonymous: map['isAnonymous'] == null ? null : map['isAnonymous'] as bool,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      condaFile: map['condaFile'] == null ? null : (map['condaFile'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      docker: map['docker'] == null ? null : (DockerBuild.fromMap((map['docker'] as Map).cast<String, dynamic>())).input(),
+      inferenceContainerProperties: map['inferenceContainerProperties'] == null ? null : (InferenceContainerProperties.fromMap((map['inferenceContainerProperties'] as Map).cast<String, dynamic>())).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

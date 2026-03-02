@@ -51,33 +51,20 @@ class ConfigurationArgs {
   /// [statusChangeAlertEnabled] Whether the status change alert is enabled. Defaults to `false`.
   /// [tags] Optional.
   ConfigurationArgs({
-    pulumi.Output<ConfigurationAntimalware>? antimalware,
-    pulumi.Output<bool>? automationAccountEnabled,
-    pulumi.Output<ConfigurationAzureSecurityBaseline>? azureSecurityBaseline,
-    pulumi.Output<ConfigurationBackup>? backup,
-    pulumi.Output<bool>? bootDiagnosticsEnabled,
-    pulumi.Output<bool>? defenderForCloudEnabled,
-    pulumi.Output<bool>? guestConfigurationEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? logAnalyticsEnabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? statusChangeAlertEnabled,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      antimalware = pulumi.Input.asOptionalInput<ConfigurationAntimalware>(antimalware),
-      automationAccountEnabled = pulumi.Input.asOptionalInput<bool>(automationAccountEnabled),
-      azureSecurityBaseline = pulumi.Input.asOptionalInput<ConfigurationAzureSecurityBaseline>(azureSecurityBaseline),
-      backup = pulumi.Input.asOptionalInput<ConfigurationBackup>(backup),
-      bootDiagnosticsEnabled = pulumi.Input.asOptionalInput<bool>(bootDiagnosticsEnabled),
-      defenderForCloudEnabled = pulumi.Input.asOptionalInput<bool>(defenderForCloudEnabled),
-      guestConfigurationEnabled = pulumi.Input.asOptionalInput<bool>(guestConfigurationEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logAnalyticsEnabled = pulumi.Input.asOptionalInput<bool>(logAnalyticsEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      statusChangeAlertEnabled = pulumi.Input.asOptionalInput<bool>(statusChangeAlertEnabled),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.antimalware,
+    this.automationAccountEnabled,
+    this.azureSecurityBaseline,
+    this.backup,
+    this.bootDiagnosticsEnabled,
+    this.defenderForCloudEnabled,
+    this.guestConfigurationEnabled,
+    this.location,
+    this.logAnalyticsEnabled,
+    this.name,
+    required this.resourceGroupName,
+    this.statusChangeAlertEnabled,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      antimalware: map['antimalware'] == null ? null : pulumi.Output.create<ConfigurationAntimalware>(ConfigurationAntimalware.fromMap((map['antimalware'] as Map).cast<String, dynamic>())),
-      automationAccountEnabled: map['automationAccountEnabled'] == null ? null : pulumi.Output.create<bool>(map['automationAccountEnabled'] as bool),
-      azureSecurityBaseline: map['azureSecurityBaseline'] == null ? null : pulumi.Output.create<ConfigurationAzureSecurityBaseline>(ConfigurationAzureSecurityBaseline.fromMap((map['azureSecurityBaseline'] as Map).cast<String, dynamic>())),
-      backup: map['backup'] == null ? null : pulumi.Output.create<ConfigurationBackup>(ConfigurationBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())),
-      bootDiagnosticsEnabled: map['bootDiagnosticsEnabled'] == null ? null : pulumi.Output.create<bool>(map['bootDiagnosticsEnabled'] as bool),
-      defenderForCloudEnabled: map['defenderForCloudEnabled'] == null ? null : pulumi.Output.create<bool>(map['defenderForCloudEnabled'] as bool),
-      guestConfigurationEnabled: map['guestConfigurationEnabled'] == null ? null : pulumi.Output.create<bool>(map['guestConfigurationEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logAnalyticsEnabled: map['logAnalyticsEnabled'] == null ? null : pulumi.Output.create<bool>(map['logAnalyticsEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      statusChangeAlertEnabled: map['statusChangeAlertEnabled'] == null ? null : pulumi.Output.create<bool>(map['statusChangeAlertEnabled'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      antimalware: map['antimalware'] == null ? null : (ConfigurationAntimalware.fromMap((map['antimalware'] as Map).cast<String, dynamic>())).input(),
+      automationAccountEnabled: map['automationAccountEnabled'] == null ? null : (map['automationAccountEnabled'] as bool).input(),
+      azureSecurityBaseline: map['azureSecurityBaseline'] == null ? null : (ConfigurationAzureSecurityBaseline.fromMap((map['azureSecurityBaseline'] as Map).cast<String, dynamic>())).input(),
+      backup: map['backup'] == null ? null : (ConfigurationBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
+      bootDiagnosticsEnabled: map['bootDiagnosticsEnabled'] == null ? null : (map['bootDiagnosticsEnabled'] as bool).input(),
+      defenderForCloudEnabled: map['defenderForCloudEnabled'] == null ? null : (map['defenderForCloudEnabled'] as bool).input(),
+      guestConfigurationEnabled: map['guestConfigurationEnabled'] == null ? null : (map['guestConfigurationEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logAnalyticsEnabled: map['logAnalyticsEnabled'] == null ? null : (map['logAnalyticsEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      statusChangeAlertEnabled: map['statusChangeAlertEnabled'] == null ? null : (map['statusChangeAlertEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

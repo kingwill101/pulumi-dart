@@ -16,11 +16,9 @@ class GetParameterArgs {
   /// [parameterId] The name of the parameter.
   /// [project] The ID of the project in which the resource belongs.
   GetParameterArgs({
-    required pulumi.Output<String> parameterId,
-    pulumi.Output<String>? project,
-  }) :
-      parameterId = pulumi.Input.asInput<String>(parameterId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.parameterId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetParameterArgs {
 
   factory GetParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetParameterArgs(
-      parameterId: pulumi.Output.create<String>(map['parameterId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      parameterId: (map['parameterId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

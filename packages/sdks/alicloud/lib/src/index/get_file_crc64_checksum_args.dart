@@ -15,11 +15,9 @@ class GetFileCrc64ChecksumArgs {
   /// [filename] The name of the file to be computed crc64 checksum.
   /// [outputFile] Optional.
   GetFileCrc64ChecksumArgs({
-    required pulumi.Output<String> filename,
-    pulumi.Output<String>? outputFile,
-  }) :
-      filename = pulumi.Input.asInput<String>(filename),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.filename,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class GetFileCrc64ChecksumArgs {
 
   factory GetFileCrc64ChecksumArgs.fromMap(Map<String, dynamic> map) {
     return GetFileCrc64ChecksumArgs(
-      filename: pulumi.Output.create<String>(map['filename'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      filename: (map['filename'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

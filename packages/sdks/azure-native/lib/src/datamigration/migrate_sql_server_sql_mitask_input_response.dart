@@ -9,27 +9,27 @@ import 'sql_connection_info_response.dart';
 /// Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance.
 class MigrateSqlServerSqlMITaskInputResponse {
   /// Azure Active Directory domain name in the format of 'contoso.com' for federated Azure AD or 'contoso.onmicrosoft.com' for managed domain, required if and only if Windows logins are selected
-  final String? aadDomainName;
+  final pulumi.Input<String>? aadDomainName;
   /// SAS URI of Azure Storage Account Container to be used for storing backup files.
-  final BlobShareResponse backupBlobShare;
+  final pulumi.Input<BlobShareResponse> backupBlobShare;
   /// Backup file share information for all selected databases.
-  final FileShareResponse? backupFileShare;
+  final pulumi.Input<FileShareResponse>? backupFileShare;
   /// Backup Mode to specify whether to use existing backup or create new backup. If using existing backups, backup file paths are required to be provided in selectedDatabases.
-  final String? backupMode;
+  final pulumi.Input<String>? backupMode;
   /// encrypted key for secure fields
-  final String? encryptedKeyForSecureFields;
+  final pulumi.Input<String>? encryptedKeyForSecureFields;
   /// Agent Jobs to migrate.
-  final List<String>? selectedAgentJobs;
+  final pulumi.Input<List<String>>? selectedAgentJobs;
   /// Databases to migrate
-  final List<MigrateSqlServerSqlMIDatabaseInputResponse> selectedDatabases;
+  final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInputResponse>> selectedDatabases;
   /// Logins to migrate.
-  final List<String>? selectedLogins;
+  final pulumi.Input<List<String>>? selectedLogins;
   /// Information for connecting to source
-  final SqlConnectionInfoResponse sourceConnectionInfo;
+  final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
   /// Date and time relative to UTC when the migration was started on
-  final String? startedOn;
+  final pulumi.Input<String>? startedOn;
   /// Information for connecting to target
-  final SqlConnectionInfoResponse targetConnectionInfo;
+  final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
 
   /// Creates a new [MigrateSqlServerSqlMITaskInputResponse].
   /// [aadDomainName] Azure Active Directory domain name in the format of 'contoso.com' for federated Azure AD or 'contoso.onmicrosoft.com' for managed domain, required if and only if Windows logins are selected
@@ -60,32 +60,32 @@ class MigrateSqlServerSqlMITaskInputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aadDomainName': ?aadDomainName,
-      'backupBlobShare': backupBlobShare.toMap(),
-      'backupFileShare': ?backupFileShare == null ? null : backupFileShare!.toMap(),
+      'backupBlobShare': pulumi.Input.mapInputValue<BlobShareResponse, Map<String, dynamic>>(backupBlobShare, (value) => value.toMap()),
+      'backupFileShare': ?pulumi.Input.mapOptionalInputValue<FileShareResponse, Map<String, dynamic>>(backupFileShare, (value) => value.toMap()),
       'backupMode': ?backupMode,
       'encryptedKeyForSecureFields': ?encryptedKeyForSecureFields,
       'selectedAgentJobs': ?selectedAgentJobs,
-      'selectedDatabases': pulumi.Input.encodeList<MigrateSqlServerSqlMIDatabaseInputResponse, Map<String, dynamic>>(selectedDatabases, (value) => value.toMap()),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateSqlServerSqlMIDatabaseInputResponse>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateSqlServerSqlMIDatabaseInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'selectedLogins': ?selectedLogins,
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
       'startedOn': ?startedOn,
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory MigrateSqlServerSqlMITaskInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMITaskInputResponse(
-      aadDomainName: map['aadDomainName'] == null ? null : map['aadDomainName'] as String,
-      backupBlobShare: BlobShareResponse.fromMap((map['backupBlobShare'] as Map).cast<String, dynamic>()),
-      backupFileShare: map['backupFileShare'] == null ? null : FileShareResponse.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>()),
-      backupMode: map['backupMode'] == null ? null : map['backupMode'] as String,
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : map['encryptedKeyForSecureFields'] as String,
-      selectedAgentJobs: map['selectedAgentJobs'] == null ? null : (map['selectedAgentJobs'] as List).cast<String>(),
-      selectedDatabases: pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInputResponse>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      selectedLogins: map['selectedLogins'] == null ? null : (map['selectedLogins'] as List).cast<String>(),
-      sourceConnectionInfo: SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      startedOn: map['startedOn'] == null ? null : map['startedOn'] as String,
-      targetConnectionInfo: SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      aadDomainName: map['aadDomainName'] == null ? null : (map['aadDomainName'] as String).input(),
+      backupBlobShare: (BlobShareResponse.fromMap((map['backupBlobShare'] as Map).cast<String, dynamic>())).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShareResponse.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
+      backupMode: map['backupMode'] == null ? null : (map['backupMode'] as String).input(),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
+      selectedAgentJobs: map['selectedAgentJobs'] == null ? null : ((map['selectedAgentJobs'] as List).cast<String>()).input(),
+      selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInputResponse>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectedLogins: map['selectedLogins'] == null ? null : ((map['selectedLogins'] as List).cast<String>()).input(),
+      sourceConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
+      targetConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

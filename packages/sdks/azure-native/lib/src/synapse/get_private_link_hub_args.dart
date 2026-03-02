@@ -16,11 +16,9 @@ class GetPrivateLinkHubArgs {
   /// [privateLinkHubName] Name of the privateLinkHub
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPrivateLinkHubArgs({
-    required pulumi.Output<String> privateLinkHubName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      privateLinkHubName = pulumi.Input.asInput<String>(privateLinkHubName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.privateLinkHubName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPrivateLinkHubArgs {
 
   factory GetPrivateLinkHubArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkHubArgs(
-      privateLinkHubName: pulumi.Output.create<String>(map['privateLinkHubName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      privateLinkHubName: (map['privateLinkHubName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

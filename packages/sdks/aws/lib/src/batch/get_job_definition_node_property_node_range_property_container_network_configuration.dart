@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration {
   /// Indicates whether the job has a public IP address.
-  final bool assignPublicIp;
+  final pulumi.Input<bool> assignPublicIp;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration].
   /// [assignPublicIp] Indicates whether the job has a public IP address.
@@ -19,7 +20,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration(
-      assignPublicIp: map['assignPublicIp'] as bool,
+      assignPublicIp: (map['assignPublicIp'] as bool).input(),
     );
   }
 }

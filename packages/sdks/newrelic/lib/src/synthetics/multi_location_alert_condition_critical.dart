@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultiLocationAlertConditionCritical {
   /// The minimum number of monitor locations that must be concurrently failing before an incident is opened.
-  final int threshold;
+  final pulumi.Input<int> threshold;
 
   /// Creates a new [MultiLocationAlertConditionCritical].
   /// [threshold] The minimum number of monitor locations that must be concurrently failing before an incident is opened.
@@ -19,7 +20,7 @@ class MultiLocationAlertConditionCritical {
 
   factory MultiLocationAlertConditionCritical.fromMap(Map<String, dynamic> map) {
     return MultiLocationAlertConditionCritical(
-      threshold: map['threshold'] as int,
+      threshold: (map['threshold'] as int).input(),
     );
   }
 }

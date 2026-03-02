@@ -19,13 +19,10 @@ class GetEnvironmentTypeArgs {
   /// [environmentTypeName] The name of the environment type.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEnvironmentTypeArgs({
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> environmentTypeName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      environmentTypeName = pulumi.Input.asInput<String>(environmentTypeName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.devCenterName,
+    required this.environmentTypeName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEnvironmentTypeArgs {
 
   factory GetEnvironmentTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentTypeArgs(
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      environmentTypeName: pulumi.Output.create<String>(map['environmentTypeName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      devCenterName: (map['devCenterName'] as String).input(),
+      environmentTypeName: (map['environmentTypeName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

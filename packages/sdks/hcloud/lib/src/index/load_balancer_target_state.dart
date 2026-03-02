@@ -32,19 +32,13 @@ class LoadBalancerTargetState {
   /// [type] Type of the target. Possible values
   /// [usePrivateIp] use the private IP to connect to
   LoadBalancerTargetState({
-    pulumi.Output<String>? ip,
-    pulumi.Output<String>? labelSelector,
-    pulumi.Output<int>? loadBalancerId,
-    pulumi.Output<int>? serverId,
-    pulumi.Output<String>? type,
-    pulumi.Output<bool>? usePrivateIp,
-  }) :
-      ip = pulumi.Input.asOptionalInput<String>(ip),
-      labelSelector = pulumi.Input.asOptionalInput<String>(labelSelector),
-      loadBalancerId = pulumi.Input.asOptionalInput<int>(loadBalancerId),
-      serverId = pulumi.Input.asOptionalInput<int>(serverId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      usePrivateIp = pulumi.Input.asOptionalInput<bool>(usePrivateIp);
+    this.ip,
+    this.labelSelector,
+    this.loadBalancerId,
+    this.serverId,
+    this.type,
+    this.usePrivateIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class LoadBalancerTargetState {
 
   factory LoadBalancerTargetState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerTargetState(
-      ip: map['ip'] == null ? null : pulumi.Output.create<String>(map['ip'] as String),
-      labelSelector: map['labelSelector'] == null ? null : pulumi.Output.create<String>(map['labelSelector'] as String),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<int>(map['loadBalancerId'] as int),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<int>(map['serverId'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      usePrivateIp: map['usePrivateIp'] == null ? null : pulumi.Output.create<bool>(map['usePrivateIp'] as bool),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      labelSelector: map['labelSelector'] == null ? null : (map['labelSelector'] as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      usePrivateIp: map['usePrivateIp'] == null ? null : (map['usePrivateIp'] as bool).input(),
     );
   }
 }

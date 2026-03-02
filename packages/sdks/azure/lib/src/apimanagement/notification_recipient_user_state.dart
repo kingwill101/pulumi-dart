@@ -16,13 +16,10 @@ class NotificationRecipientUserState {
   /// [notificationType] The Notification Name to be received. Changing this forces a new API Management Notification Recipient User to be created. Possible values are `AccountClosedPublisher`, `BCC`, `NewApplicationNotificationMessage`, `NewIssuePublisherNotificationMessage`, `PurchasePublisherNotificationMessage`, `QuotaLimitApproachingPublisherNotificationMessage`, and `RequestPublisherNotificationMessage`.
   /// [userId] The recipient user ID. Changing this forces a new API Management Notification Recipient User to be created.
   NotificationRecipientUserState({
-    pulumi.Output<String>? apiManagementId,
-    pulumi.Output<String>? notificationType,
-    pulumi.Output<String>? userId,
-  }) :
-      apiManagementId = pulumi.Input.asOptionalInput<String>(apiManagementId),
-      notificationType = pulumi.Input.asOptionalInput<String>(notificationType),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.apiManagementId,
+    this.notificationType,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class NotificationRecipientUserState {
 
   factory NotificationRecipientUserState.fromMap(Map<String, dynamic> map) {
     return NotificationRecipientUserState(
-      apiManagementId: map['apiManagementId'] == null ? null : pulumi.Output.create<String>(map['apiManagementId'] as String),
-      notificationType: map['notificationType'] == null ? null : pulumi.Output.create<String>(map['notificationType'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

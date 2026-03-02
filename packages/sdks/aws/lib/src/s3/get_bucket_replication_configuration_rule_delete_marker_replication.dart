@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDeleteMarkerReplication {
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDeleteMarkerReplication].
   /// [status] Required.
@@ -18,7 +19,7 @@ class GetBucketReplicationConfigurationRuleDeleteMarkerReplication {
 
   factory GetBucketReplicationConfigurationRuleDeleteMarkerReplication.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDeleteMarkerReplication(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

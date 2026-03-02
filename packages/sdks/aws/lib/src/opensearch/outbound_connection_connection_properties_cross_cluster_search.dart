@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OutboundConnectionConnectionPropertiesCrossClusterSearch {
   /// Skips unavailable clusters and can only be used for cross-cluster searches. Accepted values are `ENABLED` or `DISABLED`.
-  final String? skipUnavailable;
+  final pulumi.Input<String>? skipUnavailable;
 
   /// Creates a new [OutboundConnectionConnectionPropertiesCrossClusterSearch].
   /// [skipUnavailable] Skips unavailable clusters and can only be used for cross-cluster searches. Accepted values are `ENABLED` or `DISABLED`.
@@ -19,7 +20,7 @@ class OutboundConnectionConnectionPropertiesCrossClusterSearch {
 
   factory OutboundConnectionConnectionPropertiesCrossClusterSearch.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionConnectionPropertiesCrossClusterSearch(
-      skipUnavailable: map['skipUnavailable'] == null ? null : map['skipUnavailable'] as String,
+      skipUnavailable: map['skipUnavailable'] == null ? null : (map['skipUnavailable'] as String).input(),
     );
   }
 }

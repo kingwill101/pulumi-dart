@@ -53,35 +53,21 @@ class TopicState {
   /// [secondaryAccessKey] The Secondary Shared Access Key associated with the EventGrid Topic.
   /// [tags] A mapping of tags to assign to the resource.
   TopicState({
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<TopicIdentity>? identity,
-    pulumi.Output<List<TopicInboundIpRule>>? inboundIpRules,
-    pulumi.Output<TopicInputMappingDefaultValues>? inputMappingDefaultValues,
-    pulumi.Output<TopicInputMappingFields>? inputMappingFields,
-    pulumi.Output<String>? inputSchema,
-    pulumi.Output<bool>? localAuthEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryAccessKey,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? secondaryAccessKey,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      identity = pulumi.Input.asOptionalInput<TopicIdentity>(identity),
-      inboundIpRules = pulumi.Input.asOptionalInput<List<TopicInboundIpRule>>(inboundIpRules),
-      inputMappingDefaultValues = pulumi.Input.asOptionalInput<TopicInputMappingDefaultValues>(inputMappingDefaultValues),
-      inputMappingFields = pulumi.Input.asOptionalInput<TopicInputMappingFields>(inputMappingFields),
-      inputSchema = pulumi.Input.asOptionalInput<String>(inputSchema),
-      localAuthEnabled = pulumi.Input.asOptionalInput<bool>(localAuthEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryAccessKey = pulumi.Input.asOptionalInput<String>(primaryAccessKey),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secondaryAccessKey = pulumi.Input.asOptionalInput<String>(secondaryAccessKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.endpoint,
+    this.identity,
+    this.inboundIpRules,
+    this.inputMappingDefaultValues,
+    this.inputMappingFields,
+    this.inputSchema,
+    this.localAuthEnabled,
+    this.location,
+    this.name,
+    this.primaryAccessKey,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.secondaryAccessKey,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<TopicIdentity>(TopicIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      inboundIpRules: map['inboundIpRules'] == null ? null : pulumi.Output.create<List<TopicInboundIpRule>>(pulumi.Input.decodeList<TopicInboundIpRule>(map['inboundIpRules'], (value) => TopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))),
-      inputMappingDefaultValues: map['inputMappingDefaultValues'] == null ? null : pulumi.Output.create<TopicInputMappingDefaultValues>(TopicInputMappingDefaultValues.fromMap((map['inputMappingDefaultValues'] as Map).cast<String, dynamic>())),
-      inputMappingFields: map['inputMappingFields'] == null ? null : pulumi.Output.create<TopicInputMappingFields>(TopicInputMappingFields.fromMap((map['inputMappingFields'] as Map).cast<String, dynamic>())),
-      inputSchema: map['inputSchema'] == null ? null : pulumi.Output.create<String>(map['inputSchema'] as String),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryAccessKey: map['primaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['primaryAccessKey'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['secondaryAccessKey'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      identity: map['identity'] == null ? null : (TopicIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<TopicInboundIpRule>(map['inboundIpRules'], (value) => TopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputMappingDefaultValues: map['inputMappingDefaultValues'] == null ? null : (TopicInputMappingDefaultValues.fromMap((map['inputMappingDefaultValues'] as Map).cast<String, dynamic>())).input(),
+      inputMappingFields: map['inputMappingFields'] == null ? null : (TopicInputMappingFields.fromMap((map['inputMappingFields'] as Map).cast<String, dynamic>())).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class CacheRuleArgs {
   /// [sourceRepository] Source repository pulled from upstream.
   /// [targetRepository] Target repository specified in docker pull command.
   CacheRuleArgs({
-    pulumi.Output<String>? cacheRuleName,
-    pulumi.Output<String>? credentialSetResourceId,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceRepository,
-    pulumi.Output<String>? targetRepository,
-  }) :
-      cacheRuleName = pulumi.Input.asOptionalInput<String>(cacheRuleName),
-      credentialSetResourceId = pulumi.Input.asOptionalInput<String>(credentialSetResourceId),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceRepository = pulumi.Input.asOptionalInput<String>(sourceRepository),
-      targetRepository = pulumi.Input.asOptionalInput<String>(targetRepository);
+    this.cacheRuleName,
+    this.credentialSetResourceId,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.sourceRepository,
+    this.targetRepository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CacheRuleArgs {
 
   factory CacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return CacheRuleArgs(
-      cacheRuleName: map['cacheRuleName'] == null ? null : pulumi.Output.create<String>(map['cacheRuleName'] as String),
-      credentialSetResourceId: map['credentialSetResourceId'] == null ? null : pulumi.Output.create<String>(map['credentialSetResourceId'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceRepository: map['sourceRepository'] == null ? null : pulumi.Output.create<String>(map['sourceRepository'] as String),
-      targetRepository: map['targetRepository'] == null ? null : pulumi.Output.create<String>(map['targetRepository'] as String),
+      cacheRuleName: map['cacheRuleName'] == null ? null : (map['cacheRuleName'] as String).input(),
+      credentialSetResourceId: map['credentialSetResourceId'] == null ? null : (map['credentialSetResourceId'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceRepository: map['sourceRepository'] == null ? null : (map['sourceRepository'] as String).input(),
+      targetRepository: map['targetRepository'] == null ? null : (map['targetRepository'] as String).input(),
     );
   }
 }

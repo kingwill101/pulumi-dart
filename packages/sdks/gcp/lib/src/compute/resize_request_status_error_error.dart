@@ -6,17 +6,17 @@ import 'resize_request_status_error_error_error_detail.dart';
 class ResizeRequestStatusErrorError {
   /// (Output)
   /// The error type identifier for this error.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// (Output)
   /// An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
   /// Structure is documented below.
-  final List<ResizeRequestStatusErrorErrorErrorDetail>? errorDetails;
+  final pulumi.Input<List<ResizeRequestStatusErrorErrorErrorDetail>>? errorDetails;
   /// (Output)
   /// Indicates the field in the request that caused the error. This property is optional.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// (Output)
   /// The localized error message in the above locale.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [ResizeRequestStatusErrorError].
   /// [code] (Output)
@@ -33,7 +33,7 @@ class ResizeRequestStatusErrorError {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': ?code,
-      'errorDetails': ?errorDetails == null ? null : pulumi.Input.encodeList<ResizeRequestStatusErrorErrorErrorDetail, Map<String, dynamic>>(errorDetails!, (value) => value.toMap()),
+      'errorDetails': ?pulumi.Input.mapOptionalInputValue<List<ResizeRequestStatusErrorErrorErrorDetail>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<ResizeRequestStatusErrorErrorErrorDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'message': ?message,
     };
@@ -41,10 +41,10 @@ class ResizeRequestStatusErrorError {
 
   factory ResizeRequestStatusErrorError.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusErrorError(
-      code: map['code'] == null ? null : map['code'] as String,
-      errorDetails: map['errorDetails'] == null ? null : pulumi.Input.decodeList<ResizeRequestStatusErrorErrorErrorDetail>(map['errorDetails'], (value) => ResizeRequestStatusErrorErrorErrorDetail.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      errorDetails: map['errorDetails'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusErrorErrorErrorDetail>(map['errorDetails'], (value) => ResizeRequestStatusErrorErrorErrorDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

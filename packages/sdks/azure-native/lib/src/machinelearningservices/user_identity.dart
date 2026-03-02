@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User identity configuration.
 class UserIdentity {
   /// Enum to determine identity framework.
   /// Expected value is 'UserIdentity'.
-  final String identityType;
+  final pulumi.Input<String> identityType;
 
   /// Creates a new [UserIdentity].
   /// [identityType] Enum to determine identity framework.
@@ -21,7 +22,7 @@ class UserIdentity {
 
   factory UserIdentity.fromMap(Map<String, dynamic> map) {
     return UserIdentity(
-      identityType: map['identityType'] as String,
+      identityType: (map['identityType'] as String).input(),
     );
   }
 }

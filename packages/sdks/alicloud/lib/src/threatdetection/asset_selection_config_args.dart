@@ -19,13 +19,10 @@ class AssetSelectionConfigArgs {
   /// [platform] The operating system type.
   /// [targetType] Target object type.
   AssetSelectionConfigArgs({
-    required pulumi.Output<String> businessType,
-    pulumi.Output<String>? platform,
-    required pulumi.Output<String> targetType,
-  }) :
-      businessType = pulumi.Input.asInput<String>(businessType),
-      platform = pulumi.Input.asOptionalInput<String>(platform),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    required this.businessType,
+    this.platform,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AssetSelectionConfigArgs {
 
   factory AssetSelectionConfigArgs.fromMap(Map<String, dynamic> map) {
     return AssetSelectionConfigArgs(
-      businessType: pulumi.Output.create<String>(map['businessType'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      businessType: (map['businessType'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

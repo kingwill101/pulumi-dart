@@ -44,23 +44,15 @@ class AppHostingBuildArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [source] The source for the build.
   AppHostingBuildArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> backend,
-    required pulumi.Output<String> buildId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<AppHostingBuildSource> source,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      backend = pulumi.Input.asInput<String>(backend),
-      buildId = pulumi.Input.asInput<String>(buildId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      source = pulumi.Input.asInput<AppHostingBuildSource>(source);
+    this.annotations,
+    required this.backend,
+    required this.buildId,
+    this.displayName,
+    this.labels,
+    required this.location,
+    this.project,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,14 +69,14 @@ class AppHostingBuildArgs {
 
   factory AppHostingBuildArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      backend: pulumi.Output.create<String>(map['backend'] as String),
-      buildId: pulumi.Output.create<String>(map['buildId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      source: pulumi.Output.create<AppHostingBuildSource>(AppHostingBuildSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      backend: (map['backend'] as String).input(),
+      buildId: (map['buildId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      source: (AppHostingBuildSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

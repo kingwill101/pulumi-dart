@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigOrgConfigLocation {
   /// The ID for the folder within an organization to scan
-  final String? folderId;
+  final pulumi.Input<String>? folderId;
   /// The ID of an organization to scan
-  final String? organizationId;
+  final pulumi.Input<String>? organizationId;
 
   /// Creates a new [PreventionDiscoveryConfigOrgConfigLocation].
   /// [folderId] The ID for the folder within an organization to scan
@@ -24,8 +25,8 @@ class PreventionDiscoveryConfigOrgConfigLocation {
 
   factory PreventionDiscoveryConfigOrgConfigLocation.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigOrgConfigLocation(
-      folderId: map['folderId'] == null ? null : map['folderId'] as String,
-      organizationId: map['organizationId'] == null ? null : map['organizationId'] as String,
+      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
     );
   }
 }

@@ -57,35 +57,21 @@ class SnapshotArgs {
   /// [storageAccountId] Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   SnapshotArgs({
-    required pulumi.Output<String> createOption,
-    pulumi.Output<String>? diskAccessId,
-    pulumi.Output<int>? diskSizeGb,
-    pulumi.Output<SnapshotEncryptionSettings>? encryptionSettings,
-    pulumi.Output<bool>? incrementalEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkAccessPolicy,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceResourceId,
-    pulumi.Output<String>? sourceUri,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      createOption = pulumi.Input.asInput<String>(createOption),
-      diskAccessId = pulumi.Input.asOptionalInput<String>(diskAccessId),
-      diskSizeGb = pulumi.Input.asOptionalInput<int>(diskSizeGb),
-      encryptionSettings = pulumi.Input.asOptionalInput<SnapshotEncryptionSettings>(encryptionSettings),
-      incrementalEnabled = pulumi.Input.asOptionalInput<bool>(incrementalEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkAccessPolicy = pulumi.Input.asOptionalInput<String>(networkAccessPolicy),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceResourceId = pulumi.Input.asOptionalInput<String>(sourceResourceId),
-      sourceUri = pulumi.Input.asOptionalInput<String>(sourceUri),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.createOption,
+    this.diskAccessId,
+    this.diskSizeGb,
+    this.encryptionSettings,
+    this.incrementalEnabled,
+    this.location,
+    this.name,
+    this.networkAccessPolicy,
+    this.publicNetworkAccessEnabled,
+    required this.resourceGroupName,
+    this.sourceResourceId,
+    this.sourceUri,
+    this.storageAccountId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      createOption: pulumi.Output.create<String>(map['createOption'] as String),
-      diskAccessId: map['diskAccessId'] == null ? null : pulumi.Output.create<String>(map['diskAccessId'] as String),
-      diskSizeGb: map['diskSizeGb'] == null ? null : pulumi.Output.create<int>(map['diskSizeGb'] as int),
-      encryptionSettings: map['encryptionSettings'] == null ? null : pulumi.Output.create<SnapshotEncryptionSettings>(SnapshotEncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())),
-      incrementalEnabled: map['incrementalEnabled'] == null ? null : pulumi.Output.create<bool>(map['incrementalEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkAccessPolicy: map['networkAccessPolicy'] == null ? null : pulumi.Output.create<String>(map['networkAccessPolicy'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceResourceId: map['sourceResourceId'] == null ? null : pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      sourceUri: map['sourceUri'] == null ? null : pulumi.Output.create<String>(map['sourceUri'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      createOption: (map['createOption'] as String).input(),
+      diskAccessId: map['diskAccessId'] == null ? null : (map['diskAccessId'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (SnapshotEncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
+      incrementalEnabled: map['incrementalEnabled'] == null ? null : (map['incrementalEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkAccessPolicy: map['networkAccessPolicy'] == null ? null : (map['networkAccessPolicy'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

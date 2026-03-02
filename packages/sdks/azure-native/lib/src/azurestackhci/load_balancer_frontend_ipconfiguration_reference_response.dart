@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to a LoadBalancer Frontend IPConfiguration
 class LoadBalancerFrontendIPConfigurationReferenceResponse {
   /// name of the frontnedIPConfiguration
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [LoadBalancerFrontendIPConfigurationReferenceResponse].
   /// [name] name of the frontnedIPConfiguration
@@ -20,7 +21,7 @@ class LoadBalancerFrontendIPConfigurationReferenceResponse {
 
   factory LoadBalancerFrontendIPConfigurationReferenceResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerFrontendIPConfigurationReferenceResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

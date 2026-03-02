@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataCollectionRuleStreamDeclarationColumn {
   /// The name of the column.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of the column data. Possible values are `string`, `int`, `long`, `real`, `boolean`, `datetime`,and `dynamic`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DataCollectionRuleStreamDeclarationColumn].
   /// [name] The name of the column.
@@ -24,8 +25,8 @@ class DataCollectionRuleStreamDeclarationColumn {
 
   factory DataCollectionRuleStreamDeclarationColumn.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleStreamDeclarationColumn(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

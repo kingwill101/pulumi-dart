@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Trigger based on range of status codes.
 class StatusCodesRangeBasedTrigger {
   /// Request Count.
-  final int? count;
-  final String? path;
+  final pulumi.Input<int>? count;
+  final pulumi.Input<String>? path;
   /// HTTP status code.
-  final String? statusCodes;
+  final pulumi.Input<String>? statusCodes;
   /// Time interval.
-  final String? timeInterval;
+  final pulumi.Input<String>? timeInterval;
 
   /// Creates a new [StatusCodesRangeBasedTrigger].
   /// [count] Request Count.
@@ -34,10 +35,10 @@ class StatusCodesRangeBasedTrigger {
 
   factory StatusCodesRangeBasedTrigger.fromMap(Map<String, dynamic> map) {
     return StatusCodesRangeBasedTrigger(
-      count: map['count'] == null ? null : map['count'] as int,
-      path: map['path'] == null ? null : map['path'] as String,
-      statusCodes: map['statusCodes'] == null ? null : map['statusCodes'] as String,
-      timeInterval: map['timeInterval'] == null ? null : map['timeInterval'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      statusCodes: map['statusCodes'] == null ? null : (map['statusCodes'] as String).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as String).input(),
     );
   }
 }

@@ -29,17 +29,12 @@ class AdministrativeUnitArgs {
   /// [members] A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
   /// [preventDuplicateNames] If `true`, will return an error if an existing administrative unit is found with the same name
   AdministrativeUnitArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? hiddenMembershipEnabled,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<bool>? preventDuplicateNames,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      hiddenMembershipEnabled = pulumi.Input.asOptionalInput<bool>(hiddenMembershipEnabled),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      preventDuplicateNames = pulumi.Input.asOptionalInput<bool>(preventDuplicateNames);
+    this.description,
+    required this.displayName,
+    this.hiddenMembershipEnabled,
+    this.members,
+    this.preventDuplicateNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class AdministrativeUnitArgs {
 
   factory AdministrativeUnitArgs.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      hiddenMembershipEnabled: map['hiddenMembershipEnabled'] == null ? null : pulumi.Output.create<bool>(map['hiddenMembershipEnabled'] as bool),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      preventDuplicateNames: map['preventDuplicateNames'] == null ? null : pulumi.Output.create<bool>(map['preventDuplicateNames'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      hiddenMembershipEnabled: map['hiddenMembershipEnabled'] == null ? null : (map['hiddenMembershipEnabled'] as bool).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      preventDuplicateNames: map['preventDuplicateNames'] == null ? null : (map['preventDuplicateNames'] as bool).input(),
     );
   }
 }

@@ -9,9 +9,9 @@ class CredentialsResponse {
   /// Describes the credential parameters for accessing other custom registries. The key
   /// for the dictionary item will be the registry login server (myregistry.azurecr.io) and
   /// the value of the item will be the registry credentials for accessing the registry.
-  final Map<String, CustomRegistryCredentialsResponse>? customRegistries;
+  final pulumi.Input<Map<String, CustomRegistryCredentialsResponse>>? customRegistries;
   /// Describes the credential parameters for accessing the source registry.
-  final SourceRegistryCredentialsResponse? sourceRegistry;
+  final pulumi.Input<SourceRegistryCredentialsResponse>? sourceRegistry;
 
   /// Creates a new [CredentialsResponse].
   /// [customRegistries] Describes the credential parameters for accessing other custom registries. The key
@@ -23,15 +23,15 @@ class CredentialsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRegistries': ?customRegistries == null ? null : pulumi.Input.encodeMapValues<CustomRegistryCredentialsResponse, Map<String, dynamic>>(customRegistries!, (value) => value.toMap()),
-      'sourceRegistry': ?sourceRegistry == null ? null : sourceRegistry!.toMap(),
+      'customRegistries': ?pulumi.Input.mapOptionalInputValue<Map<String, CustomRegistryCredentialsResponse>, Map<String, Map<String, dynamic>>>(customRegistries, (value) => pulumi.Input.encodeMapValues<CustomRegistryCredentialsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceRegistry': ?pulumi.Input.mapOptionalInputValue<SourceRegistryCredentialsResponse, Map<String, dynamic>>(sourceRegistry, (value) => value.toMap()),
     };
   }
 
   factory CredentialsResponse.fromMap(Map<String, dynamic> map) {
     return CredentialsResponse(
-      customRegistries: map['customRegistries'] == null ? null : pulumi.Input.decodeMapValues<CustomRegistryCredentialsResponse>(map['customRegistries'], (value) => CustomRegistryCredentialsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceRegistry: map['sourceRegistry'] == null ? null : SourceRegistryCredentialsResponse.fromMap((map['sourceRegistry'] as Map).cast<String, dynamic>()),
+      customRegistries: map['customRegistries'] == null ? null : (pulumi.Input.decodeMapValues<CustomRegistryCredentialsResponse>(map['customRegistries'], (value) => CustomRegistryCredentialsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceRegistry: map['sourceRegistry'] == null ? null : (SourceRegistryCredentialsResponse.fromMap((map['sourceRegistry'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

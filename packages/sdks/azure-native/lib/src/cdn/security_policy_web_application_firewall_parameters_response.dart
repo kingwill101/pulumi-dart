@@ -7,12 +7,12 @@ import 'security_policy_web_application_firewall_association_response.dart';
 /// The json object containing security policy waf parameters
 class SecurityPolicyWebApplicationFirewallParametersResponse {
   /// Waf associations
-  final List<SecurityPolicyWebApplicationFirewallAssociationResponse>? associations;
+  final pulumi.Input<List<SecurityPolicyWebApplicationFirewallAssociationResponse>>? associations;
   /// The type of the Security policy to create.
   /// Expected value is 'WebApplicationFirewall'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Resource ID.
-  final ResourceReferenceResponse? wafPolicy;
+  final pulumi.Input<ResourceReferenceResponse>? wafPolicy;
 
   /// Creates a new [SecurityPolicyWebApplicationFirewallParametersResponse].
   /// [associations] Waf associations
@@ -26,17 +26,17 @@ class SecurityPolicyWebApplicationFirewallParametersResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'associations': ?associations == null ? null : pulumi.Input.encodeList<SecurityPolicyWebApplicationFirewallAssociationResponse, Map<String, dynamic>>(associations!, (value) => value.toMap()),
+      'associations': ?pulumi.Input.mapOptionalInputValue<List<SecurityPolicyWebApplicationFirewallAssociationResponse>, List<Map<String, dynamic>>>(associations, (value) => pulumi.Input.encodeList<SecurityPolicyWebApplicationFirewallAssociationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
-      'wafPolicy': ?wafPolicy == null ? null : wafPolicy!.toMap(),
+      'wafPolicy': ?pulumi.Input.mapOptionalInputValue<ResourceReferenceResponse, Map<String, dynamic>>(wafPolicy, (value) => value.toMap()),
     };
   }
 
   factory SecurityPolicyWebApplicationFirewallParametersResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyWebApplicationFirewallParametersResponse(
-      associations: map['associations'] == null ? null : pulumi.Input.decodeList<SecurityPolicyWebApplicationFirewallAssociationResponse>(map['associations'], (value) => SecurityPolicyWebApplicationFirewallAssociationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      wafPolicy: map['wafPolicy'] == null ? null : ResourceReferenceResponse.fromMap((map['wafPolicy'] as Map).cast<String, dynamic>()),
+      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyWebApplicationFirewallAssociationResponse>(map['associations'], (value) => SecurityPolicyWebApplicationFirewallAssociationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      wafPolicy: map['wafPolicy'] == null ? null : (ResourceReferenceResponse.fromMap((map['wafPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

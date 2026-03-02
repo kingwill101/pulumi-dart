@@ -22,15 +22,11 @@ class GetShardingNetworkPublicAddressesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [role] The role of the node. Valid values: `Primary` or `Secondary`.
   GetShardingNetworkPublicAddressesArgs({
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? nodeId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? role,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      nodeId = pulumi.Input.asOptionalInput<String>(nodeId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    required this.dbInstanceId,
+    this.nodeId,
+    this.outputFile,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetShardingNetworkPublicAddressesArgs {
 
   factory GetShardingNetworkPublicAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetShardingNetworkPublicAddressesArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      nodeId: map['nodeId'] == null ? null : pulumi.Output.create<String>(map['nodeId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

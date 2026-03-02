@@ -46,27 +46,17 @@ class RegionalEndpointArgs {
   /// [subnetwork] The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
   /// [targetGoogleApi] The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
   RegionalEndpointArgs({
-    required pulumi.Output<String> accessType,
-    pulumi.Output<String>? address,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? subnetwork,
-    required pulumi.Output<String> targetGoogleApi,
-  }) :
-      accessType = pulumi.Input.asInput<String>(accessType),
-      address = pulumi.Input.asOptionalInput<String>(address),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork),
-      targetGoogleApi = pulumi.Input.asInput<String>(targetGoogleApi);
+    required this.accessType,
+    this.address,
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.network,
+    this.project,
+    this.subnetwork,
+    required this.targetGoogleApi,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class RegionalEndpointArgs {
 
   factory RegionalEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RegionalEndpointArgs(
-      accessType: pulumi.Output.create<String>(map['accessType'] as String),
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      subnetwork: map['subnetwork'] == null ? null : pulumi.Output.create<String>(map['subnetwork'] as String),
-      targetGoogleApi: pulumi.Output.create<String>(map['targetGoogleApi'] as String),
+      accessType: (map['accessType'] as String).input(),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      targetGoogleApi: (map['targetGoogleApi'] as String).input(),
     );
   }
 }

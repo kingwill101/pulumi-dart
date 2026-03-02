@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyBuiltInSingleSelectObservation {
   /// The description of the threshold observation.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The Name of the built-in Anomaly Alert Rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// A list of supported values of the single select observation.
-  final List<String>? supportedValues;
+  final pulumi.Input<List<String>>? supportedValues;
   /// The value of the threshold observation.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [AlertRuleAnomalyBuiltInSingleSelectObservation].
   /// [description] The description of the threshold observation.
@@ -34,10 +35,10 @@ class AlertRuleAnomalyBuiltInSingleSelectObservation {
 
   factory AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInSingleSelectObservation(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      supportedValues: map['supportedValues'] == null ? null : (map['supportedValues'] as List).cast<String>(),
-      value: map['value'] == null ? null : map['value'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues'] as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

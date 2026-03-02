@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'datascan_data_quality_spec_post_scan_actions_notification_report_recipients.dart';
 import 'datascan_data_quality_spec_post_scan_actions_notification_report_score_threshold_trigger.dart';
 
 class DatascanDataQualitySpecPostScanActionsNotificationReport {
   /// This trigger is triggered whenever a scan job run ends, regardless of the result.
-  final Map<String, dynamic>? jobEndTrigger;
+  final pulumi.Input<Map<String, dynamic>>? jobEndTrigger;
   /// This trigger is triggered when the scan job itself fails, regardless of the result.
-  final Map<String, dynamic>? jobFailureTrigger;
+  final pulumi.Input<Map<String, dynamic>>? jobFailureTrigger;
   /// The individuals or groups who are designated to receive notifications upon triggers.
   /// Structure is documented below.
-  final DatascanDataQualitySpecPostScanActionsNotificationReportRecipients recipients;
+  final pulumi.Input<DatascanDataQualitySpecPostScanActionsNotificationReportRecipients> recipients;
   /// This trigger is triggered when the DQ score in the job result is less than a specified input score.
   /// Structure is documented below.
-  final DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger? scoreThresholdTrigger;
+  final pulumi.Input<DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger>? scoreThresholdTrigger;
 
   /// Creates a new [DatascanDataQualitySpecPostScanActionsNotificationReport].
   /// [jobEndTrigger] This trigger is triggered whenever a scan job run ends, regardless of the result.
@@ -31,17 +32,17 @@ class DatascanDataQualitySpecPostScanActionsNotificationReport {
     return <String, dynamic>{
       'jobEndTrigger': ?jobEndTrigger,
       'jobFailureTrigger': ?jobFailureTrigger,
-      'recipients': recipients.toMap(),
-      'scoreThresholdTrigger': ?scoreThresholdTrigger == null ? null : scoreThresholdTrigger!.toMap(),
+      'recipients': pulumi.Input.mapInputValue<DatascanDataQualitySpecPostScanActionsNotificationReportRecipients, Map<String, dynamic>>(recipients, (value) => value.toMap()),
+      'scoreThresholdTrigger': ?pulumi.Input.mapOptionalInputValue<DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger, Map<String, dynamic>>(scoreThresholdTrigger, (value) => value.toMap()),
     };
   }
 
   factory DatascanDataQualitySpecPostScanActionsNotificationReport.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecPostScanActionsNotificationReport(
-      jobEndTrigger: map['jobEndTrigger'] == null ? null : (map['jobEndTrigger'] as Map).cast<String, dynamic>(),
-      jobFailureTrigger: map['jobFailureTrigger'] == null ? null : (map['jobFailureTrigger'] as Map).cast<String, dynamic>(),
-      recipients: DatascanDataQualitySpecPostScanActionsNotificationReportRecipients.fromMap((map['recipients'] as Map).cast<String, dynamic>()),
-      scoreThresholdTrigger: map['scoreThresholdTrigger'] == null ? null : DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap((map['scoreThresholdTrigger'] as Map).cast<String, dynamic>()),
+      jobEndTrigger: map['jobEndTrigger'] == null ? null : ((map['jobEndTrigger'] as Map).cast<String, dynamic>()).input(),
+      jobFailureTrigger: map['jobFailureTrigger'] == null ? null : ((map['jobFailureTrigger'] as Map).cast<String, dynamic>()).input(),
+      recipients: (DatascanDataQualitySpecPostScanActionsNotificationReportRecipients.fromMap((map['recipients'] as Map).cast<String, dynamic>())).input(),
+      scoreThresholdTrigger: map['scoreThresholdTrigger'] == null ? null : (DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap((map['scoreThresholdTrigger'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

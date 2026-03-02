@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodeConfigHostMaintenancePolicy {
   /// .
-  final String maintenanceInterval;
+  final pulumi.Input<String> maintenanceInterval;
 
   /// Creates a new [GetClusterNodeConfigHostMaintenancePolicy].
   /// [maintenanceInterval] .
@@ -19,7 +20,7 @@ class GetClusterNodeConfigHostMaintenancePolicy {
 
   factory GetClusterNodeConfigHostMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigHostMaintenancePolicy(
-      maintenanceInterval: map['maintenanceInterval'] as String,
+      maintenanceInterval: (map['maintenanceInterval'] as String).input(),
     );
   }
 }

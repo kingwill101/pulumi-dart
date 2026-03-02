@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionAppFunctionFile {
   /// The content of the file. Changing this forces a new resource to be created.
-  final String content;
+  final pulumi.Input<String> content;
   /// The filename of the file to be uploaded. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [FunctionAppFunctionFile].
   /// [content] The content of the file. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class FunctionAppFunctionFile {
 
   factory FunctionAppFunctionFile.fromMap(Map<String, dynamic> map) {
     return FunctionAppFunctionFile(
-      content: map['content'] as String,
-      name: map['name'] as String,
+      content: (map['content'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

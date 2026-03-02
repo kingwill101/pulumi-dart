@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBastionHostIpConfiguration {
   /// The name of the Bastion Host.
-  final String name;
+  final pulumi.Input<String> name;
   /// Reference to a Public IP Address associated to this Bastion Host.
-  final String publicIpAddressId;
+  final pulumi.Input<String> publicIpAddressId;
   /// Reference to the subnet in which this Bastion Host has been created.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetBastionHostIpConfiguration].
   /// [name] The name of the Bastion Host.
@@ -29,9 +30,9 @@ class GetBastionHostIpConfiguration {
 
   factory GetBastionHostIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBastionHostIpConfiguration(
-      name: map['name'] as String,
-      publicIpAddressId: map['publicIpAddressId'] as String,
-      subnetId: map['subnetId'] as String,
+      name: (map['name'] as String).input(),
+      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Service endpoints authentication details.
 class EndpointAuthentication {
   /// AAD tenant ID.
-  final String? aadTenantID;
+  final pulumi.Input<String>? aadTenantID;
   /// AAD principal ID.
-  final String? principalID;
+  final pulumi.Input<String>? principalID;
   /// AAD principal type.
-  final String? principalType;
+  final pulumi.Input<String>? principalType;
 
   /// Creates a new [EndpointAuthentication].
   /// [aadTenantID] AAD tenant ID.
@@ -30,9 +31,9 @@ class EndpointAuthentication {
 
   factory EndpointAuthentication.fromMap(Map<String, dynamic> map) {
     return EndpointAuthentication(
-      aadTenantID: map['aadTenantID'] == null ? null : map['aadTenantID'] as String,
-      principalID: map['principalID'] == null ? null : map['principalID'] as String,
-      principalType: map['principalType'] == null ? null : map['principalType'] as String,
+      aadTenantID: map['aadTenantID'] == null ? null : (map['aadTenantID'] as String).input(),
+      principalID: map['principalID'] == null ? null : (map['principalID'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_log_config_optional_mode_compute_beta.dart';
 
 /// The available logging options for the load balancer traffic served by this backend service.
 class BackendServiceLogConfigComputeBeta {
   /// Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
   /// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
-  final List<String>? optionalFields;
+  final pulumi.Input<List<String>>? optionalFields;
   /// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
-  final BackendServiceLogConfigOptionalModeComputeBeta? optionalMode;
+  final pulumi.Input<BackendServiceLogConfigOptionalModeComputeBeta>? optionalMode;
   /// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
-  final double? sampleRate;
+  final pulumi.Input<double>? sampleRate;
 
   /// Creates a new [BackendServiceLogConfigComputeBeta].
   /// [enable] Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
@@ -29,17 +30,17 @@ class BackendServiceLogConfigComputeBeta {
     return <String, dynamic>{
       'enable': ?enable,
       'optionalFields': ?optionalFields,
-      'optionalMode': ?optionalMode == null ? null : optionalMode!.value,
+      'optionalMode': ?pulumi.Input.mapOptionalInputValue<BackendServiceLogConfigOptionalModeComputeBeta, String>(optionalMode, (value) => value.value),
       'sampleRate': ?sampleRate,
     };
   }
 
   factory BackendServiceLogConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceLogConfigComputeBeta(
-      enable: map['enable'] == null ? null : map['enable'] as bool,
-      optionalFields: map['optionalFields'] == null ? null : (map['optionalFields'] as List).cast<String>(),
-      optionalMode: map['optionalMode'] == null ? null : BackendServiceLogConfigOptionalModeComputeBeta.fromValue(map['optionalMode'] as String),
-      sampleRate: map['sampleRate'] == null ? null : map['sampleRate'] as double,
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      optionalFields: map['optionalFields'] == null ? null : ((map['optionalFields'] as List).cast<String>()).input(),
+      optionalMode: map['optionalMode'] == null ? null : (BackendServiceLogConfigOptionalModeComputeBeta.fromValue(map['optionalMode'] as String)).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
     );
   }
 }

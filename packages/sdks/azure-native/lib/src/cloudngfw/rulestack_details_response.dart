@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Associated rulestack details
 class RulestackDetailsResponse {
   /// Rulestack location
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource Id
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Associated rulestack Id
-  final String? rulestackId;
+  final pulumi.Input<String>? rulestackId;
 
   /// Creates a new [RulestackDetailsResponse].
   /// [location] Rulestack location
@@ -30,9 +31,9 @@ class RulestackDetailsResponse {
 
   factory RulestackDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RulestackDetailsResponse(
-      location: map['location'] == null ? null : map['location'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      rulestackId: map['rulestackId'] == null ? null : map['rulestackId'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId'] as String).input(),
     );
   }
 }

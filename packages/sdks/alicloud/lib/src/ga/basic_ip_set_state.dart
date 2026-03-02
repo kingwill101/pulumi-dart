@@ -22,17 +22,12 @@ class BasicIpSetState {
   /// [ispType] The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
   /// [status] The status of the Basic Ip Set instance.
   BasicIpSetState({
-    pulumi.Output<String>? accelerateRegionId,
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? ispType,
-    pulumi.Output<String>? status,
-  }) :
-      accelerateRegionId = pulumi.Input.asOptionalInput<String>(accelerateRegionId),
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      ispType = pulumi.Input.asOptionalInput<String>(ispType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accelerateRegionId,
+    this.acceleratorId,
+    this.bandwidth,
+    this.ispType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class BasicIpSetState {
 
   factory BasicIpSetState.fromMap(Map<String, dynamic> map) {
     return BasicIpSetState(
-      accelerateRegionId: map['accelerateRegionId'] == null ? null : pulumi.Output.create<String>(map['accelerateRegionId'] as String),
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      ispType: map['ispType'] == null ? null : pulumi.Output.create<String>(map['ispType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accelerateRegionId: map['accelerateRegionId'] == null ? null : (map['accelerateRegionId'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      ispType: map['ispType'] == null ? null : (map['ispType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

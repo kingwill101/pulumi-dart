@@ -45,19 +45,13 @@ class EntryTypeIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   EntryTypeIamMemberArgs({
-    pulumi.Output<EntryTypeIamMemberCondition>? condition,
-    required pulumi.Output<String> entryTypeId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<EntryTypeIamMemberCondition>(condition),
-      entryTypeId = pulumi.Input.asInput<String>(entryTypeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.entryTypeId,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class EntryTypeIamMemberArgs {
 
   factory EntryTypeIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return EntryTypeIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<EntryTypeIamMemberCondition>(EntryTypeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      entryTypeId: pulumi.Output.create<String>(map['entryTypeId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (EntryTypeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      entryTypeId: (map['entryTypeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

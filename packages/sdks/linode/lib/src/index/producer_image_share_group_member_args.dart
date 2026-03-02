@@ -19,13 +19,10 @@ class ProducerImageShareGroupMemberArgs {
   /// [sharegroupId] The ID of the Image Share Group to which the member will be added.
   /// [token] The token of the prospective member.
   ProducerImageShareGroupMemberArgs({
-    required pulumi.Output<String> label,
-    required pulumi.Output<int> sharegroupId,
-    required pulumi.Output<String> token,
-  }) :
-      label = pulumi.Input.asInput<String>(label),
-      sharegroupId = pulumi.Input.asInput<int>(sharegroupId),
-      token = pulumi.Input.asInput<String>(token);
+    required this.label,
+    required this.sharegroupId,
+    required this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ProducerImageShareGroupMemberArgs {
 
   factory ProducerImageShareGroupMemberArgs.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupMemberArgs(
-      label: pulumi.Output.create<String>(map['label'] as String),
-      sharegroupId: pulumi.Output.create<int>(map['sharegroupId'] as int),
-      token: pulumi.Output.create<String>(map['token'] as String),
+      label: (map['label'] as String).input(),
+      sharegroupId: (map['sharegroupId'] as int).input(),
+      token: (map['token'] as String).input(),
     );
   }
 }

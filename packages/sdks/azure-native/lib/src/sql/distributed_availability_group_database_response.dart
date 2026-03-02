@@ -1,51 +1,52 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_info_response.dart';
 
 /// Database specific information
 class DistributedAvailabilityGroupDatabaseResponse {
   /// Link connected state
-  final String connectedState;
+  final pulumi.Input<String> connectedState;
   /// The name of the database in link
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
   /// Redo lag when Managed Instance link side is primary
-  final int instanceRedoReplicationLagSeconds;
+  final pulumi.Input<int> instanceRedoReplicationLagSeconds;
   /// Managed instance replica id
-  final String instanceReplicaId;
+  final pulumi.Input<String> instanceReplicaId;
   /// Replication lag when Managed Instance link side is primary
-  final int instanceSendReplicationLagSeconds;
+  final pulumi.Input<int> instanceSendReplicationLagSeconds;
   /// Last backup LSN
-  final String lastBackupLsn;
+  final pulumi.Input<String> lastBackupLsn;
   /// Last backup LSN time
-  final String lastBackupTime;
+  final pulumi.Input<String> lastBackupTime;
   /// Last commit LSN
-  final String lastCommitLsn;
+  final pulumi.Input<String> lastCommitLsn;
   /// Last commit LSN time
-  final String lastCommitTime;
+  final pulumi.Input<String> lastCommitTime;
   /// Last hardened LSN
-  final String lastHardenedLsn;
+  final pulumi.Input<String> lastHardenedLsn;
   /// Last hardened LSN time
-  final String lastHardenedTime;
+  final pulumi.Input<String> lastHardenedTime;
   /// Last received LSN
-  final String lastReceivedLsn;
+  final pulumi.Input<String> lastReceivedLsn;
   /// Last received LSN time
-  final String lastReceivedTime;
+  final pulumi.Input<String> lastReceivedTime;
   /// Last sent LSN
-  final String lastSentLsn;
+  final pulumi.Input<String> lastSentLsn;
   /// Last sent LSN time
-  final String lastSentTime;
+  final pulumi.Input<String> lastSentTime;
   /// The most recent link connection error description
-  final String mostRecentLinkError;
+  final pulumi.Input<String> mostRecentLinkError;
   /// SQL server certificate validity
-  final CertificateInfoResponse partnerAuthCertValidity;
+  final pulumi.Input<CertificateInfoResponse> partnerAuthCertValidity;
   /// SQL server replica id
-  final String partnerReplicaId;
+  final pulumi.Input<String> partnerReplicaId;
   /// Current link state
-  final String replicaState;
+  final pulumi.Input<String> replicaState;
   /// Seeding progress
-  final String seedingProgress;
+  final pulumi.Input<String> seedingProgress;
   /// Link health state
-  final String synchronizationHealth;
+  final pulumi.Input<String> synchronizationHealth;
 
   /// Creates a new [DistributedAvailabilityGroupDatabaseResponse].
   /// [connectedState] Link connected state
@@ -111,7 +112,7 @@ class DistributedAvailabilityGroupDatabaseResponse {
       'lastSentLsn': lastSentLsn,
       'lastSentTime': lastSentTime,
       'mostRecentLinkError': mostRecentLinkError,
-      'partnerAuthCertValidity': partnerAuthCertValidity.toMap(),
+      'partnerAuthCertValidity': pulumi.Input.mapInputValue<CertificateInfoResponse, Map<String, dynamic>>(partnerAuthCertValidity, (value) => value.toMap()),
       'partnerReplicaId': partnerReplicaId,
       'replicaState': replicaState,
       'seedingProgress': seedingProgress,
@@ -121,27 +122,27 @@ class DistributedAvailabilityGroupDatabaseResponse {
 
   factory DistributedAvailabilityGroupDatabaseResponse.fromMap(Map<String, dynamic> map) {
     return DistributedAvailabilityGroupDatabaseResponse(
-      connectedState: map['connectedState'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      instanceRedoReplicationLagSeconds: map['instanceRedoReplicationLagSeconds'] as int,
-      instanceReplicaId: map['instanceReplicaId'] as String,
-      instanceSendReplicationLagSeconds: map['instanceSendReplicationLagSeconds'] as int,
-      lastBackupLsn: map['lastBackupLsn'] as String,
-      lastBackupTime: map['lastBackupTime'] as String,
-      lastCommitLsn: map['lastCommitLsn'] as String,
-      lastCommitTime: map['lastCommitTime'] as String,
-      lastHardenedLsn: map['lastHardenedLsn'] as String,
-      lastHardenedTime: map['lastHardenedTime'] as String,
-      lastReceivedLsn: map['lastReceivedLsn'] as String,
-      lastReceivedTime: map['lastReceivedTime'] as String,
-      lastSentLsn: map['lastSentLsn'] as String,
-      lastSentTime: map['lastSentTime'] as String,
-      mostRecentLinkError: map['mostRecentLinkError'] as String,
-      partnerAuthCertValidity: CertificateInfoResponse.fromMap((map['partnerAuthCertValidity'] as Map).cast<String, dynamic>()),
-      partnerReplicaId: map['partnerReplicaId'] as String,
-      replicaState: map['replicaState'] as String,
-      seedingProgress: map['seedingProgress'] as String,
-      synchronizationHealth: map['synchronizationHealth'] as String,
+      connectedState: (map['connectedState'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      instanceRedoReplicationLagSeconds: (map['instanceRedoReplicationLagSeconds'] as int).input(),
+      instanceReplicaId: (map['instanceReplicaId'] as String).input(),
+      instanceSendReplicationLagSeconds: (map['instanceSendReplicationLagSeconds'] as int).input(),
+      lastBackupLsn: (map['lastBackupLsn'] as String).input(),
+      lastBackupTime: (map['lastBackupTime'] as String).input(),
+      lastCommitLsn: (map['lastCommitLsn'] as String).input(),
+      lastCommitTime: (map['lastCommitTime'] as String).input(),
+      lastHardenedLsn: (map['lastHardenedLsn'] as String).input(),
+      lastHardenedTime: (map['lastHardenedTime'] as String).input(),
+      lastReceivedLsn: (map['lastReceivedLsn'] as String).input(),
+      lastReceivedTime: (map['lastReceivedTime'] as String).input(),
+      lastSentLsn: (map['lastSentLsn'] as String).input(),
+      lastSentTime: (map['lastSentTime'] as String).input(),
+      mostRecentLinkError: (map['mostRecentLinkError'] as String).input(),
+      partnerAuthCertValidity: (CertificateInfoResponse.fromMap((map['partnerAuthCertValidity'] as Map).cast<String, dynamic>())).input(),
+      partnerReplicaId: (map['partnerReplicaId'] as String).input(),
+      replicaState: (map['replicaState'] as String).input(),
+      seedingProgress: (map['seedingProgress'] as String).input(),
+      synchronizationHealth: (map['synchronizationHealth'] as String).input(),
     );
   }
 }

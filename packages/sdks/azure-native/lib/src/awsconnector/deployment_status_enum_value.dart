@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of DeploymentStatusEnumValue
 class DeploymentStatusEnumValue {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DeploymentStatusEnumValue].
   /// [value] Property value
@@ -20,7 +21,7 @@ class DeploymentStatusEnumValue {
 
   factory DeploymentStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return DeploymentStatusEnumValue(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

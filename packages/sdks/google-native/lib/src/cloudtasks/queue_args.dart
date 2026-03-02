@@ -37,23 +37,15 @@ class QueueArgs {
   /// [retryConfig] Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
   /// [stackdriverLoggingConfig] Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
   QueueArgs({
-    pulumi.Output<AppEngineRouting>? appEngineRoutingOverride,
-    pulumi.Output<HttpTarget>? httpTarget,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<RateLimits>? rateLimits,
-    pulumi.Output<RetryConfig>? retryConfig,
-    pulumi.Output<StackdriverLoggingConfig>? stackdriverLoggingConfig,
-  }) :
-      appEngineRoutingOverride = pulumi.Input.asOptionalInput<AppEngineRouting>(appEngineRoutingOverride),
-      httpTarget = pulumi.Input.asOptionalInput<HttpTarget>(httpTarget),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rateLimits = pulumi.Input.asOptionalInput<RateLimits>(rateLimits),
-      retryConfig = pulumi.Input.asOptionalInput<RetryConfig>(retryConfig),
-      stackdriverLoggingConfig = pulumi.Input.asOptionalInput<StackdriverLoggingConfig>(stackdriverLoggingConfig);
+    this.appEngineRoutingOverride,
+    this.httpTarget,
+    this.location,
+    this.name,
+    this.project,
+    this.rateLimits,
+    this.retryConfig,
+    this.stackdriverLoggingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : pulumi.Output.create<AppEngineRouting>(AppEngineRouting.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>())),
-      httpTarget: map['httpTarget'] == null ? null : pulumi.Output.create<HttpTarget>(HttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rateLimits: map['rateLimits'] == null ? null : pulumi.Output.create<RateLimits>(RateLimits.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())),
-      retryConfig: map['retryConfig'] == null ? null : pulumi.Output.create<RetryConfig>(RetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())),
-      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : pulumi.Output.create<StackdriverLoggingConfig>(StackdriverLoggingConfig.fromMap((map['stackdriverLoggingConfig'] as Map).cast<String, dynamic>())),
+      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : (AppEngineRouting.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>())).input(),
+      httpTarget: map['httpTarget'] == null ? null : (HttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rateLimits: map['rateLimits'] == null ? null : (RateLimits.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (RetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
+      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : (StackdriverLoggingConfig.fromMap((map['stackdriverLoggingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationWindow {
   /// The duration of the maintenance window in HH:mm format.
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format.
-  final String? expirationDateTime;
+  final pulumi.Input<String>? expirationDateTime;
   /// The rate at which a maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules.
-  final String? recurEvery;
+  final pulumi.Input<String>? recurEvery;
   /// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format.
-  final String startDateTime;
+  final pulumi.Input<String> startDateTime;
   /// The time zone for the maintenance window. A list of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell.
-  final String timeZone;
+  final pulumi.Input<String> timeZone;
 
   /// Creates a new [ConfigurationWindow].
   /// [duration] The duration of the maintenance window in HH:mm format.
@@ -39,11 +40,11 @@ class ConfigurationWindow {
 
   factory ConfigurationWindow.fromMap(Map<String, dynamic> map) {
     return ConfigurationWindow(
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      expirationDateTime: map['expirationDateTime'] == null ? null : map['expirationDateTime'] as String,
-      recurEvery: map['recurEvery'] == null ? null : map['recurEvery'] as String,
-      startDateTime: map['startDateTime'] as String,
-      timeZone: map['timeZone'] as String,
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      expirationDateTime: map['expirationDateTime'] == null ? null : (map['expirationDateTime'] as String).input(),
+      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery'] as String).input(),
+      startDateTime: (map['startDateTime'] as String).input(),
+      timeZone: (map['timeZone'] as String).input(),
     );
   }
 }

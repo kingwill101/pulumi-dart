@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVbrPconnAssociationsAssociation {
   /// The circuit code provided by the operator for the physical connection.
-  final String circuitCode;
+  final pulumi.Input<String> circuitCode;
   /// Whether IPv6 is enabled.
-  final bool enableIpv6;
+  final pulumi.Input<bool> enableIpv6;
   /// The ID of the Vbr Pconn Association.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Alibaba cloud IP address of the VBR instance.
-  final String localGatewayIp;
+  final pulumi.Input<String> localGatewayIp;
   /// The IPv6 address on the Alibaba Cloud side of the VBR instance.
-  final String localIpv6GatewayIp;
+  final pulumi.Input<String> localIpv6GatewayIp;
   /// The client IP address of the VBR instance.
-  final String peerGatewayIp;
+  final pulumi.Input<String> peerGatewayIp;
   /// The IPv6 address of the client side of the VBR instance.
-  final String peerIpv6GatewayIp;
+  final pulumi.Input<String> peerIpv6GatewayIp;
   /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
-  final String peeringIpv6SubnetMask;
+  final pulumi.Input<String> peeringIpv6SubnetMask;
   /// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
-  final String peeringSubnetMask;
+  final pulumi.Input<String> peeringSubnetMask;
   /// The ID of the leased line instance.
-  final String physicalConnectionId;
+  final pulumi.Input<String> physicalConnectionId;
   /// The status of the resource
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the VBR instance.
-  final String vbrId;
+  final pulumi.Input<String> vbrId;
   /// VLAN ID of the VBR.
-  final int vlanId;
+  final pulumi.Input<int> vlanId;
 
   /// Creates a new [GetVbrPconnAssociationsAssociation].
   /// [circuitCode] The circuit code provided by the operator for the physical connection.
@@ -79,19 +80,19 @@ class GetVbrPconnAssociationsAssociation {
 
   factory GetVbrPconnAssociationsAssociation.fromMap(Map<String, dynamic> map) {
     return GetVbrPconnAssociationsAssociation(
-      circuitCode: map['circuitCode'] as String,
-      enableIpv6: map['enableIpv6'] as bool,
-      id: map['id'] as String,
-      localGatewayIp: map['localGatewayIp'] as String,
-      localIpv6GatewayIp: map['localIpv6GatewayIp'] as String,
-      peerGatewayIp: map['peerGatewayIp'] as String,
-      peerIpv6GatewayIp: map['peerIpv6GatewayIp'] as String,
-      peeringIpv6SubnetMask: map['peeringIpv6SubnetMask'] as String,
-      peeringSubnetMask: map['peeringSubnetMask'] as String,
-      physicalConnectionId: map['physicalConnectionId'] as String,
-      status: map['status'] as String,
-      vbrId: map['vbrId'] as String,
-      vlanId: map['vlanId'] as int,
+      circuitCode: (map['circuitCode'] as String).input(),
+      enableIpv6: (map['enableIpv6'] as bool).input(),
+      id: (map['id'] as String).input(),
+      localGatewayIp: (map['localGatewayIp'] as String).input(),
+      localIpv6GatewayIp: (map['localIpv6GatewayIp'] as String).input(),
+      peerGatewayIp: (map['peerGatewayIp'] as String).input(),
+      peerIpv6GatewayIp: (map['peerIpv6GatewayIp'] as String).input(),
+      peeringIpv6SubnetMask: (map['peeringIpv6SubnetMask'] as String).input(),
+      peeringSubnetMask: (map['peeringSubnetMask'] as String).input(),
+      physicalConnectionId: (map['physicalConnectionId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vbrId: (map['vbrId'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
     );
   }
 }

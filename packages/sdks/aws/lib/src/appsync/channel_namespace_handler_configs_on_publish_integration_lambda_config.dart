@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig {
   /// Invocation type for a Lambda data source. Valid values: `REQUEST_RESPONSE`, `EVENT`.
-  final String? invokeType;
+  final pulumi.Input<String>? invokeType;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig].
   /// [invokeType] Invocation type for a Lambda data source. Valid values: `REQUEST_RESPONSE`, `EVENT`.
@@ -19,7 +20,7 @@ class ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig {
 
   factory ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig(
-      invokeType: map['invokeType'] == null ? null : map['invokeType'] as String,
+      invokeType: map['invokeType'] == null ? null : (map['invokeType'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class SpacesBucketLoggingArgs {
   /// [targetBucket] The name of the bucket which will store the logs.
   /// [targetPrefix] The prefix for the log files.
   SpacesBucketLoggingArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> targetBucket,
-    required pulumi.Output<String> targetPrefix,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      region = pulumi.Input.asInput<String>(region),
-      targetBucket = pulumi.Input.asInput<String>(targetBucket),
-      targetPrefix = pulumi.Input.asInput<String>(targetPrefix);
+    required this.bucket,
+    required this.region,
+    required this.targetBucket,
+    required this.targetPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SpacesBucketLoggingArgs {
 
   factory SpacesBucketLoggingArgs.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLoggingArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      targetBucket: pulumi.Output.create<String>(map['targetBucket'] as String),
-      targetPrefix: pulumi.Output.create<String>(map['targetPrefix'] as String),
+      bucket: (map['bucket'] as String).input(),
+      region: (map['region'] as String).input(),
+      targetBucket: (map['targetBucket'] as String).input(),
+      targetPrefix: (map['targetPrefix'] as String).input(),
     );
   }
 }

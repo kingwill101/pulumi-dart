@@ -22,15 +22,11 @@ class GetInstanceTypeOfferingsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [storageType] Filter response by storage type.
   GetInstanceTypeOfferingsArgs({
-    pulumi.Output<String>? engineType,
-    pulumi.Output<String>? hostInstanceType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? storageType,
-  }) :
-      engineType = pulumi.Input.asOptionalInput<String>(engineType),
-      hostInstanceType = pulumi.Input.asOptionalInput<String>(hostInstanceType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageType = pulumi.Input.asOptionalInput<String>(storageType);
+    this.engineType,
+    this.hostInstanceType,
+    this.region,
+    this.storageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetInstanceTypeOfferingsArgs {
 
   factory GetInstanceTypeOfferingsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingsArgs(
-      engineType: map['engineType'] == null ? null : pulumi.Output.create<String>(map['engineType'] as String),
-      hostInstanceType: map['hostInstanceType'] == null ? null : pulumi.Output.create<String>(map['hostInstanceType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageType: map['storageType'] == null ? null : pulumi.Output.create<String>(map['storageType'] as String),
+      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
+      hostInstanceType: map['hostInstanceType'] == null ? null : (map['hostInstanceType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
     );
   }
 }

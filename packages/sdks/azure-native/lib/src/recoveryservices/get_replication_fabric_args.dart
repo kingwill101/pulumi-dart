@@ -22,15 +22,11 @@ class GetReplicationFabricArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
   GetReplicationFabricArgs({
-    required pulumi.Output<String> fabricName,
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.fabricName,
+    this.filter,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetReplicationFabricArgs {
 
   factory GetReplicationFabricArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationFabricArgs(
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      fabricName: (map['fabricName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

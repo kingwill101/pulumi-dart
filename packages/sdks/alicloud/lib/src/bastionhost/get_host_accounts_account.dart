@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHostAccountsAccount {
   /// Whether to set a new password.
-  final bool hasPassword;
+  final pulumi.Input<bool> hasPassword;
   /// Hosting account ID.
-  final String hostAccountId;
+  final pulumi.Input<String> hostAccountId;
   /// Specify the new hosting account's name, support the longest 128 characters.
-  final String hostAccountName;
+  final pulumi.Input<String> hostAccountName;
   /// Specifies the database where you want to create your hosting account's host ID.
-  final String hostId;
+  final pulumi.Input<String> hostId;
   /// The ID of the Host Account.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specifies the database where you want to create your hosting account's host bastion host ID of.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The situation where the private keys of the fingerprint information.
-  final String privateKeyFingerprint;
+  final pulumi.Input<String> privateKeyFingerprint;
   /// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
-  final String protocolName;
+  final pulumi.Input<String> protocolName;
 
   /// Creates a new [GetHostAccountsAccount].
   /// [hasPassword] Whether to set a new password.
@@ -54,14 +55,14 @@ class GetHostAccountsAccount {
 
   factory GetHostAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetHostAccountsAccount(
-      hasPassword: map['hasPassword'] as bool,
-      hostAccountId: map['hostAccountId'] as String,
-      hostAccountName: map['hostAccountName'] as String,
-      hostId: map['hostId'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      privateKeyFingerprint: map['privateKeyFingerprint'] as String,
-      protocolName: map['protocolName'] as String,
+      hasPassword: (map['hasPassword'] as bool).input(),
+      hostAccountId: (map['hostAccountId'] as String).input(),
+      hostAccountName: (map['hostAccountName'] as String).input(),
+      hostId: (map['hostId'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      privateKeyFingerprint: (map['privateKeyFingerprint'] as String).input(),
+      protocolName: (map['protocolName'] as String).input(),
     );
   }
 }

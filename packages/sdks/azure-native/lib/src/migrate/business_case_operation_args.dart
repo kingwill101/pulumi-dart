@@ -23,15 +23,11 @@ class BusinessCaseOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [settings] Business case settings.
   BusinessCaseOperationArgs({
-    pulumi.Output<String>? businessCaseName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Settings>? settings,
-  }) :
-      businessCaseName = pulumi.Input.asOptionalInput<String>(businessCaseName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      settings = pulumi.Input.asOptionalInput<Settings>(settings);
+    this.businessCaseName,
+    required this.projectName,
+    required this.resourceGroupName,
+    this.settings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class BusinessCaseOperationArgs {
 
   factory BusinessCaseOperationArgs.fromMap(Map<String, dynamic> map) {
     return BusinessCaseOperationArgs(
-      businessCaseName: map['businessCaseName'] == null ? null : pulumi.Output.create<String>(map['businessCaseName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<Settings>(Settings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
+      businessCaseName: map['businessCaseName'] == null ? null : (map['businessCaseName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      settings: map['settings'] == null ? null : (Settings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

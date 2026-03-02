@@ -21,13 +21,10 @@ class ReadinessCheckArgs {
   /// [resourceSetName] Name describing the resource set that will be monitored for readiness.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   ReadinessCheckArgs({
-    required pulumi.Output<String> readinessCheckName,
-    required pulumi.Output<String> resourceSetName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      readinessCheckName = pulumi.Input.asInput<String>(readinessCheckName),
-      resourceSetName = pulumi.Input.asInput<String>(resourceSetName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.readinessCheckName,
+    required this.resourceSetName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ReadinessCheckArgs {
 
   factory ReadinessCheckArgs.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckArgs(
-      readinessCheckName: pulumi.Output.create<String>(map['readinessCheckName'] as String),
-      resourceSetName: pulumi.Output.create<String>(map['resourceSetName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      readinessCheckName: (map['readinessCheckName'] as String).input(),
+      resourceSetName: (map['resourceSetName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

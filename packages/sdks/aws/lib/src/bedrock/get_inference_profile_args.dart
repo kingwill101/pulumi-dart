@@ -16,11 +16,9 @@ class GetInferenceProfileArgs {
   /// [inferenceProfileId] Inference Profile identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetInferenceProfileArgs({
-    required pulumi.Output<String> inferenceProfileId,
-    pulumi.Output<String>? region,
-  }) :
-      inferenceProfileId = pulumi.Input.asInput<String>(inferenceProfileId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.inferenceProfileId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInferenceProfileArgs {
 
   factory GetInferenceProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetInferenceProfileArgs(
-      inferenceProfileId: pulumi.Output.create<String>(map['inferenceProfileId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      inferenceProfileId: (map['inferenceProfileId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SslCerts Resource
 class SslCertResponseSqladminV1beta4 {
   /// PEM representation.
-  final String cert;
+  final pulumi.Input<String> cert;
   /// Serial number, as extracted from the certificate.
-  final String certSerialNumber;
+  final pulumi.Input<String> certSerialNumber;
   /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
-  final String commonName;
+  final pulumi.Input<String> commonName;
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final String expirationTime;
+  final pulumi.Input<String> expirationTime;
   /// Name of the database instance.
-  final String instance;
+  final pulumi.Input<String> instance;
   /// This is always `sql#sslCert`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The URI of this resource.
-  final String selfLink;
+  final pulumi.Input<String> selfLink;
   /// Sha1 Fingerprint.
-  final String sha1Fingerprint;
+  final pulumi.Input<String> sha1Fingerprint;
 
   /// Creates a new [SslCertResponseSqladminV1beta4].
   /// [cert] PEM representation.
@@ -60,15 +61,15 @@ class SslCertResponseSqladminV1beta4 {
 
   factory SslCertResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return SslCertResponseSqladminV1beta4(
-      cert: map['cert'] as String,
-      certSerialNumber: map['certSerialNumber'] as String,
-      commonName: map['commonName'] as String,
-      createTime: map['createTime'] as String,
-      expirationTime: map['expirationTime'] as String,
-      instance: map['instance'] as String,
-      kind: map['kind'] as String,
-      selfLink: map['selfLink'] as String,
-      sha1Fingerprint: map['sha1Fingerprint'] as String,
+      cert: (map['cert'] as String).input(),
+      certSerialNumber: (map['certSerialNumber'] as String).input(),
+      commonName: (map['commonName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      expirationTime: (map['expirationTime'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      selfLink: (map['selfLink'] as String).input(),
+      sha1Fingerprint: (map['sha1Fingerprint'] as String).input(),
     );
   }
 }

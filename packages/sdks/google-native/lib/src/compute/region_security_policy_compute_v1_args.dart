@@ -50,33 +50,20 @@ class RegionSecurityPolicyComputeV1Args {
   /// [type] The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
   /// [userDefinedFields] Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
   RegionSecurityPolicyComputeV1Args({
-    pulumi.Output<SecurityPolicyAdaptiveProtectionConfigComputeV1>? adaptiveProtectionConfig,
-    pulumi.Output<SecurityPolicyAdvancedOptionsConfigComputeV1>? advancedOptionsConfig,
-    pulumi.Output<SecurityPolicyDdosProtectionConfigComputeV1>? ddosProtectionConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<SecurityPolicyRecaptchaOptionsConfigComputeV1>? recaptchaOptionsConfig,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<SecurityPolicyRuleComputeV1>>? rules,
-    pulumi.Output<RegionSecurityPolicyTypeComputeV1>? type,
-    pulumi.Output<List<SecurityPolicyUserDefinedFieldComputeV1>>? userDefinedFields,
-  }) :
-      adaptiveProtectionConfig = pulumi.Input.asOptionalInput<SecurityPolicyAdaptiveProtectionConfigComputeV1>(adaptiveProtectionConfig),
-      advancedOptionsConfig = pulumi.Input.asOptionalInput<SecurityPolicyAdvancedOptionsConfigComputeV1>(advancedOptionsConfig),
-      ddosProtectionConfig = pulumi.Input.asOptionalInput<SecurityPolicyDdosProtectionConfigComputeV1>(ddosProtectionConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recaptchaOptionsConfig = pulumi.Input.asOptionalInput<SecurityPolicyRecaptchaOptionsConfigComputeV1>(recaptchaOptionsConfig),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      rules = pulumi.Input.asOptionalInput<List<SecurityPolicyRuleComputeV1>>(rules),
-      type = pulumi.Input.asOptionalInput<RegionSecurityPolicyTypeComputeV1>(type),
-      userDefinedFields = pulumi.Input.asOptionalInput<List<SecurityPolicyUserDefinedFieldComputeV1>>(userDefinedFields);
+    this.adaptiveProtectionConfig,
+    this.advancedOptionsConfig,
+    this.ddosProtectionConfig,
+    this.description,
+    this.labels,
+    this.name,
+    this.project,
+    this.recaptchaOptionsConfig,
+    required this.region,
+    this.requestId,
+    this.rules,
+    this.type,
+    this.userDefinedFields,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class RegionSecurityPolicyComputeV1Args {
 
   factory RegionSecurityPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyComputeV1Args(
-      adaptiveProtectionConfig: map['adaptiveProtectionConfig'] == null ? null : pulumi.Output.create<SecurityPolicyAdaptiveProtectionConfigComputeV1>(SecurityPolicyAdaptiveProtectionConfigComputeV1.fromMap((map['adaptiveProtectionConfig'] as Map).cast<String, dynamic>())),
-      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : pulumi.Output.create<SecurityPolicyAdvancedOptionsConfigComputeV1>(SecurityPolicyAdvancedOptionsConfigComputeV1.fromMap((map['advancedOptionsConfig'] as Map).cast<String, dynamic>())),
-      ddosProtectionConfig: map['ddosProtectionConfig'] == null ? null : pulumi.Output.create<SecurityPolicyDdosProtectionConfigComputeV1>(SecurityPolicyDdosProtectionConfigComputeV1.fromMap((map['ddosProtectionConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recaptchaOptionsConfig: map['recaptchaOptionsConfig'] == null ? null : pulumi.Output.create<SecurityPolicyRecaptchaOptionsConfigComputeV1>(SecurityPolicyRecaptchaOptionsConfigComputeV1.fromMap((map['recaptchaOptionsConfig'] as Map).cast<String, dynamic>())),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<SecurityPolicyRuleComputeV1>>(pulumi.Input.decodeList<SecurityPolicyRuleComputeV1>(map['rules'], (value) => SecurityPolicyRuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
-      type: map['type'] == null ? null : pulumi.Output.create<RegionSecurityPolicyTypeComputeV1>(RegionSecurityPolicyTypeComputeV1.fromValue(map['type'] as String)),
-      userDefinedFields: map['userDefinedFields'] == null ? null : pulumi.Output.create<List<SecurityPolicyUserDefinedFieldComputeV1>>(pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldComputeV1>(map['userDefinedFields'], (value) => SecurityPolicyUserDefinedFieldComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
+      adaptiveProtectionConfig: map['adaptiveProtectionConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigComputeV1.fromMap((map['adaptiveProtectionConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfigComputeV1.fromMap((map['advancedOptionsConfig'] as Map).cast<String, dynamic>())).input(),
+      ddosProtectionConfig: map['ddosProtectionConfig'] == null ? null : (SecurityPolicyDdosProtectionConfigComputeV1.fromMap((map['ddosProtectionConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recaptchaOptionsConfig: map['recaptchaOptionsConfig'] == null ? null : (SecurityPolicyRecaptchaOptionsConfigComputeV1.fromMap((map['recaptchaOptionsConfig'] as Map).cast<String, dynamic>())).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleComputeV1>(map['rules'], (value) => SecurityPolicyRuleComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (RegionSecurityPolicyTypeComputeV1.fromValue(map['type'] as String)).input(),
+      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldComputeV1>(map['userDefinedFields'], (value) => SecurityPolicyUserDefinedFieldComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

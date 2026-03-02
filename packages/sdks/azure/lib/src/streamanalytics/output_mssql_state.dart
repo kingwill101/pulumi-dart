@@ -40,29 +40,18 @@ class OutputMssqlState {
   /// [table] Table in the database that the output points to. Changing this forces a new resource to be created.
   /// [user] Username used to login to the Microsoft SQL Server. Changing this forces a new resource to be created. Required if `authentication_mode` is `ConnectionString`.
   OutputMssqlState({
-    pulumi.Output<String>? authenticationMode,
-    pulumi.Output<String>? database,
-    pulumi.Output<double>? maxBatchCount,
-    pulumi.Output<double>? maxWriterCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? server,
-    pulumi.Output<String>? streamAnalyticsJobName,
-    pulumi.Output<String>? table,
-    pulumi.Output<String>? user,
-  }) :
-      authenticationMode = pulumi.Input.asOptionalInput<String>(authenticationMode),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      maxBatchCount = pulumi.Input.asOptionalInput<double>(maxBatchCount),
-      maxWriterCount = pulumi.Input.asOptionalInput<double>(maxWriterCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      server = pulumi.Input.asOptionalInput<String>(server),
-      streamAnalyticsJobName = pulumi.Input.asOptionalInput<String>(streamAnalyticsJobName),
-      table = pulumi.Input.asOptionalInput<String>(table),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.authenticationMode,
+    this.database,
+    this.maxBatchCount,
+    this.maxWriterCount,
+    this.name,
+    this.password,
+    this.resourceGroupName,
+    this.server,
+    this.streamAnalyticsJobName,
+    this.table,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class OutputMssqlState {
 
   factory OutputMssqlState.fromMap(Map<String, dynamic> map) {
     return OutputMssqlState(
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<String>(map['authenticationMode'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      maxBatchCount: map['maxBatchCount'] == null ? null : pulumi.Output.create<double>(map['maxBatchCount'] as double),
-      maxWriterCount: map['maxWriterCount'] == null ? null : pulumi.Output.create<double>(map['maxWriterCount'] as double),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      server: map['server'] == null ? null : pulumi.Output.create<String>(map['server'] as String),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      maxBatchCount: map['maxBatchCount'] == null ? null : (map['maxBatchCount'] as double).input(),
+      maxWriterCount: map['maxWriterCount'] == null ? null : (map['maxWriterCount'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

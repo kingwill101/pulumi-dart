@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse {
   /// If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.steps will be used as the x-axis.
-  final bool useElapsedTime;
+  final pulumi.Input<bool> useElapsedTime;
 
   /// Creates a new [GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse].
   /// [useElapsedTime] If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.steps will be used as the x-axis.
@@ -19,7 +20,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigRes
 
   factory GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse(
-      useElapsedTime: map['useElapsedTime'] as bool,
+      useElapsedTime: (map['useElapsedTime'] as bool).input(),
     );
   }
 }

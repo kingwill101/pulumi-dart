@@ -16,13 +16,10 @@ class IndustrialPidProjectState {
   /// [pidProjectDesc] The description of Pid Project.
   /// [pidProjectName] The name of Pid Project.
   IndustrialPidProjectState({
-    pulumi.Output<String>? pidOrganizationId,
-    pulumi.Output<String>? pidProjectDesc,
-    pulumi.Output<String>? pidProjectName,
-  }) :
-      pidOrganizationId = pulumi.Input.asOptionalInput<String>(pidOrganizationId),
-      pidProjectDesc = pulumi.Input.asOptionalInput<String>(pidProjectDesc),
-      pidProjectName = pulumi.Input.asOptionalInput<String>(pidProjectName);
+    this.pidOrganizationId,
+    this.pidProjectDesc,
+    this.pidProjectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class IndustrialPidProjectState {
 
   factory IndustrialPidProjectState.fromMap(Map<String, dynamic> map) {
     return IndustrialPidProjectState(
-      pidOrganizationId: map['pidOrganizationId'] == null ? null : pulumi.Output.create<String>(map['pidOrganizationId'] as String),
-      pidProjectDesc: map['pidProjectDesc'] == null ? null : pulumi.Output.create<String>(map['pidProjectDesc'] as String),
-      pidProjectName: map['pidProjectName'] == null ? null : pulumi.Output.create<String>(map['pidProjectName'] as String),
+      pidOrganizationId: map['pidOrganizationId'] == null ? null : (map['pidOrganizationId'] as String).input(),
+      pidProjectDesc: map['pidProjectDesc'] == null ? null : (map['pidProjectDesc'] as String).input(),
+      pidProjectName: map['pidProjectName'] == null ? null : (map['pidProjectName'] as String).input(),
     );
   }
 }

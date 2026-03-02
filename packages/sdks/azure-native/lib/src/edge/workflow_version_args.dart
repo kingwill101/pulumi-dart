@@ -30,19 +30,13 @@ class WorkflowVersionArgs {
   /// [versionName] The name of the workflowVersion.
   /// [workflowName] Name of the workflow
   WorkflowVersionArgs({
-    required pulumi.Output<String> contextName,
-    pulumi.Output<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation,
-    pulumi.Output<WorkflowVersionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? versionName,
-    required pulumi.Output<String> workflowName,
-  }) :
-      contextName = pulumi.Input.asInput<String>(contextName),
-      extendedLocation = pulumi.Input.asOptionalInput<AzureResourceManagerCommonTypesExtendedLocation>(extendedLocation),
-      properties = pulumi.Input.asOptionalInput<WorkflowVersionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName),
-      workflowName = pulumi.Input.asInput<String>(workflowName);
+    required this.contextName,
+    this.extendedLocation,
+    this.properties,
+    required this.resourceGroupName,
+    this.versionName,
+    required this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class WorkflowVersionArgs {
 
   factory WorkflowVersionArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowVersionArgs(
-      contextName: pulumi.Output.create<String>(map['contextName'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<AzureResourceManagerCommonTypesExtendedLocation>(AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : pulumi.Output.create<WorkflowVersionProperties>(WorkflowVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
-      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+      contextName: (map['contextName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (WorkflowVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssh_profile_response.dart';
 
 /// The ssh username, password, and ssh public key.
 class LinuxOperatingSystemProfileResponse {
   /// The password.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The SSH profile.
-  final SshProfileResponse? sshProfile;
+  final pulumi.Input<SshProfileResponse>? sshProfile;
   /// The username.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [LinuxOperatingSystemProfileResponse].
   /// [password] The password.
@@ -24,16 +25,16 @@ class LinuxOperatingSystemProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'password': ?password,
-      'sshProfile': ?sshProfile == null ? null : sshProfile!.toMap(),
+      'sshProfile': ?pulumi.Input.mapOptionalInputValue<SshProfileResponse, Map<String, dynamic>>(sshProfile, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
   factory LinuxOperatingSystemProfileResponse.fromMap(Map<String, dynamic> map) {
     return LinuxOperatingSystemProfileResponse(
-      password: map['password'] == null ? null : map['password'] as String,
-      sshProfile: map['sshProfile'] == null ? null : SshProfileResponse.fromMap((map['sshProfile'] as Map).cast<String, dynamic>()),
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      sshProfile: map['sshProfile'] == null ? null : (SshProfileResponse.fromMap((map['sshProfile'] as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

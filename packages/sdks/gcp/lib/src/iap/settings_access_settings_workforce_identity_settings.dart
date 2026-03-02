@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'settings_access_settings_workforce_identity_settings_oauth2.dart';
 
 class SettingsAccessSettingsWorkforceIdentitySettings {
@@ -9,9 +10,9 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
   ///
   ///
   /// <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
-  final SettingsAccessSettingsWorkforceIdentitySettingsOauth2? oauth2;
+  final pulumi.Input<SettingsAccessSettingsWorkforceIdentitySettingsOauth2>? oauth2;
   /// The workforce pool resources. Only one workforce pool is accepted.
-  final String? workforcePools;
+  final pulumi.Input<String>? workforcePools;
 
   /// Creates a new [SettingsAccessSettingsWorkforceIdentitySettings].
   /// [oauth2] OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
@@ -23,15 +24,15 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oauth2': ?oauth2 == null ? null : oauth2!.toMap(),
+      'oauth2': ?pulumi.Input.mapOptionalInputValue<SettingsAccessSettingsWorkforceIdentitySettingsOauth2, Map<String, dynamic>>(oauth2, (value) => value.toMap()),
       'workforcePools': ?workforcePools,
     };
   }
 
   factory SettingsAccessSettingsWorkforceIdentitySettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsWorkforceIdentitySettings(
-      oauth2: map['oauth2'] == null ? null : SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap((map['oauth2'] as Map).cast<String, dynamic>()),
-      workforcePools: map['workforcePools'] == null ? null : map['workforcePools'] as String,
+      oauth2: map['oauth2'] == null ? null : (SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap((map['oauth2'] as Map).cast<String, dynamic>())).input(),
+      workforcePools: map['workforcePools'] == null ? null : (map['workforcePools'] as String).input(),
     );
   }
 }

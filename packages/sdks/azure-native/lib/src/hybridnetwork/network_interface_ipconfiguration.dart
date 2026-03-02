@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network interface IP configuration properties.
 class NetworkInterfaceIPConfiguration {
   /// The list of DNS servers IP addresses.
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// The value of the gateway.
-  final String? gateway;
+  final pulumi.Input<String>? gateway;
   /// The value of the IP address.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// IP address allocation method.
-  final String? ipAllocationMethod;
+  final pulumi.Input<String>? ipAllocationMethod;
   /// IP address version.
-  final String? ipVersion;
+  final pulumi.Input<String>? ipVersion;
   /// The value of the subnet.
-  final String? subnet;
+  final pulumi.Input<String>? subnet;
 
   /// Creates a new [NetworkInterfaceIPConfiguration].
   /// [dnsServers] The list of DNS servers IP addresses.
@@ -45,12 +46,12 @@ class NetworkInterfaceIPConfiguration {
 
   factory NetworkInterfaceIPConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceIPConfiguration(
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      gateway: map['gateway'] == null ? null : map['gateway'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : map['ipAllocationMethod'] as String,
-      ipVersion: map['ipVersion'] == null ? null : map['ipVersion'] as String,
-      subnet: map['subnet'] == null ? null : map['subnet'] as String,
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
     );
   }
 }

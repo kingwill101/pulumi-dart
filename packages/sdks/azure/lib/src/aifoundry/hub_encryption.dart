@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubEncryption {
   /// The Key Vault URI to access the encryption key.
-  final String keyId;
+  final pulumi.Input<String> keyId;
   /// The Key Vault ID where the customer owned encryption key exists.
-  final String keyVaultId;
+  final pulumi.Input<String> keyVaultId;
   /// The user assigned identity ID that has access to the encryption key.
   ///
   /// > **Note:** `user_assigned_identity_id` must be set when`identity.type` is `UserAssigned` in order for the service to find the assigned permissions.
-  final String? userAssignedIdentityId;
+  final pulumi.Input<String>? userAssignedIdentityId;
 
   /// Creates a new [HubEncryption].
   /// [keyId] The Key Vault URI to access the encryption key.
@@ -31,9 +32,9 @@ class HubEncryption {
 
   factory HubEncryption.fromMap(Map<String, dynamic> map) {
     return HubEncryption(
-      keyId: map['keyId'] as String,
-      keyVaultId: map['keyVaultId'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : map['userAssignedIdentityId'] as String,
+      keyId: (map['keyId'] as String).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

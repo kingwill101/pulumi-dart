@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeTypeApplicationPorts {
   /// The end of the Application Port Range on this Node Type.
-  final int endPort;
+  final pulumi.Input<int> endPort;
   /// The start of the Application Port Range on this Node Type.
-  final int startPort;
+  final pulumi.Input<int> startPort;
 
   /// Creates a new [ClusterNodeTypeApplicationPorts].
   /// [endPort] The end of the Application Port Range on this Node Type.
@@ -24,8 +25,8 @@ class ClusterNodeTypeApplicationPorts {
 
   factory ClusterNodeTypeApplicationPorts.fromMap(Map<String, dynamic> map) {
     return ClusterNodeTypeApplicationPorts(
-      endPort: map['endPort'] as int,
-      startPort: map['startPort'] as int,
+      endPort: (map['endPort'] as int).input(),
+      startPort: (map['startPort'] as int).input(),
     );
   }
 }

@@ -5,17 +5,17 @@ import 'get_virtual_machine_scale_set_network_interface_ip_configuration_public_
 
 class GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress {
   /// The domain name label for the DNS settings.
-  final String domainNameLabel;
+  final pulumi.Input<String> domainNameLabel;
   /// The idle timeout in minutes.
-  final int idleTimeoutInMinutes;
+  final pulumi.Input<int> idleTimeoutInMinutes;
   /// A list of `ip_tag` blocks as defined below.
-  final List<GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag> ipTags;
+  final pulumi.Input<List<GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>> ipTags;
   /// The name of this Virtual Machine Scale Set.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the public IP prefix.
-  final String publicIpPrefixId;
+  final pulumi.Input<String> publicIpPrefixId;
   /// The Internet Protocol Version of the public IP address.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress].
   /// [domainNameLabel] The domain name label for the DNS settings.
@@ -37,7 +37,7 @@ class GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress {
     return <String, dynamic>{
       'domainNameLabel': domainNameLabel,
       'idleTimeoutInMinutes': idleTimeoutInMinutes,
-      'ipTags': pulumi.Input.encodeList<GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag, Map<String, dynamic>>(ipTags, (value) => value.toMap()),
+      'ipTags': pulumi.Input.mapInputValue<List<GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'publicIpPrefixId': publicIpPrefixId,
       'version': version,
@@ -46,12 +46,12 @@ class GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress {
 
   factory GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress(
-      domainNameLabel: map['domainNameLabel'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] as int,
-      ipTags: pulumi.Input.decodeList<GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags'], (value) => GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      publicIpPrefixId: map['publicIpPrefixId'] as String,
-      version: map['version'] as String,
+      domainNameLabel: (map['domainNameLabel'] as String).input(),
+      idleTimeoutInMinutes: (map['idleTimeoutInMinutes'] as int).input(),
+      ipTags: (pulumi.Input.decodeList<GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags'], (value) => GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      publicIpPrefixId: (map['publicIpPrefixId'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

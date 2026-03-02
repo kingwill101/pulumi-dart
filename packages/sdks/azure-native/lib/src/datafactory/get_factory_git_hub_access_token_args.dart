@@ -29,19 +29,13 @@ class GetFactoryGitHubAccessTokenArgs {
   /// [gitHubClientSecret] GitHub bring your own app client secret information.
   /// [resourceGroupName] The resource group name.
   GetFactoryGitHubAccessTokenArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> gitHubAccessCode,
-    required pulumi.Output<String> gitHubAccessTokenBaseUrl,
-    pulumi.Output<String>? gitHubClientId,
-    pulumi.Output<GitHubClientSecret>? gitHubClientSecret,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      gitHubAccessCode = pulumi.Input.asInput<String>(gitHubAccessCode),
-      gitHubAccessTokenBaseUrl = pulumi.Input.asInput<String>(gitHubAccessTokenBaseUrl),
-      gitHubClientId = pulumi.Input.asOptionalInput<String>(gitHubClientId),
-      gitHubClientSecret = pulumi.Input.asOptionalInput<GitHubClientSecret>(gitHubClientSecret),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    required this.gitHubAccessCode,
+    required this.gitHubAccessTokenBaseUrl,
+    this.gitHubClientId,
+    this.gitHubClientSecret,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GetFactoryGitHubAccessTokenArgs {
 
   factory GetFactoryGitHubAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetFactoryGitHubAccessTokenArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      gitHubAccessCode: pulumi.Output.create<String>(map['gitHubAccessCode'] as String),
-      gitHubAccessTokenBaseUrl: pulumi.Output.create<String>(map['gitHubAccessTokenBaseUrl'] as String),
-      gitHubClientId: map['gitHubClientId'] == null ? null : pulumi.Output.create<String>(map['gitHubClientId'] as String),
-      gitHubClientSecret: map['gitHubClientSecret'] == null ? null : pulumi.Output.create<GitHubClientSecret>(GitHubClientSecret.fromMap((map['gitHubClientSecret'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      gitHubAccessCode: (map['gitHubAccessCode'] as String).input(),
+      gitHubAccessTokenBaseUrl: (map['gitHubAccessTokenBaseUrl'] as String).input(),
+      gitHubClientId: map['gitHubClientId'] == null ? null : (map['gitHubClientId'] as String).input(),
+      gitHubClientSecret: map['gitHubClientSecret'] == null ? null : (GitHubClientSecret.fromMap((map['gitHubClientSecret'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

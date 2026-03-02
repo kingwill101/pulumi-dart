@@ -31,21 +31,14 @@ class GetImageCachesArgs {
   /// [snapshotId] The id of snapshot.
   /// [status] The status of ECI Image Cache.
   GetImageCachesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? image,
-    pulumi.Output<String>? imageCacheName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      image = pulumi.Input.asOptionalInput<String>(image),
-      imageCacheName = pulumi.Input.asOptionalInput<String>(imageCacheName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.image,
+    this.imageCacheName,
+    this.nameRegex,
+    this.outputFile,
+    this.snapshotId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetImageCachesArgs {
 
   factory GetImageCachesArgs.fromMap(Map<String, dynamic> map) {
     return GetImageCachesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      image: map['image'] == null ? null : pulumi.Output.create<String>(map['image'] as String),
-      imageCacheName: map['imageCacheName'] == null ? null : pulumi.Output.create<String>(map['imageCacheName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      imageCacheName: map['imageCacheName'] == null ? null : (map['imageCacheName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

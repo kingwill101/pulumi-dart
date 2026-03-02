@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureSkuResponse {
   /// SKU name
-  final String name;
+  final pulumi.Input<String> name;
   /// SKU tier
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [AzureSkuResponse].
   /// [name] SKU name
@@ -24,8 +25,8 @@ class AzureSkuResponse {
 
   factory AzureSkuResponse.fromMap(Map<String, dynamic> map) {
     return AzureSkuResponse(
-      name: map['name'] as String,
-      tier: map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

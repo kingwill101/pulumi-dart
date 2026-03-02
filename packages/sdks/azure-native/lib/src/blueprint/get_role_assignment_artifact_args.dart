@@ -19,13 +19,10 @@ class GetRoleAssignmentArtifactArgs {
   /// [blueprintName] Name of the blueprint definition.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   GetRoleAssignmentArtifactArgs({
-    required pulumi.Output<String> artifactName,
-    required pulumi.Output<String> blueprintName,
-    required pulumi.Output<String> resourceScope,
-  }) :
-      artifactName = pulumi.Input.asInput<String>(artifactName),
-      blueprintName = pulumi.Input.asInput<String>(blueprintName),
-      resourceScope = pulumi.Input.asInput<String>(resourceScope);
+    required this.artifactName,
+    required this.blueprintName,
+    required this.resourceScope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRoleAssignmentArtifactArgs {
 
   factory GetRoleAssignmentArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentArtifactArgs(
-      artifactName: pulumi.Output.create<String>(map['artifactName'] as String),
-      blueprintName: pulumi.Output.create<String>(map['blueprintName'] as String),
-      resourceScope: pulumi.Output.create<String>(map['resourceScope'] as String),
+      artifactName: (map['artifactName'] as String).input(),
+      blueprintName: (map['blueprintName'] as String).input(),
+      resourceScope: (map['resourceScope'] as String).input(),
     );
   }
 }

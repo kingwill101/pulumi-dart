@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlacementGroupMember {
   /// Whether this Linode is currently compliant with the group's placement group type.
-  final bool isCompliant;
+  final pulumi.Input<bool> isCompliant;
   /// The ID of the Linode.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
 
   /// Creates a new [GetPlacementGroupMember].
   /// [isCompliant] Whether this Linode is currently compliant with the group's placement group type.
@@ -24,8 +25,8 @@ class GetPlacementGroupMember {
 
   factory GetPlacementGroupMember.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupMember(
-      isCompliant: map['isCompliant'] as bool,
-      linodeId: map['linodeId'] as int,
+      isCompliant: (map['isCompliant'] as bool).input(),
+      linodeId: (map['linodeId'] as int).input(),
     );
   }
 }

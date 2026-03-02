@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the spec to match discrete values from parent parameter.
 class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse {
   /// Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter.
-  final List<double> values;
+  final pulumi.Input<List<double>> values;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse].
   /// [values] Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter.
@@ -20,7 +21,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResp
 
   factory GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpecResponse(
-      values: (map['values'] as List).cast<double>(),
+      values: ((map['values'] as List).cast<double>()).input(),
     );
   }
 }

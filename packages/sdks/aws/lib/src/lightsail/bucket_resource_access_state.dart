@@ -16,13 +16,10 @@ class BucketResourceAccessState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceName] Name of the resource to grant bucket access.
   BucketResourceAccessState({
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceName,
-  }) :
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName);
+    this.bucketName,
+    this.region,
+    this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class BucketResourceAccessState {
 
   factory BucketResourceAccessState.fromMap(Map<String, dynamic> map) {
     return BucketResourceAccessState(
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
     );
   }
 }

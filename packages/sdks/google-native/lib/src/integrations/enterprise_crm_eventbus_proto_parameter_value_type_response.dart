@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_boolean_parameter_array_response.dart';
 import 'enterprise_crm_eventbus_proto_double_parameter_array_response.dart';
 import 'enterprise_crm_eventbus_proto_int_parameter_array_response.dart';
@@ -9,17 +10,17 @@ import 'enterprise_crm_eventbus_proto_string_parameter_array_response.dart';
 
 /// LINT.IfChange To support various types of parameter values. Next available id: 14
 class EnterpriseCrmEventbusProtoParameterValueTypeResponse {
-  final EnterpriseCrmEventbusProtoBooleanParameterArrayResponse booleanArray;
-  final bool booleanValue;
-  final EnterpriseCrmEventbusProtoDoubleParameterArrayResponse doubleArray;
-  final double doubleValue;
-  final EnterpriseCrmEventbusProtoIntParameterArrayResponse intArray;
-  final String intValue;
-  final EnterpriseCrmEventbusProtoProtoParameterArrayResponse protoArray;
-  final Map<String, String> protoValue;
-  final EnterpriseCrmEventbusProtoSerializedObjectParameterResponse serializedObjectValue;
-  final EnterpriseCrmEventbusProtoStringParameterArrayResponse stringArray;
-  final String stringValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoBooleanParameterArrayResponse> booleanArray;
+  final pulumi.Input<bool> booleanValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoDoubleParameterArrayResponse> doubleArray;
+  final pulumi.Input<double> doubleValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoIntParameterArrayResponse> intArray;
+  final pulumi.Input<String> intValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoProtoParameterArrayResponse> protoArray;
+  final pulumi.Input<Map<String, String>> protoValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoSerializedObjectParameterResponse> serializedObjectValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoStringParameterArrayResponse> stringArray;
+  final pulumi.Input<String> stringValue;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParameterValueTypeResponse].
   /// [booleanArray] Required.
@@ -49,33 +50,33 @@ class EnterpriseCrmEventbusProtoParameterValueTypeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'booleanArray': booleanArray.toMap(),
+      'booleanArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoBooleanParameterArrayResponse, Map<String, dynamic>>(booleanArray, (value) => value.toMap()),
       'booleanValue': booleanValue,
-      'doubleArray': doubleArray.toMap(),
+      'doubleArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoDoubleParameterArrayResponse, Map<String, dynamic>>(doubleArray, (value) => value.toMap()),
       'doubleValue': doubleValue,
-      'intArray': intArray.toMap(),
+      'intArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoIntParameterArrayResponse, Map<String, dynamic>>(intArray, (value) => value.toMap()),
       'intValue': intValue,
-      'protoArray': protoArray.toMap(),
+      'protoArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoProtoParameterArrayResponse, Map<String, dynamic>>(protoArray, (value) => value.toMap()),
       'protoValue': protoValue,
-      'serializedObjectValue': serializedObjectValue.toMap(),
-      'stringArray': stringArray.toMap(),
+      'serializedObjectValue': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoSerializedObjectParameterResponse, Map<String, dynamic>>(serializedObjectValue, (value) => value.toMap()),
+      'stringArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoStringParameterArrayResponse, Map<String, dynamic>>(stringArray, (value) => value.toMap()),
       'stringValue': stringValue,
     };
   }
 
   factory EnterpriseCrmEventbusProtoParameterValueTypeResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParameterValueTypeResponse(
-      booleanArray: EnterpriseCrmEventbusProtoBooleanParameterArrayResponse.fromMap((map['booleanArray'] as Map).cast<String, dynamic>()),
-      booleanValue: map['booleanValue'] as bool,
-      doubleArray: EnterpriseCrmEventbusProtoDoubleParameterArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>()),
-      doubleValue: map['doubleValue'] as double,
-      intArray: EnterpriseCrmEventbusProtoIntParameterArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>()),
-      intValue: map['intValue'] as String,
-      protoArray: EnterpriseCrmEventbusProtoProtoParameterArrayResponse.fromMap((map['protoArray'] as Map).cast<String, dynamic>()),
-      protoValue: (map['protoValue'] as Map).cast<String, String>(),
-      serializedObjectValue: EnterpriseCrmEventbusProtoSerializedObjectParameterResponse.fromMap((map['serializedObjectValue'] as Map).cast<String, dynamic>()),
-      stringArray: EnterpriseCrmEventbusProtoStringParameterArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>()),
-      stringValue: map['stringValue'] as String,
+      booleanArray: (EnterpriseCrmEventbusProtoBooleanParameterArrayResponse.fromMap((map['booleanArray'] as Map).cast<String, dynamic>())).input(),
+      booleanValue: (map['booleanValue'] as bool).input(),
+      doubleArray: (EnterpriseCrmEventbusProtoDoubleParameterArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>())).input(),
+      doubleValue: (map['doubleValue'] as double).input(),
+      intArray: (EnterpriseCrmEventbusProtoIntParameterArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>())).input(),
+      intValue: (map['intValue'] as String).input(),
+      protoArray: (EnterpriseCrmEventbusProtoProtoParameterArrayResponse.fromMap((map['protoArray'] as Map).cast<String, dynamic>())).input(),
+      protoValue: ((map['protoValue'] as Map).cast<String, String>()).input(),
+      serializedObjectValue: (EnterpriseCrmEventbusProtoSerializedObjectParameterResponse.fromMap((map['serializedObjectValue'] as Map).cast<String, dynamic>())).input(),
+      stringArray: (EnterpriseCrmEventbusProtoStringParameterArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>())).input(),
+      stringValue: (map['stringValue'] as String).input(),
     );
   }
 }

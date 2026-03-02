@@ -53,31 +53,19 @@ class BitbucketServerConfigState {
   /// [username] Username of the account Cloud Build will use on Bitbucket Server.
   /// [webhookKey] Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
   BitbucketServerConfigState({
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<String>? configId,
-    pulumi.Output<List<BitbucketServerConfigConnectedRepository>>? connectedRepositories,
-    pulumi.Output<String>? hostUri,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? peeredNetwork,
-    pulumi.Output<String>? project,
-    pulumi.Output<BitbucketServerConfigSecrets>? secrets,
-    pulumi.Output<String>? sslCa,
-    pulumi.Output<String>? username,
-    pulumi.Output<String>? webhookKey,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      connectedRepositories = pulumi.Input.asOptionalInput<List<BitbucketServerConfigConnectedRepository>>(connectedRepositories),
-      hostUri = pulumi.Input.asOptionalInput<String>(hostUri),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peeredNetwork = pulumi.Input.asOptionalInput<String>(peeredNetwork),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secrets = pulumi.Input.asOptionalInput<BitbucketServerConfigSecrets>(secrets),
-      sslCa = pulumi.Input.asOptionalInput<String>(sslCa),
-      username = pulumi.Input.asOptionalInput<String>(username),
-      webhookKey = pulumi.Input.asOptionalInput<String>(webhookKey);
+    this.apiKey,
+    this.configId,
+    this.connectedRepositories,
+    this.hostUri,
+    this.location,
+    this.name,
+    this.peeredNetwork,
+    this.project,
+    this.secrets,
+    this.sslCa,
+    this.username,
+    this.webhookKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class BitbucketServerConfigState {
 
   factory BitbucketServerConfigState.fromMap(Map<String, dynamic> map) {
     return BitbucketServerConfigState(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      connectedRepositories: map['connectedRepositories'] == null ? null : pulumi.Output.create<List<BitbucketServerConfigConnectedRepository>>(pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(map['connectedRepositories'], (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))),
-      hostUri: map['hostUri'] == null ? null : pulumi.Output.create<String>(map['hostUri'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peeredNetwork: map['peeredNetwork'] == null ? null : pulumi.Output.create<String>(map['peeredNetwork'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secrets: map['secrets'] == null ? null : pulumi.Output.create<BitbucketServerConfigSecrets>(BitbucketServerConfigSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())),
-      sslCa: map['sslCa'] == null ? null : pulumi.Output.create<String>(map['sslCa'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
-      webhookKey: map['webhookKey'] == null ? null : pulumi.Output.create<String>(map['webhookKey'] as String),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      connectedRepositories: map['connectedRepositories'] == null ? null : (pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(map['connectedRepositories'], (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostUri: map['hostUri'] == null ? null : (map['hostUri'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secrets: map['secrets'] == null ? null : (BitbucketServerConfigSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
+      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey'] as String).input(),
     );
   }
 }

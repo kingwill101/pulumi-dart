@@ -20,13 +20,10 @@ class EventBusPolicyArgs {
   /// [policy] The text of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EventBusPolicyArgs({
-    pulumi.Output<String>? eventBusName,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-  }) :
-      eventBusName = pulumi.Input.asOptionalInput<String>(eventBusName),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.eventBusName,
+    required this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class EventBusPolicyArgs {
 
   factory EventBusPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EventBusPolicyArgs(
-      eventBusName: map['eventBusName'] == null ? null : pulumi.Output.create<String>(map['eventBusName'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

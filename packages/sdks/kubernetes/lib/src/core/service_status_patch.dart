@@ -7,9 +7,9 @@ import 'load_balancer_status_patch.dart';
 /// ServiceStatus represents the current status of a service.
 class ServiceStatusPatch {
   /// Current service state
-  final List<ConditionPatch>? conditions;
+  final pulumi.Input<List<ConditionPatch>>? conditions;
   /// LoadBalancer contains the current status of the load-balancer, if one is present.
-  final LoadBalancerStatusPatch? loadBalancer;
+  final pulumi.Input<LoadBalancerStatusPatch>? loadBalancer;
 
   /// Creates a new [ServiceStatusPatch].
   /// [conditions] Current service state
@@ -21,15 +21,15 @@ class ServiceStatusPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
-      'loadBalancer': ?loadBalancer == null ? null : loadBalancer!.toMap(),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionPatch>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancer': ?pulumi.Input.mapOptionalInputValue<LoadBalancerStatusPatch, Map<String, dynamic>>(loadBalancer, (value) => value.toMap()),
     };
   }
 
   factory ServiceStatusPatch.fromMap(Map<String, dynamic> map) {
     return ServiceStatusPatch(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancer: map['loadBalancer'] == null ? null : LoadBalancerStatusPatch.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>()),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancerStatusPatch.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

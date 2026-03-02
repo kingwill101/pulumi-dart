@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'local_object_reference.dart';
 
 /// Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.
 class ISCSIVolumeSource {
   /// chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication
-  final bool? chapAuthDiscovery;
+  final pulumi.Input<bool>? chapAuthDiscovery;
   /// chapAuthSession defines whether support iSCSI Session CHAP authentication
-  final bool? chapAuthSession;
+  final pulumi.Input<bool>? chapAuthSession;
   /// fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
-  final String? fsType;
+  final pulumi.Input<String>? fsType;
   /// initiatorName is the custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection.
-  final String? initiatorName;
+  final pulumi.Input<String>? initiatorName;
   /// iqn is the target iSCSI Qualified Name.
-  final String iqn;
+  final pulumi.Input<String> iqn;
   /// iscsiInterface is the interface Name that uses an iSCSI transport. Defaults to 'default' (tcp).
-  final String? iscsiInterface;
+  final pulumi.Input<String>? iscsiInterface;
   /// lun represents iSCSI Target Lun number.
-  final int lun;
+  final pulumi.Input<int> lun;
   /// portals is the iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
-  final List<String>? portals;
+  final pulumi.Input<List<String>>? portals;
   /// readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// secretRef is the CHAP Secret for iSCSI target and initiator authentication
-  final LocalObjectReference? secretRef;
+  final pulumi.Input<LocalObjectReference>? secretRef;
   /// targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
-  final String targetPortal;
+  final pulumi.Input<String> targetPortal;
 
   /// Creates a new [ISCSIVolumeSource].
   /// [chapAuthDiscovery] chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication
@@ -64,24 +65,24 @@ class ISCSIVolumeSource {
       'lun': lun,
       'portals': ?portals,
       'readOnly': ?readOnly,
-      'secretRef': ?secretRef == null ? null : secretRef!.toMap(),
+      'secretRef': ?pulumi.Input.mapOptionalInputValue<LocalObjectReference, Map<String, dynamic>>(secretRef, (value) => value.toMap()),
       'targetPortal': targetPortal,
     };
   }
 
   factory ISCSIVolumeSource.fromMap(Map<String, dynamic> map) {
     return ISCSIVolumeSource(
-      chapAuthDiscovery: map['chapAuthDiscovery'] == null ? null : map['chapAuthDiscovery'] as bool,
-      chapAuthSession: map['chapAuthSession'] == null ? null : map['chapAuthSession'] as bool,
-      fsType: map['fsType'] == null ? null : map['fsType'] as String,
-      initiatorName: map['initiatorName'] == null ? null : map['initiatorName'] as String,
-      iqn: map['iqn'] as String,
-      iscsiInterface: map['iscsiInterface'] == null ? null : map['iscsiInterface'] as String,
-      lun: map['lun'] as int,
-      portals: map['portals'] == null ? null : (map['portals'] as List).cast<String>(),
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      secretRef: map['secretRef'] == null ? null : LocalObjectReference.fromMap((map['secretRef'] as Map).cast<String, dynamic>()),
-      targetPortal: map['targetPortal'] as String,
+      chapAuthDiscovery: map['chapAuthDiscovery'] == null ? null : (map['chapAuthDiscovery'] as bool).input(),
+      chapAuthSession: map['chapAuthSession'] == null ? null : (map['chapAuthSession'] as bool).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
+      initiatorName: map['initiatorName'] == null ? null : (map['initiatorName'] as String).input(),
+      iqn: (map['iqn'] as String).input(),
+      iscsiInterface: map['iscsiInterface'] == null ? null : (map['iscsiInterface'] as String).input(),
+      lun: (map['lun'] as int).input(),
+      portals: map['portals'] == null ? null : ((map['portals'] as List).cast<String>()).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      targetPortal: (map['targetPortal'] as String).input(),
     );
   }
 }

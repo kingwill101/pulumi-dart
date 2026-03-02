@@ -25,19 +25,13 @@ class HAVipAttachmentState {
   /// [instanceType] The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
   /// [status] The status of the resource
   HAVipAttachmentState({
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? haVipId,
-    pulumi.Output<String>? havipId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? status,
-  }) :
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      haVipId = pulumi.Input.asOptionalInput<String>(haVipId),
-      havipId = pulumi.Input.asOptionalInput<String>(havipId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.force,
+    this.haVipId,
+    this.havipId,
+    this.instanceId,
+    this.instanceType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class HAVipAttachmentState {
 
   factory HAVipAttachmentState.fromMap(Map<String, dynamic> map) {
     return HAVipAttachmentState(
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      haVipId: map['haVipId'] == null ? null : pulumi.Output.create<String>(map['haVipId'] as String),
-      havipId: map['havipId'] == null ? null : pulumi.Output.create<String>(map['havipId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      haVipId: map['haVipId'] == null ? null : (map['haVipId'] as String).input(),
+      havipId: map['havipId'] == null ? null : (map['havipId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

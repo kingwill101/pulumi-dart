@@ -40,25 +40,16 @@ class RoomState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   RoomState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<String>>? loggingConfigurationIdentifiers,
-    pulumi.Output<int>? maximumMessageLength,
-    pulumi.Output<int>? maximumMessageRatePerSecond,
-    pulumi.Output<RoomMessageReviewHandler>? messageReviewHandler,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      loggingConfigurationIdentifiers = pulumi.Input.asOptionalInput<List<String>>(loggingConfigurationIdentifiers),
-      maximumMessageLength = pulumi.Input.asOptionalInput<int>(maximumMessageLength),
-      maximumMessageRatePerSecond = pulumi.Input.asOptionalInput<int>(maximumMessageRatePerSecond),
-      messageReviewHandler = pulumi.Input.asOptionalInput<RoomMessageReviewHandler>(messageReviewHandler),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.loggingConfigurationIdentifiers,
+    this.maximumMessageLength,
+    this.maximumMessageRatePerSecond,
+    this.messageReviewHandler,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class RoomState {
 
   factory RoomState.fromMap(Map<String, dynamic> map) {
     return RoomState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      loggingConfigurationIdentifiers: map['loggingConfigurationIdentifiers'] == null ? null : pulumi.Output.create<List<String>>((map['loggingConfigurationIdentifiers'] as List).cast<String>()),
-      maximumMessageLength: map['maximumMessageLength'] == null ? null : pulumi.Output.create<int>(map['maximumMessageLength'] as int),
-      maximumMessageRatePerSecond: map['maximumMessageRatePerSecond'] == null ? null : pulumi.Output.create<int>(map['maximumMessageRatePerSecond'] as int),
-      messageReviewHandler: map['messageReviewHandler'] == null ? null : pulumi.Output.create<RoomMessageReviewHandler>(RoomMessageReviewHandler.fromMap((map['messageReviewHandler'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      loggingConfigurationIdentifiers: map['loggingConfigurationIdentifiers'] == null ? null : ((map['loggingConfigurationIdentifiers'] as List).cast<String>()).input(),
+      maximumMessageLength: map['maximumMessageLength'] == null ? null : (map['maximumMessageLength'] as int).input(),
+      maximumMessageRatePerSecond: map['maximumMessageRatePerSecond'] == null ? null : (map['maximumMessageRatePerSecond'] as int).input(),
+      messageReviewHandler: map['messageReviewHandler'] == null ? null : (RoomMessageReviewHandler.fromMap((map['messageReviewHandler'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

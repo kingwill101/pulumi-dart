@@ -5,9 +5,9 @@ import 'share_acl_access_policy.dart';
 
 class ShareAcl {
   /// An `access_policy` block as defined below.
-  final List<ShareAclAccessPolicy>? accessPolicies;
+  final pulumi.Input<List<ShareAclAccessPolicy>>? accessPolicies;
   /// The ID which should be used for this Shared Identifier.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [ShareAcl].
   /// [accessPolicies] An `access_policy` block as defined below.
@@ -19,15 +19,15 @@ class ShareAcl {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPolicies': ?accessPolicies == null ? null : pulumi.Input.encodeList<ShareAclAccessPolicy, Map<String, dynamic>>(accessPolicies!, (value) => value.toMap()),
+      'accessPolicies': ?pulumi.Input.mapOptionalInputValue<List<ShareAclAccessPolicy>, List<Map<String, dynamic>>>(accessPolicies, (value) => pulumi.Input.encodeList<ShareAclAccessPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
     };
   }
 
   factory ShareAcl.fromMap(Map<String, dynamic> map) {
     return ShareAcl(
-      accessPolicies: map['accessPolicies'] == null ? null : pulumi.Input.decodeList<ShareAclAccessPolicy>(map['accessPolicies'], (value) => ShareAclAccessPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<ShareAclAccessPolicy>(map['accessPolicies'], (value) => ShareAclAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

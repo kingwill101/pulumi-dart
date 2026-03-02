@@ -40,27 +40,17 @@ class ApplicationState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [template] A `template` name. IoT Central application template name. Defaults to `iotc-pnp-preview@1.0.0`. Changing this forces a new resource to be created.
   ApplicationState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<ApplicationIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sku,
-    pulumi.Output<String>? subDomain,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? template,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      identity = pulumi.Input.asOptionalInput<ApplicationIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      subDomain = pulumi.Input.asOptionalInput<String>(subDomain),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      template = pulumi.Input.asOptionalInput<String>(template);
+    this.displayName,
+    this.identity,
+    this.location,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.sku,
+    this.subDomain,
+    this.tags,
+    this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ApplicationIdentity>(ApplicationIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      subDomain: map['subDomain'] == null ? null : pulumi.Output.create<String>(map['subDomain'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      template: map['template'] == null ? null : pulumi.Output.create<String>(map['template'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      identity: map['identity'] == null ? null : (ApplicationIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      subDomain: map['subDomain'] == null ? null : (map['subDomain'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (map['template'] as String).input(),
     );
   }
 }

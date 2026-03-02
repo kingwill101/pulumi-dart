@@ -31,23 +31,15 @@ class DatacenterConnectorArgs {
   /// [sourceId] Required.
   /// [version] The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
   DatacenterConnectorArgs({
-    required pulumi.Output<String> datacenterConnectorId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? registrationId,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? serviceAccount,
-    required pulumi.Output<String> sourceId,
-    pulumi.Output<String>? version,
-  }) :
-      datacenterConnectorId = pulumi.Input.asInput<String>(datacenterConnectorId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      registrationId = pulumi.Input.asOptionalInput<String>(registrationId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.datacenterConnectorId,
+    this.location,
+    this.project,
+    this.registrationId,
+    this.requestId,
+    this.serviceAccount,
+    required this.sourceId,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class DatacenterConnectorArgs {
 
   factory DatacenterConnectorArgs.fromMap(Map<String, dynamic> map) {
     return DatacenterConnectorArgs(
-      datacenterConnectorId: pulumi.Output.create<String>(map['datacenterConnectorId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      registrationId: map['registrationId'] == null ? null : pulumi.Output.create<String>(map['registrationId'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      sourceId: pulumi.Output.create<String>(map['sourceId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      datacenterConnectorId: (map['datacenterConnectorId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      registrationId: map['registrationId'] == null ? null : (map['registrationId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      sourceId: (map['sourceId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class ImageAccessState {
   /// [status] The member proposal status. Optional if admin wants to
   /// [updatedAt] The date the image access was last updated.
   ImageAccessState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? imageId,
-    pulumi.Output<String>? memberId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? schema,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      memberId = pulumi.Input.asOptionalInput<String>(memberId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schema = pulumi.Input.asOptionalInput<String>(schema),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.createdAt,
+    this.imageId,
+    this.memberId,
+    this.region,
+    this.schema,
+    this.status,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ImageAccessState {
 
   factory ImageAccessState.fromMap(Map<String, dynamic> map) {
     return ImageAccessState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      memberId: map['memberId'] == null ? null : pulumi.Output.create<String>(map['memberId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

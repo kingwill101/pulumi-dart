@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Security settings.
 class SecuritySettings {
   /// Physical servers per administrator.
-  final double serverSecurityCostPerServerPerYear;
+  final pulumi.Input<double> serverSecurityCostPerServerPerYear;
   /// Virtual machines per administrator.
-  final double sqlServerSecurityCostPerServerPerYear;
+  final pulumi.Input<double> sqlServerSecurityCostPerServerPerYear;
 
   /// Creates a new [SecuritySettings].
   /// [serverSecurityCostPerServerPerYear] Physical servers per administrator.
@@ -25,8 +26,8 @@ class SecuritySettings {
 
   factory SecuritySettings.fromMap(Map<String, dynamic> map) {
     return SecuritySettings(
-      serverSecurityCostPerServerPerYear: map['serverSecurityCostPerServerPerYear'] as double,
-      sqlServerSecurityCostPerServerPerYear: map['sqlServerSecurityCostPerServerPerYear'] as double,
+      serverSecurityCostPerServerPerYear: (map['serverSecurityCostPerServerPerYear'] as double).input(),
+      sqlServerSecurityCostPerServerPerYear: (map['sqlServerSecurityCostPerServerPerYear'] as double).input(),
     );
   }
 }

@@ -56,35 +56,21 @@ class UserSettingsArgs {
   /// [toolbarConfiguration] Configuration of the toolbar. Detailed below.
   /// [uploadAllowed] Specifies whether the user can upload files from the local device to the streaming session. Valid values are `Enabled` or `Disabled`.
   UserSettingsArgs({
-    pulumi.Output<Map<String, String>>? additionalEncryptionContext,
-    pulumi.Output<UserSettingsCookieSynchronizationConfiguration>? cookieSynchronizationConfiguration,
-    required pulumi.Output<String> copyAllowed,
-    pulumi.Output<String>? customerManagedKey,
-    pulumi.Output<String>? deepLinkAllowed,
-    pulumi.Output<int>? disconnectTimeoutInMinutes,
-    required pulumi.Output<String> downloadAllowed,
-    pulumi.Output<int>? idleDisconnectTimeoutInMinutes,
-    required pulumi.Output<String> pasteAllowed,
-    required pulumi.Output<String> printAllowed,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<UserSettingsToolbarConfiguration>? toolbarConfiguration,
-    required pulumi.Output<String> uploadAllowed,
-  }) :
-      additionalEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(additionalEncryptionContext),
-      cookieSynchronizationConfiguration = pulumi.Input.asOptionalInput<UserSettingsCookieSynchronizationConfiguration>(cookieSynchronizationConfiguration),
-      copyAllowed = pulumi.Input.asInput<String>(copyAllowed),
-      customerManagedKey = pulumi.Input.asOptionalInput<String>(customerManagedKey),
-      deepLinkAllowed = pulumi.Input.asOptionalInput<String>(deepLinkAllowed),
-      disconnectTimeoutInMinutes = pulumi.Input.asOptionalInput<int>(disconnectTimeoutInMinutes),
-      downloadAllowed = pulumi.Input.asInput<String>(downloadAllowed),
-      idleDisconnectTimeoutInMinutes = pulumi.Input.asOptionalInput<int>(idleDisconnectTimeoutInMinutes),
-      pasteAllowed = pulumi.Input.asInput<String>(pasteAllowed),
-      printAllowed = pulumi.Input.asInput<String>(printAllowed),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      toolbarConfiguration = pulumi.Input.asOptionalInput<UserSettingsToolbarConfiguration>(toolbarConfiguration),
-      uploadAllowed = pulumi.Input.asInput<String>(uploadAllowed);
+    this.additionalEncryptionContext,
+    this.cookieSynchronizationConfiguration,
+    required this.copyAllowed,
+    this.customerManagedKey,
+    this.deepLinkAllowed,
+    this.disconnectTimeoutInMinutes,
+    required this.downloadAllowed,
+    this.idleDisconnectTimeoutInMinutes,
+    required this.pasteAllowed,
+    required this.printAllowed,
+    this.region,
+    this.tags,
+    this.toolbarConfiguration,
+    required this.uploadAllowed,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class UserSettingsArgs {
 
   factory UserSettingsArgs.fromMap(Map<String, dynamic> map) {
     return UserSettingsArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalEncryptionContext'] as Map).cast<String, String>()),
-      cookieSynchronizationConfiguration: map['cookieSynchronizationConfiguration'] == null ? null : pulumi.Output.create<UserSettingsCookieSynchronizationConfiguration>(UserSettingsCookieSynchronizationConfiguration.fromMap((map['cookieSynchronizationConfiguration'] as Map).cast<String, dynamic>())),
-      copyAllowed: pulumi.Output.create<String>(map['copyAllowed'] as String),
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<String>(map['customerManagedKey'] as String),
-      deepLinkAllowed: map['deepLinkAllowed'] == null ? null : pulumi.Output.create<String>(map['deepLinkAllowed'] as String),
-      disconnectTimeoutInMinutes: map['disconnectTimeoutInMinutes'] == null ? null : pulumi.Output.create<int>(map['disconnectTimeoutInMinutes'] as int),
-      downloadAllowed: pulumi.Output.create<String>(map['downloadAllowed'] as String),
-      idleDisconnectTimeoutInMinutes: map['idleDisconnectTimeoutInMinutes'] == null ? null : pulumi.Output.create<int>(map['idleDisconnectTimeoutInMinutes'] as int),
-      pasteAllowed: pulumi.Output.create<String>(map['pasteAllowed'] as String),
-      printAllowed: pulumi.Output.create<String>(map['printAllowed'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      toolbarConfiguration: map['toolbarConfiguration'] == null ? null : pulumi.Output.create<UserSettingsToolbarConfiguration>(UserSettingsToolbarConfiguration.fromMap((map['toolbarConfiguration'] as Map).cast<String, dynamic>())),
-      uploadAllowed: pulumi.Output.create<String>(map['uploadAllowed'] as String),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
+      cookieSynchronizationConfiguration: map['cookieSynchronizationConfiguration'] == null ? null : (UserSettingsCookieSynchronizationConfiguration.fromMap((map['cookieSynchronizationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      copyAllowed: (map['copyAllowed'] as String).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
+      deepLinkAllowed: map['deepLinkAllowed'] == null ? null : (map['deepLinkAllowed'] as String).input(),
+      disconnectTimeoutInMinutes: map['disconnectTimeoutInMinutes'] == null ? null : (map['disconnectTimeoutInMinutes'] as int).input(),
+      downloadAllowed: (map['downloadAllowed'] as String).input(),
+      idleDisconnectTimeoutInMinutes: map['idleDisconnectTimeoutInMinutes'] == null ? null : (map['idleDisconnectTimeoutInMinutes'] as int).input(),
+      pasteAllowed: (map['pasteAllowed'] as String).input(),
+      printAllowed: (map['printAllowed'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      toolbarConfiguration: map['toolbarConfiguration'] == null ? null : (UserSettingsToolbarConfiguration.fromMap((map['toolbarConfiguration'] as Map).cast<String, dynamic>())).input(),
+      uploadAllowed: (map['uploadAllowed'] as String).input(),
     );
   }
 }

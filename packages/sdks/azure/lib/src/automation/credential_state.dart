@@ -25,19 +25,13 @@ class CredentialState {
   /// [resourceGroupName] The name of the resource group in which the Credential is created. Changing this forces a new resource to be created.
   /// [username] The username associated with this Automation Credential.
   CredentialState({
-    pulumi.Output<String>? automationAccountName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? username,
-  }) :
-      automationAccountName = pulumi.Input.asOptionalInput<String>(automationAccountName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.automationAccountName,
+    this.description,
+    this.name,
+    this.password,
+    this.resourceGroupName,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class CredentialState {
 
   factory CredentialState.fromMap(Map<String, dynamic> map) {
     return CredentialState(
-      automationAccountName: map['automationAccountName'] == null ? null : pulumi.Output.create<String>(map['automationAccountName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

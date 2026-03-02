@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Limit settings for the AutoML job.
 class ImageLimitSettingsResponse {
   /// Maximum number of concurrent AutoML iterations.
-  final int? maxConcurrentTrials;
+  final pulumi.Input<int>? maxConcurrentTrials;
   /// Maximum number of AutoML iterations.
-  final int? maxTrials;
+  final pulumi.Input<int>? maxTrials;
   /// AutoML job timeout.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [ImageLimitSettingsResponse].
   /// [maxConcurrentTrials] Maximum number of concurrent AutoML iterations.
@@ -30,9 +31,9 @@ class ImageLimitSettingsResponse {
 
   factory ImageLimitSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ImageLimitSettingsResponse(
-      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : map['maxConcurrentTrials'] as int,
-      maxTrials: map['maxTrials'] == null ? null : map['maxTrials'] as int,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials'] as int).input(),
+      maxTrials: map['maxTrials'] == null ? null : (map['maxTrials'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

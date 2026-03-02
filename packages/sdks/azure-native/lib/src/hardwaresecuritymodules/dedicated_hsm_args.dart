@@ -39,25 +39,16 @@ class DedicatedHsmArgs {
   /// [tags] Resource tags.
   /// [zones] The Dedicated Hsm zones.
   DedicatedHsmArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<NetworkProfile>? managementNetworkProfile,
-    pulumi.Output<String>? name,
-    pulumi.Output<NetworkProfile>? networkProfile,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<String>? stampId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementNetworkProfile = pulumi.Input.asOptionalInput<NetworkProfile>(managementNetworkProfile),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkProfile = pulumi.Input.asOptionalInput<NetworkProfile>(networkProfile),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      stampId = pulumi.Input.asOptionalInput<String>(stampId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.location,
+    this.managementNetworkProfile,
+    this.name,
+    this.networkProfile,
+    required this.resourceGroupName,
+    required this.sku,
+    this.stampId,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class DedicatedHsmArgs {
 
   factory DedicatedHsmArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHsmArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : pulumi.Output.create<NetworkProfile>(NetworkProfile.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<NetworkProfile>(NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      stampId: map['stampId'] == null ? null : pulumi.Output.create<String>(map['stampId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : (NetworkProfile.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      stampId: map['stampId'] == null ? null : (map['stampId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

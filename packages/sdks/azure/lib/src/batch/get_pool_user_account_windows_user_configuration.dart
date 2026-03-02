@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolUserAccountWindowsUserConfiguration {
   /// Specifies login mode for the user.
-  final String loginMode;
+  final pulumi.Input<String> loginMode;
 
   /// Creates a new [GetPoolUserAccountWindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user.
@@ -19,7 +20,7 @@ class GetPoolUserAccountWindowsUserConfiguration {
 
   factory GetPoolUserAccountWindowsUserConfiguration.fromMap(Map<String, dynamic> map) {
     return GetPoolUserAccountWindowsUserConfiguration(
-      loginMode: map['loginMode'] as String,
+      loginMode: (map['loginMode'] as String).input(),
     );
   }
 }

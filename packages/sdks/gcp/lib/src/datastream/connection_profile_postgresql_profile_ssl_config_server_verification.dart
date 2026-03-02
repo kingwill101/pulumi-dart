@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfilePostgresqlProfileSslConfigServerVerification {
   /// PEM-encoded server root CA certificate.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String caCertificate;
+  final pulumi.Input<String> caCertificate;
 
   /// Creates a new [ConnectionProfilePostgresqlProfileSslConfigServerVerification].
   /// [caCertificate] PEM-encoded server root CA certificate.
@@ -20,7 +21,7 @@ class ConnectionProfilePostgresqlProfileSslConfigServerVerification {
 
   factory ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap(Map<String, dynamic> map) {
     return ConnectionProfilePostgresqlProfileSslConfigServerVerification(
-      caCertificate: map['caCertificate'] as String,
+      caCertificate: (map['caCertificate'] as String).input(),
     );
   }
 }

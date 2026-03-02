@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings {
   /// The Amazon Resource Name (ARN) of the AWS IAM role that is assumed for running Amazon EMR Serverless jobs in SageMaker AI Canvas. This role should have the necessary permissions to read and write data attached and a trust relationship with EMR Serverless.
-  final String? executionRoleArn;
+  final pulumi.Input<String>? executionRoleArn;
   /// Describes whether Amazon EMR Serverless job capabilities are enabled or disabled in the SageMaker AI Canvas application. Valid values are: `ENABLED` and `DISABLED`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings].
   /// [executionRoleArn] The Amazon Resource Name (ARN) of the AWS IAM role that is assumed for running Amazon EMR Serverless jobs in SageMaker AI Canvas. This role should have the necessary permissions to read and write data attached and a trust relationship with EMR Serverless.
@@ -24,8 +25,8 @@ class UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings {
 
   factory UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings(
-      executionRoleArn: map['executionRoleArn'] == null ? null : map['executionRoleArn'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

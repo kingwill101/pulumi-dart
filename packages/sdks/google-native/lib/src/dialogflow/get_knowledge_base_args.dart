@@ -16,13 +16,10 @@ class GetKnowledgeBaseArgs {
   /// [location] Required.
   /// [project] Optional.
   GetKnowledgeBaseArgs({
-    required pulumi.Output<String> knowledgeBaseId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.knowledgeBaseId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetKnowledgeBaseArgs {
 
   factory GetKnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return GetKnowledgeBaseArgs(
-      knowledgeBaseId: pulumi.Output.create<String>(map['knowledgeBaseId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

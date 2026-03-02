@@ -53,33 +53,20 @@ class DataCollectionRuleState {
   /// [streamDeclarations] A `stream_declaration` block as defined below.
   /// [tags] A mapping of tags which should be assigned to the Data Collection Rule.
   DataCollectionRuleState({
-    pulumi.Output<String>? dataCollectionEndpointId,
-    pulumi.Output<List<DataCollectionRuleDataFlow>>? dataFlows,
-    pulumi.Output<DataCollectionRuleDataSources>? dataSources,
-    pulumi.Output<String>? description,
-    pulumi.Output<DataCollectionRuleDestinations>? destinations,
-    pulumi.Output<DataCollectionRuleIdentity>? identity,
-    pulumi.Output<String>? immutableId,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<DataCollectionRuleStreamDeclaration>>? streamDeclarations,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dataCollectionEndpointId = pulumi.Input.asOptionalInput<String>(dataCollectionEndpointId),
-      dataFlows = pulumi.Input.asOptionalInput<List<DataCollectionRuleDataFlow>>(dataFlows),
-      dataSources = pulumi.Input.asOptionalInput<DataCollectionRuleDataSources>(dataSources),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinations = pulumi.Input.asOptionalInput<DataCollectionRuleDestinations>(destinations),
-      identity = pulumi.Input.asOptionalInput<DataCollectionRuleIdentity>(identity),
-      immutableId = pulumi.Input.asOptionalInput<String>(immutableId),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      streamDeclarations = pulumi.Input.asOptionalInput<List<DataCollectionRuleStreamDeclaration>>(streamDeclarations),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dataCollectionEndpointId,
+    this.dataFlows,
+    this.dataSources,
+    this.description,
+    this.destinations,
+    this.identity,
+    this.immutableId,
+    this.kind,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.streamDeclarations,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class DataCollectionRuleState {
 
   factory DataCollectionRuleState.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleState(
-      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : pulumi.Output.create<String>(map['dataCollectionEndpointId'] as String),
-      dataFlows: map['dataFlows'] == null ? null : pulumi.Output.create<List<DataCollectionRuleDataFlow>>(pulumi.Input.decodeList<DataCollectionRuleDataFlow>(map['dataFlows'], (value) => DataCollectionRuleDataFlow.fromMap((value as Map).cast<String, dynamic>()))),
-      dataSources: map['dataSources'] == null ? null : pulumi.Output.create<DataCollectionRuleDataSources>(DataCollectionRuleDataSources.fromMap((map['dataSources'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinations: map['destinations'] == null ? null : pulumi.Output.create<DataCollectionRuleDestinations>(DataCollectionRuleDestinations.fromMap((map['destinations'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<DataCollectionRuleIdentity>(DataCollectionRuleIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      immutableId: map['immutableId'] == null ? null : pulumi.Output.create<String>(map['immutableId'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      streamDeclarations: map['streamDeclarations'] == null ? null : pulumi.Output.create<List<DataCollectionRuleStreamDeclaration>>(pulumi.Input.decodeList<DataCollectionRuleStreamDeclaration>(map['streamDeclarations'], (value) => DataCollectionRuleStreamDeclaration.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : (map['dataCollectionEndpointId'] as String).input(),
+      dataFlows: map['dataFlows'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleDataFlow>(map['dataFlows'], (value) => DataCollectionRuleDataFlow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSources: map['dataSources'] == null ? null : (DataCollectionRuleDataSources.fromMap((map['dataSources'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinations: map['destinations'] == null ? null : (DataCollectionRuleDestinations.fromMap((map['destinations'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (DataCollectionRuleIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      immutableId: map['immutableId'] == null ? null : (map['immutableId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      streamDeclarations: map['streamDeclarations'] == null ? null : (pulumi.Input.decodeList<DataCollectionRuleStreamDeclaration>(map['streamDeclarations'], (value) => DataCollectionRuleStreamDeclaration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

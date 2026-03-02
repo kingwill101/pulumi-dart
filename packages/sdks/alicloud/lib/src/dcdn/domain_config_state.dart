@@ -26,19 +26,13 @@ class DomainConfigState {
   /// [parentId] By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
   /// [status] The status of the Config.
   DomainConfigState({
-    pulumi.Output<String>? configId,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<List<DomainConfigFunctionArg>>? functionArgs,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<String>? parentId,
-    pulumi.Output<String>? status,
-  }) :
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      functionArgs = pulumi.Input.asOptionalInput<List<DomainConfigFunctionArg>>(functionArgs),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      parentId = pulumi.Input.asOptionalInput<String>(parentId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.configId,
+    this.domainName,
+    this.functionArgs,
+    this.functionName,
+    this.parentId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class DomainConfigState {
 
   factory DomainConfigState.fromMap(Map<String, dynamic> map) {
     return DomainConfigState(
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      functionArgs: map['functionArgs'] == null ? null : pulumi.Output.create<List<DomainConfigFunctionArg>>(pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs'], (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      parentId: map['parentId'] == null ? null : pulumi.Output.create<String>(map['parentId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      functionArgs: map['functionArgs'] == null ? null : (pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs'], (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

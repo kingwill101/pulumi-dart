@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_definition_response.dart';
 
 /// Details of a single deployment created by the remediation.
 class RemediationDeploymentResponse {
   /// The time at which the remediation was created.
-  final String createdOn;
+  final pulumi.Input<String> createdOn;
   /// Resource ID of the template deployment that will remediate the resource.
-  final String deploymentId;
+  final pulumi.Input<String> deploymentId;
   /// Error encountered while remediated the resource.
-  final ErrorDefinitionResponse error;
+  final pulumi.Input<ErrorDefinitionResponse> error;
   /// The time at which the remediation deployment was last updated.
-  final String lastUpdatedOn;
+  final pulumi.Input<String> lastUpdatedOn;
   /// Resource ID of the resource that is being remediated by the deployment.
-  final String remediatedResourceId;
+  final pulumi.Input<String> remediatedResourceId;
   /// Location of the resource that is being remediated.
-  final String resourceLocation;
+  final pulumi.Input<String> resourceLocation;
   /// Status of the remediation deployment.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [RemediationDeploymentResponse].
   /// [createdOn] The time at which the remediation was created.
@@ -41,7 +42,7 @@ class RemediationDeploymentResponse {
     return <String, dynamic>{
       'createdOn': createdOn,
       'deploymentId': deploymentId,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<ErrorDefinitionResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'lastUpdatedOn': lastUpdatedOn,
       'remediatedResourceId': remediatedResourceId,
       'resourceLocation': resourceLocation,
@@ -51,13 +52,13 @@ class RemediationDeploymentResponse {
 
   factory RemediationDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return RemediationDeploymentResponse(
-      createdOn: map['createdOn'] as String,
-      deploymentId: map['deploymentId'] as String,
-      error: ErrorDefinitionResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      lastUpdatedOn: map['lastUpdatedOn'] as String,
-      remediatedResourceId: map['remediatedResourceId'] as String,
-      resourceLocation: map['resourceLocation'] as String,
-      status: map['status'] as String,
+      createdOn: (map['createdOn'] as String).input(),
+      deploymentId: (map['deploymentId'] as String).input(),
+      error: (ErrorDefinitionResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      lastUpdatedOn: (map['lastUpdatedOn'] as String).input(),
+      remediatedResourceId: (map['remediatedResourceId'] as String).input(),
+      resourceLocation: (map['resourceLocation'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

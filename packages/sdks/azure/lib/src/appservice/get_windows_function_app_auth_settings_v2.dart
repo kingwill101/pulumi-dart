@@ -14,49 +14,49 @@ import 'get_windows_function_app_auth_settings_v2_twitter_v2.dart';
 
 class GetWindowsFunctionAppAuthSettingsV2 {
   /// An `active_directory_v2` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2> activeDirectoryV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2>> activeDirectoryV2s;
   /// An `apple_v2` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2AppleV2> appleV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2AppleV2>> appleV2s;
   /// Are the AuthV2 Settings enabled.
-  final bool authEnabled;
+  final pulumi.Input<bool> authEnabled;
   /// An `azure_static_web_app_v2` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2> azureStaticWebAppV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2>> azureStaticWebAppV2s;
   /// The path to the App Auth settings.
-  final String configFilePath;
+  final pulumi.Input<String> configFilePath;
   /// Zero or more `custom_oidc_v2` blocks as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2CustomOidcV2> customOidcV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2CustomOidcV2>> customOidcV2s;
   /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
-  final String defaultProvider;
+  final pulumi.Input<String> defaultProvider;
   /// The paths which should be excluded from the `unauthenticated_action` when it is set to `RedirectToLoginPage`.
-  final List<String> excludedPaths;
+  final pulumi.Input<List<String>> excludedPaths;
   /// A `facebook_v2` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2FacebookV2> facebookV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2FacebookV2>> facebookV2s;
   /// The convention used to determine the url of the request made.
-  final String forwardProxyConvention;
+  final pulumi.Input<String> forwardProxyConvention;
   /// The name of the custom header containing the host of the request.
-  final String forwardProxyCustomHostHeaderName;
+  final pulumi.Input<String> forwardProxyCustomHostHeaderName;
   /// The name of the custom header containing the scheme of the request.
-  final String forwardProxyCustomSchemeHeaderName;
+  final pulumi.Input<String> forwardProxyCustomSchemeHeaderName;
   /// A `github_v2` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2GithubV2> githubV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2GithubV2>> githubV2s;
   /// A `google_v2` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2GoogleV2> googleV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2GoogleV2>> googleV2s;
   /// The prefix that should precede all the authentication and authorisation paths.
-  final String httpRouteApiPrefix;
+  final pulumi.Input<String> httpRouteApiPrefix;
   /// A `login` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2Login> logins;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2Login>> logins;
   /// A `microsoft_v2` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2MicrosoftV2> microsoftV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2MicrosoftV2>> microsoftV2s;
   /// Is the authentication flow used for all requests.
-  final bool requireAuthentication;
+  final pulumi.Input<bool> requireAuthentication;
   /// Is HTTPS required on connections?
-  final bool requireHttps;
+  final pulumi.Input<bool> requireHttps;
   /// The Runtime Version of the Authentication and Authorisation feature of this App.
-  final String runtimeVersion;
+  final pulumi.Input<String> runtimeVersion;
   /// A `twitter_v2` block as defined below.
-  final List<GetWindowsFunctionAppAuthSettingsV2TwitterV2> twitterV2s;
+  final pulumi.Input<List<GetWindowsFunctionAppAuthSettingsV2TwitterV2>> twitterV2s;
   /// The action to take for requests made without authentication.
-  final String unauthenticatedAction;
+  final pulumi.Input<String> unauthenticatedAction;
 
   /// Creates a new [GetWindowsFunctionAppAuthSettingsV2].
   /// [activeDirectoryV2s] An `active_directory_v2` block as defined below.
@@ -108,55 +108,55 @@ class GetWindowsFunctionAppAuthSettingsV2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectoryV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2, Map<String, dynamic>>(activeDirectoryV2s, (value) => value.toMap()),
-      'appleV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2AppleV2, Map<String, dynamic>>(appleV2s, (value) => value.toMap()),
+      'activeDirectoryV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2>, List<Map<String, dynamic>>>(activeDirectoryV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'appleV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2AppleV2>, List<Map<String, dynamic>>>(appleV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2AppleV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'authEnabled': authEnabled,
-      'azureStaticWebAppV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2, Map<String, dynamic>>(azureStaticWebAppV2s, (value) => value.toMap()),
+      'azureStaticWebAppV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2>, List<Map<String, dynamic>>>(azureStaticWebAppV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'configFilePath': configFilePath,
-      'customOidcV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2CustomOidcV2, Map<String, dynamic>>(customOidcV2s, (value) => value.toMap()),
+      'customOidcV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2CustomOidcV2>, List<Map<String, dynamic>>>(customOidcV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2CustomOidcV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defaultProvider': defaultProvider,
       'excludedPaths': excludedPaths,
-      'facebookV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2FacebookV2, Map<String, dynamic>>(facebookV2s, (value) => value.toMap()),
+      'facebookV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2FacebookV2>, List<Map<String, dynamic>>>(facebookV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2FacebookV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'forwardProxyConvention': forwardProxyConvention,
       'forwardProxyCustomHostHeaderName': forwardProxyCustomHostHeaderName,
       'forwardProxyCustomSchemeHeaderName': forwardProxyCustomSchemeHeaderName,
-      'githubV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2GithubV2, Map<String, dynamic>>(githubV2s, (value) => value.toMap()),
-      'googleV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2GoogleV2, Map<String, dynamic>>(googleV2s, (value) => value.toMap()),
+      'githubV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2GithubV2>, List<Map<String, dynamic>>>(githubV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2GithubV2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'googleV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2GoogleV2>, List<Map<String, dynamic>>>(googleV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2GoogleV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'httpRouteApiPrefix': httpRouteApiPrefix,
-      'logins': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2Login, Map<String, dynamic>>(logins, (value) => value.toMap()),
-      'microsoftV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2MicrosoftV2, Map<String, dynamic>>(microsoftV2s, (value) => value.toMap()),
+      'logins': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2Login>, List<Map<String, dynamic>>>(logins, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2Login, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'microsoftV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2MicrosoftV2>, List<Map<String, dynamic>>>(microsoftV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2MicrosoftV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requireAuthentication': requireAuthentication,
       'requireHttps': requireHttps,
       'runtimeVersion': runtimeVersion,
-      'twitterV2s': pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2TwitterV2, Map<String, dynamic>>(twitterV2s, (value) => value.toMap()),
+      'twitterV2s': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppAuthSettingsV2TwitterV2>, List<Map<String, dynamic>>>(twitterV2s, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppAuthSettingsV2TwitterV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'unauthenticatedAction': unauthenticatedAction,
     };
   }
 
   factory GetWindowsFunctionAppAuthSettingsV2.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppAuthSettingsV2(
-      activeDirectoryV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2>(map['activeDirectoryV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2.fromMap((value as Map).cast<String, dynamic>())),
-      appleV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2AppleV2>(map['appleV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2AppleV2.fromMap((value as Map).cast<String, dynamic>())),
-      authEnabled: map['authEnabled'] as bool,
-      azureStaticWebAppV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2>(map['azureStaticWebAppV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2.fromMap((value as Map).cast<String, dynamic>())),
-      configFilePath: map['configFilePath'] as String,
-      customOidcV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2CustomOidcV2>(map['customOidcV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2CustomOidcV2.fromMap((value as Map).cast<String, dynamic>())),
-      defaultProvider: map['defaultProvider'] as String,
-      excludedPaths: (map['excludedPaths'] as List).cast<String>(),
-      facebookV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2FacebookV2>(map['facebookV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2FacebookV2.fromMap((value as Map).cast<String, dynamic>())),
-      forwardProxyConvention: map['forwardProxyConvention'] as String,
-      forwardProxyCustomHostHeaderName: map['forwardProxyCustomHostHeaderName'] as String,
-      forwardProxyCustomSchemeHeaderName: map['forwardProxyCustomSchemeHeaderName'] as String,
-      githubV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2GithubV2>(map['githubV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2GithubV2.fromMap((value as Map).cast<String, dynamic>())),
-      googleV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2GoogleV2>(map['googleV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2GoogleV2.fromMap((value as Map).cast<String, dynamic>())),
-      httpRouteApiPrefix: map['httpRouteApiPrefix'] as String,
-      logins: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2Login>(map['logins'], (value) => GetWindowsFunctionAppAuthSettingsV2Login.fromMap((value as Map).cast<String, dynamic>())),
-      microsoftV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2MicrosoftV2>(map['microsoftV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2MicrosoftV2.fromMap((value as Map).cast<String, dynamic>())),
-      requireAuthentication: map['requireAuthentication'] as bool,
-      requireHttps: map['requireHttps'] as bool,
-      runtimeVersion: map['runtimeVersion'] as String,
-      twitterV2s: pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2TwitterV2>(map['twitterV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2TwitterV2.fromMap((value as Map).cast<String, dynamic>())),
-      unauthenticatedAction: map['unauthenticatedAction'] as String,
+      activeDirectoryV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2>(map['activeDirectoryV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appleV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2AppleV2>(map['appleV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2AppleV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authEnabled: (map['authEnabled'] as bool).input(),
+      azureStaticWebAppV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2>(map['azureStaticWebAppV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2AzureStaticWebAppV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configFilePath: (map['configFilePath'] as String).input(),
+      customOidcV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2CustomOidcV2>(map['customOidcV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2CustomOidcV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultProvider: (map['defaultProvider'] as String).input(),
+      excludedPaths: ((map['excludedPaths'] as List).cast<String>()).input(),
+      facebookV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2FacebookV2>(map['facebookV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2FacebookV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forwardProxyConvention: (map['forwardProxyConvention'] as String).input(),
+      forwardProxyCustomHostHeaderName: (map['forwardProxyCustomHostHeaderName'] as String).input(),
+      forwardProxyCustomSchemeHeaderName: (map['forwardProxyCustomSchemeHeaderName'] as String).input(),
+      githubV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2GithubV2>(map['githubV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2GithubV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      googleV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2GoogleV2>(map['googleV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2GoogleV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpRouteApiPrefix: (map['httpRouteApiPrefix'] as String).input(),
+      logins: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2Login>(map['logins'], (value) => GetWindowsFunctionAppAuthSettingsV2Login.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      microsoftV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2MicrosoftV2>(map['microsoftV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2MicrosoftV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requireAuthentication: (map['requireAuthentication'] as bool).input(),
+      requireHttps: (map['requireHttps'] as bool).input(),
+      runtimeVersion: (map['runtimeVersion'] as String).input(),
+      twitterV2s: (pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingsV2TwitterV2>(map['twitterV2s'], (value) => GetWindowsFunctionAppAuthSettingsV2TwitterV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unauthenticatedAction: (map['unauthenticatedAction'] as String).input(),
     );
   }
 }

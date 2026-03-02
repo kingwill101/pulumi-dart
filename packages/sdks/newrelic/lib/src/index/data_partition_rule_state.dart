@@ -28,21 +28,14 @@ class DataPartitionRuleState {
   /// [retentionPolicy] The retention policy of the data partition data. Valid values are `SECONDARY` and `STANDARD`.
   /// [targetDataPartition] The name of the data partition where logs will be allocated once the rule is enabled.
   DataPartitionRuleState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<bool>? deleted,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? nrql,
-    pulumi.Output<String>? retentionPolicy,
-    pulumi.Output<String>? targetDataPartition,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      deleted = pulumi.Input.asOptionalInput<bool>(deleted),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      nrql = pulumi.Input.asOptionalInput<String>(nrql),
-      retentionPolicy = pulumi.Input.asOptionalInput<String>(retentionPolicy),
-      targetDataPartition = pulumi.Input.asOptionalInput<String>(targetDataPartition);
+    this.accountId,
+    this.deleted,
+    this.description,
+    this.enabled,
+    this.nrql,
+    this.retentionPolicy,
+    this.targetDataPartition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class DataPartitionRuleState {
 
   factory DataPartitionRuleState.fromMap(Map<String, dynamic> map) {
     return DataPartitionRuleState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      deleted: map['deleted'] == null ? null : pulumi.Output.create<bool>(map['deleted'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      nrql: map['nrql'] == null ? null : pulumi.Output.create<String>(map['nrql'] as String),
-      retentionPolicy: map['retentionPolicy'] == null ? null : pulumi.Output.create<String>(map['retentionPolicy'] as String),
-      targetDataPartition: map['targetDataPartition'] == null ? null : pulumi.Output.create<String>(map['targetDataPartition'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      nrql: map['nrql'] == null ? null : (map['nrql'] as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (map['retentionPolicy'] as String).input(),
+      targetDataPartition: map['targetDataPartition'] == null ? null : (map['targetDataPartition'] as String).input(),
     );
   }
 }

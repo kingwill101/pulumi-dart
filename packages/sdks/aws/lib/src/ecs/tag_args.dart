@@ -22,15 +22,11 @@ class TagArgs {
   /// [resourceArn] Amazon Resource Name (ARN) of the ECS resource to tag.
   /// [value] Tag value.
   TagArgs({
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-    required pulumi.Output<String> value,
-  }) :
-      key = pulumi.Input.asInput<String>(key),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      value = pulumi.Input.asInput<String>(value);
+    required this.key,
+    this.region,
+    required this.resourceArn,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class TagArgs {
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      key: pulumi.Output.create<String>(map['key'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      key: (map['key'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

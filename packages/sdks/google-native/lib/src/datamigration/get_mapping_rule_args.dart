@@ -18,15 +18,11 @@ class GetMappingRuleArgs {
   /// [mappingRuleId] Required.
   /// [project] Optional.
   GetMappingRuleArgs({
-    required pulumi.Output<String> conversionWorkspaceId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> mappingRuleId,
-    pulumi.Output<String>? project,
-  }) :
-      conversionWorkspaceId = pulumi.Input.asInput<String>(conversionWorkspaceId),
-      location = pulumi.Input.asInput<String>(location),
-      mappingRuleId = pulumi.Input.asInput<String>(mappingRuleId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.conversionWorkspaceId,
+    required this.location,
+    required this.mappingRuleId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetMappingRuleArgs {
 
   factory GetMappingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetMappingRuleArgs(
-      conversionWorkspaceId: pulumi.Output.create<String>(map['conversionWorkspaceId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mappingRuleId: pulumi.Output.create<String>(map['mappingRuleId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      conversionWorkspaceId: (map['conversionWorkspaceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      mappingRuleId: (map['mappingRuleId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

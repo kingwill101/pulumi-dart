@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InputDataset used to create model or do evaluation. NextID:5
 class GoogleCloudDialogflowV2InputDataset {
   /// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
-  final String dataset;
+  final pulumi.Input<String> dataset;
 
   /// Creates a new [GoogleCloudDialogflowV2InputDataset].
   /// [dataset] ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowV2InputDataset {
 
   factory GoogleCloudDialogflowV2InputDataset.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2InputDataset(
-      dataset: map['dataset'] as String,
+      dataset: (map['dataset'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MulticastDomainState {
   /// (Output)
@@ -12,7 +13,7 @@ class MulticastDomainState {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [MulticastDomainState].
   /// [state] (Output)
@@ -28,7 +29,7 @@ class MulticastDomainState {
 
   factory MulticastDomainState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainState(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -34,25 +34,16 @@ class RouteArgs {
   /// [requestId] Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [routeId] Required. The Route identifier.
   RouteArgs({
-    required pulumi.Output<String> destinationAddress,
-    pulumi.Output<int>? destinationPort,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> privateConnectionId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> routeId,
-  }) :
-      destinationAddress = pulumi.Input.asInput<String>(destinationAddress),
-      destinationPort = pulumi.Input.asOptionalInput<int>(destinationPort),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      routeId = pulumi.Input.asInput<String>(routeId);
+    required this.destinationAddress,
+    this.destinationPort,
+    required this.displayName,
+    this.labels,
+    this.location,
+    required this.privateConnectionId,
+    this.project,
+    this.requestId,
+    required this.routeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      destinationAddress: pulumi.Output.create<String>(map['destinationAddress'] as String),
-      destinationPort: map['destinationPort'] == null ? null : pulumi.Output.create<int>(map['destinationPort'] as int),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateConnectionId: pulumi.Output.create<String>(map['privateConnectionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      routeId: pulumi.Output.create<String>(map['routeId'] as String),
+      destinationAddress: (map['destinationAddress'] as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      displayName: (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateConnectionId: (map['privateConnectionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      routeId: (map['routeId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificatesCertificate {
-  final String certificate;
-  final String created;
-  final List<String> domainNames;
-  final String fingerprint;
-  final int id;
-  final Map<String, String> labels;
-  final String? name;
-  final String notValidAfter;
-  final String notValidBefore;
-  final String type;
+  final pulumi.Input<String> certificate;
+  final pulumi.Input<String> created;
+  final pulumi.Input<List<String>> domainNames;
+  final pulumi.Input<String> fingerprint;
+  final pulumi.Input<int> id;
+  final pulumi.Input<Map<String, String>> labels;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> notValidAfter;
+  final pulumi.Input<String> notValidBefore;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetCertificatesCertificate].
   /// [certificate] Required.
@@ -54,16 +55,16 @@ class GetCertificatesCertificate {
 
   factory GetCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificate(
-      certificate: map['certificate'] as String,
-      created: map['created'] as String,
-      domainNames: (map['domainNames'] as List).cast<String>(),
-      fingerprint: map['fingerprint'] as String,
-      id: map['id'] as int,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      notValidAfter: map['notValidAfter'] as String,
-      notValidBefore: map['notValidBefore'] as String,
-      type: map['type'] as String,
+      certificate: (map['certificate'] as String).input(),
+      created: (map['created'] as String).input(),
+      domainNames: ((map['domainNames'] as List).cast<String>()).input(),
+      fingerprint: (map['fingerprint'] as String).input(),
+      id: (map['id'] as int).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notValidAfter: (map['notValidAfter'] as String).input(),
+      notValidBefore: (map['notValidBefore'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -54,33 +54,20 @@ class GetSubnetPoolArgs {
   /// [shared] Whether this subnetpool is shared across all projects.
   /// [tags] The list of subnetpool tags to filter.
   GetSubnetPoolArgs({
-    pulumi.Output<String>? addressScopeId,
-    pulumi.Output<int>? defaultPrefixlen,
-    pulumi.Output<int>? defaultQuota,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? ipVersion,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<int>? maxPrefixlen,
-    pulumi.Output<int>? minPrefixlen,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? shared,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      addressScopeId = pulumi.Input.asOptionalInput<String>(addressScopeId),
-      defaultPrefixlen = pulumi.Input.asOptionalInput<int>(defaultPrefixlen),
-      defaultQuota = pulumi.Input.asOptionalInput<int>(defaultQuota),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipVersion = pulumi.Input.asOptionalInput<int>(ipVersion),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      maxPrefixlen = pulumi.Input.asOptionalInput<int>(maxPrefixlen),
-      minPrefixlen = pulumi.Input.asOptionalInput<int>(minPrefixlen),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shared = pulumi.Input.asOptionalInput<bool>(shared),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    this.addressScopeId,
+    this.defaultPrefixlen,
+    this.defaultQuota,
+    this.description,
+    this.ipVersion,
+    this.isDefault,
+    this.maxPrefixlen,
+    this.minPrefixlen,
+    this.name,
+    this.projectId,
+    this.region,
+    this.shared,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class GetSubnetPoolArgs {
 
   factory GetSubnetPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetPoolArgs(
-      addressScopeId: map['addressScopeId'] == null ? null : pulumi.Output.create<String>(map['addressScopeId'] as String),
-      defaultPrefixlen: map['defaultPrefixlen'] == null ? null : pulumi.Output.create<int>(map['defaultPrefixlen'] as int),
-      defaultQuota: map['defaultQuota'] == null ? null : pulumi.Output.create<int>(map['defaultQuota'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<int>(map['ipVersion'] as int),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      maxPrefixlen: map['maxPrefixlen'] == null ? null : pulumi.Output.create<int>(map['maxPrefixlen'] as int),
-      minPrefixlen: map['minPrefixlen'] == null ? null : pulumi.Output.create<int>(map['minPrefixlen'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shared: map['shared'] == null ? null : pulumi.Output.create<bool>(map['shared'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      addressScopeId: map['addressScopeId'] == null ? null : (map['addressScopeId'] as String).input(),
+      defaultPrefixlen: map['defaultPrefixlen'] == null ? null : (map['defaultPrefixlen'] as int).input(),
+      defaultQuota: map['defaultQuota'] == null ? null : (map['defaultQuota'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      maxPrefixlen: map['maxPrefixlen'] == null ? null : (map['maxPrefixlen'] as int).input(),
+      minPrefixlen: map['minPrefixlen'] == null ? null : (map['minPrefixlen'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

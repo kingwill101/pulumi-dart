@@ -38,25 +38,16 @@ class VirtualRouterArgs {
   /// [virtualRouterIps] VirtualRouter IPs.
   /// [virtualRouterName] The name of the Virtual Router.
   VirtualRouterArgs({
-    pulumi.Output<SubResource>? hostedGateway,
-    pulumi.Output<SubResource>? hostedSubnet,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<double>? virtualRouterAsn,
-    pulumi.Output<List<String>>? virtualRouterIps,
-    pulumi.Output<String>? virtualRouterName,
-  }) :
-      hostedGateway = pulumi.Input.asOptionalInput<SubResource>(hostedGateway),
-      hostedSubnet = pulumi.Input.asOptionalInput<SubResource>(hostedSubnet),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualRouterAsn = pulumi.Input.asOptionalInput<double>(virtualRouterAsn),
-      virtualRouterIps = pulumi.Input.asOptionalInput<List<String>>(virtualRouterIps),
-      virtualRouterName = pulumi.Input.asOptionalInput<String>(virtualRouterName);
+    this.hostedGateway,
+    this.hostedSubnet,
+    this.id,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.virtualRouterAsn,
+    this.virtualRouterIps,
+    this.virtualRouterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class VirtualRouterArgs {
 
   factory VirtualRouterArgs.fromMap(Map<String, dynamic> map) {
     return VirtualRouterArgs(
-      hostedGateway: map['hostedGateway'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['hostedGateway'] as Map).cast<String, dynamic>())),
-      hostedSubnet: map['hostedSubnet'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['hostedSubnet'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : pulumi.Output.create<double>(map['virtualRouterAsn'] as double),
-      virtualRouterIps: map['virtualRouterIps'] == null ? null : pulumi.Output.create<List<String>>((map['virtualRouterIps'] as List).cast<String>()),
-      virtualRouterName: map['virtualRouterName'] == null ? null : pulumi.Output.create<String>(map['virtualRouterName'] as String),
+      hostedGateway: map['hostedGateway'] == null ? null : (SubResource.fromMap((map['hostedGateway'] as Map).cast<String, dynamic>())).input(),
+      hostedSubnet: map['hostedSubnet'] == null ? null : (SubResource.fromMap((map['hostedSubnet'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : (map['virtualRouterAsn'] as double).input(),
+      virtualRouterIps: map['virtualRouterIps'] == null ? null : ((map['virtualRouterIps'] as List).cast<String>()).input(),
+      virtualRouterName: map['virtualRouterName'] == null ? null : (map['virtualRouterName'] as String).input(),
     );
   }
 }

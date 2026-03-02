@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackupPlansPlan {
   /// Specifies whether to activate the backup plan.
-  final bool active;
+  final pulumi.Input<bool> active;
   /// The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
-  final String backupPeriod;
+  final pulumi.Input<String> backupPeriod;
   /// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
-  final String backupTime;
+  final pulumi.Input<String> backupTime;
   /// The ID of the cluster for the backup.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The time when the backup plan was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the data center for the backup in the cluster.
-  final String dataCenterId;
+  final pulumi.Input<String> dataCenterId;
   /// The ID of the Backup Plan.
-  final String id;
+  final pulumi.Input<String> id;
   /// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
-  final int retentionPeriod;
+  final pulumi.Input<int> retentionPeriod;
 
   /// Creates a new [GetBackupPlansPlan].
   /// [active] Specifies whether to activate the backup plan.
@@ -54,14 +55,14 @@ class GetBackupPlansPlan {
 
   factory GetBackupPlansPlan.fromMap(Map<String, dynamic> map) {
     return GetBackupPlansPlan(
-      active: map['active'] as bool,
-      backupPeriod: map['backupPeriod'] as String,
-      backupTime: map['backupTime'] as String,
-      clusterId: map['clusterId'] as String,
-      createTime: map['createTime'] as String,
-      dataCenterId: map['dataCenterId'] as String,
-      id: map['id'] as String,
-      retentionPeriod: map['retentionPeriod'] as int,
+      active: (map['active'] as bool).input(),
+      backupPeriod: (map['backupPeriod'] as String).input(),
+      backupTime: (map['backupTime'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dataCenterId: (map['dataCenterId'] as String).input(),
+      id: (map['id'] as String).input(),
+      retentionPeriod: (map['retentionPeriod'] as int).input(),
     );
   }
 }

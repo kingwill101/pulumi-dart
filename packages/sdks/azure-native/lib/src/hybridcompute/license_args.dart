@@ -32,21 +32,14 @@ class LicenseArgs {
   /// [tags] Resource tags.
   /// [tenantId] Describes the tenant id.
   LicenseArgs({
-    pulumi.Output<LicenseDetails>? licenseDetails,
-    pulumi.Output<String>? licenseName,
-    pulumi.Output<String>? licenseType,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      licenseDetails = pulumi.Input.asOptionalInput<LicenseDetails>(licenseDetails),
-      licenseName = pulumi.Input.asOptionalInput<String>(licenseName),
-      licenseType = pulumi.Input.asOptionalInput<String>(licenseType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.licenseDetails,
+    this.licenseName,
+    this.licenseType,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class LicenseArgs {
 
   factory LicenseArgs.fromMap(Map<String, dynamic> map) {
     return LicenseArgs(
-      licenseDetails: map['licenseDetails'] == null ? null : pulumi.Output.create<LicenseDetails>(LicenseDetails.fromMap((map['licenseDetails'] as Map).cast<String, dynamic>())),
-      licenseName: map['licenseName'] == null ? null : pulumi.Output.create<String>(map['licenseName'] as String),
-      licenseType: map['licenseType'] == null ? null : pulumi.Output.create<String>(map['licenseType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      licenseDetails: map['licenseDetails'] == null ? null : (LicenseDetails.fromMap((map['licenseDetails'] as Map).cast<String, dynamic>())).input(),
+      licenseName: map['licenseName'] == null ? null : (map['licenseName'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

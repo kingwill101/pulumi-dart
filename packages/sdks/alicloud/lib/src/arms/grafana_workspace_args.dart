@@ -67,33 +67,20 @@ class GrafanaWorkspaceArgs {
   /// [resourceGroupId] The ID of the resource group
   /// [tags] The tag of the resource
   GrafanaWorkspaceArgs({
-    pulumi.Output<String>? accountNumber,
-    pulumi.Output<String>? aliyunLang,
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? customAccountNumber,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? duration,
-    pulumi.Output<String>? grafanaVersion,
-    pulumi.Output<String>? grafanaWorkspaceEdition,
-    required pulumi.Output<String> grafanaWorkspaceName,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? pricingCycle,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountNumber = pulumi.Input.asOptionalInput<String>(accountNumber),
-      aliyunLang = pulumi.Input.asOptionalInput<String>(aliyunLang),
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      customAccountNumber = pulumi.Input.asOptionalInput<String>(customAccountNumber),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      grafanaVersion = pulumi.Input.asOptionalInput<String>(grafanaVersion),
-      grafanaWorkspaceEdition = pulumi.Input.asOptionalInput<String>(grafanaWorkspaceEdition),
-      grafanaWorkspaceName = pulumi.Input.asInput<String>(grafanaWorkspaceName),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      pricingCycle = pulumi.Input.asOptionalInput<String>(pricingCycle),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountNumber,
+    this.aliyunLang,
+    this.autoRenew,
+    this.customAccountNumber,
+    this.description,
+    this.duration,
+    this.grafanaVersion,
+    this.grafanaWorkspaceEdition,
+    required this.grafanaWorkspaceName,
+    this.password,
+    this.pricingCycle,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -115,19 +102,19 @@ class GrafanaWorkspaceArgs {
 
   factory GrafanaWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GrafanaWorkspaceArgs(
-      accountNumber: map['accountNumber'] == null ? null : pulumi.Output.create<String>(map['accountNumber'] as String),
-      aliyunLang: map['aliyunLang'] == null ? null : pulumi.Output.create<String>(map['aliyunLang'] as String),
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      customAccountNumber: map['customAccountNumber'] == null ? null : pulumi.Output.create<String>(map['customAccountNumber'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      grafanaVersion: map['grafanaVersion'] == null ? null : pulumi.Output.create<String>(map['grafanaVersion'] as String),
-      grafanaWorkspaceEdition: map['grafanaWorkspaceEdition'] == null ? null : pulumi.Output.create<String>(map['grafanaWorkspaceEdition'] as String),
-      grafanaWorkspaceName: pulumi.Output.create<String>(map['grafanaWorkspaceName'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      pricingCycle: map['pricingCycle'] == null ? null : pulumi.Output.create<String>(map['pricingCycle'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountNumber: map['accountNumber'] == null ? null : (map['accountNumber'] as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      customAccountNumber: map['customAccountNumber'] == null ? null : (map['customAccountNumber'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      grafanaVersion: map['grafanaVersion'] == null ? null : (map['grafanaVersion'] as String).input(),
+      grafanaWorkspaceEdition: map['grafanaWorkspaceEdition'] == null ? null : (map['grafanaWorkspaceEdition'] as String).input(),
+      grafanaWorkspaceName: (map['grafanaWorkspaceName'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

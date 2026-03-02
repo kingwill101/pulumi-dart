@@ -37,23 +37,15 @@ class OriginGroupArgs {
   /// [responseBasedOriginErrorDetectionSettings] The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
   /// [trafficRestorationTimeToHealedOrNewEndpointsInMinutes] Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
   OriginGroupArgs({
-    required pulumi.Output<String> endpointName,
-    pulumi.Output<HealthProbeParameters>? healthProbeSettings,
-    pulumi.Output<String>? originGroupName,
-    pulumi.Output<List<ResourceReference>>? origins,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ResponseBasedOriginErrorDetectionParameters>? responseBasedOriginErrorDetectionSettings,
-    pulumi.Output<int>? trafficRestorationTimeToHealedOrNewEndpointsInMinutes,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      healthProbeSettings = pulumi.Input.asOptionalInput<HealthProbeParameters>(healthProbeSettings),
-      originGroupName = pulumi.Input.asOptionalInput<String>(originGroupName),
-      origins = pulumi.Input.asOptionalInput<List<ResourceReference>>(origins),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      responseBasedOriginErrorDetectionSettings = pulumi.Input.asOptionalInput<ResponseBasedOriginErrorDetectionParameters>(responseBasedOriginErrorDetectionSettings),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes = pulumi.Input.asOptionalInput<int>(trafficRestorationTimeToHealedOrNewEndpointsInMinutes);
+    required this.endpointName,
+    this.healthProbeSettings,
+    this.originGroupName,
+    this.origins,
+    required this.profileName,
+    required this.resourceGroupName,
+    this.responseBasedOriginErrorDetectionSettings,
+    this.trafficRestorationTimeToHealedOrNewEndpointsInMinutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class OriginGroupArgs {
 
   factory OriginGroupArgs.fromMap(Map<String, dynamic> map) {
     return OriginGroupArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : pulumi.Output.create<HealthProbeParameters>(HealthProbeParameters.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>())),
-      originGroupName: map['originGroupName'] == null ? null : pulumi.Output.create<String>(map['originGroupName'] as String),
-      origins: map['origins'] == null ? null : pulumi.Output.create<List<ResourceReference>>(pulumi.Input.decodeList<ResourceReference>(map['origins'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      responseBasedOriginErrorDetectionSettings: map['responseBasedOriginErrorDetectionSettings'] == null ? null : pulumi.Output.create<ResponseBasedOriginErrorDetectionParameters>(ResponseBasedOriginErrorDetectionParameters.fromMap((map['responseBasedOriginErrorDetectionSettings'] as Map).cast<String, dynamic>())),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : pulumi.Output.create<int>(map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] as int),
+      endpointName: (map['endpointName'] as String).input(),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : (HealthProbeParameters.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>())).input(),
+      originGroupName: map['originGroupName'] == null ? null : (map['originGroupName'] as String).input(),
+      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['origins'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      responseBasedOriginErrorDetectionSettings: map['responseBasedOriginErrorDetectionSettings'] == null ? null : (ResponseBasedOriginErrorDetectionParameters.fromMap((map['responseBasedOriginErrorDetectionSettings'] as Map).cast<String, dynamic>())).input(),
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : (map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] as int).input(),
     );
   }
 }

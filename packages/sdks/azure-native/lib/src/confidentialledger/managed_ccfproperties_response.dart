@@ -7,21 +7,21 @@ import 'member_identity_certificate_response.dart';
 /// Additional Managed CCF properties.
 class ManagedCCFPropertiesResponse {
   /// Unique name for the Managed CCF.
-  final String appName;
+  final pulumi.Input<String> appName;
   /// Endpoint for calling Managed CCF Service.
-  final String appUri;
+  final pulumi.Input<String> appUri;
   /// Deployment Type of Managed CCF
-  final DeploymentTypeResponse? deploymentType;
+  final pulumi.Input<DeploymentTypeResponse>? deploymentType;
   /// Endpoint for accessing network identity.
-  final String identityServiceUri;
+  final pulumi.Input<String> identityServiceUri;
   /// List of member identity certificates for  Managed CCF
-  final List<MemberIdentityCertificateResponse>? memberIdentityCertificates;
+  final pulumi.Input<List<MemberIdentityCertificateResponse>>? memberIdentityCertificates;
   /// Number of CCF nodes in the Managed CCF.
-  final int? nodeCount;
+  final pulumi.Input<int>? nodeCount;
   /// Provisioning state of Managed CCF Resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Object representing RunningState for Managed CCF.
-  final String? runningState;
+  final pulumi.Input<String>? runningState;
 
   /// Creates a new [ManagedCCFPropertiesResponse].
   /// [appName] Unique name for the Managed CCF.
@@ -47,9 +47,9 @@ class ManagedCCFPropertiesResponse {
     return <String, dynamic>{
       'appName': appName,
       'appUri': appUri,
-      'deploymentType': ?deploymentType == null ? null : deploymentType!.toMap(),
+      'deploymentType': ?pulumi.Input.mapOptionalInputValue<DeploymentTypeResponse, Map<String, dynamic>>(deploymentType, (value) => value.toMap()),
       'identityServiceUri': identityServiceUri,
-      'memberIdentityCertificates': ?memberIdentityCertificates == null ? null : pulumi.Input.encodeList<MemberIdentityCertificateResponse, Map<String, dynamic>>(memberIdentityCertificates!, (value) => value.toMap()),
+      'memberIdentityCertificates': ?pulumi.Input.mapOptionalInputValue<List<MemberIdentityCertificateResponse>, List<Map<String, dynamic>>>(memberIdentityCertificates, (value) => pulumi.Input.encodeList<MemberIdentityCertificateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeCount': ?nodeCount,
       'provisioningState': provisioningState,
       'runningState': ?runningState,
@@ -58,14 +58,14 @@ class ManagedCCFPropertiesResponse {
 
   factory ManagedCCFPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedCCFPropertiesResponse(
-      appName: map['appName'] as String,
-      appUri: map['appUri'] as String,
-      deploymentType: map['deploymentType'] == null ? null : DeploymentTypeResponse.fromMap((map['deploymentType'] as Map).cast<String, dynamic>()),
-      identityServiceUri: map['identityServiceUri'] as String,
-      memberIdentityCertificates: map['memberIdentityCertificates'] == null ? null : pulumi.Input.decodeList<MemberIdentityCertificateResponse>(map['memberIdentityCertificates'], (value) => MemberIdentityCertificateResponse.fromMap((value as Map).cast<String, dynamic>())),
-      nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
-      provisioningState: map['provisioningState'] as String,
-      runningState: map['runningState'] == null ? null : map['runningState'] as String,
+      appName: (map['appName'] as String).input(),
+      appUri: (map['appUri'] as String).input(),
+      deploymentType: map['deploymentType'] == null ? null : (DeploymentTypeResponse.fromMap((map['deploymentType'] as Map).cast<String, dynamic>())).input(),
+      identityServiceUri: (map['identityServiceUri'] as String).input(),
+      memberIdentityCertificates: map['memberIdentityCertificates'] == null ? null : (pulumi.Input.decodeList<MemberIdentityCertificateResponse>(map['memberIdentityCertificates'], (value) => MemberIdentityCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      runningState: map['runningState'] == null ? null : (map['runningState'] as String).input(),
     );
   }
 }

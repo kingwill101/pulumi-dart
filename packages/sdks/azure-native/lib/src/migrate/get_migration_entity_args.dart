@@ -19,13 +19,10 @@ class GetMigrationEntityArgs {
   /// [projectName] Migrate Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMigrationEntityArgs({
-    required pulumi.Output<String> migrationEntityName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      migrationEntityName = pulumi.Input.asInput<String>(migrationEntityName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.migrationEntityName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMigrationEntityArgs {
 
   factory GetMigrationEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetMigrationEntityArgs(
-      migrationEntityName: pulumi.Output.create<String>(map['migrationEntityName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      migrationEntityName: (map['migrationEntityName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

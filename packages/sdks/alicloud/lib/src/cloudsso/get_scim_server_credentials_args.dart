@@ -22,15 +22,11 @@ class GetScimServerCredentialsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The Status of the resource. Valid values: `Disabled`, `Enabled`.
   GetScimServerCredentialsArgs({
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.directoryId,
+    this.ids,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetScimServerCredentialsArgs {
 
   factory GetScimServerCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetScimServerCredentialsArgs(
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      directoryId: (map['directoryId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -46,27 +46,17 @@ class VpnConnectionArgs {
   /// [vpc] The network ID of VPC to connect to.
   /// [vpcProject] Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
   VpnConnectionArgs({
-    required pulumi.Output<String> cluster,
-    pulumi.Output<bool>? enableHighAvailability,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? natGatewayIp,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? router,
-    pulumi.Output<String>? vpc,
-    pulumi.Output<VpnConnectionVpcProject>? vpcProject,
-  }) :
-      cluster = pulumi.Input.asInput<String>(cluster),
-      enableHighAvailability = pulumi.Input.asOptionalInput<bool>(enableHighAvailability),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      natGatewayIp = pulumi.Input.asOptionalInput<String>(natGatewayIp),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      router = pulumi.Input.asOptionalInput<String>(router),
-      vpc = pulumi.Input.asOptionalInput<String>(vpc),
-      vpcProject = pulumi.Input.asOptionalInput<VpnConnectionVpcProject>(vpcProject);
+    required this.cluster,
+    this.enableHighAvailability,
+    this.labels,
+    required this.location,
+    this.name,
+    this.natGatewayIp,
+    this.project,
+    this.router,
+    this.vpc,
+    this.vpcProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class VpnConnectionArgs {
 
   factory VpnConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpnConnectionArgs(
-      cluster: pulumi.Output.create<String>(map['cluster'] as String),
-      enableHighAvailability: map['enableHighAvailability'] == null ? null : pulumi.Output.create<bool>(map['enableHighAvailability'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      natGatewayIp: map['natGatewayIp'] == null ? null : pulumi.Output.create<String>(map['natGatewayIp'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      router: map['router'] == null ? null : pulumi.Output.create<String>(map['router'] as String),
-      vpc: map['vpc'] == null ? null : pulumi.Output.create<String>(map['vpc'] as String),
-      vpcProject: map['vpcProject'] == null ? null : pulumi.Output.create<VpnConnectionVpcProject>(VpnConnectionVpcProject.fromMap((map['vpcProject'] as Map).cast<String, dynamic>())),
+      cluster: (map['cluster'] as String).input(),
+      enableHighAvailability: map['enableHighAvailability'] == null ? null : (map['enableHighAvailability'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      natGatewayIp: map['natGatewayIp'] == null ? null : (map['natGatewayIp'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      router: map['router'] == null ? null : (map['router'] as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      vpcProject: map['vpcProject'] == null ? null : (VpnConnectionVpcProject.fromMap((map['vpcProject'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

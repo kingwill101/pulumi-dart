@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobJobStorageAccount {
   /// The account key for the Azure storage account.
-  final String? accountKey;
+  final pulumi.Input<String>? accountKey;
   /// The name of the Azure storage account.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The authentication mode of the storage account. Possible values are `ConnectionString` and `Msi`. Defaults to `ConnectionString`.
-  final String? authenticationMode;
+  final pulumi.Input<String>? authenticationMode;
 
   /// Creates a new [JobJobStorageAccount].
   /// [accountKey] The account key for the Azure storage account.
@@ -29,9 +30,9 @@ class JobJobStorageAccount {
 
   factory JobJobStorageAccount.fromMap(Map<String, dynamic> map) {
     return JobJobStorageAccount(
-      accountKey: map['accountKey'] == null ? null : map['accountKey'] as String,
-      accountName: map['accountName'] as String,
-      authenticationMode: map['authenticationMode'] == null ? null : map['authenticationMode'] as String,
+      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
     );
   }
 }

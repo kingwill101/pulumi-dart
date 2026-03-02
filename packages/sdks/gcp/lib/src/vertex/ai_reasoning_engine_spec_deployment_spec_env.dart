@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiReasoningEngineSpecDeploymentSpecEnv {
   /// The name of the environment variable. Must be a valid
   /// C identifier.
-  final String name;
+  final pulumi.Input<String> name;
   /// Variables that reference a $(VAR_NAME) are expanded using
   /// the previous defined environment variables in the container
   /// and any service environment variables. If a variable cannot
@@ -13,7 +14,7 @@ class AiReasoningEngineSpecDeploymentSpecEnv {
   /// double $$, ie: $$(VAR_NAME). Escaped references will never
   /// be expanded, regardless of whether the variable exists
   /// or not.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecEnv].
   /// [name] The name of the environment variable. Must be a valid
@@ -32,8 +33,8 @@ class AiReasoningEngineSpecDeploymentSpecEnv {
 
   factory AiReasoningEngineSpecDeploymentSpecEnv.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpecEnv(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

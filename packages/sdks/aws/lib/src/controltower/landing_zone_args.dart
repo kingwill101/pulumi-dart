@@ -22,15 +22,11 @@ class LandingZoneArgs {
   /// [tags] Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [version] The landing zone version.
   LandingZoneArgs({
-    required pulumi.Output<String> manifestJson,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> version,
-  }) :
-      manifestJson = pulumi.Input.asInput<String>(manifestJson),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asInput<String>(version);
+    required this.manifestJson,
+    this.region,
+    this.tags,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class LandingZoneArgs {
 
   factory LandingZoneArgs.fromMap(Map<String, dynamic> map) {
     return LandingZoneArgs(
-      manifestJson: pulumi.Output.create<String>(map['manifestJson'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      manifestJson: (map['manifestJson'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

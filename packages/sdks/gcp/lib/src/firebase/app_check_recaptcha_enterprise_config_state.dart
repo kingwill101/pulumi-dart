@@ -27,17 +27,12 @@ class AppCheckRecaptchaEnterpriseConfigState {
   /// [siteKey] The score-based site key created in reCAPTCHA Enterprise used to invoke reCAPTCHA and generate the reCAPTCHA tokens for your application.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from reCAPTCHA Enterprise artifacts will be valid.
   AppCheckRecaptchaEnterpriseConfigState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? siteKey,
-    pulumi.Output<String>? tokenTtl,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteKey = pulumi.Input.asOptionalInput<String>(siteKey),
-      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+    this.appId,
+    this.name,
+    this.project,
+    this.siteKey,
+    this.tokenTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AppCheckRecaptchaEnterpriseConfigState {
 
   factory AppCheckRecaptchaEnterpriseConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckRecaptchaEnterpriseConfigState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteKey: map['siteKey'] == null ? null : pulumi.Output.create<String>(map['siteKey'] as String),
-      tokenTtl: map['tokenTtl'] == null ? null : pulumi.Output.create<String>(map['tokenTtl'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteKey: map['siteKey'] == null ? null : (map['siteKey'] as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
     );
   }
 }

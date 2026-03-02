@@ -16,13 +16,10 @@ class ConfigurationPolicyAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetId] The identifier of the target account, organizational unit, or the root to associate with the specified configuration.
   ConfigurationPolicyAssociationState({
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetId,
-  }) :
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId);
+    this.policyId,
+    this.region,
+    this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ConfigurationPolicyAssociationState {
 
   factory ConfigurationPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyAssociationState(
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
     );
   }
 }

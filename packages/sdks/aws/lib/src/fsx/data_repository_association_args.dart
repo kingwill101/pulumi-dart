@@ -39,25 +39,16 @@ class DataRepositoryAssociationArgs {
   /// [s3] See the `s3` configuration block. Max of 1.
   /// [tags] A map of tags to assign to the data repository association. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DataRepositoryAssociationArgs({
-    pulumi.Output<bool>? batchImportMetaDataOnCreate,
-    required pulumi.Output<String> dataRepositoryPath,
-    pulumi.Output<bool>? deleteDataInFilesystem,
-    required pulumi.Output<String> fileSystemId,
-    required pulumi.Output<String> fileSystemPath,
-    pulumi.Output<int>? importedFileChunkSize,
-    pulumi.Output<String>? region,
-    pulumi.Output<DataRepositoryAssociationS3>? s3,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      batchImportMetaDataOnCreate = pulumi.Input.asOptionalInput<bool>(batchImportMetaDataOnCreate),
-      dataRepositoryPath = pulumi.Input.asInput<String>(dataRepositoryPath),
-      deleteDataInFilesystem = pulumi.Input.asOptionalInput<bool>(deleteDataInFilesystem),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      fileSystemPath = pulumi.Input.asInput<String>(fileSystemPath),
-      importedFileChunkSize = pulumi.Input.asOptionalInput<int>(importedFileChunkSize),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3 = pulumi.Input.asOptionalInput<DataRepositoryAssociationS3>(s3),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.batchImportMetaDataOnCreate,
+    required this.dataRepositoryPath,
+    this.deleteDataInFilesystem,
+    required this.fileSystemId,
+    required this.fileSystemPath,
+    this.importedFileChunkSize,
+    this.region,
+    this.s3,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class DataRepositoryAssociationArgs {
 
   factory DataRepositoryAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DataRepositoryAssociationArgs(
-      batchImportMetaDataOnCreate: map['batchImportMetaDataOnCreate'] == null ? null : pulumi.Output.create<bool>(map['batchImportMetaDataOnCreate'] as bool),
-      dataRepositoryPath: pulumi.Output.create<String>(map['dataRepositoryPath'] as String),
-      deleteDataInFilesystem: map['deleteDataInFilesystem'] == null ? null : pulumi.Output.create<bool>(map['deleteDataInFilesystem'] as bool),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      fileSystemPath: pulumi.Output.create<String>(map['fileSystemPath'] as String),
-      importedFileChunkSize: map['importedFileChunkSize'] == null ? null : pulumi.Output.create<int>(map['importedFileChunkSize'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3: map['s3'] == null ? null : pulumi.Output.create<DataRepositoryAssociationS3>(DataRepositoryAssociationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      batchImportMetaDataOnCreate: map['batchImportMetaDataOnCreate'] == null ? null : (map['batchImportMetaDataOnCreate'] as bool).input(),
+      dataRepositoryPath: (map['dataRepositoryPath'] as String).input(),
+      deleteDataInFilesystem: map['deleteDataInFilesystem'] == null ? null : (map['deleteDataInFilesystem'] as bool).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      fileSystemPath: (map['fileSystemPath'] as String).input(),
+      importedFileChunkSize: map['importedFileChunkSize'] == null ? null : (map['importedFileChunkSize'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3: map['s3'] == null ? null : (DataRepositoryAssociationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

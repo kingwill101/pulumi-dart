@@ -56,35 +56,21 @@ class NamespaceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   NamespaceArgs({
-    pulumi.Output<String>? adminPasswordSecretKmsKeyId,
-    pulumi.Output<String>? adminUserPassword,
-    pulumi.Output<String>? adminUserPasswordWo,
-    pulumi.Output<int>? adminUserPasswordWoVersion,
-    pulumi.Output<String>? adminUsername,
-    pulumi.Output<String>? dbName,
-    pulumi.Output<String>? defaultIamRoleArn,
-    pulumi.Output<List<String>>? iamRoles,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<List<String>>? logExports,
-    pulumi.Output<bool>? manageAdminPassword,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      adminPasswordSecretKmsKeyId = pulumi.Input.asOptionalInput<String>(adminPasswordSecretKmsKeyId),
-      adminUserPassword = pulumi.Input.asOptionalInput<String>(adminUserPassword),
-      adminUserPasswordWo = pulumi.Input.asOptionalInput<String>(adminUserPasswordWo),
-      adminUserPasswordWoVersion = pulumi.Input.asOptionalInput<int>(adminUserPasswordWoVersion),
-      adminUsername = pulumi.Input.asOptionalInput<String>(adminUsername),
-      dbName = pulumi.Input.asOptionalInput<String>(dbName),
-      defaultIamRoleArn = pulumi.Input.asOptionalInput<String>(defaultIamRoleArn),
-      iamRoles = pulumi.Input.asOptionalInput<List<String>>(iamRoles),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      logExports = pulumi.Input.asOptionalInput<List<String>>(logExports),
-      manageAdminPassword = pulumi.Input.asOptionalInput<bool>(manageAdminPassword),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.adminPasswordSecretKmsKeyId,
+    this.adminUserPassword,
+    this.adminUserPasswordWo,
+    this.adminUserPasswordWoVersion,
+    this.adminUsername,
+    this.dbName,
+    this.defaultIamRoleArn,
+    this.iamRoles,
+    this.kmsKeyId,
+    this.logExports,
+    this.manageAdminPassword,
+    required this.namespaceName,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      adminPasswordSecretKmsKeyId: map['adminPasswordSecretKmsKeyId'] == null ? null : pulumi.Output.create<String>(map['adminPasswordSecretKmsKeyId'] as String),
-      adminUserPassword: map['adminUserPassword'] == null ? null : pulumi.Output.create<String>(map['adminUserPassword'] as String),
-      adminUserPasswordWo: map['adminUserPasswordWo'] == null ? null : pulumi.Output.create<String>(map['adminUserPasswordWo'] as String),
-      adminUserPasswordWoVersion: map['adminUserPasswordWoVersion'] == null ? null : pulumi.Output.create<int>(map['adminUserPasswordWoVersion'] as int),
-      adminUsername: map['adminUsername'] == null ? null : pulumi.Output.create<String>(map['adminUsername'] as String),
-      dbName: map['dbName'] == null ? null : pulumi.Output.create<String>(map['dbName'] as String),
-      defaultIamRoleArn: map['defaultIamRoleArn'] == null ? null : pulumi.Output.create<String>(map['defaultIamRoleArn'] as String),
-      iamRoles: map['iamRoles'] == null ? null : pulumi.Output.create<List<String>>((map['iamRoles'] as List).cast<String>()),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      logExports: map['logExports'] == null ? null : pulumi.Output.create<List<String>>((map['logExports'] as List).cast<String>()),
-      manageAdminPassword: map['manageAdminPassword'] == null ? null : pulumi.Output.create<bool>(map['manageAdminPassword'] as bool),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      adminPasswordSecretKmsKeyId: map['adminPasswordSecretKmsKeyId'] == null ? null : (map['adminPasswordSecretKmsKeyId'] as String).input(),
+      adminUserPassword: map['adminUserPassword'] == null ? null : (map['adminUserPassword'] as String).input(),
+      adminUserPasswordWo: map['adminUserPasswordWo'] == null ? null : (map['adminUserPasswordWo'] as String).input(),
+      adminUserPasswordWoVersion: map['adminUserPasswordWoVersion'] == null ? null : (map['adminUserPasswordWoVersion'] as int).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
+      defaultIamRoleArn: map['defaultIamRoleArn'] == null ? null : (map['defaultIamRoleArn'] as String).input(),
+      iamRoles: map['iamRoles'] == null ? null : ((map['iamRoles'] as List).cast<String>()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      logExports: map['logExports'] == null ? null : ((map['logExports'] as List).cast<String>()).input(),
+      manageAdminPassword: map['manageAdminPassword'] == null ? null : (map['manageAdminPassword'] as bool).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

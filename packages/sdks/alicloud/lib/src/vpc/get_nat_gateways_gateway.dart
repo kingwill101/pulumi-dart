@@ -1,53 +1,54 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNatGatewaysGateway {
   /// The state of the NAT gateway.
-  final String businessStatus;
+  final pulumi.Input<String> businessStatus;
   /// Indicates whether deletion protection is enabled.
-  final bool deletionProtection;
+  final pulumi.Input<bool> deletionProtection;
   /// The description of the NAT gateway.
-  final String description;
+  final pulumi.Input<String> description;
   /// Indicates whether the traffic monitoring feature is enabled.
-  final bool ecsMetricEnabled;
+  final pulumi.Input<bool> ecsMetricEnabled;
   /// The time when the NAT gateway expires.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The ID of the DNAT table.
-  final List<String> forwardTableIds;
+  final pulumi.Input<List<String>> forwardTableIds;
   /// The ID of the NAT gateway.
-  final String id;
+  final pulumi.Input<String> id;
   /// The metering method of the NAT gateway.
-  final String internetChargeType;
+  final pulumi.Input<String> internetChargeType;
   /// The ip address of the bind eip.
-  final List<String> ipLists;
+  final pulumi.Input<List<String>> ipLists;
   /// Name of the NAT gateway.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the NAT gateway.
-  final String natGatewayId;
+  final pulumi.Input<String> natGatewayId;
   /// The name of NAT gateway.
-  final String natGatewayName;
+  final pulumi.Input<String> natGatewayName;
   /// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
-  final String natType;
+  final pulumi.Input<String> natType;
   /// (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The resource group id of NAT gateway.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The ID of the SNAT table that is associated with the NAT gateway.
-  final List<String> snatTableIds;
+  final pulumi.Input<List<String>> snatTableIds;
   /// The specification of the NAT gateway.
-  final String spec;
+  final pulumi.Input<String> spec;
   /// The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
-  final String specification;
+  final pulumi.Input<String> specification;
   /// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tags of NAT gateway.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The ID of the VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of the vSwitch to which the NAT gateway belongs.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetNatGatewaysGateway].
   /// [businessStatus] The state of the NAT gateway.
@@ -129,29 +130,29 @@ class GetNatGatewaysGateway {
 
   factory GetNatGatewaysGateway.fromMap(Map<String, dynamic> map) {
     return GetNatGatewaysGateway(
-      businessStatus: map['businessStatus'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      description: map['description'] as String,
-      ecsMetricEnabled: map['ecsMetricEnabled'] as bool,
-      expiredTime: map['expiredTime'] as String,
-      forwardTableIds: (map['forwardTableIds'] as List).cast<String>(),
-      id: map['id'] as String,
-      internetChargeType: map['internetChargeType'] as String,
-      ipLists: (map['ipLists'] as List).cast<String>(),
-      name: map['name'] as String,
-      natGatewayId: map['natGatewayId'] as String,
-      natGatewayName: map['natGatewayName'] as String,
-      natType: map['natType'] as String,
-      networkType: map['networkType'] as String,
-      paymentType: map['paymentType'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      snatTableIds: (map['snatTableIds'] as List).cast<String>(),
-      spec: map['spec'] as String,
-      specification: map['specification'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      businessStatus: (map['businessStatus'] as String).input(),
+      deletionProtection: (map['deletionProtection'] as bool).input(),
+      description: (map['description'] as String).input(),
+      ecsMetricEnabled: (map['ecsMetricEnabled'] as bool).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      forwardTableIds: ((map['forwardTableIds'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      internetChargeType: (map['internetChargeType'] as String).input(),
+      ipLists: ((map['ipLists'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      natGatewayName: (map['natGatewayName'] as String).input(),
+      natType: (map['natType'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      snatTableIds: ((map['snatTableIds'] as List).cast<String>()).input(),
+      spec: (map['spec'] as String).input(),
+      specification: (map['specification'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

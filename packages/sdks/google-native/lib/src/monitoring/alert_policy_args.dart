@@ -58,35 +58,21 @@ class AlertPolicyArgs {
   /// [userLabels] User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.Note that Prometheus {alert name} is a valid Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels), whereas Prometheus {rule group} is an unrestricted UTF-8 string. This means that they cannot be stored as-is in user labels, because they may contain characters that are not allowed in user-label values.
   /// [validity] Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents.
   AlertPolicyArgs({
-    pulumi.Output<AlertStrategy>? alertStrategy,
-    pulumi.Output<AlertPolicyCombiner>? combiner,
-    pulumi.Output<List<Condition>>? conditions,
-    pulumi.Output<MutationRecord>? creationRecord,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Documentation>? documentation,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<MutationRecord>? mutationRecord,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? notificationChannels,
-    pulumi.Output<String>? project,
-    pulumi.Output<AlertPolicySeverity>? severity,
-    pulumi.Output<Map<String, String>>? userLabels,
-    pulumi.Output<Status>? validity,
-  }) :
-      alertStrategy = pulumi.Input.asOptionalInput<AlertStrategy>(alertStrategy),
-      combiner = pulumi.Input.asOptionalInput<AlertPolicyCombiner>(combiner),
-      conditions = pulumi.Input.asOptionalInput<List<Condition>>(conditions),
-      creationRecord = pulumi.Input.asOptionalInput<MutationRecord>(creationRecord),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      documentation = pulumi.Input.asOptionalInput<Documentation>(documentation),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      mutationRecord = pulumi.Input.asOptionalInput<MutationRecord>(mutationRecord),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationChannels = pulumi.Input.asOptionalInput<List<String>>(notificationChannels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      severity = pulumi.Input.asOptionalInput<AlertPolicySeverity>(severity),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels),
-      validity = pulumi.Input.asOptionalInput<Status>(validity);
+    this.alertStrategy,
+    this.combiner,
+    this.conditions,
+    this.creationRecord,
+    this.displayName,
+    this.documentation,
+    this.enabled,
+    this.mutationRecord,
+    this.name,
+    this.notificationChannels,
+    this.project,
+    this.severity,
+    this.userLabels,
+    this.validity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class AlertPolicyArgs {
 
   factory AlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AlertPolicyArgs(
-      alertStrategy: map['alertStrategy'] == null ? null : pulumi.Output.create<AlertStrategy>(AlertStrategy.fromMap((map['alertStrategy'] as Map).cast<String, dynamic>())),
-      combiner: map['combiner'] == null ? null : pulumi.Output.create<AlertPolicyCombiner>(AlertPolicyCombiner.fromValue(map['combiner'] as String)),
-      conditions: map['conditions'] == null ? null : pulumi.Output.create<List<Condition>>(pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))),
-      creationRecord: map['creationRecord'] == null ? null : pulumi.Output.create<MutationRecord>(MutationRecord.fromMap((map['creationRecord'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      documentation: map['documentation'] == null ? null : pulumi.Output.create<Documentation>(Documentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      mutationRecord: map['mutationRecord'] == null ? null : pulumi.Output.create<MutationRecord>(MutationRecord.fromMap((map['mutationRecord'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationChannels: map['notificationChannels'] == null ? null : pulumi.Output.create<List<String>>((map['notificationChannels'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      severity: map['severity'] == null ? null : pulumi.Output.create<AlertPolicySeverity>(AlertPolicySeverity.fromValue(map['severity'] as String)),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
-      validity: map['validity'] == null ? null : pulumi.Output.create<Status>(Status.fromMap((map['validity'] as Map).cast<String, dynamic>())),
+      alertStrategy: map['alertStrategy'] == null ? null : (AlertStrategy.fromMap((map['alertStrategy'] as Map).cast<String, dynamic>())).input(),
+      combiner: map['combiner'] == null ? null : (AlertPolicyCombiner.fromValue(map['combiner'] as String)).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationRecord: map['creationRecord'] == null ? null : (MutationRecord.fromMap((map['creationRecord'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      documentation: map['documentation'] == null ? null : (Documentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      mutationRecord: map['mutationRecord'] == null ? null : (MutationRecord.fromMap((map['mutationRecord'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationChannels: map['notificationChannels'] == null ? null : ((map['notificationChannels'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      severity: map['severity'] == null ? null : (AlertPolicySeverity.fromValue(map['severity'] as String)).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      validity: map['validity'] == null ? null : (Status.fromMap((map['validity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

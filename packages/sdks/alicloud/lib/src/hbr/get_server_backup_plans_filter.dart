@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerBackupPlansFilter {
   /// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Set of values that are accepted for the given field.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [GetServerBackupPlansFilter].
   /// [key] The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
@@ -24,8 +25,8 @@ class GetServerBackupPlansFilter {
 
   factory GetServerBackupPlansFilter.fromMap(Map<String, dynamic> map) {
     return GetServerBackupPlansFilter(
-      key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

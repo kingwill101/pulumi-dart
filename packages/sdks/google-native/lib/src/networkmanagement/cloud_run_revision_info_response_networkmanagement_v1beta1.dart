@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a Cloud Run revision.
 class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Cloud Run revision.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Location in which this revision is deployed.
-  final String location;
+  final pulumi.Input<String> location;
   /// ID of Cloud Run Service this revision belongs to.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
   /// URI of Cloud Run service this revision belongs to.
-  final String serviceUri;
+  final pulumi.Input<String> serviceUri;
   /// URI of a Cloud Run revision.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [CloudRunRevisionInfoResponseNetworkmanagementV1beta1].
   /// [displayName] Name of a Cloud Run revision.
@@ -40,11 +41,11 @@ class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
 
   factory CloudRunRevisionInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudRunRevisionInfoResponseNetworkmanagementV1beta1(
-      displayName: map['displayName'] as String,
-      location: map['location'] as String,
-      serviceName: map['serviceName'] as String,
-      serviceUri: map['serviceUri'] as String,
-      uri: map['uri'] as String,
+      displayName: (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      serviceUri: (map['serviceUri'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

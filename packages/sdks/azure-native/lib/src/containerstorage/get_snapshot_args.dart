@@ -19,13 +19,10 @@ class GetSnapshotArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [snapshotName] Volume Snapshot Resource
   GetSnapshotArgs({
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> snapshotName,
-  }) :
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      snapshotName = pulumi.Input.asInput<String>(snapshotName);
+    required this.poolName,
+    required this.resourceGroupName,
+    required this.snapshotName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      snapshotName: pulumi.Output.create<String>(map['snapshotName'] as String),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      snapshotName: (map['snapshotName'] as String).input(),
     );
   }
 }

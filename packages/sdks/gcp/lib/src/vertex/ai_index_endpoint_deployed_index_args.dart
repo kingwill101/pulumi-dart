@@ -59,29 +59,18 @@ class AiIndexEndpointDeployedIndexArgs {
   /// [region] The region of the index endpoint deployment. eg us-central1
   /// [reservedIpRanges] A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
   AiIndexEndpointDeployedIndexArgs({
-    pulumi.Output<AiIndexEndpointDeployedIndexAutomaticResources>? automaticResources,
-    pulumi.Output<AiIndexEndpointDeployedIndexDedicatedResources>? dedicatedResources,
-    pulumi.Output<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig>? deployedIndexAuthConfig,
-    required pulumi.Output<String> deployedIndexId,
-    pulumi.Output<String>? deploymentGroup,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enableAccessLogging,
-    required pulumi.Output<String> index,
-    required pulumi.Output<String> indexEndpoint,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? reservedIpRanges,
-  }) :
-      automaticResources = pulumi.Input.asOptionalInput<AiIndexEndpointDeployedIndexAutomaticResources>(automaticResources),
-      dedicatedResources = pulumi.Input.asOptionalInput<AiIndexEndpointDeployedIndexDedicatedResources>(dedicatedResources),
-      deployedIndexAuthConfig = pulumi.Input.asOptionalInput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig>(deployedIndexAuthConfig),
-      deployedIndexId = pulumi.Input.asInput<String>(deployedIndexId),
-      deploymentGroup = pulumi.Input.asOptionalInput<String>(deploymentGroup),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enableAccessLogging = pulumi.Input.asOptionalInput<bool>(enableAccessLogging),
-      index = pulumi.Input.asInput<String>(index),
-      indexEndpoint = pulumi.Input.asInput<String>(indexEndpoint),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservedIpRanges = pulumi.Input.asOptionalInput<List<String>>(reservedIpRanges);
+    this.automaticResources,
+    this.dedicatedResources,
+    this.deployedIndexAuthConfig,
+    required this.deployedIndexId,
+    this.deploymentGroup,
+    this.displayName,
+    this.enableAccessLogging,
+    required this.index,
+    required this.indexEndpoint,
+    this.region,
+    this.reservedIpRanges,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,17 +90,17 @@ class AiIndexEndpointDeployedIndexArgs {
 
   factory AiIndexEndpointDeployedIndexArgs.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexArgs(
-      automaticResources: map['automaticResources'] == null ? null : pulumi.Output.create<AiIndexEndpointDeployedIndexAutomaticResources>(AiIndexEndpointDeployedIndexAutomaticResources.fromMap((map['automaticResources'] as Map).cast<String, dynamic>())),
-      dedicatedResources: map['dedicatedResources'] == null ? null : pulumi.Output.create<AiIndexEndpointDeployedIndexDedicatedResources>(AiIndexEndpointDeployedIndexDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())),
-      deployedIndexAuthConfig: map['deployedIndexAuthConfig'] == null ? null : pulumi.Output.create<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig>(AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((map['deployedIndexAuthConfig'] as Map).cast<String, dynamic>())),
-      deployedIndexId: pulumi.Output.create<String>(map['deployedIndexId'] as String),
-      deploymentGroup: map['deploymentGroup'] == null ? null : pulumi.Output.create<String>(map['deploymentGroup'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enableAccessLogging: map['enableAccessLogging'] == null ? null : pulumi.Output.create<bool>(map['enableAccessLogging'] as bool),
-      index: pulumi.Output.create<String>(map['index'] as String),
-      indexEndpoint: pulumi.Output.create<String>(map['indexEndpoint'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservedIpRanges: map['reservedIpRanges'] == null ? null : pulumi.Output.create<List<String>>((map['reservedIpRanges'] as List).cast<String>()),
+      automaticResources: map['automaticResources'] == null ? null : (AiIndexEndpointDeployedIndexAutomaticResources.fromMap((map['automaticResources'] as Map).cast<String, dynamic>())).input(),
+      dedicatedResources: map['dedicatedResources'] == null ? null : (AiIndexEndpointDeployedIndexDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
+      deployedIndexAuthConfig: map['deployedIndexAuthConfig'] == null ? null : (AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((map['deployedIndexAuthConfig'] as Map).cast<String, dynamic>())).input(),
+      deployedIndexId: (map['deployedIndexId'] as String).input(),
+      deploymentGroup: map['deploymentGroup'] == null ? null : (map['deploymentGroup'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enableAccessLogging: map['enableAccessLogging'] == null ? null : (map['enableAccessLogging'] as bool).input(),
+      index: (map['index'] as String).input(),
+      indexEndpoint: (map['indexEndpoint'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges'] as List).cast<String>()).input(),
     );
   }
 }

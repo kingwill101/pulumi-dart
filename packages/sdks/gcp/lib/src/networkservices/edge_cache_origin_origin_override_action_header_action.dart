@@ -7,7 +7,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction {
   /// Describes a header to add.
   /// You may add a maximum of 25 request headers.
   /// Structure is documented below.
-  final List<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>? requestHeadersToAdds;
+  final pulumi.Input<List<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>>? requestHeadersToAdds;
 
   /// Creates a new [EdgeCacheOriginOriginOverrideActionHeaderAction].
   /// [requestHeadersToAdds] Describes a header to add.
@@ -17,13 +17,13 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeadersToAdds': ?requestHeadersToAdds == null ? null : pulumi.Input.encodeList<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd, Map<String, dynamic>>(requestHeadersToAdds!, (value) => value.toMap()),
+      'requestHeadersToAdds': ?pulumi.Input.mapOptionalInputValue<List<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>, List<Map<String, dynamic>>>(requestHeadersToAdds, (value) => pulumi.Input.encodeList<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideActionHeaderAction(
-      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : pulumi.Input.decodeList<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds'], (value) => EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>())),
+      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds'], (value) => EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

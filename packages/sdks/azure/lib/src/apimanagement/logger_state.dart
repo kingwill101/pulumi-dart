@@ -33,23 +33,15 @@ class LoggerState {
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   /// [resourceId] The target resource id which will be linked in the API-Management portal page. Changing this forces a new resource to be created.
   LoggerState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<LoggerApplicationInsights>? applicationInsights,
-    pulumi.Output<bool>? buffered,
-    pulumi.Output<String>? description,
-    pulumi.Output<LoggerEventhub>? eventhub,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? resourceId,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      applicationInsights = pulumi.Input.asOptionalInput<LoggerApplicationInsights>(applicationInsights),
-      buffered = pulumi.Input.asOptionalInput<bool>(buffered),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventhub = pulumi.Input.asOptionalInput<LoggerEventhub>(eventhub),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId);
+    this.apiManagementName,
+    this.applicationInsights,
+    this.buffered,
+    this.description,
+    this.eventhub,
+    this.name,
+    this.resourceGroupName,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class LoggerState {
 
   factory LoggerState.fromMap(Map<String, dynamic> map) {
     return LoggerState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      applicationInsights: map['applicationInsights'] == null ? null : pulumi.Output.create<LoggerApplicationInsights>(LoggerApplicationInsights.fromMap((map['applicationInsights'] as Map).cast<String, dynamic>())),
-      buffered: map['buffered'] == null ? null : pulumi.Output.create<bool>(map['buffered'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventhub: map['eventhub'] == null ? null : pulumi.Output.create<LoggerEventhub>(LoggerEventhub.fromMap((map['eventhub'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      applicationInsights: map['applicationInsights'] == null ? null : (LoggerApplicationInsights.fromMap((map['applicationInsights'] as Map).cast<String, dynamic>())).input(),
+      buffered: map['buffered'] == null ? null : (map['buffered'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventhub: map['eventhub'] == null ? null : (LoggerEventhub.fromMap((map['eventhub'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

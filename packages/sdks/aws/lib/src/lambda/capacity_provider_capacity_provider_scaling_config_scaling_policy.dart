@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
   /// The predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
-  final String predefinedMetricType;
+  final pulumi.Input<String> predefinedMetricType;
   /// The target value for the scaling policy.
-  final double targetValue;
+  final pulumi.Input<double> targetValue;
 
   /// Creates a new [CapacityProviderCapacityProviderScalingConfigScalingPolicy].
   /// [predefinedMetricType] The predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
@@ -24,8 +25,8 @@ class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
 
   factory CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap(Map<String, dynamic> map) {
     return CapacityProviderCapacityProviderScalingConfigScalingPolicy(
-      predefinedMetricType: map['predefinedMetricType'] as String,
-      targetValue: map['targetValue'] as double,
+      predefinedMetricType: (map['predefinedMetricType'] as String).input(),
+      targetValue: (map['targetValue'] as double).input(),
     );
   }
 }

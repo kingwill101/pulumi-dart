@@ -19,13 +19,10 @@ class GetRunbookArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [runbookName] The runbook name.
   GetRunbookArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> runbookName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runbookName = pulumi.Input.asInput<String>(runbookName);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+    required this.runbookName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRunbookArgs {
 
   factory GetRunbookArgs.fromMap(Map<String, dynamic> map) {
     return GetRunbookArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runbookName: pulumi.Output.create<String>(map['runbookName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runbookName: (map['runbookName'] as String).input(),
     );
   }
 }

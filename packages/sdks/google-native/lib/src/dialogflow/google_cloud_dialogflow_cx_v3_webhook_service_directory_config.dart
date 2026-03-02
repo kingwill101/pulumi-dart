@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_webhook_generic_web_service.dart';
 
 /// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
 class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig {
   /// Generic Service configuration of this webhook.
-  final GoogleCloudDialogflowCxV3WebhookGenericWebService? genericWebService;
+  final pulumi.Input<GoogleCloudDialogflowCxV3WebhookGenericWebService>? genericWebService;
   /// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig].
   /// [genericWebService] Generic Service configuration of this webhook.
@@ -19,15 +20,15 @@ class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'genericWebService': ?genericWebService == null ? null : genericWebService!.toMap(),
+      'genericWebService': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3WebhookGenericWebService, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
       'service': service,
     };
   }
 
   factory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig(
-      genericWebService: map['genericWebService'] == null ? null : GoogleCloudDialogflowCxV3WebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>()),
-      service: map['service'] as String,
+      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3WebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

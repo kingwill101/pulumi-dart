@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stream_rule_set_customization_rule_bigquery_clustering.dart';
 import 'stream_rule_set_customization_rule_bigquery_partitioning.dart';
 
 class StreamRuleSetCustomizationRule {
   /// BigQuery clustering rule.
   /// Structure is documented below.
-  final StreamRuleSetCustomizationRuleBigqueryClustering? bigqueryClustering;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryClustering>? bigqueryClustering;
   /// BigQuery partitioning rule.
   /// Structure is documented below.
-  final StreamRuleSetCustomizationRuleBigqueryPartitioning? bigqueryPartitioning;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioning>? bigqueryPartitioning;
 
   /// Creates a new [StreamRuleSetCustomizationRule].
   /// [bigqueryClustering] BigQuery clustering rule.
@@ -21,15 +22,15 @@ class StreamRuleSetCustomizationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryClustering': ?bigqueryClustering == null ? null : bigqueryClustering!.toMap(),
-      'bigqueryPartitioning': ?bigqueryPartitioning == null ? null : bigqueryPartitioning!.toMap(),
+      'bigqueryClustering': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetCustomizationRuleBigqueryClustering, Map<String, dynamic>>(bigqueryClustering, (value) => value.toMap()),
+      'bigqueryPartitioning': ?pulumi.Input.mapOptionalInputValue<StreamRuleSetCustomizationRuleBigqueryPartitioning, Map<String, dynamic>>(bigqueryPartitioning, (value) => value.toMap()),
     };
   }
 
   factory StreamRuleSetCustomizationRule.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRule(
-      bigqueryClustering: map['bigqueryClustering'] == null ? null : StreamRuleSetCustomizationRuleBigqueryClustering.fromMap((map['bigqueryClustering'] as Map).cast<String, dynamic>()),
-      bigqueryPartitioning: map['bigqueryPartitioning'] == null ? null : StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap((map['bigqueryPartitioning'] as Map).cast<String, dynamic>()),
+      bigqueryClustering: map['bigqueryClustering'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryClustering.fromMap((map['bigqueryClustering'] as Map).cast<String, dynamic>())).input(),
+      bigqueryPartitioning: map['bigqueryPartitioning'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap((map['bigqueryPartitioning'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

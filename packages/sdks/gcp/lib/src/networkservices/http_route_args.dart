@@ -42,23 +42,15 @@ class HttpRouteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] Rules that define how traffic is routed and handled.
   HttpRouteArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? gateways,
-    required pulumi.Output<List<String>> hostnames,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<List<String>>? meshes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<HttpRouteRule>> rules,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gateways = pulumi.Input.asOptionalInput<List<String>>(gateways),
-      hostnames = pulumi.Input.asInput<List<String>>(hostnames),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      meshes = pulumi.Input.asOptionalInput<List<String>>(meshes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asInput<List<HttpRouteRule>>(rules);
+    this.description,
+    this.gateways,
+    required this.hostnames,
+    this.labels,
+    this.meshes,
+    this.name,
+    this.project,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class HttpRouteArgs {
 
   factory HttpRouteArgs.fromMap(Map<String, dynamic> map) {
     return HttpRouteArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gateways: map['gateways'] == null ? null : pulumi.Output.create<List<String>>((map['gateways'] as List).cast<String>()),
-      hostnames: pulumi.Output.create<List<String>>((map['hostnames'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      meshes: map['meshes'] == null ? null : pulumi.Output.create<List<String>>((map['meshes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: pulumi.Output.create<List<HttpRouteRule>>(pulumi.Input.decodeList<HttpRouteRule>(map['rules'], (value) => HttpRouteRule.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
+      hostnames: ((map['hostnames'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: (pulumi.Input.decodeList<HttpRouteRule>(map['rules'], (value) => HttpRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

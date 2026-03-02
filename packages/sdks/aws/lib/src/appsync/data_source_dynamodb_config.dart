@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_source_dynamodb_config_delta_sync_config.dart';
 
 class DataSourceDynamodbConfig {
   /// The DeltaSyncConfig for a versioned data source. See `delta_sync_config` Block for details.
-  final DataSourceDynamodbConfigDeltaSyncConfig? deltaSyncConfig;
+  final pulumi.Input<DataSourceDynamodbConfigDeltaSyncConfig>? deltaSyncConfig;
   /// AWS region of the DynamoDB table. Defaults to current region.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// Name of the DynamoDB table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// Set to `true` to use Amazon Cognito credentials with this data source.
-  final bool? useCallerCredentials;
+  final pulumi.Input<bool>? useCallerCredentials;
   /// Detects Conflict Detection and Resolution with this data source.
-  final bool? versioned;
+  final pulumi.Input<bool>? versioned;
 
   /// Creates a new [DataSourceDynamodbConfig].
   /// [deltaSyncConfig] The DeltaSyncConfig for a versioned data source. See `delta_sync_config` Block for details.
@@ -30,7 +31,7 @@ class DataSourceDynamodbConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deltaSyncConfig': ?deltaSyncConfig == null ? null : deltaSyncConfig!.toMap(),
+      'deltaSyncConfig': ?pulumi.Input.mapOptionalInputValue<DataSourceDynamodbConfigDeltaSyncConfig, Map<String, dynamic>>(deltaSyncConfig, (value) => value.toMap()),
       'region': ?region,
       'tableName': tableName,
       'useCallerCredentials': ?useCallerCredentials,
@@ -40,11 +41,11 @@ class DataSourceDynamodbConfig {
 
   factory DataSourceDynamodbConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceDynamodbConfig(
-      deltaSyncConfig: map['deltaSyncConfig'] == null ? null : DataSourceDynamodbConfigDeltaSyncConfig.fromMap((map['deltaSyncConfig'] as Map).cast<String, dynamic>()),
-      region: map['region'] == null ? null : map['region'] as String,
-      tableName: map['tableName'] as String,
-      useCallerCredentials: map['useCallerCredentials'] == null ? null : map['useCallerCredentials'] as bool,
-      versioned: map['versioned'] == null ? null : map['versioned'] as bool,
+      deltaSyncConfig: map['deltaSyncConfig'] == null ? null : (DataSourceDynamodbConfigDeltaSyncConfig.fromMap((map['deltaSyncConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      useCallerCredentials: map['useCallerCredentials'] == null ? null : (map['useCallerCredentials'] as bool).input(),
+      versioned: map['versioned'] == null ? null : (map['versioned'] as bool).input(),
     );
   }
 }

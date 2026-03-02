@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_plan_stage_target.dart';
 
 class GetPlanStage {
-  final int durationInMinutes;
-  final List<GetPlanStageTarget> targets;
+  final pulumi.Input<int> durationInMinutes;
+  final pulumi.Input<List<GetPlanStageTarget>> targets;
 
   /// Creates a new [GetPlanStage].
   /// [durationInMinutes] Required.
@@ -18,14 +18,14 @@ class GetPlanStage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'durationInMinutes': durationInMinutes,
-      'targets': pulumi.Input.encodeList<GetPlanStageTarget, Map<String, dynamic>>(targets, (value) => value.toMap()),
+      'targets': pulumi.Input.mapInputValue<List<GetPlanStageTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<GetPlanStageTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetPlanStage.fromMap(Map<String, dynamic> map) {
     return GetPlanStage(
-      durationInMinutes: map['durationInMinutes'] as int,
-      targets: pulumi.Input.decodeList<GetPlanStageTarget>(map['targets'], (value) => GetPlanStageTarget.fromMap((value as Map).cast<String, dynamic>())),
+      durationInMinutes: (map['durationInMinutes'] as int).input(),
+      targets: (pulumi.Input.decodeList<GetPlanStageTarget>(map['targets'], (value) => GetPlanStageTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

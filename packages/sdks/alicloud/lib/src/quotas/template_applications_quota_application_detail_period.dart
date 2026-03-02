@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TemplateApplicationsQuotaApplicationDetailPeriod {
   /// Quota calculation cycle unit.
-  final String? periodUnit;
+  final pulumi.Input<String>? periodUnit;
   /// The quota calculation period value.
-  final int? periodValue;
+  final pulumi.Input<int>? periodValue;
 
   /// Creates a new [TemplateApplicationsQuotaApplicationDetailPeriod].
   /// [periodUnit] Quota calculation cycle unit.
@@ -24,8 +25,8 @@ class TemplateApplicationsQuotaApplicationDetailPeriod {
 
   factory TemplateApplicationsQuotaApplicationDetailPeriod.fromMap(Map<String, dynamic> map) {
     return TemplateApplicationsQuotaApplicationDetailPeriod(
-      periodUnit: map['periodUnit'] == null ? null : map['periodUnit'] as String,
-      periodValue: map['periodValue'] == null ? null : map['periodValue'] as int,
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
+      periodValue: map['periodValue'] == null ? null : (map['periodValue'] as int).input(),
     );
   }
 }

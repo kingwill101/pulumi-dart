@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceGroupsGroup {
   /// Creation time.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// DBClusterId
-  final String dbClusterId;
+  final pulumi.Input<String> dbClusterId;
   /// The name of the resource pool, which cannot exceed 64 bytes in length.
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// Query type, value description:
   /// * **etl**: Batch query mode.
   /// * **interactive**: interactive Query mode
   /// * **default_type**: the default query mode.
-  final String groupType;
+  final pulumi.Input<String> groupType;
   /// The `key` of the resource supplied above.The value is formulated as `<db_cluster_id>:<group_name>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
-  final int nodeNum;
+  final pulumi.Input<int> nodeNum;
   /// Binding User.
-  final String user;
+  final pulumi.Input<String> user;
 
   /// Creates a new [GetResourceGroupsGroup].
   /// [createTime] Creation time.
@@ -52,13 +53,13 @@ class GetResourceGroupsGroup {
 
   factory GetResourceGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupsGroup(
-      createTime: map['createTime'] as String,
-      dbClusterId: map['dbClusterId'] as String,
-      groupName: map['groupName'] as String,
-      groupType: map['groupType'] as String,
-      id: map['id'] as String,
-      nodeNum: map['nodeNum'] as int,
-      user: map['user'] as String,
+      createTime: (map['createTime'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      groupType: (map['groupType'] as String).input(),
+      id: (map['id'] as String).input(),
+      nodeNum: (map['nodeNum'] as int).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

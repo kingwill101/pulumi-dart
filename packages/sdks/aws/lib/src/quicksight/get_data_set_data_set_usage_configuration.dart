@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetDataSetUsageConfiguration {
-  final bool disableUseAsDirectQuerySource;
-  final bool disableUseAsImportedSource;
+  final pulumi.Input<bool> disableUseAsDirectQuerySource;
+  final pulumi.Input<bool> disableUseAsImportedSource;
 
   /// Creates a new [GetDataSetDataSetUsageConfiguration].
   /// [disableUseAsDirectQuerySource] Required.
@@ -22,8 +23,8 @@ class GetDataSetDataSetUsageConfiguration {
 
   factory GetDataSetDataSetUsageConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDataSetDataSetUsageConfiguration(
-      disableUseAsDirectQuerySource: map['disableUseAsDirectQuerySource'] as bool,
-      disableUseAsImportedSource: map['disableUseAsImportedSource'] as bool,
+      disableUseAsDirectQuerySource: (map['disableUseAsDirectQuerySource'] as bool).input(),
+      disableUseAsImportedSource: (map['disableUseAsImportedSource'] as bool).input(),
     );
   }
 }

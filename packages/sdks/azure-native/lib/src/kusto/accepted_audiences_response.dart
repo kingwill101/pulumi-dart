@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an accepted audience trusted by the cluster.
 class AcceptedAudiencesResponse {
   /// GUID or valid URL representing an accepted audience.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [AcceptedAudiencesResponse].
   /// [value] GUID or valid URL representing an accepted audience.
@@ -20,7 +21,7 @@ class AcceptedAudiencesResponse {
 
   factory AcceptedAudiencesResponse.fromMap(Map<String, dynamic> map) {
     return AcceptedAudiencesResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

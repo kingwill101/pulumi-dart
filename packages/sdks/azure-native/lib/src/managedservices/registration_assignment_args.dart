@@ -20,13 +20,10 @@ class RegistrationAssignmentArgs {
   /// [registrationAssignmentId] The GUID of the registration assignment.
   /// [scope] The scope of the resource.
   RegistrationAssignmentArgs({
-    pulumi.Output<RegistrationAssignmentProperties>? properties,
-    pulumi.Output<String>? registrationAssignmentId,
-    required pulumi.Output<String> scope,
-  }) :
-      properties = pulumi.Input.asOptionalInput<RegistrationAssignmentProperties>(properties),
-      registrationAssignmentId = pulumi.Input.asOptionalInput<String>(registrationAssignmentId),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.properties,
+    this.registrationAssignmentId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class RegistrationAssignmentArgs {
 
   factory RegistrationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationAssignmentArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<RegistrationAssignmentProperties>(RegistrationAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      registrationAssignmentId: map['registrationAssignmentId'] == null ? null : pulumi.Output.create<String>(map['registrationAssignmentId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      properties: map['properties'] == null ? null : (RegistrationAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      registrationAssignmentId: map['registrationAssignmentId'] == null ? null : (map['registrationAssignmentId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

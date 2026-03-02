@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The X12 agreement framing settings.
 class X12FramingSettingsResponse {
   /// The X12 character set.
-  final String characterSet;
+  final pulumi.Input<String> characterSet;
   /// The component separator.
-  final int componentSeparator;
+  final pulumi.Input<int> componentSeparator;
   /// The data element separator.
-  final int dataElementSeparator;
+  final pulumi.Input<int> dataElementSeparator;
   /// The replacement character.
-  final int replaceCharacter;
+  final pulumi.Input<int> replaceCharacter;
   /// The value indicating whether to replace separators in payload.
-  final bool replaceSeparatorsInPayload;
+  final pulumi.Input<bool> replaceSeparatorsInPayload;
   /// The segment terminator.
-  final int segmentTerminator;
+  final pulumi.Input<int> segmentTerminator;
   /// The segment terminator suffix.
-  final String segmentTerminatorSuffix;
+  final pulumi.Input<String> segmentTerminatorSuffix;
 
   /// Creates a new [X12FramingSettingsResponse].
   /// [characterSet] The X12 character set.
@@ -50,13 +51,13 @@ class X12FramingSettingsResponse {
 
   factory X12FramingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12FramingSettingsResponse(
-      characterSet: map['characterSet'] as String,
-      componentSeparator: map['componentSeparator'] as int,
-      dataElementSeparator: map['dataElementSeparator'] as int,
-      replaceCharacter: map['replaceCharacter'] as int,
-      replaceSeparatorsInPayload: map['replaceSeparatorsInPayload'] as bool,
-      segmentTerminator: map['segmentTerminator'] as int,
-      segmentTerminatorSuffix: map['segmentTerminatorSuffix'] as String,
+      characterSet: (map['characterSet'] as String).input(),
+      componentSeparator: (map['componentSeparator'] as int).input(),
+      dataElementSeparator: (map['dataElementSeparator'] as int).input(),
+      replaceCharacter: (map['replaceCharacter'] as int).input(),
+      replaceSeparatorsInPayload: (map['replaceSeparatorsInPayload'] as bool).input(),
+      segmentTerminator: (map['segmentTerminator'] as int).input(),
+      segmentTerminatorSuffix: (map['segmentTerminatorSuffix'] as String).input(),
     );
   }
 }

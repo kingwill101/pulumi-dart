@@ -43,27 +43,17 @@ class ClusterArgs {
   /// [sku] The sku properties.
   /// [tags] Resource tags.
   ClusterArgs({
-    pulumi.Output<String>? billingType,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<bool>? isAvailabilityZonesEnabled,
-    pulumi.Output<bool>? isDoubleEncryptionEnabled,
-    pulumi.Output<KeyVaultProperties>? keyVaultProperties,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ClusterSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      billingType = pulumi.Input.asOptionalInput<String>(billingType),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      isAvailabilityZonesEnabled = pulumi.Input.asOptionalInput<bool>(isAvailabilityZonesEnabled),
-      isDoubleEncryptionEnabled = pulumi.Input.asOptionalInput<bool>(isDoubleEncryptionEnabled),
-      keyVaultProperties = pulumi.Input.asOptionalInput<KeyVaultProperties>(keyVaultProperties),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<ClusterSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.billingType,
+    this.clusterName,
+    this.identity,
+    this.isAvailabilityZonesEnabled,
+    this.isDoubleEncryptionEnabled,
+    this.keyVaultProperties,
+    this.location,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      billingType: map['billingType'] == null ? null : pulumi.Output.create<String>(map['billingType'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      isAvailabilityZonesEnabled: map['isAvailabilityZonesEnabled'] == null ? null : pulumi.Output.create<bool>(map['isAvailabilityZonesEnabled'] as bool),
-      isDoubleEncryptionEnabled: map['isDoubleEncryptionEnabled'] == null ? null : pulumi.Output.create<bool>(map['isDoubleEncryptionEnabled'] as bool),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : pulumi.Output.create<KeyVaultProperties>(KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ClusterSku>(ClusterSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      billingType: map['billingType'] == null ? null : (map['billingType'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      isAvailabilityZonesEnabled: map['isAvailabilityZonesEnabled'] == null ? null : (map['isAvailabilityZonesEnabled'] as bool).input(),
+      isDoubleEncryptionEnabled: map['isDoubleEncryptionEnabled'] == null ? null : (map['isDoubleEncryptionEnabled'] as bool).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (ClusterSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

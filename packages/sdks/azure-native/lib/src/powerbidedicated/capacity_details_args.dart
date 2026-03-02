@@ -33,21 +33,14 @@ class CapacityDetailsArgs {
   /// [sku] The SKU of the PowerBI Dedicated capacity resource.
   /// [tags] Resource tags.
   CapacityDetailsArgs({
-    pulumi.Output<DedicatedCapacityAdministrators>? administration,
-    pulumi.Output<String>? dedicatedCapacityName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mode,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<CapacitySku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      administration = pulumi.Input.asOptionalInput<DedicatedCapacityAdministrators>(administration),
-      dedicatedCapacityName = pulumi.Input.asOptionalInput<String>(dedicatedCapacityName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<CapacitySku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.administration,
+    this.dedicatedCapacityName,
+    this.location,
+    this.mode,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class CapacityDetailsArgs {
 
   factory CapacityDetailsArgs.fromMap(Map<String, dynamic> map) {
     return CapacityDetailsArgs(
-      administration: map['administration'] == null ? null : pulumi.Output.create<DedicatedCapacityAdministrators>(DedicatedCapacityAdministrators.fromMap((map['administration'] as Map).cast<String, dynamic>())),
-      dedicatedCapacityName: map['dedicatedCapacityName'] == null ? null : pulumi.Output.create<String>(map['dedicatedCapacityName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<CapacitySku>(CapacitySku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      administration: map['administration'] == null ? null : (DedicatedCapacityAdministrators.fromMap((map['administration'] as Map).cast<String, dynamic>())).input(),
+      dedicatedCapacityName: map['dedicatedCapacityName'] == null ? null : (map['dedicatedCapacityName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (CapacitySku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

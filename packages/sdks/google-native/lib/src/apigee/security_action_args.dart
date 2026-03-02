@@ -48,31 +48,19 @@ class SecurityActionArgs {
   /// [state] Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   /// [ttl] Input only. The TTL for this SecurityAction.
   SecurityActionArgs({
-    pulumi.Output<Map<String, dynamic>>? allow,
-    required pulumi.Output<GoogleCloudApigeeV1SecurityActionConditionConfig> conditionConfig,
-    pulumi.Output<GoogleCloudApigeeV1SecurityActionDeny>? deny,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<GoogleCloudApigeeV1SecurityActionFlag>? flag,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> securityActionId,
-    required pulumi.Output<SecurityActionState> state,
-    pulumi.Output<String>? ttl,
-  }) :
-      allow = pulumi.Input.asOptionalInput<Map<String, dynamic>>(allow),
-      conditionConfig = pulumi.Input.asInput<GoogleCloudApigeeV1SecurityActionConditionConfig>(conditionConfig),
-      deny = pulumi.Input.asOptionalInput<GoogleCloudApigeeV1SecurityActionDeny>(deny),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      flag = pulumi.Input.asOptionalInput<GoogleCloudApigeeV1SecurityActionFlag>(flag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      securityActionId = pulumi.Input.asInput<String>(securityActionId),
-      state = pulumi.Input.asInput<SecurityActionState>(state),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    this.allow,
+    required this.conditionConfig,
+    this.deny,
+    this.description,
+    required this.environmentId,
+    this.expireTime,
+    this.flag,
+    this.name,
+    required this.organizationId,
+    required this.securityActionId,
+    required this.state,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class SecurityActionArgs {
 
   factory SecurityActionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityActionArgs(
-      allow: map['allow'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['allow'] as Map).cast<String, dynamic>()),
-      conditionConfig: pulumi.Output.create<GoogleCloudApigeeV1SecurityActionConditionConfig>(GoogleCloudApigeeV1SecurityActionConditionConfig.fromMap((map['conditionConfig'] as Map).cast<String, dynamic>())),
-      deny: map['deny'] == null ? null : pulumi.Output.create<GoogleCloudApigeeV1SecurityActionDeny>(GoogleCloudApigeeV1SecurityActionDeny.fromMap((map['deny'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      flag: map['flag'] == null ? null : pulumi.Output.create<GoogleCloudApigeeV1SecurityActionFlag>(GoogleCloudApigeeV1SecurityActionFlag.fromMap((map['flag'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      securityActionId: pulumi.Output.create<String>(map['securityActionId'] as String),
-      state: pulumi.Output.create<SecurityActionState>(SecurityActionState.fromValue(map['state'] as String)),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      allow: map['allow'] == null ? null : ((map['allow'] as Map).cast<String, dynamic>()).input(),
+      conditionConfig: (GoogleCloudApigeeV1SecurityActionConditionConfig.fromMap((map['conditionConfig'] as Map).cast<String, dynamic>())).input(),
+      deny: map['deny'] == null ? null : (GoogleCloudApigeeV1SecurityActionDeny.fromMap((map['deny'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      flag: map['flag'] == null ? null : (GoogleCloudApigeeV1SecurityActionFlag.fromMap((map['flag'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      securityActionId: (map['securityActionId'] as String).input(),
+      state: (SecurityActionState.fromValue(map['state'] as String)).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

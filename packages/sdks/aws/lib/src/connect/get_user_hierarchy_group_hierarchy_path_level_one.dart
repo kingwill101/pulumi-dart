@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserHierarchyGroupHierarchyPathLevelOne {
   /// ARN of the hierarchy group.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// The identifier of the hierarchy group.
-  final String id;
+  final pulumi.Input<String> id;
   /// Returns information on a specific hierarchy group by name
   ///
   /// > **NOTE:** `instance_id` and one of either `name` or `hierarchy_group_id` is required.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetUserHierarchyGroupHierarchyPathLevelOne].
   /// [arn] ARN of the hierarchy group.
@@ -31,9 +32,9 @@ class GetUserHierarchyGroupHierarchyPathLevelOne {
 
   factory GetUserHierarchyGroupHierarchyPathLevelOne.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyGroupHierarchyPathLevelOne(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      arn: (map['arn'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

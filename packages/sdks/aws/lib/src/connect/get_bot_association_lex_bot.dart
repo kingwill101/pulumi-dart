@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBotAssociationLexBot {
   /// Region that the Amazon Lex (V1) bot was created in.
-  final String lexRegion;
+  final pulumi.Input<String> lexRegion;
   /// Name of the Amazon Lex (V1) bot.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetBotAssociationLexBot].
   /// [lexRegion] Region that the Amazon Lex (V1) bot was created in.
@@ -24,8 +25,8 @@ class GetBotAssociationLexBot {
 
   factory GetBotAssociationLexBot.fromMap(Map<String, dynamic> map) {
     return GetBotAssociationLexBot(
-      lexRegion: map['lexRegion'] as String,
-      name: map['name'] as String,
+      lexRegion: (map['lexRegion'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

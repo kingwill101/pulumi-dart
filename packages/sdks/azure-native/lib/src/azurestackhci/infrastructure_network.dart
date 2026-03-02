@@ -6,15 +6,15 @@ import 'ip_pools.dart';
 /// The InfrastructureNetwork of a AzureStackHCI Cluster.
 class InfrastructureNetwork {
   /// IPv4 address of the DNS servers in your environment.
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// Default gateway that should be used for the provided IP address space.
-  final String? gateway;
+  final pulumi.Input<String>? gateway;
   /// Range of IP addresses from which addresses are allocated for nodes within a subnet.
-  final List<IpPools>? ipPools;
+  final pulumi.Input<List<IpPools>>? ipPools;
   /// Subnet mask that matches the provided IP address space.
-  final String? subnetMask;
+  final pulumi.Input<String>? subnetMask;
   /// Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
-  final bool? useDhcp;
+  final pulumi.Input<bool>? useDhcp;
 
   /// Creates a new [InfrastructureNetwork].
   /// [dnsServers] IPv4 address of the DNS servers in your environment.
@@ -34,7 +34,7 @@ class InfrastructureNetwork {
     return <String, dynamic>{
       'dnsServers': ?dnsServers,
       'gateway': ?gateway,
-      'ipPools': ?ipPools == null ? null : pulumi.Input.encodeList<IpPools, Map<String, dynamic>>(ipPools!, (value) => value.toMap()),
+      'ipPools': ?pulumi.Input.mapOptionalInputValue<List<IpPools>, List<Map<String, dynamic>>>(ipPools, (value) => pulumi.Input.encodeList<IpPools, Map<String, dynamic>>(value, (value) => value.toMap())),
       'subnetMask': ?subnetMask,
       'useDhcp': ?useDhcp,
     };
@@ -42,11 +42,11 @@ class InfrastructureNetwork {
 
   factory InfrastructureNetwork.fromMap(Map<String, dynamic> map) {
     return InfrastructureNetwork(
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      gateway: map['gateway'] == null ? null : map['gateway'] as String,
-      ipPools: map['ipPools'] == null ? null : pulumi.Input.decodeList<IpPools>(map['ipPools'], (value) => IpPools.fromMap((value as Map).cast<String, dynamic>())),
-      subnetMask: map['subnetMask'] == null ? null : map['subnetMask'] as String,
-      useDhcp: map['useDhcp'] == null ? null : map['useDhcp'] as bool,
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
+      ipPools: map['ipPools'] == null ? null : (pulumi.Input.decodeList<IpPools>(map['ipPools'], (value) => IpPools.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
+      useDhcp: map['useDhcp'] == null ? null : (map['useDhcp'] as bool).input(),
     );
   }
 }

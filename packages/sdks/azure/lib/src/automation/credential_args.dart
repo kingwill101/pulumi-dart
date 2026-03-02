@@ -28,19 +28,13 @@ class CredentialArgs {
   /// [resourceGroupName] The name of the resource group in which the Credential is created. Changing this forces a new resource to be created.
   /// [username] The username associated with this Automation Credential.
   CredentialArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> password,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> username,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      username = pulumi.Input.asInput<String>(username);
+    required this.automationAccountName,
+    this.description,
+    this.name,
+    required this.password,
+    required this.resourceGroupName,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class CredentialArgs {
 
   factory CredentialArgs.fromMap(Map<String, dynamic> map) {
     return CredentialArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

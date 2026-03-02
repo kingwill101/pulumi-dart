@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_channel_v1_value_response.dart';
 
 /// Definition for extended entitlement parameters.
 class GoogleCloudChannelV1ParameterResponse {
   /// Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active.
-  final bool editable;
+  final pulumi.Input<bool> editable;
   /// Name of the parameter.
-  final String name;
+  final pulumi.Input<String> name;
   /// Value of the parameter.
-  final GoogleCloudChannelV1ValueResponse value;
+  final pulumi.Input<GoogleCloudChannelV1ValueResponse> value;
 
   /// Creates a new [GoogleCloudChannelV1ParameterResponse].
   /// [editable] Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active.
@@ -25,15 +26,15 @@ class GoogleCloudChannelV1ParameterResponse {
     return <String, dynamic>{
       'editable': editable,
       'name': name,
-      'value': value.toMap(),
+      'value': pulumi.Input.mapInputValue<GoogleCloudChannelV1ValueResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudChannelV1ParameterResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ParameterResponse(
-      editable: map['editable'] as bool,
-      name: map['name'] as String,
-      value: GoogleCloudChannelV1ValueResponse.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      editable: (map['editable'] as bool).input(),
+      name: (map['name'] as String).input(),
+      value: (GoogleCloudChannelV1ValueResponse.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

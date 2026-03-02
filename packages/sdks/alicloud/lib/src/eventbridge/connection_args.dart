@@ -24,15 +24,11 @@ class ConnectionArgs {
   /// [description] The description of the connection.
   /// [networkParameters] The parameters that are configured for the network. See `network_parameters` below.
   ConnectionArgs({
-    pulumi.Output<ConnectionAuthParameters>? authParameters,
-    required pulumi.Output<String> connectionName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<ConnectionNetworkParameters> networkParameters,
-  }) :
-      authParameters = pulumi.Input.asOptionalInput<ConnectionAuthParameters>(authParameters),
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkParameters = pulumi.Input.asInput<ConnectionNetworkParameters>(networkParameters);
+    this.authParameters,
+    required this.connectionName,
+    this.description,
+    required this.networkParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      authParameters: map['authParameters'] == null ? null : pulumi.Output.create<ConnectionAuthParameters>(ConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())),
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkParameters: pulumi.Output.create<ConnectionNetworkParameters>(ConnectionNetworkParameters.fromMap((map['networkParameters'] as Map).cast<String, dynamic>())),
+      authParameters: map['authParameters'] == null ? null : (ConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())).input(),
+      connectionName: (map['connectionName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkParameters: (ConnectionNetworkParameters.fromMap((map['networkParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

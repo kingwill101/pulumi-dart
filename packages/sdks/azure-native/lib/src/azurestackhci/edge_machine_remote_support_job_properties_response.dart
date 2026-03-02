@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'edge_machine_remote_support_job_reported_properties_response.dart';
 import 'error_detail_response.dart';
 
 /// Properties for adding a server in the cluster.
 class EdgeMachineRemoteSupportJobPropertiesResponse {
   /// Remote support access level.
-  final String accessLevel;
+  final pulumi.Input<String> accessLevel;
   /// Deployment mode to trigger job.
-  final String? deploymentMode;
+  final pulumi.Input<String>? deploymentMode;
   /// The UTC date and time at which the job completed.
-  final String endTimeUtc;
+  final pulumi.Input<String> endTimeUtc;
   /// error details.
-  final ErrorDetailResponse error;
+  final pulumi.Input<ErrorDetailResponse> error;
   /// Remote support expiration timestamp.
-  final String expirationTimestamp;
+  final pulumi.Input<String> expirationTimestamp;
   /// Unique, immutable job id.
-  final String jobId;
+  final pulumi.Input<String> jobId;
   /// Job Type supported.
   /// Expected value is 'RemoteSupport'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// Job provisioning state
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// log collection job reported properties.
-  final EdgeMachineRemoteSupportJobReportedPropertiesResponse reportedProperties;
+  final pulumi.Input<EdgeMachineRemoteSupportJobReportedPropertiesResponse> reportedProperties;
   /// The UTC date and time at which the job started.
-  final String startTimeUtc;
+  final pulumi.Input<String> startTimeUtc;
   /// Status of Edge device job.
-  final String status;
+  final pulumi.Input<String> status;
   /// Remote support type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EdgeMachineRemoteSupportJobPropertiesResponse].
   /// [accessLevel] Remote support access level.
@@ -64,12 +65,12 @@ class EdgeMachineRemoteSupportJobPropertiesResponse {
       'accessLevel': accessLevel,
       'deploymentMode': ?deploymentMode,
       'endTimeUtc': endTimeUtc,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'expirationTimestamp': expirationTimestamp,
       'jobId': jobId,
       'jobType': jobType,
       'provisioningState': provisioningState,
-      'reportedProperties': reportedProperties.toMap(),
+      'reportedProperties': pulumi.Input.mapInputValue<EdgeMachineRemoteSupportJobReportedPropertiesResponse, Map<String, dynamic>>(reportedProperties, (value) => value.toMap()),
       'startTimeUtc': startTimeUtc,
       'status': status,
       'type': type,
@@ -78,18 +79,18 @@ class EdgeMachineRemoteSupportJobPropertiesResponse {
 
   factory EdgeMachineRemoteSupportJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineRemoteSupportJobPropertiesResponse(
-      accessLevel: map['accessLevel'] as String,
-      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode'] as String,
-      endTimeUtc: map['endTimeUtc'] as String,
-      error: ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      expirationTimestamp: map['expirationTimestamp'] as String,
-      jobId: map['jobId'] as String,
-      jobType: map['jobType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      reportedProperties: EdgeMachineRemoteSupportJobReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>()),
-      startTimeUtc: map['startTimeUtc'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      accessLevel: (map['accessLevel'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      endTimeUtc: (map['endTimeUtc'] as String).input(),
+      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      expirationTimestamp: (map['expirationTimestamp'] as String).input(),
+      jobId: (map['jobId'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reportedProperties: (EdgeMachineRemoteSupportJobReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
+      startTimeUtc: (map['startTimeUtc'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

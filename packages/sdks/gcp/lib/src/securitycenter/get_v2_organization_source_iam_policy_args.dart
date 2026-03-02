@@ -15,11 +15,9 @@ class GetV2OrganizationSourceIamPolicyArgs {
   /// [organization] Required.
   /// [source] Used to find the parent resource to bind the IAM policy to
   GetV2OrganizationSourceIamPolicyArgs({
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> source,
-  }) :
-      organization = pulumi.Input.asInput<String>(organization),
-      source = pulumi.Input.asInput<String>(source);
+    required this.organization,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class GetV2OrganizationSourceIamPolicyArgs {
 
   factory GetV2OrganizationSourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetV2OrganizationSourceIamPolicyArgs(
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
+      organization: (map['organization'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

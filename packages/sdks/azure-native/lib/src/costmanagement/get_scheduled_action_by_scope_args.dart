@@ -16,11 +16,9 @@ class GetScheduledActionByScopeArgs {
   /// [name] Scheduled action name.
   /// [scope] The scope associated with scheduled action operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope. Note: Insight Alerts are only available on subscription scope.
   GetScheduledActionByScopeArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> scope,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.name,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetScheduledActionByScopeArgs {
 
   factory GetScheduledActionByScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledActionByScopeArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      name: (map['name'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

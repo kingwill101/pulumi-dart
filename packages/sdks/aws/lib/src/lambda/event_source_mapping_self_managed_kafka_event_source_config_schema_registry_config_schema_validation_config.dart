@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig {
   /// Message attribute to validate. Valid values: `KEY`, `VALUE`.
-  final String? attribute;
+  final pulumi.Input<String>? attribute;
 
   /// Creates a new [EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig].
   /// [attribute] Message attribute to validate. Valid values: `KEY`, `VALUE`.
@@ -19,7 +20,7 @@ class EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigSch
 
   factory EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig(
-      attribute: map['attribute'] == null ? null : map['attribute'] as String,
+      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
     );
   }
 }

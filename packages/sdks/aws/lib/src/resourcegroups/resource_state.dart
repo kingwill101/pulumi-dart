@@ -19,15 +19,11 @@ class ResourceState {
   /// [resourceArn] ARN of the resource to be added to the group.
   /// [resourceType] The resource type of a resource, such as `AWS::EC2::Instance`.
   ResourceState({
-    pulumi.Output<String>? groupArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? resourceType,
-  }) :
-      groupArn = pulumi.Input.asOptionalInput<String>(groupArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.groupArn,
+    this.region,
+    this.resourceArn,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      groupArn: map['groupArn'] == null ? null : pulumi.Output.create<String>(map['groupArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      groupArn: map['groupArn'] == null ? null : (map['groupArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

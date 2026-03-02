@@ -41,27 +41,17 @@ class AnalyticsItemArgs {
   /// [scopePath] Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
   /// [type] Enum indicating the type of the Analytics item.
   AnalyticsItemArgs({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? overrideItem,
-    pulumi.Output<ApplicationInsightsComponentAnalyticsItemProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? scope,
-    required pulumi.Output<String> scopePath,
-    pulumi.Output<String>? type,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      overrideItem = pulumi.Input.asOptionalInput<bool>(overrideItem),
-      properties = pulumi.Input.asOptionalInput<ApplicationInsightsComponentAnalyticsItemProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      scopePath = pulumi.Input.asInput<String>(scopePath),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.content,
+    this.id,
+    this.name,
+    this.overrideItem,
+    this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.scope,
+    required this.scopePath,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class AnalyticsItemArgs {
 
   factory AnalyticsItemArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsItemArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      overrideItem: map['overrideItem'] == null ? null : pulumi.Output.create<bool>(map['overrideItem'] as bool),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ApplicationInsightsComponentAnalyticsItemProperties>(ApplicationInsightsComponentAnalyticsItemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      scopePath: pulumi.Output.create<String>(map['scopePath'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      overrideItem: map['overrideItem'] == null ? null : (map['overrideItem'] as bool).input(),
+      properties: map['properties'] == null ? null : (ApplicationInsightsComponentAnalyticsItemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scopePath: (map['scopePath'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

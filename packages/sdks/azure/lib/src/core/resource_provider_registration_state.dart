@@ -16,11 +16,9 @@ class ResourceProviderRegistrationState {
   /// [features] A list of `feature` blocks as defined below.
   /// [name] The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
   ResourceProviderRegistrationState({
-    pulumi.Output<List<ResourceProviderRegistrationFeature>>? features,
-    pulumi.Output<String>? name,
-  }) :
-      features = pulumi.Input.asOptionalInput<List<ResourceProviderRegistrationFeature>>(features),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.features,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ResourceProviderRegistrationState {
 
   factory ResourceProviderRegistrationState.fromMap(Map<String, dynamic> map) {
     return ResourceProviderRegistrationState(
-      features: map['features'] == null ? null : pulumi.Output.create<List<ResourceProviderRegistrationFeature>>(pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(map['features'], (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(map['features'], (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

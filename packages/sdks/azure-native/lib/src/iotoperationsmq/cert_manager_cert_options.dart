@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cert_manager_private_key.dart';
 
 /// Cert Manager CA Cert properties
 class CertManagerCertOptions {
   /// Duration of CA cert.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Cert Manager private key.
-  final CertManagerPrivateKey privateKey;
+  final pulumi.Input<CertManagerPrivateKey> privateKey;
   /// Renew before time of CA cert.
-  final String renewBefore;
+  final pulumi.Input<String> renewBefore;
 
   /// Creates a new [CertManagerCertOptions].
   /// [duration] Duration of CA cert.
@@ -24,16 +25,16 @@ class CertManagerCertOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'duration': duration,
-      'privateKey': privateKey.toMap(),
+      'privateKey': pulumi.Input.mapInputValue<CertManagerPrivateKey, Map<String, dynamic>>(privateKey, (value) => value.toMap()),
       'renewBefore': renewBefore,
     };
   }
 
   factory CertManagerCertOptions.fromMap(Map<String, dynamic> map) {
     return CertManagerCertOptions(
-      duration: map['duration'] as String,
-      privateKey: CertManagerPrivateKey.fromMap((map['privateKey'] as Map).cast<String, dynamic>()),
-      renewBefore: map['renewBefore'] as String,
+      duration: (map['duration'] as String).input(),
+      privateKey: (CertManagerPrivateKey.fromMap((map['privateKey'] as Map).cast<String, dynamic>())).input(),
+      renewBefore: (map['renewBefore'] as String).input(),
     );
   }
 }

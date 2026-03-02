@@ -6,15 +6,15 @@ import 'plan_workflow_step_parallel_config_step_ecs_capacity_increase_config_ung
 
 class PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig {
   /// Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `containerInsightsMaxInLast24Hours`.
-  final String capacityMonitoringApproach;
+  final pulumi.Input<String> capacityMonitoringApproach;
   /// ECS service configuration. See ECS Service below.
-  final List<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>? services;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>>? services;
   /// Target capacity percentage.
-  final int? targetPercent;
+  final pulumi.Input<int>? targetPercent;
   /// Timeout in minutes.
-  final int? timeoutMinutes;
+  final pulumi.Input<int>? timeoutMinutes;
   /// Ungraceful behavior configuration. See Ungraceful Capacity below.
-  final PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful? ungraceful;
+  final pulumi.Input<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful>? ungraceful;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig].
   /// [capacityMonitoringApproach] Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `containerInsightsMaxInLast24Hours`.
@@ -33,20 +33,20 @@ class PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityMonitoringApproach': capacityMonitoringApproach,
-      'services': ?services == null ? null : pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService, Map<String, dynamic>>(services!, (value) => value.toMap()),
+      'services': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetPercent': ?targetPercent,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungraceful': ?ungraceful == null ? null : ungraceful!.toMap(),
+      'ungraceful': ?pulumi.Input.mapOptionalInputValue<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful, Map<String, dynamic>>(ungraceful, (value) => value.toMap()),
     };
   }
 
   factory PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig(
-      capacityMonitoringApproach: map['capacityMonitoringApproach'] as String,
-      services: map['services'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>(map['services'], (value) => PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService.fromMap((value as Map).cast<String, dynamic>())),
-      targetPercent: map['targetPercent'] == null ? null : map['targetPercent'] as int,
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
-      ungraceful: map['ungraceful'] == null ? null : PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful.fromMap((map['ungraceful'] as Map).cast<String, dynamic>()),
+      capacityMonitoringApproach: (map['capacityMonitoringApproach'] as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>(map['services'], (value) => PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetPercent: map['targetPercent'] == null ? null : (map['targetPercent'] as int).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
+      ungraceful: map['ungraceful'] == null ? null : (PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful.fromMap((map['ungraceful'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

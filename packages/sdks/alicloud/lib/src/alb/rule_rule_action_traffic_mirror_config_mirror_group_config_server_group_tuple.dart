@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
   /// The ID of the destination server group to which requests are forwarded.
-  final String? serverGroupId;
+  final pulumi.Input<String>? serverGroupId;
 
   /// Creates a new [RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple].
   /// [serverGroupId] The ID of the destination server group to which requests are forwarded.
@@ -19,7 +20,7 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 
   factory RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(
-      serverGroupId: map['serverGroupId'] == null ? null : map['serverGroupId'] as String,
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
     );
   }
 }

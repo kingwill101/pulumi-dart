@@ -26,17 +26,12 @@ class RaiBlocklistArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   RaiBlocklistArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<RaiBlocklistProperties>? properties,
-    pulumi.Output<String>? raiBlocklistName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      properties = pulumi.Input.asOptionalInput<RaiBlocklistProperties>(properties),
-      raiBlocklistName = pulumi.Input.asOptionalInput<String>(raiBlocklistName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.properties,
+    this.raiBlocklistName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RaiBlocklistArgs {
 
   factory RaiBlocklistArgs.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<RaiBlocklistProperties>(RaiBlocklistProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      raiBlocklistName: map['raiBlocklistName'] == null ? null : pulumi.Output.create<String>(map['raiBlocklistName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      properties: map['properties'] == null ? null : (RaiBlocklistProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      raiBlocklistName: map['raiBlocklistName'] == null ? null : (map['raiBlocklistName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

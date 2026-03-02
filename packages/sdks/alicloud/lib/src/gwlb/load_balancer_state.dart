@@ -39,25 +39,16 @@ class LoadBalancerState {
   /// [vpcId] The virtual private cloud (VPC) ID.
   /// [zoneMappings] The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
   LoadBalancerState({
-    pulumi.Output<String>? addressIpVersion,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? loadBalancerName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<List<LoadBalancerZoneMapping>>? zoneMappings,
-  }) :
-      addressIpVersion = pulumi.Input.asOptionalInput<String>(addressIpVersion),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      loadBalancerName = pulumi.Input.asOptionalInput<String>(loadBalancerName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      zoneMappings = pulumi.Input.asOptionalInput<List<LoadBalancerZoneMapping>>(zoneMappings);
+    this.addressIpVersion,
+    this.createTime,
+    this.dryRun,
+    this.loadBalancerName,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.vpcId,
+    this.zoneMappings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class LoadBalancerState {
 
   factory LoadBalancerState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerState(
-      addressIpVersion: map['addressIpVersion'] == null ? null : pulumi.Output.create<String>(map['addressIpVersion'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      loadBalancerName: map['loadBalancerName'] == null ? null : pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      zoneMappings: map['zoneMappings'] == null ? null : pulumi.Output.create<List<LoadBalancerZoneMapping>>(pulumi.Input.decodeList<LoadBalancerZoneMapping>(map['zoneMappings'], (value) => LoadBalancerZoneMapping.fromMap((value as Map).cast<String, dynamic>()))),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      zoneMappings: map['zoneMappings'] == null ? null : (pulumi.Input.decodeList<LoadBalancerZoneMapping>(map['zoneMappings'], (value) => LoadBalancerZoneMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

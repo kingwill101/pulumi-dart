@@ -11,12 +11,12 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
   /// The user must grant the dns.peer role to the Vertex AI
   /// service Agent on the target project.
   /// Structure is documented below.
-  final List<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>? dnsPeeringConfigs;
+  final pulumi.Input<List<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>>? dnsPeeringConfigs;
   /// Optional. The name of the Compute Engine network attachment
   /// to attach to the resource within the region and user project.
   /// To specify this field, you must have already created a network attachment.
   /// This field is only used for resources using PSC-Interface.
-  final String? networkAttachment;
+  final pulumi.Input<String>? networkAttachment;
 
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig].
   /// [dnsPeeringConfigs] Optional. DNS peering configurations.
@@ -28,15 +28,15 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dnsPeeringConfigs': ?dnsPeeringConfigs == null ? null : pulumi.Input.encodeList<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig, Map<String, dynamic>>(dnsPeeringConfigs!, (value) => value.toMap()),
+      'dnsPeeringConfigs': ?pulumi.Input.mapOptionalInputValue<List<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>, List<Map<String, dynamic>>>(dnsPeeringConfigs, (value) => pulumi.Input.encodeList<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'networkAttachment': ?networkAttachment,
     };
   }
 
   factory AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig(
-      dnsPeeringConfigs: map['dnsPeeringConfigs'] == null ? null : pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>(map['dnsPeeringConfigs'], (value) => AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig.fromMap((value as Map).cast<String, dynamic>())),
-      networkAttachment: map['networkAttachment'] == null ? null : map['networkAttachment'] as String,
+      dnsPeeringConfigs: map['dnsPeeringConfigs'] == null ? null : (pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>(map['dnsPeeringConfigs'], (value) => AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment'] as String).input(),
     );
   }
 }

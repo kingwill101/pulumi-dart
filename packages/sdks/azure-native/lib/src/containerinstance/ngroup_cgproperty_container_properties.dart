@@ -5,7 +5,7 @@ import 'volume_mount.dart';
 
 /// container properties
 class NGroupCGPropertyContainerProperties {
-  final List<VolumeMount>? volumeMounts;
+  final pulumi.Input<List<VolumeMount>>? volumeMounts;
 
   /// Creates a new [NGroupCGPropertyContainerProperties].
   /// [volumeMounts] Optional.
@@ -15,13 +15,13 @@ class NGroupCGPropertyContainerProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'volumeMounts': ?volumeMounts == null ? null : pulumi.Input.encodeList<VolumeMount, Map<String, dynamic>>(volumeMounts!, (value) => value.toMap()),
+      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<VolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<VolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NGroupCGPropertyContainerProperties.fromMap(Map<String, dynamic> map) {
     return NGroupCGPropertyContainerProperties(
-      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<VolumeMount>(map['volumeMounts'], (value) => VolumeMount.fromMap((value as Map).cast<String, dynamic>())),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMount>(map['volumeMounts'], (value) => VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

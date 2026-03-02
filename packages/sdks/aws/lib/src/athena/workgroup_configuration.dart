@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workgroup_configuration_customer_content_encryption_configuration.dart';
 import 'workgroup_configuration_engine_version.dart';
 import 'workgroup_configuration_identity_center_configuration.dart';
@@ -9,29 +10,29 @@ import 'workgroup_configuration_result_configuration.dart';
 
 class WorkgroupConfiguration {
   /// Integer for the upper data usage limit (cutoff) for the amount of bytes a single query in a workgroup is allowed to scan. Must be at least `10485760`.
-  final int? bytesScannedCutoffPerQuery;
+  final pulumi.Input<int>? bytesScannedCutoffPerQuery;
   /// Configuration block to specify the KMS key that is used to encrypt the user's data stores in Athena. This setting applies to the PySpark engine for Athena notebooks. See Customer Content Encryption Configuration below.
-  final WorkgroupConfigurationCustomerContentEncryptionConfiguration? customerContentEncryptionConfiguration;
+  final pulumi.Input<WorkgroupConfigurationCustomerContentEncryptionConfiguration>? customerContentEncryptionConfiguration;
   /// Boolean indicating whether a minimum level of encryption is enforced for the workgroup for query and calculation results written to Amazon S3.
-  final bool? enableMinimumEncryptionConfiguration;
+  final pulumi.Input<bool>? enableMinimumEncryptionConfiguration;
   /// Boolean whether the settings for the workgroup override client-side settings. For more information, see [Workgroup Settings Override Client-Side Settings](https://docs.aws.amazon.com/athena/latest/ug/workgroups-settings-override.html). Defaults to `true`.
-  final bool? enforceWorkgroupConfiguration;
+  final pulumi.Input<bool>? enforceWorkgroupConfiguration;
   /// Configuration block for the Athena Engine Versioning. For more information, see [Athena Engine Versioning](https://docs.aws.amazon.com/athena/latest/ug/engine-versions.html). See Engine Version below.
-  final WorkgroupConfigurationEngineVersion? engineVersion;
+  final pulumi.Input<WorkgroupConfigurationEngineVersion>? engineVersion;
   /// Role used to access user resources in notebook sessions and IAM Identity Center enabled workgroups. The property is required for IAM Identity Center enabled workgroups.
-  final String? executionRole;
+  final pulumi.Input<String>? executionRole;
   /// Configuration block to set up an IAM Identity Center enabled workgroup. See Identity Center Configuration below.
-  final WorkgroupConfigurationIdentityCenterConfiguration? identityCenterConfiguration;
+  final pulumi.Input<WorkgroupConfigurationIdentityCenterConfiguration>? identityCenterConfiguration;
   /// Configuration block for storing results in Athena owned storage. See Managed Query Results Configuration below.
-  final WorkgroupConfigurationManagedQueryResultsConfiguration? managedQueryResultsConfiguration;
+  final pulumi.Input<WorkgroupConfigurationManagedQueryResultsConfiguration>? managedQueryResultsConfiguration;
   /// Configuration block for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc. Only applicable to Apache Spark engine. See Monitoring Configuration below.
-  final WorkgroupConfigurationMonitoringConfiguration? monitoringConfiguration;
+  final pulumi.Input<WorkgroupConfigurationMonitoringConfiguration>? monitoringConfiguration;
   /// Boolean whether Amazon CloudWatch metrics are enabled for the workgroup. Defaults to `true`.
-  final bool? publishCloudwatchMetricsEnabled;
+  final pulumi.Input<bool>? publishCloudwatchMetricsEnabled;
   /// If set to true , allows members assigned to a workgroup to reference Amazon S3 Requester Pays buckets in queries. If set to false , workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false . For more information about Requester Pays buckets, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the Amazon Simple Storage Service Developer Guide.
-  final bool? requesterPaysEnabled;
+  final pulumi.Input<bool>? requesterPaysEnabled;
   /// Configuration block with result settings. See Result Configuration below.
-  final WorkgroupConfigurationResultConfiguration? resultConfiguration;
+  final pulumi.Input<WorkgroupConfigurationResultConfiguration>? resultConfiguration;
 
   /// Creates a new [WorkgroupConfiguration].
   /// [bytesScannedCutoffPerQuery] Integer for the upper data usage limit (cutoff) for the amount of bytes a single query in a workgroup is allowed to scan. Must be at least `10485760`.
@@ -64,34 +65,34 @@ class WorkgroupConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bytesScannedCutoffPerQuery': ?bytesScannedCutoffPerQuery,
-      'customerContentEncryptionConfiguration': ?customerContentEncryptionConfiguration == null ? null : customerContentEncryptionConfiguration!.toMap(),
+      'customerContentEncryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationCustomerContentEncryptionConfiguration, Map<String, dynamic>>(customerContentEncryptionConfiguration, (value) => value.toMap()),
       'enableMinimumEncryptionConfiguration': ?enableMinimumEncryptionConfiguration,
       'enforceWorkgroupConfiguration': ?enforceWorkgroupConfiguration,
-      'engineVersion': ?engineVersion == null ? null : engineVersion!.toMap(),
+      'engineVersion': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationEngineVersion, Map<String, dynamic>>(engineVersion, (value) => value.toMap()),
       'executionRole': ?executionRole,
-      'identityCenterConfiguration': ?identityCenterConfiguration == null ? null : identityCenterConfiguration!.toMap(),
-      'managedQueryResultsConfiguration': ?managedQueryResultsConfiguration == null ? null : managedQueryResultsConfiguration!.toMap(),
-      'monitoringConfiguration': ?monitoringConfiguration == null ? null : monitoringConfiguration!.toMap(),
+      'identityCenterConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationIdentityCenterConfiguration, Map<String, dynamic>>(identityCenterConfiguration, (value) => value.toMap()),
+      'managedQueryResultsConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationManagedQueryResultsConfiguration, Map<String, dynamic>>(managedQueryResultsConfiguration, (value) => value.toMap()),
+      'monitoringConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationMonitoringConfiguration, Map<String, dynamic>>(monitoringConfiguration, (value) => value.toMap()),
       'publishCloudwatchMetricsEnabled': ?publishCloudwatchMetricsEnabled,
       'requesterPaysEnabled': ?requesterPaysEnabled,
-      'resultConfiguration': ?resultConfiguration == null ? null : resultConfiguration!.toMap(),
+      'resultConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationResultConfiguration, Map<String, dynamic>>(resultConfiguration, (value) => value.toMap()),
     };
   }
 
   factory WorkgroupConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfiguration(
-      bytesScannedCutoffPerQuery: map['bytesScannedCutoffPerQuery'] == null ? null : map['bytesScannedCutoffPerQuery'] as int,
-      customerContentEncryptionConfiguration: map['customerContentEncryptionConfiguration'] == null ? null : WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap((map['customerContentEncryptionConfiguration'] as Map).cast<String, dynamic>()),
-      enableMinimumEncryptionConfiguration: map['enableMinimumEncryptionConfiguration'] == null ? null : map['enableMinimumEncryptionConfiguration'] as bool,
-      enforceWorkgroupConfiguration: map['enforceWorkgroupConfiguration'] == null ? null : map['enforceWorkgroupConfiguration'] as bool,
-      engineVersion: map['engineVersion'] == null ? null : WorkgroupConfigurationEngineVersion.fromMap((map['engineVersion'] as Map).cast<String, dynamic>()),
-      executionRole: map['executionRole'] == null ? null : map['executionRole'] as String,
-      identityCenterConfiguration: map['identityCenterConfiguration'] == null ? null : WorkgroupConfigurationIdentityCenterConfiguration.fromMap((map['identityCenterConfiguration'] as Map).cast<String, dynamic>()),
-      managedQueryResultsConfiguration: map['managedQueryResultsConfiguration'] == null ? null : WorkgroupConfigurationManagedQueryResultsConfiguration.fromMap((map['managedQueryResultsConfiguration'] as Map).cast<String, dynamic>()),
-      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : WorkgroupConfigurationMonitoringConfiguration.fromMap((map['monitoringConfiguration'] as Map).cast<String, dynamic>()),
-      publishCloudwatchMetricsEnabled: map['publishCloudwatchMetricsEnabled'] == null ? null : map['publishCloudwatchMetricsEnabled'] as bool,
-      requesterPaysEnabled: map['requesterPaysEnabled'] == null ? null : map['requesterPaysEnabled'] as bool,
-      resultConfiguration: map['resultConfiguration'] == null ? null : WorkgroupConfigurationResultConfiguration.fromMap((map['resultConfiguration'] as Map).cast<String, dynamic>()),
+      bytesScannedCutoffPerQuery: map['bytesScannedCutoffPerQuery'] == null ? null : (map['bytesScannedCutoffPerQuery'] as int).input(),
+      customerContentEncryptionConfiguration: map['customerContentEncryptionConfiguration'] == null ? null : (WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap((map['customerContentEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enableMinimumEncryptionConfiguration: map['enableMinimumEncryptionConfiguration'] == null ? null : (map['enableMinimumEncryptionConfiguration'] as bool).input(),
+      enforceWorkgroupConfiguration: map['enforceWorkgroupConfiguration'] == null ? null : (map['enforceWorkgroupConfiguration'] as bool).input(),
+      engineVersion: map['engineVersion'] == null ? null : (WorkgroupConfigurationEngineVersion.fromMap((map['engineVersion'] as Map).cast<String, dynamic>())).input(),
+      executionRole: map['executionRole'] == null ? null : (map['executionRole'] as String).input(),
+      identityCenterConfiguration: map['identityCenterConfiguration'] == null ? null : (WorkgroupConfigurationIdentityCenterConfiguration.fromMap((map['identityCenterConfiguration'] as Map).cast<String, dynamic>())).input(),
+      managedQueryResultsConfiguration: map['managedQueryResultsConfiguration'] == null ? null : (WorkgroupConfigurationManagedQueryResultsConfiguration.fromMap((map['managedQueryResultsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : (WorkgroupConfigurationMonitoringConfiguration.fromMap((map['monitoringConfiguration'] as Map).cast<String, dynamic>())).input(),
+      publishCloudwatchMetricsEnabled: map['publishCloudwatchMetricsEnabled'] == null ? null : (map['publishCloudwatchMetricsEnabled'] as bool).input(),
+      requesterPaysEnabled: map['requesterPaysEnabled'] == null ? null : (map['requesterPaysEnabled'] as bool).input(),
+      resultConfiguration: map['resultConfiguration'] == null ? null : (WorkgroupConfigurationResultConfiguration.fromMap((map['resultConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

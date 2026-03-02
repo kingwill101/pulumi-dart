@@ -6,9 +6,9 @@ import 'software_update_configuration_target_non_azure_query.dart';
 
 class SoftwareUpdateConfigurationTarget {
   /// One or more `azure_query` blocks as defined above.
-  final List<SoftwareUpdateConfigurationTargetAzureQuery>? azureQueries;
+  final pulumi.Input<List<SoftwareUpdateConfigurationTargetAzureQuery>>? azureQueries;
   /// One or more `non_azure_query` blocks as defined above.
-  final List<SoftwareUpdateConfigurationTargetNonAzureQuery>? nonAzureQueries;
+  final pulumi.Input<List<SoftwareUpdateConfigurationTargetNonAzureQuery>>? nonAzureQueries;
 
   /// Creates a new [SoftwareUpdateConfigurationTarget].
   /// [azureQueries] One or more `azure_query` blocks as defined above.
@@ -20,15 +20,15 @@ class SoftwareUpdateConfigurationTarget {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureQueries': ?azureQueries == null ? null : pulumi.Input.encodeList<SoftwareUpdateConfigurationTargetAzureQuery, Map<String, dynamic>>(azureQueries!, (value) => value.toMap()),
-      'nonAzureQueries': ?nonAzureQueries == null ? null : pulumi.Input.encodeList<SoftwareUpdateConfigurationTargetNonAzureQuery, Map<String, dynamic>>(nonAzureQueries!, (value) => value.toMap()),
+      'azureQueries': ?pulumi.Input.mapOptionalInputValue<List<SoftwareUpdateConfigurationTargetAzureQuery>, List<Map<String, dynamic>>>(azureQueries, (value) => pulumi.Input.encodeList<SoftwareUpdateConfigurationTargetAzureQuery, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nonAzureQueries': ?pulumi.Input.mapOptionalInputValue<List<SoftwareUpdateConfigurationTargetNonAzureQuery>, List<Map<String, dynamic>>>(nonAzureQueries, (value) => pulumi.Input.encodeList<SoftwareUpdateConfigurationTargetNonAzureQuery, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SoftwareUpdateConfigurationTarget.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationTarget(
-      azureQueries: map['azureQueries'] == null ? null : pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetAzureQuery>(map['azureQueries'], (value) => SoftwareUpdateConfigurationTargetAzureQuery.fromMap((value as Map).cast<String, dynamic>())),
-      nonAzureQueries: map['nonAzureQueries'] == null ? null : pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetNonAzureQuery>(map['nonAzureQueries'], (value) => SoftwareUpdateConfigurationTargetNonAzureQuery.fromMap((value as Map).cast<String, dynamic>())),
+      azureQueries: map['azureQueries'] == null ? null : (pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetAzureQuery>(map['azureQueries'], (value) => SoftwareUpdateConfigurationTargetAzureQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonAzureQueries: map['nonAzureQueries'] == null ? null : (pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetNonAzureQuery>(map['nonAzureQueries'], (value) => SoftwareUpdateConfigurationTargetNonAzureQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

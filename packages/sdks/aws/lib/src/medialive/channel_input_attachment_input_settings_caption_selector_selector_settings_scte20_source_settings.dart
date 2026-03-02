@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings {
-  final String? convert608To708;
-  final int? source608ChannelNumber;
+  final pulumi.Input<String>? convert608To708;
+  final pulumi.Input<int>? source608ChannelNumber;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings].
   /// [convert608To708] Optional.
@@ -22,8 +23,8 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20So
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings(
-      convert608To708: map['convert608To708'] == null ? null : map['convert608To708'] as String,
-      source608ChannelNumber: map['source608ChannelNumber'] == null ? null : map['source608ChannelNumber'] as int,
+      convert608To708: map['convert608To708'] == null ? null : (map['convert608To708'] as String).input(),
+      source608ChannelNumber: map['source608ChannelNumber'] == null ? null : (map['source608ChannelNumber'] as int).input(),
     );
   }
 }

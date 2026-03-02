@@ -39,17 +39,12 @@ class DnsManagedZoneIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   DnsManagedZoneIamBindingArgs({
-    pulumi.Output<DnsManagedZoneIamBindingCondition>? condition,
-    required pulumi.Output<String> managedZone,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<DnsManagedZoneIamBindingCondition>(condition),
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.managedZone,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class DnsManagedZoneIamBindingArgs {
 
   factory DnsManagedZoneIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DnsManagedZoneIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<DnsManagedZoneIamBindingCondition>(DnsManagedZoneIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      managedZone: pulumi.Output.create<String>(map['managedZone'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (DnsManagedZoneIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      managedZone: (map['managedZone'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

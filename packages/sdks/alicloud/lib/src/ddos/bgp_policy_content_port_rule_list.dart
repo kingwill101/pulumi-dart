@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BgpPolicyContentPortRuleList {
   /// End of destination port 0-65535.
-  final int dstPortEnd;
+  final pulumi.Input<int> dstPortEnd;
   /// Destination Port start 0-65535.
-  final int dstPortStart;
+  final pulumi.Input<int> dstPortStart;
   /// Action. Currently, only drop is supported.
-  final String matchAction;
+  final pulumi.Input<String> matchAction;
   /// Rule UUID is required to be deleted and modified, and is not required to be created.
-  final String? portRuleId;
+  final pulumi.Input<String>? portRuleId;
   /// Protocol, tcp or udp.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
-  final int seqNo;
+  final pulumi.Input<int> seqNo;
   /// Source Port end 0-65535.
-  final int srcPortEnd;
+  final pulumi.Input<int> srcPortEnd;
   /// Source port start 0-65535.
-  final int srcPortStart;
+  final pulumi.Input<int> srcPortStart;
 
   /// Creates a new [BgpPolicyContentPortRuleList].
   /// [dstPortEnd] End of destination port 0-65535.
@@ -54,14 +55,14 @@ class BgpPolicyContentPortRuleList {
 
   factory BgpPolicyContentPortRuleList.fromMap(Map<String, dynamic> map) {
     return BgpPolicyContentPortRuleList(
-      dstPortEnd: map['dstPortEnd'] as int,
-      dstPortStart: map['dstPortStart'] as int,
-      matchAction: map['matchAction'] as String,
-      portRuleId: map['portRuleId'] == null ? null : map['portRuleId'] as String,
-      protocol: map['protocol'] as String,
-      seqNo: map['seqNo'] as int,
-      srcPortEnd: map['srcPortEnd'] as int,
-      srcPortStart: map['srcPortStart'] as int,
+      dstPortEnd: (map['dstPortEnd'] as int).input(),
+      dstPortStart: (map['dstPortStart'] as int).input(),
+      matchAction: (map['matchAction'] as String).input(),
+      portRuleId: map['portRuleId'] == null ? null : (map['portRuleId'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      seqNo: (map['seqNo'] as int).input(),
+      srcPortEnd: (map['srcPortEnd'] as int).input(),
+      srcPortStart: (map['srcPortStart'] as int).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class ServicePerimeterResourceArgs {
   /// [perimeterName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
   ServicePerimeterResourceArgs({
-    required pulumi.Output<String> perimeterName,
-    required pulumi.Output<String> resource,
-  }) :
-      perimeterName = pulumi.Input.asInput<String>(perimeterName),
-      resource = pulumi.Input.asInput<String>(resource);
+    required this.perimeterName,
+    required this.resource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class ServicePerimeterResourceArgs {
 
   factory ServicePerimeterResourceArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterResourceArgs(
-      perimeterName: pulumi.Output.create<String>(map['perimeterName'] as String),
-      resource: pulumi.Output.create<String>(map['resource'] as String),
+      perimeterName: (map['perimeterName'] as String).input(),
+      resource: (map['resource'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetConditionalCreditArgs {
   /// [conditionalCreditName] Name of the conditional credit
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetConditionalCreditArgs({
-    required pulumi.Output<String> conditionalCreditName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      conditionalCreditName = pulumi.Input.asInput<String>(conditionalCreditName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.conditionalCreditName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetConditionalCreditArgs {
 
   factory GetConditionalCreditArgs.fromMap(Map<String, dynamic> map) {
     return GetConditionalCreditArgs(
-      conditionalCreditName: pulumi.Output.create<String>(map['conditionalCreditName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      conditionalCreditName: (map['conditionalCreditName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

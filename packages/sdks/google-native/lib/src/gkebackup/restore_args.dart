@@ -28,21 +28,14 @@ class RestoreArgs {
   /// [restoreId] Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
   /// [restorePlanId] Required.
   RestoreArgs({
-    required pulumi.Output<String> backup,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> restoreId,
-    required pulumi.Output<String> restorePlanId,
-  }) :
-      backup = pulumi.Input.asInput<String>(backup),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      restoreId = pulumi.Input.asInput<String>(restoreId),
-      restorePlanId = pulumi.Input.asInput<String>(restorePlanId);
+    required this.backup,
+    this.description,
+    this.labels,
+    this.location,
+    this.project,
+    required this.restoreId,
+    required this.restorePlanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class RestoreArgs {
 
   factory RestoreArgs.fromMap(Map<String, dynamic> map) {
     return RestoreArgs(
-      backup: pulumi.Output.create<String>(map['backup'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      restoreId: pulumi.Output.create<String>(map['restoreId'] as String),
-      restorePlanId: pulumi.Output.create<String>(map['restorePlanId'] as String),
+      backup: (map['backup'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      restoreId: (map['restoreId'] as String).input(),
+      restorePlanId: (map['restorePlanId'] as String).input(),
     );
   }
 }

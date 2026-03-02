@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration {
-  final String? kmsKey;
+  final pulumi.Input<String>? kmsKey;
 
   /// Creates a new [WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration].
   /// [kmsKey] Optional.
@@ -18,7 +19,7 @@ class WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfigurat
 
   factory WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration(
-      kmsKey: map['kmsKey'] == null ? null : map['kmsKey'] as String,
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
     );
   }
 }

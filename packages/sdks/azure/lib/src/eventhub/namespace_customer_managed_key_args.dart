@@ -26,15 +26,11 @@ class NamespaceCustomerManagedKeyArgs {
   /// [keyVaultKeyIds] The list of keys of Key Vault.
   /// [userAssignedIdentityId] The ID of a User Managed Identity that will be used to access Key Vaults that contain the encryption keys.
   NamespaceCustomerManagedKeyArgs({
-    required pulumi.Output<String> eventhubNamespaceId,
-    pulumi.Output<bool>? infrastructureEncryptionEnabled,
-    required pulumi.Output<List<String>> keyVaultKeyIds,
-    pulumi.Output<String>? userAssignedIdentityId,
-  }) :
-      eventhubNamespaceId = pulumi.Input.asInput<String>(eventhubNamespaceId),
-      infrastructureEncryptionEnabled = pulumi.Input.asOptionalInput<bool>(infrastructureEncryptionEnabled),
-      keyVaultKeyIds = pulumi.Input.asInput<List<String>>(keyVaultKeyIds),
-      userAssignedIdentityId = pulumi.Input.asOptionalInput<String>(userAssignedIdentityId);
+    required this.eventhubNamespaceId,
+    this.infrastructureEncryptionEnabled,
+    required this.keyVaultKeyIds,
+    this.userAssignedIdentityId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class NamespaceCustomerManagedKeyArgs {
 
   factory NamespaceCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKeyArgs(
-      eventhubNamespaceId: pulumi.Output.create<String>(map['eventhubNamespaceId'] as String),
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : pulumi.Output.create<bool>(map['infrastructureEncryptionEnabled'] as bool),
-      keyVaultKeyIds: pulumi.Output.create<List<String>>((map['keyVaultKeyIds'] as List).cast<String>()),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : pulumi.Output.create<String>(map['userAssignedIdentityId'] as String),
+      eventhubNamespaceId: (map['eventhubNamespaceId'] as String).input(),
+      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled'] as bool).input(),
+      keyVaultKeyIds: ((map['keyVaultKeyIds'] as List).cast<String>()).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

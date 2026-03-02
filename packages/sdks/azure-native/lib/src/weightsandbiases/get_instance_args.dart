@@ -16,11 +16,9 @@ class GetInstanceArgs {
   /// [instancename] Name of the Instance resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetInstanceArgs({
-    required pulumi.Output<String> instancename,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      instancename = pulumi.Input.asInput<String>(instancename),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.instancename,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      instancename: pulumi.Output.create<String>(map['instancename'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      instancename: (map['instancename'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class WebAppDomainOwnershipIdentifierArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [value] String representation of the identity.
   WebAppDomainOwnershipIdentifierArgs({
-    pulumi.Output<String>? domainOwnershipIdentifierName,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? value,
-  }) :
-      domainOwnershipIdentifierName = pulumi.Input.asOptionalInput<String>(domainOwnershipIdentifierName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.domainOwnershipIdentifierName,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WebAppDomainOwnershipIdentifierArgs {
 
   factory WebAppDomainOwnershipIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDomainOwnershipIdentifierArgs(
-      domainOwnershipIdentifierName: map['domainOwnershipIdentifierName'] == null ? null : pulumi.Output.create<String>(map['domainOwnershipIdentifierName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      domainOwnershipIdentifierName: map['domainOwnershipIdentifierName'] == null ? null : (map['domainOwnershipIdentifierName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

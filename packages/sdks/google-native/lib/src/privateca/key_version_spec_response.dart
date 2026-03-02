@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Cloud KMS key configuration that a CertificateAuthority will use.
 class KeyVersionSpecResponse {
   /// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-  final String algorithm;
+  final pulumi.Input<String> algorithm;
   /// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
-  final String cloudKmsKeyVersion;
+  final pulumi.Input<String> cloudKmsKeyVersion;
 
   /// Creates a new [KeyVersionSpecResponse].
   /// [algorithm] The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
@@ -25,8 +26,8 @@ class KeyVersionSpecResponse {
 
   factory KeyVersionSpecResponse.fromMap(Map<String, dynamic> map) {
     return KeyVersionSpecResponse(
-      algorithm: map['algorithm'] as String,
-      cloudKmsKeyVersion: map['cloudKmsKeyVersion'] as String,
+      algorithm: (map['algorithm'] as String).input(),
+      cloudKmsKeyVersion: (map['cloudKmsKeyVersion'] as String).input(),
     );
   }
 }

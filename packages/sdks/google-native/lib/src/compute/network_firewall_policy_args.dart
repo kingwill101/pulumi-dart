@@ -39,25 +39,16 @@ class NetworkFirewallPolicyArgs {
   /// [shortName] User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   /// [vpcNetworkScope] The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
   NetworkFirewallPolicyArgs({
-    pulumi.Output<List<FirewallPolicyAssociation>>? associations,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<FirewallPolicyRule>>? rules,
-    pulumi.Output<String>? shortName,
-    pulumi.Output<NetworkFirewallPolicyVpcNetworkScope>? vpcNetworkScope,
-  }) :
-      associations = pulumi.Input.asOptionalInput<List<FirewallPolicyAssociation>>(associations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      rules = pulumi.Input.asOptionalInput<List<FirewallPolicyRule>>(rules),
-      shortName = pulumi.Input.asOptionalInput<String>(shortName),
-      vpcNetworkScope = pulumi.Input.asOptionalInput<NetworkFirewallPolicyVpcNetworkScope>(vpcNetworkScope);
+    this.associations,
+    this.description,
+    this.displayName,
+    this.name,
+    this.project,
+    this.requestId,
+    this.rules,
+    this.shortName,
+    this.vpcNetworkScope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class NetworkFirewallPolicyArgs {
 
   factory NetworkFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyArgs(
-      associations: map['associations'] == null ? null : pulumi.Output.create<List<FirewallPolicyAssociation>>(pulumi.Input.decodeList<FirewallPolicyAssociation>(map['associations'], (value) => FirewallPolicyAssociation.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<FirewallPolicyRule>>(pulumi.Input.decodeList<FirewallPolicyRule>(map['rules'], (value) => FirewallPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      shortName: map['shortName'] == null ? null : pulumi.Output.create<String>(map['shortName'] as String),
-      vpcNetworkScope: map['vpcNetworkScope'] == null ? null : pulumi.Output.create<NetworkFirewallPolicyVpcNetworkScope>(NetworkFirewallPolicyVpcNetworkScope.fromValue(map['vpcNetworkScope'] as String)),
+      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyAssociation>(map['associations'], (value) => FirewallPolicyAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRule>(map['rules'], (value) => FirewallPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
+      vpcNetworkScope: map['vpcNetworkScope'] == null ? null : (NetworkFirewallPolicyVpcNetworkScope.fromValue(map['vpcNetworkScope'] as String)).input(),
     );
   }
 }

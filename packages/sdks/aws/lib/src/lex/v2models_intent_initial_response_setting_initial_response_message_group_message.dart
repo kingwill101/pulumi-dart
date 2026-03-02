@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_intent_initial_response_setting_initial_response_message_group_message_custom_payload.dart';
 import 'v2models_intent_initial_response_setting_initial_response_message_group_message_image_response_card.dart';
 import 'v2models_intent_initial_response_setting_initial_response_message_group_message_plain_text_message.dart';
@@ -7,13 +8,13 @@ import 'v2models_intent_initial_response_setting_initial_response_message_group_
 
 class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessage {
   /// Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
-  final V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCustomPayload? customPayload;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCustomPayload>? customPayload;
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `image_response_card`.
-  final V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCard? imageResponseCard;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCard>? imageResponseCard;
   /// Configuration block for a message in plain text format. See `plain_text_message`.
-  final V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlainTextMessage? plainTextMessage;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlainTextMessage>? plainTextMessage;
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssml_message`.
-  final V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage? ssmlMessage;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage>? ssmlMessage;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessage].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
@@ -29,19 +30,19 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPayload': ?customPayload == null ? null : customPayload!.toMap(),
-      'imageResponseCard': ?imageResponseCard == null ? null : imageResponseCard!.toMap(),
-      'plainTextMessage': ?plainTextMessage == null ? null : plainTextMessage!.toMap(),
-      'ssmlMessage': ?ssmlMessage == null ? null : ssmlMessage!.toMap(),
+      'customPayload': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCustomPayload, Map<String, dynamic>>(customPayload, (value) => value.toMap()),
+      'imageResponseCard': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCard, Map<String, dynamic>>(imageResponseCard, (value) => value.toMap()),
+      'plainTextMessage': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlainTextMessage, Map<String, dynamic>>(plainTextMessage, (value) => value.toMap()),
+      'ssmlMessage': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage, Map<String, dynamic>>(ssmlMessage, (value) => value.toMap()),
     };
   }
 
   factory V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessage.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessage(
-      customPayload: map['customPayload'] == null ? null : V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCustomPayload.fromMap((map['customPayload'] as Map).cast<String, dynamic>()),
-      imageResponseCard: map['imageResponseCard'] == null ? null : V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCard.fromMap((map['imageResponseCard'] as Map).cast<String, dynamic>()),
-      plainTextMessage: map['plainTextMessage'] == null ? null : V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlainTextMessage.fromMap((map['plainTextMessage'] as Map).cast<String, dynamic>()),
-      ssmlMessage: map['ssmlMessage'] == null ? null : V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage.fromMap((map['ssmlMessage'] as Map).cast<String, dynamic>()),
+      customPayload: map['customPayload'] == null ? null : (V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCustomPayload.fromMap((map['customPayload'] as Map).cast<String, dynamic>())).input(),
+      imageResponseCard: map['imageResponseCard'] == null ? null : (V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCard.fromMap((map['imageResponseCard'] as Map).cast<String, dynamic>())).input(),
+      plainTextMessage: map['plainTextMessage'] == null ? null : (V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessagePlainTextMessage.fromMap((map['plainTextMessage'] as Map).cast<String, dynamic>())).input(),
+      ssmlMessage: map['ssmlMessage'] == null ? null : (V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage.fromMap((map['ssmlMessage'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

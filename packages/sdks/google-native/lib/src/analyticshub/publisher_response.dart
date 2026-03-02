@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains details of the listing publisher.
 class PublisherResponse {
   /// Optional. Name of the listing publisher.
-  final String name;
+  final pulumi.Input<String> name;
   /// Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
-  final String primaryContact;
+  final pulumi.Input<String> primaryContact;
 
   /// Creates a new [PublisherResponse].
   /// [name] Optional. Name of the listing publisher.
@@ -25,8 +26,8 @@ class PublisherResponse {
 
   factory PublisherResponse.fromMap(Map<String, dynamic> map) {
     return PublisherResponse(
-      name: map['name'] as String,
-      primaryContact: map['primaryContact'] as String,
+      name: (map['name'] as String).input(),
+      primaryContact: (map['primaryContact'] as String).input(),
     );
   }
 }

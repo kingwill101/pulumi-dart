@@ -19,13 +19,10 @@ class GetJWTAuthenticatorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   GetJWTAuthenticatorArgs({
-    required pulumi.Output<String> jwtAuthenticatorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      jwtAuthenticatorName = pulumi.Input.asInput<String>(jwtAuthenticatorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.jwtAuthenticatorName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetJWTAuthenticatorArgs {
 
   factory GetJWTAuthenticatorArgs.fromMap(Map<String, dynamic> map) {
     return GetJWTAuthenticatorArgs(
-      jwtAuthenticatorName: pulumi.Output.create<String>(map['jwtAuthenticatorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      jwtAuthenticatorName: (map['jwtAuthenticatorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

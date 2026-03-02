@@ -22,17 +22,12 @@ class PrometheusMonitoringState {
   /// [status] Valid values: `stop`, `run`.
   /// [type] Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
   PrometheusMonitoringState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? configYaml,
-    pulumi.Output<String>? monitoringName,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      configYaml = pulumi.Input.asOptionalInput<String>(configYaml),
-      monitoringName = pulumi.Input.asOptionalInput<String>(monitoringName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.clusterId,
+    this.configYaml,
+    this.monitoringName,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class PrometheusMonitoringState {
 
   factory PrometheusMonitoringState.fromMap(Map<String, dynamic> map) {
     return PrometheusMonitoringState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      configYaml: map['configYaml'] == null ? null : pulumi.Output.create<String>(map['configYaml'] as String),
-      monitoringName: map['monitoringName'] == null ? null : pulumi.Output.create<String>(map['monitoringName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      configYaml: map['configYaml'] == null ? null : (map['configYaml'] as String).input(),
+      monitoringName: map['monitoringName'] == null ? null : (map['monitoringName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

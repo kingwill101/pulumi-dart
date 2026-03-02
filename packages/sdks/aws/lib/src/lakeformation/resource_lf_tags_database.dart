@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceLfTagsDatabase {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final String? catalogId;
+  final pulumi.Input<String>? catalogId;
   /// Name of the database resource. Unique to the Data Catalog.
   ///
   /// The following argument is optional:
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ResourceLfTagsDatabase].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -26,8 +27,8 @@ class ResourceLfTagsDatabase {
 
   factory ResourceLfTagsDatabase.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagsDatabase(
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      name: map['name'] as String,
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

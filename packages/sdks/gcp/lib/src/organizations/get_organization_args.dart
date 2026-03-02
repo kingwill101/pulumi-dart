@@ -18,11 +18,9 @@ class GetOrganizationArgs {
   /// [domain] The domain name of the Organization.
   /// [organization] The Organization's numeric ID, including an optional `organizations/` prefix.
   GetOrganizationArgs({
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? organization,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      organization = pulumi.Input.asOptionalInput<String>(organization);
+    this.domain,
+    this.organization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetOrganizationArgs {
 
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationArgs(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey {
   /// OpenAI API Key
-  final String? apiKey;
+  final pulumi.Input<String>? apiKey;
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey].
   /// [apiKey] OpenAI API Key
@@ -19,7 +20,7 @@ class GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey {
 
   factory GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey(
-      apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
     );
   }
 }

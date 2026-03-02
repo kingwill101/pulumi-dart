@@ -26,23 +26,15 @@ class ProviderArgs {
   /// [tls] Optional.
   /// [username] Optional.
   ProviderArgs({
-    pulumi.Output<String>? authenticationPlugin,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<int>? maxConnLifetimeSec,
-    pulumi.Output<int>? maxOpenConns,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? proxy,
-    pulumi.Output<String>? tls,
-    pulumi.Output<String>? username,
-  }) :
-      authenticationPlugin = pulumi.Input.asOptionalInput<String>(authenticationPlugin),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      maxConnLifetimeSec = pulumi.Input.asOptionalInput<int>(maxConnLifetimeSec),
-      maxOpenConns = pulumi.Input.asOptionalInput<int>(maxOpenConns),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      proxy = pulumi.Input.asOptionalInput<String>(proxy),
-      tls = pulumi.Input.asOptionalInput<String>(tls),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.authenticationPlugin,
+    this.endpoint,
+    this.maxConnLifetimeSec,
+    this.maxOpenConns,
+    this.password,
+    this.proxy,
+    this.tls,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,14 +51,14 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      authenticationPlugin: map['authenticationPlugin'] == null ? null : pulumi.Output.create<String>(map['authenticationPlugin'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      maxConnLifetimeSec: map['maxConnLifetimeSec'] == null ? null : pulumi.Output.create<int>(map['maxConnLifetimeSec'] as int),
-      maxOpenConns: map['maxOpenConns'] == null ? null : pulumi.Output.create<int>(map['maxOpenConns'] as int),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      proxy: map['proxy'] == null ? null : pulumi.Output.create<String>(map['proxy'] as String),
-      tls: map['tls'] == null ? null : pulumi.Output.create<String>(map['tls'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      authenticationPlugin: map['authenticationPlugin'] == null ? null : (map['authenticationPlugin'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      maxConnLifetimeSec: map['maxConnLifetimeSec'] == null ? null : (map['maxConnLifetimeSec'] as int).input(),
+      maxOpenConns: map['maxOpenConns'] == null ? null : (map['maxOpenConns'] as int).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      proxy: map['proxy'] == null ? null : (map['proxy'] as String).input(),
+      tls: map['tls'] == null ? null : (map['tls'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

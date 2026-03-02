@@ -6,27 +6,27 @@ import 'sql_backup_file_info_response.dart';
 /// Information of backup set
 class SqlBackupSetInfoResponse {
   /// Backup end time.
-  final String backupFinishDate;
+  final pulumi.Input<String> backupFinishDate;
   /// Backup set id.
-  final String backupSetId;
+  final pulumi.Input<String> backupSetId;
   /// Backup start date.
-  final String backupStartDate;
+  final pulumi.Input<String> backupStartDate;
   /// Backup type.
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// Media family count
-  final int familyCount;
+  final pulumi.Input<int> familyCount;
   /// First LSN of the backup set.
-  final String firstLSN;
+  final pulumi.Input<String> firstLSN;
   /// Has Backup Checksums
-  final bool hasBackupChecksums;
+  final pulumi.Input<bool> hasBackupChecksums;
   /// The reasons why the backup set is ignored
-  final List<String> ignoreReasons;
+  final pulumi.Input<List<String>> ignoreReasons;
   /// Whether this backup set has been restored or not.
-  final bool isBackupRestored;
+  final pulumi.Input<bool> isBackupRestored;
   /// Last LSN of the backup set.
-  final String lastLSN;
+  final pulumi.Input<String> lastLSN;
   /// List of files in the backup set.
-  final List<SqlBackupFileInfoResponse> listOfBackupFiles;
+  final pulumi.Input<List<SqlBackupFileInfoResponse>> listOfBackupFiles;
 
   /// Creates a new [SqlBackupSetInfoResponse].
   /// [backupFinishDate] Backup end time.
@@ -66,23 +66,23 @@ class SqlBackupSetInfoResponse {
       'ignoreReasons': ignoreReasons,
       'isBackupRestored': isBackupRestored,
       'lastLSN': lastLSN,
-      'listOfBackupFiles': pulumi.Input.encodeList<SqlBackupFileInfoResponse, Map<String, dynamic>>(listOfBackupFiles, (value) => value.toMap()),
+      'listOfBackupFiles': pulumi.Input.mapInputValue<List<SqlBackupFileInfoResponse>, List<Map<String, dynamic>>>(listOfBackupFiles, (value) => pulumi.Input.encodeList<SqlBackupFileInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SqlBackupSetInfoResponse.fromMap(Map<String, dynamic> map) {
     return SqlBackupSetInfoResponse(
-      backupFinishDate: map['backupFinishDate'] as String,
-      backupSetId: map['backupSetId'] as String,
-      backupStartDate: map['backupStartDate'] as String,
-      backupType: map['backupType'] as String,
-      familyCount: map['familyCount'] as int,
-      firstLSN: map['firstLSN'] as String,
-      hasBackupChecksums: map['hasBackupChecksums'] as bool,
-      ignoreReasons: (map['ignoreReasons'] as List).cast<String>(),
-      isBackupRestored: map['isBackupRestored'] as bool,
-      lastLSN: map['lastLSN'] as String,
-      listOfBackupFiles: pulumi.Input.decodeList<SqlBackupFileInfoResponse>(map['listOfBackupFiles'], (value) => SqlBackupFileInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      backupFinishDate: (map['backupFinishDate'] as String).input(),
+      backupSetId: (map['backupSetId'] as String).input(),
+      backupStartDate: (map['backupStartDate'] as String).input(),
+      backupType: (map['backupType'] as String).input(),
+      familyCount: (map['familyCount'] as int).input(),
+      firstLSN: (map['firstLSN'] as String).input(),
+      hasBackupChecksums: (map['hasBackupChecksums'] as bool).input(),
+      ignoreReasons: ((map['ignoreReasons'] as List).cast<String>()).input(),
+      isBackupRestored: (map['isBackupRestored'] as bool).input(),
+      lastLSN: (map['lastLSN'] as String).input(),
+      listOfBackupFiles: (pulumi.Input.decodeList<SqlBackupFileInfoResponse>(map['listOfBackupFiles'], (value) => SqlBackupFileInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

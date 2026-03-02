@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for client certificates on the cluster.
 class ClientCertificateConfigResponse {
   /// Issue a client certificate.
-  final bool issueClientCertificate;
+  final pulumi.Input<bool> issueClientCertificate;
 
   /// Creates a new [ClientCertificateConfigResponse].
   /// [issueClientCertificate] Issue a client certificate.
@@ -20,7 +21,7 @@ class ClientCertificateConfigResponse {
 
   factory ClientCertificateConfigResponse.fromMap(Map<String, dynamic> map) {
     return ClientCertificateConfigResponse(
-      issueClientCertificate: map['issueClientCertificate'] as bool,
+      issueClientCertificate: (map['issueClientCertificate'] as bool).input(),
     );
   }
 }

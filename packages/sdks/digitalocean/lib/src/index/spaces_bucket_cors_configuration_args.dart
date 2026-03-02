@@ -20,13 +20,10 @@ class SpacesBucketCorsConfigurationArgs {
   /// [corsRules] Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   /// [region] The region where the bucket resides.
   SpacesBucketCorsConfigurationArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<List<SpacesBucketCorsConfigurationCorsRule>> corsRules,
-    required pulumi.Output<String> region,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      corsRules = pulumi.Input.asInput<List<SpacesBucketCorsConfigurationCorsRule>>(corsRules),
-      region = pulumi.Input.asInput<String>(region);
+    required this.bucket,
+    required this.corsRules,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SpacesBucketCorsConfigurationArgs {
 
   factory SpacesBucketCorsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SpacesBucketCorsConfigurationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      corsRules: pulumi.Output.create<List<SpacesBucketCorsConfigurationCorsRule>>(pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(map['corsRules'], (value) => SpacesBucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>()))),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      bucket: (map['bucket'] as String).input(),
+      corsRules: (pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(map['corsRules'], (value) => SpacesBucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

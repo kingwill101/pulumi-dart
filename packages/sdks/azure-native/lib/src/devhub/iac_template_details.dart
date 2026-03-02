@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IacTemplateDetails {
   /// Count of the product
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Naming convention of this product
-  final String? namingConvention;
+  final pulumi.Input<String>? namingConvention;
   /// The name of the products.
-  final String? productName;
+  final pulumi.Input<String>? productName;
 
   /// Creates a new [IacTemplateDetails].
   /// [count] Count of the product
@@ -29,9 +30,9 @@ class IacTemplateDetails {
 
   factory IacTemplateDetails.fromMap(Map<String, dynamic> map) {
     return IacTemplateDetails(
-      count: map['count'] == null ? null : map['count'] as int,
-      namingConvention: map['namingConvention'] == null ? null : map['namingConvention'] as String,
-      productName: map['productName'] == null ? null : map['productName'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      namingConvention: map['namingConvention'] == null ? null : (map['namingConvention'] as String).input(),
+      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapabilityHost {
   /// List of AI services connections.
-  final List<String>? aiServicesConnections;
+  final pulumi.Input<List<String>>? aiServicesConnections;
   /// Kind of this capability host.
-  final String? capabilityHostKind;
+  final pulumi.Input<String>? capabilityHostKind;
   /// Customer subnet info to help set up this capability host.
-  final String? customerSubnet;
+  final pulumi.Input<String>? customerSubnet;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// List of Storage connections.
-  final List<String>? storageConnections;
+  final pulumi.Input<List<String>>? storageConnections;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// List of Thread storage connections.
-  final List<String>? threadStorageConnections;
+  final pulumi.Input<List<String>>? threadStorageConnections;
   /// List of VectorStore connections.
-  final List<String>? vectorStoreConnections;
+  final pulumi.Input<List<String>>? vectorStoreConnections;
 
   /// Creates a new [CapabilityHost].
   /// [aiServicesConnections] List of AI services connections.
@@ -54,14 +55,14 @@ class CapabilityHost {
 
   factory CapabilityHost.fromMap(Map<String, dynamic> map) {
     return CapabilityHost(
-      aiServicesConnections: map['aiServicesConnections'] == null ? null : (map['aiServicesConnections'] as List).cast<String>(),
-      capabilityHostKind: map['capabilityHostKind'] == null ? null : map['capabilityHostKind'] as String,
-      customerSubnet: map['customerSubnet'] == null ? null : map['customerSubnet'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      storageConnections: map['storageConnections'] == null ? null : (map['storageConnections'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      threadStorageConnections: map['threadStorageConnections'] == null ? null : (map['threadStorageConnections'] as List).cast<String>(),
-      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : (map['vectorStoreConnections'] as List).cast<String>(),
+      aiServicesConnections: map['aiServicesConnections'] == null ? null : ((map['aiServicesConnections'] as List).cast<String>()).input(),
+      capabilityHostKind: map['capabilityHostKind'] == null ? null : (map['capabilityHostKind'] as String).input(),
+      customerSubnet: map['customerSubnet'] == null ? null : (map['customerSubnet'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      storageConnections: map['storageConnections'] == null ? null : ((map['storageConnections'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      threadStorageConnections: map['threadStorageConnections'] == null ? null : ((map['threadStorageConnections'] as List).cast<String>()).input(),
+      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : ((map['vectorStoreConnections'] as List).cast<String>()).input(),
     );
   }
 }

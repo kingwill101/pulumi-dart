@@ -16,11 +16,9 @@ class GetWorkspaceArgs {
   /// [apiManagementId] The ID of the API Management Workspace.
   /// [name] The name of this API Management Workspace.
   GetWorkspaceArgs({
-    required pulumi.Output<String> apiManagementId,
-    required pulumi.Output<String> name,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.apiManagementId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWorkspaceArgs {
 
   factory GetWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration {
   /// Whether the Snowflake role is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The Snowflake role.
-  final String? snowflakeRole;
+  final pulumi.Input<String>? snowflakeRole;
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration].
   /// [enabled] Whether the Snowflake role is enabled.
@@ -24,8 +25,8 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration {
 
   factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      snowflakeRole: map['snowflakeRole'] == null ? null : map['snowflakeRole'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      snowflakeRole: map['snowflakeRole'] == null ? null : (map['snowflakeRole'] as String).input(),
     );
   }
 }

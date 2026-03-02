@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
   /// The client (application) ID of the application with federated credentials.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The client (directory) ID of the application with federated credentials.
   ///
   /// <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig].
   /// [clientId] The client (application) ID of the application with federated credentials.
@@ -26,8 +27,8 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
 
   factory TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig(
-      clientId: map['clientId'] as String,
-      tenantId: map['tenantId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

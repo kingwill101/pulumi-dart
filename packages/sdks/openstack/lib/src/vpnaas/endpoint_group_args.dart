@@ -39,21 +39,14 @@ class EndpointGroupArgs {
   /// [type] The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
   /// [valueSpecs] Map of additional options.
   EndpointGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? endpoints,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? type,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpoints = pulumi.Input.asOptionalInput<List<String>>(endpoints),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.description,
+    this.endpoints,
+    this.name,
+    this.region,
+    this.tenantId,
+    this.type,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class EndpointGroupArgs {
 
   factory EndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return EndpointGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpoints: map['endpoints'] == null ? null : pulumi.Output.create<List<String>>((map['endpoints'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

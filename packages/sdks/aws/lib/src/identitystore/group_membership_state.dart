@@ -22,17 +22,12 @@ class GroupMembershipState {
   /// [membershipId] The identifier of the newly created group membership in the Identity Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GroupMembershipState({
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? identityStoreId,
-    pulumi.Output<String>? memberId,
-    pulumi.Output<String>? membershipId,
-    pulumi.Output<String>? region,
-  }) :
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      identityStoreId = pulumi.Input.asOptionalInput<String>(identityStoreId),
-      memberId = pulumi.Input.asOptionalInput<String>(memberId),
-      membershipId = pulumi.Input.asOptionalInput<String>(membershipId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.groupId,
+    this.identityStoreId,
+    this.memberId,
+    this.membershipId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class GroupMembershipState {
 
   factory GroupMembershipState.fromMap(Map<String, dynamic> map) {
     return GroupMembershipState(
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      identityStoreId: map['identityStoreId'] == null ? null : pulumi.Output.create<String>(map['identityStoreId'] as String),
-      memberId: map['memberId'] == null ? null : pulumi.Output.create<String>(map['memberId'] as String),
-      membershipId: map['membershipId'] == null ? null : pulumi.Output.create<String>(map['membershipId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      identityStoreId: map['identityStoreId'] == null ? null : (map['identityStoreId'] as String).input(),
+      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
+      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

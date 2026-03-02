@@ -6,25 +6,25 @@ import 'health_error_response.dart';
 /// RCM proxy details.
 class RcmProxyDetailsResponse {
   /// The RCM proxy Bios Id.
-  final String biosId;
+  final pulumi.Input<String> biosId;
   /// The client authentication type.
-  final String clientAuthenticationType;
+  final pulumi.Input<String> clientAuthenticationType;
   /// The fabric object Id.
-  final String fabricObjectId;
+  final pulumi.Input<String> fabricObjectId;
   /// The RCM proxy Fqdn.
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// The health of the RCM proxy.
-  final String health;
+  final pulumi.Input<String> health;
   /// The health errors.
-  final List<HealthErrorResponse> healthErrors;
+  final pulumi.Input<List<HealthErrorResponse>> healthErrors;
   /// The RCM proxy Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The last heartbeat received from the RCM proxy.
-  final String lastHeartbeatUtc;
+  final pulumi.Input<String> lastHeartbeatUtc;
   /// The RCM proxy name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [RcmProxyDetailsResponse].
   /// [biosId] The RCM proxy Bios Id.
@@ -57,7 +57,7 @@ class RcmProxyDetailsResponse {
       'fabricObjectId': fabricObjectId,
       'fqdn': fqdn,
       'health': health,
-      'healthErrors': pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(healthErrors, (value) => value.toMap()),
+      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'lastHeartbeatUtc': lastHeartbeatUtc,
       'name': name,
@@ -67,16 +67,16 @@ class RcmProxyDetailsResponse {
 
   factory RcmProxyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RcmProxyDetailsResponse(
-      biosId: map['biosId'] as String,
-      clientAuthenticationType: map['clientAuthenticationType'] as String,
-      fabricObjectId: map['fabricObjectId'] as String,
-      fqdn: map['fqdn'] as String,
-      health: map['health'] as String,
-      healthErrors: pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      lastHeartbeatUtc: map['lastHeartbeatUtc'] as String,
-      name: map['name'] as String,
-      version: map['version'] as String,
+      biosId: (map['biosId'] as String).input(),
+      clientAuthenticationType: (map['clientAuthenticationType'] as String).input(),
+      fabricObjectId: (map['fabricObjectId'] as String).input(),
+      fqdn: (map['fqdn'] as String).input(),
+      health: (map['health'] as String).input(),
+      healthErrors: (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      lastHeartbeatUtc: (map['lastHeartbeatUtc'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

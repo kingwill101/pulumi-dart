@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkLoggingInfoResponse {
   /// Project ID used for logging
-  final String project;
+  final pulumi.Input<String> project;
   /// Resource type used for logging
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [SparkLoggingInfoResponse].
   /// [project] Project ID used for logging
@@ -24,8 +25,8 @@ class SparkLoggingInfoResponse {
 
   factory SparkLoggingInfoResponse.fromMap(Map<String, dynamic> map) {
     return SparkLoggingInfoResponse(
-      project: map['project'] as String,
-      resourceType: map['resourceType'] as String,
+      project: (map['project'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

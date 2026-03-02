@@ -19,15 +19,11 @@ class VpcSecurityGroupRulesExclusiveState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupId] ID of the security group.
   VpcSecurityGroupRulesExclusiveState({
-    pulumi.Output<List<String>>? egressRuleIds,
-    pulumi.Output<List<String>>? ingressRuleIds,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityGroupId,
-  }) :
-      egressRuleIds = pulumi.Input.asOptionalInput<List<String>>(egressRuleIds),
-      ingressRuleIds = pulumi.Input.asOptionalInput<List<String>>(ingressRuleIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId);
+    this.egressRuleIds,
+    this.ingressRuleIds,
+    this.region,
+    this.securityGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class VpcSecurityGroupRulesExclusiveState {
 
   factory VpcSecurityGroupRulesExclusiveState.fromMap(Map<String, dynamic> map) {
     return VpcSecurityGroupRulesExclusiveState(
-      egressRuleIds: map['egressRuleIds'] == null ? null : pulumi.Output.create<List<String>>((map['egressRuleIds'] as List).cast<String>()),
-      ingressRuleIds: map['ingressRuleIds'] == null ? null : pulumi.Output.create<List<String>>((map['ingressRuleIds'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
+      egressRuleIds: map['egressRuleIds'] == null ? null : ((map['egressRuleIds'] as List).cast<String>()).input(),
+      ingressRuleIds: map['ingressRuleIds'] == null ? null : ((map['ingressRuleIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
     );
   }
 }

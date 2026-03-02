@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OAuth Client ID depending on the Workforce Identity i.e. either 1p or 3p,
 class WorkforceIdentityBasedOAuth2ClientIDResponse {
   /// First party OAuth Client ID for Google Identities.
-  final String firstPartyOauth2ClientId;
+  final pulumi.Input<String> firstPartyOauth2ClientId;
   /// Third party OAuth Client ID for External Identity Providers.
-  final String thirdPartyOauth2ClientId;
+  final pulumi.Input<String> thirdPartyOauth2ClientId;
 
   /// Creates a new [WorkforceIdentityBasedOAuth2ClientIDResponse].
   /// [firstPartyOauth2ClientId] First party OAuth Client ID for Google Identities.
@@ -25,8 +26,8 @@ class WorkforceIdentityBasedOAuth2ClientIDResponse {
 
   factory WorkforceIdentityBasedOAuth2ClientIDResponse.fromMap(Map<String, dynamic> map) {
     return WorkforceIdentityBasedOAuth2ClientIDResponse(
-      firstPartyOauth2ClientId: map['firstPartyOauth2ClientId'] as String,
-      thirdPartyOauth2ClientId: map['thirdPartyOauth2ClientId'] as String,
+      firstPartyOauth2ClientId: (map['firstPartyOauth2ClientId'] as String).input(),
+      thirdPartyOauth2ClientId: (map['thirdPartyOauth2ClientId'] as String).input(),
     );
   }
 }

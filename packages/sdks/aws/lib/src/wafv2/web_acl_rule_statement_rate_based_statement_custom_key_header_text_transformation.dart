@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation {
   /// Relative processing order for multiple transformations that are defined for a rule statement. AWS WAF processes all transformations, from lowest priority to highest, before inspecting the transformed content.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Transformation to apply, please refer to the Text Transformation [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_TextTransformation.html) for more details.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation].
   /// [priority] Relative processing order for multiple transformations that are defined for a rule statement. AWS WAF processes all transformations, from lowest priority to highest, before inspecting the transformed content.
@@ -24,8 +25,8 @@ class WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation {
 
   factory WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation(
-      priority: map['priority'] as int,
-      type: map['type'] as String,
+      priority: (map['priority'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters that define the configuration of traffic analytics.
 class TrafficAnalyticsConfigurationPropertiesResponse {
   /// Flag to enable/disable traffic analytics.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The interval in minutes which would decide how frequently TA service should do flow analytics.
-  final int? trafficAnalyticsInterval;
+  final pulumi.Input<int>? trafficAnalyticsInterval;
   /// The resource guid of the attached workspace.
-  final String? workspaceId;
+  final pulumi.Input<String>? workspaceId;
   /// The location of the attached workspace.
-  final String? workspaceRegion;
+  final pulumi.Input<String>? workspaceRegion;
   /// Resource Id of the attached workspace.
-  final String? workspaceResourceId;
+  final pulumi.Input<String>? workspaceResourceId;
 
   /// Creates a new [TrafficAnalyticsConfigurationPropertiesResponse].
   /// [enabled] Flag to enable/disable traffic analytics.
@@ -40,11 +41,11 @@ class TrafficAnalyticsConfigurationPropertiesResponse {
 
   factory TrafficAnalyticsConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TrafficAnalyticsConfigurationPropertiesResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      trafficAnalyticsInterval: map['trafficAnalyticsInterval'] == null ? null : map['trafficAnalyticsInterval'] as int,
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId'] as String,
-      workspaceRegion: map['workspaceRegion'] == null ? null : map['workspaceRegion'] as String,
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : map['workspaceResourceId'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      trafficAnalyticsInterval: map['trafficAnalyticsInterval'] == null ? null : (map['trafficAnalyticsInterval'] as int).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      workspaceRegion: map['workspaceRegion'] == null ? null : (map['workspaceRegion'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
     );
   }
 }

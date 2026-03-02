@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IPConfigDetailsResponse {
-  final String? ipAddressType;
-  final bool? isPrimary;
-  final bool? isSeletedForFailover;
-  final String? name;
-  final String? recoveryIPAddressType;
-  final List<String>? recoveryLBBackendAddressPoolIds;
-  final String? recoveryPublicIPAddressId;
-  final String? recoveryStaticIPAddress;
-  final String? recoverySubnetName;
-  final String? staticIPAddress;
-  final String? subnetName;
-  final List<String>? tfoLBBackendAddressPoolIds;
-  final String? tfoPublicIPAddressId;
-  final String? tfoStaticIPAddress;
-  final String? tfoSubnetName;
+  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<bool>? isPrimary;
+  final pulumi.Input<bool>? isSeletedForFailover;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? recoveryIPAddressType;
+  final pulumi.Input<List<String>>? recoveryLBBackendAddressPoolIds;
+  final pulumi.Input<String>? recoveryPublicIPAddressId;
+  final pulumi.Input<String>? recoveryStaticIPAddress;
+  final pulumi.Input<String>? recoverySubnetName;
+  final pulumi.Input<String>? staticIPAddress;
+  final pulumi.Input<String>? subnetName;
+  final pulumi.Input<List<String>>? tfoLBBackendAddressPoolIds;
+  final pulumi.Input<String>? tfoPublicIPAddressId;
+  final pulumi.Input<String>? tfoStaticIPAddress;
+  final pulumi.Input<String>? tfoSubnetName;
 
   /// Creates a new [IPConfigDetailsResponse].
   /// [ipAddressType] Optional.
@@ -74,21 +75,21 @@ class IPConfigDetailsResponse {
 
   factory IPConfigDetailsResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigDetailsResponse(
-      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
-      isPrimary: map['isPrimary'] == null ? null : map['isPrimary'] as bool,
-      isSeletedForFailover: map['isSeletedForFailover'] == null ? null : map['isSeletedForFailover'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      recoveryIPAddressType: map['recoveryIPAddressType'] == null ? null : map['recoveryIPAddressType'] as String,
-      recoveryLBBackendAddressPoolIds: map['recoveryLBBackendAddressPoolIds'] == null ? null : (map['recoveryLBBackendAddressPoolIds'] as List).cast<String>(),
-      recoveryPublicIPAddressId: map['recoveryPublicIPAddressId'] == null ? null : map['recoveryPublicIPAddressId'] as String,
-      recoveryStaticIPAddress: map['recoveryStaticIPAddress'] == null ? null : map['recoveryStaticIPAddress'] as String,
-      recoverySubnetName: map['recoverySubnetName'] == null ? null : map['recoverySubnetName'] as String,
-      staticIPAddress: map['staticIPAddress'] == null ? null : map['staticIPAddress'] as String,
-      subnetName: map['subnetName'] == null ? null : map['subnetName'] as String,
-      tfoLBBackendAddressPoolIds: map['tfoLBBackendAddressPoolIds'] == null ? null : (map['tfoLBBackendAddressPoolIds'] as List).cast<String>(),
-      tfoPublicIPAddressId: map['tfoPublicIPAddressId'] == null ? null : map['tfoPublicIPAddressId'] as String,
-      tfoStaticIPAddress: map['tfoStaticIPAddress'] == null ? null : map['tfoStaticIPAddress'] as String,
-      tfoSubnetName: map['tfoSubnetName'] == null ? null : map['tfoSubnetName'] as String,
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      isPrimary: map['isPrimary'] == null ? null : (map['isPrimary'] as bool).input(),
+      isSeletedForFailover: map['isSeletedForFailover'] == null ? null : (map['isSeletedForFailover'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryIPAddressType: map['recoveryIPAddressType'] == null ? null : (map['recoveryIPAddressType'] as String).input(),
+      recoveryLBBackendAddressPoolIds: map['recoveryLBBackendAddressPoolIds'] == null ? null : ((map['recoveryLBBackendAddressPoolIds'] as List).cast<String>()).input(),
+      recoveryPublicIPAddressId: map['recoveryPublicIPAddressId'] == null ? null : (map['recoveryPublicIPAddressId'] as String).input(),
+      recoveryStaticIPAddress: map['recoveryStaticIPAddress'] == null ? null : (map['recoveryStaticIPAddress'] as String).input(),
+      recoverySubnetName: map['recoverySubnetName'] == null ? null : (map['recoverySubnetName'] as String).input(),
+      staticIPAddress: map['staticIPAddress'] == null ? null : (map['staticIPAddress'] as String).input(),
+      subnetName: map['subnetName'] == null ? null : (map['subnetName'] as String).input(),
+      tfoLBBackendAddressPoolIds: map['tfoLBBackendAddressPoolIds'] == null ? null : ((map['tfoLBBackendAddressPoolIds'] as List).cast<String>()).input(),
+      tfoPublicIPAddressId: map['tfoPublicIPAddressId'] == null ? null : (map['tfoPublicIPAddressId'] as String).input(),
+      tfoStaticIPAddress: map['tfoStaticIPAddress'] == null ? null : (map['tfoStaticIPAddress'] as String).input(),
+      tfoSubnetName: map['tfoSubnetName'] == null ? null : (map['tfoSubnetName'] as String).input(),
     );
   }
 }

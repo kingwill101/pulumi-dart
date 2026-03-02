@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_upgrade_options_response_container_v1beta1.dart';
 
 /// NodeManagement defines the set of node management services turned on for the node pool.
 class NodeManagementResponseContainerV1beta1 {
   /// Whether the nodes will be automatically repaired.
-  final bool autoRepair;
+  final pulumi.Input<bool> autoRepair;
   /// Whether the nodes will be automatically upgraded.
-  final bool autoUpgrade;
+  final pulumi.Input<bool> autoUpgrade;
   /// Specifies the Auto Upgrade knobs for the node pool.
-  final AutoUpgradeOptionsResponseContainerV1beta1 upgradeOptions;
+  final pulumi.Input<AutoUpgradeOptionsResponseContainerV1beta1> upgradeOptions;
 
   /// Creates a new [NodeManagementResponseContainerV1beta1].
   /// [autoRepair] Whether the nodes will be automatically repaired.
@@ -25,15 +26,15 @@ class NodeManagementResponseContainerV1beta1 {
     return <String, dynamic>{
       'autoRepair': autoRepair,
       'autoUpgrade': autoUpgrade,
-      'upgradeOptions': upgradeOptions.toMap(),
+      'upgradeOptions': pulumi.Input.mapInputValue<AutoUpgradeOptionsResponseContainerV1beta1, Map<String, dynamic>>(upgradeOptions, (value) => value.toMap()),
     };
   }
 
   factory NodeManagementResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeManagementResponseContainerV1beta1(
-      autoRepair: map['autoRepair'] as bool,
-      autoUpgrade: map['autoUpgrade'] as bool,
-      upgradeOptions: AutoUpgradeOptionsResponseContainerV1beta1.fromMap((map['upgradeOptions'] as Map).cast<String, dynamic>()),
+      autoRepair: (map['autoRepair'] as bool).input(),
+      autoUpgrade: (map['autoUpgrade'] as bool).input(),
+      upgradeOptions: (AutoUpgradeOptionsResponseContainerV1beta1.fromMap((map['upgradeOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

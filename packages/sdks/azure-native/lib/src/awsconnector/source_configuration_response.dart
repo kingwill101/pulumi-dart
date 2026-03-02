@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of SourceConfiguration
 class SourceConfigurationResponse {
   /// The name of the application associated with the configuration.
-  final String? applicationName;
+  final pulumi.Input<String>? applicationName;
   /// The name of the configuration template.
-  final String? templateName;
+  final pulumi.Input<String>? templateName;
 
   /// Creates a new [SourceConfigurationResponse].
   /// [applicationName] The name of the application associated with the configuration.
@@ -25,8 +26,8 @@ class SourceConfigurationResponse {
 
   factory SourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SourceConfigurationResponse(
-      applicationName: map['applicationName'] == null ? null : map['applicationName'] as String,
-      templateName: map['templateName'] == null ? null : map['templateName'] as String,
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
     );
   }
 }

@@ -44,29 +44,18 @@ class ScheduledScalingRuleState {
   /// [timeZone] The time zone (Coordinated Universal Time).
   /// [weeklyTypes] The weekly types. Supports execution on multiple days. When `repeat_type` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
   ScheduledScalingRuleState({
-    pulumi.Output<int>? durationMinutes,
-    pulumi.Output<bool>? enable,
-    pulumi.Output<int>? firstScheduledTime,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? repeatType,
-    pulumi.Output<int>? reservedPubFlow,
-    pulumi.Output<int>? reservedSubFlow,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<String>? scheduleType,
-    pulumi.Output<String>? timeZone,
-    pulumi.Output<List<String>>? weeklyTypes,
-  }) :
-      durationMinutes = pulumi.Input.asOptionalInput<int>(durationMinutes),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      firstScheduledTime = pulumi.Input.asOptionalInput<int>(firstScheduledTime),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      repeatType = pulumi.Input.asOptionalInput<String>(repeatType),
-      reservedPubFlow = pulumi.Input.asOptionalInput<int>(reservedPubFlow),
-      reservedSubFlow = pulumi.Input.asOptionalInput<int>(reservedSubFlow),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      scheduleType = pulumi.Input.asOptionalInput<String>(scheduleType),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
-      weeklyTypes = pulumi.Input.asOptionalInput<List<String>>(weeklyTypes);
+    this.durationMinutes,
+    this.enable,
+    this.firstScheduledTime,
+    this.instanceId,
+    this.repeatType,
+    this.reservedPubFlow,
+    this.reservedSubFlow,
+    this.ruleName,
+    this.scheduleType,
+    this.timeZone,
+    this.weeklyTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class ScheduledScalingRuleState {
 
   factory ScheduledScalingRuleState.fromMap(Map<String, dynamic> map) {
     return ScheduledScalingRuleState(
-      durationMinutes: map['durationMinutes'] == null ? null : pulumi.Output.create<int>(map['durationMinutes'] as int),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      firstScheduledTime: map['firstScheduledTime'] == null ? null : pulumi.Output.create<int>(map['firstScheduledTime'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      repeatType: map['repeatType'] == null ? null : pulumi.Output.create<String>(map['repeatType'] as String),
-      reservedPubFlow: map['reservedPubFlow'] == null ? null : pulumi.Output.create<int>(map['reservedPubFlow'] as int),
-      reservedSubFlow: map['reservedSubFlow'] == null ? null : pulumi.Output.create<int>(map['reservedSubFlow'] as int),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      scheduleType: map['scheduleType'] == null ? null : pulumi.Output.create<String>(map['scheduleType'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
-      weeklyTypes: map['weeklyTypes'] == null ? null : pulumi.Output.create<List<String>>((map['weeklyTypes'] as List).cast<String>()),
+      durationMinutes: map['durationMinutes'] == null ? null : (map['durationMinutes'] as int).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      firstScheduledTime: map['firstScheduledTime'] == null ? null : (map['firstScheduledTime'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      repeatType: map['repeatType'] == null ? null : (map['repeatType'] as String).input(),
+      reservedPubFlow: map['reservedPubFlow'] == null ? null : (map['reservedPubFlow'] as int).input(),
+      reservedSubFlow: map['reservedSubFlow'] == null ? null : (map['reservedSubFlow'] as int).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      scheduleType: map['scheduleType'] == null ? null : (map['scheduleType'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      weeklyTypes: map['weeklyTypes'] == null ? null : ((map['weeklyTypes'] as List).cast<String>()).input(),
     );
   }
 }

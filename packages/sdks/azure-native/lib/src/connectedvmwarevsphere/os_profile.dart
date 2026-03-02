@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'os_profile_linux_configuration.dart';
 import 'os_profile_windows_configuration.dart';
 
 /// Specifies the operating system settings for the virtual machine.
 class OsProfile {
   /// Gets or sets administrator password.
-  final String? adminPassword;
+  final pulumi.Input<String>? adminPassword;
   /// Gets or sets administrator username.
-  final String? adminUsername;
+  final pulumi.Input<String>? adminUsername;
   /// Gets or sets computer name.
-  final String? computerName;
+  final pulumi.Input<String>? computerName;
   /// Gets or sets the guestId.
-  final String? guestId;
+  final pulumi.Input<String>? guestId;
   /// Specifies the linux configuration for update management.
-  final OsProfileLinuxConfiguration? linuxConfiguration;
+  final pulumi.Input<OsProfileLinuxConfiguration>? linuxConfiguration;
   /// Gets or sets the type of the os.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// Specifies the windows configuration for update management.
-  final OsProfileWindowsConfiguration? windowsConfiguration;
+  final pulumi.Input<OsProfileWindowsConfiguration>? windowsConfiguration;
 
   /// Creates a new [OsProfile].
   /// [adminPassword] Gets or sets administrator password.
@@ -44,21 +45,21 @@ class OsProfile {
       'adminUsername': ?adminUsername,
       'computerName': ?computerName,
       'guestId': ?guestId,
-      'linuxConfiguration': ?linuxConfiguration == null ? null : linuxConfiguration!.toMap(),
+      'linuxConfiguration': ?pulumi.Input.mapOptionalInputValue<OsProfileLinuxConfiguration, Map<String, dynamic>>(linuxConfiguration, (value) => value.toMap()),
       'osType': ?osType,
-      'windowsConfiguration': ?windowsConfiguration == null ? null : windowsConfiguration!.toMap(),
+      'windowsConfiguration': ?pulumi.Input.mapOptionalInputValue<OsProfileWindowsConfiguration, Map<String, dynamic>>(windowsConfiguration, (value) => value.toMap()),
     };
   }
 
   factory OsProfile.fromMap(Map<String, dynamic> map) {
     return OsProfile(
-      adminPassword: map['adminPassword'] == null ? null : map['adminPassword'] as String,
-      adminUsername: map['adminUsername'] == null ? null : map['adminUsername'] as String,
-      computerName: map['computerName'] == null ? null : map['computerName'] as String,
-      guestId: map['guestId'] == null ? null : map['guestId'] as String,
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : OsProfileLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>()),
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : OsProfileWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>()),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      guestId: map['guestId'] == null ? null : (map['guestId'] as String).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OsProfileLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OsProfileWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

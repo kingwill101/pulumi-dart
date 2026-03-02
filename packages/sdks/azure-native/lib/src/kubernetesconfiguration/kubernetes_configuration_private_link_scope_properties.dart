@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties that define a Azure Arc PrivateLinkScope resource.
 class KubernetesConfigurationPrivateLinkScopeProperties {
   /// Managed Cluster ARM ID for the private link scope  (Required)
-  final String clusterResourceId;
+  final pulumi.Input<String> clusterResourceId;
   /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
 
   /// Creates a new [KubernetesConfigurationPrivateLinkScopeProperties].
   /// [clusterResourceId] Managed Cluster ARM ID for the private link scope  (Required)
@@ -25,8 +26,8 @@ class KubernetesConfigurationPrivateLinkScopeProperties {
 
   factory KubernetesConfigurationPrivateLinkScopeProperties.fromMap(Map<String, dynamic> map) {
     return KubernetesConfigurationPrivateLinkScopeProperties(
-      clusterResourceId: map['clusterResourceId'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      clusterResourceId: (map['clusterResourceId'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
     );
   }
 }

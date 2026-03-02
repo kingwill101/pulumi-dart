@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// KeyPolicy assigned to the storage account.
 class KeyPolicyResponse {
   /// The key expiration period in days.
-  final int keyExpirationPeriodInDays;
+  final pulumi.Input<int> keyExpirationPeriodInDays;
 
   /// Creates a new [KeyPolicyResponse].
   /// [keyExpirationPeriodInDays] The key expiration period in days.
@@ -20,7 +21,7 @@ class KeyPolicyResponse {
 
   factory KeyPolicyResponse.fromMap(Map<String, dynamic> map) {
     return KeyPolicyResponse(
-      keyExpirationPeriodInDays: map['keyExpirationPeriodInDays'] as int,
+      keyExpirationPeriodInDays: (map['keyExpirationPeriodInDays'] as int).input(),
     );
   }
 }

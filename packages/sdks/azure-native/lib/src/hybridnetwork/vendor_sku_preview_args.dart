@@ -19,13 +19,10 @@ class VendorSkuPreviewArgs {
   /// [skuName] The name of the vendor sku.
   /// [vendorName] The name of the vendor.
   VendorSkuPreviewArgs({
-    pulumi.Output<String>? previewSubscription,
-    required pulumi.Output<String> skuName,
-    required pulumi.Output<String> vendorName,
-  }) :
-      previewSubscription = pulumi.Input.asOptionalInput<String>(previewSubscription),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      vendorName = pulumi.Input.asInput<String>(vendorName);
+    this.previewSubscription,
+    required this.skuName,
+    required this.vendorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VendorSkuPreviewArgs {
 
   factory VendorSkuPreviewArgs.fromMap(Map<String, dynamic> map) {
     return VendorSkuPreviewArgs(
-      previewSubscription: map['previewSubscription'] == null ? null : pulumi.Output.create<String>(map['previewSubscription'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      vendorName: pulumi.Output.create<String>(map['vendorName'] as String),
+      previewSubscription: map['previewSubscription'] == null ? null : (map['previewSubscription'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      vendorName: (map['vendorName'] as String).input(),
     );
   }
 }

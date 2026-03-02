@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Event Hub configuration.
 class DataImportSourcesEventHub {
   /// Event Hub consumer group name
-  final String? consumerGroup;
+  final pulumi.Input<String>? consumerGroup;
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The stream to collect from EventHub
-  final String? stream;
+  final pulumi.Input<String>? stream;
 
   /// Creates a new [DataImportSourcesEventHub].
   /// [consumerGroup] Event Hub consumer group name
@@ -31,9 +32,9 @@ class DataImportSourcesEventHub {
 
   factory DataImportSourcesEventHub.fromMap(Map<String, dynamic> map) {
     return DataImportSourcesEventHub(
-      consumerGroup: map['consumerGroup'] == null ? null : map['consumerGroup'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      stream: map['stream'] == null ? null : map['stream'] as String,
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      stream: map['stream'] == null ? null : (map['stream'] as String).input(),
     );
   }
 }

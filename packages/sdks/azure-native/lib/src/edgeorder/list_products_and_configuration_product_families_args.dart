@@ -24,15 +24,11 @@ class ListProductsAndConfigurationProductFamiliesArgs {
   /// [filterableProperties] Dictionary of filterable properties on product family.
   /// [skipToken] $skipToken is supported on list of product families, which provides the next page in the list of product families.
   ListProductsAndConfigurationProductFamiliesArgs({
-    pulumi.Output<CustomerSubscriptionDetails>? customerSubscriptionDetails,
-    pulumi.Output<String>? expand,
-    required pulumi.Output<Map<String, List<FilterableProperty>>> filterableProperties,
-    pulumi.Output<String>? skipToken,
-  }) :
-      customerSubscriptionDetails = pulumi.Input.asOptionalInput<CustomerSubscriptionDetails>(customerSubscriptionDetails),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      filterableProperties = pulumi.Input.asInput<Map<String, List<FilterableProperty>>>(filterableProperties),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken);
+    this.customerSubscriptionDetails,
+    this.expand,
+    required this.filterableProperties,
+    this.skipToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ListProductsAndConfigurationProductFamiliesArgs {
 
   factory ListProductsAndConfigurationProductFamiliesArgs.fromMap(Map<String, dynamic> map) {
     return ListProductsAndConfigurationProductFamiliesArgs(
-      customerSubscriptionDetails: map['customerSubscriptionDetails'] == null ? null : pulumi.Output.create<CustomerSubscriptionDetails>(CustomerSubscriptionDetails.fromMap((map['customerSubscriptionDetails'] as Map).cast<String, dynamic>())),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      filterableProperties: pulumi.Output.create<Map<String, List<FilterableProperty>>>(pulumi.Input.decodeMapValues<List<FilterableProperty>>(map['filterableProperties'], (value) => pulumi.Input.decodeList<FilterableProperty>(value, (value) => FilterableProperty.fromMap((value as Map).cast<String, dynamic>())))),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
+      customerSubscriptionDetails: map['customerSubscriptionDetails'] == null ? null : (CustomerSubscriptionDetails.fromMap((map['customerSubscriptionDetails'] as Map).cast<String, dynamic>())).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      filterableProperties: (pulumi.Input.decodeMapValues<List<FilterableProperty>>(map['filterableProperties'], (value) => pulumi.Input.decodeList<FilterableProperty>(value, (value) => FilterableProperty.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
     );
   }
 }

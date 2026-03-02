@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesLabelResponse {
   /// The name of the label or taint.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the label or taint.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [KubernetesLabelResponse].
   /// [key] The name of the label or taint.
@@ -24,8 +25,8 @@ class KubernetesLabelResponse {
 
   factory KubernetesLabelResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesLabelResponse(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

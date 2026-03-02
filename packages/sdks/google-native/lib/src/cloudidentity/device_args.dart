@@ -31,21 +31,14 @@ class DeviceArgs {
   /// [serialNumber] Serial Number of device. Example: HT82V1A01076.
   /// [wifiMacAddresses] WiFi MAC addresses of device.
   DeviceArgs({
-    pulumi.Output<String>? assetTag,
-    pulumi.Output<String>? customer,
-    pulumi.Output<String>? deviceId,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? lastSyncTime,
-    pulumi.Output<String>? serialNumber,
-    pulumi.Output<List<String>>? wifiMacAddresses,
-  }) :
-      assetTag = pulumi.Input.asOptionalInput<String>(assetTag),
-      customer = pulumi.Input.asOptionalInput<String>(customer),
-      deviceId = pulumi.Input.asOptionalInput<String>(deviceId),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      lastSyncTime = pulumi.Input.asOptionalInput<String>(lastSyncTime),
-      serialNumber = pulumi.Input.asOptionalInput<String>(serialNumber),
-      wifiMacAddresses = pulumi.Input.asOptionalInput<List<String>>(wifiMacAddresses);
+    this.assetTag,
+    this.customer,
+    this.deviceId,
+    this.hostname,
+    this.lastSyncTime,
+    this.serialNumber,
+    this.wifiMacAddresses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      assetTag: map['assetTag'] == null ? null : pulumi.Output.create<String>(map['assetTag'] as String),
-      customer: map['customer'] == null ? null : pulumi.Output.create<String>(map['customer'] as String),
-      deviceId: map['deviceId'] == null ? null : pulumi.Output.create<String>(map['deviceId'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      lastSyncTime: map['lastSyncTime'] == null ? null : pulumi.Output.create<String>(map['lastSyncTime'] as String),
-      serialNumber: map['serialNumber'] == null ? null : pulumi.Output.create<String>(map['serialNumber'] as String),
-      wifiMacAddresses: map['wifiMacAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['wifiMacAddresses'] as List).cast<String>()),
+      assetTag: map['assetTag'] == null ? null : (map['assetTag'] as String).input(),
+      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      lastSyncTime: map['lastSyncTime'] == null ? null : (map['lastSyncTime'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      wifiMacAddresses: map['wifiMacAddresses'] == null ? null : ((map['wifiMacAddresses'] as List).cast<String>()).input(),
     );
   }
 }

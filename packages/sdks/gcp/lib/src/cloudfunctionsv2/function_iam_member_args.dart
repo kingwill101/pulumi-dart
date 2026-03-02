@@ -44,19 +44,13 @@ class FunctionIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   FunctionIamMemberArgs({
-    required pulumi.Output<String> cloudFunction,
-    pulumi.Output<FunctionIamMemberCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      cloudFunction = pulumi.Input.asInput<String>(cloudFunction),
-      condition = pulumi.Input.asOptionalInput<FunctionIamMemberCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    required this.cloudFunction,
+    this.condition,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,12 +65,12 @@ class FunctionIamMemberArgs {
 
   factory FunctionIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return FunctionIamMemberArgs(
-      cloudFunction: pulumi.Output.create<String>(map['cloudFunction'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<FunctionIamMemberCondition>(FunctionIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      cloudFunction: (map['cloudFunction'] as String).input(),
+      condition: map['condition'] == null ? null : (FunctionIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

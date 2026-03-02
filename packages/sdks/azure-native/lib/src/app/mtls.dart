@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration properties for mutual TLS authentication
 class Mtls {
   /// Boolean indicating whether the mutual TLS authentication is enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [Mtls].
   /// [enabled] Boolean indicating whether the mutual TLS authentication is enabled
@@ -20,7 +21,7 @@ class Mtls {
 
   factory Mtls.fromMap(Map<String, dynamic> map) {
     return Mtls(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

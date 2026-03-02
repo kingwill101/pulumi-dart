@@ -29,19 +29,13 @@ class CustomDirectoryRoleArgs {
   /// [templateId] Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
   /// [version] The version of the role definition. This can be any arbitrary string between 1-128 characters.
   CustomDirectoryRoleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<List<CustomDirectoryRolePermission>> permissions,
-    pulumi.Output<String>? templateId,
-    required pulumi.Output<String> version,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      permissions = pulumi.Input.asInput<List<CustomDirectoryRolePermission>>(permissions),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId),
-      version = pulumi.Input.asInput<String>(version);
+    this.description,
+    required this.displayName,
+    required this.enabled,
+    required this.permissions,
+    this.templateId,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CustomDirectoryRoleArgs {
 
   factory CustomDirectoryRoleArgs.fromMap(Map<String, dynamic> map) {
     return CustomDirectoryRoleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      permissions: pulumi.Output.create<List<CustomDirectoryRolePermission>>(pulumi.Input.decodeList<CustomDirectoryRolePermission>(map['permissions'], (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>()))),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      permissions: (pulumi.Input.decodeList<CustomDirectoryRolePermission>(map['permissions'], (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetStaticIpsArgs {
   /// [location] The location to list Datastream IPs for. For example: `us-east1`.
   /// [project] Project from which to list static IP addresses. Defaults to project declared in the provider.
   GetStaticIpsArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStaticIpsArgs {
 
   factory GetStaticIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticIpsArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

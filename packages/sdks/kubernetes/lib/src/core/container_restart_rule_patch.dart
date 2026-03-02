@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_restart_rule_on_exit_codes_patch.dart';
 
 /// ContainerRestartRule describes how a container exit is handled.
 class ContainerRestartRulePatch {
   /// Specifies the action taken on a container exit if the requirements are satisfied. The only possible value is "Restart" to restart the container.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Represents the exit codes to check on container exits.
-  final ContainerRestartRuleOnExitCodesPatch? exitCodes;
+  final pulumi.Input<ContainerRestartRuleOnExitCodesPatch>? exitCodes;
 
   /// Creates a new [ContainerRestartRulePatch].
   /// [action] Specifies the action taken on a container exit if the requirements are satisfied. The only possible value is "Restart" to restart the container.
@@ -20,14 +21,14 @@ class ContainerRestartRulePatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'exitCodes': ?exitCodes == null ? null : exitCodes!.toMap(),
+      'exitCodes': ?pulumi.Input.mapOptionalInputValue<ContainerRestartRuleOnExitCodesPatch, Map<String, dynamic>>(exitCodes, (value) => value.toMap()),
     };
   }
 
   factory ContainerRestartRulePatch.fromMap(Map<String, dynamic> map) {
     return ContainerRestartRulePatch(
-      action: map['action'] == null ? null : map['action'] as String,
-      exitCodes: map['exitCodes'] == null ? null : ContainerRestartRuleOnExitCodesPatch.fromMap((map['exitCodes'] as Map).cast<String, dynamic>()),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      exitCodes: map['exitCodes'] == null ? null : (ContainerRestartRuleOnExitCodesPatch.fromMap((map['exitCodes'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

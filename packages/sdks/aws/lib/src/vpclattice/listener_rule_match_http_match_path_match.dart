@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_rule_match_http_match_path_match_match.dart';
 
 class ListenerRuleMatchHttpMatchPathMatch {
   /// Indicates whether the match is case sensitive.
   /// Default is `false`.
-  final bool? caseSensitive;
+  final pulumi.Input<bool>? caseSensitive;
   /// The header match type.
   /// See Path Match `match` Block for details.
-  final ListenerRuleMatchHttpMatchPathMatchMatch match;
+  final pulumi.Input<ListenerRuleMatchHttpMatchPathMatchMatch> match;
 
   /// Creates a new [ListenerRuleMatchHttpMatchPathMatch].
   /// [caseSensitive] Indicates whether the match is case sensitive.
@@ -21,14 +22,14 @@ class ListenerRuleMatchHttpMatchPathMatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caseSensitive': ?caseSensitive,
-      'match': match.toMap(),
+      'match': pulumi.Input.mapInputValue<ListenerRuleMatchHttpMatchPathMatchMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
     };
   }
 
   factory ListenerRuleMatchHttpMatchPathMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchPathMatch(
-      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
-      match: ListenerRuleMatchHttpMatchPathMatchMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      match: (ListenerRuleMatchHttpMatchPathMatchMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

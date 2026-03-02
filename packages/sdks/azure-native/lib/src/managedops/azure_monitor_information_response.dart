@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Monitor Insights service information.
 class AzureMonitorInformationResponse {
   /// ID of Data Collection Rule (DCR) associated with this service.
-  final String dcrId;
+  final pulumi.Input<String> dcrId;
   /// Indicates whether the service is enabled.
-  final String enablementStatus;
+  final pulumi.Input<String> enablementStatus;
 
   /// Creates a new [AzureMonitorInformationResponse].
   /// [dcrId] ID of Data Collection Rule (DCR) associated with this service.
@@ -25,8 +26,8 @@ class AzureMonitorInformationResponse {
 
   factory AzureMonitorInformationResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorInformationResponse(
-      dcrId: map['dcrId'] as String,
-      enablementStatus: map['enablementStatus'] as String,
+      dcrId: (map['dcrId'] as String).input(),
+      enablementStatus: (map['enablementStatus'] as String).input(),
     );
   }
 }

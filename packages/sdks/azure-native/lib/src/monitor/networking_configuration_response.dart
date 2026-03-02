@@ -6,11 +6,11 @@ import 'networking_route_response.dart';
 /// Networking configuration for the pipeline group instance.
 class NetworkingConfigurationResponse {
   /// External networking mode.
-  final String externalNetworkingMode;
+  final pulumi.Input<String> externalNetworkingMode;
   /// The address exposed on the cluster. Example: azuremonitorpipeline.contoso.com.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// Networking routes configuration.
-  final List<NetworkingRouteResponse> routes;
+  final pulumi.Input<List<NetworkingRouteResponse>> routes;
 
   /// Creates a new [NetworkingConfigurationResponse].
   /// [externalNetworkingMode] External networking mode.
@@ -26,15 +26,15 @@ class NetworkingConfigurationResponse {
     return <String, dynamic>{
       'externalNetworkingMode': externalNetworkingMode,
       'host': ?host,
-      'routes': pulumi.Input.encodeList<NetworkingRouteResponse, Map<String, dynamic>>(routes, (value) => value.toMap()),
+      'routes': pulumi.Input.mapInputValue<List<NetworkingRouteResponse>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<NetworkingRouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkingConfigurationResponse(
-      externalNetworkingMode: map['externalNetworkingMode'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
-      routes: pulumi.Input.decodeList<NetworkingRouteResponse>(map['routes'], (value) => NetworkingRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
+      externalNetworkingMode: (map['externalNetworkingMode'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      routes: (pulumi.Input.decodeList<NetworkingRouteResponse>(map['routes'], (value) => NetworkingRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

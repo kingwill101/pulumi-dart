@@ -44,27 +44,17 @@ class MongoCollectionArgs {
   /// [shardKey] The name of the key to partition on for sharding. There must not be any other unique index keys. Changing this forces a new resource to be created.
   /// [throughput] The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   MongoCollectionArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<int>? analyticalStorageTtl,
-    pulumi.Output<MongoCollectionAutoscaleSettings>? autoscaleSettings,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<int>? defaultTtlSeconds,
-    pulumi.Output<List<MongoCollectionIndex>>? indices,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? shardKey,
-    pulumi.Output<int>? throughput,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      analyticalStorageTtl = pulumi.Input.asOptionalInput<int>(analyticalStorageTtl),
-      autoscaleSettings = pulumi.Input.asOptionalInput<MongoCollectionAutoscaleSettings>(autoscaleSettings),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      defaultTtlSeconds = pulumi.Input.asOptionalInput<int>(defaultTtlSeconds),
-      indices = pulumi.Input.asOptionalInput<List<MongoCollectionIndex>>(indices),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shardKey = pulumi.Input.asOptionalInput<String>(shardKey),
-      throughput = pulumi.Input.asOptionalInput<int>(throughput);
+    required this.accountName,
+    this.analyticalStorageTtl,
+    this.autoscaleSettings,
+    required this.databaseName,
+    this.defaultTtlSeconds,
+    this.indices,
+    this.name,
+    required this.resourceGroupName,
+    this.shardKey,
+    this.throughput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class MongoCollectionArgs {
 
   factory MongoCollectionArgs.fromMap(Map<String, dynamic> map) {
     return MongoCollectionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : pulumi.Output.create<int>(map['analyticalStorageTtl'] as int),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : pulumi.Output.create<MongoCollectionAutoscaleSettings>(MongoCollectionAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      defaultTtlSeconds: map['defaultTtlSeconds'] == null ? null : pulumi.Output.create<int>(map['defaultTtlSeconds'] as int),
-      indices: map['indices'] == null ? null : pulumi.Output.create<List<MongoCollectionIndex>>(pulumi.Input.decodeList<MongoCollectionIndex>(map['indices'], (value) => MongoCollectionIndex.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shardKey: map['shardKey'] == null ? null : pulumi.Output.create<String>(map['shardKey'] as String),
-      throughput: map['throughput'] == null ? null : pulumi.Output.create<int>(map['throughput'] as int),
+      accountName: (map['accountName'] as String).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (MongoCollectionAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      defaultTtlSeconds: map['defaultTtlSeconds'] == null ? null : (map['defaultTtlSeconds'] as int).input(),
+      indices: map['indices'] == null ? null : (pulumi.Input.decodeList<MongoCollectionIndex>(map['indices'], (value) => MongoCollectionIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shardKey: map['shardKey'] == null ? null : (map['shardKey'] as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
     );
   }
 }

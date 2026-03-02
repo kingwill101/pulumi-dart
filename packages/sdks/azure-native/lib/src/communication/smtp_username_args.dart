@@ -28,19 +28,13 @@ class SmtpUsernameArgs {
   /// [tenantId] The tenant of the linked Entra Application.
   /// [username] The SMTP username. Could be free form or in the email address format.
   SmtpUsernameArgs({
-    required pulumi.Output<String> communicationServiceName,
-    required pulumi.Output<String> entraApplicationId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? smtpUsername,
-    required pulumi.Output<String> tenantId,
-    required pulumi.Output<String> username,
-  }) :
-      communicationServiceName = pulumi.Input.asInput<String>(communicationServiceName),
-      entraApplicationId = pulumi.Input.asInput<String>(entraApplicationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      smtpUsername = pulumi.Input.asOptionalInput<String>(smtpUsername),
-      tenantId = pulumi.Input.asInput<String>(tenantId),
-      username = pulumi.Input.asInput<String>(username);
+    required this.communicationServiceName,
+    required this.entraApplicationId,
+    required this.resourceGroupName,
+    this.smtpUsername,
+    required this.tenantId,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SmtpUsernameArgs {
 
   factory SmtpUsernameArgs.fromMap(Map<String, dynamic> map) {
     return SmtpUsernameArgs(
-      communicationServiceName: pulumi.Output.create<String>(map['communicationServiceName'] as String),
-      entraApplicationId: pulumi.Output.create<String>(map['entraApplicationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      smtpUsername: map['smtpUsername'] == null ? null : pulumi.Output.create<String>(map['smtpUsername'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      communicationServiceName: (map['communicationServiceName'] as String).input(),
+      entraApplicationId: (map['entraApplicationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      smtpUsername: map['smtpUsername'] == null ? null : (map['smtpUsername'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

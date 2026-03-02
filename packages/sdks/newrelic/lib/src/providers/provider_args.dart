@@ -37,33 +37,20 @@ class ProviderArgs {
   /// [region] The data center for which your New Relic account is configured. Only one region per provider block is permitted.
   /// [syntheticsApiUrl] Optional.
   ProviderArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? adminApiKey,
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<String>? apiUrl,
-    pulumi.Output<String>? cacertFile,
-    pulumi.Output<String>? infrastructureApiUrl,
-    pulumi.Output<bool>? insecureSkipVerify,
-    pulumi.Output<String>? insightsInsertKey,
-    pulumi.Output<String>? insightsInsertUrl,
-    pulumi.Output<String>? insightsQueryUrl,
-    pulumi.Output<String>? nerdgraphApiUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? syntheticsApiUrl,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      adminApiKey = pulumi.Input.asOptionalInput<String>(adminApiKey),
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      apiUrl = pulumi.Input.asOptionalInput<String>(apiUrl),
-      cacertFile = pulumi.Input.asOptionalInput<String>(cacertFile),
-      infrastructureApiUrl = pulumi.Input.asOptionalInput<String>(infrastructureApiUrl),
-      insecureSkipVerify = pulumi.Input.asOptionalInput<bool>(insecureSkipVerify),
-      insightsInsertKey = pulumi.Input.asOptionalInput<String>(insightsInsertKey),
-      insightsInsertUrl = pulumi.Input.asOptionalInput<String>(insightsInsertUrl),
-      insightsQueryUrl = pulumi.Input.asOptionalInput<String>(insightsQueryUrl),
-      nerdgraphApiUrl = pulumi.Input.asOptionalInput<String>(nerdgraphApiUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      syntheticsApiUrl = pulumi.Input.asOptionalInput<String>(syntheticsApiUrl);
+    this.accountId,
+    this.adminApiKey,
+    this.apiKey,
+    this.apiUrl,
+    this.cacertFile,
+    this.infrastructureApiUrl,
+    this.insecureSkipVerify,
+    this.insightsInsertKey,
+    this.insightsInsertUrl,
+    this.insightsQueryUrl,
+    this.nerdgraphApiUrl,
+    this.region,
+    this.syntheticsApiUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,19 +72,19 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      adminApiKey: map['adminApiKey'] == null ? null : pulumi.Output.create<String>(map['adminApiKey'] as String),
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      apiUrl: map['apiUrl'] == null ? null : pulumi.Output.create<String>(map['apiUrl'] as String),
-      cacertFile: map['cacertFile'] == null ? null : pulumi.Output.create<String>(map['cacertFile'] as String),
-      infrastructureApiUrl: map['infrastructureApiUrl'] == null ? null : pulumi.Output.create<String>(map['infrastructureApiUrl'] as String),
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : pulumi.Output.create<bool>(map['insecureSkipVerify'] as bool),
-      insightsInsertKey: map['insightsInsertKey'] == null ? null : pulumi.Output.create<String>(map['insightsInsertKey'] as String),
-      insightsInsertUrl: map['insightsInsertUrl'] == null ? null : pulumi.Output.create<String>(map['insightsInsertUrl'] as String),
-      insightsQueryUrl: map['insightsQueryUrl'] == null ? null : pulumi.Output.create<String>(map['insightsQueryUrl'] as String),
-      nerdgraphApiUrl: map['nerdgraphApiUrl'] == null ? null : pulumi.Output.create<String>(map['nerdgraphApiUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      syntheticsApiUrl: map['syntheticsApiUrl'] == null ? null : pulumi.Output.create<String>(map['syntheticsApiUrl'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      adminApiKey: map['adminApiKey'] == null ? null : (map['adminApiKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl'] as String).input(),
+      cacertFile: map['cacertFile'] == null ? null : (map['cacertFile'] as String).input(),
+      infrastructureApiUrl: map['infrastructureApiUrl'] == null ? null : (map['infrastructureApiUrl'] as String).input(),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
+      insightsInsertKey: map['insightsInsertKey'] == null ? null : (map['insightsInsertKey'] as String).input(),
+      insightsInsertUrl: map['insightsInsertUrl'] == null ? null : (map['insightsInsertUrl'] as String).input(),
+      insightsQueryUrl: map['insightsQueryUrl'] == null ? null : (map['insightsQueryUrl'] as String).input(),
+      nerdgraphApiUrl: map['nerdgraphApiUrl'] == null ? null : (map['nerdgraphApiUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      syntheticsApiUrl: map['syntheticsApiUrl'] == null ? null : (map['syntheticsApiUrl'] as String).input(),
     );
   }
 }

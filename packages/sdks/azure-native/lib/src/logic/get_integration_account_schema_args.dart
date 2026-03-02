@@ -19,13 +19,10 @@ class GetIntegrationAccountSchemaArgs {
   /// [resourceGroupName] The resource group name.
   /// [schemaName] The integration account schema name.
   GetIntegrationAccountSchemaArgs({
-    required pulumi.Output<String> integrationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-  }) :
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName);
+    required this.integrationAccountName,
+    required this.resourceGroupName,
+    required this.schemaName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIntegrationAccountSchemaArgs {
 
   factory GetIntegrationAccountSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountSchemaArgs(
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
     );
   }
 }

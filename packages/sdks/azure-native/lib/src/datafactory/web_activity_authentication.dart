@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_key_vault_secret_reference.dart';
 import 'credential_reference.dart';
 
 /// Web activity authentication properties.
 class WebActivityAuthentication {
   /// The credential reference containing authentication information.
-  final CredentialReference? credential;
+  final pulumi.Input<CredentialReference>? credential;
   /// Password for the PFX file or basic authentication / Secret when used for ServicePrincipal
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// Base64-encoded contents of a PFX file or Certificate when used for ServicePrincipal
-  final AzureKeyVaultSecretReference? pfx;
+  final pulumi.Input<AzureKeyVaultSecretReference>? pfx;
   /// Resource for which Azure Auth token will be requested when using MSI Authentication. Type: string (or Expression with resultType string).
-  final dynamic resource;
+  final pulumi.Input<dynamic>? resource;
   /// Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
-  final String? type;
+  final pulumi.Input<String>? type;
   /// TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
-  final dynamic userTenant;
+  final pulumi.Input<dynamic>? userTenant;
   /// Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal. Type: string (or Expression with resultType string).
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
 
   /// Creates a new [WebActivityAuthentication].
   /// [credential] The credential reference containing authentication information.
@@ -40,9 +41,9 @@ class WebActivityAuthentication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credential': ?credential == null ? null : credential!.toMap(),
-      'password': ?password == null ? null : password!.toMap(),
-      'pfx': ?pfx == null ? null : pfx!.toMap(),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReference, Map<String, dynamic>>(credential, (value) => value.toMap()),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'pfx': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(pfx, (value) => value.toMap()),
       'resource': ?resource,
       'type': ?type,
       'userTenant': ?userTenant,
@@ -52,13 +53,13 @@ class WebActivityAuthentication {
 
   factory WebActivityAuthentication.fromMap(Map<String, dynamic> map) {
     return WebActivityAuthentication(
-      credential: map['credential'] == null ? null : CredentialReference.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      pfx: map['pfx'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['pfx'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null ? null : map['resource'],
-      type: map['type'] == null ? null : map['type'] as String,
-      userTenant: map['userTenant'] == null ? null : map['userTenant'],
-      username: map['username'] == null ? null : map['username'],
+      credential: map['credential'] == null ? null : (CredentialReference.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      pfx: map['pfx'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['pfx'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (map['resource']).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userTenant: map['userTenant'] == null ? null : (map['userTenant']).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
     );
   }
 }

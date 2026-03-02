@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'defender_fo_databases_aws_offering_arc_auto_provisioning.dart';
 import 'defender_fo_databases_aws_offering_databases_dspm.dart';
 import 'defender_fo_databases_aws_offering_rds.dart';
@@ -7,14 +8,14 @@ import 'defender_fo_databases_aws_offering_rds.dart';
 /// The Defender for Databases AWS offering
 class DefenderFoDatabasesAwsOffering {
   /// The ARC autoprovisioning configuration
-  final DefenderFoDatabasesAwsOfferingArcAutoProvisioning? arcAutoProvisioning;
+  final pulumi.Input<DefenderFoDatabasesAwsOfferingArcAutoProvisioning>? arcAutoProvisioning;
   /// The databases data security posture management (DSPM) configuration
-  final DefenderFoDatabasesAwsOfferingDatabasesDspm? databasesDspm;
+  final pulumi.Input<DefenderFoDatabasesAwsOfferingDatabasesDspm>? databasesDspm;
   /// The type of the security offering.
   /// Expected value is 'DefenderForDatabasesAws'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
   /// The RDS configuration
-  final DefenderFoDatabasesAwsOfferingRds? rds;
+  final pulumi.Input<DefenderFoDatabasesAwsOfferingRds>? rds;
 
   /// Creates a new [DefenderFoDatabasesAwsOffering].
   /// [arcAutoProvisioning] The ARC autoprovisioning configuration
@@ -30,19 +31,19 @@ class DefenderFoDatabasesAwsOffering {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arcAutoProvisioning': ?arcAutoProvisioning == null ? null : arcAutoProvisioning!.toMap(),
-      'databasesDspm': ?databasesDspm == null ? null : databasesDspm!.toMap(),
+      'arcAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderFoDatabasesAwsOfferingArcAutoProvisioning, Map<String, dynamic>>(arcAutoProvisioning, (value) => value.toMap()),
+      'databasesDspm': ?pulumi.Input.mapOptionalInputValue<DefenderFoDatabasesAwsOfferingDatabasesDspm, Map<String, dynamic>>(databasesDspm, (value) => value.toMap()),
       'offeringType': offeringType,
-      'rds': ?rds == null ? null : rds!.toMap(),
+      'rds': ?pulumi.Input.mapOptionalInputValue<DefenderFoDatabasesAwsOfferingRds, Map<String, dynamic>>(rds, (value) => value.toMap()),
     };
   }
 
   factory DefenderFoDatabasesAwsOffering.fromMap(Map<String, dynamic> map) {
     return DefenderFoDatabasesAwsOffering(
-      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : DefenderFoDatabasesAwsOfferingArcAutoProvisioning.fromMap((map['arcAutoProvisioning'] as Map).cast<String, dynamic>()),
-      databasesDspm: map['databasesDspm'] == null ? null : DefenderFoDatabasesAwsOfferingDatabasesDspm.fromMap((map['databasesDspm'] as Map).cast<String, dynamic>()),
-      offeringType: map['offeringType'] as String,
-      rds: map['rds'] == null ? null : DefenderFoDatabasesAwsOfferingRds.fromMap((map['rds'] as Map).cast<String, dynamic>()),
+      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderFoDatabasesAwsOfferingArcAutoProvisioning.fromMap((map['arcAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
+      databasesDspm: map['databasesDspm'] == null ? null : (DefenderFoDatabasesAwsOfferingDatabasesDspm.fromMap((map['databasesDspm'] as Map).cast<String, dynamic>())).input(),
+      offeringType: (map['offeringType'] as String).input(),
+      rds: map['rds'] == null ? null : (DefenderFoDatabasesAwsOfferingRds.fromMap((map['rds'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

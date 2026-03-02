@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
 class WorkloadMetadataConfigResponseContainerV1beta1 {
   /// Mode is the configuration for how to expose metadata to workloads running on the node pool.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-  final String nodeMetadata;
+  final pulumi.Input<String> nodeMetadata;
 
   /// Creates a new [WorkloadMetadataConfigResponseContainerV1beta1].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node pool.
@@ -25,8 +26,8 @@ class WorkloadMetadataConfigResponseContainerV1beta1 {
 
   factory WorkloadMetadataConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkloadMetadataConfigResponseContainerV1beta1(
-      mode: map['mode'] as String,
-      nodeMetadata: map['nodeMetadata'] as String,
+      mode: (map['mode'] as String).input(),
+      nodeMetadata: (map['nodeMetadata'] as String).input(),
     );
   }
 }

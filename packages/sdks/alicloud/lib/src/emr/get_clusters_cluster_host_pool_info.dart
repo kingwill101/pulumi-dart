@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterHostPoolInfo {
   /// Machine pool ID.
-  final String hpBizId;
+  final pulumi.Input<String> hpBizId;
   /// The name of the machine pool.
-  final String hpName;
+  final pulumi.Input<String> hpName;
 
   /// Creates a new [GetClustersClusterHostPoolInfo].
   /// [hpBizId] Machine pool ID.
@@ -24,8 +25,8 @@ class GetClustersClusterHostPoolInfo {
 
   factory GetClustersClusterHostPoolInfo.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterHostPoolInfo(
-      hpBizId: map['hpBizId'] as String,
-      hpName: map['hpName'] as String,
+      hpBizId: (map['hpBizId'] as String).input(),
+      hpName: (map['hpName'] as String).input(),
     );
   }
 }

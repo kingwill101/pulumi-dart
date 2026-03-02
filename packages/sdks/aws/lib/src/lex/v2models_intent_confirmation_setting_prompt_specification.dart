@@ -6,15 +6,15 @@ import 'v2models_intent_confirmation_setting_prompt_specification_prompt_attempt
 
 class V2modelsIntentConfirmationSettingPromptSpecification {
   /// Whether the user can interrupt a speech prompt from the bot.
-  final bool? allowInterrupt;
+  final pulumi.Input<bool>? allowInterrupt;
   /// Maximum number of times the bot tries to elicit a response from the user using this prompt.
-  final int maxRetries;
+  final pulumi.Input<int> maxRetries;
   /// Configuration block for messages that Amazon Lex can send to the user. Amazon Lex chooses the actual message to send at runtime. See `message_group`.
-  final List<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>? messageGroups;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>>? messageGroups;
   /// How a message is selected from a message group among retries. Valid values are `Random` and `Ordered`.
-  final String? messageSelectionStrategy;
+  final pulumi.Input<String>? messageSelectionStrategy;
   /// Configuration block for advanced settings on each attempt of the prompt. See `prompt_attempts_specification`.
-  final List<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>? promptAttemptsSpecifications;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>>? promptAttemptsSpecifications;
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecification].
   /// [allowInterrupt] Whether the user can interrupt a speech prompt from the bot.
@@ -34,19 +34,19 @@ class V2modelsIntentConfirmationSettingPromptSpecification {
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
       'maxRetries': maxRetries,
-      'messageGroups': ?messageGroups == null ? null : pulumi.Input.encodeList<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup, Map<String, dynamic>>(messageGroups!, (value) => value.toMap()),
+      'messageGroups': ?pulumi.Input.mapOptionalInputValue<List<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>, List<Map<String, dynamic>>>(messageGroups, (value) => pulumi.Input.encodeList<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'messageSelectionStrategy': ?messageSelectionStrategy,
-      'promptAttemptsSpecifications': ?promptAttemptsSpecifications == null ? null : pulumi.Input.encodeList<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification, Map<String, dynamic>>(promptAttemptsSpecifications!, (value) => value.toMap()),
+      'promptAttemptsSpecifications': ?pulumi.Input.mapOptionalInputValue<List<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>, List<Map<String, dynamic>>>(promptAttemptsSpecifications, (value) => pulumi.Input.encodeList<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory V2modelsIntentConfirmationSettingPromptSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
-      maxRetries: map['maxRetries'] as int,
-      messageGroups: map['messageGroups'] == null ? null : pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>(map['messageGroups'], (value) => V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>())),
-      messageSelectionStrategy: map['messageSelectionStrategy'] == null ? null : map['messageSelectionStrategy'] as String,
-      promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null ? null : pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>(map['promptAttemptsSpecifications'], (value) => V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>())),
+      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
+      maxRetries: (map['maxRetries'] as int).input(),
+      messageGroups: map['messageGroups'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>(map['messageGroups'], (value) => V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messageSelectionStrategy: map['messageSelectionStrategy'] == null ? null : (map['messageSelectionStrategy'] as String).input(),
+      promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>(map['promptAttemptsSpecifications'], (value) => V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

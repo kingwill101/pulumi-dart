@@ -46,29 +46,18 @@ class PrefixState {
   /// [wanValidationSignedMessage] The signed base64-encoded authorization message, which will be sent to Microsoft for WAN verification. Required when provisioning an IPv4 prefix or IPv6 global prefix. Refer to [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/create-custom-ip-address-prefix-cli#certificate-readiness) for more details about the process for your RIR. Changing this forces a new resource to be created.
   /// [zones] Specifies a list of Availability Zones in which this Custom IP Prefix should be located. Should not be specified when creating an IPv6 global prefix. Changing this forces a new resource to be created.
   PrefixState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<bool>? commissioningEnabled,
-    pulumi.Output<bool>? internetAdvertisingDisabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentCustomIpPrefixId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? roaValidityEndDate,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? wanValidationSignedMessage,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      commissioningEnabled = pulumi.Input.asOptionalInput<bool>(commissioningEnabled),
-      internetAdvertisingDisabled = pulumi.Input.asOptionalInput<bool>(internetAdvertisingDisabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentCustomIpPrefixId = pulumi.Input.asOptionalInput<String>(parentCustomIpPrefixId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      roaValidityEndDate = pulumi.Input.asOptionalInput<String>(roaValidityEndDate),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      wanValidationSignedMessage = pulumi.Input.asOptionalInput<String>(wanValidationSignedMessage),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.cidr,
+    this.commissioningEnabled,
+    this.internetAdvertisingDisabled,
+    this.location,
+    this.name,
+    this.parentCustomIpPrefixId,
+    this.resourceGroupName,
+    this.roaValidityEndDate,
+    this.tags,
+    this.wanValidationSignedMessage,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class PrefixState {
 
   factory PrefixState.fromMap(Map<String, dynamic> map) {
     return PrefixState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      commissioningEnabled: map['commissioningEnabled'] == null ? null : pulumi.Output.create<bool>(map['commissioningEnabled'] as bool),
-      internetAdvertisingDisabled: map['internetAdvertisingDisabled'] == null ? null : pulumi.Output.create<bool>(map['internetAdvertisingDisabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentCustomIpPrefixId: map['parentCustomIpPrefixId'] == null ? null : pulumi.Output.create<String>(map['parentCustomIpPrefixId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roaValidityEndDate: map['roaValidityEndDate'] == null ? null : pulumi.Output.create<String>(map['roaValidityEndDate'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      wanValidationSignedMessage: map['wanValidationSignedMessage'] == null ? null : pulumi.Output.create<String>(map['wanValidationSignedMessage'] as String),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      commissioningEnabled: map['commissioningEnabled'] == null ? null : (map['commissioningEnabled'] as bool).input(),
+      internetAdvertisingDisabled: map['internetAdvertisingDisabled'] == null ? null : (map['internetAdvertisingDisabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentCustomIpPrefixId: map['parentCustomIpPrefixId'] == null ? null : (map['parentCustomIpPrefixId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      roaValidityEndDate: map['roaValidityEndDate'] == null ? null : (map['roaValidityEndDate'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      wanValidationSignedMessage: map['wanValidationSignedMessage'] == null ? null : (map['wanValidationSignedMessage'] as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

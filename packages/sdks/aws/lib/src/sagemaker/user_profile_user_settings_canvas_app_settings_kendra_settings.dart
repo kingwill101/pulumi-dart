@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileUserSettingsCanvasAppSettingsKendraSettings {
   /// Describes whether the document querying feature is enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettingsKendraSettings].
   /// [status] Describes whether the document querying feature is enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
@@ -19,7 +20,7 @@ class UserProfileUserSettingsCanvasAppSettingsKendraSettings {
 
   factory UserProfileUserSettingsCanvasAppSettingsKendraSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsKendraSettings(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

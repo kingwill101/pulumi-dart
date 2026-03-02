@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchNextStepDialogAction {
   /// If the dialog action is `ElicitSlot`, defines the slot to elicit from the user.
-  final String? slotToElicit;
+  final pulumi.Input<String>? slotToElicit;
   /// Whether the next message for the intent is _not_ used.
-  final bool? suppressNextMessage;
+  final pulumi.Input<bool>? suppressNextMessage;
   /// Action that the bot should execute. Valid values are `ElicitIntent`, `StartIntent`, `ElicitSlot`, `EvaluateConditional`, `InvokeDialogCodeHook`, `ConfirmIntent`, `FulfillIntent`, `CloseIntent`, `EndConversation`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchNextStepDialogAction].
   /// [slotToElicit] If the dialog action is `ElicitSlot`, defines the slot to elicit from the user.
@@ -29,9 +30,9 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccess
 
   factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchNextStepDialogAction.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchNextStepDialogAction(
-      slotToElicit: map['slotToElicit'] == null ? null : map['slotToElicit'] as String,
-      suppressNextMessage: map['suppressNextMessage'] == null ? null : map['suppressNextMessage'] as bool,
-      type: map['type'] as String,
+      slotToElicit: map['slotToElicit'] == null ? null : (map['slotToElicit'] as String).input(),
+      suppressNextMessage: map['suppressNextMessage'] == null ? null : (map['suppressNextMessage'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

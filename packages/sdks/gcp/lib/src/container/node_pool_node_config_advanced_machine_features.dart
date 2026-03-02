@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigAdvancedMachineFeatures {
   /// Whether the node should have nested virtualization enabled.
-  final bool? enableNestedVirtualization;
+  final pulumi.Input<bool>? enableNestedVirtualization;
   /// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
-  final String? performanceMonitoringUnit;
+  final pulumi.Input<String>? performanceMonitoringUnit;
   /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
-  final int threadsPerCore;
+  final pulumi.Input<int> threadsPerCore;
 
   /// Creates a new [NodePoolNodeConfigAdvancedMachineFeatures].
   /// [enableNestedVirtualization] Whether the node should have nested virtualization enabled.
@@ -29,9 +30,9 @@ class NodePoolNodeConfigAdvancedMachineFeatures {
 
   factory NodePoolNodeConfigAdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigAdvancedMachineFeatures(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : map['enableNestedVirtualization'] as bool,
-      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : map['performanceMonitoringUnit'] as String,
-      threadsPerCore: map['threadsPerCore'] as int,
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
+      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : (map['performanceMonitoringUnit'] as String).input(),
+      threadsPerCore: (map['threadsPerCore'] as int).input(),
     );
   }
 }

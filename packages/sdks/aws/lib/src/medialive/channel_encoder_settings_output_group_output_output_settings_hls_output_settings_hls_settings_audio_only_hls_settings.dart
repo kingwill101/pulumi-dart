@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_hls_output_settings_hls_settings_audio_only_hls_settings_audio_only_image.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings {
-  final String? audioGroupId;
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettingsAudioOnlyImage? audioOnlyImage;
-  final String? audioTrackType;
-  final String? segmentType;
+  final pulumi.Input<String>? audioGroupId;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettingsAudioOnlyImage>? audioOnlyImage;
+  final pulumi.Input<String>? audioTrackType;
+  final pulumi.Input<String>? segmentType;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings].
   /// [audioGroupId] Optional.
@@ -23,7 +24,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'audioGroupId': ?audioGroupId,
-      'audioOnlyImage': ?audioOnlyImage == null ? null : audioOnlyImage!.toMap(),
+      'audioOnlyImage': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettingsAudioOnlyImage, Map<String, dynamic>>(audioOnlyImage, (value) => value.toMap()),
       'audioTrackType': ?audioTrackType,
       'segmentType': ?segmentType,
     };
@@ -31,10 +32,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings(
-      audioGroupId: map['audioGroupId'] == null ? null : map['audioGroupId'] as String,
-      audioOnlyImage: map['audioOnlyImage'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettingsAudioOnlyImage.fromMap((map['audioOnlyImage'] as Map).cast<String, dynamic>()),
-      audioTrackType: map['audioTrackType'] == null ? null : map['audioTrackType'] as String,
-      segmentType: map['segmentType'] == null ? null : map['segmentType'] as String,
+      audioGroupId: map['audioGroupId'] == null ? null : (map['audioGroupId'] as String).input(),
+      audioOnlyImage: map['audioOnlyImage'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettingsAudioOnlyImage.fromMap((map['audioOnlyImage'] as Map).cast<String, dynamic>())).input(),
+      audioTrackType: map['audioTrackType'] == null ? null : (map['audioTrackType'] as String).input(),
+      segmentType: map['segmentType'] == null ? null : (map['segmentType'] as String).input(),
     );
   }
 }

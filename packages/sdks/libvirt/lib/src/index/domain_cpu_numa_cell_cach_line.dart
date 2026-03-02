@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuNumaCellCachLine {
   /// Defines the unit of measurement for the cache line size, such as bytes or kilobytes.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// Sets the actual value for the cache line size as defined by the line unit.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DomainCpuNumaCellCachLine].
   /// [unit] Defines the unit of measurement for the cache line size, such as bytes or kilobytes.
@@ -24,8 +25,8 @@ class DomainCpuNumaCellCachLine {
 
   factory DomainCpuNumaCellCachLine.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaCellCachLine(
-      unit: map['unit'] as String,
-      value: map['value'] as String,
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

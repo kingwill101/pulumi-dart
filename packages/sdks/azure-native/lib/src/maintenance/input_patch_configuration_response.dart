@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'input_linux_parameters_response.dart';
 import 'input_windows_parameters_response.dart';
 
 /// Input configuration for a patch run
 class InputPatchConfigurationResponse {
   /// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
-  final InputLinuxParametersResponse? linuxParameters;
+  final pulumi.Input<InputLinuxParametersResponse>? linuxParameters;
   /// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
-  final String? rebootSetting;
+  final pulumi.Input<String>? rebootSetting;
   /// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
-  final InputWindowsParametersResponse? windowsParameters;
+  final pulumi.Input<InputWindowsParametersResponse>? windowsParameters;
 
   /// Creates a new [InputPatchConfigurationResponse].
   /// [linuxParameters] Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
@@ -24,17 +25,17 @@ class InputPatchConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linuxParameters': ?linuxParameters == null ? null : linuxParameters!.toMap(),
+      'linuxParameters': ?pulumi.Input.mapOptionalInputValue<InputLinuxParametersResponse, Map<String, dynamic>>(linuxParameters, (value) => value.toMap()),
       'rebootSetting': ?rebootSetting,
-      'windowsParameters': ?windowsParameters == null ? null : windowsParameters!.toMap(),
+      'windowsParameters': ?pulumi.Input.mapOptionalInputValue<InputWindowsParametersResponse, Map<String, dynamic>>(windowsParameters, (value) => value.toMap()),
     };
   }
 
   factory InputPatchConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return InputPatchConfigurationResponse(
-      linuxParameters: map['linuxParameters'] == null ? null : InputLinuxParametersResponse.fromMap((map['linuxParameters'] as Map).cast<String, dynamic>()),
-      rebootSetting: map['rebootSetting'] == null ? null : map['rebootSetting'] as String,
-      windowsParameters: map['windowsParameters'] == null ? null : InputWindowsParametersResponse.fromMap((map['windowsParameters'] as Map).cast<String, dynamic>()),
+      linuxParameters: map['linuxParameters'] == null ? null : (InputLinuxParametersResponse.fromMap((map['linuxParameters'] as Map).cast<String, dynamic>())).input(),
+      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting'] as String).input(),
+      windowsParameters: map['windowsParameters'] == null ? null : (InputWindowsParametersResponse.fromMap((map['windowsParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSlotsSlot {
   /// The name of the database where Replication Slot is located.
-  final String database;
+  final pulumi.Input<String> database;
   /// The plugin used by Replication Slot.
-  final String plugin;
+  final pulumi.Input<String> plugin;
   /// The Replication Slot name.
-  final String slotName;
+  final pulumi.Input<String> slotName;
   /// The Replication Slot status.
-  final String slotStatus;
+  final pulumi.Input<String> slotStatus;
   /// The Replication Slot type.
-  final String slotType;
+  final pulumi.Input<String> slotType;
   /// Is the Replication Slot temporary.
-  final String temporary;
+  final pulumi.Input<String> temporary;
   /// The amount of logs accumulated by Replication Slot.
-  final String walDelay;
+  final pulumi.Input<String> walDelay;
 
   /// Creates a new [GetSlotsSlot].
   /// [database] The name of the database where Replication Slot is located.
@@ -49,13 +50,13 @@ class GetSlotsSlot {
 
   factory GetSlotsSlot.fromMap(Map<String, dynamic> map) {
     return GetSlotsSlot(
-      database: map['database'] as String,
-      plugin: map['plugin'] as String,
-      slotName: map['slotName'] as String,
-      slotStatus: map['slotStatus'] as String,
-      slotType: map['slotType'] as String,
-      temporary: map['temporary'] as String,
-      walDelay: map['walDelay'] as String,
+      database: (map['database'] as String).input(),
+      plugin: (map['plugin'] as String).input(),
+      slotName: (map['slotName'] as String).input(),
+      slotStatus: (map['slotStatus'] as String).input(),
+      slotType: (map['slotType'] as String).input(),
+      temporary: (map['temporary'] as String).input(),
+      walDelay: (map['walDelay'] as String).input(),
     );
   }
 }

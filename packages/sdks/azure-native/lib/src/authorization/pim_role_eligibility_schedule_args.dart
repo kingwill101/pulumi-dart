@@ -42,27 +42,17 @@ class PimRoleEligibilityScheduleArgs {
   /// [targetRoleEligibilityScheduleInstanceId] The role eligibility schedule instance id being updated
   /// [ticketInfo] Ticket Info of the role eligibility
   PimRoleEligibilityScheduleArgs({
-    pulumi.Output<String>? condition,
-    pulumi.Output<String>? conditionVersion,
-    pulumi.Output<String>? justification,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> roleDefinitionId,
-    pulumi.Output<RoleEligibilityScheduleRequestPropertiesScheduleInfo>? scheduleInfo,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? targetRoleEligibilityScheduleId,
-    pulumi.Output<String>? targetRoleEligibilityScheduleInstanceId,
-    pulumi.Output<RoleEligibilityScheduleRequestPropertiesTicketInfo>? ticketInfo,
-  }) :
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      conditionVersion = pulumi.Input.asOptionalInput<String>(conditionVersion),
-      justification = pulumi.Input.asOptionalInput<String>(justification),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId),
-      scheduleInfo = pulumi.Input.asOptionalInput<RoleEligibilityScheduleRequestPropertiesScheduleInfo>(scheduleInfo),
-      scope = pulumi.Input.asInput<String>(scope),
-      targetRoleEligibilityScheduleId = pulumi.Input.asOptionalInput<String>(targetRoleEligibilityScheduleId),
-      targetRoleEligibilityScheduleInstanceId = pulumi.Input.asOptionalInput<String>(targetRoleEligibilityScheduleInstanceId),
-      ticketInfo = pulumi.Input.asOptionalInput<RoleEligibilityScheduleRequestPropertiesTicketInfo>(ticketInfo);
+    this.condition,
+    this.conditionVersion,
+    this.justification,
+    required this.principalId,
+    required this.roleDefinitionId,
+    this.scheduleInfo,
+    required this.scope,
+    this.targetRoleEligibilityScheduleId,
+    this.targetRoleEligibilityScheduleInstanceId,
+    this.ticketInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class PimRoleEligibilityScheduleArgs {
 
   factory PimRoleEligibilityScheduleArgs.fromMap(Map<String, dynamic> map) {
     return PimRoleEligibilityScheduleArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      conditionVersion: map['conditionVersion'] == null ? null : pulumi.Output.create<String>(map['conditionVersion'] as String),
-      justification: map['justification'] == null ? null : pulumi.Output.create<String>(map['justification'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scheduleInfo: map['scheduleInfo'] == null ? null : pulumi.Output.create<RoleEligibilityScheduleRequestPropertiesScheduleInfo>(RoleEligibilityScheduleRequestPropertiesScheduleInfo.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      targetRoleEligibilityScheduleId: map['targetRoleEligibilityScheduleId'] == null ? null : pulumi.Output.create<String>(map['targetRoleEligibilityScheduleId'] as String),
-      targetRoleEligibilityScheduleInstanceId: map['targetRoleEligibilityScheduleInstanceId'] == null ? null : pulumi.Output.create<String>(map['targetRoleEligibilityScheduleInstanceId'] as String),
-      ticketInfo: map['ticketInfo'] == null ? null : pulumi.Output.create<RoleEligibilityScheduleRequestPropertiesTicketInfo>(RoleEligibilityScheduleRequestPropertiesTicketInfo.fromMap((map['ticketInfo'] as Map).cast<String, dynamic>())),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      scheduleInfo: map['scheduleInfo'] == null ? null : (RoleEligibilityScheduleRequestPropertiesScheduleInfo.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())).input(),
+      scope: (map['scope'] as String).input(),
+      targetRoleEligibilityScheduleId: map['targetRoleEligibilityScheduleId'] == null ? null : (map['targetRoleEligibilityScheduleId'] as String).input(),
+      targetRoleEligibilityScheduleInstanceId: map['targetRoleEligibilityScheduleInstanceId'] == null ? null : (map['targetRoleEligibilityScheduleInstanceId'] as String).input(),
+      ticketInfo: map['ticketInfo'] == null ? null : (RoleEligibilityScheduleRequestPropertiesTicketInfo.fromMap((map['ticketInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

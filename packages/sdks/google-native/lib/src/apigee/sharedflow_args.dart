@@ -27,19 +27,13 @@ class SharedflowArgs {
   /// [name] Required. The name to give the shared flow
   /// [organizationId] Required.
   SharedflowArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? data,
-    pulumi.Output<List<Map<String, String>>>? extensions,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      extensions = pulumi.Input.asOptionalInput<List<Map<String, String>>>(extensions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.action,
+    this.contentType,
+    this.data,
+    this.extensions,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class SharedflowArgs {
 
   factory SharedflowArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      extensions: map['extensions'] == null ? null : pulumi.Output.create<List<Map<String, String>>>((map['extensions'] as List).cast<Map<String, String>>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      action: (map['action'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<Map<String, String>>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

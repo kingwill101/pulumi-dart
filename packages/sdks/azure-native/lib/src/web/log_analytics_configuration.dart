@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogAnalyticsConfiguration {
-  final String? customerId;
-  final String? sharedKey;
+  final pulumi.Input<String>? customerId;
+  final pulumi.Input<String>? sharedKey;
 
   /// Creates a new [LogAnalyticsConfiguration].
   /// [customerId] Optional.
@@ -22,8 +23,8 @@ class LogAnalyticsConfiguration {
 
   factory LogAnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfiguration(
-      customerId: map['customerId'] == null ? null : map['customerId'] as String,
-      sharedKey: map['sharedKey'] == null ? null : map['sharedKey'] as String,
+      customerId: map['customerId'] == null ? null : (map['customerId'] as String).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
     );
   }
 }

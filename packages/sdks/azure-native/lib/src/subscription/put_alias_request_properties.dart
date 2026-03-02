@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'put_alias_request_additional_properties.dart';
 
 /// Put subscription properties.
 class PutAliasRequestProperties {
   /// Put alias request additional properties.
-  final PutAliasRequestAdditionalProperties? additionalProperties;
+  final pulumi.Input<PutAliasRequestAdditionalProperties>? additionalProperties;
   /// Billing scope of the subscription.
   /// For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}
   /// For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}
   /// For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
-  final String? billingScope;
+  final pulumi.Input<String>? billingScope;
   /// The friendly name of the subscription.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Reseller Id
-  final String? resellerId;
+  final pulumi.Input<String>? resellerId;
   /// This parameter can be used to create alias for existing subscription Id
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// The workload type of the subscription. It can be either Production or DevTest.
-  final String? workload;
+  final pulumi.Input<String>? workload;
 
   /// Creates a new [PutAliasRequestProperties].
   /// [additionalProperties] Put alias request additional properties.
@@ -38,7 +39,7 @@ class PutAliasRequestProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalProperties': ?additionalProperties == null ? null : additionalProperties!.toMap(),
+      'additionalProperties': ?pulumi.Input.mapOptionalInputValue<PutAliasRequestAdditionalProperties, Map<String, dynamic>>(additionalProperties, (value) => value.toMap()),
       'billingScope': ?billingScope,
       'displayName': ?displayName,
       'resellerId': ?resellerId,
@@ -49,12 +50,12 @@ class PutAliasRequestProperties {
 
   factory PutAliasRequestProperties.fromMap(Map<String, dynamic> map) {
     return PutAliasRequestProperties(
-      additionalProperties: map['additionalProperties'] == null ? null : PutAliasRequestAdditionalProperties.fromMap((map['additionalProperties'] as Map).cast<String, dynamic>()),
-      billingScope: map['billingScope'] == null ? null : map['billingScope'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      resellerId: map['resellerId'] == null ? null : map['resellerId'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      workload: map['workload'] == null ? null : map['workload'] as String,
+      additionalProperties: map['additionalProperties'] == null ? null : (PutAliasRequestAdditionalProperties.fromMap((map['additionalProperties'] as Map).cast<String, dynamic>())).input(),
+      billingScope: map['billingScope'] == null ? null : (map['billingScope'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      resellerId: map['resellerId'] == null ? null : (map['resellerId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
     );
   }
 }

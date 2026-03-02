@@ -34,21 +34,14 @@ class ConfiguredTableArgs {
   /// [tableReference] A reference to the AWS Glue table which will be used to create the configured table.
   /// [tags] Key value pairs which tag the configured table.
   ConfiguredTableArgs({
-    required pulumi.Output<List<String>> allowedColumns,
-    required pulumi.Output<String> analysisMethod,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<ConfiguredTableTableReference> tableReference,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allowedColumns = pulumi.Input.asInput<List<String>>(allowedColumns),
-      analysisMethod = pulumi.Input.asInput<String>(analysisMethod),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableReference = pulumi.Input.asInput<ConfiguredTableTableReference>(tableReference),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.allowedColumns,
+    required this.analysisMethod,
+    this.description,
+    this.name,
+    this.region,
+    required this.tableReference,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class ConfiguredTableArgs {
 
   factory ConfiguredTableArgs.fromMap(Map<String, dynamic> map) {
     return ConfiguredTableArgs(
-      allowedColumns: pulumi.Output.create<List<String>>((map['allowedColumns'] as List).cast<String>()),
-      analysisMethod: pulumi.Output.create<String>(map['analysisMethod'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableReference: pulumi.Output.create<ConfiguredTableTableReference>(ConfiguredTableTableReference.fromMap((map['tableReference'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allowedColumns: ((map['allowedColumns'] as List).cast<String>()).input(),
+      analysisMethod: (map['analysisMethod'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableReference: (ConfiguredTableTableReference.fromMap((map['tableReference'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

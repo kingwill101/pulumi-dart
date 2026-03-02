@@ -12,80 +12,80 @@ import 'vmnic_details_response.dart';
 /// Hyper V Replica Azure provider specific settings.
 class HyperVReplicaAzureReplicationDetailsResponse {
   /// A value indicating all available inplace OS Upgrade configurations.
-  final List<OSUpgradeSupportedVersionsResponse>? allAvailableOSUpgradeConfigurations;
+  final pulumi.Input<List<OSUpgradeSupportedVersionsResponse>>? allAvailableOSUpgradeConfigurations;
   /// Azure VM Disk details.
-  final List<AzureVmDiskDetailsResponse>? azureVmDiskDetails;
+  final pulumi.Input<List<AzureVmDiskDetailsResponse>>? azureVmDiskDetails;
   /// The selected option to enable RDP\SSH on target vm after failover. String value of SrsDataContract.EnableRDPOnTargetOption enum.
-  final String? enableRdpOnTargetOption;
+  final pulumi.Input<String>? enableRdpOnTargetOption;
   /// The encryption info.
-  final String? encryption;
+  final pulumi.Input<String>? encryption;
   /// Initial replication details.
-  final InitialReplicationDetailsResponse? initialReplicationDetails;
+  final pulumi.Input<InitialReplicationDetailsResponse>? initialReplicationDetails;
   /// Gets the Instance type.
   /// Expected value is 'HyperVReplicaAzure'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The last recovery point received time.
-  final String lastRecoveryPointReceived;
+  final pulumi.Input<String> lastRecoveryPointReceived;
   /// The Last replication time.
-  final String? lastReplicatedTime;
+  final pulumi.Input<String>? lastReplicatedTime;
   /// The last RPO calculated time.
-  final String? lastRpoCalculatedTime;
+  final pulumi.Input<String>? lastRpoCalculatedTime;
   /// License Type of the VM to be used.
-  final String? licenseType;
+  final pulumi.Input<String>? licenseType;
   /// The license type for Linux VM's.
-  final String? linuxLicenseType;
+  final pulumi.Input<String>? linuxLicenseType;
   /// The operating system info.
-  final OSDetailsResponse? oSDetails;
+  final pulumi.Input<OSDetailsResponse>? oSDetails;
   /// The list of protected managed disks.
-  final List<HyperVReplicaAzureManagedDiskDetailsResponse>? protectedManagedDisks;
+  final pulumi.Input<List<HyperVReplicaAzureManagedDiskDetailsResponse>>? protectedManagedDisks;
   /// The recovery availability set Id.
-  final String? recoveryAvailabilitySetId;
+  final pulumi.Input<String>? recoveryAvailabilitySetId;
   /// The ARM id of the log storage account used for replication. This will be set to null if no log storage account was provided during enable protection.
-  final String? recoveryAzureLogStorageAccountId;
+  final pulumi.Input<String>? recoveryAzureLogStorageAccountId;
   /// The target resource group Id.
-  final String? recoveryAzureResourceGroupId;
+  final pulumi.Input<String>? recoveryAzureResourceGroupId;
   /// The recovery Azure storage account.
-  final String? recoveryAzureStorageAccount;
+  final pulumi.Input<String>? recoveryAzureStorageAccount;
   /// The Recovery Azure VM size.
-  final String? recoveryAzureVMSize;
+  final pulumi.Input<String>? recoveryAzureVMSize;
   /// Recovery Azure given name.
-  final String? recoveryAzureVmName;
+  final pulumi.Input<String>? recoveryAzureVmName;
   /// Last RPO value.
-  final double? rpoInSeconds;
+  final pulumi.Input<double>? rpoInSeconds;
   /// The tags for the seed managed disks.
-  final Map<String, String>? seedManagedDiskTags;
+  final pulumi.Input<Map<String, String>>? seedManagedDiskTags;
   /// The selected recovery azure network Id.
-  final String? selectedRecoveryAzureNetworkId;
+  final pulumi.Input<String>? selectedRecoveryAzureNetworkId;
   /// The selected source nic Id which will be used as the primary nic during failover.
-  final String? selectedSourceNicId;
+  final pulumi.Input<String>? selectedSourceNicId;
   /// The CPU count of the VM on the primary side.
-  final int? sourceVmCpuCount;
+  final pulumi.Input<int>? sourceVmCpuCount;
   /// The RAM size of the VM on the primary side.
-  final int? sourceVmRamSizeInMB;
+  final pulumi.Input<int>? sourceVmRamSizeInMB;
   /// The SQL Server license type.
-  final String? sqlServerLicenseType;
+  final pulumi.Input<String>? sqlServerLicenseType;
   /// The target availability zone.
-  final String? targetAvailabilityZone;
+  final pulumi.Input<String>? targetAvailabilityZone;
   /// The tags for the target managed disks.
-  final Map<String, String>? targetManagedDiskTags;
+  final pulumi.Input<Map<String, String>>? targetManagedDiskTags;
   /// The tags for the target NICs.
-  final Map<String, String>? targetNicTags;
+  final pulumi.Input<Map<String, String>>? targetNicTags;
   /// The target proximity placement group Id.
-  final String? targetProximityPlacementGroupId;
+  final pulumi.Input<String>? targetProximityPlacementGroupId;
   /// The target VM security profile.
-  final SecurityProfilePropertiesResponse? targetVmSecurityProfile;
+  final pulumi.Input<SecurityProfilePropertiesResponse>? targetVmSecurityProfile;
   /// The target VM tags.
-  final Map<String, String>? targetVmTags;
+  final pulumi.Input<Map<String, String>>? targetVmTags;
   /// A value indicating whether managed disks should be used during failover.
-  final String? useManagedDisks;
+  final pulumi.Input<String>? useManagedDisks;
   /// The virtual machine Id.
-  final String? vmId;
+  final pulumi.Input<String>? vmId;
   /// The PE Network details.
-  final List<VMNicDetailsResponse>? vmNics;
+  final pulumi.Input<List<VMNicDetailsResponse>>? vmNics;
   /// The protection state for the vm.
-  final String? vmProtectionState;
+  final pulumi.Input<String>? vmProtectionState;
   /// The protection state description for the vm.
-  final String? vmProtectionStateDescription;
+  final pulumi.Input<String>? vmProtectionStateDescription;
 
   /// Creates a new [HyperVReplicaAzureReplicationDetailsResponse].
   /// [allAvailableOSUpgradeConfigurations] A value indicating all available inplace OS Upgrade configurations.
@@ -167,19 +167,19 @@ class HyperVReplicaAzureReplicationDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allAvailableOSUpgradeConfigurations': ?allAvailableOSUpgradeConfigurations == null ? null : pulumi.Input.encodeList<OSUpgradeSupportedVersionsResponse, Map<String, dynamic>>(allAvailableOSUpgradeConfigurations!, (value) => value.toMap()),
-      'azureVmDiskDetails': ?azureVmDiskDetails == null ? null : pulumi.Input.encodeList<AzureVmDiskDetailsResponse, Map<String, dynamic>>(azureVmDiskDetails!, (value) => value.toMap()),
+      'allAvailableOSUpgradeConfigurations': ?pulumi.Input.mapOptionalInputValue<List<OSUpgradeSupportedVersionsResponse>, List<Map<String, dynamic>>>(allAvailableOSUpgradeConfigurations, (value) => pulumi.Input.encodeList<OSUpgradeSupportedVersionsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'azureVmDiskDetails': ?pulumi.Input.mapOptionalInputValue<List<AzureVmDiskDetailsResponse>, List<Map<String, dynamic>>>(azureVmDiskDetails, (value) => pulumi.Input.encodeList<AzureVmDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableRdpOnTargetOption': ?enableRdpOnTargetOption,
       'encryption': ?encryption,
-      'initialReplicationDetails': ?initialReplicationDetails == null ? null : initialReplicationDetails!.toMap(),
+      'initialReplicationDetails': ?pulumi.Input.mapOptionalInputValue<InitialReplicationDetailsResponse, Map<String, dynamic>>(initialReplicationDetails, (value) => value.toMap()),
       'instanceType': instanceType,
       'lastRecoveryPointReceived': lastRecoveryPointReceived,
       'lastReplicatedTime': ?lastReplicatedTime,
       'lastRpoCalculatedTime': ?lastRpoCalculatedTime,
       'licenseType': ?licenseType,
       'linuxLicenseType': ?linuxLicenseType,
-      'oSDetails': ?oSDetails == null ? null : oSDetails!.toMap(),
-      'protectedManagedDisks': ?protectedManagedDisks == null ? null : pulumi.Input.encodeList<HyperVReplicaAzureManagedDiskDetailsResponse, Map<String, dynamic>>(protectedManagedDisks!, (value) => value.toMap()),
+      'oSDetails': ?pulumi.Input.mapOptionalInputValue<OSDetailsResponse, Map<String, dynamic>>(oSDetails, (value) => value.toMap()),
+      'protectedManagedDisks': ?pulumi.Input.mapOptionalInputValue<List<HyperVReplicaAzureManagedDiskDetailsResponse>, List<Map<String, dynamic>>>(protectedManagedDisks, (value) => pulumi.Input.encodeList<HyperVReplicaAzureManagedDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'recoveryAvailabilitySetId': ?recoveryAvailabilitySetId,
       'recoveryAzureLogStorageAccountId': ?recoveryAzureLogStorageAccountId,
       'recoveryAzureResourceGroupId': ?recoveryAzureResourceGroupId,
@@ -197,11 +197,11 @@ class HyperVReplicaAzureReplicationDetailsResponse {
       'targetManagedDiskTags': ?targetManagedDiskTags,
       'targetNicTags': ?targetNicTags,
       'targetProximityPlacementGroupId': ?targetProximityPlacementGroupId,
-      'targetVmSecurityProfile': ?targetVmSecurityProfile == null ? null : targetVmSecurityProfile!.toMap(),
+      'targetVmSecurityProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfilePropertiesResponse, Map<String, dynamic>>(targetVmSecurityProfile, (value) => value.toMap()),
       'targetVmTags': ?targetVmTags,
       'useManagedDisks': ?useManagedDisks,
       'vmId': ?vmId,
-      'vmNics': ?vmNics == null ? null : pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(vmNics!, (value) => value.toMap()),
+      'vmNics': ?pulumi.Input.mapOptionalInputValue<List<VMNicDetailsResponse>, List<Map<String, dynamic>>>(vmNics, (value) => pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmProtectionState': ?vmProtectionState,
       'vmProtectionStateDescription': ?vmProtectionStateDescription,
     };
@@ -209,43 +209,43 @@ class HyperVReplicaAzureReplicationDetailsResponse {
 
   factory HyperVReplicaAzureReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaAzureReplicationDetailsResponse(
-      allAvailableOSUpgradeConfigurations: map['allAvailableOSUpgradeConfigurations'] == null ? null : pulumi.Input.decodeList<OSUpgradeSupportedVersionsResponse>(map['allAvailableOSUpgradeConfigurations'], (value) => OSUpgradeSupportedVersionsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      azureVmDiskDetails: map['azureVmDiskDetails'] == null ? null : pulumi.Input.decodeList<AzureVmDiskDetailsResponse>(map['azureVmDiskDetails'], (value) => AzureVmDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      enableRdpOnTargetOption: map['enableRdpOnTargetOption'] == null ? null : map['enableRdpOnTargetOption'] as String,
-      encryption: map['encryption'] == null ? null : map['encryption'] as String,
-      initialReplicationDetails: map['initialReplicationDetails'] == null ? null : InitialReplicationDetailsResponse.fromMap((map['initialReplicationDetails'] as Map).cast<String, dynamic>()),
-      instanceType: map['instanceType'] as String,
-      lastRecoveryPointReceived: map['lastRecoveryPointReceived'] as String,
-      lastReplicatedTime: map['lastReplicatedTime'] == null ? null : map['lastReplicatedTime'] as String,
-      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : map['lastRpoCalculatedTime'] as String,
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
-      linuxLicenseType: map['linuxLicenseType'] == null ? null : map['linuxLicenseType'] as String,
-      oSDetails: map['oSDetails'] == null ? null : OSDetailsResponse.fromMap((map['oSDetails'] as Map).cast<String, dynamic>()),
-      protectedManagedDisks: map['protectedManagedDisks'] == null ? null : pulumi.Input.decodeList<HyperVReplicaAzureManagedDiskDetailsResponse>(map['protectedManagedDisks'], (value) => HyperVReplicaAzureManagedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      recoveryAvailabilitySetId: map['recoveryAvailabilitySetId'] == null ? null : map['recoveryAvailabilitySetId'] as String,
-      recoveryAzureLogStorageAccountId: map['recoveryAzureLogStorageAccountId'] == null ? null : map['recoveryAzureLogStorageAccountId'] as String,
-      recoveryAzureResourceGroupId: map['recoveryAzureResourceGroupId'] == null ? null : map['recoveryAzureResourceGroupId'] as String,
-      recoveryAzureStorageAccount: map['recoveryAzureStorageAccount'] == null ? null : map['recoveryAzureStorageAccount'] as String,
-      recoveryAzureVMSize: map['recoveryAzureVMSize'] == null ? null : map['recoveryAzureVMSize'] as String,
-      recoveryAzureVmName: map['recoveryAzureVmName'] == null ? null : map['recoveryAzureVmName'] as String,
-      rpoInSeconds: map['rpoInSeconds'] == null ? null : map['rpoInSeconds'] as double,
-      seedManagedDiskTags: map['seedManagedDiskTags'] == null ? null : (map['seedManagedDiskTags'] as Map).cast<String, String>(),
-      selectedRecoveryAzureNetworkId: map['selectedRecoveryAzureNetworkId'] == null ? null : map['selectedRecoveryAzureNetworkId'] as String,
-      selectedSourceNicId: map['selectedSourceNicId'] == null ? null : map['selectedSourceNicId'] as String,
-      sourceVmCpuCount: map['sourceVmCpuCount'] == null ? null : map['sourceVmCpuCount'] as int,
-      sourceVmRamSizeInMB: map['sourceVmRamSizeInMB'] == null ? null : map['sourceVmRamSizeInMB'] as int,
-      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : map['sqlServerLicenseType'] as String,
-      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : map['targetAvailabilityZone'] as String,
-      targetManagedDiskTags: map['targetManagedDiskTags'] == null ? null : (map['targetManagedDiskTags'] as Map).cast<String, String>(),
-      targetNicTags: map['targetNicTags'] == null ? null : (map['targetNicTags'] as Map).cast<String, String>(),
-      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : map['targetProximityPlacementGroupId'] as String,
-      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : SecurityProfilePropertiesResponse.fromMap((map['targetVmSecurityProfile'] as Map).cast<String, dynamic>()),
-      targetVmTags: map['targetVmTags'] == null ? null : (map['targetVmTags'] as Map).cast<String, String>(),
-      useManagedDisks: map['useManagedDisks'] == null ? null : map['useManagedDisks'] as String,
-      vmId: map['vmId'] == null ? null : map['vmId'] as String,
-      vmNics: map['vmNics'] == null ? null : pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmProtectionState: map['vmProtectionState'] == null ? null : map['vmProtectionState'] as String,
-      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : map['vmProtectionStateDescription'] as String,
+      allAvailableOSUpgradeConfigurations: map['allAvailableOSUpgradeConfigurations'] == null ? null : (pulumi.Input.decodeList<OSUpgradeSupportedVersionsResponse>(map['allAvailableOSUpgradeConfigurations'], (value) => OSUpgradeSupportedVersionsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureVmDiskDetails: map['azureVmDiskDetails'] == null ? null : (pulumi.Input.decodeList<AzureVmDiskDetailsResponse>(map['azureVmDiskDetails'], (value) => AzureVmDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableRdpOnTargetOption: map['enableRdpOnTargetOption'] == null ? null : (map['enableRdpOnTargetOption'] as String).input(),
+      encryption: map['encryption'] == null ? null : (map['encryption'] as String).input(),
+      initialReplicationDetails: map['initialReplicationDetails'] == null ? null : (InitialReplicationDetailsResponse.fromMap((map['initialReplicationDetails'] as Map).cast<String, dynamic>())).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      lastRecoveryPointReceived: (map['lastRecoveryPointReceived'] as String).input(),
+      lastReplicatedTime: map['lastReplicatedTime'] == null ? null : (map['lastReplicatedTime'] as String).input(),
+      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : (map['lastRpoCalculatedTime'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      linuxLicenseType: map['linuxLicenseType'] == null ? null : (map['linuxLicenseType'] as String).input(),
+      oSDetails: map['oSDetails'] == null ? null : (OSDetailsResponse.fromMap((map['oSDetails'] as Map).cast<String, dynamic>())).input(),
+      protectedManagedDisks: map['protectedManagedDisks'] == null ? null : (pulumi.Input.decodeList<HyperVReplicaAzureManagedDiskDetailsResponse>(map['protectedManagedDisks'], (value) => HyperVReplicaAzureManagedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recoveryAvailabilitySetId: map['recoveryAvailabilitySetId'] == null ? null : (map['recoveryAvailabilitySetId'] as String).input(),
+      recoveryAzureLogStorageAccountId: map['recoveryAzureLogStorageAccountId'] == null ? null : (map['recoveryAzureLogStorageAccountId'] as String).input(),
+      recoveryAzureResourceGroupId: map['recoveryAzureResourceGroupId'] == null ? null : (map['recoveryAzureResourceGroupId'] as String).input(),
+      recoveryAzureStorageAccount: map['recoveryAzureStorageAccount'] == null ? null : (map['recoveryAzureStorageAccount'] as String).input(),
+      recoveryAzureVMSize: map['recoveryAzureVMSize'] == null ? null : (map['recoveryAzureVMSize'] as String).input(),
+      recoveryAzureVmName: map['recoveryAzureVmName'] == null ? null : (map['recoveryAzureVmName'] as String).input(),
+      rpoInSeconds: map['rpoInSeconds'] == null ? null : (map['rpoInSeconds'] as double).input(),
+      seedManagedDiskTags: map['seedManagedDiskTags'] == null ? null : ((map['seedManagedDiskTags'] as Map).cast<String, String>()).input(),
+      selectedRecoveryAzureNetworkId: map['selectedRecoveryAzureNetworkId'] == null ? null : (map['selectedRecoveryAzureNetworkId'] as String).input(),
+      selectedSourceNicId: map['selectedSourceNicId'] == null ? null : (map['selectedSourceNicId'] as String).input(),
+      sourceVmCpuCount: map['sourceVmCpuCount'] == null ? null : (map['sourceVmCpuCount'] as int).input(),
+      sourceVmRamSizeInMB: map['sourceVmRamSizeInMB'] == null ? null : (map['sourceVmRamSizeInMB'] as int).input(),
+      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : (map['sqlServerLicenseType'] as String).input(),
+      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : (map['targetAvailabilityZone'] as String).input(),
+      targetManagedDiskTags: map['targetManagedDiskTags'] == null ? null : ((map['targetManagedDiskTags'] as Map).cast<String, String>()).input(),
+      targetNicTags: map['targetNicTags'] == null ? null : ((map['targetNicTags'] as Map).cast<String, String>()).input(),
+      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : (map['targetProximityPlacementGroupId'] as String).input(),
+      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : (SecurityProfilePropertiesResponse.fromMap((map['targetVmSecurityProfile'] as Map).cast<String, dynamic>())).input(),
+      targetVmTags: map['targetVmTags'] == null ? null : ((map['targetVmTags'] as Map).cast<String, String>()).input(),
+      useManagedDisks: map['useManagedDisks'] == null ? null : (map['useManagedDisks'] as String).input(),
+      vmId: map['vmId'] == null ? null : (map['vmId'] as String).input(),
+      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmProtectionState: map['vmProtectionState'] == null ? null : (map['vmProtectionState'] as String).input(),
+      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : (map['vmProtectionStateDescription'] as String).input(),
     );
   }
 }

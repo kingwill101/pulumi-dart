@@ -27,19 +27,13 @@ class EventPermissionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [statementId] An identifier string for the external account that you are granting permissions to.
   EventPermissionState({
-    pulumi.Output<String>? action,
-    pulumi.Output<EventPermissionCondition>? condition,
-    pulumi.Output<String>? eventBusName,
-    pulumi.Output<String>? principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? statementId,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      condition = pulumi.Input.asOptionalInput<EventPermissionCondition>(condition),
-      eventBusName = pulumi.Input.asOptionalInput<String>(eventBusName),
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      statementId = pulumi.Input.asOptionalInput<String>(statementId);
+    this.action,
+    this.condition,
+    this.eventBusName,
+    this.principal,
+    this.region,
+    this.statementId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class EventPermissionState {
 
   factory EventPermissionState.fromMap(Map<String, dynamic> map) {
     return EventPermissionState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<EventPermissionCondition>(EventPermissionCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      eventBusName: map['eventBusName'] == null ? null : pulumi.Output.create<String>(map['eventBusName'] as String),
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      statementId: map['statementId'] == null ? null : pulumi.Output.create<String>(map['statementId'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      condition: map['condition'] == null ? null : (EventPermissionCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      statementId: map['statementId'] == null ? null : (map['statementId'] as String).input(),
     );
   }
 }

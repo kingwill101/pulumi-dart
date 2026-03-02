@@ -6,11 +6,11 @@ import 'storage_information_response.dart';
 /// The Application Server VM Details.
 class ApplicationServerVmDetailsResponse {
   /// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
-  final List<StorageInformationResponse> storageDetails;
+  final pulumi.Input<List<StorageInformationResponse>> storageDetails;
   /// Defines the type of application server VM.
-  final String type;
+  final pulumi.Input<String> type;
   /// The virtual machine id.
-  final String virtualMachineId;
+  final pulumi.Input<String> virtualMachineId;
 
   /// Creates a new [ApplicationServerVmDetailsResponse].
   /// [storageDetails] Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
@@ -24,7 +24,7 @@ class ApplicationServerVmDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'storageDetails': pulumi.Input.encodeList<StorageInformationResponse, Map<String, dynamic>>(storageDetails, (value) => value.toMap()),
+      'storageDetails': pulumi.Input.mapInputValue<List<StorageInformationResponse>, List<Map<String, dynamic>>>(storageDetails, (value) => pulumi.Input.encodeList<StorageInformationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'virtualMachineId': virtualMachineId,
     };
@@ -32,9 +32,9 @@ class ApplicationServerVmDetailsResponse {
 
   factory ApplicationServerVmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationServerVmDetailsResponse(
-      storageDetails: pulumi.Input.decodeList<StorageInformationResponse>(map['storageDetails'], (value) => StorageInformationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      virtualMachineId: map['virtualMachineId'] as String,
+      storageDetails: (pulumi.Input.decodeList<StorageInformationResponse>(map['storageDetails'], (value) => StorageInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      virtualMachineId: (map['virtualMachineId'] as String).input(),
     );
   }
 }

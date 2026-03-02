@@ -19,13 +19,10 @@ class QueuePolicyArgs {
   /// [queueUrl] URL of the SQS Queue to which to attach the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   QueuePolicyArgs({
-    required pulumi.Output<String> policy,
-    required pulumi.Output<String> queueUrl,
-    pulumi.Output<String>? region,
-  }) :
-      policy = pulumi.Input.asInput<String>(policy),
-      queueUrl = pulumi.Input.asInput<String>(queueUrl),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.policy,
+    required this.queueUrl,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class QueuePolicyArgs {
 
   factory QueuePolicyArgs.fromMap(Map<String, dynamic> map) {
     return QueuePolicyArgs(
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      queueUrl: pulumi.Output.create<String>(map['queueUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      policy: (map['policy'] as String).input(),
+      queueUrl: (map['queueUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routing_configuration.dart';
 
 /// Properties of the NetworkVirtualApplianceConnection subresource.
 class NetworkVirtualApplianceConnectionProperties {
   /// Network Virtual Appliance ASN.
-  final double? asn;
+  final pulumi.Input<double>? asn;
   /// List of bgpPeerAddresses for the NVA instances
-  final List<String>? bgpPeerAddress;
+  final pulumi.Input<List<String>>? bgpPeerAddress;
   /// Enable internet security.
-  final bool? enableInternetSecurity;
+  final pulumi.Input<bool>? enableInternetSecurity;
   /// The name of the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final RoutingConfiguration? routingConfiguration;
+  final pulumi.Input<RoutingConfiguration>? routingConfiguration;
   /// Unique identifier for the connection.
-  final double? tunnelIdentifier;
+  final pulumi.Input<double>? tunnelIdentifier;
 
   /// Creates a new [NetworkVirtualApplianceConnectionProperties].
   /// [asn] Network Virtual Appliance ASN.
@@ -39,19 +40,19 @@ class NetworkVirtualApplianceConnectionProperties {
       'bgpPeerAddress': ?bgpPeerAddress,
       'enableInternetSecurity': ?enableInternetSecurity,
       'name': ?name,
-      'routingConfiguration': ?routingConfiguration == null ? null : routingConfiguration!.toMap(),
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfiguration, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
       'tunnelIdentifier': ?tunnelIdentifier,
     };
   }
 
   factory NetworkVirtualApplianceConnectionProperties.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualApplianceConnectionProperties(
-      asn: map['asn'] == null ? null : map['asn'] as double,
-      bgpPeerAddress: map['bgpPeerAddress'] == null ? null : (map['bgpPeerAddress'] as List).cast<String>(),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>()),
-      tunnelIdentifier: map['tunnelIdentifier'] == null ? null : map['tunnelIdentifier'] as double,
+      asn: map['asn'] == null ? null : (map['asn'] as double).input(),
+      bgpPeerAddress: map['bgpPeerAddress'] == null ? null : ((map['bgpPeerAddress'] as List).cast<String>()).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tunnelIdentifier: map['tunnelIdentifier'] == null ? null : (map['tunnelIdentifier'] as double).input(),
     );
   }
 }

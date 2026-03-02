@@ -16,11 +16,9 @@ class GetAccessPolicyArgs {
   /// [parent] The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: `organizations/{{organization_id}}`
   /// [scopes] Folder or project on which this policy is applicable. Format: `folders/{{folder_id}}` or `projects/{{project_number}}`
   GetAccessPolicyArgs({
-    required pulumi.Output<String> parent,
-    pulumi.Output<List<String>>? scopes,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes);
+    required this.parent,
+    this.scopes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAccessPolicyArgs {
 
   factory GetAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
+      parent: (map['parent'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

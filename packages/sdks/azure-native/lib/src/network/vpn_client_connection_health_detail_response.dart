@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VPN client connection health detail.
 class VpnClientConnectionHealthDetailResponse {
   /// The egress bytes per second.
-  final double egressBytesTransferred;
+  final pulumi.Input<double> egressBytesTransferred;
   /// The egress packets per second.
-  final double egressPacketsTransferred;
+  final pulumi.Input<double> egressPacketsTransferred;
   /// The ingress bytes per second.
-  final double ingressBytesTransferred;
+  final pulumi.Input<double> ingressBytesTransferred;
   /// The ingress packets per second.
-  final double ingressPacketsTransferred;
+  final pulumi.Input<double> ingressPacketsTransferred;
   /// The max band width.
-  final double maxBandwidth;
+  final pulumi.Input<double> maxBandwidth;
   /// The max packets transferred per second.
-  final double maxPacketsPerSecond;
+  final pulumi.Input<double> maxPacketsPerSecond;
   /// The assigned private Ip of a connected vpn client.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// The public Ip of a connected vpn client.
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
   /// The duration time of a connected vpn client.
-  final double vpnConnectionDuration;
+  final pulumi.Input<double> vpnConnectionDuration;
   /// The vpn client Id.
-  final String vpnConnectionId;
+  final pulumi.Input<String> vpnConnectionId;
   /// The start time of a connected vpn client.
-  final String vpnConnectionTime;
+  final pulumi.Input<String> vpnConnectionTime;
   /// The user name of a connected vpn client.
-  final String vpnUserName;
+  final pulumi.Input<String> vpnUserName;
 
   /// Creates a new [VpnClientConnectionHealthDetailResponse].
   /// [egressBytesTransferred] The egress bytes per second.
@@ -75,18 +76,18 @@ class VpnClientConnectionHealthDetailResponse {
 
   factory VpnClientConnectionHealthDetailResponse.fromMap(Map<String, dynamic> map) {
     return VpnClientConnectionHealthDetailResponse(
-      egressBytesTransferred: map['egressBytesTransferred'] as double,
-      egressPacketsTransferred: map['egressPacketsTransferred'] as double,
-      ingressBytesTransferred: map['ingressBytesTransferred'] as double,
-      ingressPacketsTransferred: map['ingressPacketsTransferred'] as double,
-      maxBandwidth: map['maxBandwidth'] as double,
-      maxPacketsPerSecond: map['maxPacketsPerSecond'] as double,
-      privateIpAddress: map['privateIpAddress'] as String,
-      publicIpAddress: map['publicIpAddress'] as String,
-      vpnConnectionDuration: map['vpnConnectionDuration'] as double,
-      vpnConnectionId: map['vpnConnectionId'] as String,
-      vpnConnectionTime: map['vpnConnectionTime'] as String,
-      vpnUserName: map['vpnUserName'] as String,
+      egressBytesTransferred: (map['egressBytesTransferred'] as double).input(),
+      egressPacketsTransferred: (map['egressPacketsTransferred'] as double).input(),
+      ingressBytesTransferred: (map['ingressBytesTransferred'] as double).input(),
+      ingressPacketsTransferred: (map['ingressPacketsTransferred'] as double).input(),
+      maxBandwidth: (map['maxBandwidth'] as double).input(),
+      maxPacketsPerSecond: (map['maxPacketsPerSecond'] as double).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
+      vpnConnectionDuration: (map['vpnConnectionDuration'] as double).input(),
+      vpnConnectionId: (map['vpnConnectionId'] as String).input(),
+      vpnConnectionTime: (map['vpnConnectionTime'] as String).input(),
+      vpnUserName: (map['vpnUserName'] as String).input(),
     );
   }
 }

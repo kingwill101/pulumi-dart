@@ -34,21 +34,14 @@ class PostgresInstanceArgs {
   /// [sku] Resource sku.
   /// [tags] Resource tags.
   PostgresInstanceArgs({
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? postgresInstanceName,
-    required pulumi.Output<PostgresInstanceProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<PostgresInstanceSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      postgresInstanceName = pulumi.Input.asOptionalInput<String>(postgresInstanceName),
-      properties = pulumi.Input.asInput<PostgresInstanceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<PostgresInstanceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extendedLocation,
+    this.location,
+    this.postgresInstanceName,
+    required this.properties,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class PostgresInstanceArgs {
 
   factory PostgresInstanceArgs.fromMap(Map<String, dynamic> map) {
     return PostgresInstanceArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      postgresInstanceName: map['postgresInstanceName'] == null ? null : pulumi.Output.create<String>(map['postgresInstanceName'] as String),
-      properties: pulumi.Output.create<PostgresInstanceProperties>(PostgresInstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<PostgresInstanceSku>(PostgresInstanceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      postgresInstanceName: map['postgresInstanceName'] == null ? null : (map['postgresInstanceName'] as String).input(),
+      properties: (PostgresInstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (PostgresInstanceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

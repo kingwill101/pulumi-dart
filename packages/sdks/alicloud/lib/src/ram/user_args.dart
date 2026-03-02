@@ -28,19 +28,13 @@ class UserArgs {
   /// [mobile] Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
   /// [name] Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
   UserArgs({
-    pulumi.Output<String>? comments,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? email,
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? mobile,
-    pulumi.Output<String>? name,
-  }) :
-      comments = pulumi.Input.asOptionalInput<String>(comments),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      mobile = pulumi.Input.asOptionalInput<String>(mobile),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.comments,
+    this.displayName,
+    this.email,
+    this.force,
+    this.mobile,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      comments: map['comments'] == null ? null : pulumi.Output.create<String>(map['comments'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      mobile: map['mobile'] == null ? null : pulumi.Output.create<String>(map['mobile'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

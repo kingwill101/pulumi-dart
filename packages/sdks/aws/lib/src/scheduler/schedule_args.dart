@@ -56,35 +56,21 @@ class ScheduleArgs {
   /// [state] Specifies whether the schedule is enabled or disabled. One of: `ENABLED` (default), `DISABLED`.
   /// [target] Configures the target of the schedule. Detailed below.
   ScheduleArgs({
-    pulumi.Output<String>? actionAfterCompletion,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endDate,
-    required pulumi.Output<ScheduleFlexibleTimeWindow> flexibleTimeWindow,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scheduleExpression,
-    pulumi.Output<String>? scheduleExpressionTimezone,
-    pulumi.Output<String>? startDate,
-    pulumi.Output<String>? state,
-    required pulumi.Output<ScheduleTarget> target,
-  }) :
-      actionAfterCompletion = pulumi.Input.asOptionalInput<String>(actionAfterCompletion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      flexibleTimeWindow = pulumi.Input.asInput<ScheduleFlexibleTimeWindow>(flexibleTimeWindow),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduleExpression = pulumi.Input.asInput<String>(scheduleExpression),
-      scheduleExpressionTimezone = pulumi.Input.asOptionalInput<String>(scheduleExpressionTimezone),
-      startDate = pulumi.Input.asOptionalInput<String>(startDate),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      target = pulumi.Input.asInput<ScheduleTarget>(target);
+    this.actionAfterCompletion,
+    this.description,
+    this.endDate,
+    required this.flexibleTimeWindow,
+    this.groupName,
+    this.kmsKeyArn,
+    this.name,
+    this.namePrefix,
+    this.region,
+    required this.scheduleExpression,
+    this.scheduleExpressionTimezone,
+    this.startDate,
+    this.state,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      actionAfterCompletion: map['actionAfterCompletion'] == null ? null : pulumi.Output.create<String>(map['actionAfterCompletion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<String>(map['endDate'] as String),
-      flexibleTimeWindow: pulumi.Output.create<ScheduleFlexibleTimeWindow>(ScheduleFlexibleTimeWindow.fromMap((map['flexibleTimeWindow'] as Map).cast<String, dynamic>())),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduleExpression: pulumi.Output.create<String>(map['scheduleExpression'] as String),
-      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : pulumi.Output.create<String>(map['scheduleExpressionTimezone'] as String),
-      startDate: map['startDate'] == null ? null : pulumi.Output.create<String>(map['startDate'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      target: pulumi.Output.create<ScheduleTarget>(ScheduleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
+      actionAfterCompletion: map['actionAfterCompletion'] == null ? null : (map['actionAfterCompletion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      flexibleTimeWindow: (ScheduleFlexibleTimeWindow.fromMap((map['flexibleTimeWindow'] as Map).cast<String, dynamic>())).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduleExpression: (map['scheduleExpression'] as String).input(),
+      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : (map['scheduleExpressionTimezone'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      target: (ScheduleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

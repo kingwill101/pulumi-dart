@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The unique identifier of the update.
 class Identity {
   /// The revision number of the update.
-  final int? revision;
+  final pulumi.Input<int>? revision;
   /// The revision independent identifier of the update.
-  final String? updateId;
+  final pulumi.Input<String>? updateId;
 
   /// Creates a new [Identity].
   /// [revision] The revision number of the update.
@@ -25,8 +26,8 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      revision: map['revision'] == null ? null : map['revision'] as int,
-      updateId: map['updateId'] == null ? null : map['updateId'] as String,
+      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
+      updateId: map['updateId'] == null ? null : (map['updateId'] as String).input(),
     );
   }
 }

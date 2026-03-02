@@ -25,17 +25,12 @@ class ClusterPeeringArgs {
   /// [timeouts] Optional.
   /// [witnessRegion] Witness region for a multi-region cluster.
   ClusterPeeringArgs({
-    required pulumi.Output<List<String>> clusters,
-    required pulumi.Output<String> identifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<ClusterPeeringTimeouts>? timeouts,
-    required pulumi.Output<String> witnessRegion,
-  }) :
-      clusters = pulumi.Input.asInput<List<String>>(clusters),
-      identifier = pulumi.Input.asInput<String>(identifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<ClusterPeeringTimeouts>(timeouts),
-      witnessRegion = pulumi.Input.asInput<String>(witnessRegion);
+    required this.clusters,
+    required this.identifier,
+    this.region,
+    this.timeouts,
+    required this.witnessRegion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ClusterPeeringArgs {
 
   factory ClusterPeeringArgs.fromMap(Map<String, dynamic> map) {
     return ClusterPeeringArgs(
-      clusters: pulumi.Output.create<List<String>>((map['clusters'] as List).cast<String>()),
-      identifier: pulumi.Output.create<String>(map['identifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ClusterPeeringTimeouts>(ClusterPeeringTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      witnessRegion: pulumi.Output.create<String>(map['witnessRegion'] as String),
+      clusters: ((map['clusters'] as List).cast<String>()).input(),
+      identifier: (map['identifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ClusterPeeringTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      witnessRegion: (map['witnessRegion'] as String).input(),
     );
   }
 }

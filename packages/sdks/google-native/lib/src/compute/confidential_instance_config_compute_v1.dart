@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfigComputeV1 {
   /// Defines whether the instance should have confidential compute enabled.
-  final bool? enableConfidentialCompute;
+  final pulumi.Input<bool>? enableConfidentialCompute;
 
   /// Creates a new [ConfidentialInstanceConfigComputeV1].
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled.
@@ -20,7 +21,7 @@ class ConfidentialInstanceConfigComputeV1 {
 
   factory ConfidentialInstanceConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return ConfidentialInstanceConfigComputeV1(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetChangeDataCaptureArgs {
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
   GetChangeDataCaptureArgs({
-    required pulumi.Output<String> changeDataCaptureName,
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      changeDataCaptureName = pulumi.Input.asInput<String>(changeDataCaptureName),
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.changeDataCaptureName,
+    required this.factoryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetChangeDataCaptureArgs {
 
   factory GetChangeDataCaptureArgs.fromMap(Map<String, dynamic> map) {
     return GetChangeDataCaptureArgs(
-      changeDataCaptureName: pulumi.Output.create<String>(map['changeDataCaptureName'] as String),
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      changeDataCaptureName: (map['changeDataCaptureName'] as String).input(),
+      factoryName: (map['factoryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

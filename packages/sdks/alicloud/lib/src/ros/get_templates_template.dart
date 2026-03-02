@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTemplatesTemplate {
   /// The ID of the change set.
-  final String changeSetId;
+  final pulumi.Input<String> changeSetId;
   /// The description of the template. The description can be up to 256 characters in length.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Template.
-  final String id;
+  final pulumi.Input<String> id;
   /// Share Type.
-  final String shareType;
+  final pulumi.Input<String> shareType;
   /// The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
-  final String stackGroupName;
+  final pulumi.Input<String> stackGroupName;
   /// The ID of the stack.
-  final String stackId;
+  final pulumi.Input<String> stackId;
   /// Tags.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
-  final String templateBody;
+  final pulumi.Input<String> templateBody;
   /// The ID of the template.
-  final String templateId;
+  final pulumi.Input<String> templateId;
   /// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
-  final String templateName;
+  final pulumi.Input<String> templateName;
   /// Template Version.
-  final String templateVersion;
+  final pulumi.Input<String> templateVersion;
 
   /// Creates a new [GetTemplatesTemplate].
   /// [changeSetId] The ID of the change set.
@@ -69,17 +70,17 @@ class GetTemplatesTemplate {
 
   factory GetTemplatesTemplate.fromMap(Map<String, dynamic> map) {
     return GetTemplatesTemplate(
-      changeSetId: map['changeSetId'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      shareType: map['shareType'] as String,
-      stackGroupName: map['stackGroupName'] as String,
-      stackId: map['stackId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      templateBody: map['templateBody'] as String,
-      templateId: map['templateId'] as String,
-      templateName: map['templateName'] as String,
-      templateVersion: map['templateVersion'] as String,
+      changeSetId: (map['changeSetId'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      shareType: (map['shareType'] as String).input(),
+      stackGroupName: (map['stackGroupName'] as String).input(),
+      stackId: (map['stackId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      templateBody: (map['templateBody'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
+      templateVersion: (map['templateVersion'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class ListPrivateStoreNewPlansNotificationsArgs {
   /// Creates a new [ListPrivateStoreNewPlansNotificationsArgs].
   /// [privateStoreId] The store ID - must use the tenant ID
   ListPrivateStoreNewPlansNotificationsArgs({
-    required pulumi.Output<String> privateStoreId,
-  }) :
-      privateStoreId = pulumi.Input.asInput<String>(privateStoreId);
+    required this.privateStoreId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ListPrivateStoreNewPlansNotificationsArgs {
 
   factory ListPrivateStoreNewPlansNotificationsArgs.fromMap(Map<String, dynamic> map) {
     return ListPrivateStoreNewPlansNotificationsArgs(
-      privateStoreId: pulumi.Output.create<String>(map['privateStoreId'] as String),
+      privateStoreId: (map['privateStoreId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStorageBoxAccessSettings {
   /// Whether access from outside the Hetzner network is allowed.
-  final bool reachableExternally;
+  final pulumi.Input<bool> reachableExternally;
   /// Whether the Samba subsystem is enabled.
-  final bool sambaEnabled;
+  final pulumi.Input<bool> sambaEnabled;
   /// Whether the SSH subsystem is enabled.
-  final bool sshEnabled;
+  final pulumi.Input<bool> sshEnabled;
   /// Whether the WebDAV subsystem is enabled.
-  final bool webdavEnabled;
+  final pulumi.Input<bool> webdavEnabled;
   /// Whether the ZFS snapshot folder is visible.
-  final bool zfsEnabled;
+  final pulumi.Input<bool> zfsEnabled;
 
   /// Creates a new [GetStorageBoxAccessSettings].
   /// [reachableExternally] Whether access from outside the Hetzner network is allowed.
@@ -39,11 +40,11 @@ class GetStorageBoxAccessSettings {
 
   factory GetStorageBoxAccessSettings.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxAccessSettings(
-      reachableExternally: map['reachableExternally'] as bool,
-      sambaEnabled: map['sambaEnabled'] as bool,
-      sshEnabled: map['sshEnabled'] as bool,
-      webdavEnabled: map['webdavEnabled'] as bool,
-      zfsEnabled: map['zfsEnabled'] as bool,
+      reachableExternally: (map['reachableExternally'] as bool).input(),
+      sambaEnabled: (map['sambaEnabled'] as bool).input(),
+      sshEnabled: (map['sshEnabled'] as bool).input(),
+      webdavEnabled: (map['webdavEnabled'] as bool).input(),
+      zfsEnabled: (map['zfsEnabled'] as bool).input(),
     );
   }
 }

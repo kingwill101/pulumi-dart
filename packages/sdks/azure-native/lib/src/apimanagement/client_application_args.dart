@@ -28,19 +28,13 @@ class ClientApplicationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   ClientApplicationArgs({
-    pulumi.Output<String>? clientApplicationId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> ownerId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      clientApplicationId = pulumi.Input.asOptionalInput<String>(clientApplicationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      ownerId = pulumi.Input.asInput<String>(ownerId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.clientApplicationId,
+    this.description,
+    required this.displayName,
+    required this.ownerId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ClientApplicationArgs {
 
   factory ClientApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ClientApplicationArgs(
-      clientApplicationId: map['clientApplicationId'] == null ? null : pulumi.Output.create<String>(map['clientApplicationId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      ownerId: pulumi.Output.create<String>(map['ownerId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      clientApplicationId: map['clientApplicationId'] == null ? null : (map['clientApplicationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      ownerId: (map['ownerId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

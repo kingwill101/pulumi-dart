@@ -37,23 +37,15 @@ class ServiceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] The Service identifier.
   ServiceArgs({
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<ServiceAttributes>? attributes,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> discoveredService,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      attributes = pulumi.Input.asOptionalInput<ServiceAttributes>(attributes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      discoveredService = pulumi.Input.asInput<String>(discoveredService),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    required this.applicationId,
+    this.attributes,
+    this.description,
+    required this.discoveredService,
+    this.displayName,
+    required this.location,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<ServiceAttributes>(ServiceAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      discoveredService: pulumi.Output.create<String>(map['discoveredService'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      attributes: map['attributes'] == null ? null : (ServiceAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      discoveredService: (map['discoveredService'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

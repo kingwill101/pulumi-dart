@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackupBackup {
   /// Id of the requesting object, Backup.
-  final String backupId;
+  final pulumi.Input<String> backupId;
   /// The ID of the Backup Vault of the Data Source in which the Backup belongs.
-  final String backupVaultId;
+  final pulumi.Input<String> backupVaultId;
   /// The time when the backup was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Data Source in which the Backup belongs.
-  final String dataSourceId;
+  final pulumi.Input<String> dataSourceId;
   /// The location in which the Backup belongs.
-  final String location;
+  final pulumi.Input<String> location;
   /// Name of the resource.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetBackupBackup].
   /// [backupId] Id of the requesting object, Backup.
@@ -44,12 +45,12 @@ class GetBackupBackup {
 
   factory GetBackupBackup.fromMap(Map<String, dynamic> map) {
     return GetBackupBackup(
-      backupId: map['backupId'] as String,
-      backupVaultId: map['backupVaultId'] as String,
-      createTime: map['createTime'] as String,
-      dataSourceId: map['dataSourceId'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      backupId: (map['backupId'] as String).input(),
+      backupVaultId: (map['backupVaultId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dataSourceId: (map['dataSourceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

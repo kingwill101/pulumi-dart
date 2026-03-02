@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudVmClusterIormConfigCacheDbPlan {
-  final String dbName;
-  final String flashCacheLimit;
-  final int share;
+  final pulumi.Input<String> dbName;
+  final pulumi.Input<String> flashCacheLimit;
+  final pulumi.Input<int> share;
 
   /// Creates a new [GetCloudVmClusterIormConfigCacheDbPlan].
   /// [dbName] Required.
@@ -26,9 +27,9 @@ class GetCloudVmClusterIormConfigCacheDbPlan {
 
   factory GetCloudVmClusterIormConfigCacheDbPlan.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterIormConfigCacheDbPlan(
-      dbName: map['dbName'] as String,
-      flashCacheLimit: map['flashCacheLimit'] as String,
-      share: map['share'] as int,
+      dbName: (map['dbName'] as String).input(),
+      flashCacheLimit: (map['flashCacheLimit'] as String).input(),
+      share: (map['share'] as int).input(),
     );
   }
 }

@@ -5,13 +5,13 @@ import 'get_windows_function_app_backup_schedule.dart';
 
 class GetWindowsFunctionAppBackup {
   /// Is the Backup Job enabled?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The name of this Windows Function App.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `schedule` block as defined below.
-  final List<GetWindowsFunctionAppBackupSchedule> schedules;
+  final pulumi.Input<List<GetWindowsFunctionAppBackupSchedule>> schedules;
   /// The SAS URL to the container.
-  final String storageAccountUrl;
+  final pulumi.Input<String> storageAccountUrl;
 
   /// Creates a new [GetWindowsFunctionAppBackup].
   /// [enabled] Is the Backup Job enabled?
@@ -29,17 +29,17 @@ class GetWindowsFunctionAppBackup {
     return <String, dynamic>{
       'enabled': enabled,
       'name': name,
-      'schedules': pulumi.Input.encodeList<GetWindowsFunctionAppBackupSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'schedules': pulumi.Input.mapInputValue<List<GetWindowsFunctionAppBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetWindowsFunctionAppBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageAccountUrl': storageAccountUrl,
     };
   }
 
   factory GetWindowsFunctionAppBackup.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppBackup(
-      enabled: map['enabled'] as bool,
-      name: map['name'] as String,
-      schedules: pulumi.Input.decodeList<GetWindowsFunctionAppBackupSchedule>(map['schedules'], (value) => GetWindowsFunctionAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      storageAccountUrl: map['storageAccountUrl'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      schedules: (pulumi.Input.decodeList<GetWindowsFunctionAppBackupSchedule>(map['schedules'], (value) => GetWindowsFunctionAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
     );
   }
 }

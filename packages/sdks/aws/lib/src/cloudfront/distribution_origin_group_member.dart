@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionOriginGroupMember {
-  final String originId;
+  final pulumi.Input<String> originId;
 
   /// Creates a new [DistributionOriginGroupMember].
   /// [originId] Required.
@@ -18,7 +19,7 @@ class DistributionOriginGroupMember {
 
   factory DistributionOriginGroupMember.fromMap(Map<String, dynamic> map) {
     return DistributionOriginGroupMember(
-      originId: map['originId'] as String,
+      originId: (map['originId'] as String).input(),
     );
   }
 }

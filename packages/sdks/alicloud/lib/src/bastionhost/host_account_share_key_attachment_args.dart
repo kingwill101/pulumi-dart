@@ -19,13 +19,10 @@ class HostAccountShareKeyAttachmentArgs {
   /// [hostShareKeyId] The ID of the host shared key.
   /// [instanceId] The ID of the Bastion machine instance.
   HostAccountShareKeyAttachmentArgs({
-    required pulumi.Output<String> hostAccountId,
-    required pulumi.Output<String> hostShareKeyId,
-    required pulumi.Output<String> instanceId,
-  }) :
-      hostAccountId = pulumi.Input.asInput<String>(hostAccountId),
-      hostShareKeyId = pulumi.Input.asInput<String>(hostShareKeyId),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.hostAccountId,
+    required this.hostShareKeyId,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class HostAccountShareKeyAttachmentArgs {
 
   factory HostAccountShareKeyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return HostAccountShareKeyAttachmentArgs(
-      hostAccountId: pulumi.Output.create<String>(map['hostAccountId'] as String),
-      hostShareKeyId: pulumi.Output.create<String>(map['hostShareKeyId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      hostAccountId: (map['hostAccountId'] as String).input(),
+      hostShareKeyId: (map['hostShareKeyId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model for API authentication with JWT. Simple exchange between user name + password to access token.
 class JwtAuthModel {
   /// The custom headers we want to add once we send request to token endpoint.
-  final Map<String, String>? headers;
+  final pulumi.Input<Map<String, String>>? headers;
   /// Flag indicating whether we want to send the user name and password to token endpoint in the headers.
-  final bool? isCredentialsInHeaders;
+  final pulumi.Input<bool>? isCredentialsInHeaders;
   /// Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
-  final bool? isJsonRequest;
+  final pulumi.Input<bool>? isJsonRequest;
   /// The password
-  final Map<String, String> password;
+  final pulumi.Input<Map<String, String>> password;
   /// The custom query parameter we want to add once we send request to token endpoint.
-  final Map<String, String>? queryParameters;
+  final pulumi.Input<Map<String, String>>? queryParameters;
   /// Request timeout in seconds.
-  final int? requestTimeoutInSeconds;
+  final pulumi.Input<int>? requestTimeoutInSeconds;
   /// Token endpoint to request JWT
-  final String tokenEndpoint;
+  final pulumi.Input<String> tokenEndpoint;
   /// Type of paging
   /// Expected value is 'JwtToken'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
-  final Map<String, String> userName;
+  final pulumi.Input<Map<String, String>> userName;
 
   /// Creates a new [JwtAuthModel].
   /// [headers] The custom headers we want to add once we send request to token endpoint.
@@ -61,15 +62,15 @@ class JwtAuthModel {
 
   factory JwtAuthModel.fromMap(Map<String, dynamic> map) {
     return JwtAuthModel(
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, String>(),
-      isCredentialsInHeaders: map['isCredentialsInHeaders'] == null ? null : map['isCredentialsInHeaders'] as bool,
-      isJsonRequest: map['isJsonRequest'] == null ? null : map['isJsonRequest'] as bool,
-      password: (map['password'] as Map).cast<String, String>(),
-      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters'] as Map).cast<String, String>(),
-      requestTimeoutInSeconds: map['requestTimeoutInSeconds'] == null ? null : map['requestTimeoutInSeconds'] as int,
-      tokenEndpoint: map['tokenEndpoint'] as String,
-      type: map['type'] as String,
-      userName: (map['userName'] as Map).cast<String, String>(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      isCredentialsInHeaders: map['isCredentialsInHeaders'] == null ? null : (map['isCredentialsInHeaders'] as bool).input(),
+      isJsonRequest: map['isJsonRequest'] == null ? null : (map['isJsonRequest'] as bool).input(),
+      password: ((map['password'] as Map).cast<String, String>()).input(),
+      queryParameters: map['queryParameters'] == null ? null : ((map['queryParameters'] as Map).cast<String, String>()).input(),
+      requestTimeoutInSeconds: map['requestTimeoutInSeconds'] == null ? null : (map['requestTimeoutInSeconds'] as int).input(),
+      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
+      type: (map['type'] as String).input(),
+      userName: ((map['userName'] as Map).cast<String, String>()).input(),
     );
   }
 }

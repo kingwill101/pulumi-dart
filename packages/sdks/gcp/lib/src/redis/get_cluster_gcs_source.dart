@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterGcsSource {
   /// URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
-  final List<String> uris;
+  final pulumi.Input<List<String>> uris;
 
   /// Creates a new [GetClusterGcsSource].
   /// [uris] URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
@@ -19,7 +20,7 @@ class GetClusterGcsSource {
 
   factory GetClusterGcsSource.fromMap(Map<String, dynamic> map) {
     return GetClusterGcsSource(
-      uris: (map['uris'] as List).cast<String>(),
+      uris: ((map['uris'] as List).cast<String>()).input(),
     );
   }
 }

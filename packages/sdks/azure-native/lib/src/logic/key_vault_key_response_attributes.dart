@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The key attributes.
 class KeyVaultKeyResponseAttributes {
   /// When the key was created.
-  final double? created;
+  final pulumi.Input<double>? created;
   /// Whether the key is enabled or not.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// When the key was updated.
-  final double? updated;
+  final pulumi.Input<double>? updated;
 
   /// Creates a new [KeyVaultKeyResponseAttributes].
   /// [created] When the key was created.
@@ -30,9 +31,9 @@ class KeyVaultKeyResponseAttributes {
 
   factory KeyVaultKeyResponseAttributes.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyResponseAttributes(
-      created: map['created'] == null ? null : map['created'] as double,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      updated: map['updated'] == null ? null : map['updated'] as double,
+      created: map['created'] == null ? null : (map['created'] as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as double).input(),
     );
   }
 }

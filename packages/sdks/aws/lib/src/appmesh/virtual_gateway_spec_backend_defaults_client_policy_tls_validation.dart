@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation_subject_alternative_names.dart';
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation_trust.dart';
 
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation {
   /// SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
-  final VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames? subjectAlternativeNames;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames>? subjectAlternativeNames;
   /// TLS validation context trust.
-  final VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust trust;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust> trust;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation].
   /// [subjectAlternativeNames] SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
@@ -19,15 +20,15 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subjectAlternativeNames': ?subjectAlternativeNames == null ? null : subjectAlternativeNames!.toMap(),
-      'trust': trust.toMap(),
+      'subjectAlternativeNames': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames, Map<String, dynamic>>(subjectAlternativeNames, (value) => value.toMap()),
+      'trust': pulumi.Input.mapInputValue<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust, Map<String, dynamic>>(trust, (value) => value.toMap()),
     };
   }
 
   factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>()),
-      trust: VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>()),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>())).input(),
+      trust: (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

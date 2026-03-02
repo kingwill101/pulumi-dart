@@ -6,15 +6,15 @@ import 'httpheader_response.dart';
 /// HTTPGetAction describes an action based on HTTP Get requests.
 class HTTPGetActionResponse {
   /// Not supported by Cloud Run.
-  final String host;
+  final pulumi.Input<String> host;
   /// Custom headers to set in the request. HTTP allows repeated headers.
-  final List<HTTPHeaderResponse> httpHeaders;
+  final pulumi.Input<List<HTTPHeaderResponse>> httpHeaders;
   /// Path to access on the HTTP server.
-  final String path;
+  final pulumi.Input<String> path;
   /// Port number to access on the container. Number must be in the range 1 to 65535.
-  final int port;
+  final pulumi.Input<int> port;
   /// Not supported by Cloud Run.
-  final String scheme;
+  final pulumi.Input<String> scheme;
 
   /// Creates a new [HTTPGetActionResponse].
   /// [host] Not supported by Cloud Run.
@@ -33,7 +33,7 @@ class HTTPGetActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'host': host,
-      'httpHeaders': pulumi.Input.encodeList<HTTPHeaderResponse, Map<String, dynamic>>(httpHeaders, (value) => value.toMap()),
+      'httpHeaders': pulumi.Input.mapInputValue<List<HTTPHeaderResponse>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<HTTPHeaderResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'path': path,
       'port': port,
       'scheme': scheme,
@@ -42,11 +42,11 @@ class HTTPGetActionResponse {
 
   factory HTTPGetActionResponse.fromMap(Map<String, dynamic> map) {
     return HTTPGetActionResponse(
-      host: map['host'] as String,
-      httpHeaders: pulumi.Input.decodeList<HTTPHeaderResponse>(map['httpHeaders'], (value) => HTTPHeaderResponse.fromMap((value as Map).cast<String, dynamic>())),
-      path: map['path'] as String,
-      port: map['port'] as int,
-      scheme: map['scheme'] as String,
+      host: (map['host'] as String).input(),
+      httpHeaders: (pulumi.Input.decodeList<HTTPHeaderResponse>(map['httpHeaders'], (value) => HTTPHeaderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as int).input(),
+      scheme: (map['scheme'] as String).input(),
     );
   }
 }

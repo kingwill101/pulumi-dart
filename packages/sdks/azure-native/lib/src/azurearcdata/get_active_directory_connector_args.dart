@@ -19,13 +19,10 @@ class GetActiveDirectoryConnectorArgs {
   /// [dataControllerName] The name of the data controller
   /// [resourceGroupName] The name of the Azure resource group
   GetActiveDirectoryConnectorArgs({
-    required pulumi.Output<String> activeDirectoryConnectorName,
-    required pulumi.Output<String> dataControllerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      activeDirectoryConnectorName = pulumi.Input.asInput<String>(activeDirectoryConnectorName),
-      dataControllerName = pulumi.Input.asInput<String>(dataControllerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.activeDirectoryConnectorName,
+    required this.dataControllerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetActiveDirectoryConnectorArgs {
 
   factory GetActiveDirectoryConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetActiveDirectoryConnectorArgs(
-      activeDirectoryConnectorName: pulumi.Output.create<String>(map['activeDirectoryConnectorName'] as String),
-      dataControllerName: pulumi.Output.create<String>(map['dataControllerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      activeDirectoryConnectorName: (map['activeDirectoryConnectorName'] as String).input(),
+      dataControllerName: (map['dataControllerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

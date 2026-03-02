@@ -34,21 +34,14 @@ class SiteNetworkServiceArgs {
   /// [sku] Sku of the site network service.
   /// [tags] Resource tags.
   SiteNetworkServiceArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<SiteNetworkServicePropertiesFormat>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? siteNetworkServiceName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<SiteNetworkServicePropertiesFormat>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteNetworkServiceName = pulumi.Input.asOptionalInput<String>(siteNetworkServiceName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.siteNetworkServiceName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class SiteNetworkServiceArgs {
 
   factory SiteNetworkServiceArgs.fromMap(Map<String, dynamic> map) {
     return SiteNetworkServiceArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SiteNetworkServicePropertiesFormat>(SiteNetworkServicePropertiesFormat.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteNetworkServiceName: map['siteNetworkServiceName'] == null ? null : pulumi.Output.create<String>(map['siteNetworkServiceName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (SiteNetworkServicePropertiesFormat.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteNetworkServiceName: map['siteNetworkServiceName'] == null ? null : (map['siteNetworkServiceName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

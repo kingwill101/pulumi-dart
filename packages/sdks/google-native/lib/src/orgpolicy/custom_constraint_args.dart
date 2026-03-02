@@ -35,23 +35,15 @@ class CustomConstraintArgs {
   /// [organizationId] Required.
   /// [resourceTypes] Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
   CustomConstraintArgs({
-    pulumi.Output<CustomConstraintActionType>? actionType,
-    pulumi.Output<String>? condition,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<CustomConstraintMethodTypesItem>>? methodTypes,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<List<String>>? resourceTypes,
-  }) :
-      actionType = pulumi.Input.asOptionalInput<CustomConstraintActionType>(actionType),
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      methodTypes = pulumi.Input.asOptionalInput<List<CustomConstraintMethodTypesItem>>(methodTypes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      resourceTypes = pulumi.Input.asOptionalInput<List<String>>(resourceTypes);
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    required this.organizationId,
+    this.resourceTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class CustomConstraintArgs {
 
   factory CustomConstraintArgs.fromMap(Map<String, dynamic> map) {
     return CustomConstraintArgs(
-      actionType: map['actionType'] == null ? null : pulumi.Output.create<CustomConstraintActionType>(CustomConstraintActionType.fromValue(map['actionType'] as String)),
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      methodTypes: map['methodTypes'] == null ? null : pulumi.Output.create<List<CustomConstraintMethodTypesItem>>(pulumi.Input.decodeList<CustomConstraintMethodTypesItem>(map['methodTypes'], (value) => CustomConstraintMethodTypesItem.fromValue(value as String))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['resourceTypes'] as List).cast<String>()),
+      actionType: map['actionType'] == null ? null : (CustomConstraintActionType.fromValue(map['actionType'] as String)).input(),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      methodTypes: map['methodTypes'] == null ? null : (pulumi.Input.decodeList<CustomConstraintMethodTypesItem>(map['methodTypes'], (value) => CustomConstraintMethodTypesItem.fromValue(value as String))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }
 }

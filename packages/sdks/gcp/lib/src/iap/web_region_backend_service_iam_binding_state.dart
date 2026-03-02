@@ -46,21 +46,14 @@ class WebRegionBackendServiceIamBindingState {
   /// [role] The role that should be applied. Only one
   /// [webRegionBackendService] Used to find the parent resource to bind the IAM policy to
   WebRegionBackendServiceIamBindingState({
-    pulumi.Output<WebRegionBackendServiceIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? webRegionBackendService,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WebRegionBackendServiceIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      webRegionBackendService = pulumi.Input.asOptionalInput<String>(webRegionBackendService);
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.region,
+    this.role,
+    this.webRegionBackendService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,13 +69,13 @@ class WebRegionBackendServiceIamBindingState {
 
   factory WebRegionBackendServiceIamBindingState.fromMap(Map<String, dynamic> map) {
     return WebRegionBackendServiceIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WebRegionBackendServiceIamBindingCondition>(WebRegionBackendServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      webRegionBackendService: map['webRegionBackendService'] == null ? null : pulumi.Output.create<String>(map['webRegionBackendService'] as String),
+      condition: map['condition'] == null ? null : (WebRegionBackendServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      webRegionBackendService: map['webRegionBackendService'] == null ? null : (map['webRegionBackendService'] as String).input(),
     );
   }
 }

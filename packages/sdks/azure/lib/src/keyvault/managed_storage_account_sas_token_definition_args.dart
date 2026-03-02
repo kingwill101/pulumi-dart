@@ -28,19 +28,13 @@ class ManagedStorageAccountSasTokenDefinitionArgs {
   /// [tags] A mapping of tags which should be assigned to the SAS Definition. Changing this forces a new resource to be created.
   /// [validityPeriod] Validity period of SAS token. Value needs to be in [ISO 8601 duration format](https://en.wikipedia.org/wiki/ISO_8601#Durations).
   ManagedStorageAccountSasTokenDefinitionArgs({
-    required pulumi.Output<String> managedStorageAccountId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> sasTemplateUri,
-    required pulumi.Output<String> sasType,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> validityPeriod,
-  }) :
-      managedStorageAccountId = pulumi.Input.asInput<String>(managedStorageAccountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sasTemplateUri = pulumi.Input.asInput<String>(sasTemplateUri),
-      sasType = pulumi.Input.asInput<String>(sasType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validityPeriod = pulumi.Input.asInput<String>(validityPeriod);
+    required this.managedStorageAccountId,
+    this.name,
+    required this.sasTemplateUri,
+    required this.sasType,
+    this.tags,
+    required this.validityPeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ManagedStorageAccountSasTokenDefinitionArgs {
 
   factory ManagedStorageAccountSasTokenDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ManagedStorageAccountSasTokenDefinitionArgs(
-      managedStorageAccountId: pulumi.Output.create<String>(map['managedStorageAccountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sasTemplateUri: pulumi.Output.create<String>(map['sasTemplateUri'] as String),
-      sasType: pulumi.Output.create<String>(map['sasType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validityPeriod: pulumi.Output.create<String>(map['validityPeriod'] as String),
+      managedStorageAccountId: (map['managedStorageAccountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sasTemplateUri: (map['sasTemplateUri'] as String).input(),
+      sasType: (map['sasType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validityPeriod: (map['validityPeriod'] as String).input(),
     );
   }
 }

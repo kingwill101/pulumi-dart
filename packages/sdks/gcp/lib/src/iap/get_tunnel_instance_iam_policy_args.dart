@@ -22,13 +22,10 @@ class GetTunnelInstanceIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Used to find the parent resource to bind the IAM policy to. If not specified,
   GetTunnelInstanceIamPolicyArgs({
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      instance = pulumi.Input.asInput<String>(instance),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.instance,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetTunnelInstanceIamPolicyArgs {
 
   factory GetTunnelInstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTunnelInstanceIamPolicyArgs(
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      instance: (map['instance'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

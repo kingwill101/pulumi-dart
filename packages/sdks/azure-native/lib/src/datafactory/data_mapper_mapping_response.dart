@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mapper_attribute_mappings_response.dart';
 import 'mapper_connection_reference_response.dart';
 
 /// Source and target table mapping details.
 class DataMapperMappingResponse {
   /// This holds the user provided attribute mapping information.
-  final MapperAttributeMappingsResponse? attributeMappingInfo;
+  final pulumi.Input<MapperAttributeMappingsResponse>? attributeMappingInfo;
   /// The connection reference for the source connection.
-  final MapperConnectionReferenceResponse? sourceConnectionReference;
+  final pulumi.Input<MapperConnectionReferenceResponse>? sourceConnectionReference;
   /// This holds the source denormalization information used while joining multiple sources.
-  final dynamic sourceDenormalizeInfo;
+  final pulumi.Input<dynamic>? sourceDenormalizeInfo;
   /// Name of the source table
-  final String? sourceEntityName;
+  final pulumi.Input<String>? sourceEntityName;
   /// Name of the target table
-  final String? targetEntityName;
+  final pulumi.Input<String>? targetEntityName;
 
   /// Creates a new [DataMapperMappingResponse].
   /// [attributeMappingInfo] This holds the user provided attribute mapping information.
@@ -32,8 +33,8 @@ class DataMapperMappingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributeMappingInfo': ?attributeMappingInfo == null ? null : attributeMappingInfo!.toMap(),
-      'sourceConnectionReference': ?sourceConnectionReference == null ? null : sourceConnectionReference!.toMap(),
+      'attributeMappingInfo': ?pulumi.Input.mapOptionalInputValue<MapperAttributeMappingsResponse, Map<String, dynamic>>(attributeMappingInfo, (value) => value.toMap()),
+      'sourceConnectionReference': ?pulumi.Input.mapOptionalInputValue<MapperConnectionReferenceResponse, Map<String, dynamic>>(sourceConnectionReference, (value) => value.toMap()),
       'sourceDenormalizeInfo': ?sourceDenormalizeInfo,
       'sourceEntityName': ?sourceEntityName,
       'targetEntityName': ?targetEntityName,
@@ -42,11 +43,11 @@ class DataMapperMappingResponse {
 
   factory DataMapperMappingResponse.fromMap(Map<String, dynamic> map) {
     return DataMapperMappingResponse(
-      attributeMappingInfo: map['attributeMappingInfo'] == null ? null : MapperAttributeMappingsResponse.fromMap((map['attributeMappingInfo'] as Map).cast<String, dynamic>()),
-      sourceConnectionReference: map['sourceConnectionReference'] == null ? null : MapperConnectionReferenceResponse.fromMap((map['sourceConnectionReference'] as Map).cast<String, dynamic>()),
-      sourceDenormalizeInfo: map['sourceDenormalizeInfo'] == null ? null : map['sourceDenormalizeInfo'],
-      sourceEntityName: map['sourceEntityName'] == null ? null : map['sourceEntityName'] as String,
-      targetEntityName: map['targetEntityName'] == null ? null : map['targetEntityName'] as String,
+      attributeMappingInfo: map['attributeMappingInfo'] == null ? null : (MapperAttributeMappingsResponse.fromMap((map['attributeMappingInfo'] as Map).cast<String, dynamic>())).input(),
+      sourceConnectionReference: map['sourceConnectionReference'] == null ? null : (MapperConnectionReferenceResponse.fromMap((map['sourceConnectionReference'] as Map).cast<String, dynamic>())).input(),
+      sourceDenormalizeInfo: map['sourceDenormalizeInfo'] == null ? null : (map['sourceDenormalizeInfo']).input(),
+      sourceEntityName: map['sourceEntityName'] == null ? null : (map['sourceEntityName'] as String).input(),
+      targetEntityName: map['targetEntityName'] == null ? null : (map['targetEntityName'] as String).input(),
     );
   }
 }

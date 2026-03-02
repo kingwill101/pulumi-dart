@@ -8,13 +8,13 @@ import 'stateless_rules_and_custom_actions.dart';
 /// Definition of RulesSource
 class RulesSource {
   /// Property rulesSourceList
-  final RulesSourceList? rulesSourceList;
+  final pulumi.Input<RulesSourceList>? rulesSourceList;
   /// Property rulesString
-  final String? rulesString;
+  final pulumi.Input<String>? rulesString;
   /// Property statefulRules
-  final List<StatefulRule>? statefulRules;
+  final pulumi.Input<List<StatefulRule>>? statefulRules;
   /// Property statelessRulesAndCustomActions
-  final StatelessRulesAndCustomActions? statelessRulesAndCustomActions;
+  final pulumi.Input<StatelessRulesAndCustomActions>? statelessRulesAndCustomActions;
 
   /// Creates a new [RulesSource].
   /// [rulesSourceList] Property rulesSourceList
@@ -30,19 +30,19 @@ class RulesSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rulesSourceList': ?rulesSourceList == null ? null : rulesSourceList!.toMap(),
+      'rulesSourceList': ?pulumi.Input.mapOptionalInputValue<RulesSourceList, Map<String, dynamic>>(rulesSourceList, (value) => value.toMap()),
       'rulesString': ?rulesString,
-      'statefulRules': ?statefulRules == null ? null : pulumi.Input.encodeList<StatefulRule, Map<String, dynamic>>(statefulRules!, (value) => value.toMap()),
-      'statelessRulesAndCustomActions': ?statelessRulesAndCustomActions == null ? null : statelessRulesAndCustomActions!.toMap(),
+      'statefulRules': ?pulumi.Input.mapOptionalInputValue<List<StatefulRule>, List<Map<String, dynamic>>>(statefulRules, (value) => pulumi.Input.encodeList<StatefulRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statelessRulesAndCustomActions': ?pulumi.Input.mapOptionalInputValue<StatelessRulesAndCustomActions, Map<String, dynamic>>(statelessRulesAndCustomActions, (value) => value.toMap()),
     };
   }
 
   factory RulesSource.fromMap(Map<String, dynamic> map) {
     return RulesSource(
-      rulesSourceList: map['rulesSourceList'] == null ? null : RulesSourceList.fromMap((map['rulesSourceList'] as Map).cast<String, dynamic>()),
-      rulesString: map['rulesString'] == null ? null : map['rulesString'] as String,
-      statefulRules: map['statefulRules'] == null ? null : pulumi.Input.decodeList<StatefulRule>(map['statefulRules'], (value) => StatefulRule.fromMap((value as Map).cast<String, dynamic>())),
-      statelessRulesAndCustomActions: map['statelessRulesAndCustomActions'] == null ? null : StatelessRulesAndCustomActions.fromMap((map['statelessRulesAndCustomActions'] as Map).cast<String, dynamic>()),
+      rulesSourceList: map['rulesSourceList'] == null ? null : (RulesSourceList.fromMap((map['rulesSourceList'] as Map).cast<String, dynamic>())).input(),
+      rulesString: map['rulesString'] == null ? null : (map['rulesString'] as String).input(),
+      statefulRules: map['statefulRules'] == null ? null : (pulumi.Input.decodeList<StatefulRule>(map['statefulRules'], (value) => StatefulRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statelessRulesAndCustomActions: map['statelessRulesAndCustomActions'] == null ? null : (StatelessRulesAndCustomActions.fromMap((map['statelessRulesAndCustomActions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

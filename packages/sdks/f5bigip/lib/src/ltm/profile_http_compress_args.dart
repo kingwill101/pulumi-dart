@@ -49,33 +49,20 @@ class ProfileHttpCompressArgs {
   /// [uriIncludes] Enables compression on a specified list of HTTP Request-URI responses. Use a regular expression to specify a list of URIs you want to compress.
   /// [varyHeader] Specifies, when checked (enabled), that the system inserts a Vary header into cacheable server responses. The default is `enabled`.
   ProfileHttpCompressArgs({
-    pulumi.Output<int>? compressionBuffersize,
-    pulumi.Output<List<String>>? contentTypeExcludes,
-    pulumi.Output<List<String>>? contentTypeIncludes,
-    pulumi.Output<String>? cpuSaver,
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<int>? gzipCompressionLevel,
-    pulumi.Output<int>? gzipMemoryLevel,
-    pulumi.Output<int>? gzipWindowSize,
-    pulumi.Output<String>? keepAcceptEncoding,
-    required pulumi.Output<String> name,
-    pulumi.Output<List<String>>? uriExcludes,
-    pulumi.Output<List<String>>? uriIncludes,
-    pulumi.Output<String>? varyHeader,
-  }) :
-      compressionBuffersize = pulumi.Input.asOptionalInput<int>(compressionBuffersize),
-      contentTypeExcludes = pulumi.Input.asOptionalInput<List<String>>(contentTypeExcludes),
-      contentTypeIncludes = pulumi.Input.asOptionalInput<List<String>>(contentTypeIncludes),
-      cpuSaver = pulumi.Input.asOptionalInput<String>(cpuSaver),
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      gzipCompressionLevel = pulumi.Input.asOptionalInput<int>(gzipCompressionLevel),
-      gzipMemoryLevel = pulumi.Input.asOptionalInput<int>(gzipMemoryLevel),
-      gzipWindowSize = pulumi.Input.asOptionalInput<int>(gzipWindowSize),
-      keepAcceptEncoding = pulumi.Input.asOptionalInput<String>(keepAcceptEncoding),
-      name = pulumi.Input.asInput<String>(name),
-      uriExcludes = pulumi.Input.asOptionalInput<List<String>>(uriExcludes),
-      uriIncludes = pulumi.Input.asOptionalInput<List<String>>(uriIncludes),
-      varyHeader = pulumi.Input.asOptionalInput<String>(varyHeader);
+    this.compressionBuffersize,
+    this.contentTypeExcludes,
+    this.contentTypeIncludes,
+    this.cpuSaver,
+    this.defaultsFrom,
+    this.gzipCompressionLevel,
+    this.gzipMemoryLevel,
+    this.gzipWindowSize,
+    this.keepAcceptEncoding,
+    required this.name,
+    this.uriExcludes,
+    this.uriIncludes,
+    this.varyHeader,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class ProfileHttpCompressArgs {
 
   factory ProfileHttpCompressArgs.fromMap(Map<String, dynamic> map) {
     return ProfileHttpCompressArgs(
-      compressionBuffersize: map['compressionBuffersize'] == null ? null : pulumi.Output.create<int>(map['compressionBuffersize'] as int),
-      contentTypeExcludes: map['contentTypeExcludes'] == null ? null : pulumi.Output.create<List<String>>((map['contentTypeExcludes'] as List).cast<String>()),
-      contentTypeIncludes: map['contentTypeIncludes'] == null ? null : pulumi.Output.create<List<String>>((map['contentTypeIncludes'] as List).cast<String>()),
-      cpuSaver: map['cpuSaver'] == null ? null : pulumi.Output.create<String>(map['cpuSaver'] as String),
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      gzipCompressionLevel: map['gzipCompressionLevel'] == null ? null : pulumi.Output.create<int>(map['gzipCompressionLevel'] as int),
-      gzipMemoryLevel: map['gzipMemoryLevel'] == null ? null : pulumi.Output.create<int>(map['gzipMemoryLevel'] as int),
-      gzipWindowSize: map['gzipWindowSize'] == null ? null : pulumi.Output.create<int>(map['gzipWindowSize'] as int),
-      keepAcceptEncoding: map['keepAcceptEncoding'] == null ? null : pulumi.Output.create<String>(map['keepAcceptEncoding'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      uriExcludes: map['uriExcludes'] == null ? null : pulumi.Output.create<List<String>>((map['uriExcludes'] as List).cast<String>()),
-      uriIncludes: map['uriIncludes'] == null ? null : pulumi.Output.create<List<String>>((map['uriIncludes'] as List).cast<String>()),
-      varyHeader: map['varyHeader'] == null ? null : pulumi.Output.create<String>(map['varyHeader'] as String),
+      compressionBuffersize: map['compressionBuffersize'] == null ? null : (map['compressionBuffersize'] as int).input(),
+      contentTypeExcludes: map['contentTypeExcludes'] == null ? null : ((map['contentTypeExcludes'] as List).cast<String>()).input(),
+      contentTypeIncludes: map['contentTypeIncludes'] == null ? null : ((map['contentTypeIncludes'] as List).cast<String>()).input(),
+      cpuSaver: map['cpuSaver'] == null ? null : (map['cpuSaver'] as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      gzipCompressionLevel: map['gzipCompressionLevel'] == null ? null : (map['gzipCompressionLevel'] as int).input(),
+      gzipMemoryLevel: map['gzipMemoryLevel'] == null ? null : (map['gzipMemoryLevel'] as int).input(),
+      gzipWindowSize: map['gzipWindowSize'] == null ? null : (map['gzipWindowSize'] as int).input(),
+      keepAcceptEncoding: map['keepAcceptEncoding'] == null ? null : (map['keepAcceptEncoding'] as String).input(),
+      name: (map['name'] as String).input(),
+      uriExcludes: map['uriExcludes'] == null ? null : ((map['uriExcludes'] as List).cast<String>()).input(),
+      uriIncludes: map['uriIncludes'] == null ? null : ((map['uriIncludes'] as List).cast<String>()).input(),
+      varyHeader: map['varyHeader'] == null ? null : (map['varyHeader'] as String).input(),
     );
   }
 }

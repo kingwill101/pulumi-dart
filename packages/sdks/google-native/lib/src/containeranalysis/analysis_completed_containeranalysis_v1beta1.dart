@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
 class AnalysisCompletedContaineranalysisV1beta1 {
-  final List<String>? analysisType;
+  final pulumi.Input<List<String>>? analysisType;
 
   /// Creates a new [AnalysisCompletedContaineranalysisV1beta1].
   /// [analysisType] Optional.
@@ -19,7 +20,7 @@ class AnalysisCompletedContaineranalysisV1beta1 {
 
   factory AnalysisCompletedContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AnalysisCompletedContaineranalysisV1beta1(
-      analysisType: map['analysisType'] == null ? null : (map['analysisType'] as List).cast<String>(),
+      analysisType: map['analysisType'] == null ? null : ((map['analysisType'] as List).cast<String>()).input(),
     );
   }
 }

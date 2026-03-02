@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesSmartcardHostCert {
   /// Specifies the file path for the host certificate linked to the smartcard.
-  final String file;
+  final pulumi.Input<String> file;
 
   /// Creates a new [DomainDevicesSmartcardHostCert].
   /// [file] Specifies the file path for the host certificate linked to the smartcard.
@@ -19,7 +20,7 @@ class DomainDevicesSmartcardHostCert {
 
   factory DomainDevicesSmartcardHostCert.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardHostCert(
-      file: map['file'] as String,
+      file: (map['file'] as String).input(),
     );
   }
 }

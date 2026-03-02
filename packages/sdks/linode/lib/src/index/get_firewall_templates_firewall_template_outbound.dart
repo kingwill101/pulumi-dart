@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallTemplatesFirewallTemplateOutbound {
-  final String action;
-  final String description;
-  final List<String> ipv4s;
-  final List<String> ipv6s;
-  final String label;
-  final String ports;
-  final String protocol;
+  final pulumi.Input<String> action;
+  final pulumi.Input<String> description;
+  final pulumi.Input<List<String>> ipv4s;
+  final pulumi.Input<List<String>> ipv6s;
+  final pulumi.Input<String> label;
+  final pulumi.Input<String> ports;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [GetFirewallTemplatesFirewallTemplateOutbound].
   /// [action] Required.
@@ -42,13 +43,13 @@ class GetFirewallTemplatesFirewallTemplateOutbound {
 
   factory GetFirewallTemplatesFirewallTemplateOutbound.fromMap(Map<String, dynamic> map) {
     return GetFirewallTemplatesFirewallTemplateOutbound(
-      action: map['action'] as String,
-      description: map['description'] as String,
-      ipv4s: (map['ipv4s'] as List).cast<String>(),
-      ipv6s: (map['ipv6s'] as List).cast<String>(),
-      label: map['label'] as String,
-      ports: map['ports'] as String,
-      protocol: map['protocol'] as String,
+      action: (map['action'] as String).input(),
+      description: (map['description'] as String).input(),
+      ipv4s: ((map['ipv4s'] as List).cast<String>()).input(),
+      ipv6s: ((map['ipv6s'] as List).cast<String>()).input(),
+      label: (map['label'] as String).input(),
+      ports: (map['ports'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

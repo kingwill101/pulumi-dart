@@ -13,11 +13,9 @@ class HyperVSiteState {
   /// [name] The name which should be used for this Recovery Service. Changing this forces a new Site to be created.
   /// [recoveryVaultId] The ID of the Recovery Services Vault where the Site created. Changing this forces a new Site to be created.
   HyperVSiteState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recoveryVaultId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryVaultId = pulumi.Input.asOptionalInput<String>(recoveryVaultId);
+    this.name,
+    this.recoveryVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class HyperVSiteState {
 
   factory HyperVSiteState.fromMap(Map<String, dynamic> map) {
     return HyperVSiteState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
     );
   }
 }

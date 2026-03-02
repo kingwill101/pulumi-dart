@@ -35,23 +35,15 @@ class StreamArgs {
   /// [streamName] The name that you want to assign to the QLDB journal stream. User-defined names can help identify and indicate the purpose of a stream.  Your stream name must be unique among other active streams for a given ledger. Stream names have the same naming constraints as ledger names, as defined in the [Amazon QLDB Developer Guide](https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming).
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   StreamArgs({
-    pulumi.Output<String>? exclusiveEndTime,
-    required pulumi.Output<String> inclusiveStartTime,
-    required pulumi.Output<StreamKinesisConfiguration> kinesisConfiguration,
-    required pulumi.Output<String> ledgerName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<String> streamName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      exclusiveEndTime = pulumi.Input.asOptionalInput<String>(exclusiveEndTime),
-      inclusiveStartTime = pulumi.Input.asInput<String>(inclusiveStartTime),
-      kinesisConfiguration = pulumi.Input.asInput<StreamKinesisConfiguration>(kinesisConfiguration),
-      ledgerName = pulumi.Input.asInput<String>(ledgerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      streamName = pulumi.Input.asInput<String>(streamName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.exclusiveEndTime,
+    required this.inclusiveStartTime,
+    required this.kinesisConfiguration,
+    required this.ledgerName,
+    this.region,
+    required this.roleArn,
+    required this.streamName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class StreamArgs {
 
   factory StreamArgs.fromMap(Map<String, dynamic> map) {
     return StreamArgs(
-      exclusiveEndTime: map['exclusiveEndTime'] == null ? null : pulumi.Output.create<String>(map['exclusiveEndTime'] as String),
-      inclusiveStartTime: pulumi.Output.create<String>(map['inclusiveStartTime'] as String),
-      kinesisConfiguration: pulumi.Output.create<StreamKinesisConfiguration>(StreamKinesisConfiguration.fromMap((map['kinesisConfiguration'] as Map).cast<String, dynamic>())),
-      ledgerName: pulumi.Output.create<String>(map['ledgerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      streamName: pulumi.Output.create<String>(map['streamName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      exclusiveEndTime: map['exclusiveEndTime'] == null ? null : (map['exclusiveEndTime'] as String).input(),
+      inclusiveStartTime: (map['inclusiveStartTime'] as String).input(),
+      kinesisConfiguration: (StreamKinesisConfiguration.fromMap((map['kinesisConfiguration'] as Map).cast<String, dynamic>())).input(),
+      ledgerName: (map['ledgerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      streamName: (map['streamName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

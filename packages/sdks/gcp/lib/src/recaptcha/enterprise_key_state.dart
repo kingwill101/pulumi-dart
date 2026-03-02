@@ -55,31 +55,19 @@ class EnterpriseKeyState {
   /// [wafSettings] Settings specific to keys that can be used for WAF (Web Application Firewall).
   /// [webSettings] Settings for keys that can be used by websites.
   EnterpriseKeyState({
-    pulumi.Output<EnterpriseKeyAndroidSettings>? androidSettings,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<EnterpriseKeyIosSettings>? iosSettings,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<EnterpriseKeyTestingOptions>? testingOptions,
-    pulumi.Output<EnterpriseKeyWafSettings>? wafSettings,
-    pulumi.Output<EnterpriseKeyWebSettings>? webSettings,
-  }) :
-      androidSettings = pulumi.Input.asOptionalInput<EnterpriseKeyAndroidSettings>(androidSettings),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      iosSettings = pulumi.Input.asOptionalInput<EnterpriseKeyIosSettings>(iosSettings),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      testingOptions = pulumi.Input.asOptionalInput<EnterpriseKeyTestingOptions>(testingOptions),
-      wafSettings = pulumi.Input.asOptionalInput<EnterpriseKeyWafSettings>(wafSettings),
-      webSettings = pulumi.Input.asOptionalInput<EnterpriseKeyWebSettings>(webSettings);
+    this.androidSettings,
+    this.createTime,
+    this.displayName,
+    this.effectiveLabels,
+    this.iosSettings,
+    this.labels,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.testingOptions,
+    this.wafSettings,
+    this.webSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,18 +88,18 @@ class EnterpriseKeyState {
 
   factory EnterpriseKeyState.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyState(
-      androidSettings: map['androidSettings'] == null ? null : pulumi.Output.create<EnterpriseKeyAndroidSettings>(EnterpriseKeyAndroidSettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      iosSettings: map['iosSettings'] == null ? null : pulumi.Output.create<EnterpriseKeyIosSettings>(EnterpriseKeyIosSettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      testingOptions: map['testingOptions'] == null ? null : pulumi.Output.create<EnterpriseKeyTestingOptions>(EnterpriseKeyTestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())),
-      wafSettings: map['wafSettings'] == null ? null : pulumi.Output.create<EnterpriseKeyWafSettings>(EnterpriseKeyWafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())),
-      webSettings: map['webSettings'] == null ? null : pulumi.Output.create<EnterpriseKeyWebSettings>(EnterpriseKeyWebSettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())),
+      androidSettings: map['androidSettings'] == null ? null : (EnterpriseKeyAndroidSettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      iosSettings: map['iosSettings'] == null ? null : (EnterpriseKeyIosSettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      testingOptions: map['testingOptions'] == null ? null : (EnterpriseKeyTestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())).input(),
+      wafSettings: map['wafSettings'] == null ? null : (EnterpriseKeyWafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())).input(),
+      webSettings: map['webSettings'] == null ? null : (EnterpriseKeyWebSettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

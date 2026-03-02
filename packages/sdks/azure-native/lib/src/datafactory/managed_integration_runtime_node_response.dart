@@ -6,11 +6,11 @@ import 'managed_integration_runtime_error_response.dart';
 /// Properties of integration runtime node.
 class ManagedIntegrationRuntimeNodeResponse {
   /// The errors that occurred on this integration runtime node.
-  final List<ManagedIntegrationRuntimeErrorResponse>? errors;
+  final pulumi.Input<List<ManagedIntegrationRuntimeErrorResponse>>? errors;
   /// The managed integration runtime node id.
-  final String nodeId;
+  final pulumi.Input<String> nodeId;
   /// The managed integration runtime node status.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ManagedIntegrationRuntimeNodeResponse].
   /// [errors] The errors that occurred on this integration runtime node.
@@ -24,7 +24,7 @@ class ManagedIntegrationRuntimeNodeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?errors == null ? null : pulumi.Input.encodeList<ManagedIntegrationRuntimeErrorResponse, Map<String, dynamic>>(errors!, (value) => value.toMap()),
+      'errors': ?pulumi.Input.mapOptionalInputValue<List<ManagedIntegrationRuntimeErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ManagedIntegrationRuntimeErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeId': nodeId,
       'status': status,
     };
@@ -32,9 +32,9 @@ class ManagedIntegrationRuntimeNodeResponse {
 
   factory ManagedIntegrationRuntimeNodeResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIntegrationRuntimeNodeResponse(
-      errors: map['errors'] == null ? null : pulumi.Input.decodeList<ManagedIntegrationRuntimeErrorResponse>(map['errors'], (value) => ManagedIntegrationRuntimeErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      nodeId: map['nodeId'] as String,
-      status: map['status'] as String,
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ManagedIntegrationRuntimeErrorResponse>(map['errors'], (value) => ManagedIntegrationRuntimeErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

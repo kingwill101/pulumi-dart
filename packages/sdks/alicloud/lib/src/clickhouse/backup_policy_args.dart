@@ -22,15 +22,11 @@ class BackupPolicyArgs {
   /// [preferredBackupPeriods] DBCluster Backup period. A list of DBCluster Backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
   /// [preferredBackupTime] DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
   BackupPolicyArgs({
-    pulumi.Output<int>? backupRetentionPeriod,
-    required pulumi.Output<String> dbClusterId,
-    required pulumi.Output<List<String>> preferredBackupPeriods,
-    required pulumi.Output<String> preferredBackupTime,
-  }) :
-      backupRetentionPeriod = pulumi.Input.asOptionalInput<int>(backupRetentionPeriod),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      preferredBackupPeriods = pulumi.Input.asInput<List<String>>(preferredBackupPeriods),
-      preferredBackupTime = pulumi.Input.asInput<String>(preferredBackupTime);
+    this.backupRetentionPeriod,
+    required this.dbClusterId,
+    required this.preferredBackupPeriods,
+    required this.preferredBackupTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['backupRetentionPeriod'] as int),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      preferredBackupPeriods: pulumi.Output.create<List<String>>((map['preferredBackupPeriods'] as List).cast<String>()),
-      preferredBackupTime: pulumi.Output.create<String>(map['preferredBackupTime'] as String),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      preferredBackupPeriods: ((map['preferredBackupPeriods'] as List).cast<String>()).input(),
+      preferredBackupTime: (map['preferredBackupTime'] as String).input(),
     );
   }
 }

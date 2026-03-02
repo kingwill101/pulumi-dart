@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration that services will be excluded when creating cluster.
 class ExcludedServicesConfigResponse {
   /// The config id of excluded services.
-  final String? excludedServicesConfigId;
+  final pulumi.Input<String>? excludedServicesConfigId;
   /// The list of excluded services.
-  final String? excludedServicesList;
+  final pulumi.Input<String>? excludedServicesList;
 
   /// Creates a new [ExcludedServicesConfigResponse].
   /// [excludedServicesConfigId] The config id of excluded services.
@@ -25,8 +26,8 @@ class ExcludedServicesConfigResponse {
 
   factory ExcludedServicesConfigResponse.fromMap(Map<String, dynamic> map) {
     return ExcludedServicesConfigResponse(
-      excludedServicesConfigId: map['excludedServicesConfigId'] == null ? null : map['excludedServicesConfigId'] as String,
-      excludedServicesList: map['excludedServicesList'] == null ? null : map['excludedServicesList'] as String,
+      excludedServicesConfigId: map['excludedServicesConfigId'] == null ? null : (map['excludedServicesConfigId'] as String).input(),
+      excludedServicesList: map['excludedServicesList'] == null ? null : (map['excludedServicesList'] as String).input(),
     );
   }
 }

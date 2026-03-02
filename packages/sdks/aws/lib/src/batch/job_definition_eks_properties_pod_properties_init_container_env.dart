@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobDefinitionEksPropertiesPodPropertiesInitContainerEnv {
   /// Name of the job definition.
-  final String name;
+  final pulumi.Input<String> name;
   /// Value of the environment variable.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesInitContainerEnv].
   /// [name] Name of the job definition.
@@ -24,8 +25,8 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerEnv {
 
   factory JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesInitContainerEnv(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

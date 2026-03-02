@@ -25,15 +25,11 @@ class GetBillingAccountArgs {
   /// [lookupProjects] `true` if projects associated with the billing account should be read, `false` if this step
   /// [open] `true` if the billing account is open, `false` if the billing account is closed.
   GetBillingAccountArgs({
-    pulumi.Output<String>? billingAccount,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? lookupProjects,
-    pulumi.Output<bool>? open,
-  }) :
-      billingAccount = pulumi.Input.asOptionalInput<String>(billingAccount),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      lookupProjects = pulumi.Input.asOptionalInput<bool>(lookupProjects),
-      open = pulumi.Input.asOptionalInput<bool>(open);
+    this.billingAccount,
+    this.displayName,
+    this.lookupProjects,
+    this.open,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetBillingAccountArgs {
 
   factory GetBillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountArgs(
-      billingAccount: map['billingAccount'] == null ? null : pulumi.Output.create<String>(map['billingAccount'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      lookupProjects: map['lookupProjects'] == null ? null : pulumi.Output.create<bool>(map['lookupProjects'] as bool),
-      open: map['open'] == null ? null : pulumi.Output.create<bool>(map['open'] as bool),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      lookupProjects: map['lookupProjects'] == null ? null : (map['lookupProjects'] as bool).input(),
+      open: map['open'] == null ? null : (map['open'] as bool).input(),
     );
   }
 }

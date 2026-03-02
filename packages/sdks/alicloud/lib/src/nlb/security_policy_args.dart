@@ -32,17 +32,12 @@ class SecurityPolicyArgs {
   /// [tags] The tag of the resource
   /// [tlsVersions] The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
   SecurityPolicyArgs({
-    required pulumi.Output<List<String>> ciphers,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? securityPolicyName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<String>> tlsVersions,
-  }) :
-      ciphers = pulumi.Input.asInput<List<String>>(ciphers),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityPolicyName = pulumi.Input.asOptionalInput<String>(securityPolicyName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tlsVersions = pulumi.Input.asInput<List<String>>(tlsVersions);
+    required this.ciphers,
+    this.resourceGroupId,
+    this.securityPolicyName,
+    this.tags,
+    required this.tlsVersions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class SecurityPolicyArgs {
 
   factory SecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyArgs(
-      ciphers: pulumi.Output.create<List<String>>((map['ciphers'] as List).cast<String>()),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityPolicyName: map['securityPolicyName'] == null ? null : pulumi.Output.create<String>(map['securityPolicyName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tlsVersions: pulumi.Output.create<List<String>>((map['tlsVersions'] as List).cast<String>()),
+      ciphers: ((map['ciphers'] as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tlsVersions: ((map['tlsVersions'] as List).cast<String>()).input(),
     );
   }
 }

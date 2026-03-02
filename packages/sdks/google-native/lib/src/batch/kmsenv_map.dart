@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KMSEnvMap {
   /// The value of the cipherText response from the `encrypt` method.
-  final String? cipherText;
+  final pulumi.Input<String>? cipherText;
   /// The name of the KMS key that will be used to decrypt the cipher text.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
 
   /// Creates a new [KMSEnvMap].
   /// [cipherText] The value of the cipherText response from the `encrypt` method.
@@ -24,8 +25,8 @@ class KMSEnvMap {
 
   factory KMSEnvMap.fromMap(Map<String, dynamic> map) {
     return KMSEnvMap(
-      cipherText: map['cipherText'] == null ? null : map['cipherText'] as String,
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
+      cipherText: map['cipherText'] == null ? null : (map['cipherText'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
     );
   }
 }

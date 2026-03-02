@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountVirtualNetworkRule {
   /// The ID of the virtual network subnet.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetAccountVirtualNetworkRule].
   /// [id] The ID of the virtual network subnet.
@@ -19,7 +20,7 @@ class GetAccountVirtualNetworkRule {
 
   factory GetAccountVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return GetAccountVirtualNetworkRule(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

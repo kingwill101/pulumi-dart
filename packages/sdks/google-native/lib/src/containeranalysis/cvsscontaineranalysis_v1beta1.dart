@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cvssattack_complexity_containeranalysis_v1beta1.dart';
 import 'cvssattack_vector_containeranalysis_v1beta1.dart';
 import 'cvssauthentication_containeranalysis_v1beta1.dart';
@@ -13,27 +14,27 @@ import 'cvssuser_interaction_containeranalysis_v1beta1.dart';
 /// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
 class CVSSContaineranalysisV1beta1 {
   /// Defined in CVSS v3, CVSS v2
-  final CVSSAttackComplexityContaineranalysisV1beta1? attackComplexity;
+  final pulumi.Input<CVSSAttackComplexityContaineranalysisV1beta1>? attackComplexity;
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
-  final CVSSAttackVectorContaineranalysisV1beta1? attackVector;
+  final pulumi.Input<CVSSAttackVectorContaineranalysisV1beta1>? attackVector;
   /// Defined in CVSS v2
-  final CVSSAuthenticationContaineranalysisV1beta1? authentication;
+  final pulumi.Input<CVSSAuthenticationContaineranalysisV1beta1>? authentication;
   /// Defined in CVSS v3, CVSS v2
-  final CVSSAvailabilityImpactContaineranalysisV1beta1? availabilityImpact;
+  final pulumi.Input<CVSSAvailabilityImpactContaineranalysisV1beta1>? availabilityImpact;
   /// The base score is a function of the base metric scores.
-  final double? baseScore;
+  final pulumi.Input<double>? baseScore;
   /// Defined in CVSS v3, CVSS v2
-  final CVSSConfidentialityImpactContaineranalysisV1beta1? confidentialityImpact;
-  final double? exploitabilityScore;
-  final double? impactScore;
+  final pulumi.Input<CVSSConfidentialityImpactContaineranalysisV1beta1>? confidentialityImpact;
+  final pulumi.Input<double>? exploitabilityScore;
+  final pulumi.Input<double>? impactScore;
   /// Defined in CVSS v3, CVSS v2
-  final CVSSIntegrityImpactContaineranalysisV1beta1? integrityImpact;
+  final pulumi.Input<CVSSIntegrityImpactContaineranalysisV1beta1>? integrityImpact;
   /// Defined in CVSS v3
-  final CVSSPrivilegesRequiredContaineranalysisV1beta1? privilegesRequired;
+  final pulumi.Input<CVSSPrivilegesRequiredContaineranalysisV1beta1>? privilegesRequired;
   /// Defined in CVSS v3
-  final CVSSScopeContaineranalysisV1beta1? scope;
+  final pulumi.Input<CVSSScopeContaineranalysisV1beta1>? scope;
   /// Defined in CVSS v3
-  final CVSSUserInteractionContaineranalysisV1beta1? userInteraction;
+  final pulumi.Input<CVSSUserInteractionContaineranalysisV1beta1>? userInteraction;
 
   /// Creates a new [CVSSContaineranalysisV1beta1].
   /// [attackComplexity] Defined in CVSS v3, CVSS v2
@@ -65,35 +66,35 @@ class CVSSContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attackComplexity': ?attackComplexity == null ? null : attackComplexity!.value,
-      'attackVector': ?attackVector == null ? null : attackVector!.value,
-      'authentication': ?authentication == null ? null : authentication!.value,
-      'availabilityImpact': ?availabilityImpact == null ? null : availabilityImpact!.value,
+      'attackComplexity': ?pulumi.Input.mapOptionalInputValue<CVSSAttackComplexityContaineranalysisV1beta1, String>(attackComplexity, (value) => value.value),
+      'attackVector': ?pulumi.Input.mapOptionalInputValue<CVSSAttackVectorContaineranalysisV1beta1, String>(attackVector, (value) => value.value),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<CVSSAuthenticationContaineranalysisV1beta1, String>(authentication, (value) => value.value),
+      'availabilityImpact': ?pulumi.Input.mapOptionalInputValue<CVSSAvailabilityImpactContaineranalysisV1beta1, String>(availabilityImpact, (value) => value.value),
       'baseScore': ?baseScore,
-      'confidentialityImpact': ?confidentialityImpact == null ? null : confidentialityImpact!.value,
+      'confidentialityImpact': ?pulumi.Input.mapOptionalInputValue<CVSSConfidentialityImpactContaineranalysisV1beta1, String>(confidentialityImpact, (value) => value.value),
       'exploitabilityScore': ?exploitabilityScore,
       'impactScore': ?impactScore,
-      'integrityImpact': ?integrityImpact == null ? null : integrityImpact!.value,
-      'privilegesRequired': ?privilegesRequired == null ? null : privilegesRequired!.value,
-      'scope': ?scope == null ? null : scope!.value,
-      'userInteraction': ?userInteraction == null ? null : userInteraction!.value,
+      'integrityImpact': ?pulumi.Input.mapOptionalInputValue<CVSSIntegrityImpactContaineranalysisV1beta1, String>(integrityImpact, (value) => value.value),
+      'privilegesRequired': ?pulumi.Input.mapOptionalInputValue<CVSSPrivilegesRequiredContaineranalysisV1beta1, String>(privilegesRequired, (value) => value.value),
+      'scope': ?pulumi.Input.mapOptionalInputValue<CVSSScopeContaineranalysisV1beta1, String>(scope, (value) => value.value),
+      'userInteraction': ?pulumi.Input.mapOptionalInputValue<CVSSUserInteractionContaineranalysisV1beta1, String>(userInteraction, (value) => value.value),
     };
   }
 
   factory CVSSContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return CVSSContaineranalysisV1beta1(
-      attackComplexity: map['attackComplexity'] == null ? null : CVSSAttackComplexityContaineranalysisV1beta1.fromValue(map['attackComplexity'] as String),
-      attackVector: map['attackVector'] == null ? null : CVSSAttackVectorContaineranalysisV1beta1.fromValue(map['attackVector'] as String),
-      authentication: map['authentication'] == null ? null : CVSSAuthenticationContaineranalysisV1beta1.fromValue(map['authentication'] as String),
-      availabilityImpact: map['availabilityImpact'] == null ? null : CVSSAvailabilityImpactContaineranalysisV1beta1.fromValue(map['availabilityImpact'] as String),
-      baseScore: map['baseScore'] == null ? null : map['baseScore'] as double,
-      confidentialityImpact: map['confidentialityImpact'] == null ? null : CVSSConfidentialityImpactContaineranalysisV1beta1.fromValue(map['confidentialityImpact'] as String),
-      exploitabilityScore: map['exploitabilityScore'] == null ? null : map['exploitabilityScore'] as double,
-      impactScore: map['impactScore'] == null ? null : map['impactScore'] as double,
-      integrityImpact: map['integrityImpact'] == null ? null : CVSSIntegrityImpactContaineranalysisV1beta1.fromValue(map['integrityImpact'] as String),
-      privilegesRequired: map['privilegesRequired'] == null ? null : CVSSPrivilegesRequiredContaineranalysisV1beta1.fromValue(map['privilegesRequired'] as String),
-      scope: map['scope'] == null ? null : CVSSScopeContaineranalysisV1beta1.fromValue(map['scope'] as String),
-      userInteraction: map['userInteraction'] == null ? null : CVSSUserInteractionContaineranalysisV1beta1.fromValue(map['userInteraction'] as String),
+      attackComplexity: map['attackComplexity'] == null ? null : (CVSSAttackComplexityContaineranalysisV1beta1.fromValue(map['attackComplexity'] as String)).input(),
+      attackVector: map['attackVector'] == null ? null : (CVSSAttackVectorContaineranalysisV1beta1.fromValue(map['attackVector'] as String)).input(),
+      authentication: map['authentication'] == null ? null : (CVSSAuthenticationContaineranalysisV1beta1.fromValue(map['authentication'] as String)).input(),
+      availabilityImpact: map['availabilityImpact'] == null ? null : (CVSSAvailabilityImpactContaineranalysisV1beta1.fromValue(map['availabilityImpact'] as String)).input(),
+      baseScore: map['baseScore'] == null ? null : (map['baseScore'] as double).input(),
+      confidentialityImpact: map['confidentialityImpact'] == null ? null : (CVSSConfidentialityImpactContaineranalysisV1beta1.fromValue(map['confidentialityImpact'] as String)).input(),
+      exploitabilityScore: map['exploitabilityScore'] == null ? null : (map['exploitabilityScore'] as double).input(),
+      impactScore: map['impactScore'] == null ? null : (map['impactScore'] as double).input(),
+      integrityImpact: map['integrityImpact'] == null ? null : (CVSSIntegrityImpactContaineranalysisV1beta1.fromValue(map['integrityImpact'] as String)).input(),
+      privilegesRequired: map['privilegesRequired'] == null ? null : (CVSSPrivilegesRequiredContaineranalysisV1beta1.fromValue(map['privilegesRequired'] as String)).input(),
+      scope: map['scope'] == null ? null : (CVSSScopeContaineranalysisV1beta1.fromValue(map['scope'] as String)).input(),
+      userInteraction: map['userInteraction'] == null ? null : (CVSSUserInteractionContaineranalysisV1beta1.fromValue(map['userInteraction'] as String)).input(),
     );
   }
 }

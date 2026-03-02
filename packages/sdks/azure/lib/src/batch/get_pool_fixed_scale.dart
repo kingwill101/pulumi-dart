@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolFixedScale {
   /// The timeout for resize operations.
-  final String resizeTimeout;
+  final pulumi.Input<String> resizeTimeout;
   /// The number of nodes in the Batch pool.
-  final int targetDedicatedNodes;
+  final pulumi.Input<int> targetDedicatedNodes;
   /// The number of low priority nodes in the Batch pool.
-  final int targetLowPriorityNodes;
+  final pulumi.Input<int> targetLowPriorityNodes;
 
   /// Creates a new [GetPoolFixedScale].
   /// [resizeTimeout] The timeout for resize operations.
@@ -29,9 +30,9 @@ class GetPoolFixedScale {
 
   factory GetPoolFixedScale.fromMap(Map<String, dynamic> map) {
     return GetPoolFixedScale(
-      resizeTimeout: map['resizeTimeout'] as String,
-      targetDedicatedNodes: map['targetDedicatedNodes'] as int,
-      targetLowPriorityNodes: map['targetLowPriorityNodes'] as int,
+      resizeTimeout: (map['resizeTimeout'] as String).input(),
+      targetDedicatedNodes: (map['targetDedicatedNodes'] as int).input(),
+      targetLowPriorityNodes: (map['targetLowPriorityNodes'] as int).input(),
     );
   }
 }

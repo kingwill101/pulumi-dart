@@ -4,69 +4,69 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_clusters_cluster_available_kernel_version.dart';
 
 class GetClustersCluster {
-  final int autoRenewPeriod;
-  final List<GetClustersClusterAvailableKernelVersion> availableKernelVersions;
+  final pulumi.Input<int> autoRenewPeriod;
+  final pulumi.Input<List<GetClustersClusterAvailableKernelVersion>> availableKernelVersions;
   /// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
-  final String chargeType;
-  final String commodityCode;
-  final String computeResource;
-  final String connectionString;
+  final pulumi.Input<String> chargeType;
+  final pulumi.Input<String> commodityCode;
+  final pulumi.Input<String> computeResource;
+  final pulumi.Input<String> connectionString;
   /// The CreateTime of the ADB cluster.
-  final String createTime;
-  final String dbClusterCategory;
-  final String dbClusterId;
-  final String dbClusterNetworkType;
-  final String dbClusterType;
-  final String dbClusterVersion;
+  final pulumi.Input<String> createTime;
+  final pulumi.Input<String> dbClusterCategory;
+  final pulumi.Input<String> dbClusterId;
+  final pulumi.Input<String> dbClusterNetworkType;
+  final pulumi.Input<String> dbClusterType;
+  final pulumi.Input<String> dbClusterVersion;
   /// The DBNodeClass of the ADB cluster.
-  final String dbNodeClass;
+  final pulumi.Input<String> dbNodeClass;
   /// The DBNodeCount of the ADB cluster.
-  final int dbNodeCount;
+  final pulumi.Input<int> dbNodeCount;
   /// The DBNodeStorage of the ADB cluster.
-  final int dbNodeStorage;
+  final pulumi.Input<int> dbNodeStorage;
   /// The description of the ADB cluster.
-  final String description;
-  final String diskType;
-  final String dtsJobId;
-  final int elasticIoResource;
-  final String engine;
-  final String engineVersion;
-  final String executorCount;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> diskType;
+  final pulumi.Input<String> dtsJobId;
+  final pulumi.Input<int> elasticIoResource;
+  final pulumi.Input<String> engine;
+  final pulumi.Input<String> engineVersion;
+  final pulumi.Input<String> executorCount;
   /// Expiration time. Pay-As-You-Go clusters never expire.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The expired of the ADB cluster.
-  final String expired;
+  final pulumi.Input<String> expired;
   /// The ID of the ADB cluster.
-  final String id;
-  final String kernelVersion;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> kernelVersion;
   /// The LockMode of the ADB cluster.
-  final String lockMode;
-  final String lockReason;
-  final String maintainTime;
-  final String mode;
+  final pulumi.Input<String> lockMode;
+  final pulumi.Input<String> lockReason;
+  final pulumi.Input<String> maintainTime;
+  final pulumi.Input<String> mode;
   /// The DBClusterNetworkType of the ADB cluster.
-  final String networkType;
-  final String paymentType;
-  final int port;
-  final String rdsInstanceId;
+  final pulumi.Input<String> networkType;
+  final pulumi.Input<String> paymentType;
+  final pulumi.Input<int> port;
+  final pulumi.Input<String> rdsInstanceId;
   /// Region ID the cluster belongs to.
-  final String regionId;
-  final String renewalStatus;
-  final String resourceGroupId;
-  final List<String> securityIps;
+  final pulumi.Input<String> regionId;
+  final pulumi.Input<String> renewalStatus;
+  final pulumi.Input<String> resourceGroupId;
+  final pulumi.Input<List<String>> securityIps;
   /// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
-  final String status;
-  final String storageResource;
+  final pulumi.Input<String> status;
+  final pulumi.Input<String> storageResource;
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-  final Map<String, String> tags;
-  final String vpcCloudInstanceId;
+  final pulumi.Input<Map<String, String>> tags;
+  final pulumi.Input<String> vpcCloudInstanceId;
   /// ID of the VPC the cluster belongs to.
-  final String vpcId;
-  final String vswitchId;
+  final pulumi.Input<String> vpcId;
+  final pulumi.Input<String> vswitchId;
   /// The ZoneId of the ADB cluster.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetClustersCluster].
   /// [autoRenewPeriod] Required.
@@ -165,7 +165,7 @@ class GetClustersCluster {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoRenewPeriod': autoRenewPeriod,
-      'availableKernelVersions': pulumi.Input.encodeList<GetClustersClusterAvailableKernelVersion, Map<String, dynamic>>(availableKernelVersions, (value) => value.toMap()),
+      'availableKernelVersions': pulumi.Input.mapInputValue<List<GetClustersClusterAvailableKernelVersion>, List<Map<String, dynamic>>>(availableKernelVersions, (value) => pulumi.Input.encodeList<GetClustersClusterAvailableKernelVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
       'chargeType': chargeType,
       'commodityCode': commodityCode,
       'computeResource': computeResource,
@@ -214,51 +214,51 @@ class GetClustersCluster {
 
   factory GetClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetClustersCluster(
-      autoRenewPeriod: map['autoRenewPeriod'] as int,
-      availableKernelVersions: pulumi.Input.decodeList<GetClustersClusterAvailableKernelVersion>(map['availableKernelVersions'], (value) => GetClustersClusterAvailableKernelVersion.fromMap((value as Map).cast<String, dynamic>())),
-      chargeType: map['chargeType'] as String,
-      commodityCode: map['commodityCode'] as String,
-      computeResource: map['computeResource'] as String,
-      connectionString: map['connectionString'] as String,
-      createTime: map['createTime'] as String,
-      dbClusterCategory: map['dbClusterCategory'] as String,
-      dbClusterId: map['dbClusterId'] as String,
-      dbClusterNetworkType: map['dbClusterNetworkType'] as String,
-      dbClusterType: map['dbClusterType'] as String,
-      dbClusterVersion: map['dbClusterVersion'] as String,
-      dbNodeClass: map['dbNodeClass'] as String,
-      dbNodeCount: map['dbNodeCount'] as int,
-      dbNodeStorage: map['dbNodeStorage'] as int,
-      description: map['description'] as String,
-      diskType: map['diskType'] as String,
-      dtsJobId: map['dtsJobId'] as String,
-      elasticIoResource: map['elasticIoResource'] as int,
-      engine: map['engine'] as String,
-      engineVersion: map['engineVersion'] as String,
-      executorCount: map['executorCount'] as String,
-      expireTime: map['expireTime'] as String,
-      expired: map['expired'] as String,
-      id: map['id'] as String,
-      kernelVersion: map['kernelVersion'] as String,
-      lockMode: map['lockMode'] as String,
-      lockReason: map['lockReason'] as String,
-      maintainTime: map['maintainTime'] as String,
-      mode: map['mode'] as String,
-      networkType: map['networkType'] as String,
-      paymentType: map['paymentType'] as String,
-      port: map['port'] as int,
-      rdsInstanceId: map['rdsInstanceId'] as String,
-      regionId: map['regionId'] as String,
-      renewalStatus: map['renewalStatus'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      securityIps: (map['securityIps'] as List).cast<String>(),
-      status: map['status'] as String,
-      storageResource: map['storageResource'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcCloudInstanceId: map['vpcCloudInstanceId'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      autoRenewPeriod: (map['autoRenewPeriod'] as int).input(),
+      availableKernelVersions: (pulumi.Input.decodeList<GetClustersClusterAvailableKernelVersion>(map['availableKernelVersions'], (value) => GetClustersClusterAvailableKernelVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      chargeType: (map['chargeType'] as String).input(),
+      commodityCode: (map['commodityCode'] as String).input(),
+      computeResource: (map['computeResource'] as String).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dbClusterCategory: (map['dbClusterCategory'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbClusterNetworkType: (map['dbClusterNetworkType'] as String).input(),
+      dbClusterType: (map['dbClusterType'] as String).input(),
+      dbClusterVersion: (map['dbClusterVersion'] as String).input(),
+      dbNodeClass: (map['dbNodeClass'] as String).input(),
+      dbNodeCount: (map['dbNodeCount'] as int).input(),
+      dbNodeStorage: (map['dbNodeStorage'] as int).input(),
+      description: (map['description'] as String).input(),
+      diskType: (map['diskType'] as String).input(),
+      dtsJobId: (map['dtsJobId'] as String).input(),
+      elasticIoResource: (map['elasticIoResource'] as int).input(),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      executorCount: (map['executorCount'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      expired: (map['expired'] as String).input(),
+      id: (map['id'] as String).input(),
+      kernelVersion: (map['kernelVersion'] as String).input(),
+      lockMode: (map['lockMode'] as String).input(),
+      lockReason: (map['lockReason'] as String).input(),
+      maintainTime: (map['maintainTime'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      port: (map['port'] as int).input(),
+      rdsInstanceId: (map['rdsInstanceId'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      renewalStatus: (map['renewalStatus'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      securityIps: ((map['securityIps'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
+      storageResource: (map['storageResource'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcCloudInstanceId: (map['vpcCloudInstanceId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

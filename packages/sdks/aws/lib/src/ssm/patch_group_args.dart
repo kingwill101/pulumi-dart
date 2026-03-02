@@ -19,13 +19,10 @@ class PatchGroupArgs {
   /// [patchGroup] The name of the patch group that should be registered with the patch baseline.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PatchGroupArgs({
-    required pulumi.Output<String> baselineId,
-    required pulumi.Output<String> patchGroup,
-    pulumi.Output<String>? region,
-  }) :
-      baselineId = pulumi.Input.asInput<String>(baselineId),
-      patchGroup = pulumi.Input.asInput<String>(patchGroup),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.baselineId,
+    required this.patchGroup,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PatchGroupArgs {
 
   factory PatchGroupArgs.fromMap(Map<String, dynamic> map) {
     return PatchGroupArgs(
-      baselineId: pulumi.Output.create<String>(map['baselineId'] as String),
-      patchGroup: pulumi.Output.create<String>(map['patchGroup'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      baselineId: (map['baselineId'] as String).input(),
+      patchGroup: (map['patchGroup'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

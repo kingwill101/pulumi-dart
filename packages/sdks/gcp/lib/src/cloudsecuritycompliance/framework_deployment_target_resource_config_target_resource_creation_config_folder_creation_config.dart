@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig {
   /// Display name of the folder to be created
-  final String folderDisplayName;
+  final pulumi.Input<String> folderDisplayName;
   /// The parent of the folder to be created. It can be an organizations/{org} or
   /// folders/{folder}
-  final String parent;
+  final pulumi.Input<String> parent;
 
   /// Creates a new [FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig].
   /// [folderDisplayName] Display name of the folder to be created
@@ -25,8 +26,8 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderC
 
   factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig(
-      folderDisplayName: map['folderDisplayName'] as String,
-      parent: map['parent'] as String,
+      folderDisplayName: (map['folderDisplayName'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

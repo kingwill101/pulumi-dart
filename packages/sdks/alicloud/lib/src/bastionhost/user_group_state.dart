@@ -19,15 +19,11 @@ class UserGroupState {
   /// [userGroupId] The User Group self ID.
   /// [userGroupName] Specify the New Group Name. Supports up to 128 Characters.
   UserGroupState({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? userGroupId,
-    pulumi.Output<String>? userGroupName,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      userGroupId = pulumi.Input.asOptionalInput<String>(userGroupId),
-      userGroupName = pulumi.Input.asOptionalInput<String>(userGroupName);
+    this.comment,
+    this.instanceId,
+    this.userGroupId,
+    this.userGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class UserGroupState {
 
   factory UserGroupState.fromMap(Map<String, dynamic> map) {
     return UserGroupState(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      userGroupId: map['userGroupId'] == null ? null : pulumi.Output.create<String>(map['userGroupId'] as String),
-      userGroupName: map['userGroupName'] == null ? null : pulumi.Output.create<String>(map['userGroupName'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
+      userGroupName: map['userGroupName'] == null ? null : (map['userGroupName'] as String).input(),
     );
   }
 }

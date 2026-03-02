@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an Azure SQL database reference input data source.
 class AzureSqlReferenceInputDataSourceResponse {
   /// This element is associated with the datasource element. This is the name of the database that output will be written to.
-  final String? database;
+  final pulumi.Input<String>? database;
   /// This element is associated with the datasource element. This query is used to fetch incremental changes from the SQL database. To use this option, we recommend using temporal tables in Azure SQL Database.
-  final String? deltaSnapshotQuery;
+  final pulumi.Input<String>? deltaSnapshotQuery;
   /// This element is associated with the datasource element. This query is used to fetch data from the sql database.
-  final String? fullSnapshotQuery;
+  final pulumi.Input<String>? fullSnapshotQuery;
   /// This element is associated with the datasource element. This is the password that will be used to connect to the SQL Database instance.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// This element is associated with the datasource element. This indicates how frequently the data will be fetched from the database. It is of DateTime format.
-  final String? refreshRate;
+  final pulumi.Input<String>? refreshRate;
   /// Indicates the type of data refresh option.
-  final String? refreshType;
+  final pulumi.Input<String>? refreshType;
   /// This element is associated with the datasource element. This is the name of the server that contains the database that will be written to.
-  final String? server;
+  final pulumi.Input<String>? server;
   /// This element is associated with the datasource element. The name of the table in the Azure SQL database..
-  final String? table;
+  final pulumi.Input<String>? table;
   /// Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.Sql/Server/Database'.
-  final String type;
+  final pulumi.Input<String> type;
   /// This element is associated with the datasource element. This is the user name that will be used to connect to the SQL Database instance.
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [AzureSqlReferenceInputDataSourceResponse].
   /// [database] This element is associated with the datasource element. This is the name of the database that output will be written to.
@@ -66,16 +67,16 @@ class AzureSqlReferenceInputDataSourceResponse {
 
   factory AzureSqlReferenceInputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return AzureSqlReferenceInputDataSourceResponse(
-      database: map['database'] == null ? null : map['database'] as String,
-      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : map['deltaSnapshotQuery'] as String,
-      fullSnapshotQuery: map['fullSnapshotQuery'] == null ? null : map['fullSnapshotQuery'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      refreshRate: map['refreshRate'] == null ? null : map['refreshRate'] as String,
-      refreshType: map['refreshType'] == null ? null : map['refreshType'] as String,
-      server: map['server'] == null ? null : map['server'] as String,
-      table: map['table'] == null ? null : map['table'] as String,
-      type: map['type'] as String,
-      user: map['user'] == null ? null : map['user'] as String,
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery'] as String).input(),
+      fullSnapshotQuery: map['fullSnapshotQuery'] == null ? null : (map['fullSnapshotQuery'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      refreshRate: map['refreshRate'] == null ? null : (map['refreshRate'] as String).input(),
+      refreshType: map['refreshType'] == null ? null : (map['refreshType'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
+      type: (map['type'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

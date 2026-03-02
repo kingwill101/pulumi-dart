@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cosmos DB SQL trigger resource object
 class SqlTriggerResource {
   /// Body of the Trigger
-  final String? body;
+  final pulumi.Input<String>? body;
   /// Name of the Cosmos DB SQL trigger
-  final String id;
+  final pulumi.Input<String> id;
   /// The operation the trigger is associated with
-  final String? triggerOperation;
+  final pulumi.Input<String>? triggerOperation;
   /// Type of the Trigger
-  final String? triggerType;
+  final pulumi.Input<String>? triggerType;
 
   /// Creates a new [SqlTriggerResource].
   /// [body] Body of the Trigger
@@ -35,10 +36,10 @@ class SqlTriggerResource {
 
   factory SqlTriggerResource.fromMap(Map<String, dynamic> map) {
     return SqlTriggerResource(
-      body: map['body'] == null ? null : map['body'] as String,
-      id: map['id'] as String,
-      triggerOperation: map['triggerOperation'] == null ? null : map['triggerOperation'] as String,
-      triggerType: map['triggerType'] == null ? null : map['triggerType'] as String,
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      id: (map['id'] as String).input(),
+      triggerOperation: map['triggerOperation'] == null ? null : (map['triggerOperation'] as String).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
     );
   }
 }

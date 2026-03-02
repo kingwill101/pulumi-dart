@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_version_match_condition_parameters_response.dart';
 
 /// Defines the HttpVersion condition for the delivery rule.
 class DeliveryRuleHttpVersionConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'HttpVersion'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final HttpVersionMatchConditionParametersResponse parameters;
+  final pulumi.Input<HttpVersionMatchConditionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleHttpVersionConditionResponse].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleHttpVersionConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<HttpVersionMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleHttpVersionConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleHttpVersionConditionResponse(
-      name: map['name'] as String,
-      parameters: HttpVersionMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (HttpVersionMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

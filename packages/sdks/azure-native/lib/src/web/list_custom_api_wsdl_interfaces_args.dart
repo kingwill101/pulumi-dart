@@ -29,19 +29,13 @@ class ListCustomApiWsdlInterfacesArgs {
   /// [subscriptionId] Subscription Id
   /// [url] The WSDL URL
   ListCustomApiWsdlInterfacesArgs({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? importMethod,
-    required pulumi.Output<String> location,
-    pulumi.Output<WsdlService>? service,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<String>? url,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      importMethod = pulumi.Input.asOptionalInput<String>(importMethod),
-      location = pulumi.Input.asInput<String>(location),
-      service = pulumi.Input.asOptionalInput<WsdlService>(service),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.content,
+    this.importMethod,
+    required this.location,
+    this.service,
+    this.subscriptionId,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ListCustomApiWsdlInterfacesArgs {
 
   factory ListCustomApiWsdlInterfacesArgs.fromMap(Map<String, dynamic> map) {
     return ListCustomApiWsdlInterfacesArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      importMethod: map['importMethod'] == null ? null : pulumi.Output.create<String>(map['importMethod'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<WsdlService>(WsdlService.fromMap((map['service'] as Map).cast<String, dynamic>())),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      importMethod: map['importMethod'] == null ? null : (map['importMethod'] as String).input(),
+      location: (map['location'] as String).input(),
+      service: map['service'] == null ? null : (WsdlService.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

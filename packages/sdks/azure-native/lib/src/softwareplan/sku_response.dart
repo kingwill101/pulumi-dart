@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU to be applied for this resource
 class SkuResponse {
   /// Name of the SKU to be applied
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [SkuResponse].
   /// [name] Name of the SKU to be applied
@@ -20,7 +21,7 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

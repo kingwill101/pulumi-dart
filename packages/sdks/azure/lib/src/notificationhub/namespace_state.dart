@@ -37,27 +37,17 @@ class NamespaceState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundancyEnabled] Is Zone Redundancy Enabled for the Notification Hub Namespace. Defaults to `false`. Changing this forces a new resource to be created.
   NamespaceState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespaceType,
-    pulumi.Output<String>? replicationRegion,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? servicebusEndpoint,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? zoneRedundancyEnabled,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceType = pulumi.Input.asOptionalInput<String>(namespaceType),
-      replicationRegion = pulumi.Input.asOptionalInput<String>(replicationRegion),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      servicebusEndpoint = pulumi.Input.asOptionalInput<String>(servicebusEndpoint),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundancyEnabled = pulumi.Input.asOptionalInput<bool>(zoneRedundancyEnabled);
+    this.enabled,
+    this.location,
+    this.name,
+    this.namespaceType,
+    this.replicationRegion,
+    this.resourceGroupName,
+    this.servicebusEndpoint,
+    this.skuName,
+    this.tags,
+    this.zoneRedundancyEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceType: map['namespaceType'] == null ? null : pulumi.Output.create<String>(map['namespaceType'] as String),
-      replicationRegion: map['replicationRegion'] == null ? null : pulumi.Output.create<String>(map['replicationRegion'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      servicebusEndpoint: map['servicebusEndpoint'] == null ? null : pulumi.Output.create<String>(map['servicebusEndpoint'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : pulumi.Output.create<bool>(map['zoneRedundancyEnabled'] as bool),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceType: map['namespaceType'] == null ? null : (map['namespaceType'] as String).input(),
+      replicationRegion: map['replicationRegion'] == null ? null : (map['replicationRegion'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      servicebusEndpoint: map['servicebusEndpoint'] == null ? null : (map['servicebusEndpoint'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : (map['zoneRedundancyEnabled'] as bool).input(),
     );
   }
 }

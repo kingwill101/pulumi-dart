@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU that defines the type of the peering service.
 class PeeringServiceSku {
   /// The name of the peering service SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [PeeringServiceSku].
   /// [name] The name of the peering service SKU.
@@ -20,7 +21,7 @@ class PeeringServiceSku {
 
   factory PeeringServiceSku.fromMap(Map<String, dynamic> map) {
     return PeeringServiceSku(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

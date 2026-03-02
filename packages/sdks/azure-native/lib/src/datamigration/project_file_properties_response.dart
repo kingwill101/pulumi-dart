@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Base class for file properties.
 class ProjectFilePropertiesResponse {
   /// Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
-  final String? extension;
+  final pulumi.Input<String>? extension;
   /// Relative path of this file resource. This property can be set when creating or updating the file resource.
-  final String? filePath;
+  final pulumi.Input<String>? filePath;
   /// Modification DateTime.
-  final String lastModified;
+  final pulumi.Input<String> lastModified;
   /// File content type. This property can be modified to reflect the file content type.
-  final String? mediaType;
+  final pulumi.Input<String>? mediaType;
   /// File size.
-  final double size;
+  final pulumi.Input<double> size;
 
   /// Creates a new [ProjectFilePropertiesResponse].
   /// [extension] Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
@@ -40,11 +41,11 @@ class ProjectFilePropertiesResponse {
 
   factory ProjectFilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProjectFilePropertiesResponse(
-      extension: map['extension'] == null ? null : map['extension'] as String,
-      filePath: map['filePath'] == null ? null : map['filePath'] as String,
-      lastModified: map['lastModified'] as String,
-      mediaType: map['mediaType'] == null ? null : map['mediaType'] as String,
-      size: map['size'] as double,
+      extension: map['extension'] == null ? null : (map['extension'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      lastModified: (map['lastModified'] as String).input(),
+      mediaType: map['mediaType'] == null ? null : (map['mediaType'] as String).input(),
+      size: (map['size'] as double).input(),
     );
   }
 }

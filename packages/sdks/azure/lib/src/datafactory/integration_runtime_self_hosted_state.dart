@@ -29,21 +29,14 @@ class IntegrationRuntimeSelfHostedState {
   /// [secondaryAuthorizationKey] The secondary integration runtime authentication key.
   /// [selfContainedInteractiveAuthoringEnabled] Specifies whether enable interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
   IntegrationRuntimeSelfHostedState({
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryAuthorizationKey,
-    pulumi.Output<List<IntegrationRuntimeSelfHostedRbacAuthorization>>? rbacAuthorizations,
-    pulumi.Output<String>? secondaryAuthorizationKey,
-    pulumi.Output<bool>? selfContainedInteractiveAuthoringEnabled,
-  }) :
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryAuthorizationKey = pulumi.Input.asOptionalInput<String>(primaryAuthorizationKey),
-      rbacAuthorizations = pulumi.Input.asOptionalInput<List<IntegrationRuntimeSelfHostedRbacAuthorization>>(rbacAuthorizations),
-      secondaryAuthorizationKey = pulumi.Input.asOptionalInput<String>(secondaryAuthorizationKey),
-      selfContainedInteractiveAuthoringEnabled = pulumi.Input.asOptionalInput<bool>(selfContainedInteractiveAuthoringEnabled);
+    this.dataFactoryId,
+    this.description,
+    this.name,
+    this.primaryAuthorizationKey,
+    this.rbacAuthorizations,
+    this.secondaryAuthorizationKey,
+    this.selfContainedInteractiveAuthoringEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class IntegrationRuntimeSelfHostedState {
 
   factory IntegrationRuntimeSelfHostedState.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedState(
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryAuthorizationKey: map['primaryAuthorizationKey'] == null ? null : pulumi.Output.create<String>(map['primaryAuthorizationKey'] as String),
-      rbacAuthorizations: map['rbacAuthorizations'] == null ? null : pulumi.Output.create<List<IntegrationRuntimeSelfHostedRbacAuthorization>>(pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(map['rbacAuthorizations'], (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>()))),
-      secondaryAuthorizationKey: map['secondaryAuthorizationKey'] == null ? null : pulumi.Output.create<String>(map['secondaryAuthorizationKey'] as String),
-      selfContainedInteractiveAuthoringEnabled: map['selfContainedInteractiveAuthoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['selfContainedInteractiveAuthoringEnabled'] as bool),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryAuthorizationKey: map['primaryAuthorizationKey'] == null ? null : (map['primaryAuthorizationKey'] as String).input(),
+      rbacAuthorizations: map['rbacAuthorizations'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(map['rbacAuthorizations'], (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secondaryAuthorizationKey: map['secondaryAuthorizationKey'] == null ? null : (map['secondaryAuthorizationKey'] as String).input(),
+      selfContainedInteractiveAuthoringEnabled: map['selfContainedInteractiveAuthoringEnabled'] == null ? null : (map['selfContainedInteractiveAuthoringEnabled'] as bool).input(),
     );
   }
 }

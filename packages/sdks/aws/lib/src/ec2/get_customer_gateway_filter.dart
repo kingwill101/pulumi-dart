@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomerGatewayFilter {
-  final String name;
-  final List<String> values;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetCustomerGatewayFilter].
   /// [name] Required.
@@ -22,8 +23,8 @@ class GetCustomerGatewayFilter {
 
   factory GetCustomerGatewayFilter.fromMap(Map<String, dynamic> map) {
     return GetCustomerGatewayFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

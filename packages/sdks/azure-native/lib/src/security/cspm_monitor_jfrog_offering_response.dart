@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The CSPM (Cloud security posture management) monitoring for JFrog Artifactory offering
 class CspmMonitorJFrogOfferingResponse {
   /// The offering description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorJFrog'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [CspmMonitorJFrogOfferingResponse].
   /// [description] The offering description.
@@ -26,8 +27,8 @@ class CspmMonitorJFrogOfferingResponse {
 
   factory CspmMonitorJFrogOfferingResponse.fromMap(Map<String, dynamic> map) {
     return CspmMonitorJFrogOfferingResponse(
-      description: map['description'] as String,
-      offeringType: map['offeringType'] as String,
+      description: (map['description'] as String).input(),
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

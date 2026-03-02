@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_disk_details_response.dart';
 import 'transfer_configuration_response.dart';
 
 /// Details of the data to be used for exporting data from azure.
 class DataExportDetailsResponse {
   /// Account details of the data to be transferred
-  final ManagedDiskDetailsResponse accountDetails;
+  final pulumi.Input<ManagedDiskDetailsResponse> accountDetails;
   /// Level of the logs to be collected.
-  final String? logCollectionLevel;
+  final pulumi.Input<String>? logCollectionLevel;
   /// Configuration for the data transfer.
-  final TransferConfigurationResponse transferConfiguration;
+  final pulumi.Input<TransferConfigurationResponse> transferConfiguration;
 
   /// Creates a new [DataExportDetailsResponse].
   /// [accountDetails] Account details of the data to be transferred
@@ -24,17 +25,17 @@ class DataExportDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountDetails': accountDetails.toMap(),
+      'accountDetails': pulumi.Input.mapInputValue<ManagedDiskDetailsResponse, Map<String, dynamic>>(accountDetails, (value) => value.toMap()),
       'logCollectionLevel': ?logCollectionLevel,
-      'transferConfiguration': transferConfiguration.toMap(),
+      'transferConfiguration': pulumi.Input.mapInputValue<TransferConfigurationResponse, Map<String, dynamic>>(transferConfiguration, (value) => value.toMap()),
     };
   }
 
   factory DataExportDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataExportDetailsResponse(
-      accountDetails: ManagedDiskDetailsResponse.fromMap((map['accountDetails'] as Map).cast<String, dynamic>()),
-      logCollectionLevel: map['logCollectionLevel'] == null ? null : map['logCollectionLevel'] as String,
-      transferConfiguration: TransferConfigurationResponse.fromMap((map['transferConfiguration'] as Map).cast<String, dynamic>()),
+      accountDetails: (ManagedDiskDetailsResponse.fromMap((map['accountDetails'] as Map).cast<String, dynamic>())).input(),
+      logCollectionLevel: map['logCollectionLevel'] == null ? null : (map['logCollectionLevel'] as String).input(),
+      transferConfiguration: (TransferConfigurationResponse.fromMap((map['transferConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

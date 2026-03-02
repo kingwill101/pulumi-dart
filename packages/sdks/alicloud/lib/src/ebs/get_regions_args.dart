@@ -16,11 +16,9 @@ class GetRegionsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [regionId] A list of Disk Replica Group IDs.
   GetRegionsArgs({
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? regionId,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId);
+    this.outputFile,
+    this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
     );
   }
 }

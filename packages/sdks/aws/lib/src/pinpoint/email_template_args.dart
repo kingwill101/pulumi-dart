@@ -22,15 +22,11 @@ class EmailTemplateArgs {
   /// [tags] Optional.
   /// [templateName] name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
   EmailTemplateArgs({
-    pulumi.Output<List<EmailTemplateEmailTemplate>>? emailTemplates,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> templateName,
-  }) :
-      emailTemplates = pulumi.Input.asOptionalInput<List<EmailTemplateEmailTemplate>>(emailTemplates),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateName = pulumi.Input.asInput<String>(templateName);
+    this.emailTemplates,
+    this.region,
+    this.tags,
+    required this.templateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EmailTemplateArgs {
 
   factory EmailTemplateArgs.fromMap(Map<String, dynamic> map) {
     return EmailTemplateArgs(
-      emailTemplates: map['emailTemplates'] == null ? null : pulumi.Output.create<List<EmailTemplateEmailTemplate>>(pulumi.Input.decodeList<EmailTemplateEmailTemplate>(map['emailTemplates'], (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateName: pulumi.Output.create<String>(map['templateName'] as String),
+      emailTemplates: map['emailTemplates'] == null ? null : (pulumi.Input.decodeList<EmailTemplateEmailTemplate>(map['emailTemplates'], (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateName: (map['templateName'] as String).input(),
     );
   }
 }

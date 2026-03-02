@@ -39,25 +39,16 @@ class RuleGroupArgs {
   /// [tags] A map of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
   RuleGroupArgs({
-    required pulumi.Output<int> capacity,
-    pulumi.Output<String>? description,
-    pulumi.Output<RuleGroupEncryptionConfiguration>? encryptionConfiguration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<RuleGroupRuleGroup>? ruleGroup,
-    pulumi.Output<String>? rules,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      capacity = pulumi.Input.asInput<int>(capacity),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<RuleGroupEncryptionConfiguration>(encryptionConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleGroup = pulumi.Input.asOptionalInput<RuleGroupRuleGroup>(ruleGroup),
-      rules = pulumi.Input.asOptionalInput<String>(rules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    required this.capacity,
+    this.description,
+    this.encryptionConfiguration,
+    this.name,
+    this.region,
+    this.ruleGroup,
+    this.rules,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class RuleGroupArgs {
 
   factory RuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return RuleGroupArgs(
-      capacity: pulumi.Output.create<int>(map['capacity'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<RuleGroupEncryptionConfiguration>(RuleGroupEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleGroup: map['ruleGroup'] == null ? null : pulumi.Output.create<RuleGroupRuleGroup>(RuleGroupRuleGroup.fromMap((map['ruleGroup'] as Map).cast<String, dynamic>())),
-      rules: map['rules'] == null ? null : pulumi.Output.create<String>(map['rules'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      capacity: (map['capacity'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (RuleGroupEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleGroup: map['ruleGroup'] == null ? null : (RuleGroupRuleGroup.fromMap((map['ruleGroup'] as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (map['rules'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

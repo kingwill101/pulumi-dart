@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// EventSource contains information for an event.
 class EventSourcePatch {
   /// Component from which the event is generated.
-  final String? component;
+  final pulumi.Input<String>? component;
   /// Node name on which the event is generated.
-  final String? host;
+  final pulumi.Input<String>? host;
 
   /// Creates a new [EventSourcePatch].
   /// [component] Component from which the event is generated.
@@ -25,8 +26,8 @@ class EventSourcePatch {
 
   factory EventSourcePatch.fromMap(Map<String, dynamic> map) {
     return EventSourcePatch(
-      component: map['component'] == null ? null : map['component'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
+      component: map['component'] == null ? null : (map['component'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet {
   /// The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet].
   /// [url] The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
@@ -19,7 +20,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet {
 
   factory PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(
-      url: map['url'] as String,
+      url: (map['url'] as String).input(),
     );
   }
 }

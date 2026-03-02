@@ -19,13 +19,10 @@ class GetNamedValueArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetNamedValueArgs({
-    required pulumi.Output<String> namedValueId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      namedValueId = pulumi.Input.asInput<String>(namedValueId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.namedValueId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNamedValueArgs {
 
   factory GetNamedValueArgs.fromMap(Map<String, dynamic> map) {
     return GetNamedValueArgs(
-      namedValueId: pulumi.Output.create<String>(map['namedValueId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      namedValueId: (map['namedValueId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

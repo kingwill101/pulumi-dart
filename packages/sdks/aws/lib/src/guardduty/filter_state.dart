@@ -38,27 +38,17 @@ class FilterState {
   /// [tags] The tags that you want to add to the Filter resource. A tag consists of a key and a value. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   FilterState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? detectorId,
-    pulumi.Output<FilterFindingCriteria>? findingCriteria,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? rank,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      detectorId = pulumi.Input.asOptionalInput<String>(detectorId),
-      findingCriteria = pulumi.Input.asOptionalInput<FilterFindingCriteria>(findingCriteria),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rank = pulumi.Input.asOptionalInput<int>(rank),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.action,
+    this.arn,
+    this.description,
+    this.detectorId,
+    this.findingCriteria,
+    this.name,
+    this.rank,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class FilterState {
 
   factory FilterState.fromMap(Map<String, dynamic> map) {
     return FilterState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      detectorId: map['detectorId'] == null ? null : pulumi.Output.create<String>(map['detectorId'] as String),
-      findingCriteria: map['findingCriteria'] == null ? null : pulumi.Output.create<FilterFindingCriteria>(FilterFindingCriteria.fromMap((map['findingCriteria'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rank: map['rank'] == null ? null : pulumi.Output.create<int>(map['rank'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
+      findingCriteria: map['findingCriteria'] == null ? null : (FilterFindingCriteria.fromMap((map['findingCriteria'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

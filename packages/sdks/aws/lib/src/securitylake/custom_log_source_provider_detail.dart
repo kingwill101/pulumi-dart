@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomLogSourceProviderDetail {
   /// The location of the partition in the Amazon S3 bucket for Security Lake.
-  final String location;
+  final pulumi.Input<String> location;
   /// The ARN of the IAM role to be used by the entity putting logs into your custom source partition.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [CustomLogSourceProviderDetail].
   /// [location] The location of the partition in the Amazon S3 bucket for Security Lake.
@@ -24,8 +25,8 @@ class CustomLogSourceProviderDetail {
 
   factory CustomLogSourceProviderDetail.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceProviderDetail(
-      location: map['location'] as String,
-      roleArn: map['roleArn'] as String,
+      location: (map['location'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

@@ -38,19 +38,13 @@ class AiFeatureStoreEntityTypeIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   AiFeatureStoreEntityTypeIamBindingState({
-    pulumi.Output<AiFeatureStoreEntityTypeIamBindingCondition>? condition,
-    pulumi.Output<String>? entitytype,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? featurestore,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AiFeatureStoreEntityTypeIamBindingCondition>(condition),
-      entitytype = pulumi.Input.asOptionalInput<String>(entitytype),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featurestore = pulumi.Input.asOptionalInput<String>(featurestore),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.entitytype,
+    this.etag,
+    this.featurestore,
+    this.members,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,12 +59,12 @@ class AiFeatureStoreEntityTypeIamBindingState {
 
   factory AiFeatureStoreEntityTypeIamBindingState.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AiFeatureStoreEntityTypeIamBindingCondition>(AiFeatureStoreEntityTypeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      entitytype: map['entitytype'] == null ? null : pulumi.Output.create<String>(map['entitytype'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featurestore: map['featurestore'] == null ? null : pulumi.Output.create<String>(map['featurestore'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AiFeatureStoreEntityTypeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      entitytype: map['entitytype'] == null ? null : (map['entitytype'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featurestore: map['featurestore'] == null ? null : (map['featurestore'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

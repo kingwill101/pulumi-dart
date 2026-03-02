@@ -19,13 +19,10 @@ class UserGroupAssociationArgs {
   /// [userGroupId] ID of the user group.
   /// [userId] ID of the user to associated with the user group.
   UserGroupAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> userGroupId,
-    required pulumi.Output<String> userId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userGroupId = pulumi.Input.asInput<String>(userGroupId),
-      userId = pulumi.Input.asInput<String>(userId);
+    this.region,
+    required this.userGroupId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class UserGroupAssociationArgs {
 
   factory UserGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userGroupId: pulumi.Output.create<String>(map['userGroupId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userGroupId: (map['userGroupId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

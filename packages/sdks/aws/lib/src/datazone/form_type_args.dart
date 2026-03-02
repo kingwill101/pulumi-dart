@@ -35,23 +35,15 @@ class FormTypeArgs {
   /// [status] Status of form type. Must be "ENABLED" or "DISABLED" If status is set to "ENABLED" terraform cannot delete the resource until it is manually changed in the AWS console.
   /// [timeouts] Optional.
   FormTypeArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainIdentifier,
-    required pulumi.Output<FormTypeModel> model,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> owningProjectIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<FormTypeTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
-      model = pulumi.Input.asInput<FormTypeModel>(model),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owningProjectIdentifier = pulumi.Input.asInput<String>(owningProjectIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      timeouts = pulumi.Input.asOptionalInput<FormTypeTimeouts>(timeouts);
+    this.description,
+    required this.domainIdentifier,
+    required this.model,
+    this.name,
+    required this.owningProjectIdentifier,
+    this.region,
+    this.status,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class FormTypeArgs {
 
   factory FormTypeArgs.fromMap(Map<String, dynamic> map) {
     return FormTypeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      model: pulumi.Output.create<FormTypeModel>(FormTypeModel.fromMap((map['model'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owningProjectIdentifier: pulumi.Output.create<String>(map['owningProjectIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<FormTypeTimeouts>(FormTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: (map['domainIdentifier'] as String).input(),
+      model: (FormTypeModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owningProjectIdentifier: (map['owningProjectIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (FormTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

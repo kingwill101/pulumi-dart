@@ -48,29 +48,18 @@ class FileSystemArgs {
   /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [throughputMode] Throughput mode for the file system. Defaults to `bursting`. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisioned_throughput_in_mibps`.
   FileSystemArgs({
-    pulumi.Output<String>? availabilityZoneName,
-    pulumi.Output<String>? creationToken,
-    pulumi.Output<bool>? encrypted,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<List<FileSystemLifecyclePolicy>>? lifecyclePolicies,
-    pulumi.Output<String>? performanceMode,
-    pulumi.Output<FileSystemProtection>? protection,
-    pulumi.Output<double>? provisionedThroughputInMibps,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? throughputMode,
-  }) :
-      availabilityZoneName = pulumi.Input.asOptionalInput<String>(availabilityZoneName),
-      creationToken = pulumi.Input.asOptionalInput<String>(creationToken),
-      encrypted = pulumi.Input.asOptionalInput<bool>(encrypted),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      lifecyclePolicies = pulumi.Input.asOptionalInput<List<FileSystemLifecyclePolicy>>(lifecyclePolicies),
-      performanceMode = pulumi.Input.asOptionalInput<String>(performanceMode),
-      protection = pulumi.Input.asOptionalInput<FileSystemProtection>(protection),
-      provisionedThroughputInMibps = pulumi.Input.asOptionalInput<double>(provisionedThroughputInMibps),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      throughputMode = pulumi.Input.asOptionalInput<String>(throughputMode);
+    this.availabilityZoneName,
+    this.creationToken,
+    this.encrypted,
+    this.kmsKeyId,
+    this.lifecyclePolicies,
+    this.performanceMode,
+    this.protection,
+    this.provisionedThroughputInMibps,
+    this.region,
+    this.tags,
+    this.throughputMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class FileSystemArgs {
 
   factory FileSystemArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemArgs(
-      availabilityZoneName: map['availabilityZoneName'] == null ? null : pulumi.Output.create<String>(map['availabilityZoneName'] as String),
-      creationToken: map['creationToken'] == null ? null : pulumi.Output.create<String>(map['creationToken'] as String),
-      encrypted: map['encrypted'] == null ? null : pulumi.Output.create<bool>(map['encrypted'] as bool),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      lifecyclePolicies: map['lifecyclePolicies'] == null ? null : pulumi.Output.create<List<FileSystemLifecyclePolicy>>(pulumi.Input.decodeList<FileSystemLifecyclePolicy>(map['lifecyclePolicies'], (value) => FileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      performanceMode: map['performanceMode'] == null ? null : pulumi.Output.create<String>(map['performanceMode'] as String),
-      protection: map['protection'] == null ? null : pulumi.Output.create<FileSystemProtection>(FileSystemProtection.fromMap((map['protection'] as Map).cast<String, dynamic>())),
-      provisionedThroughputInMibps: map['provisionedThroughputInMibps'] == null ? null : pulumi.Output.create<double>(map['provisionedThroughputInMibps'] as double),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      throughputMode: map['throughputMode'] == null ? null : pulumi.Output.create<String>(map['throughputMode'] as String),
+      availabilityZoneName: map['availabilityZoneName'] == null ? null : (map['availabilityZoneName'] as String).input(),
+      creationToken: map['creationToken'] == null ? null : (map['creationToken'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      lifecyclePolicies: map['lifecyclePolicies'] == null ? null : (pulumi.Input.decodeList<FileSystemLifecyclePolicy>(map['lifecyclePolicies'], (value) => FileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      performanceMode: map['performanceMode'] == null ? null : (map['performanceMode'] as String).input(),
+      protection: map['protection'] == null ? null : (FileSystemProtection.fromMap((map['protection'] as Map).cast<String, dynamic>())).input(),
+      provisionedThroughputInMibps: map['provisionedThroughputInMibps'] == null ? null : (map['provisionedThroughputInMibps'] as double).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
     );
   }
 }

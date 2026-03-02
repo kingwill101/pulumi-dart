@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServicePrincipalsServicePrincipal {
   /// Whether the service principal account is enabled.
-  final bool accountEnabled;
+  final pulumi.Input<bool> accountEnabled;
   /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
-  final bool appRoleAssignmentRequired;
+  final pulumi.Input<bool> appRoleAssignmentRequired;
   /// The tenant ID where the associated application is registered.
-  final String applicationTenantId;
+  final pulumi.Input<String> applicationTenantId;
   /// The application ID (client ID) for the associated application
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The display name of the application associated with this service principal.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The object ID of the service principal.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
-  final String preferredSingleSignOnMode;
+  final pulumi.Input<String> preferredSingleSignOnMode;
   /// The URL where the service exposes SAML metadata for federation.
-  final String samlMetadataUrl;
+  final pulumi.Input<String> samlMetadataUrl;
   /// A list of identifier URI(s), copied over from the associated application.
-  final List<String> servicePrincipalNames;
+  final pulumi.Input<List<String>> servicePrincipalNames;
   /// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
-  final String signInAudience;
+  final pulumi.Input<String> signInAudience;
   /// A list of tags applied to the service principal.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
   /// Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetServicePrincipalsServicePrincipal].
   /// [accountEnabled] Whether the service principal account is enabled.
@@ -74,18 +75,18 @@ class GetServicePrincipalsServicePrincipal {
 
   factory GetServicePrincipalsServicePrincipal.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalsServicePrincipal(
-      accountEnabled: map['accountEnabled'] as bool,
-      appRoleAssignmentRequired: map['appRoleAssignmentRequired'] as bool,
-      applicationTenantId: map['applicationTenantId'] as String,
-      clientId: map['clientId'] as String,
-      displayName: map['displayName'] as String,
-      objectId: map['objectId'] as String,
-      preferredSingleSignOnMode: map['preferredSingleSignOnMode'] as String,
-      samlMetadataUrl: map['samlMetadataUrl'] as String,
-      servicePrincipalNames: (map['servicePrincipalNames'] as List).cast<String>(),
-      signInAudience: map['signInAudience'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      type: map['type'] as String,
+      accountEnabled: (map['accountEnabled'] as bool).input(),
+      appRoleAssignmentRequired: (map['appRoleAssignmentRequired'] as bool).input(),
+      applicationTenantId: (map['applicationTenantId'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      preferredSingleSignOnMode: (map['preferredSingleSignOnMode'] as String).input(),
+      samlMetadataUrl: (map['samlMetadataUrl'] as String).input(),
+      servicePrincipalNames: ((map['servicePrincipalNames'] as List).cast<String>()).input(),
+      signInAudience: (map['signInAudience'] as String).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

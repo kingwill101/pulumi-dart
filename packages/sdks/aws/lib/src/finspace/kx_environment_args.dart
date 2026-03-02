@@ -35,21 +35,14 @@ class KxEnvironmentArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayConfiguration] Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
   KxEnvironmentArgs({
-    pulumi.Output<List<KxEnvironmentCustomDnsConfiguration>>? customDnsConfigurations,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> kmsKeyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<KxEnvironmentTransitGatewayConfiguration>? transitGatewayConfiguration,
-  }) :
-      customDnsConfigurations = pulumi.Input.asOptionalInput<List<KxEnvironmentCustomDnsConfiguration>>(customDnsConfigurations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyId = pulumi.Input.asInput<String>(kmsKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayConfiguration = pulumi.Input.asOptionalInput<KxEnvironmentTransitGatewayConfiguration>(transitGatewayConfiguration);
+    this.customDnsConfigurations,
+    this.description,
+    required this.kmsKeyId,
+    this.name,
+    this.region,
+    this.tags,
+    this.transitGatewayConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class KxEnvironmentArgs {
 
   factory KxEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentArgs(
-      customDnsConfigurations: map['customDnsConfigurations'] == null ? null : pulumi.Output.create<List<KxEnvironmentCustomDnsConfiguration>>(pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(map['customDnsConfigurations'], (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyId: pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayConfiguration: map['transitGatewayConfiguration'] == null ? null : pulumi.Output.create<KxEnvironmentTransitGatewayConfiguration>(KxEnvironmentTransitGatewayConfiguration.fromMap((map['transitGatewayConfiguration'] as Map).cast<String, dynamic>())),
+      customDnsConfigurations: map['customDnsConfigurations'] == null ? null : (pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(map['customDnsConfigurations'], (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayConfiguration: map['transitGatewayConfiguration'] == null ? null : (KxEnvironmentTransitGatewayConfiguration.fromMap((map['transitGatewayConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

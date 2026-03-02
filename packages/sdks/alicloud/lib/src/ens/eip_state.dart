@@ -34,25 +34,16 @@ class EipState {
   /// [paymentType] The billing method of the EIP. Valid value: `PayAsYouGo`.
   /// [status] The status of the EIP.
   EipState({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eipName,
-    pulumi.Output<String>? ensRegionId,
-    pulumi.Output<String>? internetChargeType,
-    pulumi.Output<String>? isp,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eipName = pulumi.Input.asOptionalInput<String>(eipName),
-      ensRegionId = pulumi.Input.asOptionalInput<String>(ensRegionId),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      isp = pulumi.Input.asOptionalInput<String>(isp),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidth,
+    this.createTime,
+    this.description,
+    this.eipName,
+    this.ensRegionId,
+    this.internetChargeType,
+    this.isp,
+    this.paymentType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class EipState {
 
   factory EipState.fromMap(Map<String, dynamic> map) {
     return EipState(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eipName: map['eipName'] == null ? null : pulumi.Output.create<String>(map['eipName'] as String),
-      ensRegionId: map['ensRegionId'] == null ? null : pulumi.Output.create<String>(map['ensRegionId'] as String),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      isp: map['isp'] == null ? null : pulumi.Output.create<String>(map['isp'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eipName: map['eipName'] == null ? null : (map['eipName'] as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

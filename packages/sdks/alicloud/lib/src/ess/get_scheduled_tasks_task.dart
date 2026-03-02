@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetScheduledTasksTask {
   /// Description of the scheduled task.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the scheduled task id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The time period during which a failed scheduled task is retried.
-  final int launchExpirationTime;
+  final pulumi.Input<int> launchExpirationTime;
   /// The time at which the scheduled task is triggered.
-  final String launchTime;
-  final int maxValue;
-  final int minValue;
+  final pulumi.Input<String> launchTime;
+  final pulumi.Input<int> maxValue;
+  final pulumi.Input<int> minValue;
   /// Name of the scheduled task name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the end time after which the scheduled task is no longer repeated.
-  final String recurrenceEndTime;
+  final pulumi.Input<String> recurrenceEndTime;
   /// Specifies the recurrence type of the scheduled task.
-  final String recurrenceType;
+  final pulumi.Input<String> recurrenceType;
   /// Specifies how often a scheduled task recurs.
-  final String recurrenceValue;
+  final pulumi.Input<String> recurrenceValue;
   /// The operation to be performed when a scheduled task is triggered.
-  final String scheduledAction;
-  final bool taskEnabled;
+  final pulumi.Input<String> scheduledAction;
+  final pulumi.Input<bool> taskEnabled;
 
   /// Creates a new [GetScheduledTasksTask].
   /// [description] Description of the scheduled task.
@@ -71,18 +72,18 @@ class GetScheduledTasksTask {
 
   factory GetScheduledTasksTask.fromMap(Map<String, dynamic> map) {
     return GetScheduledTasksTask(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      launchExpirationTime: map['launchExpirationTime'] as int,
-      launchTime: map['launchTime'] as String,
-      maxValue: map['maxValue'] as int,
-      minValue: map['minValue'] as int,
-      name: map['name'] as String,
-      recurrenceEndTime: map['recurrenceEndTime'] as String,
-      recurrenceType: map['recurrenceType'] as String,
-      recurrenceValue: map['recurrenceValue'] as String,
-      scheduledAction: map['scheduledAction'] as String,
-      taskEnabled: map['taskEnabled'] as bool,
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      launchExpirationTime: (map['launchExpirationTime'] as int).input(),
+      launchTime: (map['launchTime'] as String).input(),
+      maxValue: (map['maxValue'] as int).input(),
+      minValue: (map['minValue'] as int).input(),
+      name: (map['name'] as String).input(),
+      recurrenceEndTime: (map['recurrenceEndTime'] as String).input(),
+      recurrenceType: (map['recurrenceType'] as String).input(),
+      recurrenceValue: (map['recurrenceValue'] as String).input(),
+      scheduledAction: (map['scheduledAction'] as String).input(),
+      taskEnabled: (map['taskEnabled'] as bool).input(),
     );
   }
 }

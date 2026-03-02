@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayHostnameBindingKeyVault {
   /// The default hostname of the data-plane gateway.
-  final String? identityClientId;
+  final pulumi.Input<String>? identityClientId;
   /// The current provisioning state of the API Management gateway hostname binding.
-  final String secretId;
+  final pulumi.Input<String> secretId;
 
   /// Creates a new [GatewayHostnameBindingKeyVault].
   /// [identityClientId] The default hostname of the data-plane gateway.
@@ -24,8 +25,8 @@ class GatewayHostnameBindingKeyVault {
 
   factory GatewayHostnameBindingKeyVault.fromMap(Map<String, dynamic> map) {
     return GatewayHostnameBindingKeyVault(
-      identityClientId: map['identityClientId'] == null ? null : map['identityClientId'] as String,
-      secretId: map['secretId'] as String,
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

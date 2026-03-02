@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceUpdateConfig {
   /// Delay between task updates `(ns|us|ms|s|m|h)`. Defaults to `0s`.
-  final String? delay;
+  final pulumi.Input<String>? delay;
   /// Action on update failure: `pause`, `continue` or `rollback`. Defaults to `pause`.
-  final String? failureAction;
+  final pulumi.Input<String>? failureAction;
   /// Failure rate to tolerate during an update. Defaults to `0.0`.
-  final String? maxFailureRatio;
+  final pulumi.Input<String>? maxFailureRatio;
   /// Duration after each task update to monitor for failure (ns|us|ms|s|m|h). Defaults to `5s`.
-  final String? monitor;
+  final pulumi.Input<String>? monitor;
   /// Update order: either 'stop-first' or 'start-first'. Defaults to `stop-first`.
-  final String? order;
+  final pulumi.Input<String>? order;
   /// Maximum number of tasks to be updated in one iteration. Defaults to `1`
-  final int? parallelism;
+  final pulumi.Input<int>? parallelism;
 
   /// Creates a new [ServiceUpdateConfig].
   /// [delay] Delay between task updates `(ns|us|ms|s|m|h)`. Defaults to `0s`.
@@ -44,12 +45,12 @@ class ServiceUpdateConfig {
 
   factory ServiceUpdateConfig.fromMap(Map<String, dynamic> map) {
     return ServiceUpdateConfig(
-      delay: map['delay'] == null ? null : map['delay'] as String,
-      failureAction: map['failureAction'] == null ? null : map['failureAction'] as String,
-      maxFailureRatio: map['maxFailureRatio'] == null ? null : map['maxFailureRatio'] as String,
-      monitor: map['monitor'] == null ? null : map['monitor'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      parallelism: map['parallelism'] == null ? null : map['parallelism'] as int,
+      delay: map['delay'] == null ? null : (map['delay'] as String).input(),
+      failureAction: map['failureAction'] == null ? null : (map['failureAction'] as String).input(),
+      maxFailureRatio: map['maxFailureRatio'] == null ? null : (map['maxFailureRatio'] as String).input(),
+      monitor: map['monitor'] == null ? null : (map['monitor'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
     );
   }
 }

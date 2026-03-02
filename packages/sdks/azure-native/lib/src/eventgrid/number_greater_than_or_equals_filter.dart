@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NumberGreaterThanOrEquals Filter.
 class NumberGreaterThanOrEqualsFilter {
   /// The field/property in the event based on which you want to filter.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'NumberGreaterThanOrEquals'.
-  final String operatorType;
+  final pulumi.Input<String> operatorType;
   /// The filter value.
-  final double? value;
+  final pulumi.Input<double>? value;
 
   /// Creates a new [NumberGreaterThanOrEqualsFilter].
   /// [key] The field/property in the event based on which you want to filter.
@@ -31,9 +32,9 @@ class NumberGreaterThanOrEqualsFilter {
 
   factory NumberGreaterThanOrEqualsFilter.fromMap(Map<String, dynamic> map) {
     return NumberGreaterThanOrEqualsFilter(
-      key: map['key'] == null ? null : map['key'] as String,
-      operatorType: map['operatorType'] as String,
-      value: map['value'] == null ? null : map['value'] as double,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      operatorType: (map['operatorType'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as double).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTopicIngestionDataSourceSettingAwsMsk {
   /// AWS role ARN to be used for Federated Identity authentication with
   /// MSK. Check the Pub/Sub docs for how to set up this role and the
   /// required permissions that need to be attached to it.
-  final String awsRoleArn;
+  final pulumi.Input<String> awsRoleArn;
   /// ARN that uniquely identifies the MSK cluster.
-  final String clusterArn;
+  final pulumi.Input<String> clusterArn;
   /// The GCP service account to be used for Federated Identity authentication
   /// with MSK (via a 'AssumeRoleWithWebIdentity' call for the provided
   /// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
   /// equals to this service account number.
-  final String gcpServiceAccount;
+  final pulumi.Input<String> gcpServiceAccount;
   /// The name of the MSK topic that Pub/Sub will import from.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [GetTopicIngestionDataSourceSettingAwsMsk].
   /// [awsRoleArn] AWS role ARN to be used for Federated Identity authentication with
@@ -39,10 +40,10 @@ class GetTopicIngestionDataSourceSettingAwsMsk {
 
   factory GetTopicIngestionDataSourceSettingAwsMsk.fromMap(Map<String, dynamic> map) {
     return GetTopicIngestionDataSourceSettingAwsMsk(
-      awsRoleArn: map['awsRoleArn'] as String,
-      clusterArn: map['clusterArn'] as String,
-      gcpServiceAccount: map['gcpServiceAccount'] as String,
-      topic: map['topic'] as String,
+      awsRoleArn: (map['awsRoleArn'] as String).input(),
+      clusterArn: (map['clusterArn'] as String).input(),
+      gcpServiceAccount: (map['gcpServiceAccount'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

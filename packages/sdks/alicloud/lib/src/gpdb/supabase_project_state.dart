@@ -49,31 +49,19 @@ class SupabaseProjectState {
   /// [vswitchId] The vSwitch ID.
   /// [zoneId] The Zone ID.
   SupabaseProjectState({
-    pulumi.Output<String>? accountPassword,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? diskPerformanceLevel,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? projectSpec,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<List<String>>? securityIpLists,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? storageSize,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      accountPassword = pulumi.Input.asOptionalInput<String>(accountPassword),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      diskPerformanceLevel = pulumi.Input.asOptionalInput<String>(diskPerformanceLevel),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      projectSpec = pulumi.Input.asOptionalInput<String>(projectSpec),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      securityIpLists = pulumi.Input.asOptionalInput<List<String>>(securityIpLists),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      storageSize = pulumi.Input.asOptionalInput<int>(storageSize),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.accountPassword,
+    this.createTime,
+    this.diskPerformanceLevel,
+    this.projectName,
+    this.projectSpec,
+    this.regionId,
+    this.securityIpLists,
+    this.status,
+    this.storageSize,
+    this.vpcId,
+    this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class SupabaseProjectState {
 
   factory SupabaseProjectState.fromMap(Map<String, dynamic> map) {
     return SupabaseProjectState(
-      accountPassword: map['accountPassword'] == null ? null : pulumi.Output.create<String>(map['accountPassword'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : pulumi.Output.create<String>(map['diskPerformanceLevel'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      projectSpec: map['projectSpec'] == null ? null : pulumi.Output.create<String>(map['projectSpec'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      securityIpLists: map['securityIpLists'] == null ? null : pulumi.Output.create<List<String>>((map['securityIpLists'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      storageSize: map['storageSize'] == null ? null : pulumi.Output.create<int>(map['storageSize'] as int),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : (map['diskPerformanceLevel'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      projectSpec: map['projectSpec'] == null ? null : (map['projectSpec'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      storageSize: map['storageSize'] == null ? null : (map['storageSize'] as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterPersistenceConfigAofConfig {
   /// Optional. Available fsync modes.
@@ -7,7 +8,7 @@ class GetClusterPersistenceConfigAofConfig {
   /// - NO - Do not explicitly call fsync(). Rely on OS defaults.
   /// - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
   /// - ALWAYS - Call fsync() for earch write command. Possible values: ["APPEND_FSYNC_UNSPECIFIED", "NO", "EVERYSEC", "ALWAYS"]
-  final String appendFsync;
+  final pulumi.Input<String> appendFsync;
 
   /// Creates a new [GetClusterPersistenceConfigAofConfig].
   /// [appendFsync] Optional. Available fsync modes.
@@ -23,7 +24,7 @@ class GetClusterPersistenceConfigAofConfig {
 
   factory GetClusterPersistenceConfigAofConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPersistenceConfigAofConfig(
-      appendFsync: map['appendFsync'] as String,
+      appendFsync: (map['appendFsync'] as String).input(),
     );
   }
 }

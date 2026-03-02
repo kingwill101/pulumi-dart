@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDistributionConfigurationDistributionLaunchTemplateConfiguration {
   /// The account ID that this configuration applies to.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// Whether the specified Amazon EC2 launch template is set as the default launch template.
-  final bool default_;
+  final pulumi.Input<bool> default_;
   /// ID of the Amazon EC2 launch template.
-  final String launchTemplateId;
+  final pulumi.Input<String> launchTemplateId;
 
   /// Creates a new [GetDistributionConfigurationDistributionLaunchTemplateConfiguration].
   /// [accountId] The account ID that this configuration applies to.
@@ -29,9 +30,9 @@ class GetDistributionConfigurationDistributionLaunchTemplateConfiguration {
 
   factory GetDistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionLaunchTemplateConfiguration(
-      accountId: map['accountId'] as String,
-      default_: map['default'] as bool,
-      launchTemplateId: map['launchTemplateId'] as String,
+      accountId: (map['accountId'] as String).input(),
+      default_: (map['default'] as bool).input(),
+      launchTemplateId: (map['launchTemplateId'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ipconfiguration_arm_reference.dart';
 import 'public_ipaddress_arm_reference.dart';
 
 /// Inbound nat rule properties
 class InboundNATRuleProperties {
   /// IP configuration for the target backend.
-  final IPConfigurationArmReference backendIPConfiguration;
+  final pulumi.Input<IPConfigurationArmReference> backendIPConfiguration;
   /// backend Port for the inbound rule
-  final int backendPort;
+  final pulumi.Input<int> backendPort;
   /// Frontend Port for the inbound rule
-  final int frontendPort;
+  final pulumi.Input<int> frontendPort;
   /// Protocol for the NAT rule
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// Public IP Address for this NAT rule
-  final PublicIPAddressArmReference publicIPAddress;
+  final pulumi.Input<PublicIPAddressArmReference> publicIPAddress;
 
   /// Creates a new [InboundNATRuleProperties].
   /// [backendIPConfiguration] IP configuration for the target backend.
@@ -32,21 +33,21 @@ class InboundNATRuleProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendIPConfiguration': backendIPConfiguration.toMap(),
+      'backendIPConfiguration': pulumi.Input.mapInputValue<IPConfigurationArmReference, Map<String, dynamic>>(backendIPConfiguration, (value) => value.toMap()),
       'backendPort': backendPort,
       'frontendPort': frontendPort,
       'protocol': protocol,
-      'publicIPAddress': publicIPAddress.toMap(),
+      'publicIPAddress': pulumi.Input.mapInputValue<PublicIPAddressArmReference, Map<String, dynamic>>(publicIPAddress, (value) => value.toMap()),
     };
   }
 
   factory InboundNATRuleProperties.fromMap(Map<String, dynamic> map) {
     return InboundNATRuleProperties(
-      backendIPConfiguration: IPConfigurationArmReference.fromMap((map['backendIPConfiguration'] as Map).cast<String, dynamic>()),
-      backendPort: map['backendPort'] as int,
-      frontendPort: map['frontendPort'] as int,
-      protocol: map['protocol'] as String,
-      publicIPAddress: PublicIPAddressArmReference.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>()),
+      backendIPConfiguration: (IPConfigurationArmReference.fromMap((map['backendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      backendPort: (map['backendPort'] as int).input(),
+      frontendPort: (map['frontendPort'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      publicIPAddress: (PublicIPAddressArmReference.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

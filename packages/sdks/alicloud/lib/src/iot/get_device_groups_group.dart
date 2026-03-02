@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDeviceGroupsGroup {
   /// The Group CreateTime.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The Group Number of activated devices.
-  final String deviceActive;
+  final pulumi.Input<String> deviceActive;
   /// The Group Total number of devices.
-  final String deviceCount;
+  final pulumi.Input<String> deviceCount;
   /// The Group Number of online devices.
-  final String deviceOnline;
+  final pulumi.Input<String> deviceOnline;
   /// The Error_Message of the device group.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The GroupDesc of the device group.
-  final String groupDesc;
+  final pulumi.Input<String> groupDesc;
   /// The GroupId of the device group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The GroupName of the device group.
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// The ID of the device group.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether the call is successful.
-  final bool success;
+  final pulumi.Input<bool> success;
 
   /// Creates a new [GetDeviceGroupsGroup].
   /// [createTime] The Group CreateTime.
@@ -64,16 +65,16 @@ class GetDeviceGroupsGroup {
 
   factory GetDeviceGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetDeviceGroupsGroup(
-      createTime: map['createTime'] as String,
-      deviceActive: map['deviceActive'] as String,
-      deviceCount: map['deviceCount'] as String,
-      deviceOnline: map['deviceOnline'] as String,
-      errorMessage: map['errorMessage'] as String,
-      groupDesc: map['groupDesc'] as String,
-      groupId: map['groupId'] as String,
-      groupName: map['groupName'] as String,
-      id: map['id'] as String,
-      success: map['success'] as bool,
+      createTime: (map['createTime'] as String).input(),
+      deviceActive: (map['deviceActive'] as String).input(),
+      deviceCount: (map['deviceCount'] as String).input(),
+      deviceOnline: (map['deviceOnline'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      groupDesc: (map['groupDesc'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      id: (map['id'] as String).input(),
+      success: (map['success'] as bool).input(),
     );
   }
 }

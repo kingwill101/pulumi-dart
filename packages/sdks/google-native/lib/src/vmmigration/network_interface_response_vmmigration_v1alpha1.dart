@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NetworkInterface represents a NIC of a VM.
 class NetworkInterfaceResponseVmmigrationV1alpha1 {
   /// The external IP to define in the NIC.
-  final String externalIp;
+  final pulumi.Input<String> externalIp;
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
-  final String internalIp;
+  final pulumi.Input<String> internalIp;
   /// The network to connect the NIC to.
-  final String network;
+  final pulumi.Input<String> network;
   /// The subnetwork to connect the NIC to.
-  final String subnetwork;
+  final pulumi.Input<String> subnetwork;
 
   /// Creates a new [NetworkInterfaceResponseVmmigrationV1alpha1].
   /// [externalIp] The external IP to define in the NIC.
@@ -35,10 +36,10 @@ class NetworkInterfaceResponseVmmigrationV1alpha1 {
 
   factory NetworkInterfaceResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponseVmmigrationV1alpha1(
-      externalIp: map['externalIp'] as String,
-      internalIp: map['internalIp'] as String,
-      network: map['network'] as String,
-      subnetwork: map['subnetwork'] as String,
+      externalIp: (map['externalIp'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
+      network: (map['network'] as String).input(),
+      subnetwork: (map['subnetwork'] as String).input(),
     );
   }
 }

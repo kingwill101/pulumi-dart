@@ -39,25 +39,16 @@ class CertificateAuthorityArgs {
   /// [type] Type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
   /// [usageMode] Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days. Defaults to `GENERAL_PURPOSE`. Valid values: `GENERAL_PURPOSE` and `SHORT_LIVED_CERTIFICATE`.
   CertificateAuthorityArgs({
-    required pulumi.Output<CertificateAuthorityCertificateAuthorityConfiguration> certificateAuthorityConfiguration,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? keyStorageSecurityStandard,
-    pulumi.Output<int>? permanentDeletionTimeInDays,
-    pulumi.Output<String>? region,
-    pulumi.Output<CertificateAuthorityRevocationConfiguration>? revocationConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? usageMode,
-  }) :
-      certificateAuthorityConfiguration = pulumi.Input.asInput<CertificateAuthorityCertificateAuthorityConfiguration>(certificateAuthorityConfiguration),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      keyStorageSecurityStandard = pulumi.Input.asOptionalInput<String>(keyStorageSecurityStandard),
-      permanentDeletionTimeInDays = pulumi.Input.asOptionalInput<int>(permanentDeletionTimeInDays),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revocationConfiguration = pulumi.Input.asOptionalInput<CertificateAuthorityRevocationConfiguration>(revocationConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      usageMode = pulumi.Input.asOptionalInput<String>(usageMode);
+    required this.certificateAuthorityConfiguration,
+    this.enabled,
+    this.keyStorageSecurityStandard,
+    this.permanentDeletionTimeInDays,
+    this.region,
+    this.revocationConfiguration,
+    this.tags,
+    this.type,
+    this.usageMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class CertificateAuthorityArgs {
 
   factory CertificateAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityArgs(
-      certificateAuthorityConfiguration: pulumi.Output.create<CertificateAuthorityCertificateAuthorityConfiguration>(CertificateAuthorityCertificateAuthorityConfiguration.fromMap((map['certificateAuthorityConfiguration'] as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      keyStorageSecurityStandard: map['keyStorageSecurityStandard'] == null ? null : pulumi.Output.create<String>(map['keyStorageSecurityStandard'] as String),
-      permanentDeletionTimeInDays: map['permanentDeletionTimeInDays'] == null ? null : pulumi.Output.create<int>(map['permanentDeletionTimeInDays'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revocationConfiguration: map['revocationConfiguration'] == null ? null : pulumi.Output.create<CertificateAuthorityRevocationConfiguration>(CertificateAuthorityRevocationConfiguration.fromMap((map['revocationConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      usageMode: map['usageMode'] == null ? null : pulumi.Output.create<String>(map['usageMode'] as String),
+      certificateAuthorityConfiguration: (CertificateAuthorityCertificateAuthorityConfiguration.fromMap((map['certificateAuthorityConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      keyStorageSecurityStandard: map['keyStorageSecurityStandard'] == null ? null : (map['keyStorageSecurityStandard'] as String).input(),
+      permanentDeletionTimeInDays: map['permanentDeletionTimeInDays'] == null ? null : (map['permanentDeletionTimeInDays'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revocationConfiguration: map['revocationConfiguration'] == null ? null : (CertificateAuthorityRevocationConfiguration.fromMap((map['revocationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      usageMode: map['usageMode'] == null ? null : (map['usageMode'] as String).input(),
     );
   }
 }

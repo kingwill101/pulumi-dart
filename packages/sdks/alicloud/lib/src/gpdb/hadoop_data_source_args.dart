@@ -54,31 +54,19 @@ class HadoopDataSourceArgs {
   /// [mapReduceConf] The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
   /// [yarnConf] The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
   HadoopDataSourceArgs({
-    pulumi.Output<String>? dataSourceDescription,
-    pulumi.Output<String>? dataSourceName,
-    pulumi.Output<String>? dataSourceType,
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? emrInstanceId,
-    pulumi.Output<String>? hadoopCoreConf,
-    pulumi.Output<String>? hadoopCreateType,
-    pulumi.Output<String>? hadoopHostsAddress,
-    pulumi.Output<String>? hdfsConf,
-    pulumi.Output<String>? hiveConf,
-    pulumi.Output<String>? mapReduceConf,
-    pulumi.Output<String>? yarnConf,
-  }) :
-      dataSourceDescription = pulumi.Input.asOptionalInput<String>(dataSourceDescription),
-      dataSourceName = pulumi.Input.asOptionalInput<String>(dataSourceName),
-      dataSourceType = pulumi.Input.asOptionalInput<String>(dataSourceType),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      emrInstanceId = pulumi.Input.asOptionalInput<String>(emrInstanceId),
-      hadoopCoreConf = pulumi.Input.asOptionalInput<String>(hadoopCoreConf),
-      hadoopCreateType = pulumi.Input.asOptionalInput<String>(hadoopCreateType),
-      hadoopHostsAddress = pulumi.Input.asOptionalInput<String>(hadoopHostsAddress),
-      hdfsConf = pulumi.Input.asOptionalInput<String>(hdfsConf),
-      hiveConf = pulumi.Input.asOptionalInput<String>(hiveConf),
-      mapReduceConf = pulumi.Input.asOptionalInput<String>(mapReduceConf),
-      yarnConf = pulumi.Input.asOptionalInput<String>(yarnConf);
+    this.dataSourceDescription,
+    this.dataSourceName,
+    this.dataSourceType,
+    required this.dbInstanceId,
+    this.emrInstanceId,
+    this.hadoopCoreConf,
+    this.hadoopCreateType,
+    this.hadoopHostsAddress,
+    this.hdfsConf,
+    this.hiveConf,
+    this.mapReduceConf,
+    this.yarnConf,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class HadoopDataSourceArgs {
 
   factory HadoopDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return HadoopDataSourceArgs(
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : pulumi.Output.create<String>(map['dataSourceDescription'] as String),
-      dataSourceName: map['dataSourceName'] == null ? null : pulumi.Output.create<String>(map['dataSourceName'] as String),
-      dataSourceType: map['dataSourceType'] == null ? null : pulumi.Output.create<String>(map['dataSourceType'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      emrInstanceId: map['emrInstanceId'] == null ? null : pulumi.Output.create<String>(map['emrInstanceId'] as String),
-      hadoopCoreConf: map['hadoopCoreConf'] == null ? null : pulumi.Output.create<String>(map['hadoopCoreConf'] as String),
-      hadoopCreateType: map['hadoopCreateType'] == null ? null : pulumi.Output.create<String>(map['hadoopCreateType'] as String),
-      hadoopHostsAddress: map['hadoopHostsAddress'] == null ? null : pulumi.Output.create<String>(map['hadoopHostsAddress'] as String),
-      hdfsConf: map['hdfsConf'] == null ? null : pulumi.Output.create<String>(map['hdfsConf'] as String),
-      hiveConf: map['hiveConf'] == null ? null : pulumi.Output.create<String>(map['hiveConf'] as String),
-      mapReduceConf: map['mapReduceConf'] == null ? null : pulumi.Output.create<String>(map['mapReduceConf'] as String),
-      yarnConf: map['yarnConf'] == null ? null : pulumi.Output.create<String>(map['yarnConf'] as String),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      emrInstanceId: map['emrInstanceId'] == null ? null : (map['emrInstanceId'] as String).input(),
+      hadoopCoreConf: map['hadoopCoreConf'] == null ? null : (map['hadoopCoreConf'] as String).input(),
+      hadoopCreateType: map['hadoopCreateType'] == null ? null : (map['hadoopCreateType'] as String).input(),
+      hadoopHostsAddress: map['hadoopHostsAddress'] == null ? null : (map['hadoopHostsAddress'] as String).input(),
+      hdfsConf: map['hdfsConf'] == null ? null : (map['hdfsConf'] as String).input(),
+      hiveConf: map['hiveConf'] == null ? null : (map['hiveConf'] as String).input(),
+      mapReduceConf: map['mapReduceConf'] == null ? null : (map['mapReduceConf'] as String).input(),
+      yarnConf: map['yarnConf'] == null ? null : (map['yarnConf'] as String).input(),
     );
   }
 }

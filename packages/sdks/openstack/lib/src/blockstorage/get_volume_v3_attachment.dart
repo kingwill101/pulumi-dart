@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVolumeV3Attachment {
-  final String device;
-  final String id;
-  final String instanceId;
+  final pulumi.Input<String> device;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> instanceId;
 
   /// Creates a new [GetVolumeV3Attachment].
   /// [device] Required.
@@ -26,9 +27,9 @@ class GetVolumeV3Attachment {
 
   factory GetVolumeV3Attachment.fromMap(Map<String, dynamic> map) {
     return GetVolumeV3Attachment(
-      device: map['device'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
+      device: (map['device'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

@@ -51,35 +51,21 @@ class DxGatewayAttachmentState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   DxGatewayAttachmentState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? attachmentPolicyRuleNumber,
-    pulumi.Output<String>? attachmentType,
-    pulumi.Output<String>? coreNetworkArn,
-    pulumi.Output<String>? coreNetworkId,
-    pulumi.Output<String>? directConnectGatewayArn,
-    pulumi.Output<List<String>>? edgeLocations,
-    pulumi.Output<String>? ownerAccountId,
-    pulumi.Output<String>? routingPolicyLabel,
-    pulumi.Output<String>? segmentName,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<DxGatewayAttachmentTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      attachmentPolicyRuleNumber = pulumi.Input.asOptionalInput<int>(attachmentPolicyRuleNumber),
-      attachmentType = pulumi.Input.asOptionalInput<String>(attachmentType),
-      coreNetworkArn = pulumi.Input.asOptionalInput<String>(coreNetworkArn),
-      coreNetworkId = pulumi.Input.asOptionalInput<String>(coreNetworkId),
-      directConnectGatewayArn = pulumi.Input.asOptionalInput<String>(directConnectGatewayArn),
-      edgeLocations = pulumi.Input.asOptionalInput<List<String>>(edgeLocations),
-      ownerAccountId = pulumi.Input.asOptionalInput<String>(ownerAccountId),
-      routingPolicyLabel = pulumi.Input.asOptionalInput<String>(routingPolicyLabel),
-      segmentName = pulumi.Input.asOptionalInput<String>(segmentName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<DxGatewayAttachmentTimeouts>(timeouts);
+    this.arn,
+    this.attachmentPolicyRuleNumber,
+    this.attachmentType,
+    this.coreNetworkArn,
+    this.coreNetworkId,
+    this.directConnectGatewayArn,
+    this.edgeLocations,
+    this.ownerAccountId,
+    this.routingPolicyLabel,
+    this.segmentName,
+    this.state,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class DxGatewayAttachmentState {
 
   factory DxGatewayAttachmentState.fromMap(Map<String, dynamic> map) {
     return DxGatewayAttachmentState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      attachmentPolicyRuleNumber: map['attachmentPolicyRuleNumber'] == null ? null : pulumi.Output.create<int>(map['attachmentPolicyRuleNumber'] as int),
-      attachmentType: map['attachmentType'] == null ? null : pulumi.Output.create<String>(map['attachmentType'] as String),
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : pulumi.Output.create<String>(map['coreNetworkArn'] as String),
-      coreNetworkId: map['coreNetworkId'] == null ? null : pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      directConnectGatewayArn: map['directConnectGatewayArn'] == null ? null : pulumi.Output.create<String>(map['directConnectGatewayArn'] as String),
-      edgeLocations: map['edgeLocations'] == null ? null : pulumi.Output.create<List<String>>((map['edgeLocations'] as List).cast<String>()),
-      ownerAccountId: map['ownerAccountId'] == null ? null : pulumi.Output.create<String>(map['ownerAccountId'] as String),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : pulumi.Output.create<String>(map['routingPolicyLabel'] as String),
-      segmentName: map['segmentName'] == null ? null : pulumi.Output.create<String>(map['segmentName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DxGatewayAttachmentTimeouts>(DxGatewayAttachmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      attachmentPolicyRuleNumber: map['attachmentPolicyRuleNumber'] == null ? null : (map['attachmentPolicyRuleNumber'] as int).input(),
+      attachmentType: map['attachmentType'] == null ? null : (map['attachmentType'] as String).input(),
+      coreNetworkArn: map['coreNetworkArn'] == null ? null : (map['coreNetworkArn'] as String).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
+      directConnectGatewayArn: map['directConnectGatewayArn'] == null ? null : (map['directConnectGatewayArn'] as String).input(),
+      edgeLocations: map['edgeLocations'] == null ? null : ((map['edgeLocations'] as List).cast<String>()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
+      segmentName: map['segmentName'] == null ? null : (map['segmentName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (DxGatewayAttachmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

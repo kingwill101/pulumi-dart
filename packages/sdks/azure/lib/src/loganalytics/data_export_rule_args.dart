@@ -28,19 +28,13 @@ class DataExportRuleArgs {
   /// [tableNames] A list of table names to export to the destination resource, for example: `["Heartbeat", "SecurityEvent"]`.
   /// [workspaceResourceId] The resource ID of the workspace. Changing this forces a new Log Analytics Data Export Rule to be created.
   DataExportRuleArgs({
-    required pulumi.Output<String> destinationResourceId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<String>> tableNames,
-    required pulumi.Output<String> workspaceResourceId,
-  }) :
-      destinationResourceId = pulumi.Input.asInput<String>(destinationResourceId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableNames = pulumi.Input.asInput<List<String>>(tableNames),
-      workspaceResourceId = pulumi.Input.asInput<String>(workspaceResourceId);
+    required this.destinationResourceId,
+    this.enabled,
+    this.name,
+    required this.resourceGroupName,
+    required this.tableNames,
+    required this.workspaceResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class DataExportRuleArgs {
 
   factory DataExportRuleArgs.fromMap(Map<String, dynamic> map) {
     return DataExportRuleArgs(
-      destinationResourceId: pulumi.Output.create<String>(map['destinationResourceId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableNames: pulumi.Output.create<List<String>>((map['tableNames'] as List).cast<String>()),
-      workspaceResourceId: pulumi.Output.create<String>(map['workspaceResourceId'] as String),
+      destinationResourceId: (map['destinationResourceId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableNames: ((map['tableNames'] as List).cast<String>()).input(),
+      workspaceResourceId: (map['workspaceResourceId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetIacProfileArgs {
   /// [iacProfileName] The name of the IacProfile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetIacProfileArgs({
-    required pulumi.Output<String> iacProfileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      iacProfileName = pulumi.Input.asInput<String>(iacProfileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.iacProfileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIacProfileArgs {
 
   factory GetIacProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetIacProfileArgs(
-      iacProfileName: pulumi.Output.create<String>(map['iacProfileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      iacProfileName: (map['iacProfileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

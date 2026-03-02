@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_flow_sink_dataset.dart';
 import 'data_flow_sink_flowlet.dart';
 import 'data_flow_sink_linked_service.dart';
@@ -8,19 +9,19 @@ import 'data_flow_sink_schema_linked_service.dart';
 
 class DataFlowSink {
   /// A `dataset` block as defined below.
-  final DataFlowSinkDataset? dataset;
+  final pulumi.Input<DataFlowSinkDataset>? dataset;
   /// The description for the Data Flow Source.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A `flowlet` block as defined below.
-  final DataFlowSinkFlowlet? flowlet;
+  final pulumi.Input<DataFlowSinkFlowlet>? flowlet;
   /// A `linked_service` block as defined below.
-  final DataFlowSinkLinkedService? linkedService;
+  final pulumi.Input<DataFlowSinkLinkedService>? linkedService;
   /// The name for the Data Flow Source.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `rejected_linked_service` block as defined below.
-  final DataFlowSinkRejectedLinkedService? rejectedLinkedService;
+  final pulumi.Input<DataFlowSinkRejectedLinkedService>? rejectedLinkedService;
   /// A `schema_linked_service` block as defined below.
-  final DataFlowSinkSchemaLinkedService? schemaLinkedService;
+  final pulumi.Input<DataFlowSinkSchemaLinkedService>? schemaLinkedService;
 
   /// Creates a new [DataFlowSink].
   /// [dataset] A `dataset` block as defined below.
@@ -42,25 +43,25 @@ class DataFlowSink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataset': ?dataset == null ? null : dataset!.toMap(),
+      'dataset': ?pulumi.Input.mapOptionalInputValue<DataFlowSinkDataset, Map<String, dynamic>>(dataset, (value) => value.toMap()),
       'description': ?description,
-      'flowlet': ?flowlet == null ? null : flowlet!.toMap(),
-      'linkedService': ?linkedService == null ? null : linkedService!.toMap(),
+      'flowlet': ?pulumi.Input.mapOptionalInputValue<DataFlowSinkFlowlet, Map<String, dynamic>>(flowlet, (value) => value.toMap()),
+      'linkedService': ?pulumi.Input.mapOptionalInputValue<DataFlowSinkLinkedService, Map<String, dynamic>>(linkedService, (value) => value.toMap()),
       'name': name,
-      'rejectedLinkedService': ?rejectedLinkedService == null ? null : rejectedLinkedService!.toMap(),
-      'schemaLinkedService': ?schemaLinkedService == null ? null : schemaLinkedService!.toMap(),
+      'rejectedLinkedService': ?pulumi.Input.mapOptionalInputValue<DataFlowSinkRejectedLinkedService, Map<String, dynamic>>(rejectedLinkedService, (value) => value.toMap()),
+      'schemaLinkedService': ?pulumi.Input.mapOptionalInputValue<DataFlowSinkSchemaLinkedService, Map<String, dynamic>>(schemaLinkedService, (value) => value.toMap()),
     };
   }
 
   factory DataFlowSink.fromMap(Map<String, dynamic> map) {
     return DataFlowSink(
-      dataset: map['dataset'] == null ? null : DataFlowSinkDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      flowlet: map['flowlet'] == null ? null : DataFlowSinkFlowlet.fromMap((map['flowlet'] as Map).cast<String, dynamic>()),
-      linkedService: map['linkedService'] == null ? null : DataFlowSinkLinkedService.fromMap((map['linkedService'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      rejectedLinkedService: map['rejectedLinkedService'] == null ? null : DataFlowSinkRejectedLinkedService.fromMap((map['rejectedLinkedService'] as Map).cast<String, dynamic>()),
-      schemaLinkedService: map['schemaLinkedService'] == null ? null : DataFlowSinkSchemaLinkedService.fromMap((map['schemaLinkedService'] as Map).cast<String, dynamic>()),
+      dataset: map['dataset'] == null ? null : (DataFlowSinkDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      flowlet: map['flowlet'] == null ? null : (DataFlowSinkFlowlet.fromMap((map['flowlet'] as Map).cast<String, dynamic>())).input(),
+      linkedService: map['linkedService'] == null ? null : (DataFlowSinkLinkedService.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      rejectedLinkedService: map['rejectedLinkedService'] == null ? null : (DataFlowSinkRejectedLinkedService.fromMap((map['rejectedLinkedService'] as Map).cast<String, dynamic>())).input(),
+      schemaLinkedService: map['schemaLinkedService'] == null ? null : (DataFlowSinkSchemaLinkedService.fromMap((map['schemaLinkedService'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

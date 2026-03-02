@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The API deployment parameter metadata.
 class ApiDeploymentParameterMetadataResponse {
   /// The description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Indicates whether its required.
-  final bool? isRequired;
+  final pulumi.Input<bool>? isRequired;
   /// The type.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The visibility.
-  final String? visibility;
+  final pulumi.Input<String>? visibility;
 
   /// Creates a new [ApiDeploymentParameterMetadataResponse].
   /// [description] The description.
@@ -40,11 +41,11 @@ class ApiDeploymentParameterMetadataResponse {
 
   factory ApiDeploymentParameterMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ApiDeploymentParameterMetadataResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      isRequired: map['isRequired'] == null ? null : map['isRequired'] as bool,
-      type: map['type'] == null ? null : map['type'] as String,
-      visibility: map['visibility'] == null ? null : map['visibility'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      isRequired: map['isRequired'] == null ? null : (map['isRequired'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
     );
   }
 }

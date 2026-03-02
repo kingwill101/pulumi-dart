@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dataproc job config.
 class JobPlacement {
   /// Optional. Cluster labels to identify a cluster where the job will be submitted.
-  final Map<String, String>? clusterLabels;
+  final pulumi.Input<Map<String, String>>? clusterLabels;
   /// The name of the cluster where the job will be submitted.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
 
   /// Creates a new [JobPlacement].
   /// [clusterLabels] Optional. Cluster labels to identify a cluster where the job will be submitted.
@@ -25,8 +26,8 @@ class JobPlacement {
 
   factory JobPlacement.fromMap(Map<String, dynamic> map) {
     return JobPlacement(
-      clusterLabels: map['clusterLabels'] == null ? null : (map['clusterLabels'] as Map).cast<String, String>(),
-      clusterName: map['clusterName'] as String,
+      clusterLabels: map['clusterLabels'] == null ? null : ((map['clusterLabels'] as Map).cast<String, String>()).input(),
+      clusterName: (map['clusterName'] as String).input(),
     );
   }
 }

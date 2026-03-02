@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstanceRestoreBackupContext {
   /// The ID of the backup run to restore from.
-  final int backupRunId;
+  final pulumi.Input<int> backupRunId;
   /// The ID of the instance that the backup was taken from.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The ID of the project in which the resource belongs.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [GetDatabaseInstanceRestoreBackupContext].
   /// [backupRunId] The ID of the backup run to restore from.
@@ -29,9 +30,9 @@ class GetDatabaseInstanceRestoreBackupContext {
 
   factory GetDatabaseInstanceRestoreBackupContext.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceRestoreBackupContext(
-      backupRunId: map['backupRunId'] as int,
-      instanceId: map['instanceId'] as String,
-      project: map['project'] as String,
+      backupRunId: (map['backupRunId'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

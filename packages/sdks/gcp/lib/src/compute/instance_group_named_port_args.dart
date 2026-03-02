@@ -27,17 +27,12 @@ class InstanceGroupNamedPortArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] The zone of the instance group.
   InstanceGroupNamedPortArgs({
-    required pulumi.Output<String> group,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> port,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      group = pulumi.Input.asInput<String>(group),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.group,
+    this.name,
+    required this.port,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class InstanceGroupNamedPortArgs {
 
   factory InstanceGroupNamedPortArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupNamedPortArgs(
-      group: pulumi.Output.create<String>(map['group'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      group: (map['group'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

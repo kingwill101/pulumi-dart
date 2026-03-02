@@ -19,13 +19,10 @@ class GetExposureControlFeatureValueArgs {
   /// [featureType] The feature type.
   /// [locationId] The location identifier.
   GetExposureControlFeatureValueArgs({
-    pulumi.Output<String>? featureName,
-    pulumi.Output<String>? featureType,
-    required pulumi.Output<String> locationId,
-  }) :
-      featureName = pulumi.Input.asOptionalInput<String>(featureName),
-      featureType = pulumi.Input.asOptionalInput<String>(featureType),
-      locationId = pulumi.Input.asInput<String>(locationId);
+    this.featureName,
+    this.featureType,
+    required this.locationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExposureControlFeatureValueArgs {
 
   factory GetExposureControlFeatureValueArgs.fromMap(Map<String, dynamic> map) {
     return GetExposureControlFeatureValueArgs(
-      featureName: map['featureName'] == null ? null : pulumi.Output.create<String>(map['featureName'] as String),
-      featureType: map['featureType'] == null ? null : pulumi.Output.create<String>(map['featureType'] as String),
-      locationId: pulumi.Output.create<String>(map['locationId'] as String),
+      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      featureType: map['featureType'] == null ? null : (map['featureType'] as String).input(),
+      locationId: (map['locationId'] as String).input(),
     );
   }
 }

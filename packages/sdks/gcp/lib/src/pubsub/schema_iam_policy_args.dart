@@ -21,13 +21,10 @@ class SchemaIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [schema] Used to find the parent resource to bind the IAM policy to
   SchemaIamPolicyArgs({
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> schema,
-  }) :
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schema = pulumi.Input.asInput<String>(schema);
+    required this.policyData,
+    this.project,
+    required this.schema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class SchemaIamPolicyArgs {
 
   factory SchemaIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SchemaIamPolicyArgs(
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schema: pulumi.Output.create<String>(map['schema'] as String),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schema: (map['schema'] as String).input(),
     );
   }
 }

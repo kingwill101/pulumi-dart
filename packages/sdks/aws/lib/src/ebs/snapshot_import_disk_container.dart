@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'snapshot_import_disk_container_user_bucket.dart';
 
 class SnapshotImportDiskContainer {
   /// The description of the disk image being imported.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The format of the disk image being imported. One of `VHD` or `VMDK`.
-  final String format;
+  final pulumi.Input<String> format;
   /// The URL to the Amazon S3-based disk image being imported. It can either be a https URL (https://..) or an Amazon S3 URL (s3://..). One of `url` or `user_bucket` must be set.
-  final String? url;
+  final pulumi.Input<String>? url;
   /// The Amazon S3 bucket for the disk image. One of `url` or `user_bucket` must be set. Detailed below.
-  final SnapshotImportDiskContainerUserBucket? userBucket;
+  final pulumi.Input<SnapshotImportDiskContainerUserBucket>? userBucket;
 
   /// Creates a new [SnapshotImportDiskContainer].
   /// [description] The description of the disk image being imported.
@@ -29,16 +30,16 @@ class SnapshotImportDiskContainer {
       'description': ?description,
       'format': format,
       'url': ?url,
-      'userBucket': ?userBucket == null ? null : userBucket!.toMap(),
+      'userBucket': ?pulumi.Input.mapOptionalInputValue<SnapshotImportDiskContainerUserBucket, Map<String, dynamic>>(userBucket, (value) => value.toMap()),
     };
   }
 
   factory SnapshotImportDiskContainer.fromMap(Map<String, dynamic> map) {
     return SnapshotImportDiskContainer(
-      description: map['description'] == null ? null : map['description'] as String,
-      format: map['format'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      userBucket: map['userBucket'] == null ? null : SnapshotImportDiskContainerUserBucket.fromMap((map['userBucket'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      format: (map['format'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      userBucket: map['userBucket'] == null ? null : (SnapshotImportDiskContainerUserBucket.fromMap((map['userBucket'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class DatabaseMongodbConfigState {
   /// [transactionLifetimeLimitSeconds] Specifies the lifetime of multi-document transactions. Transactions that exceed this limit are considered expired and will be aborted by a periodic cleanup process. The cleanup process runs every `transactionLifetimeLimitSeconds/2 seconds` or at least once every 60 seconds. <em>Changing this parameter will lead to a restart of the MongoDB service.</em> Learn more [here](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.transactionLifetimeLimitSeconds).
   /// [verbosity] The log message verbosity level. The verbosity level determines the amount of Informational and Debug messages MongoDB outputs. 0 includes informational messages while 1...5 increases the level to include debug messages. <em>Changing this parameter will lead to a restart of the MongoDB service.</em> Learn more [here](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-systemLog.verbosity).
   DatabaseMongodbConfigState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? defaultReadConcern,
-    pulumi.Output<String>? defaultWriteConcern,
-    pulumi.Output<int>? slowOpThresholdMs,
-    pulumi.Output<int>? transactionLifetimeLimitSeconds,
-    pulumi.Output<int>? verbosity,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      defaultReadConcern = pulumi.Input.asOptionalInput<String>(defaultReadConcern),
-      defaultWriteConcern = pulumi.Input.asOptionalInput<String>(defaultWriteConcern),
-      slowOpThresholdMs = pulumi.Input.asOptionalInput<int>(slowOpThresholdMs),
-      transactionLifetimeLimitSeconds = pulumi.Input.asOptionalInput<int>(transactionLifetimeLimitSeconds),
-      verbosity = pulumi.Input.asOptionalInput<int>(verbosity);
+    this.clusterId,
+    this.defaultReadConcern,
+    this.defaultWriteConcern,
+    this.slowOpThresholdMs,
+    this.transactionLifetimeLimitSeconds,
+    this.verbosity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class DatabaseMongodbConfigState {
 
   factory DatabaseMongodbConfigState.fromMap(Map<String, dynamic> map) {
     return DatabaseMongodbConfigState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      defaultReadConcern: map['defaultReadConcern'] == null ? null : pulumi.Output.create<String>(map['defaultReadConcern'] as String),
-      defaultWriteConcern: map['defaultWriteConcern'] == null ? null : pulumi.Output.create<String>(map['defaultWriteConcern'] as String),
-      slowOpThresholdMs: map['slowOpThresholdMs'] == null ? null : pulumi.Output.create<int>(map['slowOpThresholdMs'] as int),
-      transactionLifetimeLimitSeconds: map['transactionLifetimeLimitSeconds'] == null ? null : pulumi.Output.create<int>(map['transactionLifetimeLimitSeconds'] as int),
-      verbosity: map['verbosity'] == null ? null : pulumi.Output.create<int>(map['verbosity'] as int),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      defaultReadConcern: map['defaultReadConcern'] == null ? null : (map['defaultReadConcern'] as String).input(),
+      defaultWriteConcern: map['defaultWriteConcern'] == null ? null : (map['defaultWriteConcern'] as String).input(),
+      slowOpThresholdMs: map['slowOpThresholdMs'] == null ? null : (map['slowOpThresholdMs'] as int).input(),
+      transactionLifetimeLimitSeconds: map['transactionLifetimeLimitSeconds'] == null ? null : (map['transactionLifetimeLimitSeconds'] as int).input(),
+      verbosity: map['verbosity'] == null ? null : (map['verbosity'] as int).input(),
     );
   }
 }

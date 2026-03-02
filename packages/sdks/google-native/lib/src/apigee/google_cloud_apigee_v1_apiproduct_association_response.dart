@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// APIProductAssociation has the API product and its administrative state association.
 class GoogleCloudApigeeV1APIProductAssociationResponse {
   /// API product to be associated with the credential.
-  final String apiproduct;
+  final pulumi.Input<String> apiproduct;
   /// The API product credential associated status. Valid values are `approved` or `revoked`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GoogleCloudApigeeV1APIProductAssociationResponse].
   /// [apiproduct] API product to be associated with the credential.
@@ -25,8 +26,8 @@ class GoogleCloudApigeeV1APIProductAssociationResponse {
 
   factory GoogleCloudApigeeV1APIProductAssociationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1APIProductAssociationResponse(
-      apiproduct: map['apiproduct'] as String,
-      status: map['status'] as String,
+      apiproduct: (map['apiproduct'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

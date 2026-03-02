@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration.dart';
 import 'file_reference.dart';
 
 /// A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.
 class TestSuiteOverview {
   /// Elapsed time of test suite.
-  final Duration? elapsedTime;
+  final pulumi.Input<Duration>? elapsedTime;
   /// Number of test cases in error, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
-  final int? errorCount;
+  final pulumi.Input<int>? errorCount;
   /// Number of failed test cases, typically set by the service by parsing the xml_source. May also be set by the user. - In create/response: always set - In update request: never
-  final int? failureCount;
+  final pulumi.Input<int>? failureCount;
   /// Number of flaky test cases, set by the service by rolling up flaky test attempts. Present only for rollup test suite overview at environment level. A step cannot have flaky test cases.
-  final int? flakyCount;
+  final pulumi.Input<int>? flakyCount;
   /// The name of the test suite. - In create/response: always set - In update request: never
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Number of test cases not run, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
-  final int? skippedCount;
+  final pulumi.Input<int>? skippedCount;
   /// Number of test cases, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
-  final int? totalCount;
+  final pulumi.Input<int>? totalCount;
   /// If this test suite was parsed from XML, this is the URI where the original XML file is stored. Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not supported. - In create/response: optional - In update request: never
-  final FileReference? xmlSource;
+  final pulumi.Input<FileReference>? xmlSource;
 
   /// Creates a new [TestSuiteOverview].
   /// [elapsedTime] Elapsed time of test suite.
@@ -44,27 +45,27 @@ class TestSuiteOverview {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elapsedTime': ?elapsedTime == null ? null : elapsedTime!.toMap(),
+      'elapsedTime': ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(elapsedTime, (value) => value.toMap()),
       'errorCount': ?errorCount,
       'failureCount': ?failureCount,
       'flakyCount': ?flakyCount,
       'name': ?name,
       'skippedCount': ?skippedCount,
       'totalCount': ?totalCount,
-      'xmlSource': ?xmlSource == null ? null : xmlSource!.toMap(),
+      'xmlSource': ?pulumi.Input.mapOptionalInputValue<FileReference, Map<String, dynamic>>(xmlSource, (value) => value.toMap()),
     };
   }
 
   factory TestSuiteOverview.fromMap(Map<String, dynamic> map) {
     return TestSuiteOverview(
-      elapsedTime: map['elapsedTime'] == null ? null : Duration.fromMap((map['elapsedTime'] as Map).cast<String, dynamic>()),
-      errorCount: map['errorCount'] == null ? null : map['errorCount'] as int,
-      failureCount: map['failureCount'] == null ? null : map['failureCount'] as int,
-      flakyCount: map['flakyCount'] == null ? null : map['flakyCount'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      skippedCount: map['skippedCount'] == null ? null : map['skippedCount'] as int,
-      totalCount: map['totalCount'] == null ? null : map['totalCount'] as int,
-      xmlSource: map['xmlSource'] == null ? null : FileReference.fromMap((map['xmlSource'] as Map).cast<String, dynamic>()),
+      elapsedTime: map['elapsedTime'] == null ? null : (Duration.fromMap((map['elapsedTime'] as Map).cast<String, dynamic>())).input(),
+      errorCount: map['errorCount'] == null ? null : (map['errorCount'] as int).input(),
+      failureCount: map['failureCount'] == null ? null : (map['failureCount'] as int).input(),
+      flakyCount: map['flakyCount'] == null ? null : (map['flakyCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      skippedCount: map['skippedCount'] == null ? null : (map['skippedCount'] as int).input(),
+      totalCount: map['totalCount'] == null ? null : (map['totalCount'] as int).input(),
+      xmlSource: map['xmlSource'] == null ? null : (FileReference.fromMap((map['xmlSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class ProviderArgs {
   /// Creates a new [ProviderArgs].
   /// [uri] Libvirt connection URI. Defaults to `qemu:///system` if not specified. See [libvirt URI documentation](https://libvirt.org/uri.html) for details.
   ProviderArgs({
-    pulumi.Output<String>? uri,
-  }) :
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

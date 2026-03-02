@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// External key management systems(EKM) Provisioning response
 class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse {
   /// Indicates Ekm provisioning error if any.
-  final String ekmProvisioningErrorDomain;
+  final pulumi.Input<String> ekmProvisioningErrorDomain;
   /// Detailed error message if Ekm provisioning fails
-  final String ekmProvisioningErrorMapping;
+  final pulumi.Input<String> ekmProvisioningErrorMapping;
   /// Indicates Ekm enrollment Provisioning of a given workload.
-  final String ekmProvisioningState;
+  final pulumi.Input<String> ekmProvisioningState;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse].
   /// [ekmProvisioningErrorDomain] Indicates Ekm provisioning error if any.
@@ -30,9 +31,9 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse {
 
   factory GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse(
-      ekmProvisioningErrorDomain: map['ekmProvisioningErrorDomain'] as String,
-      ekmProvisioningErrorMapping: map['ekmProvisioningErrorMapping'] as String,
-      ekmProvisioningState: map['ekmProvisioningState'] as String,
+      ekmProvisioningErrorDomain: (map['ekmProvisioningErrorDomain'] as String).input(),
+      ekmProvisioningErrorMapping: (map['ekmProvisioningErrorMapping'] as String).input(),
+      ekmProvisioningState: (map['ekmProvisioningState'] as String).input(),
     );
   }
 }

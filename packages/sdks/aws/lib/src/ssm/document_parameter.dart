@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentParameter {
   /// If specified, the default values for the parameters. Parameters without a default value are required. Parameters with a default value are optional.
-  final String? defaultValue;
+  final pulumi.Input<String>? defaultValue;
   /// A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name of the document.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of parameter. Valid values: `String`, `StringList`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DocumentParameter].
   /// [defaultValue] If specified, the default values for the parameters. Parameters without a default value are required. Parameters with a default value are optional.
@@ -34,10 +35,10 @@ class DocumentParameter {
 
   factory DocumentParameter.fromMap(Map<String, dynamic> map) {
     return DocumentParameter(
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

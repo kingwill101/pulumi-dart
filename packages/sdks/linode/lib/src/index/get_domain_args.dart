@@ -16,11 +16,9 @@ class GetDomainArgs {
   /// [domain] The unique domain name of the Domain record to query.
   /// [id] The unique numeric ID of the Domain record to query.
   GetDomainArgs({
-    pulumi.Output<String>? domain,
-    pulumi.Output<int>? id,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      id = pulumi.Input.asOptionalInput<int>(id);
+    this.domain,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDomainArgs {
 
   factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainArgs(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
     );
   }
 }

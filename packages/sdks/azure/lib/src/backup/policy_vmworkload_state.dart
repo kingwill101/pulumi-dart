@@ -27,19 +27,13 @@ class PolicyVMWorkloadState {
   /// [settings] A `settings` block as defined below.
   /// [workloadType] The VM Workload type for the Backup Policy. Possible values are `SQLDataBase` and `SAPHanaDatabase`. Changing this forces a new resource to be created.
   PolicyVMWorkloadState({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<PolicyVMWorkloadProtectionPolicy>>? protectionPolicies,
-    pulumi.Output<String>? recoveryVaultName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<PolicyVMWorkloadSettings>? settings,
-    pulumi.Output<String>? workloadType,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectionPolicies = pulumi.Input.asOptionalInput<List<PolicyVMWorkloadProtectionPolicy>>(protectionPolicies),
-      recoveryVaultName = pulumi.Input.asOptionalInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      settings = pulumi.Input.asOptionalInput<PolicyVMWorkloadSettings>(settings),
-      workloadType = pulumi.Input.asOptionalInput<String>(workloadType);
+    this.name,
+    this.protectionPolicies,
+    this.recoveryVaultName,
+    this.resourceGroupName,
+    this.settings,
+    this.workloadType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class PolicyVMWorkloadState {
 
   factory PolicyVMWorkloadState.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectionPolicies: map['protectionPolicies'] == null ? null : pulumi.Output.create<List<PolicyVMWorkloadProtectionPolicy>>(pulumi.Input.decodeList<PolicyVMWorkloadProtectionPolicy>(map['protectionPolicies'], (value) => PolicyVMWorkloadProtectionPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<PolicyVMWorkloadSettings>(PolicyVMWorkloadSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
-      workloadType: map['workloadType'] == null ? null : pulumi.Output.create<String>(map['workloadType'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectionPolicies: map['protectionPolicies'] == null ? null : (pulumi.Input.decodeList<PolicyVMWorkloadProtectionPolicy>(map['protectionPolicies'], (value) => PolicyVMWorkloadProtectionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      settings: map['settings'] == null ? null : (PolicyVMWorkloadSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
     );
   }
 }

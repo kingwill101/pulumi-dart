@@ -37,25 +37,16 @@ class DeviceGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updatePolicy] Update policy of the device group.
   DeviceGroupArgs({
-    pulumi.Output<String>? allowCrashDumpsCollection,
-    required pulumi.Output<String> catalogName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? deviceGroupName,
-    pulumi.Output<String>? osFeedType,
-    required pulumi.Output<String> productName,
-    pulumi.Output<String>? regionalDataBoundary,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? updatePolicy,
-  }) :
-      allowCrashDumpsCollection = pulumi.Input.asOptionalInput<String>(allowCrashDumpsCollection),
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      deviceGroupName = pulumi.Input.asOptionalInput<String>(deviceGroupName),
-      osFeedType = pulumi.Input.asOptionalInput<String>(osFeedType),
-      productName = pulumi.Input.asInput<String>(productName),
-      regionalDataBoundary = pulumi.Input.asOptionalInput<String>(regionalDataBoundary),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      updatePolicy = pulumi.Input.asOptionalInput<String>(updatePolicy);
+    this.allowCrashDumpsCollection,
+    required this.catalogName,
+    this.description,
+    this.deviceGroupName,
+    this.osFeedType,
+    required this.productName,
+    this.regionalDataBoundary,
+    required this.resourceGroupName,
+    this.updatePolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class DeviceGroupArgs {
 
   factory DeviceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeviceGroupArgs(
-      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : pulumi.Output.create<String>(map['allowCrashDumpsCollection'] as String),
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      deviceGroupName: map['deviceGroupName'] == null ? null : pulumi.Output.create<String>(map['deviceGroupName'] as String),
-      osFeedType: map['osFeedType'] == null ? null : pulumi.Output.create<String>(map['osFeedType'] as String),
-      productName: pulumi.Output.create<String>(map['productName'] as String),
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : pulumi.Output.create<String>(map['regionalDataBoundary'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      updatePolicy: map['updatePolicy'] == null ? null : pulumi.Output.create<String>(map['updatePolicy'] as String),
+      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : (map['allowCrashDumpsCollection'] as String).input(),
+      catalogName: (map['catalogName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deviceGroupName: map['deviceGroupName'] == null ? null : (map['deviceGroupName'] as String).input(),
+      osFeedType: map['osFeedType'] == null ? null : (map['osFeedType'] as String).input(),
+      productName: (map['productName'] as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      updatePolicy: map['updatePolicy'] == null ? null : (map['updatePolicy'] as String).input(),
     );
   }
 }

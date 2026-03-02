@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Panorama Config
 class PanoramaConfig {
   /// Base64 encoded string representing Panorama parameters to be used by Firewall to connect to Panorama. This string is generated via azure plugin in Panorama
-  final String configString;
+  final pulumi.Input<String> configString;
 
   /// Creates a new [PanoramaConfig].
   /// [configString] Base64 encoded string representing Panorama parameters to be used by Firewall to connect to Panorama. This string is generated via azure plugin in Panorama
@@ -20,7 +21,7 @@ class PanoramaConfig {
 
   factory PanoramaConfig.fromMap(Map<String, dynamic> map) {
     return PanoramaConfig(
-      configString: map['configString'] as String,
+      configString: (map['configString'] as String).input(),
     );
   }
 }

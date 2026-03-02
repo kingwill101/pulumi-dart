@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Set of conditions in the Rewrite Rule in Application Gateway.
 class ApplicationGatewayRewriteRuleConditionResponse {
   /// Setting this parameter to truth value with force the pattern to do a case in-sensitive comparison.
-  final bool? ignoreCase;
+  final pulumi.Input<bool>? ignoreCase;
   /// Setting this value as truth will force to check the negation of the condition given by the user.
-  final bool? negate;
+  final pulumi.Input<bool>? negate;
   /// The pattern, either fixed string or regular expression, that evaluates the truthfulness of the condition.
-  final String? pattern;
+  final pulumi.Input<String>? pattern;
   /// The condition parameter of the RewriteRuleCondition.
-  final String? variable;
+  final pulumi.Input<String>? variable;
 
   /// Creates a new [ApplicationGatewayRewriteRuleConditionResponse].
   /// [ignoreCase] Setting this parameter to truth value with force the pattern to do a case in-sensitive comparison.
@@ -35,10 +36,10 @@ class ApplicationGatewayRewriteRuleConditionResponse {
 
   factory ApplicationGatewayRewriteRuleConditionResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleConditionResponse(
-      ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase'] as bool,
-      negate: map['negate'] == null ? null : map['negate'] as bool,
-      pattern: map['pattern'] == null ? null : map['pattern'] as String,
-      variable: map['variable'] == null ? null : map['variable'] as String,
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
+      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
+      variable: map['variable'] == null ? null : (map['variable'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class GetIpamIpamPoolAllocationsArgs {
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetIpamIpamPoolAllocationsArgs({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? ipamPoolAllocationId,
-    pulumi.Output<String>? ipamPoolAllocationName,
-    required pulumi.Output<String> ipamPoolId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      ipamPoolAllocationId = pulumi.Input.asOptionalInput<String>(ipamPoolAllocationId),
-      ipamPoolAllocationName = pulumi.Input.asOptionalInput<String>(ipamPoolAllocationName),
-      ipamPoolId = pulumi.Input.asInput<String>(ipamPoolId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.cidr,
+    this.ids,
+    this.ipamPoolAllocationId,
+    this.ipamPoolAllocationName,
+    required this.ipamPoolId,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetIpamIpamPoolAllocationsArgs {
 
   factory GetIpamIpamPoolAllocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolAllocationsArgs(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolAllocationId'] as String),
-      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : pulumi.Output.create<String>(map['ipamPoolAllocationName'] as String),
-      ipamPoolId: pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : (map['ipamPoolAllocationId'] as String).input(),
+      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName'] as String).input(),
+      ipamPoolId: (map['ipamPoolId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

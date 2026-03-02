@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineThumbnailConfig {
   /// The Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files.
-  final String? bucket;
+  final pulumi.Input<String>? bucket;
   /// The Amazon S3 storage class, Standard or ReducedRedundancy, that you want Elastic Transcoder to assign to the thumbnails that it stores in your Amazon S3 bucket.
-  final String? storageClass;
+  final pulumi.Input<String>? storageClass;
 
   /// Creates a new [PipelineThumbnailConfig].
   /// [bucket] The Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files.
@@ -24,8 +25,8 @@ class PipelineThumbnailConfig {
 
   factory PipelineThumbnailConfig.fromMap(Map<String, dynamic> map) {
     return PipelineThumbnailConfig(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      storageClass: map['storageClass'] == null ? null : map['storageClass'] as String,
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
     );
   }
 }

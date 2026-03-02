@@ -33,19 +33,13 @@ class MembershipBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [scope] A Workspace resource name in the format
   MembershipBindingArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> membershipBindingId,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scope,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      membershipBindingId = pulumi.Input.asInput<String>(membershipBindingId),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.labels,
+    required this.location,
+    required this.membershipBindingId,
+    required this.membershipId,
+    this.project,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class MembershipBindingArgs {
 
   factory MembershipBindingArgs.fromMap(Map<String, dynamic> map) {
     return MembershipBindingArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      membershipBindingId: pulumi.Output.create<String>(map['membershipBindingId'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      membershipBindingId: (map['membershipBindingId'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

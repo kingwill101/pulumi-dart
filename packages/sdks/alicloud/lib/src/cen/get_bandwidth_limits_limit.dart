@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBandwidthLimitsLimit {
   /// The bandwidth limit configured for the interconnected regions communication.
-  final int bandwidthLimit;
+  final pulumi.Input<int> bandwidthLimit;
   /// ID of the CEN instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// ID of local region.
-  final String localRegionId;
+  final pulumi.Input<String> localRegionId;
   /// ID of opposite region.
-  final String oppositeRegionId;
+  final pulumi.Input<String> oppositeRegionId;
   /// Status of the CEN Bandwidth Limit, including "Active" and "Modifying".
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBandwidthLimitsLimit].
   /// [bandwidthLimit] The bandwidth limit configured for the interconnected regions communication.
@@ -39,11 +40,11 @@ class GetBandwidthLimitsLimit {
 
   factory GetBandwidthLimitsLimit.fromMap(Map<String, dynamic> map) {
     return GetBandwidthLimitsLimit(
-      bandwidthLimit: map['bandwidthLimit'] as int,
-      instanceId: map['instanceId'] as String,
-      localRegionId: map['localRegionId'] as String,
-      oppositeRegionId: map['oppositeRegionId'] as String,
-      status: map['status'] as String,
+      bandwidthLimit: (map['bandwidthLimit'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      localRegionId: (map['localRegionId'] as String).input(),
+      oppositeRegionId: (map['oppositeRegionId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

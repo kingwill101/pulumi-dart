@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode {
   /// An integer value containing ICMP code.
-  final int? code;
+  final pulumi.Input<int>? code;
   /// An integer value containing ICMP type.
-  final int? type;
+  final pulumi.Input<int>? type;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode].
   /// [code] An integer value containing ICMP code.
@@ -24,8 +25,8 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
 
   factory PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode(
-      code: map['code'] == null ? null : map['code'] as int,
-      type: map['type'] == null ? null : map['type'] as int,
+      code: map['code'] == null ? null : (map['code'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as int).input(),
     );
   }
 }

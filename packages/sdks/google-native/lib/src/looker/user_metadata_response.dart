@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata about users for a Looker instance.
 class UserMetadataResponse {
   /// Optional. The number of additional developer users the instance owner has purchased.
-  final int additionalDeveloperUserCount;
+  final pulumi.Input<int> additionalDeveloperUserCount;
   /// Optional. The number of additional standard users the instance owner has purchased.
-  final int additionalStandardUserCount;
+  final pulumi.Input<int> additionalStandardUserCount;
   /// Optional. The number of additional viewer users the instance owner has purchased.
-  final int additionalViewerUserCount;
+  final pulumi.Input<int> additionalViewerUserCount;
 
   /// Creates a new [UserMetadataResponse].
   /// [additionalDeveloperUserCount] Optional. The number of additional developer users the instance owner has purchased.
@@ -30,9 +31,9 @@ class UserMetadataResponse {
 
   factory UserMetadataResponse.fromMap(Map<String, dynamic> map) {
     return UserMetadataResponse(
-      additionalDeveloperUserCount: map['additionalDeveloperUserCount'] as int,
-      additionalStandardUserCount: map['additionalStandardUserCount'] as int,
-      additionalViewerUserCount: map['additionalViewerUserCount'] as int,
+      additionalDeveloperUserCount: (map['additionalDeveloperUserCount'] as int).input(),
+      additionalStandardUserCount: (map['additionalStandardUserCount'] as int).input(),
+      additionalViewerUserCount: (map['additionalViewerUserCount'] as int).input(),
     );
   }
 }

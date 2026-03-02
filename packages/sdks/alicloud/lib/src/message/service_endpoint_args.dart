@@ -17,11 +17,9 @@ class ServiceEndpointArgs {
   /// [endpointEnabled] Specifies whether the endpoint is enabled. Valid values:
   /// [endpointType] Access point type. Value:
   ServiceEndpointArgs({
-    required pulumi.Output<bool> endpointEnabled,
-    required pulumi.Output<String> endpointType,
-  }) :
-      endpointEnabled = pulumi.Input.asInput<bool>(endpointEnabled),
-      endpointType = pulumi.Input.asInput<String>(endpointType);
+    required this.endpointEnabled,
+    required this.endpointType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ServiceEndpointArgs {
 
   factory ServiceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointArgs(
-      endpointEnabled: pulumi.Output.create<bool>(map['endpointEnabled'] as bool),
-      endpointType: pulumi.Output.create<String>(map['endpointType'] as String),
+      endpointEnabled: (map['endpointEnabled'] as bool).input(),
+      endpointType: (map['endpointType'] as String).input(),
     );
   }
 }

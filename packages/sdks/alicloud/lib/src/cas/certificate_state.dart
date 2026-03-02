@@ -32,29 +32,18 @@ class CertificateState {
   /// [signPrivateKey] Optional.
   /// [tags] Optional.
   CertificateState({
-    pulumi.Output<String>? cert,
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<String>? encryptCert,
-    pulumi.Output<String>? encryptPrivateKey,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? signCert,
-    pulumi.Output<String>? signPrivateKey,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cert = pulumi.Input.asOptionalInput<String>(cert),
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      encryptCert = pulumi.Input.asOptionalInput<String>(encryptCert),
-      encryptPrivateKey = pulumi.Input.asOptionalInput<String>(encryptPrivateKey),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      signCert = pulumi.Input.asOptionalInput<String>(signCert),
-      signPrivateKey = pulumi.Input.asOptionalInput<String>(signPrivateKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.cert,
+    this.certificateName,
+    this.encryptCert,
+    this.encryptPrivateKey,
+    this.key,
+    this.lang,
+    this.name,
+    this.resourceGroupId,
+    this.signCert,
+    this.signPrivateKey,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,17 +63,17 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      cert: map['cert'] == null ? null : pulumi.Output.create<String>(map['cert'] as String),
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      encryptCert: map['encryptCert'] == null ? null : pulumi.Output.create<String>(map['encryptCert'] as String),
-      encryptPrivateKey: map['encryptPrivateKey'] == null ? null : pulumi.Output.create<String>(map['encryptPrivateKey'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      signCert: map['signCert'] == null ? null : pulumi.Output.create<String>(map['signCert'] as String),
-      signPrivateKey: map['signPrivateKey'] == null ? null : pulumi.Output.create<String>(map['signPrivateKey'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      encryptCert: map['encryptCert'] == null ? null : (map['encryptCert'] as String).input(),
+      encryptPrivateKey: map['encryptPrivateKey'] == null ? null : (map['encryptPrivateKey'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      signCert: map['signCert'] == null ? null : (map['signCert'] as String).input(),
+      signPrivateKey: map['signPrivateKey'] == null ? null : (map['signPrivateKey'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

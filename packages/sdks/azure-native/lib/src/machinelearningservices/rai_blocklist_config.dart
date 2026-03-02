@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure OpenAI blocklist config.
 class RaiBlocklistConfig {
   /// If blocking would occur.
-  final bool? blocking;
+  final pulumi.Input<bool>? blocking;
   /// Name of ContentFilter.
-  final String? blocklistName;
+  final pulumi.Input<String>? blocklistName;
 
   /// Creates a new [RaiBlocklistConfig].
   /// [blocking] If blocking would occur.
@@ -25,8 +26,8 @@ class RaiBlocklistConfig {
 
   factory RaiBlocklistConfig.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistConfig(
-      blocking: map['blocking'] == null ? null : map['blocking'] as bool,
-      blocklistName: map['blocklistName'] == null ? null : map['blocklistName'] as String,
+      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
+      blocklistName: map['blocklistName'] == null ? null : (map['blocklistName'] as String).input(),
     );
   }
 }

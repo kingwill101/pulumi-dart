@@ -9,15 +9,15 @@ import 'api_key_restrictions_server_key_restrictions.dart';
 
 class ApiKeyRestrictions {
   /// The Android apps that are allowed to use the key.
-  final ApiKeyRestrictionsAndroidKeyRestrictions? androidKeyRestrictions;
+  final pulumi.Input<ApiKeyRestrictionsAndroidKeyRestrictions>? androidKeyRestrictions;
   /// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
-  final List<ApiKeyRestrictionsApiTarget>? apiTargets;
+  final pulumi.Input<List<ApiKeyRestrictionsApiTarget>>? apiTargets;
   /// The HTTP referrers (websites) that are allowed to use the key.
-  final ApiKeyRestrictionsBrowserKeyRestrictions? browserKeyRestrictions;
+  final pulumi.Input<ApiKeyRestrictionsBrowserKeyRestrictions>? browserKeyRestrictions;
   /// The iOS apps that are allowed to use the key.
-  final ApiKeyRestrictionsIosKeyRestrictions? iosKeyRestrictions;
+  final pulumi.Input<ApiKeyRestrictionsIosKeyRestrictions>? iosKeyRestrictions;
   /// The IP addresses of callers that are allowed to use the key.
-  final ApiKeyRestrictionsServerKeyRestrictions? serverKeyRestrictions;
+  final pulumi.Input<ApiKeyRestrictionsServerKeyRestrictions>? serverKeyRestrictions;
 
   /// Creates a new [ApiKeyRestrictions].
   /// [androidKeyRestrictions] The Android apps that are allowed to use the key.
@@ -35,21 +35,21 @@ class ApiKeyRestrictions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidKeyRestrictions': ?androidKeyRestrictions == null ? null : androidKeyRestrictions!.toMap(),
-      'apiTargets': ?apiTargets == null ? null : pulumi.Input.encodeList<ApiKeyRestrictionsApiTarget, Map<String, dynamic>>(apiTargets!, (value) => value.toMap()),
-      'browserKeyRestrictions': ?browserKeyRestrictions == null ? null : browserKeyRestrictions!.toMap(),
-      'iosKeyRestrictions': ?iosKeyRestrictions == null ? null : iosKeyRestrictions!.toMap(),
-      'serverKeyRestrictions': ?serverKeyRestrictions == null ? null : serverKeyRestrictions!.toMap(),
+      'androidKeyRestrictions': ?pulumi.Input.mapOptionalInputValue<ApiKeyRestrictionsAndroidKeyRestrictions, Map<String, dynamic>>(androidKeyRestrictions, (value) => value.toMap()),
+      'apiTargets': ?pulumi.Input.mapOptionalInputValue<List<ApiKeyRestrictionsApiTarget>, List<Map<String, dynamic>>>(apiTargets, (value) => pulumi.Input.encodeList<ApiKeyRestrictionsApiTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'browserKeyRestrictions': ?pulumi.Input.mapOptionalInputValue<ApiKeyRestrictionsBrowserKeyRestrictions, Map<String, dynamic>>(browserKeyRestrictions, (value) => value.toMap()),
+      'iosKeyRestrictions': ?pulumi.Input.mapOptionalInputValue<ApiKeyRestrictionsIosKeyRestrictions, Map<String, dynamic>>(iosKeyRestrictions, (value) => value.toMap()),
+      'serverKeyRestrictions': ?pulumi.Input.mapOptionalInputValue<ApiKeyRestrictionsServerKeyRestrictions, Map<String, dynamic>>(serverKeyRestrictions, (value) => value.toMap()),
     };
   }
 
   factory ApiKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return ApiKeyRestrictions(
-      androidKeyRestrictions: map['androidKeyRestrictions'] == null ? null : ApiKeyRestrictionsAndroidKeyRestrictions.fromMap((map['androidKeyRestrictions'] as Map).cast<String, dynamic>()),
-      apiTargets: map['apiTargets'] == null ? null : pulumi.Input.decodeList<ApiKeyRestrictionsApiTarget>(map['apiTargets'], (value) => ApiKeyRestrictionsApiTarget.fromMap((value as Map).cast<String, dynamic>())),
-      browserKeyRestrictions: map['browserKeyRestrictions'] == null ? null : ApiKeyRestrictionsBrowserKeyRestrictions.fromMap((map['browserKeyRestrictions'] as Map).cast<String, dynamic>()),
-      iosKeyRestrictions: map['iosKeyRestrictions'] == null ? null : ApiKeyRestrictionsIosKeyRestrictions.fromMap((map['iosKeyRestrictions'] as Map).cast<String, dynamic>()),
-      serverKeyRestrictions: map['serverKeyRestrictions'] == null ? null : ApiKeyRestrictionsServerKeyRestrictions.fromMap((map['serverKeyRestrictions'] as Map).cast<String, dynamic>()),
+      androidKeyRestrictions: map['androidKeyRestrictions'] == null ? null : (ApiKeyRestrictionsAndroidKeyRestrictions.fromMap((map['androidKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
+      apiTargets: map['apiTargets'] == null ? null : (pulumi.Input.decodeList<ApiKeyRestrictionsApiTarget>(map['apiTargets'], (value) => ApiKeyRestrictionsApiTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      browserKeyRestrictions: map['browserKeyRestrictions'] == null ? null : (ApiKeyRestrictionsBrowserKeyRestrictions.fromMap((map['browserKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
+      iosKeyRestrictions: map['iosKeyRestrictions'] == null ? null : (ApiKeyRestrictionsIosKeyRestrictions.fromMap((map['iosKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
+      serverKeyRestrictions: map['serverKeyRestrictions'] == null ? null : (ApiKeyRestrictionsServerKeyRestrictions.fromMap((map['serverKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

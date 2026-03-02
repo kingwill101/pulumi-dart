@@ -26,19 +26,13 @@ class FirewallNatRuleCollectionState {
   /// [resourceGroupName] Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
   /// [rules] One or more `rule` blocks as defined below.
   FirewallNatRuleCollectionState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? azureFirewallName,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<FirewallNatRuleCollectionRule>>? rules,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      azureFirewallName = pulumi.Input.asOptionalInput<String>(azureFirewallName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      rules = pulumi.Input.asOptionalInput<List<FirewallNatRuleCollectionRule>>(rules);
+    this.action,
+    this.azureFirewallName,
+    this.name,
+    this.priority,
+    this.resourceGroupName,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class FirewallNatRuleCollectionState {
 
   factory FirewallNatRuleCollectionState.fromMap(Map<String, dynamic> map) {
     return FirewallNatRuleCollectionState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      azureFirewallName: map['azureFirewallName'] == null ? null : pulumi.Output.create<String>(map['azureFirewallName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<FirewallNatRuleCollectionRule>>(pulumi.Input.decodeList<FirewallNatRuleCollectionRule>(map['rules'], (value) => FirewallNatRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      azureFirewallName: map['azureFirewallName'] == null ? null : (map['azureFirewallName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallNatRuleCollectionRule>(map['rules'], (value) => FirewallNatRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

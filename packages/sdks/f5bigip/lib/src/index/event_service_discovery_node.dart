@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventServiceDiscoveryNode {
   /// name of node
-  final String? id;
+  final pulumi.Input<String>? id;
   /// ip of nonde
-  final String? ip;
+  final pulumi.Input<String>? ip;
   /// port
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [EventServiceDiscoveryNode].
   /// [id] name of node
@@ -29,9 +30,9 @@ class EventServiceDiscoveryNode {
 
   factory EventServiceDiscoveryNode.fromMap(Map<String, dynamic> map) {
     return EventServiceDiscoveryNode(
-      id: map['id'] == null ? null : map['id'] as String,
-      ip: map['ip'] == null ? null : map['ip'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

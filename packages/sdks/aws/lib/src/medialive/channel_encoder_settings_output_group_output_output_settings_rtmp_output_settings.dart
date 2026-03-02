@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_rtmp_output_settings_destination.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings {
   /// Setting to allow self signed or verified RTMP certificates.
-  final String? certificateMode;
+  final pulumi.Input<String>? certificateMode;
   /// Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
-  final int? connectionRetryInterval;
+  final pulumi.Input<int>? connectionRetryInterval;
   /// The RTMP endpoint excluding the stream name. See Destination for more details.
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination destination;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination> destination;
   /// Number of retry attempts.
-  final int? numRetries;
+  final pulumi.Input<int>? numRetries;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings].
   /// [certificateMode] Setting to allow self signed or verified RTMP certificates.
@@ -28,17 +29,17 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings {
     return <String, dynamic>{
       'certificateMode': ?certificateMode,
       'connectionRetryInterval': ?connectionRetryInterval,
-      'destination': destination.toMap(),
+      'destination': pulumi.Input.mapInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'numRetries': ?numRetries,
     };
   }
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings(
-      certificateMode: map['certificateMode'] == null ? null : map['certificateMode'] as String,
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : map['connectionRetryInterval'] as int,
-      destination: ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      numRetries: map['numRetries'] == null ? null : map['numRetries'] as int,
+      certificateMode: map['certificateMode'] == null ? null : (map['certificateMode'] as String).input(),
+      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : (map['connectionRetryInterval'] as int).input(),
+      destination: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
     );
   }
 }

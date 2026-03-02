@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter {
   /// The repository filter details.
-  final String filter;
+  final pulumi.Input<String> filter;
   /// The repository filter type. The only supported value is `PREFIX_MATCH`, which is a repository name prefix specified with the filter parameter.
-  final String filterType;
+  final pulumi.Input<String> filterType;
 
   /// Creates a new [ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter].
   /// [filter] The repository filter details.
@@ -24,8 +25,8 @@ class ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter {
 
   factory ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter(
-      filter: map['filter'] as String,
-      filterType: map['filterType'] as String,
+      filter: (map['filter'] as String).input(),
+      filterType: (map['filterType'] as String).input(),
     );
   }
 }

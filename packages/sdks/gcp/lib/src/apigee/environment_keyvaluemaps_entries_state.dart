@@ -17,13 +17,10 @@ class EnvironmentKeyvaluemapsEntriesState {
   /// [name] Required. Resource URI that can be used to identify the scope of the key value map entries.
   /// [value] Required. Data or payload that is being retrieved and associated with the unique key.
   EnvironmentKeyvaluemapsEntriesState({
-    pulumi.Output<String>? envKeyvaluemapId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? value,
-  }) :
-      envKeyvaluemapId = pulumi.Input.asOptionalInput<String>(envKeyvaluemapId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.envKeyvaluemapId,
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class EnvironmentKeyvaluemapsEntriesState {
 
   factory EnvironmentKeyvaluemapsEntriesState.fromMap(Map<String, dynamic> map) {
     return EnvironmentKeyvaluemapsEntriesState(
-      envKeyvaluemapId: map['envKeyvaluemapId'] == null ? null : pulumi.Output.create<String>(map['envKeyvaluemapId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      envKeyvaluemapId: map['envKeyvaluemapId'] == null ? null : (map['envKeyvaluemapId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

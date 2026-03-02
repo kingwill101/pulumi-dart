@@ -18,15 +18,11 @@ class GetFeatureViewArgs {
   /// [location] Required.
   /// [project] Optional.
   GetFeatureViewArgs({
-    required pulumi.Output<String> featureOnlineStoreId,
-    required pulumi.Output<String> featureViewId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      featureOnlineStoreId = pulumi.Input.asInput<String>(featureOnlineStoreId),
-      featureViewId = pulumi.Input.asInput<String>(featureViewId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.featureOnlineStoreId,
+    required this.featureViewId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetFeatureViewArgs {
 
   factory GetFeatureViewArgs.fromMap(Map<String, dynamic> map) {
     return GetFeatureViewArgs(
-      featureOnlineStoreId: pulumi.Output.create<String>(map['featureOnlineStoreId'] as String),
-      featureViewId: pulumi.Output.create<String>(map['featureViewId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      featureOnlineStoreId: (map['featureOnlineStoreId'] as String).input(),
+      featureViewId: (map['featureViewId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

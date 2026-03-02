@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayVpc {
   /// The zone name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The VPC network ID.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GatewayVpc].
   /// [name] The zone name.
@@ -24,8 +25,8 @@ class GatewayVpc {
 
   factory GatewayVpc.fromMap(Map<String, dynamic> map) {
     return GatewayVpc(
-      name: map['name'] == null ? null : map['name'] as String,
-      vpcId: map['vpcId'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

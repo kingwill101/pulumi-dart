@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityGatewayApplicationUpstreamEgressPolicy {
   /// Required. List of regions where the application sends traffic to.
-  final List<String> regions;
+  final pulumi.Input<List<String>> regions;
 
   /// Creates a new [SecurityGatewayApplicationUpstreamEgressPolicy].
   /// [regions] Required. List of regions where the application sends traffic to.
@@ -19,7 +20,7 @@ class SecurityGatewayApplicationUpstreamEgressPolicy {
 
   factory SecurityGatewayApplicationUpstreamEgressPolicy.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamEgressPolicy(
-      regions: (map['regions'] as List).cast<String>(),
+      regions: ((map['regions'] as List).cast<String>()).input(),
     );
   }
 }

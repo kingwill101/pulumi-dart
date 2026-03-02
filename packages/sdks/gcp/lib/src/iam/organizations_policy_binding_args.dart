@@ -68,25 +68,16 @@ class OrganizationsPolicyBindingArgs {
   /// [policyKind] Immutable. The kind of the policy to attach in this binding. This
   /// [target] Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
   OrganizationsPolicyBindingArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<OrganizationsPolicyBindingCondition>? condition,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> policy,
-    required pulumi.Output<String> policyBindingId,
-    pulumi.Output<String>? policyKind,
-    required pulumi.Output<OrganizationsPolicyBindingTarget> target,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      condition = pulumi.Input.asOptionalInput<OrganizationsPolicyBindingCondition>(condition),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      organization = pulumi.Input.asInput<String>(organization),
-      policy = pulumi.Input.asInput<String>(policy),
-      policyBindingId = pulumi.Input.asInput<String>(policyBindingId),
-      policyKind = pulumi.Input.asOptionalInput<String>(policyKind),
-      target = pulumi.Input.asInput<OrganizationsPolicyBindingTarget>(target);
+    this.annotations,
+    this.condition,
+    this.displayName,
+    required this.location,
+    required this.organization,
+    required this.policy,
+    required this.policyBindingId,
+    this.policyKind,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,15 +95,15 @@ class OrganizationsPolicyBindingArgs {
 
   factory OrganizationsPolicyBindingArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsPolicyBindingArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      condition: map['condition'] == null ? null : pulumi.Output.create<OrganizationsPolicyBindingCondition>(OrganizationsPolicyBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      policyBindingId: pulumi.Output.create<String>(map['policyBindingId'] as String),
-      policyKind: map['policyKind'] == null ? null : pulumi.Output.create<String>(map['policyKind'] as String),
-      target: pulumi.Output.create<OrganizationsPolicyBindingTarget>(OrganizationsPolicyBindingTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      condition: map['condition'] == null ? null : (OrganizationsPolicyBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      policyBindingId: (map['policyBindingId'] as String).input(),
+      policyKind: map['policyKind'] == null ? null : (map['policyKind'] as String).input(),
+      target: (OrganizationsPolicyBindingTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

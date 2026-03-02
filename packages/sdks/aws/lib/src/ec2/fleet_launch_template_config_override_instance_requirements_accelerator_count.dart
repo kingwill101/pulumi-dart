@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount {
   /// Maximum. Set to `0` to exclude instance types with accelerators.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// Minimum.
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount].
   /// [max] Maximum. Set to `0` to exclude instance types with accelerators.
@@ -24,8 +25,8 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount {
 
   factory FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

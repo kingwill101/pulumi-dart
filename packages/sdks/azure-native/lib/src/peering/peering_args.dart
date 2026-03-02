@@ -40,25 +40,16 @@ class PeeringArgs {
   /// [sku] The SKU that defines the tier and kind of the peering.
   /// [tags] The resource tags.
   PeeringArgs({
-    pulumi.Output<PeeringPropertiesDirect>? direct,
-    pulumi.Output<PeeringPropertiesExchange>? exchange,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? peeringLocation,
-    pulumi.Output<String>? peeringName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<PeeringSku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      direct = pulumi.Input.asOptionalInput<PeeringPropertiesDirect>(direct),
-      exchange = pulumi.Input.asOptionalInput<PeeringPropertiesExchange>(exchange),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      peeringLocation = pulumi.Input.asOptionalInput<String>(peeringLocation),
-      peeringName = pulumi.Input.asOptionalInput<String>(peeringName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<PeeringSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.direct,
+    this.exchange,
+    required this.kind,
+    this.location,
+    this.peeringLocation,
+    this.peeringName,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class PeeringArgs {
 
   factory PeeringArgs.fromMap(Map<String, dynamic> map) {
     return PeeringArgs(
-      direct: map['direct'] == null ? null : pulumi.Output.create<PeeringPropertiesDirect>(PeeringPropertiesDirect.fromMap((map['direct'] as Map).cast<String, dynamic>())),
-      exchange: map['exchange'] == null ? null : pulumi.Output.create<PeeringPropertiesExchange>(PeeringPropertiesExchange.fromMap((map['exchange'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      peeringLocation: map['peeringLocation'] == null ? null : pulumi.Output.create<String>(map['peeringLocation'] as String),
-      peeringName: map['peeringName'] == null ? null : pulumi.Output.create<String>(map['peeringName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<PeeringSku>(PeeringSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      direct: map['direct'] == null ? null : (PeeringPropertiesDirect.fromMap((map['direct'] as Map).cast<String, dynamic>())).input(),
+      exchange: map['exchange'] == null ? null : (PeeringPropertiesExchange.fromMap((map['exchange'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation'] as String).input(),
+      peeringName: map['peeringName'] == null ? null : (map['peeringName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (PeeringSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

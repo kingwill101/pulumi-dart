@@ -6,7 +6,7 @@ import 'device_messaging_endpoint.dart';
 /// Property bag contains the device's outbound endpoints
 class DiscoveredOutboundEndpoints {
   /// Endpoints the device can connect to.
-  final Map<String, DeviceMessagingEndpoint> assigned;
+  final pulumi.Input<Map<String, DeviceMessagingEndpoint>> assigned;
 
   /// Creates a new [DiscoveredOutboundEndpoints].
   /// [assigned] Endpoints the device can connect to.
@@ -16,13 +16,13 @@ class DiscoveredOutboundEndpoints {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assigned': pulumi.Input.encodeMapValues<DeviceMessagingEndpoint, Map<String, dynamic>>(assigned, (value) => value.toMap()),
+      'assigned': pulumi.Input.mapInputValue<Map<String, DeviceMessagingEndpoint>, Map<String, Map<String, dynamic>>>(assigned, (value) => pulumi.Input.encodeMapValues<DeviceMessagingEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DiscoveredOutboundEndpoints.fromMap(Map<String, dynamic> map) {
     return DiscoveredOutboundEndpoints(
-      assigned: pulumi.Input.decodeMapValues<DeviceMessagingEndpoint>(map['assigned'], (value) => DeviceMessagingEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      assigned: (pulumi.Input.decodeMapValues<DeviceMessagingEndpoint>(map['assigned'], (value) => DeviceMessagingEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

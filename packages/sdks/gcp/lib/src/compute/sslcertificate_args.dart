@@ -47,19 +47,13 @@ class SSLCertificateArgs {
   /// [privateKey] The write-only private key in PEM format.
   /// [project] The ID of the project in which the resource belongs.
   SSLCertificateArgs({
-    required pulumi.Output<String> certificate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    required pulumi.Output<String> privateKey,
-    pulumi.Output<String>? project,
-  }) :
-      certificate = pulumi.Input.asInput<String>(certificate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      privateKey = pulumi.Input.asInput<String>(privateKey),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.certificate,
+    this.description,
+    this.name,
+    this.namePrefix,
+    required this.privateKey,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,12 +68,12 @@ class SSLCertificateArgs {
 
   factory SSLCertificateArgs.fromMap(Map<String, dynamic> map) {
     return SSLCertificateArgs(
-      certificate: pulumi.Output.create<String>(map['certificate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      privateKey: pulumi.Output.create<String>(map['privateKey'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      certificate: (map['certificate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

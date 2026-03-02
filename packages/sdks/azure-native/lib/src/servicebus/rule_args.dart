@@ -41,25 +41,16 @@ class RuleArgs {
   /// [subscriptionName] The subscription name.
   /// [topicName] The topic name.
   RuleArgs({
-    pulumi.Output<Action>? action,
-    pulumi.Output<CorrelationFilter>? correlationFilter,
-    pulumi.Output<FilterType>? filterType,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<SqlFilter>? sqlFilter,
-    required pulumi.Output<String> subscriptionName,
-    required pulumi.Output<String> topicName,
-  }) :
-      action = pulumi.Input.asOptionalInput<Action>(action),
-      correlationFilter = pulumi.Input.asOptionalInput<CorrelationFilter>(correlationFilter),
-      filterType = pulumi.Input.asOptionalInput<FilterType>(filterType),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      sqlFilter = pulumi.Input.asOptionalInput<SqlFilter>(sqlFilter),
-      subscriptionName = pulumi.Input.asInput<String>(subscriptionName),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    this.action,
+    this.correlationFilter,
+    this.filterType,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.ruleName,
+    this.sqlFilter,
+    required this.subscriptionName,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<Action>(Action.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      correlationFilter: map['correlationFilter'] == null ? null : pulumi.Output.create<CorrelationFilter>(CorrelationFilter.fromMap((map['correlationFilter'] as Map).cast<String, dynamic>())),
-      filterType: map['filterType'] == null ? null : pulumi.Output.create<FilterType>(FilterType.fromValue(map['filterType'] as String)),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      sqlFilter: map['sqlFilter'] == null ? null : pulumi.Output.create<SqlFilter>(SqlFilter.fromMap((map['sqlFilter'] as Map).cast<String, dynamic>())),
-      subscriptionName: pulumi.Output.create<String>(map['subscriptionName'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      action: map['action'] == null ? null : (Action.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      correlationFilter: map['correlationFilter'] == null ? null : (CorrelationFilter.fromMap((map['correlationFilter'] as Map).cast<String, dynamic>())).input(),
+      filterType: map['filterType'] == null ? null : (FilterType.fromValue(map['filterType'] as String)).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      sqlFilter: map['sqlFilter'] == null ? null : (SqlFilter.fromMap((map['sqlFilter'] as Map).cast<String, dynamic>())).input(),
+      subscriptionName: (map['subscriptionName'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

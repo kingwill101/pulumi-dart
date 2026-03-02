@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cassandra_schema_response.dart';
 
 class CassandraTableGetPropertiesResponseResource {
   /// Analytical TTL.
-  final int? analyticalStorageTtl;
+  final pulumi.Input<int>? analyticalStorageTtl;
   /// Time to live of the Cosmos DB Cassandra table
-  final int? defaultTtl;
+  final pulumi.Input<int>? defaultTtl;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Name of the Cosmos DB Cassandra table
-  final String id;
+  final pulumi.Input<String> id;
   /// A system generated property. A unique identifier.
-  final String rid;
+  final pulumi.Input<String> rid;
   /// Schema of the Cosmos DB Cassandra table
-  final CassandraSchemaResponse? schema;
+  final pulumi.Input<CassandraSchemaResponse>? schema;
   /// A system generated property that denotes the last updated timestamp of the resource.
-  final double ts;
+  final pulumi.Input<double> ts;
 
   /// Creates a new [CassandraTableGetPropertiesResponseResource].
   /// [analyticalStorageTtl] Analytical TTL.
@@ -43,20 +44,20 @@ class CassandraTableGetPropertiesResponseResource {
       'etag': etag,
       'id': id,
       'rid': rid,
-      'schema': ?schema == null ? null : schema!.toMap(),
+      'schema': ?pulumi.Input.mapOptionalInputValue<CassandraSchemaResponse, Map<String, dynamic>>(schema, (value) => value.toMap()),
       'ts': ts,
     };
   }
 
   factory CassandraTableGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return CassandraTableGetPropertiesResponseResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : map['analyticalStorageTtl'] as int,
-      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl'] as int,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      rid: map['rid'] as String,
-      schema: map['schema'] == null ? null : CassandraSchemaResponse.fromMap((map['schema'] as Map).cast<String, dynamic>()),
-      ts: map['ts'] as double,
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      etag: (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      rid: (map['rid'] as String).input(),
+      schema: map['schema'] == null ? null : (CassandraSchemaResponse.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      ts: (map['ts'] as double).input(),
     );
   }
 }

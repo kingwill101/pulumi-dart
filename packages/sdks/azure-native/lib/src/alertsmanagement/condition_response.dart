@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Condition to trigger an alert processing rule.
 class ConditionResponse {
   /// Field for a given condition.
-  final String? field;
+  final pulumi.Input<String>? field;
   /// Operator for a given condition.
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// List of values to match for a given condition.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ConditionResponse].
   /// [field] Field for a given condition.
@@ -30,9 +31,9 @@ class ConditionResponse {
 
   factory ConditionResponse.fromMap(Map<String, dynamic> map) {
     return ConditionResponse(
-      field: map['field'] == null ? null : map['field'] as String,
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      field: map['field'] == null ? null : (map['field'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

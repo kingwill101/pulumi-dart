@@ -22,15 +22,11 @@ class GetSkusNestedResourceTypeFirstArgs {
   /// [resourceType] The resource type.
   /// [sku] The SKU.
   GetSkusNestedResourceTypeFirstArgs({
-    required pulumi.Output<String> nestedResourceTypeFirst,
-    required pulumi.Output<String> providerNamespace,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<String> sku,
-  }) :
-      nestedResourceTypeFirst = pulumi.Input.asInput<String>(nestedResourceTypeFirst),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      sku = pulumi.Input.asInput<String>(sku);
+    required this.nestedResourceTypeFirst,
+    required this.providerNamespace,
+    required this.resourceType,
+    required this.sku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSkusNestedResourceTypeFirstArgs {
 
   factory GetSkusNestedResourceTypeFirstArgs.fromMap(Map<String, dynamic> map) {
     return GetSkusNestedResourceTypeFirstArgs(
-      nestedResourceTypeFirst: pulumi.Output.create<String>(map['nestedResourceTypeFirst'] as String),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
+      nestedResourceTypeFirst: (map['nestedResourceTypeFirst'] as String).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      sku: (map['sku'] as String).input(),
     );
   }
 }

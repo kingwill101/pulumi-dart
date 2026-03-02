@@ -23,15 +23,11 @@ class JobArgs {
   /// [properties] Gets or sets the job properties.
   /// [resourceGroupName] The resource group name.
   JobArgs({
-    required pulumi.Output<String> jobCollectionName,
-    pulumi.Output<String>? jobName,
-    pulumi.Output<JobProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      jobCollectionName = pulumi.Input.asInput<String>(jobCollectionName),
-      jobName = pulumi.Input.asOptionalInput<String>(jobName),
-      properties = pulumi.Input.asOptionalInput<JobProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.jobCollectionName,
+    this.jobName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      jobCollectionName: pulumi.Output.create<String>(map['jobCollectionName'] as String),
-      jobName: map['jobName'] == null ? null : pulumi.Output.create<String>(map['jobName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<JobProperties>(JobProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      jobCollectionName: (map['jobCollectionName'] as String).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      properties: map['properties'] == null ? null : (JobProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

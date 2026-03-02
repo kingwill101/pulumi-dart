@@ -38,23 +38,15 @@ class DomainArgs {
   /// [ruleBasedMatching] A block that specifies the process of matching duplicate profiles using the Rule-Based matching. Documented below.
   /// [tags] Tags to apply to the domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DomainArgs({
-    pulumi.Output<String>? deadLetterQueueUrl,
-    pulumi.Output<String>? defaultEncryptionKey,
-    required pulumi.Output<int> defaultExpirationDays,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<DomainMatching>? matching,
-    pulumi.Output<String>? region,
-    pulumi.Output<DomainRuleBasedMatching>? ruleBasedMatching,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deadLetterQueueUrl = pulumi.Input.asOptionalInput<String>(deadLetterQueueUrl),
-      defaultEncryptionKey = pulumi.Input.asOptionalInput<String>(defaultEncryptionKey),
-      defaultExpirationDays = pulumi.Input.asInput<int>(defaultExpirationDays),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      matching = pulumi.Input.asOptionalInput<DomainMatching>(matching),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleBasedMatching = pulumi.Input.asOptionalInput<DomainRuleBasedMatching>(ruleBasedMatching),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deadLetterQueueUrl,
+    this.defaultEncryptionKey,
+    required this.defaultExpirationDays,
+    required this.domainName,
+    this.matching,
+    this.region,
+    this.ruleBasedMatching,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      deadLetterQueueUrl: map['deadLetterQueueUrl'] == null ? null : pulumi.Output.create<String>(map['deadLetterQueueUrl'] as String),
-      defaultEncryptionKey: map['defaultEncryptionKey'] == null ? null : pulumi.Output.create<String>(map['defaultEncryptionKey'] as String),
-      defaultExpirationDays: pulumi.Output.create<int>(map['defaultExpirationDays'] as int),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      matching: map['matching'] == null ? null : pulumi.Output.create<DomainMatching>(DomainMatching.fromMap((map['matching'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleBasedMatching: map['ruleBasedMatching'] == null ? null : pulumi.Output.create<DomainRuleBasedMatching>(DomainRuleBasedMatching.fromMap((map['ruleBasedMatching'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deadLetterQueueUrl: map['deadLetterQueueUrl'] == null ? null : (map['deadLetterQueueUrl'] as String).input(),
+      defaultEncryptionKey: map['defaultEncryptionKey'] == null ? null : (map['defaultEncryptionKey'] as String).input(),
+      defaultExpirationDays: (map['defaultExpirationDays'] as int).input(),
+      domainName: (map['domainName'] as String).input(),
+      matching: map['matching'] == null ? null : (DomainMatching.fromMap((map['matching'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleBasedMatching: map['ruleBasedMatching'] == null ? null : (DomainRuleBasedMatching.fromMap((map['ruleBasedMatching'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

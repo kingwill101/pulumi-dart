@@ -22,15 +22,11 @@ class ZnodeArgs {
   /// [data] The Node data.
   /// [path] The Node path. The value must start with a forward slash (/).
   ZnodeArgs({
-    pulumi.Output<String>? acceptLanguage,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? data,
-    required pulumi.Output<String> path,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      path = pulumi.Input.asInput<String>(path);
+    this.acceptLanguage,
+    required this.clusterId,
+    this.data,
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ZnodeArgs {
 
   factory ZnodeArgs.fromMap(Map<String, dynamic> map) {
     return ZnodeArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      path: pulumi.Output.create<String>(map['path'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

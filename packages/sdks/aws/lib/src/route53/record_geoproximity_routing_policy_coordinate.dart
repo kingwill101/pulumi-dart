@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecordGeoproximityRoutingPolicyCoordinate {
-  final String latitude;
-  final String longitude;
+  final pulumi.Input<String> latitude;
+  final pulumi.Input<String> longitude;
 
   /// Creates a new [RecordGeoproximityRoutingPolicyCoordinate].
   /// [latitude] Required.
@@ -22,8 +23,8 @@ class RecordGeoproximityRoutingPolicyCoordinate {
 
   factory RecordGeoproximityRoutingPolicyCoordinate.fromMap(Map<String, dynamic> map) {
     return RecordGeoproximityRoutingPolicyCoordinate(
-      latitude: map['latitude'] as String,
-      longitude: map['longitude'] as String,
+      latitude: (map['latitude'] as String).input(),
+      longitude: (map['longitude'] as String).input(),
     );
   }
 }

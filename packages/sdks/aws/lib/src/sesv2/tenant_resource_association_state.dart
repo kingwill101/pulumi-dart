@@ -18,13 +18,10 @@ class TenantResourceAssociationState {
   /// [resourceArn] ARN of the SES resource to associate with the tenant.
   /// [tenantName] Name of SES Tenant.
   TenantResourceAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? tenantName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      tenantName = pulumi.Input.asOptionalInput<String>(tenantName);
+    this.region,
+    this.resourceArn,
+    this.tenantName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class TenantResourceAssociationState {
 
   factory TenantResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return TenantResourceAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      tenantName: map['tenantName'] == null ? null : pulumi.Output.create<String>(map['tenantName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
     );
   }
 }

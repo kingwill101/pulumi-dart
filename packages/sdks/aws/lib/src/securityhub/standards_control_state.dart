@@ -40,29 +40,18 @@ class StandardsControlState {
   /// [standardsControlArn] The standards control ARN. See the AWS documentation for how to list existing controls using [`get-enabled-standards`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/securityhub/get-enabled-standards.html) and [`describe-standards-controls`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/securityhub/describe-standards-controls.html).
   /// [title] The standard control title.
   StandardsControlState({
-    pulumi.Output<String>? controlId,
-    pulumi.Output<String>? controlStatus,
-    pulumi.Output<String>? controlStatusUpdatedAt,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? disabledReason,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? relatedRequirements,
-    pulumi.Output<String>? remediationUrl,
-    pulumi.Output<String>? severityRating,
-    pulumi.Output<String>? standardsControlArn,
-    pulumi.Output<String>? title,
-  }) :
-      controlId = pulumi.Input.asOptionalInput<String>(controlId),
-      controlStatus = pulumi.Input.asOptionalInput<String>(controlStatus),
-      controlStatusUpdatedAt = pulumi.Input.asOptionalInput<String>(controlStatusUpdatedAt),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabledReason = pulumi.Input.asOptionalInput<String>(disabledReason),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      relatedRequirements = pulumi.Input.asOptionalInput<List<String>>(relatedRequirements),
-      remediationUrl = pulumi.Input.asOptionalInput<String>(remediationUrl),
-      severityRating = pulumi.Input.asOptionalInput<String>(severityRating),
-      standardsControlArn = pulumi.Input.asOptionalInput<String>(standardsControlArn),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.controlId,
+    this.controlStatus,
+    this.controlStatusUpdatedAt,
+    this.description,
+    this.disabledReason,
+    this.region,
+    this.relatedRequirements,
+    this.remediationUrl,
+    this.severityRating,
+    this.standardsControlArn,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class StandardsControlState {
 
   factory StandardsControlState.fromMap(Map<String, dynamic> map) {
     return StandardsControlState(
-      controlId: map['controlId'] == null ? null : pulumi.Output.create<String>(map['controlId'] as String),
-      controlStatus: map['controlStatus'] == null ? null : pulumi.Output.create<String>(map['controlStatus'] as String),
-      controlStatusUpdatedAt: map['controlStatusUpdatedAt'] == null ? null : pulumi.Output.create<String>(map['controlStatusUpdatedAt'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabledReason: map['disabledReason'] == null ? null : pulumi.Output.create<String>(map['disabledReason'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      relatedRequirements: map['relatedRequirements'] == null ? null : pulumi.Output.create<List<String>>((map['relatedRequirements'] as List).cast<String>()),
-      remediationUrl: map['remediationUrl'] == null ? null : pulumi.Output.create<String>(map['remediationUrl'] as String),
-      severityRating: map['severityRating'] == null ? null : pulumi.Output.create<String>(map['severityRating'] as String),
-      standardsControlArn: map['standardsControlArn'] == null ? null : pulumi.Output.create<String>(map['standardsControlArn'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      controlId: map['controlId'] == null ? null : (map['controlId'] as String).input(),
+      controlStatus: map['controlStatus'] == null ? null : (map['controlStatus'] as String).input(),
+      controlStatusUpdatedAt: map['controlStatusUpdatedAt'] == null ? null : (map['controlStatusUpdatedAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabledReason: map['disabledReason'] == null ? null : (map['disabledReason'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      relatedRequirements: map['relatedRequirements'] == null ? null : ((map['relatedRequirements'] as List).cast<String>()).input(),
+      remediationUrl: map['remediationUrl'] == null ? null : (map['remediationUrl'] as String).input(),
+      severityRating: map['severityRating'] == null ? null : (map['severityRating'] as String).input(),
+      standardsControlArn: map['standardsControlArn'] == null ? null : (map['standardsControlArn'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

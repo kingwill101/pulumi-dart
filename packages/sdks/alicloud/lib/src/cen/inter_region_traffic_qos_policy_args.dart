@@ -25,17 +25,12 @@ class InterRegionTrafficQosPolicyArgs {
   /// [transitRouterAttachmentId] Peer Attachment ID.
   /// [transitRouterId] The ID of the forwarding router instance.
   InterRegionTrafficQosPolicyArgs({
-    pulumi.Output<String>? bandwidthGuaranteeMode,
-    pulumi.Output<String>? interRegionTrafficQosPolicyDescription,
-    pulumi.Output<String>? interRegionTrafficQosPolicyName,
-    required pulumi.Output<String> transitRouterAttachmentId,
-    required pulumi.Output<String> transitRouterId,
-  }) :
-      bandwidthGuaranteeMode = pulumi.Input.asOptionalInput<String>(bandwidthGuaranteeMode),
-      interRegionTrafficQosPolicyDescription = pulumi.Input.asOptionalInput<String>(interRegionTrafficQosPolicyDescription),
-      interRegionTrafficQosPolicyName = pulumi.Input.asOptionalInput<String>(interRegionTrafficQosPolicyName),
-      transitRouterAttachmentId = pulumi.Input.asInput<String>(transitRouterAttachmentId),
-      transitRouterId = pulumi.Input.asInput<String>(transitRouterId);
+    this.bandwidthGuaranteeMode,
+    this.interRegionTrafficQosPolicyDescription,
+    this.interRegionTrafficQosPolicyName,
+    required this.transitRouterAttachmentId,
+    required this.transitRouterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class InterRegionTrafficQosPolicyArgs {
 
   factory InterRegionTrafficQosPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InterRegionTrafficQosPolicyArgs(
-      bandwidthGuaranteeMode: map['bandwidthGuaranteeMode'] == null ? null : pulumi.Output.create<String>(map['bandwidthGuaranteeMode'] as String),
-      interRegionTrafficQosPolicyDescription: map['interRegionTrafficQosPolicyDescription'] == null ? null : pulumi.Output.create<String>(map['interRegionTrafficQosPolicyDescription'] as String),
-      interRegionTrafficQosPolicyName: map['interRegionTrafficQosPolicyName'] == null ? null : pulumi.Output.create<String>(map['interRegionTrafficQosPolicyName'] as String),
-      transitRouterAttachmentId: pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterId: pulumi.Output.create<String>(map['transitRouterId'] as String),
+      bandwidthGuaranteeMode: map['bandwidthGuaranteeMode'] == null ? null : (map['bandwidthGuaranteeMode'] as String).input(),
+      interRegionTrafficQosPolicyDescription: map['interRegionTrafficQosPolicyDescription'] == null ? null : (map['interRegionTrafficQosPolicyDescription'] as String).input(),
+      interRegionTrafficQosPolicyName: map['interRegionTrafficQosPolicyName'] == null ? null : (map['interRegionTrafficQosPolicyName'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

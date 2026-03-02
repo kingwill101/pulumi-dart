@@ -35,25 +35,16 @@ class SnapshotScheduleState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   SnapshotScheduleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<String>>? definitions,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? identifier,
-    pulumi.Output<String>? identifierPrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      definitions = pulumi.Input.asOptionalInput<List<String>>(definitions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      identifier = pulumi.Input.asOptionalInput<String>(identifier),
-      identifierPrefix = pulumi.Input.asOptionalInput<String>(identifierPrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.definitions,
+    this.description,
+    this.forceDestroy,
+    this.identifier,
+    this.identifierPrefix,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class SnapshotScheduleState {
 
   factory SnapshotScheduleState.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      definitions: map['definitions'] == null ? null : pulumi.Output.create<List<String>>((map['definitions'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<String>(map['identifier'] as String),
-      identifierPrefix: map['identifierPrefix'] == null ? null : pulumi.Output.create<String>(map['identifierPrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      definitions: map['definitions'] == null ? null : ((map['definitions'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      identifierPrefix: map['identifierPrefix'] == null ? null : (map['identifierPrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

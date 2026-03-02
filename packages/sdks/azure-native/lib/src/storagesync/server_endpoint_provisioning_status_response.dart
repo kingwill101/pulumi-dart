@@ -6,11 +6,11 @@ import 'server_endpoint_provisioning_step_status_response.dart';
 /// Server endpoint provisioning status information
 class ServerEndpointProvisioningStatusResponse {
   /// Server Endpoint provisioning status
-  final String provisioningStatus;
+  final pulumi.Input<String> provisioningStatus;
   /// Provisioning Step status information for each step in the provisioning process
-  final List<ServerEndpointProvisioningStepStatusResponse> provisioningStepStatuses;
+  final pulumi.Input<List<ServerEndpointProvisioningStepStatusResponse>> provisioningStepStatuses;
   /// Server Endpoint provisioning type
-  final String provisioningType;
+  final pulumi.Input<String> provisioningType;
 
   /// Creates a new [ServerEndpointProvisioningStatusResponse].
   /// [provisioningStatus] Server Endpoint provisioning status
@@ -25,16 +25,16 @@ class ServerEndpointProvisioningStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'provisioningStatus': provisioningStatus,
-      'provisioningStepStatuses': pulumi.Input.encodeList<ServerEndpointProvisioningStepStatusResponse, Map<String, dynamic>>(provisioningStepStatuses, (value) => value.toMap()),
+      'provisioningStepStatuses': pulumi.Input.mapInputValue<List<ServerEndpointProvisioningStepStatusResponse>, List<Map<String, dynamic>>>(provisioningStepStatuses, (value) => pulumi.Input.encodeList<ServerEndpointProvisioningStepStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningType': provisioningType,
     };
   }
 
   factory ServerEndpointProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointProvisioningStatusResponse(
-      provisioningStatus: map['provisioningStatus'] as String,
-      provisioningStepStatuses: pulumi.Input.decodeList<ServerEndpointProvisioningStepStatusResponse>(map['provisioningStepStatuses'], (value) => ServerEndpointProvisioningStepStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningType: map['provisioningType'] as String,
+      provisioningStatus: (map['provisioningStatus'] as String).input(),
+      provisioningStepStatuses: (pulumi.Input.decodeList<ServerEndpointProvisioningStepStatusResponse>(map['provisioningStepStatuses'], (value) => ServerEndpointProvisioningStepStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningType: (map['provisioningType'] as String).input(),
     );
   }
 }

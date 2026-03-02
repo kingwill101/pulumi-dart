@@ -19,13 +19,10 @@ class GetVirtualNetworkRuleArgs {
   /// [resourceGroupName] The name of the Azure resource group.
   /// [virtualNetworkRuleName] The name of the virtual network rule to retrieve.
   GetVirtualNetworkRuleArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkRuleName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkRuleName = pulumi.Input.asInput<String>(virtualNetworkRuleName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.virtualNetworkRuleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualNetworkRuleArgs {
 
   factory GetVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRuleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkRuleName: pulumi.Output.create<String>(map['virtualNetworkRuleName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkRuleName: (map['virtualNetworkRuleName'] as String).input(),
     );
   }
 }

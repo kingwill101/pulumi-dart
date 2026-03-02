@@ -27,19 +27,13 @@ class RuleSetArgs {
   /// [rules] List of rules given by the customer.
   /// [source] Source of the rules i.e., customer name.
   RuleSetArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<GoogleCloudContentwarehouseV1Rule>>? rules,
-    pulumi.Output<String>? source,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asOptionalInput<List<GoogleCloudContentwarehouseV1Rule>>(rules),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.description,
+    this.location,
+    this.name,
+    this.project,
+    this.rules,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class RuleSetArgs {
 
   factory RuleSetArgs.fromMap(Map<String, dynamic> map) {
     return RuleSetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<GoogleCloudContentwarehouseV1Rule>>(pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Rule>(map['rules'], (value) => GoogleCloudContentwarehouseV1Rule.fromMap((value as Map).cast<String, dynamic>()))),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Rule>(map['rules'], (value) => GoogleCloudContentwarehouseV1Rule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

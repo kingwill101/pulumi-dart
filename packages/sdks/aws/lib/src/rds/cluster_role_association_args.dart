@@ -22,15 +22,11 @@ class ClusterRoleAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] Amazon Resource Name (ARN) of the IAM Role to associate with the DB Cluster.
   ClusterRoleAssociationArgs({
-    required pulumi.Output<String> dbClusterIdentifier,
-    pulumi.Output<String>? featureName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-  }) :
-      dbClusterIdentifier = pulumi.Input.asInput<String>(dbClusterIdentifier),
-      featureName = pulumi.Input.asOptionalInput<String>(featureName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn);
+    required this.dbClusterIdentifier,
+    this.featureName,
+    this.region,
+    required this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ClusterRoleAssociationArgs {
 
   factory ClusterRoleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ClusterRoleAssociationArgs(
-      dbClusterIdentifier: pulumi.Output.create<String>(map['dbClusterIdentifier'] as String),
-      featureName: map['featureName'] == null ? null : pulumi.Output.create<String>(map['featureName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
+      dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

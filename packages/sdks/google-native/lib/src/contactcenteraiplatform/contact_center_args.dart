@@ -53,35 +53,21 @@ class ContactCenterArgs {
   /// [samlParams] Optional. Params that sets up Google as IdP.
   /// [userEmail] Optional. Email address of the first admin user.
   ContactCenterArgs({
-    pulumi.Output<AdminUser>? adminUser,
-    pulumi.Output<bool>? ccaipManagedUsers,
-    required pulumi.Output<String> contactCenterId,
-    required pulumi.Output<String> customerDomainPrefix,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<InstanceConfig>? instanceConfig,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<SAMLParams>? samlParams,
-    pulumi.Output<String>? userEmail,
-  }) :
-      adminUser = pulumi.Input.asOptionalInput<AdminUser>(adminUser),
-      ccaipManagedUsers = pulumi.Input.asOptionalInput<bool>(ccaipManagedUsers),
-      contactCenterId = pulumi.Input.asInput<String>(contactCenterId),
-      customerDomainPrefix = pulumi.Input.asInput<String>(customerDomainPrefix),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      instanceConfig = pulumi.Input.asOptionalInput<InstanceConfig>(instanceConfig),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      samlParams = pulumi.Input.asOptionalInput<SAMLParams>(samlParams),
-      userEmail = pulumi.Input.asOptionalInput<String>(userEmail);
+    this.adminUser,
+    this.ccaipManagedUsers,
+    required this.contactCenterId,
+    required this.customerDomainPrefix,
+    required this.displayName,
+    this.instanceConfig,
+    this.kmsKey,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    this.samlParams,
+    this.userEmail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class ContactCenterArgs {
 
   factory ContactCenterArgs.fromMap(Map<String, dynamic> map) {
     return ContactCenterArgs(
-      adminUser: map['adminUser'] == null ? null : pulumi.Output.create<AdminUser>(AdminUser.fromMap((map['adminUser'] as Map).cast<String, dynamic>())),
-      ccaipManagedUsers: map['ccaipManagedUsers'] == null ? null : pulumi.Output.create<bool>(map['ccaipManagedUsers'] as bool),
-      contactCenterId: pulumi.Output.create<String>(map['contactCenterId'] as String),
-      customerDomainPrefix: pulumi.Output.create<String>(map['customerDomainPrefix'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      instanceConfig: map['instanceConfig'] == null ? null : pulumi.Output.create<InstanceConfig>(InstanceConfig.fromMap((map['instanceConfig'] as Map).cast<String, dynamic>())),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      samlParams: map['samlParams'] == null ? null : pulumi.Output.create<SAMLParams>(SAMLParams.fromMap((map['samlParams'] as Map).cast<String, dynamic>())),
-      userEmail: map['userEmail'] == null ? null : pulumi.Output.create<String>(map['userEmail'] as String),
+      adminUser: map['adminUser'] == null ? null : (AdminUser.fromMap((map['adminUser'] as Map).cast<String, dynamic>())).input(),
+      ccaipManagedUsers: map['ccaipManagedUsers'] == null ? null : (map['ccaipManagedUsers'] as bool).input(),
+      contactCenterId: (map['contactCenterId'] as String).input(),
+      customerDomainPrefix: (map['customerDomainPrefix'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      instanceConfig: map['instanceConfig'] == null ? null : (InstanceConfig.fromMap((map['instanceConfig'] as Map).cast<String, dynamic>())).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      samlParams: map['samlParams'] == null ? null : (SAMLParams.fromMap((map['samlParams'] as Map).cast<String, dynamic>())).input(),
+      userEmail: map['userEmail'] == null ? null : (map['userEmail'] as String).input(),
     );
   }
 }

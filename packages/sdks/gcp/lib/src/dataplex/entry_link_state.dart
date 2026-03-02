@@ -39,25 +39,16 @@ class EntryLinkState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time when the Entry Link was last updated.
   EntryLinkState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? entryGroupId,
-    pulumi.Output<String>? entryLinkId,
-    pulumi.Output<String>? entryLinkType,
-    pulumi.Output<List<EntryLinkEntryReference>>? entryReferences,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      entryGroupId = pulumi.Input.asOptionalInput<String>(entryGroupId),
-      entryLinkId = pulumi.Input.asOptionalInput<String>(entryLinkId),
-      entryLinkType = pulumi.Input.asOptionalInput<String>(entryLinkType),
-      entryReferences = pulumi.Input.asOptionalInput<List<EntryLinkEntryReference>>(entryReferences),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.entryGroupId,
+    this.entryLinkId,
+    this.entryLinkType,
+    this.entryReferences,
+    this.location,
+    this.name,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class EntryLinkState {
 
   factory EntryLinkState.fromMap(Map<String, dynamic> map) {
     return EntryLinkState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      entryGroupId: map['entryGroupId'] == null ? null : pulumi.Output.create<String>(map['entryGroupId'] as String),
-      entryLinkId: map['entryLinkId'] == null ? null : pulumi.Output.create<String>(map['entryLinkId'] as String),
-      entryLinkType: map['entryLinkType'] == null ? null : pulumi.Output.create<String>(map['entryLinkType'] as String),
-      entryReferences: map['entryReferences'] == null ? null : pulumi.Output.create<List<EntryLinkEntryReference>>(pulumi.Input.decodeList<EntryLinkEntryReference>(map['entryReferences'], (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      entryGroupId: map['entryGroupId'] == null ? null : (map['entryGroupId'] as String).input(),
+      entryLinkId: map['entryLinkId'] == null ? null : (map['entryLinkId'] as String).input(),
+      entryLinkType: map['entryLinkType'] == null ? null : (map['entryLinkType'] as String).input(),
+      entryReferences: map['entryReferences'] == null ? null : (pulumi.Input.decodeList<EntryLinkEntryReference>(map['entryReferences'], (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

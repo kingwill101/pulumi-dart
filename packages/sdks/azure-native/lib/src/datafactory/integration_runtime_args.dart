@@ -23,15 +23,11 @@ class IntegrationRuntimeArgs {
   /// [properties] Integration runtime properties.
   /// [resourceGroupName] The resource group name.
   IntegrationRuntimeArgs({
-    required pulumi.Output<String> factoryName,
-    pulumi.Output<String>? integrationRuntimeName,
-    required pulumi.Output<ManagedIntegrationRuntime> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      properties = pulumi.Input.asInput<ManagedIntegrationRuntime>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    this.integrationRuntimeName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class IntegrationRuntimeArgs {
 
   factory IntegrationRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      properties: pulumi.Output.create<ManagedIntegrationRuntime>(ManagedIntegrationRuntime.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      properties: (ManagedIntegrationRuntime.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

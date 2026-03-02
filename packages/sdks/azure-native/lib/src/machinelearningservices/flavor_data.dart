@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlavorData {
   /// Model flavor-specific data.
-  final Map<String, String>? data;
+  final pulumi.Input<Map<String, String>>? data;
 
   /// Creates a new [FlavorData].
   /// [data] Model flavor-specific data.
@@ -19,7 +20,7 @@ class FlavorData {
 
   factory FlavorData.fromMap(Map<String, dynamic> map) {
     return FlavorData(
-      data: map['data'] == null ? null : (map['data'] as Map).cast<String, String>(),
+      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesHyperVSpinlocks {
   /// Configures the number of retries for spinlocks in Hyper-V.
-  final double? retries;
+  final pulumi.Input<double>? retries;
 
   /// Creates a new [DomainFeaturesHyperVSpinlocks].
   /// [retries] Configures the number of retries for spinlocks in Hyper-V.
@@ -19,7 +20,7 @@ class DomainFeaturesHyperVSpinlocks {
 
   factory DomainFeaturesHyperVSpinlocks.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVSpinlocks(
-      retries: map['retries'] == null ? null : map['retries'] as double,
+      retries: map['retries'] == null ? null : (map['retries'] as double).input(),
     );
   }
 }

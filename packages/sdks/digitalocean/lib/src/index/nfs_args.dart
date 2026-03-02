@@ -27,19 +27,13 @@ class NfsArgs {
   /// [tags] Optional.
   /// [vpcId] The ID of the VPC where the NFS share will be created.
   NfsArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? performanceTier,
-    required pulumi.Output<String> region,
-    required pulumi.Output<int> size,
-    pulumi.Output<List<String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      performanceTier = pulumi.Input.asOptionalInput<String>(performanceTier),
-      region = pulumi.Input.asInput<String>(region),
-      size = pulumi.Input.asInput<int>(size),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.name,
+    this.performanceTier,
+    required this.region,
+    required this.size,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class NfsArgs {
 
   factory NfsArgs.fromMap(Map<String, dynamic> map) {
     return NfsArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      performanceTier: map['performanceTier'] == null ? null : pulumi.Output.create<String>(map['performanceTier'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      size: pulumi.Output.create<int>(map['size'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      performanceTier: map['performanceTier'] == null ? null : (map['performanceTier'] as String).input(),
+      region: (map['region'] as String).input(),
+      size: (map['size'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

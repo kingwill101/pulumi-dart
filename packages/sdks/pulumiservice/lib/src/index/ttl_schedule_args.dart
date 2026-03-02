@@ -25,17 +25,12 @@ class TtlScheduleArgs {
   /// [stack] Stack name.
   /// [timestamp] The time at which the schedule should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z.
   TtlScheduleArgs({
-    pulumi.Output<bool>? deleteAfterDestroy,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> project,
-    required pulumi.Output<String> stack,
-    required pulumi.Output<String> timestamp,
-  }) :
-      deleteAfterDestroy = pulumi.Input.asOptionalInput<bool>(deleteAfterDestroy),
-      organization = pulumi.Input.asInput<String>(organization),
-      project = pulumi.Input.asInput<String>(project),
-      stack = pulumi.Input.asInput<String>(stack),
-      timestamp = pulumi.Input.asInput<String>(timestamp);
+    this.deleteAfterDestroy,
+    required this.organization,
+    required this.project,
+    required this.stack,
+    required this.timestamp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TtlScheduleArgs {
 
   factory TtlScheduleArgs.fromMap(Map<String, dynamic> map) {
     return TtlScheduleArgs(
-      deleteAfterDestroy: map['deleteAfterDestroy'] == null ? null : pulumi.Output.create<bool>(map['deleteAfterDestroy'] as bool),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      stack: pulumi.Output.create<String>(map['stack'] as String),
-      timestamp: pulumi.Output.create<String>(map['timestamp'] as String),
+      deleteAfterDestroy: map['deleteAfterDestroy'] == null ? null : (map['deleteAfterDestroy'] as bool).input(),
+      organization: (map['organization'] as String).input(),
+      project: (map['project'] as String).input(),
+      stack: (map['stack'] as String).input(),
+      timestamp: (map['timestamp'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class EnvironmentAddonsConfigState {
   /// [analyticsEnabled] Flag to enable/disable Analytics.
   /// [envId] The Apigee environment group associated with the Apigee environment,
   EnvironmentAddonsConfigState({
-    pulumi.Output<bool>? analyticsEnabled,
-    pulumi.Output<String>? envId,
-  }) :
-      analyticsEnabled = pulumi.Input.asOptionalInput<bool>(analyticsEnabled),
-      envId = pulumi.Input.asOptionalInput<String>(envId);
+    this.analyticsEnabled,
+    this.envId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class EnvironmentAddonsConfigState {
 
   factory EnvironmentAddonsConfigState.fromMap(Map<String, dynamic> map) {
     return EnvironmentAddonsConfigState(
-      analyticsEnabled: map['analyticsEnabled'] == null ? null : pulumi.Output.create<bool>(map['analyticsEnabled'] as bool),
-      envId: map['envId'] == null ? null : pulumi.Output.create<String>(map['envId'] as String),
+      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled'] as bool).input(),
+      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
     );
   }
 }

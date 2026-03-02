@@ -34,19 +34,13 @@ class DomainMappingState {
   /// [resourceRecords] The resource records required to configure this domain mapping. These records must be added to the domain's DNS
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   DomainMappingState({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? overrideStrategy,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<DomainMappingResourceRecord>>? resourceRecords,
-    pulumi.Output<DomainMappingSslSettings>? sslSettings,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      overrideStrategy = pulumi.Input.asOptionalInput<String>(overrideStrategy),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceRecords = pulumi.Input.asOptionalInput<List<DomainMappingResourceRecord>>(resourceRecords),
-      sslSettings = pulumi.Input.asOptionalInput<DomainMappingSslSettings>(sslSettings);
+    this.domainName,
+    this.name,
+    this.overrideStrategy,
+    this.project,
+    this.resourceRecords,
+    this.sslSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class DomainMappingState {
 
   factory DomainMappingState.fromMap(Map<String, dynamic> map) {
     return DomainMappingState(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      overrideStrategy: map['overrideStrategy'] == null ? null : pulumi.Output.create<String>(map['overrideStrategy'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceRecords: map['resourceRecords'] == null ? null : pulumi.Output.create<List<DomainMappingResourceRecord>>(pulumi.Input.decodeList<DomainMappingResourceRecord>(map['resourceRecords'], (value) => DomainMappingResourceRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      sslSettings: map['sslSettings'] == null ? null : pulumi.Output.create<DomainMappingSslSettings>(DomainMappingSslSettings.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<DomainMappingResourceRecord>(map['resourceRecords'], (value) => DomainMappingResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sslSettings: map['sslSettings'] == null ? null : (DomainMappingSslSettings.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

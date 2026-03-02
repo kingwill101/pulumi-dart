@@ -38,21 +38,14 @@ class LiteTopicArgs {
   /// [retentionConfig] The settings for a topic's message retention.
   /// [zone] The zone of the pubsub lite topic.
   LiteTopicArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<LiteTopicPartitionConfig>? partitionConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<LiteTopicReservationConfig>? reservationConfig,
-    pulumi.Output<LiteTopicRetentionConfig>? retentionConfig,
-    pulumi.Output<String>? zone,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionConfig = pulumi.Input.asOptionalInput<LiteTopicPartitionConfig>(partitionConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservationConfig = pulumi.Input.asOptionalInput<LiteTopicReservationConfig>(reservationConfig),
-      retentionConfig = pulumi.Input.asOptionalInput<LiteTopicRetentionConfig>(retentionConfig),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.name,
+    this.partitionConfig,
+    this.project,
+    this.region,
+    this.reservationConfig,
+    this.retentionConfig,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class LiteTopicArgs {
 
   factory LiteTopicArgs.fromMap(Map<String, dynamic> map) {
     return LiteTopicArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionConfig: map['partitionConfig'] == null ? null : pulumi.Output.create<LiteTopicPartitionConfig>(LiteTopicPartitionConfig.fromMap((map['partitionConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservationConfig: map['reservationConfig'] == null ? null : pulumi.Output.create<LiteTopicReservationConfig>(LiteTopicReservationConfig.fromMap((map['reservationConfig'] as Map).cast<String, dynamic>())),
-      retentionConfig: map['retentionConfig'] == null ? null : pulumi.Output.create<LiteTopicRetentionConfig>(LiteTopicRetentionConfig.fromMap((map['retentionConfig'] as Map).cast<String, dynamic>())),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionConfig: map['partitionConfig'] == null ? null : (LiteTopicPartitionConfig.fromMap((map['partitionConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservationConfig: map['reservationConfig'] == null ? null : (LiteTopicReservationConfig.fromMap((map['reservationConfig'] as Map).cast<String, dynamic>())).input(),
+      retentionConfig: map['retentionConfig'] == null ? null : (LiteTopicRetentionConfig.fromMap((map['retentionConfig'] as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

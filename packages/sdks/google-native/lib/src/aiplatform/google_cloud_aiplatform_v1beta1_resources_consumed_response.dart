@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Statistics information about resource consumption.
 class GoogleCloudAiplatformV1beta1ResourcesConsumedResponse {
   /// The number of replica hours used. Note that many replicas may run in parallel, and additionally any given work may be queued for some time. Therefore this value is not strictly related to wall time.
-  final double replicaHours;
+  final pulumi.Input<double> replicaHours;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourcesConsumedResponse].
   /// [replicaHours] The number of replica hours used. Note that many replicas may run in parallel, and additionally any given work may be queued for some time. Therefore this value is not strictly related to wall time.
@@ -20,7 +21,7 @@ class GoogleCloudAiplatformV1beta1ResourcesConsumedResponse {
 
   factory GoogleCloudAiplatformV1beta1ResourcesConsumedResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourcesConsumedResponse(
-      replicaHours: map['replicaHours'] as double,
+      replicaHours: (map['replicaHours'] as double).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainNodeToNodeEncryption {
   /// Enabled disabled toggle for off-peak update window
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetDomainNodeToNodeEncryption].
   /// [enabled] Enabled disabled toggle for off-peak update window
@@ -19,7 +20,7 @@ class GetDomainNodeToNodeEncryption {
 
   factory GetDomainNodeToNodeEncryption.fromMap(Map<String, dynamic> map) {
     return GetDomainNodeToNodeEncryption(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schema_map.dart';
 
 /// Azure Monitor Workspace Logs Api configurations.
 class AzureMonitorWorkspaceLogsApiConfig {
   /// Data collection endpoint ingestion url.
-  final String dataCollectionEndpointUrl;
+  final pulumi.Input<String> dataCollectionEndpointUrl;
   /// Data Collection Rule (DCR) immutable id.
-  final String dataCollectionRule;
+  final pulumi.Input<String> dataCollectionRule;
   /// The schema mapping for incoming data.
-  final SchemaMap schema;
+  final pulumi.Input<SchemaMap> schema;
   /// Stream name in destination. Azure Monitor stream is related to the destination table.
-  final String stream;
+  final pulumi.Input<String> stream;
 
   /// Creates a new [AzureMonitorWorkspaceLogsApiConfig].
   /// [dataCollectionEndpointUrl] Data collection endpoint ingestion url.
@@ -29,17 +30,17 @@ class AzureMonitorWorkspaceLogsApiConfig {
     return <String, dynamic>{
       'dataCollectionEndpointUrl': dataCollectionEndpointUrl,
       'dataCollectionRule': dataCollectionRule,
-      'schema': schema.toMap(),
+      'schema': pulumi.Input.mapInputValue<SchemaMap, Map<String, dynamic>>(schema, (value) => value.toMap()),
       'stream': stream,
     };
   }
 
   factory AzureMonitorWorkspaceLogsApiConfig.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceLogsApiConfig(
-      dataCollectionEndpointUrl: map['dataCollectionEndpointUrl'] as String,
-      dataCollectionRule: map['dataCollectionRule'] as String,
-      schema: SchemaMap.fromMap((map['schema'] as Map).cast<String, dynamic>()),
-      stream: map['stream'] as String,
+      dataCollectionEndpointUrl: (map['dataCollectionEndpointUrl'] as String).input(),
+      dataCollectionRule: (map['dataCollectionRule'] as String).input(),
+      schema: (SchemaMap.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      stream: (map['stream'] as String).input(),
     );
   }
 }

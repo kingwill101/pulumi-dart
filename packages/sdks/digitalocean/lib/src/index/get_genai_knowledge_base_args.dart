@@ -33,29 +33,18 @@ class GetGenaiKnowledgeBaseArgs {
   /// [userId] Optional.
   /// [uuid] Optional.
   GetGenaiKnowledgeBaseArgs({
-    pulumi.Output<String>? addedToAgentAt,
-    pulumi.Output<String>? databaseId,
-    pulumi.Output<String>? embeddingModelUuid,
-    pulumi.Output<bool>? isPublic,
-    pulumi.Output<List<GetGenaiKnowledgeBaseLastIndexingJob>>? lastIndexingJobs,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? uuid,
-  }) :
-      addedToAgentAt = pulumi.Input.asOptionalInput<String>(addedToAgentAt),
-      databaseId = pulumi.Input.asOptionalInput<String>(databaseId),
-      embeddingModelUuid = pulumi.Input.asOptionalInput<String>(embeddingModelUuid),
-      isPublic = pulumi.Input.asOptionalInput<bool>(isPublic),
-      lastIndexingJobs = pulumi.Input.asOptionalInput<List<GetGenaiKnowledgeBaseLastIndexingJob>>(lastIndexingJobs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.addedToAgentAt,
+    this.databaseId,
+    this.embeddingModelUuid,
+    this.isPublic,
+    this.lastIndexingJobs,
+    this.name,
+    this.projectId,
+    this.region,
+    this.tags,
+    this.userId,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,17 +64,17 @@ class GetGenaiKnowledgeBaseArgs {
 
   factory GetGenaiKnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseArgs(
-      addedToAgentAt: map['addedToAgentAt'] == null ? null : pulumi.Output.create<String>(map['addedToAgentAt'] as String),
-      databaseId: map['databaseId'] == null ? null : pulumi.Output.create<String>(map['databaseId'] as String),
-      embeddingModelUuid: map['embeddingModelUuid'] == null ? null : pulumi.Output.create<String>(map['embeddingModelUuid'] as String),
-      isPublic: map['isPublic'] == null ? null : pulumi.Output.create<bool>(map['isPublic'] as bool),
-      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : pulumi.Output.create<List<GetGenaiKnowledgeBaseLastIndexingJob>>(pulumi.Input.decodeList<GetGenaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs'], (value) => GetGenaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      addedToAgentAt: map['addedToAgentAt'] == null ? null : (map['addedToAgentAt'] as String).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
+      embeddingModelUuid: map['embeddingModelUuid'] == null ? null : (map['embeddingModelUuid'] as String).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : (pulumi.Input.decodeList<GetGenaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs'], (value) => GetGenaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

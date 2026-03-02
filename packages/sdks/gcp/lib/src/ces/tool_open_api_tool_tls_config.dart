@@ -8,7 +8,7 @@ class ToolOpenApiToolTlsConfig {
   /// Specifies a list of allowed custom CA certificates for HTTPS
   /// verification.
   /// Structure is documented below.
-  final List<ToolOpenApiToolTlsConfigCaCert>? caCerts;
+  final pulumi.Input<List<ToolOpenApiToolTlsConfigCaCert>>? caCerts;
 
   /// Creates a new [ToolOpenApiToolTlsConfig].
   /// [caCerts] (Output)
@@ -18,13 +18,13 @@ class ToolOpenApiToolTlsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts': ?caCerts == null ? null : pulumi.Input.encodeList<ToolOpenApiToolTlsConfigCaCert, Map<String, dynamic>>(caCerts!, (value) => value.toMap()),
+      'caCerts': ?pulumi.Input.mapOptionalInputValue<List<ToolOpenApiToolTlsConfigCaCert>, List<Map<String, dynamic>>>(caCerts, (value) => pulumi.Input.encodeList<ToolOpenApiToolTlsConfigCaCert, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ToolOpenApiToolTlsConfig.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolTlsConfig(
-      caCerts: map['caCerts'] == null ? null : pulumi.Input.decodeList<ToolOpenApiToolTlsConfigCaCert>(map['caCerts'], (value) => ToolOpenApiToolTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>())),
+      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolTlsConfigCaCert>(map['caCerts'], (value) => ToolOpenApiToolTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

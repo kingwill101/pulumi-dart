@@ -34,21 +34,14 @@ class LimitV3State {
   /// [resourceName] The resource that the limit applies to. Changing
   /// [serviceId] The service the limit applies to. Changing this
   LimitV3State({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? resourceLimit,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<String>? serviceId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceLimit = pulumi.Input.asOptionalInput<int>(resourceLimit),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId);
+    this.description,
+    this.domainId,
+    this.projectId,
+    this.region,
+    this.resourceLimit,
+    this.resourceName,
+    this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class LimitV3State {
 
   factory LimitV3State.fromMap(Map<String, dynamic> map) {
     return LimitV3State(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceLimit: map['resourceLimit'] == null ? null : pulumi.Output.create<int>(map['resourceLimit'] as int),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceLimit: map['resourceLimit'] == null ? null : (map['resourceLimit'] as int).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
     );
   }
 }

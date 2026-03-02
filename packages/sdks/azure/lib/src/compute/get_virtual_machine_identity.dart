@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualMachineIdentity {
   /// The list of User Managed Identity IDs which are assigned to the Virtual Machine.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The ID of the System Managed Service Principal assigned to the Virtual Machine.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The ID of the Tenant of the System Managed Service Principal assigned to the Virtual Machine.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The identity type of the Managed Identity assigned to the Virtual Machine.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetVirtualMachineIdentity].
   /// [identityIds] The list of User Managed Identity IDs which are assigned to the Virtual Machine.
@@ -34,10 +35,10 @@ class GetVirtualMachineIdentity {
 
   factory GetVirtualMachineIdentity.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

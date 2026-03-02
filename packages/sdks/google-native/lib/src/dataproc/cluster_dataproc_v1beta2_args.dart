@@ -28,19 +28,13 @@ class ClusterDataprocV1beta2Args {
   /// [region] Required.
   /// [requestId] Optional. A unique id used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1beta2.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   ClusterDataprocV1beta2Args({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<ClusterConfigDataprocV1beta2> config,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      config = pulumi.Input.asInput<ClusterConfigDataprocV1beta2>(config),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    required this.clusterName,
+    required this.config,
+    this.labels,
+    this.project,
+    required this.region,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ClusterDataprocV1beta2Args {
 
   factory ClusterDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return ClusterDataprocV1beta2Args(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      config: pulumi.Output.create<ClusterConfigDataprocV1beta2>(ClusterConfigDataprocV1beta2.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      config: (ClusterConfigDataprocV1beta2.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

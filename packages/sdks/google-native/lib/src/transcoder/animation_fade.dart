@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'animation_fade_fade_type.dart';
 import 'normalized_coordinate.dart';
 
 /// Display overlay object with fade animation.
 class AnimationFade {
   /// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
-  final String? endTimeOffset;
+  final pulumi.Input<String>? endTimeOffset;
   /// Type of fade animation: `FADE_IN` or `FADE_OUT`.
-  final AnimationFadeFadeType fadeType;
+  final pulumi.Input<AnimationFadeFadeType> fadeType;
   /// The time to start the fade animation, in seconds. Default: 0
-  final String? startTimeOffset;
+  final pulumi.Input<String>? startTimeOffset;
   /// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
-  final NormalizedCoordinate? xy;
+  final pulumi.Input<NormalizedCoordinate>? xy;
 
   /// Creates a new [AnimationFade].
   /// [endTimeOffset] The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
@@ -29,18 +30,18 @@ class AnimationFade {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTimeOffset': ?endTimeOffset,
-      'fadeType': fadeType.value,
+      'fadeType': pulumi.Input.mapInputValue<AnimationFadeFadeType, String>(fadeType, (value) => value.value),
       'startTimeOffset': ?startTimeOffset,
-      'xy': ?xy == null ? null : xy!.toMap(),
+      'xy': ?pulumi.Input.mapOptionalInputValue<NormalizedCoordinate, Map<String, dynamic>>(xy, (value) => value.toMap()),
     };
   }
 
   factory AnimationFade.fromMap(Map<String, dynamic> map) {
     return AnimationFade(
-      endTimeOffset: map['endTimeOffset'] == null ? null : map['endTimeOffset'] as String,
-      fadeType: AnimationFadeFadeType.fromValue(map['fadeType'] as String),
-      startTimeOffset: map['startTimeOffset'] == null ? null : map['startTimeOffset'] as String,
-      xy: map['xy'] == null ? null : NormalizedCoordinate.fromMap((map['xy'] as Map).cast<String, dynamic>()),
+      endTimeOffset: map['endTimeOffset'] == null ? null : (map['endTimeOffset'] as String).input(),
+      fadeType: (AnimationFadeFadeType.fromValue(map['fadeType'] as String)).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
+      xy: map['xy'] == null ? null : (NormalizedCoordinate.fromMap((map['xy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

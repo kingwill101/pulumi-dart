@@ -19,13 +19,10 @@ class LogDeliveryDestinationPolicyArgs {
   /// [deliveryDestinationPolicy] The contents of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LogDeliveryDestinationPolicyArgs({
-    required pulumi.Output<String> deliveryDestinationName,
-    required pulumi.Output<String> deliveryDestinationPolicy,
-    pulumi.Output<String>? region,
-  }) :
-      deliveryDestinationName = pulumi.Input.asInput<String>(deliveryDestinationName),
-      deliveryDestinationPolicy = pulumi.Input.asInput<String>(deliveryDestinationPolicy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.deliveryDestinationName,
+    required this.deliveryDestinationPolicy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LogDeliveryDestinationPolicyArgs {
 
   factory LogDeliveryDestinationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LogDeliveryDestinationPolicyArgs(
-      deliveryDestinationName: pulumi.Output.create<String>(map['deliveryDestinationName'] as String),
-      deliveryDestinationPolicy: pulumi.Output.create<String>(map['deliveryDestinationPolicy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      deliveryDestinationName: (map['deliveryDestinationName'] as String).input(),
+      deliveryDestinationPolicy: (map['deliveryDestinationPolicy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

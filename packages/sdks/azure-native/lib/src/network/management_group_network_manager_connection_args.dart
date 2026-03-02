@@ -22,15 +22,11 @@ class ManagementGroupNetworkManagerConnectionArgs {
   /// [networkManagerConnectionName] Name for the network manager connection.
   /// [networkManagerId] Network Manager Id.
   ManagementGroupNetworkManagerConnectionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> managementGroupId,
-    pulumi.Output<String>? networkManagerConnectionName,
-    pulumi.Output<String>? networkManagerId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      networkManagerConnectionName = pulumi.Input.asOptionalInput<String>(networkManagerConnectionName),
-      networkManagerId = pulumi.Input.asOptionalInput<String>(networkManagerId);
+    this.description,
+    required this.managementGroupId,
+    this.networkManagerConnectionName,
+    this.networkManagerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ManagementGroupNetworkManagerConnectionArgs {
 
   factory ManagementGroupNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ManagementGroupNetworkManagerConnectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      networkManagerConnectionName: map['networkManagerConnectionName'] == null ? null : pulumi.Output.create<String>(map['networkManagerConnectionName'] as String),
-      networkManagerId: map['networkManagerId'] == null ? null : pulumi.Output.create<String>(map['networkManagerId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      networkManagerConnectionName: map['networkManagerConnectionName'] == null ? null : (map['networkManagerConnectionName'] as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
     );
   }
 }

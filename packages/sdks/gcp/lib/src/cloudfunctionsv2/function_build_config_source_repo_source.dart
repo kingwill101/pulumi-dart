@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionBuildConfigSourceRepoSource {
   /// Regex matching branches to build.
-  final String? branchName;
+  final pulumi.Input<String>? branchName;
   /// Regex matching tags to build.
-  final String? commitSha;
+  final pulumi.Input<String>? commitSha;
   /// Directory, relative to the source root, in which to run the build.
-  final String? dir;
+  final pulumi.Input<String>? dir;
   /// Only trigger a build if the revision regex does
   /// NOT match the revision regex.
-  final bool? invertRegex;
+  final pulumi.Input<bool>? invertRegex;
   /// ID of the project that owns the Cloud Source Repository. If omitted, the
   /// project ID requesting the build is assumed.
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
   /// Name of the Cloud Source Repository.
-  final String? repoName;
+  final pulumi.Input<String>? repoName;
   /// Regex matching tags to build.
-  final String? tagName;
+  final pulumi.Input<String>? tagName;
 
   /// Creates a new [FunctionBuildConfigSourceRepoSource].
   /// [branchName] Regex matching branches to build.
@@ -51,13 +52,13 @@ class FunctionBuildConfigSourceRepoSource {
 
   factory FunctionBuildConfigSourceRepoSource.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfigSourceRepoSource(
-      branchName: map['branchName'] == null ? null : map['branchName'] as String,
-      commitSha: map['commitSha'] == null ? null : map['commitSha'] as String,
-      dir: map['dir'] == null ? null : map['dir'] as String,
-      invertRegex: map['invertRegex'] == null ? null : map['invertRegex'] as bool,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
-      repoName: map['repoName'] == null ? null : map['repoName'] as String,
-      tagName: map['tagName'] == null ? null : map['tagName'] as String,
+      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
+      commitSha: map['commitSha'] == null ? null : (map['commitSha'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex'] as bool).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
+      tagName: map['tagName'] == null ? null : (map['tagName'] as String).input(),
     );
   }
 }

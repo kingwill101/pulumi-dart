@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserPoolEmailConfiguration {
   /// - Configuration set used for sending emails.
-  final String configurationSet;
+  final pulumi.Input<String> configurationSet;
   /// - Email sending account.
-  final String emailSendingAccount;
+  final pulumi.Input<String> emailSendingAccount;
   /// - Email sender address.
-  final String from;
+  final pulumi.Input<String> from;
   /// - Reply-to email address.
-  final String replyToEmailAddress;
+  final pulumi.Input<String> replyToEmailAddress;
   /// - Source Amazon Resource Name (ARN) for emails.
-  final String sourceArn;
+  final pulumi.Input<String> sourceArn;
 
   /// Creates a new [GetUserPoolEmailConfiguration].
   /// [configurationSet] - Configuration set used for sending emails.
@@ -39,11 +40,11 @@ class GetUserPoolEmailConfiguration {
 
   factory GetUserPoolEmailConfiguration.fromMap(Map<String, dynamic> map) {
     return GetUserPoolEmailConfiguration(
-      configurationSet: map['configurationSet'] as String,
-      emailSendingAccount: map['emailSendingAccount'] as String,
-      from: map['from'] as String,
-      replyToEmailAddress: map['replyToEmailAddress'] as String,
-      sourceArn: map['sourceArn'] as String,
+      configurationSet: (map['configurationSet'] as String).input(),
+      emailSendingAccount: (map['emailSendingAccount'] as String).input(),
+      from: (map['from'] as String).input(),
+      replyToEmailAddress: (map['replyToEmailAddress'] as String).input(),
+      sourceArn: (map['sourceArn'] as String).input(),
     );
   }
 }

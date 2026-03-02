@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pull_request_filter.dart';
 import 'push_filter.dart';
 
 /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 class GitHubEventsConfig {
   /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
-  final String? enterpriseConfigResourceName;
+  final pulumi.Input<String>? enterpriseConfigResourceName;
   /// The installationID that emits the GitHub event.
-  final String? installationId;
+  final pulumi.Input<String>? installationId;
   /// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-  final String? owner;
+  final pulumi.Input<String>? owner;
   /// filter to match changes in pull requests.
-  final PullRequestFilter? pullRequest;
+  final pulumi.Input<PullRequestFilter>? pullRequest;
   /// filter to match changes in refs like branches, tags.
-  final PushFilter? push;
+  final pulumi.Input<PushFilter>? push;
 
   /// Creates a new [GitHubEventsConfig].
   /// [enterpriseConfigResourceName] Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
@@ -40,19 +41,19 @@ class GitHubEventsConfig {
       'installationId': ?installationId,
       'name': ?name,
       'owner': ?owner,
-      'pullRequest': ?pullRequest == null ? null : pullRequest!.toMap(),
-      'push': ?push == null ? null : push!.toMap(),
+      'pullRequest': ?pulumi.Input.mapOptionalInputValue<PullRequestFilter, Map<String, dynamic>>(pullRequest, (value) => value.toMap()),
+      'push': ?pulumi.Input.mapOptionalInputValue<PushFilter, Map<String, dynamic>>(push, (value) => value.toMap()),
     };
   }
 
   factory GitHubEventsConfig.fromMap(Map<String, dynamic> map) {
     return GitHubEventsConfig(
-      enterpriseConfigResourceName: map['enterpriseConfigResourceName'] == null ? null : map['enterpriseConfigResourceName'] as String,
-      installationId: map['installationId'] == null ? null : map['installationId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      owner: map['owner'] == null ? null : map['owner'] as String,
-      pullRequest: map['pullRequest'] == null ? null : PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: map['push'] == null ? null : PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>()),
+      enterpriseConfigResourceName: map['enterpriseConfigResourceName'] == null ? null : (map['enterpriseConfigResourceName'] as String).input(),
+      installationId: map['installationId'] == null ? null : (map['installationId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

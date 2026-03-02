@@ -6,21 +6,21 @@ import 'get_edge_kubernetes_clusters_cluster_worker_node.dart';
 
 class GetEdgeKubernetesClustersCluster {
   /// The ID of availability zone.
-  final String availabilityZone;
+  final pulumi.Input<String> availabilityZone;
   /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
-  final GetEdgeKubernetesClustersClusterConnections connections;
+  final pulumi.Input<GetEdgeKubernetesClustersClusterConnections> connections;
   /// ID of the node.
-  final String id;
+  final pulumi.Input<String> id;
   /// Node name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of nat gateway used to launch kubernetes cluster.
-  final String natGatewayId;
+  final pulumi.Input<String> natGatewayId;
   /// The ID of security group where the current cluster worker node is located.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The ID of VPC where the current cluster is located.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-  final List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes;
+  final pulumi.Input<List<GetEdgeKubernetesClustersClusterWorkerNode>> workerNodes;
 
   /// Creates a new [GetEdgeKubernetesClustersCluster].
   /// [availabilityZone] The ID of availability zone.
@@ -45,26 +45,26 @@ class GetEdgeKubernetesClustersCluster {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZone': availabilityZone,
-      'connections': connections.toMap(),
+      'connections': pulumi.Input.mapInputValue<GetEdgeKubernetesClustersClusterConnections, Map<String, dynamic>>(connections, (value) => value.toMap()),
       'id': id,
       'name': name,
       'natGatewayId': natGatewayId,
       'securityGroupId': securityGroupId,
       'vpcId': vpcId,
-      'workerNodes': pulumi.Input.encodeList<GetEdgeKubernetesClustersClusterWorkerNode, Map<String, dynamic>>(workerNodes, (value) => value.toMap()),
+      'workerNodes': pulumi.Input.mapInputValue<List<GetEdgeKubernetesClustersClusterWorkerNode>, List<Map<String, dynamic>>>(workerNodes, (value) => pulumi.Input.encodeList<GetEdgeKubernetesClustersClusterWorkerNode, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetEdgeKubernetesClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetEdgeKubernetesClustersCluster(
-      availabilityZone: map['availabilityZone'] as String,
-      connections: GetEdgeKubernetesClustersClusterConnections.fromMap((map['connections'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      natGatewayId: map['natGatewayId'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      vpcId: map['vpcId'] as String,
-      workerNodes: pulumi.Input.decodeList<GetEdgeKubernetesClustersClusterWorkerNode>(map['workerNodes'], (value) => GetEdgeKubernetesClustersClusterWorkerNode.fromMap((value as Map).cast<String, dynamic>())),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      connections: (GetEdgeKubernetesClustersClusterConnections.fromMap((map['connections'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      workerNodes: (pulumi.Input.decodeList<GetEdgeKubernetesClustersClusterWorkerNode>(map['workerNodes'], (value) => GetEdgeKubernetesClustersClusterWorkerNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

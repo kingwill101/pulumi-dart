@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_profile_alloydb_settings_primary_instance_settings_machine_config.dart';
 
 class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
   /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
-  final Map<String, String>? databaseFlags;
+  final pulumi.Input<Map<String, String>>? databaseFlags;
   /// The database username.
-  final String id;
+  final pulumi.Input<String> id;
   /// Labels for the AlloyDB primary instance created by DMS.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// Configuration for the machines that host the underlying database engine.
   /// Structure is documented below.
-  final ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig machineConfig;
+  final pulumi.Input<ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig> machineConfig;
   /// (Output)
   /// Output only. The private IP address for the Instance. This is the connection endpoint for an end-user application.
-  final String? privateIp;
+  final pulumi.Input<String>? privateIp;
 
   /// Creates a new [ConnectionProfileAlloydbSettingsPrimaryInstanceSettings].
   /// [databaseFlags] Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
@@ -35,18 +36,18 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
       'databaseFlags': ?databaseFlags,
       'id': id,
       'labels': ?labels,
-      'machineConfig': machineConfig.toMap(),
+      'machineConfig': pulumi.Input.mapInputValue<ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig, Map<String, dynamic>>(machineConfig, (value) => value.toMap()),
       'privateIp': ?privateIp,
     };
   }
 
   factory ConnectionProfileAlloydbSettingsPrimaryInstanceSettings.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettingsPrimaryInstanceSettings(
-      databaseFlags: map['databaseFlags'] == null ? null : (map['databaseFlags'] as Map).cast<String, String>(),
-      id: map['id'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      machineConfig: ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap((map['machineConfig'] as Map).cast<String, dynamic>()),
-      privateIp: map['privateIp'] == null ? null : map['privateIp'] as String,
+      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags'] as Map).cast<String, String>()).input(),
+      id: (map['id'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      machineConfig: (ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap((map['machineConfig'] as Map).cast<String, dynamic>())).input(),
+      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
     );
   }
 }

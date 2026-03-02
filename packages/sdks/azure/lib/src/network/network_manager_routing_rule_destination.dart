@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagerRoutingRuleDestination {
   /// The destination address.
-  final String address;
+  final pulumi.Input<String> address;
   /// The type of destination. Possible values are `AddressPrefix` and `ServiceTag`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [NetworkManagerRoutingRuleDestination].
   /// [address] The destination address.
@@ -24,8 +25,8 @@ class NetworkManagerRoutingRuleDestination {
 
   factory NetworkManagerRoutingRuleDestination.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleDestination(
-      address: map['address'] as String,
-      type: map['type'] as String,
+      address: (map['address'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

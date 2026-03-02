@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceTopicsTopic {
   /// The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-  final int createTime;
+  final pulumi.Input<int> createTime;
   /// The id of the Topic. Its value is same as Topic Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The time when the topic was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-  final int lastModifyTime;
+  final pulumi.Input<int> lastModifyTime;
   /// Indicates whether the log management feature is enabled.
-  final bool loggingEnabled;
+  final pulumi.Input<bool> loggingEnabled;
   /// The maximum size of a message body that can be sent to the topic. Unit: bytes.
-  final int maxMessageSize;
+  final pulumi.Input<int> maxMessageSize;
   /// The number of messages in the topic.
-  final int messageCount;
+  final pulumi.Input<int> messageCount;
   /// The maximum period for which a message can be retained in the topic. A message that is sent to the topic can be retained for a specified period. After the specified period ends, the message is deleted no matter whether it is pushed to the specified endpoints. Unit: seconds.
-  final int messageRetentionPeriod;
+  final pulumi.Input<int> messageRetentionPeriod;
   /// The inner url of the topic.
-  final String topicInnerUrl;
+  final pulumi.Input<String> topicInnerUrl;
   /// The name of the topic.
-  final String topicName;
+  final pulumi.Input<String> topicName;
   /// The url of the topic.
-  final String topicUrl;
+  final pulumi.Input<String> topicUrl;
 
   /// Creates a new [GetServiceTopicsTopic].
   /// [createTime] The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
@@ -64,16 +65,16 @@ class GetServiceTopicsTopic {
 
   factory GetServiceTopicsTopic.fromMap(Map<String, dynamic> map) {
     return GetServiceTopicsTopic(
-      createTime: map['createTime'] as int,
-      id: map['id'] as String,
-      lastModifyTime: map['lastModifyTime'] as int,
-      loggingEnabled: map['loggingEnabled'] as bool,
-      maxMessageSize: map['maxMessageSize'] as int,
-      messageCount: map['messageCount'] as int,
-      messageRetentionPeriod: map['messageRetentionPeriod'] as int,
-      topicInnerUrl: map['topicInnerUrl'] as String,
-      topicName: map['topicName'] as String,
-      topicUrl: map['topicUrl'] as String,
+      createTime: (map['createTime'] as int).input(),
+      id: (map['id'] as String).input(),
+      lastModifyTime: (map['lastModifyTime'] as int).input(),
+      loggingEnabled: (map['loggingEnabled'] as bool).input(),
+      maxMessageSize: (map['maxMessageSize'] as int).input(),
+      messageCount: (map['messageCount'] as int).input(),
+      messageRetentionPeriod: (map['messageRetentionPeriod'] as int).input(),
+      topicInnerUrl: (map['topicInnerUrl'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
+      topicUrl: (map['topicUrl'] as String).input(),
     );
   }
 }

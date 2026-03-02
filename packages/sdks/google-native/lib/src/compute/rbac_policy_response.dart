@@ -6,11 +6,11 @@ import 'principal_response.dart';
 
 class RbacPolicyResponse {
   /// Name of the RbacPolicy.
-  final String name;
+  final pulumi.Input<String> name;
   /// The list of permissions.
-  final List<PermissionResponse> permissions;
+  final pulumi.Input<List<PermissionResponse>> permissions;
   /// The list of principals.
-  final List<PrincipalResponse> principals;
+  final pulumi.Input<List<PrincipalResponse>> principals;
 
   /// Creates a new [RbacPolicyResponse].
   /// [name] Name of the RbacPolicy.
@@ -25,16 +25,16 @@ class RbacPolicyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'permissions': pulumi.Input.encodeList<PermissionResponse, Map<String, dynamic>>(permissions, (value) => value.toMap()),
-      'principals': pulumi.Input.encodeList<PrincipalResponse, Map<String, dynamic>>(principals, (value) => value.toMap()),
+      'permissions': pulumi.Input.mapInputValue<List<PermissionResponse>, List<Map<String, dynamic>>>(permissions, (value) => pulumi.Input.encodeList<PermissionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'principals': pulumi.Input.mapInputValue<List<PrincipalResponse>, List<Map<String, dynamic>>>(principals, (value) => pulumi.Input.encodeList<PrincipalResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RbacPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RbacPolicyResponse(
-      name: map['name'] as String,
-      permissions: pulumi.Input.decodeList<PermissionResponse>(map['permissions'], (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      principals: pulumi.Input.decodeList<PrincipalResponse>(map['principals'], (value) => PrincipalResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      permissions: (pulumi.Input.decodeList<PermissionResponse>(map['permissions'], (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principals: (pulumi.Input.decodeList<PrincipalResponse>(map['principals'], (value) => PrincipalResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

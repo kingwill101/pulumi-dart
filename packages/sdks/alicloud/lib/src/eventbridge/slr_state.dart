@@ -9,9 +9,8 @@ class SlrState {
   /// Creates a new [SlrState].
   /// [productName] Optional.
   SlrState({
-    pulumi.Output<String>? productName,
-  }) :
-      productName = pulumi.Input.asOptionalInput<String>(productName);
+    this.productName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,7 +20,7 @@ class SlrState {
 
   factory SlrState.fromMap(Map<String, dynamic> map) {
     return SlrState(
-      productName: map['productName'] == null ? null : pulumi.Output.create<String>(map['productName'] as String),
+      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
     );
   }
 }

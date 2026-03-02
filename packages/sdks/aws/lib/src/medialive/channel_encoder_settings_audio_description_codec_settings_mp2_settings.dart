@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings {
-  final double? bitrate;
-  final String? codingMode;
+  final pulumi.Input<double>? bitrate;
+  final pulumi.Input<String>? codingMode;
   /// Sample rate in Hz.
-  final double? sampleRate;
+  final pulumi.Input<double>? sampleRate;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings].
   /// [bitrate] Optional.
@@ -27,9 +28,9 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings(
-      bitrate: map['bitrate'] == null ? null : map['bitrate'] as double,
-      codingMode: map['codingMode'] == null ? null : map['codingMode'] as String,
-      sampleRate: map['sampleRate'] == null ? null : map['sampleRate'] as double,
+      bitrate: map['bitrate'] == null ? null : (map['bitrate'] as double).input(),
+      codingMode: map['codingMode'] == null ? null : (map['codingMode'] as String).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
     );
   }
 }

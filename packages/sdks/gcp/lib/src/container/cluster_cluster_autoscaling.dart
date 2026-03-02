@@ -8,26 +8,26 @@ class ClusterClusterAutoscaling {
   /// Contains defaults for a node pool created by NAP. A subset of fields also apply to
   /// GKE Autopilot clusters.
   /// Structure is documented below.
-  final ClusterClusterAutoscalingAutoProvisioningDefaults? autoProvisioningDefaults;
+  final pulumi.Input<ClusterClusterAutoscalingAutoProvisioningDefaults>? autoProvisioningDefaults;
   /// The list of Google Compute Engine
   /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
   /// NodePool's nodes can be created by NAP.
-  final List<String>? autoProvisioningLocations;
+  final pulumi.Input<List<String>>? autoProvisioningLocations;
   /// Configuration
   /// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
   /// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
   /// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
-  final String? autoscalingProfile;
+  final pulumi.Input<String>? autoscalingProfile;
   /// Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
-  final bool? defaultComputeClassEnabled;
+  final pulumi.Input<bool>? defaultComputeClassEnabled;
   /// Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
   /// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Global constraints for machine resources in the
   /// cluster. Configuring the `cpu` and `memory` types is required if node
   /// auto-provisioning is enabled. These limits will apply to node pool autoscaling
   /// in addition to node auto-provisioning. Structure is documented below.
-  final List<ClusterClusterAutoscalingResourceLimit>? resourceLimits;
+  final pulumi.Input<List<ClusterClusterAutoscalingResourceLimit>>? resourceLimits;
 
   /// Creates a new [ClusterClusterAutoscaling].
   /// [autoProvisioningDefaults] Contains defaults for a node pool created by NAP. A subset of fields also apply to
@@ -47,23 +47,23 @@ class ClusterClusterAutoscaling {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoProvisioningDefaults': ?autoProvisioningDefaults == null ? null : autoProvisioningDefaults!.toMap(),
+      'autoProvisioningDefaults': ?pulumi.Input.mapOptionalInputValue<ClusterClusterAutoscalingAutoProvisioningDefaults, Map<String, dynamic>>(autoProvisioningDefaults, (value) => value.toMap()),
       'autoProvisioningLocations': ?autoProvisioningLocations,
       'autoscalingProfile': ?autoscalingProfile,
       'defaultComputeClassEnabled': ?defaultComputeClassEnabled,
       'enabled': ?enabled,
-      'resourceLimits': ?resourceLimits == null ? null : pulumi.Input.encodeList<ClusterClusterAutoscalingResourceLimit, Map<String, dynamic>>(resourceLimits!, (value) => value.toMap()),
+      'resourceLimits': ?pulumi.Input.mapOptionalInputValue<List<ClusterClusterAutoscalingResourceLimit>, List<Map<String, dynamic>>>(resourceLimits, (value) => pulumi.Input.encodeList<ClusterClusterAutoscalingResourceLimit, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ClusterClusterAutoscaling.fromMap(Map<String, dynamic> map) {
     return ClusterClusterAutoscaling(
-      autoProvisioningDefaults: map['autoProvisioningDefaults'] == null ? null : ClusterClusterAutoscalingAutoProvisioningDefaults.fromMap((map['autoProvisioningDefaults'] as Map).cast<String, dynamic>()),
-      autoProvisioningLocations: map['autoProvisioningLocations'] == null ? null : (map['autoProvisioningLocations'] as List).cast<String>(),
-      autoscalingProfile: map['autoscalingProfile'] == null ? null : map['autoscalingProfile'] as String,
-      defaultComputeClassEnabled: map['defaultComputeClassEnabled'] == null ? null : map['defaultComputeClassEnabled'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      resourceLimits: map['resourceLimits'] == null ? null : pulumi.Input.decodeList<ClusterClusterAutoscalingResourceLimit>(map['resourceLimits'], (value) => ClusterClusterAutoscalingResourceLimit.fromMap((value as Map).cast<String, dynamic>())),
+      autoProvisioningDefaults: map['autoProvisioningDefaults'] == null ? null : (ClusterClusterAutoscalingAutoProvisioningDefaults.fromMap((map['autoProvisioningDefaults'] as Map).cast<String, dynamic>())).input(),
+      autoProvisioningLocations: map['autoProvisioningLocations'] == null ? null : ((map['autoProvisioningLocations'] as List).cast<String>()).input(),
+      autoscalingProfile: map['autoscalingProfile'] == null ? null : (map['autoscalingProfile'] as String).input(),
+      defaultComputeClassEnabled: map['defaultComputeClassEnabled'] == null ? null : (map['defaultComputeClassEnabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      resourceLimits: map['resourceLimits'] == null ? null : (pulumi.Input.decodeList<ClusterClusterAutoscalingResourceLimit>(map['resourceLimits'], (value) => ClusterClusterAutoscalingResourceLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

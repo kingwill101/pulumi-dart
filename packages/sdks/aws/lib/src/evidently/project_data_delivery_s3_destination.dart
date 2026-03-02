@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectDataDeliveryS3Destination {
   /// The name of the bucket in which Evidently stores evaluation events.
-  final String? bucket;
+  final pulumi.Input<String>? bucket;
   /// The bucket prefix in which Evidently stores evaluation events.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [ProjectDataDeliveryS3Destination].
   /// [bucket] The name of the bucket in which Evidently stores evaluation events.
@@ -24,8 +25,8 @@ class ProjectDataDeliveryS3Destination {
 
   factory ProjectDataDeliveryS3Destination.fromMap(Map<String, dynamic> map) {
     return ProjectDataDeliveryS3Destination(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

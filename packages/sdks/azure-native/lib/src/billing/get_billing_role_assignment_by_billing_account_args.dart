@@ -16,11 +16,9 @@ class GetBillingRoleAssignmentByBillingAccountArgs {
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [billingRoleAssignmentName] The ID that uniquely identifies a role assignment.
   GetBillingRoleAssignmentByBillingAccountArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> billingRoleAssignmentName,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingRoleAssignmentName = pulumi.Input.asInput<String>(billingRoleAssignmentName);
+    required this.billingAccountName,
+    required this.billingRoleAssignmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBillingRoleAssignmentByBillingAccountArgs {
 
   factory GetBillingRoleAssignmentByBillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingRoleAssignmentByBillingAccountArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingRoleAssignmentName: pulumi.Output.create<String>(map['billingRoleAssignmentName'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingRoleAssignmentName: (map['billingRoleAssignmentName'] as String).input(),
     );
   }
 }

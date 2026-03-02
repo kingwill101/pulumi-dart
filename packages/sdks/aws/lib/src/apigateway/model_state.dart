@@ -25,19 +25,13 @@ class ModelState {
   /// [restApi] ID of the associated REST API
   /// [schema] Schema of the model in a JSON form
   ModelState({
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? restApi,
-    pulumi.Output<String>? schema,
-  }) :
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asOptionalInput<String>(restApi),
-      schema = pulumi.Input.asOptionalInput<String>(schema);
+    this.contentType,
+    this.description,
+    this.name,
+    this.region,
+    this.restApi,
+    this.schema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ModelState {
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
     return ModelState(
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApi: map['restApi'] == null ? null : pulumi.Output.create<String>(map['restApi'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
     );
   }
 }

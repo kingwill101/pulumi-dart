@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Provides information about the origin of a relationship.
 class RelationshipOriginInformationResponse {
   /// The name of the discovery engine that created the relationship.
-  final String discoveryEngine;
+  final pulumi.Input<String> discoveryEngine;
   /// Identifies the origin type of the relationship.
-  final String relationshipOriginType;
+  final pulumi.Input<String> relationshipOriginType;
 
   /// Creates a new [RelationshipOriginInformationResponse].
   /// [discoveryEngine] The name of the discovery engine that created the relationship.
@@ -25,8 +26,8 @@ class RelationshipOriginInformationResponse {
 
   factory RelationshipOriginInformationResponse.fromMap(Map<String, dynamic> map) {
     return RelationshipOriginInformationResponse(
-      discoveryEngine: map['discoveryEngine'] as String,
-      relationshipOriginType: map['relationshipOriginType'] as String,
+      discoveryEngine: (map['discoveryEngine'] as String).input(),
+      relationshipOriginType: (map['relationshipOriginType'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class FrontdoorCustomDomainState {
   /// [tls] A `tls` block as defined below.
   /// [validationToken] Challenge used for DNS TXT record or file based validation.
   FrontdoorCustomDomainState({
-    pulumi.Output<String>? cdnFrontdoorProfileId,
-    pulumi.Output<String>? dnsZoneId,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<String>? name,
-    pulumi.Output<FrontdoorCustomDomainTls>? tls,
-    pulumi.Output<String>? validationToken,
-  }) :
-      cdnFrontdoorProfileId = pulumi.Input.asOptionalInput<String>(cdnFrontdoorProfileId),
-      dnsZoneId = pulumi.Input.asOptionalInput<String>(dnsZoneId),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tls = pulumi.Input.asOptionalInput<FrontdoorCustomDomainTls>(tls),
-      validationToken = pulumi.Input.asOptionalInput<String>(validationToken);
+    this.cdnFrontdoorProfileId,
+    this.dnsZoneId,
+    this.expirationDate,
+    this.hostName,
+    this.name,
+    this.tls,
+    this.validationToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class FrontdoorCustomDomainState {
 
   factory FrontdoorCustomDomainState.fromMap(Map<String, dynamic> map) {
     return FrontdoorCustomDomainState(
-      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : pulumi.Output.create<String>(map['cdnFrontdoorProfileId'] as String),
-      dnsZoneId: map['dnsZoneId'] == null ? null : pulumi.Output.create<String>(map['dnsZoneId'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tls: map['tls'] == null ? null : pulumi.Output.create<FrontdoorCustomDomainTls>(FrontdoorCustomDomainTls.fromMap((map['tls'] as Map).cast<String, dynamic>())),
-      validationToken: map['validationToken'] == null ? null : pulumi.Output.create<String>(map['validationToken'] as String),
+      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId'] as String).input(),
+      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tls: map['tls'] == null ? null : (FrontdoorCustomDomainTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      validationToken: map['validationToken'] == null ? null : (map['validationToken'] as String).input(),
     );
   }
 }

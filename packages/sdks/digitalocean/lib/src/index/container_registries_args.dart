@@ -16,13 +16,10 @@ class ContainerRegistriesArgs {
   /// [region] Optional.
   /// [subscriptionTierSlug] Required.
   ContainerRegistriesArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> subscriptionTierSlug,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subscriptionTierSlug = pulumi.Input.asInput<String>(subscriptionTierSlug);
+    this.name,
+    this.region,
+    required this.subscriptionTierSlug,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ContainerRegistriesArgs {
 
   factory ContainerRegistriesArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRegistriesArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subscriptionTierSlug: pulumi.Output.create<String>(map['subscriptionTierSlug'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subscriptionTierSlug: (map['subscriptionTierSlug'] as String).input(),
     );
   }
 }

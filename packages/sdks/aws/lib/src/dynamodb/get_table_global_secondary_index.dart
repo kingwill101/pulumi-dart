@@ -6,17 +6,17 @@ import 'get_table_global_secondary_index_on_demand_throughput.dart';
 import 'get_table_global_secondary_index_warm_throughput.dart';
 
 class GetTableGlobalSecondaryIndex {
-  final String hashKey;
-  final List<GetTableGlobalSecondaryIndexKeySchema> keySchemas;
+  final pulumi.Input<String> hashKey;
+  final pulumi.Input<List<GetTableGlobalSecondaryIndexKeySchema>> keySchemas;
   /// Name of the DynamoDB table.
-  final String name;
-  final List<String> nonKeyAttributes;
-  final List<GetTableGlobalSecondaryIndexOnDemandThroughput> onDemandThroughputs;
-  final String projectionType;
-  final String rangeKey;
-  final int readCapacity;
-  final List<GetTableGlobalSecondaryIndexWarmThroughput> warmThroughputs;
-  final int writeCapacity;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<String>> nonKeyAttributes;
+  final pulumi.Input<List<GetTableGlobalSecondaryIndexOnDemandThroughput>> onDemandThroughputs;
+  final pulumi.Input<String> projectionType;
+  final pulumi.Input<String> rangeKey;
+  final pulumi.Input<int> readCapacity;
+  final pulumi.Input<List<GetTableGlobalSecondaryIndexWarmThroughput>> warmThroughputs;
+  final pulumi.Input<int> writeCapacity;
 
   /// Creates a new [GetTableGlobalSecondaryIndex].
   /// [hashKey] Required.
@@ -45,30 +45,30 @@ class GetTableGlobalSecondaryIndex {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'hashKey': hashKey,
-      'keySchemas': pulumi.Input.encodeList<GetTableGlobalSecondaryIndexKeySchema, Map<String, dynamic>>(keySchemas, (value) => value.toMap()),
+      'keySchemas': pulumi.Input.mapInputValue<List<GetTableGlobalSecondaryIndexKeySchema>, List<Map<String, dynamic>>>(keySchemas, (value) => pulumi.Input.encodeList<GetTableGlobalSecondaryIndexKeySchema, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'nonKeyAttributes': nonKeyAttributes,
-      'onDemandThroughputs': pulumi.Input.encodeList<GetTableGlobalSecondaryIndexOnDemandThroughput, Map<String, dynamic>>(onDemandThroughputs, (value) => value.toMap()),
+      'onDemandThroughputs': pulumi.Input.mapInputValue<List<GetTableGlobalSecondaryIndexOnDemandThroughput>, List<Map<String, dynamic>>>(onDemandThroughputs, (value) => pulumi.Input.encodeList<GetTableGlobalSecondaryIndexOnDemandThroughput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'projectionType': projectionType,
       'rangeKey': rangeKey,
       'readCapacity': readCapacity,
-      'warmThroughputs': pulumi.Input.encodeList<GetTableGlobalSecondaryIndexWarmThroughput, Map<String, dynamic>>(warmThroughputs, (value) => value.toMap()),
+      'warmThroughputs': pulumi.Input.mapInputValue<List<GetTableGlobalSecondaryIndexWarmThroughput>, List<Map<String, dynamic>>>(warmThroughputs, (value) => pulumi.Input.encodeList<GetTableGlobalSecondaryIndexWarmThroughput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'writeCapacity': writeCapacity,
     };
   }
 
   factory GetTableGlobalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return GetTableGlobalSecondaryIndex(
-      hashKey: map['hashKey'] as String,
-      keySchemas: pulumi.Input.decodeList<GetTableGlobalSecondaryIndexKeySchema>(map['keySchemas'], (value) => GetTableGlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      nonKeyAttributes: (map['nonKeyAttributes'] as List).cast<String>(),
-      onDemandThroughputs: pulumi.Input.decodeList<GetTableGlobalSecondaryIndexOnDemandThroughput>(map['onDemandThroughputs'], (value) => GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap((value as Map).cast<String, dynamic>())),
-      projectionType: map['projectionType'] as String,
-      rangeKey: map['rangeKey'] as String,
-      readCapacity: map['readCapacity'] as int,
-      warmThroughputs: pulumi.Input.decodeList<GetTableGlobalSecondaryIndexWarmThroughput>(map['warmThroughputs'], (value) => GetTableGlobalSecondaryIndexWarmThroughput.fromMap((value as Map).cast<String, dynamic>())),
-      writeCapacity: map['writeCapacity'] as int,
+      hashKey: (map['hashKey'] as String).input(),
+      keySchemas: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexKeySchema>(map['keySchemas'], (value) => GetTableGlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      nonKeyAttributes: ((map['nonKeyAttributes'] as List).cast<String>()).input(),
+      onDemandThroughputs: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexOnDemandThroughput>(map['onDemandThroughputs'], (value) => GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projectionType: (map['projectionType'] as String).input(),
+      rangeKey: (map['rangeKey'] as String).input(),
+      readCapacity: (map['readCapacity'] as int).input(),
+      warmThroughputs: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexWarmThroughput>(map['warmThroughputs'], (value) => GetTableGlobalSecondaryIndexWarmThroughput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      writeCapacity: (map['writeCapacity'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout {
   /// (Optional)
-  final int? nanos;
+  final pulumi.Input<int>? nanos;
   /// (Optional)
-  final int? seconds;
+  final pulumi.Input<int>? seconds;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout].
   /// [nanos] (Optional)
@@ -24,8 +25,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryT
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout(
-      nanos: map['nanos'] == null ? null : map['nanos'] as int,
-      seconds: map['seconds'] == null ? null : map['seconds'] as int,
+      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds'] as int).input(),
     );
   }
 }

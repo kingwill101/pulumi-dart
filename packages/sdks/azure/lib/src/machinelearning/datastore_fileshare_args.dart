@@ -34,23 +34,15 @@ class DatastoreFileshareArgs {
   /// [tags] A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   /// [workspaceId] The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
   DatastoreFileshareArgs({
-    pulumi.Output<String>? accountKey,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serviceDataIdentity,
-    pulumi.Output<String>? sharedAccessSignature,
-    required pulumi.Output<String> storageFileshareId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      accountKey = pulumi.Input.asOptionalInput<String>(accountKey),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serviceDataIdentity = pulumi.Input.asOptionalInput<String>(serviceDataIdentity),
-      sharedAccessSignature = pulumi.Input.asOptionalInput<String>(sharedAccessSignature),
-      storageFileshareId = pulumi.Input.asInput<String>(storageFileshareId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.accountKey,
+    this.description,
+    this.name,
+    this.serviceDataIdentity,
+    this.sharedAccessSignature,
+    required this.storageFileshareId,
+    this.tags,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class DatastoreFileshareArgs {
 
   factory DatastoreFileshareArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreFileshareArgs(
-      accountKey: map['accountKey'] == null ? null : pulumi.Output.create<String>(map['accountKey'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serviceDataIdentity: map['serviceDataIdentity'] == null ? null : pulumi.Output.create<String>(map['serviceDataIdentity'] as String),
-      sharedAccessSignature: map['sharedAccessSignature'] == null ? null : pulumi.Output.create<String>(map['sharedAccessSignature'] as String),
-      storageFileshareId: pulumi.Output.create<String>(map['storageFileshareId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serviceDataIdentity: map['serviceDataIdentity'] == null ? null : (map['serviceDataIdentity'] as String).input(),
+      sharedAccessSignature: map['sharedAccessSignature'] == null ? null : (map['sharedAccessSignature'] as String).input(),
+      storageFileshareId: (map['storageFileshareId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Next hop.
 class RoutingRuleNextHop {
   /// Next hop address. Only required if the next hop type is VirtualAppliance.
-  final String? nextHopAddress;
+  final pulumi.Input<String>? nextHopAddress;
   /// Next hop type.
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
 
   /// Creates a new [RoutingRuleNextHop].
   /// [nextHopAddress] Next hop address. Only required if the next hop type is VirtualAppliance.
@@ -25,8 +26,8 @@ class RoutingRuleNextHop {
 
   factory RoutingRuleNextHop.fromMap(Map<String, dynamic> map) {
     return RoutingRuleNextHop(
-      nextHopAddress: map['nextHopAddress'] == null ? null : map['nextHopAddress'] as String,
-      nextHopType: map['nextHopType'] as String,
+      nextHopAddress: map['nextHopAddress'] == null ? null : (map['nextHopAddress'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
     );
   }
 }

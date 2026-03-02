@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries {
   /// Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
-  final String? code;
+  final pulumi.Input<String>? code;
 
   /// Creates a new [PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries].
   /// [code] Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
@@ -19,7 +20,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
 
   factory PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries(
-      code: map['code'] == null ? null : map['code'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
     );
   }
 }

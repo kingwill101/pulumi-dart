@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobStatusRunning {
   /// Number of job restarts
-  final int? observedFlinkJobRestarts;
+  final pulumi.Input<int>? observedFlinkJobRestarts;
   /// Flink job status
-  final String? observedFlinkJobStatus;
+  final pulumi.Input<String>? observedFlinkJobStatus;
 
   /// Creates a new [JobStatusRunning].
   /// [observedFlinkJobRestarts] Number of job restarts
@@ -24,8 +25,8 @@ class JobStatusRunning {
 
   factory JobStatusRunning.fromMap(Map<String, dynamic> map) {
     return JobStatusRunning(
-      observedFlinkJobRestarts: map['observedFlinkJobRestarts'] == null ? null : map['observedFlinkJobRestarts'] as int,
-      observedFlinkJobStatus: map['observedFlinkJobStatus'] == null ? null : map['observedFlinkJobStatus'] as String,
+      observedFlinkJobRestarts: map['observedFlinkJobRestarts'] == null ? null : (map['observedFlinkJobRestarts'] as int).input(),
+      observedFlinkJobStatus: map['observedFlinkJobStatus'] == null ? null : (map['observedFlinkJobStatus'] as String).input(),
     );
   }
 }

@@ -35,21 +35,14 @@ class ManagedZoneArgs {
   /// [targetProject] The name of the Target Project.
   /// [targetVpc] The name of the Target Project VPC Network.
   ManagedZoneArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> dns,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> targetProject,
-    required pulumi.Output<String> targetVpc,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dns = pulumi.Input.asInput<String>(dns),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetProject = pulumi.Input.asInput<String>(targetProject),
-      targetVpc = pulumi.Input.asInput<String>(targetVpc);
+    this.description,
+    required this.dns,
+    this.labels,
+    this.name,
+    this.project,
+    required this.targetProject,
+    required this.targetVpc,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class ManagedZoneArgs {
 
   factory ManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return ManagedZoneArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dns: pulumi.Output.create<String>(map['dns'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      targetProject: pulumi.Output.create<String>(map['targetProject'] as String),
-      targetVpc: pulumi.Output.create<String>(map['targetVpc'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dns: (map['dns'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      targetProject: (map['targetProject'] as String).input(),
+      targetVpc: (map['targetVpc'] as String).input(),
     );
   }
 }

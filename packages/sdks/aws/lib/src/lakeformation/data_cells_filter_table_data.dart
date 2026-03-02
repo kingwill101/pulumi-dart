@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_cells_filter_table_data_column_wildcard.dart';
 import 'data_cells_filter_table_data_row_filter.dart';
 
 class DataCellsFilterTableData {
   /// A list of column names and/or nested column attributes.
-  final List<String>? columnNames;
+  final pulumi.Input<List<String>>? columnNames;
   /// A wildcard with exclusions. See Column Wildcard below for details.
-  final DataCellsFilterTableDataColumnWildcard? columnWildcard;
+  final pulumi.Input<DataCellsFilterTableDataColumnWildcard>? columnWildcard;
   /// The name of the database.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// The name of the data cells filter.
-  final String name;
+  final pulumi.Input<String> name;
   /// A PartiQL predicate. See Row Filter below for details.
-  final DataCellsFilterTableDataRowFilter rowFilter;
+  final pulumi.Input<DataCellsFilterTableDataRowFilter> rowFilter;
   /// The ID of the Data Catalog.
-  final String tableCatalogId;
+  final pulumi.Input<String> tableCatalogId;
   /// The name of the table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// ID of the data cells filter version.
-  final String? versionId;
+  final pulumi.Input<String>? versionId;
 
   /// Creates a new [DataCellsFilterTableData].
   /// [columnNames] A list of column names and/or nested column attributes.
@@ -44,10 +45,10 @@ class DataCellsFilterTableData {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'columnNames': ?columnNames,
-      'columnWildcard': ?columnWildcard == null ? null : columnWildcard!.toMap(),
+      'columnWildcard': ?pulumi.Input.mapOptionalInputValue<DataCellsFilterTableDataColumnWildcard, Map<String, dynamic>>(columnWildcard, (value) => value.toMap()),
       'databaseName': databaseName,
       'name': name,
-      'rowFilter': rowFilter.toMap(),
+      'rowFilter': pulumi.Input.mapInputValue<DataCellsFilterTableDataRowFilter, Map<String, dynamic>>(rowFilter, (value) => value.toMap()),
       'tableCatalogId': tableCatalogId,
       'tableName': tableName,
       'versionId': ?versionId,
@@ -56,14 +57,14 @@ class DataCellsFilterTableData {
 
   factory DataCellsFilterTableData.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableData(
-      columnNames: map['columnNames'] == null ? null : (map['columnNames'] as List).cast<String>(),
-      columnWildcard: map['columnWildcard'] == null ? null : DataCellsFilterTableDataColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>()),
-      databaseName: map['databaseName'] as String,
-      name: map['name'] as String,
-      rowFilter: DataCellsFilterTableDataRowFilter.fromMap((map['rowFilter'] as Map).cast<String, dynamic>()),
-      tableCatalogId: map['tableCatalogId'] as String,
-      tableName: map['tableName'] as String,
-      versionId: map['versionId'] == null ? null : map['versionId'] as String,
+      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
+      columnWildcard: map['columnWildcard'] == null ? null : (DataCellsFilterTableDataColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>())).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      name: (map['name'] as String).input(),
+      rowFilter: (DataCellsFilterTableDataRowFilter.fromMap((map['rowFilter'] as Map).cast<String, dynamic>())).input(),
+      tableCatalogId: (map['tableCatalogId'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

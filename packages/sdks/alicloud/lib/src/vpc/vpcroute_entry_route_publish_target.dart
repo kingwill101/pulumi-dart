@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VPCRouteEntryRoutePublishTarget {
   /// Route Publish Status
-  final String? publishStatus;
+  final pulumi.Input<String>? publishStatus;
   /// Route publish target instance id.
-  final String? targetInstanceId;
+  final pulumi.Input<String>? targetInstanceId;
   /// Route publish target type
-  final String targetType;
+  final pulumi.Input<String> targetType;
 
   /// Creates a new [VPCRouteEntryRoutePublishTarget].
   /// [publishStatus] Route Publish Status
@@ -29,9 +30,9 @@ class VPCRouteEntryRoutePublishTarget {
 
   factory VPCRouteEntryRoutePublishTarget.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryRoutePublishTarget(
-      publishStatus: map['publishStatus'] == null ? null : map['publishStatus'] as String,
-      targetInstanceId: map['targetInstanceId'] == null ? null : map['targetInstanceId'] as String,
-      targetType: map['targetType'] as String,
+      publishStatus: map['publishStatus'] == null ? null : (map['publishStatus'] as String).input(),
+      targetInstanceId: map['targetInstanceId'] == null ? null : (map['targetInstanceId'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

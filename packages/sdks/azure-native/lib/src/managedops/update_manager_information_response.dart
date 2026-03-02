@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Update Manager service information.
 class UpdateManagerInformationResponse {
   /// Indicates whether the service is enabled.
-  final String enablementStatus;
+  final pulumi.Input<String> enablementStatus;
 
   /// Creates a new [UpdateManagerInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
@@ -20,7 +21,7 @@ class UpdateManagerInformationResponse {
 
   factory UpdateManagerInformationResponse.fromMap(Map<String, dynamic> map) {
     return UpdateManagerInformationResponse(
-      enablementStatus: map['enablementStatus'] as String,
+      enablementStatus: (map['enablementStatus'] as String).input(),
     );
   }
 }

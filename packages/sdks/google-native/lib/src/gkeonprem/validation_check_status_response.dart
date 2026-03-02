@@ -6,7 +6,7 @@ import 'validation_check_result_response.dart';
 /// ValidationCheckStatus defines the detailed validation check status.
 class ValidationCheckStatusResponse {
   /// Individual checks which failed as part of the Preflight check execution.
-  final List<ValidationCheckResultResponse> result;
+  final pulumi.Input<List<ValidationCheckResultResponse>> result;
 
   /// Creates a new [ValidationCheckStatusResponse].
   /// [result] Individual checks which failed as part of the Preflight check execution.
@@ -16,13 +16,13 @@ class ValidationCheckStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': pulumi.Input.encodeList<ValidationCheckResultResponse, Map<String, dynamic>>(result, (value) => value.toMap()),
+      'result': pulumi.Input.mapInputValue<List<ValidationCheckResultResponse>, List<Map<String, dynamic>>>(result, (value) => pulumi.Input.encodeList<ValidationCheckResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ValidationCheckStatusResponse.fromMap(Map<String, dynamic> map) {
     return ValidationCheckStatusResponse(
-      result: pulumi.Input.decodeList<ValidationCheckResultResponse>(map['result'], (value) => ValidationCheckResultResponse.fromMap((value as Map).cast<String, dynamic>())),
+      result: (pulumi.Input.decodeList<ValidationCheckResultResponse>(map['result'], (value) => ValidationCheckResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes threat kill chain phase entity
 class ThreatIntelligenceParsedPatternTypeValue {
   /// Value of parsed pattern
-  final String? value;
+  final pulumi.Input<String>? value;
   /// Type of the value
-  final String? valueType;
+  final pulumi.Input<String>? valueType;
 
   /// Creates a new [ThreatIntelligenceParsedPatternTypeValue].
   /// [value] Value of parsed pattern
@@ -25,8 +26,8 @@ class ThreatIntelligenceParsedPatternTypeValue {
 
   factory ThreatIntelligenceParsedPatternTypeValue.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceParsedPatternTypeValue(
-      value: map['value'] == null ? null : map['value'] as String,
-      valueType: map['valueType'] == null ? null : map['valueType'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      valueType: map['valueType'] == null ? null : (map['valueType'] as String).input(),
     );
   }
 }

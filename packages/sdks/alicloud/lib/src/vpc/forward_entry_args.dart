@@ -39,25 +39,16 @@ class ForwardEntryArgs {
   /// [name] Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
   /// [portBreak] Specifies whether to remove limits on the port range. Default value is `false`.
   ForwardEntryArgs({
-    required pulumi.Output<String> externalIp,
-    required pulumi.Output<String> externalPort,
-    pulumi.Output<String>? forwardEntryName,
-    required pulumi.Output<String> forwardTableId,
-    required pulumi.Output<String> internalIp,
-    required pulumi.Output<String> internalPort,
-    required pulumi.Output<String> ipProtocol,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? portBreak,
-  }) :
-      externalIp = pulumi.Input.asInput<String>(externalIp),
-      externalPort = pulumi.Input.asInput<String>(externalPort),
-      forwardEntryName = pulumi.Input.asOptionalInput<String>(forwardEntryName),
-      forwardTableId = pulumi.Input.asInput<String>(forwardTableId),
-      internalIp = pulumi.Input.asInput<String>(internalIp),
-      internalPort = pulumi.Input.asInput<String>(internalPort),
-      ipProtocol = pulumi.Input.asInput<String>(ipProtocol),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portBreak = pulumi.Input.asOptionalInput<bool>(portBreak);
+    required this.externalIp,
+    required this.externalPort,
+    this.forwardEntryName,
+    required this.forwardTableId,
+    required this.internalIp,
+    required this.internalPort,
+    required this.ipProtocol,
+    this.name,
+    this.portBreak,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ForwardEntryArgs {
 
   factory ForwardEntryArgs.fromMap(Map<String, dynamic> map) {
     return ForwardEntryArgs(
-      externalIp: pulumi.Output.create<String>(map['externalIp'] as String),
-      externalPort: pulumi.Output.create<String>(map['externalPort'] as String),
-      forwardEntryName: map['forwardEntryName'] == null ? null : pulumi.Output.create<String>(map['forwardEntryName'] as String),
-      forwardTableId: pulumi.Output.create<String>(map['forwardTableId'] as String),
-      internalIp: pulumi.Output.create<String>(map['internalIp'] as String),
-      internalPort: pulumi.Output.create<String>(map['internalPort'] as String),
-      ipProtocol: pulumi.Output.create<String>(map['ipProtocol'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portBreak: map['portBreak'] == null ? null : pulumi.Output.create<bool>(map['portBreak'] as bool),
+      externalIp: (map['externalIp'] as String).input(),
+      externalPort: (map['externalPort'] as String).input(),
+      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName'] as String).input(),
+      forwardTableId: (map['forwardTableId'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
+      internalPort: (map['internalPort'] as String).input(),
+      ipProtocol: (map['ipProtocol'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portBreak: map['portBreak'] == null ? null : (map['portBreak'] as bool).input(),
     );
   }
 }

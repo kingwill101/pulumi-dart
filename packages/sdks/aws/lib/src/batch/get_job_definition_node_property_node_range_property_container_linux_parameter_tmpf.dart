@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
   /// The absolute file path in the container where the tmpfs volume is mounted.
-  final String containerPath;
+  final pulumi.Input<String> containerPath;
   /// The list of tmpfs volume mount options.
-  final List<String> mountOptions;
+  final pulumi.Input<List<String>> mountOptions;
   /// The size (in MiB) of the tmpfs volume.
-  final int size;
+  final pulumi.Input<int> size;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf].
   /// [containerPath] The absolute file path in the container where the tmpfs volume is mounted.
@@ -29,9 +30,9 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf(
-      containerPath: map['containerPath'] as String,
-      mountOptions: (map['mountOptions'] as List).cast<String>(),
-      size: map['size'] as int,
+      containerPath: (map['containerPath'] as String).input(),
+      mountOptions: ((map['mountOptions'] as List).cast<String>()).input(),
+      size: (map['size'] as int).input(),
     );
   }
 }

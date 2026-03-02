@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
   /// The scope of auto-monitoring.
-  final String scope;
+  final pulumi.Input<String> scope;
 
   /// Creates a new [GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig].
   /// [scope] The scope of auto-monitoring.
@@ -19,7 +20,7 @@ class GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
 
   factory GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig(
-      scope: map['scope'] as String,
+      scope: (map['scope'] as String).input(),
     );
   }
 }

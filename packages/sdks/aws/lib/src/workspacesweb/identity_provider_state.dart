@@ -34,23 +34,15 @@ class IdentityProviderState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   IdentityProviderState({
-    pulumi.Output<String>? identityProviderArn,
-    pulumi.Output<Map<String, String>>? identityProviderDetails,
-    pulumi.Output<String>? identityProviderName,
-    pulumi.Output<String>? identityProviderType,
-    pulumi.Output<String>? portalArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      identityProviderArn = pulumi.Input.asOptionalInput<String>(identityProviderArn),
-      identityProviderDetails = pulumi.Input.asOptionalInput<Map<String, String>>(identityProviderDetails),
-      identityProviderName = pulumi.Input.asOptionalInput<String>(identityProviderName),
-      identityProviderType = pulumi.Input.asOptionalInput<String>(identityProviderType),
-      portalArn = pulumi.Input.asOptionalInput<String>(portalArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.identityProviderArn,
+    this.identityProviderDetails,
+    this.identityProviderName,
+    this.identityProviderType,
+    this.portalArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class IdentityProviderState {
 
   factory IdentityProviderState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderState(
-      identityProviderArn: map['identityProviderArn'] == null ? null : pulumi.Output.create<String>(map['identityProviderArn'] as String),
-      identityProviderDetails: map['identityProviderDetails'] == null ? null : pulumi.Output.create<Map<String, String>>((map['identityProviderDetails'] as Map).cast<String, String>()),
-      identityProviderName: map['identityProviderName'] == null ? null : pulumi.Output.create<String>(map['identityProviderName'] as String),
-      identityProviderType: map['identityProviderType'] == null ? null : pulumi.Output.create<String>(map['identityProviderType'] as String),
-      portalArn: map['portalArn'] == null ? null : pulumi.Output.create<String>(map['portalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      identityProviderArn: map['identityProviderArn'] == null ? null : (map['identityProviderArn'] as String).input(),
+      identityProviderDetails: map['identityProviderDetails'] == null ? null : ((map['identityProviderDetails'] as Map).cast<String, String>()).input(),
+      identityProviderName: map['identityProviderName'] == null ? null : (map['identityProviderName'] as String).input(),
+      identityProviderType: map['identityProviderType'] == null ? null : (map['identityProviderType'] as String).input(),
+      portalArn: map['portalArn'] == null ? null : (map['portalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

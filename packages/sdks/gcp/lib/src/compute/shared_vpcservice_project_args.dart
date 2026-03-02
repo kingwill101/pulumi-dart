@@ -19,13 +19,10 @@ class SharedVPCServiceProjectArgs {
   /// [hostProject] The ID of a host project to associate.
   /// [serviceProject] The ID of the project that will serve as a Shared VPC service project.
   SharedVPCServiceProjectArgs({
-    pulumi.Output<String>? deletionPolicy,
-    required pulumi.Output<String> hostProject,
-    required pulumi.Output<String> serviceProject,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      hostProject = pulumi.Input.asInput<String>(hostProject),
-      serviceProject = pulumi.Input.asInput<String>(serviceProject);
+    this.deletionPolicy,
+    required this.hostProject,
+    required this.serviceProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SharedVPCServiceProjectArgs {
 
   factory SharedVPCServiceProjectArgs.fromMap(Map<String, dynamic> map) {
     return SharedVPCServiceProjectArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      hostProject: pulumi.Output.create<String>(map['hostProject'] as String),
-      serviceProject: pulumi.Output.create<String>(map['serviceProject'] as String),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      hostProject: (map['hostProject'] as String).input(),
+      serviceProject: (map['serviceProject'] as String).input(),
     );
   }
 }

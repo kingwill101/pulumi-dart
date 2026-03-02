@@ -7,29 +7,29 @@ import 'tag_response.dart';
 /// Definition of awsNetworkFirewallFirewall
 class AwsNetworkFirewallFirewallPropertiesResponse {
   /// Property deleteProtection
-  final bool? deleteProtection;
+  final pulumi.Input<bool>? deleteProtection;
   /// Property description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Property endpointIds
-  final List<String>? endpointIds;
+  final pulumi.Input<List<String>>? endpointIds;
   /// A resource ARN.
-  final String? firewallArn;
+  final pulumi.Input<String>? firewallArn;
   /// Property firewallId
-  final String? firewallId;
+  final pulumi.Input<String>? firewallId;
   /// Property firewallName
-  final String? firewallName;
+  final pulumi.Input<String>? firewallName;
   /// A resource ARN.
-  final String? firewallPolicyArn;
+  final pulumi.Input<String>? firewallPolicyArn;
   /// Property firewallPolicyChangeProtection
-  final bool? firewallPolicyChangeProtection;
+  final pulumi.Input<bool>? firewallPolicyChangeProtection;
   /// Property subnetChangeProtection
-  final bool? subnetChangeProtection;
+  final pulumi.Input<bool>? subnetChangeProtection;
   /// Property subnetMappings
-  final List<SubnetMappingResponse>? subnetMappings;
+  final pulumi.Input<List<SubnetMappingResponse>>? subnetMappings;
   /// Property tags
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
   /// Property vpcId
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [AwsNetworkFirewallFirewallPropertiesResponse].
   /// [deleteProtection] Property deleteProtection
@@ -70,26 +70,26 @@ class AwsNetworkFirewallFirewallPropertiesResponse {
       'firewallPolicyArn': ?firewallPolicyArn,
       'firewallPolicyChangeProtection': ?firewallPolicyChangeProtection,
       'subnetChangeProtection': ?subnetChangeProtection,
-      'subnetMappings': ?subnetMappings == null ? null : pulumi.Input.encodeList<SubnetMappingResponse, Map<String, dynamic>>(subnetMappings!, (value) => value.toMap()),
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'subnetMappings': ?pulumi.Input.mapOptionalInputValue<List<SubnetMappingResponse>, List<Map<String, dynamic>>>(subnetMappings, (value) => pulumi.Input.encodeList<SubnetMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': ?vpcId,
     };
   }
 
   factory AwsNetworkFirewallFirewallPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsNetworkFirewallFirewallPropertiesResponse(
-      deleteProtection: map['deleteProtection'] == null ? null : map['deleteProtection'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
-      endpointIds: map['endpointIds'] == null ? null : (map['endpointIds'] as List).cast<String>(),
-      firewallArn: map['firewallArn'] == null ? null : map['firewallArn'] as String,
-      firewallId: map['firewallId'] == null ? null : map['firewallId'] as String,
-      firewallName: map['firewallName'] == null ? null : map['firewallName'] as String,
-      firewallPolicyArn: map['firewallPolicyArn'] == null ? null : map['firewallPolicyArn'] as String,
-      firewallPolicyChangeProtection: map['firewallPolicyChangeProtection'] == null ? null : map['firewallPolicyChangeProtection'] as bool,
-      subnetChangeProtection: map['subnetChangeProtection'] == null ? null : map['subnetChangeProtection'] as bool,
-      subnetMappings: map['subnetMappings'] == null ? null : pulumi.Input.decodeList<SubnetMappingResponse>(map['subnetMappings'], (value) => SubnetMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointIds: map['endpointIds'] == null ? null : ((map['endpointIds'] as List).cast<String>()).input(),
+      firewallArn: map['firewallArn'] == null ? null : (map['firewallArn'] as String).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as String).input(),
+      firewallName: map['firewallName'] == null ? null : (map['firewallName'] as String).input(),
+      firewallPolicyArn: map['firewallPolicyArn'] == null ? null : (map['firewallPolicyArn'] as String).input(),
+      firewallPolicyChangeProtection: map['firewallPolicyChangeProtection'] == null ? null : (map['firewallPolicyChangeProtection'] as bool).input(),
+      subnetChangeProtection: map['subnetChangeProtection'] == null ? null : (map['subnetChangeProtection'] as bool).input(),
+      subnetMappings: map['subnetMappings'] == null ? null : (pulumi.Input.decodeList<SubnetMappingResponse>(map['subnetMappings'], (value) => SubnetMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

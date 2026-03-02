@@ -25,17 +25,12 @@ class ThroughputPoolAccountArgs {
   /// [throughputPoolAccountName] Cosmos DB global database account in a Throughput Pool
   /// [throughputPoolName] Cosmos DB Throughput Pool name.
   ThroughputPoolAccountArgs({
-    pulumi.Output<String>? accountLocation,
-    pulumi.Output<String>? accountResourceIdentifier,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? throughputPoolAccountName,
-    required pulumi.Output<String> throughputPoolName,
-  }) :
-      accountLocation = pulumi.Input.asOptionalInput<String>(accountLocation),
-      accountResourceIdentifier = pulumi.Input.asOptionalInput<String>(accountResourceIdentifier),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      throughputPoolAccountName = pulumi.Input.asOptionalInput<String>(throughputPoolAccountName),
-      throughputPoolName = pulumi.Input.asInput<String>(throughputPoolName);
+    this.accountLocation,
+    this.accountResourceIdentifier,
+    required this.resourceGroupName,
+    this.throughputPoolAccountName,
+    required this.throughputPoolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ThroughputPoolAccountArgs {
 
   factory ThroughputPoolAccountArgs.fromMap(Map<String, dynamic> map) {
     return ThroughputPoolAccountArgs(
-      accountLocation: map['accountLocation'] == null ? null : pulumi.Output.create<String>(map['accountLocation'] as String),
-      accountResourceIdentifier: map['accountResourceIdentifier'] == null ? null : pulumi.Output.create<String>(map['accountResourceIdentifier'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      throughputPoolAccountName: map['throughputPoolAccountName'] == null ? null : pulumi.Output.create<String>(map['throughputPoolAccountName'] as String),
-      throughputPoolName: pulumi.Output.create<String>(map['throughputPoolName'] as String),
+      accountLocation: map['accountLocation'] == null ? null : (map['accountLocation'] as String).input(),
+      accountResourceIdentifier: map['accountResourceIdentifier'] == null ? null : (map['accountResourceIdentifier'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      throughputPoolAccountName: map['throughputPoolAccountName'] == null ? null : (map['throughputPoolAccountName'] as String).input(),
+      throughputPoolName: (map['throughputPoolName'] as String).input(),
     );
   }
 }

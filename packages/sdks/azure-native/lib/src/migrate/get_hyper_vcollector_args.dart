@@ -19,13 +19,10 @@ class GetHyperVCollectorArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   GetHyperVCollectorArgs({
-    required pulumi.Output<String> hyperVCollectorName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hyperVCollectorName = pulumi.Input.asInput<String>(hyperVCollectorName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hyperVCollectorName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHyperVCollectorArgs {
 
   factory GetHyperVCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetHyperVCollectorArgs(
-      hyperVCollectorName: pulumi.Output.create<String>(map['hyperVCollectorName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hyperVCollectorName: (map['hyperVCollectorName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

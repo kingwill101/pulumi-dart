@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountEncryption {
-  final String? keySource;
+  final pulumi.Input<String>? keySource;
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Automation Account.
-  final String keyVaultKeyId;
+  final pulumi.Input<String> keyVaultKeyId;
   /// The User Assigned Managed Identity ID to be used for accessing the Customer Managed Key for encryption.
-  final String? userAssignedIdentityId;
+  final pulumi.Input<String>? userAssignedIdentityId;
 
   /// Creates a new [AccountEncryption].
   /// [keySource] Optional.
@@ -28,9 +29,9 @@ class AccountEncryption {
 
   factory AccountEncryption.fromMap(Map<String, dynamic> map) {
     return AccountEncryption(
-      keySource: map['keySource'] == null ? null : map['keySource'] as String,
-      keyVaultKeyId: map['keyVaultKeyId'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : map['userAssignedIdentityId'] as String,
+      keySource: map['keySource'] == null ? null : (map['keySource'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

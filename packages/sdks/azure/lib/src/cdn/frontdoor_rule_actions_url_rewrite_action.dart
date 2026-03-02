@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorRuleActionsUrlRewriteAction {
   /// The destination path to use in the rewrite. The destination path overwrites the source pattern.
-  final String destination;
+  final pulumi.Input<String> destination;
   /// Append the remaining path after the source pattern to the new destination path? Possible values `true` or `false`. Defaults to `false`.
-  final bool? preserveUnmatchedPath;
+  final pulumi.Input<bool>? preserveUnmatchedPath;
   /// The source pattern in the URL path to replace. This uses prefix-based matching. For example, to match all URL paths use a forward slash `"/"` as the source pattern value.
-  final String sourcePattern;
+  final pulumi.Input<String> sourcePattern;
 
   /// Creates a new [FrontdoorRuleActionsUrlRewriteAction].
   /// [destination] The destination path to use in the rewrite. The destination path overwrites the source pattern.
@@ -29,9 +30,9 @@ class FrontdoorRuleActionsUrlRewriteAction {
 
   factory FrontdoorRuleActionsUrlRewriteAction.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleActionsUrlRewriteAction(
-      destination: map['destination'] as String,
-      preserveUnmatchedPath: map['preserveUnmatchedPath'] == null ? null : map['preserveUnmatchedPath'] as bool,
-      sourcePattern: map['sourcePattern'] as String,
+      destination: (map['destination'] as String).input(),
+      preserveUnmatchedPath: map['preserveUnmatchedPath'] == null ? null : (map['preserveUnmatchedPath'] as bool).input(),
+      sourcePattern: (map['sourcePattern'] as String).input(),
     );
   }
 }

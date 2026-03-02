@@ -46,31 +46,19 @@ class WorkloadState {
   /// [statusConfigStatic] A list of static status configurations. You can only configure one static status for a workload.See Nested status_config_static blocks below for details.
   /// [workloadId] The unique entity identifier of the workload.
   WorkloadState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? compositeEntitySearchQuery,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? entityGuids,
-    pulumi.Output<List<WorkloadEntitySearchQuery>>? entitySearchQueries,
-    pulumi.Output<String>? guid,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? permalink,
-    pulumi.Output<List<String>>? scopeAccountIds,
-    pulumi.Output<WorkloadStatusConfigAutomatic>? statusConfigAutomatic,
-    pulumi.Output<WorkloadStatusConfigStatic>? statusConfigStatic,
-    pulumi.Output<String>? workloadId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      compositeEntitySearchQuery = pulumi.Input.asOptionalInput<String>(compositeEntitySearchQuery),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      entityGuids = pulumi.Input.asOptionalInput<List<String>>(entityGuids),
-      entitySearchQueries = pulumi.Input.asOptionalInput<List<WorkloadEntitySearchQuery>>(entitySearchQueries),
-      guid = pulumi.Input.asOptionalInput<String>(guid),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permalink = pulumi.Input.asOptionalInput<String>(permalink),
-      scopeAccountIds = pulumi.Input.asOptionalInput<List<String>>(scopeAccountIds),
-      statusConfigAutomatic = pulumi.Input.asOptionalInput<WorkloadStatusConfigAutomatic>(statusConfigAutomatic),
-      statusConfigStatic = pulumi.Input.asOptionalInput<WorkloadStatusConfigStatic>(statusConfigStatic),
-      workloadId = pulumi.Input.asOptionalInput<String>(workloadId);
+    this.accountId,
+    this.compositeEntitySearchQuery,
+    this.description,
+    this.entityGuids,
+    this.entitySearchQueries,
+    this.guid,
+    this.name,
+    this.permalink,
+    this.scopeAccountIds,
+    this.statusConfigAutomatic,
+    this.statusConfigStatic,
+    this.workloadId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class WorkloadState {
 
   factory WorkloadState.fromMap(Map<String, dynamic> map) {
     return WorkloadState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      compositeEntitySearchQuery: map['compositeEntitySearchQuery'] == null ? null : pulumi.Output.create<String>(map['compositeEntitySearchQuery'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      entityGuids: map['entityGuids'] == null ? null : pulumi.Output.create<List<String>>((map['entityGuids'] as List).cast<String>()),
-      entitySearchQueries: map['entitySearchQueries'] == null ? null : pulumi.Output.create<List<WorkloadEntitySearchQuery>>(pulumi.Input.decodeList<WorkloadEntitySearchQuery>(map['entitySearchQueries'], (value) => WorkloadEntitySearchQuery.fromMap((value as Map).cast<String, dynamic>()))),
-      guid: map['guid'] == null ? null : pulumi.Output.create<String>(map['guid'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permalink: map['permalink'] == null ? null : pulumi.Output.create<String>(map['permalink'] as String),
-      scopeAccountIds: map['scopeAccountIds'] == null ? null : pulumi.Output.create<List<String>>((map['scopeAccountIds'] as List).cast<String>()),
-      statusConfigAutomatic: map['statusConfigAutomatic'] == null ? null : pulumi.Output.create<WorkloadStatusConfigAutomatic>(WorkloadStatusConfigAutomatic.fromMap((map['statusConfigAutomatic'] as Map).cast<String, dynamic>())),
-      statusConfigStatic: map['statusConfigStatic'] == null ? null : pulumi.Output.create<WorkloadStatusConfigStatic>(WorkloadStatusConfigStatic.fromMap((map['statusConfigStatic'] as Map).cast<String, dynamic>())),
-      workloadId: map['workloadId'] == null ? null : pulumi.Output.create<String>(map['workloadId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      compositeEntitySearchQuery: map['compositeEntitySearchQuery'] == null ? null : (map['compositeEntitySearchQuery'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      entityGuids: map['entityGuids'] == null ? null : ((map['entityGuids'] as List).cast<String>()).input(),
+      entitySearchQueries: map['entitySearchQueries'] == null ? null : (pulumi.Input.decodeList<WorkloadEntitySearchQuery>(map['entitySearchQueries'], (value) => WorkloadEntitySearchQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permalink: map['permalink'] == null ? null : (map['permalink'] as String).input(),
+      scopeAccountIds: map['scopeAccountIds'] == null ? null : ((map['scopeAccountIds'] as List).cast<String>()).input(),
+      statusConfigAutomatic: map['statusConfigAutomatic'] == null ? null : (WorkloadStatusConfigAutomatic.fromMap((map['statusConfigAutomatic'] as Map).cast<String, dynamic>())).input(),
+      statusConfigStatic: map['statusConfigStatic'] == null ? null : (WorkloadStatusConfigStatic.fromMap((map['statusConfigStatic'] as Map).cast<String, dynamic>())).input(),
+      workloadId: map['workloadId'] == null ? null : (map['workloadId'] as String).input(),
     );
   }
 }

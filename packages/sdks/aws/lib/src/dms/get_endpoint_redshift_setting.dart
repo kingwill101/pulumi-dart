@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointRedshiftSetting {
-  final String bucketFolder;
-  final String bucketName;
-  final String encryptionMode;
-  final String serverSideEncryptionKmsKeyId;
-  final String serviceAccessRoleArn;
+  final pulumi.Input<String> bucketFolder;
+  final pulumi.Input<String> bucketName;
+  final pulumi.Input<String> encryptionMode;
+  final pulumi.Input<String> serverSideEncryptionKmsKeyId;
+  final pulumi.Input<String> serviceAccessRoleArn;
 
   /// Creates a new [GetEndpointRedshiftSetting].
   /// [bucketFolder] Required.
@@ -34,11 +35,11 @@ class GetEndpointRedshiftSetting {
 
   factory GetEndpointRedshiftSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointRedshiftSetting(
-      bucketFolder: map['bucketFolder'] as String,
-      bucketName: map['bucketName'] as String,
-      encryptionMode: map['encryptionMode'] as String,
-      serverSideEncryptionKmsKeyId: map['serverSideEncryptionKmsKeyId'] as String,
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
+      bucketFolder: (map['bucketFolder'] as String).input(),
+      bucketName: (map['bucketName'] as String).input(),
+      encryptionMode: (map['encryptionMode'] as String).input(),
+      serverSideEncryptionKmsKeyId: (map['serverSideEncryptionKmsKeyId'] as String).input(),
+      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OauthIdpConfigResponseType {
   /// If true, authorization code is returned from IdP's authorization endpoint.
-  final bool? code;
+  final pulumi.Input<bool>? code;
   /// If true, ID token is returned from IdP's authorization endpoint.
-  final bool? idToken;
+  final pulumi.Input<bool>? idToken;
 
   /// Creates a new [OauthIdpConfigResponseType].
   /// [code] If true, authorization code is returned from IdP's authorization endpoint.
@@ -24,8 +25,8 @@ class OauthIdpConfigResponseType {
 
   factory OauthIdpConfigResponseType.fromMap(Map<String, dynamic> map) {
     return OauthIdpConfigResponseType(
-      code: map['code'] == null ? null : map['code'] as bool,
-      idToken: map['idToken'] == null ? null : map['idToken'] as bool,
+      code: map['code'] == null ? null : (map['code'] as bool).input(),
+      idToken: map['idToken'] == null ? null : (map['idToken'] as bool).input(),
     );
   }
 }

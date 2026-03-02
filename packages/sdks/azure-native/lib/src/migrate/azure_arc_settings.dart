@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_arc_management_settings.dart';
 
 /// Azure arc settings for a business case.
 class AzureArcSettings {
   /// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
-  final String azureArcState;
+  final pulumi.Input<String> azureArcState;
   /// Gets Azure arc labour cost percentage.
-  final double? laborCostPercentage;
+  final pulumi.Input<double>? laborCostPercentage;
   /// Management settings.
-  final AzureArcManagementSettings? managementSettings;
+  final pulumi.Input<AzureArcManagementSettings>? managementSettings;
 
   /// Creates a new [AzureArcSettings].
   /// [azureArcState] AzureArc state indicates whether to include azure arc related costs in on-premises or not.
@@ -25,15 +26,15 @@ class AzureArcSettings {
     return <String, dynamic>{
       'azureArcState': azureArcState,
       'laborCostPercentage': ?laborCostPercentage,
-      'managementSettings': ?managementSettings == null ? null : managementSettings!.toMap(),
+      'managementSettings': ?pulumi.Input.mapOptionalInputValue<AzureArcManagementSettings, Map<String, dynamic>>(managementSettings, (value) => value.toMap()),
     };
   }
 
   factory AzureArcSettings.fromMap(Map<String, dynamic> map) {
     return AzureArcSettings(
-      azureArcState: map['azureArcState'] as String,
-      laborCostPercentage: map['laborCostPercentage'] == null ? null : map['laborCostPercentage'] as double,
-      managementSettings: map['managementSettings'] == null ? null : AzureArcManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>()),
+      azureArcState: (map['azureArcState'] as String).input(),
+      laborCostPercentage: map['laborCostPercentage'] == null ? null : (map['laborCostPercentage'] as double).input(),
+      managementSettings: map['managementSettings'] == null ? null : (AzureArcManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

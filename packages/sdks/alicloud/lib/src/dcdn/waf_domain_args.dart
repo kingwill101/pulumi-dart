@@ -16,11 +16,9 @@ class WafDomainArgs {
   /// [clientIpTag] The client ip tag.
   /// [domainName] The accelerated domain name.
   WafDomainArgs({
-    pulumi.Output<String>? clientIpTag,
-    required pulumi.Output<String> domainName,
-  }) :
-      clientIpTag = pulumi.Input.asOptionalInput<String>(clientIpTag),
-      domainName = pulumi.Input.asInput<String>(domainName);
+    this.clientIpTag,
+    required this.domainName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class WafDomainArgs {
 
   factory WafDomainArgs.fromMap(Map<String, dynamic> map) {
     return WafDomainArgs(
-      clientIpTag: map['clientIpTag'] == null ? null : pulumi.Output.create<String>(map['clientIpTag'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
+      clientIpTag: map['clientIpTag'] == null ? null : (map['clientIpTag'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
     );
   }
 }

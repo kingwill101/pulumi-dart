@@ -16,11 +16,9 @@ class RolePolicyAttachmentsExclusiveArgs {
   /// [policyArns] A list of managed IAM policy ARNs to be attached to the role. Policies attached to this role but not configured in this argument will be removed.
   /// [roleName] IAM role name.
   RolePolicyAttachmentsExclusiveArgs({
-    required pulumi.Output<List<String>> policyArns,
-    required pulumi.Output<String> roleName,
-  }) :
-      policyArns = pulumi.Input.asInput<List<String>>(policyArns),
-      roleName = pulumi.Input.asInput<String>(roleName);
+    required this.policyArns,
+    required this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class RolePolicyAttachmentsExclusiveArgs {
 
   factory RolePolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentsExclusiveArgs(
-      policyArns: pulumi.Output.create<List<String>>((map['policyArns'] as List).cast<String>()),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+      policyArns: ((map['policyArns'] as List).cast<String>()).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

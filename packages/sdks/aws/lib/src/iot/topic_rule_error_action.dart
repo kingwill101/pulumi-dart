@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'topic_rule_error_action_cloudwatch_alarm.dart';
 import 'topic_rule_error_action_cloudwatch_logs.dart';
 import 'topic_rule_error_action_cloudwatch_metric.dart';
@@ -21,25 +22,25 @@ import 'topic_rule_error_action_step_functions.dart';
 import 'topic_rule_error_action_timestream.dart';
 
 class TopicRuleErrorAction {
-  final TopicRuleErrorActionCloudwatchAlarm? cloudwatchAlarm;
-  final TopicRuleErrorActionCloudwatchLogs? cloudwatchLogs;
-  final TopicRuleErrorActionCloudwatchMetric? cloudwatchMetric;
-  final TopicRuleErrorActionDynamodb? dynamodb;
-  final TopicRuleErrorActionDynamodbv2? dynamodbv2;
-  final TopicRuleErrorActionElasticsearch? elasticsearch;
-  final TopicRuleErrorActionFirehose? firehose;
-  final TopicRuleErrorActionHttp? http;
-  final TopicRuleErrorActionIotAnalytics? iotAnalytics;
-  final TopicRuleErrorActionIotEvents? iotEvents;
-  final TopicRuleErrorActionKafka? kafka;
-  final TopicRuleErrorActionKinesis? kinesis;
-  final TopicRuleErrorActionLambda? lambda;
-  final TopicRuleErrorActionRepublish? republish;
-  final TopicRuleErrorActionS3? s3;
-  final TopicRuleErrorActionSns? sns;
-  final TopicRuleErrorActionSqs? sqs;
-  final TopicRuleErrorActionStepFunctions? stepFunctions;
-  final TopicRuleErrorActionTimestream? timestream;
+  final pulumi.Input<TopicRuleErrorActionCloudwatchAlarm>? cloudwatchAlarm;
+  final pulumi.Input<TopicRuleErrorActionCloudwatchLogs>? cloudwatchLogs;
+  final pulumi.Input<TopicRuleErrorActionCloudwatchMetric>? cloudwatchMetric;
+  final pulumi.Input<TopicRuleErrorActionDynamodb>? dynamodb;
+  final pulumi.Input<TopicRuleErrorActionDynamodbv2>? dynamodbv2;
+  final pulumi.Input<TopicRuleErrorActionElasticsearch>? elasticsearch;
+  final pulumi.Input<TopicRuleErrorActionFirehose>? firehose;
+  final pulumi.Input<TopicRuleErrorActionHttp>? http;
+  final pulumi.Input<TopicRuleErrorActionIotAnalytics>? iotAnalytics;
+  final pulumi.Input<TopicRuleErrorActionIotEvents>? iotEvents;
+  final pulumi.Input<TopicRuleErrorActionKafka>? kafka;
+  final pulumi.Input<TopicRuleErrorActionKinesis>? kinesis;
+  final pulumi.Input<TopicRuleErrorActionLambda>? lambda;
+  final pulumi.Input<TopicRuleErrorActionRepublish>? republish;
+  final pulumi.Input<TopicRuleErrorActionS3>? s3;
+  final pulumi.Input<TopicRuleErrorActionSns>? sns;
+  final pulumi.Input<TopicRuleErrorActionSqs>? sqs;
+  final pulumi.Input<TopicRuleErrorActionStepFunctions>? stepFunctions;
+  final pulumi.Input<TopicRuleErrorActionTimestream>? timestream;
 
   /// Creates a new [TopicRuleErrorAction].
   /// [cloudwatchAlarm] Optional.
@@ -85,49 +86,49 @@ class TopicRuleErrorAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchAlarm': ?cloudwatchAlarm == null ? null : cloudwatchAlarm!.toMap(),
-      'cloudwatchLogs': ?cloudwatchLogs == null ? null : cloudwatchLogs!.toMap(),
-      'cloudwatchMetric': ?cloudwatchMetric == null ? null : cloudwatchMetric!.toMap(),
-      'dynamodb': ?dynamodb == null ? null : dynamodb!.toMap(),
-      'dynamodbv2': ?dynamodbv2 == null ? null : dynamodbv2!.toMap(),
-      'elasticsearch': ?elasticsearch == null ? null : elasticsearch!.toMap(),
-      'firehose': ?firehose == null ? null : firehose!.toMap(),
-      'http': ?http == null ? null : http!.toMap(),
-      'iotAnalytics': ?iotAnalytics == null ? null : iotAnalytics!.toMap(),
-      'iotEvents': ?iotEvents == null ? null : iotEvents!.toMap(),
-      'kafka': ?kafka == null ? null : kafka!.toMap(),
-      'kinesis': ?kinesis == null ? null : kinesis!.toMap(),
-      'lambda': ?lambda == null ? null : lambda!.toMap(),
-      'republish': ?republish == null ? null : republish!.toMap(),
-      's3': ?s3 == null ? null : s3!.toMap(),
-      'sns': ?sns == null ? null : sns!.toMap(),
-      'sqs': ?sqs == null ? null : sqs!.toMap(),
-      'stepFunctions': ?stepFunctions == null ? null : stepFunctions!.toMap(),
-      'timestream': ?timestream == null ? null : timestream!.toMap(),
+      'cloudwatchAlarm': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionCloudwatchAlarm, Map<String, dynamic>>(cloudwatchAlarm, (value) => value.toMap()),
+      'cloudwatchLogs': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionCloudwatchLogs, Map<String, dynamic>>(cloudwatchLogs, (value) => value.toMap()),
+      'cloudwatchMetric': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionCloudwatchMetric, Map<String, dynamic>>(cloudwatchMetric, (value) => value.toMap()),
+      'dynamodb': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionDynamodb, Map<String, dynamic>>(dynamodb, (value) => value.toMap()),
+      'dynamodbv2': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionDynamodbv2, Map<String, dynamic>>(dynamodbv2, (value) => value.toMap()),
+      'elasticsearch': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionElasticsearch, Map<String, dynamic>>(elasticsearch, (value) => value.toMap()),
+      'firehose': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionFirehose, Map<String, dynamic>>(firehose, (value) => value.toMap()),
+      'http': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionHttp, Map<String, dynamic>>(http, (value) => value.toMap()),
+      'iotAnalytics': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionIotAnalytics, Map<String, dynamic>>(iotAnalytics, (value) => value.toMap()),
+      'iotEvents': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionIotEvents, Map<String, dynamic>>(iotEvents, (value) => value.toMap()),
+      'kafka': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionKafka, Map<String, dynamic>>(kafka, (value) => value.toMap()),
+      'kinesis': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionKinesis, Map<String, dynamic>>(kinesis, (value) => value.toMap()),
+      'lambda': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionLambda, Map<String, dynamic>>(lambda, (value) => value.toMap()),
+      'republish': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionRepublish, Map<String, dynamic>>(republish, (value) => value.toMap()),
+      's3': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionS3, Map<String, dynamic>>(s3, (value) => value.toMap()),
+      'sns': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionSns, Map<String, dynamic>>(sns, (value) => value.toMap()),
+      'sqs': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionSqs, Map<String, dynamic>>(sqs, (value) => value.toMap()),
+      'stepFunctions': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionStepFunctions, Map<String, dynamic>>(stepFunctions, (value) => value.toMap()),
+      'timestream': ?pulumi.Input.mapOptionalInputValue<TopicRuleErrorActionTimestream, Map<String, dynamic>>(timestream, (value) => value.toMap()),
     };
   }
 
   factory TopicRuleErrorAction.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorAction(
-      cloudwatchAlarm: map['cloudwatchAlarm'] == null ? null : TopicRuleErrorActionCloudwatchAlarm.fromMap((map['cloudwatchAlarm'] as Map).cast<String, dynamic>()),
-      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : TopicRuleErrorActionCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>()),
-      cloudwatchMetric: map['cloudwatchMetric'] == null ? null : TopicRuleErrorActionCloudwatchMetric.fromMap((map['cloudwatchMetric'] as Map).cast<String, dynamic>()),
-      dynamodb: map['dynamodb'] == null ? null : TopicRuleErrorActionDynamodb.fromMap((map['dynamodb'] as Map).cast<String, dynamic>()),
-      dynamodbv2: map['dynamodbv2'] == null ? null : TopicRuleErrorActionDynamodbv2.fromMap((map['dynamodbv2'] as Map).cast<String, dynamic>()),
-      elasticsearch: map['elasticsearch'] == null ? null : TopicRuleErrorActionElasticsearch.fromMap((map['elasticsearch'] as Map).cast<String, dynamic>()),
-      firehose: map['firehose'] == null ? null : TopicRuleErrorActionFirehose.fromMap((map['firehose'] as Map).cast<String, dynamic>()),
-      http: map['http'] == null ? null : TopicRuleErrorActionHttp.fromMap((map['http'] as Map).cast<String, dynamic>()),
-      iotAnalytics: map['iotAnalytics'] == null ? null : TopicRuleErrorActionIotAnalytics.fromMap((map['iotAnalytics'] as Map).cast<String, dynamic>()),
-      iotEvents: map['iotEvents'] == null ? null : TopicRuleErrorActionIotEvents.fromMap((map['iotEvents'] as Map).cast<String, dynamic>()),
-      kafka: map['kafka'] == null ? null : TopicRuleErrorActionKafka.fromMap((map['kafka'] as Map).cast<String, dynamic>()),
-      kinesis: map['kinesis'] == null ? null : TopicRuleErrorActionKinesis.fromMap((map['kinesis'] as Map).cast<String, dynamic>()),
-      lambda: map['lambda'] == null ? null : TopicRuleErrorActionLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>()),
-      republish: map['republish'] == null ? null : TopicRuleErrorActionRepublish.fromMap((map['republish'] as Map).cast<String, dynamic>()),
-      s3: map['s3'] == null ? null : TopicRuleErrorActionS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
-      sns: map['sns'] == null ? null : TopicRuleErrorActionSns.fromMap((map['sns'] as Map).cast<String, dynamic>()),
-      sqs: map['sqs'] == null ? null : TopicRuleErrorActionSqs.fromMap((map['sqs'] as Map).cast<String, dynamic>()),
-      stepFunctions: map['stepFunctions'] == null ? null : TopicRuleErrorActionStepFunctions.fromMap((map['stepFunctions'] as Map).cast<String, dynamic>()),
-      timestream: map['timestream'] == null ? null : TopicRuleErrorActionTimestream.fromMap((map['timestream'] as Map).cast<String, dynamic>()),
+      cloudwatchAlarm: map['cloudwatchAlarm'] == null ? null : (TopicRuleErrorActionCloudwatchAlarm.fromMap((map['cloudwatchAlarm'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : (TopicRuleErrorActionCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchMetric: map['cloudwatchMetric'] == null ? null : (TopicRuleErrorActionCloudwatchMetric.fromMap((map['cloudwatchMetric'] as Map).cast<String, dynamic>())).input(),
+      dynamodb: map['dynamodb'] == null ? null : (TopicRuleErrorActionDynamodb.fromMap((map['dynamodb'] as Map).cast<String, dynamic>())).input(),
+      dynamodbv2: map['dynamodbv2'] == null ? null : (TopicRuleErrorActionDynamodbv2.fromMap((map['dynamodbv2'] as Map).cast<String, dynamic>())).input(),
+      elasticsearch: map['elasticsearch'] == null ? null : (TopicRuleErrorActionElasticsearch.fromMap((map['elasticsearch'] as Map).cast<String, dynamic>())).input(),
+      firehose: map['firehose'] == null ? null : (TopicRuleErrorActionFirehose.fromMap((map['firehose'] as Map).cast<String, dynamic>())).input(),
+      http: map['http'] == null ? null : (TopicRuleErrorActionHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      iotAnalytics: map['iotAnalytics'] == null ? null : (TopicRuleErrorActionIotAnalytics.fromMap((map['iotAnalytics'] as Map).cast<String, dynamic>())).input(),
+      iotEvents: map['iotEvents'] == null ? null : (TopicRuleErrorActionIotEvents.fromMap((map['iotEvents'] as Map).cast<String, dynamic>())).input(),
+      kafka: map['kafka'] == null ? null : (TopicRuleErrorActionKafka.fromMap((map['kafka'] as Map).cast<String, dynamic>())).input(),
+      kinesis: map['kinesis'] == null ? null : (TopicRuleErrorActionKinesis.fromMap((map['kinesis'] as Map).cast<String, dynamic>())).input(),
+      lambda: map['lambda'] == null ? null : (TopicRuleErrorActionLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>())).input(),
+      republish: map['republish'] == null ? null : (TopicRuleErrorActionRepublish.fromMap((map['republish'] as Map).cast<String, dynamic>())).input(),
+      s3: map['s3'] == null ? null : (TopicRuleErrorActionS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      sns: map['sns'] == null ? null : (TopicRuleErrorActionSns.fromMap((map['sns'] as Map).cast<String, dynamic>())).input(),
+      sqs: map['sqs'] == null ? null : (TopicRuleErrorActionSqs.fromMap((map['sqs'] as Map).cast<String, dynamic>())).input(),
+      stepFunctions: map['stepFunctions'] == null ? null : (TopicRuleErrorActionStepFunctions.fromMap((map['stepFunctions'] as Map).cast<String, dynamic>())).input(),
+      timestream: map['timestream'] == null ? null : (TopicRuleErrorActionTimestream.fromMap((map['timestream'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

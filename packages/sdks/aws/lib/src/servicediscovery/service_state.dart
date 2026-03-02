@@ -45,31 +45,19 @@ class ServiceState {
   /// [tagsAll] Optional.
   /// [type] If present, specifies that the service instances are only discoverable using the `DiscoverInstances` API operation. No DNS records is registered for the service instances. The only valid value is `HTTP`.
   ServiceState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<ServiceDnsConfig>? dnsConfig,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<ServiceHealthCheckConfig>? healthCheckConfig,
-    pulumi.Output<ServiceHealthCheckCustomConfig>? healthCheckCustomConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsConfig = pulumi.Input.asOptionalInput<ServiceDnsConfig>(dnsConfig),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      healthCheckConfig = pulumi.Input.asOptionalInput<ServiceHealthCheckConfig>(healthCheckConfig),
-      healthCheckCustomConfig = pulumi.Input.asOptionalInput<ServiceHealthCheckCustomConfig>(healthCheckCustomConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.description,
+    this.dnsConfig,
+    this.forceDestroy,
+    this.healthCheckConfig,
+    this.healthCheckCustomConfig,
+    this.name,
+    this.namespaceId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dnsConfig: map['dnsConfig'] == null ? null : pulumi.Output.create<ServiceDnsConfig>(ServiceDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : pulumi.Output.create<ServiceHealthCheckConfig>(ServiceHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())),
-      healthCheckCustomConfig: map['healthCheckCustomConfig'] == null ? null : pulumi.Output.create<ServiceHealthCheckCustomConfig>(ServiceHealthCheckCustomConfig.fromMap((map['healthCheckCustomConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dnsConfig: map['dnsConfig'] == null ? null : (ServiceDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : (ServiceHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())).input(),
+      healthCheckCustomConfig: map['healthCheckCustomConfig'] == null ? null : (ServiceHealthCheckCustomConfig.fromMap((map['healthCheckCustomConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

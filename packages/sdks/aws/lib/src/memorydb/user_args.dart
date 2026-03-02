@@ -28,17 +28,12 @@ class UserArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userName] Name of the MemoryDB user. Up to 40 characters.
   UserArgs({
-    required pulumi.Output<String> accessString,
-    required pulumi.Output<UserAuthenticationMode> authenticationMode,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userName,
-  }) :
-      accessString = pulumi.Input.asInput<String>(accessString),
-      authenticationMode = pulumi.Input.asInput<UserAuthenticationMode>(authenticationMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.accessString,
+    required this.authenticationMode,
+    this.region,
+    this.tags,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      accessString: pulumi.Output.create<String>(map['accessString'] as String),
-      authenticationMode: pulumi.Output.create<UserAuthenticationMode>(UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      accessString: (map['accessString'] as String).input(),
+      authenticationMode: (UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

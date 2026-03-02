@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthConfigSshPublicKeySshClientCert {
   /// The resource name of the secret version in the format,
   /// format as: projects/*/secrets/*/versions/*.
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
 
   /// Creates a new [ConnectionAuthConfigSshPublicKeySshClientCert].
   /// [secretVersion] The resource name of the secret version in the format,
@@ -20,7 +21,7 @@ class ConnectionAuthConfigSshPublicKeySshClientCert {
 
   factory ConnectionAuthConfigSshPublicKeySshClientCert.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigSshPublicKeySshClientCert(
-      secretVersion: map['secretVersion'] as String,
+      secretVersion: (map['secretVersion'] as String).input(),
     );
   }
 }

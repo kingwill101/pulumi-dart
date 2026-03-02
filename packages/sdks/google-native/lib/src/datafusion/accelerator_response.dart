@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identifies Data Fusion accelerators for an instance.
 class AcceleratorResponse {
   /// The type of an accelator for a CDF instance.
-  final String acceleratorType;
+  final pulumi.Input<String> acceleratorType;
   /// The state of the accelerator.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [AcceleratorResponse].
   /// [acceleratorType] The type of an accelator for a CDF instance.
@@ -25,8 +26,8 @@ class AcceleratorResponse {
 
   factory AcceleratorResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorResponse(
-      acceleratorType: map['acceleratorType'] as String,
-      state: map['state'] as String,
+      acceleratorType: (map['acceleratorType'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class ScaleSetStandbyPoolArgs {
   /// [tags] A mapping of tags which should be assigned to the Standby Pool.
   /// [virtualMachineState] Specifies the desired state of virtual machines in the pool. Possible values are `Deallocated`, `Hibernated` and `Running`.
   ScaleSetStandbyPoolArgs({
-    required pulumi.Output<String> attachedVirtualMachineScaleSetId,
-    required pulumi.Output<ScaleSetStandbyPoolElasticityProfile> elasticityProfile,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualMachineState,
-  }) :
-      attachedVirtualMachineScaleSetId = pulumi.Input.asInput<String>(attachedVirtualMachineScaleSetId),
-      elasticityProfile = pulumi.Input.asInput<ScaleSetStandbyPoolElasticityProfile>(elasticityProfile),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualMachineState = pulumi.Input.asInput<String>(virtualMachineState);
+    required this.attachedVirtualMachineScaleSetId,
+    required this.elasticityProfile,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    required this.virtualMachineState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ScaleSetStandbyPoolArgs {
 
   factory ScaleSetStandbyPoolArgs.fromMap(Map<String, dynamic> map) {
     return ScaleSetStandbyPoolArgs(
-      attachedVirtualMachineScaleSetId: pulumi.Output.create<String>(map['attachedVirtualMachineScaleSetId'] as String),
-      elasticityProfile: pulumi.Output.create<ScaleSetStandbyPoolElasticityProfile>(ScaleSetStandbyPoolElasticityProfile.fromMap((map['elasticityProfile'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualMachineState: pulumi.Output.create<String>(map['virtualMachineState'] as String),
+      attachedVirtualMachineScaleSetId: (map['attachedVirtualMachineScaleSetId'] as String).input(),
+      elasticityProfile: (ScaleSetStandbyPoolElasticityProfile.fromMap((map['elasticityProfile'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualMachineState: (map['virtualMachineState'] as String).input(),
     );
   }
 }

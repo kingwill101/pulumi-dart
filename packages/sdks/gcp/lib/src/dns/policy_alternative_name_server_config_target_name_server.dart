@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyAlternativeNameServerConfigTargetNameServer {
   /// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
@@ -8,9 +9,9 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   /// Possible values are: `default`, `private`.
   ///
   /// <a name="nested_dns64_config"></a>The `dns64_config` block supports:
-  final String? forwardingPath;
+  final pulumi.Input<String>? forwardingPath;
   /// IPv4 address to forward to.
-  final String ipv4Address;
+  final pulumi.Input<String> ipv4Address;
 
   /// Creates a new [PolicyAlternativeNameServerConfigTargetNameServer].
   /// [forwardingPath] Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
@@ -29,8 +30,8 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
 
   factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(Map<String, dynamic> map) {
     return PolicyAlternativeNameServerConfigTargetNameServer(
-      forwardingPath: map['forwardingPath'] == null ? null : map['forwardingPath'] as String,
-      ipv4Address: map['ipv4Address'] as String,
+      forwardingPath: map['forwardingPath'] == null ? null : (map['forwardingPath'] as String).input(),
+      ipv4Address: (map['ipv4Address'] as String).input(),
     );
   }
 }

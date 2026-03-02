@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PodIP represents a single IP address allocated to the pod.
 class PodIP {
   /// IP is the IP address assigned to the pod
-  final String ip;
+  final pulumi.Input<String> ip;
 
   /// Creates a new [PodIP].
   /// [ip] IP is the IP address assigned to the pod
@@ -20,7 +21,7 @@ class PodIP {
 
   factory PodIP.fromMap(Map<String, dynamic> map) {
     return PodIP(
-      ip: map['ip'] as String,
+      ip: (map['ip'] as String).input(),
     );
   }
 }

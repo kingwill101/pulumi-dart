@@ -19,13 +19,10 @@ class GetAlertArgs {
   /// [monitorName] Name of the SAP monitor resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAlertArgs({
-    required pulumi.Output<String> alertName,
-    required pulumi.Output<String> monitorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      alertName = pulumi.Input.asInput<String>(alertName),
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.alertName,
+    required this.monitorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAlertArgs {
 
   factory GetAlertArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertArgs(
-      alertName: pulumi.Output.create<String>(map['alertName'] as String),
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      alertName: (map['alertName'] as String).input(),
+      monitorName: (map['monitorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

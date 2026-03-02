@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metastore_config.dart';
 import 'spark_history_server_config.dart';
 
 /// Auxiliary services configuration for a Cluster.
 class AuxiliaryServicesConfig {
   /// Optional. The Hive Metastore configuration for this workload.
-  final MetastoreConfig? metastoreConfig;
+  final pulumi.Input<MetastoreConfig>? metastoreConfig;
   /// Optional. The Spark History Server configuration for the workload.
-  final SparkHistoryServerConfig? sparkHistoryServerConfig;
+  final pulumi.Input<SparkHistoryServerConfig>? sparkHistoryServerConfig;
 
   /// Creates a new [AuxiliaryServicesConfig].
   /// [metastoreConfig] Optional. The Hive Metastore configuration for this workload.
@@ -20,15 +21,15 @@ class AuxiliaryServicesConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metastoreConfig': ?metastoreConfig == null ? null : metastoreConfig!.toMap(),
-      'sparkHistoryServerConfig': ?sparkHistoryServerConfig == null ? null : sparkHistoryServerConfig!.toMap(),
+      'metastoreConfig': ?pulumi.Input.mapOptionalInputValue<MetastoreConfig, Map<String, dynamic>>(metastoreConfig, (value) => value.toMap()),
+      'sparkHistoryServerConfig': ?pulumi.Input.mapOptionalInputValue<SparkHistoryServerConfig, Map<String, dynamic>>(sparkHistoryServerConfig, (value) => value.toMap()),
     };
   }
 
   factory AuxiliaryServicesConfig.fromMap(Map<String, dynamic> map) {
     return AuxiliaryServicesConfig(
-      metastoreConfig: map['metastoreConfig'] == null ? null : MetastoreConfig.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>()),
-      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : SparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>()),
+      metastoreConfig: map['metastoreConfig'] == null ? null : (MetastoreConfig.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>())).input(),
+      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (SparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

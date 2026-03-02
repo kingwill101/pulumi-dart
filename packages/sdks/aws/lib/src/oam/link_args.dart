@@ -31,19 +31,13 @@ class LinkArgs {
   /// [sinkIdentifier] Identifier of the sink to use to create this link.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LinkArgs({
-    required pulumi.Output<String> labelTemplate,
-    pulumi.Output<LinkLinkConfiguration>? linkConfiguration,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> resourceTypes,
-    required pulumi.Output<String> sinkIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      labelTemplate = pulumi.Input.asInput<String>(labelTemplate),
-      linkConfiguration = pulumi.Input.asOptionalInput<LinkLinkConfiguration>(linkConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceTypes = pulumi.Input.asInput<List<String>>(resourceTypes),
-      sinkIdentifier = pulumi.Input.asInput<String>(sinkIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.labelTemplate,
+    this.linkConfiguration,
+    this.region,
+    required this.resourceTypes,
+    required this.sinkIdentifier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class LinkArgs {
 
   factory LinkArgs.fromMap(Map<String, dynamic> map) {
     return LinkArgs(
-      labelTemplate: pulumi.Output.create<String>(map['labelTemplate'] as String),
-      linkConfiguration: map['linkConfiguration'] == null ? null : pulumi.Output.create<LinkLinkConfiguration>(LinkLinkConfiguration.fromMap((map['linkConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceTypes: pulumi.Output.create<List<String>>((map['resourceTypes'] as List).cast<String>()),
-      sinkIdentifier: pulumi.Output.create<String>(map['sinkIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      labelTemplate: (map['labelTemplate'] as String).input(),
+      linkConfiguration: map['linkConfiguration'] == null ? null : (LinkLinkConfiguration.fromMap((map['linkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
+      sinkIdentifier: (map['sinkIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

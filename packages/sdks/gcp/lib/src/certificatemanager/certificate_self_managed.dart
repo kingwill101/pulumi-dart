@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateSelfManaged {
   /// (Optional, Deprecated)
@@ -8,20 +9,20 @@ class CertificateSelfManaged {
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   ///
   /// > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
-  final String? certificatePem;
+  final pulumi.Input<String>? certificatePem;
   /// The certificate chain in PEM-encoded form.
   /// Leaf certificate comes first, followed by intermediate ones if any.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String? pemCertificate;
+  final pulumi.Input<String>? pemCertificate;
   /// The private key of the leaf certificate in PEM-encoded form.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String? pemPrivateKey;
+  final pulumi.Input<String>? pemPrivateKey;
   /// (Optional, Deprecated)
   /// The private key of the leaf certificate in PEM-encoded form.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   ///
   /// > **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
-  final String? privateKeyPem;
+  final pulumi.Input<String>? privateKeyPem;
 
   /// Creates a new [CertificateSelfManaged].
   /// [certificatePem] (Optional, Deprecated)
@@ -46,10 +47,10 @@ class CertificateSelfManaged {
 
   factory CertificateSelfManaged.fromMap(Map<String, dynamic> map) {
     return CertificateSelfManaged(
-      certificatePem: map['certificatePem'] == null ? null : map['certificatePem'] as String,
-      pemCertificate: map['pemCertificate'] == null ? null : map['pemCertificate'] as String,
-      pemPrivateKey: map['pemPrivateKey'] == null ? null : map['pemPrivateKey'] as String,
-      privateKeyPem: map['privateKeyPem'] == null ? null : map['privateKeyPem'] as String,
+      certificatePem: map['certificatePem'] == null ? null : (map['certificatePem'] as String).input(),
+      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate'] as String).input(),
+      pemPrivateKey: map['pemPrivateKey'] == null ? null : (map['pemPrivateKey'] as String).input(),
+      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem'] as String).input(),
     );
   }
 }

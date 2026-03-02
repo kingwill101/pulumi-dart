@@ -6,23 +6,23 @@ import 'error.dart';
 /// The springbootservers resource definition.
 class SpringbootserversProperties {
   /// The list of errors.
-  final List<Error>? errors;
+  final pulumi.Input<List<Error>>? errors;
   /// The alternative FQDN or IP addresses to discover for this server
-  final List<String>? fqdnAndIpAddressList;
+  final pulumi.Input<List<String>>? fqdnAndIpAddressList;
   /// Resource labels
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// The machine Id from ARM
-  final String? machineArmId;
+  final pulumi.Input<String>? machineArmId;
   /// Target server port for remote login
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The resource provisioning state.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Server is the target server name or ip address to discover of SpringBootServer.
-  final String server;
+  final pulumi.Input<String> server;
   /// The total number of spring boot apps been discovered
-  final int? springBootApps;
+  final pulumi.Input<int>? springBootApps;
   /// The total number of apps been discovered
-  final int? totalApps;
+  final pulumi.Input<int>? totalApps;
 
   /// Creates a new [SpringbootserversProperties].
   /// [errors] The list of errors.
@@ -48,7 +48,7 @@ class SpringbootserversProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?errors == null ? null : pulumi.Input.encodeList<Error, Map<String, dynamic>>(errors!, (value) => value.toMap()),
+      'errors': ?pulumi.Input.mapOptionalInputValue<List<Error>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<Error, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fqdnAndIpAddressList': ?fqdnAndIpAddressList,
       'labels': ?labels,
       'machineArmId': ?machineArmId,
@@ -62,15 +62,15 @@ class SpringbootserversProperties {
 
   factory SpringbootserversProperties.fromMap(Map<String, dynamic> map) {
     return SpringbootserversProperties(
-      errors: map['errors'] == null ? null : pulumi.Input.decodeList<Error>(map['errors'], (value) => Error.fromMap((value as Map).cast<String, dynamic>())),
-      fqdnAndIpAddressList: map['fqdnAndIpAddressList'] == null ? null : (map['fqdnAndIpAddressList'] as List).cast<String>(),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      machineArmId: map['machineArmId'] == null ? null : map['machineArmId'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      server: map['server'] as String,
-      springBootApps: map['springBootApps'] == null ? null : map['springBootApps'] as int,
-      totalApps: map['totalApps'] == null ? null : map['totalApps'] as int,
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<Error>(map['errors'], (value) => Error.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fqdnAndIpAddressList: map['fqdnAndIpAddressList'] == null ? null : ((map['fqdnAndIpAddressList'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      machineArmId: map['machineArmId'] == null ? null : (map['machineArmId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      server: (map['server'] as String).input(),
+      springBootApps: map['springBootApps'] == null ? null : (map['springBootApps'] as int).input(),
+      totalApps: map['totalApps'] == null ? null : (map['totalApps'] as int).input(),
     );
   }
 }

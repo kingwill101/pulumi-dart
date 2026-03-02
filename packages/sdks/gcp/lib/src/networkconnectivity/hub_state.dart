@@ -57,35 +57,21 @@ class HubState {
   /// [uniqueId] Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
   /// [updateTime] Output only. The time the hub was last updated.
   HubState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<bool>? exportPsc,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyMode,
-    pulumi.Output<String>? presetTopology,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<HubRoutingVpc>>? routingVpcs,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? uniqueId,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      exportPsc = pulumi.Input.asOptionalInput<bool>(exportPsc),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyMode = pulumi.Input.asOptionalInput<String>(policyMode),
-      presetTopology = pulumi.Input.asOptionalInput<String>(presetTopology),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      routingVpcs = pulumi.Input.asOptionalInput<List<HubRoutingVpc>>(routingVpcs),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      uniqueId = pulumi.Input.asOptionalInput<String>(uniqueId),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.exportPsc,
+    this.labels,
+    this.name,
+    this.policyMode,
+    this.presetTopology,
+    this.project,
+    this.pulumiLabels,
+    this.routingVpcs,
+    this.state,
+    this.uniqueId,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class HubState {
 
   factory HubState.fromMap(Map<String, dynamic> map) {
     return HubState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      exportPsc: map['exportPsc'] == null ? null : pulumi.Output.create<bool>(map['exportPsc'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyMode: map['policyMode'] == null ? null : pulumi.Output.create<String>(map['policyMode'] as String),
-      presetTopology: map['presetTopology'] == null ? null : pulumi.Output.create<String>(map['presetTopology'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      routingVpcs: map['routingVpcs'] == null ? null : pulumi.Output.create<List<HubRoutingVpc>>(pulumi.Input.decodeList<HubRoutingVpc>(map['routingVpcs'], (value) => HubRoutingVpc.fromMap((value as Map).cast<String, dynamic>()))),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      uniqueId: map['uniqueId'] == null ? null : pulumi.Output.create<String>(map['uniqueId'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      exportPsc: map['exportPsc'] == null ? null : (map['exportPsc'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyMode: map['policyMode'] == null ? null : (map['policyMode'] as String).input(),
+      presetTopology: map['presetTopology'] == null ? null : (map['presetTopology'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      routingVpcs: map['routingVpcs'] == null ? null : (pulumi.Input.decodeList<HubRoutingVpc>(map['routingVpcs'], (value) => HubRoutingVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

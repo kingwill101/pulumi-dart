@@ -45,19 +45,13 @@ class AspectTypeIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   AspectTypeIamBindingArgs({
-    required pulumi.Output<String> aspectTypeId,
-    pulumi.Output<AspectTypeIamBindingCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      aspectTypeId = pulumi.Input.asInput<String>(aspectTypeId),
-      condition = pulumi.Input.asOptionalInput<AspectTypeIamBindingCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    required this.aspectTypeId,
+    this.condition,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class AspectTypeIamBindingArgs {
 
   factory AspectTypeIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AspectTypeIamBindingArgs(
-      aspectTypeId: pulumi.Output.create<String>(map['aspectTypeId'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<AspectTypeIamBindingCondition>(AspectTypeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      aspectTypeId: (map['aspectTypeId'] as String).input(),
+      condition: map['condition'] == null ? null : (AspectTypeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

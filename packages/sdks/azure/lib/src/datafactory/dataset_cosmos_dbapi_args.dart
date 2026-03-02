@@ -43,27 +43,17 @@ class DatasetCosmosDBApiArgs {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset.
   /// [schemaColumns] A `schema_column` block as defined below.
   DatasetCosmosDBApiArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? collectionName,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    required pulumi.Output<String> linkedServiceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<List<DatasetCosmosDBApiSchemaColumn>>? schemaColumns,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      collectionName = pulumi.Input.asOptionalInput<String>(collectionName),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      linkedServiceName = pulumi.Input.asInput<String>(linkedServiceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      schemaColumns = pulumi.Input.asOptionalInput<List<DatasetCosmosDBApiSchemaColumn>>(schemaColumns);
+    this.additionalProperties,
+    this.annotations,
+    this.collectionName,
+    required this.dataFactoryId,
+    this.description,
+    this.folder,
+    required this.linkedServiceName,
+    this.name,
+    this.parameters,
+    this.schemaColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class DatasetCosmosDBApiArgs {
 
   factory DatasetCosmosDBApiArgs.fromMap(Map<String, dynamic> map) {
     return DatasetCosmosDBApiArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      collectionName: map['collectionName'] == null ? null : pulumi.Output.create<String>(map['collectionName'] as String),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      linkedServiceName: pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      schemaColumns: map['schemaColumns'] == null ? null : pulumi.Output.create<List<DatasetCosmosDBApiSchemaColumn>>(pulumi.Input.decodeList<DatasetCosmosDBApiSchemaColumn>(map['schemaColumns'], (value) => DatasetCosmosDBApiSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetCosmosDBApiSchemaColumn>(map['schemaColumns'], (value) => DatasetCosmosDBApiSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

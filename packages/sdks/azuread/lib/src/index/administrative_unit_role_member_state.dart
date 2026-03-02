@@ -16,13 +16,10 @@ class AdministrativeUnitRoleMemberState {
   /// [memberObjectId] The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   /// [roleObjectId] The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
   AdministrativeUnitRoleMemberState({
-    pulumi.Output<String>? administrativeUnitObjectId,
-    pulumi.Output<String>? memberObjectId,
-    pulumi.Output<String>? roleObjectId,
-  }) :
-      administrativeUnitObjectId = pulumi.Input.asOptionalInput<String>(administrativeUnitObjectId),
-      memberObjectId = pulumi.Input.asOptionalInput<String>(memberObjectId),
-      roleObjectId = pulumi.Input.asOptionalInput<String>(roleObjectId);
+    this.administrativeUnitObjectId,
+    this.memberObjectId,
+    this.roleObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AdministrativeUnitRoleMemberState {
 
   factory AdministrativeUnitRoleMemberState.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitRoleMemberState(
-      administrativeUnitObjectId: map['administrativeUnitObjectId'] == null ? null : pulumi.Output.create<String>(map['administrativeUnitObjectId'] as String),
-      memberObjectId: map['memberObjectId'] == null ? null : pulumi.Output.create<String>(map['memberObjectId'] as String),
-      roleObjectId: map['roleObjectId'] == null ? null : pulumi.Output.create<String>(map['roleObjectId'] as String),
+      administrativeUnitObjectId: map['administrativeUnitObjectId'] == null ? null : (map['administrativeUnitObjectId'] as String).input(),
+      memberObjectId: map['memberObjectId'] == null ? null : (map['memberObjectId'] as String).input(),
+      roleObjectId: map['roleObjectId'] == null ? null : (map['roleObjectId'] as String).input(),
     );
   }
 }

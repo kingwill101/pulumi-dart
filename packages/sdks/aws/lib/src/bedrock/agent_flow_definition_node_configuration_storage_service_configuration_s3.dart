@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3 {
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3].
   /// [bucketName] Required.
@@ -18,7 +19,7 @@ class AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3 {
 
   factory AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3(
-      bucketName: map['bucketName'] as String,
+      bucketName: (map['bucketName'] as String).input(),
     );
   }
 }

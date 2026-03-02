@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'host_name_match_condition_parameters_response.dart';
 
 /// Defines the HostName condition for the delivery rule.
 class DeliveryRuleHostNameConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'HostName'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final HostNameMatchConditionParametersResponse parameters;
+  final pulumi.Input<HostNameMatchConditionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleHostNameConditionResponse].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleHostNameConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<HostNameMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleHostNameConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleHostNameConditionResponse(
-      name: map['name'] as String,
-      parameters: HostNameMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (HostNameMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

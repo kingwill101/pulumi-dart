@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to a build result
 class BuildResultUserSourceInfo {
   /// Resource id of an existing succeeded build result under the same Spring instance.
-  final String? buildResultId;
+  final pulumi.Input<String>? buildResultId;
   /// Type of the source uploaded
   /// Expected value is 'BuildResult'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the source
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [BuildResultUserSourceInfo].
   /// [buildResultId] Resource id of an existing succeeded build result under the same Spring instance.
@@ -31,9 +32,9 @@ class BuildResultUserSourceInfo {
 
   factory BuildResultUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return BuildResultUserSourceInfo(
-      buildResultId: map['buildResultId'] == null ? null : map['buildResultId'] as String,
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      buildResultId: map['buildResultId'] == null ? null : (map['buildResultId'] as String).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

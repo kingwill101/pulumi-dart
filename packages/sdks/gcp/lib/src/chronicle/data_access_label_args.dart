@@ -32,19 +32,13 @@ class DataAccessLabelArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [udmQuery] A UDM query over event data.
   DataAccessLabelArgs({
-    required pulumi.Output<String> dataAccessLabelId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> udmQuery,
-  }) :
-      dataAccessLabelId = pulumi.Input.asInput<String>(dataAccessLabelId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instance = pulumi.Input.asInput<String>(instance),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      udmQuery = pulumi.Input.asInput<String>(udmQuery);
+    required this.dataAccessLabelId,
+    this.description,
+    required this.instance,
+    required this.location,
+    this.project,
+    required this.udmQuery,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class DataAccessLabelArgs {
 
   factory DataAccessLabelArgs.fromMap(Map<String, dynamic> map) {
     return DataAccessLabelArgs(
-      dataAccessLabelId: pulumi.Output.create<String>(map['dataAccessLabelId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      udmQuery: pulumi.Output.create<String>(map['udmQuery'] as String),
+      dataAccessLabelId: (map['dataAccessLabelId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      udmQuery: (map['udmQuery'] as String).input(),
     );
   }
 }

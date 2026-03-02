@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskBaseImageTrigger {
   /// Should the trigger be enabled? Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The name which should be used for this trigger.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of the trigger. Possible values are `All` and `Runtime`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The endpoint URL for receiving the trigger.
-  final String? updateTriggerEndpoint;
+  final pulumi.Input<String>? updateTriggerEndpoint;
   /// Type of payload body for the trigger. Possible values are `Default` and `Token`.
-  final String? updateTriggerPayloadType;
+  final pulumi.Input<String>? updateTriggerPayloadType;
 
   /// Creates a new [RegistryTaskBaseImageTrigger].
   /// [enabled] Should the trigger be enabled? Defaults to `true`.
@@ -39,11 +40,11 @@ class RegistryTaskBaseImageTrigger {
 
   factory RegistryTaskBaseImageTrigger.fromMap(Map<String, dynamic> map) {
     return RegistryTaskBaseImageTrigger(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      name: map['name'] as String,
-      type: map['type'] as String,
-      updateTriggerEndpoint: map['updateTriggerEndpoint'] == null ? null : map['updateTriggerEndpoint'] as String,
-      updateTriggerPayloadType: map['updateTriggerPayloadType'] == null ? null : map['updateTriggerPayloadType'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
+      updateTriggerEndpoint: map['updateTriggerEndpoint'] == null ? null : (map['updateTriggerEndpoint'] as String).input(),
+      updateTriggerPayloadType: map['updateTriggerPayloadType'] == null ? null : (map['updateTriggerPayloadType'] as String).input(),
     );
   }
 }

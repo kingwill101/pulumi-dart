@@ -19,13 +19,10 @@ class GetNotificationsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [scalingGroupId] Scaling group id the notifications belong to.
   GetNotificationsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> scalingGroupId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      scalingGroupId = pulumi.Input.asInput<String>(scalingGroupId);
+    this.ids,
+    this.outputFile,
+    required this.scalingGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNotificationsArgs {
 
   factory GetNotificationsArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      scalingGroupId: pulumi.Output.create<String>(map['scalingGroupId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      scalingGroupId: (map['scalingGroupId'] as String).input(),
     );
   }
 }

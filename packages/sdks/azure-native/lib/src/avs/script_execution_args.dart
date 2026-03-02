@@ -46,29 +46,18 @@ class ScriptExecutionArgs {
   /// [scriptExecutionName] Name of the script cmdlet.
   /// [timeout] Time limit for execution
   ScriptExecutionArgs({
-    pulumi.Output<String>? failureReason,
-    pulumi.Output<List<PSCredentialExecutionParameter>>? hiddenParameters,
-    pulumi.Output<Map<String, dynamic>>? namedOutputs,
-    pulumi.Output<List<String>>? output,
-    pulumi.Output<List<PSCredentialExecutionParameter>>? parameters,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? retention,
-    pulumi.Output<String>? scriptCmdletId,
-    pulumi.Output<String>? scriptExecutionName,
-    required pulumi.Output<String> timeout,
-  }) :
-      failureReason = pulumi.Input.asOptionalInput<String>(failureReason),
-      hiddenParameters = pulumi.Input.asOptionalInput<List<PSCredentialExecutionParameter>>(hiddenParameters),
-      namedOutputs = pulumi.Input.asOptionalInput<Map<String, dynamic>>(namedOutputs),
-      output = pulumi.Input.asOptionalInput<List<String>>(output),
-      parameters = pulumi.Input.asOptionalInput<List<PSCredentialExecutionParameter>>(parameters),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retention = pulumi.Input.asOptionalInput<String>(retention),
-      scriptCmdletId = pulumi.Input.asOptionalInput<String>(scriptCmdletId),
-      scriptExecutionName = pulumi.Input.asOptionalInput<String>(scriptExecutionName),
-      timeout = pulumi.Input.asInput<String>(timeout);
+    this.failureReason,
+    this.hiddenParameters,
+    this.namedOutputs,
+    this.output,
+    this.parameters,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    this.retention,
+    this.scriptCmdletId,
+    this.scriptExecutionName,
+    required this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class ScriptExecutionArgs {
 
   factory ScriptExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ScriptExecutionArgs(
-      failureReason: map['failureReason'] == null ? null : pulumi.Output.create<String>(map['failureReason'] as String),
-      hiddenParameters: map['hiddenParameters'] == null ? null : pulumi.Output.create<List<PSCredentialExecutionParameter>>(pulumi.Input.decodeList<PSCredentialExecutionParameter>(map['hiddenParameters'], (value) => PSCredentialExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      namedOutputs: map['namedOutputs'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['namedOutputs'] as Map).cast<String, dynamic>()),
-      output: map['output'] == null ? null : pulumi.Output.create<List<String>>((map['output'] as List).cast<String>()),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<PSCredentialExecutionParameter>>(pulumi.Input.decodeList<PSCredentialExecutionParameter>(map['parameters'], (value) => PSCredentialExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retention: map['retention'] == null ? null : pulumi.Output.create<String>(map['retention'] as String),
-      scriptCmdletId: map['scriptCmdletId'] == null ? null : pulumi.Output.create<String>(map['scriptCmdletId'] as String),
-      scriptExecutionName: map['scriptExecutionName'] == null ? null : pulumi.Output.create<String>(map['scriptExecutionName'] as String),
-      timeout: pulumi.Output.create<String>(map['timeout'] as String),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
+      hiddenParameters: map['hiddenParameters'] == null ? null : (pulumi.Input.decodeList<PSCredentialExecutionParameter>(map['hiddenParameters'], (value) => PSCredentialExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namedOutputs: map['namedOutputs'] == null ? null : ((map['namedOutputs'] as Map).cast<String, dynamic>()).input(),
+      output: map['output'] == null ? null : ((map['output'] as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<PSCredentialExecutionParameter>(map['parameters'], (value) => PSCredentialExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
+      scriptCmdletId: map['scriptCmdletId'] == null ? null : (map['scriptCmdletId'] as String).input(),
+      scriptExecutionName: map['scriptExecutionName'] == null ? null : (map['scriptExecutionName'] as String).input(),
+      timeout: (map['timeout'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_performance_config_fixed_iops.dart';
 import 'instance_performance_config_iops_per_tb.dart';
 
@@ -8,11 +9,11 @@ class InstancePerformanceConfig {
   /// which will remain constant regardless of instance
   /// capacity.
   /// Structure is documented below.
-  final InstancePerformanceConfigFixedIops? fixedIops;
+  final pulumi.Input<InstancePerformanceConfigFixedIops>? fixedIops;
   /// The instance provisioned IOPS will change dynamically
   /// based on the capacity of the instance.
   /// Structure is documented below.
-  final InstancePerformanceConfigIopsPerTb? iopsPerTb;
+  final pulumi.Input<InstancePerformanceConfigIopsPerTb>? iopsPerTb;
 
   /// Creates a new [InstancePerformanceConfig].
   /// [fixedIops] The instance will have a fixed provisioned IOPS value,
@@ -24,15 +25,15 @@ class InstancePerformanceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedIops': ?fixedIops == null ? null : fixedIops!.toMap(),
-      'iopsPerTb': ?iopsPerTb == null ? null : iopsPerTb!.toMap(),
+      'fixedIops': ?pulumi.Input.mapOptionalInputValue<InstancePerformanceConfigFixedIops, Map<String, dynamic>>(fixedIops, (value) => value.toMap()),
+      'iopsPerTb': ?pulumi.Input.mapOptionalInputValue<InstancePerformanceConfigIopsPerTb, Map<String, dynamic>>(iopsPerTb, (value) => value.toMap()),
     };
   }
 
   factory InstancePerformanceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfig(
-      fixedIops: map['fixedIops'] == null ? null : InstancePerformanceConfigFixedIops.fromMap((map['fixedIops'] as Map).cast<String, dynamic>()),
-      iopsPerTb: map['iopsPerTb'] == null ? null : InstancePerformanceConfigIopsPerTb.fromMap((map['iopsPerTb'] as Map).cast<String, dynamic>()),
+      fixedIops: map['fixedIops'] == null ? null : (InstancePerformanceConfigFixedIops.fromMap((map['fixedIops'] as Map).cast<String, dynamic>())).input(),
+      iopsPerTb: map['iopsPerTb'] == null ? null : (InstancePerformanceConfigIopsPerTb.fromMap((map['iopsPerTb'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

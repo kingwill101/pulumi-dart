@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network Manager Deployment Status.
 class NetworkManagerDeploymentStatusResponse {
   /// Commit Time.
-  final String? commitTime;
+  final pulumi.Input<String>? commitTime;
   /// List of configuration ids.
-  final List<String>? configurationIds;
+  final pulumi.Input<List<String>>? configurationIds;
   /// Deployment Status.
-  final String? deploymentStatus;
+  final pulumi.Input<String>? deploymentStatus;
   /// Configuration Deployment Type.
-  final String? deploymentType;
+  final pulumi.Input<String>? deploymentType;
   /// Error Message.
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
   /// Region Name.
-  final String? region;
+  final pulumi.Input<String>? region;
 
   /// Creates a new [NetworkManagerDeploymentStatusResponse].
   /// [commitTime] Commit Time.
@@ -45,12 +46,12 @@ class NetworkManagerDeploymentStatusResponse {
 
   factory NetworkManagerDeploymentStatusResponse.fromMap(Map<String, dynamic> map) {
     return NetworkManagerDeploymentStatusResponse(
-      commitTime: map['commitTime'] == null ? null : map['commitTime'] as String,
-      configurationIds: map['configurationIds'] == null ? null : (map['configurationIds'] as List).cast<String>(),
-      deploymentStatus: map['deploymentStatus'] == null ? null : map['deploymentStatus'] as String,
-      deploymentType: map['deploymentType'] == null ? null : map['deploymentType'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      commitTime: map['commitTime'] == null ? null : (map['commitTime'] as String).input(),
+      configurationIds: map['configurationIds'] == null ? null : ((map['configurationIds'] as List).cast<String>()).input(),
+      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus'] as String).input(),
+      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

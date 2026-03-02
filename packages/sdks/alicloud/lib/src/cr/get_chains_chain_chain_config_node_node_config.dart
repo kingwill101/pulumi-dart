@@ -5,7 +5,7 @@ import 'get_chains_chain_chain_config_node_node_config_deny_policy.dart';
 
 class GetChainsChainChainConfigNodeNodeConfig {
   /// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
-  final List<GetChainsChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies;
+  final pulumi.Input<List<GetChainsChainChainConfigNodeNodeConfigDenyPolicy>> denyPolicies;
 
   /// Creates a new [GetChainsChainChainConfigNodeNodeConfig].
   /// [denyPolicies] Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
@@ -15,13 +15,13 @@ class GetChainsChainChainConfigNodeNodeConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'denyPolicies': pulumi.Input.encodeList<GetChainsChainChainConfigNodeNodeConfigDenyPolicy, Map<String, dynamic>>(denyPolicies, (value) => value.toMap()),
+      'denyPolicies': pulumi.Input.mapInputValue<List<GetChainsChainChainConfigNodeNodeConfigDenyPolicy>, List<Map<String, dynamic>>>(denyPolicies, (value) => pulumi.Input.encodeList<GetChainsChainChainConfigNodeNodeConfigDenyPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetChainsChainChainConfigNodeNodeConfig.fromMap(Map<String, dynamic> map) {
     return GetChainsChainChainConfigNodeNodeConfig(
-      denyPolicies: pulumi.Input.decodeList<GetChainsChainChainConfigNodeNodeConfigDenyPolicy>(map['denyPolicies'], (value) => GetChainsChainChainConfigNodeNodeConfigDenyPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      denyPolicies: (pulumi.Input.decodeList<GetChainsChainChainConfigNodeNodeConfigDenyPolicy>(map['denyPolicies'], (value) => GetChainsChainChainConfigNodeNodeConfigDenyPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

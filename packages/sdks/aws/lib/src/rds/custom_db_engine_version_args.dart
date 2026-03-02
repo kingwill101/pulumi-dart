@@ -49,33 +49,20 @@ class CustomDbEngineVersionArgs {
   /// [status] The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CustomDbEngineVersionArgs({
-    pulumi.Output<String>? databaseInstallationFilesS3BucketName,
-    pulumi.Output<String>? databaseInstallationFilesS3Prefix,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> engine,
-    required pulumi.Output<String> engineVersion,
-    pulumi.Output<String>? filename,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? manifest,
-    pulumi.Output<String>? manifestHash,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceImageId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      databaseInstallationFilesS3BucketName = pulumi.Input.asOptionalInput<String>(databaseInstallationFilesS3BucketName),
-      databaseInstallationFilesS3Prefix = pulumi.Input.asOptionalInput<String>(databaseInstallationFilesS3Prefix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      engine = pulumi.Input.asInput<String>(engine),
-      engineVersion = pulumi.Input.asInput<String>(engineVersion),
-      filename = pulumi.Input.asOptionalInput<String>(filename),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      manifest = pulumi.Input.asOptionalInput<String>(manifest),
-      manifestHash = pulumi.Input.asOptionalInput<String>(manifestHash),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceImageId = pulumi.Input.asOptionalInput<String>(sourceImageId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.databaseInstallationFilesS3BucketName,
+    this.databaseInstallationFilesS3Prefix,
+    this.description,
+    required this.engine,
+    required this.engineVersion,
+    this.filename,
+    this.kmsKeyId,
+    this.manifest,
+    this.manifestHash,
+    this.region,
+    this.sourceImageId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class CustomDbEngineVersionArgs {
 
   factory CustomDbEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return CustomDbEngineVersionArgs(
-      databaseInstallationFilesS3BucketName: map['databaseInstallationFilesS3BucketName'] == null ? null : pulumi.Output.create<String>(map['databaseInstallationFilesS3BucketName'] as String),
-      databaseInstallationFilesS3Prefix: map['databaseInstallationFilesS3Prefix'] == null ? null : pulumi.Output.create<String>(map['databaseInstallationFilesS3Prefix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      engine: pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: pulumi.Output.create<String>(map['engineVersion'] as String),
-      filename: map['filename'] == null ? null : pulumi.Output.create<String>(map['filename'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      manifest: map['manifest'] == null ? null : pulumi.Output.create<String>(map['manifest'] as String),
-      manifestHash: map['manifestHash'] == null ? null : pulumi.Output.create<String>(map['manifestHash'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceImageId: map['sourceImageId'] == null ? null : pulumi.Output.create<String>(map['sourceImageId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      databaseInstallationFilesS3BucketName: map['databaseInstallationFilesS3BucketName'] == null ? null : (map['databaseInstallationFilesS3BucketName'] as String).input(),
+      databaseInstallationFilesS3Prefix: map['databaseInstallationFilesS3Prefix'] == null ? null : (map['databaseInstallationFilesS3Prefix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      manifest: map['manifest'] == null ? null : (map['manifest'] as String).input(),
+      manifestHash: map['manifestHash'] == null ? null : (map['manifestHash'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

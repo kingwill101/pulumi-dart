@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn {
   /// Description of the column that helps the query engine understand the contents of the column.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Whether to include or exclude the column during query generation. Valid values `INCLUDE`, `EXCLUDE`.
-  final String? inclusion;
+  final pulumi.Input<String>? inclusion;
   /// Name of the column for which the other fields in this object apply.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn].
   /// [description] Description of the column that helps the query engine understand the contents of the column.
@@ -29,9 +30,9 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn(
-      description: map['description'] == null ? null : map['description'] as String,
-      inclusion: map['inclusion'] == null ? null : map['inclusion'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      inclusion: map['inclusion'] == null ? null : (map['inclusion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

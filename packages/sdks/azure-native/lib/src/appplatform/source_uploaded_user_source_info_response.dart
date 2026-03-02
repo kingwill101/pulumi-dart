@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Uploaded Java source code binary for a deployment
 class SourceUploadedUserSourceInfoResponse {
   /// Selector for the artifact to be used for the deployment for multi-module projects. This should be
   /// the relative path to the target module/project.
-  final String? artifactSelector;
+  final pulumi.Input<String>? artifactSelector;
   /// Relative path of the storage which stores the source
-  final String? relativePath;
+  final pulumi.Input<String>? relativePath;
   /// Runtime version of the source file
-  final String? runtimeVersion;
+  final pulumi.Input<String>? runtimeVersion;
   /// Type of the source uploaded
   /// Expected value is 'Source'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the source
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [SourceUploadedUserSourceInfoResponse].
   /// [artifactSelector] Selector for the artifact to be used for the deployment for multi-module projects. This should be
@@ -42,11 +43,11 @@ class SourceUploadedUserSourceInfoResponse {
 
   factory SourceUploadedUserSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return SourceUploadedUserSourceInfoResponse(
-      artifactSelector: map['artifactSelector'] == null ? null : map['artifactSelector'] as String,
-      relativePath: map['relativePath'] == null ? null : map['relativePath'] as String,
-      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      artifactSelector: map['artifactSelector'] == null ? null : (map['artifactSelector'] as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

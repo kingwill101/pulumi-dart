@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigAddKeysEntry {
   /// Specifies the key with the value that will be converted to a different type.
-  final String key;
+  final pulumi.Input<String> key;
   /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
-  final bool? overwriteIfExists;
+  final pulumi.Input<bool>? overwriteIfExists;
   /// Specifies the value of the new entry to be added to the log event.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [LogTransformerTransformerConfigAddKeysEntry].
   /// [key] Specifies the key with the value that will be converted to a different type.
@@ -30,9 +31,9 @@ class LogTransformerTransformerConfigAddKeysEntry {
 
   factory LogTransformerTransformerConfigAddKeysEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigAddKeysEntry(
-      key: map['key'] as String,
-      overwriteIfExists: map['overwriteIfExists'] == null ? null : map['overwriteIfExists'] as bool,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      overwriteIfExists: map['overwriteIfExists'] == null ? null : (map['overwriteIfExists'] as bool).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the url and storage account ID where deployer VM packages are uploaded
 class DeployerVmPackagesResponse {
   /// The deployer VM packages storage account id
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
   /// The URL to the deployer VM packages file.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [DeployerVmPackagesResponse].
   /// [storageAccountId] The deployer VM packages storage account id
@@ -25,8 +26,8 @@ class DeployerVmPackagesResponse {
 
   factory DeployerVmPackagesResponse.fromMap(Map<String, dynamic> map) {
     return DeployerVmPackagesResponse(
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

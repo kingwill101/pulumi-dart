@@ -20,13 +20,10 @@ class GetRegionsArgs {
   /// [filters] Configuration block(s) to use as filters. Detailed below.
   /// [id] Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   GetRegionsArgs({
-    pulumi.Output<bool>? allRegions,
-    pulumi.Output<List<GetRegionsFilter>>? filters,
-    pulumi.Output<String>? id,
-  }) :
-      allRegions = pulumi.Input.asOptionalInput<bool>(allRegions),
-      filters = pulumi.Input.asOptionalInput<List<GetRegionsFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id);
+    this.allRegions,
+    this.filters,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      allRegions: map['allRegions'] == null ? null : pulumi.Output.create<bool>(map['allRegions'] as bool),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetRegionsFilter>>(pulumi.Input.decodeList<GetRegionsFilter>(map['filters'], (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
+      allRegions: map['allRegions'] == null ? null : (map['allRegions'] as bool).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRegionsFilter>(map['filters'], (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

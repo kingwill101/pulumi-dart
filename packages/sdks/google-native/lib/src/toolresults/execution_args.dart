@@ -45,29 +45,18 @@ class ExecutionArgs {
   /// [state] The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
   /// [testExecutionMatrixId] TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
   ExecutionArgs({
-    pulumi.Output<Timestamp>? completionTime,
-    pulumi.Output<Timestamp>? creationTime,
-    pulumi.Output<List<Map<String, dynamic>>>? dimensionDefinitions,
-    pulumi.Output<String>? executionId,
-    required pulumi.Output<String> historyId,
-    pulumi.Output<Outcome>? outcome,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<Specification>? specification,
-    pulumi.Output<ExecutionState>? state,
-    pulumi.Output<String>? testExecutionMatrixId,
-  }) :
-      completionTime = pulumi.Input.asOptionalInput<Timestamp>(completionTime),
-      creationTime = pulumi.Input.asOptionalInput<Timestamp>(creationTime),
-      dimensionDefinitions = pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(dimensionDefinitions),
-      executionId = pulumi.Input.asOptionalInput<String>(executionId),
-      historyId = pulumi.Input.asInput<String>(historyId),
-      outcome = pulumi.Input.asOptionalInput<Outcome>(outcome),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      specification = pulumi.Input.asOptionalInput<Specification>(specification),
-      state = pulumi.Input.asOptionalInput<ExecutionState>(state),
-      testExecutionMatrixId = pulumi.Input.asOptionalInput<String>(testExecutionMatrixId);
+    this.completionTime,
+    this.creationTime,
+    this.dimensionDefinitions,
+    this.executionId,
+    required this.historyId,
+    this.outcome,
+    this.project,
+    this.requestId,
+    this.specification,
+    this.state,
+    this.testExecutionMatrixId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class ExecutionArgs {
 
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
-      completionTime: map['completionTime'] == null ? null : pulumi.Output.create<Timestamp>(Timestamp.fromMap((map['completionTime'] as Map).cast<String, dynamic>())),
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<Timestamp>(Timestamp.fromMap((map['creationTime'] as Map).cast<String, dynamic>())),
-      dimensionDefinitions: map['dimensionDefinitions'] == null ? null : pulumi.Output.create<List<Map<String, dynamic>>>((map['dimensionDefinitions'] as List).cast<Map<String, dynamic>>()),
-      executionId: map['executionId'] == null ? null : pulumi.Output.create<String>(map['executionId'] as String),
-      historyId: pulumi.Output.create<String>(map['historyId'] as String),
-      outcome: map['outcome'] == null ? null : pulumi.Output.create<Outcome>(Outcome.fromMap((map['outcome'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      specification: map['specification'] == null ? null : pulumi.Output.create<Specification>(Specification.fromMap((map['specification'] as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : pulumi.Output.create<ExecutionState>(ExecutionState.fromValue(map['state'] as String)),
-      testExecutionMatrixId: map['testExecutionMatrixId'] == null ? null : pulumi.Output.create<String>(map['testExecutionMatrixId'] as String),
+      completionTime: map['completionTime'] == null ? null : (Timestamp.fromMap((map['completionTime'] as Map).cast<String, dynamic>())).input(),
+      creationTime: map['creationTime'] == null ? null : (Timestamp.fromMap((map['creationTime'] as Map).cast<String, dynamic>())).input(),
+      dimensionDefinitions: map['dimensionDefinitions'] == null ? null : ((map['dimensionDefinitions'] as List).cast<Map<String, dynamic>>()).input(),
+      executionId: map['executionId'] == null ? null : (map['executionId'] as String).input(),
+      historyId: (map['historyId'] as String).input(),
+      outcome: map['outcome'] == null ? null : (Outcome.fromMap((map['outcome'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      specification: map['specification'] == null ? null : (Specification.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (ExecutionState.fromValue(map['state'] as String)).input(),
+      testExecutionMatrixId: map['testExecutionMatrixId'] == null ? null : (map['testExecutionMatrixId'] as String).input(),
     );
   }
 }

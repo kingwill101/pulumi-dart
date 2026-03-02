@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1 {
   /// Unique identifier for the instance; defined by the server.
-  final String canonicalUrl;
+  final pulumi.Input<String> canonicalUrl;
   /// Resource URL to the virtual machine instance which is being mirrored.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1].
   /// [canonicalUrl] Unique identifier for the instance; defined by the server.
@@ -24,8 +25,8 @@ class PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1 {
 
   factory PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1(
-      canonicalUrl: map['canonicalUrl'] as String,
-      url: map['url'] as String,
+      canonicalUrl: (map['canonicalUrl'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class DataManagerForAgricultureResourceArgs {
   /// [sensorIntegration] Sensor integration request model.
   /// [tags] Resource tags.
   DataManagerForAgricultureResourceArgs({
-    pulumi.Output<String>? dataManagerForAgricultureResourceName,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SensorIntegration>? sensorIntegration,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dataManagerForAgricultureResourceName = pulumi.Input.asOptionalInput<String>(dataManagerForAgricultureResourceName),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sensorIntegration = pulumi.Input.asOptionalInput<SensorIntegration>(sensorIntegration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dataManagerForAgricultureResourceName,
+    this.identity,
+    this.location,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.sensorIntegration,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class DataManagerForAgricultureResourceArgs {
 
   factory DataManagerForAgricultureResourceArgs.fromMap(Map<String, dynamic> map) {
     return DataManagerForAgricultureResourceArgs(
-      dataManagerForAgricultureResourceName: map['dataManagerForAgricultureResourceName'] == null ? null : pulumi.Output.create<String>(map['dataManagerForAgricultureResourceName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sensorIntegration: map['sensorIntegration'] == null ? null : pulumi.Output.create<SensorIntegration>(SensorIntegration.fromMap((map['sensorIntegration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dataManagerForAgricultureResourceName: map['dataManagerForAgricultureResourceName'] == null ? null : (map['dataManagerForAgricultureResourceName'] as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sensorIntegration: map['sensorIntegration'] == null ? null : (SensorIntegration.fromMap((map['sensorIntegration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

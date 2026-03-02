@@ -31,21 +31,14 @@ class DomainMappingArgs {
   /// [project] Optional.
   /// [spec] The spec for this DomainMapping.
   DomainMappingArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? dryRun,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<String>? project,
-    pulumi.Output<DomainMappingSpec>? spec,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      dryRun = pulumi.Input.asOptionalInput<String>(dryRun),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spec = pulumi.Input.asOptionalInput<DomainMappingSpec>(spec);
+    this.apiVersion,
+    this.dryRun,
+    this.kind,
+    this.location,
+    this.metadata,
+    this.project,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DomainMappingArgs {
 
   factory DomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<String>(map['dryRun'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<DomainMappingSpec>(DomainMappingSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spec: map['spec'] == null ? null : (DomainMappingSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connect_to_target_sql_db_task_input.dart';
 
 /// Properties for the task that validates connection to SQL DB and target server requirements
 class ConnectToTargetSqlDbTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final Map<String, String>? clientData;
+  final pulumi.Input<Map<String, String>>? clientData;
   /// DateTime in UTC when the task was created
-  final String? createdOn;
+  final pulumi.Input<String>? createdOn;
   /// Task input
-  final ConnectToTargetSqlDbTaskInput? input;
+  final pulumi.Input<ConnectToTargetSqlDbTaskInput>? input;
   /// Task type.
   /// Expected value is 'ConnectToTarget.SqlDb'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
 
   /// Creates a new [ConnectToTargetSqlDbTaskProperties].
   /// [clientData] Key value pairs of client data to attach meta data information to task
@@ -30,17 +31,17 @@ class ConnectToTargetSqlDbTaskProperties {
     return <String, dynamic>{
       'clientData': ?clientData,
       'createdOn': ?createdOn,
-      'input': ?input == null ? null : input!.toMap(),
+      'input': ?pulumi.Input.mapOptionalInputValue<ConnectToTargetSqlDbTaskInput, Map<String, dynamic>>(input, (value) => value.toMap()),
       'taskType': taskType,
     };
   }
 
   factory ConnectToTargetSqlDbTaskProperties.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlDbTaskProperties(
-      clientData: map['clientData'] == null ? null : (map['clientData'] as Map).cast<String, String>(),
-      createdOn: map['createdOn'] == null ? null : map['createdOn'] as String,
-      input: map['input'] == null ? null : ConnectToTargetSqlDbTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      taskType: map['taskType'] as String,
+      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
+      createdOn: map['createdOn'] == null ? null : (map['createdOn'] as String).input(),
+      input: map['input'] == null ? null : (ConnectToTargetSqlDbTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

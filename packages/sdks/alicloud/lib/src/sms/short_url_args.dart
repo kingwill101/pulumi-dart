@@ -19,13 +19,10 @@ class ShortUrlArgs {
   /// [shortUrlName] The name of the resource.
   /// [sourceUrl] The original link address.
   ShortUrlArgs({
-    required pulumi.Output<int> effectiveDays,
-    required pulumi.Output<String> shortUrlName,
-    required pulumi.Output<String> sourceUrl,
-  }) :
-      effectiveDays = pulumi.Input.asInput<int>(effectiveDays),
-      shortUrlName = pulumi.Input.asInput<String>(shortUrlName),
-      sourceUrl = pulumi.Input.asInput<String>(sourceUrl);
+    required this.effectiveDays,
+    required this.shortUrlName,
+    required this.sourceUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ShortUrlArgs {
 
   factory ShortUrlArgs.fromMap(Map<String, dynamic> map) {
     return ShortUrlArgs(
-      effectiveDays: pulumi.Output.create<int>(map['effectiveDays'] as int),
-      shortUrlName: pulumi.Output.create<String>(map['shortUrlName'] as String),
-      sourceUrl: pulumi.Output.create<String>(map['sourceUrl'] as String),
+      effectiveDays: (map['effectiveDays'] as int).input(),
+      shortUrlName: (map['shortUrlName'] as String).input(),
+      sourceUrl: (map['sourceUrl'] as String).input(),
     );
   }
 }

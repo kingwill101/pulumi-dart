@@ -60,31 +60,19 @@ class NetworkPolicyState {
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
   /// [vmwareEngineNetworkCanonical] The canonical name of the VMware Engine network in the form:
   NetworkPolicyState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? edgeServicesCidr,
-    pulumi.Output<NetworkPolicyExternalIp>? externalIp,
-    pulumi.Output<NetworkPolicyInternetAccess>? internetAccess,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<String>? vmwareEngineNetwork,
-    pulumi.Output<String>? vmwareEngineNetworkCanonical,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      edgeServicesCidr = pulumi.Input.asOptionalInput<String>(edgeServicesCidr),
-      externalIp = pulumi.Input.asOptionalInput<NetworkPolicyExternalIp>(externalIp),
-      internetAccess = pulumi.Input.asOptionalInput<NetworkPolicyInternetAccess>(internetAccess),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      vmwareEngineNetwork = pulumi.Input.asOptionalInput<String>(vmwareEngineNetwork),
-      vmwareEngineNetworkCanonical = pulumi.Input.asOptionalInput<String>(vmwareEngineNetworkCanonical);
+    this.createTime,
+    this.description,
+    this.edgeServicesCidr,
+    this.externalIp,
+    this.internetAccess,
+    this.location,
+    this.name,
+    this.project,
+    this.uid,
+    this.updateTime,
+    this.vmwareEngineNetwork,
+    this.vmwareEngineNetworkCanonical,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,18 +93,18 @@ class NetworkPolicyState {
 
   factory NetworkPolicyState.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      edgeServicesCidr: map['edgeServicesCidr'] == null ? null : pulumi.Output.create<String>(map['edgeServicesCidr'] as String),
-      externalIp: map['externalIp'] == null ? null : pulumi.Output.create<NetworkPolicyExternalIp>(NetworkPolicyExternalIp.fromMap((map['externalIp'] as Map).cast<String, dynamic>())),
-      internetAccess: map['internetAccess'] == null ? null : pulumi.Output.create<NetworkPolicyInternetAccess>(NetworkPolicyInternetAccess.fromMap((map['internetAccess'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : pulumi.Output.create<String>(map['vmwareEngineNetwork'] as String),
-      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : pulumi.Output.create<String>(map['vmwareEngineNetworkCanonical'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      edgeServicesCidr: map['edgeServicesCidr'] == null ? null : (map['edgeServicesCidr'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (NetworkPolicyExternalIp.fromMap((map['externalIp'] as Map).cast<String, dynamic>())).input(),
+      internetAccess: map['internetAccess'] == null ? null : (NetworkPolicyInternetAccess.fromMap((map['internetAccess'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
+      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : (map['vmwareEngineNetworkCanonical'] as String).input(),
     );
   }
 }

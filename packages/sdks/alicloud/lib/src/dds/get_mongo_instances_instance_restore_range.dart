@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMongoInstancesInstanceRestoreRange {
-  final String restoreBeginTime;
-  final String restoreEndTime;
-  final String restoreType;
+  final pulumi.Input<String> restoreBeginTime;
+  final pulumi.Input<String> restoreEndTime;
+  final pulumi.Input<String> restoreType;
 
   /// Creates a new [GetMongoInstancesInstanceRestoreRange].
   /// [restoreBeginTime] Required.
@@ -26,9 +27,9 @@ class GetMongoInstancesInstanceRestoreRange {
 
   factory GetMongoInstancesInstanceRestoreRange.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesInstanceRestoreRange(
-      restoreBeginTime: map['restoreBeginTime'] as String,
-      restoreEndTime: map['restoreEndTime'] as String,
-      restoreType: map['restoreType'] as String,
+      restoreBeginTime: (map['restoreBeginTime'] as String).input(),
+      restoreEndTime: (map['restoreEndTime'] as String).input(),
+      restoreType: (map['restoreType'] as String).input(),
     );
   }
 }

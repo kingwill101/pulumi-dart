@@ -6,21 +6,21 @@ import 'get_placement_groups_placement_group_migrations.dart';
 
 class GetPlacementGroupsPlacementGroup {
   /// The ID of the placement group.
-  final int id;
+  final pulumi.Input<int> id;
   /// Whether this Linode is currently compliant with the group's placement group type.
-  final bool isCompliant;
+  final pulumi.Input<bool> isCompliant;
   /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-  final String label;
+  final pulumi.Input<String> label;
   /// A set of Linodes currently assigned to this Placement Group.
-  final List<GetPlacementGroupsPlacementGroupMember> members;
+  final pulumi.Input<List<GetPlacementGroupsPlacementGroupMember>> members;
   /// Any Linodes that are being migrated to or from the placement group.
-  final GetPlacementGroupsPlacementGroupMigrations migrations;
+  final pulumi.Input<GetPlacementGroupsPlacementGroupMigrations> migrations;
   /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
-  final String placementGroupPolicy;
+  final pulumi.Input<String> placementGroupPolicy;
   /// The placement group type to use when placing Linodes in this group.
-  final String placementGroupType;
+  final pulumi.Input<String> placementGroupType;
   /// The region of the Placement Group.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetPlacementGroupsPlacementGroup].
   /// [id] The ID of the placement group.
@@ -47,8 +47,8 @@ class GetPlacementGroupsPlacementGroup {
       'id': id,
       'isCompliant': isCompliant,
       'label': label,
-      'members': pulumi.Input.encodeList<GetPlacementGroupsPlacementGroupMember, Map<String, dynamic>>(members, (value) => value.toMap()),
-      'migrations': migrations.toMap(),
+      'members': pulumi.Input.mapInputValue<List<GetPlacementGroupsPlacementGroupMember>, List<Map<String, dynamic>>>(members, (value) => pulumi.Input.encodeList<GetPlacementGroupsPlacementGroupMember, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'migrations': pulumi.Input.mapInputValue<GetPlacementGroupsPlacementGroupMigrations, Map<String, dynamic>>(migrations, (value) => value.toMap()),
       'placementGroupPolicy': placementGroupPolicy,
       'placementGroupType': placementGroupType,
       'region': region,
@@ -57,14 +57,14 @@ class GetPlacementGroupsPlacementGroup {
 
   factory GetPlacementGroupsPlacementGroup.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsPlacementGroup(
-      id: map['id'] as int,
-      isCompliant: map['isCompliant'] as bool,
-      label: map['label'] as String,
-      members: pulumi.Input.decodeList<GetPlacementGroupsPlacementGroupMember>(map['members'], (value) => GetPlacementGroupsPlacementGroupMember.fromMap((value as Map).cast<String, dynamic>())),
-      migrations: GetPlacementGroupsPlacementGroupMigrations.fromMap((map['migrations'] as Map).cast<String, dynamic>()),
-      placementGroupPolicy: map['placementGroupPolicy'] as String,
-      placementGroupType: map['placementGroupType'] as String,
-      region: map['region'] as String,
+      id: (map['id'] as int).input(),
+      isCompliant: (map['isCompliant'] as bool).input(),
+      label: (map['label'] as String).input(),
+      members: (pulumi.Input.decodeList<GetPlacementGroupsPlacementGroupMember>(map['members'], (value) => GetPlacementGroupsPlacementGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      migrations: (GetPlacementGroupsPlacementGroupMigrations.fromMap((map['migrations'] as Map).cast<String, dynamic>())).input(),
+      placementGroupPolicy: (map['placementGroupPolicy'] as String).input(),
+      placementGroupType: (map['placementGroupType'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

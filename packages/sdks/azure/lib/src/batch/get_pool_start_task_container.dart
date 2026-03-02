@@ -5,13 +5,13 @@ import 'get_pool_start_task_container_registry.dart';
 
 class GetPoolStartTaskContainer {
   /// The image to use to create the container in which the task will run.
-  final String imageName;
+  final pulumi.Input<String> imageName;
   /// The same reference as `container_registries` block defined as follows.
-  final List<GetPoolStartTaskContainerRegistry> registries;
+  final pulumi.Input<List<GetPoolStartTaskContainerRegistry>> registries;
   /// Additional options to the container create command.
-  final String runOptions;
+  final pulumi.Input<String> runOptions;
   /// A flag to indicate where the container task working directory is.
-  final String workingDirectory;
+  final pulumi.Input<String> workingDirectory;
 
   /// Creates a new [GetPoolStartTaskContainer].
   /// [imageName] The image to use to create the container in which the task will run.
@@ -28,7 +28,7 @@ class GetPoolStartTaskContainer {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'imageName': imageName,
-      'registries': pulumi.Input.encodeList<GetPoolStartTaskContainerRegistry, Map<String, dynamic>>(registries, (value) => value.toMap()),
+      'registries': pulumi.Input.mapInputValue<List<GetPoolStartTaskContainerRegistry>, List<Map<String, dynamic>>>(registries, (value) => pulumi.Input.encodeList<GetPoolStartTaskContainerRegistry, Map<String, dynamic>>(value, (value) => value.toMap())),
       'runOptions': runOptions,
       'workingDirectory': workingDirectory,
     };
@@ -36,10 +36,10 @@ class GetPoolStartTaskContainer {
 
   factory GetPoolStartTaskContainer.fromMap(Map<String, dynamic> map) {
     return GetPoolStartTaskContainer(
-      imageName: map['imageName'] as String,
-      registries: pulumi.Input.decodeList<GetPoolStartTaskContainerRegistry>(map['registries'], (value) => GetPoolStartTaskContainerRegistry.fromMap((value as Map).cast<String, dynamic>())),
-      runOptions: map['runOptions'] as String,
-      workingDirectory: map['workingDirectory'] as String,
+      imageName: (map['imageName'] as String).input(),
+      registries: (pulumi.Input.decodeList<GetPoolStartTaskContainerRegistry>(map['registries'], (value) => GetPoolStartTaskContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runOptions: (map['runOptions'] as String).input(),
+      workingDirectory: (map['workingDirectory'] as String).input(),
     );
   }
 }

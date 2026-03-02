@@ -25,17 +25,12 @@ class SqlPoolTransparentDataEncryptionArgs {
   /// [transparentDataEncryptionName] The name of the transparent data encryption configuration.
   /// [workspaceName] The name of the workspace.
   SqlPoolTransparentDataEncryptionArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlPoolName,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transparentDataEncryptionName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlPoolName = pulumi.Input.asInput<String>(sqlPoolName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transparentDataEncryptionName = pulumi.Input.asOptionalInput<String>(transparentDataEncryptionName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.sqlPoolName,
+    this.status,
+    this.transparentDataEncryptionName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SqlPoolTransparentDataEncryptionArgs {
 
   factory SqlPoolTransparentDataEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolTransparentDataEncryptionArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlPoolName: pulumi.Output.create<String>(map['sqlPoolName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transparentDataEncryptionName: map['transparentDataEncryptionName'] == null ? null : pulumi.Output.create<String>(map['transparentDataEncryptionName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlPoolName: (map['sqlPoolName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transparentDataEncryptionName: map['transparentDataEncryptionName'] == null ? null : (map['transparentDataEncryptionName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

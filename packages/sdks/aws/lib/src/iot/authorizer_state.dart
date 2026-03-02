@@ -40,29 +40,18 @@ class AuthorizerState {
   /// [tokenKeyName] The name of the token key used to extract the token from the HTTP headers. This value is required if signing is enabled in your authorizer.
   /// [tokenSigningPublicKeys] The public keys used to verify the digital signature returned by your custom authentication service. This value is required if signing is enabled in your authorizer.
   AuthorizerState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? authorizerFunctionArn,
-    pulumi.Output<bool>? enableCachingForHttp,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? signingDisabled,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? tokenKeyName,
-    pulumi.Output<Map<String, String>>? tokenSigningPublicKeys,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authorizerFunctionArn = pulumi.Input.asOptionalInput<String>(authorizerFunctionArn),
-      enableCachingForHttp = pulumi.Input.asOptionalInput<bool>(enableCachingForHttp),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      signingDisabled = pulumi.Input.asOptionalInput<bool>(signingDisabled),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      tokenKeyName = pulumi.Input.asOptionalInput<String>(tokenKeyName),
-      tokenSigningPublicKeys = pulumi.Input.asOptionalInput<Map<String, String>>(tokenSigningPublicKeys);
+    this.arn,
+    this.authorizerFunctionArn,
+    this.enableCachingForHttp,
+    this.name,
+    this.region,
+    this.signingDisabled,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.tokenKeyName,
+    this.tokenSigningPublicKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class AuthorizerState {
 
   factory AuthorizerState.fromMap(Map<String, dynamic> map) {
     return AuthorizerState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authorizerFunctionArn: map['authorizerFunctionArn'] == null ? null : pulumi.Output.create<String>(map['authorizerFunctionArn'] as String),
-      enableCachingForHttp: map['enableCachingForHttp'] == null ? null : pulumi.Output.create<bool>(map['enableCachingForHttp'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      signingDisabled: map['signingDisabled'] == null ? null : pulumi.Output.create<bool>(map['signingDisabled'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      tokenKeyName: map['tokenKeyName'] == null ? null : pulumi.Output.create<String>(map['tokenKeyName'] as String),
-      tokenSigningPublicKeys: map['tokenSigningPublicKeys'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tokenSigningPublicKeys'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authorizerFunctionArn: map['authorizerFunctionArn'] == null ? null : (map['authorizerFunctionArn'] as String).input(),
+      enableCachingForHttp: map['enableCachingForHttp'] == null ? null : (map['enableCachingForHttp'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      signingDisabled: map['signingDisabled'] == null ? null : (map['signingDisabled'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      tokenKeyName: map['tokenKeyName'] == null ? null : (map['tokenKeyName'] as String).input(),
+      tokenSigningPublicKeys: map['tokenSigningPublicKeys'] == null ? null : ((map['tokenSigningPublicKeys'] as Map).cast<String, String>()).input(),
     );
   }
 }

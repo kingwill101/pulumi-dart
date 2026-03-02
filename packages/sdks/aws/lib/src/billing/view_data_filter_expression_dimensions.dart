@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ViewDataFilterExpressionDimensions {
   /// Key of the dimension. Possible values are `LINKED_ACCOUNT`.
-  final String key;
+  final pulumi.Input<String> key;
   /// List of metadata values that you can use to filter and group your results.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ViewDataFilterExpressionDimensions].
   /// [key] Key of the dimension. Possible values are `LINKED_ACCOUNT`.
@@ -24,8 +25,8 @@ class ViewDataFilterExpressionDimensions {
 
   factory ViewDataFilterExpressionDimensions.fromMap(Map<String, dynamic> map) {
     return ViewDataFilterExpressionDimensions(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

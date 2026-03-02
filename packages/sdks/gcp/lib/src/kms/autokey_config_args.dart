@@ -18,11 +18,9 @@ class AutokeyConfigArgs {
   /// [folder] The folder for which to retrieve config.
   /// [keyProject] The target key project for a given folder where KMS Autokey will provision a
   AutokeyConfigArgs({
-    required pulumi.Output<String> folder,
-    pulumi.Output<String>? keyProject,
-  }) :
-      folder = pulumi.Input.asInput<String>(folder),
-      keyProject = pulumi.Input.asOptionalInput<String>(keyProject);
+    required this.folder,
+    this.keyProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class AutokeyConfigArgs {
 
   factory AutokeyConfigArgs.fromMap(Map<String, dynamic> map) {
     return AutokeyConfigArgs(
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      keyProject: map['keyProject'] == null ? null : pulumi.Output.create<String>(map['keyProject'] as String),
+      folder: (map['folder'] as String).input(),
+      keyProject: map['keyProject'] == null ? null : (map['keyProject'] as String).input(),
     );
   }
 }

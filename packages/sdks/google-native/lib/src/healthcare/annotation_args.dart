@@ -40,27 +40,17 @@ class AnnotationArgs {
   /// [resourceAnnotation] Annotations for resource. For example, classification tags.
   /// [textAnnotation] Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
   AnnotationArgs({
-    pulumi.Output<AnnotationSource>? annotationSource,
-    required pulumi.Output<String> annotationStoreId,
-    pulumi.Output<Map<String, String>>? customData,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<ImageAnnotation>? imageAnnotation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ResourceAnnotation>? resourceAnnotation,
-    pulumi.Output<SensitiveTextAnnotation>? textAnnotation,
-  }) :
-      annotationSource = pulumi.Input.asOptionalInput<AnnotationSource>(annotationSource),
-      annotationStoreId = pulumi.Input.asInput<String>(annotationStoreId),
-      customData = pulumi.Input.asOptionalInput<Map<String, String>>(customData),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      imageAnnotation = pulumi.Input.asOptionalInput<ImageAnnotation>(imageAnnotation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceAnnotation = pulumi.Input.asOptionalInput<ResourceAnnotation>(resourceAnnotation),
-      textAnnotation = pulumi.Input.asOptionalInput<SensitiveTextAnnotation>(textAnnotation);
+    this.annotationSource,
+    required this.annotationStoreId,
+    this.customData,
+    required this.datasetId,
+    this.imageAnnotation,
+    this.location,
+    this.name,
+    this.project,
+    this.resourceAnnotation,
+    this.textAnnotation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class AnnotationArgs {
 
   factory AnnotationArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationArgs(
-      annotationSource: map['annotationSource'] == null ? null : pulumi.Output.create<AnnotationSource>(AnnotationSource.fromMap((map['annotationSource'] as Map).cast<String, dynamic>())),
-      annotationStoreId: pulumi.Output.create<String>(map['annotationStoreId'] as String),
-      customData: map['customData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['customData'] as Map).cast<String, String>()),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      imageAnnotation: map['imageAnnotation'] == null ? null : pulumi.Output.create<ImageAnnotation>(ImageAnnotation.fromMap((map['imageAnnotation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceAnnotation: map['resourceAnnotation'] == null ? null : pulumi.Output.create<ResourceAnnotation>(ResourceAnnotation.fromMap((map['resourceAnnotation'] as Map).cast<String, dynamic>())),
-      textAnnotation: map['textAnnotation'] == null ? null : pulumi.Output.create<SensitiveTextAnnotation>(SensitiveTextAnnotation.fromMap((map['textAnnotation'] as Map).cast<String, dynamic>())),
+      annotationSource: map['annotationSource'] == null ? null : (AnnotationSource.fromMap((map['annotationSource'] as Map).cast<String, dynamic>())).input(),
+      annotationStoreId: (map['annotationStoreId'] as String).input(),
+      customData: map['customData'] == null ? null : ((map['customData'] as Map).cast<String, String>()).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      imageAnnotation: map['imageAnnotation'] == null ? null : (ImageAnnotation.fromMap((map['imageAnnotation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceAnnotation: map['resourceAnnotation'] == null ? null : (ResourceAnnotation.fromMap((map['resourceAnnotation'] as Map).cast<String, dynamic>())).input(),
+      textAnnotation: map['textAnnotation'] == null ? null : (SensitiveTextAnnotation.fromMap((map['textAnnotation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetKubernetesAddonsArgs {
   /// [ids] A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure <cluster_ud>:<addon_name>.
   /// [nameRegex] A regex string to filter results by addon name.
   GetKubernetesAddonsArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex);
+    required this.clusterId,
+    this.ids,
+    this.nameRegex,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKubernetesAddonsArgs {
 
   factory GetKubernetesAddonsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesAddonsArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
     );
   }
 }

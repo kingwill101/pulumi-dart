@@ -28,19 +28,13 @@ class GetPatchBaselinesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [shareType] Patch baseline sharing type. Valid values: `Private`, `Public`.
   GetPatchBaselinesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? operationSystem,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? shareType,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      operationSystem = pulumi.Input.asOptionalInput<String>(operationSystem),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      shareType = pulumi.Input.asOptionalInput<String>(shareType);
+    this.enableDetails,
+    this.ids,
+    this.nameRegex,
+    this.operationSystem,
+    this.outputFile,
+    this.shareType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetPatchBaselinesArgs {
 
   factory GetPatchBaselinesArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      operationSystem: map['operationSystem'] == null ? null : pulumi.Output.create<String>(map['operationSystem'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      shareType: map['shareType'] == null ? null : pulumi.Output.create<String>(map['shareType'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      operationSystem: map['operationSystem'] == null ? null : (map['operationSystem'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
     );
   }
 }

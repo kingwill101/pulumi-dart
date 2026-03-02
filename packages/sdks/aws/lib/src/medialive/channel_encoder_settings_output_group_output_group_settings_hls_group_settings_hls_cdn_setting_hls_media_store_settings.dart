@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings {
   /// Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
-  final int? connectionRetryInterval;
-  final int? filecacheDuration;
-  final String? mediaStoreStorageClass;
+  final pulumi.Input<int>? connectionRetryInterval;
+  final pulumi.Input<int>? filecacheDuration;
+  final pulumi.Input<String>? mediaStoreStorageClass;
   /// Number of retry attempts.
-  final int? numRetries;
+  final pulumi.Input<int>? numRetries;
   /// Number of seconds to wait until a restart is initiated.
-  final int? restartDelay;
+  final pulumi.Input<int>? restartDelay;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings].
   /// [connectionRetryInterval] Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
@@ -37,11 +38,11 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings(
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : map['connectionRetryInterval'] as int,
-      filecacheDuration: map['filecacheDuration'] == null ? null : map['filecacheDuration'] as int,
-      mediaStoreStorageClass: map['mediaStoreStorageClass'] == null ? null : map['mediaStoreStorageClass'] as String,
-      numRetries: map['numRetries'] == null ? null : map['numRetries'] as int,
-      restartDelay: map['restartDelay'] == null ? null : map['restartDelay'] as int,
+      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : (map['connectionRetryInterval'] as int).input(),
+      filecacheDuration: map['filecacheDuration'] == null ? null : (map['filecacheDuration'] as int).input(),
+      mediaStoreStorageClass: map['mediaStoreStorageClass'] == null ? null : (map['mediaStoreStorageClass'] as String).input(),
+      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
+      restartDelay: map['restartDelay'] == null ? null : (map['restartDelay'] as int).input(),
     );
   }
 }

@@ -48,25 +48,16 @@ class ReplicationSetState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ReplicationSetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<bool>? deletionProtected,
-    pulumi.Output<String>? lastModifiedBy,
-    pulumi.Output<List<ReplicationSetRegion>>? region,
-    pulumi.Output<List<ReplicationSetRegion>>? regions,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      deletionProtected = pulumi.Input.asOptionalInput<bool>(deletionProtected),
-      lastModifiedBy = pulumi.Input.asOptionalInput<String>(lastModifiedBy),
-      region = pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(region),
-      regions = pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(regions),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdBy,
+    this.deletionProtected,
+    this.lastModifiedBy,
+    this.region,
+    this.regions,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,15 +75,15 @@ class ReplicationSetState {
 
   factory ReplicationSetState.fromMap(Map<String, dynamic> map) {
     return ReplicationSetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      deletionProtected: map['deletionProtected'] == null ? null : pulumi.Output.create<bool>(map['deletionProtected'] as bool),
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : pulumi.Output.create<String>(map['lastModifiedBy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<List<ReplicationSetRegion>>(pulumi.Input.decodeList<ReplicationSetRegion>(map['region'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<ReplicationSetRegion>>(pulumi.Input.decodeList<ReplicationSetRegion>(map['regions'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      deletionProtected: map['deletionProtected'] == null ? null : (map['deletionProtected'] as bool).input(),
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : (map['lastModifiedBy'] as String).input(),
+      region: map['region'] == null ? null : (pulumi.Input.decodeList<ReplicationSetRegion>(map['region'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<ReplicationSetRegion>(map['regions'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

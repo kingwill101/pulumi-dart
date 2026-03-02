@@ -28,19 +28,13 @@ class GetDatabaseInstancesArgs {
   /// [tier] To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
   /// [zone] To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
   GetDatabaseInstancesArgs({
-    pulumi.Output<String>? databaseVersion,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? tier,
-    pulumi.Output<String>? zone,
-  }) :
-      databaseVersion = pulumi.Input.asOptionalInput<String>(databaseVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tier = pulumi.Input.asOptionalInput<String>(tier),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.databaseVersion,
+    this.project,
+    this.region,
+    this.state,
+    this.tier,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetDatabaseInstancesArgs {
 
   factory GetDatabaseInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesArgs(
-      databaseVersion: map['databaseVersion'] == null ? null : pulumi.Output.create<String>(map['databaseVersion'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tier: map['tier'] == null ? null : pulumi.Output.create<String>(map['tier'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      databaseVersion: map['databaseVersion'] == null ? null : (map['databaseVersion'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

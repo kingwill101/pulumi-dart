@@ -14,11 +14,9 @@ class InvocationLoggingConfigurationState {
   /// [loggingConfig] The logging configuration values to set. See `logging_config` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InvocationLoggingConfigurationState({
-    pulumi.Output<InvocationLoggingConfigurationLoggingConfig>? loggingConfig,
-    pulumi.Output<String>? region,
-  }) :
-      loggingConfig = pulumi.Input.asOptionalInput<InvocationLoggingConfigurationLoggingConfig>(loggingConfig),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.loggingConfig,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class InvocationLoggingConfigurationState {
 
   factory InvocationLoggingConfigurationState.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationState(
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<InvocationLoggingConfigurationLoggingConfig>(InvocationLoggingConfigurationLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      loggingConfig: map['loggingConfig'] == null ? null : (InvocationLoggingConfigurationLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

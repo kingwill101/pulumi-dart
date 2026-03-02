@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterZonalShiftConfig {
   /// Whether zonal shift is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterZonalShiftConfig].
   /// [enabled] Whether zonal shift is enabled.
@@ -19,7 +20,7 @@ class GetClusterZonalShiftConfig {
 
   factory GetClusterZonalShiftConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterZonalShiftConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

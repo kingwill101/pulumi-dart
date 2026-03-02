@@ -7,26 +7,26 @@ import 'region_backend_service_cdn_policy_negative_caching_policy.dart';
 class RegionBackendServiceCdnPolicy {
   /// The CacheKeyPolicy for this CdnPolicy.
   /// Structure is documented below.
-  final RegionBackendServiceCdnPolicyCacheKeyPolicy? cacheKeyPolicy;
+  final pulumi.Input<RegionBackendServiceCdnPolicyCacheKeyPolicy>? cacheKeyPolicy;
   /// Specifies the cache setting for all responses from this backend.
   /// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
   /// Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
-  final String? cacheMode;
+  final pulumi.Input<String>? cacheMode;
   /// Specifies the maximum allowed TTL for cached content served by this origin.
-  final int? clientTtl;
+  final pulumi.Input<int>? clientTtl;
   /// Specifies the default TTL for cached content served by this origin for responses
   /// that do not have an existing valid TTL (max-age or s-max-age).
-  final int? defaultTtl;
+  final pulumi.Input<int>? defaultTtl;
   /// Specifies the maximum allowed TTL for cached content served by this origin.
-  final int? maxTtl;
+  final pulumi.Input<int>? maxTtl;
   /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
-  final bool? negativeCaching;
+  final pulumi.Input<bool>? negativeCaching;
   /// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
   /// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
   /// Structure is documented below.
-  final List<RegionBackendServiceCdnPolicyNegativeCachingPolicy>? negativeCachingPolicies;
+  final pulumi.Input<List<RegionBackendServiceCdnPolicyNegativeCachingPolicy>>? negativeCachingPolicies;
   /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
-  final int? serveWhileStale;
+  final pulumi.Input<int>? serveWhileStale;
   /// Maximum number of seconds the response to a signed URL request
   /// will be considered fresh, defaults to 1hr (3600s). After this
   /// time period, the response will be revalidated before
@@ -36,7 +36,7 @@ class RegionBackendServiceCdnPolicy {
   /// "Cache-Control: public, max-age=[TTL]" header, regardless of any
   /// existing Cache-Control header. The actual headers served in
   /// responses will not be altered.
-  final int? signedUrlCacheMaxAgeSec;
+  final pulumi.Input<int>? signedUrlCacheMaxAgeSec;
 
   /// Creates a new [RegionBackendServiceCdnPolicy].
   /// [cacheKeyPolicy] The CacheKeyPolicy for this CdnPolicy.
@@ -62,13 +62,13 @@ class RegionBackendServiceCdnPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cacheKeyPolicy': ?cacheKeyPolicy == null ? null : cacheKeyPolicy!.toMap(),
+      'cacheKeyPolicy': ?pulumi.Input.mapOptionalInputValue<RegionBackendServiceCdnPolicyCacheKeyPolicy, Map<String, dynamic>>(cacheKeyPolicy, (value) => value.toMap()),
       'cacheMode': ?cacheMode,
       'clientTtl': ?clientTtl,
       'defaultTtl': ?defaultTtl,
       'maxTtl': ?maxTtl,
       'negativeCaching': ?negativeCaching,
-      'negativeCachingPolicies': ?negativeCachingPolicies == null ? null : pulumi.Input.encodeList<RegionBackendServiceCdnPolicyNegativeCachingPolicy, Map<String, dynamic>>(negativeCachingPolicies!, (value) => value.toMap()),
+      'negativeCachingPolicies': ?pulumi.Input.mapOptionalInputValue<List<RegionBackendServiceCdnPolicyNegativeCachingPolicy>, List<Map<String, dynamic>>>(negativeCachingPolicies, (value) => pulumi.Input.encodeList<RegionBackendServiceCdnPolicyNegativeCachingPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serveWhileStale': ?serveWhileStale,
       'signedUrlCacheMaxAgeSec': ?signedUrlCacheMaxAgeSec,
     };
@@ -76,15 +76,15 @@ class RegionBackendServiceCdnPolicy {
 
   factory RegionBackendServiceCdnPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceCdnPolicy(
-      cacheKeyPolicy: map['cacheKeyPolicy'] == null ? null : RegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap((map['cacheKeyPolicy'] as Map).cast<String, dynamic>()),
-      cacheMode: map['cacheMode'] == null ? null : map['cacheMode'] as String,
-      clientTtl: map['clientTtl'] == null ? null : map['clientTtl'] as int,
-      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl'] as int,
-      maxTtl: map['maxTtl'] == null ? null : map['maxTtl'] as int,
-      negativeCaching: map['negativeCaching'] == null ? null : map['negativeCaching'] as bool,
-      negativeCachingPolicies: map['negativeCachingPolicies'] == null ? null : pulumi.Input.decodeList<RegionBackendServiceCdnPolicyNegativeCachingPolicy>(map['negativeCachingPolicies'], (value) => RegionBackendServiceCdnPolicyNegativeCachingPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      serveWhileStale: map['serveWhileStale'] == null ? null : map['serveWhileStale'] as int,
-      signedUrlCacheMaxAgeSec: map['signedUrlCacheMaxAgeSec'] == null ? null : map['signedUrlCacheMaxAgeSec'] as int,
+      cacheKeyPolicy: map['cacheKeyPolicy'] == null ? null : (RegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap((map['cacheKeyPolicy'] as Map).cast<String, dynamic>())).input(),
+      cacheMode: map['cacheMode'] == null ? null : (map['cacheMode'] as String).input(),
+      clientTtl: map['clientTtl'] == null ? null : (map['clientTtl'] as int).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl'] as int).input(),
+      negativeCaching: map['negativeCaching'] == null ? null : (map['negativeCaching'] as bool).input(),
+      negativeCachingPolicies: map['negativeCachingPolicies'] == null ? null : (pulumi.Input.decodeList<RegionBackendServiceCdnPolicyNegativeCachingPolicy>(map['negativeCachingPolicies'], (value) => RegionBackendServiceCdnPolicyNegativeCachingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serveWhileStale: map['serveWhileStale'] == null ? null : (map['serveWhileStale'] as int).input(),
+      signedUrlCacheMaxAgeSec: map['signedUrlCacheMaxAgeSec'] == null ? null : (map['signedUrlCacheMaxAgeSec'] as int).input(),
     );
   }
 }

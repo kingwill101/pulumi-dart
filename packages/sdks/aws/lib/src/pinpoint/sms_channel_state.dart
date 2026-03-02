@@ -28,21 +28,14 @@ class SmsChannelState {
   /// [shortCode] Short Code registered with the phone provider.
   /// [transactionalMessagesPerSecond] Maximum number of transactional messages per second that can be sent.
   SmsChannelState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<int>? promotionalMessagesPerSecond,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? senderId,
-    pulumi.Output<String>? shortCode,
-    pulumi.Output<int>? transactionalMessagesPerSecond,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      promotionalMessagesPerSecond = pulumi.Input.asOptionalInput<int>(promotionalMessagesPerSecond),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      senderId = pulumi.Input.asOptionalInput<String>(senderId),
-      shortCode = pulumi.Input.asOptionalInput<String>(shortCode),
-      transactionalMessagesPerSecond = pulumi.Input.asOptionalInput<int>(transactionalMessagesPerSecond);
+    this.applicationId,
+    this.enabled,
+    this.promotionalMessagesPerSecond,
+    this.region,
+    this.senderId,
+    this.shortCode,
+    this.transactionalMessagesPerSecond,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class SmsChannelState {
 
   factory SmsChannelState.fromMap(Map<String, dynamic> map) {
     return SmsChannelState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      promotionalMessagesPerSecond: map['promotionalMessagesPerSecond'] == null ? null : pulumi.Output.create<int>(map['promotionalMessagesPerSecond'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      senderId: map['senderId'] == null ? null : pulumi.Output.create<String>(map['senderId'] as String),
-      shortCode: map['shortCode'] == null ? null : pulumi.Output.create<String>(map['shortCode'] as String),
-      transactionalMessagesPerSecond: map['transactionalMessagesPerSecond'] == null ? null : pulumi.Output.create<int>(map['transactionalMessagesPerSecond'] as int),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      promotionalMessagesPerSecond: map['promotionalMessagesPerSecond'] == null ? null : (map['promotionalMessagesPerSecond'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      senderId: map['senderId'] == null ? null : (map['senderId'] as String).input(),
+      shortCode: map['shortCode'] == null ? null : (map['shortCode'] as String).input(),
+      transactionalMessagesPerSecond: map['transactionalMessagesPerSecond'] == null ? null : (map['transactionalMessagesPerSecond'] as int).input(),
     );
   }
 }

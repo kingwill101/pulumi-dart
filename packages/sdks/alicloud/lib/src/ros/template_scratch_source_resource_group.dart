@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TemplateScratchSourceResourceGroup {
   /// The ID of the Source Resource Group.
-  final String resourceGroupId;
-  final List<String>? resourceTypeFilters;
+  final pulumi.Input<String> resourceGroupId;
+  final pulumi.Input<List<String>>? resourceTypeFilters;
 
   /// Creates a new [TemplateScratchSourceResourceGroup].
   /// [resourceGroupId] The ID of the Source Resource Group.
@@ -23,8 +24,8 @@ class TemplateScratchSourceResourceGroup {
 
   factory TemplateScratchSourceResourceGroup.fromMap(Map<String, dynamic> map) {
     return TemplateScratchSourceResourceGroup(
-      resourceGroupId: map['resourceGroupId'] as String,
-      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : (map['resourceTypeFilters'] as List).cast<String>(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters'] as List).cast<String>()).input(),
     );
   }
 }

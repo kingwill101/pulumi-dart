@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_model.dart';
 import 'vmware_migrate_agent_model_custom_properties.dart';
 
 /// MigrateAgent model properties.
 class MigrateAgentModelProperties {
   /// Identity model.
-  final IdentityModel? authenticationIdentity;
+  final pulumi.Input<IdentityModel>? authenticationIdentity;
   /// MigrateAgent model custom properties.
-  final VMwareMigrateAgentModelCustomProperties? customProperties;
+  final pulumi.Input<VMwareMigrateAgentModelCustomProperties>? customProperties;
   /// Gets or sets the machine Id where MigrateAgent is running.
-  final String? machineId;
+  final pulumi.Input<String>? machineId;
   /// Gets or sets the machine name where MigrateAgent is running.
-  final String? machineName;
+  final pulumi.Input<String>? machineName;
 
   /// Creates a new [MigrateAgentModelProperties].
   /// [authenticationIdentity] Identity model.
@@ -28,8 +29,8 @@ class MigrateAgentModelProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationIdentity': ?authenticationIdentity == null ? null : authenticationIdentity!.toMap(),
-      'customProperties': ?customProperties == null ? null : customProperties!.toMap(),
+      'authenticationIdentity': ?pulumi.Input.mapOptionalInputValue<IdentityModel, Map<String, dynamic>>(authenticationIdentity, (value) => value.toMap()),
+      'customProperties': ?pulumi.Input.mapOptionalInputValue<VMwareMigrateAgentModelCustomProperties, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
       'machineId': ?machineId,
       'machineName': ?machineName,
     };
@@ -37,10 +38,10 @@ class MigrateAgentModelProperties {
 
   factory MigrateAgentModelProperties.fromMap(Map<String, dynamic> map) {
     return MigrateAgentModelProperties(
-      authenticationIdentity: map['authenticationIdentity'] == null ? null : IdentityModel.fromMap((map['authenticationIdentity'] as Map).cast<String, dynamic>()),
-      customProperties: map['customProperties'] == null ? null : VMwareMigrateAgentModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>()),
-      machineId: map['machineId'] == null ? null : map['machineId'] as String,
-      machineName: map['machineName'] == null ? null : map['machineName'] as String,
+      authenticationIdentity: map['authenticationIdentity'] == null ? null : (IdentityModel.fromMap((map['authenticationIdentity'] as Map).cast<String, dynamic>())).input(),
+      customProperties: map['customProperties'] == null ? null : (VMwareMigrateAgentModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
+      machineId: map['machineId'] == null ? null : (map['machineId'] as String).input(),
+      machineName: map['machineName'] == null ? null : (map['machineName'] as String).input(),
     );
   }
 }

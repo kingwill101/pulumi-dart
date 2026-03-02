@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'copy_activity_log_settings_response.dart';
 import 'log_location_settings_response.dart';
 
 /// Log settings.
 class LogSettingsResponse {
   /// Specifies settings for copy activity log.
-  final CopyActivityLogSettingsResponse? copyActivityLogSettings;
+  final pulumi.Input<CopyActivityLogSettingsResponse>? copyActivityLogSettings;
   /// Specifies whether to enable copy activity log. Type: boolean (or Expression with resultType boolean).
-  final dynamic enableCopyActivityLog;
+  final pulumi.Input<dynamic>? enableCopyActivityLog;
   /// Log location settings customer needs to provide when enabling log.
-  final LogLocationSettingsResponse logLocationSettings;
+  final pulumi.Input<LogLocationSettingsResponse> logLocationSettings;
 
   /// Creates a new [LogSettingsResponse].
   /// [copyActivityLogSettings] Specifies settings for copy activity log.
@@ -24,17 +25,17 @@ class LogSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'copyActivityLogSettings': ?copyActivityLogSettings == null ? null : copyActivityLogSettings!.toMap(),
+      'copyActivityLogSettings': ?pulumi.Input.mapOptionalInputValue<CopyActivityLogSettingsResponse, Map<String, dynamic>>(copyActivityLogSettings, (value) => value.toMap()),
       'enableCopyActivityLog': ?enableCopyActivityLog,
-      'logLocationSettings': logLocationSettings.toMap(),
+      'logLocationSettings': pulumi.Input.mapInputValue<LogLocationSettingsResponse, Map<String, dynamic>>(logLocationSettings, (value) => value.toMap()),
     };
   }
 
   factory LogSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LogSettingsResponse(
-      copyActivityLogSettings: map['copyActivityLogSettings'] == null ? null : CopyActivityLogSettingsResponse.fromMap((map['copyActivityLogSettings'] as Map).cast<String, dynamic>()),
-      enableCopyActivityLog: map['enableCopyActivityLog'] == null ? null : map['enableCopyActivityLog'],
-      logLocationSettings: LogLocationSettingsResponse.fromMap((map['logLocationSettings'] as Map).cast<String, dynamic>()),
+      copyActivityLogSettings: map['copyActivityLogSettings'] == null ? null : (CopyActivityLogSettingsResponse.fromMap((map['copyActivityLogSettings'] as Map).cast<String, dynamic>())).input(),
+      enableCopyActivityLog: map['enableCopyActivityLog'] == null ? null : (map['enableCopyActivityLog']).input(),
+      logLocationSettings: (LogLocationSettingsResponse.fromMap((map['logLocationSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

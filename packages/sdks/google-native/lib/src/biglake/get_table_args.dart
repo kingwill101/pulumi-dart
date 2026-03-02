@@ -20,17 +20,12 @@ class GetTableArgs {
   /// [project] Optional.
   /// [tableId] Required.
   GetTableArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> databaseId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tableId,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tableId = pulumi.Input.asInput<String>(tableId);
+    required this.catalogId,
+    required this.databaseId,
+    required this.location,
+    this.project,
+    required this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tableId: pulumi.Output.create<String>(map['tableId'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

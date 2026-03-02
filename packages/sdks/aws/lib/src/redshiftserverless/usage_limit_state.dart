@@ -28,21 +28,14 @@ class UsageLimitState {
   /// [resourceArn] The Amazon Resource Name (ARN) of the Amazon Redshift Serverless resource to create the usage limit for.
   /// [usageType] The type of Amazon Redshift Serverless usage to create a usage limit for. Valid values are `serverless-compute` or `cross-region-datasharing`.
   UsageLimitState({
-    pulumi.Output<int>? amount,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? breachAction,
-    pulumi.Output<String>? period,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? usageType,
-  }) :
-      amount = pulumi.Input.asOptionalInput<int>(amount),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      breachAction = pulumi.Input.asOptionalInput<String>(breachAction),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      usageType = pulumi.Input.asOptionalInput<String>(usageType);
+    this.amount,
+    this.arn,
+    this.breachAction,
+    this.period,
+    this.region,
+    this.resourceArn,
+    this.usageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class UsageLimitState {
 
   factory UsageLimitState.fromMap(Map<String, dynamic> map) {
     return UsageLimitState(
-      amount: map['amount'] == null ? null : pulumi.Output.create<int>(map['amount'] as int),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      breachAction: map['breachAction'] == null ? null : pulumi.Output.create<String>(map['breachAction'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      usageType: map['usageType'] == null ? null : pulumi.Output.create<String>(map['usageType'] as String),
+      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      breachAction: map['breachAction'] == null ? null : (map['breachAction'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      usageType: map['usageType'] == null ? null : (map['usageType'] as String).input(),
     );
   }
 }

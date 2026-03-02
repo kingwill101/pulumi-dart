@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Controls sign-in behavior.
 class SignInBehaviorResponse {
   /// When to redirect sign-ins to the IdP.
-  final String redirectCondition;
+  final pulumi.Input<String> redirectCondition;
 
   /// Creates a new [SignInBehaviorResponse].
   /// [redirectCondition] When to redirect sign-ins to the IdP.
@@ -20,7 +21,7 @@ class SignInBehaviorResponse {
 
   factory SignInBehaviorResponse.fromMap(Map<String, dynamic> map) {
     return SignInBehaviorResponse(
-      redirectCondition: map['redirectCondition'] as String,
+      redirectCondition: (map['redirectCondition'] as String).input(),
     );
   }
 }

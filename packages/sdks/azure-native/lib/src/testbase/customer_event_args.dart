@@ -26,17 +26,12 @@ class CustomerEventArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   CustomerEventArgs({
-    pulumi.Output<String>? customerEventName,
-    required pulumi.Output<String> eventName,
-    required pulumi.Output<List<NotificationEventReceiver>> receivers,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      customerEventName = pulumi.Input.asOptionalInput<String>(customerEventName),
-      eventName = pulumi.Input.asInput<String>(eventName),
-      receivers = pulumi.Input.asInput<List<NotificationEventReceiver>>(receivers),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    this.customerEventName,
+    required this.eventName,
+    required this.receivers,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class CustomerEventArgs {
 
   factory CustomerEventArgs.fromMap(Map<String, dynamic> map) {
     return CustomerEventArgs(
-      customerEventName: map['customerEventName'] == null ? null : pulumi.Output.create<String>(map['customerEventName'] as String),
-      eventName: pulumi.Output.create<String>(map['eventName'] as String),
-      receivers: pulumi.Output.create<List<NotificationEventReceiver>>(pulumi.Input.decodeList<NotificationEventReceiver>(map['receivers'], (value) => NotificationEventReceiver.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      customerEventName: map['customerEventName'] == null ? null : (map['customerEventName'] as String).input(),
+      eventName: (map['eventName'] as String).input(),
+      receivers: (pulumi.Input.decodeList<NotificationEventReceiver>(map['receivers'], (value) => NotificationEventReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

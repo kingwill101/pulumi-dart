@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Taint
 class TaintResponse {
   /// Property effect
-  final String? effect;
+  final pulumi.Input<String>? effect;
   /// Property key
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [TaintResponse].
   /// [effect] Property effect
@@ -30,9 +31,9 @@ class TaintResponse {
 
   factory TaintResponse.fromMap(Map<String, dynamic> map) {
     return TaintResponse(
-      effect: map['effect'] == null ? null : map['effect'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

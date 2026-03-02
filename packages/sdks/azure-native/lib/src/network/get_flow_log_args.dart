@@ -19,13 +19,10 @@ class GetFlowLogArgs {
   /// [networkWatcherName] The name of the network watcher.
   /// [resourceGroupName] The name of the resource group.
   GetFlowLogArgs({
-    required pulumi.Output<String> flowLogName,
-    required pulumi.Output<String> networkWatcherName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      flowLogName = pulumi.Input.asInput<String>(flowLogName),
-      networkWatcherName = pulumi.Input.asInput<String>(networkWatcherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.flowLogName,
+    required this.networkWatcherName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFlowLogArgs {
 
   factory GetFlowLogArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowLogArgs(
-      flowLogName: pulumi.Output.create<String>(map['flowLogName'] as String),
-      networkWatcherName: pulumi.Output.create<String>(map['networkWatcherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      flowLogName: (map['flowLogName'] as String).input(),
+      networkWatcherName: (map['networkWatcherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

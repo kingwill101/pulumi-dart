@@ -19,13 +19,10 @@ class GetAccessPolicyAssignmentArgs {
   /// [cacheName] The name of the Redis cache.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAccessPolicyAssignmentArgs({
-    required pulumi.Output<String> accessPolicyAssignmentName,
-    required pulumi.Output<String> cacheName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accessPolicyAssignmentName = pulumi.Input.asInput<String>(accessPolicyAssignmentName),
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accessPolicyAssignmentName,
+    required this.cacheName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccessPolicyAssignmentArgs {
 
   factory GetAccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyAssignmentArgs(
-      accessPolicyAssignmentName: pulumi.Output.create<String>(map['accessPolicyAssignmentName'] as String),
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accessPolicyAssignmentName: (map['accessPolicyAssignmentName'] as String).input(),
+      cacheName: (map['cacheName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

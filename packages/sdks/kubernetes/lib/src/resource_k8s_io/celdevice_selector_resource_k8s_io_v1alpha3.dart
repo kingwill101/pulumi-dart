@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CELDeviceSelector contains a CEL expression for selecting a device.
 class CELDeviceSelectorResourceK8sIoV1alpha3 {
@@ -30,7 +31,7 @@ class CELDeviceSelectorResourceK8sIoV1alpha3 {
   /// For ease of use, the cel.bind() function is enabled, and can be used to simplify expressions that access multiple attributes with the same domain. For example:
   ///
   /// cel.bind(dra, device.attributes["dra.example.com"], dra.someBool && dra.anotherBool)
-  final String expression;
+  final pulumi.Input<String> expression;
 
   /// Creates a new [CELDeviceSelectorResourceK8sIoV1alpha3].
   /// [expression] Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.
@@ -46,7 +47,7 @@ class CELDeviceSelectorResourceK8sIoV1alpha3 {
 
   factory CELDeviceSelectorResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return CELDeviceSelectorResourceK8sIoV1alpha3(
-      expression: map['expression'] as String,
+      expression: (map['expression'] as String).input(),
     );
   }
 }

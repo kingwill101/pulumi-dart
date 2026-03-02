@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelinePipelineDefinitionS3Location {
   /// Name of the S3 bucket.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The object key (or key name) uniquely identifies the object in an S3 bucket.
-  final String objectKey;
+  final pulumi.Input<String> objectKey;
   /// Version Id of the pipeline definition file. If not specified, Amazon SageMaker AI will retrieve the latest version.
-  final String? versionId;
+  final pulumi.Input<String>? versionId;
 
   /// Creates a new [PipelinePipelineDefinitionS3Location].
   /// [bucket] Name of the S3 bucket.
@@ -29,9 +30,9 @@ class PipelinePipelineDefinitionS3Location {
 
   factory PipelinePipelineDefinitionS3Location.fromMap(Map<String, dynamic> map) {
     return PipelinePipelineDefinitionS3Location(
-      bucket: map['bucket'] as String,
-      objectKey: map['objectKey'] as String,
-      versionId: map['versionId'] == null ? null : map['versionId'] as String,
+      bucket: (map['bucket'] as String).input(),
+      objectKey: (map['objectKey'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

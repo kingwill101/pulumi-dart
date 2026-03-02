@@ -22,15 +22,11 @@ class GetDomainNameArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags for the resource.
   GetDomainNameArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? domainNameId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainNameId = pulumi.Input.asOptionalInput<String>(domainNameId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.domainName,
+    this.domainNameId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDomainNameArgs {
 
   factory GetDomainNameArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainNameArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainNameId: map['domainNameId'] == null ? null : pulumi.Output.create<String>(map['domainNameId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      domainName: (map['domainName'] as String).input(),
+      domainNameId: map['domainNameId'] == null ? null : (map['domainNameId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

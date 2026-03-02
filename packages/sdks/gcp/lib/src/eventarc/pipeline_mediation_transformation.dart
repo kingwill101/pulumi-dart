@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineMediationTransformation {
   /// The CEL expression template to apply to transform messages.
@@ -78,7 +79,7 @@ class PipelineMediationTransformation {
   /// - The result is a CEL map that corresponds to the JSON
   /// representation of the CloudEvent. To convert that data to a JSON
   /// string it can be chained with the toJsonString function.
-  final String? transformationTemplate;
+  final pulumi.Input<String>? transformationTemplate;
 
   /// Creates a new [PipelineMediationTransformation].
   /// [transformationTemplate] The CEL expression template to apply to transform messages.
@@ -94,7 +95,7 @@ class PipelineMediationTransformation {
 
   factory PipelineMediationTransformation.fromMap(Map<String, dynamic> map) {
     return PipelineMediationTransformation(
-      transformationTemplate: map['transformationTemplate'] == null ? null : map['transformationTemplate'] as String,
+      transformationTemplate: map['transformationTemplate'] == null ? null : (map['transformationTemplate'] as String).input(),
     );
   }
 }

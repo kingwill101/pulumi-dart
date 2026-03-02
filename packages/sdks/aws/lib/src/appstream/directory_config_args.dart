@@ -27,17 +27,12 @@ class DirectoryConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceAccountCredentials] Configuration block for the name of the directory and organizational unit (OU) to use to join the directory config to a Microsoft Active Directory domain. See `service_account_credentials` below.
   DirectoryConfigArgs({
-    pulumi.Output<DirectoryConfigCertificateBasedAuthProperties>? certificateBasedAuthProperties,
-    required pulumi.Output<String> directoryName,
-    required pulumi.Output<List<String>> organizationalUnitDistinguishedNames,
-    pulumi.Output<String>? region,
-    required pulumi.Output<DirectoryConfigServiceAccountCredentials> serviceAccountCredentials,
-  }) :
-      certificateBasedAuthProperties = pulumi.Input.asOptionalInput<DirectoryConfigCertificateBasedAuthProperties>(certificateBasedAuthProperties),
-      directoryName = pulumi.Input.asInput<String>(directoryName),
-      organizationalUnitDistinguishedNames = pulumi.Input.asInput<List<String>>(organizationalUnitDistinguishedNames),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceAccountCredentials = pulumi.Input.asInput<DirectoryConfigServiceAccountCredentials>(serviceAccountCredentials);
+    this.certificateBasedAuthProperties,
+    required this.directoryName,
+    required this.organizationalUnitDistinguishedNames,
+    this.region,
+    required this.serviceAccountCredentials,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class DirectoryConfigArgs {
 
   factory DirectoryConfigArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryConfigArgs(
-      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : pulumi.Output.create<DirectoryConfigCertificateBasedAuthProperties>(DirectoryConfigCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties'] as Map).cast<String, dynamic>())),
-      directoryName: pulumi.Output.create<String>(map['directoryName'] as String),
-      organizationalUnitDistinguishedNames: pulumi.Output.create<List<String>>((map['organizationalUnitDistinguishedNames'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceAccountCredentials: pulumi.Output.create<DirectoryConfigServiceAccountCredentials>(DirectoryConfigServiceAccountCredentials.fromMap((map['serviceAccountCredentials'] as Map).cast<String, dynamic>())),
+      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : (DirectoryConfigCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties'] as Map).cast<String, dynamic>())).input(),
+      directoryName: (map['directoryName'] as String).input(),
+      organizationalUnitDistinguishedNames: ((map['organizationalUnitDistinguishedNames'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceAccountCredentials: (DirectoryConfigServiceAccountCredentials.fromMap((map['serviceAccountCredentials'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

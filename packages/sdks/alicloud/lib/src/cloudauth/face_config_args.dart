@@ -16,11 +16,9 @@ class FaceConfigArgs {
   /// [bizName] Scene name.
   /// [bizType] Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   FaceConfigArgs({
-    required pulumi.Output<String> bizName,
-    required pulumi.Output<String> bizType,
-  }) :
-      bizName = pulumi.Input.asInput<String>(bizName),
-      bizType = pulumi.Input.asInput<String>(bizType);
+    required this.bizName,
+    required this.bizType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class FaceConfigArgs {
 
   factory FaceConfigArgs.fromMap(Map<String, dynamic> map) {
     return FaceConfigArgs(
-      bizName: pulumi.Output.create<String>(map['bizName'] as String),
-      bizType: pulumi.Output.create<String>(map['bizType'] as String),
+      bizName: (map['bizName'] as String).input(),
+      bizType: (map['bizType'] as String).input(),
     );
   }
 }

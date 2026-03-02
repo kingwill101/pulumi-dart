@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3FunctionOssMountConfigMountPoint {
   /// OSS Bucket name
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// Path of the mounted OSS Bucket
-  final String? bucketPath;
+  final pulumi.Input<String>? bucketPath;
   /// OSS access endpoint
-  final String? endpoint;
-  final String? mountDir;
+  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String>? mountDir;
   /// Read-only
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [V3FunctionOssMountConfigMountPoint].
   /// [bucketName] OSS Bucket name
@@ -38,11 +39,11 @@ class V3FunctionOssMountConfigMountPoint {
 
   factory V3FunctionOssMountConfigMountPoint.fromMap(Map<String, dynamic> map) {
     return V3FunctionOssMountConfigMountPoint(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      bucketPath: map['bucketPath'] == null ? null : map['bucketPath'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      mountDir: map['mountDir'] == null ? null : map['mountDir'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      bucketPath: map['bucketPath'] == null ? null : (map['bucketPath'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      mountDir: map['mountDir'] == null ? null : (map['mountDir'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
     );
   }
 }

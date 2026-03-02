@@ -19,13 +19,10 @@ class GetInventoryItemArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [vmmServerName] Name of the VMMServer.
   GetInventoryItemArgs({
-    required pulumi.Output<String> inventoryItemName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmmServerName,
-  }) :
-      inventoryItemName = pulumi.Input.asInput<String>(inventoryItemName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmmServerName = pulumi.Input.asInput<String>(vmmServerName);
+    required this.inventoryItemName,
+    required this.resourceGroupName,
+    required this.vmmServerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetInventoryItemArgs {
 
   factory GetInventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return GetInventoryItemArgs(
-      inventoryItemName: pulumi.Output.create<String>(map['inventoryItemName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmmServerName: pulumi.Output.create<String>(map['vmmServerName'] as String),
+      inventoryItemName: (map['inventoryItemName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmmServerName: (map['vmmServerName'] as String).input(),
     );
   }
 }

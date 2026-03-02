@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'edge_machine_network_profile_response.dart';
 import 'extension_profile_response_v1.dart';
 import 'hardware_profile_response.dart';
@@ -10,19 +11,19 @@ import 'storage_profile_response.dart';
 /// Reported properties for edge machine.
 class EdgeMachineReportedPropertiesResponse {
   /// Extension details for edge machine.
-  final ExtensionProfileResponseV1 extensionProfile;
+  final pulumi.Input<ExtensionProfileResponseV1> extensionProfile;
   /// Hardware related information for edge machine.
-  final HardwareProfileResponse hardwareProfile;
+  final pulumi.Input<HardwareProfileResponse> hardwareProfile;
   /// Last time data reported.
-  final String lastUpdated;
+  final pulumi.Input<String> lastUpdated;
   /// Network details for edge machine.
-  final EdgeMachineNetworkProfileResponse networkProfile;
+  final pulumi.Input<EdgeMachineNetworkProfileResponse> networkProfile;
   /// OS Properties for edge machine.
-  final OsProfileResponse osProfile;
+  final pulumi.Input<OsProfileResponse> osProfile;
   /// Solution builder extension (SBE) deployment package information.
-  final SbeDeploymentPackageInfoResponse sbeDeploymentPackageInfo;
+  final pulumi.Input<SbeDeploymentPackageInfoResponse> sbeDeploymentPackageInfo;
   /// Storage related information for edge machine.
-  final StorageProfileResponse storageProfile;
+  final pulumi.Input<StorageProfileResponse> storageProfile;
 
   /// Creates a new [EdgeMachineReportedPropertiesResponse].
   /// [extensionProfile] Extension details for edge machine.
@@ -44,25 +45,25 @@ class EdgeMachineReportedPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensionProfile': extensionProfile.toMap(),
-      'hardwareProfile': hardwareProfile.toMap(),
+      'extensionProfile': pulumi.Input.mapInputValue<ExtensionProfileResponseV1, Map<String, dynamic>>(extensionProfile, (value) => value.toMap()),
+      'hardwareProfile': pulumi.Input.mapInputValue<HardwareProfileResponse, Map<String, dynamic>>(hardwareProfile, (value) => value.toMap()),
       'lastUpdated': lastUpdated,
-      'networkProfile': networkProfile.toMap(),
-      'osProfile': osProfile.toMap(),
-      'sbeDeploymentPackageInfo': sbeDeploymentPackageInfo.toMap(),
-      'storageProfile': storageProfile.toMap(),
+      'networkProfile': pulumi.Input.mapInputValue<EdgeMachineNetworkProfileResponse, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'osProfile': pulumi.Input.mapInputValue<OsProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'sbeDeploymentPackageInfo': pulumi.Input.mapInputValue<SbeDeploymentPackageInfoResponse, Map<String, dynamic>>(sbeDeploymentPackageInfo, (value) => value.toMap()),
+      'storageProfile': pulumi.Input.mapInputValue<StorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
     };
   }
 
   factory EdgeMachineReportedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineReportedPropertiesResponse(
-      extensionProfile: ExtensionProfileResponseV1.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>()),
-      hardwareProfile: HardwareProfileResponse.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>()),
-      lastUpdated: map['lastUpdated'] as String,
-      networkProfile: EdgeMachineNetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      osProfile: OsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      sbeDeploymentPackageInfo: SbeDeploymentPackageInfoResponse.fromMap((map['sbeDeploymentPackageInfo'] as Map).cast<String, dynamic>()),
-      storageProfile: StorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
+      extensionProfile: (ExtensionProfileResponseV1.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>())).input(),
+      hardwareProfile: (HardwareProfileResponse.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
+      lastUpdated: (map['lastUpdated'] as String).input(),
+      networkProfile: (EdgeMachineNetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      osProfile: (OsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      sbeDeploymentPackageInfo: (SbeDeploymentPackageInfoResponse.fromMap((map['sbeDeploymentPackageInfo'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: (StorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a blob input data source that contains stream data.
 class GatewayMessageBusStreamInputDataSourceResponse {
   /// The name of the Service Bus topic.
-  final String? topic;
+  final pulumi.Input<String>? topic;
   /// Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'GatewayMessageBus'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GatewayMessageBusStreamInputDataSourceResponse].
   /// [topic] The name of the Service Bus topic.
@@ -26,8 +27,8 @@ class GatewayMessageBusStreamInputDataSourceResponse {
 
   factory GatewayMessageBusStreamInputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return GatewayMessageBusStreamInputDataSourceResponse(
-      topic: map['topic'] == null ? null : map['topic'] as String,
-      type: map['type'] as String,
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

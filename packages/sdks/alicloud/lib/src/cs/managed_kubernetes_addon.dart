@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedKubernetesAddon {
   /// If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
-  final String? config;
+  final pulumi.Input<String>? config;
   /// It specifies whether to disable automatic installation.
   ///
   /// It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
@@ -267,11 +268,11 @@ class ManagedKubernetesAddon {
   /// ]
   /// }
   /// ```
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// This parameter specifies the name of the component.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// It specifies the version of the component.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ManagedKubernetesAddon].
   /// [config] If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
@@ -296,10 +297,10 @@ class ManagedKubernetesAddon {
 
   factory ManagedKubernetesAddon.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesAddon(
-      config: map['config'] == null ? null : map['config'] as String,
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

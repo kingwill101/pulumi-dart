@@ -16,11 +16,9 @@ class GetNetworkPeeringArgs {
   /// [name] Name of the peering.
   /// [network] The primary network of the peering.
   GetNetworkPeeringArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> network,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      network = pulumi.Input.asInput<String>(network);
+    required this.name,
+    required this.network,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkPeeringArgs {
 
   factory GetNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
+      name: (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
     );
   }
 }

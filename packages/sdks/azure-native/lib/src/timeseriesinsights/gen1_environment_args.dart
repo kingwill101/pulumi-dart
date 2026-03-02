@@ -40,25 +40,16 @@ class Gen1EnvironmentArgs {
   /// [storageLimitExceededBehavior] The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
   /// [tags] Key-value pairs of additional properties for the resource.
   Gen1EnvironmentArgs({
-    required pulumi.Output<String> dataRetentionTime,
-    pulumi.Output<String>? environmentName,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<TimeSeriesIdProperty>>? partitionKeyProperties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<String>? storageLimitExceededBehavior,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dataRetentionTime = pulumi.Input.asInput<String>(dataRetentionTime),
-      environmentName = pulumi.Input.asOptionalInput<String>(environmentName),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      partitionKeyProperties = pulumi.Input.asOptionalInput<List<TimeSeriesIdProperty>>(partitionKeyProperties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      storageLimitExceededBehavior = pulumi.Input.asOptionalInput<String>(storageLimitExceededBehavior),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.dataRetentionTime,
+    this.environmentName,
+    required this.kind,
+    this.location,
+    this.partitionKeyProperties,
+    required this.resourceGroupName,
+    required this.sku,
+    this.storageLimitExceededBehavior,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class Gen1EnvironmentArgs {
 
   factory Gen1EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return Gen1EnvironmentArgs(
-      dataRetentionTime: pulumi.Output.create<String>(map['dataRetentionTime'] as String),
-      environmentName: map['environmentName'] == null ? null : pulumi.Output.create<String>(map['environmentName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      partitionKeyProperties: map['partitionKeyProperties'] == null ? null : pulumi.Output.create<List<TimeSeriesIdProperty>>(pulumi.Input.decodeList<TimeSeriesIdProperty>(map['partitionKeyProperties'], (value) => TimeSeriesIdProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      storageLimitExceededBehavior: map['storageLimitExceededBehavior'] == null ? null : pulumi.Output.create<String>(map['storageLimitExceededBehavior'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dataRetentionTime: (map['dataRetentionTime'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      partitionKeyProperties: map['partitionKeyProperties'] == null ? null : (pulumi.Input.decodeList<TimeSeriesIdProperty>(map['partitionKeyProperties'], (value) => TimeSeriesIdProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      storageLimitExceededBehavior: map['storageLimitExceededBehavior'] == null ? null : (map['storageLimitExceededBehavior'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

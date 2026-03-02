@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProductsProduct {
   /// The ID of the Product.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Product.
-  final String productId;
+  final pulumi.Input<String> productId;
   /// The name of the Product.
-  final String productName;
+  final pulumi.Input<String> productName;
 
   /// Creates a new [GetProductsProduct].
   /// [id] The ID of the Product.
@@ -29,9 +30,9 @@ class GetProductsProduct {
 
   factory GetProductsProduct.fromMap(Map<String, dynamic> map) {
     return GetProductsProduct(
-      id: map['id'] as String,
-      productId: map['productId'] as String,
-      productName: map['productName'] as String,
+      id: (map['id'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      productName: (map['productName'] as String).input(),
     );
   }
 }

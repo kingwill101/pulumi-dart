@@ -16,13 +16,10 @@ class GetDebugTokenFirebaseappcheckV1betaArgs {
   /// [debugTokenId] Required.
   /// [project] Optional.
   GetDebugTokenFirebaseappcheckV1betaArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> debugTokenId,
-    pulumi.Output<String>? project,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      debugTokenId = pulumi.Input.asInput<String>(debugTokenId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.appId,
+    required this.debugTokenId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDebugTokenFirebaseappcheckV1betaArgs {
 
   factory GetDebugTokenFirebaseappcheckV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetDebugTokenFirebaseappcheckV1betaArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      debugTokenId: pulumi.Output.create<String>(map['debugTokenId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      appId: (map['appId'] as String).input(),
+      debugTokenId: (map['debugTokenId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

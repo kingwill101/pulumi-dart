@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Service Fabric managed cluster Sku definition
 class Sku {
   /// Sku Name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [Sku].
   /// [name] Sku Name.
@@ -20,7 +21,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class VpcDhcpOptionsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   VpcDhcpOptionsArgs({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<List<String>>? domainNameServers,
-    pulumi.Output<String>? ipv6AddressPreferredLeaseTime,
-    pulumi.Output<List<String>>? netbiosNameServers,
-    pulumi.Output<String>? netbiosNodeType,
-    pulumi.Output<List<String>>? ntpServers,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      domainNameServers = pulumi.Input.asOptionalInput<List<String>>(domainNameServers),
-      ipv6AddressPreferredLeaseTime = pulumi.Input.asOptionalInput<String>(ipv6AddressPreferredLeaseTime),
-      netbiosNameServers = pulumi.Input.asOptionalInput<List<String>>(netbiosNameServers),
-      netbiosNodeType = pulumi.Input.asOptionalInput<String>(netbiosNodeType),
-      ntpServers = pulumi.Input.asOptionalInput<List<String>>(ntpServers),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.domainName,
+    this.domainNameServers,
+    this.ipv6AddressPreferredLeaseTime,
+    this.netbiosNameServers,
+    this.netbiosNodeType,
+    this.ntpServers,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class VpcDhcpOptionsArgs {
 
   factory VpcDhcpOptionsArgs.fromMap(Map<String, dynamic> map) {
     return VpcDhcpOptionsArgs(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      domainNameServers: map['domainNameServers'] == null ? null : pulumi.Output.create<List<String>>((map['domainNameServers'] as List).cast<String>()),
-      ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] == null ? null : pulumi.Output.create<String>(map['ipv6AddressPreferredLeaseTime'] as String),
-      netbiosNameServers: map['netbiosNameServers'] == null ? null : pulumi.Output.create<List<String>>((map['netbiosNameServers'] as List).cast<String>()),
-      netbiosNodeType: map['netbiosNodeType'] == null ? null : pulumi.Output.create<String>(map['netbiosNodeType'] as String),
-      ntpServers: map['ntpServers'] == null ? null : pulumi.Output.create<List<String>>((map['ntpServers'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainNameServers: map['domainNameServers'] == null ? null : ((map['domainNameServers'] as List).cast<String>()).input(),
+      ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] == null ? null : (map['ipv6AddressPreferredLeaseTime'] as String).input(),
+      netbiosNameServers: map['netbiosNameServers'] == null ? null : ((map['netbiosNameServers'] as List).cast<String>()).input(),
+      netbiosNodeType: map['netbiosNodeType'] == null ? null : (map['netbiosNodeType'] as String).input(),
+      ntpServers: map['ntpServers'] == null ? null : ((map['ntpServers'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

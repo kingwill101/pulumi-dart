@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgre_sql_connection_info.dart';
 
 /// Input for the task that validates connection to Azure Database for PostgreSQL and target server requirements for Oracle source.
 class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput {
   /// Connection information for target Azure Database for PostgreSQL server
-  final PostgreSqlConnectionInfo targetConnectionInfo;
+  final pulumi.Input<PostgreSqlConnectionInfo> targetConnectionInfo;
 
   /// Creates a new [ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput].
   /// [targetConnectionInfo] Connection information for target Azure Database for PostgreSQL server
@@ -15,13 +16,13 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput(
-      targetConnectionInfo: PostgreSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      targetConnectionInfo: (PostgreSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

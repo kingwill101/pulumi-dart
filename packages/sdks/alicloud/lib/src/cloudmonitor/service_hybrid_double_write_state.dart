@@ -19,15 +19,11 @@ class ServiceHybridDoubleWriteState {
   /// [sourceUserId] Source UserId.
   /// [userId] Target UserId.
   ServiceHybridDoubleWriteState({
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? sourceNamespace,
-    pulumi.Output<String>? sourceUserId,
-    pulumi.Output<String>? userId,
-  }) :
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      sourceNamespace = pulumi.Input.asOptionalInput<String>(sourceNamespace),
-      sourceUserId = pulumi.Input.asOptionalInput<String>(sourceUserId),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.namespace,
+    this.sourceNamespace,
+    this.sourceUserId,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ServiceHybridDoubleWriteState {
 
   factory ServiceHybridDoubleWriteState.fromMap(Map<String, dynamic> map) {
     return ServiceHybridDoubleWriteState(
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      sourceNamespace: map['sourceNamespace'] == null ? null : pulumi.Output.create<String>(map['sourceNamespace'] as String),
-      sourceUserId: map['sourceUserId'] == null ? null : pulumi.Output.create<String>(map['sourceUserId'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      sourceNamespace: map['sourceNamespace'] == null ? null : (map['sourceNamespace'] as String).input(),
+      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

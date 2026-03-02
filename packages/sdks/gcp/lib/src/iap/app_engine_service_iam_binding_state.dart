@@ -44,21 +44,14 @@ class AppEngineServiceIamBindingState {
   /// [role] The role that should be applied. Only one
   /// [service] Used to find the parent resource to bind the IAM policy to
   AppEngineServiceIamBindingState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<AppEngineServiceIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? service,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      condition = pulumi.Input.asOptionalInput<AppEngineServiceIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.appId,
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.role,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,13 +67,13 @@ class AppEngineServiceIamBindingState {
 
   factory AppEngineServiceIamBindingState.fromMap(Map<String, dynamic> map) {
     return AppEngineServiceIamBindingState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<AppEngineServiceIamBindingCondition>(AppEngineServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      condition: map['condition'] == null ? null : (AppEngineServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

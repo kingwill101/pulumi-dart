@@ -30,17 +30,12 @@ class AddressGroupV2Args {
   /// [projectId] The owner of the address group. Required if admin
   /// [region] The region in which to obtain the V2 networking client.
   AddressGroupV2Args({
-    required pulumi.Output<List<String>> addresses,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-  }) :
-      addresses = pulumi.Input.asInput<List<String>>(addresses),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.addresses,
+    this.description,
+    this.name,
+    this.projectId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class AddressGroupV2Args {
 
   factory AddressGroupV2Args.fromMap(Map<String, dynamic> map) {
     return AddressGroupV2Args(
-      addresses: pulumi.Output.create<List<String>>((map['addresses'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      addresses: ((map['addresses'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

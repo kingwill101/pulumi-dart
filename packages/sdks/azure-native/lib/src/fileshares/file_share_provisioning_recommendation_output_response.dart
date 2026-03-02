@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// File share provisioning parameters recommendation API result.
 class FileShareProvisioningRecommendationOutputResponse {
   /// Redundancy options for the share.
-  final List<String> availableRedundancyOptions;
+  final pulumi.Input<List<String>> availableRedundancyOptions;
   /// The recommended value of provisioned IO / sec of the share.
-  final int provisionedIOPerSec;
+  final pulumi.Input<int> provisionedIOPerSec;
   /// The recommended value of provisioned throughput / sec of the share.
-  final int provisionedThroughputMiBPerSec;
+  final pulumi.Input<int> provisionedThroughputMiBPerSec;
 
   /// Creates a new [FileShareProvisioningRecommendationOutputResponse].
   /// [availableRedundancyOptions] Redundancy options for the share.
@@ -30,9 +31,9 @@ class FileShareProvisioningRecommendationOutputResponse {
 
   factory FileShareProvisioningRecommendationOutputResponse.fromMap(Map<String, dynamic> map) {
     return FileShareProvisioningRecommendationOutputResponse(
-      availableRedundancyOptions: (map['availableRedundancyOptions'] as List).cast<String>(),
-      provisionedIOPerSec: map['provisionedIOPerSec'] as int,
-      provisionedThroughputMiBPerSec: map['provisionedThroughputMiBPerSec'] as int,
+      availableRedundancyOptions: ((map['availableRedundancyOptions'] as List).cast<String>()).input(),
+      provisionedIOPerSec: (map['provisionedIOPerSec'] as int).input(),
+      provisionedThroughputMiBPerSec: (map['provisionedThroughputMiBPerSec'] as int).input(),
     );
   }
 }

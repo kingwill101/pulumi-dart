@@ -1,47 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpamIpamPoolsPool {
   /// The default network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
-  final int allocationDefaultCidrMask;
+  final pulumi.Input<int> allocationDefaultCidrMask;
   /// The maximum network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
-  final int allocationMaxCidrMask;
+  final pulumi.Input<int> allocationMaxCidrMask;
   /// The minimum Network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
-  final int allocationMinCidrMask;
+  final pulumi.Input<int> allocationMinCidrMask;
   /// Whether the automatic import function is enabled for the address pool.
-  final bool autoImport;
+  final pulumi.Input<bool> autoImport;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Whether it is a child address pool. Value:-**true**: Yes.-**false**: No.
-  final bool hasSubPool;
+  final pulumi.Input<bool> hasSubPool;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// The IP protocol version. Currently, only **IPv4** is supported * *.
-  final String ipVersion;
+  final pulumi.Input<String> ipVersion;
   /// Ipam id.
-  final String ipamId;
+  final pulumi.Input<String> ipamId;
   /// The description of the IPAM address pool.It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
-  final String ipamPoolDescription;
+  final pulumi.Input<String> ipamPoolDescription;
   /// The first ID of the resource.
-  final String ipamPoolId;
+  final pulumi.Input<String> ipamPoolId;
   /// The name of the resource.
-  final String ipamPoolName;
+  final pulumi.Input<String> ipamPoolName;
   /// Ipam scope id.
-  final String ipamScopeId;
+  final pulumi.Input<String> ipamScopeId;
   /// The depth of the IPAM address pool. Value range: **0 to 10 * *.
-  final int poolDepth;
+  final pulumi.Input<int> poolDepth;
   /// The effective region of the IPAM address pool.
-  final String poolRegionId;
+  final pulumi.Input<String> poolRegionId;
   /// The region ID of the resource.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
-  final String sourceIpamPoolId;
+  final pulumi.Input<String> sourceIpamPoolId;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetIpamIpamPoolsPool].
   /// [allocationDefaultCidrMask] The default network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
@@ -114,26 +115,26 @@ class GetIpamIpamPoolsPool {
 
   factory GetIpamIpamPoolsPool.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolsPool(
-      allocationDefaultCidrMask: map['allocationDefaultCidrMask'] as int,
-      allocationMaxCidrMask: map['allocationMaxCidrMask'] as int,
-      allocationMinCidrMask: map['allocationMinCidrMask'] as int,
-      autoImport: map['autoImport'] as bool,
-      createTime: map['createTime'] as String,
-      hasSubPool: map['hasSubPool'] as bool,
-      id: map['id'] as String,
-      ipVersion: map['ipVersion'] as String,
-      ipamId: map['ipamId'] as String,
-      ipamPoolDescription: map['ipamPoolDescription'] as String,
-      ipamPoolId: map['ipamPoolId'] as String,
-      ipamPoolName: map['ipamPoolName'] as String,
-      ipamScopeId: map['ipamScopeId'] as String,
-      poolDepth: map['poolDepth'] as int,
-      poolRegionId: map['poolRegionId'] as String,
-      regionId: map['regionId'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      sourceIpamPoolId: map['sourceIpamPoolId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      allocationDefaultCidrMask: (map['allocationDefaultCidrMask'] as int).input(),
+      allocationMaxCidrMask: (map['allocationMaxCidrMask'] as int).input(),
+      allocationMinCidrMask: (map['allocationMinCidrMask'] as int).input(),
+      autoImport: (map['autoImport'] as bool).input(),
+      createTime: (map['createTime'] as String).input(),
+      hasSubPool: (map['hasSubPool'] as bool).input(),
+      id: (map['id'] as String).input(),
+      ipVersion: (map['ipVersion'] as String).input(),
+      ipamId: (map['ipamId'] as String).input(),
+      ipamPoolDescription: (map['ipamPoolDescription'] as String).input(),
+      ipamPoolId: (map['ipamPoolId'] as String).input(),
+      ipamPoolName: (map['ipamPoolName'] as String).input(),
+      ipamScopeId: (map['ipamScopeId'] as String).input(),
+      poolDepth: (map['poolDepth'] as int).input(),
+      poolRegionId: (map['poolRegionId'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      sourceIpamPoolId: (map['sourceIpamPoolId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

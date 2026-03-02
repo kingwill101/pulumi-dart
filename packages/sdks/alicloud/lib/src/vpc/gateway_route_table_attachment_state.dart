@@ -28,17 +28,12 @@ class GatewayRouteTableAttachmentState {
   /// [routeTableId] The ID of the Gateway route table to be bound.
   /// [status] The status of the IPv4 Gateway instance. Value:
   GatewayRouteTableAttachmentState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? ipv4GatewayId,
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      ipv4GatewayId = pulumi.Input.asOptionalInput<String>(ipv4GatewayId),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.dryRun,
+    this.ipv4GatewayId,
+    this.routeTableId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class GatewayRouteTableAttachmentState {
 
   factory GatewayRouteTableAttachmentState.fromMap(Map<String, dynamic> map) {
     return GatewayRouteTableAttachmentState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      ipv4GatewayId: map['ipv4GatewayId'] == null ? null : pulumi.Output.create<String>(map['ipv4GatewayId'] as String),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      ipv4GatewayId: map['ipv4GatewayId'] == null ? null : (map['ipv4GatewayId'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetListenersArgs {
   /// [loadBalancerIds] The ID of the NLB instance. You can specify at most 20 IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetListenersArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? listenerProtocol,
-    pulumi.Output<List<String>>? loadBalancerIds,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      listenerProtocol = pulumi.Input.asOptionalInput<String>(listenerProtocol),
-      loadBalancerIds = pulumi.Input.asOptionalInput<List<String>>(loadBalancerIds),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    this.listenerProtocol,
+    this.loadBalancerIds,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetListenersArgs {
 
   factory GetListenersArgs.fromMap(Map<String, dynamic> map) {
     return GetListenersArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      listenerProtocol: map['listenerProtocol'] == null ? null : pulumi.Output.create<String>(map['listenerProtocol'] as String),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : pulumi.Output.create<List<String>>((map['loadBalancerIds'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      listenerProtocol: map['listenerProtocol'] == null ? null : (map['listenerProtocol'] as String).input(),
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

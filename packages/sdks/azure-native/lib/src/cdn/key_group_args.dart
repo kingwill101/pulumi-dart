@@ -23,15 +23,11 @@ class KeyGroupArgs {
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   KeyGroupArgs({
-    pulumi.Output<String>? keyGroupName,
-    pulumi.Output<List<ResourceReference>>? keyReferences,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      keyGroupName = pulumi.Input.asOptionalInput<String>(keyGroupName),
-      keyReferences = pulumi.Input.asOptionalInput<List<ResourceReference>>(keyReferences),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.keyGroupName,
+    this.keyReferences,
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class KeyGroupArgs {
 
   factory KeyGroupArgs.fromMap(Map<String, dynamic> map) {
     return KeyGroupArgs(
-      keyGroupName: map['keyGroupName'] == null ? null : pulumi.Output.create<String>(map['keyGroupName'] as String),
-      keyReferences: map['keyReferences'] == null ? null : pulumi.Output.create<List<ResourceReference>>(pulumi.Input.decodeList<ResourceReference>(map['keyReferences'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      keyGroupName: map['keyGroupName'] == null ? null : (map['keyGroupName'] as String).input(),
+      keyReferences: map['keyReferences'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['keyReferences'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

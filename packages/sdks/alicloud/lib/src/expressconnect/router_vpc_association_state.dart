@@ -32,23 +32,15 @@ class RouterVpcAssociationState {
   /// [vpcId] The VPC ID.
   /// [vpcOwnerId] The ID of the Alibaba Cloud account that owns the VPC.
   RouterVpcAssociationState({
-    pulumi.Output<List<String>>? allowedPrefixes,
-    pulumi.Output<String>? associationId,
-    pulumi.Output<String>? associationRegionId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? ecrId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<int>? vpcOwnerId,
-  }) :
-      allowedPrefixes = pulumi.Input.asOptionalInput<List<String>>(allowedPrefixes),
-      associationId = pulumi.Input.asOptionalInput<String>(associationId),
-      associationRegionId = pulumi.Input.asOptionalInput<String>(associationRegionId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      ecrId = pulumi.Input.asOptionalInput<String>(ecrId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpcOwnerId = pulumi.Input.asOptionalInput<int>(vpcOwnerId);
+    this.allowedPrefixes,
+    this.associationId,
+    this.associationRegionId,
+    this.createTime,
+    this.ecrId,
+    this.status,
+    this.vpcId,
+    this.vpcOwnerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class RouterVpcAssociationState {
 
   factory RouterVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterVpcAssociationState(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['allowedPrefixes'] as List).cast<String>()),
-      associationId: map['associationId'] == null ? null : pulumi.Output.create<String>(map['associationId'] as String),
-      associationRegionId: map['associationRegionId'] == null ? null : pulumi.Output.create<String>(map['associationRegionId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      ecrId: map['ecrId'] == null ? null : pulumi.Output.create<String>(map['ecrId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcOwnerId: map['vpcOwnerId'] == null ? null : pulumi.Output.create<int>(map['vpcOwnerId'] as int),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      associationRegionId: map['associationRegionId'] == null ? null : (map['associationRegionId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      ecrId: map['ecrId'] == null ? null : (map['ecrId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId'] as int).input(),
     );
   }
 }

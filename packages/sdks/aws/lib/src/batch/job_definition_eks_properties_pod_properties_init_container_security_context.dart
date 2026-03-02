@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext {
   /// Whether or not a container or a Kubernetes pod is allowed to gain more privileges than its parent process. The default value is `false`.
-  final bool? allowPrivilegeEscalation;
+  final pulumi.Input<bool>? allowPrivilegeEscalation;
   /// When this parameter is `true`, the container is given elevated permissions on the host container instance. The level of permissions are similar to the root user permissions. The default value is `false`.
-  final bool? privileged;
-  final bool? readOnlyRootFileSystem;
+  final pulumi.Input<bool>? privileged;
+  final pulumi.Input<bool>? readOnlyRootFileSystem;
   /// When this parameter is specified, the container is run as the specified group ID (gid). If this parameter isn't specified, the default is the group that's specified in the image metadata.
-  final int? runAsGroup;
+  final pulumi.Input<int>? runAsGroup;
   /// When this parameter is specified, the container is run as a user with a uid other than 0. If this parameter isn't specified, so such rule is enforced.
-  final bool? runAsNonRoot;
+  final pulumi.Input<bool>? runAsNonRoot;
   /// When this parameter is specified, the container is run as the specified user ID (uid). If this parameter isn't specified, the default is the user that's specified in the image metadata.
-  final int? runAsUser;
+  final pulumi.Input<int>? runAsUser;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext].
   /// [allowPrivilegeEscalation] Whether or not a container or a Kubernetes pod is allowed to gain more privileges than its parent process. The default value is `false`.
@@ -43,12 +44,12 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext {
 
   factory JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext(
-      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : map['allowPrivilegeEscalation'] as bool,
-      privileged: map['privileged'] == null ? null : map['privileged'] as bool,
-      readOnlyRootFileSystem: map['readOnlyRootFileSystem'] == null ? null : map['readOnlyRootFileSystem'] as bool,
-      runAsGroup: map['runAsGroup'] == null ? null : map['runAsGroup'] as int,
-      runAsNonRoot: map['runAsNonRoot'] == null ? null : map['runAsNonRoot'] as bool,
-      runAsUser: map['runAsUser'] == null ? null : map['runAsUser'] as int,
+      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : (map['allowPrivilegeEscalation'] as bool).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
+      readOnlyRootFileSystem: map['readOnlyRootFileSystem'] == null ? null : (map['readOnlyRootFileSystem'] as bool).input(),
+      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup'] as int).input(),
+      runAsNonRoot: map['runAsNonRoot'] == null ? null : (map['runAsNonRoot'] as bool).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
     );
   }
 }

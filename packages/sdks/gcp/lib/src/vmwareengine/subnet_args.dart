@@ -22,13 +22,10 @@ class SubnetArgs {
   /// [name] The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
   /// [parent] The resource name of the private cloud to create a new subnet in.
   SubnetArgs({
-    required pulumi.Output<String> ipCidrRange,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-  }) :
-      ipCidrRange = pulumi.Input.asInput<String>(ipCidrRange),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent);
+    required this.ipCidrRange,
+    this.name,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class SubnetArgs {
 
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
     return SubnetArgs(
-      ipCidrRange: pulumi.Output.create<String>(map['ipCidrRange'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      ipCidrRange: (map['ipCidrRange'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

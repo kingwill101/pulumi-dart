@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_resource_metric_source.dart';
 import 'external_metric_source.dart';
 import 'object_metric_source.dart';
@@ -9,17 +10,17 @@ import 'resource_metric_source.dart';
 /// MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once).
 class MetricSpec {
   /// containerResource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
-  final ContainerResourceMetricSource? containerResource;
+  final pulumi.Input<ContainerResourceMetricSource>? containerResource;
   /// external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
-  final ExternalMetricSource? external;
+  final pulumi.Input<ExternalMetricSource>? external;
   /// object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
-  final ObjectMetricSource? object;
+  final pulumi.Input<ObjectMetricSource>? object;
   /// pods refers to a metric describing each pod in the current scale target (for example, transactions-processed-per-second).  The values will be averaged together before being compared to the target value.
-  final PodsMetricSource? pods;
+  final pulumi.Input<PodsMetricSource>? pods;
   /// resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
-  final ResourceMetricSource? resource;
+  final pulumi.Input<ResourceMetricSource>? resource;
   /// type is the type of metric source.  It should be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each mapping to a matching field in the object.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MetricSpec].
   /// [containerResource] containerResource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
@@ -39,23 +40,23 @@ class MetricSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerResource': ?containerResource == null ? null : containerResource!.toMap(),
-      'external': ?external == null ? null : external!.toMap(),
-      'object': ?object == null ? null : object!.toMap(),
-      'pods': ?pods == null ? null : pods!.toMap(),
-      'resource': ?resource == null ? null : resource!.toMap(),
+      'containerResource': ?pulumi.Input.mapOptionalInputValue<ContainerResourceMetricSource, Map<String, dynamic>>(containerResource, (value) => value.toMap()),
+      'external': ?pulumi.Input.mapOptionalInputValue<ExternalMetricSource, Map<String, dynamic>>(external, (value) => value.toMap()),
+      'object': ?pulumi.Input.mapOptionalInputValue<ObjectMetricSource, Map<String, dynamic>>(object, (value) => value.toMap()),
+      'pods': ?pulumi.Input.mapOptionalInputValue<PodsMetricSource, Map<String, dynamic>>(pods, (value) => value.toMap()),
+      'resource': ?pulumi.Input.mapOptionalInputValue<ResourceMetricSource, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory MetricSpec.fromMap(Map<String, dynamic> map) {
     return MetricSpec(
-      containerResource: map['containerResource'] == null ? null : ContainerResourceMetricSource.fromMap((map['containerResource'] as Map).cast<String, dynamic>()),
-      external: map['external'] == null ? null : ExternalMetricSource.fromMap((map['external'] as Map).cast<String, dynamic>()),
-      object: map['object'] == null ? null : ObjectMetricSource.fromMap((map['object'] as Map).cast<String, dynamic>()),
-      pods: map['pods'] == null ? null : PodsMetricSource.fromMap((map['pods'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null ? null : ResourceMetricSource.fromMap((map['resource'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      containerResource: map['containerResource'] == null ? null : (ContainerResourceMetricSource.fromMap((map['containerResource'] as Map).cast<String, dynamic>())).input(),
+      external: map['external'] == null ? null : (ExternalMetricSource.fromMap((map['external'] as Map).cast<String, dynamic>())).input(),
+      object: map['object'] == null ? null : (ObjectMetricSource.fromMap((map['object'] as Map).cast<String, dynamic>())).input(),
+      pods: map['pods'] == null ? null : (PodsMetricSource.fromMap((map['pods'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (ResourceMetricSource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

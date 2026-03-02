@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFlowsFlow {
   /// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
-  final String definition;
+  final pulumi.Input<String> definition;
   /// The description of the flow.
-  final String description;
+  final pulumi.Input<String> description;
   /// The unique ID of the flow.
-  final String flowId;
+  final pulumi.Input<String> flowId;
   /// The ID of the Flow.
-  final String id;
+  final pulumi.Input<String> id;
   /// The time when the flow was last modified.
-  final String lastModifiedTime;
+  final pulumi.Input<String> lastModifiedTime;
   /// The name of the flow. The name must be unique in an Alibaba Cloud account.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The type of the flow. Set the value to `FDL`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetFlowsFlow].
   /// [definition] The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
@@ -54,14 +55,14 @@ class GetFlowsFlow {
 
   factory GetFlowsFlow.fromMap(Map<String, dynamic> map) {
     return GetFlowsFlow(
-      definition: map['definition'] as String,
-      description: map['description'] as String,
-      flowId: map['flowId'] as String,
-      id: map['id'] as String,
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      name: map['name'] as String,
-      roleArn: map['roleArn'] as String,
-      type: map['type'] as String,
+      definition: (map['definition'] as String).input(),
+      description: (map['description'] as String).input(),
+      flowId: (map['flowId'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
+      name: (map['name'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

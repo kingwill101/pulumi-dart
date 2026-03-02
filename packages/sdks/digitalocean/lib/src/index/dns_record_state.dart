@@ -40,29 +40,18 @@ class DnsRecordState {
   /// [value] The value of the record.
   /// [weight] The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
   DnsRecordState({
-    pulumi.Output<String>? domain,
-    pulumi.Output<int>? flags,
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? tag,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? value,
-    pulumi.Output<int>? weight,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      flags = pulumi.Input.asOptionalInput<int>(flags),
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      tag = pulumi.Input.asOptionalInput<String>(tag),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      value = pulumi.Input.asOptionalInput<String>(value),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.domain,
+    this.flags,
+    this.fqdn,
+    this.name,
+    this.port,
+    this.priority,
+    this.tag,
+    this.ttl,
+    this.type,
+    this.value,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class DnsRecordState {
 
   factory DnsRecordState.fromMap(Map<String, dynamic> map) {
     return DnsRecordState(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      flags: map['flags'] == null ? null : pulumi.Output.create<int>(map['flags'] as int),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      flags: map['flags'] == null ? null : (map['flags'] as int).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

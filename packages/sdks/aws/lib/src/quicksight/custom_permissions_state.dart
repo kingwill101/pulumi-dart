@@ -31,21 +31,14 @@ class CustomPermissionsState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   CustomPermissionsState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<CustomPermissionsCapabilities>? capabilities,
-    pulumi.Output<String>? customPermissionsName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      capabilities = pulumi.Input.asOptionalInput<CustomPermissionsCapabilities>(capabilities),
-      customPermissionsName = pulumi.Input.asOptionalInput<String>(customPermissionsName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.awsAccountId,
+    this.capabilities,
+    this.customPermissionsName,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CustomPermissionsState {
 
   factory CustomPermissionsState.fromMap(Map<String, dynamic> map) {
     return CustomPermissionsState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      capabilities: map['capabilities'] == null ? null : pulumi.Output.create<CustomPermissionsCapabilities>(CustomPermissionsCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())),
-      customPermissionsName: map['customPermissionsName'] == null ? null : pulumi.Output.create<String>(map['customPermissionsName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      capabilities: map['capabilities'] == null ? null : (CustomPermissionsCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
+      customPermissionsName: map['customPermissionsName'] == null ? null : (map['customPermissionsName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

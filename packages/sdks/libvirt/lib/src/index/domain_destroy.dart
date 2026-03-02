@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDestroy {
-  final bool? graceful;
+  final pulumi.Input<bool>? graceful;
 
   /// Creates a new [DomainDestroy].
   /// [graceful] Optional.
@@ -18,7 +19,7 @@ class DomainDestroy {
 
   factory DomainDestroy.fromMap(Map<String, dynamic> map) {
     return DomainDestroy(
-      graceful: map['graceful'] == null ? null : map['graceful'] as bool,
+      graceful: map['graceful'] == null ? null : (map['graceful'] as bool).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class LifecycleHookArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
   LifecycleHookArgs({
-    required pulumi.Output<String> autoscalingGroupName,
-    pulumi.Output<String>? defaultResult,
-    pulumi.Output<int>? heartbeatTimeout,
-    required pulumi.Output<String> lifecycleTransition,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notificationMetadata,
-    pulumi.Output<String>? notificationTargetArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-  }) :
-      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
-      defaultResult = pulumi.Input.asOptionalInput<String>(defaultResult),
-      heartbeatTimeout = pulumi.Input.asOptionalInput<int>(heartbeatTimeout),
-      lifecycleTransition = pulumi.Input.asInput<String>(lifecycleTransition),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationMetadata = pulumi.Input.asOptionalInput<String>(notificationMetadata),
-      notificationTargetArn = pulumi.Input.asOptionalInput<String>(notificationTargetArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn);
+    required this.autoscalingGroupName,
+    this.defaultResult,
+    this.heartbeatTimeout,
+    required this.lifecycleTransition,
+    this.name,
+    this.notificationMetadata,
+    this.notificationTargetArn,
+    this.region,
+    this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class LifecycleHookArgs {
 
   factory LifecycleHookArgs.fromMap(Map<String, dynamic> map) {
     return LifecycleHookArgs(
-      autoscalingGroupName: pulumi.Output.create<String>(map['autoscalingGroupName'] as String),
-      defaultResult: map['defaultResult'] == null ? null : pulumi.Output.create<String>(map['defaultResult'] as String),
-      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : pulumi.Output.create<int>(map['heartbeatTimeout'] as int),
-      lifecycleTransition: pulumi.Output.create<String>(map['lifecycleTransition'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationMetadata: map['notificationMetadata'] == null ? null : pulumi.Output.create<String>(map['notificationMetadata'] as String),
-      notificationTargetArn: map['notificationTargetArn'] == null ? null : pulumi.Output.create<String>(map['notificationTargetArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
+      autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
+      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult'] as String).input(),
+      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout'] as int).input(),
+      lifecycleTransition: (map['lifecycleTransition'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata'] as String).input(),
+      notificationTargetArn: map['notificationTargetArn'] == null ? null : (map['notificationTargetArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

@@ -32,13 +32,10 @@ class ReplicationSetArgs {
   /// [regions] The replication set's Regions.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ReplicationSetArgs({
-    pulumi.Output<List<ReplicationSetRegion>>? region,
-    pulumi.Output<List<ReplicationSetRegion>>? regions,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(region),
-      regions = pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(regions),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    this.regions,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,9 +47,9 @@ class ReplicationSetArgs {
 
   factory ReplicationSetArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSetArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<List<ReplicationSetRegion>>(pulumi.Input.decodeList<ReplicationSetRegion>(map['region'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<ReplicationSetRegion>>(pulumi.Input.decodeList<ReplicationSetRegion>(map['regions'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (pulumi.Input.decodeList<ReplicationSetRegion>(map['region'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<ReplicationSetRegion>(map['regions'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

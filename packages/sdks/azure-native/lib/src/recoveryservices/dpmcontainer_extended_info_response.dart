@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional information of the DPMContainer.
 class DPMContainerExtendedInfoResponse {
   /// Last refresh time of the DPMContainer.
-  final String? lastRefreshedAt;
+  final pulumi.Input<String>? lastRefreshedAt;
 
   /// Creates a new [DPMContainerExtendedInfoResponse].
   /// [lastRefreshedAt] Last refresh time of the DPMContainer.
@@ -20,7 +21,7 @@ class DPMContainerExtendedInfoResponse {
 
   factory DPMContainerExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
     return DPMContainerExtendedInfoResponse(
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : map['lastRefreshedAt'] as String,
+      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt'] as String).input(),
     );
   }
 }

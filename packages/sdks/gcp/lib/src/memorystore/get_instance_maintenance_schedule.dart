@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceMaintenanceSchedule {
   /// The end time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The deadline that the maintenance schedule start time
   /// can not go beyond, including reschedule.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final String scheduleDeadlineTime;
+  final pulumi.Input<String> scheduleDeadlineTime;
   /// The start time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [GetInstanceMaintenanceSchedule].
   /// [endTime] The end time of any upcoming scheduled maintenance for this cluster.
@@ -36,9 +37,9 @@ class GetInstanceMaintenanceSchedule {
 
   factory GetInstanceMaintenanceSchedule.fromMap(Map<String, dynamic> map) {
     return GetInstanceMaintenanceSchedule(
-      endTime: map['endTime'] as String,
-      scheduleDeadlineTime: map['scheduleDeadlineTime'] as String,
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      scheduleDeadlineTime: (map['scheduleDeadlineTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

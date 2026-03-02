@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'common_language_settings.dart';
 
 /// Settings for Python client libraries.
 class PythonSettings {
   /// Some settings.
-  final CommonLanguageSettings? common;
+  final pulumi.Input<CommonLanguageSettings>? common;
 
   /// Creates a new [PythonSettings].
   /// [common] Some settings.
@@ -15,13 +16,13 @@ class PythonSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'common': ?common == null ? null : common!.toMap(),
+      'common': ?pulumi.Input.mapOptionalInputValue<CommonLanguageSettings, Map<String, dynamic>>(common, (value) => value.toMap()),
     };
   }
 
   factory PythonSettings.fromMap(Map<String, dynamic> map) {
     return PythonSettings(
-      common: map['common'] == null ? null : CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

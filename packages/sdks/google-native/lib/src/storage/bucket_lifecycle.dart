@@ -6,7 +6,7 @@ import 'bucket_lifecycle_rule_item.dart';
 /// The bucket's lifecycle configuration. See lifecycle management for more information.
 class BucketLifecycle {
   /// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-  final List<BucketLifecycleRuleItem>? rule;
+  final pulumi.Input<List<BucketLifecycleRuleItem>>? rule;
 
   /// Creates a new [BucketLifecycle].
   /// [rule] A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
@@ -16,13 +16,13 @@ class BucketLifecycle {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rule': ?rule == null ? null : pulumi.Input.encodeList<BucketLifecycleRuleItem, Map<String, dynamic>>(rule!, (value) => value.toMap()),
+      'rule': ?pulumi.Input.mapOptionalInputValue<List<BucketLifecycleRuleItem>, List<Map<String, dynamic>>>(rule, (value) => pulumi.Input.encodeList<BucketLifecycleRuleItem, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BucketLifecycle.fromMap(Map<String, dynamic> map) {
     return BucketLifecycle(
-      rule: map['rule'] == null ? null : pulumi.Input.decodeList<BucketLifecycleRuleItem>(map['rule'], (value) => BucketLifecycleRuleItem.fromMap((value as Map).cast<String, dynamic>())),
+      rule: map['rule'] == null ? null : (pulumi.Input.decodeList<BucketLifecycleRuleItem>(map['rule'], (value) => BucketLifecycleRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Setting a parameter value.
 class GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse {
   /// Display name of the parameter.
-  final String parameter;
+  final pulumi.Input<String> parameter;
   /// The new value of the parameter. A null value clears the parameter.
-  final dynamic value;
+  final pulumi.Input<dynamic> value;
 
   /// Creates a new [GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse].
   /// [parameter] Display name of the parameter.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse {
 
   factory GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse(
-      parameter: map['parameter'] as String,
-      value: map['value'],
+      parameter: (map['parameter'] as String).input(),
+      value: (map['value']).input(),
     );
   }
 }

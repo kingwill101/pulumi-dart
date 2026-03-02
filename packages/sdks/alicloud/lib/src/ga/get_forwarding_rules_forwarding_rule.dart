@@ -6,20 +6,20 @@ import 'get_forwarding_rules_forwarding_rule_rule_condition.dart';
 
 class GetForwardingRulesForwardingRule {
   /// Forwarding Policy ID.
-  final String forwardingRuleId;
+  final pulumi.Input<String> forwardingRuleId;
   /// Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
-  final String forwardingRuleName;
+  final pulumi.Input<String> forwardingRuleName;
   /// Forwarding Policy Status.
-  final String forwardingRuleStatus;
-  final String id;
+  final pulumi.Input<String> forwardingRuleStatus;
+  final pulumi.Input<String> id;
   /// The ID of the listener.
-  final String listenerId;
+  final pulumi.Input<String> listenerId;
   /// Forwarding policy priority.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The IP protocol used by the GA instance.
-  final List<GetForwardingRulesForwardingRuleRuleAction> ruleActions;
+  final pulumi.Input<List<GetForwardingRulesForwardingRuleRuleAction>> ruleActions;
   /// Forward action.
-  final List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions;
+  final pulumi.Input<List<GetForwardingRulesForwardingRuleRuleCondition>> ruleConditions;
 
   /// Creates a new [GetForwardingRulesForwardingRule].
   /// [forwardingRuleId] Forwarding Policy ID.
@@ -49,21 +49,21 @@ class GetForwardingRulesForwardingRule {
       'id': id,
       'listenerId': listenerId,
       'priority': priority,
-      'ruleActions': pulumi.Input.encodeList<GetForwardingRulesForwardingRuleRuleAction, Map<String, dynamic>>(ruleActions, (value) => value.toMap()),
-      'ruleConditions': pulumi.Input.encodeList<GetForwardingRulesForwardingRuleRuleCondition, Map<String, dynamic>>(ruleConditions, (value) => value.toMap()),
+      'ruleActions': pulumi.Input.mapInputValue<List<GetForwardingRulesForwardingRuleRuleAction>, List<Map<String, dynamic>>>(ruleActions, (value) => pulumi.Input.encodeList<GetForwardingRulesForwardingRuleRuleAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ruleConditions': pulumi.Input.mapInputValue<List<GetForwardingRulesForwardingRuleRuleCondition>, List<Map<String, dynamic>>>(ruleConditions, (value) => pulumi.Input.encodeList<GetForwardingRulesForwardingRuleRuleCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetForwardingRulesForwardingRule.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesForwardingRule(
-      forwardingRuleId: map['forwardingRuleId'] as String,
-      forwardingRuleName: map['forwardingRuleName'] as String,
-      forwardingRuleStatus: map['forwardingRuleStatus'] as String,
-      id: map['id'] as String,
-      listenerId: map['listenerId'] as String,
-      priority: map['priority'] as int,
-      ruleActions: pulumi.Input.decodeList<GetForwardingRulesForwardingRuleRuleAction>(map['ruleActions'], (value) => GetForwardingRulesForwardingRuleRuleAction.fromMap((value as Map).cast<String, dynamic>())),
-      ruleConditions: pulumi.Input.decodeList<GetForwardingRulesForwardingRuleRuleCondition>(map['ruleConditions'], (value) => GetForwardingRulesForwardingRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>())),
+      forwardingRuleId: (map['forwardingRuleId'] as String).input(),
+      forwardingRuleName: (map['forwardingRuleName'] as String).input(),
+      forwardingRuleStatus: (map['forwardingRuleStatus'] as String).input(),
+      id: (map['id'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      ruleActions: (pulumi.Input.decodeList<GetForwardingRulesForwardingRuleRuleAction>(map['ruleActions'], (value) => GetForwardingRulesForwardingRuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleConditions: (pulumi.Input.decodeList<GetForwardingRulesForwardingRuleRuleCondition>(map['ruleConditions'], (value) => GetForwardingRulesForwardingRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

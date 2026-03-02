@@ -31,21 +31,14 @@ class BandwidthScheduleArgs {
   /// [start] The start time of the schedule in UTC.
   /// [stop] The stop time of the schedule in UTC.
   BandwidthScheduleArgs({
-    required pulumi.Output<List<String>> days,
-    required pulumi.Output<String> deviceName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> rateInMbps,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> start,
-    required pulumi.Output<String> stop,
-  }) :
-      days = pulumi.Input.asInput<List<String>>(days),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rateInMbps = pulumi.Input.asInput<int>(rateInMbps),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      start = pulumi.Input.asInput<String>(start),
-      stop = pulumi.Input.asInput<String>(stop);
+    required this.days,
+    required this.deviceName,
+    this.name,
+    required this.rateInMbps,
+    required this.resourceGroupName,
+    required this.start,
+    required this.stop,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class BandwidthScheduleArgs {
 
   factory BandwidthScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BandwidthScheduleArgs(
-      days: pulumi.Output.create<List<String>>((map['days'] as List).cast<String>()),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rateInMbps: pulumi.Output.create<int>(map['rateInMbps'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      start: pulumi.Output.create<String>(map['start'] as String),
-      stop: pulumi.Output.create<String>(map['stop'] as String),
+      days: ((map['days'] as List).cast<String>()).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rateInMbps: (map['rateInMbps'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      start: (map['start'] as String).input(),
+      stop: (map['stop'] as String).input(),
     );
   }
 }

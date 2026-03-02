@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Map a field of profile to its corresponding StrongId in Related Profile.
 class RelationshipTypeFieldMapping {
   /// Specifies the fieldName in profile.
-  final String profileFieldName;
+  final pulumi.Input<String> profileFieldName;
   /// Specifies the KeyProperty (from StrongId) of the related profile.
-  final String relatedProfileKeyProperty;
+  final pulumi.Input<String> relatedProfileKeyProperty;
 
   /// Creates a new [RelationshipTypeFieldMapping].
   /// [profileFieldName] Specifies the fieldName in profile.
@@ -25,8 +26,8 @@ class RelationshipTypeFieldMapping {
 
   factory RelationshipTypeFieldMapping.fromMap(Map<String, dynamic> map) {
     return RelationshipTypeFieldMapping(
-      profileFieldName: map['profileFieldName'] as String,
-      relatedProfileKeyProperty: map['relatedProfileKeyProperty'] as String,
+      profileFieldName: (map['profileFieldName'] as String).input(),
+      relatedProfileKeyProperty: (map['relatedProfileKeyProperty'] as String).input(),
     );
   }
 }

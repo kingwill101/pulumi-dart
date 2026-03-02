@@ -31,23 +31,15 @@ class VirtualAddressState {
   /// [name] Name of the virtual address
   /// [trafficGroup] Specify the partition and traffic group
   VirtualAddressState({
-    pulumi.Output<String>? advertizeRoute,
-    pulumi.Output<bool>? arp,
-    pulumi.Output<bool>? autoDelete,
-    pulumi.Output<int>? connLimit,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? icmpEcho,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? trafficGroup,
-  }) :
-      advertizeRoute = pulumi.Input.asOptionalInput<String>(advertizeRoute),
-      arp = pulumi.Input.asOptionalInput<bool>(arp),
-      autoDelete = pulumi.Input.asOptionalInput<bool>(autoDelete),
-      connLimit = pulumi.Input.asOptionalInput<int>(connLimit),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      icmpEcho = pulumi.Input.asOptionalInput<String>(icmpEcho),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      trafficGroup = pulumi.Input.asOptionalInput<String>(trafficGroup);
+    this.advertizeRoute,
+    this.arp,
+    this.autoDelete,
+    this.connLimit,
+    this.enabled,
+    this.icmpEcho,
+    this.name,
+    this.trafficGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class VirtualAddressState {
 
   factory VirtualAddressState.fromMap(Map<String, dynamic> map) {
     return VirtualAddressState(
-      advertizeRoute: map['advertizeRoute'] == null ? null : pulumi.Output.create<String>(map['advertizeRoute'] as String),
-      arp: map['arp'] == null ? null : pulumi.Output.create<bool>(map['arp'] as bool),
-      autoDelete: map['autoDelete'] == null ? null : pulumi.Output.create<bool>(map['autoDelete'] as bool),
-      connLimit: map['connLimit'] == null ? null : pulumi.Output.create<int>(map['connLimit'] as int),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      icmpEcho: map['icmpEcho'] == null ? null : pulumi.Output.create<String>(map['icmpEcho'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      trafficGroup: map['trafficGroup'] == null ? null : pulumi.Output.create<String>(map['trafficGroup'] as String),
+      advertizeRoute: map['advertizeRoute'] == null ? null : (map['advertizeRoute'] as String).input(),
+      arp: map['arp'] == null ? null : (map['arp'] as bool).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
+      connLimit: map['connLimit'] == null ? null : (map['connLimit'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      icmpEcho: map['icmpEcho'] == null ? null : (map['icmpEcho'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup'] as String).input(),
     );
   }
 }

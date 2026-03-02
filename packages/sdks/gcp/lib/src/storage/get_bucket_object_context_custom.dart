@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketObjectContextCustom {
   /// The time when context was first added to the storage#object in RFC 3339 format.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
-  final String key;
+  final pulumi.Input<String> key;
   /// The time when context was last updated in RFC 3339 format.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
   /// The value associated with this context. This field holds the primary information for the given context key.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetBucketObjectContextCustom].
   /// [createTime] The time when context was first added to the storage#object in RFC 3339 format.
@@ -34,10 +35,10 @@ class GetBucketObjectContextCustom {
 
   factory GetBucketObjectContextCustom.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectContextCustom(
-      createTime: map['createTime'] as String,
-      key: map['key'] as String,
-      updateTime: map['updateTime'] as String,
-      value: map['value'] as String,
+      createTime: (map['createTime'] as String).input(),
+      key: (map['key'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

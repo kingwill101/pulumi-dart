@@ -37,25 +37,16 @@ class ServiceNetworkResourceAssociationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   ServiceNetworkResourceAssociationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<ServiceNetworkResourceAssociationDnsEntry>>? dnsEntries,
-    pulumi.Output<bool>? privateDnsEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceConfigurationIdentifier,
-    pulumi.Output<String>? serviceNetworkIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ServiceNetworkResourceAssociationTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      dnsEntries = pulumi.Input.asOptionalInput<List<ServiceNetworkResourceAssociationDnsEntry>>(dnsEntries),
-      privateDnsEnabled = pulumi.Input.asOptionalInput<bool>(privateDnsEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceConfigurationIdentifier = pulumi.Input.asOptionalInput<String>(resourceConfigurationIdentifier),
-      serviceNetworkIdentifier = pulumi.Input.asOptionalInput<String>(serviceNetworkIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ServiceNetworkResourceAssociationTimeouts>(timeouts);
+    this.arn,
+    this.dnsEntries,
+    this.privateDnsEnabled,
+    this.region,
+    this.resourceConfigurationIdentifier,
+    this.serviceNetworkIdentifier,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ServiceNetworkResourceAssociationState {
 
   factory ServiceNetworkResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkResourceAssociationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      dnsEntries: map['dnsEntries'] == null ? null : pulumi.Output.create<List<ServiceNetworkResourceAssociationDnsEntry>>(pulumi.Input.decodeList<ServiceNetworkResourceAssociationDnsEntry>(map['dnsEntries'], (value) => ServiceNetworkResourceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : pulumi.Output.create<bool>(map['privateDnsEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceConfigurationIdentifier: map['resourceConfigurationIdentifier'] == null ? null : pulumi.Output.create<String>(map['resourceConfigurationIdentifier'] as String),
-      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : pulumi.Output.create<String>(map['serviceNetworkIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ServiceNetworkResourceAssociationTimeouts>(ServiceNetworkResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      dnsEntries: map['dnsEntries'] == null ? null : (pulumi.Input.decodeList<ServiceNetworkResourceAssociationDnsEntry>(map['dnsEntries'], (value) => ServiceNetworkResourceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceConfigurationIdentifier: map['resourceConfigurationIdentifier'] == null ? null : (map['resourceConfigurationIdentifier'] as String).input(),
+      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : (map['serviceNetworkIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ServiceNetworkResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_style_font_size_response.dart';
 import 'google_cloud_documentai_v1_document_text_anchor_response.dart';
 import 'google_type_color_response.dart';
@@ -7,21 +8,21 @@ import 'google_type_color_response.dart';
 /// Annotation for common text style attributes. This adheres to CSS conventions as much as possible.
 class GoogleCloudDocumentaiV1DocumentStyleResponse {
   /// Text background color.
-  final GoogleTypeColorResponse backgroundColor;
+  final pulumi.Input<GoogleTypeColorResponse> backgroundColor;
   /// Text color.
-  final GoogleTypeColorResponse color;
+  final pulumi.Input<GoogleTypeColorResponse> color;
   /// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
-  final String fontFamily;
+  final pulumi.Input<String> fontFamily;
   /// Font size.
-  final GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse fontSize;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse> fontSize;
   /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
-  final String fontWeight;
+  final pulumi.Input<String> fontWeight;
   /// Text anchor indexing into the Document.text.
-  final GoogleCloudDocumentaiV1DocumentTextAnchorResponse textAnchor;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchorResponse> textAnchor;
   /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
-  final String textDecoration;
+  final pulumi.Input<String> textDecoration;
   /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
-  final String textStyle;
+  final pulumi.Input<String> textStyle;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentStyleResponse].
   /// [backgroundColor] Text background color.
@@ -45,12 +46,12 @@ class GoogleCloudDocumentaiV1DocumentStyleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backgroundColor': backgroundColor.toMap(),
-      'color': color.toMap(),
+      'backgroundColor': pulumi.Input.mapInputValue<GoogleTypeColorResponse, Map<String, dynamic>>(backgroundColor, (value) => value.toMap()),
+      'color': pulumi.Input.mapInputValue<GoogleTypeColorResponse, Map<String, dynamic>>(color, (value) => value.toMap()),
       'fontFamily': fontFamily,
-      'fontSize': fontSize.toMap(),
+      'fontSize': pulumi.Input.mapInputValue<GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse, Map<String, dynamic>>(fontSize, (value) => value.toMap()),
       'fontWeight': fontWeight,
-      'textAnchor': textAnchor.toMap(),
+      'textAnchor': pulumi.Input.mapInputValue<GoogleCloudDocumentaiV1DocumentTextAnchorResponse, Map<String, dynamic>>(textAnchor, (value) => value.toMap()),
       'textDecoration': textDecoration,
       'textStyle': textStyle,
     };
@@ -58,14 +59,14 @@ class GoogleCloudDocumentaiV1DocumentStyleResponse {
 
   factory GoogleCloudDocumentaiV1DocumentStyleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentStyleResponse(
-      backgroundColor: GoogleTypeColorResponse.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>()),
-      color: GoogleTypeColorResponse.fromMap((map['color'] as Map).cast<String, dynamic>()),
-      fontFamily: map['fontFamily'] as String,
-      fontSize: GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap((map['fontSize'] as Map).cast<String, dynamic>()),
-      fontWeight: map['fontWeight'] as String,
-      textAnchor: GoogleCloudDocumentaiV1DocumentTextAnchorResponse.fromMap((map['textAnchor'] as Map).cast<String, dynamic>()),
-      textDecoration: map['textDecoration'] as String,
-      textStyle: map['textStyle'] as String,
+      backgroundColor: (GoogleTypeColorResponse.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>())).input(),
+      color: (GoogleTypeColorResponse.fromMap((map['color'] as Map).cast<String, dynamic>())).input(),
+      fontFamily: (map['fontFamily'] as String).input(),
+      fontSize: (GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap((map['fontSize'] as Map).cast<String, dynamic>())).input(),
+      fontWeight: (map['fontWeight'] as String).input(),
+      textAnchor: (GoogleCloudDocumentaiV1DocumentTextAnchorResponse.fromMap((map['textAnchor'] as Map).cast<String, dynamic>())).input(),
+      textDecoration: (map['textDecoration'] as String).input(),
+      textStyle: (map['textStyle'] as String).input(),
     );
   }
 }

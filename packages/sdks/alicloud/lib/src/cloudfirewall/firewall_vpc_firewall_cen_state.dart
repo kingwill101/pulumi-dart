@@ -35,25 +35,16 @@ class FirewallVpcFirewallCenState {
   /// [vpcFirewallName] The name of the VPC firewall instance.
   /// [vpcRegion] The ID of the region to which the VPC is created.
   FirewallVpcFirewallCenState({
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? connectType,
-    pulumi.Output<String>? lang,
-    pulumi.Output<FirewallVpcFirewallCenLocalVpc>? localVpc,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcFirewallId,
-    pulumi.Output<String>? vpcFirewallName,
-    pulumi.Output<String>? vpcRegion,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      connectType = pulumi.Input.asOptionalInput<String>(connectType),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      localVpc = pulumi.Input.asOptionalInput<FirewallVpcFirewallCenLocalVpc>(localVpc),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcFirewallId = pulumi.Input.asOptionalInput<String>(vpcFirewallId),
-      vpcFirewallName = pulumi.Input.asOptionalInput<String>(vpcFirewallName),
-      vpcRegion = pulumi.Input.asOptionalInput<String>(vpcRegion);
+    this.cenId,
+    this.connectType,
+    this.lang,
+    this.localVpc,
+    this.memberUid,
+    this.status,
+    this.vpcFirewallId,
+    this.vpcFirewallName,
+    this.vpcRegion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class FirewallVpcFirewallCenState {
 
   factory FirewallVpcFirewallCenState.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallCenState(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      connectType: map['connectType'] == null ? null : pulumi.Output.create<String>(map['connectType'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      localVpc: map['localVpc'] == null ? null : pulumi.Output.create<FirewallVpcFirewallCenLocalVpc>(FirewallVpcFirewallCenLocalVpc.fromMap((map['localVpc'] as Map).cast<String, dynamic>())),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallId'] as String),
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallName'] as String),
-      vpcRegion: map['vpcRegion'] == null ? null : pulumi.Output.create<String>(map['vpcRegion'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      connectType: map['connectType'] == null ? null : (map['connectType'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      localVpc: map['localVpc'] == null ? null : (FirewallVpcFirewallCenLocalVpc.fromMap((map['localVpc'] as Map).cast<String, dynamic>())).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
+      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName'] as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
     );
   }
 }

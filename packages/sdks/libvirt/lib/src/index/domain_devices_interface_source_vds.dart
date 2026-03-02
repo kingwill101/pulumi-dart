@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceVds {
   /// Sets the connection identifier for connecting the network interface to the vDS.
-  final double? connectionId;
+  final pulumi.Input<double>? connectionId;
   /// Defines the port group identifier for the vDS used by the network interface.
-  final String? portGroupId;
+  final pulumi.Input<String>? portGroupId;
   /// Specifies the port ID within the vDS configuration for the network interface.
-  final double? portId;
+  final pulumi.Input<double>? portId;
   /// Configures the switch ID for the vDS associated with the network interface.
-  final String switchId;
+  final pulumi.Input<String> switchId;
 
   /// Creates a new [DomainDevicesInterfaceSourceVds].
   /// [connectionId] Sets the connection identifier for connecting the network interface to the vDS.
@@ -34,10 +35,10 @@ class DomainDevicesInterfaceSourceVds {
 
   factory DomainDevicesInterfaceSourceVds.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVds(
-      connectionId: map['connectionId'] == null ? null : map['connectionId'] as double,
-      portGroupId: map['portGroupId'] == null ? null : map['portGroupId'] as String,
-      portId: map['portId'] == null ? null : map['portId'] as double,
-      switchId: map['switchId'] as String,
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as double).input(),
+      portGroupId: map['portGroupId'] == null ? null : (map['portGroupId'] as String).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as double).input(),
+      switchId: (map['switchId'] as String).input(),
     );
   }
 }

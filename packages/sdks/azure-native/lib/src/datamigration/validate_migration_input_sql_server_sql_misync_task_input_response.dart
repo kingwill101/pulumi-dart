@@ -10,17 +10,17 @@ import 'sql_connection_info_response.dart';
 /// Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 class ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse {
   /// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
-  final AzureActiveDirectoryAppResponse azureApp;
+  final pulumi.Input<AzureActiveDirectoryAppResponse> azureApp;
   /// Backup file share information for all selected databases.
-  final FileShareResponse? backupFileShare;
+  final pulumi.Input<FileShareResponse>? backupFileShare;
   /// Databases to migrate
-  final List<MigrateSqlServerSqlMIDatabaseInputResponse> selectedDatabases;
+  final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInputResponse>> selectedDatabases;
   /// Connection information for source SQL Server
-  final SqlConnectionInfoResponse sourceConnectionInfo;
+  final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
   /// Fully qualified resourceId of storage
-  final String storageResourceId;
+  final pulumi.Input<String> storageResourceId;
   /// Connection information for Azure SQL Database Managed Instance
-  final MiSqlConnectionInfoResponse targetConnectionInfo;
+  final pulumi.Input<MiSqlConnectionInfoResponse> targetConnectionInfo;
 
   /// Creates a new [ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse].
   /// [azureApp] Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
@@ -40,23 +40,23 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApp': azureApp.toMap(),
-      'backupFileShare': ?backupFileShare == null ? null : backupFileShare!.toMap(),
-      'selectedDatabases': pulumi.Input.encodeList<MigrateSqlServerSqlMIDatabaseInputResponse, Map<String, dynamic>>(selectedDatabases, (value) => value.toMap()),
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
+      'azureApp': pulumi.Input.mapInputValue<AzureActiveDirectoryAppResponse, Map<String, dynamic>>(azureApp, (value) => value.toMap()),
+      'backupFileShare': ?pulumi.Input.mapOptionalInputValue<FileShareResponse, Map<String, dynamic>>(backupFileShare, (value) => value.toMap()),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateSqlServerSqlMIDatabaseInputResponse>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateSqlServerSqlMIDatabaseInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
       'storageResourceId': storageResourceId,
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<MiSqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse(
-      azureApp: AzureActiveDirectoryAppResponse.fromMap((map['azureApp'] as Map).cast<String, dynamic>()),
-      backupFileShare: map['backupFileShare'] == null ? null : FileShareResponse.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>()),
-      selectedDatabases: pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInputResponse>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceConnectionInfo: SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      storageResourceId: map['storageResourceId'] as String,
-      targetConnectionInfo: MiSqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      azureApp: (AzureActiveDirectoryAppResponse.fromMap((map['azureApp'] as Map).cast<String, dynamic>())).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShareResponse.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
+      selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInputResponse>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      storageResourceId: (map['storageResourceId'] as String).input(),
+      targetConnectionInfo: (MiSqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

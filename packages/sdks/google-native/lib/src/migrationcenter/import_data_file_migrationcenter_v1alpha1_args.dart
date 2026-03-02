@@ -32,23 +32,15 @@ class ImportDataFileMigrationcenterV1alpha1Args {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [uploadFileInfo] Information about a file that is uploaded to a storage service.
   ImportDataFileMigrationcenterV1alpha1Args({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<ImportDataFileFormatMigrationcenterV1alpha1> format,
-    required pulumi.Output<String> importDataFileId,
-    required pulumi.Output<String> importJobId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<Map<String, dynamic>>? uploadFileInfo,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      format = pulumi.Input.asInput<ImportDataFileFormatMigrationcenterV1alpha1>(format),
-      importDataFileId = pulumi.Input.asInput<String>(importDataFileId),
-      importJobId = pulumi.Input.asInput<String>(importJobId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      uploadFileInfo = pulumi.Input.asOptionalInput<Map<String, dynamic>>(uploadFileInfo);
+    this.displayName,
+    required this.format,
+    required this.importDataFileId,
+    required this.importJobId,
+    this.location,
+    this.project,
+    this.requestId,
+    this.uploadFileInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class ImportDataFileMigrationcenterV1alpha1Args {
 
   factory ImportDataFileMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ImportDataFileMigrationcenterV1alpha1Args(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      format: pulumi.Output.create<ImportDataFileFormatMigrationcenterV1alpha1>(ImportDataFileFormatMigrationcenterV1alpha1.fromValue(map['format'] as String)),
-      importDataFileId: pulumi.Output.create<String>(map['importDataFileId'] as String),
-      importJobId: pulumi.Output.create<String>(map['importJobId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      uploadFileInfo: map['uploadFileInfo'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['uploadFileInfo'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      format: (ImportDataFileFormatMigrationcenterV1alpha1.fromValue(map['format'] as String)).input(),
+      importDataFileId: (map['importDataFileId'] as String).input(),
+      importJobId: (map['importJobId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      uploadFileInfo: map['uploadFileInfo'] == null ? null : ((map['uploadFileInfo'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

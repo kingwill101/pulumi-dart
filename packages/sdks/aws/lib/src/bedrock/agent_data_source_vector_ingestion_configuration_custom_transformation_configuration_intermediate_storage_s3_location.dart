@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location {
   /// S3 URI for intermediate storage.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location].
   /// [uri] S3 URI for intermediate storage.
@@ -19,7 +20,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
 
   factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location(
-      uri: map['uri'] as String,
+      uri: (map['uri'] as String).input(),
     );
   }
 }

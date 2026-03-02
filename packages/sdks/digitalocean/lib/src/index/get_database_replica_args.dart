@@ -19,13 +19,10 @@ class GetDatabaseReplicaArgs {
   /// [name] The name for the database replica.
   /// [tags] A list of tag names to be applied to the database replica.
   GetDatabaseReplicaArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> name,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      name = pulumi.Input.asInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    required this.clusterId,
+    required this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDatabaseReplicaArgs {
 
   factory GetDatabaseReplicaArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseReplicaArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      clusterId: (map['clusterId'] as String).input(),
+      name: (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

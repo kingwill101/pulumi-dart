@@ -43,25 +43,16 @@ class EntryArgs {
   /// [parentEntry] The resource name of the parent entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
   /// [project] The ID of the project in which the resource belongs.
   EntryArgs({
-    pulumi.Output<List<EntryAspect>>? aspects,
-    pulumi.Output<String>? entryGroupId,
-    pulumi.Output<String>? entryId,
-    pulumi.Output<EntryEntrySource>? entrySource,
-    required pulumi.Output<String> entryType,
-    pulumi.Output<String>? fullyQualifiedName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? parentEntry,
-    pulumi.Output<String>? project,
-  }) :
-      aspects = pulumi.Input.asOptionalInput<List<EntryAspect>>(aspects),
-      entryGroupId = pulumi.Input.asOptionalInput<String>(entryGroupId),
-      entryId = pulumi.Input.asOptionalInput<String>(entryId),
-      entrySource = pulumi.Input.asOptionalInput<EntryEntrySource>(entrySource),
-      entryType = pulumi.Input.asInput<String>(entryType),
-      fullyQualifiedName = pulumi.Input.asOptionalInput<String>(fullyQualifiedName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parentEntry = pulumi.Input.asOptionalInput<String>(parentEntry),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.aspects,
+    this.entryGroupId,
+    this.entryId,
+    this.entrySource,
+    required this.entryType,
+    this.fullyQualifiedName,
+    this.location,
+    this.parentEntry,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class EntryArgs {
 
   factory EntryArgs.fromMap(Map<String, dynamic> map) {
     return EntryArgs(
-      aspects: map['aspects'] == null ? null : pulumi.Output.create<List<EntryAspect>>(pulumi.Input.decodeList<EntryAspect>(map['aspects'], (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>()))),
-      entryGroupId: map['entryGroupId'] == null ? null : pulumi.Output.create<String>(map['entryGroupId'] as String),
-      entryId: map['entryId'] == null ? null : pulumi.Output.create<String>(map['entryId'] as String),
-      entrySource: map['entrySource'] == null ? null : pulumi.Output.create<EntryEntrySource>(EntryEntrySource.fromMap((map['entrySource'] as Map).cast<String, dynamic>())),
-      entryType: pulumi.Output.create<String>(map['entryType'] as String),
-      fullyQualifiedName: map['fullyQualifiedName'] == null ? null : pulumi.Output.create<String>(map['fullyQualifiedName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parentEntry: map['parentEntry'] == null ? null : pulumi.Output.create<String>(map['parentEntry'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      aspects: map['aspects'] == null ? null : (pulumi.Input.decodeList<EntryAspect>(map['aspects'], (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entryGroupId: map['entryGroupId'] == null ? null : (map['entryGroupId'] as String).input(),
+      entryId: map['entryId'] == null ? null : (map['entryId'] as String).input(),
+      entrySource: map['entrySource'] == null ? null : (EntryEntrySource.fromMap((map['entrySource'] as Map).cast<String, dynamic>())).input(),
+      entryType: (map['entryType'] as String).input(),
+      fullyQualifiedName: map['fullyQualifiedName'] == null ? null : (map['fullyQualifiedName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parentEntry: map['parentEntry'] == null ? null : (map['parentEntry'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

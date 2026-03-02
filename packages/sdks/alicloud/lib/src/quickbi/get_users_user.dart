@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUsersUser {
   /// Alibaba Cloud account ID.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// An Alibaba Cloud account, Alibaba Cloud name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Whether it is the administrator. Valid values: `true` and `false`.
-  final bool adminUser;
+  final pulumi.Input<bool> adminUser;
   /// Whether this is a permissions administrator. Valid values: `true` and `false`.
-  final bool authAdminUser;
+  final pulumi.Input<bool> authAdminUser;
   /// The email of the user.
-  final String email;
+  final pulumi.Input<String> email;
   /// The ID of the User.
-  final String id;
+  final pulumi.Input<String> id;
   /// The nickname of the user.
-  final String nickName;
+  final pulumi.Input<String> nickName;
   /// The phone number of the user.
-  final String phone;
+  final pulumi.Input<String> phone;
   /// The ID of the User.
-  final String userId;
+  final pulumi.Input<String> userId;
   /// The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
-  final String userType;
+  final pulumi.Input<String> userType;
 
   /// Creates a new [GetUsersUser].
   /// [accountId] Alibaba Cloud account ID.
@@ -64,16 +65,16 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      accountId: map['accountId'] as String,
-      accountName: map['accountName'] as String,
-      adminUser: map['adminUser'] as bool,
-      authAdminUser: map['authAdminUser'] as bool,
-      email: map['email'] as String,
-      id: map['id'] as String,
-      nickName: map['nickName'] as String,
-      phone: map['phone'] as String,
-      userId: map['userId'] as String,
-      userType: map['userType'] as String,
+      accountId: (map['accountId'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      adminUser: (map['adminUser'] as bool).input(),
+      authAdminUser: (map['authAdminUser'] as bool).input(),
+      email: (map['email'] as String).input(),
+      id: (map['id'] as String).input(),
+      nickName: (map['nickName'] as String).input(),
+      phone: (map['phone'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      userType: (map['userType'] as String).input(),
     );
   }
 }

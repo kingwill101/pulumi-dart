@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProjectsProject {
   /// The date and time when the project was created, (ISO8601)
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// The description of the project
-  final String description;
+  final pulumi.Input<String> description;
   /// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
-  final String environment;
+  final pulumi.Input<String> environment;
   /// The ID of the project
-  final String id;
-  final bool isDefault;
+  final pulumi.Input<String> id;
+  final pulumi.Input<bool> isDefault;
   /// The name of the project
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the project owner
-  final int ownerId;
+  final pulumi.Input<int> ownerId;
   /// The unique universal identifier of the project owner
-  final String ownerUuid;
+  final pulumi.Input<String> ownerUuid;
   /// The purpose of the project (Default: "Web Application")
-  final String purpose;
+  final pulumi.Input<String> purpose;
   /// A set of uniform resource names (URNs) for the resources associated with the project
-  final List<String> resources;
+  final pulumi.Input<List<String>> resources;
   /// The date and time when the project was last updated, (ISO8601)
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
 
   /// Creates a new [GetProjectsProject].
   /// [createdAt] The date and time when the project was created, (ISO8601)
@@ -68,17 +69,17 @@ class GetProjectsProject {
 
   factory GetProjectsProject.fromMap(Map<String, dynamic> map) {
     return GetProjectsProject(
-      createdAt: map['createdAt'] as String,
-      description: map['description'] as String,
-      environment: map['environment'] as String,
-      id: map['id'] as String,
-      isDefault: map['isDefault'] as bool,
-      name: map['name'] as String,
-      ownerId: map['ownerId'] as int,
-      ownerUuid: map['ownerUuid'] as String,
-      purpose: map['purpose'] as String,
-      resources: (map['resources'] as List).cast<String>(),
-      updatedAt: map['updatedAt'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      description: (map['description'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      id: (map['id'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      name: (map['name'] as String).input(),
+      ownerId: (map['ownerId'] as int).input(),
+      ownerUuid: (map['ownerUuid'] as String).input(),
+      purpose: (map['purpose'] as String).input(),
+      resources: ((map['resources'] as List).cast<String>()).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
     );
   }
 }

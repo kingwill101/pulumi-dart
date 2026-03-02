@@ -20,13 +20,10 @@ class GetAgentAgentVersionsArgs {
   /// [agentVersionSummaries] List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetAgentAgentVersionsArgs({
-    required pulumi.Output<String> agentId,
-    pulumi.Output<List<GetAgentAgentVersionsAgentVersionSummary>>? agentVersionSummaries,
-    pulumi.Output<String>? region,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      agentVersionSummaries = pulumi.Input.asOptionalInput<List<GetAgentAgentVersionsAgentVersionSummary>>(agentVersionSummaries),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.agentId,
+    this.agentVersionSummaries,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetAgentAgentVersionsArgs {
 
   factory GetAgentAgentVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentAgentVersionsArgs(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      agentVersionSummaries: map['agentVersionSummaries'] == null ? null : pulumi.Output.create<List<GetAgentAgentVersionsAgentVersionSummary>>(pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(map['agentVersionSummaries'], (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      agentId: (map['agentId'] as String).input(),
+      agentVersionSummaries: map['agentVersionSummaries'] == null ? null : (pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(map['agentVersionSummaries'], (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

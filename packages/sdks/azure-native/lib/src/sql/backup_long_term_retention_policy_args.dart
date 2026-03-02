@@ -34,23 +34,15 @@ class BackupLongTermRetentionPolicyArgs {
   /// [weeklyRetention] The weekly retention policy for an LTR backup in an ISO 8601 format.
   /// [yearlyRetention] The yearly retention policy for an LTR backup in an ISO 8601 format.
   BackupLongTermRetentionPolicyArgs({
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? monthlyRetention,
-    pulumi.Output<String>? policyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<int>? weekOfYear,
-    pulumi.Output<String>? weeklyRetention,
-    pulumi.Output<String>? yearlyRetention,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      monthlyRetention = pulumi.Input.asOptionalInput<String>(monthlyRetention),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      weekOfYear = pulumi.Input.asOptionalInput<int>(weekOfYear),
-      weeklyRetention = pulumi.Input.asOptionalInput<String>(weeklyRetention),
-      yearlyRetention = pulumi.Input.asOptionalInput<String>(yearlyRetention);
+    required this.databaseName,
+    this.monthlyRetention,
+    this.policyName,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.weekOfYear,
+    this.weeklyRetention,
+    this.yearlyRetention,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class BackupLongTermRetentionPolicyArgs {
 
   factory BackupLongTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupLongTermRetentionPolicyArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      monthlyRetention: map['monthlyRetention'] == null ? null : pulumi.Output.create<String>(map['monthlyRetention'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      weekOfYear: map['weekOfYear'] == null ? null : pulumi.Output.create<int>(map['weekOfYear'] as int),
-      weeklyRetention: map['weeklyRetention'] == null ? null : pulumi.Output.create<String>(map['weeklyRetention'] as String),
-      yearlyRetention: map['yearlyRetention'] == null ? null : pulumi.Output.create<String>(map['yearlyRetention'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      monthlyRetention: map['monthlyRetention'] == null ? null : (map['monthlyRetention'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      weekOfYear: map['weekOfYear'] == null ? null : (map['weekOfYear'] as int).input(),
+      weeklyRetention: map['weeklyRetention'] == null ? null : (map['weeklyRetention'] as String).input(),
+      yearlyRetention: map['yearlyRetention'] == null ? null : (map['yearlyRetention'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings concerning lockbox.
 class PropertiesLockbox {
   /// lockbox configuration
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [PropertiesLockbox].
   /// [state] lockbox configuration
@@ -20,7 +21,7 @@ class PropertiesLockbox {
 
   factory PropertiesLockbox.fromMap(Map<String, dynamic> map) {
     return PropertiesLockbox(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

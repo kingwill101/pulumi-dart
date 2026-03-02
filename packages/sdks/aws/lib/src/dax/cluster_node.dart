@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNode {
-  final String? address;
-  final String? availabilityZone;
-  final String? id;
+  final pulumi.Input<String>? address;
+  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String>? id;
   /// The port used by the configuration endpoint
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ClusterNode].
   /// [address] Optional.
@@ -31,10 +32,10 @@ class ClusterNode {
 
   factory ClusterNode.fromMap(Map<String, dynamic> map) {
     return ClusterNode(
-      address: map['address'] == null ? null : map['address'] as String,
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

@@ -58,27 +58,17 @@ class TargetHttpProxyState {
   /// [selfLink] The URI of the created resource.
   /// [urlMap] A reference to the UrlMap resource that defines the mapping from URL
   TargetHttpProxyState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<int>? httpKeepAliveTimeoutSec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? proxyBind,
-    pulumi.Output<int>? proxyId,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? urlMap,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      httpKeepAliveTimeoutSec = pulumi.Input.asOptionalInput<int>(httpKeepAliveTimeoutSec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyBind = pulumi.Input.asOptionalInput<bool>(proxyBind),
-      proxyId = pulumi.Input.asOptionalInput<int>(proxyId),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      urlMap = pulumi.Input.asOptionalInput<String>(urlMap);
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.httpKeepAliveTimeoutSec,
+    this.name,
+    this.project,
+    this.proxyBind,
+    this.proxyId,
+    this.selfLink,
+    this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,16 +87,16 @@ class TargetHttpProxyState {
 
   factory TargetHttpProxyState.fromMap(Map<String, dynamic> map) {
     return TargetHttpProxyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : pulumi.Output.create<int>(map['httpKeepAliveTimeoutSec'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyBind: map['proxyBind'] == null ? null : pulumi.Output.create<bool>(map['proxyBind'] as bool),
-      proxyId: map['proxyId'] == null ? null : pulumi.Output.create<int>(map['proxyId'] as int),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      urlMap: map['urlMap'] == null ? null : pulumi.Output.create<String>(map['urlMap'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as int).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
     );
   }
 }

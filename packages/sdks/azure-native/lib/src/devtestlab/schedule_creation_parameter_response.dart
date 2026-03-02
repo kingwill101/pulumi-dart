@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'day_details_response.dart';
 import 'hour_details_response.dart';
 import 'notification_settings_response.dart';
@@ -8,27 +9,27 @@ import 'week_details_response.dart';
 /// Properties for creating a schedule.
 class ScheduleCreationParameterResponse {
   /// If the schedule will occur once each day of the week, specify the daily recurrence.
-  final DayDetailsResponse? dailyRecurrence;
+  final pulumi.Input<DayDetailsResponse>? dailyRecurrence;
   /// If the schedule will occur multiple times a day, specify the hourly recurrence.
-  final HourDetailsResponse? hourlyRecurrence;
+  final pulumi.Input<HourDetailsResponse>? hourlyRecurrence;
   /// The location of the new virtual machine or environment
-  final String location;
+  final pulumi.Input<String> location;
   /// The name of the virtual machine or environment
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Notification settings.
-  final NotificationSettingsResponse? notificationSettings;
+  final pulumi.Input<NotificationSettingsResponse>? notificationSettings;
   /// The status of the schedule (i.e. Enabled, Disabled)
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The tags of the resource.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The resource ID to which the schedule belongs
-  final String? targetResourceId;
+  final pulumi.Input<String>? targetResourceId;
   /// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
-  final String? taskType;
+  final pulumi.Input<String>? taskType;
   /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
-  final String? timeZoneId;
+  final pulumi.Input<String>? timeZoneId;
   /// If the schedule will occur only some days of the week, specify the weekly recurrence.
-  final WeekDetailsResponse? weeklyRecurrence;
+  final pulumi.Input<WeekDetailsResponse>? weeklyRecurrence;
 
   /// Creates a new [ScheduleCreationParameterResponse].
   /// [dailyRecurrence] If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -58,33 +59,33 @@ class ScheduleCreationParameterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailyRecurrence': ?dailyRecurrence == null ? null : dailyRecurrence!.toMap(),
-      'hourlyRecurrence': ?hourlyRecurrence == null ? null : hourlyRecurrence!.toMap(),
+      'dailyRecurrence': ?pulumi.Input.mapOptionalInputValue<DayDetailsResponse, Map<String, dynamic>>(dailyRecurrence, (value) => value.toMap()),
+      'hourlyRecurrence': ?pulumi.Input.mapOptionalInputValue<HourDetailsResponse, Map<String, dynamic>>(hourlyRecurrence, (value) => value.toMap()),
       'location': location,
       'name': ?name,
-      'notificationSettings': ?notificationSettings == null ? null : notificationSettings!.toMap(),
+      'notificationSettings': ?pulumi.Input.mapOptionalInputValue<NotificationSettingsResponse, Map<String, dynamic>>(notificationSettings, (value) => value.toMap()),
       'status': ?status,
       'tags': ?tags,
       'targetResourceId': ?targetResourceId,
       'taskType': ?taskType,
       'timeZoneId': ?timeZoneId,
-      'weeklyRecurrence': ?weeklyRecurrence == null ? null : weeklyRecurrence!.toMap(),
+      'weeklyRecurrence': ?pulumi.Input.mapOptionalInputValue<WeekDetailsResponse, Map<String, dynamic>>(weeklyRecurrence, (value) => value.toMap()),
     };
   }
 
   factory ScheduleCreationParameterResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleCreationParameterResponse(
-      dailyRecurrence: map['dailyRecurrence'] == null ? null : DayDetailsResponse.fromMap((map['dailyRecurrence'] as Map).cast<String, dynamic>()),
-      hourlyRecurrence: map['hourlyRecurrence'] == null ? null : HourDetailsResponse.fromMap((map['hourlyRecurrence'] as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      notificationSettings: map['notificationSettings'] == null ? null : NotificationSettingsResponse.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceId: map['targetResourceId'] == null ? null : map['targetResourceId'] as String,
-      taskType: map['taskType'] == null ? null : map['taskType'] as String,
-      timeZoneId: map['timeZoneId'] == null ? null : map['timeZoneId'] as String,
-      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : WeekDetailsResponse.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>()),
+      dailyRecurrence: map['dailyRecurrence'] == null ? null : (DayDetailsResponse.fromMap((map['dailyRecurrence'] as Map).cast<String, dynamic>())).input(),
+      hourlyRecurrence: map['hourlyRecurrence'] == null ? null : (HourDetailsResponse.fromMap((map['hourlyRecurrence'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : (NotificationSettingsResponse.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      taskType: map['taskType'] == null ? null : (map['taskType'] as String).input(),
+      timeZoneId: map['timeZoneId'] == null ? null : (map['timeZoneId'] as String).input(),
+      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (WeekDetailsResponse.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

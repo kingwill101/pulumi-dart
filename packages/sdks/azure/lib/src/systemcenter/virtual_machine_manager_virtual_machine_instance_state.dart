@@ -42,23 +42,15 @@ class VirtualMachineManagerVirtualMachineInstanceState {
   /// [storageDisks] A `storage_disk` block as defined below.
   /// [systemCenterVirtualMachineManagerAvailabilitySetIds] A list of IDs of System Center Virtual Machine Manager Availability Set.
   VirtualMachineManagerVirtualMachineInstanceState({
-    pulumi.Output<String>? customLocationId,
-    pulumi.Output<VirtualMachineManagerVirtualMachineInstanceHardware>? hardware,
-    pulumi.Output<VirtualMachineManagerVirtualMachineInstanceInfrastructure>? infrastructure,
-    pulumi.Output<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>>? networkInterfaces,
-    pulumi.Output<VirtualMachineManagerVirtualMachineInstanceOperatingSystem>? operatingSystem,
-    pulumi.Output<String>? scopedResourceId,
-    pulumi.Output<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>>? storageDisks,
-    pulumi.Output<List<String>>? systemCenterVirtualMachineManagerAvailabilitySetIds,
-  }) :
-      customLocationId = pulumi.Input.asOptionalInput<String>(customLocationId),
-      hardware = pulumi.Input.asOptionalInput<VirtualMachineManagerVirtualMachineInstanceHardware>(hardware),
-      infrastructure = pulumi.Input.asOptionalInput<VirtualMachineManagerVirtualMachineInstanceInfrastructure>(infrastructure),
-      networkInterfaces = pulumi.Input.asOptionalInput<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>>(networkInterfaces),
-      operatingSystem = pulumi.Input.asOptionalInput<VirtualMachineManagerVirtualMachineInstanceOperatingSystem>(operatingSystem),
-      scopedResourceId = pulumi.Input.asOptionalInput<String>(scopedResourceId),
-      storageDisks = pulumi.Input.asOptionalInput<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>>(storageDisks),
-      systemCenterVirtualMachineManagerAvailabilitySetIds = pulumi.Input.asOptionalInput<List<String>>(systemCenterVirtualMachineManagerAvailabilitySetIds);
+    this.customLocationId,
+    this.hardware,
+    this.infrastructure,
+    this.networkInterfaces,
+    this.operatingSystem,
+    this.scopedResourceId,
+    this.storageDisks,
+    this.systemCenterVirtualMachineManagerAvailabilitySetIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class VirtualMachineManagerVirtualMachineInstanceState {
 
   factory VirtualMachineManagerVirtualMachineInstanceState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceState(
-      customLocationId: map['customLocationId'] == null ? null : pulumi.Output.create<String>(map['customLocationId'] as String),
-      hardware: map['hardware'] == null ? null : pulumi.Output.create<VirtualMachineManagerVirtualMachineInstanceHardware>(VirtualMachineManagerVirtualMachineInstanceHardware.fromMap((map['hardware'] as Map).cast<String, dynamic>())),
-      infrastructure: map['infrastructure'] == null ? null : pulumi.Output.create<VirtualMachineManagerVirtualMachineInstanceInfrastructure>(VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap((map['infrastructure'] as Map).cast<String, dynamic>())),
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Output.create<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>>(pulumi.Input.decodeList<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>(map['networkInterfaces'], (value) => VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))),
-      operatingSystem: map['operatingSystem'] == null ? null : pulumi.Output.create<VirtualMachineManagerVirtualMachineInstanceOperatingSystem>(VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap((map['operatingSystem'] as Map).cast<String, dynamic>())),
-      scopedResourceId: map['scopedResourceId'] == null ? null : pulumi.Output.create<String>(map['scopedResourceId'] as String),
-      storageDisks: map['storageDisks'] == null ? null : pulumi.Output.create<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>>(pulumi.Input.decodeList<VirtualMachineManagerVirtualMachineInstanceStorageDisk>(map['storageDisks'], (value) => VirtualMachineManagerVirtualMachineInstanceStorageDisk.fromMap((value as Map).cast<String, dynamic>()))),
-      systemCenterVirtualMachineManagerAvailabilitySetIds: map['systemCenterVirtualMachineManagerAvailabilitySetIds'] == null ? null : pulumi.Output.create<List<String>>((map['systemCenterVirtualMachineManagerAvailabilitySetIds'] as List).cast<String>()),
+      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId'] as String).input(),
+      hardware: map['hardware'] == null ? null : (VirtualMachineManagerVirtualMachineInstanceHardware.fromMap((map['hardware'] as Map).cast<String, dynamic>())).input(),
+      infrastructure: map['infrastructure'] == null ? null : (VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap((map['infrastructure'] as Map).cast<String, dynamic>())).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>(map['networkInterfaces'], (value) => VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap((map['operatingSystem'] as Map).cast<String, dynamic>())).input(),
+      scopedResourceId: map['scopedResourceId'] == null ? null : (map['scopedResourceId'] as String).input(),
+      storageDisks: map['storageDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachineManagerVirtualMachineInstanceStorageDisk>(map['storageDisks'], (value) => VirtualMachineManagerVirtualMachineInstanceStorageDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      systemCenterVirtualMachineManagerAvailabilitySetIds: map['systemCenterVirtualMachineManagerAvailabilitySetIds'] == null ? null : ((map['systemCenterVirtualMachineManagerAvailabilitySetIds'] as List).cast<String>()).input(),
     );
   }
 }

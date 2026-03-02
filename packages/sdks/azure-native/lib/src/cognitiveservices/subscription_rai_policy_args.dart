@@ -20,13 +20,10 @@ class SubscriptionRaiPolicyArgs {
   /// [raiPolicyName] The name of the RaiPolicy associated with the Cognitive Services Account
   /// [tags] Resource tags.
   SubscriptionRaiPolicyArgs({
-    pulumi.Output<RaiPolicyProperties>? properties,
-    pulumi.Output<String>? raiPolicyName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      properties = pulumi.Input.asOptionalInput<RaiPolicyProperties>(properties),
-      raiPolicyName = pulumi.Input.asOptionalInput<String>(raiPolicyName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.properties,
+    this.raiPolicyName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SubscriptionRaiPolicyArgs {
 
   factory SubscriptionRaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionRaiPolicyArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<RaiPolicyProperties>(RaiPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      raiPolicyName: map['raiPolicyName'] == null ? null : pulumi.Output.create<String>(map['raiPolicyName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      properties: map['properties'] == null ? null : (RaiPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypesMasterInstanceType {
   /// Cpu size of the instance type.
-  final int cpuSize;
+  final pulumi.Input<int> cpuSize;
   /// The hbase instance type of create hbase cluster instance.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Mem size of the instance type.
-  final int memSize;
+  final pulumi.Input<int> memSize;
 
   /// Creates a new [GetInstanceTypesMasterInstanceType].
   /// [cpuSize] Cpu size of the instance type.
@@ -29,9 +30,9 @@ class GetInstanceTypesMasterInstanceType {
 
   factory GetInstanceTypesMasterInstanceType.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesMasterInstanceType(
-      cpuSize: map['cpuSize'] as int,
-      instanceType: map['instanceType'] as String,
-      memSize: map['memSize'] as int,
+      cpuSize: (map['cpuSize'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      memSize: (map['memSize'] as int).input(),
     );
   }
 }

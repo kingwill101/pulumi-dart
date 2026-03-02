@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The indexes for the path.
 class Indexes {
   /// The datatype for which the indexing behavior is applied to.
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// Indicates the type of index.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The precision of the index. -1 is maximum precision.
-  final int? precision;
+  final pulumi.Input<int>? precision;
 
   /// Creates a new [Indexes].
   /// [dataType] The datatype for which the indexing behavior is applied to.
@@ -30,9 +31,9 @@ class Indexes {
 
   factory Indexes.fromMap(Map<String, dynamic> map) {
     return Indexes(
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      precision: map['precision'] == null ? null : map['precision'] as int,
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      precision: map['precision'] == null ? null : (map['precision'] as int).input(),
     );
   }
 }

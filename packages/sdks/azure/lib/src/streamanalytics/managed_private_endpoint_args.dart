@@ -25,17 +25,12 @@ class ManagedPrivateEndpointArgs {
   /// [subresourceName] Specifies the sub resource name which the Stream Analytics Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Private Link Enabled Remote Resource which this Stream Analytics Private endpoint should be connected to. Changing this forces a new resource to be created.
   ManagedPrivateEndpointArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> streamAnalyticsClusterName,
-    required pulumi.Output<String> subresourceName,
-    required pulumi.Output<String> targetResourceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      streamAnalyticsClusterName = pulumi.Input.asInput<String>(streamAnalyticsClusterName),
-      subresourceName = pulumi.Input.asInput<String>(subresourceName),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId);
+    this.name,
+    required this.resourceGroupName,
+    required this.streamAnalyticsClusterName,
+    required this.subresourceName,
+    required this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ManagedPrivateEndpointArgs {
 
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      streamAnalyticsClusterName: pulumi.Output.create<String>(map['streamAnalyticsClusterName'] as String),
-      subresourceName: pulumi.Output.create<String>(map['subresourceName'] as String),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      streamAnalyticsClusterName: (map['streamAnalyticsClusterName'] as String).input(),
+      subresourceName: (map['subresourceName'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }
 }

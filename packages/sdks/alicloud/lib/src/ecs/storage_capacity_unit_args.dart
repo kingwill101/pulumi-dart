@@ -30,19 +30,13 @@ class StorageCapacityUnitArgs {
   /// [startTime] The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
   /// [storageCapacityUnitName] The name of the Storage Capacity Unit.
   StorageCapacityUnitArgs({
-    required pulumi.Output<int> capacity,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? period,
-    pulumi.Output<String>? periodUnit,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? storageCapacityUnitName,
-  }) :
-      capacity = pulumi.Input.asInput<int>(capacity),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      periodUnit = pulumi.Input.asOptionalInput<String>(periodUnit),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      storageCapacityUnitName = pulumi.Input.asOptionalInput<String>(storageCapacityUnitName);
+    required this.capacity,
+    this.description,
+    this.period,
+    this.periodUnit,
+    this.startTime,
+    this.storageCapacityUnitName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class StorageCapacityUnitArgs {
 
   factory StorageCapacityUnitArgs.fromMap(Map<String, dynamic> map) {
     return StorageCapacityUnitArgs(
-      capacity: pulumi.Output.create<int>(map['capacity'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      periodUnit: map['periodUnit'] == null ? null : pulumi.Output.create<String>(map['periodUnit'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      storageCapacityUnitName: map['storageCapacityUnitName'] == null ? null : pulumi.Output.create<String>(map['storageCapacityUnitName'] as String),
+      capacity: (map['capacity'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      storageCapacityUnitName: map['storageCapacityUnitName'] == null ? null : (map['storageCapacityUnitName'] as String).input(),
     );
   }
 }

@@ -7,11 +7,11 @@ import 'node_info_response.dart';
 /// Kubernetes cluster configuration
 class KubernetesClusterInfoResponse {
   /// Etcd configuration
-  final EtcdInfoResponse etcdInfo;
+  final pulumi.Input<EtcdInfoResponse> etcdInfo;
   /// Kubernetes cluster nodes
-  final List<NodeInfoResponse> nodes;
+  final pulumi.Input<List<NodeInfoResponse>> nodes;
   /// Kubernetes cluster version
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [KubernetesClusterInfoResponse].
   /// [etcdInfo] Etcd configuration
@@ -25,17 +25,17 @@ class KubernetesClusterInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'etcdInfo': etcdInfo.toMap(),
-      'nodes': pulumi.Input.encodeList<NodeInfoResponse, Map<String, dynamic>>(nodes, (value) => value.toMap()),
+      'etcdInfo': pulumi.Input.mapInputValue<EtcdInfoResponse, Map<String, dynamic>>(etcdInfo, (value) => value.toMap()),
+      'nodes': pulumi.Input.mapInputValue<List<NodeInfoResponse>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<NodeInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'version': version,
     };
   }
 
   factory KubernetesClusterInfoResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterInfoResponse(
-      etcdInfo: EtcdInfoResponse.fromMap((map['etcdInfo'] as Map).cast<String, dynamic>()),
-      nodes: pulumi.Input.decodeList<NodeInfoResponse>(map['nodes'], (value) => NodeInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] as String,
+      etcdInfo: (EtcdInfoResponse.fromMap((map['etcdInfo'] as Map).cast<String, dynamic>())).input(),
+      nodes: (pulumi.Input.decodeList<NodeInfoResponse>(map['nodes'], (value) => NodeInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

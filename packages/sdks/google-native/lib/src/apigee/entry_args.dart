@@ -22,17 +22,12 @@ class EntryArgs {
   /// [organizationId] Required.
   /// [value] Data or payload that is being retrieved and associated with the unique key.
   EntryArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> keyvaluemapId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> value,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      value = pulumi.Input.asInput<String>(value);
+    required this.apiId,
+    required this.keyvaluemapId,
+    this.name,
+    required this.organizationId,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EntryArgs {
 
   factory EntryArgs.fromMap(Map<String, dynamic> map) {
     return EntryArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      keyvaluemapId: pulumi.Output.create<String>(map['keyvaluemapId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      apiId: (map['apiId'] as String).input(),
+      keyvaluemapId: (map['keyvaluemapId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

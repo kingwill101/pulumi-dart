@@ -17,11 +17,9 @@ class EnvironmentKeyvaluemapsArgs {
   /// [envId] The Apigee environment group associated with the Apigee environment,
   /// [name] Required. ID of the key value map.
   EnvironmentKeyvaluemapsArgs({
-    required pulumi.Output<String> envId,
-    pulumi.Output<String>? name,
-  }) :
-      envId = pulumi.Input.asInput<String>(envId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.envId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class EnvironmentKeyvaluemapsArgs {
 
   factory EnvironmentKeyvaluemapsArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentKeyvaluemapsArgs(
-      envId: pulumi.Output.create<String>(map['envId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      envId: (map['envId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

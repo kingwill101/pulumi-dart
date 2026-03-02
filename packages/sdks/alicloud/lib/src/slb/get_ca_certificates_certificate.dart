@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCaCertificatesCertificate {
   /// (Available in v1.123.1+) CA certificate ID.
-  final String caCertificateId;
+  final pulumi.Input<String> caCertificateId;
   /// (Available in v1.123.1+) CA certificate name.
-  final String caCertificateName;
+  final pulumi.Input<String> caCertificateName;
   /// CA certificate common name.
-  final String commonName;
+  final pulumi.Input<String> commonName;
   /// CA certificate created timestamp.
-  final int createdTimestamp;
+  final pulumi.Input<int> createdTimestamp;
   /// CA certificate expired time.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// CA certificate expired timestamp.
-  final int expiredTimestamp;
+  final pulumi.Input<int> expiredTimestamp;
   /// CA certificate fingerprint.
-  final String fingerprint;
+  final pulumi.Input<String> fingerprint;
   /// CA certificate ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Id of resource group which ca certificates belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetCaCertificatesCertificate].
   /// [caCertificateId] (Available in v1.123.1+) CA certificate ID.
@@ -69,17 +70,17 @@ class GetCaCertificatesCertificate {
 
   factory GetCaCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCaCertificatesCertificate(
-      caCertificateId: map['caCertificateId'] as String,
-      caCertificateName: map['caCertificateName'] as String,
-      commonName: map['commonName'] as String,
-      createdTimestamp: map['createdTimestamp'] as int,
-      expiredTime: map['expiredTime'] as String,
-      expiredTimestamp: map['expiredTimestamp'] as int,
-      fingerprint: map['fingerprint'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      caCertificateId: (map['caCertificateId'] as String).input(),
+      caCertificateName: (map['caCertificateName'] as String).input(),
+      commonName: (map['commonName'] as String).input(),
+      createdTimestamp: (map['createdTimestamp'] as int).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      expiredTimestamp: (map['expiredTimestamp'] as int).input(),
+      fingerprint: (map['fingerprint'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

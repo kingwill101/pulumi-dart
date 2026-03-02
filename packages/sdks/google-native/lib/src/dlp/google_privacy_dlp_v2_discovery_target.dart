@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_discovery_target.dart';
 
 /// Target used to match against for Discovery.
 class GooglePrivacyDlpV2DiscoveryTarget {
   /// BigQuery target for Discovery. The first target to match a table will be the one applied.
-  final GooglePrivacyDlpV2BigQueryDiscoveryTarget? bigQueryTarget;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryDiscoveryTarget>? bigQueryTarget;
 
   /// Creates a new [GooglePrivacyDlpV2DiscoveryTarget].
   /// [bigQueryTarget] BigQuery target for Discovery. The first target to match a table will be the one applied.
@@ -15,13 +16,13 @@ class GooglePrivacyDlpV2DiscoveryTarget {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigQueryTarget': ?bigQueryTarget == null ? null : bigQueryTarget!.toMap(),
+      'bigQueryTarget': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2BigQueryDiscoveryTarget, Map<String, dynamic>>(bigQueryTarget, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2DiscoveryTarget.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryTarget(
-      bigQueryTarget: map['bigQueryTarget'] == null ? null : GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromMap((map['bigQueryTarget'] as Map).cast<String, dynamic>()),
+      bigQueryTarget: map['bigQueryTarget'] == null ? null : (GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromMap((map['bigQueryTarget'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

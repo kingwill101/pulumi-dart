@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceLambdaConfig {
   /// ARN for the Lambda function.
-  final String functionArn;
+  final pulumi.Input<String> functionArn;
 
   /// Creates a new [DataSourceLambdaConfig].
   /// [functionArn] ARN for the Lambda function.
@@ -19,7 +20,7 @@ class DataSourceLambdaConfig {
 
   factory DataSourceLambdaConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceLambdaConfig(
-      functionArn: map['functionArn'] as String,
+      functionArn: (map['functionArn'] as String).input(),
     );
   }
 }

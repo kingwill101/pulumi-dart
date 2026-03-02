@@ -62,27 +62,17 @@ class Datapolicyv2DataPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [version] The version of the Data Policy resource.
   Datapolicyv2DataPolicyState({
-    pulumi.Output<Datapolicyv2DataPolicyDataMaskingPolicy>? dataMaskingPolicy,
-    pulumi.Output<String>? dataPolicyId,
-    pulumi.Output<String>? dataPolicyType,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? grantees,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyTag,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? version,
-  }) :
-      dataMaskingPolicy = pulumi.Input.asOptionalInput<Datapolicyv2DataPolicyDataMaskingPolicy>(dataMaskingPolicy),
-      dataPolicyId = pulumi.Input.asOptionalInput<String>(dataPolicyId),
-      dataPolicyType = pulumi.Input.asOptionalInput<String>(dataPolicyType),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      grantees = pulumi.Input.asOptionalInput<List<String>>(grantees),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyTag = pulumi.Input.asOptionalInput<String>(policyTag),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.dataMaskingPolicy,
+    this.dataPolicyId,
+    this.dataPolicyType,
+    this.etag,
+    this.grantees,
+    this.location,
+    this.name,
+    this.policyTag,
+    this.project,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,16 +91,16 @@ class Datapolicyv2DataPolicyState {
 
   factory Datapolicyv2DataPolicyState.fromMap(Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyState(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : pulumi.Output.create<Datapolicyv2DataPolicyDataMaskingPolicy>(Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>())),
-      dataPolicyId: map['dataPolicyId'] == null ? null : pulumi.Output.create<String>(map['dataPolicyId'] as String),
-      dataPolicyType: map['dataPolicyType'] == null ? null : pulumi.Output.create<String>(map['dataPolicyType'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      grantees: map['grantees'] == null ? null : pulumi.Output.create<List<String>>((map['grantees'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyTag: map['policyTag'] == null ? null : pulumi.Output.create<String>(map['policyTag'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>())).input(),
+      dataPolicyId: map['dataPolicyId'] == null ? null : (map['dataPolicyId'] as String).input(),
+      dataPolicyType: map['dataPolicyType'] == null ? null : (map['dataPolicyType'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      grantees: map['grantees'] == null ? null : ((map['grantees'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyTag: map['policyTag'] == null ? null : (map['policyTag'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

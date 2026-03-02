@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration_compute_beta.dart';
 
 class FutureReservationTimeWindowComputeBeta {
-  final DurationComputeBeta? duration;
-  final String? endTime;
+  final pulumi.Input<DurationComputeBeta>? duration;
+  final pulumi.Input<String>? endTime;
   /// Start time of the Future Reservation. The start_time is an RFC3339 string.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [FutureReservationTimeWindowComputeBeta].
   /// [duration] Optional.
@@ -20,7 +21,7 @@ class FutureReservationTimeWindowComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'duration': ?duration == null ? null : duration!.toMap(),
+      'duration': ?pulumi.Input.mapOptionalInputValue<DurationComputeBeta, Map<String, dynamic>>(duration, (value) => value.toMap()),
       'endTime': ?endTime,
       'startTime': ?startTime,
     };
@@ -28,9 +29,9 @@ class FutureReservationTimeWindowComputeBeta {
 
   factory FutureReservationTimeWindowComputeBeta.fromMap(Map<String, dynamic> map) {
     return FutureReservationTimeWindowComputeBeta(
-      duration: map['duration'] == null ? null : DurationComputeBeta.fromMap((map['duration'] as Map).cast<String, dynamic>()),
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      duration: map['duration'] == null ? null : (DurationComputeBeta.fromMap((map['duration'] as Map).cast<String, dynamic>())).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

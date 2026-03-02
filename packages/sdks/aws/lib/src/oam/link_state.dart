@@ -42,29 +42,18 @@ class LinkState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   LinkState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? label,
-    pulumi.Output<String>? labelTemplate,
-    pulumi.Output<LinkLinkConfiguration>? linkConfiguration,
-    pulumi.Output<String>? linkId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? resourceTypes,
-    pulumi.Output<String>? sinkArn,
-    pulumi.Output<String>? sinkIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      labelTemplate = pulumi.Input.asOptionalInput<String>(labelTemplate),
-      linkConfiguration = pulumi.Input.asOptionalInput<LinkLinkConfiguration>(linkConfiguration),
-      linkId = pulumi.Input.asOptionalInput<String>(linkId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceTypes = pulumi.Input.asOptionalInput<List<String>>(resourceTypes),
-      sinkArn = pulumi.Input.asOptionalInput<String>(sinkArn),
-      sinkIdentifier = pulumi.Input.asOptionalInput<String>(sinkIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.label,
+    this.labelTemplate,
+    this.linkConfiguration,
+    this.linkId,
+    this.region,
+    this.resourceTypes,
+    this.sinkArn,
+    this.sinkIdentifier,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class LinkState {
 
   factory LinkState.fromMap(Map<String, dynamic> map) {
     return LinkState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      labelTemplate: map['labelTemplate'] == null ? null : pulumi.Output.create<String>(map['labelTemplate'] as String),
-      linkConfiguration: map['linkConfiguration'] == null ? null : pulumi.Output.create<LinkLinkConfiguration>(LinkLinkConfiguration.fromMap((map['linkConfiguration'] as Map).cast<String, dynamic>())),
-      linkId: map['linkId'] == null ? null : pulumi.Output.create<String>(map['linkId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['resourceTypes'] as List).cast<String>()),
-      sinkArn: map['sinkArn'] == null ? null : pulumi.Output.create<String>(map['sinkArn'] as String),
-      sinkIdentifier: map['sinkIdentifier'] == null ? null : pulumi.Output.create<String>(map['sinkIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      labelTemplate: map['labelTemplate'] == null ? null : (map['labelTemplate'] as String).input(),
+      linkConfiguration: map['linkConfiguration'] == null ? null : (LinkLinkConfiguration.fromMap((map['linkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      sinkArn: map['sinkArn'] == null ? null : (map['sinkArn'] as String).input(),
+      sinkIdentifier: map['sinkIdentifier'] == null ? null : (map['sinkIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

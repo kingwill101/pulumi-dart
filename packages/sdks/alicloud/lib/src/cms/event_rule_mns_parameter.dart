@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventRuleMnsParameter {
   /// (Available since v1.211.1) The ARN of the API operation.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The ID of the recipient that receives alert notifications.
-  final String? mnsParametersId;
+  final pulumi.Input<String>? mnsParametersId;
   /// The name of the MNS queue.
-  final String? queue;
+  final pulumi.Input<String>? queue;
   /// The region where Message Service (MNS) is deployed.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// The MNS topic.
-  final String? topic;
+  final pulumi.Input<String>? topic;
 
   /// Creates a new [EventRuleMnsParameter].
   /// [arn] (Available since v1.211.1) The ARN of the API operation.
@@ -39,11 +40,11 @@ class EventRuleMnsParameter {
 
   factory EventRuleMnsParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleMnsParameter(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      mnsParametersId: map['mnsParametersId'] == null ? null : map['mnsParametersId'] as String,
-      queue: map['queue'] == null ? null : map['queue'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      topic: map['topic'] == null ? null : map['topic'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      mnsParametersId: map['mnsParametersId'] == null ? null : (map['mnsParametersId'] as String).input(),
+      queue: map['queue'] == null ? null : (map['queue'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

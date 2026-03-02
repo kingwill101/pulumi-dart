@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the intent to trigger programmatically rather than as a result of natural language processing.
 class GoogleCloudDialogflowCxV3beta1IntentInputResponse {
   /// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
-  final String intent;
+  final pulumi.Input<String> intent;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1IntentInputResponse].
   /// [intent] The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1IntentInputResponse {
 
   factory GoogleCloudDialogflowCxV3beta1IntentInputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1IntentInputResponse(
-      intent: map['intent'] as String,
+      intent: (map['intent'] as String).input(),
     );
   }
 }

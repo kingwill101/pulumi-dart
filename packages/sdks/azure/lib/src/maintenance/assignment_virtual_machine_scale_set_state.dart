@@ -16,13 +16,10 @@ class AssignmentVirtualMachineScaleSetState {
   /// [maintenanceConfigurationId] Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
   /// [virtualMachineScaleSetId] Specifies the Virtual Machine Scale Set ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
   AssignmentVirtualMachineScaleSetState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? maintenanceConfigurationId,
-    pulumi.Output<String>? virtualMachineScaleSetId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceConfigurationId = pulumi.Input.asOptionalInput<String>(maintenanceConfigurationId),
-      virtualMachineScaleSetId = pulumi.Input.asOptionalInput<String>(virtualMachineScaleSetId);
+    this.location,
+    this.maintenanceConfigurationId,
+    this.virtualMachineScaleSetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AssignmentVirtualMachineScaleSetState {
 
   factory AssignmentVirtualMachineScaleSetState.fromMap(Map<String, dynamic> map) {
     return AssignmentVirtualMachineScaleSetState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : pulumi.Output.create<String>(map['maintenanceConfigurationId'] as String),
-      virtualMachineScaleSetId: map['virtualMachineScaleSetId'] == null ? null : pulumi.Output.create<String>(map['virtualMachineScaleSetId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
+      virtualMachineScaleSetId: map['virtualMachineScaleSetId'] == null ? null : (map['virtualMachineScaleSetId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message describing AWS Credentials using access key id and secret.
 class AccessKeyCredentialsVmmigrationV1alpha1 {
   /// AWS access key ID.
-  final String? accessKeyId;
+  final pulumi.Input<String>? accessKeyId;
   /// Input only. AWS secret access key.
-  final String? secretAccessKey;
+  final pulumi.Input<String>? secretAccessKey;
   /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
-  final String? sessionToken;
+  final pulumi.Input<String>? sessionToken;
 
   /// Creates a new [AccessKeyCredentialsVmmigrationV1alpha1].
   /// [accessKeyId] AWS access key ID.
@@ -30,9 +31,9 @@ class AccessKeyCredentialsVmmigrationV1alpha1 {
 
   factory AccessKeyCredentialsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return AccessKeyCredentialsVmmigrationV1alpha1(
-      accessKeyId: map['accessKeyId'] == null ? null : map['accessKeyId'] as String,
-      secretAccessKey: map['secretAccessKey'] == null ? null : map['secretAccessKey'] as String,
-      sessionToken: map['sessionToken'] == null ? null : map['sessionToken'] as String,
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
+      sessionToken: map['sessionToken'] == null ? null : (map['sessionToken'] as String).input(),
     );
   }
 }

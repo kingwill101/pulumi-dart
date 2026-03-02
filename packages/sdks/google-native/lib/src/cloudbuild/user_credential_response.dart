@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a personal access token that authorized the Connection, and associated metadata.
 class UserCredentialResponse {
   /// A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-  final String userTokenSecretVersion;
+  final pulumi.Input<String> userTokenSecretVersion;
   /// The username associated to this token.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [UserCredentialResponse].
   /// [userTokenSecretVersion] A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
@@ -25,8 +26,8 @@ class UserCredentialResponse {
 
   factory UserCredentialResponse.fromMap(Map<String, dynamic> map) {
     return UserCredentialResponse(
-      userTokenSecretVersion: map['userTokenSecretVersion'] as String,
-      username: map['username'] as String,
+      userTokenSecretVersion: (map['userTokenSecretVersion'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

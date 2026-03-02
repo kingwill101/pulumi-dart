@@ -37,25 +37,16 @@ class FunctionUrlState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [urlId] Generated ID for the endpoint.
   FunctionUrlState({
-    pulumi.Output<String>? authorizationType,
-    pulumi.Output<FunctionUrlCors>? cors,
-    pulumi.Output<String>? functionArn,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<String>? functionUrl,
-    pulumi.Output<String>? invokeMode,
-    pulumi.Output<String>? qualifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? urlId,
-  }) :
-      authorizationType = pulumi.Input.asOptionalInput<String>(authorizationType),
-      cors = pulumi.Input.asOptionalInput<FunctionUrlCors>(cors),
-      functionArn = pulumi.Input.asOptionalInput<String>(functionArn),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      functionUrl = pulumi.Input.asOptionalInput<String>(functionUrl),
-      invokeMode = pulumi.Input.asOptionalInput<String>(invokeMode),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      urlId = pulumi.Input.asOptionalInput<String>(urlId);
+    this.authorizationType,
+    this.cors,
+    this.functionArn,
+    this.functionName,
+    this.functionUrl,
+    this.invokeMode,
+    this.qualifier,
+    this.region,
+    this.urlId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class FunctionUrlState {
 
   factory FunctionUrlState.fromMap(Map<String, dynamic> map) {
     return FunctionUrlState(
-      authorizationType: map['authorizationType'] == null ? null : pulumi.Output.create<String>(map['authorizationType'] as String),
-      cors: map['cors'] == null ? null : pulumi.Output.create<FunctionUrlCors>(FunctionUrlCors.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      functionArn: map['functionArn'] == null ? null : pulumi.Output.create<String>(map['functionArn'] as String),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      functionUrl: map['functionUrl'] == null ? null : pulumi.Output.create<String>(map['functionUrl'] as String),
-      invokeMode: map['invokeMode'] == null ? null : pulumi.Output.create<String>(map['invokeMode'] as String),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      urlId: map['urlId'] == null ? null : pulumi.Output.create<String>(map['urlId'] as String),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
+      cors: map['cors'] == null ? null : (FunctionUrlCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      functionUrl: map['functionUrl'] == null ? null : (map['functionUrl'] as String).input(),
+      invokeMode: map['invokeMode'] == null ? null : (map['invokeMode'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      urlId: map['urlId'] == null ? null : (map['urlId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ListenerAdditionalCertificateAttachmentArgs {
   /// [dryRun] Specifies whether to perform a dry run, without performing the actual request. Valid values:
   /// [listenerId] The listener ID. You must specify the ID of a listener that uses SSL over TCP.
   ListenerAdditionalCertificateAttachmentArgs({
-    required pulumi.Output<String> certificateId,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> listenerId,
-  }) :
-      certificateId = pulumi.Input.asInput<String>(certificateId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      listenerId = pulumi.Input.asInput<String>(listenerId);
+    required this.certificateId,
+    this.dryRun,
+    required this.listenerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListenerAdditionalCertificateAttachmentArgs {
 
   factory ListenerAdditionalCertificateAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ListenerAdditionalCertificateAttachmentArgs(
-      certificateId: pulumi.Output.create<String>(map['certificateId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      listenerId: pulumi.Output.create<String>(map['listenerId'] as String),
+      certificateId: (map['certificateId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      listenerId: (map['listenerId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolCertificate {
   /// The Batch pool ID.
-  final String id;
-  final String storeLocation;
-  final String storeName;
-  final List<String> visibilities;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> storeLocation;
+  final pulumi.Input<String> storeName;
+  final pulumi.Input<List<String>> visibilities;
 
   /// Creates a new [GetPoolCertificate].
   /// [id] The Batch pool ID.
@@ -31,10 +32,10 @@ class GetPoolCertificate {
 
   factory GetPoolCertificate.fromMap(Map<String, dynamic> map) {
     return GetPoolCertificate(
-      id: map['id'] as String,
-      storeLocation: map['storeLocation'] as String,
-      storeName: map['storeName'] as String,
-      visibilities: (map['visibilities'] as List).cast<String>(),
+      id: (map['id'] as String).input(),
+      storeLocation: (map['storeLocation'] as String).input(),
+      storeName: (map['storeName'] as String).input(),
+      visibilities: ((map['visibilities'] as List).cast<String>()).input(),
     );
   }
 }

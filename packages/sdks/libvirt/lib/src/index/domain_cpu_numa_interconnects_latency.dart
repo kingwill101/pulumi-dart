@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuNumaInterconnectsLatency {
   /// Sets latency configurations specifically related to cache interconnections in the NUMA setup.
-  final double? cache;
+  final pulumi.Input<double>? cache;
   /// Configures the latency attributes for the initiator in NUMA interconnections.
-  final double initiator;
+  final pulumi.Input<double> initiator;
   /// Defines the latency settings for the target in interconnects between NUMA cells.
-  final double target;
+  final pulumi.Input<double> target;
   /// Indicates the type of latency being configured for NUMA interconnections.
-  final String type;
+  final pulumi.Input<String> type;
   /// Sets the actual latency value for NUMA interconnecting communication, defined by the type.
-  final double value;
+  final pulumi.Input<double> value;
 
   /// Creates a new [DomainCpuNumaInterconnectsLatency].
   /// [cache] Sets latency configurations specifically related to cache interconnections in the NUMA setup.
@@ -39,11 +40,11 @@ class DomainCpuNumaInterconnectsLatency {
 
   factory DomainCpuNumaInterconnectsLatency.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaInterconnectsLatency(
-      cache: map['cache'] == null ? null : map['cache'] as double,
-      initiator: map['initiator'] as double,
-      target: map['target'] as double,
-      type: map['type'] as String,
-      value: map['value'] as double,
+      cache: map['cache'] == null ? null : (map['cache'] as double).input(),
+      initiator: (map['initiator'] as double).input(),
+      target: (map['target'] as double).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

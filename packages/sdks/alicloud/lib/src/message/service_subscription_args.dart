@@ -45,25 +45,16 @@ class ServiceSubscriptionArgs {
   /// [subscriptionName] Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
   /// [topicName] The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
   ServiceSubscriptionArgs({
-    pulumi.Output<ServiceSubscriptionDlqPolicy>? dlqPolicy,
-    required pulumi.Output<String> endpoint,
-    pulumi.Output<String>? filterTag,
-    pulumi.Output<String>? notifyContentFormat,
-    pulumi.Output<String>? notifyStrategy,
-    required pulumi.Output<String> pushType,
-    pulumi.Output<String>? stsRoleArn,
-    required pulumi.Output<String> subscriptionName,
-    required pulumi.Output<String> topicName,
-  }) :
-      dlqPolicy = pulumi.Input.asOptionalInput<ServiceSubscriptionDlqPolicy>(dlqPolicy),
-      endpoint = pulumi.Input.asInput<String>(endpoint),
-      filterTag = pulumi.Input.asOptionalInput<String>(filterTag),
-      notifyContentFormat = pulumi.Input.asOptionalInput<String>(notifyContentFormat),
-      notifyStrategy = pulumi.Input.asOptionalInput<String>(notifyStrategy),
-      pushType = pulumi.Input.asInput<String>(pushType),
-      stsRoleArn = pulumi.Input.asOptionalInput<String>(stsRoleArn),
-      subscriptionName = pulumi.Input.asInput<String>(subscriptionName),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    this.dlqPolicy,
+    required this.endpoint,
+    this.filterTag,
+    this.notifyContentFormat,
+    this.notifyStrategy,
+    required this.pushType,
+    this.stsRoleArn,
+    required this.subscriptionName,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class ServiceSubscriptionArgs {
 
   factory ServiceSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSubscriptionArgs(
-      dlqPolicy: map['dlqPolicy'] == null ? null : pulumi.Output.create<ServiceSubscriptionDlqPolicy>(ServiceSubscriptionDlqPolicy.fromMap((map['dlqPolicy'] as Map).cast<String, dynamic>())),
-      endpoint: pulumi.Output.create<String>(map['endpoint'] as String),
-      filterTag: map['filterTag'] == null ? null : pulumi.Output.create<String>(map['filterTag'] as String),
-      notifyContentFormat: map['notifyContentFormat'] == null ? null : pulumi.Output.create<String>(map['notifyContentFormat'] as String),
-      notifyStrategy: map['notifyStrategy'] == null ? null : pulumi.Output.create<String>(map['notifyStrategy'] as String),
-      pushType: pulumi.Output.create<String>(map['pushType'] as String),
-      stsRoleArn: map['stsRoleArn'] == null ? null : pulumi.Output.create<String>(map['stsRoleArn'] as String),
-      subscriptionName: pulumi.Output.create<String>(map['subscriptionName'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      dlqPolicy: map['dlqPolicy'] == null ? null : (ServiceSubscriptionDlqPolicy.fromMap((map['dlqPolicy'] as Map).cast<String, dynamic>())).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      filterTag: map['filterTag'] == null ? null : (map['filterTag'] as String).input(),
+      notifyContentFormat: map['notifyContentFormat'] == null ? null : (map['notifyContentFormat'] as String).input(),
+      notifyStrategy: map['notifyStrategy'] == null ? null : (map['notifyStrategy'] as String).input(),
+      pushType: (map['pushType'] as String).input(),
+      stsRoleArn: map['stsRoleArn'] == null ? null : (map['stsRoleArn'] as String).input(),
+      subscriptionName: (map['subscriptionName'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

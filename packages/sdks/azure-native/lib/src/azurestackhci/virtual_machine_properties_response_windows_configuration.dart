@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_properties_response_ssh_ssh.dart';
 
 /// Windows Configuration for the virtual machine
 class VirtualMachinePropertiesResponseWindowsConfiguration {
   /// Whether to EnableAutomaticUpdates on the machine
-  final bool? enableAutomaticUpdates;
+  final pulumi.Input<bool>? enableAutomaticUpdates;
   /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
-  final bool? provisionVMAgent;
+  final pulumi.Input<bool>? provisionVMAgent;
   /// SSH Configuration
-  final VirtualMachinePropertiesResponseSshSsh? ssh;
+  final pulumi.Input<VirtualMachinePropertiesResponseSshSsh>? ssh;
   /// TimeZone for the virtual machine
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [VirtualMachinePropertiesResponseWindowsConfiguration].
   /// [enableAutomaticUpdates] Whether to EnableAutomaticUpdates on the machine
@@ -29,17 +30,17 @@ class VirtualMachinePropertiesResponseWindowsConfiguration {
     return <String, dynamic>{
       'enableAutomaticUpdates': ?enableAutomaticUpdates,
       'provisionVMAgent': ?provisionVMAgent,
-      'ssh': ?ssh == null ? null : ssh!.toMap(),
+      'ssh': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesResponseSshSsh, Map<String, dynamic>>(ssh, (value) => value.toMap()),
       'timeZone': ?timeZone,
     };
   }
 
   factory VirtualMachinePropertiesResponseWindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseWindowsConfiguration(
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : map['enableAutomaticUpdates'] as bool,
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : map['provisionVMAgent'] as bool,
-      ssh: map['ssh'] == null ? null : VirtualMachinePropertiesResponseSshSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>()),
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
+      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent'] as bool).input(),
+      ssh: map['ssh'] == null ? null : (VirtualMachinePropertiesResponseSshSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

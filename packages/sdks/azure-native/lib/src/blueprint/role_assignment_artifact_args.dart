@@ -41,27 +41,17 @@ class RoleAssignmentArtifactArgs {
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   /// [roleDefinitionId] Azure resource ID of the RoleDefinition.
   RoleAssignmentArtifactArgs({
-    pulumi.Output<String>? artifactName,
-    required pulumi.Output<String> blueprintName,
-    pulumi.Output<List<String>>? dependsOn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<dynamic> principalIds,
-    pulumi.Output<String>? resourceGroup,
-    required pulumi.Output<String> resourceScope,
-    required pulumi.Output<String> roleDefinitionId,
-  }) :
-      artifactName = pulumi.Input.asOptionalInput<String>(artifactName),
-      blueprintName = pulumi.Input.asInput<String>(blueprintName),
-      dependsOn = pulumi.Input.asOptionalInput<List<String>>(dependsOn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      kind = pulumi.Input.asInput<String>(kind),
-      principalIds = pulumi.Input.asInput<dynamic>(principalIds),
-      resourceGroup = pulumi.Input.asOptionalInput<String>(resourceGroup),
-      resourceScope = pulumi.Input.asInput<String>(resourceScope),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId);
+    this.artifactName,
+    required this.blueprintName,
+    this.dependsOn,
+    this.description,
+    this.displayName,
+    required this.kind,
+    required this.principalIds,
+    this.resourceGroup,
+    required this.resourceScope,
+    required this.roleDefinitionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class RoleAssignmentArtifactArgs {
 
   factory RoleAssignmentArtifactArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentArtifactArgs(
-      artifactName: map['artifactName'] == null ? null : pulumi.Output.create<String>(map['artifactName'] as String),
-      blueprintName: pulumi.Output.create<String>(map['blueprintName'] as String),
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Output.create<List<String>>((map['dependsOn'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      principalIds: pulumi.Output.create<dynamic>(map['principalIds']),
-      resourceGroup: map['resourceGroup'] == null ? null : pulumi.Output.create<String>(map['resourceGroup'] as String),
-      resourceScope: pulumi.Output.create<String>(map['resourceScope'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
+      artifactName: map['artifactName'] == null ? null : (map['artifactName'] as String).input(),
+      blueprintName: (map['blueprintName'] as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      principalIds: (map['principalIds']).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      resourceScope: (map['resourceScope'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

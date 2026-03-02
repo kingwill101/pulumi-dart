@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFrontdoorSecretSecretCustomerCertificate {
   /// The key vault certificate expiration date.
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// The key vault certificate ID.
-  final String keyVaultCertificateId;
+  final pulumi.Input<String> keyVaultCertificateId;
   /// One or more `subject alternative names` contained within the key vault certificate.
-  final List<String> subjectAlternativeNames;
+  final pulumi.Input<List<String>> subjectAlternativeNames;
 
   /// Creates a new [GetFrontdoorSecretSecretCustomerCertificate].
   /// [expirationDate] The key vault certificate expiration date.
@@ -29,9 +30,9 @@ class GetFrontdoorSecretSecretCustomerCertificate {
 
   factory GetFrontdoorSecretSecretCustomerCertificate.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorSecretSecretCustomerCertificate(
-      expirationDate: map['expirationDate'] as String,
-      keyVaultCertificateId: map['keyVaultCertificateId'] as String,
-      subjectAlternativeNames: (map['subjectAlternativeNames'] as List).cast<String>(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      keyVaultCertificateId: (map['keyVaultCertificateId'] as String).input(),
+      subjectAlternativeNames: ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
     );
   }
 }

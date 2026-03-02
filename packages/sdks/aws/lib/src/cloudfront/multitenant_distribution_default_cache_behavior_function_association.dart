@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionDefaultCacheBehaviorFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
-  final String eventType;
+  final pulumi.Input<String> eventType;
   /// ARN of the CloudFront function.
-  final String functionArn;
+  final pulumi.Input<String> functionArn;
 
   /// Creates a new [MultitenantDistributionDefaultCacheBehaviorFunctionAssociation].
   /// [eventType] Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
@@ -24,8 +25,8 @@ class MultitenantDistributionDefaultCacheBehaviorFunctionAssociation {
 
   factory MultitenantDistributionDefaultCacheBehaviorFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionDefaultCacheBehaviorFunctionAssociation(
-      eventType: map['eventType'] as String,
-      functionArn: map['functionArn'] as String,
+      eventType: (map['eventType'] as String).input(),
+      functionArn: (map['functionArn'] as String).input(),
     );
   }
 }

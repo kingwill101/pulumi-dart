@@ -13,9 +13,8 @@ class ListPrivateStoreSubscriptionsContextArgs {
   /// Creates a new [ListPrivateStoreSubscriptionsContextArgs].
   /// [privateStoreId] The store ID - must use the tenant ID
   ListPrivateStoreSubscriptionsContextArgs({
-    required pulumi.Output<String> privateStoreId,
-  }) :
-      privateStoreId = pulumi.Input.asInput<String>(privateStoreId);
+    required this.privateStoreId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ListPrivateStoreSubscriptionsContextArgs {
 
   factory ListPrivateStoreSubscriptionsContextArgs.fromMap(Map<String, dynamic> map) {
     return ListPrivateStoreSubscriptionsContextArgs(
-      privateStoreId: pulumi.Output.create<String>(map['privateStoreId'] as String),
+      privateStoreId: (map['privateStoreId'] as String).input(),
     );
   }
 }

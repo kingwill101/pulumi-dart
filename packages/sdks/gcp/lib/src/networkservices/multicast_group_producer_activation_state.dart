@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MulticastGroupProducerActivationState {
   /// (Output)
@@ -12,7 +13,7 @@ class MulticastGroupProducerActivationState {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [MulticastGroupProducerActivationState].
   /// [state] (Output)
@@ -28,7 +29,7 @@ class MulticastGroupProducerActivationState {
 
   factory MulticastGroupProducerActivationState.fromMap(Map<String, dynamic> map) {
     return MulticastGroupProducerActivationState(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

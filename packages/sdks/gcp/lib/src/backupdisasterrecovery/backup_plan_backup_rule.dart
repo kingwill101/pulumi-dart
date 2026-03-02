@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_plan_backup_rule_standard_schedule.dart';
 
 class BackupPlanBackupRule {
   /// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
-  final int backupRetentionDays;
+  final pulumi.Input<int> backupRetentionDays;
   /// The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
-  final String ruleId;
+  final pulumi.Input<String> ruleId;
   /// StandardSchedule defines a schedule that runs within the confines of a defined window of days.
   /// Structure is documented below.
-  final BackupPlanBackupRuleStandardSchedule standardSchedule;
+  final pulumi.Input<BackupPlanBackupRuleStandardSchedule> standardSchedule;
 
   /// Creates a new [BackupPlanBackupRule].
   /// [backupRetentionDays] Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
@@ -25,15 +26,15 @@ class BackupPlanBackupRule {
     return <String, dynamic>{
       'backupRetentionDays': backupRetentionDays,
       'ruleId': ruleId,
-      'standardSchedule': standardSchedule.toMap(),
+      'standardSchedule': pulumi.Input.mapInputValue<BackupPlanBackupRuleStandardSchedule, Map<String, dynamic>>(standardSchedule, (value) => value.toMap()),
     };
   }
 
   factory BackupPlanBackupRule.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupRule(
-      backupRetentionDays: map['backupRetentionDays'] as int,
-      ruleId: map['ruleId'] as String,
-      standardSchedule: BackupPlanBackupRuleStandardSchedule.fromMap((map['standardSchedule'] as Map).cast<String, dynamic>()),
+      backupRetentionDays: (map['backupRetentionDays'] as int).input(),
+      ruleId: (map['ruleId'] as String).input(),
+      standardSchedule: (BackupPlanBackupRuleStandardSchedule.fromMap((map['standardSchedule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecServiceLogDestinationLogtail {
   /// Logtail token.
-  final String token;
+  final pulumi.Input<String> token;
 
   /// Creates a new [AppSpecServiceLogDestinationLogtail].
   /// [token] Logtail token.
@@ -19,7 +20,7 @@ class AppSpecServiceLogDestinationLogtail {
 
   factory AppSpecServiceLogDestinationLogtail.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceLogDestinationLogtail(
-      token: map['token'] as String,
+      token: (map['token'] as String).input(),
     );
   }
 }

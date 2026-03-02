@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificatesCertificate {
   /// The cert is buy from aliyun or not.
-  final bool buyInAliyun;
-  final String cert;
-  final String certId;
-  final String certificateName;
+  final pulumi.Input<bool> buyInAliyun;
+  final pulumi.Input<String> cert;
+  final pulumi.Input<String> certId;
+  final pulumi.Input<String> certificateName;
   /// The cert's city.
-  final String city;
+  final pulumi.Input<String> city;
   /// The cert's common name.
-  final String common;
+  final pulumi.Input<String> common;
   /// The cert's country.
-  final String country;
+  final pulumi.Input<String> country;
   /// The cert's not valid after time.
-  final String endDate;
+  final pulumi.Input<String> endDate;
   /// The cert is expired or not.
-  final bool expired;
-  final String fingerprint;
+  final pulumi.Input<bool> expired;
+  final pulumi.Input<String> fingerprint;
   /// The cert's id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The cert's .
-  final String issuer;
-  final String key;
+  final pulumi.Input<String> issuer;
+  final pulumi.Input<String> key;
   /// The cert's name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The cert's organization.
-  final String orgName;
+  final pulumi.Input<String> orgName;
   /// The cert's province.
-  final String province;
+  final pulumi.Input<String> province;
   /// The cert's subject alternative name.
-  final String sans;
+  final pulumi.Input<String> sans;
   /// The cert's not valid before time.
-  final String startDate;
+  final pulumi.Input<String> startDate;
 
   /// Creates a new [GetCertificatesCertificate].
   /// [buyInAliyun] The cert is buy from aliyun or not.
@@ -99,24 +100,24 @@ class GetCertificatesCertificate {
 
   factory GetCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificate(
-      buyInAliyun: map['buyInAliyun'] as bool,
-      cert: map['cert'] as String,
-      certId: map['certId'] as String,
-      certificateName: map['certificateName'] as String,
-      city: map['city'] as String,
-      common: map['common'] as String,
-      country: map['country'] as String,
-      endDate: map['endDate'] as String,
-      expired: map['expired'] as bool,
-      fingerprint: map['fingerprint'] as String,
-      id: map['id'] as String,
-      issuer: map['issuer'] as String,
-      key: map['key'] as String,
-      name: map['name'] as String,
-      orgName: map['orgName'] as String,
-      province: map['province'] as String,
-      sans: map['sans'] as String,
-      startDate: map['startDate'] as String,
+      buyInAliyun: (map['buyInAliyun'] as bool).input(),
+      cert: (map['cert'] as String).input(),
+      certId: (map['certId'] as String).input(),
+      certificateName: (map['certificateName'] as String).input(),
+      city: (map['city'] as String).input(),
+      common: (map['common'] as String).input(),
+      country: (map['country'] as String).input(),
+      endDate: (map['endDate'] as String).input(),
+      expired: (map['expired'] as bool).input(),
+      fingerprint: (map['fingerprint'] as String).input(),
+      id: (map['id'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      key: (map['key'] as String).input(),
+      name: (map['name'] as String).input(),
+      orgName: (map['orgName'] as String).input(),
+      province: (map['province'] as String).input(),
+      sans: (map['sans'] as String).input(),
+      startDate: (map['startDate'] as String).input(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'configuration_service_git_repository_response.dart';
 /// Property of git environment.
 class ConfigurationServiceGitPropertyResponse {
   /// Repositories of Application Configuration Service git property.
-  final List<ConfigurationServiceGitRepositoryResponse>? repositories;
+  final pulumi.Input<List<ConfigurationServiceGitRepositoryResponse>>? repositories;
 
   /// Creates a new [ConfigurationServiceGitPropertyResponse].
   /// [repositories] Repositories of Application Configuration Service git property.
@@ -16,13 +16,13 @@ class ConfigurationServiceGitPropertyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'repositories': ?repositories == null ? null : pulumi.Input.encodeList<ConfigurationServiceGitRepositoryResponse, Map<String, dynamic>>(repositories!, (value) => value.toMap()),
+      'repositories': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationServiceGitRepositoryResponse>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<ConfigurationServiceGitRepositoryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ConfigurationServiceGitPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceGitPropertyResponse(
-      repositories: map['repositories'] == null ? null : pulumi.Input.decodeList<ConfigurationServiceGitRepositoryResponse>(map['repositories'], (value) => ConfigurationServiceGitRepositoryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<ConfigurationServiceGitRepositoryResponse>(map['repositories'], (value) => ConfigurationServiceGitRepositoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

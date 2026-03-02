@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// JMS message denotes the source of the event
 class JMSResponse {
   /// Optional. Name of the JMS source. i.e. queueName or topicName
-  final String name;
+  final pulumi.Input<String> name;
   /// Optional. Type of the JMS Source. i.e. Queue or Topic
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [JMSResponse].
   /// [name] Optional. Name of the JMS source. i.e. queueName or topicName
@@ -25,8 +26,8 @@ class JMSResponse {
 
   factory JMSResponse.fromMap(Map<String, dynamic> map) {
     return JMSResponse(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

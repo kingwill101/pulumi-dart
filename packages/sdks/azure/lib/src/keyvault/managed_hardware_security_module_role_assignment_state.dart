@@ -25,19 +25,13 @@ class ManagedHardwareSecurityModuleRoleAssignmentState {
   /// [roleDefinitionId] The resource ID of the role definition to assign. Changing this forces a new Managed Hardware Security Module to be created.
   /// [scope] Specifies the scope to create the role assignment. Changing this forces a new Managed Hardware Security Module to be created.
   ManagedHardwareSecurityModuleRoleAssignmentState({
-    pulumi.Output<String>? managedHsmId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<String>? scope,
-  }) :
-      managedHsmId = pulumi.Input.asOptionalInput<String>(managedHsmId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.managedHsmId,
+    this.name,
+    this.principalId,
+    this.resourceId,
+    this.roleDefinitionId,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ManagedHardwareSecurityModuleRoleAssignmentState {
 
   factory ManagedHardwareSecurityModuleRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleRoleAssignmentState(
-      managedHsmId: map['managedHsmId'] == null ? null : pulumi.Output.create<String>(map['managedHsmId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      managedHsmId: map['managedHsmId'] == null ? null : (map['managedHsmId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

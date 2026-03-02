@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EcsLaunchTemplateNetworkInterfaces {
   /// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
-  final bool? deleteOnRelease;
+  final pulumi.Input<bool>? deleteOnRelease;
   /// The ENI description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The ENI name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The primary private IP address of the ENI.
-  final String? primaryIp;
+  final pulumi.Input<String>? primaryIp;
   /// The security group ID must be one in the same VPC.
-  final String? securityGroupId;
+  final pulumi.Input<String>? securityGroupId;
   /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
 
   /// Creates a new [EcsLaunchTemplateNetworkInterfaces].
   /// [deleteOnRelease] Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
@@ -44,12 +45,12 @@ class EcsLaunchTemplateNetworkInterfaces {
 
   factory EcsLaunchTemplateNetworkInterfaces.fromMap(Map<String, dynamic> map) {
     return EcsLaunchTemplateNetworkInterfaces(
-      deleteOnRelease: map['deleteOnRelease'] == null ? null : map['deleteOnRelease'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      primaryIp: map['primaryIp'] == null ? null : map['primaryIp'] as String,
-      securityGroupId: map['securityGroupId'] == null ? null : map['securityGroupId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      deleteOnRelease: map['deleteOnRelease'] == null ? null : (map['deleteOnRelease'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryIp: map['primaryIp'] == null ? null : (map['primaryIp'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

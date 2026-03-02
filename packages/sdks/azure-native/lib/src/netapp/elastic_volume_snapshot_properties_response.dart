@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Elastic Volume Snapshot Properties
 class ElasticVolumeSnapshotPropertiesResponse {
   /// Snapshot Policy ResourceId
-  final String? snapshotPolicyResourceId;
+  final pulumi.Input<String>? snapshotPolicyResourceId;
 
   /// Creates a new [ElasticVolumeSnapshotPropertiesResponse].
   /// [snapshotPolicyResourceId] Snapshot Policy ResourceId
@@ -20,7 +21,7 @@ class ElasticVolumeSnapshotPropertiesResponse {
 
   factory ElasticVolumeSnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticVolumeSnapshotPropertiesResponse(
-      snapshotPolicyResourceId: map['snapshotPolicyResourceId'] == null ? null : map['snapshotPolicyResourceId'] as String,
+      snapshotPolicyResourceId: map['snapshotPolicyResourceId'] == null ? null : (map['snapshotPolicyResourceId'] as String).input(),
     );
   }
 }

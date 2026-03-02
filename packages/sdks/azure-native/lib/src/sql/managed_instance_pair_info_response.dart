@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Pairs of Managed Instances in the failover group.
 class ManagedInstancePairInfoResponse {
   /// Id of Partner Managed Instance in pair.
-  final String? partnerManagedInstanceId;
+  final pulumi.Input<String>? partnerManagedInstanceId;
   /// Id of Primary Managed Instance in pair.
-  final String? primaryManagedInstanceId;
+  final pulumi.Input<String>? primaryManagedInstanceId;
 
   /// Creates a new [ManagedInstancePairInfoResponse].
   /// [partnerManagedInstanceId] Id of Partner Managed Instance in pair.
@@ -25,8 +26,8 @@ class ManagedInstancePairInfoResponse {
 
   factory ManagedInstancePairInfoResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePairInfoResponse(
-      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : map['partnerManagedInstanceId'] as String,
-      primaryManagedInstanceId: map['primaryManagedInstanceId'] == null ? null : map['primaryManagedInstanceId'] as String,
+      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : (map['partnerManagedInstanceId'] as String).input(),
+      primaryManagedInstanceId: map['primaryManagedInstanceId'] == null ? null : (map['primaryManagedInstanceId'] as String).input(),
     );
   }
 }

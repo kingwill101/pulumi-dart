@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Data Fusion version.
 class VersionResponseDatafusionV1beta1 {
   /// Represents a list of available feature names for a given version.
-  final List<String> availableFeatures;
+  final pulumi.Input<List<String>> availableFeatures;
   /// Whether this is currently the default version for Cloud Data Fusion
-  final bool defaultVersion;
+  final pulumi.Input<bool> defaultVersion;
   /// Type represents the release availability of the version
-  final String type;
+  final pulumi.Input<String> type;
   /// The version number of the Data Fusion instance, such as '6.0.1.0'.
-  final String versionNumber;
+  final pulumi.Input<String> versionNumber;
 
   /// Creates a new [VersionResponseDatafusionV1beta1].
   /// [availableFeatures] Represents a list of available feature names for a given version.
@@ -35,10 +36,10 @@ class VersionResponseDatafusionV1beta1 {
 
   factory VersionResponseDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
     return VersionResponseDatafusionV1beta1(
-      availableFeatures: (map['availableFeatures'] as List).cast<String>(),
-      defaultVersion: map['defaultVersion'] as bool,
-      type: map['type'] as String,
-      versionNumber: map['versionNumber'] as String,
+      availableFeatures: ((map['availableFeatures'] as List).cast<String>()).input(),
+      defaultVersion: (map['defaultVersion'] as bool).input(),
+      type: (map['type'] as String).input(),
+      versionNumber: (map['versionNumber'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cross-Origin-Resource-Sharing policy
 class CorsPolicy {
   /// Specifies whether the resource allows credentials
-  final bool? allowCredentials;
+  final pulumi.Input<bool>? allowCredentials;
   /// Specifies the content for the access-control-allow-headers header
-  final List<String>? allowedHeaders;
+  final pulumi.Input<List<String>>? allowedHeaders;
   /// Specifies the content for the access-control-allow-methods header
-  final List<String>? allowedMethods;
+  final pulumi.Input<List<String>>? allowedMethods;
   /// Specifies the content for the access-control-allow-origins header
-  final List<String> allowedOrigins;
+  final pulumi.Input<List<String>> allowedOrigins;
   /// Specifies the content for the access-control-expose-headers header
-  final List<String>? exposeHeaders;
+  final pulumi.Input<List<String>>? exposeHeaders;
   /// Specifies the content for the access-control-max-age header
-  final int? maxAge;
+  final pulumi.Input<int>? maxAge;
 
   /// Creates a new [CorsPolicy].
   /// [allowCredentials] Specifies whether the resource allows credentials
@@ -45,12 +46,12 @@ class CorsPolicy {
 
   factory CorsPolicy.fromMap(Map<String, dynamic> map) {
     return CorsPolicy(
-      allowCredentials: map['allowCredentials'] == null ? null : map['allowCredentials'] as bool,
-      allowedHeaders: map['allowedHeaders'] == null ? null : (map['allowedHeaders'] as List).cast<String>(),
-      allowedMethods: map['allowedMethods'] == null ? null : (map['allowedMethods'] as List).cast<String>(),
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : (map['exposeHeaders'] as List).cast<String>(),
-      maxAge: map['maxAge'] == null ? null : map['maxAge'] as int,
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as int).input(),
     );
   }
 }

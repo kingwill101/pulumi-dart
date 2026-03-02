@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsRoute53DomainsDomainSummary
 class AwsRoute53DomainsDomainSummaryProperties {
   /// <p>Indicates whether the domain is automatically renewed upon expiration.</p>
-  final bool? autoRenew;
+  final pulumi.Input<bool>? autoRenew;
   /// <p>The name of the domain that the summary information applies to.</p>
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// <p>Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).</p>
-  final String? expiry;
+  final pulumi.Input<String>? expiry;
   /// <p>Indicates whether a domain is locked from unauthorized transfer to another party.</p>
-  final bool? transferLock;
+  final pulumi.Input<bool>? transferLock;
 
   /// Creates a new [AwsRoute53DomainsDomainSummaryProperties].
   /// [autoRenew] <p>Indicates whether the domain is automatically renewed upon expiration.</p>
@@ -35,10 +36,10 @@ class AwsRoute53DomainsDomainSummaryProperties {
 
   factory AwsRoute53DomainsDomainSummaryProperties.fromMap(Map<String, dynamic> map) {
     return AwsRoute53DomainsDomainSummaryProperties(
-      autoRenew: map['autoRenew'] == null ? null : map['autoRenew'] as bool,
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      expiry: map['expiry'] == null ? null : map['expiry'] as String,
-      transferLock: map['transferLock'] == null ? null : map['transferLock'] as bool,
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      transferLock: map['transferLock'] == null ? null : (map['transferLock'] as bool).input(),
     );
   }
 }

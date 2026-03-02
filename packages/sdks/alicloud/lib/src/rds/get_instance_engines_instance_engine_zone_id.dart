@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceEnginesInstanceEngineZoneId {
   /// The Zone to launch the DB instance
-  final String id;
+  final pulumi.Input<String> id;
   /// A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
-  final List<String> subZoneIds;
+  final pulumi.Input<List<String>> subZoneIds;
 
   /// Creates a new [GetInstanceEnginesInstanceEngineZoneId].
   /// [id] The Zone to launch the DB instance
@@ -24,8 +25,8 @@ class GetInstanceEnginesInstanceEngineZoneId {
 
   factory GetInstanceEnginesInstanceEngineZoneId.fromMap(Map<String, dynamic> map) {
     return GetInstanceEnginesInstanceEngineZoneId(
-      id: map['id'] as String,
-      subZoneIds: (map['subZoneIds'] as List).cast<String>(),
+      id: (map['id'] as String).input(),
+      subZoneIds: ((map['subZoneIds'] as List).cast<String>()).input(),
     );
   }
 }

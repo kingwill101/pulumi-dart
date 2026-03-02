@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceSignUpTermsOfService {
   /// Should the user be asked for consent during sign up?
-  final bool consentRequired;
+  final pulumi.Input<bool> consentRequired;
   /// Should Terms of Service be displayed during sign up?.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The Terms of Service which users are required to agree to in order to sign up.
-  final String? text;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [ServiceSignUpTermsOfService].
   /// [consentRequired] Should the user be asked for consent during sign up?
@@ -29,9 +30,9 @@ class ServiceSignUpTermsOfService {
 
   factory ServiceSignUpTermsOfService.fromMap(Map<String, dynamic> map) {
     return ServiceSignUpTermsOfService(
-      consentRequired: map['consentRequired'] as bool,
-      enabled: map['enabled'] as bool,
-      text: map['text'] == null ? null : map['text'] as String,
+      consentRequired: (map['consentRequired'] as bool).input(),
+      enabled: (map['enabled'] as bool).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

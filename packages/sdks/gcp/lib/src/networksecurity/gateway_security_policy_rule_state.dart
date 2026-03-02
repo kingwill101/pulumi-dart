@@ -57,35 +57,21 @@ class GatewaySecurityPolicyRuleState {
   /// [tlsInspectionEnabled] Flag to enable TLS inspection of traffic matching on. Can only be true if the
   /// [updateTime] The timestamp when the resource was updated.
   GatewaySecurityPolicyRuleState({
-    pulumi.Output<String>? applicationMatcher,
-    pulumi.Output<String>? basicProfile,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? gatewaySecurityPolicy,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? sessionMatcher,
-    pulumi.Output<bool>? tlsInspectionEnabled,
-    pulumi.Output<String>? updateTime,
-  }) :
-      applicationMatcher = pulumi.Input.asOptionalInput<String>(applicationMatcher),
-      basicProfile = pulumi.Input.asOptionalInput<String>(basicProfile),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      gatewaySecurityPolicy = pulumi.Input.asOptionalInput<String>(gatewaySecurityPolicy),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      sessionMatcher = pulumi.Input.asOptionalInput<String>(sessionMatcher),
-      tlsInspectionEnabled = pulumi.Input.asOptionalInput<bool>(tlsInspectionEnabled),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.applicationMatcher,
+    this.basicProfile,
+    this.createTime,
+    this.description,
+    this.enabled,
+    this.gatewaySecurityPolicy,
+    this.location,
+    this.name,
+    this.priority,
+    this.project,
+    this.selfLink,
+    this.sessionMatcher,
+    this.tlsInspectionEnabled,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class GatewaySecurityPolicyRuleState {
 
   factory GatewaySecurityPolicyRuleState.fromMap(Map<String, dynamic> map) {
     return GatewaySecurityPolicyRuleState(
-      applicationMatcher: map['applicationMatcher'] == null ? null : pulumi.Output.create<String>(map['applicationMatcher'] as String),
-      basicProfile: map['basicProfile'] == null ? null : pulumi.Output.create<String>(map['basicProfile'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      gatewaySecurityPolicy: map['gatewaySecurityPolicy'] == null ? null : pulumi.Output.create<String>(map['gatewaySecurityPolicy'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      sessionMatcher: map['sessionMatcher'] == null ? null : pulumi.Output.create<String>(map['sessionMatcher'] as String),
-      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['tlsInspectionEnabled'] as bool),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      applicationMatcher: map['applicationMatcher'] == null ? null : (map['applicationMatcher'] as String).input(),
+      basicProfile: map['basicProfile'] == null ? null : (map['basicProfile'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      gatewaySecurityPolicy: map['gatewaySecurityPolicy'] == null ? null : (map['gatewaySecurityPolicy'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      sessionMatcher: map['sessionMatcher'] == null ? null : (map['sessionMatcher'] as String).input(),
+      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : (map['tlsInspectionEnabled'] as bool).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

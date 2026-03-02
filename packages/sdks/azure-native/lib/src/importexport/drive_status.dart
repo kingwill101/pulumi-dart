@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Provides information about the drive's status
 class DriveStatus {
   /// The BitLocker key used to encrypt the drive.
-  final String? bitLockerKey;
+  final pulumi.Input<String>? bitLockerKey;
   /// Bytes successfully transferred for the drive.
-  final double? bytesSucceeded;
+  final pulumi.Input<double>? bytesSucceeded;
   /// Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state.
-  final String? copyStatus;
+  final pulumi.Input<String>? copyStatus;
   /// The drive header hash value.
-  final String? driveHeaderHash;
+  final pulumi.Input<String>? driveHeaderHash;
   /// The drive's hardware serial number, without spaces.
-  final String? driveId;
+  final pulumi.Input<String>? driveId;
   /// A URI that points to the blob containing the error log for the data transfer operation.
-  final String? errorLogUri;
+  final pulumi.Input<String>? errorLogUri;
   /// The relative path of the manifest file on the drive.
-  final String? manifestFile;
+  final pulumi.Input<String>? manifestFile;
   /// The Base16-encoded MD5 hash of the manifest file on the drive.
-  final String? manifestHash;
+  final pulumi.Input<String>? manifestHash;
   /// A URI that points to the blob containing the drive manifest file.
-  final String? manifestUri;
+  final pulumi.Input<String>? manifestUri;
   /// Percentage completed for the drive.
-  final double? percentComplete;
+  final pulumi.Input<double>? percentComplete;
   /// The drive's current state.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// A URI that points to the blob containing the verbose log for the data transfer operation.
-  final String? verboseLogUri;
+  final pulumi.Input<String>? verboseLogUri;
 
   /// Creates a new [DriveStatus].
   /// [bitLockerKey] The BitLocker key used to encrypt the drive.
@@ -75,18 +76,18 @@ class DriveStatus {
 
   factory DriveStatus.fromMap(Map<String, dynamic> map) {
     return DriveStatus(
-      bitLockerKey: map['bitLockerKey'] == null ? null : map['bitLockerKey'] as String,
-      bytesSucceeded: map['bytesSucceeded'] == null ? null : map['bytesSucceeded'] as double,
-      copyStatus: map['copyStatus'] == null ? null : map['copyStatus'] as String,
-      driveHeaderHash: map['driveHeaderHash'] == null ? null : map['driveHeaderHash'] as String,
-      driveId: map['driveId'] == null ? null : map['driveId'] as String,
-      errorLogUri: map['errorLogUri'] == null ? null : map['errorLogUri'] as String,
-      manifestFile: map['manifestFile'] == null ? null : map['manifestFile'] as String,
-      manifestHash: map['manifestHash'] == null ? null : map['manifestHash'] as String,
-      manifestUri: map['manifestUri'] == null ? null : map['manifestUri'] as String,
-      percentComplete: map['percentComplete'] == null ? null : map['percentComplete'] as double,
-      state: map['state'] == null ? null : map['state'] as String,
-      verboseLogUri: map['verboseLogUri'] == null ? null : map['verboseLogUri'] as String,
+      bitLockerKey: map['bitLockerKey'] == null ? null : (map['bitLockerKey'] as String).input(),
+      bytesSucceeded: map['bytesSucceeded'] == null ? null : (map['bytesSucceeded'] as double).input(),
+      copyStatus: map['copyStatus'] == null ? null : (map['copyStatus'] as String).input(),
+      driveHeaderHash: map['driveHeaderHash'] == null ? null : (map['driveHeaderHash'] as String).input(),
+      driveId: map['driveId'] == null ? null : (map['driveId'] as String).input(),
+      errorLogUri: map['errorLogUri'] == null ? null : (map['errorLogUri'] as String).input(),
+      manifestFile: map['manifestFile'] == null ? null : (map['manifestFile'] as String).input(),
+      manifestHash: map['manifestHash'] == null ? null : (map['manifestHash'] as String).input(),
+      manifestUri: map['manifestUri'] == null ? null : (map['manifestUri'] as String).input(),
+      percentComplete: map['percentComplete'] == null ? null : (map['percentComplete'] as double).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      verboseLogUri: map['verboseLogUri'] == null ? null : (map['verboseLogUri'] as String).input(),
     );
   }
 }

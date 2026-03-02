@@ -38,25 +38,16 @@ class RoutineRouteState {
   /// [sequence] Rule execution order.
   /// [siteId] Site Id
   RoutineRouteState({
-    pulumi.Output<String>? bypass,
-    pulumi.Output<int>? configId,
-    pulumi.Output<String>? fallback,
-    pulumi.Output<String>? routeEnable,
-    pulumi.Output<String>? routeName,
-    pulumi.Output<String>? routineName,
-    pulumi.Output<String>? rule,
-    pulumi.Output<int>? sequence,
-    pulumi.Output<String>? siteId,
-  }) :
-      bypass = pulumi.Input.asOptionalInput<String>(bypass),
-      configId = pulumi.Input.asOptionalInput<int>(configId),
-      fallback = pulumi.Input.asOptionalInput<String>(fallback),
-      routeEnable = pulumi.Input.asOptionalInput<String>(routeEnable),
-      routeName = pulumi.Input.asOptionalInput<String>(routeName),
-      routineName = pulumi.Input.asOptionalInput<String>(routineName),
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      sequence = pulumi.Input.asOptionalInput<int>(sequence),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId);
+    this.bypass,
+    this.configId,
+    this.fallback,
+    this.routeEnable,
+    this.routeName,
+    this.routineName,
+    this.rule,
+    this.sequence,
+    this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class RoutineRouteState {
 
   factory RoutineRouteState.fromMap(Map<String, dynamic> map) {
     return RoutineRouteState(
-      bypass: map['bypass'] == null ? null : pulumi.Output.create<String>(map['bypass'] as String),
-      configId: map['configId'] == null ? null : pulumi.Output.create<int>(map['configId'] as int),
-      fallback: map['fallback'] == null ? null : pulumi.Output.create<String>(map['fallback'] as String),
-      routeEnable: map['routeEnable'] == null ? null : pulumi.Output.create<String>(map['routeEnable'] as String),
-      routeName: map['routeName'] == null ? null : pulumi.Output.create<String>(map['routeName'] as String),
-      routineName: map['routineName'] == null ? null : pulumi.Output.create<String>(map['routineName'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      sequence: map['sequence'] == null ? null : pulumi.Output.create<int>(map['sequence'] as int),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      bypass: map['bypass'] == null ? null : (map['bypass'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
+      fallback: map['fallback'] == null ? null : (map['fallback'] as String).input(),
+      routeEnable: map['routeEnable'] == null ? null : (map['routeEnable'] as String).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
+      routineName: map['routineName'] == null ? null : (map['routineName'] as String).input(),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
     );
   }
 }

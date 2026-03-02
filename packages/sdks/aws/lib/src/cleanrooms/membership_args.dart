@@ -29,19 +29,13 @@ class MembershipArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key value pairs which tag the membership.
   MembershipArgs({
-    required pulumi.Output<String> collaborationId,
-    pulumi.Output<MembershipDefaultResultConfiguration>? defaultResultConfiguration,
-    pulumi.Output<MembershipPaymentConfiguration>? paymentConfiguration,
-    required pulumi.Output<String> queryLogStatus,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      collaborationId = pulumi.Input.asInput<String>(collaborationId),
-      defaultResultConfiguration = pulumi.Input.asOptionalInput<MembershipDefaultResultConfiguration>(defaultResultConfiguration),
-      paymentConfiguration = pulumi.Input.asOptionalInput<MembershipPaymentConfiguration>(paymentConfiguration),
-      queryLogStatus = pulumi.Input.asInput<String>(queryLogStatus),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.collaborationId,
+    this.defaultResultConfiguration,
+    this.paymentConfiguration,
+    required this.queryLogStatus,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class MembershipArgs {
 
   factory MembershipArgs.fromMap(Map<String, dynamic> map) {
     return MembershipArgs(
-      collaborationId: pulumi.Output.create<String>(map['collaborationId'] as String),
-      defaultResultConfiguration: map['defaultResultConfiguration'] == null ? null : pulumi.Output.create<MembershipDefaultResultConfiguration>(MembershipDefaultResultConfiguration.fromMap((map['defaultResultConfiguration'] as Map).cast<String, dynamic>())),
-      paymentConfiguration: map['paymentConfiguration'] == null ? null : pulumi.Output.create<MembershipPaymentConfiguration>(MembershipPaymentConfiguration.fromMap((map['paymentConfiguration'] as Map).cast<String, dynamic>())),
-      queryLogStatus: pulumi.Output.create<String>(map['queryLogStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      collaborationId: (map['collaborationId'] as String).input(),
+      defaultResultConfiguration: map['defaultResultConfiguration'] == null ? null : (MembershipDefaultResultConfiguration.fromMap((map['defaultResultConfiguration'] as Map).cast<String, dynamic>())).input(),
+      paymentConfiguration: map['paymentConfiguration'] == null ? null : (MembershipPaymentConfiguration.fromMap((map['paymentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      queryLogStatus: (map['queryLogStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

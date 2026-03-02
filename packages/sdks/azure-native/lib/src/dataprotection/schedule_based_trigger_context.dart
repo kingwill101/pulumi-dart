@@ -8,11 +8,11 @@ import 'tagging_criteria.dart';
 class ScheduleBasedTriggerContext {
   /// Type of the specific object - used for deserializing
   /// Expected value is 'ScheduleBasedTriggerContext'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// Schedule for this backup
-  final BackupSchedule schedule;
+  final pulumi.Input<BackupSchedule> schedule;
   /// List of tags that can be applicable for given schedule.
-  final List<TaggingCriteria> taggingCriteria;
+  final pulumi.Input<List<TaggingCriteria>> taggingCriteria;
 
   /// Creates a new [ScheduleBasedTriggerContext].
   /// [objectType] Type of the specific object - used for deserializing
@@ -27,16 +27,16 @@ class ScheduleBasedTriggerContext {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'objectType': objectType,
-      'schedule': schedule.toMap(),
-      'taggingCriteria': pulumi.Input.encodeList<TaggingCriteria, Map<String, dynamic>>(taggingCriteria, (value) => value.toMap()),
+      'schedule': pulumi.Input.mapInputValue<BackupSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'taggingCriteria': pulumi.Input.mapInputValue<List<TaggingCriteria>, List<Map<String, dynamic>>>(taggingCriteria, (value) => pulumi.Input.encodeList<TaggingCriteria, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScheduleBasedTriggerContext.fromMap(Map<String, dynamic> map) {
     return ScheduleBasedTriggerContext(
-      objectType: map['objectType'] as String,
-      schedule: BackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
-      taggingCriteria: pulumi.Input.decodeList<TaggingCriteria>(map['taggingCriteria'], (value) => TaggingCriteria.fromMap((value as Map).cast<String, dynamic>())),
+      objectType: (map['objectType'] as String).input(),
+      schedule: (BackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      taggingCriteria: (pulumi.Input.decodeList<TaggingCriteria>(map['taggingCriteria'], (value) => TaggingCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

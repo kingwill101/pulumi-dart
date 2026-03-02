@@ -26,15 +26,11 @@ class ResourceCollectionArgs {
   /// [tags] AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
   /// [type] Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
   ResourceCollectionArgs({
-    pulumi.Output<ResourceCollectionCloudformation>? cloudformation,
-    pulumi.Output<String>? region,
-    pulumi.Output<ResourceCollectionTags>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      cloudformation = pulumi.Input.asOptionalInput<ResourceCollectionCloudformation>(cloudformation),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<ResourceCollectionTags>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    this.cloudformation,
+    this.region,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class ResourceCollectionArgs {
 
   factory ResourceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return ResourceCollectionArgs(
-      cloudformation: map['cloudformation'] == null ? null : pulumi.Output.create<ResourceCollectionCloudformation>(ResourceCollectionCloudformation.fromMap((map['cloudformation'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<ResourceCollectionTags>(ResourceCollectionTags.fromMap((map['tags'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      cloudformation: map['cloudformation'] == null ? null : (ResourceCollectionCloudformation.fromMap((map['cloudformation'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : (ResourceCollectionTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the Sql ElasticPool resource settings.
 class SqlElasticPoolResourceSettingsResponse {
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Sql/servers/elasticPools'.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Gets or sets the Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Gets or sets the target resource group name.
-  final String? targetResourceGroupName;
+  final pulumi.Input<String>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final String? targetResourceName;
+  final pulumi.Input<String>? targetResourceName;
   /// Defines the zone redundant resource setting.
-  final String? zoneRedundant;
+  final pulumi.Input<String>? zoneRedundant;
 
   /// Creates a new [SqlElasticPoolResourceSettingsResponse].
   /// [resourceType] The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -41,11 +42,11 @@ class SqlElasticPoolResourceSettingsResponse {
 
   factory SqlElasticPoolResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlElasticPoolResourceSettingsResponse(
-      resourceType: map['resourceType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : map['targetResourceGroupName'] as String,
-      targetResourceName: map['targetResourceName'] == null ? null : map['targetResourceName'] as String,
-      zoneRedundant: map['zoneRedundant'] == null ? null : map['zoneRedundant'] as String,
+      resourceType: (map['resourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as String).input(),
     );
   }
 }

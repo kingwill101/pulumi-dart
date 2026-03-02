@@ -6,20 +6,20 @@ import 'certificate.dart';
 /// Ldap authentication method properties. This feature is in preview.
 class AuthenticationMethodLdapProperties {
   /// Timeout for connecting to the LDAP server in miliseconds. The default is 5000 ms.
-  final int? connectionTimeoutInMs;
+  final pulumi.Input<int>? connectionTimeoutInMs;
   /// Distinguished name of the object to start the recursive search of users from.
-  final String? searchBaseDistinguishedName;
+  final pulumi.Input<String>? searchBaseDistinguishedName;
   /// Template to use for searching. Defaults to (cn=%s) where %s will be replaced by the username used to login.
-  final String? searchFilterTemplate;
-  final List<Certificate>? serverCertificates;
+  final pulumi.Input<String>? searchFilterTemplate;
+  final pulumi.Input<List<Certificate>>? serverCertificates;
   /// Hostname of the LDAP server.
-  final String? serverHostname;
+  final pulumi.Input<String>? serverHostname;
   /// Port of the LDAP server.
-  final int? serverPort;
+  final pulumi.Input<int>? serverPort;
   /// Distinguished name of the look up user account, who can look up user details on authentication.
-  final String? serviceUserDistinguishedName;
+  final pulumi.Input<String>? serviceUserDistinguishedName;
   /// Password of the look up user.
-  final String? serviceUserPassword;
+  final pulumi.Input<String>? serviceUserPassword;
 
   /// Creates a new [AuthenticationMethodLdapProperties].
   /// [connectionTimeoutInMs] Timeout for connecting to the LDAP server in miliseconds. The default is 5000 ms.
@@ -46,7 +46,7 @@ class AuthenticationMethodLdapProperties {
       'connectionTimeoutInMs': ?connectionTimeoutInMs,
       'searchBaseDistinguishedName': ?searchBaseDistinguishedName,
       'searchFilterTemplate': ?searchFilterTemplate,
-      'serverCertificates': ?serverCertificates == null ? null : pulumi.Input.encodeList<Certificate, Map<String, dynamic>>(serverCertificates!, (value) => value.toMap()),
+      'serverCertificates': ?pulumi.Input.mapOptionalInputValue<List<Certificate>, List<Map<String, dynamic>>>(serverCertificates, (value) => pulumi.Input.encodeList<Certificate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serverHostname': ?serverHostname,
       'serverPort': ?serverPort,
       'serviceUserDistinguishedName': ?serviceUserDistinguishedName,
@@ -56,14 +56,14 @@ class AuthenticationMethodLdapProperties {
 
   factory AuthenticationMethodLdapProperties.fromMap(Map<String, dynamic> map) {
     return AuthenticationMethodLdapProperties(
-      connectionTimeoutInMs: map['connectionTimeoutInMs'] == null ? null : map['connectionTimeoutInMs'] as int,
-      searchBaseDistinguishedName: map['searchBaseDistinguishedName'] == null ? null : map['searchBaseDistinguishedName'] as String,
-      searchFilterTemplate: map['searchFilterTemplate'] == null ? null : map['searchFilterTemplate'] as String,
-      serverCertificates: map['serverCertificates'] == null ? null : pulumi.Input.decodeList<Certificate>(map['serverCertificates'], (value) => Certificate.fromMap((value as Map).cast<String, dynamic>())),
-      serverHostname: map['serverHostname'] == null ? null : map['serverHostname'] as String,
-      serverPort: map['serverPort'] == null ? null : map['serverPort'] as int,
-      serviceUserDistinguishedName: map['serviceUserDistinguishedName'] == null ? null : map['serviceUserDistinguishedName'] as String,
-      serviceUserPassword: map['serviceUserPassword'] == null ? null : map['serviceUserPassword'] as String,
+      connectionTimeoutInMs: map['connectionTimeoutInMs'] == null ? null : (map['connectionTimeoutInMs'] as int).input(),
+      searchBaseDistinguishedName: map['searchBaseDistinguishedName'] == null ? null : (map['searchBaseDistinguishedName'] as String).input(),
+      searchFilterTemplate: map['searchFilterTemplate'] == null ? null : (map['searchFilterTemplate'] as String).input(),
+      serverCertificates: map['serverCertificates'] == null ? null : (pulumi.Input.decodeList<Certificate>(map['serverCertificates'], (value) => Certificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname'] as String).input(),
+      serverPort: map['serverPort'] == null ? null : (map['serverPort'] as int).input(),
+      serviceUserDistinguishedName: map['serviceUserDistinguishedName'] == null ? null : (map['serviceUserDistinguishedName'] as String).input(),
+      serviceUserPassword: map['serviceUserPassword'] == null ? null : (map['serviceUserPassword'] as String).input(),
     );
   }
 }

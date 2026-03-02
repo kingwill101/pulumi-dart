@@ -22,15 +22,11 @@ class GetResourceGroupsArgs {
   /// [ids] A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetResourceGroupsArgs({
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-  }) :
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.dbClusterId,
+    this.groupName,
+    this.ids,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetResourceGroupsArgs {
 
   factory GetResourceGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupsArgs(
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

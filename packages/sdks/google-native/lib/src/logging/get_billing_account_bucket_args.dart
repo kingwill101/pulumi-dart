@@ -16,13 +16,10 @@ class GetBillingAccountBucketArgs {
   /// [bucketId] Required.
   /// [location] Required.
   GetBillingAccountBucketArgs({
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<String> bucketId,
-    required pulumi.Output<String> location,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      location = pulumi.Input.asInput<String>(location);
+    required this.billingAccountId,
+    required this.bucketId,
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBillingAccountBucketArgs {
 
   factory GetBillingAccountBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountBucketArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      bucketId: (map['bucketId'] as String).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

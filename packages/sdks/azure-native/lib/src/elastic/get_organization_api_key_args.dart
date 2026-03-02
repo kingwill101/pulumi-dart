@@ -13,9 +13,8 @@ class GetOrganizationApiKeyArgs {
   /// Creates a new [GetOrganizationApiKeyArgs].
   /// [emailId] The User email Id
   GetOrganizationApiKeyArgs({
-    pulumi.Output<String>? emailId,
-  }) :
-      emailId = pulumi.Input.asOptionalInput<String>(emailId);
+    this.emailId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetOrganizationApiKeyArgs {
 
   factory GetOrganizationApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationApiKeyArgs(
-      emailId: map['emailId'] == null ? null : pulumi.Output.create<String>(map['emailId'] as String),
+      emailId: map['emailId'] == null ? null : (map['emailId'] as String).input(),
     );
   }
 }

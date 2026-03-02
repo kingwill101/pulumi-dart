@@ -45,25 +45,16 @@ class KeyRingImportJobState {
   /// [publicKeys] The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
   /// [state] The current state of the ImportJob, indicating if it can be used.
   KeyRingImportJobState({
-    pulumi.Output<List<KeyRingImportJobAttestation>>? attestations,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<String>? importJobId,
-    pulumi.Output<String>? importMethod,
-    pulumi.Output<String>? keyRing,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protectionLevel,
-    pulumi.Output<List<KeyRingImportJobPublicKey>>? publicKeys,
-    pulumi.Output<String>? state,
-  }) :
-      attestations = pulumi.Input.asOptionalInput<List<KeyRingImportJobAttestation>>(attestations),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      importJobId = pulumi.Input.asOptionalInput<String>(importJobId),
-      importMethod = pulumi.Input.asOptionalInput<String>(importMethod),
-      keyRing = pulumi.Input.asOptionalInput<String>(keyRing),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectionLevel = pulumi.Input.asOptionalInput<String>(protectionLevel),
-      publicKeys = pulumi.Input.asOptionalInput<List<KeyRingImportJobPublicKey>>(publicKeys),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.attestations,
+    this.expireTime,
+    this.importJobId,
+    this.importMethod,
+    this.keyRing,
+    this.name,
+    this.protectionLevel,
+    this.publicKeys,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class KeyRingImportJobState {
 
   factory KeyRingImportJobState.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobState(
-      attestations: map['attestations'] == null ? null : pulumi.Output.create<List<KeyRingImportJobAttestation>>(pulumi.Input.decodeList<KeyRingImportJobAttestation>(map['attestations'], (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>()))),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      importJobId: map['importJobId'] == null ? null : pulumi.Output.create<String>(map['importJobId'] as String),
-      importMethod: map['importMethod'] == null ? null : pulumi.Output.create<String>(map['importMethod'] as String),
-      keyRing: map['keyRing'] == null ? null : pulumi.Output.create<String>(map['keyRing'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectionLevel: map['protectionLevel'] == null ? null : pulumi.Output.create<String>(map['protectionLevel'] as String),
-      publicKeys: map['publicKeys'] == null ? null : pulumi.Output.create<List<KeyRingImportJobPublicKey>>(pulumi.Input.decodeList<KeyRingImportJobPublicKey>(map['publicKeys'], (value) => KeyRingImportJobPublicKey.fromMap((value as Map).cast<String, dynamic>()))),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      attestations: map['attestations'] == null ? null : (pulumi.Input.decodeList<KeyRingImportJobAttestation>(map['attestations'], (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      importJobId: map['importJobId'] == null ? null : (map['importJobId'] as String).input(),
+      importMethod: map['importMethod'] == null ? null : (map['importMethod'] as String).input(),
+      keyRing: map['keyRing'] == null ? null : (map['keyRing'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectionLevel: map['protectionLevel'] == null ? null : (map['protectionLevel'] as String).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<KeyRingImportJobPublicKey>(map['publicKeys'], (value) => KeyRingImportJobPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

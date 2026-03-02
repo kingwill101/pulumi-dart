@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
-  final String? dataTransferApi;
+  final pulumi.Input<String>? dataTransferApi;
   /// Flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
-  final bool? enableDynamicFieldUpdate;
+  final pulumi.Input<bool>? enableDynamicFieldUpdate;
   /// Whether Amazon AppFlow includes deleted files in the flow run.
-  final bool? includeDeletedRecords;
-  final String object;
+  final pulumi.Input<bool>? includeDeletedRecords;
+  final pulumi.Input<String> object;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSalesforce].
   /// [dataTransferApi] Optional.
@@ -32,10 +33,10 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSalesforce(
-      dataTransferApi: map['dataTransferApi'] == null ? null : map['dataTransferApi'] as String,
-      enableDynamicFieldUpdate: map['enableDynamicFieldUpdate'] == null ? null : map['enableDynamicFieldUpdate'] as bool,
-      includeDeletedRecords: map['includeDeletedRecords'] == null ? null : map['includeDeletedRecords'] as bool,
-      object: map['object'] as String,
+      dataTransferApi: map['dataTransferApi'] == null ? null : (map['dataTransferApi'] as String).input(),
+      enableDynamicFieldUpdate: map['enableDynamicFieldUpdate'] == null ? null : (map['enableDynamicFieldUpdate'] as bool).input(),
+      includeDeletedRecords: map['includeDeletedRecords'] == null ? null : (map['includeDeletedRecords'] as bool).input(),
+      object: (map['object'] as String).input(),
     );
   }
 }

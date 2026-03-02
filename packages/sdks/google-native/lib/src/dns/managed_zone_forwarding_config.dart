@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_zone_forwarding_config_name_server_target.dart';
 
 class ManagedZoneForwardingConfig {
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
-  final List<ManagedZoneForwardingConfigNameServerTarget>? targetNameServers;
+  final pulumi.Input<List<ManagedZoneForwardingConfigNameServerTarget>>? targetNameServers;
 
   /// Creates a new [ManagedZoneForwardingConfig].
   /// [kind] Optional.
@@ -19,14 +19,14 @@ class ManagedZoneForwardingConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': ?kind,
-      'targetNameServers': ?targetNameServers == null ? null : pulumi.Input.encodeList<ManagedZoneForwardingConfigNameServerTarget, Map<String, dynamic>>(targetNameServers!, (value) => value.toMap()),
+      'targetNameServers': ?pulumi.Input.mapOptionalInputValue<List<ManagedZoneForwardingConfigNameServerTarget>, List<Map<String, dynamic>>>(targetNameServers, (value) => pulumi.Input.encodeList<ManagedZoneForwardingConfigNameServerTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagedZoneForwardingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfig(
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      targetNameServers: map['targetNameServers'] == null ? null : pulumi.Input.decodeList<ManagedZoneForwardingConfigNameServerTarget>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigNameServerTarget.fromMap((value as Map).cast<String, dynamic>())),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      targetNameServers: map['targetNameServers'] == null ? null : (pulumi.Input.decodeList<ManagedZoneForwardingConfigNameServerTarget>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigNameServerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

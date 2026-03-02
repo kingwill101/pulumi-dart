@@ -25,17 +25,12 @@ class FleetAnalyticArgs {
   /// [storageLocationType] The type of the fleet analytics resource.
   /// [storageLocationUri] The unique identifier of the fleet analytics resource.
   FleetAnalyticArgs({
-    pulumi.Output<String>? fleetAnalyticsName,
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageLocationType,
-    pulumi.Output<String>? storageLocationUri,
-  }) :
-      fleetAnalyticsName = pulumi.Input.asOptionalInput<String>(fleetAnalyticsName),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageLocationType = pulumi.Input.asOptionalInput<String>(storageLocationType),
-      storageLocationUri = pulumi.Input.asOptionalInput<String>(storageLocationUri);
+    this.fleetAnalyticsName,
+    required this.fleetName,
+    required this.resourceGroupName,
+    this.storageLocationType,
+    this.storageLocationUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FleetAnalyticArgs {
 
   factory FleetAnalyticArgs.fromMap(Map<String, dynamic> map) {
     return FleetAnalyticArgs(
-      fleetAnalyticsName: map['fleetAnalyticsName'] == null ? null : pulumi.Output.create<String>(map['fleetAnalyticsName'] as String),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageLocationType: map['storageLocationType'] == null ? null : pulumi.Output.create<String>(map['storageLocationType'] as String),
-      storageLocationUri: map['storageLocationUri'] == null ? null : pulumi.Output.create<String>(map['storageLocationUri'] as String),
+      fleetAnalyticsName: map['fleetAnalyticsName'] == null ? null : (map['fleetAnalyticsName'] as String).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageLocationType: map['storageLocationType'] == null ? null : (map['storageLocationType'] as String).input(),
+      storageLocationUri: map['storageLocationUri'] == null ? null : (map['storageLocationUri'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover {
   /// The ID of the object which will act as an approver.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// The type of object acting as an approver. Possible options are `User` and `Group`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover].
   /// [objectId] The ID of the object which will act as an approver.
@@ -24,8 +25,8 @@ class RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover {
 
   factory RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyActivationRulesApprovalStagePrimaryApprover(
-      objectId: map['objectId'] as String,
-      type: map['type'] as String,
+      objectId: (map['objectId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

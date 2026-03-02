@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'availability_zone_response.dart';
 
 /// Definition of Subnet
 class SubnetResponse {
   /// <p>The Availability Zone of the subnet.</p>
-  final AvailabilityZoneResponse? subnetAvailabilityZone;
+  final pulumi.Input<AvailabilityZoneResponse>? subnetAvailabilityZone;
   /// <p>The subnet identifier.</p>
-  final String? subnetIdentifier;
+  final pulumi.Input<String>? subnetIdentifier;
   /// <p>The status of the subnet.</p>
-  final String? subnetStatus;
+  final pulumi.Input<String>? subnetStatus;
 
   /// Creates a new [SubnetResponse].
   /// [subnetAvailabilityZone] <p>The Availability Zone of the subnet.</p>
@@ -23,7 +24,7 @@ class SubnetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subnetAvailabilityZone': ?subnetAvailabilityZone == null ? null : subnetAvailabilityZone!.toMap(),
+      'subnetAvailabilityZone': ?pulumi.Input.mapOptionalInputValue<AvailabilityZoneResponse, Map<String, dynamic>>(subnetAvailabilityZone, (value) => value.toMap()),
       'subnetIdentifier': ?subnetIdentifier,
       'subnetStatus': ?subnetStatus,
     };
@@ -31,9 +32,9 @@ class SubnetResponse {
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      subnetAvailabilityZone: map['subnetAvailabilityZone'] == null ? null : AvailabilityZoneResponse.fromMap((map['subnetAvailabilityZone'] as Map).cast<String, dynamic>()),
-      subnetIdentifier: map['subnetIdentifier'] == null ? null : map['subnetIdentifier'] as String,
-      subnetStatus: map['subnetStatus'] == null ? null : map['subnetStatus'] as String,
+      subnetAvailabilityZone: map['subnetAvailabilityZone'] == null ? null : (AvailabilityZoneResponse.fromMap((map['subnetAvailabilityZone'] as Map).cast<String, dynamic>())).input(),
+      subnetIdentifier: map['subnetIdentifier'] == null ? null : (map['subnetIdentifier'] as String).input(),
+      subnetStatus: map['subnetStatus'] == null ? null : (map['subnetStatus'] as String).input(),
     );
   }
 }

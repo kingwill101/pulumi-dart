@@ -7,13 +7,13 @@ import 'subscription_cost_management_view_dataset_sorting.dart';
 
 class SubscriptionCostManagementViewDataset {
   /// One or more `aggregation` blocks as defined above.
-  final List<SubscriptionCostManagementViewDatasetAggregation> aggregations;
+  final pulumi.Input<List<SubscriptionCostManagementViewDatasetAggregation>> aggregations;
   /// The granularity of rows in the report. Possible values are `Daily` and `Monthly`.
-  final String granularity;
+  final pulumi.Input<String> granularity;
   /// One or more `grouping` blocks as defined below.
-  final List<SubscriptionCostManagementViewDatasetGrouping>? groupings;
+  final pulumi.Input<List<SubscriptionCostManagementViewDatasetGrouping>>? groupings;
   /// One or more `sorting` blocks as defined below, containing the order by expression to be used in the report
-  final List<SubscriptionCostManagementViewDatasetSorting>? sortings;
+  final pulumi.Input<List<SubscriptionCostManagementViewDatasetSorting>>? sortings;
 
   /// Creates a new [SubscriptionCostManagementViewDataset].
   /// [aggregations] One or more `aggregation` blocks as defined above.
@@ -29,19 +29,19 @@ class SubscriptionCostManagementViewDataset {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregations': pulumi.Input.encodeList<SubscriptionCostManagementViewDatasetAggregation, Map<String, dynamic>>(aggregations, (value) => value.toMap()),
+      'aggregations': pulumi.Input.mapInputValue<List<SubscriptionCostManagementViewDatasetAggregation>, List<Map<String, dynamic>>>(aggregations, (value) => pulumi.Input.encodeList<SubscriptionCostManagementViewDatasetAggregation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'granularity': granularity,
-      'groupings': ?groupings == null ? null : pulumi.Input.encodeList<SubscriptionCostManagementViewDatasetGrouping, Map<String, dynamic>>(groupings!, (value) => value.toMap()),
-      'sortings': ?sortings == null ? null : pulumi.Input.encodeList<SubscriptionCostManagementViewDatasetSorting, Map<String, dynamic>>(sortings!, (value) => value.toMap()),
+      'groupings': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionCostManagementViewDatasetGrouping>, List<Map<String, dynamic>>>(groupings, (value) => pulumi.Input.encodeList<SubscriptionCostManagementViewDatasetGrouping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sortings': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionCostManagementViewDatasetSorting>, List<Map<String, dynamic>>>(sortings, (value) => pulumi.Input.encodeList<SubscriptionCostManagementViewDatasetSorting, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SubscriptionCostManagementViewDataset.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementViewDataset(
-      aggregations: pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetAggregation>(map['aggregations'], (value) => SubscriptionCostManagementViewDatasetAggregation.fromMap((value as Map).cast<String, dynamic>())),
-      granularity: map['granularity'] as String,
-      groupings: map['groupings'] == null ? null : pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetGrouping>(map['groupings'], (value) => SubscriptionCostManagementViewDatasetGrouping.fromMap((value as Map).cast<String, dynamic>())),
-      sortings: map['sortings'] == null ? null : pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetSorting>(map['sortings'], (value) => SubscriptionCostManagementViewDatasetSorting.fromMap((value as Map).cast<String, dynamic>())),
+      aggregations: (pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetAggregation>(map['aggregations'], (value) => SubscriptionCostManagementViewDatasetAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      granularity: (map['granularity'] as String).input(),
+      groupings: map['groupings'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetGrouping>(map['groupings'], (value) => SubscriptionCostManagementViewDatasetGrouping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sortings: map['sortings'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewDatasetSorting>(map['sortings'], (value) => SubscriptionCostManagementViewDatasetSorting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

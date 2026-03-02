@@ -29,19 +29,13 @@ class HypervCollectorsOperationArgs {
   /// [provisioningState] The status of the last operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   HypervCollectorsOperationArgs({
-    pulumi.Output<CollectorAgentPropertiesBase>? agentProperties,
-    pulumi.Output<String>? discoverySiteId,
-    pulumi.Output<String>? hypervCollectorName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      agentProperties = pulumi.Input.asOptionalInput<CollectorAgentPropertiesBase>(agentProperties),
-      discoverySiteId = pulumi.Input.asOptionalInput<String>(discoverySiteId),
-      hypervCollectorName = pulumi.Input.asOptionalInput<String>(hypervCollectorName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.agentProperties,
+    this.discoverySiteId,
+    this.hypervCollectorName,
+    required this.projectName,
+    this.provisioningState,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class HypervCollectorsOperationArgs {
 
   factory HypervCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return HypervCollectorsOperationArgs(
-      agentProperties: map['agentProperties'] == null ? null : pulumi.Output.create<CollectorAgentPropertiesBase>(CollectorAgentPropertiesBase.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())),
-      discoverySiteId: map['discoverySiteId'] == null ? null : pulumi.Output.create<String>(map['discoverySiteId'] as String),
-      hypervCollectorName: map['hypervCollectorName'] == null ? null : pulumi.Output.create<String>(map['hypervCollectorName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesBase.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      hypervCollectorName: map['hypervCollectorName'] == null ? null : (map['hypervCollectorName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

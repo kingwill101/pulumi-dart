@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mltable_job_input.dart';
 import 'nlp_vertical_featurization_settings.dart';
 import 'nlp_vertical_limit_settings.dart';
@@ -8,23 +9,23 @@ import 'nlp_vertical_limit_settings.dart';
 /// NLP - Natural Language Processing.
 class TextClassification {
   /// Featurization inputs needed for AutoML job.
-  final NlpVerticalFeaturizationSettings? featurizationSettings;
+  final pulumi.Input<NlpVerticalFeaturizationSettings>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
-  final NlpVerticalLimitSettings? limitSettings;
+  final pulumi.Input<NlpVerticalLimitSettings>? limitSettings;
   /// Log verbosity for the job.
-  final String? logVerbosity;
+  final pulumi.Input<String>? logVerbosity;
   /// Primary metric for Text-Classification task.
-  final String? primaryMetric;
+  final pulumi.Input<String>? primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
-  final String? targetColumnName;
+  final pulumi.Input<String>? targetColumnName;
   /// AutoMLJob Task type.
   /// Expected value is 'TextClassification'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
   /// [Required] Training data input.
-  final MLTableJobInput trainingData;
+  final pulumi.Input<MLTableJobInput> trainingData;
   /// Validation data inputs.
-  final MLTableJobInput? validationData;
+  final pulumi.Input<MLTableJobInput>? validationData;
 
   /// Creates a new [TextClassification].
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
@@ -48,27 +49,27 @@ class TextClassification {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'featurizationSettings': ?featurizationSettings == null ? null : featurizationSettings!.toMap(),
-      'limitSettings': ?limitSettings == null ? null : limitSettings!.toMap(),
+      'featurizationSettings': ?pulumi.Input.mapOptionalInputValue<NlpVerticalFeaturizationSettings, Map<String, dynamic>>(featurizationSettings, (value) => value.toMap()),
+      'limitSettings': ?pulumi.Input.mapOptionalInputValue<NlpVerticalLimitSettings, Map<String, dynamic>>(limitSettings, (value) => value.toMap()),
       'logVerbosity': ?logVerbosity,
       'primaryMetric': ?primaryMetric,
       'targetColumnName': ?targetColumnName,
       'taskType': taskType,
-      'trainingData': trainingData.toMap(),
-      'validationData': ?validationData == null ? null : validationData!.toMap(),
+      'trainingData': pulumi.Input.mapInputValue<MLTableJobInput, Map<String, dynamic>>(trainingData, (value) => value.toMap()),
+      'validationData': ?pulumi.Input.mapOptionalInputValue<MLTableJobInput, Map<String, dynamic>>(validationData, (value) => value.toMap()),
     };
   }
 
   factory TextClassification.fromMap(Map<String, dynamic> map) {
     return TextClassification(
-      featurizationSettings: map['featurizationSettings'] == null ? null : NlpVerticalFeaturizationSettings.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>()),
-      limitSettings: map['limitSettings'] == null ? null : NlpVerticalLimitSettings.fromMap((map['limitSettings'] as Map).cast<String, dynamic>()),
-      logVerbosity: map['logVerbosity'] == null ? null : map['logVerbosity'] as String,
-      primaryMetric: map['primaryMetric'] == null ? null : map['primaryMetric'] as String,
-      targetColumnName: map['targetColumnName'] == null ? null : map['targetColumnName'] as String,
-      taskType: map['taskType'] as String,
-      trainingData: MLTableJobInput.fromMap((map['trainingData'] as Map).cast<String, dynamic>()),
-      validationData: map['validationData'] == null ? null : MLTableJobInput.fromMap((map['validationData'] as Map).cast<String, dynamic>()),
+      featurizationSettings: map['featurizationSettings'] == null ? null : (NlpVerticalFeaturizationSettings.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>())).input(),
+      limitSettings: map['limitSettings'] == null ? null : (NlpVerticalLimitSettings.fromMap((map['limitSettings'] as Map).cast<String, dynamic>())).input(),
+      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity'] as String).input(),
+      primaryMetric: map['primaryMetric'] == null ? null : (map['primaryMetric'] as String).input(),
+      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
+      trainingData: (MLTableJobInput.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
+      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

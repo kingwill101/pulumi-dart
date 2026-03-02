@@ -33,21 +33,14 @@ class NetworkPeeringConnectionArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   NetworkPeeringConnectionArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? odbNetworkArn,
-    pulumi.Output<String>? odbNetworkId,
-    required pulumi.Output<String> peerNetworkId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<NetworkPeeringConnectionTimeouts>? timeouts,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      odbNetworkArn = pulumi.Input.asOptionalInput<String>(odbNetworkArn),
-      odbNetworkId = pulumi.Input.asOptionalInput<String>(odbNetworkId),
-      peerNetworkId = pulumi.Input.asInput<String>(peerNetworkId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<NetworkPeeringConnectionTimeouts>(timeouts);
+    required this.displayName,
+    this.odbNetworkArn,
+    this.odbNetworkId,
+    required this.peerNetworkId,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class NetworkPeeringConnectionArgs {
 
   factory NetworkPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringConnectionArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      odbNetworkArn: map['odbNetworkArn'] == null ? null : pulumi.Output.create<String>(map['odbNetworkArn'] as String),
-      odbNetworkId: map['odbNetworkId'] == null ? null : pulumi.Output.create<String>(map['odbNetworkId'] as String),
-      peerNetworkId: pulumi.Output.create<String>(map['peerNetworkId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<NetworkPeeringConnectionTimeouts>(NetworkPeeringConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      displayName: (map['displayName'] as String).input(),
+      odbNetworkArn: map['odbNetworkArn'] == null ? null : (map['odbNetworkArn'] as String).input(),
+      odbNetworkId: map['odbNetworkId'] == null ? null : (map['odbNetworkId'] as String).input(),
+      peerNetworkId: (map['peerNetworkId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (NetworkPeeringConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

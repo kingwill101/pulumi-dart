@@ -37,27 +37,17 @@ class AclRuleState {
   /// [sourceCidr] The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
   /// [sourcePortRange] The range of the source port. Valid value: 80/80.
   AclRuleState({
-    pulumi.Output<String>? aclId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destCidr,
-    pulumi.Output<String>? destPortRange,
-    pulumi.Output<String>? direction,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? policy,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? sourceCidr,
-    pulumi.Output<String>? sourcePortRange,
-  }) :
-      aclId = pulumi.Input.asOptionalInput<String>(aclId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destCidr = pulumi.Input.asOptionalInput<String>(destCidr),
-      destPortRange = pulumi.Input.asOptionalInput<String>(destPortRange),
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      sourceCidr = pulumi.Input.asOptionalInput<String>(sourceCidr),
-      sourcePortRange = pulumi.Input.asOptionalInput<String>(sourcePortRange);
+    this.aclId,
+    this.description,
+    this.destCidr,
+    this.destPortRange,
+    this.direction,
+    this.ipProtocol,
+    this.policy,
+    this.priority,
+    this.sourceCidr,
+    this.sourcePortRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class AclRuleState {
 
   factory AclRuleState.fromMap(Map<String, dynamic> map) {
     return AclRuleState(
-      aclId: map['aclId'] == null ? null : pulumi.Output.create<String>(map['aclId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destCidr: map['destCidr'] == null ? null : pulumi.Output.create<String>(map['destCidr'] as String),
-      destPortRange: map['destPortRange'] == null ? null : pulumi.Output.create<String>(map['destPortRange'] as String),
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      sourceCidr: map['sourceCidr'] == null ? null : pulumi.Output.create<String>(map['sourceCidr'] as String),
-      sourcePortRange: map['sourcePortRange'] == null ? null : pulumi.Output.create<String>(map['sourcePortRange'] as String),
+      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destCidr: map['destCidr'] == null ? null : (map['destCidr'] as String).input(),
+      destPortRange: map['destPortRange'] == null ? null : (map['destPortRange'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
     );
   }
 }

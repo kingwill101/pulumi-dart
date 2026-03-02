@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
 
 /// ExtendedLocation details data.
 class A2AExtendedLocationDetailsResponse {
   /// The primary ExtendedLocation.
-  final ExtendedLocationResponse? primaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
   /// The recovery ExtendedLocation.
-  final ExtendedLocationResponse? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
 
   /// Creates a new [A2AExtendedLocationDetailsResponse].
   /// [primaryExtendedLocation] The primary ExtendedLocation.
@@ -19,15 +20,15 @@ class A2AExtendedLocationDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryExtendedLocation': ?primaryExtendedLocation == null ? null : primaryExtendedLocation!.toMap(),
-      'recoveryExtendedLocation': ?recoveryExtendedLocation == null ? null : recoveryExtendedLocation!.toMap(),
+      'primaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(primaryExtendedLocation, (value) => value.toMap()),
+      'recoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(recoveryExtendedLocation, (value) => value.toMap()),
     };
   }
 
   factory A2AExtendedLocationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AExtendedLocationDetailsResponse(
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['primaryExtendedLocation'] as Map).cast<String, dynamic>()),
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>()),
+      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
+      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

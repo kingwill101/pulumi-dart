@@ -43,29 +43,18 @@ class GetVpcFlowLogsArgs {
   /// [status] The status of  flow log. Valid values: `Active`, `Inactive`.
   /// [trafficType] The traffic type. Valid values: `All`, `Allow`, `Drop`.
   GetVpcFlowLogsArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? flowLogName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? logStoreName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? trafficType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      flowLogName = pulumi.Input.asOptionalInput<String>(flowLogName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      logStoreName = pulumi.Input.asOptionalInput<String>(logStoreName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      trafficType = pulumi.Input.asOptionalInput<String>(trafficType);
+    this.description,
+    this.flowLogName,
+    this.ids,
+    this.logStoreName,
+    this.nameRegex,
+    this.outputFile,
+    this.projectName,
+    this.resourceId,
+    this.resourceType,
+    this.status,
+    this.trafficType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GetVpcFlowLogsArgs {
 
   factory GetVpcFlowLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFlowLogsArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      flowLogName: map['flowLogName'] == null ? null : pulumi.Output.create<String>(map['flowLogName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      logStoreName: map['logStoreName'] == null ? null : pulumi.Output.create<String>(map['logStoreName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      trafficType: map['trafficType'] == null ? null : pulumi.Output.create<String>(map['trafficType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      logStoreName: map['logStoreName'] == null ? null : (map['logStoreName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      trafficType: map['trafficType'] == null ? null : (map['trafficType'] as String).input(),
     );
   }
 }

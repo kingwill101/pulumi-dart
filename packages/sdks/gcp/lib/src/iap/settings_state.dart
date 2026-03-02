@@ -31,13 +31,10 @@ class SettingsState {
   /// [applicationSettings] Top level wrapper for all application related settings in IAP.
   /// [name] The resource name of the IAP protected resource. Name can have below resources:
   SettingsState({
-    pulumi.Output<SettingsAccessSettings>? accessSettings,
-    pulumi.Output<SettingsApplicationSettings>? applicationSettings,
-    pulumi.Output<String>? name,
-  }) :
-      accessSettings = pulumi.Input.asOptionalInput<SettingsAccessSettings>(accessSettings),
-      applicationSettings = pulumi.Input.asOptionalInput<SettingsApplicationSettings>(applicationSettings),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accessSettings,
+    this.applicationSettings,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,9 +46,9 @@ class SettingsState {
 
   factory SettingsState.fromMap(Map<String, dynamic> map) {
     return SettingsState(
-      accessSettings: map['accessSettings'] == null ? null : pulumi.Output.create<SettingsAccessSettings>(SettingsAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())),
-      applicationSettings: map['applicationSettings'] == null ? null : pulumi.Output.create<SettingsApplicationSettings>(SettingsApplicationSettings.fromMap((map['applicationSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accessSettings: map['accessSettings'] == null ? null : (SettingsAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
+      applicationSettings: map['applicationSettings'] == null ? null : (SettingsApplicationSettings.fromMap((map['applicationSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

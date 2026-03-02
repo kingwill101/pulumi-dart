@@ -1,45 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'in_mage_rcm_sync_details_response.dart';
 
 /// InMageRcm protected disk details.
 class InMageRcmProtectedDiskDetailsResponse {
   /// The disk capacity in bytes.
-  final double capacityInBytes;
+  final pulumi.Input<double> capacityInBytes;
   /// The custom target Azure disk name.
-  final String? customTargetDiskName;
+  final pulumi.Input<String>? customTargetDiskName;
   /// The data pending at source agent in MB.
-  final double dataPendingAtSourceAgentInMB;
+  final pulumi.Input<double> dataPendingAtSourceAgentInMB;
   /// The data pending in log data store in MB.
-  final double dataPendingInLogDataStoreInMB;
+  final pulumi.Input<double> dataPendingInLogDataStoreInMB;
   /// The DiskEncryptionSet ARM Id.
-  final String diskEncryptionSetId;
+  final pulumi.Input<String> diskEncryptionSetId;
   /// The disk Id.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The disk name.
-  final String diskName;
+  final pulumi.Input<String> diskName;
   /// The disk state.
-  final String diskState;
+  final pulumi.Input<String> diskState;
   /// The disk type.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// The initial replication details.
-  final InMageRcmSyncDetailsResponse? irDetails;
+  final pulumi.Input<InMageRcmSyncDetailsResponse>? irDetails;
   /// A value indicating whether initial replication is complete or not.
-  final String isInitialReplicationComplete;
+  final pulumi.Input<String> isInitialReplicationComplete;
   /// A value indicating whether the disk is the OS disk.
-  final String isOSDisk;
+  final pulumi.Input<String> isOSDisk;
   /// The log storage account ARM Id.
-  final String logStorageAccountId;
+  final pulumi.Input<String> logStorageAccountId;
   /// The resync details.
-  final InMageRcmSyncDetailsResponse? resyncDetails;
+  final pulumi.Input<InMageRcmSyncDetailsResponse>? resyncDetails;
   /// The logical sector size (in bytes), 512 by default.
-  final int? sectorSizeInBytes;
+  final pulumi.Input<int>? sectorSizeInBytes;
   /// The uri of the seed blob.
-  final String seedBlobUri;
+  final pulumi.Input<String> seedBlobUri;
   /// The ARM Id of the seed managed disk.
-  final String seedManagedDiskId;
+  final pulumi.Input<String> seedManagedDiskId;
   /// The ARM Id of the target managed disk.
-  final String targetManagedDiskId;
+  final pulumi.Input<String> targetManagedDiskId;
 
   /// Creates a new [InMageRcmProtectedDiskDetailsResponse].
   /// [capacityInBytes] The disk capacity in bytes.
@@ -92,11 +93,11 @@ class InMageRcmProtectedDiskDetailsResponse {
       'diskName': diskName,
       'diskState': diskState,
       'diskType': ?diskType,
-      'irDetails': ?irDetails == null ? null : irDetails!.toMap(),
+      'irDetails': ?pulumi.Input.mapOptionalInputValue<InMageRcmSyncDetailsResponse, Map<String, dynamic>>(irDetails, (value) => value.toMap()),
       'isInitialReplicationComplete': isInitialReplicationComplete,
       'isOSDisk': isOSDisk,
       'logStorageAccountId': logStorageAccountId,
-      'resyncDetails': ?resyncDetails == null ? null : resyncDetails!.toMap(),
+      'resyncDetails': ?pulumi.Input.mapOptionalInputValue<InMageRcmSyncDetailsResponse, Map<String, dynamic>>(resyncDetails, (value) => value.toMap()),
       'sectorSizeInBytes': ?sectorSizeInBytes,
       'seedBlobUri': seedBlobUri,
       'seedManagedDiskId': seedManagedDiskId,
@@ -106,24 +107,24 @@ class InMageRcmProtectedDiskDetailsResponse {
 
   factory InMageRcmProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmProtectedDiskDetailsResponse(
-      capacityInBytes: map['capacityInBytes'] as double,
-      customTargetDiskName: map['customTargetDiskName'] == null ? null : map['customTargetDiskName'] as String,
-      dataPendingAtSourceAgentInMB: map['dataPendingAtSourceAgentInMB'] as double,
-      dataPendingInLogDataStoreInMB: map['dataPendingInLogDataStoreInMB'] as double,
-      diskEncryptionSetId: map['diskEncryptionSetId'] as String,
-      diskId: map['diskId'] as String,
-      diskName: map['diskName'] as String,
-      diskState: map['diskState'] as String,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      irDetails: map['irDetails'] == null ? null : InMageRcmSyncDetailsResponse.fromMap((map['irDetails'] as Map).cast<String, dynamic>()),
-      isInitialReplicationComplete: map['isInitialReplicationComplete'] as String,
-      isOSDisk: map['isOSDisk'] as String,
-      logStorageAccountId: map['logStorageAccountId'] as String,
-      resyncDetails: map['resyncDetails'] == null ? null : InMageRcmSyncDetailsResponse.fromMap((map['resyncDetails'] as Map).cast<String, dynamic>()),
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : map['sectorSizeInBytes'] as int,
-      seedBlobUri: map['seedBlobUri'] as String,
-      seedManagedDiskId: map['seedManagedDiskId'] as String,
-      targetManagedDiskId: map['targetManagedDiskId'] as String,
+      capacityInBytes: (map['capacityInBytes'] as double).input(),
+      customTargetDiskName: map['customTargetDiskName'] == null ? null : (map['customTargetDiskName'] as String).input(),
+      dataPendingAtSourceAgentInMB: (map['dataPendingAtSourceAgentInMB'] as double).input(),
+      dataPendingInLogDataStoreInMB: (map['dataPendingInLogDataStoreInMB'] as double).input(),
+      diskEncryptionSetId: (map['diskEncryptionSetId'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskName: (map['diskName'] as String).input(),
+      diskState: (map['diskState'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      irDetails: map['irDetails'] == null ? null : (InMageRcmSyncDetailsResponse.fromMap((map['irDetails'] as Map).cast<String, dynamic>())).input(),
+      isInitialReplicationComplete: (map['isInitialReplicationComplete'] as String).input(),
+      isOSDisk: (map['isOSDisk'] as String).input(),
+      logStorageAccountId: (map['logStorageAccountId'] as String).input(),
+      resyncDetails: map['resyncDetails'] == null ? null : (InMageRcmSyncDetailsResponse.fromMap((map['resyncDetails'] as Map).cast<String, dynamic>())).input(),
+      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes'] as int).input(),
+      seedBlobUri: (map['seedBlobUri'] as String).input(),
+      seedManagedDiskId: (map['seedManagedDiskId'] as String).input(),
+      targetManagedDiskId: (map['targetManagedDiskId'] as String).input(),
     );
   }
 }

@@ -37,21 +37,14 @@ class VolumeAttachArgs {
   /// [vendorOptions] Map of additional vendor-specific options.
   /// [volumeId] The ID of the Volume to attach to an Instance.
   VolumeAttachArgs({
-    pulumi.Output<String>? device,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<bool>? multiattach,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tag,
-    pulumi.Output<VolumeAttachVendorOptions>? vendorOptions,
-    required pulumi.Output<String> volumeId,
-  }) :
-      device = pulumi.Input.asOptionalInput<String>(device),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      multiattach = pulumi.Input.asOptionalInput<bool>(multiattach),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tag = pulumi.Input.asOptionalInput<String>(tag),
-      vendorOptions = pulumi.Input.asOptionalInput<VolumeAttachVendorOptions>(vendorOptions),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+    this.device,
+    required this.instanceId,
+    this.multiattach,
+    this.region,
+    this.tag,
+    this.vendorOptions,
+    required this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class VolumeAttachArgs {
 
   factory VolumeAttachArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttachArgs(
-      device: map['device'] == null ? null : pulumi.Output.create<String>(map['device'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      multiattach: map['multiattach'] == null ? null : pulumi.Output.create<bool>(map['multiattach'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
-      vendorOptions: map['vendorOptions'] == null ? null : pulumi.Output.create<VolumeAttachVendorOptions>(VolumeAttachVendorOptions.fromMap((map['vendorOptions'] as Map).cast<String, dynamic>())),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
+      device: map['device'] == null ? null : (map['device'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      multiattach: map['multiattach'] == null ? null : (map['multiattach'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      vendorOptions: map['vendorOptions'] == null ? null : (VolumeAttachVendorOptions.fromMap((map['vendorOptions'] as Map).cast<String, dynamic>())).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

@@ -34,25 +34,16 @@ class RecordState {
   /// [type] The type of domain record. Valid values are `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
   /// [value] The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
   RecordState({
-    pulumi.Output<String>? hostRecord,
-    pulumi.Output<bool>? locked,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? routing,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? value,
-  }) :
-      hostRecord = pulumi.Input.asOptionalInput<String>(hostRecord),
-      locked = pulumi.Input.asOptionalInput<bool>(locked),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      routing = pulumi.Input.asOptionalInput<String>(routing),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.hostRecord,
+    this.locked,
+    this.name,
+    this.priority,
+    this.routing,
+    this.status,
+    this.ttl,
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class RecordState {
 
   factory RecordState.fromMap(Map<String, dynamic> map) {
     return RecordState(
-      hostRecord: map['hostRecord'] == null ? null : pulumi.Output.create<String>(map['hostRecord'] as String),
-      locked: map['locked'] == null ? null : pulumi.Output.create<bool>(map['locked'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      routing: map['routing'] == null ? null : pulumi.Output.create<String>(map['routing'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      hostRecord: map['hostRecord'] == null ? null : (map['hostRecord'] as String).input(),
+      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      routing: map['routing'] == null ? null : (map['routing'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

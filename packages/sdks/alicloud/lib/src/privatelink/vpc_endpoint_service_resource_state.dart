@@ -25,19 +25,13 @@ class VpcEndpointServiceResourceState {
   /// [serviceId] The endpoint service ID.
   /// [zoneId] The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
   VpcEndpointServiceResourceState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? serviceId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.dryRun,
+    this.regionId,
+    this.resourceId,
+    this.resourceType,
+    this.serviceId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class VpcEndpointServiceResourceState {
 
   factory VpcEndpointServiceResourceState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceResourceState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

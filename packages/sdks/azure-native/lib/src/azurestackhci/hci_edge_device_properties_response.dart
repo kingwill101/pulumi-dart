@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_configuration_response.dart';
 import 'hci_reported_properties_response.dart';
 
 /// properties for Arc-enabled edge device with HCI OS.
 class HciEdgeDevicePropertiesResponse {
   /// Device Configuration
-  final DeviceConfigurationResponse? deviceConfiguration;
+  final pulumi.Input<DeviceConfigurationResponse>? deviceConfiguration;
   /// Provisioning state of edgeDevice resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The instance view of all current configurations on HCI device.
-  final HciReportedPropertiesResponse reportedProperties;
+  final pulumi.Input<HciReportedPropertiesResponse> reportedProperties;
 
   /// Creates a new [HciEdgeDevicePropertiesResponse].
   /// [deviceConfiguration] Device Configuration
@@ -24,17 +25,17 @@ class HciEdgeDevicePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deviceConfiguration': ?deviceConfiguration == null ? null : deviceConfiguration!.toMap(),
+      'deviceConfiguration': ?pulumi.Input.mapOptionalInputValue<DeviceConfigurationResponse, Map<String, dynamic>>(deviceConfiguration, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'reportedProperties': reportedProperties.toMap(),
+      'reportedProperties': pulumi.Input.mapInputValue<HciReportedPropertiesResponse, Map<String, dynamic>>(reportedProperties, (value) => value.toMap()),
     };
   }
 
   factory HciEdgeDevicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HciEdgeDevicePropertiesResponse(
-      deviceConfiguration: map['deviceConfiguration'] == null ? null : DeviceConfigurationResponse.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      reportedProperties: HciReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>()),
+      deviceConfiguration: map['deviceConfiguration'] == null ? null : (DeviceConfigurationResponse.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reportedProperties: (HciReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

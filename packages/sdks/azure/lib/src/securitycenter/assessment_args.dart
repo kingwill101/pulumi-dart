@@ -23,15 +23,11 @@ class AssessmentArgs {
   /// [status] A `status` block as defined below.
   /// [targetResourceId] The ID of the target resource. Changing this forces a new security Assessment to be created.
   AssessmentArgs({
-    pulumi.Output<Map<String, String>>? additionalData,
-    required pulumi.Output<String> assessmentPolicyId,
-    required pulumi.Output<AssessmentStatus> status,
-    required pulumi.Output<String> targetResourceId,
-  }) :
-      additionalData = pulumi.Input.asOptionalInput<Map<String, String>>(additionalData),
-      assessmentPolicyId = pulumi.Input.asInput<String>(assessmentPolicyId),
-      status = pulumi.Input.asInput<AssessmentStatus>(status),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId);
+    this.additionalData,
+    required this.assessmentPolicyId,
+    required this.status,
+    required this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      additionalData: map['additionalData'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalData'] as Map).cast<String, String>()),
-      assessmentPolicyId: pulumi.Output.create<String>(map['assessmentPolicyId'] as String),
-      status: pulumi.Output.create<AssessmentStatus>(AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
+      additionalData: map['additionalData'] == null ? null : ((map['additionalData'] as Map).cast<String, String>()).input(),
+      assessmentPolicyId: (map['assessmentPolicyId'] as String).input(),
+      status: (AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }
 }

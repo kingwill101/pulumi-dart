@@ -6,7 +6,7 @@ import 'virtual_disk.dart';
 /// Defines the resource properties.
 class StorageProfile {
   /// Gets or sets the list of virtual disks associated with the virtual machine.
-  final List<VirtualDisk>? disks;
+  final pulumi.Input<List<VirtualDisk>>? disks;
 
   /// Creates a new [StorageProfile].
   /// [disks] Gets or sets the list of virtual disks associated with the virtual machine.
@@ -16,13 +16,13 @@ class StorageProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': ?disks == null ? null : pulumi.Input.encodeList<VirtualDisk, Map<String, dynamic>>(disks!, (value) => value.toMap()),
+      'disks': ?pulumi.Input.mapOptionalInputValue<List<VirtualDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<VirtualDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      disks: map['disks'] == null ? null : pulumi.Input.decodeList<VirtualDisk>(map['disks'], (value) => VirtualDisk.fromMap((value as Map).cast<String, dynamic>())),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<VirtualDisk>(map['disks'], (value) => VirtualDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

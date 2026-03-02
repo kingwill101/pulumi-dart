@@ -25,19 +25,13 @@ class CallbackState {
   /// [createTime] The creation time of the Callback.
   /// [cryptType] The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
   CallbackState({
-    pulumi.Output<String>? callbackName,
-    pulumi.Output<List<String>>? callbackSuggestions,
-    pulumi.Output<List<String>>? callbackTypes,
-    pulumi.Output<String>? callbackUrl,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<int>? cryptType,
-  }) :
-      callbackName = pulumi.Input.asOptionalInput<String>(callbackName),
-      callbackSuggestions = pulumi.Input.asOptionalInput<List<String>>(callbackSuggestions),
-      callbackTypes = pulumi.Input.asOptionalInput<List<String>>(callbackTypes),
-      callbackUrl = pulumi.Input.asOptionalInput<String>(callbackUrl),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      cryptType = pulumi.Input.asOptionalInput<int>(cryptType);
+    this.callbackName,
+    this.callbackSuggestions,
+    this.callbackTypes,
+    this.callbackUrl,
+    this.createTime,
+    this.cryptType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class CallbackState {
 
   factory CallbackState.fromMap(Map<String, dynamic> map) {
     return CallbackState(
-      callbackName: map['callbackName'] == null ? null : pulumi.Output.create<String>(map['callbackName'] as String),
-      callbackSuggestions: map['callbackSuggestions'] == null ? null : pulumi.Output.create<List<String>>((map['callbackSuggestions'] as List).cast<String>()),
-      callbackTypes: map['callbackTypes'] == null ? null : pulumi.Output.create<List<String>>((map['callbackTypes'] as List).cast<String>()),
-      callbackUrl: map['callbackUrl'] == null ? null : pulumi.Output.create<String>(map['callbackUrl'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      cryptType: map['cryptType'] == null ? null : pulumi.Output.create<int>(map['cryptType'] as int),
+      callbackName: map['callbackName'] == null ? null : (map['callbackName'] as String).input(),
+      callbackSuggestions: map['callbackSuggestions'] == null ? null : ((map['callbackSuggestions'] as List).cast<String>()).input(),
+      callbackTypes: map['callbackTypes'] == null ? null : ((map['callbackTypes'] as List).cast<String>()).input(),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      cryptType: map['cryptType'] == null ? null : (map['cryptType'] as int).input(),
     );
   }
 }

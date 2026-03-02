@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FilterFilterCriteriaComponentType {
   /// (Required) The comparison operator. Valid values: `EQUALS`.
-  final String comparison;
+  final pulumi.Input<String> comparison;
   /// (Required) The value to filter on.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [FilterFilterCriteriaComponentType].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
@@ -24,8 +25,8 @@ class FilterFilterCriteriaComponentType {
 
   factory FilterFilterCriteriaComponentType.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaComponentType(
-      comparison: map['comparison'] as String,
-      value: map['value'] as String,
+      comparison: (map['comparison'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

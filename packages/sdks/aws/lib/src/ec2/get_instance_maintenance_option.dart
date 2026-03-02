@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceMaintenanceOption {
   /// Automatic recovery behavior of the instance.
-  final String autoRecovery;
+  final pulumi.Input<String> autoRecovery;
 
   /// Creates a new [GetInstanceMaintenanceOption].
   /// [autoRecovery] Automatic recovery behavior of the instance.
@@ -19,7 +20,7 @@ class GetInstanceMaintenanceOption {
 
   factory GetInstanceMaintenanceOption.fromMap(Map<String, dynamic> map) {
     return GetInstanceMaintenanceOption(
-      autoRecovery: map['autoRecovery'] as String,
+      autoRecovery: (map['autoRecovery'] as String).input(),
     );
   }
 }

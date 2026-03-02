@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileSpannerProfile {
   /// The full project and resource path for Spanner database. Format:
   /// projects/{project}/instances/{instance}/databases/{database}.
-  final String database;
+  final pulumi.Input<String> database;
   /// The regional Spanner endpoint. Format:
   /// https://spanner.{region}.rep.googleapis.com.
-  final String? host;
+  final pulumi.Input<String>? host;
 
   /// Creates a new [ConnectionProfileSpannerProfile].
   /// [database] The full project and resource path for Spanner database. Format:
@@ -26,8 +27,8 @@ class ConnectionProfileSpannerProfile {
 
   factory ConnectionProfileSpannerProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileSpannerProfile(
-      database: map['database'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
+      database: (map['database'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
     );
   }
 }

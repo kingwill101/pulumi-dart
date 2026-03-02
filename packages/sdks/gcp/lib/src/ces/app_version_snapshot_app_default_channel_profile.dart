@@ -14,26 +14,26 @@ class AppVersionSnapshotAppDefaultChannelProfile {
   /// TWILIO
   /// GOOGLE_TELEPHONY_PLATFORM
   /// CONTACT_CENTER_AS_A_SERVICE
-  final String? channelType;
+  final pulumi.Input<String>? channelType;
   /// (Output)
   /// Whether to disable user barge-in in the conversation.
   /// - true: User interruptions are disabled while the agent is speaking.
   /// - false: The agent retains automatic control over when the user can interrupt.
-  final bool? disableBargeInControl;
+  final pulumi.Input<bool>? disableBargeInControl;
   /// (Output)
   /// Whether to disable DTMF (dual-tone multi-frequency).
-  final bool? disableDtmf;
+  final pulumi.Input<bool>? disableDtmf;
   /// (Output)
   /// Represents the persona property of a channel.
   /// Structure is documented below.
-  final List<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>? personaProperties;
+  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>>? personaProperties;
   /// (Output)
   /// The unique identifier of the channel profile.
-  final String? profileId;
+  final pulumi.Input<String>? profileId;
   /// (Output)
   /// Message for configuration for the web widget.
   /// Structure is documented below.
-  final List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>? webWidgetConfigs;
+  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>>? webWidgetConfigs;
 
   /// Creates a new [AppVersionSnapshotAppDefaultChannelProfile].
   /// [channelType] (Output)
@@ -56,20 +56,20 @@ class AppVersionSnapshotAppDefaultChannelProfile {
       'channelType': ?channelType,
       'disableBargeInControl': ?disableBargeInControl,
       'disableDtmf': ?disableDtmf,
-      'personaProperties': ?personaProperties == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty, Map<String, dynamic>>(personaProperties!, (value) => value.toMap()),
+      'personaProperties': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>, List<Map<String, dynamic>>>(personaProperties, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
       'profileId': ?profileId,
-      'webWidgetConfigs': ?webWidgetConfigs == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig, Map<String, dynamic>>(webWidgetConfigs!, (value) => value.toMap()),
+      'webWidgetConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>, List<Map<String, dynamic>>>(webWidgetConfigs, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AppVersionSnapshotAppDefaultChannelProfile.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDefaultChannelProfile(
-      channelType: map['channelType'] == null ? null : map['channelType'] as String,
-      disableBargeInControl: map['disableBargeInControl'] == null ? null : map['disableBargeInControl'] as bool,
-      disableDtmf: map['disableDtmf'] == null ? null : map['disableDtmf'] as bool,
-      personaProperties: map['personaProperties'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>(map['personaProperties'], (value) => AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap((value as Map).cast<String, dynamic>())),
-      profileId: map['profileId'] == null ? null : map['profileId'] as String,
-      webWidgetConfigs: map['webWidgetConfigs'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>(map['webWidgetConfigs'], (value) => AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap((value as Map).cast<String, dynamic>())),
+      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
+      disableBargeInControl: map['disableBargeInControl'] == null ? null : (map['disableBargeInControl'] as bool).input(),
+      disableDtmf: map['disableDtmf'] == null ? null : (map['disableDtmf'] as bool).input(),
+      personaProperties: map['personaProperties'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>(map['personaProperties'], (value) => AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      webWidgetConfigs: map['webWidgetConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>(map['webWidgetConfigs'], (value) => AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

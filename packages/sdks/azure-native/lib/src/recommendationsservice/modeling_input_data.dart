@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration to raw CDM data to be used as Modeling resource input.
 class ModelingInputData {
   /// Connection string to raw input data.
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
 
   /// Creates a new [ModelingInputData].
   /// [connectionString] Connection string to raw input data.
@@ -20,7 +21,7 @@ class ModelingInputData {
 
   factory ModelingInputData.fromMap(Map<String, dynamic> map) {
     return ModelingInputData(
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
     );
   }
 }

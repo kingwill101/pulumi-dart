@@ -30,15 +30,11 @@ class BgpvpnNetworkAssociateV2Args {
   /// [projectId] The ID of the project that owns the BGP VPN network
   /// [region] The region in which to obtain the V2 Networking client.
   BgpvpnNetworkAssociateV2Args({
-    required pulumi.Output<String> bgpvpnId,
-    required pulumi.Output<String> networkId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-  }) :
-      bgpvpnId = pulumi.Input.asInput<String>(bgpvpnId),
-      networkId = pulumi.Input.asInput<String>(networkId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.bgpvpnId,
+    required this.networkId,
+    this.projectId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,10 +47,10 @@ class BgpvpnNetworkAssociateV2Args {
 
   factory BgpvpnNetworkAssociateV2Args.fromMap(Map<String, dynamic> map) {
     return BgpvpnNetworkAssociateV2Args(
-      bgpvpnId: pulumi.Output.create<String>(map['bgpvpnId'] as String),
-      networkId: pulumi.Output.create<String>(map['networkId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bgpvpnId: (map['bgpvpnId'] as String).input(),
+      networkId: (map['networkId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

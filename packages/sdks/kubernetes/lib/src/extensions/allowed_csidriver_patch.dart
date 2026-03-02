@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.
 class AllowedCSIDriverPatch {
   /// Name is the registered name of the CSI driver
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AllowedCSIDriverPatch].
   /// [name] Name is the registered name of the CSI driver
@@ -20,7 +21,7 @@ class AllowedCSIDriverPatch {
 
   factory AllowedCSIDriverPatch.fromMap(Map<String, dynamic> map) {
     return AllowedCSIDriverPatch(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

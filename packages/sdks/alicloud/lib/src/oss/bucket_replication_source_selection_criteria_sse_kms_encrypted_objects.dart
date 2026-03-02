@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
   /// The status of the data replication task. Can be starting, doing and closing.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects].
   /// [status] The status of the data replication task. Can be starting, doing and closing.
@@ -19,7 +20,7 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
 
   factory BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap(Map<String, dynamic> map) {
     return BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

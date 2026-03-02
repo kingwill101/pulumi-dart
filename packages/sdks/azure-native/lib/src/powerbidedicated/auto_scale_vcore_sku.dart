@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the SKU name and Azure pricing tier for auto scale v-core resource.
 class AutoScaleVCoreSku {
   /// The capacity of an auto scale v-core resource.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Name of the SKU level.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the Azure pricing tier to which the SKU applies.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [AutoScaleVCoreSku].
   /// [capacity] The capacity of an auto scale v-core resource.
@@ -30,9 +31,9 @@ class AutoScaleVCoreSku {
 
   factory AutoScaleVCoreSku.fromMap(Map<String, dynamic> map) {
     return AutoScaleVCoreSku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

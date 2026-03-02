@@ -22,15 +22,11 @@ class GetContentItemArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetContentItemArgs({
-    required pulumi.Output<String> contentItemId,
-    required pulumi.Output<String> contentTypeId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      contentItemId = pulumi.Input.asInput<String>(contentItemId),
-      contentTypeId = pulumi.Input.asInput<String>(contentTypeId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.contentItemId,
+    required this.contentTypeId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetContentItemArgs {
 
   factory GetContentItemArgs.fromMap(Map<String, dynamic> map) {
     return GetContentItemArgs(
-      contentItemId: pulumi.Output.create<String>(map['contentItemId'] as String),
-      contentTypeId: pulumi.Output.create<String>(map['contentTypeId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      contentItemId: (map['contentItemId'] as String).input(),
+      contentTypeId: (map['contentTypeId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

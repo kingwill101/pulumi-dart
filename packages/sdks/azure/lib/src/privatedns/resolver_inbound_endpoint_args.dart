@@ -26,17 +26,12 @@ class ResolverInboundEndpointArgs {
   /// [privateDnsResolverId] Specifies the ID of the Private DNS Resolver Inbound Endpoint. Changing this forces a new Private DNS Resolver Inbound Endpoint to be created.
   /// [tags] A mapping of tags which should be assigned to the Private DNS Resolver Inbound Endpoint.
   ResolverInboundEndpointArgs({
-    required pulumi.Output<ResolverInboundEndpointIpConfigurations> ipConfigurations,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> privateDnsResolverId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ipConfigurations = pulumi.Input.asInput<ResolverInboundEndpointIpConfigurations>(ipConfigurations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateDnsResolverId = pulumi.Input.asInput<String>(privateDnsResolverId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.ipConfigurations,
+    this.location,
+    this.name,
+    required this.privateDnsResolverId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ResolverInboundEndpointArgs {
 
   factory ResolverInboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ResolverInboundEndpointArgs(
-      ipConfigurations: pulumi.Output.create<ResolverInboundEndpointIpConfigurations>(ResolverInboundEndpointIpConfigurations.fromMap((map['ipConfigurations'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateDnsResolverId: pulumi.Output.create<String>(map['privateDnsResolverId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ipConfigurations: (ResolverInboundEndpointIpConfigurations.fromMap((map['ipConfigurations'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateDnsResolverId: (map['privateDnsResolverId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

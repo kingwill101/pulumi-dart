@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. Node taints are permanent.
 class NodeTaintResponse {
   /// The taint effect.
-  final String effect;
+  final pulumi.Input<String> effect;
   /// Key associated with the effect.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value associated with the effect.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [NodeTaintResponse].
   /// [effect] The taint effect.
@@ -30,9 +31,9 @@ class NodeTaintResponse {
 
   factory NodeTaintResponse.fromMap(Map<String, dynamic> map) {
     return NodeTaintResponse(
-      effect: map['effect'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      effect: (map['effect'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

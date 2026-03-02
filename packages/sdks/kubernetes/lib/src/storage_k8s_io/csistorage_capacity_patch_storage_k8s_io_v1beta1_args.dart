@@ -41,21 +41,14 @@ class CSIStorageCapacityPatchStorageK8sIoV1beta1Args {
   /// [nodeTopology] NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
   /// [storageClassName] The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
   CSIStorageCapacityPatchStorageK8sIoV1beta1Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? capacity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? maximumVolumeSize,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<LabelSelectorPatch>? nodeTopology,
-    pulumi.Output<String>? storageClassName,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      capacity = pulumi.Input.asOptionalInput<String>(capacity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      maximumVolumeSize = pulumi.Input.asOptionalInput<String>(maximumVolumeSize),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      nodeTopology = pulumi.Input.asOptionalInput<LabelSelectorPatch>(nodeTopology),
-      storageClassName = pulumi.Input.asOptionalInput<String>(storageClassName);
+    this.apiVersion,
+    this.capacity,
+    this.kind,
+    this.maximumVolumeSize,
+    this.metadata,
+    this.nodeTopology,
+    this.storageClassName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +64,13 @@ class CSIStorageCapacityPatchStorageK8sIoV1beta1Args {
 
   factory CSIStorageCapacityPatchStorageK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return CSIStorageCapacityPatchStorageK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<String>(map['capacity'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      maximumVolumeSize: map['maximumVolumeSize'] == null ? null : pulumi.Output.create<String>(map['maximumVolumeSize'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      nodeTopology: map['nodeTopology'] == null ? null : pulumi.Output.create<LabelSelectorPatch>(LabelSelectorPatch.fromMap((map['nodeTopology'] as Map).cast<String, dynamic>())),
-      storageClassName: map['storageClassName'] == null ? null : pulumi.Output.create<String>(map['storageClassName'] as String),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      maximumVolumeSize: map['maximumVolumeSize'] == null ? null : (map['maximumVolumeSize'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      nodeTopology: map['nodeTopology'] == null ? null : (LabelSelectorPatch.fromMap((map['nodeTopology'] as Map).cast<String, dynamic>())).input(),
+      storageClassName: map['storageClassName'] == null ? null : (map['storageClassName'] as String).input(),
     );
   }
 }

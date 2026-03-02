@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppIdentity {
   /// A list of one or more Resource IDs for User Assigned Managed identities to assign.
-  final List<String> identityIds;
-  final String principalId;
-  final String tenantId;
+  final pulumi.Input<List<String>> identityIds;
+  final pulumi.Input<String> principalId;
+  final pulumi.Input<String> tenantId;
   /// The type of managed identity to assign.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAppIdentity].
   /// [identityIds] A list of one or more Resource IDs for User Assigned Managed identities to assign.
@@ -32,10 +33,10 @@ class GetAppIdentity {
 
   factory GetAppIdentity.fromMap(Map<String, dynamic> map) {
     return GetAppIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

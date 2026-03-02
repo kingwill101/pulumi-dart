@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapabilityConfigurationArgoCdRbacRoleMappingIdentity {
   /// Identity ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Identity type. Valid values: `SSO_USER`, `SSO_GROUP`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [CapabilityConfigurationArgoCdRbacRoleMappingIdentity].
   /// [id] Identity ID.
@@ -24,8 +25,8 @@ class CapabilityConfigurationArgoCdRbacRoleMappingIdentity {
 
   factory CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap(Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCdRbacRoleMappingIdentity(
-      id: map['id'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'google_cloud_dialogflow_cx_v3beta1_experiment_result_metric_response.dar
 /// Version variant and associated metrics.
 class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse {
   /// The metrics and corresponding confidence intervals in the inference result.
-  final List<GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse> metrics;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse>> metrics;
   /// Number of sessions that were allocated to this version.
-  final int sessionCount;
+  final pulumi.Input<int> sessionCount;
   /// The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse].
   /// [metrics] The metrics and corresponding confidence intervals in the inference result.
@@ -24,7 +24,7 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metrics': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'metrics': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sessionCount': sessionCount,
       'version': version,
     };
@@ -32,9 +32,9 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse {
 
   factory GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse(
-      metrics: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse>(map['metrics'], (value) => GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sessionCount: map['sessionCount'] as int,
-      version: map['version'] as String,
+      metrics: (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse>(map['metrics'], (value) => GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sessionCount: (map['sessionCount'] as int).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

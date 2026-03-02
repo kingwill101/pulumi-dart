@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback {
   /// The description of the app version.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// (Output)
   /// Whether summarization is disabled.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// (Output)
   /// The Python code to execute for the tool.
-  final String? pythonCode;
+  final pulumi.Input<String>? pythonCode;
 
   /// Creates a new [AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback].
   /// [description] The description of the app version.
@@ -31,9 +32,9 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback {
 
   factory AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback(
-      description: map['description'] == null ? null : map['description'] as String,
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      pythonCode: map['pythonCode'] == null ? null : map['pythonCode'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      pythonCode: map['pythonCode'] == null ? null : (map['pythonCode'] as String).input(),
     );
   }
 }

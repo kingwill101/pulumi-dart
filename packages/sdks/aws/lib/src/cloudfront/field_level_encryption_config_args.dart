@@ -21,13 +21,10 @@ class FieldLevelEncryptionConfigArgs {
   /// [contentTypeProfileConfig] Content Type Profile Config specifies when to forward content if a content type isn't recognized and profiles to use as by default in a request if a query argument doesn't specify a profile to use.
   /// [queryArgProfileConfig] Query Arg Profile Config that specifies when to forward content if a profile isn't found and the profile that can be provided as a query argument in a request.
   FieldLevelEncryptionConfigArgs({
-    pulumi.Output<String>? comment,
-    required pulumi.Output<FieldLevelEncryptionConfigContentTypeProfileConfig> contentTypeProfileConfig,
-    required pulumi.Output<FieldLevelEncryptionConfigQueryArgProfileConfig> queryArgProfileConfig,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      contentTypeProfileConfig = pulumi.Input.asInput<FieldLevelEncryptionConfigContentTypeProfileConfig>(contentTypeProfileConfig),
-      queryArgProfileConfig = pulumi.Input.asInput<FieldLevelEncryptionConfigQueryArgProfileConfig>(queryArgProfileConfig);
+    this.comment,
+    required this.contentTypeProfileConfig,
+    required this.queryArgProfileConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class FieldLevelEncryptionConfigArgs {
 
   factory FieldLevelEncryptionConfigArgs.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      contentTypeProfileConfig: pulumi.Output.create<FieldLevelEncryptionConfigContentTypeProfileConfig>(FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((map['contentTypeProfileConfig'] as Map).cast<String, dynamic>())),
-      queryArgProfileConfig: pulumi.Output.create<FieldLevelEncryptionConfigQueryArgProfileConfig>(FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((map['queryArgProfileConfig'] as Map).cast<String, dynamic>())),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      contentTypeProfileConfig: (FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((map['contentTypeProfileConfig'] as Map).cast<String, dynamic>())).input(),
+      queryArgProfileConfig: (FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((map['queryArgProfileConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

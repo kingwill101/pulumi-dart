@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_stage_before_entry_condition_rule_rule_type_id.dart';
 
 class PipelineStageBeforeEntryConditionRule {
   /// The shell commands to run with your commands rule in CodePipeline. All commands are supported except multi-line formats.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// The action configuration fields for the rule. Configurations options for rule types and providers can be found in the [Rule structure reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
-  final Map<String, String>? configuration;
+  final pulumi.Input<Map<String, String>>? configuration;
   /// The list of the input artifacts fields for the rule, such as specifying an input file for the rule.
-  final List<String>? inputArtifacts;
+  final pulumi.Input<List<String>>? inputArtifacts;
   /// The name of the rule that is created for the condition, such as `VariableCheck`.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Region for the condition associated with the rule.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// The pipeline role ARN associated with the rule.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
   /// The ID for the rule type, which is made up of the combined values for `category`, `owner`, `provider`, and `version`. Defined as an `rule_type_id` block below.
-  final PipelineStageBeforeEntryConditionRuleRuleTypeId ruleTypeId;
+  final pulumi.Input<PipelineStageBeforeEntryConditionRuleRuleTypeId> ruleTypeId;
   /// The action timeout for the rule.
-  final int? timeoutInMinutes;
+  final pulumi.Input<int>? timeoutInMinutes;
 
   /// Creates a new [PipelineStageBeforeEntryConditionRule].
   /// [commands] The shell commands to run with your commands rule in CodePipeline. All commands are supported except multi-line formats.
@@ -48,21 +49,21 @@ class PipelineStageBeforeEntryConditionRule {
       'name': name,
       'region': ?region,
       'roleArn': ?roleArn,
-      'ruleTypeId': ruleTypeId.toMap(),
+      'ruleTypeId': pulumi.Input.mapInputValue<PipelineStageBeforeEntryConditionRuleRuleTypeId, Map<String, dynamic>>(ruleTypeId, (value) => value.toMap()),
       'timeoutInMinutes': ?timeoutInMinutes,
     };
   }
 
   factory PipelineStageBeforeEntryConditionRule.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntryConditionRule(
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      configuration: map['configuration'] == null ? null : (map['configuration'] as Map).cast<String, String>(),
-      inputArtifacts: map['inputArtifacts'] == null ? null : (map['inputArtifacts'] as List).cast<String>(),
-      name: map['name'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      ruleTypeId: PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap((map['ruleTypeId'] as Map).cast<String, dynamic>()),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : map['timeoutInMinutes'] as int,
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      configuration: map['configuration'] == null ? null : ((map['configuration'] as Map).cast<String, String>()).input(),
+      inputArtifacts: map['inputArtifacts'] == null ? null : ((map['inputArtifacts'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      ruleTypeId: (PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap((map['ruleTypeId'] as Map).cast<String, dynamic>())).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as int).input(),
     );
   }
 }

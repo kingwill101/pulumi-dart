@@ -6,11 +6,11 @@ import 'application_gateway_rewrite_rule.dart';
 /// Rewrite rule set of an application gateway.
 class ApplicationGatewayRewriteRuleSet {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the rewrite rule set that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Rewrite rules in the rewrite rule set.
-  final List<ApplicationGatewayRewriteRule>? rewriteRules;
+  final pulumi.Input<List<ApplicationGatewayRewriteRule>>? rewriteRules;
 
   /// Creates a new [ApplicationGatewayRewriteRuleSet].
   /// [id] Resource ID.
@@ -26,15 +26,15 @@ class ApplicationGatewayRewriteRuleSet {
     return <String, dynamic>{
       'id': ?id,
       'name': ?name,
-      'rewriteRules': ?rewriteRules == null ? null : pulumi.Input.encodeList<ApplicationGatewayRewriteRule, Map<String, dynamic>>(rewriteRules!, (value) => value.toMap()),
+      'rewriteRules': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayRewriteRule>, List<Map<String, dynamic>>>(rewriteRules, (value) => pulumi.Input.encodeList<ApplicationGatewayRewriteRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ApplicationGatewayRewriteRuleSet.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleSet(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      rewriteRules: map['rewriteRules'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayRewriteRule>(map['rewriteRules'], (value) => ApplicationGatewayRewriteRule.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rewriteRules: map['rewriteRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRule>(map['rewriteRules'], (value) => ApplicationGatewayRewriteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

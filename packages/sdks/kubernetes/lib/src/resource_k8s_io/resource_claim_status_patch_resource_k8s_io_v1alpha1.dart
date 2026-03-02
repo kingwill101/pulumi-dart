@@ -7,19 +7,19 @@ import 'resource_claim_consumer_reference_patch_resource_k8s_io_v1alpha1.dart';
 /// ResourceClaimStatus tracks whether the resource has been allocated and what the resulting attributes are.
 class ResourceClaimStatusPatchResourceK8sIoV1alpha1 {
   /// Allocation is set by the resource driver once a resource has been allocated successfully. If this is not specified, the resource is not yet allocated.
-  final AllocationResultPatchResourceK8sIoV1alpha1? allocation;
+  final pulumi.Input<AllocationResultPatchResourceK8sIoV1alpha1>? allocation;
   /// DeallocationRequested indicates that a ResourceClaim is to be deallocated.
   ///
   /// The driver then must deallocate this claim and reset the field together with clearing the Allocation field.
   ///
   /// While DeallocationRequested is set, no new consumers may be added to ReservedFor.
-  final bool? deallocationRequested;
+  final pulumi.Input<bool>? deallocationRequested;
   /// DriverName is a copy of the driver name from the ResourceClass at the time when allocation started.
-  final String? driverName;
+  final pulumi.Input<String>? driverName;
   /// ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started.
   ///
   /// There can be at most 32 such reservations. This may get increased in the future, but not reduced.
-  final List<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>? reservedFor;
+  final pulumi.Input<List<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>>? reservedFor;
 
   /// Creates a new [ResourceClaimStatusPatchResourceK8sIoV1alpha1].
   /// [allocation] Allocation is set by the resource driver once a resource has been allocated successfully. If this is not specified, the resource is not yet allocated.
@@ -35,19 +35,19 @@ class ResourceClaimStatusPatchResourceK8sIoV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocation': ?allocation == null ? null : allocation!.toMap(),
+      'allocation': ?pulumi.Input.mapOptionalInputValue<AllocationResultPatchResourceK8sIoV1alpha1, Map<String, dynamic>>(allocation, (value) => value.toMap()),
       'deallocationRequested': ?deallocationRequested,
       'driverName': ?driverName,
-      'reservedFor': ?reservedFor == null ? null : pulumi.Input.encodeList<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1, Map<String, dynamic>>(reservedFor!, (value) => value.toMap()),
+      'reservedFor': ?pulumi.Input.mapOptionalInputValue<List<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>, List<Map<String, dynamic>>>(reservedFor, (value) => pulumi.Input.encodeList<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourceClaimStatusPatchResourceK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimStatusPatchResourceK8sIoV1alpha1(
-      allocation: map['allocation'] == null ? null : AllocationResultPatchResourceK8sIoV1alpha1.fromMap((map['allocation'] as Map).cast<String, dynamic>()),
-      deallocationRequested: map['deallocationRequested'] == null ? null : map['deallocationRequested'] as bool,
-      driverName: map['driverName'] == null ? null : map['driverName'] as String,
-      reservedFor: map['reservedFor'] == null ? null : pulumi.Input.decodeList<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>(map['reservedFor'], (value) => ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      allocation: map['allocation'] == null ? null : (AllocationResultPatchResourceK8sIoV1alpha1.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
+      deallocationRequested: map['deallocationRequested'] == null ? null : (map['deallocationRequested'] as bool).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
+      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1>(map['reservedFor'], (value) => ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

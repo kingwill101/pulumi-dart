@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionPhysicalConnectionRequirements {
   /// The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// The security group ID list used by the connection.
-  final List<String>? securityGroupIdLists;
+  final pulumi.Input<List<String>>? securityGroupIdLists;
   /// The subnet ID used by the connection.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [ConnectionPhysicalConnectionRequirements].
   /// [availabilityZone] The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
@@ -29,9 +30,9 @@ class ConnectionPhysicalConnectionRequirements {
 
   factory ConnectionPhysicalConnectionRequirements.fromMap(Map<String, dynamic> map) {
     return ConnectionPhysicalConnectionRequirements(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      securityGroupIdLists: map['securityGroupIdLists'] == null ? null : (map['securityGroupIdLists'] as List).cast<String>(),
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      securityGroupIdLists: map['securityGroupIdLists'] == null ? null : ((map['securityGroupIdLists'] as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

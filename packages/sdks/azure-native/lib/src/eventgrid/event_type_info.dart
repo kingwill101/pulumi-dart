@@ -8,9 +8,9 @@ class EventTypeInfo {
   /// A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event.
   /// An example of a valid inline event name is "Contoso.OrderCreated".
   /// The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type.
-  final Map<String, InlineEventProperties>? inlineEventTypes;
+  final pulumi.Input<Map<String, InlineEventProperties>>? inlineEventTypes;
   /// The kind of event type used.
-  final String? kind;
+  final pulumi.Input<String>? kind;
 
   /// Creates a new [EventTypeInfo].
   /// [inlineEventTypes] A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event.
@@ -22,15 +22,15 @@ class EventTypeInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inlineEventTypes': ?inlineEventTypes == null ? null : pulumi.Input.encodeMapValues<InlineEventProperties, Map<String, dynamic>>(inlineEventTypes!, (value) => value.toMap()),
+      'inlineEventTypes': ?pulumi.Input.mapOptionalInputValue<Map<String, InlineEventProperties>, Map<String, Map<String, dynamic>>>(inlineEventTypes, (value) => pulumi.Input.encodeMapValues<InlineEventProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
     };
   }
 
   factory EventTypeInfo.fromMap(Map<String, dynamic> map) {
     return EventTypeInfo(
-      inlineEventTypes: map['inlineEventTypes'] == null ? null : pulumi.Input.decodeMapValues<InlineEventProperties>(map['inlineEventTypes'], (value) => InlineEventProperties.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      inlineEventTypes: map['inlineEventTypes'] == null ? null : (pulumi.Input.decodeMapValues<InlineEventProperties>(map['inlineEventTypes'], (value) => InlineEventProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
     );
   }
 }

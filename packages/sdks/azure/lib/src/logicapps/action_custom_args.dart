@@ -21,13 +21,10 @@ class ActionCustomArgs {
   /// [logicAppId] Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ActionCustomArgs({
-    required pulumi.Output<String> body,
-    required pulumi.Output<String> logicAppId,
-    pulumi.Output<String>? name,
-  }) :
-      body = pulumi.Input.asInput<String>(body),
-      logicAppId = pulumi.Input.asInput<String>(logicAppId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.body,
+    required this.logicAppId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ActionCustomArgs {
 
   factory ActionCustomArgs.fromMap(Map<String, dynamic> map) {
     return ActionCustomArgs(
-      body: pulumi.Output.create<String>(map['body'] as String),
-      logicAppId: pulumi.Output.create<String>(map['logicAppId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      body: (map['body'] as String).input(),
+      logicAppId: (map['logicAppId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

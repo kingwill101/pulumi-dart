@@ -41,31 +41,19 @@ class AgreementState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   AgreementState({
-    pulumi.Output<String>? accessRole,
-    pulumi.Output<String>? agreementId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? baseDirectory,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? localProfileId,
-    pulumi.Output<String>? partnerProfileId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accessRole = pulumi.Input.asOptionalInput<String>(accessRole),
-      agreementId = pulumi.Input.asOptionalInput<String>(agreementId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      baseDirectory = pulumi.Input.asOptionalInput<String>(baseDirectory),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      localProfileId = pulumi.Input.asOptionalInput<String>(localProfileId),
-      partnerProfileId = pulumi.Input.asOptionalInput<String>(partnerProfileId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accessRole,
+    this.agreementId,
+    this.arn,
+    this.baseDirectory,
+    this.description,
+    this.localProfileId,
+    this.partnerProfileId,
+    this.region,
+    this.serverId,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,18 +74,18 @@ class AgreementState {
 
   factory AgreementState.fromMap(Map<String, dynamic> map) {
     return AgreementState(
-      accessRole: map['accessRole'] == null ? null : pulumi.Output.create<String>(map['accessRole'] as String),
-      agreementId: map['agreementId'] == null ? null : pulumi.Output.create<String>(map['agreementId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      baseDirectory: map['baseDirectory'] == null ? null : pulumi.Output.create<String>(map['baseDirectory'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      localProfileId: map['localProfileId'] == null ? null : pulumi.Output.create<String>(map['localProfileId'] as String),
-      partnerProfileId: map['partnerProfileId'] == null ? null : pulumi.Output.create<String>(map['partnerProfileId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accessRole: map['accessRole'] == null ? null : (map['accessRole'] as String).input(),
+      agreementId: map['agreementId'] == null ? null : (map['agreementId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      baseDirectory: map['baseDirectory'] == null ? null : (map['baseDirectory'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      localProfileId: map['localProfileId'] == null ? null : (map['localProfileId'] as String).input(),
+      partnerProfileId: map['partnerProfileId'] == null ? null : (map['partnerProfileId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetFavoriteProcessArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   GetFavoriteProcessArgs({
-    required pulumi.Output<String> favoriteProcessResourceName,
-    required pulumi.Output<String> packageName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      favoriteProcessResourceName = pulumi.Input.asInput<String>(favoriteProcessResourceName),
-      packageName = pulumi.Input.asInput<String>(packageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    required this.favoriteProcessResourceName,
+    required this.packageName,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFavoriteProcessArgs {
 
   factory GetFavoriteProcessArgs.fromMap(Map<String, dynamic> map) {
     return GetFavoriteProcessArgs(
-      favoriteProcessResourceName: pulumi.Output.create<String>(map['favoriteProcessResourceName'] as String),
-      packageName: pulumi.Output.create<String>(map['packageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      favoriteProcessResourceName: (map['favoriteProcessResourceName'] as String).input(),
+      packageName: (map['packageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

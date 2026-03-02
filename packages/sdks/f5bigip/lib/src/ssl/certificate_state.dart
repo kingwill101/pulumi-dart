@@ -28,21 +28,14 @@ class CertificateState {
   /// [ocsp] Specifies the OCSP responder.
   /// [partition] Partition of ssl certificate
   CertificateState({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? fullPath,
-    pulumi.Output<String>? issuerCert,
-    pulumi.Output<String>? monitoringType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ocsp,
-    pulumi.Output<String>? partition,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      fullPath = pulumi.Input.asOptionalInput<String>(fullPath),
-      issuerCert = pulumi.Input.asOptionalInput<String>(issuerCert),
-      monitoringType = pulumi.Input.asOptionalInput<String>(monitoringType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ocsp = pulumi.Input.asOptionalInput<String>(ocsp),
-      partition = pulumi.Input.asOptionalInput<String>(partition);
+    this.content,
+    this.fullPath,
+    this.issuerCert,
+    this.monitoringType,
+    this.name,
+    this.ocsp,
+    this.partition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      fullPath: map['fullPath'] == null ? null : pulumi.Output.create<String>(map['fullPath'] as String),
-      issuerCert: map['issuerCert'] == null ? null : pulumi.Output.create<String>(map['issuerCert'] as String),
-      monitoringType: map['monitoringType'] == null ? null : pulumi.Output.create<String>(map['monitoringType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ocsp: map['ocsp'] == null ? null : pulumi.Output.create<String>(map['ocsp'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
+      issuerCert: map['issuerCert'] == null ? null : (map['issuerCert'] as String).input(),
+      monitoringType: map['monitoringType'] == null ? null : (map['monitoringType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ocsp: map['ocsp'] == null ? null : (map['ocsp'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
     );
   }
 }

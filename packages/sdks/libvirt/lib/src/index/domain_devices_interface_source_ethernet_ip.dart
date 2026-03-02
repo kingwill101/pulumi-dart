@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceEthernetIp {
   /// Specifies the IP address assigned to the interface.
-  final String address;
+  final pulumi.Input<String> address;
   /// Defines the address family (IPv4 or IPv6) for the interface's IP configuration.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// Sets the peer IP address for communication over the interface.
-  final String? peer;
+  final pulumi.Input<String>? peer;
   /// Configures the prefix length for the IP address subnet.
-  final double? prefix;
+  final pulumi.Input<double>? prefix;
 
   /// Creates a new [DomainDevicesInterfaceSourceEthernetIp].
   /// [address] Specifies the IP address assigned to the interface.
@@ -34,10 +35,10 @@ class DomainDevicesInterfaceSourceEthernetIp {
 
   factory DomainDevicesInterfaceSourceEthernetIp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceEthernetIp(
-      address: map['address'] as String,
-      family: map['family'] == null ? null : map['family'] as String,
-      peer: map['peer'] == null ? null : map['peer'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as double,
+      address: (map['address'] as String).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      peer: map['peer'] == null ? null : (map['peer'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
     );
   }
 }

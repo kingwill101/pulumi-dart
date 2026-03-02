@@ -22,15 +22,11 @@ class GetAlertsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project Name
   GetAlertsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> projectName,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      projectName = pulumi.Input.asInput<String>(projectName);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    required this.projectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAlertsArgs {
 
   factory GetAlertsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
     );
   }
 }

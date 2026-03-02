@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemIdMapUid {
   /// Specifies the number of group IDs to be mapped in the filesystem.
-  final double count;
+  final pulumi.Input<double> count;
   /// Sets the starting group ID for mapping in the filesystem.
-  final double start;
+  final pulumi.Input<double> start;
   /// Defines the target group ID for the mapping in the filesystem.
-  final double target;
+  final pulumi.Input<double> target;
 
   /// Creates a new [DomainDevicesFilesystemIdMapUid].
   /// [count] Specifies the number of group IDs to be mapped in the filesystem.
@@ -29,9 +30,9 @@ class DomainDevicesFilesystemIdMapUid {
 
   factory DomainDevicesFilesystemIdMapUid.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemIdMapUid(
-      count: map['count'] as double,
-      start: map['start'] as double,
-      target: map['target'] as double,
+      count: (map['count'] as double).input(),
+      start: (map['start'] as double).input(),
+      target: (map['target'] as double).input(),
     );
   }
 }

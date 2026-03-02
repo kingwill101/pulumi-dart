@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_config_response.dart';
 
 /// Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
 class NodeGroupResponse {
   /// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The Node group resource name (https://aip.dev/122).
-  final String name;
+  final pulumi.Input<String> name;
   /// Optional. The node group instance group configuration.
-  final InstanceGroupConfigResponse nodeGroupConfig;
+  final pulumi.Input<InstanceGroupConfigResponse> nodeGroupConfig;
   /// Node group roles.
-  final List<String> roles;
+  final pulumi.Input<List<String>> roles;
 
   /// Creates a new [NodeGroupResponse].
   /// [labels] Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
@@ -29,17 +30,17 @@ class NodeGroupResponse {
     return <String, dynamic>{
       'labels': labels,
       'name': name,
-      'nodeGroupConfig': nodeGroupConfig.toMap(),
+      'nodeGroupConfig': pulumi.Input.mapInputValue<InstanceGroupConfigResponse, Map<String, dynamic>>(nodeGroupConfig, (value) => value.toMap()),
       'roles': roles,
     };
   }
 
   factory NodeGroupResponse.fromMap(Map<String, dynamic> map) {
     return NodeGroupResponse(
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      nodeGroupConfig: InstanceGroupConfigResponse.fromMap((map['nodeGroupConfig'] as Map).cast<String, dynamic>()),
-      roles: (map['roles'] as List).cast<String>(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      nodeGroupConfig: (InstanceGroupConfigResponse.fromMap((map['nodeGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      roles: ((map['roles'] as List).cast<String>()).input(),
     );
   }
 }

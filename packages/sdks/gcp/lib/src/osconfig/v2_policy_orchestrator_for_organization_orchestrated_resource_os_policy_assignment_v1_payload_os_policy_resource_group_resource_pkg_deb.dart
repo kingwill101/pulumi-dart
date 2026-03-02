@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_assignment_v1_payload_os_policy_resource_group_resource_pkg_deb_source.dart';
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb {
@@ -7,10 +8,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// - install when false: `dpkg -i package`
   /// - install when true: `apt-get update && apt-get -y install
   /// package.deb`
-  final bool? pullDeps;
+  final pulumi.Input<bool>? pullDeps;
   /// A remote or local file.
   /// Structure is documented below.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource source;
+  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource> source;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb].
   /// [pullDeps] Whether dependencies should also be installed.
@@ -23,14 +24,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'pullDeps': ?pullDeps,
-      'source': source.toMap(),
+      'source': pulumi.Input.mapInputValue<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb(
-      pullDeps: map['pullDeps'] == null ? null : map['pullDeps'] as bool,
-      source: V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps'] as bool).input(),
+      source: (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

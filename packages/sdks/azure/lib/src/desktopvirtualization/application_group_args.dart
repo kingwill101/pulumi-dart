@@ -37,25 +37,16 @@ class ApplicationGroupArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] Type of Virtual Desktop Application Group. Valid options are `RemoteApp` or `Desktop` application groups. Changing this forces a new resource to be created.
   ApplicationGroupArgs({
-    pulumi.Output<String>? defaultDesktopDisplayName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? friendlyName,
-    required pulumi.Output<String> hostPoolId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      defaultDesktopDisplayName = pulumi.Input.asOptionalInput<String>(defaultDesktopDisplayName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      hostPoolId = pulumi.Input.asInput<String>(hostPoolId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    this.defaultDesktopDisplayName,
+    this.description,
+    this.friendlyName,
+    required this.hostPoolId,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ApplicationGroupArgs {
 
   factory ApplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationGroupArgs(
-      defaultDesktopDisplayName: map['defaultDesktopDisplayName'] == null ? null : pulumi.Output.create<String>(map['defaultDesktopDisplayName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      hostPoolId: pulumi.Output.create<String>(map['hostPoolId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      defaultDesktopDisplayName: map['defaultDesktopDisplayName'] == null ? null : (map['defaultDesktopDisplayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      hostPoolId: (map['hostPoolId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

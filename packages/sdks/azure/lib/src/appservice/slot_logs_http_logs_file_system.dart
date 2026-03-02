@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SlotLogsHttpLogsFileSystem {
   /// The number of days to retain logs for.
-  final int retentionInDays;
+  final pulumi.Input<int> retentionInDays;
   /// The maximum size in megabytes that HTTP log files can use before being removed.
-  final int retentionInMb;
+  final pulumi.Input<int> retentionInMb;
 
   /// Creates a new [SlotLogsHttpLogsFileSystem].
   /// [retentionInDays] The number of days to retain logs for.
@@ -24,8 +25,8 @@ class SlotLogsHttpLogsFileSystem {
 
   factory SlotLogsHttpLogsFileSystem.fromMap(Map<String, dynamic> map) {
     return SlotLogsHttpLogsFileSystem(
-      retentionInDays: map['retentionInDays'] as int,
-      retentionInMb: map['retentionInMb'] as int,
+      retentionInDays: (map['retentionInDays'] as int).input(),
+      retentionInMb: (map['retentionInMb'] as int).input(),
     );
   }
 }

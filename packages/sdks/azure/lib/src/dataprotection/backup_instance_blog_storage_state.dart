@@ -30,21 +30,14 @@ class BackupInstanceBlogStorageState {
   /// [storageAccountId] The ID of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Blob Storage should exist. Changing this forces a new Backup Instance Blob Storage to be created.
   BackupInstanceBlogStorageState({
-    pulumi.Output<String>? backupPolicyId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protectionState,
-    pulumi.Output<List<String>>? storageAccountContainerNames,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? vaultId,
-  }) :
-      backupPolicyId = pulumi.Input.asOptionalInput<String>(backupPolicyId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectionState = pulumi.Input.asOptionalInput<String>(protectionState),
-      storageAccountContainerNames = pulumi.Input.asOptionalInput<List<String>>(storageAccountContainerNames),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.backupPolicyId,
+    this.location,
+    this.name,
+    this.protectionState,
+    this.storageAccountContainerNames,
+    this.storageAccountId,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class BackupInstanceBlogStorageState {
 
   factory BackupInstanceBlogStorageState.fromMap(Map<String, dynamic> map) {
     return BackupInstanceBlogStorageState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectionState: map['protectionState'] == null ? null : pulumi.Output.create<String>(map['protectionState'] as String),
-      storageAccountContainerNames: map['storageAccountContainerNames'] == null ? null : pulumi.Output.create<List<String>>((map['storageAccountContainerNames'] as List).cast<String>()),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
+      storageAccountContainerNames: map['storageAccountContainerNames'] == null ? null : ((map['storageAccountContainerNames'] as List).cast<String>()).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

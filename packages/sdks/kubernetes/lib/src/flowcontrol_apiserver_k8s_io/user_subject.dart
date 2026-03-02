@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// UserSubject holds detailed information for user-kind subject.
 class UserSubject {
   /// `name` is the username that matches, or "*" to match all usernames. Required.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [UserSubject].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
@@ -20,7 +21,7 @@ class UserSubject {
 
   factory UserSubject.fromMap(Map<String, dynamic> map) {
     return UserSubject(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

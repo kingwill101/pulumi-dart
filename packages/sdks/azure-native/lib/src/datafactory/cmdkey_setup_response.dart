@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_key_vault_secret_reference_response.dart';
 
 /// The custom setup of running cmdkey commands.
 class CmdkeySetupResponse {
   /// The password of data source access.
-  final AzureKeyVaultSecretReferenceResponse password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse> password;
   /// The server name of data source access. Type: string.
-  final dynamic targetName;
+  final pulumi.Input<dynamic> targetName;
   /// The type of custom setup.
   /// Expected value is 'CmdkeySetup'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The user name of data source access. Type: string.
-  final dynamic userName;
+  final pulumi.Input<dynamic> userName;
 
   /// Creates a new [CmdkeySetupResponse].
   /// [password] The password of data source access.
@@ -28,7 +29,7 @@ class CmdkeySetupResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'password': password.toMap(),
+      'password': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'targetName': targetName,
       'type': type,
       'userName': userName,
@@ -37,10 +38,10 @@ class CmdkeySetupResponse {
 
   factory CmdkeySetupResponse.fromMap(Map<String, dynamic> map) {
     return CmdkeySetupResponse(
-      password: AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      targetName: map['targetName'],
-      type: map['type'] as String,
-      userName: map['userName'],
+      password: (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      targetName: (map['targetName']).input(),
+      type: (map['type'] as String).input(),
+      userName: (map['userName']).input(),
     );
   }
 }

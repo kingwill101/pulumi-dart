@@ -5,21 +5,21 @@ import 'get_route_entries_entry_conflict.dart';
 
 class GetRouteEntriesEntry {
   /// The destination CIDR block of the route entry to query.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// A list of conflicted Route Entries. Each element contains the following attributes:
-  final List<GetRouteEntriesEntryConflict> conflicts;
+  final pulumi.Input<List<GetRouteEntriesEntryConflict>> conflicts;
   /// ID of the next hop.
-  final String nextHopId;
+  final pulumi.Input<String> nextHopId;
   /// Type of the next hop, including "Instance", "HaVip" and "RouterInterface".
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
   /// Whether to allow the route entry to be published or removed to or from CEN.
-  final bool operationalMode;
+  final pulumi.Input<bool> operationalMode;
   /// The publish status of the route entry in CEN, including "Published" and "NonPublished".
-  final String publishStatus;
+  final pulumi.Input<String> publishStatus;
   /// ID of the route table of the VPC or VBR.
-  final String routeTableId;
+  final pulumi.Input<String> routeTableId;
   /// Type of the route entry, including "System", "Custom" and "BGP".
-  final String routeType;
+  final pulumi.Input<String> routeType;
 
   /// Creates a new [GetRouteEntriesEntry].
   /// [cidrBlock] The destination CIDR block of the route entry to query.
@@ -44,7 +44,7 @@ class GetRouteEntriesEntry {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cidrBlock': cidrBlock,
-      'conflicts': pulumi.Input.encodeList<GetRouteEntriesEntryConflict, Map<String, dynamic>>(conflicts, (value) => value.toMap()),
+      'conflicts': pulumi.Input.mapInputValue<List<GetRouteEntriesEntryConflict>, List<Map<String, dynamic>>>(conflicts, (value) => pulumi.Input.encodeList<GetRouteEntriesEntryConflict, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nextHopId': nextHopId,
       'nextHopType': nextHopType,
       'operationalMode': operationalMode,
@@ -56,14 +56,14 @@ class GetRouteEntriesEntry {
 
   factory GetRouteEntriesEntry.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesEntry(
-      cidrBlock: map['cidrBlock'] as String,
-      conflicts: pulumi.Input.decodeList<GetRouteEntriesEntryConflict>(map['conflicts'], (value) => GetRouteEntriesEntryConflict.fromMap((value as Map).cast<String, dynamic>())),
-      nextHopId: map['nextHopId'] as String,
-      nextHopType: map['nextHopType'] as String,
-      operationalMode: map['operationalMode'] as bool,
-      publishStatus: map['publishStatus'] as String,
-      routeTableId: map['routeTableId'] as String,
-      routeType: map['routeType'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      conflicts: (pulumi.Input.decodeList<GetRouteEntriesEntryConflict>(map['conflicts'], (value) => GetRouteEntriesEntryConflict.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nextHopId: (map['nextHopId'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
+      operationalMode: (map['operationalMode'] as bool).input(),
+      publishStatus: (map['publishStatus'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      routeType: (map['routeType'] as String).input(),
     );
   }
 }

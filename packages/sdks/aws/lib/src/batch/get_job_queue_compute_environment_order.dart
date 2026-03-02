@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobQueueComputeEnvironmentOrder {
-  final String computeEnvironment;
-  final int order;
+  final pulumi.Input<String> computeEnvironment;
+  final pulumi.Input<int> order;
 
   /// Creates a new [GetJobQueueComputeEnvironmentOrder].
   /// [computeEnvironment] Required.
@@ -22,8 +23,8 @@ class GetJobQueueComputeEnvironmentOrder {
 
   factory GetJobQueueComputeEnvironmentOrder.fromMap(Map<String, dynamic> map) {
     return GetJobQueueComputeEnvironmentOrder(
-      computeEnvironment: map['computeEnvironment'] as String,
-      order: map['order'] as int,
+      computeEnvironment: (map['computeEnvironment'] as String).input(),
+      order: (map['order'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetKeyVersionsArgs {
   /// [keyId] The id of kms key.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetKeyVersionsArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> keyId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    required this.keyId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKeyVersionsArgs {
 
   factory GetKeyVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyVersionsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyId: (map['keyId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

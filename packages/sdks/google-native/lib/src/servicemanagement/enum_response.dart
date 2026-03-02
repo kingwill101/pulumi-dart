@@ -8,17 +8,17 @@ import 'source_context_response.dart';
 /// Enum type definition.
 class EnumResponse {
   /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
-  final String edition;
+  final pulumi.Input<String> edition;
   /// Enum value definitions.
-  final List<EnumValueResponse> enumvalue;
+  final pulumi.Input<List<EnumValueResponse>> enumvalue;
   /// Enum type name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Protocol buffer options.
-  final List<OptionResponse> options;
+  final pulumi.Input<List<OptionResponse>> options;
   /// The source context.
-  final SourceContextResponse sourceContext;
+  final pulumi.Input<SourceContextResponse> sourceContext;
   /// The source syntax.
-  final String syntax;
+  final pulumi.Input<String> syntax;
 
   /// Creates a new [EnumResponse].
   /// [edition] The source edition string, only valid when syntax is SYNTAX_EDITIONS.
@@ -39,22 +39,22 @@ class EnumResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'edition': edition,
-      'enumvalue': pulumi.Input.encodeList<EnumValueResponse, Map<String, dynamic>>(enumvalue, (value) => value.toMap()),
+      'enumvalue': pulumi.Input.mapInputValue<List<EnumValueResponse>, List<Map<String, dynamic>>>(enumvalue, (value) => pulumi.Input.encodeList<EnumValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
-      'options': pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
-      'sourceContext': sourceContext.toMap(),
+      'options': pulumi.Input.mapInputValue<List<OptionResponse>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceContext': pulumi.Input.mapInputValue<SourceContextResponse, Map<String, dynamic>>(sourceContext, (value) => value.toMap()),
       'syntax': syntax,
     };
   }
 
   factory EnumResponse.fromMap(Map<String, dynamic> map) {
     return EnumResponse(
-      edition: map['edition'] as String,
-      enumvalue: pulumi.Input.decodeList<EnumValueResponse>(map['enumvalue'], (value) => EnumValueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      options: pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceContext: SourceContextResponse.fromMap((map['sourceContext'] as Map).cast<String, dynamic>()),
-      syntax: map['syntax'] as String,
+      edition: (map['edition'] as String).input(),
+      enumvalue: (pulumi.Input.decodeList<EnumValueResponse>(map['enumvalue'], (value) => EnumValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      options: (pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceContext: (SourceContextResponse.fromMap((map['sourceContext'] as Map).cast<String, dynamic>())).input(),
+      syntax: (map['syntax'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings specific to keys that can be used for WAF (Web Application Firewall).
 class GoogleCloudRecaptchaenterpriseV1WafSettingsResponse {
   /// The WAF feature for which this key is enabled.
-  final String wafFeature;
+  final pulumi.Input<String> wafFeature;
   /// The WAF service that uses this key.
-  final String wafService;
+  final pulumi.Input<String> wafService;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1WafSettingsResponse].
   /// [wafFeature] The WAF feature for which this key is enabled.
@@ -25,8 +26,8 @@ class GoogleCloudRecaptchaenterpriseV1WafSettingsResponse {
 
   factory GoogleCloudRecaptchaenterpriseV1WafSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1WafSettingsResponse(
-      wafFeature: map['wafFeature'] as String,
-      wafService: map['wafService'] as String,
+      wafFeature: (map['wafFeature'] as String).input(),
+      wafService: (map['wafService'] as String).input(),
     );
   }
 }

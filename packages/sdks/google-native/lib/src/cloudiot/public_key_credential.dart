@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_key_credential_format.dart';
 
 /// A public key format and data.
 class PublicKeyCredential {
   /// The format of the key.
-  final PublicKeyCredentialFormat? format;
+  final pulumi.Input<PublicKeyCredentialFormat>? format;
   /// The key data.
-  final String? key;
+  final pulumi.Input<String>? key;
 
   /// Creates a new [PublicKeyCredential].
   /// [format] The format of the key.
@@ -19,15 +20,15 @@ class PublicKeyCredential {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'format': ?format == null ? null : format!.value,
+      'format': ?pulumi.Input.mapOptionalInputValue<PublicKeyCredentialFormat, String>(format, (value) => value.value),
       'key': ?key,
     };
   }
 
   factory PublicKeyCredential.fromMap(Map<String, dynamic> map) {
     return PublicKeyCredential(
-      format: map['format'] == null ? null : PublicKeyCredentialFormat.fromValue(map['format'] as String),
-      key: map['key'] == null ? null : map['key'] as String,
+      format: map['format'] == null ? null : (PublicKeyCredentialFormat.fromValue(map['format'] as String)).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
     );
   }
 }

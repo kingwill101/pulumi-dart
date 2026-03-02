@@ -22,15 +22,11 @@ class ExtensionMonitoringStatusArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceId] The cluster monitor workspace ID.
   ExtensionMonitoringStatusArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? primaryKey,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    required this.clusterName,
+    this.primaryKey,
+    required this.resourceGroupName,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ExtensionMonitoringStatusArgs {
 
   factory ExtensionMonitoringStatusArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionMonitoringStatusArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

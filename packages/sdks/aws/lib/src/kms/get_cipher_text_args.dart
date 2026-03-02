@@ -22,15 +22,11 @@ class GetCipherTextArgs {
   /// [plaintext] Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetCipherTextArgs({
-    pulumi.Output<Map<String, String>>? context,
-    required pulumi.Output<String> keyId,
-    required pulumi.Output<String> plaintext,
-    pulumi.Output<String>? region,
-  }) :
-      context = pulumi.Input.asOptionalInput<Map<String, String>>(context),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      plaintext = pulumi.Input.asInput<String>(plaintext),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.context,
+    required this.keyId,
+    required this.plaintext,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCipherTextArgs {
 
   factory GetCipherTextArgs.fromMap(Map<String, dynamic> map) {
     return GetCipherTextArgs(
-      context: map['context'] == null ? null : pulumi.Output.create<Map<String, String>>((map['context'] as Map).cast<String, String>()),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      plaintext: pulumi.Output.create<String>(map['plaintext'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      context: map['context'] == null ? null : ((map['context'] as Map).cast<String, String>()).input(),
+      keyId: (map['keyId'] as String).input(),
+      plaintext: (map['plaintext'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

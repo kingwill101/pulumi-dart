@@ -22,15 +22,11 @@ class GetIngressesArgs {
   /// [namespaceId] The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetIngressesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.enableDetails,
+    this.ids,
+    required this.namespaceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetIngressesArgs {
 
   factory GetIngressesArgs.fromMap(Map<String, dynamic> map) {
     return GetIngressesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

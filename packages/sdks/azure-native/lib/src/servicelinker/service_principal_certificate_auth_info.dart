@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The authentication info when authType is servicePrincipal certificate
 class ServicePrincipalCertificateAuthInfo {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final String? authMode;
+  final pulumi.Input<String>? authMode;
   /// The authentication type.
   /// Expected value is 'servicePrincipalCertificate'.
-  final String authType;
+  final pulumi.Input<String> authType;
   /// ServicePrincipal certificate for servicePrincipal auth.
-  final String certificate;
+  final pulumi.Input<String> certificate;
   /// Application clientId for servicePrincipal auth.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final String? deleteOrUpdateBehavior;
+  final pulumi.Input<String>? deleteOrUpdateBehavior;
   /// Principal Id for servicePrincipal auth.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// Optional, this value specifies the Azure roles to be assigned. Automatically
-  final List<String>? roles;
+  final pulumi.Input<List<String>>? roles;
 
   /// Creates a new [ServicePrincipalCertificateAuthInfo].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
@@ -51,13 +52,13 @@ class ServicePrincipalCertificateAuthInfo {
 
   factory ServicePrincipalCertificateAuthInfo.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalCertificateAuthInfo(
-      authMode: map['authMode'] == null ? null : map['authMode'] as String,
-      authType: map['authType'] as String,
-      certificate: map['certificate'] as String,
-      clientId: map['clientId'] as String,
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : map['deleteOrUpdateBehavior'] as String,
-      principalId: map['principalId'] as String,
-      roles: map['roles'] == null ? null : (map['roles'] as List).cast<String>(),
+      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authType: (map['authType'] as String).input(),
+      certificate: (map['certificate'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
     );
   }
 }

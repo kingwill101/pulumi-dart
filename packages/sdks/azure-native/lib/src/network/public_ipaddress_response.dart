@@ -13,55 +13,55 @@ import 'sub_resource_response.dart';
 /// Public IP address resource.
 class PublicIPAddressResponse {
   /// The DDoS protection custom policy associated with the public IP address.
-  final DdosSettingsResponse? ddosSettings;
+  final pulumi.Input<DdosSettingsResponse>? ddosSettings;
   /// Specify what happens to the public IP address when the VM using it is deleted
-  final String? deleteOption;
+  final pulumi.Input<String>? deleteOption;
   /// The FQDN of the DNS record associated with the public IP address.
-  final PublicIPAddressDnsSettingsResponse? dnsSettings;
+  final pulumi.Input<PublicIPAddressDnsSettingsResponse>? dnsSettings;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The extended location of the public ip address.
-  final ExtendedLocationResponse? extendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The idle timeout of the public IP address.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// The IP address associated with the public IP address resource.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The IP configuration associated with the public IP address.
-  final IPConfigurationResponse ipConfiguration;
+  final pulumi.Input<IPConfigurationResponse> ipConfiguration;
   /// The list of tags associated with the public IP address.
-  final List<IpTagResponse>? ipTags;
+  final pulumi.Input<List<IpTagResponse>>? ipTags;
   /// The linked public IP address of the public IP address resource.
-  final PublicIPAddressResponse? linkedPublicIPAddress;
+  final pulumi.Input<PublicIPAddressResponse>? linkedPublicIPAddress;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Migration phase of Public IP Address.
-  final String? migrationPhase;
+  final pulumi.Input<String>? migrationPhase;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The NatGateway for the Public IP address.
-  final NatGatewayResponse? natGateway;
+  final pulumi.Input<NatGatewayResponse>? natGateway;
   /// The provisioning state of the public IP address resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The public IP address version.
-  final String? publicIPAddressVersion;
+  final pulumi.Input<String>? publicIPAddressVersion;
   /// The public IP address allocation method.
-  final String? publicIPAllocationMethod;
+  final pulumi.Input<String>? publicIPAllocationMethod;
   /// The Public IP Prefix this Public IP Address should be allocated from.
-  final SubResourceResponse? publicIPPrefix;
+  final pulumi.Input<SubResourceResponse>? publicIPPrefix;
   /// The resource GUID property of the public IP address resource.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
   /// The service public IP address of the public IP address resource.
-  final PublicIPAddressResponse? servicePublicIPAddress;
+  final pulumi.Input<PublicIPAddressResponse>? servicePublicIPAddress;
   /// The public IP address SKU.
-  final PublicIPAddressSkuResponse? sku;
+  final pulumi.Input<PublicIPAddressSkuResponse>? sku;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
-  final List<String>? zones;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [PublicIPAddressResponse].
   /// [ddosSettings] The DDoS protection custom policy associated with the public IP address.
@@ -119,28 +119,28 @@ class PublicIPAddressResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ddosSettings': ?ddosSettings == null ? null : ddosSettings!.toMap(),
+      'ddosSettings': ?pulumi.Input.mapOptionalInputValue<DdosSettingsResponse, Map<String, dynamic>>(ddosSettings, (value) => value.toMap()),
       'deleteOption': ?deleteOption,
-      'dnsSettings': ?dnsSettings == null ? null : dnsSettings!.toMap(),
+      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressDnsSettingsResponse, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
       'etag': etag,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'id': ?id,
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
       'ipAddress': ?ipAddress,
-      'ipConfiguration': ipConfiguration.toMap(),
-      'ipTags': ?ipTags == null ? null : pulumi.Input.encodeList<IpTagResponse, Map<String, dynamic>>(ipTags!, (value) => value.toMap()),
-      'linkedPublicIPAddress': ?linkedPublicIPAddress == null ? null : linkedPublicIPAddress!.toMap(),
+      'ipConfiguration': pulumi.Input.mapInputValue<IPConfigurationResponse, Map<String, dynamic>>(ipConfiguration, (value) => value.toMap()),
+      'ipTags': ?pulumi.Input.mapOptionalInputValue<List<IpTagResponse>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<IpTagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'linkedPublicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressResponse, Map<String, dynamic>>(linkedPublicIPAddress, (value) => value.toMap()),
       'location': ?location,
       'migrationPhase': ?migrationPhase,
       'name': name,
-      'natGateway': ?natGateway == null ? null : natGateway!.toMap(),
+      'natGateway': ?pulumi.Input.mapOptionalInputValue<NatGatewayResponse, Map<String, dynamic>>(natGateway, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicIPAddressVersion': ?publicIPAddressVersion,
       'publicIPAllocationMethod': ?publicIPAllocationMethod,
-      'publicIPPrefix': ?publicIPPrefix == null ? null : publicIPPrefix!.toMap(),
+      'publicIPPrefix': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(publicIPPrefix, (value) => value.toMap()),
       'resourceGuid': resourceGuid,
-      'servicePublicIPAddress': ?servicePublicIPAddress == null ? null : servicePublicIPAddress!.toMap(),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'servicePublicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressResponse, Map<String, dynamic>>(servicePublicIPAddress, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
       'type': type,
       'zones': ?zones,
@@ -149,31 +149,31 @@ class PublicIPAddressResponse {
 
   factory PublicIPAddressResponse.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressResponse(
-      ddosSettings: map['ddosSettings'] == null ? null : DdosSettingsResponse.fromMap((map['ddosSettings'] as Map).cast<String, dynamic>()),
-      deleteOption: map['deleteOption'] == null ? null : map['deleteOption'] as String,
-      dnsSettings: map['dnsSettings'] == null ? null : PublicIPAddressDnsSettingsResponse.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      ipConfiguration: IPConfigurationResponse.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>()),
-      ipTags: map['ipTags'] == null ? null : pulumi.Input.decodeList<IpTagResponse>(map['ipTags'], (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      linkedPublicIPAddress: map['linkedPublicIPAddress'] == null ? null : PublicIPAddressResponse.fromMap((map['linkedPublicIPAddress'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
-      migrationPhase: map['migrationPhase'] == null ? null : map['migrationPhase'] as String,
-      name: map['name'] as String,
-      natGateway: map['natGateway'] == null ? null : NatGatewayResponse.fromMap((map['natGateway'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : map['publicIPAddressVersion'] as String,
-      publicIPAllocationMethod: map['publicIPAllocationMethod'] == null ? null : map['publicIPAllocationMethod'] as String,
-      publicIPPrefix: map['publicIPPrefix'] == null ? null : SubResourceResponse.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>()),
-      resourceGuid: map['resourceGuid'] as String,
-      servicePublicIPAddress: map['servicePublicIPAddress'] == null ? null : PublicIPAddressResponse.fromMap((map['servicePublicIPAddress'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : PublicIPAddressSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      ddosSettings: map['ddosSettings'] == null ? null : (DdosSettingsResponse.fromMap((map['ddosSettings'] as Map).cast<String, dynamic>())).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (PublicIPAddressDnsSettingsResponse.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      etag: (map['etag'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipConfiguration: (IPConfigurationResponse.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<IpTagResponse>(map['ipTags'], (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedPublicIPAddress: map['linkedPublicIPAddress'] == null ? null : (PublicIPAddressResponse.fromMap((map['linkedPublicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      migrationPhase: map['migrationPhase'] == null ? null : (map['migrationPhase'] as String).input(),
+      name: (map['name'] as String).input(),
+      natGateway: map['natGateway'] == null ? null : (NatGatewayResponse.fromMap((map['natGateway'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
+      publicIPAllocationMethod: map['publicIPAllocationMethod'] == null ? null : (map['publicIPAllocationMethod'] as String).input(),
+      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResourceResponse.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>())).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
+      servicePublicIPAddress: map['servicePublicIPAddress'] == null ? null : (PublicIPAddressResponse.fromMap((map['servicePublicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (PublicIPAddressSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

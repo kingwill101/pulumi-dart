@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AddressBookEcsTag {
   /// The key of ECS tag that to be matched.
-  final String? tagKey;
+  final pulumi.Input<String>? tagKey;
   /// The value of ECS tag that to be matched.
-  final String? tagValue;
+  final pulumi.Input<String>? tagValue;
 
   /// Creates a new [AddressBookEcsTag].
   /// [tagKey] The key of ECS tag that to be matched.
@@ -24,8 +25,8 @@ class AddressBookEcsTag {
 
   factory AddressBookEcsTag.fromMap(Map<String, dynamic> map) {
     return AddressBookEcsTag(
-      tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
-      tagValue: map['tagValue'] == null ? null : map['tagValue'] as String,
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
     );
   }
 }

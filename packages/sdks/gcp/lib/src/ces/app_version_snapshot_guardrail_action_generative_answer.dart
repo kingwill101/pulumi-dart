@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotGuardrailActionGenerativeAnswer {
   /// (Output)
   /// The prompt definition. If not set, default prompt will be used.
-  final String? prompt;
+  final pulumi.Input<String>? prompt;
 
   /// Creates a new [AppVersionSnapshotGuardrailActionGenerativeAnswer].
   /// [prompt] (Output)
@@ -20,7 +21,7 @@ class AppVersionSnapshotGuardrailActionGenerativeAnswer {
 
   factory AppVersionSnapshotGuardrailActionGenerativeAnswer.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionGenerativeAnswer(
-      prompt: map['prompt'] == null ? null : map['prompt'] as String,
+      prompt: map['prompt'] == null ? null : (map['prompt'] as String).input(),
     );
   }
 }

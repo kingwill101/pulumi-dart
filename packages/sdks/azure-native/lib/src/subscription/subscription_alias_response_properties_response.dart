@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Put subscription creation result properties.
 class SubscriptionAliasResponsePropertiesResponse {
   /// The accept ownership state of the resource.
-  final String acceptOwnershipState;
+  final pulumi.Input<String> acceptOwnershipState;
   /// Url to accept ownership of the subscription.
-  final String acceptOwnershipUrl;
+  final pulumi.Input<String> acceptOwnershipUrl;
   /// Billing scope of the subscription.
   /// For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}
   /// For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}
   /// For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
-  final String? billingScope;
+  final pulumi.Input<String>? billingScope;
   /// Created Time
-  final String? createdTime;
+  final pulumi.Input<String>? createdTime;
   /// The display name of the subscription.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The Management Group Id.
-  final String? managementGroupId;
+  final pulumi.Input<String>? managementGroupId;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Reseller Id
-  final String? resellerId;
+  final pulumi.Input<String>? resellerId;
   /// Newly created subscription Id.
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
   /// Owner Id of the subscription
-  final String? subscriptionOwnerId;
+  final pulumi.Input<String>? subscriptionOwnerId;
   /// Tags for the subscription
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The workload type of the subscription. It can be either Production or DevTest.
-  final String? workload;
+  final pulumi.Input<String>? workload;
 
   /// Creates a new [SubscriptionAliasResponsePropertiesResponse].
   /// [acceptOwnershipState] The accept ownership state of the resource.
@@ -78,18 +79,18 @@ class SubscriptionAliasResponsePropertiesResponse {
 
   factory SubscriptionAliasResponsePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionAliasResponsePropertiesResponse(
-      acceptOwnershipState: map['acceptOwnershipState'] as String,
-      acceptOwnershipUrl: map['acceptOwnershipUrl'] as String,
-      billingScope: map['billingScope'] == null ? null : map['billingScope'] as String,
-      createdTime: map['createdTime'] == null ? null : map['createdTime'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      managementGroupId: map['managementGroupId'] == null ? null : map['managementGroupId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resellerId: map['resellerId'] == null ? null : map['resellerId'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      subscriptionOwnerId: map['subscriptionOwnerId'] == null ? null : map['subscriptionOwnerId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      workload: map['workload'] == null ? null : map['workload'] as String,
+      acceptOwnershipState: (map['acceptOwnershipState'] as String).input(),
+      acceptOwnershipUrl: (map['acceptOwnershipUrl'] as String).input(),
+      billingScope: map['billingScope'] == null ? null : (map['billingScope'] as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resellerId: map['resellerId'] == null ? null : (map['resellerId'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      subscriptionOwnerId: map['subscriptionOwnerId'] == null ? null : (map['subscriptionOwnerId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
     );
   }
 }

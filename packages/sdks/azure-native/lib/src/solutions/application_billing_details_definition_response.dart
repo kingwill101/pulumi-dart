@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed application billing details definition.
 class ApplicationBillingDetailsDefinitionResponse {
   /// The managed application resource usage Id.
-  final String? resourceUsageId;
+  final pulumi.Input<String>? resourceUsageId;
 
   /// Creates a new [ApplicationBillingDetailsDefinitionResponse].
   /// [resourceUsageId] The managed application resource usage Id.
@@ -20,7 +21,7 @@ class ApplicationBillingDetailsDefinitionResponse {
 
   factory ApplicationBillingDetailsDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationBillingDetailsDefinitionResponse(
-      resourceUsageId: map['resourceUsageId'] == null ? null : map['resourceUsageId'] as String,
+      resourceUsageId: map['resourceUsageId'] == null ? null : (map['resourceUsageId'] as String).input(),
     );
   }
 }

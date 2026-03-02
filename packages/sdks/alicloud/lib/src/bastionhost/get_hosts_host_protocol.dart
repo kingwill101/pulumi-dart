@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHostsHostProtocol {
   /// Host fingerprint information, it is possible to uniquely identify a host.
-  final String hostFingerPrint;
+  final pulumi.Input<String> hostFingerPrint;
   /// Host the service port of the RDS.
-  final int port;
+  final pulumi.Input<int> port;
   /// The host uses the protocol name.
-  final String protocolName;
+  final pulumi.Input<String> protocolName;
 
   /// Creates a new [GetHostsHostProtocol].
   /// [hostFingerPrint] Host fingerprint information, it is possible to uniquely identify a host.
@@ -29,9 +30,9 @@ class GetHostsHostProtocol {
 
   factory GetHostsHostProtocol.fromMap(Map<String, dynamic> map) {
     return GetHostsHostProtocol(
-      hostFingerPrint: map['hostFingerPrint'] as String,
-      port: map['port'] as int,
-      protocolName: map['protocolName'] as String,
+      hostFingerPrint: (map['hostFingerPrint'] as String).input(),
+      port: (map['port'] as int).input(),
+      protocolName: (map['protocolName'] as String).input(),
     );
   }
 }

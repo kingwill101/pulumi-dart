@@ -25,17 +25,12 @@ class WorkspaceManagerMemberArgs {
   /// [workspaceManagerMemberName] The name of the workspace manager member
   /// [workspaceName] The name of the workspace.
   WorkspaceManagerMemberArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetWorkspaceResourceId,
-    required pulumi.Output<String> targetWorkspaceTenantId,
-    pulumi.Output<String>? workspaceManagerMemberName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetWorkspaceResourceId = pulumi.Input.asInput<String>(targetWorkspaceResourceId),
-      targetWorkspaceTenantId = pulumi.Input.asInput<String>(targetWorkspaceTenantId),
-      workspaceManagerMemberName = pulumi.Input.asOptionalInput<String>(workspaceManagerMemberName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.targetWorkspaceResourceId,
+    required this.targetWorkspaceTenantId,
+    this.workspaceManagerMemberName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WorkspaceManagerMemberArgs {
 
   factory WorkspaceManagerMemberArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagerMemberArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetWorkspaceResourceId: pulumi.Output.create<String>(map['targetWorkspaceResourceId'] as String),
-      targetWorkspaceTenantId: pulumi.Output.create<String>(map['targetWorkspaceTenantId'] as String),
-      workspaceManagerMemberName: map['workspaceManagerMemberName'] == null ? null : pulumi.Output.create<String>(map['workspaceManagerMemberName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetWorkspaceResourceId: (map['targetWorkspaceResourceId'] as String).input(),
+      targetWorkspaceTenantId: (map['targetWorkspaceTenantId'] as String).input(),
+      workspaceManagerMemberName: map['workspaceManagerMemberName'] == null ? null : (map['workspaceManagerMemberName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

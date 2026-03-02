@@ -17,11 +17,9 @@ class GetMachineImageIamPolicyArgs {
   /// [machineImage] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   GetMachineImageIamPolicyArgs({
-    required pulumi.Output<String> machineImage,
-    pulumi.Output<String>? project,
-  }) :
-      machineImage = pulumi.Input.asInput<String>(machineImage),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.machineImage,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetMachineImageIamPolicyArgs {
 
   factory GetMachineImageIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineImageIamPolicyArgs(
-      machineImage: pulumi.Output.create<String>(map['machineImage'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      machineImage: (map['machineImage'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

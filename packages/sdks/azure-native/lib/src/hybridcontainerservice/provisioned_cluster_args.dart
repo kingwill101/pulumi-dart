@@ -33,21 +33,14 @@ class ProvisionedClusterArgs {
   /// [resourceName] Parameter for the name of the provisioned cluster
   /// [tags] Resource tags.
   ProvisionedClusterArgs({
-    pulumi.Output<ProvisionedClustersExtendedLocation>? extendedLocation,
-    pulumi.Output<ProvisionedClusterIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<ProvisionedClustersAllProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<ProvisionedClustersExtendedLocation>(extendedLocation),
-      identity = pulumi.Input.asOptionalInput<ProvisionedClusterIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ProvisionedClustersAllProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extendedLocation,
+    this.identity,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ProvisionedClusterArgs {
 
   factory ProvisionedClusterArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedClusterArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ProvisionedClustersExtendedLocation>(ProvisionedClustersExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ProvisionedClusterIdentity>(ProvisionedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ProvisionedClustersAllProperties>(ProvisionedClustersAllProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: map['extendedLocation'] == null ? null : (ProvisionedClustersExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ProvisionedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ProvisionedClustersAllProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

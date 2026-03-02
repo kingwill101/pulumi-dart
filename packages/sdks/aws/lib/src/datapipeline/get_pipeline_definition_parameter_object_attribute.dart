@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPipelineDefinitionParameterObjectAttribute {
   /// Field identifier.
-  final String key;
+  final pulumi.Input<String> key;
   /// Field value, expressed as a String.
-  final String stringValue;
+  final pulumi.Input<String> stringValue;
 
   /// Creates a new [GetPipelineDefinitionParameterObjectAttribute].
   /// [key] Field identifier.
@@ -24,8 +25,8 @@ class GetPipelineDefinitionParameterObjectAttribute {
 
   factory GetPipelineDefinitionParameterObjectAttribute.fromMap(Map<String, dynamic> map) {
     return GetPipelineDefinitionParameterObjectAttribute(
-      key: map['key'] as String,
-      stringValue: map['stringValue'] as String,
+      key: (map['key'] as String).input(),
+      stringValue: (map['stringValue'] as String).input(),
     );
   }
 }

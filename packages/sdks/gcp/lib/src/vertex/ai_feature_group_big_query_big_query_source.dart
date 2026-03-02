@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiFeatureGroupBigQueryBigQuerySource {
   /// BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
-  final String inputUri;
+  final pulumi.Input<String> inputUri;
 
   /// Creates a new [AiFeatureGroupBigQueryBigQuerySource].
   /// [inputUri] BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
@@ -19,7 +20,7 @@ class AiFeatureGroupBigQueryBigQuerySource {
 
   factory AiFeatureGroupBigQueryBigQuerySource.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupBigQueryBigQuerySource(
-      inputUri: map['inputUri'] as String,
+      inputUri: (map['inputUri'] as String).input(),
     );
   }
 }

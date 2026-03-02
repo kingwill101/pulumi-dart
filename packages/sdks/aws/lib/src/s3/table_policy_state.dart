@@ -26,17 +26,12 @@ class TablePolicyState {
   /// [resourcePolicy] Amazon Web Services resource-based policy document in JSON format.
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
   TablePolicyState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourcePolicy,
-    pulumi.Output<String>? tableBucketArn,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourcePolicy = pulumi.Input.asOptionalInput<String>(resourcePolicy),
-      tableBucketArn = pulumi.Input.asOptionalInput<String>(tableBucketArn);
+    this.name,
+    this.namespace,
+    this.region,
+    this.resourcePolicy,
+    this.tableBucketArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class TablePolicyState {
 
   factory TablePolicyState.fromMap(Map<String, dynamic> map) {
     return TablePolicyState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourcePolicy: map['resourcePolicy'] == null ? null : pulumi.Output.create<String>(map['resourcePolicy'] as String),
-      tableBucketArn: map['tableBucketArn'] == null ? null : pulumi.Output.create<String>(map['tableBucketArn'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourcePolicy: map['resourcePolicy'] == null ? null : (map['resourcePolicy'] as String).input(),
+      tableBucketArn: map['tableBucketArn'] == null ? null : (map['tableBucketArn'] as String).input(),
     );
   }
 }

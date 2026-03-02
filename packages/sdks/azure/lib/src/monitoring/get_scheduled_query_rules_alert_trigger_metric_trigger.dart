@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetScheduledQueryRulesAlertTriggerMetricTrigger {
-  final String metricColumn;
-  final String metricTriggerType;
+  final pulumi.Input<String> metricColumn;
+  final pulumi.Input<String> metricTriggerType;
   /// Evaluation operation for rule.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Result or count threshold based on which rule should be triggered.
-  final double threshold;
+  final pulumi.Input<double> threshold;
 
   /// Creates a new [GetScheduledQueryRulesAlertTriggerMetricTrigger].
   /// [metricColumn] Required.
@@ -32,10 +33,10 @@ class GetScheduledQueryRulesAlertTriggerMetricTrigger {
 
   factory GetScheduledQueryRulesAlertTriggerMetricTrigger.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesAlertTriggerMetricTrigger(
-      metricColumn: map['metricColumn'] as String,
-      metricTriggerType: map['metricTriggerType'] as String,
-      operator: map['operator'] as String,
-      threshold: map['threshold'] as double,
+      metricColumn: (map['metricColumn'] as String).input(),
+      metricTriggerType: (map['metricTriggerType'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      threshold: (map['threshold'] as double).input(),
     );
   }
 }

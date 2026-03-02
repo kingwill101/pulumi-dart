@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deny_policy_rule_deny_rule.dart';
 
 class DenyPolicyRule {
   /// A deny rule in an IAM deny policy.
   /// Structure is documented below.
-  final DenyPolicyRuleDenyRule? denyRule;
+  final pulumi.Input<DenyPolicyRuleDenyRule>? denyRule;
   /// The description of the rule.
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [DenyPolicyRule].
   /// [denyRule] A deny rule in an IAM deny policy.
@@ -19,15 +20,15 @@ class DenyPolicyRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'denyRule': ?denyRule == null ? null : denyRule!.toMap(),
+      'denyRule': ?pulumi.Input.mapOptionalInputValue<DenyPolicyRuleDenyRule, Map<String, dynamic>>(denyRule, (value) => value.toMap()),
       'description': ?description,
     };
   }
 
   factory DenyPolicyRule.fromMap(Map<String, dynamic> map) {
     return DenyPolicyRule(
-      denyRule: map['denyRule'] == null ? null : DenyPolicyRuleDenyRule.fromMap((map['denyRule'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
+      denyRule: map['denyRule'] == null ? null : (DenyPolicyRuleDenyRule.fromMap((map['denyRule'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

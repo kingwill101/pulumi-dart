@@ -16,11 +16,9 @@ class GetPermissionSetsArgs {
   /// [instanceArn] ARN of the SSO Instance associated with the permission set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetPermissionSetsArgs({
-    required pulumi.Output<String> instanceArn,
-    pulumi.Output<String>? region,
-  }) :
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.instanceArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPermissionSetsArgs {
 
   factory GetPermissionSetsArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionSetsArgs(
-      instanceArn: pulumi.Output.create<String>(map['instanceArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      instanceArn: (map['instanceArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

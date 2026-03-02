@@ -29,19 +29,13 @@ class ConnectionState {
   /// [service] Provider peering service that is managing peering connectivity for a
   /// [updateOnCreationFail] When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
   ConnectionState({
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? peering,
-    pulumi.Output<List<String>>? reservedPeeringRanges,
-    pulumi.Output<String>? service,
-    pulumi.Output<bool>? updateOnCreationFail,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      peering = pulumi.Input.asOptionalInput<String>(peering),
-      reservedPeeringRanges = pulumi.Input.asOptionalInput<List<String>>(reservedPeeringRanges),
-      service = pulumi.Input.asOptionalInput<String>(service),
-      updateOnCreationFail = pulumi.Input.asOptionalInput<bool>(updateOnCreationFail);
+    this.deletionPolicy,
+    this.network,
+    this.peering,
+    this.reservedPeeringRanges,
+    this.service,
+    this.updateOnCreationFail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      peering: map['peering'] == null ? null : pulumi.Output.create<String>(map['peering'] as String),
-      reservedPeeringRanges: map['reservedPeeringRanges'] == null ? null : pulumi.Output.create<List<String>>((map['reservedPeeringRanges'] as List).cast<String>()),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
-      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : pulumi.Output.create<bool>(map['updateOnCreationFail'] as bool),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      peering: map['peering'] == null ? null : (map['peering'] as String).input(),
+      reservedPeeringRanges: map['reservedPeeringRanges'] == null ? null : ((map['reservedPeeringRanges'] as List).cast<String>()).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : (map['updateOnCreationFail'] as bool).input(),
     );
   }
 }

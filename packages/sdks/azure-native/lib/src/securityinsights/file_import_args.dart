@@ -32,21 +32,14 @@ class FileImportArgs {
   /// [source] The source for the data in the file.
   /// [workspaceName] The name of the workspace.
   FileImportArgs({
-    required pulumi.Output<String> contentType,
-    pulumi.Output<String>? fileImportId,
-    required pulumi.Output<FileMetadata> importFile,
-    required pulumi.Output<String> ingestionMode,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> source,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      contentType = pulumi.Input.asInput<String>(contentType),
-      fileImportId = pulumi.Input.asOptionalInput<String>(fileImportId),
-      importFile = pulumi.Input.asInput<FileMetadata>(importFile),
-      ingestionMode = pulumi.Input.asInput<String>(ingestionMode),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asInput<String>(source),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.contentType,
+    this.fileImportId,
+    required this.importFile,
+    required this.ingestionMode,
+    required this.resourceGroupName,
+    required this.source,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class FileImportArgs {
 
   factory FileImportArgs.fromMap(Map<String, dynamic> map) {
     return FileImportArgs(
-      contentType: pulumi.Output.create<String>(map['contentType'] as String),
-      fileImportId: map['fileImportId'] == null ? null : pulumi.Output.create<String>(map['fileImportId'] as String),
-      importFile: pulumi.Output.create<FileMetadata>(FileMetadata.fromMap((map['importFile'] as Map).cast<String, dynamic>())),
-      ingestionMode: pulumi.Output.create<String>(map['ingestionMode'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      contentType: (map['contentType'] as String).input(),
+      fileImportId: map['fileImportId'] == null ? null : (map['fileImportId'] as String).input(),
+      importFile: (FileMetadata.fromMap((map['importFile'] as Map).cast<String, dynamic>())).input(),
+      ingestionMode: (map['ingestionMode'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: (map['source'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

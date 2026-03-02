@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_claim_parameters_reference.dart';
 
 /// ResourceClaimSpec defines how a resource is to be allocated.
 class ResourceClaimSpecResourceK8sIoV1alpha1 {
   /// Allocation can start immediately or when a Pod wants to use the resource. "WaitForFirstConsumer" is the default.
-  final String? allocationMode;
+  final pulumi.Input<String>? allocationMode;
   /// ParametersRef references a separate object with arbitrary parameters that will be used by the driver when allocating a resource for the claim.
   ///
   /// The object must be in the same namespace as the ResourceClaim.
-  final ResourceClaimParametersReference? parametersRef;
+  final pulumi.Input<ResourceClaimParametersReference>? parametersRef;
   /// ResourceClassName references the driver and additional parameters via the name of a ResourceClass that was created as part of the driver deployment.
-  final String resourceClassName;
+  final pulumi.Input<String> resourceClassName;
 
   /// Creates a new [ResourceClaimSpecResourceK8sIoV1alpha1].
   /// [allocationMode] Allocation can start immediately or when a Pod wants to use the resource. "WaitForFirstConsumer" is the default.
@@ -26,16 +27,16 @@ class ResourceClaimSpecResourceK8sIoV1alpha1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationMode': ?allocationMode,
-      'parametersRef': ?parametersRef == null ? null : parametersRef!.toMap(),
+      'parametersRef': ?pulumi.Input.mapOptionalInputValue<ResourceClaimParametersReference, Map<String, dynamic>>(parametersRef, (value) => value.toMap()),
       'resourceClassName': resourceClassName,
     };
   }
 
   factory ResourceClaimSpecResourceK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSpecResourceK8sIoV1alpha1(
-      allocationMode: map['allocationMode'] == null ? null : map['allocationMode'] as String,
-      parametersRef: map['parametersRef'] == null ? null : ResourceClaimParametersReference.fromMap((map['parametersRef'] as Map).cast<String, dynamic>()),
-      resourceClassName: map['resourceClassName'] as String,
+      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode'] as String).input(),
+      parametersRef: map['parametersRef'] == null ? null : (ResourceClaimParametersReference.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())).input(),
+      resourceClassName: (map['resourceClassName'] as String).input(),
     );
   }
 }

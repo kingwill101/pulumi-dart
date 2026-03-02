@@ -21,13 +21,10 @@ class TokenPasswordArgs {
   /// [password1] One `password` block as defined below.
   /// [password2] One `password` block as defined below.
   TokenPasswordArgs({
-    required pulumi.Output<String> containerRegistryTokenId,
-    required pulumi.Output<TokenPasswordPassword1> password1,
-    pulumi.Output<TokenPasswordPassword2>? password2,
-  }) :
-      containerRegistryTokenId = pulumi.Input.asInput<String>(containerRegistryTokenId),
-      password1 = pulumi.Input.asInput<TokenPasswordPassword1>(password1),
-      password2 = pulumi.Input.asOptionalInput<TokenPasswordPassword2>(password2);
+    required this.containerRegistryTokenId,
+    required this.password1,
+    this.password2,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class TokenPasswordArgs {
 
   factory TokenPasswordArgs.fromMap(Map<String, dynamic> map) {
     return TokenPasswordArgs(
-      containerRegistryTokenId: pulumi.Output.create<String>(map['containerRegistryTokenId'] as String),
-      password1: pulumi.Output.create<TokenPasswordPassword1>(TokenPasswordPassword1.fromMap((map['password1'] as Map).cast<String, dynamic>())),
-      password2: map['password2'] == null ? null : pulumi.Output.create<TokenPasswordPassword2>(TokenPasswordPassword2.fromMap((map['password2'] as Map).cast<String, dynamic>())),
+      containerRegistryTokenId: (map['containerRegistryTokenId'] as String).input(),
+      password1: (TokenPasswordPassword1.fromMap((map['password1'] as Map).cast<String, dynamic>())).input(),
+      password2: map['password2'] == null ? null : (TokenPasswordPassword2.fromMap((map['password2'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

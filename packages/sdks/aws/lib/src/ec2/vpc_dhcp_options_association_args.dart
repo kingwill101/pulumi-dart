@@ -19,13 +19,10 @@ class VpcDhcpOptionsAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcId] The ID of the VPC to which we would like to associate a DHCP Options Set.
   VpcDhcpOptionsAssociationArgs({
-    required pulumi.Output<String> dhcpOptionsId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> vpcId,
-  }) :
-      dhcpOptionsId = pulumi.Input.asInput<String>(dhcpOptionsId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    required this.dhcpOptionsId,
+    this.region,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VpcDhcpOptionsAssociationArgs {
 
   factory VpcDhcpOptionsAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcDhcpOptionsAssociationArgs(
-      dhcpOptionsId: pulumi.Output.create<String>(map['dhcpOptionsId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      dhcpOptionsId: (map['dhcpOptionsId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

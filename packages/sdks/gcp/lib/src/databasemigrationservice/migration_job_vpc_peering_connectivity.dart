@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigrationJobVpcPeeringConnectivity {
   /// The name of the VPC network to peer with the Cloud SQL private network.
-  final String? vpc;
+  final pulumi.Input<String>? vpc;
 
   /// Creates a new [MigrationJobVpcPeeringConnectivity].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.
@@ -19,7 +20,7 @@ class MigrationJobVpcPeeringConnectivity {
 
   factory MigrationJobVpcPeeringConnectivity.fromMap(Map<String, dynamic> map) {
     return MigrationJobVpcPeeringConnectivity(
-      vpc: map['vpc'] == null ? null : map['vpc'] as String,
+      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
     );
   }
 }

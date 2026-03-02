@@ -26,17 +26,12 @@ class GetVirtualBorderRoutersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
   GetVirtualBorderRoutersArgs({
-    pulumi.Output<List<GetVirtualBorderRoutersFilter>>? filters,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVirtualBorderRoutersFilter>>(filters),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.filters,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GetVirtualBorderRoutersArgs {
 
   factory GetVirtualBorderRoutersArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualBorderRoutersArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVirtualBorderRoutersFilter>>(pulumi.Input.decodeList<GetVirtualBorderRoutersFilter>(map['filters'], (value) => GetVirtualBorderRoutersFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVirtualBorderRoutersFilter>(map['filters'], (value) => GetVirtualBorderRoutersFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

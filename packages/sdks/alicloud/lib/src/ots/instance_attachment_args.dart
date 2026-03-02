@@ -19,13 +19,10 @@ class InstanceAttachmentArgs {
   /// [vpcName] The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
   /// [vswitchId] The ID of attaching VSwitch to instance.
   InstanceAttachmentArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> vpcName,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      vpcName = pulumi.Input.asInput<String>(vpcName),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.instanceName,
+    required this.vpcName,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class InstanceAttachmentArgs {
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      vpcName: pulumi.Output.create<String>(map['vpcName'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      vpcName: (map['vpcName'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

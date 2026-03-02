@@ -42,21 +42,14 @@ class MulticastProducerAssociationArgs {
   /// [network] The resource name of the multicast producer VPC network.
   /// [project] The ID of the project in which the resource belongs.
   MulticastProducerAssociationArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> multicastDomainActivation,
-    required pulumi.Output<String> multicastProducerAssociationId,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      multicastDomainActivation = pulumi.Input.asInput<String>(multicastDomainActivation),
-      multicastProducerAssociationId = pulumi.Input.asInput<String>(multicastProducerAssociationId),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.labels,
+    required this.location,
+    required this.multicastDomainActivation,
+    required this.multicastProducerAssociationId,
+    required this.network,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,13 +65,13 @@ class MulticastProducerAssociationArgs {
 
   factory MulticastProducerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastProducerAssociationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      multicastDomainActivation: pulumi.Output.create<String>(map['multicastDomainActivation'] as String),
-      multicastProducerAssociationId: pulumi.Output.create<String>(map['multicastProducerAssociationId'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      multicastDomainActivation: (map['multicastDomainActivation'] as String).input(),
+      multicastProducerAssociationId: (map['multicastProducerAssociationId'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

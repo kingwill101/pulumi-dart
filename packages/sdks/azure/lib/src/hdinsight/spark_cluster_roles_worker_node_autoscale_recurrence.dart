@@ -5,9 +5,9 @@ import 'spark_cluster_roles_worker_node_autoscale_recurrence_schedule.dart';
 
 class SparkClusterRolesWorkerNodeAutoscaleRecurrence {
   /// A list of `schedule` blocks as defined below.
-  final List<SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule> schedules;
+  final pulumi.Input<List<SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule>> schedules;
   /// The time zone for the autoscale schedule times.
-  final String timezone;
+  final pulumi.Input<String> timezone;
 
   /// Creates a new [SparkClusterRolesWorkerNodeAutoscaleRecurrence].
   /// [schedules] A list of `schedule` blocks as defined below.
@@ -19,15 +19,15 @@ class SparkClusterRolesWorkerNodeAutoscaleRecurrence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schedules': pulumi.Input.encodeList<SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'schedules': pulumi.Input.mapInputValue<List<SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timezone': timezone,
     };
   }
 
   factory SparkClusterRolesWorkerNodeAutoscaleRecurrence.fromMap(Map<String, dynamic> map) {
     return SparkClusterRolesWorkerNodeAutoscaleRecurrence(
-      schedules: pulumi.Input.decodeList<SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule>(map['schedules'], (value) => SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      timezone: map['timezone'] as String,
+      schedules: (pulumi.Input.decodeList<SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule>(map['schedules'], (value) => SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timezone: (map['timezone'] as String).input(),
     );
   }
 }

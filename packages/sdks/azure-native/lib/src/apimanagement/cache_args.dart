@@ -31,21 +31,14 @@ class CacheArgs {
   /// [serviceName] The name of the API Management service.
   /// [useFromLocation] Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
   CacheArgs({
-    pulumi.Output<String>? cacheId,
-    required pulumi.Output<String> connectionString,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceId,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> useFromLocation,
-  }) :
-      cacheId = pulumi.Input.asOptionalInput<String>(cacheId),
-      connectionString = pulumi.Input.asInput<String>(connectionString),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      useFromLocation = pulumi.Input.asInput<String>(useFromLocation);
+    this.cacheId,
+    required this.connectionString,
+    this.description,
+    required this.resourceGroupName,
+    this.resourceId,
+    required this.serviceName,
+    required this.useFromLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CacheArgs {
 
   factory CacheArgs.fromMap(Map<String, dynamic> map) {
     return CacheArgs(
-      cacheId: map['cacheId'] == null ? null : pulumi.Output.create<String>(map['cacheId'] as String),
-      connectionString: pulumi.Output.create<String>(map['connectionString'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      useFromLocation: pulumi.Output.create<String>(map['useFromLocation'] as String),
+      cacheId: map['cacheId'] == null ? null : (map['cacheId'] as String).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      useFromLocation: (map['useFromLocation'] as String).input(),
     );
   }
 }

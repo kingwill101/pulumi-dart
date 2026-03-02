@@ -28,17 +28,12 @@ class ClusterActivityStreamArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) of the DB cluster.
   ClusterActivityStreamArgs({
-    pulumi.Output<bool>? engineNativeAuditFieldsIncluded,
-    required pulumi.Output<String> kmsKeyId,
-    required pulumi.Output<String> mode,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-  }) :
-      engineNativeAuditFieldsIncluded = pulumi.Input.asOptionalInput<bool>(engineNativeAuditFieldsIncluded),
-      kmsKeyId = pulumi.Input.asInput<String>(kmsKeyId),
-      mode = pulumi.Input.asInput<String>(mode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn);
+    this.engineNativeAuditFieldsIncluded,
+    required this.kmsKeyId,
+    required this.mode,
+    this.region,
+    required this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ClusterActivityStreamArgs {
 
   factory ClusterActivityStreamArgs.fromMap(Map<String, dynamic> map) {
     return ClusterActivityStreamArgs(
-      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : pulumi.Output.create<bool>(map['engineNativeAuditFieldsIncluded'] as bool),
-      kmsKeyId: pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
+      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : (map['engineNativeAuditFieldsIncluded'] as bool).input(),
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
     );
   }
 }

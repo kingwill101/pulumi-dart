@@ -51,35 +51,21 @@ class RuleGroupState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [visibilityConfig] Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
   RuleGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? capacity,
-    pulumi.Output<List<RuleGroupCustomResponseBody>>? customResponseBodies,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lockToken,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<RuleGroupRule>>? rules,
-    pulumi.Output<String>? rulesJson,
-    pulumi.Output<String>? scope,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<RuleGroupVisibilityConfig>? visibilityConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      capacity = pulumi.Input.asOptionalInput<int>(capacity),
-      customResponseBodies = pulumi.Input.asOptionalInput<List<RuleGroupCustomResponseBody>>(customResponseBodies),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lockToken = pulumi.Input.asOptionalInput<String>(lockToken),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<List<RuleGroupRule>>(rules),
-      rulesJson = pulumi.Input.asOptionalInput<String>(rulesJson),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      visibilityConfig = pulumi.Input.asOptionalInput<RuleGroupVisibilityConfig>(visibilityConfig);
+    this.arn,
+    this.capacity,
+    this.customResponseBodies,
+    this.description,
+    this.lockToken,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.rules,
+    this.rulesJson,
+    this.scope,
+    this.tags,
+    this.tagsAll,
+    this.visibilityConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class RuleGroupState {
 
   factory RuleGroupState.fromMap(Map<String, dynamic> map) {
     return RuleGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<int>(map['capacity'] as int),
-      customResponseBodies: map['customResponseBodies'] == null ? null : pulumi.Output.create<List<RuleGroupCustomResponseBody>>(pulumi.Input.decodeList<RuleGroupCustomResponseBody>(map['customResponseBodies'], (value) => RuleGroupCustomResponseBody.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lockToken: map['lockToken'] == null ? null : pulumi.Output.create<String>(map['lockToken'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<RuleGroupRule>>(pulumi.Input.decodeList<RuleGroupRule>(map['rules'], (value) => RuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))),
-      rulesJson: map['rulesJson'] == null ? null : pulumi.Output.create<String>(map['rulesJson'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      visibilityConfig: map['visibilityConfig'] == null ? null : pulumi.Output.create<RuleGroupVisibilityConfig>(RuleGroupVisibilityConfig.fromMap((map['visibilityConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      customResponseBodies: map['customResponseBodies'] == null ? null : (pulumi.Input.decodeList<RuleGroupCustomResponseBody>(map['customResponseBodies'], (value) => RuleGroupCustomResponseBody.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lockToken: map['lockToken'] == null ? null : (map['lockToken'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleGroupRule>(map['rules'], (value) => RuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rulesJson: map['rulesJson'] == null ? null : (map['rulesJson'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      visibilityConfig: map['visibilityConfig'] == null ? null : (RuleGroupVisibilityConfig.fromMap((map['visibilityConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

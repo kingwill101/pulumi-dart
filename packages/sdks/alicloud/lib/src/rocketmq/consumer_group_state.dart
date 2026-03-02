@@ -35,25 +35,16 @@ class ConsumerGroupState {
   /// [remark] Custom remarks.
   /// [status] The status of the resource.
   ConsumerGroupState({
-    pulumi.Output<ConsumerGroupConsumeRetryPolicy>? consumeRetryPolicy,
-    pulumi.Output<String>? consumerGroupId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? deliveryOrderType,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? maxReceiveTps,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? status,
-  }) :
-      consumeRetryPolicy = pulumi.Input.asOptionalInput<ConsumerGroupConsumeRetryPolicy>(consumeRetryPolicy),
-      consumerGroupId = pulumi.Input.asOptionalInput<String>(consumerGroupId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deliveryOrderType = pulumi.Input.asOptionalInput<String>(deliveryOrderType),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      maxReceiveTps = pulumi.Input.asOptionalInput<int>(maxReceiveTps),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.consumeRetryPolicy,
+    this.consumerGroupId,
+    this.createTime,
+    this.deliveryOrderType,
+    this.instanceId,
+    this.maxReceiveTps,
+    this.regionId,
+    this.remark,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ConsumerGroupState {
 
   factory ConsumerGroupState.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupState(
-      consumeRetryPolicy: map['consumeRetryPolicy'] == null ? null : pulumi.Output.create<ConsumerGroupConsumeRetryPolicy>(ConsumerGroupConsumeRetryPolicy.fromMap((map['consumeRetryPolicy'] as Map).cast<String, dynamic>())),
-      consumerGroupId: map['consumerGroupId'] == null ? null : pulumi.Output.create<String>(map['consumerGroupId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deliveryOrderType: map['deliveryOrderType'] == null ? null : pulumi.Output.create<String>(map['deliveryOrderType'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      maxReceiveTps: map['maxReceiveTps'] == null ? null : pulumi.Output.create<int>(map['maxReceiveTps'] as int),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      consumeRetryPolicy: map['consumeRetryPolicy'] == null ? null : (ConsumerGroupConsumeRetryPolicy.fromMap((map['consumeRetryPolicy'] as Map).cast<String, dynamic>())).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deliveryOrderType: map['deliveryOrderType'] == null ? null : (map['deliveryOrderType'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      maxReceiveTps: map['maxReceiveTps'] == null ? null : (map['maxReceiveTps'] as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

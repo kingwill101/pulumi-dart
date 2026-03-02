@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceStatusLastInstanceTerminationDetailsResponse {
   /// Reason for termination
-  final String terminationReason;
+  final pulumi.Input<String> terminationReason;
 
   /// Creates a new [ResourceStatusLastInstanceTerminationDetailsResponse].
   /// [terminationReason] Reason for termination
@@ -19,7 +20,7 @@ class ResourceStatusLastInstanceTerminationDetailsResponse {
 
   factory ResourceStatusLastInstanceTerminationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusLastInstanceTerminationDetailsResponse(
-      terminationReason: map['terminationReason'] as String,
+      terminationReason: (map['terminationReason'] as String).input(),
     );
   }
 }

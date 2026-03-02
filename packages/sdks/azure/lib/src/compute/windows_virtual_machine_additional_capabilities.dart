@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsVirtualMachineAdditionalCapabilities {
   /// Whether to enable the hibernation capability or not.
-  final bool? hibernationEnabled;
+  final pulumi.Input<bool>? hibernationEnabled;
   /// Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine? Defaults to `false`.
-  final bool? ultraSsdEnabled;
+  final pulumi.Input<bool>? ultraSsdEnabled;
 
   /// Creates a new [WindowsVirtualMachineAdditionalCapabilities].
   /// [hibernationEnabled] Whether to enable the hibernation capability or not.
@@ -24,8 +25,8 @@ class WindowsVirtualMachineAdditionalCapabilities {
 
   factory WindowsVirtualMachineAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineAdditionalCapabilities(
-      hibernationEnabled: map['hibernationEnabled'] == null ? null : map['hibernationEnabled'] as bool,
-      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : map['ultraSsdEnabled'] as bool,
+      hibernationEnabled: map['hibernationEnabled'] == null ? null : (map['hibernationEnabled'] as bool).input(),
+      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled'] as bool).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a ReconciliationPolicy
 class ReconciliationPolicyProperties {
   /// Policy interval
-  final String interval;
+  final pulumi.Input<String> interval;
   /// The state of the ReconciliationPolicy
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [ReconciliationPolicyProperties].
   /// [interval] Policy interval
@@ -25,8 +26,8 @@ class ReconciliationPolicyProperties {
 
   factory ReconciliationPolicyProperties.fromMap(Map<String, dynamic> map) {
     return ReconciliationPolicyProperties(
-      interval: map['interval'] as String,
-      state: map['state'] as String,
+      interval: (map['interval'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

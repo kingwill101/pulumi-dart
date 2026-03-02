@@ -17,11 +17,9 @@ class CertificateContactsArgs {
   /// [contacts] One or more `contact` blocks as defined below.
   /// [keyVaultId] The ID of the Key Vault. Changing this forces a new resource to be created.
   CertificateContactsArgs({
-    pulumi.Output<List<CertificateContactsContact>>? contacts,
-    required pulumi.Output<String> keyVaultId,
-  }) :
-      contacts = pulumi.Input.asOptionalInput<List<CertificateContactsContact>>(contacts),
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId);
+    this.contacts,
+    required this.keyVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class CertificateContactsArgs {
 
   factory CertificateContactsArgs.fromMap(Map<String, dynamic> map) {
     return CertificateContactsArgs(
-      contacts: map['contacts'] == null ? null : pulumi.Output.create<List<CertificateContactsContact>>(pulumi.Input.decodeList<CertificateContactsContact>(map['contacts'], (value) => CertificateContactsContact.fromMap((value as Map).cast<String, dynamic>()))),
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
+      contacts: map['contacts'] == null ? null : (pulumi.Input.decodeList<CertificateContactsContact>(map['contacts'], (value) => CertificateContactsContact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
     );
   }
 }

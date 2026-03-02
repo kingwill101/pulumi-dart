@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication_sasl.dart';
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication {
   /// Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
-  final ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl? sasl;
+  final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl>? sasl;
   /// Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
-  final bool? tls;
+  final pulumi.Input<bool>? tls;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication].
   /// [sasl] Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
@@ -18,15 +19,15 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sasl': ?sasl == null ? null : sasl!.toMap(),
+      'sasl': ?pulumi.Input.mapOptionalInputValue<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl, Map<String, dynamic>>(sasl, (value) => value.toMap()),
       'tls': ?tls,
     };
   }
 
   factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication(
-      sasl: map['sasl'] == null ? null : ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap((map['sasl'] as Map).cast<String, dynamic>()),
-      tls: map['tls'] == null ? null : map['tls'] as bool,
+      sasl: map['sasl'] == null ? null : (ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap((map['sasl'] as Map).cast<String, dynamic>())).input(),
+      tls: map['tls'] == null ? null : (map['tls'] as bool).input(),
     );
   }
 }

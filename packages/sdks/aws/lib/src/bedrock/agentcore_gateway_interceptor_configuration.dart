@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_gateway_interceptor_configuration_input_configuration.dart';
 import 'agentcore_gateway_interceptor_configuration_interceptor.dart';
 
 class AgentcoreGatewayInterceptorConfiguration {
   /// Input configuration for the interceptor. See `input_configuration` below.
-  final AgentcoreGatewayInterceptorConfigurationInputConfiguration? inputConfiguration;
+  final pulumi.Input<AgentcoreGatewayInterceptorConfigurationInputConfiguration>? inputConfiguration;
   /// Set of interception points. Valid values: `REQUEST`, `RESPONSE`.
-  final List<String> interceptionPoints;
+  final pulumi.Input<List<String>> interceptionPoints;
   /// Interceptor infrastructure configuration. See `interceptor` below.
-  final AgentcoreGatewayInterceptorConfigurationInterceptor? interceptor;
+  final pulumi.Input<AgentcoreGatewayInterceptorConfigurationInterceptor>? interceptor;
 
   /// Creates a new [AgentcoreGatewayInterceptorConfiguration].
   /// [inputConfiguration] Input configuration for the interceptor. See `input_configuration` below.
@@ -23,17 +24,17 @@ class AgentcoreGatewayInterceptorConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inputConfiguration': ?inputConfiguration == null ? null : inputConfiguration!.toMap(),
+      'inputConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayInterceptorConfigurationInputConfiguration, Map<String, dynamic>>(inputConfiguration, (value) => value.toMap()),
       'interceptionPoints': interceptionPoints,
-      'interceptor': ?interceptor == null ? null : interceptor!.toMap(),
+      'interceptor': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayInterceptorConfigurationInterceptor, Map<String, dynamic>>(interceptor, (value) => value.toMap()),
     };
   }
 
   factory AgentcoreGatewayInterceptorConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayInterceptorConfiguration(
-      inputConfiguration: map['inputConfiguration'] == null ? null : AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap((map['inputConfiguration'] as Map).cast<String, dynamic>()),
-      interceptionPoints: (map['interceptionPoints'] as List).cast<String>(),
-      interceptor: map['interceptor'] == null ? null : AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap((map['interceptor'] as Map).cast<String, dynamic>()),
+      inputConfiguration: map['inputConfiguration'] == null ? null : (AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap((map['inputConfiguration'] as Map).cast<String, dynamic>())).input(),
+      interceptionPoints: ((map['interceptionPoints'] as List).cast<String>()).input(),
+      interceptor: map['interceptor'] == null ? null : (AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap((map['interceptor'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

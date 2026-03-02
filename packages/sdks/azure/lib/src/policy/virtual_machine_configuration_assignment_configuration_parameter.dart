@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineConfigurationAssignmentConfigurationParameter {
   /// The name of the configuration parameter to check.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value to check the configuration parameter with.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [VirtualMachineConfigurationAssignmentConfigurationParameter].
   /// [name] The name of the configuration parameter to check.
@@ -24,8 +25,8 @@ class VirtualMachineConfigurationAssignmentConfigurationParameter {
 
   factory VirtualMachineConfigurationAssignmentConfigurationParameter.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfigurationAssignmentConfigurationParameter(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

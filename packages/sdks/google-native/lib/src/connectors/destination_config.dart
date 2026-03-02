@@ -6,9 +6,9 @@ import 'destination.dart';
 /// Define the Connectors target endpoint.
 class DestinationConfig {
   /// The destinations for the key.
-  final List<Destination>? destinations;
+  final pulumi.Input<List<Destination>>? destinations;
   /// The key is the destination identifier that is supported by the Connector.
-  final String? key;
+  final pulumi.Input<String>? key;
 
   /// Creates a new [DestinationConfig].
   /// [destinations] The destinations for the key.
@@ -20,15 +20,15 @@ class DestinationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<Destination, Map<String, dynamic>>(destinations!, (value) => value.toMap()),
+      'destinations': ?pulumi.Input.mapOptionalInputValue<List<Destination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<Destination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'key': ?key,
     };
   }
 
   factory DestinationConfig.fromMap(Map<String, dynamic> map) {
     return DestinationConfig(
-      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<Destination>(map['destinations'], (value) => Destination.fromMap((value as Map).cast<String, dynamic>())),
-      key: map['key'] == null ? null : map['key'] as String,
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<Destination>(map['destinations'], (value) => Destination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
     );
   }
 }

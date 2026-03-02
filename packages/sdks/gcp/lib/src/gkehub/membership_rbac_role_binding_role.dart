@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MembershipRbacRoleBindingRole {
   /// PredefinedRole is an ENUM representation of the default Kubernetes Roles
   /// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-  final String predefinedRole;
+  final pulumi.Input<String> predefinedRole;
 
   /// Creates a new [MembershipRbacRoleBindingRole].
   /// [predefinedRole] PredefinedRole is an ENUM representation of the default Kubernetes Roles
@@ -20,7 +21,7 @@ class MembershipRbacRoleBindingRole {
 
   factory MembershipRbacRoleBindingRole.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingRole(
-      predefinedRole: map['predefinedRole'] as String,
+      predefinedRole: (map['predefinedRole'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a combination of a group with a preference set.
 class ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1 {
   /// Name of the group.
-  final String group;
+  final pulumi.Input<String> group;
   /// Name of the Preference Set.
-  final String preferenceSet;
+  final pulumi.Input<String> preferenceSet;
 
   /// Creates a new [ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1].
   /// [group] Name of the group.
@@ -25,8 +26,8 @@ class ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1 {
 
   factory ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1(
-      group: map['group'] as String,
-      preferenceSet: map['preferenceSet'] as String,
+      group: (map['group'] as String).input(),
+      preferenceSet: (map['preferenceSet'] as String).input(),
     );
   }
 }

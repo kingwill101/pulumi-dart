@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileOracleForwardSshConnectivity {
   /// Required. Hostname for the SSH tunnel.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Input only. SSH password. Only one of `password` and `private_key` can be configured.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Port for the SSH tunnel, default value is 22.
-  final int port;
+  final pulumi.Input<int> port;
   /// Input only. SSH private key. Only one of `password` and `private_key` can be configured.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// Required. Username for the SSH tunnel.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [ConnectionProfileOracleForwardSshConnectivity].
   /// [hostname] Required. Hostname for the SSH tunnel.
@@ -41,11 +42,11 @@ class ConnectionProfileOracleForwardSshConnectivity {
 
   factory ConnectionProfileOracleForwardSshConnectivity.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileOracleForwardSshConnectivity(
-      hostname: map['hostname'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      port: map['port'] as int,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      username: map['username'] as String,
+      hostname: (map['hostname'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: (map['port'] as int).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

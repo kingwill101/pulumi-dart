@@ -23,15 +23,11 @@ class CopyFileArgs {
   /// [remotePath] The destination path in the remote host.
   /// [triggers] Trigger replacements on changes to this input.
   CopyFileArgs({
-    required pulumi.Output<Connection> connection,
-    required pulumi.Output<String> localPath,
-    required pulumi.Output<String> remotePath,
-    pulumi.Output<List<dynamic>>? triggers,
-  }) :
-      connection = pulumi.Input.asInput<Connection>(connection),
-      localPath = pulumi.Input.asInput<String>(localPath),
-      remotePath = pulumi.Input.asInput<String>(remotePath),
-      triggers = pulumi.Input.asOptionalInput<List<dynamic>>(triggers);
+    required this.connection,
+    required this.localPath,
+    required this.remotePath,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CopyFileArgs {
 
   factory CopyFileArgs.fromMap(Map<String, dynamic> map) {
     return CopyFileArgs(
-      connection: pulumi.Output.create<Connection>(Connection.fromMap((map['connection'] as Map).cast<String, dynamic>())),
-      localPath: pulumi.Output.create<String>(map['localPath'] as String),
-      remotePath: pulumi.Output.create<String>(map['remotePath'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<List<dynamic>>((map['triggers'] as List).cast<dynamic>()),
+      connection: (Connection.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
+      localPath: (map['localPath'] as String).input(),
+      remotePath: (map['remotePath'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as List).cast<dynamic>()).input(),
     );
   }
 }

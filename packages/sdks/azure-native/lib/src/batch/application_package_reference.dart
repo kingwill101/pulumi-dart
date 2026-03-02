@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Link to an application package inside the batch account
 class ApplicationPackageReference {
   /// The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
-  final String id;
+  final pulumi.Input<String> id;
   /// If this is omitted, and no default version is specified for this application, the request fails with the error code InvalidApplicationPackageReferences. If you are calling the REST API directly, the HTTP status code is 409.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ApplicationPackageReference].
   /// [id] The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
@@ -25,8 +26,8 @@ class ApplicationPackageReference {
 
   factory ApplicationPackageReference.fromMap(Map<String, dynamic> map) {
     return ApplicationPackageReference(
-      id: map['id'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      id: (map['id'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

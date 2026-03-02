@@ -37,25 +37,16 @@ class EnvironmentDialogflowV3beta1Args {
   /// [versionConfigs] A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
   /// [webhookConfig] The webhook configuration for this environment.
   EnvironmentDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig>? testCasesConfig,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>>? versionConfigs,
-    pulumi.Output<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig>? webhookConfig,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      testCasesConfig = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig>(testCasesConfig),
-      versionConfigs = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>>(versionConfigs),
-      webhookConfig = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig>(webhookConfig);
+    required this.agentId,
+    this.description,
+    required this.displayName,
+    this.location,
+    this.name,
+    this.project,
+    this.testCasesConfig,
+    this.versionConfigs,
+    this.webhookConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class EnvironmentDialogflowV3beta1Args {
 
   factory EnvironmentDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      testCasesConfig: map['testCasesConfig'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig>(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig.fromMap((map['testCasesConfig'] as Map).cast<String, dynamic>())),
-      versionConfigs: map['versionConfigs'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>(map['versionConfigs'], (value) => GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      webhookConfig: map['webhookConfig'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig>(GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig.fromMap((map['webhookConfig'] as Map).cast<String, dynamic>())),
+      agentId: (map['agentId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      testCasesConfig: map['testCasesConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig.fromMap((map['testCasesConfig'] as Map).cast<String, dynamic>())).input(),
+      versionConfigs: map['versionConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>(map['versionConfigs'], (value) => GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webhookConfig: map['webhookConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig.fromMap((map['webhookConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

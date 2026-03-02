@@ -16,13 +16,10 @@ class GetInstanceAttachmentArgs {
   /// [instanceId] Required.
   /// [organizationId] Required.
   GetInstanceAttachmentArgs({
-    required pulumi.Output<String> attachmentId,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      attachmentId = pulumi.Input.asInput<String>(attachmentId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.attachmentId,
+    required this.instanceId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetInstanceAttachmentArgs {
 
   factory GetInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentArgs(
-      attachmentId: pulumi.Output.create<String>(map['attachmentId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      attachmentId: (map['attachmentId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

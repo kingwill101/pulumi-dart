@@ -8,15 +8,15 @@ import 'remote_support_session_response.dart';
 /// Represents the reported properties of a remote support job.
 class EdgeMachineRemoteSupportJobReportedPropertiesResponse {
   /// Deployment status of job.
-  final EceActionStatusResponse deploymentStatus;
+  final pulumi.Input<EceActionStatusResponse> deploymentStatus;
   /// Optional settings for configuring the node for remote support.
-  final EdgeMachineRemoteSupportNodeSettingsResponse nodeSettings;
+  final pulumi.Input<EdgeMachineRemoteSupportNodeSettingsResponse> nodeSettings;
   /// The percentage of the job that is complete.
-  final int percentComplete;
+  final pulumi.Input<int> percentComplete;
   /// Details of the remote support session.
-  final List<RemoteSupportSessionResponse> sessionDetails;
+  final pulumi.Input<List<RemoteSupportSessionResponse>> sessionDetails;
   /// Validation status of job.
-  final EceActionStatusResponse validationStatus;
+  final pulumi.Input<EceActionStatusResponse> validationStatus;
 
   /// Creates a new [EdgeMachineRemoteSupportJobReportedPropertiesResponse].
   /// [deploymentStatus] Deployment status of job.
@@ -34,21 +34,21 @@ class EdgeMachineRemoteSupportJobReportedPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deploymentStatus': deploymentStatus.toMap(),
-      'nodeSettings': nodeSettings.toMap(),
+      'deploymentStatus': pulumi.Input.mapInputValue<EceActionStatusResponse, Map<String, dynamic>>(deploymentStatus, (value) => value.toMap()),
+      'nodeSettings': pulumi.Input.mapInputValue<EdgeMachineRemoteSupportNodeSettingsResponse, Map<String, dynamic>>(nodeSettings, (value) => value.toMap()),
       'percentComplete': percentComplete,
-      'sessionDetails': pulumi.Input.encodeList<RemoteSupportSessionResponse, Map<String, dynamic>>(sessionDetails, (value) => value.toMap()),
-      'validationStatus': validationStatus.toMap(),
+      'sessionDetails': pulumi.Input.mapInputValue<List<RemoteSupportSessionResponse>, List<Map<String, dynamic>>>(sessionDetails, (value) => pulumi.Input.encodeList<RemoteSupportSessionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationStatus': pulumi.Input.mapInputValue<EceActionStatusResponse, Map<String, dynamic>>(validationStatus, (value) => value.toMap()),
     };
   }
 
   factory EdgeMachineRemoteSupportJobReportedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineRemoteSupportJobReportedPropertiesResponse(
-      deploymentStatus: EceActionStatusResponse.fromMap((map['deploymentStatus'] as Map).cast<String, dynamic>()),
-      nodeSettings: EdgeMachineRemoteSupportNodeSettingsResponse.fromMap((map['nodeSettings'] as Map).cast<String, dynamic>()),
-      percentComplete: map['percentComplete'] as int,
-      sessionDetails: pulumi.Input.decodeList<RemoteSupportSessionResponse>(map['sessionDetails'], (value) => RemoteSupportSessionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      validationStatus: EceActionStatusResponse.fromMap((map['validationStatus'] as Map).cast<String, dynamic>()),
+      deploymentStatus: (EceActionStatusResponse.fromMap((map['deploymentStatus'] as Map).cast<String, dynamic>())).input(),
+      nodeSettings: (EdgeMachineRemoteSupportNodeSettingsResponse.fromMap((map['nodeSettings'] as Map).cast<String, dynamic>())).input(),
+      percentComplete: (map['percentComplete'] as int).input(),
+      sessionDetails: (pulumi.Input.decodeList<RemoteSupportSessionResponse>(map['sessionDetails'], (value) => RemoteSupportSessionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationStatus: (EceActionStatusResponse.fromMap((map['validationStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

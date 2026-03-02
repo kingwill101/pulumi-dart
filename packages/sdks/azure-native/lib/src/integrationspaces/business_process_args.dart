@@ -43,27 +43,17 @@ class BusinessProcessArgs {
   /// [tableName] The table name of the business process.
   /// [trackingDataStoreReferenceName] The tracking data store reference name.
   BusinessProcessArgs({
-    required pulumi.Output<String> applicationName,
-    pulumi.Output<Map<String, BusinessProcessMappingItem>>? businessProcessMapping,
-    pulumi.Output<String>? businessProcessName,
-    pulumi.Output<Map<String, BusinessProcessStage>>? businessProcessStages,
-    pulumi.Output<String>? description,
-    pulumi.Output<BusinessProcessIdentifier>? identifier,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> spaceName,
-    pulumi.Output<String>? tableName,
-    pulumi.Output<String>? trackingDataStoreReferenceName,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      businessProcessMapping = pulumi.Input.asOptionalInput<Map<String, BusinessProcessMappingItem>>(businessProcessMapping),
-      businessProcessName = pulumi.Input.asOptionalInput<String>(businessProcessName),
-      businessProcessStages = pulumi.Input.asOptionalInput<Map<String, BusinessProcessStage>>(businessProcessStages),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      identifier = pulumi.Input.asOptionalInput<BusinessProcessIdentifier>(identifier),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spaceName = pulumi.Input.asInput<String>(spaceName),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName),
-      trackingDataStoreReferenceName = pulumi.Input.asOptionalInput<String>(trackingDataStoreReferenceName);
+    required this.applicationName,
+    this.businessProcessMapping,
+    this.businessProcessName,
+    this.businessProcessStages,
+    this.description,
+    this.identifier,
+    required this.resourceGroupName,
+    required this.spaceName,
+    this.tableName,
+    this.trackingDataStoreReferenceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class BusinessProcessArgs {
 
   factory BusinessProcessArgs.fromMap(Map<String, dynamic> map) {
     return BusinessProcessArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      businessProcessMapping: map['businessProcessMapping'] == null ? null : pulumi.Output.create<Map<String, BusinessProcessMappingItem>>(pulumi.Input.decodeMapValues<BusinessProcessMappingItem>(map['businessProcessMapping'], (value) => BusinessProcessMappingItem.fromMap((value as Map).cast<String, dynamic>()))),
-      businessProcessName: map['businessProcessName'] == null ? null : pulumi.Output.create<String>(map['businessProcessName'] as String),
-      businessProcessStages: map['businessProcessStages'] == null ? null : pulumi.Output.create<Map<String, BusinessProcessStage>>(pulumi.Input.decodeMapValues<BusinessProcessStage>(map['businessProcessStages'], (value) => BusinessProcessStage.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<BusinessProcessIdentifier>(BusinessProcessIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
-      trackingDataStoreReferenceName: map['trackingDataStoreReferenceName'] == null ? null : pulumi.Output.create<String>(map['trackingDataStoreReferenceName'] as String),
+      applicationName: (map['applicationName'] as String).input(),
+      businessProcessMapping: map['businessProcessMapping'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessMappingItem>(map['businessProcessMapping'], (value) => BusinessProcessMappingItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessProcessName: map['businessProcessName'] == null ? null : (map['businessProcessName'] as String).input(),
+      businessProcessStages: map['businessProcessStages'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessStage>(map['businessProcessStages'], (value) => BusinessProcessStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      identifier: map['identifier'] == null ? null : (BusinessProcessIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      trackingDataStoreReferenceName: map['trackingDataStoreReferenceName'] == null ? null : (map['trackingDataStoreReferenceName'] as String).input(),
     );
   }
 }

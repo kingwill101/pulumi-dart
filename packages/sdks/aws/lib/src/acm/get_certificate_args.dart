@@ -33,21 +33,14 @@ class GetCertificateArgs {
   /// [tags] A mapping of tags, each pair of which must exactly match a pair on the desired certificates.
   /// [types] List of types on which to filter the returned list. Valid values are `AMAZON_ISSUED`, `PRIVATE`, and `IMPORTED`.
   GetCertificateArgs({
-    pulumi.Output<String>? domain,
-    pulumi.Output<List<String>>? keyTypes,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? statuses,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? types,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      keyTypes = pulumi.Input.asOptionalInput<List<String>>(keyTypes),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      statuses = pulumi.Input.asOptionalInput<List<String>>(statuses),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      types = pulumi.Input.asOptionalInput<List<String>>(types);
+    this.domain,
+    this.keyTypes,
+    this.mostRecent,
+    this.region,
+    this.statuses,
+    this.tags,
+    this.types,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      keyTypes: map['keyTypes'] == null ? null : pulumi.Output.create<List<String>>((map['keyTypes'] as List).cast<String>()),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      statuses: map['statuses'] == null ? null : pulumi.Output.create<List<String>>((map['statuses'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      types: map['types'] == null ? null : pulumi.Output.create<List<String>>((map['types'] as List).cast<String>()),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      keyTypes: map['keyTypes'] == null ? null : ((map['keyTypes'] as List).cast<String>()).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      statuses: map['statuses'] == null ? null : ((map['statuses'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
     );
   }
 }

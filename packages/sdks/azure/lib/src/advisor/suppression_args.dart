@@ -22,15 +22,11 @@ class SuppressionArgs {
   /// [resourceId] The ID of the Resource to suppress the Advisor recommendation for. Changing this forces a new Advisor suppression to be created.
   /// [ttl] A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
   SuppressionArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> recommendationId,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<String>? ttl,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recommendationId = pulumi.Input.asInput<String>(recommendationId),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    this.name,
+    required this.recommendationId,
+    required this.resourceId,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SuppressionArgs {
 
   factory SuppressionArgs.fromMap(Map<String, dynamic> map) {
     return SuppressionArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recommendationId: pulumi.Output.create<String>(map['recommendationId'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recommendationId: (map['recommendationId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

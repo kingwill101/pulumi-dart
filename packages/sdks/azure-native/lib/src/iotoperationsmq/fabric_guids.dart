@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Fabric one lake guids.
 class FabricGuids {
   /// Fabric one lake house guid.
-  final String lakehouseGuid;
+  final pulumi.Input<String> lakehouseGuid;
   /// Fabric one lake workspace guid.
-  final String workspaceGuid;
+  final pulumi.Input<String> workspaceGuid;
 
   /// Creates a new [FabricGuids].
   /// [lakehouseGuid] Fabric one lake house guid.
@@ -25,8 +26,8 @@ class FabricGuids {
 
   factory FabricGuids.fromMap(Map<String, dynamic> map) {
     return FabricGuids(
-      lakehouseGuid: map['lakehouseGuid'] as String,
-      workspaceGuid: map['workspaceGuid'] as String,
+      lakehouseGuid: (map['lakehouseGuid'] as String).input(),
+      workspaceGuid: (map['workspaceGuid'] as String).input(),
     );
   }
 }

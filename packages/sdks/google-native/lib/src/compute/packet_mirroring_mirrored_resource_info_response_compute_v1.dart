@@ -6,11 +6,11 @@ import 'packet_mirroring_mirrored_resource_info_subnet_info_response_compute_v1.
 
 class PacketMirroringMirroredResourceInfoResponseComputeV1 {
   /// A set of virtual machine instances that are being mirrored. They must live in zones contained in the same region as this packetMirroring. Note that this config will apply only to those network interfaces of the Instances that belong to the network specified in this packetMirroring. You may specify a maximum of 50 Instances.
-  final List<PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1> instances;
+  final pulumi.Input<List<PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1>> instances;
   /// A set of subnetworks for which traffic from/to all VM instances will be mirrored. They must live in the same region as this packetMirroring. You may specify a maximum of 5 subnetworks.
-  final List<PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1> subnetworks;
+  final pulumi.Input<List<PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1>> subnetworks;
   /// A set of mirrored tags. Traffic from/to all VM instances that have one or more of these tags will be mirrored.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
 
   /// Creates a new [PacketMirroringMirroredResourceInfoResponseComputeV1].
   /// [instances] A set of virtual machine instances that are being mirrored. They must live in zones contained in the same region as this packetMirroring. Note that this config will apply only to those network interfaces of the Instances that belong to the network specified in this packetMirroring. You may specify a maximum of 50 Instances.
@@ -24,17 +24,17 @@ class PacketMirroringMirroredResourceInfoResponseComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instances': pulumi.Input.encodeList<PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1, Map<String, dynamic>>(instances, (value) => value.toMap()),
-      'subnetworks': pulumi.Input.encodeList<PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1, Map<String, dynamic>>(subnetworks, (value) => value.toMap()),
+      'instances': pulumi.Input.mapInputValue<List<PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnetworks': pulumi.Input.mapInputValue<List<PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1>, List<Map<String, dynamic>>>(subnetworks, (value) => pulumi.Input.encodeList<PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': tags,
     };
   }
 
   factory PacketMirroringMirroredResourceInfoResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoResponseComputeV1(
-      instances: pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1>(map['instances'], (value) => PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())),
-      subnetworks: pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1>(map['subnetworks'], (value) => PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as List).cast<String>(),
+      instances: (pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1>(map['instances'], (value) => PacketMirroringMirroredResourceInfoInstanceInfoResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetworks: (pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1>(map['subnetworks'], (value) => PacketMirroringMirroredResourceInfoSubnetInfoResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

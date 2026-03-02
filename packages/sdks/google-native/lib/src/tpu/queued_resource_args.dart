@@ -41,27 +41,17 @@ class QueuedResourceArgs {
   /// [spot] Optional. The Spot tier.
   /// [tpu] Defines a TPU resource.
   QueuedResourceArgs({
-    pulumi.Output<Map<String, dynamic>>? bestEffort,
-    pulumi.Output<Guaranteed>? guaranteed,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? queuedResourceId,
-    pulumi.Output<QueueingPolicy>? queueingPolicy,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? reservationName,
-    pulumi.Output<Map<String, dynamic>>? spot,
-    pulumi.Output<Tpu>? tpu,
-  }) :
-      bestEffort = pulumi.Input.asOptionalInput<Map<String, dynamic>>(bestEffort),
-      guaranteed = pulumi.Input.asOptionalInput<Guaranteed>(guaranteed),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queuedResourceId = pulumi.Input.asOptionalInput<String>(queuedResourceId),
-      queueingPolicy = pulumi.Input.asOptionalInput<QueueingPolicy>(queueingPolicy),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      reservationName = pulumi.Input.asOptionalInput<String>(reservationName),
-      spot = pulumi.Input.asOptionalInput<Map<String, dynamic>>(spot),
-      tpu = pulumi.Input.asOptionalInput<Tpu>(tpu);
+    this.bestEffort,
+    this.guaranteed,
+    this.location,
+    this.project,
+    this.queuedResourceId,
+    this.queueingPolicy,
+    this.requestId,
+    this.reservationName,
+    this.spot,
+    this.tpu,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class QueuedResourceArgs {
 
   factory QueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return QueuedResourceArgs(
-      bestEffort: map['bestEffort'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['bestEffort'] as Map).cast<String, dynamic>()),
-      guaranteed: map['guaranteed'] == null ? null : pulumi.Output.create<Guaranteed>(Guaranteed.fromMap((map['guaranteed'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      queuedResourceId: map['queuedResourceId'] == null ? null : pulumi.Output.create<String>(map['queuedResourceId'] as String),
-      queueingPolicy: map['queueingPolicy'] == null ? null : pulumi.Output.create<QueueingPolicy>(QueueingPolicy.fromMap((map['queueingPolicy'] as Map).cast<String, dynamic>())),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      reservationName: map['reservationName'] == null ? null : pulumi.Output.create<String>(map['reservationName'] as String),
-      spot: map['spot'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['spot'] as Map).cast<String, dynamic>()),
-      tpu: map['tpu'] == null ? null : pulumi.Output.create<Tpu>(Tpu.fromMap((map['tpu'] as Map).cast<String, dynamic>())),
+      bestEffort: map['bestEffort'] == null ? null : ((map['bestEffort'] as Map).cast<String, dynamic>()).input(),
+      guaranteed: map['guaranteed'] == null ? null : (Guaranteed.fromMap((map['guaranteed'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      queuedResourceId: map['queuedResourceId'] == null ? null : (map['queuedResourceId'] as String).input(),
+      queueingPolicy: map['queueingPolicy'] == null ? null : (QueueingPolicy.fromMap((map['queueingPolicy'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      reservationName: map['reservationName'] == null ? null : (map['reservationName'] as String).input(),
+      spot: map['spot'] == null ? null : ((map['spot'] as Map).cast<String, dynamic>()).input(),
+      tpu: map['tpu'] == null ? null : (Tpu.fromMap((map['tpu'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

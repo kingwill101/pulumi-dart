@@ -31,21 +31,14 @@ class WorkspaceProductPolicyArgs {
   /// [value] Contents of the Policy as defined by the format.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   WorkspaceProductPolicyArgs({
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? policyId,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> value,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      format = pulumi.Input.asOptionalInput<String>(format),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      productId = pulumi.Input.asInput<String>(productId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      value = pulumi.Input.asInput<String>(value),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.format,
+    this.policyId,
+    required this.productId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.value,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class WorkspaceProductPolicyArgs {
 
   factory WorkspaceProductPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceProductPolicyArgs(
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      value: (map['value'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

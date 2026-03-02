@@ -9,13 +9,13 @@ class RegionInstanceGroupManagerStatus {
   /// Properties to set on all instances in the group. After setting
   /// allInstancesConfig on the group, you must update the group's instances to
   /// apply the configuration.
-  final List<RegionInstanceGroupManagerStatusAllInstancesConfig>? allInstancesConfigs;
+  final pulumi.Input<List<RegionInstanceGroupManagerStatusAllInstancesConfig>>? allInstancesConfigs;
   /// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
-  final bool? isStable;
+  final pulumi.Input<bool>? isStable;
   /// Stateful status of the given Instance Group Manager.
-  final List<RegionInstanceGroupManagerStatusStateful>? statefuls;
+  final pulumi.Input<List<RegionInstanceGroupManagerStatusStateful>>? statefuls;
   /// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-  final List<RegionInstanceGroupManagerStatusVersionTarget>? versionTargets;
+  final pulumi.Input<List<RegionInstanceGroupManagerStatusVersionTarget>>? versionTargets;
 
   /// Creates a new [RegionInstanceGroupManagerStatus].
   /// [allInstancesConfigs] Properties to set on all instances in the group. After setting
@@ -31,19 +31,19 @@ class RegionInstanceGroupManagerStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allInstancesConfigs': ?allInstancesConfigs == null ? null : pulumi.Input.encodeList<RegionInstanceGroupManagerStatusAllInstancesConfig, Map<String, dynamic>>(allInstancesConfigs!, (value) => value.toMap()),
+      'allInstancesConfigs': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerStatusAllInstancesConfig>, List<Map<String, dynamic>>>(allInstancesConfigs, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerStatusAllInstancesConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isStable': ?isStable,
-      'statefuls': ?statefuls == null ? null : pulumi.Input.encodeList<RegionInstanceGroupManagerStatusStateful, Map<String, dynamic>>(statefuls!, (value) => value.toMap()),
-      'versionTargets': ?versionTargets == null ? null : pulumi.Input.encodeList<RegionInstanceGroupManagerStatusVersionTarget, Map<String, dynamic>>(versionTargets!, (value) => value.toMap()),
+      'statefuls': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerStatusStateful>, List<Map<String, dynamic>>>(statefuls, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerStatusStateful, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'versionTargets': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceGroupManagerStatusVersionTarget>, List<Map<String, dynamic>>>(versionTargets, (value) => pulumi.Input.encodeList<RegionInstanceGroupManagerStatusVersionTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RegionInstanceGroupManagerStatus.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStatus(
-      allInstancesConfigs: map['allInstancesConfigs'] == null ? null : pulumi.Input.decodeList<RegionInstanceGroupManagerStatusAllInstancesConfig>(map['allInstancesConfigs'], (value) => RegionInstanceGroupManagerStatusAllInstancesConfig.fromMap((value as Map).cast<String, dynamic>())),
-      isStable: map['isStable'] == null ? null : map['isStable'] as bool,
-      statefuls: map['statefuls'] == null ? null : pulumi.Input.decodeList<RegionInstanceGroupManagerStatusStateful>(map['statefuls'], (value) => RegionInstanceGroupManagerStatusStateful.fromMap((value as Map).cast<String, dynamic>())),
-      versionTargets: map['versionTargets'] == null ? null : pulumi.Input.decodeList<RegionInstanceGroupManagerStatusVersionTarget>(map['versionTargets'], (value) => RegionInstanceGroupManagerStatusVersionTarget.fromMap((value as Map).cast<String, dynamic>())),
+      allInstancesConfigs: map['allInstancesConfigs'] == null ? null : (pulumi.Input.decodeList<RegionInstanceGroupManagerStatusAllInstancesConfig>(map['allInstancesConfigs'], (value) => RegionInstanceGroupManagerStatusAllInstancesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isStable: map['isStable'] == null ? null : (map['isStable'] as bool).input(),
+      statefuls: map['statefuls'] == null ? null : (pulumi.Input.decodeList<RegionInstanceGroupManagerStatusStateful>(map['statefuls'], (value) => RegionInstanceGroupManagerStatusStateful.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      versionTargets: map['versionTargets'] == null ? null : (pulumi.Input.decodeList<RegionInstanceGroupManagerStatusVersionTarget>(map['versionTargets'], (value) => RegionInstanceGroupManagerStatusVersionTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

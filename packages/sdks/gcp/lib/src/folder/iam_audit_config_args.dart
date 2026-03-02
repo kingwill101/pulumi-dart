@@ -20,13 +20,10 @@ class IamAuditConfigArgs {
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   IamAuditConfigArgs({
-    required pulumi.Output<List<IamAuditConfigAuditLogConfig>> auditLogConfigs,
-    required pulumi.Output<String> folder,
-    required pulumi.Output<String> service,
-  }) :
-      auditLogConfigs = pulumi.Input.asInput<List<IamAuditConfigAuditLogConfig>>(auditLogConfigs),
-      folder = pulumi.Input.asInput<String>(folder),
-      service = pulumi.Input.asInput<String>(service);
+    required this.auditLogConfigs,
+    required this.folder,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class IamAuditConfigArgs {
 
   factory IamAuditConfigArgs.fromMap(Map<String, dynamic> map) {
     return IamAuditConfigArgs(
-      auditLogConfigs: pulumi.Output.create<List<IamAuditConfigAuditLogConfig>>(pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      auditLogConfigs: (pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      folder: (map['folder'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

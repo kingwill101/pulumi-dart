@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualClusterContainerProviderInfoEksInfo {
   /// The namespace where the EMR Containers cluster is running
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Creates a new [VirtualClusterContainerProviderInfoEksInfo].
   /// [namespace] The namespace where the EMR Containers cluster is running
@@ -19,7 +20,7 @@ class VirtualClusterContainerProviderInfoEksInfo {
 
   factory VirtualClusterContainerProviderInfoEksInfo.fromMap(Map<String, dynamic> map) {
     return VirtualClusterContainerProviderInfoEksInfo(
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
     );
   }
 }

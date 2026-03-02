@@ -40,25 +40,16 @@ class GetSegmentV2Args {
   /// [segmentId] The ID of the network segment
   /// [segmentationId] The segmentation ID of the network segment.
   GetSegmentV2Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkId,
-    pulumi.Output<String>? networkType,
-    pulumi.Output<String>? physicalNetwork,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? revisionNumber,
-    pulumi.Output<String>? segmentId,
-    pulumi.Output<int>? segmentationId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkId = pulumi.Input.asOptionalInput<String>(networkId),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType),
-      physicalNetwork = pulumi.Input.asOptionalInput<String>(physicalNetwork),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revisionNumber = pulumi.Input.asOptionalInput<int>(revisionNumber),
-      segmentId = pulumi.Input.asOptionalInput<String>(segmentId),
-      segmentationId = pulumi.Input.asOptionalInput<int>(segmentationId);
+    this.description,
+    this.name,
+    this.networkId,
+    this.networkType,
+    this.physicalNetwork,
+    this.region,
+    this.revisionNumber,
+    this.segmentId,
+    this.segmentationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class GetSegmentV2Args {
 
   factory GetSegmentV2Args.fromMap(Map<String, dynamic> map) {
     return GetSegmentV2Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<String>(map['networkId'] as String),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
-      physicalNetwork: map['physicalNetwork'] == null ? null : pulumi.Output.create<String>(map['physicalNetwork'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revisionNumber: map['revisionNumber'] == null ? null : pulumi.Output.create<int>(map['revisionNumber'] as int),
-      segmentId: map['segmentId'] == null ? null : pulumi.Output.create<String>(map['segmentId'] as String),
-      segmentationId: map['segmentationId'] == null ? null : pulumi.Output.create<int>(map['segmentationId'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revisionNumber: map['revisionNumber'] == null ? null : (map['revisionNumber'] as int).input(),
+      segmentId: map['segmentId'] == null ? null : (map['segmentId'] as String).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
     );
   }
 }

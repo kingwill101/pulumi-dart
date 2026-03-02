@@ -60,35 +60,21 @@ class FirewallPolicyDraftArgs {
   /// [threatIntelMode] The operation mode for Threat Intelligence.
   /// [threatIntelWhitelist] ThreatIntel Whitelist for Firewall Policy.
   FirewallPolicyDraftArgs({
-    pulumi.Output<SubResource>? basePolicy,
-    pulumi.Output<DnsSettings>? dnsSettings,
-    pulumi.Output<ExplicitProxy>? explicitProxy,
-    required pulumi.Output<String> firewallPolicyName,
-    pulumi.Output<String>? id,
-    pulumi.Output<FirewallPolicyInsights>? insights,
-    pulumi.Output<FirewallPolicyIntrusionDetection>? intrusionDetection,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<FirewallPolicySNAT>? snat,
-    pulumi.Output<FirewallPolicySQL>? sql,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? threatIntelMode,
-    pulumi.Output<FirewallPolicyThreatIntelWhitelist>? threatIntelWhitelist,
-  }) :
-      basePolicy = pulumi.Input.asOptionalInput<SubResource>(basePolicy),
-      dnsSettings = pulumi.Input.asOptionalInput<DnsSettings>(dnsSettings),
-      explicitProxy = pulumi.Input.asOptionalInput<ExplicitProxy>(explicitProxy),
-      firewallPolicyName = pulumi.Input.asInput<String>(firewallPolicyName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      insights = pulumi.Input.asOptionalInput<FirewallPolicyInsights>(insights),
-      intrusionDetection = pulumi.Input.asOptionalInput<FirewallPolicyIntrusionDetection>(intrusionDetection),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      snat = pulumi.Input.asOptionalInput<FirewallPolicySNAT>(snat),
-      sql = pulumi.Input.asOptionalInput<FirewallPolicySQL>(sql),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      threatIntelMode = pulumi.Input.asOptionalInput<String>(threatIntelMode),
-      threatIntelWhitelist = pulumi.Input.asOptionalInput<FirewallPolicyThreatIntelWhitelist>(threatIntelWhitelist);
+    this.basePolicy,
+    this.dnsSettings,
+    this.explicitProxy,
+    required this.firewallPolicyName,
+    this.id,
+    this.insights,
+    this.intrusionDetection,
+    this.location,
+    required this.resourceGroupName,
+    this.snat,
+    this.sql,
+    this.tags,
+    this.threatIntelMode,
+    this.threatIntelWhitelist,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,20 +97,20 @@ class FirewallPolicyDraftArgs {
 
   factory FirewallPolicyDraftArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyDraftArgs(
-      basePolicy: map['basePolicy'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['basePolicy'] as Map).cast<String, dynamic>())),
-      dnsSettings: map['dnsSettings'] == null ? null : pulumi.Output.create<DnsSettings>(DnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())),
-      explicitProxy: map['explicitProxy'] == null ? null : pulumi.Output.create<ExplicitProxy>(ExplicitProxy.fromMap((map['explicitProxy'] as Map).cast<String, dynamic>())),
-      firewallPolicyName: pulumi.Output.create<String>(map['firewallPolicyName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      insights: map['insights'] == null ? null : pulumi.Output.create<FirewallPolicyInsights>(FirewallPolicyInsights.fromMap((map['insights'] as Map).cast<String, dynamic>())),
-      intrusionDetection: map['intrusionDetection'] == null ? null : pulumi.Output.create<FirewallPolicyIntrusionDetection>(FirewallPolicyIntrusionDetection.fromMap((map['intrusionDetection'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      snat: map['snat'] == null ? null : pulumi.Output.create<FirewallPolicySNAT>(FirewallPolicySNAT.fromMap((map['snat'] as Map).cast<String, dynamic>())),
-      sql: map['sql'] == null ? null : pulumi.Output.create<FirewallPolicySQL>(FirewallPolicySQL.fromMap((map['sql'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      threatIntelMode: map['threatIntelMode'] == null ? null : pulumi.Output.create<String>(map['threatIntelMode'] as String),
-      threatIntelWhitelist: map['threatIntelWhitelist'] == null ? null : pulumi.Output.create<FirewallPolicyThreatIntelWhitelist>(FirewallPolicyThreatIntelWhitelist.fromMap((map['threatIntelWhitelist'] as Map).cast<String, dynamic>())),
+      basePolicy: map['basePolicy'] == null ? null : (SubResource.fromMap((map['basePolicy'] as Map).cast<String, dynamic>())).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (DnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      explicitProxy: map['explicitProxy'] == null ? null : (ExplicitProxy.fromMap((map['explicitProxy'] as Map).cast<String, dynamic>())).input(),
+      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      insights: map['insights'] == null ? null : (FirewallPolicyInsights.fromMap((map['insights'] as Map).cast<String, dynamic>())).input(),
+      intrusionDetection: map['intrusionDetection'] == null ? null : (FirewallPolicyIntrusionDetection.fromMap((map['intrusionDetection'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      snat: map['snat'] == null ? null : (FirewallPolicySNAT.fromMap((map['snat'] as Map).cast<String, dynamic>())).input(),
+      sql: map['sql'] == null ? null : (FirewallPolicySQL.fromMap((map['sql'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      threatIntelMode: map['threatIntelMode'] == null ? null : (map['threatIntelMode'] as String).input(),
+      threatIntelWhitelist: map['threatIntelWhitelist'] == null ? null : (FirewallPolicyThreatIntelWhitelist.fromMap((map['threatIntelWhitelist'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

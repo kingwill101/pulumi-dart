@@ -5,9 +5,9 @@ import 'web_acl_rule_statement_rate_based_statement_custom_key_cookie_text_trans
 
 class WebAclRuleStatementRateBasedStatementCustomKeyCookie {
   /// The name of the cookie to use.
-  final String name;
+  final pulumi.Input<String> name;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required. See `text_transformation` above for details.
-  final List<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation> textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>> textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyCookie].
   /// [name] The name of the cookie to use.
@@ -20,14 +20,14 @@ class WebAclRuleStatementRateBasedStatementCustomKeyCookie {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'textTransformations': pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation, Map<String, dynamic>>(textTransformations, (value) => value.toMap()),
+      'textTransformations': pulumi.Input.mapInputValue<List<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebAclRuleStatementRateBasedStatementCustomKeyCookie.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyCookie(
-      name: map['name'] as String,
-      textTransformations: pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

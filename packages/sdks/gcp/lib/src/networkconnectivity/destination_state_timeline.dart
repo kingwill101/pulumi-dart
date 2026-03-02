@@ -7,7 +7,7 @@ class DestinationStateTimeline {
   /// (Output)
   /// The state and activation time details of the resource state.
   /// Structure is documented below.
-  final List<DestinationStateTimelineState>? states;
+  final pulumi.Input<List<DestinationStateTimelineState>>? states;
 
   /// Creates a new [DestinationStateTimeline].
   /// [states] (Output)
@@ -17,13 +17,13 @@ class DestinationStateTimeline {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'states': ?states == null ? null : pulumi.Input.encodeList<DestinationStateTimelineState, Map<String, dynamic>>(states!, (value) => value.toMap()),
+      'states': ?pulumi.Input.mapOptionalInputValue<List<DestinationStateTimelineState>, List<Map<String, dynamic>>>(states, (value) => pulumi.Input.encodeList<DestinationStateTimelineState, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DestinationStateTimeline.fromMap(Map<String, dynamic> map) {
     return DestinationStateTimeline(
-      states: map['states'] == null ? null : pulumi.Input.decodeList<DestinationStateTimelineState>(map['states'], (value) => DestinationStateTimelineState.fromMap((value as Map).cast<String, dynamic>())),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<DestinationStateTimelineState>(map['states'], (value) => DestinationStateTimelineState.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

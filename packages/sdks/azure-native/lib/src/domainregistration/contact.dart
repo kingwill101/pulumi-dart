@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address.dart';
 
 /// Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois
 /// directories as per ICANN requirements.
 class Contact {
   /// Mailing address.
-  final Address? addressMailing;
+  final pulumi.Input<Address>? addressMailing;
   /// Email address.
-  final String email;
+  final pulumi.Input<String> email;
   /// Fax number.
-  final String? fax;
+  final pulumi.Input<String>? fax;
   /// Job title.
-  final String? jobTitle;
+  final pulumi.Input<String>? jobTitle;
   /// First name.
-  final String nameFirst;
+  final pulumi.Input<String> nameFirst;
   /// Last name.
-  final String nameLast;
+  final pulumi.Input<String> nameLast;
   /// Middle name.
-  final String? nameMiddle;
+  final pulumi.Input<String>? nameMiddle;
   /// Organization contact belongs to.
-  final String? organization;
+  final pulumi.Input<String>? organization;
   /// Phone number.
-  final String phone;
+  final pulumi.Input<String> phone;
 
   /// Creates a new [Contact].
   /// [addressMailing] Mailing address.
@@ -48,7 +49,7 @@ class Contact {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addressMailing': ?addressMailing == null ? null : addressMailing!.toMap(),
+      'addressMailing': ?pulumi.Input.mapOptionalInputValue<Address, Map<String, dynamic>>(addressMailing, (value) => value.toMap()),
       'email': email,
       'fax': ?fax,
       'jobTitle': ?jobTitle,
@@ -62,15 +63,15 @@ class Contact {
 
   factory Contact.fromMap(Map<String, dynamic> map) {
     return Contact(
-      addressMailing: map['addressMailing'] == null ? null : Address.fromMap((map['addressMailing'] as Map).cast<String, dynamic>()),
-      email: map['email'] as String,
-      fax: map['fax'] == null ? null : map['fax'] as String,
-      jobTitle: map['jobTitle'] == null ? null : map['jobTitle'] as String,
-      nameFirst: map['nameFirst'] as String,
-      nameLast: map['nameLast'] as String,
-      nameMiddle: map['nameMiddle'] == null ? null : map['nameMiddle'] as String,
-      organization: map['organization'] == null ? null : map['organization'] as String,
-      phone: map['phone'] as String,
+      addressMailing: map['addressMailing'] == null ? null : (Address.fromMap((map['addressMailing'] as Map).cast<String, dynamic>())).input(),
+      email: (map['email'] as String).input(),
+      fax: map['fax'] == null ? null : (map['fax'] as String).input(),
+      jobTitle: map['jobTitle'] == null ? null : (map['jobTitle'] as String).input(),
+      nameFirst: (map['nameFirst'] as String).input(),
+      nameLast: (map['nameLast'] as String).input(),
+      nameMiddle: map['nameMiddle'] == null ? null : (map['nameMiddle'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      phone: (map['phone'] as String).input(),
     );
   }
 }

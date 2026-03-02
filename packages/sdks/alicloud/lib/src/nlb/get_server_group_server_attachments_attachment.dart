@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerGroupServerAttachmentsAttachment {
   /// The description of the backend server.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the server group. The value is formulated as `<server_group_id>:<server_id>:<server_type>:<port>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The port used by the backend server.
-  final int port;
+  final pulumi.Input<int> port;
   /// The ID of the server group.
-  final String serverGroupId;
+  final pulumi.Input<String> serverGroupId;
   /// The ID of the server.
-  final String serverId;
+  final pulumi.Input<String> serverId;
   /// The IP address of the backend server.
-  final String serverIp;
+  final pulumi.Input<String> serverIp;
   /// The type of the backend server.
-  final String serverType;
+  final pulumi.Input<String> serverType;
   /// Indicates the status of the backend server.
-  final String status;
+  final pulumi.Input<String> status;
   /// The weight of the backend server.
-  final int weight;
+  final pulumi.Input<int> weight;
   /// The zone ID of the server.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetServerGroupServerAttachmentsAttachment].
   /// [description] The description of the backend server.
@@ -64,16 +65,16 @@ class GetServerGroupServerAttachmentsAttachment {
 
   factory GetServerGroupServerAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetServerGroupServerAttachmentsAttachment(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      port: map['port'] as int,
-      serverGroupId: map['serverGroupId'] as String,
-      serverId: map['serverId'] as String,
-      serverIp: map['serverIp'] as String,
-      serverType: map['serverType'] as String,
-      status: map['status'] as String,
-      weight: map['weight'] as int,
-      zoneId: map['zoneId'] as String,
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      port: (map['port'] as int).input(),
+      serverGroupId: (map['serverGroupId'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      serverIp: (map['serverIp'] as String).input(),
+      serverType: (map['serverType'] as String).input(),
+      status: (map['status'] as String).input(),
+      weight: (map['weight'] as int).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

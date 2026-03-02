@@ -30,21 +30,14 @@ class ReplicaSetRoleState {
   /// [replicaSetRole] The role of the related connection string.
   /// [roleId] The role ID in the replica set.
   ReplicaSetRoleState({
-    pulumi.Output<String>? connectionDomain,
-    pulumi.Output<int>? connectionPort,
-    pulumi.Output<String>? connectionPrefix,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? networkType,
-    pulumi.Output<String>? replicaSetRole,
-    pulumi.Output<String>? roleId,
-  }) :
-      connectionDomain = pulumi.Input.asOptionalInput<String>(connectionDomain),
-      connectionPort = pulumi.Input.asOptionalInput<int>(connectionPort),
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType),
-      replicaSetRole = pulumi.Input.asOptionalInput<String>(replicaSetRole),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId);
+    this.connectionDomain,
+    this.connectionPort,
+    this.connectionPrefix,
+    this.dbInstanceId,
+    this.networkType,
+    this.replicaSetRole,
+    this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ReplicaSetRoleState {
 
   factory ReplicaSetRoleState.fromMap(Map<String, dynamic> map) {
     return ReplicaSetRoleState(
-      connectionDomain: map['connectionDomain'] == null ? null : pulumi.Output.create<String>(map['connectionDomain'] as String),
-      connectionPort: map['connectionPort'] == null ? null : pulumi.Output.create<int>(map['connectionPort'] as int),
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
-      replicaSetRole: map['replicaSetRole'] == null ? null : pulumi.Output.create<String>(map['replicaSetRole'] as String),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
+      connectionDomain: map['connectionDomain'] == null ? null : (map['connectionDomain'] as String).input(),
+      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort'] as int).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      replicaSetRole: map['replicaSetRole'] == null ? null : (map['replicaSetRole'] as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
     );
   }
 }

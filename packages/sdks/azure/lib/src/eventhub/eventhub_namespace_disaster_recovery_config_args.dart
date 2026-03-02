@@ -22,15 +22,11 @@ class EventhubNamespaceDisasterRecoveryConfigArgs {
   /// [partnerNamespaceId] The ID of the EventHub Namespace to replicate to.
   /// [resourceGroupName] The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
   EventhubNamespaceDisasterRecoveryConfigArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> partnerNamespaceId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      partnerNamespaceId = pulumi.Input.asInput<String>(partnerNamespaceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.name,
+    required this.namespaceName,
+    required this.partnerNamespaceId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EventhubNamespaceDisasterRecoveryConfigArgs {
 
   factory EventhubNamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return EventhubNamespaceDisasterRecoveryConfigArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      partnerNamespaceId: pulumi.Output.create<String>(map['partnerNamespaceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      partnerNamespaceId: (map['partnerNamespaceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

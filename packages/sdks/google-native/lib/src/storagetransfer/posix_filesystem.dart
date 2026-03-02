@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A POSIX filesystem resource.
 class PosixFilesystem {
   /// Root directory path to the filesystem.
-  final String? rootDirectory;
+  final pulumi.Input<String>? rootDirectory;
 
   /// Creates a new [PosixFilesystem].
   /// [rootDirectory] Root directory path to the filesystem.
@@ -20,7 +21,7 @@ class PosixFilesystem {
 
   factory PosixFilesystem.fromMap(Map<String, dynamic> map) {
     return PosixFilesystem(
-      rootDirectory: map['rootDirectory'] == null ? null : map['rootDirectory'] as String,
+      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory'] as String).input(),
     );
   }
 }

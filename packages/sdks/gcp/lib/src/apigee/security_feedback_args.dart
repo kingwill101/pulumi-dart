@@ -36,21 +36,14 @@ class SecurityFeedbackArgs {
   /// [orgId] The Apigee Organization associated with the Apigee Security Feedback,
   /// [reason] The reason for the feedback.
   SecurityFeedbackArgs({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<List<SecurityFeedbackFeedbackContext>> feedbackContexts,
-    required pulumi.Output<String> feedbackId,
-    required pulumi.Output<String> feedbackType,
-    required pulumi.Output<String> orgId,
-    pulumi.Output<String>? reason,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      feedbackContexts = pulumi.Input.asInput<List<SecurityFeedbackFeedbackContext>>(feedbackContexts),
-      feedbackId = pulumi.Input.asInput<String>(feedbackId),
-      feedbackType = pulumi.Input.asInput<String>(feedbackType),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      reason = pulumi.Input.asOptionalInput<String>(reason);
+    this.comment,
+    this.displayName,
+    required this.feedbackContexts,
+    required this.feedbackId,
+    required this.feedbackType,
+    required this.orgId,
+    this.reason,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class SecurityFeedbackArgs {
 
   factory SecurityFeedbackArgs.fromMap(Map<String, dynamic> map) {
     return SecurityFeedbackArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      feedbackContexts: pulumi.Output.create<List<SecurityFeedbackFeedbackContext>>(pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(map['feedbackContexts'], (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>()))),
-      feedbackId: pulumi.Output.create<String>(map['feedbackId'] as String),
-      feedbackType: pulumi.Output.create<String>(map['feedbackType'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      reason: map['reason'] == null ? null : pulumi.Output.create<String>(map['reason'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      feedbackContexts: (pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(map['feedbackContexts'], (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      feedbackId: (map['feedbackId'] as String).input(),
+      feedbackType: (map['feedbackType'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
     );
   }
 }

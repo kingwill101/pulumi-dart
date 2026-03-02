@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayLocationData {
   /// The city or locality where the resource is located.
-  final String city;
+  final pulumi.Input<String> city;
   /// The district, state, or province where the resource is located.
-  final String district;
+  final pulumi.Input<String> district;
   /// The name of the API Management Gateway.
-  final String name;
-  final String region;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetGatewayLocationData].
   /// [city] The city or locality where the resource is located.
@@ -33,10 +34,10 @@ class GetGatewayLocationData {
 
   factory GetGatewayLocationData.fromMap(Map<String, dynamic> map) {
     return GetGatewayLocationData(
-      city: map['city'] as String,
-      district: map['district'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
+      city: (map['city'] as String).input(),
+      district: (map['district'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

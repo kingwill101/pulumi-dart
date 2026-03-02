@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'version_kind.dart';
 
 /// Version contains structured information about the version of a package.
 class Version {
   /// Used to correct mistakes in the version numbering scheme.
-  final int? epoch;
+  final pulumi.Input<int>? epoch;
   /// Human readable version string. This string is of the form :- and is only set when kind is NORMAL.
-  final String? fullName;
+  final pulumi.Input<String>? fullName;
   /// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
-  final bool? inclusive;
+  final pulumi.Input<bool>? inclusive;
   /// Distinguishes between sentinel MIN/MAX versions and normal versions.
-  final VersionKind kind;
+  final pulumi.Input<VersionKind> kind;
   /// Required only when version kind is NORMAL. The main part of the version name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The iteration of the package build from the above version.
-  final String? revision;
+  final pulumi.Input<String>? revision;
 
   /// Creates a new [Version].
   /// [epoch] Used to correct mistakes in the version numbering scheme.
@@ -38,7 +39,7 @@ class Version {
       'epoch': ?epoch,
       'fullName': ?fullName,
       'inclusive': ?inclusive,
-      'kind': kind.value,
+      'kind': pulumi.Input.mapInputValue<VersionKind, String>(kind, (value) => value.value),
       'name': ?name,
       'revision': ?revision,
     };
@@ -46,12 +47,12 @@ class Version {
 
   factory Version.fromMap(Map<String, dynamic> map) {
     return Version(
-      epoch: map['epoch'] == null ? null : map['epoch'] as int,
-      fullName: map['fullName'] == null ? null : map['fullName'] as String,
-      inclusive: map['inclusive'] == null ? null : map['inclusive'] as bool,
-      kind: VersionKind.fromValue(map['kind'] as String),
-      name: map['name'] == null ? null : map['name'] as String,
-      revision: map['revision'] == null ? null : map['revision'] as String,
+      epoch: map['epoch'] == null ? null : (map['epoch'] as int).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
+      inclusive: map['inclusive'] == null ? null : (map['inclusive'] as bool).input(),
+      kind: (VersionKind.fromValue(map['kind'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
     );
   }
 }

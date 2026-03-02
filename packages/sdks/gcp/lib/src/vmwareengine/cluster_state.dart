@@ -46,25 +46,16 @@ class ClusterState {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last updated time of this resource.
   ClusterState({
-    pulumi.Output<ClusterAutoscalingSettings>? autoscalingSettings,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? management,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ClusterNodeTypeConfig>>? nodeTypeConfigs,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      autoscalingSettings = pulumi.Input.asOptionalInput<ClusterAutoscalingSettings>(autoscalingSettings),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      management = pulumi.Input.asOptionalInput<bool>(management),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeTypeConfigs = pulumi.Input.asOptionalInput<List<ClusterNodeTypeConfig>>(nodeTypeConfigs),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.autoscalingSettings,
+    this.createTime,
+    this.management,
+    this.name,
+    this.nodeTypeConfigs,
+    this.parent,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,15 +73,15 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      autoscalingSettings: map['autoscalingSettings'] == null ? null : pulumi.Output.create<ClusterAutoscalingSettings>(ClusterAutoscalingSettings.fromMap((map['autoscalingSettings'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      management: map['management'] == null ? null : pulumi.Output.create<bool>(map['management'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : pulumi.Output.create<List<ClusterNodeTypeConfig>>(pulumi.Input.decodeList<ClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      autoscalingSettings: map['autoscalingSettings'] == null ? null : (ClusterAutoscalingSettings.fromMap((map['autoscalingSettings'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      management: map['management'] == null ? null : (map['management'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

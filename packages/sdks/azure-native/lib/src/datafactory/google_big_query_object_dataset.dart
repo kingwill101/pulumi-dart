@@ -8,28 +8,28 @@ import 'parameter_specification.dart';
 /// Google BigQuery service dataset.
 class GoogleBigQueryObjectDataset {
   /// List of tags that can be used for describing the Dataset.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The database name of the Google BigQuery. Type: string (or Expression with resultType string).
-  final dynamic dataset;
+  final pulumi.Input<dynamic>? dataset;
   /// Dataset description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final DatasetFolder? folder;
+  final pulumi.Input<DatasetFolder>? folder;
   /// Linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// Parameters for dataset.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-  final dynamic structure;
+  final pulumi.Input<dynamic>? structure;
   /// The table name of the Google BigQuery. Type: string (or Expression with resultType string).
-  final dynamic table;
+  final pulumi.Input<dynamic>? table;
   /// This property will be retired. Please consider using database + table properties instead.
-  final dynamic tableName;
+  final pulumi.Input<dynamic>? tableName;
   /// Type of dataset.
   /// Expected value is 'GoogleBigQueryObject'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleBigQueryObjectDataset].
   /// [annotations] List of tags that can be used for describing the Dataset.
@@ -62,9 +62,9 @@ class GoogleBigQueryObjectDataset {
       'annotations': ?annotations,
       'dataset': ?dataset,
       'description': ?description,
-      'folder': ?folder == null ? null : folder!.toMap(),
-      'linkedServiceName': linkedServiceName.toMap(),
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schema': ?schema,
       'structure': ?structure,
       'table': ?table,
@@ -75,17 +75,17 @@ class GoogleBigQueryObjectDataset {
 
   factory GoogleBigQueryObjectDataset.fromMap(Map<String, dynamic> map) {
     return GoogleBigQueryObjectDataset(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      dataset: map['dataset'] == null ? null : map['dataset'],
-      description: map['description'] == null ? null : map['description'] as String,
-      folder: map['folder'] == null ? null : DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      schema: map['schema'] == null ? null : map['schema'],
-      structure: map['structure'] == null ? null : map['structure'],
-      table: map['table'] == null ? null : map['table'],
-      tableName: map['tableName'] == null ? null : map['tableName'],
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      structure: map['structure'] == null ? null : (map['structure']).input(),
+      table: map['table'] == null ? null : (map['table']).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

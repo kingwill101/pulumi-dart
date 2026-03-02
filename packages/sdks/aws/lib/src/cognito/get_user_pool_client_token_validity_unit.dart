@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserPoolClientTokenValidityUnit {
   /// (Optional) Time unit in for the value in `access_token_validity`, defaults to `hours`.
-  final String accessToken;
+  final pulumi.Input<String> accessToken;
   /// (Optional) Time unit in for the value in `id_token_validity`, defaults to `hours`.
-  final String idToken;
+  final pulumi.Input<String> idToken;
   /// (Optional) Time unit in for the value in `refresh_token_validity`, defaults to `days`.
-  final String refreshToken;
+  final pulumi.Input<String> refreshToken;
 
   /// Creates a new [GetUserPoolClientTokenValidityUnit].
   /// [accessToken] (Optional) Time unit in for the value in `access_token_validity`, defaults to `hours`.
@@ -29,9 +30,9 @@ class GetUserPoolClientTokenValidityUnit {
 
   factory GetUserPoolClientTokenValidityUnit.fromMap(Map<String, dynamic> map) {
     return GetUserPoolClientTokenValidityUnit(
-      accessToken: map['accessToken'] as String,
-      idToken: map['idToken'] as String,
-      refreshToken: map['refreshToken'] as String,
+      accessToken: (map['accessToken'] as String).input(),
+      idToken: (map['idToken'] as String).input(),
+      refreshToken: (map['refreshToken'] as String).input(),
     );
   }
 }

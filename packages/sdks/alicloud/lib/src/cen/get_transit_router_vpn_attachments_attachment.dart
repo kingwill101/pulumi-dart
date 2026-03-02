@@ -5,35 +5,35 @@ import 'get_transit_router_vpn_attachments_attachment_zone.dart';
 
 class GetTransitRouterVpnAttachmentsAttachment {
   /// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
-  final bool autoPublishRouteEnabled;
+  final pulumi.Input<bool> autoPublishRouteEnabled;
   /// The ID of the Cloud Enterprise Network (CEN) instance.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// (Available since v1.245.0) The billing method of the VPN attachment.
-  final String chargeType;
+  final pulumi.Input<String> chargeType;
   /// The time when the VPN connection was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// The type of resource attached to the transit router.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The Status of Transit Router Vpn Attachment. Valid values: `Attached`, `Attaching`, `Detaching`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The description of the IPsec-VPN connection.
-  final String transitRouterAttachmentDescription;
+  final pulumi.Input<String> transitRouterAttachmentDescription;
   /// The ID of the VPN attachment.
-  final String transitRouterAttachmentId;
+  final pulumi.Input<String> transitRouterAttachmentId;
   /// The name of the VPN attachment.
-  final String transitRouterAttachmentName;
+  final pulumi.Input<String> transitRouterAttachmentName;
   /// The ID of the transit router.
-  final String transitRouterId;
+  final pulumi.Input<String> transitRouterId;
   /// The ID of the IPsec-VPN attachment.
-  final String vpnId;
+  final pulumi.Input<String> vpnId;
   /// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
-  final int vpnOwnerId;
+  final pulumi.Input<int> vpnOwnerId;
   /// The Zone ID in the current region.System will create resources under the Zone that you specify.Left blank if associated IPSec connection is in dual-tunnel mode.
-  final List<GetTransitRouterVpnAttachmentsAttachmentZone> zones;
+  final pulumi.Input<List<GetTransitRouterVpnAttachmentsAttachmentZone>> zones;
 
   /// Creates a new [GetTransitRouterVpnAttachmentsAttachment].
   /// [autoPublishRouteEnabled] Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment.
@@ -85,27 +85,27 @@ class GetTransitRouterVpnAttachmentsAttachment {
       'transitRouterId': transitRouterId,
       'vpnId': vpnId,
       'vpnOwnerId': vpnOwnerId,
-      'zones': pulumi.Input.encodeList<GetTransitRouterVpnAttachmentsAttachmentZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones': pulumi.Input.mapInputValue<List<GetTransitRouterVpnAttachmentsAttachmentZone>, List<Map<String, dynamic>>>(zones, (value) => pulumi.Input.encodeList<GetTransitRouterVpnAttachmentsAttachmentZone, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetTransitRouterVpnAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterVpnAttachmentsAttachment(
-      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] as bool,
-      cenId: map['cenId'] as String,
-      chargeType: map['chargeType'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      resourceType: map['resourceType'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
-      transitRouterAttachmentName: map['transitRouterAttachmentName'] as String,
-      transitRouterId: map['transitRouterId'] as String,
-      vpnId: map['vpnId'] as String,
-      vpnOwnerId: map['vpnOwnerId'] as int,
-      zones: pulumi.Input.decodeList<GetTransitRouterVpnAttachmentsAttachmentZone>(map['zones'], (value) => GetTransitRouterVpnAttachmentsAttachmentZone.fromMap((value as Map).cast<String, dynamic>())),
+      autoPublishRouteEnabled: (map['autoPublishRouteEnabled'] as bool).input(),
+      cenId: (map['cenId'] as String).input(),
+      chargeType: (map['chargeType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterAttachmentDescription: (map['transitRouterAttachmentDescription'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterAttachmentName: (map['transitRouterAttachmentName'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
+      vpnId: (map['vpnId'] as String).input(),
+      vpnOwnerId: (map['vpnOwnerId'] as int).input(),
+      zones: (pulumi.Input.decodeList<GetTransitRouterVpnAttachmentsAttachmentZone>(map['zones'], (value) => GetTransitRouterVpnAttachmentsAttachmentZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

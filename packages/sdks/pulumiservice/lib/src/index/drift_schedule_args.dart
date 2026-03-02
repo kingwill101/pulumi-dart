@@ -25,17 +25,12 @@ class DriftScheduleArgs {
   /// [scheduleCron] Cron expression for when to run drift detection.
   /// [stack] Stack name.
   DriftScheduleArgs({
-    pulumi.Output<bool>? autoRemediate,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> project,
-    required pulumi.Output<String> scheduleCron,
-    required pulumi.Output<String> stack,
-  }) :
-      autoRemediate = pulumi.Input.asOptionalInput<bool>(autoRemediate),
-      organization = pulumi.Input.asInput<String>(organization),
-      project = pulumi.Input.asInput<String>(project),
-      scheduleCron = pulumi.Input.asInput<String>(scheduleCron),
-      stack = pulumi.Input.asInput<String>(stack);
+    this.autoRemediate,
+    required this.organization,
+    required this.project,
+    required this.scheduleCron,
+    required this.stack,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DriftScheduleArgs {
 
   factory DriftScheduleArgs.fromMap(Map<String, dynamic> map) {
     return DriftScheduleArgs(
-      autoRemediate: map['autoRemediate'] == null ? null : pulumi.Output.create<bool>(map['autoRemediate'] as bool),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      scheduleCron: pulumi.Output.create<String>(map['scheduleCron'] as String),
-      stack: pulumi.Output.create<String>(map['stack'] as String),
+      autoRemediate: map['autoRemediate'] == null ? null : (map['autoRemediate'] as bool).input(),
+      organization: (map['organization'] as String).input(),
+      project: (map['project'] as String).input(),
+      scheduleCron: (map['scheduleCron'] as String).input(),
+      stack: (map['stack'] as String).input(),
     );
   }
 }

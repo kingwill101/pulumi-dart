@@ -32,23 +32,15 @@ class IngestionState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [tenantId] ID of the application tenant.
   IngestionState({
-    pulumi.Output<String>? app,
-    pulumi.Output<String>? appBundleArn,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? ingestionType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? tenantId,
-  }) :
-      app = pulumi.Input.asOptionalInput<String>(app),
-      appBundleArn = pulumi.Input.asOptionalInput<String>(appBundleArn),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      ingestionType = pulumi.Input.asOptionalInput<String>(ingestionType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.app,
+    this.appBundleArn,
+    this.arn,
+    this.ingestionType,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class IngestionState {
 
   factory IngestionState.fromMap(Map<String, dynamic> map) {
     return IngestionState(
-      app: map['app'] == null ? null : pulumi.Output.create<String>(map['app'] as String),
-      appBundleArn: map['appBundleArn'] == null ? null : pulumi.Output.create<String>(map['appBundleArn'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      ingestionType: map['ingestionType'] == null ? null : pulumi.Output.create<String>(map['ingestionType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      app: map['app'] == null ? null : (map['app'] as String).input(),
+      appBundleArn: map['appBundleArn'] == null ? null : (map['appBundleArn'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      ingestionType: map['ingestionType'] == null ? null : (map['ingestionType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

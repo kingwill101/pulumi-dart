@@ -14,11 +14,9 @@ class GetPublicAdvertisedPrefixComputeBetaArgs {
   /// [project] Optional.
   /// [publicAdvertisedPrefix] Required.
   GetPublicAdvertisedPrefixComputeBetaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> publicAdvertisedPrefix,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicAdvertisedPrefix = pulumi.Input.asInput<String>(publicAdvertisedPrefix);
+    this.project,
+    required this.publicAdvertisedPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetPublicAdvertisedPrefixComputeBetaArgs {
 
   factory GetPublicAdvertisedPrefixComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicAdvertisedPrefixComputeBetaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publicAdvertisedPrefix: pulumi.Output.create<String>(map['publicAdvertisedPrefix'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publicAdvertisedPrefix: (map['publicAdvertisedPrefix'] as String).input(),
     );
   }
 }

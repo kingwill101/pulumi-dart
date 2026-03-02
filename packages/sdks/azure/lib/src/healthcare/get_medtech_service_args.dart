@@ -16,11 +16,9 @@ class GetMedtechServiceArgs {
   /// [name] The name of the Healthcare Med Tech Service.
   /// [workspaceId] The id of the Healthcare Workspace in which the Healthcare Med Tech Service exists.
   GetMedtechServiceArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.name,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMedtechServiceArgs {
 
   factory GetMedtechServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetMedtechServiceArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      name: (map['name'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

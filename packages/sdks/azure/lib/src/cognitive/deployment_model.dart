@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentModel {
   /// The format of the Cognitive Services Account Deployment model. Changing this forces a new resource to be created.
   ///
   /// > **Note:** Possible values of `format` can be found by running the command `az cognitiveservices account list-models`. The available values may vary by region or due to quota limitations. These could include models from `AI21 Labs`, `Black Forest Labs`, `Cohere`, `Core42`, `DeepSeek`, `Meta`, `Microsoft`, `Mistral AI`, `OpenAI`, and `xAI`.
-  final String format;
+  final pulumi.Input<String> format;
   /// The name of the Cognitive Services Account Deployment model. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// The version of Cognitive Services Account Deployment model. If `version` is not specified, the default version of the model at the time will be assigned.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [DeploymentModel].
   /// [format] The format of the Cognitive Services Account Deployment model. Changing this forces a new resource to be created.
@@ -31,9 +32,9 @@ class DeploymentModel {
 
   factory DeploymentModel.fromMap(Map<String, dynamic> map) {
     return DeploymentModel(
-      format: map['format'] as String,
-      name: map['name'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      format: (map['format'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

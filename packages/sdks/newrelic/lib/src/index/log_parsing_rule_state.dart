@@ -34,25 +34,16 @@ class LogParsingRuleState {
   /// [name] Name of rule.
   /// [nrql] The NRQL to match events to the parsing rule.
   LogParsingRuleState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? attribute,
-    pulumi.Output<bool>? deleted,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? grok,
-    pulumi.Output<String>? lucene,
-    pulumi.Output<bool>? matched,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nrql,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      attribute = pulumi.Input.asOptionalInput<String>(attribute),
-      deleted = pulumi.Input.asOptionalInput<bool>(deleted),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      grok = pulumi.Input.asOptionalInput<String>(grok),
-      lucene = pulumi.Input.asOptionalInput<String>(lucene),
-      matched = pulumi.Input.asOptionalInput<bool>(matched),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nrql = pulumi.Input.asOptionalInput<String>(nrql);
+    this.accountId,
+    this.attribute,
+    this.deleted,
+    this.enabled,
+    this.grok,
+    this.lucene,
+    this.matched,
+    this.name,
+    this.nrql,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class LogParsingRuleState {
 
   factory LogParsingRuleState.fromMap(Map<String, dynamic> map) {
     return LogParsingRuleState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      attribute: map['attribute'] == null ? null : pulumi.Output.create<String>(map['attribute'] as String),
-      deleted: map['deleted'] == null ? null : pulumi.Output.create<bool>(map['deleted'] as bool),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      grok: map['grok'] == null ? null : pulumi.Output.create<String>(map['grok'] as String),
-      lucene: map['lucene'] == null ? null : pulumi.Output.create<String>(map['lucene'] as String),
-      matched: map['matched'] == null ? null : pulumi.Output.create<bool>(map['matched'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nrql: map['nrql'] == null ? null : pulumi.Output.create<String>(map['nrql'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      grok: map['grok'] == null ? null : (map['grok'] as String).input(),
+      lucene: map['lucene'] == null ? null : (map['lucene'] as String).input(),
+      matched: map['matched'] == null ? null : (map['matched'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nrql: map['nrql'] == null ? null : (map['nrql'] as String).input(),
     );
   }
 }

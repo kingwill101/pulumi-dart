@@ -9,23 +9,23 @@ import 'triggered_build_result_response.dart';
 /// Build resource properties payload
 class BuildPropertiesResponse {
   /// The resource id of agent pool
-  final String? agentPool;
+  final pulumi.Input<String>? agentPool;
   /// The APMs for this build
-  final List<ApmReferenceResponse>? apms;
+  final pulumi.Input<List<ApmReferenceResponse>>? apms;
   /// The resource id of builder to build the source code
-  final String? builder;
+  final pulumi.Input<String>? builder;
   /// The CA Certificates for this build
-  final List<CertificateReferenceResponse>? certificates;
+  final pulumi.Input<List<CertificateReferenceResponse>>? certificates;
   /// The environment variables for this build
-  final Map<String, String>? env;
+  final pulumi.Input<Map<String, String>>? env;
   /// Provisioning state of the KPack build result
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The relative path of source code
-  final String? relativePath;
+  final pulumi.Input<String>? relativePath;
   /// The customized build resource for this build
-  final BuildResourceRequestsResponse? resourceRequests;
+  final pulumi.Input<BuildResourceRequestsResponse>? resourceRequests;
   /// The build result triggered by this build
-  final TriggeredBuildResultResponse triggeredBuildResult;
+  final pulumi.Input<TriggeredBuildResultResponse> triggeredBuildResult;
 
   /// Creates a new [BuildPropertiesResponse].
   /// [agentPool] The resource id of agent pool
@@ -52,28 +52,28 @@ class BuildPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentPool': ?agentPool,
-      'apms': ?apms == null ? null : pulumi.Input.encodeList<ApmReferenceResponse, Map<String, dynamic>>(apms!, (value) => value.toMap()),
+      'apms': ?pulumi.Input.mapOptionalInputValue<List<ApmReferenceResponse>, List<Map<String, dynamic>>>(apms, (value) => pulumi.Input.encodeList<ApmReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'builder': ?builder,
-      'certificates': ?certificates == null ? null : pulumi.Input.encodeList<CertificateReferenceResponse, Map<String, dynamic>>(certificates!, (value) => value.toMap()),
+      'certificates': ?pulumi.Input.mapOptionalInputValue<List<CertificateReferenceResponse>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<CertificateReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'env': ?env,
       'provisioningState': provisioningState,
       'relativePath': ?relativePath,
-      'resourceRequests': ?resourceRequests == null ? null : resourceRequests!.toMap(),
-      'triggeredBuildResult': triggeredBuildResult.toMap(),
+      'resourceRequests': ?pulumi.Input.mapOptionalInputValue<BuildResourceRequestsResponse, Map<String, dynamic>>(resourceRequests, (value) => value.toMap()),
+      'triggeredBuildResult': pulumi.Input.mapInputValue<TriggeredBuildResultResponse, Map<String, dynamic>>(triggeredBuildResult, (value) => value.toMap()),
     };
   }
 
   factory BuildPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BuildPropertiesResponse(
-      agentPool: map['agentPool'] == null ? null : map['agentPool'] as String,
-      apms: map['apms'] == null ? null : pulumi.Input.decodeList<ApmReferenceResponse>(map['apms'], (value) => ApmReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      builder: map['builder'] == null ? null : map['builder'] as String,
-      certificates: map['certificates'] == null ? null : pulumi.Input.decodeList<CertificateReferenceResponse>(map['certificates'], (value) => CertificateReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      env: map['env'] == null ? null : (map['env'] as Map).cast<String, String>(),
-      provisioningState: map['provisioningState'] as String,
-      relativePath: map['relativePath'] == null ? null : map['relativePath'] as String,
-      resourceRequests: map['resourceRequests'] == null ? null : BuildResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>()),
-      triggeredBuildResult: TriggeredBuildResultResponse.fromMap((map['triggeredBuildResult'] as Map).cast<String, dynamic>()),
+      agentPool: map['agentPool'] == null ? null : (map['agentPool'] as String).input(),
+      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReferenceResponse>(map['apms'], (value) => ApmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      builder: map['builder'] == null ? null : (map['builder'] as String).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<CertificateReferenceResponse>(map['certificates'], (value) => CertificateReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (BuildResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      triggeredBuildResult: (TriggeredBuildResultResponse.fromMap((map['triggeredBuildResult'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

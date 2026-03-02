@@ -30,21 +30,14 @@ class LakeArgs {
   /// [metastore] Optional. Settings to manage lake and Dataproc Metastore service instance association.
   /// [project] Optional.
   LakeArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> lakeId,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudDataplexV1LakeMetastore>? metastore,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metastore = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1LakeMetastore>(metastore),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.displayName,
+    this.labels,
+    required this.lakeId,
+    this.location,
+    this.metastore,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class LakeArgs {
 
   factory LakeArgs.fromMap(Map<String, dynamic> map) {
     return LakeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lakeId: pulumi.Output.create<String>(map['lakeId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metastore: map['metastore'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1LakeMetastore>(GoogleCloudDataplexV1LakeMetastore.fromMap((map['metastore'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lakeId: (map['lakeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metastore: map['metastore'] == null ? null : (GoogleCloudDataplexV1LakeMetastore.fromMap((map['metastore'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

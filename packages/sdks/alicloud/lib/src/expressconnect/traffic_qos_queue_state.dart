@@ -38,21 +38,14 @@ class TrafficQosQueueState {
   /// [queueType] QoS queue type, value:
   /// [status] The status of the resource
   TrafficQosQueueState({
-    pulumi.Output<String>? bandwidthPercent,
-    pulumi.Output<String>? qosId,
-    pulumi.Output<String>? queueDescription,
-    pulumi.Output<String>? queueId,
-    pulumi.Output<String>? queueName,
-    pulumi.Output<String>? queueType,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidthPercent = pulumi.Input.asOptionalInput<String>(bandwidthPercent),
-      qosId = pulumi.Input.asOptionalInput<String>(qosId),
-      queueDescription = pulumi.Input.asOptionalInput<String>(queueDescription),
-      queueId = pulumi.Input.asOptionalInput<String>(queueId),
-      queueName = pulumi.Input.asOptionalInput<String>(queueName),
-      queueType = pulumi.Input.asOptionalInput<String>(queueType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidthPercent,
+    this.qosId,
+    this.queueDescription,
+    this.queueId,
+    this.queueName,
+    this.queueType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class TrafficQosQueueState {
 
   factory TrafficQosQueueState.fromMap(Map<String, dynamic> map) {
     return TrafficQosQueueState(
-      bandwidthPercent: map['bandwidthPercent'] == null ? null : pulumi.Output.create<String>(map['bandwidthPercent'] as String),
-      qosId: map['qosId'] == null ? null : pulumi.Output.create<String>(map['qosId'] as String),
-      queueDescription: map['queueDescription'] == null ? null : pulumi.Output.create<String>(map['queueDescription'] as String),
-      queueId: map['queueId'] == null ? null : pulumi.Output.create<String>(map['queueId'] as String),
-      queueName: map['queueName'] == null ? null : pulumi.Output.create<String>(map['queueName'] as String),
-      queueType: map['queueType'] == null ? null : pulumi.Output.create<String>(map['queueType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidthPercent: map['bandwidthPercent'] == null ? null : (map['bandwidthPercent'] as String).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
+      queueDescription: map['queueDescription'] == null ? null : (map['queueDescription'] as String).input(),
+      queueId: map['queueId'] == null ? null : (map['queueId'] as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      queueType: map['queueType'] == null ? null : (map['queueType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAclsAclEntryList {
-  final String comment;
-  final String entry;
+  final pulumi.Input<String> comment;
+  final pulumi.Input<String> entry;
 
   /// Creates a new [GetAclsAclEntryList].
   /// [comment] Required.
@@ -22,8 +23,8 @@ class GetAclsAclEntryList {
 
   factory GetAclsAclEntryList.fromMap(Map<String, dynamic> map) {
     return GetAclsAclEntryList(
-      comment: map['comment'] as String,
-      entry: map['entry'] as String,
+      comment: (map['comment'] as String).input(),
+      entry: (map['entry'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the parameters for the request header action.
 class HeaderActionParameters {
   /// Action to perform
-  final String headerAction;
+  final pulumi.Input<String> headerAction;
   /// Name of the header to modify
-  final String headerName;
+  final pulumi.Input<String> headerName;
   /// Expected value is 'DeliveryRuleHeaderActionParameters'.
-  final String typeName;
+  final pulumi.Input<String> typeName;
   /// Value for the specified action
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [HeaderActionParameters].
   /// [headerAction] Action to perform
@@ -35,10 +36,10 @@ class HeaderActionParameters {
 
   factory HeaderActionParameters.fromMap(Map<String, dynamic> map) {
     return HeaderActionParameters(
-      headerAction: map['headerAction'] as String,
-      headerName: map['headerName'] as String,
-      typeName: map['typeName'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      headerAction: (map['headerAction'] as String).input(),
+      headerName: (map['headerName'] as String).input(),
+      typeName: (map['typeName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

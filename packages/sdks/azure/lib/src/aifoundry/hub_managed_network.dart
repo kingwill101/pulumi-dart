@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubManagedNetwork {
   /// The isolation mode of the AI Foundry Hub. Possible values are `Disabled`, `AllowOnlyApprovedOutbound`, and `AllowInternetOutbound`.
-  final String? isolationMode;
+  final pulumi.Input<String>? isolationMode;
 
   /// Creates a new [HubManagedNetwork].
   /// [isolationMode] The isolation mode of the AI Foundry Hub. Possible values are `Disabled`, `AllowOnlyApprovedOutbound`, and `AllowInternetOutbound`.
@@ -19,7 +20,7 @@ class HubManagedNetwork {
 
   factory HubManagedNetwork.fromMap(Map<String, dynamic> map) {
     return HubManagedNetwork(
-      isolationMode: map['isolationMode'] == null ? null : map['isolationMode'] as String,
+      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode'] as String).input(),
     );
   }
 }

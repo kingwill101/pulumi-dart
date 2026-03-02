@@ -22,15 +22,11 @@ class PrometheusMonitoringArgs {
   /// [status] Valid values: `stop`, `run`.
   /// [type] Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
   PrometheusMonitoringArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> configYaml,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> type,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      configYaml = pulumi.Input.asInput<String>(configYaml),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asInput<String>(type);
+    required this.clusterId,
+    required this.configYaml,
+    this.status,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PrometheusMonitoringArgs {
 
   factory PrometheusMonitoringArgs.fromMap(Map<String, dynamic> map) {
     return PrometheusMonitoringArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      configYaml: pulumi.Output.create<String>(map['configYaml'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      configYaml: (map['configYaml'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

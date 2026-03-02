@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DicomStoreNotificationConfig {
   /// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
@@ -8,9 +9,9 @@ class DicomStoreNotificationConfig {
   /// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
   /// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
   /// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
-  final String pubsubTopic;
+  final pulumi.Input<String> pubsubTopic;
   /// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
-  final bool? sendForBulkImport;
+  final pulumi.Input<bool>? sendForBulkImport;
 
   /// Creates a new [DicomStoreNotificationConfig].
   /// [pubsubTopic] The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
@@ -29,8 +30,8 @@ class DicomStoreNotificationConfig {
 
   factory DicomStoreNotificationConfig.fromMap(Map<String, dynamic> map) {
     return DicomStoreNotificationConfig(
-      pubsubTopic: map['pubsubTopic'] as String,
-      sendForBulkImport: map['sendForBulkImport'] == null ? null : map['sendForBulkImport'] as bool,
+      pubsubTopic: (map['pubsubTopic'] as String).input(),
+      sendForBulkImport: map['sendForBulkImport'] == null ? null : (map['sendForBulkImport'] as bool).input(),
     );
   }
 }

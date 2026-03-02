@@ -17,13 +17,10 @@ class PlanState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stages] One or more configuration blocks for specifying a list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods. See Stage below for more details.
   PlanState({
-    pulumi.Output<String>? contactId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<PlanStage>>? stages,
-  }) :
-      contactId = pulumi.Input.asOptionalInput<String>(contactId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      stages = pulumi.Input.asOptionalInput<List<PlanStage>>(stages);
+    this.contactId,
+    this.region,
+    this.stages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class PlanState {
 
   factory PlanState.fromMap(Map<String, dynamic> map) {
     return PlanState(
-      contactId: map['contactId'] == null ? null : pulumi.Output.create<String>(map['contactId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      stages: map['stages'] == null ? null : pulumi.Output.create<List<PlanStage>>(pulumi.Input.decodeList<PlanStage>(map['stages'], (value) => PlanStage.fromMap((value as Map).cast<String, dynamic>()))),
+      contactId: map['contactId'] == null ? null : (map['contactId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<PlanStage>(map['stages'], (value) => PlanStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 
 /// The diagnostic settings category resource.
 class DiagnosticSettingsCategoryResourceResponse {
   /// the collection of what category groups are supported.
-  final List<String>? categoryGroups;
+  final pulumi.Input<List<String>>? categoryGroups;
   /// The type of the diagnostic settings category.
-  final String? categoryType;
+  final pulumi.Input<String>? categoryType;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// The system metadata related to this resource.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DiagnosticSettingsCategoryResourceResponse].
   /// [categoryGroups] the collection of what category groups are supported.
@@ -39,19 +40,19 @@ class DiagnosticSettingsCategoryResourceResponse {
       'categoryType': ?categoryType,
       'id': id,
       'name': name,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory DiagnosticSettingsCategoryResourceResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingsCategoryResourceResponse(
-      categoryGroups: map['categoryGroups'] == null ? null : (map['categoryGroups'] as List).cast<String>(),
-      categoryType: map['categoryType'] == null ? null : map['categoryType'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      categoryGroups: map['categoryGroups'] == null ? null : ((map['categoryGroups'] as List).cast<String>()).input(),
+      categoryType: map['categoryType'] == null ? null : (map['categoryType'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

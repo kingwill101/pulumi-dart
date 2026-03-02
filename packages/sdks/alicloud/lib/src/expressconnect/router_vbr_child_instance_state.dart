@@ -33,23 +33,15 @@ class RouterVbrChildInstanceState {
   /// [ecrId] ID of the representative leased line gateway instance.
   /// [status] Binding relationship status of leased line gateway subinstances.
   RouterVbrChildInstanceState({
-    pulumi.Output<String>? childInstanceId,
-    pulumi.Output<String>? childInstanceOwnerId,
-    pulumi.Output<String>? childInstanceRegionId,
-    pulumi.Output<String>? childInstanceType,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ecrId,
-    pulumi.Output<String>? status,
-  }) :
-      childInstanceId = pulumi.Input.asOptionalInput<String>(childInstanceId),
-      childInstanceOwnerId = pulumi.Input.asOptionalInput<String>(childInstanceOwnerId),
-      childInstanceRegionId = pulumi.Input.asOptionalInput<String>(childInstanceRegionId),
-      childInstanceType = pulumi.Input.asOptionalInput<String>(childInstanceType),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ecrId = pulumi.Input.asOptionalInput<String>(ecrId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.childInstanceId,
+    this.childInstanceOwnerId,
+    this.childInstanceRegionId,
+    this.childInstanceType,
+    this.createTime,
+    this.description,
+    this.ecrId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class RouterVbrChildInstanceState {
 
   factory RouterVbrChildInstanceState.fromMap(Map<String, dynamic> map) {
     return RouterVbrChildInstanceState(
-      childInstanceId: map['childInstanceId'] == null ? null : pulumi.Output.create<String>(map['childInstanceId'] as String),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : pulumi.Output.create<String>(map['childInstanceOwnerId'] as String),
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : pulumi.Output.create<String>(map['childInstanceRegionId'] as String),
-      childInstanceType: map['childInstanceType'] == null ? null : pulumi.Output.create<String>(map['childInstanceType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ecrId: map['ecrId'] == null ? null : pulumi.Output.create<String>(map['ecrId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId'] as String).input(),
+      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId'] as String).input(),
+      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId'] as String).input(),
+      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ecrId: map['ecrId'] == null ? null : (map['ecrId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

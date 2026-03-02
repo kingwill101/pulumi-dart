@@ -16,11 +16,9 @@ class BucketAccessKeyArgs {
   /// [bucketName] Name of the bucket that the access key will belong to and grant access to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BucketAccessKeyArgs({
-    required pulumi.Output<String> bucketName,
-    pulumi.Output<String>? region,
-  }) :
-      bucketName = pulumi.Input.asInput<String>(bucketName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.bucketName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BucketAccessKeyArgs {
 
   factory BucketAccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return BucketAccessKeyArgs(
-      bucketName: pulumi.Output.create<String>(map['bucketName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bucketName: (map['bucketName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

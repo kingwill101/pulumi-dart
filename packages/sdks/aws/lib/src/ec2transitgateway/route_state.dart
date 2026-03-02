@@ -22,17 +22,12 @@ class RouteState {
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
   /// [transitGatewayRouteTableId] Identifier of EC2 Transit Gateway Route Table.
   RouteState({
-    pulumi.Output<bool>? blackhole,
-    pulumi.Output<String>? destinationCidrBlock,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? transitGatewayAttachmentId,
-    pulumi.Output<String>? transitGatewayRouteTableId,
-  }) :
-      blackhole = pulumi.Input.asOptionalInput<bool>(blackhole),
-      destinationCidrBlock = pulumi.Input.asOptionalInput<String>(destinationCidrBlock),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId),
-      transitGatewayRouteTableId = pulumi.Input.asOptionalInput<String>(transitGatewayRouteTableId);
+    this.blackhole,
+    this.destinationCidrBlock,
+    this.region,
+    this.transitGatewayAttachmentId,
+    this.transitGatewayRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class RouteState {
 
   factory RouteState.fromMap(Map<String, dynamic> map) {
     return RouteState(
-      blackhole: map['blackhole'] == null ? null : pulumi.Output.create<bool>(map['blackhole'] as bool),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayRouteTableId'] as String),
+      blackhole: map['blackhole'] == null ? null : (map['blackhole'] as bool).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : (map['transitGatewayRouteTableId'] as String).input(),
     );
   }
 }

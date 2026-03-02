@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterIpAllocationPolicyAdditionalPodRangesConfig {
   /// The names of the Pod ranges to add to the cluster.
-  final List<String> podRangeNames;
+  final pulumi.Input<List<String>> podRangeNames;
 
   /// Creates a new [ClusterIpAllocationPolicyAdditionalPodRangesConfig].
   /// [podRangeNames] The names of the Pod ranges to add to the cluster.
@@ -19,7 +20,7 @@ class ClusterIpAllocationPolicyAdditionalPodRangesConfig {
 
   factory ClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap(Map<String, dynamic> map) {
     return ClusterIpAllocationPolicyAdditionalPodRangesConfig(
-      podRangeNames: (map['podRangeNames'] as List).cast<String>(),
+      podRangeNames: ((map['podRangeNames'] as List).cast<String>()).input(),
     );
   }
 }

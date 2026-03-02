@@ -6,17 +6,17 @@ import 'third_party_extension_response.dart';
 
 class ResourceProviderAuthorizationResponse {
   /// The allowed third party extensions.
-  final List<ThirdPartyExtensionResponse>? allowedThirdPartyExtensions;
+  final pulumi.Input<List<ThirdPartyExtensionResponse>>? allowedThirdPartyExtensions;
   /// The application id.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// The grouping tag.
-  final String? groupingTag;
+  final pulumi.Input<String>? groupingTag;
   /// Managed by authorization.
-  final ResourceProviderAuthorizationManagedByAuthorizationResponse? managedByAuthorization;
+  final pulumi.Input<ResourceProviderAuthorizationManagedByAuthorizationResponse>? managedByAuthorization;
   /// The managed by role definition id.
-  final String? managedByRoleDefinitionId;
+  final pulumi.Input<String>? managedByRoleDefinitionId;
   /// The role definition id.
-  final String? roleDefinitionId;
+  final pulumi.Input<String>? roleDefinitionId;
 
   /// Creates a new [ResourceProviderAuthorizationResponse].
   /// [allowedThirdPartyExtensions] The allowed third party extensions.
@@ -36,10 +36,10 @@ class ResourceProviderAuthorizationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedThirdPartyExtensions': ?allowedThirdPartyExtensions == null ? null : pulumi.Input.encodeList<ThirdPartyExtensionResponse, Map<String, dynamic>>(allowedThirdPartyExtensions!, (value) => value.toMap()),
+      'allowedThirdPartyExtensions': ?pulumi.Input.mapOptionalInputValue<List<ThirdPartyExtensionResponse>, List<Map<String, dynamic>>>(allowedThirdPartyExtensions, (value) => pulumi.Input.encodeList<ThirdPartyExtensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'applicationId': ?applicationId,
       'groupingTag': ?groupingTag,
-      'managedByAuthorization': ?managedByAuthorization == null ? null : managedByAuthorization!.toMap(),
+      'managedByAuthorization': ?pulumi.Input.mapOptionalInputValue<ResourceProviderAuthorizationManagedByAuthorizationResponse, Map<String, dynamic>>(managedByAuthorization, (value) => value.toMap()),
       'managedByRoleDefinitionId': ?managedByRoleDefinitionId,
       'roleDefinitionId': ?roleDefinitionId,
     };
@@ -47,12 +47,12 @@ class ResourceProviderAuthorizationResponse {
 
   factory ResourceProviderAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderAuthorizationResponse(
-      allowedThirdPartyExtensions: map['allowedThirdPartyExtensions'] == null ? null : pulumi.Input.decodeList<ThirdPartyExtensionResponse>(map['allowedThirdPartyExtensions'], (value) => ThirdPartyExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      groupingTag: map['groupingTag'] == null ? null : map['groupingTag'] as String,
-      managedByAuthorization: map['managedByAuthorization'] == null ? null : ResourceProviderAuthorizationManagedByAuthorizationResponse.fromMap((map['managedByAuthorization'] as Map).cast<String, dynamic>()),
-      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : map['managedByRoleDefinitionId'] as String,
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : map['roleDefinitionId'] as String,
+      allowedThirdPartyExtensions: map['allowedThirdPartyExtensions'] == null ? null : (pulumi.Input.decodeList<ThirdPartyExtensionResponse>(map['allowedThirdPartyExtensions'], (value) => ThirdPartyExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      groupingTag: map['groupingTag'] == null ? null : (map['groupingTag'] as String).input(),
+      managedByAuthorization: map['managedByAuthorization'] == null ? null : (ResourceProviderAuthorizationManagedByAuthorizationResponse.fromMap((map['managedByAuthorization'] as Map).cast<String, dynamic>())).input(),
+      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : (map['managedByRoleDefinitionId'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
     );
   }
 }

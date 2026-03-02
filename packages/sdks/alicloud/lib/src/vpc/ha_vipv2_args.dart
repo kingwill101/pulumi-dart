@@ -33,21 +33,14 @@ class HaVipv2Args {
   /// [tags] The tags of HaVip.
   /// [vswitchId] The switch ID to which the HaVip instance belongs
   HaVipv2Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? haVipName,
-    pulumi.Output<String>? havipName,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      haVipName = pulumi.Input.asOptionalInput<String>(haVipName),
-      havipName = pulumi.Input.asOptionalInput<String>(havipName),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    this.description,
+    this.haVipName,
+    this.havipName,
+    this.ipAddress,
+    this.resourceGroupId,
+    this.tags,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class HaVipv2Args {
 
   factory HaVipv2Args.fromMap(Map<String, dynamic> map) {
     return HaVipv2Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      haVipName: map['haVipName'] == null ? null : pulumi.Output.create<String>(map['haVipName'] as String),
-      havipName: map['havipName'] == null ? null : pulumi.Output.create<String>(map['havipName'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      haVipName: map['haVipName'] == null ? null : (map['haVipName'] as String).input(),
+      havipName: map['havipName'] == null ? null : (map['havipName'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

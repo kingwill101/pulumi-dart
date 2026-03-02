@@ -5,9 +5,9 @@ import 'windows_virtual_machine_secret_certificate.dart';
 
 class WindowsVirtualMachineSecret {
   /// One or more `certificate` blocks as defined above.
-  final List<WindowsVirtualMachineSecretCertificate> certificates;
+  final pulumi.Input<List<WindowsVirtualMachineSecretCertificate>> certificates;
   /// The ID of the Key Vault from which all Secrets should be sourced.
-  final String keyVaultId;
+  final pulumi.Input<String> keyVaultId;
 
   /// Creates a new [WindowsVirtualMachineSecret].
   /// [certificates] One or more `certificate` blocks as defined above.
@@ -19,15 +19,15 @@ class WindowsVirtualMachineSecret {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates': pulumi.Input.encodeList<WindowsVirtualMachineSecretCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'certificates': pulumi.Input.mapInputValue<List<WindowsVirtualMachineSecretCertificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<WindowsVirtualMachineSecretCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'keyVaultId': keyVaultId,
     };
   }
 
   factory WindowsVirtualMachineSecret.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineSecret(
-      certificates: pulumi.Input.decodeList<WindowsVirtualMachineSecretCertificate>(map['certificates'], (value) => WindowsVirtualMachineSecretCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      keyVaultId: map['keyVaultId'] as String,
+      certificates: (pulumi.Input.decodeList<WindowsVirtualMachineSecretCertificate>(map['certificates'], (value) => WindowsVirtualMachineSecretCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerRecipeTargetRepository {
   /// The name of the container repository where the output container image is stored. This name is prefixed by the repository location.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
   /// The service in which this image is registered. Valid values: `ECR`.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [ContainerRecipeTargetRepository].
   /// [repositoryName] The name of the container repository where the output container image is stored. This name is prefixed by the repository location.
@@ -24,8 +25,8 @@ class ContainerRecipeTargetRepository {
 
   factory ContainerRecipeTargetRepository.fromMap(Map<String, dynamic> map) {
     return ContainerRecipeTargetRepository(
-      repositoryName: map['repositoryName'] as String,
-      service: map['service'] as String,
+      repositoryName: (map['repositoryName'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

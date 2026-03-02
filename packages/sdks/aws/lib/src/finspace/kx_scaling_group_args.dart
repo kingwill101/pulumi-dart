@@ -30,19 +30,13 @@ class KxScalingGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. You can add up to 50 tags to a scaling group.
   KxScalingGroupArgs({
-    required pulumi.Output<String> availabilityZoneId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> hostType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      availabilityZoneId = pulumi.Input.asInput<String>(availabilityZoneId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      hostType = pulumi.Input.asInput<String>(hostType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.availabilityZoneId,
+    required this.environmentId,
+    required this.hostType,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class KxScalingGroupArgs {
 
   factory KxScalingGroupArgs.fromMap(Map<String, dynamic> map) {
     return KxScalingGroupArgs(
-      availabilityZoneId: pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      hostType: pulumi.Output.create<String>(map['hostType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      hostType: (map['hostType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

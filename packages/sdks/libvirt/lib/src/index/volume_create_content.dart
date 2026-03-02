@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeCreateContent {
   /// URL to download content from
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [VolumeCreateContent].
   /// [url] URL to download content from
@@ -19,7 +20,7 @@ class VolumeCreateContent {
 
   factory VolumeCreateContent.fromMap(Map<String, dynamic> map) {
     return VolumeCreateContent(
-      url: map['url'] as String,
+      url: (map['url'] as String).input(),
     );
   }
 }

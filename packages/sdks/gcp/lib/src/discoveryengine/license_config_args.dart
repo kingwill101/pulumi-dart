@@ -48,27 +48,17 @@ class LicenseConfigArgs {
   /// [subscriptionTerm] Subscription term.
   /// [subscriptionTier] Subscription tier information for the license config.
   LicenseConfigArgs({
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<LicenseConfigEndDate>? endDate,
-    pulumi.Output<bool>? freeTrial,
-    required pulumi.Output<String> licenseConfigId,
-    required pulumi.Output<int> licenseCount,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<LicenseConfigStartDate> startDate,
-    required pulumi.Output<String> subscriptionTerm,
-    required pulumi.Output<String> subscriptionTier,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      endDate = pulumi.Input.asOptionalInput<LicenseConfigEndDate>(endDate),
-      freeTrial = pulumi.Input.asOptionalInput<bool>(freeTrial),
-      licenseConfigId = pulumi.Input.asInput<String>(licenseConfigId),
-      licenseCount = pulumi.Input.asInput<int>(licenseCount),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      startDate = pulumi.Input.asInput<LicenseConfigStartDate>(startDate),
-      subscriptionTerm = pulumi.Input.asInput<String>(subscriptionTerm),
-      subscriptionTier = pulumi.Input.asInput<String>(subscriptionTier);
+    this.autoRenew,
+    this.endDate,
+    this.freeTrial,
+    required this.licenseConfigId,
+    required this.licenseCount,
+    required this.location,
+    this.project,
+    required this.startDate,
+    required this.subscriptionTerm,
+    required this.subscriptionTier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,16 +77,16 @@ class LicenseConfigArgs {
 
   factory LicenseConfigArgs.fromMap(Map<String, dynamic> map) {
     return LicenseConfigArgs(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<LicenseConfigEndDate>(LicenseConfigEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>())),
-      freeTrial: map['freeTrial'] == null ? null : pulumi.Output.create<bool>(map['freeTrial'] as bool),
-      licenseConfigId: pulumi.Output.create<String>(map['licenseConfigId'] as String),
-      licenseCount: pulumi.Output.create<int>(map['licenseCount'] as int),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      startDate: pulumi.Output.create<LicenseConfigStartDate>(LicenseConfigStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>())),
-      subscriptionTerm: pulumi.Output.create<String>(map['subscriptionTerm'] as String),
-      subscriptionTier: pulumi.Output.create<String>(map['subscriptionTier'] as String),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      endDate: map['endDate'] == null ? null : (LicenseConfigEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
+      freeTrial: map['freeTrial'] == null ? null : (map['freeTrial'] as bool).input(),
+      licenseConfigId: (map['licenseConfigId'] as String).input(),
+      licenseCount: (map['licenseCount'] as int).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      startDate: (LicenseConfigStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
+      subscriptionTerm: (map['subscriptionTerm'] as String).input(),
+      subscriptionTier: (map['subscriptionTier'] as String).input(),
     );
   }
 }

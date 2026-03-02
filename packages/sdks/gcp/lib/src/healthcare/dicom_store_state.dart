@@ -49,23 +49,15 @@ class DicomStoreState {
   /// [selfLink] The fully qualified name of this dataset
   /// [streamConfigs] To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
   DicomStoreState({
-    pulumi.Output<String>? dataset,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<DicomStoreNotificationConfig>? notificationConfig,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<List<DicomStoreStreamConfig>>? streamConfigs,
-  }) :
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationConfig = pulumi.Input.asOptionalInput<DicomStoreNotificationConfig>(notificationConfig),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      streamConfigs = pulumi.Input.asOptionalInput<List<DicomStoreStreamConfig>>(streamConfigs);
+    this.dataset,
+    this.effectiveLabels,
+    this.labels,
+    this.name,
+    this.notificationConfig,
+    this.pulumiLabels,
+    this.selfLink,
+    this.streamConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,14 +74,14 @@ class DicomStoreState {
 
   factory DicomStoreState.fromMap(Map<String, dynamic> map) {
     return DicomStoreState(
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationConfig: map['notificationConfig'] == null ? null : pulumi.Output.create<DicomStoreNotificationConfig>(DicomStoreNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      streamConfigs: map['streamConfigs'] == null ? null : pulumi.Output.create<List<DicomStoreStreamConfig>>(pulumi.Input.decodeList<DicomStoreStreamConfig>(map['streamConfigs'], (value) => DicomStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (DicomStoreNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<DicomStoreStreamConfig>(map['streamConfigs'], (value) => DicomStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class SlsGroupArgs {
   /// [slsGroupDescription] The Description of the Sls Group.
   /// [slsGroupName] The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
   SlsGroupArgs({
-    required pulumi.Output<List<SlsGroupSlsGroupConfig>> slsGroupConfigs,
-    pulumi.Output<String>? slsGroupDescription,
-    required pulumi.Output<String> slsGroupName,
-  }) :
-      slsGroupConfigs = pulumi.Input.asInput<List<SlsGroupSlsGroupConfig>>(slsGroupConfigs),
-      slsGroupDescription = pulumi.Input.asOptionalInput<String>(slsGroupDescription),
-      slsGroupName = pulumi.Input.asInput<String>(slsGroupName);
+    required this.slsGroupConfigs,
+    this.slsGroupDescription,
+    required this.slsGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SlsGroupArgs {
 
   factory SlsGroupArgs.fromMap(Map<String, dynamic> map) {
     return SlsGroupArgs(
-      slsGroupConfigs: pulumi.Output.create<List<SlsGroupSlsGroupConfig>>(pulumi.Input.decodeList<SlsGroupSlsGroupConfig>(map['slsGroupConfigs'], (value) => SlsGroupSlsGroupConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      slsGroupDescription: map['slsGroupDescription'] == null ? null : pulumi.Output.create<String>(map['slsGroupDescription'] as String),
-      slsGroupName: pulumi.Output.create<String>(map['slsGroupName'] as String),
+      slsGroupConfigs: (pulumi.Input.decodeList<SlsGroupSlsGroupConfig>(map['slsGroupConfigs'], (value) => SlsGroupSlsGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slsGroupDescription: map['slsGroupDescription'] == null ? null : (map['slsGroupDescription'] as String).input(),
+      slsGroupName: (map['slsGroupName'] as String).input(),
     );
   }
 }

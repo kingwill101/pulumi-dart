@@ -36,17 +36,12 @@ class DbInstanceIpArrayArgs {
   /// [modifyMode] The method of modification. Valid values:
   /// [securityIpLists] The IP address whitelist contains a maximum of 1000 IP addresses separated by commas in the following three formats:
   DbInstanceIpArrayArgs({
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? dbInstanceIpArrayAttribute,
-    required pulumi.Output<String> dbInstanceIpArrayName,
-    pulumi.Output<String>? modifyMode,
-    required pulumi.Output<List<String>> securityIpLists,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      dbInstanceIpArrayAttribute = pulumi.Input.asOptionalInput<String>(dbInstanceIpArrayAttribute),
-      dbInstanceIpArrayName = pulumi.Input.asInput<String>(dbInstanceIpArrayName),
-      modifyMode = pulumi.Input.asOptionalInput<String>(modifyMode),
-      securityIpLists = pulumi.Input.asInput<List<String>>(securityIpLists);
+    required this.dbInstanceId,
+    this.dbInstanceIpArrayAttribute,
+    required this.dbInstanceIpArrayName,
+    this.modifyMode,
+    required this.securityIpLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,11 +55,11 @@ class DbInstanceIpArrayArgs {
 
   factory DbInstanceIpArrayArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceIpArrayArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : pulumi.Output.create<String>(map['dbInstanceIpArrayAttribute'] as String),
-      dbInstanceIpArrayName: pulumi.Output.create<String>(map['dbInstanceIpArrayName'] as String),
-      modifyMode: map['modifyMode'] == null ? null : pulumi.Output.create<String>(map['modifyMode'] as String),
-      securityIpLists: pulumi.Output.create<List<String>>((map['securityIpLists'] as List).cast<String>()),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute'] as String).input(),
+      dbInstanceIpArrayName: (map['dbInstanceIpArrayName'] as String).input(),
+      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode'] as String).input(),
+      securityIpLists: ((map['securityIpLists'] as List).cast<String>()).input(),
     );
   }
 }

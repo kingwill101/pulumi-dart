@@ -28,21 +28,14 @@ class ServiceState {
   /// [tags] The tag of the resource.
   /// [workspaceId] Workspace id
   ServiceState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? develop,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? serviceConfig,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      develop = pulumi.Input.asOptionalInput<String>(develop),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      serviceConfig = pulumi.Input.asOptionalInput<String>(serviceConfig),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.createTime,
+    this.develop,
+    this.regionId,
+    this.serviceConfig,
+    this.status,
+    this.tags,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      develop: map['develop'] == null ? null : pulumi.Output.create<String>(map['develop'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      serviceConfig: map['serviceConfig'] == null ? null : pulumi.Output.create<String>(map['serviceConfig'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      develop: map['develop'] == null ? null : (map['develop'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (map['serviceConfig'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

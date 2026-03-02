@@ -13,9 +13,8 @@ class ListGlobalRulestackFirewallsArgs {
   /// Creates a new [ListGlobalRulestackFirewallsArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   ListGlobalRulestackFirewallsArgs({
-    required pulumi.Output<String> globalRulestackName,
-  }) :
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName);
+    required this.globalRulestackName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ListGlobalRulestackFirewallsArgs {
 
   factory ListGlobalRulestackFirewallsArgs.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackFirewallsArgs(
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
     );
   }
 }

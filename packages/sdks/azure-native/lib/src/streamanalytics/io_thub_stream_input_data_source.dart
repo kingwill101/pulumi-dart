@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an IoT Hub input data source that contains stream data.
 class IoTHubStreamInputDataSource {
   /// The name of an IoT Hub Consumer Group that should be used to read events from the IoT Hub. If not specified, the input uses the Iot Hub’s default consumer group.
-  final String? consumerGroupName;
+  final pulumi.Input<String>? consumerGroupName;
   /// The IoT Hub endpoint to connect to (ie. messages/events, messages/operationsMonitoringEvents, etc.).
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// The name or the URI of the IoT Hub. Required on PUT (CreateOrReplace) requests.
-  final String? iotHubNamespace;
+  final pulumi.Input<String>? iotHubNamespace;
   /// The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
-  final String? sharedAccessPolicyKey;
+  final pulumi.Input<String>? sharedAccessPolicyKey;
   /// The shared access policy name for the IoT Hub. This policy must contain at least the Service connect permission. Required on PUT (CreateOrReplace) requests.
-  final String? sharedAccessPolicyName;
+  final pulumi.Input<String>? sharedAccessPolicyName;
   /// Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.Devices/IotHubs'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [IoTHubStreamInputDataSource].
   /// [consumerGroupName] The name of an IoT Hub Consumer Group that should be used to read events from the IoT Hub. If not specified, the input uses the Iot Hub’s default consumer group.
@@ -46,12 +47,12 @@ class IoTHubStreamInputDataSource {
 
   factory IoTHubStreamInputDataSource.fromMap(Map<String, dynamic> map) {
     return IoTHubStreamInputDataSource(
-      consumerGroupName: map['consumerGroupName'] == null ? null : map['consumerGroupName'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      iotHubNamespace: map['iotHubNamespace'] == null ? null : map['iotHubNamespace'] as String,
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : map['sharedAccessPolicyKey'] as String,
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : map['sharedAccessPolicyName'] as String,
-      type: map['type'] as String,
+      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      iotHubNamespace: map['iotHubNamespace'] == null ? null : (map['iotHubNamespace'] as String).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

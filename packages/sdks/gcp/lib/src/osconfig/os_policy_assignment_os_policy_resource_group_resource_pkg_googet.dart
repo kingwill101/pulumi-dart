@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
   /// Package name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget].
   /// [name] Package name.
@@ -19,7 +20,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

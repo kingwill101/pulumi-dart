@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details for the custom naming convention override for a specific resource type.
 class CustomNamingConvention {
   /// The custom naming formula for the resource type.
-  final String formula;
+  final pulumi.Input<String> formula;
   /// The type of the resource.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [CustomNamingConvention].
   /// [formula] The custom naming formula for the resource type.
@@ -25,8 +26,8 @@ class CustomNamingConvention {
 
   factory CustomNamingConvention.fromMap(Map<String, dynamic> map) {
     return CustomNamingConvention(
-      formula: map['formula'] as String,
-      resourceType: map['resourceType'] as String,
+      formula: (map['formula'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

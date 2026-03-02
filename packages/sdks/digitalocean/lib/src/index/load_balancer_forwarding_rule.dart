@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerForwardingRule {
   /// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
-  final String? certificateId;
+  final pulumi.Input<String>? certificateId;
   /// The unique name of the TLS certificate to be used for SSL termination.
-  final String? certificateName;
+  final pulumi.Input<String>? certificateName;
   /// An integer representing the port on which the Load Balancer instance will listen.
-  final int entryPort;
+  final pulumi.Input<int> entryPort;
   /// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
-  final String entryProtocol;
+  final pulumi.Input<String> entryProtocol;
   /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
-  final int targetPort;
+  final pulumi.Input<int> targetPort;
   /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
-  final String targetProtocol;
+  final pulumi.Input<String> targetProtocol;
   /// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-  final bool? tlsPassthrough;
+  final pulumi.Input<bool>? tlsPassthrough;
 
   /// Creates a new [LoadBalancerForwardingRule].
   /// [certificateId] **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
@@ -49,13 +50,13 @@ class LoadBalancerForwardingRule {
 
   factory LoadBalancerForwardingRule.fromMap(Map<String, dynamic> map) {
     return LoadBalancerForwardingRule(
-      certificateId: map['certificateId'] == null ? null : map['certificateId'] as String,
-      certificateName: map['certificateName'] == null ? null : map['certificateName'] as String,
-      entryPort: map['entryPort'] as int,
-      entryProtocol: map['entryProtocol'] as String,
-      targetPort: map['targetPort'] as int,
-      targetProtocol: map['targetProtocol'] as String,
-      tlsPassthrough: map['tlsPassthrough'] == null ? null : map['tlsPassthrough'] as bool,
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      entryPort: (map['entryPort'] as int).input(),
+      entryProtocol: (map['entryProtocol'] as String).input(),
+      targetPort: (map['targetPort'] as int).input(),
+      targetProtocol: (map['targetProtocol'] as String).input(),
+      tlsPassthrough: map['tlsPassthrough'] == null ? null : (map['tlsPassthrough'] as bool).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool {
   /// A list of CIDR Ranges which should be used as Address Prefixes.
-  final List<String> addressPrefixes;
+  final pulumi.Input<List<String>> addressPrefixes;
 
   /// Creates a new [PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool].
   /// [addressPrefixes] A list of CIDR Ranges which should be used as Address Prefixes.
@@ -19,7 +20,7 @@ class PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool {
 
   factory PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool.fromMap(Map<String, dynamic> map) {
     return PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool(
-      addressPrefixes: (map['addressPrefixes'] as List).cast<String>(),
+      addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetActionGroupAutomationRunbookReceiver {
   /// The automation account ID which holds this runbook and authenticates to Azure resources.
-  final String automationAccountId;
+  final pulumi.Input<String> automationAccountId;
   /// Indicates whether this instance is global runbook.
-  final bool isGlobalRunbook;
+  final pulumi.Input<bool> isGlobalRunbook;
   /// Specifies the name of the Action Group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name for this runbook.
-  final String runbookName;
+  final pulumi.Input<String> runbookName;
   /// The URI where webhooks should be sent.
-  final String serviceUri;
+  final pulumi.Input<String> serviceUri;
   /// Indicates whether to use common alert schema.
-  final bool useCommonAlertSchema;
+  final pulumi.Input<bool> useCommonAlertSchema;
   /// The resource id for webhook linked to this runbook.
-  final String webhookResourceId;
+  final pulumi.Input<String> webhookResourceId;
 
   /// Creates a new [GetActionGroupAutomationRunbookReceiver].
   /// [automationAccountId] The automation account ID which holds this runbook and authenticates to Azure resources.
@@ -49,13 +50,13 @@ class GetActionGroupAutomationRunbookReceiver {
 
   factory GetActionGroupAutomationRunbookReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupAutomationRunbookReceiver(
-      automationAccountId: map['automationAccountId'] as String,
-      isGlobalRunbook: map['isGlobalRunbook'] as bool,
-      name: map['name'] as String,
-      runbookName: map['runbookName'] as String,
-      serviceUri: map['serviceUri'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] as bool,
-      webhookResourceId: map['webhookResourceId'] as String,
+      automationAccountId: (map['automationAccountId'] as String).input(),
+      isGlobalRunbook: (map['isGlobalRunbook'] as bool).input(),
+      name: (map['name'] as String).input(),
+      runbookName: (map['runbookName'] as String).input(),
+      serviceUri: (map['serviceUri'] as String).input(),
+      useCommonAlertSchema: (map['useCommonAlertSchema'] as bool).input(),
+      webhookResourceId: (map['webhookResourceId'] as String).input(),
     );
   }
 }

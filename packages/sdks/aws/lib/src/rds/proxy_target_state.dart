@@ -42,29 +42,18 @@ class ProxyTargetState {
   /// [trackedClusterId] DB Cluster identifier for the DB Instance target. Not returned unless manually importing an `RDS_INSTANCE` target that is part of a DB Cluster.
   /// [type] Type of targetE.g., `RDS_INSTANCE` or `TRACKED_CLUSTER`
   ProxyTargetState({
-    pulumi.Output<String>? dbClusterIdentifier,
-    pulumi.Output<String>? dbInstanceIdentifier,
-    pulumi.Output<String>? dbProxyName,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? rdsResourceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetArn,
-    pulumi.Output<String>? targetGroupName,
-    pulumi.Output<String>? trackedClusterId,
-    pulumi.Output<String>? type,
-  }) :
-      dbClusterIdentifier = pulumi.Input.asOptionalInput<String>(dbClusterIdentifier),
-      dbInstanceIdentifier = pulumi.Input.asOptionalInput<String>(dbInstanceIdentifier),
-      dbProxyName = pulumi.Input.asOptionalInput<String>(dbProxyName),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      rdsResourceId = pulumi.Input.asOptionalInput<String>(rdsResourceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetArn = pulumi.Input.asOptionalInput<String>(targetArn),
-      targetGroupName = pulumi.Input.asOptionalInput<String>(targetGroupName),
-      trackedClusterId = pulumi.Input.asOptionalInput<String>(trackedClusterId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.dbClusterIdentifier,
+    this.dbInstanceIdentifier,
+    this.dbProxyName,
+    this.endpoint,
+    this.port,
+    this.rdsResourceId,
+    this.region,
+    this.targetArn,
+    this.targetGroupName,
+    this.trackedClusterId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ProxyTargetState {
 
   factory ProxyTargetState.fromMap(Map<String, dynamic> map) {
     return ProxyTargetState(
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbClusterIdentifier'] as String),
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbInstanceIdentifier'] as String),
-      dbProxyName: map['dbProxyName'] == null ? null : pulumi.Output.create<String>(map['dbProxyName'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      rdsResourceId: map['rdsResourceId'] == null ? null : pulumi.Output.create<String>(map['rdsResourceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetArn: map['targetArn'] == null ? null : pulumi.Output.create<String>(map['targetArn'] as String),
-      targetGroupName: map['targetGroupName'] == null ? null : pulumi.Output.create<String>(map['targetGroupName'] as String),
-      trackedClusterId: map['trackedClusterId'] == null ? null : pulumi.Output.create<String>(map['trackedClusterId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier'] as String).input(),
+      dbProxyName: map['dbProxyName'] == null ? null : (map['dbProxyName'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      rdsResourceId: map['rdsResourceId'] == null ? null : (map['rdsResourceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
+      targetGroupName: map['targetGroupName'] == null ? null : (map['targetGroupName'] as String).input(),
+      trackedClusterId: map['trackedClusterId'] == null ? null : (map['trackedClusterId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

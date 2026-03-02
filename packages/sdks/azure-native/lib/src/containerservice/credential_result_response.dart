@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The credential result response.
 class CredentialResultResponse {
   /// The name of the credential.
-  final String name;
+  final pulumi.Input<String> name;
   /// Base64-encoded Kubernetes configuration file.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [CredentialResultResponse].
   /// [name] The name of the credential.
@@ -25,8 +26,8 @@ class CredentialResultResponse {
 
   factory CredentialResultResponse.fromMap(Map<String, dynamic> map) {
     return CredentialResultResponse(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

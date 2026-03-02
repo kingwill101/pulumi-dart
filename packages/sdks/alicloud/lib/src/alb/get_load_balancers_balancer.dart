@@ -10,48 +10,48 @@ import 'get_load_balancers_balancer_zone_mapping.dart';
 
 class GetLoadBalancersBalancer {
   /// The Access Logging Configuration Structure.
-  final List<GetLoadBalancersBalancerAccessLogConfig> accessLogConfigs;
+  final pulumi.Input<List<GetLoadBalancersBalancerAccessLogConfig>> accessLogConfigs;
   /// The method in which IP addresses are assigned.
-  final String addressAllocatedMode;
+  final pulumi.Input<String> addressAllocatedMode;
   /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
-  final String addressType;
+  final pulumi.Input<String> addressType;
   /// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a
   /// public IP address.
-  final String bandwidthPackageId;
+  final pulumi.Input<String> bandwidthPackageId;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Remove the Protection Configuration.
-  final List<GetLoadBalancersBalancerDeletionProtectionConfig> deletionProtectionConfigs;
+  final pulumi.Input<List<GetLoadBalancersBalancerDeletionProtectionConfig>> deletionProtectionConfigs;
   /// DNS Domain Name.
-  final String dnsName;
+  final pulumi.Input<String> dnsName;
   /// The ID of the Load Balancer.
-  final String id;
+  final pulumi.Input<String> id;
   /// The configuration of the billing method.
-  final List<GetLoadBalancersBalancerLoadBalancerBillingConfig> loadBalancerBillingConfigs;
+  final pulumi.Input<List<GetLoadBalancersBalancerLoadBalancerBillingConfig>> loadBalancerBillingConfigs;
   /// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
-  final String loadBalancerBusinessStatus;
+  final pulumi.Input<String> loadBalancerBusinessStatus;
   /// Field `load_balancer_bussiness_status` has been deprecated from provider version 1.142.0. New field `load_balancer_business_status` instead.
-  final String loadBalancerBussinessStatus;
+  final pulumi.Input<String> loadBalancerBussinessStatus;
   /// The edition of the ALB instance.
-  final String loadBalancerEdition;
+  final pulumi.Input<String> loadBalancerEdition;
   /// The first ID of the resource.
-  final String loadBalancerId;
+  final pulumi.Input<String> loadBalancerId;
   /// The name of the resource.
-  final String loadBalancerName;
+  final pulumi.Input<String> loadBalancerName;
   /// The Load Balancing Operations Lock Configuration.
-  final List<GetLoadBalancersBalancerLoadBalancerOperationLock> loadBalancerOperationLocks;
+  final pulumi.Input<List<GetLoadBalancersBalancerLoadBalancerOperationLock>> loadBalancerOperationLocks;
   /// Modify the Protection Configuration.
-  final List<GetLoadBalancersBalancerModificationProtectionConfig> modificationProtectionConfigs;
+  final pulumi.Input<List<GetLoadBalancersBalancerModificationProtectionConfig>> modificationProtectionConfigs;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The zones and vSwitches.
-  final List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
+  final pulumi.Input<List<GetLoadBalancersBalancerZoneMapping>> zoneMappings;
 
   /// Creates a new [GetLoadBalancersBalancer].
   /// [accessLogConfigs] The Access Logging Configuration Structure.
@@ -101,53 +101,53 @@ class GetLoadBalancersBalancer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLogConfigs': pulumi.Input.encodeList<GetLoadBalancersBalancerAccessLogConfig, Map<String, dynamic>>(accessLogConfigs, (value) => value.toMap()),
+      'accessLogConfigs': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerAccessLogConfig>, List<Map<String, dynamic>>>(accessLogConfigs, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerAccessLogConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'addressAllocatedMode': addressAllocatedMode,
       'addressType': addressType,
       'bandwidthPackageId': bandwidthPackageId,
       'createTime': createTime,
-      'deletionProtectionConfigs': pulumi.Input.encodeList<GetLoadBalancersBalancerDeletionProtectionConfig, Map<String, dynamic>>(deletionProtectionConfigs, (value) => value.toMap()),
+      'deletionProtectionConfigs': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerDeletionProtectionConfig>, List<Map<String, dynamic>>>(deletionProtectionConfigs, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerDeletionProtectionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dnsName': dnsName,
       'id': id,
-      'loadBalancerBillingConfigs': pulumi.Input.encodeList<GetLoadBalancersBalancerLoadBalancerBillingConfig, Map<String, dynamic>>(loadBalancerBillingConfigs, (value) => value.toMap()),
+      'loadBalancerBillingConfigs': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerLoadBalancerBillingConfig>, List<Map<String, dynamic>>>(loadBalancerBillingConfigs, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerLoadBalancerBillingConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'loadBalancerBusinessStatus': loadBalancerBusinessStatus,
       'loadBalancerBussinessStatus': loadBalancerBussinessStatus,
       'loadBalancerEdition': loadBalancerEdition,
       'loadBalancerId': loadBalancerId,
       'loadBalancerName': loadBalancerName,
-      'loadBalancerOperationLocks': pulumi.Input.encodeList<GetLoadBalancersBalancerLoadBalancerOperationLock, Map<String, dynamic>>(loadBalancerOperationLocks, (value) => value.toMap()),
-      'modificationProtectionConfigs': pulumi.Input.encodeList<GetLoadBalancersBalancerModificationProtectionConfig, Map<String, dynamic>>(modificationProtectionConfigs, (value) => value.toMap()),
+      'loadBalancerOperationLocks': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerLoadBalancerOperationLock>, List<Map<String, dynamic>>>(loadBalancerOperationLocks, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerLoadBalancerOperationLock, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'modificationProtectionConfigs': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerModificationProtectionConfig>, List<Map<String, dynamic>>>(modificationProtectionConfigs, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerModificationProtectionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupId': resourceGroupId,
       'status': status,
       'tags': tags,
       'vpcId': vpcId,
-      'zoneMappings': pulumi.Input.encodeList<GetLoadBalancersBalancerZoneMapping, Map<String, dynamic>>(zoneMappings, (value) => value.toMap()),
+      'zoneMappings': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerZoneMapping>, List<Map<String, dynamic>>>(zoneMappings, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerZoneMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetLoadBalancersBalancer.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancer(
-      accessLogConfigs: pulumi.Input.decodeList<GetLoadBalancersBalancerAccessLogConfig>(map['accessLogConfigs'], (value) => GetLoadBalancersBalancerAccessLogConfig.fromMap((value as Map).cast<String, dynamic>())),
-      addressAllocatedMode: map['addressAllocatedMode'] as String,
-      addressType: map['addressType'] as String,
-      bandwidthPackageId: map['bandwidthPackageId'] as String,
-      createTime: map['createTime'] as String,
-      deletionProtectionConfigs: pulumi.Input.decodeList<GetLoadBalancersBalancerDeletionProtectionConfig>(map['deletionProtectionConfigs'], (value) => GetLoadBalancersBalancerDeletionProtectionConfig.fromMap((value as Map).cast<String, dynamic>())),
-      dnsName: map['dnsName'] as String,
-      id: map['id'] as String,
-      loadBalancerBillingConfigs: pulumi.Input.decodeList<GetLoadBalancersBalancerLoadBalancerBillingConfig>(map['loadBalancerBillingConfigs'], (value) => GetLoadBalancersBalancerLoadBalancerBillingConfig.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancerBusinessStatus: map['loadBalancerBusinessStatus'] as String,
-      loadBalancerBussinessStatus: map['loadBalancerBussinessStatus'] as String,
-      loadBalancerEdition: map['loadBalancerEdition'] as String,
-      loadBalancerId: map['loadBalancerId'] as String,
-      loadBalancerName: map['loadBalancerName'] as String,
-      loadBalancerOperationLocks: pulumi.Input.decodeList<GetLoadBalancersBalancerLoadBalancerOperationLock>(map['loadBalancerOperationLocks'], (value) => GetLoadBalancersBalancerLoadBalancerOperationLock.fromMap((value as Map).cast<String, dynamic>())),
-      modificationProtectionConfigs: pulumi.Input.decodeList<GetLoadBalancersBalancerModificationProtectionConfig>(map['modificationProtectionConfigs'], (value) => GetLoadBalancersBalancerModificationProtectionConfig.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      zoneMappings: pulumi.Input.decodeList<GetLoadBalancersBalancerZoneMapping>(map['zoneMappings'], (value) => GetLoadBalancersBalancerZoneMapping.fromMap((value as Map).cast<String, dynamic>())),
+      accessLogConfigs: (pulumi.Input.decodeList<GetLoadBalancersBalancerAccessLogConfig>(map['accessLogConfigs'], (value) => GetLoadBalancersBalancerAccessLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addressAllocatedMode: (map['addressAllocatedMode'] as String).input(),
+      addressType: (map['addressType'] as String).input(),
+      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      deletionProtectionConfigs: (pulumi.Input.decodeList<GetLoadBalancersBalancerDeletionProtectionConfig>(map['deletionProtectionConfigs'], (value) => GetLoadBalancersBalancerDeletionProtectionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsName: (map['dnsName'] as String).input(),
+      id: (map['id'] as String).input(),
+      loadBalancerBillingConfigs: (pulumi.Input.decodeList<GetLoadBalancersBalancerLoadBalancerBillingConfig>(map['loadBalancerBillingConfigs'], (value) => GetLoadBalancersBalancerLoadBalancerBillingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerBusinessStatus: (map['loadBalancerBusinessStatus'] as String).input(),
+      loadBalancerBussinessStatus: (map['loadBalancerBussinessStatus'] as String).input(),
+      loadBalancerEdition: (map['loadBalancerEdition'] as String).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      loadBalancerName: (map['loadBalancerName'] as String).input(),
+      loadBalancerOperationLocks: (pulumi.Input.decodeList<GetLoadBalancersBalancerLoadBalancerOperationLock>(map['loadBalancerOperationLocks'], (value) => GetLoadBalancersBalancerLoadBalancerOperationLock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modificationProtectionConfigs: (pulumi.Input.decodeList<GetLoadBalancersBalancerModificationProtectionConfig>(map['modificationProtectionConfigs'], (value) => GetLoadBalancersBalancerModificationProtectionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      zoneMappings: (pulumi.Input.decodeList<GetLoadBalancersBalancerZoneMapping>(map['zoneMappings'], (value) => GetLoadBalancersBalancerZoneMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

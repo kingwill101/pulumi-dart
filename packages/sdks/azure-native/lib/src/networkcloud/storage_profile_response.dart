@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'os_disk_response.dart';
 
 class StorageProfileResponse {
   /// The disk to use with this virtual machine.
-  final OsDiskResponse osDisk;
+  final pulumi.Input<OsDiskResponse> osDisk;
   /// The resource IDs of volumes that are requested to be attached to the virtual machine.
-  final List<String>? volumeAttachments;
+  final pulumi.Input<List<String>>? volumeAttachments;
 
   /// Creates a new [StorageProfileResponse].
   /// [osDisk] The disk to use with this virtual machine.
@@ -18,15 +19,15 @@ class StorageProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'osDisk': osDisk.toMap(),
+      'osDisk': pulumi.Input.mapInputValue<OsDiskResponse, Map<String, dynamic>>(osDisk, (value) => value.toMap()),
       'volumeAttachments': ?volumeAttachments,
     };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      osDisk: OsDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>()),
-      volumeAttachments: map['volumeAttachments'] == null ? null : (map['volumeAttachments'] as List).cast<String>(),
+      osDisk: (OsDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
+      volumeAttachments: map['volumeAttachments'] == null ? null : ((map['volumeAttachments'] as List).cast<String>()).input(),
     );
   }
 }

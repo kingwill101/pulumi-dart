@@ -17,11 +17,9 @@ class GetReleaseLabelsArgs {
   /// [filters] Filters the results of the request. Prefix specifies the prefix of release labels to return. Application specifies the application (with/without version) of release labels to return. See Filters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetReleaseLabelsArgs({
-    pulumi.Output<GetReleaseLabelsFilters>? filters,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<GetReleaseLabelsFilters>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetReleaseLabelsArgs {
 
   factory GetReleaseLabelsArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseLabelsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<GetReleaseLabelsFilters>(GetReleaseLabelsFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (GetReleaseLabelsFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

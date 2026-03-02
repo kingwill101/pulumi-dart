@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a container endpoint.
 class EndpointPropertiesResponse {
   /// The name of the endpoint.
-  final String name;
+  final pulumi.Input<String> name;
   /// Port used by the container.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [EndpointPropertiesResponse].
   /// [name] The name of the endpoint.
@@ -25,8 +26,8 @@ class EndpointPropertiesResponse {
 
   factory EndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesResponse(
-      name: map['name'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      name: (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

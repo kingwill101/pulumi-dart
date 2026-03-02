@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy {
   /// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-  final bool restartNode;
+  final pulumi.Input<bool> restartNode;
   /// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-  final String vulLevel;
+  final pulumi.Input<String> vulLevel;
 
   /// Creates a new [GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy].
   /// [restartNode] Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
@@ -24,8 +25,8 @@ class GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy {
 
   factory GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy(
-      restartNode: map['restartNode'] as bool,
-      vulLevel: map['vulLevel'] as String,
+      restartNode: (map['restartNode'] as bool).input(),
+      vulLevel: (map['vulLevel'] as String).input(),
     );
   }
 }

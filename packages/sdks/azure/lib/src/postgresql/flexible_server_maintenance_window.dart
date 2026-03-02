@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleServerMaintenanceWindow {
   /// The day of week for maintenance window, where the week starts on a Sunday, i.e. Sunday = `0`, Monday = `1`. Defaults to `0`.
-  final int? dayOfWeek;
+  final pulumi.Input<int>? dayOfWeek;
   /// The start hour for maintenance window. Defaults to `0`.
-  final int? startHour;
+  final pulumi.Input<int>? startHour;
   /// The start minute for maintenance window. Defaults to `0`.
   ///
   /// > **Note:** The specified `maintenance_window` is always defined in UTC time. When unspecified, the maintenance window falls back to the default [system-managed](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-maintenance-portal#specify-maintenance-schedule-options).
-  final int? startMinute;
+  final pulumi.Input<int>? startMinute;
 
   /// Creates a new [FlexibleServerMaintenanceWindow].
   /// [dayOfWeek] The day of week for maintenance window, where the week starts on a Sunday, i.e. Sunday = `0`, Monday = `1`. Defaults to `0`.
@@ -31,9 +32,9 @@ class FlexibleServerMaintenanceWindow {
 
   factory FlexibleServerMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return FlexibleServerMaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] == null ? null : map['dayOfWeek'] as int,
-      startHour: map['startHour'] == null ? null : map['startHour'] as int,
-      startMinute: map['startMinute'] == null ? null : map['startMinute'] as int,
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as int).input(),
+      startHour: map['startHour'] == null ? null : (map['startHour'] as int).input(),
+      startMinute: map['startMinute'] == null ? null : (map['startMinute'] as int).input(),
     );
   }
 }

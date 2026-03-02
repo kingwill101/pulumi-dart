@@ -14,9 +14,8 @@ class ProviderArgs {
   /// Creates a new [ProviderArgs].
   /// [proxy] Proxy used by resources and data sources that connect to external endpoints.
   ProviderArgs({
-    pulumi.Output<ProviderProxy>? proxy,
-  }) :
-      proxy = pulumi.Input.asOptionalInput<ProviderProxy>(proxy);
+    this.proxy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      proxy: map['proxy'] == null ? null : pulumi.Output.create<ProviderProxy>(ProviderProxy.fromMap((map['proxy'] as Map).cast<String, dynamic>())),
+      proxy: map['proxy'] == null ? null : (ProviderProxy.fromMap((map['proxy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

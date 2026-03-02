@@ -36,23 +36,15 @@ class VolumeArgs {
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [timeouts] Optional.
   VolumeArgs({
-    pulumi.Output<String>? encryption,
-    required pulumi.Output<String> label,
-    pulumi.Output<int>? linodeId,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? size,
-    pulumi.Output<int>? sourceVolumeId,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<VolumeTimeouts>? timeouts,
-  }) :
-      encryption = pulumi.Input.asOptionalInput<String>(encryption),
-      label = pulumi.Input.asInput<String>(label),
-      linodeId = pulumi.Input.asOptionalInput<int>(linodeId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      sourceVolumeId = pulumi.Input.asOptionalInput<int>(sourceVolumeId),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<VolumeTimeouts>(timeouts);
+    this.encryption,
+    required this.label,
+    this.linodeId,
+    this.region,
+    this.size,
+    this.sourceVolumeId,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<String>(map['encryption'] as String),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      linodeId: map['linodeId'] == null ? null : pulumi.Output.create<int>(map['linodeId'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      sourceVolumeId: map['sourceVolumeId'] == null ? null : pulumi.Output.create<int>(map['sourceVolumeId'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<VolumeTimeouts>(VolumeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      encryption: map['encryption'] == null ? null : (map['encryption'] as String).input(),
+      label: (map['label'] as String).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      sourceVolumeId: map['sourceVolumeId'] == null ? null : (map['sourceVolumeId'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VolumeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

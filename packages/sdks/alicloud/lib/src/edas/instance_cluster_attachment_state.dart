@@ -22,17 +22,12 @@ class InstanceClusterAttachmentState {
   /// [instanceIds] The ID of instance. Type: list.
   /// [statusMap] The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
   InstanceClusterAttachmentState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<Map<String, String>>? clusterMemberIds,
-    pulumi.Output<Map<String, String>>? ecuMap,
-    pulumi.Output<List<String>>? instanceIds,
-    pulumi.Output<Map<String, int>>? statusMap,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      clusterMemberIds = pulumi.Input.asOptionalInput<Map<String, String>>(clusterMemberIds),
-      ecuMap = pulumi.Input.asOptionalInput<Map<String, String>>(ecuMap),
-      instanceIds = pulumi.Input.asOptionalInput<List<String>>(instanceIds),
-      statusMap = pulumi.Input.asOptionalInput<Map<String, int>>(statusMap);
+    this.clusterId,
+    this.clusterMemberIds,
+    this.ecuMap,
+    this.instanceIds,
+    this.statusMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class InstanceClusterAttachmentState {
 
   factory InstanceClusterAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceClusterAttachmentState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      clusterMemberIds: map['clusterMemberIds'] == null ? null : pulumi.Output.create<Map<String, String>>((map['clusterMemberIds'] as Map).cast<String, String>()),
-      ecuMap: map['ecuMap'] == null ? null : pulumi.Output.create<Map<String, String>>((map['ecuMap'] as Map).cast<String, String>()),
-      instanceIds: map['instanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      statusMap: map['statusMap'] == null ? null : pulumi.Output.create<Map<String, int>>((map['statusMap'] as Map).cast<String, int>()),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterMemberIds: map['clusterMemberIds'] == null ? null : ((map['clusterMemberIds'] as Map).cast<String, String>()).input(),
+      ecuMap: map['ecuMap'] == null ? null : ((map['ecuMap'] as Map).cast<String, String>()).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      statusMap: map['statusMap'] == null ? null : ((map['statusMap'] as Map).cast<String, int>()).input(),
     );
   }
 }

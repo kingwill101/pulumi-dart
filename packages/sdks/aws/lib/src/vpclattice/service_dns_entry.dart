@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceDnsEntry {
-  final String? domainName;
-  final String? hostedZoneId;
+  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String>? hostedZoneId;
 
   /// Creates a new [ServiceDnsEntry].
   /// [domainName] Optional.
@@ -22,8 +23,8 @@ class ServiceDnsEntry {
 
   factory ServiceDnsEntry.fromMap(Map<String, dynamic> map) {
     return ServiceDnsEntry(
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      hostedZoneId: map['hostedZoneId'] == null ? null : map['hostedZoneId'] as String,
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
     );
   }
 }

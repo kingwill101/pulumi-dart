@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reconciliation Policy.
 class ReconciliationPolicyResponse {
   /// Policy interval.
-  final String? interval;
+  final pulumi.Input<String>? interval;
   /// Policy type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ReconciliationPolicyResponse].
   /// [interval] Policy interval.
@@ -25,8 +26,8 @@ class ReconciliationPolicyResponse {
 
   factory ReconciliationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ReconciliationPolicyResponse(
-      interval: map['interval'] == null ? null : map['interval'] as String,
-      type: map['type'] as String,
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

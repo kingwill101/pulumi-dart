@@ -19,15 +19,11 @@ class VpcPeeringState {
   /// [status] The status of the VPC Peering.
   /// [vpcIds] A set of two VPC IDs to be peered.
   VpcPeeringState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? vpcIds,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcIds = pulumi.Input.asOptionalInput<List<String>>(vpcIds);
+    this.createdAt,
+    this.name,
+    this.status,
+    this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class VpcPeeringState {
 
   factory VpcPeeringState.fromMap(Map<String, dynamic> map) {
     return VpcPeeringState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcIds: map['vpcIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
     );
   }
 }

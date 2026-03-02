@@ -23,15 +23,11 @@ class ReplicationPolicyArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
   ReplicationPolicyArgs({
-    pulumi.Output<String>? policyName,
-    pulumi.Output<CreatePolicyInputProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      properties = pulumi.Input.asOptionalInput<CreatePolicyInputProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.policyName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ReplicationPolicyArgs {
 
   factory ReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationPolicyArgs(
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CreatePolicyInputProperties>(CreatePolicyInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      properties: map['properties'] == null ? null : (CreatePolicyInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

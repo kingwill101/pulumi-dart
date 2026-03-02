@@ -16,11 +16,9 @@ class GetCloudServiceArgs {
   /// [cloudServiceName] Name of the cloud service.
   /// [resourceGroupName] Name of the resource group.
   GetCloudServiceArgs({
-    required pulumi.Output<String> cloudServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cloudServiceName = pulumi.Input.asInput<String>(cloudServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cloudServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCloudServiceArgs {
 
   factory GetCloudServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudServiceArgs(
-      cloudServiceName: pulumi.Output.create<String>(map['cloudServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cloudServiceName: (map['cloudServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

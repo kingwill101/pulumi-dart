@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentityDetailsResponse {
   /// Specifies if the BI is protected by System Identity.
-  final bool? useSystemAssignedIdentity;
+  final pulumi.Input<bool>? useSystemAssignedIdentity;
   /// ARM URL for User Assigned Identity.
-  final String? userAssignedIdentityArmUrl;
+  final pulumi.Input<String>? userAssignedIdentityArmUrl;
 
   /// Creates a new [IdentityDetailsResponse].
   /// [useSystemAssignedIdentity] Specifies if the BI is protected by System Identity.
@@ -24,8 +25,8 @@ class IdentityDetailsResponse {
 
   factory IdentityDetailsResponse.fromMap(Map<String, dynamic> map) {
     return IdentityDetailsResponse(
-      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : map['useSystemAssignedIdentity'] as bool,
-      userAssignedIdentityArmUrl: map['userAssignedIdentityArmUrl'] == null ? null : map['userAssignedIdentityArmUrl'] as String,
+      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : (map['useSystemAssignedIdentity'] as bool).input(),
+      userAssignedIdentityArmUrl: map['userAssignedIdentityArmUrl'] == null ? null : (map['userAssignedIdentityArmUrl'] as String).input(),
     );
   }
 }

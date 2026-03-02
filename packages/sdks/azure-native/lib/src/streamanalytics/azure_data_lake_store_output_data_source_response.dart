@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an Azure Data Lake Store output data source.
 class AzureDataLakeStoreOutputDataSourceResponse {
   /// The name of the Azure Data Lake Store account. Required on PUT (CreateOrReplace) requests.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Authentication Mode.
-  final String? authenticationMode;
+  final pulumi.Input<String>? authenticationMode;
   /// The date format. Wherever {date} appears in filePathPrefix, the value of this property is used as the date format instead.
-  final String? dateFormat;
+  final pulumi.Input<String>? dateFormat;
   /// The location of the file to which the output should be written to. Required on PUT (CreateOrReplace) requests.
-  final String? filePathPrefix;
+  final pulumi.Input<String>? filePathPrefix;
   /// A refresh token that can be used to obtain a valid access token that can then be used to authenticate with the data source. A valid refresh token is currently only obtainable via the Azure Portal. It is recommended to put a dummy string value here when creating the data source and then going to the Azure Portal to authenticate the data source which will update this property with a valid refresh token. Required on PUT (CreateOrReplace) requests.
-  final String? refreshToken;
+  final pulumi.Input<String>? refreshToken;
   /// The tenant id of the user used to obtain the refresh token. Required on PUT (CreateOrReplace) requests.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The time format. Wherever {time} appears in filePathPrefix, the value of this property is used as the time format instead.
-  final String? timeFormat;
+  final pulumi.Input<String>? timeFormat;
   /// The user display name of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
-  final String? tokenUserDisplayName;
+  final pulumi.Input<String>? tokenUserDisplayName;
   /// The user principal name (UPN) of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
-  final String? tokenUserPrincipalName;
+  final pulumi.Input<String>? tokenUserPrincipalName;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.DataLake/Accounts'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AzureDataLakeStoreOutputDataSourceResponse].
   /// [accountName] The name of the Azure Data Lake Store account. Required on PUT (CreateOrReplace) requests.
@@ -66,16 +67,16 @@ class AzureDataLakeStoreOutputDataSourceResponse {
 
   factory AzureDataLakeStoreOutputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return AzureDataLakeStoreOutputDataSourceResponse(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      authenticationMode: map['authenticationMode'] == null ? null : map['authenticationMode'] as String,
-      dateFormat: map['dateFormat'] == null ? null : map['dateFormat'] as String,
-      filePathPrefix: map['filePathPrefix'] == null ? null : map['filePathPrefix'] as String,
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      timeFormat: map['timeFormat'] == null ? null : map['timeFormat'] as String,
-      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : map['tokenUserDisplayName'] as String,
-      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : map['tokenUserPrincipalName'] as String,
-      type: map['type'] as String,
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat'] as String).input(),
+      filePathPrefix: map['filePathPrefix'] == null ? null : (map['filePathPrefix'] as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      timeFormat: map['timeFormat'] == null ? null : (map['timeFormat'] as String).input(),
+      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName'] as String).input(),
+      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

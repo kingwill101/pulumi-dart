@@ -29,17 +29,12 @@ class ConfigurationArgs {
   /// [name] A unique name for the resource.
   /// [region] The region in which to create the db instance. Changing this
   ConfigurationArgs({
-    pulumi.Output<List<ConfigurationConfiguration>>? configurations,
-    required pulumi.Output<ConfigurationDatastore> datastore,
-    required pulumi.Output<String> description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      configurations = pulumi.Input.asOptionalInput<List<ConfigurationConfiguration>>(configurations),
-      datastore = pulumi.Input.asInput<ConfigurationDatastore>(datastore),
-      description = pulumi.Input.asInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.configurations,
+    required this.datastore,
+    required this.description,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      configurations: map['configurations'] == null ? null : pulumi.Output.create<List<ConfigurationConfiguration>>(pulumi.Input.decodeList<ConfigurationConfiguration>(map['configurations'], (value) => ConfigurationConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      datastore: pulumi.Output.create<ConfigurationDatastore>(ConfigurationDatastore.fromMap((map['datastore'] as Map).cast<String, dynamic>())),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<ConfigurationConfiguration>(map['configurations'], (value) => ConfigurationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datastore: (ConfigurationDatastore.fromMap((map['datastore'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

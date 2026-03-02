@@ -6,9 +6,9 @@ import 'ipv4_firewall_rule.dart';
 /// An array of firewall rules.
 class IPv4FirewallSettings {
   /// The indicator of enabling PBI service.
-  final bool? enablePowerBIService;
+  final pulumi.Input<bool>? enablePowerBIService;
   /// An array of firewall rules.
-  final List<IPv4FirewallRule>? firewallRules;
+  final pulumi.Input<List<IPv4FirewallRule>>? firewallRules;
 
   /// Creates a new [IPv4FirewallSettings].
   /// [enablePowerBIService] The indicator of enabling PBI service.
@@ -21,14 +21,14 @@ class IPv4FirewallSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enablePowerBIService': ?enablePowerBIService,
-      'firewallRules': ?firewallRules == null ? null : pulumi.Input.encodeList<IPv4FirewallRule, Map<String, dynamic>>(firewallRules!, (value) => value.toMap()),
+      'firewallRules': ?pulumi.Input.mapOptionalInputValue<List<IPv4FirewallRule>, List<Map<String, dynamic>>>(firewallRules, (value) => pulumi.Input.encodeList<IPv4FirewallRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory IPv4FirewallSettings.fromMap(Map<String, dynamic> map) {
     return IPv4FirewallSettings(
-      enablePowerBIService: map['enablePowerBIService'] == null ? null : map['enablePowerBIService'] as bool,
-      firewallRules: map['firewallRules'] == null ? null : pulumi.Input.decodeList<IPv4FirewallRule>(map['firewallRules'], (value) => IPv4FirewallRule.fromMap((value as Map).cast<String, dynamic>())),
+      enablePowerBIService: map['enablePowerBIService'] == null ? null : (map['enablePowerBIService'] as bool).input(),
+      firewallRules: map['firewallRules'] == null ? null : (pulumi.Input.decodeList<IPv4FirewallRule>(map['firewallRules'], (value) => IPv4FirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

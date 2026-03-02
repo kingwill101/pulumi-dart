@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxToolVersionToolConnectorSpecActionEntityOperation {
   /// ID of the entity.
-  final String entityId;
+  final pulumi.Input<String> entityId;
   /// The operation to perform on the entity.
   /// Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
-  final String operation;
+  final pulumi.Input<String> operation;
 
   /// Creates a new [CxToolVersionToolConnectorSpecActionEntityOperation].
   /// [entityId] ID of the entity.
@@ -25,8 +26,8 @@ class CxToolVersionToolConnectorSpecActionEntityOperation {
 
   factory CxToolVersionToolConnectorSpecActionEntityOperation.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolConnectorSpecActionEntityOperation(
-      entityId: map['entityId'] as String,
-      operation: map['operation'] as String,
+      entityId: (map['entityId'] as String).input(),
+      operation: (map['operation'] as String).input(),
     );
   }
 }

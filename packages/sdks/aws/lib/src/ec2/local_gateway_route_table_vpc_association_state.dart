@@ -26,19 +26,13 @@ class LocalGatewayRouteTableVpcAssociationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] Identifier of EC2 VPC.
   LocalGatewayRouteTableVpcAssociationState({
-    pulumi.Output<String>? localGatewayId,
-    pulumi.Output<String>? localGatewayRouteTableId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcId,
-  }) :
-      localGatewayId = pulumi.Input.asOptionalInput<String>(localGatewayId),
-      localGatewayRouteTableId = pulumi.Input.asOptionalInput<String>(localGatewayRouteTableId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.localGatewayId,
+    this.localGatewayRouteTableId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class LocalGatewayRouteTableVpcAssociationState {
 
   factory LocalGatewayRouteTableVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return LocalGatewayRouteTableVpcAssociationState(
-      localGatewayId: map['localGatewayId'] == null ? null : pulumi.Output.create<String>(map['localGatewayId'] as String),
-      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : pulumi.Output.create<String>(map['localGatewayRouteTableId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      localGatewayId: map['localGatewayId'] == null ? null : (map['localGatewayId'] as String).input(),
+      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : (map['localGatewayRouteTableId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

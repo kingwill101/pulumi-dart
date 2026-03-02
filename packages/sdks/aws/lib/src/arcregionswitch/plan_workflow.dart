@@ -5,13 +5,13 @@ import 'plan_workflow_step.dart';
 
 class PlanWorkflow {
   /// List of steps in the workflow. See Step below.
-  final List<PlanWorkflowStep>? steps;
+  final pulumi.Input<List<PlanWorkflowStep>>? steps;
   /// Description of the workflow.
-  final String? workflowDescription;
+  final pulumi.Input<String>? workflowDescription;
   /// Action to perform. Valid values: `activate`, `deactivate`.
-  final String workflowTargetAction;
+  final pulumi.Input<String> workflowTargetAction;
   /// Target region for the workflow.
-  final String? workflowTargetRegion;
+  final pulumi.Input<String>? workflowTargetRegion;
 
   /// Creates a new [PlanWorkflow].
   /// [steps] List of steps in the workflow. See Step below.
@@ -27,7 +27,7 @@ class PlanWorkflow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'steps': ?steps == null ? null : pulumi.Input.encodeList<PlanWorkflowStep, Map<String, dynamic>>(steps!, (value) => value.toMap()),
+      'steps': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStep>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<PlanWorkflowStep, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workflowDescription': ?workflowDescription,
       'workflowTargetAction': workflowTargetAction,
       'workflowTargetRegion': ?workflowTargetRegion,
@@ -36,10 +36,10 @@ class PlanWorkflow {
 
   factory PlanWorkflow.fromMap(Map<String, dynamic> map) {
     return PlanWorkflow(
-      steps: map['steps'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStep>(map['steps'], (value) => PlanWorkflowStep.fromMap((value as Map).cast<String, dynamic>())),
-      workflowDescription: map['workflowDescription'] == null ? null : map['workflowDescription'] as String,
-      workflowTargetAction: map['workflowTargetAction'] as String,
-      workflowTargetRegion: map['workflowTargetRegion'] == null ? null : map['workflowTargetRegion'] as String,
+      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStep>(map['steps'], (value) => PlanWorkflowStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workflowDescription: map['workflowDescription'] == null ? null : (map['workflowDescription'] as String).input(),
+      workflowTargetAction: (map['workflowTargetAction'] as String).input(),
+      workflowTargetRegion: map['workflowTargetRegion'] == null ? null : (map['workflowTargetRegion'] as String).input(),
     );
   }
 }

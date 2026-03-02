@@ -28,19 +28,13 @@ class ApplicationFlexibleFederatedIdentityCredentialArgs {
   /// [displayName] A unique display name for the federated identity credential. Changing this forces a new resource to be created.
   /// [issuer] The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.
   ApplicationFlexibleFederatedIdentityCredentialArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> audience,
-    required pulumi.Output<String> claimsMatchingExpression,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> issuer,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      audience = pulumi.Input.asInput<String>(audience),
-      claimsMatchingExpression = pulumi.Input.asInput<String>(claimsMatchingExpression),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      issuer = pulumi.Input.asInput<String>(issuer);
+    required this.applicationId,
+    required this.audience,
+    required this.claimsMatchingExpression,
+    this.description,
+    required this.displayName,
+    required this.issuer,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ApplicationFlexibleFederatedIdentityCredentialArgs {
 
   factory ApplicationFlexibleFederatedIdentityCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationFlexibleFederatedIdentityCredentialArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      audience: pulumi.Output.create<String>(map['audience'] as String),
-      claimsMatchingExpression: pulumi.Output.create<String>(map['claimsMatchingExpression'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      issuer: pulumi.Output.create<String>(map['issuer'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      audience: (map['audience'] as String).input(),
+      claimsMatchingExpression: (map['claimsMatchingExpression'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
     );
   }
 }

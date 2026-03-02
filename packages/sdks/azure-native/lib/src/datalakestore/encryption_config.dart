@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_config_type.dart';
 import 'key_vault_meta_info.dart';
 
 /// The encryption configuration for the account.
 class EncryptionConfig {
   /// The Key Vault information for connecting to user managed encryption keys.
-  final KeyVaultMetaInfo? keyVaultMetaInfo;
+  final pulumi.Input<KeyVaultMetaInfo>? keyVaultMetaInfo;
   /// The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
-  final EncryptionConfigType type;
+  final pulumi.Input<EncryptionConfigType> type;
 
   /// Creates a new [EncryptionConfig].
   /// [keyVaultMetaInfo] The Key Vault information for connecting to user managed encryption keys.
@@ -20,15 +21,15 @@ class EncryptionConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVaultMetaInfo': ?keyVaultMetaInfo == null ? null : keyVaultMetaInfo!.toMap(),
-      'type': type.value,
+      'keyVaultMetaInfo': ?pulumi.Input.mapOptionalInputValue<KeyVaultMetaInfo, Map<String, dynamic>>(keyVaultMetaInfo, (value) => value.toMap()),
+      'type': pulumi.Input.mapInputValue<EncryptionConfigType, String>(type, (value) => value.value),
     };
   }
 
   factory EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return EncryptionConfig(
-      keyVaultMetaInfo: map['keyVaultMetaInfo'] == null ? null : KeyVaultMetaInfo.fromMap((map['keyVaultMetaInfo'] as Map).cast<String, dynamic>()),
-      type: EncryptionConfigType.fromValue(map['type'] as String),
+      keyVaultMetaInfo: map['keyVaultMetaInfo'] == null ? null : (KeyVaultMetaInfo.fromMap((map['keyVaultMetaInfo'] as Map).cast<String, dynamic>())).input(),
+      type: (EncryptionConfigType.fromValue(map['type'] as String)).input(),
     );
   }
 }

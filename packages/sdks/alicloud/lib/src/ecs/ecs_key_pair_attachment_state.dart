@@ -19,15 +19,11 @@ class EcsKeyPairAttachmentState {
   /// [keyName] New field 'key_pair_name' instead.
   /// [keyPairName] The name of key pair used to bind.
   EcsKeyPairAttachmentState({
-    pulumi.Output<bool>? force,
-    pulumi.Output<List<String>>? instanceIds,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? keyPairName,
-  }) :
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      instanceIds = pulumi.Input.asOptionalInput<List<String>>(instanceIds),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      keyPairName = pulumi.Input.asOptionalInput<String>(keyPairName);
+    this.force,
+    this.instanceIds,
+    this.keyName,
+    this.keyPairName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class EcsKeyPairAttachmentState {
 
   factory EcsKeyPairAttachmentState.fromMap(Map<String, dynamic> map) {
     return EcsKeyPairAttachmentState(
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      instanceIds: map['instanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      keyPairName: map['keyPairName'] == null ? null : pulumi.Output.create<String>(map['keyPairName'] as String),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
     );
   }
 }

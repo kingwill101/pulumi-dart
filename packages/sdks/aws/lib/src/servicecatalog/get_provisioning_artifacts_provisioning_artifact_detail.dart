@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProvisioningArtifactsProvisioningArtifactDetail {
   /// Indicates whether the product version is active.
-  final bool active;
+  final pulumi.Input<bool> active;
   /// The UTC time stamp of the creation time.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// The description of the provisioning artifact.
-  final String description;
+  final pulumi.Input<String> description;
   /// Information set by the administrator to provide guidance to end users about which provisioning artifacts to use.
-  final String guidance;
+  final pulumi.Input<String> guidance;
   /// The identifier of the provisioning artifact.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the provisioning artifact.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of provisioning artifact.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetProvisioningArtifactsProvisioningArtifactDetail].
   /// [active] Indicates whether the product version is active.
@@ -49,13 +50,13 @@ class GetProvisioningArtifactsProvisioningArtifactDetail {
 
   factory GetProvisioningArtifactsProvisioningArtifactDetail.fromMap(Map<String, dynamic> map) {
     return GetProvisioningArtifactsProvisioningArtifactDetail(
-      active: map['active'] as bool,
-      createdTime: map['createdTime'] as String,
-      description: map['description'] as String,
-      guidance: map['guidance'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      active: (map['active'] as bool).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      guidance: (map['guidance'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

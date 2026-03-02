@@ -25,17 +25,12 @@ class GetDdosCooPortsArgs {
   /// [instanceId] The DdosCoo instance ID.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetDdosCooPortsArgs({
-    pulumi.Output<String>? frontendPort,
-    pulumi.Output<String>? frontendProtocol,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      frontendPort = pulumi.Input.asOptionalInput<String>(frontendPort),
-      frontendProtocol = pulumi.Input.asOptionalInput<String>(frontendProtocol),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.frontendPort,
+    this.frontendProtocol,
+    this.ids,
+    required this.instanceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetDdosCooPortsArgs {
 
   factory GetDdosCooPortsArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosCooPortsArgs(
-      frontendPort: map['frontendPort'] == null ? null : pulumi.Output.create<String>(map['frontendPort'] as String),
-      frontendProtocol: map['frontendProtocol'] == null ? null : pulumi.Output.create<String>(map['frontendProtocol'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as String).input(),
+      frontendProtocol: map['frontendProtocol'] == null ? null : (map['frontendProtocol'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

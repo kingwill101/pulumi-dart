@@ -37,25 +37,16 @@ class RoleArgs {
   /// [stage] The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
   /// [title] Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
   RoleArgs({
-    pulumi.Output<bool>? deleted,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? includedPermissions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? roleId,
-    pulumi.Output<RoleStage>? stage,
-    pulumi.Output<String>? title,
-  }) :
-      deleted = pulumi.Input.asOptionalInput<bool>(deleted),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      includedPermissions = pulumi.Input.asOptionalInput<List<String>>(includedPermissions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId),
-      stage = pulumi.Input.asOptionalInput<RoleStage>(stage),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.deleted,
+    this.description,
+    this.etag,
+    this.includedPermissions,
+    this.name,
+    this.project,
+    this.roleId,
+    this.stage,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      deleted: map['deleted'] == null ? null : pulumi.Output.create<bool>(map['deleted'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      includedPermissions: map['includedPermissions'] == null ? null : pulumi.Output.create<List<String>>((map['includedPermissions'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
-      stage: map['stage'] == null ? null : pulumi.Output.create<RoleStage>(RoleStage.fromValue(map['stage'] as String)),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      includedPermissions: map['includedPermissions'] == null ? null : ((map['includedPermissions'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      stage: map['stage'] == null ? null : (RoleStage.fromValue(map['stage'] as String)).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

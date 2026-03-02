@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SigningProfileRevocationRecord {
   /// The time when revocation becomes effective.
-  final String? revocationEffectiveFrom;
+  final pulumi.Input<String>? revocationEffectiveFrom;
   /// The time when the signing profile was revoked.
-  final String? revokedAt;
+  final pulumi.Input<String>? revokedAt;
   /// The identity of the revoker.
-  final String? revokedBy;
+  final pulumi.Input<String>? revokedBy;
 
   /// Creates a new [SigningProfileRevocationRecord].
   /// [revocationEffectiveFrom] The time when revocation becomes effective.
@@ -29,9 +30,9 @@ class SigningProfileRevocationRecord {
 
   factory SigningProfileRevocationRecord.fromMap(Map<String, dynamic> map) {
     return SigningProfileRevocationRecord(
-      revocationEffectiveFrom: map['revocationEffectiveFrom'] == null ? null : map['revocationEffectiveFrom'] as String,
-      revokedAt: map['revokedAt'] == null ? null : map['revokedAt'] as String,
-      revokedBy: map['revokedBy'] == null ? null : map['revokedBy'] as String,
+      revocationEffectiveFrom: map['revocationEffectiveFrom'] == null ? null : (map['revocationEffectiveFrom'] as String).input(),
+      revokedAt: map['revokedAt'] == null ? null : (map['revokedAt'] as String).input(),
+      revokedBy: map['revokedBy'] == null ? null : (map['revokedBy'] as String).input(),
     );
   }
 }

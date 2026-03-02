@@ -14,11 +14,9 @@ class GetTypeProviderDeploymentmanagerV2betaArgs {
   /// [project] Optional.
   /// [typeProvider] Required.
   GetTypeProviderDeploymentmanagerV2betaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> typeProvider,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      typeProvider = pulumi.Input.asInput<String>(typeProvider);
+    this.project,
+    required this.typeProvider,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetTypeProviderDeploymentmanagerV2betaArgs {
 
   factory GetTypeProviderDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetTypeProviderDeploymentmanagerV2betaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      typeProvider: pulumi.Output.create<String>(map['typeProvider'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      typeProvider: (map['typeProvider'] as String).input(),
     );
   }
 }

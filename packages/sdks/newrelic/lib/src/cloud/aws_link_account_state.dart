@@ -21,15 +21,11 @@ class AwsLinkAccountState {
   /// [metricCollectionMode] How metrics will be collected. Use `PUSH` for a metric stream or `PULL` to integrate with individual services.
   /// [name] The linked account name
   AwsLinkAccountState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? metricCollectionMode,
-    pulumi.Output<String>? name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      metricCollectionMode = pulumi.Input.asOptionalInput<String>(metricCollectionMode),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accountId,
+    this.arn,
+    this.metricCollectionMode,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class AwsLinkAccountState {
 
   factory AwsLinkAccountState.fromMap(Map<String, dynamic> map) {
     return AwsLinkAccountState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      metricCollectionMode: map['metricCollectionMode'] == null ? null : pulumi.Output.create<String>(map['metricCollectionMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      metricCollectionMode: map['metricCollectionMode'] == null ? null : (map['metricCollectionMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

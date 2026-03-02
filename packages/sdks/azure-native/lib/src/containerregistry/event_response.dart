@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_request_message_response.dart';
 import 'event_response_message_response.dart';
 
 /// The event for a webhook.
 class EventResponse {
   /// The event request message sent to the service URI.
-  final EventRequestMessageResponse? eventRequestMessage;
+  final pulumi.Input<EventRequestMessageResponse>? eventRequestMessage;
   /// The event response message received from the service URI.
-  final EventResponseMessageResponse? eventResponseMessage;
+  final pulumi.Input<EventResponseMessageResponse>? eventResponseMessage;
   /// The event ID.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [EventResponse].
   /// [eventRequestMessage] The event request message sent to the service URI.
@@ -24,17 +25,17 @@ class EventResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventRequestMessage': ?eventRequestMessage == null ? null : eventRequestMessage!.toMap(),
-      'eventResponseMessage': ?eventResponseMessage == null ? null : eventResponseMessage!.toMap(),
+      'eventRequestMessage': ?pulumi.Input.mapOptionalInputValue<EventRequestMessageResponse, Map<String, dynamic>>(eventRequestMessage, (value) => value.toMap()),
+      'eventResponseMessage': ?pulumi.Input.mapOptionalInputValue<EventResponseMessageResponse, Map<String, dynamic>>(eventResponseMessage, (value) => value.toMap()),
       'id': ?id,
     };
   }
 
   factory EventResponse.fromMap(Map<String, dynamic> map) {
     return EventResponse(
-      eventRequestMessage: map['eventRequestMessage'] == null ? null : EventRequestMessageResponse.fromMap((map['eventRequestMessage'] as Map).cast<String, dynamic>()),
-      eventResponseMessage: map['eventResponseMessage'] == null ? null : EventResponseMessageResponse.fromMap((map['eventResponseMessage'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
+      eventRequestMessage: map['eventRequestMessage'] == null ? null : (EventRequestMessageResponse.fromMap((map['eventRequestMessage'] as Map).cast<String, dynamic>())).input(),
+      eventResponseMessage: map['eventResponseMessage'] == null ? null : (EventResponseMessageResponse.fromMap((map['eventResponseMessage'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

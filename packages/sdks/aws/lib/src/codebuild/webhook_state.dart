@@ -43,29 +43,18 @@ class WebhookState {
   /// [secret] The secret token of the associated repository. Not returned by the CodeBuild API for all source types.
   /// [url] The URL to the webhook.
   WebhookState({
-    pulumi.Output<String>? branchFilter,
-    pulumi.Output<String>? buildType,
-    pulumi.Output<List<WebhookFilterGroup>>? filterGroups,
-    pulumi.Output<bool>? manualCreation,
-    pulumi.Output<String>? payloadUrl,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<WebhookPullRequestBuildPolicy>? pullRequestBuildPolicy,
-    pulumi.Output<String>? region,
-    pulumi.Output<WebhookScopeConfiguration>? scopeConfiguration,
-    pulumi.Output<String>? secret,
-    pulumi.Output<String>? url,
-  }) :
-      branchFilter = pulumi.Input.asOptionalInput<String>(branchFilter),
-      buildType = pulumi.Input.asOptionalInput<String>(buildType),
-      filterGroups = pulumi.Input.asOptionalInput<List<WebhookFilterGroup>>(filterGroups),
-      manualCreation = pulumi.Input.asOptionalInput<bool>(manualCreation),
-      payloadUrl = pulumi.Input.asOptionalInput<String>(payloadUrl),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      pullRequestBuildPolicy = pulumi.Input.asOptionalInput<WebhookPullRequestBuildPolicy>(pullRequestBuildPolicy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scopeConfiguration = pulumi.Input.asOptionalInput<WebhookScopeConfiguration>(scopeConfiguration),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.branchFilter,
+    this.buildType,
+    this.filterGroups,
+    this.manualCreation,
+    this.payloadUrl,
+    this.projectName,
+    this.pullRequestBuildPolicy,
+    this.region,
+    this.scopeConfiguration,
+    this.secret,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class WebhookState {
 
   factory WebhookState.fromMap(Map<String, dynamic> map) {
     return WebhookState(
-      branchFilter: map['branchFilter'] == null ? null : pulumi.Output.create<String>(map['branchFilter'] as String),
-      buildType: map['buildType'] == null ? null : pulumi.Output.create<String>(map['buildType'] as String),
-      filterGroups: map['filterGroups'] == null ? null : pulumi.Output.create<List<WebhookFilterGroup>>(pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups'], (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))),
-      manualCreation: map['manualCreation'] == null ? null : pulumi.Output.create<bool>(map['manualCreation'] as bool),
-      payloadUrl: map['payloadUrl'] == null ? null : pulumi.Output.create<String>(map['payloadUrl'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : pulumi.Output.create<WebhookPullRequestBuildPolicy>(WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scopeConfiguration: map['scopeConfiguration'] == null ? null : pulumi.Output.create<WebhookScopeConfiguration>(WebhookScopeConfiguration.fromMap((map['scopeConfiguration'] as Map).cast<String, dynamic>())),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter'] as String).input(),
+      buildType: map['buildType'] == null ? null : (map['buildType'] as String).input(),
+      filterGroups: map['filterGroups'] == null ? null : (pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups'], (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manualCreation: map['manualCreation'] == null ? null : (map['manualCreation'] as bool).input(),
+      payloadUrl: map['payloadUrl'] == null ? null : (map['payloadUrl'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : (WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scopeConfiguration: map['scopeConfiguration'] == null ? null : (WebhookScopeConfiguration.fromMap((map['scopeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSourceDataSourceBackupApplianceApplication {
   /// Appliance Id of the Backup Appliance.
-  final String applianceId;
+  final pulumi.Input<String> applianceId;
   /// The appid field of the application within the Backup Appliance.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// The name of the Application as known to the Backup Appliance.
-  final String applicationName;
+  final pulumi.Input<String> applicationName;
   /// Appliance name.
-  final String backupAppliance;
+  final pulumi.Input<String> backupAppliance;
   /// Hostid of the application host.
-  final String hostId;
+  final pulumi.Input<String> hostId;
   /// Hostname of the host where the application is running.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// The type of the application. e.g. VMBackup
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDataSourceDataSourceBackupApplianceApplication].
   /// [applianceId] Appliance Id of the Backup Appliance.
@@ -49,13 +50,13 @@ class GetDataSourceDataSourceBackupApplianceApplication {
 
   factory GetDataSourceDataSourceBackupApplianceApplication.fromMap(Map<String, dynamic> map) {
     return GetDataSourceDataSourceBackupApplianceApplication(
-      applianceId: map['applianceId'] as String,
-      applicationId: map['applicationId'] as String,
-      applicationName: map['applicationName'] as String,
-      backupAppliance: map['backupAppliance'] as String,
-      hostId: map['hostId'] as String,
-      hostname: map['hostname'] as String,
-      type: map['type'] as String,
+      applianceId: (map['applianceId'] as String).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      applicationName: (map['applicationName'] as String).input(),
+      backupAppliance: (map['backupAppliance'] as String).input(),
+      hostId: (map['hostId'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

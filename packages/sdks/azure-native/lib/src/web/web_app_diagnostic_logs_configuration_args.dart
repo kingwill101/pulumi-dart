@@ -34,21 +34,14 @@ class WebAppDiagnosticLogsConfigurationArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   WebAppDiagnosticLogsConfigurationArgs({
-    pulumi.Output<ApplicationLogsConfig>? applicationLogs,
-    pulumi.Output<EnabledConfig>? detailedErrorMessages,
-    pulumi.Output<EnabledConfig>? failedRequestsTracing,
-    pulumi.Output<HttpLogsConfig>? httpLogs,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applicationLogs = pulumi.Input.asOptionalInput<ApplicationLogsConfig>(applicationLogs),
-      detailedErrorMessages = pulumi.Input.asOptionalInput<EnabledConfig>(detailedErrorMessages),
-      failedRequestsTracing = pulumi.Input.asOptionalInput<EnabledConfig>(failedRequestsTracing),
-      httpLogs = pulumi.Input.asOptionalInput<HttpLogsConfig>(httpLogs),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.applicationLogs,
+    this.detailedErrorMessages,
+    this.failedRequestsTracing,
+    this.httpLogs,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class WebAppDiagnosticLogsConfigurationArgs {
 
   factory WebAppDiagnosticLogsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDiagnosticLogsConfigurationArgs(
-      applicationLogs: map['applicationLogs'] == null ? null : pulumi.Output.create<ApplicationLogsConfig>(ApplicationLogsConfig.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>())),
-      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : pulumi.Output.create<EnabledConfig>(EnabledConfig.fromMap((map['detailedErrorMessages'] as Map).cast<String, dynamic>())),
-      failedRequestsTracing: map['failedRequestsTracing'] == null ? null : pulumi.Output.create<EnabledConfig>(EnabledConfig.fromMap((map['failedRequestsTracing'] as Map).cast<String, dynamic>())),
-      httpLogs: map['httpLogs'] == null ? null : pulumi.Output.create<HttpLogsConfig>(HttpLogsConfig.fromMap((map['httpLogs'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationLogs: map['applicationLogs'] == null ? null : (ApplicationLogsConfig.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>())).input(),
+      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : (EnabledConfig.fromMap((map['detailedErrorMessages'] as Map).cast<String, dynamic>())).input(),
+      failedRequestsTracing: map['failedRequestsTracing'] == null ? null : (EnabledConfig.fromMap((map['failedRequestsTracing'] as Map).cast<String, dynamic>())).input(),
+      httpLogs: map['httpLogs'] == null ? null : (HttpLogsConfig.fromMap((map['httpLogs'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

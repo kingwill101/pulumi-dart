@@ -28,19 +28,13 @@ class GetServiceFabricScheduleArgs {
   /// [serviceFabricName] servicefabrics
   /// [userName] users
   GetServiceFabricScheduleArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> labName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceFabricName,
-    required pulumi.Output<String> userName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      labName = pulumi.Input.asInput<String>(labName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceFabricName = pulumi.Input.asInput<String>(serviceFabricName),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.expand,
+    required this.labName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.serviceFabricName,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetServiceFabricScheduleArgs {
 
   factory GetServiceFabricScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceFabricScheduleArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceFabricName: pulumi.Output.create<String>(map['serviceFabricName'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      labName: (map['labName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceFabricName: (map['serviceFabricName'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

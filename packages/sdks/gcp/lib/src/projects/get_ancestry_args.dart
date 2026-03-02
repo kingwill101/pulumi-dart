@@ -13,9 +13,8 @@ class GetAncestryArgs {
   /// Creates a new [GetAncestryArgs].
   /// [project] The ID of the project. If it is not provided, the provider project is used.
   GetAncestryArgs({
-    pulumi.Output<String>? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAncestryArgs {
 
   factory GetAncestryArgs.fromMap(Map<String, dynamic> map) {
     return GetAncestryArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

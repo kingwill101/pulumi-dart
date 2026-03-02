@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetLogicalTableMapDataTransformUntagColumnOperation {
-  final String columnName;
-  final List<String> tagNames;
+  final pulumi.Input<String> columnName;
+  final pulumi.Input<List<String>> tagNames;
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformUntagColumnOperation].
   /// [columnName] Required.
@@ -22,8 +23,8 @@ class GetDataSetLogicalTableMapDataTransformUntagColumnOperation {
 
   factory GetDataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformUntagColumnOperation(
-      columnName: map['columnName'] as String,
-      tagNames: (map['tagNames'] as List).cast<String>(),
+      columnName: (map['columnName'] as String).input(),
+      tagNames: ((map['tagNames'] as List).cast<String>()).input(),
     );
   }
 }

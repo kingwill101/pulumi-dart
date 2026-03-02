@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerBackendServer {
   /// IP address of the backend server  Example value: 192.168.0.5.
-  final String? ip;
+  final pulumi.Input<String>? ip;
   /// Port used by the backend server.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
-  final String serverId;
+  final pulumi.Input<String> serverId;
   /// Backend server type  Example value: ens.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Weight of the backend server  Example value: 100.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [LoadBalancerBackendServer].
   /// [ip] IP address of the backend server  Example value: 192.168.0.5.
@@ -39,11 +40,11 @@ class LoadBalancerBackendServer {
 
   factory LoadBalancerBackendServer.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendServer(
-      ip: map['ip'] == null ? null : map['ip'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      serverId: map['serverId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      serverId: (map['serverId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

@@ -32,15 +32,11 @@ class LienArgs {
   /// [reason] Concise user-visible strings indicating why an action cannot be performed
   /// [restrictions] The types of operations which should be blocked as a result of this Lien.
   LienArgs({
-    required pulumi.Output<String> origin,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> reason,
-    required pulumi.Output<List<String>> restrictions,
-  }) :
-      origin = pulumi.Input.asInput<String>(origin),
-      parent = pulumi.Input.asInput<String>(parent),
-      reason = pulumi.Input.asInput<String>(reason),
-      restrictions = pulumi.Input.asInput<List<String>>(restrictions);
+    required this.origin,
+    required this.parent,
+    required this.reason,
+    required this.restrictions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,10 +49,10 @@ class LienArgs {
 
   factory LienArgs.fromMap(Map<String, dynamic> map) {
     return LienArgs(
-      origin: pulumi.Output.create<String>(map['origin'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      reason: pulumi.Output.create<String>(map['reason'] as String),
-      restrictions: pulumi.Output.create<List<String>>((map['restrictions'] as List).cast<String>()),
+      origin: (map['origin'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      restrictions: ((map['restrictions'] as List).cast<String>()).input(),
     );
   }
 }

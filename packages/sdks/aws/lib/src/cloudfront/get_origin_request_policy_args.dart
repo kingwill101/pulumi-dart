@@ -16,11 +16,9 @@ class GetOriginRequestPolicyArgs {
   /// [id] Identifier for the origin request policy.
   /// [name] Unique name to identify the origin request policy.
   GetOriginRequestPolicyArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetOriginRequestPolicyArgs {
 
   factory GetOriginRequestPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class RegistryScanningConfigurationArgs {
   /// [rules] One or multiple blocks specifying scanning rules to determine which repository filters are used and at what frequency scanning will occur. See below for schema.
   /// [scanType] the scanning type to set for the registry. Can be either `ENHANCED` or `BASIC`.
   RegistryScanningConfigurationArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<List<RegistryScanningConfigurationRule>>? rules,
-    required pulumi.Output<String> scanType,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<List<RegistryScanningConfigurationRule>>(rules),
-      scanType = pulumi.Input.asInput<String>(scanType);
+    this.region,
+    this.rules,
+    required this.scanType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class RegistryScanningConfigurationArgs {
 
   factory RegistryScanningConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RegistryScanningConfigurationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<RegistryScanningConfigurationRule>>(pulumi.Input.decodeList<RegistryScanningConfigurationRule>(map['rules'], (value) => RegistryScanningConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))),
-      scanType: pulumi.Output.create<String>(map['scanType'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RegistryScanningConfigurationRule>(map['rules'], (value) => RegistryScanningConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scanType: (map['scanType'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specific Gremlin Databases to restore.
 class GremlinDatabaseRestoreResource {
   /// The name of the gremlin database available for restore.
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
   /// The names of the graphs available for restore.
-  final List<String>? graphNames;
+  final pulumi.Input<List<String>>? graphNames;
 
   /// Creates a new [GremlinDatabaseRestoreResource].
   /// [databaseName] The name of the gremlin database available for restore.
@@ -25,8 +26,8 @@ class GremlinDatabaseRestoreResource {
 
   factory GremlinDatabaseRestoreResource.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseRestoreResource(
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      graphNames: map['graphNames'] == null ? null : (map['graphNames'] as List).cast<String>(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      graphNames: map['graphNames'] == null ? null : ((map['graphNames'] as List).cast<String>()).input(),
     );
   }
 }

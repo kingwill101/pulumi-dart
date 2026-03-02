@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stack_trace_response_workflowexecutions_v1beta.dart';
 
 /// Error describes why the execution was abnormally terminated.
 class ErrorResponseWorkflowexecutionsV1beta {
   /// Human-readable stack trace string.
-  final String context;
+  final pulumi.Input<String> context;
   /// Error message and data returned represented as a JSON string.
-  final String payload;
+  final pulumi.Input<String> payload;
   /// Stack trace with detailed information of where error was generated.
-  final StackTraceResponseWorkflowexecutionsV1beta stackTrace;
+  final pulumi.Input<StackTraceResponseWorkflowexecutionsV1beta> stackTrace;
 
   /// Creates a new [ErrorResponseWorkflowexecutionsV1beta].
   /// [context] Human-readable stack trace string.
@@ -25,15 +26,15 @@ class ErrorResponseWorkflowexecutionsV1beta {
     return <String, dynamic>{
       'context': context,
       'payload': payload,
-      'stackTrace': stackTrace.toMap(),
+      'stackTrace': pulumi.Input.mapInputValue<StackTraceResponseWorkflowexecutionsV1beta, Map<String, dynamic>>(stackTrace, (value) => value.toMap()),
     };
   }
 
   factory ErrorResponseWorkflowexecutionsV1beta.fromMap(Map<String, dynamic> map) {
     return ErrorResponseWorkflowexecutionsV1beta(
-      context: map['context'] as String,
-      payload: map['payload'] as String,
-      stackTrace: StackTraceResponseWorkflowexecutionsV1beta.fromMap((map['stackTrace'] as Map).cast<String, dynamic>()),
+      context: (map['context'] as String).input(),
+      payload: (map['payload'] as String).input(),
+      stackTrace: (StackTraceResponseWorkflowexecutionsV1beta.fromMap((map['stackTrace'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

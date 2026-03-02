@@ -52,33 +52,20 @@ class DatasetAzureBlobArgs {
   /// [path] The path of the Azure Blob.
   /// [schemaColumns] A `schema_column` block as defined below.
   DatasetAzureBlobArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dynamicFilenameEnabled,
-    pulumi.Output<bool>? dynamicPathEnabled,
-    pulumi.Output<String>? filename,
-    pulumi.Output<String>? folder,
-    required pulumi.Output<String> linkedServiceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? path,
-    pulumi.Output<List<DatasetAzureBlobSchemaColumn>>? schemaColumns,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dynamicFilenameEnabled = pulumi.Input.asOptionalInput<bool>(dynamicFilenameEnabled),
-      dynamicPathEnabled = pulumi.Input.asOptionalInput<bool>(dynamicPathEnabled),
-      filename = pulumi.Input.asOptionalInput<String>(filename),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      linkedServiceName = pulumi.Input.asInput<String>(linkedServiceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      schemaColumns = pulumi.Input.asOptionalInput<List<DatasetAzureBlobSchemaColumn>>(schemaColumns);
+    this.additionalProperties,
+    this.annotations,
+    required this.dataFactoryId,
+    this.description,
+    this.dynamicFilenameEnabled,
+    this.dynamicPathEnabled,
+    this.filename,
+    this.folder,
+    required this.linkedServiceName,
+    this.name,
+    this.parameters,
+    this.path,
+    this.schemaColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class DatasetAzureBlobArgs {
 
   factory DatasetAzureBlobArgs.fromMap(Map<String, dynamic> map) {
     return DatasetAzureBlobArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : pulumi.Output.create<bool>(map['dynamicFilenameEnabled'] as bool),
-      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : pulumi.Output.create<bool>(map['dynamicPathEnabled'] as bool),
-      filename: map['filename'] == null ? null : pulumi.Output.create<String>(map['filename'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      linkedServiceName: pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      schemaColumns: map['schemaColumns'] == null ? null : pulumi.Output.create<List<DatasetAzureBlobSchemaColumn>>(pulumi.Input.decodeList<DatasetAzureBlobSchemaColumn>(map['schemaColumns'], (value) => DatasetAzureBlobSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled'] as bool).input(),
+      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled'] as bool).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetAzureBlobSchemaColumn>(map['schemaColumns'], (value) => DatasetAzureBlobSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The status detail properties of the connected registry.
 class StatusDetailPropertiesResponse {
   /// The code of the status.
-  final String code;
+  final pulumi.Input<String> code;
   /// The correlation ID of the status.
-  final String correlationId;
+  final pulumi.Input<String> correlationId;
   /// The description of the status.
-  final String description;
+  final pulumi.Input<String> description;
   /// The timestamp of the status.
-  final String timestamp;
+  final pulumi.Input<String> timestamp;
   /// The component of the connected registry corresponding to the status.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [StatusDetailPropertiesResponse].
   /// [code] The code of the status.
@@ -40,11 +41,11 @@ class StatusDetailPropertiesResponse {
 
   factory StatusDetailPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StatusDetailPropertiesResponse(
-      code: map['code'] as String,
-      correlationId: map['correlationId'] as String,
-      description: map['description'] as String,
-      timestamp: map['timestamp'] as String,
-      type: map['type'] as String,
+      code: (map['code'] as String).input(),
+      correlationId: (map['correlationId'] as String).input(),
+      description: (map['description'] as String).input(),
+      timestamp: (map['timestamp'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

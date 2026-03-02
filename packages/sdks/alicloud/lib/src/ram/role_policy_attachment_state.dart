@@ -18,13 +18,10 @@ class RolePolicyAttachmentState {
   /// [policyType] Policy type.
   /// [roleName] The RAM role name.
   RolePolicyAttachmentState({
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<String>? roleName,
-  }) :
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName);
+    this.policyName,
+    this.policyType,
+    this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class RolePolicyAttachmentState {
 
   factory RolePolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentState(
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
     );
   }
 }

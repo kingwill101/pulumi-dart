@@ -28,15 +28,11 @@ class DiskIamBindingComputeV1Args {
   /// [name] The name of the resource to manage IAM policies for.
   /// [role] The role that should be applied. Only one `IamBinding` can be used per role.
   DiskIamBindingComputeV1Args({
-    pulumi.Output<Condition>? condition,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<Condition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      name = pulumi.Input.asInput<String>(name),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.members,
+    required this.name,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class DiskIamBindingComputeV1Args {
 
   factory DiskIamBindingComputeV1Args.fromMap(Map<String, dynamic> map) {
     return DiskIamBindingComputeV1Args(
-      condition: map['condition'] == null ? null : pulumi.Output.create<Condition>(Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

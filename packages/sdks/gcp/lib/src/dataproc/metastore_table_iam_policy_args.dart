@@ -32,19 +32,13 @@ class MetastoreTableIamPolicyArgs {
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   /// [table] Used to find the parent resource to bind the IAM policy to
   MetastoreTableIamPolicyArgs({
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-    required pulumi.Output<String> table,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      table = pulumi.Input.asInput<String>(table);
+    required this.databaseId,
+    this.location,
+    required this.policyData,
+    this.project,
+    required this.serviceId,
+    required this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class MetastoreTableIamPolicyArgs {
 
   factory MetastoreTableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreTableIamPolicyArgs(
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      table: pulumi.Output.create<String>(map['table'] as String),
+      databaseId: (map['databaseId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstancePlacementGroup {
-  final bool? compliantOnly;
+  final pulumi.Input<bool>? compliantOnly;
   /// The ID of the Placement Group.
-  final int id;
+  final pulumi.Input<int> id;
   /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Whether the Placement Group enforces strict compliance.
-  final String? placementGroupPolicy;
+  final pulumi.Input<String>? placementGroupPolicy;
   /// The placement group type enforced by the Placement Group.
-  final String? placementGroupType;
+  final pulumi.Input<String>? placementGroupType;
 
   /// Creates a new [InstancePlacementGroup].
   /// [compliantOnly] Optional.
@@ -38,11 +39,11 @@ class InstancePlacementGroup {
 
   factory InstancePlacementGroup.fromMap(Map<String, dynamic> map) {
     return InstancePlacementGroup(
-      compliantOnly: map['compliantOnly'] == null ? null : map['compliantOnly'] as bool,
-      id: map['id'] as int,
-      label: map['label'] == null ? null : map['label'] as String,
-      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : map['placementGroupPolicy'] as String,
-      placementGroupType: map['placementGroupType'] == null ? null : map['placementGroupType'] as String,
+      compliantOnly: map['compliantOnly'] == null ? null : (map['compliantOnly'] as bool).input(),
+      id: (map['id'] as int).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy'] as String).input(),
+      placementGroupType: map['placementGroupType'] == null ? null : (map['placementGroupType'] as String).input(),
     );
   }
 }

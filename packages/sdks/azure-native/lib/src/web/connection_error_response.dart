@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connection error
 class ConnectionErrorResponse {
   /// Code of the status
-  final String? code;
+  final pulumi.Input<String>? code;
   /// Resource ETag
-  final String? etag;
+  final pulumi.Input<String>? etag;
   /// Resource id
-  final String id;
+  final pulumi.Input<String> id;
   /// Resource location
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Description of the status
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Resource name
-  final String name;
+  final pulumi.Input<String> name;
   /// Resource tags
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Resource type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ConnectionErrorResponse].
   /// [code] Code of the status
@@ -55,14 +56,14 @@ class ConnectionErrorResponse {
 
   factory ConnectionErrorResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionErrorResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      name: (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

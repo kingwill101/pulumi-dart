@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyRingImportJobAttestation {
   /// (Output)
   /// The attestation data provided by the HSM when the key operation was performed.
   /// A base64-encoded string.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// (Output)
   /// The format of the attestation data.
-  final String? format;
+  final pulumi.Input<String>? format;
 
   /// Creates a new [KeyRingImportJobAttestation].
   /// [content] (Output)
@@ -27,8 +28,8 @@ class KeyRingImportJobAttestation {
 
   factory KeyRingImportJobAttestation.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobAttestation(
-      content: map['content'] == null ? null : map['content'] as String,
-      format: map['format'] == null ? null : map['format'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
     );
   }
 }

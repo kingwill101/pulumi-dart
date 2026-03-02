@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integer_faceting_options_response.dart';
 
 /// Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
 class FacetOptionsResponse {
   /// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
-  final IntegerFacetingOptionsResponse integerFacetingOptions;
+  final pulumi.Input<IntegerFacetingOptionsResponse> integerFacetingOptions;
   /// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
-  final int numFacetBuckets;
+  final pulumi.Input<int> numFacetBuckets;
   /// If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
-  final String operatorName;
+  final pulumi.Input<String> operatorName;
   /// Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
-  final String sourceName;
+  final pulumi.Input<String> sourceName;
 
   /// Creates a new [FacetOptionsResponse].
   /// [integerFacetingOptions] If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
@@ -31,7 +32,7 @@ class FacetOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'integerFacetingOptions': integerFacetingOptions.toMap(),
+      'integerFacetingOptions': pulumi.Input.mapInputValue<IntegerFacetingOptionsResponse, Map<String, dynamic>>(integerFacetingOptions, (value) => value.toMap()),
       'numFacetBuckets': numFacetBuckets,
       'objectType': objectType,
       'operatorName': operatorName,
@@ -41,11 +42,11 @@ class FacetOptionsResponse {
 
   factory FacetOptionsResponse.fromMap(Map<String, dynamic> map) {
     return FacetOptionsResponse(
-      integerFacetingOptions: IntegerFacetingOptionsResponse.fromMap((map['integerFacetingOptions'] as Map).cast<String, dynamic>()),
-      numFacetBuckets: map['numFacetBuckets'] as int,
-      objectType: map['objectType'] as String,
-      operatorName: map['operatorName'] as String,
-      sourceName: map['sourceName'] as String,
+      integerFacetingOptions: (IntegerFacetingOptionsResponse.fromMap((map['integerFacetingOptions'] as Map).cast<String, dynamic>())).input(),
+      numFacetBuckets: (map['numFacetBuckets'] as int).input(),
+      objectType: (map['objectType'] as String).input(),
+      operatorName: (map['operatorName'] as String).input(),
+      sourceName: (map['sourceName'] as String).input(),
     );
   }
 }

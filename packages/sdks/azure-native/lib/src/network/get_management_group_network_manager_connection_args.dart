@@ -16,11 +16,9 @@ class GetManagementGroupNetworkManagerConnectionArgs {
   /// [managementGroupId] The management group Id which uniquely identify the Microsoft Azure management group.
   /// [networkManagerConnectionName] Name for the network manager connection.
   GetManagementGroupNetworkManagerConnectionArgs({
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<String> networkManagerConnectionName,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      networkManagerConnectionName = pulumi.Input.asInput<String>(networkManagerConnectionName);
+    required this.managementGroupId,
+    required this.networkManagerConnectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagementGroupNetworkManagerConnectionArgs {
 
   factory GetManagementGroupNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupNetworkManagerConnectionArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      networkManagerConnectionName: pulumi.Output.create<String>(map['networkManagerConnectionName'] as String),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      networkManagerConnectionName: (map['networkManagerConnectionName'] as String).input(),
     );
   }
 }

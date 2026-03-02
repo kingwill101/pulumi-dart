@@ -51,23 +51,15 @@ class ReferenceListArgs {
   /// [scopeInfos] ScopeInfo specifies the scope info of the reference list.
   /// [syntaxType] Possible values:
   ReferenceListArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<List<ReferenceListEntry>> entries,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> referenceListId,
-    pulumi.Output<List<ReferenceListScopeInfo>>? scopeInfos,
-    required pulumi.Output<String> syntaxType,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      entries = pulumi.Input.asInput<List<ReferenceListEntry>>(entries),
-      instance = pulumi.Input.asInput<String>(instance),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      referenceListId = pulumi.Input.asInput<String>(referenceListId),
-      scopeInfos = pulumi.Input.asOptionalInput<List<ReferenceListScopeInfo>>(scopeInfos),
-      syntaxType = pulumi.Input.asInput<String>(syntaxType);
+    required this.description,
+    required this.entries,
+    required this.instance,
+    required this.location,
+    this.project,
+    required this.referenceListId,
+    this.scopeInfos,
+    required this.syntaxType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,14 +76,14 @@ class ReferenceListArgs {
 
   factory ReferenceListArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceListArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      entries: pulumi.Output.create<List<ReferenceListEntry>>(pulumi.Input.decodeList<ReferenceListEntry>(map['entries'], (value) => ReferenceListEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      referenceListId: pulumi.Output.create<String>(map['referenceListId'] as String),
-      scopeInfos: map['scopeInfos'] == null ? null : pulumi.Output.create<List<ReferenceListScopeInfo>>(pulumi.Input.decodeList<ReferenceListScopeInfo>(map['scopeInfos'], (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      syntaxType: pulumi.Output.create<String>(map['syntaxType'] as String),
+      description: (map['description'] as String).input(),
+      entries: (pulumi.Input.decodeList<ReferenceListEntry>(map['entries'], (value) => ReferenceListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instance: (map['instance'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      referenceListId: (map['referenceListId'] as String).input(),
+      scopeInfos: map['scopeInfos'] == null ? null : (pulumi.Input.decodeList<ReferenceListScopeInfo>(map['scopeInfos'], (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      syntaxType: (map['syntaxType'] as String).input(),
     );
   }
 }

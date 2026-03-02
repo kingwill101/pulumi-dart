@@ -12,7 +12,7 @@ class WorkloadIdentityPoolInlineTrustConfig {
   /// `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
   /// automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
   /// Structure is documented below.
-  final List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>? additionalTrustBundles;
+  final pulumi.Input<List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>>? additionalTrustBundles;
 
   /// Creates a new [WorkloadIdentityPoolInlineTrustConfig].
   /// [additionalTrustBundles] Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
@@ -22,13 +22,13 @@ class WorkloadIdentityPoolInlineTrustConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalTrustBundles': ?additionalTrustBundles == null ? null : pulumi.Input.encodeList<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle, Map<String, dynamic>>(additionalTrustBundles!, (value) => value.toMap()),
+      'additionalTrustBundles': ?pulumi.Input.mapOptionalInputValue<List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>, List<Map<String, dynamic>>>(additionalTrustBundles, (value) => pulumi.Input.encodeList<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WorkloadIdentityPoolInlineTrustConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolInlineTrustConfig(
-      additionalTrustBundles: map['additionalTrustBundles'] == null ? null : pulumi.Input.decodeList<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>(map['additionalTrustBundles'], (value) => WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap((value as Map).cast<String, dynamic>())),
+      additionalTrustBundles: map['additionalTrustBundles'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>(map['additionalTrustBundles'], (value) => WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceRoute {
   /// Specifies the route destination address.
-  final String address;
+  final pulumi.Input<String> address;
   /// Defines the address family for the routing configuration.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// Sets the gateway address for the route.
-  final String gateway;
+  final pulumi.Input<String> gateway;
   /// Configures the routing metric for determining the best route.
-  final double? metric;
+  final pulumi.Input<double>? metric;
   /// Specifies the netmask for the route configuration.
-  final String? netmask;
+  final pulumi.Input<String>? netmask;
   /// Sets the prefix length for the route configuration.
-  final double? prefix;
+  final pulumi.Input<double>? prefix;
 
   /// Creates a new [DomainDevicesInterfaceRoute].
   /// [address] Specifies the route destination address.
@@ -44,12 +45,12 @@ class DomainDevicesInterfaceRoute {
 
   factory DomainDevicesInterfaceRoute.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceRoute(
-      address: map['address'] as String,
-      family: map['family'] == null ? null : map['family'] as String,
-      gateway: map['gateway'] as String,
-      metric: map['metric'] == null ? null : map['metric'] as double,
-      netmask: map['netmask'] == null ? null : map['netmask'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as double,
+      address: (map['address'] as String).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      gateway: (map['gateway'] as String).input(),
+      metric: map['metric'] == null ? null : (map['metric'] as double).input(),
+      netmask: map['netmask'] == null ? null : (map['netmask'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
     );
   }
 }

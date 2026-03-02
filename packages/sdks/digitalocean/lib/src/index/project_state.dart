@@ -37,27 +37,17 @@ class ProjectState {
   /// [resources] a list of uniform resource names (URNs) for the resources associated with the project
   /// [updatedAt] the date and time when the project was last updated, (ISO8601)
   ProjectState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? environment,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? ownerId,
-    pulumi.Output<String>? ownerUuid,
-    pulumi.Output<String>? purpose,
-    pulumi.Output<List<String>>? resources,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerId = pulumi.Input.asOptionalInput<int>(ownerId),
-      ownerUuid = pulumi.Input.asOptionalInput<String>(ownerUuid),
-      purpose = pulumi.Input.asOptionalInput<String>(purpose),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.createdAt,
+    this.description,
+    this.environment,
+    this.isDefault,
+    this.name,
+    this.ownerId,
+    this.ownerUuid,
+    this.purpose,
+    this.resources,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<int>(map['ownerId'] as int),
-      ownerUuid: map['ownerUuid'] == null ? null : pulumi.Output.create<String>(map['ownerUuid'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<String>(map['purpose'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as int).input(),
+      ownerUuid: map['ownerUuid'] == null ? null : (map['ownerUuid'] as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

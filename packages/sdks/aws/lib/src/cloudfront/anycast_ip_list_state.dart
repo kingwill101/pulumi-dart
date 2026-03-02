@@ -33,23 +33,15 @@ class AnycastIpListState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   AnycastIpListState({
-    pulumi.Output<List<String>>? anycastIps,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? etag,
-    pulumi.Output<int>? ipCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<AnycastIpListTimeouts>? timeouts,
-  }) :
-      anycastIps = pulumi.Input.asOptionalInput<List<String>>(anycastIps),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      ipCount = pulumi.Input.asOptionalInput<int>(ipCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<AnycastIpListTimeouts>(timeouts);
+    this.anycastIps,
+    this.arn,
+    this.etag,
+    this.ipCount,
+    this.name,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class AnycastIpListState {
 
   factory AnycastIpListState.fromMap(Map<String, dynamic> map) {
     return AnycastIpListState(
-      anycastIps: map['anycastIps'] == null ? null : pulumi.Output.create<List<String>>((map['anycastIps'] as List).cast<String>()),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      ipCount: map['ipCount'] == null ? null : pulumi.Output.create<int>(map['ipCount'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AnycastIpListTimeouts>(AnycastIpListTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      anycastIps: map['anycastIps'] == null ? null : ((map['anycastIps'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      ipCount: map['ipCount'] == null ? null : (map['ipCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AnycastIpListTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

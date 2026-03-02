@@ -20,17 +20,12 @@ class GetInstanceNamespaceIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetInstanceNamespaceIamPolicyArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.instanceId,
+    required this.location,
+    required this.namespaceId,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetInstanceNamespaceIamPolicyArgs {
 
   factory GetInstanceNamespaceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceNamespaceIamPolicyArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

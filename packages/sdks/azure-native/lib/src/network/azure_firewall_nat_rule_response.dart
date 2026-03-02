@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a NAT rule.
 class AzureFirewallNatRuleResponse {
   /// Description of the rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service tags.
-  final List<String>? destinationAddresses;
+  final pulumi.Input<List<String>>? destinationAddresses;
   /// List of destination ports.
-  final List<String>? destinationPorts;
+  final pulumi.Input<List<String>>? destinationPorts;
   /// Name of the NAT rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Array of AzureFirewallNetworkRuleProtocols applicable to this NAT rule.
-  final List<String>? protocols;
+  final pulumi.Input<List<String>>? protocols;
   /// List of source IP addresses for this rule.
-  final List<String>? sourceAddresses;
+  final pulumi.Input<List<String>>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final List<String>? sourceIpGroups;
+  final pulumi.Input<List<String>>? sourceIpGroups;
   /// The translated address for this NAT rule.
-  final String? translatedAddress;
+  final pulumi.Input<String>? translatedAddress;
   /// The translated FQDN for this NAT rule.
-  final String? translatedFqdn;
+  final pulumi.Input<String>? translatedFqdn;
   /// The translated port for this NAT rule.
-  final String? translatedPort;
+  final pulumi.Input<String>? translatedPort;
 
   /// Creates a new [AzureFirewallNatRuleResponse].
   /// [description] Description of the rule.
@@ -65,16 +66,16 @@ class AzureFirewallNatRuleResponse {
 
   factory AzureFirewallNatRuleResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallNatRuleResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationAddresses: map['destinationAddresses'] == null ? null : (map['destinationAddresses'] as List).cast<String>(),
-      destinationPorts: map['destinationPorts'] == null ? null : (map['destinationPorts'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      protocols: map['protocols'] == null ? null : (map['protocols'] as List).cast<String>(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : (map['sourceIpGroups'] as List).cast<String>(),
-      translatedAddress: map['translatedAddress'] == null ? null : map['translatedAddress'] as String,
-      translatedFqdn: map['translatedFqdn'] == null ? null : map['translatedFqdn'] as String,
-      translatedPort: map['translatedPort'] == null ? null : map['translatedPort'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
+      translatedAddress: map['translatedAddress'] == null ? null : (map['translatedAddress'] as String).input(),
+      translatedFqdn: map['translatedFqdn'] == null ? null : (map['translatedFqdn'] as String).input(),
+      translatedPort: map['translatedPort'] == null ? null : (map['translatedPort'] as String).input(),
     );
   }
 }

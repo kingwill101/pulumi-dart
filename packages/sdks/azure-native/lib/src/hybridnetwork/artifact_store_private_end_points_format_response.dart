@@ -6,7 +6,7 @@ import 'referenced_resource_response.dart';
 /// List of manual private endpoints.
 class ArtifactStorePrivateEndPointsFormatResponse {
   /// list of private endpoints.
-  final List<ReferencedResourceResponse>? manualPrivateEndPointConnections;
+  final pulumi.Input<List<ReferencedResourceResponse>>? manualPrivateEndPointConnections;
 
   /// Creates a new [ArtifactStorePrivateEndPointsFormatResponse].
   /// [manualPrivateEndPointConnections] list of private endpoints.
@@ -16,13 +16,13 @@ class ArtifactStorePrivateEndPointsFormatResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manualPrivateEndPointConnections': ?manualPrivateEndPointConnections == null ? null : pulumi.Input.encodeList<ReferencedResourceResponse, Map<String, dynamic>>(manualPrivateEndPointConnections!, (value) => value.toMap()),
+      'manualPrivateEndPointConnections': ?pulumi.Input.mapOptionalInputValue<List<ReferencedResourceResponse>, List<Map<String, dynamic>>>(manualPrivateEndPointConnections, (value) => pulumi.Input.encodeList<ReferencedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ArtifactStorePrivateEndPointsFormatResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactStorePrivateEndPointsFormatResponse(
-      manualPrivateEndPointConnections: map['manualPrivateEndPointConnections'] == null ? null : pulumi.Input.decodeList<ReferencedResourceResponse>(map['manualPrivateEndPointConnections'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      manualPrivateEndPointConnections: map['manualPrivateEndPointConnections'] == null ? null : (pulumi.Input.decodeList<ReferencedResourceResponse>(map['manualPrivateEndPointConnections'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Active Directory identity configuration for a resource.
 class ManagedIdentity {
   /// The identity type
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The resource ids of the user assigned identities to use
-  final List<String>? userAssignedIdentities;
+  final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentity].
   /// [type] The identity type
@@ -25,8 +26,8 @@ class ManagedIdentity {
 
   factory ManagedIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedIdentity(
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

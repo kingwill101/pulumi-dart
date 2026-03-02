@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatusCodeMetrics {
   /// Whether detailed status code metrics are enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatusCodeMetrics].
   /// [enabled] Whether detailed status code metrics are enabled.
@@ -19,7 +20,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatus
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatusCodeMetrics.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatusCodeMetrics(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

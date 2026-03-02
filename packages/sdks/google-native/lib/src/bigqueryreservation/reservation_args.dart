@@ -40,27 +40,17 @@ class ReservationArgs {
   /// [reservationId] The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
   /// [slotCapacity] Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false, or autoscaling is enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but EDITION_UNSPECIFIED, then the above requirement is not needed. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes.
   ReservationArgs({
-    pulumi.Output<Autoscale>? autoscale,
-    pulumi.Output<String>? concurrency,
-    pulumi.Output<ReservationEdition>? edition,
-    pulumi.Output<bool>? ignoreIdleSlots,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? multiRegionAuxiliary,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? reservationId,
-    pulumi.Output<String>? slotCapacity,
-  }) :
-      autoscale = pulumi.Input.asOptionalInput<Autoscale>(autoscale),
-      concurrency = pulumi.Input.asOptionalInput<String>(concurrency),
-      edition = pulumi.Input.asOptionalInput<ReservationEdition>(edition),
-      ignoreIdleSlots = pulumi.Input.asOptionalInput<bool>(ignoreIdleSlots),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      multiRegionAuxiliary = pulumi.Input.asOptionalInput<bool>(multiRegionAuxiliary),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservationId = pulumi.Input.asOptionalInput<String>(reservationId),
-      slotCapacity = pulumi.Input.asOptionalInput<String>(slotCapacity);
+    this.autoscale,
+    this.concurrency,
+    this.edition,
+    this.ignoreIdleSlots,
+    this.location,
+    this.multiRegionAuxiliary,
+    this.name,
+    this.project,
+    this.reservationId,
+    this.slotCapacity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ReservationArgs {
 
   factory ReservationArgs.fromMap(Map<String, dynamic> map) {
     return ReservationArgs(
-      autoscale: map['autoscale'] == null ? null : pulumi.Output.create<Autoscale>(Autoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())),
-      concurrency: map['concurrency'] == null ? null : pulumi.Output.create<String>(map['concurrency'] as String),
-      edition: map['edition'] == null ? null : pulumi.Output.create<ReservationEdition>(ReservationEdition.fromValue(map['edition'] as String)),
-      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : pulumi.Output.create<bool>(map['ignoreIdleSlots'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : pulumi.Output.create<bool>(map['multiRegionAuxiliary'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservationId: map['reservationId'] == null ? null : pulumi.Output.create<String>(map['reservationId'] as String),
-      slotCapacity: map['slotCapacity'] == null ? null : pulumi.Output.create<String>(map['slotCapacity'] as String),
+      autoscale: map['autoscale'] == null ? null : (Autoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as String).input(),
+      edition: map['edition'] == null ? null : (ReservationEdition.fromValue(map['edition'] as String)).input(),
+      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservationId: map['reservationId'] == null ? null : (map['reservationId'] as String).input(),
+      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity'] as String).input(),
     );
   }
 }

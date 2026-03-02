@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gallery regional sharing status
 class RegionalSharingStatusResponse {
   /// Details of gallery regional sharing failure.
-  final String? details;
+  final pulumi.Input<String>? details;
   /// Region name
-  final String? region;
+  final pulumi.Input<String>? region;
   /// Gallery sharing state in current region
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [RegionalSharingStatusResponse].
   /// [details] Details of gallery regional sharing failure.
@@ -30,9 +31,9 @@ class RegionalSharingStatusResponse {
 
   factory RegionalSharingStatusResponse.fromMap(Map<String, dynamic> map) {
     return RegionalSharingStatusResponse(
-      details: map['details'] == null ? null : map['details'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      state: map['state'] as String,
+      details: map['details'] == null ? null : (map['details'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
   /// The content of the configuration file. Maximum size: 32 KB.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The permissions on the ConfigFileVolume directory.
-  final int? mode;
+  final pulumi.Input<int>? mode;
   /// The relative file path.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath].
   /// [content] The content of the configuration file. Maximum size: 32 KB.
@@ -29,9 +30,9 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
 
   factory EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(
-      content: map['content'] == null ? null : map['content'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as int,
-      path: map['path'] == null ? null : map['path'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

@@ -39,27 +39,17 @@ class CertificateState {
   /// [templateArn] Template to use when issuing a certificate.
   /// [validity] Configures end of the validity period for the certificate. See validity block below.
   CertificateState({
-    pulumi.Output<String>? apiPassthrough,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? certificateAuthorityArn,
-    pulumi.Output<String>? certificateChain,
-    pulumi.Output<String>? certificateSigningRequest,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? signingAlgorithm,
-    pulumi.Output<String>? templateArn,
-    pulumi.Output<CertificateValidity>? validity,
-  }) :
-      apiPassthrough = pulumi.Input.asOptionalInput<String>(apiPassthrough),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      certificateAuthorityArn = pulumi.Input.asOptionalInput<String>(certificateAuthorityArn),
-      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
-      certificateSigningRequest = pulumi.Input.asOptionalInput<String>(certificateSigningRequest),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      signingAlgorithm = pulumi.Input.asOptionalInput<String>(signingAlgorithm),
-      templateArn = pulumi.Input.asOptionalInput<String>(templateArn),
-      validity = pulumi.Input.asOptionalInput<CertificateValidity>(validity);
+    this.apiPassthrough,
+    this.arn,
+    this.certificate,
+    this.certificateAuthorityArn,
+    this.certificateChain,
+    this.certificateSigningRequest,
+    this.region,
+    this.signingAlgorithm,
+    this.templateArn,
+    this.validity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      apiPassthrough: map['apiPassthrough'] == null ? null : pulumi.Output.create<String>(map['apiPassthrough'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : pulumi.Output.create<String>(map['certificateAuthorityArn'] as String),
-      certificateChain: map['certificateChain'] == null ? null : pulumi.Output.create<String>(map['certificateChain'] as String),
-      certificateSigningRequest: map['certificateSigningRequest'] == null ? null : pulumi.Output.create<String>(map['certificateSigningRequest'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      signingAlgorithm: map['signingAlgorithm'] == null ? null : pulumi.Output.create<String>(map['signingAlgorithm'] as String),
-      templateArn: map['templateArn'] == null ? null : pulumi.Output.create<String>(map['templateArn'] as String),
-      validity: map['validity'] == null ? null : pulumi.Output.create<CertificateValidity>(CertificateValidity.fromMap((map['validity'] as Map).cast<String, dynamic>())),
+      apiPassthrough: map['apiPassthrough'] == null ? null : (map['apiPassthrough'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : (map['certificateAuthorityArn'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      certificateSigningRequest: map['certificateSigningRequest'] == null ? null : (map['certificateSigningRequest'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      signingAlgorithm: map['signingAlgorithm'] == null ? null : (map['signingAlgorithm'] as String).input(),
+      templateArn: map['templateArn'] == null ? null : (map['templateArn'] as String).input(),
+      validity: map['validity'] == null ? null : (CertificateValidity.fromMap((map['validity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

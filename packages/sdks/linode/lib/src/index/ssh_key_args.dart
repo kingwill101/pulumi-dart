@@ -16,11 +16,9 @@ class SshKeyArgs {
   /// [label] A label for the SSH Key.
   /// [sshKey] The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
   SshKeyArgs({
-    required pulumi.Output<String> label,
-    required pulumi.Output<String> sshKey,
-  }) :
-      label = pulumi.Input.asInput<String>(label),
-      sshKey = pulumi.Input.asInput<String>(sshKey);
+    required this.label,
+    required this.sshKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class SshKeyArgs {
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      label: pulumi.Output.create<String>(map['label'] as String),
-      sshKey: pulumi.Output.create<String>(map['sshKey'] as String),
+      label: (map['label'] as String).input(),
+      sshKey: (map['sshKey'] as String).input(),
     );
   }
 }

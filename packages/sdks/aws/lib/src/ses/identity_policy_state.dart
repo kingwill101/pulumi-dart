@@ -19,15 +19,11 @@ class IdentityPolicyState {
   /// [policy] JSON string of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   IdentityPolicyState({
-    pulumi.Output<String>? identity,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-  }) :
-      identity = pulumi.Input.asOptionalInput<String>(identity),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.identity,
+    this.name,
+    this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class IdentityPolicyState {
 
   factory IdentityPolicyState.fromMap(Map<String, dynamic> map) {
     return IdentityPolicyState(
-      identity: map['identity'] == null ? null : pulumi.Output.create<String>(map['identity'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

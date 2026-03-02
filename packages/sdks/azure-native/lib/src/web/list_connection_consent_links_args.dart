@@ -23,15 +23,11 @@ class ListConnectionConsentLinksArgs {
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
   ListConnectionConsentLinksArgs({
-    required pulumi.Output<String> connectionName,
-    pulumi.Output<List<ConsentLinkParameterDefinition>>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      parameters = pulumi.Input.asOptionalInput<List<ConsentLinkParameterDefinition>>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    required this.connectionName,
+    this.parameters,
+    required this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ListConnectionConsentLinksArgs {
 
   factory ListConnectionConsentLinksArgs.fromMap(Map<String, dynamic> map) {
     return ListConnectionConsentLinksArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<ConsentLinkParameterDefinition>>(pulumi.Input.decodeList<ConsentLinkParameterDefinition>(map['parameters'], (value) => ConsentLinkParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ConsentLinkParameterDefinition>(map['parameters'], (value) => ConsentLinkParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ProtectionContainerArgs {
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   ProtectionContainerArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> recoveryFabricName,
-    required pulumi.Output<String> recoveryVaultName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryFabricName = pulumi.Input.asInput<String>(recoveryFabricName),
-      recoveryVaultName = pulumi.Input.asInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.name,
+    required this.recoveryFabricName,
+    required this.recoveryVaultName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ProtectionContainerArgs {
 
   factory ProtectionContainerArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryFabricName: pulumi.Output.create<String>(map['recoveryFabricName'] as String),
-      recoveryVaultName: pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryFabricName: (map['recoveryFabricName'] as String).input(),
+      recoveryVaultName: (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

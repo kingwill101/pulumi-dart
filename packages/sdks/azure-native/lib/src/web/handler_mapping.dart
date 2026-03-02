@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The IIS handler mappings used to define which handler processes HTTP requests with certain extension.
 /// For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php extension.
 class HandlerMapping {
   /// Command-line arguments to be passed to the script processor.
-  final String? arguments;
+  final pulumi.Input<String>? arguments;
   /// Requests with this extension will be handled using the specified FastCGI application.
-  final String? extension;
+  final pulumi.Input<String>? extension;
   /// The absolute path to the FastCGI application.
-  final String? scriptProcessor;
+  final pulumi.Input<String>? scriptProcessor;
 
   /// Creates a new [HandlerMapping].
   /// [arguments] Command-line arguments to be passed to the script processor.
@@ -31,9 +32,9 @@ class HandlerMapping {
 
   factory HandlerMapping.fromMap(Map<String, dynamic> map) {
     return HandlerMapping(
-      arguments: map['arguments'] == null ? null : map['arguments'] as String,
-      extension: map['extension'] == null ? null : map['extension'] as String,
-      scriptProcessor: map['scriptProcessor'] == null ? null : map['scriptProcessor'] as String,
+      arguments: map['arguments'] == null ? null : (map['arguments'] as String).input(),
+      extension: map['extension'] == null ? null : (map['extension'] as String).input(),
+      scriptProcessor: map['scriptProcessor'] == null ? null : (map['scriptProcessor'] as String).input(),
     );
   }
 }

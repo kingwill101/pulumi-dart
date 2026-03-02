@@ -26,15 +26,11 @@ class ContainerServiceDeploymentVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceName] Name of the container service.
   ContainerServiceDeploymentVersionArgs({
-    required pulumi.Output<List<ContainerServiceDeploymentVersionContainer>> containers,
-    pulumi.Output<ContainerServiceDeploymentVersionPublicEndpoint>? publicEndpoint,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceName,
-  }) :
-      containers = pulumi.Input.asInput<List<ContainerServiceDeploymentVersionContainer>>(containers),
-      publicEndpoint = pulumi.Input.asOptionalInput<ContainerServiceDeploymentVersionPublicEndpoint>(publicEndpoint),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.containers,
+    this.publicEndpoint,
+    this.region,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class ContainerServiceDeploymentVersionArgs {
 
   factory ContainerServiceDeploymentVersionArgs.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionArgs(
-      containers: pulumi.Output.create<List<ContainerServiceDeploymentVersionContainer>>(pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(map['containers'], (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>()))),
-      publicEndpoint: map['publicEndpoint'] == null ? null : pulumi.Output.create<ContainerServiceDeploymentVersionPublicEndpoint>(ContainerServiceDeploymentVersionPublicEndpoint.fromMap((map['publicEndpoint'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      containers: (pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(map['containers'], (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicEndpoint: map['publicEndpoint'] == null ? null : (ContainerServiceDeploymentVersionPublicEndpoint.fromMap((map['publicEndpoint'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

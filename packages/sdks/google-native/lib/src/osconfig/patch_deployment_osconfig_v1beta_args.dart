@@ -44,27 +44,17 @@ class PatchDeploymentOsconfigV1betaArgs {
   /// [recurringSchedule] Schedule recurring executions.
   /// [rollout] Optional. Rollout strategy of the patch job.
   PatchDeploymentOsconfigV1betaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? duration,
-    required pulumi.Output<PatchInstanceFilterOsconfigV1beta> instanceFilter,
-    pulumi.Output<String>? name,
-    required pulumi.Output<OneTimeScheduleOsconfigV1beta> oneTimeSchedule,
-    pulumi.Output<PatchConfigOsconfigV1beta>? patchConfig,
-    required pulumi.Output<String> patchDeploymentId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<RecurringScheduleOsconfigV1beta> recurringSchedule,
-    pulumi.Output<PatchRolloutOsconfigV1beta>? rollout,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      instanceFilter = pulumi.Input.asInput<PatchInstanceFilterOsconfigV1beta>(instanceFilter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oneTimeSchedule = pulumi.Input.asInput<OneTimeScheduleOsconfigV1beta>(oneTimeSchedule),
-      patchConfig = pulumi.Input.asOptionalInput<PatchConfigOsconfigV1beta>(patchConfig),
-      patchDeploymentId = pulumi.Input.asInput<String>(patchDeploymentId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recurringSchedule = pulumi.Input.asInput<RecurringScheduleOsconfigV1beta>(recurringSchedule),
-      rollout = pulumi.Input.asOptionalInput<PatchRolloutOsconfigV1beta>(rollout);
+    this.description,
+    this.duration,
+    required this.instanceFilter,
+    this.name,
+    required this.oneTimeSchedule,
+    this.patchConfig,
+    required this.patchDeploymentId,
+    this.project,
+    required this.recurringSchedule,
+    this.rollout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class PatchDeploymentOsconfigV1betaArgs {
 
   factory PatchDeploymentOsconfigV1betaArgs.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentOsconfigV1betaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      instanceFilter: pulumi.Output.create<PatchInstanceFilterOsconfigV1beta>(PatchInstanceFilterOsconfigV1beta.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      oneTimeSchedule: pulumi.Output.create<OneTimeScheduleOsconfigV1beta>(OneTimeScheduleOsconfigV1beta.fromMap((map['oneTimeSchedule'] as Map).cast<String, dynamic>())),
-      patchConfig: map['patchConfig'] == null ? null : pulumi.Output.create<PatchConfigOsconfigV1beta>(PatchConfigOsconfigV1beta.fromMap((map['patchConfig'] as Map).cast<String, dynamic>())),
-      patchDeploymentId: pulumi.Output.create<String>(map['patchDeploymentId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recurringSchedule: pulumi.Output.create<RecurringScheduleOsconfigV1beta>(RecurringScheduleOsconfigV1beta.fromMap((map['recurringSchedule'] as Map).cast<String, dynamic>())),
-      rollout: map['rollout'] == null ? null : pulumi.Output.create<PatchRolloutOsconfigV1beta>(PatchRolloutOsconfigV1beta.fromMap((map['rollout'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      instanceFilter: (PatchInstanceFilterOsconfigV1beta.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      oneTimeSchedule: (OneTimeScheduleOsconfigV1beta.fromMap((map['oneTimeSchedule'] as Map).cast<String, dynamic>())).input(),
+      patchConfig: map['patchConfig'] == null ? null : (PatchConfigOsconfigV1beta.fromMap((map['patchConfig'] as Map).cast<String, dynamic>())).input(),
+      patchDeploymentId: (map['patchDeploymentId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recurringSchedule: (RecurringScheduleOsconfigV1beta.fromMap((map['recurringSchedule'] as Map).cast<String, dynamic>())).input(),
+      rollout: map['rollout'] == null ? null : (PatchRolloutOsconfigV1beta.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

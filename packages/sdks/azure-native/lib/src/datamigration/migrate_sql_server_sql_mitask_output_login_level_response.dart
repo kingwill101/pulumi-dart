@@ -5,24 +5,24 @@ import 'reportable_exception_response.dart';
 
 class MigrateSqlServerSqlMITaskOutputLoginLevelResponse {
   /// Login migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Login migration errors and warnings per login
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Login name.
-  final String loginName;
+  final pulumi.Input<String> loginName;
   /// Login migration progress message
-  final String message;
+  final pulumi.Input<String> message;
   /// Result type
   /// Expected value is 'LoginLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Current stage of login
-  final String stage;
+  final pulumi.Input<String> stage;
   /// Login migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current state of login
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [MigrateSqlServerSqlMITaskOutputLoginLevelResponse].
   /// [endedOn] Login migration end time
@@ -49,7 +49,7 @@ class MigrateSqlServerSqlMITaskOutputLoginLevelResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endedOn': endedOn,
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'loginName': loginName,
       'message': message,
@@ -62,15 +62,15 @@ class MigrateSqlServerSqlMITaskOutputLoginLevelResponse {
 
   factory MigrateSqlServerSqlMITaskOutputLoginLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMITaskOutputLoginLevelResponse(
-      endedOn: map['endedOn'] as String,
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      loginName: map['loginName'] as String,
-      message: map['message'] as String,
-      resultType: map['resultType'] as String,
-      stage: map['stage'] as String,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
+      endedOn: (map['endedOn'] as String).input(),
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      loginName: (map['loginName'] as String).input(),
+      message: (map['message'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

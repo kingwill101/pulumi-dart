@@ -32,21 +32,14 @@ class ScheduledSynchronizationSettingArgs {
   /// [synchronizationSettingName] The name of the synchronizationSetting.
   /// [synchronizationTime] Synchronization time
   ScheduledSynchronizationSettingArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> recurrenceInterval,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareName,
-    pulumi.Output<String>? synchronizationSettingName,
-    required pulumi.Output<String> synchronizationTime,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      kind = pulumi.Input.asInput<String>(kind),
-      recurrenceInterval = pulumi.Input.asInput<String>(recurrenceInterval),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareName = pulumi.Input.asInput<String>(shareName),
-      synchronizationSettingName = pulumi.Input.asOptionalInput<String>(synchronizationSettingName),
-      synchronizationTime = pulumi.Input.asInput<String>(synchronizationTime);
+    required this.accountName,
+    required this.kind,
+    required this.recurrenceInterval,
+    required this.resourceGroupName,
+    required this.shareName,
+    this.synchronizationSettingName,
+    required this.synchronizationTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ScheduledSynchronizationSettingArgs {
 
   factory ScheduledSynchronizationSettingArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledSynchronizationSettingArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      recurrenceInterval: pulumi.Output.create<String>(map['recurrenceInterval'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
-      synchronizationSettingName: map['synchronizationSettingName'] == null ? null : pulumi.Output.create<String>(map['synchronizationSettingName'] as String),
-      synchronizationTime: pulumi.Output.create<String>(map['synchronizationTime'] as String),
+      accountName: (map['accountName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      recurrenceInterval: (map['recurrenceInterval'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
+      synchronizationSettingName: map['synchronizationSettingName'] == null ? null : (map['synchronizationSettingName'] as String).input(),
+      synchronizationTime: (map['synchronizationTime'] as String).input(),
     );
   }
 }

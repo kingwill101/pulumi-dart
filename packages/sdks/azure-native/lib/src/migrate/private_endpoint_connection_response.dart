@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_connection_properties_response.dart';
 import 'private_endpoint_response.dart';
 import 'private_link_service_connection_state_response.dart';
@@ -8,25 +9,25 @@ import 'system_data_response.dart';
 /// A private endpoint connection for a project.
 class PrivateEndpointConnectionResponse {
   /// For optimistic concurrency control.
-  final String? eTag;
+  final pulumi.Input<String>? eTag;
   /// The group ids for the private endpoint resource.
-  final List<String>? groupIds;
+  final pulumi.Input<List<String>>? groupIds;
   /// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the private endpoint endpoint connection.
-  final String name;
+  final pulumi.Input<String> name;
   /// The private endpoint resource.
-  final PrivateEndpointResponse? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
   /// A collection of information about the state of the connection between service consumer and provider.
-  final PrivateLinkServiceConnectionStateResponse? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
   /// Properties of the private endpoint endpoint connection.
-  final PrivateEndpointConnectionPropertiesResponse properties;
+  final pulumi.Input<PrivateEndpointConnectionPropertiesResponse> properties;
   /// The provisioning state of the private endpoint connection resource.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse? systemData;
+  final pulumi.Input<SystemDataResponse>? systemData;
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PrivateEndpointConnectionResponse].
   /// [eTag] For optimistic concurrency control.
@@ -58,27 +59,27 @@ class PrivateEndpointConnectionResponse {
       'groupIds': ?groupIds,
       'id': id,
       'name': name,
-      'privateEndpoint': ?privateEndpoint == null ? null : privateEndpoint!.toMap(),
-      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState == null ? null : privateLinkServiceConnectionState!.toMap(),
-      'properties': properties.toMap(),
+      'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServiceConnectionStateResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<PrivateEndpointConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
-      'systemData': ?systemData == null ? null : systemData!.toMap(),
+      'systemData': ?pulumi.Input.mapOptionalInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory PrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionResponse(
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
-      groupIds: map['groupIds'] == null ? null : (map['groupIds'] as List).cast<String>(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
-      properties: PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      systemData: map['systemData'] == null ? null : SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      properties: (PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      systemData: map['systemData'] == null ? null : (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

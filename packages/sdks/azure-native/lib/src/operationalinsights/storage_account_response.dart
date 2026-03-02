@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a storage account connection.
 class StorageAccountResponse {
   /// The Azure Resource Manager ID of the storage account resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// The storage account key.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [StorageAccountResponse].
   /// [id] The Azure Resource Manager ID of the storage account resource.
@@ -25,8 +26,8 @@ class StorageAccountResponse {
 
   factory StorageAccountResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountResponse(
-      id: map['id'] as String,
-      key: map['key'] as String,
+      id: (map['id'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

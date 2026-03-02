@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_management_policy_rule_target.dart';
 
 /// The role management policy notification rule.
 class RoleManagementPolicyNotificationRule {
   /// The id of the rule.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Determines if the notification will be sent to the recipient type specified in the policy rule.
-  final bool? isDefaultRecipientsEnabled;
+  final pulumi.Input<bool>? isDefaultRecipientsEnabled;
   /// The notification level.
-  final String? notificationLevel;
+  final pulumi.Input<String>? notificationLevel;
   /// The list of notification recipients.
-  final List<String>? notificationRecipients;
+  final pulumi.Input<List<String>>? notificationRecipients;
   /// The type of notification.
-  final String? notificationType;
+  final pulumi.Input<String>? notificationType;
   /// The recipient type.
-  final String? recipientType;
+  final pulumi.Input<String>? recipientType;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyNotificationRule'.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final RoleManagementPolicyRuleTarget? target;
+  final pulumi.Input<RoleManagementPolicyRuleTarget>? target;
 
   /// Creates a new [RoleManagementPolicyNotificationRule].
   /// [id] The id of the rule.
@@ -51,20 +52,20 @@ class RoleManagementPolicyNotificationRule {
       'notificationType': ?notificationType,
       'recipientType': ?recipientType,
       'ruleType': ruleType,
-      'target': ?target == null ? null : target!.toMap(),
+      'target': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyRuleTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory RoleManagementPolicyNotificationRule.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyNotificationRule(
-      id: map['id'] == null ? null : map['id'] as String,
-      isDefaultRecipientsEnabled: map['isDefaultRecipientsEnabled'] == null ? null : map['isDefaultRecipientsEnabled'] as bool,
-      notificationLevel: map['notificationLevel'] == null ? null : map['notificationLevel'] as String,
-      notificationRecipients: map['notificationRecipients'] == null ? null : (map['notificationRecipients'] as List).cast<String>(),
-      notificationType: map['notificationType'] == null ? null : map['notificationType'] as String,
-      recipientType: map['recipientType'] == null ? null : map['recipientType'] as String,
-      ruleType: map['ruleType'] as String,
-      target: map['target'] == null ? null : RoleManagementPolicyRuleTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      isDefaultRecipientsEnabled: map['isDefaultRecipientsEnabled'] == null ? null : (map['isDefaultRecipientsEnabled'] as bool).input(),
+      notificationLevel: map['notificationLevel'] == null ? null : (map['notificationLevel'] as String).input(),
+      notificationRecipients: map['notificationRecipients'] == null ? null : ((map['notificationRecipients'] as List).cast<String>()).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
+      recipientType: map['recipientType'] == null ? null : (map['recipientType'] as String).input(),
+      ruleType: (map['ruleType'] as String).input(),
+      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

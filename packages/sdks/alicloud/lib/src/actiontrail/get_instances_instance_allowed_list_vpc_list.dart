@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceAllowedListVpcList {
   /// The allowed ip list of the internet_list.
-  final List<String> allowedIpLists;
+  final pulumi.Input<List<String>> allowedIpLists;
   /// The port range of the internet_list.
-  final String portRange;
+  final pulumi.Input<String> portRange;
 
   /// Creates a new [GetInstancesInstanceAllowedListVpcList].
   /// [allowedIpLists] The allowed ip list of the internet_list.
@@ -24,8 +25,8 @@ class GetInstancesInstanceAllowedListVpcList {
 
   factory GetInstancesInstanceAllowedListVpcList.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceAllowedListVpcList(
-      allowedIpLists: (map['allowedIpLists'] as List).cast<String>(),
-      portRange: map['portRange'] as String,
+      allowedIpLists: ((map['allowedIpLists'] as List).cast<String>()).input(),
+      portRange: (map['portRange'] as String).input(),
     );
   }
 }

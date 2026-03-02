@@ -33,23 +33,15 @@ class ForwardingRuleState {
   /// [ruleActions] Forward action. See `rule_actions` below.
   /// [ruleConditions] Forwarding condition list. See `rule_conditions` below.
   ForwardingRuleState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? forwardingRuleId,
-    pulumi.Output<String>? forwardingRuleName,
-    pulumi.Output<String>? forwardingRuleStatus,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<int>? priority,
-    pulumi.Output<List<ForwardingRuleRuleAction>>? ruleActions,
-    pulumi.Output<List<ForwardingRuleRuleCondition>>? ruleConditions,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      forwardingRuleId = pulumi.Input.asOptionalInput<String>(forwardingRuleId),
-      forwardingRuleName = pulumi.Input.asOptionalInput<String>(forwardingRuleName),
-      forwardingRuleStatus = pulumi.Input.asOptionalInput<String>(forwardingRuleStatus),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      ruleActions = pulumi.Input.asOptionalInput<List<ForwardingRuleRuleAction>>(ruleActions),
-      ruleConditions = pulumi.Input.asOptionalInput<List<ForwardingRuleRuleCondition>>(ruleConditions);
+    this.acceleratorId,
+    this.forwardingRuleId,
+    this.forwardingRuleName,
+    this.forwardingRuleStatus,
+    this.listenerId,
+    this.priority,
+    this.ruleActions,
+    this.ruleConditions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ForwardingRuleState {
 
   factory ForwardingRuleState.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      forwardingRuleId: map['forwardingRuleId'] == null ? null : pulumi.Output.create<String>(map['forwardingRuleId'] as String),
-      forwardingRuleName: map['forwardingRuleName'] == null ? null : pulumi.Output.create<String>(map['forwardingRuleName'] as String),
-      forwardingRuleStatus: map['forwardingRuleStatus'] == null ? null : pulumi.Output.create<String>(map['forwardingRuleStatus'] as String),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      ruleActions: map['ruleActions'] == null ? null : pulumi.Output.create<List<ForwardingRuleRuleAction>>(pulumi.Input.decodeList<ForwardingRuleRuleAction>(map['ruleActions'], (value) => ForwardingRuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))),
-      ruleConditions: map['ruleConditions'] == null ? null : pulumi.Output.create<List<ForwardingRuleRuleCondition>>(pulumi.Input.decodeList<ForwardingRuleRuleCondition>(map['ruleConditions'], (value) => ForwardingRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      forwardingRuleId: map['forwardingRuleId'] == null ? null : (map['forwardingRuleId'] as String).input(),
+      forwardingRuleName: map['forwardingRuleName'] == null ? null : (map['forwardingRuleName'] as String).input(),
+      forwardingRuleStatus: map['forwardingRuleStatus'] == null ? null : (map['forwardingRuleStatus'] as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      ruleActions: map['ruleActions'] == null ? null : (pulumi.Input.decodeList<ForwardingRuleRuleAction>(map['ruleActions'], (value) => ForwardingRuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleConditions: map['ruleConditions'] == null ? null : (pulumi.Input.decodeList<ForwardingRuleRuleCondition>(map['ruleConditions'], (value) => ForwardingRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

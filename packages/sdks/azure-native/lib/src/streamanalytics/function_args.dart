@@ -26,17 +26,12 @@ class FunctionArgs {
   /// [properties] The properties that are associated with a function.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   FunctionArgs({
-    pulumi.Output<String>? functionName,
-    required pulumi.Output<String> jobName,
-    pulumi.Output<String>? name,
-    pulumi.Output<AggregateFunctionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<AggregateFunctionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.functionName,
+    required this.jobName,
+    this.name,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class FunctionArgs {
 
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AggregateFunctionProperties>(AggregateFunctionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      jobName: (map['jobName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (AggregateFunctionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

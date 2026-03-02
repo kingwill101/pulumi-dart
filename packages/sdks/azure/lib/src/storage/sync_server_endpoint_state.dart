@@ -36,25 +36,16 @@ class SyncServerEndpointState {
   /// [tierFilesOlderThanDays] Files older than the specified age will be tiered to the cloud.
   /// [volumeFreeSpacePercent] What percentage of free space on the volume should be preserved? Defaults to `20`.
   SyncServerEndpointState({
-    pulumi.Output<bool>? cloudTieringEnabled,
-    pulumi.Output<String>? initialDownloadPolicy,
-    pulumi.Output<String>? localCacheMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? registeredServerId,
-    pulumi.Output<String>? serverLocalPath,
-    pulumi.Output<String>? storageSyncGroupId,
-    pulumi.Output<int>? tierFilesOlderThanDays,
-    pulumi.Output<int>? volumeFreeSpacePercent,
-  }) :
-      cloudTieringEnabled = pulumi.Input.asOptionalInput<bool>(cloudTieringEnabled),
-      initialDownloadPolicy = pulumi.Input.asOptionalInput<String>(initialDownloadPolicy),
-      localCacheMode = pulumi.Input.asOptionalInput<String>(localCacheMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      registeredServerId = pulumi.Input.asOptionalInput<String>(registeredServerId),
-      serverLocalPath = pulumi.Input.asOptionalInput<String>(serverLocalPath),
-      storageSyncGroupId = pulumi.Input.asOptionalInput<String>(storageSyncGroupId),
-      tierFilesOlderThanDays = pulumi.Input.asOptionalInput<int>(tierFilesOlderThanDays),
-      volumeFreeSpacePercent = pulumi.Input.asOptionalInput<int>(volumeFreeSpacePercent);
+    this.cloudTieringEnabled,
+    this.initialDownloadPolicy,
+    this.localCacheMode,
+    this.name,
+    this.registeredServerId,
+    this.serverLocalPath,
+    this.storageSyncGroupId,
+    this.tierFilesOlderThanDays,
+    this.volumeFreeSpacePercent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class SyncServerEndpointState {
 
   factory SyncServerEndpointState.fromMap(Map<String, dynamic> map) {
     return SyncServerEndpointState(
-      cloudTieringEnabled: map['cloudTieringEnabled'] == null ? null : pulumi.Output.create<bool>(map['cloudTieringEnabled'] as bool),
-      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : pulumi.Output.create<String>(map['initialDownloadPolicy'] as String),
-      localCacheMode: map['localCacheMode'] == null ? null : pulumi.Output.create<String>(map['localCacheMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      registeredServerId: map['registeredServerId'] == null ? null : pulumi.Output.create<String>(map['registeredServerId'] as String),
-      serverLocalPath: map['serverLocalPath'] == null ? null : pulumi.Output.create<String>(map['serverLocalPath'] as String),
-      storageSyncGroupId: map['storageSyncGroupId'] == null ? null : pulumi.Output.create<String>(map['storageSyncGroupId'] as String),
-      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : pulumi.Output.create<int>(map['tierFilesOlderThanDays'] as int),
-      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : pulumi.Output.create<int>(map['volumeFreeSpacePercent'] as int),
+      cloudTieringEnabled: map['cloudTieringEnabled'] == null ? null : (map['cloudTieringEnabled'] as bool).input(),
+      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : (map['initialDownloadPolicy'] as String).input(),
+      localCacheMode: map['localCacheMode'] == null ? null : (map['localCacheMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      registeredServerId: map['registeredServerId'] == null ? null : (map['registeredServerId'] as String).input(),
+      serverLocalPath: map['serverLocalPath'] == null ? null : (map['serverLocalPath'] as String).input(),
+      storageSyncGroupId: map['storageSyncGroupId'] == null ? null : (map['storageSyncGroupId'] as String).input(),
+      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : (map['tierFilesOlderThanDays'] as int).input(),
+      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : (map['volumeFreeSpacePercent'] as int).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters to provide for the EnterpriseKnowledgeGraph.
 class EnterpriseKnowledgeGraphPropertiesResponse {
   /// The description of the EnterpriseKnowledgeGraph
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specifies the metadata  of the resource.
-  final dynamic metadata;
+  final pulumi.Input<dynamic>? metadata;
   /// The state of EnterpriseKnowledgeGraph provisioning
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
 
   /// Creates a new [EnterpriseKnowledgeGraphPropertiesResponse].
   /// [description] The description of the EnterpriseKnowledgeGraph
@@ -30,9 +31,9 @@ class EnterpriseKnowledgeGraphPropertiesResponse {
 
   factory EnterpriseKnowledgeGraphPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseKnowledgeGraphPropertiesResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
     );
   }
 }

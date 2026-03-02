@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scope_cluster_response.dart';
 import 'scope_namespace_response.dart';
 
 /// Scope of the extension. It can be either Cluster or Namespace; but not both.
 class ScopeResponse {
   /// Specifies that the scope of the extension is Cluster
-  final ScopeClusterResponse? cluster;
+  final pulumi.Input<ScopeClusterResponse>? cluster;
   /// Specifies that the scope of the extension is Namespace
-  final ScopeNamespaceResponse? namespace;
+  final pulumi.Input<ScopeNamespaceResponse>? namespace;
 
   /// Creates a new [ScopeResponse].
   /// [cluster] Specifies that the scope of the extension is Cluster
@@ -20,15 +21,15 @@ class ScopeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cluster': ?cluster == null ? null : cluster!.toMap(),
-      'namespace': ?namespace == null ? null : namespace!.toMap(),
+      'cluster': ?pulumi.Input.mapOptionalInputValue<ScopeClusterResponse, Map<String, dynamic>>(cluster, (value) => value.toMap()),
+      'namespace': ?pulumi.Input.mapOptionalInputValue<ScopeNamespaceResponse, Map<String, dynamic>>(namespace, (value) => value.toMap()),
     };
   }
 
   factory ScopeResponse.fromMap(Map<String, dynamic> map) {
     return ScopeResponse(
-      cluster: map['cluster'] == null ? null : ScopeClusterResponse.fromMap((map['cluster'] as Map).cast<String, dynamic>()),
-      namespace: map['namespace'] == null ? null : ScopeNamespaceResponse.fromMap((map['namespace'] as Map).cast<String, dynamic>()),
+      cluster: map['cluster'] == null ? null : (ScopeClusterResponse.fromMap((map['cluster'] as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (ScopeNamespaceResponse.fromMap((map['namespace'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

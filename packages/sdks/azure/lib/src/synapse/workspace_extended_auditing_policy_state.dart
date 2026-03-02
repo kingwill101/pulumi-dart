@@ -25,19 +25,13 @@ class WorkspaceExtendedAuditingPolicyState {
   /// [storageEndpoint] The blob storage endpoint (e.g. <https://example.blob.core.windows.net>). This blob storage will hold all extended auditing logs.
   /// [synapseWorkspaceId] The ID of the Synapse workspace to set the extended auditing policy. Changing this forces a new resource to be created.
   WorkspaceExtendedAuditingPolicyState({
-    pulumi.Output<bool>? logMonitoringEnabled,
-    pulumi.Output<int>? retentionInDays,
-    pulumi.Output<String>? storageAccountAccessKey,
-    pulumi.Output<bool>? storageAccountAccessKeyIsSecondary,
-    pulumi.Output<String>? storageEndpoint,
-    pulumi.Output<String>? synapseWorkspaceId,
-  }) :
-      logMonitoringEnabled = pulumi.Input.asOptionalInput<bool>(logMonitoringEnabled),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      storageAccountAccessKey = pulumi.Input.asOptionalInput<String>(storageAccountAccessKey),
-      storageAccountAccessKeyIsSecondary = pulumi.Input.asOptionalInput<bool>(storageAccountAccessKeyIsSecondary),
-      storageEndpoint = pulumi.Input.asOptionalInput<String>(storageEndpoint),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId);
+    this.logMonitoringEnabled,
+    this.retentionInDays,
+    this.storageAccountAccessKey,
+    this.storageAccountAccessKeyIsSecondary,
+    this.storageEndpoint,
+    this.synapseWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class WorkspaceExtendedAuditingPolicyState {
 
   factory WorkspaceExtendedAuditingPolicyState.fromMap(Map<String, dynamic> map) {
     return WorkspaceExtendedAuditingPolicyState(
-      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['logMonitoringEnabled'] as bool),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountAccessKey'] as String),
-      storageAccountAccessKeyIsSecondary: map['storageAccountAccessKeyIsSecondary'] == null ? null : pulumi.Output.create<bool>(map['storageAccountAccessKeyIsSecondary'] as bool),
-      storageEndpoint: map['storageEndpoint'] == null ? null : pulumi.Output.create<String>(map['storageEndpoint'] as String),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
+      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : (map['logMonitoringEnabled'] as bool).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageAccountAccessKeyIsSecondary: map['storageAccountAccessKeyIsSecondary'] == null ? null : (map['storageAccountAccessKeyIsSecondary'] as bool).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
     );
   }
 }

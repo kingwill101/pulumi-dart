@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'company_info.dart';
 
 /// User Information to be passed to partners.
 class UserInfo {
   /// Company information of the user to be passed to partners.
-  final CompanyInfo? companyInfo;
+  final pulumi.Input<CompanyInfo>? companyInfo;
   /// Company name of the user
-  final String? companyName;
+  final pulumi.Input<String>? companyName;
   /// Email of the user used by Elastic for contacting them if needed
-  final String? emailAddress;
+  final pulumi.Input<String>? emailAddress;
   /// First name of the user
-  final String? firstName;
+  final pulumi.Input<String>? firstName;
   /// Last name of the user
-  final String? lastName;
+  final pulumi.Input<String>? lastName;
 
   /// Creates a new [UserInfo].
   /// [companyInfo] Company information of the user to be passed to partners.
@@ -31,7 +32,7 @@ class UserInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'companyInfo': ?companyInfo == null ? null : companyInfo!.toMap(),
+      'companyInfo': ?pulumi.Input.mapOptionalInputValue<CompanyInfo, Map<String, dynamic>>(companyInfo, (value) => value.toMap()),
       'companyName': ?companyName,
       'emailAddress': ?emailAddress,
       'firstName': ?firstName,
@@ -41,11 +42,11 @@ class UserInfo {
 
   factory UserInfo.fromMap(Map<String, dynamic> map) {
     return UserInfo(
-      companyInfo: map['companyInfo'] == null ? null : CompanyInfo.fromMap((map['companyInfo'] as Map).cast<String, dynamic>()),
-      companyName: map['companyName'] == null ? null : map['companyName'] as String,
-      emailAddress: map['emailAddress'] == null ? null : map['emailAddress'] as String,
-      firstName: map['firstName'] == null ? null : map['firstName'] as String,
-      lastName: map['lastName'] == null ? null : map['lastName'] as String,
+      companyInfo: map['companyInfo'] == null ? null : (CompanyInfo.fromMap((map['companyInfo'] as Map).cast<String, dynamic>())).input(),
+      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
     );
   }
 }

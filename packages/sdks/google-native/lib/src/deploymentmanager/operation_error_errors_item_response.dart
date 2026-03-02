@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OperationErrorErrorsItemResponse {
   /// The error type identifier for this error.
-  final String code;
+  final pulumi.Input<String> code;
   /// Indicates the field in the request that caused the error. This property is optional.
-  final String location;
+  final pulumi.Input<String> location;
   /// An optional, human-readable error message.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [OperationErrorErrorsItemResponse].
   /// [code] The error type identifier for this error.
@@ -29,9 +30,9 @@ class OperationErrorErrorsItemResponse {
 
   factory OperationErrorErrorsItemResponse.fromMap(Map<String, dynamic> map) {
     return OperationErrorErrorsItemResponse(
-      code: map['code'] as String,
-      location: map['location'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      location: (map['location'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

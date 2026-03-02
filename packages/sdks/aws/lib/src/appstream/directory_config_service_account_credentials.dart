@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryConfigServiceAccountCredentials {
   /// User name of the account. This account must have the following privileges: create computer objects, join computers to the domain, and change/reset the password on descendant computer objects for the organizational units specified.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Password for the account.
-  final String accountPassword;
+  final pulumi.Input<String> accountPassword;
 
   /// Creates a new [DirectoryConfigServiceAccountCredentials].
   /// [accountName] User name of the account. This account must have the following privileges: create computer objects, join computers to the domain, and change/reset the password on descendant computer objects for the organizational units specified.
@@ -24,8 +25,8 @@ class DirectoryConfigServiceAccountCredentials {
 
   factory DirectoryConfigServiceAccountCredentials.fromMap(Map<String, dynamic> map) {
     return DirectoryConfigServiceAccountCredentials(
-      accountName: map['accountName'] as String,
-      accountPassword: map['accountPassword'] as String,
+      accountName: (map['accountName'] as String).input(),
+      accountPassword: (map['accountPassword'] as String).input(),
     );
   }
 }

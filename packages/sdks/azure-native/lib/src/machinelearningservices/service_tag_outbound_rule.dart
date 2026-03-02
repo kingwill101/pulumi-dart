@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_tag_destination.dart';
 
 /// Service Tag Outbound Rule for the managed network of a machine learning workspace.
 class ServiceTagOutboundRule {
   /// Category of a managed network Outbound Rule of a machine learning workspace.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-  final ServiceTagDestination? destination;
+  final pulumi.Input<ServiceTagDestination>? destination;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   /// Expected value is 'ServiceTag'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServiceTagOutboundRule].
   /// [category] Category of a managed network Outbound Rule of a machine learning workspace.
@@ -29,7 +30,7 @@ class ServiceTagOutboundRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'category': ?category,
-      'destination': ?destination == null ? null : destination!.toMap(),
+      'destination': ?pulumi.Input.mapOptionalInputValue<ServiceTagDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'status': ?status,
       'type': type,
     };
@@ -37,10 +38,10 @@ class ServiceTagOutboundRule {
 
   factory ServiceTagOutboundRule.fromMap(Map<String, dynamic> map) {
     return ServiceTagOutboundRule(
-      category: map['category'] == null ? null : map['category'] as String,
-      destination: map['destination'] == null ? null : ServiceTagDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      destination: map['destination'] == null ? null : (ServiceTagDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

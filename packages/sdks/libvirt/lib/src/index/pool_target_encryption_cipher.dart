@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolTargetEncryptionCipher {
   /// Specifies the hash algorithm used with the encryption cipher.
-  final String hash;
+  final pulumi.Input<String> hash;
   /// Defines the mode for the encryption cipher of the storage volume.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Sets the name of the encryption cipher for the storage volume.
-  final String name;
+  final pulumi.Input<String> name;
   /// Sets the size of the encryption cipher for the storage volume.
-  final double size;
+  final pulumi.Input<double> size;
 
   /// Creates a new [PoolTargetEncryptionCipher].
   /// [hash] Specifies the hash algorithm used with the encryption cipher.
@@ -34,10 +35,10 @@ class PoolTargetEncryptionCipher {
 
   factory PoolTargetEncryptionCipher.fromMap(Map<String, dynamic> map) {
     return PoolTargetEncryptionCipher(
-      hash: map['hash'] as String,
-      mode: map['mode'] as String,
-      name: map['name'] as String,
-      size: map['size'] as double,
+      hash: (map['hash'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      name: (map['name'] as String).input(),
+      size: (map['size'] as double).input(),
     );
   }
 }

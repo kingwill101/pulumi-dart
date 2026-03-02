@@ -23,17 +23,12 @@ class SubscriptionArgs {
   /// [organizationId] Required.
   /// [startTime] Time when the API product subscription starts in milliseconds since epoch.
   SubscriptionArgs({
-    pulumi.Output<String>? apiproduct,
-    required pulumi.Output<String> developerId,
-    pulumi.Output<String>? endTime,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? startTime,
-  }) :
-      apiproduct = pulumi.Input.asOptionalInput<String>(apiproduct),
-      developerId = pulumi.Input.asInput<String>(developerId),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime);
+    this.apiproduct,
+    required this.developerId,
+    this.endTime,
+    required this.organizationId,
+    this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      apiproduct: map['apiproduct'] == null ? null : pulumi.Output.create<String>(map['apiproduct'] as String),
-      developerId: pulumi.Output.create<String>(map['developerId'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
+      apiproduct: map['apiproduct'] == null ? null : (map['apiproduct'] as String).input(),
+      developerId: (map['developerId'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

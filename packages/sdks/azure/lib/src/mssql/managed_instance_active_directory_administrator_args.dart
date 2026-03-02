@@ -25,17 +25,12 @@ class ManagedInstanceActiveDirectoryAdministratorArgs {
   /// [objectId] The Object ID of the principal to set as the Managed Instance Administrator.
   /// [tenantId] The Azure Active Directory Tenant ID.
   ManagedInstanceActiveDirectoryAdministratorArgs({
-    pulumi.Output<bool>? azureadAuthenticationOnly,
-    required pulumi.Output<String> loginUsername,
-    required pulumi.Output<String> managedInstanceId,
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> tenantId,
-  }) :
-      azureadAuthenticationOnly = pulumi.Input.asOptionalInput<bool>(azureadAuthenticationOnly),
-      loginUsername = pulumi.Input.asInput<String>(loginUsername),
-      managedInstanceId = pulumi.Input.asInput<String>(managedInstanceId),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    this.azureadAuthenticationOnly,
+    required this.loginUsername,
+    required this.managedInstanceId,
+    required this.objectId,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ManagedInstanceActiveDirectoryAdministratorArgs {
 
   factory ManagedInstanceActiveDirectoryAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceActiveDirectoryAdministratorArgs(
-      azureadAuthenticationOnly: map['azureadAuthenticationOnly'] == null ? null : pulumi.Output.create<bool>(map['azureadAuthenticationOnly'] as bool),
-      loginUsername: pulumi.Output.create<String>(map['loginUsername'] as String),
-      managedInstanceId: pulumi.Output.create<String>(map['managedInstanceId'] as String),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      azureadAuthenticationOnly: map['azureadAuthenticationOnly'] == null ? null : (map['azureadAuthenticationOnly'] as bool).input(),
+      loginUsername: (map['loginUsername'] as String).input(),
+      managedInstanceId: (map['managedInstanceId'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

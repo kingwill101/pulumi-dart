@@ -22,15 +22,11 @@ class GetOrganizationClusterByIdArgs {
   /// [organizationName] Organization resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetOrganizationClusterByIdArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterId,
+    required this.environmentId,
+    required this.organizationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetOrganizationClusterByIdArgs {
 
   factory GetOrganizationClusterByIdArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationClusterByIdArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

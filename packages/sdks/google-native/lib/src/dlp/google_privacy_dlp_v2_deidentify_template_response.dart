@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_deidentify_config_response.dart';
 
 /// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
 class GooglePrivacyDlpV2DeidentifyTemplateResponse {
   /// The creation timestamp of an inspectTemplate.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The core content of the template.
-  final GooglePrivacyDlpV2DeidentifyConfigResponse deidentifyConfig;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyConfigResponse> deidentifyConfig;
   /// Short description (max 256 chars).
-  final String description;
+  final pulumi.Input<String> description;
   /// Display name (max 256 chars).
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-  final String name;
+  final pulumi.Input<String> name;
   /// The last update timestamp of an inspectTemplate.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GooglePrivacyDlpV2DeidentifyTemplateResponse].
   /// [createTime] The creation timestamp of an inspectTemplate.
@@ -36,7 +37,7 @@ class GooglePrivacyDlpV2DeidentifyTemplateResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
-      'deidentifyConfig': deidentifyConfig.toMap(),
+      'deidentifyConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DeidentifyConfigResponse, Map<String, dynamic>>(deidentifyConfig, (value) => value.toMap()),
       'description': description,
       'displayName': displayName,
       'name': name,
@@ -46,12 +47,12 @@ class GooglePrivacyDlpV2DeidentifyTemplateResponse {
 
   factory GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeidentifyTemplateResponse(
-      createTime: map['createTime'] as String,
-      deidentifyConfig: GooglePrivacyDlpV2DeidentifyConfigResponse.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (map['createTime'] as String).input(),
+      deidentifyConfig: (GooglePrivacyDlpV2DeidentifyConfigResponse.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

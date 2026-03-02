@@ -16,11 +16,9 @@ class GetDdosProtectionPlanArgs {
   /// [ddosProtectionPlanName] The name of the DDoS protection plan.
   /// [resourceGroupName] The name of the resource group.
   GetDdosProtectionPlanArgs({
-    required pulumi.Output<String> ddosProtectionPlanName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      ddosProtectionPlanName = pulumi.Input.asInput<String>(ddosProtectionPlanName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.ddosProtectionPlanName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDdosProtectionPlanArgs {
 
   factory GetDdosProtectionPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosProtectionPlanArgs(
-      ddosProtectionPlanName: pulumi.Output.create<String>(map['ddosProtectionPlanName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ddosProtectionPlanName: (map['ddosProtectionPlanName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

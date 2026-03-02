@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the resources used to actively manage an instance group.
 class ManagedGroupConfigResponseDataprocV1beta2 {
   /// The name of the Instance Group Manager for this group.
-  final String instanceGroupManagerName;
+  final pulumi.Input<String> instanceGroupManagerName;
   /// The name of the Instance Template used for the Managed Instance Group.
-  final String instanceTemplateName;
+  final pulumi.Input<String> instanceTemplateName;
 
   /// Creates a new [ManagedGroupConfigResponseDataprocV1beta2].
   /// [instanceGroupManagerName] The name of the Instance Group Manager for this group.
@@ -25,8 +26,8 @@ class ManagedGroupConfigResponseDataprocV1beta2 {
 
   factory ManagedGroupConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedGroupConfigResponseDataprocV1beta2(
-      instanceGroupManagerName: map['instanceGroupManagerName'] as String,
-      instanceTemplateName: map['instanceTemplateName'] as String,
+      instanceGroupManagerName: (map['instanceGroupManagerName'] as String).input(),
+      instanceTemplateName: (map['instanceTemplateName'] as String).input(),
     );
   }
 }

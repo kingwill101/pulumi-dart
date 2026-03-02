@@ -20,13 +20,10 @@ class GetPipelineDefinitionArgs {
   /// [pipelineId] ID of the pipeline.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetPipelineDefinitionArgs({
-    pulumi.Output<List<GetPipelineDefinitionParameterValue>>? parameterValues,
-    required pulumi.Output<String> pipelineId,
-    pulumi.Output<String>? region,
-  }) :
-      parameterValues = pulumi.Input.asOptionalInput<List<GetPipelineDefinitionParameterValue>>(parameterValues),
-      pipelineId = pulumi.Input.asInput<String>(pipelineId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.parameterValues,
+    required this.pipelineId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetPipelineDefinitionArgs {
 
   factory GetPipelineDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineDefinitionArgs(
-      parameterValues: map['parameterValues'] == null ? null : pulumi.Output.create<List<GetPipelineDefinitionParameterValue>>(pulumi.Input.decodeList<GetPipelineDefinitionParameterValue>(map['parameterValues'], (value) => GetPipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>()))),
-      pipelineId: pulumi.Output.create<String>(map['pipelineId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      parameterValues: map['parameterValues'] == null ? null : (pulumi.Input.decodeList<GetPipelineDefinitionParameterValue>(map['parameterValues'], (value) => GetPipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineId: (map['pipelineId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

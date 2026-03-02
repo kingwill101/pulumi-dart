@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configures fields for performing SSH authentication.
 class SshAuthenticationConfig {
   /// Content of a public SSH key to verify an identity of a remote Git host.
-  final String hostPublicKey;
+  final pulumi.Input<String> hostPublicKey;
   /// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-  final String userPrivateKeySecretVersion;
+  final pulumi.Input<String> userPrivateKeySecretVersion;
 
   /// Creates a new [SshAuthenticationConfig].
   /// [hostPublicKey] Content of a public SSH key to verify an identity of a remote Git host.
@@ -25,8 +26,8 @@ class SshAuthenticationConfig {
 
   factory SshAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return SshAuthenticationConfig(
-      hostPublicKey: map['hostPublicKey'] as String,
-      userPrivateKeySecretVersion: map['userPrivateKeySecretVersion'] as String,
+      hostPublicKey: (map['hostPublicKey'] as String).input(),
+      userPrivateKeySecretVersion: (map['userPrivateKeySecretVersion'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class WorkspaceArgs {
   /// [title] Workspace title.
   /// [workspaceName] The name of the workspace.
   WorkspaceArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> title,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      title = pulumi.Input.asInput<String>(title),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.description,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.title,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      title: (map['title'] as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

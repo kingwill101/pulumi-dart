@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the final state "abort" and associated resource.
 class AbortInfoResponseNetworkmanagementV1beta1 {
   /// Causes that the analysis is aborted.
-  final String cause;
+  final pulumi.Input<String> cause;
   /// List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
-  final List<String> projectsMissingPermission;
+  final pulumi.Input<List<String>> projectsMissingPermission;
   /// URI of the resource that caused the abort.
-  final String resourceUri;
+  final pulumi.Input<String> resourceUri;
 
   /// Creates a new [AbortInfoResponseNetworkmanagementV1beta1].
   /// [cause] Causes that the analysis is aborted.
@@ -30,9 +31,9 @@ class AbortInfoResponseNetworkmanagementV1beta1 {
 
   factory AbortInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return AbortInfoResponseNetworkmanagementV1beta1(
-      cause: map['cause'] as String,
-      projectsMissingPermission: (map['projectsMissingPermission'] as List).cast<String>(),
-      resourceUri: map['resourceUri'] as String,
+      cause: (map['cause'] as String).input(),
+      projectsMissingPermission: ((map['projectsMissingPermission'] as List).cast<String>()).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

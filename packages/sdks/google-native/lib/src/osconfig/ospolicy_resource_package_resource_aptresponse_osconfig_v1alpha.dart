@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A package managed by APT. - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get -y remove [name]`
 class OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha {
   /// Package name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha].
   /// [name] Package name.
@@ -20,7 +21,7 @@ class OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha {
 
   factory OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

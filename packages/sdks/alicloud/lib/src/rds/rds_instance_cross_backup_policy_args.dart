@@ -24,15 +24,11 @@ class RdsInstanceCrossBackupPolicyArgs {
   /// [logBackupEnabled] The status of the cross-region log backup feature on the instance. Valid values:
   /// [retention] The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
   RdsInstanceCrossBackupPolicyArgs({
-    required pulumi.Output<String> crossBackupRegion,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? logBackupEnabled,
-    pulumi.Output<int>? retention,
-  }) :
-      crossBackupRegion = pulumi.Input.asInput<String>(crossBackupRegion),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      logBackupEnabled = pulumi.Input.asOptionalInput<String>(logBackupEnabled),
-      retention = pulumi.Input.asOptionalInput<int>(retention);
+    required this.crossBackupRegion,
+    required this.instanceId,
+    this.logBackupEnabled,
+    this.retention,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class RdsInstanceCrossBackupPolicyArgs {
 
   factory RdsInstanceCrossBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RdsInstanceCrossBackupPolicyArgs(
-      crossBackupRegion: pulumi.Output.create<String>(map['crossBackupRegion'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      logBackupEnabled: map['logBackupEnabled'] == null ? null : pulumi.Output.create<String>(map['logBackupEnabled'] as String),
-      retention: map['retention'] == null ? null : pulumi.Output.create<int>(map['retention'] as int),
+      crossBackupRegion: (map['crossBackupRegion'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      logBackupEnabled: map['logBackupEnabled'] == null ? null : (map['logBackupEnabled'] as String).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Write a Data Access (Gin) log
 class DataAccessOptionsResponseGameservicesV1beta {
-  final String logMode;
+  final pulumi.Input<String> logMode;
 
   /// Creates a new [DataAccessOptionsResponseGameservicesV1beta].
   /// [logMode] Required.
@@ -19,7 +20,7 @@ class DataAccessOptionsResponseGameservicesV1beta {
 
   factory DataAccessOptionsResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return DataAccessOptionsResponseGameservicesV1beta(
-      logMode: map['logMode'] as String,
+      logMode: (map['logMode'] as String).input(),
     );
   }
 }

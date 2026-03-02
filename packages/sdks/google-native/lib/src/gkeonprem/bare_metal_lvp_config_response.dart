@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the configs for local persistent volumes (PVs).
 class BareMetalLvpConfigResponse {
   /// The host machine path.
-  final String path;
+  final pulumi.Input<String> path;
   /// The StorageClass name that PVs will be created with.
-  final String storageClass;
+  final pulumi.Input<String> storageClass;
 
   /// Creates a new [BareMetalLvpConfigResponse].
   /// [path] The host machine path.
@@ -25,8 +26,8 @@ class BareMetalLvpConfigResponse {
 
   factory BareMetalLvpConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalLvpConfigResponse(
-      path: map['path'] as String,
-      storageClass: map['storageClass'] as String,
+      path: (map['path'] as String).input(),
+      storageClass: (map['storageClass'] as String).input(),
     );
   }
 }

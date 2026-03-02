@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BatchOperationsJobPutObjectHold {
   /// set/unset to update event based hold for objects.
-  final String? eventBasedHold;
+  final pulumi.Input<String>? eventBasedHold;
   /// set/unset to update temporary based hold for objects.
-  final String? temporaryHold;
+  final pulumi.Input<String>? temporaryHold;
 
   /// Creates a new [BatchOperationsJobPutObjectHold].
   /// [eventBasedHold] set/unset to update event based hold for objects.
@@ -24,8 +25,8 @@ class BatchOperationsJobPutObjectHold {
 
   factory BatchOperationsJobPutObjectHold.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobPutObjectHold(
-      eventBasedHold: map['eventBasedHold'] == null ? null : map['eventBasedHold'] as String,
-      temporaryHold: map['temporaryHold'] == null ? null : map['temporaryHold'] as String,
+      eventBasedHold: map['eventBasedHold'] == null ? null : (map['eventBasedHold'] as String).input(),
+      temporaryHold: map['temporaryHold'] == null ? null : (map['temporaryHold'] as String).input(),
     );
   }
 }

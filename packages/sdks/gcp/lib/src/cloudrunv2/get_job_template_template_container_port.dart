@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobTemplateTemplateContainerPort {
   /// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
-  final int containerPort;
+  final pulumi.Input<int> containerPort;
   /// The name of the Cloud Run v2 Job.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetJobTemplateTemplateContainerPort].
   /// [containerPort] Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
@@ -24,8 +25,8 @@ class GetJobTemplateTemplateContainerPort {
 
   factory GetJobTemplateTemplateContainerPort.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplateContainerPort(
-      containerPort: map['containerPort'] as int,
-      name: map['name'] as String,
+      containerPort: (map['containerPort'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network Virtual Appliance Additional NIC properties.
 class VirtualApplianceAdditionalNicProperties {
   /// Flag (true or false) for Intent for Public Ip on additional nic
-  final bool? hasPublicIp;
+  final pulumi.Input<bool>? hasPublicIp;
   /// Name of additional nic
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [VirtualApplianceAdditionalNicProperties].
   /// [hasPublicIp] Flag (true or false) for Intent for Public Ip on additional nic
@@ -25,8 +26,8 @@ class VirtualApplianceAdditionalNicProperties {
 
   factory VirtualApplianceAdditionalNicProperties.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceAdditionalNicProperties(
-      hasPublicIp: map['hasPublicIp'] == null ? null : map['hasPublicIp'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
+      hasPublicIp: map['hasPublicIp'] == null ? null : (map['hasPublicIp'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

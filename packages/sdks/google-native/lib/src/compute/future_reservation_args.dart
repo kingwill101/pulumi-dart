@@ -52,33 +52,20 @@ class FutureReservationArgs {
   /// [timeWindow] Time window for this Future Reservation.
   /// [zone] Optional.
   FutureReservationArgs({
-    pulumi.Output<String>? autoCreatedReservationsDeleteTime,
-    pulumi.Output<Duration>? autoCreatedReservationsDuration,
-    pulumi.Output<bool>? autoDeleteAutoCreatedReservations,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<FutureReservationPlanningStatus>? planningStatus,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<ShareSettings>? shareSettings,
-    pulumi.Output<FutureReservationSpecificSKUProperties>? specificSkuProperties,
-    pulumi.Output<FutureReservationTimeWindow>? timeWindow,
-    pulumi.Output<String>? zone,
-  }) :
-      autoCreatedReservationsDeleteTime = pulumi.Input.asOptionalInput<String>(autoCreatedReservationsDeleteTime),
-      autoCreatedReservationsDuration = pulumi.Input.asOptionalInput<Duration>(autoCreatedReservationsDuration),
-      autoDeleteAutoCreatedReservations = pulumi.Input.asOptionalInput<bool>(autoDeleteAutoCreatedReservations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      planningStatus = pulumi.Input.asOptionalInput<FutureReservationPlanningStatus>(planningStatus),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      shareSettings = pulumi.Input.asOptionalInput<ShareSettings>(shareSettings),
-      specificSkuProperties = pulumi.Input.asOptionalInput<FutureReservationSpecificSKUProperties>(specificSkuProperties),
-      timeWindow = pulumi.Input.asOptionalInput<FutureReservationTimeWindow>(timeWindow),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.autoCreatedReservationsDeleteTime,
+    this.autoCreatedReservationsDuration,
+    this.autoDeleteAutoCreatedReservations,
+    this.description,
+    this.name,
+    this.namePrefix,
+    this.planningStatus,
+    this.project,
+    this.requestId,
+    this.shareSettings,
+    this.specificSkuProperties,
+    this.timeWindow,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class FutureReservationArgs {
 
   factory FutureReservationArgs.fromMap(Map<String, dynamic> map) {
     return FutureReservationArgs(
-      autoCreatedReservationsDeleteTime: map['autoCreatedReservationsDeleteTime'] == null ? null : pulumi.Output.create<String>(map['autoCreatedReservationsDeleteTime'] as String),
-      autoCreatedReservationsDuration: map['autoCreatedReservationsDuration'] == null ? null : pulumi.Output.create<Duration>(Duration.fromMap((map['autoCreatedReservationsDuration'] as Map).cast<String, dynamic>())),
-      autoDeleteAutoCreatedReservations: map['autoDeleteAutoCreatedReservations'] == null ? null : pulumi.Output.create<bool>(map['autoDeleteAutoCreatedReservations'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      planningStatus: map['planningStatus'] == null ? null : pulumi.Output.create<FutureReservationPlanningStatus>(FutureReservationPlanningStatus.fromValue(map['planningStatus'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      shareSettings: map['shareSettings'] == null ? null : pulumi.Output.create<ShareSettings>(ShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())),
-      specificSkuProperties: map['specificSkuProperties'] == null ? null : pulumi.Output.create<FutureReservationSpecificSKUProperties>(FutureReservationSpecificSKUProperties.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>())),
-      timeWindow: map['timeWindow'] == null ? null : pulumi.Output.create<FutureReservationTimeWindow>(FutureReservationTimeWindow.fromMap((map['timeWindow'] as Map).cast<String, dynamic>())),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      autoCreatedReservationsDeleteTime: map['autoCreatedReservationsDeleteTime'] == null ? null : (map['autoCreatedReservationsDeleteTime'] as String).input(),
+      autoCreatedReservationsDuration: map['autoCreatedReservationsDuration'] == null ? null : (Duration.fromMap((map['autoCreatedReservationsDuration'] as Map).cast<String, dynamic>())).input(),
+      autoDeleteAutoCreatedReservations: map['autoDeleteAutoCreatedReservations'] == null ? null : (map['autoDeleteAutoCreatedReservations'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      planningStatus: map['planningStatus'] == null ? null : (FutureReservationPlanningStatus.fromValue(map['planningStatus'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
+      specificSkuProperties: map['specificSkuProperties'] == null ? null : (FutureReservationSpecificSKUProperties.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>())).input(),
+      timeWindow: map['timeWindow'] == null ? null : (FutureReservationTimeWindow.fromMap((map['timeWindow'] as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

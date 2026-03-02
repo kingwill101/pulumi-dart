@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CacheFromRegistry {
   /// Fully qualified name of the cache image to import.
-  final String ref;
+  final pulumi.Input<String> ref;
 
   /// Creates a new [CacheFromRegistry].
   /// [ref] Fully qualified name of the cache image to import.
@@ -19,7 +20,7 @@ class CacheFromRegistry {
 
   factory CacheFromRegistry.fromMap(Map<String, dynamic> map) {
     return CacheFromRegistry(
-      ref: map['ref'] as String,
+      ref: (map['ref'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotebookPreparationErrorResponse {
-  final String? errorMessage;
-  final int? statusCode;
+  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<int>? statusCode;
 
   /// Creates a new [NotebookPreparationErrorResponse].
   /// [errorMessage] Optional.
@@ -22,8 +23,8 @@ class NotebookPreparationErrorResponse {
 
   factory NotebookPreparationErrorResponse.fromMap(Map<String, dynamic> map) {
     return NotebookPreparationErrorResponse(
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as int,
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as int).input(),
     );
   }
 }

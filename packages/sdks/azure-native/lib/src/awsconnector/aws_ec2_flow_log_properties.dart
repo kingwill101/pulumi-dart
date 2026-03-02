@@ -7,31 +7,31 @@ import 'tag.dart';
 /// Definition of awsEc2FlowLog
 class AwsEc2FlowLogProperties {
   /// The ARN of the IAM role that allows Amazon EC2 to publish flow logs across accounts.
-  final String? deliverCrossAccountRole;
+  final pulumi.Input<String>? deliverCrossAccountRole;
   /// The ARN for the IAM role that permits Amazon EC2 to publish flow logs to a CloudWatch Logs log group in your account. If you specify LogDestinationType as s3 or kinesis-data-firehose, do not specify DeliverLogsPermissionArn or LogGroupName.
-  final String? deliverLogsPermissionArn;
+  final pulumi.Input<String>? deliverLogsPermissionArn;
   /// Property destinationOptions
-  final DestinationOptionsModelProperties? destinationOptions;
+  final pulumi.Input<DestinationOptionsModelProperties>? destinationOptions;
   /// The Flow Log ID
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the destination to which the flow log data is to be published. Flow log data can be published to a CloudWatch Logs log group, an Amazon S3 bucket, or a Kinesis Firehose stream. The value specified for this parameter depends on the value specified for LogDestinationType.
-  final String? logDestination;
+  final pulumi.Input<String>? logDestination;
   /// Specifies the type of destination to which the flow log data is to be published. Flow log data can be published to CloudWatch Logs or Amazon S3.
-  final String? logDestinationType;
+  final pulumi.Input<String>? logDestinationType;
   /// The fields to include in the flow log record, in the order in which they should appear.
-  final String? logFormat;
+  final pulumi.Input<String>? logFormat;
   /// The name of a new or existing CloudWatch Logs log group where Amazon EC2 publishes your flow logs. If you specify LogDestinationType as s3 or kinesis-data-firehose, do not specify DeliverLogsPermissionArn or LogGroupName.
-  final String? logGroupName;
+  final pulumi.Input<String>? logGroupName;
   /// The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record. You can specify 60 seconds (1 minute) or 600 seconds (10 minutes).
-  final int? maxAggregationInterval;
+  final pulumi.Input<int>? maxAggregationInterval;
   /// The ID of the subnet, network interface, or VPC for which you want to create a flow log.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// The type of resource for which to create the flow log. For example, if you specified a VPC ID for the ResourceId property, specify VPC for this property.
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
   /// The tags to apply to the flow logs.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// The type of traffic to log. You can log traffic that the resource accepts or rejects, or all traffic.
-  final String? trafficType;
+  final pulumi.Input<String>? trafficType;
 
   /// Creates a new [AwsEc2FlowLogProperties].
   /// [deliverCrossAccountRole] The ARN of the IAM role that allows Amazon EC2 to publish flow logs across accounts.
@@ -67,7 +67,7 @@ class AwsEc2FlowLogProperties {
     return <String, dynamic>{
       'deliverCrossAccountRole': ?deliverCrossAccountRole,
       'deliverLogsPermissionArn': ?deliverLogsPermissionArn,
-      'destinationOptions': ?destinationOptions == null ? null : destinationOptions!.toMap(),
+      'destinationOptions': ?pulumi.Input.mapOptionalInputValue<DestinationOptionsModelProperties, Map<String, dynamic>>(destinationOptions, (value) => value.toMap()),
       'id': ?id,
       'logDestination': ?logDestination,
       'logDestinationType': ?logDestinationType,
@@ -76,26 +76,26 @@ class AwsEc2FlowLogProperties {
       'maxAggregationInterval': ?maxAggregationInterval,
       'resourceId': ?resourceId,
       'resourceType': ?resourceType,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'trafficType': ?trafficType,
     };
   }
 
   factory AwsEc2FlowLogProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2FlowLogProperties(
-      deliverCrossAccountRole: map['deliverCrossAccountRole'] == null ? null : map['deliverCrossAccountRole'] as String,
-      deliverLogsPermissionArn: map['deliverLogsPermissionArn'] == null ? null : map['deliverLogsPermissionArn'] as String,
-      destinationOptions: map['destinationOptions'] == null ? null : DestinationOptionsModelProperties.fromMap((map['destinationOptions'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      logDestination: map['logDestination'] == null ? null : map['logDestination'] as String,
-      logDestinationType: map['logDestinationType'] == null ? null : map['logDestinationType'] as String,
-      logFormat: map['logFormat'] == null ? null : map['logFormat'] as String,
-      logGroupName: map['logGroupName'] == null ? null : map['logGroupName'] as String,
-      maxAggregationInterval: map['maxAggregationInterval'] == null ? null : map['maxAggregationInterval'] as int,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      trafficType: map['trafficType'] == null ? null : map['trafficType'] as String,
+      deliverCrossAccountRole: map['deliverCrossAccountRole'] == null ? null : (map['deliverCrossAccountRole'] as String).input(),
+      deliverLogsPermissionArn: map['deliverLogsPermissionArn'] == null ? null : (map['deliverLogsPermissionArn'] as String).input(),
+      destinationOptions: map['destinationOptions'] == null ? null : (DestinationOptionsModelProperties.fromMap((map['destinationOptions'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      logDestination: map['logDestination'] == null ? null : (map['logDestination'] as String).input(),
+      logDestinationType: map['logDestinationType'] == null ? null : (map['logDestinationType'] as String).input(),
+      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
+      maxAggregationInterval: map['maxAggregationInterval'] == null ? null : (map['maxAggregationInterval'] as int).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trafficType: map['trafficType'] == null ? null : (map['trafficType'] as String).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'get_os_profile_window_patch.dart';
 
 class GetOsProfileWindow {
   /// A `patch` block as defined above.
-  final List<GetOsProfileWindowPatch> patches;
+  final pulumi.Input<List<GetOsProfileWindowPatch>> patches;
 
   /// Creates a new [GetOsProfileWindow].
   /// [patches] A `patch` block as defined above.
@@ -15,13 +15,13 @@ class GetOsProfileWindow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'patches': pulumi.Input.encodeList<GetOsProfileWindowPatch, Map<String, dynamic>>(patches, (value) => value.toMap()),
+      'patches': pulumi.Input.mapInputValue<List<GetOsProfileWindowPatch>, List<Map<String, dynamic>>>(patches, (value) => pulumi.Input.encodeList<GetOsProfileWindowPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetOsProfileWindow.fromMap(Map<String, dynamic> map) {
     return GetOsProfileWindow(
-      patches: pulumi.Input.decodeList<GetOsProfileWindowPatch>(map['patches'], (value) => GetOsProfileWindowPatch.fromMap((value as Map).cast<String, dynamic>())),
+      patches: (pulumi.Input.decodeList<GetOsProfileWindowPatch>(map['patches'], (value) => GetOsProfileWindowPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

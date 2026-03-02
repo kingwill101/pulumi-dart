@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy {
   /// Whether CloudFront overrides the `Referrer-Policy` HTTP response header received from the origin with the one specified in this response headers policy.
-  final bool override;
+  final pulumi.Input<bool> override;
   /// The value of the `Referrer-Policy` HTTP response header. Valid Values: `no-referrer` | `no-referrer-when-downgrade` | `origin` | `origin-when-cross-origin` | `same-origin` | `strict-origin` | `strict-origin-when-cross-origin` | `unsafe-url`
-  final String referrerPolicy;
+  final pulumi.Input<String> referrerPolicy;
 
   /// Creates a new [ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy].
   /// [override] Whether CloudFront overrides the `Referrer-Policy` HTTP response header received from the origin with the one specified in this response headers policy.
@@ -24,8 +25,8 @@ class ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy {
 
   factory ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy(
-      override: map['override'] as bool,
-      referrerPolicy: map['referrerPolicy'] as String,
+      override: (map['override'] as bool).input(),
+      referrerPolicy: (map['referrerPolicy'] as String).input(),
     );
   }
 }

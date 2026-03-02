@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_endpoint_background_data_download_activity_response.dart';
 import 'server_endpoint_sync_activity_status_response.dart';
 import 'server_endpoint_sync_session_status_response.dart';
@@ -7,29 +8,29 @@ import 'server_endpoint_sync_session_status_response.dart';
 /// Server Endpoint sync status
 class ServerEndpointSyncStatusResponse {
   /// Background data download activity
-  final ServerEndpointBackgroundDataDownloadActivityResponse backgroundDataDownloadActivity;
+  final pulumi.Input<ServerEndpointBackgroundDataDownloadActivityResponse> backgroundDataDownloadActivity;
   /// Combined Health Status.
-  final String combinedHealth;
+  final pulumi.Input<String> combinedHealth;
   /// Download sync activity
-  final ServerEndpointSyncActivityStatusResponse downloadActivity;
+  final pulumi.Input<ServerEndpointSyncActivityStatusResponse> downloadActivity;
   /// Download Health Status.
-  final String downloadHealth;
+  final pulumi.Input<String> downloadHealth;
   /// Download Status
-  final ServerEndpointSyncSessionStatusResponse downloadStatus;
+  final pulumi.Input<ServerEndpointSyncSessionStatusResponse> downloadStatus;
   /// Last Updated Timestamp
-  final String lastUpdatedTimestamp;
+  final pulumi.Input<String> lastUpdatedTimestamp;
   /// Offline Data Transfer State
-  final String offlineDataTransferStatus;
+  final pulumi.Input<String> offlineDataTransferStatus;
   /// Sync activity
-  final String syncActivity;
+  final pulumi.Input<String> syncActivity;
   /// Total count of persistent files not syncing (combined upload + download).
-  final double totalPersistentFilesNotSyncingCount;
+  final pulumi.Input<double> totalPersistentFilesNotSyncingCount;
   /// Upload sync activity
-  final ServerEndpointSyncActivityStatusResponse uploadActivity;
+  final pulumi.Input<ServerEndpointSyncActivityStatusResponse> uploadActivity;
   /// Upload Health Status.
-  final String uploadHealth;
+  final pulumi.Input<String> uploadHealth;
   /// Upload Status
-  final ServerEndpointSyncSessionStatusResponse uploadStatus;
+  final pulumi.Input<ServerEndpointSyncSessionStatusResponse> uploadStatus;
 
   /// Creates a new [ServerEndpointSyncStatusResponse].
   /// [backgroundDataDownloadActivity] Background data download activity
@@ -61,35 +62,35 @@ class ServerEndpointSyncStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backgroundDataDownloadActivity': backgroundDataDownloadActivity.toMap(),
+      'backgroundDataDownloadActivity': pulumi.Input.mapInputValue<ServerEndpointBackgroundDataDownloadActivityResponse, Map<String, dynamic>>(backgroundDataDownloadActivity, (value) => value.toMap()),
       'combinedHealth': combinedHealth,
-      'downloadActivity': downloadActivity.toMap(),
+      'downloadActivity': pulumi.Input.mapInputValue<ServerEndpointSyncActivityStatusResponse, Map<String, dynamic>>(downloadActivity, (value) => value.toMap()),
       'downloadHealth': downloadHealth,
-      'downloadStatus': downloadStatus.toMap(),
+      'downloadStatus': pulumi.Input.mapInputValue<ServerEndpointSyncSessionStatusResponse, Map<String, dynamic>>(downloadStatus, (value) => value.toMap()),
       'lastUpdatedTimestamp': lastUpdatedTimestamp,
       'offlineDataTransferStatus': offlineDataTransferStatus,
       'syncActivity': syncActivity,
       'totalPersistentFilesNotSyncingCount': totalPersistentFilesNotSyncingCount,
-      'uploadActivity': uploadActivity.toMap(),
+      'uploadActivity': pulumi.Input.mapInputValue<ServerEndpointSyncActivityStatusResponse, Map<String, dynamic>>(uploadActivity, (value) => value.toMap()),
       'uploadHealth': uploadHealth,
-      'uploadStatus': uploadStatus.toMap(),
+      'uploadStatus': pulumi.Input.mapInputValue<ServerEndpointSyncSessionStatusResponse, Map<String, dynamic>>(uploadStatus, (value) => value.toMap()),
     };
   }
 
   factory ServerEndpointSyncStatusResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointSyncStatusResponse(
-      backgroundDataDownloadActivity: ServerEndpointBackgroundDataDownloadActivityResponse.fromMap((map['backgroundDataDownloadActivity'] as Map).cast<String, dynamic>()),
-      combinedHealth: map['combinedHealth'] as String,
-      downloadActivity: ServerEndpointSyncActivityStatusResponse.fromMap((map['downloadActivity'] as Map).cast<String, dynamic>()),
-      downloadHealth: map['downloadHealth'] as String,
-      downloadStatus: ServerEndpointSyncSessionStatusResponse.fromMap((map['downloadStatus'] as Map).cast<String, dynamic>()),
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] as String,
-      offlineDataTransferStatus: map['offlineDataTransferStatus'] as String,
-      syncActivity: map['syncActivity'] as String,
-      totalPersistentFilesNotSyncingCount: map['totalPersistentFilesNotSyncingCount'] as double,
-      uploadActivity: ServerEndpointSyncActivityStatusResponse.fromMap((map['uploadActivity'] as Map).cast<String, dynamic>()),
-      uploadHealth: map['uploadHealth'] as String,
-      uploadStatus: ServerEndpointSyncSessionStatusResponse.fromMap((map['uploadStatus'] as Map).cast<String, dynamic>()),
+      backgroundDataDownloadActivity: (ServerEndpointBackgroundDataDownloadActivityResponse.fromMap((map['backgroundDataDownloadActivity'] as Map).cast<String, dynamic>())).input(),
+      combinedHealth: (map['combinedHealth'] as String).input(),
+      downloadActivity: (ServerEndpointSyncActivityStatusResponse.fromMap((map['downloadActivity'] as Map).cast<String, dynamic>())).input(),
+      downloadHealth: (map['downloadHealth'] as String).input(),
+      downloadStatus: (ServerEndpointSyncSessionStatusResponse.fromMap((map['downloadStatus'] as Map).cast<String, dynamic>())).input(),
+      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
+      offlineDataTransferStatus: (map['offlineDataTransferStatus'] as String).input(),
+      syncActivity: (map['syncActivity'] as String).input(),
+      totalPersistentFilesNotSyncingCount: (map['totalPersistentFilesNotSyncingCount'] as double).input(),
+      uploadActivity: (ServerEndpointSyncActivityStatusResponse.fromMap((map['uploadActivity'] as Map).cast<String, dynamic>())).input(),
+      uploadHealth: (map['uploadHealth'] as String).input(),
+      uploadStatus: (ServerEndpointSyncSessionStatusResponse.fromMap((map['uploadStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

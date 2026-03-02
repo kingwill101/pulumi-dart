@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysPciDriver {
   /// Specifies the model of the driver being used for the PCI subsystem device.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// Sets the name of the driver associated with the PCI subsystem device.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DomainDevicesHostdevSubsysPciDriver].
   /// [model] Specifies the model of the driver being used for the PCI subsystem device.
@@ -24,8 +25,8 @@ class DomainDevicesHostdevSubsysPciDriver {
 
   factory DomainDevicesHostdevSubsysPciDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysPciDriver(
-      model: map['model'] == null ? null : map['model'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class PolicyArgs {
   /// [rules] List of Rules can be applied using the policy. Each rule is block type with following arguments.
   /// [strategy] Specifies the match strategy
   PolicyArgs({
-    pulumi.Output<List<String>>? controls,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? publishedCopy,
-    pulumi.Output<List<String>>? requires,
-    pulumi.Output<List<PolicyRule>>? rules,
-    pulumi.Output<String>? strategy,
-  }) :
-      controls = pulumi.Input.asOptionalInput<List<String>>(controls),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asInput<String>(name),
-      publishedCopy = pulumi.Input.asOptionalInput<String>(publishedCopy),
-      requires = pulumi.Input.asOptionalInput<List<String>>(requires),
-      rules = pulumi.Input.asOptionalInput<List<PolicyRule>>(rules),
-      strategy = pulumi.Input.asOptionalInput<String>(strategy);
+    this.controls,
+    this.description,
+    required this.name,
+    this.publishedCopy,
+    this.requires,
+    this.rules,
+    this.strategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      controls: map['controls'] == null ? null : pulumi.Output.create<List<String>>((map['controls'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      publishedCopy: map['publishedCopy'] == null ? null : pulumi.Output.create<String>(map['publishedCopy'] as String),
-      requires: map['requires'] == null ? null : pulumi.Output.create<List<String>>((map['requires'] as List).cast<String>()),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<PolicyRule>>(pulumi.Input.decodeList<PolicyRule>(map['rules'], (value) => PolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      strategy: map['strategy'] == null ? null : pulumi.Output.create<String>(map['strategy'] as String),
+      controls: map['controls'] == null ? null : ((map['controls'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      publishedCopy: map['publishedCopy'] == null ? null : (map['publishedCopy'] as String).input(),
+      requires: map['requires'] == null ? null : ((map['requires'] as List).cast<String>()).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRule>(map['rules'], (value) => PolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
     );
   }
 }

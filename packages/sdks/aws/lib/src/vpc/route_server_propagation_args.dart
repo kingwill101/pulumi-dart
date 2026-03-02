@@ -24,15 +24,11 @@ class RouteServerPropagationArgs {
   /// [routeTableId] The ID of the route table to which route server will propagate routes.
   /// [timeouts] Optional.
   RouteServerPropagationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routeServerId,
-    required pulumi.Output<String> routeTableId,
-    pulumi.Output<RouteServerPropagationTimeouts>? timeouts,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeServerId = pulumi.Input.asInput<String>(routeServerId),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId),
-      timeouts = pulumi.Input.asOptionalInput<RouteServerPropagationTimeouts>(timeouts);
+    this.region,
+    required this.routeServerId,
+    required this.routeTableId,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class RouteServerPropagationArgs {
 
   factory RouteServerPropagationArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerPropagationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeServerId: pulumi.Output.create<String>(map['routeServerId'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RouteServerPropagationTimeouts>(RouteServerPropagationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeServerId: (map['routeServerId'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (RouteServerPropagationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Google Plugin Auth flow.
 class IdentityServiceGoogleConfigResponse {
   /// Disable automatic configuration of Google Plugin on supported platforms.
-  final bool disable;
+  final pulumi.Input<bool> disable;
 
   /// Creates a new [IdentityServiceGoogleConfigResponse].
   /// [disable] Disable automatic configuration of Google Plugin on supported platforms.
@@ -20,7 +21,7 @@ class IdentityServiceGoogleConfigResponse {
 
   factory IdentityServiceGoogleConfigResponse.fromMap(Map<String, dynamic> map) {
     return IdentityServiceGoogleConfigResponse(
-      disable: map['disable'] as bool,
+      disable: (map['disable'] as bool).input(),
     );
   }
 }

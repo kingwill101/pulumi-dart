@@ -35,23 +35,15 @@ class EfsLocationArgs {
   /// [subdirectory] Subdirectory to perform actions as source or destination. Default `/`.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   EfsLocationArgs({
-    pulumi.Output<String>? accessPointArn,
-    required pulumi.Output<EfsLocationEc2Config> ec2Config,
-    required pulumi.Output<String> efsFileSystemArn,
-    pulumi.Output<String>? fileSystemAccessRoleArn,
-    pulumi.Output<String>? inTransitEncryption,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessPointArn = pulumi.Input.asOptionalInput<String>(accessPointArn),
-      ec2Config = pulumi.Input.asInput<EfsLocationEc2Config>(ec2Config),
-      efsFileSystemArn = pulumi.Input.asInput<String>(efsFileSystemArn),
-      fileSystemAccessRoleArn = pulumi.Input.asOptionalInput<String>(fileSystemAccessRoleArn),
-      inTransitEncryption = pulumi.Input.asOptionalInput<String>(inTransitEncryption),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessPointArn,
+    required this.ec2Config,
+    required this.efsFileSystemArn,
+    this.fileSystemAccessRoleArn,
+    this.inTransitEncryption,
+    this.region,
+    this.subdirectory,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class EfsLocationArgs {
 
   factory EfsLocationArgs.fromMap(Map<String, dynamic> map) {
     return EfsLocationArgs(
-      accessPointArn: map['accessPointArn'] == null ? null : pulumi.Output.create<String>(map['accessPointArn'] as String),
-      ec2Config: pulumi.Output.create<EfsLocationEc2Config>(EfsLocationEc2Config.fromMap((map['ec2Config'] as Map).cast<String, dynamic>())),
-      efsFileSystemArn: pulumi.Output.create<String>(map['efsFileSystemArn'] as String),
-      fileSystemAccessRoleArn: map['fileSystemAccessRoleArn'] == null ? null : pulumi.Output.create<String>(map['fileSystemAccessRoleArn'] as String),
-      inTransitEncryption: map['inTransitEncryption'] == null ? null : pulumi.Output.create<String>(map['inTransitEncryption'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessPointArn: map['accessPointArn'] == null ? null : (map['accessPointArn'] as String).input(),
+      ec2Config: (EfsLocationEc2Config.fromMap((map['ec2Config'] as Map).cast<String, dynamic>())).input(),
+      efsFileSystemArn: (map['efsFileSystemArn'] as String).input(),
+      fileSystemAccessRoleArn: map['fileSystemAccessRoleArn'] == null ? null : (map['fileSystemAccessRoleArn'] as String).input(),
+      inTransitEncryption: map['inTransitEncryption'] == null ? null : (map['inTransitEncryption'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

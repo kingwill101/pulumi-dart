@@ -51,33 +51,20 @@ class WebTestArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [timeout] Seconds until this WebTest will timeout and fail. Default is `30`.
   WebTestArgs({
-    required pulumi.Output<String> applicationInsightsId,
-    required pulumi.Output<String> configuration,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<int>? frequency,
-    required pulumi.Output<List<String>> geoLocations,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? retryEnabled,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? timeout,
-  }) :
-      applicationInsightsId = pulumi.Input.asInput<String>(applicationInsightsId),
-      configuration = pulumi.Input.asInput<String>(configuration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      frequency = pulumi.Input.asOptionalInput<int>(frequency),
-      geoLocations = pulumi.Input.asInput<List<String>>(geoLocations),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retryEnabled = pulumi.Input.asOptionalInput<bool>(retryEnabled),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout);
+    required this.applicationInsightsId,
+    required this.configuration,
+    this.description,
+    this.enabled,
+    this.frequency,
+    required this.geoLocations,
+    required this.kind,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.retryEnabled,
+    this.tags,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class WebTestArgs {
 
   factory WebTestArgs.fromMap(Map<String, dynamic> map) {
     return WebTestArgs(
-      applicationInsightsId: pulumi.Output.create<String>(map['applicationInsightsId'] as String),
-      configuration: pulumi.Output.create<String>(map['configuration'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      frequency: map['frequency'] == null ? null : pulumi.Output.create<int>(map['frequency'] as int),
-      geoLocations: pulumi.Output.create<List<String>>((map['geoLocations'] as List).cast<String>()),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retryEnabled: map['retryEnabled'] == null ? null : pulumi.Output.create<bool>(map['retryEnabled'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
+      applicationInsightsId: (map['applicationInsightsId'] as String).input(),
+      configuration: (map['configuration'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency'] as int).input(),
+      geoLocations: ((map['geoLocations'] as List).cast<String>()).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retryEnabled: map['retryEnabled'] == null ? null : (map['retryEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetDomainManagedidentitiesV1alpha1Args {
   /// [domainId] Required.
   /// [project] Optional.
   GetDomainManagedidentitiesV1alpha1Args({
-    required pulumi.Output<String> domainId,
-    pulumi.Output<String>? project,
-  }) :
-      domainId = pulumi.Input.asInput<String>(domainId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.domainId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetDomainManagedidentitiesV1alpha1Args {
 
   factory GetDomainManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetDomainManagedidentitiesV1alpha1Args(
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      domainId: (map['domainId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

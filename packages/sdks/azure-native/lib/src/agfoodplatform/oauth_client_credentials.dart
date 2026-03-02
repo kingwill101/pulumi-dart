@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_properties.dart';
 
 /// OAuthClientCredentials for clientId clientSecret auth.
 class OAuthClientCredentials {
   /// ClientId associated with the provider.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Properties of the key vault.
-  final KeyVaultProperties clientSecret;
+  final pulumi.Input<KeyVaultProperties> clientSecret;
   /// Enum for different types of AuthCredentials supported.
   /// Expected value is 'OAuthClientCredentials'.
-  final String kind;
+  final pulumi.Input<String> kind;
 
   /// Creates a new [OAuthClientCredentials].
   /// [clientId] ClientId associated with the provider.
@@ -25,16 +26,16 @@ class OAuthClientCredentials {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientId': clientId,
-      'clientSecret': clientSecret.toMap(),
+      'clientSecret': pulumi.Input.mapInputValue<KeyVaultProperties, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
       'kind': kind,
     };
   }
 
   factory OAuthClientCredentials.fromMap(Map<String, dynamic> map) {
     return OAuthClientCredentials(
-      clientId: map['clientId'] as String,
-      clientSecret: KeyVaultProperties.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (KeyVaultProperties.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
     );
   }
 }

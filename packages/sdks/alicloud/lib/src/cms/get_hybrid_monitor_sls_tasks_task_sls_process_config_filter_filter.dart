@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
   /// The method that is used to filter logs imported from Log Service.
-  final String operator;
-  final String slsKeyName;
-  final String value;
+  final pulumi.Input<String> operator;
+  final pulumi.Input<String> slsKeyName;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter].
   /// [operator] The method that is used to filter logs imported from Log Service.
@@ -27,9 +28,9 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
 
   factory GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter(
-      operator: map['operator'] as String,
-      slsKeyName: map['slsKeyName'] as String,
-      value: map['value'] as String,
+      operator: (map['operator'] as String).input(),
+      slsKeyName: (map['slsKeyName'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

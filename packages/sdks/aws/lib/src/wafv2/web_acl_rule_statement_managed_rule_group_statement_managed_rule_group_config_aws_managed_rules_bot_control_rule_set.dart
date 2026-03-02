@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet {
   /// Applies only to the targeted inspection level. Determines whether to use machine learning (ML) to analyze your web traffic for bot-related activity. Defaults to `true`.
-  final bool? enableMachineLearning;
+  final pulumi.Input<bool>? enableMachineLearning;
   /// The inspection level to use for the Bot Control rule group.
-  final String inspectionLevel;
+  final pulumi.Input<String> inspectionLevel;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet].
   /// [enableMachineLearning] Applies only to the targeted inspection level. Determines whether to use machine learning (ML) to analyze your web traffic for bot-related activity. Defaults to `true`.
@@ -24,8 +25,8 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet(
-      enableMachineLearning: map['enableMachineLearning'] == null ? null : map['enableMachineLearning'] as bool,
-      inspectionLevel: map['inspectionLevel'] as String,
+      enableMachineLearning: map['enableMachineLearning'] == null ? null : (map['enableMachineLearning'] as bool).input(),
+      inspectionLevel: (map['inspectionLevel'] as String).input(),
     );
   }
 }

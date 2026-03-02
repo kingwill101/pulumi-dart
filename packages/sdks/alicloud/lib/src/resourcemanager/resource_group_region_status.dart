@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceGroupRegionStatus {
   /// The status of the region.
-  final String? regionId;
+  final pulumi.Input<String>? regionId;
   /// The status of the resource group.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ResourceGroupRegionStatus].
   /// [regionId] The status of the region.
@@ -24,8 +25,8 @@ class ResourceGroupRegionStatus {
 
   factory ResourceGroupRegionStatus.fromMap(Map<String, dynamic> map) {
     return ResourceGroupRegionStatus(
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

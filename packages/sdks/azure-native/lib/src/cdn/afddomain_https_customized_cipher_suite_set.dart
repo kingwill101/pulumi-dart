@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
 class AFDDomainHttpsCustomizedCipherSuiteSet {
   /// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-  final List<String>? cipherSuiteSetForTls12;
+  final pulumi.Input<List<String>>? cipherSuiteSetForTls12;
   /// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-  final List<String>? cipherSuiteSetForTls13;
+  final pulumi.Input<List<String>>? cipherSuiteSetForTls13;
 
   /// Creates a new [AFDDomainHttpsCustomizedCipherSuiteSet].
   /// [cipherSuiteSetForTls12] Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
@@ -25,8 +26,8 @@ class AFDDomainHttpsCustomizedCipherSuiteSet {
 
   factory AFDDomainHttpsCustomizedCipherSuiteSet.fromMap(Map<String, dynamic> map) {
     return AFDDomainHttpsCustomizedCipherSuiteSet(
-      cipherSuiteSetForTls12: map['cipherSuiteSetForTls12'] == null ? null : (map['cipherSuiteSetForTls12'] as List).cast<String>(),
-      cipherSuiteSetForTls13: map['cipherSuiteSetForTls13'] == null ? null : (map['cipherSuiteSetForTls13'] as List).cast<String>(),
+      cipherSuiteSetForTls12: map['cipherSuiteSetForTls12'] == null ? null : ((map['cipherSuiteSetForTls12'] as List).cast<String>()).input(),
+      cipherSuiteSetForTls13: map['cipherSuiteSetForTls13'] == null ? null : ((map['cipherSuiteSetForTls13'] as List).cast<String>()).input(),
     );
   }
 }

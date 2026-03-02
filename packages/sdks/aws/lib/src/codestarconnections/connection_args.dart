@@ -25,17 +25,12 @@ class ConnectionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of key-value resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ConnectionArgs({
-    pulumi.Output<String>? hostArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      hostArn = pulumi.Input.asOptionalInput<String>(hostArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerType = pulumi.Input.asOptionalInput<String>(providerType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.hostArn,
+    this.name,
+    this.providerType,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      hostArn: map['hostArn'] == null ? null : pulumi.Output.create<String>(map['hostArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerType: map['providerType'] == null ? null : pulumi.Output.create<String>(map['providerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      hostArn: map['hostArn'] == null ? null : (map['hostArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -54,33 +54,20 @@ class PacketCaptureArgs {
   /// [timeLimitInSeconds] Maximum duration of the capture session in seconds.
   /// [totalBytesPerSession] Maximum size of the capture output.
   PacketCaptureArgs({
-    pulumi.Output<double>? bytesToCapturePerPacket,
-    pulumi.Output<PacketCaptureSettings>? captureSettings,
-    pulumi.Output<bool>? continuousCapture,
-    pulumi.Output<List<PacketCaptureFilter>>? filters,
-    required pulumi.Output<String> networkWatcherName,
-    pulumi.Output<String>? packetCaptureName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<PacketCaptureMachineScope>? scope,
-    required pulumi.Output<PacketCaptureStorageLocation> storageLocation,
-    required pulumi.Output<String> target,
-    pulumi.Output<PacketCaptureTargetType>? targetType,
-    pulumi.Output<int>? timeLimitInSeconds,
-    pulumi.Output<double>? totalBytesPerSession,
-  }) :
-      bytesToCapturePerPacket = pulumi.Input.asOptionalInput<double>(bytesToCapturePerPacket),
-      captureSettings = pulumi.Input.asOptionalInput<PacketCaptureSettings>(captureSettings),
-      continuousCapture = pulumi.Input.asOptionalInput<bool>(continuousCapture),
-      filters = pulumi.Input.asOptionalInput<List<PacketCaptureFilter>>(filters),
-      networkWatcherName = pulumi.Input.asInput<String>(networkWatcherName),
-      packetCaptureName = pulumi.Input.asOptionalInput<String>(packetCaptureName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<PacketCaptureMachineScope>(scope),
-      storageLocation = pulumi.Input.asInput<PacketCaptureStorageLocation>(storageLocation),
-      target = pulumi.Input.asInput<String>(target),
-      targetType = pulumi.Input.asOptionalInput<PacketCaptureTargetType>(targetType),
-      timeLimitInSeconds = pulumi.Input.asOptionalInput<int>(timeLimitInSeconds),
-      totalBytesPerSession = pulumi.Input.asOptionalInput<double>(totalBytesPerSession);
+    this.bytesToCapturePerPacket,
+    this.captureSettings,
+    this.continuousCapture,
+    this.filters,
+    required this.networkWatcherName,
+    this.packetCaptureName,
+    required this.resourceGroupName,
+    this.scope,
+    required this.storageLocation,
+    required this.target,
+    this.targetType,
+    this.timeLimitInSeconds,
+    this.totalBytesPerSession,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class PacketCaptureArgs {
 
   factory PacketCaptureArgs.fromMap(Map<String, dynamic> map) {
     return PacketCaptureArgs(
-      bytesToCapturePerPacket: map['bytesToCapturePerPacket'] == null ? null : pulumi.Output.create<double>(map['bytesToCapturePerPacket'] as double),
-      captureSettings: map['captureSettings'] == null ? null : pulumi.Output.create<PacketCaptureSettings>(PacketCaptureSettings.fromMap((map['captureSettings'] as Map).cast<String, dynamic>())),
-      continuousCapture: map['continuousCapture'] == null ? null : pulumi.Output.create<bool>(map['continuousCapture'] as bool),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<PacketCaptureFilter>>(pulumi.Input.decodeList<PacketCaptureFilter>(map['filters'], (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      networkWatcherName: pulumi.Output.create<String>(map['networkWatcherName'] as String),
-      packetCaptureName: map['packetCaptureName'] == null ? null : pulumi.Output.create<String>(map['packetCaptureName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<PacketCaptureMachineScope>(PacketCaptureMachineScope.fromMap((map['scope'] as Map).cast<String, dynamic>())),
-      storageLocation: pulumi.Output.create<PacketCaptureStorageLocation>(PacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())),
-      target: pulumi.Output.create<String>(map['target'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<PacketCaptureTargetType>(PacketCaptureTargetType.fromValue(map['targetType'] as String)),
-      timeLimitInSeconds: map['timeLimitInSeconds'] == null ? null : pulumi.Output.create<int>(map['timeLimitInSeconds'] as int),
-      totalBytesPerSession: map['totalBytesPerSession'] == null ? null : pulumi.Output.create<double>(map['totalBytesPerSession'] as double),
+      bytesToCapturePerPacket: map['bytesToCapturePerPacket'] == null ? null : (map['bytesToCapturePerPacket'] as double).input(),
+      captureSettings: map['captureSettings'] == null ? null : (PacketCaptureSettings.fromMap((map['captureSettings'] as Map).cast<String, dynamic>())).input(),
+      continuousCapture: map['continuousCapture'] == null ? null : (map['continuousCapture'] as bool).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<PacketCaptureFilter>(map['filters'], (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkWatcherName: (map['networkWatcherName'] as String).input(),
+      packetCaptureName: map['packetCaptureName'] == null ? null : (map['packetCaptureName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (PacketCaptureMachineScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      storageLocation: (PacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
+      target: (map['target'] as String).input(),
+      targetType: map['targetType'] == null ? null : (PacketCaptureTargetType.fromValue(map['targetType'] as String)).input(),
+      timeLimitInSeconds: map['timeLimitInSeconds'] == null ? null : (map['timeLimitInSeconds'] as int).input(),
+      totalBytesPerSession: map['totalBytesPerSession'] == null ? null : (map['totalBytesPerSession'] as double).input(),
     );
   }
 }

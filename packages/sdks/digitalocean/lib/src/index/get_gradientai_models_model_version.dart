@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiModelsModelVersion {
   /// Major version of the model
-  final int major;
+  final pulumi.Input<int> major;
   /// Minor version of the model
-  final int minor;
+  final pulumi.Input<int> minor;
   /// Patch version of the model
-  final int patch;
+  final pulumi.Input<int> patch;
 
   /// Creates a new [GetGradientaiModelsModelVersion].
   /// [major] Major version of the model
@@ -29,9 +30,9 @@ class GetGradientaiModelsModelVersion {
 
   factory GetGradientaiModelsModelVersion.fromMap(Map<String, dynamic> map) {
     return GetGradientaiModelsModelVersion(
-      major: map['major'] as int,
-      minor: map['minor'] as int,
-      patch: map['patch'] as int,
+      major: (map['major'] as int).input(),
+      minor: (map['minor'] as int).input(),
+      patch: (map['patch'] as int).input(),
     );
   }
 }

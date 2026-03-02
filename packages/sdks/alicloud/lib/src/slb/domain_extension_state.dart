@@ -22,17 +22,12 @@ class DomainExtensionState {
   /// [loadBalancerId] The ID of the SLB instance.
   /// [serverCertificateId] The ID of the certificate used by the domain name.
   DomainExtensionState({
-    pulumi.Output<bool>? deleteProtectionValidation,
-    pulumi.Output<String>? domain,
-    pulumi.Output<int>? frontendPort,
-    pulumi.Output<String>? loadBalancerId,
-    pulumi.Output<String>? serverCertificateId,
-  }) :
-      deleteProtectionValidation = pulumi.Input.asOptionalInput<bool>(deleteProtectionValidation),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      frontendPort = pulumi.Input.asOptionalInput<int>(frontendPort),
-      loadBalancerId = pulumi.Input.asOptionalInput<String>(loadBalancerId),
-      serverCertificateId = pulumi.Input.asOptionalInput<String>(serverCertificateId);
+    this.deleteProtectionValidation,
+    this.domain,
+    this.frontendPort,
+    this.loadBalancerId,
+    this.serverCertificateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class DomainExtensionState {
 
   factory DomainExtensionState.fromMap(Map<String, dynamic> map) {
     return DomainExtensionState(
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : pulumi.Output.create<bool>(map['deleteProtectionValidation'] as bool),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      frontendPort: map['frontendPort'] == null ? null : pulumi.Output.create<int>(map['frontendPort'] as int),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      serverCertificateId: map['serverCertificateId'] == null ? null : pulumi.Output.create<String>(map['serverCertificateId'] as String),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      serverCertificateId: map['serverCertificateId'] == null ? null : (map['serverCertificateId'] as String).input(),
     );
   }
 }

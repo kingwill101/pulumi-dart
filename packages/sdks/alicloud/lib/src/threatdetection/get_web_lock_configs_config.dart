@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWebLockConfigsConfig {
   /// The prevention mode.
-  final String defenceMode;
+  final pulumi.Input<String> defenceMode;
   /// The directory that has web tamper proofing enabled.
-  final String dir;
+  final pulumi.Input<String> dir;
   /// The directory that has web tamper proofing disabled.
-  final String exclusiveDir;
+  final pulumi.Input<String> exclusiveDir;
   /// The file that has web tamper proofing disabled. **Note:** If the value of `mode` is `blacklist`, this parameter is returned.
-  final String exclusiveFile;
+  final pulumi.Input<String> exclusiveFile;
   /// The type of the file that has web tamper proofing disabled. **Note:** If the value of `mode` is `blacklist`, this parameter is returned.
-  final String exclusiveFileType;
+  final pulumi.Input<String> exclusiveFileType;
   /// The ID of the resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// The type of the file that has web tamper proofing enabled. **Note:** If the value of `mode` is `whitelist`, this parameter is returned.
-  final String inclusiveFileType;
+  final pulumi.Input<String> inclusiveFileType;
   /// The local path to the backup files of the protected directory.
-  final String localBackupDir;
+  final pulumi.Input<String> localBackupDir;
   /// The protection mode of web tamper proofing.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The UUID of the server that has web tamper proofing enabled.
-  final String uuid;
+  final pulumi.Input<String> uuid;
 
   /// Creates a new [GetWebLockConfigsConfig].
   /// [defenceMode] The prevention mode.
@@ -64,16 +65,16 @@ class GetWebLockConfigsConfig {
 
   factory GetWebLockConfigsConfig.fromMap(Map<String, dynamic> map) {
     return GetWebLockConfigsConfig(
-      defenceMode: map['defenceMode'] as String,
-      dir: map['dir'] as String,
-      exclusiveDir: map['exclusiveDir'] as String,
-      exclusiveFile: map['exclusiveFile'] as String,
-      exclusiveFileType: map['exclusiveFileType'] as String,
-      id: map['id'] as String,
-      inclusiveFileType: map['inclusiveFileType'] as String,
-      localBackupDir: map['localBackupDir'] as String,
-      mode: map['mode'] as String,
-      uuid: map['uuid'] as String,
+      defenceMode: (map['defenceMode'] as String).input(),
+      dir: (map['dir'] as String).input(),
+      exclusiveDir: (map['exclusiveDir'] as String).input(),
+      exclusiveFile: (map['exclusiveFile'] as String).input(),
+      exclusiveFileType: (map['exclusiveFileType'] as String).input(),
+      id: (map['id'] as String).input(),
+      inclusiveFileType: (map['inclusiveFileType'] as String).input(),
+      localBackupDir: (map['localBackupDir'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

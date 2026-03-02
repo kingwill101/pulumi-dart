@@ -30,19 +30,13 @@ class VocabularyFilterArgs {
   /// [vocabularyFilterName] The name of the VocabularyFilter.
   /// [words] A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
   VocabularyFilterArgs({
-    required pulumi.Output<String> languageCode,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vocabularyFilterFileUri,
-    required pulumi.Output<String> vocabularyFilterName,
-    pulumi.Output<List<String>>? words,
-  }) :
-      languageCode = pulumi.Input.asInput<String>(languageCode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vocabularyFilterFileUri = pulumi.Input.asOptionalInput<String>(vocabularyFilterFileUri),
-      vocabularyFilterName = pulumi.Input.asInput<String>(vocabularyFilterName),
-      words = pulumi.Input.asOptionalInput<List<String>>(words);
+    required this.languageCode,
+    this.region,
+    this.tags,
+    this.vocabularyFilterFileUri,
+    required this.vocabularyFilterName,
+    this.words,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class VocabularyFilterArgs {
 
   factory VocabularyFilterArgs.fromMap(Map<String, dynamic> map) {
     return VocabularyFilterArgs(
-      languageCode: pulumi.Output.create<String>(map['languageCode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : pulumi.Output.create<String>(map['vocabularyFilterFileUri'] as String),
-      vocabularyFilterName: pulumi.Output.create<String>(map['vocabularyFilterName'] as String),
-      words: map['words'] == null ? null : pulumi.Output.create<List<String>>((map['words'] as List).cast<String>()),
+      languageCode: (map['languageCode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : (map['vocabularyFilterFileUri'] as String).input(),
+      vocabularyFilterName: (map['vocabularyFilterName'] as String).input(),
+      words: map['words'] == null ? null : ((map['words'] as List).cast<String>()).input(),
     );
   }
 }

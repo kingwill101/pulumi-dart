@@ -52,19 +52,13 @@ class AuthorizedOrgsDescArgs {
   /// [orgs] The list of organization ids in this AuthorizedOrgsDesc.
   /// [parent] Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
   AuthorizedOrgsDescArgs({
-    pulumi.Output<String>? assetType,
-    pulumi.Output<String>? authorizationDirection,
-    pulumi.Output<String>? authorizationType,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? orgs,
-    required pulumi.Output<String> parent,
-  }) :
-      assetType = pulumi.Input.asOptionalInput<String>(assetType),
-      authorizationDirection = pulumi.Input.asOptionalInput<String>(authorizationDirection),
-      authorizationType = pulumi.Input.asOptionalInput<String>(authorizationType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgs = pulumi.Input.asOptionalInput<List<String>>(orgs),
-      parent = pulumi.Input.asInput<String>(parent);
+    this.assetType,
+    this.authorizationDirection,
+    this.authorizationType,
+    this.name,
+    this.orgs,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,12 +73,12 @@ class AuthorizedOrgsDescArgs {
 
   factory AuthorizedOrgsDescArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescArgs(
-      assetType: map['assetType'] == null ? null : pulumi.Output.create<String>(map['assetType'] as String),
-      authorizationDirection: map['authorizationDirection'] == null ? null : pulumi.Output.create<String>(map['authorizationDirection'] as String),
-      authorizationType: map['authorizationType'] == null ? null : pulumi.Output.create<String>(map['authorizationType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgs: map['orgs'] == null ? null : pulumi.Output.create<List<String>>((map['orgs'] as List).cast<String>()),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      assetType: map['assetType'] == null ? null : (map['assetType'] as String).input(),
+      authorizationDirection: map['authorizationDirection'] == null ? null : (map['authorizationDirection'] as String).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgs: map['orgs'] == null ? null : ((map['orgs'] as List).cast<String>()).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

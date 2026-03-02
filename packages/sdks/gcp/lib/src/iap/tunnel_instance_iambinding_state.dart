@@ -46,21 +46,14 @@ class TunnelInstanceIAMBindingState {
   /// [role] The role that should be applied. Only one
   /// [zone] Used to find the parent resource to bind the IAM policy to. If not specified,
   TunnelInstanceIAMBindingState({
-    pulumi.Output<TunnelInstanceIAMBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? instance,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? zone,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TunnelInstanceIAMBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.condition,
+    this.etag,
+    this.instance,
+    this.members,
+    this.project,
+    this.role,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,13 +69,13 @@ class TunnelInstanceIAMBindingState {
 
   factory TunnelInstanceIAMBindingState.fromMap(Map<String, dynamic> map) {
     return TunnelInstanceIAMBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TunnelInstanceIAMBindingCondition>(TunnelInstanceIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      condition: map['condition'] == null ? null : (TunnelInstanceIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

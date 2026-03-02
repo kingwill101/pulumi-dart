@@ -23,17 +23,12 @@ class GetProducerImageShareGroupMembersArgs {
   /// [orderBy] Optional.
   /// [sharegroupId] The ID of the Image Share Group for which to list members.
   GetProducerImageShareGroupMembersArgs({
-    pulumi.Output<List<GetProducerImageShareGroupMembersFilter>>? filters,
-    pulumi.Output<List<GetProducerImageShareGroupMembersMember>>? members,
-    pulumi.Output<String>? order,
-    pulumi.Output<String>? orderBy,
-    required pulumi.Output<int> sharegroupId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetProducerImageShareGroupMembersFilter>>(filters),
-      members = pulumi.Input.asOptionalInput<List<GetProducerImageShareGroupMembersMember>>(members),
-      order = pulumi.Input.asOptionalInput<String>(order),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy),
-      sharegroupId = pulumi.Input.asInput<int>(sharegroupId);
+    this.filters,
+    this.members,
+    this.order,
+    this.orderBy,
+    required this.sharegroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class GetProducerImageShareGroupMembersArgs {
 
   factory GetProducerImageShareGroupMembersArgs.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupMembersArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetProducerImageShareGroupMembersFilter>>(pulumi.Input.decodeList<GetProducerImageShareGroupMembersFilter>(map['filters'], (value) => GetProducerImageShareGroupMembersFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      members: map['members'] == null ? null : pulumi.Output.create<List<GetProducerImageShareGroupMembersMember>>(pulumi.Input.decodeList<GetProducerImageShareGroupMembersMember>(map['members'], (value) => GetProducerImageShareGroupMembersMember.fromMap((value as Map).cast<String, dynamic>()))),
-      order: map['order'] == null ? null : pulumi.Output.create<String>(map['order'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
-      sharegroupId: pulumi.Output.create<int>(map['sharegroupId'] as int),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetProducerImageShareGroupMembersFilter>(map['filters'], (value) => GetProducerImageShareGroupMembersFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      members: map['members'] == null ? null : (pulumi.Input.decodeList<GetProducerImageShareGroupMembersMember>(map['members'], (value) => GetProducerImageShareGroupMembersMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      sharegroupId: (map['sharegroupId'] as int).input(),
     );
   }
 }

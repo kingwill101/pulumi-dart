@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServicePrincipalOauth2PermissionScope {
   /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-  final String? adminConsentDescription;
+  final pulumi.Input<String>? adminConsentDescription;
   /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-  final String? adminConsentDisplayName;
+  final pulumi.Input<String>? adminConsentDisplayName;
   /// Specifies whether the permission scope is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The unique identifier of the delegated permission.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-  final String? userConsentDescription;
+  final pulumi.Input<String>? userConsentDescription;
   /// Display name for the delegated permission that appears in the end user consent experience.
-  final String? userConsentDisplayName;
+  final pulumi.Input<String>? userConsentDisplayName;
   /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ServicePrincipalOauth2PermissionScope].
   /// [adminConsentDescription] Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -54,14 +55,14 @@ class ServicePrincipalOauth2PermissionScope {
 
   factory ServicePrincipalOauth2PermissionScope.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalOauth2PermissionScope(
-      adminConsentDescription: map['adminConsentDescription'] == null ? null : map['adminConsentDescription'] as String,
-      adminConsentDisplayName: map['adminConsentDisplayName'] == null ? null : map['adminConsentDisplayName'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      userConsentDescription: map['userConsentDescription'] == null ? null : map['userConsentDescription'] as String,
-      userConsentDisplayName: map['userConsentDisplayName'] == null ? null : map['userConsentDisplayName'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      adminConsentDescription: map['adminConsentDescription'] == null ? null : (map['adminConsentDescription'] as String).input(),
+      adminConsentDisplayName: map['adminConsentDisplayName'] == null ? null : (map['adminConsentDisplayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userConsentDescription: map['userConsentDescription'] == null ? null : (map['userConsentDescription'] as String).input(),
+      userConsentDisplayName: map['userConsentDisplayName'] == null ? null : (map['userConsentDisplayName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

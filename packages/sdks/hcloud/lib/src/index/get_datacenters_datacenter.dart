@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatacentersDatacenter {
   /// List of currently available Server Types in the Datacenter.
-  final List<int> availableServerTypeIds;
+  final pulumi.Input<List<int>> availableServerTypeIds;
   /// Description of the Datacenter.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the Datacenter.
-  final int id;
+  final pulumi.Input<int> id;
   /// Location of the Datacenter. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
-  final Map<String, String> location;
+  final pulumi.Input<Map<String, String>> location;
   /// Name of the Datacenter.
-  final String name;
+  final pulumi.Input<String> name;
   /// List of supported Server Types in the Datacenter.
-  final List<int> supportedServerTypeIds;
+  final pulumi.Input<List<int>> supportedServerTypeIds;
 
   /// Creates a new [GetDatacentersDatacenter].
   /// [availableServerTypeIds] List of currently available Server Types in the Datacenter.
@@ -44,12 +45,12 @@ class GetDatacentersDatacenter {
 
   factory GetDatacentersDatacenter.fromMap(Map<String, dynamic> map) {
     return GetDatacentersDatacenter(
-      availableServerTypeIds: (map['availableServerTypeIds'] as List).cast<int>(),
-      description: map['description'] as String,
-      id: map['id'] as int,
-      location: (map['location'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      supportedServerTypeIds: (map['supportedServerTypeIds'] as List).cast<int>(),
+      availableServerTypeIds: ((map['availableServerTypeIds'] as List).cast<int>()).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as int).input(),
+      location: ((map['location'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      supportedServerTypeIds: ((map['supportedServerTypeIds'] as List).cast<int>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InboundSamlConfigIdpConfigIdpCertificate {
   /// The IdP's x509 certificate.
-  final String? x509Certificate;
+  final pulumi.Input<String>? x509Certificate;
 
   /// Creates a new [InboundSamlConfigIdpConfigIdpCertificate].
   /// [x509Certificate] The IdP's x509 certificate.
@@ -19,7 +20,7 @@ class InboundSamlConfigIdpConfigIdpCertificate {
 
   factory InboundSamlConfigIdpConfigIdpCertificate.fromMap(Map<String, dynamic> map) {
     return InboundSamlConfigIdpConfigIdpCertificate(
-      x509Certificate: map['x509Certificate'] == null ? null : map['x509Certificate'] as String,
+      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate'] as String).input(),
     );
   }
 }

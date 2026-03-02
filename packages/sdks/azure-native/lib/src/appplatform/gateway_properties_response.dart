@@ -15,37 +15,37 @@ import 'sso_properties_response.dart';
 /// Spring Cloud Gateway properties payload
 class GatewayPropertiesResponse {
   /// Collection of addons for Spring Cloud Gateway
-  final Map<String, dynamic>? addonConfigs;
+  final pulumi.Input<Map<String, dynamic>>? addonConfigs;
   /// API metadata property for Spring Cloud Gateway
-  final GatewayApiMetadataPropertiesResponse? apiMetadataProperties;
+  final pulumi.Input<GatewayApiMetadataPropertiesResponse>? apiMetadataProperties;
   /// Collection of APM type used in Spring Cloud Gateway
-  final List<String>? apmTypes;
+  final pulumi.Input<List<String>>? apmTypes;
   /// Collection of ApmReferences in service level
-  final List<ApmReferenceResponse>? apms;
+  final pulumi.Input<List<ApmReferenceResponse>>? apms;
   /// Client-Certification Authentication.
-  final GatewayPropertiesResponseClientAuth? clientAuth;
+  final pulumi.Input<GatewayPropertiesResponseClientAuth>? clientAuth;
   /// Cross-Origin Resource Sharing property
-  final GatewayCorsPropertiesResponse? corsProperties;
+  final pulumi.Input<GatewayCorsPropertiesResponse>? corsProperties;
   /// Environment variables of Spring Cloud Gateway
-  final GatewayPropertiesResponseEnvironmentVariables? environmentVariables;
+  final pulumi.Input<GatewayPropertiesResponseEnvironmentVariables>? environmentVariables;
   /// Indicate if only https is allowed.
-  final bool? httpsOnly;
+  final pulumi.Input<bool>? httpsOnly;
   /// Collection of instances belong to Spring Cloud Gateway.
-  final List<GatewayInstanceResponse> instances;
+  final pulumi.Input<List<GatewayInstanceResponse>> instances;
   /// Properties of the Spring Cloud Gateway Operator.
-  final GatewayOperatorPropertiesResponse operatorProperties;
+  final pulumi.Input<GatewayOperatorPropertiesResponse> operatorProperties;
   /// State of the Spring Cloud Gateway.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates whether the Spring Cloud Gateway exposes endpoint.
-  final bool? public;
+  final pulumi.Input<bool>? public;
   /// The requested resource quantity for required CPU and Memory.
-  final GatewayResourceRequestsResponse? resourceRequests;
+  final pulumi.Input<GatewayResourceRequestsResponse>? resourceRequests;
   /// The properties to configure different types of response cache for Spring Cloud Gateway.
-  final GatewayLocalResponseCachePerInstancePropertiesResponse? responseCacheProperties;
+  final pulumi.Input<GatewayLocalResponseCachePerInstancePropertiesResponse>? responseCacheProperties;
   /// Single sign-on related configuration
-  final SsoPropertiesResponse? ssoProperties;
+  final pulumi.Input<SsoPropertiesResponse>? ssoProperties;
   /// URL of the Spring Cloud Gateway, exposed when 'public' is true.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GatewayPropertiesResponse].
   /// [addonConfigs] Collection of addons for Spring Cloud Gateway
@@ -86,42 +86,42 @@ class GatewayPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addonConfigs': ?addonConfigs,
-      'apiMetadataProperties': ?apiMetadataProperties == null ? null : apiMetadataProperties!.toMap(),
+      'apiMetadataProperties': ?pulumi.Input.mapOptionalInputValue<GatewayApiMetadataPropertiesResponse, Map<String, dynamic>>(apiMetadataProperties, (value) => value.toMap()),
       'apmTypes': ?apmTypes,
-      'apms': ?apms == null ? null : pulumi.Input.encodeList<ApmReferenceResponse, Map<String, dynamic>>(apms!, (value) => value.toMap()),
-      'clientAuth': ?clientAuth == null ? null : clientAuth!.toMap(),
-      'corsProperties': ?corsProperties == null ? null : corsProperties!.toMap(),
-      'environmentVariables': ?environmentVariables == null ? null : environmentVariables!.toMap(),
+      'apms': ?pulumi.Input.mapOptionalInputValue<List<ApmReferenceResponse>, List<Map<String, dynamic>>>(apms, (value) => pulumi.Input.encodeList<ApmReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clientAuth': ?pulumi.Input.mapOptionalInputValue<GatewayPropertiesResponseClientAuth, Map<String, dynamic>>(clientAuth, (value) => value.toMap()),
+      'corsProperties': ?pulumi.Input.mapOptionalInputValue<GatewayCorsPropertiesResponse, Map<String, dynamic>>(corsProperties, (value) => value.toMap()),
+      'environmentVariables': ?pulumi.Input.mapOptionalInputValue<GatewayPropertiesResponseEnvironmentVariables, Map<String, dynamic>>(environmentVariables, (value) => value.toMap()),
       'httpsOnly': ?httpsOnly,
-      'instances': pulumi.Input.encodeList<GatewayInstanceResponse, Map<String, dynamic>>(instances, (value) => value.toMap()),
-      'operatorProperties': operatorProperties.toMap(),
+      'instances': pulumi.Input.mapInputValue<List<GatewayInstanceResponse>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<GatewayInstanceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'operatorProperties': pulumi.Input.mapInputValue<GatewayOperatorPropertiesResponse, Map<String, dynamic>>(operatorProperties, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'public': ?public,
-      'resourceRequests': ?resourceRequests == null ? null : resourceRequests!.toMap(),
-      'responseCacheProperties': ?responseCacheProperties == null ? null : responseCacheProperties!.toMap(),
-      'ssoProperties': ?ssoProperties == null ? null : ssoProperties!.toMap(),
+      'resourceRequests': ?pulumi.Input.mapOptionalInputValue<GatewayResourceRequestsResponse, Map<String, dynamic>>(resourceRequests, (value) => value.toMap()),
+      'responseCacheProperties': ?pulumi.Input.mapOptionalInputValue<GatewayLocalResponseCachePerInstancePropertiesResponse, Map<String, dynamic>>(responseCacheProperties, (value) => value.toMap()),
+      'ssoProperties': ?pulumi.Input.mapOptionalInputValue<SsoPropertiesResponse, Map<String, dynamic>>(ssoProperties, (value) => value.toMap()),
       'url': url,
     };
   }
 
   factory GatewayPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayPropertiesResponse(
-      addonConfigs: map['addonConfigs'] == null ? null : (map['addonConfigs'] as Map).cast<String, dynamic>(),
-      apiMetadataProperties: map['apiMetadataProperties'] == null ? null : GatewayApiMetadataPropertiesResponse.fromMap((map['apiMetadataProperties'] as Map).cast<String, dynamic>()),
-      apmTypes: map['apmTypes'] == null ? null : (map['apmTypes'] as List).cast<String>(),
-      apms: map['apms'] == null ? null : pulumi.Input.decodeList<ApmReferenceResponse>(map['apms'], (value) => ApmReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      clientAuth: map['clientAuth'] == null ? null : GatewayPropertiesResponseClientAuth.fromMap((map['clientAuth'] as Map).cast<String, dynamic>()),
-      corsProperties: map['corsProperties'] == null ? null : GatewayCorsPropertiesResponse.fromMap((map['corsProperties'] as Map).cast<String, dynamic>()),
-      environmentVariables: map['environmentVariables'] == null ? null : GatewayPropertiesResponseEnvironmentVariables.fromMap((map['environmentVariables'] as Map).cast<String, dynamic>()),
-      httpsOnly: map['httpsOnly'] == null ? null : map['httpsOnly'] as bool,
-      instances: pulumi.Input.decodeList<GatewayInstanceResponse>(map['instances'], (value) => GatewayInstanceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      operatorProperties: GatewayOperatorPropertiesResponse.fromMap((map['operatorProperties'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      public: map['public'] == null ? null : map['public'] as bool,
-      resourceRequests: map['resourceRequests'] == null ? null : GatewayResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>()),
-      responseCacheProperties: map['responseCacheProperties'] == null ? null : GatewayLocalResponseCachePerInstancePropertiesResponse.fromMap((map['responseCacheProperties'] as Map).cast<String, dynamic>()),
-      ssoProperties: map['ssoProperties'] == null ? null : SsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>()),
-      url: map['url'] as String,
+      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs'] as Map).cast<String, dynamic>()).input(),
+      apiMetadataProperties: map['apiMetadataProperties'] == null ? null : (GatewayApiMetadataPropertiesResponse.fromMap((map['apiMetadataProperties'] as Map).cast<String, dynamic>())).input(),
+      apmTypes: map['apmTypes'] == null ? null : ((map['apmTypes'] as List).cast<String>()).input(),
+      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReferenceResponse>(map['apms'], (value) => ApmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAuth: map['clientAuth'] == null ? null : (GatewayPropertiesResponseClientAuth.fromMap((map['clientAuth'] as Map).cast<String, dynamic>())).input(),
+      corsProperties: map['corsProperties'] == null ? null : (GatewayCorsPropertiesResponse.fromMap((map['corsProperties'] as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (GatewayPropertiesResponseEnvironmentVariables.fromMap((map['environmentVariables'] as Map).cast<String, dynamic>())).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      instances: (pulumi.Input.decodeList<GatewayInstanceResponse>(map['instances'], (value) => GatewayInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatorProperties: (GatewayOperatorPropertiesResponse.fromMap((map['operatorProperties'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (GatewayResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      responseCacheProperties: map['responseCacheProperties'] == null ? null : (GatewayLocalResponseCachePerInstancePropertiesResponse.fromMap((map['responseCacheProperties'] as Map).cast<String, dynamic>())).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (SsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

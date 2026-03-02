@@ -47,31 +47,19 @@ class AcceleratorState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   AcceleratorState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<AcceleratorAttributes>? attributes,
-    pulumi.Output<String>? dnsName,
-    pulumi.Output<String>? dualStackDnsName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? hostedZoneId,
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<List<String>>? ipAddresses,
-    pulumi.Output<List<AcceleratorIpSet>>? ipSets,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      attributes = pulumi.Input.asOptionalInput<AcceleratorAttributes>(attributes),
-      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
-      dualStackDnsName = pulumi.Input.asOptionalInput<String>(dualStackDnsName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      hostedZoneId = pulumi.Input.asOptionalInput<String>(hostedZoneId),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      ipAddresses = pulumi.Input.asOptionalInput<List<String>>(ipAddresses),
-      ipSets = pulumi.Input.asOptionalInput<List<AcceleratorIpSet>>(ipSets),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.attributes,
+    this.dnsName,
+    this.dualStackDnsName,
+    this.enabled,
+    this.hostedZoneId,
+    this.ipAddressType,
+    this.ipAddresses,
+    this.ipSets,
+    this.name,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class AcceleratorState {
 
   factory AcceleratorState.fromMap(Map<String, dynamic> map) {
     return AcceleratorState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<AcceleratorAttributes>(AcceleratorAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())),
-      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
-      dualStackDnsName: map['dualStackDnsName'] == null ? null : pulumi.Output.create<String>(map['dualStackDnsName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      hostedZoneId: map['hostedZoneId'] == null ? null : pulumi.Output.create<String>(map['hostedZoneId'] as String),
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      ipAddresses: map['ipAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['ipAddresses'] as List).cast<String>()),
-      ipSets: map['ipSets'] == null ? null : pulumi.Output.create<List<AcceleratorIpSet>>(pulumi.Input.decodeList<AcceleratorIpSet>(map['ipSets'], (value) => AcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      attributes: map['attributes'] == null ? null : (AcceleratorAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      dualStackDnsName: map['dualStackDnsName'] == null ? null : (map['dualStackDnsName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      ipSets: map['ipSets'] == null ? null : (pulumi.Input.decodeList<AcceleratorIpSet>(map['ipSets'], (value) => AcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

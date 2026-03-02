@@ -32,23 +32,15 @@ class MonitorConfigState {
   /// [protocolType] The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
   /// [timeout] The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
   MonitorConfigState({
-    pulumi.Output<String>? addrPoolId,
-    pulumi.Output<int>? evaluationCount,
-    pulumi.Output<int>? interval,
-    pulumi.Output<List<MonitorConfigIspCityNode>>? ispCityNodes,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? monitorExtendInfo,
-    pulumi.Output<String>? protocolType,
-    pulumi.Output<int>? timeout,
-  }) :
-      addrPoolId = pulumi.Input.asOptionalInput<String>(addrPoolId),
-      evaluationCount = pulumi.Input.asOptionalInput<int>(evaluationCount),
-      interval = pulumi.Input.asOptionalInput<int>(interval),
-      ispCityNodes = pulumi.Input.asOptionalInput<List<MonitorConfigIspCityNode>>(ispCityNodes),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      monitorExtendInfo = pulumi.Input.asOptionalInput<String>(monitorExtendInfo),
-      protocolType = pulumi.Input.asOptionalInput<String>(protocolType),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout);
+    this.addrPoolId,
+    this.evaluationCount,
+    this.interval,
+    this.ispCityNodes,
+    this.lang,
+    this.monitorExtendInfo,
+    this.protocolType,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class MonitorConfigState {
 
   factory MonitorConfigState.fromMap(Map<String, dynamic> map) {
     return MonitorConfigState(
-      addrPoolId: map['addrPoolId'] == null ? null : pulumi.Output.create<String>(map['addrPoolId'] as String),
-      evaluationCount: map['evaluationCount'] == null ? null : pulumi.Output.create<int>(map['evaluationCount'] as int),
-      interval: map['interval'] == null ? null : pulumi.Output.create<int>(map['interval'] as int),
-      ispCityNodes: map['ispCityNodes'] == null ? null : pulumi.Output.create<List<MonitorConfigIspCityNode>>(pulumi.Input.decodeList<MonitorConfigIspCityNode>(map['ispCityNodes'], (value) => MonitorConfigIspCityNode.fromMap((value as Map).cast<String, dynamic>()))),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      monitorExtendInfo: map['monitorExtendInfo'] == null ? null : pulumi.Output.create<String>(map['monitorExtendInfo'] as String),
-      protocolType: map['protocolType'] == null ? null : pulumi.Output.create<String>(map['protocolType'] as String),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
+      addrPoolId: map['addrPoolId'] == null ? null : (map['addrPoolId'] as String).input(),
+      evaluationCount: map['evaluationCount'] == null ? null : (map['evaluationCount'] as int).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      ispCityNodes: map['ispCityNodes'] == null ? null : (pulumi.Input.decodeList<MonitorConfigIspCityNode>(map['ispCityNodes'], (value) => MonitorConfigIspCityNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      monitorExtendInfo: map['monitorExtendInfo'] == null ? null : (map['monitorExtendInfo'] as String).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

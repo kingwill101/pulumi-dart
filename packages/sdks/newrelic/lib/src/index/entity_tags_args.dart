@@ -17,11 +17,9 @@ class EntityTagsArgs {
   /// [guid] The guid of the entity to tag.
   /// [tags] A nested block that describes an entity tag. See Nested tag blocks below for details.
   EntityTagsArgs({
-    required pulumi.Output<String> guid,
-    required pulumi.Output<List<EntityTagsTag>> tags,
-  }) :
-      guid = pulumi.Input.asInput<String>(guid),
-      tags = pulumi.Input.asInput<List<EntityTagsTag>>(tags);
+    required this.guid,
+    required this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class EntityTagsArgs {
 
   factory EntityTagsArgs.fromMap(Map<String, dynamic> map) {
     return EntityTagsArgs(
-      guid: pulumi.Output.create<String>(map['guid'] as String),
-      tags: pulumi.Output.create<List<EntityTagsTag>>(pulumi.Input.decodeList<EntityTagsTag>(map['tags'], (value) => EntityTagsTag.fromMap((value as Map).cast<String, dynamic>()))),
+      guid: (map['guid'] as String).input(),
+      tags: (pulumi.Input.decodeList<EntityTagsTag>(map['tags'], (value) => EntityTagsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProjectsProject {
   /// The description of the project.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the project.
-  final String id;
+  final pulumi.Input<String> id;
   /// The last modify time of project.
-  final String lastModifyTime;
+  final pulumi.Input<String> lastModifyTime;
   /// The owner of project.
-  final String owner;
+  final pulumi.Input<String> owner;
   /// The policy of project.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// The name of the project.
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// The region of project.
-  final String region;
+  final pulumi.Input<String> region;
   /// The status of project.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetProjectsProject].
   /// [description] The description of the project.
@@ -54,14 +55,14 @@ class GetProjectsProject {
 
   factory GetProjectsProject.fromMap(Map<String, dynamic> map) {
     return GetProjectsProject(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      lastModifyTime: map['lastModifyTime'] as String,
-      owner: map['owner'] as String,
-      policy: map['policy'] as String,
-      projectName: map['projectName'] as String,
-      region: map['region'] as String,
-      status: map['status'] as String,
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastModifyTime: (map['lastModifyTime'] as String).input(),
+      owner: (map['owner'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      region: (map['region'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

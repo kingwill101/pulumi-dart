@@ -53,35 +53,21 @@ class TlsInspectionConfigurationState {
   /// [tlsInspectionConfigurationId] A unique identifier for the TLS inspection configuration.
   /// [updateToken] String token used when updating the rule group.
   TlsInspectionConfigurationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<TlsInspectionConfigurationCertificateAuthority>>? certificateAuthorities,
-    pulumi.Output<List<TlsInspectionConfigurationCertificate>>? certificates,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<TlsInspectionConfigurationEncryptionConfiguration>>? encryptionConfigurations,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? numberOfAssociations,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<TlsInspectionConfigurationTimeouts>? timeouts,
-    pulumi.Output<TlsInspectionConfigurationTlsInspectionConfiguration>? tlsInspectionConfiguration,
-    pulumi.Output<String>? tlsInspectionConfigurationId,
-    pulumi.Output<String>? updateToken,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      certificateAuthorities = pulumi.Input.asOptionalInput<List<TlsInspectionConfigurationCertificateAuthority>>(certificateAuthorities),
-      certificates = pulumi.Input.asOptionalInput<List<TlsInspectionConfigurationCertificate>>(certificates),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptionConfigurations = pulumi.Input.asOptionalInput<List<TlsInspectionConfigurationEncryptionConfiguration>>(encryptionConfigurations),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      numberOfAssociations = pulumi.Input.asOptionalInput<int>(numberOfAssociations),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<TlsInspectionConfigurationTimeouts>(timeouts),
-      tlsInspectionConfiguration = pulumi.Input.asOptionalInput<TlsInspectionConfigurationTlsInspectionConfiguration>(tlsInspectionConfiguration),
-      tlsInspectionConfigurationId = pulumi.Input.asOptionalInput<String>(tlsInspectionConfigurationId),
-      updateToken = pulumi.Input.asOptionalInput<String>(updateToken);
+    this.arn,
+    this.certificateAuthorities,
+    this.certificates,
+    this.description,
+    this.encryptionConfigurations,
+    this.name,
+    this.numberOfAssociations,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.tlsInspectionConfiguration,
+    this.tlsInspectionConfigurationId,
+    this.updateToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class TlsInspectionConfigurationState {
 
   factory TlsInspectionConfigurationState.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      certificateAuthorities: map['certificateAuthorities'] == null ? null : pulumi.Output.create<List<TlsInspectionConfigurationCertificateAuthority>>(pulumi.Input.decodeList<TlsInspectionConfigurationCertificateAuthority>(map['certificateAuthorities'], (value) => TlsInspectionConfigurationCertificateAuthority.fromMap((value as Map).cast<String, dynamic>()))),
-      certificates: map['certificates'] == null ? null : pulumi.Output.create<List<TlsInspectionConfigurationCertificate>>(pulumi.Input.decodeList<TlsInspectionConfigurationCertificate>(map['certificates'], (value) => TlsInspectionConfigurationCertificate.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Output.create<List<TlsInspectionConfigurationEncryptionConfiguration>>(pulumi.Input.decodeList<TlsInspectionConfigurationEncryptionConfiguration>(map['encryptionConfigurations'], (value) => TlsInspectionConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      numberOfAssociations: map['numberOfAssociations'] == null ? null : pulumi.Output.create<int>(map['numberOfAssociations'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<TlsInspectionConfigurationTimeouts>(TlsInspectionConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      tlsInspectionConfiguration: map['tlsInspectionConfiguration'] == null ? null : pulumi.Output.create<TlsInspectionConfigurationTlsInspectionConfiguration>(TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((map['tlsInspectionConfiguration'] as Map).cast<String, dynamic>())),
-      tlsInspectionConfigurationId: map['tlsInspectionConfigurationId'] == null ? null : pulumi.Output.create<String>(map['tlsInspectionConfigurationId'] as String),
-      updateToken: map['updateToken'] == null ? null : pulumi.Output.create<String>(map['updateToken'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      certificateAuthorities: map['certificateAuthorities'] == null ? null : (pulumi.Input.decodeList<TlsInspectionConfigurationCertificateAuthority>(map['certificateAuthorities'], (value) => TlsInspectionConfigurationCertificateAuthority.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<TlsInspectionConfigurationCertificate>(map['certificates'], (value) => TlsInspectionConfigurationCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<TlsInspectionConfigurationEncryptionConfiguration>(map['encryptionConfigurations'], (value) => TlsInspectionConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      numberOfAssociations: map['numberOfAssociations'] == null ? null : (map['numberOfAssociations'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (TlsInspectionConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tlsInspectionConfiguration: map['tlsInspectionConfiguration'] == null ? null : (TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((map['tlsInspectionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tlsInspectionConfigurationId: map['tlsInspectionConfigurationId'] == null ? null : (map['tlsInspectionConfigurationId'] as String).input(),
+      updateToken: map['updateToken'] == null ? null : (map['updateToken'] as String).input(),
     );
   }
 }

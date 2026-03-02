@@ -22,17 +22,12 @@ class DdosProtectionPlanState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualNetworkIds] A list of Virtual Network IDs associated with the DDoS Protection Plan.
   DdosProtectionPlanState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? virtualNetworkIds,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualNetworkIds = pulumi.Input.asOptionalInput<List<String>>(virtualNetworkIds);
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.tags,
+    this.virtualNetworkIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class DdosProtectionPlanState {
 
   factory DdosProtectionPlanState.fromMap(Map<String, dynamic> map) {
     return DdosProtectionPlanState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualNetworkIds: map['virtualNetworkIds'] == null ? null : pulumi.Output.create<List<String>>((map['virtualNetworkIds'] as List).cast<String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNetworkIds: map['virtualNetworkIds'] == null ? null : ((map['virtualNetworkIds'] as List).cast<String>()).input(),
     );
   }
 }

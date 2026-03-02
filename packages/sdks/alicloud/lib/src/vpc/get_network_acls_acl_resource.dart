@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkAclsAclResource {
   /// The ID of the associated resource.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// The type of the associated resource.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The state of the associated resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetNetworkAclsAclResource].
   /// [resourceId] The ID of the associated resource.
@@ -29,9 +30,9 @@ class GetNetworkAclsAclResource {
 
   factory GetNetworkAclsAclResource.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsAclResource(
-      resourceId: map['resourceId'] as String,
-      resourceType: map['resourceType'] as String,
-      status: map['status'] as String,
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

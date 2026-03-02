@@ -22,15 +22,11 @@ class GetFaqArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that helps organize the FAQs you create.
   GetFaqArgs({
-    required pulumi.Output<String> faqId,
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      faqId = pulumi.Input.asInput<String>(faqId),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.faqId,
+    required this.indexId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFaqArgs {
 
   factory GetFaqArgs.fromMap(Map<String, dynamic> map) {
     return GetFaqArgs(
-      faqId: pulumi.Output.create<String>(map['faqId'] as String),
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      faqId: (map['faqId'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

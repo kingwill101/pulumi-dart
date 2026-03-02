@@ -48,31 +48,19 @@ class AccountState {
   /// [tags] A mapping of tags to assign to the Azure Maps Account.
   /// [xMsClientId] A unique identifier for the Maps Account.
   AccountState({
-    pulumi.Output<AccountCors>? cors,
-    pulumi.Output<List<AccountDataStore>>? dataStores,
-    pulumi.Output<AccountIdentity>? identity,
-    pulumi.Output<bool>? localAuthenticationEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryAccessKey,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? secondaryAccessKey,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? xMsClientId,
-  }) :
-      cors = pulumi.Input.asOptionalInput<AccountCors>(cors),
-      dataStores = pulumi.Input.asOptionalInput<List<AccountDataStore>>(dataStores),
-      identity = pulumi.Input.asOptionalInput<AccountIdentity>(identity),
-      localAuthenticationEnabled = pulumi.Input.asOptionalInput<bool>(localAuthenticationEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryAccessKey = pulumi.Input.asOptionalInput<String>(primaryAccessKey),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secondaryAccessKey = pulumi.Input.asOptionalInput<String>(secondaryAccessKey),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      xMsClientId = pulumi.Input.asOptionalInput<String>(xMsClientId);
+    this.cors,
+    this.dataStores,
+    this.identity,
+    this.localAuthenticationEnabled,
+    this.location,
+    this.name,
+    this.primaryAccessKey,
+    this.resourceGroupName,
+    this.secondaryAccessKey,
+    this.skuName,
+    this.tags,
+    this.xMsClientId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      cors: map['cors'] == null ? null : pulumi.Output.create<AccountCors>(AccountCors.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      dataStores: map['dataStores'] == null ? null : pulumi.Output.create<List<AccountDataStore>>(pulumi.Input.decodeList<AccountDataStore>(map['dataStores'], (value) => AccountDataStore.fromMap((value as Map).cast<String, dynamic>()))),
-      identity: map['identity'] == null ? null : pulumi.Output.create<AccountIdentity>(AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthenticationEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryAccessKey: map['primaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['primaryAccessKey'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['secondaryAccessKey'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      xMsClientId: map['xMsClientId'] == null ? null : pulumi.Output.create<String>(map['xMsClientId'] as String),
+      cors: map['cors'] == null ? null : (AccountCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      dataStores: map['dataStores'] == null ? null : (pulumi.Input.decodeList<AccountDataStore>(map['dataStores'], (value) => AccountDataStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      xMsClientId: map['xMsClientId'] == null ? null : (map['xMsClientId'] as String).input(),
     );
   }
 }

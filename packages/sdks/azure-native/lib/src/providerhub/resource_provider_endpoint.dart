@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_provider_endpoint_features_rule.dart';
 
 class ResourceProviderEndpoint {
   /// The api versions.
-  final List<String>? apiVersions;
+  final pulumi.Input<List<String>>? apiVersions;
   /// Whether the endpoint is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The endpoint type.
-  final String? endpointType;
+  final pulumi.Input<String>? endpointType;
   /// The endpoint uri.
-  final String? endpointUri;
+  final pulumi.Input<String>? endpointUri;
   /// The feature rules.
-  final ResourceProviderEndpointFeaturesRule? featuresRule;
+  final pulumi.Input<ResourceProviderEndpointFeaturesRule>? featuresRule;
   /// The locations.
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// The required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
   /// The sku link.
-  final String? skuLink;
+  final pulumi.Input<String>? skuLink;
   /// The timeout.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [ResourceProviderEndpoint].
   /// [apiVersions] The api versions.
@@ -50,7 +51,7 @@ class ResourceProviderEndpoint {
       'enabled': ?enabled,
       'endpointType': ?endpointType,
       'endpointUri': ?endpointUri,
-      'featuresRule': ?featuresRule == null ? null : featuresRule!.toMap(),
+      'featuresRule': ?pulumi.Input.mapOptionalInputValue<ResourceProviderEndpointFeaturesRule, Map<String, dynamic>>(featuresRule, (value) => value.toMap()),
       'locations': ?locations,
       'requiredFeatures': ?requiredFeatures,
       'skuLink': ?skuLink,
@@ -60,15 +61,15 @@ class ResourceProviderEndpoint {
 
   factory ResourceProviderEndpoint.fromMap(Map<String, dynamic> map) {
     return ResourceProviderEndpoint(
-      apiVersions: map['apiVersions'] == null ? null : (map['apiVersions'] as List).cast<String>(),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
-      endpointUri: map['endpointUri'] == null ? null : map['endpointUri'] as String,
-      featuresRule: map['featuresRule'] == null ? null : ResourceProviderEndpointFeaturesRule.fromMap((map['featuresRule'] as Map).cast<String, dynamic>()),
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
-      skuLink: map['skuLink'] == null ? null : map['skuLink'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      featuresRule: map['featuresRule'] == null ? null : (ResourceProviderEndpointFeaturesRule.fromMap((map['featuresRule'] as Map).cast<String, dynamic>())).input(),
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
+      skuLink: map['skuLink'] == null ? null : (map['skuLink'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

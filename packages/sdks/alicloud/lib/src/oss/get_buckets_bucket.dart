@@ -11,41 +11,41 @@ import 'get_buckets_bucket_website.dart';
 
 class GetBucketsBucket {
   /// Bucket access control list. Possible values: `private`, `public-read` and `public-read-write`.
-  final String acl;
+  final pulumi.Input<String> acl;
   /// A list of CORS rule configurations. Each element contains the following attributes:
-  final List<GetBucketsBucketCorsRule> corsRules;
+  final pulumi.Input<List<GetBucketsBucketCorsRule>> corsRules;
   /// Bucket creation date.
-  final String creationDate;
+  final pulumi.Input<String> creationDate;
   /// Internet domain name for accessing the bucket from outside.
-  final String extranetEndpoint;
+  final pulumi.Input<String> extranetEndpoint;
   /// Intranet domain name for accessing the bucket from an ECS instance in the same region.
-  final String intranetEndpoint;
+  final pulumi.Input<String> intranetEndpoint;
   /// A list CORS of lifecycle configurations. When Lifecycle is enabled, OSS automatically deletes the objects or transitions the objects (to another storage class) corresponding the lifecycle rules on a regular basis. Each element contains the following attributes:
-  final List<GetBucketsBucketLifecycleRule> lifecycleRules;
+  final pulumi.Input<List<GetBucketsBucketLifecycleRule>> lifecycleRules;
   /// Region of the data center where the bucket is located.
-  final String location;
+  final pulumi.Input<String> location;
   /// A list of one element containing configuration parameters used for storing access log information. It contains the following attributes:
-  final GetBucketsBucketLogging logging;
+  final pulumi.Input<GetBucketsBucketLogging> logging;
   /// Bucket name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Bucket owner.
-  final String owner;
+  final pulumi.Input<String> owner;
   /// The policies configured for a specified bucket.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// Redundancy type. Possible values: `LRS`, and `ZRS`.
-  final String redundancyType;
+  final pulumi.Input<String> redundancyType;
   /// A list of one element containing referer configuration. It contains the following attributes:
-  final GetBucketsBucketRefererConfig refererConfig;
+  final pulumi.Input<GetBucketsBucketRefererConfig> refererConfig;
   /// A configuration of default encryption for a bucket. It contains the following attributes:
-  final GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule;
+  final pulumi.Input<GetBucketsBucketServerSideEncryptionRule> serverSideEncryptionRule;
   /// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
-  final String storageClass;
+  final pulumi.Input<String> storageClass;
   /// A mapping of tags.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// If present , the versioning state has been set on the bucket. It contains the following attribute.
-  final GetBucketsBucketVersioning versioning;
+  final pulumi.Input<GetBucketsBucketVersioning> versioning;
   /// A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
-  final GetBucketsBucketWebsite website;
+  final pulumi.Input<GetBucketsBucketWebsite> website;
 
   /// Creates a new [GetBucketsBucket].
   /// [acl] Bucket access control list. Possible values: `private`, `public-read` and `public-read-write`.
@@ -90,46 +90,46 @@ class GetBucketsBucket {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acl': acl,
-      'corsRules': pulumi.Input.encodeList<GetBucketsBucketCorsRule, Map<String, dynamic>>(corsRules, (value) => value.toMap()),
+      'corsRules': pulumi.Input.mapInputValue<List<GetBucketsBucketCorsRule>, List<Map<String, dynamic>>>(corsRules, (value) => pulumi.Input.encodeList<GetBucketsBucketCorsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationDate': creationDate,
       'extranetEndpoint': extranetEndpoint,
       'intranetEndpoint': intranetEndpoint,
-      'lifecycleRules': pulumi.Input.encodeList<GetBucketsBucketLifecycleRule, Map<String, dynamic>>(lifecycleRules, (value) => value.toMap()),
+      'lifecycleRules': pulumi.Input.mapInputValue<List<GetBucketsBucketLifecycleRule>, List<Map<String, dynamic>>>(lifecycleRules, (value) => pulumi.Input.encodeList<GetBucketsBucketLifecycleRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': location,
-      'logging': logging.toMap(),
+      'logging': pulumi.Input.mapInputValue<GetBucketsBucketLogging, Map<String, dynamic>>(logging, (value) => value.toMap()),
       'name': name,
       'owner': owner,
       'policy': policy,
       'redundancyType': redundancyType,
-      'refererConfig': refererConfig.toMap(),
-      'serverSideEncryptionRule': serverSideEncryptionRule.toMap(),
+      'refererConfig': pulumi.Input.mapInputValue<GetBucketsBucketRefererConfig, Map<String, dynamic>>(refererConfig, (value) => value.toMap()),
+      'serverSideEncryptionRule': pulumi.Input.mapInputValue<GetBucketsBucketServerSideEncryptionRule, Map<String, dynamic>>(serverSideEncryptionRule, (value) => value.toMap()),
       'storageClass': storageClass,
       'tags': tags,
-      'versioning': versioning.toMap(),
-      'website': website.toMap(),
+      'versioning': pulumi.Input.mapInputValue<GetBucketsBucketVersioning, Map<String, dynamic>>(versioning, (value) => value.toMap()),
+      'website': pulumi.Input.mapInputValue<GetBucketsBucketWebsite, Map<String, dynamic>>(website, (value) => value.toMap()),
     };
   }
 
   factory GetBucketsBucket.fromMap(Map<String, dynamic> map) {
     return GetBucketsBucket(
-      acl: map['acl'] as String,
-      corsRules: pulumi.Input.decodeList<GetBucketsBucketCorsRule>(map['corsRules'], (value) => GetBucketsBucketCorsRule.fromMap((value as Map).cast<String, dynamic>())),
-      creationDate: map['creationDate'] as String,
-      extranetEndpoint: map['extranetEndpoint'] as String,
-      intranetEndpoint: map['intranetEndpoint'] as String,
-      lifecycleRules: pulumi.Input.decodeList<GetBucketsBucketLifecycleRule>(map['lifecycleRules'], (value) => GetBucketsBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      logging: GetBucketsBucketLogging.fromMap((map['logging'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      owner: map['owner'] as String,
-      policy: map['policy'] as String,
-      redundancyType: map['redundancyType'] as String,
-      refererConfig: GetBucketsBucketRefererConfig.fromMap((map['refererConfig'] as Map).cast<String, dynamic>()),
-      serverSideEncryptionRule: GetBucketsBucketServerSideEncryptionRule.fromMap((map['serverSideEncryptionRule'] as Map).cast<String, dynamic>()),
-      storageClass: map['storageClass'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      versioning: GetBucketsBucketVersioning.fromMap((map['versioning'] as Map).cast<String, dynamic>()),
-      website: GetBucketsBucketWebsite.fromMap((map['website'] as Map).cast<String, dynamic>()),
+      acl: (map['acl'] as String).input(),
+      corsRules: (pulumi.Input.decodeList<GetBucketsBucketCorsRule>(map['corsRules'], (value) => GetBucketsBucketCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationDate: (map['creationDate'] as String).input(),
+      extranetEndpoint: (map['extranetEndpoint'] as String).input(),
+      intranetEndpoint: (map['intranetEndpoint'] as String).input(),
+      lifecycleRules: (pulumi.Input.decodeList<GetBucketsBucketLifecycleRule>(map['lifecycleRules'], (value) => GetBucketsBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (map['location'] as String).input(),
+      logging: (GetBucketsBucketLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      owner: (map['owner'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      redundancyType: (map['redundancyType'] as String).input(),
+      refererConfig: (GetBucketsBucketRefererConfig.fromMap((map['refererConfig'] as Map).cast<String, dynamic>())).input(),
+      serverSideEncryptionRule: (GetBucketsBucketServerSideEncryptionRule.fromMap((map['serverSideEncryptionRule'] as Map).cast<String, dynamic>())).input(),
+      storageClass: (map['storageClass'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      versioning: (GetBucketsBucketVersioning.fromMap((map['versioning'] as Map).cast<String, dynamic>())).input(),
+      website: (GetBucketsBucketWebsite.fromMap((map['website'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

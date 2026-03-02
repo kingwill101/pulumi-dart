@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_flow_options_response.dart';
 import 'messaging_options_response.dart';
 import 'schema_response.dart';
@@ -9,63 +10,63 @@ import 'stream_source_addresses_response.dart';
 /// Properties of flow
 class FlowPropertiesResponse {
   /// The API Flow configuration options for Azure Data Transfer API Flow type.
-  final ApiFlowOptionsResponse? apiFlowOptions;
+  final pulumi.Input<ApiFlowOptionsResponse>? apiFlowOptions;
   /// The connection associated with this flow
-  final SelectedResourceResponse? connection;
+  final pulumi.Input<SelectedResourceResponse>? connection;
   /// Event Hub Consumer Group
-  final String? consumerGroup;
+  final pulumi.Input<String>? consumerGroup;
   /// The URI to the customer managed key for this flow
-  final String? customerManagedKeyVaultUri;
+  final pulumi.Input<String>? customerManagedKeyVaultUri;
   /// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// The destination endpoint ports of the stream
-  final List<double>? destinationEndpointPorts;
+  final pulumi.Input<List<double>>? destinationEndpointPorts;
   /// The destination endpoints of the stream
-  final List<String>? destinationEndpoints;
+  final pulumi.Input<List<String>>? destinationEndpoints;
   /// Event Hub ID
-  final String? eventHubId;
+  final pulumi.Input<String>? eventHubId;
   /// Dataflow GUID associated with this flow
-  final String flowId;
+  final pulumi.Input<String> flowId;
   /// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-  final String? flowType;
+  final pulumi.Input<String>? flowType;
   /// Force disablement status of the current flow
-  final List<String> forceDisabledStatus;
+  final pulumi.Input<List<String>> forceDisabledStatus;
   /// URI to a Key Vault Secret containing a SAS token.
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// Link status of the current flow
-  final String linkStatus;
+  final pulumi.Input<String> linkStatus;
   /// Resource ID of the linked flow
-  final String linkedFlowId;
+  final pulumi.Input<String> linkedFlowId;
   /// The messaging options for this flow
-  final MessagingOptionsResponse? messagingOptions;
+  final pulumi.Input<MessagingOptionsResponse>? messagingOptions;
   /// The passphrase used for SRT streams
-  final String? passphrase;
+  final pulumi.Input<String>? passphrase;
   /// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-  final List<String>? policies;
+  final pulumi.Input<List<String>>? policies;
   /// Provisioning state of the flow
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-  final SchemaResponse? schema;
+  final pulumi.Input<SchemaResponse>? schema;
   /// Service Bus Queue ID
-  final String? serviceBusQueueId;
+  final pulumi.Input<String>? serviceBusQueueId;
   /// The source IP address and CIDR ranges of the stream
-  final StreamSourceAddressesResponse? sourceAddresses;
+  final pulumi.Input<StreamSourceAddressesResponse>? sourceAddresses;
   /// Status of the current flow
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Storage Account ID
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
   /// Storage Account
-  final String? storageAccountName;
+  final pulumi.Input<String>? storageAccountName;
   /// Storage Container Name
-  final String? storageContainerName;
+  final pulumi.Input<String>? storageContainerName;
   /// Storage Table Name
-  final String? storageTableName;
+  final pulumi.Input<String>? storageTableName;
   /// The flow stream identifier
-  final String? streamId;
+  final pulumi.Input<String>? streamId;
   /// The latency of the stream in milliseconds
-  final double? streamLatency;
+  final pulumi.Input<double>? streamLatency;
   /// The protocol of the stream
-  final String? streamProtocol;
+  final pulumi.Input<String>? streamProtocol;
 
   /// Creates a new [FlowPropertiesResponse].
   /// [apiFlowOptions] The API Flow configuration options for Azure Data Transfer API Flow type.
@@ -131,8 +132,8 @@ class FlowPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiFlowOptions': ?apiFlowOptions == null ? null : apiFlowOptions!.toMap(),
-      'connection': ?connection == null ? null : connection!.toMap(),
+      'apiFlowOptions': ?pulumi.Input.mapOptionalInputValue<ApiFlowOptionsResponse, Map<String, dynamic>>(apiFlowOptions, (value) => value.toMap()),
+      'connection': ?pulumi.Input.mapOptionalInputValue<SelectedResourceResponse, Map<String, dynamic>>(connection, (value) => value.toMap()),
       'consumerGroup': ?consumerGroup,
       'customerManagedKeyVaultUri': ?customerManagedKeyVaultUri,
       'dataType': ?dataType,
@@ -145,13 +146,13 @@ class FlowPropertiesResponse {
       'keyVaultUri': ?keyVaultUri,
       'linkStatus': linkStatus,
       'linkedFlowId': linkedFlowId,
-      'messagingOptions': ?messagingOptions == null ? null : messagingOptions!.toMap(),
+      'messagingOptions': ?pulumi.Input.mapOptionalInputValue<MessagingOptionsResponse, Map<String, dynamic>>(messagingOptions, (value) => value.toMap()),
       'passphrase': ?passphrase,
       'policies': ?policies,
       'provisioningState': provisioningState,
-      'schema': ?schema == null ? null : schema!.toMap(),
+      'schema': ?pulumi.Input.mapOptionalInputValue<SchemaResponse, Map<String, dynamic>>(schema, (value) => value.toMap()),
       'serviceBusQueueId': ?serviceBusQueueId,
-      'sourceAddresses': ?sourceAddresses == null ? null : sourceAddresses!.toMap(),
+      'sourceAddresses': ?pulumi.Input.mapOptionalInputValue<StreamSourceAddressesResponse, Map<String, dynamic>>(sourceAddresses, (value) => value.toMap()),
       'status': ?status,
       'storageAccountId': ?storageAccountId,
       'storageAccountName': ?storageAccountName,
@@ -165,35 +166,35 @@ class FlowPropertiesResponse {
 
   factory FlowPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FlowPropertiesResponse(
-      apiFlowOptions: map['apiFlowOptions'] == null ? null : ApiFlowOptionsResponse.fromMap((map['apiFlowOptions'] as Map).cast<String, dynamic>()),
-      connection: map['connection'] == null ? null : SelectedResourceResponse.fromMap((map['connection'] as Map).cast<String, dynamic>()),
-      consumerGroup: map['consumerGroup'] == null ? null : map['consumerGroup'] as String,
-      customerManagedKeyVaultUri: map['customerManagedKeyVaultUri'] == null ? null : map['customerManagedKeyVaultUri'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      destinationEndpointPorts: map['destinationEndpointPorts'] == null ? null : (map['destinationEndpointPorts'] as List).cast<double>(),
-      destinationEndpoints: map['destinationEndpoints'] == null ? null : (map['destinationEndpoints'] as List).cast<String>(),
-      eventHubId: map['eventHubId'] == null ? null : map['eventHubId'] as String,
-      flowId: map['flowId'] as String,
-      flowType: map['flowType'] == null ? null : map['flowType'] as String,
-      forceDisabledStatus: (map['forceDisabledStatus'] as List).cast<String>(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      linkStatus: map['linkStatus'] as String,
-      linkedFlowId: map['linkedFlowId'] as String,
-      messagingOptions: map['messagingOptions'] == null ? null : MessagingOptionsResponse.fromMap((map['messagingOptions'] as Map).cast<String, dynamic>()),
-      passphrase: map['passphrase'] == null ? null : map['passphrase'] as String,
-      policies: map['policies'] == null ? null : (map['policies'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      schema: map['schema'] == null ? null : SchemaResponse.fromMap((map['schema'] as Map).cast<String, dynamic>()),
-      serviceBusQueueId: map['serviceBusQueueId'] == null ? null : map['serviceBusQueueId'] as String,
-      sourceAddresses: map['sourceAddresses'] == null ? null : StreamSourceAddressesResponse.fromMap((map['sourceAddresses'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
-      storageContainerName: map['storageContainerName'] == null ? null : map['storageContainerName'] as String,
-      storageTableName: map['storageTableName'] == null ? null : map['storageTableName'] as String,
-      streamId: map['streamId'] == null ? null : map['streamId'] as String,
-      streamLatency: map['streamLatency'] == null ? null : map['streamLatency'] as double,
-      streamProtocol: map['streamProtocol'] == null ? null : map['streamProtocol'] as String,
+      apiFlowOptions: map['apiFlowOptions'] == null ? null : (ApiFlowOptionsResponse.fromMap((map['apiFlowOptions'] as Map).cast<String, dynamic>())).input(),
+      connection: map['connection'] == null ? null : (SelectedResourceResponse.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
+      customerManagedKeyVaultUri: map['customerManagedKeyVaultUri'] == null ? null : (map['customerManagedKeyVaultUri'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      destinationEndpointPorts: map['destinationEndpointPorts'] == null ? null : ((map['destinationEndpointPorts'] as List).cast<double>()).input(),
+      destinationEndpoints: map['destinationEndpoints'] == null ? null : ((map['destinationEndpoints'] as List).cast<String>()).input(),
+      eventHubId: map['eventHubId'] == null ? null : (map['eventHubId'] as String).input(),
+      flowId: (map['flowId'] as String).input(),
+      flowType: map['flowType'] == null ? null : (map['flowType'] as String).input(),
+      forceDisabledStatus: ((map['forceDisabledStatus'] as List).cast<String>()).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      linkStatus: (map['linkStatus'] as String).input(),
+      linkedFlowId: (map['linkedFlowId'] as String).input(),
+      messagingOptions: map['messagingOptions'] == null ? null : (MessagingOptionsResponse.fromMap((map['messagingOptions'] as Map).cast<String, dynamic>())).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      policies: map['policies'] == null ? null : ((map['policies'] as List).cast<String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      schema: map['schema'] == null ? null : (SchemaResponse.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      serviceBusQueueId: map['serviceBusQueueId'] == null ? null : (map['serviceBusQueueId'] as String).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : (StreamSourceAddressesResponse.fromMap((map['sourceAddresses'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
+      storageTableName: map['storageTableName'] == null ? null : (map['storageTableName'] as String).input(),
+      streamId: map['streamId'] == null ? null : (map['streamId'] as String).input(),
+      streamLatency: map['streamLatency'] == null ? null : (map['streamLatency'] as double).input(),
+      streamProtocol: map['streamProtocol'] == null ? null : (map['streamProtocol'] as String).input(),
     );
   }
 }

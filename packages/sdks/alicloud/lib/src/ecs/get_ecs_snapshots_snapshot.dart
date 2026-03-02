@@ -1,59 +1,60 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsSnapshotsSnapshot {
   /// The category of the snapshot. Valid Values: `flash` and `standard`.
-  final String category;
+  final pulumi.Input<String> category;
   /// The time when the snapshot was created.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// The description of the snapshot.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the source disk.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// Specifies whether the snapshot is encrypted.
-  final bool encrypted;
+  final pulumi.Input<bool> encrypted;
   /// The ID of the Snapshot.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates whether the instant access feature is enabled.
-  final bool instantAccess;
+  final pulumi.Input<bool> instantAccess;
   /// Indicates the validity period of the instant access feature.
-  final int instantAccessRetentionDays;
+  final pulumi.Input<int> instantAccessRetentionDays;
   /// The name of the snapshot.
-  final String name;
+  final pulumi.Input<String> name;
   /// The product code of the Alibaba Cloud Marketplace image.
-  final String productCode;
+  final pulumi.Input<String> productCode;
   /// The progress of the snapshot creation task.
-  final String progress;
+  final pulumi.Input<String> progress;
   /// The amount of remaining time required to create the snapshot.
-  final int remainTime;
+  final pulumi.Input<int> remainTime;
   /// The resource group id.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The retention period of the automatic snapshot.
-  final int retentionDays;
+  final pulumi.Input<int> retentionDays;
   /// The ID of the snapshot.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// The name of the snapshot.
-  final String snapshotName;
+  final pulumi.Input<String> snapshotName;
   /// The serial number of the snapshot.
-  final String snapshotSn;
+  final pulumi.Input<String> snapshotSn;
   /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
-  final String snapshotType;
+  final pulumi.Input<String> snapshotType;
   /// The ID of the source disk.
-  final String sourceDiskId;
+  final pulumi.Input<String> sourceDiskId;
   /// The capacity of the source disk.
-  final String sourceDiskSize;
+  final pulumi.Input<String> sourceDiskSize;
   /// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
-  final String sourceDiskType;
+  final pulumi.Input<String> sourceDiskType;
   /// The category of the source disk.
-  final String sourceStorageType;
+  final pulumi.Input<String> sourceStorageType;
   /// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the snapshot.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
-  final String type;
+  final pulumi.Input<String> type;
   /// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
-  final String usage;
+  final pulumi.Input<String> usage;
 
   /// Creates a new [GetEcsSnapshotsSnapshot].
   /// [category] The category of the snapshot. Valid Values: `flash` and `standard`.
@@ -144,32 +145,32 @@ class GetEcsSnapshotsSnapshot {
 
   factory GetEcsSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetEcsSnapshotsSnapshot(
-      category: map['category'] as String,
-      creationTime: map['creationTime'] as String,
-      description: map['description'] as String,
-      diskId: map['diskId'] as String,
-      encrypted: map['encrypted'] as bool,
-      id: map['id'] as String,
-      instantAccess: map['instantAccess'] as bool,
-      instantAccessRetentionDays: map['instantAccessRetentionDays'] as int,
-      name: map['name'] as String,
-      productCode: map['productCode'] as String,
-      progress: map['progress'] as String,
-      remainTime: map['remainTime'] as int,
-      resourceGroupId: map['resourceGroupId'] as String,
-      retentionDays: map['retentionDays'] as int,
-      snapshotId: map['snapshotId'] as String,
-      snapshotName: map['snapshotName'] as String,
-      snapshotSn: map['snapshotSn'] as String,
-      snapshotType: map['snapshotType'] as String,
-      sourceDiskId: map['sourceDiskId'] as String,
-      sourceDiskSize: map['sourceDiskSize'] as String,
-      sourceDiskType: map['sourceDiskType'] as String,
-      sourceStorageType: map['sourceStorageType'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      usage: map['usage'] as String,
+      category: (map['category'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      encrypted: (map['encrypted'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instantAccess: (map['instantAccess'] as bool).input(),
+      instantAccessRetentionDays: (map['instantAccessRetentionDays'] as int).input(),
+      name: (map['name'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      progress: (map['progress'] as String).input(),
+      remainTime: (map['remainTime'] as int).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      retentionDays: (map['retentionDays'] as int).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      snapshotName: (map['snapshotName'] as String).input(),
+      snapshotSn: (map['snapshotSn'] as String).input(),
+      snapshotType: (map['snapshotType'] as String).input(),
+      sourceDiskId: (map['sourceDiskId'] as String).input(),
+      sourceDiskSize: (map['sourceDiskSize'] as String).input(),
+      sourceDiskType: (map['sourceDiskType'] as String).input(),
+      sourceStorageType: (map['sourceStorageType'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      usage: (map['usage'] as String).input(),
     );
   }
 }

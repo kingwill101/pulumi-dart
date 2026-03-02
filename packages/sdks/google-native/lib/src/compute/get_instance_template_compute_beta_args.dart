@@ -14,11 +14,9 @@ class GetInstanceTemplateComputeBetaArgs {
   /// [instanceTemplate] Required.
   /// [project] Optional.
   GetInstanceTemplateComputeBetaArgs({
-    required pulumi.Output<String> instanceTemplate,
-    pulumi.Output<String>? project,
-  }) :
-      instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.instanceTemplate,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetInstanceTemplateComputeBetaArgs {
 
   factory GetInstanceTemplateComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateComputeBetaArgs(
-      instanceTemplate: pulumi.Output.create<String>(map['instanceTemplate'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      instanceTemplate: (map['instanceTemplate'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

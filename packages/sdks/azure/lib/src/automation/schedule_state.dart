@@ -44,31 +44,19 @@ class ScheduleState {
   /// [timezone] The timezone of the start time. Defaults to `Etc/UTC`. For possible values see: <https://docs.microsoft.com/en-us/rest/api/maps/timezone/gettimezoneenumwindows>
   /// [weekDays] List of days of the week that the job should execute on. Only valid when frequency is `Week`. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
   ScheduleState({
-    pulumi.Output<String>? automationAccountName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expiryTime,
-    pulumi.Output<String>? frequency,
-    pulumi.Output<int>? interval,
-    pulumi.Output<List<int>>? monthDays,
-    pulumi.Output<ScheduleMonthlyOccurrence>? monthlyOccurrence,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? timezone,
-    pulumi.Output<List<String>>? weekDays,
-  }) :
-      automationAccountName = pulumi.Input.asOptionalInput<String>(automationAccountName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expiryTime = pulumi.Input.asOptionalInput<String>(expiryTime),
-      frequency = pulumi.Input.asOptionalInput<String>(frequency),
-      interval = pulumi.Input.asOptionalInput<int>(interval),
-      monthDays = pulumi.Input.asOptionalInput<List<int>>(monthDays),
-      monthlyOccurrence = pulumi.Input.asOptionalInput<ScheduleMonthlyOccurrence>(monthlyOccurrence),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      timezone = pulumi.Input.asOptionalInput<String>(timezone),
-      weekDays = pulumi.Input.asOptionalInput<List<String>>(weekDays);
+    this.automationAccountName,
+    this.description,
+    this.expiryTime,
+    this.frequency,
+    this.interval,
+    this.monthDays,
+    this.monthlyOccurrence,
+    this.name,
+    this.resourceGroupName,
+    this.startTime,
+    this.timezone,
+    this.weekDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class ScheduleState {
 
   factory ScheduleState.fromMap(Map<String, dynamic> map) {
     return ScheduleState(
-      automationAccountName: map['automationAccountName'] == null ? null : pulumi.Output.create<String>(map['automationAccountName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expiryTime: map['expiryTime'] == null ? null : pulumi.Output.create<String>(map['expiryTime'] as String),
-      frequency: map['frequency'] == null ? null : pulumi.Output.create<String>(map['frequency'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<int>(map['interval'] as int),
-      monthDays: map['monthDays'] == null ? null : pulumi.Output.create<List<int>>((map['monthDays'] as List).cast<int>()),
-      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : pulumi.Output.create<ScheduleMonthlyOccurrence>(ScheduleMonthlyOccurrence.fromMap((map['monthlyOccurrence'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      timezone: map['timezone'] == null ? null : pulumi.Output.create<String>(map['timezone'] as String),
-      weekDays: map['weekDays'] == null ? null : pulumi.Output.create<List<String>>((map['weekDays'] as List).cast<String>()),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      monthDays: map['monthDays'] == null ? null : ((map['monthDays'] as List).cast<int>()).input(),
+      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (ScheduleMonthlyOccurrence.fromMap((map['monthlyOccurrence'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
     );
   }
 }

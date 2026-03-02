@@ -30,19 +30,13 @@ class PackageArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
   PackageArgs({
-    pulumi.Output<TrackedResource>? allOf,
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<ContentLink> contentLink,
-    pulumi.Output<String>? packageName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> runtimeEnvironmentName,
-  }) :
-      allOf = pulumi.Input.asOptionalInput<TrackedResource>(allOf),
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      contentLink = pulumi.Input.asInput<ContentLink>(contentLink),
-      packageName = pulumi.Input.asOptionalInput<String>(packageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runtimeEnvironmentName = pulumi.Input.asInput<String>(runtimeEnvironmentName);
+    this.allOf,
+    required this.automationAccountName,
+    required this.contentLink,
+    this.packageName,
+    required this.resourceGroupName,
+    required this.runtimeEnvironmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class PackageArgs {
 
   factory PackageArgs.fromMap(Map<String, dynamic> map) {
     return PackageArgs(
-      allOf: map['allOf'] == null ? null : pulumi.Output.create<TrackedResource>(TrackedResource.fromMap((map['allOf'] as Map).cast<String, dynamic>())),
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      contentLink: pulumi.Output.create<ContentLink>(ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())),
-      packageName: map['packageName'] == null ? null : pulumi.Output.create<String>(map['packageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runtimeEnvironmentName: pulumi.Output.create<String>(map['runtimeEnvironmentName'] as String),
+      allOf: map['allOf'] == null ? null : (TrackedResource.fromMap((map['allOf'] as Map).cast<String, dynamic>())).input(),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      contentLink: (ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runtimeEnvironmentName: (map['runtimeEnvironmentName'] as String).input(),
     );
   }
 }

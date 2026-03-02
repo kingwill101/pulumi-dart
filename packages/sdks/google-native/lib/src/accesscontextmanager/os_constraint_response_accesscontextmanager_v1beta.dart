@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A restriction on the OS type and version of devices making requests.
 class OsConstraintResponseAccesscontextmanagerV1beta {
   /// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-  final String minimumVersion;
+  final pulumi.Input<String> minimumVersion;
   /// The allowed OS type.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
-  final bool requireVerifiedChromeOs;
+  final pulumi.Input<bool> requireVerifiedChromeOs;
 
   /// Creates a new [OsConstraintResponseAccesscontextmanagerV1beta].
   /// [minimumVersion] The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
@@ -30,9 +31,9 @@ class OsConstraintResponseAccesscontextmanagerV1beta {
 
   factory OsConstraintResponseAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return OsConstraintResponseAccesscontextmanagerV1beta(
-      minimumVersion: map['minimumVersion'] as String,
-      osType: map['osType'] as String,
-      requireVerifiedChromeOs: map['requireVerifiedChromeOs'] as bool,
+      minimumVersion: (map['minimumVersion'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      requireVerifiedChromeOs: (map['requireVerifiedChromeOs'] as bool).input(),
     );
   }
 }

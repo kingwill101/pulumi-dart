@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_watchdog_acpi.dart';
 import 'domain_devices_watchdog_alias.dart';
 
 class DomainDevicesWatchdog {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final DomainDevicesWatchdogAcpi? acpi;
+  final pulumi.Input<DomainDevicesWatchdogAcpi>? acpi;
   /// Defines the action that the watchdog device should take when its timeout period expires, such as resetting the virtual machine or performing a graceful shutdown.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final Map<String, dynamic>? address;
+  final pulumi.Input<Map<String, dynamic>>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final DomainDevicesWatchdogAlias? alias;
+  final pulumi.Input<DomainDevicesWatchdogAlias>? alias;
   /// Configures the model of the watchdog device, which dictates its underlying functionality and behavior in the domain.
-  final String model;
+  final pulumi.Input<String> model;
 
   /// Creates a new [DomainDevicesWatchdog].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
@@ -31,21 +32,21 @@ class DomainDevicesWatchdog {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acpi': ?acpi == null ? null : acpi!.toMap(),
+      'acpi': ?pulumi.Input.mapOptionalInputValue<DomainDevicesWatchdogAcpi, Map<String, dynamic>>(acpi, (value) => value.toMap()),
       'action': ?action,
       'address': ?address,
-      'alias': ?alias == null ? null : alias!.toMap(),
+      'alias': ?pulumi.Input.mapOptionalInputValue<DomainDevicesWatchdogAlias, Map<String, dynamic>>(alias, (value) => value.toMap()),
       'model': model,
     };
   }
 
   factory DomainDevicesWatchdog.fromMap(Map<String, dynamic> map) {
     return DomainDevicesWatchdog(
-      acpi: map['acpi'] == null ? null : DomainDevicesWatchdogAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>()),
-      action: map['action'] == null ? null : map['action'] as String,
-      address: map['address'] == null ? null : (map['address'] as Map).cast<String, dynamic>(),
-      alias: map['alias'] == null ? null : DomainDevicesWatchdogAlias.fromMap((map['alias'] as Map).cast<String, dynamic>()),
-      model: map['model'] as String,
+      acpi: map['acpi'] == null ? null : (DomainDevicesWatchdogAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesWatchdogAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      model: (map['model'] as String).input(),
     );
   }
 }

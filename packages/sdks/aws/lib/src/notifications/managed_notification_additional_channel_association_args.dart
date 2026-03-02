@@ -16,11 +16,9 @@ class ManagedNotificationAdditionalChannelAssociationArgs {
   /// [channelArn] ARN of the channel to associate with the managed notification.
   /// [managedNotificationArn] ARN of the managed notification to associate the channel with.
   ManagedNotificationAdditionalChannelAssociationArgs({
-    required pulumi.Output<String> channelArn,
-    required pulumi.Output<String> managedNotificationArn,
-  }) :
-      channelArn = pulumi.Input.asInput<String>(channelArn),
-      managedNotificationArn = pulumi.Input.asInput<String>(managedNotificationArn);
+    required this.channelArn,
+    required this.managedNotificationArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ManagedNotificationAdditionalChannelAssociationArgs {
 
   factory ManagedNotificationAdditionalChannelAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNotificationAdditionalChannelAssociationArgs(
-      channelArn: pulumi.Output.create<String>(map['channelArn'] as String),
-      managedNotificationArn: pulumi.Output.create<String>(map['managedNotificationArn'] as String),
+      channelArn: (map['channelArn'] as String).input(),
+      managedNotificationArn: (map['managedNotificationArn'] as String).input(),
     );
   }
 }

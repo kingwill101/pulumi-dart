@@ -38,23 +38,15 @@ class MachineImageState {
   /// [sourceInstance] The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
   /// [storageLocations] The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
   MachineImageState({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? guestFlush,
-    pulumi.Output<MachineImageMachineImageEncryptionKey>? machineImageEncryptionKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? sourceInstance,
-    pulumi.Output<List<String>>? storageLocations,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      guestFlush = pulumi.Input.asOptionalInput<bool>(guestFlush),
-      machineImageEncryptionKey = pulumi.Input.asOptionalInput<MachineImageMachineImageEncryptionKey>(machineImageEncryptionKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      sourceInstance = pulumi.Input.asOptionalInput<String>(sourceInstance),
-      storageLocations = pulumi.Input.asOptionalInput<List<String>>(storageLocations);
+    this.description,
+    this.guestFlush,
+    this.machineImageEncryptionKey,
+    this.name,
+    this.project,
+    this.selfLink,
+    this.sourceInstance,
+    this.storageLocations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class MachineImageState {
 
   factory MachineImageState.fromMap(Map<String, dynamic> map) {
     return MachineImageState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      guestFlush: map['guestFlush'] == null ? null : pulumi.Output.create<bool>(map['guestFlush'] as bool),
-      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : pulumi.Output.create<MachineImageMachineImageEncryptionKey>(MachineImageMachineImageEncryptionKey.fromMap((map['machineImageEncryptionKey'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      sourceInstance: map['sourceInstance'] == null ? null : pulumi.Output.create<String>(map['sourceInstance'] as String),
-      storageLocations: map['storageLocations'] == null ? null : pulumi.Output.create<List<String>>((map['storageLocations'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
+      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : (MachineImageMachineImageEncryptionKey.fromMap((map['machineImageEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      sourceInstance: map['sourceInstance'] == null ? null : (map['sourceInstance'] as String).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
     );
   }
 }

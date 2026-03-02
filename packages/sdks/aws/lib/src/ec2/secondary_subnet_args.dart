@@ -31,21 +31,14 @@ class SecondarySubnetArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   SecondarySubnetArgs({
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? availabilityZoneId,
-    required pulumi.Output<String> ipv4CidrBlock,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> secondaryNetworkId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SecondarySubnetTimeouts>? timeouts,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      availabilityZoneId = pulumi.Input.asOptionalInput<String>(availabilityZoneId),
-      ipv4CidrBlock = pulumi.Input.asInput<String>(ipv4CidrBlock),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secondaryNetworkId = pulumi.Input.asInput<String>(secondaryNetworkId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<SecondarySubnetTimeouts>(timeouts);
+    this.availabilityZone,
+    this.availabilityZoneId,
+    required this.ipv4CidrBlock,
+    this.region,
+    required this.secondaryNetworkId,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class SecondarySubnetArgs {
 
   factory SecondarySubnetArgs.fromMap(Map<String, dynamic> map) {
     return SecondarySubnetArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      ipv4CidrBlock: pulumi.Output.create<String>(map['ipv4CidrBlock'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secondaryNetworkId: pulumi.Output.create<String>(map['secondaryNetworkId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<SecondarySubnetTimeouts>(SecondarySubnetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      ipv4CidrBlock: (map['ipv4CidrBlock'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secondaryNetworkId: (map['secondaryNetworkId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (SecondarySubnetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

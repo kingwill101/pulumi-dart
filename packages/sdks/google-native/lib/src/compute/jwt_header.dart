@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
 class JwtHeader {
   /// The HTTP header name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
-  final String? valuePrefix;
+  final pulumi.Input<String>? valuePrefix;
 
   /// Creates a new [JwtHeader].
   /// [name] The HTTP header name.
@@ -25,8 +26,8 @@ class JwtHeader {
 
   factory JwtHeader.fromMap(Map<String, dynamic> map) {
     return JwtHeader(
-      name: map['name'] == null ? null : map['name'] as String,
-      valuePrefix: map['valuePrefix'] == null ? null : map['valuePrefix'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      valuePrefix: map['valuePrefix'] == null ? null : (map['valuePrefix'] as String).input(),
     );
   }
 }

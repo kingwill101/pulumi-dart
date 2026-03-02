@@ -16,13 +16,10 @@ class BucketMetaQueryState {
   /// [createTime] The creation time of the metadata index database. The format is mm:ss + TIMEZONE in the YYYY-MM-DDTHH format of RFC 3339. Where YYYY-MM-DD indicates the year, month and day, T indicates the beginning of the time element, HH:mm:ss indicates the hour, minute and second, and TIMEZONE indicates the time zone.
   /// [status] The status of the resource.
   BucketMetaQueryState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? status,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bucket,
+    this.createTime,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class BucketMetaQueryState {
 
   factory BucketMetaQueryState.fromMap(Map<String, dynamic> map) {
     return BucketMetaQueryState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

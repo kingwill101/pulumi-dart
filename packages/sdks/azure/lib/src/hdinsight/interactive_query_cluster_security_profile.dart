@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InteractiveQueryClusterSecurityProfile {
   /// The resource ID of the Azure Active Directory Domain Service. Changing this forces a new resource to be created.
-  final String aaddsResourceId;
+  final pulumi.Input<String> aaddsResourceId;
   /// A list of the distinguished names for the cluster user groups. Changing this forces a new resource to be created.
-  final List<String>? clusterUsersGroupDns;
+  final pulumi.Input<List<String>>? clusterUsersGroupDns;
   /// The name of the Azure Active Directory Domain. Changing this forces a new resource to be created.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The user password of the Azure Active Directory Domain. Changing this forces a new resource to be created.
-  final String domainUserPassword;
+  final pulumi.Input<String> domainUserPassword;
   /// The username of the Azure Active Directory Domain. Changing this forces a new resource to be created.
-  final String domainUsername;
+  final pulumi.Input<String> domainUsername;
   /// A list of the LDAPS URLs to communicate with the Azure Active Directory. Changing this forces a new resource to be created.
-  final List<String> ldapsUrls;
+  final pulumi.Input<List<String>> ldapsUrls;
   /// The User Assigned Identity for the HDInsight Cluster. Changing this forces a new resource to be created.
-  final String msiResourceId;
+  final pulumi.Input<String> msiResourceId;
 
   /// Creates a new [InteractiveQueryClusterSecurityProfile].
   /// [aaddsResourceId] The resource ID of the Azure Active Directory Domain Service. Changing this forces a new resource to be created.
@@ -49,13 +50,13 @@ class InteractiveQueryClusterSecurityProfile {
 
   factory InteractiveQueryClusterSecurityProfile.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterSecurityProfile(
-      aaddsResourceId: map['aaddsResourceId'] as String,
-      clusterUsersGroupDns: map['clusterUsersGroupDns'] == null ? null : (map['clusterUsersGroupDns'] as List).cast<String>(),
-      domainName: map['domainName'] as String,
-      domainUserPassword: map['domainUserPassword'] as String,
-      domainUsername: map['domainUsername'] as String,
-      ldapsUrls: (map['ldapsUrls'] as List).cast<String>(),
-      msiResourceId: map['msiResourceId'] as String,
+      aaddsResourceId: (map['aaddsResourceId'] as String).input(),
+      clusterUsersGroupDns: map['clusterUsersGroupDns'] == null ? null : ((map['clusterUsersGroupDns'] as List).cast<String>()).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainUserPassword: (map['domainUserPassword'] as String).input(),
+      domainUsername: (map['domainUsername'] as String).input(),
+      ldapsUrls: ((map['ldapsUrls'] as List).cast<String>()).input(),
+      msiResourceId: (map['msiResourceId'] as String).input(),
     );
   }
 }

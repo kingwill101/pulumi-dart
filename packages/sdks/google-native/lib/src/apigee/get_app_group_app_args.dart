@@ -16,13 +16,10 @@ class GetAppGroupAppArgs {
   /// [appgroupId] Required.
   /// [organizationId] Required.
   GetAppGroupAppArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> appgroupId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      appgroupId = pulumi.Input.asInput<String>(appgroupId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.appId,
+    required this.appgroupId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetAppGroupAppArgs {
 
   factory GetAppGroupAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppGroupAppArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      appgroupId: pulumi.Output.create<String>(map['appgroupId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      appId: (map['appId'] as String).input(),
+      appgroupId: (map['appgroupId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

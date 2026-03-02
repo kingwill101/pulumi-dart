@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolPlacementPolicy {
   /// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
-  final String policyName;
+  final pulumi.Input<String> policyName;
   /// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
-  final String tpuTopology;
+  final pulumi.Input<String> tpuTopology;
   /// Type defines the type of placement policy
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetClusterNodePoolPlacementPolicy].
   /// [policyName] If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
@@ -29,9 +30,9 @@ class GetClusterNodePoolPlacementPolicy {
 
   factory GetClusterNodePoolPlacementPolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolPlacementPolicy(
-      policyName: map['policyName'] as String,
-      tpuTopology: map['tpuTopology'] as String,
-      type: map['type'] as String,
+      policyName: (map['policyName'] as String).input(),
+      tpuTopology: (map['tpuTopology'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

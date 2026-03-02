@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMavenArtifactsMavenArtifact {
   /// The name of the artifact to fetch.
-  final String artifactId;
+  final pulumi.Input<String> artifactId;
   /// The time the artifact was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Group ID for the artifact.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The fully qualified name of the fetched artifact. Format:
   /// ```
   /// projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/mavenArtifacts/{{group_id}}:{{artifact_id}}:{{version}}
   /// ```
-  final String name;
+  final pulumi.Input<String> name;
   /// URL to access the pom file of the artifact.
-  final String pomUri;
+  final pulumi.Input<String> pomUri;
   /// The time the artifact was last updated.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
   /// The version of the Maven artifact.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetMavenArtifactsMavenArtifact].
   /// [artifactId] The name of the artifact to fetch.
@@ -52,13 +53,13 @@ class GetMavenArtifactsMavenArtifact {
 
   factory GetMavenArtifactsMavenArtifact.fromMap(Map<String, dynamic> map) {
     return GetMavenArtifactsMavenArtifact(
-      artifactId: map['artifactId'] as String,
-      createTime: map['createTime'] as String,
-      groupId: map['groupId'] as String,
-      name: map['name'] as String,
-      pomUri: map['pomUri'] as String,
-      updateTime: map['updateTime'] as String,
-      version: map['version'] as String,
+      artifactId: (map['artifactId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      name: (map['name'] as String).input(),
+      pomUri: (map['pomUri'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

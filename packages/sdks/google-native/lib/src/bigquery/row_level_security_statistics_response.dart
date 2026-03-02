@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RowLevelSecurityStatisticsResponse {
   /// [Preview] Whether any accessed data was protected by row access policies.
-  final bool rowLevelSecurityApplied;
+  final pulumi.Input<bool> rowLevelSecurityApplied;
 
   /// Creates a new [RowLevelSecurityStatisticsResponse].
   /// [rowLevelSecurityApplied] [Preview] Whether any accessed data was protected by row access policies.
@@ -19,7 +20,7 @@ class RowLevelSecurityStatisticsResponse {
 
   factory RowLevelSecurityStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return RowLevelSecurityStatisticsResponse(
-      rowLevelSecurityApplied: map['rowLevelSecurityApplied'] as bool,
+      rowLevelSecurityApplied: (map['rowLevelSecurityApplied'] as bool).input(),
     );
   }
 }

@@ -52,35 +52,21 @@ class ExpressRoutePortState {
   /// [resourceGroupName] The name of the Resource Group where the Express Route Port should exist. Changing this forces a new Express Route Port to be created.
   /// [tags] A mapping of tags which should be assigned to the Express Route Port.
   ExpressRoutePortState({
-    pulumi.Output<int>? bandwidthInGbps,
-    pulumi.Output<String>? billingType,
-    pulumi.Output<String>? encapsulation,
-    pulumi.Output<String>? ethertype,
-    pulumi.Output<String>? guid,
-    pulumi.Output<ExpressRoutePortIdentity>? identity,
-    pulumi.Output<ExpressRoutePortLink1>? link1,
-    pulumi.Output<ExpressRoutePortLink2>? link2,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mtu,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? peeringLocation,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      bandwidthInGbps = pulumi.Input.asOptionalInput<int>(bandwidthInGbps),
-      billingType = pulumi.Input.asOptionalInput<String>(billingType),
-      encapsulation = pulumi.Input.asOptionalInput<String>(encapsulation),
-      ethertype = pulumi.Input.asOptionalInput<String>(ethertype),
-      guid = pulumi.Input.asOptionalInput<String>(guid),
-      identity = pulumi.Input.asOptionalInput<ExpressRoutePortIdentity>(identity),
-      link1 = pulumi.Input.asOptionalInput<ExpressRoutePortLink1>(link1),
-      link2 = pulumi.Input.asOptionalInput<ExpressRoutePortLink2>(link2),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mtu = pulumi.Input.asOptionalInput<String>(mtu),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peeringLocation = pulumi.Input.asOptionalInput<String>(peeringLocation),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.bandwidthInGbps,
+    this.billingType,
+    this.encapsulation,
+    this.ethertype,
+    this.guid,
+    this.identity,
+    this.link1,
+    this.link2,
+    this.location,
+    this.mtu,
+    this.name,
+    this.peeringLocation,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class ExpressRoutePortState {
 
   factory ExpressRoutePortState.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortState(
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : pulumi.Output.create<int>(map['bandwidthInGbps'] as int),
-      billingType: map['billingType'] == null ? null : pulumi.Output.create<String>(map['billingType'] as String),
-      encapsulation: map['encapsulation'] == null ? null : pulumi.Output.create<String>(map['encapsulation'] as String),
-      ethertype: map['ethertype'] == null ? null : pulumi.Output.create<String>(map['ethertype'] as String),
-      guid: map['guid'] == null ? null : pulumi.Output.create<String>(map['guid'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ExpressRoutePortIdentity>(ExpressRoutePortIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      link1: map['link1'] == null ? null : pulumi.Output.create<ExpressRoutePortLink1>(ExpressRoutePortLink1.fromMap((map['link1'] as Map).cast<String, dynamic>())),
-      link2: map['link2'] == null ? null : pulumi.Output.create<ExpressRoutePortLink2>(ExpressRoutePortLink2.fromMap((map['link2'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mtu: map['mtu'] == null ? null : pulumi.Output.create<String>(map['mtu'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peeringLocation: map['peeringLocation'] == null ? null : pulumi.Output.create<String>(map['peeringLocation'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : (map['bandwidthInGbps'] as int).input(),
+      billingType: map['billingType'] == null ? null : (map['billingType'] as String).input(),
+      encapsulation: map['encapsulation'] == null ? null : (map['encapsulation'] as String).input(),
+      ethertype: map['ethertype'] == null ? null : (map['ethertype'] as String).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      identity: map['identity'] == null ? null : (ExpressRoutePortIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      link1: map['link1'] == null ? null : (ExpressRoutePortLink1.fromMap((map['link1'] as Map).cast<String, dynamic>())).input(),
+      link2: map['link2'] == null ? null : (ExpressRoutePortLink2.fromMap((map['link2'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

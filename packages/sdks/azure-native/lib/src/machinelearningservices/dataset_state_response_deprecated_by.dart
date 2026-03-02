@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to better Dataset or a Definition
 class DatasetStateResponseDeprecatedBy {
   /// Unique Dataset identifier.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// Definition Version
-  final String? definitionVersion;
+  final pulumi.Input<String>? definitionVersion;
 
   /// Creates a new [DatasetStateResponseDeprecatedBy].
   /// [datasetId] Unique Dataset identifier.
@@ -25,8 +26,8 @@ class DatasetStateResponseDeprecatedBy {
 
   factory DatasetStateResponseDeprecatedBy.fromMap(Map<String, dynamic> map) {
     return DatasetStateResponseDeprecatedBy(
-      datasetId: map['datasetId'] as String,
-      definitionVersion: map['definitionVersion'] == null ? null : map['definitionVersion'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      definitionVersion: map['definitionVersion'] == null ? null : (map['definitionVersion'] as String).input(),
     );
   }
 }

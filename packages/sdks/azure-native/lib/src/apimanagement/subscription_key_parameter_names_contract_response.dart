@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subscription key parameter names details.
 class SubscriptionKeyParameterNamesContractResponse {
   /// Subscription key header name.
-  final String? header;
+  final pulumi.Input<String>? header;
   /// Subscription key query string parameter name.
-  final String? query;
+  final pulumi.Input<String>? query;
 
   /// Creates a new [SubscriptionKeyParameterNamesContractResponse].
   /// [header] Subscription key header name.
@@ -25,8 +26,8 @@ class SubscriptionKeyParameterNamesContractResponse {
 
   factory SubscriptionKeyParameterNamesContractResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionKeyParameterNamesContractResponse(
-      header: map['header'] == null ? null : map['header'] as String,
-      query: map['query'] == null ? null : map['query'] as String,
+      header: map['header'] == null ? null : (map['header'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
     );
   }
 }

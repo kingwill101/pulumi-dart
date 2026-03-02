@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'commitment_quota_response.dart';
 
 /// Cognitive Services account commitment period.
 class CommitmentPeriodResponse {
   /// Commitment period commitment count.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Commitment period end date.
-  final String endDate;
+  final pulumi.Input<String> endDate;
   /// Cognitive Services account commitment quota.
-  final CommitmentQuotaResponse quota;
+  final pulumi.Input<CommitmentQuotaResponse> quota;
   /// Commitment period start date.
-  final String startDate;
+  final pulumi.Input<String> startDate;
   /// Commitment period commitment tier.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [CommitmentPeriodResponse].
   /// [count] Commitment period commitment count.
@@ -33,7 +34,7 @@ class CommitmentPeriodResponse {
     return <String, dynamic>{
       'count': ?count,
       'endDate': endDate,
-      'quota': quota.toMap(),
+      'quota': pulumi.Input.mapInputValue<CommitmentQuotaResponse, Map<String, dynamic>>(quota, (value) => value.toMap()),
       'startDate': startDate,
       'tier': ?tier,
     };
@@ -41,11 +42,11 @@ class CommitmentPeriodResponse {
 
   factory CommitmentPeriodResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentPeriodResponse(
-      count: map['count'] == null ? null : map['count'] as int,
-      endDate: map['endDate'] as String,
-      quota: CommitmentQuotaResponse.fromMap((map['quota'] as Map).cast<String, dynamic>()),
-      startDate: map['startDate'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      endDate: (map['endDate'] as String).input(),
+      quota: (CommitmentQuotaResponse.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      startDate: (map['startDate'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

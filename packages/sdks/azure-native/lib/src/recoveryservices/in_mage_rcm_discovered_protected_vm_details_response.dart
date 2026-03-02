@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm discovered protected VM details.
 class InMageRcmDiscoveredProtectedVmDetailsResponse {
   /// The SDS created timestamp.
-  final String createdTimestamp;
+  final pulumi.Input<String> createdTimestamp;
   /// The list of datastores.
-  final List<String> datastores;
+  final pulumi.Input<List<String>> datastores;
   /// The list of IP addresses.
-  final List<String> ipAddresses;
+  final pulumi.Input<List<String>> ipAddresses;
   /// A value indicating whether the VM is deleted.
-  final bool isDeleted;
+  final pulumi.Input<bool> isDeleted;
   /// The last time when SDS information discovered in SRS.
-  final String lastDiscoveryTimeInUtc;
+  final pulumi.Input<String> lastDiscoveryTimeInUtc;
   /// The VM's OS name.
-  final String osName;
+  final pulumi.Input<String> osName;
   /// The VM power status.
-  final String powerStatus;
+  final pulumi.Input<String> powerStatus;
   /// The SDS updated timestamp.
-  final String updatedTimestamp;
+  final pulumi.Input<String> updatedTimestamp;
   /// The VCenter fqdn.
-  final String vCenterFqdn;
+  final pulumi.Input<String> vCenterFqdn;
   /// The VCenter Id.
-  final String vCenterId;
+  final pulumi.Input<String> vCenterId;
   /// The VM fqdn.
-  final String vmFqdn;
+  final pulumi.Input<String> vmFqdn;
   /// The VMware tools status.
-  final String vmwareToolsStatus;
+  final pulumi.Input<String> vmwareToolsStatus;
 
   /// Creates a new [InMageRcmDiscoveredProtectedVmDetailsResponse].
   /// [createdTimestamp] The SDS created timestamp.
@@ -75,18 +76,18 @@ class InMageRcmDiscoveredProtectedVmDetailsResponse {
 
   factory InMageRcmDiscoveredProtectedVmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmDiscoveredProtectedVmDetailsResponse(
-      createdTimestamp: map['createdTimestamp'] as String,
-      datastores: (map['datastores'] as List).cast<String>(),
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
-      isDeleted: map['isDeleted'] as bool,
-      lastDiscoveryTimeInUtc: map['lastDiscoveryTimeInUtc'] as String,
-      osName: map['osName'] as String,
-      powerStatus: map['powerStatus'] as String,
-      updatedTimestamp: map['updatedTimestamp'] as String,
-      vCenterFqdn: map['vCenterFqdn'] as String,
-      vCenterId: map['vCenterId'] as String,
-      vmFqdn: map['vmFqdn'] as String,
-      vmwareToolsStatus: map['vmwareToolsStatus'] as String,
+      createdTimestamp: (map['createdTimestamp'] as String).input(),
+      datastores: ((map['datastores'] as List).cast<String>()).input(),
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
+      isDeleted: (map['isDeleted'] as bool).input(),
+      lastDiscoveryTimeInUtc: (map['lastDiscoveryTimeInUtc'] as String).input(),
+      osName: (map['osName'] as String).input(),
+      powerStatus: (map['powerStatus'] as String).input(),
+      updatedTimestamp: (map['updatedTimestamp'] as String).input(),
+      vCenterFqdn: (map['vCenterFqdn'] as String).input(),
+      vCenterId: (map['vCenterId'] as String).input(),
+      vmFqdn: (map['vmFqdn'] as String).input(),
+      vmwareToolsStatus: (map['vmwareToolsStatus'] as String).input(),
     );
   }
 }

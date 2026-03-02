@@ -49,33 +49,20 @@ class SyncMemberArgs {
   /// [usePrivateLinkConnection] Whether to use private link connection.
   /// [userName] User name of the member database in the sync member.
   SyncMemberArgs({
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? databaseType,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? sqlServerDatabaseId,
-    pulumi.Output<String>? syncAgentId,
-    pulumi.Output<String>? syncDirection,
-    required pulumi.Output<String> syncGroupName,
-    pulumi.Output<String>? syncMemberAzureDatabaseResourceId,
-    pulumi.Output<String>? syncMemberName,
-    pulumi.Output<bool>? usePrivateLinkConnection,
-    pulumi.Output<String>? userName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      databaseType = pulumi.Input.asOptionalInput<String>(databaseType),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      sqlServerDatabaseId = pulumi.Input.asOptionalInput<String>(sqlServerDatabaseId),
-      syncAgentId = pulumi.Input.asOptionalInput<String>(syncAgentId),
-      syncDirection = pulumi.Input.asOptionalInput<String>(syncDirection),
-      syncGroupName = pulumi.Input.asInput<String>(syncGroupName),
-      syncMemberAzureDatabaseResourceId = pulumi.Input.asOptionalInput<String>(syncMemberAzureDatabaseResourceId),
-      syncMemberName = pulumi.Input.asOptionalInput<String>(syncMemberName),
-      usePrivateLinkConnection = pulumi.Input.asOptionalInput<bool>(usePrivateLinkConnection),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    required this.databaseName,
+    this.databaseType,
+    this.password,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.sqlServerDatabaseId,
+    this.syncAgentId,
+    this.syncDirection,
+    required this.syncGroupName,
+    this.syncMemberAzureDatabaseResourceId,
+    this.syncMemberName,
+    this.usePrivateLinkConnection,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class SyncMemberArgs {
 
   factory SyncMemberArgs.fromMap(Map<String, dynamic> map) {
     return SyncMemberArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      databaseType: map['databaseType'] == null ? null : pulumi.Output.create<String>(map['databaseType'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      sqlServerDatabaseId: map['sqlServerDatabaseId'] == null ? null : pulumi.Output.create<String>(map['sqlServerDatabaseId'] as String),
-      syncAgentId: map['syncAgentId'] == null ? null : pulumi.Output.create<String>(map['syncAgentId'] as String),
-      syncDirection: map['syncDirection'] == null ? null : pulumi.Output.create<String>(map['syncDirection'] as String),
-      syncGroupName: pulumi.Output.create<String>(map['syncGroupName'] as String),
-      syncMemberAzureDatabaseResourceId: map['syncMemberAzureDatabaseResourceId'] == null ? null : pulumi.Output.create<String>(map['syncMemberAzureDatabaseResourceId'] as String),
-      syncMemberName: map['syncMemberName'] == null ? null : pulumi.Output.create<String>(map['syncMemberName'] as String),
-      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : pulumi.Output.create<bool>(map['usePrivateLinkConnection'] as bool),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      sqlServerDatabaseId: map['sqlServerDatabaseId'] == null ? null : (map['sqlServerDatabaseId'] as String).input(),
+      syncAgentId: map['syncAgentId'] == null ? null : (map['syncAgentId'] as String).input(),
+      syncDirection: map['syncDirection'] == null ? null : (map['syncDirection'] as String).input(),
+      syncGroupName: (map['syncGroupName'] as String).input(),
+      syncMemberAzureDatabaseResourceId: map['syncMemberAzureDatabaseResourceId'] == null ? null : (map['syncMemberAzureDatabaseResourceId'] as String).input(),
+      syncMemberName: map['syncMemberName'] == null ? null : (map['syncMemberName'] as String).input(),
+      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : (map['usePrivateLinkConnection'] as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

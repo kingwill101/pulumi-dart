@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_configuration.dart';
 
 /// Alert configuration for an entity
 class EntityAlerts {
   /// Alert to be triggered on state change to degraded
-  final AlertConfiguration? degraded;
+  final pulumi.Input<AlertConfiguration>? degraded;
   /// Alert to be triggered on state change to unhealthy
-  final AlertConfiguration? unhealthy;
+  final pulumi.Input<AlertConfiguration>? unhealthy;
 
   /// Creates a new [EntityAlerts].
   /// [degraded] Alert to be triggered on state change to degraded
@@ -19,15 +20,15 @@ class EntityAlerts {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'degraded': ?degraded == null ? null : degraded!.toMap(),
-      'unhealthy': ?unhealthy == null ? null : unhealthy!.toMap(),
+      'degraded': ?pulumi.Input.mapOptionalInputValue<AlertConfiguration, Map<String, dynamic>>(degraded, (value) => value.toMap()),
+      'unhealthy': ?pulumi.Input.mapOptionalInputValue<AlertConfiguration, Map<String, dynamic>>(unhealthy, (value) => value.toMap()),
     };
   }
 
   factory EntityAlerts.fromMap(Map<String, dynamic> map) {
     return EntityAlerts(
-      degraded: map['degraded'] == null ? null : AlertConfiguration.fromMap((map['degraded'] as Map).cast<String, dynamic>()),
-      unhealthy: map['unhealthy'] == null ? null : AlertConfiguration.fromMap((map['unhealthy'] as Map).cast<String, dynamic>()),
+      degraded: map['degraded'] == null ? null : (AlertConfiguration.fromMap((map['degraded'] as Map).cast<String, dynamic>())).input(),
+      unhealthy: map['unhealthy'] == null ? null : (AlertConfiguration.fromMap((map['unhealthy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

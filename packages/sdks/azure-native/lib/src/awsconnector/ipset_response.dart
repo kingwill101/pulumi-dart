@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of IPSet
 class IPSetResponse {
   /// Property definition
-  final List<String>? definition;
+  final pulumi.Input<List<String>>? definition;
 
   /// Creates a new [IPSetResponse].
   /// [definition] Property definition
@@ -20,7 +21,7 @@ class IPSetResponse {
 
   factory IPSetResponse.fromMap(Map<String, dynamic> map) {
     return IPSetResponse(
-      definition: map['definition'] == null ? null : (map['definition'] as List).cast<String>(),
+      definition: map['definition'] == null ? null : ((map['definition'] as List).cast<String>()).input(),
     );
   }
 }

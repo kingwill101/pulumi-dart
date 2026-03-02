@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// High-level information about a Template Spec version.
 class TemplateSpecVersionInfoResponse {
   /// Template Spec version description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The timestamp of when the version was created.
-  final String timeCreated;
+  final pulumi.Input<String> timeCreated;
   /// The timestamp of when the version was last modified.
-  final String timeModified;
+  final pulumi.Input<String> timeModified;
 
   /// Creates a new [TemplateSpecVersionInfoResponse].
   /// [description] Template Spec version description.
@@ -30,9 +31,9 @@ class TemplateSpecVersionInfoResponse {
 
   factory TemplateSpecVersionInfoResponse.fromMap(Map<String, dynamic> map) {
     return TemplateSpecVersionInfoResponse(
-      description: map['description'] as String,
-      timeCreated: map['timeCreated'] as String,
-      timeModified: map['timeModified'] as String,
+      description: (map['description'] as String).input(),
+      timeCreated: (map['timeCreated'] as String).input(),
+      timeModified: (map['timeModified'] as String).input(),
     );
   }
 }

@@ -52,35 +52,21 @@ class DiskArgs {
   /// [tags] The tags of the resource.
   /// [userName] The name of the user profile.
   DiskArgs({
-    pulumi.Output<String>? diskBlobName,
-    pulumi.Output<int>? diskSizeGiB,
-    pulumi.Output<String>? diskType,
-    pulumi.Output<String>? diskUri,
-    pulumi.Output<String>? hostCaching,
-    required pulumi.Output<String> labName,
-    pulumi.Output<String>? leasedByLabVmId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedDiskId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userName,
-  }) :
-      diskBlobName = pulumi.Input.asOptionalInput<String>(diskBlobName),
-      diskSizeGiB = pulumi.Input.asOptionalInput<int>(diskSizeGiB),
-      diskType = pulumi.Input.asOptionalInput<String>(diskType),
-      diskUri = pulumi.Input.asOptionalInput<String>(diskUri),
-      hostCaching = pulumi.Input.asOptionalInput<String>(hostCaching),
-      labName = pulumi.Input.asInput<String>(labName),
-      leasedByLabVmId = pulumi.Input.asOptionalInput<String>(leasedByLabVmId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedDiskId = pulumi.Input.asOptionalInput<String>(managedDiskId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.diskBlobName,
+    this.diskSizeGiB,
+    this.diskType,
+    this.diskUri,
+    this.hostCaching,
+    required this.labName,
+    this.leasedByLabVmId,
+    this.location,
+    this.managedDiskId,
+    this.name,
+    required this.resourceGroupName,
+    this.storageAccountId,
+    this.tags,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class DiskArgs {
 
   factory DiskArgs.fromMap(Map<String, dynamic> map) {
     return DiskArgs(
-      diskBlobName: map['diskBlobName'] == null ? null : pulumi.Output.create<String>(map['diskBlobName'] as String),
-      diskSizeGiB: map['diskSizeGiB'] == null ? null : pulumi.Output.create<int>(map['diskSizeGiB'] as int),
-      diskType: map['diskType'] == null ? null : pulumi.Output.create<String>(map['diskType'] as String),
-      diskUri: map['diskUri'] == null ? null : pulumi.Output.create<String>(map['diskUri'] as String),
-      hostCaching: map['hostCaching'] == null ? null : pulumi.Output.create<String>(map['hostCaching'] as String),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      leasedByLabVmId: map['leasedByLabVmId'] == null ? null : pulumi.Output.create<String>(map['leasedByLabVmId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedDiskId: map['managedDiskId'] == null ? null : pulumi.Output.create<String>(map['managedDiskId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      diskBlobName: map['diskBlobName'] == null ? null : (map['diskBlobName'] as String).input(),
+      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB'] as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      diskUri: map['diskUri'] == null ? null : (map['diskUri'] as String).input(),
+      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching'] as String).input(),
+      labName: (map['labName'] as String).input(),
+      leasedByLabVmId: map['leasedByLabVmId'] == null ? null : (map['leasedByLabVmId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

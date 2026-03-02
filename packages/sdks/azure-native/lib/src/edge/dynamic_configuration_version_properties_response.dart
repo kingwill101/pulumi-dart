@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dynamic Configuration Properties
 class DynamicConfigurationVersionPropertiesResponse {
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Schema Id for configuration
-  final String schemaId;
+  final pulumi.Input<String> schemaId;
   /// Values of configuration version
-  final String values;
+  final pulumi.Input<String> values;
 
   /// Creates a new [DynamicConfigurationVersionPropertiesResponse].
   /// [provisioningState] Provisioning state of resource
@@ -30,9 +31,9 @@ class DynamicConfigurationVersionPropertiesResponse {
 
   factory DynamicConfigurationVersionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationVersionPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      schemaId: map['schemaId'] as String,
-      values: map['values'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
+      values: (map['values'] as String).input(),
     );
   }
 }

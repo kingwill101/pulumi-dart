@@ -19,13 +19,10 @@ class GetRegionalSecretArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [secretId] The name of the regional secret.
   GetRegionalSecretArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> secretId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secretId = pulumi.Input.asInput<String>(secretId);
+    required this.location,
+    this.project,
+    required this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegionalSecretArgs {
 
   factory GetRegionalSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

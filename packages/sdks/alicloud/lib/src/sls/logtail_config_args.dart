@@ -38,25 +38,16 @@ class LogtailConfigArgs {
   /// [outputType] Log output mode. You can only upload data to log service.
   /// [projectName] Project name
   LogtailConfigArgs({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? inputDetail,
-    pulumi.Output<String>? inputType,
-    pulumi.Output<int>? lastModifyTime,
-    pulumi.Output<String>? logSample,
-    pulumi.Output<String>? logtailConfigName,
-    pulumi.Output<LogtailConfigOutputDetail>? outputDetail,
-    pulumi.Output<String>? outputType,
-    required pulumi.Output<String> projectName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      inputDetail = pulumi.Input.asOptionalInput<String>(inputDetail),
-      inputType = pulumi.Input.asOptionalInput<String>(inputType),
-      lastModifyTime = pulumi.Input.asOptionalInput<int>(lastModifyTime),
-      logSample = pulumi.Input.asOptionalInput<String>(logSample),
-      logtailConfigName = pulumi.Input.asOptionalInput<String>(logtailConfigName),
-      outputDetail = pulumi.Input.asOptionalInput<LogtailConfigOutputDetail>(outputDetail),
-      outputType = pulumi.Input.asOptionalInput<String>(outputType),
-      projectName = pulumi.Input.asInput<String>(projectName);
+    this.createTime,
+    this.inputDetail,
+    this.inputType,
+    this.lastModifyTime,
+    this.logSample,
+    this.logtailConfigName,
+    this.outputDetail,
+    this.outputType,
+    required this.projectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class LogtailConfigArgs {
 
   factory LogtailConfigArgs.fromMap(Map<String, dynamic> map) {
     return LogtailConfigArgs(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      inputDetail: map['inputDetail'] == null ? null : pulumi.Output.create<String>(map['inputDetail'] as String),
-      inputType: map['inputType'] == null ? null : pulumi.Output.create<String>(map['inputType'] as String),
-      lastModifyTime: map['lastModifyTime'] == null ? null : pulumi.Output.create<int>(map['lastModifyTime'] as int),
-      logSample: map['logSample'] == null ? null : pulumi.Output.create<String>(map['logSample'] as String),
-      logtailConfigName: map['logtailConfigName'] == null ? null : pulumi.Output.create<String>(map['logtailConfigName'] as String),
-      outputDetail: map['outputDetail'] == null ? null : pulumi.Output.create<LogtailConfigOutputDetail>(LogtailConfigOutputDetail.fromMap((map['outputDetail'] as Map).cast<String, dynamic>())),
-      outputType: map['outputType'] == null ? null : pulumi.Output.create<String>(map['outputType'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      inputDetail: map['inputDetail'] == null ? null : (map['inputDetail'] as String).input(),
+      inputType: map['inputType'] == null ? null : (map['inputType'] as String).input(),
+      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime'] as int).input(),
+      logSample: map['logSample'] == null ? null : (map['logSample'] as String).input(),
+      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName'] as String).input(),
+      outputDetail: map['outputDetail'] == null ? null : (LogtailConfigOutputDetail.fromMap((map['outputDetail'] as Map).cast<String, dynamic>())).input(),
+      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigsConfig {
   /// Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
-  final String code;
+  final pulumi.Input<String> code;
   /// Configure the Number.
-  final String configId;
+  final pulumi.Input<String> configId;
   /// Default Value.
-  final String defaultValue;
+  final pulumi.Input<String> defaultValue;
   /// Abnormal Alarm General Description of the Configuration Item.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Config.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetConfigsConfig].
   /// [code] Abnormal Alarm General Configuration Module by Using the Encoding.Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
@@ -44,12 +45,12 @@ class GetConfigsConfig {
 
   factory GetConfigsConfig.fromMap(Map<String, dynamic> map) {
     return GetConfigsConfig(
-      code: map['code'] as String,
-      configId: map['configId'] as String,
-      defaultValue: map['defaultValue'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      value: map['value'] as String,
+      code: (map['code'] as String).input(),
+      configId: (map['configId'] as String).input(),
+      defaultValue: (map['defaultValue'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

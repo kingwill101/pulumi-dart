@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserPoolDeviceConfiguration {
   /// - Whether a challenge is required on new devices.
-  final bool challengeRequiredOnNewDevice;
+  final pulumi.Input<bool> challengeRequiredOnNewDevice;
   /// - Whether devices are only remembered if the user prompts it.
-  final bool deviceOnlyRememberedOnUserPrompt;
+  final pulumi.Input<bool> deviceOnlyRememberedOnUserPrompt;
 
   /// Creates a new [GetUserPoolDeviceConfiguration].
   /// [challengeRequiredOnNewDevice] - Whether a challenge is required on new devices.
@@ -24,8 +25,8 @@ class GetUserPoolDeviceConfiguration {
 
   factory GetUserPoolDeviceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetUserPoolDeviceConfiguration(
-      challengeRequiredOnNewDevice: map['challengeRequiredOnNewDevice'] as bool,
-      deviceOnlyRememberedOnUserPrompt: map['deviceOnlyRememberedOnUserPrompt'] as bool,
+      challengeRequiredOnNewDevice: (map['challengeRequiredOnNewDevice'] as bool).input(),
+      deviceOnlyRememberedOnUserPrompt: (map['deviceOnlyRememberedOnUserPrompt'] as bool).input(),
     );
   }
 }

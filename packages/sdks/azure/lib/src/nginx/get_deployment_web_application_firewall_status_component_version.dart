@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDeploymentWebApplicationFirewallStatusComponentVersion {
-  final String wafEngineVersion;
-  final String wafNginxVersion;
+  final pulumi.Input<String> wafEngineVersion;
+  final pulumi.Input<String> wafNginxVersion;
 
   /// Creates a new [GetDeploymentWebApplicationFirewallStatusComponentVersion].
   /// [wafEngineVersion] Required.
@@ -22,8 +23,8 @@ class GetDeploymentWebApplicationFirewallStatusComponentVersion {
 
   factory GetDeploymentWebApplicationFirewallStatusComponentVersion.fromMap(Map<String, dynamic> map) {
     return GetDeploymentWebApplicationFirewallStatusComponentVersion(
-      wafEngineVersion: map['wafEngineVersion'] as String,
-      wafNginxVersion: map['wafNginxVersion'] as String,
+      wafEngineVersion: (map['wafEngineVersion'] as String).input(),
+      wafNginxVersion: (map['wafNginxVersion'] as String).input(),
     );
   }
 }

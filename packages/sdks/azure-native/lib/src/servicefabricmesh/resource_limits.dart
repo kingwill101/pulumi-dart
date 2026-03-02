@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This type describes the resource limits for a given container. It describes the most amount of resources a container is allowed to use before being restarted.
 class ResourceLimits {
   /// CPU limits in cores. At present, only full cores are supported.
-  final double? cpu;
+  final pulumi.Input<double>? cpu;
   /// The memory limit in GB.
-  final double? memoryInGB;
+  final pulumi.Input<double>? memoryInGB;
 
   /// Creates a new [ResourceLimits].
   /// [cpu] CPU limits in cores. At present, only full cores are supported.
@@ -25,8 +26,8 @@ class ResourceLimits {
 
   factory ResourceLimits.fromMap(Map<String, dynamic> map) {
     return ResourceLimits(
-      cpu: map['cpu'] == null ? null : map['cpu'] as double,
-      memoryInGB: map['memoryInGB'] == null ? null : map['memoryInGB'] as double,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      memoryInGB: map['memoryInGB'] == null ? null : (map['memoryInGB'] as double).input(),
     );
   }
 }

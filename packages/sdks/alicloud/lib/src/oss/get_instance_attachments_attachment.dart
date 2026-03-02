@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceAttachmentsAttachment {
   /// The domain of the instance attachment.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// The access endpoint of the instance attachment.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The resource ID, the value is same as "instance_name".
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of OTS instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The region of the instance attachment.
-  final String region;
+  final pulumi.Input<String> region;
   /// The ID of attaching VPC to instance.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The name of attaching VPC to instance.
-  final String vpcName;
+  final pulumi.Input<String> vpcName;
 
   /// Creates a new [GetInstanceAttachmentsAttachment].
   /// [domain] The domain of the instance attachment.
@@ -49,13 +50,13 @@ class GetInstanceAttachmentsAttachment {
 
   factory GetInstanceAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsAttachment(
-      domain: map['domain'] as String,
-      endpoint: map['endpoint'] as String,
-      id: map['id'] as String,
-      instanceName: map['instanceName'] as String,
-      region: map['region'] as String,
-      vpcId: map['vpcId'] as String,
-      vpcName: map['vpcName'] as String,
+      domain: (map['domain'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      region: (map['region'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcName: (map['vpcName'] as String).input(),
     );
   }
 }

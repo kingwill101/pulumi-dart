@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Image registry credential.
 class ImageRegistryCredential {
   /// The identity for the private registry.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// The identity URL for the private registry.
-  final String? identityUrl;
+  final pulumi.Input<String>? identityUrl;
   /// The password for the private registry.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The reference for the private registry password.
-  final String? passwordReference;
+  final pulumi.Input<String>? passwordReference;
   /// The Docker image registry server without a protocol such as "http" and "https".
-  final String server;
+  final pulumi.Input<String> server;
   /// The username for the private registry.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ImageRegistryCredential].
   /// [identity] The identity for the private registry.
@@ -45,12 +46,12 @@ class ImageRegistryCredential {
 
   factory ImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ImageRegistryCredential(
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      identityUrl: map['identityUrl'] == null ? null : map['identityUrl'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      passwordReference: map['passwordReference'] == null ? null : map['passwordReference'] as String,
-      server: map['server'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      identityUrl: map['identityUrl'] == null ? null : (map['identityUrl'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordReference: map['passwordReference'] == null ? null : (map['passwordReference'] as String).input(),
+      server: (map['server'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

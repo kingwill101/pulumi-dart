@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the port condition that needs to be matched.
 class AccessControlListPortCondition {
   /// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
-  final List<String>? flags;
+  final pulumi.Input<List<String>>? flags;
   /// Layer4 protocol type that needs to be matched.
-  final String layer4Protocol;
+  final pulumi.Input<String> layer4Protocol;
   /// List of the port Group Names that need to be matched.
-  final List<String>? portGroupNames;
+  final pulumi.Input<List<String>>? portGroupNames;
   /// Port type that needs to be matched.
-  final String? portType;
+  final pulumi.Input<String>? portType;
   /// List of the Ports that need to be matched.
-  final List<String>? ports;
+  final pulumi.Input<List<String>>? ports;
 
   /// Creates a new [AccessControlListPortCondition].
   /// [flags] List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
@@ -40,11 +41,11 @@ class AccessControlListPortCondition {
 
   factory AccessControlListPortCondition.fromMap(Map<String, dynamic> map) {
     return AccessControlListPortCondition(
-      flags: map['flags'] == null ? null : (map['flags'] as List).cast<String>(),
-      layer4Protocol: map['layer4Protocol'] as String,
-      portGroupNames: map['portGroupNames'] == null ? null : (map['portGroupNames'] as List).cast<String>(),
-      portType: map['portType'] == null ? null : map['portType'] as String,
-      ports: map['ports'] == null ? null : (map['ports'] as List).cast<String>(),
+      flags: map['flags'] == null ? null : ((map['flags'] as List).cast<String>()).input(),
+      layer4Protocol: (map['layer4Protocol'] as String).input(),
+      portGroupNames: map['portGroupNames'] == null ? null : ((map['portGroupNames'] as List).cast<String>()).input(),
+      portType: map['portType'] == null ? null : (map['portType'] as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
     );
   }
 }

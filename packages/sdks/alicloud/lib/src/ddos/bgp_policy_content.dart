@@ -9,33 +9,33 @@ import 'bgp_policy_content_source_limit.dart';
 
 class BgpPolicyContent {
   /// Blacklist and whitelist timeout.
-  final int? blackIpListExpireAt;
+  final pulumi.Input<int>? blackIpListExpireAt;
   /// Whether to enable L4 protection.
-  final bool? enableDefense;
+  final pulumi.Input<bool>? enableDefense;
   /// Switch to discard ICMP.
-  final bool? enableDropIcmp;
+  final pulumi.Input<bool>? enableDropIcmp;
   /// Whether the intelligent switch is on.
-  final bool? enableIntelligence;
+  final pulumi.Input<bool>? enableIntelligence;
   /// Fingerprint Rules. See `finger_print_rule_list` below.
-  final List<BgpPolicyContentFingerPrintRuleList>? fingerPrintRuleLists;
+  final pulumi.Input<List<BgpPolicyContentFingerPrintRuleList>>? fingerPrintRuleLists;
   /// Smart mode. Valid values: weak, hard, and default.
-  final String? intelligenceLevel;
+  final pulumi.Input<String>? intelligenceLevel;
   /// L4 protection rules. See `layer4_rule_list` below.
-  final List<BgpPolicyContentLayer4RuleList>? layer4RuleLists;
+  final pulumi.Input<List<BgpPolicyContentLayer4RuleList>>? layer4RuleLists;
   /// Port Rule List. See `port_rule_list` below.
-  final List<BgpPolicyContentPortRuleList>? portRuleLists;
+  final pulumi.Input<List<BgpPolicyContentPortRuleList>>? portRuleLists;
   /// Reflective port filtering.
-  final List<int>? reflectBlockUdpPortLists;
+  final pulumi.Input<List<int>>? reflectBlockUdpPortLists;
   /// List of Regional Banned Countries.
-  final List<int>? regionBlockCountryLists;
+  final pulumi.Input<List<int>>? regionBlockCountryLists;
   /// List of Prohibited Provinces by Region.
-  final List<int>? regionBlockProvinceLists;
+  final pulumi.Input<List<int>>? regionBlockProvinceLists;
   /// Source pull Black. See `source_block_list` below.
-  final List<BgpPolicyContentSourceBlockList>? sourceBlockLists;
+  final pulumi.Input<List<BgpPolicyContentSourceBlockList>>? sourceBlockLists;
   /// Do not fill in when the source speed limit is deleted. See `source_limit` below.
-  final BgpPolicyContentSourceLimit? sourceLimit;
+  final pulumi.Input<BgpPolicyContentSourceLimit>? sourceLimit;
   /// Add white high protection back to source network segment switch.
-  final bool? whitenGfbrNets;
+  final pulumi.Input<bool>? whitenGfbrNets;
 
   /// Creates a new [BgpPolicyContent].
   /// [blackIpListExpireAt] Blacklist and whitelist timeout.
@@ -75,35 +75,35 @@ class BgpPolicyContent {
       'enableDefense': ?enableDefense,
       'enableDropIcmp': ?enableDropIcmp,
       'enableIntelligence': ?enableIntelligence,
-      'fingerPrintRuleLists': ?fingerPrintRuleLists == null ? null : pulumi.Input.encodeList<BgpPolicyContentFingerPrintRuleList, Map<String, dynamic>>(fingerPrintRuleLists!, (value) => value.toMap()),
+      'fingerPrintRuleLists': ?pulumi.Input.mapOptionalInputValue<List<BgpPolicyContentFingerPrintRuleList>, List<Map<String, dynamic>>>(fingerPrintRuleLists, (value) => pulumi.Input.encodeList<BgpPolicyContentFingerPrintRuleList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'intelligenceLevel': ?intelligenceLevel,
-      'layer4RuleLists': ?layer4RuleLists == null ? null : pulumi.Input.encodeList<BgpPolicyContentLayer4RuleList, Map<String, dynamic>>(layer4RuleLists!, (value) => value.toMap()),
-      'portRuleLists': ?portRuleLists == null ? null : pulumi.Input.encodeList<BgpPolicyContentPortRuleList, Map<String, dynamic>>(portRuleLists!, (value) => value.toMap()),
+      'layer4RuleLists': ?pulumi.Input.mapOptionalInputValue<List<BgpPolicyContentLayer4RuleList>, List<Map<String, dynamic>>>(layer4RuleLists, (value) => pulumi.Input.encodeList<BgpPolicyContentLayer4RuleList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portRuleLists': ?pulumi.Input.mapOptionalInputValue<List<BgpPolicyContentPortRuleList>, List<Map<String, dynamic>>>(portRuleLists, (value) => pulumi.Input.encodeList<BgpPolicyContentPortRuleList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'reflectBlockUdpPortLists': ?reflectBlockUdpPortLists,
       'regionBlockCountryLists': ?regionBlockCountryLists,
       'regionBlockProvinceLists': ?regionBlockProvinceLists,
-      'sourceBlockLists': ?sourceBlockLists == null ? null : pulumi.Input.encodeList<BgpPolicyContentSourceBlockList, Map<String, dynamic>>(sourceBlockLists!, (value) => value.toMap()),
-      'sourceLimit': ?sourceLimit == null ? null : sourceLimit!.toMap(),
+      'sourceBlockLists': ?pulumi.Input.mapOptionalInputValue<List<BgpPolicyContentSourceBlockList>, List<Map<String, dynamic>>>(sourceBlockLists, (value) => pulumi.Input.encodeList<BgpPolicyContentSourceBlockList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceLimit': ?pulumi.Input.mapOptionalInputValue<BgpPolicyContentSourceLimit, Map<String, dynamic>>(sourceLimit, (value) => value.toMap()),
       'whitenGfbrNets': ?whitenGfbrNets,
     };
   }
 
   factory BgpPolicyContent.fromMap(Map<String, dynamic> map) {
     return BgpPolicyContent(
-      blackIpListExpireAt: map['blackIpListExpireAt'] == null ? null : map['blackIpListExpireAt'] as int,
-      enableDefense: map['enableDefense'] == null ? null : map['enableDefense'] as bool,
-      enableDropIcmp: map['enableDropIcmp'] == null ? null : map['enableDropIcmp'] as bool,
-      enableIntelligence: map['enableIntelligence'] == null ? null : map['enableIntelligence'] as bool,
-      fingerPrintRuleLists: map['fingerPrintRuleLists'] == null ? null : pulumi.Input.decodeList<BgpPolicyContentFingerPrintRuleList>(map['fingerPrintRuleLists'], (value) => BgpPolicyContentFingerPrintRuleList.fromMap((value as Map).cast<String, dynamic>())),
-      intelligenceLevel: map['intelligenceLevel'] == null ? null : map['intelligenceLevel'] as String,
-      layer4RuleLists: map['layer4RuleLists'] == null ? null : pulumi.Input.decodeList<BgpPolicyContentLayer4RuleList>(map['layer4RuleLists'], (value) => BgpPolicyContentLayer4RuleList.fromMap((value as Map).cast<String, dynamic>())),
-      portRuleLists: map['portRuleLists'] == null ? null : pulumi.Input.decodeList<BgpPolicyContentPortRuleList>(map['portRuleLists'], (value) => BgpPolicyContentPortRuleList.fromMap((value as Map).cast<String, dynamic>())),
-      reflectBlockUdpPortLists: map['reflectBlockUdpPortLists'] == null ? null : (map['reflectBlockUdpPortLists'] as List).cast<int>(),
-      regionBlockCountryLists: map['regionBlockCountryLists'] == null ? null : (map['regionBlockCountryLists'] as List).cast<int>(),
-      regionBlockProvinceLists: map['regionBlockProvinceLists'] == null ? null : (map['regionBlockProvinceLists'] as List).cast<int>(),
-      sourceBlockLists: map['sourceBlockLists'] == null ? null : pulumi.Input.decodeList<BgpPolicyContentSourceBlockList>(map['sourceBlockLists'], (value) => BgpPolicyContentSourceBlockList.fromMap((value as Map).cast<String, dynamic>())),
-      sourceLimit: map['sourceLimit'] == null ? null : BgpPolicyContentSourceLimit.fromMap((map['sourceLimit'] as Map).cast<String, dynamic>()),
-      whitenGfbrNets: map['whitenGfbrNets'] == null ? null : map['whitenGfbrNets'] as bool,
+      blackIpListExpireAt: map['blackIpListExpireAt'] == null ? null : (map['blackIpListExpireAt'] as int).input(),
+      enableDefense: map['enableDefense'] == null ? null : (map['enableDefense'] as bool).input(),
+      enableDropIcmp: map['enableDropIcmp'] == null ? null : (map['enableDropIcmp'] as bool).input(),
+      enableIntelligence: map['enableIntelligence'] == null ? null : (map['enableIntelligence'] as bool).input(),
+      fingerPrintRuleLists: map['fingerPrintRuleLists'] == null ? null : (pulumi.Input.decodeList<BgpPolicyContentFingerPrintRuleList>(map['fingerPrintRuleLists'], (value) => BgpPolicyContentFingerPrintRuleList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      intelligenceLevel: map['intelligenceLevel'] == null ? null : (map['intelligenceLevel'] as String).input(),
+      layer4RuleLists: map['layer4RuleLists'] == null ? null : (pulumi.Input.decodeList<BgpPolicyContentLayer4RuleList>(map['layer4RuleLists'], (value) => BgpPolicyContentLayer4RuleList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portRuleLists: map['portRuleLists'] == null ? null : (pulumi.Input.decodeList<BgpPolicyContentPortRuleList>(map['portRuleLists'], (value) => BgpPolicyContentPortRuleList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reflectBlockUdpPortLists: map['reflectBlockUdpPortLists'] == null ? null : ((map['reflectBlockUdpPortLists'] as List).cast<int>()).input(),
+      regionBlockCountryLists: map['regionBlockCountryLists'] == null ? null : ((map['regionBlockCountryLists'] as List).cast<int>()).input(),
+      regionBlockProvinceLists: map['regionBlockProvinceLists'] == null ? null : ((map['regionBlockProvinceLists'] as List).cast<int>()).input(),
+      sourceBlockLists: map['sourceBlockLists'] == null ? null : (pulumi.Input.decodeList<BgpPolicyContentSourceBlockList>(map['sourceBlockLists'], (value) => BgpPolicyContentSourceBlockList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceLimit: map['sourceLimit'] == null ? null : (BgpPolicyContentSourceLimit.fromMap((map['sourceLimit'] as Map).cast<String, dynamic>())).input(),
+      whitenGfbrNets: map['whitenGfbrNets'] == null ? null : (map['whitenGfbrNets'] as bool).input(),
     );
   }
 }

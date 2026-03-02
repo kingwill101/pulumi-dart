@@ -56,31 +56,19 @@ class GameServerGroupArgs {
   /// [tags] Key-value map of resource tags
   /// [vpcSubnets] A list of VPC subnets to use with instances in the game server group.
   GameServerGroupArgs({
-    pulumi.Output<GameServerGroupAutoScalingPolicy>? autoScalingPolicy,
-    pulumi.Output<String>? balancingStrategy,
-    required pulumi.Output<String> gameServerGroupName,
-    pulumi.Output<String>? gameServerProtectionPolicy,
-    required pulumi.Output<List<GameServerGroupInstanceDefinition>> instanceDefinitions,
-    required pulumi.Output<GameServerGroupLaunchTemplate> launchTemplate,
-    required pulumi.Output<int> maxSize,
-    required pulumi.Output<int> minSize,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? vpcSubnets,
-  }) :
-      autoScalingPolicy = pulumi.Input.asOptionalInput<GameServerGroupAutoScalingPolicy>(autoScalingPolicy),
-      balancingStrategy = pulumi.Input.asOptionalInput<String>(balancingStrategy),
-      gameServerGroupName = pulumi.Input.asInput<String>(gameServerGroupName),
-      gameServerProtectionPolicy = pulumi.Input.asOptionalInput<String>(gameServerProtectionPolicy),
-      instanceDefinitions = pulumi.Input.asInput<List<GameServerGroupInstanceDefinition>>(instanceDefinitions),
-      launchTemplate = pulumi.Input.asInput<GameServerGroupLaunchTemplate>(launchTemplate),
-      maxSize = pulumi.Input.asInput<int>(maxSize),
-      minSize = pulumi.Input.asInput<int>(minSize),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcSubnets = pulumi.Input.asOptionalInput<List<String>>(vpcSubnets);
+    this.autoScalingPolicy,
+    this.balancingStrategy,
+    required this.gameServerGroupName,
+    this.gameServerProtectionPolicy,
+    required this.instanceDefinitions,
+    required this.launchTemplate,
+    required this.maxSize,
+    required this.minSize,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    this.vpcSubnets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,18 +89,18 @@ class GameServerGroupArgs {
 
   factory GameServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return GameServerGroupArgs(
-      autoScalingPolicy: map['autoScalingPolicy'] == null ? null : pulumi.Output.create<GameServerGroupAutoScalingPolicy>(GameServerGroupAutoScalingPolicy.fromMap((map['autoScalingPolicy'] as Map).cast<String, dynamic>())),
-      balancingStrategy: map['balancingStrategy'] == null ? null : pulumi.Output.create<String>(map['balancingStrategy'] as String),
-      gameServerGroupName: pulumi.Output.create<String>(map['gameServerGroupName'] as String),
-      gameServerProtectionPolicy: map['gameServerProtectionPolicy'] == null ? null : pulumi.Output.create<String>(map['gameServerProtectionPolicy'] as String),
-      instanceDefinitions: pulumi.Output.create<List<GameServerGroupInstanceDefinition>>(pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(map['instanceDefinitions'], (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      launchTemplate: pulumi.Output.create<GameServerGroupLaunchTemplate>(GameServerGroupLaunchTemplate.fromMap((map['launchTemplate'] as Map).cast<String, dynamic>())),
-      maxSize: pulumi.Output.create<int>(map['maxSize'] as int),
-      minSize: pulumi.Output.create<int>(map['minSize'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcSubnets: map['vpcSubnets'] == null ? null : pulumi.Output.create<List<String>>((map['vpcSubnets'] as List).cast<String>()),
+      autoScalingPolicy: map['autoScalingPolicy'] == null ? null : (GameServerGroupAutoScalingPolicy.fromMap((map['autoScalingPolicy'] as Map).cast<String, dynamic>())).input(),
+      balancingStrategy: map['balancingStrategy'] == null ? null : (map['balancingStrategy'] as String).input(),
+      gameServerGroupName: (map['gameServerGroupName'] as String).input(),
+      gameServerProtectionPolicy: map['gameServerProtectionPolicy'] == null ? null : (map['gameServerProtectionPolicy'] as String).input(),
+      instanceDefinitions: (pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(map['instanceDefinitions'], (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplate: (GameServerGroupLaunchTemplate.fromMap((map['launchTemplate'] as Map).cast<String, dynamic>())).input(),
+      maxSize: (map['maxSize'] as int).input(),
+      minSize: (map['minSize'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcSubnets: map['vpcSubnets'] == null ? null : ((map['vpcSubnets'] as List).cast<String>()).input(),
     );
   }
 }

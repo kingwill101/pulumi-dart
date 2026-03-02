@@ -37,27 +37,17 @@ class EcsSnapshotGroupState {
   /// [status] The status of the resource.
   /// [tags] A mapping of tags to assign to the snapshot group.
   EcsSnapshotGroupState({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? diskIds,
-    pulumi.Output<List<String>>? excludeDiskIds,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<bool>? instantAccess,
-    pulumi.Output<int>? instantAccessRetentionDays,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? snapshotGroupName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskIds = pulumi.Input.asOptionalInput<List<String>>(diskIds),
-      excludeDiskIds = pulumi.Input.asOptionalInput<List<String>>(excludeDiskIds),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instantAccess = pulumi.Input.asOptionalInput<bool>(instantAccess),
-      instantAccessRetentionDays = pulumi.Input.asOptionalInput<int>(instantAccessRetentionDays),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      snapshotGroupName = pulumi.Input.asOptionalInput<String>(snapshotGroupName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.diskIds,
+    this.excludeDiskIds,
+    this.instanceId,
+    this.instantAccess,
+    this.instantAccessRetentionDays,
+    this.resourceGroupId,
+    this.snapshotGroupName,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class EcsSnapshotGroupState {
 
   factory EcsSnapshotGroupState.fromMap(Map<String, dynamic> map) {
     return EcsSnapshotGroupState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskIds: map['diskIds'] == null ? null : pulumi.Output.create<List<String>>((map['diskIds'] as List).cast<String>()),
-      excludeDiskIds: map['excludeDiskIds'] == null ? null : pulumi.Output.create<List<String>>((map['excludeDiskIds'] as List).cast<String>()),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instantAccess: map['instantAccess'] == null ? null : pulumi.Output.create<bool>(map['instantAccess'] as bool),
-      instantAccessRetentionDays: map['instantAccessRetentionDays'] == null ? null : pulumi.Output.create<int>(map['instantAccessRetentionDays'] as int),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      snapshotGroupName: map['snapshotGroupName'] == null ? null : pulumi.Output.create<String>(map['snapshotGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskIds: map['diskIds'] == null ? null : ((map['diskIds'] as List).cast<String>()).input(),
+      excludeDiskIds: map['excludeDiskIds'] == null ? null : ((map['excludeDiskIds'] as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instantAccess: map['instantAccess'] == null ? null : (map['instantAccess'] as bool).input(),
+      instantAccessRetentionDays: map['instantAccessRetentionDays'] == null ? null : (map['instantAccessRetentionDays'] as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      snapshotGroupName: map['snapshotGroupName'] == null ? null : (map['snapshotGroupName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

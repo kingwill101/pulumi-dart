@@ -22,15 +22,11 @@ class GetWebAppPrivateEndpointConnectionSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the site deployment slot.
   GetWebAppPrivateEndpointConnectionSlotArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    required this.name,
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWebAppPrivateEndpointConnectionSlotArgs {
 
   factory GetWebAppPrivateEndpointConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppPrivateEndpointConnectionSlotArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      name: (map['name'] as String).input(),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

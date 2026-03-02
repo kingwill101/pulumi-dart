@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworksNetwork {
   /// CidrBlock of the CCN instance.
-  final String cidrBlock;
-  final String description;
+  final pulumi.Input<String> cidrBlock;
+  final pulumi.Input<String> description;
   /// ID of the CCN instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// IsDefault of the CCN instance.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// Name of the CCN instance.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetNetworksNetwork].
   /// [cidrBlock] CidrBlock of the CCN instance.
@@ -38,11 +39,11 @@ class GetNetworksNetwork {
 
   factory GetNetworksNetwork.fromMap(Map<String, dynamic> map) {
     return GetNetworksNetwork(
-      cidrBlock: map['cidrBlock'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      isDefault: map['isDefault'] as bool,
-      name: map['name'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

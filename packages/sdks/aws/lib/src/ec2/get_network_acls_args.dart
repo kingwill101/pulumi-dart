@@ -24,15 +24,11 @@ class GetNetworkAclsArgs {
   /// [tags] Map of tags, each pair of which must exactly match
   /// [vpcId] VPC ID that you want to filter from.
   GetNetworkAclsArgs({
-    pulumi.Output<List<GetNetworkAclsFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNetworkAclsFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.filters,
+    this.region,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetNetworkAclsArgs {
 
   factory GetNetworkAclsArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNetworkAclsFilter>>(pulumi.Input.decodeList<GetNetworkAclsFilter>(map['filters'], (value) => GetNetworkAclsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNetworkAclsFilter>(map['filters'], (value) => GetNetworkAclsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetIntegrationAccountPartnerArgs {
   /// [partnerName] The integration account partner name.
   /// [resourceGroupName] The resource group name.
   GetIntegrationAccountPartnerArgs({
-    required pulumi.Output<String> integrationAccountName,
-    required pulumi.Output<String> partnerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      partnerName = pulumi.Input.asInput<String>(partnerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.integrationAccountName,
+    required this.partnerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIntegrationAccountPartnerArgs {
 
   factory GetIntegrationAccountPartnerArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountPartnerArgs(
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      partnerName: pulumi.Output.create<String>(map['partnerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      partnerName: (map['partnerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

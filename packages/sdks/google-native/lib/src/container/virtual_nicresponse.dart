@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of gVNIC feature.
 class VirtualNICResponse {
   /// Whether gVNIC features are enabled in the node pool.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [VirtualNICResponse].
   /// [enabled] Whether gVNIC features are enabled in the node pool.
@@ -20,7 +21,7 @@ class VirtualNICResponse {
 
   factory VirtualNICResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNICResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

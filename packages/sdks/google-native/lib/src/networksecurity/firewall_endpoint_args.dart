@@ -29,21 +29,14 @@ class FirewallEndpointArgs {
   /// [organizationId] Required.
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   FirewallEndpointArgs({
-    pulumi.Output<String>? billingProjectId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> firewallEndpointId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? requestId,
-  }) :
-      billingProjectId = pulumi.Input.asOptionalInput<String>(billingProjectId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      firewallEndpointId = pulumi.Input.asInput<String>(firewallEndpointId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.billingProjectId,
+    this.description,
+    required this.firewallEndpointId,
+    this.labels,
+    this.location,
+    required this.organizationId,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class FirewallEndpointArgs {
 
   factory FirewallEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointArgs(
-      billingProjectId: map['billingProjectId'] == null ? null : pulumi.Output.create<String>(map['billingProjectId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      firewallEndpointId: pulumi.Output.create<String>(map['firewallEndpointId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      billingProjectId: map['billingProjectId'] == null ? null : (map['billingProjectId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      firewallEndpointId: (map['firewallEndpointId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

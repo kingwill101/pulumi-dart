@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NGroups load balancer backend address pool
 class LoadBalancerBackendAddressPool {
   /// The Load Balancer backend address pool ARM resource Id.
-  final String? resource;
+  final pulumi.Input<String>? resource;
 
   /// Creates a new [LoadBalancerBackendAddressPool].
   /// [resource] The Load Balancer backend address pool ARM resource Id.
@@ -20,7 +21,7 @@ class LoadBalancerBackendAddressPool {
 
   factory LoadBalancerBackendAddressPool.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPool(
-      resource: map['resource'] == null ? null : map['resource'] as String,
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
     );
   }
 }

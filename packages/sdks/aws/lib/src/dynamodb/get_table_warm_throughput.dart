@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableWarmThroughput {
-  final int readUnitsPerSecond;
-  final int writeUnitsPerSecond;
+  final pulumi.Input<int> readUnitsPerSecond;
+  final pulumi.Input<int> writeUnitsPerSecond;
 
   /// Creates a new [GetTableWarmThroughput].
   /// [readUnitsPerSecond] Required.
@@ -22,8 +23,8 @@ class GetTableWarmThroughput {
 
   factory GetTableWarmThroughput.fromMap(Map<String, dynamic> map) {
     return GetTableWarmThroughput(
-      readUnitsPerSecond: map['readUnitsPerSecond'] as int,
-      writeUnitsPerSecond: map['writeUnitsPerSecond'] as int,
+      readUnitsPerSecond: (map['readUnitsPerSecond'] as int).input(),
+      writeUnitsPerSecond: (map['writeUnitsPerSecond'] as int).input(),
     );
   }
 }

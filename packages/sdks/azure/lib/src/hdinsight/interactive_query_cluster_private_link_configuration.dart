@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interactive_query_cluster_private_link_configuration_ip_configuration.dart';
 
 class InteractiveQueryClusterPrivateLinkConfiguration {
   /// The ID of the private link service group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// An `ip_configuration` block as defined below.
-  final InteractiveQueryClusterPrivateLinkConfigurationIpConfiguration ipConfiguration;
+  final pulumi.Input<InteractiveQueryClusterPrivateLinkConfigurationIpConfiguration> ipConfiguration;
   /// The name of the private link configuration.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [InteractiveQueryClusterPrivateLinkConfiguration].
   /// [groupId] The ID of the private link service group.
@@ -23,16 +24,16 @@ class InteractiveQueryClusterPrivateLinkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupId': groupId,
-      'ipConfiguration': ipConfiguration.toMap(),
+      'ipConfiguration': pulumi.Input.mapInputValue<InteractiveQueryClusterPrivateLinkConfigurationIpConfiguration, Map<String, dynamic>>(ipConfiguration, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory InteractiveQueryClusterPrivateLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterPrivateLinkConfiguration(
-      groupId: map['groupId'] as String,
-      ipConfiguration: InteractiveQueryClusterPrivateLinkConfigurationIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      groupId: (map['groupId'] as String).input(),
+      ipConfiguration: (InteractiveQueryClusterPrivateLinkConfigurationIpConfiguration.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

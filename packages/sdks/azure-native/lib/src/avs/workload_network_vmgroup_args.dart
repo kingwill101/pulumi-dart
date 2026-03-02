@@ -28,19 +28,13 @@ class WorkloadNetworkVMGroupArgs {
   /// [revision] NSX revision number.
   /// [vmGroupId] ID of the VM group.
   WorkloadNetworkVMGroupArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? members,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<double>? revision,
-    pulumi.Output<String>? vmGroupId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      revision = pulumi.Input.asOptionalInput<double>(revision),
-      vmGroupId = pulumi.Input.asOptionalInput<String>(vmGroupId);
+    this.displayName,
+    this.members,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    this.revision,
+    this.vmGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WorkloadNetworkVMGroupArgs {
 
   factory WorkloadNetworkVMGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkVMGroupArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      revision: map['revision'] == null ? null : pulumi.Output.create<double>(map['revision'] as double),
-      vmGroupId: map['vmGroupId'] == null ? null : pulumi.Output.create<String>(map['vmGroupId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      vmGroupId: map['vmGroupId'] == null ? null : (map['vmGroupId'] as String).input(),
     );
   }
 }

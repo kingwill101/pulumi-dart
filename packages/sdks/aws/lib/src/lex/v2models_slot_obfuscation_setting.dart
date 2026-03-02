@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotObfuscationSetting {
   /// Whether Amazon Lex obscures slot values in conversation logs. Valid values are `DefaultObfuscation` and `None`.
-  final String obfuscationSettingType;
+  final pulumi.Input<String> obfuscationSettingType;
 
   /// Creates a new [V2modelsSlotObfuscationSetting].
   /// [obfuscationSettingType] Whether Amazon Lex obscures slot values in conversation logs. Valid values are `DefaultObfuscation` and `None`.
@@ -19,7 +20,7 @@ class V2modelsSlotObfuscationSetting {
 
   factory V2modelsSlotObfuscationSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotObfuscationSetting(
-      obfuscationSettingType: map['obfuscationSettingType'] as String,
+      obfuscationSettingType: (map['obfuscationSettingType'] as String).input(),
     );
   }
 }

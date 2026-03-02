@@ -5,10 +5,10 @@ import 'instance_backup_schedule.dart';
 
 class InstanceBackup {
   /// Whether this Backup is available for restoration.
-  final bool? available;
+  final pulumi.Input<bool>? available;
   /// If this Linode has the Backup service enabled.
-  final bool? enabled;
-  final List<InstanceBackupSchedule>? schedules;
+  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<List<InstanceBackupSchedule>>? schedules;
 
   /// Creates a new [InstanceBackup].
   /// [available] Whether this Backup is available for restoration.
@@ -24,15 +24,15 @@ class InstanceBackup {
     return <String, dynamic>{
       'available': ?available,
       'enabled': ?enabled,
-      'schedules': ?schedules == null ? null : pulumi.Input.encodeList<InstanceBackupSchedule, Map<String, dynamic>>(schedules!, (value) => value.toMap()),
+      'schedules': ?pulumi.Input.mapOptionalInputValue<List<InstanceBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<InstanceBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory InstanceBackup.fromMap(Map<String, dynamic> map) {
     return InstanceBackup(
-      available: map['available'] == null ? null : map['available'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      schedules: map['schedules'] == null ? null : pulumi.Input.decodeList<InstanceBackupSchedule>(map['schedules'], (value) => InstanceBackupSchedule.fromMap((value as Map).cast<String, dynamic>())),
+      available: map['available'] == null ? null : (map['available'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<InstanceBackupSchedule>(map['schedules'], (value) => InstanceBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

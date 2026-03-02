@@ -37,25 +37,16 @@ class ClientTlsPolicyArgs {
   /// [serverValidationCa] Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
   /// [sni] Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   ClientTlsPolicyArgs({
-    pulumi.Output<GoogleCloudNetworksecurityV1CertificateProvider>? clientCertificate,
-    required pulumi.Output<String> clientTlsPolicyId,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<ValidationCA>>? serverValidationCa,
-    pulumi.Output<String>? sni,
-  }) :
-      clientCertificate = pulumi.Input.asOptionalInput<GoogleCloudNetworksecurityV1CertificateProvider>(clientCertificate),
-      clientTlsPolicyId = pulumi.Input.asInput<String>(clientTlsPolicyId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serverValidationCa = pulumi.Input.asOptionalInput<List<ValidationCA>>(serverValidationCa),
-      sni = pulumi.Input.asOptionalInput<String>(sni);
+    this.clientCertificate,
+    required this.clientTlsPolicyId,
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.serverValidationCa,
+    this.sni,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ClientTlsPolicyArgs {
 
   factory ClientTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ClientTlsPolicyArgs(
-      clientCertificate: map['clientCertificate'] == null ? null : pulumi.Output.create<GoogleCloudNetworksecurityV1CertificateProvider>(GoogleCloudNetworksecurityV1CertificateProvider.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())),
-      clientTlsPolicyId: pulumi.Output.create<String>(map['clientTlsPolicyId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serverValidationCa: map['serverValidationCa'] == null ? null : pulumi.Output.create<List<ValidationCA>>(pulumi.Input.decodeList<ValidationCA>(map['serverValidationCa'], (value) => ValidationCA.fromMap((value as Map).cast<String, dynamic>()))),
-      sni: map['sni'] == null ? null : pulumi.Output.create<String>(map['sni'] as String),
+      clientCertificate: map['clientCertificate'] == null ? null : (GoogleCloudNetworksecurityV1CertificateProvider.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
+      clientTlsPolicyId: (map['clientTlsPolicyId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serverValidationCa: map['serverValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCA>(map['serverValidationCa'], (value) => ValidationCA.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sni: map['sni'] == null ? null : (map['sni'] as String).input(),
     );
   }
 }

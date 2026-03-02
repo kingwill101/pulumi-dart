@@ -23,15 +23,11 @@ class ProtectedItemArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
   ProtectedItemArgs({
-    required pulumi.Output<ProtectedItemModelProperties> properties,
-    pulumi.Output<String>? protectedItemName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      properties = pulumi.Input.asInput<ProtectedItemModelProperties>(properties),
-      protectedItemName = pulumi.Input.asOptionalInput<String>(protectedItemName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.properties,
+    this.protectedItemName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ProtectedItemArgs {
 
   factory ProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return ProtectedItemArgs(
-      properties: pulumi.Output.create<ProtectedItemModelProperties>(ProtectedItemModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      protectedItemName: map['protectedItemName'] == null ? null : pulumi.Output.create<String>(map['protectedItemName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      properties: (ProtectedItemModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      protectedItemName: map['protectedItemName'] == null ? null : (map['protectedItemName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

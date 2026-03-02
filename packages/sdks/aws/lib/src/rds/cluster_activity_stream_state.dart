@@ -28,19 +28,13 @@ class ClusterActivityStreamState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) of the DB cluster.
   ClusterActivityStreamState({
-    pulumi.Output<bool>? engineNativeAuditFieldsIncluded,
-    pulumi.Output<String>? kinesisStreamName,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-  }) :
-      engineNativeAuditFieldsIncluded = pulumi.Input.asOptionalInput<bool>(engineNativeAuditFieldsIncluded),
-      kinesisStreamName = pulumi.Input.asOptionalInput<String>(kinesisStreamName),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn);
+    this.engineNativeAuditFieldsIncluded,
+    this.kinesisStreamName,
+    this.kmsKeyId,
+    this.mode,
+    this.region,
+    this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ClusterActivityStreamState {
 
   factory ClusterActivityStreamState.fromMap(Map<String, dynamic> map) {
     return ClusterActivityStreamState(
-      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : pulumi.Output.create<bool>(map['engineNativeAuditFieldsIncluded'] as bool),
-      kinesisStreamName: map['kinesisStreamName'] == null ? null : pulumi.Output.create<String>(map['kinesisStreamName'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
+      engineNativeAuditFieldsIncluded: map['engineNativeAuditFieldsIncluded'] == null ? null : (map['engineNativeAuditFieldsIncluded'] as bool).input(),
+      kinesisStreamName: map['kinesisStreamName'] == null ? null : (map['kinesisStreamName'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

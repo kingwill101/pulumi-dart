@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The status of a blueprint assignment. This field is readonly.
 class AssignmentStatusResponse {
   /// Last modified time of this blueprint definition.
-  final String lastModified;
+  final pulumi.Input<String> lastModified;
   /// List of resources that were created by the blueprint assignment.
-  final List<String> managedResources;
+  final pulumi.Input<List<String>> managedResources;
   /// Creation time of this blueprint definition.
-  final String timeCreated;
+  final pulumi.Input<String> timeCreated;
 
   /// Creates a new [AssignmentStatusResponse].
   /// [lastModified] Last modified time of this blueprint definition.
@@ -30,9 +31,9 @@ class AssignmentStatusResponse {
 
   factory AssignmentStatusResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentStatusResponse(
-      lastModified: map['lastModified'] as String,
-      managedResources: (map['managedResources'] as List).cast<String>(),
-      timeCreated: map['timeCreated'] as String,
+      lastModified: (map['lastModified'] as String).input(),
+      managedResources: ((map['managedResources'] as List).cast<String>()).input(),
+      timeCreated: (map['timeCreated'] as String).input(),
     );
   }
 }

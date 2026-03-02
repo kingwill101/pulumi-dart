@@ -25,19 +25,13 @@ class AppRoleAssignmentState {
   /// [resourceDisplayName] The display name of the application representing the resource.
   /// [resourceObjectId] The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
   AppRoleAssignmentState({
-    pulumi.Output<String>? appRoleId,
-    pulumi.Output<String>? principalDisplayName,
-    pulumi.Output<String>? principalObjectId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? resourceDisplayName,
-    pulumi.Output<String>? resourceObjectId,
-  }) :
-      appRoleId = pulumi.Input.asOptionalInput<String>(appRoleId),
-      principalDisplayName = pulumi.Input.asOptionalInput<String>(principalDisplayName),
-      principalObjectId = pulumi.Input.asOptionalInput<String>(principalObjectId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      resourceDisplayName = pulumi.Input.asOptionalInput<String>(resourceDisplayName),
-      resourceObjectId = pulumi.Input.asOptionalInput<String>(resourceObjectId);
+    this.appRoleId,
+    this.principalDisplayName,
+    this.principalObjectId,
+    this.principalType,
+    this.resourceDisplayName,
+    this.resourceObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class AppRoleAssignmentState {
 
   factory AppRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return AppRoleAssignmentState(
-      appRoleId: map['appRoleId'] == null ? null : pulumi.Output.create<String>(map['appRoleId'] as String),
-      principalDisplayName: map['principalDisplayName'] == null ? null : pulumi.Output.create<String>(map['principalDisplayName'] as String),
-      principalObjectId: map['principalObjectId'] == null ? null : pulumi.Output.create<String>(map['principalObjectId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      resourceDisplayName: map['resourceDisplayName'] == null ? null : pulumi.Output.create<String>(map['resourceDisplayName'] as String),
-      resourceObjectId: map['resourceObjectId'] == null ? null : pulumi.Output.create<String>(map['resourceObjectId'] as String),
+      appRoleId: map['appRoleId'] == null ? null : (map['appRoleId'] as String).input(),
+      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName'] as String).input(),
+      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      resourceDisplayName: map['resourceDisplayName'] == null ? null : (map['resourceDisplayName'] as String).input(),
+      resourceObjectId: map['resourceObjectId'] == null ? null : (map['resourceObjectId'] as String).input(),
     );
   }
 }

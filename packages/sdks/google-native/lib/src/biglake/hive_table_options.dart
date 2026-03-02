@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_descriptor.dart';
 
 /// Options of a Hive table.
 class HiveTableOptions {
   /// Stores user supplied Hive table parameters.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// Stores physical storage information of the data.
-  final StorageDescriptor? storageDescriptor;
+  final pulumi.Input<StorageDescriptor>? storageDescriptor;
   /// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
-  final String? tableType;
+  final pulumi.Input<String>? tableType;
 
   /// Creates a new [HiveTableOptions].
   /// [parameters] Stores user supplied Hive table parameters.
@@ -24,16 +25,16 @@ class HiveTableOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'parameters': ?parameters,
-      'storageDescriptor': ?storageDescriptor == null ? null : storageDescriptor!.toMap(),
+      'storageDescriptor': ?pulumi.Input.mapOptionalInputValue<StorageDescriptor, Map<String, dynamic>>(storageDescriptor, (value) => value.toMap()),
       'tableType': ?tableType,
     };
   }
 
   factory HiveTableOptions.fromMap(Map<String, dynamic> map) {
     return HiveTableOptions(
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      storageDescriptor: map['storageDescriptor'] == null ? null : StorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>()),
-      tableType: map['tableType'] == null ? null : map['tableType'] as String,
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : (StorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
+      tableType: map['tableType'] == null ? null : (map['tableType'] as String).input(),
     );
   }
 }

@@ -23,13 +23,10 @@ class GetGlossaryIamPolicyArgs {
   /// [location] The location where the glossary should reside.
   /// [project] The ID of the project in which the resource belongs.
   GetGlossaryIamPolicyArgs({
-    required pulumi.Output<String> glossaryId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      glossaryId = pulumi.Input.asInput<String>(glossaryId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.glossaryId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetGlossaryIamPolicyArgs {
 
   factory GetGlossaryIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetGlossaryIamPolicyArgs(
-      glossaryId: pulumi.Output.create<String>(map['glossaryId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      glossaryId: (map['glossaryId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -50,29 +50,18 @@ class FrontdoorOriginArgs {
   /// [privateLink] A `private_link` block as defined below.
   /// [weight] The weight of the origin in a given origin group for load balancing. Must be between `1` and `1000`. Defaults to `500`.
   FrontdoorOriginArgs({
-    required pulumi.Output<String> cdnFrontdoorOriginGroupId,
-    required pulumi.Output<bool> certificateNameCheckEnabled,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> hostName,
-    pulumi.Output<int>? httpPort,
-    pulumi.Output<int>? httpsPort,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? originHostHeader,
-    pulumi.Output<int>? priority,
-    pulumi.Output<FrontdoorOriginPrivateLink>? privateLink,
-    pulumi.Output<int>? weight,
-  }) :
-      cdnFrontdoorOriginGroupId = pulumi.Input.asInput<String>(cdnFrontdoorOriginGroupId),
-      certificateNameCheckEnabled = pulumi.Input.asInput<bool>(certificateNameCheckEnabled),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      hostName = pulumi.Input.asInput<String>(hostName),
-      httpPort = pulumi.Input.asOptionalInput<int>(httpPort),
-      httpsPort = pulumi.Input.asOptionalInput<int>(httpsPort),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      originHostHeader = pulumi.Input.asOptionalInput<String>(originHostHeader),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      privateLink = pulumi.Input.asOptionalInput<FrontdoorOriginPrivateLink>(privateLink),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    required this.cdnFrontdoorOriginGroupId,
+    required this.certificateNameCheckEnabled,
+    this.enabled,
+    required this.hostName,
+    this.httpPort,
+    this.httpsPort,
+    this.name,
+    this.originHostHeader,
+    this.priority,
+    this.privateLink,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class FrontdoorOriginArgs {
 
   factory FrontdoorOriginArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorOriginArgs(
-      cdnFrontdoorOriginGroupId: pulumi.Output.create<String>(map['cdnFrontdoorOriginGroupId'] as String),
-      certificateNameCheckEnabled: pulumi.Output.create<bool>(map['certificateNameCheckEnabled'] as bool),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      httpPort: map['httpPort'] == null ? null : pulumi.Output.create<int>(map['httpPort'] as int),
-      httpsPort: map['httpsPort'] == null ? null : pulumi.Output.create<int>(map['httpsPort'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      originHostHeader: map['originHostHeader'] == null ? null : pulumi.Output.create<String>(map['originHostHeader'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      privateLink: map['privateLink'] == null ? null : pulumi.Output.create<FrontdoorOriginPrivateLink>(FrontdoorOriginPrivateLink.fromMap((map['privateLink'] as Map).cast<String, dynamic>())),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      cdnFrontdoorOriginGroupId: (map['cdnFrontdoorOriginGroupId'] as String).input(),
+      certificateNameCheckEnabled: (map['certificateNameCheckEnabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      hostName: (map['hostName'] as String).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      originHostHeader: map['originHostHeader'] == null ? null : (map['originHostHeader'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      privateLink: map['privateLink'] == null ? null : (FrontdoorOriginPrivateLink.fromMap((map['privateLink'] as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

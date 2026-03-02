@@ -45,25 +45,16 @@ class DefaultObjectAccessControlState {
   /// [projectTeams] The project team associated with the entity
   /// [role] The access permission for the entity.
   DefaultObjectAccessControlState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? entity,
-    pulumi.Output<String>? entityId,
-    pulumi.Output<int>? generation,
-    pulumi.Output<String>? object,
-    pulumi.Output<List<DefaultObjectAccessControlProjectTeam>>? projectTeams,
-    pulumi.Output<String>? role,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      entity = pulumi.Input.asOptionalInput<String>(entity),
-      entityId = pulumi.Input.asOptionalInput<String>(entityId),
-      generation = pulumi.Input.asOptionalInput<int>(generation),
-      object = pulumi.Input.asOptionalInput<String>(object),
-      projectTeams = pulumi.Input.asOptionalInput<List<DefaultObjectAccessControlProjectTeam>>(projectTeams),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.bucket,
+    this.domain,
+    this.email,
+    this.entity,
+    this.entityId,
+    this.generation,
+    this.object,
+    this.projectTeams,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class DefaultObjectAccessControlState {
 
   factory DefaultObjectAccessControlState.fromMap(Map<String, dynamic> map) {
     return DefaultObjectAccessControlState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      entity: map['entity'] == null ? null : pulumi.Output.create<String>(map['entity'] as String),
-      entityId: map['entityId'] == null ? null : pulumi.Output.create<String>(map['entityId'] as String),
-      generation: map['generation'] == null ? null : pulumi.Output.create<int>(map['generation'] as int),
-      object: map['object'] == null ? null : pulumi.Output.create<String>(map['object'] as String),
-      projectTeams: map['projectTeams'] == null ? null : pulumi.Output.create<List<DefaultObjectAccessControlProjectTeam>>(pulumi.Input.decodeList<DefaultObjectAccessControlProjectTeam>(map['projectTeams'], (value) => DefaultObjectAccessControlProjectTeam.fromMap((value as Map).cast<String, dynamic>()))),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
+      object: map['object'] == null ? null : (map['object'] as String).input(),
+      projectTeams: map['projectTeams'] == null ? null : (pulumi.Input.decodeList<DefaultObjectAccessControlProjectTeam>(map['projectTeams'], (value) => DefaultObjectAccessControlProjectTeam.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

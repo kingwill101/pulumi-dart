@@ -6,11 +6,11 @@ import 'vmware_vsphere_tag.dart';
 /// VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
 class VmwareVsphereConfig {
   /// The name of the vCenter datastore. Inherited from the user cluster.
-  final String? datastore;
+  final pulumi.Input<String>? datastore;
   /// Vsphere host groups to apply to all VMs in the node pool
-  final List<String>? hostGroups;
+  final pulumi.Input<List<String>>? hostGroups;
   /// Tags to apply to VMs.
-  final List<VmwareVsphereTag>? tags;
+  final pulumi.Input<List<VmwareVsphereTag>>? tags;
 
   /// Creates a new [VmwareVsphereConfig].
   /// [datastore] The name of the vCenter datastore. Inherited from the user cluster.
@@ -26,15 +26,15 @@ class VmwareVsphereConfig {
     return <String, dynamic>{
       'datastore': ?datastore,
       'hostGroups': ?hostGroups,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<VmwareVsphereTag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<VmwareVsphereTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<VmwareVsphereTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VmwareVsphereConfig.fromMap(Map<String, dynamic> map) {
     return VmwareVsphereConfig(
-      datastore: map['datastore'] == null ? null : map['datastore'] as String,
-      hostGroups: map['hostGroups'] == null ? null : (map['hostGroups'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<VmwareVsphereTag>(map['tags'], (value) => VmwareVsphereTag.fromMap((value as Map).cast<String, dynamic>())),
+      datastore: map['datastore'] == null ? null : (map['datastore'] as String).input(),
+      hostGroups: map['hostGroups'] == null ? null : ((map['hostGroups'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<VmwareVsphereTag>(map['tags'], (value) => VmwareVsphereTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

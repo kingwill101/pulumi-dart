@@ -5,9 +5,9 @@ import 'get_environment_config_master_authorized_networks_config_cidr_block.dart
 
 class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
   /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
-  final List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+  final pulumi.Input<List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>> cidrBlocks;
   /// Whether or not master authorized networks is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetEnvironmentConfigMasterAuthorizedNetworksConfig].
   /// [cidrBlocks] cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
@@ -19,15 +19,15 @@ class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrBlocks': pulumi.Input.encodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock, Map<String, dynamic>>(cidrBlocks, (value) => value.toMap()),
+      'cidrBlocks': pulumi.Input.mapInputValue<List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>, List<Map<String, dynamic>>>(cidrBlocks, (value) => pulumi.Input.encodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enabled': enabled,
     };
   }
 
   factory GetEnvironmentConfigMasterAuthorizedNetworksConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigMasterAuthorizedNetworksConfig(
-      cidrBlocks: pulumi.Input.decodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks'], (value) => GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] as bool,
+      cidrBlocks: (pulumi.Input.decodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks'], (value) => GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

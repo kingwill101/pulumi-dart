@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification for a node group.
 class NodeGroupSpecResponse {
   /// The disk storage size for the node group in GB. Example values: 128, 256, 512, 1024.
-  final double? diskSizeGB;
+  final pulumi.Input<double>? diskSizeGB;
   /// Whether high availability is enabled on the node group.
-  final bool? enableHa;
+  final pulumi.Input<bool>? enableHa;
   /// The node type deployed in the node group.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The number of nodes in the node group.
-  final int? nodeCount;
+  final pulumi.Input<int>? nodeCount;
   /// The resource sku for the node group. This defines the size of CPU and memory that is provisioned for each node. Example values: 'M30', 'M40'.
-  final String? sku;
+  final pulumi.Input<String>? sku;
 
   /// Creates a new [NodeGroupSpecResponse].
   /// [diskSizeGB] The disk storage size for the node group in GB. Example values: 128, 256, 512, 1024.
@@ -40,11 +41,11 @@ class NodeGroupSpecResponse {
 
   factory NodeGroupSpecResponse.fromMap(Map<String, dynamic> map) {
     return NodeGroupSpecResponse(
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as double,
-      enableHa: map['enableHa'] == null ? null : map['enableHa'] as bool,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
-      sku: map['sku'] == null ? null : map['sku'] as String,
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as double).input(),
+      enableHa: map['enableHa'] == null ? null : (map['enableHa'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
     );
   }
 }

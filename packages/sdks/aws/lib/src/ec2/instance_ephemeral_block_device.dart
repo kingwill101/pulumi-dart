@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceEphemeralBlockDevice {
   /// Name of the block device to mount on the instance.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// Suppresses the specified device included in the AMI's block device mapping.
-  final bool? noDevice;
+  final pulumi.Input<bool>? noDevice;
   /// [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames) (e.g., `ephemeral0`).
   ///
   /// Each AWS Instance type has a different set of Instance Store block devices available for attachment. AWS [publishes a list](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#StorageOnInstanceTypes) of which ephemeral devices are available on each type. The devices are always identified by the `virtual_name` in the format `ephemeral{0..N}`.
-  final String? virtualName;
+  final pulumi.Input<String>? virtualName;
 
   /// Creates a new [InstanceEphemeralBlockDevice].
   /// [deviceName] Name of the block device to mount on the instance.
@@ -31,9 +32,9 @@ class InstanceEphemeralBlockDevice {
 
   factory InstanceEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
     return InstanceEphemeralBlockDevice(
-      deviceName: map['deviceName'] as String,
-      noDevice: map['noDevice'] == null ? null : map['noDevice'] as bool,
-      virtualName: map['virtualName'] == null ? null : map['virtualName'] as String,
+      deviceName: (map['deviceName'] as String).input(),
+      noDevice: map['noDevice'] == null ? null : (map['noDevice'] as bool).input(),
+      virtualName: map['virtualName'] == null ? null : (map['virtualName'] as String).input(),
     );
   }
 }

@@ -52,35 +52,21 @@ class WebAppDeploymentSlotArgs {
   /// [startTime] Start time.
   /// [status] Deployment status.
   WebAppDeploymentSlotArgs({
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? author,
-    pulumi.Output<String>? authorEmail,
-    pulumi.Output<String>? deployer,
-    pulumi.Output<String>? details,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? message,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<int>? status,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      author = pulumi.Input.asOptionalInput<String>(author),
-      authorEmail = pulumi.Input.asOptionalInput<String>(authorEmail),
-      deployer = pulumi.Input.asOptionalInput<String>(deployer),
-      details = pulumi.Input.asOptionalInput<String>(details),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    this.active,
+    this.author,
+    this.authorEmail,
+    this.deployer,
+    this.details,
+    this.endTime,
+    this.id,
+    this.kind,
+    this.message,
+    required this.name,
+    required this.resourceGroupName,
+    required this.slot,
+    this.startTime,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class WebAppDeploymentSlotArgs {
 
   factory WebAppDeploymentSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDeploymentSlotArgs(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      author: map['author'] == null ? null : pulumi.Output.create<String>(map['author'] as String),
-      authorEmail: map['authorEmail'] == null ? null : pulumi.Output.create<String>(map['authorEmail'] as String),
-      deployer: map['deployer'] == null ? null : pulumi.Output.create<String>(map['deployer'] as String),
-      details: map['details'] == null ? null : pulumi.Output.create<String>(map['details'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      author: map['author'] == null ? null : (map['author'] as String).input(),
+      authorEmail: map['authorEmail'] == null ? null : (map['authorEmail'] as String).input(),
+      deployer: map['deployer'] == null ? null : (map['deployer'] as String).input(),
+      details: map['details'] == null ? null : (map['details'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

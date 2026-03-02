@@ -28,19 +28,13 @@ class ConnectionCertificateArgs {
   /// [resourceGroupName] The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   /// [subscriptionId] The id of subscription where the automation certificate exists.
   ConnectionCertificateArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> automationCertificateName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      automationCertificateName = pulumi.Input.asInput<String>(automationCertificateName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    required this.automationAccountName,
+    required this.automationCertificateName,
+    this.description,
+    this.name,
+    required this.resourceGroupName,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ConnectionCertificateArgs {
 
   factory ConnectionCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionCertificateArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      automationCertificateName: pulumi.Output.create<String>(map['automationCertificateName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      automationCertificateName: (map['automationCertificateName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

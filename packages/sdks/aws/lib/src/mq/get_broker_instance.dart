@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBrokerInstance {
   /// URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engine_type`.
-  final String consoleUrl;
+  final pulumi.Input<String> consoleUrl;
   /// Broker's wire-level protocol endpoints.
-  final List<String> endpoints;
+  final pulumi.Input<List<String>> endpoints;
   /// IP Address of the broker.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
 
   /// Creates a new [GetBrokerInstance].
   /// [consoleUrl] URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engine_type`.
@@ -29,9 +30,9 @@ class GetBrokerInstance {
 
   factory GetBrokerInstance.fromMap(Map<String, dynamic> map) {
     return GetBrokerInstance(
-      consoleUrl: map['consoleUrl'] as String,
-      endpoints: (map['endpoints'] as List).cast<String>(),
-      ipAddress: map['ipAddress'] as String,
+      consoleUrl: (map['consoleUrl'] as String).input(),
+      endpoints: ((map['endpoints'] as List).cast<String>()).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
     );
   }
 }

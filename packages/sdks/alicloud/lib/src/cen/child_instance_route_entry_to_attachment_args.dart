@@ -25,17 +25,12 @@ class ChildInstanceRouteEntryToAttachmentArgs {
   /// [dryRun] Whether to perform pre-check on this request, including permission and instance status verification.
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
   ChildInstanceRouteEntryToAttachmentArgs({
-    required pulumi.Output<String> cenId,
-    required pulumi.Output<String> childInstanceRouteTableId,
-    required pulumi.Output<String> destinationCidrBlock,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> transitRouterAttachmentId,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      childInstanceRouteTableId = pulumi.Input.asInput<String>(childInstanceRouteTableId),
-      destinationCidrBlock = pulumi.Input.asInput<String>(destinationCidrBlock),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      transitRouterAttachmentId = pulumi.Input.asInput<String>(transitRouterAttachmentId);
+    required this.cenId,
+    required this.childInstanceRouteTableId,
+    required this.destinationCidrBlock,
+    this.dryRun,
+    required this.transitRouterAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ChildInstanceRouteEntryToAttachmentArgs {
 
   factory ChildInstanceRouteEntryToAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ChildInstanceRouteEntryToAttachmentArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      childInstanceRouteTableId: pulumi.Output.create<String>(map['childInstanceRouteTableId'] as String),
-      destinationCidrBlock: pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      transitRouterAttachmentId: pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
+      cenId: (map['cenId'] as String).input(),
+      childInstanceRouteTableId: (map['childInstanceRouteTableId'] as String).input(),
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
     );
   }
 }

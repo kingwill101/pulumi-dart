@@ -42,25 +42,16 @@ class CertificateState {
   /// [publicKey] When neither CSR nor certificate is provided, the public key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   CertificateState({
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? caCertificateId,
-    pulumi.Output<String>? caPem,
-    pulumi.Output<String>? certificatePem,
-    pulumi.Output<String>? csr,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? region,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      caCertificateId = pulumi.Input.asOptionalInput<String>(caCertificateId),
-      caPem = pulumi.Input.asOptionalInput<String>(caPem),
-      certificatePem = pulumi.Input.asOptionalInput<String>(certificatePem),
-      csr = pulumi.Input.asOptionalInput<String>(csr),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.active,
+    this.arn,
+    this.caCertificateId,
+    this.caPem,
+    this.certificatePem,
+    this.csr,
+    this.privateKey,
+    this.publicKey,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      caCertificateId: map['caCertificateId'] == null ? null : pulumi.Output.create<String>(map['caCertificateId'] as String),
-      caPem: map['caPem'] == null ? null : pulumi.Output.create<String>(map['caPem'] as String),
-      certificatePem: map['certificatePem'] == null ? null : pulumi.Output.create<String>(map['certificatePem'] as String),
-      csr: map['csr'] == null ? null : pulumi.Output.create<String>(map['csr'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      caCertificateId: map['caCertificateId'] == null ? null : (map['caCertificateId'] as String).input(),
+      caPem: map['caPem'] == null ? null : (map['caPem'] as String).input(),
+      certificatePem: map['certificatePem'] == null ? null : (map['certificatePem'] as String).input(),
+      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

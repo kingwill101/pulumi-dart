@@ -9,40 +9,40 @@ import 'user_property_response.dart';
 /// Azure ML Execute Pipeline activity.
 class AzureMLExecutePipelineActivityResponse {
   /// Whether to continue execution of other steps in the PipelineRun if a step fails. This information will be passed in the continueOnStepFailure property of the published pipeline execution request. Type: boolean (or Expression with resultType boolean).
-  final dynamic continueOnStepFailure;
+  final pulumi.Input<dynamic>? continueOnStepFailure;
   /// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object (or Expression with resultType object).
-  final dynamic dataPathAssignments;
+  final pulumi.Input<dynamic>? dataPathAssignments;
   /// Activity depends on condition.
-  final List<ActivityDependencyResponse>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Run history experiment name of the pipeline run. This information will be passed in the ExperimentName property of the published pipeline execution request. Type: string (or Expression with resultType string).
-  final dynamic experimentName;
+  final pulumi.Input<dynamic>? experimentName;
   /// Linked service reference.
-  final LinkedServiceReferenceResponse? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
   /// The parent Azure ML Service pipeline run id. This information will be passed in the ParentRunId property of the published pipeline execution request. Type: string (or Expression with resultType string).
-  final dynamic mlParentRunId;
+  final pulumi.Input<dynamic>? mlParentRunId;
   /// ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
-  final dynamic mlPipelineEndpointId;
+  final pulumi.Input<dynamic>? mlPipelineEndpointId;
   /// ID of the published Azure ML pipeline. Type: string (or Expression with resultType string).
-  final dynamic mlPipelineId;
+  final pulumi.Input<dynamic>? mlPipelineId;
   /// Key,Value pairs to be passed to the published Azure ML pipeline endpoint. Keys must match the names of pipeline parameters defined in the published pipeline. Values will be passed in the ParameterAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
-  final dynamic mlPipelineParameters;
+  final pulumi.Input<dynamic>? mlPipelineParameters;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Activity policy.
-  final ActivityPolicyResponse? policy;
+  final pulumi.Input<ActivityPolicyResponse>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Type of activity.
   /// Expected value is 'AzureMLExecutePipeline'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserPropertyResponse>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
   /// Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
-  final dynamic version;
+  final pulumi.Input<dynamic>? version;
 
   /// Creates a new [AzureMLExecutePipelineActivityResponse].
   /// [continueOnStepFailure] Whether to continue execution of other steps in the PipelineRun if a step fails. This information will be passed in the continueOnStepFailure property of the published pipeline execution request. Type: boolean (or Expression with resultType boolean).
@@ -86,43 +86,43 @@ class AzureMLExecutePipelineActivityResponse {
     return <String, dynamic>{
       'continueOnStepFailure': ?continueOnStepFailure,
       'dataPathAssignments': ?dataPathAssignments,
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'experimentName': ?experimentName,
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'mlParentRunId': ?mlParentRunId,
       'mlPipelineEndpointId': ?mlPipelineEndpointId,
       'mlPipelineId': ?mlPipelineId,
       'mlPipelineParameters': ?mlPipelineParameters,
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'state': ?state,
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserPropertyResponse>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'version': ?version,
     };
   }
 
   factory AzureMLExecutePipelineActivityResponse.fromMap(Map<String, dynamic> map) {
     return AzureMLExecutePipelineActivityResponse(
-      continueOnStepFailure: map['continueOnStepFailure'] == null ? null : map['continueOnStepFailure'],
-      dataPathAssignments: map['dataPathAssignments'] == null ? null : map['dataPathAssignments'],
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      experimentName: map['experimentName'] == null ? null : map['experimentName'],
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      mlParentRunId: map['mlParentRunId'] == null ? null : map['mlParentRunId'],
-      mlPipelineEndpointId: map['mlPipelineEndpointId'] == null ? null : map['mlPipelineEndpointId'],
-      mlPipelineId: map['mlPipelineId'] == null ? null : map['mlPipelineId'],
-      mlPipelineParameters: map['mlPipelineParameters'] == null ? null : map['mlPipelineParameters'],
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      policy: map['policy'] == null ? null : ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : map['version'],
+      continueOnStepFailure: map['continueOnStepFailure'] == null ? null : (map['continueOnStepFailure']).input(),
+      dataPathAssignments: map['dataPathAssignments'] == null ? null : (map['dataPathAssignments']).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName']).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      mlParentRunId: map['mlParentRunId'] == null ? null : (map['mlParentRunId']).input(),
+      mlPipelineEndpointId: map['mlPipelineEndpointId'] == null ? null : (map['mlPipelineEndpointId']).input(),
+      mlPipelineId: map['mlPipelineId'] == null ? null : (map['mlPipelineId']).input(),
+      mlPipelineParameters: map['mlPipelineParameters'] == null ? null : (map['mlPipelineParameters']).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']).input(),
     );
   }
 }

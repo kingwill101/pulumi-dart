@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster.
 class DefaultSnatStatus {
   /// Disables cluster default sNAT rules.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// Creates a new [DefaultSnatStatus].
   /// [disabled] Disables cluster default sNAT rules.
@@ -20,7 +21,7 @@ class DefaultSnatStatus {
 
   factory DefaultSnatStatus.fromMap(Map<String, dynamic> map) {
     return DefaultSnatStatus(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
     );
   }
 }

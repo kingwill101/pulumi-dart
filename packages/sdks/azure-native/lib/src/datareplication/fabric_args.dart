@@ -26,17 +26,12 @@ class FabricArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Gets or sets the resource tags.
   FabricArgs({
-    pulumi.Output<String>? fabricName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<FabricModelProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      fabricName = pulumi.Input.asOptionalInput<String>(fabricName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<FabricModelProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.fabricName,
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class FabricArgs {
 
   factory FabricArgs.fromMap(Map<String, dynamic> map) {
     return FabricArgs(
-      fabricName: map['fabricName'] == null ? null : pulumi.Output.create<String>(map['fabricName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<FabricModelProperties>(FabricModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      fabricName: map['fabricName'] == null ? null : (map['fabricName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (FabricModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

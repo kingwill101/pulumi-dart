@@ -16,13 +16,10 @@ class VpcAssociationAuthorizationState {
   /// [vpcRegion] The VPC's region. Defaults to the region of the AWS provider.
   /// [zoneId] The ID of the private hosted zone that you want to authorize associating a VPC with.
   VpcAssociationAuthorizationState({
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vpcRegion,
-    pulumi.Output<String>? zoneId,
-  }) :
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpcRegion = pulumi.Input.asOptionalInput<String>(vpcRegion),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.vpcId,
+    this.vpcRegion,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class VpcAssociationAuthorizationState {
 
   factory VpcAssociationAuthorizationState.fromMap(Map<String, dynamic> map) {
     return VpcAssociationAuthorizationState(
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcRegion: map['vpcRegion'] == null ? null : pulumi.Output.create<String>(map['vpcRegion'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

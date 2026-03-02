@@ -16,11 +16,9 @@ class ConsumerImageShareGroupTokenArgs {
   /// [label] A label for the token.
   /// [validForSharegroupUuid] The UUID of the Image Share Group for which to create a token.
   ConsumerImageShareGroupTokenArgs({
-    pulumi.Output<String>? label,
-    required pulumi.Output<String> validForSharegroupUuid,
-  }) :
-      label = pulumi.Input.asOptionalInput<String>(label),
-      validForSharegroupUuid = pulumi.Input.asInput<String>(validForSharegroupUuid);
+    this.label,
+    required this.validForSharegroupUuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ConsumerImageShareGroupTokenArgs {
 
   factory ConsumerImageShareGroupTokenArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerImageShareGroupTokenArgs(
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      validForSharegroupUuid: pulumi.Output.create<String>(map['validForSharegroupUuid'] as String),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      validForSharegroupUuid: (map['validForSharegroupUuid'] as String).input(),
     );
   }
 }

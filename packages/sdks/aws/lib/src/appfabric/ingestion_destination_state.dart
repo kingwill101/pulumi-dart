@@ -36,25 +36,16 @@ class IngestionDestinationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   IngestionDestinationState({
-    pulumi.Output<String>? appBundleArn,
-    pulumi.Output<String>? arn,
-    pulumi.Output<IngestionDestinationDestinationConfiguration>? destinationConfiguration,
-    pulumi.Output<String>? ingestionArn,
-    pulumi.Output<IngestionDestinationProcessingConfiguration>? processingConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<IngestionDestinationTimeouts>? timeouts,
-  }) :
-      appBundleArn = pulumi.Input.asOptionalInput<String>(appBundleArn),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      destinationConfiguration = pulumi.Input.asOptionalInput<IngestionDestinationDestinationConfiguration>(destinationConfiguration),
-      ingestionArn = pulumi.Input.asOptionalInput<String>(ingestionArn),
-      processingConfiguration = pulumi.Input.asOptionalInput<IngestionDestinationProcessingConfiguration>(processingConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<IngestionDestinationTimeouts>(timeouts);
+    this.appBundleArn,
+    this.arn,
+    this.destinationConfiguration,
+    this.ingestionArn,
+    this.processingConfiguration,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class IngestionDestinationState {
 
   factory IngestionDestinationState.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationState(
-      appBundleArn: map['appBundleArn'] == null ? null : pulumi.Output.create<String>(map['appBundleArn'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      destinationConfiguration: map['destinationConfiguration'] == null ? null : pulumi.Output.create<IngestionDestinationDestinationConfiguration>(IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())),
-      ingestionArn: map['ingestionArn'] == null ? null : pulumi.Output.create<String>(map['ingestionArn'] as String),
-      processingConfiguration: map['processingConfiguration'] == null ? null : pulumi.Output.create<IngestionDestinationProcessingConfiguration>(IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<IngestionDestinationTimeouts>(IngestionDestinationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      appBundleArn: map['appBundleArn'] == null ? null : (map['appBundleArn'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      destinationConfiguration: map['destinationConfiguration'] == null ? null : (IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      ingestionArn: map['ingestionArn'] == null ? null : (map['ingestionArn'] as String).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : (IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (IngestionDestinationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

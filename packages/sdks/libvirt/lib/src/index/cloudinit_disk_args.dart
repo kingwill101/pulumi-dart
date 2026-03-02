@@ -22,15 +22,11 @@ class CloudinitDiskArgs {
   /// [networkConfig] Cloud-init network configuration (optional, usually YAML)
   /// [userData] Cloud-init user-data content (usually YAML)
   CloudinitDiskArgs({
-    required pulumi.Output<String> metaData,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkConfig,
-    required pulumi.Output<String> userData,
-  }) :
-      metaData = pulumi.Input.asInput<String>(metaData),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfig = pulumi.Input.asOptionalInput<String>(networkConfig),
-      userData = pulumi.Input.asInput<String>(userData);
+    required this.metaData,
+    this.name,
+    this.networkConfig,
+    required this.userData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class CloudinitDiskArgs {
 
   factory CloudinitDiskArgs.fromMap(Map<String, dynamic> map) {
     return CloudinitDiskArgs(
-      metaData: pulumi.Output.create<String>(map['metaData'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfig: map['networkConfig'] == null ? null : pulumi.Output.create<String>(map['networkConfig'] as String),
-      userData: pulumi.Output.create<String>(map['userData'] as String),
+      metaData: (map['metaData'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (map['networkConfig'] as String).input(),
+      userData: (map['userData'] as String).input(),
     );
   }
 }

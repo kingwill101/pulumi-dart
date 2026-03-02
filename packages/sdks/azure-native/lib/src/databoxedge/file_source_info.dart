@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// File source details.
 class FileSourceInfo {
   /// File share ID.
-  final String shareId;
+  final pulumi.Input<String> shareId;
 
   /// Creates a new [FileSourceInfo].
   /// [shareId] File share ID.
@@ -20,7 +21,7 @@ class FileSourceInfo {
 
   factory FileSourceInfo.fromMap(Map<String, dynamic> map) {
     return FileSourceInfo(
-      shareId: map['shareId'] as String,
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

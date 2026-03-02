@@ -31,21 +31,14 @@ class HubArgs {
   /// [requestId] Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [routingVpcs] The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
   HubArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> hubId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<RoutingVPC>>? routingVpcs,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hubId = pulumi.Input.asInput<String>(hubId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      routingVpcs = pulumi.Input.asOptionalInput<List<RoutingVPC>>(routingVpcs);
+    this.description,
+    required this.hubId,
+    this.labels,
+    this.name,
+    this.project,
+    this.requestId,
+    this.routingVpcs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hubId: pulumi.Output.create<String>(map['hubId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      routingVpcs: map['routingVpcs'] == null ? null : pulumi.Output.create<List<RoutingVPC>>(pulumi.Input.decodeList<RoutingVPC>(map['routingVpcs'], (value) => RoutingVPC.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hubId: (map['hubId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      routingVpcs: map['routingVpcs'] == null ? null : (pulumi.Input.decodeList<RoutingVPC>(map['routingVpcs'], (value) => RoutingVPC.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

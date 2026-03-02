@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Define behaviors on logging.
 class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings {
   /// If true, DF Interaction logging is currently enabled.
-  final bool? enableInteractionLogging;
+  final pulumi.Input<bool>? enableInteractionLogging;
   /// If true, StackDriver logging is currently enabled.
-  final bool? enableStackdriverLogging;
+  final pulumi.Input<bool>? enableStackdriverLogging;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings].
   /// [enableInteractionLogging] If true, DF Interaction logging is currently enabled.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings {
 
   factory GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings(
-      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : map['enableInteractionLogging'] as bool,
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : map['enableStackdriverLogging'] as bool,
+      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : (map['enableInteractionLogging'] as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
     );
   }
 }

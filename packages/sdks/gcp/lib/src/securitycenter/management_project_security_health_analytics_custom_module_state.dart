@@ -47,25 +47,16 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time at which the custom module was last updated.
   ManagementProjectSecurityHealthAnalyticsCustomModuleState({
-    pulumi.Output<String>? ancestorModule,
-    pulumi.Output<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig>? customConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? enablementState,
-    pulumi.Output<String>? lastEditor,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      ancestorModule = pulumi.Input.asOptionalInput<String>(ancestorModule),
-      customConfig = pulumi.Input.asOptionalInput<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig>(customConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<String>(enablementState),
-      lastEditor = pulumi.Input.asOptionalInput<String>(lastEditor),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.ancestorModule,
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    this.lastEditor,
+    this.location,
+    this.name,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleState {
 
   factory ManagementProjectSecurityHealthAnalyticsCustomModuleState.fromMap(Map<String, dynamic> map) {
     return ManagementProjectSecurityHealthAnalyticsCustomModuleState(
-      ancestorModule: map['ancestorModule'] == null ? null : pulumi.Output.create<String>(map['ancestorModule'] as String),
-      customConfig: map['customConfig'] == null ? null : pulumi.Output.create<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig>(ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: map['enablementState'] == null ? null : pulumi.Output.create<String>(map['enablementState'] as String),
-      lastEditor: map['lastEditor'] == null ? null : pulumi.Output.create<String>(map['lastEditor'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      ancestorModule: map['ancestorModule'] == null ? null : (map['ancestorModule'] as String).input(),
+      customConfig: map['customConfig'] == null ? null : (ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
+      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

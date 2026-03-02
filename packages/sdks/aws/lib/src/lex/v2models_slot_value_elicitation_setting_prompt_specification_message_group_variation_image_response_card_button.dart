@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton {
-  final String text;
-  final String value;
+  final pulumi.Input<String> text;
+  final pulumi.Input<String> value;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton].
   /// [text] Required.
@@ -22,8 +23,8 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariatio
 
   factory V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton(
-      text: map['text'] as String,
-      value: map['value'] as String,
+      text: (map['text'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class PermissionBindingArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicSpaceName] The name of the Topic Space resource that the permission is bound to.
   PermissionBindingArgs({
-    pulumi.Output<String>? clientGroupName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? permission,
-    pulumi.Output<String>? permissionBindingName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? topicSpaceName,
-  }) :
-      clientGroupName = pulumi.Input.asOptionalInput<String>(clientGroupName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      permission = pulumi.Input.asOptionalInput<String>(permission),
-      permissionBindingName = pulumi.Input.asOptionalInput<String>(permissionBindingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicSpaceName = pulumi.Input.asOptionalInput<String>(topicSpaceName);
+    this.clientGroupName,
+    this.description,
+    required this.namespaceName,
+    this.permission,
+    this.permissionBindingName,
+    required this.resourceGroupName,
+    this.topicSpaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class PermissionBindingArgs {
 
   factory PermissionBindingArgs.fromMap(Map<String, dynamic> map) {
     return PermissionBindingArgs(
-      clientGroupName: map['clientGroupName'] == null ? null : pulumi.Output.create<String>(map['clientGroupName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      permission: map['permission'] == null ? null : pulumi.Output.create<String>(map['permission'] as String),
-      permissionBindingName: map['permissionBindingName'] == null ? null : pulumi.Output.create<String>(map['permissionBindingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicSpaceName: map['topicSpaceName'] == null ? null : pulumi.Output.create<String>(map['topicSpaceName'] as String),
+      clientGroupName: map['clientGroupName'] == null ? null : (map['clientGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
+      permissionBindingName: map['permissionBindingName'] == null ? null : (map['permissionBindingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicSpaceName: map['topicSpaceName'] == null ? null : (map['topicSpaceName'] as String).input(),
     );
   }
 }

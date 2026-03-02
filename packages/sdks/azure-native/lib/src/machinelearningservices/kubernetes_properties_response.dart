@@ -6,21 +6,21 @@ import 'instance_type_schema_response.dart';
 /// Kubernetes properties
 class KubernetesPropertiesResponse {
   /// Default instance type
-  final String? defaultInstanceType;
+  final pulumi.Input<String>? defaultInstanceType;
   /// Extension instance release train.
-  final String? extensionInstanceReleaseTrain;
+  final pulumi.Input<String>? extensionInstanceReleaseTrain;
   /// Extension principal-id.
-  final String? extensionPrincipalId;
+  final pulumi.Input<String>? extensionPrincipalId;
   /// Instance Type Schema
-  final Map<String, InstanceTypeSchemaResponse>? instanceTypes;
+  final pulumi.Input<Map<String, InstanceTypeSchemaResponse>>? instanceTypes;
   /// Compute namespace
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// Relay connection string.
-  final String? relayConnectionString;
+  final pulumi.Input<String>? relayConnectionString;
   /// ServiceBus connection string.
-  final String? serviceBusConnectionString;
+  final pulumi.Input<String>? serviceBusConnectionString;
   /// VC name.
-  final String? vcName;
+  final pulumi.Input<String>? vcName;
 
   /// Creates a new [KubernetesPropertiesResponse].
   /// [defaultInstanceType] Default instance type
@@ -47,7 +47,7 @@ class KubernetesPropertiesResponse {
       'defaultInstanceType': ?defaultInstanceType,
       'extensionInstanceReleaseTrain': ?extensionInstanceReleaseTrain,
       'extensionPrincipalId': ?extensionPrincipalId,
-      'instanceTypes': ?instanceTypes == null ? null : pulumi.Input.encodeMapValues<InstanceTypeSchemaResponse, Map<String, dynamic>>(instanceTypes!, (value) => value.toMap()),
+      'instanceTypes': ?pulumi.Input.mapOptionalInputValue<Map<String, InstanceTypeSchemaResponse>, Map<String, Map<String, dynamic>>>(instanceTypes, (value) => pulumi.Input.encodeMapValues<InstanceTypeSchemaResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'namespace': ?namespace,
       'relayConnectionString': ?relayConnectionString,
       'serviceBusConnectionString': ?serviceBusConnectionString,
@@ -57,14 +57,14 @@ class KubernetesPropertiesResponse {
 
   factory KubernetesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesPropertiesResponse(
-      defaultInstanceType: map['defaultInstanceType'] == null ? null : map['defaultInstanceType'] as String,
-      extensionInstanceReleaseTrain: map['extensionInstanceReleaseTrain'] == null ? null : map['extensionInstanceReleaseTrain'] as String,
-      extensionPrincipalId: map['extensionPrincipalId'] == null ? null : map['extensionPrincipalId'] as String,
-      instanceTypes: map['instanceTypes'] == null ? null : pulumi.Input.decodeMapValues<InstanceTypeSchemaResponse>(map['instanceTypes'], (value) => InstanceTypeSchemaResponse.fromMap((value as Map).cast<String, dynamic>())),
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      relayConnectionString: map['relayConnectionString'] == null ? null : map['relayConnectionString'] as String,
-      serviceBusConnectionString: map['serviceBusConnectionString'] == null ? null : map['serviceBusConnectionString'] as String,
-      vcName: map['vcName'] == null ? null : map['vcName'] as String,
+      defaultInstanceType: map['defaultInstanceType'] == null ? null : (map['defaultInstanceType'] as String).input(),
+      extensionInstanceReleaseTrain: map['extensionInstanceReleaseTrain'] == null ? null : (map['extensionInstanceReleaseTrain'] as String).input(),
+      extensionPrincipalId: map['extensionPrincipalId'] == null ? null : (map['extensionPrincipalId'] as String).input(),
+      instanceTypes: map['instanceTypes'] == null ? null : (pulumi.Input.decodeMapValues<InstanceTypeSchemaResponse>(map['instanceTypes'], (value) => InstanceTypeSchemaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      relayConnectionString: map['relayConnectionString'] == null ? null : (map['relayConnectionString'] as String).input(),
+      serviceBusConnectionString: map['serviceBusConnectionString'] == null ? null : (map['serviceBusConnectionString'] as String).input(),
+      vcName: map['vcName'] == null ? null : (map['vcName'] as String).input(),
     );
   }
 }

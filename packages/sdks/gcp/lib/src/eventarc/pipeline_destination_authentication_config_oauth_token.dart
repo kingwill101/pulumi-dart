@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineDestinationAuthenticationConfigOauthToken {
   /// OAuth scope to be used for generating OAuth access token. If not
   /// specified, "https://www.googleapis.com/auth/cloud-platform" will be
   /// used.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// Service account email used to generate the [OAuth
   /// token](https://developers.google.com/identity/protocols/OAuth2).
   /// The principal who calls this API must have
@@ -14,7 +15,7 @@ class PipelineDestinationAuthenticationConfigOauthToken {
   /// for more information. Eventarc service agents must have
   /// roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
   /// to create OAuth2 tokens for authenticated requests.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
 
   /// Creates a new [PipelineDestinationAuthenticationConfigOauthToken].
   /// [scope] OAuth scope to be used for generating OAuth access token. If not
@@ -33,8 +34,8 @@ class PipelineDestinationAuthenticationConfigOauthToken {
 
   factory PipelineDestinationAuthenticationConfigOauthToken.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationAuthenticationConfigOauthToken(
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      serviceAccount: map['serviceAccount'] as String,
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }
 }

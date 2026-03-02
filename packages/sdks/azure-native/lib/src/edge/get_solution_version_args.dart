@@ -22,15 +22,11 @@ class GetSolutionVersionArgs {
   /// [solutionVersionName] Name of the solution version
   /// [targetName] Name of the target
   GetSolutionVersionArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> solutionName,
-    required pulumi.Output<String> solutionVersionName,
-    required pulumi.Output<String> targetName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asInput<String>(solutionName),
-      solutionVersionName = pulumi.Input.asInput<String>(solutionVersionName),
-      targetName = pulumi.Input.asInput<String>(targetName);
+    required this.resourceGroupName,
+    required this.solutionName,
+    required this.solutionVersionName,
+    required this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSolutionVersionArgs {
 
   factory GetSolutionVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionVersionArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: pulumi.Output.create<String>(map['solutionName'] as String),
-      solutionVersionName: pulumi.Output.create<String>(map['solutionVersionName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: (map['solutionName'] as String).input(),
+      solutionVersionName: (map['solutionVersionName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
     );
   }
 }

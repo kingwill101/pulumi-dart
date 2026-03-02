@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_devtools_containeranalysis_v1alpha1_alias_context_response.dart';
 
 /// A SourceContext referring to a Gerrit project.
 class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
   /// An alias, which may be a branch or tag.
-  final GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse aliasContext;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse> aliasContext;
   /// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
-  final String gerritProject;
+  final pulumi.Input<String> gerritProject;
   /// The URI of a running Gerrit instance.
-  final String hostUri;
+  final pulumi.Input<String> hostUri;
   /// A revision (commit) ID.
-  final String revisionId;
+  final pulumi.Input<String> revisionId;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse].
   /// [aliasContext] An alias, which may be a branch or tag.
@@ -27,7 +28,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliasContext': aliasContext.toMap(),
+      'aliasContext': pulumi.Input.mapInputValue<GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse, Map<String, dynamic>>(aliasContext, (value) => value.toMap()),
       'gerritProject': gerritProject,
       'hostUri': hostUri,
       'revisionId': revisionId,
@@ -36,10 +37,10 @@ class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
 
   factory GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse(
-      aliasContext: GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
-      gerritProject: map['gerritProject'] as String,
-      hostUri: map['hostUri'] as String,
-      revisionId: map['revisionId'] as String,
+      aliasContext: (GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
+      gerritProject: (map['gerritProject'] as String).input(),
+      hostUri: (map['hostUri'] as String).input(),
+      revisionId: (map['revisionId'] as String).input(),
     );
   }
 }

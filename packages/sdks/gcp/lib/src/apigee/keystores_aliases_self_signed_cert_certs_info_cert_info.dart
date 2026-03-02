@@ -1,41 +1,42 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeystoresAliasesSelfSignedCertCertsInfoCertInfo {
   /// (Output)
   /// X.509 basic constraints extension.
-  final String? basicConstraints;
+  final pulumi.Input<String>? basicConstraints;
   /// (Output)
   /// X.509 notAfter validity period in milliseconds since epoch.
-  final String? expiryDate;
+  final pulumi.Input<String>? expiryDate;
   /// (Output)
   /// Flag that specifies whether the certificate is valid.
   /// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-  final String? isValid;
+  final pulumi.Input<String>? isValid;
   /// (Output)
   /// X.509 issuer.
-  final String? issuer;
+  final pulumi.Input<String>? issuer;
   /// (Output)
   /// Public key component of the X.509 subject public key info.
-  final String? publicKey;
+  final pulumi.Input<String>? publicKey;
   /// (Output)
   /// X.509 serial number.
-  final String? serialNumber;
+  final pulumi.Input<String>? serialNumber;
   /// (Output)
   /// X.509 signatureAlgorithm.
-  final String? sigAlgName;
+  final pulumi.Input<String>? sigAlgName;
   /// Subject details.
   /// Structure is documented below.
-  final String? subject;
+  final pulumi.Input<String>? subject;
   /// (Output)
   /// X.509 subject alternative names (SANs) extension.
-  final List<String>? subjectAlternativeNames;
+  final pulumi.Input<List<String>>? subjectAlternativeNames;
   /// (Output)
   /// X.509 notBefore validity period in milliseconds since epoch.
-  final String? validFrom;
+  final pulumi.Input<String>? validFrom;
   /// (Output)
   /// X.509 version.
-  final int? version;
+  final pulumi.Input<int>? version;
 
   /// Creates a new [KeystoresAliasesSelfSignedCertCertsInfoCertInfo].
   /// [basicConstraints] (Output)
@@ -81,17 +82,17 @@ class KeystoresAliasesSelfSignedCertCertsInfoCertInfo {
 
   factory KeystoresAliasesSelfSignedCertCertsInfoCertInfo.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertCertsInfoCertInfo(
-      basicConstraints: map['basicConstraints'] == null ? null : map['basicConstraints'] as String,
-      expiryDate: map['expiryDate'] == null ? null : map['expiryDate'] as String,
-      isValid: map['isValid'] == null ? null : map['isValid'] as String,
-      issuer: map['issuer'] == null ? null : map['issuer'] as String,
-      publicKey: map['publicKey'] == null ? null : map['publicKey'] as String,
-      serialNumber: map['serialNumber'] == null ? null : map['serialNumber'] as String,
-      sigAlgName: map['sigAlgName'] == null ? null : map['sigAlgName'] as String,
-      subject: map['subject'] == null ? null : map['subject'] as String,
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (map['subjectAlternativeNames'] as List).cast<String>(),
-      validFrom: map['validFrom'] == null ? null : map['validFrom'] as String,
-      version: map['version'] == null ? null : map['version'] as int,
+      basicConstraints: map['basicConstraints'] == null ? null : (map['basicConstraints'] as String).input(),
+      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate'] as String).input(),
+      isValid: map['isValid'] == null ? null : (map['isValid'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      sigAlgName: map['sigAlgName'] == null ? null : (map['sigAlgName'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      validFrom: map['validFrom'] == null ? null : (map['validFrom'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

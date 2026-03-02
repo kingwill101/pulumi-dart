@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The EngagementFabric SKU
 class SKUResponse {
   /// The name of the SKU
-  final String name;
+  final pulumi.Input<String> name;
   /// The price tier of the SKU
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [SKUResponse].
   /// [name] The name of the SKU
@@ -25,8 +26,8 @@ class SKUResponse {
 
   factory SKUResponse.fromMap(Map<String, dynamic> map) {
     return SKUResponse(
-      name: map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

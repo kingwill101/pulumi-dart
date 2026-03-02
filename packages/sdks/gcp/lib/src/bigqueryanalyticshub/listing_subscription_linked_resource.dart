@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListingSubscriptionLinkedResource {
   /// (Output)
   /// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
-  final String? linkedDataset;
+  final pulumi.Input<String>? linkedDataset;
   /// (Output)
   /// Output only. Listing for which linked resource is created.
-  final String? listing;
+  final pulumi.Input<String>? listing;
 
   /// Creates a new [ListingSubscriptionLinkedResource].
   /// [linkedDataset] (Output)
@@ -26,8 +27,8 @@ class ListingSubscriptionLinkedResource {
 
   factory ListingSubscriptionLinkedResource.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionLinkedResource(
-      linkedDataset: map['linkedDataset'] == null ? null : map['linkedDataset'] as String,
-      listing: map['listing'] == null ? null : map['listing'] as String,
+      linkedDataset: map['linkedDataset'] == null ? null : (map['linkedDataset'] as String).input(),
+      listing: map['listing'] == null ? null : (map['listing'] as String).input(),
     );
   }
 }

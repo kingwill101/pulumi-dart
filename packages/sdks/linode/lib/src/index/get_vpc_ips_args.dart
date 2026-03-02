@@ -20,13 +20,10 @@ class GetVpcIpsArgs {
   /// [ipv6] Optional.
   /// [vpcId] The id of the parent VPC for the list of VPC IPs.
   GetVpcIpsArgs({
-    pulumi.Output<List<GetVpcIpsFilter>>? filters,
-    pulumi.Output<bool>? ipv6,
-    pulumi.Output<int>? vpcId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVpcIpsFilter>>(filters),
-      ipv6 = pulumi.Input.asOptionalInput<bool>(ipv6),
-      vpcId = pulumi.Input.asOptionalInput<int>(vpcId);
+    this.filters,
+    this.ipv6,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetVpcIpsArgs {
 
   factory GetVpcIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcIpsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcIpsFilter>>(pulumi.Input.decodeList<GetVpcIpsFilter>(map['filters'], (value) => GetVpcIpsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      ipv6: map['ipv6'] == null ? null : pulumi.Output.create<bool>(map['ipv6'] as bool),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<int>(map['vpcId'] as int),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcIpsFilter>(map['filters'], (value) => GetVpcIpsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as bool).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as int).input(),
     );
   }
 }

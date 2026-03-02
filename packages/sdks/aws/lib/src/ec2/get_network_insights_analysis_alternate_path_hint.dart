@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkInsightsAnalysisAlternatePathHint {
-  final String componentArn;
-  final String componentId;
+  final pulumi.Input<String> componentArn;
+  final pulumi.Input<String> componentId;
 
   /// Creates a new [GetNetworkInsightsAnalysisAlternatePathHint].
   /// [componentArn] Required.
@@ -22,8 +23,8 @@ class GetNetworkInsightsAnalysisAlternatePathHint {
 
   factory GetNetworkInsightsAnalysisAlternatePathHint.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisAlternatePathHint(
-      componentArn: map['componentArn'] as String,
-      componentId: map['componentId'] as String,
+      componentArn: (map['componentArn'] as String).input(),
+      componentId: (map['componentId'] as String).input(),
     );
   }
 }

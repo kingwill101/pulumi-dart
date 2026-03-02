@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message describing a BackupSource.
 class BackupSourceResponseAlloydbV1alpha {
   /// The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backup_id}
-  final String backupName;
+  final pulumi.Input<String> backupName;
   /// The system-generated UID of the backup which was used to create this resource. The UID is generated when the backup is created, and it is retained until the backup is deleted.
-  final String backupUid;
+  final pulumi.Input<String> backupUid;
 
   /// Creates a new [BackupSourceResponseAlloydbV1alpha].
   /// [backupName] The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backup_id}
@@ -25,8 +26,8 @@ class BackupSourceResponseAlloydbV1alpha {
 
   factory BackupSourceResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return BackupSourceResponseAlloydbV1alpha(
-      backupName: map['backupName'] as String,
-      backupUid: map['backupUid'] as String,
+      backupName: (map['backupName'] as String).input(),
+      backupUid: (map['backupUid'] as String).input(),
     );
   }
 }

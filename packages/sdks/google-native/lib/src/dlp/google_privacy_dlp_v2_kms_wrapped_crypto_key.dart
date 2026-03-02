@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 class GooglePrivacyDlpV2KmsWrappedCryptoKey {
   /// The resource name of the KMS CryptoKey to use for unwrapping.
-  final String cryptoKeyName;
+  final pulumi.Input<String> cryptoKeyName;
   /// The wrapped data crypto key.
-  final String wrappedKey;
+  final pulumi.Input<String> wrappedKey;
 
   /// Creates a new [GooglePrivacyDlpV2KmsWrappedCryptoKey].
   /// [cryptoKeyName] The resource name of the KMS CryptoKey to use for unwrapping.
@@ -25,8 +26,8 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKey {
 
   factory GooglePrivacyDlpV2KmsWrappedCryptoKey.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KmsWrappedCryptoKey(
-      cryptoKeyName: map['cryptoKeyName'] as String,
-      wrappedKey: map['wrappedKey'] as String,
+      cryptoKeyName: (map['cryptoKeyName'] as String).input(),
+      wrappedKey: (map['wrappedKey'] as String).input(),
     );
   }
 }

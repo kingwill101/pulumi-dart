@@ -26,19 +26,13 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState {
   /// [sourceResourceId] The ID of the source resource. The value can be the ID of either Public internet, Virtual machines, or Subnet. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   /// [verifierWorkspaceId] The ID of the Network Manager Verifier Workspace. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destinationResourceId,
-    pulumi.Output<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic>? ipTraffic,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? sourceResourceId,
-    pulumi.Output<String>? verifierWorkspaceId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationResourceId = pulumi.Input.asOptionalInput<String>(destinationResourceId),
-      ipTraffic = pulumi.Input.asOptionalInput<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic>(ipTraffic),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sourceResourceId = pulumi.Input.asOptionalInput<String>(sourceResourceId),
-      verifierWorkspaceId = pulumi.Input.asOptionalInput<String>(verifierWorkspaceId);
+    this.description,
+    this.destinationResourceId,
+    this.ipTraffic,
+    this.name,
+    this.sourceResourceId,
+    this.verifierWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState {
 
   factory NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationResourceId: map['destinationResourceId'] == null ? null : pulumi.Output.create<String>(map['destinationResourceId'] as String),
-      ipTraffic: map['ipTraffic'] == null ? null : pulumi.Output.create<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic>(NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sourceResourceId: map['sourceResourceId'] == null ? null : pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      verifierWorkspaceId: map['verifierWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['verifierWorkspaceId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationResourceId: map['destinationResourceId'] == null ? null : (map['destinationResourceId'] as String).input(),
+      ipTraffic: map['ipTraffic'] == null ? null : (NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      verifierWorkspaceId: map['verifierWorkspaceId'] == null ? null : (map['verifierWorkspaceId'] as String).input(),
     );
   }
 }

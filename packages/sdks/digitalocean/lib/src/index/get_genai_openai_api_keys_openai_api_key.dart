@@ -5,19 +5,19 @@ import 'get_genai_openai_api_keys_openai_api_key_model.dart';
 
 class GetGenaiOpenaiApiKeysOpenaiApiKey {
   /// Timestamp when the API Key was created
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Created By user ID for the API Key
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// Deleted At timestamp for the API Key
-  final String deletedAt;
+  final pulumi.Input<String> deletedAt;
   /// List of models associated with the API Key
-  final List<GetGenaiOpenaiApiKeysOpenaiApiKeyModel> models;
+  final pulumi.Input<List<GetGenaiOpenaiApiKeysOpenaiApiKeyModel>> models;
   /// Name of the API Key
-  final String name;
+  final pulumi.Input<String> name;
   /// Updated At timestamp for the API Key
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// OpenAI API Key Uuid
-  final String uuid;
+  final pulumi.Input<String> uuid;
 
   /// Creates a new [GetGenaiOpenaiApiKeysOpenaiApiKey].
   /// [createdAt] Timestamp when the API Key was created
@@ -42,7 +42,7 @@ class GetGenaiOpenaiApiKeysOpenaiApiKey {
       'createdAt': createdAt,
       'createdBy': createdBy,
       'deletedAt': deletedAt,
-      'models': pulumi.Input.encodeList<GetGenaiOpenaiApiKeysOpenaiApiKeyModel, Map<String, dynamic>>(models, (value) => value.toMap()),
+      'models': pulumi.Input.mapInputValue<List<GetGenaiOpenaiApiKeysOpenaiApiKeyModel>, List<Map<String, dynamic>>>(models, (value) => pulumi.Input.encodeList<GetGenaiOpenaiApiKeysOpenaiApiKeyModel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'updatedAt': updatedAt,
       'uuid': uuid,
@@ -51,13 +51,13 @@ class GetGenaiOpenaiApiKeysOpenaiApiKey {
 
   factory GetGenaiOpenaiApiKeysOpenaiApiKey.fromMap(Map<String, dynamic> map) {
     return GetGenaiOpenaiApiKeysOpenaiApiKey(
-      createdAt: map['createdAt'] as String,
-      createdBy: map['createdBy'] as String,
-      deletedAt: map['deletedAt'] as String,
-      models: pulumi.Input.decodeList<GetGenaiOpenaiApiKeysOpenaiApiKeyModel>(map['models'], (value) => GetGenaiOpenaiApiKeysOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      updatedAt: map['updatedAt'] as String,
-      uuid: map['uuid'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      createdBy: (map['createdBy'] as String).input(),
+      deletedAt: (map['deletedAt'] as String).input(),
+      models: (pulumi.Input.decodeList<GetGenaiOpenaiApiKeysOpenaiApiKeyModel>(map['models'], (value) => GetGenaiOpenaiApiKeysOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

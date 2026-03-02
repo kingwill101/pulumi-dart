@@ -22,15 +22,11 @@ class HanaBackupClientArgs {
   /// [useHttps] Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
   /// [vaultId] The ID of the backup vault.
   HanaBackupClientArgs({
-    pulumi.Output<String>? alertSetting,
-    pulumi.Output<String>? clientInfo,
-    pulumi.Output<bool>? useHttps,
-    required pulumi.Output<String> vaultId,
-  }) :
-      alertSetting = pulumi.Input.asOptionalInput<String>(alertSetting),
-      clientInfo = pulumi.Input.asOptionalInput<String>(clientInfo),
-      useHttps = pulumi.Input.asOptionalInput<bool>(useHttps),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    this.alertSetting,
+    this.clientInfo,
+    this.useHttps,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class HanaBackupClientArgs {
 
   factory HanaBackupClientArgs.fromMap(Map<String, dynamic> map) {
     return HanaBackupClientArgs(
-      alertSetting: map['alertSetting'] == null ? null : pulumi.Output.create<String>(map['alertSetting'] as String),
-      clientInfo: map['clientInfo'] == null ? null : pulumi.Output.create<String>(map['clientInfo'] as String),
-      useHttps: map['useHttps'] == null ? null : pulumi.Output.create<bool>(map['useHttps'] as bool),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting'] as String).input(),
+      clientInfo: map['clientInfo'] == null ? null : (map['clientInfo'] as String).input(),
+      useHttps: map['useHttps'] == null ? null : (map['useHttps'] as bool).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

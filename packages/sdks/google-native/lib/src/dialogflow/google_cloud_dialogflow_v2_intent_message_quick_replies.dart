@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The quick replies response message.
 class GoogleCloudDialogflowV2IntentMessageQuickReplies {
   /// Optional. The collection of quick replies.
-  final List<String>? quickReplies;
+  final pulumi.Input<List<String>>? quickReplies;
   /// Optional. The title of the collection of quick replies.
-  final String? title;
+  final pulumi.Input<String>? title;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageQuickReplies].
   /// [quickReplies] Optional. The collection of quick replies.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
 
   factory GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageQuickReplies(
-      quickReplies: map['quickReplies'] == null ? null : (map['quickReplies'] as List).cast<String>(),
-      title: map['title'] == null ? null : map['title'] as String,
+      quickReplies: map['quickReplies'] == null ? null : ((map['quickReplies'] as List).cast<String>()).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

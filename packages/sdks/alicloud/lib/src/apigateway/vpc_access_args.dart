@@ -22,15 +22,11 @@ class VpcAccessArgs {
   /// [port] The port number that corresponds to the instance.
   /// [vpcId] The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
   VpcAccessArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> port,
-    required pulumi.Output<String> vpcId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asInput<int>(port),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    required this.instanceId,
+    this.name,
+    required this.port,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VpcAccessArgs {
 
   factory VpcAccessArgs.fromMap(Map<String, dynamic> map) {
     return VpcAccessArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: (map['port'] as int).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

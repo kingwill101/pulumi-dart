@@ -19,13 +19,10 @@ class LoadBalancerCommonBandwidthPackageAttachmentArgs {
   /// [dryRun] Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
   /// [loadBalancerId] The ID of the applied server load balancer instance.
   LoadBalancerCommonBandwidthPackageAttachmentArgs({
-    required pulumi.Output<String> bandwidthPackageId,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> loadBalancerId,
-  }) :
-      bandwidthPackageId = pulumi.Input.asInput<String>(bandwidthPackageId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId);
+    required this.bandwidthPackageId,
+    this.dryRun,
+    required this.loadBalancerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LoadBalancerCommonBandwidthPackageAttachmentArgs {
 
   factory LoadBalancerCommonBandwidthPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerCommonBandwidthPackageAttachmentArgs(
-      bandwidthPackageId: pulumi.Output.create<String>(map['bandwidthPackageId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
+      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
     );
   }
 }

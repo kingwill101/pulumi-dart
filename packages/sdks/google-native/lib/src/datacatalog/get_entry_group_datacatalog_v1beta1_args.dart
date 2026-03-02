@@ -18,15 +18,11 @@ class GetEntryGroupDatacatalogV1beta1Args {
   /// [project] Optional.
   /// [readMask] Optional.
   GetEntryGroupDatacatalogV1beta1Args({
-    required pulumi.Output<String> entryGroupId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? readMask,
-  }) :
-      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      readMask = pulumi.Input.asOptionalInput<String>(readMask);
+    required this.entryGroupId,
+    required this.location,
+    this.project,
+    this.readMask,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetEntryGroupDatacatalogV1beta1Args {
 
   factory GetEntryGroupDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEntryGroupDatacatalogV1beta1Args(
-      entryGroupId: pulumi.Output.create<String>(map['entryGroupId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      readMask: map['readMask'] == null ? null : pulumi.Output.create<String>(map['readMask'] as String),
+      entryGroupId: (map['entryGroupId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      readMask: map['readMask'] == null ? null : (map['readMask'] as String).input(),
     );
   }
 }

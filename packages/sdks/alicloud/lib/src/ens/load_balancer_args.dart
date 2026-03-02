@@ -32,21 +32,14 @@ class LoadBalancerArgs {
   /// [paymentType] Server Load Balancer Instance Payment Type. Value:PayAsYouGo
   /// [vswitchId] The ID of the vSwitch to which the VPC instance belongs.
   LoadBalancerArgs({
-    pulumi.Output<List<LoadBalancerBackendServer>>? backendServers,
-    required pulumi.Output<String> ensRegionId,
-    pulumi.Output<String>? loadBalancerName,
-    required pulumi.Output<String> loadBalancerSpec,
-    required pulumi.Output<String> networkId,
-    required pulumi.Output<String> paymentType,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      backendServers = pulumi.Input.asOptionalInput<List<LoadBalancerBackendServer>>(backendServers),
-      ensRegionId = pulumi.Input.asInput<String>(ensRegionId),
-      loadBalancerName = pulumi.Input.asOptionalInput<String>(loadBalancerName),
-      loadBalancerSpec = pulumi.Input.asInput<String>(loadBalancerSpec),
-      networkId = pulumi.Input.asInput<String>(networkId),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    this.backendServers,
+    required this.ensRegionId,
+    this.loadBalancerName,
+    required this.loadBalancerSpec,
+    required this.networkId,
+    required this.paymentType,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      backendServers: map['backendServers'] == null ? null : pulumi.Output.create<List<LoadBalancerBackendServer>>(pulumi.Input.decodeList<LoadBalancerBackendServer>(map['backendServers'], (value) => LoadBalancerBackendServer.fromMap((value as Map).cast<String, dynamic>()))),
-      ensRegionId: pulumi.Output.create<String>(map['ensRegionId'] as String),
-      loadBalancerName: map['loadBalancerName'] == null ? null : pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      loadBalancerSpec: pulumi.Output.create<String>(map['loadBalancerSpec'] as String),
-      networkId: pulumi.Output.create<String>(map['networkId'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendServer>(map['backendServers'], (value) => LoadBalancerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ensRegionId: (map['ensRegionId'] as String).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      loadBalancerSpec: (map['loadBalancerSpec'] as String).input(),
+      networkId: (map['networkId'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

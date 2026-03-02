@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
 class MultiCloudClusterGkehubV1beta1 {
   /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
-  final String? resourceLink;
+  final pulumi.Input<String>? resourceLink;
 
   /// Creates a new [MultiCloudClusterGkehubV1beta1].
   /// [resourceLink] Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
@@ -20,7 +21,7 @@ class MultiCloudClusterGkehubV1beta1 {
 
   factory MultiCloudClusterGkehubV1beta1.fromMap(Map<String, dynamic> map) {
     return MultiCloudClusterGkehubV1beta1(
-      resourceLink: map['resourceLink'] == null ? null : map['resourceLink'] as String,
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
     );
   }
 }

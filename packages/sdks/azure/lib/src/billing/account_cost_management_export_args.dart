@@ -39,25 +39,16 @@ class AccountCostManagementExportArgs {
   /// [recurrencePeriodStartDate] The date the export will start capturing information.
   /// [recurrenceType] How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
   AccountCostManagementExportArgs({
-    pulumi.Output<bool>? active,
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<AccountCostManagementExportExportDataOptions> exportDataOptions,
-    required pulumi.Output<AccountCostManagementExportExportDataStorageLocation> exportDataStorageLocation,
-    pulumi.Output<String>? fileFormat,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> recurrencePeriodEndDate,
-    required pulumi.Output<String> recurrencePeriodStartDate,
-    required pulumi.Output<String> recurrenceType,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      exportDataOptions = pulumi.Input.asInput<AccountCostManagementExportExportDataOptions>(exportDataOptions),
-      exportDataStorageLocation = pulumi.Input.asInput<AccountCostManagementExportExportDataStorageLocation>(exportDataStorageLocation),
-      fileFormat = pulumi.Input.asOptionalInput<String>(fileFormat),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recurrencePeriodEndDate = pulumi.Input.asInput<String>(recurrencePeriodEndDate),
-      recurrencePeriodStartDate = pulumi.Input.asInput<String>(recurrencePeriodStartDate),
-      recurrenceType = pulumi.Input.asInput<String>(recurrenceType);
+    this.active,
+    required this.billingAccountId,
+    required this.exportDataOptions,
+    required this.exportDataStorageLocation,
+    this.fileFormat,
+    this.name,
+    required this.recurrencePeriodEndDate,
+    required this.recurrencePeriodStartDate,
+    required this.recurrenceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class AccountCostManagementExportArgs {
 
   factory AccountCostManagementExportArgs.fromMap(Map<String, dynamic> map) {
     return AccountCostManagementExportArgs(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      exportDataOptions: pulumi.Output.create<AccountCostManagementExportExportDataOptions>(AccountCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())),
-      exportDataStorageLocation: pulumi.Output.create<AccountCostManagementExportExportDataStorageLocation>(AccountCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())),
-      fileFormat: map['fileFormat'] == null ? null : pulumi.Output.create<String>(map['fileFormat'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recurrencePeriodEndDate: pulumi.Output.create<String>(map['recurrencePeriodEndDate'] as String),
-      recurrencePeriodStartDate: pulumi.Output.create<String>(map['recurrencePeriodStartDate'] as String),
-      recurrenceType: pulumi.Output.create<String>(map['recurrenceType'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      exportDataOptions: (AccountCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())).input(),
+      exportDataStorageLocation: (AccountCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recurrencePeriodEndDate: (map['recurrencePeriodEndDate'] as String).input(),
+      recurrencePeriodStartDate: (map['recurrencePeriodStartDate'] as String).input(),
+      recurrenceType: (map['recurrenceType'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetGuestConfigurationHCRPAssignmentArgs {
   /// [machineName] The name of the ARC machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGuestConfigurationHCRPAssignmentArgs({
-    required pulumi.Output<String> guestConfigurationAssignmentName,
-    required pulumi.Output<String> machineName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      guestConfigurationAssignmentName = pulumi.Input.asInput<String>(guestConfigurationAssignmentName),
-      machineName = pulumi.Input.asInput<String>(machineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.guestConfigurationAssignmentName,
+    required this.machineName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGuestConfigurationHCRPAssignmentArgs {
 
   factory GetGuestConfigurationHCRPAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestConfigurationHCRPAssignmentArgs(
-      guestConfigurationAssignmentName: pulumi.Output.create<String>(map['guestConfigurationAssignmentName'] as String),
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      guestConfigurationAssignmentName: (map['guestConfigurationAssignmentName'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

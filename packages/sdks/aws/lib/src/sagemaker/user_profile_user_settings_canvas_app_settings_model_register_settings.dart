@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings {
   /// The Amazon Resource Name (ARN) of the SageMaker AI model registry account. Required only to register model versions created by a different SageMaker AI Canvas AWS account than the AWS account in which SageMaker AI model registry is set up.
-  final String? crossAccountModelRegisterRoleArn;
+  final pulumi.Input<String>? crossAccountModelRegisterRoleArn;
   /// Describes whether the integration to the model registry is enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings].
   /// [crossAccountModelRegisterRoleArn] The Amazon Resource Name (ARN) of the SageMaker AI model registry account. Required only to register model versions created by a different SageMaker AI Canvas AWS account than the AWS account in which SageMaker AI model registry is set up.
@@ -24,8 +25,8 @@ class UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings {
 
   factory UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings(
-      crossAccountModelRegisterRoleArn: map['crossAccountModelRegisterRoleArn'] == null ? null : map['crossAccountModelRegisterRoleArn'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      crossAccountModelRegisterRoleArn: map['crossAccountModelRegisterRoleArn'] == null ? null : (map['crossAccountModelRegisterRoleArn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

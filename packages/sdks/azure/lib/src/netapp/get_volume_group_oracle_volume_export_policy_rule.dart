@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVolumeGroupOracleVolumeExportPolicyRule {
   /// A list of allowed clients IPv4 addresses.
-  final String allowedClients;
+  final pulumi.Input<String> allowedClients;
   /// Is the NFSv3 protocol enabled?
-  final bool nfsv3Enabled;
+  final pulumi.Input<bool> nfsv3Enabled;
   /// Is the NFSv4.1 enabled?
-  final bool nfsv41Enabled;
+  final pulumi.Input<bool> nfsv41Enabled;
   /// Is root access permitted to this volume?
-  final bool rootAccessEnabled;
+  final pulumi.Input<bool> rootAccessEnabled;
   /// The index number of the rule.
-  final int ruleIndex;
+  final pulumi.Input<int> ruleIndex;
   /// Is the file system on unix read only?.
-  final bool unixReadOnly;
+  final pulumi.Input<bool> unixReadOnly;
   /// Is the file system on unix read and write?.
-  final bool unixReadWrite;
+  final pulumi.Input<bool> unixReadWrite;
 
   /// Creates a new [GetVolumeGroupOracleVolumeExportPolicyRule].
   /// [allowedClients] A list of allowed clients IPv4 addresses.
@@ -49,13 +50,13 @@ class GetVolumeGroupOracleVolumeExportPolicyRule {
 
   factory GetVolumeGroupOracleVolumeExportPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupOracleVolumeExportPolicyRule(
-      allowedClients: map['allowedClients'] as String,
-      nfsv3Enabled: map['nfsv3Enabled'] as bool,
-      nfsv41Enabled: map['nfsv41Enabled'] as bool,
-      rootAccessEnabled: map['rootAccessEnabled'] as bool,
-      ruleIndex: map['ruleIndex'] as int,
-      unixReadOnly: map['unixReadOnly'] as bool,
-      unixReadWrite: map['unixReadWrite'] as bool,
+      allowedClients: (map['allowedClients'] as String).input(),
+      nfsv3Enabled: (map['nfsv3Enabled'] as bool).input(),
+      nfsv41Enabled: (map['nfsv41Enabled'] as bool).input(),
+      rootAccessEnabled: (map['rootAccessEnabled'] as bool).input(),
+      ruleIndex: (map['ruleIndex'] as int).input(),
+      unixReadOnly: (map['unixReadOnly'] as bool).input(),
+      unixReadWrite: (map['unixReadWrite'] as bool).input(),
     );
   }
 }

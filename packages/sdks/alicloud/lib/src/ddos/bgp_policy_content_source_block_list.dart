@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BgpPolicyContentSourceBlockList {
   /// Statistical cycle range 60-1200.
-  final int blockExpireSeconds;
+  final pulumi.Input<int> blockExpireSeconds;
   /// The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
-  final int everySeconds;
+  final pulumi.Input<int> everySeconds;
   /// The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
-  final int exceedLimitTimes;
+  final pulumi.Input<int> exceedLimitTimes;
   /// Type
-  final int type;
+  final pulumi.Input<int> type;
 
   /// Creates a new [BgpPolicyContentSourceBlockList].
   /// [blockExpireSeconds] Statistical cycle range 60-1200.
@@ -34,10 +35,10 @@ class BgpPolicyContentSourceBlockList {
 
   factory BgpPolicyContentSourceBlockList.fromMap(Map<String, dynamic> map) {
     return BgpPolicyContentSourceBlockList(
-      blockExpireSeconds: map['blockExpireSeconds'] as int,
-      everySeconds: map['everySeconds'] as int,
-      exceedLimitTimes: map['exceedLimitTimes'] as int,
-      type: map['type'] as int,
+      blockExpireSeconds: (map['blockExpireSeconds'] as int).input(),
+      everySeconds: (map['everySeconds'] as int).input(),
+      exceedLimitTimes: (map['exceedLimitTimes'] as int).input(),
+      type: (map['type'] as int).input(),
     );
   }
 }

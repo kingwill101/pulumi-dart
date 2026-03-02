@@ -15,9 +15,8 @@ class GetAccessPolicyArgs {
   /// Creates a new [GetAccessPolicyArgs].
   /// [name] Specifies the name of the Management Template. Possible values are: `Key Management`,
   GetAccessPolicyArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +26,7 @@ class GetAccessPolicyArgs {
 
   factory GetAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

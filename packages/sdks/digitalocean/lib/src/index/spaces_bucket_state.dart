@@ -40,27 +40,17 @@ class SpacesBucketState {
   /// [region] The region where the bucket resides (Defaults to `nyc3`)
   /// [versioning] A state of versioning (documented below)
   SpacesBucketState({
-    pulumi.Output<String>? acl,
-    pulumi.Output<String>? bucketDomainName,
-    pulumi.Output<String>? bucketUrn,
-    pulumi.Output<List<SpacesBucketCorsRule>>? corsRules,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<List<SpacesBucketLifecycleRule>>? lifecycleRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<SpacesBucketVersioning>? versioning,
-  }) :
-      acl = pulumi.Input.asOptionalInput<String>(acl),
-      bucketDomainName = pulumi.Input.asOptionalInput<String>(bucketDomainName),
-      bucketUrn = pulumi.Input.asOptionalInput<String>(bucketUrn),
-      corsRules = pulumi.Input.asOptionalInput<List<SpacesBucketCorsRule>>(corsRules),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      lifecycleRules = pulumi.Input.asOptionalInput<List<SpacesBucketLifecycleRule>>(lifecycleRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      versioning = pulumi.Input.asOptionalInput<SpacesBucketVersioning>(versioning);
+    this.acl,
+    this.bucketDomainName,
+    this.bucketUrn,
+    this.corsRules,
+    this.endpoint,
+    this.forceDestroy,
+    this.lifecycleRules,
+    this.name,
+    this.region,
+    this.versioning,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class SpacesBucketState {
 
   factory SpacesBucketState.fromMap(Map<String, dynamic> map) {
     return SpacesBucketState(
-      acl: map['acl'] == null ? null : pulumi.Output.create<String>(map['acl'] as String),
-      bucketDomainName: map['bucketDomainName'] == null ? null : pulumi.Output.create<String>(map['bucketDomainName'] as String),
-      bucketUrn: map['bucketUrn'] == null ? null : pulumi.Output.create<String>(map['bucketUrn'] as String),
-      corsRules: map['corsRules'] == null ? null : pulumi.Output.create<List<SpacesBucketCorsRule>>(pulumi.Input.decodeList<SpacesBucketCorsRule>(map['corsRules'], (value) => SpacesBucketCorsRule.fromMap((value as Map).cast<String, dynamic>()))),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      lifecycleRules: map['lifecycleRules'] == null ? null : pulumi.Output.create<List<SpacesBucketLifecycleRule>>(pulumi.Input.decodeList<SpacesBucketLifecycleRule>(map['lifecycleRules'], (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      versioning: map['versioning'] == null ? null : pulumi.Output.create<SpacesBucketVersioning>(SpacesBucketVersioning.fromMap((map['versioning'] as Map).cast<String, dynamic>())),
+      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      bucketDomainName: map['bucketDomainName'] == null ? null : (map['bucketDomainName'] as String).input(),
+      bucketUrn: map['bucketUrn'] == null ? null : (map['bucketUrn'] as String).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<SpacesBucketCorsRule>(map['corsRules'], (value) => SpacesBucketCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      lifecycleRules: map['lifecycleRules'] == null ? null : (pulumi.Input.decodeList<SpacesBucketLifecycleRule>(map['lifecycleRules'], (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      versioning: map['versioning'] == null ? null : (SpacesBucketVersioning.fromMap((map['versioning'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

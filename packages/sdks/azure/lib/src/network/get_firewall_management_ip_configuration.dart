@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallManagementIpConfiguration {
   /// The name of the Azure Firewall.
-  final String name;
+  final pulumi.Input<String> name;
   /// The private IP address associated with the Azure Firewall.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// The ID of the Public IP address of the Azure Firewall.
-  final String publicIpAddressId;
+  final pulumi.Input<String> publicIpAddressId;
   /// The ID of the Subnet where the Azure Firewall is deployed.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetFirewallManagementIpConfiguration].
   /// [name] The name of the Azure Firewall.
@@ -34,10 +35,10 @@ class GetFirewallManagementIpConfiguration {
 
   factory GetFirewallManagementIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFirewallManagementIpConfiguration(
-      name: map['name'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
-      publicIpAddressId: map['publicIpAddressId'] as String,
-      subnetId: map['subnetId'] as String,
+      name: (map['name'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

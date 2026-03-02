@@ -19,13 +19,10 @@ class GetHypervCollectorsOperationArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetHypervCollectorsOperationArgs({
-    required pulumi.Output<String> hypervCollectorName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hypervCollectorName = pulumi.Input.asInput<String>(hypervCollectorName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hypervCollectorName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHypervCollectorsOperationArgs {
 
   factory GetHypervCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetHypervCollectorsOperationArgs(
-      hypervCollectorName: pulumi.Output.create<String>(map['hypervCollectorName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hypervCollectorName: (map['hypervCollectorName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

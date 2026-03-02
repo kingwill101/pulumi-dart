@@ -30,17 +30,12 @@ class FulfillmentArgs {
   /// [genericWebService] Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// [project] The ID of the project in which the resource belongs.
   FulfillmentArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<FulfillmentFeature>>? features,
-    pulumi.Output<FulfillmentGenericWebService>? genericWebService,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      features = pulumi.Input.asOptionalInput<List<FulfillmentFeature>>(features),
-      genericWebService = pulumi.Input.asOptionalInput<FulfillmentGenericWebService>(genericWebService),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.displayName,
+    this.enabled,
+    this.features,
+    this.genericWebService,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class FulfillmentArgs {
 
   factory FulfillmentArgs.fromMap(Map<String, dynamic> map) {
     return FulfillmentArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      features: map['features'] == null ? null : pulumi.Output.create<List<FulfillmentFeature>>(pulumi.Input.decodeList<FulfillmentFeature>(map['features'], (value) => FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>()))),
-      genericWebService: map['genericWebService'] == null ? null : pulumi.Output.create<FulfillmentGenericWebService>(FulfillmentGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<FulfillmentFeature>(map['features'], (value) => FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      genericWebService: map['genericWebService'] == null ? null : (FulfillmentGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

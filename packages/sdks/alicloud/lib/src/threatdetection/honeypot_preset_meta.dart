@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HoneypotPresetMeta {
   /// Burp counter.
-  final String burp;
+  final pulumi.Input<String> burp;
   /// Social traceability.
-  final bool? portraitOption;
+  final pulumi.Input<bool>? portraitOption;
   /// Git countered.
-  final String? trojanGit;
+  final pulumi.Input<String>? trojanGit;
 
   /// Creates a new [HoneypotPresetMeta].
   /// [burp] Burp counter.
@@ -29,9 +30,9 @@ class HoneypotPresetMeta {
 
   factory HoneypotPresetMeta.fromMap(Map<String, dynamic> map) {
     return HoneypotPresetMeta(
-      burp: map['burp'] as String,
-      portraitOption: map['portraitOption'] == null ? null : map['portraitOption'] as bool,
-      trojanGit: map['trojanGit'] == null ? null : map['trojanGit'] as String,
+      burp: (map['burp'] as String).input(),
+      portraitOption: map['portraitOption'] == null ? null : (map['portraitOption'] as bool).input(),
+      trojanGit: map['trojanGit'] == null ? null : (map['trojanGit'] as String).input(),
     );
   }
 }

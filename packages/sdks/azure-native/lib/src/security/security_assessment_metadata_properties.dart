@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_assessment_metadata_partner_data.dart';
 
 /// Describes properties of an assessment metadata.
 class SecurityAssessmentMetadataProperties {
   /// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
-  final String assessmentType;
-  final List<String>? categories;
+  final pulumi.Input<String> assessmentType;
+  final pulumi.Input<List<String>>? categories;
   /// Human readable description of the assessment
-  final String? description;
+  final pulumi.Input<String>? description;
   /// User friendly display name of the assessment
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The implementation effort required to remediate this assessment
-  final String? implementationEffort;
+  final pulumi.Input<String>? implementationEffort;
   /// Describes the partner that created the assessment
-  final SecurityAssessmentMetadataPartnerData? partnerData;
+  final pulumi.Input<SecurityAssessmentMetadataPartnerData>? partnerData;
   /// True if this assessment is in preview release status
-  final bool? preview;
+  final pulumi.Input<bool>? preview;
   /// Human readable description of what you should do to mitigate this security issue
-  final String? remediationDescription;
+  final pulumi.Input<String>? remediationDescription;
   /// The severity level of the assessment
-  final String severity;
-  final List<String>? threats;
+  final pulumi.Input<String> severity;
+  final pulumi.Input<List<String>>? threats;
   /// The user impact of the assessment
-  final String? userImpact;
+  final pulumi.Input<String>? userImpact;
 
   /// Creates a new [SecurityAssessmentMetadataProperties].
   /// [assessmentType] BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
@@ -58,7 +59,7 @@ class SecurityAssessmentMetadataProperties {
       'description': ?description,
       'displayName': displayName,
       'implementationEffort': ?implementationEffort,
-      'partnerData': ?partnerData == null ? null : partnerData!.toMap(),
+      'partnerData': ?pulumi.Input.mapOptionalInputValue<SecurityAssessmentMetadataPartnerData, Map<String, dynamic>>(partnerData, (value) => value.toMap()),
       'preview': ?preview,
       'remediationDescription': ?remediationDescription,
       'severity': severity,
@@ -69,17 +70,17 @@ class SecurityAssessmentMetadataProperties {
 
   factory SecurityAssessmentMetadataProperties.fromMap(Map<String, dynamic> map) {
     return SecurityAssessmentMetadataProperties(
-      assessmentType: map['assessmentType'] as String,
-      categories: map['categories'] == null ? null : (map['categories'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] as String,
-      implementationEffort: map['implementationEffort'] == null ? null : map['implementationEffort'] as String,
-      partnerData: map['partnerData'] == null ? null : SecurityAssessmentMetadataPartnerData.fromMap((map['partnerData'] as Map).cast<String, dynamic>()),
-      preview: map['preview'] == null ? null : map['preview'] as bool,
-      remediationDescription: map['remediationDescription'] == null ? null : map['remediationDescription'] as String,
-      severity: map['severity'] as String,
-      threats: map['threats'] == null ? null : (map['threats'] as List).cast<String>(),
-      userImpact: map['userImpact'] == null ? null : map['userImpact'] as String,
+      assessmentType: (map['assessmentType'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort'] as String).input(),
+      partnerData: map['partnerData'] == null ? null : (SecurityAssessmentMetadataPartnerData.fromMap((map['partnerData'] as Map).cast<String, dynamic>())).input(),
+      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      threats: map['threats'] == null ? null : ((map['threats'] as List).cast<String>()).input(),
+      userImpact: map['userImpact'] == null ? null : (map['userImpact'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains information for manual implementation for an Azure SQL Database, Server or Elastic Pool Recommended Action.
 class RecommendedActionImplementationInfoResponse {
   /// Gets the method in which this recommended action can be manually implemented. e.g., TSql, AzurePowerShell.
-  final String method;
+  final pulumi.Input<String> method;
   /// Gets the manual implementation script. e.g., T-SQL script that could be executed on the database.
-  final String script;
+  final pulumi.Input<String> script;
 
   /// Creates a new [RecommendedActionImplementationInfoResponse].
   /// [method] Gets the method in which this recommended action can be manually implemented. e.g., TSql, AzurePowerShell.
@@ -25,8 +26,8 @@ class RecommendedActionImplementationInfoResponse {
 
   factory RecommendedActionImplementationInfoResponse.fromMap(Map<String, dynamic> map) {
     return RecommendedActionImplementationInfoResponse(
-      method: map['method'] as String,
-      script: map['script'] as String,
+      method: (map['method'] as String).input(),
+      script: (map['script'] as String).input(),
     );
   }
 }

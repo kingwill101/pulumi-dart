@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsReportConfigCsvOptions {
   /// The delimiter used to separate the fields in the inventory report CSV file.
-  final String? delimiter;
+  final pulumi.Input<String>? delimiter;
   /// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-  final bool? headerRequired;
+  final pulumi.Input<bool>? headerRequired;
   /// The character used to separate the records in the inventory report CSV file.
-  final String? recordSeparator;
+  final pulumi.Input<String>? recordSeparator;
 
   /// Creates a new [InsightsReportConfigCsvOptions].
   /// [delimiter] The delimiter used to separate the fields in the inventory report CSV file.
@@ -29,9 +30,9 @@ class InsightsReportConfigCsvOptions {
 
   factory InsightsReportConfigCsvOptions.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigCsvOptions(
-      delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
-      headerRequired: map['headerRequired'] == null ? null : map['headerRequired'] as bool,
-      recordSeparator: map['recordSeparator'] == null ? null : map['recordSeparator'] as String,
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      headerRequired: map['headerRequired'] == null ? null : (map['headerRequired'] as bool).input(),
+      recordSeparator: map['recordSeparator'] == null ? null : (map['recordSeparator'] as String).input(),
     );
   }
 }

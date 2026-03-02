@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HciLogicalNetworkSubnetIpPool {
   /// The IPv4 address of the end of the IP address pool. Changing this forces a new resource to be created.
-  final String end;
+  final pulumi.Input<String> end;
   /// The IPv4 address of the start of the IP address pool. Changing this forces a new resource to be created.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [HciLogicalNetworkSubnetIpPool].
   /// [end] The IPv4 address of the end of the IP address pool. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class HciLogicalNetworkSubnetIpPool {
 
   factory HciLogicalNetworkSubnetIpPool.fromMap(Map<String, dynamic> map) {
     return HciLogicalNetworkSubnetIpPool(
-      end: map['end'] as String,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReleaseLabelsFilters {
   /// Optional release label application filter. For example, `Spark@2.1.0` or `Spark`.
-  final String? application;
+  final pulumi.Input<String>? application;
   /// Optional release label version prefix filter. For example, `emr-5`.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [GetReleaseLabelsFilters].
   /// [application] Optional release label application filter. For example, `Spark@2.1.0` or `Spark`.
@@ -24,8 +25,8 @@ class GetReleaseLabelsFilters {
 
   factory GetReleaseLabelsFilters.fromMap(Map<String, dynamic> map) {
     return GetReleaseLabelsFilters(
-      application: map['application'] == null ? null : map['application'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      application: map['application'] == null ? null : (map['application'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HostingVersionConfigHeader {
   /// The user-supplied glob to match against the request URL path.
-  final String? glob;
+  final pulumi.Input<String>? glob;
   /// The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final Map<String, String> headers;
+  final pulumi.Input<Map<String, String>> headers;
   /// The user-supplied RE2 regular expression to match against the request URL path.
-  final String? regex;
+  final pulumi.Input<String>? regex;
 
   /// Creates a new [HostingVersionConfigHeader].
   /// [glob] The user-supplied glob to match against the request URL path.
@@ -29,9 +30,9 @@ class HostingVersionConfigHeader {
 
   factory HostingVersionConfigHeader.fromMap(Map<String, dynamic> map) {
     return HostingVersionConfigHeader(
-      glob: map['glob'] == null ? null : map['glob'] as String,
-      headers: (map['headers'] as Map).cast<String, String>(),
-      regex: map['regex'] == null ? null : map['regex'] as String,
+      glob: map['glob'] == null ? null : (map['glob'] as String).input(),
+      headers: ((map['headers'] as Map).cast<String, String>()).input(),
+      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
     );
   }
 }

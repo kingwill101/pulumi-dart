@@ -47,29 +47,18 @@ class AssignmentArgs {
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   /// [scope] The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
   AssignmentArgs({
-    pulumi.Output<String>? assignmentName,
-    pulumi.Output<String>? blueprintId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<ManagedServiceIdentity> identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<AssignmentLockSettings>? locks,
-    required pulumi.Output<Map<String, ParameterValue>> parameters,
-    required pulumi.Output<Map<String, ResourceGroupValue>> resourceGroups,
-    required pulumi.Output<String> resourceScope,
-    pulumi.Output<String>? scope,
-  }) :
-      assignmentName = pulumi.Input.asOptionalInput<String>(assignmentName),
-      blueprintId = pulumi.Input.asOptionalInput<String>(blueprintId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      identity = pulumi.Input.asInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      locks = pulumi.Input.asOptionalInput<AssignmentLockSettings>(locks),
-      parameters = pulumi.Input.asInput<Map<String, ParameterValue>>(parameters),
-      resourceGroups = pulumi.Input.asInput<Map<String, ResourceGroupValue>>(resourceGroups),
-      resourceScope = pulumi.Input.asInput<String>(resourceScope),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.assignmentName,
+    this.blueprintId,
+    this.description,
+    this.displayName,
+    required this.identity,
+    this.location,
+    this.locks,
+    required this.parameters,
+    required this.resourceGroups,
+    required this.resourceScope,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class AssignmentArgs {
 
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
-      assignmentName: map['assignmentName'] == null ? null : pulumi.Output.create<String>(map['assignmentName'] as String),
-      blueprintId: map['blueprintId'] == null ? null : pulumi.Output.create<String>(map['blueprintId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      identity: pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      locks: map['locks'] == null ? null : pulumi.Output.create<AssignmentLockSettings>(AssignmentLockSettings.fromMap((map['locks'] as Map).cast<String, dynamic>())),
-      parameters: pulumi.Output.create<Map<String, ParameterValue>>(pulumi.Input.decodeMapValues<ParameterValue>(map['parameters'], (value) => ParameterValue.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroups: pulumi.Output.create<Map<String, ResourceGroupValue>>(pulumi.Input.decodeMapValues<ResourceGroupValue>(map['resourceGroups'], (value) => ResourceGroupValue.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceScope: pulumi.Output.create<String>(map['resourceScope'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      assignmentName: map['assignmentName'] == null ? null : (map['assignmentName'] as String).input(),
+      blueprintId: map['blueprintId'] == null ? null : (map['blueprintId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      identity: (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      locks: map['locks'] == null ? null : (AssignmentLockSettings.fromMap((map['locks'] as Map).cast<String, dynamic>())).input(),
+      parameters: (pulumi.Input.decodeMapValues<ParameterValue>(map['parameters'], (value) => ParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroups: (pulumi.Input.decodeMapValues<ResourceGroupValue>(map['resourceGroups'], (value) => ResourceGroupValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceScope: (map['resourceScope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

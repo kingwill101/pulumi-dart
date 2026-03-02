@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// FQDN Outbound Rule for the managed network of a cognitive services account.
 class FqdnOutboundRule {
   /// Category of a managed network Outbound Rule of a cognitive services account.
-  final String? category;
-  final String? destination;
+  final pulumi.Input<String>? category;
+  final pulumi.Input<String>? destination;
   /// Type of a managed network Outbound Rule of a cognitive services account.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Type of a managed network Outbound Rule of a cognitive services account.
   /// Expected value is 'FQDN'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FqdnOutboundRule].
   /// [category] Category of a managed network Outbound Rule of a cognitive services account.
@@ -35,10 +36,10 @@ class FqdnOutboundRule {
 
   factory FqdnOutboundRule.fromMap(Map<String, dynamic> map) {
     return FqdnOutboundRule(
-      category: map['category'] == null ? null : map['category'] as String,
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

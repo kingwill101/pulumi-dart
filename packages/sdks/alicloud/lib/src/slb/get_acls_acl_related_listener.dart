@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAclsAclRelatedListener {
-  final String aclType;
-  final int frontendPort;
-  final String loadBalancerId;
-  final String protocol;
+  final pulumi.Input<String> aclType;
+  final pulumi.Input<int> frontendPort;
+  final pulumi.Input<String> loadBalancerId;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [GetAclsAclRelatedListener].
   /// [aclType] Required.
@@ -30,10 +31,10 @@ class GetAclsAclRelatedListener {
 
   factory GetAclsAclRelatedListener.fromMap(Map<String, dynamic> map) {
     return GetAclsAclRelatedListener(
-      aclType: map['aclType'] as String,
-      frontendPort: map['frontendPort'] as int,
-      loadBalancerId: map['loadBalancerId'] as String,
-      protocol: map['protocol'] as String,
+      aclType: (map['aclType'] as String).input(),
+      frontendPort: (map['frontendPort'] as int).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterEndpoint {
   /// Cluster endpoint.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// Region of the endpoint.
-  final String? region;
+  final pulumi.Input<String>? region;
 
   /// Creates a new [ClusterClusterEndpoint].
   /// [endpoint] Cluster endpoint.
@@ -24,8 +25,8 @@ class ClusterClusterEndpoint {
 
   factory ClusterClusterEndpoint.fromMap(Map<String, dynamic> map) {
     return ClusterClusterEndpoint(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

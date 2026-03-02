@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceBlueGreenUpdate {
   /// Enables low-downtime updates when `true`.
@@ -11,7 +12,7 @@ class InstanceBlueGreenUpdate {
   /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
   /// [blue-green]:
   /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [InstanceBlueGreenUpdate].
   /// [enabled] Enables low-downtime updates when `true`.
@@ -27,7 +28,7 @@ class InstanceBlueGreenUpdate {
 
   factory InstanceBlueGreenUpdate.fromMap(Map<String, dynamic> map) {
     return InstanceBlueGreenUpdate(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

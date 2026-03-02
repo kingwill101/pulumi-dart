@@ -22,15 +22,11 @@ class NetworkArgs {
   /// [isDefault] Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
   /// [name] The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
   NetworkArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? description,
-    required pulumi.Output<bool> isDefault,
-    pulumi.Output<String>? name,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isDefault = pulumi.Input.asInput<bool>(isDefault),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.cidrBlock,
+    this.description,
+    required this.isDefault,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isDefault: pulumi.Output.create<bool>(map['isDefault'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

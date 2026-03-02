@@ -32,21 +32,14 @@ class TopicArgs {
   /// [retentionConfig] The settings for this topic's message retention.
   /// [topicId] Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
   TopicArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<PartitionConfig>? partitionConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<ReservationConfig>? reservationConfig,
-    pulumi.Output<RetentionConfig>? retentionConfig,
-    required pulumi.Output<String> topicId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionConfig = pulumi.Input.asOptionalInput<PartitionConfig>(partitionConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservationConfig = pulumi.Input.asOptionalInput<ReservationConfig>(reservationConfig),
-      retentionConfig = pulumi.Input.asOptionalInput<RetentionConfig>(retentionConfig),
-      topicId = pulumi.Input.asInput<String>(topicId);
+    this.location,
+    this.name,
+    this.partitionConfig,
+    this.project,
+    this.reservationConfig,
+    this.retentionConfig,
+    required this.topicId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionConfig: map['partitionConfig'] == null ? null : pulumi.Output.create<PartitionConfig>(PartitionConfig.fromMap((map['partitionConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservationConfig: map['reservationConfig'] == null ? null : pulumi.Output.create<ReservationConfig>(ReservationConfig.fromMap((map['reservationConfig'] as Map).cast<String, dynamic>())),
-      retentionConfig: map['retentionConfig'] == null ? null : pulumi.Output.create<RetentionConfig>(RetentionConfig.fromMap((map['retentionConfig'] as Map).cast<String, dynamic>())),
-      topicId: pulumi.Output.create<String>(map['topicId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionConfig: map['partitionConfig'] == null ? null : (PartitionConfig.fromMap((map['partitionConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservationConfig: map['reservationConfig'] == null ? null : (ReservationConfig.fromMap((map['reservationConfig'] as Map).cast<String, dynamic>())).input(),
+      retentionConfig: map['retentionConfig'] == null ? null : (RetentionConfig.fromMap((map['retentionConfig'] as Map).cast<String, dynamic>())).input(),
+      topicId: (map['topicId'] as String).input(),
     );
   }
 }

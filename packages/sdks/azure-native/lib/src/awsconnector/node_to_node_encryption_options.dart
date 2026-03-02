@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of NodeToNodeEncryptionOptions
 class NodeToNodeEncryptionOptions {
   /// <p>True to enable node-to-node encryption.</p>
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [NodeToNodeEncryptionOptions].
   /// [enabled] <p>True to enable node-to-node encryption.</p>
@@ -20,7 +21,7 @@ class NodeToNodeEncryptionOptions {
 
   factory NodeToNodeEncryptionOptions.fromMap(Map<String, dynamic> map) {
     return NodeToNodeEncryptionOptions(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

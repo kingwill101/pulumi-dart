@@ -25,15 +25,11 @@ class CustomRoutingEndpointArgs {
   /// [trafficToEndpointPolicy] The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
   /// [type] The backend service type of the endpoint. Valid values: `PrivateSubNet`.
   CustomRoutingEndpointArgs({
-    required pulumi.Output<String> endpoint,
-    required pulumi.Output<String> endpointGroupId,
-    pulumi.Output<String>? trafficToEndpointPolicy,
-    required pulumi.Output<String> type,
-  }) :
-      endpoint = pulumi.Input.asInput<String>(endpoint),
-      endpointGroupId = pulumi.Input.asInput<String>(endpointGroupId),
-      trafficToEndpointPolicy = pulumi.Input.asOptionalInput<String>(trafficToEndpointPolicy),
-      type = pulumi.Input.asInput<String>(type);
+    required this.endpoint,
+    required this.endpointGroupId,
+    this.trafficToEndpointPolicy,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class CustomRoutingEndpointArgs {
 
   factory CustomRoutingEndpointArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointArgs(
-      endpoint: pulumi.Output.create<String>(map['endpoint'] as String),
-      endpointGroupId: pulumi.Output.create<String>(map['endpointGroupId'] as String),
-      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] == null ? null : pulumi.Output.create<String>(map['trafficToEndpointPolicy'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      endpoint: (map['endpoint'] as String).input(),
+      endpointGroupId: (map['endpointGroupId'] as String).input(),
+      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] == null ? null : (map['trafficToEndpointPolicy'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

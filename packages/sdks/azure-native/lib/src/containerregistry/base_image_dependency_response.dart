@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties that describe a base image dependency.
 class BaseImageDependencyResponse {
   /// The sha256-based digest of the image manifest.
-  final String? digest;
+  final pulumi.Input<String>? digest;
   /// The registry login server.
-  final String? registry;
+  final pulumi.Input<String>? registry;
   /// The repository name.
-  final String? repository;
+  final pulumi.Input<String>? repository;
   /// The tag name.
-  final String? tag;
+  final pulumi.Input<String>? tag;
   /// The type of the base image dependency.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [BaseImageDependencyResponse].
   /// [digest] The sha256-based digest of the image manifest.
@@ -40,11 +41,11 @@ class BaseImageDependencyResponse {
 
   factory BaseImageDependencyResponse.fromMap(Map<String, dynamic> map) {
     return BaseImageDependencyResponse(
-      digest: map['digest'] == null ? null : map['digest'] as String,
-      registry: map['registry'] == null ? null : map['registry'] as String,
-      repository: map['repository'] == null ? null : map['repository'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      registry: map['registry'] == null ? null : (map['registry'] as String).input(),
+      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

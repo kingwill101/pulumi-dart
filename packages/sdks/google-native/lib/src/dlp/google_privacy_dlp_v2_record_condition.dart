@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_expressions.dart';
 
 /// A condition for determining whether a transformation should be applied to a field.
 class GooglePrivacyDlpV2RecordCondition {
   /// An expression.
-  final GooglePrivacyDlpV2Expressions? expressions;
+  final pulumi.Input<GooglePrivacyDlpV2Expressions>? expressions;
 
   /// Creates a new [GooglePrivacyDlpV2RecordCondition].
   /// [expressions] An expression.
@@ -15,13 +16,13 @@ class GooglePrivacyDlpV2RecordCondition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressions': ?expressions == null ? null : expressions!.toMap(),
+      'expressions': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2Expressions, Map<String, dynamic>>(expressions, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2RecordCondition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RecordCondition(
-      expressions: map['expressions'] == null ? null : GooglePrivacyDlpV2Expressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: map['expressions'] == null ? null : (GooglePrivacyDlpV2Expressions.fromMap((map['expressions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ExpressSyncShareAttachmentArgs {
   /// [gatewayId] The ID of the Gateway.
   /// [shareName] The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
   ExpressSyncShareAttachmentArgs({
-    required pulumi.Output<String> expressSyncId,
-    required pulumi.Output<String> gatewayId,
-    required pulumi.Output<String> shareName,
-  }) :
-      expressSyncId = pulumi.Input.asInput<String>(expressSyncId),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      shareName = pulumi.Input.asInput<String>(shareName);
+    required this.expressSyncId,
+    required this.gatewayId,
+    required this.shareName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ExpressSyncShareAttachmentArgs {
 
   factory ExpressSyncShareAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ExpressSyncShareAttachmentArgs(
-      expressSyncId: pulumi.Output.create<String>(map['expressSyncId'] as String),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
+      expressSyncId: (map['expressSyncId'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
     );
   }
 }

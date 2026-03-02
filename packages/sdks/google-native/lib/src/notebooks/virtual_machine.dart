@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_config.dart';
 
 /// Runtime using Virtual Machine for computing.
 class VirtualMachine {
   /// Virtual Machine configuration settings.
-  final VirtualMachineConfig? virtualMachineConfig;
+  final pulumi.Input<VirtualMachineConfig>? virtualMachineConfig;
 
   /// Creates a new [VirtualMachine].
   /// [virtualMachineConfig] Virtual Machine configuration settings.
@@ -15,13 +16,13 @@ class VirtualMachine {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'virtualMachineConfig': ?virtualMachineConfig == null ? null : virtualMachineConfig!.toMap(),
+      'virtualMachineConfig': ?pulumi.Input.mapOptionalInputValue<VirtualMachineConfig, Map<String, dynamic>>(virtualMachineConfig, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachine.fromMap(Map<String, dynamic> map) {
     return VirtualMachine(
-      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : VirtualMachineConfig.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>()),
+      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : (VirtualMachineConfig.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

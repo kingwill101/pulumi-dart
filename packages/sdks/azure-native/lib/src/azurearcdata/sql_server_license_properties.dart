@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of SQL Server License.
 class SqlServerLicenseProperties {
   /// The activation state of the license.
-  final String activationState;
+  final pulumi.Input<String> activationState;
   /// SQL Server license type.
-  final String billingPlan;
+  final pulumi.Input<String> billingPlan;
   /// This property represents the choice between SQL Server Core and ESU licenses.
-  final String licenseCategory;
+  final pulumi.Input<String> licenseCategory;
   /// The number of total cores of the license covers.
-  final int physicalCores;
+  final pulumi.Input<int> physicalCores;
   /// The Azure scope to which the license will apply.
-  final String scopeType;
+  final pulumi.Input<String> scopeType;
 
   /// Creates a new [SqlServerLicenseProperties].
   /// [activationState] The activation state of the license.
@@ -40,11 +41,11 @@ class SqlServerLicenseProperties {
 
   factory SqlServerLicenseProperties.fromMap(Map<String, dynamic> map) {
     return SqlServerLicenseProperties(
-      activationState: map['activationState'] as String,
-      billingPlan: map['billingPlan'] as String,
-      licenseCategory: map['licenseCategory'] as String,
-      physicalCores: map['physicalCores'] as int,
-      scopeType: map['scopeType'] as String,
+      activationState: (map['activationState'] as String).input(),
+      billingPlan: (map['billingPlan'] as String).input(),
+      licenseCategory: (map['licenseCategory'] as String).input(),
+      physicalCores: (map['physicalCores'] as int).input(),
+      scopeType: (map['scopeType'] as String).input(),
     );
   }
 }

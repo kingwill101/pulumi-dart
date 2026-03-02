@@ -23,11 +23,9 @@ class GetCryptoKeysArgs {
   /// [filter] The filter argument is used to add a filter query parameter that limits which keys are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
   /// [keyRing] The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
   GetCryptoKeysArgs({
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> keyRing,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      keyRing = pulumi.Input.asInput<String>(keyRing);
+    this.filter,
+    required this.keyRing,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,8 +36,8 @@ class GetCryptoKeysArgs {
 
   factory GetCryptoKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeysArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      keyRing: pulumi.Output.create<String>(map['keyRing'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      keyRing: (map['keyRing'] as String).input(),
     );
   }
 }

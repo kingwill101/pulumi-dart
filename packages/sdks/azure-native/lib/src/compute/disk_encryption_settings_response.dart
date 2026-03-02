@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_key_reference_response.dart';
 import 'key_vault_secret_reference_response.dart';
 
 /// Describes a Encryption Settings for a Disk
 class DiskEncryptionSettingsResponse {
   /// Specifies the location of the disk encryption key, which is a Key Vault Secret.
-  final KeyVaultSecretReferenceResponse? diskEncryptionKey;
+  final pulumi.Input<KeyVaultSecretReferenceResponse>? diskEncryptionKey;
   /// Specifies whether disk encryption should be enabled on the virtual machine.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Specifies the location of the key encryption key in Key Vault.
-  final KeyVaultKeyReferenceResponse? keyEncryptionKey;
+  final pulumi.Input<KeyVaultKeyReferenceResponse>? keyEncryptionKey;
 
   /// Creates a new [DiskEncryptionSettingsResponse].
   /// [diskEncryptionKey] Specifies the location of the disk encryption key, which is a Key Vault Secret.
@@ -24,17 +25,17 @@ class DiskEncryptionSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskEncryptionKey': ?diskEncryptionKey == null ? null : diskEncryptionKey!.toMap(),
+      'diskEncryptionKey': ?pulumi.Input.mapOptionalInputValue<KeyVaultSecretReferenceResponse, Map<String, dynamic>>(diskEncryptionKey, (value) => value.toMap()),
       'enabled': ?enabled,
-      'keyEncryptionKey': ?keyEncryptionKey == null ? null : keyEncryptionKey!.toMap(),
+      'keyEncryptionKey': ?pulumi.Input.mapOptionalInputValue<KeyVaultKeyReferenceResponse, Map<String, dynamic>>(keyEncryptionKey, (value) => value.toMap()),
     };
   }
 
   factory DiskEncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSettingsResponse(
-      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : KeyVaultSecretReferenceResponse.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : KeyVaultKeyReferenceResponse.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>()),
+      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (KeyVaultSecretReferenceResponse.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReferenceResponse.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

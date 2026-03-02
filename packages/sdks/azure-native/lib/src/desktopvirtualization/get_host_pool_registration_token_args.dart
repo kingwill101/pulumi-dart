@@ -16,11 +16,9 @@ class GetHostPoolRegistrationTokenArgs {
   /// [hostPoolName] The name of the host pool within the specified resource group
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetHostPoolRegistrationTokenArgs({
-    required pulumi.Output<String> hostPoolName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hostPoolName = pulumi.Input.asInput<String>(hostPoolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hostPoolName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHostPoolRegistrationTokenArgs {
 
   factory GetHostPoolRegistrationTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetHostPoolRegistrationTokenArgs(
-      hostPoolName: pulumi.Output.create<String>(map['hostPoolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hostPoolName: (map['hostPoolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

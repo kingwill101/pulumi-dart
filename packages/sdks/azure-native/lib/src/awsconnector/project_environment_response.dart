@@ -11,23 +11,23 @@ import 'registry_credential_response.dart';
 /// Definition of ProjectEnvironment
 class ProjectEnvironmentResponse {
   /// <p>The ARN of the Amazon S3 bucket, path prefix, and object key that contains the PEM-encoded certificate for the build project. For more information, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/create-project-cli.html#cli.environment.certificate'>certificate</a> in the <i>CodeBuild User Guide</i>.</p>
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// <p>Information about the compute resources the build project uses. Available values include:</p> <ul> <li> <p> <code>BUILD_GENERAL1_SMALL</code>: Use up to 3 GB memory and 2 vCPUs for builds.</p> </li> <li> <p> <code>BUILD_GENERAL1_MEDIUM</code>: Use up to 7 GB memory and 4 vCPUs for builds.</p> </li> <li> <p> <code>BUILD_GENERAL1_LARGE</code>: Use up to 16 GB memory and 8 vCPUs for builds, depending on your environment type.</p> </li> <li> <p> <code>BUILD_GENERAL1_XLARGE</code>: Use up to 70 GB memory and 36 vCPUs for builds, depending on your environment type.</p> </li> <li> <p> <code>BUILD_GENERAL1_2XLARGE</code>: Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD storage for builds. This compute type supports Docker images up to 100 GB uncompressed.</p> </li> <li> <p> <code>BUILD_LAMBDA_1GB</code>: Use up to 1 GB memory for builds. Only available for environment type <code>LINUX_LAMBDA_CONTAINER</code> and <code>ARM_LAMBDA_CONTAINER</code>.</p> </li> <li> <p> <code>BUILD_LAMBDA_2GB</code>: Use up to 2 GB memory for builds. Only available for environment type <code>LINUX_LAMBDA_CONTAINER</code> and <code>ARM_LAMBDA_CONTAINER</code>.</p> </li> <li> <p> <code>BUILD_LAMBDA_4GB</code>: Use up to 4 GB memory for builds. Only available for environment type <code>LINUX_LAMBDA_CONTAINER</code> and <code>ARM_LAMBDA_CONTAINER</code>.</p> </li> <li> <p> <code>BUILD_LAMBDA_8GB</code>: Use up to 8 GB memory for builds. Only available for environment type <code>LINUX_LAMBDA_CONTAINER</code> and <code>ARM_LAMBDA_CONTAINER</code>.</p> </li> <li> <p> <code>BUILD_LAMBDA_10GB</code>: Use up to 10 GB memory for builds. Only available for environment type <code>LINUX_LAMBDA_CONTAINER</code> and <code>ARM_LAMBDA_CONTAINER</code>.</p> </li> </ul> <p> If you use <code>BUILD_GENERAL1_SMALL</code>: </p> <ul> <li> <p> For environment type <code>LINUX_CONTAINER</code>, you can use up to 3 GB memory and 2 vCPUs for builds. </p> </li> <li> <p> For environment type <code>LINUX_GPU_CONTAINER</code>, you can use up to 16 GB memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.</p> </li> <li> <p> For environment type <code>ARM_CONTAINER</code>, you can use up to 4 GB memory and 2 vCPUs on ARM-based processors for builds.</p> </li> </ul> <p> If you use <code>BUILD_GENERAL1_LARGE</code>: </p> <ul> <li> <p> For environment type <code>LINUX_CONTAINER</code>, you can use up to 15 GB memory and 8 vCPUs for builds. </p> </li> <li> <p> For environment type <code>LINUX_GPU_CONTAINER</code>, you can use up to 255 GB memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.</p> </li> <li> <p> For environment type <code>ARM_CONTAINER</code>, you can use up to 16 GB memory and 8 vCPUs on ARM-based processors for builds.</p> </li> </ul> <note> <p>If you're using compute fleets during project creation, <code>computeType</code> will be ignored.</p> </note> <p>For more information, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'>Build Environment Compute Types</a> in the <i>CodeBuild User Guide.</i> </p>
-  final ComputeTypeEnumValueResponse? computeType;
+  final pulumi.Input<ComputeTypeEnumValueResponse>? computeType;
   /// <p>A set of environment variables to make available to builds for this build project.</p>
-  final List<EnvironmentVariableResponse>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariableResponse>>? environmentVariables;
   /// <p>A ProjectFleet object to use for this build project.</p>
-  final ProjectFleetResponse? fleet;
+  final pulumi.Input<ProjectFleetResponse>? fleet;
   /// <p>The image tag or image digest that identifies the Docker image to use for this build project. Use the following formats:</p> <ul> <li> <p>For an image tag: <code>&lt;registry&gt;/&lt;repository&gt;:&lt;tag&gt;</code>. For example, in the Docker repository that CodeBuild uses to manage its Docker images, this would be <code>aws/codebuild/standard:4.0</code>. </p> </li> <li> <p>For an image digest: <code>&lt;registry&gt;/&lt;repository&gt;@&lt;digest&gt;</code>. For example, to specify an image with the digest 'sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf,' use <code>&lt;registry&gt;/&lt;repository&gt;@sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf</code>.</p> </li> </ul> <p>For more information, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html'>Docker images provided by CodeBuild</a> in the <i>CodeBuild user guide</i>.</p>
-  final String? image;
+  final pulumi.Input<String>? image;
   /// <p> The type of credentials CodeBuild uses to pull images in your build. There are two valid values: </p> <ul> <li> <p> <code>CODEBUILD</code> specifies that CodeBuild uses its own credentials. This requires that you modify your ECR repository policy to trust CodeBuild service principal. </p> </li> <li> <p> <code>SERVICE_ROLE</code> specifies that CodeBuild uses your build project's service role. </p> </li> </ul> <p> When you use a cross-account or private registry image, you must use SERVICE_ROLE credentials. When you use an CodeBuild curated image, you must use CODEBUILD credentials. </p>
-  final ImagePullCredentialsTypeEnumValueResponse? imagePullCredentialsType;
+  final pulumi.Input<ImagePullCredentialsTypeEnumValueResponse>? imagePullCredentialsType;
   /// <p>Enables running the Docker daemon inside a Docker container. Set to true only if the build project is used to build Docker images. Otherwise, a build that attempts to interact with the Docker daemon fails. The default setting is <code>false</code>.</p> <p>You can initialize the Docker daemon during the install phase of your build by adding one of the following sets of commands to the install phase of your buildspec file:</p> <p>If the operating system's base image is Ubuntu Linux:</p> <p> <code>- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&amp;</code> </p> <p> <code>- timeout 15 sh -c 'until docker info; do echo .; sleep 1; done'</code> </p> <p>If the operating system's base image is Alpine Linux and the previous command does not work, add the <code>-t</code> argument to <code>timeout</code>:</p> <p> <code>- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&amp;</code> </p> <p> <code>- timeout -t 15 sh -c 'until docker info; do echo .; sleep 1; done'</code> </p>
-  final bool? privilegedMode;
+  final pulumi.Input<bool>? privilegedMode;
   /// <p> The credentials for access to a private registry.</p>
-  final RegistryCredentialResponse? registryCredential;
+  final pulumi.Input<RegistryCredentialResponse>? registryCredential;
   /// <p>The type of build environment to use for related builds.</p> <ul> <li> <p>The environment type <code>ARM_CONTAINER</code> is available only in regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).</p> </li> <li> <p>The environment type <code>LINUX_CONTAINER</code> is available only in regions US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China (Beijing), and China (Ningxia).</p> </li> <li> <p>The environment type <code>LINUX_GPU_CONTAINER</code> is available only in regions US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).</p> </li> </ul> <ul> <li> <p>The environment types <code>ARM_LAMBDA_CONTAINER</code> and <code>LINUX_LAMBDA_CONTAINER</code> are available only in regions US East (N. Virginia), US East (Ohio), US West (Oregon), Asia Pacific (Mumbai), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), EU (Frankfurt), EU (Ireland), and South America (São Paulo).</p> </li> </ul> <ul> <li> <p>The environment types <code>WINDOWS_CONTAINER</code> and <code>WINDOWS_SERVER_2019_CONTAINER</code> are available only in regions US East (N. Virginia), US East (Ohio), US West (Oregon), and EU (Ireland).</p> </li> </ul> <note> <p>If you're using compute fleets during project creation, <code>type</code> will be ignored.</p> </note> <p>For more information, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'>Build environment compute types</a> in the <i>CodeBuild user guide</i>.</p>
-  final EnvironmentTypeEnumValueResponse? type;
+  final pulumi.Input<EnvironmentTypeEnumValueResponse>? type;
 
   /// Creates a new [ProjectEnvironmentResponse].
   /// [certificate] <p>The ARN of the Amazon S3 bucket, path prefix, and object key that contains the PEM-encoded certificate for the build project. For more information, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/create-project-cli.html#cli.environment.certificate'>certificate</a> in the <i>CodeBuild User Guide</i>.</p>
@@ -54,28 +54,28 @@ class ProjectEnvironmentResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificate': ?certificate,
-      'computeType': ?computeType == null ? null : computeType!.toMap(),
-      'environmentVariables': ?environmentVariables == null ? null : pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(environmentVariables!, (value) => value.toMap()),
-      'fleet': ?fleet == null ? null : fleet!.toMap(),
+      'computeType': ?pulumi.Input.mapOptionalInputValue<ComputeTypeEnumValueResponse, Map<String, dynamic>>(computeType, (value) => value.toMap()),
+      'environmentVariables': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentVariableResponse>, List<Map<String, dynamic>>>(environmentVariables, (value) => pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fleet': ?pulumi.Input.mapOptionalInputValue<ProjectFleetResponse, Map<String, dynamic>>(fleet, (value) => value.toMap()),
       'image': ?image,
-      'imagePullCredentialsType': ?imagePullCredentialsType == null ? null : imagePullCredentialsType!.toMap(),
+      'imagePullCredentialsType': ?pulumi.Input.mapOptionalInputValue<ImagePullCredentialsTypeEnumValueResponse, Map<String, dynamic>>(imagePullCredentialsType, (value) => value.toMap()),
       'privilegedMode': ?privilegedMode,
-      'registryCredential': ?registryCredential == null ? null : registryCredential!.toMap(),
-      'type': ?type == null ? null : type!.toMap(),
+      'registryCredential': ?pulumi.Input.mapOptionalInputValue<RegistryCredentialResponse, Map<String, dynamic>>(registryCredential, (value) => value.toMap()),
+      'type': ?pulumi.Input.mapOptionalInputValue<EnvironmentTypeEnumValueResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
     };
   }
 
   factory ProjectEnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentResponse(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      computeType: map['computeType'] == null ? null : ComputeTypeEnumValueResponse.fromMap((map['computeType'] as Map).cast<String, dynamic>()),
-      environmentVariables: map['environmentVariables'] == null ? null : pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
-      fleet: map['fleet'] == null ? null : ProjectFleetResponse.fromMap((map['fleet'] as Map).cast<String, dynamic>()),
-      image: map['image'] == null ? null : map['image'] as String,
-      imagePullCredentialsType: map['imagePullCredentialsType'] == null ? null : ImagePullCredentialsTypeEnumValueResponse.fromMap((map['imagePullCredentialsType'] as Map).cast<String, dynamic>()),
-      privilegedMode: map['privilegedMode'] == null ? null : map['privilegedMode'] as bool,
-      registryCredential: map['registryCredential'] == null ? null : RegistryCredentialResponse.fromMap((map['registryCredential'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : EnvironmentTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>()),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      computeType: map['computeType'] == null ? null : (ComputeTypeEnumValueResponse.fromMap((map['computeType'] as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fleet: map['fleet'] == null ? null : (ProjectFleetResponse.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      imagePullCredentialsType: map['imagePullCredentialsType'] == null ? null : (ImagePullCredentialsTypeEnumValueResponse.fromMap((map['imagePullCredentialsType'] as Map).cast<String, dynamic>())).input(),
+      privilegedMode: map['privilegedMode'] == null ? null : (map['privilegedMode'] as bool).input(),
+      registryCredential: map['registryCredential'] == null ? null : (RegistryCredentialResponse.fromMap((map['registryCredential'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (EnvironmentTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

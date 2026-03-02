@@ -18,11 +18,9 @@ class GetV2AcceleratorTypesArgs {
   /// [project] The project to list types for. If it
   /// [zone] The zone to list types for. If it
   GetV2AcceleratorTypesArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetV2AcceleratorTypesArgs {
 
   factory GetV2AcceleratorTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetV2AcceleratorTypesArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

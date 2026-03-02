@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainSoftwareUpdateOption {
   /// Enabled or disabled.
-  final bool autoSoftwareUpdateEnabled;
+  final pulumi.Input<bool> autoSoftwareUpdateEnabled;
 
   /// Creates a new [GetDomainSoftwareUpdateOption].
   /// [autoSoftwareUpdateEnabled] Enabled or disabled.
@@ -19,7 +20,7 @@ class GetDomainSoftwareUpdateOption {
 
   factory GetDomainSoftwareUpdateOption.fromMap(Map<String, dynamic> map) {
     return GetDomainSoftwareUpdateOption(
-      autoSoftwareUpdateEnabled: map['autoSoftwareUpdateEnabled'] as bool,
+      autoSoftwareUpdateEnabled: (map['autoSoftwareUpdateEnabled'] as bool).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Trigger {
   /// The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
-  final String? timeAfterCreate;
+  final pulumi.Input<String>? timeAfterCreate;
   /// The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
-  final String? timeBeforeExpiry;
+  final pulumi.Input<String>? timeBeforeExpiry;
 
   /// Creates a new [Trigger].
   /// [timeAfterCreate] The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
@@ -24,8 +25,8 @@ class Trigger {
 
   factory Trigger.fromMap(Map<String, dynamic> map) {
     return Trigger(
-      timeAfterCreate: map['timeAfterCreate'] == null ? null : map['timeAfterCreate'] as String,
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : map['timeBeforeExpiry'] as String,
+      timeAfterCreate: map['timeAfterCreate'] == null ? null : (map['timeAfterCreate'] as String).input(),
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry'] as String).input(),
     );
   }
 }

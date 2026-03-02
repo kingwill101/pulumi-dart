@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A resource identity that is managed by the user of the service.
 class UserIdentityResponse {
   /// The client ID of the user-assigned identity.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The principal ID of the user-assigned identity.
-  final String principalId;
+  final pulumi.Input<String> principalId;
 
   /// Creates a new [UserIdentityResponse].
   /// [clientId] The client ID of the user-assigned identity.
@@ -25,8 +26,8 @@ class UserIdentityResponse {
 
   factory UserIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserIdentityResponse(
-      clientId: map['clientId'] as String,
-      principalId: map['principalId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
     );
   }
 }

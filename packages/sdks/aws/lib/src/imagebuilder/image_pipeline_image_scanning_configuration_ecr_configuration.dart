@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImagePipelineImageScanningConfigurationEcrConfiguration {
-  final List<String>? containerTags;
+  final pulumi.Input<List<String>>? containerTags;
   /// The name of the repository to scan
-  final String? repositoryName;
+  final pulumi.Input<String>? repositoryName;
 
   /// Creates a new [ImagePipelineImageScanningConfigurationEcrConfiguration].
   /// [containerTags] Optional.
@@ -23,8 +24,8 @@ class ImagePipelineImageScanningConfigurationEcrConfiguration {
 
   factory ImagePipelineImageScanningConfigurationEcrConfiguration.fromMap(Map<String, dynamic> map) {
     return ImagePipelineImageScanningConfigurationEcrConfiguration(
-      containerTags: map['containerTags'] == null ? null : (map['containerTags'] as List).cast<String>(),
-      repositoryName: map['repositoryName'] == null ? null : map['repositoryName'] as String,
+      containerTags: map['containerTags'] == null ? null : ((map['containerTags'] as List).cast<String>()).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
     );
   }
 }

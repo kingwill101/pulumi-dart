@@ -12,9 +12,8 @@ class GetManagementServerArgs {
   /// Creates a new [GetManagementServerArgs].
   /// [location] Required.
   GetManagementServerArgs({
-    required pulumi.Output<String> location,
-  }) :
-      location = pulumi.Input.asInput<String>(location);
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetManagementServerArgs {
 
   factory GetManagementServerArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementServerArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
+      location: (map['location'] as String).input(),
     );
   }
 }

@@ -30,17 +30,12 @@ class ProtectionModuleArgs {
   /// [mode] The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
   /// [status] The status of the resource. Valid values: `0`, `1`.
   ProtectionModuleArgs({
-    required pulumi.Output<String> defenseType,
-    required pulumi.Output<String> domain,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<int> mode,
-    pulumi.Output<int>? status,
-  }) :
-      defenseType = pulumi.Input.asInput<String>(defenseType),
-      domain = pulumi.Input.asInput<String>(domain),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      mode = pulumi.Input.asInput<int>(mode),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    required this.defenseType,
+    required this.domain,
+    required this.instanceId,
+    required this.mode,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class ProtectionModuleArgs {
 
   factory ProtectionModuleArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionModuleArgs(
-      defenseType: pulumi.Output.create<String>(map['defenseType'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      mode: pulumi.Output.create<int>(map['mode'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      defenseType: (map['defenseType'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      mode: (map['mode'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

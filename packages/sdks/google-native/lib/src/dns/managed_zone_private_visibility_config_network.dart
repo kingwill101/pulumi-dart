@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedZonePrivateVisibilityConfigNetwork {
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  final String? networkUrl;
+  final pulumi.Input<String>? networkUrl;
 
   /// Creates a new [ManagedZonePrivateVisibilityConfigNetwork].
   /// [kind] Optional.
@@ -23,8 +24,8 @@ class ManagedZonePrivateVisibilityConfigNetwork {
 
   factory ManagedZonePrivateVisibilityConfigNetwork.fromMap(Map<String, dynamic> map) {
     return ManagedZonePrivateVisibilityConfigNetwork(
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      networkUrl: map['networkUrl'] == null ? null : map['networkUrl'] as String,
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl'] as String).input(),
     );
   }
 }

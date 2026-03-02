@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The billing status of the simple application server. Valid values: `Normal`, `Expired` and `Overdue`.
-  final String businessStatus;
+  final pulumi.Input<String> businessStatus;
   /// The time when the simple application server was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The DDoS protection status. Valid values: `Normal`, `BlackHole`, and `Defense`.
-  final String ddosStatus;
+  final pulumi.Input<String> ddosStatus;
   /// The time when the simple application server expires.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The ID of the Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the simple application server Image.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// The internal IP address of the simple application server.
-  final String innerIpAddress;
+  final pulumi.Input<String> innerIpAddress;
   /// The ID of the simple application server.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the resource.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The billing method of the simple application server.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The ID of the simple application server plan.
-  final String planId;
+  final pulumi.Input<String> planId;
   /// The public IP address of the simple application server.
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetInstancesInstance].
   /// [businessStatus] The billing status of the simple application server. Valid values: `Normal`, `Expired` and `Overdue`.
@@ -79,19 +80,19 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      businessStatus: map['businessStatus'] as String,
-      createTime: map['createTime'] as String,
-      ddosStatus: map['ddosStatus'] as String,
-      expiredTime: map['expiredTime'] as String,
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      innerIpAddress: map['innerIpAddress'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      paymentType: map['paymentType'] as String,
-      planId: map['planId'] as String,
-      publicIpAddress: map['publicIpAddress'] as String,
-      status: map['status'] as String,
+      businessStatus: (map['businessStatus'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      ddosStatus: (map['ddosStatus'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      innerIpAddress: (map['innerIpAddress'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      planId: (map['planId'] as String).input(),
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

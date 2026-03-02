@@ -8,23 +8,23 @@ import 'target_region.dart';
 /// The publishing profile of a gallery image version.
 class GalleryScriptVersionPublishingProfile {
   /// The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
-  final String? endOfLifeDate;
+  final pulumi.Input<String>? endOfLifeDate;
   /// If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
-  final bool? excludeFromLatest;
+  final pulumi.Input<bool>? excludeFromLatest;
   /// The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
-  final int? replicaCount;
+  final pulumi.Input<int>? replicaCount;
   /// Optional parameter which specifies the mode to be used for replication. This property is not updatable.
-  final String? replicationMode;
+  final pulumi.Input<String>? replicationMode;
   /// The source script from which the Script Version is going to be created.
-  final ScriptSource source;
+  final pulumi.Input<ScriptSource> source;
   /// Specifies the strategy to be used when selecting the storage account type. Cannot be specified along with storageAccountType, but can be overridden per region by specifying targetRegions[].storageAccountType. This property is not updatable.
-  final String? storageAccountStrategy;
+  final pulumi.Input<String>? storageAccountStrategy;
   /// Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
   /// The target extended locations where the Image Version is going to be replicated to. This property is updatable.
-  final List<GalleryTargetExtendedLocation>? targetExtendedLocations;
+  final pulumi.Input<List<GalleryTargetExtendedLocation>>? targetExtendedLocations;
   /// The target regions where the Image Version is going to be replicated to. This property is updatable.
-  final List<TargetRegion>? targetRegions;
+  final pulumi.Input<List<TargetRegion>>? targetRegions;
 
   /// Creates a new [GalleryScriptVersionPublishingProfile].
   /// [endOfLifeDate] The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
@@ -54,25 +54,25 @@ class GalleryScriptVersionPublishingProfile {
       'excludeFromLatest': ?excludeFromLatest,
       'replicaCount': ?replicaCount,
       'replicationMode': ?replicationMode,
-      'source': source.toMap(),
+      'source': pulumi.Input.mapInputValue<ScriptSource, Map<String, dynamic>>(source, (value) => value.toMap()),
       'storageAccountStrategy': ?storageAccountStrategy,
       'storageAccountType': ?storageAccountType,
-      'targetExtendedLocations': ?targetExtendedLocations == null ? null : pulumi.Input.encodeList<GalleryTargetExtendedLocation, Map<String, dynamic>>(targetExtendedLocations!, (value) => value.toMap()),
-      'targetRegions': ?targetRegions == null ? null : pulumi.Input.encodeList<TargetRegion, Map<String, dynamic>>(targetRegions!, (value) => value.toMap()),
+      'targetExtendedLocations': ?pulumi.Input.mapOptionalInputValue<List<GalleryTargetExtendedLocation>, List<Map<String, dynamic>>>(targetExtendedLocations, (value) => pulumi.Input.encodeList<GalleryTargetExtendedLocation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetRegions': ?pulumi.Input.mapOptionalInputValue<List<TargetRegion>, List<Map<String, dynamic>>>(targetRegions, (value) => pulumi.Input.encodeList<TargetRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GalleryScriptVersionPublishingProfile.fromMap(Map<String, dynamic> map) {
     return GalleryScriptVersionPublishingProfile(
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : map['endOfLifeDate'] as String,
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : map['excludeFromLatest'] as bool,
-      replicaCount: map['replicaCount'] == null ? null : map['replicaCount'] as int,
-      replicationMode: map['replicationMode'] == null ? null : map['replicationMode'] as String,
-      source: ScriptSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      storageAccountStrategy: map['storageAccountStrategy'] == null ? null : map['storageAccountStrategy'] as String,
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
-      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : pulumi.Input.decodeList<GalleryTargetExtendedLocation>(map['targetExtendedLocations'], (value) => GalleryTargetExtendedLocation.fromMap((value as Map).cast<String, dynamic>())),
-      targetRegions: map['targetRegions'] == null ? null : pulumi.Input.decodeList<TargetRegion>(map['targetRegions'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>())),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
+      source: (ScriptSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      storageAccountStrategy: map['storageAccountStrategy'] == null ? null : (map['storageAccountStrategy'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocation>(map['targetExtendedLocations'], (value) => GalleryTargetExtendedLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetRegions'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

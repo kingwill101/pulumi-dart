@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RolloutKindErrorBudget {
   /// The maximum number of failed units allowed in a location without pausing
   /// the rollout.
-  final int? allowedCount;
+  final pulumi.Input<int>? allowedCount;
   /// The maximum percentage of units allowed to fail (0, 100] within a location
   /// without pausing the rollout.
-  final int? allowedPercentage;
+  final pulumi.Input<int>? allowedPercentage;
 
   /// Creates a new [RolloutKindErrorBudget].
   /// [allowedCount] The maximum number of failed units allowed in a location without pausing
@@ -26,8 +27,8 @@ class RolloutKindErrorBudget {
 
   factory RolloutKindErrorBudget.fromMap(Map<String, dynamic> map) {
     return RolloutKindErrorBudget(
-      allowedCount: map['allowedCount'] == null ? null : map['allowedCount'] as int,
-      allowedPercentage: map['allowedPercentage'] == null ? null : map['allowedPercentage'] as int,
+      allowedCount: map['allowedCount'] == null ? null : (map['allowedCount'] as int).input(),
+      allowedPercentage: map['allowedPercentage'] == null ? null : (map['allowedPercentage'] as int).input(),
     );
   }
 }

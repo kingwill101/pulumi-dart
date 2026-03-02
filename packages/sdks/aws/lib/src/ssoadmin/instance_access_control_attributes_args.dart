@@ -20,13 +20,10 @@ class InstanceAccessControlAttributesArgs {
   /// [instanceArn] The Amazon Resource Name (ARN) of the SSO Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InstanceAccessControlAttributesArgs({
-    required pulumi.Output<List<InstanceAccessControlAttributesAttribute>> attributes,
-    required pulumi.Output<String> instanceArn,
-    pulumi.Output<String>? region,
-  }) :
-      attributes = pulumi.Input.asInput<List<InstanceAccessControlAttributesAttribute>>(attributes),
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.attributes,
+    required this.instanceArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class InstanceAccessControlAttributesArgs {
 
   factory InstanceAccessControlAttributesArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAccessControlAttributesArgs(
-      attributes: pulumi.Output.create<List<InstanceAccessControlAttributesAttribute>>(pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(map['attributes'], (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceArn: pulumi.Output.create<String>(map['instanceArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      attributes: (pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(map['attributes'], (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceArn: (map['instanceArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

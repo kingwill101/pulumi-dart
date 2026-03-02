@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_ipconfig.dart';
 
 /// SessionAffinityConfig represents the configurations of session affinity.
 class SessionAffinityConfig {
   /// clientIP contains the configurations of Client IP based session affinity.
-  final ClientIPConfig? clientIP;
+  final pulumi.Input<ClientIPConfig>? clientIP;
 
   /// Creates a new [SessionAffinityConfig].
   /// [clientIP] clientIP contains the configurations of Client IP based session affinity.
@@ -15,13 +16,13 @@ class SessionAffinityConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientIP': ?clientIP == null ? null : clientIP!.toMap(),
+      'clientIP': ?pulumi.Input.mapOptionalInputValue<ClientIPConfig, Map<String, dynamic>>(clientIP, (value) => value.toMap()),
     };
   }
 
   factory SessionAffinityConfig.fromMap(Map<String, dynamic> map) {
     return SessionAffinityConfig(
-      clientIP: map['clientIP'] == null ? null : ClientIPConfig.fromMap((map['clientIP'] as Map).cast<String, dynamic>()),
+      clientIP: map['clientIP'] == null ? null : (ClientIPConfig.fromMap((map['clientIP'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

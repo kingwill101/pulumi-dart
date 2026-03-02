@@ -28,19 +28,13 @@ class FirewallpolicyArgs {
   /// [path] Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters.
   /// [project] Optional.
   FirewallpolicyArgs({
-    pulumi.Output<List<GoogleCloudRecaptchaenterpriseV1FirewallAction>>? actions,
-    pulumi.Output<String>? condition,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? project,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<GoogleCloudRecaptchaenterpriseV1FirewallAction>>(actions),
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.actions,
+    this.condition,
+    this.description,
+    this.name,
+    this.path,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class FirewallpolicyArgs {
 
   factory FirewallpolicyArgs.fromMap(Map<String, dynamic> map) {
     return FirewallpolicyArgs(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<GoogleCloudRecaptchaenterpriseV1FirewallAction>>(pulumi.Input.decodeList<GoogleCloudRecaptchaenterpriseV1FirewallAction>(map['actions'], (value) => GoogleCloudRecaptchaenterpriseV1FirewallAction.fromMap((value as Map).cast<String, dynamic>()))),
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRecaptchaenterpriseV1FirewallAction>(map['actions'], (value) => GoogleCloudRecaptchaenterpriseV1FirewallAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

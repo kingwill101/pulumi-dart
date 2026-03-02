@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gallery_image_version_storage_profile_response.dart';
 
 /// Specifies information about the gallery image version that you want to create or update.
 class GalleryImageVersionResponse {
   /// This is the version of the gallery image.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// This is the storage profile of a Gallery Image Version.
-  final GalleryImageVersionStorageProfileResponse storageProfile;
+  final pulumi.Input<GalleryImageVersionStorageProfileResponse> storageProfile;
 
   /// Creates a new [GalleryImageVersionResponse].
   /// [name] This is the version of the gallery image.
@@ -20,14 +21,14 @@ class GalleryImageVersionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'storageProfile': storageProfile.toMap(),
+      'storageProfile': pulumi.Input.mapInputValue<GalleryImageVersionStorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
     };
   }
 
   factory GalleryImageVersionResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      storageProfile: GalleryImageVersionStorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageProfile: (GalleryImageVersionStorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

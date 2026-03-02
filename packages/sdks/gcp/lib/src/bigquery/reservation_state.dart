@@ -132,35 +132,21 @@ class ReservationState {
   /// [secondaryLocation] The current location of the reservation's secondary replica. This field is only set for
   /// [slotCapacity] Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
   ReservationState({
-    pulumi.Output<ReservationAutoscale>? autoscale,
-    pulumi.Output<int>? concurrency,
-    pulumi.Output<String>? edition,
-    pulumi.Output<bool>? ignoreIdleSlots,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? maxSlots,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? originalPrimaryLocation,
-    pulumi.Output<String>? primaryLocation,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<ReservationReplicationStatus>>? replicationStatuses,
-    pulumi.Output<String>? scalingMode,
-    pulumi.Output<String>? secondaryLocation,
-    pulumi.Output<int>? slotCapacity,
-  }) :
-      autoscale = pulumi.Input.asOptionalInput<ReservationAutoscale>(autoscale),
-      concurrency = pulumi.Input.asOptionalInput<int>(concurrency),
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      ignoreIdleSlots = pulumi.Input.asOptionalInput<bool>(ignoreIdleSlots),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maxSlots = pulumi.Input.asOptionalInput<int>(maxSlots),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      originalPrimaryLocation = pulumi.Input.asOptionalInput<String>(originalPrimaryLocation),
-      primaryLocation = pulumi.Input.asOptionalInput<String>(primaryLocation),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replicationStatuses = pulumi.Input.asOptionalInput<List<ReservationReplicationStatus>>(replicationStatuses),
-      scalingMode = pulumi.Input.asOptionalInput<String>(scalingMode),
-      secondaryLocation = pulumi.Input.asOptionalInput<String>(secondaryLocation),
-      slotCapacity = pulumi.Input.asOptionalInput<int>(slotCapacity);
+    this.autoscale,
+    this.concurrency,
+    this.edition,
+    this.ignoreIdleSlots,
+    this.location,
+    this.maxSlots,
+    this.name,
+    this.originalPrimaryLocation,
+    this.primaryLocation,
+    this.project,
+    this.replicationStatuses,
+    this.scalingMode,
+    this.secondaryLocation,
+    this.slotCapacity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -183,20 +169,20 @@ class ReservationState {
 
   factory ReservationState.fromMap(Map<String, dynamic> map) {
     return ReservationState(
-      autoscale: map['autoscale'] == null ? null : pulumi.Output.create<ReservationAutoscale>(ReservationAutoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())),
-      concurrency: map['concurrency'] == null ? null : pulumi.Output.create<int>(map['concurrency'] as int),
-      edition: map['edition'] == null ? null : pulumi.Output.create<String>(map['edition'] as String),
-      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : pulumi.Output.create<bool>(map['ignoreIdleSlots'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maxSlots: map['maxSlots'] == null ? null : pulumi.Output.create<int>(map['maxSlots'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      originalPrimaryLocation: map['originalPrimaryLocation'] == null ? null : pulumi.Output.create<String>(map['originalPrimaryLocation'] as String),
-      primaryLocation: map['primaryLocation'] == null ? null : pulumi.Output.create<String>(map['primaryLocation'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replicationStatuses: map['replicationStatuses'] == null ? null : pulumi.Output.create<List<ReservationReplicationStatus>>(pulumi.Input.decodeList<ReservationReplicationStatus>(map['replicationStatuses'], (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>()))),
-      scalingMode: map['scalingMode'] == null ? null : pulumi.Output.create<String>(map['scalingMode'] as String),
-      secondaryLocation: map['secondaryLocation'] == null ? null : pulumi.Output.create<String>(map['secondaryLocation'] as String),
-      slotCapacity: map['slotCapacity'] == null ? null : pulumi.Output.create<int>(map['slotCapacity'] as int),
+      autoscale: map['autoscale'] == null ? null : (ReservationAutoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      originalPrimaryLocation: map['originalPrimaryLocation'] == null ? null : (map['originalPrimaryLocation'] as String).input(),
+      primaryLocation: map['primaryLocation'] == null ? null : (map['primaryLocation'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replicationStatuses: map['replicationStatuses'] == null ? null : (pulumi.Input.decodeList<ReservationReplicationStatus>(map['replicationStatuses'], (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode'] as String).input(),
+      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation'] as String).input(),
+      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity'] as int).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model for API authentication for all GCP kind connectors.
 class GCPAuthModel {
   /// GCP Project Number
-  final String projectNumber;
+  final pulumi.Input<String> projectNumber;
   /// GCP Service Account Email
-  final String serviceAccountEmail;
+  final pulumi.Input<String> serviceAccountEmail;
   /// Type of paging
   /// Expected value is 'GCP'.
-  final String type;
+  final pulumi.Input<String> type;
   /// GCP Workload Identity Provider ID
-  final String workloadIdentityProviderId;
+  final pulumi.Input<String> workloadIdentityProviderId;
 
   /// Creates a new [GCPAuthModel].
   /// [projectNumber] GCP Project Number
@@ -36,10 +37,10 @@ class GCPAuthModel {
 
   factory GCPAuthModel.fromMap(Map<String, dynamic> map) {
     return GCPAuthModel(
-      projectNumber: map['projectNumber'] as String,
-      serviceAccountEmail: map['serviceAccountEmail'] as String,
-      type: map['type'] as String,
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] as String,
+      projectNumber: (map['projectNumber'] as String).input(),
+      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      type: (map['type'] as String).input(),
+      workloadIdentityProviderId: (map['workloadIdentityProviderId'] as String).input(),
     );
   }
 }

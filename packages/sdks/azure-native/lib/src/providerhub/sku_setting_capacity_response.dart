@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The capacity.
 class SkuSettingCapacityResponse {
   /// The default.
-  final int? default_;
+  final pulumi.Input<int>? default_;
   /// The maximum.
-  final int? maximum;
+  final pulumi.Input<int>? maximum;
   /// The minimum.
-  final int minimum;
+  final pulumi.Input<int> minimum;
   /// The scale type.
-  final String? scaleType;
+  final pulumi.Input<String>? scaleType;
 
   /// Creates a new [SkuSettingCapacityResponse].
   /// [default_] The default.
@@ -35,10 +36,10 @@ class SkuSettingCapacityResponse {
 
   factory SkuSettingCapacityResponse.fromMap(Map<String, dynamic> map) {
     return SkuSettingCapacityResponse(
-      default_: map['default'] == null ? null : map['default'] as int,
-      maximum: map['maximum'] == null ? null : map['maximum'] as int,
-      minimum: map['minimum'] as int,
-      scaleType: map['scaleType'] == null ? null : map['scaleType'] as String,
+      default_: map['default'] == null ? null : (map['default'] as int).input(),
+      maximum: map['maximum'] == null ? null : (map['maximum'] as int).input(),
+      minimum: (map['minimum'] as int).input(),
+      scaleType: map['scaleType'] == null ? null : (map['scaleType'] as String).input(),
     );
   }
 }

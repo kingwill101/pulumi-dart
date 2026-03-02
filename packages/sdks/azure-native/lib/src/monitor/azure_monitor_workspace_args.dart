@@ -25,17 +25,12 @@ class AzureMonitorWorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   AzureMonitorWorkspaceArgs({
-    pulumi.Output<String>? azureMonitorWorkspaceName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      azureMonitorWorkspaceName = pulumi.Input.asOptionalInput<String>(azureMonitorWorkspaceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.azureMonitorWorkspaceName,
+    this.location,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AzureMonitorWorkspaceArgs {
 
   factory AzureMonitorWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceArgs(
-      azureMonitorWorkspaceName: map['azureMonitorWorkspaceName'] == null ? null : pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      azureMonitorWorkspaceName: map['azureMonitorWorkspaceName'] == null ? null : (map['azureMonitorWorkspaceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

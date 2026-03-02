@@ -16,11 +16,9 @@ class GetViewByScopeArgs {
   /// [scope] The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   /// [viewName] View name
   GetViewByScopeArgs({
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> viewName,
-  }) :
-      scope = pulumi.Input.asInput<String>(scope),
-      viewName = pulumi.Input.asInput<String>(viewName);
+    required this.scope,
+    required this.viewName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetViewByScopeArgs {
 
   factory GetViewByScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetViewByScopeArgs(
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      viewName: pulumi.Output.create<String>(map['viewName'] as String),
+      scope: (map['scope'] as String).input(),
+      viewName: (map['viewName'] as String).input(),
     );
   }
 }

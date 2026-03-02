@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PluginActionsConfig {
   /// The description of the operation performed by the action.
-  final String description;
+  final pulumi.Input<String> description;
   /// The display name of the action.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The id of the action.
-  final String id;
+  final pulumi.Input<String> id;
   /// The trigger mode supported by the action.
   /// Possible values:
   /// TRIGGER_MODE_UNSPECIFIED
   /// API_HUB_ON_DEMAND_TRIGGER
   /// API_HUB_SCHEDULE_TRIGGER
   /// NON_API_HUB_MANAGED
-  final String triggerMode;
+  final pulumi.Input<String> triggerMode;
 
   /// Creates a new [PluginActionsConfig].
   /// [description] The description of the operation performed by the action.
@@ -39,10 +40,10 @@ class PluginActionsConfig {
 
   factory PluginActionsConfig.fromMap(Map<String, dynamic> map) {
     return PluginActionsConfig(
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      triggerMode: map['triggerMode'] as String,
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      triggerMode: (map['triggerMode'] as String).input(),
     );
   }
 }

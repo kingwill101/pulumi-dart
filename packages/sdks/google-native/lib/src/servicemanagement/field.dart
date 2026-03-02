@@ -8,25 +8,25 @@ import 'option.dart';
 /// A single field of a message type.
 class Field {
   /// The field cardinality.
-  final FieldCardinality? cardinality;
+  final pulumi.Input<FieldCardinality>? cardinality;
   /// The string value of the default value of this field. Proto2 syntax only.
-  final String? defaultValue;
+  final pulumi.Input<String>? defaultValue;
   /// The field JSON name.
-  final String? jsonName;
+  final pulumi.Input<String>? jsonName;
   /// The field type.
-  final FieldKind? kind;
+  final pulumi.Input<FieldKind>? kind;
   /// The field name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The field number.
-  final int? number;
+  final pulumi.Input<int>? number;
   /// The index of the field type in `Type.oneofs`, for message or enumeration types. The first type has index 1; zero means the type is not in the list.
-  final int? oneofIndex;
+  final pulumi.Input<int>? oneofIndex;
   /// The protocol buffer options.
-  final List<Option>? options;
+  final pulumi.Input<List<Option>>? options;
   /// Whether to use alternative packed wire representation.
-  final bool? packed;
+  final pulumi.Input<bool>? packed;
   /// The field type URL, without the scheme, for message or enumeration types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
-  final String? typeUrl;
+  final pulumi.Input<String>? typeUrl;
 
   /// Creates a new [Field].
   /// [cardinality] The field cardinality.
@@ -54,14 +54,14 @@ class Field {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cardinality': ?cardinality == null ? null : cardinality!.value,
+      'cardinality': ?pulumi.Input.mapOptionalInputValue<FieldCardinality, String>(cardinality, (value) => value.value),
       'defaultValue': ?defaultValue,
       'jsonName': ?jsonName,
-      'kind': ?kind == null ? null : kind!.value,
+      'kind': ?pulumi.Input.mapOptionalInputValue<FieldKind, String>(kind, (value) => value.value),
       'name': ?name,
       'number': ?number,
       'oneofIndex': ?oneofIndex,
-      'options': ?options == null ? null : pulumi.Input.encodeList<Option, Map<String, dynamic>>(options!, (value) => value.toMap()),
+      'options': ?pulumi.Input.mapOptionalInputValue<List<Option>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<Option, Map<String, dynamic>>(value, (value) => value.toMap())),
       'packed': ?packed,
       'typeUrl': ?typeUrl,
     };
@@ -69,16 +69,16 @@ class Field {
 
   factory Field.fromMap(Map<String, dynamic> map) {
     return Field(
-      cardinality: map['cardinality'] == null ? null : FieldCardinality.fromValue(map['cardinality'] as String),
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      jsonName: map['jsonName'] == null ? null : map['jsonName'] as String,
-      kind: map['kind'] == null ? null : FieldKind.fromValue(map['kind'] as String),
-      name: map['name'] == null ? null : map['name'] as String,
-      number: map['number'] == null ? null : map['number'] as int,
-      oneofIndex: map['oneofIndex'] == null ? null : map['oneofIndex'] as int,
-      options: map['options'] == null ? null : pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>())),
-      packed: map['packed'] == null ? null : map['packed'] as bool,
-      typeUrl: map['typeUrl'] == null ? null : map['typeUrl'] as String,
+      cardinality: map['cardinality'] == null ? null : (FieldCardinality.fromValue(map['cardinality'] as String)).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      jsonName: map['jsonName'] == null ? null : (map['jsonName'] as String).input(),
+      kind: map['kind'] == null ? null : (FieldKind.fromValue(map['kind'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      number: map['number'] == null ? null : (map['number'] as int).input(),
+      oneofIndex: map['oneofIndex'] == null ? null : (map['oneofIndex'] as int).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packed: map['packed'] == null ? null : (map['packed'] as bool).input(),
+      typeUrl: map['typeUrl'] == null ? null : (map['typeUrl'] as String).input(),
     );
   }
 }

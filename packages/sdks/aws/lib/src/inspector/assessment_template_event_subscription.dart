@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssessmentTemplateEventSubscription {
   /// The event for which you want to receive SNS notifications. Valid values are `ASSESSMENT_RUN_STARTED`, `ASSESSMENT_RUN_COMPLETED`, `ASSESSMENT_RUN_STATE_CHANGED`, and `FINDING_REPORTED`.
-  final String event;
+  final pulumi.Input<String> event;
   /// The ARN of the SNS topic to which notifications are sent.
-  final String topicArn;
+  final pulumi.Input<String> topicArn;
 
   /// Creates a new [AssessmentTemplateEventSubscription].
   /// [event] The event for which you want to receive SNS notifications. Valid values are `ASSESSMENT_RUN_STARTED`, `ASSESSMENT_RUN_COMPLETED`, `ASSESSMENT_RUN_STATE_CHANGED`, and `FINDING_REPORTED`.
@@ -24,8 +25,8 @@ class AssessmentTemplateEventSubscription {
 
   factory AssessmentTemplateEventSubscription.fromMap(Map<String, dynamic> map) {
     return AssessmentTemplateEventSubscription(
-      event: map['event'] as String,
-      topicArn: map['topicArn'] as String,
+      event: (map['event'] as String).input(),
+      topicArn: (map['topicArn'] as String).input(),
     );
   }
 }

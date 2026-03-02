@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice {
   /// The absolute file path in the container where the tmpfs volume is mounted.
-  final String containerPath;
+  final pulumi.Input<String> containerPath;
   /// The path for the device on the host container instance.
-  final String hostPath;
+  final pulumi.Input<String> hostPath;
   /// The explicit permissions to provide to the container for the device.
-  final List<String> permissions;
+  final pulumi.Input<List<String>> permissions;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice].
   /// [containerPath] The absolute file path in the container where the tmpfs volume is mounted.
@@ -29,9 +30,9 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice(
-      containerPath: map['containerPath'] as String,
-      hostPath: map['hostPath'] as String,
-      permissions: (map['permissions'] as List).cast<String>(),
+      containerPath: (map['containerPath'] as String).input(),
+      hostPath: (map['hostPath'] as String).input(),
+      permissions: ((map['permissions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventActionActionExportRevisionToS3RevisionDestination {
   /// The S3 bucket where the revision will be exported.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Pattern for naming revisions in the S3 bucket.
   /// Defaults to `${Revision.CreatedAt}/${Asset.Name}`.
-  final String? keyPattern;
+  final pulumi.Input<String>? keyPattern;
 
   /// Creates a new [EventActionActionExportRevisionToS3RevisionDestination].
   /// [bucket] The S3 bucket where the revision will be exported.
@@ -25,8 +26,8 @@ class EventActionActionExportRevisionToS3RevisionDestination {
 
   factory EventActionActionExportRevisionToS3RevisionDestination.fromMap(Map<String, dynamic> map) {
     return EventActionActionExportRevisionToS3RevisionDestination(
-      bucket: map['bucket'] as String,
-      keyPattern: map['keyPattern'] == null ? null : map['keyPattern'] as String,
+      bucket: (map['bucket'] as String).input(),
+      keyPattern: map['keyPattern'] == null ? null : (map['keyPattern'] as String).input(),
     );
   }
 }

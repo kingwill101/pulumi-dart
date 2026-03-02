@@ -16,11 +16,9 @@ class ListAutomationAccountDeletedRunbooksArgs {
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
   ListAutomationAccountDeletedRunbooksArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListAutomationAccountDeletedRunbooksArgs {
 
   factory ListAutomationAccountDeletedRunbooksArgs.fromMap(Map<String, dynamic> map) {
     return ListAutomationAccountDeletedRunbooksArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

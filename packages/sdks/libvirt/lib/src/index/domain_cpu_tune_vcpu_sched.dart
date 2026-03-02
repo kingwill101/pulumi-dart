@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneVcpuSched {
   /// Sets the priority for virtual CPU scheduling, affecting execution order between competing CPU tasks.
-  final double? priority;
+  final pulumi.Input<double>? priority;
   /// Specifies the type of scheduler for virtual CPUs, determining how they share and compete for CPU resources.
-  final String? scheduler;
+  final pulumi.Input<String>? scheduler;
   /// Configures the specific virtual CPUs affected by the scheduling policies, influencing performance and resource use.
-  final String vcpus;
+  final pulumi.Input<String> vcpus;
 
   /// Creates a new [DomainCpuTuneVcpuSched].
   /// [priority] Sets the priority for virtual CPU scheduling, affecting execution order between competing CPU tasks.
@@ -29,9 +30,9 @@ class DomainCpuTuneVcpuSched {
 
   factory DomainCpuTuneVcpuSched.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneVcpuSched(
-      priority: map['priority'] == null ? null : map['priority'] as double,
-      scheduler: map['scheduler'] == null ? null : map['scheduler'] as String,
-      vcpus: map['vcpus'] as String,
+      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
+      vcpus: (map['vcpus'] as String).input(),
     );
   }
 }

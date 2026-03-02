@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAzureActiveDirectory {
   /// The Azure Active Directory Client ID which should be used for the Client Application.
-  final String clientApplicationId;
+  final pulumi.Input<String> clientApplicationId;
   /// The Azure Active Directory Cluster Application ID.
-  final String clusterApplicationId;
+  final pulumi.Input<String> clusterApplicationId;
   /// The Azure Active Directory Tenant ID.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [ClusterAzureActiveDirectory].
   /// [clientApplicationId] The Azure Active Directory Client ID which should be used for the Client Application.
@@ -29,9 +30,9 @@ class ClusterAzureActiveDirectory {
 
   factory ClusterAzureActiveDirectory.fromMap(Map<String, dynamic> map) {
     return ClusterAzureActiveDirectory(
-      clientApplicationId: map['clientApplicationId'] as String,
-      clusterApplicationId: map['clusterApplicationId'] as String,
-      tenantId: map['tenantId'] as String,
+      clientApplicationId: (map['clientApplicationId'] as String).input(),
+      clusterApplicationId: (map['clusterApplicationId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

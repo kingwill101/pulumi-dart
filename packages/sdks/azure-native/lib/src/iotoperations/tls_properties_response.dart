@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Tls properties
 class TlsPropertiesResponse {
   /// Mode for TLS.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Trusted CA certificate config map.
-  final String? trustedCaCertificateConfigMapRef;
+  final pulumi.Input<String>? trustedCaCertificateConfigMapRef;
 
   /// Creates a new [TlsPropertiesResponse].
   /// [mode] Mode for TLS.
@@ -25,8 +26,8 @@ class TlsPropertiesResponse {
 
   factory TlsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TlsPropertiesResponse(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      trustedCaCertificateConfigMapRef: map['trustedCaCertificateConfigMapRef'] == null ? null : map['trustedCaCertificateConfigMapRef'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      trustedCaCertificateConfigMapRef: map['trustedCaCertificateConfigMapRef'] == null ? null : (map['trustedCaCertificateConfigMapRef'] as String).input(),
     );
   }
 }

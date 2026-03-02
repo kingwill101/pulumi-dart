@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
   /// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
-  final int daysInCycle;
+  final pulumi.Input<int> daysInCycle;
   /// This must be in UTC format that resolves to one of
   /// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
   /// both 13:00-5 and 08:00 are valid.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule].
   /// [daysInCycle] Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
@@ -26,8 +27,8 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
 
   factory ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(
-      daysInCycle: map['daysInCycle'] as int,
-      startTime: map['startTime'] as String,
+      daysInCycle: (map['daysInCycle'] as int).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

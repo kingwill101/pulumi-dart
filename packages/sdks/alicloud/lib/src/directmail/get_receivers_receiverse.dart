@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReceiversReceiverse {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Receivers.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Receivers Alias.
-  final String receiversAlias;
+  final pulumi.Input<String> receiversAlias;
   /// The first ID of the resource.
-  final String receiversId;
+  final pulumi.Input<String> receiversId;
   /// The name of the resource.
-  final String receiversName;
+  final pulumi.Input<String> receiversName;
   /// The status of the resource.
-  final int status;
+  final pulumi.Input<int> status;
 
   /// Creates a new [GetReceiversReceiverse].
   /// [createTime] The creation time of the resource.
@@ -49,13 +50,13 @@ class GetReceiversReceiverse {
 
   factory GetReceiversReceiverse.fromMap(Map<String, dynamic> map) {
     return GetReceiversReceiverse(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      receiversAlias: map['receiversAlias'] as String,
-      receiversId: map['receiversId'] as String,
-      receiversName: map['receiversName'] as String,
-      status: map['status'] as int,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      receiversAlias: (map['receiversAlias'] as String).input(),
+      receiversId: (map['receiversId'] as String).input(),
+      receiversName: (map['receiversName'] as String).input(),
+      status: (map['status'] as int).input(),
     );
   }
 }

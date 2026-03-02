@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceEphemeralBlockDevice {
   /// Physical name of the device.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// Whether the specified device included in the device mapping was suppressed or not (Boolean).
-  final bool? noDevice;
+  final pulumi.Input<bool>? noDevice;
   /// Virtual device name.
-  final String? virtualName;
+  final pulumi.Input<String>? virtualName;
 
   /// Creates a new [GetInstanceEphemeralBlockDevice].
   /// [deviceName] Physical name of the device.
@@ -29,9 +30,9 @@ class GetInstanceEphemeralBlockDevice {
 
   factory GetInstanceEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetInstanceEphemeralBlockDevice(
-      deviceName: map['deviceName'] as String,
-      noDevice: map['noDevice'] == null ? null : map['noDevice'] as bool,
-      virtualName: map['virtualName'] == null ? null : map['virtualName'] as String,
+      deviceName: (map['deviceName'] as String).input(),
+      noDevice: map['noDevice'] == null ? null : (map['noDevice'] as bool).input(),
+      virtualName: map['virtualName'] == null ? null : (map['virtualName'] as String).input(),
     );
   }
 }

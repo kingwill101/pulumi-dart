@@ -28,19 +28,13 @@ class PermissionArgs {
   /// [tags] A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   PermissionArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyTemplate,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<PermissionTimeouts>? timeouts,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyTemplate = pulumi.Input.asInput<String>(policyTemplate),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<PermissionTimeouts>(timeouts);
+    this.name,
+    required this.policyTemplate,
+    this.region,
+    required this.resourceType,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class PermissionArgs {
 
   factory PermissionArgs.fromMap(Map<String, dynamic> map) {
     return PermissionArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyTemplate: pulumi.Output.create<String>(map['policyTemplate'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<PermissionTimeouts>(PermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyTemplate: (map['policyTemplate'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (PermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

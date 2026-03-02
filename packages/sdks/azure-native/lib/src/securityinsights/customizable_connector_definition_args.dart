@@ -37,23 +37,15 @@ class CustomizableConnectorDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   CustomizableConnectorDefinitionArgs({
-    pulumi.Output<CustomizableConnectionsConfig>? connectionsConfig,
-    required pulumi.Output<CustomizableConnectorUiConfig> connectorUiConfig,
-    pulumi.Output<String>? createdTimeUtc,
-    pulumi.Output<String>? dataConnectorDefinitionName,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? lastModifiedUtc,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      connectionsConfig = pulumi.Input.asOptionalInput<CustomizableConnectionsConfig>(connectionsConfig),
-      connectorUiConfig = pulumi.Input.asInput<CustomizableConnectorUiConfig>(connectorUiConfig),
-      createdTimeUtc = pulumi.Input.asOptionalInput<String>(createdTimeUtc),
-      dataConnectorDefinitionName = pulumi.Input.asOptionalInput<String>(dataConnectorDefinitionName),
-      kind = pulumi.Input.asInput<String>(kind),
-      lastModifiedUtc = pulumi.Input.asOptionalInput<String>(lastModifiedUtc),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.connectionsConfig,
+    required this.connectorUiConfig,
+    this.createdTimeUtc,
+    this.dataConnectorDefinitionName,
+    required this.kind,
+    this.lastModifiedUtc,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class CustomizableConnectorDefinitionArgs {
 
   factory CustomizableConnectorDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return CustomizableConnectorDefinitionArgs(
-      connectionsConfig: map['connectionsConfig'] == null ? null : pulumi.Output.create<CustomizableConnectionsConfig>(CustomizableConnectionsConfig.fromMap((map['connectionsConfig'] as Map).cast<String, dynamic>())),
-      connectorUiConfig: pulumi.Output.create<CustomizableConnectorUiConfig>(CustomizableConnectorUiConfig.fromMap((map['connectorUiConfig'] as Map).cast<String, dynamic>())),
-      createdTimeUtc: map['createdTimeUtc'] == null ? null : pulumi.Output.create<String>(map['createdTimeUtc'] as String),
-      dataConnectorDefinitionName: map['dataConnectorDefinitionName'] == null ? null : pulumi.Output.create<String>(map['dataConnectorDefinitionName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      lastModifiedUtc: map['lastModifiedUtc'] == null ? null : pulumi.Output.create<String>(map['lastModifiedUtc'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      connectionsConfig: map['connectionsConfig'] == null ? null : (CustomizableConnectionsConfig.fromMap((map['connectionsConfig'] as Map).cast<String, dynamic>())).input(),
+      connectorUiConfig: (CustomizableConnectorUiConfig.fromMap((map['connectorUiConfig'] as Map).cast<String, dynamic>())).input(),
+      createdTimeUtc: map['createdTimeUtc'] == null ? null : (map['createdTimeUtc'] as String).input(),
+      dataConnectorDefinitionName: map['dataConnectorDefinitionName'] == null ? null : (map['dataConnectorDefinitionName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      lastModifiedUtc: map['lastModifiedUtc'] == null ? null : (map['lastModifiedUtc'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

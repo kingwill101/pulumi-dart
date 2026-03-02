@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterClusterAutoscalerConfiguration {
-  final List<String>? expanders;
-  final String? scaleDownUnneededTime;
-  final double? scaleDownUtilizationThreshold;
+  final pulumi.Input<List<String>>? expanders;
+  final pulumi.Input<String>? scaleDownUnneededTime;
+  final pulumi.Input<double>? scaleDownUtilizationThreshold;
 
   /// Creates a new [GetKubernetesClusterClusterAutoscalerConfiguration].
   /// [expanders] Optional.
@@ -26,9 +27,9 @@ class GetKubernetesClusterClusterAutoscalerConfiguration {
 
   factory GetKubernetesClusterClusterAutoscalerConfiguration.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterClusterAutoscalerConfiguration(
-      expanders: map['expanders'] == null ? null : (map['expanders'] as List).cast<String>(),
-      scaleDownUnneededTime: map['scaleDownUnneededTime'] == null ? null : map['scaleDownUnneededTime'] as String,
-      scaleDownUtilizationThreshold: map['scaleDownUtilizationThreshold'] == null ? null : map['scaleDownUtilizationThreshold'] as double,
+      expanders: map['expanders'] == null ? null : ((map['expanders'] as List).cast<String>()).input(),
+      scaleDownUnneededTime: map['scaleDownUnneededTime'] == null ? null : (map['scaleDownUnneededTime'] as String).input(),
+      scaleDownUtilizationThreshold: map['scaleDownUtilizationThreshold'] == null ? null : (map['scaleDownUtilizationThreshold'] as double).input(),
     );
   }
 }

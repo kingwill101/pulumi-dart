@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOsProfileWindowPatch {
   /// Specifies the assessment mode.
-  final String assessmentMode;
+  final pulumi.Input<String> assessmentMode;
   /// Specifies the patch mode.
-  final String patchMode;
+  final pulumi.Input<String> patchMode;
 
   /// Creates a new [GetOsProfileWindowPatch].
   /// [assessmentMode] Specifies the assessment mode.
@@ -24,8 +25,8 @@ class GetOsProfileWindowPatch {
 
   factory GetOsProfileWindowPatch.fromMap(Map<String, dynamic> map) {
     return GetOsProfileWindowPatch(
-      assessmentMode: map['assessmentMode'] as String,
-      patchMode: map['patchMode'] as String,
+      assessmentMode: (map['assessmentMode'] as String).input(),
+      patchMode: (map['patchMode'] as String).input(),
     );
   }
 }

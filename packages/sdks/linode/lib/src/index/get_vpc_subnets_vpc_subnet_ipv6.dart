@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcSubnetsVpcSubnetIpv6 {
   /// An IPv6 range allocated to this subnet.
-  final String range;
+  final pulumi.Input<String> range;
 
   /// Creates a new [GetVpcSubnetsVpcSubnetIpv6].
   /// [range] An IPv6 range allocated to this subnet.
@@ -19,7 +20,7 @@ class GetVpcSubnetsVpcSubnetIpv6 {
 
   factory GetVpcSubnetsVpcSubnetIpv6.fromMap(Map<String, dynamic> map) {
     return GetVpcSubnetsVpcSubnetIpv6(
-      range: map['range'] as String,
+      range: (map['range'] as String).input(),
     );
   }
 }

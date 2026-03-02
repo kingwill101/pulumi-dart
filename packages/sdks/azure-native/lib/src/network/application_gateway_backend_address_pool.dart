@@ -6,11 +6,11 @@ import 'application_gateway_backend_address.dart';
 /// Backend Address Pool of an application gateway.
 class ApplicationGatewayBackendAddressPool {
   /// Backend addresses.
-  final List<ApplicationGatewayBackendAddress>? backendAddresses;
+  final pulumi.Input<List<ApplicationGatewayBackendAddress>>? backendAddresses;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the backend address pool that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ApplicationGatewayBackendAddressPool].
   /// [backendAddresses] Backend addresses.
@@ -24,7 +24,7 @@ class ApplicationGatewayBackendAddressPool {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddresses': ?backendAddresses == null ? null : pulumi.Input.encodeList<ApplicationGatewayBackendAddress, Map<String, dynamic>>(backendAddresses!, (value) => value.toMap()),
+      'backendAddresses': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayBackendAddress>, List<Map<String, dynamic>>>(backendAddresses, (value) => pulumi.Input.encodeList<ApplicationGatewayBackendAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'name': ?name,
     };
@@ -32,9 +32,9 @@ class ApplicationGatewayBackendAddressPool {
 
   factory ApplicationGatewayBackendAddressPool.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendAddressPool(
-      backendAddresses: map['backendAddresses'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayBackendAddress>(map['backendAddresses'], (value) => ApplicationGatewayBackendAddress.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      backendAddresses: map['backendAddresses'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddress>(map['backendAddresses'], (value) => ApplicationGatewayBackendAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

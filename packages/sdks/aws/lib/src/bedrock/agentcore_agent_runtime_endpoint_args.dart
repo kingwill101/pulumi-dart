@@ -33,21 +33,14 @@ class AgentcoreAgentRuntimeEndpointArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   AgentcoreAgentRuntimeEndpointArgs({
-    required pulumi.Output<String> agentRuntimeId,
-    pulumi.Output<String>? agentRuntimeVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<AgentcoreAgentRuntimeEndpointTimeouts>? timeouts,
-  }) :
-      agentRuntimeId = pulumi.Input.asInput<String>(agentRuntimeId),
-      agentRuntimeVersion = pulumi.Input.asOptionalInput<String>(agentRuntimeVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreAgentRuntimeEndpointTimeouts>(timeouts);
+    required this.agentRuntimeId,
+    this.agentRuntimeVersion,
+    this.description,
+    this.name,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AgentcoreAgentRuntimeEndpointArgs {
 
   factory AgentcoreAgentRuntimeEndpointArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeEndpointArgs(
-      agentRuntimeId: pulumi.Output.create<String>(map['agentRuntimeId'] as String),
-      agentRuntimeVersion: map['agentRuntimeVersion'] == null ? null : pulumi.Output.create<String>(map['agentRuntimeVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreAgentRuntimeEndpointTimeouts>(AgentcoreAgentRuntimeEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      agentRuntimeId: (map['agentRuntimeId'] as String).input(),
+      agentRuntimeVersion: map['agentRuntimeVersion'] == null ? null : (map['agentRuntimeVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreAgentRuntimeEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

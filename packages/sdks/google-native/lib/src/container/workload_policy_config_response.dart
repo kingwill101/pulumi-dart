@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
 class WorkloadPolicyConfigResponse {
   /// If true, workloads can use NET_ADMIN capability.
-  final bool allowNetAdmin;
+  final pulumi.Input<bool> allowNetAdmin;
 
   /// Creates a new [WorkloadPolicyConfigResponse].
   /// [allowNetAdmin] If true, workloads can use NET_ADMIN capability.
@@ -20,7 +21,7 @@ class WorkloadPolicyConfigResponse {
 
   factory WorkloadPolicyConfigResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadPolicyConfigResponse(
-      allowNetAdmin: map['allowNetAdmin'] as bool,
+      allowNetAdmin: (map['allowNetAdmin'] as bool).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConsumerImageShareGroupTokensToken {
   /// When the token was created.
-  final String created;
+  final pulumi.Input<String> created;
   /// When the token will expire.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// A label for the token.
-  final String label;
+  final pulumi.Input<String> label;
   /// The label of the Image Share Group that the token is for.
-  final String sharegroupLabel;
+  final pulumi.Input<String> sharegroupLabel;
   /// The UUID of the Image Share Group that the token is for.
-  final String sharegroupUuid;
+  final pulumi.Input<String> sharegroupUuid;
   /// The status of the token.
-  final String status;
+  final pulumi.Input<String> status;
   /// The UUID of the token.
-  final String tokenUuid;
+  final pulumi.Input<String> tokenUuid;
   /// When the token was last updated.
-  final String updated;
+  final pulumi.Input<String> updated;
   /// The UUID of the Image Share Group for which to create a token.
-  final String validForSharegroupUuid;
+  final pulumi.Input<String> validForSharegroupUuid;
 
   /// Creates a new [GetConsumerImageShareGroupTokensToken].
   /// [created] When the token was created.
@@ -59,15 +60,15 @@ class GetConsumerImageShareGroupTokensToken {
 
   factory GetConsumerImageShareGroupTokensToken.fromMap(Map<String, dynamic> map) {
     return GetConsumerImageShareGroupTokensToken(
-      created: map['created'] as String,
-      expiry: map['expiry'] as String,
-      label: map['label'] as String,
-      sharegroupLabel: map['sharegroupLabel'] as String,
-      sharegroupUuid: map['sharegroupUuid'] as String,
-      status: map['status'] as String,
-      tokenUuid: map['tokenUuid'] as String,
-      updated: map['updated'] as String,
-      validForSharegroupUuid: map['validForSharegroupUuid'] as String,
+      created: (map['created'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
+      label: (map['label'] as String).input(),
+      sharegroupLabel: (map['sharegroupLabel'] as String).input(),
+      sharegroupUuid: (map['sharegroupUuid'] as String).input(),
+      status: (map['status'] as String).input(),
+      tokenUuid: (map['tokenUuid'] as String).input(),
+      updated: (map['updated'] as String).input(),
+      validForSharegroupUuid: (map['validForSharegroupUuid'] as String).input(),
     );
   }
 }

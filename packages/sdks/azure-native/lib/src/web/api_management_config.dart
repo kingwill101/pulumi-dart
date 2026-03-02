@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure API management (APIM) configuration linked to the app.
 class ApiManagementConfig {
   /// APIM-Api Identifier.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ApiManagementConfig].
   /// [id] APIM-Api Identifier.
@@ -20,7 +21,7 @@ class ApiManagementConfig {
 
   factory ApiManagementConfig.fromMap(Map<String, dynamic> map) {
     return ApiManagementConfig(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

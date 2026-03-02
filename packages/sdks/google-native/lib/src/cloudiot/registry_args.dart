@@ -44,27 +44,17 @@ class RegistryArgs {
   /// [project] Optional.
   /// [stateNotificationConfig] The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
   RegistryArgs({
-    pulumi.Output<List<RegistryCredential>>? credentials,
-    pulumi.Output<List<EventNotificationConfig>>? eventNotificationConfigs,
-    pulumi.Output<HttpConfig>? httpConfig,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<RegistryLogLevel>? logLevel,
-    pulumi.Output<MqttConfig>? mqttConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<StateNotificationConfig>? stateNotificationConfig,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<List<RegistryCredential>>(credentials),
-      eventNotificationConfigs = pulumi.Input.asOptionalInput<List<EventNotificationConfig>>(eventNotificationConfigs),
-      httpConfig = pulumi.Input.asOptionalInput<HttpConfig>(httpConfig),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logLevel = pulumi.Input.asOptionalInput<RegistryLogLevel>(logLevel),
-      mqttConfig = pulumi.Input.asOptionalInput<MqttConfig>(mqttConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      stateNotificationConfig = pulumi.Input.asOptionalInput<StateNotificationConfig>(stateNotificationConfig);
+    this.credentials,
+    this.eventNotificationConfigs,
+    this.httpConfig,
+    this.id,
+    this.location,
+    this.logLevel,
+    this.mqttConfig,
+    this.name,
+    this.project,
+    this.stateNotificationConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class RegistryArgs {
 
   factory RegistryArgs.fromMap(Map<String, dynamic> map) {
     return RegistryArgs(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<List<RegistryCredential>>(pulumi.Input.decodeList<RegistryCredential>(map['credentials'], (value) => RegistryCredential.fromMap((value as Map).cast<String, dynamic>()))),
-      eventNotificationConfigs: map['eventNotificationConfigs'] == null ? null : pulumi.Output.create<List<EventNotificationConfig>>(pulumi.Input.decodeList<EventNotificationConfig>(map['eventNotificationConfigs'], (value) => EventNotificationConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      httpConfig: map['httpConfig'] == null ? null : pulumi.Output.create<HttpConfig>(HttpConfig.fromMap((map['httpConfig'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logLevel: map['logLevel'] == null ? null : pulumi.Output.create<RegistryLogLevel>(RegistryLogLevel.fromValue(map['logLevel'] as String)),
-      mqttConfig: map['mqttConfig'] == null ? null : pulumi.Output.create<MqttConfig>(MqttConfig.fromMap((map['mqttConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      stateNotificationConfig: map['stateNotificationConfig'] == null ? null : pulumi.Output.create<StateNotificationConfig>(StateNotificationConfig.fromMap((map['stateNotificationConfig'] as Map).cast<String, dynamic>())),
+      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<RegistryCredential>(map['credentials'], (value) => RegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventNotificationConfigs: map['eventNotificationConfigs'] == null ? null : (pulumi.Input.decodeList<EventNotificationConfig>(map['eventNotificationConfigs'], (value) => EventNotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpConfig: map['httpConfig'] == null ? null : (HttpConfig.fromMap((map['httpConfig'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (RegistryLogLevel.fromValue(map['logLevel'] as String)).input(),
+      mqttConfig: map['mqttConfig'] == null ? null : (MqttConfig.fromMap((map['mqttConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      stateNotificationConfig: map['stateNotificationConfig'] == null ? null : (StateNotificationConfig.fromMap((map['stateNotificationConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

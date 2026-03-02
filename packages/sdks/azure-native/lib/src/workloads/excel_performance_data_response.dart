@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SAP instance specific performance data for Excel import.
 class ExcelPerformanceDataResponse {
   /// The data source for this resource.
   /// Expected value is 'Excel'.
-  final String dataSource;
+  final pulumi.Input<String> dataSource;
   /// Provide the max CPU percentage load on the server. Omit the percentage symbol while filling this value.
-  final int maxCpuLoad;
+  final pulumi.Input<int> maxCpuLoad;
   /// Provide the source Database size in GB. Applicable only if SAP instance type for this server instance is 'DB'.
-  final int totalSourceDbSizeGB;
+  final pulumi.Input<int> totalSourceDbSizeGB;
 
   /// Creates a new [ExcelPerformanceDataResponse].
   /// [dataSource] The data source for this resource.
@@ -31,9 +32,9 @@ class ExcelPerformanceDataResponse {
 
   factory ExcelPerformanceDataResponse.fromMap(Map<String, dynamic> map) {
     return ExcelPerformanceDataResponse(
-      dataSource: map['dataSource'] as String,
-      maxCpuLoad: map['maxCpuLoad'] as int,
-      totalSourceDbSizeGB: map['totalSourceDbSizeGB'] as int,
+      dataSource: (map['dataSource'] as String).input(),
+      maxCpuLoad: (map['maxCpuLoad'] as int).input(),
+      totalSourceDbSizeGB: (map['totalSourceDbSizeGB'] as int).input(),
     );
   }
 }

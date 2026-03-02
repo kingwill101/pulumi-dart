@@ -22,15 +22,11 @@ class GetTablesArgs {
   /// [nameRegex] A regex string to filter results by table name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetTablesArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    required this.instanceName,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetTablesArgs {
 
   factory GetTablesArgs.fromMap(Map<String, dynamic> map) {
     return GetTablesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

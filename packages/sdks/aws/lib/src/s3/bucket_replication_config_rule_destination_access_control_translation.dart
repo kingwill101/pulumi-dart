@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationConfigRuleDestinationAccessControlTranslation {
   /// Specifies the replica ownership. For default and valid values, see [PUT bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) in the Amazon S3 API Reference. Valid values: `Destination`.
-  final String owner;
+  final pulumi.Input<String> owner;
 
   /// Creates a new [BucketReplicationConfigRuleDestinationAccessControlTranslation].
   /// [owner] Specifies the replica ownership. For default and valid values, see [PUT bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) in the Amazon S3 API Reference. Valid values: `Destination`.
@@ -19,7 +20,7 @@ class BucketReplicationConfigRuleDestinationAccessControlTranslation {
 
   factory BucketReplicationConfigRuleDestinationAccessControlTranslation.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestinationAccessControlTranslation(
-      owner: map['owner'] as String,
+      owner: (map['owner'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectsPolicyBindingTarget {
   /// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
@@ -9,7 +10,7 @@ class ProjectsPolicyBindingTarget {
   /// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
   /// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
   /// It must be parent by the policy binding's parent (the project).
-  final String? principalSet;
+  final pulumi.Input<String>? principalSet;
 
   /// Creates a new [ProjectsPolicyBindingTarget].
   /// [principalSet] Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
@@ -25,7 +26,7 @@ class ProjectsPolicyBindingTarget {
 
   factory ProjectsPolicyBindingTarget.fromMap(Map<String, dynamic> map) {
     return ProjectsPolicyBindingTarget(
-      principalSet: map['principalSet'] == null ? null : map['principalSet'] as String,
+      principalSet: map['principalSet'] == null ? null : (map['principalSet'] as String).input(),
     );
   }
 }

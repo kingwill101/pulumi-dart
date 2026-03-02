@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification of a single machine.
 class GoogleCloudAiplatformV1MachineSpecResponse {
   /// The number of accelerators to attach to the machine.
-  final int acceleratorCount;
+  final pulumi.Input<int> acceleratorCount;
   /// Immutable. The type of accelerator(s) that may be attached to the machine as per accelerator_count.
-  final String acceleratorType;
+  final pulumi.Input<String> acceleratorType;
   /// Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
-  final String machineType;
+  final pulumi.Input<String> machineType;
   /// Immutable. The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
-  final String tpuTopology;
+  final pulumi.Input<String> tpuTopology;
 
   /// Creates a new [GoogleCloudAiplatformV1MachineSpecResponse].
   /// [acceleratorCount] The number of accelerators to attach to the machine.
@@ -35,10 +36,10 @@ class GoogleCloudAiplatformV1MachineSpecResponse {
 
   factory GoogleCloudAiplatformV1MachineSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1MachineSpecResponse(
-      acceleratorCount: map['acceleratorCount'] as int,
-      acceleratorType: map['acceleratorType'] as String,
-      machineType: map['machineType'] as String,
-      tpuTopology: map['tpuTopology'] as String,
+      acceleratorCount: (map['acceleratorCount'] as int).input(),
+      acceleratorType: (map['acceleratorType'] as String).input(),
+      machineType: (map['machineType'] as String).input(),
+      tpuTopology: (map['tpuTopology'] as String).input(),
     );
   }
 }

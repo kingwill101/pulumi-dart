@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NoneAuthTypeConnectionProperties {
   /// Authentication type of the connection target
   /// Expected value is 'None'.
-  final String authType;
+  final pulumi.Input<String> authType;
   /// Category of the connection
-  final String? category;
-  final String? error;
-  final String? expiryTime;
-  final bool? isSharedToAll;
+  final pulumi.Input<String>? category;
+  final pulumi.Input<String>? error;
+  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<bool>? isSharedToAll;
   /// Store user metadata for this connection
-  final Map<String, String>? metadata;
-  final String? peRequirement;
-  final String? peStatus;
-  final List<String>? sharedUserList;
-  final String? target;
-  final bool? useWorkspaceManagedIdentity;
+  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<String>? peRequirement;
+  final pulumi.Input<String>? peStatus;
+  final pulumi.Input<List<String>>? sharedUserList;
+  final pulumi.Input<String>? target;
+  final pulumi.Input<bool>? useWorkspaceManagedIdentity;
 
   /// Creates a new [NoneAuthTypeConnectionProperties].
   /// [authType] Authentication type of the connection target
@@ -62,17 +63,17 @@ class NoneAuthTypeConnectionProperties {
 
   factory NoneAuthTypeConnectionProperties.fromMap(Map<String, dynamic> map) {
     return NoneAuthTypeConnectionProperties(
-      authType: map['authType'] as String,
-      category: map['category'] == null ? null : map['category'] as String,
-      error: map['error'] == null ? null : map['error'] as String,
-      expiryTime: map['expiryTime'] == null ? null : map['expiryTime'] as String,
-      isSharedToAll: map['isSharedToAll'] == null ? null : map['isSharedToAll'] as bool,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      peRequirement: map['peRequirement'] == null ? null : map['peRequirement'] as String,
-      peStatus: map['peStatus'] == null ? null : map['peStatus'] as String,
-      sharedUserList: map['sharedUserList'] == null ? null : (map['sharedUserList'] as List).cast<String>(),
-      target: map['target'] == null ? null : map['target'] as String,
-      useWorkspaceManagedIdentity: map['useWorkspaceManagedIdentity'] == null ? null : map['useWorkspaceManagedIdentity'] as bool,
+      authType: (map['authType'] as String).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      error: map['error'] == null ? null : (map['error'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      isSharedToAll: map['isSharedToAll'] == null ? null : (map['isSharedToAll'] as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      peRequirement: map['peRequirement'] == null ? null : (map['peRequirement'] as String).input(),
+      peStatus: map['peStatus'] == null ? null : (map['peStatus'] as String).input(),
+      sharedUserList: map['sharedUserList'] == null ? null : ((map['sharedUserList'] as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      useWorkspaceManagedIdentity: map['useWorkspaceManagedIdentity'] == null ? null : (map['useWorkspaceManagedIdentity'] as bool).input(),
     );
   }
 }

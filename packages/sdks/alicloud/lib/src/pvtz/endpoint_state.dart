@@ -26,19 +26,13 @@ class EndpointState {
   /// [vpcId] The VPC ID.
   /// [vpcRegionId] The Region of the VPC.
   EndpointState({
-    pulumi.Output<String>? endpointName,
-    pulumi.Output<List<EndpointIpConfig>>? ipConfigs,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vpcRegionId,
-  }) :
-      endpointName = pulumi.Input.asOptionalInput<String>(endpointName),
-      ipConfigs = pulumi.Input.asOptionalInput<List<EndpointIpConfig>>(ipConfigs),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpcRegionId = pulumi.Input.asOptionalInput<String>(vpcRegionId);
+    this.endpointName,
+    this.ipConfigs,
+    this.securityGroupId,
+    this.status,
+    this.vpcId,
+    this.vpcRegionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      endpointName: map['endpointName'] == null ? null : pulumi.Output.create<String>(map['endpointName'] as String),
-      ipConfigs: map['ipConfigs'] == null ? null : pulumi.Output.create<List<EndpointIpConfig>>(pulumi.Input.decodeList<EndpointIpConfig>(map['ipConfigs'], (value) => EndpointIpConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcRegionId: map['vpcRegionId'] == null ? null : pulumi.Output.create<String>(map['vpcRegionId'] as String),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
+      ipConfigs: map['ipConfigs'] == null ? null : (pulumi.Input.decodeList<EndpointIpConfig>(map['ipConfigs'], (value) => EndpointIpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcRegionId: map['vpcRegionId'] == null ? null : (map['vpcRegionId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dapr_component_resiliency_policy_http_retry_back_off_configuration.dart';
 
 /// Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
 class DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
   /// The optional maximum number of retries
-  final int? maxRetries;
+  final pulumi.Input<int>? maxRetries;
   /// The optional retry backoff configuration
-  final DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration? retryBackOff;
+  final pulumi.Input<DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration>? retryBackOff;
 
   /// Creates a new [DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration].
   /// [maxRetries] The optional maximum number of retries
@@ -20,14 +21,14 @@ class DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maxRetries': ?maxRetries,
-      'retryBackOff': ?retryBackOff == null ? null : retryBackOff!.toMap(),
+      'retryBackOff': ?pulumi.Input.mapOptionalInputValue<DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration, Map<String, dynamic>>(retryBackOff, (value) => value.toMap()),
     };
   }
 
   factory DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration(
-      maxRetries: map['maxRetries'] == null ? null : map['maxRetries'] as int,
-      retryBackOff: map['retryBackOff'] == null ? null : DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration.fromMap((map['retryBackOff'] as Map).cast<String, dynamic>()),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
+      retryBackOff: map['retryBackOff'] == null ? null : (DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration.fromMap((map['retryBackOff'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

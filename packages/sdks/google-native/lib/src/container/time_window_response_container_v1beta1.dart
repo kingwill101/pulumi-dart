@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_exclusion_options_response_container_v1beta1.dart';
 
 /// Represents an arbitrary window of time.
 class TimeWindowResponseContainerV1beta1 {
   /// The time that the window ends. The end time should take place after the start time.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
-  final MaintenanceExclusionOptionsResponseContainerV1beta1 maintenanceExclusionOptions;
+  final pulumi.Input<MaintenanceExclusionOptionsResponseContainerV1beta1> maintenanceExclusionOptions;
   /// The time that the window first starts.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [TimeWindowResponseContainerV1beta1].
   /// [endTime] The time that the window ends. The end time should take place after the start time.
@@ -24,16 +25,16 @@ class TimeWindowResponseContainerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': endTime,
-      'maintenanceExclusionOptions': maintenanceExclusionOptions.toMap(),
+      'maintenanceExclusionOptions': pulumi.Input.mapInputValue<MaintenanceExclusionOptionsResponseContainerV1beta1, Map<String, dynamic>>(maintenanceExclusionOptions, (value) => value.toMap()),
       'startTime': startTime,
     };
   }
 
   factory TimeWindowResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return TimeWindowResponseContainerV1beta1(
-      endTime: map['endTime'] as String,
-      maintenanceExclusionOptions: MaintenanceExclusionOptionsResponseContainerV1beta1.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      maintenanceExclusionOptions: (MaintenanceExclusionOptionsResponseContainerV1beta1.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>())).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

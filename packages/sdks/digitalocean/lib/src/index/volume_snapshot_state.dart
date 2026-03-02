@@ -28,21 +28,14 @@ class VolumeSnapshotState {
   /// [tags] A list of the tags to be applied to this volume snapshot.
   /// [volumeId] The ID of the volume from which the volume snapshot originated.
   VolumeSnapshotState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<int>? minDiskSize,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? regions,
-    pulumi.Output<double>? size,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? volumeId,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      minDiskSize = pulumi.Input.asOptionalInput<int>(minDiskSize),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      size = pulumi.Input.asOptionalInput<double>(size),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      volumeId = pulumi.Input.asOptionalInput<String>(volumeId);
+    this.createdAt,
+    this.minDiskSize,
+    this.name,
+    this.regions,
+    this.size,
+    this.tags,
+    this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class VolumeSnapshotState {
 
   factory VolumeSnapshotState.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      minDiskSize: map['minDiskSize'] == null ? null : pulumi.Output.create<int>(map['minDiskSize'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      size: map['size'] == null ? null : pulumi.Output.create<double>(map['size'] as double),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      volumeId: map['volumeId'] == null ? null : pulumi.Output.create<String>(map['volumeId'] as String),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      size: map['size'] == null ? null : (map['size'] as double).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
     );
   }
 }

@@ -24,17 +24,12 @@ class ImportCollectorArgs {
   /// [properties] Optional.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   ImportCollectorArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? importCollectorName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<ImportCollectorProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      importCollectorName = pulumi.Input.asOptionalInput<String>(importCollectorName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<ImportCollectorProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.eTag,
+    this.importCollectorName,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ImportCollectorArgs {
 
   factory ImportCollectorArgs.fromMap(Map<String, dynamic> map) {
     return ImportCollectorArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      importCollectorName: map['importCollectorName'] == null ? null : pulumi.Output.create<String>(map['importCollectorName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ImportCollectorProperties>(ImportCollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      importCollectorName: map['importCollectorName'] == null ? null : (map['importCollectorName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (ImportCollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

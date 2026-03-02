@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RAI Custom Blocklist properties.
 class RaiBlocklistPropertiesResponse {
   /// Description of the block list.
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [RaiBlocklistPropertiesResponse].
   /// [description] Description of the block list.
@@ -20,7 +21,7 @@ class RaiBlocklistPropertiesResponse {
 
   factory RaiBlocklistPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistPropertiesResponse(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

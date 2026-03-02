@@ -32,23 +32,15 @@ class DataExchangeAnalyticshubV1beta1Args {
   /// [primaryContact] Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
   /// [project] Optional.
   DataExchangeAnalyticshubV1beta1Args({
-    required pulumi.Output<String> dataExchangeId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? documentation,
-    pulumi.Output<String>? icon,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? primaryContact,
-    pulumi.Output<String>? project,
-  }) :
-      dataExchangeId = pulumi.Input.asInput<String>(dataExchangeId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      documentation = pulumi.Input.asOptionalInput<String>(documentation),
-      icon = pulumi.Input.asOptionalInput<String>(icon),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      primaryContact = pulumi.Input.asOptionalInput<String>(primaryContact),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataExchangeId,
+    this.description,
+    required this.displayName,
+    this.documentation,
+    this.icon,
+    this.location,
+    this.primaryContact,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class DataExchangeAnalyticshubV1beta1Args {
 
   factory DataExchangeAnalyticshubV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DataExchangeAnalyticshubV1beta1Args(
-      dataExchangeId: pulumi.Output.create<String>(map['dataExchangeId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      documentation: map['documentation'] == null ? null : pulumi.Output.create<String>(map['documentation'] as String),
-      icon: map['icon'] == null ? null : pulumi.Output.create<String>(map['icon'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      primaryContact: map['primaryContact'] == null ? null : pulumi.Output.create<String>(map['primaryContact'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataExchangeId: (map['dataExchangeId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      documentation: map['documentation'] == null ? null : (map['documentation'] as String).input(),
+      icon: map['icon'] == null ? null : (map['icon'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

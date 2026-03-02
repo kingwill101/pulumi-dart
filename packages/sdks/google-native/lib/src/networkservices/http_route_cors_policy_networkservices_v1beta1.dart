@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Specification for allowing client side cross-origin requests.
 class HttpRouteCorsPolicyNetworkservicesV1beta1 {
   /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
-  final bool? allowCredentials;
+  final pulumi.Input<bool>? allowCredentials;
   /// Specifies the content for Access-Control-Allow-Headers header.
-  final List<String>? allowHeaders;
+  final pulumi.Input<List<String>>? allowHeaders;
   /// Specifies the content for Access-Control-Allow-Methods header.
-  final List<String>? allowMethods;
+  final pulumi.Input<List<String>>? allowMethods;
   /// Specifies the regular expression patterns that match allowed origins. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax.
-  final List<String>? allowOriginRegexes;
+  final pulumi.Input<List<String>>? allowOriginRegexes;
   /// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allow_origins or an item in allow_origin_regexes.
-  final List<String>? allowOrigins;
+  final pulumi.Input<List<String>>? allowOrigins;
   /// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// Specifies the content for Access-Control-Expose-Headers header.
-  final List<String>? exposeHeaders;
+  final pulumi.Input<List<String>>? exposeHeaders;
   /// Specifies how long result of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
-  final String? maxAge;
+  final pulumi.Input<String>? maxAge;
 
   /// Creates a new [HttpRouteCorsPolicyNetworkservicesV1beta1].
   /// [allowCredentials] In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
@@ -55,14 +56,14 @@ class HttpRouteCorsPolicyNetworkservicesV1beta1 {
 
   factory HttpRouteCorsPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteCorsPolicyNetworkservicesV1beta1(
-      allowCredentials: map['allowCredentials'] == null ? null : map['allowCredentials'] as bool,
-      allowHeaders: map['allowHeaders'] == null ? null : (map['allowHeaders'] as List).cast<String>(),
-      allowMethods: map['allowMethods'] == null ? null : (map['allowMethods'] as List).cast<String>(),
-      allowOriginRegexes: map['allowOriginRegexes'] == null ? null : (map['allowOriginRegexes'] as List).cast<String>(),
-      allowOrigins: map['allowOrigins'] == null ? null : (map['allowOrigins'] as List).cast<String>(),
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      exposeHeaders: map['exposeHeaders'] == null ? null : (map['exposeHeaders'] as List).cast<String>(),
-      maxAge: map['maxAge'] == null ? null : map['maxAge'] as String,
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
+      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders'] as List).cast<String>()).input(),
+      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods'] as List).cast<String>()).input(),
+      allowOriginRegexes: map['allowOriginRegexes'] == null ? null : ((map['allowOriginRegexes'] as List).cast<String>()).input(),
+      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins'] as List).cast<String>()).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as String).input(),
     );
   }
 }

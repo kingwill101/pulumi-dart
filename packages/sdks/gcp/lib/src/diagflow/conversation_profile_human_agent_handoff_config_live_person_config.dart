@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
   /// Account number of the LivePerson account to connect.
-  final String accountNumber;
+  final pulumi.Input<String> accountNumber;
 
   /// Creates a new [ConversationProfileHumanAgentHandoffConfigLivePersonConfig].
   /// [accountNumber] Account number of the LivePerson account to connect.
@@ -19,7 +20,7 @@ class ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
 
   factory ConversationProfileHumanAgentHandoffConfigLivePersonConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentHandoffConfigLivePersonConfig(
-      accountNumber: map['accountNumber'] as String,
+      accountNumber: (map['accountNumber'] as String).input(),
     );
   }
 }

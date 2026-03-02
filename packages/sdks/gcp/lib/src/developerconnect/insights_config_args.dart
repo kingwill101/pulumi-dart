@@ -41,21 +41,14 @@ class InsightsConfigArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   InsightsConfigArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> appHubApplication,
-    pulumi.Output<List<InsightsConfigArtifactConfig>>? artifactConfigs,
-    required pulumi.Output<String> insightsConfigId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      appHubApplication = pulumi.Input.asInput<String>(appHubApplication),
-      artifactConfigs = pulumi.Input.asOptionalInput<List<InsightsConfigArtifactConfig>>(artifactConfigs),
-      insightsConfigId = pulumi.Input.asInput<String>(insightsConfigId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    required this.appHubApplication,
+    this.artifactConfigs,
+    required this.insightsConfigId,
+    this.labels,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +64,13 @@ class InsightsConfigArgs {
 
   factory InsightsConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsConfigArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      appHubApplication: pulumi.Output.create<String>(map['appHubApplication'] as String),
-      artifactConfigs: map['artifactConfigs'] == null ? null : pulumi.Output.create<List<InsightsConfigArtifactConfig>>(pulumi.Input.decodeList<InsightsConfigArtifactConfig>(map['artifactConfigs'], (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      insightsConfigId: pulumi.Output.create<String>(map['insightsConfigId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      appHubApplication: (map['appHubApplication'] as String).input(),
+      artifactConfigs: map['artifactConfigs'] == null ? null : (pulumi.Input.decodeList<InsightsConfigArtifactConfig>(map['artifactConfigs'], (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insightsConfigId: (map['insightsConfigId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

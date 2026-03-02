@@ -36,23 +36,15 @@ class DomainArgs {
   /// [sources] the Origin Server Information. See the following `Block sources`.
   /// [status] The status of the resource. Valid values: `offline`, `online`.
   DomainArgs({
-    pulumi.Output<String>? bizName,
-    pulumi.Output<List<DomainCertInfo>>? certInfos,
-    pulumi.Output<String>? checkUrl,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? forceSet,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<List<DomainSource>> sources,
-    pulumi.Output<String>? status,
-  }) :
-      bizName = pulumi.Input.asOptionalInput<String>(bizName),
-      certInfos = pulumi.Input.asOptionalInput<List<DomainCertInfo>>(certInfos),
-      checkUrl = pulumi.Input.asOptionalInput<String>(checkUrl),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      forceSet = pulumi.Input.asOptionalInput<String>(forceSet),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      sources = pulumi.Input.asInput<List<DomainSource>>(sources),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bizName,
+    this.certInfos,
+    this.checkUrl,
+    required this.domainName,
+    this.forceSet,
+    this.resourceGroupId,
+    required this.sources,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      bizName: map['bizName'] == null ? null : pulumi.Output.create<String>(map['bizName'] as String),
-      certInfos: map['certInfos'] == null ? null : pulumi.Output.create<List<DomainCertInfo>>(pulumi.Input.decodeList<DomainCertInfo>(map['certInfos'], (value) => DomainCertInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      checkUrl: map['checkUrl'] == null ? null : pulumi.Output.create<String>(map['checkUrl'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      forceSet: map['forceSet'] == null ? null : pulumi.Output.create<String>(map['forceSet'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      sources: pulumi.Output.create<List<DomainSource>>(pulumi.Input.decodeList<DomainSource>(map['sources'], (value) => DomainSource.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bizName: map['bizName'] == null ? null : (map['bizName'] as String).input(),
+      certInfos: map['certInfos'] == null ? null : (pulumi.Input.decodeList<DomainCertInfo>(map['certInfos'], (value) => DomainCertInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      forceSet: map['forceSet'] == null ? null : (map['forceSet'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      sources: (pulumi.Input.decodeList<DomainSource>(map['sources'], (value) => DomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

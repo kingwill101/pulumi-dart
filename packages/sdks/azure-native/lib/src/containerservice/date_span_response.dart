@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A date range. For example, between '2022-12-23' and '2023-01-05'.
 class DateSpanResponse {
   /// The end date of the date span.
-  final String end;
+  final pulumi.Input<String> end;
   /// The start date of the date span.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [DateSpanResponse].
   /// [end] The end date of the date span.
@@ -25,8 +26,8 @@ class DateSpanResponse {
 
   factory DateSpanResponse.fromMap(Map<String, dynamic> map) {
     return DateSpanResponse(
-      end: map['end'] as String,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

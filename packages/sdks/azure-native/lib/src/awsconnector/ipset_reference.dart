@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of IPSetReference
 class IPSetReference {
   /// A resource ARN.
-  final String? referenceArn;
+  final pulumi.Input<String>? referenceArn;
 
   /// Creates a new [IPSetReference].
   /// [referenceArn] A resource ARN.
@@ -20,7 +21,7 @@ class IPSetReference {
 
   factory IPSetReference.fromMap(Map<String, dynamic> map) {
     return IPSetReference(
-      referenceArn: map['referenceArn'] == null ? null : map['referenceArn'] as String,
+      referenceArn: map['referenceArn'] == null ? null : (map['referenceArn'] as String).input(),
     );
   }
 }

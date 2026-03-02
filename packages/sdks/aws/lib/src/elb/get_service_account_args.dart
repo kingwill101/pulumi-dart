@@ -13,9 +13,8 @@ class GetServiceAccountArgs {
   /// Creates a new [GetServiceAccountArgs].
   /// [region] Name of the Region whose AWS ELB account ID is desired. Defaults to the Region set in the provider configuration.
   GetServiceAccountArgs({
-    pulumi.Output<String>? region,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetServiceAccountArgs {
 
   factory GetServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceAccountArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

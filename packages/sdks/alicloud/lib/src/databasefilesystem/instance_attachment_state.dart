@@ -16,13 +16,10 @@ class InstanceAttachmentState {
   /// [instanceId] The ID of the Database File System.
   /// [status] The status of Instance Attachment.
   InstanceAttachmentState({
-    pulumi.Output<String>? ecsId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? status,
-  }) :
-      ecsId = pulumi.Input.asOptionalInput<String>(ecsId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ecsId,
+    this.instanceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      ecsId: map['ecsId'] == null ? null : pulumi.Output.create<String>(map['ecsId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ecsId: map['ecsId'] == null ? null : (map['ecsId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

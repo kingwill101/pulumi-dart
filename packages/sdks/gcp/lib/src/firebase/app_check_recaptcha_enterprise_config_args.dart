@@ -27,15 +27,11 @@ class AppCheckRecaptchaEnterpriseConfigArgs {
   /// [siteKey] The score-based site key created in reCAPTCHA Enterprise used to invoke reCAPTCHA and generate the reCAPTCHA tokens for your application.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from reCAPTCHA Enterprise artifacts will be valid.
   AppCheckRecaptchaEnterpriseConfigArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> siteKey,
-    pulumi.Output<String>? tokenTtl,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteKey = pulumi.Input.asInput<String>(siteKey),
-      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+    required this.appId,
+    this.project,
+    required this.siteKey,
+    this.tokenTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class AppCheckRecaptchaEnterpriseConfigArgs {
 
   factory AppCheckRecaptchaEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckRecaptchaEnterpriseConfigArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteKey: pulumi.Output.create<String>(map['siteKey'] as String),
-      tokenTtl: map['tokenTtl'] == null ? null : pulumi.Output.create<String>(map['tokenTtl'] as String),
+      appId: (map['appId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteKey: (map['siteKey'] as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
     );
   }
 }

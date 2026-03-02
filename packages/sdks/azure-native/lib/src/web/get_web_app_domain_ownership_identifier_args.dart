@@ -19,13 +19,10 @@ class GetWebAppDomainOwnershipIdentifierArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetWebAppDomainOwnershipIdentifierArgs({
-    required pulumi.Output<String> domainOwnershipIdentifierName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      domainOwnershipIdentifierName = pulumi.Input.asInput<String>(domainOwnershipIdentifierName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.domainOwnershipIdentifierName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebAppDomainOwnershipIdentifierArgs {
 
   factory GetWebAppDomainOwnershipIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppDomainOwnershipIdentifierArgs(
-      domainOwnershipIdentifierName: pulumi.Output.create<String>(map['domainOwnershipIdentifierName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      domainOwnershipIdentifierName: (map['domainOwnershipIdentifierName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

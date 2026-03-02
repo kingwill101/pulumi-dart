@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cross-Origin Resource Sharing property
 class GatewayCorsProperties {
   /// Whether user credentials are supported on cross-site requests. Valid values: `true`, `false`.
-  final bool? allowCredentials;
+  final pulumi.Input<bool>? allowCredentials;
   /// Allowed headers in cross-site requests. The special value `*` allows actual requests to send any header.
-  final List<String>? allowedHeaders;
+  final pulumi.Input<List<String>>? allowedHeaders;
   /// Allowed HTTP methods on cross-site requests. The special value `*` allows all methods. If not set, `GET` and `HEAD` are allowed by default.
-  final List<String>? allowedMethods;
+  final pulumi.Input<List<String>>? allowedMethods;
   /// Allowed origin patterns to make cross-site requests.
-  final List<String>? allowedOriginPatterns;
+  final pulumi.Input<List<String>>? allowedOriginPatterns;
   /// Allowed origins to make cross-site requests. The special value `*` allows all domains.
-  final List<String>? allowedOrigins;
+  final pulumi.Input<List<String>>? allowedOrigins;
   /// HTTP response headers to expose for cross-site requests.
-  final List<String>? exposedHeaders;
+  final pulumi.Input<List<String>>? exposedHeaders;
   /// How long, in seconds, the response from a pre-flight request can be cached by clients.
-  final int? maxAge;
+  final pulumi.Input<int>? maxAge;
 
   /// Creates a new [GatewayCorsProperties].
   /// [allowCredentials] Whether user credentials are supported on cross-site requests. Valid values: `true`, `false`.
@@ -50,13 +51,13 @@ class GatewayCorsProperties {
 
   factory GatewayCorsProperties.fromMap(Map<String, dynamic> map) {
     return GatewayCorsProperties(
-      allowCredentials: map['allowCredentials'] == null ? null : map['allowCredentials'] as bool,
-      allowedHeaders: map['allowedHeaders'] == null ? null : (map['allowedHeaders'] as List).cast<String>(),
-      allowedMethods: map['allowedMethods'] == null ? null : (map['allowedMethods'] as List).cast<String>(),
-      allowedOriginPatterns: map['allowedOriginPatterns'] == null ? null : (map['allowedOriginPatterns'] as List).cast<String>(),
-      allowedOrigins: map['allowedOrigins'] == null ? null : (map['allowedOrigins'] as List).cast<String>(),
-      exposedHeaders: map['exposedHeaders'] == null ? null : (map['exposedHeaders'] as List).cast<String>(),
-      maxAge: map['maxAge'] == null ? null : map['maxAge'] as int,
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowedOriginPatterns: map['allowedOriginPatterns'] == null ? null : ((map['allowedOriginPatterns'] as List).cast<String>()).input(),
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
+      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders'] as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as int).input(),
     );
   }
 }

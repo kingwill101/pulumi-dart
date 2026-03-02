@@ -16,11 +16,9 @@ class GetStorageBoxSnapshotsArgs {
   /// [storageBoxId] ID of the Storage Box.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   GetStorageBoxSnapshotsArgs({
-    required pulumi.Output<int> storageBoxId,
-    pulumi.Output<String>? withSelector,
-  }) :
-      storageBoxId = pulumi.Input.asInput<int>(storageBoxId),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    required this.storageBoxId,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStorageBoxSnapshotsArgs {
 
   factory GetStorageBoxSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSnapshotsArgs(
-      storageBoxId: pulumi.Output.create<int>(map['storageBoxId'] as int),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      storageBoxId: (map['storageBoxId'] as int).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

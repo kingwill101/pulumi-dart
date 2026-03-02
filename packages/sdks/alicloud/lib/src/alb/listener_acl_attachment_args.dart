@@ -21,13 +21,10 @@ class ListenerAclAttachmentArgs {
   /// [aclType] Access control type:
   /// [listenerId] Listener instance ID.
   ListenerAclAttachmentArgs({
-    required pulumi.Output<String> aclId,
-    required pulumi.Output<String> aclType,
-    required pulumi.Output<String> listenerId,
-  }) :
-      aclId = pulumi.Input.asInput<String>(aclId),
-      aclType = pulumi.Input.asInput<String>(aclType),
-      listenerId = pulumi.Input.asInput<String>(listenerId);
+    required this.aclId,
+    required this.aclType,
+    required this.listenerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ListenerAclAttachmentArgs {
 
   factory ListenerAclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ListenerAclAttachmentArgs(
-      aclId: pulumi.Output.create<String>(map['aclId'] as String),
-      aclType: pulumi.Output.create<String>(map['aclType'] as String),
-      listenerId: pulumi.Output.create<String>(map['listenerId'] as String),
+      aclId: (map['aclId'] as String).input(),
+      aclType: (map['aclType'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
     );
   }
 }

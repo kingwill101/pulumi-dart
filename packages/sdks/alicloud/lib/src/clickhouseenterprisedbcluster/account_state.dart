@@ -31,19 +31,13 @@ class AccountState {
   /// [dmlAuthSetting] Authorization information. See `dml_auth_setting` below.
   /// [password] Database account password. Set the following rules.
   AccountState({
-    pulumi.Output<String>? account,
-    pulumi.Output<String>? accountType,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? description,
-    pulumi.Output<AccountDmlAuthSetting>? dmlAuthSetting,
-    pulumi.Output<String>? password,
-  }) :
-      account = pulumi.Input.asOptionalInput<String>(account),
-      accountType = pulumi.Input.asOptionalInput<String>(accountType),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dmlAuthSetting = pulumi.Input.asOptionalInput<AccountDmlAuthSetting>(dmlAuthSetting),
-      password = pulumi.Input.asOptionalInput<String>(password);
+    this.account,
+    this.accountType,
+    this.dbInstanceId,
+    this.description,
+    this.dmlAuthSetting,
+    this.password,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      account: map['account'] == null ? null : pulumi.Output.create<String>(map['account'] as String),
-      accountType: map['accountType'] == null ? null : pulumi.Output.create<String>(map['accountType'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dmlAuthSetting: map['dmlAuthSetting'] == null ? null : pulumi.Output.create<AccountDmlAuthSetting>(AccountDmlAuthSetting.fromMap((map['dmlAuthSetting'] as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
+      account: map['account'] == null ? null : (map['account'] as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dmlAuthSetting: map['dmlAuthSetting'] == null ? null : (AccountDmlAuthSetting.fromMap((map['dmlAuthSetting'] as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
     );
   }
 }

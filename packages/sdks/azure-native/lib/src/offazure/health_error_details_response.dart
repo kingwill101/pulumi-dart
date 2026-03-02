@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Error contract returned when some exception occurs in Rest API.
 class HealthErrorDetailsResponse {
   /// Gets the appliance name.
-  final String applianceName;
+  final pulumi.Input<String> applianceName;
   /// Gets the error name.
-  final String code;
+  final pulumi.Input<String> code;
   /// Gets discovery scope for which             error is encountered.
-  final String discoveryScope;
+  final pulumi.Input<String> discoveryScope;
   /// Gets the error ID.
-  final double id;
+  final pulumi.Input<double> id;
   /// Gets the error message.
-  final String message;
+  final pulumi.Input<String> message;
   /// Gets the message parameters.
-  final Map<String, String> messageParameters;
+  final pulumi.Input<Map<String, String>> messageParameters;
   /// Gets the possible causes of error.
-  final String possibleCauses;
+  final pulumi.Input<String> possibleCauses;
   /// Gets the recommended action to resolve error.
-  final String recommendedAction;
+  final pulumi.Input<String> recommendedAction;
   /// Gets run as account id used while performing discovery             of entity.
-  final String runAsAccountId;
+  final pulumi.Input<String> runAsAccountId;
   /// Gets the error severity.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// Gets the error source.
-  final String source;
+  final pulumi.Input<String> source;
   /// Gets the error summary message.
-  final String summaryMessage;
+  final pulumi.Input<String> summaryMessage;
   /// Gets the time stamp when the error was updated.
-  final String updatedTimeStamp;
+  final pulumi.Input<String> updatedTimeStamp;
 
   /// Creates a new [HealthErrorDetailsResponse].
   /// [applianceName] Gets the appliance name.
@@ -80,19 +81,19 @@ class HealthErrorDetailsResponse {
 
   factory HealthErrorDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HealthErrorDetailsResponse(
-      applianceName: map['applianceName'] as String,
-      code: map['code'] as String,
-      discoveryScope: map['discoveryScope'] as String,
-      id: map['id'] as double,
-      message: map['message'] as String,
-      messageParameters: (map['messageParameters'] as Map).cast<String, String>(),
-      possibleCauses: map['possibleCauses'] as String,
-      recommendedAction: map['recommendedAction'] as String,
-      runAsAccountId: map['runAsAccountId'] as String,
-      severity: map['severity'] as String,
-      source: map['source'] as String,
-      summaryMessage: map['summaryMessage'] as String,
-      updatedTimeStamp: map['updatedTimeStamp'] as String,
+      applianceName: (map['applianceName'] as String).input(),
+      code: (map['code'] as String).input(),
+      discoveryScope: (map['discoveryScope'] as String).input(),
+      id: (map['id'] as double).input(),
+      message: (map['message'] as String).input(),
+      messageParameters: ((map['messageParameters'] as Map).cast<String, String>()).input(),
+      possibleCauses: (map['possibleCauses'] as String).input(),
+      recommendedAction: (map['recommendedAction'] as String).input(),
+      runAsAccountId: (map['runAsAccountId'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      source: (map['source'] as String).input(),
+      summaryMessage: (map['summaryMessage'] as String).input(),
+      updatedTimeStamp: (map['updatedTimeStamp'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the spec of persistent disk options.
 class GoogleCloudAiplatformV1PersistentDiskSpec {
   /// Size in GB of the disk (default is 100GB).
-  final String? diskSizeGb;
+  final pulumi.Input<String>? diskSizeGb;
   /// Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
 
   /// Creates a new [GoogleCloudAiplatformV1PersistentDiskSpec].
   /// [diskSizeGb] Size in GB of the disk (default is 100GB).
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1PersistentDiskSpec {
 
   factory GoogleCloudAiplatformV1PersistentDiskSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1PersistentDiskSpec(
-      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as String,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
     );
   }
 }

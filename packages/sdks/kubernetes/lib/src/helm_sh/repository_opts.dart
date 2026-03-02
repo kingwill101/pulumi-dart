@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification defining the Helm chart repository to use.
 class RepositoryOpts {
   /// The Repository's CA File
-  final String? caFile;
+  final pulumi.Input<String>? caFile;
   /// The repository's cert file
-  final String? certFile;
+  final pulumi.Input<String>? certFile;
   /// The repository's cert key file
-  final String? keyFile;
+  final pulumi.Input<String>? keyFile;
   /// Password for HTTP basic authentication
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Repository where to locate the requested chart. If it's a URL the chart is installed without installing the repository.
-  final String? repo;
+  final pulumi.Input<String>? repo;
   /// Username for HTTP basic authentication
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [RepositoryOpts].
   /// [caFile] The Repository's CA File
@@ -45,12 +46,12 @@ class RepositoryOpts {
 
   factory RepositoryOpts.fromMap(Map<String, dynamic> map) {
     return RepositoryOpts(
-      caFile: map['caFile'] == null ? null : map['caFile'] as String,
-      certFile: map['certFile'] == null ? null : map['certFile'] as String,
-      keyFile: map['keyFile'] == null ? null : map['keyFile'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      repo: map['repo'] == null ? null : map['repo'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      caFile: map['caFile'] == null ? null : (map['caFile'] as String).input(),
+      certFile: map['certFile'] == null ? null : (map['certFile'] as String).input(),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

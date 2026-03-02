@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a mapping from machine types to the number of VMs that are created with each machine type.
 class InstanceSelectionResultResponse {
   /// Full machine-type names, e.g. "n1-standard-16".
-  final String machineType;
+  final pulumi.Input<String> machineType;
   /// Number of VM provisioned with the machine_type.
-  final int vmCount;
+  final pulumi.Input<int> vmCount;
 
   /// Creates a new [InstanceSelectionResultResponse].
   /// [machineType] Full machine-type names, e.g. "n1-standard-16".
@@ -25,8 +26,8 @@ class InstanceSelectionResultResponse {
 
   factory InstanceSelectionResultResponse.fromMap(Map<String, dynamic> map) {
     return InstanceSelectionResultResponse(
-      machineType: map['machineType'] as String,
-      vmCount: map['vmCount'] as int,
+      machineType: (map['machineType'] as String).input(),
+      vmCount: (map['vmCount'] as int).input(),
     );
   }
 }

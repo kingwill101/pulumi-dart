@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyManagedRuleExclusion {
   /// The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
-  final String matchVariable;
+  final pulumi.Input<String> matchVariable;
   /// Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. Possible values are: `Equals`, `Contains`, `StartsWith`, `EndsWith`, `EqualsAny`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Selector for the value in the `match_variable` attribute this exclusion applies to.
-  final String selector;
+  final pulumi.Input<String> selector;
 
   /// Creates a new [FirewallPolicyManagedRuleExclusion].
   /// [matchVariable] The variable type to be excluded. Possible values are `QueryStringArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`.
@@ -29,9 +30,9 @@ class FirewallPolicyManagedRuleExclusion {
 
   factory FirewallPolicyManagedRuleExclusion.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyManagedRuleExclusion(
-      matchVariable: map['matchVariable'] as String,
-      operator: map['operator'] as String,
-      selector: map['selector'] as String,
+      matchVariable: (map['matchVariable'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      selector: (map['selector'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GPU properties - describes the GPU configuration.
 class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU {
   /// GPU assignment type
-  final String assignmentType;
+  final pulumi.Input<String> assignmentType;
   /// Name of the GPU
-  final String? gpuName;
+  final pulumi.Input<String>? gpuName;
   /// Size of gpu partition in MB for GPU-P
-  final double? partitionSizeMB;
+  final pulumi.Input<double>? partitionSizeMB;
 
   /// Creates a new [VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU].
   /// [assignmentType] GPU assignment type
@@ -30,9 +31,9 @@ class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU {
 
   factory VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU(
-      assignmentType: map['assignmentType'] as String,
-      gpuName: map['gpuName'] == null ? null : map['gpuName'] as String,
-      partitionSizeMB: map['partitionSizeMB'] == null ? null : map['partitionSizeMB'] as double,
+      assignmentType: (map['assignmentType'] as String).input(),
+      gpuName: map['gpuName'] == null ? null : (map['gpuName'] as String).input(),
+      partitionSizeMB: map['partitionSizeMB'] == null ? null : (map['partitionSizeMB'] as double).input(),
     );
   }
 }

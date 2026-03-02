@@ -23,17 +23,12 @@ class OrganizationConfigurationFeatureState {
   /// [name] The name of the feature that will be configured for the organization. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`, `RUNTIME_MONITORING`. Only one of two features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING` can be added, adding both features will cause an error. Refer to the [AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorFeatureConfiguration.html) for the current list of supported values.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationConfigurationFeatureState({
-    pulumi.Output<List<OrganizationConfigurationFeatureAdditionalConfiguration>>? additionalConfigurations,
-    pulumi.Output<String>? autoEnable,
-    pulumi.Output<String>? detectorId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      additionalConfigurations = pulumi.Input.asOptionalInput<List<OrganizationConfigurationFeatureAdditionalConfiguration>>(additionalConfigurations),
-      autoEnable = pulumi.Input.asOptionalInput<String>(autoEnable),
-      detectorId = pulumi.Input.asOptionalInput<String>(detectorId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.additionalConfigurations,
+    this.autoEnable,
+    this.detectorId,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class OrganizationConfigurationFeatureState {
 
   factory OrganizationConfigurationFeatureState.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationFeatureState(
-      additionalConfigurations: map['additionalConfigurations'] == null ? null : pulumi.Output.create<List<OrganizationConfigurationFeatureAdditionalConfiguration>>(pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      autoEnable: map['autoEnable'] == null ? null : pulumi.Output.create<String>(map['autoEnable'] as String),
-      detectorId: map['detectorId'] == null ? null : pulumi.Output.create<String>(map['detectorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : (pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoEnable: map['autoEnable'] == null ? null : (map['autoEnable'] as String).input(),
+      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

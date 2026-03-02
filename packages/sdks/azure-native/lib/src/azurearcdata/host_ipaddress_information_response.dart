@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP address and subnet mask.
 class HostIPAddressInformationResponse {
   /// IP address
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Subnet mask
-  final String subnetMask;
+  final pulumi.Input<String> subnetMask;
 
   /// Creates a new [HostIPAddressInformationResponse].
   /// [ipAddress] IP address
@@ -25,8 +26,8 @@ class HostIPAddressInformationResponse {
 
   factory HostIPAddressInformationResponse.fromMap(Map<String, dynamic> map) {
     return HostIPAddressInformationResponse(
-      ipAddress: map['ipAddress'] as String,
-      subnetMask: map['subnetMask'] as String,
+      ipAddress: (map['ipAddress'] as String).input(),
+      subnetMask: (map['subnetMask'] as String).input(),
     );
   }
 }

@@ -42,27 +42,17 @@ class HubVirtualNetworkConnectionArgs {
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [virtualHubName] The name of the VirtualHub.
   HubVirtualNetworkConnectionArgs({
-    pulumi.Output<bool>? allowHubToRemoteVnetTransit,
-    pulumi.Output<bool>? allowRemoteVnetToUseHubVnetGateways,
-    pulumi.Output<String>? connectionName,
-    pulumi.Output<bool>? enableInternetSecurity,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<SubResource>? remoteVirtualNetwork,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<RoutingConfiguration>? routingConfiguration,
-    required pulumi.Output<String> virtualHubName,
-  }) :
-      allowHubToRemoteVnetTransit = pulumi.Input.asOptionalInput<bool>(allowHubToRemoteVnetTransit),
-      allowRemoteVnetToUseHubVnetGateways = pulumi.Input.asOptionalInput<bool>(allowRemoteVnetToUseHubVnetGateways),
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      enableInternetSecurity = pulumi.Input.asOptionalInput<bool>(enableInternetSecurity),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      remoteVirtualNetwork = pulumi.Input.asOptionalInput<SubResource>(remoteVirtualNetwork),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routingConfiguration = pulumi.Input.asOptionalInput<RoutingConfiguration>(routingConfiguration),
-      virtualHubName = pulumi.Input.asInput<String>(virtualHubName);
+    this.allowHubToRemoteVnetTransit,
+    this.allowRemoteVnetToUseHubVnetGateways,
+    this.connectionName,
+    this.enableInternetSecurity,
+    this.id,
+    this.name,
+    this.remoteVirtualNetwork,
+    required this.resourceGroupName,
+    this.routingConfiguration,
+    required this.virtualHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class HubVirtualNetworkConnectionArgs {
 
   factory HubVirtualNetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return HubVirtualNetworkConnectionArgs(
-      allowHubToRemoteVnetTransit: map['allowHubToRemoteVnetTransit'] == null ? null : pulumi.Output.create<bool>(map['allowHubToRemoteVnetTransit'] as bool),
-      allowRemoteVnetToUseHubVnetGateways: map['allowRemoteVnetToUseHubVnetGateways'] == null ? null : pulumi.Output.create<bool>(map['allowRemoteVnetToUseHubVnetGateways'] as bool),
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : pulumi.Output.create<bool>(map['enableInternetSecurity'] as bool),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      remoteVirtualNetwork: map['remoteVirtualNetwork'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routingConfiguration: map['routingConfiguration'] == null ? null : pulumi.Output.create<RoutingConfiguration>(RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())),
-      virtualHubName: pulumi.Output.create<String>(map['virtualHubName'] as String),
+      allowHubToRemoteVnetTransit: map['allowHubToRemoteVnetTransit'] == null ? null : (map['allowHubToRemoteVnetTransit'] as bool).input(),
+      allowRemoteVnetToUseHubVnetGateways: map['allowRemoteVnetToUseHubVnetGateways'] == null ? null : (map['allowRemoteVnetToUseHubVnetGateways'] as bool).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      remoteVirtualNetwork: map['remoteVirtualNetwork'] == null ? null : (SubResource.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }
 }

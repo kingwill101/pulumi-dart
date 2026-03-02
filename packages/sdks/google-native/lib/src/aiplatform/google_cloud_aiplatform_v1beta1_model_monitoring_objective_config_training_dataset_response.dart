@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_big_query_source_response.dart';
 import 'google_cloud_aiplatform_v1beta1_gcs_source_response.dart';
 import 'google_cloud_aiplatform_v1beta1_sampling_strategy_response.dart';
@@ -7,17 +8,17 @@ import 'google_cloud_aiplatform_v1beta1_sampling_strategy_response.dart';
 /// Training Dataset information.
 class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse {
   /// The BigQuery table of the unmanaged Dataset used to train this Model.
-  final GoogleCloudAiplatformV1beta1BigQuerySourceResponse bigquerySource;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1BigQuerySourceResponse> bigquerySource;
   /// Data format of the dataset, only applicable if the input is from Google Cloud Storage. The possible formats are: "tf-record" The source file is a TFRecord file. "csv" The source file is a CSV file. "jsonl" The source file is a JSONL file.
-  final String dataFormat;
+  final pulumi.Input<String> dataFormat;
   /// The resource name of the Dataset used to train this Model.
-  final String dataset;
+  final pulumi.Input<String> dataset;
   /// The Google Cloud Storage uri of the unmanaged Dataset used to train this Model.
-  final GoogleCloudAiplatformV1beta1GcsSourceResponse gcsSource;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1GcsSourceResponse> gcsSource;
   /// Strategy to sample data from Training Dataset. If not set, we process the whole dataset.
-  final GoogleCloudAiplatformV1beta1SamplingStrategyResponse loggingSamplingStrategy;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1SamplingStrategyResponse> loggingSamplingStrategy;
   /// The target field name the model is to predict. This field will be excluded when doing Predict and (or) Explain for the training data.
-  final String targetField;
+  final pulumi.Input<String> targetField;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse].
   /// [bigquerySource] The BigQuery table of the unmanaged Dataset used to train this Model.
@@ -37,23 +38,23 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetR
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigquerySource': bigquerySource.toMap(),
+      'bigquerySource': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1BigQuerySourceResponse, Map<String, dynamic>>(bigquerySource, (value) => value.toMap()),
       'dataFormat': dataFormat,
       'dataset': dataset,
-      'gcsSource': gcsSource.toMap(),
-      'loggingSamplingStrategy': loggingSamplingStrategy.toMap(),
+      'gcsSource': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1GcsSourceResponse, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
+      'loggingSamplingStrategy': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1SamplingStrategyResponse, Map<String, dynamic>>(loggingSamplingStrategy, (value) => value.toMap()),
       'targetField': targetField,
     };
   }
 
   factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse(
-      bigquerySource: GoogleCloudAiplatformV1beta1BigQuerySourceResponse.fromMap((map['bigquerySource'] as Map).cast<String, dynamic>()),
-      dataFormat: map['dataFormat'] as String,
-      dataset: map['dataset'] as String,
-      gcsSource: GoogleCloudAiplatformV1beta1GcsSourceResponse.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
-      loggingSamplingStrategy: GoogleCloudAiplatformV1beta1SamplingStrategyResponse.fromMap((map['loggingSamplingStrategy'] as Map).cast<String, dynamic>()),
-      targetField: map['targetField'] as String,
+      bigquerySource: (GoogleCloudAiplatformV1beta1BigQuerySourceResponse.fromMap((map['bigquerySource'] as Map).cast<String, dynamic>())).input(),
+      dataFormat: (map['dataFormat'] as String).input(),
+      dataset: (map['dataset'] as String).input(),
+      gcsSource: (GoogleCloudAiplatformV1beta1GcsSourceResponse.fromMap((map['gcsSource'] as Map).cast<String, dynamic>())).input(),
+      loggingSamplingStrategy: (GoogleCloudAiplatformV1beta1SamplingStrategyResponse.fromMap((map['loggingSamplingStrategy'] as Map).cast<String, dynamic>())).input(),
+      targetField: (map['targetField'] as String).input(),
     );
   }
 }

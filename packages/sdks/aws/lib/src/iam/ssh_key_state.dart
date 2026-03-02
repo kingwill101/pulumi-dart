@@ -25,19 +25,13 @@ class SshKeyState {
   /// [status] The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is `active`.
   /// [username] The name of the IAM user to associate the SSH public key with.
   SshKeyState({
-    pulumi.Output<String>? encoding,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? sshPublicKeyId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? username,
-  }) :
-      encoding = pulumi.Input.asOptionalInput<String>(encoding),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      sshPublicKeyId = pulumi.Input.asOptionalInput<String>(sshPublicKeyId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.encoding,
+    this.fingerprint,
+    this.publicKey,
+    this.sshPublicKeyId,
+    this.status,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SshKeyState {
 
   factory SshKeyState.fromMap(Map<String, dynamic> map) {
     return SshKeyState(
-      encoding: map['encoding'] == null ? null : pulumi.Output.create<String>(map['encoding'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      sshPublicKeyId: map['sshPublicKeyId'] == null ? null : pulumi.Output.create<String>(map['sshPublicKeyId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      sshPublicKeyId: map['sshPublicKeyId'] == null ? null : (map['sshPublicKeyId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

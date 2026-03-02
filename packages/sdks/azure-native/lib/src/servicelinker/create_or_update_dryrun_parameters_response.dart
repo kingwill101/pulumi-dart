@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_key_info_base_response.dart';
 import 'azure_resource_response.dart';
 import 'configuration_info_response.dart';
@@ -11,25 +12,25 @@ import 'vnet_solution_response.dart';
 class CreateOrUpdateDryrunParametersResponse {
   /// The name of action for you dryrun job.
   /// Expected value is 'createOrUpdate'.
-  final String actionName;
+  final pulumi.Input<String> actionName;
   /// The authentication type.
-  final AccessKeyInfoBaseResponse? authInfo;
+  final pulumi.Input<AccessKeyInfoBaseResponse>? authInfo;
   /// The application client type
-  final String? clientType;
+  final pulumi.Input<String>? clientType;
   /// The connection information consumed by applications, including secrets, connection strings.
-  final ConfigurationInfoResponse? configurationInfo;
+  final pulumi.Input<ConfigurationInfoResponse>? configurationInfo;
   /// The provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The network solution.
-  final PublicNetworkSolutionResponse? publicNetworkSolution;
+  final pulumi.Input<PublicNetworkSolutionResponse>? publicNetworkSolution;
   /// connection scope in source service.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// An option to store secret value in secure place
-  final SecretStoreResponse? secretStore;
+  final pulumi.Input<SecretStoreResponse>? secretStore;
   /// The target service properties
-  final AzureResourceResponse? targetService;
+  final pulumi.Input<AzureResourceResponse>? targetService;
   /// The VNet solution.
-  final VNetSolutionResponse? vNetSolution;
+  final pulumi.Input<VNetSolutionResponse>? vNetSolution;
 
   /// Creates a new [CreateOrUpdateDryrunParametersResponse].
   /// [actionName] The name of action for you dryrun job.
@@ -58,30 +59,30 @@ class CreateOrUpdateDryrunParametersResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionName': actionName,
-      'authInfo': ?authInfo == null ? null : authInfo!.toMap(),
+      'authInfo': ?pulumi.Input.mapOptionalInputValue<AccessKeyInfoBaseResponse, Map<String, dynamic>>(authInfo, (value) => value.toMap()),
       'clientType': ?clientType,
-      'configurationInfo': ?configurationInfo == null ? null : configurationInfo!.toMap(),
+      'configurationInfo': ?pulumi.Input.mapOptionalInputValue<ConfigurationInfoResponse, Map<String, dynamic>>(configurationInfo, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'publicNetworkSolution': ?publicNetworkSolution == null ? null : publicNetworkSolution!.toMap(),
+      'publicNetworkSolution': ?pulumi.Input.mapOptionalInputValue<PublicNetworkSolutionResponse, Map<String, dynamic>>(publicNetworkSolution, (value) => value.toMap()),
       'scope': ?scope,
-      'secretStore': ?secretStore == null ? null : secretStore!.toMap(),
-      'targetService': ?targetService == null ? null : targetService!.toMap(),
-      'vNetSolution': ?vNetSolution == null ? null : vNetSolution!.toMap(),
+      'secretStore': ?pulumi.Input.mapOptionalInputValue<SecretStoreResponse, Map<String, dynamic>>(secretStore, (value) => value.toMap()),
+      'targetService': ?pulumi.Input.mapOptionalInputValue<AzureResourceResponse, Map<String, dynamic>>(targetService, (value) => value.toMap()),
+      'vNetSolution': ?pulumi.Input.mapOptionalInputValue<VNetSolutionResponse, Map<String, dynamic>>(vNetSolution, (value) => value.toMap()),
     };
   }
 
   factory CreateOrUpdateDryrunParametersResponse.fromMap(Map<String, dynamic> map) {
     return CreateOrUpdateDryrunParametersResponse(
-      actionName: map['actionName'] as String,
-      authInfo: map['authInfo'] == null ? null : AccessKeyInfoBaseResponse.fromMap((map['authInfo'] as Map).cast<String, dynamic>()),
-      clientType: map['clientType'] == null ? null : map['clientType'] as String,
-      configurationInfo: map['configurationInfo'] == null ? null : ConfigurationInfoResponse.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : PublicNetworkSolutionResponse.fromMap((map['publicNetworkSolution'] as Map).cast<String, dynamic>()),
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      secretStore: map['secretStore'] == null ? null : SecretStoreResponse.fromMap((map['secretStore'] as Map).cast<String, dynamic>()),
-      targetService: map['targetService'] == null ? null : AzureResourceResponse.fromMap((map['targetService'] as Map).cast<String, dynamic>()),
-      vNetSolution: map['vNetSolution'] == null ? null : VNetSolutionResponse.fromMap((map['vNetSolution'] as Map).cast<String, dynamic>()),
+      actionName: (map['actionName'] as String).input(),
+      authInfo: map['authInfo'] == null ? null : (AccessKeyInfoBaseResponse.fromMap((map['authInfo'] as Map).cast<String, dynamic>())).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
+      configurationInfo: map['configurationInfo'] == null ? null : (ConfigurationInfoResponse.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : (PublicNetworkSolutionResponse.fromMap((map['publicNetworkSolution'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      secretStore: map['secretStore'] == null ? null : (SecretStoreResponse.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
+      targetService: map['targetService'] == null ? null : (AzureResourceResponse.fromMap((map['targetService'] as Map).cast<String, dynamic>())).input(),
+      vNetSolution: map['vNetSolution'] == null ? null : (VNetSolutionResponse.fromMap((map['vNetSolution'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

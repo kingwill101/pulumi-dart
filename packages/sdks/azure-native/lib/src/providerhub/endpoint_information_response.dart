@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointInformationResponse {
   /// The endpoint.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// The endpoint type.
-  final String? endpointType;
+  final pulumi.Input<String>? endpointType;
   /// The schema version.
-  final String? schemaVersion;
+  final pulumi.Input<String>? schemaVersion;
 
   /// Creates a new [EndpointInformationResponse].
   /// [endpoint] The endpoint.
@@ -29,9 +30,9 @@ class EndpointInformationResponse {
 
   factory EndpointInformationResponse.fromMap(Map<String, dynamic> map) {
     return EndpointInformationResponse(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
-      schemaVersion: map['schemaVersion'] == null ? null : map['schemaVersion'] as String,
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
     );
   }
 }

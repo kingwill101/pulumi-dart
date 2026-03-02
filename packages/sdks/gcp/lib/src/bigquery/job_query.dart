@@ -12,51 +12,51 @@ class JobQuery {
   /// If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
   /// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
   /// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
-  final bool? allowLargeResults;
+  final pulumi.Input<bool>? allowLargeResults;
   /// Connection properties to customize query behavior. Under JDBC, these correspond
   /// directly to connection properties passed to the DriverManager. Under ODBC, these
   /// correspond to properties in the connection string.
   /// Structure is documented below.
-  final List<JobQueryConnectionProperty>? connectionProperties;
+  final pulumi.Input<List<JobQueryConnectionProperty>>? connectionProperties;
   /// Whether to run the query as continuous or a regular query.
-  final bool? continuous;
+  final pulumi.Input<bool>? continuous;
   /// Specifies whether the job is allowed to create new tables. The following values are supported:
   /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
   /// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
   /// Creation, truncation and append actions occur as one atomic update upon job completion
   /// Default value is `CREATE_IF_NEEDED`.
   /// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-  final String? createDisposition;
+  final pulumi.Input<String>? createDisposition;
   /// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
   /// Structure is documented below.
-  final JobQueryDefaultDataset? defaultDataset;
+  final pulumi.Input<JobQueryDefaultDataset>? defaultDataset;
   /// Custom encryption configuration (e.g., Cloud KMS keys)
   /// Structure is documented below.
-  final JobQueryDestinationEncryptionConfiguration? destinationEncryptionConfiguration;
+  final pulumi.Input<JobQueryDestinationEncryptionConfiguration>? destinationEncryptionConfiguration;
   /// Describes the table where the query results should be stored.
   /// This property must be set for large results that exceed the maximum response size.
   /// For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
   /// Structure is documented below.
-  final JobQueryDestinationTable? destinationTable;
+  final pulumi.Input<JobQueryDestinationTable>? destinationTable;
   /// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
   /// allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
-  final bool? flattenResults;
+  final pulumi.Input<bool>? flattenResults;
   /// Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
   /// If unspecified, this will be set to your project default.
-  final int? maximumBillingTier;
+  final pulumi.Input<int>? maximumBillingTier;
   /// Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
   /// If unspecified, this will be set to your project default.
-  final String? maximumBytesBilled;
+  final pulumi.Input<String>? maximumBytesBilled;
   /// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-  final String? parameterMode;
+  final pulumi.Input<String>? parameterMode;
   /// Specifies a priority for the query.
   /// Default value is `INTERACTIVE`.
   /// Possible values are: `INTERACTIVE`, `BATCH`.
-  final String? priority;
+  final pulumi.Input<String>? priority;
   /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
   /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
   /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
-  final String query;
+  final pulumi.Input<String> query;
   /// Allows the schema of the destination table to be updated as a side effect of the query job.
   /// Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
   /// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
@@ -64,20 +64,20 @@ class JobQuery {
   /// One or more of the following values are specified:
   /// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
   /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-  final List<String>? schemaUpdateOptions;
+  final pulumi.Input<List<String>>? schemaUpdateOptions;
   /// Options controlling the execution of scripts.
   /// Structure is documented below.
-  final JobQueryScriptOptions? scriptOptions;
+  final pulumi.Input<JobQueryScriptOptions>? scriptOptions;
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
   /// If set to false, the query will use BigQuery's standard SQL.
-  final bool? useLegacySql;
+  final pulumi.Input<bool>? useLegacySql;
   /// Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
   /// tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
   /// The default value is true.
-  final bool? useQueryCache;
+  final pulumi.Input<bool>? useQueryCache;
   /// Describes user-defined function resources used in the query.
   /// Structure is documented below.
-  final List<JobQueryUserDefinedFunctionResource>? userDefinedFunctionResources;
+  final pulumi.Input<List<JobQueryUserDefinedFunctionResource>>? userDefinedFunctionResources;
   /// Specifies the action that occurs if the destination table already exists. The following values are supported:
   /// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
   /// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
@@ -86,7 +86,7 @@ class JobQuery {
   /// Creation, truncation and append actions occur as one atomic update upon job completion.
   /// Default value is `WRITE_EMPTY`.
   /// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
-  final String? writeDisposition;
+  final pulumi.Input<String>? writeDisposition;
 
   /// Creates a new [JobQuery].
   /// [allowLargeResults] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
@@ -133,12 +133,12 @@ class JobQuery {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowLargeResults': ?allowLargeResults,
-      'connectionProperties': ?connectionProperties == null ? null : pulumi.Input.encodeList<JobQueryConnectionProperty, Map<String, dynamic>>(connectionProperties!, (value) => value.toMap()),
+      'connectionProperties': ?pulumi.Input.mapOptionalInputValue<List<JobQueryConnectionProperty>, List<Map<String, dynamic>>>(connectionProperties, (value) => pulumi.Input.encodeList<JobQueryConnectionProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
       'continuous': ?continuous,
       'createDisposition': ?createDisposition,
-      'defaultDataset': ?defaultDataset == null ? null : defaultDataset!.toMap(),
-      'destinationEncryptionConfiguration': ?destinationEncryptionConfiguration == null ? null : destinationEncryptionConfiguration!.toMap(),
-      'destinationTable': ?destinationTable == null ? null : destinationTable!.toMap(),
+      'defaultDataset': ?pulumi.Input.mapOptionalInputValue<JobQueryDefaultDataset, Map<String, dynamic>>(defaultDataset, (value) => value.toMap()),
+      'destinationEncryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<JobQueryDestinationEncryptionConfiguration, Map<String, dynamic>>(destinationEncryptionConfiguration, (value) => value.toMap()),
+      'destinationTable': ?pulumi.Input.mapOptionalInputValue<JobQueryDestinationTable, Map<String, dynamic>>(destinationTable, (value) => value.toMap()),
       'flattenResults': ?flattenResults,
       'maximumBillingTier': ?maximumBillingTier,
       'maximumBytesBilled': ?maximumBytesBilled,
@@ -146,35 +146,35 @@ class JobQuery {
       'priority': ?priority,
       'query': query,
       'schemaUpdateOptions': ?schemaUpdateOptions,
-      'scriptOptions': ?scriptOptions == null ? null : scriptOptions!.toMap(),
+      'scriptOptions': ?pulumi.Input.mapOptionalInputValue<JobQueryScriptOptions, Map<String, dynamic>>(scriptOptions, (value) => value.toMap()),
       'useLegacySql': ?useLegacySql,
       'useQueryCache': ?useQueryCache,
-      'userDefinedFunctionResources': ?userDefinedFunctionResources == null ? null : pulumi.Input.encodeList<JobQueryUserDefinedFunctionResource, Map<String, dynamic>>(userDefinedFunctionResources!, (value) => value.toMap()),
+      'userDefinedFunctionResources': ?pulumi.Input.mapOptionalInputValue<List<JobQueryUserDefinedFunctionResource>, List<Map<String, dynamic>>>(userDefinedFunctionResources, (value) => pulumi.Input.encodeList<JobQueryUserDefinedFunctionResource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'writeDisposition': ?writeDisposition,
     };
   }
 
   factory JobQuery.fromMap(Map<String, dynamic> map) {
     return JobQuery(
-      allowLargeResults: map['allowLargeResults'] == null ? null : map['allowLargeResults'] as bool,
-      connectionProperties: map['connectionProperties'] == null ? null : pulumi.Input.decodeList<JobQueryConnectionProperty>(map['connectionProperties'], (value) => JobQueryConnectionProperty.fromMap((value as Map).cast<String, dynamic>())),
-      continuous: map['continuous'] == null ? null : map['continuous'] as bool,
-      createDisposition: map['createDisposition'] == null ? null : map['createDisposition'] as String,
-      defaultDataset: map['defaultDataset'] == null ? null : JobQueryDefaultDataset.fromMap((map['defaultDataset'] as Map).cast<String, dynamic>()),
-      destinationEncryptionConfiguration: map['destinationEncryptionConfiguration'] == null ? null : JobQueryDestinationEncryptionConfiguration.fromMap((map['destinationEncryptionConfiguration'] as Map).cast<String, dynamic>()),
-      destinationTable: map['destinationTable'] == null ? null : JobQueryDestinationTable.fromMap((map['destinationTable'] as Map).cast<String, dynamic>()),
-      flattenResults: map['flattenResults'] == null ? null : map['flattenResults'] as bool,
-      maximumBillingTier: map['maximumBillingTier'] == null ? null : map['maximumBillingTier'] as int,
-      maximumBytesBilled: map['maximumBytesBilled'] == null ? null : map['maximumBytesBilled'] as String,
-      parameterMode: map['parameterMode'] == null ? null : map['parameterMode'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as String,
-      query: map['query'] as String,
-      schemaUpdateOptions: map['schemaUpdateOptions'] == null ? null : (map['schemaUpdateOptions'] as List).cast<String>(),
-      scriptOptions: map['scriptOptions'] == null ? null : JobQueryScriptOptions.fromMap((map['scriptOptions'] as Map).cast<String, dynamic>()),
-      useLegacySql: map['useLegacySql'] == null ? null : map['useLegacySql'] as bool,
-      useQueryCache: map['useQueryCache'] == null ? null : map['useQueryCache'] as bool,
-      userDefinedFunctionResources: map['userDefinedFunctionResources'] == null ? null : pulumi.Input.decodeList<JobQueryUserDefinedFunctionResource>(map['userDefinedFunctionResources'], (value) => JobQueryUserDefinedFunctionResource.fromMap((value as Map).cast<String, dynamic>())),
-      writeDisposition: map['writeDisposition'] == null ? null : map['writeDisposition'] as String,
+      allowLargeResults: map['allowLargeResults'] == null ? null : (map['allowLargeResults'] as bool).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : (pulumi.Input.decodeList<JobQueryConnectionProperty>(map['connectionProperties'], (value) => JobQueryConnectionProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      continuous: map['continuous'] == null ? null : (map['continuous'] as bool).input(),
+      createDisposition: map['createDisposition'] == null ? null : (map['createDisposition'] as String).input(),
+      defaultDataset: map['defaultDataset'] == null ? null : (JobQueryDefaultDataset.fromMap((map['defaultDataset'] as Map).cast<String, dynamic>())).input(),
+      destinationEncryptionConfiguration: map['destinationEncryptionConfiguration'] == null ? null : (JobQueryDestinationEncryptionConfiguration.fromMap((map['destinationEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destinationTable: map['destinationTable'] == null ? null : (JobQueryDestinationTable.fromMap((map['destinationTable'] as Map).cast<String, dynamic>())).input(),
+      flattenResults: map['flattenResults'] == null ? null : (map['flattenResults'] as bool).input(),
+      maximumBillingTier: map['maximumBillingTier'] == null ? null : (map['maximumBillingTier'] as int).input(),
+      maximumBytesBilled: map['maximumBytesBilled'] == null ? null : (map['maximumBytesBilled'] as String).input(),
+      parameterMode: map['parameterMode'] == null ? null : (map['parameterMode'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
+      query: (map['query'] as String).input(),
+      schemaUpdateOptions: map['schemaUpdateOptions'] == null ? null : ((map['schemaUpdateOptions'] as List).cast<String>()).input(),
+      scriptOptions: map['scriptOptions'] == null ? null : (JobQueryScriptOptions.fromMap((map['scriptOptions'] as Map).cast<String, dynamic>())).input(),
+      useLegacySql: map['useLegacySql'] == null ? null : (map['useLegacySql'] as bool).input(),
+      useQueryCache: map['useQueryCache'] == null ? null : (map['useQueryCache'] as bool).input(),
+      userDefinedFunctionResources: map['userDefinedFunctionResources'] == null ? null : (pulumi.Input.decodeList<JobQueryUserDefinedFunctionResource>(map['userDefinedFunctionResources'], (value) => JobQueryUserDefinedFunctionResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      writeDisposition: map['writeDisposition'] == null ? null : (map['writeDisposition'] as String).input(),
     );
   }
 }

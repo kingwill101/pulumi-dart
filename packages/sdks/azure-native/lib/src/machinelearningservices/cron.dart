@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The workflow trigger cron for ComputeStartStop schedule type.
 class Cron {
   /// [Required] Specifies cron expression of schedule.
   /// The expression should follow NCronTab format.
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// The start time in yyyy-MM-ddTHH:mm:ss format.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Specifies time zone in which the schedule runs.
   /// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [Cron].
   /// [expression] [Required] Specifies cron expression of schedule.
@@ -32,9 +33,9 @@ class Cron {
 
   factory Cron.fromMap(Map<String, dynamic> map) {
     return Cron(
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

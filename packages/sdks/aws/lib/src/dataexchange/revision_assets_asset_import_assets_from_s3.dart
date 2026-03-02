@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'revision_assets_asset_import_assets_from_s3_asset_source.dart';
 
 class RevisionAssetsAssetImportAssetsFromS3 {
   /// A block specifying the source bucket and key for the asset. This block supports the following:
-  final RevisionAssetsAssetImportAssetsFromS3AssetSource? assetSource;
+  final pulumi.Input<RevisionAssetsAssetImportAssetsFromS3AssetSource>? assetSource;
 
   /// Creates a new [RevisionAssetsAssetImportAssetsFromS3].
   /// [assetSource] A block specifying the source bucket and key for the asset. This block supports the following:
@@ -14,13 +15,13 @@ class RevisionAssetsAssetImportAssetsFromS3 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assetSource': ?assetSource == null ? null : assetSource!.toMap(),
+      'assetSource': ?pulumi.Input.mapOptionalInputValue<RevisionAssetsAssetImportAssetsFromS3AssetSource, Map<String, dynamic>>(assetSource, (value) => value.toMap()),
     };
   }
 
   factory RevisionAssetsAssetImportAssetsFromS3.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetImportAssetsFromS3(
-      assetSource: map['assetSource'] == null ? null : RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap((map['assetSource'] as Map).cast<String, dynamic>()),
+      assetSource: map['assetSource'] == null ? null : (RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap((map['assetSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

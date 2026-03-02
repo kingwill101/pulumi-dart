@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration {
-  final String? ipOfTrustForUserDefinedRoutes;
+  final pulumi.Input<String>? ipOfTrustForUserDefinedRoutes;
   /// The ID of the Trust subnet.
-  final String? trustedSubnetId;
+  final pulumi.Input<String>? trustedSubnetId;
   /// The ID of the UnTrust subnet.
-  final String? untrustedSubnetId;
+  final pulumi.Input<String>? untrustedSubnetId;
   /// The ID of the Virtual Network.
-  final String virtualNetworkId;
+  final pulumi.Input<String> virtualNetworkId;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration].
   /// [ipOfTrustForUserDefinedRoutes] Optional.
@@ -33,10 +34,10 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfig
 
   factory NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration(
-      ipOfTrustForUserDefinedRoutes: map['ipOfTrustForUserDefinedRoutes'] == null ? null : map['ipOfTrustForUserDefinedRoutes'] as String,
-      trustedSubnetId: map['trustedSubnetId'] == null ? null : map['trustedSubnetId'] as String,
-      untrustedSubnetId: map['untrustedSubnetId'] == null ? null : map['untrustedSubnetId'] as String,
-      virtualNetworkId: map['virtualNetworkId'] as String,
+      ipOfTrustForUserDefinedRoutes: map['ipOfTrustForUserDefinedRoutes'] == null ? null : (map['ipOfTrustForUserDefinedRoutes'] as String).input(),
+      trustedSubnetId: map['trustedSubnetId'] == null ? null : (map['trustedSubnetId'] as String).input(),
+      untrustedSubnetId: map['untrustedSubnetId'] == null ? null : (map['untrustedSubnetId'] as String).input(),
+      virtualNetworkId: (map['virtualNetworkId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxFunctionAppConnectionString {
   /// The name which should be used for this Connection.
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of database. Possible values include: `MySQL`, `SQLServer`, `SQLAzure`, `Custom`, `NotificationHub`, `ServiceBus`, `EventHub`, `APIHub`, `DocDb`, `RedisCache`, and `PostgreSQL`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The connection string value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [LinuxFunctionAppConnectionString].
   /// [name] The name which should be used for this Connection.
@@ -29,9 +30,9 @@ class LinuxFunctionAppConnectionString {
 
   factory LinuxFunctionAppConnectionString.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppConnectionString(
-      name: map['name'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

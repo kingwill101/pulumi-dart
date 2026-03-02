@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StoreShard {
   /// The begin value of the shard range(MD5), included in the shard range.
-  final String? beginKey;
+  final pulumi.Input<String>? beginKey;
   /// The end value of the shard range(MD5), not included in shard range.
-  final String? endKey;
+  final pulumi.Input<String>? endKey;
   /// The ID of the shard.
-  final int? id;
+  final pulumi.Input<int>? id;
   /// Shard status, only two status of `readwrite` and `readonly`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [StoreShard].
   /// [beginKey] The begin value of the shard range(MD5), included in the shard range.
@@ -34,10 +35,10 @@ class StoreShard {
 
   factory StoreShard.fromMap(Map<String, dynamic> map) {
     return StoreShard(
-      beginKey: map['beginKey'] == null ? null : map['beginKey'] as String,
-      endKey: map['endKey'] == null ? null : map['endKey'] as String,
-      id: map['id'] == null ? null : map['id'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      beginKey: map['beginKey'] == null ? null : (map['beginKey'] as String).input(),
+      endKey: map['endKey'] == null ? null : (map['endKey'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Environment information of attached environments. Scoring an environment is enabled only if it is attached to a security profile.
 class GoogleCloudApigeeV1SecurityProfileEnvironmentResponse {
   /// Time at which environment was attached to the security profile.
-  final String attachTime;
+  final pulumi.Input<String> attachTime;
   /// Name of the environment.
-  final String environment;
+  final pulumi.Input<String> environment;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityProfileEnvironmentResponse].
   /// [attachTime] Time at which environment was attached to the security profile.
@@ -25,8 +26,8 @@ class GoogleCloudApigeeV1SecurityProfileEnvironmentResponse {
 
   factory GoogleCloudApigeeV1SecurityProfileEnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityProfileEnvironmentResponse(
-      attachTime: map['attachTime'] as String,
-      environment: map['environment'] as String,
+      attachTime: (map['attachTime'] as String).input(),
+      environment: (map['environment'] as String).input(),
     );
   }
 }

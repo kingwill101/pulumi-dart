@@ -38,25 +38,16 @@ class ProjectArgs {
   /// [primaryUserAssignedIdentity] The user assigned identity ID that represents the AI Foundry Hub identity. This must be set when enabling encryption with a user assigned identity.
   /// [tags] A mapping of tags which should be assigned to the AI Foundry Project.
   ProjectArgs({
-    required pulumi.Output<String> aiServicesHubId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<bool>? highBusinessImpactEnabled,
-    pulumi.Output<ProjectIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryUserAssignedIdentity,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      aiServicesHubId = pulumi.Input.asInput<String>(aiServicesHubId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      highBusinessImpactEnabled = pulumi.Input.asOptionalInput<bool>(highBusinessImpactEnabled),
-      identity = pulumi.Input.asOptionalInput<ProjectIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryUserAssignedIdentity = pulumi.Input.asOptionalInput<String>(primaryUserAssignedIdentity),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.aiServicesHubId,
+    this.description,
+    this.friendlyName,
+    this.highBusinessImpactEnabled,
+    this.identity,
+    this.location,
+    this.name,
+    this.primaryUserAssignedIdentity,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      aiServicesHubId: pulumi.Output.create<String>(map['aiServicesHubId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      highBusinessImpactEnabled: map['highBusinessImpactEnabled'] == null ? null : pulumi.Output.create<bool>(map['highBusinessImpactEnabled'] as bool),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ProjectIdentity>(ProjectIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryUserAssignedIdentity: map['primaryUserAssignedIdentity'] == null ? null : pulumi.Output.create<String>(map['primaryUserAssignedIdentity'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      aiServicesHubId: (map['aiServicesHubId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      highBusinessImpactEnabled: map['highBusinessImpactEnabled'] == null ? null : (map['highBusinessImpactEnabled'] as bool).input(),
+      identity: map['identity'] == null ? null : (ProjectIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryUserAssignedIdentity: map['primaryUserAssignedIdentity'] == null ? null : (map['primaryUserAssignedIdentity'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

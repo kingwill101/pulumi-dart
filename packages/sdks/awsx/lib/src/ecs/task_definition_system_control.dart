@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionSystemControl {
-  final String? namespace;
-  final String? value;
+  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [TaskDefinitionSystemControl].
   /// [namespace] Optional.
@@ -22,8 +23,8 @@ class TaskDefinitionSystemControl {
 
   factory TaskDefinitionSystemControl.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionSystemControl(
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

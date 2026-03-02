@@ -16,11 +16,9 @@ class GetHostArgs {
   /// [hostName] Name of the host.
   /// [resourceGroupName] The Resource Group Name.
   GetHostArgs({
-    required pulumi.Output<String> hostName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hostName = pulumi.Input.asInput<String>(hostName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hostName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHostArgs {
 
   factory GetHostArgs.fromMap(Map<String, dynamic> map) {
     return GetHostArgs(
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hostName: (map['hostName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

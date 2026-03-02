@@ -19,13 +19,10 @@ class VpnConnectionRouteArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpnConnectionId] The ID of the VPN connection.
   VpnConnectionRouteArgs({
-    required pulumi.Output<String> destinationCidrBlock,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> vpnConnectionId,
-  }) :
-      destinationCidrBlock = pulumi.Input.asInput<String>(destinationCidrBlock),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpnConnectionId = pulumi.Input.asInput<String>(vpnConnectionId);
+    required this.destinationCidrBlock,
+    this.region,
+    required this.vpnConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VpnConnectionRouteArgs {
 
   factory VpnConnectionRouteArgs.fromMap(Map<String, dynamic> map) {
     return VpnConnectionRouteArgs(
-      destinationCidrBlock: pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpnConnectionId: pulumi.Output.create<String>(map['vpnConnectionId'] as String),
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpnConnectionId: (map['vpnConnectionId'] as String).input(),
     );
   }
 }

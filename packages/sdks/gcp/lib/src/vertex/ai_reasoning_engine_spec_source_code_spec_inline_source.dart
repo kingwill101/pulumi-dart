@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiReasoningEngineSpecSourceCodeSpecInlineSource {
   /// Required. Input only.
   /// The application source code archive, provided as a compressed
   /// tarball (.tar.gz) file. A base64-encoded string.
-  final String? sourceArchive;
+  final pulumi.Input<String>? sourceArchive;
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpecInlineSource].
   /// [sourceArchive] Required. Input only.
@@ -21,7 +22,7 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSource {
 
   factory AiReasoningEngineSpecSourceCodeSpecInlineSource.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecSourceCodeSpecInlineSource(
-      sourceArchive: map['sourceArchive'] == null ? null : map['sourceArchive'] as String,
+      sourceArchive: map['sourceArchive'] == null ? null : (map['sourceArchive'] as String).input(),
     );
   }
 }

@@ -23,17 +23,12 @@ class HoneypotPresetState {
   /// [nodeId] Unique id of management node
   /// [presetName] Honeypot template custom name
   HoneypotPresetState({
-    pulumi.Output<String>? honeypotImageName,
-    pulumi.Output<String>? honeypotPresetId,
-    pulumi.Output<HoneypotPresetMeta>? meta,
-    pulumi.Output<String>? nodeId,
-    pulumi.Output<String>? presetName,
-  }) :
-      honeypotImageName = pulumi.Input.asOptionalInput<String>(honeypotImageName),
-      honeypotPresetId = pulumi.Input.asOptionalInput<String>(honeypotPresetId),
-      meta = pulumi.Input.asOptionalInput<HoneypotPresetMeta>(meta),
-      nodeId = pulumi.Input.asOptionalInput<String>(nodeId),
-      presetName = pulumi.Input.asOptionalInput<String>(presetName);
+    this.honeypotImageName,
+    this.honeypotPresetId,
+    this.meta,
+    this.nodeId,
+    this.presetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class HoneypotPresetState {
 
   factory HoneypotPresetState.fromMap(Map<String, dynamic> map) {
     return HoneypotPresetState(
-      honeypotImageName: map['honeypotImageName'] == null ? null : pulumi.Output.create<String>(map['honeypotImageName'] as String),
-      honeypotPresetId: map['honeypotPresetId'] == null ? null : pulumi.Output.create<String>(map['honeypotPresetId'] as String),
-      meta: map['meta'] == null ? null : pulumi.Output.create<HoneypotPresetMeta>(HoneypotPresetMeta.fromMap((map['meta'] as Map).cast<String, dynamic>())),
-      nodeId: map['nodeId'] == null ? null : pulumi.Output.create<String>(map['nodeId'] as String),
-      presetName: map['presetName'] == null ? null : pulumi.Output.create<String>(map['presetName'] as String),
+      honeypotImageName: map['honeypotImageName'] == null ? null : (map['honeypotImageName'] as String).input(),
+      honeypotPresetId: map['honeypotPresetId'] == null ? null : (map['honeypotPresetId'] as String).input(),
+      meta: map['meta'] == null ? null : (HoneypotPresetMeta.fromMap((map['meta'] as Map).cast<String, dynamic>())).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      presetName: map['presetName'] == null ? null : (map['presetName'] as String).input(),
     );
   }
 }

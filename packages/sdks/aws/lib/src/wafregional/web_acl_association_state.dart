@@ -16,13 +16,10 @@ class WebAclAssociationState {
   /// [resourceArn] ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
   /// [webAclId] The ID of the WAF Regional WebACL to create an association.
   WebAclAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? webAclId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      webAclId = pulumi.Input.asOptionalInput<String>(webAclId);
+    this.region,
+    this.resourceArn,
+    this.webAclId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class WebAclAssociationState {
 
   factory WebAclAssociationState.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      webAclId: map['webAclId'] == null ? null : pulumi.Output.create<String>(map['webAclId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      webAclId: map['webAclId'] == null ? null : (map['webAclId'] as String).input(),
     );
   }
 }

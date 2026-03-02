@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kubernetes node IP configuration
 class KubernetesIPConfigurationResponse {
   /// IP address of the Kubernetes node.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// Port of the Kubernetes node.
-  final String port;
+  final pulumi.Input<String> port;
 
   /// Creates a new [KubernetesIPConfigurationResponse].
   /// [ipAddress] IP address of the Kubernetes node.
@@ -25,8 +26,8 @@ class KubernetesIPConfigurationResponse {
 
   factory KubernetesIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesIPConfigurationResponse(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      port: map['port'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      port: (map['port'] as String).input(),
     );
   }
 }

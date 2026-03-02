@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A condition that applies the override if a line item SKU is found in the SKU group.
 class GoogleCloudChannelV1SkuGroupConditionResponse {
   /// Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
-  final String skuGroup;
+  final pulumi.Input<String> skuGroup;
 
   /// Creates a new [GoogleCloudChannelV1SkuGroupConditionResponse].
   /// [skuGroup] Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
@@ -20,7 +21,7 @@ class GoogleCloudChannelV1SkuGroupConditionResponse {
 
   factory GoogleCloudChannelV1SkuGroupConditionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1SkuGroupConditionResponse(
-      skuGroup: map['skuGroup'] as String,
+      skuGroup: (map['skuGroup'] as String).input(),
     );
   }
 }

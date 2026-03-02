@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableGlobalTableWitness {
   /// Name of the AWS Region that serves as a witness for the MRSC global table.
-  final String? regionName;
+  final pulumi.Input<String>? regionName;
 
   /// Creates a new [TableGlobalTableWitness].
   /// [regionName] Name of the AWS Region that serves as a witness for the MRSC global table.
@@ -19,7 +20,7 @@ class TableGlobalTableWitness {
 
   factory TableGlobalTableWitness.fromMap(Map<String, dynamic> map) {
     return TableGlobalTableWitness(
-      regionName: map['regionName'] == null ? null : map['regionName'] as String,
+      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
     );
   }
 }

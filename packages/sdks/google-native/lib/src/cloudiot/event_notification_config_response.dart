@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration for forwarding telemetry events.
 class EventNotificationConfigResponse {
   /// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
-  final String pubsubTopicName;
+  final pulumi.Input<String> pubsubTopicName;
   /// If the subfolder name matches this string exactly, this configuration will be used. The string must not include the leading '/' character. If empty, all strings are matched. This field is used only for telemetry events; subfolders are not supported for state changes.
-  final String subfolderMatches;
+  final pulumi.Input<String> subfolderMatches;
 
   /// Creates a new [EventNotificationConfigResponse].
   /// [pubsubTopicName] A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
@@ -25,8 +26,8 @@ class EventNotificationConfigResponse {
 
   factory EventNotificationConfigResponse.fromMap(Map<String, dynamic> map) {
     return EventNotificationConfigResponse(
-      pubsubTopicName: map['pubsubTopicName'] as String,
-      subfolderMatches: map['subfolderMatches'] as String,
+      pubsubTopicName: (map['pubsubTopicName'] as String).input(),
+      subfolderMatches: (map['subfolderMatches'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetManagedClusterFaultSimulationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [simulationId] unique identifier for the fault simulation.
   GetManagedClusterFaultSimulationArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> simulationId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      simulationId = pulumi.Input.asInput<String>(simulationId);
+    required this.clusterName,
+    required this.resourceGroupName,
+    required this.simulationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedClusterFaultSimulationArgs {
 
   factory GetManagedClusterFaultSimulationArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedClusterFaultSimulationArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      simulationId: pulumi.Output.create<String>(map['simulationId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      simulationId: (map['simulationId'] as String).input(),
     );
   }
 }

@@ -24,13 +24,10 @@ class BrandArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [supportEmail] Support email displayed on the OAuth consent screen. Can be either a
   BrandArgs({
-    required pulumi.Output<String> applicationTitle,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> supportEmail,
-  }) :
-      applicationTitle = pulumi.Input.asInput<String>(applicationTitle),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      supportEmail = pulumi.Input.asInput<String>(supportEmail);
+    required this.applicationTitle,
+    this.project,
+    required this.supportEmail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class BrandArgs {
 
   factory BrandArgs.fromMap(Map<String, dynamic> map) {
     return BrandArgs(
-      applicationTitle: pulumi.Output.create<String>(map['applicationTitle'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      supportEmail: pulumi.Output.create<String>(map['supportEmail'] as String),
+      applicationTitle: (map['applicationTitle'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      supportEmail: (map['supportEmail'] as String).input(),
     );
   }
 }

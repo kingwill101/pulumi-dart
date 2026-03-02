@@ -26,17 +26,12 @@ class OutboundRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] Name of the cognitive services account managed network outbound rule
   OutboundRuleArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> managedNetworkName,
-    required pulumi.Output<FqdnOutboundRule> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      managedNetworkName = pulumi.Input.asInput<String>(managedNetworkName),
-      properties = pulumi.Input.asInput<FqdnOutboundRule>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName);
+    required this.accountName,
+    required this.managedNetworkName,
+    required this.properties,
+    required this.resourceGroupName,
+    this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class OutboundRuleArgs {
 
   factory OutboundRuleArgs.fromMap(Map<String, dynamic> map) {
     return OutboundRuleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      managedNetworkName: pulumi.Output.create<String>(map['managedNetworkName'] as String),
-      properties: pulumi.Output.create<FqdnOutboundRule>(FqdnOutboundRule.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      managedNetworkName: (map['managedNetworkName'] as String).input(),
+      properties: (FqdnOutboundRule.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

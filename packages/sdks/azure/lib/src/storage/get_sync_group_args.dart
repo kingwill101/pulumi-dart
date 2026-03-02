@@ -16,11 +16,9 @@ class GetSyncGroupArgs {
   /// [name] The name of this Storage Sync Group.
   /// [storageSyncId] The resource ID of the Storage Sync where this Storage Sync Group is.
   GetSyncGroupArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> storageSyncId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      storageSyncId = pulumi.Input.asInput<String>(storageSyncId);
+    required this.name,
+    required this.storageSyncId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSyncGroupArgs {
 
   factory GetSyncGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSyncGroupArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      storageSyncId: pulumi.Output.create<String>(map['storageSyncId'] as String),
+      name: (map['name'] as String).input(),
+      storageSyncId: (map['storageSyncId'] as String).input(),
     );
   }
 }

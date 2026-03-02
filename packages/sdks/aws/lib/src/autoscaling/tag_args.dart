@@ -20,13 +20,10 @@ class TagArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tag] Tag to create. The `tag` block is documented below.
   TagArgs({
-    required pulumi.Output<String> autoscalingGroupName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<TagTag> tag,
-  }) :
-      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tag = pulumi.Input.asInput<TagTag>(tag);
+    required this.autoscalingGroupName,
+    this.region,
+    required this.tag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class TagArgs {
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      autoscalingGroupName: pulumi.Output.create<String>(map['autoscalingGroupName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tag: pulumi.Output.create<TagTag>(TagTag.fromMap((map['tag'] as Map).cast<String, dynamic>())),
+      autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tag: (TagTag.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

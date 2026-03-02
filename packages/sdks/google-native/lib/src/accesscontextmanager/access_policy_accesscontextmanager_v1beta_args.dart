@@ -16,11 +16,9 @@ class AccessPolicyAccesscontextmanagerV1betaArgs {
   /// [parent] The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
   /// [title] Human readable title. Does not affect behavior.
   AccessPolicyAccesscontextmanagerV1betaArgs({
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> title,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      title = pulumi.Input.asInput<String>(title);
+    required this.parent,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class AccessPolicyAccesscontextmanagerV1betaArgs {
 
   factory AccessPolicyAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAccesscontextmanagerV1betaArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      parent: (map['parent'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NamespaceTopicSpacesConfigurationStaticRoutingEnrichment {
   /// The enrichment key.
-  final String key;
+  final pulumi.Input<String> key;
   /// The enrichment value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [NamespaceTopicSpacesConfigurationStaticRoutingEnrichment].
   /// [key] The enrichment key.
@@ -24,8 +25,8 @@ class NamespaceTopicSpacesConfigurationStaticRoutingEnrichment {
 
   factory NamespaceTopicSpacesConfigurationStaticRoutingEnrichment.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicSpacesConfigurationStaticRoutingEnrichment(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetAuthorizationLoginLinkPostArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetAuthorizationLoginLinkPostArgs({
-    required pulumi.Output<String> authorizationId,
-    required pulumi.Output<String> authorizationProviderId,
-    pulumi.Output<String>? postLoginRedirectUrl,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      authorizationId = pulumi.Input.asInput<String>(authorizationId),
-      authorizationProviderId = pulumi.Input.asInput<String>(authorizationProviderId),
-      postLoginRedirectUrl = pulumi.Input.asOptionalInput<String>(postLoginRedirectUrl),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.authorizationId,
+    required this.authorizationProviderId,
+    this.postLoginRedirectUrl,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetAuthorizationLoginLinkPostArgs {
 
   factory GetAuthorizationLoginLinkPostArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationLoginLinkPostArgs(
-      authorizationId: pulumi.Output.create<String>(map['authorizationId'] as String),
-      authorizationProviderId: pulumi.Output.create<String>(map['authorizationProviderId'] as String),
-      postLoginRedirectUrl: map['postLoginRedirectUrl'] == null ? null : pulumi.Output.create<String>(map['postLoginRedirectUrl'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      authorizationId: (map['authorizationId'] as String).input(),
+      authorizationProviderId: (map['authorizationProviderId'] as String).input(),
+      postLoginRedirectUrl: map['postLoginRedirectUrl'] == null ? null : (map['postLoginRedirectUrl'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

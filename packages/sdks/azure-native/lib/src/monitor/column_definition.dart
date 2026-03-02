@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of custom data column.
 class ColumnDefinition {
   /// The name of the column.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of the column data.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ColumnDefinition].
   /// [name] The name of the column.
@@ -25,8 +26,8 @@ class ColumnDefinition {
 
   factory ColumnDefinition.fromMap(Map<String, dynamic> map) {
     return ColumnDefinition(
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

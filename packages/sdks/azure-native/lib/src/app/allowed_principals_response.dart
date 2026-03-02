@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the Azure Active Directory allowed principals.
 class AllowedPrincipalsResponse {
   /// The list of the allowed groups.
-  final List<String>? groups;
+  final pulumi.Input<List<String>>? groups;
   /// The list of the allowed identities.
-  final List<String>? identities;
+  final pulumi.Input<List<String>>? identities;
 
   /// Creates a new [AllowedPrincipalsResponse].
   /// [groups] The list of the allowed groups.
@@ -25,8 +26,8 @@ class AllowedPrincipalsResponse {
 
   factory AllowedPrincipalsResponse.fromMap(Map<String, dynamic> map) {
     return AllowedPrincipalsResponse(
-      groups: map['groups'] == null ? null : (map['groups'] as List).cast<String>(),
-      identities: map['identities'] == null ? null : (map['identities'] as List).cast<String>(),
+      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
+      identities: map['identities'] == null ? null : ((map['identities'] as List).cast<String>()).input(),
     );
   }
 }

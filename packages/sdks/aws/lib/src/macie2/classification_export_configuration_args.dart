@@ -17,11 +17,9 @@ class ClassificationExportConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3Destination] Configuration block for a S3 Destination. Defined below
   ClassificationExportConfigurationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<ClassificationExportConfigurationS3Destination> s3Destination,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3Destination = pulumi.Input.asInput<ClassificationExportConfigurationS3Destination>(s3Destination);
+    this.region,
+    required this.s3Destination,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ClassificationExportConfigurationArgs {
 
   factory ClassificationExportConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ClassificationExportConfigurationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3Destination: pulumi.Output.create<ClassificationExportConfigurationS3Destination>(ClassificationExportConfigurationS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3Destination: (ClassificationExportConfigurationS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

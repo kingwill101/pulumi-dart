@@ -60,35 +60,21 @@ class ObjectStorageBucketState {
   /// [secretKey] The secret key to authenticate with. If not specified with the resource, its value can be
   /// [versioning] Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
   ObjectStorageBucketState({
-    pulumi.Output<String>? accessKey,
-    pulumi.Output<String>? acl,
-    pulumi.Output<ObjectStorageBucketCert>? cert,
-    pulumi.Output<String>? cluster,
-    pulumi.Output<bool>? corsEnabled,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? label,
-    pulumi.Output<List<ObjectStorageBucketLifecycleRule>>? lifecycleRules,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? s3Endpoint,
-    pulumi.Output<String>? secretKey,
-    pulumi.Output<bool>? versioning,
-  }) :
-      accessKey = pulumi.Input.asOptionalInput<String>(accessKey),
-      acl = pulumi.Input.asOptionalInput<String>(acl),
-      cert = pulumi.Input.asOptionalInput<ObjectStorageBucketCert>(cert),
-      cluster = pulumi.Input.asOptionalInput<String>(cluster),
-      corsEnabled = pulumi.Input.asOptionalInput<bool>(corsEnabled),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      lifecycleRules = pulumi.Input.asOptionalInput<List<ObjectStorageBucketLifecycleRule>>(lifecycleRules),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3Endpoint = pulumi.Input.asOptionalInput<String>(s3Endpoint),
-      secretKey = pulumi.Input.asOptionalInput<String>(secretKey),
-      versioning = pulumi.Input.asOptionalInput<bool>(versioning);
+    this.accessKey,
+    this.acl,
+    this.cert,
+    this.cluster,
+    this.corsEnabled,
+    this.endpoint,
+    this.endpointType,
+    this.hostname,
+    this.label,
+    this.lifecycleRules,
+    this.region,
+    this.s3Endpoint,
+    this.secretKey,
+    this.versioning,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,20 +97,20 @@ class ObjectStorageBucketState {
 
   factory ObjectStorageBucketState.fromMap(Map<String, dynamic> map) {
     return ObjectStorageBucketState(
-      accessKey: map['accessKey'] == null ? null : pulumi.Output.create<String>(map['accessKey'] as String),
-      acl: map['acl'] == null ? null : pulumi.Output.create<String>(map['acl'] as String),
-      cert: map['cert'] == null ? null : pulumi.Output.create<ObjectStorageBucketCert>(ObjectStorageBucketCert.fromMap((map['cert'] as Map).cast<String, dynamic>())),
-      cluster: map['cluster'] == null ? null : pulumi.Output.create<String>(map['cluster'] as String),
-      corsEnabled: map['corsEnabled'] == null ? null : pulumi.Output.create<bool>(map['corsEnabled'] as bool),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      lifecycleRules: map['lifecycleRules'] == null ? null : pulumi.Output.create<List<ObjectStorageBucketLifecycleRule>>(pulumi.Input.decodeList<ObjectStorageBucketLifecycleRule>(map['lifecycleRules'], (value) => ObjectStorageBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3Endpoint: map['s3Endpoint'] == null ? null : pulumi.Output.create<String>(map['s3Endpoint'] as String),
-      secretKey: map['secretKey'] == null ? null : pulumi.Output.create<String>(map['secretKey'] as String),
-      versioning: map['versioning'] == null ? null : pulumi.Output.create<bool>(map['versioning'] as bool),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      cert: map['cert'] == null ? null : (ObjectStorageBucketCert.fromMap((map['cert'] as Map).cast<String, dynamic>())).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      corsEnabled: map['corsEnabled'] == null ? null : (map['corsEnabled'] as bool).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      lifecycleRules: map['lifecycleRules'] == null ? null : (pulumi.Input.decodeList<ObjectStorageBucketLifecycleRule>(map['lifecycleRules'], (value) => ObjectStorageBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3Endpoint: map['s3Endpoint'] == null ? null : (map['s3Endpoint'] as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      versioning: map['versioning'] == null ? null : (map['versioning'] as bool).input(),
     );
   }
 }

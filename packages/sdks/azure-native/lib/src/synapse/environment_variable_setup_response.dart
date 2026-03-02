@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The custom setup of setting environment variable.
 class EnvironmentVariableSetupResponse {
   /// The type of custom setup.
   /// Expected value is 'EnvironmentVariableSetup'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The name of the environment variable.
-  final String variableName;
+  final pulumi.Input<String> variableName;
   /// The value of the environment variable.
-  final String variableValue;
+  final pulumi.Input<String> variableValue;
 
   /// Creates a new [EnvironmentVariableSetupResponse].
   /// [type] The type of custom setup.
@@ -31,9 +32,9 @@ class EnvironmentVariableSetupResponse {
 
   factory EnvironmentVariableSetupResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableSetupResponse(
-      type: map['type'] as String,
-      variableName: map['variableName'] as String,
-      variableValue: map['variableValue'] as String,
+      type: (map['type'] as String).input(),
+      variableName: (map['variableName'] as String).input(),
+      variableValue: (map['variableValue'] as String).input(),
     );
   }
 }

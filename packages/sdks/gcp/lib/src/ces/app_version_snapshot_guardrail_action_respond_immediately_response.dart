@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotGuardrailActionRespondImmediatelyResponse {
   /// (Output)
   /// Whether summarization is disabled.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// (Output)
   /// Text for the agent to respond with.
-  final String? text;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [AppVersionSnapshotGuardrailActionRespondImmediatelyResponse].
   /// [disabled] (Output)
@@ -26,8 +27,8 @@ class AppVersionSnapshotGuardrailActionRespondImmediatelyResponse {
 
   factory AppVersionSnapshotGuardrailActionRespondImmediatelyResponse.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionRespondImmediatelyResponse(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      text: map['text'] == null ? null : map['text'] as String,
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

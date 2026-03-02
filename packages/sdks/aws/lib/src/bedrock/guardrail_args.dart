@@ -59,35 +59,21 @@ class GuardrailArgs {
   /// [topicPolicyConfig] Topic policy config for a guardrail. See Topic Policy Config for more information.
   /// [wordPolicyConfig] Word policy config for a guardrail. See Word Policy Config for more information.
   GuardrailArgs({
-    required pulumi.Output<String> blockedInputMessaging,
-    required pulumi.Output<String> blockedOutputsMessaging,
-    pulumi.Output<GuardrailContentPolicyConfig>? contentPolicyConfig,
-    pulumi.Output<GuardrailContextualGroundingPolicyConfig>? contextualGroundingPolicyConfig,
-    pulumi.Output<GuardrailCrossRegionConfig>? crossRegionConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<GuardrailSensitiveInformationPolicyConfig>? sensitiveInformationPolicyConfig,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<GuardrailTimeouts>? timeouts,
-    pulumi.Output<GuardrailTopicPolicyConfig>? topicPolicyConfig,
-    pulumi.Output<GuardrailWordPolicyConfig>? wordPolicyConfig,
-  }) :
-      blockedInputMessaging = pulumi.Input.asInput<String>(blockedInputMessaging),
-      blockedOutputsMessaging = pulumi.Input.asInput<String>(blockedOutputsMessaging),
-      contentPolicyConfig = pulumi.Input.asOptionalInput<GuardrailContentPolicyConfig>(contentPolicyConfig),
-      contextualGroundingPolicyConfig = pulumi.Input.asOptionalInput<GuardrailContextualGroundingPolicyConfig>(contextualGroundingPolicyConfig),
-      crossRegionConfig = pulumi.Input.asOptionalInput<GuardrailCrossRegionConfig>(crossRegionConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sensitiveInformationPolicyConfig = pulumi.Input.asOptionalInput<GuardrailSensitiveInformationPolicyConfig>(sensitiveInformationPolicyConfig),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<GuardrailTimeouts>(timeouts),
-      topicPolicyConfig = pulumi.Input.asOptionalInput<GuardrailTopicPolicyConfig>(topicPolicyConfig),
-      wordPolicyConfig = pulumi.Input.asOptionalInput<GuardrailWordPolicyConfig>(wordPolicyConfig);
+    required this.blockedInputMessaging,
+    required this.blockedOutputsMessaging,
+    this.contentPolicyConfig,
+    this.contextualGroundingPolicyConfig,
+    this.crossRegionConfig,
+    this.description,
+    this.kmsKeyArn,
+    this.name,
+    this.region,
+    this.sensitiveInformationPolicyConfig,
+    this.tags,
+    this.timeouts,
+    this.topicPolicyConfig,
+    this.wordPolicyConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,20 +96,20 @@ class GuardrailArgs {
 
   factory GuardrailArgs.fromMap(Map<String, dynamic> map) {
     return GuardrailArgs(
-      blockedInputMessaging: pulumi.Output.create<String>(map['blockedInputMessaging'] as String),
-      blockedOutputsMessaging: pulumi.Output.create<String>(map['blockedOutputsMessaging'] as String),
-      contentPolicyConfig: map['contentPolicyConfig'] == null ? null : pulumi.Output.create<GuardrailContentPolicyConfig>(GuardrailContentPolicyConfig.fromMap((map['contentPolicyConfig'] as Map).cast<String, dynamic>())),
-      contextualGroundingPolicyConfig: map['contextualGroundingPolicyConfig'] == null ? null : pulumi.Output.create<GuardrailContextualGroundingPolicyConfig>(GuardrailContextualGroundingPolicyConfig.fromMap((map['contextualGroundingPolicyConfig'] as Map).cast<String, dynamic>())),
-      crossRegionConfig: map['crossRegionConfig'] == null ? null : pulumi.Output.create<GuardrailCrossRegionConfig>(GuardrailCrossRegionConfig.fromMap((map['crossRegionConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sensitiveInformationPolicyConfig: map['sensitiveInformationPolicyConfig'] == null ? null : pulumi.Output.create<GuardrailSensitiveInformationPolicyConfig>(GuardrailSensitiveInformationPolicyConfig.fromMap((map['sensitiveInformationPolicyConfig'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<GuardrailTimeouts>(GuardrailTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      topicPolicyConfig: map['topicPolicyConfig'] == null ? null : pulumi.Output.create<GuardrailTopicPolicyConfig>(GuardrailTopicPolicyConfig.fromMap((map['topicPolicyConfig'] as Map).cast<String, dynamic>())),
-      wordPolicyConfig: map['wordPolicyConfig'] == null ? null : pulumi.Output.create<GuardrailWordPolicyConfig>(GuardrailWordPolicyConfig.fromMap((map['wordPolicyConfig'] as Map).cast<String, dynamic>())),
+      blockedInputMessaging: (map['blockedInputMessaging'] as String).input(),
+      blockedOutputsMessaging: (map['blockedOutputsMessaging'] as String).input(),
+      contentPolicyConfig: map['contentPolicyConfig'] == null ? null : (GuardrailContentPolicyConfig.fromMap((map['contentPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      contextualGroundingPolicyConfig: map['contextualGroundingPolicyConfig'] == null ? null : (GuardrailContextualGroundingPolicyConfig.fromMap((map['contextualGroundingPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      crossRegionConfig: map['crossRegionConfig'] == null ? null : (GuardrailCrossRegionConfig.fromMap((map['crossRegionConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sensitiveInformationPolicyConfig: map['sensitiveInformationPolicyConfig'] == null ? null : (GuardrailSensitiveInformationPolicyConfig.fromMap((map['sensitiveInformationPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (GuardrailTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      topicPolicyConfig: map['topicPolicyConfig'] == null ? null : (GuardrailTopicPolicyConfig.fromMap((map['topicPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      wordPolicyConfig: map['wordPolicyConfig'] == null ? null : (GuardrailWordPolicyConfig.fromMap((map['wordPolicyConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

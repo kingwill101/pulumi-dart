@@ -16,11 +16,9 @@ class GetApplicationArgs {
   /// [applicationResourceName] The identity of the application.
   /// [resourceGroupName] Azure resource group name
   GetApplicationArgs({
-    required pulumi.Output<String> applicationResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applicationResourceName = pulumi.Input.asInput<String>(applicationResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.applicationResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      applicationResourceName: pulumi.Output.create<String>(map['applicationResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationResourceName: (map['applicationResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

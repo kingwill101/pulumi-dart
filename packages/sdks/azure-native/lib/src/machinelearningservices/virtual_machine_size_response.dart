@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'estimated_vmprices_response.dart';
 
 /// Describes the properties of a VM size.
 class VirtualMachineSizeResponse {
   /// The estimated price information for using a VM.
-  final EstimatedVMPricesResponse? estimatedVMPrices;
+  final pulumi.Input<EstimatedVMPricesResponse>? estimatedVMPrices;
   /// The family name of the virtual machine size.
-  final String family;
+  final pulumi.Input<String> family;
   /// The number of gPUs supported by the virtual machine size.
-  final int gpus;
+  final pulumi.Input<int> gpus;
   /// Specifies if the virtual machine size supports low priority VMs.
-  final bool lowPriorityCapable;
+  final pulumi.Input<bool> lowPriorityCapable;
   /// The resource volume size, in MB, allowed by the virtual machine size.
-  final int maxResourceVolumeMB;
+  final pulumi.Input<int> maxResourceVolumeMB;
   /// The amount of memory, in GB, supported by the virtual machine size.
-  final double memoryGB;
+  final pulumi.Input<double> memoryGB;
   /// The name of the virtual machine size.
-  final String name;
+  final pulumi.Input<String> name;
   /// The OS VHD disk size, in MB, allowed by the virtual machine size.
-  final int osVhdSizeMB;
+  final pulumi.Input<int> osVhdSizeMB;
   /// Specifies if the virtual machine size supports premium IO.
-  final bool premiumIO;
+  final pulumi.Input<bool> premiumIO;
   /// Specifies the compute types supported by the virtual machine size.
-  final List<String>? supportedComputeTypes;
+  final pulumi.Input<List<String>>? supportedComputeTypes;
   /// The number of vCPUs supported by the virtual machine size.
-  final int vCPUs;
+  final pulumi.Input<int> vCPUs;
 
   /// Creates a new [VirtualMachineSizeResponse].
   /// [estimatedVMPrices] The estimated price information for using a VM.
@@ -55,7 +56,7 @@ class VirtualMachineSizeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'estimatedVMPrices': ?estimatedVMPrices == null ? null : estimatedVMPrices!.toMap(),
+      'estimatedVMPrices': ?pulumi.Input.mapOptionalInputValue<EstimatedVMPricesResponse, Map<String, dynamic>>(estimatedVMPrices, (value) => value.toMap()),
       'family': family,
       'gpus': gpus,
       'lowPriorityCapable': lowPriorityCapable,
@@ -71,17 +72,17 @@ class VirtualMachineSizeResponse {
 
   factory VirtualMachineSizeResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineSizeResponse(
-      estimatedVMPrices: map['estimatedVMPrices'] == null ? null : EstimatedVMPricesResponse.fromMap((map['estimatedVMPrices'] as Map).cast<String, dynamic>()),
-      family: map['family'] as String,
-      gpus: map['gpus'] as int,
-      lowPriorityCapable: map['lowPriorityCapable'] as bool,
-      maxResourceVolumeMB: map['maxResourceVolumeMB'] as int,
-      memoryGB: map['memoryGB'] as double,
-      name: map['name'] as String,
-      osVhdSizeMB: map['osVhdSizeMB'] as int,
-      premiumIO: map['premiumIO'] as bool,
-      supportedComputeTypes: map['supportedComputeTypes'] == null ? null : (map['supportedComputeTypes'] as List).cast<String>(),
-      vCPUs: map['vCPUs'] as int,
+      estimatedVMPrices: map['estimatedVMPrices'] == null ? null : (EstimatedVMPricesResponse.fromMap((map['estimatedVMPrices'] as Map).cast<String, dynamic>())).input(),
+      family: (map['family'] as String).input(),
+      gpus: (map['gpus'] as int).input(),
+      lowPriorityCapable: (map['lowPriorityCapable'] as bool).input(),
+      maxResourceVolumeMB: (map['maxResourceVolumeMB'] as int).input(),
+      memoryGB: (map['memoryGB'] as double).input(),
+      name: (map['name'] as String).input(),
+      osVhdSizeMB: (map['osVhdSizeMB'] as int).input(),
+      premiumIO: (map['premiumIO'] as bool).input(),
+      supportedComputeTypes: map['supportedComputeTypes'] == null ? null : ((map['supportedComputeTypes'] as List).cast<String>()).input(),
+      vCPUs: (map['vCPUs'] as int).input(),
     );
   }
 }

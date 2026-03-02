@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Datapolicyv2DataPolicyDataMaskingPolicy {
   /// A predefined masking expression.
@@ -12,11 +13,11 @@ class Datapolicyv2DataPolicyDataMaskingPolicy {
   /// EMAIL_MASK
   /// DATE_YEAR_MASK
   /// RANDOM_HASH
-  final String? predefinedExpression;
+  final pulumi.Input<String>? predefinedExpression;
   /// The name of the BigQuery routine that contains the custom masking
   /// routine, in the format of
   /// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
-  final String? routine;
+  final pulumi.Input<String>? routine;
 
   /// Creates a new [Datapolicyv2DataPolicyDataMaskingPolicy].
   /// [predefinedExpression] A predefined masking expression.
@@ -35,8 +36,8 @@ class Datapolicyv2DataPolicyDataMaskingPolicy {
 
   factory Datapolicyv2DataPolicyDataMaskingPolicy.fromMap(Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyDataMaskingPolicy(
-      predefinedExpression: map['predefinedExpression'] == null ? null : map['predefinedExpression'] as String,
-      routine: map['routine'] == null ? null : map['routine'] as String,
+      predefinedExpression: map['predefinedExpression'] == null ? null : (map['predefinedExpression'] as String).input(),
+      routine: map['routine'] == null ? null : (map['routine'] as String).input(),
     );
   }
 }

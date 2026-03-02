@@ -16,11 +16,9 @@ class GetQueuesArgs {
   /// [queueNamePrefix] A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned. Queue URLs and names are case-sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetQueuesArgs({
-    pulumi.Output<String>? queueNamePrefix,
-    pulumi.Output<String>? region,
-  }) :
-      queueNamePrefix = pulumi.Input.asOptionalInput<String>(queueNamePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.queueNamePrefix,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetQueuesArgs {
 
   factory GetQueuesArgs.fromMap(Map<String, dynamic> map) {
     return GetQueuesArgs(
-      queueNamePrefix: map['queueNamePrefix'] == null ? null : pulumi.Output.create<String>(map['queueNamePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      queueNamePrefix: map['queueNamePrefix'] == null ? null : (map['queueNamePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

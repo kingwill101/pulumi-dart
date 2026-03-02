@@ -10,19 +10,19 @@ import 'space_space_settings_space_storage_settings.dart';
 
 class SpaceSpaceSettings {
   /// The type of app created within the space.
-  final String? appType;
+  final pulumi.Input<String>? appType;
   /// The Code Editor application settings. See `code_editor_app_settings` Block below.
-  final SpaceSpaceSettingsCodeEditorAppSettings? codeEditorAppSettings;
+  final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettings>? codeEditorAppSettings;
   /// A file system, created by you, that you assign to a space for an Amazon SageMaker AI Domain. See `custom_file_system` Block below.
-  final List<SpaceSpaceSettingsCustomFileSystem>? customFileSystems;
+  final pulumi.Input<List<SpaceSpaceSettingsCustomFileSystem>>? customFileSystems;
   /// The settings for the JupyterLab application. See `jupyter_lab_app_settings` Block below.
-  final SpaceSpaceSettingsJupyterLabAppSettings? jupyterLabAppSettings;
+  final pulumi.Input<SpaceSpaceSettingsJupyterLabAppSettings>? jupyterLabAppSettings;
   /// The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
-  final SpaceSpaceSettingsJupyterServerAppSettings? jupyterServerAppSettings;
+  final pulumi.Input<SpaceSpaceSettingsJupyterServerAppSettings>? jupyterServerAppSettings;
   /// The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
-  final SpaceSpaceSettingsKernelGatewayAppSettings? kernelGatewayAppSettings;
+  final pulumi.Input<SpaceSpaceSettingsKernelGatewayAppSettings>? kernelGatewayAppSettings;
   /// The storage settings. See `space_storage_settings` Block below.
-  final SpaceSpaceSettingsSpaceStorageSettings? spaceStorageSettings;
+  final pulumi.Input<SpaceSpaceSettingsSpaceStorageSettings>? spaceStorageSettings;
 
   /// Creates a new [SpaceSpaceSettings].
   /// [appType] The type of app created within the space.
@@ -45,24 +45,24 @@ class SpaceSpaceSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appType': ?appType,
-      'codeEditorAppSettings': ?codeEditorAppSettings == null ? null : codeEditorAppSettings!.toMap(),
-      'customFileSystems': ?customFileSystems == null ? null : pulumi.Input.encodeList<SpaceSpaceSettingsCustomFileSystem, Map<String, dynamic>>(customFileSystems!, (value) => value.toMap()),
-      'jupyterLabAppSettings': ?jupyterLabAppSettings == null ? null : jupyterLabAppSettings!.toMap(),
-      'jupyterServerAppSettings': ?jupyterServerAppSettings == null ? null : jupyterServerAppSettings!.toMap(),
-      'kernelGatewayAppSettings': ?kernelGatewayAppSettings == null ? null : kernelGatewayAppSettings!.toMap(),
-      'spaceStorageSettings': ?spaceStorageSettings == null ? null : spaceStorageSettings!.toMap(),
+      'codeEditorAppSettings': ?pulumi.Input.mapOptionalInputValue<SpaceSpaceSettingsCodeEditorAppSettings, Map<String, dynamic>>(codeEditorAppSettings, (value) => value.toMap()),
+      'customFileSystems': ?pulumi.Input.mapOptionalInputValue<List<SpaceSpaceSettingsCustomFileSystem>, List<Map<String, dynamic>>>(customFileSystems, (value) => pulumi.Input.encodeList<SpaceSpaceSettingsCustomFileSystem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'jupyterLabAppSettings': ?pulumi.Input.mapOptionalInputValue<SpaceSpaceSettingsJupyterLabAppSettings, Map<String, dynamic>>(jupyterLabAppSettings, (value) => value.toMap()),
+      'jupyterServerAppSettings': ?pulumi.Input.mapOptionalInputValue<SpaceSpaceSettingsJupyterServerAppSettings, Map<String, dynamic>>(jupyterServerAppSettings, (value) => value.toMap()),
+      'kernelGatewayAppSettings': ?pulumi.Input.mapOptionalInputValue<SpaceSpaceSettingsKernelGatewayAppSettings, Map<String, dynamic>>(kernelGatewayAppSettings, (value) => value.toMap()),
+      'spaceStorageSettings': ?pulumi.Input.mapOptionalInputValue<SpaceSpaceSettingsSpaceStorageSettings, Map<String, dynamic>>(spaceStorageSettings, (value) => value.toMap()),
     };
   }
 
   factory SpaceSpaceSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettings(
-      appType: map['appType'] == null ? null : map['appType'] as String,
-      codeEditorAppSettings: map['codeEditorAppSettings'] == null ? null : SpaceSpaceSettingsCodeEditorAppSettings.fromMap((map['codeEditorAppSettings'] as Map).cast<String, dynamic>()),
-      customFileSystems: map['customFileSystems'] == null ? null : pulumi.Input.decodeList<SpaceSpaceSettingsCustomFileSystem>(map['customFileSystems'], (value) => SpaceSpaceSettingsCustomFileSystem.fromMap((value as Map).cast<String, dynamic>())),
-      jupyterLabAppSettings: map['jupyterLabAppSettings'] == null ? null : SpaceSpaceSettingsJupyterLabAppSettings.fromMap((map['jupyterLabAppSettings'] as Map).cast<String, dynamic>()),
-      jupyterServerAppSettings: map['jupyterServerAppSettings'] == null ? null : SpaceSpaceSettingsJupyterServerAppSettings.fromMap((map['jupyterServerAppSettings'] as Map).cast<String, dynamic>()),
-      kernelGatewayAppSettings: map['kernelGatewayAppSettings'] == null ? null : SpaceSpaceSettingsKernelGatewayAppSettings.fromMap((map['kernelGatewayAppSettings'] as Map).cast<String, dynamic>()),
-      spaceStorageSettings: map['spaceStorageSettings'] == null ? null : SpaceSpaceSettingsSpaceStorageSettings.fromMap((map['spaceStorageSettings'] as Map).cast<String, dynamic>()),
+      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      codeEditorAppSettings: map['codeEditorAppSettings'] == null ? null : (SpaceSpaceSettingsCodeEditorAppSettings.fromMap((map['codeEditorAppSettings'] as Map).cast<String, dynamic>())).input(),
+      customFileSystems: map['customFileSystems'] == null ? null : (pulumi.Input.decodeList<SpaceSpaceSettingsCustomFileSystem>(map['customFileSystems'], (value) => SpaceSpaceSettingsCustomFileSystem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jupyterLabAppSettings: map['jupyterLabAppSettings'] == null ? null : (SpaceSpaceSettingsJupyterLabAppSettings.fromMap((map['jupyterLabAppSettings'] as Map).cast<String, dynamic>())).input(),
+      jupyterServerAppSettings: map['jupyterServerAppSettings'] == null ? null : (SpaceSpaceSettingsJupyterServerAppSettings.fromMap((map['jupyterServerAppSettings'] as Map).cast<String, dynamic>())).input(),
+      kernelGatewayAppSettings: map['kernelGatewayAppSettings'] == null ? null : (SpaceSpaceSettingsKernelGatewayAppSettings.fromMap((map['kernelGatewayAppSettings'] as Map).cast<String, dynamic>())).input(),
+      spaceStorageSettings: map['spaceStorageSettings'] == null ? null : (SpaceSpaceSettingsSpaceStorageSettings.fromMap((map['spaceStorageSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

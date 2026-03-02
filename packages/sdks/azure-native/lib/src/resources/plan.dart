@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Plan for the resource.
 class Plan {
   /// The plan ID.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The offer ID.
-  final String? product;
+  final pulumi.Input<String>? product;
   /// The promotion code.
-  final String? promotionCode;
+  final pulumi.Input<String>? promotionCode;
   /// The publisher ID.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// The plan's version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [Plan].
   /// [name] The plan ID.
@@ -40,11 +41,11 @@ class Plan {
 
   factory Plan.fromMap(Map<String, dynamic> map) {
     return Plan(
-      name: map['name'] == null ? null : map['name'] as String,
-      product: map['product'] == null ? null : map['product'] as String,
-      promotionCode: map['promotionCode'] == null ? null : map['promotionCode'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

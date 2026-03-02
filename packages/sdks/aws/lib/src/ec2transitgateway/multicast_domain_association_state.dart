@@ -19,15 +19,11 @@ class MulticastDomainAssociationState {
   /// [transitGatewayAttachmentId] The ID of the transit gateway attachment.
   /// [transitGatewayMulticastDomainId] The ID of the transit gateway multicast domain.
   MulticastDomainAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<String>? transitGatewayAttachmentId,
-    pulumi.Output<String>? transitGatewayMulticastDomainId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId),
-      transitGatewayMulticastDomainId = pulumi.Input.asOptionalInput<String>(transitGatewayMulticastDomainId);
+    this.region,
+    this.subnetId,
+    this.transitGatewayAttachmentId,
+    this.transitGatewayMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class MulticastDomainAssociationState {
 
   factory MulticastDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayMulticastDomainId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : (map['transitGatewayMulticastDomainId'] as String).input(),
     );
   }
 }

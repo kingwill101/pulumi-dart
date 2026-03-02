@@ -40,25 +40,16 @@ class PolicyArgs {
   /// [stepScalingPolicyConfiguration] Step scaling policy configuration, requires `policy_type = "StepScaling"` (default). See supported fields below.
   /// [targetTrackingScalingPolicyConfiguration] Target tracking policy configuration, requires `policy_type = "TargetTrackingScaling"`. See supported fields below.
   PolicyArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<PolicyPredictiveScalingPolicyConfiguration>? predictiveScalingPolicyConfiguration,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> scalableDimension,
-    required pulumi.Output<String> serviceNamespace,
-    pulumi.Output<PolicyStepScalingPolicyConfiguration>? stepScalingPolicyConfiguration,
-    pulumi.Output<PolicyTargetTrackingScalingPolicyConfiguration>? targetTrackingScalingPolicyConfiguration,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      predictiveScalingPolicyConfiguration = pulumi.Input.asOptionalInput<PolicyPredictiveScalingPolicyConfiguration>(predictiveScalingPolicyConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      scalableDimension = pulumi.Input.asInput<String>(scalableDimension),
-      serviceNamespace = pulumi.Input.asInput<String>(serviceNamespace),
-      stepScalingPolicyConfiguration = pulumi.Input.asOptionalInput<PolicyStepScalingPolicyConfiguration>(stepScalingPolicyConfiguration),
-      targetTrackingScalingPolicyConfiguration = pulumi.Input.asOptionalInput<PolicyTargetTrackingScalingPolicyConfiguration>(targetTrackingScalingPolicyConfiguration);
+    this.name,
+    this.policyType,
+    this.predictiveScalingPolicyConfiguration,
+    this.region,
+    required this.resourceId,
+    required this.scalableDimension,
+    required this.serviceNamespace,
+    this.stepScalingPolicyConfiguration,
+    this.targetTrackingScalingPolicyConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      predictiveScalingPolicyConfiguration: map['predictiveScalingPolicyConfiguration'] == null ? null : pulumi.Output.create<PolicyPredictiveScalingPolicyConfiguration>(PolicyPredictiveScalingPolicyConfiguration.fromMap((map['predictiveScalingPolicyConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      scalableDimension: pulumi.Output.create<String>(map['scalableDimension'] as String),
-      serviceNamespace: pulumi.Output.create<String>(map['serviceNamespace'] as String),
-      stepScalingPolicyConfiguration: map['stepScalingPolicyConfiguration'] == null ? null : pulumi.Output.create<PolicyStepScalingPolicyConfiguration>(PolicyStepScalingPolicyConfiguration.fromMap((map['stepScalingPolicyConfiguration'] as Map).cast<String, dynamic>())),
-      targetTrackingScalingPolicyConfiguration: map['targetTrackingScalingPolicyConfiguration'] == null ? null : pulumi.Output.create<PolicyTargetTrackingScalingPolicyConfiguration>(PolicyTargetTrackingScalingPolicyConfiguration.fromMap((map['targetTrackingScalingPolicyConfiguration'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      predictiveScalingPolicyConfiguration: map['predictiveScalingPolicyConfiguration'] == null ? null : (PolicyPredictiveScalingPolicyConfiguration.fromMap((map['predictiveScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      scalableDimension: (map['scalableDimension'] as String).input(),
+      serviceNamespace: (map['serviceNamespace'] as String).input(),
+      stepScalingPolicyConfiguration: map['stepScalingPolicyConfiguration'] == null ? null : (PolicyStepScalingPolicyConfiguration.fromMap((map['stepScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
+      targetTrackingScalingPolicyConfiguration: map['targetTrackingScalingPolicyConfiguration'] == null ? null : (PolicyTargetTrackingScalingPolicyConfiguration.fromMap((map['targetTrackingScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

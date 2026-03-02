@@ -8,19 +8,19 @@ import 'get_private_cloud_management_cluster_stretched_cluster_config.dart';
 class GetPrivateCloudManagementCluster {
   /// Configuration of the autoscaling applied to this cluster
   /// Private cloud must have a minimum of 3 nodes to add autoscale settings
-  final List<GetPrivateCloudManagementClusterAutoscalingSetting> autoscalingSettings;
+  final pulumi.Input<List<GetPrivateCloudManagementClusterAutoscalingSetting>> autoscalingSettings;
   /// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
   /// * Only contains 1-63 alphanumeric characters and hyphens
   /// * Begins with an alphabetical character
   /// * Ends with a non-hyphen character
   /// * Not formatted as a UUID
   /// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The map of cluster node types in this cluster,
   /// where the key is canonical identifier of the node type (corresponds to the NodeType).
-  final List<GetPrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs;
+  final pulumi.Input<List<GetPrivateCloudManagementClusterNodeTypeConfig>> nodeTypeConfigs;
   /// The stretched cluster configuration for the private cloud.
-  final List<GetPrivateCloudManagementClusterStretchedClusterConfig> stretchedClusterConfigs;
+  final pulumi.Input<List<GetPrivateCloudManagementClusterStretchedClusterConfig>> stretchedClusterConfigs;
 
   /// Creates a new [GetPrivateCloudManagementCluster].
   /// [autoscalingSettings] Configuration of the autoscaling applied to this cluster
@@ -36,19 +36,19 @@ class GetPrivateCloudManagementCluster {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingSettings': pulumi.Input.encodeList<GetPrivateCloudManagementClusterAutoscalingSetting, Map<String, dynamic>>(autoscalingSettings, (value) => value.toMap()),
+      'autoscalingSettings': pulumi.Input.mapInputValue<List<GetPrivateCloudManagementClusterAutoscalingSetting>, List<Map<String, dynamic>>>(autoscalingSettings, (value) => pulumi.Input.encodeList<GetPrivateCloudManagementClusterAutoscalingSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'clusterId': clusterId,
-      'nodeTypeConfigs': pulumi.Input.encodeList<GetPrivateCloudManagementClusterNodeTypeConfig, Map<String, dynamic>>(nodeTypeConfigs, (value) => value.toMap()),
-      'stretchedClusterConfigs': pulumi.Input.encodeList<GetPrivateCloudManagementClusterStretchedClusterConfig, Map<String, dynamic>>(stretchedClusterConfigs, (value) => value.toMap()),
+      'nodeTypeConfigs': pulumi.Input.mapInputValue<List<GetPrivateCloudManagementClusterNodeTypeConfig>, List<Map<String, dynamic>>>(nodeTypeConfigs, (value) => pulumi.Input.encodeList<GetPrivateCloudManagementClusterNodeTypeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stretchedClusterConfigs': pulumi.Input.mapInputValue<List<GetPrivateCloudManagementClusterStretchedClusterConfig>, List<Map<String, dynamic>>>(stretchedClusterConfigs, (value) => pulumi.Input.encodeList<GetPrivateCloudManagementClusterStretchedClusterConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetPrivateCloudManagementCluster.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementCluster(
-      autoscalingSettings: pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSetting>(map['autoscalingSettings'], (value) => GetPrivateCloudManagementClusterAutoscalingSetting.fromMap((value as Map).cast<String, dynamic>())),
-      clusterId: map['clusterId'] as String,
-      nodeTypeConfigs: pulumi.Input.decodeList<GetPrivateCloudManagementClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => GetPrivateCloudManagementClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      stretchedClusterConfigs: pulumi.Input.decodeList<GetPrivateCloudManagementClusterStretchedClusterConfig>(map['stretchedClusterConfigs'], (value) => GetPrivateCloudManagementClusterStretchedClusterConfig.fromMap((value as Map).cast<String, dynamic>())),
+      autoscalingSettings: (pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSetting>(map['autoscalingSettings'], (value) => GetPrivateCloudManagementClusterAutoscalingSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      nodeTypeConfigs: (pulumi.Input.decodeList<GetPrivateCloudManagementClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => GetPrivateCloudManagementClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stretchedClusterConfigs: (pulumi.Input.decodeList<GetPrivateCloudManagementClusterStretchedClusterConfig>(map['stretchedClusterConfigs'], (value) => GetPrivateCloudManagementClusterStretchedClusterConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

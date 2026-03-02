@@ -33,21 +33,14 @@ class InsightsAccountArgs {
   /// [scanSchedule] Schedule for automated scanning. Use 'daily' to enable daily scans, or 'none' to disable scheduled scanning. Defaults to 'none'.
   /// [tags] Key-value tags to associate with the insights account.
   InsightsAccountArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<CloudProvider> provider,
-    pulumi.Output<Map<String, dynamic>>? providerConfig,
-    required pulumi.Output<ScanSchedule> scanSchedule,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      environment = pulumi.Input.asInput<String>(environment),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      provider = pulumi.Input.asInput<CloudProvider>(provider),
-      providerConfig = pulumi.Input.asOptionalInput<Map<String, dynamic>>(providerConfig),
-      scanSchedule = pulumi.Input.asInput<ScanSchedule>(scanSchedule),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    required this.environment,
+    required this.organizationName,
+    required this.provider,
+    this.providerConfig,
+    required this.scanSchedule,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class InsightsAccountArgs {
 
   factory InsightsAccountArgs.fromMap(Map<String, dynamic> map) {
     return InsightsAccountArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      provider: pulumi.Output.create<CloudProvider>(CloudProvider.fromValue(map['provider'] as String)),
-      providerConfig: map['providerConfig'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['providerConfig'] as Map).cast<String, dynamic>()),
-      scanSchedule: pulumi.Output.create<ScanSchedule>(ScanSchedule.fromValue(map['scanSchedule'] as String)),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      provider: (CloudProvider.fromValue(map['provider'] as String)).input(),
+      providerConfig: map['providerConfig'] == null ? null : ((map['providerConfig'] as Map).cast<String, dynamic>()).input(),
+      scanSchedule: (ScanSchedule.fromValue(map['scanSchedule'] as String)).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

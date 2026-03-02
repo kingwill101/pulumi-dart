@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_node_config_containerd_config_private_registry_access_config_certificate_authority_domain_config_gcp_secret_manager_certificate_config.dart';
 
 class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
   /// List of fully-qualified-domain-names. IPv4s and port specification are supported.
-  final List<String> fqdns;
+  final pulumi.Input<List<String>> fqdns;
   /// Parameters for configuring a certificate hosted in GCP SecretManager.
-  final ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig gcpSecretManagerCertificateConfig;
+  final pulumi.Input<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig> gcpSecretManagerCertificateConfig;
 
   /// Creates a new [ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig].
   /// [fqdns] List of fully-qualified-domain-names. IPv4s and port specification are supported.
@@ -19,14 +20,14 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fqdns': fqdns,
-      'gcpSecretManagerCertificateConfig': gcpSecretManagerCertificateConfig.toMap(),
+      'gcpSecretManagerCertificateConfig': pulumi.Input.mapInputValue<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig, Map<String, dynamic>>(gcpSecretManagerCertificateConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig(
-      fqdns: (map['fqdns'] as List).cast<String>(),
-      gcpSecretManagerCertificateConfig: ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.fromMap((map['gcpSecretManagerCertificateConfig'] as Map).cast<String, dynamic>()),
+      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
+      gcpSecretManagerCertificateConfig: (ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.fromMap((map['gcpSecretManagerCertificateConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -39,17 +39,12 @@ class AttestorIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   AttestorIamBindingArgs({
-    required pulumi.Output<String> attestor,
-    pulumi.Output<AttestorIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      attestor = pulumi.Input.asInput<String>(attestor),
-      condition = pulumi.Input.asOptionalInput<AttestorIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    required this.attestor,
+    this.condition,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class AttestorIamBindingArgs {
 
   factory AttestorIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AttestorIamBindingArgs(
-      attestor: pulumi.Output.create<String>(map['attestor'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<AttestorIamBindingCondition>(AttestorIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      attestor: (map['attestor'] as String).input(),
+      condition: map['condition'] == null ? null : (AttestorIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

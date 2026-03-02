@@ -31,21 +31,14 @@ class VirtualRouterPeeringArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualRouterName] The name of the Virtual Router.
   VirtualRouterPeeringArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<double>? peerAsn,
-    pulumi.Output<String>? peerIp,
-    pulumi.Output<String>? peeringName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualRouterName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peerAsn = pulumi.Input.asOptionalInput<double>(peerAsn),
-      peerIp = pulumi.Input.asOptionalInput<String>(peerIp),
-      peeringName = pulumi.Input.asOptionalInput<String>(peeringName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualRouterName = pulumi.Input.asInput<String>(virtualRouterName);
+    this.id,
+    this.name,
+    this.peerAsn,
+    this.peerIp,
+    this.peeringName,
+    required this.resourceGroupName,
+    required this.virtualRouterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class VirtualRouterPeeringArgs {
 
   factory VirtualRouterPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VirtualRouterPeeringArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peerAsn: map['peerAsn'] == null ? null : pulumi.Output.create<double>(map['peerAsn'] as double),
-      peerIp: map['peerIp'] == null ? null : pulumi.Output.create<String>(map['peerIp'] as String),
-      peeringName: map['peeringName'] == null ? null : pulumi.Output.create<String>(map['peeringName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualRouterName: pulumi.Output.create<String>(map['virtualRouterName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as double).input(),
+      peerIp: map['peerIp'] == null ? null : (map['peerIp'] as String).input(),
+      peeringName: map['peeringName'] == null ? null : (map['peeringName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualRouterName: (map['virtualRouterName'] as String).input(),
     );
   }
 }

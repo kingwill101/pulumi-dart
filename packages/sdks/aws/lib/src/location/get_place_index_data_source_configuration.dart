@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlaceIndexDataSourceConfiguration {
-  final String intendedUse;
+  final pulumi.Input<String> intendedUse;
 
   /// Creates a new [GetPlaceIndexDataSourceConfiguration].
   /// [intendedUse] Required.
@@ -18,7 +19,7 @@ class GetPlaceIndexDataSourceConfiguration {
 
   factory GetPlaceIndexDataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetPlaceIndexDataSourceConfiguration(
-      intendedUse: map['intendedUse'] as String,
+      intendedUse: (map['intendedUse'] as String).input(),
     );
   }
 }

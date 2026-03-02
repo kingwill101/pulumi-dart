@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Java component scaling configurations
 class JavaComponentPropertiesResponseScale {
   /// Optional. Maximum number of Java component replicas
-  final int? maxReplicas;
+  final pulumi.Input<int>? maxReplicas;
   /// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
-  final int? minReplicas;
+  final pulumi.Input<int>? minReplicas;
 
   /// Creates a new [JavaComponentPropertiesResponseScale].
   /// [maxReplicas] Optional. Maximum number of Java component replicas
@@ -25,8 +26,8 @@ class JavaComponentPropertiesResponseScale {
 
   factory JavaComponentPropertiesResponseScale.fromMap(Map<String, dynamic> map) {
     return JavaComponentPropertiesResponseScale(
-      maxReplicas: map['maxReplicas'] == null ? null : map['maxReplicas'] as int,
-      minReplicas: map['minReplicas'] == null ? null : map['minReplicas'] as int,
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
     );
   }
 }

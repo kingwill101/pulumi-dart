@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grouping_configuration_response.dart';
 
 /// Incident Configuration property bag.
 class IncidentConfigurationResponse {
   /// Create incidents from alerts triggered by this analytics rule
-  final bool createIncident;
+  final pulumi.Input<bool> createIncident;
   /// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
-  final GroupingConfigurationResponse? groupingConfiguration;
+  final pulumi.Input<GroupingConfigurationResponse>? groupingConfiguration;
 
   /// Creates a new [IncidentConfigurationResponse].
   /// [createIncident] Create incidents from alerts triggered by this analytics rule
@@ -20,14 +21,14 @@ class IncidentConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createIncident': createIncident,
-      'groupingConfiguration': ?groupingConfiguration == null ? null : groupingConfiguration!.toMap(),
+      'groupingConfiguration': ?pulumi.Input.mapOptionalInputValue<GroupingConfigurationResponse, Map<String, dynamic>>(groupingConfiguration, (value) => value.toMap()),
     };
   }
 
   factory IncidentConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IncidentConfigurationResponse(
-      createIncident: map['createIncident'] as bool,
-      groupingConfiguration: map['groupingConfiguration'] == null ? null : GroupingConfigurationResponse.fromMap((map['groupingConfiguration'] as Map).cast<String, dynamic>()),
+      createIncident: (map['createIncident'] as bool).input(),
+      groupingConfiguration: map['groupingConfiguration'] == null ? null : (GroupingConfigurationResponse.fromMap((map['groupingConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

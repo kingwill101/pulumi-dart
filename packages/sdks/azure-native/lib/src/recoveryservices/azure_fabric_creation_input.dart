@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Fabric provider specific settings.
 class AzureFabricCreationInput {
   /// Gets the class type.
   /// Expected value is 'Azure'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The Location.
-  final String? location;
+  final pulumi.Input<String>? location;
 
   /// Creates a new [AzureFabricCreationInput].
   /// [instanceType] Gets the class type.
@@ -26,8 +27,8 @@ class AzureFabricCreationInput {
 
   factory AzureFabricCreationInput.fromMap(Map<String, dynamic> map) {
     return AzureFabricCreationInput(
-      instanceType: map['instanceType'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
     );
   }
 }

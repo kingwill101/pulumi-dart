@@ -26,19 +26,13 @@ class JobAgentState {
   /// [sku] The name of the SKU to use for this Elastic Job Agent. Possible values are `JA100`, `JA200`, `JA400`, and `JA800`. Defaults to `JA100`.
   /// [tags] A mapping of tags which should be assigned to this Elastic Job Agent.
   JobAgentState({
-    pulumi.Output<String>? databaseId,
-    pulumi.Output<JobAgentIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      databaseId = pulumi.Input.asOptionalInput<String>(databaseId),
-      identity = pulumi.Input.asOptionalInput<JobAgentIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.databaseId,
+    this.identity,
+    this.location,
+    this.name,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class JobAgentState {
 
   factory JobAgentState.fromMap(Map<String, dynamic> map) {
     return JobAgentState(
-      databaseId: map['databaseId'] == null ? null : pulumi.Output.create<String>(map['databaseId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<JobAgentIdentity>(JobAgentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
+      identity: map['identity'] == null ? null : (JobAgentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

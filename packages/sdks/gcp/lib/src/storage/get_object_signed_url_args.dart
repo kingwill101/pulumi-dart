@@ -41,23 +41,15 @@ class GetObjectSignedUrlArgs {
   /// [httpMethod] What HTTP Method will the signed URL allow (defaults to `GET`)
   /// [path] The full path to the object inside the bucket
   GetObjectSignedUrlArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? contentMd5,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? credentials,
-    pulumi.Output<String>? duration,
-    pulumi.Output<Map<String, String>>? extensionHeaders,
-    pulumi.Output<String>? httpMethod,
-    required pulumi.Output<String> path,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      contentMd5 = pulumi.Input.asOptionalInput<String>(contentMd5),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      credentials = pulumi.Input.asOptionalInput<String>(credentials),
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      extensionHeaders = pulumi.Input.asOptionalInput<Map<String, String>>(extensionHeaders),
-      httpMethod = pulumi.Input.asOptionalInput<String>(httpMethod),
-      path = pulumi.Input.asInput<String>(path);
+    required this.bucket,
+    this.contentMd5,
+    this.contentType,
+    this.credentials,
+    this.duration,
+    this.extensionHeaders,
+    this.httpMethod,
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class GetObjectSignedUrlArgs {
 
   factory GetObjectSignedUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectSignedUrlArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      contentMd5: map['contentMd5'] == null ? null : pulumi.Output.create<String>(map['contentMd5'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<String>(map['credentials'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      extensionHeaders: map['extensionHeaders'] == null ? null : pulumi.Output.create<Map<String, String>>((map['extensionHeaders'] as Map).cast<String, String>()),
-      httpMethod: map['httpMethod'] == null ? null : pulumi.Output.create<String>(map['httpMethod'] as String),
-      path: pulumi.Output.create<String>(map['path'] as String),
+      bucket: (map['bucket'] as String).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      credentials: map['credentials'] == null ? null : (map['credentials'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      extensionHeaders: map['extensionHeaders'] == null ? null : ((map['extensionHeaders'] as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

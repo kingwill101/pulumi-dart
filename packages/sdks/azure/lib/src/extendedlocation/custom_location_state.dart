@@ -35,25 +35,16 @@ class CustomLocationState {
   /// [namespace] Specifies the namespace of the Custom Location. Changing this forces a new Custom Location to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Custom Location should exist. Changing this forces a new Custom Location to be created.
   CustomLocationState({
-    pulumi.Output<CustomLocationAuthentication>? authentication,
-    pulumi.Output<List<String>>? clusterExtensionIds,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? hostResourceId,
-    pulumi.Output<String>? hostType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      authentication = pulumi.Input.asOptionalInput<CustomLocationAuthentication>(authentication),
-      clusterExtensionIds = pulumi.Input.asOptionalInput<List<String>>(clusterExtensionIds),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hostResourceId = pulumi.Input.asOptionalInput<String>(hostResourceId),
-      hostType = pulumi.Input.asOptionalInput<String>(hostType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.authentication,
+    this.clusterExtensionIds,
+    this.displayName,
+    this.hostResourceId,
+    this.hostType,
+    this.location,
+    this.name,
+    this.namespace,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class CustomLocationState {
 
   factory CustomLocationState.fromMap(Map<String, dynamic> map) {
     return CustomLocationState(
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<CustomLocationAuthentication>(CustomLocationAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : pulumi.Output.create<List<String>>((map['clusterExtensionIds'] as List).cast<String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hostResourceId: map['hostResourceId'] == null ? null : pulumi.Output.create<String>(map['hostResourceId'] as String),
-      hostType: map['hostType'] == null ? null : pulumi.Output.create<String>(map['hostType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authentication: map['authentication'] == null ? null : (CustomLocationAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : ((map['clusterExtensionIds'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hostResourceId: map['hostResourceId'] == null ? null : (map['hostResourceId'] as String).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

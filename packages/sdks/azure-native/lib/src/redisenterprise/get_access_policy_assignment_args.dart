@@ -22,15 +22,11 @@ class GetAccessPolicyAssignmentArgs {
   /// [databaseName] The name of the Redis Enterprise database.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAccessPolicyAssignmentArgs({
-    required pulumi.Output<String> accessPolicyAssignmentName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accessPolicyAssignmentName = pulumi.Input.asInput<String>(accessPolicyAssignmentName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accessPolicyAssignmentName,
+    required this.clusterName,
+    required this.databaseName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAccessPolicyAssignmentArgs {
 
   factory GetAccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyAssignmentArgs(
-      accessPolicyAssignmentName: pulumi.Output.create<String>(map['accessPolicyAssignmentName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accessPolicyAssignmentName: (map['accessPolicyAssignmentName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

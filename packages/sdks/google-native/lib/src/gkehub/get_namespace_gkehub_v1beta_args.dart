@@ -18,15 +18,11 @@ class GetNamespaceGkehubV1betaArgs {
   /// [project] Optional.
   /// [scopeId] Required.
   GetNamespaceGkehubV1betaArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scopeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scopeId = pulumi.Input.asInput<String>(scopeId);
+    required this.location,
+    required this.namespaceId,
+    this.project,
+    required this.scopeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetNamespaceGkehubV1betaArgs {
 
   factory GetNamespaceGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceGkehubV1betaArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
+      location: (map['location'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
     );
   }
 }

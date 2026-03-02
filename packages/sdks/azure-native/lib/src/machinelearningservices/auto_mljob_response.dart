@@ -14,47 +14,47 @@ import 'queue_settings_response.dart';
 /// See TaskType enum for all the tasks supported.
 class AutoMLJobResponse {
   /// ARM resource ID of the component resource.
-  final String? componentId;
+  final pulumi.Input<String>? componentId;
   /// ARM resource ID of the compute resource.
-  final String? computeId;
+  final pulumi.Input<String>? computeId;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Display name of job.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The ARM resource ID of the Environment specification for the job.
   /// This is optional value to provide, if not provided, AutoML will default this to Production AutoML curated environment version when running the job.
-  final String? environmentId;
+  final pulumi.Input<String>? environmentId;
   /// Environment variables included in the job.
-  final Map<String, String>? environmentVariables;
+  final pulumi.Input<Map<String, String>>? environmentVariables;
   /// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-  final String? experimentName;
+  final pulumi.Input<String>? experimentName;
   /// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
   /// Defaults to AmlToken if null.
-  final AmlTokenResponse? identity;
+  final pulumi.Input<AmlTokenResponse>? identity;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// Enum to determine the type of job.
   /// Expected value is 'AutoML'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// Notification setting for the job
-  final NotificationSettingResponse? notificationSetting;
+  final pulumi.Input<NotificationSettingResponse>? notificationSetting;
   /// Mapping of output data bindings used in the job.
-  final Map<String, CustomModelJobOutputResponse>? outputs;
+  final pulumi.Input<Map<String, CustomModelJobOutputResponse>>? outputs;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Queue settings for the job
-  final QueueSettingsResponse? queueSettings;
+  final pulumi.Input<QueueSettingsResponse>? queueSettings;
   /// Compute Resource configuration for the job.
-  final JobResourceConfigurationResponse? resources;
+  final pulumi.Input<JobResourceConfigurationResponse>? resources;
   /// List of JobEndpoints.
   /// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-  final Map<String, JobServiceResponse>? services;
+  final pulumi.Input<Map<String, JobServiceResponse>>? services;
   /// Status of the job.
-  final String status;
+  final pulumi.Input<String> status;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// [Required] This represents scenario which can be one of Tables/NLP/Image
-  final ClassificationResponse taskDetails;
+  final pulumi.Input<ClassificationResponse> taskDetails;
 
   /// Creates a new [AutoMLJobResponse].
   /// [componentId] ARM resource ID of the component resource.
@@ -107,42 +107,42 @@ class AutoMLJobResponse {
       'environmentId': ?environmentId,
       'environmentVariables': ?environmentVariables,
       'experimentName': ?experimentName,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<AmlTokenResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'isArchived': ?isArchived,
       'jobType': jobType,
-      'notificationSetting': ?notificationSetting == null ? null : notificationSetting!.toMap(),
-      'outputs': ?outputs == null ? null : pulumi.Input.encodeMapValues<CustomModelJobOutputResponse, Map<String, dynamic>>(outputs!, (value) => value.toMap()),
+      'notificationSetting': ?pulumi.Input.mapOptionalInputValue<NotificationSettingResponse, Map<String, dynamic>>(notificationSetting, (value) => value.toMap()),
+      'outputs': ?pulumi.Input.mapOptionalInputValue<Map<String, CustomModelJobOutputResponse>, Map<String, Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeMapValues<CustomModelJobOutputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'properties': ?properties,
-      'queueSettings': ?queueSettings == null ? null : queueSettings!.toMap(),
-      'resources': ?resources == null ? null : resources!.toMap(),
-      'services': ?services == null ? null : pulumi.Input.encodeMapValues<JobServiceResponse, Map<String, dynamic>>(services!, (value) => value.toMap()),
+      'queueSettings': ?pulumi.Input.mapOptionalInputValue<QueueSettingsResponse, Map<String, dynamic>>(queueSettings, (value) => value.toMap()),
+      'resources': ?pulumi.Input.mapOptionalInputValue<JobResourceConfigurationResponse, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'services': ?pulumi.Input.mapOptionalInputValue<Map<String, JobServiceResponse>, Map<String, Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeMapValues<JobServiceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
       'tags': ?tags,
-      'taskDetails': taskDetails.toMap(),
+      'taskDetails': pulumi.Input.mapInputValue<ClassificationResponse, Map<String, dynamic>>(taskDetails, (value) => value.toMap()),
     };
   }
 
   factory AutoMLJobResponse.fromMap(Map<String, dynamic> map) {
     return AutoMLJobResponse(
-      componentId: map['componentId'] == null ? null : map['componentId'] as String,
-      computeId: map['computeId'] == null ? null : map['computeId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      environmentId: map['environmentId'] == null ? null : map['environmentId'] as String,
-      environmentVariables: map['environmentVariables'] == null ? null : (map['environmentVariables'] as Map).cast<String, String>(),
-      experimentName: map['experimentName'] == null ? null : map['experimentName'] as String,
-      identity: map['identity'] == null ? null : AmlTokenResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      jobType: map['jobType'] as String,
-      notificationSetting: map['notificationSetting'] == null ? null : NotificationSettingResponse.fromMap((map['notificationSetting'] as Map).cast<String, dynamic>()),
-      outputs: map['outputs'] == null ? null : pulumi.Input.decodeMapValues<CustomModelJobOutputResponse>(map['outputs'], (value) => CustomModelJobOutputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      queueSettings: map['queueSettings'] == null ? null : QueueSettingsResponse.fromMap((map['queueSettings'] as Map).cast<String, dynamic>()),
-      resources: map['resources'] == null ? null : JobResourceConfigurationResponse.fromMap((map['resources'] as Map).cast<String, dynamic>()),
-      services: map['services'] == null ? null : pulumi.Input.decodeMapValues<JobServiceResponse>(map['services'], (value) => JobServiceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      taskDetails: ClassificationResponse.fromMap((map['taskDetails'] as Map).cast<String, dynamic>()),
+      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
+      computeId: map['computeId'] == null ? null : (map['computeId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName'] as String).input(),
+      identity: map['identity'] == null ? null : (AmlTokenResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      jobType: (map['jobType'] as String).input(),
+      notificationSetting: map['notificationSetting'] == null ? null : (NotificationSettingResponse.fromMap((map['notificationSetting'] as Map).cast<String, dynamic>())).input(),
+      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeMapValues<CustomModelJobOutputResponse>(map['outputs'], (value) => CustomModelJobOutputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      queueSettings: map['queueSettings'] == null ? null : (QueueSettingsResponse.fromMap((map['queueSettings'] as Map).cast<String, dynamic>())).input(),
+      resources: map['resources'] == null ? null : (JobResourceConfigurationResponse.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeMapValues<JobServiceResponse>(map['services'], (value) => JobServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      taskDetails: (ClassificationResponse.fromMap((map['taskDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

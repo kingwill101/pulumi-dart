@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'toolset_open_api_toolset_api_authentication.dart';
 import 'toolset_open_api_toolset_service_directory_config.dart';
 import 'toolset_open_api_toolset_tls_config.dart';
@@ -7,18 +8,18 @@ import 'toolset_open_api_toolset_tls_config.dart';
 class ToolsetOpenApiToolset {
   /// Authentication information required for API calls.
   /// Structure is documented below.
-  final ToolsetOpenApiToolsetApiAuthentication? apiAuthentication;
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthentication>? apiAuthentication;
   /// If true, the agent will ignore unknown fields in the API response for all
   /// operations defined in the OpenAPI schema.
-  final bool? ignoreUnknownFields;
+  final pulumi.Input<bool>? ignoreUnknownFields;
   /// The OpenAPI schema of the toolset.
-  final String openApiSchema;
+  final pulumi.Input<String> openApiSchema;
   /// Configuration for tools using Service Directory.
   /// Structure is documented below.
-  final ToolsetOpenApiToolsetServiceDirectoryConfig? serviceDirectoryConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetServiceDirectoryConfig>? serviceDirectoryConfig;
   /// The TLS configuration.
   /// Structure is documented below.
-  final ToolsetOpenApiToolsetTlsConfig? tlsConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetTlsConfig>? tlsConfig;
   /// (Output)
   /// The server URL of the Open API schema.
   /// This field is only set in toolsets in the environment dependencies
@@ -26,7 +27,7 @@ class ToolsetOpenApiToolset {
   /// During the import process, if this url is present in the environment dependencies
   /// and the schema has the $env_var placeholder,
   /// it will replace the placeholder in the schema.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [ToolsetOpenApiToolset].
   /// [apiAuthentication] Authentication information required for API calls.
@@ -46,23 +47,23 @@ class ToolsetOpenApiToolset {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiAuthentication': ?apiAuthentication == null ? null : apiAuthentication!.toMap(),
+      'apiAuthentication': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetApiAuthentication, Map<String, dynamic>>(apiAuthentication, (value) => value.toMap()),
       'ignoreUnknownFields': ?ignoreUnknownFields,
       'openApiSchema': openApiSchema,
-      'serviceDirectoryConfig': ?serviceDirectoryConfig == null ? null : serviceDirectoryConfig!.toMap(),
-      'tlsConfig': ?tlsConfig == null ? null : tlsConfig!.toMap(),
+      'serviceDirectoryConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetServiceDirectoryConfig, Map<String, dynamic>>(serviceDirectoryConfig, (value) => value.toMap()),
+      'tlsConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetTlsConfig, Map<String, dynamic>>(tlsConfig, (value) => value.toMap()),
       'url': ?url,
     };
   }
 
   factory ToolsetOpenApiToolset.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolset(
-      apiAuthentication: map['apiAuthentication'] == null ? null : ToolsetOpenApiToolsetApiAuthentication.fromMap((map['apiAuthentication'] as Map).cast<String, dynamic>()),
-      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : map['ignoreUnknownFields'] as bool,
-      openApiSchema: map['openApiSchema'] as String,
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
-      tlsConfig: map['tlsConfig'] == null ? null : ToolsetOpenApiToolsetTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>()),
-      url: map['url'] == null ? null : map['url'] as String,
+      apiAuthentication: map['apiAuthentication'] == null ? null : (ToolsetOpenApiToolsetApiAuthentication.fromMap((map['apiAuthentication'] as Map).cast<String, dynamic>())).input(),
+      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : (map['ignoreUnknownFields'] as bool).input(),
+      openApiSchema: (map['openApiSchema'] as String).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (ToolsetOpenApiToolsetTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

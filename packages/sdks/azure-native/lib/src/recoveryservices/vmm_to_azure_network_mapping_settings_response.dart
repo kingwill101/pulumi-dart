@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// E2A Network Mapping fabric specific settings.
 class VmmToAzureNetworkMappingSettingsResponse {
   /// Gets the Instance type.
   /// Expected value is 'VmmToAzure'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [VmmToAzureNetworkMappingSettingsResponse].
   /// [instanceType] Gets the Instance type.
@@ -21,7 +22,7 @@ class VmmToAzureNetworkMappingSettingsResponse {
 
   factory VmmToAzureNetworkMappingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return VmmToAzureNetworkMappingSettingsResponse(
-      instanceType: map['instanceType'] as String,
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

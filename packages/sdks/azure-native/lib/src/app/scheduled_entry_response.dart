@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Maintenance schedule entry for a managed environment.
 class ScheduledEntryResponse {
   /// Length of maintenance window range from 8 to 24 hours.
-  final int durationHours;
+  final pulumi.Input<int> durationHours;
   /// Start hour after which managed environment maintenance can start from 0 to 23 hour.
-  final int startHourUtc;
+  final pulumi.Input<int> startHourUtc;
   /// Day of the week when a managed environment can be patched.
-  final String weekDay;
+  final pulumi.Input<String> weekDay;
 
   /// Creates a new [ScheduledEntryResponse].
   /// [durationHours] Length of maintenance window range from 8 to 24 hours.
@@ -30,9 +31,9 @@ class ScheduledEntryResponse {
 
   factory ScheduledEntryResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledEntryResponse(
-      durationHours: map['durationHours'] as int,
-      startHourUtc: map['startHourUtc'] as int,
-      weekDay: map['weekDay'] as String,
+      durationHours: (map['durationHours'] as int).input(),
+      startHourUtc: (map['startHourUtc'] as int).input(),
+      weekDay: (map['weekDay'] as String).input(),
     );
   }
 }

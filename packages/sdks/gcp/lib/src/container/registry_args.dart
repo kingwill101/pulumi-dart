@@ -16,11 +16,9 @@ class RegistryArgs {
   /// [location] The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   RegistryArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class RegistryArgs {
 
   factory RegistryArgs.fromMap(Map<String, dynamic> map) {
     return RegistryArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

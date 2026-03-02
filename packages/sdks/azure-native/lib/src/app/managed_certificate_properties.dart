@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Certificate resource specific properties
 class ManagedCertificateProperties {
   /// Selected type of domain control validation for managed certificates.
-  final String? domainControlValidation;
+  final pulumi.Input<String>? domainControlValidation;
   /// Subject name of the certificate.
-  final String? subjectName;
+  final pulumi.Input<String>? subjectName;
 
   /// Creates a new [ManagedCertificateProperties].
   /// [domainControlValidation] Selected type of domain control validation for managed certificates.
@@ -25,8 +26,8 @@ class ManagedCertificateProperties {
 
   factory ManagedCertificateProperties.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateProperties(
-      domainControlValidation: map['domainControlValidation'] == null ? null : map['domainControlValidation'] as String,
-      subjectName: map['subjectName'] == null ? null : map['subjectName'] as String,
+      domainControlValidation: map['domainControlValidation'] == null ? null : (map['domainControlValidation'] as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
     );
   }
 }

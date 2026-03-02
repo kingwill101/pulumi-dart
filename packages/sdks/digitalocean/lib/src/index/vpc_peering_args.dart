@@ -16,11 +16,9 @@ class VpcPeeringArgs {
   /// [name] A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
   /// [vpcIds] A set of two VPC IDs to be peered.
   VpcPeeringArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> vpcIds,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      vpcIds = pulumi.Input.asInput<List<String>>(vpcIds);
+    this.name,
+    required this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class VpcPeeringArgs {
 
   factory VpcPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VpcPeeringArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      vpcIds: pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      vpcIds: ((map['vpcIds'] as List).cast<String>()).input(),
     );
   }
 }

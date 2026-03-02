@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TestGridProjectVpcConfig {
   /// A list of VPC security group IDs in your Amazon VPC.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// A list of VPC subnet IDs in your Amazon VPC.
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
   /// The ID of the Amazon VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [TestGridProjectVpcConfig].
   /// [securityGroupIds] A list of VPC security group IDs in your Amazon VPC.
@@ -29,9 +30,9 @@ class TestGridProjectVpcConfig {
 
   factory TestGridProjectVpcConfig.fromMap(Map<String, dynamic> map) {
     return TestGridProjectVpcConfig(
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

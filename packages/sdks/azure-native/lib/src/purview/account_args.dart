@@ -49,31 +49,19 @@ class AccountArgs {
   /// [tags] Tags on the azure resource.
   /// [tenantEndpointState] Gets or sets the state of tenant endpoint.
   AccountArgs({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<IngestionStorage>? ingestionStorage,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedEventHubState,
-    pulumi.Output<String>? managedResourceGroupName,
-    pulumi.Output<String>? managedResourcesPublicNetworkAccess,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AccountSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantEndpointState,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      ingestionStorage = pulumi.Input.asOptionalInput<IngestionStorage>(ingestionStorage),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedEventHubState = pulumi.Input.asOptionalInput<String>(managedEventHubState),
-      managedResourceGroupName = pulumi.Input.asOptionalInput<String>(managedResourceGroupName),
-      managedResourcesPublicNetworkAccess = pulumi.Input.asOptionalInput<String>(managedResourcesPublicNetworkAccess),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<AccountSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantEndpointState = pulumi.Input.asOptionalInput<String>(tenantEndpointState);
+    this.accountName,
+    this.identity,
+    this.ingestionStorage,
+    this.location,
+    this.managedEventHubState,
+    this.managedResourceGroupName,
+    this.managedResourcesPublicNetworkAccess,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.tenantEndpointState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      ingestionStorage: map['ingestionStorage'] == null ? null : pulumi.Output.create<IngestionStorage>(IngestionStorage.fromMap((map['ingestionStorage'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedEventHubState: map['managedEventHubState'] == null ? null : pulumi.Output.create<String>(map['managedEventHubState'] as String),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : pulumi.Output.create<String>(map['managedResourceGroupName'] as String),
-      managedResourcesPublicNetworkAccess: map['managedResourcesPublicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['managedResourcesPublicNetworkAccess'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<AccountSku>(AccountSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantEndpointState: map['tenantEndpointState'] == null ? null : pulumi.Output.create<String>(map['tenantEndpointState'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      ingestionStorage: map['ingestionStorage'] == null ? null : (IngestionStorage.fromMap((map['ingestionStorage'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedEventHubState: map['managedEventHubState'] == null ? null : (map['managedEventHubState'] as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
+      managedResourcesPublicNetworkAccess: map['managedResourcesPublicNetworkAccess'] == null ? null : (map['managedResourcesPublicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (AccountSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantEndpointState: map['tenantEndpointState'] == null ? null : (map['tenantEndpointState'] as String).input(),
     );
   }
 }

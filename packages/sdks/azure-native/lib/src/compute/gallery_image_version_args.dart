@@ -47,29 +47,18 @@ class GalleryImageVersionArgs {
   /// [storageProfile] This is the storage profile of a Gallery Image Version.
   /// [tags] Resource tags.
   GalleryImageVersionArgs({
-    required pulumi.Output<String> galleryImageName,
-    pulumi.Output<String>? galleryImageVersionName,
-    required pulumi.Output<String> galleryName,
-    pulumi.Output<String>? location,
-    pulumi.Output<GalleryImageVersionPublishingProfile>? publishingProfile,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? restore,
-    pulumi.Output<GalleryImageVersionSafetyProfile>? safetyProfile,
-    pulumi.Output<ImageVersionSecurityProfile>? securityProfile,
-    required pulumi.Output<GalleryImageVersionStorageProfile> storageProfile,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      galleryImageName = pulumi.Input.asInput<String>(galleryImageName),
-      galleryImageVersionName = pulumi.Input.asOptionalInput<String>(galleryImageVersionName),
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publishingProfile = pulumi.Input.asOptionalInput<GalleryImageVersionPublishingProfile>(publishingProfile),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      restore = pulumi.Input.asOptionalInput<bool>(restore),
-      safetyProfile = pulumi.Input.asOptionalInput<GalleryImageVersionSafetyProfile>(safetyProfile),
-      securityProfile = pulumi.Input.asOptionalInput<ImageVersionSecurityProfile>(securityProfile),
-      storageProfile = pulumi.Input.asInput<GalleryImageVersionStorageProfile>(storageProfile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.galleryImageName,
+    this.galleryImageVersionName,
+    required this.galleryName,
+    this.location,
+    this.publishingProfile,
+    required this.resourceGroupName,
+    this.restore,
+    this.safetyProfile,
+    this.securityProfile,
+    required this.storageProfile,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class GalleryImageVersionArgs {
 
   factory GalleryImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionArgs(
-      galleryImageName: pulumi.Output.create<String>(map['galleryImageName'] as String),
-      galleryImageVersionName: map['galleryImageVersionName'] == null ? null : pulumi.Output.create<String>(map['galleryImageVersionName'] as String),
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publishingProfile: map['publishingProfile'] == null ? null : pulumi.Output.create<GalleryImageVersionPublishingProfile>(GalleryImageVersionPublishingProfile.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      restore: map['restore'] == null ? null : pulumi.Output.create<bool>(map['restore'] as bool),
-      safetyProfile: map['safetyProfile'] == null ? null : pulumi.Output.create<GalleryImageVersionSafetyProfile>(GalleryImageVersionSafetyProfile.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>())),
-      securityProfile: map['securityProfile'] == null ? null : pulumi.Output.create<ImageVersionSecurityProfile>(ImageVersionSecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())),
-      storageProfile: pulumi.Output.create<GalleryImageVersionStorageProfile>(GalleryImageVersionStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      galleryImageName: (map['galleryImageName'] as String).input(),
+      galleryImageVersionName: map['galleryImageVersionName'] == null ? null : (map['galleryImageVersionName'] as String).input(),
+      galleryName: (map['galleryName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publishingProfile: map['publishingProfile'] == null ? null : (GalleryImageVersionPublishingProfile.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      restore: map['restore'] == null ? null : (map['restore'] as bool).input(),
+      safetyProfile: map['safetyProfile'] == null ? null : (GalleryImageVersionSafetyProfile.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (ImageVersionSecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: (GalleryImageVersionStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

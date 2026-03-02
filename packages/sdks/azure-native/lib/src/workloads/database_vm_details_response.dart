@@ -6,11 +6,11 @@ import 'storage_information_response.dart';
 /// Database VM details.
 class DatabaseVmDetailsResponse {
   /// Defines the SAP Instance status.
-  final String status;
+  final pulumi.Input<String> status;
   /// Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage.
-  final List<StorageInformationResponse> storageDetails;
+  final pulumi.Input<List<StorageInformationResponse>> storageDetails;
   /// The virtual machine id.
-  final String virtualMachineId;
+  final pulumi.Input<String> virtualMachineId;
 
   /// Creates a new [DatabaseVmDetailsResponse].
   /// [status] Defines the SAP Instance status.
@@ -25,16 +25,16 @@ class DatabaseVmDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'status': status,
-      'storageDetails': pulumi.Input.encodeList<StorageInformationResponse, Map<String, dynamic>>(storageDetails, (value) => value.toMap()),
+      'storageDetails': pulumi.Input.mapInputValue<List<StorageInformationResponse>, List<Map<String, dynamic>>>(storageDetails, (value) => pulumi.Input.encodeList<StorageInformationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'virtualMachineId': virtualMachineId,
     };
   }
 
   factory DatabaseVmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseVmDetailsResponse(
-      status: map['status'] as String,
-      storageDetails: pulumi.Input.decodeList<StorageInformationResponse>(map['storageDetails'], (value) => StorageInformationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      virtualMachineId: map['virtualMachineId'] as String,
+      status: (map['status'] as String).input(),
+      storageDetails: (pulumi.Input.decodeList<StorageInformationResponse>(map['storageDetails'], (value) => StorageInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualMachineId: (map['virtualMachineId'] as String).input(),
     );
   }
 }

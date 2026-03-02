@@ -16,11 +16,9 @@ class GetDbServersArgs {
   /// [cloudExadataInfrastructureName] The name of the Cloud Exadata Infrastructure.
   /// [resourceGroupName] The name of the Resource Group where the DB Server exists.
   GetDbServersArgs({
-    required pulumi.Output<String> cloudExadataInfrastructureName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cloudExadataInfrastructureName = pulumi.Input.asInput<String>(cloudExadataInfrastructureName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cloudExadataInfrastructureName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDbServersArgs {
 
   factory GetDbServersArgs.fromMap(Map<String, dynamic> map) {
     return GetDbServersArgs(
-      cloudExadataInfrastructureName: pulumi.Output.create<String>(map['cloudExadataInfrastructureName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cloudExadataInfrastructureName: (map['cloudExadataInfrastructureName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

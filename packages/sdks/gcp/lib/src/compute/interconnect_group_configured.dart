@@ -9,7 +9,7 @@ class InterconnectGroupConfigured {
   /// this group does or does not meet the requirements for the intended
   /// capability.
   /// Structure is documented below.
-  final List<InterconnectGroupConfiguredTopologyCapability>? topologyCapabilities;
+  final pulumi.Input<List<InterconnectGroupConfiguredTopologyCapability>>? topologyCapabilities;
 
   /// Creates a new [InterconnectGroupConfigured].
   /// [topologyCapabilities] (Output)
@@ -19,13 +19,13 @@ class InterconnectGroupConfigured {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'topologyCapabilities': ?topologyCapabilities == null ? null : pulumi.Input.encodeList<InterconnectGroupConfiguredTopologyCapability, Map<String, dynamic>>(topologyCapabilities!, (value) => value.toMap()),
+      'topologyCapabilities': ?pulumi.Input.mapOptionalInputValue<List<InterconnectGroupConfiguredTopologyCapability>, List<Map<String, dynamic>>>(topologyCapabilities, (value) => pulumi.Input.encodeList<InterconnectGroupConfiguredTopologyCapability, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory InterconnectGroupConfigured.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupConfigured(
-      topologyCapabilities: map['topologyCapabilities'] == null ? null : pulumi.Input.decodeList<InterconnectGroupConfiguredTopologyCapability>(map['topologyCapabilities'], (value) => InterconnectGroupConfiguredTopologyCapability.fromMap((value as Map).cast<String, dynamic>())),
+      topologyCapabilities: map['topologyCapabilities'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupConfiguredTopologyCapability>(map['topologyCapabilities'], (value) => InterconnectGroupConfiguredTopologyCapability.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet {
   /// Set of IPv4 or IPv6 addresses in CIDR notation to use for the Suricata `HOME_NET` variable.
-  final List<String> definitions;
+  final pulumi.Input<List<String>> definitions;
 
   /// Creates a new [FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet].
   /// [definitions] Set of IPv4 or IPv6 addresses in CIDR notation to use for the Suricata `HOME_NET` variable.
@@ -19,7 +20,7 @@ class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet {
 
   factory FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet(
-      definitions: (map['definitions'] as List).cast<String>(),
+      definitions: ((map['definitions'] as List).cast<String>()).input(),
     );
   }
 }

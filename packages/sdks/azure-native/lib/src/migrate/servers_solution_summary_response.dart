@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Class representing the servers solution summary.
 class ServersSolutionSummaryResponse {
   /// Gets or sets the count of servers assessed.
-  final int? assessedCount;
+  final pulumi.Input<int>? assessedCount;
   /// Gets or sets the count of servers discovered.
-  final int? discoveredCount;
+  final pulumi.Input<int>? discoveredCount;
   /// Gets the Instance type.
   /// Expected value is 'Servers'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the count of servers migrated.
-  final int? migratedCount;
+  final pulumi.Input<int>? migratedCount;
   /// Gets or sets the count of servers being replicated.
-  final int? replicatingCount;
+  final pulumi.Input<int>? replicatingCount;
   /// Gets or sets the count of servers test migrated.
-  final int? testMigratedCount;
+  final pulumi.Input<int>? testMigratedCount;
 
   /// Creates a new [ServersSolutionSummaryResponse].
   /// [assessedCount] Gets or sets the count of servers assessed.
@@ -46,12 +47,12 @@ class ServersSolutionSummaryResponse {
 
   factory ServersSolutionSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ServersSolutionSummaryResponse(
-      assessedCount: map['assessedCount'] == null ? null : map['assessedCount'] as int,
-      discoveredCount: map['discoveredCount'] == null ? null : map['discoveredCount'] as int,
-      instanceType: map['instanceType'] as String,
-      migratedCount: map['migratedCount'] == null ? null : map['migratedCount'] as int,
-      replicatingCount: map['replicatingCount'] == null ? null : map['replicatingCount'] as int,
-      testMigratedCount: map['testMigratedCount'] == null ? null : map['testMigratedCount'] as int,
+      assessedCount: map['assessedCount'] == null ? null : (map['assessedCount'] as int).input(),
+      discoveredCount: map['discoveredCount'] == null ? null : (map['discoveredCount'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      migratedCount: map['migratedCount'] == null ? null : (map['migratedCount'] as int).input(),
+      replicatingCount: map['replicatingCount'] == null ? null : (map['replicatingCount'] as int).input(),
+      testMigratedCount: map['testMigratedCount'] == null ? null : (map['testMigratedCount'] as int).input(),
     );
   }
 }

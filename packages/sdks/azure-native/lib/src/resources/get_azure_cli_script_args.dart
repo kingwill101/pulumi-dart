@@ -16,11 +16,9 @@ class GetAzureCliScriptArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scriptName] Name of the deployment script.
   GetAzureCliScriptArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scriptName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scriptName = pulumi.Input.asInput<String>(scriptName);
+    required this.resourceGroupName,
+    required this.scriptName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAzureCliScriptArgs {
 
   factory GetAzureCliScriptArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureCliScriptArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scriptName: pulumi.Output.create<String>(map['scriptName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scriptName: (map['scriptName'] as String).input(),
     );
   }
 }

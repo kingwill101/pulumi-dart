@@ -48,31 +48,19 @@ class ProvisioningConfigArgs {
   /// [volumes] Volumes to be created.
   /// [vpcScEnabled] If true, VPC SC is enabled for the cluster.
   ProvisioningConfigArgs({
-    pulumi.Output<String>? customId,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? handoverServiceAccount,
-    pulumi.Output<List<InstanceConfig>>? instances,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<NetworkConfig>>? networks,
-    pulumi.Output<String>? pod,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? statusMessage,
-    pulumi.Output<String>? ticketId,
-    pulumi.Output<List<VolumeConfig>>? volumes,
-    pulumi.Output<bool>? vpcScEnabled,
-  }) :
-      customId = pulumi.Input.asOptionalInput<String>(customId),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      handoverServiceAccount = pulumi.Input.asOptionalInput<String>(handoverServiceAccount),
-      instances = pulumi.Input.asOptionalInput<List<InstanceConfig>>(instances),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networks = pulumi.Input.asOptionalInput<List<NetworkConfig>>(networks),
-      pod = pulumi.Input.asOptionalInput<String>(pod),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      statusMessage = pulumi.Input.asOptionalInput<String>(statusMessage),
-      ticketId = pulumi.Input.asOptionalInput<String>(ticketId),
-      volumes = pulumi.Input.asOptionalInput<List<VolumeConfig>>(volumes),
-      vpcScEnabled = pulumi.Input.asOptionalInput<bool>(vpcScEnabled);
+    this.customId,
+    this.email,
+    this.handoverServiceAccount,
+    this.instances,
+    this.location,
+    this.networks,
+    this.pod,
+    this.project,
+    this.statusMessage,
+    this.ticketId,
+    this.volumes,
+    this.vpcScEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class ProvisioningConfigArgs {
 
   factory ProvisioningConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProvisioningConfigArgs(
-      customId: map['customId'] == null ? null : pulumi.Output.create<String>(map['customId'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      handoverServiceAccount: map['handoverServiceAccount'] == null ? null : pulumi.Output.create<String>(map['handoverServiceAccount'] as String),
-      instances: map['instances'] == null ? null : pulumi.Output.create<List<InstanceConfig>>(pulumi.Input.decodeList<InstanceConfig>(map['instances'], (value) => InstanceConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networks: map['networks'] == null ? null : pulumi.Output.create<List<NetworkConfig>>(pulumi.Input.decodeList<NetworkConfig>(map['networks'], (value) => NetworkConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      pod: map['pod'] == null ? null : pulumi.Output.create<String>(map['pod'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      statusMessage: map['statusMessage'] == null ? null : pulumi.Output.create<String>(map['statusMessage'] as String),
-      ticketId: map['ticketId'] == null ? null : pulumi.Output.create<String>(map['ticketId'] as String),
-      volumes: map['volumes'] == null ? null : pulumi.Output.create<List<VolumeConfig>>(pulumi.Input.decodeList<VolumeConfig>(map['volumes'], (value) => VolumeConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      vpcScEnabled: map['vpcScEnabled'] == null ? null : pulumi.Output.create<bool>(map['vpcScEnabled'] as bool),
+      customId: map['customId'] == null ? null : (map['customId'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      handoverServiceAccount: map['handoverServiceAccount'] == null ? null : (map['handoverServiceAccount'] as String).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<InstanceConfig>(map['instances'], (value) => InstanceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<NetworkConfig>(map['networks'], (value) => NetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pod: map['pod'] == null ? null : (map['pod'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      ticketId: map['ticketId'] == null ? null : (map['ticketId'] as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeConfig>(map['volumes'], (value) => VolumeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcScEnabled: map['vpcScEnabled'] == null ? null : (map['vpcScEnabled'] as bool).input(),
     );
   }
 }

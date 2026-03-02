@@ -16,11 +16,9 @@ class GetEndpointArgs {
   /// [endpointName] The endpoint name.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetEndpointArgs({
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.endpointName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetAvailabilityZonesArgs {
   /// [region] The `region` to fetch availability zones from, defaults to the provider's `region`
   /// [state] The `state` of the availability zones to match, default ("available").
   GetAvailabilityZonesArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.region,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAvailabilityZonesArgs {
 
   factory GetAvailabilityZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZonesArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

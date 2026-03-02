@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The desired maximum forecast horizon in units of time-series frequency.
 class CustomForecastHorizon {
   /// Enum to determine forecast horizon selection mode.
   /// Expected value is 'Custom'.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// [Required] Forecast horizon value.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [CustomForecastHorizon].
   /// [mode] Enum to determine forecast horizon selection mode.
@@ -26,8 +27,8 @@ class CustomForecastHorizon {
 
   factory CustomForecastHorizon.fromMap(Map<String, dynamic> map) {
     return CustomForecastHorizon(
-      mode: map['mode'] as String,
-      value: map['value'] as int,
+      mode: (map['mode'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

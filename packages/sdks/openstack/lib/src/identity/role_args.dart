@@ -21,13 +21,10 @@ class RoleArgs {
   /// [name] The name of the role.
   /// [region] The region in which to obtain the V3 Keystone client.
   RoleArgs({
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.domainId,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

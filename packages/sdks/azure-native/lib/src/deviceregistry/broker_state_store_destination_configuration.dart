@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration for a MQTT broker state store destination.
 class BrokerStateStoreDestinationConfiguration {
   /// The MQTT broker state store destination key.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [BrokerStateStoreDestinationConfiguration].
   /// [key] The MQTT broker state store destination key.
@@ -20,7 +21,7 @@ class BrokerStateStoreDestinationConfiguration {
 
   factory BrokerStateStoreDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return BrokerStateStoreDestinationConfiguration(
-      key: map['key'] as String,
+      key: (map['key'] as String).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3ProvisionConfigTargetTrackingPolicy {
   /// Policy expiration time
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// Maximum value of expansion
-  final int? maxCapacity;
+  final pulumi.Input<int>? maxCapacity;
   /// Tracking value of the indicator
-  final double? metricTarget;
+  final pulumi.Input<double>? metricTarget;
   /// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
-  final String? metricType;
+  final pulumi.Input<String>? metricType;
   /// Minimum Shrinkage
-  final int? minCapacity;
+  final pulumi.Input<int>? minCapacity;
   /// Policy Name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Policy Effective Time
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Time zone.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [V3ProvisionConfigTargetTrackingPolicy].
   /// [endTime] Policy expiration time
@@ -54,14 +55,14 @@ class V3ProvisionConfigTargetTrackingPolicy {
 
   factory V3ProvisionConfigTargetTrackingPolicy.fromMap(Map<String, dynamic> map) {
     return V3ProvisionConfigTargetTrackingPolicy(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      maxCapacity: map['maxCapacity'] == null ? null : map['maxCapacity'] as int,
-      metricTarget: map['metricTarget'] == null ? null : map['metricTarget'] as double,
-      metricType: map['metricType'] == null ? null : map['metricType'] as String,
-      minCapacity: map['minCapacity'] == null ? null : map['minCapacity'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
+      metricTarget: map['metricTarget'] == null ? null : (map['metricTarget'] as double).input(),
+      metricType: map['metricType'] == null ? null : (map['metricType'] as String).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

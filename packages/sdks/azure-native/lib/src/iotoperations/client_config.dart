@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subscriber_queue_limit.dart';
 
 /// The settings of Client Config.
 class ClientConfig {
   /// Upper bound of a client's Keep Alive, in seconds.
-  final int? maxKeepAliveSeconds;
+  final pulumi.Input<int>? maxKeepAliveSeconds;
   /// Upper bound of Message Expiry Interval, in seconds.
-  final int? maxMessageExpirySeconds;
+  final pulumi.Input<int>? maxMessageExpirySeconds;
   /// Max message size for a packet in Bytes.
-  final int? maxPacketSizeBytes;
+  final pulumi.Input<int>? maxPacketSizeBytes;
   /// Upper bound of Receive Maximum that a client can request in the CONNECT packet.
-  final int? maxReceiveMaximum;
+  final pulumi.Input<int>? maxReceiveMaximum;
   /// Upper bound of Session Expiry Interval, in seconds.
-  final int? maxSessionExpirySeconds;
+  final pulumi.Input<int>? maxSessionExpirySeconds;
   /// The limit on the number of queued messages for a subscriber.
-  final SubscriberQueueLimit? subscriberQueueLimit;
+  final pulumi.Input<SubscriberQueueLimit>? subscriberQueueLimit;
 
   /// Creates a new [ClientConfig].
   /// [maxKeepAliveSeconds] Upper bound of a client's Keep Alive, in seconds.
@@ -40,18 +41,18 @@ class ClientConfig {
       'maxPacketSizeBytes': ?maxPacketSizeBytes,
       'maxReceiveMaximum': ?maxReceiveMaximum,
       'maxSessionExpirySeconds': ?maxSessionExpirySeconds,
-      'subscriberQueueLimit': ?subscriberQueueLimit == null ? null : subscriberQueueLimit!.toMap(),
+      'subscriberQueueLimit': ?pulumi.Input.mapOptionalInputValue<SubscriberQueueLimit, Map<String, dynamic>>(subscriberQueueLimit, (value) => value.toMap()),
     };
   }
 
   factory ClientConfig.fromMap(Map<String, dynamic> map) {
     return ClientConfig(
-      maxKeepAliveSeconds: map['maxKeepAliveSeconds'] == null ? null : map['maxKeepAliveSeconds'] as int,
-      maxMessageExpirySeconds: map['maxMessageExpirySeconds'] == null ? null : map['maxMessageExpirySeconds'] as int,
-      maxPacketSizeBytes: map['maxPacketSizeBytes'] == null ? null : map['maxPacketSizeBytes'] as int,
-      maxReceiveMaximum: map['maxReceiveMaximum'] == null ? null : map['maxReceiveMaximum'] as int,
-      maxSessionExpirySeconds: map['maxSessionExpirySeconds'] == null ? null : map['maxSessionExpirySeconds'] as int,
-      subscriberQueueLimit: map['subscriberQueueLimit'] == null ? null : SubscriberQueueLimit.fromMap((map['subscriberQueueLimit'] as Map).cast<String, dynamic>()),
+      maxKeepAliveSeconds: map['maxKeepAliveSeconds'] == null ? null : (map['maxKeepAliveSeconds'] as int).input(),
+      maxMessageExpirySeconds: map['maxMessageExpirySeconds'] == null ? null : (map['maxMessageExpirySeconds'] as int).input(),
+      maxPacketSizeBytes: map['maxPacketSizeBytes'] == null ? null : (map['maxPacketSizeBytes'] as int).input(),
+      maxReceiveMaximum: map['maxReceiveMaximum'] == null ? null : (map['maxReceiveMaximum'] as int).input(),
+      maxSessionExpirySeconds: map['maxSessionExpirySeconds'] == null ? null : (map['maxSessionExpirySeconds'] as int).input(),
+      subscriberQueueLimit: map['subscriberQueueLimit'] == null ? null : (SubscriberQueueLimit.fromMap((map['subscriberQueueLimit'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

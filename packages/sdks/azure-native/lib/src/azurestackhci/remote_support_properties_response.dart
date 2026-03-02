@@ -7,13 +7,13 @@ import 'remote_support_node_settings_response.dart';
 /// Remote Support properties of the cluster.
 class RemoteSupportPropertiesResponse {
   /// Remote Support Access Level
-  final String accessLevel;
+  final pulumi.Input<String> accessLevel;
   /// Expiration DateTimeStamp when Remote Support Access will be expired
-  final String expirationTimeStamp;
-  final List<RemoteSupportNodeSettingsResponse> remoteSupportNodeSettings;
-  final List<PerNodeRemoteSupportSessionResponse> remoteSupportSessionDetails;
+  final pulumi.Input<String> expirationTimeStamp;
+  final pulumi.Input<List<RemoteSupportNodeSettingsResponse>> remoteSupportNodeSettings;
+  final pulumi.Input<List<PerNodeRemoteSupportSessionResponse>> remoteSupportSessionDetails;
   /// Remote Support Type for cluster
-  final String remoteSupportType;
+  final pulumi.Input<String> remoteSupportType;
 
   /// Creates a new [RemoteSupportPropertiesResponse].
   /// [accessLevel] Remote Support Access Level
@@ -33,19 +33,19 @@ class RemoteSupportPropertiesResponse {
     return <String, dynamic>{
       'accessLevel': accessLevel,
       'expirationTimeStamp': expirationTimeStamp,
-      'remoteSupportNodeSettings': pulumi.Input.encodeList<RemoteSupportNodeSettingsResponse, Map<String, dynamic>>(remoteSupportNodeSettings, (value) => value.toMap()),
-      'remoteSupportSessionDetails': pulumi.Input.encodeList<PerNodeRemoteSupportSessionResponse, Map<String, dynamic>>(remoteSupportSessionDetails, (value) => value.toMap()),
+      'remoteSupportNodeSettings': pulumi.Input.mapInputValue<List<RemoteSupportNodeSettingsResponse>, List<Map<String, dynamic>>>(remoteSupportNodeSettings, (value) => pulumi.Input.encodeList<RemoteSupportNodeSettingsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'remoteSupportSessionDetails': pulumi.Input.mapInputValue<List<PerNodeRemoteSupportSessionResponse>, List<Map<String, dynamic>>>(remoteSupportSessionDetails, (value) => pulumi.Input.encodeList<PerNodeRemoteSupportSessionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'remoteSupportType': remoteSupportType,
     };
   }
 
   factory RemoteSupportPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RemoteSupportPropertiesResponse(
-      accessLevel: map['accessLevel'] as String,
-      expirationTimeStamp: map['expirationTimeStamp'] as String,
-      remoteSupportNodeSettings: pulumi.Input.decodeList<RemoteSupportNodeSettingsResponse>(map['remoteSupportNodeSettings'], (value) => RemoteSupportNodeSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      remoteSupportSessionDetails: pulumi.Input.decodeList<PerNodeRemoteSupportSessionResponse>(map['remoteSupportSessionDetails'], (value) => PerNodeRemoteSupportSessionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      remoteSupportType: map['remoteSupportType'] as String,
+      accessLevel: (map['accessLevel'] as String).input(),
+      expirationTimeStamp: (map['expirationTimeStamp'] as String).input(),
+      remoteSupportNodeSettings: (pulumi.Input.decodeList<RemoteSupportNodeSettingsResponse>(map['remoteSupportNodeSettings'], (value) => RemoteSupportNodeSettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remoteSupportSessionDetails: (pulumi.Input.decodeList<PerNodeRemoteSupportSessionResponse>(map['remoteSupportSessionDetails'], (value) => PerNodeRemoteSupportSessionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remoteSupportType: (map['remoteSupportType'] as String).input(),
     );
   }
 }

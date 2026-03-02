@@ -38,25 +38,16 @@ class WorkspaceCertificateState {
   /// [thumbprint] The thumbprint of the API Management Workspace Certificate.
   /// [userAssignedIdentityClientId] Specifies the client ID of user-assigned identity to be used for accessing the `key_vault_secret_id`.
   WorkspaceCertificateState({
-    pulumi.Output<String>? apiManagementWorkspaceId,
-    pulumi.Output<String>? certificateDataBase64,
-    pulumi.Output<String>? expiration,
-    pulumi.Output<String>? keyVaultSecretId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? subject,
-    pulumi.Output<String>? thumbprint,
-    pulumi.Output<String>? userAssignedIdentityClientId,
-  }) :
-      apiManagementWorkspaceId = pulumi.Input.asOptionalInput<String>(apiManagementWorkspaceId),
-      certificateDataBase64 = pulumi.Input.asOptionalInput<String>(certificateDataBase64),
-      expiration = pulumi.Input.asOptionalInput<String>(expiration),
-      keyVaultSecretId = pulumi.Input.asOptionalInput<String>(keyVaultSecretId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      subject = pulumi.Input.asOptionalInput<String>(subject),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint),
-      userAssignedIdentityClientId = pulumi.Input.asOptionalInput<String>(userAssignedIdentityClientId);
+    this.apiManagementWorkspaceId,
+    this.certificateDataBase64,
+    this.expiration,
+    this.keyVaultSecretId,
+    this.name,
+    this.password,
+    this.subject,
+    this.thumbprint,
+    this.userAssignedIdentityClientId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class WorkspaceCertificateState {
 
   factory WorkspaceCertificateState.fromMap(Map<String, dynamic> map) {
     return WorkspaceCertificateState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['apiManagementWorkspaceId'] as String),
-      certificateDataBase64: map['certificateDataBase64'] == null ? null : pulumi.Output.create<String>(map['certificateDataBase64'] as String),
-      expiration: map['expiration'] == null ? null : pulumi.Output.create<String>(map['expiration'] as String),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      subject: map['subject'] == null ? null : pulumi.Output.create<String>(map['subject'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
-      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : pulumi.Output.create<String>(map['userAssignedIdentityClientId'] as String),
+      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId'] as String).input(),
+      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId'] as String).input(),
     );
   }
 }

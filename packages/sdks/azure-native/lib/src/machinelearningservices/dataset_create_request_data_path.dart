@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetCreateRequestDataPath {
   /// The datastore name.
-  final String? datastoreName;
+  final pulumi.Input<String>? datastoreName;
   /// Path within the datastore.
-  final String? relativePath;
+  final pulumi.Input<String>? relativePath;
 
   /// Creates a new [DatasetCreateRequestDataPath].
   /// [datastoreName] The datastore name.
@@ -24,8 +25,8 @@ class DatasetCreateRequestDataPath {
 
   factory DatasetCreateRequestDataPath.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestDataPath(
-      datastoreName: map['datastoreName'] == null ? null : map['datastoreName'] as String,
-      relativePath: map['relativePath'] == null ? null : map['relativePath'] as String,
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
     );
   }
 }

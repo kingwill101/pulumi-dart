@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP address range configuration.
 class IpAddressRange {
   /// End IP address.
-  final String endIp;
+  final pulumi.Input<String> endIp;
   /// Start IP address.
-  final String startIp;
+  final pulumi.Input<String> startIp;
 
   /// Creates a new [IpAddressRange].
   /// [endIp] End IP address.
@@ -25,8 +26,8 @@ class IpAddressRange {
 
   factory IpAddressRange.fromMap(Map<String, dynamic> map) {
     return IpAddressRange(
-      endIp: map['endIp'] as String,
-      startIp: map['startIp'] as String,
+      endIp: (map['endIp'] as String).input(),
+      startIp: (map['startIp'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RequiredParameter {
-  final String? in_;
-  final String? name;
+  final pulumi.Input<String>? in_;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [RequiredParameter].
   /// [in_] Optional.
@@ -22,8 +23,8 @@ class RequiredParameter {
 
   factory RequiredParameter.fromMap(Map<String, dynamic> map) {
     return RequiredParameter(
-      in_: map['in'] == null ? null : map['in'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      in_: map['in'] == null ? null : (map['in'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

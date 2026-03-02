@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_table_response.dart';
 
 /// If set, the detailed data profiles will be persisted to the location of your choice whenever updated.
 class GooglePrivacyDlpV2ExportResponse {
   /// Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
-  final GooglePrivacyDlpV2BigQueryTableResponse profileTable;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryTableResponse> profileTable;
 
   /// Creates a new [GooglePrivacyDlpV2ExportResponse].
   /// [profileTable] Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
@@ -15,13 +16,13 @@ class GooglePrivacyDlpV2ExportResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'profileTable': profileTable.toMap(),
+      'profileTable': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryTableResponse, Map<String, dynamic>>(profileTable, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2ExportResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ExportResponse(
-      profileTable: GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['profileTable'] as Map).cast<String, dynamic>()),
+      profileTable: (GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['profileTable'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

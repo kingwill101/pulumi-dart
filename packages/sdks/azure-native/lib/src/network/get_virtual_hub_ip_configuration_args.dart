@@ -19,13 +19,10 @@ class GetVirtualHubIpConfigurationArgs {
   /// [resourceGroupName] The resource group name of the VirtualHub.
   /// [virtualHubName] The name of the VirtualHub.
   GetVirtualHubIpConfigurationArgs({
-    required pulumi.Output<String> ipConfigName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualHubName,
-  }) :
-      ipConfigName = pulumi.Input.asInput<String>(ipConfigName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualHubName = pulumi.Input.asInput<String>(virtualHubName);
+    required this.ipConfigName,
+    required this.resourceGroupName,
+    required this.virtualHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualHubIpConfigurationArgs {
 
   factory GetVirtualHubIpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubIpConfigurationArgs(
-      ipConfigName: pulumi.Output.create<String>(map['ipConfigName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualHubName: pulumi.Output.create<String>(map['virtualHubName'] as String),
+      ipConfigName: (map['ipConfigName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }
 }

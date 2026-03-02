@@ -51,35 +51,21 @@ class FunctionState {
   /// [runtime] Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
   /// [syncConfig] Describes a Sync configuration for a resolver. See `sync_config` Block for details.
   FunctionState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? code,
-    pulumi.Output<String>? dataSource,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? functionId,
-    pulumi.Output<String>? functionVersion,
-    pulumi.Output<int>? maxBatchSize,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? requestMappingTemplate,
-    pulumi.Output<String>? responseMappingTemplate,
-    pulumi.Output<FunctionRuntime>? runtime,
-    pulumi.Output<FunctionSyncConfig>? syncConfig,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      code = pulumi.Input.asOptionalInput<String>(code),
-      dataSource = pulumi.Input.asOptionalInput<String>(dataSource),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      functionId = pulumi.Input.asOptionalInput<String>(functionId),
-      functionVersion = pulumi.Input.asOptionalInput<String>(functionVersion),
-      maxBatchSize = pulumi.Input.asOptionalInput<int>(maxBatchSize),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requestMappingTemplate = pulumi.Input.asOptionalInput<String>(requestMappingTemplate),
-      responseMappingTemplate = pulumi.Input.asOptionalInput<String>(responseMappingTemplate),
-      runtime = pulumi.Input.asOptionalInput<FunctionRuntime>(runtime),
-      syncConfig = pulumi.Input.asOptionalInput<FunctionSyncConfig>(syncConfig);
+    this.apiId,
+    this.arn,
+    this.code,
+    this.dataSource,
+    this.description,
+    this.functionId,
+    this.functionVersion,
+    this.maxBatchSize,
+    this.name,
+    this.region,
+    this.requestMappingTemplate,
+    this.responseMappingTemplate,
+    this.runtime,
+    this.syncConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class FunctionState {
 
   factory FunctionState.fromMap(Map<String, dynamic> map) {
     return FunctionState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      code: map['code'] == null ? null : pulumi.Output.create<String>(map['code'] as String),
-      dataSource: map['dataSource'] == null ? null : pulumi.Output.create<String>(map['dataSource'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      functionId: map['functionId'] == null ? null : pulumi.Output.create<String>(map['functionId'] as String),
-      functionVersion: map['functionVersion'] == null ? null : pulumi.Output.create<String>(map['functionVersion'] as String),
-      maxBatchSize: map['maxBatchSize'] == null ? null : pulumi.Output.create<int>(map['maxBatchSize'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requestMappingTemplate: map['requestMappingTemplate'] == null ? null : pulumi.Output.create<String>(map['requestMappingTemplate'] as String),
-      responseMappingTemplate: map['responseMappingTemplate'] == null ? null : pulumi.Output.create<String>(map['responseMappingTemplate'] as String),
-      runtime: map['runtime'] == null ? null : pulumi.Output.create<FunctionRuntime>(FunctionRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>())),
-      syncConfig: map['syncConfig'] == null ? null : pulumi.Output.create<FunctionSyncConfig>(FunctionSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionId: map['functionId'] == null ? null : (map['functionId'] as String).input(),
+      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion'] as String).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requestMappingTemplate: map['requestMappingTemplate'] == null ? null : (map['requestMappingTemplate'] as String).input(),
+      responseMappingTemplate: map['responseMappingTemplate'] == null ? null : (map['responseMappingTemplate'] as String).input(),
+      runtime: map['runtime'] == null ? null : (FunctionRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>())).input(),
+      syncConfig: map['syncConfig'] == null ? null : (FunctionSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketsBucketWebsite {
   /// Key of the HTML document containing the error page.
-  final String errorDocument;
+  final pulumi.Input<String> errorDocument;
   /// Key of the HTML document containing the home page.
-  final String indexDocument;
+  final pulumi.Input<String> indexDocument;
 
   /// Creates a new [GetBucketsBucketWebsite].
   /// [errorDocument] Key of the HTML document containing the error page.
@@ -24,8 +25,8 @@ class GetBucketsBucketWebsite {
 
   factory GetBucketsBucketWebsite.fromMap(Map<String, dynamic> map) {
     return GetBucketsBucketWebsite(
-      errorDocument: map['errorDocument'] as String,
-      indexDocument: map['indexDocument'] as String,
+      errorDocument: (map['errorDocument'] as String).input(),
+      indexDocument: (map['indexDocument'] as String).input(),
     );
   }
 }

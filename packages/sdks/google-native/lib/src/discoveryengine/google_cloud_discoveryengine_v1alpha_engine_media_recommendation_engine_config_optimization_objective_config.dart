@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom threshold for `cvr` optimization_objective.
 class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig {
   /// The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
-  final String targetField;
+  final pulumi.Input<String> targetField;
   /// The threshold to be applied to the target (e.g., 0.5).
-  final double targetFieldValueFloat;
+  final pulumi.Input<double> targetFieldValueFloat;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig].
   /// [targetField] The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
@@ -25,8 +26,8 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOpti
 
   factory GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig(
-      targetField: map['targetField'] as String,
-      targetFieldValueFloat: map['targetFieldValueFloat'] as double,
+      targetField: (map['targetField'] as String).input(),
+      targetFieldValueFloat: (map['targetFieldValueFloat'] as double).input(),
     );
   }
 }

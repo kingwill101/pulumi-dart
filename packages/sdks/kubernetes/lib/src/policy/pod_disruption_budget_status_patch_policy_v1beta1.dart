@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PodDisruptionBudgetStatus represents information about the status of a PodDisruptionBudget. Status may trail the actual state of a system.
 class PodDisruptionBudgetStatusPatchPolicyV1beta1 {
   /// current number of healthy pods
-  final int? currentHealthy;
+  final pulumi.Input<int>? currentHealthy;
   /// minimum desired number of healthy pods
-  final int? desiredHealthy;
+  final pulumi.Input<int>? desiredHealthy;
   /// DisruptedPods contains information about pods whose eviction was processed by the API server eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A pod will be in this map from the time when the API server processed the eviction request to the time when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The key in the map is the name of the pod and the value is the time when the API server processed the eviction request. If the deletion didn't occur and a pod is still there it will be removed from the list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this map should be empty for the most of the time. Large number of entries in the map may indicate problems with pod deletions.
-  final Map<String, String>? disruptedPods;
+  final pulumi.Input<Map<String, String>>? disruptedPods;
   /// Number of pod disruptions that are currently allowed.
-  final int? disruptionsAllowed;
+  final pulumi.Input<int>? disruptionsAllowed;
   /// total number of pods counted by this disruption budget
-  final int? expectedPods;
+  final pulumi.Input<int>? expectedPods;
   /// Most recent generation observed when updating this PDB status. PodDisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.
-  final int? observedGeneration;
+  final pulumi.Input<int>? observedGeneration;
 
   /// Creates a new [PodDisruptionBudgetStatusPatchPolicyV1beta1].
   /// [currentHealthy] current number of healthy pods
@@ -45,12 +46,12 @@ class PodDisruptionBudgetStatusPatchPolicyV1beta1 {
 
   factory PodDisruptionBudgetStatusPatchPolicyV1beta1.fromMap(Map<String, dynamic> map) {
     return PodDisruptionBudgetStatusPatchPolicyV1beta1(
-      currentHealthy: map['currentHealthy'] == null ? null : map['currentHealthy'] as int,
-      desiredHealthy: map['desiredHealthy'] == null ? null : map['desiredHealthy'] as int,
-      disruptedPods: map['disruptedPods'] == null ? null : (map['disruptedPods'] as Map).cast<String, String>(),
-      disruptionsAllowed: map['disruptionsAllowed'] == null ? null : map['disruptionsAllowed'] as int,
-      expectedPods: map['expectedPods'] == null ? null : map['expectedPods'] as int,
-      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as int,
+      currentHealthy: map['currentHealthy'] == null ? null : (map['currentHealthy'] as int).input(),
+      desiredHealthy: map['desiredHealthy'] == null ? null : (map['desiredHealthy'] as int).input(),
+      disruptedPods: map['disruptedPods'] == null ? null : ((map['disruptedPods'] as Map).cast<String, String>()).input(),
+      disruptionsAllowed: map['disruptionsAllowed'] == null ? null : (map['disruptionsAllowed'] as int).input(),
+      expectedPods: map['expectedPods'] == null ? null : (map['expectedPods'] as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
     );
   }
 }

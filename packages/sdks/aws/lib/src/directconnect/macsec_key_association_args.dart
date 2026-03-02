@@ -27,17 +27,12 @@ class MacsecKeyAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
   MacsecKeyAssociationArgs({
-    pulumi.Output<String>? cak,
-    pulumi.Output<String>? ckn,
-    required pulumi.Output<String> connectionId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretArn,
-  }) :
-      cak = pulumi.Input.asOptionalInput<String>(cak),
-      ckn = pulumi.Input.asOptionalInput<String>(ckn),
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretArn = pulumi.Input.asOptionalInput<String>(secretArn);
+    this.cak,
+    this.ckn,
+    required this.connectionId,
+    this.region,
+    this.secretArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class MacsecKeyAssociationArgs {
 
   factory MacsecKeyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MacsecKeyAssociationArgs(
-      cak: map['cak'] == null ? null : pulumi.Output.create<String>(map['cak'] as String),
-      ckn: map['ckn'] == null ? null : pulumi.Output.create<String>(map['ckn'] as String),
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretArn: map['secretArn'] == null ? null : pulumi.Output.create<String>(map['secretArn'] as String),
+      cak: map['cak'] == null ? null : (map['cak'] as String).input(),
+      ckn: map['ckn'] == null ? null : (map['ckn'] as String).input(),
+      connectionId: (map['connectionId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
     );
   }
 }

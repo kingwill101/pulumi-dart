@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
   /// .
-  final String key;
+  final pulumi.Input<String> key;
   /// .
-  final String operator;
+  final pulumi.Input<String> operator;
   /// .
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity].
   /// [key] .
@@ -29,9 +30,9 @@ class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
 
   factory GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity(
-      key: map['key'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

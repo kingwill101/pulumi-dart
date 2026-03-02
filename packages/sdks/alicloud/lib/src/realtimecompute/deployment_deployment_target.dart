@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentDeploymentTarget {
   /// Deployment mode, valid values: PER_JOB or SESSION
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Deployment target name
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DeploymentDeploymentTarget].
   /// [mode] Deployment mode, valid values: PER_JOB or SESSION
@@ -24,8 +25,8 @@ class DeploymentDeploymentTarget {
 
   factory DeploymentDeploymentTarget.fromMap(Map<String, dynamic> map) {
     return DeploymentDeploymentTarget(
-      mode: map['mode'] as String,
-      name: map['name'] as String,
+      mode: (map['mode'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

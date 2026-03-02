@@ -19,13 +19,10 @@ class GetOrderItemArgs {
   /// [orderItemName] The name of the order item.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetOrderItemArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> orderItemName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      orderItemName = pulumi.Input.asInput<String>(orderItemName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.orderItemName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetOrderItemArgs {
 
   factory GetOrderItemArgs.fromMap(Map<String, dynamic> map) {
     return GetOrderItemArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      orderItemName: pulumi.Output.create<String>(map['orderItemName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      orderItemName: (map['orderItemName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

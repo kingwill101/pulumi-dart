@@ -7,15 +7,15 @@ import 'volume_response.dart';
 /// TaskSpec is a description of a task.
 class TaskSpecResponse {
   /// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
-  final List<ContainerResponse> containers;
+  final pulumi.Input<List<ContainerResponse>> containers;
   /// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
-  final int maxRetries;
+  final pulumi.Input<int> maxRetries;
   /// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
-  final String serviceAccountName;
+  final pulumi.Input<String> serviceAccountName;
   /// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
-  final String timeoutSeconds;
+  final pulumi.Input<String> timeoutSeconds;
   /// Optional. List of volumes that can be mounted by containers belonging to the task.
-  final List<VolumeResponse> volumes;
+  final pulumi.Input<List<VolumeResponse>> volumes;
 
   /// Creates a new [TaskSpecResponse].
   /// [containers] Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
@@ -33,21 +33,21 @@ class TaskSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': pulumi.Input.encodeList<ContainerResponse, Map<String, dynamic>>(containers, (value) => value.toMap()),
+      'containers': pulumi.Input.mapInputValue<List<ContainerResponse>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<ContainerResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maxRetries': maxRetries,
       'serviceAccountName': serviceAccountName,
       'timeoutSeconds': timeoutSeconds,
-      'volumes': pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(volumes, (value) => value.toMap()),
+      'volumes': pulumi.Input.mapInputValue<List<VolumeResponse>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TaskSpecResponse.fromMap(Map<String, dynamic> map) {
     return TaskSpecResponse(
-      containers: pulumi.Input.decodeList<ContainerResponse>(map['containers'], (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>())),
-      maxRetries: map['maxRetries'] as int,
-      serviceAccountName: map['serviceAccountName'] as String,
-      timeoutSeconds: map['timeoutSeconds'] as String,
-      volumes: pulumi.Input.decodeList<VolumeResponse>(map['volumes'], (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      containers: (pulumi.Input.decodeList<ContainerResponse>(map['containers'], (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxRetries: (map['maxRetries'] as int).input(),
+      serviceAccountName: (map['serviceAccountName'] as String).input(),
+      timeoutSeconds: (map['timeoutSeconds'] as String).input(),
+      volumes: (pulumi.Input.decodeList<VolumeResponse>(map['volumes'], (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

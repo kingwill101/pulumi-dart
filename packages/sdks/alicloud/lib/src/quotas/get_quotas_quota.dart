@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetQuotasQuota {
   /// Is the quota adjustable.
-  final bool adjustable;
+  final pulumi.Input<bool> adjustable;
   /// The range of quota adjustment.
-  final List<String> applicableRanges;
+  final pulumi.Input<List<String>> applicableRanges;
   /// The type of quota.
-  final String applicableType;
+  final pulumi.Input<String> applicableType;
   /// Show used quota.
-  final bool consumable;
+  final pulumi.Input<bool> consumable;
   /// The ID of the Quota.
-  final String id;
+  final pulumi.Input<String> id;
   /// The quota action code.
-  final String quotaActionCode;
+  final pulumi.Input<String> quotaActionCode;
   /// The quota description.
-  final String quotaDescription;
+  final pulumi.Input<String> quotaDescription;
   /// The quota name.
-  final String quotaName;
+  final pulumi.Input<String> quotaName;
   /// The quota type.
-  final String quotaType;
+  final pulumi.Input<String> quotaType;
   /// The quota unit.
-  final String quotaUnit;
+  final pulumi.Input<String> quotaUnit;
   /// TotalQuota.
-  final double totalQuota;
+  final pulumi.Input<double> totalQuota;
   /// The total of usage.
-  final double totalUsage;
+  final pulumi.Input<double> totalUsage;
   /// The unadjustable detail.
-  final String unadjustableDetail;
+  final pulumi.Input<String> unadjustableDetail;
 
   /// Creates a new [GetQuotasQuota].
   /// [adjustable] Is the quota adjustable.
@@ -79,19 +80,19 @@ class GetQuotasQuota {
 
   factory GetQuotasQuota.fromMap(Map<String, dynamic> map) {
     return GetQuotasQuota(
-      adjustable: map['adjustable'] as bool,
-      applicableRanges: (map['applicableRanges'] as List).cast<String>(),
-      applicableType: map['applicableType'] as String,
-      consumable: map['consumable'] as bool,
-      id: map['id'] as String,
-      quotaActionCode: map['quotaActionCode'] as String,
-      quotaDescription: map['quotaDescription'] as String,
-      quotaName: map['quotaName'] as String,
-      quotaType: map['quotaType'] as String,
-      quotaUnit: map['quotaUnit'] as String,
-      totalQuota: map['totalQuota'] as double,
-      totalUsage: map['totalUsage'] as double,
-      unadjustableDetail: map['unadjustableDetail'] as String,
+      adjustable: (map['adjustable'] as bool).input(),
+      applicableRanges: ((map['applicableRanges'] as List).cast<String>()).input(),
+      applicableType: (map['applicableType'] as String).input(),
+      consumable: (map['consumable'] as bool).input(),
+      id: (map['id'] as String).input(),
+      quotaActionCode: (map['quotaActionCode'] as String).input(),
+      quotaDescription: (map['quotaDescription'] as String).input(),
+      quotaName: (map['quotaName'] as String).input(),
+      quotaType: (map['quotaType'] as String).input(),
+      quotaUnit: (map['quotaUnit'] as String).input(),
+      totalQuota: (map['totalQuota'] as double).input(),
+      totalUsage: (map['totalUsage'] as double).input(),
+      unadjustableDetail: (map['unadjustableDetail'] as String).input(),
     );
   }
 }

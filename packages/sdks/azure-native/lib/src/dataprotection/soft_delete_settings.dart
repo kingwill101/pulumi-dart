@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Soft delete related settings
 class SoftDeleteSettings {
   /// Soft delete retention duration
-  final double? retentionDurationInDays;
+  final pulumi.Input<double>? retentionDurationInDays;
   /// State of soft delete
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [SoftDeleteSettings].
   /// [retentionDurationInDays] Soft delete retention duration
@@ -25,8 +26,8 @@ class SoftDeleteSettings {
 
   factory SoftDeleteSettings.fromMap(Map<String, dynamic> map) {
     return SoftDeleteSettings(
-      retentionDurationInDays: map['retentionDurationInDays'] == null ? null : map['retentionDurationInDays'] as double,
-      state: map['state'] == null ? null : map['state'] as String,
+      retentionDurationInDays: map['retentionDurationInDays'] == null ? null : (map['retentionDurationInDays'] as double).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

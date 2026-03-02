@@ -35,23 +35,15 @@ class WorkspaceGroupArgs {
   /// [type] Group type.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   WorkspaceGroupArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? externalId,
-    pulumi.Output<String>? groupId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<GroupType>? type,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      externalId = pulumi.Input.asOptionalInput<String>(externalId),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      type = pulumi.Input.asOptionalInput<GroupType>(type),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.description,
+    required this.displayName,
+    this.externalId,
+    this.groupId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.type,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class WorkspaceGroupArgs {
 
   factory WorkspaceGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      externalId: map['externalId'] == null ? null : pulumi.Output.create<String>(map['externalId'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<GroupType>(GroupType.fromValue(map['type'] as String)),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      type: map['type'] == null ? null : (GroupType.fromValue(map['type'] as String)).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

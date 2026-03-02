@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecurityGroupRulesRule {
   /// The description of the rule.
-  final String description;
+  final pulumi.Input<String> description;
   /// Target IP address segment for egress authorization.
-  final String destCidrIp;
+  final pulumi.Input<String> destCidrIp;
   /// Target security group id for ingress authorization.
-  final String destGroupId;
+  final pulumi.Input<String> destGroupId;
   /// Alibaba Cloud account of the target security group.
-  final String destGroupOwnerAccount;
+  final pulumi.Input<String> destGroupOwnerAccount;
   /// Authorization direction. Valid values are: `ingress` or `egress`.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
-  final String ipProtocol;
+  final pulumi.Input<String> ipProtocol;
   /// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
-  final String nicType;
+  final pulumi.Input<String> nicType;
   /// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// The range of port numbers.
-  final String portRange;
+  final pulumi.Input<String> portRange;
   /// Rule priority.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Source IP address segment for ingress authorization.
-  final String sourceCidrIp;
+  final pulumi.Input<String> sourceCidrIp;
   /// Source security group ID for ingress authorization.
-  final String sourceGroupId;
+  final pulumi.Input<String> sourceGroupId;
   /// Alibaba Cloud account of the source security group.
-  final String sourceGroupOwnerAccount;
+  final pulumi.Input<String> sourceGroupOwnerAccount;
 
   /// Creates a new [GetSecurityGroupRulesRule].
   /// [description] The description of the rule.
@@ -79,19 +80,19 @@ class GetSecurityGroupRulesRule {
 
   factory GetSecurityGroupRulesRule.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRulesRule(
-      description: map['description'] as String,
-      destCidrIp: map['destCidrIp'] as String,
-      destGroupId: map['destGroupId'] as String,
-      destGroupOwnerAccount: map['destGroupOwnerAccount'] as String,
-      direction: map['direction'] as String,
-      ipProtocol: map['ipProtocol'] as String,
-      nicType: map['nicType'] as String,
-      policy: map['policy'] as String,
-      portRange: map['portRange'] as String,
-      priority: map['priority'] as int,
-      sourceCidrIp: map['sourceCidrIp'] as String,
-      sourceGroupId: map['sourceGroupId'] as String,
-      sourceGroupOwnerAccount: map['sourceGroupOwnerAccount'] as String,
+      description: (map['description'] as String).input(),
+      destCidrIp: (map['destCidrIp'] as String).input(),
+      destGroupId: (map['destGroupId'] as String).input(),
+      destGroupOwnerAccount: (map['destGroupOwnerAccount'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      ipProtocol: (map['ipProtocol'] as String).input(),
+      nicType: (map['nicType'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      portRange: (map['portRange'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      sourceCidrIp: (map['sourceCidrIp'] as String).input(),
+      sourceGroupId: (map['sourceGroupId'] as String).input(),
+      sourceGroupOwnerAccount: (map['sourceGroupOwnerAccount'] as String).input(),
     );
   }
 }

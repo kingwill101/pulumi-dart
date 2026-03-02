@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
   /// The target value of the monitoring indicator.
-  final int metricTargetAverageUtilization;
+  final pulumi.Input<int> metricTargetAverageUtilization;
   /// The metric type of the Application Scaling Rule.
-  final String metricType;
+  final pulumi.Input<String> metricType;
 
   /// Creates a new [GetApplicationScalingRulesRuleScalingRuleMetricMetric].
   /// [metricTargetAverageUtilization] The target value of the monitoring indicator.
@@ -24,8 +25,8 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
 
   factory GetApplicationScalingRulesRuleScalingRuleMetricMetric.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRuleScalingRuleMetricMetric(
-      metricTargetAverageUtilization: map['metricTargetAverageUtilization'] as int,
-      metricType: map['metricType'] as String,
+      metricTargetAverageUtilization: (map['metricTargetAverageUtilization'] as int).input(),
+      metricType: (map['metricType'] as String).input(),
     );
   }
 }

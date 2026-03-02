@@ -19,13 +19,10 @@ class GetExportPipelineArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetExportPipelineArgs({
-    required pulumi.Output<String> exportPipelineName,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      exportPipelineName = pulumi.Input.asInput<String>(exportPipelineName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.exportPipelineName,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExportPipelineArgs {
 
   factory GetExportPipelineArgs.fromMap(Map<String, dynamic> map) {
     return GetExportPipelineArgs(
-      exportPipelineName: pulumi.Output.create<String>(map['exportPipelineName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      exportPipelineName: (map['exportPipelineName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

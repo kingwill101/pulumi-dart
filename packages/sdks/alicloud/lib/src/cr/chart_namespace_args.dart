@@ -22,15 +22,11 @@ class ChartNamespaceArgs {
   /// [instanceId] The ID of the Container Registry instance.
   /// [namespaceName] The name of the namespace that you want to create.
   ChartNamespaceArgs({
-    pulumi.Output<bool>? autoCreateRepo,
-    pulumi.Output<String>? defaultRepoType,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> namespaceName,
-  }) :
-      autoCreateRepo = pulumi.Input.asOptionalInput<bool>(autoCreateRepo),
-      defaultRepoType = pulumi.Input.asOptionalInput<String>(defaultRepoType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName);
+    this.autoCreateRepo,
+    this.defaultRepoType,
+    required this.instanceId,
+    required this.namespaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ChartNamespaceArgs {
 
   factory ChartNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return ChartNamespaceArgs(
-      autoCreateRepo: map['autoCreateRepo'] == null ? null : pulumi.Output.create<bool>(map['autoCreateRepo'] as bool),
-      defaultRepoType: map['defaultRepoType'] == null ? null : pulumi.Output.create<String>(map['defaultRepoType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
+      autoCreateRepo: map['autoCreateRepo'] == null ? null : (map['autoCreateRepo'] as bool).input(),
+      defaultRepoType: map['defaultRepoType'] == null ? null : (map['defaultRepoType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
     );
   }
 }

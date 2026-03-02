@@ -12,46 +12,46 @@ import 'web_activity_authentication_response.dart';
 /// Web activity.
 class WebActivityResponse {
   /// Authentication method used for calling the endpoint.
-  final WebActivityAuthenticationResponse? authentication;
+  final pulumi.Input<WebActivityAuthenticationResponse>? authentication;
   /// Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
-  final dynamic body;
+  final pulumi.Input<dynamic>? body;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// List of datasets passed to web endpoint.
-  final List<DatasetReferenceResponse>? datasets;
+  final pulumi.Input<List<DatasetReferenceResponse>>? datasets;
   /// Activity depends on condition.
-  final List<ActivityDependencyResponse>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// When set to true, Certificate validation will be disabled.
-  final bool? disableCertValidation;
+  final pulumi.Input<bool>? disableCertValidation;
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-  final Map<String, dynamic>? headers;
+  final pulumi.Input<Map<String, dynamic>>? headers;
   /// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
-  final dynamic httpRequestTimeout;
+  final pulumi.Input<dynamic>? httpRequestTimeout;
   /// Linked service reference.
-  final LinkedServiceReferenceResponse? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
   /// List of linked services passed to web endpoint.
-  final List<LinkedServiceReferenceResponse>? linkedServices;
+  final pulumi.Input<List<LinkedServiceReferenceResponse>>? linkedServices;
   /// Rest API method for target endpoint.
-  final String method;
+  final pulumi.Input<String> method;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Activity policy.
-  final ActivityPolicyResponse? policy;
+  final pulumi.Input<ActivityPolicyResponse>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Option to disable invoking HTTP GET on location given in response header of a HTTP 202 Response. If set true, it stops invoking HTTP GET on http location given in response header. If set false then continues to invoke HTTP GET call on location given in http response headers.
-  final bool? turnOffAsync;
+  final pulumi.Input<bool>? turnOffAsync;
   /// Type of activity.
   /// Expected value is 'WebActivity'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Web activity target endpoint and path. Type: string (or Expression with resultType string).
-  final dynamic url;
+  final pulumi.Input<dynamic> url;
   /// Activity user properties.
-  final List<UserPropertyResponse>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
 
   /// Creates a new [WebActivityResponse].
   /// [authentication] Authentication method used for calling the endpoint.
@@ -99,51 +99,51 @@ class WebActivityResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?authentication == null ? null : authentication!.toMap(),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<WebActivityAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'body': ?body,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
-      'datasets': ?datasets == null ? null : pulumi.Input.encodeList<DatasetReferenceResponse, Map<String, dynamic>>(datasets!, (value) => value.toMap()),
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'datasets': ?pulumi.Input.mapOptionalInputValue<List<DatasetReferenceResponse>, List<Map<String, dynamic>>>(datasets, (value) => pulumi.Input.encodeList<DatasetReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'disableCertValidation': ?disableCertValidation,
       'headers': ?headers,
       'httpRequestTimeout': ?httpRequestTimeout,
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
-      'linkedServices': ?linkedServices == null ? null : pulumi.Input.encodeList<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServices!, (value) => value.toMap()),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'linkedServices': ?pulumi.Input.mapOptionalInputValue<List<LinkedServiceReferenceResponse>, List<Map<String, dynamic>>>(linkedServices, (value) => pulumi.Input.encodeList<LinkedServiceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'method': method,
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'state': ?state,
       'turnOffAsync': ?turnOffAsync,
       'type': type,
       'url': url,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserPropertyResponse>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebActivityResponse.fromMap(Map<String, dynamic> map) {
     return WebActivityResponse(
-      authentication: map['authentication'] == null ? null : WebActivityAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      body: map['body'] == null ? null : map['body'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      datasets: map['datasets'] == null ? null : pulumi.Input.decodeList<DatasetReferenceResponse>(map['datasets'], (value) => DatasetReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      disableCertValidation: map['disableCertValidation'] == null ? null : map['disableCertValidation'] as bool,
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, dynamic>(),
-      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : map['httpRequestTimeout'],
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      linkedServices: map['linkedServices'] == null ? null : pulumi.Input.decodeList<LinkedServiceReferenceResponse>(map['linkedServices'], (value) => LinkedServiceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      method: map['method'] as String,
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      policy: map['policy'] == null ? null : ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
-      turnOffAsync: map['turnOffAsync'] == null ? null : map['turnOffAsync'] as bool,
-      type: map['type'] as String,
-      url: map['url'],
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      authentication: map['authentication'] == null ? null : (WebActivityAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<DatasetReferenceResponse>(map['datasets'], (value) => DatasetReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableCertValidation: map['disableCertValidation'] == null ? null : (map['disableCertValidation'] as bool).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, dynamic>()).input(),
+      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : (map['httpRequestTimeout']).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      linkedServices: map['linkedServices'] == null ? null : (pulumi.Input.decodeList<LinkedServiceReferenceResponse>(map['linkedServices'], (value) => LinkedServiceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      method: (map['method'] as String).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      turnOffAsync: map['turnOffAsync'] == null ? null : (map['turnOffAsync'] as bool).input(),
+      type: (map['type'] as String).input(),
+      url: (map['url']).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

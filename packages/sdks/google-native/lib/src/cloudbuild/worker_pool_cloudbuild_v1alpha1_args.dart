@@ -27,17 +27,12 @@ class WorkerPoolCloudbuildV1alpha1Args {
   /// [workerConfig] Configuration to be used for a creating workers in the `WorkerPool`.
   /// [workerCount] Total number of workers to be created across all requested regions.
   WorkerPoolCloudbuildV1alpha1Args({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<WorkerPoolRegionsItem>>? regions,
-    pulumi.Output<WorkerConfigCloudbuildV1alpha1>? workerConfig,
-    pulumi.Output<String>? workerCount,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regions = pulumi.Input.asOptionalInput<List<WorkerPoolRegionsItem>>(regions),
-      workerConfig = pulumi.Input.asOptionalInput<WorkerConfigCloudbuildV1alpha1>(workerConfig),
-      workerCount = pulumi.Input.asOptionalInput<String>(workerCount);
+    this.name,
+    this.project,
+    this.regions,
+    this.workerConfig,
+    this.workerCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class WorkerPoolCloudbuildV1alpha1Args {
 
   factory WorkerPoolCloudbuildV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return WorkerPoolCloudbuildV1alpha1Args(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<WorkerPoolRegionsItem>>(pulumi.Input.decodeList<WorkerPoolRegionsItem>(map['regions'], (value) => WorkerPoolRegionsItem.fromValue(value as String))),
-      workerConfig: map['workerConfig'] == null ? null : pulumi.Output.create<WorkerConfigCloudbuildV1alpha1>(WorkerConfigCloudbuildV1alpha1.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())),
-      workerCount: map['workerCount'] == null ? null : pulumi.Output.create<String>(map['workerCount'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<WorkerPoolRegionsItem>(map['regions'], (value) => WorkerPoolRegionsItem.fromValue(value as String))).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkerConfigCloudbuildV1alpha1.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      workerCount: map['workerCount'] == null ? null : (map['workerCount'] as String).input(),
     );
   }
 }

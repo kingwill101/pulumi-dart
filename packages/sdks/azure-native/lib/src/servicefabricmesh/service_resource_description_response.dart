@@ -9,35 +9,35 @@ import 'network_ref_response.dart';
 /// This type describes a service resource.
 class ServiceResourceDescriptionResponse {
   /// Auto scaling policies
-  final List<AutoScalingPolicyResponse>? autoScalingPolicies;
+  final pulumi.Input<List<AutoScalingPolicyResponse>>? autoScalingPolicies;
   /// Describes the set of code packages that forms the service. A code package describes the container and the properties for running it. All the code packages are started together on the same host and share the same context (network, process etc.).
-  final List<ContainerCodePackagePropertiesResponse> codePackages;
+  final pulumi.Input<List<ContainerCodePackagePropertiesResponse>> codePackages;
   /// User readable description of the service.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Reference to sinks in DiagnosticsDescription.
-  final DiagnosticsRefResponse? diagnostics;
+  final pulumi.Input<DiagnosticsRefResponse>? diagnostics;
   /// Describes the health state of an application resource.
-  final String healthState;
+  final pulumi.Input<String> healthState;
   /// Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the resource
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The names of the private networks that this service needs to be part of.
-  final List<NetworkRefResponse>? networkRefs;
+  final pulumi.Input<List<NetworkRefResponse>>? networkRefs;
   /// The operation system required by the code in service.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// State of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The number of replicas of the service to create. Defaults to 1 if not specified.
-  final int? replicaCount;
+  final pulumi.Input<int>? replicaCount;
   /// Status of the service.
-  final String status;
+  final pulumi.Input<String> status;
   /// Gives additional information about the current status of the service.
-  final String statusDetails;
+  final pulumi.Input<String> statusDetails;
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  final String type;
+  final pulumi.Input<String> type;
   /// When the service's health state is not 'Ok', this additional details from service fabric Health Manager for the user to know why the service is marked unhealthy.
-  final String unhealthyEvaluation;
+  final pulumi.Input<String> unhealthyEvaluation;
 
   /// Creates a new [ServiceResourceDescriptionResponse].
   /// [autoScalingPolicies] Auto scaling policies
@@ -75,14 +75,14 @@ class ServiceResourceDescriptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoScalingPolicies': ?autoScalingPolicies == null ? null : pulumi.Input.encodeList<AutoScalingPolicyResponse, Map<String, dynamic>>(autoScalingPolicies!, (value) => value.toMap()),
-      'codePackages': pulumi.Input.encodeList<ContainerCodePackagePropertiesResponse, Map<String, dynamic>>(codePackages, (value) => value.toMap()),
+      'autoScalingPolicies': ?pulumi.Input.mapOptionalInputValue<List<AutoScalingPolicyResponse>, List<Map<String, dynamic>>>(autoScalingPolicies, (value) => pulumi.Input.encodeList<AutoScalingPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'codePackages': pulumi.Input.mapInputValue<List<ContainerCodePackagePropertiesResponse>, List<Map<String, dynamic>>>(codePackages, (value) => pulumi.Input.encodeList<ContainerCodePackagePropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'diagnostics': ?diagnostics == null ? null : diagnostics!.toMap(),
+      'diagnostics': ?pulumi.Input.mapOptionalInputValue<DiagnosticsRefResponse, Map<String, dynamic>>(diagnostics, (value) => value.toMap()),
       'healthState': healthState,
       'id': id,
       'name': ?name,
-      'networkRefs': ?networkRefs == null ? null : pulumi.Input.encodeList<NetworkRefResponse, Map<String, dynamic>>(networkRefs!, (value) => value.toMap()),
+      'networkRefs': ?pulumi.Input.mapOptionalInputValue<List<NetworkRefResponse>, List<Map<String, dynamic>>>(networkRefs, (value) => pulumi.Input.encodeList<NetworkRefResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'osType': osType,
       'provisioningState': provisioningState,
       'replicaCount': ?replicaCount,
@@ -95,21 +95,21 @@ class ServiceResourceDescriptionResponse {
 
   factory ServiceResourceDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return ServiceResourceDescriptionResponse(
-      autoScalingPolicies: map['autoScalingPolicies'] == null ? null : pulumi.Input.decodeList<AutoScalingPolicyResponse>(map['autoScalingPolicies'], (value) => AutoScalingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      codePackages: pulumi.Input.decodeList<ContainerCodePackagePropertiesResponse>(map['codePackages'], (value) => ContainerCodePackagePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      diagnostics: map['diagnostics'] == null ? null : DiagnosticsRefResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>()),
-      healthState: map['healthState'] as String,
-      id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      networkRefs: map['networkRefs'] == null ? null : pulumi.Input.decodeList<NetworkRefResponse>(map['networkRefs'], (value) => NetworkRefResponse.fromMap((value as Map).cast<String, dynamic>())),
-      osType: map['osType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      replicaCount: map['replicaCount'] == null ? null : map['replicaCount'] as int,
-      status: map['status'] as String,
-      statusDetails: map['statusDetails'] as String,
-      type: map['type'] as String,
-      unhealthyEvaluation: map['unhealthyEvaluation'] as String,
+      autoScalingPolicies: map['autoScalingPolicies'] == null ? null : (pulumi.Input.decodeList<AutoScalingPolicyResponse>(map['autoScalingPolicies'], (value) => AutoScalingPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      codePackages: (pulumi.Input.decodeList<ContainerCodePackagePropertiesResponse>(map['codePackages'], (value) => ContainerCodePackagePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsRefResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
+      healthState: (map['healthState'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkRefs: map['networkRefs'] == null ? null : (pulumi.Input.decodeList<NetworkRefResponse>(map['networkRefs'], (value) => NetworkRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osType: (map['osType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      status: (map['status'] as String).input(),
+      statusDetails: (map['statusDetails'] as String).input(),
+      type: (map['type'] as String).input(),
+      unhealthyEvaluation: (map['unhealthyEvaluation'] as String).input(),
     );
   }
 }

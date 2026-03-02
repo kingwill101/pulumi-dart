@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of an APM
 class ApmPropertiesResponse {
   /// Non-sensitive properties for the APM
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// State of the APM.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// APM Type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApmPropertiesResponse].
   /// [properties] Non-sensitive properties for the APM
@@ -30,9 +31,9 @@ class ApmPropertiesResponse {
 
   factory ApmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApmPropertiesResponse(
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

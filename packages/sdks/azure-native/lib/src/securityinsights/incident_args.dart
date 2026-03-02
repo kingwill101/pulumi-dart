@@ -54,35 +54,21 @@ class IncidentArgs {
   /// [title] The title of the incident
   /// [workspaceName] The name of the workspace.
   IncidentArgs({
-    pulumi.Output<String>? classification,
-    pulumi.Output<String>? classificationComment,
-    pulumi.Output<String>? classificationReason,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? firstActivityTimeUtc,
-    pulumi.Output<String>? incidentId,
-    pulumi.Output<List<IncidentLabel>>? labels,
-    pulumi.Output<String>? lastActivityTimeUtc,
-    pulumi.Output<IncidentOwnerInfo>? owner,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> severity,
-    required pulumi.Output<String> status,
-    required pulumi.Output<String> title,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      classification = pulumi.Input.asOptionalInput<String>(classification),
-      classificationComment = pulumi.Input.asOptionalInput<String>(classificationComment),
-      classificationReason = pulumi.Input.asOptionalInput<String>(classificationReason),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      firstActivityTimeUtc = pulumi.Input.asOptionalInput<String>(firstActivityTimeUtc),
-      incidentId = pulumi.Input.asOptionalInput<String>(incidentId),
-      labels = pulumi.Input.asOptionalInput<List<IncidentLabel>>(labels),
-      lastActivityTimeUtc = pulumi.Input.asOptionalInput<String>(lastActivityTimeUtc),
-      owner = pulumi.Input.asOptionalInput<IncidentOwnerInfo>(owner),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      severity = pulumi.Input.asInput<String>(severity),
-      status = pulumi.Input.asInput<String>(status),
-      title = pulumi.Input.asInput<String>(title),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.classification,
+    this.classificationComment,
+    this.classificationReason,
+    this.description,
+    this.firstActivityTimeUtc,
+    this.incidentId,
+    this.labels,
+    this.lastActivityTimeUtc,
+    this.owner,
+    required this.resourceGroupName,
+    required this.severity,
+    required this.status,
+    required this.title,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class IncidentArgs {
 
   factory IncidentArgs.fromMap(Map<String, dynamic> map) {
     return IncidentArgs(
-      classification: map['classification'] == null ? null : pulumi.Output.create<String>(map['classification'] as String),
-      classificationComment: map['classificationComment'] == null ? null : pulumi.Output.create<String>(map['classificationComment'] as String),
-      classificationReason: map['classificationReason'] == null ? null : pulumi.Output.create<String>(map['classificationReason'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      firstActivityTimeUtc: map['firstActivityTimeUtc'] == null ? null : pulumi.Output.create<String>(map['firstActivityTimeUtc'] as String),
-      incidentId: map['incidentId'] == null ? null : pulumi.Output.create<String>(map['incidentId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<IncidentLabel>>(pulumi.Input.decodeList<IncidentLabel>(map['labels'], (value) => IncidentLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      lastActivityTimeUtc: map['lastActivityTimeUtc'] == null ? null : pulumi.Output.create<String>(map['lastActivityTimeUtc'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<IncidentOwnerInfo>(IncidentOwnerInfo.fromMap((map['owner'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      severity: pulumi.Output.create<String>(map['severity'] as String),
-      status: pulumi.Output.create<String>(map['status'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
+      classificationComment: map['classificationComment'] == null ? null : (map['classificationComment'] as String).input(),
+      classificationReason: map['classificationReason'] == null ? null : (map['classificationReason'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      firstActivityTimeUtc: map['firstActivityTimeUtc'] == null ? null : (map['firstActivityTimeUtc'] as String).input(),
+      incidentId: map['incidentId'] == null ? null : (map['incidentId'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<IncidentLabel>(map['labels'], (value) => IncidentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastActivityTimeUtc: map['lastActivityTimeUtc'] == null ? null : (map['lastActivityTimeUtc'] as String).input(),
+      owner: map['owner'] == null ? null : (IncidentOwnerInfo.fromMap((map['owner'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      status: (map['status'] as String).input(),
+      title: (map['title'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

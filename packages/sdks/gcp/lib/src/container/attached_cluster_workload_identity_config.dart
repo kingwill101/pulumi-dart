@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AttachedClusterWorkloadIdentityConfig {
   /// The ID of the OIDC Identity Provider (IdP) associated to
   /// the Workload Identity Pool.
-  final String? identityProvider;
+  final pulumi.Input<String>? identityProvider;
   /// The OIDC issuer URL for this cluster.
-  final String? issuerUri;
+  final pulumi.Input<String>? issuerUri;
   /// The Workload Identity Pool associated to the cluster.
-  final String? workloadPool;
+  final pulumi.Input<String>? workloadPool;
 
   /// Creates a new [AttachedClusterWorkloadIdentityConfig].
   /// [identityProvider] The ID of the OIDC Identity Provider (IdP) associated to
@@ -30,9 +31,9 @@ class AttachedClusterWorkloadIdentityConfig {
 
   factory AttachedClusterWorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterWorkloadIdentityConfig(
-      identityProvider: map['identityProvider'] == null ? null : map['identityProvider'] as String,
-      issuerUri: map['issuerUri'] == null ? null : map['issuerUri'] as String,
-      workloadPool: map['workloadPool'] == null ? null : map['workloadPool'] as String,
+      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider'] as String).input(),
+      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri'] as String).input(),
+      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool'] as String).input(),
     );
   }
 }

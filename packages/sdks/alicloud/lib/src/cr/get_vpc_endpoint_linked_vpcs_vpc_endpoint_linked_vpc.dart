@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
   /// Indicates whether the default policy is used to access the instance.
-  final bool defaultAccess;
+  final pulumi.Input<bool> defaultAccess;
   /// The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// IP address.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// The name of the module that you want to access. Valid Values:
   /// - `Registry`: the image repository.
   /// - `Chart`: a Helm chart.
-  final String moduleName;
+  final pulumi.Input<String> moduleName;
   /// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of the vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc].
   /// [defaultAccess] Indicates whether the default policy is used to access the instance.
@@ -56,14 +57,14 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
 
   factory GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc(
-      defaultAccess: map['defaultAccess'] as bool,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      ip: map['ip'] as String,
-      moduleName: map['moduleName'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      defaultAccess: (map['defaultAccess'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      ip: (map['ip'] as String).input(),
+      moduleName: (map['moduleName'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

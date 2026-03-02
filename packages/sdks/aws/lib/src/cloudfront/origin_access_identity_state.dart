@@ -35,21 +35,14 @@ class OriginAccessIdentityState {
   /// [iamArn] A pre-generated ARN for use in S3 bucket policies (see below).
   /// [s3CanonicalUserId] The Amazon S3 canonical user ID for the origin
   OriginAccessIdentityState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? callerReference,
-    pulumi.Output<String>? cloudfrontAccessIdentityPath,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? iamArn,
-    pulumi.Output<String>? s3CanonicalUserId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      callerReference = pulumi.Input.asOptionalInput<String>(callerReference),
-      cloudfrontAccessIdentityPath = pulumi.Input.asOptionalInput<String>(cloudfrontAccessIdentityPath),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      iamArn = pulumi.Input.asOptionalInput<String>(iamArn),
-      s3CanonicalUserId = pulumi.Input.asOptionalInput<String>(s3CanonicalUserId);
+    this.arn,
+    this.callerReference,
+    this.cloudfrontAccessIdentityPath,
+    this.comment,
+    this.etag,
+    this.iamArn,
+    this.s3CanonicalUserId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class OriginAccessIdentityState {
 
   factory OriginAccessIdentityState.fromMap(Map<String, dynamic> map) {
     return OriginAccessIdentityState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      callerReference: map['callerReference'] == null ? null : pulumi.Output.create<String>(map['callerReference'] as String),
-      cloudfrontAccessIdentityPath: map['cloudfrontAccessIdentityPath'] == null ? null : pulumi.Output.create<String>(map['cloudfrontAccessIdentityPath'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      iamArn: map['iamArn'] == null ? null : pulumi.Output.create<String>(map['iamArn'] as String),
-      s3CanonicalUserId: map['s3CanonicalUserId'] == null ? null : pulumi.Output.create<String>(map['s3CanonicalUserId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      callerReference: map['callerReference'] == null ? null : (map['callerReference'] as String).input(),
+      cloudfrontAccessIdentityPath: map['cloudfrontAccessIdentityPath'] == null ? null : (map['cloudfrontAccessIdentityPath'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      iamArn: map['iamArn'] == null ? null : (map['iamArn'] as String).input(),
+      s3CanonicalUserId: map['s3CanonicalUserId'] == null ? null : (map['s3CanonicalUserId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of AccelerateConfiguration
 class AccelerateConfiguration {
   /// Specifies the transfer acceleration status of the bucket.
-  final String? accelerationStatus;
+  final pulumi.Input<String>? accelerationStatus;
 
   /// Creates a new [AccelerateConfiguration].
   /// [accelerationStatus] Specifies the transfer acceleration status of the bucket.
@@ -20,7 +21,7 @@ class AccelerateConfiguration {
 
   factory AccelerateConfiguration.fromMap(Map<String, dynamic> map) {
     return AccelerateConfiguration(
-      accelerationStatus: map['accelerationStatus'] == null ? null : map['accelerationStatus'] as String,
+      accelerationStatus: map['accelerationStatus'] == null ? null : (map['accelerationStatus'] as String).input(),
     );
   }
 }

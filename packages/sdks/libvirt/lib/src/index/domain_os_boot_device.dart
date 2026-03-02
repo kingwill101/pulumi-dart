@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsBootDevice {
   /// Specifies the device type for booting the domain.
-  final String dev;
+  final pulumi.Input<String> dev;
 
   /// Creates a new [DomainOsBootDevice].
   /// [dev] Specifies the device type for booting the domain.
@@ -19,7 +20,7 @@ class DomainOsBootDevice {
 
   factory DomainOsBootDevice.fromMap(Map<String, dynamic> map) {
     return DomainOsBootDevice(
-      dev: map['dev'] as String,
+      dev: (map['dev'] as String).input(),
     );
   }
 }

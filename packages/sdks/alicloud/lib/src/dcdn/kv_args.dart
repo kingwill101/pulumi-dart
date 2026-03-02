@@ -19,13 +19,10 @@ class KvArgs {
   /// [namespace] The name specified when the customer calls PutDcdnKvNamespace.
   /// [value] The content of key, up to 2M(2*1000*1000).
   KvArgs({
-    required pulumi.Output<String> key,
-    required pulumi.Output<String> namespace,
-    required pulumi.Output<String> value,
-  }) :
-      key = pulumi.Input.asInput<String>(key),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      value = pulumi.Input.asInput<String>(value);
+    required this.key,
+    required this.namespace,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class KvArgs {
 
   factory KvArgs.fromMap(Map<String, dynamic> map) {
     return KvArgs(
-      key: pulumi.Output.create<String>(map['key'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      key: (map['key'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

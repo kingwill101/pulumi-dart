@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssetResourceSpec {
   /// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
-  final String? readAccessMode;
+  final pulumi.Input<String>? readAccessMode;
   /// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
   ///
   /// - - -
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AssetResourceSpec].
   /// [name] Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
@@ -31,9 +32,9 @@ class AssetResourceSpec {
 
   factory AssetResourceSpec.fromMap(Map<String, dynamic> map) {
     return AssetResourceSpec(
-      name: map['name'] == null ? null : map['name'] as String,
-      readAccessMode: map['readAccessMode'] == null ? null : map['readAccessMode'] as String,
-      type: map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      readAccessMode: map['readAccessMode'] == null ? null : (map['readAccessMode'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

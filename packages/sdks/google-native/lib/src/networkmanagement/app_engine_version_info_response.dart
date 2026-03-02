@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with an App Engine version.
 class AppEngineVersionInfoResponse {
   /// Name of an App Engine version.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// App Engine execution environment for a version.
-  final String environment;
+  final pulumi.Input<String> environment;
   /// Runtime of the App Engine version.
-  final String runtime;
+  final pulumi.Input<String> runtime;
   /// URI of an App Engine version.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [AppEngineVersionInfoResponse].
   /// [displayName] Name of an App Engine version.
@@ -35,10 +36,10 @@ class AppEngineVersionInfoResponse {
 
   factory AppEngineVersionInfoResponse.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionInfoResponse(
-      displayName: map['displayName'] as String,
-      environment: map['environment'] as String,
-      runtime: map['runtime'] as String,
-      uri: map['uri'] as String,
+      displayName: (map['displayName'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      runtime: (map['runtime'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

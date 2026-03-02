@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountNetworkInjection {
   /// Specifies what features network injection applies to. The only possible value is `agent`.
-  final String scenario;
+  final pulumi.Input<String> scenario;
   /// The ID of the subnet which the Agent Client is injected into.
   ///
   /// > **Note:** The agent subnet must use an address space in the 172.* or 192.* ranges.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [AccountNetworkInjection].
   /// [scenario] Specifies what features network injection applies to. The only possible value is `agent`.
@@ -26,8 +27,8 @@ class AccountNetworkInjection {
 
   factory AccountNetworkInjection.fromMap(Map<String, dynamic> map) {
     return AccountNetworkInjection(
-      scenario: map['scenario'] as String,
-      subnetId: map['subnetId'] as String,
+      scenario: (map['scenario'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

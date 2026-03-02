@@ -25,17 +25,12 @@ class NetworkingIpArgs {
   /// [reserved] Whether the IPv4 address should be reserved.
   /// [type] The type of IP address. (ipv4, ipv6, etc.)
   NetworkingIpArgs({
-    pulumi.Output<int>? linodeId,
-    pulumi.Output<bool>? public,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? reserved,
-    pulumi.Output<String>? type,
-  }) :
-      linodeId = pulumi.Input.asOptionalInput<int>(linodeId),
-      public = pulumi.Input.asOptionalInput<bool>(public),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reserved = pulumi.Input.asOptionalInput<bool>(reserved),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.linodeId,
+    this.public,
+    this.region,
+    this.reserved,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkingIpArgs {
 
   factory NetworkingIpArgs.fromMap(Map<String, dynamic> map) {
     return NetworkingIpArgs(
-      linodeId: map['linodeId'] == null ? null : pulumi.Output.create<int>(map['linodeId'] as int),
-      public: map['public'] == null ? null : pulumi.Output.create<bool>(map['public'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reserved: map['reserved'] == null ? null : pulumi.Output.create<bool>(map['reserved'] as bool),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

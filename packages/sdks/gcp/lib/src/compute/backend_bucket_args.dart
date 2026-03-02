@@ -60,29 +60,18 @@ class BackendBucketArgs {
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   BackendBucketArgs({
-    required pulumi.Output<String> bucketName,
-    pulumi.Output<BackendBucketCdnPolicy>? cdnPolicy,
-    pulumi.Output<String>? compressionMode,
-    pulumi.Output<List<String>>? customResponseHeaders,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? edgeSecurityPolicy,
-    pulumi.Output<bool>? enableCdn,
-    pulumi.Output<String>? loadBalancingScheme,
-    pulumi.Output<String>? name,
-    pulumi.Output<BackendBucketParams>? params,
-    pulumi.Output<String>? project,
-  }) :
-      bucketName = pulumi.Input.asInput<String>(bucketName),
-      cdnPolicy = pulumi.Input.asOptionalInput<BackendBucketCdnPolicy>(cdnPolicy),
-      compressionMode = pulumi.Input.asOptionalInput<String>(compressionMode),
-      customResponseHeaders = pulumi.Input.asOptionalInput<List<String>>(customResponseHeaders),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      edgeSecurityPolicy = pulumi.Input.asOptionalInput<String>(edgeSecurityPolicy),
-      enableCdn = pulumi.Input.asOptionalInput<bool>(enableCdn),
-      loadBalancingScheme = pulumi.Input.asOptionalInput<String>(loadBalancingScheme),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      params = pulumi.Input.asOptionalInput<BackendBucketParams>(params),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.bucketName,
+    this.cdnPolicy,
+    this.compressionMode,
+    this.customResponseHeaders,
+    this.description,
+    this.edgeSecurityPolicy,
+    this.enableCdn,
+    this.loadBalancingScheme,
+    this.name,
+    this.params,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,17 +91,17 @@ class BackendBucketArgs {
 
   factory BackendBucketArgs.fromMap(Map<String, dynamic> map) {
     return BackendBucketArgs(
-      bucketName: pulumi.Output.create<String>(map['bucketName'] as String),
-      cdnPolicy: map['cdnPolicy'] == null ? null : pulumi.Output.create<BackendBucketCdnPolicy>(BackendBucketCdnPolicy.fromMap((map['cdnPolicy'] as Map).cast<String, dynamic>())),
-      compressionMode: map['compressionMode'] == null ? null : pulumi.Output.create<String>(map['compressionMode'] as String),
-      customResponseHeaders: map['customResponseHeaders'] == null ? null : pulumi.Output.create<List<String>>((map['customResponseHeaders'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : pulumi.Output.create<String>(map['edgeSecurityPolicy'] as String),
-      enableCdn: map['enableCdn'] == null ? null : pulumi.Output.create<bool>(map['enableCdn'] as bool),
-      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : pulumi.Output.create<String>(map['loadBalancingScheme'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      params: map['params'] == null ? null : pulumi.Output.create<BackendBucketParams>(BackendBucketParams.fromMap((map['params'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bucketName: (map['bucketName'] as String).input(),
+      cdnPolicy: map['cdnPolicy'] == null ? null : (BackendBucketCdnPolicy.fromMap((map['cdnPolicy'] as Map).cast<String, dynamic>())).input(),
+      compressionMode: map['compressionMode'] == null ? null : (map['compressionMode'] as String).input(),
+      customResponseHeaders: map['customResponseHeaders'] == null ? null : ((map['customResponseHeaders'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : (map['edgeSecurityPolicy'] as String).input(),
+      enableCdn: map['enableCdn'] == null ? null : (map['enableCdn'] as bool).input(),
+      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : (map['loadBalancingScheme'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      params: map['params'] == null ? null : (BackendBucketParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

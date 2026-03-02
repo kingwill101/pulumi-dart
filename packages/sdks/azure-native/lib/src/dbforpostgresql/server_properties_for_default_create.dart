@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_enforcement_enum.dart';
 import 'storage_profile.dart';
 
 /// The properties used to create a new server.
 class ServerPropertiesForDefaultCreate {
   /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  final String administratorLogin;
+  final pulumi.Input<String> administratorLogin;
   /// The password of the administrator login.
-  final String administratorLoginPassword;
+  final pulumi.Input<String> administratorLoginPassword;
   /// The mode to create a new server.
   /// Expected value is 'Default'.
-  final String createMode;
+  final pulumi.Input<String> createMode;
   /// Status showing whether the server enabled infrastructure encryption.
-  final String? infrastructureEncryption;
+  final pulumi.Input<String>? infrastructureEncryption;
   /// Enforce a minimal Tls version for the server.
-  final String? minimalTlsVersion;
+  final pulumi.Input<String>? minimalTlsVersion;
   /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// Enable ssl enforcement or not when connect to server.
-  final SslEnforcementEnum? sslEnforcement;
+  final pulumi.Input<SslEnforcementEnum>? sslEnforcement;
   /// Storage profile of a server.
-  final StorageProfile? storageProfile;
+  final pulumi.Input<StorageProfile>? storageProfile;
   /// Server version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ServerPropertiesForDefaultCreate].
   /// [administratorLogin] The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
@@ -55,23 +56,23 @@ class ServerPropertiesForDefaultCreate {
       'infrastructureEncryption': ?infrastructureEncryption,
       'minimalTlsVersion': ?minimalTlsVersion,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'sslEnforcement': ?sslEnforcement == null ? null : sslEnforcement!.value,
-      'storageProfile': ?storageProfile == null ? null : storageProfile!.toMap(),
+      'sslEnforcement': ?pulumi.Input.mapOptionalInputValue<SslEnforcementEnum, String>(sslEnforcement, (value) => value.value),
+      'storageProfile': ?pulumi.Input.mapOptionalInputValue<StorageProfile, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory ServerPropertiesForDefaultCreate.fromMap(Map<String, dynamic> map) {
     return ServerPropertiesForDefaultCreate(
-      administratorLogin: map['administratorLogin'] as String,
-      administratorLoginPassword: map['administratorLoginPassword'] as String,
-      createMode: map['createMode'] as String,
-      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : map['infrastructureEncryption'] as String,
-      minimalTlsVersion: map['minimalTlsVersion'] == null ? null : map['minimalTlsVersion'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      sslEnforcement: map['sslEnforcement'] == null ? null : SslEnforcementEnum.fromValue(map['sslEnforcement'] as String),
-      storageProfile: map['storageProfile'] == null ? null : StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      administratorLogin: (map['administratorLogin'] as String).input(),
+      administratorLoginPassword: (map['administratorLoginPassword'] as String).input(),
+      createMode: (map['createMode'] as String).input(),
+      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption'] as String).input(),
+      minimalTlsVersion: map['minimalTlsVersion'] == null ? null : (map['minimalTlsVersion'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      sslEnforcement: map['sslEnforcement'] == null ? null : (SslEnforcementEnum.fromValue(map['sslEnforcement'] as String)).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

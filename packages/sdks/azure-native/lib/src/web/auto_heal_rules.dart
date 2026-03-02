@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_heal_actions.dart';
 import 'auto_heal_triggers.dart';
 
 /// Rules that can be defined for auto-heal.
 class AutoHealRules {
   /// Actions to be executed when a rule is triggered.
-  final AutoHealActions? actions;
+  final pulumi.Input<AutoHealActions>? actions;
   /// Conditions that describe when to execute the auto-heal actions.
-  final AutoHealTriggers? triggers;
+  final pulumi.Input<AutoHealTriggers>? triggers;
 
   /// Creates a new [AutoHealRules].
   /// [actions] Actions to be executed when a rule is triggered.
@@ -20,15 +21,15 @@ class AutoHealRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?actions == null ? null : actions!.toMap(),
-      'triggers': ?triggers == null ? null : triggers!.toMap(),
+      'actions': ?pulumi.Input.mapOptionalInputValue<AutoHealActions, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'triggers': ?pulumi.Input.mapOptionalInputValue<AutoHealTriggers, Map<String, dynamic>>(triggers, (value) => value.toMap()),
     };
   }
 
   factory AutoHealRules.fromMap(Map<String, dynamic> map) {
     return AutoHealRules(
-      actions: map['actions'] == null ? null : AutoHealActions.fromMap((map['actions'] as Map).cast<String, dynamic>()),
-      triggers: map['triggers'] == null ? null : AutoHealTriggers.fromMap((map['triggers'] as Map).cast<String, dynamic>()),
+      actions: map['actions'] == null ? null : (AutoHealActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
+      triggers: map['triggers'] == null ? null : (AutoHealTriggers.fromMap((map['triggers'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

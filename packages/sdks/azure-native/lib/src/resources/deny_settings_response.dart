@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines how resources deployed by the Deployment stack are locked.
 class DenySettingsResponse {
   /// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
-  final bool? applyToChildScopes;
+  final pulumi.Input<bool>? applyToChildScopes;
   /// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
-  final List<String>? excludedActions;
+  final pulumi.Input<List<String>>? excludedActions;
   /// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
-  final List<String>? excludedPrincipals;
+  final pulumi.Input<List<String>>? excludedPrincipals;
   /// denySettings Mode that defines denied actions.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [DenySettingsResponse].
   /// [applyToChildScopes] DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
@@ -35,10 +36,10 @@ class DenySettingsResponse {
 
   factory DenySettingsResponse.fromMap(Map<String, dynamic> map) {
     return DenySettingsResponse(
-      applyToChildScopes: map['applyToChildScopes'] == null ? null : map['applyToChildScopes'] as bool,
-      excludedActions: map['excludedActions'] == null ? null : (map['excludedActions'] as List).cast<String>(),
-      excludedPrincipals: map['excludedPrincipals'] == null ? null : (map['excludedPrincipals'] as List).cast<String>(),
-      mode: map['mode'] as String,
+      applyToChildScopes: map['applyToChildScopes'] == null ? null : (map['applyToChildScopes'] as bool).input(),
+      excludedActions: map['excludedActions'] == null ? null : ((map['excludedActions'] as List).cast<String>()).input(),
+      excludedPrincipals: map['excludedPrincipals'] == null ? null : ((map['excludedPrincipals'] as List).cast<String>()).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

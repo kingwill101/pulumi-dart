@@ -24,13 +24,10 @@ class TunnelQuotaTimerArgs {
   /// [quotaTimers] Time-Sharing configuration
   /// [timeZone] Time zone, reference: Asia/Shanghai
   TunnelQuotaTimerArgs({
-    required pulumi.Output<String> nickname,
-    pulumi.Output<List<TunnelQuotaTimerQuotaTimer>>? quotaTimers,
-    pulumi.Output<String>? timeZone,
-  }) :
-      nickname = pulumi.Input.asInput<String>(nickname),
-      quotaTimers = pulumi.Input.asOptionalInput<List<TunnelQuotaTimerQuotaTimer>>(quotaTimers),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    required this.nickname,
+    this.quotaTimers,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class TunnelQuotaTimerArgs {
 
   factory TunnelQuotaTimerArgs.fromMap(Map<String, dynamic> map) {
     return TunnelQuotaTimerArgs(
-      nickname: pulumi.Output.create<String>(map['nickname'] as String),
-      quotaTimers: map['quotaTimers'] == null ? null : pulumi.Output.create<List<TunnelQuotaTimerQuotaTimer>>(pulumi.Input.decodeList<TunnelQuotaTimerQuotaTimer>(map['quotaTimers'], (value) => TunnelQuotaTimerQuotaTimer.fromMap((value as Map).cast<String, dynamic>()))),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      nickname: (map['nickname'] as String).input(),
+      quotaTimers: map['quotaTimers'] == null ? null : (pulumi.Input.decodeList<TunnelQuotaTimerQuotaTimer>(map['quotaTimers'], (value) => TunnelQuotaTimerQuotaTimer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

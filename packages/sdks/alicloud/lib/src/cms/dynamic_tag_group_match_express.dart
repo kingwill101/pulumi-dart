@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DynamicTagGroupMatchExpress {
   /// The tag values of the cloud resources.
-  final String tagValue;
+  final pulumi.Input<String> tagValue;
   /// The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
-  final String tagValueMatchFunction;
+  final pulumi.Input<String> tagValueMatchFunction;
 
   /// Creates a new [DynamicTagGroupMatchExpress].
   /// [tagValue] The tag values of the cloud resources.
@@ -24,8 +25,8 @@ class DynamicTagGroupMatchExpress {
 
   factory DynamicTagGroupMatchExpress.fromMap(Map<String, dynamic> map) {
     return DynamicTagGroupMatchExpress(
-      tagValue: map['tagValue'] as String,
-      tagValueMatchFunction: map['tagValueMatchFunction'] as String,
+      tagValue: (map['tagValue'] as String).input(),
+      tagValueMatchFunction: (map['tagValueMatchFunction'] as String).input(),
     );
   }
 }

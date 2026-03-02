@@ -32,23 +32,15 @@ class FirewallEndpointAssociationArgs {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [tlsInspectionPolicy] Optional. The URL of the TlsInspectionPolicy that is being associated.
   FirewallEndpointAssociationArgs({
-    required pulumi.Output<String> firewallEndpoint,
-    pulumi.Output<String>? firewallEndpointAssociationId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? tlsInspectionPolicy,
-  }) :
-      firewallEndpoint = pulumi.Input.asInput<String>(firewallEndpoint),
-      firewallEndpointAssociationId = pulumi.Input.asOptionalInput<String>(firewallEndpointAssociationId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      tlsInspectionPolicy = pulumi.Input.asOptionalInput<String>(tlsInspectionPolicy);
+    required this.firewallEndpoint,
+    this.firewallEndpointAssociationId,
+    this.labels,
+    this.location,
+    required this.network,
+    this.project,
+    this.requestId,
+    this.tlsInspectionPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class FirewallEndpointAssociationArgs {
 
   factory FirewallEndpointAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointAssociationArgs(
-      firewallEndpoint: pulumi.Output.create<String>(map['firewallEndpoint'] as String),
-      firewallEndpointAssociationId: map['firewallEndpointAssociationId'] == null ? null : pulumi.Output.create<String>(map['firewallEndpointAssociationId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : pulumi.Output.create<String>(map['tlsInspectionPolicy'] as String),
+      firewallEndpoint: (map['firewallEndpoint'] as String).input(),
+      firewallEndpointAssociationId: map['firewallEndpointAssociationId'] == null ? null : (map['firewallEndpointAssociationId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : (map['tlsInspectionPolicy'] as String).input(),
     );
   }
 }

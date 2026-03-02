@@ -33,21 +33,14 @@ class ServerArgs {
   /// [storageSku] Sku of the storage associated with the resource, Possible values are `standard` and `basic`. Changing this forces a new Fluid Relay Server to be created.
   /// [tags] A mapping of tags which should be assigned to the Fluid Relay Server.
   ServerArgs({
-    pulumi.Output<ServerCustomerManagedKey>? customerManagedKey,
-    pulumi.Output<ServerIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageSku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customerManagedKey = pulumi.Input.asOptionalInput<ServerCustomerManagedKey>(customerManagedKey),
-      identity = pulumi.Input.asOptionalInput<ServerIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageSku = pulumi.Input.asOptionalInput<String>(storageSku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customerManagedKey,
+    this.identity,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.storageSku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<ServerCustomerManagedKey>(ServerCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ServerIdentity>(ServerIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageSku: map['storageSku'] == null ? null : pulumi.Output.create<String>(map['storageSku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (ServerCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ServerIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageSku: map['storageSku'] == null ? null : (map['storageSku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

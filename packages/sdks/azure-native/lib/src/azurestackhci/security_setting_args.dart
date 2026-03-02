@@ -28,19 +28,13 @@ class SecuritySettingArgs {
   /// [smbEncryptionForIntraClusterTrafficComplianceAssignment] SMB encryption for intra-cluster traffic Compliance Assignment
   /// [wdacComplianceAssignment] WDAC Compliance Assignment
   SecuritySettingArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? securedCoreComplianceAssignment,
-    pulumi.Output<String>? securitySettingsName,
-    pulumi.Output<String>? smbEncryptionForIntraClusterTrafficComplianceAssignment,
-    pulumi.Output<String>? wdacComplianceAssignment,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securedCoreComplianceAssignment = pulumi.Input.asOptionalInput<String>(securedCoreComplianceAssignment),
-      securitySettingsName = pulumi.Input.asOptionalInput<String>(securitySettingsName),
-      smbEncryptionForIntraClusterTrafficComplianceAssignment = pulumi.Input.asOptionalInput<String>(smbEncryptionForIntraClusterTrafficComplianceAssignment),
-      wdacComplianceAssignment = pulumi.Input.asOptionalInput<String>(wdacComplianceAssignment);
+    required this.clusterName,
+    required this.resourceGroupName,
+    this.securedCoreComplianceAssignment,
+    this.securitySettingsName,
+    this.smbEncryptionForIntraClusterTrafficComplianceAssignment,
+    this.wdacComplianceAssignment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SecuritySettingArgs {
 
   factory SecuritySettingArgs.fromMap(Map<String, dynamic> map) {
     return SecuritySettingArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securedCoreComplianceAssignment: map['securedCoreComplianceAssignment'] == null ? null : pulumi.Output.create<String>(map['securedCoreComplianceAssignment'] as String),
-      securitySettingsName: map['securitySettingsName'] == null ? null : pulumi.Output.create<String>(map['securitySettingsName'] as String),
-      smbEncryptionForIntraClusterTrafficComplianceAssignment: map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] == null ? null : pulumi.Output.create<String>(map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] as String),
-      wdacComplianceAssignment: map['wdacComplianceAssignment'] == null ? null : pulumi.Output.create<String>(map['wdacComplianceAssignment'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securedCoreComplianceAssignment: map['securedCoreComplianceAssignment'] == null ? null : (map['securedCoreComplianceAssignment'] as String).input(),
+      securitySettingsName: map['securitySettingsName'] == null ? null : (map['securitySettingsName'] as String).input(),
+      smbEncryptionForIntraClusterTrafficComplianceAssignment: map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] == null ? null : (map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] as String).input(),
+      wdacComplianceAssignment: map['wdacComplianceAssignment'] == null ? null : (map['wdacComplianceAssignment'] as String).input(),
     );
   }
 }

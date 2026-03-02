@@ -25,19 +25,13 @@ class FlowhookState {
   /// [orgId] The Apigee Organization associated with the environment
   /// [sharedflow] Id of the Sharedflow attaching to a flowhook point.
   FlowhookState({
-    pulumi.Output<bool>? continueOnError,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? flowHookPoint,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? sharedflow,
-  }) :
-      continueOnError = pulumi.Input.asOptionalInput<bool>(continueOnError),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      flowHookPoint = pulumi.Input.asOptionalInput<String>(flowHookPoint),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      sharedflow = pulumi.Input.asOptionalInput<String>(sharedflow);
+    this.continueOnError,
+    this.description,
+    this.environment,
+    this.flowHookPoint,
+    this.orgId,
+    this.sharedflow,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class FlowhookState {
 
   factory FlowhookState.fromMap(Map<String, dynamic> map) {
     return FlowhookState(
-      continueOnError: map['continueOnError'] == null ? null : pulumi.Output.create<bool>(map['continueOnError'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      flowHookPoint: map['flowHookPoint'] == null ? null : pulumi.Output.create<String>(map['flowHookPoint'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      sharedflow: map['sharedflow'] == null ? null : pulumi.Output.create<String>(map['sharedflow'] as String),
+      continueOnError: map['continueOnError'] == null ? null : (map['continueOnError'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      flowHookPoint: map['flowHookPoint'] == null ? null : (map['flowHookPoint'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      sharedflow: map['sharedflow'] == null ? null : (map['sharedflow'] as String).input(),
     );
   }
 }

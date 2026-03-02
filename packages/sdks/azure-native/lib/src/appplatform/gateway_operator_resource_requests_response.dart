@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the Spring Cloud Gateway Operator.
 class GatewayOperatorResourceRequestsResponse {
   /// Cpu allocated to each Spring Cloud Gateway Operator instance.
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// Instance count of the Spring Cloud Gateway Operator.
-  final int instanceCount;
+  final pulumi.Input<int> instanceCount;
   /// Memory allocated to each Spring Cloud Gateway Operator instance.
-  final String memory;
+  final pulumi.Input<String> memory;
 
   /// Creates a new [GatewayOperatorResourceRequestsResponse].
   /// [cpu] Cpu allocated to each Spring Cloud Gateway Operator instance.
@@ -30,9 +31,9 @@ class GatewayOperatorResourceRequestsResponse {
 
   factory GatewayOperatorResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return GatewayOperatorResourceRequestsResponse(
-      cpu: map['cpu'] as String,
-      instanceCount: map['instanceCount'] as int,
-      memory: map['memory'] as String,
+      cpu: (map['cpu'] as String).input(),
+      instanceCount: (map['instanceCount'] as int).input(),
+      memory: (map['memory'] as String).input(),
     );
   }
 }

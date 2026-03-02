@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolLambdaConfigPreTokenGenerationConfig {
-  final String lambdaArn;
-  final String lambdaVersion;
+  final pulumi.Input<String> lambdaArn;
+  final pulumi.Input<String> lambdaVersion;
 
   /// Creates a new [UserPoolLambdaConfigPreTokenGenerationConfig].
   /// [lambdaArn] Required.
@@ -22,8 +23,8 @@ class UserPoolLambdaConfigPreTokenGenerationConfig {
 
   factory UserPoolLambdaConfigPreTokenGenerationConfig.fromMap(Map<String, dynamic> map) {
     return UserPoolLambdaConfigPreTokenGenerationConfig(
-      lambdaArn: map['lambdaArn'] as String,
-      lambdaVersion: map['lambdaVersion'] as String,
+      lambdaArn: (map['lambdaArn'] as String).input(),
+      lambdaVersion: (map['lambdaVersion'] as String).input(),
     );
   }
 }

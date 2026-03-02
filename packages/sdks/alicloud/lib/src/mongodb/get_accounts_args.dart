@@ -19,13 +19,10 @@ class GetAccountsArgs {
   /// [instanceId] The ID of the instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetAccountsArgs({
-    pulumi.Output<String>? accountName,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.accountName,
+    required this.instanceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccountsArgs {
 
   factory GetAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountsArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GitLab Group properties.
 class GitLabGroupPropertiesResponse {
   /// Gets or sets the human readable fully-qualified name of the Group object.
   ///
   /// This contains the entire namespace hierarchy as seen on GitLab UI where namespaces are separated by the '/' character.
-  final String fullyQualifiedFriendlyName;
+  final pulumi.Input<String> fullyQualifiedFriendlyName;
   /// Gets or sets the fully-qualified name of the Group object.
   ///
   /// This contains the entire namespace hierarchy where namespaces are separated by the '$' character.
-  final String fullyQualifiedName;
+  final pulumi.Input<String> fullyQualifiedName;
   /// Details about resource onboarding status across all connectors.
   ///
   /// OnboardedByOtherConnector - this resource has already been onboarded to another connector. This is only applicable to top-level resources.
   /// Onboarded - this resource has already been onboarded by the specified connector.
   /// NotOnboarded - this resource has not been onboarded to any connector.
   /// NotApplicable - the onboarding state is not applicable to the current endpoint.
-  final String? onboardingState;
+  final pulumi.Input<String>? onboardingState;
   /// The provisioning state of the resource.
   ///
   /// Pending - Provisioning pending.
@@ -27,13 +28,13 @@ class GitLabGroupPropertiesResponse {
   /// PendingDeletion - Deletion pending.
   /// DeletionSuccess - Deletion successful.
   /// DeletionFailure - Deletion failure.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Gets or sets resource status message.
-  final String provisioningStatusMessage;
+  final pulumi.Input<String> provisioningStatusMessage;
   /// Gets or sets time when resource was last checked.
-  final String provisioningStatusUpdateTimeUtc;
+  final pulumi.Input<String> provisioningStatusUpdateTimeUtc;
   /// Gets or sets the url of the GitLab Group.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GitLabGroupPropertiesResponse].
   /// [fullyQualifiedFriendlyName] Gets or sets the human readable fully-qualified name of the Group object.
@@ -67,13 +68,13 @@ class GitLabGroupPropertiesResponse {
 
   factory GitLabGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GitLabGroupPropertiesResponse(
-      fullyQualifiedFriendlyName: map['fullyQualifiedFriendlyName'] as String,
-      fullyQualifiedName: map['fullyQualifiedName'] as String,
-      onboardingState: map['onboardingState'] == null ? null : map['onboardingState'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      provisioningStatusMessage: map['provisioningStatusMessage'] as String,
-      provisioningStatusUpdateTimeUtc: map['provisioningStatusUpdateTimeUtc'] as String,
-      url: map['url'] as String,
+      fullyQualifiedFriendlyName: (map['fullyQualifiedFriendlyName'] as String).input(),
+      fullyQualifiedName: (map['fullyQualifiedName'] as String).input(),
+      onboardingState: map['onboardingState'] == null ? null : (map['onboardingState'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningStatusMessage: (map['provisioningStatusMessage'] as String).input(),
+      provisioningStatusUpdateTimeUtc: (map['provisioningStatusUpdateTimeUtc'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

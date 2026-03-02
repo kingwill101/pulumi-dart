@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubscriptionPushConfigNoWrapper {
   /// When true, writes the Pub/Sub message metadata to
   /// 'x-goog-pubsub-<KEY>:<VAL>' headers of the HTTP request. Writes the
   /// Pub/Sub message attributes to '<KEY>:<VAL>' headers of the HTTP request.
-  final bool writeMetadata;
+  final pulumi.Input<bool> writeMetadata;
 
   /// Creates a new [GetSubscriptionPushConfigNoWrapper].
   /// [writeMetadata] When true, writes the Pub/Sub message metadata to
@@ -21,7 +22,7 @@ class GetSubscriptionPushConfigNoWrapper {
 
   factory GetSubscriptionPushConfigNoWrapper.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionPushConfigNoWrapper(
-      writeMetadata: map['writeMetadata'] as bool,
+      writeMetadata: (map['writeMetadata'] as bool).input(),
     );
   }
 }

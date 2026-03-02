@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
 class DiskSku {
   /// Defines the disk sku name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DiskSku].
   /// [name] Defines the disk sku name.
@@ -20,7 +21,7 @@ class DiskSku {
 
   factory DiskSku.fromMap(Map<String, dynamic> map) {
     return DiskSku(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

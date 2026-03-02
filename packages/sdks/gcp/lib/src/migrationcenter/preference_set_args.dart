@@ -31,19 +31,13 @@ class PreferenceSetArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [virtualMachinePreferences] VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
   PreferenceSetArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> preferenceSetId,
-    pulumi.Output<String>? project,
-    pulumi.Output<PreferenceSetVirtualMachinePreferences>? virtualMachinePreferences,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      preferenceSetId = pulumi.Input.asInput<String>(preferenceSetId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      virtualMachinePreferences = pulumi.Input.asOptionalInput<PreferenceSetVirtualMachinePreferences>(virtualMachinePreferences);
+    this.description,
+    this.displayName,
+    required this.location,
+    required this.preferenceSetId,
+    this.project,
+    this.virtualMachinePreferences,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class PreferenceSetArgs {
 
   factory PreferenceSetArgs.fromMap(Map<String, dynamic> map) {
     return PreferenceSetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      preferenceSetId: pulumi.Output.create<String>(map['preferenceSetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : pulumi.Output.create<PreferenceSetVirtualMachinePreferences>(PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      preferenceSetId: (map['preferenceSetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

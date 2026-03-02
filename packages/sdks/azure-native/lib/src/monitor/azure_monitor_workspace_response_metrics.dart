@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties related to the metrics container in the Azure Monitor Workspace
 class AzureMonitorWorkspaceResponseMetrics {
   /// An internal identifier for the metrics container. Only to be used by the system
-  final String internalId;
+  final pulumi.Input<String> internalId;
   /// The Prometheus query endpoint for the Azure Monitor Workspace
-  final String prometheusQueryEndpoint;
+  final pulumi.Input<String> prometheusQueryEndpoint;
 
   /// Creates a new [AzureMonitorWorkspaceResponseMetrics].
   /// [internalId] An internal identifier for the metrics container. Only to be used by the system
@@ -25,8 +26,8 @@ class AzureMonitorWorkspaceResponseMetrics {
 
   factory AzureMonitorWorkspaceResponseMetrics.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceResponseMetrics(
-      internalId: map['internalId'] as String,
-      prometheusQueryEndpoint: map['prometheusQueryEndpoint'] as String,
+      internalId: (map['internalId'] as String).input(),
+      prometheusQueryEndpoint: (map['prometheusQueryEndpoint'] as String).input(),
     );
   }
 }

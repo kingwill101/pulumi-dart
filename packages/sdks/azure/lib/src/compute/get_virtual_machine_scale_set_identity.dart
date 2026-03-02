@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualMachineScaleSetIdentity {
   /// The list of User Assigned Managed Identity IDs assigned to this Virtual Machine Scale Set.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Virtual Machine Scale Set.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The Tenant ID of the System Assigned Managed Service Identity that is configured on this Virtual Machine Scale Set.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The Type of IP Tag.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetVirtualMachineScaleSetIdentity].
   /// [identityIds] The list of User Assigned Managed Identity IDs assigned to this Virtual Machine Scale Set.
@@ -34,10 +35,10 @@ class GetVirtualMachineScaleSetIdentity {
 
   factory GetVirtualMachineScaleSetIdentity.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

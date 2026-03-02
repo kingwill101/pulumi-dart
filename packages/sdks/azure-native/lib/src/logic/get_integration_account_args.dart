@@ -16,11 +16,9 @@ class GetIntegrationAccountArgs {
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
   GetIntegrationAccountArgs({
-    required pulumi.Output<String> integrationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.integrationAccountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIntegrationAccountArgs {
 
   factory GetIntegrationAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountArgs(
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

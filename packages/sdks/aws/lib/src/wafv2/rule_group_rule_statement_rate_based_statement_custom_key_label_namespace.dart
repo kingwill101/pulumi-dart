@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace {
   /// The namespace to use for aggregation
-  final String namespace;
+  final pulumi.Input<String> namespace;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace].
   /// [namespace] The namespace to use for aggregation
@@ -19,7 +20,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace {
 
   factory RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace(
-      namespace: map['namespace'] as String,
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

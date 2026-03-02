@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployer_vm_packages_response.dart';
 
 /// Defines the OS and SAP Configurations for Deployment
 class OsSapConfigurationResponse {
   /// The url and storage account ID where deployer VM packages are uploaded
-  final DeployerVmPackagesResponse? deployerVmPackages;
+  final pulumi.Input<DeployerVmPackagesResponse>? deployerVmPackages;
   /// The FQDN to set for the SAP system
-  final String? sapFqdn;
+  final pulumi.Input<String>? sapFqdn;
 
   /// Creates a new [OsSapConfigurationResponse].
   /// [deployerVmPackages] The url and storage account ID where deployer VM packages are uploaded
@@ -19,15 +20,15 @@ class OsSapConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployerVmPackages': ?deployerVmPackages == null ? null : deployerVmPackages!.toMap(),
+      'deployerVmPackages': ?pulumi.Input.mapOptionalInputValue<DeployerVmPackagesResponse, Map<String, dynamic>>(deployerVmPackages, (value) => value.toMap()),
       'sapFqdn': ?sapFqdn,
     };
   }
 
   factory OsSapConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return OsSapConfigurationResponse(
-      deployerVmPackages: map['deployerVmPackages'] == null ? null : DeployerVmPackagesResponse.fromMap((map['deployerVmPackages'] as Map).cast<String, dynamic>()),
-      sapFqdn: map['sapFqdn'] == null ? null : map['sapFqdn'] as String,
+      deployerVmPackages: map['deployerVmPackages'] == null ? null : (DeployerVmPackagesResponse.fromMap((map['deployerVmPackages'] as Map).cast<String, dynamic>())).input(),
+      sapFqdn: map['sapFqdn'] == null ? null : (map['sapFqdn'] as String).input(),
     );
   }
 }

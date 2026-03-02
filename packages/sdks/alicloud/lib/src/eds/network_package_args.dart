@@ -16,11 +16,9 @@ class NetworkPackageArgs {
   /// [bandwidth] The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
   /// [officeSiteId] The ID of office site.
   NetworkPackageArgs({
-    required pulumi.Output<int> bandwidth,
-    required pulumi.Output<String> officeSiteId,
-  }) :
-      bandwidth = pulumi.Input.asInput<int>(bandwidth),
-      officeSiteId = pulumi.Input.asInput<String>(officeSiteId);
+    required this.bandwidth,
+    required this.officeSiteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class NetworkPackageArgs {
 
   factory NetworkPackageArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPackageArgs(
-      bandwidth: pulumi.Output.create<int>(map['bandwidth'] as int),
-      officeSiteId: pulumi.Output.create<String>(map['officeSiteId'] as String),
+      bandwidth: (map['bandwidth'] as int).input(),
+      officeSiteId: (map['officeSiteId'] as String).input(),
     );
   }
 }

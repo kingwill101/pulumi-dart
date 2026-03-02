@@ -29,21 +29,14 @@ class GroupState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   GroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? filterExpression,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<GroupInsightsConfiguration>? insightsConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      filterExpression = pulumi.Input.asOptionalInput<String>(filterExpression),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      insightsConfiguration = pulumi.Input.asOptionalInput<GroupInsightsConfiguration>(insightsConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.filterExpression,
+    this.groupName,
+    this.insightsConfiguration,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      filterExpression: map['filterExpression'] == null ? null : pulumi.Output.create<String>(map['filterExpression'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      insightsConfiguration: map['insightsConfiguration'] == null ? null : pulumi.Output.create<GroupInsightsConfiguration>(GroupInsightsConfiguration.fromMap((map['insightsConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      filterExpression: map['filterExpression'] == null ? null : (map['filterExpression'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      insightsConfiguration: map['insightsConfiguration'] == null ? null : (GroupInsightsConfiguration.fromMap((map['insightsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

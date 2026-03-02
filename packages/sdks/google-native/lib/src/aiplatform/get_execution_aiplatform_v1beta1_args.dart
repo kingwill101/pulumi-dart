@@ -18,15 +18,11 @@ class GetExecutionAiplatformV1beta1Args {
   /// [metadataStoreId] Required.
   /// [project] Optional.
   GetExecutionAiplatformV1beta1Args({
-    required pulumi.Output<String> executionId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> metadataStoreId,
-    pulumi.Output<String>? project,
-  }) :
-      executionId = pulumi.Input.asInput<String>(executionId),
-      location = pulumi.Input.asInput<String>(location),
-      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.executionId,
+    required this.location,
+    required this.metadataStoreId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetExecutionAiplatformV1beta1Args {
 
   factory GetExecutionAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetExecutionAiplatformV1beta1Args(
-      executionId: pulumi.Output.create<String>(map['executionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      metadataStoreId: pulumi.Output.create<String>(map['metadataStoreId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      executionId: (map['executionId'] as String).input(),
+      location: (map['location'] as String).input(),
+      metadataStoreId: (map['metadataStoreId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

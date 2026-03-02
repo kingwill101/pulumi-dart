@@ -6,17 +6,17 @@ import 'link_response.dart';
 /// Description related properties of a product system.
 class DescriptionResponse {
   /// Attributes for the product system.
-  final List<String> attributes;
+  final pulumi.Input<List<String>> attributes;
   /// Type of description.
-  final String descriptionType;
+  final pulumi.Input<String> descriptionType;
   /// Keywords for the product system.
-  final List<String> keywords;
+  final pulumi.Input<List<String>> keywords;
   /// Links for the product system.
-  final List<LinkResponse> links;
+  final pulumi.Input<List<LinkResponse>> links;
   /// Long description of the product system.
-  final String longDescription;
+  final pulumi.Input<String> longDescription;
   /// Short description of the product system.
-  final String shortDescription;
+  final pulumi.Input<String> shortDescription;
 
   /// Creates a new [DescriptionResponse].
   /// [attributes] Attributes for the product system.
@@ -39,7 +39,7 @@ class DescriptionResponse {
       'attributes': attributes,
       'descriptionType': descriptionType,
       'keywords': keywords,
-      'links': pulumi.Input.encodeList<LinkResponse, Map<String, dynamic>>(links, (value) => value.toMap()),
+      'links': pulumi.Input.mapInputValue<List<LinkResponse>, List<Map<String, dynamic>>>(links, (value) => pulumi.Input.encodeList<LinkResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'longDescription': longDescription,
       'shortDescription': shortDescription,
     };
@@ -47,12 +47,12 @@ class DescriptionResponse {
 
   factory DescriptionResponse.fromMap(Map<String, dynamic> map) {
     return DescriptionResponse(
-      attributes: (map['attributes'] as List).cast<String>(),
-      descriptionType: map['descriptionType'] as String,
-      keywords: (map['keywords'] as List).cast<String>(),
-      links: pulumi.Input.decodeList<LinkResponse>(map['links'], (value) => LinkResponse.fromMap((value as Map).cast<String, dynamic>())),
-      longDescription: map['longDescription'] as String,
-      shortDescription: map['shortDescription'] as String,
+      attributes: ((map['attributes'] as List).cast<String>()).input(),
+      descriptionType: (map['descriptionType'] as String).input(),
+      keywords: ((map['keywords'] as List).cast<String>()).input(),
+      links: (pulumi.Input.decodeList<LinkResponse>(map['links'], (value) => LinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      longDescription: (map['longDescription'] as String).input(),
+      shortDescription: (map['shortDescription'] as String).input(),
     );
   }
 }

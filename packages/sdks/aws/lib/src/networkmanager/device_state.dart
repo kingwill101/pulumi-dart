@@ -47,31 +47,19 @@ class DeviceState {
   /// [type] Type of device.
   /// [vendor] Vendor of the device.
   DeviceState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<DeviceAwsLocation>? awsLocation,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? globalNetworkId,
-    pulumi.Output<DeviceLocation>? location,
-    pulumi.Output<String>? model,
-    pulumi.Output<String>? serialNumber,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? vendor,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsLocation = pulumi.Input.asOptionalInput<DeviceAwsLocation>(awsLocation),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      globalNetworkId = pulumi.Input.asOptionalInput<String>(globalNetworkId),
-      location = pulumi.Input.asOptionalInput<DeviceLocation>(location),
-      model = pulumi.Input.asOptionalInput<String>(model),
-      serialNumber = pulumi.Input.asOptionalInput<String>(serialNumber),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vendor = pulumi.Input.asOptionalInput<String>(vendor);
+    this.arn,
+    this.awsLocation,
+    this.description,
+    this.globalNetworkId,
+    this.location,
+    this.model,
+    this.serialNumber,
+    this.siteId,
+    this.tags,
+    this.tagsAll,
+    this.type,
+    this.vendor,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsLocation: map['awsLocation'] == null ? null : pulumi.Output.create<DeviceAwsLocation>(DeviceAwsLocation.fromMap((map['awsLocation'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      globalNetworkId: map['globalNetworkId'] == null ? null : pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<DeviceLocation>(DeviceLocation.fromMap((map['location'] as Map).cast<String, dynamic>())),
-      model: map['model'] == null ? null : pulumi.Output.create<String>(map['model'] as String),
-      serialNumber: map['serialNumber'] == null ? null : pulumi.Output.create<String>(map['serialNumber'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vendor: map['vendor'] == null ? null : pulumi.Output.create<String>(map['vendor'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsLocation: map['awsLocation'] == null ? null : (DeviceAwsLocation.fromMap((map['awsLocation'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
+      location: map['location'] == null ? null : (DeviceLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
     );
   }
 }

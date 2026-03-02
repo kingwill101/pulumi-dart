@@ -19,15 +19,11 @@ class CrossAccountState {
   /// [crossAccountRoleName] The name of RAM role that the backup account authorizes the management account to manage its resources
   /// [crossAccountUserId] The uid of the backup account.
   CrossAccountState({
-    pulumi.Output<String>? alias,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? crossAccountRoleName,
-    pulumi.Output<int>? crossAccountUserId,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      crossAccountRoleName = pulumi.Input.asOptionalInput<String>(crossAccountRoleName),
-      crossAccountUserId = pulumi.Input.asOptionalInput<int>(crossAccountUserId);
+    this.alias,
+    this.createTime,
+    this.crossAccountRoleName,
+    this.crossAccountUserId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class CrossAccountState {
 
   factory CrossAccountState.fromMap(Map<String, dynamic> map) {
     return CrossAccountState(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : pulumi.Output.create<String>(map['crossAccountRoleName'] as String),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : pulumi.Output.create<int>(map['crossAccountUserId'] as int),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
     );
   }
 }

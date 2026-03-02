@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTargetGroupStickiness {
-  final int cookieDuration;
-  final String cookieName;
-  final bool enabled;
-  final String type;
+  final pulumi.Input<int> cookieDuration;
+  final pulumi.Input<String> cookieName;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetTargetGroupStickiness].
   /// [cookieDuration] Required.
@@ -30,10 +31,10 @@ class GetTargetGroupStickiness {
 
   factory GetTargetGroupStickiness.fromMap(Map<String, dynamic> map) {
     return GetTargetGroupStickiness(
-      cookieDuration: map['cookieDuration'] as int,
-      cookieName: map['cookieName'] as String,
-      enabled: map['enabled'] as bool,
-      type: map['type'] as String,
+      cookieDuration: (map['cookieDuration'] as int).input(),
+      cookieName: (map['cookieName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

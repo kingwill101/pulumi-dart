@@ -52,35 +52,21 @@ class ApplicationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [showInPortal] Specifies whether to show the RemoteApp program in the RD Web Access server.
   ApplicationArgs({
-    required pulumi.Output<String> applicationGroupName,
-    pulumi.Output<String>? applicationName,
-    pulumi.Output<String>? applicationType,
-    pulumi.Output<String>? commandLineArguments,
-    required pulumi.Output<String> commandLineSetting,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filePath,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<int>? iconIndex,
-    pulumi.Output<String>? iconPath,
-    pulumi.Output<String>? msixPackageApplicationId,
-    pulumi.Output<String>? msixPackageFamilyName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? showInPortal,
-  }) :
-      applicationGroupName = pulumi.Input.asInput<String>(applicationGroupName),
-      applicationName = pulumi.Input.asOptionalInput<String>(applicationName),
-      applicationType = pulumi.Input.asOptionalInput<String>(applicationType),
-      commandLineArguments = pulumi.Input.asOptionalInput<String>(commandLineArguments),
-      commandLineSetting = pulumi.Input.asInput<String>(commandLineSetting),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filePath = pulumi.Input.asOptionalInput<String>(filePath),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      iconIndex = pulumi.Input.asOptionalInput<int>(iconIndex),
-      iconPath = pulumi.Input.asOptionalInput<String>(iconPath),
-      msixPackageApplicationId = pulumi.Input.asOptionalInput<String>(msixPackageApplicationId),
-      msixPackageFamilyName = pulumi.Input.asOptionalInput<String>(msixPackageFamilyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      showInPortal = pulumi.Input.asOptionalInput<bool>(showInPortal);
+    required this.applicationGroupName,
+    this.applicationName,
+    this.applicationType,
+    this.commandLineArguments,
+    required this.commandLineSetting,
+    this.description,
+    this.filePath,
+    this.friendlyName,
+    this.iconIndex,
+    this.iconPath,
+    this.msixPackageApplicationId,
+    this.msixPackageFamilyName,
+    required this.resourceGroupName,
+    this.showInPortal,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationGroupName: pulumi.Output.create<String>(map['applicationGroupName'] as String),
-      applicationName: map['applicationName'] == null ? null : pulumi.Output.create<String>(map['applicationName'] as String),
-      applicationType: map['applicationType'] == null ? null : pulumi.Output.create<String>(map['applicationType'] as String),
-      commandLineArguments: map['commandLineArguments'] == null ? null : pulumi.Output.create<String>(map['commandLineArguments'] as String),
-      commandLineSetting: pulumi.Output.create<String>(map['commandLineSetting'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filePath: map['filePath'] == null ? null : pulumi.Output.create<String>(map['filePath'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      iconIndex: map['iconIndex'] == null ? null : pulumi.Output.create<int>(map['iconIndex'] as int),
-      iconPath: map['iconPath'] == null ? null : pulumi.Output.create<String>(map['iconPath'] as String),
-      msixPackageApplicationId: map['msixPackageApplicationId'] == null ? null : pulumi.Output.create<String>(map['msixPackageApplicationId'] as String),
-      msixPackageFamilyName: map['msixPackageFamilyName'] == null ? null : pulumi.Output.create<String>(map['msixPackageFamilyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      showInPortal: map['showInPortal'] == null ? null : pulumi.Output.create<bool>(map['showInPortal'] as bool),
+      applicationGroupName: (map['applicationGroupName'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
+      commandLineArguments: map['commandLineArguments'] == null ? null : (map['commandLineArguments'] as String).input(),
+      commandLineSetting: (map['commandLineSetting'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      iconIndex: map['iconIndex'] == null ? null : (map['iconIndex'] as int).input(),
+      iconPath: map['iconPath'] == null ? null : (map['iconPath'] as String).input(),
+      msixPackageApplicationId: map['msixPackageApplicationId'] == null ? null : (map['msixPackageApplicationId'] as String).input(),
+      msixPackageFamilyName: map['msixPackageFamilyName'] == null ? null : (map['msixPackageFamilyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      showInPortal: map['showInPortal'] == null ? null : (map['showInPortal'] as bool).input(),
     );
   }
 }

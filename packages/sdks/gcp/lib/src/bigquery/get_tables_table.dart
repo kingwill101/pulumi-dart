@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTablesTable {
   /// User-provided table labels, in key/value pairs.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The name of the table.
-  final String tableId;
+  final pulumi.Input<String> tableId;
 
   /// Creates a new [GetTablesTable].
   /// [labels] User-provided table labels, in key/value pairs.
@@ -24,8 +25,8 @@ class GetTablesTable {
 
   factory GetTablesTable.fromMap(Map<String, dynamic> map) {
     return GetTablesTable(
-      labels: (map['labels'] as Map).cast<String, String>(),
-      tableId: map['tableId'] as String,
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

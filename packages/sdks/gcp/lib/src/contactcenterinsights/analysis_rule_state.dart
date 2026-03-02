@@ -48,27 +48,17 @@ class AnalysisRuleState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Output only. The most recent time at which this analysis rule was updated.
   AnalysisRuleState({
-    pulumi.Output<bool>? active,
-    pulumi.Output<double>? analysisPercentage,
-    pulumi.Output<AnalysisRuleAnnotatorSelector>? annotatorSelector,
-    pulumi.Output<String>? conversationFilter,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      analysisPercentage = pulumi.Input.asOptionalInput<double>(analysisPercentage),
-      annotatorSelector = pulumi.Input.asOptionalInput<AnalysisRuleAnnotatorSelector>(annotatorSelector),
-      conversationFilter = pulumi.Input.asOptionalInput<String>(conversationFilter),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.active,
+    this.analysisPercentage,
+    this.annotatorSelector,
+    this.conversationFilter,
+    this.createTime,
+    this.displayName,
+    this.location,
+    this.name,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,16 +77,16 @@ class AnalysisRuleState {
 
   factory AnalysisRuleState.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleState(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      analysisPercentage: map['analysisPercentage'] == null ? null : pulumi.Output.create<double>(map['analysisPercentage'] as double),
-      annotatorSelector: map['annotatorSelector'] == null ? null : pulumi.Output.create<AnalysisRuleAnnotatorSelector>(AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())),
-      conversationFilter: map['conversationFilter'] == null ? null : pulumi.Output.create<String>(map['conversationFilter'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      analysisPercentage: map['analysisPercentage'] == null ? null : (map['analysisPercentage'] as double).input(),
+      annotatorSelector: map['annotatorSelector'] == null ? null : (AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())).input(),
+      conversationFilter: map['conversationFilter'] == null ? null : (map['conversationFilter'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

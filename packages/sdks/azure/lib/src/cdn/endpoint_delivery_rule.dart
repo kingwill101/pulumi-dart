@@ -24,49 +24,49 @@ import 'endpoint_delivery_rule_url_rewrite_action.dart';
 
 class EndpointDeliveryRule {
   /// A `cache_expiration_action` block as defined above.
-  final EndpointDeliveryRuleCacheExpirationAction? cacheExpirationAction;
+  final pulumi.Input<EndpointDeliveryRuleCacheExpirationAction>? cacheExpirationAction;
   /// A `cache_key_query_string_action` block as defined above.
-  final EndpointDeliveryRuleCacheKeyQueryStringAction? cacheKeyQueryStringAction;
+  final pulumi.Input<EndpointDeliveryRuleCacheKeyQueryStringAction>? cacheKeyQueryStringAction;
   /// A `cookies_condition` block as defined above.
-  final List<EndpointDeliveryRuleCookiesCondition>? cookiesConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleCookiesCondition>>? cookiesConditions;
   /// A `device_condition` block as defined below.
-  final EndpointDeliveryRuleDeviceCondition? deviceCondition;
+  final pulumi.Input<EndpointDeliveryRuleDeviceCondition>? deviceCondition;
   /// A `http_version_condition` block as defined below.
-  final List<EndpointDeliveryRuleHttpVersionCondition>? httpVersionConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleHttpVersionCondition>>? httpVersionConditions;
   /// A `modify_request_header_action` block as defined below.
-  final List<EndpointDeliveryRuleModifyRequestHeaderAction>? modifyRequestHeaderActions;
+  final pulumi.Input<List<EndpointDeliveryRuleModifyRequestHeaderAction>>? modifyRequestHeaderActions;
   /// A `modify_response_header_action` block as defined below.
-  final List<EndpointDeliveryRuleModifyResponseHeaderAction>? modifyResponseHeaderActions;
+  final pulumi.Input<List<EndpointDeliveryRuleModifyResponseHeaderAction>>? modifyResponseHeaderActions;
   /// The Name which should be used for this Delivery Rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// The order used for this rule. The order values should be sequential and begin at `1`.
-  final int order;
+  final pulumi.Input<int> order;
   /// A `post_arg_condition` block as defined below.
-  final List<EndpointDeliveryRulePostArgCondition>? postArgConditions;
+  final pulumi.Input<List<EndpointDeliveryRulePostArgCondition>>? postArgConditions;
   /// A `query_string_condition` block as defined below.
-  final List<EndpointDeliveryRuleQueryStringCondition>? queryStringConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleQueryStringCondition>>? queryStringConditions;
   /// A `remote_address_condition` block as defined below.
-  final List<EndpointDeliveryRuleRemoteAddressCondition>? remoteAddressConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleRemoteAddressCondition>>? remoteAddressConditions;
   /// A `request_body_condition` block as defined below.
-  final List<EndpointDeliveryRuleRequestBodyCondition>? requestBodyConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleRequestBodyCondition>>? requestBodyConditions;
   /// A `request_header_condition` block as defined below.
-  final List<EndpointDeliveryRuleRequestHeaderCondition>? requestHeaderConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleRequestHeaderCondition>>? requestHeaderConditions;
   /// A `request_method_condition` block as defined below.
-  final EndpointDeliveryRuleRequestMethodCondition? requestMethodCondition;
+  final pulumi.Input<EndpointDeliveryRuleRequestMethodCondition>? requestMethodCondition;
   /// A `request_scheme_condition` block as defined below.
-  final EndpointDeliveryRuleRequestSchemeCondition? requestSchemeCondition;
+  final pulumi.Input<EndpointDeliveryRuleRequestSchemeCondition>? requestSchemeCondition;
   /// A `request_uri_condition` block as defined below.
-  final List<EndpointDeliveryRuleRequestUriCondition>? requestUriConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleRequestUriCondition>>? requestUriConditions;
   /// A `url_file_extension_condition` block as defined below.
-  final List<EndpointDeliveryRuleUrlFileExtensionCondition>? urlFileExtensionConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleUrlFileExtensionCondition>>? urlFileExtensionConditions;
   /// A `url_file_name_condition` block as defined below.
-  final List<EndpointDeliveryRuleUrlFileNameCondition>? urlFileNameConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleUrlFileNameCondition>>? urlFileNameConditions;
   /// A `url_path_condition` block as defined below.
-  final List<EndpointDeliveryRuleUrlPathCondition>? urlPathConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleUrlPathCondition>>? urlPathConditions;
   /// A `url_redirect_action` block as defined below.
-  final EndpointDeliveryRuleUrlRedirectAction? urlRedirectAction;
+  final pulumi.Input<EndpointDeliveryRuleUrlRedirectAction>? urlRedirectAction;
   /// A `url_rewrite_action` block as defined below.
-  final EndpointDeliveryRuleUrlRewriteAction? urlRewriteAction;
+  final pulumi.Input<EndpointDeliveryRuleUrlRewriteAction>? urlRewriteAction;
 
   /// Creates a new [EndpointDeliveryRule].
   /// [cacheExpirationAction] A `cache_expiration_action` block as defined above.
@@ -118,55 +118,55 @@ class EndpointDeliveryRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cacheExpirationAction': ?cacheExpirationAction == null ? null : cacheExpirationAction!.toMap(),
-      'cacheKeyQueryStringAction': ?cacheKeyQueryStringAction == null ? null : cacheKeyQueryStringAction!.toMap(),
-      'cookiesConditions': ?cookiesConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleCookiesCondition, Map<String, dynamic>>(cookiesConditions!, (value) => value.toMap()),
-      'deviceCondition': ?deviceCondition == null ? null : deviceCondition!.toMap(),
-      'httpVersionConditions': ?httpVersionConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleHttpVersionCondition, Map<String, dynamic>>(httpVersionConditions!, (value) => value.toMap()),
-      'modifyRequestHeaderActions': ?modifyRequestHeaderActions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleModifyRequestHeaderAction, Map<String, dynamic>>(modifyRequestHeaderActions!, (value) => value.toMap()),
-      'modifyResponseHeaderActions': ?modifyResponseHeaderActions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleModifyResponseHeaderAction, Map<String, dynamic>>(modifyResponseHeaderActions!, (value) => value.toMap()),
+      'cacheExpirationAction': ?pulumi.Input.mapOptionalInputValue<EndpointDeliveryRuleCacheExpirationAction, Map<String, dynamic>>(cacheExpirationAction, (value) => value.toMap()),
+      'cacheKeyQueryStringAction': ?pulumi.Input.mapOptionalInputValue<EndpointDeliveryRuleCacheKeyQueryStringAction, Map<String, dynamic>>(cacheKeyQueryStringAction, (value) => value.toMap()),
+      'cookiesConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleCookiesCondition>, List<Map<String, dynamic>>>(cookiesConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleCookiesCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deviceCondition': ?pulumi.Input.mapOptionalInputValue<EndpointDeliveryRuleDeviceCondition, Map<String, dynamic>>(deviceCondition, (value) => value.toMap()),
+      'httpVersionConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleHttpVersionCondition>, List<Map<String, dynamic>>>(httpVersionConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleHttpVersionCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'modifyRequestHeaderActions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleModifyRequestHeaderAction>, List<Map<String, dynamic>>>(modifyRequestHeaderActions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleModifyRequestHeaderAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'modifyResponseHeaderActions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleModifyResponseHeaderAction>, List<Map<String, dynamic>>>(modifyResponseHeaderActions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleModifyResponseHeaderAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'order': order,
-      'postArgConditions': ?postArgConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRulePostArgCondition, Map<String, dynamic>>(postArgConditions!, (value) => value.toMap()),
-      'queryStringConditions': ?queryStringConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleQueryStringCondition, Map<String, dynamic>>(queryStringConditions!, (value) => value.toMap()),
-      'remoteAddressConditions': ?remoteAddressConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleRemoteAddressCondition, Map<String, dynamic>>(remoteAddressConditions!, (value) => value.toMap()),
-      'requestBodyConditions': ?requestBodyConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleRequestBodyCondition, Map<String, dynamic>>(requestBodyConditions!, (value) => value.toMap()),
-      'requestHeaderConditions': ?requestHeaderConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleRequestHeaderCondition, Map<String, dynamic>>(requestHeaderConditions!, (value) => value.toMap()),
-      'requestMethodCondition': ?requestMethodCondition == null ? null : requestMethodCondition!.toMap(),
-      'requestSchemeCondition': ?requestSchemeCondition == null ? null : requestSchemeCondition!.toMap(),
-      'requestUriConditions': ?requestUriConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleRequestUriCondition, Map<String, dynamic>>(requestUriConditions!, (value) => value.toMap()),
-      'urlFileExtensionConditions': ?urlFileExtensionConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleUrlFileExtensionCondition, Map<String, dynamic>>(urlFileExtensionConditions!, (value) => value.toMap()),
-      'urlFileNameConditions': ?urlFileNameConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleUrlFileNameCondition, Map<String, dynamic>>(urlFileNameConditions!, (value) => value.toMap()),
-      'urlPathConditions': ?urlPathConditions == null ? null : pulumi.Input.encodeList<EndpointDeliveryRuleUrlPathCondition, Map<String, dynamic>>(urlPathConditions!, (value) => value.toMap()),
-      'urlRedirectAction': ?urlRedirectAction == null ? null : urlRedirectAction!.toMap(),
-      'urlRewriteAction': ?urlRewriteAction == null ? null : urlRewriteAction!.toMap(),
+      'postArgConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRulePostArgCondition>, List<Map<String, dynamic>>>(postArgConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRulePostArgCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'queryStringConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleQueryStringCondition>, List<Map<String, dynamic>>>(queryStringConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleQueryStringCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'remoteAddressConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleRemoteAddressCondition>, List<Map<String, dynamic>>>(remoteAddressConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleRemoteAddressCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestBodyConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleRequestBodyCondition>, List<Map<String, dynamic>>>(requestBodyConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleRequestBodyCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestHeaderConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleRequestHeaderCondition>, List<Map<String, dynamic>>>(requestHeaderConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleRequestHeaderCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestMethodCondition': ?pulumi.Input.mapOptionalInputValue<EndpointDeliveryRuleRequestMethodCondition, Map<String, dynamic>>(requestMethodCondition, (value) => value.toMap()),
+      'requestSchemeCondition': ?pulumi.Input.mapOptionalInputValue<EndpointDeliveryRuleRequestSchemeCondition, Map<String, dynamic>>(requestSchemeCondition, (value) => value.toMap()),
+      'requestUriConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleRequestUriCondition>, List<Map<String, dynamic>>>(requestUriConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleRequestUriCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'urlFileExtensionConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleUrlFileExtensionCondition>, List<Map<String, dynamic>>>(urlFileExtensionConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleUrlFileExtensionCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'urlFileNameConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleUrlFileNameCondition>, List<Map<String, dynamic>>>(urlFileNameConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleUrlFileNameCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'urlPathConditions': ?pulumi.Input.mapOptionalInputValue<List<EndpointDeliveryRuleUrlPathCondition>, List<Map<String, dynamic>>>(urlPathConditions, (value) => pulumi.Input.encodeList<EndpointDeliveryRuleUrlPathCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'urlRedirectAction': ?pulumi.Input.mapOptionalInputValue<EndpointDeliveryRuleUrlRedirectAction, Map<String, dynamic>>(urlRedirectAction, (value) => value.toMap()),
+      'urlRewriteAction': ?pulumi.Input.mapOptionalInputValue<EndpointDeliveryRuleUrlRewriteAction, Map<String, dynamic>>(urlRewriteAction, (value) => value.toMap()),
     };
   }
 
   factory EndpointDeliveryRule.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRule(
-      cacheExpirationAction: map['cacheExpirationAction'] == null ? null : EndpointDeliveryRuleCacheExpirationAction.fromMap((map['cacheExpirationAction'] as Map).cast<String, dynamic>()),
-      cacheKeyQueryStringAction: map['cacheKeyQueryStringAction'] == null ? null : EndpointDeliveryRuleCacheKeyQueryStringAction.fromMap((map['cacheKeyQueryStringAction'] as Map).cast<String, dynamic>()),
-      cookiesConditions: map['cookiesConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleCookiesCondition>(map['cookiesConditions'], (value) => EndpointDeliveryRuleCookiesCondition.fromMap((value as Map).cast<String, dynamic>())),
-      deviceCondition: map['deviceCondition'] == null ? null : EndpointDeliveryRuleDeviceCondition.fromMap((map['deviceCondition'] as Map).cast<String, dynamic>()),
-      httpVersionConditions: map['httpVersionConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleHttpVersionCondition>(map['httpVersionConditions'], (value) => EndpointDeliveryRuleHttpVersionCondition.fromMap((value as Map).cast<String, dynamic>())),
-      modifyRequestHeaderActions: map['modifyRequestHeaderActions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleModifyRequestHeaderAction>(map['modifyRequestHeaderActions'], (value) => EndpointDeliveryRuleModifyRequestHeaderAction.fromMap((value as Map).cast<String, dynamic>())),
-      modifyResponseHeaderActions: map['modifyResponseHeaderActions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleModifyResponseHeaderAction>(map['modifyResponseHeaderActions'], (value) => EndpointDeliveryRuleModifyResponseHeaderAction.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      order: map['order'] as int,
-      postArgConditions: map['postArgConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRulePostArgCondition>(map['postArgConditions'], (value) => EndpointDeliveryRulePostArgCondition.fromMap((value as Map).cast<String, dynamic>())),
-      queryStringConditions: map['queryStringConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleQueryStringCondition>(map['queryStringConditions'], (value) => EndpointDeliveryRuleQueryStringCondition.fromMap((value as Map).cast<String, dynamic>())),
-      remoteAddressConditions: map['remoteAddressConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleRemoteAddressCondition>(map['remoteAddressConditions'], (value) => EndpointDeliveryRuleRemoteAddressCondition.fromMap((value as Map).cast<String, dynamic>())),
-      requestBodyConditions: map['requestBodyConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleRequestBodyCondition>(map['requestBodyConditions'], (value) => EndpointDeliveryRuleRequestBodyCondition.fromMap((value as Map).cast<String, dynamic>())),
-      requestHeaderConditions: map['requestHeaderConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleRequestHeaderCondition>(map['requestHeaderConditions'], (value) => EndpointDeliveryRuleRequestHeaderCondition.fromMap((value as Map).cast<String, dynamic>())),
-      requestMethodCondition: map['requestMethodCondition'] == null ? null : EndpointDeliveryRuleRequestMethodCondition.fromMap((map['requestMethodCondition'] as Map).cast<String, dynamic>()),
-      requestSchemeCondition: map['requestSchemeCondition'] == null ? null : EndpointDeliveryRuleRequestSchemeCondition.fromMap((map['requestSchemeCondition'] as Map).cast<String, dynamic>()),
-      requestUriConditions: map['requestUriConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleRequestUriCondition>(map['requestUriConditions'], (value) => EndpointDeliveryRuleRequestUriCondition.fromMap((value as Map).cast<String, dynamic>())),
-      urlFileExtensionConditions: map['urlFileExtensionConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleUrlFileExtensionCondition>(map['urlFileExtensionConditions'], (value) => EndpointDeliveryRuleUrlFileExtensionCondition.fromMap((value as Map).cast<String, dynamic>())),
-      urlFileNameConditions: map['urlFileNameConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleUrlFileNameCondition>(map['urlFileNameConditions'], (value) => EndpointDeliveryRuleUrlFileNameCondition.fromMap((value as Map).cast<String, dynamic>())),
-      urlPathConditions: map['urlPathConditions'] == null ? null : pulumi.Input.decodeList<EndpointDeliveryRuleUrlPathCondition>(map['urlPathConditions'], (value) => EndpointDeliveryRuleUrlPathCondition.fromMap((value as Map).cast<String, dynamic>())),
-      urlRedirectAction: map['urlRedirectAction'] == null ? null : EndpointDeliveryRuleUrlRedirectAction.fromMap((map['urlRedirectAction'] as Map).cast<String, dynamic>()),
-      urlRewriteAction: map['urlRewriteAction'] == null ? null : EndpointDeliveryRuleUrlRewriteAction.fromMap((map['urlRewriteAction'] as Map).cast<String, dynamic>()),
+      cacheExpirationAction: map['cacheExpirationAction'] == null ? null : (EndpointDeliveryRuleCacheExpirationAction.fromMap((map['cacheExpirationAction'] as Map).cast<String, dynamic>())).input(),
+      cacheKeyQueryStringAction: map['cacheKeyQueryStringAction'] == null ? null : (EndpointDeliveryRuleCacheKeyQueryStringAction.fromMap((map['cacheKeyQueryStringAction'] as Map).cast<String, dynamic>())).input(),
+      cookiesConditions: map['cookiesConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleCookiesCondition>(map['cookiesConditions'], (value) => EndpointDeliveryRuleCookiesCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deviceCondition: map['deviceCondition'] == null ? null : (EndpointDeliveryRuleDeviceCondition.fromMap((map['deviceCondition'] as Map).cast<String, dynamic>())).input(),
+      httpVersionConditions: map['httpVersionConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleHttpVersionCondition>(map['httpVersionConditions'], (value) => EndpointDeliveryRuleHttpVersionCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modifyRequestHeaderActions: map['modifyRequestHeaderActions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleModifyRequestHeaderAction>(map['modifyRequestHeaderActions'], (value) => EndpointDeliveryRuleModifyRequestHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modifyResponseHeaderActions: map['modifyResponseHeaderActions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleModifyResponseHeaderAction>(map['modifyResponseHeaderActions'], (value) => EndpointDeliveryRuleModifyResponseHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      order: (map['order'] as int).input(),
+      postArgConditions: map['postArgConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRulePostArgCondition>(map['postArgConditions'], (value) => EndpointDeliveryRulePostArgCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryStringConditions: map['queryStringConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleQueryStringCondition>(map['queryStringConditions'], (value) => EndpointDeliveryRuleQueryStringCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remoteAddressConditions: map['remoteAddressConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleRemoteAddressCondition>(map['remoteAddressConditions'], (value) => EndpointDeliveryRuleRemoteAddressCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestBodyConditions: map['requestBodyConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleRequestBodyCondition>(map['requestBodyConditions'], (value) => EndpointDeliveryRuleRequestBodyCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeaderConditions: map['requestHeaderConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleRequestHeaderCondition>(map['requestHeaderConditions'], (value) => EndpointDeliveryRuleRequestHeaderCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestMethodCondition: map['requestMethodCondition'] == null ? null : (EndpointDeliveryRuleRequestMethodCondition.fromMap((map['requestMethodCondition'] as Map).cast<String, dynamic>())).input(),
+      requestSchemeCondition: map['requestSchemeCondition'] == null ? null : (EndpointDeliveryRuleRequestSchemeCondition.fromMap((map['requestSchemeCondition'] as Map).cast<String, dynamic>())).input(),
+      requestUriConditions: map['requestUriConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleRequestUriCondition>(map['requestUriConditions'], (value) => EndpointDeliveryRuleRequestUriCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlFileExtensionConditions: map['urlFileExtensionConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleUrlFileExtensionCondition>(map['urlFileExtensionConditions'], (value) => EndpointDeliveryRuleUrlFileExtensionCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlFileNameConditions: map['urlFileNameConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleUrlFileNameCondition>(map['urlFileNameConditions'], (value) => EndpointDeliveryRuleUrlFileNameCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlPathConditions: map['urlPathConditions'] == null ? null : (pulumi.Input.decodeList<EndpointDeliveryRuleUrlPathCondition>(map['urlPathConditions'], (value) => EndpointDeliveryRuleUrlPathCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlRedirectAction: map['urlRedirectAction'] == null ? null : (EndpointDeliveryRuleUrlRedirectAction.fromMap((map['urlRedirectAction'] as Map).cast<String, dynamic>())).input(),
+      urlRewriteAction: map['urlRewriteAction'] == null ? null : (EndpointDeliveryRuleUrlRewriteAction.fromMap((map['urlRewriteAction'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

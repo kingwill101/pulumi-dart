@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterExtensionPlan {
   /// Specifies the name of the plan from the marketplace. Changing this forces a new Kubernetes Cluster Extension to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the product of the plan from the marketplace. Changing this forces a new Kubernetes Cluster Extension to be created.
-  final String product;
+  final pulumi.Input<String> product;
   /// Specifies the promotion code to use with the plan. Changing this forces a new Kubernetes Cluster Extension to be created.
-  final String? promotionCode;
+  final pulumi.Input<String>? promotionCode;
   /// Specifies the publisher of the plan. Changing this forces a new Kubernetes Cluster Extension to be created.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// Specifies the version of the plan from the marketplace. Changing this forces a new Kubernetes Cluster Extension to be created.
   ///
   /// > **Note:** When `plan` is specified, legal terms must be accepted for this item on this subscription before creating the Kubernetes Cluster Extension. The `azure.marketplace.Agreement` resource or AZ CLI tool can be used to do this.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [KubernetesClusterExtensionPlan].
   /// [name] Specifies the name of the plan from the marketplace. Changing this forces a new Kubernetes Cluster Extension to be created.
@@ -41,11 +42,11 @@ class KubernetesClusterExtensionPlan {
 
   factory KubernetesClusterExtensionPlan.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterExtensionPlan(
-      name: map['name'] as String,
-      product: map['product'] as String,
-      promotionCode: map['promotionCode'] == null ? null : map['promotionCode'] as String,
-      publisher: map['publisher'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      name: (map['name'] as String).input(),
+      product: (map['product'] as String).input(),
+      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

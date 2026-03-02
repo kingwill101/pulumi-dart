@@ -23,15 +23,11 @@ class ConfigurationServiceArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   ConfigurationServiceArgs({
-    pulumi.Output<String>? configurationServiceName,
-    pulumi.Output<ConfigurationServiceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      configurationServiceName = pulumi.Input.asOptionalInput<String>(configurationServiceName),
-      properties = pulumi.Input.asOptionalInput<ConfigurationServiceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.configurationServiceName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ConfigurationServiceArgs {
 
   factory ConfigurationServiceArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceArgs(
-      configurationServiceName: map['configurationServiceName'] == null ? null : pulumi.Output.create<String>(map['configurationServiceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConfigurationServiceProperties>(ConfigurationServiceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      configurationServiceName: map['configurationServiceName'] == null ? null : (map['configurationServiceName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationServiceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

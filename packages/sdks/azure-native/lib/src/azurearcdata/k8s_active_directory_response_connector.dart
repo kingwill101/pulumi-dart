@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class K8sActiveDirectoryResponseConnector {
   /// Name of the connector
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Name space of the connector
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Creates a new [K8sActiveDirectoryResponseConnector].
   /// [name] Name of the connector
@@ -24,8 +25,8 @@ class K8sActiveDirectoryResponseConnector {
 
   factory K8sActiveDirectoryResponseConnector.fromMap(Map<String, dynamic> map) {
     return K8sActiveDirectoryResponseConnector(
-      name: map['name'] == null ? null : map['name'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
     );
   }
 }

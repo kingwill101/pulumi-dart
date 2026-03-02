@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceConfigurationResourceConfigurationDefinitionDnsResource {
   /// The hostname of the Resource for this configuration.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The IP Address type either `IPV4` or `IPV6`
-  final String ipAddressType;
+  final pulumi.Input<String> ipAddressType;
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinitionDnsResource].
   /// [domainName] The hostname of the Resource for this configuration.
@@ -24,8 +25,8 @@ class ResourceConfigurationResourceConfigurationDefinitionDnsResource {
 
   factory ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationResourceConfigurationDefinitionDnsResource(
-      domainName: map['domainName'] as String,
-      ipAddressType: map['ipAddressType'] as String,
+      domainName: (map['domainName'] as String).input(),
+      ipAddressType: (map['ipAddressType'] as String).input(),
     );
   }
 }

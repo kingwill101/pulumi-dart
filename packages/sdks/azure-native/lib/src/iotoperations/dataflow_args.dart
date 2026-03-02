@@ -30,19 +30,13 @@ class DataflowArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DataflowArgs({
-    pulumi.Output<String>? dataflowName,
-    required pulumi.Output<String> dataflowProfileName,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<DataflowProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataflowName = pulumi.Input.asOptionalInput<String>(dataflowName),
-      dataflowProfileName = pulumi.Input.asInput<String>(dataflowProfileName),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      properties = pulumi.Input.asOptionalInput<DataflowProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.dataflowName,
+    required this.dataflowProfileName,
+    required this.extendedLocation,
+    required this.instanceName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class DataflowArgs {
 
   factory DataflowArgs.fromMap(Map<String, dynamic> map) {
     return DataflowArgs(
-      dataflowName: map['dataflowName'] == null ? null : pulumi.Output.create<String>(map['dataflowName'] as String),
-      dataflowProfileName: pulumi.Output.create<String>(map['dataflowProfileName'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DataflowProperties>(DataflowProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataflowName: map['dataflowName'] == null ? null : (map['dataflowName'] as String).input(),
+      dataflowProfileName: (map['dataflowProfileName'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      properties: map['properties'] == null ? null : (DataflowProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

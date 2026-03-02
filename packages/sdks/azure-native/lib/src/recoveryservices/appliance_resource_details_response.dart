@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the appliance resource.
 class ApplianceResourceDetailsResponse {
   /// A value indicating the total capacity of appliance resource.
-  final double capacity;
+  final pulumi.Input<double> capacity;
   /// A value indicating the utilization percentage by gateway agent on appliance.
-  final double processUtilization;
+  final pulumi.Input<double> processUtilization;
   /// A value indicating the status of appliance resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// A value indicating the total utilization percentage for all processes on the appliance.
-  final double totalUtilization;
+  final pulumi.Input<double> totalUtilization;
 
   /// Creates a new [ApplianceResourceDetailsResponse].
   /// [capacity] A value indicating the total capacity of appliance resource.
@@ -35,10 +36,10 @@ class ApplianceResourceDetailsResponse {
 
   factory ApplianceResourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ApplianceResourceDetailsResponse(
-      capacity: map['capacity'] as double,
-      processUtilization: map['processUtilization'] as double,
-      status: map['status'] as String,
-      totalUtilization: map['totalUtilization'] as double,
+      capacity: (map['capacity'] as double).input(),
+      processUtilization: (map['processUtilization'] as double).input(),
+      status: (map['status'] as String).input(),
+      totalUtilization: (map['totalUtilization'] as double).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayConnectionTrafficSelectorPolicy {
   /// List of local CIDRs.
-  final List<String> localAddressCidrs;
+  final pulumi.Input<List<String>> localAddressCidrs;
   /// List of remote CIDRs.
-  final List<String> remoteAddressCidrs;
+  final pulumi.Input<List<String>> remoteAddressCidrs;
 
   /// Creates a new [VirtualNetworkGatewayConnectionTrafficSelectorPolicy].
   /// [localAddressCidrs] List of local CIDRs.
@@ -24,8 +25,8 @@ class VirtualNetworkGatewayConnectionTrafficSelectorPolicy {
 
   factory VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayConnectionTrafficSelectorPolicy(
-      localAddressCidrs: (map['localAddressCidrs'] as List).cast<String>(),
-      remoteAddressCidrs: (map['remoteAddressCidrs'] as List).cast<String>(),
+      localAddressCidrs: ((map['localAddressCidrs'] as List).cast<String>()).input(),
+      remoteAddressCidrs: ((map['remoteAddressCidrs'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConditionalAccessPolicyConditionsClientApplicationsFilter {
   /// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Condition filter to match items.
-  final String rule;
+  final pulumi.Input<String> rule;
 
   /// Creates a new [ConditionalAccessPolicyConditionsClientApplicationsFilter].
   /// [mode] Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
@@ -24,8 +25,8 @@ class ConditionalAccessPolicyConditionsClientApplicationsFilter {
 
   factory ConditionalAccessPolicyConditionsClientApplicationsFilter.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsClientApplicationsFilter(
-      mode: map['mode'] as String,
-      rule: map['rule'] as String,
+      mode: (map['mode'] as String).input(),
+      rule: (map['rule'] as String).input(),
     );
   }
 }

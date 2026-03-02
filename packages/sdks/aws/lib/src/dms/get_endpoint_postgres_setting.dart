@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointPostgresSetting {
-  final String afterConnectScript;
-  final String authenticationMethod;
-  final String babelfishDatabaseName;
-  final bool captureDdls;
-  final String databaseMode;
-  final String ddlArtifactsSchema;
-  final int executeTimeout;
-  final bool failTasksOnLobTruncation;
-  final bool heartbeatEnable;
-  final int heartbeatFrequency;
-  final String heartbeatSchema;
-  final bool mapBooleanAsBoolean;
-  final bool mapJsonbAsClob;
-  final String mapLongVarcharAs;
-  final int maxFileSize;
-  final String pluginName;
-  final String serviceAccessRoleArn;
-  final String slotName;
+  final pulumi.Input<String> afterConnectScript;
+  final pulumi.Input<String> authenticationMethod;
+  final pulumi.Input<String> babelfishDatabaseName;
+  final pulumi.Input<bool> captureDdls;
+  final pulumi.Input<String> databaseMode;
+  final pulumi.Input<String> ddlArtifactsSchema;
+  final pulumi.Input<int> executeTimeout;
+  final pulumi.Input<bool> failTasksOnLobTruncation;
+  final pulumi.Input<bool> heartbeatEnable;
+  final pulumi.Input<int> heartbeatFrequency;
+  final pulumi.Input<String> heartbeatSchema;
+  final pulumi.Input<bool> mapBooleanAsBoolean;
+  final pulumi.Input<bool> mapJsonbAsClob;
+  final pulumi.Input<String> mapLongVarcharAs;
+  final pulumi.Input<int> maxFileSize;
+  final pulumi.Input<String> pluginName;
+  final pulumi.Input<String> serviceAccessRoleArn;
+  final pulumi.Input<String> slotName;
 
   /// Creates a new [GetEndpointPostgresSetting].
   /// [afterConnectScript] Required.
@@ -86,24 +87,24 @@ class GetEndpointPostgresSetting {
 
   factory GetEndpointPostgresSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointPostgresSetting(
-      afterConnectScript: map['afterConnectScript'] as String,
-      authenticationMethod: map['authenticationMethod'] as String,
-      babelfishDatabaseName: map['babelfishDatabaseName'] as String,
-      captureDdls: map['captureDdls'] as bool,
-      databaseMode: map['databaseMode'] as String,
-      ddlArtifactsSchema: map['ddlArtifactsSchema'] as String,
-      executeTimeout: map['executeTimeout'] as int,
-      failTasksOnLobTruncation: map['failTasksOnLobTruncation'] as bool,
-      heartbeatEnable: map['heartbeatEnable'] as bool,
-      heartbeatFrequency: map['heartbeatFrequency'] as int,
-      heartbeatSchema: map['heartbeatSchema'] as String,
-      mapBooleanAsBoolean: map['mapBooleanAsBoolean'] as bool,
-      mapJsonbAsClob: map['mapJsonbAsClob'] as bool,
-      mapLongVarcharAs: map['mapLongVarcharAs'] as String,
-      maxFileSize: map['maxFileSize'] as int,
-      pluginName: map['pluginName'] as String,
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
-      slotName: map['slotName'] as String,
+      afterConnectScript: (map['afterConnectScript'] as String).input(),
+      authenticationMethod: (map['authenticationMethod'] as String).input(),
+      babelfishDatabaseName: (map['babelfishDatabaseName'] as String).input(),
+      captureDdls: (map['captureDdls'] as bool).input(),
+      databaseMode: (map['databaseMode'] as String).input(),
+      ddlArtifactsSchema: (map['ddlArtifactsSchema'] as String).input(),
+      executeTimeout: (map['executeTimeout'] as int).input(),
+      failTasksOnLobTruncation: (map['failTasksOnLobTruncation'] as bool).input(),
+      heartbeatEnable: (map['heartbeatEnable'] as bool).input(),
+      heartbeatFrequency: (map['heartbeatFrequency'] as int).input(),
+      heartbeatSchema: (map['heartbeatSchema'] as String).input(),
+      mapBooleanAsBoolean: (map['mapBooleanAsBoolean'] as bool).input(),
+      mapJsonbAsClob: (map['mapJsonbAsClob'] as bool).input(),
+      mapLongVarcharAs: (map['mapLongVarcharAs'] as String).input(),
+      maxFileSize: (map['maxFileSize'] as int).input(),
+      pluginName: (map['pluginName'] as String).input(),
+      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
+      slotName: (map['slotName'] as String).input(),
     );
   }
 }

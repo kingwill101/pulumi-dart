@@ -47,31 +47,19 @@ class ModelRetailV2betaArgs {
   /// [trainingState] Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
   /// [type] The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`, `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.
   ModelRetailV2betaArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<ModelFilteringOptionRetailV2beta>? filteringOption,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudRetailV2betaModelModelFeaturesConfig>? modelFeaturesConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? optimizationObjective,
-    pulumi.Output<ModelPeriodicTuningStateRetailV2beta>? periodicTuningState,
-    pulumi.Output<String>? project,
-    pulumi.Output<ModelTrainingStateRetailV2beta>? trainingState,
-    required pulumi.Output<String> type,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      filteringOption = pulumi.Input.asOptionalInput<ModelFilteringOptionRetailV2beta>(filteringOption),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      modelFeaturesConfig = pulumi.Input.asOptionalInput<GoogleCloudRetailV2betaModelModelFeaturesConfig>(modelFeaturesConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      optimizationObjective = pulumi.Input.asOptionalInput<String>(optimizationObjective),
-      periodicTuningState = pulumi.Input.asOptionalInput<ModelPeriodicTuningStateRetailV2beta>(periodicTuningState),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trainingState = pulumi.Input.asOptionalInput<ModelTrainingStateRetailV2beta>(trainingState),
-      type = pulumi.Input.asInput<String>(type);
+    required this.catalogId,
+    required this.displayName,
+    this.dryRun,
+    this.filteringOption,
+    this.location,
+    this.modelFeaturesConfig,
+    this.name,
+    this.optimizationObjective,
+    this.periodicTuningState,
+    this.project,
+    this.trainingState,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class ModelRetailV2betaArgs {
 
   factory ModelRetailV2betaArgs.fromMap(Map<String, dynamic> map) {
     return ModelRetailV2betaArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      filteringOption: map['filteringOption'] == null ? null : pulumi.Output.create<ModelFilteringOptionRetailV2beta>(ModelFilteringOptionRetailV2beta.fromValue(map['filteringOption'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      modelFeaturesConfig: map['modelFeaturesConfig'] == null ? null : pulumi.Output.create<GoogleCloudRetailV2betaModelModelFeaturesConfig>(GoogleCloudRetailV2betaModelModelFeaturesConfig.fromMap((map['modelFeaturesConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      optimizationObjective: map['optimizationObjective'] == null ? null : pulumi.Output.create<String>(map['optimizationObjective'] as String),
-      periodicTuningState: map['periodicTuningState'] == null ? null : pulumi.Output.create<ModelPeriodicTuningStateRetailV2beta>(ModelPeriodicTuningStateRetailV2beta.fromValue(map['periodicTuningState'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trainingState: map['trainingState'] == null ? null : pulumi.Output.create<ModelTrainingStateRetailV2beta>(ModelTrainingStateRetailV2beta.fromValue(map['trainingState'] as String)),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      filteringOption: map['filteringOption'] == null ? null : (ModelFilteringOptionRetailV2beta.fromValue(map['filteringOption'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      modelFeaturesConfig: map['modelFeaturesConfig'] == null ? null : (GoogleCloudRetailV2betaModelModelFeaturesConfig.fromMap((map['modelFeaturesConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      optimizationObjective: map['optimizationObjective'] == null ? null : (map['optimizationObjective'] as String).input(),
+      periodicTuningState: map['periodicTuningState'] == null ? null : (ModelPeriodicTuningStateRetailV2beta.fromValue(map['periodicTuningState'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trainingState: map['trainingState'] == null ? null : (ModelTrainingStateRetailV2beta.fromValue(map['trainingState'] as String)).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

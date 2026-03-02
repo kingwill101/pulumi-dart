@@ -22,17 +22,12 @@ class QueryDefinitionState {
   /// [queryString] The query to save. You can read more about CloudWatch Logs Query Syntax in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   QueryDefinitionState({
-    pulumi.Output<List<String>>? logGroupNames,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? queryDefinitionId,
-    pulumi.Output<String>? queryString,
-    pulumi.Output<String>? region,
-  }) :
-      logGroupNames = pulumi.Input.asOptionalInput<List<String>>(logGroupNames),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryDefinitionId = pulumi.Input.asOptionalInput<String>(queryDefinitionId),
-      queryString = pulumi.Input.asOptionalInput<String>(queryString),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.logGroupNames,
+    this.name,
+    this.queryDefinitionId,
+    this.queryString,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class QueryDefinitionState {
 
   factory QueryDefinitionState.fromMap(Map<String, dynamic> map) {
     return QueryDefinitionState(
-      logGroupNames: map['logGroupNames'] == null ? null : pulumi.Output.create<List<String>>((map['logGroupNames'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryDefinitionId: map['queryDefinitionId'] == null ? null : pulumi.Output.create<String>(map['queryDefinitionId'] as String),
-      queryString: map['queryString'] == null ? null : pulumi.Output.create<String>(map['queryString'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      logGroupNames: map['logGroupNames'] == null ? null : ((map['logGroupNames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryDefinitionId: map['queryDefinitionId'] == null ? null : (map['queryDefinitionId'] as String).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

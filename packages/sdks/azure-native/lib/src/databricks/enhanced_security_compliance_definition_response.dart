@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automatic_cluster_update_definition_response.dart';
 import 'compliance_security_profile_definition_response.dart';
 import 'enhanced_security_monitoring_definition_response.dart';
@@ -7,11 +8,11 @@ import 'enhanced_security_monitoring_definition_response.dart';
 /// Status of settings related to the Enhanced Security and Compliance Add-On.
 class EnhancedSecurityComplianceDefinitionResponse {
   /// Status of automated cluster updates feature.
-  final AutomaticClusterUpdateDefinitionResponse? automaticClusterUpdate;
+  final pulumi.Input<AutomaticClusterUpdateDefinitionResponse>? automaticClusterUpdate;
   /// Status of Compliance Security Profile feature.
-  final ComplianceSecurityProfileDefinitionResponse? complianceSecurityProfile;
+  final pulumi.Input<ComplianceSecurityProfileDefinitionResponse>? complianceSecurityProfile;
   /// Status of Enhanced Security Monitoring feature.
-  final EnhancedSecurityMonitoringDefinitionResponse? enhancedSecurityMonitoring;
+  final pulumi.Input<EnhancedSecurityMonitoringDefinitionResponse>? enhancedSecurityMonitoring;
 
   /// Creates a new [EnhancedSecurityComplianceDefinitionResponse].
   /// [automaticClusterUpdate] Status of automated cluster updates feature.
@@ -25,17 +26,17 @@ class EnhancedSecurityComplianceDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'automaticClusterUpdate': ?automaticClusterUpdate == null ? null : automaticClusterUpdate!.toMap(),
-      'complianceSecurityProfile': ?complianceSecurityProfile == null ? null : complianceSecurityProfile!.toMap(),
-      'enhancedSecurityMonitoring': ?enhancedSecurityMonitoring == null ? null : enhancedSecurityMonitoring!.toMap(),
+      'automaticClusterUpdate': ?pulumi.Input.mapOptionalInputValue<AutomaticClusterUpdateDefinitionResponse, Map<String, dynamic>>(automaticClusterUpdate, (value) => value.toMap()),
+      'complianceSecurityProfile': ?pulumi.Input.mapOptionalInputValue<ComplianceSecurityProfileDefinitionResponse, Map<String, dynamic>>(complianceSecurityProfile, (value) => value.toMap()),
+      'enhancedSecurityMonitoring': ?pulumi.Input.mapOptionalInputValue<EnhancedSecurityMonitoringDefinitionResponse, Map<String, dynamic>>(enhancedSecurityMonitoring, (value) => value.toMap()),
     };
   }
 
   factory EnhancedSecurityComplianceDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return EnhancedSecurityComplianceDefinitionResponse(
-      automaticClusterUpdate: map['automaticClusterUpdate'] == null ? null : AutomaticClusterUpdateDefinitionResponse.fromMap((map['automaticClusterUpdate'] as Map).cast<String, dynamic>()),
-      complianceSecurityProfile: map['complianceSecurityProfile'] == null ? null : ComplianceSecurityProfileDefinitionResponse.fromMap((map['complianceSecurityProfile'] as Map).cast<String, dynamic>()),
-      enhancedSecurityMonitoring: map['enhancedSecurityMonitoring'] == null ? null : EnhancedSecurityMonitoringDefinitionResponse.fromMap((map['enhancedSecurityMonitoring'] as Map).cast<String, dynamic>()),
+      automaticClusterUpdate: map['automaticClusterUpdate'] == null ? null : (AutomaticClusterUpdateDefinitionResponse.fromMap((map['automaticClusterUpdate'] as Map).cast<String, dynamic>())).input(),
+      complianceSecurityProfile: map['complianceSecurityProfile'] == null ? null : (ComplianceSecurityProfileDefinitionResponse.fromMap((map['complianceSecurityProfile'] as Map).cast<String, dynamic>())).input(),
+      enhancedSecurityMonitoring: map['enhancedSecurityMonitoring'] == null ? null : (EnhancedSecurityMonitoringDefinitionResponse.fromMap((map['enhancedSecurityMonitoring'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

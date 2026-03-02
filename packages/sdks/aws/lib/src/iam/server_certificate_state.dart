@@ -49,29 +49,18 @@ class ServerCertificateState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uploadDate] Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) when the server certificate was uploaded.
   ServerCertificateState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? certificateBody,
-    pulumi.Output<String>? certificateChain,
-    pulumi.Output<String>? expiration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uploadDate,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      certificateBody = pulumi.Input.asOptionalInput<String>(certificateBody),
-      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
-      expiration = pulumi.Input.asOptionalInput<String>(expiration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uploadDate = pulumi.Input.asOptionalInput<String>(uploadDate);
+    this.arn,
+    this.certificateBody,
+    this.certificateChain,
+    this.expiration,
+    this.name,
+    this.namePrefix,
+    this.path,
+    this.privateKey,
+    this.tags,
+    this.tagsAll,
+    this.uploadDate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class ServerCertificateState {
 
   factory ServerCertificateState.fromMap(Map<String, dynamic> map) {
     return ServerCertificateState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      certificateBody: map['certificateBody'] == null ? null : pulumi.Output.create<String>(map['certificateBody'] as String),
-      certificateChain: map['certificateChain'] == null ? null : pulumi.Output.create<String>(map['certificateChain'] as String),
-      expiration: map['expiration'] == null ? null : pulumi.Output.create<String>(map['expiration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uploadDate: map['uploadDate'] == null ? null : pulumi.Output.create<String>(map['uploadDate'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      certificateBody: map['certificateBody'] == null ? null : (map['certificateBody'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uploadDate: map['uploadDate'] == null ? null : (map['uploadDate'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionAutomaticScalingRequestUtilization {
   /// Target number of concurrent requests.
-  final double? targetConcurrentRequests;
+  final pulumi.Input<double>? targetConcurrentRequests;
   /// Target requests per second.
-  final String? targetRequestCountPerSecond;
+  final pulumi.Input<String>? targetRequestCountPerSecond;
 
   /// Creates a new [FlexibleAppVersionAutomaticScalingRequestUtilization].
   /// [targetConcurrentRequests] Target number of concurrent requests.
@@ -24,8 +25,8 @@ class FlexibleAppVersionAutomaticScalingRequestUtilization {
 
   factory FlexibleAppVersionAutomaticScalingRequestUtilization.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScalingRequestUtilization(
-      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : map['targetConcurrentRequests'] as double,
-      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : map['targetRequestCountPerSecond'] as String,
+      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : (map['targetConcurrentRequests'] as double).input(),
+      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : (map['targetRequestCountPerSecond'] as String).input(),
     );
   }
 }

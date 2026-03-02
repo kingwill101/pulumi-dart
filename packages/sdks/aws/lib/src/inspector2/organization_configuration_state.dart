@@ -17,13 +17,10 @@ class OrganizationConfigurationState {
   /// [maxAccountLimitReached] Whether your configuration reached the max account limit.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationConfigurationState({
-    pulumi.Output<OrganizationConfigurationAutoEnable>? autoEnable,
-    pulumi.Output<bool>? maxAccountLimitReached,
-    pulumi.Output<String>? region,
-  }) :
-      autoEnable = pulumi.Input.asOptionalInput<OrganizationConfigurationAutoEnable>(autoEnable),
-      maxAccountLimitReached = pulumi.Input.asOptionalInput<bool>(maxAccountLimitReached),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.autoEnable,
+    this.maxAccountLimitReached,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class OrganizationConfigurationState {
 
   factory OrganizationConfigurationState.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationState(
-      autoEnable: map['autoEnable'] == null ? null : pulumi.Output.create<OrganizationConfigurationAutoEnable>(OrganizationConfigurationAutoEnable.fromMap((map['autoEnable'] as Map).cast<String, dynamic>())),
-      maxAccountLimitReached: map['maxAccountLimitReached'] == null ? null : pulumi.Output.create<bool>(map['maxAccountLimitReached'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoEnable: map['autoEnable'] == null ? null : (OrganizationConfigurationAutoEnable.fromMap((map['autoEnable'] as Map).cast<String, dynamic>())).input(),
+      maxAccountLimitReached: map['maxAccountLimitReached'] == null ? null : (map['maxAccountLimitReached'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

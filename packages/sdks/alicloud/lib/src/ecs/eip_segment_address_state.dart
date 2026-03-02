@@ -58,27 +58,17 @@ class EipSegmentAddressState {
   /// [status] The status of the resource
   /// [zone] The zone of the contiguous EIP group.
   EipSegmentAddressState({
-    pulumi.Output<String>? bandwidth,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? eipMask,
-    pulumi.Output<String>? internetChargeType,
-    pulumi.Output<String>? isp,
-    pulumi.Output<String>? netmode,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? segmentAddressName,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? zone,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<String>(bandwidth),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      eipMask = pulumi.Input.asOptionalInput<String>(eipMask),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      isp = pulumi.Input.asOptionalInput<String>(isp),
-      netmode = pulumi.Input.asOptionalInput<String>(netmode),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      segmentAddressName = pulumi.Input.asOptionalInput<String>(segmentAddressName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.bandwidth,
+    this.createTime,
+    this.eipMask,
+    this.internetChargeType,
+    this.isp,
+    this.netmode,
+    this.resourceGroupId,
+    this.segmentAddressName,
+    this.status,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,16 +87,16 @@ class EipSegmentAddressState {
 
   factory EipSegmentAddressState.fromMap(Map<String, dynamic> map) {
     return EipSegmentAddressState(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<String>(map['bandwidth'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      eipMask: map['eipMask'] == null ? null : pulumi.Output.create<String>(map['eipMask'] as String),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      isp: map['isp'] == null ? null : pulumi.Output.create<String>(map['isp'] as String),
-      netmode: map['netmode'] == null ? null : pulumi.Output.create<String>(map['netmode'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      segmentAddressName: map['segmentAddressName'] == null ? null : pulumi.Output.create<String>(map['segmentAddressName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      eipMask: map['eipMask'] == null ? null : (map['eipMask'] as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      netmode: map['netmode'] == null ? null : (map['netmode'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      segmentAddressName: map['segmentAddressName'] == null ? null : (map['segmentAddressName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

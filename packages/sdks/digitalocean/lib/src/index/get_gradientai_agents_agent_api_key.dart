@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsAgentApiKey {
   /// API Key value
-  final String? apiKey;
+  final pulumi.Input<String>? apiKey;
 
   /// Creates a new [GetGradientaiAgentsAgentApiKey].
   /// [apiKey] API Key value
@@ -19,7 +20,7 @@ class GetGradientaiAgentsAgentApiKey {
 
   factory GetGradientaiAgentsAgentApiKey.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentApiKey(
-      apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Service Connection State
 class PrivateLinkServiceConnectionStateResponse {
   /// actions required
-  final String? actionsRequired;
+  final pulumi.Input<String>? actionsRequired;
   /// description string
-  final String? description;
+  final pulumi.Input<String>? description;
   /// state status
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] actions required
@@ -30,9 +31,9 @@ class PrivateLinkServiceConnectionStateResponse {
 
   factory PrivateLinkServiceConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionStateResponse(
-      actionsRequired: map['actionsRequired'] == null ? null : map['actionsRequired'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

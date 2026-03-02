@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationReferenceDataSourcesS3 {
   /// The S3 Bucket ARN.
-  final String bucketArn;
+  final pulumi.Input<String> bucketArn;
   /// The File Key name containing reference data.
-  final String fileKey;
+  final pulumi.Input<String> fileKey;
   /// The IAM Role ARN to read the data.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesS3].
   /// [bucketArn] The S3 Bucket ARN.
@@ -29,9 +30,9 @@ class AnalyticsApplicationReferenceDataSourcesS3 {
 
   factory AnalyticsApplicationReferenceDataSourcesS3.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationReferenceDataSourcesS3(
-      bucketArn: map['bucketArn'] as String,
-      fileKey: map['fileKey'] as String,
-      roleArn: map['roleArn'] as String,
+      bucketArn: (map['bucketArn'] as String).input(),
+      fileKey: (map['fileKey'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

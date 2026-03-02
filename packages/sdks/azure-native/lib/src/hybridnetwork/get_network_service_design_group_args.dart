@@ -19,13 +19,10 @@ class GetNetworkServiceDesignGroupArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkServiceDesignGroupArgs({
-    required pulumi.Output<String> networkServiceDesignGroupName,
-    required pulumi.Output<String> publisherName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkServiceDesignGroupName = pulumi.Input.asInput<String>(networkServiceDesignGroupName),
-      publisherName = pulumi.Input.asInput<String>(publisherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkServiceDesignGroupName,
+    required this.publisherName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNetworkServiceDesignGroupArgs {
 
   factory GetNetworkServiceDesignGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkServiceDesignGroupArgs(
-      networkServiceDesignGroupName: pulumi.Output.create<String>(map['networkServiceDesignGroupName'] as String),
-      publisherName: pulumi.Output.create<String>(map['publisherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkServiceDesignGroupName: (map['networkServiceDesignGroupName'] as String).input(),
+      publisherName: (map['publisherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

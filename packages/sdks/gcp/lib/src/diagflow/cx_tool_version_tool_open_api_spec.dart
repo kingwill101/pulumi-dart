@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_tool_version_tool_open_api_spec_authentication.dart';
 import 'cx_tool_version_tool_open_api_spec_service_directory_config.dart';
 import 'cx_tool_version_tool_open_api_spec_tls_config.dart';
@@ -7,16 +8,16 @@ import 'cx_tool_version_tool_open_api_spec_tls_config.dart';
 class CxToolVersionToolOpenApiSpec {
   /// Optional. Authentication information required by the API.
   /// Structure is documented below.
-  final CxToolVersionToolOpenApiSpecAuthentication? authentication;
+  final pulumi.Input<CxToolVersionToolOpenApiSpecAuthentication>? authentication;
   /// Optional. Service Directory configuration.
   /// Structure is documented below.
-  final CxToolVersionToolOpenApiSpecServiceDirectoryConfig? serviceDirectoryConfig;
+  final pulumi.Input<CxToolVersionToolOpenApiSpecServiceDirectoryConfig>? serviceDirectoryConfig;
   /// The OpenAPI schema specified as a text.
   /// This field is part of a union field `schema`: only one of `textSchema` may be set.
-  final String textSchema;
+  final pulumi.Input<String> textSchema;
   /// Optional. TLS configuration for the HTTPS verification.
   /// Structure is documented below.
-  final CxToolVersionToolOpenApiSpecTlsConfig? tlsConfig;
+  final pulumi.Input<CxToolVersionToolOpenApiSpecTlsConfig>? tlsConfig;
 
   /// Creates a new [CxToolVersionToolOpenApiSpec].
   /// [authentication] Optional. Authentication information required by the API.
@@ -32,19 +33,19 @@ class CxToolVersionToolOpenApiSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?authentication == null ? null : authentication!.toMap(),
-      'serviceDirectoryConfig': ?serviceDirectoryConfig == null ? null : serviceDirectoryConfig!.toMap(),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<CxToolVersionToolOpenApiSpecAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'serviceDirectoryConfig': ?pulumi.Input.mapOptionalInputValue<CxToolVersionToolOpenApiSpecServiceDirectoryConfig, Map<String, dynamic>>(serviceDirectoryConfig, (value) => value.toMap()),
       'textSchema': textSchema,
-      'tlsConfig': ?tlsConfig == null ? null : tlsConfig!.toMap(),
+      'tlsConfig': ?pulumi.Input.mapOptionalInputValue<CxToolVersionToolOpenApiSpecTlsConfig, Map<String, dynamic>>(tlsConfig, (value) => value.toMap()),
     };
   }
 
   factory CxToolVersionToolOpenApiSpec.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpec(
-      authentication: map['authentication'] == null ? null : CxToolVersionToolOpenApiSpecAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : CxToolVersionToolOpenApiSpecServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
-      textSchema: map['textSchema'] as String,
-      tlsConfig: map['tlsConfig'] == null ? null : CxToolVersionToolOpenApiSpecTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>()),
+      authentication: map['authentication'] == null ? null : (CxToolVersionToolOpenApiSpecAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (CxToolVersionToolOpenApiSpecServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
+      textSchema: (map['textSchema'] as String).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (CxToolVersionToolOpenApiSpecTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

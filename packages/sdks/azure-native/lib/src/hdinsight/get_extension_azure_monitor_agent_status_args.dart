@@ -16,11 +16,9 @@ class GetExtensionAzureMonitorAgentStatusArgs {
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group.
   GetExtensionAzureMonitorAgentStatusArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetExtensionAzureMonitorAgentStatusArgs {
 
   factory GetExtensionAzureMonitorAgentStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionAzureMonitorAgentStatusArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

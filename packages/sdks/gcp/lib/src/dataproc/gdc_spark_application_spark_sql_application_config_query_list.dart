@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GdcSparkApplicationSparkSqlApplicationConfigQueryList {
   /// The queries to run.
-  final List<String> queries;
+  final pulumi.Input<List<String>> queries;
 
   /// Creates a new [GdcSparkApplicationSparkSqlApplicationConfigQueryList].
   /// [queries] The queries to run.
@@ -19,7 +20,7 @@ class GdcSparkApplicationSparkSqlApplicationConfigQueryList {
 
   factory GdcSparkApplicationSparkSqlApplicationConfigQueryList.fromMap(Map<String, dynamic> map) {
     return GdcSparkApplicationSparkSqlApplicationConfigQueryList(
-      queries: (map['queries'] as List).cast<String>(),
+      queries: ((map['queries'] as List).cast<String>()).input(),
     );
   }
 }

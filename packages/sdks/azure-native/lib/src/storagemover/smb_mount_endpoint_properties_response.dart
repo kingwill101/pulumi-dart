@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_key_vault_smb_credentials_response.dart';
 
 /// The properties of SMB share endpoint.
 class SmbMountEndpointPropertiesResponse {
   /// The Azure Key Vault secret URIs which store the required credentials to access the SMB share.
-  final AzureKeyVaultSmbCredentialsResponse? credentials;
+  final pulumi.Input<AzureKeyVaultSmbCredentialsResponse>? credentials;
   /// A description for the Endpoint.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The Endpoint resource type.
   /// Expected value is 'SmbMount'.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The host name or IP address of the server exporting the file system.
-  final String host;
+  final pulumi.Input<String> host;
   /// The provisioning state of this resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The name of the SMB share being exported from the server.
-  final String shareName;
+  final pulumi.Input<String> shareName;
 
   /// Creates a new [SmbMountEndpointPropertiesResponse].
   /// [credentials] The Azure Key Vault secret URIs which store the required credentials to access the SMB share.
@@ -36,7 +37,7 @@ class SmbMountEndpointPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentials': ?credentials == null ? null : credentials!.toMap(),
+      'credentials': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSmbCredentialsResponse, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'description': ?description,
       'endpointType': endpointType,
       'host': host,
@@ -47,12 +48,12 @@ class SmbMountEndpointPropertiesResponse {
 
   factory SmbMountEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SmbMountEndpointPropertiesResponse(
-      credentials: map['credentials'] == null ? null : AzureKeyVaultSmbCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      endpointType: map['endpointType'] as String,
-      host: map['host'] as String,
-      provisioningState: map['provisioningState'] as String,
-      shareName: map['shareName'] as String,
+      credentials: map['credentials'] == null ? null : (AzureKeyVaultSmbCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      host: (map['host'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
     );
   }
 }

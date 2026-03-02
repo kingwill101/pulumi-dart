@@ -31,21 +31,14 @@ class GetEnterpriseUsersArgs {
   /// [status] The status of the user.
   /// [tid] The ID of the tenant in DMS Enterprise.
   GetEnterpriseUsersArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? searchKey,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? tid,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      searchKey = pulumi.Input.asOptionalInput<String>(searchKey),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tid = pulumi.Input.asOptionalInput<int>(tid);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.role,
+    this.searchKey,
+    this.status,
+    this.tid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetEnterpriseUsersArgs {
 
   factory GetEnterpriseUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseUsersArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      searchKey: map['searchKey'] == null ? null : pulumi.Output.create<String>(map['searchKey'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tid: map['tid'] == null ? null : pulumi.Output.create<int>(map['tid'] as int),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      searchKey: map['searchKey'] == null ? null : (map['searchKey'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tid: map['tid'] == null ? null : (map['tid'] as int).input(),
     );
   }
 }

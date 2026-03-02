@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the Azure Active Directory principal that can approve any just-in-time access requests by the principal defined in the EligibleAuthorization.
 class EligibleApproverResponse {
   /// The identifier of the Azure Active Directory principal.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The display name of the Azure Active Directory principal.
-  final String? principalIdDisplayName;
+  final pulumi.Input<String>? principalIdDisplayName;
 
   /// Creates a new [EligibleApproverResponse].
   /// [principalId] The identifier of the Azure Active Directory principal.
@@ -25,8 +26,8 @@ class EligibleApproverResponse {
 
   factory EligibleApproverResponse.fromMap(Map<String, dynamic> map) {
     return EligibleApproverResponse(
-      principalId: map['principalId'] as String,
-      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : map['principalIdDisplayName'] as String,
+      principalId: (map['principalId'] as String).input(),
+      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName'] as String).input(),
     );
   }
 }

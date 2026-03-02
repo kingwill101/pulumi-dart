@@ -26,17 +26,12 @@ class AccessLogSubscriptionArgs {
   /// [serviceNetworkLogType] Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
   /// [tags] Optional.
   AccessLogSubscriptionArgs({
-    required pulumi.Output<String> destinationArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceIdentifier,
-    pulumi.Output<String>? serviceNetworkLogType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      destinationArn = pulumi.Input.asInput<String>(destinationArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceIdentifier = pulumi.Input.asInput<String>(resourceIdentifier),
-      serviceNetworkLogType = pulumi.Input.asOptionalInput<String>(serviceNetworkLogType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.destinationArn,
+    this.region,
+    required this.resourceIdentifier,
+    this.serviceNetworkLogType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AccessLogSubscriptionArgs {
 
   factory AccessLogSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AccessLogSubscriptionArgs(
-      destinationArn: pulumi.Output.create<String>(map['destinationArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceIdentifier: pulumi.Output.create<String>(map['resourceIdentifier'] as String),
-      serviceNetworkLogType: map['serviceNetworkLogType'] == null ? null : pulumi.Output.create<String>(map['serviceNetworkLogType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      destinationArn: (map['destinationArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceIdentifier: (map['resourceIdentifier'] as String).input(),
+      serviceNetworkLogType: map['serviceNetworkLogType'] == null ? null : (map['serviceNetworkLogType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

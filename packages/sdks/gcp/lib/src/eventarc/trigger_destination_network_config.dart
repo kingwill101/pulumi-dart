@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerDestinationNetworkConfig {
   /// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-  final String networkAttachment;
+  final pulumi.Input<String> networkAttachment;
 
   /// Creates a new [TriggerDestinationNetworkConfig].
   /// [networkAttachment] Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
@@ -19,7 +20,7 @@ class TriggerDestinationNetworkConfig {
 
   factory TriggerDestinationNetworkConfig.fromMap(Map<String, dynamic> map) {
     return TriggerDestinationNetworkConfig(
-      networkAttachment: map['networkAttachment'] as String,
+      networkAttachment: (map['networkAttachment'] as String).input(),
     );
   }
 }

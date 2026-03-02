@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionApiConfig {
   /// Action to take when users access resources that require authentication.
   /// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
   /// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
-  final String? authFailAction;
+  final pulumi.Input<String>? authFailAction;
   /// Level of login required to access this resource.
   /// Default value is `LOGIN_OPTIONAL`.
   /// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
-  final String? login;
+  final pulumi.Input<String>? login;
   /// Path to the script from the application root directory.
-  final String script;
+  final pulumi.Input<String> script;
   /// Security (HTTPS) enforcement for this URL.
   /// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
-  final String? securityLevel;
+  final pulumi.Input<String>? securityLevel;
   /// URL to serve the endpoint at.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [FlexibleAppVersionApiConfig].
   /// [authFailAction] Action to take when users access resources that require authentication.
@@ -44,11 +45,11 @@ class FlexibleAppVersionApiConfig {
 
   factory FlexibleAppVersionApiConfig.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionApiConfig(
-      authFailAction: map['authFailAction'] == null ? null : map['authFailAction'] as String,
-      login: map['login'] == null ? null : map['login'] as String,
-      script: map['script'] as String,
-      securityLevel: map['securityLevel'] == null ? null : map['securityLevel'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      authFailAction: map['authFailAction'] == null ? null : (map['authFailAction'] as String).input(),
+      login: map['login'] == null ? null : (map['login'] as String).input(),
+      script: (map['script'] as String).input(),
+      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

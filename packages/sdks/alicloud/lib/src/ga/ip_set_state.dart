@@ -29,21 +29,14 @@ class IpSetState {
   /// [ispType] The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
   /// [status] The status of the acceleration region.
   IpSetState({
-    pulumi.Output<String>? accelerateRegionId,
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<List<String>>? ipAddressLists,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? ispType,
-    pulumi.Output<String>? status,
-  }) :
-      accelerateRegionId = pulumi.Input.asOptionalInput<String>(accelerateRegionId),
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      ipAddressLists = pulumi.Input.asOptionalInput<List<String>>(ipAddressLists),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      ispType = pulumi.Input.asOptionalInput<String>(ispType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accelerateRegionId,
+    this.acceleratorId,
+    this.bandwidth,
+    this.ipAddressLists,
+    this.ipVersion,
+    this.ispType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class IpSetState {
 
   factory IpSetState.fromMap(Map<String, dynamic> map) {
     return IpSetState(
-      accelerateRegionId: map['accelerateRegionId'] == null ? null : pulumi.Output.create<String>(map['accelerateRegionId'] as String),
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      ipAddressLists: map['ipAddressLists'] == null ? null : pulumi.Output.create<List<String>>((map['ipAddressLists'] as List).cast<String>()),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      ispType: map['ispType'] == null ? null : pulumi.Output.create<String>(map['ispType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accelerateRegionId: map['accelerateRegionId'] == null ? null : (map['accelerateRegionId'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      ipAddressLists: map['ipAddressLists'] == null ? null : ((map['ipAddressLists'] as List).cast<String>()).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      ispType: map['ispType'] == null ? null : (map['ispType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

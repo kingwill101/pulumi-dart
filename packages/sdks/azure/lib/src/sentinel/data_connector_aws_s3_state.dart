@@ -22,17 +22,12 @@ class DataConnectorAwsS3State {
   /// [name] The name which should be used for this AWS S3 Data Connector. Changing this forces a new AWS S3 Data Connector to be created.
   /// [sqsUrls] Specifies a list of AWS SQS urls for the AWS S3 Data Connector.
   DataConnectorAwsS3State({
-    pulumi.Output<String>? awsRoleArn,
-    pulumi.Output<String>? destinationTable,
-    pulumi.Output<String>? logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? sqsUrls,
-  }) :
-      awsRoleArn = pulumi.Input.asOptionalInput<String>(awsRoleArn),
-      destinationTable = pulumi.Input.asOptionalInput<String>(destinationTable),
-      logAnalyticsWorkspaceId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sqsUrls = pulumi.Input.asOptionalInput<List<String>>(sqsUrls);
+    this.awsRoleArn,
+    this.destinationTable,
+    this.logAnalyticsWorkspaceId,
+    this.name,
+    this.sqsUrls,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class DataConnectorAwsS3State {
 
   factory DataConnectorAwsS3State.fromMap(Map<String, dynamic> map) {
     return DataConnectorAwsS3State(
-      awsRoleArn: map['awsRoleArn'] == null ? null : pulumi.Output.create<String>(map['awsRoleArn'] as String),
-      destinationTable: map['destinationTable'] == null ? null : pulumi.Output.create<String>(map['destinationTable'] as String),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sqsUrls: map['sqsUrls'] == null ? null : pulumi.Output.create<List<String>>((map['sqsUrls'] as List).cast<String>()),
+      awsRoleArn: map['awsRoleArn'] == null ? null : (map['awsRoleArn'] as String).input(),
+      destinationTable: map['destinationTable'] == null ? null : (map['destinationTable'] as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sqsUrls: map['sqsUrls'] == null ? null : ((map['sqsUrls'] as List).cast<String>()).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class ImageState {
   /// [instanceId] The instance ID.
   /// [status] The status of the mirror.
   ImageState({
-    pulumi.Output<String>? imageName,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? status,
-  }) :
-      imageName = pulumi.Input.asOptionalInput<String>(imageName),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.imageName,
+    this.instanceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ImageState {
 
   factory ImageState.fromMap(Map<String, dynamic> map) {
     return ImageState(
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

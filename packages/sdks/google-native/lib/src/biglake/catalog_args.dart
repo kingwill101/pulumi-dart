@@ -17,13 +17,10 @@ class CatalogArgs {
   /// [location] Optional.
   /// [project] Optional.
   CatalogArgs({
-    required pulumi.Output<String> catalogId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.catalogId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

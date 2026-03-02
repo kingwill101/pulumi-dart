@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a management cluster
 class ManagementClusterResponse {
   /// The identity
-  final int clusterId;
+  final pulumi.Input<int> clusterId;
   /// The cluster size
-  final int? clusterSize;
+  final pulumi.Input<int>? clusterSize;
   /// The hosts
-  final List<String>? hosts;
+  final pulumi.Input<List<String>>? hosts;
   /// The state of the cluster provisioning
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Name of the vsan datastore associated with the cluster
-  final String? vsanDatastoreName;
+  final pulumi.Input<String>? vsanDatastoreName;
 
   /// Creates a new [ManagementClusterResponse].
   /// [clusterId] The identity
@@ -40,11 +41,11 @@ class ManagementClusterResponse {
 
   factory ManagementClusterResponse.fromMap(Map<String, dynamic> map) {
     return ManagementClusterResponse(
-      clusterId: map['clusterId'] as int,
-      clusterSize: map['clusterSize'] == null ? null : map['clusterSize'] as int,
-      hosts: map['hosts'] == null ? null : (map['hosts'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : map['vsanDatastoreName'] as String,
+      clusterId: (map['clusterId'] as int).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName'] as String).input(),
     );
   }
 }

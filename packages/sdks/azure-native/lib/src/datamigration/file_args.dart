@@ -26,17 +26,12 @@ class FileArgs {
   /// [properties] Custom file properties
   /// [serviceName] Name of the service
   FileArgs({
-    pulumi.Output<String>? fileName,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<ProjectFileProperties>? properties,
-    required pulumi.Output<String> serviceName,
-  }) :
-      fileName = pulumi.Input.asOptionalInput<String>(fileName),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<ProjectFileProperties>(properties),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.fileName,
+    required this.groupName,
+    required this.projectName,
+    this.properties,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class FileArgs {
 
   factory FileArgs.fromMap(Map<String, dynamic> map) {
     return FileArgs(
-      fileName: map['fileName'] == null ? null : pulumi.Output.create<String>(map['fileName'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ProjectFileProperties>(ProjectFileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (ProjectFileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

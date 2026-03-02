@@ -22,15 +22,11 @@ class AccountArgs {
   /// [enableDefaultStandards] Whether to enable the security standards that Security Hub has designated as automatically enabled including: ` AWS Foundational Security Best Practices v1.0.0` and `CIS AWS Foundations Benchmark v1.2.0`. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AccountArgs({
-    pulumi.Output<bool>? autoEnableControls,
-    pulumi.Output<String>? controlFindingGenerator,
-    pulumi.Output<bool>? enableDefaultStandards,
-    pulumi.Output<String>? region,
-  }) :
-      autoEnableControls = pulumi.Input.asOptionalInput<bool>(autoEnableControls),
-      controlFindingGenerator = pulumi.Input.asOptionalInput<String>(controlFindingGenerator),
-      enableDefaultStandards = pulumi.Input.asOptionalInput<bool>(enableDefaultStandards),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.autoEnableControls,
+    this.controlFindingGenerator,
+    this.enableDefaultStandards,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      autoEnableControls: map['autoEnableControls'] == null ? null : pulumi.Output.create<bool>(map['autoEnableControls'] as bool),
-      controlFindingGenerator: map['controlFindingGenerator'] == null ? null : pulumi.Output.create<String>(map['controlFindingGenerator'] as String),
-      enableDefaultStandards: map['enableDefaultStandards'] == null ? null : pulumi.Output.create<bool>(map['enableDefaultStandards'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoEnableControls: map['autoEnableControls'] == null ? null : (map['autoEnableControls'] as bool).input(),
+      controlFindingGenerator: map['controlFindingGenerator'] == null ? null : (map['controlFindingGenerator'] as String).input(),
+      enableDefaultStandards: map['enableDefaultStandards'] == null ? null : (map['enableDefaultStandards'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

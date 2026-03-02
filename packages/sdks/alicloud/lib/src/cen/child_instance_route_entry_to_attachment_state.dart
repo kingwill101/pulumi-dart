@@ -28,21 +28,14 @@ class ChildInstanceRouteEntryToAttachmentState {
   /// [status] The status of the resource
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
   ChildInstanceRouteEntryToAttachmentState({
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? childInstanceRouteTableId,
-    pulumi.Output<String>? destinationCidrBlock,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? serviceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterAttachmentId,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      childInstanceRouteTableId = pulumi.Input.asOptionalInput<String>(childInstanceRouteTableId),
-      destinationCidrBlock = pulumi.Input.asOptionalInput<String>(destinationCidrBlock),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      serviceType = pulumi.Input.asOptionalInput<String>(serviceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterAttachmentId = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentId);
+    this.cenId,
+    this.childInstanceRouteTableId,
+    this.destinationCidrBlock,
+    this.dryRun,
+    this.serviceType,
+    this.status,
+    this.transitRouterAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ChildInstanceRouteEntryToAttachmentState {
 
   factory ChildInstanceRouteEntryToAttachmentState.fromMap(Map<String, dynamic> map) {
     return ChildInstanceRouteEntryToAttachmentState(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      childInstanceRouteTableId: map['childInstanceRouteTableId'] == null ? null : pulumi.Output.create<String>(map['childInstanceRouteTableId'] as String),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      serviceType: map['serviceType'] == null ? null : pulumi.Output.create<String>(map['serviceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      childInstanceRouteTableId: map['childInstanceRouteTableId'] == null ? null : (map['childInstanceRouteTableId'] as String).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
     );
   }
 }

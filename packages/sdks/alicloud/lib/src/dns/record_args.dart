@@ -31,21 +31,14 @@ class RecordArgs {
   /// [type] The type of domain record. Valid values are `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
   /// [value] The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
   RecordArgs({
-    required pulumi.Output<String> hostRecord,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? routing,
-    pulumi.Output<int>? ttl,
-    required pulumi.Output<String> type,
-    required pulumi.Output<String> value,
-  }) :
-      hostRecord = pulumi.Input.asInput<String>(hostRecord),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      routing = pulumi.Input.asOptionalInput<String>(routing),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asInput<String>(type),
-      value = pulumi.Input.asInput<String>(value);
+    required this.hostRecord,
+    this.name,
+    this.priority,
+    this.routing,
+    this.ttl,
+    required this.type,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class RecordArgs {
 
   factory RecordArgs.fromMap(Map<String, dynamic> map) {
     return RecordArgs(
-      hostRecord: pulumi.Output.create<String>(map['hostRecord'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      routing: map['routing'] == null ? null : pulumi.Output.create<String>(map['routing'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      hostRecord: (map['hostRecord'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      routing: map['routing'] == null ? null : (map['routing'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

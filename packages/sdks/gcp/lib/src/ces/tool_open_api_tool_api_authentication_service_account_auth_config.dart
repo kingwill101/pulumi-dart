@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
   /// (Output)
@@ -10,7 +11,7 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
   /// `roles/iam.serviceAccountTokenCreator` role granted to the
   /// CES service agent
   /// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
-  final String? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
 
   /// Creates a new [ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig].
   /// [serviceAccount] (Output)
@@ -26,7 +27,7 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
 
   factory ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
     );
   }
 }

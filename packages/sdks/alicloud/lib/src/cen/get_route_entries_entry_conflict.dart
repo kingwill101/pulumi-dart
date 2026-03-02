@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteEntriesEntryConflict {
   /// The destination CIDR block of the route entry to query.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// ID of the CEN instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The type of the CEN child instance.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// ID of the region where the conflicted route entry is located.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// Reasons of exceptions.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetRouteEntriesEntryConflict].
   /// [cidrBlock] The destination CIDR block of the route entry to query.
@@ -39,11 +40,11 @@ class GetRouteEntriesEntryConflict {
 
   factory GetRouteEntriesEntryConflict.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesEntryConflict(
-      cidrBlock: map['cidrBlock'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceType: map['instanceType'] as String,
-      regionId: map['regionId'] as String,
-      status: map['status'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

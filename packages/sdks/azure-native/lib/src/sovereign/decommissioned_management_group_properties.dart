@@ -6,9 +6,9 @@ import 'policy_initiative_assignment_properties.dart';
 /// The 'Decommissioned' management group properties.
 class DecommissionedManagementGroupProperties {
   /// This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
-  final bool create;
+  final pulumi.Input<bool> create;
   /// Array of policy initiatives applied to the management group.
-  final List<PolicyInitiativeAssignmentProperties> policyInitiativesAssignmentProperties;
+  final pulumi.Input<List<PolicyInitiativeAssignmentProperties>> policyInitiativesAssignmentProperties;
 
   /// Creates a new [DecommissionedManagementGroupProperties].
   /// [create] This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
@@ -21,14 +21,14 @@ class DecommissionedManagementGroupProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'create': create,
-      'policyInitiativesAssignmentProperties': pulumi.Input.encodeList<PolicyInitiativeAssignmentProperties, Map<String, dynamic>>(policyInitiativesAssignmentProperties, (value) => value.toMap()),
+      'policyInitiativesAssignmentProperties': pulumi.Input.mapInputValue<List<PolicyInitiativeAssignmentProperties>, List<Map<String, dynamic>>>(policyInitiativesAssignmentProperties, (value) => pulumi.Input.encodeList<PolicyInitiativeAssignmentProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DecommissionedManagementGroupProperties.fromMap(Map<String, dynamic> map) {
     return DecommissionedManagementGroupProperties(
-      create: map['create'] as bool,
-      policyInitiativesAssignmentProperties: pulumi.Input.decodeList<PolicyInitiativeAssignmentProperties>(map['policyInitiativesAssignmentProperties'], (value) => PolicyInitiativeAssignmentProperties.fromMap((value as Map).cast<String, dynamic>())),
+      create: (map['create'] as bool).input(),
+      policyInitiativesAssignmentProperties: (pulumi.Input.decodeList<PolicyInitiativeAssignmentProperties>(map['policyInitiativesAssignmentProperties'], (value) => PolicyInitiativeAssignmentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

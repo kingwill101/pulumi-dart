@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OneDashboardRawPageWidget {
   /// (Required) Column position of widget from top left, starting at `1`.
-  final int column;
+  final pulumi.Input<int> column;
   /// (Required) The configuration of the widget.
-  final String configuration;
+  final pulumi.Input<String> configuration;
   /// (Optional) Height of the widget. Valid values are `1` to `12` inclusive. Defaults to `3`.
-  final int? height;
+  final pulumi.Input<int>? height;
   /// The ID of the widget.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// (Optional) Related entity GUIDs.
-  final List<String>? linkedEntityGuids;
+  final pulumi.Input<List<String>>? linkedEntityGuids;
   /// (Required) Row position of widget from top left, starting at `1`.
-  final int row;
+  final pulumi.Input<int> row;
   /// (Required) A title for the widget.
-  final String title;
+  final pulumi.Input<String> title;
   /// (Required) The visualization ID of the widget
-  final String visualizationId;
+  final pulumi.Input<String> visualizationId;
   /// (Optional) Width of the widget. Valid values are `1` to `12` inclusive. Defaults to `4`.
-  final int? width;
+  final pulumi.Input<int>? width;
 
   /// Creates a new [OneDashboardRawPageWidget].
   /// [column] (Required) Column position of widget from top left, starting at `1`.
@@ -59,15 +60,15 @@ class OneDashboardRawPageWidget {
 
   factory OneDashboardRawPageWidget.fromMap(Map<String, dynamic> map) {
     return OneDashboardRawPageWidget(
-      column: map['column'] as int,
-      configuration: map['configuration'] as String,
-      height: map['height'] == null ? null : map['height'] as int,
-      id: map['id'] == null ? null : map['id'] as String,
-      linkedEntityGuids: map['linkedEntityGuids'] == null ? null : (map['linkedEntityGuids'] as List).cast<String>(),
-      row: map['row'] as int,
-      title: map['title'] as String,
-      visualizationId: map['visualizationId'] as String,
-      width: map['width'] == null ? null : map['width'] as int,
+      column: (map['column'] as int).input(),
+      configuration: (map['configuration'] as String).input(),
+      height: map['height'] == null ? null : (map['height'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      linkedEntityGuids: map['linkedEntityGuids'] == null ? null : ((map['linkedEntityGuids'] as List).cast<String>()).input(),
+      row: (map['row'] as int).input(),
+      title: (map['title'] as String).input(),
+      visualizationId: (map['visualizationId'] as String).input(),
+      width: map['width'] == null ? null : (map['width'] as int).input(),
     );
   }
 }

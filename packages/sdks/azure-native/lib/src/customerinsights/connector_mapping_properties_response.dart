@@ -10,21 +10,21 @@ import 'connector_mapping_structure_response.dart';
 /// The connector mapping properties.
 class ConnectorMappingPropertiesResponse {
   /// The availability of mapping property.
-  final ConnectorMappingAvailabilityResponse availability;
+  final pulumi.Input<ConnectorMappingAvailabilityResponse> availability;
   /// The operation after import is done.
-  final ConnectorMappingCompleteOperationResponse completeOperation;
+  final pulumi.Input<ConnectorMappingCompleteOperationResponse> completeOperation;
   /// The error management setting for the mapping.
-  final ConnectorMappingErrorManagementResponse errorManagement;
+  final pulumi.Input<ConnectorMappingErrorManagementResponse> errorManagement;
   /// The file filter for the mapping.
-  final String? fileFilter;
+  final pulumi.Input<String>? fileFilter;
   /// The folder path for the mapping.
-  final String? folderPath;
+  final pulumi.Input<String>? folderPath;
   /// The format of mapping property.
-  final ConnectorMappingFormatResponse format;
+  final pulumi.Input<ConnectorMappingFormatResponse> format;
   /// If the file contains a header or not.
-  final bool? hasHeader;
+  final pulumi.Input<bool>? hasHeader;
   /// Ingestion mapping information at property level.
-  final List<ConnectorMappingStructureResponse> structure;
+  final pulumi.Input<List<ConnectorMappingStructureResponse>> structure;
 
   /// Creates a new [ConnectorMappingPropertiesResponse].
   /// [availability] The availability of mapping property.
@@ -48,27 +48,27 @@ class ConnectorMappingPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availability': availability.toMap(),
-      'completeOperation': completeOperation.toMap(),
-      'errorManagement': errorManagement.toMap(),
+      'availability': pulumi.Input.mapInputValue<ConnectorMappingAvailabilityResponse, Map<String, dynamic>>(availability, (value) => value.toMap()),
+      'completeOperation': pulumi.Input.mapInputValue<ConnectorMappingCompleteOperationResponse, Map<String, dynamic>>(completeOperation, (value) => value.toMap()),
+      'errorManagement': pulumi.Input.mapInputValue<ConnectorMappingErrorManagementResponse, Map<String, dynamic>>(errorManagement, (value) => value.toMap()),
       'fileFilter': ?fileFilter,
       'folderPath': ?folderPath,
-      'format': format.toMap(),
+      'format': pulumi.Input.mapInputValue<ConnectorMappingFormatResponse, Map<String, dynamic>>(format, (value) => value.toMap()),
       'hasHeader': ?hasHeader,
-      'structure': pulumi.Input.encodeList<ConnectorMappingStructureResponse, Map<String, dynamic>>(structure, (value) => value.toMap()),
+      'structure': pulumi.Input.mapInputValue<List<ConnectorMappingStructureResponse>, List<Map<String, dynamic>>>(structure, (value) => pulumi.Input.encodeList<ConnectorMappingStructureResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ConnectorMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingPropertiesResponse(
-      availability: ConnectorMappingAvailabilityResponse.fromMap((map['availability'] as Map).cast<String, dynamic>()),
-      completeOperation: ConnectorMappingCompleteOperationResponse.fromMap((map['completeOperation'] as Map).cast<String, dynamic>()),
-      errorManagement: ConnectorMappingErrorManagementResponse.fromMap((map['errorManagement'] as Map).cast<String, dynamic>()),
-      fileFilter: map['fileFilter'] == null ? null : map['fileFilter'] as String,
-      folderPath: map['folderPath'] == null ? null : map['folderPath'] as String,
-      format: ConnectorMappingFormatResponse.fromMap((map['format'] as Map).cast<String, dynamic>()),
-      hasHeader: map['hasHeader'] == null ? null : map['hasHeader'] as bool,
-      structure: pulumi.Input.decodeList<ConnectorMappingStructureResponse>(map['structure'], (value) => ConnectorMappingStructureResponse.fromMap((value as Map).cast<String, dynamic>())),
+      availability: (ConnectorMappingAvailabilityResponse.fromMap((map['availability'] as Map).cast<String, dynamic>())).input(),
+      completeOperation: (ConnectorMappingCompleteOperationResponse.fromMap((map['completeOperation'] as Map).cast<String, dynamic>())).input(),
+      errorManagement: (ConnectorMappingErrorManagementResponse.fromMap((map['errorManagement'] as Map).cast<String, dynamic>())).input(),
+      fileFilter: map['fileFilter'] == null ? null : (map['fileFilter'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      format: (ConnectorMappingFormatResponse.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      hasHeader: map['hasHeader'] == null ? null : (map['hasHeader'] as bool).input(),
+      structure: (pulumi.Input.decodeList<ConnectorMappingStructureResponse>(map['structure'], (value) => ConnectorMappingStructureResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class VirtualMachineManagerServerArgs {
   /// [tags] A mapping of tags which should be assigned to the System Center Virtual Machine Manager Server.
   /// [username] The username that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   VirtualMachineManagerServerArgs({
-    required pulumi.Output<String> customLocationId,
-    required pulumi.Output<String> fqdn,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> password,
-    pulumi.Output<int>? port,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> username,
-  }) :
-      customLocationId = pulumi.Input.asInput<String>(customLocationId),
-      fqdn = pulumi.Input.asInput<String>(fqdn),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asInput<String>(password),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      username = pulumi.Input.asInput<String>(username);
+    required this.customLocationId,
+    required this.fqdn,
+    this.location,
+    this.name,
+    required this.password,
+    this.port,
+    required this.resourceGroupName,
+    this.tags,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class VirtualMachineManagerServerArgs {
 
   factory VirtualMachineManagerServerArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerServerArgs(
-      customLocationId: pulumi.Output.create<String>(map['customLocationId'] as String),
-      fqdn: pulumi.Output.create<String>(map['fqdn'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      customLocationId: (map['customLocationId'] as String).input(),
+      fqdn: (map['fqdn'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

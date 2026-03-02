@@ -16,11 +16,9 @@ class GetPublicKeyArgs {
   /// [privateKeyOpenssh] The private key (in  [OpenSSH PEM (RFC 4716)](https://datatracker.ietf.org/doc/html/rfc4716) format) to extract the public key from. This is *mutually exclusive* with `private_key_pem`. Currently-supported algorithms for keys are: `RSA`, `ECDSA`, `ED25519`.
   /// [privateKeyPem] The private key (in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format) to extract the public key from. This is *mutually exclusive* with `private_key_openssh`. Currently-supported algorithms for keys are: `RSA`, `ECDSA`, `ED25519`.
   GetPublicKeyArgs({
-    pulumi.Output<String>? privateKeyOpenssh,
-    pulumi.Output<String>? privateKeyPem,
-  }) :
-      privateKeyOpenssh = pulumi.Input.asOptionalInput<String>(privateKeyOpenssh),
-      privateKeyPem = pulumi.Input.asOptionalInput<String>(privateKeyPem);
+    this.privateKeyOpenssh,
+    this.privateKeyPem,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPublicKeyArgs {
 
   factory GetPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicKeyArgs(
-      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : pulumi.Output.create<String>(map['privateKeyOpenssh'] as String),
-      privateKeyPem: map['privateKeyPem'] == null ? null : pulumi.Output.create<String>(map['privateKeyPem'] as String),
+      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : (map['privateKeyOpenssh'] as String).input(),
+      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetNamespaceArgs {
   /// [name] Specifies the Name of the Notification Hub Namespace.
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the Notification Hub exists.
   GetNamespaceArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNamespaceArgs {
 
   factory GetNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes how data from an input is serialized or how data is serialized when written to an output in Avro format.
 class AvroSerialization {
   /// Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Avro'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AvroSerialization].
   /// [type] Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
@@ -21,7 +22,7 @@ class AvroSerialization {
 
   factory AvroSerialization.fromMap(Map<String, dynamic> map) {
     return AvroSerialization(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

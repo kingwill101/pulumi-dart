@@ -53,27 +53,17 @@ class ConnectionArgs {
   /// [name] Immutable. The resource name of the connection.
   /// [project] The ID of the project in which the resource belongs.
   ConnectionArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<ConnectionBitbucketCloudConfig>? bitbucketCloudConfig,
-    pulumi.Output<ConnectionBitbucketDataCenterConfig>? bitbucketDataCenterConfig,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<ConnectionGithubConfig>? githubConfig,
-    pulumi.Output<ConnectionGithubEnterpriseConfig>? githubEnterpriseConfig,
-    pulumi.Output<ConnectionGitlabConfig>? gitlabConfig,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      bitbucketCloudConfig = pulumi.Input.asOptionalInput<ConnectionBitbucketCloudConfig>(bitbucketCloudConfig),
-      bitbucketDataCenterConfig = pulumi.Input.asOptionalInput<ConnectionBitbucketDataCenterConfig>(bitbucketDataCenterConfig),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      githubConfig = pulumi.Input.asOptionalInput<ConnectionGithubConfig>(githubConfig),
-      githubEnterpriseConfig = pulumi.Input.asOptionalInput<ConnectionGithubEnterpriseConfig>(githubEnterpriseConfig),
-      gitlabConfig = pulumi.Input.asOptionalInput<ConnectionGitlabConfig>(gitlabConfig),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    this.bitbucketCloudConfig,
+    this.bitbucketDataCenterConfig,
+    this.disabled,
+    this.githubConfig,
+    this.githubEnterpriseConfig,
+    this.gitlabConfig,
+    required this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,16 +82,16 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      bitbucketCloudConfig: map['bitbucketCloudConfig'] == null ? null : pulumi.Output.create<ConnectionBitbucketCloudConfig>(ConnectionBitbucketCloudConfig.fromMap((map['bitbucketCloudConfig'] as Map).cast<String, dynamic>())),
-      bitbucketDataCenterConfig: map['bitbucketDataCenterConfig'] == null ? null : pulumi.Output.create<ConnectionBitbucketDataCenterConfig>(ConnectionBitbucketDataCenterConfig.fromMap((map['bitbucketDataCenterConfig'] as Map).cast<String, dynamic>())),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      githubConfig: map['githubConfig'] == null ? null : pulumi.Output.create<ConnectionGithubConfig>(ConnectionGithubConfig.fromMap((map['githubConfig'] as Map).cast<String, dynamic>())),
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : pulumi.Output.create<ConnectionGithubEnterpriseConfig>(ConnectionGithubEnterpriseConfig.fromMap((map['githubEnterpriseConfig'] as Map).cast<String, dynamic>())),
-      gitlabConfig: map['gitlabConfig'] == null ? null : pulumi.Output.create<ConnectionGitlabConfig>(ConnectionGitlabConfig.fromMap((map['gitlabConfig'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      bitbucketCloudConfig: map['bitbucketCloudConfig'] == null ? null : (ConnectionBitbucketCloudConfig.fromMap((map['bitbucketCloudConfig'] as Map).cast<String, dynamic>())).input(),
+      bitbucketDataCenterConfig: map['bitbucketDataCenterConfig'] == null ? null : (ConnectionBitbucketDataCenterConfig.fromMap((map['bitbucketDataCenterConfig'] as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      githubConfig: map['githubConfig'] == null ? null : (ConnectionGithubConfig.fromMap((map['githubConfig'] as Map).cast<String, dynamic>())).input(),
+      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (ConnectionGithubEnterpriseConfig.fromMap((map['githubEnterpriseConfig'] as Map).cast<String, dynamic>())).input(),
+      gitlabConfig: map['gitlabConfig'] == null ? null : (ConnectionGitlabConfig.fromMap((map['gitlabConfig'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

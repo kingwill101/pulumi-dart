@@ -19,13 +19,10 @@ class GetPureStoragePolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storagePolicyName] Name of the storage policy.
   GetPureStoragePolicyArgs({
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storagePolicyName,
-  }) :
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storagePolicyName = pulumi.Input.asInput<String>(storagePolicyName);
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    required this.storagePolicyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPureStoragePolicyArgs {
 
   factory GetPureStoragePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPureStoragePolicyArgs(
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storagePolicyName: pulumi.Output.create<String>(map['storagePolicyName'] as String),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storagePolicyName: (map['storagePolicyName'] as String).input(),
     );
   }
 }

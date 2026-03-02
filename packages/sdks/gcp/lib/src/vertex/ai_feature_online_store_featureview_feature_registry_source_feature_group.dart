@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
   /// Identifier of the feature group.
-  final String featureGroupId;
+  final pulumi.Input<String> featureGroupId;
   /// Identifiers of features under the feature group.
-  final List<String> featureIds;
+  final pulumi.Input<List<String>> featureIds;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup].
   /// [featureGroupId] Identifier of the feature group.
@@ -24,8 +25,8 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
 
   factory AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup(
-      featureGroupId: map['featureGroupId'] as String,
-      featureIds: (map['featureIds'] as List).cast<String>(),
+      featureGroupId: (map['featureGroupId'] as String).input(),
+      featureIds: ((map['featureIds'] as List).cast<String>()).input(),
     );
   }
 }

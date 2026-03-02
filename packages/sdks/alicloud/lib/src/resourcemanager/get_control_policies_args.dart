@@ -28,19 +28,13 @@ class GetControlPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policyType] The policy type of control policy. Valid values `System` and `Custom`.
   GetControlPoliciesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? policyType,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      language = pulumi.Input.asOptionalInput<String>(language),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType);
+    this.enableDetails,
+    this.ids,
+    this.language,
+    this.nameRegex,
+    this.outputFile,
+    this.policyType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetControlPoliciesArgs {
 
   factory GetControlPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
     );
   }
 }

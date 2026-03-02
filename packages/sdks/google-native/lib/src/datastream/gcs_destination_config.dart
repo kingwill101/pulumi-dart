@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'json_file_format.dart';
 
 /// Google Cloud Storage destination configuration
 class GcsDestinationConfig {
   /// AVRO file format configuration.
-  final Map<String, dynamic>? avroFileFormat;
+  final pulumi.Input<Map<String, dynamic>>? avroFileFormat;
   /// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
-  final String? fileRotationInterval;
+  final pulumi.Input<String>? fileRotationInterval;
   /// The maximum file size to be saved in the bucket.
-  final int? fileRotationMb;
+  final pulumi.Input<int>? fileRotationMb;
   /// JSON file format configuration.
-  final JsonFileFormat? jsonFileFormat;
+  final pulumi.Input<JsonFileFormat>? jsonFileFormat;
   /// Path inside the Cloud Storage bucket to write data to.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [GcsDestinationConfig].
   /// [avroFileFormat] AVRO file format configuration.
@@ -34,18 +35,18 @@ class GcsDestinationConfig {
       'avroFileFormat': ?avroFileFormat,
       'fileRotationInterval': ?fileRotationInterval,
       'fileRotationMb': ?fileRotationMb,
-      'jsonFileFormat': ?jsonFileFormat == null ? null : jsonFileFormat!.toMap(),
+      'jsonFileFormat': ?pulumi.Input.mapOptionalInputValue<JsonFileFormat, Map<String, dynamic>>(jsonFileFormat, (value) => value.toMap()),
       'path': ?path,
     };
   }
 
   factory GcsDestinationConfig.fromMap(Map<String, dynamic> map) {
     return GcsDestinationConfig(
-      avroFileFormat: map['avroFileFormat'] == null ? null : (map['avroFileFormat'] as Map).cast<String, dynamic>(),
-      fileRotationInterval: map['fileRotationInterval'] == null ? null : map['fileRotationInterval'] as String,
-      fileRotationMb: map['fileRotationMb'] == null ? null : map['fileRotationMb'] as int,
-      jsonFileFormat: map['jsonFileFormat'] == null ? null : JsonFileFormat.fromMap((map['jsonFileFormat'] as Map).cast<String, dynamic>()),
-      path: map['path'] == null ? null : map['path'] as String,
+      avroFileFormat: map['avroFileFormat'] == null ? null : ((map['avroFileFormat'] as Map).cast<String, dynamic>()).input(),
+      fileRotationInterval: map['fileRotationInterval'] == null ? null : (map['fileRotationInterval'] as String).input(),
+      fileRotationMb: map['fileRotationMb'] == null ? null : (map['fileRotationMb'] as int).input(),
+      jsonFileFormat: map['jsonFileFormat'] == null ? null : (JsonFileFormat.fromMap((map['jsonFileFormat'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

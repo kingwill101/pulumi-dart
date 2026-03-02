@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobUserPausedDetail {
-  final String? jobExpiresAt;
-  final String? jobImminentExpirationHealthEventArn;
-  final String? jobPausedAt;
+  final pulumi.Input<String>? jobExpiresAt;
+  final pulumi.Input<String>? jobImminentExpirationHealthEventArn;
+  final pulumi.Input<String>? jobPausedAt;
 
   /// Creates a new [ClassificationJobUserPausedDetail].
   /// [jobExpiresAt] Optional.
@@ -26,9 +27,9 @@ class ClassificationJobUserPausedDetail {
 
   factory ClassificationJobUserPausedDetail.fromMap(Map<String, dynamic> map) {
     return ClassificationJobUserPausedDetail(
-      jobExpiresAt: map['jobExpiresAt'] == null ? null : map['jobExpiresAt'] as String,
-      jobImminentExpirationHealthEventArn: map['jobImminentExpirationHealthEventArn'] == null ? null : map['jobImminentExpirationHealthEventArn'] as String,
-      jobPausedAt: map['jobPausedAt'] == null ? null : map['jobPausedAt'] as String,
+      jobExpiresAt: map['jobExpiresAt'] == null ? null : (map['jobExpiresAt'] as String).input(),
+      jobImminentExpirationHealthEventArn: map['jobImminentExpirationHealthEventArn'] == null ? null : (map['jobImminentExpirationHealthEventArn'] as String).input(),
+      jobPausedAt: map['jobPausedAt'] == null ? null : (map['jobPausedAt'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for summarization.
 class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse {
   /// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
-  final String conversationProfile;
+  final pulumi.Input<String> conversationProfile;
   /// Default summarization model to be used.
-  final String summarizationModel;
+  final pulumi.Input<String> summarizationModel;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse].
   /// [conversationProfile] Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
@@ -25,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResp
 
   factory GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse(
-      conversationProfile: map['conversationProfile'] as String,
-      summarizationModel: map['summarizationModel'] as String,
+      conversationProfile: (map['conversationProfile'] as String).input(),
+      summarizationModel: (map['summarizationModel'] as String).input(),
     );
   }
 }

@@ -36,23 +36,15 @@ class PacketCaptureArgs {
   /// [storageLocation] A `storage_location` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachineId] The resource ID of the target Virtual Machine to capture packets from. Changing this forces a new resource to be created.
   PacketCaptureArgs({
-    pulumi.Output<List<PacketCaptureFilter>>? filters,
-    pulumi.Output<int>? maximumBytesPerPacket,
-    pulumi.Output<int>? maximumBytesPerSession,
-    pulumi.Output<int>? maximumCaptureDurationInSeconds,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkWatcherId,
-    required pulumi.Output<PacketCaptureStorageLocation> storageLocation,
-    required pulumi.Output<String> virtualMachineId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<PacketCaptureFilter>>(filters),
-      maximumBytesPerPacket = pulumi.Input.asOptionalInput<int>(maximumBytesPerPacket),
-      maximumBytesPerSession = pulumi.Input.asOptionalInput<int>(maximumBytesPerSession),
-      maximumCaptureDurationInSeconds = pulumi.Input.asOptionalInput<int>(maximumCaptureDurationInSeconds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkWatcherId = pulumi.Input.asInput<String>(networkWatcherId),
-      storageLocation = pulumi.Input.asInput<PacketCaptureStorageLocation>(storageLocation),
-      virtualMachineId = pulumi.Input.asInput<String>(virtualMachineId);
+    this.filters,
+    this.maximumBytesPerPacket,
+    this.maximumBytesPerSession,
+    this.maximumCaptureDurationInSeconds,
+    this.name,
+    required this.networkWatcherId,
+    required this.storageLocation,
+    required this.virtualMachineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class PacketCaptureArgs {
 
   factory PacketCaptureArgs.fromMap(Map<String, dynamic> map) {
     return PacketCaptureArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<PacketCaptureFilter>>(pulumi.Input.decodeList<PacketCaptureFilter>(map['filters'], (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      maximumBytesPerPacket: map['maximumBytesPerPacket'] == null ? null : pulumi.Output.create<int>(map['maximumBytesPerPacket'] as int),
-      maximumBytesPerSession: map['maximumBytesPerSession'] == null ? null : pulumi.Output.create<int>(map['maximumBytesPerSession'] as int),
-      maximumCaptureDurationInSeconds: map['maximumCaptureDurationInSeconds'] == null ? null : pulumi.Output.create<int>(map['maximumCaptureDurationInSeconds'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkWatcherId: pulumi.Output.create<String>(map['networkWatcherId'] as String),
-      storageLocation: pulumi.Output.create<PacketCaptureStorageLocation>(PacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())),
-      virtualMachineId: pulumi.Output.create<String>(map['virtualMachineId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<PacketCaptureFilter>(map['filters'], (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maximumBytesPerPacket: map['maximumBytesPerPacket'] == null ? null : (map['maximumBytesPerPacket'] as int).input(),
+      maximumBytesPerSession: map['maximumBytesPerSession'] == null ? null : (map['maximumBytesPerSession'] as int).input(),
+      maximumCaptureDurationInSeconds: map['maximumCaptureDurationInSeconds'] == null ? null : (map['maximumCaptureDurationInSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkWatcherId: (map['networkWatcherId'] as String).input(),
+      storageLocation: (PacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineId: (map['virtualMachineId'] as String).input(),
     );
   }
 }

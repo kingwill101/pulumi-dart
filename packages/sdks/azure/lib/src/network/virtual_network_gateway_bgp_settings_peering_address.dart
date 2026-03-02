@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayBgpSettingsPeeringAddress {
   /// A list of Azure custom APIPA addresses assigned to the BGP peer of the Virtual Network Gateway.
   ///
   /// > **Note:** The valid range for the reserved APIPA address in Azure Public is from `169.254.21.0` to `169.254.22.255`.
-  final List<String>? apipaAddresses;
+  final pulumi.Input<List<String>>? apipaAddresses;
   /// A list of peering address assigned to the BGP peer of the Virtual Network Gateway.
-  final List<String>? defaultAddresses;
+  final pulumi.Input<List<String>>? defaultAddresses;
   /// The name of the IP configuration of this Virtual Network Gateway. In case there are multiple `ip_configuration` blocks defined, this property is **required** to specify.
-  final String? ipConfigurationName;
+  final pulumi.Input<String>? ipConfigurationName;
   /// A list of tunnel IP addresses assigned to the BGP peer of the Virtual Network Gateway.
-  final List<String>? tunnelIpAddresses;
+  final pulumi.Input<List<String>>? tunnelIpAddresses;
 
   /// Creates a new [VirtualNetworkGatewayBgpSettingsPeeringAddress].
   /// [apipaAddresses] A list of Azure custom APIPA addresses assigned to the BGP peer of the Virtual Network Gateway.
@@ -36,10 +37,10 @@ class VirtualNetworkGatewayBgpSettingsPeeringAddress {
 
   factory VirtualNetworkGatewayBgpSettingsPeeringAddress.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayBgpSettingsPeeringAddress(
-      apipaAddresses: map['apipaAddresses'] == null ? null : (map['apipaAddresses'] as List).cast<String>(),
-      defaultAddresses: map['defaultAddresses'] == null ? null : (map['defaultAddresses'] as List).cast<String>(),
-      ipConfigurationName: map['ipConfigurationName'] == null ? null : map['ipConfigurationName'] as String,
-      tunnelIpAddresses: map['tunnelIpAddresses'] == null ? null : (map['tunnelIpAddresses'] as List).cast<String>(),
+      apipaAddresses: map['apipaAddresses'] == null ? null : ((map['apipaAddresses'] as List).cast<String>()).input(),
+      defaultAddresses: map['defaultAddresses'] == null ? null : ((map['defaultAddresses'] as List).cast<String>()).input(),
+      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName'] as String).input(),
+      tunnelIpAddresses: map['tunnelIpAddresses'] == null ? null : ((map['tunnelIpAddresses'] as List).cast<String>()).input(),
     );
   }
 }

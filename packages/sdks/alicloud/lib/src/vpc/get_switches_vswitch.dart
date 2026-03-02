@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSwitchesVswitch {
   /// The available ip address count of the vSwitch.
-  final int availableIpAddressCount;
+  final pulumi.Input<int> availableIpAddressCount;
   /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// Time of creation.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// Description of the vSwitch.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the vSwitch.
-  final String id;
+  final pulumi.Input<String> id;
   /// The IPv6 CIDR block of the switch.
-  final String ipv6CidrBlock;
+  final pulumi.Input<String> ipv6CidrBlock;
   /// Indicate whether the vSwitch is created by the system.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// Name of the vSwitch.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Id of resource group which VSWitch belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The route table ID of the vSwitch.
-  final String routeTableId;
+  final pulumi.Input<String> routeTableId;
   /// The status of the vSwitch. Valid values: `Available` and `Pending`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// ID of the VPC that owns the vSwitch.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// ID of the vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The name of the vSwitch.
-  final String vswitchName;
+  final pulumi.Input<String> vswitchName;
   /// The availability zone of the vSwitch.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetSwitchesVswitch].
   /// [availableIpAddressCount] The available ip address count of the vSwitch.
@@ -94,22 +95,22 @@ class GetSwitchesVswitch {
 
   factory GetSwitchesVswitch.fromMap(Map<String, dynamic> map) {
     return GetSwitchesVswitch(
-      availableIpAddressCount: map['availableIpAddressCount'] as int,
-      cidrBlock: map['cidrBlock'] as String,
-      creationTime: map['creationTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      ipv6CidrBlock: map['ipv6CidrBlock'] as String,
-      isDefault: map['isDefault'] as bool,
-      name: map['name'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      routeTableId: map['routeTableId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      vswitchName: map['vswitchName'] as String,
-      zoneId: map['zoneId'] as String,
+      availableIpAddressCount: (map['availableIpAddressCount'] as int).input(),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipv6CidrBlock: (map['ipv6CidrBlock'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      vswitchName: (map['vswitchName'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iptraffic_response.dart';
 
 /// Intent information.
 class IntentContentResponse {
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Destination resource id of the intent.
-  final String destinationResourceId;
+  final pulumi.Input<String> destinationResourceId;
   /// IP traffic information.
-  final IPTrafficResponse ipTraffic;
+  final pulumi.Input<IPTrafficResponse> ipTraffic;
   /// Source resource id of the intent.
-  final String sourceResourceId;
+  final pulumi.Input<String> sourceResourceId;
 
   /// Creates a new [IntentContentResponse].
   /// [description] Optional.
@@ -28,17 +29,17 @@ class IntentContentResponse {
     return <String, dynamic>{
       'description': ?description,
       'destinationResourceId': destinationResourceId,
-      'ipTraffic': ipTraffic.toMap(),
+      'ipTraffic': pulumi.Input.mapInputValue<IPTrafficResponse, Map<String, dynamic>>(ipTraffic, (value) => value.toMap()),
       'sourceResourceId': sourceResourceId,
     };
   }
 
   factory IntentContentResponse.fromMap(Map<String, dynamic> map) {
     return IntentContentResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationResourceId: map['destinationResourceId'] as String,
-      ipTraffic: IPTrafficResponse.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>()),
-      sourceResourceId: map['sourceResourceId'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationResourceId: (map['destinationResourceId'] as String).input(),
+      ipTraffic: (IPTrafficResponse.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
     );
   }
 }

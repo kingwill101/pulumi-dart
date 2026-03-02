@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PodCondition contains details for the current condition of this pod.
 class PodConditionPatch {
   /// Last time we probed the condition.
-  final String? lastProbeTime;
+  final pulumi.Input<String>? lastProbeTime;
   /// Last time the condition transitioned from one status to another.
-  final String? lastTransitionTime;
+  final pulumi.Input<String>? lastTransitionTime;
   /// Human-readable message indicating details about last transition.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// If set, this represents the .metadata.generation that the pod condition was set based upon. The PodObservedGenerationTracking feature gate must be enabled to use this field.
-  final int? observedGeneration;
+  final pulumi.Input<int>? observedGeneration;
   /// Unique, one-word, CamelCase reason for the condition's last transition.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [PodConditionPatch].
   /// [lastProbeTime] Last time we probed the condition.
@@ -50,13 +51,13 @@ class PodConditionPatch {
 
   factory PodConditionPatch.fromMap(Map<String, dynamic> map) {
     return PodConditionPatch(
-      lastProbeTime: map['lastProbeTime'] == null ? null : map['lastProbeTime'] as String,
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as int,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      lastProbeTime: map['lastProbeTime'] == null ? null : (map['lastProbeTime'] as String).input(),
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

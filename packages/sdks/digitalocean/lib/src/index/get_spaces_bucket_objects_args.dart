@@ -28,19 +28,13 @@ class GetSpacesBucketObjectsArgs {
   /// [prefix] Limits results to object keys with this prefix (Default: none)
   /// [region] The slug of the region where the bucket is stored.
   GetSpacesBucketObjectsArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? delimiter,
-    pulumi.Output<String>? encodingType,
-    pulumi.Output<int>? maxKeys,
-    pulumi.Output<String>? prefix,
-    required pulumi.Output<String> region,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      delimiter = pulumi.Input.asOptionalInput<String>(delimiter),
-      encodingType = pulumi.Input.asOptionalInput<String>(encodingType),
-      maxKeys = pulumi.Input.asOptionalInput<int>(maxKeys),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      region = pulumi.Input.asInput<String>(region);
+    required this.bucket,
+    this.delimiter,
+    this.encodingType,
+    this.maxKeys,
+    this.prefix,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetSpacesBucketObjectsArgs {
 
   factory GetSpacesBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetSpacesBucketObjectsArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      delimiter: map['delimiter'] == null ? null : pulumi.Output.create<String>(map['delimiter'] as String),
-      encodingType: map['encodingType'] == null ? null : pulumi.Output.create<String>(map['encodingType'] as String),
-      maxKeys: map['maxKeys'] == null ? null : pulumi.Output.create<int>(map['maxKeys'] as int),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      bucket: (map['bucket'] as String).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      encodingType: map['encodingType'] == null ? null : (map['encodingType'] as String).input(),
+      maxKeys: map['maxKeys'] == null ? null : (map['maxKeys'] as int).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notification_settings.dart';
 
 /// The properties of a configuration profile.
 class ConfigurationProfileResourceProperties {
   /// Settings of change notification configuration for a subscription.
-  final NotificationSettings? notifications;
+  final pulumi.Input<NotificationSettings>? notifications;
 
   /// Creates a new [ConfigurationProfileResourceProperties].
   /// [notifications] Settings of change notification configuration for a subscription.
@@ -15,13 +16,13 @@ class ConfigurationProfileResourceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'notifications': ?notifications == null ? null : notifications!.toMap(),
+      'notifications': ?pulumi.Input.mapOptionalInputValue<NotificationSettings, Map<String, dynamic>>(notifications, (value) => value.toMap()),
     };
   }
 
   factory ConfigurationProfileResourceProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileResourceProperties(
-      notifications: map['notifications'] == null ? null : NotificationSettings.fromMap((map['notifications'] as Map).cast<String, dynamic>()),
+      notifications: map['notifications'] == null ? null : (NotificationSettings.fromMap((map['notifications'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

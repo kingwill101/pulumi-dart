@@ -71,27 +71,17 @@ class RegionTargetHttpsProxyArgs {
   /// [sslPolicy] A reference to the Region SslPolicy resource that will be associated with
   /// [urlMap] A reference to the RegionUrlMap resource that defines the mapping from URL
   RegionTargetHttpsProxyArgs({
-    pulumi.Output<List<String>>? certificateManagerCertificates,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? httpKeepAliveTimeoutSec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serverTlsPolicy,
-    pulumi.Output<List<String>>? sslCertificates,
-    pulumi.Output<String>? sslPolicy,
-    required pulumi.Output<String> urlMap,
-  }) :
-      certificateManagerCertificates = pulumi.Input.asOptionalInput<List<String>>(certificateManagerCertificates),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpKeepAliveTimeoutSec = pulumi.Input.asOptionalInput<int>(httpKeepAliveTimeoutSec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverTlsPolicy = pulumi.Input.asOptionalInput<String>(serverTlsPolicy),
-      sslCertificates = pulumi.Input.asOptionalInput<List<String>>(sslCertificates),
-      sslPolicy = pulumi.Input.asOptionalInput<String>(sslPolicy),
-      urlMap = pulumi.Input.asInput<String>(urlMap);
+    this.certificateManagerCertificates,
+    this.description,
+    this.httpKeepAliveTimeoutSec,
+    this.name,
+    this.project,
+    this.region,
+    this.serverTlsPolicy,
+    this.sslCertificates,
+    this.sslPolicy,
+    required this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,16 +100,16 @@ class RegionTargetHttpsProxyArgs {
 
   factory RegionTargetHttpsProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpsProxyArgs(
-      certificateManagerCertificates: map['certificateManagerCertificates'] == null ? null : pulumi.Output.create<List<String>>((map['certificateManagerCertificates'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : pulumi.Output.create<int>(map['httpKeepAliveTimeoutSec'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : pulumi.Output.create<String>(map['serverTlsPolicy'] as String),
-      sslCertificates: map['sslCertificates'] == null ? null : pulumi.Output.create<List<String>>((map['sslCertificates'] as List).cast<String>()),
-      sslPolicy: map['sslPolicy'] == null ? null : pulumi.Output.create<String>(map['sslPolicy'] as String),
-      urlMap: pulumi.Output.create<String>(map['urlMap'] as String),
+      certificateManagerCertificates: map['certificateManagerCertificates'] == null ? null : ((map['certificateManagerCertificates'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
+      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates'] as List).cast<String>()).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      urlMap: (map['urlMap'] as String).input(),
     );
   }
 }

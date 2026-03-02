@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_discovery_config_error_details.dart';
 
 class PreventionDiscoveryConfigError {
   /// A list of messages that carry the error details.
-  final PreventionDiscoveryConfigErrorDetails? details;
+  final pulumi.Input<PreventionDiscoveryConfigErrorDetails>? details;
   /// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
-  final String? timestamp;
+  final pulumi.Input<String>? timestamp;
 
   /// Creates a new [PreventionDiscoveryConfigError].
   /// [details] A list of messages that carry the error details.
@@ -18,15 +19,15 @@ class PreventionDiscoveryConfigError {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'details': ?details == null ? null : details!.toMap(),
+      'details': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigErrorDetails, Map<String, dynamic>>(details, (value) => value.toMap()),
       'timestamp': ?timestamp,
     };
   }
 
   factory PreventionDiscoveryConfigError.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigError(
-      details: map['details'] == null ? null : PreventionDiscoveryConfigErrorDetails.fromMap((map['details'] as Map).cast<String, dynamic>()),
-      timestamp: map['timestamp'] == null ? null : map['timestamp'] as String,
+      details: map['details'] == null ? null : (PreventionDiscoveryConfigErrorDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
     );
   }
 }

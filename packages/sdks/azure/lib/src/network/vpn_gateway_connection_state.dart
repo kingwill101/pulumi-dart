@@ -31,21 +31,14 @@ class VpnGatewayConnectionState {
   /// [vpnGatewayId] The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
   /// [vpnLinks] One or more `vpn_link` blocks as defined below.
   VpnGatewayConnectionState({
-    pulumi.Output<bool>? internetSecurityEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? remoteVpnSiteId,
-    pulumi.Output<VpnGatewayConnectionRouting>? routing,
-    pulumi.Output<List<VpnGatewayConnectionTrafficSelectorPolicy>>? trafficSelectorPolicies,
-    pulumi.Output<String>? vpnGatewayId,
-    pulumi.Output<List<VpnGatewayConnectionVpnLink>>? vpnLinks,
-  }) :
-      internetSecurityEnabled = pulumi.Input.asOptionalInput<bool>(internetSecurityEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      remoteVpnSiteId = pulumi.Input.asOptionalInput<String>(remoteVpnSiteId),
-      routing = pulumi.Input.asOptionalInput<VpnGatewayConnectionRouting>(routing),
-      trafficSelectorPolicies = pulumi.Input.asOptionalInput<List<VpnGatewayConnectionTrafficSelectorPolicy>>(trafficSelectorPolicies),
-      vpnGatewayId = pulumi.Input.asOptionalInput<String>(vpnGatewayId),
-      vpnLinks = pulumi.Input.asOptionalInput<List<VpnGatewayConnectionVpnLink>>(vpnLinks);
+    this.internetSecurityEnabled,
+    this.name,
+    this.remoteVpnSiteId,
+    this.routing,
+    this.trafficSelectorPolicies,
+    this.vpnGatewayId,
+    this.vpnLinks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class VpnGatewayConnectionState {
 
   factory VpnGatewayConnectionState.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionState(
-      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : pulumi.Output.create<bool>(map['internetSecurityEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      remoteVpnSiteId: map['remoteVpnSiteId'] == null ? null : pulumi.Output.create<String>(map['remoteVpnSiteId'] as String),
-      routing: map['routing'] == null ? null : pulumi.Output.create<VpnGatewayConnectionRouting>(VpnGatewayConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())),
-      trafficSelectorPolicies: map['trafficSelectorPolicies'] == null ? null : pulumi.Output.create<List<VpnGatewayConnectionTrafficSelectorPolicy>>(pulumi.Input.decodeList<VpnGatewayConnectionTrafficSelectorPolicy>(map['trafficSelectorPolicies'], (value) => VpnGatewayConnectionTrafficSelectorPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : pulumi.Output.create<String>(map['vpnGatewayId'] as String),
-      vpnLinks: map['vpnLinks'] == null ? null : pulumi.Output.create<List<VpnGatewayConnectionVpnLink>>(pulumi.Input.decodeList<VpnGatewayConnectionVpnLink>(map['vpnLinks'], (value) => VpnGatewayConnectionVpnLink.fromMap((value as Map).cast<String, dynamic>()))),
+      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      remoteVpnSiteId: map['remoteVpnSiteId'] == null ? null : (map['remoteVpnSiteId'] as String).input(),
+      routing: map['routing'] == null ? null : (VpnGatewayConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
+      trafficSelectorPolicies: map['trafficSelectorPolicies'] == null ? null : (pulumi.Input.decodeList<VpnGatewayConnectionTrafficSelectorPolicy>(map['trafficSelectorPolicies'], (value) => VpnGatewayConnectionTrafficSelectorPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      vpnLinks: map['vpnLinks'] == null ? null : (pulumi.Input.decodeList<VpnGatewayConnectionVpnLink>(map['vpnLinks'], (value) => VpnGatewayConnectionVpnLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

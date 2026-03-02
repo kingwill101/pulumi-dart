@@ -5,13 +5,13 @@ import 'project_service_catalog_provisioning_details_provisioning_parameter.dart
 
 class ProjectServiceCatalogProvisioningDetails {
   /// The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path.
-  final String? pathId;
+  final pulumi.Input<String>? pathId;
   /// The ID of the product to provision.
-  final String productId;
+  final pulumi.Input<String> productId;
   /// The ID of the provisioning artifact.
-  final String? provisioningArtifactId;
+  final pulumi.Input<String>? provisioningArtifactId;
   /// A list of key value pairs that you specify when you provision a product. See Provisioning Parameter below.
-  final List<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>? provisioningParameters;
+  final pulumi.Input<List<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>>? provisioningParameters;
 
   /// Creates a new [ProjectServiceCatalogProvisioningDetails].
   /// [pathId] The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path.
@@ -30,16 +30,16 @@ class ProjectServiceCatalogProvisioningDetails {
       'pathId': ?pathId,
       'productId': productId,
       'provisioningArtifactId': ?provisioningArtifactId,
-      'provisioningParameters': ?provisioningParameters == null ? null : pulumi.Input.encodeList<ProjectServiceCatalogProvisioningDetailsProvisioningParameter, Map<String, dynamic>>(provisioningParameters!, (value) => value.toMap()),
+      'provisioningParameters': ?pulumi.Input.mapOptionalInputValue<List<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>, List<Map<String, dynamic>>>(provisioningParameters, (value) => pulumi.Input.encodeList<ProjectServiceCatalogProvisioningDetailsProvisioningParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ProjectServiceCatalogProvisioningDetails.fromMap(Map<String, dynamic> map) {
     return ProjectServiceCatalogProvisioningDetails(
-      pathId: map['pathId'] == null ? null : map['pathId'] as String,
-      productId: map['productId'] as String,
-      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : map['provisioningArtifactId'] as String,
-      provisioningParameters: map['provisioningParameters'] == null ? null : pulumi.Input.decodeList<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>(map['provisioningParameters'], (value) => ProjectServiceCatalogProvisioningDetailsProvisioningParameter.fromMap((value as Map).cast<String, dynamic>())),
+      pathId: map['pathId'] == null ? null : (map['pathId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : (map['provisioningArtifactId'] as String).input(),
+      provisioningParameters: map['provisioningParameters'] == null ? null : (pulumi.Input.decodeList<ProjectServiceCatalogProvisioningDetailsProvisioningParameter>(map['provisioningParameters'], (value) => ProjectServiceCatalogProvisioningDetailsProvisioningParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

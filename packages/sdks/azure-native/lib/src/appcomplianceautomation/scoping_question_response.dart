@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The definition of a scoping question.
 class ScopingQuestionResponse {
   /// Input type of the question answer.
-  final String inputType;
+  final pulumi.Input<String> inputType;
   /// Option id list.
-  final List<String> optionIds;
+  final pulumi.Input<List<String>> optionIds;
   /// Question id.
-  final String questionId;
+  final pulumi.Input<String> questionId;
   /// The rule of the question.
-  final List<String> rules;
+  final pulumi.Input<List<String>> rules;
   /// The answer value to show the sub questions.
-  final String showSubQuestionsValue;
+  final pulumi.Input<String> showSubQuestionsValue;
   /// Superior question id.
-  final String superiorQuestionId;
+  final pulumi.Input<String> superiorQuestionId;
 
   /// Creates a new [ScopingQuestionResponse].
   /// [inputType] Input type of the question answer.
@@ -45,12 +46,12 @@ class ScopingQuestionResponse {
 
   factory ScopingQuestionResponse.fromMap(Map<String, dynamic> map) {
     return ScopingQuestionResponse(
-      inputType: map['inputType'] as String,
-      optionIds: (map['optionIds'] as List).cast<String>(),
-      questionId: map['questionId'] as String,
-      rules: (map['rules'] as List).cast<String>(),
-      showSubQuestionsValue: map['showSubQuestionsValue'] as String,
-      superiorQuestionId: map['superiorQuestionId'] as String,
+      inputType: (map['inputType'] as String).input(),
+      optionIds: ((map['optionIds'] as List).cast<String>()).input(),
+      questionId: (map['questionId'] as String).input(),
+      rules: ((map['rules'] as List).cast<String>()).input(),
+      showSubQuestionsValue: (map['showSubQuestionsValue'] as String).input(),
+      superiorQuestionId: (map['superiorQuestionId'] as String).input(),
     );
   }
 }

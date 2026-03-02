@@ -25,17 +25,12 @@ class CreatorArgs {
   /// [storageUnits] The storage units to be allocated. Integer values from 1 to 100, inclusive.
   /// [tags] A mapping of tags which should be assigned to the Azure Maps Creator.
   CreatorArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> mapsAccountId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> storageUnits,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mapsAccountId = pulumi.Input.asInput<String>(mapsAccountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageUnits = pulumi.Input.asInput<int>(storageUnits),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.mapsAccountId,
+    this.name,
+    required this.storageUnits,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CreatorArgs {
 
   factory CreatorArgs.fromMap(Map<String, dynamic> map) {
     return CreatorArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mapsAccountId: pulumi.Output.create<String>(map['mapsAccountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageUnits: pulumi.Output.create<int>(map['storageUnits'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mapsAccountId: (map['mapsAccountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageUnits: (map['storageUnits'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -45,29 +45,18 @@ class DscConfigurationArgs {
   /// [source] Gets or sets the source.
   /// [tags] Gets or sets the tags attached to the resource.
   DscConfigurationArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? configurationName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? logProgress,
-    pulumi.Output<bool>? logVerbose,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, DscConfigurationParameter>>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ContentSource> source,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      configurationName = pulumi.Input.asOptionalInput<String>(configurationName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logProgress = pulumi.Input.asOptionalInput<bool>(logProgress),
-      logVerbose = pulumi.Input.asOptionalInput<bool>(logVerbose),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, DscConfigurationParameter>>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asInput<ContentSource>(source),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.automationAccountName,
+    this.configurationName,
+    this.description,
+    this.location,
+    this.logProgress,
+    this.logVerbose,
+    this.name,
+    this.parameters,
+    required this.resourceGroupName,
+    required this.source,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class DscConfigurationArgs {
 
   factory DscConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DscConfigurationArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      configurationName: map['configurationName'] == null ? null : pulumi.Output.create<String>(map['configurationName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logProgress: map['logProgress'] == null ? null : pulumi.Output.create<bool>(map['logProgress'] as bool),
-      logVerbose: map['logVerbose'] == null ? null : pulumi.Output.create<bool>(map['logVerbose'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, DscConfigurationParameter>>(pulumi.Input.decodeMapValues<DscConfigurationParameter>(map['parameters'], (value) => DscConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: pulumi.Output.create<ContentSource>(ContentSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logProgress: map['logProgress'] == null ? null : (map['logProgress'] as bool).input(),
+      logVerbose: map['logVerbose'] == null ? null : (map['logVerbose'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<DscConfigurationParameter>(map['parameters'], (value) => DscConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: (ContentSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

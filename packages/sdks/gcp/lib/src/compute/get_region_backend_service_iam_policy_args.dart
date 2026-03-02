@@ -24,13 +24,10 @@ class GetRegionBackendServiceIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created backend service should reside.
   GetRegionBackendServiceIamPolicyArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class GetRegionBackendServiceIamPolicyArgs {
 
   factory GetRegionBackendServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceIamPolicyArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

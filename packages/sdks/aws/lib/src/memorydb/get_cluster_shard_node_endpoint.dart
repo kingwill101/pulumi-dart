@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterShardNodeEndpoint {
   /// DNS hostname of the node.
-  final String address;
+  final pulumi.Input<String> address;
   /// Port number that this node is listening on.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [GetClusterShardNodeEndpoint].
   /// [address] DNS hostname of the node.
@@ -24,8 +25,8 @@ class GetClusterShardNodeEndpoint {
 
   factory GetClusterShardNodeEndpoint.fromMap(Map<String, dynamic> map) {
     return GetClusterShardNodeEndpoint(
-      address: map['address'] as String,
-      port: map['port'] as int,
+      address: (map['address'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

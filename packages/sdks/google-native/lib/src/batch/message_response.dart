@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
 class MessageResponse {
   /// The new job state.
-  final String newJobState;
+  final pulumi.Input<String> newJobState;
   /// The new task state.
-  final String newTaskState;
+  final pulumi.Input<String> newTaskState;
   /// The message type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MessageResponse].
   /// [newJobState] The new job state.
@@ -30,9 +31,9 @@ class MessageResponse {
 
   factory MessageResponse.fromMap(Map<String, dynamic> map) {
     return MessageResponse(
-      newJobState: map['newJobState'] as String,
-      newTaskState: map['newTaskState'] as String,
-      type: map['type'] as String,
+      newJobState: (map['newJobState'] as String).input(),
+      newTaskState: (map['newTaskState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Fixed scale settings for the pool.
 class FixedScaleSettingsResponse {
   /// The default value is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M for 10 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service rejects the request with an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
-  final String? resizeTimeout;
+  final pulumi.Input<String>? resizeTimeout;
   /// At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
-  final int? targetDedicatedNodes;
+  final pulumi.Input<int>? targetDedicatedNodes;
   /// At least one of targetDedicatedNodes, targetLowPriorityNodes must be set.
-  final int? targetLowPriorityNodes;
+  final pulumi.Input<int>? targetLowPriorityNodes;
 
   /// Creates a new [FixedScaleSettingsResponse].
   /// [resizeTimeout] The default value is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M for 10 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service rejects the request with an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
@@ -30,9 +31,9 @@ class FixedScaleSettingsResponse {
 
   factory FixedScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FixedScaleSettingsResponse(
-      resizeTimeout: map['resizeTimeout'] == null ? null : map['resizeTimeout'] as String,
-      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : map['targetDedicatedNodes'] as int,
-      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : map['targetLowPriorityNodes'] as int,
+      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout'] as String).input(),
+      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes'] as int).input(),
+      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes'] as int).input(),
     );
   }
 }

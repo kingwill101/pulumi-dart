@@ -28,17 +28,12 @@ class ImageArgs {
   /// [registry] The registry to push the image to
   /// [skipPush] A flag to skip a registry push.
   ImageArgs({
-    pulumi.Output<DockerBuild>? build,
-    pulumi.Output<bool>? buildOnPreview,
-    required pulumi.Output<String> imageName,
-    pulumi.Output<Registry>? registry,
-    pulumi.Output<bool>? skipPush,
-  }) :
-      build = pulumi.Input.asOptionalInput<DockerBuild>(build),
-      buildOnPreview = pulumi.Input.asOptionalInput<bool>(buildOnPreview),
-      imageName = pulumi.Input.asInput<String>(imageName),
-      registry = pulumi.Input.asOptionalInput<Registry>(registry),
-      skipPush = pulumi.Input.asOptionalInput<bool>(skipPush);
+    this.build,
+    this.buildOnPreview,
+    required this.imageName,
+    this.registry,
+    this.skipPush,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      build: map['build'] == null ? null : pulumi.Output.create<DockerBuild>(DockerBuild.fromMap((map['build'] as Map).cast<String, dynamic>())),
-      buildOnPreview: map['buildOnPreview'] == null ? null : pulumi.Output.create<bool>(map['buildOnPreview'] as bool),
-      imageName: pulumi.Output.create<String>(map['imageName'] as String),
-      registry: map['registry'] == null ? null : pulumi.Output.create<Registry>(Registry.fromMap((map['registry'] as Map).cast<String, dynamic>())),
-      skipPush: map['skipPush'] == null ? null : pulumi.Output.create<bool>(map['skipPush'] as bool),
+      build: map['build'] == null ? null : (DockerBuild.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
+      buildOnPreview: map['buildOnPreview'] == null ? null : (map['buildOnPreview'] as bool).input(),
+      imageName: (map['imageName'] as String).input(),
+      registry: map['registry'] == null ? null : (Registry.fromMap((map['registry'] as Map).cast<String, dynamic>())).input(),
+      skipPush: map['skipPush'] == null ? null : (map['skipPush'] as bool).input(),
     );
   }
 }

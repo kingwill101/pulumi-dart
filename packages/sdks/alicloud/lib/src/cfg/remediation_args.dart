@@ -30,19 +30,13 @@ class RemediationArgs {
   /// [remediationTemplateId] Remediation template ID.
   /// [remediationType] Remediation type, valid values: `OOS`, `FC`.
   RemediationArgs({
-    required pulumi.Output<String> configRuleId,
-    required pulumi.Output<String> invokeType,
-    required pulumi.Output<String> params,
-    pulumi.Output<String>? remediationSourceType,
-    required pulumi.Output<String> remediationTemplateId,
-    required pulumi.Output<String> remediationType,
-  }) :
-      configRuleId = pulumi.Input.asInput<String>(configRuleId),
-      invokeType = pulumi.Input.asInput<String>(invokeType),
-      params = pulumi.Input.asInput<String>(params),
-      remediationSourceType = pulumi.Input.asOptionalInput<String>(remediationSourceType),
-      remediationTemplateId = pulumi.Input.asInput<String>(remediationTemplateId),
-      remediationType = pulumi.Input.asInput<String>(remediationType);
+    required this.configRuleId,
+    required this.invokeType,
+    required this.params,
+    this.remediationSourceType,
+    required this.remediationTemplateId,
+    required this.remediationType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class RemediationArgs {
 
   factory RemediationArgs.fromMap(Map<String, dynamic> map) {
     return RemediationArgs(
-      configRuleId: pulumi.Output.create<String>(map['configRuleId'] as String),
-      invokeType: pulumi.Output.create<String>(map['invokeType'] as String),
-      params: pulumi.Output.create<String>(map['params'] as String),
-      remediationSourceType: map['remediationSourceType'] == null ? null : pulumi.Output.create<String>(map['remediationSourceType'] as String),
-      remediationTemplateId: pulumi.Output.create<String>(map['remediationTemplateId'] as String),
-      remediationType: pulumi.Output.create<String>(map['remediationType'] as String),
+      configRuleId: (map['configRuleId'] as String).input(),
+      invokeType: (map['invokeType'] as String).input(),
+      params: (map['params'] as String).input(),
+      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType'] as String).input(),
+      remediationTemplateId: (map['remediationTemplateId'] as String).input(),
+      remediationType: (map['remediationType'] as String).input(),
     );
   }
 }

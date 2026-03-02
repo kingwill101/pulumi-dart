@@ -34,17 +34,12 @@ class ControlPolicyArgs {
   /// [policyDocument] The new document of the access control policy.
   /// [tags] The tags.
   ControlPolicyArgs({
-    required pulumi.Output<String> controlPolicyName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> effectScope,
-    required pulumi.Output<String> policyDocument,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      controlPolicyName = pulumi.Input.asInput<String>(controlPolicyName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectScope = pulumi.Input.asInput<String>(effectScope),
-      policyDocument = pulumi.Input.asInput<String>(policyDocument),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.controlPolicyName,
+    this.description,
+    required this.effectScope,
+    required this.policyDocument,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class ControlPolicyArgs {
 
   factory ControlPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ControlPolicyArgs(
-      controlPolicyName: pulumi.Output.create<String>(map['controlPolicyName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectScope: pulumi.Output.create<String>(map['effectScope'] as String),
-      policyDocument: pulumi.Output.create<String>(map['policyDocument'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      controlPolicyName: (map['controlPolicyName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectScope: (map['effectScope'] as String).input(),
+      policyDocument: (map['policyDocument'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

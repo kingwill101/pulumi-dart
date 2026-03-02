@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a vSphere Replication (VR) addon
 class AddonVrPropertiesResponse {
   /// Addon type
   /// Expected value is 'VR'.
-  final String addonType;
+  final pulumi.Input<String> addonType;
   /// The state of the addon provisioning
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The vSphere Replication Server (VRS) count
-  final int vrsCount;
+  final pulumi.Input<int> vrsCount;
 
   /// Creates a new [AddonVrPropertiesResponse].
   /// [addonType] Addon type
@@ -31,9 +32,9 @@ class AddonVrPropertiesResponse {
 
   factory AddonVrPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AddonVrPropertiesResponse(
-      addonType: map['addonType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      vrsCount: map['vrsCount'] as int,
+      addonType: (map['addonType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      vrsCount: (map['vrsCount'] as int).input(),
     );
   }
 }

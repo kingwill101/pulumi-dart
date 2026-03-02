@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionsRegion {
   /// The Region code of a given Region
-  final String regionName;
+  final pulumi.Input<String> regionName;
   /// The opt-in status of the region. Possible values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
-  final String regionOptStatus;
+  final pulumi.Input<String> regionOptStatus;
 
   /// Creates a new [GetRegionsRegion].
   /// [regionName] The Region code of a given Region
@@ -24,8 +25,8 @@ class GetRegionsRegion {
 
   factory GetRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetRegionsRegion(
-      regionName: map['regionName'] as String,
-      regionOptStatus: map['regionOptStatus'] as String,
+      regionName: (map['regionName'] as String).input(),
+      regionOptStatus: (map['regionOptStatus'] as String).input(),
     );
   }
 }

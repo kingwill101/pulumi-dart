@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefaultScaleSettings {
   /// Expected value is 'Default'.
-  final String scaleType;
+  final pulumi.Input<String> scaleType;
 
   /// Creates a new [DefaultScaleSettings].
   /// [scaleType] Expected value is 'Default'.
@@ -19,7 +20,7 @@ class DefaultScaleSettings {
 
   factory DefaultScaleSettings.fromMap(Map<String, dynamic> map) {
     return DefaultScaleSettings(
-      scaleType: map['scaleType'] as String,
+      scaleType: (map['scaleType'] as String).input(),
     );
   }
 }

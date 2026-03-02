@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cloud Hsm Cluster SKU information
 class CloudHsmClusterSkuResponse {
   /// Sku capacity
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Sku family of the Cloud HSM Cluster
-  final String family;
+  final pulumi.Input<String> family;
   /// Sku name of the Cloud HSM Cluster
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CloudHsmClusterSkuResponse].
   /// [capacity] Sku capacity
@@ -30,9 +31,9 @@ class CloudHsmClusterSkuResponse {
 
   factory CloudHsmClusterSkuResponse.fromMap(Map<String, dynamic> map) {
     return CloudHsmClusterSkuResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      family: map['family'] as String,
-      name: map['name'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      family: (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

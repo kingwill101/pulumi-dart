@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
   /// (Output)
   /// ip Address created by the automated forwarding rule.
-  final String? matchAddress;
+  final pulumi.Input<String>? matchAddress;
   /// (Output)
   /// Corresponding network in pscAutomationConfigs.
-  final String? network;
+  final pulumi.Input<String>? network;
   /// (Output)
   /// Corresponding projectId in pscAutomationConfigs
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
 
   /// Creates a new [AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint].
   /// [matchAddress] (Output)
@@ -32,9 +33,9 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
 
   factory AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint(
-      matchAddress: map['matchAddress'] == null ? null : map['matchAddress'] as String,
-      network: map['network'] == null ? null : map['network'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
+      matchAddress: map['matchAddress'] == null ? null : (map['matchAddress'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

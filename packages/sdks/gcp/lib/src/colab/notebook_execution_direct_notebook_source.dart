@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotebookExecutionDirectNotebookSource {
   /// The base64-encoded contents of the input notebook file.
-  final String content;
+  final pulumi.Input<String> content;
 
   /// Creates a new [NotebookExecutionDirectNotebookSource].
   /// [content] The base64-encoded contents of the input notebook file.
@@ -19,7 +20,7 @@ class NotebookExecutionDirectNotebookSource {
 
   factory NotebookExecutionDirectNotebookSource.fromMap(Map<String, dynamic> map) {
     return NotebookExecutionDirectNotebookSource(
-      content: map['content'] as String,
+      content: (map['content'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeGroupSpotBidPrice {
   /// The spot bid price of a PayAsYouGo instance.
-  final int bidPrice;
+  final pulumi.Input<int> bidPrice;
   /// Host Ecs instance type.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [ClusterNodeGroupSpotBidPrice].
   /// [bidPrice] The spot bid price of a PayAsYouGo instance.
@@ -24,8 +25,8 @@ class ClusterNodeGroupSpotBidPrice {
 
   factory ClusterNodeGroupSpotBidPrice.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupSpotBidPrice(
-      bidPrice: map['bidPrice'] as int,
-      instanceType: map['instanceType'] as String,
+      bidPrice: (map['bidPrice'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

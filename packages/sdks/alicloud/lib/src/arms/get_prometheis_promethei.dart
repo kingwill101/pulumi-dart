@@ -1,47 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPrometheisPromethei {
   /// The token used to access the data source.
-  final String authToken;
+  final pulumi.Input<String> authToken;
   /// The ID of the cluster.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The name of the cluster.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The type of the cluster.
-  final String clusterType;
+  final pulumi.Input<String> clusterType;
   /// The ID of the Grafana workspace.
-  final String grafanaInstanceId;
+  final pulumi.Input<String> grafanaInstanceId;
   /// Http api public network address.
-  final String httpApiInterUrl;
+  final pulumi.Input<String> httpApiInterUrl;
   /// Http api intranet address.
-  final String httpApiIntraUrl;
+  final pulumi.Input<String> httpApiIntraUrl;
   /// The ID of the Prometheus.
-  final String id;
+  final pulumi.Input<String> id;
   /// PushGateway public network Url.
-  final String pushGateWayInterUrl;
+  final pulumi.Input<String> pushGateWayInterUrl;
   /// PushGateway intranet Url.
-  final String pushGateWayIntraUrl;
+  final pulumi.Input<String> pushGateWayIntraUrl;
   /// Public Url of remoteRead.
-  final String remoteReadInterUrl;
+  final pulumi.Input<String> remoteReadInterUrl;
   /// RemoteRead intranet Url.
-  final String remoteReadIntraUrl;
+  final pulumi.Input<String> remoteReadIntraUrl;
   /// RemoteWrite public Url.
-  final String remoteWriteInterUrl;
+  final pulumi.Input<String> remoteWriteInterUrl;
   /// RemoteWrite Intranet Url.
-  final String remoteWriteIntraUrl;
+  final pulumi.Input<String> remoteWriteIntraUrl;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The ID of the security group.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The child instance json string of the globalView instance.
-  final String subClustersJson;
+  final pulumi.Input<String> subClustersJson;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The ID of the VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of the vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetPrometheisPromethei].
   /// [authToken] The token used to access the data source.
@@ -114,26 +115,26 @@ class GetPrometheisPromethei {
 
   factory GetPrometheisPromethei.fromMap(Map<String, dynamic> map) {
     return GetPrometheisPromethei(
-      authToken: map['authToken'] as String,
-      clusterId: map['clusterId'] as String,
-      clusterName: map['clusterName'] as String,
-      clusterType: map['clusterType'] as String,
-      grafanaInstanceId: map['grafanaInstanceId'] as String,
-      httpApiInterUrl: map['httpApiInterUrl'] as String,
-      httpApiIntraUrl: map['httpApiIntraUrl'] as String,
-      id: map['id'] as String,
-      pushGateWayInterUrl: map['pushGateWayInterUrl'] as String,
-      pushGateWayIntraUrl: map['pushGateWayIntraUrl'] as String,
-      remoteReadInterUrl: map['remoteReadInterUrl'] as String,
-      remoteReadIntraUrl: map['remoteReadIntraUrl'] as String,
-      remoteWriteInterUrl: map['remoteWriteInterUrl'] as String,
-      remoteWriteIntraUrl: map['remoteWriteIntraUrl'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      subClustersJson: map['subClustersJson'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      authToken: (map['authToken'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterType: (map['clusterType'] as String).input(),
+      grafanaInstanceId: (map['grafanaInstanceId'] as String).input(),
+      httpApiInterUrl: (map['httpApiInterUrl'] as String).input(),
+      httpApiIntraUrl: (map['httpApiIntraUrl'] as String).input(),
+      id: (map['id'] as String).input(),
+      pushGateWayInterUrl: (map['pushGateWayInterUrl'] as String).input(),
+      pushGateWayIntraUrl: (map['pushGateWayIntraUrl'] as String).input(),
+      remoteReadInterUrl: (map['remoteReadInterUrl'] as String).input(),
+      remoteReadIntraUrl: (map['remoteReadIntraUrl'] as String).input(),
+      remoteWriteInterUrl: (map['remoteWriteInterUrl'] as String).input(),
+      remoteWriteIntraUrl: (map['remoteWriteIntraUrl'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      subClustersJson: (map['subClustersJson'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

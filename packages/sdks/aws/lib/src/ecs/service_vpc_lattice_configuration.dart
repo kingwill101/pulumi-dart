@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceVpcLatticeConfiguration {
   /// The name of the port for a target group associated with the VPC Lattice configuration.
-  final String portName;
+  final pulumi.Input<String> portName;
   /// The ARN of the IAM role to associate with this volume. This is the Amazon ECS infrastructure IAM role that is used to manage your AWS infrastructure.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The full ARN of the target group or groups associated with the VPC Lattice configuration.
-  final String targetGroupArn;
+  final pulumi.Input<String> targetGroupArn;
 
   /// Creates a new [ServiceVpcLatticeConfiguration].
   /// [portName] The name of the port for a target group associated with the VPC Lattice configuration.
@@ -29,9 +30,9 @@ class ServiceVpcLatticeConfiguration {
 
   factory ServiceVpcLatticeConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceVpcLatticeConfiguration(
-      portName: map['portName'] as String,
-      roleArn: map['roleArn'] as String,
-      targetGroupArn: map['targetGroupArn'] as String,
+      portName: (map['portName'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      targetGroupArn: (map['targetGroupArn'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTemplateScratchesScratchStack {
   /// The ID of the Resource stack.
-  final String stackId;
+  final pulumi.Input<String> stackId;
 
   /// Creates a new [GetTemplateScratchesScratchStack].
   /// [stackId] The ID of the Resource stack.
@@ -19,7 +20,7 @@ class GetTemplateScratchesScratchStack {
 
   factory GetTemplateScratchesScratchStack.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesScratchStack(
-      stackId: map['stackId'] as String,
+      stackId: (map['stackId'] as String).input(),
     );
   }
 }

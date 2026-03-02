@@ -26,17 +26,12 @@ class GetVpnAttachmentArgs {
   /// [transitGatewayId] Identifier of the EC2 Transit Gateway.
   /// [vpnConnectionId] Identifier of the EC2 VPN Connection.
   GetVpnAttachmentArgs({
-    pulumi.Output<List<GetVpnAttachmentFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitGatewayId,
-    pulumi.Output<String>? vpnConnectionId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVpnAttachmentFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayId = pulumi.Input.asOptionalInput<String>(transitGatewayId),
-      vpnConnectionId = pulumi.Input.asOptionalInput<String>(vpnConnectionId);
+    this.filters,
+    this.region,
+    this.tags,
+    this.transitGatewayId,
+    this.vpnConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GetVpnAttachmentArgs {
 
   factory GetVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnAttachmentArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpnAttachmentFilter>>(pulumi.Input.decodeList<GetVpnAttachmentFilter>(map['filters'], (value) => GetVpnAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayId: map['transitGatewayId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayId'] as String),
-      vpnConnectionId: map['vpnConnectionId'] == null ? null : pulumi.Output.create<String>(map['vpnConnectionId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpnAttachmentFilter>(map['filters'], (value) => GetVpnAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
+      vpnConnectionId: map['vpnConnectionId'] == null ? null : (map['vpnConnectionId'] as String).input(),
     );
   }
 }

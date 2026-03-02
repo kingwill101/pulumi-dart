@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerUlimit {
   /// The hard limit
-  final int hard;
+  final pulumi.Input<int> hard;
   /// The name of the ulimit
-  final String name;
+  final pulumi.Input<String> name;
   /// The soft limit
-  final int soft;
+  final pulumi.Input<int> soft;
 
   /// Creates a new [ContainerUlimit].
   /// [hard] The hard limit
@@ -29,9 +30,9 @@ class ContainerUlimit {
 
   factory ContainerUlimit.fromMap(Map<String, dynamic> map) {
     return ContainerUlimit(
-      hard: map['hard'] as int,
-      name: map['name'] as String,
-      soft: map['soft'] as int,
+      hard: (map['hard'] as int).input(),
+      name: (map['name'] as String).input(),
+      soft: (map['soft'] as int).input(),
     );
   }
 }

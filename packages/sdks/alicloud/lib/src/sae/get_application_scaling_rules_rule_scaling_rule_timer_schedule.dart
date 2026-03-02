@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
   /// Time point. Format: `hours:minutes`.
-  final String atTime;
+  final pulumi.Input<String> atTime;
   /// The maximum number of instances.
-  final int maxReplicas;
+  final pulumi.Input<int> maxReplicas;
   /// The minimum number of instances.
-  final int minReplicas;
+  final pulumi.Input<int> minReplicas;
   /// The number of target instances.
-  final int targetReplicas;
+  final pulumi.Input<int> targetReplicas;
 
   /// Creates a new [GetApplicationScalingRulesRuleScalingRuleTimerSchedule].
   /// [atTime] Time point. Format: `hours:minutes`.
@@ -34,10 +35,10 @@ class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
 
   factory GetApplicationScalingRulesRuleScalingRuleTimerSchedule.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRuleScalingRuleTimerSchedule(
-      atTime: map['atTime'] as String,
-      maxReplicas: map['maxReplicas'] as int,
-      minReplicas: map['minReplicas'] as int,
-      targetReplicas: map['targetReplicas'] as int,
+      atTime: (map['atTime'] as String).input(),
+      maxReplicas: (map['maxReplicas'] as int).input(),
+      minReplicas: (map['minReplicas'] as int).input(),
+      targetReplicas: (map['targetReplicas'] as int).input(),
     );
   }
 }

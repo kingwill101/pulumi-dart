@@ -33,21 +33,14 @@ class AppleAppArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [teamId] The Apple Developer Team ID associated with the App in the App Store.
   AppleAppArgs({
-    pulumi.Output<String>? apiKeyId,
-    pulumi.Output<String>? appStoreId,
-    required pulumi.Output<String> bundleId,
-    pulumi.Output<String>? deletionPolicy,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? teamId,
-  }) :
-      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-      appStoreId = pulumi.Input.asOptionalInput<String>(appStoreId),
-      bundleId = pulumi.Input.asInput<String>(bundleId),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      teamId = pulumi.Input.asOptionalInput<String>(teamId);
+    this.apiKeyId,
+    this.appStoreId,
+    required this.bundleId,
+    this.deletionPolicy,
+    required this.displayName,
+    this.project,
+    this.teamId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AppleAppArgs {
 
   factory AppleAppArgs.fromMap(Map<String, dynamic> map) {
     return AppleAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : pulumi.Output.create<String>(map['apiKeyId'] as String),
-      appStoreId: map['appStoreId'] == null ? null : pulumi.Output.create<String>(map['appStoreId'] as String),
-      bundleId: pulumi.Output.create<String>(map['bundleId'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      teamId: map['teamId'] == null ? null : pulumi.Output.create<String>(map['teamId'] as String),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
+      appStoreId: map['appStoreId'] == null ? null : (map['appStoreId'] as String).input(),
+      bundleId: (map['bundleId'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
     );
   }
 }

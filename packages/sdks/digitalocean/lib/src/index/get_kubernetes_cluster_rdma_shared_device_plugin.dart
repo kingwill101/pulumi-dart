@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterRdmaSharedDevicePlugin {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetKubernetesClusterRdmaSharedDevicePlugin].
   /// [enabled] Required.
@@ -18,7 +19,7 @@ class GetKubernetesClusterRdmaSharedDevicePlugin {
 
   factory GetKubernetesClusterRdmaSharedDevicePlugin.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterRdmaSharedDevicePlugin(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage task execution report for a run instance.
 class StorageTaskReportPropertiesResponse {
   /// End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
-  final String finishTime;
+  final pulumi.Input<String> finishTime;
   /// Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
-  final String objectFailedCount;
+  final pulumi.Input<String> objectFailedCount;
   /// Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
-  final String objectsOperatedOnCount;
+  final pulumi.Input<String> objectsOperatedOnCount;
   /// Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
-  final String objectsSucceededCount;
+  final pulumi.Input<String> objectsSucceededCount;
   /// Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
-  final String objectsTargetedCount;
+  final pulumi.Input<String> objectsTargetedCount;
   /// Represents the overall result of the execution for the run instance
-  final String runResult;
+  final pulumi.Input<String> runResult;
   /// Represents the status of the execution.
-  final String runStatusEnum;
+  final pulumi.Input<String> runStatusEnum;
   /// Well known Azure Storage error code that represents the error encountered during execution of the run instance.
-  final String runStatusError;
+  final pulumi.Input<String> runStatusError;
   /// Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Represents the Storage Account Id where the storage task definition was applied and executed.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
   /// Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account.
-  final String summaryReportPath;
+  final pulumi.Input<String> summaryReportPath;
   /// Represents the Storage Task Assignment Id associated with the storage task that provided an execution context.
-  final String taskAssignmentId;
+  final pulumi.Input<String> taskAssignmentId;
   /// Storage Task Arm Id.
-  final String taskId;
+  final pulumi.Input<String> taskId;
   /// Storage Task Version
-  final String taskVersion;
+  final pulumi.Input<String> taskVersion;
 
   /// Creates a new [StorageTaskReportPropertiesResponse].
   /// [finishTime] End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
@@ -85,20 +86,20 @@ class StorageTaskReportPropertiesResponse {
 
   factory StorageTaskReportPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StorageTaskReportPropertiesResponse(
-      finishTime: map['finishTime'] as String,
-      objectFailedCount: map['objectFailedCount'] as String,
-      objectsOperatedOnCount: map['objectsOperatedOnCount'] as String,
-      objectsSucceededCount: map['objectsSucceededCount'] as String,
-      objectsTargetedCount: map['objectsTargetedCount'] as String,
-      runResult: map['runResult'] as String,
-      runStatusEnum: map['runStatusEnum'] as String,
-      runStatusError: map['runStatusError'] as String,
-      startTime: map['startTime'] as String,
-      storageAccountId: map['storageAccountId'] as String,
-      summaryReportPath: map['summaryReportPath'] as String,
-      taskAssignmentId: map['taskAssignmentId'] as String,
-      taskId: map['taskId'] as String,
-      taskVersion: map['taskVersion'] as String,
+      finishTime: (map['finishTime'] as String).input(),
+      objectFailedCount: (map['objectFailedCount'] as String).input(),
+      objectsOperatedOnCount: (map['objectsOperatedOnCount'] as String).input(),
+      objectsSucceededCount: (map['objectsSucceededCount'] as String).input(),
+      objectsTargetedCount: (map['objectsTargetedCount'] as String).input(),
+      runResult: (map['runResult'] as String).input(),
+      runStatusEnum: (map['runStatusEnum'] as String).input(),
+      runStatusError: (map['runStatusError'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      summaryReportPath: (map['summaryReportPath'] as String).input(),
+      taskAssignmentId: (map['taskAssignmentId'] as String).input(),
+      taskId: (map['taskId'] as String).input(),
+      taskVersion: (map['taskVersion'] as String).input(),
     );
   }
 }

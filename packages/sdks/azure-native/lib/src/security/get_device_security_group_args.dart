@@ -16,11 +16,9 @@ class GetDeviceSecurityGroupArgs {
   /// [deviceSecurityGroupName] The name of the device security group. Note that the name of the device security group is case insensitive.
   /// [resourceId] The identifier of the resource.
   GetDeviceSecurityGroupArgs({
-    required pulumi.Output<String> deviceSecurityGroupName,
-    required pulumi.Output<String> resourceId,
-  }) :
-      deviceSecurityGroupName = pulumi.Input.asInput<String>(deviceSecurityGroupName),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    required this.deviceSecurityGroupName,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeviceSecurityGroupArgs {
 
   factory GetDeviceSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceSecurityGroupArgs(
-      deviceSecurityGroupName: pulumi.Output.create<String>(map['deviceSecurityGroupName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      deviceSecurityGroupName: (map['deviceSecurityGroupName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

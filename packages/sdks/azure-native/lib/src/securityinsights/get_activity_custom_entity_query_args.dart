@@ -19,13 +19,10 @@ class GetActivityCustomEntityQueryArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetActivityCustomEntityQueryArgs({
-    required pulumi.Output<String> entityQueryId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      entityQueryId = pulumi.Input.asInput<String>(entityQueryId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.entityQueryId,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetActivityCustomEntityQueryArgs {
 
   factory GetActivityCustomEntityQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetActivityCustomEntityQueryArgs(
-      entityQueryId: pulumi.Output.create<String>(map['entityQueryId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      entityQueryId: (map['entityQueryId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_basic_auth_setting_response.dart';
 
 class AcceleratorGitRepositoryResponse {
   /// Properties of the auth setting payload.
-  final AcceleratorBasicAuthSettingResponse authSetting;
+  final pulumi.Input<AcceleratorBasicAuthSettingResponse> authSetting;
   /// Git repository branch to be used.
-  final String? branch;
+  final pulumi.Input<String>? branch;
   /// Git repository commit to be used.
-  final String? commit;
+  final pulumi.Input<String>? commit;
   /// Git repository tag to be used.
-  final String? gitTag;
+  final pulumi.Input<String>? gitTag;
   /// Interval for checking for updates to Git or image repository.
-  final int? intervalInSeconds;
+  final pulumi.Input<int>? intervalInSeconds;
   /// Folder path inside the git repository to consider as the root of the accelerator or fragment.
-  final String? subPath;
+  final pulumi.Input<String>? subPath;
   /// Git repository URL for the accelerator.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [AcceleratorGitRepositoryResponse].
   /// [authSetting] Properties of the auth setting payload.
@@ -38,7 +39,7 @@ class AcceleratorGitRepositoryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authSetting': authSetting.toMap(),
+      'authSetting': pulumi.Input.mapInputValue<AcceleratorBasicAuthSettingResponse, Map<String, dynamic>>(authSetting, (value) => value.toMap()),
       'branch': ?branch,
       'commit': ?commit,
       'gitTag': ?gitTag,
@@ -50,13 +51,13 @@ class AcceleratorGitRepositoryResponse {
 
   factory AcceleratorGitRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorGitRepositoryResponse(
-      authSetting: AcceleratorBasicAuthSettingResponse.fromMap((map['authSetting'] as Map).cast<String, dynamic>()),
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      commit: map['commit'] == null ? null : map['commit'] as String,
-      gitTag: map['gitTag'] == null ? null : map['gitTag'] as String,
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : map['intervalInSeconds'] as int,
-      subPath: map['subPath'] == null ? null : map['subPath'] as String,
-      url: map['url'] as String,
+      authSetting: (AcceleratorBasicAuthSettingResponse.fromMap((map['authSetting'] as Map).cast<String, dynamic>())).input(),
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      commit: map['commit'] == null ? null : (map['commit'] as String).input(),
+      gitTag: map['gitTag'] == null ? null : (map['gitTag'] as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

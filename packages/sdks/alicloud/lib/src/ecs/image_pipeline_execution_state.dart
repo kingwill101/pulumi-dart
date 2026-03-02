@@ -17,13 +17,10 @@ class ImagePipelineExecutionState {
   /// [imagePipelineId] The ID of the image template.
   /// [status] The status of the image build task. Valid values:
   ImagePipelineExecutionState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? imagePipelineId,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      imagePipelineId = pulumi.Input.asOptionalInput<String>(imagePipelineId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.imagePipelineId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ImagePipelineExecutionState {
 
   factory ImagePipelineExecutionState.fromMap(Map<String, dynamic> map) {
     return ImagePipelineExecutionState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      imagePipelineId: map['imagePipelineId'] == null ? null : pulumi.Output.create<String>(map['imagePipelineId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      imagePipelineId: map['imagePipelineId'] == null ? null : (map['imagePipelineId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

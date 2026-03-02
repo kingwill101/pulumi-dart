@@ -35,23 +35,15 @@ class ResourceSyncRuleArgs {
   /// [tags] Resource tags.
   /// [targetResourceGroup] For an unmapped custom resource, its labels will be used to find matching resource sync rules. If this resource sync rule is one of the matching rules with highest priority, then the unmapped custom resource will be projected to the target resource group associated with this resource sync rule. The user creating this resource sync rule should have write permissions on the target resource group and this write permission will be validated when creating the resource sync rule.
   ResourceSyncRuleArgs({
-    pulumi.Output<String>? childResourceName,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? priority,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<ResourceSyncRulePropertiesSelector>? selector,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetResourceGroup,
-  }) :
-      childResourceName = pulumi.Input.asOptionalInput<String>(childResourceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      selector = pulumi.Input.asOptionalInput<ResourceSyncRulePropertiesSelector>(selector),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceGroup = pulumi.Input.asOptionalInput<String>(targetResourceGroup);
+    this.childResourceName,
+    this.location,
+    this.priority,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.selector,
+    this.tags,
+    this.targetResourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ResourceSyncRuleArgs {
 
   factory ResourceSyncRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResourceSyncRuleArgs(
-      childResourceName: map['childResourceName'] == null ? null : pulumi.Output.create<String>(map['childResourceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      selector: map['selector'] == null ? null : pulumi.Output.create<ResourceSyncRulePropertiesSelector>(ResourceSyncRulePropertiesSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceGroup: map['targetResourceGroup'] == null ? null : pulumi.Output.create<String>(map['targetResourceGroup'] as String),
+      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      selector: map['selector'] == null ? null : (ResourceSyncRulePropertiesSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceGroup: map['targetResourceGroup'] == null ? null : (map['targetResourceGroup'] as String).input(),
     );
   }
 }

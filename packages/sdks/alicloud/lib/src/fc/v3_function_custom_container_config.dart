@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v3_function_custom_container_config_acceleration_info.dart';
 import 'v3_function_custom_container_config_health_check_config.dart';
 
 class V3FunctionCustomContainerConfig {
   /// (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
-  final V3FunctionCustomContainerConfigAccelerationInfo? accelerationInfo;
+  final pulumi.Input<V3FunctionCustomContainerConfigAccelerationInfo>? accelerationInfo;
   /// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
-  final String? accelerationType;
+  final pulumi.Input<String>? accelerationType;
   /// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
-  final String? acrInstanceId;
+  final pulumi.Input<String>? acrInstanceId;
   /// Container startup parameters.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// Container start command.
-  final List<String>? entrypoints;
+  final pulumi.Input<List<String>>? entrypoints;
   /// Function custom health check configuration See `health_check_config` below.
-  final V3FunctionCustomContainerConfigHealthCheckConfig? healthCheckConfig;
+  final pulumi.Input<V3FunctionCustomContainerConfigHealthCheckConfig>? healthCheckConfig;
   /// The container Image address.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// The listening port of the HTTP Server when the custom container runs.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
-  final String? resolvedImageUri;
+  final pulumi.Input<String>? resolvedImageUri;
 
   /// Creates a new [V3FunctionCustomContainerConfig].
   /// [accelerationInfo] (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
@@ -47,12 +48,12 @@ class V3FunctionCustomContainerConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accelerationInfo': ?accelerationInfo == null ? null : accelerationInfo!.toMap(),
+      'accelerationInfo': ?pulumi.Input.mapOptionalInputValue<V3FunctionCustomContainerConfigAccelerationInfo, Map<String, dynamic>>(accelerationInfo, (value) => value.toMap()),
       'accelerationType': ?accelerationType,
       'acrInstanceId': ?acrInstanceId,
       'commands': ?commands,
       'entrypoints': ?entrypoints,
-      'healthCheckConfig': ?healthCheckConfig == null ? null : healthCheckConfig!.toMap(),
+      'healthCheckConfig': ?pulumi.Input.mapOptionalInputValue<V3FunctionCustomContainerConfigHealthCheckConfig, Map<String, dynamic>>(healthCheckConfig, (value) => value.toMap()),
       'image': ?image,
       'port': ?port,
       'resolvedImageUri': ?resolvedImageUri,
@@ -61,15 +62,15 @@ class V3FunctionCustomContainerConfig {
 
   factory V3FunctionCustomContainerConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomContainerConfig(
-      accelerationInfo: map['accelerationInfo'] == null ? null : V3FunctionCustomContainerConfigAccelerationInfo.fromMap((map['accelerationInfo'] as Map).cast<String, dynamic>()),
-      accelerationType: map['accelerationType'] == null ? null : map['accelerationType'] as String,
-      acrInstanceId: map['acrInstanceId'] == null ? null : map['acrInstanceId'] as String,
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      entrypoints: map['entrypoints'] == null ? null : (map['entrypoints'] as List).cast<String>(),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : V3FunctionCustomContainerConfigHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>()),
-      image: map['image'] == null ? null : map['image'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      resolvedImageUri: map['resolvedImageUri'] == null ? null : map['resolvedImageUri'] as String,
+      accelerationInfo: map['accelerationInfo'] == null ? null : (V3FunctionCustomContainerConfigAccelerationInfo.fromMap((map['accelerationInfo'] as Map).cast<String, dynamic>())).input(),
+      accelerationType: map['accelerationType'] == null ? null : (map['accelerationType'] as String).input(),
+      acrInstanceId: map['acrInstanceId'] == null ? null : (map['acrInstanceId'] as String).input(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      entrypoints: map['entrypoints'] == null ? null : ((map['entrypoints'] as List).cast<String>()).input(),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : (V3FunctionCustomContainerConfigHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resolvedImageUri: map['resolvedImageUri'] == null ? null : (map['resolvedImageUri'] as String).input(),
     );
   }
 }

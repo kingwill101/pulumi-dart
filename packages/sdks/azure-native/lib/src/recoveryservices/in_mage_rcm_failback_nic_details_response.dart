@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcmFailback NIC details.
 class InMageRcmFailbackNicDetailsResponse {
   /// The adapter type.
-  final String adapterType;
+  final pulumi.Input<String> adapterType;
   /// The mac address.
-  final String macAddress;
+  final pulumi.Input<String> macAddress;
   /// The network name.
-  final String networkName;
+  final pulumi.Input<String> networkName;
   /// The IP address.
-  final String sourceIpAddress;
+  final pulumi.Input<String> sourceIpAddress;
 
   /// Creates a new [InMageRcmFailbackNicDetailsResponse].
   /// [adapterType] The adapter type.
@@ -35,10 +36,10 @@ class InMageRcmFailbackNicDetailsResponse {
 
   factory InMageRcmFailbackNicDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackNicDetailsResponse(
-      adapterType: map['adapterType'] as String,
-      macAddress: map['macAddress'] as String,
-      networkName: map['networkName'] as String,
-      sourceIpAddress: map['sourceIpAddress'] as String,
+      adapterType: (map['adapterType'] as String).input(),
+      macAddress: (map['macAddress'] as String).input(),
+      networkName: (map['networkName'] as String).input(),
+      sourceIpAddress: (map['sourceIpAddress'] as String).input(),
     );
   }
 }

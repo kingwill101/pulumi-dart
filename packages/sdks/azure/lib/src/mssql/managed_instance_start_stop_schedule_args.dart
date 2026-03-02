@@ -23,15 +23,11 @@ class ManagedInstanceStartStopScheduleArgs {
   /// [schedules] A `schedule` block as defined below.
   /// [timezoneId] Specifies the time zone of the schedule. Defaults to `UTC`.
   ManagedInstanceStartStopScheduleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> managedInstanceId,
-    required pulumi.Output<List<ManagedInstanceStartStopScheduleSchedule>> schedules,
-    pulumi.Output<String>? timezoneId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      managedInstanceId = pulumi.Input.asInput<String>(managedInstanceId),
-      schedules = pulumi.Input.asInput<List<ManagedInstanceStartStopScheduleSchedule>>(schedules),
-      timezoneId = pulumi.Input.asOptionalInput<String>(timezoneId);
+    this.description,
+    required this.managedInstanceId,
+    required this.schedules,
+    this.timezoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagedInstanceStartStopScheduleArgs {
 
   factory ManagedInstanceStartStopScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceStartStopScheduleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      managedInstanceId: pulumi.Output.create<String>(map['managedInstanceId'] as String),
-      schedules: pulumi.Output.create<List<ManagedInstanceStartStopScheduleSchedule>>(pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(map['schedules'], (value) => ManagedInstanceStartStopScheduleSchedule.fromMap((value as Map).cast<String, dynamic>()))),
-      timezoneId: map['timezoneId'] == null ? null : pulumi.Output.create<String>(map['timezoneId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      managedInstanceId: (map['managedInstanceId'] as String).input(),
+      schedules: (pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(map['schedules'], (value) => ManagedInstanceStartStopScheduleSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timezoneId: map['timezoneId'] == null ? null : (map['timezoneId'] as String).input(),
     );
   }
 }

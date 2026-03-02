@@ -43,17 +43,12 @@ class TargetGrpcProxyArgs {
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to
   /// [validateForProxyless] If true, indicates that the BackendServices referenced by
   TargetGrpcProxyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? urlMap,
-    pulumi.Output<bool>? validateForProxyless,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      urlMap = pulumi.Input.asOptionalInput<String>(urlMap),
-      validateForProxyless = pulumi.Input.asOptionalInput<bool>(validateForProxyless);
+    this.description,
+    this.name,
+    this.project,
+    this.urlMap,
+    this.validateForProxyless,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,11 +62,11 @@ class TargetGrpcProxyArgs {
 
   factory TargetGrpcProxyArgs.fromMap(Map<String, dynamic> map) {
     return TargetGrpcProxyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      urlMap: map['urlMap'] == null ? null : pulumi.Output.create<String>(map['urlMap'] as String),
-      validateForProxyless: map['validateForProxyless'] == null ? null : pulumi.Output.create<bool>(map['validateForProxyless'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
+      validateForProxyless: map['validateForProxyless'] == null ? null : (map['validateForProxyless'] as bool).input(),
     );
   }
 }

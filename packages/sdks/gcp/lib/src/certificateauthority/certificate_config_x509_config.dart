@@ -11,27 +11,27 @@ class CertificateConfigX509Config {
   /// (Output)
   /// Describes custom X.509 extensions.
   /// Structure is documented below.
-  final List<CertificateConfigX509ConfigAdditionalExtension>? additionalExtensions;
+  final pulumi.Input<List<CertificateConfigX509ConfigAdditionalExtension>>? additionalExtensions;
   /// (Output)
   /// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
   /// "Authority Information Access" extension in the certificate.
-  final List<String>? aiaOcspServers;
+  final pulumi.Input<List<String>>? aiaOcspServers;
   /// (Output)
   /// Describes values that are relevant in a CA certificate.
   /// Structure is documented below.
-  final CertificateConfigX509ConfigCaOptions? caOptions;
+  final pulumi.Input<CertificateConfigX509ConfigCaOptions>? caOptions;
   /// (Output)
   /// Indicates the intended use for keys that correspond to a certificate.
   /// Structure is documented below.
-  final CertificateConfigX509ConfigKeyUsage keyUsage;
+  final pulumi.Input<CertificateConfigX509ConfigKeyUsage> keyUsage;
   /// (Output)
   /// Describes the X.509 name constraints extension.
   /// Structure is documented below.
-  final CertificateConfigX509ConfigNameConstraints? nameConstraints;
+  final pulumi.Input<CertificateConfigX509ConfigNameConstraints>? nameConstraints;
   /// (Output)
   /// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   /// Structure is documented below.
-  final List<CertificateConfigX509ConfigPolicyId>? policyIds;
+  final pulumi.Input<List<CertificateConfigX509ConfigPolicyId>>? policyIds;
 
   /// Creates a new [CertificateConfigX509Config].
   /// [additionalExtensions] (Output)
@@ -51,23 +51,23 @@ class CertificateConfigX509Config {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalExtensions': ?additionalExtensions == null ? null : pulumi.Input.encodeList<CertificateConfigX509ConfigAdditionalExtension, Map<String, dynamic>>(additionalExtensions!, (value) => value.toMap()),
+      'additionalExtensions': ?pulumi.Input.mapOptionalInputValue<List<CertificateConfigX509ConfigAdditionalExtension>, List<Map<String, dynamic>>>(additionalExtensions, (value) => pulumi.Input.encodeList<CertificateConfigX509ConfigAdditionalExtension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aiaOcspServers': ?aiaOcspServers,
-      'caOptions': ?caOptions == null ? null : caOptions!.toMap(),
-      'keyUsage': keyUsage.toMap(),
-      'nameConstraints': ?nameConstraints == null ? null : nameConstraints!.toMap(),
-      'policyIds': ?policyIds == null ? null : pulumi.Input.encodeList<CertificateConfigX509ConfigPolicyId, Map<String, dynamic>>(policyIds!, (value) => value.toMap()),
+      'caOptions': ?pulumi.Input.mapOptionalInputValue<CertificateConfigX509ConfigCaOptions, Map<String, dynamic>>(caOptions, (value) => value.toMap()),
+      'keyUsage': pulumi.Input.mapInputValue<CertificateConfigX509ConfigKeyUsage, Map<String, dynamic>>(keyUsage, (value) => value.toMap()),
+      'nameConstraints': ?pulumi.Input.mapOptionalInputValue<CertificateConfigX509ConfigNameConstraints, Map<String, dynamic>>(nameConstraints, (value) => value.toMap()),
+      'policyIds': ?pulumi.Input.mapOptionalInputValue<List<CertificateConfigX509ConfigPolicyId>, List<Map<String, dynamic>>>(policyIds, (value) => pulumi.Input.encodeList<CertificateConfigX509ConfigPolicyId, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CertificateConfigX509Config.fromMap(Map<String, dynamic> map) {
     return CertificateConfigX509Config(
-      additionalExtensions: map['additionalExtensions'] == null ? null : pulumi.Input.decodeList<CertificateConfigX509ConfigAdditionalExtension>(map['additionalExtensions'], (value) => CertificateConfigX509ConfigAdditionalExtension.fromMap((value as Map).cast<String, dynamic>())),
-      aiaOcspServers: map['aiaOcspServers'] == null ? null : (map['aiaOcspServers'] as List).cast<String>(),
-      caOptions: map['caOptions'] == null ? null : CertificateConfigX509ConfigCaOptions.fromMap((map['caOptions'] as Map).cast<String, dynamic>()),
-      keyUsage: CertificateConfigX509ConfigKeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>()),
-      nameConstraints: map['nameConstraints'] == null ? null : CertificateConfigX509ConfigNameConstraints.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>()),
-      policyIds: map['policyIds'] == null ? null : pulumi.Input.decodeList<CertificateConfigX509ConfigPolicyId>(map['policyIds'], (value) => CertificateConfigX509ConfigPolicyId.fromMap((value as Map).cast<String, dynamic>())),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateConfigX509ConfigAdditionalExtension>(map['additionalExtensions'], (value) => CertificateConfigX509ConfigAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers'] as List).cast<String>()).input(),
+      caOptions: map['caOptions'] == null ? null : (CertificateConfigX509ConfigCaOptions.fromMap((map['caOptions'] as Map).cast<String, dynamic>())).input(),
+      keyUsage: (CertificateConfigX509ConfigKeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>())).input(),
+      nameConstraints: map['nameConstraints'] == null ? null : (CertificateConfigX509ConfigNameConstraints.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>())).input(),
+      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CertificateConfigX509ConfigPolicyId>(map['policyIds'], (value) => CertificateConfigX509ConfigPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

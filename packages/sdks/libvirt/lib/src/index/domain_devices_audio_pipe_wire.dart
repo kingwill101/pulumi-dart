@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_audio_pipe_wire_input.dart';
 import 'domain_devices_audio_pipe_wire_output.dart';
 
 class DomainDevicesAudioPipeWire {
   /// Configures the output settings for the PipeWire audio device.
-  final DomainDevicesAudioPipeWireInput? input;
+  final pulumi.Input<DomainDevicesAudioPipeWireInput>? input;
   /// Configures the output settings for the PipeWire audio device.
-  final DomainDevicesAudioPipeWireOutput? output;
+  final pulumi.Input<DomainDevicesAudioPipeWireOutput>? output;
   /// Sets the runtime directory for the PipeWire audio system integration.
-  final String? runtimeDir;
+  final pulumi.Input<String>? runtimeDir;
 
   /// Creates a new [DomainDevicesAudioPipeWire].
   /// [input] Configures the output settings for the PipeWire audio device.
@@ -23,17 +24,17 @@ class DomainDevicesAudioPipeWire {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'input': ?input == null ? null : input!.toMap(),
-      'output': ?output == null ? null : output!.toMap(),
+      'input': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioPipeWireInput, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'output': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioPipeWireOutput, Map<String, dynamic>>(output, (value) => value.toMap()),
       'runtimeDir': ?runtimeDir,
     };
   }
 
   factory DomainDevicesAudioPipeWire.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPipeWire(
-      input: map['input'] == null ? null : DomainDevicesAudioPipeWireInput.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      output: map['output'] == null ? null : DomainDevicesAudioPipeWireOutput.fromMap((map['output'] as Map).cast<String, dynamic>()),
-      runtimeDir: map['runtimeDir'] == null ? null : map['runtimeDir'] as String,
+      input: map['input'] == null ? null : (DomainDevicesAudioPipeWireInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (DomainDevicesAudioPipeWireOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      runtimeDir: map['runtimeDir'] == null ? null : (map['runtimeDir'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Application specific parameters for the placement of volumes in the volume group
 class PlacementKeyValuePairsResponse {
   /// Key for an application specific parameter for the placement of volumes in the volume group
-  final String key;
+  final pulumi.Input<String> key;
   /// Value for an application specific parameter for the placement of volumes in the volume group
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [PlacementKeyValuePairsResponse].
   /// [key] Key for an application specific parameter for the placement of volumes in the volume group
@@ -25,8 +26,8 @@ class PlacementKeyValuePairsResponse {
 
   factory PlacementKeyValuePairsResponse.fromMap(Map<String, dynamic> map) {
     return PlacementKeyValuePairsResponse(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

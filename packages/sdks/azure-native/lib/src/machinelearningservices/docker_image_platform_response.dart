@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DockerImagePlatformResponse {
   /// The OS type the Environment.
-  final String? operatingSystemType;
+  final pulumi.Input<String>? operatingSystemType;
 
   /// Creates a new [DockerImagePlatformResponse].
   /// [operatingSystemType] The OS type the Environment.
@@ -19,7 +20,7 @@ class DockerImagePlatformResponse {
 
   factory DockerImagePlatformResponse.fromMap(Map<String, dynamic> map) {
     return DockerImagePlatformResponse(
-      operatingSystemType: map['operatingSystemType'] == null ? null : map['operatingSystemType'] as String,
+      operatingSystemType: map['operatingSystemType'] == null ? null : (map['operatingSystemType'] as String).input(),
     );
   }
 }

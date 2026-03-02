@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InputMapping creates a 'virtual' property that will be injected into the properties before sending the request to the underlying API.
 class InputMappingResponseDeploymentmanagerV2beta {
   /// The name of the field that is going to be injected.
-  final String fieldName;
+  final pulumi.Input<String> fieldName;
   /// The location where this mapping applies.
-  final String location;
+  final pulumi.Input<String> location;
   /// Regex to evaluate on method to decide if input applies.
-  final String methodMatch;
+  final pulumi.Input<String> methodMatch;
   /// A jsonPath expression to select an element.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [InputMappingResponseDeploymentmanagerV2beta].
   /// [fieldName] The name of the field that is going to be injected.
@@ -35,10 +36,10 @@ class InputMappingResponseDeploymentmanagerV2beta {
 
   factory InputMappingResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return InputMappingResponseDeploymentmanagerV2beta(
-      fieldName: map['fieldName'] as String,
-      location: map['location'] as String,
-      methodMatch: map['methodMatch'] as String,
-      value: map['value'] as String,
+      fieldName: (map['fieldName'] as String).input(),
+      location: (map['location'] as String).input(),
+      methodMatch: (map['methodMatch'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

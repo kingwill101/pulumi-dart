@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'validation_check_status_response.dart';
 
 /// ValidationCheck represents the result of preflight check.
 class ValidationCheckResponse {
   /// Options used for the validation check
-  final String option;
+  final pulumi.Input<String> option;
   /// The scenario when the preflight checks were run.
-  final String scenario;
+  final pulumi.Input<String> scenario;
   /// The detailed validation check status.
-  final ValidationCheckStatusResponse status;
+  final pulumi.Input<ValidationCheckStatusResponse> status;
 
   /// Creates a new [ValidationCheckResponse].
   /// [option] Options used for the validation check
@@ -25,15 +26,15 @@ class ValidationCheckResponse {
     return <String, dynamic>{
       'option': option,
       'scenario': scenario,
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<ValidationCheckStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ValidationCheckResponse.fromMap(Map<String, dynamic> map) {
     return ValidationCheckResponse(
-      option: map['option'] as String,
-      scenario: map['scenario'] as String,
-      status: ValidationCheckStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      option: (map['option'] as String).input(),
+      scenario: (map['scenario'] as String).input(),
+      status: (ValidationCheckStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern {
   /// The keyword regex for the customer pattern.
-  final String? keywordRegex;
+  final pulumi.Input<String>? keywordRegex;
   /// The pattern description for the customer pattern.
-  final String? patternDescription;
+  final pulumi.Input<String>? patternDescription;
   /// The pattern name for the custom pattern.
-  final String patternName;
+  final pulumi.Input<String> patternName;
   /// The pattern regex for the customer pattern. The format must follow JavaScript regex format.
-  final String patternRegex;
+  final pulumi.Input<String> patternRegex;
 
   /// Creates a new [DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern].
   /// [keywordRegex] The keyword regex for the customer pattern.
@@ -34,10 +35,10 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCu
 
   factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern(
-      keywordRegex: map['keywordRegex'] == null ? null : map['keywordRegex'] as String,
-      patternDescription: map['patternDescription'] == null ? null : map['patternDescription'] as String,
-      patternName: map['patternName'] as String,
-      patternRegex: map['patternRegex'] as String,
+      keywordRegex: map['keywordRegex'] == null ? null : (map['keywordRegex'] as String).input(),
+      patternDescription: map['patternDescription'] == null ? null : (map['patternDescription'] as String).input(),
+      patternName: (map['patternName'] as String).input(),
+      patternRegex: (map['patternRegex'] as String).input(),
     );
   }
 }

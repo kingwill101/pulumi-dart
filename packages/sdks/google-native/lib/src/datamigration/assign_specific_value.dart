@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Set to a specific value (value is converted to fit the target data type)
 class AssignSpecificValue {
   /// Specific value to be assigned
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AssignSpecificValue].
   /// [value] Specific value to be assigned
@@ -20,7 +21,7 @@ class AssignSpecificValue {
 
   factory AssignSpecificValue.fromMap(Map<String, dynamic> map) {
     return AssignSpecificValue(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

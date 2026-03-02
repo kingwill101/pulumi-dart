@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFrontdoorProfileLogScrubbingRule {
   /// The variable that is scrubbed from the logs.
-  final String matchVariable;
+  final pulumi.Input<String> matchVariable;
 
   /// Creates a new [GetFrontdoorProfileLogScrubbingRule].
   /// [matchVariable] The variable that is scrubbed from the logs.
@@ -19,7 +20,7 @@ class GetFrontdoorProfileLogScrubbingRule {
 
   factory GetFrontdoorProfileLogScrubbingRule.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorProfileLogScrubbingRule(
-      matchVariable: map['matchVariable'] as String,
+      matchVariable: (map['matchVariable'] as String).input(),
     );
   }
 }

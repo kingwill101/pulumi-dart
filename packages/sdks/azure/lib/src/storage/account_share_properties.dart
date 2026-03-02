@@ -7,11 +7,11 @@ import 'account_share_properties_smb.dart';
 
 class AccountShareProperties {
   /// A `cors_rule` block as defined below.
-  final List<AccountSharePropertiesCorsRule>? corsRules;
+  final pulumi.Input<List<AccountSharePropertiesCorsRule>>? corsRules;
   /// A `retention_policy` block as defined below.
-  final AccountSharePropertiesRetentionPolicy? retentionPolicy;
+  final pulumi.Input<AccountSharePropertiesRetentionPolicy>? retentionPolicy;
   /// A `smb` block as defined below.
-  final AccountSharePropertiesSmb? smb;
+  final pulumi.Input<AccountSharePropertiesSmb>? smb;
 
   /// Creates a new [AccountShareProperties].
   /// [corsRules] A `cors_rule` block as defined below.
@@ -25,17 +25,17 @@ class AccountShareProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'corsRules': ?corsRules == null ? null : pulumi.Input.encodeList<AccountSharePropertiesCorsRule, Map<String, dynamic>>(corsRules!, (value) => value.toMap()),
-      'retentionPolicy': ?retentionPolicy == null ? null : retentionPolicy!.toMap(),
-      'smb': ?smb == null ? null : smb!.toMap(),
+      'corsRules': ?pulumi.Input.mapOptionalInputValue<List<AccountSharePropertiesCorsRule>, List<Map<String, dynamic>>>(corsRules, (value) => pulumi.Input.encodeList<AccountSharePropertiesCorsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<AccountSharePropertiesRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
+      'smb': ?pulumi.Input.mapOptionalInputValue<AccountSharePropertiesSmb, Map<String, dynamic>>(smb, (value) => value.toMap()),
     };
   }
 
   factory AccountShareProperties.fromMap(Map<String, dynamic> map) {
     return AccountShareProperties(
-      corsRules: map['corsRules'] == null ? null : pulumi.Input.decodeList<AccountSharePropertiesCorsRule>(map['corsRules'], (value) => AccountSharePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>())),
-      retentionPolicy: map['retentionPolicy'] == null ? null : AccountSharePropertiesRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>()),
-      smb: map['smb'] == null ? null : AccountSharePropertiesSmb.fromMap((map['smb'] as Map).cast<String, dynamic>()),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<AccountSharePropertiesCorsRule>(map['corsRules'], (value) => AccountSharePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (AccountSharePropertiesRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      smb: map['smb'] == null ? null : (AccountSharePropertiesSmb.fromMap((map['smb'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

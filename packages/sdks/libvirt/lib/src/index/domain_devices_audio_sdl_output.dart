@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesAudioSdlOutput {
   /// Defines the number of output buffers in the SDL audio configuration.
-  final double? bufferCount;
+  final pulumi.Input<double>? bufferCount;
 
   /// Creates a new [DomainDevicesAudioSdlOutput].
   /// [bufferCount] Defines the number of output buffers in the SDL audio configuration.
@@ -19,7 +20,7 @@ class DomainDevicesAudioSdlOutput {
 
   factory DomainDevicesAudioSdlOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioSdlOutput(
-      bufferCount: map['bufferCount'] == null ? null : map['bufferCount'] as double,
+      bufferCount: map['bufferCount'] == null ? null : (map['bufferCount'] as double).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ListApplicationTokensArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userAssignedIdentities] The user assigned identities.
   ListApplicationTokensArgs({
-    required pulumi.Output<String> applicationName,
-    pulumi.Output<String>? authorizationAudience,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? userAssignedIdentities,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      authorizationAudience = pulumi.Input.asOptionalInput<String>(authorizationAudience),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userAssignedIdentities = pulumi.Input.asOptionalInput<List<String>>(userAssignedIdentities);
+    required this.applicationName,
+    this.authorizationAudience,
+    required this.resourceGroupName,
+    this.userAssignedIdentities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListApplicationTokensArgs {
 
   factory ListApplicationTokensArgs.fromMap(Map<String, dynamic> map) {
     return ListApplicationTokensArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      authorizationAudience: map['authorizationAudience'] == null ? null : pulumi.Output.create<String>(map['authorizationAudience'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Output.create<List<String>>((map['userAssignedIdentities'] as List).cast<String>()),
+      applicationName: (map['applicationName'] as String).input(),
+      authorizationAudience: map['authorizationAudience'] == null ? null : (map['authorizationAudience'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

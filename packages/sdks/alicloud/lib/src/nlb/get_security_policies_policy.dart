@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecurityPoliciesPolicy {
   /// The supported cipher suites, which are determined by the TLS protocol version.
-  final List<String> ciphers;
+  final pulumi.Input<List<String>> ciphers;
   /// The id of the TLS security policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The name of the TLS security policy.
-  final String securityPolicyName;
+  final pulumi.Input<String> securityPolicyName;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The TLS protocol versions that are supported.
-  final List<String> tlsVersions;
+  final pulumi.Input<List<String>> tlsVersions;
 
   /// Creates a new [GetSecurityPoliciesPolicy].
   /// [ciphers] The supported cipher suites, which are determined by the TLS protocol version.
@@ -49,13 +50,13 @@ class GetSecurityPoliciesPolicy {
 
   factory GetSecurityPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetSecurityPoliciesPolicy(
-      ciphers: (map['ciphers'] as List).cast<String>(),
-      id: map['id'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      securityPolicyName: map['securityPolicyName'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      tlsVersions: (map['tlsVersions'] as List).cast<String>(),
+      ciphers: ((map['ciphers'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      securityPolicyName: (map['securityPolicyName'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      tlsVersions: ((map['tlsVersions'] as List).cast<String>()).input(),
     );
   }
 }

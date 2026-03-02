@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Create network mappings input properties/behavior specific to Azure to Azure Network mapping.
 class AzureToAzureCreateNetworkMappingInput {
   /// The instance type.
   /// Expected value is 'AzureToAzure'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The primary azure vnet Id.
-  final String primaryNetworkId;
+  final pulumi.Input<String> primaryNetworkId;
 
   /// Creates a new [AzureToAzureCreateNetworkMappingInput].
   /// [instanceType] The instance type.
@@ -26,8 +27,8 @@ class AzureToAzureCreateNetworkMappingInput {
 
   factory AzureToAzureCreateNetworkMappingInput.fromMap(Map<String, dynamic> map) {
     return AzureToAzureCreateNetworkMappingInput(
-      instanceType: map['instanceType'] as String,
-      primaryNetworkId: map['primaryNetworkId'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      primaryNetworkId: (map['primaryNetworkId'] as String).input(),
     );
   }
 }

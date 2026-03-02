@@ -19,13 +19,10 @@ class AccessGroupArgs {
   /// [description] The permission group description.  No more than 32 characters in length.
   /// [networkType] The permission group type. Only VPC (VPC) is supported.
   AccessGroupArgs({
-    required pulumi.Output<String> accessGroupName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> networkType,
-  }) :
-      accessGroupName = pulumi.Input.asInput<String>(accessGroupName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkType = pulumi.Input.asInput<String>(networkType);
+    required this.accessGroupName,
+    this.description,
+    required this.networkType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AccessGroupArgs {
 
   factory AccessGroupArgs.fromMap(Map<String, dynamic> map) {
     return AccessGroupArgs(
-      accessGroupName: pulumi.Output.create<String>(map['accessGroupName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkType: pulumi.Output.create<String>(map['networkType'] as String),
+      accessGroupName: (map['accessGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
     );
   }
 }

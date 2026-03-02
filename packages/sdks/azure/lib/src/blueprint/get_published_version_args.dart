@@ -19,13 +19,10 @@ class GetPublishedVersionArgs {
   /// [scopeId] The ID of the Management Group / Subscription where this Blueprint Definition is stored.
   /// [version] The Version name of the Published Version of the Blueprint Definition
   GetPublishedVersionArgs({
-    required pulumi.Output<String> blueprintName,
-    required pulumi.Output<String> scopeId,
-    required pulumi.Output<String> version,
-  }) :
-      blueprintName = pulumi.Input.asInput<String>(blueprintName),
-      scopeId = pulumi.Input.asInput<String>(scopeId),
-      version = pulumi.Input.asInput<String>(version);
+    required this.blueprintName,
+    required this.scopeId,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPublishedVersionArgs {
 
   factory GetPublishedVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetPublishedVersionArgs(
-      blueprintName: pulumi.Output.create<String>(map['blueprintName'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      blueprintName: (map['blueprintName'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

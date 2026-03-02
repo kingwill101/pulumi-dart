@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The teardown task that is next in line to be executed. We support only sequential execution of teardown tasks (i.e. no branching).
 class EnterpriseCrmEventbusProtoNextTeardownTaskResponse {
   /// Name of the next teardown task.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [EnterpriseCrmEventbusProtoNextTeardownTaskResponse].
   /// [name] Name of the next teardown task.
@@ -20,7 +21,7 @@ class EnterpriseCrmEventbusProtoNextTeardownTaskResponse {
 
   factory EnterpriseCrmEventbusProtoNextTeardownTaskResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoNextTeardownTaskResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

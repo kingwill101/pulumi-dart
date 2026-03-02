@@ -16,11 +16,9 @@ class GetDiskPoolArgs {
   /// [diskPoolName] The name of the Disk Pool.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiskPoolArgs({
-    required pulumi.Output<String> diskPoolName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      diskPoolName = pulumi.Input.asInput<String>(diskPoolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.diskPoolName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDiskPoolArgs {
 
   factory GetDiskPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskPoolArgs(
-      diskPoolName: pulumi.Output.create<String>(map['diskPoolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      diskPoolName: (map['diskPoolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

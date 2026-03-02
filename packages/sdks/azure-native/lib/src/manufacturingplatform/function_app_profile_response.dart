@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to Azure Function App Resource
 class FunctionAppProfileResponse {
   /// Resource Id of Azure Function App Resource
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [FunctionAppProfileResponse].
   /// [id] Resource Id of Azure Function App Resource
@@ -20,7 +21,7 @@ class FunctionAppProfileResponse {
 
   factory FunctionAppProfileResponse.fromMap(Map<String, dynamic> map) {
     return FunctionAppProfileResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

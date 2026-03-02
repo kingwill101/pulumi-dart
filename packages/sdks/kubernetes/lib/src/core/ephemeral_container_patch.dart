@@ -18,59 +18,59 @@ import 'volume_mount_patch.dart';
 /// To add an ephemeral container, use the ephemeralcontainers subresource of an existing Pod. Ephemeral containers may not be removed or restarted.
 class EphemeralContainerPatch {
   /// Arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-  final List<String>? command;
+  final pulumi.Input<List<String>>? command;
   /// List of environment variables to set in the container. Cannot be updated.
-  final List<EnvVarPatch>? env;
+  final pulumi.Input<List<EnvVarPatch>>? env;
   /// List of sources to populate environment variables in the container. The keys defined within a source may consist of any printable ASCII characters except '='. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
-  final List<EnvFromSourcePatch>? envFrom;
+  final pulumi.Input<List<EnvFromSourcePatch>>? envFrom;
   /// Container image name. More info: https://kubernetes.io/docs/concepts/containers/images
-  final String? image;
+  final pulumi.Input<String>? image;
   /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
-  final String? imagePullPolicy;
+  final pulumi.Input<String>? imagePullPolicy;
   /// Lifecycle is not allowed for ephemeral containers.
-  final LifecyclePatch? lifecycle;
+  final pulumi.Input<LifecyclePatch>? lifecycle;
   /// Probes are not allowed for ephemeral containers.
-  final ProbePatch? livenessProbe;
+  final pulumi.Input<ProbePatch>? livenessProbe;
   /// Name of the ephemeral container specified as a DNS_LABEL. This name must be unique among all containers, init containers and ephemeral containers.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Ports are not allowed for ephemeral containers.
-  final List<ContainerPortPatch>? ports;
+  final pulumi.Input<List<ContainerPortPatch>>? ports;
   /// Probes are not allowed for ephemeral containers.
-  final ProbePatch? readinessProbe;
+  final pulumi.Input<ProbePatch>? readinessProbe;
   /// Resources resize policy for the container.
-  final List<ContainerResizePolicyPatch>? resizePolicy;
+  final pulumi.Input<List<ContainerResizePolicyPatch>>? resizePolicy;
   /// Resources are not allowed for ephemeral containers. Ephemeral containers use spare resources already allocated to the pod.
-  final ResourceRequirementsPatch? resources;
+  final pulumi.Input<ResourceRequirementsPatch>? resources;
   /// Restart policy for the container to manage the restart behavior of each container within a pod. You cannot set this field on ephemeral containers.
-  final String? restartPolicy;
+  final pulumi.Input<String>? restartPolicy;
   /// Represents a list of rules to be checked to determine if the container should be restarted on exit. You cannot set this field on ephemeral containers.
-  final List<ContainerRestartRulePatch>? restartPolicyRules;
+  final pulumi.Input<List<ContainerRestartRulePatch>>? restartPolicyRules;
   /// Optional: SecurityContext defines the security options the ephemeral container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext.
-  final SecurityContextPatch? securityContext;
+  final pulumi.Input<SecurityContextPatch>? securityContext;
   /// Probes are not allowed for ephemeral containers.
-  final ProbePatch? startupProbe;
+  final pulumi.Input<ProbePatch>? startupProbe;
   /// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.
-  final bool? stdin;
+  final pulumi.Input<bool>? stdin;
   /// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false
-  final bool? stdinOnce;
+  final pulumi.Input<bool>? stdinOnce;
   /// If set, the name of the container from PodSpec that this ephemeral container targets. The ephemeral container will be run in the namespaces (IPC, PID, etc) of this container. If not set then the ephemeral container uses the namespaces configured in the Pod spec.
   ///
   /// The container runtime must implement support for this feature. If the runtime does not support namespace targeting then the result of setting this field is undefined.
-  final String? targetContainerName;
+  final pulumi.Input<String>? targetContainerName;
   /// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated.
-  final String? terminationMessagePath;
+  final pulumi.Input<String>? terminationMessagePath;
   /// Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
-  final String? terminationMessagePolicy;
+  final pulumi.Input<String>? terminationMessagePolicy;
   /// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false.
-  final bool? tty;
+  final pulumi.Input<bool>? tty;
   /// volumeDevices is the list of block devices to be used by the container.
-  final List<VolumeDevicePatch>? volumeDevices;
+  final pulumi.Input<List<VolumeDevicePatch>>? volumeDevices;
   /// Pod volumes to mount into the container's filesystem. Subpath mounts are not allowed for ephemeral containers. Cannot be updated.
-  final List<VolumeMountPatch>? volumeMounts;
+  final pulumi.Input<List<VolumeMountPatch>>? volumeMounts;
   /// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
-  final String? workingDir;
+  final pulumi.Input<String>? workingDir;
 
   /// Creates a new [EphemeralContainerPatch].
   /// [args] Arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
@@ -132,61 +132,61 @@ class EphemeralContainerPatch {
     return <String, dynamic>{
       'args': ?args,
       'command': ?command,
-      'env': ?env == null ? null : pulumi.Input.encodeList<EnvVarPatch, Map<String, dynamic>>(env!, (value) => value.toMap()),
-      'envFrom': ?envFrom == null ? null : pulumi.Input.encodeList<EnvFromSourcePatch, Map<String, dynamic>>(envFrom!, (value) => value.toMap()),
+      'env': ?pulumi.Input.mapOptionalInputValue<List<EnvVarPatch>, List<Map<String, dynamic>>>(env, (value) => pulumi.Input.encodeList<EnvVarPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'envFrom': ?pulumi.Input.mapOptionalInputValue<List<EnvFromSourcePatch>, List<Map<String, dynamic>>>(envFrom, (value) => pulumi.Input.encodeList<EnvFromSourcePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': ?image,
       'imagePullPolicy': ?imagePullPolicy,
-      'lifecycle': ?lifecycle == null ? null : lifecycle!.toMap(),
-      'livenessProbe': ?livenessProbe == null ? null : livenessProbe!.toMap(),
+      'lifecycle': ?pulumi.Input.mapOptionalInputValue<LifecyclePatch, Map<String, dynamic>>(lifecycle, (value) => value.toMap()),
+      'livenessProbe': ?pulumi.Input.mapOptionalInputValue<ProbePatch, Map<String, dynamic>>(livenessProbe, (value) => value.toMap()),
       'name': ?name,
-      'ports': ?ports == null ? null : pulumi.Input.encodeList<ContainerPortPatch, Map<String, dynamic>>(ports!, (value) => value.toMap()),
-      'readinessProbe': ?readinessProbe == null ? null : readinessProbe!.toMap(),
-      'resizePolicy': ?resizePolicy == null ? null : pulumi.Input.encodeList<ContainerResizePolicyPatch, Map<String, dynamic>>(resizePolicy!, (value) => value.toMap()),
-      'resources': ?resources == null ? null : resources!.toMap(),
+      'ports': ?pulumi.Input.mapOptionalInputValue<List<ContainerPortPatch>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<ContainerPortPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'readinessProbe': ?pulumi.Input.mapOptionalInputValue<ProbePatch, Map<String, dynamic>>(readinessProbe, (value) => value.toMap()),
+      'resizePolicy': ?pulumi.Input.mapOptionalInputValue<List<ContainerResizePolicyPatch>, List<Map<String, dynamic>>>(resizePolicy, (value) => pulumi.Input.encodeList<ContainerResizePolicyPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources': ?pulumi.Input.mapOptionalInputValue<ResourceRequirementsPatch, Map<String, dynamic>>(resources, (value) => value.toMap()),
       'restartPolicy': ?restartPolicy,
-      'restartPolicyRules': ?restartPolicyRules == null ? null : pulumi.Input.encodeList<ContainerRestartRulePatch, Map<String, dynamic>>(restartPolicyRules!, (value) => value.toMap()),
-      'securityContext': ?securityContext == null ? null : securityContext!.toMap(),
-      'startupProbe': ?startupProbe == null ? null : startupProbe!.toMap(),
+      'restartPolicyRules': ?pulumi.Input.mapOptionalInputValue<List<ContainerRestartRulePatch>, List<Map<String, dynamic>>>(restartPolicyRules, (value) => pulumi.Input.encodeList<ContainerRestartRulePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'securityContext': ?pulumi.Input.mapOptionalInputValue<SecurityContextPatch, Map<String, dynamic>>(securityContext, (value) => value.toMap()),
+      'startupProbe': ?pulumi.Input.mapOptionalInputValue<ProbePatch, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
       'stdin': ?stdin,
       'stdinOnce': ?stdinOnce,
       'targetContainerName': ?targetContainerName,
       'terminationMessagePath': ?terminationMessagePath,
       'terminationMessagePolicy': ?terminationMessagePolicy,
       'tty': ?tty,
-      'volumeDevices': ?volumeDevices == null ? null : pulumi.Input.encodeList<VolumeDevicePatch, Map<String, dynamic>>(volumeDevices!, (value) => value.toMap()),
-      'volumeMounts': ?volumeMounts == null ? null : pulumi.Input.encodeList<VolumeMountPatch, Map<String, dynamic>>(volumeMounts!, (value) => value.toMap()),
+      'volumeDevices': ?pulumi.Input.mapOptionalInputValue<List<VolumeDevicePatch>, List<Map<String, dynamic>>>(volumeDevices, (value) => pulumi.Input.encodeList<VolumeDevicePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<VolumeMountPatch>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<VolumeMountPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workingDir': ?workingDir,
     };
   }
 
   factory EphemeralContainerPatch.fromMap(Map<String, dynamic> map) {
     return EphemeralContainerPatch(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      command: map['command'] == null ? null : (map['command'] as List).cast<String>(),
-      env: map['env'] == null ? null : pulumi.Input.decodeList<EnvVarPatch>(map['env'], (value) => EnvVarPatch.fromMap((value as Map).cast<String, dynamic>())),
-      envFrom: map['envFrom'] == null ? null : pulumi.Input.decodeList<EnvFromSourcePatch>(map['envFrom'], (value) => EnvFromSourcePatch.fromMap((value as Map).cast<String, dynamic>())),
-      image: map['image'] == null ? null : map['image'] as String,
-      imagePullPolicy: map['imagePullPolicy'] == null ? null : map['imagePullPolicy'] as String,
-      lifecycle: map['lifecycle'] == null ? null : LifecyclePatch.fromMap((map['lifecycle'] as Map).cast<String, dynamic>()),
-      livenessProbe: map['livenessProbe'] == null ? null : ProbePatch.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      ports: map['ports'] == null ? null : pulumi.Input.decodeList<ContainerPortPatch>(map['ports'], (value) => ContainerPortPatch.fromMap((value as Map).cast<String, dynamic>())),
-      readinessProbe: map['readinessProbe'] == null ? null : ProbePatch.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>()),
-      resizePolicy: map['resizePolicy'] == null ? null : pulumi.Input.decodeList<ContainerResizePolicyPatch>(map['resizePolicy'], (value) => ContainerResizePolicyPatch.fromMap((value as Map).cast<String, dynamic>())),
-      resources: map['resources'] == null ? null : ResourceRequirementsPatch.fromMap((map['resources'] as Map).cast<String, dynamic>()),
-      restartPolicy: map['restartPolicy'] == null ? null : map['restartPolicy'] as String,
-      restartPolicyRules: map['restartPolicyRules'] == null ? null : pulumi.Input.decodeList<ContainerRestartRulePatch>(map['restartPolicyRules'], (value) => ContainerRestartRulePatch.fromMap((value as Map).cast<String, dynamic>())),
-      securityContext: map['securityContext'] == null ? null : SecurityContextPatch.fromMap((map['securityContext'] as Map).cast<String, dynamic>()),
-      startupProbe: map['startupProbe'] == null ? null : ProbePatch.fromMap((map['startupProbe'] as Map).cast<String, dynamic>()),
-      stdin: map['stdin'] == null ? null : map['stdin'] as bool,
-      stdinOnce: map['stdinOnce'] == null ? null : map['stdinOnce'] as bool,
-      targetContainerName: map['targetContainerName'] == null ? null : map['targetContainerName'] as String,
-      terminationMessagePath: map['terminationMessagePath'] == null ? null : map['terminationMessagePath'] as String,
-      terminationMessagePolicy: map['terminationMessagePolicy'] == null ? null : map['terminationMessagePolicy'] as String,
-      tty: map['tty'] == null ? null : map['tty'] as bool,
-      volumeDevices: map['volumeDevices'] == null ? null : pulumi.Input.decodeList<VolumeDevicePatch>(map['volumeDevices'], (value) => VolumeDevicePatch.fromMap((value as Map).cast<String, dynamic>())),
-      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<VolumeMountPatch>(map['volumeMounts'], (value) => VolumeMountPatch.fromMap((value as Map).cast<String, dynamic>())),
-      workingDir: map['workingDir'] == null ? null : map['workingDir'] as String,
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<EnvVarPatch>(map['env'], (value) => EnvVarPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      envFrom: map['envFrom'] == null ? null : (pulumi.Input.decodeList<EnvFromSourcePatch>(map['envFrom'], (value) => EnvFromSourcePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy'] as String).input(),
+      lifecycle: map['lifecycle'] == null ? null : (LifecyclePatch.fromMap((map['lifecycle'] as Map).cast<String, dynamic>())).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (ProbePatch.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ContainerPortPatch>(map['ports'], (value) => ContainerPortPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readinessProbe: map['readinessProbe'] == null ? null : (ProbePatch.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>())).input(),
+      resizePolicy: map['resizePolicy'] == null ? null : (pulumi.Input.decodeList<ContainerResizePolicyPatch>(map['resizePolicy'], (value) => ContainerResizePolicyPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (ResourceRequirementsPatch.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      restartPolicy: map['restartPolicy'] == null ? null : (map['restartPolicy'] as String).input(),
+      restartPolicyRules: map['restartPolicyRules'] == null ? null : (pulumi.Input.decodeList<ContainerRestartRulePatch>(map['restartPolicyRules'], (value) => ContainerRestartRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityContext: map['securityContext'] == null ? null : (SecurityContextPatch.fromMap((map['securityContext'] as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (ProbePatch.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
+      stdin: map['stdin'] == null ? null : (map['stdin'] as bool).input(),
+      stdinOnce: map['stdinOnce'] == null ? null : (map['stdinOnce'] as bool).input(),
+      targetContainerName: map['targetContainerName'] == null ? null : (map['targetContainerName'] as String).input(),
+      terminationMessagePath: map['terminationMessagePath'] == null ? null : (map['terminationMessagePath'] as String).input(),
+      terminationMessagePolicy: map['terminationMessagePolicy'] == null ? null : (map['terminationMessagePolicy'] as String).input(),
+      tty: map['tty'] == null ? null : (map['tty'] as bool).input(),
+      volumeDevices: map['volumeDevices'] == null ? null : (pulumi.Input.decodeList<VolumeDevicePatch>(map['volumeDevices'], (value) => VolumeDevicePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountPatch>(map['volumeMounts'], (value) => VolumeMountPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
     );
   }
 }

@@ -52,33 +52,20 @@ class LinkedServiceDataLakeStorageGen2State {
   /// [url] The endpoint for the Azure Data Lake Storage Gen2 service.
   /// [useManagedIdentity] Whether to use the Data Factory's managed identity to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `service_principal_id`, `service_principal_key`, `tenant` and `storage_account_key`.
   LinkedServiceDataLakeStorageGen2State({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? servicePrincipalId,
-    pulumi.Output<String>? servicePrincipalKey,
-    pulumi.Output<String>? storageAccountKey,
-    pulumi.Output<String>? tenant,
-    pulumi.Output<String>? url,
-    pulumi.Output<bool>? useManagedIdentity,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      servicePrincipalId = pulumi.Input.asOptionalInput<String>(servicePrincipalId),
-      servicePrincipalKey = pulumi.Input.asOptionalInput<String>(servicePrincipalKey),
-      storageAccountKey = pulumi.Input.asOptionalInput<String>(storageAccountKey),
-      tenant = pulumi.Input.asOptionalInput<String>(tenant),
-      url = pulumi.Input.asOptionalInput<String>(url),
-      useManagedIdentity = pulumi.Input.asOptionalInput<bool>(useManagedIdentity);
+    this.additionalProperties,
+    this.annotations,
+    this.dataFactoryId,
+    this.description,
+    this.integrationRuntimeName,
+    this.name,
+    this.parameters,
+    this.servicePrincipalId,
+    this.servicePrincipalKey,
+    this.storageAccountKey,
+    this.tenant,
+    this.url,
+    this.useManagedIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class LinkedServiceDataLakeStorageGen2State {
 
   factory LinkedServiceDataLakeStorageGen2State.fromMap(Map<String, dynamic> map) {
     return LinkedServiceDataLakeStorageGen2State(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalKey'] as String),
-      storageAccountKey: map['storageAccountKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      tenant: map['tenant'] == null ? null : pulumi.Output.create<String>(map['tenant'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
-      useManagedIdentity: map['useManagedIdentity'] == null ? null : pulumi.Output.create<bool>(map['useManagedIdentity'] as bool),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      useManagedIdentity: map['useManagedIdentity'] == null ? null : (map['useManagedIdentity'] as bool).input(),
     );
   }
 }

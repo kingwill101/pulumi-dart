@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The reference information for an Azure Marketplace image.
 class GalleryImageReference {
   /// The offer of the gallery image.
-  final String? offer;
+  final pulumi.Input<String>? offer;
   /// The OS type of the gallery image.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// The publisher of the gallery image.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// The SKU of the gallery image.
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// The version of the gallery image.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [GalleryImageReference].
   /// [offer] The offer of the gallery image.
@@ -40,11 +41,11 @@ class GalleryImageReference {
 
   factory GalleryImageReference.fromMap(Map<String, dynamic> map) {
     return GalleryImageReference(
-      offer: map['offer'] == null ? null : map['offer'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

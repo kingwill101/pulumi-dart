@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The data source precedence is a way to know the precedence of each data source.
 class DataSourcePrecedenceResponse {
   /// The data source reference id.
-  final String dataSourceReferenceId;
+  final pulumi.Input<String> dataSourceReferenceId;
   /// The data source type.
-  final String dataSourceType;
+  final pulumi.Input<String> dataSourceType;
   /// The data source ID.
-  final int id;
+  final pulumi.Input<int> id;
   /// The data source name
-  final String name;
+  final pulumi.Input<String> name;
   /// the precedence value.
-  final int? precedence;
+  final pulumi.Input<int>? precedence;
   /// The data source status.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [DataSourcePrecedenceResponse].
   /// [dataSourceReferenceId] The data source reference id.
@@ -45,12 +46,12 @@ class DataSourcePrecedenceResponse {
 
   factory DataSourcePrecedenceResponse.fromMap(Map<String, dynamic> map) {
     return DataSourcePrecedenceResponse(
-      dataSourceReferenceId: map['dataSourceReferenceId'] as String,
-      dataSourceType: map['dataSourceType'] as String,
-      id: map['id'] as int,
-      name: map['name'] as String,
-      precedence: map['precedence'] == null ? null : map['precedence'] as int,
-      status: map['status'] as String,
+      dataSourceReferenceId: (map['dataSourceReferenceId'] as String).input(),
+      dataSourceType: (map['dataSourceType'] as String).input(),
+      id: (map['id'] as int).input(),
+      name: (map['name'] as String).input(),
+      precedence: map['precedence'] == null ? null : (map['precedence'] as int).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

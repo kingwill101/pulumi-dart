@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScopeIamBindingCondition {
-  final String? description;
-  final String expression;
-  final String title;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String> expression;
+  final pulumi.Input<String> title;
 
   /// Creates a new [ScopeIamBindingCondition].
   /// [description] Optional.
@@ -26,9 +27,9 @@ class ScopeIamBindingCondition {
 
   factory ScopeIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return ScopeIamBindingCondition(
-      description: map['description'] == null ? null : map['description'] as String,
-      expression: map['expression'] as String,
-      title: map['title'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expression: (map['expression'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

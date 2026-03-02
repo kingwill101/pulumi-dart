@@ -35,25 +35,16 @@ class NetworkAttachmentComputeBetaArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder
   /// [subnetworks] An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
   NetworkAttachmentComputeBetaArgs({
-    pulumi.Output<NetworkAttachmentConnectionPreferenceComputeBeta>? connectionPreference,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? producerAcceptLists,
-    pulumi.Output<List<String>>? producerRejectLists,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<String>>? subnetworks,
-  }) :
-      connectionPreference = pulumi.Input.asOptionalInput<NetworkAttachmentConnectionPreferenceComputeBeta>(connectionPreference),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      producerAcceptLists = pulumi.Input.asOptionalInput<List<String>>(producerAcceptLists),
-      producerRejectLists = pulumi.Input.asOptionalInput<List<String>>(producerRejectLists),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      subnetworks = pulumi.Input.asOptionalInput<List<String>>(subnetworks);
+    this.connectionPreference,
+    this.description,
+    this.name,
+    this.producerAcceptLists,
+    this.producerRejectLists,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.subnetworks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class NetworkAttachmentComputeBetaArgs {
 
   factory NetworkAttachmentComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentComputeBetaArgs(
-      connectionPreference: map['connectionPreference'] == null ? null : pulumi.Output.create<NetworkAttachmentConnectionPreferenceComputeBeta>(NetworkAttachmentConnectionPreferenceComputeBeta.fromValue(map['connectionPreference'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      producerAcceptLists: map['producerAcceptLists'] == null ? null : pulumi.Output.create<List<String>>((map['producerAcceptLists'] as List).cast<String>()),
-      producerRejectLists: map['producerRejectLists'] == null ? null : pulumi.Output.create<List<String>>((map['producerRejectLists'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      subnetworks: map['subnetworks'] == null ? null : pulumi.Output.create<List<String>>((map['subnetworks'] as List).cast<String>()),
+      connectionPreference: map['connectionPreference'] == null ? null : (NetworkAttachmentConnectionPreferenceComputeBeta.fromValue(map['connectionPreference'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists'] as List).cast<String>()).input(),
+      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      subnetworks: map['subnetworks'] == null ? null : ((map['subnetworks'] as List).cast<String>()).input(),
     );
   }
 }

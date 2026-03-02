@@ -39,23 +39,15 @@ class OauthIdpConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [responseType] The response type to request for in the OAuth authorization flow.
   OauthIdpConfigArgs({
-    required pulumi.Output<String> clientId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> issuer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<OauthIdpConfigResponseType>? responseType,
-  }) :
-      clientId = pulumi.Input.asInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      issuer = pulumi.Input.asInput<String>(issuer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      responseType = pulumi.Input.asOptionalInput<OauthIdpConfigResponseType>(responseType);
+    required this.clientId,
+    this.clientSecret,
+    this.displayName,
+    this.enabled,
+    required this.issuer,
+    this.name,
+    this.project,
+    this.responseType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class OauthIdpConfigArgs {
 
   factory OauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return OauthIdpConfigArgs(
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      issuer: pulumi.Output.create<String>(map['issuer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      responseType: map['responseType'] == null ? null : pulumi.Output.create<OauthIdpConfigResponseType>(OauthIdpConfigResponseType.fromMap((map['responseType'] as Map).cast<String, dynamic>())),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      issuer: (map['issuer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      responseType: map['responseType'] == null ? null : (OauthIdpConfigResponseType.fromMap((map['responseType'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

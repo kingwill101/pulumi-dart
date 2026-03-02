@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHybridMonitorSlsTasksTaskAttachLabel {
   /// The key of the tag.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the tag.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetHybridMonitorSlsTasksTaskAttachLabel].
   /// [name] The key of the tag.
@@ -24,8 +25,8 @@ class GetHybridMonitorSlsTasksTaskAttachLabel {
 
   factory GetHybridMonitorSlsTasksTaskAttachLabel.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorSlsTasksTaskAttachLabel(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ApplicationUrlDispatchRulesState {
   /// [dispatchRules] Rules to match an HTTP request and dispatch that request to a service.
   /// [project] The ID of the project in which the resource belongs.
   ApplicationUrlDispatchRulesState({
-    pulumi.Output<List<ApplicationUrlDispatchRulesDispatchRule>>? dispatchRules,
-    pulumi.Output<String>? project,
-  }) :
-      dispatchRules = pulumi.Input.asOptionalInput<List<ApplicationUrlDispatchRulesDispatchRule>>(dispatchRules),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.dispatchRules,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ApplicationUrlDispatchRulesState {
 
   factory ApplicationUrlDispatchRulesState.fromMap(Map<String, dynamic> map) {
     return ApplicationUrlDispatchRulesState(
-      dispatchRules: map['dispatchRules'] == null ? null : pulumi.Output.create<List<ApplicationUrlDispatchRulesDispatchRule>>(pulumi.Input.decodeList<ApplicationUrlDispatchRulesDispatchRule>(map['dispatchRules'], (value) => ApplicationUrlDispatchRulesDispatchRule.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dispatchRules: map['dispatchRules'] == null ? null : (pulumi.Input.decodeList<ApplicationUrlDispatchRulesDispatchRule>(map['dispatchRules'], (value) => ApplicationUrlDispatchRulesDispatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

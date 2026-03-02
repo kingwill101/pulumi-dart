@@ -34,23 +34,15 @@ class OpenIdConnectProviderArgs {
   /// [name] the Name of the OpenID Connect Provider which should be created within the API Management Service. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   OpenIdConnectProviderArgs({
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> clientId,
-    required pulumi.Output<String> clientSecret,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> metadataEndpoint,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      clientId = pulumi.Input.asInput<String>(clientId),
-      clientSecret = pulumi.Input.asInput<String>(clientSecret),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      metadataEndpoint = pulumi.Input.asInput<String>(metadataEndpoint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.apiManagementName,
+    required this.clientId,
+    required this.clientSecret,
+    this.description,
+    required this.displayName,
+    required this.metadataEndpoint,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class OpenIdConnectProviderArgs {
 
   factory OpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectProviderArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: pulumi.Output.create<String>(map['clientSecret'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      metadataEndpoint: pulumi.Output.create<String>(map['metadataEndpoint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      metadataEndpoint: (map['metadataEndpoint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

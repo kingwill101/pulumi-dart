@@ -19,15 +19,11 @@ class EnterpriseWorkspaceState {
   /// [vpcId] The ID of the VPC.
   /// [workspaceName] The name of the Workspace.
   EnterpriseWorkspaceState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.description,
+    this.regionId,
+    this.vpcId,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class EnterpriseWorkspaceState {
 
   factory EnterpriseWorkspaceState.fromMap(Map<String, dynamic> map) {
     return EnterpriseWorkspaceState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

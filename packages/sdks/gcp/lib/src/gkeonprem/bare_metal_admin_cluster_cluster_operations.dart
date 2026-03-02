@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterClusterOperations {
   /// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
-  final bool? enableApplicationLogs;
+  final pulumi.Input<bool>? enableApplicationLogs;
 
   /// Creates a new [BareMetalAdminClusterClusterOperations].
   /// [enableApplicationLogs] Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
@@ -19,7 +20,7 @@ class BareMetalAdminClusterClusterOperations {
 
   factory BareMetalAdminClusterClusterOperations.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterClusterOperations(
-      enableApplicationLogs: map['enableApplicationLogs'] == null ? null : map['enableApplicationLogs'] as bool,
+      enableApplicationLogs: map['enableApplicationLogs'] == null ? null : (map['enableApplicationLogs'] as bool).input(),
     );
   }
 }

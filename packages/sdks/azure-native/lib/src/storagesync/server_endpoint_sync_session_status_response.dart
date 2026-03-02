@@ -6,21 +6,21 @@ import 'server_endpoint_files_not_syncing_error_response.dart';
 /// Sync Session status object.
 class ServerEndpointSyncSessionStatusResponse {
   /// Array of per-item errors coming from the last sync session.
-  final List<ServerEndpointFilesNotSyncingErrorResponse> filesNotSyncingErrors;
+  final pulumi.Input<List<ServerEndpointFilesNotSyncingErrorResponse>> filesNotSyncingErrors;
   /// Sync mode
-  final String lastSyncMode;
+  final pulumi.Input<String> lastSyncMode;
   /// Last sync per item error count.
-  final double lastSyncPerItemErrorCount;
+  final pulumi.Input<double> lastSyncPerItemErrorCount;
   /// Last sync result (HResult)
-  final int lastSyncResult;
+  final pulumi.Input<int> lastSyncResult;
   /// Last sync success timestamp
-  final String lastSyncSuccessTimestamp;
+  final pulumi.Input<String> lastSyncSuccessTimestamp;
   /// Last sync timestamp
-  final String lastSyncTimestamp;
+  final pulumi.Input<String> lastSyncTimestamp;
   /// Count of persistent files not syncing.
-  final double persistentFilesNotSyncingCount;
+  final pulumi.Input<double> persistentFilesNotSyncingCount;
   /// Count of transient files not syncing.
-  final double transientFilesNotSyncingCount;
+  final pulumi.Input<double> transientFilesNotSyncingCount;
 
   /// Creates a new [ServerEndpointSyncSessionStatusResponse].
   /// [filesNotSyncingErrors] Array of per-item errors coming from the last sync session.
@@ -44,7 +44,7 @@ class ServerEndpointSyncSessionStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filesNotSyncingErrors': pulumi.Input.encodeList<ServerEndpointFilesNotSyncingErrorResponse, Map<String, dynamic>>(filesNotSyncingErrors, (value) => value.toMap()),
+      'filesNotSyncingErrors': pulumi.Input.mapInputValue<List<ServerEndpointFilesNotSyncingErrorResponse>, List<Map<String, dynamic>>>(filesNotSyncingErrors, (value) => pulumi.Input.encodeList<ServerEndpointFilesNotSyncingErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastSyncMode': lastSyncMode,
       'lastSyncPerItemErrorCount': lastSyncPerItemErrorCount,
       'lastSyncResult': lastSyncResult,
@@ -57,14 +57,14 @@ class ServerEndpointSyncSessionStatusResponse {
 
   factory ServerEndpointSyncSessionStatusResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointSyncSessionStatusResponse(
-      filesNotSyncingErrors: pulumi.Input.decodeList<ServerEndpointFilesNotSyncingErrorResponse>(map['filesNotSyncingErrors'], (value) => ServerEndpointFilesNotSyncingErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastSyncMode: map['lastSyncMode'] as String,
-      lastSyncPerItemErrorCount: map['lastSyncPerItemErrorCount'] as double,
-      lastSyncResult: map['lastSyncResult'] as int,
-      lastSyncSuccessTimestamp: map['lastSyncSuccessTimestamp'] as String,
-      lastSyncTimestamp: map['lastSyncTimestamp'] as String,
-      persistentFilesNotSyncingCount: map['persistentFilesNotSyncingCount'] as double,
-      transientFilesNotSyncingCount: map['transientFilesNotSyncingCount'] as double,
+      filesNotSyncingErrors: (pulumi.Input.decodeList<ServerEndpointFilesNotSyncingErrorResponse>(map['filesNotSyncingErrors'], (value) => ServerEndpointFilesNotSyncingErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastSyncMode: (map['lastSyncMode'] as String).input(),
+      lastSyncPerItemErrorCount: (map['lastSyncPerItemErrorCount'] as double).input(),
+      lastSyncResult: (map['lastSyncResult'] as int).input(),
+      lastSyncSuccessTimestamp: (map['lastSyncSuccessTimestamp'] as String).input(),
+      lastSyncTimestamp: (map['lastSyncTimestamp'] as String).input(),
+      persistentFilesNotSyncingCount: (map['persistentFilesNotSyncingCount'] as double).input(),
+      transientFilesNotSyncingCount: (map['transientFilesNotSyncingCount'] as double).input(),
     );
   }
 }

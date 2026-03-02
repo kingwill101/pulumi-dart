@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson {
   /// Path to the top-level parent that contains the records.
-  final String recordRowPath;
+  final pulumi.Input<String> recordRowPath;
 
   /// Creates a new [AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson].
   /// [recordRowPath] Path to the top-level parent that contains the records.
@@ -19,7 +20,7 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson {
 
   factory AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson(
-      recordRowPath: map['recordRowPath'] as String,
+      recordRowPath: (map['recordRowPath'] as String).input(),
     );
   }
 }

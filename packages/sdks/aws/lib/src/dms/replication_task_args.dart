@@ -49,33 +49,20 @@ class ReplicationTaskArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetEndpointArn] ARN that uniquely identifies the target endpoint.
   ReplicationTaskArgs({
-    pulumi.Output<String>? cdcStartPosition,
-    pulumi.Output<String>? cdcStartTime,
-    required pulumi.Output<String> migrationType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> replicationInstanceArn,
-    required pulumi.Output<String> replicationTaskId,
-    pulumi.Output<String>? replicationTaskSettings,
-    pulumi.Output<String>? resourceIdentifier,
-    required pulumi.Output<String> sourceEndpointArn,
-    pulumi.Output<bool>? startReplicationTask,
-    required pulumi.Output<String> tableMappings,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetEndpointArn,
-  }) :
-      cdcStartPosition = pulumi.Input.asOptionalInput<String>(cdcStartPosition),
-      cdcStartTime = pulumi.Input.asOptionalInput<String>(cdcStartTime),
-      migrationType = pulumi.Input.asInput<String>(migrationType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationInstanceArn = pulumi.Input.asInput<String>(replicationInstanceArn),
-      replicationTaskId = pulumi.Input.asInput<String>(replicationTaskId),
-      replicationTaskSettings = pulumi.Input.asOptionalInput<String>(replicationTaskSettings),
-      resourceIdentifier = pulumi.Input.asOptionalInput<String>(resourceIdentifier),
-      sourceEndpointArn = pulumi.Input.asInput<String>(sourceEndpointArn),
-      startReplicationTask = pulumi.Input.asOptionalInput<bool>(startReplicationTask),
-      tableMappings = pulumi.Input.asInput<String>(tableMappings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetEndpointArn = pulumi.Input.asInput<String>(targetEndpointArn);
+    this.cdcStartPosition,
+    this.cdcStartTime,
+    required this.migrationType,
+    this.region,
+    required this.replicationInstanceArn,
+    required this.replicationTaskId,
+    this.replicationTaskSettings,
+    this.resourceIdentifier,
+    required this.sourceEndpointArn,
+    this.startReplicationTask,
+    required this.tableMappings,
+    this.tags,
+    required this.targetEndpointArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class ReplicationTaskArgs {
 
   factory ReplicationTaskArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationTaskArgs(
-      cdcStartPosition: map['cdcStartPosition'] == null ? null : pulumi.Output.create<String>(map['cdcStartPosition'] as String),
-      cdcStartTime: map['cdcStartTime'] == null ? null : pulumi.Output.create<String>(map['cdcStartTime'] as String),
-      migrationType: pulumi.Output.create<String>(map['migrationType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationInstanceArn: pulumi.Output.create<String>(map['replicationInstanceArn'] as String),
-      replicationTaskId: pulumi.Output.create<String>(map['replicationTaskId'] as String),
-      replicationTaskSettings: map['replicationTaskSettings'] == null ? null : pulumi.Output.create<String>(map['replicationTaskSettings'] as String),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : pulumi.Output.create<String>(map['resourceIdentifier'] as String),
-      sourceEndpointArn: pulumi.Output.create<String>(map['sourceEndpointArn'] as String),
-      startReplicationTask: map['startReplicationTask'] == null ? null : pulumi.Output.create<bool>(map['startReplicationTask'] as bool),
-      tableMappings: pulumi.Output.create<String>(map['tableMappings'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetEndpointArn: pulumi.Output.create<String>(map['targetEndpointArn'] as String),
+      cdcStartPosition: map['cdcStartPosition'] == null ? null : (map['cdcStartPosition'] as String).input(),
+      cdcStartTime: map['cdcStartTime'] == null ? null : (map['cdcStartTime'] as String).input(),
+      migrationType: (map['migrationType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationInstanceArn: (map['replicationInstanceArn'] as String).input(),
+      replicationTaskId: (map['replicationTaskId'] as String).input(),
+      replicationTaskSettings: map['replicationTaskSettings'] == null ? null : (map['replicationTaskSettings'] as String).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
+      sourceEndpointArn: (map['sourceEndpointArn'] as String).input(),
+      startReplicationTask: map['startReplicationTask'] == null ? null : (map['startReplicationTask'] as bool).input(),
+      tableMappings: (map['tableMappings'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetEndpointArn: (map['targetEndpointArn'] as String).input(),
     );
   }
 }

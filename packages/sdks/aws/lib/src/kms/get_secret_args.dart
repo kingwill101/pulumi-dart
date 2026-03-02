@@ -15,11 +15,9 @@ class GetSecretArgs {
   /// [region] Optional.
   /// [secrets] Required.
   GetSecretArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<GetSecretSecret>> secrets,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secrets = pulumi.Input.asInput<List<GetSecretSecret>>(secrets);
+    this.region,
+    required this.secrets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secrets: pulumi.Output.create<List<GetSecretSecret>>(pulumi.Input.decodeList<GetSecretSecret>(map['secrets'], (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>()))),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secrets: (pulumi.Input.decodeList<GetSecretSecret>(map['secrets'], (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

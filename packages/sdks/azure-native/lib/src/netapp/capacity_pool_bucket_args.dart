@@ -36,23 +36,15 @@ class CapacityPoolBucketArgs {
   /// [server] Properties of the server managing the lifecycle of volume buckets
   /// [volumeName] The name of the volume
   CapacityPoolBucketArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<FileSystemUser>? fileSystemUser,
-    pulumi.Output<String>? path,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<BucketServerProperties>? server,
-    required pulumi.Output<String> volumeName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      fileSystemUser = pulumi.Input.asOptionalInput<FileSystemUser>(fileSystemUser),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      server = pulumi.Input.asOptionalInput<BucketServerProperties>(server),
-      volumeName = pulumi.Input.asInput<String>(volumeName);
+    required this.accountName,
+    this.bucketName,
+    this.fileSystemUser,
+    this.path,
+    required this.poolName,
+    required this.resourceGroupName,
+    this.server,
+    required this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class CapacityPoolBucketArgs {
 
   factory CapacityPoolBucketArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolBucketArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      fileSystemUser: map['fileSystemUser'] == null ? null : pulumi.Output.create<FileSystemUser>(FileSystemUser.fromMap((map['fileSystemUser'] as Map).cast<String, dynamic>())),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      server: map['server'] == null ? null : pulumi.Output.create<BucketServerProperties>(BucketServerProperties.fromMap((map['server'] as Map).cast<String, dynamic>())),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      fileSystemUser: map['fileSystemUser'] == null ? null : (FileSystemUser.fromMap((map['fileSystemUser'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      server: map['server'] == null ? null : (BucketServerProperties.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Route {
   /// [Required] The path for the route.
-  final String path;
+  final pulumi.Input<String> path;
   /// [Required] The port for the route.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [Route].
   /// [path] [Required] The path for the route.
@@ -24,8 +25,8 @@ class Route {
 
   factory Route.fromMap(Map<String, dynamic> map) {
     return Route(
-      path: map['path'] as String,
-      port: map['port'] as int,
+      path: (map['path'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

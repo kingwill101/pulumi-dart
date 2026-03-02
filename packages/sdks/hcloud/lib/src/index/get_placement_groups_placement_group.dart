@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlacementGroupsPlacementGroup {
-  final int id;
-  final Map<String, String> labels;
-  final String name;
-  final List<int> servers;
-  final String type;
+  final pulumi.Input<int> id;
+  final pulumi.Input<Map<String, String>> labels;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<int>> servers;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetPlacementGroupsPlacementGroup].
   /// [id] Required.
@@ -34,11 +35,11 @@ class GetPlacementGroupsPlacementGroup {
 
   factory GetPlacementGroupsPlacementGroup.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsPlacementGroup(
-      id: map['id'] as int,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      servers: (map['servers'] as List).cast<int>(),
-      type: map['type'] as String,
+      id: (map['id'] as int).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      servers: ((map['servers'] as List).cast<int>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

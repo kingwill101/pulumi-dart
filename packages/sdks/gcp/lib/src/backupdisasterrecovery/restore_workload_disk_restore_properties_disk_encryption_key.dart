@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
   /// (Optional)
-  final String? kmsKeyName;
+  final pulumi.Input<String>? kmsKeyName;
   /// (Optional)
-  final String? kmsKeyServiceAccount;
+  final pulumi.Input<String>? kmsKeyServiceAccount;
   /// (Optional)
-  final String? rawKey;
+  final pulumi.Input<String>? rawKey;
   /// (Optional)
-  final String? rsaEncryptedKey;
+  final pulumi.Input<String>? rsaEncryptedKey;
 
   /// Creates a new [RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey].
   /// [kmsKeyName] (Optional)
@@ -34,10 +35,10 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
 
   factory RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey(
-      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : map['kmsKeyServiceAccount'] as String,
-      rawKey: map['rawKey'] == null ? null : map['rawKey'] as String,
-      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : map['rsaEncryptedKey'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
+      rawKey: map['rawKey'] == null ? null : (map['rawKey'] as String).input(),
+      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : (map['rsaEncryptedKey'] as String).input(),
     );
   }
 }

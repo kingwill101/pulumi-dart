@@ -19,15 +19,11 @@ class ContributorInsightsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] The name of the table to enable contributor insights
   ContributorInsightsState({
-    pulumi.Output<String>? indexName,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tableName,
-  }) :
-      indexName = pulumi.Input.asOptionalInput<String>(indexName),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    this.indexName,
+    this.mode,
+    this.region,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ContributorInsightsState {
 
   factory ContributorInsightsState.fromMap(Map<String, dynamic> map) {
     return ContributorInsightsState(
-      indexName: map['indexName'] == null ? null : pulumi.Output.create<String>(map['indexName'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

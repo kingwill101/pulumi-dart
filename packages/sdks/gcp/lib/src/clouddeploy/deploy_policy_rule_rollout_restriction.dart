@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deploy_policy_rule_rollout_restriction_time_windows.dart';
 
 class DeployPolicyRuleRolloutRestriction {
   /// Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
   /// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
-  final List<String>? actions;
+  final pulumi.Input<List<String>>? actions;
   /// ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
-  final String id;
+  final pulumi.Input<String> id;
   /// What invoked the action. If left empty, all invoker types will be restricted.
   /// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
-  final List<String>? invokers;
+  final pulumi.Input<List<String>>? invokers;
   /// Time window within which actions are restricted.
   /// Structure is documented below.
-  final DeployPolicyRuleRolloutRestrictionTimeWindows? timeWindows;
+  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindows>? timeWindows;
 
   /// Creates a new [DeployPolicyRuleRolloutRestriction].
   /// [actions] Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
@@ -32,16 +33,16 @@ class DeployPolicyRuleRolloutRestriction {
       'actions': ?actions,
       'id': id,
       'invokers': ?invokers,
-      'timeWindows': ?timeWindows == null ? null : timeWindows!.toMap(),
+      'timeWindows': ?pulumi.Input.mapOptionalInputValue<DeployPolicyRuleRolloutRestrictionTimeWindows, Map<String, dynamic>>(timeWindows, (value) => value.toMap()),
     };
   }
 
   factory DeployPolicyRuleRolloutRestriction.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRuleRolloutRestriction(
-      actions: map['actions'] == null ? null : (map['actions'] as List).cast<String>(),
-      id: map['id'] as String,
-      invokers: map['invokers'] == null ? null : (map['invokers'] as List).cast<String>(),
-      timeWindows: map['timeWindows'] == null ? null : DeployPolicyRuleRolloutRestrictionTimeWindows.fromMap((map['timeWindows'] as Map).cast<String, dynamic>()),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      invokers: map['invokers'] == null ? null : ((map['invokers'] as List).cast<String>()).input(),
+      timeWindows: map['timeWindows'] == null ? null : (DeployPolicyRuleRolloutRestrictionTimeWindows.fromMap((map['timeWindows'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

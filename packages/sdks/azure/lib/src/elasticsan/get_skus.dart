@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSkus {
   /// The name of this Elastic SAN.
-  final String name;
+  final pulumi.Input<String> name;
   /// The SKU tier.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [GetSkus].
   /// [name] The name of this Elastic SAN.
@@ -24,8 +25,8 @@ class GetSkus {
 
   factory GetSkus.fromMap(Map<String, dynamic> map) {
     return GetSkus(
-      name: map['name'] as String,
-      tier: map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

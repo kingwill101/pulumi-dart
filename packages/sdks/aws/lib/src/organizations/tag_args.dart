@@ -19,13 +19,10 @@ class TagArgs {
   /// [resourceId] Id of the Organizations resource to tag.
   /// [value] Tag value.
   TagArgs({
-    required pulumi.Output<String> key,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> value,
-  }) :
-      key = pulumi.Input.asInput<String>(key),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      value = pulumi.Input.asInput<String>(value);
+    required this.key,
+    required this.resourceId,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TagArgs {
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      key: pulumi.Output.create<String>(map['key'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      key: (map['key'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

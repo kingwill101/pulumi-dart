@@ -24,17 +24,12 @@ class ResourcePolicyState {
   /// [timeouts] Optional.
   /// [workspaceId] The ID of the workspace to attach the resource-based policy to.
   ResourcePolicyState({
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? revisionId,
-    pulumi.Output<ResourcePolicyTimeouts>? timeouts,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
-      timeouts = pulumi.Input.asOptionalInput<ResourcePolicyTimeouts>(timeouts),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.policyDocument,
+    this.region,
+    this.revisionId,
+    this.timeouts,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ResourcePolicyState {
 
   factory ResourcePolicyState.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyState(
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revisionId: map['revisionId'] == null ? null : pulumi.Output.create<String>(map['revisionId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ResourcePolicyTimeouts>(ResourcePolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ResourcePolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

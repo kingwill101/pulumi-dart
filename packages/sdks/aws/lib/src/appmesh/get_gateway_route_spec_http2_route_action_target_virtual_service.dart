@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayRouteSpecHttp2RouteActionTargetVirtualService {
-  final String virtualServiceName;
+  final pulumi.Input<String> virtualServiceName;
 
   /// Creates a new [GetGatewayRouteSpecHttp2RouteActionTargetVirtualService].
   /// [virtualServiceName] Required.
@@ -18,7 +19,7 @@ class GetGatewayRouteSpecHttp2RouteActionTargetVirtualService {
 
   factory GetGatewayRouteSpecHttp2RouteActionTargetVirtualService.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteActionTargetVirtualService(
-      virtualServiceName: map['virtualServiceName'] as String,
+      virtualServiceName: (map['virtualServiceName'] as String).input(),
     );
   }
 }

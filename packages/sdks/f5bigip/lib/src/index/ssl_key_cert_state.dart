@@ -40,29 +40,18 @@ class SslKeyCertState {
   /// [partition] Partition on to SSL certificate and key to be imported.
   /// [passphrase] Passphrase on the SSL key.
   SslKeyCertState({
-    pulumi.Output<String>? certContent,
-    pulumi.Output<String>? certFullPath,
-    pulumi.Output<String>? certMonitoringType,
-    pulumi.Output<String>? certName,
-    pulumi.Output<String>? certOcsp,
-    pulumi.Output<String>? issuerCert,
-    pulumi.Output<String>? keyContent,
-    pulumi.Output<String>? keyFullPath,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? partition,
-    pulumi.Output<String>? passphrase,
-  }) :
-      certContent = pulumi.Input.asOptionalInput<String>(certContent),
-      certFullPath = pulumi.Input.asOptionalInput<String>(certFullPath),
-      certMonitoringType = pulumi.Input.asOptionalInput<String>(certMonitoringType),
-      certName = pulumi.Input.asOptionalInput<String>(certName),
-      certOcsp = pulumi.Input.asOptionalInput<String>(certOcsp),
-      issuerCert = pulumi.Input.asOptionalInput<String>(issuerCert),
-      keyContent = pulumi.Input.asOptionalInput<String>(keyContent),
-      keyFullPath = pulumi.Input.asOptionalInput<String>(keyFullPath),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      passphrase = pulumi.Input.asOptionalInput<String>(passphrase);
+    this.certContent,
+    this.certFullPath,
+    this.certMonitoringType,
+    this.certName,
+    this.certOcsp,
+    this.issuerCert,
+    this.keyContent,
+    this.keyFullPath,
+    this.keyName,
+    this.partition,
+    this.passphrase,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class SslKeyCertState {
 
   factory SslKeyCertState.fromMap(Map<String, dynamic> map) {
     return SslKeyCertState(
-      certContent: map['certContent'] == null ? null : pulumi.Output.create<String>(map['certContent'] as String),
-      certFullPath: map['certFullPath'] == null ? null : pulumi.Output.create<String>(map['certFullPath'] as String),
-      certMonitoringType: map['certMonitoringType'] == null ? null : pulumi.Output.create<String>(map['certMonitoringType'] as String),
-      certName: map['certName'] == null ? null : pulumi.Output.create<String>(map['certName'] as String),
-      certOcsp: map['certOcsp'] == null ? null : pulumi.Output.create<String>(map['certOcsp'] as String),
-      issuerCert: map['issuerCert'] == null ? null : pulumi.Output.create<String>(map['issuerCert'] as String),
-      keyContent: map['keyContent'] == null ? null : pulumi.Output.create<String>(map['keyContent'] as String),
-      keyFullPath: map['keyFullPath'] == null ? null : pulumi.Output.create<String>(map['keyFullPath'] as String),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      passphrase: map['passphrase'] == null ? null : pulumi.Output.create<String>(map['passphrase'] as String),
+      certContent: map['certContent'] == null ? null : (map['certContent'] as String).input(),
+      certFullPath: map['certFullPath'] == null ? null : (map['certFullPath'] as String).input(),
+      certMonitoringType: map['certMonitoringType'] == null ? null : (map['certMonitoringType'] as String).input(),
+      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
+      certOcsp: map['certOcsp'] == null ? null : (map['certOcsp'] as String).input(),
+      issuerCert: map['issuerCert'] == null ? null : (map['issuerCert'] as String).input(),
+      keyContent: map['keyContent'] == null ? null : (map['keyContent'] as String).input(),
+      keyFullPath: map['keyFullPath'] == null ? null : (map['keyFullPath'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
     );
   }
 }

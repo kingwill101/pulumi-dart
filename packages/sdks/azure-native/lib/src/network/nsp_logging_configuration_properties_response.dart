@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The NSP logging configuration properties.
 class NspLoggingConfigurationPropertiesResponse {
   /// The log categories to enable in the NSP logging configuration.
-  final List<String>? enabledLogCategories;
+  final pulumi.Input<List<String>>? enabledLogCategories;
   /// The version of the NSP logging configuration.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [NspLoggingConfigurationPropertiesResponse].
   /// [enabledLogCategories] The log categories to enable in the NSP logging configuration.
@@ -25,8 +26,8 @@ class NspLoggingConfigurationPropertiesResponse {
 
   factory NspLoggingConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NspLoggingConfigurationPropertiesResponse(
-      enabledLogCategories: map['enabledLogCategories'] == null ? null : (map['enabledLogCategories'] as List).cast<String>(),
-      version: map['version'] == null ? null : map['version'] as String,
+      enabledLogCategories: map['enabledLogCategories'] == null ? null : ((map['enabledLogCategories'] as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

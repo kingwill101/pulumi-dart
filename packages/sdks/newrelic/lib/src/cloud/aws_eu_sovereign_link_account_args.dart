@@ -26,15 +26,11 @@ class AwsEuSovereignLinkAccountArgs {
   /// [metricCollectionMode] How metrics will be collected. Use `PUSH` for metric stream, `PULL` for API polling of the 3 services not supported by metric streams (Billing, CloudTrail and X-Ray), or `BOTH` for both methods. Defaults to `PUSH`, if not specified in the configuration.
   /// [name] The name/identifier of the AWS EU Sovereign - New Relic 'linked' account.
   AwsEuSovereignLinkAccountArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> arn,
-    pulumi.Output<String>? metricCollectionMode,
-    pulumi.Output<String>? name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      arn = pulumi.Input.asInput<String>(arn),
-      metricCollectionMode = pulumi.Input.asOptionalInput<String>(metricCollectionMode),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accountId,
+    required this.arn,
+    this.metricCollectionMode,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class AwsEuSovereignLinkAccountArgs {
 
   factory AwsEuSovereignLinkAccountArgs.fromMap(Map<String, dynamic> map) {
     return AwsEuSovereignLinkAccountArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      metricCollectionMode: map['metricCollectionMode'] == null ? null : pulumi.Output.create<String>(map['metricCollectionMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      arn: (map['arn'] as String).input(),
+      metricCollectionMode: map['metricCollectionMode'] == null ? null : (map['metricCollectionMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

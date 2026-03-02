@@ -59,35 +59,21 @@ class ContainerAppsSessionPoolArgs {
   /// [sessionPoolName] Name of the session pool.
   /// [tags] Resource tags.
   ContainerAppsSessionPoolArgs({
-    pulumi.Output<String>? containerType,
-    pulumi.Output<CustomContainerTemplate>? customContainerTemplate,
-    pulumi.Output<DynamicPoolConfiguration>? dynamicPoolConfiguration,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<ManagedIdentitySetting>>? managedIdentitySettings,
-    pulumi.Output<String>? poolManagementType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ScaleConfiguration>? scaleConfiguration,
-    pulumi.Output<List<SessionPoolSecret>>? secrets,
-    pulumi.Output<SessionNetworkConfiguration>? sessionNetworkConfiguration,
-    pulumi.Output<String>? sessionPoolName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      containerType = pulumi.Input.asOptionalInput<String>(containerType),
-      customContainerTemplate = pulumi.Input.asOptionalInput<CustomContainerTemplate>(customContainerTemplate),
-      dynamicPoolConfiguration = pulumi.Input.asOptionalInput<DynamicPoolConfiguration>(dynamicPoolConfiguration),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedIdentitySettings = pulumi.Input.asOptionalInput<List<ManagedIdentitySetting>>(managedIdentitySettings),
-      poolManagementType = pulumi.Input.asOptionalInput<String>(poolManagementType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scaleConfiguration = pulumi.Input.asOptionalInput<ScaleConfiguration>(scaleConfiguration),
-      secrets = pulumi.Input.asOptionalInput<List<SessionPoolSecret>>(secrets),
-      sessionNetworkConfiguration = pulumi.Input.asOptionalInput<SessionNetworkConfiguration>(sessionNetworkConfiguration),
-      sessionPoolName = pulumi.Input.asOptionalInput<String>(sessionPoolName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.containerType,
+    this.customContainerTemplate,
+    this.dynamicPoolConfiguration,
+    this.environmentId,
+    this.identity,
+    this.location,
+    this.managedIdentitySettings,
+    this.poolManagementType,
+    required this.resourceGroupName,
+    this.scaleConfiguration,
+    this.secrets,
+    this.sessionNetworkConfiguration,
+    this.sessionPoolName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,20 +96,20 @@ class ContainerAppsSessionPoolArgs {
 
   factory ContainerAppsSessionPoolArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppsSessionPoolArgs(
-      containerType: map['containerType'] == null ? null : pulumi.Output.create<String>(map['containerType'] as String),
-      customContainerTemplate: map['customContainerTemplate'] == null ? null : pulumi.Output.create<CustomContainerTemplate>(CustomContainerTemplate.fromMap((map['customContainerTemplate'] as Map).cast<String, dynamic>())),
-      dynamicPoolConfiguration: map['dynamicPoolConfiguration'] == null ? null : pulumi.Output.create<DynamicPoolConfiguration>(DynamicPoolConfiguration.fromMap((map['dynamicPoolConfiguration'] as Map).cast<String, dynamic>())),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedIdentitySettings: map['managedIdentitySettings'] == null ? null : pulumi.Output.create<List<ManagedIdentitySetting>>(pulumi.Input.decodeList<ManagedIdentitySetting>(map['managedIdentitySettings'], (value) => ManagedIdentitySetting.fromMap((value as Map).cast<String, dynamic>()))),
-      poolManagementType: map['poolManagementType'] == null ? null : pulumi.Output.create<String>(map['poolManagementType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scaleConfiguration: map['scaleConfiguration'] == null ? null : pulumi.Output.create<ScaleConfiguration>(ScaleConfiguration.fromMap((map['scaleConfiguration'] as Map).cast<String, dynamic>())),
-      secrets: map['secrets'] == null ? null : pulumi.Output.create<List<SessionPoolSecret>>(pulumi.Input.decodeList<SessionPoolSecret>(map['secrets'], (value) => SessionPoolSecret.fromMap((value as Map).cast<String, dynamic>()))),
-      sessionNetworkConfiguration: map['sessionNetworkConfiguration'] == null ? null : pulumi.Output.create<SessionNetworkConfiguration>(SessionNetworkConfiguration.fromMap((map['sessionNetworkConfiguration'] as Map).cast<String, dynamic>())),
-      sessionPoolName: map['sessionPoolName'] == null ? null : pulumi.Output.create<String>(map['sessionPoolName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      containerType: map['containerType'] == null ? null : (map['containerType'] as String).input(),
+      customContainerTemplate: map['customContainerTemplate'] == null ? null : (CustomContainerTemplate.fromMap((map['customContainerTemplate'] as Map).cast<String, dynamic>())).input(),
+      dynamicPoolConfiguration: map['dynamicPoolConfiguration'] == null ? null : (DynamicPoolConfiguration.fromMap((map['dynamicPoolConfiguration'] as Map).cast<String, dynamic>())).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedIdentitySettings: map['managedIdentitySettings'] == null ? null : (pulumi.Input.decodeList<ManagedIdentitySetting>(map['managedIdentitySettings'], (value) => ManagedIdentitySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      poolManagementType: map['poolManagementType'] == null ? null : (map['poolManagementType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scaleConfiguration: map['scaleConfiguration'] == null ? null : (ScaleConfiguration.fromMap((map['scaleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SessionPoolSecret>(map['secrets'], (value) => SessionPoolSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sessionNetworkConfiguration: map['sessionNetworkConfiguration'] == null ? null : (SessionNetworkConfiguration.fromMap((map['sessionNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      sessionPoolName: map['sessionPoolName'] == null ? null : (map['sessionPoolName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

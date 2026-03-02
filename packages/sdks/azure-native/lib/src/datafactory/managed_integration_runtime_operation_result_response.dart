@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of managed integration runtime operation result.
 class ManagedIntegrationRuntimeOperationResultResponse {
   /// The activity id for the operation request.
-  final String activityId;
+  final pulumi.Input<String> activityId;
   /// The error code.
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// Managed integration runtime error parameters.
-  final List<String> parameters;
+  final pulumi.Input<List<String>> parameters;
   /// The operation result.
-  final String result;
+  final pulumi.Input<String> result;
   /// The start time of the operation.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The operation type. Could be start or stop.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedIntegrationRuntimeOperationResultResponse].
   /// [activityId] The activity id for the operation request.
@@ -45,12 +46,12 @@ class ManagedIntegrationRuntimeOperationResultResponse {
 
   factory ManagedIntegrationRuntimeOperationResultResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIntegrationRuntimeOperationResultResponse(
-      activityId: map['activityId'] as String,
-      errorCode: map['errorCode'] as String,
-      parameters: (map['parameters'] as List).cast<String>(),
-      result: map['result'] as String,
-      startTime: map['startTime'] as String,
-      type: map['type'] as String,
+      activityId: (map['activityId'] as String).input(),
+      errorCode: (map['errorCode'] as String).input(),
+      parameters: ((map['parameters'] as List).cast<String>()).input(),
+      result: (map['result'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

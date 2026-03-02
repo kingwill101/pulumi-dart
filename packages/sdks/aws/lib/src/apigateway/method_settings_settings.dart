@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MethodSettingsSettings {
   /// Whether the cached responses are encrypted.
-  final bool? cacheDataEncrypted;
+  final pulumi.Input<bool>? cacheDataEncrypted;
   /// Time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached.
-  final int? cacheTtlInSeconds;
+  final pulumi.Input<int>? cacheTtlInSeconds;
   /// Whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
-  final bool? cachingEnabled;
+  final pulumi.Input<bool>? cachingEnabled;
   /// Whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs.
-  final bool? dataTraceEnabled;
+  final pulumi.Input<bool>? dataTraceEnabled;
   /// Logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The available levels are `OFF`, `ERROR`, and `INFO`.
-  final String? loggingLevel;
+  final pulumi.Input<String>? loggingLevel;
   /// Whether Amazon CloudWatch metrics are enabled for this method.
-  final bool? metricsEnabled;
+  final pulumi.Input<bool>? metricsEnabled;
   /// Whether authorization is required for a cache invalidation request.
-  final bool? requireAuthorizationForCacheControl;
+  final pulumi.Input<bool>? requireAuthorizationForCacheControl;
   /// Throttling burst limit. Default: `-1` (throttling disabled).
-  final int? throttlingBurstLimit;
+  final pulumi.Input<int>? throttlingBurstLimit;
   /// Throttling rate limit. Default: `-1` (throttling disabled).
-  final double? throttlingRateLimit;
+  final pulumi.Input<double>? throttlingRateLimit;
   /// How to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
-  final String? unauthorizedCacheControlHeaderStrategy;
+  final pulumi.Input<String>? unauthorizedCacheControlHeaderStrategy;
 
   /// Creates a new [MethodSettingsSettings].
   /// [cacheDataEncrypted] Whether the cached responses are encrypted.
@@ -64,16 +65,16 @@ class MethodSettingsSettings {
 
   factory MethodSettingsSettings.fromMap(Map<String, dynamic> map) {
     return MethodSettingsSettings(
-      cacheDataEncrypted: map['cacheDataEncrypted'] == null ? null : map['cacheDataEncrypted'] as bool,
-      cacheTtlInSeconds: map['cacheTtlInSeconds'] == null ? null : map['cacheTtlInSeconds'] as int,
-      cachingEnabled: map['cachingEnabled'] == null ? null : map['cachingEnabled'] as bool,
-      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : map['dataTraceEnabled'] as bool,
-      loggingLevel: map['loggingLevel'] == null ? null : map['loggingLevel'] as String,
-      metricsEnabled: map['metricsEnabled'] == null ? null : map['metricsEnabled'] as bool,
-      requireAuthorizationForCacheControl: map['requireAuthorizationForCacheControl'] == null ? null : map['requireAuthorizationForCacheControl'] as bool,
-      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : map['throttlingBurstLimit'] as int,
-      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : map['throttlingRateLimit'] as double,
-      unauthorizedCacheControlHeaderStrategy: map['unauthorizedCacheControlHeaderStrategy'] == null ? null : map['unauthorizedCacheControlHeaderStrategy'] as String,
+      cacheDataEncrypted: map['cacheDataEncrypted'] == null ? null : (map['cacheDataEncrypted'] as bool).input(),
+      cacheTtlInSeconds: map['cacheTtlInSeconds'] == null ? null : (map['cacheTtlInSeconds'] as int).input(),
+      cachingEnabled: map['cachingEnabled'] == null ? null : (map['cachingEnabled'] as bool).input(),
+      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : (map['dataTraceEnabled'] as bool).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
+      metricsEnabled: map['metricsEnabled'] == null ? null : (map['metricsEnabled'] as bool).input(),
+      requireAuthorizationForCacheControl: map['requireAuthorizationForCacheControl'] == null ? null : (map['requireAuthorizationForCacheControl'] as bool).input(),
+      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : (map['throttlingBurstLimit'] as int).input(),
+      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : (map['throttlingRateLimit'] as double).input(),
+      unauthorizedCacheControlHeaderStrategy: map['unauthorizedCacheControlHeaderStrategy'] == null ? null : (map['unauthorizedCacheControlHeaderStrategy'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class GetIpv4GatewaysArgs {
   /// [status] The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
   /// [vpcId] The ID of the VPC associated with the IPv4 Gateway.
   GetIpv4GatewaysArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? ipv4GatewayName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      ipv4GatewayName = pulumi.Input.asOptionalInput<String>(ipv4GatewayName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.ids,
+    this.ipv4GatewayName,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetIpv4GatewaysArgs {
 
   factory GetIpv4GatewaysArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv4GatewaysArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : pulumi.Output.create<String>(map['ipv4GatewayName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : (map['ipv4GatewayName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

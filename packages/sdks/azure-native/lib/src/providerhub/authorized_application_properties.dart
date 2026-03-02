@@ -6,8 +6,8 @@ import 'application_provider_authorization.dart';
 
 class AuthorizedApplicationProperties {
   /// The authorizations that determine the level of data access permissions on the specified resource types.
-  final List<ApplicationDataAuthorization>? dataAuthorizations;
-  final ApplicationProviderAuthorization? providerAuthorization;
+  final pulumi.Input<List<ApplicationDataAuthorization>>? dataAuthorizations;
+  final pulumi.Input<ApplicationProviderAuthorization>? providerAuthorization;
 
   /// Creates a new [AuthorizedApplicationProperties].
   /// [dataAuthorizations] The authorizations that determine the level of data access permissions on the specified resource types.
@@ -19,15 +19,15 @@ class AuthorizedApplicationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataAuthorizations': ?dataAuthorizations == null ? null : pulumi.Input.encodeList<ApplicationDataAuthorization, Map<String, dynamic>>(dataAuthorizations!, (value) => value.toMap()),
-      'providerAuthorization': ?providerAuthorization == null ? null : providerAuthorization!.toMap(),
+      'dataAuthorizations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationDataAuthorization>, List<Map<String, dynamic>>>(dataAuthorizations, (value) => pulumi.Input.encodeList<ApplicationDataAuthorization, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'providerAuthorization': ?pulumi.Input.mapOptionalInputValue<ApplicationProviderAuthorization, Map<String, dynamic>>(providerAuthorization, (value) => value.toMap()),
     };
   }
 
   factory AuthorizedApplicationProperties.fromMap(Map<String, dynamic> map) {
     return AuthorizedApplicationProperties(
-      dataAuthorizations: map['dataAuthorizations'] == null ? null : pulumi.Input.decodeList<ApplicationDataAuthorization>(map['dataAuthorizations'], (value) => ApplicationDataAuthorization.fromMap((value as Map).cast<String, dynamic>())),
-      providerAuthorization: map['providerAuthorization'] == null ? null : ApplicationProviderAuthorization.fromMap((map['providerAuthorization'] as Map).cast<String, dynamic>()),
+      dataAuthorizations: map['dataAuthorizations'] == null ? null : (pulumi.Input.decodeList<ApplicationDataAuthorization>(map['dataAuthorizations'], (value) => ApplicationDataAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      providerAuthorization: map['providerAuthorization'] == null ? null : (ApplicationProviderAuthorization.fromMap((map['providerAuthorization'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

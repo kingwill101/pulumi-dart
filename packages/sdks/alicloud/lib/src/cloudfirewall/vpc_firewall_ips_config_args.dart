@@ -37,21 +37,14 @@ class VpcFirewallIpsConfigArgs {
   /// [runMode] IPS defense mode. Value:
   /// [vpcFirewallId] The ID of the VPC firewall instance. Value:
   VpcFirewallIpsConfigArgs({
-    required pulumi.Output<int> basicRules,
-    required pulumi.Output<int> enableAllPatch,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<String>? ruleClass,
-    required pulumi.Output<int> runMode,
-    required pulumi.Output<String> vpcFirewallId,
-  }) :
-      basicRules = pulumi.Input.asInput<int>(basicRules),
-      enableAllPatch = pulumi.Input.asInput<int>(enableAllPatch),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      ruleClass = pulumi.Input.asOptionalInput<String>(ruleClass),
-      runMode = pulumi.Input.asInput<int>(runMode),
-      vpcFirewallId = pulumi.Input.asInput<String>(vpcFirewallId);
+    required this.basicRules,
+    required this.enableAllPatch,
+    this.lang,
+    this.memberUid,
+    this.ruleClass,
+    required this.runMode,
+    required this.vpcFirewallId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class VpcFirewallIpsConfigArgs {
 
   factory VpcFirewallIpsConfigArgs.fromMap(Map<String, dynamic> map) {
     return VpcFirewallIpsConfigArgs(
-      basicRules: pulumi.Output.create<int>(map['basicRules'] as int),
-      enableAllPatch: pulumi.Output.create<int>(map['enableAllPatch'] as int),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      ruleClass: map['ruleClass'] == null ? null : pulumi.Output.create<String>(map['ruleClass'] as String),
-      runMode: pulumi.Output.create<int>(map['runMode'] as int),
-      vpcFirewallId: pulumi.Output.create<String>(map['vpcFirewallId'] as String),
+      basicRules: (map['basicRules'] as int).input(),
+      enableAllPatch: (map['enableAllPatch'] as int).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      ruleClass: map['ruleClass'] == null ? null : (map['ruleClass'] as String).input(),
+      runMode: (map['runMode'] as int).input(),
+      vpcFirewallId: (map['vpcFirewallId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kubernetes storage class info.
 class KubernetesRoleStorageClassInfoResponse {
   /// Storage class name.
-  final String name;
+  final pulumi.Input<String> name;
   /// If provisioned storage is posix compliant.
-  final String posixCompliant;
+  final pulumi.Input<String> posixCompliant;
   /// Storage class type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [KubernetesRoleStorageClassInfoResponse].
   /// [name] Storage class name.
@@ -30,9 +31,9 @@ class KubernetesRoleStorageClassInfoResponse {
 
   factory KubernetesRoleStorageClassInfoResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleStorageClassInfoResponse(
-      name: map['name'] as String,
-      posixCompliant: map['posixCompliant'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      posixCompliant: (map['posixCompliant'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

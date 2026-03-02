@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EcdPolicyGroupAuthorizeSecurityPolicyRule {
   /// The cidrip of security rules.
-  final String? cidrIp;
+  final pulumi.Input<String>? cidrIp;
   /// The description of security rules.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The ip protocol of security rules.
-  final String? ipProtocol;
+  final pulumi.Input<String>? ipProtocol;
   /// The policy of security rules.
-  final String? policy;
+  final pulumi.Input<String>? policy;
   /// The port range of security rules.
-  final String? portRange;
+  final pulumi.Input<String>? portRange;
   /// The priority of security rules.
-  final String? priority;
+  final pulumi.Input<String>? priority;
   /// The type of security rules.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [EcdPolicyGroupAuthorizeSecurityPolicyRule].
   /// [cidrIp] The cidrip of security rules.
@@ -49,13 +50,13 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule {
 
   factory EcdPolicyGroupAuthorizeSecurityPolicyRule.fromMap(Map<String, dynamic> map) {
     return EcdPolicyGroupAuthorizeSecurityPolicyRule(
-      cidrIp: map['cidrIp'] == null ? null : map['cidrIp'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      ipProtocol: map['ipProtocol'] == null ? null : map['ipProtocol'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as String,
-      portRange: map['portRange'] == null ? null : map['portRange'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

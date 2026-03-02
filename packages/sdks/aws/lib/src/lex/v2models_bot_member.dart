@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsBotMember {
   /// (Required) - Alias ID of a bot that is a member of this network of bots.
-  final String aliasId;
+  final pulumi.Input<String> aliasId;
   /// (Required) - Alias name of a bot that is a member of this network of bots.
-  final String aliasName;
+  final pulumi.Input<String> aliasName;
   /// (Required) - Unique ID of a bot that is a member of this network of bots.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the bot. The bot name must be unique in the account that creates the bot. Type String. Length Constraints: Minimum length of 1. Maximum length of 100.
-  final String name;
+  final pulumi.Input<String> name;
   /// (Required) - Version of a bot that is a member of this network of bots.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [V2modelsBotMember].
   /// [aliasId] (Required) - Alias ID of a bot that is a member of this network of bots.
@@ -39,11 +40,11 @@ class V2modelsBotMember {
 
   factory V2modelsBotMember.fromMap(Map<String, dynamic> map) {
     return V2modelsBotMember(
-      aliasId: map['aliasId'] as String,
-      aliasName: map['aliasName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      version: map['version'] as String,
+      aliasId: (map['aliasId'] as String).input(),
+      aliasName: (map['aliasName'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

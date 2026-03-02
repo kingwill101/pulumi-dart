@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec {
   /// The resource metric name.
@@ -7,12 +8,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
   /// * For Online Prediction:
   /// * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
   /// * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The target resource utilization in percentage (1% - 100%) for the given
   /// metric; once the real usage deviates from the target by a certain
   /// percentage, the machine replicas change. The default value is 60
   /// (representing 60%) if not provided.
-  final int? target;
+  final pulumi.Input<int>? target;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec].
   /// [metricName] The resource metric name.
@@ -31,8 +32,8 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
 
   factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec(
-      metricName: map['metricName'] as String,
-      target: map['target'] == null ? null : map['target'] as int,
+      metricName: (map['metricName'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as int).input(),
     );
   }
 }

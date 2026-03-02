@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'content_safety.dart';
 import 'model_settings.dart';
 
 class ServerlessEndpoint {
   /// [Required] Specifies the authentication mode for the Serverless endpoint.
-  final String authMode;
+  final pulumi.Input<String> authMode;
   /// Specifies the content safety options. If omitted, the default content safety settings will be configured
-  final ContentSafety? contentSafety;
+  final pulumi.Input<ContentSafety>? contentSafety;
   /// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-  final ModelSettings? modelSettings;
+  final pulumi.Input<ModelSettings>? modelSettings;
 
   /// Creates a new [ServerlessEndpoint].
   /// [authMode] [Required] Specifies the authentication mode for the Serverless endpoint.
@@ -24,16 +25,16 @@ class ServerlessEndpoint {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authMode': authMode,
-      'contentSafety': ?contentSafety == null ? null : contentSafety!.toMap(),
-      'modelSettings': ?modelSettings == null ? null : modelSettings!.toMap(),
+      'contentSafety': ?pulumi.Input.mapOptionalInputValue<ContentSafety, Map<String, dynamic>>(contentSafety, (value) => value.toMap()),
+      'modelSettings': ?pulumi.Input.mapOptionalInputValue<ModelSettings, Map<String, dynamic>>(modelSettings, (value) => value.toMap()),
     };
   }
 
   factory ServerlessEndpoint.fromMap(Map<String, dynamic> map) {
     return ServerlessEndpoint(
-      authMode: map['authMode'] as String,
-      contentSafety: map['contentSafety'] == null ? null : ContentSafety.fromMap((map['contentSafety'] as Map).cast<String, dynamic>()),
-      modelSettings: map['modelSettings'] == null ? null : ModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>()),
+      authMode: (map['authMode'] as String).input(),
+      contentSafety: map['contentSafety'] == null ? null : (ContentSafety.fromMap((map['contentSafety'] as Map).cast<String, dynamic>())).input(),
+      modelSettings: map['modelSettings'] == null ? null : (ModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInputSourcePassthrough {
   /// Specifies the event device used in passthrough mode for the input device.
-  final String evDev;
+  final pulumi.Input<String> evDev;
 
   /// Creates a new [DomainDevicesInputSourcePassthrough].
   /// [evDev] Specifies the event device used in passthrough mode for the input device.
@@ -19,7 +20,7 @@ class DomainDevicesInputSourcePassthrough {
 
   factory DomainDevicesInputSourcePassthrough.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInputSourcePassthrough(
-      evDev: map['evDev'] as String,
+      evDev: (map['evDev'] as String).input(),
     );
   }
 }

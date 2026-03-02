@@ -5,7 +5,7 @@ import 'get_feature_state_state.dart';
 
 class GetFeatureState {
   /// Output only. The "running state" of the Feature in this Hub.
-  final List<GetFeatureStateState> states;
+  final pulumi.Input<List<GetFeatureStateState>> states;
 
   /// Creates a new [GetFeatureState].
   /// [states] Output only. The "running state" of the Feature in this Hub.
@@ -15,13 +15,13 @@ class GetFeatureState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'states': pulumi.Input.encodeList<GetFeatureStateState, Map<String, dynamic>>(states, (value) => value.toMap()),
+      'states': pulumi.Input.mapInputValue<List<GetFeatureStateState>, List<Map<String, dynamic>>>(states, (value) => pulumi.Input.encodeList<GetFeatureStateState, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetFeatureState.fromMap(Map<String, dynamic> map) {
     return GetFeatureState(
-      states: pulumi.Input.decodeList<GetFeatureStateState>(map['states'], (value) => GetFeatureStateState.fromMap((value as Map).cast<String, dynamic>())),
+      states: (pulumi.Input.decodeList<GetFeatureStateState>(map['states'], (value) => GetFeatureStateState.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

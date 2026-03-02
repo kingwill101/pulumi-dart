@@ -22,15 +22,11 @@ class PlacementGroupArgs {
   /// [placementGroupType] The placement group type to use when placing Linodes in this group.
   /// [region] The region of the Placement Group.
   PlacementGroupArgs({
-    required pulumi.Output<String> label,
-    pulumi.Output<String>? placementGroupPolicy,
-    required pulumi.Output<String> placementGroupType,
-    required pulumi.Output<String> region,
-  }) :
-      label = pulumi.Input.asInput<String>(label),
-      placementGroupPolicy = pulumi.Input.asOptionalInput<String>(placementGroupPolicy),
-      placementGroupType = pulumi.Input.asInput<String>(placementGroupType),
-      region = pulumi.Input.asInput<String>(region);
+    required this.label,
+    this.placementGroupPolicy,
+    required this.placementGroupType,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PlacementGroupArgs {
 
   factory PlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupArgs(
-      label: pulumi.Output.create<String>(map['label'] as String),
-      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : pulumi.Output.create<String>(map['placementGroupPolicy'] as String),
-      placementGroupType: pulumi.Output.create<String>(map['placementGroupType'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      label: (map['label'] as String).input(),
+      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy'] as String).input(),
+      placementGroupType: (map['placementGroupType'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

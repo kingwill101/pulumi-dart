@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_route_spec_http_route_match_header_match.dart';
 
 class GetRouteSpecHttpRouteMatchHeader {
-  final bool invert;
-  final List<GetRouteSpecHttpRouteMatchHeaderMatch> matches;
+  final pulumi.Input<bool> invert;
+  final pulumi.Input<List<GetRouteSpecHttpRouteMatchHeaderMatch>> matches;
   /// Name of the route.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetRouteSpecHttpRouteMatchHeader].
   /// [invert] Required.
@@ -22,16 +22,16 @@ class GetRouteSpecHttpRouteMatchHeader {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'invert': invert,
-      'matches': pulumi.Input.encodeList<GetRouteSpecHttpRouteMatchHeaderMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'matches': pulumi.Input.mapInputValue<List<GetRouteSpecHttpRouteMatchHeaderMatch>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<GetRouteSpecHttpRouteMatchHeaderMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory GetRouteSpecHttpRouteMatchHeader.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttpRouteMatchHeader(
-      invert: map['invert'] as bool,
-      matches: pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchHeaderMatch>(map['matches'], (value) => GetRouteSpecHttpRouteMatchHeaderMatch.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      invert: (map['invert'] as bool).input(),
+      matches: (pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchHeaderMatch>(map['matches'], (value) => GetRouteSpecHttpRouteMatchHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

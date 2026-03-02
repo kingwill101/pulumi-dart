@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'exec_action.dart';
 
 /// Probe describes a health check to be performed against an App Instance to determine whether it is alive or ready to receive traffic.
 class Probe {
   /// Indicate whether the probe is disabled.
-  final bool disableProbe;
+  final pulumi.Input<bool> disableProbe;
   /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Minimum value is 1.
-  final int? failureThreshold;
+  final pulumi.Input<int>? failureThreshold;
   /// Number of seconds after the App Instance has started before probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-  final int? initialDelaySeconds;
+  final pulumi.Input<int>? initialDelaySeconds;
   /// How often (in seconds) to perform the probe. Minimum value is 1.
-  final int? periodSeconds;
+  final pulumi.Input<int>? periodSeconds;
   /// The action of the probe.
-  final ExecAction? probeAction;
+  final pulumi.Input<ExecAction>? probeAction;
   /// Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 for liveness and startup. Minimum value is 1.
-  final int? successThreshold;
+  final pulumi.Input<int>? successThreshold;
   /// Number of seconds after which the probe times out. Minimum value is 1.
-  final int? timeoutSeconds;
+  final pulumi.Input<int>? timeoutSeconds;
 
   /// Creates a new [Probe].
   /// [disableProbe] Indicate whether the probe is disabled.
@@ -43,7 +44,7 @@ class Probe {
       'failureThreshold': ?failureThreshold,
       'initialDelaySeconds': ?initialDelaySeconds,
       'periodSeconds': ?periodSeconds,
-      'probeAction': ?probeAction == null ? null : probeAction!.toMap(),
+      'probeAction': ?pulumi.Input.mapOptionalInputValue<ExecAction, Map<String, dynamic>>(probeAction, (value) => value.toMap()),
       'successThreshold': ?successThreshold,
       'timeoutSeconds': ?timeoutSeconds,
     };
@@ -51,13 +52,13 @@ class Probe {
 
   factory Probe.fromMap(Map<String, dynamic> map) {
     return Probe(
-      disableProbe: map['disableProbe'] as bool,
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : map['initialDelaySeconds'] as int,
-      periodSeconds: map['periodSeconds'] == null ? null : map['periodSeconds'] as int,
-      probeAction: map['probeAction'] == null ? null : ExecAction.fromMap((map['probeAction'] as Map).cast<String, dynamic>()),
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as int,
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
+      disableProbe: (map['disableProbe'] as bool).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
+      probeAction: map['probeAction'] == null ? null : (ExecAction.fromMap((map['probeAction'] as Map).cast<String, dynamic>())).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

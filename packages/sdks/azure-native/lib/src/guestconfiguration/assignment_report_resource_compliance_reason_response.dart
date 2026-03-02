@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reason and code for the compliance of the guest configuration assignment resource.
 class AssignmentReportResourceComplianceReasonResponse {
   /// Code for the compliance of the guest configuration assignment resource.
-  final String code;
+  final pulumi.Input<String> code;
   /// Reason for the compliance of the guest configuration assignment resource.
-  final String phrase;
+  final pulumi.Input<String> phrase;
 
   /// Creates a new [AssignmentReportResourceComplianceReasonResponse].
   /// [code] Code for the compliance of the guest configuration assignment resource.
@@ -25,8 +26,8 @@ class AssignmentReportResourceComplianceReasonResponse {
 
   factory AssignmentReportResourceComplianceReasonResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentReportResourceComplianceReasonResponse(
-      code: map['code'] as String,
-      phrase: map['phrase'] as String,
+      code: (map['code'] as String).input(),
+      phrase: (map['phrase'] as String).input(),
     );
   }
 }

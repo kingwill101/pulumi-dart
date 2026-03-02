@@ -19,13 +19,10 @@ class GetContainerAppsAuthConfigArgs {
   /// [containerAppName] Name of the Container App.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetContainerAppsAuthConfigArgs({
-    required pulumi.Output<String> authConfigName,
-    required pulumi.Output<String> containerAppName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authConfigName = pulumi.Input.asInput<String>(authConfigName),
-      containerAppName = pulumi.Input.asInput<String>(containerAppName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authConfigName,
+    required this.containerAppName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetContainerAppsAuthConfigArgs {
 
   factory GetContainerAppsAuthConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsAuthConfigArgs(
-      authConfigName: pulumi.Output.create<String>(map['authConfigName'] as String),
-      containerAppName: pulumi.Output.create<String>(map['containerAppName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authConfigName: (map['authConfigName'] as String).input(),
+      containerAppName: (map['containerAppName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

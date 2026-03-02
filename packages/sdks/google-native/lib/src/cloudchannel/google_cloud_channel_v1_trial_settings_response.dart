@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for trial offers.
 class GoogleCloudChannelV1TrialSettingsResponse {
   /// Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial.
-  final bool trial;
+  final pulumi.Input<bool> trial;
 
   /// Creates a new [GoogleCloudChannelV1TrialSettingsResponse].
   /// [endTime] Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
@@ -25,8 +26,8 @@ class GoogleCloudChannelV1TrialSettingsResponse {
 
   factory GoogleCloudChannelV1TrialSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1TrialSettingsResponse(
-      endTime: map['endTime'] as String,
-      trial: map['trial'] as bool,
+      endTime: (map['endTime'] as String).input(),
+      trial: (map['trial'] as bool).input(),
     );
   }
 }

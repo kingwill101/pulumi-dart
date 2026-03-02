@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location {
   /// S3 bucket name containing the CA certificates bundle.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// S3 object key for the CA certificates bundle.
-  final String key;
+  final pulumi.Input<String> key;
   /// AWS region of the S3 bucket.
-  final String region;
+  final pulumi.Input<String> region;
   /// S3 object version ID for the CA certificates bundle.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location].
   /// [bucket] S3 bucket name containing the CA certificates bundle.
@@ -34,10 +35,10 @@ class TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location {
 
   factory TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location.fromMap(Map<String, dynamic> map) {
     return TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location(
-      bucket: map['bucket'] as String,
-      key: map['key'] as String,
-      region: map['region'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
+      region: (map['region'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -7,17 +7,17 @@ import 'extended_error_info_response.dart';
 /// The default rollout status.
 class DefaultRolloutPropertiesStatusResponse {
   /// The completed regions.
-  final List<String>? completedRegions;
+  final pulumi.Input<List<String>>? completedRegions;
   /// The failed or skipped regions.
-  final Map<String, ExtendedErrorInfoResponse>? failedOrSkippedRegions;
+  final pulumi.Input<Map<String, ExtendedErrorInfoResponse>>? failedOrSkippedRegions;
   /// The manifest checkin status.
-  final DefaultRolloutStatusManifestCheckinStatusResponse? manifestCheckinStatus;
+  final pulumi.Input<DefaultRolloutStatusManifestCheckinStatusResponse>? manifestCheckinStatus;
   /// The next traffic region.
-  final String? nextTrafficRegion;
+  final pulumi.Input<String>? nextTrafficRegion;
   /// The next traffic region scheduled time.
-  final String? nextTrafficRegionScheduledTime;
+  final pulumi.Input<String>? nextTrafficRegionScheduledTime;
   /// The subscription reregistration result.
-  final String? subscriptionReregistrationResult;
+  final pulumi.Input<String>? subscriptionReregistrationResult;
 
   /// Creates a new [DefaultRolloutPropertiesStatusResponse].
   /// [completedRegions] The completed regions.
@@ -38,8 +38,8 @@ class DefaultRolloutPropertiesStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'completedRegions': ?completedRegions,
-      'failedOrSkippedRegions': ?failedOrSkippedRegions == null ? null : pulumi.Input.encodeMapValues<ExtendedErrorInfoResponse, Map<String, dynamic>>(failedOrSkippedRegions!, (value) => value.toMap()),
-      'manifestCheckinStatus': ?manifestCheckinStatus == null ? null : manifestCheckinStatus!.toMap(),
+      'failedOrSkippedRegions': ?pulumi.Input.mapOptionalInputValue<Map<String, ExtendedErrorInfoResponse>, Map<String, Map<String, dynamic>>>(failedOrSkippedRegions, (value) => pulumi.Input.encodeMapValues<ExtendedErrorInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'manifestCheckinStatus': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutStatusManifestCheckinStatusResponse, Map<String, dynamic>>(manifestCheckinStatus, (value) => value.toMap()),
       'nextTrafficRegion': ?nextTrafficRegion,
       'nextTrafficRegionScheduledTime': ?nextTrafficRegionScheduledTime,
       'subscriptionReregistrationResult': ?subscriptionReregistrationResult,
@@ -48,12 +48,12 @@ class DefaultRolloutPropertiesStatusResponse {
 
   factory DefaultRolloutPropertiesStatusResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutPropertiesStatusResponse(
-      completedRegions: map['completedRegions'] == null ? null : (map['completedRegions'] as List).cast<String>(),
-      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : pulumi.Input.decodeMapValues<ExtendedErrorInfoResponse>(map['failedOrSkippedRegions'], (value) => ExtendedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : DefaultRolloutStatusManifestCheckinStatusResponse.fromMap((map['manifestCheckinStatus'] as Map).cast<String, dynamic>()),
-      nextTrafficRegion: map['nextTrafficRegion'] == null ? null : map['nextTrafficRegion'] as String,
-      nextTrafficRegionScheduledTime: map['nextTrafficRegionScheduledTime'] == null ? null : map['nextTrafficRegionScheduledTime'] as String,
-      subscriptionReregistrationResult: map['subscriptionReregistrationResult'] == null ? null : map['subscriptionReregistrationResult'] as String,
+      completedRegions: map['completedRegions'] == null ? null : ((map['completedRegions'] as List).cast<String>()).input(),
+      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : (pulumi.Input.decodeMapValues<ExtendedErrorInfoResponse>(map['failedOrSkippedRegions'], (value) => ExtendedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : (DefaultRolloutStatusManifestCheckinStatusResponse.fromMap((map['manifestCheckinStatus'] as Map).cast<String, dynamic>())).input(),
+      nextTrafficRegion: map['nextTrafficRegion'] == null ? null : (map['nextTrafficRegion'] as String).input(),
+      nextTrafficRegionScheduledTime: map['nextTrafficRegionScheduledTime'] == null ? null : (map['nextTrafficRegionScheduledTime'] as String).input(),
+      subscriptionReregistrationResult: map['subscriptionReregistrationResult'] == null ? null : (map['subscriptionReregistrationResult'] as String).input(),
     );
   }
 }

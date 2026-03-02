@@ -45,23 +45,15 @@ class DeliveryPipelineArgs {
   /// [serialPipeline] SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
   /// [suspended] When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
   DeliveryPipelineArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<DeliveryPipelineSerialPipeline>? serialPipeline,
-    pulumi.Output<bool>? suspended,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serialPipeline = pulumi.Input.asOptionalInput<DeliveryPipelineSerialPipeline>(serialPipeline),
-      suspended = pulumi.Input.asOptionalInput<bool>(suspended);
+    this.annotations,
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.serialPipeline,
+    this.suspended,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,14 +70,14 @@ class DeliveryPipelineArgs {
 
   factory DeliveryPipelineArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serialPipeline: map['serialPipeline'] == null ? null : pulumi.Output.create<DeliveryPipelineSerialPipeline>(DeliveryPipelineSerialPipeline.fromMap((map['serialPipeline'] as Map).cast<String, dynamic>())),
-      suspended: map['suspended'] == null ? null : pulumi.Output.create<bool>(map['suspended'] as bool),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serialPipeline: map['serialPipeline'] == null ? null : (DeliveryPipelineSerialPipeline.fromMap((map['serialPipeline'] as Map).cast<String, dynamic>())).input(),
+      suspended: map['suspended'] == null ? null : (map['suspended'] as bool).input(),
     );
   }
 }

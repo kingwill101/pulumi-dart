@@ -5,9 +5,9 @@ import 'envelope_signature.dart';
 
 /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
 class Envelope {
-  final String? payload;
-  final String? payloadType;
-  final List<EnvelopeSignature>? signatures;
+  final pulumi.Input<String>? payload;
+  final pulumi.Input<String>? payloadType;
+  final pulumi.Input<List<EnvelopeSignature>>? signatures;
 
   /// Creates a new [Envelope].
   /// [payload] Optional.
@@ -23,15 +23,15 @@ class Envelope {
     return <String, dynamic>{
       'payload': ?payload,
       'payloadType': ?payloadType,
-      'signatures': ?signatures == null ? null : pulumi.Input.encodeList<EnvelopeSignature, Map<String, dynamic>>(signatures!, (value) => value.toMap()),
+      'signatures': ?pulumi.Input.mapOptionalInputValue<List<EnvelopeSignature>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<EnvelopeSignature, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Envelope.fromMap(Map<String, dynamic> map) {
     return Envelope(
-      payload: map['payload'] == null ? null : map['payload'] as String,
-      payloadType: map['payloadType'] == null ? null : map['payloadType'] as String,
-      signatures: map['signatures'] == null ? null : pulumi.Input.decodeList<EnvelopeSignature>(map['signatures'], (value) => EnvelopeSignature.fromMap((value as Map).cast<String, dynamic>())),
+      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
+      payloadType: map['payloadType'] == null ? null : (map['payloadType'] as String).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignature>(map['signatures'], (value) => EnvelopeSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

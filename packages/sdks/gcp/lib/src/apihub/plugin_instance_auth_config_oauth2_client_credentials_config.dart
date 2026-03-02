@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plugin_instance_auth_config_oauth2_client_credentials_config_client_secret.dart';
 
 class PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
   /// The client identifier.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Secret provides a reference to entries in Secret Manager.
-  final PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret clientSecret;
+  final pulumi.Input<PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret> clientSecret;
 
   /// Creates a new [PluginInstanceAuthConfigOauth2ClientCredentialsConfig].
   /// [clientId] The client identifier.
@@ -19,14 +20,14 @@ class PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientId': clientId,
-      'clientSecret': clientSecret.toMap(),
+      'clientSecret': pulumi.Input.mapInputValue<PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
     };
   }
 
   factory PluginInstanceAuthConfigOauth2ClientCredentialsConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceAuthConfigOauth2ClientCredentialsConfig(
-      clientId: map['clientId'] as String,
-      clientSecret: PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

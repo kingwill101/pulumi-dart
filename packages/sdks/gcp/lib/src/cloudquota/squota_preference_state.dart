@@ -56,33 +56,20 @@ class SQuotaPreferenceState {
   /// [service] The name of the service to which the quota preference is applied.
   /// [updateTime] Update time stamp.
   SQuotaPreferenceState({
-    pulumi.Output<String>? contactEmail,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? dimensions,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? ignoreSafetyChecks,
-    pulumi.Output<String>? justification,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<SQuotaPreferenceQuotaConfig>? quotaConfig,
-    pulumi.Output<String>? quotaId,
-    pulumi.Output<bool>? reconciling,
-    pulumi.Output<String>? service,
-    pulumi.Output<String>? updateTime,
-  }) :
-      contactEmail = pulumi.Input.asOptionalInput<String>(contactEmail),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dimensions = pulumi.Input.asOptionalInput<Map<String, String>>(dimensions),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      ignoreSafetyChecks = pulumi.Input.asOptionalInput<String>(ignoreSafetyChecks),
-      justification = pulumi.Input.asOptionalInput<String>(justification),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      quotaConfig = pulumi.Input.asOptionalInput<SQuotaPreferenceQuotaConfig>(quotaConfig),
-      quotaId = pulumi.Input.asOptionalInput<String>(quotaId),
-      reconciling = pulumi.Input.asOptionalInput<bool>(reconciling),
-      service = pulumi.Input.asOptionalInput<String>(service),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.contactEmail,
+    this.createTime,
+    this.dimensions,
+    this.etag,
+    this.ignoreSafetyChecks,
+    this.justification,
+    this.name,
+    this.parent,
+    this.quotaConfig,
+    this.quotaId,
+    this.reconciling,
+    this.service,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,19 +91,19 @@ class SQuotaPreferenceState {
 
   factory SQuotaPreferenceState.fromMap(Map<String, dynamic> map) {
     return SQuotaPreferenceState(
-      contactEmail: map['contactEmail'] == null ? null : pulumi.Output.create<String>(map['contactEmail'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['dimensions'] as Map).cast<String, String>()),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      ignoreSafetyChecks: map['ignoreSafetyChecks'] == null ? null : pulumi.Output.create<String>(map['ignoreSafetyChecks'] as String),
-      justification: map['justification'] == null ? null : pulumi.Output.create<String>(map['justification'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      quotaConfig: map['quotaConfig'] == null ? null : pulumi.Output.create<SQuotaPreferenceQuotaConfig>(SQuotaPreferenceQuotaConfig.fromMap((map['quotaConfig'] as Map).cast<String, dynamic>())),
-      quotaId: map['quotaId'] == null ? null : pulumi.Output.create<String>(map['quotaId'] as String),
-      reconciling: map['reconciling'] == null ? null : pulumi.Output.create<bool>(map['reconciling'] as bool),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      ignoreSafetyChecks: map['ignoreSafetyChecks'] == null ? null : (map['ignoreSafetyChecks'] as String).input(),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      quotaConfig: map['quotaConfig'] == null ? null : (SQuotaPreferenceQuotaConfig.fromMap((map['quotaConfig'] as Map).cast<String, dynamic>())).input(),
+      quotaId: map['quotaId'] == null ? null : (map['quotaId'] as String).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

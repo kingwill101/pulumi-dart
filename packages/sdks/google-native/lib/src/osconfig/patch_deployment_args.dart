@@ -44,27 +44,17 @@ class PatchDeploymentArgs {
   /// [recurringSchedule] Schedule recurring executions.
   /// [rollout] Optional. Rollout strategy of the patch job.
   PatchDeploymentArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? duration,
-    required pulumi.Output<PatchInstanceFilter> instanceFilter,
-    pulumi.Output<String>? name,
-    required pulumi.Output<OneTimeSchedule> oneTimeSchedule,
-    pulumi.Output<PatchConfig>? patchConfig,
-    required pulumi.Output<String> patchDeploymentId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<RecurringSchedule> recurringSchedule,
-    pulumi.Output<PatchRollout>? rollout,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      instanceFilter = pulumi.Input.asInput<PatchInstanceFilter>(instanceFilter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oneTimeSchedule = pulumi.Input.asInput<OneTimeSchedule>(oneTimeSchedule),
-      patchConfig = pulumi.Input.asOptionalInput<PatchConfig>(patchConfig),
-      patchDeploymentId = pulumi.Input.asInput<String>(patchDeploymentId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recurringSchedule = pulumi.Input.asInput<RecurringSchedule>(recurringSchedule),
-      rollout = pulumi.Input.asOptionalInput<PatchRollout>(rollout);
+    this.description,
+    this.duration,
+    required this.instanceFilter,
+    this.name,
+    required this.oneTimeSchedule,
+    this.patchConfig,
+    required this.patchDeploymentId,
+    this.project,
+    required this.recurringSchedule,
+    this.rollout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class PatchDeploymentArgs {
 
   factory PatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      instanceFilter: pulumi.Output.create<PatchInstanceFilter>(PatchInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      oneTimeSchedule: pulumi.Output.create<OneTimeSchedule>(OneTimeSchedule.fromMap((map['oneTimeSchedule'] as Map).cast<String, dynamic>())),
-      patchConfig: map['patchConfig'] == null ? null : pulumi.Output.create<PatchConfig>(PatchConfig.fromMap((map['patchConfig'] as Map).cast<String, dynamic>())),
-      patchDeploymentId: pulumi.Output.create<String>(map['patchDeploymentId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recurringSchedule: pulumi.Output.create<RecurringSchedule>(RecurringSchedule.fromMap((map['recurringSchedule'] as Map).cast<String, dynamic>())),
-      rollout: map['rollout'] == null ? null : pulumi.Output.create<PatchRollout>(PatchRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      instanceFilter: (PatchInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      oneTimeSchedule: (OneTimeSchedule.fromMap((map['oneTimeSchedule'] as Map).cast<String, dynamic>())).input(),
+      patchConfig: map['patchConfig'] == null ? null : (PatchConfig.fromMap((map['patchConfig'] as Map).cast<String, dynamic>())).input(),
+      patchDeploymentId: (map['patchDeploymentId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recurringSchedule: (RecurringSchedule.fromMap((map['recurringSchedule'] as Map).cast<String, dynamic>())).input(),
+      rollout: map['rollout'] == null ? null : (PatchRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

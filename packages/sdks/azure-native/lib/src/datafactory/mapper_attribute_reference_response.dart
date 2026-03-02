@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mapper_connection_reference_response.dart';
 
 /// Attribute reference details for the referred column.
 class MapperAttributeReferenceResponse {
   /// Name of the table.
-  final String? entity;
+  final pulumi.Input<String>? entity;
   /// The connection reference for the connection.
-  final MapperConnectionReferenceResponse? entityConnectionReference;
+  final pulumi.Input<MapperConnectionReferenceResponse>? entityConnectionReference;
   /// Name of the column.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [MapperAttributeReferenceResponse].
   /// [entity] Name of the table.
@@ -24,16 +25,16 @@ class MapperAttributeReferenceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'entity': ?entity,
-      'entityConnectionReference': ?entityConnectionReference == null ? null : entityConnectionReference!.toMap(),
+      'entityConnectionReference': ?pulumi.Input.mapOptionalInputValue<MapperConnectionReferenceResponse, Map<String, dynamic>>(entityConnectionReference, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
   factory MapperAttributeReferenceResponse.fromMap(Map<String, dynamic> map) {
     return MapperAttributeReferenceResponse(
-      entity: map['entity'] == null ? null : map['entity'] as String,
-      entityConnectionReference: map['entityConnectionReference'] == null ? null : MapperConnectionReferenceResponse.fromMap((map['entityConnectionReference'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
+      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
+      entityConnectionReference: map['entityConnectionReference'] == null ? null : (MapperConnectionReferenceResponse.fromMap((map['entityConnectionReference'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

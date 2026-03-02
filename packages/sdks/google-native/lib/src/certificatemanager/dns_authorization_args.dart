@@ -29,21 +29,14 @@ class DnsAuthorizationArgs {
   /// [name] A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
   /// [project] Optional.
   DnsAuthorizationArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> dnsAuthorizationId,
-    required pulumi.Output<String> domain,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsAuthorizationId = pulumi.Input.asInput<String>(dnsAuthorizationId),
-      domain = pulumi.Input.asInput<String>(domain),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.dnsAuthorizationId,
+    required this.domain,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class DnsAuthorizationArgs {
 
   factory DnsAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return DnsAuthorizationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dnsAuthorizationId: pulumi.Output.create<String>(map['dnsAuthorizationId'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dnsAuthorizationId: (map['dnsAuthorizationId'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

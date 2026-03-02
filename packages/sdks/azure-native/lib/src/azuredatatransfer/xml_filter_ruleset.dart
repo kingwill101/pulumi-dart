@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rules for filtering XML content using XSD schemas.
 class XmlFilterRuleset {
   /// The default XML namespace used for schema validation.
-  final String? defaultNamespace;
+  final pulumi.Input<String>? defaultNamespace;
   /// Defines the method for referencing the xml schema.
-  final String? reference;
+  final pulumi.Input<String>? reference;
   /// The inline XSD schema to be used for validation.
-  final String? schema;
+  final pulumi.Input<String>? schema;
 
   /// Creates a new [XmlFilterRuleset].
   /// [defaultNamespace] The default XML namespace used for schema validation.
@@ -30,9 +31,9 @@ class XmlFilterRuleset {
 
   factory XmlFilterRuleset.fromMap(Map<String, dynamic> map) {
     return XmlFilterRuleset(
-      defaultNamespace: map['defaultNamespace'] == null ? null : map['defaultNamespace'] as String,
-      reference: map['reference'] == null ? null : map['reference'] as String,
-      schema: map['schema'] == null ? null : map['schema'] as String,
+      defaultNamespace: map['defaultNamespace'] == null ? null : (map['defaultNamespace'] as String).input(),
+      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
     );
   }
 }

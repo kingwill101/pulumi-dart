@@ -16,11 +16,9 @@ class GetReportDefinitionArgs {
   /// [reportName] Name of the report definition to match.
   /// [tags] Map of key-value pairs assigned to the resource.
   GetReportDefinitionArgs({
-    required pulumi.Output<String> reportName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      reportName = pulumi.Input.asInput<String>(reportName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.reportName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetReportDefinitionArgs {
 
   factory GetReportDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetReportDefinitionArgs(
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      reportName: (map['reportName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

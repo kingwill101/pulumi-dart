@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subnet information.
 class SubnetResponse {
   /// The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)).
-  final String? allowPublicIp;
+  final pulumi.Input<String>? allowPublicIp;
   /// The name of the subnet as seen in the lab.
-  final String? labSubnetName;
+  final pulumi.Input<String>? labSubnetName;
   /// The resource ID of the subnet.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [SubnetResponse].
   /// [allowPublicIp] The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)).
@@ -30,9 +31,9 @@ class SubnetResponse {
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      allowPublicIp: map['allowPublicIp'] == null ? null : map['allowPublicIp'] as String,
-      labSubnetName: map['labSubnetName'] == null ? null : map['labSubnetName'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      allowPublicIp: map['allowPublicIp'] == null ? null : (map['allowPublicIp'] as String).input(),
+      labSubnetName: map['labSubnetName'] == null ? null : (map['labSubnetName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

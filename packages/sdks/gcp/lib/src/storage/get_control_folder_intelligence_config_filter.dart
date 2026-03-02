@@ -8,13 +8,13 @@ import 'get_control_folder_intelligence_config_filter_included_cloud_storage_loc
 
 class GetControlFolderIntelligenceConfigFilter {
   /// Buckets to exclude from the Storage Intelligence plan.
-  final List<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket> excludedCloudStorageBuckets;
+  final pulumi.Input<List<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket>> excludedCloudStorageBuckets;
   /// Locations to exclude from the Storage Intelligence plan.
-  final List<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation> excludedCloudStorageLocations;
+  final pulumi.Input<List<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation>> excludedCloudStorageLocations;
   /// Buckets to include in the Storage Intelligence plan.
-  final List<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket> includedCloudStorageBuckets;
+  final pulumi.Input<List<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket>> includedCloudStorageBuckets;
   /// Locations to include in the Storage Intelligence plan.
-  final List<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation> includedCloudStorageLocations;
+  final pulumi.Input<List<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation>> includedCloudStorageLocations;
 
   /// Creates a new [GetControlFolderIntelligenceConfigFilter].
   /// [excludedCloudStorageBuckets] Buckets to exclude from the Storage Intelligence plan.
@@ -30,19 +30,19 @@ class GetControlFolderIntelligenceConfigFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'excludedCloudStorageBuckets': pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket, Map<String, dynamic>>(excludedCloudStorageBuckets, (value) => value.toMap()),
-      'excludedCloudStorageLocations': pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation, Map<String, dynamic>>(excludedCloudStorageLocations, (value) => value.toMap()),
-      'includedCloudStorageBuckets': pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket, Map<String, dynamic>>(includedCloudStorageBuckets, (value) => value.toMap()),
-      'includedCloudStorageLocations': pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation, Map<String, dynamic>>(includedCloudStorageLocations, (value) => value.toMap()),
+      'excludedCloudStorageBuckets': pulumi.Input.mapInputValue<List<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket>, List<Map<String, dynamic>>>(excludedCloudStorageBuckets, (value) => pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'excludedCloudStorageLocations': pulumi.Input.mapInputValue<List<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation>, List<Map<String, dynamic>>>(excludedCloudStorageLocations, (value) => pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'includedCloudStorageBuckets': pulumi.Input.mapInputValue<List<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket>, List<Map<String, dynamic>>>(includedCloudStorageBuckets, (value) => pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'includedCloudStorageLocations': pulumi.Input.mapInputValue<List<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation>, List<Map<String, dynamic>>>(includedCloudStorageLocations, (value) => pulumi.Input.encodeList<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetControlFolderIntelligenceConfigFilter.fromMap(Map<String, dynamic> map) {
     return GetControlFolderIntelligenceConfigFilter(
-      excludedCloudStorageBuckets: pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket>(map['excludedCloudStorageBuckets'], (value) => GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>())),
-      excludedCloudStorageLocations: pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation>(map['excludedCloudStorageLocations'], (value) => GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation.fromMap((value as Map).cast<String, dynamic>())),
-      includedCloudStorageBuckets: pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket>(map['includedCloudStorageBuckets'], (value) => GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>())),
-      includedCloudStorageLocations: pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation>(map['includedCloudStorageLocations'], (value) => GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation.fromMap((value as Map).cast<String, dynamic>())),
+      excludedCloudStorageBuckets: (pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket>(map['excludedCloudStorageBuckets'], (value) => GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedCloudStorageLocations: (pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation>(map['excludedCloudStorageLocations'], (value) => GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedCloudStorageBuckets: (pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket>(map['includedCloudStorageBuckets'], (value) => GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedCloudStorageLocations: (pulumi.Input.decodeList<GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation>(map['includedCloudStorageLocations'], (value) => GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

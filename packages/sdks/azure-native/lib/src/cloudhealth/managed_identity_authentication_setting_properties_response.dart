@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication setting properties for Azure Managed Identity
 class ManagedIdentityAuthenticationSettingPropertiesResponse {
   /// Supported kinds of authentication settings as discriminator
   /// Expected value is 'ManagedIdentity'.
-  final String authenticationKind;
+  final pulumi.Input<String> authenticationKind;
   /// Display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
-  final String managedIdentityName;
+  final pulumi.Input<String> managedIdentityName;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ManagedIdentityAuthenticationSettingPropertiesResponse].
   /// [authenticationKind] Supported kinds of authentication settings as discriminator
@@ -36,10 +37,10 @@ class ManagedIdentityAuthenticationSettingPropertiesResponse {
 
   factory ManagedIdentityAuthenticationSettingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityAuthenticationSettingPropertiesResponse(
-      authenticationKind: map['authenticationKind'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      managedIdentityName: map['managedIdentityName'] as String,
-      provisioningState: map['provisioningState'] as String,
+      authenticationKind: (map['authenticationKind'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      managedIdentityName: (map['managedIdentityName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

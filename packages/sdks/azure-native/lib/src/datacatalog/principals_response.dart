@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User principals.
 class PrincipalsResponse {
   /// Object Id for the user
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// UPN of the user.
-  final String? upn;
+  final pulumi.Input<String>? upn;
 
   /// Creates a new [PrincipalsResponse].
   /// [objectId] Object Id for the user
@@ -25,8 +26,8 @@ class PrincipalsResponse {
 
   factory PrincipalsResponse.fromMap(Map<String, dynamic> map) {
     return PrincipalsResponse(
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      upn: map['upn'] == null ? null : map['upn'] as String,
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      upn: map['upn'] == null ? null : (map['upn'] as String).input(),
     );
   }
 }

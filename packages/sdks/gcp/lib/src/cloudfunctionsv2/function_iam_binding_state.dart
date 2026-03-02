@@ -44,21 +44,14 @@ class FunctionIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   FunctionIamBindingState({
-    pulumi.Output<String>? cloudFunction,
-    pulumi.Output<FunctionIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      cloudFunction = pulumi.Input.asOptionalInput<String>(cloudFunction),
-      condition = pulumi.Input.asOptionalInput<FunctionIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.cloudFunction,
+    this.condition,
+    this.etag,
+    this.location,
+    this.members,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,13 +67,13 @@ class FunctionIamBindingState {
 
   factory FunctionIamBindingState.fromMap(Map<String, dynamic> map) {
     return FunctionIamBindingState(
-      cloudFunction: map['cloudFunction'] == null ? null : pulumi.Output.create<String>(map['cloudFunction'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<FunctionIamBindingCondition>(FunctionIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      cloudFunction: map['cloudFunction'] == null ? null : (map['cloudFunction'] as String).input(),
+      condition: map['condition'] == null ? null : (FunctionIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

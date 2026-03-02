@@ -22,15 +22,11 @@ class WorkspaceExperimentArgs {
   /// [experimentName] Name is the name of the experiment, unique in a namespace
   /// [workspaceId] WorkspaceId is the workspace id which contains the experiment
   WorkspaceExperimentArgs({
-    pulumi.Output<String>? accessibility,
-    required pulumi.Output<String> artifactUri,
-    required pulumi.Output<String> experimentName,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      accessibility = pulumi.Input.asOptionalInput<String>(accessibility),
-      artifactUri = pulumi.Input.asInput<String>(artifactUri),
-      experimentName = pulumi.Input.asInput<String>(experimentName),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.accessibility,
+    required this.artifactUri,
+    required this.experimentName,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class WorkspaceExperimentArgs {
 
   factory WorkspaceExperimentArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceExperimentArgs(
-      accessibility: map['accessibility'] == null ? null : pulumi.Output.create<String>(map['accessibility'] as String),
-      artifactUri: pulumi.Output.create<String>(map['artifactUri'] as String),
-      experimentName: pulumi.Output.create<String>(map['experimentName'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      artifactUri: (map['artifactUri'] as String).input(),
+      experimentName: (map['experimentName'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

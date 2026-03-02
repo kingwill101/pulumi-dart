@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsNodePoolManagement {
   /// Optional. Whether or not the nodes will be automatically repaired.
-  final bool? autoRepair;
+  final pulumi.Input<bool>? autoRepair;
 
   /// Creates a new [AwsNodePoolManagement].
   /// [autoRepair] Optional. Whether or not the nodes will be automatically repaired.
@@ -19,7 +20,7 @@ class AwsNodePoolManagement {
 
   factory AwsNodePoolManagement.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolManagement(
-      autoRepair: map['autoRepair'] == null ? null : map['autoRepair'] as bool,
+      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair'] as bool).input(),
     );
   }
 }

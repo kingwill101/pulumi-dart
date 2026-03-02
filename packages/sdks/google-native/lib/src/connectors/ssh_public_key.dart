@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret.dart';
 
 /// Parameters to support Ssh public key Authentication.
 class SshPublicKey {
   /// Format of SSH Client cert.
-  final String? certType;
+  final pulumi.Input<String>? certType;
   /// SSH Client Cert. It should contain both public and private key.
-  final Secret? sshClientCert;
+  final pulumi.Input<Secret>? sshClientCert;
   /// Password (passphrase) for ssh client certificate if it has one.
-  final Secret? sshClientCertPass;
+  final pulumi.Input<Secret>? sshClientCertPass;
   /// The user account used to authenticate.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [SshPublicKey].
   /// [certType] Format of SSH Client cert.
@@ -28,18 +29,18 @@ class SshPublicKey {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certType': ?certType,
-      'sshClientCert': ?sshClientCert == null ? null : sshClientCert!.toMap(),
-      'sshClientCertPass': ?sshClientCertPass == null ? null : sshClientCertPass!.toMap(),
+      'sshClientCert': ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(sshClientCert, (value) => value.toMap()),
+      'sshClientCertPass': ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(sshClientCertPass, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
   factory SshPublicKey.fromMap(Map<String, dynamic> map) {
     return SshPublicKey(
-      certType: map['certType'] == null ? null : map['certType'] as String,
-      sshClientCert: map['sshClientCert'] == null ? null : Secret.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>()),
-      sshClientCertPass: map['sshClientCertPass'] == null ? null : Secret.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>()),
-      username: map['username'] == null ? null : map['username'] as String,
+      certType: map['certType'] == null ? null : (map['certType'] as String).input(),
+      sshClientCert: map['sshClientCert'] == null ? null : (Secret.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>())).input(),
+      sshClientCertPass: map['sshClientCertPass'] == null ? null : (Secret.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

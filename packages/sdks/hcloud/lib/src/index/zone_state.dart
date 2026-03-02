@@ -33,23 +33,15 @@ class ZoneState {
   /// [registrar] Registrar of the Zone.
   /// [ttl] Default Time To Live (TTL) of the Zone.
   ZoneState({
-    pulumi.Output<ZoneAuthoritativeNameservers>? authoritativeNameservers,
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ZonePrimaryNameserver>>? primaryNameservers,
-    pulumi.Output<String>? registrar,
-    pulumi.Output<int>? ttl,
-  }) :
-      authoritativeNameservers = pulumi.Input.asOptionalInput<ZoneAuthoritativeNameservers>(authoritativeNameservers),
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryNameservers = pulumi.Input.asOptionalInput<List<ZonePrimaryNameserver>>(primaryNameservers),
-      registrar = pulumi.Input.asOptionalInput<String>(registrar),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl);
+    this.authoritativeNameservers,
+    this.deleteProtection,
+    this.labels,
+    this.mode,
+    this.name,
+    this.primaryNameservers,
+    this.registrar,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ZoneState {
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      authoritativeNameservers: map['authoritativeNameservers'] == null ? null : pulumi.Output.create<ZoneAuthoritativeNameservers>(ZoneAuthoritativeNameservers.fromMap((map['authoritativeNameservers'] as Map).cast<String, dynamic>())),
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryNameservers: map['primaryNameservers'] == null ? null : pulumi.Output.create<List<ZonePrimaryNameserver>>(pulumi.Input.decodeList<ZonePrimaryNameserver>(map['primaryNameservers'], (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))),
-      registrar: map['registrar'] == null ? null : pulumi.Output.create<String>(map['registrar'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
+      authoritativeNameservers: map['authoritativeNameservers'] == null ? null : (ZoneAuthoritativeNameservers.fromMap((map['authoritativeNameservers'] as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryNameservers: map['primaryNameservers'] == null ? null : (pulumi.Input.decodeList<ZonePrimaryNameserver>(map['primaryNameservers'], (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      registrar: map['registrar'] == null ? null : (map['registrar'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

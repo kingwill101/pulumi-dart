@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StandaloneGatewaySku {
   /// The number of deployed units of the SKU. Defaults to `1`.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// The name of the SKU. The only possible value is `WorkspaceGatewayPremium`.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [StandaloneGatewaySku].
   /// [capacity] The number of deployed units of the SKU. Defaults to `1`.
@@ -24,8 +25,8 @@ class StandaloneGatewaySku {
 
   factory StandaloneGatewaySku.fromMap(Map<String, dynamic> map) {
     return StandaloneGatewaySku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

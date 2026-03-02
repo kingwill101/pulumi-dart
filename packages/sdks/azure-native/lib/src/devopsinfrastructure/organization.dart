@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an Azure DevOps organization.
 class Organization {
   /// Determines if the pool should have open access to all projects in this organization.
-  final bool? openAccess;
+  final pulumi.Input<bool>? openAccess;
   /// How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
-  final int? parallelism;
+  final pulumi.Input<int>? parallelism;
   /// Optional list of projects in which the pool should be created.
-  final List<String>? projects;
+  final pulumi.Input<List<String>>? projects;
   /// The Azure DevOps organization URL in which the pool should be created.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [Organization].
   /// [openAccess] Determines if the pool should have open access to all projects in this organization.
@@ -35,10 +36,10 @@ class Organization {
 
   factory Organization.fromMap(Map<String, dynamic> map) {
     return Organization(
-      openAccess: map['openAccess'] == null ? null : map['openAccess'] as bool,
-      parallelism: map['parallelism'] == null ? null : map['parallelism'] as int,
-      projects: map['projects'] == null ? null : (map['projects'] as List).cast<String>(),
-      url: map['url'] as String,
+      openAccess: map['openAccess'] == null ? null : (map['openAccess'] as bool).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
+      projects: map['projects'] == null ? null : ((map['projects'] as List).cast<String>()).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

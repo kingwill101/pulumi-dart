@@ -53,35 +53,21 @@ class OutputBlobArgs {
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [timeFormat] The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
   OutputBlobArgs({
-    pulumi.Output<String>? authenticationMode,
-    pulumi.Output<String>? batchMaxWaitTime,
-    pulumi.Output<int>? batchMinRows,
-    pulumi.Output<String>? blobWriteMode,
-    required pulumi.Output<String> dateFormat,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> pathPattern,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<OutputBlobSerialization> serialization,
-    pulumi.Output<String>? storageAccountKey,
-    required pulumi.Output<String> storageAccountName,
-    required pulumi.Output<String> storageContainerName,
-    required pulumi.Output<String> streamAnalyticsJobName,
-    required pulumi.Output<String> timeFormat,
-  }) :
-      authenticationMode = pulumi.Input.asOptionalInput<String>(authenticationMode),
-      batchMaxWaitTime = pulumi.Input.asOptionalInput<String>(batchMaxWaitTime),
-      batchMinRows = pulumi.Input.asOptionalInput<int>(batchMinRows),
-      blobWriteMode = pulumi.Input.asOptionalInput<String>(blobWriteMode),
-      dateFormat = pulumi.Input.asInput<String>(dateFormat),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pathPattern = pulumi.Input.asInput<String>(pathPattern),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serialization = pulumi.Input.asInput<OutputBlobSerialization>(serialization),
-      storageAccountKey = pulumi.Input.asOptionalInput<String>(storageAccountKey),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName),
-      storageContainerName = pulumi.Input.asInput<String>(storageContainerName),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName),
-      timeFormat = pulumi.Input.asInput<String>(timeFormat);
+    this.authenticationMode,
+    this.batchMaxWaitTime,
+    this.batchMinRows,
+    this.blobWriteMode,
+    required this.dateFormat,
+    this.name,
+    required this.pathPattern,
+    required this.resourceGroupName,
+    required this.serialization,
+    this.storageAccountKey,
+    required this.storageAccountName,
+    required this.storageContainerName,
+    required this.streamAnalyticsJobName,
+    required this.timeFormat,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class OutputBlobArgs {
 
   factory OutputBlobArgs.fromMap(Map<String, dynamic> map) {
     return OutputBlobArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<String>(map['authenticationMode'] as String),
-      batchMaxWaitTime: map['batchMaxWaitTime'] == null ? null : pulumi.Output.create<String>(map['batchMaxWaitTime'] as String),
-      batchMinRows: map['batchMinRows'] == null ? null : pulumi.Output.create<int>(map['batchMinRows'] as int),
-      blobWriteMode: map['blobWriteMode'] == null ? null : pulumi.Output.create<String>(map['blobWriteMode'] as String),
-      dateFormat: pulumi.Output.create<String>(map['dateFormat'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pathPattern: pulumi.Output.create<String>(map['pathPattern'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialization: pulumi.Output.create<OutputBlobSerialization>(OutputBlobSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())),
-      storageAccountKey: map['storageAccountKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
-      storageContainerName: pulumi.Output.create<String>(map['storageContainerName'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
-      timeFormat: pulumi.Output.create<String>(map['timeFormat'] as String),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      batchMaxWaitTime: map['batchMaxWaitTime'] == null ? null : (map['batchMaxWaitTime'] as String).input(),
+      batchMinRows: map['batchMinRows'] == null ? null : (map['batchMinRows'] as int).input(),
+      blobWriteMode: map['blobWriteMode'] == null ? null : (map['blobWriteMode'] as String).input(),
+      dateFormat: (map['dateFormat'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pathPattern: (map['pathPattern'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serialization: (OutputBlobSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      storageContainerName: (map['storageContainerName'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
+      timeFormat: (map['timeFormat'] as String).input(),
     );
   }
 }

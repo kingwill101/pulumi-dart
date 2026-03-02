@@ -66,35 +66,21 @@ class PhysicalConnectionState {
   /// [status] The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
   /// [type] The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
   PhysicalConnectionState({
-    pulumi.Output<String>? accessPointId,
-    pulumi.Output<String>? bandwidth,
-    pulumi.Output<String>? circuitCode,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lineOperator,
-    pulumi.Output<String>? orderId,
-    pulumi.Output<String>? peerLocation,
-    pulumi.Output<int>? period,
-    pulumi.Output<String>? physicalConnectionName,
-    pulumi.Output<String>? portType,
-    pulumi.Output<String>? pricingCycle,
-    pulumi.Output<String>? redundantPhysicalConnectionId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-  }) :
-      accessPointId = pulumi.Input.asOptionalInput<String>(accessPointId),
-      bandwidth = pulumi.Input.asOptionalInput<String>(bandwidth),
-      circuitCode = pulumi.Input.asOptionalInput<String>(circuitCode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lineOperator = pulumi.Input.asOptionalInput<String>(lineOperator),
-      orderId = pulumi.Input.asOptionalInput<String>(orderId),
-      peerLocation = pulumi.Input.asOptionalInput<String>(peerLocation),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      physicalConnectionName = pulumi.Input.asOptionalInput<String>(physicalConnectionName),
-      portType = pulumi.Input.asOptionalInput<String>(portType),
-      pricingCycle = pulumi.Input.asOptionalInput<String>(pricingCycle),
-      redundantPhysicalConnectionId = pulumi.Input.asOptionalInput<String>(redundantPhysicalConnectionId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.accessPointId,
+    this.bandwidth,
+    this.circuitCode,
+    this.description,
+    this.lineOperator,
+    this.orderId,
+    this.peerLocation,
+    this.period,
+    this.physicalConnectionName,
+    this.portType,
+    this.pricingCycle,
+    this.redundantPhysicalConnectionId,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,20 +103,20 @@ class PhysicalConnectionState {
 
   factory PhysicalConnectionState.fromMap(Map<String, dynamic> map) {
     return PhysicalConnectionState(
-      accessPointId: map['accessPointId'] == null ? null : pulumi.Output.create<String>(map['accessPointId'] as String),
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<String>(map['bandwidth'] as String),
-      circuitCode: map['circuitCode'] == null ? null : pulumi.Output.create<String>(map['circuitCode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lineOperator: map['lineOperator'] == null ? null : pulumi.Output.create<String>(map['lineOperator'] as String),
-      orderId: map['orderId'] == null ? null : pulumi.Output.create<String>(map['orderId'] as String),
-      peerLocation: map['peerLocation'] == null ? null : pulumi.Output.create<String>(map['peerLocation'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      physicalConnectionName: map['physicalConnectionName'] == null ? null : pulumi.Output.create<String>(map['physicalConnectionName'] as String),
-      portType: map['portType'] == null ? null : pulumi.Output.create<String>(map['portType'] as String),
-      pricingCycle: map['pricingCycle'] == null ? null : pulumi.Output.create<String>(map['pricingCycle'] as String),
-      redundantPhysicalConnectionId: map['redundantPhysicalConnectionId'] == null ? null : pulumi.Output.create<String>(map['redundantPhysicalConnectionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      accessPointId: map['accessPointId'] == null ? null : (map['accessPointId'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
+      circuitCode: map['circuitCode'] == null ? null : (map['circuitCode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lineOperator: map['lineOperator'] == null ? null : (map['lineOperator'] as String).input(),
+      orderId: map['orderId'] == null ? null : (map['orderId'] as String).input(),
+      peerLocation: map['peerLocation'] == null ? null : (map['peerLocation'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      physicalConnectionName: map['physicalConnectionName'] == null ? null : (map['physicalConnectionName'] as String).input(),
+      portType: map['portType'] == null ? null : (map['portType'] as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
+      redundantPhysicalConnectionId: map['redundantPhysicalConnectionId'] == null ? null : (map['redundantPhysicalConnectionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

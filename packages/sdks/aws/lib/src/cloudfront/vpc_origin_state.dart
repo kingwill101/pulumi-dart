@@ -28,19 +28,13 @@ class VpcOriginState {
   /// [timeouts] Optional.
   /// [vpcOriginEndpointConfig] The VPC origin endpoint configuration.
   VpcOriginState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<VpcOriginTimeouts>? timeouts,
-    pulumi.Output<VpcOriginVpcOriginEndpointConfig>? vpcOriginEndpointConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<VpcOriginTimeouts>(timeouts),
-      vpcOriginEndpointConfig = pulumi.Input.asOptionalInput<VpcOriginVpcOriginEndpointConfig>(vpcOriginEndpointConfig);
+    this.arn,
+    this.etag,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.vpcOriginEndpointConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class VpcOriginState {
 
   factory VpcOriginState.fromMap(Map<String, dynamic> map) {
     return VpcOriginState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<VpcOriginTimeouts>(VpcOriginTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcOriginEndpointConfig: map['vpcOriginEndpointConfig'] == null ? null : pulumi.Output.create<VpcOriginVpcOriginEndpointConfig>(VpcOriginVpcOriginEndpointConfig.fromMap((map['vpcOriginEndpointConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VpcOriginTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcOriginEndpointConfig: map['vpcOriginEndpointConfig'] == null ? null : (VpcOriginVpcOriginEndpointConfig.fromMap((map['vpcOriginEndpointConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

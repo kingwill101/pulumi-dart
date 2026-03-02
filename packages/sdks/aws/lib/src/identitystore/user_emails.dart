@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserEmails {
   /// When `true`, this is the primary email associated with the user.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// The type of email.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The email address. This value must be unique across the identity store.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [UserEmails].
   /// [primary] When `true`, this is the primary email associated with the user.
@@ -29,9 +30,9 @@ class UserEmails {
 
   factory UserEmails.fromMap(Map<String, dynamic> map) {
     return UserEmails(
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

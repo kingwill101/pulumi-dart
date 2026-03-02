@@ -19,13 +19,10 @@ class GetCloudHsmClusterPrivateEndpointConnectionArgs {
   /// [peConnectionName] Name of the private endpoint connection associated with the Cloud HSM Cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCloudHsmClusterPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> cloudHsmClusterName,
-    required pulumi.Output<String> peConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cloudHsmClusterName = pulumi.Input.asInput<String>(cloudHsmClusterName),
-      peConnectionName = pulumi.Input.asInput<String>(peConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cloudHsmClusterName,
+    required this.peConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCloudHsmClusterPrivateEndpointConnectionArgs {
 
   factory GetCloudHsmClusterPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudHsmClusterPrivateEndpointConnectionArgs(
-      cloudHsmClusterName: pulumi.Output.create<String>(map['cloudHsmClusterName'] as String),
-      peConnectionName: pulumi.Output.create<String>(map['peConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cloudHsmClusterName: (map['cloudHsmClusterName'] as String).input(),
+      peConnectionName: (map['peConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

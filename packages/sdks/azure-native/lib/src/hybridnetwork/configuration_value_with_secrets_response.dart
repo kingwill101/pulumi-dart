@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'open_deployment_resource_reference_response.dart';
 
 /// The ConfigurationValue with secrets.
 class ConfigurationValueWithSecretsResponse {
   /// The configuration group schema name.
-  final String configurationGroupSchemaName;
+  final pulumi.Input<String> configurationGroupSchemaName;
   /// The location of the configuration group schema offering.
-  final String configurationGroupSchemaOfferingLocation;
+  final pulumi.Input<String> configurationGroupSchemaOfferingLocation;
   /// The configuration group schema resource reference.
-  final OpenDeploymentResourceReferenceResponse? configurationGroupSchemaResourceReference;
+  final pulumi.Input<OpenDeploymentResourceReferenceResponse>? configurationGroupSchemaResourceReference;
   /// The secret type which indicates if secret or not.
   /// Expected value is 'Secret'.
-  final String configurationType;
+  final pulumi.Input<String> configurationType;
   /// The provisioning state of the site resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The publisher name for the configuration group schema.
-  final String publisherName;
+  final pulumi.Input<String> publisherName;
   /// The scope of the publisher.
-  final String publisherScope;
+  final pulumi.Input<String> publisherScope;
 
   /// Creates a new [ConfigurationValueWithSecretsResponse].
   /// [configurationGroupSchemaName] The configuration group schema name.
@@ -42,7 +43,7 @@ class ConfigurationValueWithSecretsResponse {
     return <String, dynamic>{
       'configurationGroupSchemaName': configurationGroupSchemaName,
       'configurationGroupSchemaOfferingLocation': configurationGroupSchemaOfferingLocation,
-      'configurationGroupSchemaResourceReference': ?configurationGroupSchemaResourceReference == null ? null : configurationGroupSchemaResourceReference!.toMap(),
+      'configurationGroupSchemaResourceReference': ?pulumi.Input.mapOptionalInputValue<OpenDeploymentResourceReferenceResponse, Map<String, dynamic>>(configurationGroupSchemaResourceReference, (value) => value.toMap()),
       'configurationType': configurationType,
       'provisioningState': provisioningState,
       'publisherName': publisherName,
@@ -52,13 +53,13 @@ class ConfigurationValueWithSecretsResponse {
 
   factory ConfigurationValueWithSecretsResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationValueWithSecretsResponse(
-      configurationGroupSchemaName: map['configurationGroupSchemaName'] as String,
-      configurationGroupSchemaOfferingLocation: map['configurationGroupSchemaOfferingLocation'] as String,
-      configurationGroupSchemaResourceReference: map['configurationGroupSchemaResourceReference'] == null ? null : OpenDeploymentResourceReferenceResponse.fromMap((map['configurationGroupSchemaResourceReference'] as Map).cast<String, dynamic>()),
-      configurationType: map['configurationType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publisherName: map['publisherName'] as String,
-      publisherScope: map['publisherScope'] as String,
+      configurationGroupSchemaName: (map['configurationGroupSchemaName'] as String).input(),
+      configurationGroupSchemaOfferingLocation: (map['configurationGroupSchemaOfferingLocation'] as String).input(),
+      configurationGroupSchemaResourceReference: map['configurationGroupSchemaResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['configurationGroupSchemaResourceReference'] as Map).cast<String, dynamic>())).input(),
+      configurationType: (map['configurationType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publisherName: (map['publisherName'] as String).input(),
+      publisherScope: (map['publisherScope'] as String).input(),
     );
   }
 }

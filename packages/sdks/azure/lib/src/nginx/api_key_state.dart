@@ -22,17 +22,12 @@ class ApiKeyState {
   /// [nginxDeploymentId] The ID of the NGINX Deployment that the API key is associated with. Changing this forces a new resource to be created.
   /// [secretText] The value used as the Dataplane API Key. The API key requirements can be found in the [NGINXaaS Documentation](https://docs.nginx.com/nginxaas/azure/quickstart/loadbalancer-kubernetes/#create-an-nginxaas-data-plane-api-key).
   ApiKeyState({
-    pulumi.Output<String>? endDateTime,
-    pulumi.Output<String>? hint,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nginxDeploymentId,
-    pulumi.Output<String>? secretText,
-  }) :
-      endDateTime = pulumi.Input.asOptionalInput<String>(endDateTime),
-      hint = pulumi.Input.asOptionalInput<String>(hint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nginxDeploymentId = pulumi.Input.asOptionalInput<String>(nginxDeploymentId),
-      secretText = pulumi.Input.asOptionalInput<String>(secretText);
+    this.endDateTime,
+    this.hint,
+    this.name,
+    this.nginxDeploymentId,
+    this.secretText,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      endDateTime: map['endDateTime'] == null ? null : pulumi.Output.create<String>(map['endDateTime'] as String),
-      hint: map['hint'] == null ? null : pulumi.Output.create<String>(map['hint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : pulumi.Output.create<String>(map['nginxDeploymentId'] as String),
-      secretText: map['secretText'] == null ? null : pulumi.Output.create<String>(map['secretText'] as String),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
+      hint: map['hint'] == null ? null : (map['hint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : (map['nginxDeploymentId'] as String).input(),
+      secretText: map['secretText'] == null ? null : (map['secretText'] as String).input(),
     );
   }
 }

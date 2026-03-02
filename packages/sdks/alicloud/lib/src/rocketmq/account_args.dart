@@ -22,15 +22,11 @@ class AccountArgs {
   /// [password] The password of the account.
   /// [username] The username of the account.
   AccountArgs({
-    pulumi.Output<String>? accountStatus,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> password,
-    required pulumi.Output<String> username,
-  }) :
-      accountStatus = pulumi.Input.asOptionalInput<String>(accountStatus),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      password = pulumi.Input.asInput<String>(password),
-      username = pulumi.Input.asInput<String>(username);
+    this.accountStatus,
+    required this.instanceId,
+    required this.password,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountStatus: map['accountStatus'] == null ? null : pulumi.Output.create<String>(map['accountStatus'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      accountStatus: map['accountStatus'] == null ? null : (map['accountStatus'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

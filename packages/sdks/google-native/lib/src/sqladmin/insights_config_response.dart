@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
 class InsightsConfigResponse {
   /// Whether Query Insights feature is enabled.
-  final bool queryInsightsEnabled;
+  final pulumi.Input<bool> queryInsightsEnabled;
   /// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
-  final int queryPlansPerMinute;
+  final pulumi.Input<int> queryPlansPerMinute;
   /// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
-  final int queryStringLength;
+  final pulumi.Input<int> queryStringLength;
   /// Whether Query Insights will record application tags from query when enabled.
-  final bool recordApplicationTags;
+  final pulumi.Input<bool> recordApplicationTags;
   /// Whether Query Insights will record client address when enabled.
-  final bool recordClientAddress;
+  final pulumi.Input<bool> recordClientAddress;
 
   /// Creates a new [InsightsConfigResponse].
   /// [queryInsightsEnabled] Whether Query Insights feature is enabled.
@@ -40,11 +41,11 @@ class InsightsConfigResponse {
 
   factory InsightsConfigResponse.fromMap(Map<String, dynamic> map) {
     return InsightsConfigResponse(
-      queryInsightsEnabled: map['queryInsightsEnabled'] as bool,
-      queryPlansPerMinute: map['queryPlansPerMinute'] as int,
-      queryStringLength: map['queryStringLength'] as int,
-      recordApplicationTags: map['recordApplicationTags'] as bool,
-      recordClientAddress: map['recordClientAddress'] as bool,
+      queryInsightsEnabled: (map['queryInsightsEnabled'] as bool).input(),
+      queryPlansPerMinute: (map['queryPlansPerMinute'] as int).input(),
+      queryStringLength: (map['queryStringLength'] as int).input(),
+      recordApplicationTags: (map['recordApplicationTags'] as bool).input(),
+      recordClientAddress: (map['recordClientAddress'] as bool).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersAurora {
   /// The database to which to connect.
-  final String database;
+  final pulumi.Input<String> database;
   /// The host to which to connect.
-  final String host;
+  final pulumi.Input<String> host;
   /// The port to which to connect.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [DataSourceParametersAurora].
   /// [database] The database to which to connect.
@@ -29,9 +30,9 @@ class DataSourceParametersAurora {
 
   factory DataSourceParametersAurora.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersAurora(
-      database: map['database'] as String,
-      host: map['host'] as String,
-      port: map['port'] as int,
+      database: (map['database'] as String).input(),
+      host: (map['host'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

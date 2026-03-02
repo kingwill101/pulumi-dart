@@ -16,11 +16,9 @@ class GetLedgerArgs {
   /// [ledgerName] Name of the Confidential Ledger
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLedgerArgs({
-    required pulumi.Output<String> ledgerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      ledgerName = pulumi.Input.asInput<String>(ledgerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.ledgerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLedgerArgs {
 
   factory GetLedgerArgs.fromMap(Map<String, dynamic> map) {
     return GetLedgerArgs(
-      ledgerName: pulumi.Output.create<String>(map['ledgerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ledgerName: (map['ledgerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

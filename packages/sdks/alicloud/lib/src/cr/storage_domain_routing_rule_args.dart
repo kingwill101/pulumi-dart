@@ -17,11 +17,9 @@ class StorageDomainRoutingRuleArgs {
   /// [instanceId] The ID of the Container Registry Instance.
   /// [routes] Domain name routing entry See `routes` below.
   StorageDomainRoutingRuleArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<List<StorageDomainRoutingRuleRoute>> routes,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      routes = pulumi.Input.asInput<List<StorageDomainRoutingRuleRoute>>(routes);
+    required this.instanceId,
+    required this.routes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class StorageDomainRoutingRuleArgs {
 
   factory StorageDomainRoutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return StorageDomainRoutingRuleArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      routes: pulumi.Output.create<List<StorageDomainRoutingRuleRoute>>(pulumi.Input.decodeList<StorageDomainRoutingRuleRoute>(map['routes'], (value) => StorageDomainRoutingRuleRoute.fromMap((value as Map).cast<String, dynamic>()))),
+      instanceId: (map['instanceId'] as String).input(),
+      routes: (pulumi.Input.decodeList<StorageDomainRoutingRuleRoute>(map['routes'], (value) => StorageDomainRoutingRuleRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

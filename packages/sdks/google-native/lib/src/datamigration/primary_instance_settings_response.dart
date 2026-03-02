@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'machine_config_response.dart';
 
 /// Settings for the cluster's primary instance
 class PrimaryInstanceSettingsResponse {
   /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
-  final Map<String, String> databaseFlags;
+  final pulumi.Input<Map<String, String>> databaseFlags;
   /// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Configuration for the machines that host the underlying database engine.
-  final MachineConfigResponse machineConfig;
+  final pulumi.Input<MachineConfigResponse> machineConfig;
   /// The private IP address for the Instance. This is the connection endpoint for an end-user application.
-  final String privateIp;
+  final pulumi.Input<String> privateIp;
 
   /// Creates a new [PrimaryInstanceSettingsResponse].
   /// [databaseFlags] Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
@@ -29,17 +30,17 @@ class PrimaryInstanceSettingsResponse {
     return <String, dynamic>{
       'databaseFlags': databaseFlags,
       'labels': labels,
-      'machineConfig': machineConfig.toMap(),
+      'machineConfig': pulumi.Input.mapInputValue<MachineConfigResponse, Map<String, dynamic>>(machineConfig, (value) => value.toMap()),
       'privateIp': privateIp,
     };
   }
 
   factory PrimaryInstanceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PrimaryInstanceSettingsResponse(
-      databaseFlags: (map['databaseFlags'] as Map).cast<String, String>(),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      machineConfig: MachineConfigResponse.fromMap((map['machineConfig'] as Map).cast<String, dynamic>()),
-      privateIp: map['privateIp'] as String,
+      databaseFlags: ((map['databaseFlags'] as Map).cast<String, String>()).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      machineConfig: (MachineConfigResponse.fromMap((map['machineConfig'] as Map).cast<String, dynamic>())).input(),
+      privateIp: (map['privateIp'] as String).input(),
     );
   }
 }

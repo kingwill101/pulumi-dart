@@ -49,27 +49,17 @@ class AclState {
   /// [resourceName] The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
   /// [resourceType] The acl resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
   AclState({
-    pulumi.Output<List<AclAclEntry>>? aclEntries,
-    pulumi.Output<String>? aclId,
-    pulumi.Output<String>? cluster,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? patternType,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<String>? resourceType,
-  }) :
-      aclEntries = pulumi.Input.asOptionalInput<List<AclAclEntry>>(aclEntries),
-      aclId = pulumi.Input.asOptionalInput<String>(aclId),
-      cluster = pulumi.Input.asOptionalInput<String>(cluster),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      patternType = pulumi.Input.asOptionalInput<String>(patternType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.aclEntries,
+    this.aclId,
+    this.cluster,
+    this.etag,
+    this.location,
+    this.name,
+    this.patternType,
+    this.project,
+    this.resourceName,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,16 +78,16 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      aclEntries: map['aclEntries'] == null ? null : pulumi.Output.create<List<AclAclEntry>>(pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      aclId: map['aclId'] == null ? null : pulumi.Output.create<String>(map['aclId'] as String),
-      cluster: map['cluster'] == null ? null : pulumi.Output.create<String>(map['cluster'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      patternType: map['patternType'] == null ? null : pulumi.Output.create<String>(map['patternType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      aclEntries: map['aclEntries'] == null ? null : (pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      patternType: map['patternType'] == null ? null : (map['patternType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

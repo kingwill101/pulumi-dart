@@ -9,31 +9,31 @@ import 'elastic_volume_data_protection_properties_response.dart';
 /// Elastic Volume properties
 class ElasticVolumePropertiesResponse {
   /// Current availability status of the resource.
-  final String availabilityStatus;
+  final pulumi.Input<String> availabilityStatus;
   /// Resource identifier used to identify the Elastic Backup.
-  final String? backupResourceId;
+  final pulumi.Input<String>? backupResourceId;
   /// Data protection configuration option for the volume, including snapshot policies and backup.
-  final ElasticVolumeDataProtectionPropertiesResponse? dataProtection;
+  final pulumi.Input<ElasticVolumeDataProtectionPropertiesResponse>? dataProtection;
   /// Set of export policy rules
-  final ElasticExportPolicyResponse? exportPolicy;
+  final pulumi.Input<ElasticExportPolicyResponse>? exportPolicy;
   /// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
-  final String filePath;
+  final pulumi.Input<String> filePath;
   /// List of mount targets that can be used to mount this volume
-  final List<ElasticMountTargetPropertiesResponse> mountTargets;
+  final pulumi.Input<List<ElasticMountTargetPropertiesResponse>> mountTargets;
   /// Set of support protocol types for the elastic volume
-  final List<String> protocolTypes;
+  final pulumi.Input<List<String>> protocolTypes;
   /// Azure lifecycle management.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The current state of the restoration process.
-  final String restorationState;
+  final pulumi.Input<String> restorationState;
   /// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
-  final double size;
+  final pulumi.Input<double> size;
   /// SMB Properties
-  final ElasticSmbPropertiesResponse? smbProperties;
+  final pulumi.Input<ElasticSmbPropertiesResponse>? smbProperties;
   /// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
-  final String? snapshotDirectoryVisibility;
+  final pulumi.Input<String>? snapshotDirectoryVisibility;
   /// Resource identifier used to identify the Elastic Snapshot.
-  final String? snapshotResourceId;
+  final pulumi.Input<String>? snapshotResourceId;
 
   /// Creates a new [ElasticVolumePropertiesResponse].
   /// [availabilityStatus] Current availability status of the resource.
@@ -69,15 +69,15 @@ class ElasticVolumePropertiesResponse {
     return <String, dynamic>{
       'availabilityStatus': availabilityStatus,
       'backupResourceId': ?backupResourceId,
-      'dataProtection': ?dataProtection == null ? null : dataProtection!.toMap(),
-      'exportPolicy': ?exportPolicy == null ? null : exportPolicy!.toMap(),
+      'dataProtection': ?pulumi.Input.mapOptionalInputValue<ElasticVolumeDataProtectionPropertiesResponse, Map<String, dynamic>>(dataProtection, (value) => value.toMap()),
+      'exportPolicy': ?pulumi.Input.mapOptionalInputValue<ElasticExportPolicyResponse, Map<String, dynamic>>(exportPolicy, (value) => value.toMap()),
       'filePath': filePath,
-      'mountTargets': pulumi.Input.encodeList<ElasticMountTargetPropertiesResponse, Map<String, dynamic>>(mountTargets, (value) => value.toMap()),
+      'mountTargets': pulumi.Input.mapInputValue<List<ElasticMountTargetPropertiesResponse>, List<Map<String, dynamic>>>(mountTargets, (value) => pulumi.Input.encodeList<ElasticMountTargetPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protocolTypes': protocolTypes,
       'provisioningState': provisioningState,
       'restorationState': restorationState,
       'size': size,
-      'smbProperties': ?smbProperties == null ? null : smbProperties!.toMap(),
+      'smbProperties': ?pulumi.Input.mapOptionalInputValue<ElasticSmbPropertiesResponse, Map<String, dynamic>>(smbProperties, (value) => value.toMap()),
       'snapshotDirectoryVisibility': ?snapshotDirectoryVisibility,
       'snapshotResourceId': ?snapshotResourceId,
     };
@@ -85,19 +85,19 @@ class ElasticVolumePropertiesResponse {
 
   factory ElasticVolumePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticVolumePropertiesResponse(
-      availabilityStatus: map['availabilityStatus'] as String,
-      backupResourceId: map['backupResourceId'] == null ? null : map['backupResourceId'] as String,
-      dataProtection: map['dataProtection'] == null ? null : ElasticVolumeDataProtectionPropertiesResponse.fromMap((map['dataProtection'] as Map).cast<String, dynamic>()),
-      exportPolicy: map['exportPolicy'] == null ? null : ElasticExportPolicyResponse.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>()),
-      filePath: map['filePath'] as String,
-      mountTargets: pulumi.Input.decodeList<ElasticMountTargetPropertiesResponse>(map['mountTargets'], (value) => ElasticMountTargetPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      protocolTypes: (map['protocolTypes'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      restorationState: map['restorationState'] as String,
-      size: map['size'] as double,
-      smbProperties: map['smbProperties'] == null ? null : ElasticSmbPropertiesResponse.fromMap((map['smbProperties'] as Map).cast<String, dynamic>()),
-      snapshotDirectoryVisibility: map['snapshotDirectoryVisibility'] == null ? null : map['snapshotDirectoryVisibility'] as String,
-      snapshotResourceId: map['snapshotResourceId'] == null ? null : map['snapshotResourceId'] as String,
+      availabilityStatus: (map['availabilityStatus'] as String).input(),
+      backupResourceId: map['backupResourceId'] == null ? null : (map['backupResourceId'] as String).input(),
+      dataProtection: map['dataProtection'] == null ? null : (ElasticVolumeDataProtectionPropertiesResponse.fromMap((map['dataProtection'] as Map).cast<String, dynamic>())).input(),
+      exportPolicy: map['exportPolicy'] == null ? null : (ElasticExportPolicyResponse.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>())).input(),
+      filePath: (map['filePath'] as String).input(),
+      mountTargets: (pulumi.Input.decodeList<ElasticMountTargetPropertiesResponse>(map['mountTargets'], (value) => ElasticMountTargetPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocolTypes: ((map['protocolTypes'] as List).cast<String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      restorationState: (map['restorationState'] as String).input(),
+      size: (map['size'] as double).input(),
+      smbProperties: map['smbProperties'] == null ? null : (ElasticSmbPropertiesResponse.fromMap((map['smbProperties'] as Map).cast<String, dynamic>())).input(),
+      snapshotDirectoryVisibility: map['snapshotDirectoryVisibility'] == null ? null : (map['snapshotDirectoryVisibility'] as String).input(),
+      snapshotResourceId: map['snapshotResourceId'] == null ? null : (map['snapshotResourceId'] as String).input(),
     );
   }
 }

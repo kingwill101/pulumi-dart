@@ -7,40 +7,40 @@ import 'reportable_exception_response.dart';
 
 class MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse {
   /// Summary of database results in the migration
-  final Map<String, DatabaseSummaryResultResponse> databaseSummary;
+  final pulumi.Input<Map<String, DatabaseSummaryResultResponse>> databaseSummary;
   /// Selected databases as a map from database name to database id
-  final Map<String, String>? databases;
+  final pulumi.Input<Map<String, String>>? databases;
   /// Duration of task execution in seconds.
-  final double durationInSeconds;
+  final pulumi.Input<double> durationInSeconds;
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Migration exceptions and warnings.
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Last time the storage was updated
-  final String lastStorageUpdate;
+  final pulumi.Input<String> lastStorageUpdate;
   /// Migration progress message
-  final String message;
+  final pulumi.Input<String> message;
   /// Migration Report Result, provides unique url for downloading your migration report.
-  final MigrationReportResultResponse? migrationReportResult;
+  final pulumi.Input<MigrationReportResultResponse>? migrationReportResult;
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Source server brand version
-  final String sourceServerBrandVersion;
+  final pulumi.Input<String> sourceServerBrandVersion;
   /// Source server version
-  final String sourceServerVersion;
+  final pulumi.Input<String> sourceServerVersion;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current status of migration
-  final String status;
+  final pulumi.Input<String> status;
   /// Migration status message
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
   /// Target server brand version
-  final String targetServerBrandVersion;
+  final pulumi.Input<String> targetServerBrandVersion;
   /// Target server version
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
 
   /// Creates a new [MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse].
   /// [databaseSummary] Summary of database results in the migration
@@ -82,15 +82,15 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseSummary': pulumi.Input.encodeMapValues<DatabaseSummaryResultResponse, Map<String, dynamic>>(databaseSummary, (value) => value.toMap()),
+      'databaseSummary': pulumi.Input.mapInputValue<Map<String, DatabaseSummaryResultResponse>, Map<String, Map<String, dynamic>>>(databaseSummary, (value) => pulumi.Input.encodeMapValues<DatabaseSummaryResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'databases': ?databases,
       'durationInSeconds': durationInSeconds,
       'endedOn': endedOn,
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'lastStorageUpdate': lastStorageUpdate,
       'message': message,
-      'migrationReportResult': ?migrationReportResult == null ? null : migrationReportResult!.toMap(),
+      'migrationReportResult': ?pulumi.Input.mapOptionalInputValue<MigrationReportResultResponse, Map<String, dynamic>>(migrationReportResult, (value) => value.toMap()),
       'resultType': resultType,
       'sourceServerBrandVersion': sourceServerBrandVersion,
       'sourceServerVersion': sourceServerVersion,
@@ -104,23 +104,23 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse {
 
   factory MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse(
-      databaseSummary: pulumi.Input.decodeMapValues<DatabaseSummaryResultResponse>(map['databaseSummary'], (value) => DatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>())),
-      databases: map['databases'] == null ? null : (map['databases'] as Map).cast<String, String>(),
-      durationInSeconds: map['durationInSeconds'] as double,
-      endedOn: map['endedOn'] as String,
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      lastStorageUpdate: map['lastStorageUpdate'] as String,
-      message: map['message'] as String,
-      migrationReportResult: map['migrationReportResult'] == null ? null : MigrationReportResultResponse.fromMap((map['migrationReportResult'] as Map).cast<String, dynamic>()),
-      resultType: map['resultType'] as String,
-      sourceServerBrandVersion: map['sourceServerBrandVersion'] as String,
-      sourceServerVersion: map['sourceServerVersion'] as String,
-      startedOn: map['startedOn'] as String,
-      status: map['status'] as String,
-      statusMessage: map['statusMessage'] as String,
-      targetServerBrandVersion: map['targetServerBrandVersion'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
+      databaseSummary: (pulumi.Input.decodeMapValues<DatabaseSummaryResultResponse>(map['databaseSummary'], (value) => DatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databases: map['databases'] == null ? null : ((map['databases'] as Map).cast<String, String>()).input(),
+      durationInSeconds: (map['durationInSeconds'] as double).input(),
+      endedOn: (map['endedOn'] as String).input(),
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      lastStorageUpdate: (map['lastStorageUpdate'] as String).input(),
+      message: (map['message'] as String).input(),
+      migrationReportResult: map['migrationReportResult'] == null ? null : (MigrationReportResultResponse.fromMap((map['migrationReportResult'] as Map).cast<String, dynamic>())).input(),
+      resultType: (map['resultType'] as String).input(),
+      sourceServerBrandVersion: (map['sourceServerBrandVersion'] as String).input(),
+      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
+      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
     );
   }
 }

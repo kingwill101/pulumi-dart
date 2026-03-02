@@ -49,33 +49,20 @@ class CertificateArgs {
   /// [serverFarmId] Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   /// [tags] Resource tags.
   CertificateArgs({
-    pulumi.Output<String>? canonicalName,
-    pulumi.Output<String>? domainValidationMethod,
-    pulumi.Output<List<String>>? hostNames,
-    pulumi.Output<String>? keyVaultId,
-    pulumi.Output<String>? keyVaultSecretName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? pfxBlob,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serverFarmId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      canonicalName = pulumi.Input.asOptionalInput<String>(canonicalName),
-      domainValidationMethod = pulumi.Input.asOptionalInput<String>(domainValidationMethod),
-      hostNames = pulumi.Input.asOptionalInput<List<String>>(hostNames),
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      keyVaultSecretName = pulumi.Input.asOptionalInput<String>(keyVaultSecretName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      pfxBlob = pulumi.Input.asOptionalInput<String>(pfxBlob),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverFarmId = pulumi.Input.asOptionalInput<String>(serverFarmId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.canonicalName,
+    this.domainValidationMethod,
+    this.hostNames,
+    this.keyVaultId,
+    this.keyVaultSecretName,
+    this.kind,
+    this.location,
+    this.name,
+    this.password,
+    this.pfxBlob,
+    required this.resourceGroupName,
+    this.serverFarmId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      canonicalName: map['canonicalName'] == null ? null : pulumi.Output.create<String>(map['canonicalName'] as String),
-      domainValidationMethod: map['domainValidationMethod'] == null ? null : pulumi.Output.create<String>(map['domainValidationMethod'] as String),
-      hostNames: map['hostNames'] == null ? null : pulumi.Output.create<List<String>>((map['hostNames'] as List).cast<String>()),
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : pulumi.Output.create<String>(map['keyVaultSecretName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      pfxBlob: map['pfxBlob'] == null ? null : pulumi.Output.create<String>(map['pfxBlob'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverFarmId: map['serverFarmId'] == null ? null : pulumi.Output.create<String>(map['serverFarmId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      canonicalName: map['canonicalName'] == null ? null : (map['canonicalName'] as String).input(),
+      domainValidationMethod: map['domainValidationMethod'] == null ? null : (map['domainValidationMethod'] as String).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      pfxBlob: map['pfxBlob'] == null ? null : (map['pfxBlob'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverFarmId: map['serverFarmId'] == null ? null : (map['serverFarmId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

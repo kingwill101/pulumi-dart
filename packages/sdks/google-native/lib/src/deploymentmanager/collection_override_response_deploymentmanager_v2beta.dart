@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'options_response_deploymentmanager_v2beta.dart';
 
 /// CollectionOverride allows resource handling overrides for specific resources within a BaseType
 class CollectionOverrideResponseDeploymentmanagerV2beta {
   /// The collection that identifies this resource within its service.
-  final String collection;
+  final pulumi.Input<String> collection;
   /// The options to apply to this resource-level override
-  final OptionsResponseDeploymentmanagerV2beta options;
+  final pulumi.Input<OptionsResponseDeploymentmanagerV2beta> options;
 
   /// Creates a new [CollectionOverrideResponseDeploymentmanagerV2beta].
   /// [collection] The collection that identifies this resource within its service.
@@ -20,14 +21,14 @@ class CollectionOverrideResponseDeploymentmanagerV2beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'collection': collection,
-      'options': options.toMap(),
+      'options': pulumi.Input.mapInputValue<OptionsResponseDeploymentmanagerV2beta, Map<String, dynamic>>(options, (value) => value.toMap()),
     };
   }
 
   factory CollectionOverrideResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return CollectionOverrideResponseDeploymentmanagerV2beta(
-      collection: map['collection'] as String,
-      options: OptionsResponseDeploymentmanagerV2beta.fromMap((map['options'] as Map).cast<String, dynamic>()),
+      collection: (map['collection'] as String).input(),
+      options: (OptionsResponseDeploymentmanagerV2beta.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

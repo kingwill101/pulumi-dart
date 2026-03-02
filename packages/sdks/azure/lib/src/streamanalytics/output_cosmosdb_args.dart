@@ -34,23 +34,15 @@ class OutputCosmosdbArgs {
   /// [partitionKey] The name of the field in output events used to specify the key for partitioning output across collections. If `container_name` contains `{partition}` token, this property is required to be specified.
   /// [streamAnalyticsJobId] The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   OutputCosmosdbArgs({
-    pulumi.Output<String>? authenticationMode,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> cosmosdbAccountKey,
-    required pulumi.Output<String> cosmosdbSqlDatabaseId,
-    pulumi.Output<String>? documentId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partitionKey,
-    required pulumi.Output<String> streamAnalyticsJobId,
-  }) :
-      authenticationMode = pulumi.Input.asOptionalInput<String>(authenticationMode),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      cosmosdbAccountKey = pulumi.Input.asInput<String>(cosmosdbAccountKey),
-      cosmosdbSqlDatabaseId = pulumi.Input.asInput<String>(cosmosdbSqlDatabaseId),
-      documentId = pulumi.Input.asOptionalInput<String>(documentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionKey = pulumi.Input.asOptionalInput<String>(partitionKey),
-      streamAnalyticsJobId = pulumi.Input.asInput<String>(streamAnalyticsJobId);
+    this.authenticationMode,
+    required this.containerName,
+    required this.cosmosdbAccountKey,
+    required this.cosmosdbSqlDatabaseId,
+    this.documentId,
+    this.name,
+    this.partitionKey,
+    required this.streamAnalyticsJobId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class OutputCosmosdbArgs {
 
   factory OutputCosmosdbArgs.fromMap(Map<String, dynamic> map) {
     return OutputCosmosdbArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<String>(map['authenticationMode'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      cosmosdbAccountKey: pulumi.Output.create<String>(map['cosmosdbAccountKey'] as String),
-      cosmosdbSqlDatabaseId: pulumi.Output.create<String>(map['cosmosdbSqlDatabaseId'] as String),
-      documentId: map['documentId'] == null ? null : pulumi.Output.create<String>(map['documentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionKey: map['partitionKey'] == null ? null : pulumi.Output.create<String>(map['partitionKey'] as String),
-      streamAnalyticsJobId: pulumi.Output.create<String>(map['streamAnalyticsJobId'] as String),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      cosmosdbAccountKey: (map['cosmosdbAccountKey'] as String).input(),
+      cosmosdbSqlDatabaseId: (map['cosmosdbSqlDatabaseId'] as String).input(),
+      documentId: map['documentId'] == null ? null : (map['documentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
     );
   }
 }

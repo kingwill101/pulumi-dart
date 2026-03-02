@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHistoryDeliveryJobsJobJobStatus {
   /// The region of the delivery job.
-  final String region;
+  final pulumi.Input<String> region;
   /// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
-  final int status;
+  final pulumi.Input<int> status;
 
   /// Creates a new [GetHistoryDeliveryJobsJobJobStatus].
   /// [region] The region of the delivery job.
@@ -24,8 +25,8 @@ class GetHistoryDeliveryJobsJobJobStatus {
 
   factory GetHistoryDeliveryJobsJobJobStatus.fromMap(Map<String, dynamic> map) {
     return GetHistoryDeliveryJobsJobJobStatus(
-      region: map['region'] as String,
-      status: map['status'] as int,
+      region: (map['region'] as String).input(),
+      status: (map['status'] as int).input(),
     );
   }
 }

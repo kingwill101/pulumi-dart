@@ -20,15 +20,11 @@ class ProjectMemberState {
   /// [status] The status of the user in project
   /// [userId] The user ID of the member.
   ProjectMemberState({
-    pulumi.Output<int>? projectId,
-    pulumi.Output<List<ProjectMemberRole>>? roles,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? userId,
-  }) :
-      projectId = pulumi.Input.asOptionalInput<int>(projectId),
-      roles = pulumi.Input.asOptionalInput<List<ProjectMemberRole>>(roles),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.projectId,
+    this.roles,
+    this.status,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class ProjectMemberState {
 
   factory ProjectMemberState.fromMap(Map<String, dynamic> map) {
     return ProjectMemberState(
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<int>(map['projectId'] as int),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<ProjectMemberRole>>(pulumi.Input.decodeList<ProjectMemberRole>(map['roles'], (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as int).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ProjectMemberRole>(map['roles'], (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

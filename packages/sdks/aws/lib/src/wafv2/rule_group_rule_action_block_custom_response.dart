@@ -5,11 +5,11 @@ import 'rule_group_rule_action_block_custom_response_response_header.dart';
 
 class RuleGroupRuleActionBlockCustomResponse {
   /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
-  final String? customResponseBodyKey;
+  final pulumi.Input<String>? customResponseBodyKey;
   /// The HTTP status code to return to the client.
-  final int responseCode;
+  final pulumi.Input<int> responseCode;
   /// The `response_header` blocks used to define the HTTP response headers added to the response. See Custom HTTP Header below for details.
-  final List<RuleGroupRuleActionBlockCustomResponseResponseHeader>? responseHeaders;
+  final pulumi.Input<List<RuleGroupRuleActionBlockCustomResponseResponseHeader>>? responseHeaders;
 
   /// Creates a new [RuleGroupRuleActionBlockCustomResponse].
   /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
@@ -25,15 +25,15 @@ class RuleGroupRuleActionBlockCustomResponse {
     return <String, dynamic>{
       'customResponseBodyKey': ?customResponseBodyKey,
       'responseCode': responseCode,
-      'responseHeaders': ?responseHeaders == null ? null : pulumi.Input.encodeList<RuleGroupRuleActionBlockCustomResponseResponseHeader, Map<String, dynamic>>(responseHeaders!, (value) => value.toMap()),
+      'responseHeaders': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleActionBlockCustomResponseResponseHeader>, List<Map<String, dynamic>>>(responseHeaders, (value) => pulumi.Input.encodeList<RuleGroupRuleActionBlockCustomResponseResponseHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleGroupRuleActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionBlockCustomResponse(
-      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : map['customResponseBodyKey'] as String,
-      responseCode: map['responseCode'] as int,
-      responseHeaders: map['responseHeaders'] == null ? null : pulumi.Input.decodeList<RuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => RuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>())),
+      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : (map['customResponseBodyKey'] as String).input(),
+      responseCode: (map['responseCode'] as int).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => RuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

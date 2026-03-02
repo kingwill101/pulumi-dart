@@ -28,17 +28,12 @@ class GetMetastoreTableIamPolicyArgs {
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   /// [table] Used to find the parent resource to bind the IAM policy to
   GetMetastoreTableIamPolicyArgs({
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-    required pulumi.Output<String> table,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      table = pulumi.Input.asInput<String>(table);
+    required this.databaseId,
+    this.location,
+    this.project,
+    required this.serviceId,
+    required this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class GetMetastoreTableIamPolicyArgs {
 
   factory GetMetastoreTableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetMetastoreTableIamPolicyArgs(
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      table: pulumi.Output.create<String>(map['table'] as String),
+      databaseId: (map['databaseId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

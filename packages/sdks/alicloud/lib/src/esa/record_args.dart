@@ -51,29 +51,18 @@ class RecordArgs {
   /// [sourceType] The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
   /// [ttl] The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
   RecordArgs({
-    pulumi.Output<RecordAuthConf>? authConf,
-    pulumi.Output<String>? bizName,
-    pulumi.Output<String>? comment,
-    required pulumi.Output<RecordData> data,
-    pulumi.Output<String>? hostPolicy,
-    pulumi.Output<bool>? proxied,
-    required pulumi.Output<String> recordName,
-    required pulumi.Output<String> recordType,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<String>? sourceType,
-    pulumi.Output<int>? ttl,
-  }) :
-      authConf = pulumi.Input.asOptionalInput<RecordAuthConf>(authConf),
-      bizName = pulumi.Input.asOptionalInput<String>(bizName),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      data = pulumi.Input.asInput<RecordData>(data),
-      hostPolicy = pulumi.Input.asOptionalInput<String>(hostPolicy),
-      proxied = pulumi.Input.asOptionalInput<bool>(proxied),
-      recordName = pulumi.Input.asInput<String>(recordName),
-      recordType = pulumi.Input.asInput<String>(recordType),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl);
+    this.authConf,
+    this.bizName,
+    this.comment,
+    required this.data,
+    this.hostPolicy,
+    this.proxied,
+    required this.recordName,
+    required this.recordType,
+    required this.siteId,
+    this.sourceType,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,17 +82,17 @@ class RecordArgs {
 
   factory RecordArgs.fromMap(Map<String, dynamic> map) {
     return RecordArgs(
-      authConf: map['authConf'] == null ? null : pulumi.Output.create<RecordAuthConf>(RecordAuthConf.fromMap((map['authConf'] as Map).cast<String, dynamic>())),
-      bizName: map['bizName'] == null ? null : pulumi.Output.create<String>(map['bizName'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      data: pulumi.Output.create<RecordData>(RecordData.fromMap((map['data'] as Map).cast<String, dynamic>())),
-      hostPolicy: map['hostPolicy'] == null ? null : pulumi.Output.create<String>(map['hostPolicy'] as String),
-      proxied: map['proxied'] == null ? null : pulumi.Output.create<bool>(map['proxied'] as bool),
-      recordName: pulumi.Output.create<String>(map['recordName'] as String),
-      recordType: pulumi.Output.create<String>(map['recordType'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
+      authConf: map['authConf'] == null ? null : (RecordAuthConf.fromMap((map['authConf'] as Map).cast<String, dynamic>())).input(),
+      bizName: map['bizName'] == null ? null : (map['bizName'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      data: (RecordData.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
+      hostPolicy: map['hostPolicy'] == null ? null : (map['hostPolicy'] as String).input(),
+      proxied: map['proxied'] == null ? null : (map['proxied'] as bool).input(),
+      recordName: (map['recordName'] as String).input(),
+      recordType: (map['recordType'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

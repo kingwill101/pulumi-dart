@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceCorsConfiguration {
   /// (Boolean) If credentials are allowed via CORS.
-  final bool? allowCredentials;
+  final pulumi.Input<bool>? allowCredentials;
   /// A set of headers to be allowed via CORS.
-  final List<String>? allowedHeaders;
+  final pulumi.Input<List<String>>? allowedHeaders;
   /// The methods to be allowed via CORS. Possible values are `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PATCH` and `PUT`.
-  final List<String>? allowedMethods;
+  final pulumi.Input<List<String>>? allowedMethods;
   /// A set of origins to be allowed via CORS.
-  final List<String>? allowedOrigins;
+  final pulumi.Input<List<String>>? allowedOrigins;
   /// The max age to be allowed via CORS.
-  final int? maxAgeInSeconds;
+  final pulumi.Input<int>? maxAgeInSeconds;
 
   /// Creates a new [ServiceCorsConfiguration].
   /// [allowCredentials] (Boolean) If credentials are allowed via CORS.
@@ -39,11 +40,11 @@ class ServiceCorsConfiguration {
 
   factory ServiceCorsConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceCorsConfiguration(
-      allowCredentials: map['allowCredentials'] == null ? null : map['allowCredentials'] as bool,
-      allowedHeaders: map['allowedHeaders'] == null ? null : (map['allowedHeaders'] as List).cast<String>(),
-      allowedMethods: map['allowedMethods'] == null ? null : (map['allowedMethods'] as List).cast<String>(),
-      allowedOrigins: map['allowedOrigins'] == null ? null : (map['allowedOrigins'] as List).cast<String>(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : map['maxAgeInSeconds'] as int,
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
+      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetAssessmentArgs {
   /// [expand] OData expand. Optional.
   /// [resourceId] The identifier of the resource.
   GetAssessmentArgs({
-    required pulumi.Output<String> assessmentName,
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceId,
-  }) :
-      assessmentName = pulumi.Input.asInput<String>(assessmentName),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    required this.assessmentName,
+    this.expand,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAssessmentArgs {
 
   factory GetAssessmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentArgs(
-      assessmentName: pulumi.Output.create<String>(map['assessmentName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      assessmentName: (map['assessmentName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

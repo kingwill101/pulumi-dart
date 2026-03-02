@@ -7,11 +7,11 @@ import 'resource_reference_response.dart';
 /// Profile of the managed cluster NAT gateway.
 class ManagedClusterNATGatewayProfileResponse {
   /// The effective outbound IP resources of the cluster NAT gateway.
-  final List<ResourceReferenceResponse> effectiveOutboundIPs;
+  final pulumi.Input<List<ResourceReferenceResponse>> effectiveOutboundIPs;
   /// Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// Profile of the managed outbound IP resources of the cluster NAT gateway.
-  final ManagedClusterManagedOutboundIPProfileResponse? managedOutboundIPProfile;
+  final pulumi.Input<ManagedClusterManagedOutboundIPProfileResponse>? managedOutboundIPProfile;
 
   /// Creates a new [ManagedClusterNATGatewayProfileResponse].
   /// [effectiveOutboundIPs] The effective outbound IP resources of the cluster NAT gateway.
@@ -25,17 +25,17 @@ class ManagedClusterNATGatewayProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'effectiveOutboundIPs': pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(effectiveOutboundIPs, (value) => value.toMap()),
+      'effectiveOutboundIPs': pulumi.Input.mapInputValue<List<ResourceReferenceResponse>, List<Map<String, dynamic>>>(effectiveOutboundIPs, (value) => pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
-      'managedOutboundIPProfile': ?managedOutboundIPProfile == null ? null : managedOutboundIPProfile!.toMap(),
+      'managedOutboundIPProfile': ?pulumi.Input.mapOptionalInputValue<ManagedClusterManagedOutboundIPProfileResponse, Map<String, dynamic>>(managedOutboundIPProfile, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterNATGatewayProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterNATGatewayProfileResponse(
-      effectiveOutboundIPs: pulumi.Input.decodeList<ResourceReferenceResponse>(map['effectiveOutboundIPs'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      managedOutboundIPProfile: map['managedOutboundIPProfile'] == null ? null : ManagedClusterManagedOutboundIPProfileResponse.fromMap((map['managedOutboundIPProfile'] as Map).cast<String, dynamic>()),
+      effectiveOutboundIPs: (pulumi.Input.decodeList<ResourceReferenceResponse>(map['effectiveOutboundIPs'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      managedOutboundIPProfile: map['managedOutboundIPProfile'] == null ? null : (ManagedClusterManagedOutboundIPProfileResponse.fromMap((map['managedOutboundIPProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

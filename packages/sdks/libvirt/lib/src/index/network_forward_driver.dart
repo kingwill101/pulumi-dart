@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkForwardDriver {
   /// Specifies the model of the forwarding driver.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// Sets the name of the forwarding driver.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [NetworkForwardDriver].
   /// [model] Specifies the model of the forwarding driver.
@@ -24,8 +25,8 @@ class NetworkForwardDriver {
 
   factory NetworkForwardDriver.fromMap(Map<String, dynamic> map) {
     return NetworkForwardDriver(
-      model: map['model'] == null ? null : map['model'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

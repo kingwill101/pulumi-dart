@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Resource ID for a Virtual Hard Disk.
 class VirtualHardDiskArmReferenceResponse {
   /// The Azure Resource ID for a Virtual Hard Disk.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [VirtualHardDiskArmReferenceResponse].
   /// [id] The Azure Resource ID for a Virtual Hard Disk.
@@ -20,7 +21,7 @@ class VirtualHardDiskArmReferenceResponse {
 
   factory VirtualHardDiskArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskArmReferenceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

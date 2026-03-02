@@ -47,31 +47,19 @@ class StudentArgs {
   /// [subscriptionAlias] Subscription alias
   /// [subscriptionInviteLastSentDate] subscription invite last sent date
   StudentArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> billingProfileName,
-    required pulumi.Output<Amount> budget,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> expirationDate,
-    required pulumi.Output<String> firstName,
-    required pulumi.Output<String> invoiceSectionName,
-    required pulumi.Output<String> lastName,
-    required pulumi.Output<String> role,
-    pulumi.Output<String>? studentAlias,
-    pulumi.Output<String>? subscriptionAlias,
-    pulumi.Output<String>? subscriptionInviteLastSentDate,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingProfileName = pulumi.Input.asInput<String>(billingProfileName),
-      budget = pulumi.Input.asInput<Amount>(budget),
-      email = pulumi.Input.asInput<String>(email),
-      expirationDate = pulumi.Input.asInput<String>(expirationDate),
-      firstName = pulumi.Input.asInput<String>(firstName),
-      invoiceSectionName = pulumi.Input.asInput<String>(invoiceSectionName),
-      lastName = pulumi.Input.asInput<String>(lastName),
-      role = pulumi.Input.asInput<String>(role),
-      studentAlias = pulumi.Input.asOptionalInput<String>(studentAlias),
-      subscriptionAlias = pulumi.Input.asOptionalInput<String>(subscriptionAlias),
-      subscriptionInviteLastSentDate = pulumi.Input.asOptionalInput<String>(subscriptionInviteLastSentDate);
+    required this.billingAccountName,
+    required this.billingProfileName,
+    required this.budget,
+    required this.email,
+    required this.expirationDate,
+    required this.firstName,
+    required this.invoiceSectionName,
+    required this.lastName,
+    required this.role,
+    this.studentAlias,
+    this.subscriptionAlias,
+    this.subscriptionInviteLastSentDate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class StudentArgs {
 
   factory StudentArgs.fromMap(Map<String, dynamic> map) {
     return StudentArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingProfileName: pulumi.Output.create<String>(map['billingProfileName'] as String),
-      budget: pulumi.Output.create<Amount>(Amount.fromMap((map['budget'] as Map).cast<String, dynamic>())),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      expirationDate: pulumi.Output.create<String>(map['expirationDate'] as String),
-      firstName: pulumi.Output.create<String>(map['firstName'] as String),
-      invoiceSectionName: pulumi.Output.create<String>(map['invoiceSectionName'] as String),
-      lastName: pulumi.Output.create<String>(map['lastName'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      studentAlias: map['studentAlias'] == null ? null : pulumi.Output.create<String>(map['studentAlias'] as String),
-      subscriptionAlias: map['subscriptionAlias'] == null ? null : pulumi.Output.create<String>(map['subscriptionAlias'] as String),
-      subscriptionInviteLastSentDate: map['subscriptionInviteLastSentDate'] == null ? null : pulumi.Output.create<String>(map['subscriptionInviteLastSentDate'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingProfileName: (map['billingProfileName'] as String).input(),
+      budget: (Amount.fromMap((map['budget'] as Map).cast<String, dynamic>())).input(),
+      email: (map['email'] as String).input(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      invoiceSectionName: (map['invoiceSectionName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      role: (map['role'] as String).input(),
+      studentAlias: map['studentAlias'] == null ? null : (map['studentAlias'] as String).input(),
+      subscriptionAlias: map['subscriptionAlias'] == null ? null : (map['subscriptionAlias'] as String).input(),
+      subscriptionInviteLastSentDate: map['subscriptionInviteLastSentDate'] == null ? null : (map['subscriptionInviteLastSentDate'] as String).input(),
     );
   }
 }

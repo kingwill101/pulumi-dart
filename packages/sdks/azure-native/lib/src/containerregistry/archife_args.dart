@@ -31,21 +31,14 @@ class ArchifeArgs {
   /// [repositoryEndpointPrefix] Optional.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ArchifeArgs({
-    pulumi.Output<String>? archiveName,
-    pulumi.Output<ArchivePackageSourceProperties>? packageSource,
-    required pulumi.Output<String> packageType,
-    pulumi.Output<String>? publishedVersion,
-    required pulumi.Output<String> registryName,
-    pulumi.Output<String>? repositoryEndpointPrefix,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      archiveName = pulumi.Input.asOptionalInput<String>(archiveName),
-      packageSource = pulumi.Input.asOptionalInput<ArchivePackageSourceProperties>(packageSource),
-      packageType = pulumi.Input.asInput<String>(packageType),
-      publishedVersion = pulumi.Input.asOptionalInput<String>(publishedVersion),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      repositoryEndpointPrefix = pulumi.Input.asOptionalInput<String>(repositoryEndpointPrefix),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.archiveName,
+    this.packageSource,
+    required this.packageType,
+    this.publishedVersion,
+    required this.registryName,
+    this.repositoryEndpointPrefix,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ArchifeArgs {
 
   factory ArchifeArgs.fromMap(Map<String, dynamic> map) {
     return ArchifeArgs(
-      archiveName: map['archiveName'] == null ? null : pulumi.Output.create<String>(map['archiveName'] as String),
-      packageSource: map['packageSource'] == null ? null : pulumi.Output.create<ArchivePackageSourceProperties>(ArchivePackageSourceProperties.fromMap((map['packageSource'] as Map).cast<String, dynamic>())),
-      packageType: pulumi.Output.create<String>(map['packageType'] as String),
-      publishedVersion: map['publishedVersion'] == null ? null : pulumi.Output.create<String>(map['publishedVersion'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      repositoryEndpointPrefix: map['repositoryEndpointPrefix'] == null ? null : pulumi.Output.create<String>(map['repositoryEndpointPrefix'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      archiveName: map['archiveName'] == null ? null : (map['archiveName'] as String).input(),
+      packageSource: map['packageSource'] == null ? null : (ArchivePackageSourceProperties.fromMap((map['packageSource'] as Map).cast<String, dynamic>())).input(),
+      packageType: (map['packageType'] as String).input(),
+      publishedVersion: map['publishedVersion'] == null ? null : (map['publishedVersion'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      repositoryEndpointPrefix: map['repositoryEndpointPrefix'] == null ? null : (map['repositoryEndpointPrefix'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

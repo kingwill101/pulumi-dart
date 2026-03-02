@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_configuration_properties.dart';
 
 /// Configuration to be used to setup the management network.
 class ManagementNetworkConfigurationProperties {
   /// VPN Configuration properties.
-  final VpnConfigurationProperties infrastructureVpnConfiguration;
+  final pulumi.Input<VpnConfigurationProperties> infrastructureVpnConfiguration;
   /// VPN Configuration properties.
-  final VpnConfigurationProperties workloadVpnConfiguration;
+  final pulumi.Input<VpnConfigurationProperties> workloadVpnConfiguration;
 
   /// Creates a new [ManagementNetworkConfigurationProperties].
   /// [infrastructureVpnConfiguration] VPN Configuration properties.
@@ -19,15 +20,15 @@ class ManagementNetworkConfigurationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infrastructureVpnConfiguration': infrastructureVpnConfiguration.toMap(),
-      'workloadVpnConfiguration': workloadVpnConfiguration.toMap(),
+      'infrastructureVpnConfiguration': pulumi.Input.mapInputValue<VpnConfigurationProperties, Map<String, dynamic>>(infrastructureVpnConfiguration, (value) => value.toMap()),
+      'workloadVpnConfiguration': pulumi.Input.mapInputValue<VpnConfigurationProperties, Map<String, dynamic>>(workloadVpnConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ManagementNetworkConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return ManagementNetworkConfigurationProperties(
-      infrastructureVpnConfiguration: VpnConfigurationProperties.fromMap((map['infrastructureVpnConfiguration'] as Map).cast<String, dynamic>()),
-      workloadVpnConfiguration: VpnConfigurationProperties.fromMap((map['workloadVpnConfiguration'] as Map).cast<String, dynamic>()),
+      infrastructureVpnConfiguration: (VpnConfigurationProperties.fromMap((map['infrastructureVpnConfiguration'] as Map).cast<String, dynamic>())).input(),
+      workloadVpnConfiguration: (VpnConfigurationProperties.fromMap((map['workloadVpnConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

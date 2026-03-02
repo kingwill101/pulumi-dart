@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudServiceContainerRegistry {
   /// Specifies the name of the container registry.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the password of the container registry.
-  final String password;
+  final pulumi.Input<String> password;
   /// Specifies the login server of the container registry.
-  final String server;
+  final pulumi.Input<String> server;
   /// Specifies the username of the container registry.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [SpringCloudServiceContainerRegistry].
   /// [name] Specifies the name of the container registry.
@@ -34,10 +35,10 @@ class SpringCloudServiceContainerRegistry {
 
   factory SpringCloudServiceContainerRegistry.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceContainerRegistry(
-      name: map['name'] as String,
-      password: map['password'] as String,
-      server: map['server'] as String,
-      username: map['username'] as String,
+      name: (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
+      server: (map['server'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -49,33 +49,20 @@ class ProfileHttp2Args {
   /// [receiveWindow] The flow-control size for upload streams, in KB. `Default: 32`.
   /// [writeSize] The total size of combined data frames, in bytes, that the HTTP/2 protocol sends in a single write function. `Default: 16384`".
   ProfileHttp2Args({
-    pulumi.Output<List<String>>? activationModes,
-    pulumi.Output<int>? concurrentStreamsPerConnection,
-    pulumi.Output<int>? connectionIdleTimeout,
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<String>? enforceTlsRequirements,
-    pulumi.Output<int>? frameSize,
-    pulumi.Output<int>? headerTableSize,
-    pulumi.Output<String>? includeContentLength,
-    pulumi.Output<String>? insertHeader,
-    pulumi.Output<String>? insertHeaderName,
-    required pulumi.Output<String> name,
-    pulumi.Output<int>? receiveWindow,
-    pulumi.Output<int>? writeSize,
-  }) :
-      activationModes = pulumi.Input.asOptionalInput<List<String>>(activationModes),
-      concurrentStreamsPerConnection = pulumi.Input.asOptionalInput<int>(concurrentStreamsPerConnection),
-      connectionIdleTimeout = pulumi.Input.asOptionalInput<int>(connectionIdleTimeout),
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      enforceTlsRequirements = pulumi.Input.asOptionalInput<String>(enforceTlsRequirements),
-      frameSize = pulumi.Input.asOptionalInput<int>(frameSize),
-      headerTableSize = pulumi.Input.asOptionalInput<int>(headerTableSize),
-      includeContentLength = pulumi.Input.asOptionalInput<String>(includeContentLength),
-      insertHeader = pulumi.Input.asOptionalInput<String>(insertHeader),
-      insertHeaderName = pulumi.Input.asOptionalInput<String>(insertHeaderName),
-      name = pulumi.Input.asInput<String>(name),
-      receiveWindow = pulumi.Input.asOptionalInput<int>(receiveWindow),
-      writeSize = pulumi.Input.asOptionalInput<int>(writeSize);
+    this.activationModes,
+    this.concurrentStreamsPerConnection,
+    this.connectionIdleTimeout,
+    this.defaultsFrom,
+    this.enforceTlsRequirements,
+    this.frameSize,
+    this.headerTableSize,
+    this.includeContentLength,
+    this.insertHeader,
+    this.insertHeaderName,
+    required this.name,
+    this.receiveWindow,
+    this.writeSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class ProfileHttp2Args {
 
   factory ProfileHttp2Args.fromMap(Map<String, dynamic> map) {
     return ProfileHttp2Args(
-      activationModes: map['activationModes'] == null ? null : pulumi.Output.create<List<String>>((map['activationModes'] as List).cast<String>()),
-      concurrentStreamsPerConnection: map['concurrentStreamsPerConnection'] == null ? null : pulumi.Output.create<int>(map['concurrentStreamsPerConnection'] as int),
-      connectionIdleTimeout: map['connectionIdleTimeout'] == null ? null : pulumi.Output.create<int>(map['connectionIdleTimeout'] as int),
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      enforceTlsRequirements: map['enforceTlsRequirements'] == null ? null : pulumi.Output.create<String>(map['enforceTlsRequirements'] as String),
-      frameSize: map['frameSize'] == null ? null : pulumi.Output.create<int>(map['frameSize'] as int),
-      headerTableSize: map['headerTableSize'] == null ? null : pulumi.Output.create<int>(map['headerTableSize'] as int),
-      includeContentLength: map['includeContentLength'] == null ? null : pulumi.Output.create<String>(map['includeContentLength'] as String),
-      insertHeader: map['insertHeader'] == null ? null : pulumi.Output.create<String>(map['insertHeader'] as String),
-      insertHeaderName: map['insertHeaderName'] == null ? null : pulumi.Output.create<String>(map['insertHeaderName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      receiveWindow: map['receiveWindow'] == null ? null : pulumi.Output.create<int>(map['receiveWindow'] as int),
-      writeSize: map['writeSize'] == null ? null : pulumi.Output.create<int>(map['writeSize'] as int),
+      activationModes: map['activationModes'] == null ? null : ((map['activationModes'] as List).cast<String>()).input(),
+      concurrentStreamsPerConnection: map['concurrentStreamsPerConnection'] == null ? null : (map['concurrentStreamsPerConnection'] as int).input(),
+      connectionIdleTimeout: map['connectionIdleTimeout'] == null ? null : (map['connectionIdleTimeout'] as int).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      enforceTlsRequirements: map['enforceTlsRequirements'] == null ? null : (map['enforceTlsRequirements'] as String).input(),
+      frameSize: map['frameSize'] == null ? null : (map['frameSize'] as int).input(),
+      headerTableSize: map['headerTableSize'] == null ? null : (map['headerTableSize'] as int).input(),
+      includeContentLength: map['includeContentLength'] == null ? null : (map['includeContentLength'] as String).input(),
+      insertHeader: map['insertHeader'] == null ? null : (map['insertHeader'] as String).input(),
+      insertHeaderName: map['insertHeaderName'] == null ? null : (map['insertHeaderName'] as String).input(),
+      name: (map['name'] as String).input(),
+      receiveWindow: map['receiveWindow'] == null ? null : (map['receiveWindow'] as int).input(),
+      writeSize: map['writeSize'] == null ? null : (map['writeSize'] as int).input(),
     );
   }
 }

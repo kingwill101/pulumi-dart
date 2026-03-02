@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity source for Microsoft Fabric Lakehouse Table.
 class LakeHouseTableSource {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Query an older snapshot by timestamp. Type: string (or Expression with resultType string).
-  final dynamic timestampAsOf;
+  final pulumi.Input<dynamic>? timestampAsOf;
   /// Copy source type.
   /// Expected value is 'LakeHouseTableSource'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Query an older snapshot by version. Type: integer (or Expression with resultType integer).
-  final dynamic versionAsOf;
+  final pulumi.Input<dynamic>? versionAsOf;
 
   /// Creates a new [LakeHouseTableSource].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -56,14 +57,14 @@ class LakeHouseTableSource {
 
   factory LakeHouseTableSource.fromMap(Map<String, dynamic> map) {
     return LakeHouseTableSource(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      timestampAsOf: map['timestampAsOf'] == null ? null : map['timestampAsOf'],
-      type: map['type'] as String,
-      versionAsOf: map['versionAsOf'] == null ? null : map['versionAsOf'],
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      timestampAsOf: map['timestampAsOf'] == null ? null : (map['timestampAsOf']).input(),
+      type: (map['type'] as String).input(),
+      versionAsOf: map['versionAsOf'] == null ? null : (map['versionAsOf']).input(),
     );
   }
 }

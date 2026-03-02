@@ -35,17 +35,12 @@ class TrafficQosQueueArgs {
   /// [queueName] The name of the QoS queue.
   /// [queueType] QoS queue type, value:
   TrafficQosQueueArgs({
-    pulumi.Output<String>? bandwidthPercent,
-    required pulumi.Output<String> qosId,
-    pulumi.Output<String>? queueDescription,
-    pulumi.Output<String>? queueName,
-    required pulumi.Output<String> queueType,
-  }) :
-      bandwidthPercent = pulumi.Input.asOptionalInput<String>(bandwidthPercent),
-      qosId = pulumi.Input.asInput<String>(qosId),
-      queueDescription = pulumi.Input.asOptionalInput<String>(queueDescription),
-      queueName = pulumi.Input.asOptionalInput<String>(queueName),
-      queueType = pulumi.Input.asInput<String>(queueType);
+    this.bandwidthPercent,
+    required this.qosId,
+    this.queueDescription,
+    this.queueName,
+    required this.queueType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,11 +54,11 @@ class TrafficQosQueueArgs {
 
   factory TrafficQosQueueArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosQueueArgs(
-      bandwidthPercent: map['bandwidthPercent'] == null ? null : pulumi.Output.create<String>(map['bandwidthPercent'] as String),
-      qosId: pulumi.Output.create<String>(map['qosId'] as String),
-      queueDescription: map['queueDescription'] == null ? null : pulumi.Output.create<String>(map['queueDescription'] as String),
-      queueName: map['queueName'] == null ? null : pulumi.Output.create<String>(map['queueName'] as String),
-      queueType: pulumi.Output.create<String>(map['queueType'] as String),
+      bandwidthPercent: map['bandwidthPercent'] == null ? null : (map['bandwidthPercent'] as String).input(),
+      qosId: (map['qosId'] as String).input(),
+      queueDescription: map['queueDescription'] == null ? null : (map['queueDescription'] as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      queueType: (map['queueType'] as String).input(),
     );
   }
 }

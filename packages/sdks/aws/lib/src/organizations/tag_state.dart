@@ -16,13 +16,10 @@ class TagState {
   /// [resourceId] Id of the Organizations resource to tag.
   /// [value] Tag value.
   TagState({
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? value,
-  }) :
-      key = pulumi.Input.asOptionalInput<String>(key),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.key,
+    this.resourceId,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

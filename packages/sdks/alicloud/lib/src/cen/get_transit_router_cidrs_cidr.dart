@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterCidrsCidr {
   /// The cidr of the transit router.
-  final String cidr;
+  final pulumi.Input<String> cidr;
   /// The description of the transit router.
-  final String description;
+  final pulumi.Input<String> description;
   /// The type of the transit router cidr.
-  final String family;
+  final pulumi.Input<String> family;
   /// The ID of the Cen Transit Router Cidr. It formats as `<transit_router_id>:<transit_router_cidr_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table.
-  final bool publishCidrRoute;
+  final pulumi.Input<bool> publishCidrRoute;
   /// The ID of the transit router cidr.
-  final String transitRouterCidrId;
+  final pulumi.Input<String> transitRouterCidrId;
   /// The name of the transit router.
-  final String transitRouterCidrName;
+  final pulumi.Input<String> transitRouterCidrName;
   /// The ID of the transit router.
-  final String transitRouterId;
+  final pulumi.Input<String> transitRouterId;
 
   /// Creates a new [GetTransitRouterCidrsCidr].
   /// [cidr] The cidr of the transit router.
@@ -54,14 +55,14 @@ class GetTransitRouterCidrsCidr {
 
   factory GetTransitRouterCidrsCidr.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterCidrsCidr(
-      cidr: map['cidr'] as String,
-      description: map['description'] as String,
-      family: map['family'] as String,
-      id: map['id'] as String,
-      publishCidrRoute: map['publishCidrRoute'] as bool,
-      transitRouterCidrId: map['transitRouterCidrId'] as String,
-      transitRouterCidrName: map['transitRouterCidrName'] as String,
-      transitRouterId: map['transitRouterId'] as String,
+      cidr: (map['cidr'] as String).input(),
+      description: (map['description'] as String).input(),
+      family: (map['family'] as String).input(),
+      id: (map['id'] as String).input(),
+      publishCidrRoute: (map['publishCidrRoute'] as bool).input(),
+      transitRouterCidrId: (map['transitRouterCidrId'] as String).input(),
+      transitRouterCidrName: (map['transitRouterCidrName'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

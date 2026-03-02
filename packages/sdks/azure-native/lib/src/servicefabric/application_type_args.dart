@@ -25,17 +25,12 @@ class ApplicationTypeArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   ApplicationTypeArgs({
-    pulumi.Output<String>? applicationTypeName,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationTypeName = pulumi.Input.asOptionalInput<String>(applicationTypeName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationTypeName,
+    required this.clusterName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ApplicationTypeArgs {
 
   factory ApplicationTypeArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationTypeArgs(
-      applicationTypeName: map['applicationTypeName'] == null ? null : pulumi.Output.create<String>(map['applicationTypeName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationTypeName: map['applicationTypeName'] == null ? null : (map['applicationTypeName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

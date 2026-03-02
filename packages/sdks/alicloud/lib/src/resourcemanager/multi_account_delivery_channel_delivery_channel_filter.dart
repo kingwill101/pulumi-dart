@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultiAccountDeliveryChannelDeliveryChannelFilter {
   /// The account scopes of the delivery channel.
-  final List<String> accountScopes;
+  final pulumi.Input<List<String>> accountScopes;
   /// An array of effective resource types for the delivery channel.
   /// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
   /// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
-  final List<String>? resourceTypes;
+  final pulumi.Input<List<String>>? resourceTypes;
 
   /// Creates a new [MultiAccountDeliveryChannelDeliveryChannelFilter].
   /// [accountScopes] The account scopes of the delivery channel.
@@ -26,8 +27,8 @@ class MultiAccountDeliveryChannelDeliveryChannelFilter {
 
   factory MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap(Map<String, dynamic> map) {
     return MultiAccountDeliveryChannelDeliveryChannelFilter(
-      accountScopes: (map['accountScopes'] as List).cast<String>(),
-      resourceTypes: map['resourceTypes'] == null ? null : (map['resourceTypes'] as List).cast<String>(),
+      accountScopes: ((map['accountScopes'] as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }
 }

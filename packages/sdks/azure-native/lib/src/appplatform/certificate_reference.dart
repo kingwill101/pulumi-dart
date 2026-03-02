@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to the certificate
 class CertificateReference {
   /// Resource Id of the certificate
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [CertificateReference].
   /// [resourceId] Resource Id of the certificate
@@ -20,7 +21,7 @@ class CertificateReference {
 
   factory CertificateReference.fromMap(Map<String, dynamic> map) {
     return CertificateReference(
-      resourceId: map['resourceId'] as String,
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

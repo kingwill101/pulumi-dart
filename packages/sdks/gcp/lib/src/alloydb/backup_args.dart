@@ -51,27 +51,17 @@ class BackupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The backup type, which suggests the trigger for the backup.
   BackupArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> backupId,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<BackupEncryptionConfig>? encryptionConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? type,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      backupId = pulumi.Input.asInput<String>(backupId),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      encryptionConfig = pulumi.Input.asOptionalInput<BackupEncryptionConfig>(encryptionConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.annotations,
+    required this.backupId,
+    required this.clusterName,
+    this.description,
+    this.displayName,
+    this.encryptionConfig,
+    this.labels,
+    required this.location,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,16 +80,16 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionConfig: map['encryptionConfig'] == null ? null : pulumi.Output.create<BackupEncryptionConfig>(BackupEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      backupId: (map['backupId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (BackupEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_reference_response.dart';
 
 /// Customer Certificate used for https
 class CustomerCertificateParametersResponse {
   /// Certificate issuing authority.
-  final String certificateAuthority;
+  final pulumi.Input<String> certificateAuthority;
   /// Certificate expiration date.
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-  final ResourceReferenceResponse secretSource;
+  final pulumi.Input<ResourceReferenceResponse> secretSource;
   /// Version of the secret to be used
-  final String? secretVersion;
+  final pulumi.Input<String>? secretVersion;
   /// Subject name in the certificate.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The list of SANs.
-  final List<String> subjectAlternativeNames;
+  final pulumi.Input<List<String>> subjectAlternativeNames;
   /// Certificate thumbprint.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// The type of the secret resource.
   /// Expected value is 'CustomerCertificate'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Whether to use the latest version for the certificate
-  final bool? useLatestVersion;
+  final pulumi.Input<bool>? useLatestVersion;
 
   /// Creates a new [CustomerCertificateParametersResponse].
   /// [certificateAuthority] Certificate issuing authority.
@@ -50,7 +51,7 @@ class CustomerCertificateParametersResponse {
     return <String, dynamic>{
       'certificateAuthority': certificateAuthority,
       'expirationDate': expirationDate,
-      'secretSource': secretSource.toMap(),
+      'secretSource': pulumi.Input.mapInputValue<ResourceReferenceResponse, Map<String, dynamic>>(secretSource, (value) => value.toMap()),
       'secretVersion': ?secretVersion,
       'subject': subject,
       'subjectAlternativeNames': subjectAlternativeNames,
@@ -62,15 +63,15 @@ class CustomerCertificateParametersResponse {
 
   factory CustomerCertificateParametersResponse.fromMap(Map<String, dynamic> map) {
     return CustomerCertificateParametersResponse(
-      certificateAuthority: map['certificateAuthority'] as String,
-      expirationDate: map['expirationDate'] as String,
-      secretSource: ResourceReferenceResponse.fromMap((map['secretSource'] as Map).cast<String, dynamic>()),
-      secretVersion: map['secretVersion'] == null ? null : map['secretVersion'] as String,
-      subject: map['subject'] as String,
-      subjectAlternativeNames: (map['subjectAlternativeNames'] as List).cast<String>(),
-      thumbprint: map['thumbprint'] as String,
-      type: map['type'] as String,
-      useLatestVersion: map['useLatestVersion'] == null ? null : map['useLatestVersion'] as bool,
+      certificateAuthority: (map['certificateAuthority'] as String).input(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      secretSource: (ResourceReferenceResponse.fromMap((map['secretSource'] as Map).cast<String, dynamic>())).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      subjectAlternativeNames: ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      type: (map['type'] as String).input(),
+      useLatestVersion: map['useLatestVersion'] == null ? null : (map['useLatestVersion'] as bool).input(),
     );
   }
 }

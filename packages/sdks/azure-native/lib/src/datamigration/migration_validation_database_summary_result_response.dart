@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Migration Validation Database level summary result
 class MigrationValidationDatabaseSummaryResultResponse {
   /// Validation end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Migration Identifier
-  final String migrationId;
+  final pulumi.Input<String> migrationId;
   /// Name of the source database
-  final String sourceDatabaseName;
+  final pulumi.Input<String> sourceDatabaseName;
   /// Validation start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current status of validation at the database level
-  final String status;
+  final pulumi.Input<String> status;
   /// Name of the target database
-  final String targetDatabaseName;
+  final pulumi.Input<String> targetDatabaseName;
 
   /// Creates a new [MigrationValidationDatabaseSummaryResultResponse].
   /// [endedOn] Validation end time
@@ -50,13 +51,13 @@ class MigrationValidationDatabaseSummaryResultResponse {
 
   factory MigrationValidationDatabaseSummaryResultResponse.fromMap(Map<String, dynamic> map) {
     return MigrationValidationDatabaseSummaryResultResponse(
-      endedOn: map['endedOn'] as String,
-      id: map['id'] as String,
-      migrationId: map['migrationId'] as String,
-      sourceDatabaseName: map['sourceDatabaseName'] as String,
-      startedOn: map['startedOn'] as String,
-      status: map['status'] as String,
-      targetDatabaseName: map['targetDatabaseName'] as String,
+      endedOn: (map['endedOn'] as String).input(),
+      id: (map['id'] as String).input(),
+      migrationId: (map['migrationId'] as String).input(),
+      sourceDatabaseName: (map['sourceDatabaseName'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      status: (map['status'] as String).input(),
+      targetDatabaseName: (map['targetDatabaseName'] as String).input(),
     );
   }
 }

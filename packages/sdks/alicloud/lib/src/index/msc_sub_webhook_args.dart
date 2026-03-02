@@ -16,11 +16,9 @@ class MscSubWebhookArgs {
   /// [serverUrl] The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
   /// [webhookName] The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
   MscSubWebhookArgs({
-    required pulumi.Output<String> serverUrl,
-    required pulumi.Output<String> webhookName,
-  }) :
-      serverUrl = pulumi.Input.asInput<String>(serverUrl),
-      webhookName = pulumi.Input.asInput<String>(webhookName);
+    required this.serverUrl,
+    required this.webhookName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class MscSubWebhookArgs {
 
   factory MscSubWebhookArgs.fromMap(Map<String, dynamic> map) {
     return MscSubWebhookArgs(
-      serverUrl: pulumi.Output.create<String>(map['serverUrl'] as String),
-      webhookName: pulumi.Output.create<String>(map['webhookName'] as String),
+      serverUrl: (map['serverUrl'] as String).input(),
+      webhookName: (map['webhookName'] as String).input(),
     );
   }
 }

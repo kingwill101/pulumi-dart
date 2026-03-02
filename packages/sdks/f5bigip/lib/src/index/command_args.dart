@@ -18,13 +18,10 @@ class CommandArgs {
   /// [commands] The commands to send to the remote BIG-IP device over the configured provider. The resulting output from the command is returned and added to `command_result`
   /// [when] Optional.
   CommandArgs({
-    pulumi.Output<List<String>>? commandResults,
-    required pulumi.Output<List<String>> commands,
-    pulumi.Output<String>? when,
-  }) :
-      commandResults = pulumi.Input.asOptionalInput<List<String>>(commandResults),
-      commands = pulumi.Input.asInput<List<String>>(commands),
-      when = pulumi.Input.asOptionalInput<String>(when);
+    this.commandResults,
+    required this.commands,
+    this.when,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      commandResults: map['commandResults'] == null ? null : pulumi.Output.create<List<String>>((map['commandResults'] as List).cast<String>()),
-      commands: pulumi.Output.create<List<String>>((map['commands'] as List).cast<String>()),
-      when: map['when'] == null ? null : pulumi.Output.create<String>(map['when'] as String),
+      commandResults: map['commandResults'] == null ? null : ((map['commandResults'] as List).cast<String>()).input(),
+      commands: ((map['commands'] as List).cast<String>()).input(),
+      when: map['when'] == null ? null : (map['when'] as String).input(),
     );
   }
 }

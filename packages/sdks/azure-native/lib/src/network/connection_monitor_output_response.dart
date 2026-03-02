@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_monitor_workspace_settings_response.dart';
 
 /// Describes a connection monitor output destination.
 class ConnectionMonitorOutputResponse {
   /// Connection monitor output destination type. Currently, only "Workspace" is supported.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Describes the settings for producing output into a log analytics workspace.
-  final ConnectionMonitorWorkspaceSettingsResponse? workspaceSettings;
+  final pulumi.Input<ConnectionMonitorWorkspaceSettingsResponse>? workspaceSettings;
 
   /// Creates a new [ConnectionMonitorOutputResponse].
   /// [type] Connection monitor output destination type. Currently, only "Workspace" is supported.
@@ -20,14 +21,14 @@ class ConnectionMonitorOutputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'type': ?type,
-      'workspaceSettings': ?workspaceSettings == null ? null : workspaceSettings!.toMap(),
+      'workspaceSettings': ?pulumi.Input.mapOptionalInputValue<ConnectionMonitorWorkspaceSettingsResponse, Map<String, dynamic>>(workspaceSettings, (value) => value.toMap()),
     };
   }
 
   factory ConnectionMonitorOutputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorOutputResponse(
-      type: map['type'] == null ? null : map['type'] as String,
-      workspaceSettings: map['workspaceSettings'] == null ? null : ConnectionMonitorWorkspaceSettingsResponse.fromMap((map['workspaceSettings'] as Map).cast<String, dynamic>()),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      workspaceSettings: map['workspaceSettings'] == null ? null : (ConnectionMonitorWorkspaceSettingsResponse.fromMap((map['workspaceSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

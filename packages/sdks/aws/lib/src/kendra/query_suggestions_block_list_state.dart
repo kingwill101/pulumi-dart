@@ -38,29 +38,18 @@ class QuerySuggestionsBlockListState {
   /// [tags] Optional.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider's default_tags configuration block.
   QuerySuggestionsBlockListState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? indexId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? querySuggestionsBlockListId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<QuerySuggestionsBlockListSourceS3Path>? sourceS3Path,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexId = pulumi.Input.asOptionalInput<String>(indexId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      querySuggestionsBlockListId = pulumi.Input.asOptionalInput<String>(querySuggestionsBlockListId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      sourceS3Path = pulumi.Input.asOptionalInput<QuerySuggestionsBlockListSourceS3Path>(sourceS3Path),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.indexId,
+    this.name,
+    this.querySuggestionsBlockListId,
+    this.region,
+    this.roleArn,
+    this.sourceS3Path,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,17 +69,17 @@ class QuerySuggestionsBlockListState {
 
   factory QuerySuggestionsBlockListState.fromMap(Map<String, dynamic> map) {
     return QuerySuggestionsBlockListState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexId: map['indexId'] == null ? null : pulumi.Output.create<String>(map['indexId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      querySuggestionsBlockListId: map['querySuggestionsBlockListId'] == null ? null : pulumi.Output.create<String>(map['querySuggestionsBlockListId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      sourceS3Path: map['sourceS3Path'] == null ? null : pulumi.Output.create<QuerySuggestionsBlockListSourceS3Path>(QuerySuggestionsBlockListSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexId: map['indexId'] == null ? null : (map['indexId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      querySuggestionsBlockListId: map['querySuggestionsBlockListId'] == null ? null : (map['querySuggestionsBlockListId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      sourceS3Path: map['sourceS3Path'] == null ? null : (QuerySuggestionsBlockListSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -138,35 +138,21 @@ class ServerBlobAuditingPolicyArgs {
   /// [storageAccountSubscriptionId] Specifies the blob storage subscription Id.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required.
   ServerBlobAuditingPolicyArgs({
-    pulumi.Output<List<String>>? auditActionsAndGroups,
-    pulumi.Output<String>? blobAuditingPolicyName,
-    pulumi.Output<bool>? isAzureMonitorTargetEnabled,
-    pulumi.Output<bool>? isDevopsAuditEnabled,
-    pulumi.Output<bool>? isManagedIdentityInUse,
-    pulumi.Output<bool>? isStorageSecondaryKeyInUse,
-    pulumi.Output<int>? queueDelayMs,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? retentionDays,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<BlobAuditingPolicyState> state,
-    pulumi.Output<String>? storageAccountAccessKey,
-    pulumi.Output<String>? storageAccountSubscriptionId,
-    pulumi.Output<String>? storageEndpoint,
-  }) :
-      auditActionsAndGroups = pulumi.Input.asOptionalInput<List<String>>(auditActionsAndGroups),
-      blobAuditingPolicyName = pulumi.Input.asOptionalInput<String>(blobAuditingPolicyName),
-      isAzureMonitorTargetEnabled = pulumi.Input.asOptionalInput<bool>(isAzureMonitorTargetEnabled),
-      isDevopsAuditEnabled = pulumi.Input.asOptionalInput<bool>(isDevopsAuditEnabled),
-      isManagedIdentityInUse = pulumi.Input.asOptionalInput<bool>(isManagedIdentityInUse),
-      isStorageSecondaryKeyInUse = pulumi.Input.asOptionalInput<bool>(isStorageSecondaryKeyInUse),
-      queueDelayMs = pulumi.Input.asOptionalInput<int>(queueDelayMs),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      state = pulumi.Input.asInput<BlobAuditingPolicyState>(state),
-      storageAccountAccessKey = pulumi.Input.asOptionalInput<String>(storageAccountAccessKey),
-      storageAccountSubscriptionId = pulumi.Input.asOptionalInput<String>(storageAccountSubscriptionId),
-      storageEndpoint = pulumi.Input.asOptionalInput<String>(storageEndpoint);
+    this.auditActionsAndGroups,
+    this.blobAuditingPolicyName,
+    this.isAzureMonitorTargetEnabled,
+    this.isDevopsAuditEnabled,
+    this.isManagedIdentityInUse,
+    this.isStorageSecondaryKeyInUse,
+    this.queueDelayMs,
+    required this.resourceGroupName,
+    this.retentionDays,
+    required this.serverName,
+    required this.state,
+    this.storageAccountAccessKey,
+    this.storageAccountSubscriptionId,
+    this.storageEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -189,20 +175,20 @@ class ServerBlobAuditingPolicyArgs {
 
   factory ServerBlobAuditingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerBlobAuditingPolicyArgs(
-      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : pulumi.Output.create<List<String>>((map['auditActionsAndGroups'] as List).cast<String>()),
-      blobAuditingPolicyName: map['blobAuditingPolicyName'] == null ? null : pulumi.Output.create<String>(map['blobAuditingPolicyName'] as String),
-      isAzureMonitorTargetEnabled: map['isAzureMonitorTargetEnabled'] == null ? null : pulumi.Output.create<bool>(map['isAzureMonitorTargetEnabled'] as bool),
-      isDevopsAuditEnabled: map['isDevopsAuditEnabled'] == null ? null : pulumi.Output.create<bool>(map['isDevopsAuditEnabled'] as bool),
-      isManagedIdentityInUse: map['isManagedIdentityInUse'] == null ? null : pulumi.Output.create<bool>(map['isManagedIdentityInUse'] as bool),
-      isStorageSecondaryKeyInUse: map['isStorageSecondaryKeyInUse'] == null ? null : pulumi.Output.create<bool>(map['isStorageSecondaryKeyInUse'] as bool),
-      queueDelayMs: map['queueDelayMs'] == null ? null : pulumi.Output.create<int>(map['queueDelayMs'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      state: pulumi.Output.create<BlobAuditingPolicyState>(BlobAuditingPolicyState.fromValue(map['state'] as String)),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountAccessKey'] as String),
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : pulumi.Output.create<String>(map['storageAccountSubscriptionId'] as String),
-      storageEndpoint: map['storageEndpoint'] == null ? null : pulumi.Output.create<String>(map['storageEndpoint'] as String),
+      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : ((map['auditActionsAndGroups'] as List).cast<String>()).input(),
+      blobAuditingPolicyName: map['blobAuditingPolicyName'] == null ? null : (map['blobAuditingPolicyName'] as String).input(),
+      isAzureMonitorTargetEnabled: map['isAzureMonitorTargetEnabled'] == null ? null : (map['isAzureMonitorTargetEnabled'] as bool).input(),
+      isDevopsAuditEnabled: map['isDevopsAuditEnabled'] == null ? null : (map['isDevopsAuditEnabled'] as bool).input(),
+      isManagedIdentityInUse: map['isManagedIdentityInUse'] == null ? null : (map['isManagedIdentityInUse'] as bool).input(),
+      isStorageSecondaryKeyInUse: map['isStorageSecondaryKeyInUse'] == null ? null : (map['isStorageSecondaryKeyInUse'] as bool).input(),
+      queueDelayMs: map['queueDelayMs'] == null ? null : (map['queueDelayMs'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      serverName: (map['serverName'] as String).input(),
+      state: (BlobAuditingPolicyState.fromValue(map['state'] as String)).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId'] as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
     );
   }
 }

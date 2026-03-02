@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetV3FunctionsFunctionInvocationRestriction {
   /// Whether invocation is disabled.
-  final bool disable;
+  final pulumi.Input<bool> disable;
   /// Last time the function was Updated
-  final String lastModifiedTime;
+  final pulumi.Input<String> lastModifiedTime;
   /// Disable Reason.
-  final String reason;
+  final pulumi.Input<String> reason;
 
   /// Creates a new [GetV3FunctionsFunctionInvocationRestriction].
   /// [disable] Whether invocation is disabled.
@@ -29,9 +30,9 @@ class GetV3FunctionsFunctionInvocationRestriction {
 
   factory GetV3FunctionsFunctionInvocationRestriction.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionInvocationRestriction(
-      disable: map['disable'] as bool,
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      reason: map['reason'] as String,
+      disable: (map['disable'] as bool).input(),
+      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
+      reason: (map['reason'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBudgetResourceGroupNotification {
   /// A list of email addresses to send the budget notification to when the threshold is exceeded.
-  final List<String> contactEmails;
+  final pulumi.Input<List<String>> contactEmails;
   /// A list of Action Group IDs to send the budget notification to when the threshold is exceeded.
-  final List<String> contactGroups;
+  final pulumi.Input<List<String>> contactGroups;
   /// A list of contact roles to send the budget notification to when the threshold is exceeded.
-  final List<String> contactRoles;
+  final pulumi.Input<List<String>> contactRoles;
   /// Whether the notification is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The operator used for comparison.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Threshold value associated with the notification.
-  final int threshold;
-  final String thresholdType;
+  final pulumi.Input<int> threshold;
+  final pulumi.Input<String> thresholdType;
 
   /// Creates a new [GetBudgetResourceGroupNotification].
   /// [contactEmails] A list of email addresses to send the budget notification to when the threshold is exceeded.
@@ -48,13 +49,13 @@ class GetBudgetResourceGroupNotification {
 
   factory GetBudgetResourceGroupNotification.fromMap(Map<String, dynamic> map) {
     return GetBudgetResourceGroupNotification(
-      contactEmails: (map['contactEmails'] as List).cast<String>(),
-      contactGroups: (map['contactGroups'] as List).cast<String>(),
-      contactRoles: (map['contactRoles'] as List).cast<String>(),
-      enabled: map['enabled'] as bool,
-      operator: map['operator'] as String,
-      threshold: map['threshold'] as int,
-      thresholdType: map['thresholdType'] as String,
+      contactEmails: ((map['contactEmails'] as List).cast<String>()).input(),
+      contactGroups: ((map['contactGroups'] as List).cast<String>()).input(),
+      contactRoles: ((map['contactRoles'] as List).cast<String>()).input(),
+      enabled: (map['enabled'] as bool).input(),
+      operator: (map['operator'] as String).input(),
+      threshold: (map['threshold'] as int).input(),
+      thresholdType: (map['thresholdType'] as String).input(),
     );
   }
 }

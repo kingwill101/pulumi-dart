@@ -19,13 +19,10 @@ class GetTopicSubscriptionsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [topicName] Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
   GetTopicSubscriptionsArgs({
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> topicName,
-  }) :
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    this.namePrefix,
+    this.outputFile,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTopicSubscriptionsArgs {
 
   factory GetTopicSubscriptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicSubscriptionsArgs(
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

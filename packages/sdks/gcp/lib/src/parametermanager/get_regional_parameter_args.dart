@@ -19,13 +19,10 @@ class GetRegionalParameterArgs {
   /// [parameterId] The name of the regional parameter.
   /// [project] The ID of the project in which the resource belongs.
   GetRegionalParameterArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> parameterId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      parameterId = pulumi.Input.asInput<String>(parameterId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.parameterId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegionalParameterArgs {
 
   factory GetRegionalParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parameterId: pulumi.Output.create<String>(map['parameterId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      parameterId: (map['parameterId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

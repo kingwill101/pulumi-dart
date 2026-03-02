@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceServerSideEncryptionConfiguration {
   /// ARN of the AWS KMS key used to encrypt the resource.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Creates a new [AgentDataSourceServerSideEncryptionConfiguration].
   /// [kmsKeyArn] ARN of the AWS KMS key used to encrypt the resource.
@@ -19,7 +20,7 @@ class AgentDataSourceServerSideEncryptionConfiguration {
 
   factory AgentDataSourceServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceServerSideEncryptionConfiguration(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
     );
   }
 }

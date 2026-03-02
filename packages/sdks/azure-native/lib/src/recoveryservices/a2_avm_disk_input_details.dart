@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A2A disk input details.
 class A2AVmDiskInputDetails {
   /// The disk Uri.
-  final String diskUri;
+  final pulumi.Input<String> diskUri;
   /// The primary staging storage account Id.
-  final String primaryStagingAzureStorageAccountId;
+  final pulumi.Input<String> primaryStagingAzureStorageAccountId;
   /// The recovery VHD storage account Id.
-  final String recoveryAzureStorageAccountId;
+  final pulumi.Input<String> recoveryAzureStorageAccountId;
 
   /// Creates a new [A2AVmDiskInputDetails].
   /// [diskUri] The disk Uri.
@@ -30,9 +31,9 @@ class A2AVmDiskInputDetails {
 
   factory A2AVmDiskInputDetails.fromMap(Map<String, dynamic> map) {
     return A2AVmDiskInputDetails(
-      diskUri: map['diskUri'] as String,
-      primaryStagingAzureStorageAccountId: map['primaryStagingAzureStorageAccountId'] as String,
-      recoveryAzureStorageAccountId: map['recoveryAzureStorageAccountId'] as String,
+      diskUri: (map['diskUri'] as String).input(),
+      primaryStagingAzureStorageAccountId: (map['primaryStagingAzureStorageAccountId'] as String).input(),
+      recoveryAzureStorageAccountId: (map['recoveryAzureStorageAccountId'] as String).input(),
     );
   }
 }

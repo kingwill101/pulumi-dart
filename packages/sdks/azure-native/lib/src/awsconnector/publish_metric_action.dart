@@ -6,7 +6,7 @@ import 'dimension.dart';
 /// Definition of PublishMetricAction
 class PublishMetricAction {
   /// Property dimensions
-  final List<Dimension>? dimensions;
+  final pulumi.Input<List<Dimension>>? dimensions;
 
   /// Creates a new [PublishMetricAction].
   /// [dimensions] Property dimensions
@@ -16,13 +16,13 @@ class PublishMetricAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<Dimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<Dimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<Dimension, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PublishMetricAction.fromMap(Map<String, dynamic> map) {
     return PublishMetricAction(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<Dimension>(map['dimensions'], (value) => Dimension.fromMap((value as Map).cast<String, dynamic>())),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions'], (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

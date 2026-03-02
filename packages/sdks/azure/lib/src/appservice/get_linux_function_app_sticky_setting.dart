@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxFunctionAppStickySetting {
   /// A list of `app_setting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
-  final List<String> appSettingNames;
+  final pulumi.Input<List<String>> appSettingNames;
   /// A list of `connection_string` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
-  final List<String> connectionStringNames;
+  final pulumi.Input<List<String>> connectionStringNames;
 
   /// Creates a new [GetLinuxFunctionAppStickySetting].
   /// [appSettingNames] A list of `app_setting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
@@ -24,8 +25,8 @@ class GetLinuxFunctionAppStickySetting {
 
   factory GetLinuxFunctionAppStickySetting.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppStickySetting(
-      appSettingNames: (map['appSettingNames'] as List).cast<String>(),
-      connectionStringNames: (map['connectionStringNames'] as List).cast<String>(),
+      appSettingNames: ((map['appSettingNames'] as List).cast<String>()).input(),
+      connectionStringNames: ((map['connectionStringNames'] as List).cast<String>()).input(),
     );
   }
 }

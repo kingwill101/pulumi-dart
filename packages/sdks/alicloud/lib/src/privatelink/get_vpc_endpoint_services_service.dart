@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcEndpointServicesService {
   /// Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
-  final bool autoAcceptConnection;
+  final pulumi.Input<bool> autoAcceptConnection;
   /// The default maximum bandwidth of the endpoint connection.
-  final int connectBandwidth;
+  final pulumi.Input<int> connectBandwidth;
   /// The ID of the Vpc Endpoint Service.
-  final String id;
+  final pulumi.Input<String> id;
   /// The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
-  final String serviceBusinessStatus;
+  final pulumi.Input<String> serviceBusinessStatus;
   /// The description of the endpoint service.
-  final String serviceDescription;
+  final pulumi.Input<String> serviceDescription;
   /// The domain name of the endpoint service.
-  final String serviceDomain;
+  final pulumi.Input<String> serviceDomain;
   /// The ID of the endpoint service.
-  final String serviceId;
+  final pulumi.Input<String> serviceId;
   /// The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The name of the endpoint service.
-  final String vpcEndpointServiceName;
+  final pulumi.Input<String> vpcEndpointServiceName;
 
   /// Creates a new [GetVpcEndpointServicesService].
   /// [autoAcceptConnection] Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
@@ -64,16 +65,16 @@ class GetVpcEndpointServicesService {
 
   factory GetVpcEndpointServicesService.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServicesService(
-      autoAcceptConnection: map['autoAcceptConnection'] as bool,
-      connectBandwidth: map['connectBandwidth'] as int,
-      id: map['id'] as String,
-      serviceBusinessStatus: map['serviceBusinessStatus'] as String,
-      serviceDescription: map['serviceDescription'] as String,
-      serviceDomain: map['serviceDomain'] as String,
-      serviceId: map['serviceId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcEndpointServiceName: map['vpcEndpointServiceName'] as String,
+      autoAcceptConnection: (map['autoAcceptConnection'] as bool).input(),
+      connectBandwidth: (map['connectBandwidth'] as int).input(),
+      id: (map['id'] as String).input(),
+      serviceBusinessStatus: (map['serviceBusinessStatus'] as String).input(),
+      serviceDescription: (map['serviceDescription'] as String).input(),
+      serviceDomain: (map['serviceDomain'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcEndpointServiceName: (map['vpcEndpointServiceName'] as String).input(),
     );
   }
 }

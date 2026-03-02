@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_connector_data_type_common.dart';
 
 /// Alerts data type for data connectors.
 class AlertsDataTypeOfDataConnector {
   /// Alerts data type connection.
-  final DataConnectorDataTypeCommon alerts;
+  final pulumi.Input<DataConnectorDataTypeCommon> alerts;
 
   /// Creates a new [AlertsDataTypeOfDataConnector].
   /// [alerts] Alerts data type connection.
@@ -15,13 +16,13 @@ class AlertsDataTypeOfDataConnector {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alerts': alerts.toMap(),
+      'alerts': pulumi.Input.mapInputValue<DataConnectorDataTypeCommon, Map<String, dynamic>>(alerts, (value) => value.toMap()),
     };
   }
 
   factory AlertsDataTypeOfDataConnector.fromMap(Map<String, dynamic> map) {
     return AlertsDataTypeOfDataConnector(
-      alerts: DataConnectorDataTypeCommon.fromMap((map['alerts'] as Map).cast<String, dynamic>()),
+      alerts: (DataConnectorDataTypeCommon.fromMap((map['alerts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

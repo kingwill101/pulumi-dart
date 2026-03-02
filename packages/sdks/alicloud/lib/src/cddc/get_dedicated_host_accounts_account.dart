@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedHostAccountsAccount {
   /// The name of the Dedicated host account.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The ID of the Dedicated host.
-  final String dedicatedHostId;
+  final pulumi.Input<String> dedicatedHostId;
   /// The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetDedicatedHostAccountsAccount].
   /// [accountName] The name of the Dedicated host account.
@@ -29,9 +30,9 @@ class GetDedicatedHostAccountsAccount {
 
   factory GetDedicatedHostAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostAccountsAccount(
-      accountName: map['accountName'] as String,
-      dedicatedHostId: map['dedicatedHostId'] as String,
-      id: map['id'] as String,
+      accountName: (map['accountName'] as String).input(),
+      dedicatedHostId: (map['dedicatedHostId'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

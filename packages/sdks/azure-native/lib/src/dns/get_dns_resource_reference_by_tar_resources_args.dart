@@ -14,9 +14,8 @@ class GetDnsResourceReferenceByTarResourcesArgs {
   /// Creates a new [GetDnsResourceReferenceByTarResourcesArgs].
   /// [targetResources] A list of references to azure resources for which referencing dns records need to be queried.
   GetDnsResourceReferenceByTarResourcesArgs({
-    pulumi.Output<List<SubResource>>? targetResources,
-  }) :
-      targetResources = pulumi.Input.asOptionalInput<List<SubResource>>(targetResources);
+    this.targetResources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class GetDnsResourceReferenceByTarResourcesArgs {
 
   factory GetDnsResourceReferenceByTarResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsResourceReferenceByTarResourcesArgs(
-      targetResources: map['targetResources'] == null ? null : pulumi.Output.create<List<SubResource>>(pulumi.Input.decodeList<SubResource>(map['targetResources'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))),
+      targetResources: map['targetResources'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['targetResources'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

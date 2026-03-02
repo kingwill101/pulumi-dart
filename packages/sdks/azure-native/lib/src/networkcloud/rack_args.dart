@@ -38,25 +38,16 @@ class RackArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   RackArgs({
-    required pulumi.Output<String> availabilityZone,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> rackLocation,
-    pulumi.Output<String>? rackName,
-    required pulumi.Output<String> rackSerialNumber,
-    required pulumi.Output<String> rackSkuId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      rackLocation = pulumi.Input.asInput<String>(rackLocation),
-      rackName = pulumi.Input.asOptionalInput<String>(rackName),
-      rackSerialNumber = pulumi.Input.asInput<String>(rackSerialNumber),
-      rackSkuId = pulumi.Input.asInput<String>(rackSkuId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.availabilityZone,
+    required this.extendedLocation,
+    this.location,
+    required this.rackLocation,
+    this.rackName,
+    required this.rackSerialNumber,
+    required this.rackSkuId,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class RackArgs {
 
   factory RackArgs.fromMap(Map<String, dynamic> map) {
     return RackArgs(
-      availabilityZone: pulumi.Output.create<String>(map['availabilityZone'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      rackLocation: pulumi.Output.create<String>(map['rackLocation'] as String),
-      rackName: map['rackName'] == null ? null : pulumi.Output.create<String>(map['rackName'] as String),
-      rackSerialNumber: pulumi.Output.create<String>(map['rackSerialNumber'] as String),
-      rackSkuId: pulumi.Output.create<String>(map['rackSkuId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      rackLocation: (map['rackLocation'] as String).input(),
+      rackName: map['rackName'] == null ? null : (map['rackName'] as String).input(),
+      rackSerialNumber: (map['rackSerialNumber'] as String).input(),
+      rackSkuId: (map['rackSkuId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

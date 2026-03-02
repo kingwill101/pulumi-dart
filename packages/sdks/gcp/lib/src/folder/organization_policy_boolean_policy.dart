@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationPolicyBooleanPolicy {
   /// If true, then the Policy is enforced. If false, then any configuration is acceptable.
-  final bool enforced;
+  final pulumi.Input<bool> enforced;
 
   /// Creates a new [OrganizationPolicyBooleanPolicy].
   /// [enforced] If true, then the Policy is enforced. If false, then any configuration is acceptable.
@@ -19,7 +20,7 @@ class OrganizationPolicyBooleanPolicy {
 
   factory OrganizationPolicyBooleanPolicy.fromMap(Map<String, dynamic> map) {
     return OrganizationPolicyBooleanPolicy(
-      enforced: map['enforced'] as bool,
+      enforced: (map['enforced'] as bool).input(),
     );
   }
 }

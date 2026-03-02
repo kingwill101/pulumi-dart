@@ -16,11 +16,9 @@ class ListApplicationAllowedUpgradePlansArgs {
   /// [applicationName] The name of the managed application.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListApplicationAllowedUpgradePlansArgs({
-    required pulumi.Output<String> applicationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.applicationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListApplicationAllowedUpgradePlansArgs {
 
   factory ListApplicationAllowedUpgradePlansArgs.fromMap(Map<String, dynamic> map) {
     return ListApplicationAllowedUpgradePlansArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applicationName: (map['applicationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetNodeCustomizationArgs {
   /// [nodeCustomizationName] The name of the Node Customization resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNodeCustomizationArgs({
-    required pulumi.Output<String> nodeCustomizationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      nodeCustomizationName = pulumi.Input.asInput<String>(nodeCustomizationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.nodeCustomizationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNodeCustomizationArgs {
 
   factory GetNodeCustomizationArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeCustomizationArgs(
-      nodeCustomizationName: pulumi.Output.create<String>(map['nodeCustomizationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      nodeCustomizationName: (map['nodeCustomizationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetContactProfileArgs {
   /// [contactProfileName] Contact Profile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetContactProfileArgs({
-    required pulumi.Output<String> contactProfileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      contactProfileName = pulumi.Input.asInput<String>(contactProfileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.contactProfileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetContactProfileArgs {
 
   factory GetContactProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetContactProfileArgs(
-      contactProfileName: pulumi.Output.create<String>(map['contactProfileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      contactProfileName: (map['contactProfileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

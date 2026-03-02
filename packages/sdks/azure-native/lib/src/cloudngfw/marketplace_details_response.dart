@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MarketplaceDetails of PAN Firewall resource
 class MarketplaceDetailsResponse {
   /// Marketplace Subscription Id
-  final String marketplaceSubscriptionId;
+  final pulumi.Input<String> marketplaceSubscriptionId;
   /// Marketplace Subscription Status
-  final String? marketplaceSubscriptionStatus;
+  final pulumi.Input<String>? marketplaceSubscriptionStatus;
   /// Offer Id
-  final String offerId;
+  final pulumi.Input<String> offerId;
   /// Publisher Id
-  final String publisherId;
+  final pulumi.Input<String> publisherId;
 
   /// Creates a new [MarketplaceDetailsResponse].
   /// [marketplaceSubscriptionId] Marketplace Subscription Id
@@ -35,10 +36,10 @@ class MarketplaceDetailsResponse {
 
   factory MarketplaceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceDetailsResponse(
-      marketplaceSubscriptionId: map['marketplaceSubscriptionId'] as String,
-      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : map['marketplaceSubscriptionStatus'] as String,
-      offerId: map['offerId'] as String,
-      publisherId: map['publisherId'] as String,
+      marketplaceSubscriptionId: (map['marketplaceSubscriptionId'] as String).input(),
+      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : (map['marketplaceSubscriptionStatus'] as String).input(),
+      offerId: (map['offerId'] as String).input(),
+      publisherId: (map['publisherId'] as String).input(),
     );
   }
 }

@@ -33,25 +33,16 @@ class ProbeState {
   /// [protocol] Specifies the protocol of the end point. Possible values are `Http`, `Https` or `Tcp`. If TCP is specified, a received ACK is required for the probe to be successful. If HTTP is specified, a 200 OK response from the specified URI is required for the probe to be successful. Defaults to `Tcp`.
   /// [requestPath] The URI used for requesting health status from the backend endpoint. Required if protocol is set to `Http` or `Https`. Otherwise, it is not allowed.
   ProbeState({
-    pulumi.Output<int>? intervalInSeconds,
-    pulumi.Output<List<String>>? loadBalancerRules,
-    pulumi.Output<String>? loadbalancerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? numberOfProbes,
-    pulumi.Output<int>? port,
-    pulumi.Output<int>? probeThreshold,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? requestPath,
-  }) :
-      intervalInSeconds = pulumi.Input.asOptionalInput<int>(intervalInSeconds),
-      loadBalancerRules = pulumi.Input.asOptionalInput<List<String>>(loadBalancerRules),
-      loadbalancerId = pulumi.Input.asOptionalInput<String>(loadbalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      numberOfProbes = pulumi.Input.asOptionalInput<int>(numberOfProbes),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      probeThreshold = pulumi.Input.asOptionalInput<int>(probeThreshold),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      requestPath = pulumi.Input.asOptionalInput<String>(requestPath);
+    this.intervalInSeconds,
+    this.loadBalancerRules,
+    this.loadbalancerId,
+    this.name,
+    this.numberOfProbes,
+    this.port,
+    this.probeThreshold,
+    this.protocol,
+    this.requestPath,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,15 +60,15 @@ class ProbeState {
 
   factory ProbeState.fromMap(Map<String, dynamic> map) {
     return ProbeState(
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : pulumi.Output.create<int>(map['intervalInSeconds'] as int),
-      loadBalancerRules: map['loadBalancerRules'] == null ? null : pulumi.Output.create<List<String>>((map['loadBalancerRules'] as List).cast<String>()),
-      loadbalancerId: map['loadbalancerId'] == null ? null : pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      numberOfProbes: map['numberOfProbes'] == null ? null : pulumi.Output.create<int>(map['numberOfProbes'] as int),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      probeThreshold: map['probeThreshold'] == null ? null : pulumi.Output.create<int>(map['probeThreshold'] as int),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      requestPath: map['requestPath'] == null ? null : pulumi.Output.create<String>(map['requestPath'] as String),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      loadBalancerRules: map['loadBalancerRules'] == null ? null : ((map['loadBalancerRules'] as List).cast<String>()).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      numberOfProbes: map['numberOfProbes'] == null ? null : (map['numberOfProbes'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      probeThreshold: map['probeThreshold'] == null ? null : (map['probeThreshold'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
     );
   }
 }

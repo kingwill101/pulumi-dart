@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details for the Managed Services offer’s plan in Azure Marketplace.
 class PlanResponse {
   /// Azure Marketplace plan name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Azure Marketplace product code.
-  final String product;
+  final pulumi.Input<String> product;
   /// Azure Marketplace publisher ID.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// Azure Marketplace plan's version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [PlanResponse].
   /// [name] Azure Marketplace plan name.
@@ -35,10 +36,10 @@ class PlanResponse {
 
   factory PlanResponse.fromMap(Map<String, dynamic> map) {
     return PlanResponse(
-      name: map['name'] as String,
-      product: map['product'] as String,
-      publisher: map['publisher'] as String,
-      version: map['version'] as String,
+      name: (map['name'] as String).input(),
+      product: (map['product'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

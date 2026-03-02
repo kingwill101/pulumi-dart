@@ -19,11 +19,9 @@ class ServiceIdentityArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service to generate identity for.
   ServiceIdentityArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> service,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service);
+    this.project,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class ServiceIdentityArgs {
 
   factory ServiceIdentityArgs.fromMap(Map<String, dynamic> map) {
     return ServiceIdentityArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetAutoUpgradeProfileArgs {
   /// [fleetName] The name of the Fleet resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAutoUpgradeProfileArgs({
-    required pulumi.Output<String> autoUpgradeProfileName,
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      autoUpgradeProfileName = pulumi.Input.asInput<String>(autoUpgradeProfileName),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.autoUpgradeProfileName,
+    required this.fleetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAutoUpgradeProfileArgs {
 
   factory GetAutoUpgradeProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoUpgradeProfileArgs(
-      autoUpgradeProfileName: pulumi.Output.create<String>(map['autoUpgradeProfileName'] as String),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      autoUpgradeProfileName: (map['autoUpgradeProfileName'] as String).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

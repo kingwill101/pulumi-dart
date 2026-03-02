@@ -19,13 +19,10 @@ class ReplicaSetArgs {
   /// [location] The Azure location where this Replica Set should exist. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet in which to place this Replica Set. Changing this forces a new resource to be created.
   ReplicaSetArgs({
-    required pulumi.Output<String> domainServiceId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> subnetId,
-  }) :
-      domainServiceId = pulumi.Input.asInput<String>(domainServiceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    required this.domainServiceId,
+    this.location,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ReplicaSetArgs {
 
   factory ReplicaSetArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaSetArgs(
-      domainServiceId: pulumi.Output.create<String>(map['domainServiceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      domainServiceId: (map['domainServiceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

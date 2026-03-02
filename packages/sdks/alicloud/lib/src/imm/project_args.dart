@@ -16,11 +16,9 @@ class ProjectArgs {
   /// [project] The name of Project.
   /// [serviceRole] The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `alicloud.ram.Role`.
   ProjectArgs({
-    required pulumi.Output<String> project,
-    pulumi.Output<String>? serviceRole,
-  }) :
-      project = pulumi.Input.asInput<String>(project),
-      serviceRole = pulumi.Input.asOptionalInput<String>(serviceRole);
+    required this.project,
+    this.serviceRole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      project: pulumi.Output.create<String>(map['project'] as String),
-      serviceRole: map['serviceRole'] == null ? null : pulumi.Output.create<String>(map['serviceRole'] as String),
+      project: (map['project'] as String).input(),
+      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
     );
   }
 }

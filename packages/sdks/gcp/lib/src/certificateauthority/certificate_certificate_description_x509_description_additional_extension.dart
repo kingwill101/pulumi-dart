@@ -6,12 +6,12 @@ import 'certificate_certificate_description_x509_description_additional_extensio
 class CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
   /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
   /// handle this extension, the client should consider this to be an error).
-  final bool? critical;
+  final pulumi.Input<bool>? critical;
   /// Describes values that are relevant in a CA certificate.
   /// Structure is documented below.
-  final List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>? objectIds;
+  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>>? objectIds;
   /// The value of this X.509 extension. A base64-encoded string.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [CertificateCertificateDescriptionX509DescriptionAdditionalExtension].
   /// [critical] Indicates whether or not this extension is critical (i.e., if the client does not know how to
@@ -26,16 +26,16 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'critical': ?critical,
-      'objectIds': ?objectIds == null ? null : pulumi.Input.encodeList<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId, Map<String, dynamic>>(objectIds!, (value) => value.toMap()),
+      'objectIds': ?pulumi.Input.mapOptionalInputValue<List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>, List<Map<String, dynamic>>>(objectIds, (value) => pulumi.Input.encodeList<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId, Map<String, dynamic>>(value, (value) => value.toMap())),
       'value': ?value,
     };
   }
 
   factory CertificateCertificateDescriptionX509DescriptionAdditionalExtension.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509DescriptionAdditionalExtension(
-      critical: map['critical'] == null ? null : map['critical'] as bool,
-      objectIds: map['objectIds'] == null ? null : pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>(map['objectIds'], (value) => CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId.fromMap((value as Map).cast<String, dynamic>())),
-      value: map['value'] == null ? null : map['value'] as String,
+      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
+      objectIds: map['objectIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>(map['objectIds'], (value) => CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

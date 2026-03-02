@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Threshold-based evaluation rule for a signal definition
 class ThresholdRuleResponse {
   /// Operator how to compare the signal value with the threshold
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Threshold value
-  final String threshold;
+  final pulumi.Input<String> threshold;
 
   /// Creates a new [ThresholdRuleResponse].
   /// [operator] Operator how to compare the signal value with the threshold
@@ -25,8 +26,8 @@ class ThresholdRuleResponse {
 
   factory ThresholdRuleResponse.fromMap(Map<String, dynamic> map) {
     return ThresholdRuleResponse(
-      operator: map['operator'] as String,
-      threshold: map['threshold'] as String,
+      operator: (map['operator'] as String).input(),
+      threshold: (map['threshold'] as String).input(),
     );
   }
 }

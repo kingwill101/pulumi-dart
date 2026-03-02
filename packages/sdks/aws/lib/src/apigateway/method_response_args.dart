@@ -33,21 +33,14 @@ class MethodResponseArgs {
   /// [restApi] The string identifier of the associated REST API.
   /// [statusCode] The method response's status code.
   MethodResponseArgs({
-    required pulumi.Output<String> httpMethod,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<Map<String, String>>? responseModels,
-    pulumi.Output<Map<String, bool>>? responseParameters,
-    required pulumi.Output<String> restApi,
-    required pulumi.Output<String> statusCode,
-  }) :
-      httpMethod = pulumi.Input.asInput<String>(httpMethod),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      responseModels = pulumi.Input.asOptionalInput<Map<String, String>>(responseModels),
-      responseParameters = pulumi.Input.asOptionalInput<Map<String, bool>>(responseParameters),
-      restApi = pulumi.Input.asInput<String>(restApi),
-      statusCode = pulumi.Input.asInput<String>(statusCode);
+    required this.httpMethod,
+    this.region,
+    required this.resourceId,
+    this.responseModels,
+    this.responseParameters,
+    required this.restApi,
+    required this.statusCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class MethodResponseArgs {
 
   factory MethodResponseArgs.fromMap(Map<String, dynamic> map) {
     return MethodResponseArgs(
-      httpMethod: pulumi.Output.create<String>(map['httpMethod'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      responseModels: map['responseModels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['responseModels'] as Map).cast<String, String>()),
-      responseParameters: map['responseParameters'] == null ? null : pulumi.Output.create<Map<String, bool>>((map['responseParameters'] as Map).cast<String, bool>()),
-      restApi: pulumi.Output.create<String>(map['restApi'] as String),
-      statusCode: pulumi.Output.create<String>(map['statusCode'] as String),
+      httpMethod: (map['httpMethod'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      responseModels: map['responseModels'] == null ? null : ((map['responseModels'] as Map).cast<String, String>()).input(),
+      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, bool>()).input(),
+      restApi: (map['restApi'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
     );
   }
 }

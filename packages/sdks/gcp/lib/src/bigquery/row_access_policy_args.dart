@@ -59,19 +59,13 @@ class RowAccessPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tableId] The ID of the table containing this row access policy.
   RowAccessPolicyArgs({
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> filterPredicate,
-    pulumi.Output<List<String>>? grantees,
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tableId,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      filterPredicate = pulumi.Input.asInput<String>(filterPredicate),
-      grantees = pulumi.Input.asOptionalInput<List<String>>(grantees),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tableId = pulumi.Input.asInput<String>(tableId);
+    required this.datasetId,
+    required this.filterPredicate,
+    this.grantees,
+    required this.policyId,
+    this.project,
+    required this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,12 +80,12 @@ class RowAccessPolicyArgs {
 
   factory RowAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RowAccessPolicyArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      filterPredicate: pulumi.Output.create<String>(map['filterPredicate'] as String),
-      grantees: map['grantees'] == null ? null : pulumi.Output.create<List<String>>((map['grantees'] as List).cast<String>()),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tableId: pulumi.Output.create<String>(map['tableId'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      filterPredicate: (map['filterPredicate'] as String).input(),
+      grantees: map['grantees'] == null ? null : ((map['grantees'] as List).cast<String>()).input(),
+      policyId: (map['policyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

@@ -69,35 +69,21 @@ class ControlArgs {
   /// [synonymsAction] Associates queries with each other.
   /// [useCases] The use cases that the control is used for.
   ControlArgs({
-    pulumi.Output<ControlBoostAction>? boostAction,
-    pulumi.Output<String>? collectionId,
-    pulumi.Output<List<ControlCondition>>? conditions,
-    required pulumi.Output<String> controlId,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> engineId,
-    pulumi.Output<ControlFilterAction>? filterAction,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<ControlPromoteAction>? promoteAction,
-    pulumi.Output<ControlRedirectAction>? redirectAction,
-    required pulumi.Output<String> solutionType,
-    pulumi.Output<ControlSynonymsAction>? synonymsAction,
-    pulumi.Output<List<String>>? useCases,
-  }) :
-      boostAction = pulumi.Input.asOptionalInput<ControlBoostAction>(boostAction),
-      collectionId = pulumi.Input.asOptionalInput<String>(collectionId),
-      conditions = pulumi.Input.asOptionalInput<List<ControlCondition>>(conditions),
-      controlId = pulumi.Input.asInput<String>(controlId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      engineId = pulumi.Input.asInput<String>(engineId),
-      filterAction = pulumi.Input.asOptionalInput<ControlFilterAction>(filterAction),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      promoteAction = pulumi.Input.asOptionalInput<ControlPromoteAction>(promoteAction),
-      redirectAction = pulumi.Input.asOptionalInput<ControlRedirectAction>(redirectAction),
-      solutionType = pulumi.Input.asInput<String>(solutionType),
-      synonymsAction = pulumi.Input.asOptionalInput<ControlSynonymsAction>(synonymsAction),
-      useCases = pulumi.Input.asOptionalInput<List<String>>(useCases);
+    this.boostAction,
+    this.collectionId,
+    this.conditions,
+    required this.controlId,
+    required this.displayName,
+    required this.engineId,
+    this.filterAction,
+    required this.location,
+    this.project,
+    this.promoteAction,
+    this.redirectAction,
+    required this.solutionType,
+    this.synonymsAction,
+    this.useCases,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -120,20 +106,20 @@ class ControlArgs {
 
   factory ControlArgs.fromMap(Map<String, dynamic> map) {
     return ControlArgs(
-      boostAction: map['boostAction'] == null ? null : pulumi.Output.create<ControlBoostAction>(ControlBoostAction.fromMap((map['boostAction'] as Map).cast<String, dynamic>())),
-      collectionId: map['collectionId'] == null ? null : pulumi.Output.create<String>(map['collectionId'] as String),
-      conditions: map['conditions'] == null ? null : pulumi.Output.create<List<ControlCondition>>(pulumi.Input.decodeList<ControlCondition>(map['conditions'], (value) => ControlCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      controlId: pulumi.Output.create<String>(map['controlId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      engineId: pulumi.Output.create<String>(map['engineId'] as String),
-      filterAction: map['filterAction'] == null ? null : pulumi.Output.create<ControlFilterAction>(ControlFilterAction.fromMap((map['filterAction'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      promoteAction: map['promoteAction'] == null ? null : pulumi.Output.create<ControlPromoteAction>(ControlPromoteAction.fromMap((map['promoteAction'] as Map).cast<String, dynamic>())),
-      redirectAction: map['redirectAction'] == null ? null : pulumi.Output.create<ControlRedirectAction>(ControlRedirectAction.fromMap((map['redirectAction'] as Map).cast<String, dynamic>())),
-      solutionType: pulumi.Output.create<String>(map['solutionType'] as String),
-      synonymsAction: map['synonymsAction'] == null ? null : pulumi.Output.create<ControlSynonymsAction>(ControlSynonymsAction.fromMap((map['synonymsAction'] as Map).cast<String, dynamic>())),
-      useCases: map['useCases'] == null ? null : pulumi.Output.create<List<String>>((map['useCases'] as List).cast<String>()),
+      boostAction: map['boostAction'] == null ? null : (ControlBoostAction.fromMap((map['boostAction'] as Map).cast<String, dynamic>())).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ControlCondition>(map['conditions'], (value) => ControlCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      controlId: (map['controlId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      engineId: (map['engineId'] as String).input(),
+      filterAction: map['filterAction'] == null ? null : (ControlFilterAction.fromMap((map['filterAction'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      promoteAction: map['promoteAction'] == null ? null : (ControlPromoteAction.fromMap((map['promoteAction'] as Map).cast<String, dynamic>())).input(),
+      redirectAction: map['redirectAction'] == null ? null : (ControlRedirectAction.fromMap((map['redirectAction'] as Map).cast<String, dynamic>())).input(),
+      solutionType: (map['solutionType'] as String).input(),
+      synonymsAction: map['synonymsAction'] == null ? null : (ControlSynonymsAction.fromMap((map['synonymsAction'] as Map).cast<String, dynamic>())).input(),
+      useCases: map['useCases'] == null ? null : ((map['useCases'] as List).cast<String>()).input(),
     );
   }
 }

@@ -7,7 +7,7 @@ class ClusterManagedServerCa {
   /// (Output)
   /// The PEM encoded CA certificate chains for redis managed server authentication
   /// Structure is documented below.
-  final List<ClusterManagedServerCaCaCert>? caCerts;
+  final pulumi.Input<List<ClusterManagedServerCaCaCert>>? caCerts;
 
   /// Creates a new [ClusterManagedServerCa].
   /// [caCerts] (Output)
@@ -17,13 +17,13 @@ class ClusterManagedServerCa {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts': ?caCerts == null ? null : pulumi.Input.encodeList<ClusterManagedServerCaCaCert, Map<String, dynamic>>(caCerts!, (value) => value.toMap()),
+      'caCerts': ?pulumi.Input.mapOptionalInputValue<List<ClusterManagedServerCaCaCert>, List<Map<String, dynamic>>>(caCerts, (value) => pulumi.Input.encodeList<ClusterManagedServerCaCaCert, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ClusterManagedServerCa.fromMap(Map<String, dynamic> map) {
     return ClusterManagedServerCa(
-      caCerts: map['caCerts'] == null ? null : pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(map['caCerts'], (value) => ClusterManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>())),
+      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(map['caCerts'], (value) => ClusterManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

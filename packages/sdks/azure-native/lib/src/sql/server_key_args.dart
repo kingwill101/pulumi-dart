@@ -25,17 +25,12 @@ class ServerKeyArgs {
   /// [serverName] The name of the server.
   /// [uri] The URI of the server key. If the ServerKeyType is AzureKeyVault, then the URI is required. The AKV URI is required to be in this format: 'https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion'
   ServerKeyArgs({
-    pulumi.Output<String>? keyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverKeyType,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? uri,
-  }) :
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverKeyType = pulumi.Input.asInput<String>(serverKeyType),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.keyName,
+    required this.resourceGroupName,
+    required this.serverKeyType,
+    required this.serverName,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ServerKeyArgs {
 
   factory ServerKeyArgs.fromMap(Map<String, dynamic> map) {
     return ServerKeyArgs(
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverKeyType: pulumi.Output.create<String>(map['serverKeyType'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverKeyType: (map['serverKeyType'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

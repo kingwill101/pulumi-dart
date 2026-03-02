@@ -44,27 +44,17 @@ class EnterprisePolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   EnterprisePolicyArgs({
-    pulumi.Output<PropertiesEncryption>? encryption,
-    pulumi.Output<String>? enterprisePolicyName,
-    pulumi.Output<String>? healthStatus,
-    pulumi.Output<EnterprisePolicyIdentity>? identity,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<PropertiesLockbox>? lockbox,
-    pulumi.Output<PropertiesNetworkInjection>? networkInjection,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      encryption = pulumi.Input.asOptionalInput<PropertiesEncryption>(encryption),
-      enterprisePolicyName = pulumi.Input.asOptionalInput<String>(enterprisePolicyName),
-      healthStatus = pulumi.Input.asOptionalInput<String>(healthStatus),
-      identity = pulumi.Input.asOptionalInput<EnterprisePolicyIdentity>(identity),
-      kind = pulumi.Input.asInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      lockbox = pulumi.Input.asOptionalInput<PropertiesLockbox>(lockbox),
-      networkInjection = pulumi.Input.asOptionalInput<PropertiesNetworkInjection>(networkInjection),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.encryption,
+    this.enterprisePolicyName,
+    this.healthStatus,
+    this.identity,
+    required this.kind,
+    this.location,
+    this.lockbox,
+    this.networkInjection,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class EnterprisePolicyArgs {
 
   factory EnterprisePolicyArgs.fromMap(Map<String, dynamic> map) {
     return EnterprisePolicyArgs(
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<PropertiesEncryption>(PropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      enterprisePolicyName: map['enterprisePolicyName'] == null ? null : pulumi.Output.create<String>(map['enterprisePolicyName'] as String),
-      healthStatus: map['healthStatus'] == null ? null : pulumi.Output.create<String>(map['healthStatus'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<EnterprisePolicyIdentity>(EnterprisePolicyIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      lockbox: map['lockbox'] == null ? null : pulumi.Output.create<PropertiesLockbox>(PropertiesLockbox.fromMap((map['lockbox'] as Map).cast<String, dynamic>())),
-      networkInjection: map['networkInjection'] == null ? null : pulumi.Output.create<PropertiesNetworkInjection>(PropertiesNetworkInjection.fromMap((map['networkInjection'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      encryption: map['encryption'] == null ? null : (PropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      enterprisePolicyName: map['enterprisePolicyName'] == null ? null : (map['enterprisePolicyName'] as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
+      identity: map['identity'] == null ? null : (EnterprisePolicyIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      lockbox: map['lockbox'] == null ? null : (PropertiesLockbox.fromMap((map['lockbox'] as Map).cast<String, dynamic>())).input(),
+      networkInjection: map['networkInjection'] == null ? null : (PropertiesNetworkInjection.fromMap((map['networkInjection'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetElasticIpFilter {
-  final String name;
-  final List<String> values;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetElasticIpFilter].
   /// [name] Required.
@@ -22,8 +23,8 @@ class GetElasticIpFilter {
 
   factory GetElasticIpFilter.fromMap(Map<String, dynamic> map) {
     return GetElasticIpFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

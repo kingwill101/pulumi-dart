@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
   /// The partitioning column.
-  final String column;
+  final pulumi.Input<String> column;
   /// The ending value for range partitioning (exclusive).
-  final int end;
+  final pulumi.Input<int> end;
   /// The interval of each range within the partition.
-  final int interval;
+  final pulumi.Input<int> interval;
   /// The starting value for range partitioning (inclusive).
-  final int start;
+  final pulumi.Input<int> start;
 
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition].
   /// [column] The partitioning column.
@@ -34,10 +35,10 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
 
   factory StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition(
-      column: map['column'] as String,
-      end: map['end'] as int,
-      interval: map['interval'] as int,
-      start: map['start'] as int,
+      column: (map['column'] as String).input(),
+      end: (map['end'] as int).input(),
+      interval: (map['interval'] as int).input(),
+      start: (map['start'] as int).input(),
     );
   }
 }

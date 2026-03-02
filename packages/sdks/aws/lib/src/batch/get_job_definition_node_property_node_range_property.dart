@@ -5,9 +5,9 @@ import 'get_job_definition_node_property_node_range_property_container.dart';
 
 class GetJobDefinitionNodePropertyNodeRangeProperty {
   /// The container details for the node range.
-  final List<GetJobDefinitionNodePropertyNodeRangePropertyContainer> containers;
+  final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainer>> containers;
   /// The range of nodes, using node index values. A range of 0:3 indicates nodes with index values of 0 through 3. I
-  final String targetNodes;
+  final pulumi.Input<String> targetNodes;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangeProperty].
   /// [containers] The container details for the node range.
@@ -19,15 +19,15 @@ class GetJobDefinitionNodePropertyNodeRangeProperty {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': pulumi.Input.encodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainer, Map<String, dynamic>>(containers, (value) => value.toMap()),
+      'containers': pulumi.Input.mapInputValue<List<GetJobDefinitionNodePropertyNodeRangePropertyContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetNodes': targetNodes,
     };
   }
 
   factory GetJobDefinitionNodePropertyNodeRangeProperty.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangeProperty(
-      containers: pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainer>(map['containers'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainer.fromMap((value as Map).cast<String, dynamic>())),
-      targetNodes: map['targetNodes'] as String,
+      containers: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainer>(map['containers'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetNodes: (map['targetNodes'] as String).input(),
     );
   }
 }

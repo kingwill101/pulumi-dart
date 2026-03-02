@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionAppSiteConfigCors {
-  final List<String> allowedOrigins;
-  final bool? supportCredentials;
+  final pulumi.Input<List<String>> allowedOrigins;
+  final pulumi.Input<bool>? supportCredentials;
 
   /// Creates a new [GetFunctionAppSiteConfigCors].
   /// [allowedOrigins] Required.
@@ -22,8 +23,8 @@ class GetFunctionAppSiteConfigCors {
 
   factory GetFunctionAppSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return GetFunctionAppSiteConfigCors(
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
-      supportCredentials: map['supportCredentials'] == null ? null : map['supportCredentials'] as bool,
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
+      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials'] as bool).input(),
     );
   }
 }

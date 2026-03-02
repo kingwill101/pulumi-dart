@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskDefinitionRuntimePlatform {
   /// Must be set to either `X86_64` or `ARM64`; see [cpu architecture](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#runtime-platform)
-  final String cpuArchitecture;
+  final pulumi.Input<String> cpuArchitecture;
   /// If the `requires_compatibilities` is `FARGATE` this field is required; must be set to a valid option from the [operating system family in the runtime platform](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#runtime-platform) setting
-  final String operatingSystemFamily;
+  final pulumi.Input<String> operatingSystemFamily;
 
   /// Creates a new [GetTaskDefinitionRuntimePlatform].
   /// [cpuArchitecture] Must be set to either `X86_64` or `ARM64`; see [cpu architecture](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#runtime-platform)
@@ -24,8 +25,8 @@ class GetTaskDefinitionRuntimePlatform {
 
   factory GetTaskDefinitionRuntimePlatform.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionRuntimePlatform(
-      cpuArchitecture: map['cpuArchitecture'] as String,
-      operatingSystemFamily: map['operatingSystemFamily'] as String,
+      cpuArchitecture: (map['cpuArchitecture'] as String).input(),
+      operatingSystemFamily: (map['operatingSystemFamily'] as String).input(),
     );
   }
 }

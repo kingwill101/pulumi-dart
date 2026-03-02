@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceAdminSettings {
-  final List<String>? allowedEmailDomains;
+  final pulumi.Input<List<String>>? allowedEmailDomains;
 
   /// Creates a new [InstanceAdminSettings].
   /// [allowedEmailDomains] Optional.
@@ -18,7 +19,7 @@ class InstanceAdminSettings {
 
   factory InstanceAdminSettings.fromMap(Map<String, dynamic> map) {
     return InstanceAdminSettings(
-      allowedEmailDomains: map['allowedEmailDomains'] == null ? null : (map['allowedEmailDomains'] as List).cast<String>(),
+      allowedEmailDomains: map['allowedEmailDomains'] == null ? null : ((map['allowedEmailDomains'] as List).cast<String>()).input(),
     );
   }
 }

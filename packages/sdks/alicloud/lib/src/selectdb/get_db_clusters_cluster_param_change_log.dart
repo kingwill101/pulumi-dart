@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbClustersClusterParamChangeLog {
   /// The id of parameter change.
-  final int configId;
+  final pulumi.Input<int> configId;
   /// When the parameter change is created.
-  final String gmtCreated;
+  final pulumi.Input<String> gmtCreated;
   /// When the parameter change is modified.
-  final String gmtModified;
+  final pulumi.Input<String> gmtModified;
   /// Whether the parameter changing is applied.
-  final int isApplied;
+  final pulumi.Input<int> isApplied;
   /// Changed parameter name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The new value of parameter.
-  final String newValue;
+  final pulumi.Input<String> newValue;
   /// The old value of parameter.
-  final String oldValue;
+  final pulumi.Input<String> oldValue;
 
   /// Creates a new [GetDbClustersClusterParamChangeLog].
   /// [configId] The id of parameter change.
@@ -49,13 +50,13 @@ class GetDbClustersClusterParamChangeLog {
 
   factory GetDbClustersClusterParamChangeLog.fromMap(Map<String, dynamic> map) {
     return GetDbClustersClusterParamChangeLog(
-      configId: map['configId'] as int,
-      gmtCreated: map['gmtCreated'] as String,
-      gmtModified: map['gmtModified'] as String,
-      isApplied: map['isApplied'] as int,
-      name: map['name'] as String,
-      newValue: map['newValue'] as String,
-      oldValue: map['oldValue'] as String,
+      configId: (map['configId'] as int).input(),
+      gmtCreated: (map['gmtCreated'] as String).input(),
+      gmtModified: (map['gmtModified'] as String).input(),
+      isApplied: (map['isApplied'] as int).input(),
+      name: (map['name'] as String).input(),
+      newValue: (map['newValue'] as String).input(),
+      oldValue: (map['oldValue'] as String).input(),
     );
   }
 }

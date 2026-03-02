@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorExplicitResourceOrder {
-  final List<String>? backendPoolHealthProbeIds;
-  final List<String>? backendPoolIds;
-  final List<String>? backendPoolLoadBalancingIds;
-  final List<String>? frontendEndpointIds;
-  final List<String>? routingRuleIds;
+  final pulumi.Input<List<String>>? backendPoolHealthProbeIds;
+  final pulumi.Input<List<String>>? backendPoolIds;
+  final pulumi.Input<List<String>>? backendPoolLoadBalancingIds;
+  final pulumi.Input<List<String>>? frontendEndpointIds;
+  final pulumi.Input<List<String>>? routingRuleIds;
 
   /// Creates a new [FrontdoorExplicitResourceOrder].
   /// [backendPoolHealthProbeIds] Optional.
@@ -34,11 +35,11 @@ class FrontdoorExplicitResourceOrder {
 
   factory FrontdoorExplicitResourceOrder.fromMap(Map<String, dynamic> map) {
     return FrontdoorExplicitResourceOrder(
-      backendPoolHealthProbeIds: map['backendPoolHealthProbeIds'] == null ? null : (map['backendPoolHealthProbeIds'] as List).cast<String>(),
-      backendPoolIds: map['backendPoolIds'] == null ? null : (map['backendPoolIds'] as List).cast<String>(),
-      backendPoolLoadBalancingIds: map['backendPoolLoadBalancingIds'] == null ? null : (map['backendPoolLoadBalancingIds'] as List).cast<String>(),
-      frontendEndpointIds: map['frontendEndpointIds'] == null ? null : (map['frontendEndpointIds'] as List).cast<String>(),
-      routingRuleIds: map['routingRuleIds'] == null ? null : (map['routingRuleIds'] as List).cast<String>(),
+      backendPoolHealthProbeIds: map['backendPoolHealthProbeIds'] == null ? null : ((map['backendPoolHealthProbeIds'] as List).cast<String>()).input(),
+      backendPoolIds: map['backendPoolIds'] == null ? null : ((map['backendPoolIds'] as List).cast<String>()).input(),
+      backendPoolLoadBalancingIds: map['backendPoolLoadBalancingIds'] == null ? null : ((map['backendPoolLoadBalancingIds'] as List).cast<String>()).input(),
+      frontendEndpointIds: map['frontendEndpointIds'] == null ? null : ((map['frontendEndpointIds'] as List).cast<String>()).input(),
+      routingRuleIds: map['routingRuleIds'] == null ? null : ((map['routingRuleIds'] as List).cast<String>()).input(),
     );
   }
 }

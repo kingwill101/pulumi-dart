@@ -45,31 +45,19 @@ class IntentDialogflowV3Args {
   /// [project] Optional.
   /// [trainingPhrases] The collection of training phrases the agent is trained on to identify the intent.
   IntentDialogflowV3Args({
-    required pulumi.Output<String> agentId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? isFallback,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3IntentParameter>>? parameters,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3IntentTrainingPhrase>>? trainingPhrases,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      isFallback = pulumi.Input.asOptionalInput<bool>(isFallback),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3IntentParameter>>(parameters),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trainingPhrases = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3IntentTrainingPhrase>>(trainingPhrases);
+    required this.agentId,
+    this.description,
+    required this.displayName,
+    this.isFallback,
+    this.labels,
+    this.languageCode,
+    this.location,
+    this.name,
+    this.parameters,
+    this.priority,
+    this.project,
+    this.trainingPhrases,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class IntentDialogflowV3Args {
 
   factory IntentDialogflowV3Args.fromMap(Map<String, dynamic> map) {
     return IntentDialogflowV3Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      isFallback: map['isFallback'] == null ? null : pulumi.Output.create<bool>(map['isFallback'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3IntentParameter>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentParameter>(map['parameters'], (value) => GoogleCloudDialogflowCxV3IntentParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trainingPhrases: map['trainingPhrases'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3IntentTrainingPhrase>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentTrainingPhrase>(map['trainingPhrases'], (value) => GoogleCloudDialogflowCxV3IntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))),
+      agentId: (map['agentId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      isFallback: map['isFallback'] == null ? null : (map['isFallback'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentParameter>(map['parameters'], (value) => GoogleCloudDialogflowCxV3IntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentTrainingPhrase>(map['trainingPhrases'], (value) => GoogleCloudDialogflowCxV3IntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

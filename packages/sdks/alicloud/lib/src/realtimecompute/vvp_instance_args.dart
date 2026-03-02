@@ -45,29 +45,18 @@ class VvpInstanceArgs {
   /// [vvpInstanceName] The name of the workspace.
   /// [zoneId] The zone ID of the resource.
   VvpInstanceArgs({
-    pulumi.Output<int>? duration,
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<String>? pricingCycle,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<VvpInstanceResourceSpec>? resourceSpec,
-    required pulumi.Output<VvpInstanceStorage> storage,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<List<String>> vswitchIds,
-    required pulumi.Output<String> vvpInstanceName,
-    required pulumi.Output<String> zoneId,
-  }) :
-      duration = pulumi.Input.asOptionalInput<int>(duration),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      pricingCycle = pulumi.Input.asOptionalInput<String>(pricingCycle),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      resourceSpec = pulumi.Input.asOptionalInput<VvpInstanceResourceSpec>(resourceSpec),
-      storage = pulumi.Input.asInput<VvpInstanceStorage>(storage),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchIds = pulumi.Input.asInput<List<String>>(vswitchIds),
-      vvpInstanceName = pulumi.Input.asInput<String>(vvpInstanceName),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.duration,
+    required this.paymentType,
+    this.pricingCycle,
+    this.resourceGroupId,
+    this.resourceSpec,
+    required this.storage,
+    this.tags,
+    required this.vpcId,
+    required this.vswitchIds,
+    required this.vvpInstanceName,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class VvpInstanceArgs {
 
   factory VvpInstanceArgs.fromMap(Map<String, dynamic> map) {
     return VvpInstanceArgs(
-      duration: map['duration'] == null ? null : pulumi.Output.create<int>(map['duration'] as int),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      pricingCycle: map['pricingCycle'] == null ? null : pulumi.Output.create<String>(map['pricingCycle'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      resourceSpec: map['resourceSpec'] == null ? null : pulumi.Output.create<VvpInstanceResourceSpec>(VvpInstanceResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())),
-      storage: pulumi.Output.create<VvpInstanceStorage>(VvpInstanceStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchIds: pulumi.Output.create<List<String>>((map['vswitchIds'] as List).cast<String>()),
-      vvpInstanceName: pulumi.Output.create<String>(map['vvpInstanceName'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : (VvpInstanceResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
+      storage: (VvpInstanceStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
+      vvpInstanceName: (map['vvpInstanceName'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

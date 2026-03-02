@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHanaBackupPlansPlan {
   /// The backup prefix.
-  final String backupPrefix;
+  final pulumi.Input<String> backupPrefix;
   /// The backup type.
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The ID of the SAP HANA instance.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The name of the database.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// The ID of the resource.
-  final String id;
-  final String pageTotal;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> pageTotal;
   /// The ID of the backup plan.
-  final String planId;
+  final pulumi.Input<String> planId;
   /// The name of the backup plan.
-  final String planName;
+  final pulumi.Input<String> planName;
   /// The backup policy.
-  final String schedule;
+  final pulumi.Input<String> schedule;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the backup vault.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
 
   /// Creates a new [GetHanaBackupPlansPlan].
   /// [backupPrefix] The backup prefix.
@@ -68,17 +69,17 @@ class GetHanaBackupPlansPlan {
 
   factory GetHanaBackupPlansPlan.fromMap(Map<String, dynamic> map) {
     return GetHanaBackupPlansPlan(
-      backupPrefix: map['backupPrefix'] as String,
-      backupType: map['backupType'] as String,
-      clusterId: map['clusterId'] as String,
-      databaseName: map['databaseName'] as String,
-      id: map['id'] as String,
-      pageTotal: map['pageTotal'] as String,
-      planId: map['planId'] as String,
-      planName: map['planName'] as String,
-      schedule: map['schedule'] as String,
-      status: map['status'] as String,
-      vaultId: map['vaultId'] as String,
+      backupPrefix: (map['backupPrefix'] as String).input(),
+      backupType: (map['backupType'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      id: (map['id'] as String).input(),
+      pageTotal: (map['pageTotal'] as String).input(),
+      planId: (map['planId'] as String).input(),
+      planName: (map['planName'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      status: (map['status'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

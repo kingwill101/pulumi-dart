@@ -44,23 +44,15 @@ class PolicyState {
   /// [networks] List of network names specifying networks to which this policy is applied.
   /// [project] The ID of the project in which the resource belongs.
   PolicyState({
-    pulumi.Output<PolicyAlternativeNameServerConfig>? alternativeNameServerConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<PolicyDns64Config>? dns64Config,
-    pulumi.Output<bool>? enableInboundForwarding,
-    pulumi.Output<bool>? enableLogging,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<PolicyNetwork>>? networks,
-    pulumi.Output<String>? project,
-  }) :
-      alternativeNameServerConfig = pulumi.Input.asOptionalInput<PolicyAlternativeNameServerConfig>(alternativeNameServerConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dns64Config = pulumi.Input.asOptionalInput<PolicyDns64Config>(dns64Config),
-      enableInboundForwarding = pulumi.Input.asOptionalInput<bool>(enableInboundForwarding),
-      enableLogging = pulumi.Input.asOptionalInput<bool>(enableLogging),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networks = pulumi.Input.asOptionalInput<List<PolicyNetwork>>(networks),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.alternativeNameServerConfig,
+    this.description,
+    this.dns64Config,
+    this.enableInboundForwarding,
+    this.enableLogging,
+    this.name,
+    this.networks,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,14 +69,14 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      alternativeNameServerConfig: map['alternativeNameServerConfig'] == null ? null : pulumi.Output.create<PolicyAlternativeNameServerConfig>(PolicyAlternativeNameServerConfig.fromMap((map['alternativeNameServerConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dns64Config: map['dns64Config'] == null ? null : pulumi.Output.create<PolicyDns64Config>(PolicyDns64Config.fromMap((map['dns64Config'] as Map).cast<String, dynamic>())),
-      enableInboundForwarding: map['enableInboundForwarding'] == null ? null : pulumi.Output.create<bool>(map['enableInboundForwarding'] as bool),
-      enableLogging: map['enableLogging'] == null ? null : pulumi.Output.create<bool>(map['enableLogging'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networks: map['networks'] == null ? null : pulumi.Output.create<List<PolicyNetwork>>(pulumi.Input.decodeList<PolicyNetwork>(map['networks'], (value) => PolicyNetwork.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      alternativeNameServerConfig: map['alternativeNameServerConfig'] == null ? null : (PolicyAlternativeNameServerConfig.fromMap((map['alternativeNameServerConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dns64Config: map['dns64Config'] == null ? null : (PolicyDns64Config.fromMap((map['dns64Config'] as Map).cast<String, dynamic>())).input(),
+      enableInboundForwarding: map['enableInboundForwarding'] == null ? null : (map['enableInboundForwarding'] as bool).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<PolicyNetwork>(map['networks'], (value) => PolicyNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a machine that is currently drained.
 class BareMetalDrainedMachineResponse {
   /// Drained machine IP address.
-  final String nodeIp;
+  final pulumi.Input<String> nodeIp;
 
   /// Creates a new [BareMetalDrainedMachineResponse].
   /// [nodeIp] Drained machine IP address.
@@ -20,7 +21,7 @@ class BareMetalDrainedMachineResponse {
 
   factory BareMetalDrainedMachineResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalDrainedMachineResponse(
-      nodeIp: map['nodeIp'] as String,
+      nodeIp: (map['nodeIp'] as String).input(),
     );
   }
 }

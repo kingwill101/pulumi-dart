@@ -1,58 +1,59 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_archive_output_settings_container_settings_m2ts_settings_dvb_nit_settings.dart';
 import 'channel_encoder_settings_output_group_output_output_settings_archive_output_settings_container_settings_m2ts_settings_dvb_sdt_settings.dart';
 import 'channel_encoder_settings_output_group_output_output_settings_archive_output_settings_container_settings_m2ts_settings_dvb_tdt_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings {
-  final String? absentInputAudioBehavior;
-  final String? arib;
-  final String? aribCaptionsPid;
-  final String? aribCaptionsPidControl;
-  final String? audioBufferModel;
-  final int? audioFramesPerPes;
-  final String? audioPids;
-  final String? audioStreamType;
-  final int? bitrate;
-  final String? bufferModel;
-  final String? ccDescriptor;
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings? dvbNitSettings;
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings? dvbSdtSettings;
-  final String? dvbSubPids;
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings? dvbTdtSettings;
-  final String? dvbTeletextPid;
-  final String? ebif;
-  final String? ebpAudioInterval;
-  final int? ebpLookaheadMs;
-  final String? ebpPlacement;
-  final String? ecmPid;
-  final String? esRateInPes;
-  final String? etvPlatformPid;
-  final String? etvSignalPid;
-  final double? fragmentTime;
-  final String? klv;
-  final String? klvDataPids;
-  final String? nielsenId3Behavior;
-  final double? nullPacketBitrate;
-  final int? patInterval;
-  final String? pcrControl;
-  final int? pcrPeriod;
-  final String? pcrPid;
-  final int? pmtInterval;
-  final String? pmtPid;
-  final int? programNum;
-  final String? rateMode;
-  final String? scte27Pids;
-  final String? scte35Control;
+  final pulumi.Input<String>? absentInputAudioBehavior;
+  final pulumi.Input<String>? arib;
+  final pulumi.Input<String>? aribCaptionsPid;
+  final pulumi.Input<String>? aribCaptionsPidControl;
+  final pulumi.Input<String>? audioBufferModel;
+  final pulumi.Input<int>? audioFramesPerPes;
+  final pulumi.Input<String>? audioPids;
+  final pulumi.Input<String>? audioStreamType;
+  final pulumi.Input<int>? bitrate;
+  final pulumi.Input<String>? bufferModel;
+  final pulumi.Input<String>? ccDescriptor;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings>? dvbNitSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings>? dvbSdtSettings;
+  final pulumi.Input<String>? dvbSubPids;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings>? dvbTdtSettings;
+  final pulumi.Input<String>? dvbTeletextPid;
+  final pulumi.Input<String>? ebif;
+  final pulumi.Input<String>? ebpAudioInterval;
+  final pulumi.Input<int>? ebpLookaheadMs;
+  final pulumi.Input<String>? ebpPlacement;
+  final pulumi.Input<String>? ecmPid;
+  final pulumi.Input<String>? esRateInPes;
+  final pulumi.Input<String>? etvPlatformPid;
+  final pulumi.Input<String>? etvSignalPid;
+  final pulumi.Input<double>? fragmentTime;
+  final pulumi.Input<String>? klv;
+  final pulumi.Input<String>? klvDataPids;
+  final pulumi.Input<String>? nielsenId3Behavior;
+  final pulumi.Input<double>? nullPacketBitrate;
+  final pulumi.Input<int>? patInterval;
+  final pulumi.Input<String>? pcrControl;
+  final pulumi.Input<int>? pcrPeriod;
+  final pulumi.Input<String>? pcrPid;
+  final pulumi.Input<int>? pmtInterval;
+  final pulumi.Input<String>? pmtPid;
+  final pulumi.Input<int>? programNum;
+  final pulumi.Input<String>? rateMode;
+  final pulumi.Input<String>? scte27Pids;
+  final pulumi.Input<String>? scte35Control;
   /// PID from which to read SCTE-35 messages.
-  final String? scte35Pid;
-  final String? segmentationMarkers;
-  final String? segmentationStyle;
-  final double? segmentationTime;
-  final String? timedMetadataBehavior;
-  final String? timedMetadataPid;
-  final int? transportStreamId;
-  final String? videoPid;
+  final pulumi.Input<String>? scte35Pid;
+  final pulumi.Input<String>? segmentationMarkers;
+  final pulumi.Input<String>? segmentationStyle;
+  final pulumi.Input<double>? segmentationTime;
+  final pulumi.Input<String>? timedMetadataBehavior;
+  final pulumi.Input<String>? timedMetadataPid;
+  final pulumi.Input<int>? transportStreamId;
+  final pulumi.Input<String>? videoPid;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings].
   /// [absentInputAudioBehavior] Optional.
@@ -165,10 +166,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
       'bitrate': ?bitrate,
       'bufferModel': ?bufferModel,
       'ccDescriptor': ?ccDescriptor,
-      'dvbNitSettings': ?dvbNitSettings == null ? null : dvbNitSettings!.toMap(),
-      'dvbSdtSettings': ?dvbSdtSettings == null ? null : dvbSdtSettings!.toMap(),
+      'dvbNitSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings, Map<String, dynamic>>(dvbNitSettings, (value) => value.toMap()),
+      'dvbSdtSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings, Map<String, dynamic>>(dvbSdtSettings, (value) => value.toMap()),
       'dvbSubPids': ?dvbSubPids,
-      'dvbTdtSettings': ?dvbTdtSettings == null ? null : dvbTdtSettings!.toMap(),
+      'dvbTdtSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings, Map<String, dynamic>>(dvbTdtSettings, (value) => value.toMap()),
       'dvbTeletextPid': ?dvbTeletextPid,
       'ebif': ?ebif,
       'ebpAudioInterval': ?ebpAudioInterval,
@@ -206,53 +207,53 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings(
-      absentInputAudioBehavior: map['absentInputAudioBehavior'] == null ? null : map['absentInputAudioBehavior'] as String,
-      arib: map['arib'] == null ? null : map['arib'] as String,
-      aribCaptionsPid: map['aribCaptionsPid'] == null ? null : map['aribCaptionsPid'] as String,
-      aribCaptionsPidControl: map['aribCaptionsPidControl'] == null ? null : map['aribCaptionsPidControl'] as String,
-      audioBufferModel: map['audioBufferModel'] == null ? null : map['audioBufferModel'] as String,
-      audioFramesPerPes: map['audioFramesPerPes'] == null ? null : map['audioFramesPerPes'] as int,
-      audioPids: map['audioPids'] == null ? null : map['audioPids'] as String,
-      audioStreamType: map['audioStreamType'] == null ? null : map['audioStreamType'] as String,
-      bitrate: map['bitrate'] == null ? null : map['bitrate'] as int,
-      bufferModel: map['bufferModel'] == null ? null : map['bufferModel'] as String,
-      ccDescriptor: map['ccDescriptor'] == null ? null : map['ccDescriptor'] as String,
-      dvbNitSettings: map['dvbNitSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap((map['dvbNitSettings'] as Map).cast<String, dynamic>()),
-      dvbSdtSettings: map['dvbSdtSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings.fromMap((map['dvbSdtSettings'] as Map).cast<String, dynamic>()),
-      dvbSubPids: map['dvbSubPids'] == null ? null : map['dvbSubPids'] as String,
-      dvbTdtSettings: map['dvbTdtSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings.fromMap((map['dvbTdtSettings'] as Map).cast<String, dynamic>()),
-      dvbTeletextPid: map['dvbTeletextPid'] == null ? null : map['dvbTeletextPid'] as String,
-      ebif: map['ebif'] == null ? null : map['ebif'] as String,
-      ebpAudioInterval: map['ebpAudioInterval'] == null ? null : map['ebpAudioInterval'] as String,
-      ebpLookaheadMs: map['ebpLookaheadMs'] == null ? null : map['ebpLookaheadMs'] as int,
-      ebpPlacement: map['ebpPlacement'] == null ? null : map['ebpPlacement'] as String,
-      ecmPid: map['ecmPid'] == null ? null : map['ecmPid'] as String,
-      esRateInPes: map['esRateInPes'] == null ? null : map['esRateInPes'] as String,
-      etvPlatformPid: map['etvPlatformPid'] == null ? null : map['etvPlatformPid'] as String,
-      etvSignalPid: map['etvSignalPid'] == null ? null : map['etvSignalPid'] as String,
-      fragmentTime: map['fragmentTime'] == null ? null : map['fragmentTime'] as double,
-      klv: map['klv'] == null ? null : map['klv'] as String,
-      klvDataPids: map['klvDataPids'] == null ? null : map['klvDataPids'] as String,
-      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : map['nielsenId3Behavior'] as String,
-      nullPacketBitrate: map['nullPacketBitrate'] == null ? null : map['nullPacketBitrate'] as double,
-      patInterval: map['patInterval'] == null ? null : map['patInterval'] as int,
-      pcrControl: map['pcrControl'] == null ? null : map['pcrControl'] as String,
-      pcrPeriod: map['pcrPeriod'] == null ? null : map['pcrPeriod'] as int,
-      pcrPid: map['pcrPid'] == null ? null : map['pcrPid'] as String,
-      pmtInterval: map['pmtInterval'] == null ? null : map['pmtInterval'] as int,
-      pmtPid: map['pmtPid'] == null ? null : map['pmtPid'] as String,
-      programNum: map['programNum'] == null ? null : map['programNum'] as int,
-      rateMode: map['rateMode'] == null ? null : map['rateMode'] as String,
-      scte27Pids: map['scte27Pids'] == null ? null : map['scte27Pids'] as String,
-      scte35Control: map['scte35Control'] == null ? null : map['scte35Control'] as String,
-      scte35Pid: map['scte35Pid'] == null ? null : map['scte35Pid'] as String,
-      segmentationMarkers: map['segmentationMarkers'] == null ? null : map['segmentationMarkers'] as String,
-      segmentationStyle: map['segmentationStyle'] == null ? null : map['segmentationStyle'] as String,
-      segmentationTime: map['segmentationTime'] == null ? null : map['segmentationTime'] as double,
-      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : map['timedMetadataBehavior'] as String,
-      timedMetadataPid: map['timedMetadataPid'] == null ? null : map['timedMetadataPid'] as String,
-      transportStreamId: map['transportStreamId'] == null ? null : map['transportStreamId'] as int,
-      videoPid: map['videoPid'] == null ? null : map['videoPid'] as String,
+      absentInputAudioBehavior: map['absentInputAudioBehavior'] == null ? null : (map['absentInputAudioBehavior'] as String).input(),
+      arib: map['arib'] == null ? null : (map['arib'] as String).input(),
+      aribCaptionsPid: map['aribCaptionsPid'] == null ? null : (map['aribCaptionsPid'] as String).input(),
+      aribCaptionsPidControl: map['aribCaptionsPidControl'] == null ? null : (map['aribCaptionsPidControl'] as String).input(),
+      audioBufferModel: map['audioBufferModel'] == null ? null : (map['audioBufferModel'] as String).input(),
+      audioFramesPerPes: map['audioFramesPerPes'] == null ? null : (map['audioFramesPerPes'] as int).input(),
+      audioPids: map['audioPids'] == null ? null : (map['audioPids'] as String).input(),
+      audioStreamType: map['audioStreamType'] == null ? null : (map['audioStreamType'] as String).input(),
+      bitrate: map['bitrate'] == null ? null : (map['bitrate'] as int).input(),
+      bufferModel: map['bufferModel'] == null ? null : (map['bufferModel'] as String).input(),
+      ccDescriptor: map['ccDescriptor'] == null ? null : (map['ccDescriptor'] as String).input(),
+      dvbNitSettings: map['dvbNitSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap((map['dvbNitSettings'] as Map).cast<String, dynamic>())).input(),
+      dvbSdtSettings: map['dvbSdtSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings.fromMap((map['dvbSdtSettings'] as Map).cast<String, dynamic>())).input(),
+      dvbSubPids: map['dvbSubPids'] == null ? null : (map['dvbSubPids'] as String).input(),
+      dvbTdtSettings: map['dvbTdtSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings.fromMap((map['dvbTdtSettings'] as Map).cast<String, dynamic>())).input(),
+      dvbTeletextPid: map['dvbTeletextPid'] == null ? null : (map['dvbTeletextPid'] as String).input(),
+      ebif: map['ebif'] == null ? null : (map['ebif'] as String).input(),
+      ebpAudioInterval: map['ebpAudioInterval'] == null ? null : (map['ebpAudioInterval'] as String).input(),
+      ebpLookaheadMs: map['ebpLookaheadMs'] == null ? null : (map['ebpLookaheadMs'] as int).input(),
+      ebpPlacement: map['ebpPlacement'] == null ? null : (map['ebpPlacement'] as String).input(),
+      ecmPid: map['ecmPid'] == null ? null : (map['ecmPid'] as String).input(),
+      esRateInPes: map['esRateInPes'] == null ? null : (map['esRateInPes'] as String).input(),
+      etvPlatformPid: map['etvPlatformPid'] == null ? null : (map['etvPlatformPid'] as String).input(),
+      etvSignalPid: map['etvSignalPid'] == null ? null : (map['etvSignalPid'] as String).input(),
+      fragmentTime: map['fragmentTime'] == null ? null : (map['fragmentTime'] as double).input(),
+      klv: map['klv'] == null ? null : (map['klv'] as String).input(),
+      klvDataPids: map['klvDataPids'] == null ? null : (map['klvDataPids'] as String).input(),
+      nielsenId3Behavior: map['nielsenId3Behavior'] == null ? null : (map['nielsenId3Behavior'] as String).input(),
+      nullPacketBitrate: map['nullPacketBitrate'] == null ? null : (map['nullPacketBitrate'] as double).input(),
+      patInterval: map['patInterval'] == null ? null : (map['patInterval'] as int).input(),
+      pcrControl: map['pcrControl'] == null ? null : (map['pcrControl'] as String).input(),
+      pcrPeriod: map['pcrPeriod'] == null ? null : (map['pcrPeriod'] as int).input(),
+      pcrPid: map['pcrPid'] == null ? null : (map['pcrPid'] as String).input(),
+      pmtInterval: map['pmtInterval'] == null ? null : (map['pmtInterval'] as int).input(),
+      pmtPid: map['pmtPid'] == null ? null : (map['pmtPid'] as String).input(),
+      programNum: map['programNum'] == null ? null : (map['programNum'] as int).input(),
+      rateMode: map['rateMode'] == null ? null : (map['rateMode'] as String).input(),
+      scte27Pids: map['scte27Pids'] == null ? null : (map['scte27Pids'] as String).input(),
+      scte35Control: map['scte35Control'] == null ? null : (map['scte35Control'] as String).input(),
+      scte35Pid: map['scte35Pid'] == null ? null : (map['scte35Pid'] as String).input(),
+      segmentationMarkers: map['segmentationMarkers'] == null ? null : (map['segmentationMarkers'] as String).input(),
+      segmentationStyle: map['segmentationStyle'] == null ? null : (map['segmentationStyle'] as String).input(),
+      segmentationTime: map['segmentationTime'] == null ? null : (map['segmentationTime'] as double).input(),
+      timedMetadataBehavior: map['timedMetadataBehavior'] == null ? null : (map['timedMetadataBehavior'] as String).input(),
+      timedMetadataPid: map['timedMetadataPid'] == null ? null : (map['timedMetadataPid'] as String).input(),
+      transportStreamId: map['transportStreamId'] == null ? null : (map['transportStreamId'] as int).input(),
+      videoPid: map['videoPid'] == null ? null : (map['videoPid'] as String).input(),
     );
   }
 }

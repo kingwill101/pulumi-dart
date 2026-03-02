@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// JSONPatch defines a JSON Patch.
 class JSONPatchAdmissionregistrationK8sIoV1beta1 {
@@ -57,7 +58,7 @@ class JSONPatchAdmissionregistrationK8sIoV1beta1 {
   /// - 'jsonpatch.escapeKey' - Performs JSONPatch key escaping. '~' and  '/' are escaped as '~0' and `~1' respectively).
   ///
   /// Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Required.
-  final String? expression;
+  final pulumi.Input<String>? expression;
 
   /// Creates a new [JSONPatchAdmissionregistrationK8sIoV1beta1].
   /// [expression] expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec
@@ -73,7 +74,7 @@ class JSONPatchAdmissionregistrationK8sIoV1beta1 {
 
   factory JSONPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return JSONPatchAdmissionregistrationK8sIoV1beta1(
-      expression: map['expression'] == null ? null : map['expression'] as String,
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
     );
   }
 }

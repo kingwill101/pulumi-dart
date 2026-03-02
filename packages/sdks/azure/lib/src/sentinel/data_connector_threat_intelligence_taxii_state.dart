@@ -39,27 +39,17 @@ class DataConnectorThreatIntelligenceTaxiiState {
   /// [tenantId] The ID of the tenant that this Threat Intelligence TAXII Data Connector connects to. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   /// [userName] The user name for the TAXII server.
   DataConnectorThreatIntelligenceTaxiiState({
-    pulumi.Output<String>? apiRootUrl,
-    pulumi.Output<String>? collectionId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? logAnalyticsWorkspaceId,
-    pulumi.Output<String>? lookbackDate,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? pollingFrequency,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? userName,
-  }) :
-      apiRootUrl = pulumi.Input.asOptionalInput<String>(apiRootUrl),
-      collectionId = pulumi.Input.asOptionalInput<String>(collectionId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      logAnalyticsWorkspaceId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceId),
-      lookbackDate = pulumi.Input.asOptionalInput<String>(lookbackDate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      pollingFrequency = pulumi.Input.asOptionalInput<String>(pollingFrequency),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.apiRootUrl,
+    this.collectionId,
+    this.displayName,
+    this.logAnalyticsWorkspaceId,
+    this.lookbackDate,
+    this.name,
+    this.password,
+    this.pollingFrequency,
+    this.tenantId,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class DataConnectorThreatIntelligenceTaxiiState {
 
   factory DataConnectorThreatIntelligenceTaxiiState.fromMap(Map<String, dynamic> map) {
     return DataConnectorThreatIntelligenceTaxiiState(
-      apiRootUrl: map['apiRootUrl'] == null ? null : pulumi.Output.create<String>(map['apiRootUrl'] as String),
-      collectionId: map['collectionId'] == null ? null : pulumi.Output.create<String>(map['collectionId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      lookbackDate: map['lookbackDate'] == null ? null : pulumi.Output.create<String>(map['lookbackDate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      pollingFrequency: map['pollingFrequency'] == null ? null : pulumi.Output.create<String>(map['pollingFrequency'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      apiRootUrl: map['apiRootUrl'] == null ? null : (map['apiRootUrl'] as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
+      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      pollingFrequency: map['pollingFrequency'] == null ? null : (map['pollingFrequency'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

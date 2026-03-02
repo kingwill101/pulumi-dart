@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument {
   /// The name of the query header to inspect. This setting must be provided as lower case characters.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
@@ -19,7 +20,7 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument {
 
   factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

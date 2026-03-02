@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_policy_policy_detail_exclusion_rules_amis.dart';
 
 class LifecyclePolicyPolicyDetailExclusionRules {
   /// Lists configuration values that apply to AMIs that Image Builder should exclude from the lifecycle action. Detailed below.
-  final LifecyclePolicyPolicyDetailExclusionRulesAmis? amis;
+  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRulesAmis>? amis;
   /// Contains a list of tags that Image Builder uses to skip lifecycle actions for Image Builder image resources that have them.
-  final Map<String, String>? tagMap;
+  final pulumi.Input<Map<String, String>>? tagMap;
 
   /// Creates a new [LifecyclePolicyPolicyDetailExclusionRules].
   /// [amis] Lists configuration values that apply to AMIs that Image Builder should exclude from the lifecycle action. Detailed below.
@@ -18,15 +19,15 @@ class LifecyclePolicyPolicyDetailExclusionRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amis': ?amis == null ? null : amis!.toMap(),
+      'amis': ?pulumi.Input.mapOptionalInputValue<LifecyclePolicyPolicyDetailExclusionRulesAmis, Map<String, dynamic>>(amis, (value) => value.toMap()),
       'tagMap': ?tagMap,
     };
   }
 
   factory LifecyclePolicyPolicyDetailExclusionRules.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailExclusionRules(
-      amis: map['amis'] == null ? null : LifecyclePolicyPolicyDetailExclusionRulesAmis.fromMap((map['amis'] as Map).cast<String, dynamic>()),
-      tagMap: map['tagMap'] == null ? null : (map['tagMap'] as Map).cast<String, String>(),
+      amis: map['amis'] == null ? null : (LifecyclePolicyPolicyDetailExclusionRulesAmis.fromMap((map['amis'] as Map).cast<String, dynamic>())).input(),
+      tagMap: map['tagMap'] == null ? null : ((map['tagMap'] as Map).cast<String, String>()).input(),
     );
   }
 }

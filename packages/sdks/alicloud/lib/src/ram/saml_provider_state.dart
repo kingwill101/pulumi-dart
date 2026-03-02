@@ -23,17 +23,12 @@ class SamlProviderState {
   /// [samlProviderName] The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
   /// [updateDate] Update time.
   SamlProviderState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? encodedsamlMetadataDocument,
-    pulumi.Output<String>? samlProviderName,
-    pulumi.Output<String>? updateDate,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encodedsamlMetadataDocument = pulumi.Input.asOptionalInput<String>(encodedsamlMetadataDocument),
-      samlProviderName = pulumi.Input.asOptionalInput<String>(samlProviderName),
-      updateDate = pulumi.Input.asOptionalInput<String>(updateDate);
+    this.arn,
+    this.description,
+    this.encodedsamlMetadataDocument,
+    this.samlProviderName,
+    this.updateDate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class SamlProviderState {
 
   factory SamlProviderState.fromMap(Map<String, dynamic> map) {
     return SamlProviderState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encodedsamlMetadataDocument: map['encodedsamlMetadataDocument'] == null ? null : pulumi.Output.create<String>(map['encodedsamlMetadataDocument'] as String),
-      samlProviderName: map['samlProviderName'] == null ? null : pulumi.Output.create<String>(map['samlProviderName'] as String),
-      updateDate: map['updateDate'] == null ? null : pulumi.Output.create<String>(map['updateDate'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encodedsamlMetadataDocument: map['encodedsamlMetadataDocument'] == null ? null : (map['encodedsamlMetadataDocument'] as String).input(),
+      samlProviderName: map['samlProviderName'] == null ? null : (map['samlProviderName'] as String).input(),
+      updateDate: map['updateDate'] == null ? null : (map['updateDate'] as String).input(),
     );
   }
 }

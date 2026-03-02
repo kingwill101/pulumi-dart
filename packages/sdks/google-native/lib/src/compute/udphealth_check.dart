@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UDPHealthCheck {
   /// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Not supported.
-  final String? portName;
+  final pulumi.Input<String>? portName;
   /// Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request data can only be ASCII.
-  final String? request;
+  final pulumi.Input<String>? request;
   /// The bytes to match against the beginning of the response data. It is an error if this is empty. The response data can only be ASCII.
-  final String? response;
+  final pulumi.Input<String>? response;
 
   /// Creates a new [UDPHealthCheck].
   /// [port] The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
@@ -34,10 +35,10 @@ class UDPHealthCheck {
 
   factory UDPHealthCheck.fromMap(Map<String, dynamic> map) {
     return UDPHealthCheck(
-      port: map['port'] == null ? null : map['port'] as int,
-      portName: map['portName'] == null ? null : map['portName'] as String,
-      request: map['request'] == null ? null : map['request'] as String,
-      response: map['response'] == null ? null : map['response'] as String,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      portName: map['portName'] == null ? null : (map['portName'] as String).input(),
+      request: map['request'] == null ? null : (map['request'] as String).input(),
+      response: map['response'] == null ? null : (map['response'] as String).input(),
     );
   }
 }

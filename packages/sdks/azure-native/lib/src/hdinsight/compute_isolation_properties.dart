@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The compute isolation properties.
 class ComputeIsolationProperties {
   /// The flag indicates whether enable compute isolation or not.
-  final bool? enableComputeIsolation;
+  final pulumi.Input<bool>? enableComputeIsolation;
   /// The host sku.
-  final String? hostSku;
+  final pulumi.Input<String>? hostSku;
 
   /// Creates a new [ComputeIsolationProperties].
   /// [enableComputeIsolation] The flag indicates whether enable compute isolation or not.
@@ -25,8 +26,8 @@ class ComputeIsolationProperties {
 
   factory ComputeIsolationProperties.fromMap(Map<String, dynamic> map) {
     return ComputeIsolationProperties(
-      enableComputeIsolation: map['enableComputeIsolation'] == null ? null : map['enableComputeIsolation'] as bool,
-      hostSku: map['hostSku'] == null ? null : map['hostSku'] as String,
+      enableComputeIsolation: map['enableComputeIsolation'] == null ? null : (map['enableComputeIsolation'] as bool).input(),
+      hostSku: map['hostSku'] == null ? null : (map['hostSku'] as String).input(),
     );
   }
 }

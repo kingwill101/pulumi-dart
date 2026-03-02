@@ -31,21 +31,14 @@ class GetRdsBackupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [startTime] The start time.
   GetRdsBackupsArgs({
-    pulumi.Output<String>? backupMode,
-    pulumi.Output<String>? backupStatus,
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? startTime,
-  }) :
-      backupMode = pulumi.Input.asOptionalInput<String>(backupMode),
-      backupStatus = pulumi.Input.asOptionalInput<String>(backupStatus),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime);
+    this.backupMode,
+    this.backupStatus,
+    required this.dbInstanceId,
+    this.endTime,
+    this.ids,
+    this.outputFile,
+    this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetRdsBackupsArgs {
 
   factory GetRdsBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetRdsBackupsArgs(
-      backupMode: map['backupMode'] == null ? null : pulumi.Output.create<String>(map['backupMode'] as String),
-      backupStatus: map['backupStatus'] == null ? null : pulumi.Output.create<String>(map['backupStatus'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
+      backupMode: map['backupMode'] == null ? null : (map['backupMode'] as String).input(),
+      backupStatus: map['backupStatus'] == null ? null : (map['backupStatus'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

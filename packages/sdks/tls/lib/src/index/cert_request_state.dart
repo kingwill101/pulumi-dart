@@ -29,21 +29,14 @@ class CertRequestState {
   /// [subject] The subject for which a certificate is being requested. The acceptable arguments are all optional and their naming is based upon [Issuer Distinguished Names (RFC5280)](https://tools.ietf.org/html/rfc5280#section-4.1.2.4) section.
   /// [uris] List of URIs for which a certificate is being requested (i.e. certificate subjects).
   CertRequestState({
-    pulumi.Output<String>? certRequestPem,
-    pulumi.Output<List<String>>? dnsNames,
-    pulumi.Output<List<String>>? ipAddresses,
-    pulumi.Output<String>? keyAlgorithm,
-    pulumi.Output<String>? privateKeyPem,
-    pulumi.Output<CertRequestSubject>? subject,
-    pulumi.Output<List<String>>? uris,
-  }) :
-      certRequestPem = pulumi.Input.asOptionalInput<String>(certRequestPem),
-      dnsNames = pulumi.Input.asOptionalInput<List<String>>(dnsNames),
-      ipAddresses = pulumi.Input.asOptionalInput<List<String>>(ipAddresses),
-      keyAlgorithm = pulumi.Input.asOptionalInput<String>(keyAlgorithm),
-      privateKeyPem = pulumi.Input.asOptionalInput<String>(privateKeyPem),
-      subject = pulumi.Input.asOptionalInput<CertRequestSubject>(subject),
-      uris = pulumi.Input.asOptionalInput<List<String>>(uris);
+    this.certRequestPem,
+    this.dnsNames,
+    this.ipAddresses,
+    this.keyAlgorithm,
+    this.privateKeyPem,
+    this.subject,
+    this.uris,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class CertRequestState {
 
   factory CertRequestState.fromMap(Map<String, dynamic> map) {
     return CertRequestState(
-      certRequestPem: map['certRequestPem'] == null ? null : pulumi.Output.create<String>(map['certRequestPem'] as String),
-      dnsNames: map['dnsNames'] == null ? null : pulumi.Output.create<List<String>>((map['dnsNames'] as List).cast<String>()),
-      ipAddresses: map['ipAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['ipAddresses'] as List).cast<String>()),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : pulumi.Output.create<String>(map['keyAlgorithm'] as String),
-      privateKeyPem: map['privateKeyPem'] == null ? null : pulumi.Output.create<String>(map['privateKeyPem'] as String),
-      subject: map['subject'] == null ? null : pulumi.Output.create<CertRequestSubject>(CertRequestSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())),
-      uris: map['uris'] == null ? null : pulumi.Output.create<List<String>>((map['uris'] as List).cast<String>()),
+      certRequestPem: map['certRequestPem'] == null ? null : (map['certRequestPem'] as String).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
+      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem'] as String).input(),
+      subject: map['subject'] == null ? null : (CertRequestSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
+      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
     );
   }
 }

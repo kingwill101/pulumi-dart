@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_node_pool_config.dart';
 
 /// Specifies the load balancer's node pool configuration.
 class BareMetalLoadBalancerNodePoolConfig {
   /// The generic configuration for a node pool running a load balancer.
-  final BareMetalNodePoolConfig? nodePoolConfig;
+  final pulumi.Input<BareMetalNodePoolConfig>? nodePoolConfig;
 
   /// Creates a new [BareMetalLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running a load balancer.
@@ -15,13 +16,13 @@ class BareMetalLoadBalancerNodePoolConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodePoolConfig': ?nodePoolConfig == null ? null : nodePoolConfig!.toMap(),
+      'nodePoolConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalNodePoolConfig, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalLoadBalancerNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalLoadBalancerNodePoolConfig(
-      nodePoolConfig: map['nodePoolConfig'] == null ? null : BareMetalNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: map['nodePoolConfig'] == null ? null : (BareMetalNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

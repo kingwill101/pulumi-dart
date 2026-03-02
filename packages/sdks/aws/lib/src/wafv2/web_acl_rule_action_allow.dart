@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_action_allow_custom_request_handling.dart';
 
 class WebAclRuleActionAllow {
   /// Defines custom handling for the web request. See `custom_request_handling` below for details.
-  final WebAclRuleActionAllowCustomRequestHandling? customRequestHandling;
+  final pulumi.Input<WebAclRuleActionAllowCustomRequestHandling>? customRequestHandling;
 
   /// Creates a new [WebAclRuleActionAllow].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
@@ -14,13 +15,13 @@ class WebAclRuleActionAllow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
+      'customRequestHandling': ?pulumi.Input.mapOptionalInputValue<WebAclRuleActionAllowCustomRequestHandling, Map<String, dynamic>>(customRequestHandling, (value) => value.toMap()),
     };
   }
 
   factory WebAclRuleActionAllow.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionAllow(
-      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleActionAllowCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
+      customRequestHandling: map['customRequestHandling'] == null ? null : (WebAclRuleActionAllowCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

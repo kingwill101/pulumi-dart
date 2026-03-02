@@ -19,13 +19,10 @@ class GetCertificateArgs {
   /// [url] The URL of the website to get the certificates from. Cannot be used with `content`.
   /// [verifyChain] Whether to verify the certificate chain while parsing it or not (default: `true`). Cannot be used with `content`.
   GetCertificateArgs({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? url,
-    pulumi.Output<bool>? verifyChain,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      url = pulumi.Input.asOptionalInput<String>(url),
-      verifyChain = pulumi.Input.asOptionalInput<bool>(verifyChain);
+    this.content,
+    this.url,
+    this.verifyChain,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
-      verifyChain: map['verifyChain'] == null ? null : pulumi.Output.create<bool>(map['verifyChain'] as bool),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      verifyChain: map['verifyChain'] == null ? null : (map['verifyChain'] as bool).input(),
     );
   }
 }

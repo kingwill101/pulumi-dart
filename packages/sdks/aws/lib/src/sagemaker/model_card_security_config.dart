@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ModelCardSecurityConfig {
   /// KMS key ARN.
-  final String kmsKeyId;
+  final pulumi.Input<String> kmsKeyId;
 
   /// Creates a new [ModelCardSecurityConfig].
   /// [kmsKeyId] KMS key ARN.
@@ -19,7 +20,7 @@ class ModelCardSecurityConfig {
 
   factory ModelCardSecurityConfig.fromMap(Map<String, dynamic> map) {
     return ModelCardSecurityConfig(
-      kmsKeyId: map['kmsKeyId'] as String,
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
     );
   }
 }

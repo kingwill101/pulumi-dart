@@ -36,23 +36,15 @@ class RestorePointArgs {
   /// [sourceRestorePoint] Resource Id of the source restore point from which a copy needs to be created.
   /// [timeCreated] Gets the creation time of the restore point.
   RestorePointArgs({
-    pulumi.Output<String>? consistencyMode,
-    pulumi.Output<List<ApiEntityReference>>? excludeDisks,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> restorePointCollectionName,
-    pulumi.Output<String>? restorePointName,
-    pulumi.Output<RestorePointSourceMetadata>? sourceMetadata,
-    pulumi.Output<ApiEntityReference>? sourceRestorePoint,
-    pulumi.Output<String>? timeCreated,
-  }) :
-      consistencyMode = pulumi.Input.asOptionalInput<String>(consistencyMode),
-      excludeDisks = pulumi.Input.asOptionalInput<List<ApiEntityReference>>(excludeDisks),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      restorePointCollectionName = pulumi.Input.asInput<String>(restorePointCollectionName),
-      restorePointName = pulumi.Input.asOptionalInput<String>(restorePointName),
-      sourceMetadata = pulumi.Input.asOptionalInput<RestorePointSourceMetadata>(sourceMetadata),
-      sourceRestorePoint = pulumi.Input.asOptionalInput<ApiEntityReference>(sourceRestorePoint),
-      timeCreated = pulumi.Input.asOptionalInput<String>(timeCreated);
+    this.consistencyMode,
+    this.excludeDisks,
+    required this.resourceGroupName,
+    required this.restorePointCollectionName,
+    this.restorePointName,
+    this.sourceMetadata,
+    this.sourceRestorePoint,
+    this.timeCreated,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class RestorePointArgs {
 
   factory RestorePointArgs.fromMap(Map<String, dynamic> map) {
     return RestorePointArgs(
-      consistencyMode: map['consistencyMode'] == null ? null : pulumi.Output.create<String>(map['consistencyMode'] as String),
-      excludeDisks: map['excludeDisks'] == null ? null : pulumi.Output.create<List<ApiEntityReference>>(pulumi.Input.decodeList<ApiEntityReference>(map['excludeDisks'], (value) => ApiEntityReference.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      restorePointCollectionName: pulumi.Output.create<String>(map['restorePointCollectionName'] as String),
-      restorePointName: map['restorePointName'] == null ? null : pulumi.Output.create<String>(map['restorePointName'] as String),
-      sourceMetadata: map['sourceMetadata'] == null ? null : pulumi.Output.create<RestorePointSourceMetadata>(RestorePointSourceMetadata.fromMap((map['sourceMetadata'] as Map).cast<String, dynamic>())),
-      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : pulumi.Output.create<ApiEntityReference>(ApiEntityReference.fromMap((map['sourceRestorePoint'] as Map).cast<String, dynamic>())),
-      timeCreated: map['timeCreated'] == null ? null : pulumi.Output.create<String>(map['timeCreated'] as String),
+      consistencyMode: map['consistencyMode'] == null ? null : (map['consistencyMode'] as String).input(),
+      excludeDisks: map['excludeDisks'] == null ? null : (pulumi.Input.decodeList<ApiEntityReference>(map['excludeDisks'], (value) => ApiEntityReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      restorePointCollectionName: (map['restorePointCollectionName'] as String).input(),
+      restorePointName: map['restorePointName'] == null ? null : (map['restorePointName'] as String).input(),
+      sourceMetadata: map['sourceMetadata'] == null ? null : (RestorePointSourceMetadata.fromMap((map['sourceMetadata'] as Map).cast<String, dynamic>())).input(),
+      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : (ApiEntityReference.fromMap((map['sourceRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
     );
   }
 }

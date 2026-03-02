@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to an asset via its ARM resource ID.
 class IdAssetReference {
   /// [Required] ARM resource ID of the asset.
-  final String assetId;
+  final pulumi.Input<String> assetId;
   /// Enum to determine which reference method to use for an asset.
   /// Expected value is 'Id'.
-  final String referenceType;
+  final pulumi.Input<String> referenceType;
 
   /// Creates a new [IdAssetReference].
   /// [assetId] [Required] ARM resource ID of the asset.
@@ -26,8 +27,8 @@ class IdAssetReference {
 
   factory IdAssetReference.fromMap(Map<String, dynamic> map) {
     return IdAssetReference(
-      assetId: map['assetId'] as String,
-      referenceType: map['referenceType'] as String,
+      assetId: (map['assetId'] as String).input(),
+      referenceType: (map['referenceType'] as String).input(),
     );
   }
 }

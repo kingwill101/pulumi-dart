@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceEffectiveReplicationReplica {
   /// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
-  final String lastActiveSyncTime;
+  final pulumi.Input<String> lastActiveSyncTime;
   /// The peer instance.
-  final String peerInstance;
+  final pulumi.Input<String> peerInstance;
   /// Output only. The replica state
-  final String state;
+  final pulumi.Input<String> state;
   /// Output only. Additional information about the replication state, if available.
-  final List<String> stateReasons;
+  final pulumi.Input<List<String>> stateReasons;
 
   /// Creates a new [GetInstanceEffectiveReplicationReplica].
   /// [lastActiveSyncTime] Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
@@ -36,10 +37,10 @@ class GetInstanceEffectiveReplicationReplica {
 
   factory GetInstanceEffectiveReplicationReplica.fromMap(Map<String, dynamic> map) {
     return GetInstanceEffectiveReplicationReplica(
-      lastActiveSyncTime: map['lastActiveSyncTime'] as String,
-      peerInstance: map['peerInstance'] as String,
-      state: map['state'] as String,
-      stateReasons: (map['stateReasons'] as List).cast<String>(),
+      lastActiveSyncTime: (map['lastActiveSyncTime'] as String).input(),
+      peerInstance: (map['peerInstance'] as String).input(),
+      state: (map['state'] as String).input(),
+      stateReasons: ((map['stateReasons'] as List).cast<String>()).input(),
     );
   }
 }

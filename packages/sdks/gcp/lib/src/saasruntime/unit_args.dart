@@ -58,25 +58,16 @@ class UnitArgs {
   /// [unitId] The ID value for the new unit.
   /// [unitKind] Reference to the UnitKind this Unit belongs to. Immutable once set.
   UnitArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<UnitMaintenance>? maintenance,
-    pulumi.Output<String>? managementMode,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tenant,
-    required pulumi.Output<String> unitId,
-    pulumi.Output<String>? unitKind,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      maintenance = pulumi.Input.asOptionalInput<UnitMaintenance>(maintenance),
-      managementMode = pulumi.Input.asOptionalInput<String>(managementMode),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenant = pulumi.Input.asOptionalInput<String>(tenant),
-      unitId = pulumi.Input.asInput<String>(unitId),
-      unitKind = pulumi.Input.asOptionalInput<String>(unitKind);
+    this.annotations,
+    this.labels,
+    required this.location,
+    this.maintenance,
+    this.managementMode,
+    this.project,
+    this.tenant,
+    required this.unitId,
+    this.unitKind,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,15 +85,15 @@ class UnitArgs {
 
   factory UnitArgs.fromMap(Map<String, dynamic> map) {
     return UnitArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      maintenance: map['maintenance'] == null ? null : pulumi.Output.create<UnitMaintenance>(UnitMaintenance.fromMap((map['maintenance'] as Map).cast<String, dynamic>())),
-      managementMode: map['managementMode'] == null ? null : pulumi.Output.create<String>(map['managementMode'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tenant: map['tenant'] == null ? null : pulumi.Output.create<String>(map['tenant'] as String),
-      unitId: pulumi.Output.create<String>(map['unitId'] as String),
-      unitKind: map['unitKind'] == null ? null : pulumi.Output.create<String>(map['unitKind'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      maintenance: map['maintenance'] == null ? null : (UnitMaintenance.fromMap((map['maintenance'] as Map).cast<String, dynamic>())).input(),
+      managementMode: map['managementMode'] == null ? null : (map['managementMode'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      unitId: (map['unitId'] as String).input(),
+      unitKind: map['unitKind'] == null ? null : (map['unitKind'] as String).input(),
     );
   }
 }

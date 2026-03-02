@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The abuse penalty.
 class AbusePenaltyResponse {
   /// The action of AbusePenalty.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The datetime of expiration of the AbusePenalty.
-  final String? expiration;
+  final pulumi.Input<String>? expiration;
   /// The percentage of rate limit.
-  final double? rateLimitPercentage;
+  final pulumi.Input<double>? rateLimitPercentage;
 
   /// Creates a new [AbusePenaltyResponse].
   /// [action] The action of AbusePenalty.
@@ -30,9 +31,9 @@ class AbusePenaltyResponse {
 
   factory AbusePenaltyResponse.fromMap(Map<String, dynamic> map) {
     return AbusePenaltyResponse(
-      action: map['action'] == null ? null : map['action'] as String,
-      expiration: map['expiration'] == null ? null : map['expiration'] as String,
-      rateLimitPercentage: map['rateLimitPercentage'] == null ? null : map['rateLimitPercentage'] as double,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
+      rateLimitPercentage: map['rateLimitPercentage'] == null ? null : (map['rateLimitPercentage'] as double).input(),
     );
   }
 }

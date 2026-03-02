@@ -19,13 +19,10 @@ class CertificateBindingArgs {
   /// [hostnameBindingId] The ID of the Custom Domain/Hostname Binding. Changing this forces a new App Service Certificate Binding to be created.
   /// [sslState] The type of certificate binding. Allowed values are `IpBasedEnabled` or `SniEnabled`. Changing this forces a new App Service Certificate Binding to be created.
   CertificateBindingArgs({
-    required pulumi.Output<String> certificateId,
-    required pulumi.Output<String> hostnameBindingId,
-    required pulumi.Output<String> sslState,
-  }) :
-      certificateId = pulumi.Input.asInput<String>(certificateId),
-      hostnameBindingId = pulumi.Input.asInput<String>(hostnameBindingId),
-      sslState = pulumi.Input.asInput<String>(sslState);
+    required this.certificateId,
+    required this.hostnameBindingId,
+    required this.sslState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class CertificateBindingArgs {
 
   factory CertificateBindingArgs.fromMap(Map<String, dynamic> map) {
     return CertificateBindingArgs(
-      certificateId: pulumi.Output.create<String>(map['certificateId'] as String),
-      hostnameBindingId: pulumi.Output.create<String>(map['hostnameBindingId'] as String),
-      sslState: pulumi.Output.create<String>(map['sslState'] as String),
+      certificateId: (map['certificateId'] as String).input(),
+      hostnameBindingId: (map['hostnameBindingId'] as String).input(),
+      sslState: (map['sslState'] as String).input(),
     );
   }
 }

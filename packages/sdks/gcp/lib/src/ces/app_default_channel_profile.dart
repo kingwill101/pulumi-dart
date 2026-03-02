@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_default_channel_profile_persona_property.dart';
 import 'app_default_channel_profile_web_widget_config.dart';
 
@@ -12,21 +13,21 @@ class AppDefaultChannelProfile {
   /// TWILIO
   /// GOOGLE_TELEPHONY_PLATFORM
   /// CONTACT_CENTER_AS_A_SERVICE
-  final String? channelType;
+  final pulumi.Input<String>? channelType;
   /// Whether to disable user barge-in in the conversation.
   /// - true: User interruptions are disabled while the agent is speaking.
   /// - false: The agent retains automatic control over when the user can interrupt.
-  final bool? disableBargeInControl;
+  final pulumi.Input<bool>? disableBargeInControl;
   /// Whether to disable DTMF (dual-tone multi-frequency).
-  final bool? disableDtmf;
+  final pulumi.Input<bool>? disableDtmf;
   /// Represents the persona property of a channel.
   /// Structure is documented below.
-  final AppDefaultChannelProfilePersonaProperty? personaProperty;
+  final pulumi.Input<AppDefaultChannelProfilePersonaProperty>? personaProperty;
   /// The unique identifier of the channel profile.
-  final String? profileId;
+  final pulumi.Input<String>? profileId;
   /// Message for configuration for the web widget.
   /// Structure is documented below.
-  final AppDefaultChannelProfileWebWidgetConfig? webWidgetConfig;
+  final pulumi.Input<AppDefaultChannelProfileWebWidgetConfig>? webWidgetConfig;
 
   /// Creates a new [AppDefaultChannelProfile].
   /// [channelType] The type of the channel profile.
@@ -49,20 +50,20 @@ class AppDefaultChannelProfile {
       'channelType': ?channelType,
       'disableBargeInControl': ?disableBargeInControl,
       'disableDtmf': ?disableDtmf,
-      'personaProperty': ?personaProperty == null ? null : personaProperty!.toMap(),
+      'personaProperty': ?pulumi.Input.mapOptionalInputValue<AppDefaultChannelProfilePersonaProperty, Map<String, dynamic>>(personaProperty, (value) => value.toMap()),
       'profileId': ?profileId,
-      'webWidgetConfig': ?webWidgetConfig == null ? null : webWidgetConfig!.toMap(),
+      'webWidgetConfig': ?pulumi.Input.mapOptionalInputValue<AppDefaultChannelProfileWebWidgetConfig, Map<String, dynamic>>(webWidgetConfig, (value) => value.toMap()),
     };
   }
 
   factory AppDefaultChannelProfile.fromMap(Map<String, dynamic> map) {
     return AppDefaultChannelProfile(
-      channelType: map['channelType'] == null ? null : map['channelType'] as String,
-      disableBargeInControl: map['disableBargeInControl'] == null ? null : map['disableBargeInControl'] as bool,
-      disableDtmf: map['disableDtmf'] == null ? null : map['disableDtmf'] as bool,
-      personaProperty: map['personaProperty'] == null ? null : AppDefaultChannelProfilePersonaProperty.fromMap((map['personaProperty'] as Map).cast<String, dynamic>()),
-      profileId: map['profileId'] == null ? null : map['profileId'] as String,
-      webWidgetConfig: map['webWidgetConfig'] == null ? null : AppDefaultChannelProfileWebWidgetConfig.fromMap((map['webWidgetConfig'] as Map).cast<String, dynamic>()),
+      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
+      disableBargeInControl: map['disableBargeInControl'] == null ? null : (map['disableBargeInControl'] as bool).input(),
+      disableDtmf: map['disableDtmf'] == null ? null : (map['disableDtmf'] as bool).input(),
+      personaProperty: map['personaProperty'] == null ? null : (AppDefaultChannelProfilePersonaProperty.fromMap((map['personaProperty'] as Map).cast<String, dynamic>())).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      webWidgetConfig: map['webWidgetConfig'] == null ? null : (AppDefaultChannelProfileWebWidgetConfig.fromMap((map['webWidgetConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

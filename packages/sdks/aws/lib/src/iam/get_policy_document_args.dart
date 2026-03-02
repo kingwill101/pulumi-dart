@@ -30,21 +30,14 @@ class GetPolicyDocumentArgs {
   /// [statements] Configuration block for a policy statement. Detailed below.
   /// [version] IAM policy document version. Valid values are `2008-10-17` and `2012-10-17`. Defaults to `2012-10-17`. For more information, see the [AWS IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_version.html).
   GetPolicyDocumentArgs({
-    pulumi.Output<String>? overrideJson,
-    pulumi.Output<List<String>>? overridePolicyDocuments,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? sourceJson,
-    pulumi.Output<List<String>>? sourcePolicyDocuments,
-    pulumi.Output<List<GetPolicyDocumentStatement>>? statements,
-    pulumi.Output<String>? version,
-  }) :
-      overrideJson = pulumi.Input.asOptionalInput<String>(overrideJson),
-      overridePolicyDocuments = pulumi.Input.asOptionalInput<List<String>>(overridePolicyDocuments),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      sourceJson = pulumi.Input.asOptionalInput<String>(sourceJson),
-      sourcePolicyDocuments = pulumi.Input.asOptionalInput<List<String>>(sourcePolicyDocuments),
-      statements = pulumi.Input.asOptionalInput<List<GetPolicyDocumentStatement>>(statements),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.overrideJson,
+    this.overridePolicyDocuments,
+    this.policyId,
+    this.sourceJson,
+    this.sourcePolicyDocuments,
+    this.statements,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class GetPolicyDocumentArgs {
 
   factory GetPolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentArgs(
-      overrideJson: map['overrideJson'] == null ? null : pulumi.Output.create<String>(map['overrideJson'] as String),
-      overridePolicyDocuments: map['overridePolicyDocuments'] == null ? null : pulumi.Output.create<List<String>>((map['overridePolicyDocuments'] as List).cast<String>()),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      sourceJson: map['sourceJson'] == null ? null : pulumi.Output.create<String>(map['sourceJson'] as String),
-      sourcePolicyDocuments: map['sourcePolicyDocuments'] == null ? null : pulumi.Output.create<List<String>>((map['sourcePolicyDocuments'] as List).cast<String>()),
-      statements: map['statements'] == null ? null : pulumi.Output.create<List<GetPolicyDocumentStatement>>(pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      overrideJson: map['overrideJson'] == null ? null : (map['overrideJson'] as String).input(),
+      overridePolicyDocuments: map['overridePolicyDocuments'] == null ? null : ((map['overridePolicyDocuments'] as List).cast<String>()).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      sourceJson: map['sourceJson'] == null ? null : (map['sourceJson'] as String).input(),
+      sourcePolicyDocuments: map['sourcePolicyDocuments'] == null ? null : ((map['sourcePolicyDocuments'] as List).cast<String>()).input(),
+      statements: map['statements'] == null ? null : (pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

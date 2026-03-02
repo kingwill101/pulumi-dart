@@ -31,21 +31,14 @@ class ServiceProjectAttachmentState {
   /// [state] ServiceProjectAttachment state.
   /// [uid] Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`.
   ServiceProjectAttachmentState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceProject,
-    pulumi.Output<String>? serviceProjectAttachmentId,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? uid,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceProject = pulumi.Input.asOptionalInput<String>(serviceProject),
-      serviceProjectAttachmentId = pulumi.Input.asOptionalInput<String>(serviceProjectAttachmentId),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      uid = pulumi.Input.asOptionalInput<String>(uid);
+    this.createTime,
+    this.name,
+    this.project,
+    this.serviceProject,
+    this.serviceProjectAttachmentId,
+    this.state,
+    this.uid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ServiceProjectAttachmentState {
 
   factory ServiceProjectAttachmentState.fromMap(Map<String, dynamic> map) {
     return ServiceProjectAttachmentState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceProject: map['serviceProject'] == null ? null : pulumi.Output.create<String>(map['serviceProject'] as String),
-      serviceProjectAttachmentId: map['serviceProjectAttachmentId'] == null ? null : pulumi.Output.create<String>(map['serviceProjectAttachmentId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject'] as String).input(),
+      serviceProjectAttachmentId: map['serviceProjectAttachmentId'] == null ? null : (map['serviceProjectAttachmentId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

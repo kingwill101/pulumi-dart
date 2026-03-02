@@ -16,11 +16,9 @@ class NetworkSecurityPerimeterProfileArgs {
   /// [name] The name which should be used for this Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Profile to be created.
   /// [networkSecurityPerimeterId] The ID of the Network Security Perimeter within this Profile is created. Changing this forces a new Network Security Perimeter Profile to be created.
   NetworkSecurityPerimeterProfileArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkSecurityPerimeterId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkSecurityPerimeterId = pulumi.Input.asInput<String>(networkSecurityPerimeterId);
+    this.name,
+    required this.networkSecurityPerimeterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class NetworkSecurityPerimeterProfileArgs {
 
   factory NetworkSecurityPerimeterProfileArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterProfileArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkSecurityPerimeterId: pulumi.Output.create<String>(map['networkSecurityPerimeterId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSecurityPerimeterId: (map['networkSecurityPerimeterId'] as String).input(),
     );
   }
 }

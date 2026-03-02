@@ -73,27 +73,17 @@ class TopicArgs {
   /// [schemaSettings] Settings for validating messages published against a schema.
   /// [tags] Input only. Resource manager tags to be bound to the topic. Tag keys and
   TopicArgs({
-    pulumi.Output<TopicIngestionDataSourceSettings>? ingestionDataSourceSettings,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? messageRetentionDuration,
-    pulumi.Output<TopicMessageStoragePolicy>? messageStoragePolicy,
-    pulumi.Output<List<TopicMessageTransform>>? messageTransforms,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<TopicSchemaSettings>? schemaSettings,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ingestionDataSourceSettings = pulumi.Input.asOptionalInput<TopicIngestionDataSourceSettings>(ingestionDataSourceSettings),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      messageRetentionDuration = pulumi.Input.asOptionalInput<String>(messageRetentionDuration),
-      messageStoragePolicy = pulumi.Input.asOptionalInput<TopicMessageStoragePolicy>(messageStoragePolicy),
-      messageTransforms = pulumi.Input.asOptionalInput<List<TopicMessageTransform>>(messageTransforms),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaSettings = pulumi.Input.asOptionalInput<TopicSchemaSettings>(schemaSettings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.ingestionDataSourceSettings,
+    this.kmsKeyName,
+    this.labels,
+    this.messageRetentionDuration,
+    this.messageStoragePolicy,
+    this.messageTransforms,
+    this.name,
+    this.project,
+    this.schemaSettings,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,16 +102,16 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      ingestionDataSourceSettings: map['ingestionDataSourceSettings'] == null ? null : pulumi.Output.create<TopicIngestionDataSourceSettings>(TopicIngestionDataSourceSettings.fromMap((map['ingestionDataSourceSettings'] as Map).cast<String, dynamic>())),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      messageRetentionDuration: map['messageRetentionDuration'] == null ? null : pulumi.Output.create<String>(map['messageRetentionDuration'] as String),
-      messageStoragePolicy: map['messageStoragePolicy'] == null ? null : pulumi.Output.create<TopicMessageStoragePolicy>(TopicMessageStoragePolicy.fromMap((map['messageStoragePolicy'] as Map).cast<String, dynamic>())),
-      messageTransforms: map['messageTransforms'] == null ? null : pulumi.Output.create<List<TopicMessageTransform>>(pulumi.Input.decodeList<TopicMessageTransform>(map['messageTransforms'], (value) => TopicMessageTransform.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaSettings: map['schemaSettings'] == null ? null : pulumi.Output.create<TopicSchemaSettings>(TopicSchemaSettings.fromMap((map['schemaSettings'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ingestionDataSourceSettings: map['ingestionDataSourceSettings'] == null ? null : (TopicIngestionDataSourceSettings.fromMap((map['ingestionDataSourceSettings'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      messageRetentionDuration: map['messageRetentionDuration'] == null ? null : (map['messageRetentionDuration'] as String).input(),
+      messageStoragePolicy: map['messageStoragePolicy'] == null ? null : (TopicMessageStoragePolicy.fromMap((map['messageStoragePolicy'] as Map).cast<String, dynamic>())).input(),
+      messageTransforms: map['messageTransforms'] == null ? null : (pulumi.Input.decodeList<TopicMessageTransform>(map['messageTransforms'], (value) => TopicMessageTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaSettings: map['schemaSettings'] == null ? null : (TopicSchemaSettings.fromMap((map['schemaSettings'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

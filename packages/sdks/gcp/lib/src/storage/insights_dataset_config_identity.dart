@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsDatasetConfigIdentity {
   /// (Output)
   /// Name of the identity.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Type of identity to use for the DatasetConfig.
   /// Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [InsightsDatasetConfigIdentity].
   /// [name] (Output)
@@ -26,8 +27,8 @@ class InsightsDatasetConfigIdentity {
 
   factory InsightsDatasetConfigIdentity.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigIdentity(
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

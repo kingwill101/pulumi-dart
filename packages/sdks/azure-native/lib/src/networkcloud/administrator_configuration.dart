@@ -5,9 +5,9 @@ import 'ssh_public_key.dart';
 
 class AdministratorConfiguration {
   /// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
-  final String? adminUsername;
+  final pulumi.Input<String>? adminUsername;
   /// The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
-  final List<SshPublicKey>? sshPublicKeys;
+  final pulumi.Input<List<SshPublicKey>>? sshPublicKeys;
 
   /// Creates a new [AdministratorConfiguration].
   /// [adminUsername] The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
@@ -20,14 +20,14 @@ class AdministratorConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adminUsername': ?adminUsername,
-      'sshPublicKeys': ?sshPublicKeys == null ? null : pulumi.Input.encodeList<SshPublicKey, Map<String, dynamic>>(sshPublicKeys!, (value) => value.toMap()),
+      'sshPublicKeys': ?pulumi.Input.mapOptionalInputValue<List<SshPublicKey>, List<Map<String, dynamic>>>(sshPublicKeys, (value) => pulumi.Input.encodeList<SshPublicKey, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AdministratorConfiguration.fromMap(Map<String, dynamic> map) {
     return AdministratorConfiguration(
-      adminUsername: map['adminUsername'] == null ? null : map['adminUsername'] as String,
-      sshPublicKeys: map['sshPublicKeys'] == null ? null : pulumi.Input.decodeList<SshPublicKey>(map['sshPublicKeys'], (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>())),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
+      sshPublicKeys: map['sshPublicKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['sshPublicKeys'], (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

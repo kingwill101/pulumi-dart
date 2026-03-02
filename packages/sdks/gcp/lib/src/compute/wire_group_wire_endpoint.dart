@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WireGroupWireEndpoint {
   /// (Output)
-  final String? interconnect;
+  final pulumi.Input<String>? interconnect;
   /// (Output)
-  final int? vlanTag;
+  final pulumi.Input<int>? vlanTag;
 
   /// Creates a new [WireGroupWireEndpoint].
   /// [interconnect] (Output)
@@ -24,8 +25,8 @@ class WireGroupWireEndpoint {
 
   factory WireGroupWireEndpoint.fromMap(Map<String, dynamic> map) {
     return WireGroupWireEndpoint(
-      interconnect: map['interconnect'] == null ? null : map['interconnect'] as String,
-      vlanTag: map['vlanTag'] == null ? null : map['vlanTag'] as int,
+      interconnect: map['interconnect'] == null ? null : (map['interconnect'] as String).input(),
+      vlanTag: map['vlanTag'] == null ? null : (map['vlanTag'] as int).input(),
     );
   }
 }

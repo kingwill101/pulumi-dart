@@ -5,19 +5,19 @@ import 'orchestrated_virtual_machine_scale_set_network_interface_ip_configuratio
 
 class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress {
   /// The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine. Valid values must be between `1` and `26` characters long, start with a lower case letter, end with a lower case letter or number and contains only `a-z`, `0-9` and `hyphens`.
-  final String? domainNameLabel;
+  final pulumi.Input<String>? domainNameLabel;
   /// The Idle Timeout in Minutes for the Public IP Address. Possible values are in the range `4` to `32`.
-  final int? idleTimeoutInMinutes;
+  final pulumi.Input<int>? idleTimeoutInMinutes;
   /// One or more `ip_tag` blocks as defined above. Changing this forces a new resource to be created.
-  final List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>? ipTags;
+  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>>? ipTags;
   /// The Name of the Public IP Address Configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
-  final String? publicIpPrefixId;
+  final pulumi.Input<String>? publicIpPrefixId;
   /// Specifies what Public IP Address SKU the Public IP Address should be provisioned as. Possible vaules include `Basic_Regional`, `Basic_Global`, `Standard_Regional` or `Standard_Global`. For more information about Public IP Address SKU's and their capabilities, please see the [product documentation](https://docs.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#sku). Changing this forces a new resource to be created.
-  final String? skuName;
+  final pulumi.Input<String>? skuName;
   /// The Internet Protocol Version which should be used for this public IP address. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`. Changing this forces a new resource to be created.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress].
   /// [domainNameLabel] The Prefix which should be used for the Domain Name Label for each Virtual Machine Instance. Azure concatenates the Domain Name Label and Virtual Machine Index to create a unique Domain Name Label for each Virtual Machine. Valid values must be between `1` and `26` characters long, start with a lower case letter, end with a lower case letter or number and contains only `a-z`, `0-9` and `hyphens`.
@@ -41,7 +41,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpA
     return <String, dynamic>{
       'domainNameLabel': ?domainNameLabel,
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
-      'ipTags': ?ipTags == null ? null : pulumi.Input.encodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag, Map<String, dynamic>>(ipTags!, (value) => value.toMap()),
+      'ipTags': ?pulumi.Input.mapOptionalInputValue<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'publicIpPrefixId': ?publicIpPrefixId,
       'skuName': ?skuName,
@@ -51,13 +51,13 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpA
 
   factory OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress(
-      domainNameLabel: map['domainNameLabel'] == null ? null : map['domainNameLabel'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      ipTags: map['ipTags'] == null ? null : pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags'], (value) => OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : map['publicIpPrefixId'] as String,
-      skuName: map['skuName'] == null ? null : map['skuName'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      domainNameLabel: map['domainNameLabel'] == null ? null : (map['domainNameLabel'] as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags'], (value) => OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

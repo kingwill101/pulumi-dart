@@ -19,15 +19,11 @@ class ApiKeyState {
   /// [scope] Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. Changing this forces a new resource to be created. **NOTE:** WAFv2 API Keys deployed for `CLOUDFRONT` must be created within the `us-east-1` region.
   /// [tokenDomains] The domains that you want to be able to use the API key with, for example `example.com`. You can specify up to 5 domains. Changing this forces a new resource to be created.
   ApiKeyState({
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? scope,
-    pulumi.Output<List<String>>? tokenDomains,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      tokenDomains = pulumi.Input.asOptionalInput<List<String>>(tokenDomains);
+    this.apiKey,
+    this.region,
+    this.scope,
+    this.tokenDomains,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      tokenDomains: map['tokenDomains'] == null ? null : pulumi.Output.create<List<String>>((map['tokenDomains'] as List).cast<String>()),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tokenDomains: map['tokenDomains'] == null ? null : ((map['tokenDomains'] as List).cast<String>()).input(),
     );
   }
 }

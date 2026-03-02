@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The sub resource.
 class SubResourceResponse {
   /// The identifier of the referenced resource.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [SubResourceResponse].
   /// [id] The identifier of the referenced resource.
@@ -20,7 +21,7 @@ class SubResourceResponse {
 
   factory SubResourceResponse.fromMap(Map<String, dynamic> map) {
     return SubResourceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class ApiSourceArgs {
   /// [targetLifecycleStage] The target lifecycle stage.
   /// [workspaceName] The name of the workspace.
   ApiSourceArgs({
-    pulumi.Output<String>? apiSourceName,
-    pulumi.Output<AzureApiManagementSource>? azureApiManagementSource,
-    pulumi.Output<String>? importSpecification,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? targetEnvironmentId,
-    pulumi.Output<String>? targetLifecycleStage,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      apiSourceName = pulumi.Input.asOptionalInput<String>(apiSourceName),
-      azureApiManagementSource = pulumi.Input.asOptionalInput<AzureApiManagementSource>(azureApiManagementSource),
-      importSpecification = pulumi.Input.asOptionalInput<String>(importSpecification),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      targetEnvironmentId = pulumi.Input.asOptionalInput<String>(targetEnvironmentId),
-      targetLifecycleStage = pulumi.Input.asOptionalInput<String>(targetLifecycleStage),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.apiSourceName,
+    this.azureApiManagementSource,
+    this.importSpecification,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.targetEnvironmentId,
+    this.targetLifecycleStage,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ApiSourceArgs {
 
   factory ApiSourceArgs.fromMap(Map<String, dynamic> map) {
     return ApiSourceArgs(
-      apiSourceName: map['apiSourceName'] == null ? null : pulumi.Output.create<String>(map['apiSourceName'] as String),
-      azureApiManagementSource: map['azureApiManagementSource'] == null ? null : pulumi.Output.create<AzureApiManagementSource>(AzureApiManagementSource.fromMap((map['azureApiManagementSource'] as Map).cast<String, dynamic>())),
-      importSpecification: map['importSpecification'] == null ? null : pulumi.Output.create<String>(map['importSpecification'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      targetEnvironmentId: map['targetEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['targetEnvironmentId'] as String),
-      targetLifecycleStage: map['targetLifecycleStage'] == null ? null : pulumi.Output.create<String>(map['targetLifecycleStage'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      apiSourceName: map['apiSourceName'] == null ? null : (map['apiSourceName'] as String).input(),
+      azureApiManagementSource: map['azureApiManagementSource'] == null ? null : (AzureApiManagementSource.fromMap((map['azureApiManagementSource'] as Map).cast<String, dynamic>())).input(),
+      importSpecification: map['importSpecification'] == null ? null : (map['importSpecification'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      targetEnvironmentId: map['targetEnvironmentId'] == null ? null : (map['targetEnvironmentId'] as String).input(),
+      targetLifecycleStage: map['targetLifecycleStage'] == null ? null : (map['targetLifecycleStage'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

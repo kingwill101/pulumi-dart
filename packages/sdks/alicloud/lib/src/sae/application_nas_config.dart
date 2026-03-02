@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationNasConfig {
   /// The domain name of the mount target.
-  final String? mountDomain;
+  final pulumi.Input<String>? mountDomain;
   /// The mount path of the container.
-  final String? mountPath;
+  final pulumi.Input<String>? mountPath;
   /// The ID of the NAS file system.
-  final String? nasId;
+  final pulumi.Input<String>? nasId;
   /// The directory in the NAS file system.
-  final String? nasPath;
+  final pulumi.Input<String>? nasPath;
   /// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [ApplicationNasConfig].
   /// [mountDomain] The domain name of the mount target.
@@ -39,11 +40,11 @@ class ApplicationNasConfig {
 
   factory ApplicationNasConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationNasConfig(
-      mountDomain: map['mountDomain'] == null ? null : map['mountDomain'] as String,
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      nasId: map['nasId'] == null ? null : map['nasId'] as String,
-      nasPath: map['nasPath'] == null ? null : map['nasPath'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      mountDomain: map['mountDomain'] == null ? null : (map['mountDomain'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      nasId: map['nasId'] == null ? null : (map['nasId'] as String).input(),
+      nasPath: map['nasPath'] == null ? null : (map['nasPath'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
     );
   }
 }

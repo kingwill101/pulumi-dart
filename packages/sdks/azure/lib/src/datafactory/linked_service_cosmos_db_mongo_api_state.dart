@@ -39,27 +39,17 @@ class LinkedServiceCosmosDbMongoApiState {
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [serverVersionIs32OrHigher] Whether API server version is 3.2 or higher. Defaults to `false`.
   LinkedServiceCosmosDbMongoApiState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<bool>? serverVersionIs32OrHigher,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      serverVersionIs32OrHigher = pulumi.Input.asOptionalInput<bool>(serverVersionIs32OrHigher);
+    this.additionalProperties,
+    this.annotations,
+    this.connectionString,
+    this.dataFactoryId,
+    this.database,
+    this.description,
+    this.integrationRuntimeName,
+    this.name,
+    this.parameters,
+    this.serverVersionIs32OrHigher,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class LinkedServiceCosmosDbMongoApiState {
 
   factory LinkedServiceCosmosDbMongoApiState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceCosmosDbMongoApiState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      serverVersionIs32OrHigher: map['serverVersionIs32OrHigher'] == null ? null : pulumi.Output.create<bool>(map['serverVersionIs32OrHigher'] as bool),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      serverVersionIs32OrHigher: map['serverVersionIs32OrHigher'] == null ? null : (map['serverVersionIs32OrHigher'] as bool).input(),
     );
   }
 }

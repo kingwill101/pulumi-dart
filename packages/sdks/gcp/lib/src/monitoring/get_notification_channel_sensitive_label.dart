@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNotificationChannelSensitiveLabel {
   /// An authorization token for a notification channel. Channel types that support this field include: slack
-  final String authToken;
+  final pulumi.Input<String> authToken;
   /// An password for a notification channel. Channel types that support this field include: webhook_basicauth
-  final String password;
+  final pulumi.Input<String> password;
   /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
-  final String serviceKey;
+  final pulumi.Input<String> serviceKey;
 
   /// Creates a new [GetNotificationChannelSensitiveLabel].
   /// [authToken] An authorization token for a notification channel. Channel types that support this field include: slack
@@ -29,9 +30,9 @@ class GetNotificationChannelSensitiveLabel {
 
   factory GetNotificationChannelSensitiveLabel.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelSensitiveLabel(
-      authToken: map['authToken'] as String,
-      password: map['password'] as String,
-      serviceKey: map['serviceKey'] as String,
+      authToken: (map['authToken'] as String).input(),
+      password: (map['password'] as String).input(),
+      serviceKey: (map['serviceKey'] as String).input(),
     );
   }
 }

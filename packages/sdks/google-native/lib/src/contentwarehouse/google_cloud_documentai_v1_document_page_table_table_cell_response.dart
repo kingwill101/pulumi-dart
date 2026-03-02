@@ -7,13 +7,13 @@ import 'google_cloud_documentai_v1_document_page_layout_response.dart';
 /// A cell representation inside the table.
 class GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse {
   /// How many columns this cell spans.
-  final int colSpan;
+  final pulumi.Input<int> colSpan;
   /// A list of detected languages together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse> detectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>> detectedLanguages;
   /// Layout for TableCell.
-  final GoogleCloudDocumentaiV1DocumentPageLayoutResponse layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayoutResponse> layout;
   /// How many rows this cell spans.
-  final int rowSpan;
+  final pulumi.Input<int> rowSpan;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse].
   /// [colSpan] How many columns this cell spans.
@@ -30,18 +30,18 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'colSpan': colSpan,
-      'detectedLanguages': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse, Map<String, dynamic>>(detectedLanguages, (value) => value.toMap()),
-      'layout': layout.toMap(),
+      'detectedLanguages': pulumi.Input.mapInputValue<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>, List<Map<String, dynamic>>>(detectedLanguages, (value) => pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'layout': pulumi.Input.mapInputValue<GoogleCloudDocumentaiV1DocumentPageLayoutResponse, Map<String, dynamic>>(layout, (value) => value.toMap()),
       'rowSpan': rowSpan,
     };
   }
 
   factory GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse(
-      colSpan: map['colSpan'] as int,
-      detectedLanguages: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout'] as Map).cast<String, dynamic>()),
-      rowSpan: map['rowSpan'] as int,
+      colSpan: (map['colSpan'] as int).input(),
+      detectedLanguages: (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      layout: (GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout'] as Map).cast<String, dynamic>())).input(),
+      rowSpan: (map['rowSpan'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcAttachmentFilter {
   /// Name of the filter.
-  final String name;
+  final pulumi.Input<String> name;
   /// List of one or more values for the filter.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetVpcAttachmentFilter].
   /// [name] Name of the filter.
@@ -24,8 +25,8 @@ class GetVpcAttachmentFilter {
 
   factory GetVpcAttachmentFilter.fromMap(Map<String, dynamic> map) {
     return GetVpcAttachmentFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class LeaseCandidateCoordinationK8sIoV1beta1Args {
   /// [metadata] More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   LeaseCandidateCoordinationK8sIoV1beta1Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<LeaseCandidateSpecCoordinationK8sIoV1beta1>? spec,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      spec = pulumi.Input.asOptionalInput<LeaseCandidateSpecCoordinationK8sIoV1beta1>(spec);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class LeaseCandidateCoordinationK8sIoV1beta1Args {
 
   factory LeaseCandidateCoordinationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return LeaseCandidateCoordinationK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      spec: map['spec'] == null ? null : pulumi.Output.create<LeaseCandidateSpecCoordinationK8sIoV1beta1>(LeaseCandidateSpecCoordinationK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (LeaseCandidateSpecCoordinationK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

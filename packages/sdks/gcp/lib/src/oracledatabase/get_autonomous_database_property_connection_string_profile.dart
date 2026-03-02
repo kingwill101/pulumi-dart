@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAutonomousDatabasePropertyConnectionStringProfile {
   /// The current consumer group being used by the connection.
@@ -10,45 +11,45 @@ class GetAutonomousDatabasePropertyConnectionStringProfile {
   /// LOW
   /// TP
   /// TPURGENT
-  final String consumerGroup;
+  final pulumi.Input<String> consumerGroup;
   /// The display name for the database connection.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The host name format being currently used in connection string.
   /// Possible values:
   /// HOST_FORMAT_UNSPECIFIED
   /// FQDN
   /// IP
-  final String hostFormat;
+  final pulumi.Input<String> hostFormat;
   /// This field indicates if the connection string is regional and is only
   /// applicable for cross-region Data Guard.
-  final bool isRegional;
+  final pulumi.Input<bool> isRegional;
   /// The protocol being used by the connection.
   /// Possible values:
   /// PROTOCOL_UNSPECIFIED
   /// TCP
   /// TCPS
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The current session mode of the connection.
   /// Possible values:
   /// SESSION_MODE_UNSPECIFIED
   /// DIRECT
   /// INDIRECT
-  final String sessionMode;
+  final pulumi.Input<String> sessionMode;
   /// The syntax of the connection string.
   /// Possible values:
   /// SYNTAX_FORMAT_UNSPECIFIED
   /// LONG
   /// EZCONNECT
   /// EZCONNECTPLUS
-  final String syntaxFormat;
+  final pulumi.Input<String> syntaxFormat;
   /// This field indicates the TLS authentication type of the connection.
   /// Possible values:
   /// TLS_AUTHENTICATION_UNSPECIFIED
   /// SERVER
   /// MUTUAL
-  final String tlsAuthentication;
+  final pulumi.Input<String> tlsAuthentication;
   /// The value of the connection string.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetAutonomousDatabasePropertyConnectionStringProfile].
   /// [consumerGroup] The current consumer group being used by the connection.
@@ -88,15 +89,15 @@ class GetAutonomousDatabasePropertyConnectionStringProfile {
 
   factory GetAutonomousDatabasePropertyConnectionStringProfile.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasePropertyConnectionStringProfile(
-      consumerGroup: map['consumerGroup'] as String,
-      displayName: map['displayName'] as String,
-      hostFormat: map['hostFormat'] as String,
-      isRegional: map['isRegional'] as bool,
-      protocol: map['protocol'] as String,
-      sessionMode: map['sessionMode'] as String,
-      syntaxFormat: map['syntaxFormat'] as String,
-      tlsAuthentication: map['tlsAuthentication'] as String,
-      value: map['value'] as String,
+      consumerGroup: (map['consumerGroup'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      hostFormat: (map['hostFormat'] as String).input(),
+      isRegional: (map['isRegional'] as bool).input(),
+      protocol: (map['protocol'] as String).input(),
+      sessionMode: (map['sessionMode'] as String).input(),
+      syntaxFormat: (map['syntaxFormat'] as String).input(),
+      tlsAuthentication: (map['tlsAuthentication'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

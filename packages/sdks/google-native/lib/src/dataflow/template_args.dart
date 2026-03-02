@@ -28,19 +28,13 @@ class TemplateArgs {
   /// [parameters] The runtime parameters to pass to the job.
   /// [project] Optional.
   TemplateArgs({
-    pulumi.Output<RuntimeEnvironment>? environment,
-    required pulumi.Output<String> gcsPath,
-    required pulumi.Output<String> jobName,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? project,
-  }) :
-      environment = pulumi.Input.asOptionalInput<RuntimeEnvironment>(environment),
-      gcsPath = pulumi.Input.asInput<String>(gcsPath),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.environment,
+    required this.gcsPath,
+    required this.jobName,
+    this.location,
+    this.parameters,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      environment: map['environment'] == null ? null : pulumi.Output.create<RuntimeEnvironment>(RuntimeEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>())),
-      gcsPath: pulumi.Output.create<String>(map['gcsPath'] as String),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      environment: map['environment'] == null ? null : (RuntimeEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      gcsPath: (map['gcsPath'] as String).input(),
+      jobName: (map['jobName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

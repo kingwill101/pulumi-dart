@@ -6,13 +6,13 @@ import 'private_endpoint_connection_data_model_response.dart';
 /// Properties that define a Azure Arc PrivateLinkScope resource.
 class HybridComputePrivateLinkScopePropertiesResponse {
   /// The collection of associated Private Endpoint Connections.
-  final List<PrivateEndpointConnectionDataModelResponse> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionDataModelResponse>> privateEndpointConnections;
   /// The Guid id of the private link scope.
-  final String privateLinkScopeId;
+  final pulumi.Input<String> privateLinkScopeId;
   /// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
 
   /// Creates a new [HybridComputePrivateLinkScopePropertiesResponse].
   /// [privateEndpointConnections] The collection of associated Private Endpoint Connections.
@@ -28,7 +28,7 @@ class HybridComputePrivateLinkScopePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionDataModelResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionDataModelResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionDataModelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'privateLinkScopeId': privateLinkScopeId,
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
@@ -37,10 +37,10 @@ class HybridComputePrivateLinkScopePropertiesResponse {
 
   factory HybridComputePrivateLinkScopePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HybridComputePrivateLinkScopePropertiesResponse(
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionDataModelResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionDataModelResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateLinkScopeId: map['privateLinkScopeId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionDataModelResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionDataModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateLinkScopeId: (map['privateLinkScopeId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
     );
   }
 }

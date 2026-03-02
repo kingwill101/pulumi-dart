@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Orc write settings.
 class OrcWriteSettings {
   /// Specifies the file name pattern <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
-  final dynamic fileNamePrefix;
+  final pulumi.Input<dynamic>? fileNamePrefix;
   /// Limit the written file's row count to be smaller than or equal to the specified count. Type: integer (or Expression with resultType integer).
-  final dynamic maxRowsPerFile;
+  final pulumi.Input<dynamic>? maxRowsPerFile;
   /// The write setting type.
   /// Expected value is 'OrcWriteSettings'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OrcWriteSettings].
   /// [fileNamePrefix] Specifies the file name pattern <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
@@ -31,9 +32,9 @@ class OrcWriteSettings {
 
   factory OrcWriteSettings.fromMap(Map<String, dynamic> map) {
     return OrcWriteSettings(
-      fileNamePrefix: map['fileNamePrefix'] == null ? null : map['fileNamePrefix'],
-      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : map['maxRowsPerFile'],
-      type: map['type'] as String,
+      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']).input(),
+      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

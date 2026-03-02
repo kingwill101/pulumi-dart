@@ -52,23 +52,15 @@ class EcsImageComponentArgs {
   /// [systemType] The operating system supported by the component.
   /// [tags] List of label key-value pairs.
   EcsImageComponentArgs({
-    pulumi.Output<String>? componentType,
-    pulumi.Output<String>? componentVersion,
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? imageComponentName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? systemType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      componentType = pulumi.Input.asOptionalInput<String>(componentType),
-      componentVersion = pulumi.Input.asOptionalInput<String>(componentVersion),
-      content = pulumi.Input.asInput<String>(content),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      imageComponentName = pulumi.Input.asOptionalInput<String>(imageComponentName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      systemType = pulumi.Input.asOptionalInput<String>(systemType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.componentType,
+    this.componentVersion,
+    required this.content,
+    this.description,
+    this.imageComponentName,
+    this.resourceGroupId,
+    this.systemType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,14 +77,14 @@ class EcsImageComponentArgs {
 
   factory EcsImageComponentArgs.fromMap(Map<String, dynamic> map) {
     return EcsImageComponentArgs(
-      componentType: map['componentType'] == null ? null : pulumi.Output.create<String>(map['componentType'] as String),
-      componentVersion: map['componentVersion'] == null ? null : pulumi.Output.create<String>(map['componentVersion'] as String),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      imageComponentName: map['imageComponentName'] == null ? null : pulumi.Output.create<String>(map['imageComponentName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      systemType: map['systemType'] == null ? null : pulumi.Output.create<String>(map['systemType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
+      componentVersion: map['componentVersion'] == null ? null : (map['componentVersion'] as String).input(),
+      content: (map['content'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      imageComponentName: map['imageComponentName'] == null ? null : (map['imageComponentName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      systemType: map['systemType'] == null ? null : (map['systemType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetBucketIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [userProject] Optional.
   GetBucketIamPolicyArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    this.optionsRequestedPolicyVersion,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBucketIamPolicyArgs {
 
   factory GetBucketIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketIamPolicyArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

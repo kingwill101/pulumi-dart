@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointConfigurationDataCaptureConfigCaptureOption {
   /// Data to be captured. Should be one of `Input`, `Output` or `InputAndOutput`.
-  final String captureMode;
+  final pulumi.Input<String> captureMode;
 
   /// Creates a new [EndpointConfigurationDataCaptureConfigCaptureOption].
   /// [captureMode] Data to be captured. Should be one of `Input`, `Output` or `InputAndOutput`.
@@ -19,7 +20,7 @@ class EndpointConfigurationDataCaptureConfigCaptureOption {
 
   factory EndpointConfigurationDataCaptureConfigCaptureOption.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationDataCaptureConfigCaptureOption(
-      captureMode: map['captureMode'] as String,
+      captureMode: (map['captureMode'] as String).input(),
     );
   }
 }

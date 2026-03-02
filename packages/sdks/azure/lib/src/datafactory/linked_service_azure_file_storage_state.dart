@@ -49,33 +49,20 @@ class LinkedServiceAzureFileStorageState {
   /// [password] The password to log in the server.
   /// [userId] The user ID to log in the server.
   LinkedServiceAzureFileStorageState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileShare,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<LinkedServiceAzureFileStorageKeyVaultPassword>? keyVaultPassword,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? userId,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileShare = pulumi.Input.asOptionalInput<String>(fileShare),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      keyVaultPassword = pulumi.Input.asOptionalInput<LinkedServiceAzureFileStorageKeyVaultPassword>(keyVaultPassword),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.additionalProperties,
+    this.annotations,
+    this.connectionString,
+    this.dataFactoryId,
+    this.description,
+    this.fileShare,
+    this.host,
+    this.integrationRuntimeName,
+    this.keyVaultPassword,
+    this.name,
+    this.parameters,
+    this.password,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class LinkedServiceAzureFileStorageState {
 
   factory LinkedServiceAzureFileStorageState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureFileStorageState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileShare: map['fileShare'] == null ? null : pulumi.Output.create<String>(map['fileShare'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      keyVaultPassword: map['keyVaultPassword'] == null ? null : pulumi.Output.create<LinkedServiceAzureFileStorageKeyVaultPassword>(LinkedServiceAzureFileStorageKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileShare: map['fileShare'] == null ? null : (map['fileShare'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceAzureFileStorageKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
 class IstioIngressGatewayResponse {
   /// Whether to enable the ingress gateway.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Mode of an ingress gateway.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [IstioIngressGatewayResponse].
   /// [enabled] Whether to enable the ingress gateway.
@@ -25,8 +26,8 @@ class IstioIngressGatewayResponse {
 
   factory IstioIngressGatewayResponse.fromMap(Map<String, dynamic> map) {
     return IstioIngressGatewayResponse(
-      enabled: map['enabled'] as bool,
-      mode: map['mode'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

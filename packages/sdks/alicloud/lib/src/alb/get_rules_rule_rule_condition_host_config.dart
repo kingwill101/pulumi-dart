@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesRuleRuleConditionHostConfig {
   /// Add one or more IP addresses or IP address segments.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetRulesRuleRuleConditionHostConfig].
   /// [values] Add one or more IP addresses or IP address segments.
@@ -19,7 +20,7 @@ class GetRulesRuleRuleConditionHostConfig {
 
   factory GetRulesRuleRuleConditionHostConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleConditionHostConfig(
-      values: (map['values'] as List).cast<String>(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

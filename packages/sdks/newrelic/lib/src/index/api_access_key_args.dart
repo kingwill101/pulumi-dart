@@ -31,19 +31,13 @@ class ApiAccessKeyArgs {
   /// [notes] Additional notes about the API access key.
   /// [userId] Required if `key_type` is `USER`. The New Relic user ID for which the API access key will be created.
   ApiAccessKeyArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? ingestType,
-    required pulumi.Output<String> keyType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notes,
-    pulumi.Output<String>? userId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      ingestType = pulumi.Input.asOptionalInput<String>(ingestType),
-      keyType = pulumi.Input.asInput<String>(keyType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.accountId,
+    this.ingestType,
+    required this.keyType,
+    this.name,
+    this.notes,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ApiAccessKeyArgs {
 
   factory ApiAccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiAccessKeyArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      ingestType: map['ingestType'] == null ? null : pulumi.Output.create<String>(map['ingestType'] as String),
-      keyType: pulumi.Output.create<String>(map['keyType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      ingestType: map['ingestType'] == null ? null : (map['ingestType'] as String).input(),
+      keyType: (map['keyType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

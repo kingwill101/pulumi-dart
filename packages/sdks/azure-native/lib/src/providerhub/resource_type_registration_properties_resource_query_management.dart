@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource query management options.
 class ResourceTypeRegistrationPropertiesResourceQueryManagement {
   /// Filter option.
-  final String? filterOption;
+  final pulumi.Input<String>? filterOption;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceQueryManagement].
   /// [filterOption] Filter option.
@@ -20,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceQueryManagement {
 
   factory ResourceTypeRegistrationPropertiesResourceQueryManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceQueryManagement(
-      filterOption: map['filterOption'] == null ? null : map['filterOption'] as String,
+      filterOption: map['filterOption'] == null ? null : (map['filterOption'] as String).input(),
     );
   }
 }

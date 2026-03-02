@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes properties that can identify extensions.
 class ConfigurationExtensionResponse {
   /// Publisher of the extension.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// Type of the extension.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ConfigurationExtensionResponse].
   /// [publisher] Publisher of the extension.
@@ -25,8 +26,8 @@ class ConfigurationExtensionResponse {
 
   factory ConfigurationExtensionResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationExtensionResponse(
-      publisher: map['publisher'] as String,
-      type: map['type'] as String,
+      publisher: (map['publisher'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

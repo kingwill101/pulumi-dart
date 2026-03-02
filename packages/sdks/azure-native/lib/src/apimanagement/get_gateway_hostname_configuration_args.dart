@@ -22,15 +22,11 @@ class GetGatewayHostnameConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetGatewayHostnameConfigurationArgs({
-    required pulumi.Output<String> gatewayId,
-    required pulumi.Output<String> hcId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      hcId = pulumi.Input.asInput<String>(hcId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.gatewayId,
+    required this.hcId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetGatewayHostnameConfigurationArgs {
 
   factory GetGatewayHostnameConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayHostnameConfigurationArgs(
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      hcId: pulumi.Output.create<String>(map['hcId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      gatewayId: (map['gatewayId'] as String).input(),
+      hcId: (map['hcId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

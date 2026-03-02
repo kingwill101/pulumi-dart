@@ -39,25 +39,16 @@ class VCenterArgs {
   /// [tags] Gets or sets the Resource tags.
   /// [vcenterName] Name of the vCenter.
   VCenterArgs({
-    pulumi.Output<VICredential>? credentials,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    required pulumi.Output<String> fqdn,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? port,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vcenterName,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<VICredential>(credentials),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      fqdn = pulumi.Input.asInput<String>(fqdn),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vcenterName = pulumi.Input.asOptionalInput<String>(vcenterName);
+    this.credentials,
+    this.extendedLocation,
+    required this.fqdn,
+    this.kind,
+    this.location,
+    this.port,
+    required this.resourceGroupName,
+    this.tags,
+    this.vcenterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class VCenterArgs {
 
   factory VCenterArgs.fromMap(Map<String, dynamic> map) {
     return VCenterArgs(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<VICredential>(VICredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      fqdn: pulumi.Output.create<String>(map['fqdn'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vcenterName: map['vcenterName'] == null ? null : pulumi.Output.create<String>(map['vcenterName'] as String),
+      credentials: map['credentials'] == null ? null : (VICredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      fqdn: (map['fqdn'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vcenterName: map['vcenterName'] == null ? null : (map['vcenterName'] as String).input(),
     );
   }
 }

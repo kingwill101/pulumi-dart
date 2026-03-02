@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings {
   /// Average bitrate in bits/second.
-  final double? bitrate;
+  final pulumi.Input<double>? bitrate;
   /// Dolby Digital Plus with Dolby Atmos coding mode.
-  final String? codingMode;
+  final pulumi.Input<String>? codingMode;
   /// Sets the dialnorm for the output.
-  final double? dialnorm;
+  final pulumi.Input<double>? dialnorm;
   /// Sets the Dolby dynamic range compression profile.
-  final String? drcLine;
+  final pulumi.Input<String>? drcLine;
   /// Sets the profile for heavy Dolby dynamic range compression.
-  final String? drcRf;
+  final pulumi.Input<String>? drcRf;
   /// Height dimensional trim.
-  final double? heightTrim;
+  final pulumi.Input<double>? heightTrim;
   /// Surround dimensional trim.
-  final double? surroundTrim;
+  final pulumi.Input<double>? surroundTrim;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings].
   /// [bitrate] Average bitrate in bits/second.
@@ -49,13 +50,13 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings(
-      bitrate: map['bitrate'] == null ? null : map['bitrate'] as double,
-      codingMode: map['codingMode'] == null ? null : map['codingMode'] as String,
-      dialnorm: map['dialnorm'] == null ? null : map['dialnorm'] as double,
-      drcLine: map['drcLine'] == null ? null : map['drcLine'] as String,
-      drcRf: map['drcRf'] == null ? null : map['drcRf'] as String,
-      heightTrim: map['heightTrim'] == null ? null : map['heightTrim'] as double,
-      surroundTrim: map['surroundTrim'] == null ? null : map['surroundTrim'] as double,
+      bitrate: map['bitrate'] == null ? null : (map['bitrate'] as double).input(),
+      codingMode: map['codingMode'] == null ? null : (map['codingMode'] as String).input(),
+      dialnorm: map['dialnorm'] == null ? null : (map['dialnorm'] as double).input(),
+      drcLine: map['drcLine'] == null ? null : (map['drcLine'] as String).input(),
+      drcRf: map['drcRf'] == null ? null : (map['drcRf'] as String).input(),
+      heightTrim: map['heightTrim'] == null ? null : (map['heightTrim'] as double).input(),
+      surroundTrim: map['surroundTrim'] == null ? null : (map['surroundTrim'] as double).input(),
     );
   }
 }

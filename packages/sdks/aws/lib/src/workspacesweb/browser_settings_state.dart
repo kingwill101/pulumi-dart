@@ -33,23 +33,15 @@ class BrowserSettingsState {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   BrowserSettingsState({
-    pulumi.Output<Map<String, String>>? additionalEncryptionContext,
-    pulumi.Output<List<String>>? associatedPortalArns,
-    pulumi.Output<String>? browserPolicy,
-    pulumi.Output<String>? browserSettingsArn,
-    pulumi.Output<String>? customerManagedKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      additionalEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(additionalEncryptionContext),
-      associatedPortalArns = pulumi.Input.asOptionalInput<List<String>>(associatedPortalArns),
-      browserPolicy = pulumi.Input.asOptionalInput<String>(browserPolicy),
-      browserSettingsArn = pulumi.Input.asOptionalInput<String>(browserSettingsArn),
-      customerManagedKey = pulumi.Input.asOptionalInput<String>(customerManagedKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.additionalEncryptionContext,
+    this.associatedPortalArns,
+    this.browserPolicy,
+    this.browserSettingsArn,
+    this.customerManagedKey,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class BrowserSettingsState {
 
   factory BrowserSettingsState.fromMap(Map<String, dynamic> map) {
     return BrowserSettingsState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalEncryptionContext'] as Map).cast<String, String>()),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : pulumi.Output.create<List<String>>((map['associatedPortalArns'] as List).cast<String>()),
-      browserPolicy: map['browserPolicy'] == null ? null : pulumi.Output.create<String>(map['browserPolicy'] as String),
-      browserSettingsArn: map['browserSettingsArn'] == null ? null : pulumi.Output.create<String>(map['browserSettingsArn'] as String),
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<String>(map['customerManagedKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
+      browserPolicy: map['browserPolicy'] == null ? null : (map['browserPolicy'] as String).input(),
+      browserSettingsArn: map['browserSettingsArn'] == null ? null : (map['browserSettingsArn'] as String).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

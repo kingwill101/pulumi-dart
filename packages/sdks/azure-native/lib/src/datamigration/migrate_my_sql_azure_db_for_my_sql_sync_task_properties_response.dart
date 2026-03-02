@@ -9,20 +9,20 @@ import 'odata_error_response.dart';
 /// Properties for the task that migrates MySQL databases to Azure Database for MySQL for online migrations
 class MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse {
   /// Key value pairs of client data to attach meta data information to task
-  final Map<String, String>? clientData;
+  final pulumi.Input<Map<String, String>>? clientData;
   /// Array of command properties.
-  final List<MigrateMISyncCompleteCommandPropertiesResponse> commands;
+  final pulumi.Input<List<MigrateMISyncCompleteCommandPropertiesResponse>> commands;
   /// Array of errors. This is ignored if submitted.
-  final List<ODataErrorResponse> errors;
+  final pulumi.Input<List<ODataErrorResponse>> errors;
   /// Task input
-  final MigrateMySqlAzureDbForMySqlSyncTaskInputResponse? input;
+  final pulumi.Input<MigrateMySqlAzureDbForMySqlSyncTaskInputResponse>? input;
   /// Task output. This is ignored if submitted.
-  final List<MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse> output;
+  final pulumi.Input<List<MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse>> output;
   /// The state of the task. This is ignored if submitted.
-  final String state;
+  final pulumi.Input<String> state;
   /// Task type.
   /// Expected value is 'Migrate.MySql.AzureDbForMySql.Sync'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
 
   /// Creates a new [MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse].
   /// [clientData] Key value pairs of client data to attach meta data information to task
@@ -45,10 +45,10 @@ class MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientData': ?clientData,
-      'commands': pulumi.Input.encodeList<MigrateMISyncCompleteCommandPropertiesResponse, Map<String, dynamic>>(commands, (value) => value.toMap()),
-      'errors': pulumi.Input.encodeList<ODataErrorResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
-      'input': ?input == null ? null : input!.toMap(),
-      'output': pulumi.Input.encodeList<MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse, Map<String, dynamic>>(output, (value) => value.toMap()),
+      'commands': pulumi.Input.mapInputValue<List<MigrateMISyncCompleteCommandPropertiesResponse>, List<Map<String, dynamic>>>(commands, (value) => pulumi.Input.encodeList<MigrateMISyncCompleteCommandPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'errors': pulumi.Input.mapInputValue<List<ODataErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ODataErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'input': ?pulumi.Input.mapOptionalInputValue<MigrateMySqlAzureDbForMySqlSyncTaskInputResponse, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'output': pulumi.Input.mapInputValue<List<MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse>, List<Map<String, dynamic>>>(output, (value) => pulumi.Input.encodeList<MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': state,
       'taskType': taskType,
     };
@@ -56,13 +56,13 @@ class MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse {
 
   factory MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlSyncTaskPropertiesResponse(
-      clientData: map['clientData'] == null ? null : (map['clientData'] as Map).cast<String, String>(),
-      commands: pulumi.Input.decodeList<MigrateMISyncCompleteCommandPropertiesResponse>(map['commands'], (value) => MigrateMISyncCompleteCommandPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      errors: pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      input: map['input'] == null ? null : MigrateMySqlAzureDbForMySqlSyncTaskInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      output: pulumi.Input.decodeList<MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse>(map['output'], (value) => MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
-      taskType: map['taskType'] as String,
+      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
+      commands: (pulumi.Input.decodeList<MigrateMISyncCompleteCommandPropertiesResponse>(map['commands'], (value) => MigrateMISyncCompleteCommandPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: (pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      input: map['input'] == null ? null : (MigrateMySqlAzureDbForMySqlSyncTaskInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      output: (pulumi.Input.decodeList<MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse>(map['output'], (value) => MigrateMySqlAzureDbForMySqlSyncTaskOutputDatabaseErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: (map['state'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

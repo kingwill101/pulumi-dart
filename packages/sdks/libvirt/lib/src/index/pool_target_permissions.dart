@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolTargetPermissions {
   /// Sets the group ownership for the storage pool target permissions.
-  final String? group;
+  final pulumi.Input<String>? group;
   /// Configures the label associated with the target permissions for the storage pool.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Defines the mode (file permissions) for the storage pool target.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Specifies the owner of the permissions for the storage pool target.
-  final String? owner;
+  final pulumi.Input<String>? owner;
 
   /// Creates a new [PoolTargetPermissions].
   /// [group] Sets the group ownership for the storage pool target permissions.
@@ -34,10 +35,10 @@ class PoolTargetPermissions {
 
   factory PoolTargetPermissions.fromMap(Map<String, dynamic> map) {
     return PoolTargetPermissions(
-      group: map['group'] == null ? null : map['group'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      owner: map['owner'] == null ? null : map['owner'] as String,
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
     );
   }
 }

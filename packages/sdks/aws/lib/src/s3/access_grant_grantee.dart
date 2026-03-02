@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessGrantGrantee {
   /// Grantee identifier.
-  final String granteeIdentifier;
+  final pulumi.Input<String> granteeIdentifier;
   /// Grantee types. Valid values: `DIRECTORY_USER`, `DIRECTORY_GROUP`, `IAM`.
-  final String granteeType;
+  final pulumi.Input<String> granteeType;
 
   /// Creates a new [AccessGrantGrantee].
   /// [granteeIdentifier] Grantee identifier.
@@ -24,8 +25,8 @@ class AccessGrantGrantee {
 
   factory AccessGrantGrantee.fromMap(Map<String, dynamic> map) {
     return AccessGrantGrantee(
-      granteeIdentifier: map['granteeIdentifier'] as String,
-      granteeType: map['granteeType'] as String,
+      granteeIdentifier: (map['granteeIdentifier'] as String).input(),
+      granteeType: (map['granteeType'] as String).input(),
     );
   }
 }

@@ -31,17 +31,12 @@ class WorkspaceTableArgs {
   /// [totalRetentionInDays] The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   /// [workspaceId] The object ID of the Log Analytics Workspace that contains the table.
   WorkspaceTableArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? plan,
-    pulumi.Output<int>? retentionInDays,
-    pulumi.Output<int>? totalRetentionInDays,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plan = pulumi.Input.asOptionalInput<String>(plan),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      totalRetentionInDays = pulumi.Input.asOptionalInput<int>(totalRetentionInDays),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.name,
+    this.plan,
+    this.retentionInDays,
+    this.totalRetentionInDays,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class WorkspaceTableArgs {
 
   factory WorkspaceTableArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceTableArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<String>(map['plan'] as String),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : pulumi.Output.create<int>(map['totalRetentionInDays'] as int),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : (map['totalRetentionInDays'] as int).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

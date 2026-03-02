@@ -40,27 +40,17 @@ class GatewayHostnameConfigurationArgs {
   /// [tls10Enabled] Specifies if TLS 1.0 is supported
   /// [tls11Enabled] Specifies if TLS 1.1 is supported
   GatewayHostnameConfigurationArgs({
-    pulumi.Output<String>? certificateId,
-    required pulumi.Output<String> gatewayId,
-    pulumi.Output<String>? hcId,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<bool>? http2Enabled,
-    pulumi.Output<bool>? negotiateClientCertificate,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<bool>? tls10Enabled,
-    pulumi.Output<bool>? tls11Enabled,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      hcId = pulumi.Input.asOptionalInput<String>(hcId),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      http2Enabled = pulumi.Input.asOptionalInput<bool>(http2Enabled),
-      negotiateClientCertificate = pulumi.Input.asOptionalInput<bool>(negotiateClientCertificate),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tls10Enabled = pulumi.Input.asOptionalInput<bool>(tls10Enabled),
-      tls11Enabled = pulumi.Input.asOptionalInput<bool>(tls11Enabled);
+    this.certificateId,
+    required this.gatewayId,
+    this.hcId,
+    this.hostname,
+    this.http2Enabled,
+    this.negotiateClientCertificate,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.tls10Enabled,
+    this.tls11Enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GatewayHostnameConfigurationArgs {
 
   factory GatewayHostnameConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GatewayHostnameConfigurationArgs(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      hcId: map['hcId'] == null ? null : pulumi.Output.create<String>(map['hcId'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      http2Enabled: map['http2Enabled'] == null ? null : pulumi.Output.create<bool>(map['http2Enabled'] as bool),
-      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : pulumi.Output.create<bool>(map['negotiateClientCertificate'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tls10Enabled: map['tls10Enabled'] == null ? null : pulumi.Output.create<bool>(map['tls10Enabled'] as bool),
-      tls11Enabled: map['tls11Enabled'] == null ? null : pulumi.Output.create<bool>(map['tls11Enabled'] as bool),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      hcId: map['hcId'] == null ? null : (map['hcId'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled'] as bool).input(),
+      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : (map['negotiateClientCertificate'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tls10Enabled: map['tls10Enabled'] == null ? null : (map['tls10Enabled'] as bool).input(),
+      tls11Enabled: map['tls11Enabled'] == null ? null : (map['tls11Enabled'] as bool).input(),
     );
   }
 }

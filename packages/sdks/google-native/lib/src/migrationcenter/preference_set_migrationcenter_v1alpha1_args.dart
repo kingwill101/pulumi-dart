@@ -29,21 +29,14 @@ class PreferenceSetMigrationcenterV1alpha1Args {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [virtualMachinePreferences] A set of preferences that applies to all virtual machines in the context.
   PreferenceSetMigrationcenterV1alpha1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? preferenceSetId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<VirtualMachinePreferencesMigrationcenterV1alpha1>? virtualMachinePreferences,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      preferenceSetId = pulumi.Input.asOptionalInput<String>(preferenceSetId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      virtualMachinePreferences = pulumi.Input.asOptionalInput<VirtualMachinePreferencesMigrationcenterV1alpha1>(virtualMachinePreferences);
+    this.description,
+    this.displayName,
+    this.location,
+    this.preferenceSetId,
+    this.project,
+    this.requestId,
+    this.virtualMachinePreferences,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class PreferenceSetMigrationcenterV1alpha1Args {
 
   factory PreferenceSetMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return PreferenceSetMigrationcenterV1alpha1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      preferenceSetId: map['preferenceSetId'] == null ? null : pulumi.Output.create<String>(map['preferenceSetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : pulumi.Output.create<VirtualMachinePreferencesMigrationcenterV1alpha1>(VirtualMachinePreferencesMigrationcenterV1alpha1.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      preferenceSetId: map['preferenceSetId'] == null ? null : (map['preferenceSetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : (VirtualMachinePreferencesMigrationcenterV1alpha1.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

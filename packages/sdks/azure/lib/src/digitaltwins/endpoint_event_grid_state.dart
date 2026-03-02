@@ -25,19 +25,13 @@ class EndpointEventGridState {
   /// [eventgridTopicSecondaryAccessKey] The secondary access key of the Event Grid Topic.
   /// [name] The name which should be used for this Digital Twins Eventgrid Endpoint. Changing this forces a new Digital Twins Eventgrid Endpoint to be created.
   EndpointEventGridState({
-    pulumi.Output<String>? deadLetterStorageSecret,
-    pulumi.Output<String>? digitalTwinsId,
-    pulumi.Output<String>? eventgridTopicEndpoint,
-    pulumi.Output<String>? eventgridTopicPrimaryAccessKey,
-    pulumi.Output<String>? eventgridTopicSecondaryAccessKey,
-    pulumi.Output<String>? name,
-  }) :
-      deadLetterStorageSecret = pulumi.Input.asOptionalInput<String>(deadLetterStorageSecret),
-      digitalTwinsId = pulumi.Input.asOptionalInput<String>(digitalTwinsId),
-      eventgridTopicEndpoint = pulumi.Input.asOptionalInput<String>(eventgridTopicEndpoint),
-      eventgridTopicPrimaryAccessKey = pulumi.Input.asOptionalInput<String>(eventgridTopicPrimaryAccessKey),
-      eventgridTopicSecondaryAccessKey = pulumi.Input.asOptionalInput<String>(eventgridTopicSecondaryAccessKey),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.deadLetterStorageSecret,
+    this.digitalTwinsId,
+    this.eventgridTopicEndpoint,
+    this.eventgridTopicPrimaryAccessKey,
+    this.eventgridTopicSecondaryAccessKey,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class EndpointEventGridState {
 
   factory EndpointEventGridState.fromMap(Map<String, dynamic> map) {
     return EndpointEventGridState(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : pulumi.Output.create<String>(map['deadLetterStorageSecret'] as String),
-      digitalTwinsId: map['digitalTwinsId'] == null ? null : pulumi.Output.create<String>(map['digitalTwinsId'] as String),
-      eventgridTopicEndpoint: map['eventgridTopicEndpoint'] == null ? null : pulumi.Output.create<String>(map['eventgridTopicEndpoint'] as String),
-      eventgridTopicPrimaryAccessKey: map['eventgridTopicPrimaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['eventgridTopicPrimaryAccessKey'] as String),
-      eventgridTopicSecondaryAccessKey: map['eventgridTopicSecondaryAccessKey'] == null ? null : pulumi.Output.create<String>(map['eventgridTopicSecondaryAccessKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
+      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId'] as String).input(),
+      eventgridTopicEndpoint: map['eventgridTopicEndpoint'] == null ? null : (map['eventgridTopicEndpoint'] as String).input(),
+      eventgridTopicPrimaryAccessKey: map['eventgridTopicPrimaryAccessKey'] == null ? null : (map['eventgridTopicPrimaryAccessKey'] as String).input(),
+      eventgridTopicSecondaryAccessKey: map['eventgridTopicSecondaryAccessKey'] == null ? null : (map['eventgridTopicSecondaryAccessKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

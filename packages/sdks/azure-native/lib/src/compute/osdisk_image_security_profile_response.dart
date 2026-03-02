@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains security profile for an OS disk image.
 class OSDiskImageSecurityProfileResponse {
   /// confidential VM encryption types
-  final String? confidentialVMEncryptionType;
+  final pulumi.Input<String>? confidentialVMEncryptionType;
   /// secure VM disk encryption set id
-  final String? secureVMDiskEncryptionSetId;
+  final pulumi.Input<String>? secureVMDiskEncryptionSetId;
 
   /// Creates a new [OSDiskImageSecurityProfileResponse].
   /// [confidentialVMEncryptionType] confidential VM encryption types
@@ -25,8 +26,8 @@ class OSDiskImageSecurityProfileResponse {
 
   factory OSDiskImageSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return OSDiskImageSecurityProfileResponse(
-      confidentialVMEncryptionType: map['confidentialVMEncryptionType'] == null ? null : map['confidentialVMEncryptionType'] as String,
-      secureVMDiskEncryptionSetId: map['secureVMDiskEncryptionSetId'] == null ? null : map['secureVMDiskEncryptionSetId'] as String,
+      confidentialVMEncryptionType: map['confidentialVMEncryptionType'] == null ? null : (map['confidentialVMEncryptionType'] as String).input(),
+      secureVMDiskEncryptionSetId: map['secureVMDiskEncryptionSetId'] == null ? null : (map['secureVMDiskEncryptionSetId'] as String).input(),
     );
   }
 }

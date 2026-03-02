@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Validation for inquired protectable items under a given container.
 class InquiryValidation {
   /// Status for the Inquiry Validation.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [InquiryValidation].
   /// [status] Status for the Inquiry Validation.
@@ -20,7 +21,7 @@ class InquiryValidation {
 
   factory InquiryValidation.fromMap(Map<String, dynamic> map) {
     return InquiryValidation(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination {
   /// Reference ID for the destination.
-  final String destinationRefId;
+  final pulumi.Input<String> destinationRefId;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination].
   /// [destinationRefId] Reference ID for the destination.
@@ -19,7 +20,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDes
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination(
-      destinationRefId: map['destinationRefId'] as String,
+      destinationRefId: (map['destinationRefId'] as String).input(),
     );
   }
 }

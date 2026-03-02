@@ -44,31 +44,19 @@ class EnvironmentProfileState {
   /// [updatedAt] Time of last update to environment profile.
   /// [userParameters] Array of user parameters of the environment profile with the following attributes:
   EnvironmentProfileState({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? awsAccountRegion,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainIdentifier,
-    pulumi.Output<String>? environmentBlueprintIdentifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? updatedAt,
-    pulumi.Output<List<EnvironmentProfileUserParameter>>? userParameters,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      awsAccountRegion = pulumi.Input.asOptionalInput<String>(awsAccountRegion),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asOptionalInput<String>(domainIdentifier),
-      environmentBlueprintIdentifier = pulumi.Input.asOptionalInput<String>(environmentBlueprintIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectIdentifier = pulumi.Input.asOptionalInput<String>(projectIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt),
-      userParameters = pulumi.Input.asOptionalInput<List<EnvironmentProfileUserParameter>>(userParameters);
+    this.awsAccountId,
+    this.awsAccountRegion,
+    this.createdAt,
+    this.createdBy,
+    this.description,
+    this.domainIdentifier,
+    this.environmentBlueprintIdentifier,
+    this.name,
+    this.projectIdentifier,
+    this.region,
+    this.updatedAt,
+    this.userParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class EnvironmentProfileState {
 
   factory EnvironmentProfileState.fromMap(Map<String, dynamic> map) {
     return EnvironmentProfileState(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      awsAccountRegion: map['awsAccountRegion'] == null ? null : pulumi.Output.create<String>(map['awsAccountRegion'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: map['domainIdentifier'] == null ? null : pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      environmentBlueprintIdentifier: map['environmentBlueprintIdentifier'] == null ? null : pulumi.Output.create<String>(map['environmentBlueprintIdentifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectIdentifier: map['projectIdentifier'] == null ? null : pulumi.Output.create<String>(map['projectIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
-      userParameters: map['userParameters'] == null ? null : pulumi.Output.create<List<EnvironmentProfileUserParameter>>(pulumi.Input.decodeList<EnvironmentProfileUserParameter>(map['userParameters'], (value) => EnvironmentProfileUserParameter.fromMap((value as Map).cast<String, dynamic>()))),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountRegion: map['awsAccountRegion'] == null ? null : (map['awsAccountRegion'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
+      environmentBlueprintIdentifier: map['environmentBlueprintIdentifier'] == null ? null : (map['environmentBlueprintIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectIdentifier: map['projectIdentifier'] == null ? null : (map['projectIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      userParameters: map['userParameters'] == null ? null : (pulumi.Input.decodeList<EnvironmentProfileUserParameter>(map['userParameters'], (value) => EnvironmentProfileUserParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

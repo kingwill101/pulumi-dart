@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_endpoint_artifact_pull_secret_settings_response.dart';
 
 /// Artifact Pull Secret authentication
 class RegistryEndpointArtifactPullSecretAuthenticationResponse {
   /// Artifact Pull Secret authentication properties
-  final RegistryEndpointArtifactPullSecretSettingsResponse artifactPullSecretSettings;
+  final pulumi.Input<RegistryEndpointArtifactPullSecretSettingsResponse> artifactPullSecretSettings;
   /// The authentication method.
   /// Expected value is 'ArtifactPullSecret'.
-  final String method;
+  final pulumi.Input<String> method;
 
   /// Creates a new [RegistryEndpointArtifactPullSecretAuthenticationResponse].
   /// [artifactPullSecretSettings] Artifact Pull Secret authentication properties
@@ -20,15 +21,15 @@ class RegistryEndpointArtifactPullSecretAuthenticationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactPullSecretSettings': artifactPullSecretSettings.toMap(),
+      'artifactPullSecretSettings': pulumi.Input.mapInputValue<RegistryEndpointArtifactPullSecretSettingsResponse, Map<String, dynamic>>(artifactPullSecretSettings, (value) => value.toMap()),
       'method': method,
     };
   }
 
   factory RegistryEndpointArtifactPullSecretAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointArtifactPullSecretAuthenticationResponse(
-      artifactPullSecretSettings: RegistryEndpointArtifactPullSecretSettingsResponse.fromMap((map['artifactPullSecretSettings'] as Map).cast<String, dynamic>()),
-      method: map['method'] as String,
+      artifactPullSecretSettings: (RegistryEndpointArtifactPullSecretSettingsResponse.fromMap((map['artifactPullSecretSettings'] as Map).cast<String, dynamic>())).input(),
+      method: (map['method'] as String).input(),
     );
   }
 }

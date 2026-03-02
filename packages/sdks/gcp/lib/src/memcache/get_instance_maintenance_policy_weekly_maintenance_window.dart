@@ -13,13 +13,13 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
   /// - FRIDAY: Friday
   /// - SATURDAY: Saturday
   /// - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
-  final String day;
+  final pulumi.Input<String> day;
   /// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
   /// A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s".
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Required. Start time of the window in UTC time.
-  final List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes;
+  final pulumi.Input<List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime>> startTimes;
 
   /// Creates a new [GetInstanceMaintenancePolicyWeeklyMaintenanceWindow].
   /// [day] Required. The day of week that maintenance updates occur.
@@ -35,15 +35,15 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
     return <String, dynamic>{
       'day': day,
       'duration': duration,
-      'startTimes': pulumi.Input.encodeList<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime, Map<String, dynamic>>(startTimes, (value) => value.toMap()),
+      'startTimes': pulumi.Input.mapInputValue<List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime>, List<Map<String, dynamic>>>(startTimes, (value) => pulumi.Input.encodeList<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetInstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetInstanceMaintenancePolicyWeeklyMaintenanceWindow(
-      day: map['day'] as String,
-      duration: map['duration'] as String,
-      startTimes: pulumi.Input.decodeList<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime>(map['startTimes'], (value) => GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((value as Map).cast<String, dynamic>())),
+      day: (map['day'] as String).input(),
+      duration: (map['duration'] as String).input(),
+      startTimes: (pulumi.Input.decodeList<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime>(map['startTimes'], (value) => GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

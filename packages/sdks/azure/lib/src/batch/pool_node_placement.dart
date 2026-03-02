@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolNodePlacement {
   /// The placement policy for allocating nodes in the pool. Values are: "Regional": All nodes in the pool will be allocated in the same region; "Zonal": Nodes in the pool will be spread across different zones with the best effort balancing. Defaults to `Regional`.
-  final String? policy;
+  final pulumi.Input<String>? policy;
 
   /// Creates a new [PoolNodePlacement].
   /// [policy] The placement policy for allocating nodes in the pool. Values are: "Regional": All nodes in the pool will be allocated in the same region; "Zonal": Nodes in the pool will be spread across different zones with the best effort balancing. Defaults to `Regional`.
@@ -19,7 +20,7 @@ class PoolNodePlacement {
 
   factory PoolNodePlacement.fromMap(Map<String, dynamic> map) {
     return PoolNodePlacement(
-      policy: map['policy'] == null ? null : map['policy'] as String,
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
     );
   }
 }

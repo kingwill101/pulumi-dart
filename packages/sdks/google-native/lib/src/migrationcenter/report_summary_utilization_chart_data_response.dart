@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Utilization Chart is a specific type of visualization which displays a metric classified into "Used" and "Free" buckets.
 class ReportSummaryUtilizationChartDataResponse {
   /// Aggregate value which falls into the "Free" bucket.
-  final String free;
+  final pulumi.Input<String> free;
   /// Aggregate value which falls into the "Used" bucket.
-  final String used;
+  final pulumi.Input<String> used;
 
   /// Creates a new [ReportSummaryUtilizationChartDataResponse].
   /// [free] Aggregate value which falls into the "Free" bucket.
@@ -25,8 +26,8 @@ class ReportSummaryUtilizationChartDataResponse {
 
   factory ReportSummaryUtilizationChartDataResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryUtilizationChartDataResponse(
-      free: map['free'] as String,
-      used: map['used'] as String,
+      free: (map['free'] as String).input(),
+      used: (map['used'] as String).input(),
     );
   }
 }

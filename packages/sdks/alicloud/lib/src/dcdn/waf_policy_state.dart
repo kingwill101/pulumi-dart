@@ -19,15 +19,11 @@ class WafPolicyState {
   /// [policyType] The type of the protection policy. Valid values: `default`, `custom`.
   /// [status] The status of the resource. Valid values: `on`, `off`.
   WafPolicyState({
-    pulumi.Output<String>? defenseScene,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<String>? status,
-  }) :
-      defenseScene = pulumi.Input.asOptionalInput<String>(defenseScene),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.defenseScene,
+    this.policyName,
+    this.policyType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class WafPolicyState {
 
   factory WafPolicyState.fromMap(Map<String, dynamic> map) {
     return WafPolicyState(
-      defenseScene: map['defenseScene'] == null ? null : pulumi.Output.create<String>(map['defenseScene'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class RefreshScheduleState {
   /// [schedule] The [refresh schedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshSchedule.html). See schedule
   /// [scheduleId] The ID of the refresh schedule.
   RefreshScheduleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? dataSetId,
-    pulumi.Output<String>? region,
-    pulumi.Output<RefreshScheduleSchedule>? schedule,
-    pulumi.Output<String>? scheduleId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      dataSetId = pulumi.Input.asOptionalInput<String>(dataSetId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedule = pulumi.Input.asOptionalInput<RefreshScheduleSchedule>(schedule),
-      scheduleId = pulumi.Input.asOptionalInput<String>(scheduleId);
+    this.arn,
+    this.awsAccountId,
+    this.dataSetId,
+    this.region,
+    this.schedule,
+    this.scheduleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RefreshScheduleState {
 
   factory RefreshScheduleState.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      dataSetId: map['dataSetId'] == null ? null : pulumi.Output.create<String>(map['dataSetId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<RefreshScheduleSchedule>(RefreshScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scheduleId: map['scheduleId'] == null ? null : pulumi.Output.create<String>(map['scheduleId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      dataSetId: map['dataSetId'] == null ? null : (map['dataSetId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schedule: map['schedule'] == null ? null : (RefreshScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scheduleId: map['scheduleId'] == null ? null : (map['scheduleId'] as String).input(),
     );
   }
 }

@@ -33,19 +33,13 @@ class HostProjectRegistrationState {
   /// [name] Identifier. The name of the host project registration.
   /// [project] The ID of the project in which the resource belongs.
   HostProjectRegistrationState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? gcpProject,
-    pulumi.Output<String>? hostProjectRegistrationId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      gcpProject = pulumi.Input.asOptionalInput<String>(gcpProject),
-      hostProjectRegistrationId = pulumi.Input.asOptionalInput<String>(hostProjectRegistrationId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.createTime,
+    this.gcpProject,
+    this.hostProjectRegistrationId,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class HostProjectRegistrationState {
 
   factory HostProjectRegistrationState.fromMap(Map<String, dynamic> map) {
     return HostProjectRegistrationState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      gcpProject: map['gcpProject'] == null ? null : pulumi.Output.create<String>(map['gcpProject'] as String),
-      hostProjectRegistrationId: map['hostProjectRegistrationId'] == null ? null : pulumi.Output.create<String>(map['hostProjectRegistrationId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      gcpProject: map['gcpProject'] == null ? null : (map['gcpProject'] as String).input(),
+      hostProjectRegistrationId: map['hostProjectRegistrationId'] == null ? null : (map['hostProjectRegistrationId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

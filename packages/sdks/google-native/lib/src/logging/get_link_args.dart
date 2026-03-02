@@ -18,15 +18,11 @@ class GetLinkArgs {
   /// [location] Required.
   /// [project] Optional.
   GetLinkArgs({
-    required pulumi.Output<String> bucketId,
-    required pulumi.Output<String> linkId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      linkId = pulumi.Input.asInput<String>(linkId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.bucketId,
+    required this.linkId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetLinkArgs {
 
   factory GetLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkArgs(
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      linkId: pulumi.Output.create<String>(map['linkId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bucketId: (map['bucketId'] as String).input(),
+      linkId: (map['linkId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

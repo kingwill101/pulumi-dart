@@ -25,17 +25,12 @@ class FqdnListGlobalRulestackArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] fqdn list name
   FqdnListGlobalRulestackArgs({
-    pulumi.Output<String>? auditComment,
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<String>> fqdnList,
-    required pulumi.Output<String> globalRulestackName,
-    pulumi.Output<String>? name,
-  }) :
-      auditComment = pulumi.Input.asOptionalInput<String>(auditComment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fqdnList = pulumi.Input.asInput<List<String>>(fqdnList),
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.auditComment,
+    this.description,
+    required this.fqdnList,
+    required this.globalRulestackName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FqdnListGlobalRulestackArgs {
 
   factory FqdnListGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return FqdnListGlobalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : pulumi.Output.create<String>(map['auditComment'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fqdnList: pulumi.Output.create<List<String>>((map['fqdnList'] as List).cast<String>()),
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fqdnList: ((map['fqdnList'] as List).cast<String>()).input(),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

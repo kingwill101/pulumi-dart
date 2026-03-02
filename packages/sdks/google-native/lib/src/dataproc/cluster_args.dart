@@ -35,23 +35,15 @@ class ClusterArgs {
   /// [requestId] Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   /// [virtualClusterConfig] Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
   ClusterArgs({
-    pulumi.Output<String>? actionOnFailedPrimaryWorkers,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<ClusterConfig>? config,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<VirtualClusterConfig>? virtualClusterConfig,
-  }) :
-      actionOnFailedPrimaryWorkers = pulumi.Input.asOptionalInput<String>(actionOnFailedPrimaryWorkers),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      config = pulumi.Input.asOptionalInput<ClusterConfig>(config),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      virtualClusterConfig = pulumi.Input.asOptionalInput<VirtualClusterConfig>(virtualClusterConfig);
+    this.actionOnFailedPrimaryWorkers,
+    required this.clusterName,
+    this.config,
+    this.labels,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.virtualClusterConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      actionOnFailedPrimaryWorkers: map['actionOnFailedPrimaryWorkers'] == null ? null : pulumi.Output.create<String>(map['actionOnFailedPrimaryWorkers'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<ClusterConfig>(ClusterConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      virtualClusterConfig: map['virtualClusterConfig'] == null ? null : pulumi.Output.create<VirtualClusterConfig>(VirtualClusterConfig.fromMap((map['virtualClusterConfig'] as Map).cast<String, dynamic>())),
+      actionOnFailedPrimaryWorkers: map['actionOnFailedPrimaryWorkers'] == null ? null : (map['actionOnFailedPrimaryWorkers'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      config: map['config'] == null ? null : (ClusterConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      virtualClusterConfig: map['virtualClusterConfig'] == null ? null : (VirtualClusterConfig.fromMap((map['virtualClusterConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

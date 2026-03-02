@@ -26,17 +26,12 @@ class ManagedPrivateEndpointArgs {
   /// [properties] Managed private endpoint properties.
   /// [resourceGroupName] The resource group name.
   ManagedPrivateEndpointArgs({
-    required pulumi.Output<String> factoryName,
-    pulumi.Output<String>? managedPrivateEndpointName,
-    required pulumi.Output<String> managedVirtualNetworkName,
-    required pulumi.Output<ManagedPrivateEndpointDatafactory> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      managedPrivateEndpointName = pulumi.Input.asOptionalInput<String>(managedPrivateEndpointName),
-      managedVirtualNetworkName = pulumi.Input.asInput<String>(managedVirtualNetworkName),
-      properties = pulumi.Input.asInput<ManagedPrivateEndpointDatafactory>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    this.managedPrivateEndpointName,
+    required this.managedVirtualNetworkName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ManagedPrivateEndpointArgs {
 
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : pulumi.Output.create<String>(map['managedPrivateEndpointName'] as String),
-      managedVirtualNetworkName: pulumi.Output.create<String>(map['managedVirtualNetworkName'] as String),
-      properties: pulumi.Output.create<ManagedPrivateEndpointDatafactory>(map['properties'] as ManagedPrivateEndpointDatafactory),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : (map['managedPrivateEndpointName'] as String).input(),
+      managedVirtualNetworkName: (map['managedVirtualNetworkName'] as String).input(),
+      properties: (map['properties'] as ManagedPrivateEndpointDatafactory).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

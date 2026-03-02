@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Analytical storage specific properties.
 class AnalyticalStorageConfigurationResponse {
   /// Describes the types of schema for analytical storage.
-  final String? schemaType;
+  final pulumi.Input<String>? schemaType;
 
   /// Creates a new [AnalyticalStorageConfigurationResponse].
   /// [schemaType] Describes the types of schema for analytical storage.
@@ -20,7 +21,7 @@ class AnalyticalStorageConfigurationResponse {
 
   factory AnalyticalStorageConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AnalyticalStorageConfigurationResponse(
-      schemaType: map['schemaType'] == null ? null : map['schemaType'] as String,
+      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
     );
   }
 }

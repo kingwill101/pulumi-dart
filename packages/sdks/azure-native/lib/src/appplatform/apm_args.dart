@@ -23,15 +23,11 @@ class ApmArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   ApmArgs({
-    pulumi.Output<String>? apmName,
-    pulumi.Output<ApmProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apmName = pulumi.Input.asOptionalInput<String>(apmName),
-      properties = pulumi.Input.asOptionalInput<ApmProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.apmName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ApmArgs {
 
   factory ApmArgs.fromMap(Map<String, dynamic> map) {
     return ApmArgs(
-      apmName: map['apmName'] == null ? null : pulumi.Output.create<String>(map['apmName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ApmProperties>(ApmProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apmName: map['apmName'] == null ? null : (map['apmName'] as String).input(),
+      properties: map['properties'] == null ? null : (ApmProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

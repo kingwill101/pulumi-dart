@@ -53,33 +53,20 @@ class CloudExadataInfrastructureArgs {
   /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   CloudExadataInfrastructureArgs({
-    pulumi.Output<String>? availabilityZone,
-    required pulumi.Output<String> availabilityZoneId,
-    pulumi.Output<int>? computeCount,
-    pulumi.Output<List<CloudExadataInfrastructureCustomerContactsToSendToOci>>? customerContactsToSendToOcis,
-    pulumi.Output<String>? databaseServerType,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<CloudExadataInfrastructureMaintenanceWindow> maintenanceWindow,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> shape,
-    pulumi.Output<int>? storageCount,
-    pulumi.Output<String>? storageServerType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<CloudExadataInfrastructureTimeouts>? timeouts,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      availabilityZoneId = pulumi.Input.asInput<String>(availabilityZoneId),
-      computeCount = pulumi.Input.asOptionalInput<int>(computeCount),
-      customerContactsToSendToOcis = pulumi.Input.asOptionalInput<List<CloudExadataInfrastructureCustomerContactsToSendToOci>>(customerContactsToSendToOcis),
-      databaseServerType = pulumi.Input.asOptionalInput<String>(databaseServerType),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      maintenanceWindow = pulumi.Input.asInput<CloudExadataInfrastructureMaintenanceWindow>(maintenanceWindow),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shape = pulumi.Input.asInput<String>(shape),
-      storageCount = pulumi.Input.asOptionalInput<int>(storageCount),
-      storageServerType = pulumi.Input.asOptionalInput<String>(storageServerType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<CloudExadataInfrastructureTimeouts>(timeouts);
+    this.availabilityZone,
+    required this.availabilityZoneId,
+    this.computeCount,
+    this.customerContactsToSendToOcis,
+    this.databaseServerType,
+    required this.displayName,
+    required this.maintenanceWindow,
+    this.region,
+    required this.shape,
+    this.storageCount,
+    this.storageServerType,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class CloudExadataInfrastructureArgs {
 
   factory CloudExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      availabilityZoneId: pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      computeCount: map['computeCount'] == null ? null : pulumi.Output.create<int>(map['computeCount'] as int),
-      customerContactsToSendToOcis: map['customerContactsToSendToOcis'] == null ? null : pulumi.Output.create<List<CloudExadataInfrastructureCustomerContactsToSendToOci>>(pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(map['customerContactsToSendToOcis'], (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>()))),
-      databaseServerType: map['databaseServerType'] == null ? null : pulumi.Output.create<String>(map['databaseServerType'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      maintenanceWindow: pulumi.Output.create<CloudExadataInfrastructureMaintenanceWindow>(CloudExadataInfrastructureMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shape: pulumi.Output.create<String>(map['shape'] as String),
-      storageCount: map['storageCount'] == null ? null : pulumi.Output.create<int>(map['storageCount'] as int),
-      storageServerType: map['storageServerType'] == null ? null : pulumi.Output.create<String>(map['storageServerType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CloudExadataInfrastructureTimeouts>(CloudExadataInfrastructureTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
+      computeCount: map['computeCount'] == null ? null : (map['computeCount'] as int).input(),
+      customerContactsToSendToOcis: map['customerContactsToSendToOcis'] == null ? null : (pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(map['customerContactsToSendToOcis'], (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databaseServerType: map['databaseServerType'] == null ? null : (map['databaseServerType'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      maintenanceWindow: (CloudExadataInfrastructureMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shape: (map['shape'] as String).input(),
+      storageCount: map['storageCount'] == null ? null : (map['storageCount'] as int).input(),
+      storageServerType: map['storageServerType'] == null ? null : (map['storageServerType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (CloudExadataInfrastructureTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

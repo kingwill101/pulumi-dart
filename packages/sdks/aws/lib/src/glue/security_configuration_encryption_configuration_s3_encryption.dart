@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityConfigurationEncryptionConfigurationS3Encryption {
   /// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
   /// Encryption mode to use for S3 data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-S3`. Default value: `DISABLED`.
-  final String? s3EncryptionMode;
+  final pulumi.Input<String>? s3EncryptionMode;
 
   /// Creates a new [SecurityConfigurationEncryptionConfigurationS3Encryption].
   /// [kmsKeyArn] Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
@@ -24,8 +25,8 @@ class SecurityConfigurationEncryptionConfigurationS3Encryption {
 
   factory SecurityConfigurationEncryptionConfigurationS3Encryption.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationEncryptionConfigurationS3Encryption(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
-      s3EncryptionMode: map['s3EncryptionMode'] == null ? null : map['s3EncryptionMode'] as String,
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      s3EncryptionMode: map['s3EncryptionMode'] == null ? null : (map['s3EncryptionMode'] as String).input(),
     );
   }
 }

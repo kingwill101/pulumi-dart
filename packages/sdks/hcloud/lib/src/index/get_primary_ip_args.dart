@@ -25,17 +25,12 @@ class GetPrimaryIpArgs {
   /// [name] Name of the Primary IP.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   GetPrimaryIpArgs({
-    pulumi.Output<int>? assigneeId,
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? withSelector,
-  }) :
-      assigneeId = pulumi.Input.asOptionalInput<int>(assigneeId),
-      id = pulumi.Input.asOptionalInput<int>(id),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.assigneeId,
+    this.id,
+    this.ipAddress,
+    this.name,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetPrimaryIpArgs {
 
   factory GetPrimaryIpArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpArgs(
-      assigneeId: map['assigneeId'] == null ? null : pulumi.Output.create<int>(map['assigneeId'] as int),
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

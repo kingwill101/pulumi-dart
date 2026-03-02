@@ -24,15 +24,11 @@ class CustomRoutingEndpointGroupArgs {
   /// [endpointGroupRegion] The name of the AWS Region where the custom routing endpoint group is located.
   /// [listenerArn] The Amazon Resource Name (ARN) of the custom routing listener.
   CustomRoutingEndpointGroupArgs({
-    required pulumi.Output<List<CustomRoutingEndpointGroupDestinationConfiguration>> destinationConfigurations,
-    pulumi.Output<List<CustomRoutingEndpointGroupEndpointConfiguration>>? endpointConfigurations,
-    pulumi.Output<String>? endpointGroupRegion,
-    required pulumi.Output<String> listenerArn,
-  }) :
-      destinationConfigurations = pulumi.Input.asInput<List<CustomRoutingEndpointGroupDestinationConfiguration>>(destinationConfigurations),
-      endpointConfigurations = pulumi.Input.asOptionalInput<List<CustomRoutingEndpointGroupEndpointConfiguration>>(endpointConfigurations),
-      endpointGroupRegion = pulumi.Input.asOptionalInput<String>(endpointGroupRegion),
-      listenerArn = pulumi.Input.asInput<String>(listenerArn);
+    required this.destinationConfigurations,
+    this.endpointConfigurations,
+    this.endpointGroupRegion,
+    required this.listenerArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class CustomRoutingEndpointGroupArgs {
 
   factory CustomRoutingEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupArgs(
-      destinationConfigurations: pulumi.Output.create<List<CustomRoutingEndpointGroupDestinationConfiguration>>(pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(map['destinationConfigurations'], (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      endpointConfigurations: map['endpointConfigurations'] == null ? null : pulumi.Output.create<List<CustomRoutingEndpointGroupEndpointConfiguration>>(pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(map['endpointConfigurations'], (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : pulumi.Output.create<String>(map['endpointGroupRegion'] as String),
-      listenerArn: pulumi.Output.create<String>(map['listenerArn'] as String),
+      destinationConfigurations: (pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(map['destinationConfigurations'], (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointConfigurations: map['endpointConfigurations'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(map['endpointConfigurations'], (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
+      listenerArn: (map['listenerArn'] as String).input(),
     );
   }
 }

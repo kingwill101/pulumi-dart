@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ComputeEnvironmentEksConfiguration {
   /// The Amazon Resource Name (ARN) of the Amazon EKS cluster.
-  final String eksClusterArn;
+  final pulumi.Input<String> eksClusterArn;
   /// The namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
-  final String kubernetesNamespace;
+  final pulumi.Input<String> kubernetesNamespace;
 
   /// Creates a new [ComputeEnvironmentEksConfiguration].
   /// [eksClusterArn] The Amazon Resource Name (ARN) of the Amazon EKS cluster.
@@ -24,8 +25,8 @@ class ComputeEnvironmentEksConfiguration {
 
   factory ComputeEnvironmentEksConfiguration.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentEksConfiguration(
-      eksClusterArn: map['eksClusterArn'] as String,
-      kubernetesNamespace: map['kubernetesNamespace'] as String,
+      eksClusterArn: (map['eksClusterArn'] as String).input(),
+      kubernetesNamespace: (map['kubernetesNamespace'] as String).input(),
     );
   }
 }

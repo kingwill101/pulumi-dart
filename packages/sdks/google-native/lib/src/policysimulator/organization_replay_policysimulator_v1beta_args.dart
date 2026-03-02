@@ -18,13 +18,10 @@ class OrganizationReplayPolicysimulatorV1betaArgs {
   /// [location] Optional.
   /// [organizationId] Required.
   OrganizationReplayPolicysimulatorV1betaArgs({
-    required pulumi.Output<GoogleCloudPolicysimulatorV1betaReplayConfig> config,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> organizationId,
-  }) :
-      config = pulumi.Input.asInput<GoogleCloudPolicysimulatorV1betaReplayConfig>(config),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.config,
+    this.location,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class OrganizationReplayPolicysimulatorV1betaArgs {
 
   factory OrganizationReplayPolicysimulatorV1betaArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationReplayPolicysimulatorV1betaArgs(
-      config: pulumi.Output.create<GoogleCloudPolicysimulatorV1betaReplayConfig>(GoogleCloudPolicysimulatorV1betaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      config: (GoogleCloudPolicysimulatorV1betaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

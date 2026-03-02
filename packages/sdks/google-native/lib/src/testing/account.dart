@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identifies an account and how to log into it.
 class Account {
   /// An automatic google login account.
-  final Map<String, dynamic>? googleAuto;
+  final pulumi.Input<Map<String, dynamic>>? googleAuto;
 
   /// Creates a new [Account].
   /// [googleAuto] An automatic google login account.
@@ -20,7 +21,7 @@ class Account {
 
   factory Account.fromMap(Map<String, dynamic> map) {
     return Account(
-      googleAuto: map['googleAuto'] == null ? null : (map['googleAuto'] as Map).cast<String, dynamic>(),
+      googleAuto: map['googleAuto'] == null ? null : ((map['googleAuto'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

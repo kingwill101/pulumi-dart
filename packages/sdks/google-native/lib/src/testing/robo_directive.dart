@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'robo_directive_action_type.dart';
 
 /// Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 class RoboDirective {
   /// The type of action that Robo should perform on the specified element.
-  final RoboDirectiveActionType actionType;
+  final pulumi.Input<RoboDirectiveActionType> actionType;
   /// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
-  final String? inputText;
+  final pulumi.Input<String>? inputText;
   /// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
-  final String resourceName;
+  final pulumi.Input<String> resourceName;
 
   /// Creates a new [RoboDirective].
   /// [actionType] The type of action that Robo should perform on the specified element.
@@ -23,7 +24,7 @@ class RoboDirective {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionType': actionType.value,
+      'actionType': pulumi.Input.mapInputValue<RoboDirectiveActionType, String>(actionType, (value) => value.value),
       'inputText': ?inputText,
       'resourceName': resourceName,
     };
@@ -31,9 +32,9 @@ class RoboDirective {
 
   factory RoboDirective.fromMap(Map<String, dynamic> map) {
     return RoboDirective(
-      actionType: RoboDirectiveActionType.fromValue(map['actionType'] as String),
-      inputText: map['inputText'] == null ? null : map['inputText'] as String,
-      resourceName: map['resourceName'] as String,
+      actionType: (RoboDirectiveActionType.fromValue(map['actionType'] as String)).input(),
+      inputText: map['inputText'] == null ? null : (map['inputText'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

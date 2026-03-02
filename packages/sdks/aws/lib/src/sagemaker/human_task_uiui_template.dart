@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HumanTaskUIUiTemplate {
   /// The content of the Liquid template for the worker user interface.
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The SHA-256 digest of the contents of the template.
-  final String? contentSha256;
+  final pulumi.Input<String>? contentSha256;
   /// The URL for the user interface template.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [HumanTaskUIUiTemplate].
   /// [content] The content of the Liquid template for the worker user interface.
@@ -29,9 +30,9 @@ class HumanTaskUIUiTemplate {
 
   factory HumanTaskUIUiTemplate.fromMap(Map<String, dynamic> map) {
     return HumanTaskUIUiTemplate(
-      content: map['content'] == null ? null : map['content'] as String,
-      contentSha256: map['contentSha256'] == null ? null : map['contentSha256'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentSha256: map['contentSha256'] == null ? null : (map['contentSha256'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

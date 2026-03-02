@@ -5,25 +5,25 @@ import 'get_domains_domain_source.dart';
 
 class GetDomainsDomain {
   /// The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
-  final String cname;
+  final pulumi.Input<String> cname;
   /// The description of the domain name for CDN.
-  final String description;
+  final pulumi.Input<String> description;
   /// The domain name for CDN.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-  final String gmtCreated;
+  final pulumi.Input<String> gmtCreated;
   /// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-  final String gmtModified;
+  final pulumi.Input<String> gmtModified;
   /// The ID of the Domain. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates whether the domain name for CDN is in a sandbox environment.
-  final String sandBox;
+  final pulumi.Input<String> sandBox;
   /// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
-  final List<GetDomainsDomainSource> sources;
+  final pulumi.Input<List<GetDomainsDomainSource>> sources;
   /// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
-  final String sslProtocol;
+  final pulumi.Input<String> sslProtocol;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetDomainsDomain].
   /// [cname] The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
@@ -58,7 +58,7 @@ class GetDomainsDomain {
       'gmtModified': gmtModified,
       'id': id,
       'sandBox': sandBox,
-      'sources': pulumi.Input.encodeList<GetDomainsDomainSource, Map<String, dynamic>>(sources, (value) => value.toMap()),
+      'sources': pulumi.Input.mapInputValue<List<GetDomainsDomainSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<GetDomainsDomainSource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sslProtocol': sslProtocol,
       'status': status,
     };
@@ -66,16 +66,16 @@ class GetDomainsDomain {
 
   factory GetDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomain(
-      cname: map['cname'] as String,
-      description: map['description'] as String,
-      domainName: map['domainName'] as String,
-      gmtCreated: map['gmtCreated'] as String,
-      gmtModified: map['gmtModified'] as String,
-      id: map['id'] as String,
-      sandBox: map['sandBox'] as String,
-      sources: pulumi.Input.decodeList<GetDomainsDomainSource>(map['sources'], (value) => GetDomainsDomainSource.fromMap((value as Map).cast<String, dynamic>())),
-      sslProtocol: map['sslProtocol'] as String,
-      status: map['status'] as String,
+      cname: (map['cname'] as String).input(),
+      description: (map['description'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      gmtCreated: (map['gmtCreated'] as String).input(),
+      gmtModified: (map['gmtModified'] as String).input(),
+      id: (map['id'] as String).input(),
+      sandBox: (map['sandBox'] as String).input(),
+      sources: (pulumi.Input.decodeList<GetDomainsDomainSource>(map['sources'], (value) => GetDomainsDomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sslProtocol: (map['sslProtocol'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

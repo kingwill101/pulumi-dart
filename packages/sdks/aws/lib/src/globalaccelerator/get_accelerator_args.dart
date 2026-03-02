@@ -18,11 +18,9 @@ class GetAcceleratorArgs {
   /// [arn] Full ARN of the Global Accelerator.
   /// [name] Unique name of the Global Accelerator.
   GetAcceleratorArgs({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.arn,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetAcceleratorArgs {
 
   factory GetAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorArgs(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

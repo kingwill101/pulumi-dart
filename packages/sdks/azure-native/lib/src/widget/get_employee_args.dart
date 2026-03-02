@@ -16,11 +16,9 @@ class GetEmployeeArgs {
   /// [employeeName] The name of the Employee
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEmployeeArgs({
-    required pulumi.Output<String> employeeName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      employeeName = pulumi.Input.asInput<String>(employeeName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.employeeName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEmployeeArgs {
 
   factory GetEmployeeArgs.fromMap(Map<String, dynamic> map) {
     return GetEmployeeArgs(
-      employeeName: pulumi.Output.create<String>(map['employeeName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      employeeName: (map['employeeName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

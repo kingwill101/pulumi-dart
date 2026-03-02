@@ -27,17 +27,12 @@ class BuildArgs {
   /// [destinationContainerRegistry] Container registry that the final image will be uploaded to.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   BuildArgs({
-    pulumi.Output<String>? buildName,
-    required pulumi.Output<String> builderName,
-    pulumi.Output<BuildConfiguration>? configuration,
-    pulumi.Output<ContainerRegistryWithCustomImage>? destinationContainerRegistry,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      buildName = pulumi.Input.asOptionalInput<String>(buildName),
-      builderName = pulumi.Input.asInput<String>(builderName),
-      configuration = pulumi.Input.asOptionalInput<BuildConfiguration>(configuration),
-      destinationContainerRegistry = pulumi.Input.asOptionalInput<ContainerRegistryWithCustomImage>(destinationContainerRegistry),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.buildName,
+    required this.builderName,
+    this.configuration,
+    this.destinationContainerRegistry,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class BuildArgs {
 
   factory BuildArgs.fromMap(Map<String, dynamic> map) {
     return BuildArgs(
-      buildName: map['buildName'] == null ? null : pulumi.Output.create<String>(map['buildName'] as String),
-      builderName: pulumi.Output.create<String>(map['builderName'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<BuildConfiguration>(BuildConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      destinationContainerRegistry: map['destinationContainerRegistry'] == null ? null : pulumi.Output.create<ContainerRegistryWithCustomImage>(ContainerRegistryWithCustomImage.fromMap((map['destinationContainerRegistry'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      buildName: map['buildName'] == null ? null : (map['buildName'] as String).input(),
+      builderName: (map['builderName'] as String).input(),
+      configuration: map['configuration'] == null ? null : (BuildConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      destinationContainerRegistry: map['destinationContainerRegistry'] == null ? null : (ContainerRegistryWithCustomImage.fromMap((map['destinationContainerRegistry'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

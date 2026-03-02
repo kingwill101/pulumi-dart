@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityScanConfigSchedule {
   /// The duration of time between executions in days
-  final int intervalDurationDays;
+  final pulumi.Input<int> intervalDurationDays;
   /// A timestamp indicates when the next run will be scheduled. The value is refreshed
   /// by the server after each run. If unspecified, it will default to current server time,
   /// which means the scan will be scheduled to start immediately.
-  final String? scheduleTime;
+  final pulumi.Input<String>? scheduleTime;
 
   /// Creates a new [SecurityScanConfigSchedule].
   /// [intervalDurationDays] The duration of time between executions in days
@@ -26,8 +27,8 @@ class SecurityScanConfigSchedule {
 
   factory SecurityScanConfigSchedule.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigSchedule(
-      intervalDurationDays: map['intervalDurationDays'] as int,
-      scheduleTime: map['scheduleTime'] == null ? null : map['scheduleTime'] as String,
+      intervalDurationDays: (map['intervalDurationDays'] as int).input(),
+      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime'] as String).input(),
     );
   }
 }

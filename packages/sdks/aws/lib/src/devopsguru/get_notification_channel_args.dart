@@ -24,15 +24,11 @@ class GetNotificationChannelArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sns] SNS noficiation channel configurations. See the `sns` attribute reference below.
   GetNotificationChannelArgs({
-    pulumi.Output<List<GetNotificationChannelFilter>>? filters,
-    required pulumi.Output<String> id,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<GetNotificationChannelSn>>? sns,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNotificationChannelFilter>>(filters),
-      id = pulumi.Input.asInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sns = pulumi.Input.asOptionalInput<List<GetNotificationChannelSn>>(sns);
+    this.filters,
+    required this.id,
+    this.region,
+    this.sns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetNotificationChannelArgs {
 
   factory GetNotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNotificationChannelFilter>>(pulumi.Input.decodeList<GetNotificationChannelFilter>(map['filters'], (value) => GetNotificationChannelFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sns: map['sns'] == null ? null : pulumi.Output.create<List<GetNotificationChannelSn>>(pulumi.Input.decodeList<GetNotificationChannelSn>(map['sns'], (value) => GetNotificationChannelSn.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNotificationChannelFilter>(map['filters'], (value) => GetNotificationChannelFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sns: map['sns'] == null ? null : (pulumi.Input.decodeList<GetNotificationChannelSn>(map['sns'], (value) => GetNotificationChannelSn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

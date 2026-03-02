@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schema in Thrift format.
 class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse {
   /// Thrift IDL source of the schema.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse].
   /// [text] Thrift IDL source of the schema.
@@ -20,7 +21,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse {
 
   factory GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse(
-      text: map['text'] as String,
+      text: (map['text'] as String).input(),
     );
   }
 }

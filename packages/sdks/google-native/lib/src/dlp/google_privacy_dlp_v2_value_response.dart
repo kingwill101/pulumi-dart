@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_type_date_response.dart';
 import 'google_type_time_of_day_response.dart';
 
 /// Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data.
 class GooglePrivacyDlpV2ValueResponse {
   /// boolean
-  final bool booleanValue;
+  final pulumi.Input<bool> booleanValue;
   /// date
-  final GoogleTypeDateResponse dateValue;
+  final pulumi.Input<GoogleTypeDateResponse> dateValue;
   /// day of week
-  final String dayOfWeekValue;
+  final pulumi.Input<String> dayOfWeekValue;
   /// float
-  final double floatValue;
+  final pulumi.Input<double> floatValue;
   /// integer
-  final String integerValue;
+  final pulumi.Input<String> integerValue;
   /// string
-  final String stringValue;
+  final pulumi.Input<String> stringValue;
   /// time of day
-  final GoogleTypeTimeOfDayResponse timeValue;
+  final pulumi.Input<GoogleTypeTimeOfDayResponse> timeValue;
   /// timestamp
-  final String timestampValue;
+  final pulumi.Input<String> timestampValue;
 
   /// Creates a new [GooglePrivacyDlpV2ValueResponse].
   /// [booleanValue] boolean
@@ -45,26 +46,26 @@ class GooglePrivacyDlpV2ValueResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': booleanValue,
-      'dateValue': dateValue.toMap(),
+      'dateValue': pulumi.Input.mapInputValue<GoogleTypeDateResponse, Map<String, dynamic>>(dateValue, (value) => value.toMap()),
       'dayOfWeekValue': dayOfWeekValue,
       'floatValue': floatValue,
       'integerValue': integerValue,
       'stringValue': stringValue,
-      'timeValue': timeValue.toMap(),
+      'timeValue': pulumi.Input.mapInputValue<GoogleTypeTimeOfDayResponse, Map<String, dynamic>>(timeValue, (value) => value.toMap()),
       'timestampValue': timestampValue,
     };
   }
 
   factory GooglePrivacyDlpV2ValueResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ValueResponse(
-      booleanValue: map['booleanValue'] as bool,
-      dateValue: GoogleTypeDateResponse.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
-      dayOfWeekValue: map['dayOfWeekValue'] as String,
-      floatValue: map['floatValue'] as double,
-      integerValue: map['integerValue'] as String,
-      stringValue: map['stringValue'] as String,
-      timeValue: GoogleTypeTimeOfDayResponse.fromMap((map['timeValue'] as Map).cast<String, dynamic>()),
-      timestampValue: map['timestampValue'] as String,
+      booleanValue: (map['booleanValue'] as bool).input(),
+      dateValue: (GoogleTypeDateResponse.fromMap((map['dateValue'] as Map).cast<String, dynamic>())).input(),
+      dayOfWeekValue: (map['dayOfWeekValue'] as String).input(),
+      floatValue: (map['floatValue'] as double).input(),
+      integerValue: (map['integerValue'] as String).input(),
+      stringValue: (map['stringValue'] as String).input(),
+      timeValue: (GoogleTypeTimeOfDayResponse.fromMap((map['timeValue'] as Map).cast<String, dynamic>())).input(),
+      timestampValue: (map['timestampValue'] as String).input(),
     );
   }
 }

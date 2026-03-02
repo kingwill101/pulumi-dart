@@ -31,21 +31,14 @@ class GetIpamIpamsArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
   GetIpamIpamsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? ipamId,
-    pulumi.Output<String>? ipamName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      ipamId = pulumi.Input.asOptionalInput<String>(ipamId),
-      ipamName = pulumi.Input.asOptionalInput<String>(ipamName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.ids,
+    this.ipamId,
+    this.ipamName,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetIpamIpamsArgs {
 
   factory GetIpamIpamsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      ipamId: map['ipamId'] == null ? null : pulumi.Output.create<String>(map['ipamId'] as String),
-      ipamName: map['ipamName'] == null ? null : pulumi.Output.create<String>(map['ipamName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ipamId: map['ipamId'] == null ? null : (map['ipamId'] as String).input(),
+      ipamName: map['ipamName'] == null ? null : (map['ipamName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

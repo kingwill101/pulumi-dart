@@ -5,13 +5,13 @@ import 'windows_web_app_slot_site_config_virtual_application_virtual_directory.d
 
 class WindowsWebAppSlotSiteConfigVirtualApplication {
   /// The physical path for the Virtual Application.
-  final String physicalPath;
+  final pulumi.Input<String> physicalPath;
   /// Should pre-loading be enabled.
-  final bool preload;
+  final pulumi.Input<bool> preload;
   /// One or more `virtual_directory` blocks as defined below.
-  final List<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>? virtualDirectories;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>>? virtualDirectories;
   /// The Virtual Path for the Virtual Application.
-  final String virtualPath;
+  final pulumi.Input<String> virtualPath;
 
   /// Creates a new [WindowsWebAppSlotSiteConfigVirtualApplication].
   /// [physicalPath] The physical path for the Virtual Application.
@@ -29,17 +29,17 @@ class WindowsWebAppSlotSiteConfigVirtualApplication {
     return <String, dynamic>{
       'physicalPath': physicalPath,
       'preload': preload,
-      'virtualDirectories': ?virtualDirectories == null ? null : pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory, Map<String, dynamic>>(virtualDirectories!, (value) => value.toMap()),
+      'virtualDirectories': ?pulumi.Input.mapOptionalInputValue<List<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>, List<Map<String, dynamic>>>(virtualDirectories, (value) => pulumi.Input.encodeList<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory, Map<String, dynamic>>(value, (value) => value.toMap())),
       'virtualPath': virtualPath,
     };
   }
 
   factory WindowsWebAppSlotSiteConfigVirtualApplication.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotSiteConfigVirtualApplication(
-      physicalPath: map['physicalPath'] as String,
-      preload: map['preload'] as bool,
-      virtualDirectories: map['virtualDirectories'] == null ? null : pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>(map['virtualDirectories'], (value) => WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory.fromMap((value as Map).cast<String, dynamic>())),
-      virtualPath: map['virtualPath'] as String,
+      physicalPath: (map['physicalPath'] as String).input(),
+      preload: (map['preload'] as bool).input(),
+      virtualDirectories: map['virtualDirectories'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>(map['virtualDirectories'], (value) => WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualPath: (map['virtualPath'] as String).input(),
     );
   }
 }

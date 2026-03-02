@@ -16,11 +16,9 @@ class GetAzureKeyVaultSecretProviderClassArgs {
   /// [azureKeyVaultSecretProviderClassName] The name of the AzureKeyVaultSecretProviderClass
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAzureKeyVaultSecretProviderClassArgs({
-    required pulumi.Output<String> azureKeyVaultSecretProviderClassName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureKeyVaultSecretProviderClassName = pulumi.Input.asInput<String>(azureKeyVaultSecretProviderClassName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureKeyVaultSecretProviderClassName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAzureKeyVaultSecretProviderClassArgs {
 
   factory GetAzureKeyVaultSecretProviderClassArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureKeyVaultSecretProviderClassArgs(
-      azureKeyVaultSecretProviderClassName: pulumi.Output.create<String>(map['azureKeyVaultSecretProviderClassName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureKeyVaultSecretProviderClassName: (map['azureKeyVaultSecretProviderClassName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

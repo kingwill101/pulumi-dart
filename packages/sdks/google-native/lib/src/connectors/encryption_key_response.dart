@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Encryption Key value.
 class EncryptionKeyResponse {
   /// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
   /// Type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EncryptionKeyResponse].
   /// [kmsKeyName] The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
@@ -25,8 +26,8 @@ class EncryptionKeyResponse {
 
   factory EncryptionKeyResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyResponse(
-      kmsKeyName: map['kmsKeyName'] as String,
-      type: map['type'] as String,
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

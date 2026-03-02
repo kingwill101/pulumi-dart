@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings related to speech recognition.
 class GoogleCloudDialogflowCxV3beta1SpeechToTextSettings {
   /// Whether to use speech adaptation for speech recognition.
-  final bool? enableSpeechAdaptation;
+  final pulumi.Input<bool>? enableSpeechAdaptation;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1SpeechToTextSettings].
   /// [enableSpeechAdaptation] Whether to use speech adaptation for speech recognition.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1SpeechToTextSettings {
 
   factory GoogleCloudDialogflowCxV3beta1SpeechToTextSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1SpeechToTextSettings(
-      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : map['enableSpeechAdaptation'] as bool,
+      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : (map['enableSpeechAdaptation'] as bool).input(),
     );
   }
 }

@@ -41,27 +41,17 @@ class ADCCatalogArgs {
   /// [units] Azure data catalog units.
   /// [users] Azure data catalog user list.
   ADCCatalogArgs({
-    pulumi.Output<List<Principals>>? admins,
-    pulumi.Output<String>? catalogName,
-    pulumi.Output<bool>? enableAutomaticUnitAdjustment,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sku,
-    pulumi.Output<bool>? successfullyProvisioned,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? units,
-    pulumi.Output<List<Principals>>? users,
-  }) :
-      admins = pulumi.Input.asOptionalInput<List<Principals>>(admins),
-      catalogName = pulumi.Input.asOptionalInput<String>(catalogName),
-      enableAutomaticUnitAdjustment = pulumi.Input.asOptionalInput<bool>(enableAutomaticUnitAdjustment),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      successfullyProvisioned = pulumi.Input.asOptionalInput<bool>(successfullyProvisioned),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      units = pulumi.Input.asOptionalInput<int>(units),
-      users = pulumi.Input.asOptionalInput<List<Principals>>(users);
+    this.admins,
+    this.catalogName,
+    this.enableAutomaticUnitAdjustment,
+    this.location,
+    required this.resourceGroupName,
+    this.sku,
+    this.successfullyProvisioned,
+    this.tags,
+    this.units,
+    this.users,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ADCCatalogArgs {
 
   factory ADCCatalogArgs.fromMap(Map<String, dynamic> map) {
     return ADCCatalogArgs(
-      admins: map['admins'] == null ? null : pulumi.Output.create<List<Principals>>(pulumi.Input.decodeList<Principals>(map['admins'], (value) => Principals.fromMap((value as Map).cast<String, dynamic>()))),
-      catalogName: map['catalogName'] == null ? null : pulumi.Output.create<String>(map['catalogName'] as String),
-      enableAutomaticUnitAdjustment: map['enableAutomaticUnitAdjustment'] == null ? null : pulumi.Output.create<bool>(map['enableAutomaticUnitAdjustment'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      successfullyProvisioned: map['successfullyProvisioned'] == null ? null : pulumi.Output.create<bool>(map['successfullyProvisioned'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      units: map['units'] == null ? null : pulumi.Output.create<int>(map['units'] as int),
-      users: map['users'] == null ? null : pulumi.Output.create<List<Principals>>(pulumi.Input.decodeList<Principals>(map['users'], (value) => Principals.fromMap((value as Map).cast<String, dynamic>()))),
+      admins: map['admins'] == null ? null : (pulumi.Input.decodeList<Principals>(map['admins'], (value) => Principals.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      catalogName: map['catalogName'] == null ? null : (map['catalogName'] as String).input(),
+      enableAutomaticUnitAdjustment: map['enableAutomaticUnitAdjustment'] == null ? null : (map['enableAutomaticUnitAdjustment'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      successfullyProvisioned: map['successfullyProvisioned'] == null ? null : (map['successfullyProvisioned'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      units: map['units'] == null ? null : (map['units'] as int).input(),
+      users: map['users'] == null ? null : (pulumi.Input.decodeList<Principals>(map['users'], (value) => Principals.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

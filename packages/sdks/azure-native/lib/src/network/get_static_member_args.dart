@@ -22,15 +22,11 @@ class GetStaticMemberArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [staticMemberName] The name of the static member.
   GetStaticMemberArgs({
-    required pulumi.Output<String> networkGroupName,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> staticMemberName,
-  }) :
-      networkGroupName = pulumi.Input.asInput<String>(networkGroupName),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      staticMemberName = pulumi.Input.asInput<String>(staticMemberName);
+    required this.networkGroupName,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    required this.staticMemberName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetStaticMemberArgs {
 
   factory GetStaticMemberArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticMemberArgs(
-      networkGroupName: pulumi.Output.create<String>(map['networkGroupName'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      staticMemberName: pulumi.Output.create<String>(map['staticMemberName'] as String),
+      networkGroupName: (map['networkGroupName'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      staticMemberName: (map['staticMemberName'] as String).input(),
     );
   }
 }

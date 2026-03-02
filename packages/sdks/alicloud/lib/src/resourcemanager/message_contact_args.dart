@@ -40,17 +40,12 @@ class MessageContactArgs {
   /// [phoneNumber] The mobile phone number of the contact.
   /// [title] The job title of the contact.Valid values:
   MessageContactArgs({
-    required pulumi.Output<String> emailAddress,
-    required pulumi.Output<String> messageContactName,
-    required pulumi.Output<List<String>> messageTypes,
-    pulumi.Output<String>? phoneNumber,
-    required pulumi.Output<String> title,
-  }) :
-      emailAddress = pulumi.Input.asInput<String>(emailAddress),
-      messageContactName = pulumi.Input.asInput<String>(messageContactName),
-      messageTypes = pulumi.Input.asInput<List<String>>(messageTypes),
-      phoneNumber = pulumi.Input.asOptionalInput<String>(phoneNumber),
-      title = pulumi.Input.asInput<String>(title);
+    required this.emailAddress,
+    required this.messageContactName,
+    required this.messageTypes,
+    this.phoneNumber,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,11 +59,11 @@ class MessageContactArgs {
 
   factory MessageContactArgs.fromMap(Map<String, dynamic> map) {
     return MessageContactArgs(
-      emailAddress: pulumi.Output.create<String>(map['emailAddress'] as String),
-      messageContactName: pulumi.Output.create<String>(map['messageContactName'] as String),
-      messageTypes: pulumi.Output.create<List<String>>((map['messageTypes'] as List).cast<String>()),
-      phoneNumber: map['phoneNumber'] == null ? null : pulumi.Output.create<String>(map['phoneNumber'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      emailAddress: (map['emailAddress'] as String).input(),
+      messageContactName: (map['messageContactName'] as String).input(),
+      messageTypes: ((map['messageTypes'] as List).cast<String>()).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class RepositoryPolicyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repositoryName] Name of the repository to apply the policy.
   RepositoryPolicyArgs({
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> repositoryName,
-  }) :
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName);
+    required this.policy,
+    this.region,
+    required this.repositoryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RepositoryPolicyArgs {
 
   factory RepositoryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryPolicyArgs(
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositoryName: pulumi.Output.create<String>(map['repositoryName'] as String),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
     );
   }
 }

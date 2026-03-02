@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_agent_properties.dart';
 
 class CollectorProperties {
-  final CollectorAgentProperties? agentProperties;
+  final pulumi.Input<CollectorAgentProperties>? agentProperties;
   /// The ARM id of the discovery service site.
-  final String? discoverySiteId;
+  final pulumi.Input<String>? discoverySiteId;
 
   /// Creates a new [CollectorProperties].
   /// [agentProperties] Optional.
@@ -17,15 +18,15 @@ class CollectorProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentProperties': ?agentProperties == null ? null : agentProperties!.toMap(),
+      'agentProperties': ?pulumi.Input.mapOptionalInputValue<CollectorAgentProperties, Map<String, dynamic>>(agentProperties, (value) => value.toMap()),
       'discoverySiteId': ?discoverySiteId,
     };
   }
 
   factory CollectorProperties.fromMap(Map<String, dynamic> map) {
     return CollectorProperties(
-      agentProperties: map['agentProperties'] == null ? null : CollectorAgentProperties.fromMap((map['agentProperties'] as Map).cast<String, dynamic>()),
-      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId'] as String,
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentProperties.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
     );
   }
 }

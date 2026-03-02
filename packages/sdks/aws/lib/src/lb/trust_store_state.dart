@@ -37,27 +37,17 @@ class TrustStoreState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   TrustStoreState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? arnSuffix,
-    pulumi.Output<String>? caCertificatesBundleS3Bucket,
-    pulumi.Output<String>? caCertificatesBundleS3Key,
-    pulumi.Output<String>? caCertificatesBundleS3ObjectVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      arnSuffix = pulumi.Input.asOptionalInput<String>(arnSuffix),
-      caCertificatesBundleS3Bucket = pulumi.Input.asOptionalInput<String>(caCertificatesBundleS3Bucket),
-      caCertificatesBundleS3Key = pulumi.Input.asOptionalInput<String>(caCertificatesBundleS3Key),
-      caCertificatesBundleS3ObjectVersion = pulumi.Input.asOptionalInput<String>(caCertificatesBundleS3ObjectVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.arnSuffix,
+    this.caCertificatesBundleS3Bucket,
+    this.caCertificatesBundleS3Key,
+    this.caCertificatesBundleS3ObjectVersion,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class TrustStoreState {
 
   factory TrustStoreState.fromMap(Map<String, dynamic> map) {
     return TrustStoreState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      arnSuffix: map['arnSuffix'] == null ? null : pulumi.Output.create<String>(map['arnSuffix'] as String),
-      caCertificatesBundleS3Bucket: map['caCertificatesBundleS3Bucket'] == null ? null : pulumi.Output.create<String>(map['caCertificatesBundleS3Bucket'] as String),
-      caCertificatesBundleS3Key: map['caCertificatesBundleS3Key'] == null ? null : pulumi.Output.create<String>(map['caCertificatesBundleS3Key'] as String),
-      caCertificatesBundleS3ObjectVersion: map['caCertificatesBundleS3ObjectVersion'] == null ? null : pulumi.Output.create<String>(map['caCertificatesBundleS3ObjectVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arnSuffix: map['arnSuffix'] == null ? null : (map['arnSuffix'] as String).input(),
+      caCertificatesBundleS3Bucket: map['caCertificatesBundleS3Bucket'] == null ? null : (map['caCertificatesBundleS3Bucket'] as String).input(),
+      caCertificatesBundleS3Key: map['caCertificatesBundleS3Key'] == null ? null : (map['caCertificatesBundleS3Key'] as String).input(),
+      caCertificatesBundleS3ObjectVersion: map['caCertificatesBundleS3ObjectVersion'] == null ? null : (map['caCertificatesBundleS3ObjectVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

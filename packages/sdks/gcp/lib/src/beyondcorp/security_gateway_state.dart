@@ -70,33 +70,20 @@ class SecurityGatewayState {
   /// [state] Output only. The operational state of the SecurityGateway.
   /// [updateTime] Output only. Timestamp when the resource was last modified.
   SecurityGatewayState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? delegatingServiceAccount,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? externalIps,
-    pulumi.Output<List<SecurityGatewayHub>>? hubs,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<SecurityGatewayProxyProtocolConfig>? proxyProtocolConfig,
-    pulumi.Output<String>? securityGatewayId,
-    pulumi.Output<SecurityGatewayServiceDiscovery>? serviceDiscovery,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      delegatingServiceAccount = pulumi.Input.asOptionalInput<String>(delegatingServiceAccount),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      externalIps = pulumi.Input.asOptionalInput<List<String>>(externalIps),
-      hubs = pulumi.Input.asOptionalInput<List<SecurityGatewayHub>>(hubs),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyProtocolConfig = pulumi.Input.asOptionalInput<SecurityGatewayProxyProtocolConfig>(proxyProtocolConfig),
-      securityGatewayId = pulumi.Input.asOptionalInput<String>(securityGatewayId),
-      serviceDiscovery = pulumi.Input.asOptionalInput<SecurityGatewayServiceDiscovery>(serviceDiscovery),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.delegatingServiceAccount,
+    this.displayName,
+    this.externalIps,
+    this.hubs,
+    this.location,
+    this.name,
+    this.project,
+    this.proxyProtocolConfig,
+    this.securityGatewayId,
+    this.serviceDiscovery,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -118,19 +105,19 @@ class SecurityGatewayState {
 
   factory SecurityGatewayState.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      delegatingServiceAccount: map['delegatingServiceAccount'] == null ? null : pulumi.Output.create<String>(map['delegatingServiceAccount'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      externalIps: map['externalIps'] == null ? null : pulumi.Output.create<List<String>>((map['externalIps'] as List).cast<String>()),
-      hubs: map['hubs'] == null ? null : pulumi.Output.create<List<SecurityGatewayHub>>(pulumi.Input.decodeList<SecurityGatewayHub>(map['hubs'], (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyProtocolConfig: map['proxyProtocolConfig'] == null ? null : pulumi.Output.create<SecurityGatewayProxyProtocolConfig>(SecurityGatewayProxyProtocolConfig.fromMap((map['proxyProtocolConfig'] as Map).cast<String, dynamic>())),
-      securityGatewayId: map['securityGatewayId'] == null ? null : pulumi.Output.create<String>(map['securityGatewayId'] as String),
-      serviceDiscovery: map['serviceDiscovery'] == null ? null : pulumi.Output.create<SecurityGatewayServiceDiscovery>(SecurityGatewayServiceDiscovery.fromMap((map['serviceDiscovery'] as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      delegatingServiceAccount: map['delegatingServiceAccount'] == null ? null : (map['delegatingServiceAccount'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      externalIps: map['externalIps'] == null ? null : ((map['externalIps'] as List).cast<String>()).input(),
+      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<SecurityGatewayHub>(map['hubs'], (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyProtocolConfig: map['proxyProtocolConfig'] == null ? null : (SecurityGatewayProxyProtocolConfig.fromMap((map['proxyProtocolConfig'] as Map).cast<String, dynamic>())).input(),
+      securityGatewayId: map['securityGatewayId'] == null ? null : (map['securityGatewayId'] as String).input(),
+      serviceDiscovery: map['serviceDiscovery'] == null ? null : (SecurityGatewayServiceDiscovery.fromMap((map['serviceDiscovery'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

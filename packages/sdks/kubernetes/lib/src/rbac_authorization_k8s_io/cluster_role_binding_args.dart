@@ -28,17 +28,12 @@ class ClusterRoleBindingArgs {
   /// [roleRef] RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
   /// [subjects] Subjects holds references to the objects the role applies to.
   ClusterRoleBindingArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    required pulumi.Output<RoleRef> roleRef,
-    pulumi.Output<List<Subject>>? subjects,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      roleRef = pulumi.Input.asInput<RoleRef>(roleRef),
-      subjects = pulumi.Input.asOptionalInput<List<Subject>>(subjects);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    required this.roleRef,
+    this.subjects,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ClusterRoleBindingArgs {
 
   factory ClusterRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return ClusterRoleBindingArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      roleRef: pulumi.Output.create<RoleRef>(RoleRef.fromMap((map['roleRef'] as Map).cast<String, dynamic>())),
-      subjects: map['subjects'] == null ? null : pulumi.Output.create<List<Subject>>(pulumi.Input.decodeList<Subject>(map['subjects'], (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      roleRef: (RoleRef.fromMap((map['roleRef'] as Map).cast<String, dynamic>())).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<Subject>(map['subjects'], (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

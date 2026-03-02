@@ -43,29 +43,18 @@ class WorkloadClassifierArgs {
   /// [workloadClassifierName] The name of the workload classifier to create/update.
   /// [workloadGroupName] The name of the workload group from which to receive the classifier from.
   WorkloadClassifierArgs({
-    pulumi.Output<String>? context,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? importance,
-    pulumi.Output<String>? label,
-    required pulumi.Output<String> memberName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? workloadClassifierName,
-    required pulumi.Output<String> workloadGroupName,
-  }) :
-      context = pulumi.Input.asOptionalInput<String>(context),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      importance = pulumi.Input.asOptionalInput<String>(importance),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      memberName = pulumi.Input.asInput<String>(memberName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      workloadClassifierName = pulumi.Input.asOptionalInput<String>(workloadClassifierName),
-      workloadGroupName = pulumi.Input.asInput<String>(workloadGroupName);
+    this.context,
+    required this.databaseName,
+    this.endTime,
+    this.importance,
+    this.label,
+    required this.memberName,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.startTime,
+    this.workloadClassifierName,
+    required this.workloadGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class WorkloadClassifierArgs {
 
   factory WorkloadClassifierArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadClassifierArgs(
-      context: map['context'] == null ? null : pulumi.Output.create<String>(map['context'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      importance: map['importance'] == null ? null : pulumi.Output.create<String>(map['importance'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      memberName: pulumi.Output.create<String>(map['memberName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      workloadClassifierName: map['workloadClassifierName'] == null ? null : pulumi.Output.create<String>(map['workloadClassifierName'] as String),
-      workloadGroupName: pulumi.Output.create<String>(map['workloadGroupName'] as String),
+      context: map['context'] == null ? null : (map['context'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      memberName: (map['memberName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      workloadClassifierName: map['workloadClassifierName'] == null ? null : (map['workloadClassifierName'] as String).input(),
+      workloadGroupName: (map['workloadGroupName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
   /// (Output)
   /// The human-readable name of the page, unique within the flow.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The unique identifier of the page.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage].
   /// [displayName] (Output)
@@ -26,8 +27,8 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
 
   factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

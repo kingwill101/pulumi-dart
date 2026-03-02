@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertRuleAnomalyThresholdObservation {
   /// The description of the threshold observation.
-  final String description;
+  final pulumi.Input<String> description;
   /// The max value of the threshold observation.
-  final String max;
+  final pulumi.Input<String> max;
   /// The min value of the threshold observation.
-  final String min;
+  final pulumi.Input<String> min;
   /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the threshold observation.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetAlertRuleAnomalyThresholdObservation].
   /// [description] The description of the threshold observation.
@@ -39,11 +40,11 @@ class GetAlertRuleAnomalyThresholdObservation {
 
   factory GetAlertRuleAnomalyThresholdObservation.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleAnomalyThresholdObservation(
-      description: map['description'] as String,
-      max: map['max'] as String,
-      min: map['min'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      description: (map['description'] as String).input(),
+      max: (map['max'] as String).input(),
+      min: (map['min'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

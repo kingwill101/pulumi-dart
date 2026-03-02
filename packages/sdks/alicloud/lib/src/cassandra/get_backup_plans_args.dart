@@ -16,11 +16,9 @@ class GetBackupPlansArgs {
   /// [clusterId] The ID of the cluster for the backup.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetBackupPlansArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.clusterId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBackupPlansArgs {
 
   factory GetBackupPlansArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlansArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

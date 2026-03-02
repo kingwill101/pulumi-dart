@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'as2_acknowledgement_connection_settings_response.dart';
 import 'as2_envelope_settings_response.dart';
 import 'as2_error_settings_response.dart';
@@ -11,19 +12,19 @@ import 'as2_validation_settings_response.dart';
 /// The AS2 agreement protocol settings.
 class AS2ProtocolSettingsResponse {
   /// The acknowledgement connection settings.
-  final AS2AcknowledgementConnectionSettingsResponse acknowledgementConnectionSettings;
+  final pulumi.Input<AS2AcknowledgementConnectionSettingsResponse> acknowledgementConnectionSettings;
   /// The envelope settings.
-  final AS2EnvelopeSettingsResponse envelopeSettings;
+  final pulumi.Input<AS2EnvelopeSettingsResponse> envelopeSettings;
   /// The error settings.
-  final AS2ErrorSettingsResponse errorSettings;
+  final pulumi.Input<AS2ErrorSettingsResponse> errorSettings;
   /// The MDN settings.
-  final AS2MdnSettingsResponse mdnSettings;
+  final pulumi.Input<AS2MdnSettingsResponse> mdnSettings;
   /// The message connection settings.
-  final AS2MessageConnectionSettingsResponse messageConnectionSettings;
+  final pulumi.Input<AS2MessageConnectionSettingsResponse> messageConnectionSettings;
   /// The security settings.
-  final AS2SecuritySettingsResponse securitySettings;
+  final pulumi.Input<AS2SecuritySettingsResponse> securitySettings;
   /// The validation settings.
-  final AS2ValidationSettingsResponse validationSettings;
+  final pulumi.Input<AS2ValidationSettingsResponse> validationSettings;
 
   /// Creates a new [AS2ProtocolSettingsResponse].
   /// [acknowledgementConnectionSettings] The acknowledgement connection settings.
@@ -45,25 +46,25 @@ class AS2ProtocolSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acknowledgementConnectionSettings': acknowledgementConnectionSettings.toMap(),
-      'envelopeSettings': envelopeSettings.toMap(),
-      'errorSettings': errorSettings.toMap(),
-      'mdnSettings': mdnSettings.toMap(),
-      'messageConnectionSettings': messageConnectionSettings.toMap(),
-      'securitySettings': securitySettings.toMap(),
-      'validationSettings': validationSettings.toMap(),
+      'acknowledgementConnectionSettings': pulumi.Input.mapInputValue<AS2AcknowledgementConnectionSettingsResponse, Map<String, dynamic>>(acknowledgementConnectionSettings, (value) => value.toMap()),
+      'envelopeSettings': pulumi.Input.mapInputValue<AS2EnvelopeSettingsResponse, Map<String, dynamic>>(envelopeSettings, (value) => value.toMap()),
+      'errorSettings': pulumi.Input.mapInputValue<AS2ErrorSettingsResponse, Map<String, dynamic>>(errorSettings, (value) => value.toMap()),
+      'mdnSettings': pulumi.Input.mapInputValue<AS2MdnSettingsResponse, Map<String, dynamic>>(mdnSettings, (value) => value.toMap()),
+      'messageConnectionSettings': pulumi.Input.mapInputValue<AS2MessageConnectionSettingsResponse, Map<String, dynamic>>(messageConnectionSettings, (value) => value.toMap()),
+      'securitySettings': pulumi.Input.mapInputValue<AS2SecuritySettingsResponse, Map<String, dynamic>>(securitySettings, (value) => value.toMap()),
+      'validationSettings': pulumi.Input.mapInputValue<AS2ValidationSettingsResponse, Map<String, dynamic>>(validationSettings, (value) => value.toMap()),
     };
   }
 
   factory AS2ProtocolSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AS2ProtocolSettingsResponse(
-      acknowledgementConnectionSettings: AS2AcknowledgementConnectionSettingsResponse.fromMap((map['acknowledgementConnectionSettings'] as Map).cast<String, dynamic>()),
-      envelopeSettings: AS2EnvelopeSettingsResponse.fromMap((map['envelopeSettings'] as Map).cast<String, dynamic>()),
-      errorSettings: AS2ErrorSettingsResponse.fromMap((map['errorSettings'] as Map).cast<String, dynamic>()),
-      mdnSettings: AS2MdnSettingsResponse.fromMap((map['mdnSettings'] as Map).cast<String, dynamic>()),
-      messageConnectionSettings: AS2MessageConnectionSettingsResponse.fromMap((map['messageConnectionSettings'] as Map).cast<String, dynamic>()),
-      securitySettings: AS2SecuritySettingsResponse.fromMap((map['securitySettings'] as Map).cast<String, dynamic>()),
-      validationSettings: AS2ValidationSettingsResponse.fromMap((map['validationSettings'] as Map).cast<String, dynamic>()),
+      acknowledgementConnectionSettings: (AS2AcknowledgementConnectionSettingsResponse.fromMap((map['acknowledgementConnectionSettings'] as Map).cast<String, dynamic>())).input(),
+      envelopeSettings: (AS2EnvelopeSettingsResponse.fromMap((map['envelopeSettings'] as Map).cast<String, dynamic>())).input(),
+      errorSettings: (AS2ErrorSettingsResponse.fromMap((map['errorSettings'] as Map).cast<String, dynamic>())).input(),
+      mdnSettings: (AS2MdnSettingsResponse.fromMap((map['mdnSettings'] as Map).cast<String, dynamic>())).input(),
+      messageConnectionSettings: (AS2MessageConnectionSettingsResponse.fromMap((map['messageConnectionSettings'] as Map).cast<String, dynamic>())).input(),
+      securitySettings: (AS2SecuritySettingsResponse.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
+      validationSettings: (AS2ValidationSettingsResponse.fromMap((map['validationSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

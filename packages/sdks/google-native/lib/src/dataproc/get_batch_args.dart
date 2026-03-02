@@ -16,13 +16,10 @@ class GetBatchArgs {
   /// [location] Required.
   /// [project] Optional.
   GetBatchArgs({
-    required pulumi.Output<String> batchId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      batchId = pulumi.Input.asInput<String>(batchId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.batchId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBatchArgs {
 
   factory GetBatchArgs.fromMap(Map<String, dynamic> map) {
     return GetBatchArgs(
-      batchId: pulumi.Output.create<String>(map['batchId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      batchId: (map['batchId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

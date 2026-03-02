@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Non secret deployment resource id reference.
 class OpenDeploymentResourceReferenceResponse {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The resource reference arm id type.
   /// Expected value is 'Open'.
-  final String idType;
+  final pulumi.Input<String> idType;
 
   /// Creates a new [OpenDeploymentResourceReferenceResponse].
   /// [id] Resource ID.
@@ -26,8 +27,8 @@ class OpenDeploymentResourceReferenceResponse {
 
   factory OpenDeploymentResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return OpenDeploymentResourceReferenceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      idType: map['idType'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      idType: (map['idType'] as String).input(),
     );
   }
 }

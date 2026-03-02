@@ -30,19 +30,13 @@ class AuthorizedOrgsDescArgs {
   /// [name] Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
   /// [orgs] The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
   AuthorizedOrgsDescArgs({
-    required pulumi.Output<String> accessPolicyId,
-    pulumi.Output<AuthorizedOrgsDescAssetType>? assetType,
-    pulumi.Output<AuthorizedOrgsDescAuthorizationDirection>? authorizationDirection,
-    pulumi.Output<AuthorizedOrgsDescAuthorizationType>? authorizationType,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? orgs,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
-      assetType = pulumi.Input.asOptionalInput<AuthorizedOrgsDescAssetType>(assetType),
-      authorizationDirection = pulumi.Input.asOptionalInput<AuthorizedOrgsDescAuthorizationDirection>(authorizationDirection),
-      authorizationType = pulumi.Input.asOptionalInput<AuthorizedOrgsDescAuthorizationType>(authorizationType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgs = pulumi.Input.asOptionalInput<List<String>>(orgs);
+    required this.accessPolicyId,
+    this.assetType,
+    this.authorizationDirection,
+    this.authorizationType,
+    this.name,
+    this.orgs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class AuthorizedOrgsDescArgs {
 
   factory AuthorizedOrgsDescArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescArgs(
-      accessPolicyId: pulumi.Output.create<String>(map['accessPolicyId'] as String),
-      assetType: map['assetType'] == null ? null : pulumi.Output.create<AuthorizedOrgsDescAssetType>(AuthorizedOrgsDescAssetType.fromValue(map['assetType'] as String)),
-      authorizationDirection: map['authorizationDirection'] == null ? null : pulumi.Output.create<AuthorizedOrgsDescAuthorizationDirection>(AuthorizedOrgsDescAuthorizationDirection.fromValue(map['authorizationDirection'] as String)),
-      authorizationType: map['authorizationType'] == null ? null : pulumi.Output.create<AuthorizedOrgsDescAuthorizationType>(AuthorizedOrgsDescAuthorizationType.fromValue(map['authorizationType'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgs: map['orgs'] == null ? null : pulumi.Output.create<List<String>>((map['orgs'] as List).cast<String>()),
+      accessPolicyId: (map['accessPolicyId'] as String).input(),
+      assetType: map['assetType'] == null ? null : (AuthorizedOrgsDescAssetType.fromValue(map['assetType'] as String)).input(),
+      authorizationDirection: map['authorizationDirection'] == null ? null : (AuthorizedOrgsDescAuthorizationDirection.fromValue(map['authorizationDirection'] as String)).input(),
+      authorizationType: map['authorizationType'] == null ? null : (AuthorizedOrgsDescAuthorizationType.fromValue(map['authorizationType'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgs: map['orgs'] == null ? null : ((map['orgs'] as List).cast<String>()).input(),
     );
   }
 }

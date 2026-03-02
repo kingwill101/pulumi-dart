@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Ssis folder.
 class SsisFolderResponse {
   /// Metadata description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Metadata id.
-  final double? id;
+  final pulumi.Input<double>? id;
   /// Metadata name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of SSIS object metadata.
   /// Expected value is 'Folder'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SsisFolderResponse].
   /// [description] Metadata description.
@@ -36,10 +37,10 @@ class SsisFolderResponse {
 
   factory SsisFolderResponse.fromMap(Map<String, dynamic> map) {
     return SsisFolderResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      id: map['id'] == null ? null : map['id'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

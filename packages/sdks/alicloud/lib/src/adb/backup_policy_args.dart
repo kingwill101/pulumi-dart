@@ -19,13 +19,10 @@ class BackupPolicyArgs {
   /// [preferredBackupPeriods] ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
   /// [preferredBackupTime] ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
   BackupPolicyArgs({
-    required pulumi.Output<String> dbClusterId,
-    required pulumi.Output<List<String>> preferredBackupPeriods,
-    required pulumi.Output<String> preferredBackupTime,
-  }) :
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      preferredBackupPeriods = pulumi.Input.asInput<List<String>>(preferredBackupPeriods),
-      preferredBackupTime = pulumi.Input.asInput<String>(preferredBackupTime);
+    required this.dbClusterId,
+    required this.preferredBackupPeriods,
+    required this.preferredBackupTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      preferredBackupPeriods: pulumi.Output.create<List<String>>((map['preferredBackupPeriods'] as List).cast<String>()),
-      preferredBackupTime: pulumi.Output.create<String>(map['preferredBackupTime'] as String),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      preferredBackupPeriods: ((map['preferredBackupPeriods'] as List).cast<String>()).input(),
+      preferredBackupTime: (map['preferredBackupTime'] as String).input(),
     );
   }
 }

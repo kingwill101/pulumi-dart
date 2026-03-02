@@ -19,15 +19,11 @@ class VpcEndpointConnectionAccepterState {
   /// [vpcEndpointServiceId] AWS VPC Endpoint Service ID.
   /// [vpcEndpointState] State of the VPC Endpoint.
   VpcEndpointConnectionAccepterState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vpcEndpointId,
-    pulumi.Output<String>? vpcEndpointServiceId,
-    pulumi.Output<String>? vpcEndpointState,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcEndpointId = pulumi.Input.asOptionalInput<String>(vpcEndpointId),
-      vpcEndpointServiceId = pulumi.Input.asOptionalInput<String>(vpcEndpointServiceId),
-      vpcEndpointState = pulumi.Input.asOptionalInput<String>(vpcEndpointState);
+    this.region,
+    this.vpcEndpointId,
+    this.vpcEndpointServiceId,
+    this.vpcEndpointState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class VpcEndpointConnectionAccepterState {
 
   factory VpcEndpointConnectionAccepterState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionAccepterState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointId'] as String),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointServiceId'] as String),
-      vpcEndpointState: map['vpcEndpointState'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointState'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : (map['vpcEndpointServiceId'] as String).input(),
+      vpcEndpointState: map['vpcEndpointState'] == null ? null : (map['vpcEndpointState'] as String).input(),
     );
   }
 }

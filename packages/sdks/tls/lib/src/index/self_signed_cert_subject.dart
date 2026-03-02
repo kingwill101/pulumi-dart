@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SelfSignedCertSubject {
   /// Distinguished name: `CN`
-  final String? commonName;
+  final pulumi.Input<String>? commonName;
   /// Distinguished name: `C`
-  final String? country;
+  final pulumi.Input<String>? country;
   /// ASN.1 Object Identifier (OID): `1.2.840.113549.1.9.1`
-  final String? emailAddress;
+  final pulumi.Input<String>? emailAddress;
   /// Distinguished name: `L`
-  final String? locality;
+  final pulumi.Input<String>? locality;
   /// Distinguished name: `O`
-  final String? organization;
+  final pulumi.Input<String>? organization;
   /// Distinguished name: `OU`
-  final String? organizationalUnit;
+  final pulumi.Input<String>? organizationalUnit;
   /// Distinguished name: `PC`
-  final String? postalCode;
+  final pulumi.Input<String>? postalCode;
   /// Distinguished name: `ST`
-  final String? province;
+  final pulumi.Input<String>? province;
   /// Distinguished name: `SERIALNUMBER`
-  final String? serialNumber;
+  final pulumi.Input<String>? serialNumber;
   /// Distinguished name: `STREET`
-  final List<String>? streetAddresses;
+  final pulumi.Input<List<String>>? streetAddresses;
 
   /// Creates a new [SelfSignedCertSubject].
   /// [commonName] Distinguished name: `CN`
@@ -64,16 +65,16 @@ class SelfSignedCertSubject {
 
   factory SelfSignedCertSubject.fromMap(Map<String, dynamic> map) {
     return SelfSignedCertSubject(
-      commonName: map['commonName'] == null ? null : map['commonName'] as String,
-      country: map['country'] == null ? null : map['country'] as String,
-      emailAddress: map['emailAddress'] == null ? null : map['emailAddress'] as String,
-      locality: map['locality'] == null ? null : map['locality'] as String,
-      organization: map['organization'] == null ? null : map['organization'] as String,
-      organizationalUnit: map['organizationalUnit'] == null ? null : map['organizationalUnit'] as String,
-      postalCode: map['postalCode'] == null ? null : map['postalCode'] as String,
-      province: map['province'] == null ? null : map['province'] as String,
-      serialNumber: map['serialNumber'] == null ? null : map['serialNumber'] as String,
-      streetAddresses: map['streetAddresses'] == null ? null : (map['streetAddresses'] as List).cast<String>(),
+      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      country: map['country'] == null ? null : (map['country'] as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
+      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
+      province: map['province'] == null ? null : (map['province'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      streetAddresses: map['streetAddresses'] == null ? null : ((map['streetAddresses'] as List).cast<String>()).input(),
     );
   }
 }

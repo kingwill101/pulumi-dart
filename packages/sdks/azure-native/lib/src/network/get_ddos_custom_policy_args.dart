@@ -16,11 +16,9 @@ class GetDdosCustomPolicyArgs {
   /// [ddosCustomPolicyName] The name of the DDoS custom policy.
   /// [resourceGroupName] The name of the resource group.
   GetDdosCustomPolicyArgs({
-    required pulumi.Output<String> ddosCustomPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      ddosCustomPolicyName = pulumi.Input.asInput<String>(ddosCustomPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.ddosCustomPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDdosCustomPolicyArgs {
 
   factory GetDdosCustomPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosCustomPolicyArgs(
-      ddosCustomPolicyName: pulumi.Output.create<String>(map['ddosCustomPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ddosCustomPolicyName: (map['ddosCustomPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

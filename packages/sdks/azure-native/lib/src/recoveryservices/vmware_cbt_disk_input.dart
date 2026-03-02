@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMwareCbt disk input.
 class VMwareCbtDiskInput {
   /// The DiskEncryptionSet ARM Id.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// The disk Id.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The disk type.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// A value indicating whether the disk is the OS disk.
-  final String isOSDisk;
+  final pulumi.Input<String> isOSDisk;
   /// The log storage account ARM Id.
-  final String logStorageAccountId;
+  final pulumi.Input<String> logStorageAccountId;
   /// The key vault secret name of the log storage account.
-  final String logStorageAccountSasSecretName;
+  final pulumi.Input<String> logStorageAccountSasSecretName;
   /// The logical sector size (in bytes), 512 by default.
-  final int? sectorSizeInBytes;
+  final pulumi.Input<int>? sectorSizeInBytes;
 
   /// Creates a new [VMwareCbtDiskInput].
   /// [diskEncryptionSetId] The DiskEncryptionSet ARM Id.
@@ -50,13 +51,13 @@ class VMwareCbtDiskInput {
 
   factory VMwareCbtDiskInput.fromMap(Map<String, dynamic> map) {
     return VMwareCbtDiskInput(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      diskId: map['diskId'] as String,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      isOSDisk: map['isOSDisk'] as String,
-      logStorageAccountId: map['logStorageAccountId'] as String,
-      logStorageAccountSasSecretName: map['logStorageAccountSasSecretName'] as String,
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : map['sectorSizeInBytes'] as int,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      isOSDisk: (map['isOSDisk'] as String).input(),
+      logStorageAccountId: (map['logStorageAccountId'] as String).input(),
+      logStorageAccountSasSecretName: (map['logStorageAccountSasSecretName'] as String).input(),
+      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes'] as int).input(),
     );
   }
 }

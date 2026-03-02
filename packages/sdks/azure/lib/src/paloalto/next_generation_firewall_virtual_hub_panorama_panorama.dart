@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualHubPanoramaPanorama {
-  final String? deviceGroupName;
-  final String? hostName;
+  final pulumi.Input<String>? deviceGroupName;
+  final pulumi.Input<String>? hostName;
   /// The name which should be used for this Palo Alto Next Generation Firewall VHub Panorama. Changing this forces a new Palo Alto Next Generation Firewall VHub Panorama to be created.
-  final String? name;
-  final String? panoramaServer1;
-  final String? panoramaServer2;
-  final String? templateName;
-  final String? virtualMachineSshKey;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? panoramaServer1;
+  final pulumi.Input<String>? panoramaServer2;
+  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String>? virtualMachineSshKey;
 
   /// Creates a new [NextGenerationFirewallVirtualHubPanoramaPanorama].
   /// [deviceGroupName] Optional.
@@ -43,13 +44,13 @@ class NextGenerationFirewallVirtualHubPanoramaPanorama {
 
   factory NextGenerationFirewallVirtualHubPanoramaPanorama.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubPanoramaPanorama(
-      deviceGroupName: map['deviceGroupName'] == null ? null : map['deviceGroupName'] as String,
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      panoramaServer1: map['panoramaServer1'] == null ? null : map['panoramaServer1'] as String,
-      panoramaServer2: map['panoramaServer2'] == null ? null : map['panoramaServer2'] as String,
-      templateName: map['templateName'] == null ? null : map['templateName'] as String,
-      virtualMachineSshKey: map['virtualMachineSshKey'] == null ? null : map['virtualMachineSshKey'] as String,
+      deviceGroupName: map['deviceGroupName'] == null ? null : (map['deviceGroupName'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      panoramaServer1: map['panoramaServer1'] == null ? null : (map['panoramaServer1'] as String).input(),
+      panoramaServer2: map['panoramaServer2'] == null ? null : (map['panoramaServer2'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      virtualMachineSshKey: map['virtualMachineSshKey'] == null ? null : (map['virtualMachineSshKey'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Secret provides a reference to entries in Secret Manager.
 class SecretResponse {
   /// The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
 
   /// Creates a new [SecretResponse].
   /// [secretVersion] The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
@@ -20,7 +21,7 @@ class SecretResponse {
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
     return SecretResponse(
-      secretVersion: map['secretVersion'] as String,
+      secretVersion: (map['secretVersion'] as String).input(),
     );
   }
 }

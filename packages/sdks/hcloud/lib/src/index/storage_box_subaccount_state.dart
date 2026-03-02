@@ -35,25 +35,16 @@ class StorageBoxSubaccountState {
   /// [storageBoxId] ID of the Storage Box.
   /// [username] Username of the Storage Box Subaccount.
   StorageBoxSubaccountState({
-    pulumi.Output<StorageBoxSubaccountAccessSettings>? accessSettings,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? homeDirectory,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? server,
-    pulumi.Output<int>? storageBoxId,
-    pulumi.Output<String>? username,
-  }) :
-      accessSettings = pulumi.Input.asOptionalInput<StorageBoxSubaccountAccessSettings>(accessSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      homeDirectory = pulumi.Input.asOptionalInput<String>(homeDirectory),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      server = pulumi.Input.asOptionalInput<String>(server),
-      storageBoxId = pulumi.Input.asOptionalInput<int>(storageBoxId),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.accessSettings,
+    this.description,
+    this.homeDirectory,
+    this.labels,
+    this.name,
+    this.password,
+    this.server,
+    this.storageBoxId,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class StorageBoxSubaccountState {
 
   factory StorageBoxSubaccountState.fromMap(Map<String, dynamic> map) {
     return StorageBoxSubaccountState(
-      accessSettings: map['accessSettings'] == null ? null : pulumi.Output.create<StorageBoxSubaccountAccessSettings>(StorageBoxSubaccountAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      homeDirectory: map['homeDirectory'] == null ? null : pulumi.Output.create<String>(map['homeDirectory'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      server: map['server'] == null ? null : pulumi.Output.create<String>(map['server'] as String),
-      storageBoxId: map['storageBoxId'] == null ? null : pulumi.Output.create<int>(map['storageBoxId'] as int),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      accessSettings: map['accessSettings'] == null ? null : (StorageBoxSubaccountAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      storageBoxId: map['storageBoxId'] == null ? null : (map['storageBoxId'] as int).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

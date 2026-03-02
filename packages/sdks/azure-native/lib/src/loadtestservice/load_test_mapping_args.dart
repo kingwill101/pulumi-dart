@@ -25,17 +25,12 @@ class LoadTestMappingArgs {
   /// [sourceResourceId] Mapped source resource Id.
   /// [testId] Mapped Azure Load Test resource test-id.
   LoadTestMappingArgs({
-    pulumi.Output<String>? azureLoadTestingResourceId,
-    pulumi.Output<String>? loadTestMappingName,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? sourceResourceId,
-    pulumi.Output<String>? testId,
-  }) :
-      azureLoadTestingResourceId = pulumi.Input.asOptionalInput<String>(azureLoadTestingResourceId),
-      loadTestMappingName = pulumi.Input.asOptionalInput<String>(loadTestMappingName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      sourceResourceId = pulumi.Input.asOptionalInput<String>(sourceResourceId),
-      testId = pulumi.Input.asOptionalInput<String>(testId);
+    this.azureLoadTestingResourceId,
+    this.loadTestMappingName,
+    required this.resourceUri,
+    this.sourceResourceId,
+    this.testId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LoadTestMappingArgs {
 
   factory LoadTestMappingArgs.fromMap(Map<String, dynamic> map) {
     return LoadTestMappingArgs(
-      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : pulumi.Output.create<String>(map['azureLoadTestingResourceId'] as String),
-      loadTestMappingName: map['loadTestMappingName'] == null ? null : pulumi.Output.create<String>(map['loadTestMappingName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      sourceResourceId: map['sourceResourceId'] == null ? null : pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      testId: map['testId'] == null ? null : pulumi.Output.create<String>(map['testId'] as String),
+      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : (map['azureLoadTestingResourceId'] as String).input(),
+      loadTestMappingName: map['loadTestMappingName'] == null ? null : (map['loadTestMappingName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      testId: map['testId'] == null ? null : (map['testId'] as String).input(),
     );
   }
 }

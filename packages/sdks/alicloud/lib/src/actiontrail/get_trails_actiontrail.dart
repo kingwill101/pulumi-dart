@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrailsActiontrail {
   /// Indicates whether the event is a read or a write event.
-  final String eventRw;
+  final pulumi.Input<String> eventRw;
   /// The id of the ActionTrail Trail. It is the same as trail name.
-  final String id;
-  final bool isOrganizationTrail;
+  final pulumi.Input<String> id;
+  final pulumi.Input<bool> isOrganizationTrail;
   /// The name of the specified OSS bucket.
-  final String ossBucketName;
+  final pulumi.Input<String> ossBucketName;
   /// The prefix of the specified OSS bucket name.
-  final String ossKeyPrefix;
-  final String ossWriteRoleArn;
+  final pulumi.Input<String> ossKeyPrefix;
+  final pulumi.Input<String> ossWriteRoleArn;
   /// The unique ARN of the Log Service project.
-  final String slsProjectArn;
+  final pulumi.Input<String> slsProjectArn;
   /// The unique ARN of the Log Service role.
-  final String slsWriteRoleArn;
+  final pulumi.Input<String> slsWriteRoleArn;
   /// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The name of the ActionTrail Trail.
-  final String trailName;
+  final pulumi.Input<String> trailName;
   /// The regions to which the trail is applied.
-  final String trailRegion;
+  final pulumi.Input<String> trailRegion;
 
   /// Creates a new [GetTrailsActiontrail].
   /// [eventRw] Indicates whether the event is a read or a write event.
@@ -67,17 +68,17 @@ class GetTrailsActiontrail {
 
   factory GetTrailsActiontrail.fromMap(Map<String, dynamic> map) {
     return GetTrailsActiontrail(
-      eventRw: map['eventRw'] as String,
-      id: map['id'] as String,
-      isOrganizationTrail: map['isOrganizationTrail'] as bool,
-      ossBucketName: map['ossBucketName'] as String,
-      ossKeyPrefix: map['ossKeyPrefix'] as String,
-      ossWriteRoleArn: map['ossWriteRoleArn'] as String,
-      slsProjectArn: map['slsProjectArn'] as String,
-      slsWriteRoleArn: map['slsWriteRoleArn'] as String,
-      status: map['status'] as String,
-      trailName: map['trailName'] as String,
-      trailRegion: map['trailRegion'] as String,
+      eventRw: (map['eventRw'] as String).input(),
+      id: (map['id'] as String).input(),
+      isOrganizationTrail: (map['isOrganizationTrail'] as bool).input(),
+      ossBucketName: (map['ossBucketName'] as String).input(),
+      ossKeyPrefix: (map['ossKeyPrefix'] as String).input(),
+      ossWriteRoleArn: (map['ossWriteRoleArn'] as String).input(),
+      slsProjectArn: (map['slsProjectArn'] as String).input(),
+      slsWriteRoleArn: (map['slsWriteRoleArn'] as String).input(),
+      status: (map['status'] as String).input(),
+      trailName: (map['trailName'] as String).input(),
+      trailRegion: (map['trailRegion'] as String).input(),
     );
   }
 }

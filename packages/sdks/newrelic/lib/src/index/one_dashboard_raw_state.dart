@@ -29,21 +29,14 @@ class OneDashboardRawState {
   /// [permalink] The URL for viewing the dashboard.
   /// [permissions] Determines who can see the dashboard in an account. Valid values are `private`, `public_read_only`, or `public_read_write`. Defaults to `public_read_only`.
   OneDashboardRawState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? guid,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<OneDashboardRawPage>>? pages,
-    pulumi.Output<String>? permalink,
-    pulumi.Output<String>? permissions,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      guid = pulumi.Input.asOptionalInput<String>(guid),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pages = pulumi.Input.asOptionalInput<List<OneDashboardRawPage>>(pages),
-      permalink = pulumi.Input.asOptionalInput<String>(permalink),
-      permissions = pulumi.Input.asOptionalInput<String>(permissions);
+    this.accountId,
+    this.description,
+    this.guid,
+    this.name,
+    this.pages,
+    this.permalink,
+    this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class OneDashboardRawState {
 
   factory OneDashboardRawState.fromMap(Map<String, dynamic> map) {
     return OneDashboardRawState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      guid: map['guid'] == null ? null : pulumi.Output.create<String>(map['guid'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pages: map['pages'] == null ? null : pulumi.Output.create<List<OneDashboardRawPage>>(pulumi.Input.decodeList<OneDashboardRawPage>(map['pages'], (value) => OneDashboardRawPage.fromMap((value as Map).cast<String, dynamic>()))),
-      permalink: map['permalink'] == null ? null : pulumi.Output.create<String>(map['permalink'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<String>(map['permissions'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<OneDashboardRawPage>(map['pages'], (value) => OneDashboardRawPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      permalink: map['permalink'] == null ? null : (map['permalink'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
     );
   }
 }

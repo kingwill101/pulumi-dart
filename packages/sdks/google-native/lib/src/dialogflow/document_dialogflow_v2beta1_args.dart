@@ -47,33 +47,20 @@ class DocumentDialogflowV2beta1Args {
   /// [project] Optional.
   /// [rawContent] The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
   DocumentDialogflowV2beta1Args({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? contentUri,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableAutoReload,
-    pulumi.Output<bool>? importGcsCustomMetadata,
-    required pulumi.Output<String> knowledgeBaseId,
-    required pulumi.Output<List<DocumentKnowledgeTypesItemDialogflowV2beta1>> knowledgeTypes,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> mimeType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? rawContent,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentUri = pulumi.Input.asOptionalInput<String>(contentUri),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableAutoReload = pulumi.Input.asOptionalInput<bool>(enableAutoReload),
-      importGcsCustomMetadata = pulumi.Input.asOptionalInput<bool>(importGcsCustomMetadata),
-      knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
-      knowledgeTypes = pulumi.Input.asInput<List<DocumentKnowledgeTypesItemDialogflowV2beta1>>(knowledgeTypes),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      mimeType = pulumi.Input.asInput<String>(mimeType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rawContent = pulumi.Input.asOptionalInput<String>(rawContent);
+    this.content,
+    this.contentUri,
+    required this.displayName,
+    this.enableAutoReload,
+    this.importGcsCustomMetadata,
+    required this.knowledgeBaseId,
+    required this.knowledgeTypes,
+    this.location,
+    this.metadata,
+    required this.mimeType,
+    this.name,
+    this.project,
+    this.rawContent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class DocumentDialogflowV2beta1Args {
 
   factory DocumentDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return DocumentDialogflowV2beta1Args(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentUri: map['contentUri'] == null ? null : pulumi.Output.create<String>(map['contentUri'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableAutoReload: map['enableAutoReload'] == null ? null : pulumi.Output.create<bool>(map['enableAutoReload'] as bool),
-      importGcsCustomMetadata: map['importGcsCustomMetadata'] == null ? null : pulumi.Output.create<bool>(map['importGcsCustomMetadata'] as bool),
-      knowledgeBaseId: pulumi.Output.create<String>(map['knowledgeBaseId'] as String),
-      knowledgeTypes: pulumi.Output.create<List<DocumentKnowledgeTypesItemDialogflowV2beta1>>(pulumi.Input.decodeList<DocumentKnowledgeTypesItemDialogflowV2beta1>(map['knowledgeTypes'], (value) => DocumentKnowledgeTypesItemDialogflowV2beta1.fromValue(value as String))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      mimeType: pulumi.Output.create<String>(map['mimeType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rawContent: map['rawContent'] == null ? null : pulumi.Output.create<String>(map['rawContent'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentUri: map['contentUri'] == null ? null : (map['contentUri'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enableAutoReload: map['enableAutoReload'] == null ? null : (map['enableAutoReload'] as bool).input(),
+      importGcsCustomMetadata: map['importGcsCustomMetadata'] == null ? null : (map['importGcsCustomMetadata'] as bool).input(),
+      knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
+      knowledgeTypes: (pulumi.Input.decodeList<DocumentKnowledgeTypesItemDialogflowV2beta1>(map['knowledgeTypes'], (value) => DocumentKnowledgeTypesItemDialogflowV2beta1.fromValue(value as String))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      mimeType: (map['mimeType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rawContent: map['rawContent'] == null ? null : (map['rawContent'] as String).input(),
     );
   }
 }

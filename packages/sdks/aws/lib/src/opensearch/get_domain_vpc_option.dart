@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainVpcOption {
   /// Availability zones used by the domain.
-  final List<String> availabilityZones;
+  final pulumi.Input<List<String>> availabilityZones;
   /// Security groups used by the domain.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// Subnets used by the domain.
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
   /// VPC used by the domain.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetDomainVpcOption].
   /// [availabilityZones] Availability zones used by the domain.
@@ -34,10 +35,10 @@ class GetDomainVpcOption {
 
   factory GetDomainVpcOption.fromMap(Map<String, dynamic> map) {
     return GetDomainVpcOption(
-      availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
+      availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

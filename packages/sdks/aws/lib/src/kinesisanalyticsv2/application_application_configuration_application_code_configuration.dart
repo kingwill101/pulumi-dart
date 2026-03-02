@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_application_configuration_application_code_configuration_code_content.dart';
 
 class ApplicationApplicationConfigurationApplicationCodeConfiguration {
   /// The location and type of the application code.
-  final ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent? codeContent;
+  final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent>? codeContent;
   /// Specifies whether the code content is in text or zip format. Valid values: `PLAINTEXT`, `ZIPFILE`.
-  final String codeContentType;
+  final pulumi.Input<String> codeContentType;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfiguration].
   /// [codeContent] The location and type of the application code.
@@ -18,15 +19,15 @@ class ApplicationApplicationConfigurationApplicationCodeConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'codeContent': ?codeContent == null ? null : codeContent!.toMap(),
+      'codeContent': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent, Map<String, dynamic>>(codeContent, (value) => value.toMap()),
       'codeContentType': codeContentType,
     };
   }
 
   factory ApplicationApplicationConfigurationApplicationCodeConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationCodeConfiguration(
-      codeContent: map['codeContent'] == null ? null : ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent.fromMap((map['codeContent'] as Map).cast<String, dynamic>()),
-      codeContentType: map['codeContentType'] as String,
+      codeContent: map['codeContent'] == null ? null : (ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent.fromMap((map['codeContent'] as Map).cast<String, dynamic>())).input(),
+      codeContentType: (map['codeContentType'] as String).input(),
     );
   }
 }

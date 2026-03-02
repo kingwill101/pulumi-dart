@@ -13,61 +13,61 @@ import 'tags_response.dart';
 /// The properties of landing zone configuration resource type.
 class LandingZoneConfigurationResourcePropertiesResponse {
   /// The status that indicates the current phase of the configuration process for a deployment.
-  final String authoringStatus;
+  final pulumi.Input<String> authoringStatus;
   /// Parameter used to deploy a Bastion: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing Bastion.
-  final String azureBastionCreationOption;
+  final pulumi.Input<String> azureBastionCreationOption;
   /// The Bastion subnet address. Specify the address using IPv4 CIDR notation.
-  final String? azureBastionSubnetCidrBlock;
+  final pulumi.Input<String>? azureBastionSubnetCidrBlock;
   /// The custom naming convention applied to specific resource types for this landing zone configuration, which overrides the default naming convention for those resource types. Example - 'customNamingConvention': [{'resourceType': 'azureFirewalls', 'formula': '{DeploymentPrefix}-afwl-{DeploymentSuffix}'}]
-  final List<CustomNamingConventionResponse>? customNamingConvention;
+  final pulumi.Input<List<CustomNamingConventionResponse>>? customNamingConvention;
   /// Parameter used to deploy a DDoS protection plan: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing DDoS protection plan.
-  final String ddosProtectionCreationOption;
+  final pulumi.Input<String> ddosProtectionCreationOption;
   /// The assigned policies of the 'Decommissioned' management group and indicator to create it or not.
-  final DecommissionedManagementGroupPropertiesResponse? decommissionedMgMetadata;
+  final pulumi.Input<DecommissionedManagementGroupPropertiesResponse>? decommissionedMgMetadata;
   /// The resource ID of the Bastion when reusing an existing one.
-  final String? existingAzureBastionId;
+  final pulumi.Input<String>? existingAzureBastionId;
   /// The resource ID of the DDoS protection plan when reusing an existing one.
-  final String? existingDdosProtectionId;
+  final pulumi.Input<String>? existingDdosProtectionId;
   /// The resource ID of the log analytics workspace when reusing an existing one.
-  final String? existingLogAnalyticsWorkspaceId;
+  final pulumi.Input<String>? existingLogAnalyticsWorkspaceId;
   /// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
-  final String firewallCreationOption;
+  final pulumi.Input<String> firewallCreationOption;
   /// The Firewall subnet address used for deploying a firewall. Specify the Firewall subnet using IPv4 CIDR notation.
-  final String? firewallSubnetCidrBlock;
+  final pulumi.Input<String>? firewallSubnetCidrBlock;
   /// The gateway subnet address used for deploying a virtual network. Specify the subnet using IPv4 CIDR notation.
-  final String gatewaySubnetCidrBlock;
+  final pulumi.Input<String> gatewaySubnetCidrBlock;
   /// The Virtual Network address. Specify the address using IPv4 CIDR notation.
-  final String hubNetworkCidrBlock;
+  final pulumi.Input<String> hubNetworkCidrBlock;
   /// The child management groups of 'Landing Zones' management group and their assigned policies.
-  final List<LandingZoneManagementGroupPropertiesResponse>? landingZonesMgChildren;
+  final pulumi.Input<List<LandingZoneManagementGroupPropertiesResponse>>? landingZonesMgChildren;
   /// The assigned policies of the 'Landing Zones' management group.
-  final ManagementGroupPropertiesResponse? landingZonesMgMetadata;
+  final pulumi.Input<ManagementGroupPropertiesResponse>? landingZonesMgMetadata;
   /// Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
-  final String logAnalyticsWorkspaceCreationOption;
+  final pulumi.Input<String> logAnalyticsWorkspaceCreationOption;
   /// Parameter to define the retention period for logs, in days. The minimum duration is 30 days and the maximum is 730 days.
-  final double logRetentionInDays;
+  final pulumi.Input<double> logRetentionInDays;
   /// The managed identity to be assigned to this landing zone configuration.
-  final ManagedIdentityPropertiesResponse managedIdentity;
+  final pulumi.Input<ManagedIdentityPropertiesResponse> managedIdentity;
   /// The default naming convention applied to all resources for this landing zone configuration. Example - {DeploymentPrefix}-Contoso-{ResourceTypeAbbreviation}{DeploymentSuffix}-{Environment}-testing
-  final String? namingConventionFormula;
+  final pulumi.Input<String>? namingConventionFormula;
   /// The assigned policies of the 'Connectivity' management group under 'Platform' management group.
-  final ManagementGroupPropertiesResponse? platformConnectivityMgMetadata;
+  final pulumi.Input<ManagementGroupPropertiesResponse>? platformConnectivityMgMetadata;
   /// The assigned policies of the 'Identity' management group under 'Platform' management group.
-  final ManagementGroupPropertiesResponse? platformIdentityMgMetadata;
+  final pulumi.Input<ManagementGroupPropertiesResponse>? platformIdentityMgMetadata;
   /// The assigned policies of the 'Management' management group under 'Platform' management group.
-  final ManagementGroupPropertiesResponse? platformManagementMgMetadata;
+  final pulumi.Input<ManagementGroupPropertiesResponse>? platformManagementMgMetadata;
   /// The names of the 'Platform' child management groups and their assigned policies, excluding the default ones: 'Connectivity', 'Identity', and 'Management'
-  final List<PlatformManagementGroupPropertiesResponse>? platformMgChildren;
+  final pulumi.Input<List<PlatformManagementGroupPropertiesResponse>>? platformMgChildren;
   /// The assigned policies of the 'Platform' management group.
-  final ManagementGroupPropertiesResponse? platformMgMetadata;
+  final pulumi.Input<ManagementGroupPropertiesResponse>? platformMgMetadata;
   /// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone configuration.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The assigned policies of the 'Sandbox' management group and indicator to create it or not.
-  final SandboxManagementGroupPropertiesResponse? sandboxMgMetadata;
+  final pulumi.Input<SandboxManagementGroupPropertiesResponse>? sandboxMgMetadata;
   /// Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
-  final List<TagsResponse>? tags;
+  final pulumi.Input<List<TagsResponse>>? tags;
   /// The assigned policies of the parent management group.
-  final ManagementGroupPropertiesResponse? topLevelMgMetadata;
+  final pulumi.Input<ManagementGroupPropertiesResponse>? topLevelMgMetadata;
 
   /// Creates a new [LandingZoneConfigurationResourcePropertiesResponse].
   /// [authoringStatus] The status that indicates the current phase of the configuration process for a deployment.
@@ -134,9 +134,9 @@ class LandingZoneConfigurationResourcePropertiesResponse {
       'authoringStatus': authoringStatus,
       'azureBastionCreationOption': azureBastionCreationOption,
       'azureBastionSubnetCidrBlock': ?azureBastionSubnetCidrBlock,
-      'customNamingConvention': ?customNamingConvention == null ? null : pulumi.Input.encodeList<CustomNamingConventionResponse, Map<String, dynamic>>(customNamingConvention!, (value) => value.toMap()),
+      'customNamingConvention': ?pulumi.Input.mapOptionalInputValue<List<CustomNamingConventionResponse>, List<Map<String, dynamic>>>(customNamingConvention, (value) => pulumi.Input.encodeList<CustomNamingConventionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ddosProtectionCreationOption': ddosProtectionCreationOption,
-      'decommissionedMgMetadata': ?decommissionedMgMetadata == null ? null : decommissionedMgMetadata!.toMap(),
+      'decommissionedMgMetadata': ?pulumi.Input.mapOptionalInputValue<DecommissionedManagementGroupPropertiesResponse, Map<String, dynamic>>(decommissionedMgMetadata, (value) => value.toMap()),
       'existingAzureBastionId': ?existingAzureBastionId,
       'existingDdosProtectionId': ?existingDdosProtectionId,
       'existingLogAnalyticsWorkspaceId': ?existingLogAnalyticsWorkspaceId,
@@ -144,54 +144,54 @@ class LandingZoneConfigurationResourcePropertiesResponse {
       'firewallSubnetCidrBlock': ?firewallSubnetCidrBlock,
       'gatewaySubnetCidrBlock': gatewaySubnetCidrBlock,
       'hubNetworkCidrBlock': hubNetworkCidrBlock,
-      'landingZonesMgChildren': ?landingZonesMgChildren == null ? null : pulumi.Input.encodeList<LandingZoneManagementGroupPropertiesResponse, Map<String, dynamic>>(landingZonesMgChildren!, (value) => value.toMap()),
-      'landingZonesMgMetadata': ?landingZonesMgMetadata == null ? null : landingZonesMgMetadata!.toMap(),
+      'landingZonesMgChildren': ?pulumi.Input.mapOptionalInputValue<List<LandingZoneManagementGroupPropertiesResponse>, List<Map<String, dynamic>>>(landingZonesMgChildren, (value) => pulumi.Input.encodeList<LandingZoneManagementGroupPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'landingZonesMgMetadata': ?pulumi.Input.mapOptionalInputValue<ManagementGroupPropertiesResponse, Map<String, dynamic>>(landingZonesMgMetadata, (value) => value.toMap()),
       'logAnalyticsWorkspaceCreationOption': logAnalyticsWorkspaceCreationOption,
       'logRetentionInDays': logRetentionInDays,
-      'managedIdentity': managedIdentity.toMap(),
+      'managedIdentity': pulumi.Input.mapInputValue<ManagedIdentityPropertiesResponse, Map<String, dynamic>>(managedIdentity, (value) => value.toMap()),
       'namingConventionFormula': ?namingConventionFormula,
-      'platformConnectivityMgMetadata': ?platformConnectivityMgMetadata == null ? null : platformConnectivityMgMetadata!.toMap(),
-      'platformIdentityMgMetadata': ?platformIdentityMgMetadata == null ? null : platformIdentityMgMetadata!.toMap(),
-      'platformManagementMgMetadata': ?platformManagementMgMetadata == null ? null : platformManagementMgMetadata!.toMap(),
-      'platformMgChildren': ?platformMgChildren == null ? null : pulumi.Input.encodeList<PlatformManagementGroupPropertiesResponse, Map<String, dynamic>>(platformMgChildren!, (value) => value.toMap()),
-      'platformMgMetadata': ?platformMgMetadata == null ? null : platformMgMetadata!.toMap(),
+      'platformConnectivityMgMetadata': ?pulumi.Input.mapOptionalInputValue<ManagementGroupPropertiesResponse, Map<String, dynamic>>(platformConnectivityMgMetadata, (value) => value.toMap()),
+      'platformIdentityMgMetadata': ?pulumi.Input.mapOptionalInputValue<ManagementGroupPropertiesResponse, Map<String, dynamic>>(platformIdentityMgMetadata, (value) => value.toMap()),
+      'platformManagementMgMetadata': ?pulumi.Input.mapOptionalInputValue<ManagementGroupPropertiesResponse, Map<String, dynamic>>(platformManagementMgMetadata, (value) => value.toMap()),
+      'platformMgChildren': ?pulumi.Input.mapOptionalInputValue<List<PlatformManagementGroupPropertiesResponse>, List<Map<String, dynamic>>>(platformMgChildren, (value) => pulumi.Input.encodeList<PlatformManagementGroupPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'platformMgMetadata': ?pulumi.Input.mapOptionalInputValue<ManagementGroupPropertiesResponse, Map<String, dynamic>>(platformMgMetadata, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'sandboxMgMetadata': ?sandboxMgMetadata == null ? null : sandboxMgMetadata!.toMap(),
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagsResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
-      'topLevelMgMetadata': ?topLevelMgMetadata == null ? null : topLevelMgMetadata!.toMap(),
+      'sandboxMgMetadata': ?pulumi.Input.mapOptionalInputValue<SandboxManagementGroupPropertiesResponse, Map<String, dynamic>>(sandboxMgMetadata, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagsResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'topLevelMgMetadata': ?pulumi.Input.mapOptionalInputValue<ManagementGroupPropertiesResponse, Map<String, dynamic>>(topLevelMgMetadata, (value) => value.toMap()),
     };
   }
 
   factory LandingZoneConfigurationResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LandingZoneConfigurationResourcePropertiesResponse(
-      authoringStatus: map['authoringStatus'] as String,
-      azureBastionCreationOption: map['azureBastionCreationOption'] as String,
-      azureBastionSubnetCidrBlock: map['azureBastionSubnetCidrBlock'] == null ? null : map['azureBastionSubnetCidrBlock'] as String,
-      customNamingConvention: map['customNamingConvention'] == null ? null : pulumi.Input.decodeList<CustomNamingConventionResponse>(map['customNamingConvention'], (value) => CustomNamingConventionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      ddosProtectionCreationOption: map['ddosProtectionCreationOption'] as String,
-      decommissionedMgMetadata: map['decommissionedMgMetadata'] == null ? null : DecommissionedManagementGroupPropertiesResponse.fromMap((map['decommissionedMgMetadata'] as Map).cast<String, dynamic>()),
-      existingAzureBastionId: map['existingAzureBastionId'] == null ? null : map['existingAzureBastionId'] as String,
-      existingDdosProtectionId: map['existingDdosProtectionId'] == null ? null : map['existingDdosProtectionId'] as String,
-      existingLogAnalyticsWorkspaceId: map['existingLogAnalyticsWorkspaceId'] == null ? null : map['existingLogAnalyticsWorkspaceId'] as String,
-      firewallCreationOption: map['firewallCreationOption'] as String,
-      firewallSubnetCidrBlock: map['firewallSubnetCidrBlock'] == null ? null : map['firewallSubnetCidrBlock'] as String,
-      gatewaySubnetCidrBlock: map['gatewaySubnetCidrBlock'] as String,
-      hubNetworkCidrBlock: map['hubNetworkCidrBlock'] as String,
-      landingZonesMgChildren: map['landingZonesMgChildren'] == null ? null : pulumi.Input.decodeList<LandingZoneManagementGroupPropertiesResponse>(map['landingZonesMgChildren'], (value) => LandingZoneManagementGroupPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      landingZonesMgMetadata: map['landingZonesMgMetadata'] == null ? null : ManagementGroupPropertiesResponse.fromMap((map['landingZonesMgMetadata'] as Map).cast<String, dynamic>()),
-      logAnalyticsWorkspaceCreationOption: map['logAnalyticsWorkspaceCreationOption'] as String,
-      logRetentionInDays: map['logRetentionInDays'] as double,
-      managedIdentity: ManagedIdentityPropertiesResponse.fromMap((map['managedIdentity'] as Map).cast<String, dynamic>()),
-      namingConventionFormula: map['namingConventionFormula'] == null ? null : map['namingConventionFormula'] as String,
-      platformConnectivityMgMetadata: map['platformConnectivityMgMetadata'] == null ? null : ManagementGroupPropertiesResponse.fromMap((map['platformConnectivityMgMetadata'] as Map).cast<String, dynamic>()),
-      platformIdentityMgMetadata: map['platformIdentityMgMetadata'] == null ? null : ManagementGroupPropertiesResponse.fromMap((map['platformIdentityMgMetadata'] as Map).cast<String, dynamic>()),
-      platformManagementMgMetadata: map['platformManagementMgMetadata'] == null ? null : ManagementGroupPropertiesResponse.fromMap((map['platformManagementMgMetadata'] as Map).cast<String, dynamic>()),
-      platformMgChildren: map['platformMgChildren'] == null ? null : pulumi.Input.decodeList<PlatformManagementGroupPropertiesResponse>(map['platformMgChildren'], (value) => PlatformManagementGroupPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      platformMgMetadata: map['platformMgMetadata'] == null ? null : ManagementGroupPropertiesResponse.fromMap((map['platformMgMetadata'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      sandboxMgMetadata: map['sandboxMgMetadata'] == null ? null : SandboxManagementGroupPropertiesResponse.fromMap((map['sandboxMgMetadata'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagsResponse>(map['tags'], (value) => TagsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      topLevelMgMetadata: map['topLevelMgMetadata'] == null ? null : ManagementGroupPropertiesResponse.fromMap((map['topLevelMgMetadata'] as Map).cast<String, dynamic>()),
+      authoringStatus: (map['authoringStatus'] as String).input(),
+      azureBastionCreationOption: (map['azureBastionCreationOption'] as String).input(),
+      azureBastionSubnetCidrBlock: map['azureBastionSubnetCidrBlock'] == null ? null : (map['azureBastionSubnetCidrBlock'] as String).input(),
+      customNamingConvention: map['customNamingConvention'] == null ? null : (pulumi.Input.decodeList<CustomNamingConventionResponse>(map['customNamingConvention'], (value) => CustomNamingConventionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ddosProtectionCreationOption: (map['ddosProtectionCreationOption'] as String).input(),
+      decommissionedMgMetadata: map['decommissionedMgMetadata'] == null ? null : (DecommissionedManagementGroupPropertiesResponse.fromMap((map['decommissionedMgMetadata'] as Map).cast<String, dynamic>())).input(),
+      existingAzureBastionId: map['existingAzureBastionId'] == null ? null : (map['existingAzureBastionId'] as String).input(),
+      existingDdosProtectionId: map['existingDdosProtectionId'] == null ? null : (map['existingDdosProtectionId'] as String).input(),
+      existingLogAnalyticsWorkspaceId: map['existingLogAnalyticsWorkspaceId'] == null ? null : (map['existingLogAnalyticsWorkspaceId'] as String).input(),
+      firewallCreationOption: (map['firewallCreationOption'] as String).input(),
+      firewallSubnetCidrBlock: map['firewallSubnetCidrBlock'] == null ? null : (map['firewallSubnetCidrBlock'] as String).input(),
+      gatewaySubnetCidrBlock: (map['gatewaySubnetCidrBlock'] as String).input(),
+      hubNetworkCidrBlock: (map['hubNetworkCidrBlock'] as String).input(),
+      landingZonesMgChildren: map['landingZonesMgChildren'] == null ? null : (pulumi.Input.decodeList<LandingZoneManagementGroupPropertiesResponse>(map['landingZonesMgChildren'], (value) => LandingZoneManagementGroupPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      landingZonesMgMetadata: map['landingZonesMgMetadata'] == null ? null : (ManagementGroupPropertiesResponse.fromMap((map['landingZonesMgMetadata'] as Map).cast<String, dynamic>())).input(),
+      logAnalyticsWorkspaceCreationOption: (map['logAnalyticsWorkspaceCreationOption'] as String).input(),
+      logRetentionInDays: (map['logRetentionInDays'] as double).input(),
+      managedIdentity: (ManagedIdentityPropertiesResponse.fromMap((map['managedIdentity'] as Map).cast<String, dynamic>())).input(),
+      namingConventionFormula: map['namingConventionFormula'] == null ? null : (map['namingConventionFormula'] as String).input(),
+      platformConnectivityMgMetadata: map['platformConnectivityMgMetadata'] == null ? null : (ManagementGroupPropertiesResponse.fromMap((map['platformConnectivityMgMetadata'] as Map).cast<String, dynamic>())).input(),
+      platformIdentityMgMetadata: map['platformIdentityMgMetadata'] == null ? null : (ManagementGroupPropertiesResponse.fromMap((map['platformIdentityMgMetadata'] as Map).cast<String, dynamic>())).input(),
+      platformManagementMgMetadata: map['platformManagementMgMetadata'] == null ? null : (ManagementGroupPropertiesResponse.fromMap((map['platformManagementMgMetadata'] as Map).cast<String, dynamic>())).input(),
+      platformMgChildren: map['platformMgChildren'] == null ? null : (pulumi.Input.decodeList<PlatformManagementGroupPropertiesResponse>(map['platformMgChildren'], (value) => PlatformManagementGroupPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformMgMetadata: map['platformMgMetadata'] == null ? null : (ManagementGroupPropertiesResponse.fromMap((map['platformMgMetadata'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      sandboxMgMetadata: map['sandboxMgMetadata'] == null ? null : (SandboxManagementGroupPropertiesResponse.fromMap((map['sandboxMgMetadata'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagsResponse>(map['tags'], (value) => TagsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      topLevelMgMetadata: map['topLevelMgMetadata'] == null ? null : (ManagementGroupPropertiesResponse.fromMap((map['topLevelMgMetadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -51,33 +51,20 @@ class RunbookArgs {
   /// [runbookType] Gets or sets the type of the runbook.
   /// [tags] Gets or sets the tags attached to the resource.
   RunbookArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? description,
-    pulumi.Output<RunbookDraft>? draft,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? logActivityTrace,
-    pulumi.Output<bool>? logProgress,
-    pulumi.Output<bool>? logVerbose,
-    pulumi.Output<String>? name,
-    pulumi.Output<ContentLink>? publishContentLink,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? runbookName,
-    required pulumi.Output<String> runbookType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      draft = pulumi.Input.asOptionalInput<RunbookDraft>(draft),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logActivityTrace = pulumi.Input.asOptionalInput<int>(logActivityTrace),
-      logProgress = pulumi.Input.asOptionalInput<bool>(logProgress),
-      logVerbose = pulumi.Input.asOptionalInput<bool>(logVerbose),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publishContentLink = pulumi.Input.asOptionalInput<ContentLink>(publishContentLink),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runbookName = pulumi.Input.asOptionalInput<String>(runbookName),
-      runbookType = pulumi.Input.asInput<String>(runbookType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.automationAccountName,
+    this.description,
+    this.draft,
+    this.location,
+    this.logActivityTrace,
+    this.logProgress,
+    this.logVerbose,
+    this.name,
+    this.publishContentLink,
+    required this.resourceGroupName,
+    this.runbookName,
+    required this.runbookType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class RunbookArgs {
 
   factory RunbookArgs.fromMap(Map<String, dynamic> map) {
     return RunbookArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      draft: map['draft'] == null ? null : pulumi.Output.create<RunbookDraft>(RunbookDraft.fromMap((map['draft'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logActivityTrace: map['logActivityTrace'] == null ? null : pulumi.Output.create<int>(map['logActivityTrace'] as int),
-      logProgress: map['logProgress'] == null ? null : pulumi.Output.create<bool>(map['logProgress'] as bool),
-      logVerbose: map['logVerbose'] == null ? null : pulumi.Output.create<bool>(map['logVerbose'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publishContentLink: map['publishContentLink'] == null ? null : pulumi.Output.create<ContentLink>(ContentLink.fromMap((map['publishContentLink'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runbookName: map['runbookName'] == null ? null : pulumi.Output.create<String>(map['runbookName'] as String),
-      runbookType: pulumi.Output.create<String>(map['runbookType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      draft: map['draft'] == null ? null : (RunbookDraft.fromMap((map['draft'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logActivityTrace: map['logActivityTrace'] == null ? null : (map['logActivityTrace'] as int).input(),
+      logProgress: map['logProgress'] == null ? null : (map['logProgress'] as bool).input(),
+      logVerbose: map['logVerbose'] == null ? null : (map['logVerbose'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publishContentLink: map['publishContentLink'] == null ? null : (ContentLink.fromMap((map['publishContentLink'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runbookName: map['runbookName'] == null ? null : (map['runbookName'] as String).input(),
+      runbookType: (map['runbookType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

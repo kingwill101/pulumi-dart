@@ -7,24 +7,24 @@ import 'parameter_specification.dart';
 /// Azure Synapse Analytics (Artifacts) linked service.
 class AzureSynapseArtifactsLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Required to specify MSI, if using system assigned managed identity as authentication method. Type: string (or Expression with resultType string).
-  final dynamic authentication;
+  final pulumi.Input<dynamic>? authentication;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// https://<workspacename>.dev.azuresynapse.net, Azure Synapse Analytics workspace URL. Type: string (or Expression with resultType string).
-  final dynamic endpoint;
+  final pulumi.Input<dynamic> endpoint;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// Type of linked service.
   /// Expected value is 'AzureSynapseArtifacts'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
   /// The resource ID of the Synapse workspace. The format should be: /subscriptions/{subscriptionID}/resourceGroups/{resourceGroup}/providers/Microsoft.Synapse/workspaces/{workspaceName}. Type: string (or Expression with resultType string).
-  final dynamic workspaceResourceId;
+  final pulumi.Input<dynamic>? workspaceResourceId;
 
   /// Creates a new [AzureSynapseArtifactsLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -52,10 +52,10 @@ class AzureSynapseArtifactsLinkedService {
     return <String, dynamic>{
       'annotations': ?annotations,
       'authentication': ?authentication,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'endpoint': endpoint,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'version': ?version,
       'workspaceResourceId': ?workspaceResourceId,
@@ -64,15 +64,15 @@ class AzureSynapseArtifactsLinkedService {
 
   factory AzureSynapseArtifactsLinkedService.fromMap(Map<String, dynamic> map) {
     return AzureSynapseArtifactsLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authentication: map['authentication'] == null ? null : map['authentication'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      endpoint: map['endpoint'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : map['workspaceResourceId'],
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpoint: (map['endpoint']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']).input(),
     );
   }
 }

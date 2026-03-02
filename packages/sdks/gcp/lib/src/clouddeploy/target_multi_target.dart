@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetMultiTarget {
   /// Required. The target_ids of this multiTarget.
-  final List<String> targetIds;
+  final pulumi.Input<List<String>> targetIds;
 
   /// Creates a new [TargetMultiTarget].
   /// [targetIds] Required. The target_ids of this multiTarget.
@@ -19,7 +20,7 @@ class TargetMultiTarget {
 
   factory TargetMultiTarget.fromMap(Map<String, dynamic> map) {
     return TargetMultiTarget(
-      targetIds: (map['targetIds'] as List).cast<String>(),
+      targetIds: ((map['targetIds'] as List).cast<String>()).input(),
     );
   }
 }

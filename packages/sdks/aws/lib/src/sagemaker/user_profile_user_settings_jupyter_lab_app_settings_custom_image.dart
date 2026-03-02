@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserProfileUserSettingsJupyterLabAppSettingsCustomImage {
   /// The name of the App Image Config.
-  final String appImageConfigName;
+  final pulumi.Input<String> appImageConfigName;
   /// The name of the Custom Image.
-  final String imageName;
+  final pulumi.Input<String> imageName;
   /// The version number of the Custom Image.
-  final int? imageVersionNumber;
+  final pulumi.Input<int>? imageVersionNumber;
 
   /// Creates a new [UserProfileUserSettingsJupyterLabAppSettingsCustomImage].
   /// [appImageConfigName] The name of the App Image Config.
@@ -29,9 +30,9 @@ class UserProfileUserSettingsJupyterLabAppSettingsCustomImage {
 
   factory UserProfileUserSettingsJupyterLabAppSettingsCustomImage.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsJupyterLabAppSettingsCustomImage(
-      appImageConfigName: map['appImageConfigName'] as String,
-      imageName: map['imageName'] as String,
-      imageVersionNumber: map['imageVersionNumber'] == null ? null : map['imageVersionNumber'] as int,
+      appImageConfigName: (map['appImageConfigName'] as String).input(),
+      imageName: (map['imageName'] as String).input(),
+      imageVersionNumber: map['imageVersionNumber'] == null ? null : (map['imageVersionNumber'] as int).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake {
   /// The name of the account.
-  final String? accountName;
-  final String bucketName;
-  final String? bucketPrefix;
-  final String? privateLinkServiceName;
+  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String> bucketName;
+  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String>? privateLinkServiceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * `name ` (Required) - Name of the connector profile. The name is unique for each `ConnectorProfile` in your AWS account.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `<Database>.<Schema>.<Stage Name>`.
-  final String stage;
+  final pulumi.Input<String> stage;
   /// The name of the Snowflake warehouse.
-  final String warehouse;
+  final pulumi.Input<String> warehouse;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake].
   /// [accountName] The name of the account.
@@ -47,13 +48,13 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake 
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      bucketName: map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
-      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : map['privateLinkServiceName'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      stage: map['stage'] as String,
-      warehouse: map['warehouse'] as String,
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : (map['privateLinkServiceName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      warehouse: (map['warehouse'] as String).input(),
     );
   }
 }

@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_tunnel_options_specification_tunnel_bgp_config.dart';
 import 'connection_tunnel_options_specification_tunnel_ike_config.dart';
 import 'connection_tunnel_options_specification_tunnel_ipsec_config.dart';
 
 class ConnectionTunnelOptionsSpecification {
   /// The ID of the customer gateway in Tunnel.
-  final String? customerGatewayId;
+  final pulumi.Input<String>? customerGatewayId;
   /// Wether enable Dpd detection.
-  final bool? enableDpd;
+  final pulumi.Input<bool>? enableDpd;
   /// enable nat traversal.
-  final bool? enableNatTraversal;
+  final pulumi.Input<bool>? enableNatTraversal;
   /// The local internet IP in Tunnel.
-  final String? internetIp;
+  final pulumi.Input<String>? internetIp;
   /// The role of Tunnel.
-  final String? role;
+  final pulumi.Input<String>? role;
   /// The state of Tunnel.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The negotiation status of Tunnel.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The bgp config of Tunnel. See `tunnel_bgp_config` below.
-  final ConnectionTunnelOptionsSpecificationTunnelBgpConfig? tunnelBgpConfig;
+  final pulumi.Input<ConnectionTunnelOptionsSpecificationTunnelBgpConfig>? tunnelBgpConfig;
   /// The tunnel ID of IPsec-VPN connection.
-  final String? tunnelId;
+  final pulumi.Input<String>? tunnelId;
   /// The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
-  final ConnectionTunnelOptionsSpecificationTunnelIkeConfig? tunnelIkeConfig;
+  final pulumi.Input<ConnectionTunnelOptionsSpecificationTunnelIkeConfig>? tunnelIkeConfig;
   /// IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
-  final ConnectionTunnelOptionsSpecificationTunnelIpsecConfig? tunnelIpsecConfig;
+  final pulumi.Input<ConnectionTunnelOptionsSpecificationTunnelIpsecConfig>? tunnelIpsecConfig;
   /// The zoneNo of tunnel.
-  final String? zoneNo;
+  final pulumi.Input<String>? zoneNo;
 
   /// Creates a new [ConnectionTunnelOptionsSpecification].
   /// [customerGatewayId] The ID of the customer gateway in Tunnel.
@@ -67,28 +68,28 @@ class ConnectionTunnelOptionsSpecification {
       'role': ?role,
       'state': ?state,
       'status': ?status,
-      'tunnelBgpConfig': ?tunnelBgpConfig == null ? null : tunnelBgpConfig!.toMap(),
+      'tunnelBgpConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionTunnelOptionsSpecificationTunnelBgpConfig, Map<String, dynamic>>(tunnelBgpConfig, (value) => value.toMap()),
       'tunnelId': ?tunnelId,
-      'tunnelIkeConfig': ?tunnelIkeConfig == null ? null : tunnelIkeConfig!.toMap(),
-      'tunnelIpsecConfig': ?tunnelIpsecConfig == null ? null : tunnelIpsecConfig!.toMap(),
+      'tunnelIkeConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionTunnelOptionsSpecificationTunnelIkeConfig, Map<String, dynamic>>(tunnelIkeConfig, (value) => value.toMap()),
+      'tunnelIpsecConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionTunnelOptionsSpecificationTunnelIpsecConfig, Map<String, dynamic>>(tunnelIpsecConfig, (value) => value.toMap()),
       'zoneNo': ?zoneNo,
     };
   }
 
   factory ConnectionTunnelOptionsSpecification.fromMap(Map<String, dynamic> map) {
     return ConnectionTunnelOptionsSpecification(
-      customerGatewayId: map['customerGatewayId'] == null ? null : map['customerGatewayId'] as String,
-      enableDpd: map['enableDpd'] == null ? null : map['enableDpd'] as bool,
-      enableNatTraversal: map['enableNatTraversal'] == null ? null : map['enableNatTraversal'] as bool,
-      internetIp: map['internetIp'] == null ? null : map['internetIp'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tunnelBgpConfig: map['tunnelBgpConfig'] == null ? null : ConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap((map['tunnelBgpConfig'] as Map).cast<String, dynamic>()),
-      tunnelId: map['tunnelId'] == null ? null : map['tunnelId'] as String,
-      tunnelIkeConfig: map['tunnelIkeConfig'] == null ? null : ConnectionTunnelOptionsSpecificationTunnelIkeConfig.fromMap((map['tunnelIkeConfig'] as Map).cast<String, dynamic>()),
-      tunnelIpsecConfig: map['tunnelIpsecConfig'] == null ? null : ConnectionTunnelOptionsSpecificationTunnelIpsecConfig.fromMap((map['tunnelIpsecConfig'] as Map).cast<String, dynamic>()),
-      zoneNo: map['zoneNo'] == null ? null : map['zoneNo'] as String,
+      customerGatewayId: map['customerGatewayId'] == null ? null : (map['customerGatewayId'] as String).input(),
+      enableDpd: map['enableDpd'] == null ? null : (map['enableDpd'] as bool).input(),
+      enableNatTraversal: map['enableNatTraversal'] == null ? null : (map['enableNatTraversal'] as bool).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tunnelBgpConfig: map['tunnelBgpConfig'] == null ? null : (ConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap((map['tunnelBgpConfig'] as Map).cast<String, dynamic>())).input(),
+      tunnelId: map['tunnelId'] == null ? null : (map['tunnelId'] as String).input(),
+      tunnelIkeConfig: map['tunnelIkeConfig'] == null ? null : (ConnectionTunnelOptionsSpecificationTunnelIkeConfig.fromMap((map['tunnelIkeConfig'] as Map).cast<String, dynamic>())).input(),
+      tunnelIpsecConfig: map['tunnelIpsecConfig'] == null ? null : (ConnectionTunnelOptionsSpecificationTunnelIpsecConfig.fromMap((map['tunnelIpsecConfig'] as Map).cast<String, dynamic>())).input(),
+      zoneNo: map['zoneNo'] == null ? null : (map['zoneNo'] as String).input(),
     );
   }
 }

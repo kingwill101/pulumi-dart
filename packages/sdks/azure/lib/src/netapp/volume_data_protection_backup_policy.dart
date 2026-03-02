@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeDataProtectionBackupPolicy {
   /// Resource ID of the backup policy to apply to the volume.
-  final String backupPolicyId;
+  final pulumi.Input<String> backupPolicyId;
   /// Resource ID of the backup backup vault to associate this volume to.
-  final String backupVaultId;
+  final pulumi.Input<String> backupVaultId;
   /// Enables the backup policy on the volume, defaults to `true`.
   ///
   /// For more information on Azure NetApp Files Backup feature please see [Understand Azure NetApp Files backup](https://learn.microsoft.com/en-us/azure/azure-netapp-files/backup-introduction)
-  final bool? policyEnabled;
+  final pulumi.Input<bool>? policyEnabled;
 
   /// Creates a new [VolumeDataProtectionBackupPolicy].
   /// [backupPolicyId] Resource ID of the backup policy to apply to the volume.
@@ -31,9 +32,9 @@ class VolumeDataProtectionBackupPolicy {
 
   factory VolumeDataProtectionBackupPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeDataProtectionBackupPolicy(
-      backupPolicyId: map['backupPolicyId'] as String,
-      backupVaultId: map['backupVaultId'] as String,
-      policyEnabled: map['policyEnabled'] == null ? null : map['policyEnabled'] as bool,
+      backupPolicyId: (map['backupPolicyId'] as String).input(),
+      backupVaultId: (map['backupVaultId'] as String).input(),
+      policyEnabled: map['policyEnabled'] == null ? null : (map['policyEnabled'] as bool).input(),
     );
   }
 }

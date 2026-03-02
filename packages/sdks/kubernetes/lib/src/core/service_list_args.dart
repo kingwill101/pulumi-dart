@@ -24,15 +24,11 @@ class ServiceListArgs {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   ServiceListArgs({
-    pulumi.Output<String>? apiVersion,
-    required pulumi.Output<List<ServiceCoreV1>> items,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ListMeta>? metadata,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      items = pulumi.Input.asInput<List<ServiceCoreV1>>(items),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ListMeta>(metadata);
+    this.apiVersion,
+    required this.items,
+    this.kind,
+    this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ServiceListArgs {
 
   factory ServiceListArgs.fromMap(Map<String, dynamic> map) {
     return ServiceListArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      items: pulumi.Output.create<List<ServiceCoreV1>>((map['items'] as List).cast<ServiceCoreV1>()),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ListMeta>(ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      items: ((map['items'] as List).cast<ServiceCoreV1>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

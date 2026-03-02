@@ -25,17 +25,12 @@ class NetworkManagerScopeConnectionArgs {
   /// [targetScopeId] Specifies the Resource ID of the target scope which the Network Manager is connected to. It should be either Subscription ID or Management Group ID.
   /// [tenantId] Specifies the Tenant ID of the Resource which the Network Manager is connected to.
   NetworkManagerScopeConnectionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkManagerId,
-    required pulumi.Output<String> targetScopeId,
-    required pulumi.Output<String> tenantId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkManagerId = pulumi.Input.asInput<String>(networkManagerId),
-      targetScopeId = pulumi.Input.asInput<String>(targetScopeId),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    this.description,
+    this.name,
+    required this.networkManagerId,
+    required this.targetScopeId,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkManagerScopeConnectionArgs {
 
   factory NetworkManagerScopeConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerScopeConnectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: pulumi.Output.create<String>(map['networkManagerId'] as String),
-      targetScopeId: pulumi.Output.create<String>(map['targetScopeId'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkManagerId: (map['networkManagerId'] as String).input(),
+      targetScopeId: (map['targetScopeId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

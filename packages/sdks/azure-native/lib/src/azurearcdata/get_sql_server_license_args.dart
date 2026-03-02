@@ -16,11 +16,9 @@ class GetSqlServerLicenseArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerLicenseName] Name of SQL Server License
   GetSqlServerLicenseArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlServerLicenseName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerLicenseName = pulumi.Input.asInput<String>(sqlServerLicenseName);
+    required this.resourceGroupName,
+    required this.sqlServerLicenseName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSqlServerLicenseArgs {
 
   factory GetSqlServerLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerLicenseArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerLicenseName: pulumi.Output.create<String>(map['sqlServerLicenseName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerLicenseName: (map['sqlServerLicenseName'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A main principal.
 class MainPrincipal {
   /// Application Id of the main principal.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// Login name of the main principal.
-  final String? login;
+  final pulumi.Input<String>? login;
   /// Object Id of the main principal.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// Principal type of the main principal.
-  final String? principalType;
+  final pulumi.Input<String>? principalType;
   /// Tenant Id of the main principal.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [MainPrincipal].
   /// [applicationId] Application Id of the main principal.
@@ -40,11 +41,11 @@ class MainPrincipal {
 
   factory MainPrincipal.fromMap(Map<String, dynamic> map) {
     return MainPrincipal(
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      login: map['login'] == null ? null : map['login'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      principalType: map['principalType'] == null ? null : map['principalType'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      login: map['login'] == null ? null : (map['login'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

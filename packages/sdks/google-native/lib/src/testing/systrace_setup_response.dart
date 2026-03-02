@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SystraceSetupResponse {
   /// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-  final int durationSeconds;
+  final pulumi.Input<int> durationSeconds;
 
   /// Creates a new [SystraceSetupResponse].
   /// [durationSeconds] Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
@@ -19,7 +20,7 @@ class SystraceSetupResponse {
 
   factory SystraceSetupResponse.fromMap(Map<String, dynamic> map) {
     return SystraceSetupResponse(
-      durationSeconds: map['durationSeconds'] as int,
+      durationSeconds: (map['durationSeconds'] as int).input(),
     );
   }
 }

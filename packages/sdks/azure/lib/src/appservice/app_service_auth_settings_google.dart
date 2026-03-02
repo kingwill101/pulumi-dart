@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppServiceAuthSettingsGoogle {
   /// The OpenID Connect Client ID for the Google web application.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The client secret associated with the Google web application.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
   /// The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. <https://developers.google.com/identity/sign-in/web/>
-  final List<String>? oauthScopes;
+  final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [AppServiceAuthSettingsGoogle].
   /// [clientId] The OpenID Connect Client ID for the Google web application.
@@ -29,9 +30,9 @@ class AppServiceAuthSettingsGoogle {
 
   factory AppServiceAuthSettingsGoogle.fromMap(Map<String, dynamic> map) {
     return AppServiceAuthSettingsGoogle(
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
-      oauthScopes: map['oauthScopes'] == null ? null : (map['oauthScopes'] as List).cast<String>(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
     );
   }
 }

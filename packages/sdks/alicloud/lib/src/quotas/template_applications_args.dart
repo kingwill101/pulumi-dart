@@ -57,29 +57,18 @@ class TemplateApplicationsArgs {
   /// [quotaCategory] The quota type. Value:
   /// [reason] Reason for quota application.
   TemplateApplicationsArgs({
-    required pulumi.Output<List<String>> aliyunUids,
-    required pulumi.Output<double> desireValue,
-    pulumi.Output<List<TemplateApplicationsDimension>>? dimensions,
-    pulumi.Output<String>? effectiveTime,
-    pulumi.Output<String>? envLanguage,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<int>? noticeType,
-    required pulumi.Output<String> productCode,
-    required pulumi.Output<String> quotaActionCode,
-    required pulumi.Output<String> quotaCategory,
-    required pulumi.Output<String> reason,
-  }) :
-      aliyunUids = pulumi.Input.asInput<List<String>>(aliyunUids),
-      desireValue = pulumi.Input.asInput<double>(desireValue),
-      dimensions = pulumi.Input.asOptionalInput<List<TemplateApplicationsDimension>>(dimensions),
-      effectiveTime = pulumi.Input.asOptionalInput<String>(effectiveTime),
-      envLanguage = pulumi.Input.asOptionalInput<String>(envLanguage),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      noticeType = pulumi.Input.asOptionalInput<int>(noticeType),
-      productCode = pulumi.Input.asInput<String>(productCode),
-      quotaActionCode = pulumi.Input.asInput<String>(quotaActionCode),
-      quotaCategory = pulumi.Input.asInput<String>(quotaCategory),
-      reason = pulumi.Input.asInput<String>(reason);
+    required this.aliyunUids,
+    required this.desireValue,
+    this.dimensions,
+    this.effectiveTime,
+    this.envLanguage,
+    this.expireTime,
+    this.noticeType,
+    required this.productCode,
+    required this.quotaActionCode,
+    required this.quotaCategory,
+    required this.reason,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,17 +88,17 @@ class TemplateApplicationsArgs {
 
   factory TemplateApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return TemplateApplicationsArgs(
-      aliyunUids: pulumi.Output.create<List<String>>((map['aliyunUids'] as List).cast<String>()),
-      desireValue: pulumi.Output.create<double>(map['desireValue'] as double),
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<List<TemplateApplicationsDimension>>(pulumi.Input.decodeList<TemplateApplicationsDimension>(map['dimensions'], (value) => TemplateApplicationsDimension.fromMap((value as Map).cast<String, dynamic>()))),
-      effectiveTime: map['effectiveTime'] == null ? null : pulumi.Output.create<String>(map['effectiveTime'] as String),
-      envLanguage: map['envLanguage'] == null ? null : pulumi.Output.create<String>(map['envLanguage'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      noticeType: map['noticeType'] == null ? null : pulumi.Output.create<int>(map['noticeType'] as int),
-      productCode: pulumi.Output.create<String>(map['productCode'] as String),
-      quotaActionCode: pulumi.Output.create<String>(map['quotaActionCode'] as String),
-      quotaCategory: pulumi.Output.create<String>(map['quotaCategory'] as String),
-      reason: pulumi.Output.create<String>(map['reason'] as String),
+      aliyunUids: ((map['aliyunUids'] as List).cast<String>()).input(),
+      desireValue: (map['desireValue'] as double).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<TemplateApplicationsDimension>(map['dimensions'], (value) => TemplateApplicationsDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
+      envLanguage: map['envLanguage'] == null ? null : (map['envLanguage'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      noticeType: map['noticeType'] == null ? null : (map['noticeType'] as int).input(),
+      productCode: (map['productCode'] as String).input(),
+      quotaActionCode: (map['quotaActionCode'] as String).input(),
+      quotaCategory: (map['quotaCategory'] as String).input(),
+      reason: (map['reason'] as String).input(),
     );
   }
 }

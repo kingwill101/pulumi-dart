@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeGroupAttachmentDataDisk {
   /// Type
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
-  final bool? deleteWithNode;
+  final pulumi.Input<bool>? deleteWithNode;
   /// Performance level
-  final String? performanceLevel;
+  final pulumi.Input<String>? performanceLevel;
   /// Data disk size
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [NodeGroupAttachmentDataDisk].
   /// [category] Type
@@ -34,10 +35,10 @@ class NodeGroupAttachmentDataDisk {
 
   factory NodeGroupAttachmentDataDisk.fromMap(Map<String, dynamic> map) {
     return NodeGroupAttachmentDataDisk(
-      category: map['category'] == null ? null : map['category'] as String,
-      deleteWithNode: map['deleteWithNode'] == null ? null : map['deleteWithNode'] as bool,
-      performanceLevel: map['performanceLevel'] == null ? null : map['performanceLevel'] as String,
-      size: map['size'] == null ? null : map['size'] as int,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      deleteWithNode: map['deleteWithNode'] == null ? null : (map['deleteWithNode'] as bool).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

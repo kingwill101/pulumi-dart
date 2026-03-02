@@ -61,35 +61,21 @@ class KeyArgs {
   /// [tags] A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [xksKeyId] Identifies the external key that serves as key material for the KMS key in an external key store.
   KeyArgs({
-    pulumi.Output<bool>? bypassPolicyLockoutSafetyCheck,
-    pulumi.Output<String>? customKeyStoreId,
-    pulumi.Output<String>? customerMasterKeySpec,
-    pulumi.Output<int>? deletionWindowInDays,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableKeyRotation,
-    pulumi.Output<bool>? isEnabled,
-    pulumi.Output<String>? keyUsage,
-    pulumi.Output<bool>? multiRegion,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? rotationPeriodInDays,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? xksKeyId,
-  }) :
-      bypassPolicyLockoutSafetyCheck = pulumi.Input.asOptionalInput<bool>(bypassPolicyLockoutSafetyCheck),
-      customKeyStoreId = pulumi.Input.asOptionalInput<String>(customKeyStoreId),
-      customerMasterKeySpec = pulumi.Input.asOptionalInput<String>(customerMasterKeySpec),
-      deletionWindowInDays = pulumi.Input.asOptionalInput<int>(deletionWindowInDays),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableKeyRotation = pulumi.Input.asOptionalInput<bool>(enableKeyRotation),
-      isEnabled = pulumi.Input.asOptionalInput<bool>(isEnabled),
-      keyUsage = pulumi.Input.asOptionalInput<String>(keyUsage),
-      multiRegion = pulumi.Input.asOptionalInput<bool>(multiRegion),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rotationPeriodInDays = pulumi.Input.asOptionalInput<int>(rotationPeriodInDays),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      xksKeyId = pulumi.Input.asOptionalInput<String>(xksKeyId);
+    this.bypassPolicyLockoutSafetyCheck,
+    this.customKeyStoreId,
+    this.customerMasterKeySpec,
+    this.deletionWindowInDays,
+    this.description,
+    this.enableKeyRotation,
+    this.isEnabled,
+    this.keyUsage,
+    this.multiRegion,
+    this.policy,
+    this.region,
+    this.rotationPeriodInDays,
+    this.tags,
+    this.xksKeyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,20 +98,20 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : pulumi.Output.create<bool>(map['bypassPolicyLockoutSafetyCheck'] as bool),
-      customKeyStoreId: map['customKeyStoreId'] == null ? null : pulumi.Output.create<String>(map['customKeyStoreId'] as String),
-      customerMasterKeySpec: map['customerMasterKeySpec'] == null ? null : pulumi.Output.create<String>(map['customerMasterKeySpec'] as String),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : pulumi.Output.create<int>(map['deletionWindowInDays'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableKeyRotation: map['enableKeyRotation'] == null ? null : pulumi.Output.create<bool>(map['enableKeyRotation'] as bool),
-      isEnabled: map['isEnabled'] == null ? null : pulumi.Output.create<bool>(map['isEnabled'] as bool),
-      keyUsage: map['keyUsage'] == null ? null : pulumi.Output.create<String>(map['keyUsage'] as String),
-      multiRegion: map['multiRegion'] == null ? null : pulumi.Output.create<bool>(map['multiRegion'] as bool),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rotationPeriodInDays: map['rotationPeriodInDays'] == null ? null : pulumi.Output.create<int>(map['rotationPeriodInDays'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      xksKeyId: map['xksKeyId'] == null ? null : pulumi.Output.create<String>(map['xksKeyId'] as String),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
+      customKeyStoreId: map['customKeyStoreId'] == null ? null : (map['customKeyStoreId'] as String).input(),
+      customerMasterKeySpec: map['customerMasterKeySpec'] == null ? null : (map['customerMasterKeySpec'] as String).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableKeyRotation: map['enableKeyRotation'] == null ? null : (map['enableKeyRotation'] as bool).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      keyUsage: map['keyUsage'] == null ? null : (map['keyUsage'] as String).input(),
+      multiRegion: map['multiRegion'] == null ? null : (map['multiRegion'] as bool).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rotationPeriodInDays: map['rotationPeriodInDays'] == null ? null : (map['rotationPeriodInDays'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      xksKeyId: map['xksKeyId'] == null ? null : (map['xksKeyId'] as String).input(),
     );
   }
 }

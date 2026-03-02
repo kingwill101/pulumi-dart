@@ -18,15 +18,11 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs {
   /// [partnerTenantId] Required.
   /// [proxyConfigId] Required.
   GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs({
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> partnerTenantId,
-    required pulumi.Output<String> proxyConfigId,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId),
-      proxyConfigId = pulumi.Input.asInput<String>(proxyConfigId);
+    this.optionsRequestedPolicyVersion,
+    required this.organizationId,
+    required this.partnerTenantId,
+    required this.proxyConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs {
 
   factory GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      partnerTenantId: pulumi.Output.create<String>(map['partnerTenantId'] as String),
-      proxyConfigId: pulumi.Output.create<String>(map['proxyConfigId'] as String),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      partnerTenantId: (map['partnerTenantId'] as String).input(),
+      proxyConfigId: (map['proxyConfigId'] as String).input(),
     );
   }
 }

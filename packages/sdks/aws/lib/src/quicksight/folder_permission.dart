@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FolderPermission {
   /// List of IAM actions to grant or revoke permissions on.
-  final List<String> actions;
+  final pulumi.Input<List<String>> actions;
   /// ARN of the principal. See the [ResourcePermission documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ResourcePermission.html) for the applicable ARN values.
-  final String principal;
+  final pulumi.Input<String> principal;
 
   /// Creates a new [FolderPermission].
   /// [actions] List of IAM actions to grant or revoke permissions on.
@@ -24,8 +25,8 @@ class FolderPermission {
 
   factory FolderPermission.fromMap(Map<String, dynamic> map) {
     return FolderPermission(
-      actions: (map['actions'] as List).cast<String>(),
-      principal: map['principal'] as String,
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      principal: (map['principal'] as String).input(),
     );
   }
 }

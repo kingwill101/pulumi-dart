@@ -19,13 +19,10 @@ class GetGlobalParameterArgs {
   /// [globalParameterName] The global parameter name.
   /// [resourceGroupName] The resource group name.
   GetGlobalParameterArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> globalParameterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      globalParameterName = pulumi.Input.asInput<String>(globalParameterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    required this.globalParameterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGlobalParameterArgs {
 
   factory GetGlobalParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalParameterArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      globalParameterName: pulumi.Output.create<String>(map['globalParameterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      globalParameterName: (map['globalParameterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

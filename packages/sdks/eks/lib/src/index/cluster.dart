@@ -208,7 +208,7 @@ class Cluster extends pulumi.ComponentResource {
   Future<ClusterGetKubeconfigResult> getKubeconfig({
     ClusterGetKubeconfigArgs? args,
   }) async {
-    final deployment = pulumi.Deployment.instance;
+    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;
     final result = await deployment.callWithResult<Map<String, dynamic>>(
       'eks:index:Cluster/getKubeconfig',
       args?.toMap() ?? const <String, dynamic>{},

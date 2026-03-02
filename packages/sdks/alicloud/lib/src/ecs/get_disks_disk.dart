@@ -6,60 +6,60 @@ import 'get_disks_disk_operation_lock.dart';
 
 class GetDisksDisk {
   /// Disk attachment time.
-  final String attachedTime;
-  final String autoSnapshotPolicyId;
+  final pulumi.Input<String> attachedTime;
+  final pulumi.Input<String> autoSnapshotPolicyId;
   /// Availability zone of the disk.
-  final String availabilityZone;
+  final pulumi.Input<String> availabilityZone;
   /// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
-  final String category;
+  final pulumi.Input<String> category;
   /// Disk creation time.
-  final String creationTime;
-  final bool deleteAutoSnapshot;
-  final bool deleteWithInstance;
+  final pulumi.Input<String> creationTime;
+  final pulumi.Input<bool> deleteAutoSnapshot;
+  final pulumi.Input<bool> deleteWithInstance;
   /// Disk description.
-  final String description;
+  final pulumi.Input<String> description;
   /// Disk detachment time.
-  final String detachedTime;
-  final String device;
-  final String diskId;
-  final String diskName;
-  final String diskType;
-  final bool enableAutoSnapshot;
-  final bool enableAutomatedSnapshotPolicy;
+  final pulumi.Input<String> detachedTime;
+  final pulumi.Input<String> device;
+  final pulumi.Input<String> diskId;
+  final pulumi.Input<String> diskName;
+  final pulumi.Input<String> diskType;
+  final pulumi.Input<bool> enableAutoSnapshot;
+  final pulumi.Input<bool> enableAutomatedSnapshotPolicy;
   /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
-  final String encrypted;
+  final pulumi.Input<String> encrypted;
   /// Disk expiration time.
-  final String expirationTime;
-  final String expiredTime;
+  final pulumi.Input<String> expirationTime;
+  final pulumi.Input<String> expiredTime;
   /// ID of the disk.
-  final String id;
+  final pulumi.Input<String> id;
   /// ID of the image from which the disk is created. It is null unless the disk is created using an image.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// Filter the results by the specified ECS instance ID.
-  final String instanceId;
-  final int iops;
-  final int iopsRead;
-  final int iopsWrite;
-  final String kmsKeyId;
-  final int mountInstanceNum;
-  final List<GetDisksDiskMountInstance> mountInstances;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<int> iops;
+  final pulumi.Input<int> iopsRead;
+  final pulumi.Input<int> iopsWrite;
+  final pulumi.Input<String> kmsKeyId;
+  final pulumi.Input<int> mountInstanceNum;
+  final pulumi.Input<List<GetDisksDiskMountInstance>> mountInstances;
   /// Disk name.
-  final String name;
-  final List<GetDisksDiskOperationLock> operationLocks;
-  final String paymentType;
-  final String performanceLevel;
-  final bool portable;
-  final String productCode;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<GetDisksDiskOperationLock>> operationLocks;
+  final pulumi.Input<String> paymentType;
+  final pulumi.Input<String> performanceLevel;
+  final pulumi.Input<bool> portable;
+  final pulumi.Input<String> productCode;
   /// Region ID the disk belongs to.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The Id of resource group which the disk belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Disk size in GiB.
-  final int size;
+  final pulumi.Input<int> size;
   /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A map of tags assigned to the disks. It must be in the format:
   ///
   /// ```typescript
@@ -165,10 +165,10 @@ class GetDisksDisk {
   ///           tagKey1: tagValue1
   ///           tagKey2: tagValue2
   /// ```
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Disk type. Possible values: `system` and `data`.
-  final String type;
-  final String zoneId;
+  final pulumi.Input<String> type;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetDisksDisk].
   /// [attachedTime] Disk attachment time.
@@ -284,9 +284,9 @@ class GetDisksDisk {
       'iopsWrite': iopsWrite,
       'kmsKeyId': kmsKeyId,
       'mountInstanceNum': mountInstanceNum,
-      'mountInstances': pulumi.Input.encodeList<GetDisksDiskMountInstance, Map<String, dynamic>>(mountInstances, (value) => value.toMap()),
+      'mountInstances': pulumi.Input.mapInputValue<List<GetDisksDiskMountInstance>, List<Map<String, dynamic>>>(mountInstances, (value) => pulumi.Input.encodeList<GetDisksDiskMountInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
-      'operationLocks': pulumi.Input.encodeList<GetDisksDiskOperationLock, Map<String, dynamic>>(operationLocks, (value) => value.toMap()),
+      'operationLocks': pulumi.Input.mapInputValue<List<GetDisksDiskOperationLock>, List<Map<String, dynamic>>>(operationLocks, (value) => pulumi.Input.encodeList<GetDisksDiskOperationLock, Map<String, dynamic>>(value, (value) => value.toMap())),
       'paymentType': paymentType,
       'performanceLevel': performanceLevel,
       'portable': portable,
@@ -304,47 +304,47 @@ class GetDisksDisk {
 
   factory GetDisksDisk.fromMap(Map<String, dynamic> map) {
     return GetDisksDisk(
-      attachedTime: map['attachedTime'] as String,
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] as String,
-      availabilityZone: map['availabilityZone'] as String,
-      category: map['category'] as String,
-      creationTime: map['creationTime'] as String,
-      deleteAutoSnapshot: map['deleteAutoSnapshot'] as bool,
-      deleteWithInstance: map['deleteWithInstance'] as bool,
-      description: map['description'] as String,
-      detachedTime: map['detachedTime'] as String,
-      device: map['device'] as String,
-      diskId: map['diskId'] as String,
-      diskName: map['diskName'] as String,
-      diskType: map['diskType'] as String,
-      enableAutoSnapshot: map['enableAutoSnapshot'] as bool,
-      enableAutomatedSnapshotPolicy: map['enableAutomatedSnapshotPolicy'] as bool,
-      encrypted: map['encrypted'] as String,
-      expirationTime: map['expirationTime'] as String,
-      expiredTime: map['expiredTime'] as String,
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      instanceId: map['instanceId'] as String,
-      iops: map['iops'] as int,
-      iopsRead: map['iopsRead'] as int,
-      iopsWrite: map['iopsWrite'] as int,
-      kmsKeyId: map['kmsKeyId'] as String,
-      mountInstanceNum: map['mountInstanceNum'] as int,
-      mountInstances: pulumi.Input.decodeList<GetDisksDiskMountInstance>(map['mountInstances'], (value) => GetDisksDiskMountInstance.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      operationLocks: pulumi.Input.decodeList<GetDisksDiskOperationLock>(map['operationLocks'], (value) => GetDisksDiskOperationLock.fromMap((value as Map).cast<String, dynamic>())),
-      paymentType: map['paymentType'] as String,
-      performanceLevel: map['performanceLevel'] as String,
-      portable: map['portable'] as bool,
-      productCode: map['productCode'] as String,
-      regionId: map['regionId'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      size: map['size'] as int,
-      snapshotId: map['snapshotId'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      zoneId: map['zoneId'] as String,
+      attachedTime: (map['attachedTime'] as String).input(),
+      autoSnapshotPolicyId: (map['autoSnapshotPolicyId'] as String).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      category: (map['category'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      deleteAutoSnapshot: (map['deleteAutoSnapshot'] as bool).input(),
+      deleteWithInstance: (map['deleteWithInstance'] as bool).input(),
+      description: (map['description'] as String).input(),
+      detachedTime: (map['detachedTime'] as String).input(),
+      device: (map['device'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskName: (map['diskName'] as String).input(),
+      diskType: (map['diskType'] as String).input(),
+      enableAutoSnapshot: (map['enableAutoSnapshot'] as bool).input(),
+      enableAutomatedSnapshotPolicy: (map['enableAutomatedSnapshotPolicy'] as bool).input(),
+      encrypted: (map['encrypted'] as String).input(),
+      expirationTime: (map['expirationTime'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      iops: (map['iops'] as int).input(),
+      iopsRead: (map['iopsRead'] as int).input(),
+      iopsWrite: (map['iopsWrite'] as int).input(),
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
+      mountInstanceNum: (map['mountInstanceNum'] as int).input(),
+      mountInstances: (pulumi.Input.decodeList<GetDisksDiskMountInstance>(map['mountInstances'], (value) => GetDisksDiskMountInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      operationLocks: (pulumi.Input.decodeList<GetDisksDiskOperationLock>(map['operationLocks'], (value) => GetDisksDiskOperationLock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      performanceLevel: (map['performanceLevel'] as String).input(),
+      portable: (map['portable'] as bool).input(),
+      productCode: (map['productCode'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      size: (map['size'] as int).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

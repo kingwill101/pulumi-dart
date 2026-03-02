@@ -16,11 +16,9 @@ class GetSecretSyncArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [secretSyncName] The name of the SecretSync
   GetSecretSyncArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> secretSyncName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretSyncName = pulumi.Input.asInput<String>(secretSyncName);
+    required this.resourceGroupName,
+    required this.secretSyncName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSecretSyncArgs {
 
   factory GetSecretSyncArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretSyncArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretSyncName: pulumi.Output.create<String>(map['secretSyncName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretSyncName: (map['secretSyncName'] as String).input(),
     );
   }
 }

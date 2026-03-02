@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusion_rule_dictionary_cloud_storage_path.dart';
 import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusion_rule_dictionary_word_list.dart';
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath? cloudStoragePath;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath>? cloudStoragePath;
   /// List of words or phrases to search for.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList? wordList;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList>? wordList;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
@@ -21,15 +22,15 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudStoragePath': ?cloudStoragePath == null ? null : cloudStoragePath!.toMap(),
-      'wordList': ?wordList == null ? null : wordList!.toMap(),
+      'cloudStoragePath': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath, Map<String, dynamic>>(cloudStoragePath, (value) => value.toMap()),
+      'wordList': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList, Map<String, dynamic>>(wordList, (value) => value.toMap()),
     };
   }
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary(
-      cloudStoragePath: map['cloudStoragePath'] == null ? null : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>()),
-      wordList: map['wordList'] == null ? null : PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.fromMap((map['wordList'] as Map).cast<String, dynamic>()),
+      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>())).input(),
+      wordList: map['wordList'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

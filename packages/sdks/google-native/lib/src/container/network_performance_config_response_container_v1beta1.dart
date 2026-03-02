@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of all network bandwidth tiers
 class NetworkPerformanceConfigResponseContainerV1beta1 {
   /// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
-  final String externalIpEgressBandwidthTier;
+  final pulumi.Input<String> externalIpEgressBandwidthTier;
   /// Specifies the total network bandwidth tier for the NodePool.
-  final String totalEgressBandwidthTier;
+  final pulumi.Input<String> totalEgressBandwidthTier;
 
   /// Creates a new [NetworkPerformanceConfigResponseContainerV1beta1].
   /// [externalIpEgressBandwidthTier] Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
@@ -25,8 +26,8 @@ class NetworkPerformanceConfigResponseContainerV1beta1 {
 
   factory NetworkPerformanceConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfigResponseContainerV1beta1(
-      externalIpEgressBandwidthTier: map['externalIpEgressBandwidthTier'] as String,
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] as String,
+      externalIpEgressBandwidthTier: (map['externalIpEgressBandwidthTier'] as String).input(),
+      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
     );
   }
 }

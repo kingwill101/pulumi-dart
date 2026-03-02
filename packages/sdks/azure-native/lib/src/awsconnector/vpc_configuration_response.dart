@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of VpcConfiguration
 class VpcConfigurationResponse {
   /// If this field is specified, this access point will only allow connections from the specified VPC ID.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [VpcConfigurationResponse].
   /// [vpcId] If this field is specified, this access point will only allow connections from the specified VPC ID.
@@ -20,7 +21,7 @@ class VpcConfigurationResponse {
 
   factory VpcConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VpcConfigurationResponse(
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

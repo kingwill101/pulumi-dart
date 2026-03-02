@@ -5,7 +5,7 @@ import 'bucket_website_routing_rules_routing_rule.dart';
 
 class BucketWebsiteRoutingRules {
   /// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
-  final List<BucketWebsiteRoutingRulesRoutingRule>? routingRules;
+  final pulumi.Input<List<BucketWebsiteRoutingRulesRoutingRule>>? routingRules;
 
   /// Creates a new [BucketWebsiteRoutingRules].
   /// [routingRules] Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
@@ -15,13 +15,13 @@ class BucketWebsiteRoutingRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'routingRules': ?routingRules == null ? null : pulumi.Input.encodeList<BucketWebsiteRoutingRulesRoutingRule, Map<String, dynamic>>(routingRules!, (value) => value.toMap()),
+      'routingRules': ?pulumi.Input.mapOptionalInputValue<List<BucketWebsiteRoutingRulesRoutingRule>, List<Map<String, dynamic>>>(routingRules, (value) => pulumi.Input.encodeList<BucketWebsiteRoutingRulesRoutingRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BucketWebsiteRoutingRules.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRules(
-      routingRules: map['routingRules'] == null ? null : pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRule>(map['routingRules'], (value) => BucketWebsiteRoutingRulesRoutingRule.fromMap((value as Map).cast<String, dynamic>())),
+      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRule>(map['routingRules'], (value) => BucketWebsiteRoutingRulesRoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

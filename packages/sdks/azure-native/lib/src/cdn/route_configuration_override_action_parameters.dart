@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_configuration.dart';
 import 'origin_group_override.dart';
 
 /// Defines the parameters for the route configuration override action.
 class RouteConfigurationOverrideActionParameters {
   /// The caching configuration associated with this rule. To disable caching, do not provide a cacheConfiguration object.
-  final CacheConfiguration? cacheConfiguration;
+  final pulumi.Input<CacheConfiguration>? cacheConfiguration;
   /// A reference to the origin group override configuration. Leave empty to use the default origin group on route.
-  final OriginGroupOverride? originGroupOverride;
+  final pulumi.Input<OriginGroupOverride>? originGroupOverride;
   /// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
-  final String typeName;
+  final pulumi.Input<String> typeName;
 
   /// Creates a new [RouteConfigurationOverrideActionParameters].
   /// [cacheConfiguration] The caching configuration associated with this rule. To disable caching, do not provide a cacheConfiguration object.
@@ -24,17 +25,17 @@ class RouteConfigurationOverrideActionParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cacheConfiguration': ?cacheConfiguration == null ? null : cacheConfiguration!.toMap(),
-      'originGroupOverride': ?originGroupOverride == null ? null : originGroupOverride!.toMap(),
+      'cacheConfiguration': ?pulumi.Input.mapOptionalInputValue<CacheConfiguration, Map<String, dynamic>>(cacheConfiguration, (value) => value.toMap()),
+      'originGroupOverride': ?pulumi.Input.mapOptionalInputValue<OriginGroupOverride, Map<String, dynamic>>(originGroupOverride, (value) => value.toMap()),
       'typeName': typeName,
     };
   }
 
   factory RouteConfigurationOverrideActionParameters.fromMap(Map<String, dynamic> map) {
     return RouteConfigurationOverrideActionParameters(
-      cacheConfiguration: map['cacheConfiguration'] == null ? null : CacheConfiguration.fromMap((map['cacheConfiguration'] as Map).cast<String, dynamic>()),
-      originGroupOverride: map['originGroupOverride'] == null ? null : OriginGroupOverride.fromMap((map['originGroupOverride'] as Map).cast<String, dynamic>()),
-      typeName: map['typeName'] as String,
+      cacheConfiguration: map['cacheConfiguration'] == null ? null : (CacheConfiguration.fromMap((map['cacheConfiguration'] as Map).cast<String, dynamic>())).input(),
+      originGroupOverride: map['originGroupOverride'] == null ? null : (OriginGroupOverride.fromMap((map['originGroupOverride'] as Map).cast<String, dynamic>())).input(),
+      typeName: (map['typeName'] as String).input(),
     );
   }
 }

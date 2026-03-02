@@ -22,15 +22,11 @@ class VpcArgs {
   /// [name] A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
   /// [region] The DigitalOcean region slug for the VPC's location.
   VpcArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipRange,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asInput<String>(region);
+    this.description,
+    this.ipRange,
+    this.name,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VpcArgs {
 
   factory VpcArgs.fromMap(Map<String, dynamic> map) {
     return VpcArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

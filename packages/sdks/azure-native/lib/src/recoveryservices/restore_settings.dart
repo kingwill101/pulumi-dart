@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cross_subscription_restore_settings.dart';
 
 /// Restore Settings  of the vault
 class RestoreSettings {
   /// Settings for CrossSubscriptionRestore
-  final CrossSubscriptionRestoreSettings? crossSubscriptionRestoreSettings;
+  final pulumi.Input<CrossSubscriptionRestoreSettings>? crossSubscriptionRestoreSettings;
 
   /// Creates a new [RestoreSettings].
   /// [crossSubscriptionRestoreSettings] Settings for CrossSubscriptionRestore
@@ -15,13 +16,13 @@ class RestoreSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crossSubscriptionRestoreSettings': ?crossSubscriptionRestoreSettings == null ? null : crossSubscriptionRestoreSettings!.toMap(),
+      'crossSubscriptionRestoreSettings': ?pulumi.Input.mapOptionalInputValue<CrossSubscriptionRestoreSettings, Map<String, dynamic>>(crossSubscriptionRestoreSettings, (value) => value.toMap()),
     };
   }
 
   factory RestoreSettings.fromMap(Map<String, dynamic> map) {
     return RestoreSettings(
-      crossSubscriptionRestoreSettings: map['crossSubscriptionRestoreSettings'] == null ? null : CrossSubscriptionRestoreSettings.fromMap((map['crossSubscriptionRestoreSettings'] as Map).cast<String, dynamic>()),
+      crossSubscriptionRestoreSettings: map['crossSubscriptionRestoreSettings'] == null ? null : (CrossSubscriptionRestoreSettings.fromMap((map['crossSubscriptionRestoreSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

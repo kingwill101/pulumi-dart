@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GradientaiAgentModelVersion {
   /// Major version of the model
-  final int? major;
+  final pulumi.Input<int>? major;
   /// Minor version of the model
-  final int? minor;
+  final pulumi.Input<int>? minor;
   /// Patch version of the model
-  final int? patch;
+  final pulumi.Input<int>? patch;
 
   /// Creates a new [GradientaiAgentModelVersion].
   /// [major] Major version of the model
@@ -29,9 +30,9 @@ class GradientaiAgentModelVersion {
 
   factory GradientaiAgentModelVersion.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentModelVersion(
-      major: map['major'] == null ? null : map['major'] as int,
-      minor: map['minor'] == null ? null : map['minor'] as int,
-      patch: map['patch'] == null ? null : map['patch'] as int,
+      major: map['major'] == null ? null : (map['major'] as int).input(),
+      minor: map['minor'] == null ? null : (map['minor'] as int).input(),
+      patch: map['patch'] == null ? null : (map['patch'] as int).input(),
     );
   }
 }

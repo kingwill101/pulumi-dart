@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Exit code from a tool execution.
 class ToolExitCodeResponse {
   /// Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
-  final int number;
+  final pulumi.Input<int> number;
 
   /// Creates a new [ToolExitCodeResponse].
   /// [number] Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
@@ -20,7 +21,7 @@ class ToolExitCodeResponse {
 
   factory ToolExitCodeResponse.fromMap(Map<String, dynamic> map) {
     return ToolExitCodeResponse(
-      number: map['number'] as int,
+      number: (map['number'] as int).input(),
     );
   }
 }

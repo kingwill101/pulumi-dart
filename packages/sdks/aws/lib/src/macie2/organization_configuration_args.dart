@@ -16,11 +16,9 @@ class OrganizationConfigurationArgs {
   /// [autoEnable] Whether to enable Amazon Macie automatically for accounts that are added to the organization in AWS Organizations.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationConfigurationArgs({
-    required pulumi.Output<bool> autoEnable,
-    pulumi.Output<String>? region,
-  }) :
-      autoEnable = pulumi.Input.asInput<bool>(autoEnable),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.autoEnable,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class OrganizationConfigurationArgs {
 
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
-      autoEnable: pulumi.Output.create<bool>(map['autoEnable'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoEnable: (map['autoEnable'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

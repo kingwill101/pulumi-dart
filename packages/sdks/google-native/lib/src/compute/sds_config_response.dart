@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grpc_service_config_response.dart';
 
 /// [Deprecated] The configuration to access the SDS server. The configuration to access the SDS server.
 class SdsConfigResponse {
   /// The configuration to access the SDS server over GRPC.
-  final GrpcServiceConfigResponse grpcServiceConfig;
+  final pulumi.Input<GrpcServiceConfigResponse> grpcServiceConfig;
 
   /// Creates a new [SdsConfigResponse].
   /// [grpcServiceConfig] The configuration to access the SDS server over GRPC.
@@ -15,13 +16,13 @@ class SdsConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'grpcServiceConfig': grpcServiceConfig.toMap(),
+      'grpcServiceConfig': pulumi.Input.mapInputValue<GrpcServiceConfigResponse, Map<String, dynamic>>(grpcServiceConfig, (value) => value.toMap()),
     };
   }
 
   factory SdsConfigResponse.fromMap(Map<String, dynamic> map) {
     return SdsConfigResponse(
-      grpcServiceConfig: GrpcServiceConfigResponse.fromMap((map['grpcServiceConfig'] as Map).cast<String, dynamic>()),
+      grpcServiceConfig: (GrpcServiceConfigResponse.fromMap((map['grpcServiceConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

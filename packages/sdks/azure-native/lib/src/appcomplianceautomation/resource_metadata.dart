@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Single resource Id's metadata.
 class ResourceMetadata {
   /// Account Id. For example - the AWS account id.
-  final String? accountId;
+  final pulumi.Input<String>? accountId;
   /// Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// Resource kind.
-  final String? resourceKind;
+  final pulumi.Input<String>? resourceKind;
   /// Resource Origin.
-  final String? resourceOrigin;
+  final pulumi.Input<String>? resourceOrigin;
   /// Resource type. e.g. "Microsoft.Compute/virtualMachines"
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
 
   /// Creates a new [ResourceMetadata].
   /// [accountId] Account Id. For example - the AWS account id.
@@ -40,11 +41,11 @@ class ResourceMetadata {
 
   factory ResourceMetadata.fromMap(Map<String, dynamic> map) {
     return ResourceMetadata(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      resourceId: map['resourceId'] as String,
-      resourceKind: map['resourceKind'] == null ? null : map['resourceKind'] as String,
-      resourceOrigin: map['resourceOrigin'] == null ? null : map['resourceOrigin'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind'] as String).input(),
+      resourceOrigin: map['resourceOrigin'] == null ? null : (map['resourceOrigin'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

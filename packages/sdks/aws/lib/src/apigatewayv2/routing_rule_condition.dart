@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routing_rule_condition_match_base_paths.dart';
 import 'routing_rule_condition_match_headers.dart';
 
 class RoutingRuleCondition {
   /// The base path to be matched. See below.
-  final RoutingRuleConditionMatchBasePaths? matchBasePaths;
+  final pulumi.Input<RoutingRuleConditionMatchBasePaths>? matchBasePaths;
   /// The headers to be matched. See below.
-  final RoutingRuleConditionMatchHeaders? matchHeaders;
+  final pulumi.Input<RoutingRuleConditionMatchHeaders>? matchHeaders;
 
   /// Creates a new [RoutingRuleCondition].
   /// [matchBasePaths] The base path to be matched. See below.
@@ -19,15 +20,15 @@ class RoutingRuleCondition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchBasePaths': ?matchBasePaths == null ? null : matchBasePaths!.toMap(),
-      'matchHeaders': ?matchHeaders == null ? null : matchHeaders!.toMap(),
+      'matchBasePaths': ?pulumi.Input.mapOptionalInputValue<RoutingRuleConditionMatchBasePaths, Map<String, dynamic>>(matchBasePaths, (value) => value.toMap()),
+      'matchHeaders': ?pulumi.Input.mapOptionalInputValue<RoutingRuleConditionMatchHeaders, Map<String, dynamic>>(matchHeaders, (value) => value.toMap()),
     };
   }
 
   factory RoutingRuleCondition.fromMap(Map<String, dynamic> map) {
     return RoutingRuleCondition(
-      matchBasePaths: map['matchBasePaths'] == null ? null : RoutingRuleConditionMatchBasePaths.fromMap((map['matchBasePaths'] as Map).cast<String, dynamic>()),
-      matchHeaders: map['matchHeaders'] == null ? null : RoutingRuleConditionMatchHeaders.fromMap((map['matchHeaders'] as Map).cast<String, dynamic>()),
+      matchBasePaths: map['matchBasePaths'] == null ? null : (RoutingRuleConditionMatchBasePaths.fromMap((map['matchBasePaths'] as Map).cast<String, dynamic>())).input(),
+      matchHeaders: map['matchHeaders'] == null ? null : (RoutingRuleConditionMatchHeaders.fromMap((map['matchHeaders'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

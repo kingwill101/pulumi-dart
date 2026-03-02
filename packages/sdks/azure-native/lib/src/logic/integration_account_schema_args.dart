@@ -46,31 +46,19 @@ class IntegrationAccountSchemaArgs {
   /// [tags] The resource tags.
   /// [targetNamespace] The target namespace of the schema.
   IntegrationAccountSchemaArgs({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? documentName,
-    pulumi.Output<String>? fileName,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? location,
-    pulumi.Output<dynamic>? metadata,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? schemaName,
-    required pulumi.Output<String> schemaType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetNamespace,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      documentName = pulumi.Input.asOptionalInput<String>(documentName),
-      fileName = pulumi.Input.asOptionalInput<String>(fileName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asOptionalInput<String>(schemaName),
-      schemaType = pulumi.Input.asInput<String>(schemaType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetNamespace = pulumi.Input.asOptionalInput<String>(targetNamespace);
+    this.content,
+    this.contentType,
+    this.documentName,
+    this.fileName,
+    required this.integrationAccountName,
+    this.location,
+    this.metadata,
+    required this.resourceGroupName,
+    this.schemaName,
+    required this.schemaType,
+    this.tags,
+    this.targetNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class IntegrationAccountSchemaArgs {
 
   factory IntegrationAccountSchemaArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSchemaArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      documentName: map['documentName'] == null ? null : pulumi.Output.create<String>(map['documentName'] as String),
-      fileName: map['fileName'] == null ? null : pulumi.Output.create<String>(map['fileName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: map['schemaName'] == null ? null : pulumi.Output.create<String>(map['schemaName'] as String),
-      schemaType: pulumi.Output.create<String>(map['schemaType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetNamespace: map['targetNamespace'] == null ? null : pulumi.Output.create<String>(map['targetNamespace'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      documentName: map['documentName'] == null ? null : (map['documentName'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      schemaType: (map['schemaType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
     );
   }
 }

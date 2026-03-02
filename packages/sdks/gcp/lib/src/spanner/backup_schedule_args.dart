@@ -45,25 +45,16 @@ class BackupScheduleArgs {
   /// [retentionDuration] At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// [spec] Defines specifications of the backup schedule.
   BackupScheduleArgs({
-    required pulumi.Output<String> database,
-    pulumi.Output<BackupScheduleEncryptionConfig>? encryptionConfig,
-    pulumi.Output<Map<String, dynamic>>? fullBackupSpec,
-    pulumi.Output<Map<String, dynamic>>? incrementalBackupSpec,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> retentionDuration,
-    pulumi.Output<BackupScheduleSpec>? spec,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      encryptionConfig = pulumi.Input.asOptionalInput<BackupScheduleEncryptionConfig>(encryptionConfig),
-      fullBackupSpec = pulumi.Input.asOptionalInput<Map<String, dynamic>>(fullBackupSpec),
-      incrementalBackupSpec = pulumi.Input.asOptionalInput<Map<String, dynamic>>(incrementalBackupSpec),
-      instance = pulumi.Input.asInput<String>(instance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retentionDuration = pulumi.Input.asInput<String>(retentionDuration),
-      spec = pulumi.Input.asOptionalInput<BackupScheduleSpec>(spec);
+    required this.database,
+    this.encryptionConfig,
+    this.fullBackupSpec,
+    this.incrementalBackupSpec,
+    required this.instance,
+    this.name,
+    this.project,
+    required this.retentionDuration,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class BackupScheduleArgs {
 
   factory BackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BackupScheduleArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      encryptionConfig: map['encryptionConfig'] == null ? null : pulumi.Output.create<BackupScheduleEncryptionConfig>(BackupScheduleEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())),
-      fullBackupSpec: map['fullBackupSpec'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['fullBackupSpec'] as Map).cast<String, dynamic>()),
-      incrementalBackupSpec: map['incrementalBackupSpec'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['incrementalBackupSpec'] as Map).cast<String, dynamic>()),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      retentionDuration: pulumi.Output.create<String>(map['retentionDuration'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<BackupScheduleSpec>(BackupScheduleSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      database: (map['database'] as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (BackupScheduleEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      fullBackupSpec: map['fullBackupSpec'] == null ? null : ((map['fullBackupSpec'] as Map).cast<String, dynamic>()).input(),
+      incrementalBackupSpec: map['incrementalBackupSpec'] == null ? null : ((map['incrementalBackupSpec'] as Map).cast<String, dynamic>()).input(),
+      instance: (map['instance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      retentionDuration: (map['retentionDuration'] as String).input(),
+      spec: map['spec'] == null ? null : (BackupScheduleSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

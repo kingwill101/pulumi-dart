@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration {
   /// SNS topic to deliver results.
-  final String insightsTarget;
+  final pulumi.Input<String> insightsTarget;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration].
   /// [insightsTarget] SNS topic to deliver results.
@@ -19,7 +20,7 @@ class MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration {
 
   factory MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementSnsTopicSinkConfiguration(
-      insightsTarget: map['insightsTarget'] as String,
+      insightsTarget: (map['insightsTarget'] as String).input(),
     );
   }
 }

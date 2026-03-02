@@ -19,13 +19,10 @@ class VpcEndpointPolicyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] The VPC Endpoint ID.
   VpcEndpointPolicyArgs({
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> vpcEndpointId,
-  }) :
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
+    this.policy,
+    this.region,
+    required this.vpcEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VpcEndpointPolicyArgs {
 
   factory VpcEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointPolicyArgs(
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcEndpointId: pulumi.Output.create<String>(map['vpcEndpointId'] as String),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );
   }
 }

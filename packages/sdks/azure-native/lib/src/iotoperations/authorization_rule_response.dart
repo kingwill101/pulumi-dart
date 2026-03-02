@@ -8,11 +8,11 @@ import 'state_store_resource_rule_response.dart';
 /// AuthorizationConfig Rule Properties
 class AuthorizationRuleResponse {
   /// Give access to Broker methods and topics.
-  final List<BrokerResourceRuleResponse> brokerResources;
+  final pulumi.Input<List<BrokerResourceRuleResponse>> brokerResources;
   /// Give access to clients based on the following properties.
-  final PrincipalDefinitionResponse principals;
+  final pulumi.Input<PrincipalDefinitionResponse> principals;
   /// Give access to state store resources.
-  final List<StateStoreResourceRuleResponse>? stateStoreResources;
+  final pulumi.Input<List<StateStoreResourceRuleResponse>>? stateStoreResources;
 
   /// Creates a new [AuthorizationRuleResponse].
   /// [brokerResources] Give access to Broker methods and topics.
@@ -26,17 +26,17 @@ class AuthorizationRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'brokerResources': pulumi.Input.encodeList<BrokerResourceRuleResponse, Map<String, dynamic>>(brokerResources, (value) => value.toMap()),
-      'principals': principals.toMap(),
-      'stateStoreResources': ?stateStoreResources == null ? null : pulumi.Input.encodeList<StateStoreResourceRuleResponse, Map<String, dynamic>>(stateStoreResources!, (value) => value.toMap()),
+      'brokerResources': pulumi.Input.mapInputValue<List<BrokerResourceRuleResponse>, List<Map<String, dynamic>>>(brokerResources, (value) => pulumi.Input.encodeList<BrokerResourceRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'principals': pulumi.Input.mapInputValue<PrincipalDefinitionResponse, Map<String, dynamic>>(principals, (value) => value.toMap()),
+      'stateStoreResources': ?pulumi.Input.mapOptionalInputValue<List<StateStoreResourceRuleResponse>, List<Map<String, dynamic>>>(stateStoreResources, (value) => pulumi.Input.encodeList<StateStoreResourceRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AuthorizationRuleResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleResponse(
-      brokerResources: pulumi.Input.decodeList<BrokerResourceRuleResponse>(map['brokerResources'], (value) => BrokerResourceRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      principals: PrincipalDefinitionResponse.fromMap((map['principals'] as Map).cast<String, dynamic>()),
-      stateStoreResources: map['stateStoreResources'] == null ? null : pulumi.Input.decodeList<StateStoreResourceRuleResponse>(map['stateStoreResources'], (value) => StateStoreResourceRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      brokerResources: (pulumi.Input.decodeList<BrokerResourceRuleResponse>(map['brokerResources'], (value) => BrokerResourceRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principals: (PrincipalDefinitionResponse.fromMap((map['principals'] as Map).cast<String, dynamic>())).input(),
+      stateStoreResources: map['stateStoreResources'] == null ? null : (pulumi.Input.decodeList<StateStoreResourceRuleResponse>(map['stateStoreResources'], (value) => StateStoreResourceRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

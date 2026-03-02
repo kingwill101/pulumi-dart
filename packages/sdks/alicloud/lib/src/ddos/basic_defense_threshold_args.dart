@@ -31,21 +31,14 @@ class BasicDefenseThresholdArgs {
   /// [isAuto] Whether it is the system default threshold. Value:
   /// [pps] The current message number cleaning threshold. Unit: pps.
   BasicDefenseThresholdArgs({
-    pulumi.Output<int>? bps,
-    required pulumi.Output<String> ddosType,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? internetIp,
-    pulumi.Output<bool>? isAuto,
-    pulumi.Output<int>? pps,
-  }) :
-      bps = pulumi.Input.asOptionalInput<int>(bps),
-      ddosType = pulumi.Input.asInput<String>(ddosType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      internetIp = pulumi.Input.asOptionalInput<String>(internetIp),
-      isAuto = pulumi.Input.asOptionalInput<bool>(isAuto),
-      pps = pulumi.Input.asOptionalInput<int>(pps);
+    this.bps,
+    required this.ddosType,
+    required this.instanceId,
+    required this.instanceType,
+    this.internetIp,
+    this.isAuto,
+    this.pps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class BasicDefenseThresholdArgs {
 
   factory BasicDefenseThresholdArgs.fromMap(Map<String, dynamic> map) {
     return BasicDefenseThresholdArgs(
-      bps: map['bps'] == null ? null : pulumi.Output.create<int>(map['bps'] as int),
-      ddosType: pulumi.Output.create<String>(map['ddosType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      internetIp: map['internetIp'] == null ? null : pulumi.Output.create<String>(map['internetIp'] as String),
-      isAuto: map['isAuto'] == null ? null : pulumi.Output.create<bool>(map['isAuto'] as bool),
-      pps: map['pps'] == null ? null : pulumi.Output.create<int>(map['pps'] as int),
+      bps: map['bps'] == null ? null : (map['bps'] as int).input(),
+      ddosType: (map['ddosType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
+      isAuto: map['isAuto'] == null ? null : (map['isAuto'] as bool).input(),
+      pps: map['pps'] == null ? null : (map['pps'] as int).input(),
     );
   }
 }

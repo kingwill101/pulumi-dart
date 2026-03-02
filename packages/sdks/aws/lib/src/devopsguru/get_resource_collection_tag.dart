@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceCollectionTag {
   /// An AWS tag key that is used to identify the AWS resources that DevOps Guru analyzes.
-  final String appBoundaryKey;
+  final pulumi.Input<String> appBoundaryKey;
   /// Array of tag values.
-  final List<String> tagValues;
+  final pulumi.Input<List<String>> tagValues;
 
   /// Creates a new [GetResourceCollectionTag].
   /// [appBoundaryKey] An AWS tag key that is used to identify the AWS resources that DevOps Guru analyzes.
@@ -24,8 +25,8 @@ class GetResourceCollectionTag {
 
   factory GetResourceCollectionTag.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionTag(
-      appBoundaryKey: map['appBoundaryKey'] as String,
-      tagValues: (map['tagValues'] as List).cast<String>(),
+      appBoundaryKey: (map['appBoundaryKey'] as String).input(),
+      tagValues: ((map['tagValues'] as List).cast<String>()).input(),
     );
   }
 }

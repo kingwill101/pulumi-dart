@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseIdentity {
   /// The list of User Assigned Managed Identity IDs assigned to this Microsoft SQL Database.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The type of Managed Service Identity that is configured on this Microsoft SQL Database.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDatabaseIdentity].
   /// [identityIds] The list of User Assigned Managed Identity IDs assigned to this Microsoft SQL Database.
@@ -24,8 +25,8 @@ class GetDatabaseIdentity {
 
   factory GetDatabaseIdentity.fromMap(Map<String, dynamic> map) {
     return GetDatabaseIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

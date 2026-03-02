@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of AutoSnapshotAddOn
 class AutoSnapshotAddOnResponse {
   /// The daily time when an automatic snapshot will be created.
-  final String? snapshotTimeOfDay;
+  final pulumi.Input<String>? snapshotTimeOfDay;
 
   /// Creates a new [AutoSnapshotAddOnResponse].
   /// [snapshotTimeOfDay] The daily time when an automatic snapshot will be created.
@@ -20,7 +21,7 @@ class AutoSnapshotAddOnResponse {
 
   factory AutoSnapshotAddOnResponse.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotAddOnResponse(
-      snapshotTimeOfDay: map['snapshotTimeOfDay'] == null ? null : map['snapshotTimeOfDay'] as String,
+      snapshotTimeOfDay: map['snapshotTimeOfDay'] == null ? null : (map['snapshotTimeOfDay'] as String).input(),
     );
   }
 }

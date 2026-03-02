@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeGroupSapHanaVolumeExportPolicyRule {
   /// A comma-sperated list of allowed client IPv4 addresses.
-  final String allowedClients;
+  final pulumi.Input<String> allowedClients;
   /// Enables NFSv3. Please note that this cannot be enabled if volume has NFSv4.1 as its protocol.
-  final bool nfsv3Enabled;
+  final pulumi.Input<bool> nfsv3Enabled;
   /// Enables NFSv4.1. Please note that this cannot be enabled if volume has NFSv3 as its protocol.
-  final bool nfsv41Enabled;
+  final pulumi.Input<bool> nfsv41Enabled;
   /// Is root access permitted to this volume? Defaults to `true`.
-  final bool? rootAccessEnabled;
+  final pulumi.Input<bool>? rootAccessEnabled;
   /// The index number of the rule, must start at 1 and maximum 5.
-  final int ruleIndex;
+  final pulumi.Input<int> ruleIndex;
   /// Is the file system on unix read only? Defaults to `false.
-  final bool? unixReadOnly;
+  final pulumi.Input<bool>? unixReadOnly;
   /// Is the file system on unix read and write? Defaults to `true`.
-  final bool? unixReadWrite;
+  final pulumi.Input<bool>? unixReadWrite;
 
   /// Creates a new [VolumeGroupSapHanaVolumeExportPolicyRule].
   /// [allowedClients] A comma-sperated list of allowed client IPv4 addresses.
@@ -49,13 +50,13 @@ class VolumeGroupSapHanaVolumeExportPolicyRule {
 
   factory VolumeGroupSapHanaVolumeExportPolicyRule.fromMap(Map<String, dynamic> map) {
     return VolumeGroupSapHanaVolumeExportPolicyRule(
-      allowedClients: map['allowedClients'] as String,
-      nfsv3Enabled: map['nfsv3Enabled'] as bool,
-      nfsv41Enabled: map['nfsv41Enabled'] as bool,
-      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : map['rootAccessEnabled'] as bool,
-      ruleIndex: map['ruleIndex'] as int,
-      unixReadOnly: map['unixReadOnly'] == null ? null : map['unixReadOnly'] as bool,
-      unixReadWrite: map['unixReadWrite'] == null ? null : map['unixReadWrite'] as bool,
+      allowedClients: (map['allowedClients'] as String).input(),
+      nfsv3Enabled: (map['nfsv3Enabled'] as bool).input(),
+      nfsv41Enabled: (map['nfsv41Enabled'] as bool).input(),
+      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : (map['rootAccessEnabled'] as bool).input(),
+      ruleIndex: (map['ruleIndex'] as int).input(),
+      unixReadOnly: map['unixReadOnly'] == null ? null : (map['unixReadOnly'] as bool).input(),
+      unixReadWrite: map['unixReadWrite'] == null ? null : (map['unixReadWrite'] as bool).input(),
     );
   }
 }

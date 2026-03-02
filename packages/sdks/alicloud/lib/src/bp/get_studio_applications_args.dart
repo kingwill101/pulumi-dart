@@ -33,23 +33,15 @@ class GetStudioApplicationsArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the Application. Valid values: `success`, `release`.
   GetStudioApplicationsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyword,
-    pulumi.Output<int>? maxResults,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<int>? orderType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyword = pulumi.Input.asOptionalInput<String>(keyword),
-      maxResults = pulumi.Input.asOptionalInput<int>(maxResults),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      orderType = pulumi.Input.asOptionalInput<int>(orderType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.keyword,
+    this.maxResults,
+    this.nameRegex,
+    this.orderType,
+    this.outputFile,
+    this.resourceGroupId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class GetStudioApplicationsArgs {
 
   factory GetStudioApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetStudioApplicationsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyword: map['keyword'] == null ? null : pulumi.Output.create<String>(map['keyword'] as String),
-      maxResults: map['maxResults'] == null ? null : pulumi.Output.create<int>(map['maxResults'] as int),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      orderType: map['orderType'] == null ? null : pulumi.Output.create<int>(map['orderType'] as int),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType'] as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

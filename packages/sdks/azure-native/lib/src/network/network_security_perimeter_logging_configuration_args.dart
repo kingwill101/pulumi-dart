@@ -23,15 +23,11 @@ class NetworkSecurityPerimeterLoggingConfigurationArgs {
   /// [properties] Properties of the NSP logging configuration.
   /// [resourceGroupName] The name of the resource group.
   NetworkSecurityPerimeterLoggingConfigurationArgs({
-    pulumi.Output<String>? loggingConfigurationName,
-    required pulumi.Output<String> networkSecurityPerimeterName,
-    pulumi.Output<NspLoggingConfigurationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      loggingConfigurationName = pulumi.Input.asOptionalInput<String>(loggingConfigurationName),
-      networkSecurityPerimeterName = pulumi.Input.asInput<String>(networkSecurityPerimeterName),
-      properties = pulumi.Input.asOptionalInput<NspLoggingConfigurationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.loggingConfigurationName,
+    required this.networkSecurityPerimeterName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class NetworkSecurityPerimeterLoggingConfigurationArgs {
 
   factory NetworkSecurityPerimeterLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterLoggingConfigurationArgs(
-      loggingConfigurationName: map['loggingConfigurationName'] == null ? null : pulumi.Output.create<String>(map['loggingConfigurationName'] as String),
-      networkSecurityPerimeterName: pulumi.Output.create<String>(map['networkSecurityPerimeterName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<NspLoggingConfigurationProperties>(NspLoggingConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      loggingConfigurationName: map['loggingConfigurationName'] == null ? null : (map['loggingConfigurationName'] as String).input(),
+      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
+      properties: map['properties'] == null ? null : (NspLoggingConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -46,31 +46,19 @@ class ConnectedRegistryState {
   /// [syncTokenId] The ID of the Container Registry Token which is used for synchronizing the Connected Registry. Changing this forces a new Container Connected Registry to be created.
   /// [syncWindow] The time window (in form of ISO8601) during which sync is enabled for each schedule occurrence. Allowed range is from `PT3H` to `P7D`.
   ConnectedRegistryState({
-    pulumi.Output<bool>? auditLogEnabled,
-    pulumi.Output<List<String>>? clientTokenIds,
-    pulumi.Output<String>? containerRegistryId,
-    pulumi.Output<String>? logLevel,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ConnectedRegistryNotification>>? notifications,
-    pulumi.Output<String>? parentRegistryId,
-    pulumi.Output<String>? syncMessageTtl,
-    pulumi.Output<String>? syncSchedule,
-    pulumi.Output<String>? syncTokenId,
-    pulumi.Output<String>? syncWindow,
-  }) :
-      auditLogEnabled = pulumi.Input.asOptionalInput<bool>(auditLogEnabled),
-      clientTokenIds = pulumi.Input.asOptionalInput<List<String>>(clientTokenIds),
-      containerRegistryId = pulumi.Input.asOptionalInput<String>(containerRegistryId),
-      logLevel = pulumi.Input.asOptionalInput<String>(logLevel),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notifications = pulumi.Input.asOptionalInput<List<ConnectedRegistryNotification>>(notifications),
-      parentRegistryId = pulumi.Input.asOptionalInput<String>(parentRegistryId),
-      syncMessageTtl = pulumi.Input.asOptionalInput<String>(syncMessageTtl),
-      syncSchedule = pulumi.Input.asOptionalInput<String>(syncSchedule),
-      syncTokenId = pulumi.Input.asOptionalInput<String>(syncTokenId),
-      syncWindow = pulumi.Input.asOptionalInput<String>(syncWindow);
+    this.auditLogEnabled,
+    this.clientTokenIds,
+    this.containerRegistryId,
+    this.logLevel,
+    this.mode,
+    this.name,
+    this.notifications,
+    this.parentRegistryId,
+    this.syncMessageTtl,
+    this.syncSchedule,
+    this.syncTokenId,
+    this.syncWindow,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class ConnectedRegistryState {
 
   factory ConnectedRegistryState.fromMap(Map<String, dynamic> map) {
     return ConnectedRegistryState(
-      auditLogEnabled: map['auditLogEnabled'] == null ? null : pulumi.Output.create<bool>(map['auditLogEnabled'] as bool),
-      clientTokenIds: map['clientTokenIds'] == null ? null : pulumi.Output.create<List<String>>((map['clientTokenIds'] as List).cast<String>()),
-      containerRegistryId: map['containerRegistryId'] == null ? null : pulumi.Output.create<String>(map['containerRegistryId'] as String),
-      logLevel: map['logLevel'] == null ? null : pulumi.Output.create<String>(map['logLevel'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notifications: map['notifications'] == null ? null : pulumi.Output.create<List<ConnectedRegistryNotification>>(pulumi.Input.decodeList<ConnectedRegistryNotification>(map['notifications'], (value) => ConnectedRegistryNotification.fromMap((value as Map).cast<String, dynamic>()))),
-      parentRegistryId: map['parentRegistryId'] == null ? null : pulumi.Output.create<String>(map['parentRegistryId'] as String),
-      syncMessageTtl: map['syncMessageTtl'] == null ? null : pulumi.Output.create<String>(map['syncMessageTtl'] as String),
-      syncSchedule: map['syncSchedule'] == null ? null : pulumi.Output.create<String>(map['syncSchedule'] as String),
-      syncTokenId: map['syncTokenId'] == null ? null : pulumi.Output.create<String>(map['syncTokenId'] as String),
-      syncWindow: map['syncWindow'] == null ? null : pulumi.Output.create<String>(map['syncWindow'] as String),
+      auditLogEnabled: map['auditLogEnabled'] == null ? null : (map['auditLogEnabled'] as bool).input(),
+      clientTokenIds: map['clientTokenIds'] == null ? null : ((map['clientTokenIds'] as List).cast<String>()).input(),
+      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<ConnectedRegistryNotification>(map['notifications'], (value) => ConnectedRegistryNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parentRegistryId: map['parentRegistryId'] == null ? null : (map['parentRegistryId'] as String).input(),
+      syncMessageTtl: map['syncMessageTtl'] == null ? null : (map['syncMessageTtl'] as String).input(),
+      syncSchedule: map['syncSchedule'] == null ? null : (map['syncSchedule'] as String).input(),
+      syncTokenId: map['syncTokenId'] == null ? null : (map['syncTokenId'] as String).input(),
+      syncWindow: map['syncWindow'] == null ? null : (map['syncWindow'] as String).input(),
     );
   }
 }

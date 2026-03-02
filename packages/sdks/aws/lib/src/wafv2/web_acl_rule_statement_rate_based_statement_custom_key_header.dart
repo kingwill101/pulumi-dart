@@ -5,9 +5,9 @@ import 'web_acl_rule_statement_rate_based_statement_custom_key_header_text_trans
 
 class WebAclRuleStatementRateBasedStatementCustomKeyHeader {
   /// The name of the header to use.
-  final String name;
+  final pulumi.Input<String> name;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required. See `text_transformation` above for details.
-  final List<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation> textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>> textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyHeader].
   /// [name] The name of the header to use.
@@ -20,14 +20,14 @@ class WebAclRuleStatementRateBasedStatementCustomKeyHeader {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'textTransformations': pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation, Map<String, dynamic>>(textTransformations, (value) => value.toMap()),
+      'textTransformations': pulumi.Input.mapInputValue<List<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebAclRuleStatementRateBasedStatementCustomKeyHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyHeader(
-      name: map['name'] as String,
-      textTransformations: pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

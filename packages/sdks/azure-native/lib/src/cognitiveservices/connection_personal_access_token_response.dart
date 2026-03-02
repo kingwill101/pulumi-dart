@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionPersonalAccessTokenResponse {
-  final String? pat;
+  final pulumi.Input<String>? pat;
 
   /// Creates a new [ConnectionPersonalAccessTokenResponse].
   /// [pat] Optional.
@@ -18,7 +19,7 @@ class ConnectionPersonalAccessTokenResponse {
 
   factory ConnectionPersonalAccessTokenResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionPersonalAccessTokenResponse(
-      pat: map['pat'] == null ? null : map['pat'] as String,
+      pat: map['pat'] == null ? null : (map['pat'] as String).input(),
     );
   }
 }

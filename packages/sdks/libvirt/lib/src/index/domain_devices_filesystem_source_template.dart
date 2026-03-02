@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemSourceTemplate {
   /// Configures the name of the template source for the filesystem.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DomainDevicesFilesystemSourceTemplate].
   /// [name] Configures the name of the template source for the filesystem.
@@ -19,7 +20,7 @@ class DomainDevicesFilesystemSourceTemplate {
 
   factory DomainDevicesFilesystemSourceTemplate.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceTemplate(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

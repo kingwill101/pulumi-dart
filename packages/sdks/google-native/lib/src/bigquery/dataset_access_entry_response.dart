@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_reference_response.dart';
 
 class DatasetAccessEntryResponse {
   /// [Required] The dataset this entry applies to.
-  final DatasetReferenceResponse dataset;
-  final List<String> targetTypes;
+  final pulumi.Input<DatasetReferenceResponse> dataset;
+  final pulumi.Input<List<String>> targetTypes;
 
   /// Creates a new [DatasetAccessEntryResponse].
   /// [dataset] [Required] The dataset this entry applies to.
@@ -17,15 +18,15 @@ class DatasetAccessEntryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataset': dataset.toMap(),
+      'dataset': pulumi.Input.mapInputValue<DatasetReferenceResponse, Map<String, dynamic>>(dataset, (value) => value.toMap()),
       'targetTypes': targetTypes,
     };
   }
 
   factory DatasetAccessEntryResponse.fromMap(Map<String, dynamic> map) {
     return DatasetAccessEntryResponse(
-      dataset: DatasetReferenceResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>()),
-      targetTypes: (map['targetTypes'] as List).cast<String>(),
+      dataset: (DatasetReferenceResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
+      targetTypes: ((map['targetTypes'] as List).cast<String>()).input(),
     );
   }
 }

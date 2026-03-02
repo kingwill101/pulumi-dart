@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMigrationSource {
   /// The host and port of the on-premises instance in host:port format
-  final String? hostPort;
+  final pulumi.Input<String>? hostPort;
   /// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
-  final String? referenceId;
+  final pulumi.Input<String>? referenceId;
   /// Type of migration source.
-  final String? sourceType;
+  final pulumi.Input<String>? sourceType;
 
   /// Creates a new [ClusterMigrationSource].
   /// [hostPort] The host and port of the on-premises instance in host:port format
@@ -29,9 +30,9 @@ class ClusterMigrationSource {
 
   factory ClusterMigrationSource.fromMap(Map<String, dynamic> map) {
     return ClusterMigrationSource(
-      hostPort: map['hostPort'] == null ? null : map['hostPort'] as String,
-      referenceId: map['referenceId'] == null ? null : map['referenceId'] as String,
-      sourceType: map['sourceType'] == null ? null : map['sourceType'] as String,
+      hostPort: map['hostPort'] == null ? null : (map['hostPort'] as String).input(),
+      referenceId: map['referenceId'] == null ? null : (map['referenceId'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
     );
   }
 }

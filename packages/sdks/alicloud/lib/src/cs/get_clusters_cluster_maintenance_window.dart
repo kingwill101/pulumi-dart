@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterMaintenanceWindow {
   /// The duration of the maintenance window.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Indicates whether to enable the maintenance window.
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// Maintenance start time.
-  final String maintenanceTime;
+  final pulumi.Input<String> maintenanceTime;
   /// The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
-  final String recurrence;
+  final pulumi.Input<String> recurrence;
   /// The maintenance cycle.
-  final String weeklyPeriod;
+  final pulumi.Input<String> weeklyPeriod;
 
   /// Creates a new [GetClustersClusterMaintenanceWindow].
   /// [duration] The duration of the maintenance window.
@@ -39,11 +40,11 @@ class GetClustersClusterMaintenanceWindow {
 
   factory GetClustersClusterMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterMaintenanceWindow(
-      duration: map['duration'] as String,
-      enable: map['enable'] as bool,
-      maintenanceTime: map['maintenanceTime'] as String,
-      recurrence: map['recurrence'] as String,
-      weeklyPeriod: map['weeklyPeriod'] as String,
+      duration: (map['duration'] as String).input(),
+      enable: (map['enable'] as bool).input(),
+      maintenanceTime: (map['maintenanceTime'] as String).input(),
+      recurrence: (map['recurrence'] as String).input(),
+      weeklyPeriod: (map['weeklyPeriod'] as String).input(),
     );
   }
 }

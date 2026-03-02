@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_regexes_response.dart';
 
 /// Specifies a collection of BigQuery tables. Used for Discovery.
 class GooglePrivacyDlpV2BigQueryTableCollectionResponse {
   /// A collection of regular expressions to match a BigQuery table against.
-  final GooglePrivacyDlpV2BigQueryRegexesResponse includeRegexes;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryRegexesResponse> includeRegexes;
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableCollectionResponse].
   /// [includeRegexes] A collection of regular expressions to match a BigQuery table against.
@@ -15,13 +16,13 @@ class GooglePrivacyDlpV2BigQueryTableCollectionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'includeRegexes': includeRegexes.toMap(),
+      'includeRegexes': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryRegexesResponse, Map<String, dynamic>>(includeRegexes, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2BigQueryTableCollectionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryTableCollectionResponse(
-      includeRegexes: GooglePrivacyDlpV2BigQueryRegexesResponse.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>()),
+      includeRegexes: (GooglePrivacyDlpV2BigQueryRegexesResponse.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class ServiceLevelState {
   /// [sliGuid] The unique entity identifier of the Service Level Indicator in New Relic.
   /// [sliId] The unique entity identifier of the Service Level Indicator.
   ServiceLevelState({
-    pulumi.Output<String>? description,
-    pulumi.Output<ServiceLevelEvents>? events,
-    pulumi.Output<String>? guid,
-    pulumi.Output<String>? name,
-    pulumi.Output<ServiceLevelObjective>? objective,
-    pulumi.Output<String>? sliGuid,
-    pulumi.Output<String>? sliId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      events = pulumi.Input.asOptionalInput<ServiceLevelEvents>(events),
-      guid = pulumi.Input.asOptionalInput<String>(guid),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      objective = pulumi.Input.asOptionalInput<ServiceLevelObjective>(objective),
-      sliGuid = pulumi.Input.asOptionalInput<String>(sliGuid),
-      sliId = pulumi.Input.asOptionalInput<String>(sliId);
+    this.description,
+    this.events,
+    this.guid,
+    this.name,
+    this.objective,
+    this.sliGuid,
+    this.sliId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ServiceLevelState {
 
   factory ServiceLevelState.fromMap(Map<String, dynamic> map) {
     return ServiceLevelState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      events: map['events'] == null ? null : pulumi.Output.create<ServiceLevelEvents>(ServiceLevelEvents.fromMap((map['events'] as Map).cast<String, dynamic>())),
-      guid: map['guid'] == null ? null : pulumi.Output.create<String>(map['guid'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      objective: map['objective'] == null ? null : pulumi.Output.create<ServiceLevelObjective>(ServiceLevelObjective.fromMap((map['objective'] as Map).cast<String, dynamic>())),
-      sliGuid: map['sliGuid'] == null ? null : pulumi.Output.create<String>(map['sliGuid'] as String),
-      sliId: map['sliId'] == null ? null : pulumi.Output.create<String>(map['sliId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      events: map['events'] == null ? null : (ServiceLevelEvents.fromMap((map['events'] as Map).cast<String, dynamic>())).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      objective: map['objective'] == null ? null : (ServiceLevelObjective.fromMap((map['objective'] as Map).cast<String, dynamic>())).input(),
+      sliGuid: map['sliGuid'] == null ? null : (map['sliGuid'] as String).input(),
+      sliId: map['sliId'] == null ? null : (map['sliId'] as String).input(),
     );
   }
 }

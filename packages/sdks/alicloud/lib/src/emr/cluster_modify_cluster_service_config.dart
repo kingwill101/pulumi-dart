@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterModifyClusterServiceConfig {
   /// Cluster service configuration modification comment, e.g. "Modify tez configuration".
-  final String? comment;
+  final pulumi.Input<String>? comment;
   /// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
-  final String configParams;
+  final pulumi.Input<String> configParams;
   /// Cluster service configuration modification type.
-  final String? configType;
+  final pulumi.Input<String>? configType;
   /// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
-  final String? customConfigParams;
+  final pulumi.Input<String>? customConfigParams;
   /// Cluster service configuration modification related gateway cluster id list.
-  final List<String>? gatewayClusterIdLists;
+  final pulumi.Input<List<String>>? gatewayClusterIdLists;
   /// Cluster service configuration modification node group id, e.g. ’G-XXX’.
-  final String? groupId;
+  final pulumi.Input<String>? groupId;
   /// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
-  final String? hostInstanceId;
+  final pulumi.Input<String>? hostInstanceId;
   /// Cluster service configuration modification refresh host config, ’true’ or ’false’.
-  final bool? refreshHostConfig;
-  final String serviceName;
+  final pulumi.Input<bool>? refreshHostConfig;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [ClusterModifyClusterServiceConfig].
   /// [comment] Cluster service configuration modification comment, e.g. "Modify tez configuration".
@@ -58,15 +59,15 @@ class ClusterModifyClusterServiceConfig {
 
   factory ClusterModifyClusterServiceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterModifyClusterServiceConfig(
-      comment: map['comment'] == null ? null : map['comment'] as String,
-      configParams: map['configParams'] as String,
-      configType: map['configType'] == null ? null : map['configType'] as String,
-      customConfigParams: map['customConfigParams'] == null ? null : map['customConfigParams'] as String,
-      gatewayClusterIdLists: map['gatewayClusterIdLists'] == null ? null : (map['gatewayClusterIdLists'] as List).cast<String>(),
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
-      hostInstanceId: map['hostInstanceId'] == null ? null : map['hostInstanceId'] as String,
-      refreshHostConfig: map['refreshHostConfig'] == null ? null : map['refreshHostConfig'] as bool,
-      serviceName: map['serviceName'] as String,
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      configParams: (map['configParams'] as String).input(),
+      configType: map['configType'] == null ? null : (map['configType'] as String).input(),
+      customConfigParams: map['customConfigParams'] == null ? null : (map['customConfigParams'] as String).input(),
+      gatewayClusterIdLists: map['gatewayClusterIdLists'] == null ? null : ((map['gatewayClusterIdLists'] as List).cast<String>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      hostInstanceId: map['hostInstanceId'] == null ? null : (map['hostInstanceId'] as String).input(),
+      refreshHostConfig: map['refreshHostConfig'] == null ? null : (map['refreshHostConfig'] as bool).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

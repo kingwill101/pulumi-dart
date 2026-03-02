@@ -19,13 +19,10 @@ class GetFhirServiceArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
   GetFhirServiceArgs({
-    required pulumi.Output<String> fhirServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      fhirServiceName = pulumi.Input.asInput<String>(fhirServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.fhirServiceName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFhirServiceArgs {
 
   factory GetFhirServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceArgs(
-      fhirServiceName: pulumi.Output.create<String>(map['fhirServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      fhirServiceName: (map['fhirServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

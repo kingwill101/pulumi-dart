@@ -16,13 +16,10 @@ class AlertManagerDefinitionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workspaceId] ID of the prometheus workspace the alert manager definition should be linked to
   AlertManagerDefinitionState({
-    pulumi.Output<String>? definition,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      definition = pulumi.Input.asOptionalInput<String>(definition),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.definition,
+    this.region,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AlertManagerDefinitionState {
 
   factory AlertManagerDefinitionState.fromMap(Map<String, dynamic> map) {
     return AlertManagerDefinitionState(
-      definition: map['definition'] == null ? null : pulumi.Output.create<String>(map['definition'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

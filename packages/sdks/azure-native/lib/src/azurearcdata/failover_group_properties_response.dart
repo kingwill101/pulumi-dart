@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'failover_group_spec_response.dart';
 
 /// The properties of a failover group resource.
 class FailoverGroupPropertiesResponse {
   /// The resource ID of the partner SQL managed instance.
-  final String partnerManagedInstanceId;
+  final pulumi.Input<String> partnerManagedInstanceId;
   /// The provisioning state of the failover group resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The specifications of the failover group resource.
-  final FailoverGroupSpecResponse spec;
+  final pulumi.Input<FailoverGroupSpecResponse> spec;
   /// The status of the failover group custom resource.
-  final dynamic status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [FailoverGroupPropertiesResponse].
   /// [partnerManagedInstanceId] The resource ID of the partner SQL managed instance.
@@ -29,17 +30,17 @@ class FailoverGroupPropertiesResponse {
     return <String, dynamic>{
       'partnerManagedInstanceId': partnerManagedInstanceId,
       'provisioningState': provisioningState,
-      'spec': spec.toMap(),
+      'spec': pulumi.Input.mapInputValue<FailoverGroupSpecResponse, Map<String, dynamic>>(spec, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory FailoverGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FailoverGroupPropertiesResponse(
-      partnerManagedInstanceId: map['partnerManagedInstanceId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      spec: FailoverGroupSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'],
+      partnerManagedInstanceId: (map['partnerManagedInstanceId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      spec: (FailoverGroupSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']).input(),
     );
   }
 }

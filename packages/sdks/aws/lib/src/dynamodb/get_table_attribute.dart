@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableAttribute {
   /// Name of the DynamoDB table.
-  final String name;
-  final String type;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetTableAttribute].
   /// [name] Name of the DynamoDB table.
@@ -23,8 +24,8 @@ class GetTableAttribute {
 
   factory GetTableAttribute.fromMap(Map<String, dynamic> map) {
     return GetTableAttribute(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetThesaurusArgs {
   /// [tags] Metadata that helps organize the Thesaurus you create.
   /// [thesaurusId] Identifier of the Thesaurus.
   GetThesaurusArgs({
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> thesaurusId,
-  }) :
-      indexId = pulumi.Input.asInput<String>(indexId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      thesaurusId = pulumi.Input.asInput<String>(thesaurusId);
+    required this.indexId,
+    this.region,
+    this.tags,
+    required this.thesaurusId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetThesaurusArgs {
 
   factory GetThesaurusArgs.fromMap(Map<String, dynamic> map) {
     return GetThesaurusArgs(
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      thesaurusId: pulumi.Output.create<String>(map['thesaurusId'] as String),
+      indexId: (map['indexId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      thesaurusId: (map['thesaurusId'] as String).input(),
     );
   }
 }

@@ -55,35 +55,21 @@ class AssignmentArgs {
   /// [scope] Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   /// [tags] A list of key value pairs that describe the resource.
   AssignmentArgs({
-    pulumi.Output<AssignmentPropertiesAdditionalData>? additionalData,
-    pulumi.Output<AssignedComponentItem>? assignedComponent,
-    pulumi.Output<AssignedStandardItem>? assignedStandard,
-    pulumi.Output<String>? assignmentId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? effect,
-    pulumi.Output<String>? expiresOn,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<dynamic>? metadata,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scope,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      additionalData = pulumi.Input.asOptionalInput<AssignmentPropertiesAdditionalData>(additionalData),
-      assignedComponent = pulumi.Input.asOptionalInput<AssignedComponentItem>(assignedComponent),
-      assignedStandard = pulumi.Input.asOptionalInput<AssignedStandardItem>(assignedStandard),
-      assignmentId = pulumi.Input.asOptionalInput<String>(assignmentId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effect = pulumi.Input.asOptionalInput<String>(effect),
-      expiresOn = pulumi.Input.asOptionalInput<String>(expiresOn),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.additionalData,
+    this.assignedComponent,
+    this.assignedStandard,
+    this.assignmentId,
+    this.description,
+    this.displayName,
+    this.effect,
+    this.expiresOn,
+    this.kind,
+    this.location,
+    this.metadata,
+    required this.resourceGroupName,
+    this.scope,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class AssignmentArgs {
 
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
-      additionalData: map['additionalData'] == null ? null : pulumi.Output.create<AssignmentPropertiesAdditionalData>(AssignmentPropertiesAdditionalData.fromMap((map['additionalData'] as Map).cast<String, dynamic>())),
-      assignedComponent: map['assignedComponent'] == null ? null : pulumi.Output.create<AssignedComponentItem>(AssignedComponentItem.fromMap((map['assignedComponent'] as Map).cast<String, dynamic>())),
-      assignedStandard: map['assignedStandard'] == null ? null : pulumi.Output.create<AssignedStandardItem>(AssignedStandardItem.fromMap((map['assignedStandard'] as Map).cast<String, dynamic>())),
-      assignmentId: map['assignmentId'] == null ? null : pulumi.Output.create<String>(map['assignmentId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effect: map['effect'] == null ? null : pulumi.Output.create<String>(map['effect'] as String),
-      expiresOn: map['expiresOn'] == null ? null : pulumi.Output.create<String>(map['expiresOn'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      additionalData: map['additionalData'] == null ? null : (AssignmentPropertiesAdditionalData.fromMap((map['additionalData'] as Map).cast<String, dynamic>())).input(),
+      assignedComponent: map['assignedComponent'] == null ? null : (AssignedComponentItem.fromMap((map['assignedComponent'] as Map).cast<String, dynamic>())).input(),
+      assignedStandard: map['assignedStandard'] == null ? null : (AssignedStandardItem.fromMap((map['assignedStandard'] as Map).cast<String, dynamic>())).input(),
+      assignmentId: map['assignmentId'] == null ? null : (map['assignmentId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesRuleRuleActionFixedResponseConfig {
   /// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
-  final String content;
+  final pulumi.Input<String> content;
   /// The format of the fixed response.
-  final String contentType;
+  final pulumi.Input<String> contentType;
   /// The redirect method.
-  final String httpCode;
+  final pulumi.Input<String> httpCode;
 
   /// Creates a new [GetRulesRuleRuleActionFixedResponseConfig].
   /// [content] The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
@@ -29,9 +30,9 @@ class GetRulesRuleRuleActionFixedResponseConfig {
 
   factory GetRulesRuleRuleActionFixedResponseConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleActionFixedResponseConfig(
-      content: map['content'] as String,
-      contentType: map['contentType'] as String,
-      httpCode: map['httpCode'] as String,
+      content: (map['content'] as String).input(),
+      contentType: (map['contentType'] as String).input(),
+      httpCode: (map['httpCode'] as String).input(),
     );
   }
 }

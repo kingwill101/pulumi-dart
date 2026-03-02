@@ -40,17 +40,12 @@ class GetInstanceClassInfosArgs {
   /// [orderType] FThe type of order that you want to query. Valid values:
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
   GetInstanceClassInfosArgs({
-    required pulumi.Output<String> commodityCode,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<List<GetInstanceClassInfosInfo>>? infos,
-    required pulumi.Output<String> orderType,
-    pulumi.Output<String>? outputFile,
-  }) :
-      commodityCode = pulumi.Input.asInput<String>(commodityCode),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      infos = pulumi.Input.asOptionalInput<List<GetInstanceClassInfosInfo>>(infos),
-      orderType = pulumi.Input.asInput<String>(orderType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.commodityCode,
+    this.dbInstanceId,
+    this.infos,
+    required this.orderType,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,11 +59,11 @@ class GetInstanceClassInfosArgs {
 
   factory GetInstanceClassInfosArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassInfosArgs(
-      commodityCode: pulumi.Output.create<String>(map['commodityCode'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      infos: map['infos'] == null ? null : pulumi.Output.create<List<GetInstanceClassInfosInfo>>(pulumi.Input.decodeList<GetInstanceClassInfosInfo>(map['infos'], (value) => GetInstanceClassInfosInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      orderType: pulumi.Output.create<String>(map['orderType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      commodityCode: (map['commodityCode'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      infos: map['infos'] == null ? null : (pulumi.Input.decodeList<GetInstanceClassInfosInfo>(map['infos'], (value) => GetInstanceClassInfosInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      orderType: (map['orderType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

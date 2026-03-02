@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FormTypeImport {
   /// Name of the form type. Must be the name of the structure in smithy document.
-  final String name;
+  final pulumi.Input<String> name;
   /// Revision of the Form Type.
-  final String revision;
+  final pulumi.Input<String> revision;
 
   /// Creates a new [FormTypeImport].
   /// [name] Name of the form type. Must be the name of the structure in smithy document.
@@ -24,8 +25,8 @@ class FormTypeImport {
 
   factory FormTypeImport.fromMap(Map<String, dynamic> map) {
     return FormTypeImport(
-      name: map['name'] as String,
-      revision: map['revision'] as String,
+      name: (map['name'] as String).input(),
+      revision: (map['revision'] as String).input(),
     );
   }
 }

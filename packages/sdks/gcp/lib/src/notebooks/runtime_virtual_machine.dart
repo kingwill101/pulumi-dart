@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'runtime_virtual_machine_virtual_machine_config.dart';
 
 class RuntimeVirtualMachine {
   /// (Output)
   /// The unique identifier of the Managed Compute Engine instance.
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// (Output)
   /// The user-friendly name of the Managed Compute Engine instance.
-  final String? instanceName;
+  final pulumi.Input<String>? instanceName;
   /// Virtual Machine configuration settings.
   /// Structure is documented below.
-  final RuntimeVirtualMachineVirtualMachineConfig? virtualMachineConfig;
+  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfig>? virtualMachineConfig;
 
   /// Creates a new [RuntimeVirtualMachine].
   /// [instanceId] (Output)
@@ -27,15 +28,15 @@ class RuntimeVirtualMachine {
     return <String, dynamic>{
       'instanceId': ?instanceId,
       'instanceName': ?instanceName,
-      'virtualMachineConfig': ?virtualMachineConfig == null ? null : virtualMachineConfig!.toMap(),
+      'virtualMachineConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeVirtualMachineVirtualMachineConfig, Map<String, dynamic>>(virtualMachineConfig, (value) => value.toMap()),
     };
   }
 
   factory RuntimeVirtualMachine.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachine(
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
-      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : RuntimeVirtualMachineVirtualMachineConfig.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>()),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfig.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

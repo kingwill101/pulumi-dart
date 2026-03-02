@@ -34,21 +34,14 @@ class CxVersionState {
   /// [parent] The Flow to create an Version for.
   /// [state] The state of this version.
   CxVersionState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<CxVersionNluSetting>>? nluSettings,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? state,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nluSettings = pulumi.Input.asOptionalInput<List<CxVersionNluSetting>>(nluSettings),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.nluSettings,
+    this.parent,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class CxVersionState {
 
   factory CxVersionState.fromMap(Map<String, dynamic> map) {
     return CxVersionState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nluSettings: map['nluSettings'] == null ? null : pulumi.Output.create<List<CxVersionNluSetting>>(pulumi.Input.decodeList<CxVersionNluSetting>(map['nluSettings'], (value) => CxVersionNluSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nluSettings: map['nluSettings'] == null ? null : (pulumi.Input.decodeList<CxVersionNluSetting>(map['nluSettings'], (value) => CxVersionNluSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

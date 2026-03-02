@@ -58,35 +58,21 @@ class EndpointPolicyState {
   /// [type] The type of endpoint policy. This is primarily used to validate the configuration.
   /// [updateTime] Time the TcpRoute was updated in UTC.
   EndpointPolicyState({
-    pulumi.Output<String>? authorizationPolicy,
-    pulumi.Output<String>? clientTlsPolicy,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<EndpointPolicyEndpointMatcher>? endpointMatcher,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? serverTlsPolicy,
-    pulumi.Output<EndpointPolicyTrafficPortSelector>? trafficPortSelector,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updateTime,
-  }) :
-      authorizationPolicy = pulumi.Input.asOptionalInput<String>(authorizationPolicy),
-      clientTlsPolicy = pulumi.Input.asOptionalInput<String>(clientTlsPolicy),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      endpointMatcher = pulumi.Input.asOptionalInput<EndpointPolicyEndpointMatcher>(endpointMatcher),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      serverTlsPolicy = pulumi.Input.asOptionalInput<String>(serverTlsPolicy),
-      trafficPortSelector = pulumi.Input.asOptionalInput<EndpointPolicyTrafficPortSelector>(trafficPortSelector),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.authorizationPolicy,
+    this.clientTlsPolicy,
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.endpointMatcher,
+    this.labels,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.serverTlsPolicy,
+    this.trafficPortSelector,
+    this.type,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class EndpointPolicyState {
 
   factory EndpointPolicyState.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyState(
-      authorizationPolicy: map['authorizationPolicy'] == null ? null : pulumi.Output.create<String>(map['authorizationPolicy'] as String),
-      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : pulumi.Output.create<String>(map['clientTlsPolicy'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      endpointMatcher: map['endpointMatcher'] == null ? null : pulumi.Output.create<EndpointPolicyEndpointMatcher>(EndpointPolicyEndpointMatcher.fromMap((map['endpointMatcher'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : pulumi.Output.create<String>(map['serverTlsPolicy'] as String),
-      trafficPortSelector: map['trafficPortSelector'] == null ? null : pulumi.Output.create<EndpointPolicyTrafficPortSelector>(EndpointPolicyTrafficPortSelector.fromMap((map['trafficPortSelector'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy'] as String).input(),
+      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      endpointMatcher: map['endpointMatcher'] == null ? null : (EndpointPolicyEndpointMatcher.fromMap((map['endpointMatcher'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
+      trafficPortSelector: map['trafficPortSelector'] == null ? null : (EndpointPolicyTrafficPortSelector.fromMap((map['trafficPortSelector'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

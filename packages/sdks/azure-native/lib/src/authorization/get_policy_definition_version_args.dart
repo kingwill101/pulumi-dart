@@ -16,11 +16,9 @@ class GetPolicyDefinitionVersionArgs {
   /// [policyDefinitionName] The name of the policy definition.
   /// [policyDefinitionVersion] The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
   GetPolicyDefinitionVersionArgs({
-    required pulumi.Output<String> policyDefinitionName,
-    required pulumi.Output<String> policyDefinitionVersion,
-  }) :
-      policyDefinitionName = pulumi.Input.asInput<String>(policyDefinitionName),
-      policyDefinitionVersion = pulumi.Input.asInput<String>(policyDefinitionVersion);
+    required this.policyDefinitionName,
+    required this.policyDefinitionVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPolicyDefinitionVersionArgs {
 
   factory GetPolicyDefinitionVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDefinitionVersionArgs(
-      policyDefinitionName: pulumi.Output.create<String>(map['policyDefinitionName'] as String),
-      policyDefinitionVersion: pulumi.Output.create<String>(map['policyDefinitionVersion'] as String),
+      policyDefinitionName: (map['policyDefinitionName'] as String).input(),
+      policyDefinitionVersion: (map['policyDefinitionVersion'] as String).input(),
     );
   }
 }

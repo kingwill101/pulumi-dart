@@ -37,23 +37,15 @@ class SafetyRuleArgs {
   /// [targetControls] Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
   /// [waitPeriodMs] Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
   SafetyRuleArgs({
-    pulumi.Output<List<String>>? assertedControls,
-    required pulumi.Output<String> controlPanelArn,
-    pulumi.Output<List<String>>? gatingControls,
-    pulumi.Output<String>? name,
-    required pulumi.Output<SafetyRuleRuleConfig> ruleConfig,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? targetControls,
-    required pulumi.Output<int> waitPeriodMs,
-  }) :
-      assertedControls = pulumi.Input.asOptionalInput<List<String>>(assertedControls),
-      controlPanelArn = pulumi.Input.asInput<String>(controlPanelArn),
-      gatingControls = pulumi.Input.asOptionalInput<List<String>>(gatingControls),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ruleConfig = pulumi.Input.asInput<SafetyRuleRuleConfig>(ruleConfig),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetControls = pulumi.Input.asOptionalInput<List<String>>(targetControls),
-      waitPeriodMs = pulumi.Input.asInput<int>(waitPeriodMs);
+    this.assertedControls,
+    required this.controlPanelArn,
+    this.gatingControls,
+    this.name,
+    required this.ruleConfig,
+    this.tags,
+    this.targetControls,
+    required this.waitPeriodMs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class SafetyRuleArgs {
 
   factory SafetyRuleArgs.fromMap(Map<String, dynamic> map) {
     return SafetyRuleArgs(
-      assertedControls: map['assertedControls'] == null ? null : pulumi.Output.create<List<String>>((map['assertedControls'] as List).cast<String>()),
-      controlPanelArn: pulumi.Output.create<String>(map['controlPanelArn'] as String),
-      gatingControls: map['gatingControls'] == null ? null : pulumi.Output.create<List<String>>((map['gatingControls'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ruleConfig: pulumi.Output.create<SafetyRuleRuleConfig>(SafetyRuleRuleConfig.fromMap((map['ruleConfig'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetControls: map['targetControls'] == null ? null : pulumi.Output.create<List<String>>((map['targetControls'] as List).cast<String>()),
-      waitPeriodMs: pulumi.Output.create<int>(map['waitPeriodMs'] as int),
+      assertedControls: map['assertedControls'] == null ? null : ((map['assertedControls'] as List).cast<String>()).input(),
+      controlPanelArn: (map['controlPanelArn'] as String).input(),
+      gatingControls: map['gatingControls'] == null ? null : ((map['gatingControls'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ruleConfig: (SafetyRuleRuleConfig.fromMap((map['ruleConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetControls: map['targetControls'] == null ? null : ((map['targetControls'] as List).cast<String>()).input(),
+      waitPeriodMs: (map['waitPeriodMs'] as int).input(),
     );
   }
 }

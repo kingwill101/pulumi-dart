@@ -29,15 +29,11 @@ class OrganizationCustomModuleArgs {
   /// [enablementState] The enablement state of the custom module.
   /// [organization] Numerical ID of the parent organization.
   OrganizationCustomModuleArgs({
-    required pulumi.Output<OrganizationCustomModuleCustomConfig> customConfig,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> enablementState,
-    required pulumi.Output<String> organization,
-  }) :
-      customConfig = pulumi.Input.asInput<OrganizationCustomModuleCustomConfig>(customConfig),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enablementState = pulumi.Input.asInput<String>(enablementState),
-      organization = pulumi.Input.asInput<String>(organization);
+    required this.customConfig,
+    required this.displayName,
+    required this.enablementState,
+    required this.organization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,10 +46,10 @@ class OrganizationCustomModuleArgs {
 
   factory OrganizationCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationCustomModuleArgs(
-      customConfig: pulumi.Output.create<OrganizationCustomModuleCustomConfig>(OrganizationCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: pulumi.Output.create<String>(map['enablementState'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
+      customConfig: (OrganizationCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      enablementState: (map['enablementState'] as String).input(),
+      organization: (map['organization'] as String).input(),
     );
   }
 }

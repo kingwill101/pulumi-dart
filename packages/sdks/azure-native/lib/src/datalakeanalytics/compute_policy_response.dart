@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data Lake Analytics compute policy information.
 class ComputePolicyResponse {
   /// The resource identifier.
-  final String id;
+  final pulumi.Input<String> id;
   /// The maximum degree of parallelism per job this user can use to submit jobs.
-  final int maxDegreeOfParallelismPerJob;
+  final pulumi.Input<int> maxDegreeOfParallelismPerJob;
   /// The minimum priority per job this user can use to submit jobs.
-  final int minPriorityPerJob;
+  final pulumi.Input<int> minPriorityPerJob;
   /// The resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The AAD object identifier for the entity to create a policy for.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// The type of AAD object the object identifier refers to.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// The resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ComputePolicyResponse].
   /// [id] The resource identifier.
@@ -50,13 +51,13 @@ class ComputePolicyResponse {
 
   factory ComputePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ComputePolicyResponse(
-      id: map['id'] as String,
-      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] as int,
-      minPriorityPerJob: map['minPriorityPerJob'] as int,
-      name: map['name'] as String,
-      objectId: map['objectId'] as String,
-      objectType: map['objectType'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      maxDegreeOfParallelismPerJob: (map['maxDegreeOfParallelismPerJob'] as int).input(),
+      minPriorityPerJob: (map['minPriorityPerJob'] as int).input(),
+      name: (map['name'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,67 +1,68 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedHostsHost {
   /// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
-  final String allocationStatus;
+  final pulumi.Input<String> allocationStatus;
   /// The ID of the bastion host with which the host is associated.
-  final String bastionInstanceId;
+  final pulumi.Input<String> bastionInstanceId;
   /// The numeric value of the CPU over commit ratio of the dedicated cluster.
-  final String cpuAllocationRatio;
+  final pulumi.Input<String> cpuAllocationRatio;
   /// The number of CPU cores used by the host.
-  final String cpuUsed;
+  final pulumi.Input<String> cpuUsed;
   /// The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the dedicated cluster in which the host is created.
-  final String dedicatedHostGroupId;
+  final pulumi.Input<String> dedicatedHostGroupId;
   /// The ID of the host.
-  final String dedicatedHostId;
+  final pulumi.Input<String> dedicatedHostId;
   /// The disk usage in percentage.
-  final String diskAllocationRatio;
+  final pulumi.Input<String> diskAllocationRatio;
   /// The Elastic Compute Service (ECS) instance type.
-  final String ecsClassCode;
+  final pulumi.Input<String> ecsClassCode;
   /// The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The type of the database engine that is used by the host.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The instance type of the host.
-  final String hostClass;
+  final pulumi.Input<String> hostClass;
   /// The number of CPU cores specified for the host. Unit: `core`.
-  final String hostCpu;
+  final pulumi.Input<String> hostCpu;
   /// The memory of the host. Unit: `GB`.
-  final String hostMem;
+  final pulumi.Input<String> hostMem;
   /// The name of the host.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// The total storage capacity of the host. Unit: `GB`.
-  final String hostStorage;
+  final pulumi.Input<String> hostStorage;
   /// The storage type of the host.
-  final String hostType;
+  final pulumi.Input<String> hostType;
   /// The ID of the Dedicated Host. The value formats as `<dedicated_host_group_id>:<dedicated_host_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The image type of the host.
-  final String imageCategory;
+  final pulumi.Input<String> imageCategory;
   /// The IP address of the host.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The memory usage in percentage.
-  final String memAllocationRatio;
+  final pulumi.Input<String> memAllocationRatio;
   /// The amount of memory used by the host. Unit: `GB`.
-  final String memoryUsed;
+  final pulumi.Input<String> memoryUsed;
   /// Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
-  final String openPermission;
+  final pulumi.Input<String> openPermission;
   /// The state of the host.
-  final String status;
+  final pulumi.Input<String> status;
   /// The storage usage of the host. Unit: `GB`.
-  final String storageUsed;
+  final pulumi.Input<String> storageUsed;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The ID of the virtual private cloud (VPC) to which the host is connected.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of the vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The zone ID of the host.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetDedicatedHostsHost].
   /// [allocationStatus] Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
@@ -164,36 +165,36 @@ class GetDedicatedHostsHost {
 
   factory GetDedicatedHostsHost.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsHost(
-      allocationStatus: map['allocationStatus'] as String,
-      bastionInstanceId: map['bastionInstanceId'] as String,
-      cpuAllocationRatio: map['cpuAllocationRatio'] as String,
-      cpuUsed: map['cpuUsed'] as String,
-      createTime: map['createTime'] as String,
-      dedicatedHostGroupId: map['dedicatedHostGroupId'] as String,
-      dedicatedHostId: map['dedicatedHostId'] as String,
-      diskAllocationRatio: map['diskAllocationRatio'] as String,
-      ecsClassCode: map['ecsClassCode'] as String,
-      endTime: map['endTime'] as String,
-      engine: map['engine'] as String,
-      expiredTime: map['expiredTime'] as String,
-      hostClass: map['hostClass'] as String,
-      hostCpu: map['hostCpu'] as String,
-      hostMem: map['hostMem'] as String,
-      hostName: map['hostName'] as String,
-      hostStorage: map['hostStorage'] as String,
-      hostType: map['hostType'] as String,
-      id: map['id'] as String,
-      imageCategory: map['imageCategory'] as String,
-      ipAddress: map['ipAddress'] as String,
-      memAllocationRatio: map['memAllocationRatio'] as String,
-      memoryUsed: map['memoryUsed'] as String,
-      openPermission: map['openPermission'] as String,
-      status: map['status'] as String,
-      storageUsed: map['storageUsed'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      allocationStatus: (map['allocationStatus'] as String).input(),
+      bastionInstanceId: (map['bastionInstanceId'] as String).input(),
+      cpuAllocationRatio: (map['cpuAllocationRatio'] as String).input(),
+      cpuUsed: (map['cpuUsed'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dedicatedHostGroupId: (map['dedicatedHostGroupId'] as String).input(),
+      dedicatedHostId: (map['dedicatedHostId'] as String).input(),
+      diskAllocationRatio: (map['diskAllocationRatio'] as String).input(),
+      ecsClassCode: (map['ecsClassCode'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      engine: (map['engine'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      hostClass: (map['hostClass'] as String).input(),
+      hostCpu: (map['hostCpu'] as String).input(),
+      hostMem: (map['hostMem'] as String).input(),
+      hostName: (map['hostName'] as String).input(),
+      hostStorage: (map['hostStorage'] as String).input(),
+      hostType: (map['hostType'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageCategory: (map['imageCategory'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      memAllocationRatio: (map['memAllocationRatio'] as String).input(),
+      memoryUsed: (map['memoryUsed'] as String).input(),
+      openPermission: (map['openPermission'] as String).input(),
+      status: (map['status'] as String).input(),
+      storageUsed: (map['storageUsed'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Range used to validate doubles and floats.
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponse {
   /// The inclusive maximum of the acceptable range.
-  final double max;
+  final pulumi.Input<double> max;
   /// The inclusive minimum of the acceptable range.
-  final double min;
+  final pulumi.Input<double> min;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponse].
   /// [max] The inclusive maximum of the acceptable range.
@@ -25,8 +26,8 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponse 
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRangeResponse(
-      max: map['max'] as double,
-      min: map['min'] as double,
+      max: (map['max'] as double).input(),
+      min: (map['min'] as double).input(),
     );
   }
 }

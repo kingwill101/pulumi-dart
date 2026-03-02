@@ -32,17 +32,12 @@ class GetLocalGatewayArgs {
   /// [state] Current state of the desired Local Gateway.
   /// [tags] Mapping of tags, each pair of which must exactly match
   GetLocalGatewayArgs({
-    pulumi.Output<List<GetLocalGatewayFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetLocalGatewayFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.id,
+    this.region,
+    this.state,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class GetLocalGatewayArgs {
 
   factory GetLocalGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetLocalGatewayFilter>>(pulumi.Input.decodeList<GetLocalGatewayFilter>(map['filters'], (value) => GetLocalGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetLocalGatewayFilter>(map['filters'], (value) => GetLocalGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

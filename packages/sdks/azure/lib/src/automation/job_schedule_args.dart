@@ -33,21 +33,14 @@ class JobScheduleArgs {
   /// [runbookName] The name of a Runbook to link to a Schedule. It needs to be in the same Automation Account as the Schedule and Job Schedule. Changing this forces a new resource to be created.
   /// [scheduleName] The name of the Schedule. Changing this forces a new resource to be created.
   JobScheduleArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? jobScheduleId,
-    pulumi.Output<Map<String, String>>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? runOn,
-    required pulumi.Output<String> runbookName,
-    required pulumi.Output<String> scheduleName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      jobScheduleId = pulumi.Input.asOptionalInput<String>(jobScheduleId),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runOn = pulumi.Input.asOptionalInput<String>(runOn),
-      runbookName = pulumi.Input.asInput<String>(runbookName),
-      scheduleName = pulumi.Input.asInput<String>(scheduleName);
+    required this.automationAccountName,
+    this.jobScheduleId,
+    this.parameters,
+    required this.resourceGroupName,
+    this.runOn,
+    required this.runbookName,
+    required this.scheduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class JobScheduleArgs {
 
   factory JobScheduleArgs.fromMap(Map<String, dynamic> map) {
     return JobScheduleArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      jobScheduleId: map['jobScheduleId'] == null ? null : pulumi.Output.create<String>(map['jobScheduleId'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runOn: map['runOn'] == null ? null : pulumi.Output.create<String>(map['runOn'] as String),
-      runbookName: pulumi.Output.create<String>(map['runbookName'] as String),
-      scheduleName: pulumi.Output.create<String>(map['scheduleName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      jobScheduleId: map['jobScheduleId'] == null ? null : (map['jobScheduleId'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runOn: map['runOn'] == null ? null : (map['runOn'] as String).input(),
+      runbookName: (map['runbookName'] as String).input(),
+      scheduleName: (map['scheduleName'] as String).input(),
     );
   }
 }

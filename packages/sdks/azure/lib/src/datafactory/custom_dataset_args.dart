@@ -45,29 +45,18 @@ class CustomDatasetArgs {
   /// [type] The type of dataset that will be associated with Data Factory. Changing this forces a new resource to be created.
   /// [typePropertiesJson] A JSON object that contains the properties of the Data Factory Dataset. Refer to
   CustomDatasetArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    required pulumi.Output<CustomDatasetLinkedService> linkedService,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? schemaJson,
-    required pulumi.Output<String> type,
-    required pulumi.Output<String> typePropertiesJson,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      linkedService = pulumi.Input.asInput<CustomDatasetLinkedService>(linkedService),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      schemaJson = pulumi.Input.asOptionalInput<String>(schemaJson),
-      type = pulumi.Input.asInput<String>(type),
-      typePropertiesJson = pulumi.Input.asInput<String>(typePropertiesJson);
+    this.additionalProperties,
+    this.annotations,
+    required this.dataFactoryId,
+    this.description,
+    this.folder,
+    required this.linkedService,
+    this.name,
+    this.parameters,
+    this.schemaJson,
+    required this.type,
+    required this.typePropertiesJson,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class CustomDatasetArgs {
 
   factory CustomDatasetArgs.fromMap(Map<String, dynamic> map) {
     return CustomDatasetArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      linkedService: pulumi.Output.create<CustomDatasetLinkedService>(CustomDatasetLinkedService.fromMap((map['linkedService'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      schemaJson: map['schemaJson'] == null ? null : pulumi.Output.create<String>(map['schemaJson'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      typePropertiesJson: pulumi.Output.create<String>(map['typePropertiesJson'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      linkedService: (CustomDatasetLinkedService.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      schemaJson: map['schemaJson'] == null ? null : (map['schemaJson'] as String).input(),
+      type: (map['type'] as String).input(),
+      typePropertiesJson: (map['typePropertiesJson'] as String).input(),
     );
   }
 }

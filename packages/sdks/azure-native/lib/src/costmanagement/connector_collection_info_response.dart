@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_collection_error_info_response.dart';
 
 /// Collection and ingestion information
 class ConnectorCollectionInfoResponse {
   /// Error information of last collection
-  final ConnectorCollectionErrorInfoResponse? error;
+  final pulumi.Input<ConnectorCollectionErrorInfoResponse>? error;
   /// Last time the data acquisition process initiated connecting to the external provider
-  final String? lastChecked;
+  final pulumi.Input<String>? lastChecked;
   /// Last time the data acquisition process completed (even if no new data was found)
-  final String lastRun;
+  final pulumi.Input<String> lastRun;
   /// Last time the external data was updated into Azure
-  final String lastUpdated;
+  final pulumi.Input<String> lastUpdated;
   /// Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
-  final String sourceLastUpdated;
+  final pulumi.Input<String> sourceLastUpdated;
 
   /// Creates a new [ConnectorCollectionInfoResponse].
   /// [error] Error information of last collection
@@ -31,7 +32,7 @@ class ConnectorCollectionInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<ConnectorCollectionErrorInfoResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'lastChecked': ?lastChecked,
       'lastRun': lastRun,
       'lastUpdated': lastUpdated,
@@ -41,11 +42,11 @@ class ConnectorCollectionInfoResponse {
 
   factory ConnectorCollectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorCollectionInfoResponse(
-      error: map['error'] == null ? null : ConnectorCollectionErrorInfoResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      lastChecked: map['lastChecked'] == null ? null : map['lastChecked'] as String,
-      lastRun: map['lastRun'] as String,
-      lastUpdated: map['lastUpdated'] as String,
-      sourceLastUpdated: map['sourceLastUpdated'] as String,
+      error: map['error'] == null ? null : (ConnectorCollectionErrorInfoResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      lastChecked: map['lastChecked'] == null ? null : (map['lastChecked'] as String).input(),
+      lastRun: (map['lastRun'] as String).input(),
+      lastUpdated: (map['lastUpdated'] as String).input(),
+      sourceLastUpdated: (map['sourceLastUpdated'] as String).input(),
     );
   }
 }

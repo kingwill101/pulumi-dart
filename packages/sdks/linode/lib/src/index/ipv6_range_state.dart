@@ -28,21 +28,14 @@ class Ipv6RangeState {
   /// [region] The region for this range of IPv6 addresses.
   /// [routeTarget] The IPv6 SLAAC address to assign this range to.
   Ipv6RangeState({
-    pulumi.Output<bool>? isBgp,
-    pulumi.Output<int>? linodeId,
-    pulumi.Output<List<int>>? linodes,
-    pulumi.Output<int>? prefixLength,
-    pulumi.Output<String>? range,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routeTarget,
-  }) :
-      isBgp = pulumi.Input.asOptionalInput<bool>(isBgp),
-      linodeId = pulumi.Input.asOptionalInput<int>(linodeId),
-      linodes = pulumi.Input.asOptionalInput<List<int>>(linodes),
-      prefixLength = pulumi.Input.asOptionalInput<int>(prefixLength),
-      range = pulumi.Input.asOptionalInput<String>(range),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeTarget = pulumi.Input.asOptionalInput<String>(routeTarget);
+    this.isBgp,
+    this.linodeId,
+    this.linodes,
+    this.prefixLength,
+    this.range,
+    this.region,
+    this.routeTarget,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class Ipv6RangeState {
 
   factory Ipv6RangeState.fromMap(Map<String, dynamic> map) {
     return Ipv6RangeState(
-      isBgp: map['isBgp'] == null ? null : pulumi.Output.create<bool>(map['isBgp'] as bool),
-      linodeId: map['linodeId'] == null ? null : pulumi.Output.create<int>(map['linodeId'] as int),
-      linodes: map['linodes'] == null ? null : pulumi.Output.create<List<int>>((map['linodes'] as List).cast<int>()),
-      prefixLength: map['prefixLength'] == null ? null : pulumi.Output.create<int>(map['prefixLength'] as int),
-      range: map['range'] == null ? null : pulumi.Output.create<String>(map['range'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeTarget: map['routeTarget'] == null ? null : pulumi.Output.create<String>(map['routeTarget'] as String),
+      isBgp: map['isBgp'] == null ? null : (map['isBgp'] as bool).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      linodes: map['linodes'] == null ? null : ((map['linodes'] as List).cast<int>()).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
+      range: map['range'] == null ? null : (map['range'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget'] as String).input(),
     );
   }
 }

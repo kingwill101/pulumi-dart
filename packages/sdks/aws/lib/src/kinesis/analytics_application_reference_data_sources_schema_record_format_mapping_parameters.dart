@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analytics_application_reference_data_sources_schema_record_format_mapping_parameters_csv.dart';
 import 'analytics_application_reference_data_sources_schema_record_format_mapping_parameters_json.dart';
 
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters {
   /// Mapping information when the record format uses delimiters.
   /// See CSV Mapping Parameters below for more details.
-  final AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv? csv;
+  final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv>? csv;
   /// Mapping information when JSON is the record format on the streaming source.
   /// See JSON Mapping Parameters below for more details.
-  final AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson? json;
+  final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson>? json;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters].
   /// [csv] Mapping information when the record format uses delimiters.
@@ -21,15 +22,15 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameter
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'csv': ?csv == null ? null : csv!.toMap(),
-      'json': ?json == null ? null : json!.toMap(),
+      'csv': ?pulumi.Input.mapOptionalInputValue<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv, Map<String, dynamic>>(csv, (value) => value.toMap()),
+      'json': ?pulumi.Input.mapOptionalInputValue<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson, Map<String, dynamic>>(json, (value) => value.toMap()),
     };
   }
 
   factory AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters(
-      csv: map['csv'] == null ? null : AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv.fromMap((map['csv'] as Map).cast<String, dynamic>()),
-      json: map['json'] == null ? null : AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson.fromMap((map['json'] as Map).cast<String, dynamic>()),
+      csv: map['csv'] == null ? null : (AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv.fromMap((map['csv'] as Map).cast<String, dynamic>())).input(),
+      json: map['json'] == null ? null : (AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson.fromMap((map['json'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

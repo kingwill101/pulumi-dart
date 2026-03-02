@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_network_gateway_auto_scale_bounds.dart';
 
 /// Virtual Network Gateway Autoscale Configuration details
 class VirtualNetworkGatewayAutoScaleConfiguration {
   /// The bounds of the autoscale configuration
-  final VirtualNetworkGatewayAutoScaleBounds? bounds;
+  final pulumi.Input<VirtualNetworkGatewayAutoScaleBounds>? bounds;
 
   /// Creates a new [VirtualNetworkGatewayAutoScaleConfiguration].
   /// [bounds] The bounds of the autoscale configuration
@@ -15,13 +16,13 @@ class VirtualNetworkGatewayAutoScaleConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bounds': ?bounds == null ? null : bounds!.toMap(),
+      'bounds': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkGatewayAutoScaleBounds, Map<String, dynamic>>(bounds, (value) => value.toMap()),
     };
   }
 
   factory VirtualNetworkGatewayAutoScaleConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayAutoScaleConfiguration(
-      bounds: map['bounds'] == null ? null : VirtualNetworkGatewayAutoScaleBounds.fromMap((map['bounds'] as Map).cast<String, dynamic>()),
+      bounds: map['bounds'] == null ? null : (VirtualNetworkGatewayAutoScaleBounds.fromMap((map['bounds'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

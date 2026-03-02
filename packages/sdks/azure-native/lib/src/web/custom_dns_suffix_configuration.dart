@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Full view of the custom domain suffix configuration for ASEv3.
 class CustomDnsSuffixConfiguration {
   /// The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
-  final String? certificateUrl;
+  final pulumi.Input<String>? certificateUrl;
   /// The default custom domain suffix to use for all sites deployed on the ASE.
-  final String? dnsSuffix;
+  final pulumi.Input<String>? dnsSuffix;
   /// The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
-  final String? keyVaultReferenceIdentity;
+  final pulumi.Input<String>? keyVaultReferenceIdentity;
   /// Kind of resource.
-  final String? kind;
+  final pulumi.Input<String>? kind;
 
   /// Creates a new [CustomDnsSuffixConfiguration].
   /// [certificateUrl] The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
@@ -35,10 +36,10 @@ class CustomDnsSuffixConfiguration {
 
   factory CustomDnsSuffixConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomDnsSuffixConfiguration(
-      certificateUrl: map['certificateUrl'] == null ? null : map['certificateUrl'] as String,
-      dnsSuffix: map['dnsSuffix'] == null ? null : map['dnsSuffix'] as String,
-      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : map['keyVaultReferenceIdentity'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
     );
   }
 }

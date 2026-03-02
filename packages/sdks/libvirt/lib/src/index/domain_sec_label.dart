@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSecLabel {
   /// Specifies the base label for the domain's security configuration.
-  final String? baseLabel;
+  final pulumi.Input<String>? baseLabel;
   /// Sets the image label for the domain's security configuration.
-  final String? imageLabel;
+  final pulumi.Input<String>? imageLabel;
   /// Specifies the security label for the domain.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Configures the model for the domain's security label.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// Controls if the domain's security label should be relabeled.
-  final String? relabel;
+  final pulumi.Input<String>? relabel;
   /// Sets the type of the security label for the domain.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DomainSecLabel].
   /// [baseLabel] Specifies the base label for the domain's security configuration.
@@ -44,12 +45,12 @@ class DomainSecLabel {
 
   factory DomainSecLabel.fromMap(Map<String, dynamic> map) {
     return DomainSecLabel(
-      baseLabel: map['baseLabel'] == null ? null : map['baseLabel'] as String,
-      imageLabel: map['imageLabel'] == null ? null : map['imageLabel'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      model: map['model'] == null ? null : map['model'] as String,
-      relabel: map['relabel'] == null ? null : map['relabel'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      baseLabel: map['baseLabel'] == null ? null : (map['baseLabel'] as String).input(),
+      imageLabel: map['imageLabel'] == null ? null : (map['imageLabel'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      relabel: map['relabel'] == null ? null : (map['relabel'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

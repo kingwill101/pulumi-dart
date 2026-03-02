@@ -17,11 +17,9 @@ class SubscriptionTarDirectoryArgs {
   /// [properties] Target Directory request properties.
   /// [subscriptionId] Subscription Id.
   SubscriptionTarDirectoryArgs({
-    pulumi.Output<TargetDirectoryRequestProperties>? properties,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      properties = pulumi.Input.asOptionalInput<TargetDirectoryRequestProperties>(properties),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.properties,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class SubscriptionTarDirectoryArgs {
 
   factory SubscriptionTarDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionTarDirectoryArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<TargetDirectoryRequestProperties>(TargetDirectoryRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      properties: map['properties'] == null ? null : (TargetDirectoryRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

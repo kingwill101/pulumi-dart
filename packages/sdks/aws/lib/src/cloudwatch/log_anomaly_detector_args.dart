@@ -37,25 +37,16 @@ class LogAnomalyDetectorArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
   LogAnomalyDetectorArgs({
-    pulumi.Output<int>? anomalyVisibilityTime,
-    pulumi.Output<String>? detectorName,
-    required pulumi.Output<bool> enabled,
-    pulumi.Output<String>? evaluationFrequency,
-    pulumi.Output<String>? filterPattern,
-    pulumi.Output<String>? kmsKeyId,
-    required pulumi.Output<List<String>> logGroupArnLists,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      anomalyVisibilityTime = pulumi.Input.asOptionalInput<int>(anomalyVisibilityTime),
-      detectorName = pulumi.Input.asOptionalInput<String>(detectorName),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      evaluationFrequency = pulumi.Input.asOptionalInput<String>(evaluationFrequency),
-      filterPattern = pulumi.Input.asOptionalInput<String>(filterPattern),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      logGroupArnLists = pulumi.Input.asInput<List<String>>(logGroupArnLists),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.anomalyVisibilityTime,
+    this.detectorName,
+    required this.enabled,
+    this.evaluationFrequency,
+    this.filterPattern,
+    this.kmsKeyId,
+    required this.logGroupArnLists,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class LogAnomalyDetectorArgs {
 
   factory LogAnomalyDetectorArgs.fromMap(Map<String, dynamic> map) {
     return LogAnomalyDetectorArgs(
-      anomalyVisibilityTime: map['anomalyVisibilityTime'] == null ? null : pulumi.Output.create<int>(map['anomalyVisibilityTime'] as int),
-      detectorName: map['detectorName'] == null ? null : pulumi.Output.create<String>(map['detectorName'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : pulumi.Output.create<String>(map['evaluationFrequency'] as String),
-      filterPattern: map['filterPattern'] == null ? null : pulumi.Output.create<String>(map['filterPattern'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      logGroupArnLists: pulumi.Output.create<List<String>>((map['logGroupArnLists'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      anomalyVisibilityTime: map['anomalyVisibilityTime'] == null ? null : (map['anomalyVisibilityTime'] as int).input(),
+      detectorName: map['detectorName'] == null ? null : (map['detectorName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency'] as String).input(),
+      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      logGroupArnLists: ((map['logGroupArnLists'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

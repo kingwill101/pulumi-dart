@@ -22,17 +22,12 @@ class ListenerPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger an update.
   ListenerPolicyState({
-    pulumi.Output<String>? loadBalancerName,
-    pulumi.Output<int>? loadBalancerPort,
-    pulumi.Output<List<String>>? policyNames,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      loadBalancerName = pulumi.Input.asOptionalInput<String>(loadBalancerName),
-      loadBalancerPort = pulumi.Input.asOptionalInput<int>(loadBalancerPort),
-      policyNames = pulumi.Input.asOptionalInput<List<String>>(policyNames),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    this.loadBalancerName,
+    this.loadBalancerPort,
+    this.policyNames,
+    this.region,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ListenerPolicyState {
 
   factory ListenerPolicyState.fromMap(Map<String, dynamic> map) {
     return ListenerPolicyState(
-      loadBalancerName: map['loadBalancerName'] == null ? null : pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      loadBalancerPort: map['loadBalancerPort'] == null ? null : pulumi.Output.create<int>(map['loadBalancerPort'] as int),
-      policyNames: map['policyNames'] == null ? null : pulumi.Output.create<List<String>>((map['policyNames'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      loadBalancerPort: map['loadBalancerPort'] == null ? null : (map['loadBalancerPort'] as int).input(),
+      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -42,27 +42,17 @@ class SslCertState {
   /// [serverCaCert] The CA cert of the server this client cert was generated from.
   /// [sha1Fingerprint] The SHA1 Fingerprint of the certificate.
   SslCertState({
-    pulumi.Output<String>? cert,
-    pulumi.Output<String>? certSerialNumber,
-    pulumi.Output<String>? commonName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? expirationTime,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serverCaCert,
-    pulumi.Output<String>? sha1Fingerprint,
-  }) :
-      cert = pulumi.Input.asOptionalInput<String>(cert),
-      certSerialNumber = pulumi.Input.asOptionalInput<String>(certSerialNumber),
-      commonName = pulumi.Input.asOptionalInput<String>(commonName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      expirationTime = pulumi.Input.asOptionalInput<String>(expirationTime),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serverCaCert = pulumi.Input.asOptionalInput<String>(serverCaCert),
-      sha1Fingerprint = pulumi.Input.asOptionalInput<String>(sha1Fingerprint);
+    this.cert,
+    this.certSerialNumber,
+    this.commonName,
+    this.createTime,
+    this.expirationTime,
+    this.instance,
+    this.privateKey,
+    this.project,
+    this.serverCaCert,
+    this.sha1Fingerprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class SslCertState {
 
   factory SslCertState.fromMap(Map<String, dynamic> map) {
     return SslCertState(
-      cert: map['cert'] == null ? null : pulumi.Output.create<String>(map['cert'] as String),
-      certSerialNumber: map['certSerialNumber'] == null ? null : pulumi.Output.create<String>(map['certSerialNumber'] as String),
-      commonName: map['commonName'] == null ? null : pulumi.Output.create<String>(map['commonName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      expirationTime: map['expirationTime'] == null ? null : pulumi.Output.create<String>(map['expirationTime'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serverCaCert: map['serverCaCert'] == null ? null : pulumi.Output.create<String>(map['serverCaCert'] as String),
-      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : pulumi.Output.create<String>(map['sha1Fingerprint'] as String),
+      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
+      certSerialNumber: map['certSerialNumber'] == null ? null : (map['certSerialNumber'] as String).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serverCaCert: map['serverCaCert'] == null ? null : (map['serverCaCert'] as String).input(),
+      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint'] as String).input(),
     );
   }
 }

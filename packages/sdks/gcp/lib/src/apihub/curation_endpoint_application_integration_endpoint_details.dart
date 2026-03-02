@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CurationEndpointApplicationIntegrationEndpointDetails {
   /// The API trigger ID of the Application Integration workflow.
-  final String triggerId;
+  final pulumi.Input<String> triggerId;
   /// The endpoint URI should be a valid REST URI for triggering an Application
   /// Integration.
   /// Format:
   /// `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
   /// or
   /// `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [CurationEndpointApplicationIntegrationEndpointDetails].
   /// [triggerId] The API trigger ID of the Application Integration workflow.
@@ -29,8 +30,8 @@ class CurationEndpointApplicationIntegrationEndpointDetails {
 
   factory CurationEndpointApplicationIntegrationEndpointDetails.fromMap(Map<String, dynamic> map) {
     return CurationEndpointApplicationIntegrationEndpointDetails(
-      triggerId: map['triggerId'] as String,
-      uri: map['uri'] as String,
+      triggerId: (map['triggerId'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

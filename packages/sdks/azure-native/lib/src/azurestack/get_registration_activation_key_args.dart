@@ -16,11 +16,9 @@ class GetRegistrationActivationKeyArgs {
   /// [registrationName] Name of the Azure Stack registration.
   /// [resourceGroup] Name of the resource group.
   GetRegistrationActivationKeyArgs({
-    required pulumi.Output<String> registrationName,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      registrationName = pulumi.Input.asInput<String>(registrationName),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.registrationName,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRegistrationActivationKeyArgs {
 
   factory GetRegistrationActivationKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistrationActivationKeyArgs(
-      registrationName: pulumi.Output.create<String>(map['registrationName'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      registrationName: (map['registrationName'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

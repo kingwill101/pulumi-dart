@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetLogicalTableMapDataTransformUntagColumnOperation {
   /// Column name.
-  final String columnName;
+  final pulumi.Input<String> columnName;
   /// The column tags to remove from this column.
-  final List<String> tagNames;
+  final pulumi.Input<List<String>> tagNames;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformUntagColumnOperation].
   /// [columnName] Column name.
@@ -24,8 +25,8 @@ class DataSetLogicalTableMapDataTransformUntagColumnOperation {
 
   factory DataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformUntagColumnOperation(
-      columnName: map['columnName'] as String,
-      tagNames: (map['tagNames'] as List).cast<String>(),
+      columnName: (map['columnName'] as String).input(),
+      tagNames: ((map['tagNames'] as List).cast<String>()).input(),
     );
   }
 }

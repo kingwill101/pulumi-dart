@@ -22,17 +22,12 @@ class CustomDomainAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroupName] Name of the workgroup.
   CustomDomainAssociationState({
-    pulumi.Output<String>? customDomainCertificateArn,
-    pulumi.Output<String>? customDomainCertificateExpiryTime,
-    pulumi.Output<String>? customDomainName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? workgroupName,
-  }) :
-      customDomainCertificateArn = pulumi.Input.asOptionalInput<String>(customDomainCertificateArn),
-      customDomainCertificateExpiryTime = pulumi.Input.asOptionalInput<String>(customDomainCertificateExpiryTime),
-      customDomainName = pulumi.Input.asOptionalInput<String>(customDomainName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroupName = pulumi.Input.asOptionalInput<String>(workgroupName);
+    this.customDomainCertificateArn,
+    this.customDomainCertificateExpiryTime,
+    this.customDomainName,
+    this.region,
+    this.workgroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class CustomDomainAssociationState {
 
   factory CustomDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationState(
-      customDomainCertificateArn: map['customDomainCertificateArn'] == null ? null : pulumi.Output.create<String>(map['customDomainCertificateArn'] as String),
-      customDomainCertificateExpiryTime: map['customDomainCertificateExpiryTime'] == null ? null : pulumi.Output.create<String>(map['customDomainCertificateExpiryTime'] as String),
-      customDomainName: map['customDomainName'] == null ? null : pulumi.Output.create<String>(map['customDomainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroupName: map['workgroupName'] == null ? null : pulumi.Output.create<String>(map['workgroupName'] as String),
+      customDomainCertificateArn: map['customDomainCertificateArn'] == null ? null : (map['customDomainCertificateArn'] as String).input(),
+      customDomainCertificateExpiryTime: map['customDomainCertificateExpiryTime'] == null ? null : (map['customDomainCertificateExpiryTime'] as String).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroupName: map['workgroupName'] == null ? null : (map['workgroupName'] as String).input(),
     );
   }
 }

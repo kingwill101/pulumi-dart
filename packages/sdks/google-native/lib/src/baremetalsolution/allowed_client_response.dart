@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an 'access point' for the share.
 class AllowedClientResponse {
   /// Allow dev flag. Which controls whether to allow creation of devices.
-  final bool allowDev;
+  final pulumi.Input<bool> allowDev;
   /// Allow the setuid flag.
-  final bool allowSuid;
+  final pulumi.Input<bool> allowSuid;
   /// The subnet of IP addresses permitted to access the share.
-  final String allowedClientsCidr;
+  final pulumi.Input<String> allowedClientsCidr;
   /// Mount permissions.
-  final String mountPermissions;
+  final pulumi.Input<String> mountPermissions;
   /// The network the access point sits on.
-  final String network;
+  final pulumi.Input<String> network;
   /// The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001"
-  final String nfsPath;
+  final pulumi.Input<String> nfsPath;
   /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
-  final bool noRootSquash;
+  final pulumi.Input<bool> noRootSquash;
   /// The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr.
-  final String shareIp;
+  final pulumi.Input<String> shareIp;
 
   /// Creates a new [AllowedClientResponse].
   /// [allowDev] Allow dev flag. Which controls whether to allow creation of devices.
@@ -55,14 +56,14 @@ class AllowedClientResponse {
 
   factory AllowedClientResponse.fromMap(Map<String, dynamic> map) {
     return AllowedClientResponse(
-      allowDev: map['allowDev'] as bool,
-      allowSuid: map['allowSuid'] as bool,
-      allowedClientsCidr: map['allowedClientsCidr'] as String,
-      mountPermissions: map['mountPermissions'] as String,
-      network: map['network'] as String,
-      nfsPath: map['nfsPath'] as String,
-      noRootSquash: map['noRootSquash'] as bool,
-      shareIp: map['shareIp'] as String,
+      allowDev: (map['allowDev'] as bool).input(),
+      allowSuid: (map['allowSuid'] as bool).input(),
+      allowedClientsCidr: (map['allowedClientsCidr'] as String).input(),
+      mountPermissions: (map['mountPermissions'] as String).input(),
+      network: (map['network'] as String).input(),
+      nfsPath: (map['nfsPath'] as String).input(),
+      noRootSquash: (map['noRootSquash'] as bool).input(),
+      shareIp: (map['shareIp'] as String).input(),
     );
   }
 }

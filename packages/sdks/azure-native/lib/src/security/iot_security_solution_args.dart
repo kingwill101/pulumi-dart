@@ -55,35 +55,21 @@ class IotSecuritySolutionArgs {
   /// [userDefinedResources] Properties of the IoT Security solution's user defined resources.
   /// [workspace] Workspace resource ID
   IotSecuritySolutionArgs({
-    pulumi.Output<List<AdditionalWorkspacesProperties>>? additionalWorkspaces,
-    pulumi.Output<List<String>>? disabledDataSources,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<String>>? export,
-    required pulumi.Output<List<String>> iotHubs,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<RecommendationConfigurationProperties>>? recommendationsConfiguration,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? solutionName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? unmaskedIpLoggingStatus,
-    pulumi.Output<UserDefinedResourcesProperties>? userDefinedResources,
-    pulumi.Output<String>? workspace,
-  }) :
-      additionalWorkspaces = pulumi.Input.asOptionalInput<List<AdditionalWorkspacesProperties>>(additionalWorkspaces),
-      disabledDataSources = pulumi.Input.asOptionalInput<List<String>>(disabledDataSources),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      export = pulumi.Input.asOptionalInput<List<String>>(export),
-      iotHubs = pulumi.Input.asInput<List<String>>(iotHubs),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      recommendationsConfiguration = pulumi.Input.asOptionalInput<List<RecommendationConfigurationProperties>>(recommendationsConfiguration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asOptionalInput<String>(solutionName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      unmaskedIpLoggingStatus = pulumi.Input.asOptionalInput<String>(unmaskedIpLoggingStatus),
-      userDefinedResources = pulumi.Input.asOptionalInput<UserDefinedResourcesProperties>(userDefinedResources),
-      workspace = pulumi.Input.asOptionalInput<String>(workspace);
+    this.additionalWorkspaces,
+    this.disabledDataSources,
+    required this.displayName,
+    this.export,
+    required this.iotHubs,
+    this.location,
+    this.recommendationsConfiguration,
+    required this.resourceGroupName,
+    this.solutionName,
+    this.status,
+    this.tags,
+    this.unmaskedIpLoggingStatus,
+    this.userDefinedResources,
+    this.workspace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class IotSecuritySolutionArgs {
 
   factory IotSecuritySolutionArgs.fromMap(Map<String, dynamic> map) {
     return IotSecuritySolutionArgs(
-      additionalWorkspaces: map['additionalWorkspaces'] == null ? null : pulumi.Output.create<List<AdditionalWorkspacesProperties>>(pulumi.Input.decodeList<AdditionalWorkspacesProperties>(map['additionalWorkspaces'], (value) => AdditionalWorkspacesProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      disabledDataSources: map['disabledDataSources'] == null ? null : pulumi.Output.create<List<String>>((map['disabledDataSources'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      export: map['export'] == null ? null : pulumi.Output.create<List<String>>((map['export'] as List).cast<String>()),
-      iotHubs: pulumi.Output.create<List<String>>((map['iotHubs'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      recommendationsConfiguration: map['recommendationsConfiguration'] == null ? null : pulumi.Output.create<List<RecommendationConfigurationProperties>>(pulumi.Input.decodeList<RecommendationConfigurationProperties>(map['recommendationsConfiguration'], (value) => RecommendationConfigurationProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: map['solutionName'] == null ? null : pulumi.Output.create<String>(map['solutionName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      unmaskedIpLoggingStatus: map['unmaskedIpLoggingStatus'] == null ? null : pulumi.Output.create<String>(map['unmaskedIpLoggingStatus'] as String),
-      userDefinedResources: map['userDefinedResources'] == null ? null : pulumi.Output.create<UserDefinedResourcesProperties>(UserDefinedResourcesProperties.fromMap((map['userDefinedResources'] as Map).cast<String, dynamic>())),
-      workspace: map['workspace'] == null ? null : pulumi.Output.create<String>(map['workspace'] as String),
+      additionalWorkspaces: map['additionalWorkspaces'] == null ? null : (pulumi.Input.decodeList<AdditionalWorkspacesProperties>(map['additionalWorkspaces'], (value) => AdditionalWorkspacesProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabledDataSources: map['disabledDataSources'] == null ? null : ((map['disabledDataSources'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      export: map['export'] == null ? null : ((map['export'] as List).cast<String>()).input(),
+      iotHubs: ((map['iotHubs'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      recommendationsConfiguration: map['recommendationsConfiguration'] == null ? null : (pulumi.Input.decodeList<RecommendationConfigurationProperties>(map['recommendationsConfiguration'], (value) => RecommendationConfigurationProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: map['solutionName'] == null ? null : (map['solutionName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      unmaskedIpLoggingStatus: map['unmaskedIpLoggingStatus'] == null ? null : (map['unmaskedIpLoggingStatus'] as String).input(),
+      userDefinedResources: map['userDefinedResources'] == null ? null : (UserDefinedResourcesProperties.fromMap((map['userDefinedResources'] as Map).cast<String, dynamic>())).input(),
+      workspace: map['workspace'] == null ? null : (map['workspace'] as String).input(),
     );
   }
 }

@@ -7,15 +7,15 @@ import 'localized_message_response.dart';
 /// Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations.
 class MigrationWarningResponse {
   /// Suggested action for solving the warning.
-  final LocalizedMessageResponse actionItem;
+  final pulumi.Input<LocalizedMessageResponse> actionItem;
   /// The warning code.
-  final String code;
+  final pulumi.Input<String> code;
   /// URL(s) pointing to additional information on handling the current warning.
-  final List<LinkResponse> helpLinks;
+  final pulumi.Input<List<LinkResponse>> helpLinks;
   /// The localized warning message.
-  final LocalizedMessageResponse warningMessage;
+  final pulumi.Input<LocalizedMessageResponse> warningMessage;
   /// The time the warning occurred.
-  final String warningTime;
+  final pulumi.Input<String> warningTime;
 
   /// Creates a new [MigrationWarningResponse].
   /// [actionItem] Suggested action for solving the warning.
@@ -33,21 +33,21 @@ class MigrationWarningResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionItem': actionItem.toMap(),
+      'actionItem': pulumi.Input.mapInputValue<LocalizedMessageResponse, Map<String, dynamic>>(actionItem, (value) => value.toMap()),
       'code': code,
-      'helpLinks': pulumi.Input.encodeList<LinkResponse, Map<String, dynamic>>(helpLinks, (value) => value.toMap()),
-      'warningMessage': warningMessage.toMap(),
+      'helpLinks': pulumi.Input.mapInputValue<List<LinkResponse>, List<Map<String, dynamic>>>(helpLinks, (value) => pulumi.Input.encodeList<LinkResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'warningMessage': pulumi.Input.mapInputValue<LocalizedMessageResponse, Map<String, dynamic>>(warningMessage, (value) => value.toMap()),
       'warningTime': warningTime,
     };
   }
 
   factory MigrationWarningResponse.fromMap(Map<String, dynamic> map) {
     return MigrationWarningResponse(
-      actionItem: LocalizedMessageResponse.fromMap((map['actionItem'] as Map).cast<String, dynamic>()),
-      code: map['code'] as String,
-      helpLinks: pulumi.Input.decodeList<LinkResponse>(map['helpLinks'], (value) => LinkResponse.fromMap((value as Map).cast<String, dynamic>())),
-      warningMessage: LocalizedMessageResponse.fromMap((map['warningMessage'] as Map).cast<String, dynamic>()),
-      warningTime: map['warningTime'] as String,
+      actionItem: (LocalizedMessageResponse.fromMap((map['actionItem'] as Map).cast<String, dynamic>())).input(),
+      code: (map['code'] as String).input(),
+      helpLinks: (pulumi.Input.decodeList<LinkResponse>(map['helpLinks'], (value) => LinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      warningMessage: (LocalizedMessageResponse.fromMap((map['warningMessage'] as Map).cast<String, dynamic>())).input(),
+      warningTime: (map['warningTime'] as String).input(),
     );
   }
 }

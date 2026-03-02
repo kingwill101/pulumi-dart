@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gallery_disk_image_source.dart';
 import 'host_caching.dart';
 
 /// This is the data disk image.
 class GalleryDataDiskImage {
   /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
-  final HostCaching? hostCaching;
+  final pulumi.Input<HostCaching>? hostCaching;
   /// This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
-  final int lun;
+  final pulumi.Input<int> lun;
   /// The source for the disk image.
-  final GalleryDiskImageSource? source;
+  final pulumi.Input<GalleryDiskImageSource>? source;
 
   /// Creates a new [GalleryDataDiskImage].
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
@@ -24,17 +25,17 @@ class GalleryDataDiskImage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hostCaching': ?hostCaching == null ? null : hostCaching!.value,
+      'hostCaching': ?pulumi.Input.mapOptionalInputValue<HostCaching, String>(hostCaching, (value) => value.value),
       'lun': lun,
-      'source': ?source == null ? null : source!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<GalleryDiskImageSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory GalleryDataDiskImage.fromMap(Map<String, dynamic> map) {
     return GalleryDataDiskImage(
-      hostCaching: map['hostCaching'] == null ? null : HostCaching.fromValue(map['hostCaching'] as String),
-      lun: map['lun'] as int,
-      source: map['source'] == null ? null : GalleryDiskImageSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      hostCaching: map['hostCaching'] == null ? null : (HostCaching.fromValue(map['hostCaching'] as String)).input(),
+      lun: (map['lun'] as int).input(),
+      source: map['source'] == null ? null : (GalleryDiskImageSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

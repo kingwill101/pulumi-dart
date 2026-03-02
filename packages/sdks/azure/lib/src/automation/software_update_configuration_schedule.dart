@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'software_update_configuration_schedule_monthly_occurrence.dart';
 
 class SoftwareUpdateConfigurationSchedule {
   /// List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
-  final List<int>? advancedMonthDays;
+  final pulumi.Input<List<int>>? advancedMonthDays;
   /// List of days of the week that the job should execute on. Only valid when frequency is `Week`. Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
-  final List<String>? advancedWeekDays;
-  final String? creationTime;
+  final pulumi.Input<List<String>>? advancedWeekDays;
+  final pulumi.Input<String>? creationTime;
   /// A description for this Schedule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The end time of the schedule.
-  final String? expiryTime;
+  final pulumi.Input<String>? expiryTime;
   /// The time offset in minutes for the expiry time.
-  final double? expiryTimeOffsetMinutes;
+  final pulumi.Input<double>? expiryTimeOffsetMinutes;
   /// The frequency of the schedule. - can be either `OneTime`, `Day`, `Hour`, `Week`, or `Month`.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month`.
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// Whether the schedule is enabled. Defaults to `true`.
-  final bool? isEnabled;
-  final String? lastModifiedTime;
+  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<String>? lastModifiedTime;
   /// List of `monthly_occurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthly_occurrence` block supports fields as defined below.
-  final SoftwareUpdateConfigurationScheduleMonthlyOccurrence? monthlyOccurrence;
-  final String? nextRun;
+  final pulumi.Input<SoftwareUpdateConfigurationScheduleMonthlyOccurrence>? monthlyOccurrence;
+  final pulumi.Input<String>? nextRun;
   /// The time offset in minutes for the next run time.
-  final double? nextRunOffsetMinutes;
+  final pulumi.Input<double>? nextRunOffsetMinutes;
   /// Start time of the schedule. Must be at least five minutes in the future. Defaults to seven minutes in the future from the time the resource is created.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// The time offset in minutes for the start time.
-  final double? startTimeOffsetMinutes;
+  final pulumi.Input<double>? startTimeOffsetMinutes;
   /// The timezone of the start time. Defaults to `Etc/UTC`. For possible values see: <https://docs.microsoft.com/en-us/rest/api/maps/timezone/gettimezoneenumwindows>
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [SoftwareUpdateConfigurationSchedule].
   /// [advancedMonthDays] List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
@@ -81,7 +82,7 @@ class SoftwareUpdateConfigurationSchedule {
       'interval': ?interval,
       'isEnabled': ?isEnabled,
       'lastModifiedTime': ?lastModifiedTime,
-      'monthlyOccurrence': ?monthlyOccurrence == null ? null : monthlyOccurrence!.toMap(),
+      'monthlyOccurrence': ?pulumi.Input.mapOptionalInputValue<SoftwareUpdateConfigurationScheduleMonthlyOccurrence, Map<String, dynamic>>(monthlyOccurrence, (value) => value.toMap()),
       'nextRun': ?nextRun,
       'nextRunOffsetMinutes': ?nextRunOffsetMinutes,
       'startTime': ?startTime,
@@ -92,22 +93,22 @@ class SoftwareUpdateConfigurationSchedule {
 
   factory SoftwareUpdateConfigurationSchedule.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationSchedule(
-      advancedMonthDays: map['advancedMonthDays'] == null ? null : (map['advancedMonthDays'] as List).cast<int>(),
-      advancedWeekDays: map['advancedWeekDays'] == null ? null : (map['advancedWeekDays'] as List).cast<String>(),
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      expiryTime: map['expiryTime'] == null ? null : map['expiryTime'] as String,
-      expiryTimeOffsetMinutes: map['expiryTimeOffsetMinutes'] == null ? null : map['expiryTimeOffsetMinutes'] as double,
-      frequency: map['frequency'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
-      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : SoftwareUpdateConfigurationScheduleMonthlyOccurrence.fromMap((map['monthlyOccurrence'] as Map).cast<String, dynamic>()),
-      nextRun: map['nextRun'] == null ? null : map['nextRun'] as String,
-      nextRunOffsetMinutes: map['nextRunOffsetMinutes'] == null ? null : map['nextRunOffsetMinutes'] as double,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      startTimeOffsetMinutes: map['startTimeOffsetMinutes'] == null ? null : map['startTimeOffsetMinutes'] as double,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      advancedMonthDays: map['advancedMonthDays'] == null ? null : ((map['advancedMonthDays'] as List).cast<int>()).input(),
+      advancedWeekDays: map['advancedWeekDays'] == null ? null : ((map['advancedWeekDays'] as List).cast<String>()).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      expiryTimeOffsetMinutes: map['expiryTimeOffsetMinutes'] == null ? null : (map['expiryTimeOffsetMinutes'] as double).input(),
+      frequency: (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (SoftwareUpdateConfigurationScheduleMonthlyOccurrence.fromMap((map['monthlyOccurrence'] as Map).cast<String, dynamic>())).input(),
+      nextRun: map['nextRun'] == null ? null : (map['nextRun'] as String).input(),
+      nextRunOffsetMinutes: map['nextRunOffsetMinutes'] == null ? null : (map['nextRunOffsetMinutes'] as double).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTimeOffsetMinutes: map['startTimeOffsetMinutes'] == null ? null : (map['startTimeOffsetMinutes'] as double).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

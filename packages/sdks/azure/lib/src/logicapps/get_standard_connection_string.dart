@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStandardConnectionString {
   /// The name of the Logic App.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Type of Managed Identity assigned to this Logic App Workflow.
-  final String type;
-  final String value;
+  final pulumi.Input<String> type;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetStandardConnectionString].
   /// [name] The name of the Logic App.
@@ -28,9 +29,9 @@ class GetStandardConnectionString {
 
   factory GetStandardConnectionString.fromMap(Map<String, dynamic> map) {
     return GetStandardConnectionString(
-      name: map['name'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

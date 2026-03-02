@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDiskEncryptionSetIdentity {
   /// A list of User Assigned Managed Identity IDs assigned to this Disk Encryption Set.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The (Client) ID of the Service Principal.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The ID of the Tenant the Service Principal is assigned in.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of Managed Service Identity that is configured on this Disk Encryption Set.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDiskEncryptionSetIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs assigned to this Disk Encryption Set.
@@ -34,10 +35,10 @@ class GetDiskEncryptionSetIdentity {
 
   factory GetDiskEncryptionSetIdentity.fromMap(Map<String, dynamic> map) {
     return GetDiskEncryptionSetIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

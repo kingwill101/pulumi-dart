@@ -22,17 +22,12 @@ class FastSnapshotRestoreState {
   /// [state] State of fast snapshot restores. Valid values are `enabling`, `optimizing`, `enabled`, `disabling`, `disabled`.
   /// [timeouts] Optional.
   FastSnapshotRestoreState({
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<String>? state,
-    pulumi.Output<FastSnapshotRestoreTimeouts>? timeouts,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      timeouts = pulumi.Input.asOptionalInput<FastSnapshotRestoreTimeouts>(timeouts);
+    this.availabilityZone,
+    this.region,
+    this.snapshotId,
+    this.state,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class FastSnapshotRestoreState {
 
   factory FastSnapshotRestoreState.fromMap(Map<String, dynamic> map) {
     return FastSnapshotRestoreState(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<FastSnapshotRestoreTimeouts>(FastSnapshotRestoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (FastSnapshotRestoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

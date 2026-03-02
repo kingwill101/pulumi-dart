@@ -6,11 +6,11 @@ import 'ipaddress_response.dart';
 /// DNS Proxy settings for Firewall
 class DNSSettingsResponse {
   /// List of IPs associated with the Firewall
-  final List<IPAddressResponse>? dnsServers;
+  final pulumi.Input<List<IPAddressResponse>>? dnsServers;
   /// Enable DNS proxy, disabled by default
-  final String? enableDnsProxy;
+  final pulumi.Input<String>? enableDnsProxy;
   /// Enabled DNS proxy type, disabled by default
-  final String? enabledDnsType;
+  final pulumi.Input<String>? enabledDnsType;
 
   /// Creates a new [DNSSettingsResponse].
   /// [dnsServers] List of IPs associated with the Firewall
@@ -24,7 +24,7 @@ class DNSSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dnsServers': ?dnsServers == null ? null : pulumi.Input.encodeList<IPAddressResponse, Map<String, dynamic>>(dnsServers!, (value) => value.toMap()),
+      'dnsServers': ?pulumi.Input.mapOptionalInputValue<List<IPAddressResponse>, List<Map<String, dynamic>>>(dnsServers, (value) => pulumi.Input.encodeList<IPAddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableDnsProxy': ?enableDnsProxy,
       'enabledDnsType': ?enabledDnsType,
     };
@@ -32,9 +32,9 @@ class DNSSettingsResponse {
 
   factory DNSSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DNSSettingsResponse(
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Input.decodeList<IPAddressResponse>(map['dnsServers'], (value) => IPAddressResponse.fromMap((value as Map).cast<String, dynamic>())),
-      enableDnsProxy: map['enableDnsProxy'] == null ? null : map['enableDnsProxy'] as String,
-      enabledDnsType: map['enabledDnsType'] == null ? null : map['enabledDnsType'] as String,
+      dnsServers: map['dnsServers'] == null ? null : (pulumi.Input.decodeList<IPAddressResponse>(map['dnsServers'], (value) => IPAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableDnsProxy: map['enableDnsProxy'] == null ? null : (map['enableDnsProxy'] as String).input(),
+      enabledDnsType: map['enabledDnsType'] == null ? null : (map['enabledDnsType'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Credential reference type.
 class CredentialReferenceResponse {
   /// Reference credential name.
-  final String referenceName;
+  final pulumi.Input<String> referenceName;
   /// Credential reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [CredentialReferenceResponse].
   /// [referenceName] Reference credential name.
@@ -25,8 +26,8 @@ class CredentialReferenceResponse {
 
   factory CredentialReferenceResponse.fromMap(Map<String, dynamic> map) {
     return CredentialReferenceResponse(
-      referenceName: map['referenceName'] as String,
-      type: map['type'] as String,
+      referenceName: (map['referenceName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

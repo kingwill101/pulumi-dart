@@ -26,17 +26,12 @@ class FirewallRuleArgs {
   /// [properties] A Firewall rule properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   FirewallRuleArgs({
-    pulumi.Output<String>? firewallRuleName,
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> fleetspaceName,
-    pulumi.Output<FirewallRuleProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      firewallRuleName = pulumi.Input.asOptionalInput<String>(firewallRuleName),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      fleetspaceName = pulumi.Input.asInput<String>(fleetspaceName),
-      properties = pulumi.Input.asOptionalInput<FirewallRuleProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.firewallRuleName,
+    required this.fleetName,
+    required this.fleetspaceName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      firewallRuleName: map['firewallRuleName'] == null ? null : pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      fleetspaceName: pulumi.Output.create<String>(map['fleetspaceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<FirewallRuleProperties>(FirewallRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      fleetspaceName: (map['fleetspaceName'] as String).input(),
+      properties: map['properties'] == null ? null : (FirewallRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

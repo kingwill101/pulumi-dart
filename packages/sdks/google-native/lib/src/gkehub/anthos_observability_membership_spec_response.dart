@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// **Anthosobservability**: Per-Membership Feature spec.
 class AnthosObservabilityMembershipSpecResponse {
   /// Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
-  final bool doNotOptimizeMetrics;
+  final pulumi.Input<bool> doNotOptimizeMetrics;
   /// Enable collecting and reporting metrics and logs from user apps.
-  final bool enableStackdriverOnApplications;
+  final pulumi.Input<bool> enableStackdriverOnApplications;
   /// the version of stackdriver operator used by this feature
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [AnthosObservabilityMembershipSpecResponse].
   /// [doNotOptimizeMetrics] Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
@@ -30,9 +31,9 @@ class AnthosObservabilityMembershipSpecResponse {
 
   factory AnthosObservabilityMembershipSpecResponse.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityMembershipSpecResponse(
-      doNotOptimizeMetrics: map['doNotOptimizeMetrics'] as bool,
-      enableStackdriverOnApplications: map['enableStackdriverOnApplications'] as bool,
-      version: map['version'] as String,
+      doNotOptimizeMetrics: (map['doNotOptimizeMetrics'] as bool).input(),
+      enableStackdriverOnApplications: (map['enableStackdriverOnApplications'] as bool).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

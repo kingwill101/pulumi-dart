@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'field_level_encryption_profile_encryption_entities_item.dart';
 
 class FieldLevelEncryptionProfileEncryptionEntities {
-  final List<FieldLevelEncryptionProfileEncryptionEntitiesItem>? items;
+  final pulumi.Input<List<FieldLevelEncryptionProfileEncryptionEntitiesItem>>? items;
 
   /// Creates a new [FieldLevelEncryptionProfileEncryptionEntities].
   /// [items] Optional.
@@ -14,13 +14,13 @@ class FieldLevelEncryptionProfileEncryptionEntities {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?items == null ? null : pulumi.Input.encodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem, Map<String, dynamic>>(items!, (value) => value.toMap()),
+      'items': ?pulumi.Input.mapOptionalInputValue<List<FieldLevelEncryptionProfileEncryptionEntitiesItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FieldLevelEncryptionProfileEncryptionEntities.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileEncryptionEntities(
-      items: map['items'] == null ? null : pulumi.Input.decodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem>(map['items'], (value) => FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap((value as Map).cast<String, dynamic>())),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem>(map['items'], (value) => FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

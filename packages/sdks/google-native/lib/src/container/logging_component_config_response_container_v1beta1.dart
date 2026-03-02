@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// LoggingComponentConfig is cluster logging component configuration.
 class LoggingComponentConfigResponseContainerV1beta1 {
   /// Select components to collect logs. An empty set would disable all logging.
-  final List<String> enableComponents;
+  final pulumi.Input<List<String>> enableComponents;
 
   /// Creates a new [LoggingComponentConfigResponseContainerV1beta1].
   /// [enableComponents] Select components to collect logs. An empty set would disable all logging.
@@ -20,7 +21,7 @@ class LoggingComponentConfigResponseContainerV1beta1 {
 
   factory LoggingComponentConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return LoggingComponentConfigResponseContainerV1beta1(
-      enableComponents: (map['enableComponents'] as List).cast<String>(),
+      enableComponents: ((map['enableComponents'] as List).cast<String>()).input(),
     );
   }
 }

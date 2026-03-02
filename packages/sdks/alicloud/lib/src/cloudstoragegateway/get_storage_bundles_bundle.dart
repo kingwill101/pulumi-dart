@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStorageBundlesBundle {
-  final String createTime;
-  final String description;
-  final String id;
-  final String location;
-  final String storageBundleId;
-  final String storageBundleName;
+  final pulumi.Input<String> createTime;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> storageBundleId;
+  final pulumi.Input<String> storageBundleName;
 
   /// Creates a new [GetStorageBundlesBundle].
   /// [createTime] Required.
@@ -38,12 +39,12 @@ class GetStorageBundlesBundle {
 
   factory GetStorageBundlesBundle.fromMap(Map<String, dynamic> map) {
     return GetStorageBundlesBundle(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      storageBundleId: map['storageBundleId'] as String,
-      storageBundleName: map['storageBundleName'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
+      storageBundleId: (map['storageBundleId'] as String).input(),
+      storageBundleName: (map['storageBundleName'] as String).input(),
     );
   }
 }

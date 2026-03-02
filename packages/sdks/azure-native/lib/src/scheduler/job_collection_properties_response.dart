@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_collection_quota_response.dart';
 import 'sku_response.dart';
 
 class JobCollectionPropertiesResponse {
   /// Gets or sets the job collection quota.
-  final JobCollectionQuotaResponse? quota;
+  final pulumi.Input<JobCollectionQuotaResponse>? quota;
   /// Gets or sets the SKU.
-  final SkuResponse? sku;
+  final pulumi.Input<SkuResponse>? sku;
   /// Gets or sets the state.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [JobCollectionPropertiesResponse].
   /// [quota] Gets or sets the job collection quota.
@@ -23,17 +24,17 @@ class JobCollectionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'quota': ?quota == null ? null : quota!.toMap(),
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'quota': ?pulumi.Input.mapOptionalInputValue<JobCollectionQuotaResponse, Map<String, dynamic>>(quota, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<SkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'state': ?state,
     };
   }
 
   factory JobCollectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return JobCollectionPropertiesResponse(
-      quota: map['quota'] == null ? null : JobCollectionQuotaResponse.fromMap((map['quota'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
+      quota: map['quota'] == null ? null : (JobCollectionQuotaResponse.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

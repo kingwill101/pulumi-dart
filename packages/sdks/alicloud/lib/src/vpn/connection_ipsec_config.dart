@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionIpsecConfig {
   /// the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
-  final String? ipsecAuthAlg;
+  final pulumi.Input<String>? ipsecAuthAlg;
   /// the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
-  final String? ipsecEncAlg;
+  final pulumi.Input<String>? ipsecEncAlg;
   /// the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
-  final int? ipsecLifetime;
+  final pulumi.Input<int>? ipsecLifetime;
   /// the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
-  final String? ipsecPfs;
+  final pulumi.Input<String>? ipsecPfs;
 
   /// Creates a new [ConnectionIpsecConfig].
   /// [ipsecAuthAlg] the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
@@ -34,10 +35,10 @@ class ConnectionIpsecConfig {
 
   factory ConnectionIpsecConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionIpsecConfig(
-      ipsecAuthAlg: map['ipsecAuthAlg'] == null ? null : map['ipsecAuthAlg'] as String,
-      ipsecEncAlg: map['ipsecEncAlg'] == null ? null : map['ipsecEncAlg'] as String,
-      ipsecLifetime: map['ipsecLifetime'] == null ? null : map['ipsecLifetime'] as int,
-      ipsecPfs: map['ipsecPfs'] == null ? null : map['ipsecPfs'] as String,
+      ipsecAuthAlg: map['ipsecAuthAlg'] == null ? null : (map['ipsecAuthAlg'] as String).input(),
+      ipsecEncAlg: map['ipsecEncAlg'] == null ? null : (map['ipsecEncAlg'] as String).input(),
+      ipsecLifetime: map['ipsecLifetime'] == null ? null : (map['ipsecLifetime'] as int).input(),
+      ipsecPfs: map['ipsecPfs'] == null ? null : (map['ipsecPfs'] as String).input(),
     );
   }
 }

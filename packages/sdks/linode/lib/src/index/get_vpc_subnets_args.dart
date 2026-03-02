@@ -18,11 +18,9 @@ class GetVpcSubnetsArgs {
   /// [filters] Optional.
   /// [vpcId] The id of the parent VPC for the list of VPCs.
   GetVpcSubnetsArgs({
-    pulumi.Output<List<GetVpcSubnetsFilter>>? filters,
-    required pulumi.Output<int> vpcId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVpcSubnetsFilter>>(filters),
-      vpcId = pulumi.Input.asInput<int>(vpcId);
+    this.filters,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetVpcSubnetsArgs {
 
   factory GetVpcSubnetsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcSubnetsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcSubnetsFilter>>(pulumi.Input.decodeList<GetVpcSubnetsFilter>(map['filters'], (value) => GetVpcSubnetsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      vpcId: pulumi.Output.create<int>(map['vpcId'] as int),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcSubnetsFilter>(map['filters'], (value) => GetVpcSubnetsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

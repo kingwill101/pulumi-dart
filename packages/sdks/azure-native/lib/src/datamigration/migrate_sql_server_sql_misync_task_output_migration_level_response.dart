@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse {
   /// Count of databases
-  final int databaseCount;
+  final pulumi.Input<int> databaseCount;
   /// Number of database level errors
-  final int databaseErrorCount;
+  final pulumi.Input<int> databaseErrorCount;
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Source server brand version
-  final String sourceServerBrandVersion;
+  final pulumi.Input<String> sourceServerBrandVersion;
   /// Source server name
-  final String sourceServerName;
+  final pulumi.Input<String> sourceServerName;
   /// Source server version
-  final String sourceServerVersion;
+  final pulumi.Input<String> sourceServerVersion;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current state of migration
-  final String state;
+  final pulumi.Input<String> state;
   /// Target server brand version
-  final String targetServerBrandVersion;
+  final pulumi.Input<String> targetServerBrandVersion;
   /// Target server name
-  final String targetServerName;
+  final pulumi.Input<String> targetServerName;
   /// Target server version
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
 
   /// Creates a new [MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse].
   /// [databaseCount] Count of databases
@@ -80,19 +81,19 @@ class MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse {
 
   factory MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse(
-      databaseCount: map['databaseCount'] as int,
-      databaseErrorCount: map['databaseErrorCount'] as int,
-      endedOn: map['endedOn'] as String,
-      id: map['id'] as String,
-      resultType: map['resultType'] as String,
-      sourceServerBrandVersion: map['sourceServerBrandVersion'] as String,
-      sourceServerName: map['sourceServerName'] as String,
-      sourceServerVersion: map['sourceServerVersion'] as String,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
-      targetServerBrandVersion: map['targetServerBrandVersion'] as String,
-      targetServerName: map['targetServerName'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
+      databaseCount: (map['databaseCount'] as int).input(),
+      databaseErrorCount: (map['databaseErrorCount'] as int).input(),
+      endedOn: (map['endedOn'] as String).input(),
+      id: (map['id'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      sourceServerBrandVersion: (map['sourceServerBrandVersion'] as String).input(),
+      sourceServerName: (map['sourceServerName'] as String).input(),
+      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
+      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
+      targetServerName: (map['targetServerName'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
     );
   }
 }

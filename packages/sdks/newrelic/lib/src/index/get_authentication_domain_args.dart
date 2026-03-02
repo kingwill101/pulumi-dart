@@ -13,9 +13,8 @@ class GetAuthenticationDomainArgs {
   /// Creates a new [GetAuthenticationDomainArgs].
   /// [name] The name of the authentication domain to be searched for. An error is thrown, if no authentication domain is found with the specified name.
   GetAuthenticationDomainArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAuthenticationDomainArgs {
 
   factory GetAuthenticationDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthenticationDomainArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class UserState {
   /// [nickName] The nickname of the user.
   /// [userType] The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
   UserState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? accountName,
-    pulumi.Output<bool>? adminUser,
-    pulumi.Output<bool>? authAdminUser,
-    pulumi.Output<String>? nickName,
-    pulumi.Output<String>? userType,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      adminUser = pulumi.Input.asOptionalInput<bool>(adminUser),
-      authAdminUser = pulumi.Input.asOptionalInput<bool>(authAdminUser),
-      nickName = pulumi.Input.asOptionalInput<String>(nickName),
-      userType = pulumi.Input.asOptionalInput<String>(userType);
+    this.accountId,
+    this.accountName,
+    this.adminUser,
+    this.authAdminUser,
+    this.nickName,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      adminUser: map['adminUser'] == null ? null : pulumi.Output.create<bool>(map['adminUser'] as bool),
-      authAdminUser: map['authAdminUser'] == null ? null : pulumi.Output.create<bool>(map['authAdminUser'] as bool),
-      nickName: map['nickName'] == null ? null : pulumi.Output.create<String>(map['nickName'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      adminUser: map['adminUser'] == null ? null : (map['adminUser'] as bool).input(),
+      authAdminUser: map['authAdminUser'] == null ? null : (map['authAdminUser'] as bool).input(),
+      nickName: map['nickName'] == null ? null : (map['nickName'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class ConsoleArgs {
   /// [consoleName] The name of the console
   /// [properties] Cloud shell properties for creating a console.
   ConsoleArgs({
-    pulumi.Output<String>? consoleName,
-    required pulumi.Output<ConsoleCreateProperties> properties,
-  }) :
-      consoleName = pulumi.Input.asOptionalInput<String>(consoleName),
-      properties = pulumi.Input.asInput<ConsoleCreateProperties>(properties);
+    this.consoleName,
+    required this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ConsoleArgs {
 
   factory ConsoleArgs.fromMap(Map<String, dynamic> map) {
     return ConsoleArgs(
-      consoleName: map['consoleName'] == null ? null : pulumi.Output.create<String>(map['consoleName'] as String),
-      properties: pulumi.Output.create<ConsoleCreateProperties>(ConsoleCreateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      consoleName: map['consoleName'] == null ? null : (map['consoleName'] as String).input(),
+      properties: (ConsoleCreateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

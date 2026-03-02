@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionLoggingConfig {
   /// Detail level of the logs your application sends to CloudWatch when using supported logging libraries.
-  final String applicationLogLevel;
+  final pulumi.Input<String> applicationLogLevel;
   /// Format for your function's logs. Valid values: `Text`, `JSON`.
-  final String logFormat;
+  final pulumi.Input<String> logFormat;
   /// CloudWatch log group your function sends logs to.
-  final String logGroup;
+  final pulumi.Input<String> logGroup;
   /// Detail level of the Lambda platform event logs sent to CloudWatch.
-  final String systemLogLevel;
+  final pulumi.Input<String> systemLogLevel;
 
   /// Creates a new [GetFunctionLoggingConfig].
   /// [applicationLogLevel] Detail level of the logs your application sends to CloudWatch when using supported logging libraries.
@@ -34,10 +35,10 @@ class GetFunctionLoggingConfig {
 
   factory GetFunctionLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionLoggingConfig(
-      applicationLogLevel: map['applicationLogLevel'] as String,
-      logFormat: map['logFormat'] as String,
-      logGroup: map['logGroup'] as String,
-      systemLogLevel: map['systemLogLevel'] as String,
+      applicationLogLevel: (map['applicationLogLevel'] as String).input(),
+      logFormat: (map['logFormat'] as String).input(),
+      logGroup: (map['logGroup'] as String).input(),
+      systemLogLevel: (map['systemLogLevel'] as String).input(),
     );
   }
 }

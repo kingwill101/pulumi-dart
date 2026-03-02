@@ -43,31 +43,19 @@ class ContactFlowState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] Specifies the type of the Contact Flow. Defaults to `CONTACT_FLOW`. Allowed Values are: `CONTACT_FLOW`, `CUSTOMER_QUEUE`, `CUSTOMER_HOLD`, `CUSTOMER_WHISPER`, `AGENT_HOLD`, `AGENT_WHISPER`, `OUTBOUND_WHISPER`, `AGENT_TRANSFER`, `QUEUE_TRANSFER`.
   ContactFlowState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? contactFlowId,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? contentHash,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filename,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      contactFlowId = pulumi.Input.asOptionalInput<String>(contactFlowId),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentHash = pulumi.Input.asOptionalInput<String>(contentHash),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filename = pulumi.Input.asOptionalInput<String>(filename),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.contactFlowId,
+    this.content,
+    this.contentHash,
+    this.description,
+    this.filename,
+    this.instanceId,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class ContactFlowState {
 
   factory ContactFlowState.fromMap(Map<String, dynamic> map) {
     return ContactFlowState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      contactFlowId: map['contactFlowId'] == null ? null : pulumi.Output.create<String>(map['contactFlowId'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentHash: map['contentHash'] == null ? null : pulumi.Output.create<String>(map['contentHash'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filename: map['filename'] == null ? null : pulumi.Output.create<String>(map['filename'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      contactFlowId: map['contactFlowId'] == null ? null : (map['contactFlowId'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentHash: map['contentHash'] == null ? null : (map['contentHash'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

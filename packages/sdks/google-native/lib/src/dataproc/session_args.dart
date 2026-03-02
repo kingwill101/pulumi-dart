@@ -44,29 +44,18 @@ class SessionArgs {
   /// [sessionTemplate] Optional. The session template used by the session.Only resource names, including project ID and location, are valid.Example: * https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in the same project and Dataproc region as the session.
   /// [user] Optional. The email address of the user who owns the session.
   SessionArgs({
-    pulumi.Output<EnvironmentConfig>? environmentConfig,
-    pulumi.Output<JupyterConfig>? jupyterSession,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<RuntimeConfig>? runtimeConfig,
-    required pulumi.Output<String> sessionId,
-    pulumi.Output<String>? sessionTemplate,
-    pulumi.Output<String>? user,
-  }) :
-      environmentConfig = pulumi.Input.asOptionalInput<EnvironmentConfig>(environmentConfig),
-      jupyterSession = pulumi.Input.asOptionalInput<JupyterConfig>(jupyterSession),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      runtimeConfig = pulumi.Input.asOptionalInput<RuntimeConfig>(runtimeConfig),
-      sessionId = pulumi.Input.asInput<String>(sessionId),
-      sessionTemplate = pulumi.Input.asOptionalInput<String>(sessionTemplate),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.environmentConfig,
+    this.jupyterSession,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    this.runtimeConfig,
+    required this.sessionId,
+    this.sessionTemplate,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class SessionArgs {
 
   factory SessionArgs.fromMap(Map<String, dynamic> map) {
     return SessionArgs(
-      environmentConfig: map['environmentConfig'] == null ? null : pulumi.Output.create<EnvironmentConfig>(EnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())),
-      jupyterSession: map['jupyterSession'] == null ? null : pulumi.Output.create<JupyterConfig>(JupyterConfig.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      runtimeConfig: map['runtimeConfig'] == null ? null : pulumi.Output.create<RuntimeConfig>(RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())),
-      sessionId: pulumi.Output.create<String>(map['sessionId'] as String),
-      sessionTemplate: map['sessionTemplate'] == null ? null : pulumi.Output.create<String>(map['sessionTemplate'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      environmentConfig: map['environmentConfig'] == null ? null : (EnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())).input(),
+      jupyterSession: map['jupyterSession'] == null ? null : (JupyterConfig.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
+      sessionId: (map['sessionId'] as String).input(),
+      sessionTemplate: map['sessionTemplate'] == null ? null : (map['sessionTemplate'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

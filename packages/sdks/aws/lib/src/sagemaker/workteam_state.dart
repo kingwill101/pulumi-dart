@@ -43,29 +43,18 @@ class WorkteamState {
   /// [workforceName] The name of the workforce.
   /// [workteamName] The name of the Workteam (must be unique).
   WorkteamState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<WorkteamMemberDefinition>>? memberDefinitions,
-    pulumi.Output<WorkteamNotificationConfiguration>? notificationConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subdomain,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<WorkteamWorkerAccessConfiguration>? workerAccessConfiguration,
-    pulumi.Output<String>? workforceName,
-    pulumi.Output<String>? workteamName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      memberDefinitions = pulumi.Input.asOptionalInput<List<WorkteamMemberDefinition>>(memberDefinitions),
-      notificationConfiguration = pulumi.Input.asOptionalInput<WorkteamNotificationConfiguration>(notificationConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subdomain = pulumi.Input.asOptionalInput<String>(subdomain),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      workerAccessConfiguration = pulumi.Input.asOptionalInput<WorkteamWorkerAccessConfiguration>(workerAccessConfiguration),
-      workforceName = pulumi.Input.asOptionalInput<String>(workforceName),
-      workteamName = pulumi.Input.asOptionalInput<String>(workteamName);
+    this.arn,
+    this.description,
+    this.memberDefinitions,
+    this.notificationConfiguration,
+    this.region,
+    this.subdomain,
+    this.tags,
+    this.tagsAll,
+    this.workerAccessConfiguration,
+    this.workforceName,
+    this.workteamName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class WorkteamState {
 
   factory WorkteamState.fromMap(Map<String, dynamic> map) {
     return WorkteamState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      memberDefinitions: map['memberDefinitions'] == null ? null : pulumi.Output.create<List<WorkteamMemberDefinition>>(pulumi.Input.decodeList<WorkteamMemberDefinition>(map['memberDefinitions'], (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      notificationConfiguration: map['notificationConfiguration'] == null ? null : pulumi.Output.create<WorkteamNotificationConfiguration>(WorkteamNotificationConfiguration.fromMap((map['notificationConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subdomain: map['subdomain'] == null ? null : pulumi.Output.create<String>(map['subdomain'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      workerAccessConfiguration: map['workerAccessConfiguration'] == null ? null : pulumi.Output.create<WorkteamWorkerAccessConfiguration>(WorkteamWorkerAccessConfiguration.fromMap((map['workerAccessConfiguration'] as Map).cast<String, dynamic>())),
-      workforceName: map['workforceName'] == null ? null : pulumi.Output.create<String>(map['workforceName'] as String),
-      workteamName: map['workteamName'] == null ? null : pulumi.Output.create<String>(map['workteamName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      memberDefinitions: map['memberDefinitions'] == null ? null : (pulumi.Input.decodeList<WorkteamMemberDefinition>(map['memberDefinitions'], (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationConfiguration: map['notificationConfiguration'] == null ? null : (WorkteamNotificationConfiguration.fromMap((map['notificationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subdomain: map['subdomain'] == null ? null : (map['subdomain'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      workerAccessConfiguration: map['workerAccessConfiguration'] == null ? null : (WorkteamWorkerAccessConfiguration.fromMap((map['workerAccessConfiguration'] as Map).cast<String, dynamic>())).input(),
+      workforceName: map['workforceName'] == null ? null : (map['workforceName'] as String).input(),
+      workteamName: map['workteamName'] == null ? null : (map['workteamName'] as String).input(),
     );
   }
 }

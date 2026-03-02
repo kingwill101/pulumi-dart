@@ -36,23 +36,15 @@ class GetUserArgs {
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [uniqueId] The unique ID of the user.
   GetUserArgs({
-    pulumi.Output<String>? domainId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? idpId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? passwordExpiresAt,
-    pulumi.Output<String>? protocolId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? uniqueId,
-  }) :
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      idpId = pulumi.Input.asOptionalInput<String>(idpId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      passwordExpiresAt = pulumi.Input.asOptionalInput<String>(passwordExpiresAt),
-      protocolId = pulumi.Input.asOptionalInput<String>(protocolId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      uniqueId = pulumi.Input.asOptionalInput<String>(uniqueId);
+    this.domainId,
+    this.enabled,
+    this.idpId,
+    this.name,
+    this.passwordExpiresAt,
+    this.protocolId,
+    this.region,
+    this.uniqueId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      idpId: map['idpId'] == null ? null : pulumi.Output.create<String>(map['idpId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      passwordExpiresAt: map['passwordExpiresAt'] == null ? null : pulumi.Output.create<String>(map['passwordExpiresAt'] as String),
-      protocolId: map['protocolId'] == null ? null : pulumi.Output.create<String>(map['protocolId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      uniqueId: map['uniqueId'] == null ? null : pulumi.Output.create<String>(map['uniqueId'] as String),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      idpId: map['idpId'] == null ? null : (map['idpId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      passwordExpiresAt: map['passwordExpiresAt'] == null ? null : (map['passwordExpiresAt'] as String).input(),
+      protocolId: map['protocolId'] == null ? null : (map['protocolId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
     );
   }
 }

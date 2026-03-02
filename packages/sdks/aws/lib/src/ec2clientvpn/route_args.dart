@@ -25,17 +25,12 @@ class RouteArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetVpcSubnetId] The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
   RouteArgs({
-    required pulumi.Output<String> clientVpnEndpointId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> destinationCidrBlock,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> targetVpcSubnetId,
-  }) :
-      clientVpnEndpointId = pulumi.Input.asInput<String>(clientVpnEndpointId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationCidrBlock = pulumi.Input.asInput<String>(destinationCidrBlock),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetVpcSubnetId = pulumi.Input.asInput<String>(targetVpcSubnetId);
+    required this.clientVpnEndpointId,
+    this.description,
+    required this.destinationCidrBlock,
+    this.region,
+    required this.targetVpcSubnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      clientVpnEndpointId: pulumi.Output.create<String>(map['clientVpnEndpointId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationCidrBlock: pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetVpcSubnetId: pulumi.Output.create<String>(map['targetVpcSubnetId'] as String),
+      clientVpnEndpointId: (map['clientVpnEndpointId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetVpcSubnetId: (map['targetVpcSubnetId'] as String).input(),
     );
   }
 }

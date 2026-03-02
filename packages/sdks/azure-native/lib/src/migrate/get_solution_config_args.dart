@@ -19,13 +19,10 @@ class GetSolutionConfigArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that migrate project is part of.
   /// [solutionName] Unique name of a migration solution within a migrate project.
   GetSolutionConfigArgs({
-    required pulumi.Output<String> migrateProjectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> solutionName,
-  }) :
-      migrateProjectName = pulumi.Input.asInput<String>(migrateProjectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asInput<String>(solutionName);
+    required this.migrateProjectName,
+    required this.resourceGroupName,
+    required this.solutionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSolutionConfigArgs {
 
   factory GetSolutionConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionConfigArgs(
-      migrateProjectName: pulumi.Output.create<String>(map['migrateProjectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: pulumi.Output.create<String>(map['solutionName'] as String),
+      migrateProjectName: (map['migrateProjectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: (map['solutionName'] as String).input(),
     );
   }
 }

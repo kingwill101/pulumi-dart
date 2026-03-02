@@ -29,19 +29,13 @@ class FolderContactArgs {
   /// [validateTime] The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
   /// [validationState] The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
   FolderContactArgs({
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> folderId,
-    required pulumi.Output<String> languageTag,
-    required pulumi.Output<List<FolderContactNotificationCategorySubscriptionsItem>> notificationCategorySubscriptions,
-    pulumi.Output<String>? validateTime,
-    pulumi.Output<FolderContactValidationState>? validationState,
-  }) :
-      email = pulumi.Input.asInput<String>(email),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      languageTag = pulumi.Input.asInput<String>(languageTag),
-      notificationCategorySubscriptions = pulumi.Input.asInput<List<FolderContactNotificationCategorySubscriptionsItem>>(notificationCategorySubscriptions),
-      validateTime = pulumi.Input.asOptionalInput<String>(validateTime),
-      validationState = pulumi.Input.asOptionalInput<FolderContactValidationState>(validationState);
+    required this.email,
+    required this.folderId,
+    required this.languageTag,
+    required this.notificationCategorySubscriptions,
+    this.validateTime,
+    this.validationState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class FolderContactArgs {
 
   factory FolderContactArgs.fromMap(Map<String, dynamic> map) {
     return FolderContactArgs(
-      email: pulumi.Output.create<String>(map['email'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      languageTag: pulumi.Output.create<String>(map['languageTag'] as String),
-      notificationCategorySubscriptions: pulumi.Output.create<List<FolderContactNotificationCategorySubscriptionsItem>>(pulumi.Input.decodeList<FolderContactNotificationCategorySubscriptionsItem>(map['notificationCategorySubscriptions'], (value) => FolderContactNotificationCategorySubscriptionsItem.fromValue(value as String))),
-      validateTime: map['validateTime'] == null ? null : pulumi.Output.create<String>(map['validateTime'] as String),
-      validationState: map['validationState'] == null ? null : pulumi.Output.create<FolderContactValidationState>(FolderContactValidationState.fromValue(map['validationState'] as String)),
+      email: (map['email'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      languageTag: (map['languageTag'] as String).input(),
+      notificationCategorySubscriptions: (pulumi.Input.decodeList<FolderContactNotificationCategorySubscriptionsItem>(map['notificationCategorySubscriptions'], (value) => FolderContactNotificationCategorySubscriptionsItem.fromValue(value as String))).input(),
+      validateTime: map['validateTime'] == null ? null : (map['validateTime'] as String).input(),
+      validationState: map['validationState'] == null ? null : (FolderContactValidationState.fromValue(map['validationState'] as String)).input(),
     );
   }
 }

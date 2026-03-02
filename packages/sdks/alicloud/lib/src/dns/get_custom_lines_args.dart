@@ -28,19 +28,13 @@ class GetCustomLinesArgs {
   /// [nameRegex] A regex string to filter results by Custom Line name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetCustomLinesArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.domainName,
+    this.enableDetails,
+    this.ids,
+    this.lang,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetCustomLinesArgs {
 
   factory GetCustomLinesArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomLinesArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      domainName: (map['domainName'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

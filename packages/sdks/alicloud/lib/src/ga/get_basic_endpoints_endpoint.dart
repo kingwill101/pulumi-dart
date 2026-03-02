@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBasicEndpointsEndpoint {
   /// The ID of the Global Accelerator Basic Accelerator instance.
-  final String acceleratorId;
+  final pulumi.Input<String> acceleratorId;
   /// The name of the Basic Endpoint.
-  final String basicEndpointName;
+  final pulumi.Input<String> basicEndpointName;
   /// The address of the Basic Endpoint.
-  final String endpointAddress;
+  final pulumi.Input<String> endpointAddress;
   /// The ID of the Basic Endpoint Group.
-  final String endpointGroupId;
+  final pulumi.Input<String> endpointGroupId;
   /// The ID of the Basic Endpoint.
-  final String endpointId;
+  final pulumi.Input<String> endpointId;
   /// The sub address of the Basic Endpoint.
-  final String endpointSubAddress;
+  final pulumi.Input<String> endpointSubAddress;
   /// The sub address type of the Basic Endpoint.
-  final String endpointSubAddressType;
+  final pulumi.Input<String> endpointSubAddressType;
   /// The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The zone id of the Basic Endpoint.
-  final String endpointZoneId;
+  final pulumi.Input<String> endpointZoneId;
   /// The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBasicEndpointsEndpoint].
   /// [acceleratorId] The ID of the Global Accelerator Basic Accelerator instance.
@@ -69,17 +70,17 @@ class GetBasicEndpointsEndpoint {
 
   factory GetBasicEndpointsEndpoint.fromMap(Map<String, dynamic> map) {
     return GetBasicEndpointsEndpoint(
-      acceleratorId: map['acceleratorId'] as String,
-      basicEndpointName: map['basicEndpointName'] as String,
-      endpointAddress: map['endpointAddress'] as String,
-      endpointGroupId: map['endpointGroupId'] as String,
-      endpointId: map['endpointId'] as String,
-      endpointSubAddress: map['endpointSubAddress'] as String,
-      endpointSubAddressType: map['endpointSubAddressType'] as String,
-      endpointType: map['endpointType'] as String,
-      endpointZoneId: map['endpointZoneId'] as String,
-      id: map['id'] as String,
-      status: map['status'] as String,
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      basicEndpointName: (map['basicEndpointName'] as String).input(),
+      endpointAddress: (map['endpointAddress'] as String).input(),
+      endpointGroupId: (map['endpointGroupId'] as String).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      endpointSubAddress: (map['endpointSubAddress'] as String).input(),
+      endpointSubAddressType: (map['endpointSubAddressType'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      endpointZoneId: (map['endpointZoneId'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

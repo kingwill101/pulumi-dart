@@ -13,39 +13,39 @@ import 'template_link_response.dart';
 /// Deployment properties with additional details.
 class DeploymentPropertiesExtendedResponse {
   /// The correlation ID of the deployment.
-  final String correlationId;
+  final pulumi.Input<String> correlationId;
   /// The debug setting of the deployment.
-  final DebugSettingResponse debugSetting;
+  final pulumi.Input<DebugSettingResponse> debugSetting;
   /// The list of deployment dependencies.
-  final List<DependencyResponse> dependencies;
+  final pulumi.Input<List<DependencyResponse>> dependencies;
   /// The duration of the template deployment.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// The deployment error.
-  final ErrorResponseResponse error;
+  final pulumi.Input<ErrorResponseResponse> error;
   /// The deployment mode. Possible values are Incremental and Complete.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The deployment on error behavior.
-  final OnErrorDeploymentExtendedResponse onErrorDeployment;
+  final pulumi.Input<OnErrorDeploymentExtendedResponse> onErrorDeployment;
   /// Array of provisioned resources.
-  final List<ResourceReferenceResponse> outputResources;
+  final pulumi.Input<List<ResourceReferenceResponse>> outputResources;
   /// Key/value pairs that represent deployment output.
-  final dynamic outputs;
+  final pulumi.Input<dynamic> outputs;
   /// Deployment parameters.
-  final dynamic parameters;
+  final pulumi.Input<dynamic> parameters;
   /// The URI referencing the parameters.
-  final ParametersLinkResponse parametersLink;
+  final pulumi.Input<ParametersLinkResponse> parametersLink;
   /// The list of resource providers needed for the deployment.
-  final List<ProviderResponse> providers;
+  final pulumi.Input<List<ProviderResponse>> providers;
   /// Denotes the state of provisioning.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The hash produced for the template.
-  final String templateHash;
+  final pulumi.Input<String> templateHash;
   /// The URI referencing the template.
-  final TemplateLinkResponse templateLink;
+  final pulumi.Input<TemplateLinkResponse> templateLink;
   /// The timestamp of the template deployment.
-  final String timestamp;
+  final pulumi.Input<String> timestamp;
   /// Array of validated resources.
-  final List<ResourceReferenceResponse> validatedResources;
+  final pulumi.Input<List<ResourceReferenceResponse>> validatedResources;
 
   /// Creates a new [DeploymentPropertiesExtendedResponse].
   /// [correlationId] The correlation ID of the deployment.
@@ -88,44 +88,44 @@ class DeploymentPropertiesExtendedResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'correlationId': correlationId,
-      'debugSetting': debugSetting.toMap(),
-      'dependencies': pulumi.Input.encodeList<DependencyResponse, Map<String, dynamic>>(dependencies, (value) => value.toMap()),
+      'debugSetting': pulumi.Input.mapInputValue<DebugSettingResponse, Map<String, dynamic>>(debugSetting, (value) => value.toMap()),
+      'dependencies': pulumi.Input.mapInputValue<List<DependencyResponse>, List<Map<String, dynamic>>>(dependencies, (value) => pulumi.Input.encodeList<DependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'duration': duration,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<ErrorResponseResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'mode': mode,
-      'onErrorDeployment': onErrorDeployment.toMap(),
-      'outputResources': pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(outputResources, (value) => value.toMap()),
+      'onErrorDeployment': pulumi.Input.mapInputValue<OnErrorDeploymentExtendedResponse, Map<String, dynamic>>(onErrorDeployment, (value) => value.toMap()),
+      'outputResources': pulumi.Input.mapInputValue<List<ResourceReferenceResponse>, List<Map<String, dynamic>>>(outputResources, (value) => pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'outputs': outputs,
       'parameters': parameters,
-      'parametersLink': parametersLink.toMap(),
-      'providers': pulumi.Input.encodeList<ProviderResponse, Map<String, dynamic>>(providers, (value) => value.toMap()),
+      'parametersLink': pulumi.Input.mapInputValue<ParametersLinkResponse, Map<String, dynamic>>(parametersLink, (value) => value.toMap()),
+      'providers': pulumi.Input.mapInputValue<List<ProviderResponse>, List<Map<String, dynamic>>>(providers, (value) => pulumi.Input.encodeList<ProviderResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'templateHash': templateHash,
-      'templateLink': templateLink.toMap(),
+      'templateLink': pulumi.Input.mapInputValue<TemplateLinkResponse, Map<String, dynamic>>(templateLink, (value) => value.toMap()),
       'timestamp': timestamp,
-      'validatedResources': pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(validatedResources, (value) => value.toMap()),
+      'validatedResources': pulumi.Input.mapInputValue<List<ResourceReferenceResponse>, List<Map<String, dynamic>>>(validatedResources, (value) => pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeploymentPropertiesExtendedResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentPropertiesExtendedResponse(
-      correlationId: map['correlationId'] as String,
-      debugSetting: DebugSettingResponse.fromMap((map['debugSetting'] as Map).cast<String, dynamic>()),
-      dependencies: pulumi.Input.decodeList<DependencyResponse>(map['dependencies'], (value) => DependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      duration: map['duration'] as String,
-      error: ErrorResponseResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      mode: map['mode'] as String,
-      onErrorDeployment: OnErrorDeploymentExtendedResponse.fromMap((map['onErrorDeployment'] as Map).cast<String, dynamic>()),
-      outputResources: pulumi.Input.decodeList<ResourceReferenceResponse>(map['outputResources'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      outputs: map['outputs'],
-      parameters: map['parameters'],
-      parametersLink: ParametersLinkResponse.fromMap((map['parametersLink'] as Map).cast<String, dynamic>()),
-      providers: pulumi.Input.decodeList<ProviderResponse>(map['providers'], (value) => ProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      templateHash: map['templateHash'] as String,
-      templateLink: TemplateLinkResponse.fromMap((map['templateLink'] as Map).cast<String, dynamic>()),
-      timestamp: map['timestamp'] as String,
-      validatedResources: pulumi.Input.decodeList<ResourceReferenceResponse>(map['validatedResources'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      correlationId: (map['correlationId'] as String).input(),
+      debugSetting: (DebugSettingResponse.fromMap((map['debugSetting'] as Map).cast<String, dynamic>())).input(),
+      dependencies: (pulumi.Input.decodeList<DependencyResponse>(map['dependencies'], (value) => DependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      duration: (map['duration'] as String).input(),
+      error: (ErrorResponseResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      mode: (map['mode'] as String).input(),
+      onErrorDeployment: (OnErrorDeploymentExtendedResponse.fromMap((map['onErrorDeployment'] as Map).cast<String, dynamic>())).input(),
+      outputResources: (pulumi.Input.decodeList<ResourceReferenceResponse>(map['outputResources'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputs: (map['outputs']).input(),
+      parameters: (map['parameters']).input(),
+      parametersLink: (ParametersLinkResponse.fromMap((map['parametersLink'] as Map).cast<String, dynamic>())).input(),
+      providers: (pulumi.Input.decodeList<ProviderResponse>(map['providers'], (value) => ProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      templateHash: (map['templateHash'] as String).input(),
+      templateLink: (TemplateLinkResponse.fromMap((map['templateLink'] as Map).cast<String, dynamic>())).input(),
+      timestamp: (map['timestamp'] as String).input(),
+      validatedResources: (pulumi.Input.decodeList<ResourceReferenceResponse>(map['validatedResources'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

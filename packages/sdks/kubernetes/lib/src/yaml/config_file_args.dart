@@ -19,13 +19,10 @@ class ConfigFileArgs {
   /// [resourcePrefix] A prefix for the auto-generated resource names. Defaults to the name of the ConfigFile. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [skipAwait] Indicates that child resources should skip the await logic.
   ConfigFileArgs({
-    required pulumi.Output<String> file,
-    pulumi.Output<String>? resourcePrefix,
-    pulumi.Output<bool>? skipAwait,
-  }) :
-      file = pulumi.Input.asInput<String>(file),
-      resourcePrefix = pulumi.Input.asOptionalInput<String>(resourcePrefix),
-      skipAwait = pulumi.Input.asOptionalInput<bool>(skipAwait);
+    required this.file,
+    this.resourcePrefix,
+    this.skipAwait,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ConfigFileArgs {
 
   factory ConfigFileArgs.fromMap(Map<String, dynamic> map) {
     return ConfigFileArgs(
-      file: pulumi.Output.create<String>(map['file'] as String),
-      resourcePrefix: map['resourcePrefix'] == null ? null : pulumi.Output.create<String>(map['resourcePrefix'] as String),
-      skipAwait: map['skipAwait'] == null ? null : pulumi.Output.create<bool>(map['skipAwait'] as bool),
+      file: (map['file'] as String).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
+      skipAwait: map['skipAwait'] == null ? null : (map['skipAwait'] as bool).input(),
     );
   }
 }

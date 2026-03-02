@@ -22,15 +22,11 @@ class GetSqlPoolWorkloadGroupArgs {
   /// [workloadGroupName] The name of the workload group.
   /// [workspaceName] The name of the workspace.
   GetSqlPoolWorkloadGroupArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlPoolName,
-    required pulumi.Output<String> workloadGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlPoolName = pulumi.Input.asInput<String>(sqlPoolName),
-      workloadGroupName = pulumi.Input.asInput<String>(workloadGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.sqlPoolName,
+    required this.workloadGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSqlPoolWorkloadGroupArgs {
 
   factory GetSqlPoolWorkloadGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlPoolWorkloadGroupArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlPoolName: pulumi.Output.create<String>(map['sqlPoolName'] as String),
-      workloadGroupName: pulumi.Output.create<String>(map['workloadGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlPoolName: (map['sqlPoolName'] as String).input(),
+      workloadGroupName: (map['workloadGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

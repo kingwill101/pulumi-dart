@@ -21,13 +21,10 @@ class ControlPlaneAccessState {
   /// [name] Name of the Apigee organization.
   /// [synchronizerIdentities] Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
   ControlPlaneAccessState({
-    pulumi.Output<List<String>>? analyticsPublisherIdentities,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? synchronizerIdentities,
-  }) :
-      analyticsPublisherIdentities = pulumi.Input.asOptionalInput<List<String>>(analyticsPublisherIdentities),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      synchronizerIdentities = pulumi.Input.asOptionalInput<List<String>>(synchronizerIdentities);
+    this.analyticsPublisherIdentities,
+    this.name,
+    this.synchronizerIdentities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ControlPlaneAccessState {
 
   factory ControlPlaneAccessState.fromMap(Map<String, dynamic> map) {
     return ControlPlaneAccessState(
-      analyticsPublisherIdentities: map['analyticsPublisherIdentities'] == null ? null : pulumi.Output.create<List<String>>((map['analyticsPublisherIdentities'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      synchronizerIdentities: map['synchronizerIdentities'] == null ? null : pulumi.Output.create<List<String>>((map['synchronizerIdentities'] as List).cast<String>()),
+      analyticsPublisherIdentities: map['analyticsPublisherIdentities'] == null ? null : ((map['analyticsPublisherIdentities'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      synchronizerIdentities: map['synchronizerIdentities'] == null ? null : ((map['synchronizerIdentities'] as List).cast<String>()).input(),
     );
   }
 }

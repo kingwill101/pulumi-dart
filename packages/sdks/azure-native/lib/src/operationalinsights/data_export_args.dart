@@ -40,27 +40,17 @@ class DataExportArgs {
   /// [tableNames] An array of tables to export, for example: [“Heartbeat, SecurityEvent”].
   /// [workspaceName] The name of the workspace.
   DataExportArgs({
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<String>? dataExportId,
-    pulumi.Output<String>? dataExportName,
-    pulumi.Output<bool>? enable,
-    pulumi.Output<String>? eventHubName,
-    pulumi.Output<String>? lastModifiedDate,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<List<String>> tableNames,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      dataExportId = pulumi.Input.asOptionalInput<String>(dataExportId),
-      dataExportName = pulumi.Input.asOptionalInput<String>(dataExportName),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      eventHubName = pulumi.Input.asOptionalInput<String>(eventHubName),
-      lastModifiedDate = pulumi.Input.asOptionalInput<String>(lastModifiedDate),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      tableNames = pulumi.Input.asInput<List<String>>(tableNames),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.createdDate,
+    this.dataExportId,
+    this.dataExportName,
+    this.enable,
+    this.eventHubName,
+    this.lastModifiedDate,
+    required this.resourceGroupName,
+    required this.resourceId,
+    required this.tableNames,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class DataExportArgs {
 
   factory DataExportArgs.fromMap(Map<String, dynamic> map) {
     return DataExportArgs(
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      dataExportId: map['dataExportId'] == null ? null : pulumi.Output.create<String>(map['dataExportId'] as String),
-      dataExportName: map['dataExportName'] == null ? null : pulumi.Output.create<String>(map['dataExportName'] as String),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      eventHubName: map['eventHubName'] == null ? null : pulumi.Output.create<String>(map['eventHubName'] as String),
-      lastModifiedDate: map['lastModifiedDate'] == null ? null : pulumi.Output.create<String>(map['lastModifiedDate'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      tableNames: pulumi.Output.create<List<String>>((map['tableNames'] as List).cast<String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      dataExportId: map['dataExportId'] == null ? null : (map['dataExportId'] as String).input(),
+      dataExportName: map['dataExportName'] == null ? null : (map['dataExportName'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
+      lastModifiedDate: map['lastModifiedDate'] == null ? null : (map['lastModifiedDate'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      tableNames: ((map['tableNames'] as List).cast<String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

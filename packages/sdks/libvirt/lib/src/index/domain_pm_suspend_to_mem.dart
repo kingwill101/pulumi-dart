@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainPmSuspendToMem {
   /// Specifies if the suspend to disk feature is enabled.
-  final String enabled;
+  final pulumi.Input<String> enabled;
 
   /// Creates a new [DomainPmSuspendToMem].
   /// [enabled] Specifies if the suspend to disk feature is enabled.
@@ -19,7 +20,7 @@ class DomainPmSuspendToMem {
 
   factory DomainPmSuspendToMem.fromMap(Map<String, dynamic> map) {
     return DomainPmSuspendToMem(
-      enabled: map['enabled'] as String,
+      enabled: (map['enabled'] as String).input(),
     );
   }
 }

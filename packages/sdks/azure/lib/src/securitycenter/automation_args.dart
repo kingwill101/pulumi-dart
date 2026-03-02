@@ -41,25 +41,16 @@ class AutomationArgs {
   /// [sources] One or more `source` blocks as defined below. A `source` defines what data types will be processed and a set of rules to filter that data.
   /// [tags] A mapping of tags assigned to the resource.
   AutomationArgs({
-    required pulumi.Output<List<AutomationAction>> actions,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<String>> scopes,
-    required pulumi.Output<List<AutomationSource>> sources,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      actions = pulumi.Input.asInput<List<AutomationAction>>(actions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopes = pulumi.Input.asInput<List<String>>(scopes),
-      sources = pulumi.Input.asInput<List<AutomationSource>>(sources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.actions,
+    this.description,
+    this.enabled,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.scopes,
+    required this.sources,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class AutomationArgs {
 
   factory AutomationArgs.fromMap(Map<String, dynamic> map) {
     return AutomationArgs(
-      actions: pulumi.Output.create<List<AutomationAction>>(pulumi.Input.decodeList<AutomationAction>(map['actions'], (value) => AutomationAction.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopes: pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      sources: pulumi.Output.create<List<AutomationSource>>(pulumi.Input.decodeList<AutomationSource>(map['sources'], (value) => AutomationSource.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      actions: (pulumi.Input.decodeList<AutomationAction>(map['actions'], (value) => AutomationAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
+      sources: (pulumi.Input.decodeList<AutomationSource>(map['sources'], (value) => AutomationSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

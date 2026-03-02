@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCollectionRuleDataSourceExtension {
   /// A JSON String which specifies the extension setting.
-  final String extensionJson;
+  final pulumi.Input<String> extensionJson;
   /// The name of the VM extension.
-  final String extensionName;
+  final pulumi.Input<String> extensionName;
   /// Specifies a list of data sources this extension needs data from. An item should be a name of a supported data source which produces only one stream. Supported data sources type: `performance_counter`, `windows_event_log`,and `syslog`.
-  final List<String> inputDataSources;
+  final pulumi.Input<List<String>> inputDataSources;
   /// Specifies the name of the Data Collection Rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
-  final List<String> streams;
+  final pulumi.Input<List<String>> streams;
 
   /// Creates a new [GetDataCollectionRuleDataSourceExtension].
   /// [extensionJson] A JSON String which specifies the extension setting.
@@ -39,11 +40,11 @@ class GetDataCollectionRuleDataSourceExtension {
 
   factory GetDataCollectionRuleDataSourceExtension.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDataSourceExtension(
-      extensionJson: map['extensionJson'] as String,
-      extensionName: map['extensionName'] as String,
-      inputDataSources: (map['inputDataSources'] as List).cast<String>(),
-      name: map['name'] as String,
-      streams: (map['streams'] as List).cast<String>(),
+      extensionJson: (map['extensionJson'] as String).input(),
+      extensionName: (map['extensionName'] as String).input(),
+      inputDataSources: ((map['inputDataSources'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      streams: ((map['streams'] as List).cast<String>()).input(),
     );
   }
 }

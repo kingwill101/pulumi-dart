@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_import_sources_event_hub.dart';
 
 /// Specifications of pull based data sources
 class DataSourcesSpecDataImports {
   /// Definition of Event Hub configuration.
-  final DataImportSourcesEventHub? eventHub;
+  final pulumi.Input<DataImportSourcesEventHub>? eventHub;
 
   /// Creates a new [DataSourcesSpecDataImports].
   /// [eventHub] Definition of Event Hub configuration.
@@ -15,13 +16,13 @@ class DataSourcesSpecDataImports {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventHub': ?eventHub == null ? null : eventHub!.toMap(),
+      'eventHub': ?pulumi.Input.mapOptionalInputValue<DataImportSourcesEventHub, Map<String, dynamic>>(eventHub, (value) => value.toMap()),
     };
   }
 
   factory DataSourcesSpecDataImports.fromMap(Map<String, dynamic> map) {
     return DataSourcesSpecDataImports(
-      eventHub: map['eventHub'] == null ? null : DataImportSourcesEventHub.fromMap((map['eventHub'] as Map).cast<String, dynamic>()),
+      eventHub: map['eventHub'] == null ? null : (DataImportSourcesEventHub.fromMap((map['eventHub'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

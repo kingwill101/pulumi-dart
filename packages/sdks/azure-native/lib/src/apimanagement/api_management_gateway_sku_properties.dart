@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// API Management gateway resource SKU properties.
 class ApiManagementGatewaySkuProperties {
   /// Capacity of the SKU (number of deployed units of the SKU)
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Name of the Sku.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ApiManagementGatewaySkuProperties].
   /// [capacity] Capacity of the SKU (number of deployed units of the SKU)
@@ -25,8 +26,8 @@ class ApiManagementGatewaySkuProperties {
 
   factory ApiManagementGatewaySkuProperties.fromMap(Map<String, dynamic> map) {
     return ApiManagementGatewaySkuProperties(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

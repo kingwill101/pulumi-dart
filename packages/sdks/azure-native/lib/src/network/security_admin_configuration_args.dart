@@ -28,19 +28,13 @@ class SecurityAdminConfigurationArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
   SecurityAdminConfigurationArgs({
-    pulumi.Output<List<String>>? applyOnNetworkIntentPolicyBasedServices,
-    pulumi.Output<String>? configurationName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? networkGroupAddressSpaceAggregationOption,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      applyOnNetworkIntentPolicyBasedServices = pulumi.Input.asOptionalInput<List<String>>(applyOnNetworkIntentPolicyBasedServices),
-      configurationName = pulumi.Input.asOptionalInput<String>(configurationName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      networkGroupAddressSpaceAggregationOption = pulumi.Input.asOptionalInput<String>(networkGroupAddressSpaceAggregationOption),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.applyOnNetworkIntentPolicyBasedServices,
+    this.configurationName,
+    this.description,
+    this.networkGroupAddressSpaceAggregationOption,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SecurityAdminConfigurationArgs {
 
   factory SecurityAdminConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityAdminConfigurationArgs(
-      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : pulumi.Output.create<List<String>>((map['applyOnNetworkIntentPolicyBasedServices'] as List).cast<String>()),
-      configurationName: map['configurationName'] == null ? null : pulumi.Output.create<String>(map['configurationName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      networkGroupAddressSpaceAggregationOption: map['networkGroupAddressSpaceAggregationOption'] == null ? null : pulumi.Output.create<String>(map['networkGroupAddressSpaceAggregationOption'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : ((map['applyOnNetworkIntentPolicyBasedServices'] as List).cast<String>()).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkGroupAddressSpaceAggregationOption: map['networkGroupAddressSpaceAggregationOption'] == null ? null : (map['networkGroupAddressSpaceAggregationOption'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

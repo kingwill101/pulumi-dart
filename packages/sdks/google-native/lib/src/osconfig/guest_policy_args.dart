@@ -40,25 +40,16 @@ class GuestPolicyArgs {
   /// [project] Optional.
   /// [recipes] A list of Recipes to install on the VM instance.
   GuestPolicyArgs({
-    required pulumi.Output<Assignment> assignment,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> guestPolicyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<PackageRepository>>? packageRepositories,
-    pulumi.Output<List<Package>>? packages,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<SoftwareRecipe>>? recipes,
-  }) :
-      assignment = pulumi.Input.asInput<Assignment>(assignment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      guestPolicyId = pulumi.Input.asInput<String>(guestPolicyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      packageRepositories = pulumi.Input.asOptionalInput<List<PackageRepository>>(packageRepositories),
-      packages = pulumi.Input.asOptionalInput<List<Package>>(packages),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recipes = pulumi.Input.asOptionalInput<List<SoftwareRecipe>>(recipes);
+    required this.assignment,
+    this.description,
+    this.etag,
+    required this.guestPolicyId,
+    this.name,
+    this.packageRepositories,
+    this.packages,
+    this.project,
+    this.recipes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class GuestPolicyArgs {
 
   factory GuestPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GuestPolicyArgs(
-      assignment: pulumi.Output.create<Assignment>(Assignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      guestPolicyId: pulumi.Output.create<String>(map['guestPolicyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      packageRepositories: map['packageRepositories'] == null ? null : pulumi.Output.create<List<PackageRepository>>(pulumi.Input.decodeList<PackageRepository>(map['packageRepositories'], (value) => PackageRepository.fromMap((value as Map).cast<String, dynamic>()))),
-      packages: map['packages'] == null ? null : pulumi.Output.create<List<Package>>(pulumi.Input.decodeList<Package>(map['packages'], (value) => Package.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recipes: map['recipes'] == null ? null : pulumi.Output.create<List<SoftwareRecipe>>(pulumi.Input.decodeList<SoftwareRecipe>(map['recipes'], (value) => SoftwareRecipe.fromMap((value as Map).cast<String, dynamic>()))),
+      assignment: (Assignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      guestPolicyId: (map['guestPolicyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packageRepositories: map['packageRepositories'] == null ? null : (pulumi.Input.decodeList<PackageRepository>(map['packageRepositories'], (value) => PackageRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packages: map['packages'] == null ? null : (pulumi.Input.decodeList<Package>(map['packages'], (value) => Package.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipe>(map['recipes'], (value) => SoftwareRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class LicenseGrantAccepterArgs {
   /// [grantArn] The ARN of the grant to accept.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LicenseGrantAccepterArgs({
-    required pulumi.Output<String> grantArn,
-    pulumi.Output<String>? region,
-  }) :
-      grantArn = pulumi.Input.asInput<String>(grantArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.grantArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class LicenseGrantAccepterArgs {
 
   factory LicenseGrantAccepterArgs.fromMap(Map<String, dynamic> map) {
     return LicenseGrantAccepterArgs(
-      grantArn: pulumi.Output.create<String>(map['grantArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      grantArn: (map['grantArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

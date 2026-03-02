@@ -16,13 +16,10 @@ class TrialArgs {
   /// [project] Optional.
   /// [studyId] Required.
   TrialArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> studyId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      studyId = pulumi.Input.asInput<String>(studyId);
+    this.location,
+    this.project,
+    required this.studyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class TrialArgs {
 
   factory TrialArgs.fromMap(Map<String, dynamic> map) {
     return TrialArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      studyId: pulumi.Output.create<String>(map['studyId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      studyId: (map['studyId'] as String).input(),
     );
   }
 }

@@ -5,15 +5,15 @@ import 'get_load_balancer_glb_setting_cdn.dart';
 
 class GetLoadBalancerGlbSetting {
   /// CDN specific configurations
-  final List<GetLoadBalancerGlbSettingCdn> cdns;
+  final pulumi.Input<List<GetLoadBalancerGlbSettingCdn>> cdns;
   /// fail-over threshold
-  final int failoverThreshold;
+  final pulumi.Input<int> failoverThreshold;
   /// region priority map
-  final Map<String, int> regionPriorities;
+  final pulumi.Input<Map<String, int>> regionPriorities;
   /// target port rules
-  final int targetPort;
+  final pulumi.Input<int> targetPort;
   /// target protocol rules
-  final String targetProtocol;
+  final pulumi.Input<String> targetProtocol;
 
   /// Creates a new [GetLoadBalancerGlbSetting].
   /// [cdns] CDN specific configurations
@@ -31,7 +31,7 @@ class GetLoadBalancerGlbSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cdns': pulumi.Input.encodeList<GetLoadBalancerGlbSettingCdn, Map<String, dynamic>>(cdns, (value) => value.toMap()),
+      'cdns': pulumi.Input.mapInputValue<List<GetLoadBalancerGlbSettingCdn>, List<Map<String, dynamic>>>(cdns, (value) => pulumi.Input.encodeList<GetLoadBalancerGlbSettingCdn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'failoverThreshold': failoverThreshold,
       'regionPriorities': regionPriorities,
       'targetPort': targetPort,
@@ -41,11 +41,11 @@ class GetLoadBalancerGlbSetting {
 
   factory GetLoadBalancerGlbSetting.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerGlbSetting(
-      cdns: pulumi.Input.decodeList<GetLoadBalancerGlbSettingCdn>(map['cdns'], (value) => GetLoadBalancerGlbSettingCdn.fromMap((value as Map).cast<String, dynamic>())),
-      failoverThreshold: map['failoverThreshold'] as int,
-      regionPriorities: (map['regionPriorities'] as Map).cast<String, int>(),
-      targetPort: map['targetPort'] as int,
-      targetProtocol: map['targetProtocol'] as String,
+      cdns: (pulumi.Input.decodeList<GetLoadBalancerGlbSettingCdn>(map['cdns'], (value) => GetLoadBalancerGlbSettingCdn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failoverThreshold: (map['failoverThreshold'] as int).input(),
+      regionPriorities: ((map['regionPriorities'] as Map).cast<String, int>()).input(),
+      targetPort: (map['targetPort'] as int).input(),
+      targetProtocol: (map['targetProtocol'] as String).input(),
     );
   }
 }

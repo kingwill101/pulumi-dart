@@ -16,13 +16,10 @@ class TopicState {
   /// [maximumMessageSize] This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
   /// [name] Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
   TopicState({
-    pulumi.Output<bool>? loggingEnabled,
-    pulumi.Output<int>? maximumMessageSize,
-    pulumi.Output<String>? name,
-  }) :
-      loggingEnabled = pulumi.Input.asOptionalInput<bool>(loggingEnabled),
-      maximumMessageSize = pulumi.Input.asOptionalInput<int>(maximumMessageSize),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.loggingEnabled,
+    this.maximumMessageSize,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      loggingEnabled: map['loggingEnabled'] == null ? null : pulumi.Output.create<bool>(map['loggingEnabled'] as bool),
-      maximumMessageSize: map['maximumMessageSize'] == null ? null : pulumi.Output.create<int>(map['maximumMessageSize'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled'] as bool).input(),
+      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

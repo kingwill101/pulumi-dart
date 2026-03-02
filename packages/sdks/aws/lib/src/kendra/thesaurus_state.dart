@@ -38,29 +38,18 @@ class ThesaurusState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [thesaurusId] Optional.
   ThesaurusState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? indexId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<ThesaurusSourceS3Path>? sourceS3Path,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? thesaurusId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexId = pulumi.Input.asOptionalInput<String>(indexId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      sourceS3Path = pulumi.Input.asOptionalInput<ThesaurusSourceS3Path>(sourceS3Path),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      thesaurusId = pulumi.Input.asOptionalInput<String>(thesaurusId);
+    this.arn,
+    this.description,
+    this.indexId,
+    this.name,
+    this.region,
+    this.roleArn,
+    this.sourceS3Path,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.thesaurusId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,17 +69,17 @@ class ThesaurusState {
 
   factory ThesaurusState.fromMap(Map<String, dynamic> map) {
     return ThesaurusState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexId: map['indexId'] == null ? null : pulumi.Output.create<String>(map['indexId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      sourceS3Path: map['sourceS3Path'] == null ? null : pulumi.Output.create<ThesaurusSourceS3Path>(ThesaurusSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      thesaurusId: map['thesaurusId'] == null ? null : pulumi.Output.create<String>(map['thesaurusId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexId: map['indexId'] == null ? null : (map['indexId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      sourceS3Path: map['sourceS3Path'] == null ? null : (ThesaurusSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      thesaurusId: map['thesaurusId'] == null ? null : (map['thesaurusId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadResource {
   /// Resource identifier. For a project this represents project_number.
-  final int? resourceId;
+  final pulumi.Input<int>? resourceId;
   /// Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
 
   /// Creates a new [WorkloadResource].
   /// [resourceId] Resource identifier. For a project this represents project_number.
@@ -24,8 +25,8 @@ class WorkloadResource {
 
   factory WorkloadResource.fromMap(Map<String, dynamic> map) {
     return WorkloadResource(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as int,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as int).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

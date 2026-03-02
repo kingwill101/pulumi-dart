@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Target scaling by network usage. Only applicable in the App Engine flexible environment.
 class NetworkUtilizationResponse {
   /// Target bytes received per second.
-  final int targetReceivedBytesPerSecond;
+  final pulumi.Input<int> targetReceivedBytesPerSecond;
   /// Target packets received per second.
-  final int targetReceivedPacketsPerSecond;
+  final pulumi.Input<int> targetReceivedPacketsPerSecond;
   /// Target bytes sent per second.
-  final int targetSentBytesPerSecond;
+  final pulumi.Input<int> targetSentBytesPerSecond;
   /// Target packets sent per second.
-  final int targetSentPacketsPerSecond;
+  final pulumi.Input<int> targetSentPacketsPerSecond;
 
   /// Creates a new [NetworkUtilizationResponse].
   /// [targetReceivedBytesPerSecond] Target bytes received per second.
@@ -35,10 +36,10 @@ class NetworkUtilizationResponse {
 
   factory NetworkUtilizationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkUtilizationResponse(
-      targetReceivedBytesPerSecond: map['targetReceivedBytesPerSecond'] as int,
-      targetReceivedPacketsPerSecond: map['targetReceivedPacketsPerSecond'] as int,
-      targetSentBytesPerSecond: map['targetSentBytesPerSecond'] as int,
-      targetSentPacketsPerSecond: map['targetSentPacketsPerSecond'] as int,
+      targetReceivedBytesPerSecond: (map['targetReceivedBytesPerSecond'] as int).input(),
+      targetReceivedPacketsPerSecond: (map['targetReceivedPacketsPerSecond'] as int).input(),
+      targetSentBytesPerSecond: (map['targetSentBytesPerSecond'] as int).input(),
+      targetSentPacketsPerSecond: (map['targetSentPacketsPerSecond'] as int).input(),
     );
   }
 }

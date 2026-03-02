@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NamedResourcesStringSlice contains a slice of strings.
 class NamedResourcesStringSlice {
   /// Strings is the slice of strings.
-  final List<String> strings;
+  final pulumi.Input<List<String>> strings;
 
   /// Creates a new [NamedResourcesStringSlice].
   /// [strings] Strings is the slice of strings.
@@ -20,7 +21,7 @@ class NamedResourcesStringSlice {
 
   factory NamedResourcesStringSlice.fromMap(Map<String, dynamic> map) {
     return NamedResourcesStringSlice(
-      strings: (map['strings'] as List).cast<String>(),
+      strings: ((map['strings'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetActivationsActivation {
   /// The ID of the activation code.
-  final String activationId;
+  final pulumi.Input<String> activationId;
   /// The time when the activation code was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The number of instances that have been logged out.
-  final int deregisteredCount;
+  final pulumi.Input<int> deregisteredCount;
   /// Description of the corresponding activation code.
-  final String description;
+  final pulumi.Input<String> description;
   /// Indicates whether the activation code is disabled.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
   /// The ID of the Activation.
-  final String id;
+  final pulumi.Input<String> id;
   /// The maximum number of times the activation code is used to register a managed instance.
-  final int instanceCount;
+  final pulumi.Input<int> instanceCount;
   /// The default prefix of the instance name.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The IP address of the host that allows the activation code to be used.
-  final String ipAddressRange;
+  final pulumi.Input<String> ipAddressRange;
   /// The number of instances that were registered.
-  final int registeredCount;
+  final pulumi.Input<int> registeredCount;
   /// The validity period of the activation code. Unit: hours.
-  final int timeToLiveInHours;
+  final pulumi.Input<int> timeToLiveInHours;
 
   /// Creates a new [GetActivationsActivation].
   /// [activationId] The ID of the activation code.
@@ -69,17 +70,17 @@ class GetActivationsActivation {
 
   factory GetActivationsActivation.fromMap(Map<String, dynamic> map) {
     return GetActivationsActivation(
-      activationId: map['activationId'] as String,
-      createTime: map['createTime'] as String,
-      deregisteredCount: map['deregisteredCount'] as int,
-      description: map['description'] as String,
-      disabled: map['disabled'] as bool,
-      id: map['id'] as String,
-      instanceCount: map['instanceCount'] as int,
-      instanceName: map['instanceName'] as String,
-      ipAddressRange: map['ipAddressRange'] as String,
-      registeredCount: map['registeredCount'] as int,
-      timeToLiveInHours: map['timeToLiveInHours'] as int,
+      activationId: (map['activationId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      deregisteredCount: (map['deregisteredCount'] as int).input(),
+      description: (map['description'] as String).input(),
+      disabled: (map['disabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instanceCount: (map['instanceCount'] as int).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      ipAddressRange: (map['ipAddressRange'] as String).input(),
+      registeredCount: (map['registeredCount'] as int).input(),
+      timeToLiveInHours: (map['timeToLiveInHours'] as int).input(),
     );
   }
 }

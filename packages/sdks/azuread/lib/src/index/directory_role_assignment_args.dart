@@ -22,15 +22,11 @@ class DirectoryRoleAssignmentArgs {
   /// [principalObjectId] The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   /// [roleId] The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
   DirectoryRoleAssignmentArgs({
-    pulumi.Output<String>? appScopeId,
-    pulumi.Output<String>? directoryScopeId,
-    required pulumi.Output<String> principalObjectId,
-    required pulumi.Output<String> roleId,
-  }) :
-      appScopeId = pulumi.Input.asOptionalInput<String>(appScopeId),
-      directoryScopeId = pulumi.Input.asOptionalInput<String>(directoryScopeId),
-      principalObjectId = pulumi.Input.asInput<String>(principalObjectId),
-      roleId = pulumi.Input.asInput<String>(roleId);
+    this.appScopeId,
+    this.directoryScopeId,
+    required this.principalObjectId,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DirectoryRoleAssignmentArgs {
 
   factory DirectoryRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleAssignmentArgs(
-      appScopeId: map['appScopeId'] == null ? null : pulumi.Output.create<String>(map['appScopeId'] as String),
-      directoryScopeId: map['directoryScopeId'] == null ? null : pulumi.Output.create<String>(map['directoryScopeId'] as String),
-      principalObjectId: pulumi.Output.create<String>(map['principalObjectId'] as String),
-      roleId: pulumi.Output.create<String>(map['roleId'] as String),
+      appScopeId: map['appScopeId'] == null ? null : (map['appScopeId'] as String).input(),
+      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId'] as String).input(),
+      principalObjectId: (map['principalObjectId'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
     );
   }
 }

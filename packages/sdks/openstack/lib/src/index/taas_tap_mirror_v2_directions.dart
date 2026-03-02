@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaasTapMirrorV2Directions {
   /// Declares ingress traffic to the port will be mirrored. The value
   /// is the identifier of the ERSPAN or GRE session between the source and destination,
   /// this must be unique within the project.
-  final int? in_;
+  final pulumi.Input<int>? in_;
   /// Declares egress traffic will be mirrored. The value is the
   /// identifier of the ERSPAN or GRE session between the source and destination,
   /// this must be unique within the project.
-  final int? out;
+  final pulumi.Input<int>? out;
 
   /// Creates a new [TaasTapMirrorV2Directions].
   /// [in_] Declares ingress traffic to the port will be mirrored. The value
@@ -28,8 +29,8 @@ class TaasTapMirrorV2Directions {
 
   factory TaasTapMirrorV2Directions.fromMap(Map<String, dynamic> map) {
     return TaasTapMirrorV2Directions(
-      in_: map['in'] == null ? null : map['in'] as int,
-      out: map['out'] == null ? null : map['out'] as int,
+      in_: map['in'] == null ? null : (map['in'] as int).input(),
+      out: map['out'] == null ? null : (map['out'] as int).input(),
     );
   }
 }

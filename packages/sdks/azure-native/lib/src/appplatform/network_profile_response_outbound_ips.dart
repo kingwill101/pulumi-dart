@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Desired outbound IP resources for Azure Spring Apps resource.
 class NetworkProfileResponseOutboundIPs {
   /// A list of public IP addresses.
-  final List<String> publicIPs;
+  final pulumi.Input<List<String>> publicIPs;
 
   /// Creates a new [NetworkProfileResponseOutboundIPs].
   /// [publicIPs] A list of public IP addresses.
@@ -20,7 +21,7 @@ class NetworkProfileResponseOutboundIPs {
 
   factory NetworkProfileResponseOutboundIPs.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponseOutboundIPs(
-      publicIPs: (map['publicIPs'] as List).cast<String>(),
+      publicIPs: ((map['publicIPs'] as List).cast<String>()).input(),
     );
   }
 }

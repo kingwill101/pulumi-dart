@@ -10,9 +10,8 @@ class PhysicalReplicationSlotState {
   /// Creates a new [PhysicalReplicationSlotState].
   /// [name] The name of the replication slot.
   PhysicalReplicationSlotState({
-    pulumi.Output<String>? name,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class PhysicalReplicationSlotState {
 
   factory PhysicalReplicationSlotState.fromMap(Map<String, dynamic> map) {
     return PhysicalReplicationSlotState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

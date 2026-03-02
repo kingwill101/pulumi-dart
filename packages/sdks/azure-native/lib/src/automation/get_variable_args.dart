@@ -19,13 +19,10 @@ class GetVariableArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [variableName] The name of variable.
   GetVariableArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> variableName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      variableName = pulumi.Input.asInput<String>(variableName);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+    required this.variableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVariableArgs {
 
   factory GetVariableArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      variableName: pulumi.Output.create<String>(map['variableName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      variableName: (map['variableName'] as String).input(),
     );
   }
 }

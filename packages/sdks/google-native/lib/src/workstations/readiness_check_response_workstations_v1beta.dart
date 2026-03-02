@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A readiness check to be performed on a workstation.
 class ReadinessCheckResponseWorkstationsV1beta {
   /// Optional. Path to which the request should be sent.
-  final String path;
+  final pulumi.Input<String> path;
   /// Optional. Port to which the request should be sent.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [ReadinessCheckResponseWorkstationsV1beta].
   /// [path] Optional. Path to which the request should be sent.
@@ -25,8 +26,8 @@ class ReadinessCheckResponseWorkstationsV1beta {
 
   factory ReadinessCheckResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckResponseWorkstationsV1beta(
-      path: map['path'] as String,
-      port: map['port'] as int,
+      path: (map['path'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

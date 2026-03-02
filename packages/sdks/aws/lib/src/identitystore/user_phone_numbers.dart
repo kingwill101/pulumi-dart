@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPhoneNumbers {
   /// When `true`, this is the primary phone number associated with the user.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// The type of phone number.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The user's phone number.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [UserPhoneNumbers].
   /// [primary] When `true`, this is the primary phone number associated with the user.
@@ -29,9 +30,9 @@ class UserPhoneNumbers {
 
   factory UserPhoneNumbers.fromMap(Map<String, dynamic> map) {
     return UserPhoneNumbers(
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

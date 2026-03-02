@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouterRoutesV2Route {
   /// CIDR block to match on the packet’s
   /// destination IP.
-  final String destinationCidr;
+  final pulumi.Input<String> destinationCidr;
   /// IP address of the next hop gateway.
-  final String nextHop;
+  final pulumi.Input<String> nextHop;
 
   /// Creates a new [RouterRoutesV2Route].
   /// [destinationCidr] CIDR block to match on the packet’s
@@ -25,8 +26,8 @@ class RouterRoutesV2Route {
 
   factory RouterRoutesV2Route.fromMap(Map<String, dynamic> map) {
     return RouterRoutesV2Route(
-      destinationCidr: map['destinationCidr'] as String,
-      nextHop: map['nextHop'] as String,
+      destinationCidr: (map['destinationCidr'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsEfsMountTarget
 class AwsEfsMountTargetProperties {
   /// The ID of the file system for which to create the mount target.
-  final String? fileSystemId;
+  final pulumi.Input<String>? fileSystemId;
   /// Property id
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Valid IPv4 address within the address range of the specified subnet.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// Up to five VPC security group IDs, of the form ``sg-xxxxxxxx``. These must be for the same VPC as subnet specified.
-  final List<String>? securityGroups;
+  final pulumi.Input<List<String>>? securityGroups;
   /// The ID of the subnet to add the mount target in. For One Zone file systems, use the subnet that is associated with the file system's Availability Zone.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [AwsEfsMountTargetProperties].
   /// [fileSystemId] The ID of the file system for which to create the mount target.
@@ -40,11 +41,11 @@ class AwsEfsMountTargetProperties {
 
   factory AwsEfsMountTargetProperties.fromMap(Map<String, dynamic> map) {
     return AwsEfsMountTargetProperties(
-      fileSystemId: map['fileSystemId'] == null ? null : map['fileSystemId'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      securityGroups: map['securityGroups'] == null ? null : (map['securityGroups'] as List).cast<String>(),
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ListTopLevelDomainAgreementsArgs {
   /// [includePrivacy] If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>.
   /// [name] Name of the top-level domain.
   ListTopLevelDomainAgreementsArgs({
-    pulumi.Output<bool>? forTransfer,
-    pulumi.Output<bool>? includePrivacy,
-    required pulumi.Output<String> name,
-  }) :
-      forTransfer = pulumi.Input.asOptionalInput<bool>(forTransfer),
-      includePrivacy = pulumi.Input.asOptionalInput<bool>(includePrivacy),
-      name = pulumi.Input.asInput<String>(name);
+    this.forTransfer,
+    this.includePrivacy,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListTopLevelDomainAgreementsArgs {
 
   factory ListTopLevelDomainAgreementsArgs.fromMap(Map<String, dynamic> map) {
     return ListTopLevelDomainAgreementsArgs(
-      forTransfer: map['forTransfer'] == null ? null : pulumi.Output.create<bool>(map['forTransfer'] as bool),
-      includePrivacy: map['includePrivacy'] == null ? null : pulumi.Output.create<bool>(map['includePrivacy'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      forTransfer: map['forTransfer'] == null ? null : (map['forTransfer'] as bool).input(),
+      includePrivacy: map['includePrivacy'] == null ? null : (map['includePrivacy'] as bool).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

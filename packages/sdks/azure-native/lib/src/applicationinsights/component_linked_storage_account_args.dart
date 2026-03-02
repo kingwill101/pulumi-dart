@@ -22,15 +22,11 @@ class ComponentLinkedStorageAccountArgs {
   /// [resourceName] The name of the Application Insights component resource.
   /// [storageType] The type of the Application Insights component data source for the linked storage account.
   ComponentLinkedStorageAccountArgs({
-    pulumi.Output<String>? linkedStorageAccount,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? storageType,
-  }) :
-      linkedStorageAccount = pulumi.Input.asOptionalInput<String>(linkedStorageAccount),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      storageType = pulumi.Input.asOptionalInput<String>(storageType);
+    this.linkedStorageAccount,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.storageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ComponentLinkedStorageAccountArgs {
 
   factory ComponentLinkedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return ComponentLinkedStorageAccountArgs(
-      linkedStorageAccount: map['linkedStorageAccount'] == null ? null : pulumi.Output.create<String>(map['linkedStorageAccount'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      storageType: map['storageType'] == null ? null : pulumi.Output.create<String>(map['storageType'] as String),
+      linkedStorageAccount: map['linkedStorageAccount'] == null ? null : (map['linkedStorageAccount'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
     );
   }
 }

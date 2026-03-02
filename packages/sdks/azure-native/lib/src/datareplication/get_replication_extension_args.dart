@@ -19,13 +19,10 @@ class GetReplicationExtensionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
   GetReplicationExtensionArgs({
-    required pulumi.Output<String> replicationExtensionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      replicationExtensionName = pulumi.Input.asInput<String>(replicationExtensionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.replicationExtensionName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetReplicationExtensionArgs {
 
   factory GetReplicationExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationExtensionArgs(
-      replicationExtensionName: pulumi.Output.create<String>(map['replicationExtensionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      replicationExtensionName: (map['replicationExtensionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

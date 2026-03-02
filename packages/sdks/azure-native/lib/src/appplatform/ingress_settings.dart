@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingress_settings_client_auth.dart';
 
 /// App ingress settings payload.
 class IngressSettings {
   /// How ingress should communicate with this app backend service.
-  final String? backendProtocol;
+  final pulumi.Input<String>? backendProtocol;
   /// Client-Certification Authentication.
-  final IngressSettingsClientAuth? clientAuth;
+  final pulumi.Input<IngressSettingsClientAuth>? clientAuth;
   /// Ingress read time out in seconds.
-  final int? readTimeoutInSeconds;
+  final pulumi.Input<int>? readTimeoutInSeconds;
   /// Ingress send time out in seconds.
-  final int? sendTimeoutInSeconds;
+  final pulumi.Input<int>? sendTimeoutInSeconds;
   /// Type of the affinity, set this to Cookie to enable session affinity.
-  final String? sessionAffinity;
+  final pulumi.Input<String>? sessionAffinity;
   /// Time in seconds until the cookie expires.
-  final int? sessionCookieMaxAge;
+  final pulumi.Input<int>? sessionCookieMaxAge;
 
   /// Creates a new [IngressSettings].
   /// [backendProtocol] How ingress should communicate with this app backend service.
@@ -36,7 +37,7 @@ class IngressSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backendProtocol': ?backendProtocol,
-      'clientAuth': ?clientAuth == null ? null : clientAuth!.toMap(),
+      'clientAuth': ?pulumi.Input.mapOptionalInputValue<IngressSettingsClientAuth, Map<String, dynamic>>(clientAuth, (value) => value.toMap()),
       'readTimeoutInSeconds': ?readTimeoutInSeconds,
       'sendTimeoutInSeconds': ?sendTimeoutInSeconds,
       'sessionAffinity': ?sessionAffinity,
@@ -46,12 +47,12 @@ class IngressSettings {
 
   factory IngressSettings.fromMap(Map<String, dynamic> map) {
     return IngressSettings(
-      backendProtocol: map['backendProtocol'] == null ? null : map['backendProtocol'] as String,
-      clientAuth: map['clientAuth'] == null ? null : IngressSettingsClientAuth.fromMap((map['clientAuth'] as Map).cast<String, dynamic>()),
-      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : map['readTimeoutInSeconds'] as int,
-      sendTimeoutInSeconds: map['sendTimeoutInSeconds'] == null ? null : map['sendTimeoutInSeconds'] as int,
-      sessionAffinity: map['sessionAffinity'] == null ? null : map['sessionAffinity'] as String,
-      sessionCookieMaxAge: map['sessionCookieMaxAge'] == null ? null : map['sessionCookieMaxAge'] as int,
+      backendProtocol: map['backendProtocol'] == null ? null : (map['backendProtocol'] as String).input(),
+      clientAuth: map['clientAuth'] == null ? null : (IngressSettingsClientAuth.fromMap((map['clientAuth'] as Map).cast<String, dynamic>())).input(),
+      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : (map['readTimeoutInSeconds'] as int).input(),
+      sendTimeoutInSeconds: map['sendTimeoutInSeconds'] == null ? null : (map['sendTimeoutInSeconds'] as int).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as String).input(),
+      sessionCookieMaxAge: map['sessionCookieMaxAge'] == null ? null : (map['sessionCookieMaxAge'] as int).input(),
     );
   }
 }

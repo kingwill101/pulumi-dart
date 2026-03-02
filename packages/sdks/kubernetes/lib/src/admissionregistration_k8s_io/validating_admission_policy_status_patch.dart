@@ -7,11 +7,11 @@ import 'type_checking_patch.dart';
 /// ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.
 class ValidatingAdmissionPolicyStatusPatch {
   /// The conditions represent the latest available observations of a policy's current state.
-  final List<ConditionPatch>? conditions;
+  final pulumi.Input<List<ConditionPatch>>? conditions;
   /// The generation observed by the controller.
-  final int? observedGeneration;
+  final pulumi.Input<int>? observedGeneration;
   /// The results of type checking for each expression. Presence of this field indicates the completion of the type checking.
-  final TypeCheckingPatch? typeChecking;
+  final pulumi.Input<TypeCheckingPatch>? typeChecking;
 
   /// Creates a new [ValidatingAdmissionPolicyStatusPatch].
   /// [conditions] The conditions represent the latest available observations of a policy's current state.
@@ -25,17 +25,17 @@ class ValidatingAdmissionPolicyStatusPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionPatch>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'observedGeneration': ?observedGeneration,
-      'typeChecking': ?typeChecking == null ? null : typeChecking!.toMap(),
+      'typeChecking': ?pulumi.Input.mapOptionalInputValue<TypeCheckingPatch, Map<String, dynamic>>(typeChecking, (value) => value.toMap()),
     };
   }
 
   factory ValidatingAdmissionPolicyStatusPatch.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyStatusPatch(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>())),
-      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as int,
-      typeChecking: map['typeChecking'] == null ? null : TypeCheckingPatch.fromMap((map['typeChecking'] as Map).cast<String, dynamic>()),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      typeChecking: map['typeChecking'] == null ? null : (TypeCheckingPatch.fromMap((map['typeChecking'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

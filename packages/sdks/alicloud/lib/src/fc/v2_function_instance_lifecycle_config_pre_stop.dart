@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2FunctionInstanceLifecycleConfigPreStop {
   /// entry point of function.
-  final String? handler;
+  final pulumi.Input<String>? handler;
   /// max running time of function.
-  final int? timeout;
+  final pulumi.Input<int>? timeout;
 
   /// Creates a new [V2FunctionInstanceLifecycleConfigPreStop].
   /// [handler] entry point of function.
@@ -24,8 +25,8 @@ class V2FunctionInstanceLifecycleConfigPreStop {
 
   factory V2FunctionInstanceLifecycleConfigPreStop.fromMap(Map<String, dynamic> map) {
     return V2FunctionInstanceLifecycleConfigPreStop(
-      handler: map['handler'] == null ? null : map['handler'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as int,
+      handler: map['handler'] == null ? null : (map['handler'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

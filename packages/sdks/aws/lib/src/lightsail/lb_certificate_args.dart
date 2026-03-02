@@ -27,17 +27,12 @@ class LbCertificateArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subjectAlternativeNames] Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
   LbCertificateArgs({
-    pulumi.Output<String>? domainName,
-    required pulumi.Output<String> lbName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? subjectAlternativeNames,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      lbName = pulumi.Input.asInput<String>(lbName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subjectAlternativeNames = pulumi.Input.asOptionalInput<List<String>>(subjectAlternativeNames);
+    this.domainName,
+    required this.lbName,
+    this.name,
+    this.region,
+    this.subjectAlternativeNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class LbCertificateArgs {
 
   factory LbCertificateArgs.fromMap(Map<String, dynamic> map) {
     return LbCertificateArgs(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      lbName: pulumi.Output.create<String>(map['lbName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : pulumi.Output.create<List<String>>((map['subjectAlternativeNames'] as List).cast<String>()),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      lbName: (map['lbName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
     );
   }
 }

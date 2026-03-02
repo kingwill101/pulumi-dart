@@ -32,21 +32,14 @@ class VpcSubnetState {
   /// [updated] The date and time when the VPC was last updated.
   /// [vpcId] The id of the parent VPC for this VPC subnet.
   VpcSubnetState({
-    pulumi.Output<String>? created,
-    pulumi.Output<String>? ipv4,
-    pulumi.Output<List<VpcSubnetIpv6>>? ipv6s,
-    pulumi.Output<String>? label,
-    pulumi.Output<List<VpcSubnetLinode>>? linodes,
-    pulumi.Output<String>? updated,
-    pulumi.Output<int>? vpcId,
-  }) :
-      created = pulumi.Input.asOptionalInput<String>(created),
-      ipv4 = pulumi.Input.asOptionalInput<String>(ipv4),
-      ipv6s = pulumi.Input.asOptionalInput<List<VpcSubnetIpv6>>(ipv6s),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      linodes = pulumi.Input.asOptionalInput<List<VpcSubnetLinode>>(linodes),
-      updated = pulumi.Input.asOptionalInput<String>(updated),
-      vpcId = pulumi.Input.asOptionalInput<int>(vpcId);
+    this.created,
+    this.ipv4,
+    this.ipv6s,
+    this.label,
+    this.linodes,
+    this.updated,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VpcSubnetState {
 
   factory VpcSubnetState.fromMap(Map<String, dynamic> map) {
     return VpcSubnetState(
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      ipv4: map['ipv4'] == null ? null : pulumi.Output.create<String>(map['ipv4'] as String),
-      ipv6s: map['ipv6s'] == null ? null : pulumi.Output.create<List<VpcSubnetIpv6>>(pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s'], (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      linodes: map['linodes'] == null ? null : pulumi.Output.create<List<VpcSubnetLinode>>(pulumi.Input.decodeList<VpcSubnetLinode>(map['linodes'], (value) => VpcSubnetLinode.fromMap((value as Map).cast<String, dynamic>()))),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<int>(map['vpcId'] as int),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
+      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s'], (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      linodes: map['linodes'] == null ? null : (pulumi.Input.decodeList<VpcSubnetLinode>(map['linodes'], (value) => VpcSubnetLinode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as int).input(),
     );
   }
 }

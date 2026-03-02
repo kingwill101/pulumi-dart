@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerScheduleScheduleMonthly {
   /// The occurrence of the specified day during the month. For example, a `monthly` property with `weekday` and `week` values of `Sunday, -1` means the last Sunday of the month.
-  final int? week;
+  final pulumi.Input<int>? week;
   /// The day of the week on which the trigger runs. For example, a `monthly` property with a `weekday` value of `Sunday` means every Sunday of the month.
-  final String weekday;
+  final pulumi.Input<String> weekday;
 
   /// Creates a new [TriggerScheduleScheduleMonthly].
   /// [week] The occurrence of the specified day during the month. For example, a `monthly` property with `weekday` and `week` values of `Sunday, -1` means the last Sunday of the month.
@@ -24,8 +25,8 @@ class TriggerScheduleScheduleMonthly {
 
   factory TriggerScheduleScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return TriggerScheduleScheduleMonthly(
-      week: map['week'] == null ? null : map['week'] as int,
-      weekday: map['weekday'] as String,
+      week: map['week'] == null ? null : (map['week'] as int).input(),
+      weekday: (map['weekday'] as String).input(),
     );
   }
 }

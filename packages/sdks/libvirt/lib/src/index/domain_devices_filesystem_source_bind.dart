@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemSourceBind {
   /// Sets the directory from which the filesystem is bound.
-  final String dir;
+  final pulumi.Input<String> dir;
 
   /// Creates a new [DomainDevicesFilesystemSourceBind].
   /// [dir] Sets the directory from which the filesystem is bound.
@@ -19,7 +20,7 @@ class DomainDevicesFilesystemSourceBind {
 
   factory DomainDevicesFilesystemSourceBind.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceBind(
-      dir: map['dir'] as String,
+      dir: (map['dir'] as String).input(),
     );
   }
 }

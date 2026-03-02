@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PolyBase settings.
 class PolybaseSettingsResponse {
   /// Determines the number of rows to attempt to retrieve before the PolyBase recalculates the percentage of rejected rows. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic rejectSampleValue;
+  final pulumi.Input<dynamic>? rejectSampleValue;
   /// Reject type.
-  final String? rejectType;
+  final pulumi.Input<String>? rejectType;
   /// Specifies the value or the percentage of rows that can be rejected before the query fails. Type: number (or Expression with resultType number), minimum: 0.
-  final dynamic rejectValue;
+  final pulumi.Input<dynamic>? rejectValue;
   /// Specifies how to handle missing values in delimited text files when PolyBase retrieves data from the text file. Type: boolean (or Expression with resultType boolean).
-  final dynamic useTypeDefault;
+  final pulumi.Input<dynamic>? useTypeDefault;
 
   /// Creates a new [PolybaseSettingsResponse].
   /// [rejectSampleValue] Determines the number of rows to attempt to retrieve before the PolyBase recalculates the percentage of rejected rows. Type: integer (or Expression with resultType integer), minimum: 0.
@@ -35,10 +36,10 @@ class PolybaseSettingsResponse {
 
   factory PolybaseSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PolybaseSettingsResponse(
-      rejectSampleValue: map['rejectSampleValue'] == null ? null : map['rejectSampleValue'],
-      rejectType: map['rejectType'] == null ? null : map['rejectType'] as String,
-      rejectValue: map['rejectValue'] == null ? null : map['rejectValue'],
-      useTypeDefault: map['useTypeDefault'] == null ? null : map['useTypeDefault'],
+      rejectSampleValue: map['rejectSampleValue'] == null ? null : (map['rejectSampleValue']).input(),
+      rejectType: map['rejectType'] == null ? null : (map['rejectType'] as String).input(),
+      rejectValue: map['rejectValue'] == null ? null : (map['rejectValue']).input(),
+      useTypeDefault: map['useTypeDefault'] == null ? null : (map['useTypeDefault']).input(),
     );
   }
 }

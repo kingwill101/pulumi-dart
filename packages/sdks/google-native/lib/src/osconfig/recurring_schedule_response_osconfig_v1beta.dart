@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monthly_schedule_response_osconfig_v1beta.dart';
 import 'time_of_day_response_osconfig_v1beta.dart';
 import 'time_zone_response_osconfig_v1beta.dart';
@@ -8,23 +9,23 @@ import 'weekly_schedule_response_osconfig_v1beta.dart';
 /// Sets the time for recurring patch deployments.
 class RecurringScheduleResponseOsconfigV1beta {
   /// Optional. The end time at which a recurring patch deployment schedule is no longer active.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The frequency unit of this recurring schedule.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// The time the last patch job ran successfully.
-  final String lastExecuteTime;
+  final pulumi.Input<String> lastExecuteTime;
   /// Schedule with monthly executions.
-  final MonthlyScheduleResponseOsconfigV1beta monthly;
+  final pulumi.Input<MonthlyScheduleResponseOsconfigV1beta> monthly;
   /// The time the next patch job is scheduled to run.
-  final String nextExecuteTime;
+  final pulumi.Input<String> nextExecuteTime;
   /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Time of the day to run a recurring deployment.
-  final TimeOfDayResponseOsconfigV1beta timeOfDay;
+  final pulumi.Input<TimeOfDayResponseOsconfigV1beta> timeOfDay;
   /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-  final TimeZoneResponseOsconfigV1beta timeZone;
+  final pulumi.Input<TimeZoneResponseOsconfigV1beta> timeZone;
   /// Schedule with weekly executions.
-  final WeeklyScheduleResponseOsconfigV1beta weekly;
+  final pulumi.Input<WeeklyScheduleResponseOsconfigV1beta> weekly;
 
   /// Creates a new [RecurringScheduleResponseOsconfigV1beta].
   /// [endTime] Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -53,26 +54,26 @@ class RecurringScheduleResponseOsconfigV1beta {
       'endTime': endTime,
       'frequency': frequency,
       'lastExecuteTime': lastExecuteTime,
-      'monthly': monthly.toMap(),
+      'monthly': pulumi.Input.mapInputValue<MonthlyScheduleResponseOsconfigV1beta, Map<String, dynamic>>(monthly, (value) => value.toMap()),
       'nextExecuteTime': nextExecuteTime,
       'startTime': startTime,
-      'timeOfDay': timeOfDay.toMap(),
-      'timeZone': timeZone.toMap(),
-      'weekly': weekly.toMap(),
+      'timeOfDay': pulumi.Input.mapInputValue<TimeOfDayResponseOsconfigV1beta, Map<String, dynamic>>(timeOfDay, (value) => value.toMap()),
+      'timeZone': pulumi.Input.mapInputValue<TimeZoneResponseOsconfigV1beta, Map<String, dynamic>>(timeZone, (value) => value.toMap()),
+      'weekly': pulumi.Input.mapInputValue<WeeklyScheduleResponseOsconfigV1beta, Map<String, dynamic>>(weekly, (value) => value.toMap()),
     };
   }
 
   factory RecurringScheduleResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return RecurringScheduleResponseOsconfigV1beta(
-      endTime: map['endTime'] as String,
-      frequency: map['frequency'] as String,
-      lastExecuteTime: map['lastExecuteTime'] as String,
-      monthly: MonthlyScheduleResponseOsconfigV1beta.fromMap((map['monthly'] as Map).cast<String, dynamic>()),
-      nextExecuteTime: map['nextExecuteTime'] as String,
-      startTime: map['startTime'] as String,
-      timeOfDay: TimeOfDayResponseOsconfigV1beta.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>()),
-      timeZone: TimeZoneResponseOsconfigV1beta.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
-      weekly: WeeklyScheduleResponseOsconfigV1beta.fromMap((map['weekly'] as Map).cast<String, dynamic>()),
+      endTime: (map['endTime'] as String).input(),
+      frequency: (map['frequency'] as String).input(),
+      lastExecuteTime: (map['lastExecuteTime'] as String).input(),
+      monthly: (MonthlyScheduleResponseOsconfigV1beta.fromMap((map['monthly'] as Map).cast<String, dynamic>())).input(),
+      nextExecuteTime: (map['nextExecuteTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      timeOfDay: (TimeOfDayResponseOsconfigV1beta.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>())).input(),
+      timeZone: (TimeZoneResponseOsconfigV1beta.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
+      weekly: (WeeklyScheduleResponseOsconfigV1beta.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GatewayCacheDiskArgs {
   /// [gatewayId] The ID of the gateway.
   /// [performanceLevel] The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
   GatewayCacheDiskArgs({
-    pulumi.Output<String>? cacheDiskCategory,
-    required pulumi.Output<int> cacheDiskSizeInGb,
-    required pulumi.Output<String> gatewayId,
-    pulumi.Output<String>? performanceLevel,
-  }) :
-      cacheDiskCategory = pulumi.Input.asOptionalInput<String>(cacheDiskCategory),
-      cacheDiskSizeInGb = pulumi.Input.asInput<int>(cacheDiskSizeInGb),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      performanceLevel = pulumi.Input.asOptionalInput<String>(performanceLevel);
+    this.cacheDiskCategory,
+    required this.cacheDiskSizeInGb,
+    required this.gatewayId,
+    this.performanceLevel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GatewayCacheDiskArgs {
 
   factory GatewayCacheDiskArgs.fromMap(Map<String, dynamic> map) {
     return GatewayCacheDiskArgs(
-      cacheDiskCategory: map['cacheDiskCategory'] == null ? null : pulumi.Output.create<String>(map['cacheDiskCategory'] as String),
-      cacheDiskSizeInGb: pulumi.Output.create<int>(map['cacheDiskSizeInGb'] as int),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      performanceLevel: map['performanceLevel'] == null ? null : pulumi.Output.create<String>(map['performanceLevel'] as String),
+      cacheDiskCategory: map['cacheDiskCategory'] == null ? null : (map['cacheDiskCategory'] as String).input(),
+      cacheDiskSizeInGb: (map['cacheDiskSizeInGb'] as int).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
     );
   }
 }

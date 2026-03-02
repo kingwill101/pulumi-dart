@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
 class VirtualNetworkEncryptionResponse {
   /// Indicates if encryption is enabled on the virtual network.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
-  final String? enforcement;
+  final pulumi.Input<String>? enforcement;
 
   /// Creates a new [VirtualNetworkEncryptionResponse].
   /// [enabled] Indicates if encryption is enabled on the virtual network.
@@ -25,8 +26,8 @@ class VirtualNetworkEncryptionResponse {
 
   factory VirtualNetworkEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkEncryptionResponse(
-      enabled: map['enabled'] as bool,
-      enforcement: map['enforcement'] == null ? null : map['enforcement'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      enforcement: map['enforcement'] == null ? null : (map['enforcement'] as String).input(),
     );
   }
 }

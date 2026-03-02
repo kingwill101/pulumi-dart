@@ -31,23 +31,15 @@ class NamespaceGkehubV1betaArgs {
   /// [scopeId] Required.
   /// [scopeNamespaceId] Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
   NamespaceGkehubV1betaArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? namespaceLabels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> scopeId,
-    required pulumi.Output<String> scopeNamespaceId,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceLabels = pulumi.Input.asOptionalInput<Map<String, String>>(namespaceLabels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scope = pulumi.Input.asInput<String>(scope),
-      scopeId = pulumi.Input.asInput<String>(scopeId),
-      scopeNamespaceId = pulumi.Input.asInput<String>(scopeNamespaceId);
+    this.labels,
+    this.location,
+    this.name,
+    this.namespaceLabels,
+    this.project,
+    required this.scope,
+    required this.scopeId,
+    required this.scopeNamespaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class NamespaceGkehubV1betaArgs {
 
   factory NamespaceGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceGkehubV1betaArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceLabels: map['namespaceLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['namespaceLabels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
-      scopeNamespaceId: pulumi.Output.create<String>(map['scopeNamespaceId'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      scopeNamespaceId: (map['scopeNamespaceId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Git source settings for a deployment.
 class DeploymentSettingsGitAuthBasicAuth {
   /// Password for git basic authentication.
-  final String password;
+  final pulumi.Input<String> password;
   /// User name for git basic authentication.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [DeploymentSettingsGitAuthBasicAuth].
   /// [password] Password for git basic authentication.
@@ -25,8 +26,8 @@ class DeploymentSettingsGitAuthBasicAuth {
 
   factory DeploymentSettingsGitAuthBasicAuth.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsGitAuthBasicAuth(
-      password: map['password'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

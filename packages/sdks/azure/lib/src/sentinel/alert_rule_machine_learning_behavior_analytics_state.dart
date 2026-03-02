@@ -19,15 +19,11 @@ class AlertRuleMachineLearningBehaviorAnalyticsState {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace this SentinelMachine Learning Behavior Analytics Alert Rule belongs to. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   /// [name] The name which should be used for this SentinelMachine Learning Behavior Analytics Alert Rule. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   AlertRuleMachineLearningBehaviorAnalyticsState({
-    pulumi.Output<String>? alertRuleTemplateGuid,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-  }) :
-      alertRuleTemplateGuid = pulumi.Input.asOptionalInput<String>(alertRuleTemplateGuid),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      logAnalyticsWorkspaceId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.alertRuleTemplateGuid,
+    this.enabled,
+    this.logAnalyticsWorkspaceId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AlertRuleMachineLearningBehaviorAnalyticsState {
 
   factory AlertRuleMachineLearningBehaviorAnalyticsState.fromMap(Map<String, dynamic> map) {
     return AlertRuleMachineLearningBehaviorAnalyticsState(
-      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : pulumi.Output.create<String>(map['alertRuleTemplateGuid'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

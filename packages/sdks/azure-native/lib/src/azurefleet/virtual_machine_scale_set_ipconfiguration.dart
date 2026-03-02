@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_scale_set_ipconfiguration_properties.dart';
 
 /// Describes a virtual machine scale set network profile's IP configuration.
 class VirtualMachineScaleSetIPConfiguration {
   /// The IP configuration name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Describes a virtual machine scale set network profile's IP configuration
   /// properties.
-  final VirtualMachineScaleSetIPConfigurationProperties? properties;
+  final pulumi.Input<VirtualMachineScaleSetIPConfigurationProperties>? properties;
 
   /// Creates a new [VirtualMachineScaleSetIPConfiguration].
   /// [name] The IP configuration name.
@@ -21,14 +22,14 @@ class VirtualMachineScaleSetIPConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': ?properties == null ? null : properties!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetIPConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineScaleSetIPConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetIPConfiguration(
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : VirtualMachineScaleSetIPConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (VirtualMachineScaleSetIPConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

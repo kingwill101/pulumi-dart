@@ -45,29 +45,18 @@ class GetApplicationGatewayBackendHealthOnDemandArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [timeout] The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
   GetApplicationGatewayBackendHealthOnDemandArgs({
-    required pulumi.Output<String> applicationGatewayName,
-    pulumi.Output<SubResource>? backendAddressPool,
-    pulumi.Output<SubResource>? backendHttpSettings,
-    pulumi.Output<String>? expand,
-    pulumi.Output<String>? host,
-    pulumi.Output<ApplicationGatewayProbeHealthResponseMatch>? match,
-    pulumi.Output<String>? path,
-    pulumi.Output<bool>? pickHostNameFromBackendHttpSettings,
-    pulumi.Output<String>? protocol,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? timeout,
-  }) :
-      applicationGatewayName = pulumi.Input.asInput<String>(applicationGatewayName),
-      backendAddressPool = pulumi.Input.asOptionalInput<SubResource>(backendAddressPool),
-      backendHttpSettings = pulumi.Input.asOptionalInput<SubResource>(backendHttpSettings),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      match = pulumi.Input.asOptionalInput<ApplicationGatewayProbeHealthResponseMatch>(match),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      pickHostNameFromBackendHttpSettings = pulumi.Input.asOptionalInput<bool>(pickHostNameFromBackendHttpSettings),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      timeout = pulumi.Input.asOptionalInput<int>(timeout);
+    required this.applicationGatewayName,
+    this.backendAddressPool,
+    this.backendHttpSettings,
+    this.expand,
+    this.host,
+    this.match,
+    this.path,
+    this.pickHostNameFromBackendHttpSettings,
+    this.protocol,
+    required this.resourceGroupName,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class GetApplicationGatewayBackendHealthOnDemandArgs {
 
   factory GetApplicationGatewayBackendHealthOnDemandArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayBackendHealthOnDemandArgs(
-      applicationGatewayName: pulumi.Output.create<String>(map['applicationGatewayName'] as String),
-      backendAddressPool: map['backendAddressPool'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())),
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      match: map['match'] == null ? null : pulumi.Output.create<ApplicationGatewayProbeHealthResponseMatch>(ApplicationGatewayProbeHealthResponseMatch.fromMap((map['match'] as Map).cast<String, dynamic>())),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] == null ? null : pulumi.Output.create<bool>(map['pickHostNameFromBackendHttpSettings'] as bool),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<int>(map['timeout'] as int),
+      applicationGatewayName: (map['applicationGatewayName'] as String).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      match: map['match'] == null ? null : (ApplicationGatewayProbeHealthResponseMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] == null ? null : (map['pickHostNameFromBackendHttpSettings'] as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

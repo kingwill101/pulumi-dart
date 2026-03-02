@@ -34,21 +34,14 @@ class LinkArgs {
   /// [tags] Key-value tags for the link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of the link.
   LinkArgs({
-    required pulumi.Output<LinkBandwidth> bandwidth,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> globalNetworkId,
-    pulumi.Output<String>? providerName,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      bandwidth = pulumi.Input.asInput<LinkBandwidth>(bandwidth),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.bandwidth,
+    this.description,
+    required this.globalNetworkId,
+    this.providerName,
+    required this.siteId,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class LinkArgs {
 
   factory LinkArgs.fromMap(Map<String, dynamic> map) {
     return LinkArgs(
-      bandwidth: pulumi.Output.create<LinkBandwidth>(LinkBandwidth.fromMap((map['bandwidth'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      bandwidth: (LinkBandwidth.fromMap((map['bandwidth'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

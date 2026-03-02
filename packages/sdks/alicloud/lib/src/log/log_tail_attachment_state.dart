@@ -16,13 +16,10 @@ class LogTailAttachmentState {
   /// [machineGroupName] The machine group name, which is unique in the same project.
   /// [project] The project name to the log store belongs.
   LogTailAttachmentState({
-    pulumi.Output<String>? logtailConfigName,
-    pulumi.Output<String>? machineGroupName,
-    pulumi.Output<String>? project,
-  }) :
-      logtailConfigName = pulumi.Input.asOptionalInput<String>(logtailConfigName),
-      machineGroupName = pulumi.Input.asOptionalInput<String>(machineGroupName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.logtailConfigName,
+    this.machineGroupName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class LogTailAttachmentState {
 
   factory LogTailAttachmentState.fromMap(Map<String, dynamic> map) {
     return LogTailAttachmentState(
-      logtailConfigName: map['logtailConfigName'] == null ? null : pulumi.Output.create<String>(map['logtailConfigName'] as String),
-      machineGroupName: map['machineGroupName'] == null ? null : pulumi.Output.create<String>(map['machineGroupName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName'] as String).input(),
+      machineGroupName: map['machineGroupName'] == null ? null : (map['machineGroupName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

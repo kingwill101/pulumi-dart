@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_hostdev_subsys_usb_source.dart';
 
 class DomainDevicesHostdevSubsysUsb {
   /// Specifies the source attributes for the USB subsystem device, detailing its origin.
-  final DomainDevicesHostdevSubsysUsbSource? source;
+  final pulumi.Input<DomainDevicesHostdevSubsysUsbSource>? source;
 
   /// Creates a new [DomainDevicesHostdevSubsysUsb].
   /// [source] Specifies the source attributes for the USB subsystem device, detailing its origin.
@@ -14,13 +15,13 @@ class DomainDevicesHostdevSubsysUsb {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'source': ?source == null ? null : source!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysUsbSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesHostdevSubsysUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysUsb(
-      source: map['source'] == null ? null : DomainDevicesHostdevSubsysUsbSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysUsbSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// volumeDevice describes a mapping of a raw block device within a container.
 class VolumeDevicePatch {
   /// devicePath is the path inside of the container that the device will be mapped to.
-  final String? devicePath;
+  final pulumi.Input<String>? devicePath;
   /// name must match the name of a persistentVolumeClaim in the pod
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [VolumeDevicePatch].
   /// [devicePath] devicePath is the path inside of the container that the device will be mapped to.
@@ -25,8 +26,8 @@ class VolumeDevicePatch {
 
   factory VolumeDevicePatch.fromMap(Map<String, dynamic> map) {
     return VolumeDevicePatch(
-      devicePath: map['devicePath'] == null ? null : map['devicePath'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      devicePath: map['devicePath'] == null ? null : (map['devicePath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

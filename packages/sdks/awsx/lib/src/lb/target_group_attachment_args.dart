@@ -31,19 +31,13 @@ class TargetGroupAttachmentArgs {
   /// [targetGroup] Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
   /// [targetGroupArn] ARN of the Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
   TargetGroupAttachmentArgs({
-    pulumi.Output<pulumi_aws_ec2.Instance>? instance,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<pulumi_aws_lambda.FunctionType>? lambda,
-    pulumi.Output<String>? lambdaArn,
-    pulumi.Output<pulumi_aws_lb.TargetGroup>? targetGroup,
-    pulumi.Output<String>? targetGroupArn,
-  }) :
-      instance = pulumi.Input.asOptionalInput<pulumi_aws_ec2.Instance>(instance),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      lambda = pulumi.Input.asOptionalInput<pulumi_aws_lambda.FunctionType>(lambda),
-      lambdaArn = pulumi.Input.asOptionalInput<String>(lambdaArn),
-      targetGroup = pulumi.Input.asOptionalInput<pulumi_aws_lb.TargetGroup>(targetGroup),
-      targetGroupArn = pulumi.Input.asOptionalInput<String>(targetGroupArn);
+    this.instance,
+    this.instanceId,
+    this.lambda,
+    this.lambdaArn,
+    this.targetGroup,
+    this.targetGroupArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class TargetGroupAttachmentArgs {
 
   factory TargetGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentArgs(
-      instance: map['instance'] == null ? null : pulumi.Output.create<pulumi_aws_ec2.Instance>(map['instance'] as pulumi_aws_ec2.Instance),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      lambda: map['lambda'] == null ? null : pulumi.Output.create<pulumi_aws_lambda.FunctionType>(map['lambda'] as pulumi_aws_lambda.FunctionType),
-      lambdaArn: map['lambdaArn'] == null ? null : pulumi.Output.create<String>(map['lambdaArn'] as String),
-      targetGroup: map['targetGroup'] == null ? null : pulumi.Output.create<pulumi_aws_lb.TargetGroup>(map['targetGroup'] as pulumi_aws_lb.TargetGroup),
-      targetGroupArn: map['targetGroupArn'] == null ? null : pulumi.Output.create<String>(map['targetGroupArn'] as String),
+      instance: map['instance'] == null ? null : (map['instance'] as pulumi_aws_ec2.Instance).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      lambda: map['lambda'] == null ? null : (map['lambda'] as pulumi_aws_lambda.FunctionType).input(),
+      lambdaArn: map['lambdaArn'] == null ? null : (map['lambdaArn'] as String).input(),
+      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup'] as pulumi_aws_lb.TargetGroup).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Creator resource properties
 class CreatorPropertiesResponse {
   /// The consumed storage unit size in bytes for the creator resource.
-  final int? consumedStorageUnitSizeInBytes;
+  final pulumi.Input<int>? consumedStorageUnitSizeInBytes;
   /// The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The storage units to be allocated. Integer values from 1 to 100, inclusive.
-  final int storageUnits;
+  final pulumi.Input<int> storageUnits;
   /// The total allocated storage unit size in bytes for the creator resource.
-  final int? totalStorageUnitSizeInBytes;
+  final pulumi.Input<int>? totalStorageUnitSizeInBytes;
 
   /// Creates a new [CreatorPropertiesResponse].
   /// [consumedStorageUnitSizeInBytes] The consumed storage unit size in bytes for the creator resource.
@@ -35,10 +36,10 @@ class CreatorPropertiesResponse {
 
   factory CreatorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CreatorPropertiesResponse(
-      consumedStorageUnitSizeInBytes: map['consumedStorageUnitSizeInBytes'] == null ? null : map['consumedStorageUnitSizeInBytes'] as int,
-      provisioningState: map['provisioningState'] as String,
-      storageUnits: map['storageUnits'] as int,
-      totalStorageUnitSizeInBytes: map['totalStorageUnitSizeInBytes'] == null ? null : map['totalStorageUnitSizeInBytes'] as int,
+      consumedStorageUnitSizeInBytes: map['consumedStorageUnitSizeInBytes'] == null ? null : (map['consumedStorageUnitSizeInBytes'] as int).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      storageUnits: (map['storageUnits'] as int).input(),
+      totalStorageUnitSizeInBytes: map['totalStorageUnitSizeInBytes'] == null ? null : (map['totalStorageUnitSizeInBytes'] as int).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The text response message.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse {
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-  final bool allowPlaybackInterruption;
+  final pulumi.Input<bool> allowPlaybackInterruption;
   /// A collection of text responses.
-  final List<String> text;
+  final pulumi.Input<List<String>> text;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse].
   /// [allowPlaybackInterruption] Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse {
 
   factory GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] as bool,
-      text: (map['text'] as List).cast<String>(),
+      allowPlaybackInterruption: (map['allowPlaybackInterruption'] as bool).input(),
+      text: ((map['text'] as List).cast<String>()).input(),
     );
   }
 }

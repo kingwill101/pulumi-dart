@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConditionalAccessPolicyConditionsLocations {
   /// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
-  final List<String>? excludedLocations;
+  final pulumi.Input<List<String>>? excludedLocations;
   /// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
-  final List<String> includedLocations;
+  final pulumi.Input<List<String>> includedLocations;
 
   /// Creates a new [ConditionalAccessPolicyConditionsLocations].
   /// [excludedLocations] A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
@@ -24,8 +25,8 @@ class ConditionalAccessPolicyConditionsLocations {
 
   factory ConditionalAccessPolicyConditionsLocations.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsLocations(
-      excludedLocations: map['excludedLocations'] == null ? null : (map['excludedLocations'] as List).cast<String>(),
-      includedLocations: (map['includedLocations'] as List).cast<String>(),
+      excludedLocations: map['excludedLocations'] == null ? null : ((map['excludedLocations'] as List).cast<String>()).input(),
+      includedLocations: ((map['includedLocations'] as List).cast<String>()).input(),
     );
   }
 }

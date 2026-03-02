@@ -32,23 +32,15 @@ class AccessGrantsLocationState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   AccessGrantsLocationState({
-    pulumi.Output<String>? accessGrantsLocationArn,
-    pulumi.Output<String>? accessGrantsLocationId,
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? iamRoleArn,
-    pulumi.Output<String>? locationScope,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accessGrantsLocationArn = pulumi.Input.asOptionalInput<String>(accessGrantsLocationArn),
-      accessGrantsLocationId = pulumi.Input.asOptionalInput<String>(accessGrantsLocationId),
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      iamRoleArn = pulumi.Input.asOptionalInput<String>(iamRoleArn),
-      locationScope = pulumi.Input.asOptionalInput<String>(locationScope),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accessGrantsLocationArn,
+    this.accessGrantsLocationId,
+    this.accountId,
+    this.iamRoleArn,
+    this.locationScope,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class AccessGrantsLocationState {
 
   factory AccessGrantsLocationState.fromMap(Map<String, dynamic> map) {
     return AccessGrantsLocationState(
-      accessGrantsLocationArn: map['accessGrantsLocationArn'] == null ? null : pulumi.Output.create<String>(map['accessGrantsLocationArn'] as String),
-      accessGrantsLocationId: map['accessGrantsLocationId'] == null ? null : pulumi.Output.create<String>(map['accessGrantsLocationId'] as String),
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      iamRoleArn: map['iamRoleArn'] == null ? null : pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      locationScope: map['locationScope'] == null ? null : pulumi.Output.create<String>(map['locationScope'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accessGrantsLocationArn: map['accessGrantsLocationArn'] == null ? null : (map['accessGrantsLocationArn'] as String).input(),
+      accessGrantsLocationId: map['accessGrantsLocationId'] == null ? null : (map['accessGrantsLocationId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
+      locationScope: map['locationScope'] == null ? null : (map['locationScope'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

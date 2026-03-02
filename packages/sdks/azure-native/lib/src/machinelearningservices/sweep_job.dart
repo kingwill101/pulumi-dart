@@ -16,50 +16,50 @@ import 'trial_component.dart';
 /// Sweep job definition.
 class SweepJob {
   /// ARM resource ID of the component resource.
-  final String? componentId;
+  final pulumi.Input<String>? componentId;
   /// ARM resource ID of the compute resource.
-  final String? computeId;
+  final pulumi.Input<String>? computeId;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Display name of job.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Early termination policies enable canceling poor-performing runs before they complete
-  final BanditPolicy? earlyTermination;
+  final pulumi.Input<BanditPolicy>? earlyTermination;
   /// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-  final String? experimentName;
+  final pulumi.Input<String>? experimentName;
   /// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
   /// Defaults to AmlToken if null.
-  final AmlToken? identity;
+  final pulumi.Input<AmlToken>? identity;
   /// Mapping of input data bindings used in the job.
-  final Map<String, CustomModelJobInput>? inputs;
+  final pulumi.Input<Map<String, CustomModelJobInput>>? inputs;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// Enum to determine the type of job.
   /// Expected value is 'Sweep'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// Sweep Job limit.
-  final SweepJobLimits? limits;
+  final pulumi.Input<SweepJobLimits>? limits;
   /// Notification setting for the job
-  final NotificationSetting? notificationSetting;
+  final pulumi.Input<NotificationSetting>? notificationSetting;
   /// [Required] Optimization objective.
-  final Objective objective;
+  final pulumi.Input<Objective> objective;
   /// Mapping of output data bindings used in the job.
-  final Map<String, CustomModelJobOutput>? outputs;
+  final pulumi.Input<Map<String, CustomModelJobOutput>>? outputs;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Queue settings for the job
-  final QueueSettings? queueSettings;
+  final pulumi.Input<QueueSettings>? queueSettings;
   /// [Required] The hyperparameter sampling algorithm
-  final BayesianSamplingAlgorithm samplingAlgorithm;
+  final pulumi.Input<BayesianSamplingAlgorithm> samplingAlgorithm;
   /// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
-  final dynamic searchSpace;
+  final pulumi.Input<dynamic> searchSpace;
   /// List of JobEndpoints.
   /// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-  final Map<String, JobService>? services;
+  final pulumi.Input<Map<String, JobService>>? services;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// [Required] Trial component definition.
-  final TrialComponent trial;
+  final pulumi.Input<TrialComponent> trial;
 
   /// Creates a new [SweepJob].
   /// [componentId] ARM resource ID of the component resource.
@@ -113,49 +113,49 @@ class SweepJob {
       'computeId': ?computeId,
       'description': ?description,
       'displayName': ?displayName,
-      'earlyTermination': ?earlyTermination == null ? null : earlyTermination!.toMap(),
+      'earlyTermination': ?pulumi.Input.mapOptionalInputValue<BanditPolicy, Map<String, dynamic>>(earlyTermination, (value) => value.toMap()),
       'experimentName': ?experimentName,
-      'identity': ?identity == null ? null : identity!.toMap(),
-      'inputs': ?inputs == null ? null : pulumi.Input.encodeMapValues<CustomModelJobInput, Map<String, dynamic>>(inputs!, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<AmlToken, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'inputs': ?pulumi.Input.mapOptionalInputValue<Map<String, CustomModelJobInput>, Map<String, Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeMapValues<CustomModelJobInput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isArchived': ?isArchived,
       'jobType': jobType,
-      'limits': ?limits == null ? null : limits!.toMap(),
-      'notificationSetting': ?notificationSetting == null ? null : notificationSetting!.toMap(),
-      'objective': objective.toMap(),
-      'outputs': ?outputs == null ? null : pulumi.Input.encodeMapValues<CustomModelJobOutput, Map<String, dynamic>>(outputs!, (value) => value.toMap()),
+      'limits': ?pulumi.Input.mapOptionalInputValue<SweepJobLimits, Map<String, dynamic>>(limits, (value) => value.toMap()),
+      'notificationSetting': ?pulumi.Input.mapOptionalInputValue<NotificationSetting, Map<String, dynamic>>(notificationSetting, (value) => value.toMap()),
+      'objective': pulumi.Input.mapInputValue<Objective, Map<String, dynamic>>(objective, (value) => value.toMap()),
+      'outputs': ?pulumi.Input.mapOptionalInputValue<Map<String, CustomModelJobOutput>, Map<String, Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeMapValues<CustomModelJobOutput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'properties': ?properties,
-      'queueSettings': ?queueSettings == null ? null : queueSettings!.toMap(),
-      'samplingAlgorithm': samplingAlgorithm.toMap(),
+      'queueSettings': ?pulumi.Input.mapOptionalInputValue<QueueSettings, Map<String, dynamic>>(queueSettings, (value) => value.toMap()),
+      'samplingAlgorithm': pulumi.Input.mapInputValue<BayesianSamplingAlgorithm, Map<String, dynamic>>(samplingAlgorithm, (value) => value.toMap()),
       'searchSpace': searchSpace,
-      'services': ?services == null ? null : pulumi.Input.encodeMapValues<JobService, Map<String, dynamic>>(services!, (value) => value.toMap()),
+      'services': ?pulumi.Input.mapOptionalInputValue<Map<String, JobService>, Map<String, Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeMapValues<JobService, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
-      'trial': trial.toMap(),
+      'trial': pulumi.Input.mapInputValue<TrialComponent, Map<String, dynamic>>(trial, (value) => value.toMap()),
     };
   }
 
   factory SweepJob.fromMap(Map<String, dynamic> map) {
     return SweepJob(
-      componentId: map['componentId'] == null ? null : map['componentId'] as String,
-      computeId: map['computeId'] == null ? null : map['computeId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      earlyTermination: map['earlyTermination'] == null ? null : BanditPolicy.fromMap((map['earlyTermination'] as Map).cast<String, dynamic>()),
-      experimentName: map['experimentName'] == null ? null : map['experimentName'] as String,
-      identity: map['identity'] == null ? null : AmlToken.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      inputs: map['inputs'] == null ? null : pulumi.Input.decodeMapValues<CustomModelJobInput>(map['inputs'], (value) => CustomModelJobInput.fromMap((value as Map).cast<String, dynamic>())),
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      jobType: map['jobType'] as String,
-      limits: map['limits'] == null ? null : SweepJobLimits.fromMap((map['limits'] as Map).cast<String, dynamic>()),
-      notificationSetting: map['notificationSetting'] == null ? null : NotificationSetting.fromMap((map['notificationSetting'] as Map).cast<String, dynamic>()),
-      objective: Objective.fromMap((map['objective'] as Map).cast<String, dynamic>()),
-      outputs: map['outputs'] == null ? null : pulumi.Input.decodeMapValues<CustomModelJobOutput>(map['outputs'], (value) => CustomModelJobOutput.fromMap((value as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      queueSettings: map['queueSettings'] == null ? null : QueueSettings.fromMap((map['queueSettings'] as Map).cast<String, dynamic>()),
-      samplingAlgorithm: BayesianSamplingAlgorithm.fromMap((map['samplingAlgorithm'] as Map).cast<String, dynamic>()),
-      searchSpace: map['searchSpace'],
-      services: map['services'] == null ? null : pulumi.Input.decodeMapValues<JobService>(map['services'], (value) => JobService.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      trial: TrialComponent.fromMap((map['trial'] as Map).cast<String, dynamic>()),
+      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
+      computeId: map['computeId'] == null ? null : (map['computeId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      earlyTermination: map['earlyTermination'] == null ? null : (BanditPolicy.fromMap((map['earlyTermination'] as Map).cast<String, dynamic>())).input(),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName'] as String).input(),
+      identity: map['identity'] == null ? null : (AmlToken.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeMapValues<CustomModelJobInput>(map['inputs'], (value) => CustomModelJobInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      jobType: (map['jobType'] as String).input(),
+      limits: map['limits'] == null ? null : (SweepJobLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
+      notificationSetting: map['notificationSetting'] == null ? null : (NotificationSetting.fromMap((map['notificationSetting'] as Map).cast<String, dynamic>())).input(),
+      objective: (Objective.fromMap((map['objective'] as Map).cast<String, dynamic>())).input(),
+      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeMapValues<CustomModelJobOutput>(map['outputs'], (value) => CustomModelJobOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      queueSettings: map['queueSettings'] == null ? null : (QueueSettings.fromMap((map['queueSettings'] as Map).cast<String, dynamic>())).input(),
+      samplingAlgorithm: (BayesianSamplingAlgorithm.fromMap((map['samplingAlgorithm'] as Map).cast<String, dynamic>())).input(),
+      searchSpace: (map['searchSpace']).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeMapValues<JobService>(map['services'], (value) => JobService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trial: (TrialComponent.fromMap((map['trial'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

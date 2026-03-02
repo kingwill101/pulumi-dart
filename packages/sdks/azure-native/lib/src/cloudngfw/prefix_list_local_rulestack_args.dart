@@ -28,19 +28,13 @@ class PrefixListLocalRulestackArgs {
   /// [prefixList] prefix list
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   PrefixListLocalRulestackArgs({
-    pulumi.Output<String>? auditComment,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> localRulestackName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> prefixList,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      auditComment = pulumi.Input.asOptionalInput<String>(auditComment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      localRulestackName = pulumi.Input.asInput<String>(localRulestackName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      prefixList = pulumi.Input.asInput<List<String>>(prefixList),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.auditComment,
+    this.description,
+    required this.localRulestackName,
+    this.name,
+    required this.prefixList,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class PrefixListLocalRulestackArgs {
 
   factory PrefixListLocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return PrefixListLocalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : pulumi.Output.create<String>(map['auditComment'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      localRulestackName: pulumi.Output.create<String>(map['localRulestackName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      prefixList: pulumi.Output.create<List<String>>((map['prefixList'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      localRulestackName: (map['localRulestackName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      prefixList: ((map['prefixList'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

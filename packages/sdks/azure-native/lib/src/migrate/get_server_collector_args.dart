@@ -19,13 +19,10 @@ class GetServerCollectorArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [serverCollectorName] Unique name of a Server collector within a project.
   GetServerCollectorArgs({
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverCollectorName,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverCollectorName = pulumi.Input.asInput<String>(serverCollectorName);
+    required this.projectName,
+    required this.resourceGroupName,
+    required this.serverCollectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServerCollectorArgs {
 
   factory GetServerCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetServerCollectorArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverCollectorName: pulumi.Output.create<String>(map['serverCollectorName'] as String),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverCollectorName: (map['serverCollectorName'] as String).input(),
     );
   }
 }

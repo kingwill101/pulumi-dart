@@ -16,11 +16,9 @@ class GetVirtualClusterArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [virtualClusterName] The name of the virtual cluster.
   GetVirtualClusterArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualClusterName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualClusterName = pulumi.Input.asInput<String>(virtualClusterName);
+    required this.resourceGroupName,
+    required this.virtualClusterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualClusterArgs {
 
   factory GetVirtualClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualClusterName: pulumi.Output.create<String>(map['virtualClusterName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualClusterName: (map['virtualClusterName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_nas_job_output_multi_trial_job_output_response.dart';
 
 /// Represents a uCAIP NasJob output.
 class GoogleCloudAiplatformV1NasJobOutputResponse {
   /// The output of this multi-trial Neural Architecture Search (NAS) job.
-  final GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse multiTrialJobOutput;
+  final pulumi.Input<GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse> multiTrialJobOutput;
 
   /// Creates a new [GoogleCloudAiplatformV1NasJobOutputResponse].
   /// [multiTrialJobOutput] The output of this multi-trial Neural Architecture Search (NAS) job.
@@ -15,13 +16,13 @@ class GoogleCloudAiplatformV1NasJobOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'multiTrialJobOutput': multiTrialJobOutput.toMap(),
+      'multiTrialJobOutput': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse, Map<String, dynamic>>(multiTrialJobOutput, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudAiplatformV1NasJobOutputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobOutputResponse(
-      multiTrialJobOutput: GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse.fromMap((map['multiTrialJobOutput'] as Map).cast<String, dynamic>()),
+      multiTrialJobOutput: (GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutputResponse.fromMap((map['multiTrialJobOutput'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

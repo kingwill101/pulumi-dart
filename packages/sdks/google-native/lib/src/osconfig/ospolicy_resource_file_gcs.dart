@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies a file available as a Cloud Storage Object.
 class OSPolicyResourceFileGcs {
   /// Bucket of the Cloud Storage object.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Generation number of the Cloud Storage object.
-  final String? generation;
+  final pulumi.Input<String>? generation;
   /// Name of the Cloud Storage object.
-  final String object;
+  final pulumi.Input<String> object;
 
   /// Creates a new [OSPolicyResourceFileGcs].
   /// [bucket] Bucket of the Cloud Storage object.
@@ -30,9 +31,9 @@ class OSPolicyResourceFileGcs {
 
   factory OSPolicyResourceFileGcs.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileGcs(
-      bucket: map['bucket'] as String,
-      generation: map['generation'] == null ? null : map['generation'] as String,
-      object: map['object'] as String,
+      bucket: (map['bucket'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      object: (map['object'] as String).input(),
     );
   }
 }

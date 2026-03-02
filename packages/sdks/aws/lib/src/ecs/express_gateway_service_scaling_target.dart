@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServiceScalingTarget {
   /// Metric to use for auto-scaling. Valid values are `CPU` and `MEMORY`.
-  final String autoScalingMetric;
+  final pulumi.Input<String> autoScalingMetric;
   /// Target value for the auto-scaling metric (as a percentage). Defaults to `60`.
-  final int autoScalingTargetValue;
+  final pulumi.Input<int> autoScalingTargetValue;
   /// Maximum number of tasks to run.
-  final int maxTaskCount;
+  final pulumi.Input<int> maxTaskCount;
   /// Minimum number of tasks to run.
-  final int minTaskCount;
+  final pulumi.Input<int> minTaskCount;
 
   /// Creates a new [ExpressGatewayServiceScalingTarget].
   /// [autoScalingMetric] Metric to use for auto-scaling. Valid values are `CPU` and `MEMORY`.
@@ -34,10 +35,10 @@ class ExpressGatewayServiceScalingTarget {
 
   factory ExpressGatewayServiceScalingTarget.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceScalingTarget(
-      autoScalingMetric: map['autoScalingMetric'] as String,
-      autoScalingTargetValue: map['autoScalingTargetValue'] as int,
-      maxTaskCount: map['maxTaskCount'] as int,
-      minTaskCount: map['minTaskCount'] as int,
+      autoScalingMetric: (map['autoScalingMetric'] as String).input(),
+      autoScalingTargetValue: (map['autoScalingTargetValue'] as int).input(),
+      maxTaskCount: (map['maxTaskCount'] as int).input(),
+      minTaskCount: (map['minTaskCount'] as int).input(),
     );
   }
 }

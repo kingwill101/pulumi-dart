@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceTypeOnBehalfOfToken {
   /// The action name.
-  final String? actionName;
+  final pulumi.Input<String>? actionName;
   /// This is a TimeSpan property.
-  final String? lifeTime;
+  final pulumi.Input<String>? lifeTime;
 
   /// Creates a new [ResourceTypeOnBehalfOfToken].
   /// [actionName] The action name.
@@ -24,8 +25,8 @@ class ResourceTypeOnBehalfOfToken {
 
   factory ResourceTypeOnBehalfOfToken.fromMap(Map<String, dynamic> map) {
     return ResourceTypeOnBehalfOfToken(
-      actionName: map['actionName'] == null ? null : map['actionName'] as String,
-      lifeTime: map['lifeTime'] == null ? null : map['lifeTime'] as String,
+      actionName: map['actionName'] == null ? null : (map['actionName'] as String).input(),
+      lifeTime: map['lifeTime'] == null ? null : (map['lifeTime'] as String).input(),
     );
   }
 }

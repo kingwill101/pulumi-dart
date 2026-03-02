@@ -10,28 +10,28 @@ import 'throttling_rule_response.dart';
 /// Properties of Cognitive Services account deployment.
 class DeploymentPropertiesResponse {
   /// The call rate limit Cognitive Services account.
-  final CallRateLimitResponse callRateLimit;
+  final pulumi.Input<CallRateLimitResponse> callRateLimit;
   /// The capabilities.
-  final Map<String, String> capabilities;
+  final pulumi.Input<Map<String, String>> capabilities;
   /// Internal use only.
-  final DeploymentCapacitySettingsResponse? capacitySettings;
+  final pulumi.Input<DeploymentCapacitySettingsResponse>? capacitySettings;
   /// The current capacity.
-  final int? currentCapacity;
+  final pulumi.Input<int>? currentCapacity;
   /// If the dynamic throttling is enabled.
-  final bool dynamicThrottlingEnabled;
+  final pulumi.Input<bool> dynamicThrottlingEnabled;
   /// Properties of Cognitive Services account deployment model.
-  final DeploymentModelResponse? model;
+  final pulumi.Input<DeploymentModelResponse>? model;
   /// The name of parent deployment.
-  final String? parentDeploymentName;
+  final pulumi.Input<String>? parentDeploymentName;
   /// Gets the status of the resource at the time the operation was called.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The name of RAI policy.
-  final String? raiPolicyName;
-  final List<ThrottlingRuleResponse> rateLimits;
+  final pulumi.Input<String>? raiPolicyName;
+  final pulumi.Input<List<ThrottlingRuleResponse>> rateLimits;
   /// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
-  final DeploymentScaleSettingsResponse? scaleSettings;
+  final pulumi.Input<DeploymentScaleSettingsResponse>? scaleSettings;
   /// Deployment model version upgrade option.
-  final String? versionUpgradeOption;
+  final pulumi.Input<String>? versionUpgradeOption;
 
   /// Creates a new [DeploymentPropertiesResponse].
   /// [callRateLimit] The call rate limit Cognitive Services account.
@@ -63,35 +63,35 @@ class DeploymentPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'callRateLimit': callRateLimit.toMap(),
+      'callRateLimit': pulumi.Input.mapInputValue<CallRateLimitResponse, Map<String, dynamic>>(callRateLimit, (value) => value.toMap()),
       'capabilities': capabilities,
-      'capacitySettings': ?capacitySettings == null ? null : capacitySettings!.toMap(),
+      'capacitySettings': ?pulumi.Input.mapOptionalInputValue<DeploymentCapacitySettingsResponse, Map<String, dynamic>>(capacitySettings, (value) => value.toMap()),
       'currentCapacity': ?currentCapacity,
       'dynamicThrottlingEnabled': dynamicThrottlingEnabled,
-      'model': ?model == null ? null : model!.toMap(),
+      'model': ?pulumi.Input.mapOptionalInputValue<DeploymentModelResponse, Map<String, dynamic>>(model, (value) => value.toMap()),
       'parentDeploymentName': ?parentDeploymentName,
       'provisioningState': provisioningState,
       'raiPolicyName': ?raiPolicyName,
-      'rateLimits': pulumi.Input.encodeList<ThrottlingRuleResponse, Map<String, dynamic>>(rateLimits, (value) => value.toMap()),
-      'scaleSettings': ?scaleSettings == null ? null : scaleSettings!.toMap(),
+      'rateLimits': pulumi.Input.mapInputValue<List<ThrottlingRuleResponse>, List<Map<String, dynamic>>>(rateLimits, (value) => pulumi.Input.encodeList<ThrottlingRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scaleSettings': ?pulumi.Input.mapOptionalInputValue<DeploymentScaleSettingsResponse, Map<String, dynamic>>(scaleSettings, (value) => value.toMap()),
       'versionUpgradeOption': ?versionUpgradeOption,
     };
   }
 
   factory DeploymentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentPropertiesResponse(
-      callRateLimit: CallRateLimitResponse.fromMap((map['callRateLimit'] as Map).cast<String, dynamic>()),
-      capabilities: (map['capabilities'] as Map).cast<String, String>(),
-      capacitySettings: map['capacitySettings'] == null ? null : DeploymentCapacitySettingsResponse.fromMap((map['capacitySettings'] as Map).cast<String, dynamic>()),
-      currentCapacity: map['currentCapacity'] == null ? null : map['currentCapacity'] as int,
-      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] as bool,
-      model: map['model'] == null ? null : DeploymentModelResponse.fromMap((map['model'] as Map).cast<String, dynamic>()),
-      parentDeploymentName: map['parentDeploymentName'] == null ? null : map['parentDeploymentName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      raiPolicyName: map['raiPolicyName'] == null ? null : map['raiPolicyName'] as String,
-      rateLimits: pulumi.Input.decodeList<ThrottlingRuleResponse>(map['rateLimits'], (value) => ThrottlingRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      scaleSettings: map['scaleSettings'] == null ? null : DeploymentScaleSettingsResponse.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>()),
-      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : map['versionUpgradeOption'] as String,
+      callRateLimit: (CallRateLimitResponse.fromMap((map['callRateLimit'] as Map).cast<String, dynamic>())).input(),
+      capabilities: ((map['capabilities'] as Map).cast<String, String>()).input(),
+      capacitySettings: map['capacitySettings'] == null ? null : (DeploymentCapacitySettingsResponse.fromMap((map['capacitySettings'] as Map).cast<String, dynamic>())).input(),
+      currentCapacity: map['currentCapacity'] == null ? null : (map['currentCapacity'] as int).input(),
+      dynamicThrottlingEnabled: (map['dynamicThrottlingEnabled'] as bool).input(),
+      model: map['model'] == null ? null : (DeploymentModelResponse.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
+      parentDeploymentName: map['parentDeploymentName'] == null ? null : (map['parentDeploymentName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      rateLimits: (pulumi.Input.decodeList<ThrottlingRuleResponse>(map['rateLimits'], (value) => ThrottlingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scaleSettings: map['scaleSettings'] == null ? null : (DeploymentScaleSettingsResponse.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
+      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption'] as String).input(),
     );
   }
 }

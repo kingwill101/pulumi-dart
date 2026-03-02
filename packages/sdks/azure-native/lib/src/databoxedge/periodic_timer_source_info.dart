@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Periodic timer event source.
 class PeriodicTimerSourceInfo {
   /// Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds.
-  final String schedule;
+  final pulumi.Input<String> schedule;
   /// The time of the day that results in a valid trigger. Schedule is computed with reference to the time specified upto seconds. If timezone is not specified the time will considered to be in device timezone. The value will always be returned as UTC time.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Topic where periodic events are published to IoT device.
-  final String? topic;
+  final pulumi.Input<String>? topic;
 
   /// Creates a new [PeriodicTimerSourceInfo].
   /// [schedule] Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds.
@@ -30,9 +31,9 @@ class PeriodicTimerSourceInfo {
 
   factory PeriodicTimerSourceInfo.fromMap(Map<String, dynamic> map) {
     return PeriodicTimerSourceInfo(
-      schedule: map['schedule'] as String,
-      startTime: map['startTime'] as String,
-      topic: map['topic'] == null ? null : map['topic'] as String,
+      schedule: (map['schedule'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

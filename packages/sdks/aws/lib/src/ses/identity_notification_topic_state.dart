@@ -22,17 +22,12 @@ class IdentityNotificationTopicState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [topicArn] The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to `""` (an empty string) to disable publishing.
   IdentityNotificationTopicState({
-    pulumi.Output<String>? identity,
-    pulumi.Output<bool>? includeOriginalHeaders,
-    pulumi.Output<String>? notificationType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? topicArn,
-  }) :
-      identity = pulumi.Input.asOptionalInput<String>(identity),
-      includeOriginalHeaders = pulumi.Input.asOptionalInput<bool>(includeOriginalHeaders),
-      notificationType = pulumi.Input.asOptionalInput<String>(notificationType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      topicArn = pulumi.Input.asOptionalInput<String>(topicArn);
+    this.identity,
+    this.includeOriginalHeaders,
+    this.notificationType,
+    this.region,
+    this.topicArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class IdentityNotificationTopicState {
 
   factory IdentityNotificationTopicState.fromMap(Map<String, dynamic> map) {
     return IdentityNotificationTopicState(
-      identity: map['identity'] == null ? null : pulumi.Output.create<String>(map['identity'] as String),
-      includeOriginalHeaders: map['includeOriginalHeaders'] == null ? null : pulumi.Output.create<bool>(map['includeOriginalHeaders'] as bool),
-      notificationType: map['notificationType'] == null ? null : pulumi.Output.create<String>(map['notificationType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      topicArn: map['topicArn'] == null ? null : pulumi.Output.create<String>(map['topicArn'] as String),
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      includeOriginalHeaders: map['includeOriginalHeaders'] == null ? null : (map['includeOriginalHeaders'] as bool).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
     );
   }
 }

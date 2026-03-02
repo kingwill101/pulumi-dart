@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FloorsettingAiPlatformFloorSetting {
   /// If true, log Model Armor filter results to Cloud Logging.
-  final bool? enableCloudLogging;
+  final pulumi.Input<bool>? enableCloudLogging;
   /// If true, Model Armor filters will be run in inspect and block mode.
   /// Requests that trip Model Armor filters will be blocked.
-  final bool? inspectAndBlock;
+  final pulumi.Input<bool>? inspectAndBlock;
   /// If true, Model Armor filters will be run in inspect only mode. No action
   /// will be taken on the request.
-  final bool? inspectOnly;
+  final pulumi.Input<bool>? inspectOnly;
 
   /// Creates a new [FloorsettingAiPlatformFloorSetting].
   /// [enableCloudLogging] If true, log Model Armor filter results to Cloud Logging.
@@ -31,9 +32,9 @@ class FloorsettingAiPlatformFloorSetting {
 
   factory FloorsettingAiPlatformFloorSetting.fromMap(Map<String, dynamic> map) {
     return FloorsettingAiPlatformFloorSetting(
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : map['enableCloudLogging'] as bool,
-      inspectAndBlock: map['inspectAndBlock'] == null ? null : map['inspectAndBlock'] as bool,
-      inspectOnly: map['inspectOnly'] == null ? null : map['inspectOnly'] as bool,
+      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging'] as bool).input(),
+      inspectAndBlock: map['inspectAndBlock'] == null ? null : (map['inspectAndBlock'] as bool).input(),
+      inspectOnly: map['inspectOnly'] == null ? null : (map['inspectOnly'] as bool).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_reference_response.dart';
 
 /// A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
 class IosXcTestResponse {
   /// The bundle id for the application under test.
-  final String appBundleId;
+  final pulumi.Input<String> appBundleId;
   /// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
-  final bool testSpecialEntitlements;
+  final pulumi.Input<bool> testSpecialEntitlements;
   /// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
-  final FileReferenceResponse testsZip;
+  final pulumi.Input<FileReferenceResponse> testsZip;
   /// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
-  final String xcodeVersion;
+  final pulumi.Input<String> xcodeVersion;
   /// An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
-  final FileReferenceResponse xctestrun;
+  final pulumi.Input<FileReferenceResponse> xctestrun;
 
   /// Creates a new [IosXcTestResponse].
   /// [appBundleId] The bundle id for the application under test.
@@ -33,19 +34,19 @@ class IosXcTestResponse {
     return <String, dynamic>{
       'appBundleId': appBundleId,
       'testSpecialEntitlements': testSpecialEntitlements,
-      'testsZip': testsZip.toMap(),
+      'testsZip': pulumi.Input.mapInputValue<FileReferenceResponse, Map<String, dynamic>>(testsZip, (value) => value.toMap()),
       'xcodeVersion': xcodeVersion,
-      'xctestrun': xctestrun.toMap(),
+      'xctestrun': pulumi.Input.mapInputValue<FileReferenceResponse, Map<String, dynamic>>(xctestrun, (value) => value.toMap()),
     };
   }
 
   factory IosXcTestResponse.fromMap(Map<String, dynamic> map) {
     return IosXcTestResponse(
-      appBundleId: map['appBundleId'] as String,
-      testSpecialEntitlements: map['testSpecialEntitlements'] as bool,
-      testsZip: FileReferenceResponse.fromMap((map['testsZip'] as Map).cast<String, dynamic>()),
-      xcodeVersion: map['xcodeVersion'] as String,
-      xctestrun: FileReferenceResponse.fromMap((map['xctestrun'] as Map).cast<String, dynamic>()),
+      appBundleId: (map['appBundleId'] as String).input(),
+      testSpecialEntitlements: (map['testSpecialEntitlements'] as bool).input(),
+      testsZip: (FileReferenceResponse.fromMap((map['testsZip'] as Map).cast<String, dynamic>())).input(),
+      xcodeVersion: (map['xcodeVersion'] as String).input(),
+      xctestrun: (FileReferenceResponse.fromMap((map['xctestrun'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

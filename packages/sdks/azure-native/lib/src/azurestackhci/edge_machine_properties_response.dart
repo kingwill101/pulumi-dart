@@ -10,37 +10,37 @@ import 'site_details_response.dart';
 /// Properties for edge machine.
 class EdgeMachinePropertiesResponse {
   /// Link to Arc Gateway ARM resource Id
-  final String? arcGatewayResourceId;
+  final pulumi.Input<String>? arcGatewayResourceId;
   /// Optional property to create arc machine in custom resource group.
-  final String? arcMachineResourceGroupId;
+  final pulumi.Input<String>? arcMachineResourceGroupId;
   /// Arc machine instance resource id.
-  final String? arcMachineResourceId;
+  final pulumi.Input<String>? arcMachineResourceId;
   /// Tracks the ID of the consuming resource, setting the machine as in-use.
-  final String claimedBy;
+  final pulumi.Input<String> claimedBy;
   /// Unique, immutable resource id.
-  final String cloudId;
+  final pulumi.Input<String> cloudId;
   /// machine connectivity status
-  final String connectivityStatus;
+  final pulumi.Input<String> connectivityStatus;
   /// A machine can only be assigned to single device pool
-  final String devicePoolResourceId;
+  final pulumi.Input<String> devicePoolResourceId;
   /// Edge Machine type.
-  final String? edgeMachineKind;
+  final pulumi.Input<String>? edgeMachineKind;
   /// Last time data updated to service.
-  final String lastSyncTimestamp;
+  final pulumi.Input<String> lastSyncTimestamp;
   /// OS configuration status details
-  final String machineState;
+  final pulumi.Input<String> machineState;
   /// operation status details for edge machine.
-  final List<OperationDetailResponse> operationDetails;
+  final pulumi.Input<List<OperationDetailResponse>> operationDetails;
   /// Ownership voucher details for provisioned machine.
-  final OwnershipVoucherDetailsResponse? ownershipVoucherDetails;
+  final pulumi.Input<OwnershipVoucherDetailsResponse>? ownershipVoucherDetails;
   /// Details for device provisioning.
-  final ProvisioningDetailsResponse? provisioningDetails;
+  final pulumi.Input<ProvisioningDetailsResponse>? provisioningDetails;
   /// The provisioning state of a resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Reported properties for edge machine.
-  final EdgeMachineReportedPropertiesResponse reportedProperties;
+  final pulumi.Input<EdgeMachineReportedPropertiesResponse> reportedProperties;
   /// Service fetches common configuration from site.
-  final SiteDetailsResponse? siteDetails;
+  final pulumi.Input<SiteDetailsResponse>? siteDetails;
 
   /// Creates a new [EdgeMachinePropertiesResponse].
   /// [arcGatewayResourceId] Link to Arc Gateway ARM resource Id
@@ -90,33 +90,33 @@ class EdgeMachinePropertiesResponse {
       'edgeMachineKind': ?edgeMachineKind,
       'lastSyncTimestamp': lastSyncTimestamp,
       'machineState': machineState,
-      'operationDetails': pulumi.Input.encodeList<OperationDetailResponse, Map<String, dynamic>>(operationDetails, (value) => value.toMap()),
-      'ownershipVoucherDetails': ?ownershipVoucherDetails == null ? null : ownershipVoucherDetails!.toMap(),
-      'provisioningDetails': ?provisioningDetails == null ? null : provisioningDetails!.toMap(),
+      'operationDetails': pulumi.Input.mapInputValue<List<OperationDetailResponse>, List<Map<String, dynamic>>>(operationDetails, (value) => pulumi.Input.encodeList<OperationDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ownershipVoucherDetails': ?pulumi.Input.mapOptionalInputValue<OwnershipVoucherDetailsResponse, Map<String, dynamic>>(ownershipVoucherDetails, (value) => value.toMap()),
+      'provisioningDetails': ?pulumi.Input.mapOptionalInputValue<ProvisioningDetailsResponse, Map<String, dynamic>>(provisioningDetails, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'reportedProperties': reportedProperties.toMap(),
-      'siteDetails': ?siteDetails == null ? null : siteDetails!.toMap(),
+      'reportedProperties': pulumi.Input.mapInputValue<EdgeMachineReportedPropertiesResponse, Map<String, dynamic>>(reportedProperties, (value) => value.toMap()),
+      'siteDetails': ?pulumi.Input.mapOptionalInputValue<SiteDetailsResponse, Map<String, dynamic>>(siteDetails, (value) => value.toMap()),
     };
   }
 
   factory EdgeMachinePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachinePropertiesResponse(
-      arcGatewayResourceId: map['arcGatewayResourceId'] == null ? null : map['arcGatewayResourceId'] as String,
-      arcMachineResourceGroupId: map['arcMachineResourceGroupId'] == null ? null : map['arcMachineResourceGroupId'] as String,
-      arcMachineResourceId: map['arcMachineResourceId'] == null ? null : map['arcMachineResourceId'] as String,
-      claimedBy: map['claimedBy'] as String,
-      cloudId: map['cloudId'] as String,
-      connectivityStatus: map['connectivityStatus'] as String,
-      devicePoolResourceId: map['devicePoolResourceId'] as String,
-      edgeMachineKind: map['edgeMachineKind'] == null ? null : map['edgeMachineKind'] as String,
-      lastSyncTimestamp: map['lastSyncTimestamp'] as String,
-      machineState: map['machineState'] as String,
-      operationDetails: pulumi.Input.decodeList<OperationDetailResponse>(map['operationDetails'], (value) => OperationDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
-      ownershipVoucherDetails: map['ownershipVoucherDetails'] == null ? null : OwnershipVoucherDetailsResponse.fromMap((map['ownershipVoucherDetails'] as Map).cast<String, dynamic>()),
-      provisioningDetails: map['provisioningDetails'] == null ? null : ProvisioningDetailsResponse.fromMap((map['provisioningDetails'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      reportedProperties: EdgeMachineReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>()),
-      siteDetails: map['siteDetails'] == null ? null : SiteDetailsResponse.fromMap((map['siteDetails'] as Map).cast<String, dynamic>()),
+      arcGatewayResourceId: map['arcGatewayResourceId'] == null ? null : (map['arcGatewayResourceId'] as String).input(),
+      arcMachineResourceGroupId: map['arcMachineResourceGroupId'] == null ? null : (map['arcMachineResourceGroupId'] as String).input(),
+      arcMachineResourceId: map['arcMachineResourceId'] == null ? null : (map['arcMachineResourceId'] as String).input(),
+      claimedBy: (map['claimedBy'] as String).input(),
+      cloudId: (map['cloudId'] as String).input(),
+      connectivityStatus: (map['connectivityStatus'] as String).input(),
+      devicePoolResourceId: (map['devicePoolResourceId'] as String).input(),
+      edgeMachineKind: map['edgeMachineKind'] == null ? null : (map['edgeMachineKind'] as String).input(),
+      lastSyncTimestamp: (map['lastSyncTimestamp'] as String).input(),
+      machineState: (map['machineState'] as String).input(),
+      operationDetails: (pulumi.Input.decodeList<OperationDetailResponse>(map['operationDetails'], (value) => OperationDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ownershipVoucherDetails: map['ownershipVoucherDetails'] == null ? null : (OwnershipVoucherDetailsResponse.fromMap((map['ownershipVoucherDetails'] as Map).cast<String, dynamic>())).input(),
+      provisioningDetails: map['provisioningDetails'] == null ? null : (ProvisioningDetailsResponse.fromMap((map['provisioningDetails'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reportedProperties: (EdgeMachineReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
+      siteDetails: map['siteDetails'] == null ? null : (SiteDetailsResponse.fromMap((map['siteDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

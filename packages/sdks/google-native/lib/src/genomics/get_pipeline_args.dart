@@ -12,9 +12,8 @@ class GetPipelineArgs {
   /// Creates a new [GetPipelineArgs].
   /// [pipelineId] Required.
   GetPipelineArgs({
-    required pulumi.Output<String> pipelineId,
-  }) :
-      pipelineId = pulumi.Input.asInput<String>(pipelineId);
+    required this.pipelineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetPipelineArgs {
 
   factory GetPipelineArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineArgs(
-      pipelineId: pulumi.Output.create<String>(map['pipelineId'] as String),
+      pipelineId: (map['pipelineId'] as String).input(),
     );
   }
 }

@@ -5,25 +5,25 @@ import 'get_access_configurations_configuration_permission_policy.dart';
 
 class GetAccessConfigurationsConfiguration {
   /// The AccessConfigurationId of the Access Configuration.
-  final String accessConfigurationId;
+  final pulumi.Input<String> accessConfigurationId;
   /// The AccessConfigurationName of the Access Configuration.
-  final String accessConfigurationName;
+  final pulumi.Input<String> accessConfigurationName;
   /// The Created Time of the Directory.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The Description of the Directory.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Directory.
-  final String directoryId;
+  final pulumi.Input<String> directoryId;
   /// The ID of the Access Configuration.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Policy List.
-  final List<GetAccessConfigurationsConfigurationPermissionPolicy> permissionPolicies;
+  final pulumi.Input<List<GetAccessConfigurationsConfigurationPermissionPolicy>> permissionPolicies;
   /// The RelayState of the Access Configuration.
-  final String relayState;
+  final pulumi.Input<String> relayState;
   /// The SessionDuration of the Access Configuration.
-  final int sessionDuration;
+  final pulumi.Input<int> sessionDuration;
   /// The StatusNotifications of the Access Configuration.
-  final List<String> statusNotifications;
+  final pulumi.Input<List<String>> statusNotifications;
 
   /// Creates a new [GetAccessConfigurationsConfiguration].
   /// [accessConfigurationId] The AccessConfigurationId of the Access Configuration.
@@ -57,7 +57,7 @@ class GetAccessConfigurationsConfiguration {
       'description': description,
       'directoryId': directoryId,
       'id': id,
-      'permissionPolicies': pulumi.Input.encodeList<GetAccessConfigurationsConfigurationPermissionPolicy, Map<String, dynamic>>(permissionPolicies, (value) => value.toMap()),
+      'permissionPolicies': pulumi.Input.mapInputValue<List<GetAccessConfigurationsConfigurationPermissionPolicy>, List<Map<String, dynamic>>>(permissionPolicies, (value) => pulumi.Input.encodeList<GetAccessConfigurationsConfigurationPermissionPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'relayState': relayState,
       'sessionDuration': sessionDuration,
       'statusNotifications': statusNotifications,
@@ -66,16 +66,16 @@ class GetAccessConfigurationsConfiguration {
 
   factory GetAccessConfigurationsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAccessConfigurationsConfiguration(
-      accessConfigurationId: map['accessConfigurationId'] as String,
-      accessConfigurationName: map['accessConfigurationName'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      directoryId: map['directoryId'] as String,
-      id: map['id'] as String,
-      permissionPolicies: pulumi.Input.decodeList<GetAccessConfigurationsConfigurationPermissionPolicy>(map['permissionPolicies'], (value) => GetAccessConfigurationsConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      relayState: map['relayState'] as String,
-      sessionDuration: map['sessionDuration'] as int,
-      statusNotifications: (map['statusNotifications'] as List).cast<String>(),
+      accessConfigurationId: (map['accessConfigurationId'] as String).input(),
+      accessConfigurationName: (map['accessConfigurationName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      id: (map['id'] as String).input(),
+      permissionPolicies: (pulumi.Input.decodeList<GetAccessConfigurationsConfigurationPermissionPolicy>(map['permissionPolicies'], (value) => GetAccessConfigurationsConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relayState: (map['relayState'] as String).input(),
+      sessionDuration: (map['sessionDuration'] as int).input(),
+      statusNotifications: ((map['statusNotifications'] as List).cast<String>()).input(),
     );
   }
 }

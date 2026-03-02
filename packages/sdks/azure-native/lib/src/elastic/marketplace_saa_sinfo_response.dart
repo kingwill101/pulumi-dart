@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'marketplace_saa_sinfo_response_marketplace_subscription.dart';
 
 /// Marketplace SAAS Info of the resource.
 class MarketplaceSaaSInfoResponse {
   /// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
-  final String? billedAzureSubscriptionId;
+  final pulumi.Input<String>? billedAzureSubscriptionId;
   /// Marketplace Subscription Details: SAAS Name
-  final String? marketplaceName;
+  final pulumi.Input<String>? marketplaceName;
   /// Marketplace Subscription Details: Resource URI
-  final String? marketplaceResourceId;
+  final pulumi.Input<String>? marketplaceResourceId;
   /// Marketplace Subscription Details: SaaS Subscription Status
-  final String? marketplaceStatus;
+  final pulumi.Input<String>? marketplaceStatus;
   /// Marketplace Subscription
-  final MarketplaceSaaSInfoResponseMarketplaceSubscription? marketplaceSubscription;
+  final pulumi.Input<MarketplaceSaaSInfoResponseMarketplaceSubscription>? marketplaceSubscription;
   /// Flag specifying if the Marketplace status is subscribed or not.
-  final bool? subscribed;
+  final pulumi.Input<bool>? subscribed;
 
   /// Creates a new [MarketplaceSaaSInfoResponse].
   /// [billedAzureSubscriptionId] The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
@@ -39,19 +40,19 @@ class MarketplaceSaaSInfoResponse {
       'marketplaceName': ?marketplaceName,
       'marketplaceResourceId': ?marketplaceResourceId,
       'marketplaceStatus': ?marketplaceStatus,
-      'marketplaceSubscription': ?marketplaceSubscription == null ? null : marketplaceSubscription!.toMap(),
+      'marketplaceSubscription': ?pulumi.Input.mapOptionalInputValue<MarketplaceSaaSInfoResponseMarketplaceSubscription, Map<String, dynamic>>(marketplaceSubscription, (value) => value.toMap()),
       'subscribed': ?subscribed,
     };
   }
 
   factory MarketplaceSaaSInfoResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceSaaSInfoResponse(
-      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : map['billedAzureSubscriptionId'] as String,
-      marketplaceName: map['marketplaceName'] == null ? null : map['marketplaceName'] as String,
-      marketplaceResourceId: map['marketplaceResourceId'] == null ? null : map['marketplaceResourceId'] as String,
-      marketplaceStatus: map['marketplaceStatus'] == null ? null : map['marketplaceStatus'] as String,
-      marketplaceSubscription: map['marketplaceSubscription'] == null ? null : MarketplaceSaaSInfoResponseMarketplaceSubscription.fromMap((map['marketplaceSubscription'] as Map).cast<String, dynamic>()),
-      subscribed: map['subscribed'] == null ? null : map['subscribed'] as bool,
+      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId'] as String).input(),
+      marketplaceName: map['marketplaceName'] == null ? null : (map['marketplaceName'] as String).input(),
+      marketplaceResourceId: map['marketplaceResourceId'] == null ? null : (map['marketplaceResourceId'] as String).input(),
+      marketplaceStatus: map['marketplaceStatus'] == null ? null : (map['marketplaceStatus'] as String).input(),
+      marketplaceSubscription: map['marketplaceSubscription'] == null ? null : (MarketplaceSaaSInfoResponseMarketplaceSubscription.fromMap((map['marketplaceSubscription'] as Map).cast<String, dynamic>())).input(),
+      subscribed: map['subscribed'] == null ? null : (map['subscribed'] as bool).input(),
     );
   }
 }

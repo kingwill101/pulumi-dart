@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCollectionRuleStreamDeclarationColumn {
   /// Specifies the name of the Data Collection Rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// cSpecifies the type of Managed Service Identity that should be configured on this Data Collection Rule. Possible values are `SystemAssigned` and `UserAssigned`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDataCollectionRuleStreamDeclarationColumn].
   /// [name] Specifies the name of the Data Collection Rule.
@@ -24,8 +25,8 @@ class GetDataCollectionRuleStreamDeclarationColumn {
 
   factory GetDataCollectionRuleStreamDeclarationColumn.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleStreamDeclarationColumn(
-      name: map['name'] as String,
-      type: map['type'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

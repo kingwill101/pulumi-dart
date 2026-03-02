@@ -18,39 +18,39 @@ import 'one_dashboard_page_widget_table.dart';
 
 class OneDashboardPage {
   /// Brief text describing the dashboard.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The unique entity identifier of the dashboard page in New Relic.
-  final String? guid;
+  final pulumi.Input<String>? guid;
   /// The title of the dashboard.
-  final String name;
+  final pulumi.Input<String> name;
   /// An area widget.
-  final List<OneDashboardPageWidgetArea>? widgetAreas;
+  final pulumi.Input<List<OneDashboardPageWidgetArea>>? widgetAreas;
   /// A bar widget.
-  final List<OneDashboardPageWidgetBar>? widgetBars;
+  final pulumi.Input<List<OneDashboardPageWidgetBar>>? widgetBars;
   /// A billboard widget.
-  final List<OneDashboardPageWidgetBillboard>? widgetBillboards;
+  final pulumi.Input<List<OneDashboardPageWidgetBillboard>>? widgetBillboards;
   /// A bullet widget.
-  final List<OneDashboardPageWidgetBullet>? widgetBullets;
+  final pulumi.Input<List<OneDashboardPageWidgetBullet>>? widgetBullets;
   /// A funnel widget.
-  final List<OneDashboardPageWidgetFunnel>? widgetFunnels;
+  final pulumi.Input<List<OneDashboardPageWidgetFunnel>>? widgetFunnels;
   /// A heatmap widget.
-  final List<OneDashboardPageWidgetHeatmap>? widgetHeatmaps;
+  final pulumi.Input<List<OneDashboardPageWidgetHeatmap>>? widgetHeatmaps;
   /// A histogram widget.
-  final List<OneDashboardPageWidgetHistogram>? widgetHistograms;
+  final pulumi.Input<List<OneDashboardPageWidgetHistogram>>? widgetHistograms;
   /// A JSON widget.
-  final List<OneDashboardPageWidgetJson>? widgetJsons;
+  final pulumi.Input<List<OneDashboardPageWidgetJson>>? widgetJsons;
   /// A line widget.
-  final List<OneDashboardPageWidgetLine>? widgetLines;
+  final pulumi.Input<List<OneDashboardPageWidgetLine>>? widgetLines;
   /// A log table widget.
-  final List<OneDashboardPageWidgetLogTable>? widgetLogTables;
+  final pulumi.Input<List<OneDashboardPageWidgetLogTable>>? widgetLogTables;
   /// A markdown widget.
-  final List<OneDashboardPageWidgetMarkdown>? widgetMarkdowns;
+  final pulumi.Input<List<OneDashboardPageWidgetMarkdown>>? widgetMarkdowns;
   /// A pie widget.
-  final List<OneDashboardPageWidgetPy>? widgetPies;
+  final pulumi.Input<List<OneDashboardPageWidgetPy>>? widgetPies;
   /// A stacked bar widget.
-  final List<OneDashboardPageWidgetStackedBar>? widgetStackedBars;
+  final pulumi.Input<List<OneDashboardPageWidgetStackedBar>>? widgetStackedBars;
   /// A table widget.
-  final List<OneDashboardPageWidgetTable>? widgetTables;
+  final pulumi.Input<List<OneDashboardPageWidgetTable>>? widgetTables;
 
   /// Creates a new [OneDashboardPage].
   /// [description] Brief text describing the dashboard.
@@ -95,42 +95,42 @@ class OneDashboardPage {
       'description': ?description,
       'guid': ?guid,
       'name': name,
-      'widgetAreas': ?widgetAreas == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetArea, Map<String, dynamic>>(widgetAreas!, (value) => value.toMap()),
-      'widgetBars': ?widgetBars == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetBar, Map<String, dynamic>>(widgetBars!, (value) => value.toMap()),
-      'widgetBillboards': ?widgetBillboards == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetBillboard, Map<String, dynamic>>(widgetBillboards!, (value) => value.toMap()),
-      'widgetBullets': ?widgetBullets == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetBullet, Map<String, dynamic>>(widgetBullets!, (value) => value.toMap()),
-      'widgetFunnels': ?widgetFunnels == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetFunnel, Map<String, dynamic>>(widgetFunnels!, (value) => value.toMap()),
-      'widgetHeatmaps': ?widgetHeatmaps == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetHeatmap, Map<String, dynamic>>(widgetHeatmaps!, (value) => value.toMap()),
-      'widgetHistograms': ?widgetHistograms == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetHistogram, Map<String, dynamic>>(widgetHistograms!, (value) => value.toMap()),
-      'widgetJsons': ?widgetJsons == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetJson, Map<String, dynamic>>(widgetJsons!, (value) => value.toMap()),
-      'widgetLines': ?widgetLines == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetLine, Map<String, dynamic>>(widgetLines!, (value) => value.toMap()),
-      'widgetLogTables': ?widgetLogTables == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetLogTable, Map<String, dynamic>>(widgetLogTables!, (value) => value.toMap()),
-      'widgetMarkdowns': ?widgetMarkdowns == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetMarkdown, Map<String, dynamic>>(widgetMarkdowns!, (value) => value.toMap()),
-      'widgetPies': ?widgetPies == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetPy, Map<String, dynamic>>(widgetPies!, (value) => value.toMap()),
-      'widgetStackedBars': ?widgetStackedBars == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetStackedBar, Map<String, dynamic>>(widgetStackedBars!, (value) => value.toMap()),
-      'widgetTables': ?widgetTables == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetTable, Map<String, dynamic>>(widgetTables!, (value) => value.toMap()),
+      'widgetAreas': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetArea>, List<Map<String, dynamic>>>(widgetAreas, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetArea, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetBars': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetBar>, List<Map<String, dynamic>>>(widgetBars, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetBar, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetBillboards': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetBillboard>, List<Map<String, dynamic>>>(widgetBillboards, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetBillboard, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetBullets': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetBullet>, List<Map<String, dynamic>>>(widgetBullets, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetBullet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetFunnels': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetFunnel>, List<Map<String, dynamic>>>(widgetFunnels, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetFunnel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetHeatmaps': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetHeatmap>, List<Map<String, dynamic>>>(widgetHeatmaps, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetHeatmap, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetHistograms': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetHistogram>, List<Map<String, dynamic>>>(widgetHistograms, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetHistogram, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetJsons': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetJson>, List<Map<String, dynamic>>>(widgetJsons, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetJson, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetLines': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetLine>, List<Map<String, dynamic>>>(widgetLines, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetLine, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetLogTables': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetLogTable>, List<Map<String, dynamic>>>(widgetLogTables, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetLogTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetMarkdowns': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetMarkdown>, List<Map<String, dynamic>>>(widgetMarkdowns, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetMarkdown, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetPies': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetPy>, List<Map<String, dynamic>>>(widgetPies, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetPy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetStackedBars': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetStackedBar>, List<Map<String, dynamic>>>(widgetStackedBars, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetStackedBar, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgetTables': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetTable>, List<Map<String, dynamic>>>(widgetTables, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetTable, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OneDashboardPage.fromMap(Map<String, dynamic> map) {
     return OneDashboardPage(
-      description: map['description'] == null ? null : map['description'] as String,
-      guid: map['guid'] == null ? null : map['guid'] as String,
-      name: map['name'] as String,
-      widgetAreas: map['widgetAreas'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetArea>(map['widgetAreas'], (value) => OneDashboardPageWidgetArea.fromMap((value as Map).cast<String, dynamic>())),
-      widgetBars: map['widgetBars'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetBar>(map['widgetBars'], (value) => OneDashboardPageWidgetBar.fromMap((value as Map).cast<String, dynamic>())),
-      widgetBillboards: map['widgetBillboards'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetBillboard>(map['widgetBillboards'], (value) => OneDashboardPageWidgetBillboard.fromMap((value as Map).cast<String, dynamic>())),
-      widgetBullets: map['widgetBullets'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetBullet>(map['widgetBullets'], (value) => OneDashboardPageWidgetBullet.fromMap((value as Map).cast<String, dynamic>())),
-      widgetFunnels: map['widgetFunnels'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetFunnel>(map['widgetFunnels'], (value) => OneDashboardPageWidgetFunnel.fromMap((value as Map).cast<String, dynamic>())),
-      widgetHeatmaps: map['widgetHeatmaps'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetHeatmap>(map['widgetHeatmaps'], (value) => OneDashboardPageWidgetHeatmap.fromMap((value as Map).cast<String, dynamic>())),
-      widgetHistograms: map['widgetHistograms'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetHistogram>(map['widgetHistograms'], (value) => OneDashboardPageWidgetHistogram.fromMap((value as Map).cast<String, dynamic>())),
-      widgetJsons: map['widgetJsons'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetJson>(map['widgetJsons'], (value) => OneDashboardPageWidgetJson.fromMap((value as Map).cast<String, dynamic>())),
-      widgetLines: map['widgetLines'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetLine>(map['widgetLines'], (value) => OneDashboardPageWidgetLine.fromMap((value as Map).cast<String, dynamic>())),
-      widgetLogTables: map['widgetLogTables'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetLogTable>(map['widgetLogTables'], (value) => OneDashboardPageWidgetLogTable.fromMap((value as Map).cast<String, dynamic>())),
-      widgetMarkdowns: map['widgetMarkdowns'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetMarkdown>(map['widgetMarkdowns'], (value) => OneDashboardPageWidgetMarkdown.fromMap((value as Map).cast<String, dynamic>())),
-      widgetPies: map['widgetPies'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetPy>(map['widgetPies'], (value) => OneDashboardPageWidgetPy.fromMap((value as Map).cast<String, dynamic>())),
-      widgetStackedBars: map['widgetStackedBars'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetStackedBar>(map['widgetStackedBars'], (value) => OneDashboardPageWidgetStackedBar.fromMap((value as Map).cast<String, dynamic>())),
-      widgetTables: map['widgetTables'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetTable>(map['widgetTables'], (value) => OneDashboardPageWidgetTable.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      name: (map['name'] as String).input(),
+      widgetAreas: map['widgetAreas'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetArea>(map['widgetAreas'], (value) => OneDashboardPageWidgetArea.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetBars: map['widgetBars'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetBar>(map['widgetBars'], (value) => OneDashboardPageWidgetBar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetBillboards: map['widgetBillboards'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetBillboard>(map['widgetBillboards'], (value) => OneDashboardPageWidgetBillboard.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetBullets: map['widgetBullets'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetBullet>(map['widgetBullets'], (value) => OneDashboardPageWidgetBullet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetFunnels: map['widgetFunnels'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetFunnel>(map['widgetFunnels'], (value) => OneDashboardPageWidgetFunnel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetHeatmaps: map['widgetHeatmaps'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHeatmap>(map['widgetHeatmaps'], (value) => OneDashboardPageWidgetHeatmap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetHistograms: map['widgetHistograms'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogram>(map['widgetHistograms'], (value) => OneDashboardPageWidgetHistogram.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetJsons: map['widgetJsons'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetJson>(map['widgetJsons'], (value) => OneDashboardPageWidgetJson.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetLines: map['widgetLines'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLine>(map['widgetLines'], (value) => OneDashboardPageWidgetLine.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetLogTables: map['widgetLogTables'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTable>(map['widgetLogTables'], (value) => OneDashboardPageWidgetLogTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetMarkdowns: map['widgetMarkdowns'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetMarkdown>(map['widgetMarkdowns'], (value) => OneDashboardPageWidgetMarkdown.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetPies: map['widgetPies'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetPy>(map['widgetPies'], (value) => OneDashboardPageWidgetPy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetStackedBars: map['widgetStackedBars'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetStackedBar>(map['widgetStackedBars'], (value) => OneDashboardPageWidgetStackedBar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgetTables: map['widgetTables'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetTable>(map['widgetTables'], (value) => OneDashboardPageWidgetTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

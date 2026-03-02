@@ -49,29 +49,18 @@ class RegionalSecretVersionState {
   /// [secretData] The secret data. Must be no larger than 64KiB.
   /// [version] The version of the Regional Secret.
   RegionalSecretVersionState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<List<RegionalSecretVersionCustomerManagedEncryption>>? customerManagedEncryptions,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? destroyTime,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? isSecretDataBase64,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? secret,
-    pulumi.Output<String>? secretData,
-    pulumi.Output<String>? version,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      customerManagedEncryptions = pulumi.Input.asOptionalInput<List<RegionalSecretVersionCustomerManagedEncryption>>(customerManagedEncryptions),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      destroyTime = pulumi.Input.asOptionalInput<String>(destroyTime),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      isSecretDataBase64 = pulumi.Input.asOptionalInput<bool>(isSecretDataBase64),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      secretData = pulumi.Input.asOptionalInput<String>(secretData),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.createTime,
+    this.customerManagedEncryptions,
+    this.deletionPolicy,
+    this.destroyTime,
+    this.enabled,
+    this.isSecretDataBase64,
+    this.location,
+    this.name,
+    this.secret,
+    this.secretData,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class RegionalSecretVersionState {
 
   factory RegionalSecretVersionState.fromMap(Map<String, dynamic> map) {
     return RegionalSecretVersionState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      customerManagedEncryptions: map['customerManagedEncryptions'] == null ? null : pulumi.Output.create<List<RegionalSecretVersionCustomerManagedEncryption>>(pulumi.Input.decodeList<RegionalSecretVersionCustomerManagedEncryption>(map['customerManagedEncryptions'], (value) => RegionalSecretVersionCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>()))),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      destroyTime: map['destroyTime'] == null ? null : pulumi.Output.create<String>(map['destroyTime'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : pulumi.Output.create<bool>(map['isSecretDataBase64'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      secretData: map['secretData'] == null ? null : pulumi.Output.create<String>(map['secretData'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      customerManagedEncryptions: map['customerManagedEncryptions'] == null ? null : (pulumi.Input.decodeList<RegionalSecretVersionCustomerManagedEncryption>(map['customerManagedEncryptions'], (value) => RegionalSecretVersionCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      destroyTime: map['destroyTime'] == null ? null : (map['destroyTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      secretData: map['secretData'] == null ? null : (map['secretData'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

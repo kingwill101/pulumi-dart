@@ -9,15 +9,15 @@ import 'time_window_response.dart';
 /// Autoscale profile.
 class AutoscaleProfileResponse {
   /// the number of instances that can be used during this profile.
-  final ScaleCapacityResponse capacity;
+  final pulumi.Input<ScaleCapacityResponse> capacity;
   /// the specific date-time for the profile. This element is not used if the Recurrence element is used.
-  final TimeWindowResponse? fixedDate;
+  final pulumi.Input<TimeWindowResponse>? fixedDate;
   /// the name of the profile.
-  final String name;
+  final pulumi.Input<String> name;
   /// the repeating times at which this profile begins. This element is not used if the FixedDate element is used.
-  final RecurrenceResponse? recurrence;
+  final pulumi.Input<RecurrenceResponse>? recurrence;
   /// the collection of rules that provide the triggers and parameters for the scaling action. A maximum of 10 rules can be specified.
-  final List<ScaleRuleResponse> rules;
+  final pulumi.Input<List<ScaleRuleResponse>> rules;
 
   /// Creates a new [AutoscaleProfileResponse].
   /// [capacity] the number of instances that can be used during this profile.
@@ -35,21 +35,21 @@ class AutoscaleProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacity': capacity.toMap(),
-      'fixedDate': ?fixedDate == null ? null : fixedDate!.toMap(),
+      'capacity': pulumi.Input.mapInputValue<ScaleCapacityResponse, Map<String, dynamic>>(capacity, (value) => value.toMap()),
+      'fixedDate': ?pulumi.Input.mapOptionalInputValue<TimeWindowResponse, Map<String, dynamic>>(fixedDate, (value) => value.toMap()),
       'name': name,
-      'recurrence': ?recurrence == null ? null : recurrence!.toMap(),
-      'rules': pulumi.Input.encodeList<ScaleRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'recurrence': ?pulumi.Input.mapOptionalInputValue<RecurrenceResponse, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<ScaleRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ScaleRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AutoscaleProfileResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleProfileResponse(
-      capacity: ScaleCapacityResponse.fromMap((map['capacity'] as Map).cast<String, dynamic>()),
-      fixedDate: map['fixedDate'] == null ? null : TimeWindowResponse.fromMap((map['fixedDate'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      recurrence: map['recurrence'] == null ? null : RecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>()),
-      rules: pulumi.Input.decodeList<ScaleRuleResponse>(map['rules'], (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      capacity: (ScaleCapacityResponse.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
+      fixedDate: map['fixedDate'] == null ? null : (TimeWindowResponse.fromMap((map['fixedDate'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      recurrence: map['recurrence'] == null ? null : (RecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      rules: (pulumi.Input.decodeList<ScaleRuleResponse>(map['rules'], (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

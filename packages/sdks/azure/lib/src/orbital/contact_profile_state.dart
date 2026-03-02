@@ -38,27 +38,17 @@ class ContactProfileState {
   /// [resourceGroupName] The name of the Resource Group where the contact profile exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   ContactProfileState({
-    pulumi.Output<String>? autoTracking,
-    pulumi.Output<String>? eventHubUri,
-    pulumi.Output<List<ContactProfileLink>>? links,
-    pulumi.Output<String>? location,
-    pulumi.Output<double>? minimumElevationDegrees,
-    pulumi.Output<String>? minimumVariableContactDuration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkConfigurationSubnetId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoTracking = pulumi.Input.asOptionalInput<String>(autoTracking),
-      eventHubUri = pulumi.Input.asOptionalInput<String>(eventHubUri),
-      links = pulumi.Input.asOptionalInput<List<ContactProfileLink>>(links),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minimumElevationDegrees = pulumi.Input.asOptionalInput<double>(minimumElevationDegrees),
-      minimumVariableContactDuration = pulumi.Input.asOptionalInput<String>(minimumVariableContactDuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfigurationSubnetId = pulumi.Input.asOptionalInput<String>(networkConfigurationSubnetId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoTracking,
+    this.eventHubUri,
+    this.links,
+    this.location,
+    this.minimumElevationDegrees,
+    this.minimumVariableContactDuration,
+    this.name,
+    this.networkConfigurationSubnetId,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class ContactProfileState {
 
   factory ContactProfileState.fromMap(Map<String, dynamic> map) {
     return ContactProfileState(
-      autoTracking: map['autoTracking'] == null ? null : pulumi.Output.create<String>(map['autoTracking'] as String),
-      eventHubUri: map['eventHubUri'] == null ? null : pulumi.Output.create<String>(map['eventHubUri'] as String),
-      links: map['links'] == null ? null : pulumi.Output.create<List<ContactProfileLink>>(pulumi.Input.decodeList<ContactProfileLink>(map['links'], (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : pulumi.Output.create<double>(map['minimumElevationDegrees'] as double),
-      minimumVariableContactDuration: map['minimumVariableContactDuration'] == null ? null : pulumi.Output.create<String>(map['minimumVariableContactDuration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfigurationSubnetId: map['networkConfigurationSubnetId'] == null ? null : pulumi.Output.create<String>(map['networkConfigurationSubnetId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoTracking: map['autoTracking'] == null ? null : (map['autoTracking'] as String).input(),
+      eventHubUri: map['eventHubUri'] == null ? null : (map['eventHubUri'] as String).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<ContactProfileLink>(map['links'], (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : (map['minimumElevationDegrees'] as double).input(),
+      minimumVariableContactDuration: map['minimumVariableContactDuration'] == null ? null : (map['minimumVariableContactDuration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfigurationSubnetId: map['networkConfigurationSubnetId'] == null ? null : (map['networkConfigurationSubnetId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetRelationshipArgs {
   /// [relationshipName] Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetRelationshipArgs({
-    required pulumi.Output<String> healthModelName,
-    required pulumi.Output<String> relationshipName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      relationshipName = pulumi.Input.asInput<String>(relationshipName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.healthModelName,
+    required this.relationshipName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRelationshipArgs {
 
   factory GetRelationshipArgs.fromMap(Map<String, dynamic> map) {
     return GetRelationshipArgs(
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      relationshipName: pulumi.Output.create<String>(map['relationshipName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      healthModelName: (map['healthModelName'] as String).input(),
+      relationshipName: (map['relationshipName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

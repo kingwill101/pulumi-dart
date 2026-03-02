@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerRetryPolicy {
   /// The maximum number of delivery attempts for any message. The only valid
   /// value is 1.
-  final int? maxAttempts;
+  final pulumi.Input<int>? maxAttempts;
 
   /// Creates a new [TriggerRetryPolicy].
   /// [maxAttempts] The maximum number of delivery attempts for any message. The only valid
@@ -20,7 +21,7 @@ class TriggerRetryPolicy {
 
   factory TriggerRetryPolicy.fromMap(Map<String, dynamic> map) {
     return TriggerRetryPolicy(
-      maxAttempts: map['maxAttempts'] == null ? null : map['maxAttempts'] as int,
+      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts'] as int).input(),
     );
   }
 }

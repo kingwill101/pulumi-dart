@@ -33,21 +33,14 @@ class PolicyGroupArgs {
   /// [policyPacks] List of policy packs applied to this policy group.
   /// [stacks] List of stack references that belong to this policy group.
   PolicyGroupArgs({
-    pulumi.Output<List<String>>? accounts,
-    pulumi.Output<String>? entityType,
-    pulumi.Output<String>? mode,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> organizationName,
-    pulumi.Output<List<PolicyGroupPolicyPackReference>>? policyPacks,
-    pulumi.Output<List<PolicyGroupStackReference>>? stacks,
-  }) :
-      accounts = pulumi.Input.asOptionalInput<List<String>>(accounts),
-      entityType = pulumi.Input.asOptionalInput<String>(entityType),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asInput<String>(name),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      policyPacks = pulumi.Input.asOptionalInput<List<PolicyGroupPolicyPackReference>>(policyPacks),
-      stacks = pulumi.Input.asOptionalInput<List<PolicyGroupStackReference>>(stacks);
+    this.accounts,
+    this.entityType,
+    this.mode,
+    required this.name,
+    required this.organizationName,
+    this.policyPacks,
+    this.stacks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class PolicyGroupArgs {
 
   factory PolicyGroupArgs.fromMap(Map<String, dynamic> map) {
     return PolicyGroupArgs(
-      accounts: map['accounts'] == null ? null : pulumi.Output.create<List<String>>((map['accounts'] as List).cast<String>()),
-      entityType: map['entityType'] == null ? null : pulumi.Output.create<String>(map['entityType'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      policyPacks: map['policyPacks'] == null ? null : pulumi.Output.create<List<PolicyGroupPolicyPackReference>>(pulumi.Input.decodeList<PolicyGroupPolicyPackReference>(map['policyPacks'], (value) => PolicyGroupPolicyPackReference.fromMap((value as Map).cast<String, dynamic>()))),
-      stacks: map['stacks'] == null ? null : pulumi.Output.create<List<PolicyGroupStackReference>>(pulumi.Input.decodeList<PolicyGroupStackReference>(map['stacks'], (value) => PolicyGroupStackReference.fromMap((value as Map).cast<String, dynamic>()))),
+      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: (map['name'] as String).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      policyPacks: map['policyPacks'] == null ? null : (pulumi.Input.decodeList<PolicyGroupPolicyPackReference>(map['policyPacks'], (value) => PolicyGroupPolicyPackReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stacks: map['stacks'] == null ? null : (pulumi.Input.decodeList<PolicyGroupStackReference>(map['stacks'], (value) => PolicyGroupStackReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

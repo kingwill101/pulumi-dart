@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A PTR record.
 class PtrRecordResponse {
   /// The PTR target domain name for this PTR record.
-  final String? ptrdname;
+  final pulumi.Input<String>? ptrdname;
 
   /// Creates a new [PtrRecordResponse].
   /// [ptrdname] The PTR target domain name for this PTR record.
@@ -20,7 +21,7 @@ class PtrRecordResponse {
 
   factory PtrRecordResponse.fromMap(Map<String, dynamic> map) {
     return PtrRecordResponse(
-      ptrdname: map['ptrdname'] == null ? null : map['ptrdname'] as String,
+      ptrdname: map['ptrdname'] == null ? null : (map['ptrdname'] as String).input(),
     );
   }
 }

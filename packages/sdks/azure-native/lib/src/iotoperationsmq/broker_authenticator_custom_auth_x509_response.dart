@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_certificate_properties_response.dart';
 
 /// X509 Custom Authentication properties. NOTE - Enum only authenticator type supported at a time.
 class BrokerAuthenticatorCustomAuthX509Response {
   /// Keyvault X509 secret properties.
-  final KeyVaultCertificatePropertiesResponse? keyVault;
+  final pulumi.Input<KeyVaultCertificatePropertiesResponse>? keyVault;
   /// Secret where cert details are stored.
-  final String? secretName;
+  final pulumi.Input<String>? secretName;
 
   /// Creates a new [BrokerAuthenticatorCustomAuthX509Response].
   /// [keyVault] Keyvault X509 secret properties.
@@ -19,15 +20,15 @@ class BrokerAuthenticatorCustomAuthX509Response {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVault': ?keyVault == null ? null : keyVault!.toMap(),
+      'keyVault': ?pulumi.Input.mapOptionalInputValue<KeyVaultCertificatePropertiesResponse, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
       'secretName': ?secretName,
     };
   }
 
   factory BrokerAuthenticatorCustomAuthX509Response.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorCustomAuthX509Response(
-      keyVault: map['keyVault'] == null ? null : KeyVaultCertificatePropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>()),
-      secretName: map['secretName'] == null ? null : map['secretName'] as String,
+      keyVault: map['keyVault'] == null ? null : (KeyVaultCertificatePropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
     );
   }
 }

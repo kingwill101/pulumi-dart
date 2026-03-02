@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StandardAppVersionBasicScaling {
   /// Duration of time after the last request that an instance must wait before the instance is shut down.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
-  final String? idleTimeout;
+  final pulumi.Input<String>? idleTimeout;
   /// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
-  final int maxInstances;
+  final pulumi.Input<int> maxInstances;
 
   /// Creates a new [StandardAppVersionBasicScaling].
   /// [idleTimeout] Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -25,8 +26,8 @@ class StandardAppVersionBasicScaling {
 
   factory StandardAppVersionBasicScaling.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionBasicScaling(
-      idleTimeout: map['idleTimeout'] == null ? null : map['idleTimeout'] as String,
-      maxInstances: map['maxInstances'] as int,
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as String).input(),
+      maxInstances: (map['maxInstances'] as int).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class InventoryItemArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [vcenterName] Name of the vCenter.
   InventoryItemArgs({
-    pulumi.Output<String>? inventoryItemName,
-    required pulumi.Output<String> inventoryType,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? managedResourceId,
-    pulumi.Output<String>? moName,
-    pulumi.Output<String>? moRefId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vcenterName,
-  }) :
-      inventoryItemName = pulumi.Input.asOptionalInput<String>(inventoryItemName),
-      inventoryType = pulumi.Input.asInput<String>(inventoryType),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      managedResourceId = pulumi.Input.asOptionalInput<String>(managedResourceId),
-      moName = pulumi.Input.asOptionalInput<String>(moName),
-      moRefId = pulumi.Input.asOptionalInput<String>(moRefId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vcenterName = pulumi.Input.asInput<String>(vcenterName);
+    this.inventoryItemName,
+    required this.inventoryType,
+    this.kind,
+    this.managedResourceId,
+    this.moName,
+    this.moRefId,
+    required this.resourceGroupName,
+    required this.vcenterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class InventoryItemArgs {
 
   factory InventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return InventoryItemArgs(
-      inventoryItemName: map['inventoryItemName'] == null ? null : pulumi.Output.create<String>(map['inventoryItemName'] as String),
-      inventoryType: pulumi.Output.create<String>(map['inventoryType'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      managedResourceId: map['managedResourceId'] == null ? null : pulumi.Output.create<String>(map['managedResourceId'] as String),
-      moName: map['moName'] == null ? null : pulumi.Output.create<String>(map['moName'] as String),
-      moRefId: map['moRefId'] == null ? null : pulumi.Output.create<String>(map['moRefId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vcenterName: pulumi.Output.create<String>(map['vcenterName'] as String),
+      inventoryItemName: map['inventoryItemName'] == null ? null : (map['inventoryItemName'] as String).input(),
+      inventoryType: (map['inventoryType'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      managedResourceId: map['managedResourceId'] == null ? null : (map['managedResourceId'] as String).input(),
+      moName: map['moName'] == null ? null : (map['moName'] as String).input(),
+      moRefId: map['moRefId'] == null ? null : (map['moRefId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vcenterName: (map['vcenterName'] as String).input(),
     );
   }
 }

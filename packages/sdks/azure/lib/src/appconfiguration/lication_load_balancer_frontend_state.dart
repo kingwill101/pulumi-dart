@@ -19,15 +19,11 @@ class LicationLoadBalancerFrontendState {
   /// [name] The name which should be used for this Application Gateway for Containers Frontend. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Application Gateway for Containers Frontend.
   LicationLoadBalancerFrontendState({
-    pulumi.Output<String>? applicationLoadBalancerId,
-    pulumi.Output<String>? fullyQualifiedDomainName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationLoadBalancerId = pulumi.Input.asOptionalInput<String>(applicationLoadBalancerId),
-      fullyQualifiedDomainName = pulumi.Input.asOptionalInput<String>(fullyQualifiedDomainName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationLoadBalancerId,
+    this.fullyQualifiedDomainName,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class LicationLoadBalancerFrontendState {
 
   factory LicationLoadBalancerFrontendState.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerFrontendState(
-      applicationLoadBalancerId: map['applicationLoadBalancerId'] == null ? null : pulumi.Output.create<String>(map['applicationLoadBalancerId'] as String),
-      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] == null ? null : pulumi.Output.create<String>(map['fullyQualifiedDomainName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationLoadBalancerId: map['applicationLoadBalancerId'] == null ? null : (map['applicationLoadBalancerId'] as String).input(),
+      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] == null ? null : (map['fullyQualifiedDomainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

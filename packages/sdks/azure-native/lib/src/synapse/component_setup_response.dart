@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secure_string_response.dart';
 
 /// The custom setup of installing 3rd party components.
 class ComponentSetupResponse {
   /// The name of the 3rd party component.
-  final String componentName;
+  final pulumi.Input<String> componentName;
   /// The license key to activate the component.
-  final SecureStringResponse? licenseKey;
+  final pulumi.Input<SecureStringResponse>? licenseKey;
   /// The type of custom setup.
   /// Expected value is 'ComponentSetup'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ComponentSetupResponse].
   /// [componentName] The name of the 3rd party component.
@@ -25,16 +26,16 @@ class ComponentSetupResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'componentName': componentName,
-      'licenseKey': ?licenseKey == null ? null : licenseKey!.toMap(),
+      'licenseKey': ?pulumi.Input.mapOptionalInputValue<SecureStringResponse, Map<String, dynamic>>(licenseKey, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ComponentSetupResponse.fromMap(Map<String, dynamic> map) {
     return ComponentSetupResponse(
-      componentName: map['componentName'] as String,
-      licenseKey: map['licenseKey'] == null ? null : SecureStringResponse.fromMap((map['licenseKey'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      componentName: (map['componentName'] as String).input(),
+      licenseKey: map['licenseKey'] == null ? null : (SecureStringResponse.fromMap((map['licenseKey'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission {
   /// Set of AWS Organization ARNs.
-  final List<String> organizationArns;
+  final pulumi.Input<List<String>> organizationArns;
   /// Set of AWS Organizational Unit ARNs.
-  final List<String> organizationalUnitArns;
+  final pulumi.Input<List<String>> organizationalUnitArns;
   /// Set of EC2 launch permission user groups.
-  final List<String> userGroups;
+  final pulumi.Input<List<String>> userGroups;
   /// Set of AWS Account identifiers.
-  final List<String> userIds;
+  final pulumi.Input<List<String>> userIds;
 
   /// Creates a new [GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission].
   /// [organizationArns] Set of AWS Organization ARNs.
@@ -34,10 +35,10 @@ class GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunch
 
   factory GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission(
-      organizationArns: (map['organizationArns'] as List).cast<String>(),
-      organizationalUnitArns: (map['organizationalUnitArns'] as List).cast<String>(),
-      userGroups: (map['userGroups'] as List).cast<String>(),
-      userIds: (map['userIds'] as List).cast<String>(),
+      organizationArns: ((map['organizationArns'] as List).cast<String>()).input(),
+      organizationalUnitArns: ((map['organizationalUnitArns'] as List).cast<String>()).input(),
+      userGroups: ((map['userGroups'] as List).cast<String>()).input(),
+      userIds: ((map['userIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Entra Authentication configuration.
 class EntraAuthenticationResponse {
   /// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The method used for Entra authentication
-  final String? identityType;
+  final pulumi.Input<String>? identityType;
 
   /// Creates a new [EntraAuthenticationResponse].
   /// [clientId] The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
@@ -25,8 +26,8 @@ class EntraAuthenticationResponse {
 
   factory EntraAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return EntraAuthenticationResponse(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      identityType: map['identityType'] == null ? null : map['identityType'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadStatusConfigAutomaticRuleNrqlQuery {
   /// The entity search query that is used to perform the search of a group of entities.
-  final String query;
+  final pulumi.Input<String> query;
 
   /// Creates a new [WorkloadStatusConfigAutomaticRuleNrqlQuery].
   /// [query] The entity search query that is used to perform the search of a group of entities.
@@ -19,7 +20,7 @@ class WorkloadStatusConfigAutomaticRuleNrqlQuery {
 
   factory WorkloadStatusConfigAutomaticRuleNrqlQuery.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigAutomaticRuleNrqlQuery(
-      query: map['query'] as String,
+      query: (map['query'] as String).input(),
     );
   }
 }

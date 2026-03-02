@@ -37,25 +37,16 @@ class AttachedDatabaseConfigurationArgs {
   /// [resourceGroupName] Specifies the resource group of the Kusto Cluster for which the configuration will be created. Changing this forces a new resource to be created.
   /// [sharing] A `sharing` block as defined below.
   AttachedDatabaseConfigurationArgs({
-    pulumi.Output<String>? clusterId,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? clusterResourceId,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? defaultPrincipalModificationKind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AttachedDatabaseConfigurationSharing>? sharing,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      clusterResourceId = pulumi.Input.asOptionalInput<String>(clusterResourceId),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      defaultPrincipalModificationKind = pulumi.Input.asOptionalInput<String>(defaultPrincipalModificationKind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sharing = pulumi.Input.asOptionalInput<AttachedDatabaseConfigurationSharing>(sharing);
+    this.clusterId,
+    required this.clusterName,
+    this.clusterResourceId,
+    required this.databaseName,
+    this.defaultPrincipalModificationKind,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.sharing,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class AttachedDatabaseConfigurationArgs {
 
   factory AttachedDatabaseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AttachedDatabaseConfigurationArgs(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterResourceId: map['clusterResourceId'] == null ? null : pulumi.Output.create<String>(map['clusterResourceId'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      defaultPrincipalModificationKind: map['defaultPrincipalModificationKind'] == null ? null : pulumi.Output.create<String>(map['defaultPrincipalModificationKind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharing: map['sharing'] == null ? null : pulumi.Output.create<AttachedDatabaseConfigurationSharing>(AttachedDatabaseConfigurationSharing.fromMap((map['sharing'] as Map).cast<String, dynamic>())),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterResourceId: map['clusterResourceId'] == null ? null : (map['clusterResourceId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      defaultPrincipalModificationKind: map['defaultPrincipalModificationKind'] == null ? null : (map['defaultPrincipalModificationKind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sharing: map['sharing'] == null ? null : (AttachedDatabaseConfigurationSharing.fromMap((map['sharing'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

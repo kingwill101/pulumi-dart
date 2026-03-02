@@ -21,17 +21,12 @@ class GroupAssociationState {
   /// [groupName] Name of the group that the canary will be associated with.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GroupAssociationState({
-    pulumi.Output<String>? canaryArn,
-    pulumi.Output<String>? groupArn,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? region,
-  }) :
-      canaryArn = pulumi.Input.asOptionalInput<String>(canaryArn),
-      groupArn = pulumi.Input.asOptionalInput<String>(groupArn),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.canaryArn,
+    this.groupArn,
+    this.groupId,
+    this.groupName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +40,11 @@ class GroupAssociationState {
 
   factory GroupAssociationState.fromMap(Map<String, dynamic> map) {
     return GroupAssociationState(
-      canaryArn: map['canaryArn'] == null ? null : pulumi.Output.create<String>(map['canaryArn'] as String),
-      groupArn: map['groupArn'] == null ? null : pulumi.Output.create<String>(map['groupArn'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      canaryArn: map['canaryArn'] == null ? null : (map['canaryArn'] as String).input(),
+      groupArn: map['groupArn'] == null ? null : (map['groupArn'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

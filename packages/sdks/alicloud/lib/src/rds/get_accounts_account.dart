@@ -5,19 +5,19 @@ import 'get_accounts_account_database_privilege.dart';
 
 class GetAccountsAccount {
   /// Database description.
-  final String accountDescription;
+  final pulumi.Input<String> accountDescription;
   /// Name of database account.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Privilege type of account.
-  final String accountType;
+  final pulumi.Input<String> accountType;
   /// A list of database permissions the account has.
-  final List<GetAccountsAccountDatabasePrivilege> databasePrivileges;
+  final pulumi.Input<List<GetAccountsAccountDatabasePrivilege>> databasePrivileges;
   /// The ID of the Account.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether the maximum number of databases managed by the account is exceeded.
-  final String privExceeded;
+  final pulumi.Input<String> privExceeded;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetAccountsAccount].
   /// [accountDescription] Database description.
@@ -42,7 +42,7 @@ class GetAccountsAccount {
       'accountDescription': accountDescription,
       'accountName': accountName,
       'accountType': accountType,
-      'databasePrivileges': pulumi.Input.encodeList<GetAccountsAccountDatabasePrivilege, Map<String, dynamic>>(databasePrivileges, (value) => value.toMap()),
+      'databasePrivileges': pulumi.Input.mapInputValue<List<GetAccountsAccountDatabasePrivilege>, List<Map<String, dynamic>>>(databasePrivileges, (value) => pulumi.Input.encodeList<GetAccountsAccountDatabasePrivilege, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'privExceeded': privExceeded,
       'status': status,
@@ -51,13 +51,13 @@ class GetAccountsAccount {
 
   factory GetAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccount(
-      accountDescription: map['accountDescription'] as String,
-      accountName: map['accountName'] as String,
-      accountType: map['accountType'] as String,
-      databasePrivileges: pulumi.Input.decodeList<GetAccountsAccountDatabasePrivilege>(map['databasePrivileges'], (value) => GetAccountsAccountDatabasePrivilege.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      privExceeded: map['privExceeded'] as String,
-      status: map['status'] as String,
+      accountDescription: (map['accountDescription'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      accountType: (map['accountType'] as String).input(),
+      databasePrivileges: (pulumi.Input.decodeList<GetAccountsAccountDatabasePrivilege>(map['databasePrivileges'], (value) => GetAccountsAccountDatabasePrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      privExceeded: (map['privExceeded'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

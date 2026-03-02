@@ -35,23 +35,15 @@ class CaPoolArgs {
   /// [requestId] Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [tier] Immutable. The Tier of this CaPool.
   CaPoolArgs({
-    required pulumi.Output<String> caPoolId,
-    pulumi.Output<IssuancePolicy>? issuancePolicy,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<PublishingOptions>? publishingOptions,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<CaPoolTier> tier,
-  }) :
-      caPoolId = pulumi.Input.asInput<String>(caPoolId),
-      issuancePolicy = pulumi.Input.asOptionalInput<IssuancePolicy>(issuancePolicy),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publishingOptions = pulumi.Input.asOptionalInput<PublishingOptions>(publishingOptions),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      tier = pulumi.Input.asInput<CaPoolTier>(tier);
+    required this.caPoolId,
+    this.issuancePolicy,
+    this.labels,
+    this.location,
+    this.project,
+    this.publishingOptions,
+    this.requestId,
+    required this.tier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class CaPoolArgs {
 
   factory CaPoolArgs.fromMap(Map<String, dynamic> map) {
     return CaPoolArgs(
-      caPoolId: pulumi.Output.create<String>(map['caPoolId'] as String),
-      issuancePolicy: map['issuancePolicy'] == null ? null : pulumi.Output.create<IssuancePolicy>(IssuancePolicy.fromMap((map['issuancePolicy'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publishingOptions: map['publishingOptions'] == null ? null : pulumi.Output.create<PublishingOptions>(PublishingOptions.fromMap((map['publishingOptions'] as Map).cast<String, dynamic>())),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      tier: pulumi.Output.create<CaPoolTier>(CaPoolTier.fromValue(map['tier'] as String)),
+      caPoolId: (map['caPoolId'] as String).input(),
+      issuancePolicy: map['issuancePolicy'] == null ? null : (IssuancePolicy.fromMap((map['issuancePolicy'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publishingOptions: map['publishingOptions'] == null ? null : (PublishingOptions.fromMap((map['publishingOptions'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      tier: (CaPoolTier.fromValue(map['tier'] as String)).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsLaunchTemplatesTemplateDataDisk {
   /// The category of the system disk.
-  final String category;
+  final pulumi.Input<String> category;
   /// Specifies whether to release the system disk when the instance is released.
-  final bool deleteWithInstance;
+  final pulumi.Input<bool> deleteWithInstance;
   /// System disk description.
-  final String description;
+  final pulumi.Input<String> description;
   /// Encrypted the data in this disk.
-  final bool encrypted;
+  final pulumi.Input<bool> encrypted;
   /// System disk name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The performance level of the ESSD used as the system disk.
-  final String performanceLevel;
+  final pulumi.Input<String> performanceLevel;
   /// Size of the system disk, measured in GB.
-  final int size;
+  final pulumi.Input<int> size;
   /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
 
   /// Creates a new [GetEcsLaunchTemplatesTemplateDataDisk].
   /// [category] The category of the system disk.
@@ -54,14 +55,14 @@ class GetEcsLaunchTemplatesTemplateDataDisk {
 
   factory GetEcsLaunchTemplatesTemplateDataDisk.fromMap(Map<String, dynamic> map) {
     return GetEcsLaunchTemplatesTemplateDataDisk(
-      category: map['category'] as String,
-      deleteWithInstance: map['deleteWithInstance'] as bool,
-      description: map['description'] as String,
-      encrypted: map['encrypted'] as bool,
-      name: map['name'] as String,
-      performanceLevel: map['performanceLevel'] as String,
-      size: map['size'] as int,
-      snapshotId: map['snapshotId'] as String,
+      category: (map['category'] as String).input(),
+      deleteWithInstance: (map['deleteWithInstance'] as bool).input(),
+      description: (map['description'] as String).input(),
+      encrypted: (map['encrypted'] as bool).input(),
+      name: (map['name'] as String).input(),
+      performanceLevel: (map['performanceLevel'] as String).input(),
+      size: (map['size'] as int).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
     );
   }
 }

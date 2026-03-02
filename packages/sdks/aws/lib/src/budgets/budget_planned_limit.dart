@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetPlannedLimit {
   /// (Required) The amount of cost or usage being measured for a budget.
-  final String amount;
+  final pulumi.Input<String> amount;
   /// (Required) The start time of the budget limit. Format: `2017-01-01_12:00`. See [PlannedBudgetLimits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.html#awscostmanagement-Type-budgets_Budget-PlannedBudgetLimits) documentation.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// (Required) The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
-  final String unit;
+  final pulumi.Input<String> unit;
 
   /// Creates a new [BudgetPlannedLimit].
   /// [amount] (Required) The amount of cost or usage being measured for a budget.
@@ -29,9 +30,9 @@ class BudgetPlannedLimit {
 
   factory BudgetPlannedLimit.fromMap(Map<String, dynamic> map) {
     return BudgetPlannedLimit(
-      amount: map['amount'] as String,
-      startTime: map['startTime'] as String,
-      unit: map['unit'] as String,
+      amount: (map['amount'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      unit: (map['unit'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A contact person for the entry.
 class GoogleCloudDatacatalogV1ContactsPersonResponse {
   /// Designation of the person, for example, Data Steward.
-  final String designation;
+  final pulumi.Input<String> designation;
   /// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
-  final String email;
+  final pulumi.Input<String> email;
 
   /// Creates a new [GoogleCloudDatacatalogV1ContactsPersonResponse].
   /// [designation] Designation of the person, for example, Data Steward.
@@ -25,8 +26,8 @@ class GoogleCloudDatacatalogV1ContactsPersonResponse {
 
   factory GoogleCloudDatacatalogV1ContactsPersonResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ContactsPersonResponse(
-      designation: map['designation'] as String,
-      email: map['email'] as String,
+      designation: (map['designation'] as String).input(),
+      email: (map['email'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class DomainExtensionArgs {
   /// [loadBalancerId] The ID of the SLB instance.
   /// [serverCertificateId] The ID of the certificate used by the domain name.
   DomainExtensionArgs({
-    pulumi.Output<bool>? deleteProtectionValidation,
-    required pulumi.Output<String> domain,
-    required pulumi.Output<int> frontendPort,
-    required pulumi.Output<String> loadBalancerId,
-    required pulumi.Output<String> serverCertificateId,
-  }) :
-      deleteProtectionValidation = pulumi.Input.asOptionalInput<bool>(deleteProtectionValidation),
-      domain = pulumi.Input.asInput<String>(domain),
-      frontendPort = pulumi.Input.asInput<int>(frontendPort),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      serverCertificateId = pulumi.Input.asInput<String>(serverCertificateId);
+    this.deleteProtectionValidation,
+    required this.domain,
+    required this.frontendPort,
+    required this.loadBalancerId,
+    required this.serverCertificateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DomainExtensionArgs {
 
   factory DomainExtensionArgs.fromMap(Map<String, dynamic> map) {
     return DomainExtensionArgs(
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : pulumi.Output.create<bool>(map['deleteProtectionValidation'] as bool),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      frontendPort: pulumi.Output.create<int>(map['frontendPort'] as int),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      serverCertificateId: pulumi.Output.create<String>(map['serverCertificateId'] as String),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      domain: (map['domain'] as String).input(),
+      frontendPort: (map['frontendPort'] as int).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      serverCertificateId: (map['serverCertificateId'] as String).input(),
     );
   }
 }

@@ -23,13 +23,10 @@ class GetRecordsArgs {
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
   GetRecordsArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<List<GetRecordsFilter>>? filters,
-    pulumi.Output<List<GetRecordsSort>>? sorts,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      filters = pulumi.Input.asOptionalInput<List<GetRecordsFilter>>(filters),
-      sorts = pulumi.Input.asOptionalInput<List<GetRecordsSort>>(sorts);
+    required this.domain,
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetRecordsArgs {
 
   factory GetRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordsArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetRecordsFilter>>(pulumi.Input.decodeList<GetRecordsFilter>(map['filters'], (value) => GetRecordsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      sorts: map['sorts'] == null ? null : pulumi.Output.create<List<GetRecordsSort>>(pulumi.Input.decodeList<GetRecordsSort>(map['sorts'], (value) => GetRecordsSort.fromMap((value as Map).cast<String, dynamic>()))),
+      domain: (map['domain'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRecordsFilter>(map['filters'], (value) => GetRecordsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetRecordsSort>(map['sorts'], (value) => GetRecordsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

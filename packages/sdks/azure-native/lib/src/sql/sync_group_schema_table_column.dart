@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of column in sync group table.
 class SyncGroupSchemaTableColumn {
   /// Data size of the column.
-  final String? dataSize;
+  final pulumi.Input<String>? dataSize;
   /// Data type of the column.
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// Quoted name of sync group table column.
-  final String? quotedName;
+  final pulumi.Input<String>? quotedName;
 
   /// Creates a new [SyncGroupSchemaTableColumn].
   /// [dataSize] Data size of the column.
@@ -30,9 +31,9 @@ class SyncGroupSchemaTableColumn {
 
   factory SyncGroupSchemaTableColumn.fromMap(Map<String, dynamic> map) {
     return SyncGroupSchemaTableColumn(
-      dataSize: map['dataSize'] == null ? null : map['dataSize'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      quotedName: map['quotedName'] == null ? null : map['quotedName'] as String,
+      dataSize: map['dataSize'] == null ? null : (map['dataSize'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      quotedName: map['quotedName'] == null ? null : (map['quotedName'] as String).input(),
     );
   }
 }

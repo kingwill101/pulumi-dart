@@ -6,10 +6,10 @@ import 'instance_effective_replication_replica.dart';
 class InstanceEffectiveReplication {
   /// The replication role.
   /// Structure is documented below.
-  final List<InstanceEffectiveReplicationReplica>? replicas;
+  final pulumi.Input<List<InstanceEffectiveReplicationReplica>>? replicas;
   /// (Output)
   /// The replication role.
-  final String? role;
+  final pulumi.Input<String>? role;
 
   /// Creates a new [InstanceEffectiveReplication].
   /// [replicas] The replication role.
@@ -21,15 +21,15 @@ class InstanceEffectiveReplication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicas': ?replicas == null ? null : pulumi.Input.encodeList<InstanceEffectiveReplicationReplica, Map<String, dynamic>>(replicas!, (value) => value.toMap()),
+      'replicas': ?pulumi.Input.mapOptionalInputValue<List<InstanceEffectiveReplicationReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<InstanceEffectiveReplicationReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
       'role': ?role,
     };
   }
 
   factory InstanceEffectiveReplication.fromMap(Map<String, dynamic> map) {
     return InstanceEffectiveReplication(
-      replicas: map['replicas'] == null ? null : pulumi.Input.decodeList<InstanceEffectiveReplicationReplica>(map['replicas'], (value) => InstanceEffectiveReplicationReplica.fromMap((value as Map).cast<String, dynamic>())),
-      role: map['role'] == null ? null : map['role'] as String,
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceEffectiveReplicationReplica>(map['replicas'], (value) => InstanceEffectiveReplicationReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class TemplateSourceArgs {
   /// [sourceName] Source name.
   /// [sourceURL] Github URL of the repository from which to grab templates.
   TemplateSourceArgs({
-    pulumi.Output<TemplateSourceDestination>? destination,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> sourceName,
-    required pulumi.Output<String> sourceURL,
-  }) :
-      destination = pulumi.Input.asOptionalInput<TemplateSourceDestination>(destination),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      sourceName = pulumi.Input.asInput<String>(sourceName),
-      sourceURL = pulumi.Input.asInput<String>(sourceURL);
+    this.destination,
+    required this.organizationName,
+    required this.sourceName,
+    required this.sourceURL,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TemplateSourceArgs {
 
   factory TemplateSourceArgs.fromMap(Map<String, dynamic> map) {
     return TemplateSourceArgs(
-      destination: map['destination'] == null ? null : pulumi.Output.create<TemplateSourceDestination>(TemplateSourceDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      sourceName: pulumi.Output.create<String>(map['sourceName'] as String),
-      sourceURL: pulumi.Output.create<String>(map['sourceURL'] as String),
+      destination: map['destination'] == null ? null : (TemplateSourceDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      sourceName: (map['sourceName'] as String).input(),
+      sourceURL: (map['sourceURL'] as String).input(),
     );
   }
 }

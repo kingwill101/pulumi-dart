@@ -42,27 +42,17 @@ class QueueCloudtasksV2beta2Args {
   /// [taskTtl] The maximum amount of time that a task will be retained in this queue. Queues created by Cloud Tasks have a default `task_ttl` of 31 days. After a task has lived for `task_ttl`, the task will be deleted regardless of whether it was dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is equal to the maximum duration because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue) for these queues. To view the maximum valid duration, see the documentation for Duration.
   /// [tombstoneTtl] The task tombstone time to live (TTL). After a task is deleted or completed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
   QueueCloudtasksV2beta2Args({
-    pulumi.Output<AppEngineHttpTarget>? appEngineHttpTarget,
-    pulumi.Output<HttpTargetCloudtasksV2beta2>? httpTarget,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, dynamic>>? pullTarget,
-    pulumi.Output<RateLimitsCloudtasksV2beta2>? rateLimits,
-    pulumi.Output<RetryConfigCloudtasksV2beta2>? retryConfig,
-    pulumi.Output<String>? taskTtl,
-    pulumi.Output<String>? tombstoneTtl,
-  }) :
-      appEngineHttpTarget = pulumi.Input.asOptionalInput<AppEngineHttpTarget>(appEngineHttpTarget),
-      httpTarget = pulumi.Input.asOptionalInput<HttpTargetCloudtasksV2beta2>(httpTarget),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pullTarget = pulumi.Input.asOptionalInput<Map<String, dynamic>>(pullTarget),
-      rateLimits = pulumi.Input.asOptionalInput<RateLimitsCloudtasksV2beta2>(rateLimits),
-      retryConfig = pulumi.Input.asOptionalInput<RetryConfigCloudtasksV2beta2>(retryConfig),
-      taskTtl = pulumi.Input.asOptionalInput<String>(taskTtl),
-      tombstoneTtl = pulumi.Input.asOptionalInput<String>(tombstoneTtl);
+    this.appEngineHttpTarget,
+    this.httpTarget,
+    this.location,
+    this.name,
+    this.project,
+    this.pullTarget,
+    this.rateLimits,
+    this.retryConfig,
+    this.taskTtl,
+    this.tombstoneTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class QueueCloudtasksV2beta2Args {
 
   factory QueueCloudtasksV2beta2Args.fromMap(Map<String, dynamic> map) {
     return QueueCloudtasksV2beta2Args(
-      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : pulumi.Output.create<AppEngineHttpTarget>(AppEngineHttpTarget.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())),
-      httpTarget: map['httpTarget'] == null ? null : pulumi.Output.create<HttpTargetCloudtasksV2beta2>(HttpTargetCloudtasksV2beta2.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pullTarget: map['pullTarget'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['pullTarget'] as Map).cast<String, dynamic>()),
-      rateLimits: map['rateLimits'] == null ? null : pulumi.Output.create<RateLimitsCloudtasksV2beta2>(RateLimitsCloudtasksV2beta2.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())),
-      retryConfig: map['retryConfig'] == null ? null : pulumi.Output.create<RetryConfigCloudtasksV2beta2>(RetryConfigCloudtasksV2beta2.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())),
-      taskTtl: map['taskTtl'] == null ? null : pulumi.Output.create<String>(map['taskTtl'] as String),
-      tombstoneTtl: map['tombstoneTtl'] == null ? null : pulumi.Output.create<String>(map['tombstoneTtl'] as String),
+      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (AppEngineHttpTarget.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())).input(),
+      httpTarget: map['httpTarget'] == null ? null : (HttpTargetCloudtasksV2beta2.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pullTarget: map['pullTarget'] == null ? null : ((map['pullTarget'] as Map).cast<String, dynamic>()).input(),
+      rateLimits: map['rateLimits'] == null ? null : (RateLimitsCloudtasksV2beta2.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (RetryConfigCloudtasksV2beta2.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
+      taskTtl: map['taskTtl'] == null ? null : (map['taskTtl'] as String).input(),
+      tombstoneTtl: map['tombstoneTtl'] == null ? null : (map['tombstoneTtl'] as String).input(),
     );
   }
 }

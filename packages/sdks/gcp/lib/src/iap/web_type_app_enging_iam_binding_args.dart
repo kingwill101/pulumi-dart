@@ -41,17 +41,12 @@ class WebTypeAppEngingIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   WebTypeAppEngingIamBindingArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<WebTypeAppEngingIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      condition = pulumi.Input.asOptionalInput<WebTypeAppEngingIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    required this.appId,
+    this.condition,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,11 +60,11 @@ class WebTypeAppEngingIamBindingArgs {
 
   factory WebTypeAppEngingIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return WebTypeAppEngingIamBindingArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<WebTypeAppEngingIamBindingCondition>(WebTypeAppEngingIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      appId: (map['appId'] as String).input(),
+      condition: map['condition'] == null ? null : (WebTypeAppEngingIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnGatewayConnectionTrafficSelectorPolicy {
   /// A list of local address spaces in CIDR format for this VPN Gateway Connection.
-  final List<String> localAddressRanges;
+  final pulumi.Input<List<String>> localAddressRanges;
   /// A list of remote address spaces in CIDR format for this VPN Gateway Connection.
-  final List<String> remoteAddressRanges;
+  final pulumi.Input<List<String>> remoteAddressRanges;
 
   /// Creates a new [VpnGatewayConnectionTrafficSelectorPolicy].
   /// [localAddressRanges] A list of local address spaces in CIDR format for this VPN Gateway Connection.
@@ -24,8 +25,8 @@ class VpnGatewayConnectionTrafficSelectorPolicy {
 
   factory VpnGatewayConnectionTrafficSelectorPolicy.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionTrafficSelectorPolicy(
-      localAddressRanges: (map['localAddressRanges'] as List).cast<String>(),
-      remoteAddressRanges: (map['remoteAddressRanges'] as List).cast<String>(),
+      localAddressRanges: ((map['localAddressRanges'] as List).cast<String>()).input(),
+      remoteAddressRanges: ((map['remoteAddressRanges'] as List).cast<String>()).input(),
     );
   }
 }

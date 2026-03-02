@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automation_rule_criteria_updated_at_date_range.dart';
 
 class AutomationRuleCriteriaUpdatedAt {
   /// A configuration block of the date range for the date filter. See date_range below for more details.
-  final AutomationRuleCriteriaUpdatedAtDateRange? dateRange;
+  final pulumi.Input<AutomationRuleCriteriaUpdatedAtDateRange>? dateRange;
   /// An end date for the date filter. Required with `start` if `date_range` is not specified.
-  final String? end;
+  final pulumi.Input<String>? end;
   /// A start date for the date filter. Required with `end` if `date_range` is not specified.
-  final String? start;
+  final pulumi.Input<String>? start;
 
   /// Creates a new [AutomationRuleCriteriaUpdatedAt].
   /// [dateRange] A configuration block of the date range for the date filter. See date_range below for more details.
@@ -22,7 +23,7 @@ class AutomationRuleCriteriaUpdatedAt {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dateRange': ?dateRange == null ? null : dateRange!.toMap(),
+      'dateRange': ?pulumi.Input.mapOptionalInputValue<AutomationRuleCriteriaUpdatedAtDateRange, Map<String, dynamic>>(dateRange, (value) => value.toMap()),
       'end': ?end,
       'start': ?start,
     };
@@ -30,9 +31,9 @@ class AutomationRuleCriteriaUpdatedAt {
 
   factory AutomationRuleCriteriaUpdatedAt.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaUpdatedAt(
-      dateRange: map['dateRange'] == null ? null : AutomationRuleCriteriaUpdatedAtDateRange.fromMap((map['dateRange'] as Map).cast<String, dynamic>()),
-      end: map['end'] == null ? null : map['end'] as String,
-      start: map['start'] == null ? null : map['start'] as String,
+      dateRange: map['dateRange'] == null ? null : (AutomationRuleCriteriaUpdatedAtDateRange.fromMap((map['dateRange'] as Map).cast<String, dynamic>())).input(),
+      end: map['end'] == null ? null : (map['end'] as String).input(),
+      start: map['start'] == null ? null : (map['start'] as String).input(),
     );
   }
 }

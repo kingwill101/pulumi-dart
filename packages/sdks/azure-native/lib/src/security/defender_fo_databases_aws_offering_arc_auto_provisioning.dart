@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'arc_auto_provisioning_configuration.dart';
 
 /// The ARC autoprovisioning configuration
 class DefenderFoDatabasesAwsOfferingArcAutoProvisioning {
   /// The cloud role ARN in AWS for this feature
-  final String? cloudRoleArn;
+  final pulumi.Input<String>? cloudRoleArn;
   /// Configuration for servers Arc auto provisioning for a given environment
-  final ArcAutoProvisioningConfiguration? configuration;
+  final pulumi.Input<ArcAutoProvisioningConfiguration>? configuration;
   /// Is arc auto provisioning enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderFoDatabasesAwsOfferingArcAutoProvisioning].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
@@ -24,16 +25,16 @@ class DefenderFoDatabasesAwsOfferingArcAutoProvisioning {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cloudRoleArn': ?cloudRoleArn,
-      'configuration': ?configuration == null ? null : configuration!.toMap(),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<ArcAutoProvisioningConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
   factory DefenderFoDatabasesAwsOfferingArcAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderFoDatabasesAwsOfferingArcAutoProvisioning(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
-      configuration: map['configuration'] == null ? null : ArcAutoProvisioningConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      configuration: map['configuration'] == null ? null : (ArcAutoProvisioningConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

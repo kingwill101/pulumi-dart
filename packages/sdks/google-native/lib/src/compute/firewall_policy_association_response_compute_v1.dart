@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyAssociationResponseComputeV1 {
   /// The target that the firewall policy is attached to.
-  final String attachmentTarget;
+  final pulumi.Input<String> attachmentTarget;
   /// Deprecated, please use short name instead. The display name of the firewall policy of the association.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The firewall policy ID of the association.
-  final String firewallPolicyId;
+  final pulumi.Input<String> firewallPolicyId;
   /// The name for an association.
-  final String name;
+  final pulumi.Input<String> name;
   /// The short name of the firewall policy of the association.
-  final String shortName;
+  final pulumi.Input<String> shortName;
 
   /// Creates a new [FirewallPolicyAssociationResponseComputeV1].
   /// [attachmentTarget] The target that the firewall policy is attached to.
@@ -39,11 +40,11 @@ class FirewallPolicyAssociationResponseComputeV1 {
 
   factory FirewallPolicyAssociationResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyAssociationResponseComputeV1(
-      attachmentTarget: map['attachmentTarget'] as String,
-      displayName: map['displayName'] as String,
-      firewallPolicyId: map['firewallPolicyId'] as String,
-      name: map['name'] as String,
-      shortName: map['shortName'] as String,
+      attachmentTarget: (map['attachmentTarget'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      firewallPolicyId: (map['firewallPolicyId'] as String).input(),
+      name: (map['name'] as String).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

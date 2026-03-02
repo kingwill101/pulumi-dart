@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDdosBgpIpsIp {
   /// The ID of the Ip. The value formats as `<instance_id>:<ip>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the native protection enterprise instance to be operated.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The IP address.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// The type of cloud asset to which the IP address belongs.
-  final String product;
+  final pulumi.Input<String> product;
   /// The current state of the IP address.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetDdosBgpIpsIp].
   /// [id] The ID of the Ip. The value formats as `<instance_id>:<ip>`.
@@ -39,11 +40,11 @@ class GetDdosBgpIpsIp {
 
   factory GetDdosBgpIpsIp.fromMap(Map<String, dynamic> map) {
     return GetDdosBgpIpsIp(
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      ip: map['ip'] as String,
-      product: map['product'] as String,
-      status: map['status'] as String,
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      ip: (map['ip'] as String).input(),
+      product: (map['product'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

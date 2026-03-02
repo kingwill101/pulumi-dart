@@ -25,13 +25,10 @@ class AuditLogConfigArgs {
   /// [instanceId] Instance ID, Call the Describeinstances Get.
   /// [retention] Audit Log Retention Period Value: 1~365.
   AuditLogConfigArgs({
-    pulumi.Output<bool>? dbAudit,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<int>? retention,
-  }) :
-      dbAudit = pulumi.Input.asOptionalInput<bool>(dbAudit),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      retention = pulumi.Input.asOptionalInput<int>(retention);
+    this.dbAudit,
+    required this.instanceId,
+    this.retention,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,9 +40,9 @@ class AuditLogConfigArgs {
 
   factory AuditLogConfigArgs.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigArgs(
-      dbAudit: map['dbAudit'] == null ? null : pulumi.Output.create<bool>(map['dbAudit'] as bool),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      retention: map['retention'] == null ? null : pulumi.Output.create<int>(map['retention'] as int),
+      dbAudit: map['dbAudit'] == null ? null : (map['dbAudit'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
     );
   }
 }

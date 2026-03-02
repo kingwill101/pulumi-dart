@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User identity details.
 class UserIdentityContractResponse {
   /// Identifier value within provider.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Identity provider name.
-  final String? provider;
+  final pulumi.Input<String>? provider;
 
   /// Creates a new [UserIdentityContractResponse].
   /// [id] Identifier value within provider.
@@ -25,8 +26,8 @@ class UserIdentityContractResponse {
 
   factory UserIdentityContractResponse.fromMap(Map<String, dynamic> map) {
     return UserIdentityContractResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      provider: map['provider'] == null ? null : map['provider'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
     );
   }
 }

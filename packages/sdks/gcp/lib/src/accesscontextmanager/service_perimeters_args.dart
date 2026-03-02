@@ -19,11 +19,9 @@ class ServicePerimetersArgs {
   /// [parent] The AccessPolicy this ServicePerimeter lives in.
   /// [servicePerimeters] The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
   ServicePerimetersArgs({
-    required pulumi.Output<String> parent,
-    pulumi.Output<List<ServicePerimetersServicePerimeter>>? servicePerimeters,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      servicePerimeters = pulumi.Input.asOptionalInput<List<ServicePerimetersServicePerimeter>>(servicePerimeters);
+    required this.parent,
+    this.servicePerimeters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class ServicePerimetersArgs {
 
   factory ServicePerimetersArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      servicePerimeters: map['servicePerimeters'] == null ? null : pulumi.Output.create<List<ServicePerimetersServicePerimeter>>(pulumi.Input.decodeList<ServicePerimetersServicePerimeter>(map['servicePerimeters'], (value) => ServicePerimetersServicePerimeter.fromMap((value as Map).cast<String, dynamic>()))),
+      parent: (map['parent'] as String).input(),
+      servicePerimeters: map['servicePerimeters'] == null ? null : (pulumi.Input.decodeList<ServicePerimetersServicePerimeter>(map['servicePerimeters'], (value) => ServicePerimetersServicePerimeter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelDestinationMediaPackageSetting {
   /// ID of the channel in MediaPackage that is the destination for this output group.
-  final String channelId;
+  final pulumi.Input<String> channelId;
 
   /// Creates a new [ChannelDestinationMediaPackageSetting].
   /// [channelId] ID of the channel in MediaPackage that is the destination for this output group.
@@ -19,7 +20,7 @@ class ChannelDestinationMediaPackageSetting {
 
   factory ChannelDestinationMediaPackageSetting.fromMap(Map<String, dynamic> map) {
     return ChannelDestinationMediaPackageSetting(
-      channelId: map['channelId'] as String,
+      channelId: (map['channelId'] as String).input(),
     );
   }
 }

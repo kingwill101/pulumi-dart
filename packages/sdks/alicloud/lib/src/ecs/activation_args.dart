@@ -27,17 +27,12 @@ class ActivationArgs {
   /// [ipAddressRange] The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
   /// [timeToLiveInHours] The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
   ActivationArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? instanceCount,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? ipAddressRange,
-    pulumi.Output<int>? timeToLiveInHours,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      ipAddressRange = pulumi.Input.asOptionalInput<String>(ipAddressRange),
-      timeToLiveInHours = pulumi.Input.asOptionalInput<int>(timeToLiveInHours);
+    this.description,
+    this.instanceCount,
+    this.instanceName,
+    this.ipAddressRange,
+    this.timeToLiveInHours,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ActivationArgs {
 
   factory ActivationArgs.fromMap(Map<String, dynamic> map) {
     return ActivationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceCount: map['instanceCount'] == null ? null : pulumi.Output.create<int>(map['instanceCount'] as int),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      ipAddressRange: map['ipAddressRange'] == null ? null : pulumi.Output.create<String>(map['ipAddressRange'] as String),
-      timeToLiveInHours: map['timeToLiveInHours'] == null ? null : pulumi.Output.create<int>(map['timeToLiveInHours'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      ipAddressRange: map['ipAddressRange'] == null ? null : (map['ipAddressRange'] as String).input(),
+      timeToLiveInHours: map['timeToLiveInHours'] == null ? null : (map['timeToLiveInHours'] as int).input(),
     );
   }
 }

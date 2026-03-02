@@ -25,17 +25,12 @@ class DomainOwnershipIdentifierArgs {
   /// [ownershipId] Ownership Id.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   DomainOwnershipIdentifierArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownershipId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownershipId = pulumi.Input.asOptionalInput<String>(ownershipId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.domainName,
+    this.kind,
+    this.name,
+    this.ownershipId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DomainOwnershipIdentifierArgs {
 
   factory DomainOwnershipIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return DomainOwnershipIdentifierArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownershipId: map['ownershipId'] == null ? null : pulumi.Output.create<String>(map['ownershipId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      domainName: (map['domainName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownershipId: map['ownershipId'] == null ? null : (map['ownershipId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

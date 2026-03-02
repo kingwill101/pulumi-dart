@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaForeignTypeInfo {
   /// Specifies the system which defines the foreign data
   /// type.
-  final String typeSystem;
+  final pulumi.Input<String> typeSystem;
 
   /// Creates a new [TableSchemaForeignTypeInfo].
   /// [typeSystem] Specifies the system which defines the foreign data
@@ -20,7 +21,7 @@ class TableSchemaForeignTypeInfo {
 
   factory TableSchemaForeignTypeInfo.fromMap(Map<String, dynamic> map) {
     return TableSchemaForeignTypeInfo(
-      typeSystem: map['typeSystem'] as String,
+      typeSystem: (map['typeSystem'] as String).input(),
     );
   }
 }

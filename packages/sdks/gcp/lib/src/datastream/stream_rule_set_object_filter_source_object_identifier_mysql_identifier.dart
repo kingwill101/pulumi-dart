@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
   /// The database name.
-  final String database;
+  final pulumi.Input<String> database;
   /// The table name.
-  final String table;
+  final pulumi.Input<String> table;
 
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier].
   /// [database] The database name.
@@ -24,8 +25,8 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
 
   factory StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier(
-      database: map['database'] as String,
-      table: map['table'] as String,
+      database: (map['database'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

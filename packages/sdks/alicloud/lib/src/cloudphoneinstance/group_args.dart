@@ -60,35 +60,21 @@ class GroupArgs {
   /// [policyGroupId] The policy ID. You can query the list of policies by calling ListPolicyGroups.
   /// [vswitchId] The vSwitch ID.
   GroupArgs({
-    pulumi.Output<int>? amount,
-    pulumi.Output<bool>? autoPay,
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? chargeType,
-    pulumi.Output<bool>? gpuAcceleration,
-    required pulumi.Output<String> imageId,
-    pulumi.Output<String>? instanceGroupName,
-    required pulumi.Output<String> instanceGroupSpec,
-    pulumi.Output<int>? numberOfInstances,
-    pulumi.Output<String>? officeSiteId,
-    pulumi.Output<int>? period,
-    pulumi.Output<String>? periodUnit,
-    pulumi.Output<String>? policyGroupId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      amount = pulumi.Input.asOptionalInput<int>(amount),
-      autoPay = pulumi.Input.asOptionalInput<bool>(autoPay),
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      chargeType = pulumi.Input.asOptionalInput<String>(chargeType),
-      gpuAcceleration = pulumi.Input.asOptionalInput<bool>(gpuAcceleration),
-      imageId = pulumi.Input.asInput<String>(imageId),
-      instanceGroupName = pulumi.Input.asOptionalInput<String>(instanceGroupName),
-      instanceGroupSpec = pulumi.Input.asInput<String>(instanceGroupSpec),
-      numberOfInstances = pulumi.Input.asOptionalInput<int>(numberOfInstances),
-      officeSiteId = pulumi.Input.asOptionalInput<String>(officeSiteId),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      periodUnit = pulumi.Input.asOptionalInput<String>(periodUnit),
-      policyGroupId = pulumi.Input.asOptionalInput<String>(policyGroupId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.amount,
+    this.autoPay,
+    this.autoRenew,
+    this.chargeType,
+    this.gpuAcceleration,
+    required this.imageId,
+    this.instanceGroupName,
+    required this.instanceGroupSpec,
+    this.numberOfInstances,
+    this.officeSiteId,
+    this.period,
+    this.periodUnit,
+    this.policyGroupId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,20 +97,20 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      amount: map['amount'] == null ? null : pulumi.Output.create<int>(map['amount'] as int),
-      autoPay: map['autoPay'] == null ? null : pulumi.Output.create<bool>(map['autoPay'] as bool),
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      chargeType: map['chargeType'] == null ? null : pulumi.Output.create<String>(map['chargeType'] as String),
-      gpuAcceleration: map['gpuAcceleration'] == null ? null : pulumi.Output.create<bool>(map['gpuAcceleration'] as bool),
-      imageId: pulumi.Output.create<String>(map['imageId'] as String),
-      instanceGroupName: map['instanceGroupName'] == null ? null : pulumi.Output.create<String>(map['instanceGroupName'] as String),
-      instanceGroupSpec: pulumi.Output.create<String>(map['instanceGroupSpec'] as String),
-      numberOfInstances: map['numberOfInstances'] == null ? null : pulumi.Output.create<int>(map['numberOfInstances'] as int),
-      officeSiteId: map['officeSiteId'] == null ? null : pulumi.Output.create<String>(map['officeSiteId'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      periodUnit: map['periodUnit'] == null ? null : pulumi.Output.create<String>(map['periodUnit'] as String),
-      policyGroupId: map['policyGroupId'] == null ? null : pulumi.Output.create<String>(map['policyGroupId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      chargeType: map['chargeType'] == null ? null : (map['chargeType'] as String).input(),
+      gpuAcceleration: map['gpuAcceleration'] == null ? null : (map['gpuAcceleration'] as bool).input(),
+      imageId: (map['imageId'] as String).input(),
+      instanceGroupName: map['instanceGroupName'] == null ? null : (map['instanceGroupName'] as String).input(),
+      instanceGroupSpec: (map['instanceGroupSpec'] as String).input(),
+      numberOfInstances: map['numberOfInstances'] == null ? null : (map['numberOfInstances'] as int).input(),
+      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
+      policyGroupId: map['policyGroupId'] == null ? null : (map['policyGroupId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

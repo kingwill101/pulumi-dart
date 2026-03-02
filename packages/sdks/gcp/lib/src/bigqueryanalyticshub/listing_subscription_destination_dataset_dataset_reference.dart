@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListingSubscriptionDestinationDatasetDatasetReference {
   /// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// The ID of the project containing this dataset.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [ListingSubscriptionDestinationDatasetDatasetReference].
   /// [datasetId] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
@@ -24,8 +25,8 @@ class ListingSubscriptionDestinationDatasetDatasetReference {
 
   factory ListingSubscriptionDestinationDatasetDatasetReference.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionDestinationDatasetDatasetReference(
-      datasetId: map['datasetId'] as String,
-      projectId: map['projectId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

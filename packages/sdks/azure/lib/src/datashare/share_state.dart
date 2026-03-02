@@ -26,19 +26,13 @@ class ShareState {
   /// [snapshotSchedule] A `snapshot_schedule` block as defined below.
   /// [terms] The terms of the Data Share.
   ShareState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    pulumi.Output<ShareSnapshotSchedule>? snapshotSchedule,
-    pulumi.Output<String>? terms,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      snapshotSchedule = pulumi.Input.asOptionalInput<ShareSnapshotSchedule>(snapshotSchedule),
-      terms = pulumi.Input.asOptionalInput<String>(terms);
+    this.accountId,
+    this.description,
+    this.kind,
+    this.name,
+    this.snapshotSchedule,
+    this.terms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ShareState {
 
   factory ShareState.fromMap(Map<String, dynamic> map) {
     return ShareState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      snapshotSchedule: map['snapshotSchedule'] == null ? null : pulumi.Output.create<ShareSnapshotSchedule>(ShareSnapshotSchedule.fromMap((map['snapshotSchedule'] as Map).cast<String, dynamic>())),
-      terms: map['terms'] == null ? null : pulumi.Output.create<String>(map['terms'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      snapshotSchedule: map['snapshotSchedule'] == null ? null : (ShareSnapshotSchedule.fromMap((map['snapshotSchedule'] as Map).cast<String, dynamic>())).input(),
+      terms: map['terms'] == null ? null : (map['terms'] as String).input(),
     );
   }
 }

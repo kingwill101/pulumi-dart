@@ -18,15 +18,11 @@ class GetInstanceGroupManagerResizeRequestComputeBetaArgs {
   /// [resizeRequest] Required.
   /// [zone] Required.
   GetInstanceGroupManagerResizeRequestComputeBetaArgs({
-    required pulumi.Output<String> instanceGroupManager,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> resizeRequest,
-    required pulumi.Output<String> zone,
-  }) :
-      instanceGroupManager = pulumi.Input.asInput<String>(instanceGroupManager),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resizeRequest = pulumi.Input.asInput<String>(resizeRequest),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.instanceGroupManager,
+    this.project,
+    required this.resizeRequest,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetInstanceGroupManagerResizeRequestComputeBetaArgs {
 
   factory GetInstanceGroupManagerResizeRequestComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerResizeRequestComputeBetaArgs(
-      instanceGroupManager: pulumi.Output.create<String>(map['instanceGroupManager'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resizeRequest: pulumi.Output.create<String>(map['resizeRequest'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      instanceGroupManager: (map['instanceGroupManager'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resizeRequest: (map['resizeRequest'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

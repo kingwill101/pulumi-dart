@@ -39,29 +39,18 @@ class WorkstationArgs {
   /// [workstationConfigId] Required.
   /// [workstationId] Required. ID to use for the workstation.
   WorkstationArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? env,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workstationClusterId,
-    required pulumi.Output<String> workstationConfigId,
-    required pulumi.Output<String> workstationId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      env = pulumi.Input.asOptionalInput<Map<String, String>>(env),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-      workstationId = pulumi.Input.asInput<String>(workstationId);
+    this.annotations,
+    this.displayName,
+    this.env,
+    this.etag,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    required this.workstationClusterId,
+    required this.workstationConfigId,
+    required this.workstationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,17 +70,17 @@ class WorkstationArgs {
 
   factory WorkstationArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      env: map['env'] == null ? null : pulumi.Output.create<Map<String, String>>((map['env'] as Map).cast<String, String>()),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workstationClusterId: pulumi.Output.create<String>(map['workstationClusterId'] as String),
-      workstationConfigId: pulumi.Output.create<String>(map['workstationConfigId'] as String),
-      workstationId: pulumi.Output.create<String>(map['workstationId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workstationClusterId: (map['workstationClusterId'] as String).input(),
+      workstationConfigId: (map['workstationConfigId'] as String).input(),
+      workstationId: (map['workstationId'] as String).input(),
     );
   }
 }

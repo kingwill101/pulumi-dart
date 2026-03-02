@@ -48,33 +48,20 @@ class ProvisioningArtifactState {
   /// [templateUrl] Template source as URL of the CloudFormation template in Amazon S3.
   /// [type] Type of provisioning artifact. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_ProvisioningArtifactProperties.html) for valid list of values.
   ProvisioningArtifactState({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? createdTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableTemplateValidation,
-    pulumi.Output<String>? guidance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? provisioningArtifactId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? templatePhysicalId,
-    pulumi.Output<String>? templateUrl,
-    pulumi.Output<String>? type,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      createdTime = pulumi.Input.asOptionalInput<String>(createdTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableTemplateValidation = pulumi.Input.asOptionalInput<bool>(disableTemplateValidation),
-      guidance = pulumi.Input.asOptionalInput<String>(guidance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      provisioningArtifactId = pulumi.Input.asOptionalInput<String>(provisioningArtifactId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      templatePhysicalId = pulumi.Input.asOptionalInput<String>(templatePhysicalId),
-      templateUrl = pulumi.Input.asOptionalInput<String>(templateUrl),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.acceptLanguage,
+    this.active,
+    this.createdTime,
+    this.description,
+    this.disableTemplateValidation,
+    this.guidance,
+    this.name,
+    this.productId,
+    this.provisioningArtifactId,
+    this.region,
+    this.templatePhysicalId,
+    this.templateUrl,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class ProvisioningArtifactState {
 
   factory ProvisioningArtifactState.fromMap(Map<String, dynamic> map) {
     return ProvisioningArtifactState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      createdTime: map['createdTime'] == null ? null : pulumi.Output.create<String>(map['createdTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableTemplateValidation: map['disableTemplateValidation'] == null ? null : pulumi.Output.create<bool>(map['disableTemplateValidation'] as bool),
-      guidance: map['guidance'] == null ? null : pulumi.Output.create<String>(map['guidance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : pulumi.Output.create<String>(map['provisioningArtifactId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      templatePhysicalId: map['templatePhysicalId'] == null ? null : pulumi.Output.create<String>(map['templatePhysicalId'] as String),
-      templateUrl: map['templateUrl'] == null ? null : pulumi.Output.create<String>(map['templateUrl'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableTemplateValidation: map['disableTemplateValidation'] == null ? null : (map['disableTemplateValidation'] as bool).input(),
+      guidance: map['guidance'] == null ? null : (map['guidance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : (map['provisioningArtifactId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      templatePhysicalId: map['templatePhysicalId'] == null ? null : (map['templatePhysicalId'] as String).input(),
+      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

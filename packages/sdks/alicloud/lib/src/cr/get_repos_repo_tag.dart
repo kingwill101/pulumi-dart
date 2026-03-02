@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReposRepoTag {
   /// Digest of this image.
-  final String digest;
+  final pulumi.Input<String> digest;
   /// Create time of this image, unix time in nanoseconds.
-  final int imageCreate;
+  final pulumi.Input<int> imageCreate;
   /// Id of this image.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// Status of this image, in bytes.
-  final int imageSize;
+  final pulumi.Input<int> imageSize;
   /// Last update time of this image, unix time in nanoseconds.
-  final int imageUpdate;
+  final pulumi.Input<int> imageUpdate;
   /// Status of this image.
-  final String status;
+  final pulumi.Input<String> status;
   /// Tag of this image.
-  final String tag;
+  final pulumi.Input<String> tag;
 
   /// Creates a new [GetReposRepoTag].
   /// [digest] Digest of this image.
@@ -49,13 +50,13 @@ class GetReposRepoTag {
 
   factory GetReposRepoTag.fromMap(Map<String, dynamic> map) {
     return GetReposRepoTag(
-      digest: map['digest'] as String,
-      imageCreate: map['imageCreate'] as int,
-      imageId: map['imageId'] as String,
-      imageSize: map['imageSize'] as int,
-      imageUpdate: map['imageUpdate'] as int,
-      status: map['status'] as String,
-      tag: map['tag'] as String,
+      digest: (map['digest'] as String).input(),
+      imageCreate: (map['imageCreate'] as int).input(),
+      imageId: (map['imageId'] as String).input(),
+      imageSize: (map['imageSize'] as int).input(),
+      imageUpdate: (map['imageUpdate'] as int).input(),
+      status: (map['status'] as String).input(),
+      tag: (map['tag'] as String).input(),
     );
   }
 }

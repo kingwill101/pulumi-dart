@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_destination_response.dart';
 import 'http_route_match_rule_response.dart';
 
 /// Describes the hostname properties for http routing.
 class HttpRouteConfigResponse {
   /// Describes destination endpoint for routing traffic.
-  final GatewayDestinationResponse destination;
+  final pulumi.Input<GatewayDestinationResponse> destination;
   /// Describes a rule for http route matching.
-  final HttpRouteMatchRuleResponse match;
+  final pulumi.Input<HttpRouteMatchRuleResponse> match;
   /// http route name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [HttpRouteConfigResponse].
   /// [destination] Describes destination endpoint for routing traffic.
@@ -24,17 +25,17 @@ class HttpRouteConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': destination.toMap(),
-      'match': match.toMap(),
+      'destination': pulumi.Input.mapInputValue<GatewayDestinationResponse, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'match': pulumi.Input.mapInputValue<HttpRouteMatchRuleResponse, Map<String, dynamic>>(match, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory HttpRouteConfigResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteConfigResponse(
-      destination: GatewayDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      match: HttpRouteMatchRuleResponse.fromMap((map['match'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      destination: (GatewayDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      match: (HttpRouteMatchRuleResponse.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

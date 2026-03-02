@@ -7,13 +7,13 @@ import 'domain_devices_hostdev_subsys_scsi_source_iscsi_initiator.dart';
 
 class DomainDevicesHostdevSubsysScsiSourceIscsi {
   /// Configures authentication settings for the iSCSI source.
-  final DomainDevicesHostdevSubsysScsiSourceIscsiAuth? auth;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiAuth>? auth;
   /// Configures the iSCSI host settings for the device source.
-  final List<DomainDevicesHostdevSubsysScsiSourceIscsiHost>? hosts;
+  final pulumi.Input<List<DomainDevicesHostdevSubsysScsiSourceIscsiHost>>? hosts;
   /// Configures the iSCSI initiator settings for the device source.
-  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiator? initiator;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiInitiator>? initiator;
   /// Specifies the name for the iSCSI source configuration.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsi].
   /// [auth] Configures authentication settings for the iSCSI source.
@@ -29,19 +29,19 @@ class DomainDevicesHostdevSubsysScsiSourceIscsi {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auth': ?auth == null ? null : auth!.toMap(),
-      'hosts': ?hosts == null ? null : pulumi.Input.encodeList<DomainDevicesHostdevSubsysScsiSourceIscsiHost, Map<String, dynamic>>(hosts!, (value) => value.toMap()),
-      'initiator': ?initiator == null ? null : initiator!.toMap(),
+      'auth': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysScsiSourceIscsiAuth, Map<String, dynamic>>(auth, (value) => value.toMap()),
+      'hosts': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesHostdevSubsysScsiSourceIscsiHost>, List<Map<String, dynamic>>>(hosts, (value) => pulumi.Input.encodeList<DomainDevicesHostdevSubsysScsiSourceIscsiHost, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'initiator': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysScsiSourceIscsiInitiator, Map<String, dynamic>>(initiator, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory DomainDevicesHostdevSubsysScsiSourceIscsi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiSourceIscsi(
-      auth: map['auth'] == null ? null : DomainDevicesHostdevSubsysScsiSourceIscsiAuth.fromMap((map['auth'] as Map).cast<String, dynamic>()),
-      hosts: map['hosts'] == null ? null : pulumi.Input.decodeList<DomainDevicesHostdevSubsysScsiSourceIscsiHost>(map['hosts'], (value) => DomainDevicesHostdevSubsysScsiSourceIscsiHost.fromMap((value as Map).cast<String, dynamic>())),
-      initiator: map['initiator'] == null ? null : DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.fromMap((map['initiator'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      auth: map['auth'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DomainDevicesHostdevSubsysScsiSourceIscsiHost>(map['hosts'], (value) => DomainDevicesHostdevSubsysScsiSourceIscsiHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initiator: map['initiator'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.fromMap((map['initiator'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

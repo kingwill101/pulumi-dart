@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceNetworkResourceAssociationDnsEntry {
   /// The domain name of the association in the service network.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The ID of the hosted zone containing the domain name.
-  final String hostedZoneId;
+  final pulumi.Input<String> hostedZoneId;
 
   /// Creates a new [ServiceNetworkResourceAssociationDnsEntry].
   /// [domainName] The domain name of the association in the service network.
@@ -24,8 +25,8 @@ class ServiceNetworkResourceAssociationDnsEntry {
 
   factory ServiceNetworkResourceAssociationDnsEntry.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkResourceAssociationDnsEntry(
-      domainName: map['domainName'] as String,
-      hostedZoneId: map['hostedZoneId'] as String,
+      domainName: (map['domainName'] as String).input(),
+      hostedZoneId: (map['hostedZoneId'] as String).input(),
     );
   }
 }

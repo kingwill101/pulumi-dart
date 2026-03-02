@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDdosCooPortsPort {
   /// The source station port.
-  final String backendPort;
+  final pulumi.Input<String> backendPort;
   /// The forwarding port.
-  final String frontendPort;
+  final pulumi.Input<String> frontendPort;
   /// The forwarding protocol. Valid values `tcp` and `udp`.
-  final String frontendProtocol;
+  final pulumi.Input<String> frontendProtocol;
   /// The ID of the Port.
-  final String id;
+  final pulumi.Input<String> id;
   /// The DdosCoo instance ID.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// List of source IP addresses.
-  final List<String> realServers;
+  final pulumi.Input<List<String>> realServers;
 
   /// Creates a new [GetDdosCooPortsPort].
   /// [backendPort] The source station port.
@@ -44,12 +45,12 @@ class GetDdosCooPortsPort {
 
   factory GetDdosCooPortsPort.fromMap(Map<String, dynamic> map) {
     return GetDdosCooPortsPort(
-      backendPort: map['backendPort'] as String,
-      frontendPort: map['frontendPort'] as String,
-      frontendProtocol: map['frontendProtocol'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      realServers: (map['realServers'] as List).cast<String>(),
+      backendPort: (map['backendPort'] as String).input(),
+      frontendPort: (map['frontendPort'] as String).input(),
+      frontendProtocol: (map['frontendProtocol'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      realServers: ((map['realServers'] as List).cast<String>()).input(),
     );
   }
 }

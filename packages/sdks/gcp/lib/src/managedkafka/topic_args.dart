@@ -32,21 +32,14 @@ class TopicArgs {
   /// [replicationFactor] The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
   /// [topicId] The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
   TopicArgs({
-    required pulumi.Output<String> cluster,
-    pulumi.Output<Map<String, String>>? configs,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? partitionCount,
-    pulumi.Output<String>? project,
-    required pulumi.Output<int> replicationFactor,
-    required pulumi.Output<String> topicId,
-  }) :
-      cluster = pulumi.Input.asInput<String>(cluster),
-      configs = pulumi.Input.asOptionalInput<Map<String, String>>(configs),
-      location = pulumi.Input.asInput<String>(location),
-      partitionCount = pulumi.Input.asOptionalInput<int>(partitionCount),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replicationFactor = pulumi.Input.asInput<int>(replicationFactor),
-      topicId = pulumi.Input.asInput<String>(topicId);
+    required this.cluster,
+    this.configs,
+    required this.location,
+    this.partitionCount,
+    this.project,
+    required this.replicationFactor,
+    required this.topicId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      cluster: pulumi.Output.create<String>(map['cluster'] as String),
-      configs: map['configs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['configs'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      partitionCount: map['partitionCount'] == null ? null : pulumi.Output.create<int>(map['partitionCount'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replicationFactor: pulumi.Output.create<int>(map['replicationFactor'] as int),
-      topicId: pulumi.Output.create<String>(map['topicId'] as String),
+      cluster: (map['cluster'] as String).input(),
+      configs: map['configs'] == null ? null : ((map['configs'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replicationFactor: (map['replicationFactor'] as int).input(),
+      topicId: (map['topicId'] as String).input(),
     );
   }
 }

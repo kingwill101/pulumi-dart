@@ -22,17 +22,12 @@ class NetworkInterfaceAttachmentArgs {
   /// [trunkNetworkInstanceId] Optional.
   /// [waitForNetworkConfigurationReady] Optional.
   NetworkInterfaceAttachmentArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<int>? networkCardIndex,
-    required pulumi.Output<String> networkInterfaceId,
-    pulumi.Output<String>? trunkNetworkInstanceId,
-    pulumi.Output<bool>? waitForNetworkConfigurationReady,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      networkCardIndex = pulumi.Input.asOptionalInput<int>(networkCardIndex),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-      trunkNetworkInstanceId = pulumi.Input.asOptionalInput<String>(trunkNetworkInstanceId),
-      waitForNetworkConfigurationReady = pulumi.Input.asOptionalInput<bool>(waitForNetworkConfigurationReady);
+    required this.instanceId,
+    this.networkCardIndex,
+    required this.networkInterfaceId,
+    this.trunkNetworkInstanceId,
+    this.waitForNetworkConfigurationReady,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class NetworkInterfaceAttachmentArgs {
 
   factory NetworkInterfaceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachmentArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      networkCardIndex: map['networkCardIndex'] == null ? null : pulumi.Output.create<int>(map['networkCardIndex'] as int),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      trunkNetworkInstanceId: map['trunkNetworkInstanceId'] == null ? null : pulumi.Output.create<String>(map['trunkNetworkInstanceId'] as String),
-      waitForNetworkConfigurationReady: map['waitForNetworkConfigurationReady'] == null ? null : pulumi.Output.create<bool>(map['waitForNetworkConfigurationReady'] as bool),
+      instanceId: (map['instanceId'] as String).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      trunkNetworkInstanceId: map['trunkNetworkInstanceId'] == null ? null : (map['trunkNetworkInstanceId'] as String).input(),
+      waitForNetworkConfigurationReady: map['waitForNetworkConfigurationReady'] == null ? null : (map['waitForNetworkConfigurationReady'] as bool).input(),
     );
   }
 }

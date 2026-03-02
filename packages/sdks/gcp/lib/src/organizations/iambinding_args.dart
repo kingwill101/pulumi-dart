@@ -24,15 +24,11 @@ class IAMBindingArgs {
   /// [orgId] The numeric ID of the organization in which you want to create a custom role.
   /// [role] The role that should be applied. Only one
   IAMBindingArgs({
-    pulumi.Output<IAMBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IAMBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.members,
+    required this.orgId,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class IAMBindingArgs {
 
   factory IAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return IAMBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IAMBindingCondition>(IAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (IAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      orgId: (map['orgId'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

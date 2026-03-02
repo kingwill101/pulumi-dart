@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postdeploy_response.dart';
 import 'predeploy_response.dart';
 
 /// PhaseConfig represents the configuration for a phase in the custom canary deployment.
 class PhaseConfigResponse {
   /// Percentage deployment for the phase.
-  final int percentage;
+  final pulumi.Input<int> percentage;
   /// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
-  final String phaseId;
+  final pulumi.Input<String> phaseId;
   /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
-  final PostdeployResponse postdeploy;
+  final pulumi.Input<PostdeployResponse> postdeploy;
   /// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
-  final PredeployResponse predeploy;
+  final pulumi.Input<PredeployResponse> predeploy;
   /// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
-  final List<String> profiles;
+  final pulumi.Input<List<String>> profiles;
   /// Whether to run verify tests after the deployment.
-  final bool verify;
+  final pulumi.Input<bool> verify;
 
   /// Creates a new [PhaseConfigResponse].
   /// [percentage] Percentage deployment for the phase.
@@ -38,8 +39,8 @@ class PhaseConfigResponse {
     return <String, dynamic>{
       'percentage': percentage,
       'phaseId': phaseId,
-      'postdeploy': postdeploy.toMap(),
-      'predeploy': predeploy.toMap(),
+      'postdeploy': pulumi.Input.mapInputValue<PostdeployResponse, Map<String, dynamic>>(postdeploy, (value) => value.toMap()),
+      'predeploy': pulumi.Input.mapInputValue<PredeployResponse, Map<String, dynamic>>(predeploy, (value) => value.toMap()),
       'profiles': profiles,
       'verify': verify,
     };
@@ -47,12 +48,12 @@ class PhaseConfigResponse {
 
   factory PhaseConfigResponse.fromMap(Map<String, dynamic> map) {
     return PhaseConfigResponse(
-      percentage: map['percentage'] as int,
-      phaseId: map['phaseId'] as String,
-      postdeploy: PostdeployResponse.fromMap((map['postdeploy'] as Map).cast<String, dynamic>()),
-      predeploy: PredeployResponse.fromMap((map['predeploy'] as Map).cast<String, dynamic>()),
-      profiles: (map['profiles'] as List).cast<String>(),
-      verify: map['verify'] as bool,
+      percentage: (map['percentage'] as int).input(),
+      phaseId: (map['phaseId'] as String).input(),
+      postdeploy: (PostdeployResponse.fromMap((map['postdeploy'] as Map).cast<String, dynamic>())).input(),
+      predeploy: (PredeployResponse.fromMap((map['predeploy'] as Map).cast<String, dynamic>())).input(),
+      profiles: ((map['profiles'] as List).cast<String>()).input(),
+      verify: (map['verify'] as bool).input(),
     );
   }
 }

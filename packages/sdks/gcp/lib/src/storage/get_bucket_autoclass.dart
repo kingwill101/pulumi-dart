@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketAutoclass {
   /// While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
-  final String terminalStorageClass;
+  final pulumi.Input<String> terminalStorageClass;
 
   /// Creates a new [GetBucketAutoclass].
   /// [enabled] While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
@@ -24,8 +25,8 @@ class GetBucketAutoclass {
 
   factory GetBucketAutoclass.fromMap(Map<String, dynamic> map) {
     return GetBucketAutoclass(
-      enabled: map['enabled'] as bool,
-      terminalStorageClass: map['terminalStorageClass'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      terminalStorageClass: (map['terminalStorageClass'] as String).input(),
     );
   }
 }

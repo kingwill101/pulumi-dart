@@ -28,17 +28,12 @@ class CustomLogSourceArgs {
   /// [sourceName] Specify the name for a third-party custom source.
   /// [sourceVersion] Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.
   CustomLogSourceArgs({
-    required pulumi.Output<CustomLogSourceConfiguration> configuration,
-    pulumi.Output<List<String>>? eventClasses,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sourceName,
-    pulumi.Output<String>? sourceVersion,
-  }) :
-      configuration = pulumi.Input.asInput<CustomLogSourceConfiguration>(configuration),
-      eventClasses = pulumi.Input.asOptionalInput<List<String>>(eventClasses),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceName = pulumi.Input.asInput<String>(sourceName),
-      sourceVersion = pulumi.Input.asOptionalInput<String>(sourceVersion);
+    required this.configuration,
+    this.eventClasses,
+    this.region,
+    required this.sourceName,
+    this.sourceVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class CustomLogSourceArgs {
 
   factory CustomLogSourceArgs.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceArgs(
-      configuration: pulumi.Output.create<CustomLogSourceConfiguration>(CustomLogSourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      eventClasses: map['eventClasses'] == null ? null : pulumi.Output.create<List<String>>((map['eventClasses'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceName: pulumi.Output.create<String>(map['sourceName'] as String),
-      sourceVersion: map['sourceVersion'] == null ? null : pulumi.Output.create<String>(map['sourceVersion'] as String),
+      configuration: (CustomLogSourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      eventClasses: map['eventClasses'] == null ? null : ((map['eventClasses'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceName: (map['sourceName'] as String).input(),
+      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion'] as String).input(),
     );
   }
 }

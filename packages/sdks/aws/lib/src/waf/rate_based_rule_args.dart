@@ -29,19 +29,13 @@ class RateBasedRuleArgs {
   /// [rateLimit] The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RateBasedRuleArgs({
-    required pulumi.Output<String> metricName,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<RateBasedRulePredicate>>? predicates,
-    required pulumi.Output<String> rateKey,
-    required pulumi.Output<int> rateLimit,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      metricName = pulumi.Input.asInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      predicates = pulumi.Input.asOptionalInput<List<RateBasedRulePredicate>>(predicates),
-      rateKey = pulumi.Input.asInput<String>(rateKey),
-      rateLimit = pulumi.Input.asInput<int>(rateLimit),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.metricName,
+    this.name,
+    this.predicates,
+    required this.rateKey,
+    required this.rateLimit,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class RateBasedRuleArgs {
 
   factory RateBasedRuleArgs.fromMap(Map<String, dynamic> map) {
     return RateBasedRuleArgs(
-      metricName: pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      predicates: map['predicates'] == null ? null : pulumi.Output.create<List<RateBasedRulePredicate>>(pulumi.Input.decodeList<RateBasedRulePredicate>(map['predicates'], (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>()))),
-      rateKey: pulumi.Output.create<String>(map['rateKey'] as String),
-      rateLimit: pulumi.Output.create<int>(map['rateLimit'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      metricName: (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      predicates: map['predicates'] == null ? null : (pulumi.Input.decodeList<RateBasedRulePredicate>(map['predicates'], (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rateKey: (map['rateKey'] as String).input(),
+      rateLimit: (map['rateLimit'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

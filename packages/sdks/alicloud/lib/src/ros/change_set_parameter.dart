@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChangeSetParameter {
   /// The parameter key.
-  final String parameterKey;
+  final pulumi.Input<String> parameterKey;
   /// The parameter value.
-  final String parameterValue;
+  final pulumi.Input<String> parameterValue;
 
   /// Creates a new [ChangeSetParameter].
   /// [parameterKey] The parameter key.
@@ -24,8 +25,8 @@ class ChangeSetParameter {
 
   factory ChangeSetParameter.fromMap(Map<String, dynamic> map) {
     return ChangeSetParameter(
-      parameterKey: map['parameterKey'] as String,
-      parameterValue: map['parameterValue'] as String,
+      parameterKey: (map['parameterKey'] as String).input(),
+      parameterValue: (map['parameterValue'] as String).input(),
     );
   }
 }

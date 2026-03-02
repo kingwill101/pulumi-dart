@@ -16,11 +16,9 @@ class BandwidthPackageAttachmentArgs {
   /// [bandwidthPackageId] The ID of the bandwidth package.
   /// [instanceId] The ID of the CEN.
   BandwidthPackageAttachmentArgs({
-    required pulumi.Output<String> bandwidthPackageId,
-    required pulumi.Output<String> instanceId,
-  }) :
-      bandwidthPackageId = pulumi.Input.asInput<String>(bandwidthPackageId),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.bandwidthPackageId,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BandwidthPackageAttachmentArgs {
 
   factory BandwidthPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageAttachmentArgs(
-      bandwidthPackageId: pulumi.Output.create<String>(map['bandwidthPackageId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

@@ -38,25 +38,16 @@ class LabArgs {
   /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
   /// [value] Amount value.
   LabArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> billingProfileName,
-    required pulumi.Output<Amount> budgetPerStudent,
-    pulumi.Output<String>? currency,
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> expirationDate,
-    required pulumi.Output<String> invoiceSectionName,
-    pulumi.Output<double>? value,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingProfileName = pulumi.Input.asInput<String>(billingProfileName),
-      budgetPerStudent = pulumi.Input.asInput<Amount>(budgetPerStudent),
-      currency = pulumi.Input.asOptionalInput<String>(currency),
-      description = pulumi.Input.asInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      expirationDate = pulumi.Input.asInput<String>(expirationDate),
-      invoiceSectionName = pulumi.Input.asInput<String>(invoiceSectionName),
-      value = pulumi.Input.asOptionalInput<double>(value);
+    required this.billingAccountName,
+    required this.billingProfileName,
+    required this.budgetPerStudent,
+    this.currency,
+    required this.description,
+    required this.displayName,
+    required this.expirationDate,
+    required this.invoiceSectionName,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class LabArgs {
 
   factory LabArgs.fromMap(Map<String, dynamic> map) {
     return LabArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingProfileName: pulumi.Output.create<String>(map['billingProfileName'] as String),
-      budgetPerStudent: pulumi.Output.create<Amount>(Amount.fromMap((map['budgetPerStudent'] as Map).cast<String, dynamic>())),
-      currency: map['currency'] == null ? null : pulumi.Output.create<String>(map['currency'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      expirationDate: pulumi.Output.create<String>(map['expirationDate'] as String),
-      invoiceSectionName: pulumi.Output.create<String>(map['invoiceSectionName'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<double>(map['value'] as double),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingProfileName: (map['billingProfileName'] as String).input(),
+      budgetPerStudent: (Amount.fromMap((map['budgetPerStudent'] as Map).cast<String, dynamic>())).input(),
+      currency: map['currency'] == null ? null : (map['currency'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      invoiceSectionName: (map['invoiceSectionName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as double).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties to configure keyVault Properties
 class KeyVaultProperties {
-  final String? identityClientId;
+  final pulumi.Input<String>? identityClientId;
   /// Name of the Key from KeyVault
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// Uri of KeyVault
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// Version of the Key from KeyVault
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
 
   /// Creates a new [KeyVaultProperties].
   /// [identityClientId] Optional.
@@ -34,10 +35,10 @@ class KeyVaultProperties {
 
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
-      identityClientId: map['identityClientId'] == null ? null : map['identityClientId'] as String,
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
     );
   }
 }

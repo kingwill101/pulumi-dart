@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU of the EnterpriseKnowledgeGraph service account.
 class SkuResponse {
   /// The sku name
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [SkuResponse].
   /// [name] The sku name
@@ -20,7 +21,7 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

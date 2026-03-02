@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataProductAccessGroupPrincipal {
   /// Email of the Google Group.
-  final String? googleGroup;
+  final pulumi.Input<String>? googleGroup;
 
   /// Creates a new [DataProductAccessGroupPrincipal].
   /// [googleGroup] Email of the Google Group.
@@ -19,7 +20,7 @@ class DataProductAccessGroupPrincipal {
 
   factory DataProductAccessGroupPrincipal.fromMap(Map<String, dynamic> map) {
     return DataProductAccessGroupPrincipal(
-      googleGroup: map['googleGroup'] == null ? null : map['googleGroup'] as String,
+      googleGroup: map['googleGroup'] == null ? null : (map['googleGroup'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetStaticSiteBuildDatabaseConnectionArgs {
   /// [name] Name of the static site
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetStaticSiteBuildDatabaseConnectionArgs({
-    required pulumi.Output<String> databaseConnectionName,
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      databaseConnectionName = pulumi.Input.asInput<String>(databaseConnectionName),
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.databaseConnectionName,
+    required this.environmentName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetStaticSiteBuildDatabaseConnectionArgs {
 
   factory GetStaticSiteBuildDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticSiteBuildDatabaseConnectionArgs(
-      databaseConnectionName: pulumi.Output.create<String>(map['databaseConnectionName'] as String),
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      databaseConnectionName: (map['databaseConnectionName'] as String).input(),
+      environmentName: (map['environmentName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

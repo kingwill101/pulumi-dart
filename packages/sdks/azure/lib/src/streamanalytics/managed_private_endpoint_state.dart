@@ -22,17 +22,12 @@ class ManagedPrivateEndpointState {
   /// [subresourceName] Specifies the sub resource name which the Stream Analytics Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Private Link Enabled Remote Resource which this Stream Analytics Private endpoint should be connected to. Changing this forces a new resource to be created.
   ManagedPrivateEndpointState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? streamAnalyticsClusterName,
-    pulumi.Output<String>? subresourceName,
-    pulumi.Output<String>? targetResourceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      streamAnalyticsClusterName = pulumi.Input.asOptionalInput<String>(streamAnalyticsClusterName),
-      subresourceName = pulumi.Input.asOptionalInput<String>(subresourceName),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId);
+    this.name,
+    this.resourceGroupName,
+    this.streamAnalyticsClusterName,
+    this.subresourceName,
+    this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ManagedPrivateEndpointState {
 
   factory ManagedPrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      streamAnalyticsClusterName: map['streamAnalyticsClusterName'] == null ? null : pulumi.Output.create<String>(map['streamAnalyticsClusterName'] as String),
-      subresourceName: map['subresourceName'] == null ? null : pulumi.Output.create<String>(map['subresourceName'] as String),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      streamAnalyticsClusterName: map['streamAnalyticsClusterName'] == null ? null : (map['streamAnalyticsClusterName'] as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
     );
   }
 }

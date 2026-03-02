@@ -22,15 +22,11 @@ class ApplicationScaleArgs {
   /// [ecuInfos] The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
   /// [forceStatus] This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
   ApplicationScaleArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> deployGroup,
-    required pulumi.Output<List<String>> ecuInfos,
-    pulumi.Output<bool>? forceStatus,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      deployGroup = pulumi.Input.asInput<String>(deployGroup),
-      ecuInfos = pulumi.Input.asInput<List<String>>(ecuInfos),
-      forceStatus = pulumi.Input.asOptionalInput<bool>(forceStatus);
+    required this.appId,
+    required this.deployGroup,
+    required this.ecuInfos,
+    this.forceStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ApplicationScaleArgs {
 
   factory ApplicationScaleArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationScaleArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      deployGroup: pulumi.Output.create<String>(map['deployGroup'] as String),
-      ecuInfos: pulumi.Output.create<List<String>>((map['ecuInfos'] as List).cast<String>()),
-      forceStatus: map['forceStatus'] == null ? null : pulumi.Output.create<bool>(map['forceStatus'] as bool),
+      appId: (map['appId'] as String).input(),
+      deployGroup: (map['deployGroup'] as String).input(),
+      ecuInfos: ((map['ecuInfos'] as List).cast<String>()).input(),
+      forceStatus: map['forceStatus'] == null ? null : (map['forceStatus'] as bool).input(),
     );
   }
 }

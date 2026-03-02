@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountManagedResource {
   /// The ID of the managed event hub namespace.
-  final String? eventHubNamespaceId;
+  final pulumi.Input<String>? eventHubNamespaceId;
   /// The ID of the managed resource group.
-  final String? resourceGroupId;
+  final pulumi.Input<String>? resourceGroupId;
   /// The ID of the managed storage account.
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
 
   /// Creates a new [AccountManagedResource].
   /// [eventHubNamespaceId] The ID of the managed event hub namespace.
@@ -29,9 +30,9 @@ class AccountManagedResource {
 
   factory AccountManagedResource.fromMap(Map<String, dynamic> map) {
     return AccountManagedResource(
-      eventHubNamespaceId: map['eventHubNamespaceId'] == null ? null : map['eventHubNamespaceId'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
+      eventHubNamespaceId: map['eventHubNamespaceId'] == null ? null : (map['eventHubNamespaceId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_type.dart';
 
 /// A TPU accelerator configuration.
 class AcceleratorConfig {
   /// Topology of TPU in chips.
-  final String topology;
+  final pulumi.Input<String> topology;
   /// Type of TPU.
-  final AcceleratorConfigType type;
+  final pulumi.Input<AcceleratorConfigType> type;
 
   /// Creates a new [AcceleratorConfig].
   /// [topology] Topology of TPU in chips.
@@ -20,14 +21,14 @@ class AcceleratorConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'topology': topology,
-      'type': type.value,
+      'type': pulumi.Input.mapInputValue<AcceleratorConfigType, String>(type, (value) => value.value),
     };
   }
 
   factory AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfig(
-      topology: map['topology'] as String,
-      type: AcceleratorConfigType.fromValue(map['type'] as String),
+      topology: (map['topology'] as String).input(),
+      type: (AcceleratorConfigType.fromValue(map['type'] as String)).input(),
     );
   }
 }

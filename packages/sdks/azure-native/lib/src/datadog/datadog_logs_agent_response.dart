@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatadogLogsAgentResponse {
   /// The transport.
-  final String? transport;
+  final pulumi.Input<String>? transport;
 
   /// Creates a new [DatadogLogsAgentResponse].
   /// [transport] The transport.
@@ -19,7 +20,7 @@ class DatadogLogsAgentResponse {
 
   factory DatadogLogsAgentResponse.fromMap(Map<String, dynamic> map) {
     return DatadogLogsAgentResponse(
-      transport: map['transport'] == null ? null : map['transport'] as String,
+      transport: map['transport'] == null ? null : (map['transport'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentLoggingLogReservePolicy {
   /// Number of days to retain logs after log retention is enabled
-  final int? expirationDays;
+  final pulumi.Input<int>? expirationDays;
   /// Whether to enable log retention
-  final bool? openHistory;
+  final pulumi.Input<bool>? openHistory;
 
   /// Creates a new [DeploymentLoggingLogReservePolicy].
   /// [expirationDays] Number of days to retain logs after log retention is enabled
@@ -24,8 +25,8 @@ class DeploymentLoggingLogReservePolicy {
 
   factory DeploymentLoggingLogReservePolicy.fromMap(Map<String, dynamic> map) {
     return DeploymentLoggingLogReservePolicy(
-      expirationDays: map['expirationDays'] == null ? null : map['expirationDays'] as int,
-      openHistory: map['openHistory'] == null ? null : map['openHistory'] as bool,
+      expirationDays: map['expirationDays'] == null ? null : (map['expirationDays'] as int).input(),
+      openHistory: map['openHistory'] == null ? null : (map['openHistory'] as bool).input(),
     );
   }
 }

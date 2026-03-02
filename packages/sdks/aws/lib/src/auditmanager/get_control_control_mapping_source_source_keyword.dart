@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetControlControlMappingSourceSourceKeyword {
-  final String keywordInputType;
-  final String keywordValue;
+  final pulumi.Input<String> keywordInputType;
+  final pulumi.Input<String> keywordValue;
 
   /// Creates a new [GetControlControlMappingSourceSourceKeyword].
   /// [keywordInputType] Required.
@@ -22,8 +23,8 @@ class GetControlControlMappingSourceSourceKeyword {
 
   factory GetControlControlMappingSourceSourceKeyword.fromMap(Map<String, dynamic> map) {
     return GetControlControlMappingSourceSourceKeyword(
-      keywordInputType: map['keywordInputType'] as String,
-      keywordValue: map['keywordValue'] as String,
+      keywordInputType: (map['keywordInputType'] as String).input(),
+      keywordValue: (map['keywordValue'] as String).input(),
     );
   }
 }

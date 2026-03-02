@@ -25,17 +25,12 @@ class FrontendsInterfaceArgs {
   /// [tags] Resource tags.
   /// [trafficControllerName] traffic controller name for path
   FrontendsInterfaceArgs({
-    pulumi.Output<String>? frontendName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trafficControllerName,
-  }) :
-      frontendName = pulumi.Input.asOptionalInput<String>(frontendName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficControllerName = pulumi.Input.asInput<String>(trafficControllerName);
+    this.frontendName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    required this.trafficControllerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FrontendsInterfaceArgs {
 
   factory FrontendsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return FrontendsInterfaceArgs(
-      frontendName: map['frontendName'] == null ? null : pulumi.Output.create<String>(map['frontendName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficControllerName: pulumi.Output.create<String>(map['trafficControllerName'] as String),
+      frontendName: map['frontendName'] == null ? null : (map['frontendName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficControllerName: (map['trafficControllerName'] as String).input(),
     );
   }
 }

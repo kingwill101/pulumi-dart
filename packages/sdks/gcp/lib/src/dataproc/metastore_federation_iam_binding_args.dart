@@ -45,19 +45,13 @@ class MetastoreFederationIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   MetastoreFederationIamBindingArgs({
-    pulumi.Output<MetastoreFederationIamBindingCondition>? condition,
-    required pulumi.Output<String> federationId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<MetastoreFederationIamBindingCondition>(condition),
-      federationId = pulumi.Input.asInput<String>(federationId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.federationId,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class MetastoreFederationIamBindingArgs {
 
   factory MetastoreFederationIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreFederationIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<MetastoreFederationIamBindingCondition>(MetastoreFederationIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      federationId: pulumi.Output.create<String>(map['federationId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (MetastoreFederationIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      federationId: (map['federationId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

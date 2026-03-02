@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of certificate imported from key vault.
 class KeyVaultCertificatePropertiesResponse {
   /// The activate date of certificate.
-  final String activateDate;
+  final pulumi.Input<String> activateDate;
   /// Indicates whether to automatically synchronize certificate from key vault or not.
-  final String? autoSync;
+  final pulumi.Input<String>? autoSync;
   /// The certificate version of key vault.
-  final String? certVersion;
+  final pulumi.Input<String>? certVersion;
   /// The domain list of certificate.
-  final List<String> dnsNames;
+  final pulumi.Input<List<String>> dnsNames;
   /// Optional. If set to true, it will not import private key from key vault.
-  final bool? excludePrivateKey;
+  final pulumi.Input<bool>? excludePrivateKey;
   /// The expiration date of certificate.
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// The issue date of certificate.
-  final String issuedDate;
+  final pulumi.Input<String> issuedDate;
   /// The issuer of certificate.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// The certificate name of key vault.
-  final String keyVaultCertName;
+  final pulumi.Input<String> keyVaultCertName;
   /// Provisioning state of the Certificate
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The subject name of certificate.
-  final String subjectName;
+  final pulumi.Input<String> subjectName;
   /// The thumbprint of certificate.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// The type of the certificate source.
   /// Expected value is 'KeyVaultCertificate'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The vault uri of user key vault.
-  final String vaultUri;
+  final pulumi.Input<String> vaultUri;
 
   /// Creates a new [KeyVaultCertificatePropertiesResponse].
   /// [activateDate] The activate date of certificate.
@@ -86,20 +87,20 @@ class KeyVaultCertificatePropertiesResponse {
 
   factory KeyVaultCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificatePropertiesResponse(
-      activateDate: map['activateDate'] as String,
-      autoSync: map['autoSync'] == null ? null : map['autoSync'] as String,
-      certVersion: map['certVersion'] == null ? null : map['certVersion'] as String,
-      dnsNames: (map['dnsNames'] as List).cast<String>(),
-      excludePrivateKey: map['excludePrivateKey'] == null ? null : map['excludePrivateKey'] as bool,
-      expirationDate: map['expirationDate'] as String,
-      issuedDate: map['issuedDate'] as String,
-      issuer: map['issuer'] as String,
-      keyVaultCertName: map['keyVaultCertName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      subjectName: map['subjectName'] as String,
-      thumbprint: map['thumbprint'] as String,
-      type: map['type'] as String,
-      vaultUri: map['vaultUri'] as String,
+      activateDate: (map['activateDate'] as String).input(),
+      autoSync: map['autoSync'] == null ? null : (map['autoSync'] as String).input(),
+      certVersion: map['certVersion'] == null ? null : (map['certVersion'] as String).input(),
+      dnsNames: ((map['dnsNames'] as List).cast<String>()).input(),
+      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey'] as bool).input(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      issuedDate: (map['issuedDate'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      keyVaultCertName: (map['keyVaultCertName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      subjectName: (map['subjectName'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      type: (map['type'] as String).input(),
+      vaultUri: (map['vaultUri'] as String).input(),
     );
   }
 }

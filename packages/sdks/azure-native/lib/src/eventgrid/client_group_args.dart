@@ -26,17 +26,12 @@ class ClientGroupArgs {
   /// [query] The grouping query for the clients.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   ClientGroupArgs({
-    pulumi.Output<String>? clientGroupName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<String>? query,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clientGroupName = pulumi.Input.asOptionalInput<String>(clientGroupName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      query = pulumi.Input.asOptionalInput<String>(query),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.clientGroupName,
+    this.description,
+    required this.namespaceName,
+    this.query,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ClientGroupArgs {
 
   factory ClientGroupArgs.fromMap(Map<String, dynamic> map) {
     return ClientGroupArgs(
-      clientGroupName: map['clientGroupName'] == null ? null : pulumi.Output.create<String>(map['clientGroupName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      query: map['query'] == null ? null : pulumi.Output.create<String>(map['query'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clientGroupName: map['clientGroupName'] == null ? null : (map['clientGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

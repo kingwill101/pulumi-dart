@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
   /// Description of the expression
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Textual representation of an expression in Common Expression Language syntax.
-  final String expression;
+  final pulumi.Input<String> expression;
   /// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Title for the expression, i.e. a short string describing its purpose.
-  final String? title;
+  final pulumi.Input<String>? title;
 
   /// Creates a new [PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition].
   /// [description] Description of the expression
@@ -34,10 +35,10 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
 
   factory PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition(
-      description: map['description'] == null ? null : map['description'] as String,
-      expression: map['expression'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expression: (map['expression'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

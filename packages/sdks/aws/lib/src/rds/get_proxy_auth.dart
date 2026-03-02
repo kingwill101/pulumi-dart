@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProxyAuth {
-  final String authScheme;
-  final String clientPasswordAuthType;
-  final String description;
-  final String iamAuth;
-  final String secretArn;
-  final String username;
+  final pulumi.Input<String> authScheme;
+  final pulumi.Input<String> clientPasswordAuthType;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> iamAuth;
+  final pulumi.Input<String> secretArn;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetProxyAuth].
   /// [authScheme] Required.
@@ -38,12 +39,12 @@ class GetProxyAuth {
 
   factory GetProxyAuth.fromMap(Map<String, dynamic> map) {
     return GetProxyAuth(
-      authScheme: map['authScheme'] as String,
-      clientPasswordAuthType: map['clientPasswordAuthType'] as String,
-      description: map['description'] as String,
-      iamAuth: map['iamAuth'] as String,
-      secretArn: map['secretArn'] as String,
-      username: map['username'] as String,
+      authScheme: (map['authScheme'] as String).input(),
+      clientPasswordAuthType: (map['clientPasswordAuthType'] as String).input(),
+      description: (map['description'] as String).input(),
+      iamAuth: (map['iamAuth'] as String).input(),
+      secretArn: (map['secretArn'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

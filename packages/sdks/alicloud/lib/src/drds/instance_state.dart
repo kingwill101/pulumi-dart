@@ -48,27 +48,17 @@ class InstanceState {
   /// [vswitchId] The VSwitch ID to launch in.
   /// [zoneId] The Zone to launch the DRDS instance.
   InstanceState({
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceChargeType,
-    pulumi.Output<String>? instanceSeries,
-    pulumi.Output<int>? mysqlVersion,
-    pulumi.Output<String>? port,
-    pulumi.Output<String>? specification,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceChargeType = pulumi.Input.asOptionalInput<String>(instanceChargeType),
-      instanceSeries = pulumi.Input.asOptionalInput<String>(instanceSeries),
-      mysqlVersion = pulumi.Input.asOptionalInput<int>(mysqlVersion),
-      port = pulumi.Input.asOptionalInput<String>(port),
-      specification = pulumi.Input.asOptionalInput<String>(specification),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.connectionString,
+    this.description,
+    this.instanceChargeType,
+    this.instanceSeries,
+    this.mysqlVersion,
+    this.port,
+    this.specification,
+    this.vpcId,
+    this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,16 +77,16 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceChargeType: map['instanceChargeType'] == null ? null : pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      instanceSeries: map['instanceSeries'] == null ? null : pulumi.Output.create<String>(map['instanceSeries'] as String),
-      mysqlVersion: map['mysqlVersion'] == null ? null : pulumi.Output.create<int>(map['mysqlVersion'] as int),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
-      specification: map['specification'] == null ? null : pulumi.Output.create<String>(map['specification'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      instanceSeries: map['instanceSeries'] == null ? null : (map['instanceSeries'] as String).input(),
+      mysqlVersion: map['mysqlVersion'] == null ? null : (map['mysqlVersion'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_fleet_default_member_config_configmanagement.dart';
 import 'feature_fleet_default_member_config_mesh.dart';
 import 'feature_fleet_default_member_config_policycontroller.dart';
@@ -7,13 +8,13 @@ import 'feature_fleet_default_member_config_policycontroller.dart';
 class FeatureFleetDefaultMemberConfig {
   /// Config Management spec
   /// Structure is documented below.
-  final FeatureFleetDefaultMemberConfigConfigmanagement? configmanagement;
+  final pulumi.Input<FeatureFleetDefaultMemberConfigConfigmanagement>? configmanagement;
   /// Service Mesh spec
   /// Structure is documented below.
-  final FeatureFleetDefaultMemberConfigMesh? mesh;
+  final pulumi.Input<FeatureFleetDefaultMemberConfigMesh>? mesh;
   /// Policy Controller spec
   /// Structure is documented below.
-  final FeatureFleetDefaultMemberConfigPolicycontroller? policycontroller;
+  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontroller>? policycontroller;
 
   /// Creates a new [FeatureFleetDefaultMemberConfig].
   /// [configmanagement] Config Management spec
@@ -27,17 +28,17 @@ class FeatureFleetDefaultMemberConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configmanagement': ?configmanagement == null ? null : configmanagement!.toMap(),
-      'mesh': ?mesh == null ? null : mesh!.toMap(),
-      'policycontroller': ?policycontroller == null ? null : policycontroller!.toMap(),
+      'configmanagement': ?pulumi.Input.mapOptionalInputValue<FeatureFleetDefaultMemberConfigConfigmanagement, Map<String, dynamic>>(configmanagement, (value) => value.toMap()),
+      'mesh': ?pulumi.Input.mapOptionalInputValue<FeatureFleetDefaultMemberConfigMesh, Map<String, dynamic>>(mesh, (value) => value.toMap()),
+      'policycontroller': ?pulumi.Input.mapOptionalInputValue<FeatureFleetDefaultMemberConfigPolicycontroller, Map<String, dynamic>>(policycontroller, (value) => value.toMap()),
     };
   }
 
   factory FeatureFleetDefaultMemberConfig.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfig(
-      configmanagement: map['configmanagement'] == null ? null : FeatureFleetDefaultMemberConfigConfigmanagement.fromMap((map['configmanagement'] as Map).cast<String, dynamic>()),
-      mesh: map['mesh'] == null ? null : FeatureFleetDefaultMemberConfigMesh.fromMap((map['mesh'] as Map).cast<String, dynamic>()),
-      policycontroller: map['policycontroller'] == null ? null : FeatureFleetDefaultMemberConfigPolicycontroller.fromMap((map['policycontroller'] as Map).cast<String, dynamic>()),
+      configmanagement: map['configmanagement'] == null ? null : (FeatureFleetDefaultMemberConfigConfigmanagement.fromMap((map['configmanagement'] as Map).cast<String, dynamic>())).input(),
+      mesh: map['mesh'] == null ? null : (FeatureFleetDefaultMemberConfigMesh.fromMap((map['mesh'] as Map).cast<String, dynamic>())).input(),
+      policycontroller: map['policycontroller'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontroller.fromMap((map['policycontroller'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

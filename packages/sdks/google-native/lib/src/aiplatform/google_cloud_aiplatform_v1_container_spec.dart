@@ -6,13 +6,13 @@ import 'google_cloud_aiplatform_v1_env_var.dart';
 /// The spec of a Container.
 class GoogleCloudAiplatformV1ContainerSpec {
   /// The arguments to be passed when starting the container.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
-  final List<String>? command;
+  final pulumi.Input<List<String>>? command;
   /// Environment variables to be passed to the container. Maximum limit is 100.
-  final List<GoogleCloudAiplatformV1EnvVar>? env;
+  final pulumi.Input<List<GoogleCloudAiplatformV1EnvVar>>? env;
   /// The URI of a container image in the Container Registry that is to be run on each worker replica.
-  final String imageUri;
+  final pulumi.Input<String> imageUri;
 
   /// Creates a new [GoogleCloudAiplatformV1ContainerSpec].
   /// [args] The arguments to be passed when starting the container.
@@ -30,17 +30,17 @@ class GoogleCloudAiplatformV1ContainerSpec {
     return <String, dynamic>{
       'args': ?args,
       'command': ?command,
-      'env': ?env == null ? null : pulumi.Input.encodeList<GoogleCloudAiplatformV1EnvVar, Map<String, dynamic>>(env!, (value) => value.toMap()),
+      'env': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudAiplatformV1EnvVar>, List<Map<String, dynamic>>>(env, (value) => pulumi.Input.encodeList<GoogleCloudAiplatformV1EnvVar, Map<String, dynamic>>(value, (value) => value.toMap())),
       'imageUri': imageUri,
     };
   }
 
   factory GoogleCloudAiplatformV1ContainerSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ContainerSpec(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      command: map['command'] == null ? null : (map['command'] as List).cast<String>(),
-      env: map['env'] == null ? null : pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(map['env'], (value) => GoogleCloudAiplatformV1EnvVar.fromMap((value as Map).cast<String, dynamic>())),
-      imageUri: map['imageUri'] as String,
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(map['env'], (value) => GoogleCloudAiplatformV1EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageUri: (map['imageUri'] as String).input(),
     );
   }
 }

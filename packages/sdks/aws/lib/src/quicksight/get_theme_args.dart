@@ -24,15 +24,11 @@ class GetThemeArgs {
   /// [tags] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [themeId] Identifier of the theme.
   GetThemeArgs({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> themeId,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      themeId = pulumi.Input.asInput<String>(themeId);
+    this.awsAccountId,
+    this.region,
+    this.tags,
+    required this.themeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetThemeArgs {
 
   factory GetThemeArgs.fromMap(Map<String, dynamic> map) {
     return GetThemeArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      themeId: pulumi.Output.create<String>(map['themeId'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      themeId: (map['themeId'] as String).input(),
     );
   }
 }

@@ -26,15 +26,11 @@ class PolicyArgs {
   /// [parent] The parent of the resource.
   /// [spec] Basic information about the Organization Policy.
   PolicyArgs({
-    pulumi.Output<PolicyDryRunSpec>? dryRunSpec,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    pulumi.Output<PolicySpec>? spec,
-  }) :
-      dryRunSpec = pulumi.Input.asOptionalInput<PolicyDryRunSpec>(dryRunSpec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      spec = pulumi.Input.asOptionalInput<PolicySpec>(spec);
+    this.dryRunSpec,
+    this.name,
+    required this.parent,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      dryRunSpec: map['dryRunSpec'] == null ? null : pulumi.Output.create<PolicyDryRunSpec>(PolicyDryRunSpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<PolicySpec>(PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      dryRunSpec: map['dryRunSpec'] == null ? null : (PolicyDryRunSpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      spec: map['spec'] == null ? null : (PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

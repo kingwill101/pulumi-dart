@@ -8,27 +8,27 @@ import 'sub_resource_response.dart';
 /// A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
 class RoutingRuleResponse {
   /// Protocol schemes to match for this rule
-  final List<String>? acceptedProtocols;
+  final pulumi.Input<List<String>>? acceptedProtocols;
   /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-  final String? enabledState;
+  final pulumi.Input<String>? enabledState;
   /// Frontend endpoints associated with this rule
-  final List<SubResourceResponse>? frontendEndpoints;
+  final pulumi.Input<List<SubResourceResponse>>? frontendEndpoints;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Resource name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The route patterns of the rule.
-  final List<String>? patternsToMatch;
+  final pulumi.Input<List<String>>? patternsToMatch;
   /// Resource status.
-  final String resourceState;
+  final pulumi.Input<String> resourceState;
   /// A reference to the routing configuration.
-  final ForwardingConfigurationResponse? routeConfiguration;
+  final pulumi.Input<ForwardingConfigurationResponse>? routeConfiguration;
   /// A reference to a specific Rules Engine Configuration to apply to this route.
-  final SubResourceResponse? rulesEngine;
+  final pulumi.Input<SubResourceResponse>? rulesEngine;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// Defines the Web Application Firewall policy for each routing rule (if applicable)
-  final RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink? webApplicationFirewallPolicyLink;
+  final pulumi.Input<RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink>? webApplicationFirewallPolicyLink;
 
   /// Creates a new [RoutingRuleResponse].
   /// [acceptedProtocols] Protocol schemes to match for this rule
@@ -60,31 +60,31 @@ class RoutingRuleResponse {
     return <String, dynamic>{
       'acceptedProtocols': ?acceptedProtocols,
       'enabledState': ?enabledState,
-      'frontendEndpoints': ?frontendEndpoints == null ? null : pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(frontendEndpoints!, (value) => value.toMap()),
+      'frontendEndpoints': ?pulumi.Input.mapOptionalInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(frontendEndpoints, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'name': ?name,
       'patternsToMatch': ?patternsToMatch,
       'resourceState': resourceState,
-      'routeConfiguration': ?routeConfiguration == null ? null : routeConfiguration!.toMap(),
-      'rulesEngine': ?rulesEngine == null ? null : rulesEngine!.toMap(),
+      'routeConfiguration': ?pulumi.Input.mapOptionalInputValue<ForwardingConfigurationResponse, Map<String, dynamic>>(routeConfiguration, (value) => value.toMap()),
+      'rulesEngine': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(rulesEngine, (value) => value.toMap()),
       'type': type,
-      'webApplicationFirewallPolicyLink': ?webApplicationFirewallPolicyLink == null ? null : webApplicationFirewallPolicyLink!.toMap(),
+      'webApplicationFirewallPolicyLink': ?pulumi.Input.mapOptionalInputValue<RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink, Map<String, dynamic>>(webApplicationFirewallPolicyLink, (value) => value.toMap()),
     };
   }
 
   factory RoutingRuleResponse.fromMap(Map<String, dynamic> map) {
     return RoutingRuleResponse(
-      acceptedProtocols: map['acceptedProtocols'] == null ? null : (map['acceptedProtocols'] as List).cast<String>(),
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      frontendEndpoints: map['frontendEndpoints'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['frontendEndpoints'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      patternsToMatch: map['patternsToMatch'] == null ? null : (map['patternsToMatch'] as List).cast<String>(),
-      resourceState: map['resourceState'] as String,
-      routeConfiguration: map['routeConfiguration'] == null ? null : ForwardingConfigurationResponse.fromMap((map['routeConfiguration'] as Map).cast<String, dynamic>()),
-      rulesEngine: map['rulesEngine'] == null ? null : SubResourceResponse.fromMap((map['rulesEngine'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink'] as Map).cast<String, dynamic>()),
+      acceptedProtocols: map['acceptedProtocols'] == null ? null : ((map['acceptedProtocols'] as List).cast<String>()).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      frontendEndpoints: map['frontendEndpoints'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['frontendEndpoints'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      patternsToMatch: map['patternsToMatch'] == null ? null : ((map['patternsToMatch'] as List).cast<String>()).input(),
+      resourceState: (map['resourceState'] as String).input(),
+      routeConfiguration: map['routeConfiguration'] == null ? null : (ForwardingConfigurationResponse.fromMap((map['routeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      rulesEngine: map['rulesEngine'] == null ? null : (SubResourceResponse.fromMap((map['rulesEngine'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : (RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_salesforce_configuration_crawler_configuration_filter_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration {
   /// The Salesforce standard object configuration. See `filter_configuration` block for details.
-  final AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration? filterConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration>? filterConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration].
   /// [filterConfiguration] The Salesforce standard object configuration. See `filter_configuration` block for details.
@@ -14,13 +15,13 @@ class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfig
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterConfiguration': ?filterConfiguration == null ? null : filterConfiguration!.toMap(),
+      'filterConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration, Map<String, dynamic>>(filterConfiguration, (value) => value.toMap()),
     };
   }
 
   factory AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration(
-      filterConfiguration: map['filterConfiguration'] == null ? null : AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration.fromMap((map['filterConfiguration'] as Map).cast<String, dynamic>()),
+      filterConfiguration: map['filterConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration.fromMap((map['filterConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

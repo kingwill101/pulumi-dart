@@ -26,17 +26,12 @@ class GuestConfigurationAssignmentsVMSSArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmssName] The name of the virtual machine scale set.
   GuestConfigurationAssignmentsVMSSArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<GuestConfigurationAssignmentProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmssName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<GuestConfigurationAssignmentProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmssName = pulumi.Input.asInput<String>(vmssName);
+    this.location,
+    this.name,
+    this.properties,
+    required this.resourceGroupName,
+    required this.vmssName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GuestConfigurationAssignmentsVMSSArgs {
 
   factory GuestConfigurationAssignmentsVMSSArgs.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationAssignmentsVMSSArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<GuestConfigurationAssignmentProperties>(GuestConfigurationAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmssName: pulumi.Output.create<String>(map['vmssName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (GuestConfigurationAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmssName: (map['vmssName'] as String).input(),
     );
   }
 }

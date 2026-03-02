@@ -19,15 +19,11 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgentState {
   /// [scopedResourceId] The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance Guest Agent is stored. Changing this forces a new resource to be created.
   /// [username] The username that is used to connect to the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Changing this forces a new resource to be created.
   VirtualMachineManagerVirtualMachineInstanceGuestAgentState({
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? provisioningAction,
-    pulumi.Output<String>? scopedResourceId,
-    pulumi.Output<String>? username,
-  }) :
-      password = pulumi.Input.asOptionalInput<String>(password),
-      provisioningAction = pulumi.Input.asOptionalInput<String>(provisioningAction),
-      scopedResourceId = pulumi.Input.asOptionalInput<String>(scopedResourceId),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.password,
+    this.provisioningAction,
+    this.scopedResourceId,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgentState {
 
   factory VirtualMachineManagerVirtualMachineInstanceGuestAgentState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceGuestAgentState(
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      provisioningAction: map['provisioningAction'] == null ? null : pulumi.Output.create<String>(map['provisioningAction'] as String),
-      scopedResourceId: map['scopedResourceId'] == null ? null : pulumi.Output.create<String>(map['scopedResourceId'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction'] as String).input(),
+      scopedResourceId: map['scopedResourceId'] == null ? null : (map['scopedResourceId'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

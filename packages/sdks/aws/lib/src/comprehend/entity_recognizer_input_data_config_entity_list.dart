@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EntityRecognizerInputDataConfigEntityList {
   /// Location of entity list.
-  final String s3Uri;
+  final pulumi.Input<String> s3Uri;
 
   /// Creates a new [EntityRecognizerInputDataConfigEntityList].
   /// [s3Uri] Location of entity list.
@@ -19,7 +20,7 @@ class EntityRecognizerInputDataConfigEntityList {
 
   factory EntityRecognizerInputDataConfigEntityList.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfigEntityList(
-      s3Uri: map['s3Uri'] as String,
+      s3Uri: (map['s3Uri'] as String).input(),
     );
   }
 }

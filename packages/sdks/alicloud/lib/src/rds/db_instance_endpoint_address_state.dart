@@ -28,21 +28,14 @@ class DbInstanceEndpointAddressState {
   /// [ipType] The type of the IP address.
   /// [port] The port number of the public endpoint.
   DbInstanceEndpointAddressState({
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? connectionStringPrefix,
-    pulumi.Output<String>? dbInstanceEndpointId,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? ipType,
-    pulumi.Output<String>? port,
-  }) :
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      connectionStringPrefix = pulumi.Input.asOptionalInput<String>(connectionStringPrefix),
-      dbInstanceEndpointId = pulumi.Input.asOptionalInput<String>(dbInstanceEndpointId),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      ipType = pulumi.Input.asOptionalInput<String>(ipType),
-      port = pulumi.Input.asOptionalInput<String>(port);
+    this.connectionString,
+    this.connectionStringPrefix,
+    this.dbInstanceEndpointId,
+    this.dbInstanceId,
+    this.ipAddress,
+    this.ipType,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class DbInstanceEndpointAddressState {
 
   factory DbInstanceEndpointAddressState.fromMap(Map<String, dynamic> map) {
     return DbInstanceEndpointAddressState(
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionStringPrefix'] as String),
-      dbInstanceEndpointId: map['dbInstanceEndpointId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceEndpointId'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      ipType: map['ipType'] == null ? null : pulumi.Output.create<String>(map['ipType'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
+      dbInstanceEndpointId: map['dbInstanceEndpointId'] == null ? null : (map['dbInstanceEndpointId'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

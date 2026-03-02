@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList {
   /// Words or phrases defining the dictionary. The dictionary must contain at least one
   /// phrase and every phrase must contain at least 2 characters that are letters or digits.
-  final List<String> words;
+  final pulumi.Input<List<String>> words;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one
@@ -20,7 +21,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordLis
 
   factory PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList(
-      words: (map['words'] as List).cast<String>(),
+      words: ((map['words'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// JIT approver definition.
 class JitApproverDefinitionResponse {
   /// The approver display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The approver service principal Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The approver type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [JitApproverDefinitionResponse].
   /// [displayName] The approver display name.
@@ -30,9 +31,9 @@ class JitApproverDefinitionResponse {
 
   factory JitApproverDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return JitApproverDefinitionResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

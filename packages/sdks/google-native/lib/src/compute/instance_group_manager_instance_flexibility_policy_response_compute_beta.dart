@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta {
   /// Named instance selections configuring properties that the group will use when creating new VMs.
-  final Map<String, String> instanceSelectionLists;
+  final pulumi.Input<Map<String, String>> instanceSelectionLists;
 
   /// Creates a new [InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta].
   /// [instanceSelectionLists] Named instance selections configuring properties that the group will use when creating new VMs.
@@ -19,7 +20,7 @@ class InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta {
 
   factory InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta(
-      instanceSelectionLists: (map['instanceSelectionLists'] as Map).cast<String, String>(),
+      instanceSelectionLists: ((map['instanceSelectionLists'] as Map).cast<String, String>()).input(),
     );
   }
 }

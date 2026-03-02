@@ -25,15 +25,11 @@ class JobIAMPolicyArgs {
   /// [project] The project in which the job belongs. If it
   /// [region] The region in which the job belongs. If it
   JobIAMPolicyArgs({
-    required pulumi.Output<String> jobId,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.jobId,
+    required this.policyData,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class JobIAMPolicyArgs {
 
   factory JobIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return JobIAMPolicyArgs(
-      jobId: pulumi.Output.create<String>(map['jobId'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      jobId: (map['jobId'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class InstanceFleetArgs {
   /// [targetOnDemandCapacity] The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
   /// [targetSpotCapacity] The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
   InstanceFleetArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<InstanceFleetInstanceTypeConfig>>? instanceTypeConfigs,
-    pulumi.Output<InstanceFleetLaunchSpecifications>? launchSpecifications,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? targetOnDemandCapacity,
-    pulumi.Output<int>? targetSpotCapacity,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      instanceTypeConfigs = pulumi.Input.asOptionalInput<List<InstanceFleetInstanceTypeConfig>>(instanceTypeConfigs),
-      launchSpecifications = pulumi.Input.asOptionalInput<InstanceFleetLaunchSpecifications>(launchSpecifications),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetOnDemandCapacity = pulumi.Input.asOptionalInput<int>(targetOnDemandCapacity),
-      targetSpotCapacity = pulumi.Input.asOptionalInput<int>(targetSpotCapacity);
+    required this.clusterId,
+    this.instanceTypeConfigs,
+    this.launchSpecifications,
+    this.name,
+    this.region,
+    this.targetOnDemandCapacity,
+    this.targetSpotCapacity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class InstanceFleetArgs {
 
   factory InstanceFleetArgs.fromMap(Map<String, dynamic> map) {
     return InstanceFleetArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : pulumi.Output.create<List<InstanceFleetInstanceTypeConfig>>(pulumi.Input.decodeList<InstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs'], (value) => InstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      launchSpecifications: map['launchSpecifications'] == null ? null : pulumi.Output.create<InstanceFleetLaunchSpecifications>(InstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : pulumi.Output.create<int>(map['targetOnDemandCapacity'] as int),
-      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : pulumi.Output.create<int>(map['targetSpotCapacity'] as int),
+      clusterId: (map['clusterId'] as String).input(),
+      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs'], (value) => InstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchSpecifications: map['launchSpecifications'] == null ? null : (InstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : (map['targetOnDemandCapacity'] as int).input(),
+      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : (map['targetSpotCapacity'] as int).input(),
     );
   }
 }

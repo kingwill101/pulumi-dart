@@ -19,13 +19,10 @@ class PolicyAttachmentArgs {
   /// [targetId] The ID of the object.
   /// [targetType] The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
   PolicyAttachmentArgs({
-    required pulumi.Output<String> policyId,
-    required pulumi.Output<String> targetId,
-    required pulumi.Output<String> targetType,
-  }) :
-      policyId = pulumi.Input.asInput<String>(policyId),
-      targetId = pulumi.Input.asInput<String>(targetId),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    required this.policyId,
+    required this.targetId,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PolicyAttachmentArgs {
 
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      policyId: (map['policyId'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

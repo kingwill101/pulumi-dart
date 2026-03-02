@@ -42,27 +42,17 @@ class DomainNewArgs {
   /// [status] The status of the resource, valid values: `online`, `offline`.
   /// [tags] The tag of the resource
   DomainNewArgs({
-    required pulumi.Output<String> cdnType,
-    pulumi.Output<DomainNewCertificateConfig>? certificateConfig,
-    pulumi.Output<String>? checkUrl,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? env,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? scope,
-    required pulumi.Output<List<DomainNewSource>> sources,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cdnType = pulumi.Input.asInput<String>(cdnType),
-      certificateConfig = pulumi.Input.asOptionalInput<DomainNewCertificateConfig>(certificateConfig),
-      checkUrl = pulumi.Input.asOptionalInput<String>(checkUrl),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      env = pulumi.Input.asOptionalInput<String>(env),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      sources = pulumi.Input.asInput<List<DomainNewSource>>(sources),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.cdnType,
+    this.certificateConfig,
+    this.checkUrl,
+    required this.domainName,
+    this.env,
+    this.resourceGroupId,
+    this.scope,
+    required this.sources,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class DomainNewArgs {
 
   factory DomainNewArgs.fromMap(Map<String, dynamic> map) {
     return DomainNewArgs(
-      cdnType: pulumi.Output.create<String>(map['cdnType'] as String),
-      certificateConfig: map['certificateConfig'] == null ? null : pulumi.Output.create<DomainNewCertificateConfig>(DomainNewCertificateConfig.fromMap((map['certificateConfig'] as Map).cast<String, dynamic>())),
-      checkUrl: map['checkUrl'] == null ? null : pulumi.Output.create<String>(map['checkUrl'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      env: map['env'] == null ? null : pulumi.Output.create<String>(map['env'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      sources: pulumi.Output.create<List<DomainNewSource>>(pulumi.Input.decodeList<DomainNewSource>(map['sources'], (value) => DomainNewSource.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cdnType: (map['cdnType'] as String).input(),
+      certificateConfig: map['certificateConfig'] == null ? null : (DomainNewCertificateConfig.fromMap((map['certificateConfig'] as Map).cast<String, dynamic>())).input(),
+      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      env: map['env'] == null ? null : (map['env'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      sources: (pulumi.Input.decodeList<DomainNewSource>(map['sources'], (value) => DomainNewSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

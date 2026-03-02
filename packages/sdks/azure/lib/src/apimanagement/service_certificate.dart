@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceCertificate {
   /// The password for the certificate.
-  final String? certificatePassword;
+  final pulumi.Input<String>? certificatePassword;
   /// The Base64 Encoded PFX or Base64 Encoded X.509 Certificate.
-  final String encodedCertificate;
+  final pulumi.Input<String> encodedCertificate;
   /// The expiration date of the certificate in RFC3339 format: `2000-01-02T03:04:05Z`.
-  final String? expiry;
+  final pulumi.Input<String>? expiry;
   /// The name of the Certificate Store where this certificate should be stored. Possible values are `CertificateAuthority` and `Root`.
-  final String storeName;
+  final pulumi.Input<String> storeName;
   /// The subject of the certificate.
-  final String? subject;
+  final pulumi.Input<String>? subject;
   /// The thumbprint of the certificate.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [ServiceCertificate].
   /// [certificatePassword] The password for the certificate.
@@ -44,12 +45,12 @@ class ServiceCertificate {
 
   factory ServiceCertificate.fromMap(Map<String, dynamic> map) {
     return ServiceCertificate(
-      certificatePassword: map['certificatePassword'] == null ? null : map['certificatePassword'] as String,
-      encodedCertificate: map['encodedCertificate'] as String,
-      expiry: map['expiry'] == null ? null : map['expiry'] as String,
-      storeName: map['storeName'] as String,
-      subject: map['subject'] == null ? null : map['subject'] as String,
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
+      encodedCertificate: (map['encodedCertificate'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      storeName: (map['storeName'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

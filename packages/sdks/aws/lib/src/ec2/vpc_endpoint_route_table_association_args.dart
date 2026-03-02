@@ -19,13 +19,10 @@ class VpcEndpointRouteTableAssociationArgs {
   /// [routeTableId] Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
   /// [vpcEndpointId] Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
   VpcEndpointRouteTableAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routeTableId,
-    required pulumi.Output<String> vpcEndpointId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId),
-      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
+    this.region,
+    required this.routeTableId,
+    required this.vpcEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VpcEndpointRouteTableAssociationArgs {
 
   factory VpcEndpointRouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointRouteTableAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
-      vpcEndpointId: pulumi.Output.create<String>(map['vpcEndpointId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );
   }
 }

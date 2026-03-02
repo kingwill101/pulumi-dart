@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies current state of tabs.
 class TabStateResponse {
   /// Current tab.
-  final String? currentTab;
+  final pulumi.Input<String>? currentTab;
   /// visited tabs.
-  final List<String>? visitedTabs;
+  final pulumi.Input<List<String>>? visitedTabs;
 
   /// Creates a new [TabStateResponse].
   /// [currentTab] Current tab.
@@ -25,8 +26,8 @@ class TabStateResponse {
 
   factory TabStateResponse.fromMap(Map<String, dynamic> map) {
     return TabStateResponse(
-      currentTab: map['currentTab'] == null ? null : map['currentTab'] as String,
-      visitedTabs: map['visitedTabs'] == null ? null : (map['visitedTabs'] as List).cast<String>(),
+      currentTab: map['currentTab'] == null ? null : (map['currentTab'] as String).input(),
+      visitedTabs: map['visitedTabs'] == null ? null : ((map['visitedTabs'] as List).cast<String>()).input(),
     );
   }
 }

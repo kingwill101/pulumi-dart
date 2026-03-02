@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The TarGZip compression read settings.
 class TarGZipReadSettings {
   /// Preserve the compression file name as folder path. Type: boolean (or Expression with resultType boolean).
-  final dynamic preserveCompressionFileNameAsFolder;
+  final pulumi.Input<dynamic>? preserveCompressionFileNameAsFolder;
   /// The Compression setting type.
   /// Expected value is 'TarGZipReadSettings'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TarGZipReadSettings].
   /// [preserveCompressionFileNameAsFolder] Preserve the compression file name as folder path. Type: boolean (or Expression with resultType boolean).
@@ -26,8 +27,8 @@ class TarGZipReadSettings {
 
   factory TarGZipReadSettings.fromMap(Map<String, dynamic> map) {
     return TarGZipReadSettings(
-      preserveCompressionFileNameAsFolder: map['preserveCompressionFileNameAsFolder'] == null ? null : map['preserveCompressionFileNameAsFolder'],
-      type: map['type'] as String,
+      preserveCompressionFileNameAsFolder: map['preserveCompressionFileNameAsFolder'] == null ? null : (map['preserveCompressionFileNameAsFolder']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

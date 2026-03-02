@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationTenant {
   /// The display name of the tenant.
-  final String tenantDisplayName;
+  final pulumi.Input<String> tenantDisplayName;
   /// The ID of the application tenant.
-  final String tenantIdentifier;
+  final pulumi.Input<String> tenantIdentifier;
 
   /// Creates a new [AppAuthorizationTenant].
   /// [tenantDisplayName] The display name of the tenant.
@@ -24,8 +25,8 @@ class AppAuthorizationTenant {
 
   factory AppAuthorizationTenant.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationTenant(
-      tenantDisplayName: map['tenantDisplayName'] as String,
-      tenantIdentifier: map['tenantIdentifier'] as String,
+      tenantDisplayName: (map['tenantDisplayName'] as String).input(),
+      tenantIdentifier: (map['tenantIdentifier'] as String).input(),
     );
   }
 }

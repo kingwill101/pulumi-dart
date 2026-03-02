@@ -35,9 +35,8 @@ class GetNetblockIPRangesArgs {
   /// Creates a new [GetNetblockIPRangesArgs].
   /// [rangeType] The type of range for which to provide results.
   GetNetblockIPRangesArgs({
-    pulumi.Output<String>? rangeType,
-  }) :
-      rangeType = pulumi.Input.asOptionalInput<String>(rangeType);
+    this.rangeType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,7 +46,7 @@ class GetNetblockIPRangesArgs {
 
   factory GetNetblockIPRangesArgs.fromMap(Map<String, dynamic> map) {
     return GetNetblockIPRangesArgs(
-      rangeType: map['rangeType'] == null ? null : pulumi.Output.create<String>(map['rangeType'] as String),
+      rangeType: map['rangeType'] == null ? null : (map['rangeType'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CassandraTableSchemaPartitionKey {
   /// Name of the column to partition by.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CassandraTableSchemaPartitionKey].
   /// [name] Name of the column to partition by.
@@ -19,7 +20,7 @@ class CassandraTableSchemaPartitionKey {
 
   factory CassandraTableSchemaPartitionKey.fromMap(Map<String, dynamic> map) {
     return CassandraTableSchemaPartitionKey(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

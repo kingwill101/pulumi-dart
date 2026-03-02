@@ -19,15 +19,11 @@ class AccessPointPolicyState {
   /// [policy] The policy that you want to apply to the specified access point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AccessPointPolicyState({
-    pulumi.Output<String>? accessPointArn,
-    pulumi.Output<bool>? hasPublicAccessPolicy,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-  }) :
-      accessPointArn = pulumi.Input.asOptionalInput<String>(accessPointArn),
-      hasPublicAccessPolicy = pulumi.Input.asOptionalInput<bool>(hasPublicAccessPolicy),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accessPointArn,
+    this.hasPublicAccessPolicy,
+    this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AccessPointPolicyState {
 
   factory AccessPointPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessPointPolicyState(
-      accessPointArn: map['accessPointArn'] == null ? null : pulumi.Output.create<String>(map['accessPointArn'] as String),
-      hasPublicAccessPolicy: map['hasPublicAccessPolicy'] == null ? null : pulumi.Output.create<bool>(map['hasPublicAccessPolicy'] as bool),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accessPointArn: map['accessPointArn'] == null ? null : (map['accessPointArn'] as String).input(),
+      hasPublicAccessPolicy: map['hasPublicAccessPolicy'] == null ? null : (map['hasPublicAccessPolicy'] as bool).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

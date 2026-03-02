@@ -34,23 +34,15 @@ class DefinitionState {
   /// [plan] A `plan` block as defined below.
   /// [scope] The ID of the managed subscription. Changing this forces a new resource to be created.
   DefinitionState({
-    pulumi.Output<List<DefinitionAuthorization>>? authorizations,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<DefinitionEligibleAuthorization>>? eligibleAuthorizations,
-    pulumi.Output<String>? lighthouseDefinitionId,
-    pulumi.Output<String>? managingTenantId,
-    pulumi.Output<String>? name,
-    pulumi.Output<DefinitionPlan>? plan,
-    pulumi.Output<String>? scope,
-  }) :
-      authorizations = pulumi.Input.asOptionalInput<List<DefinitionAuthorization>>(authorizations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eligibleAuthorizations = pulumi.Input.asOptionalInput<List<DefinitionEligibleAuthorization>>(eligibleAuthorizations),
-      lighthouseDefinitionId = pulumi.Input.asOptionalInput<String>(lighthouseDefinitionId),
-      managingTenantId = pulumi.Input.asOptionalInput<String>(managingTenantId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plan = pulumi.Input.asOptionalInput<DefinitionPlan>(plan),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.authorizations,
+    this.description,
+    this.eligibleAuthorizations,
+    this.lighthouseDefinitionId,
+    this.managingTenantId,
+    this.name,
+    this.plan,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class DefinitionState {
 
   factory DefinitionState.fromMap(Map<String, dynamic> map) {
     return DefinitionState(
-      authorizations: map['authorizations'] == null ? null : pulumi.Output.create<List<DefinitionAuthorization>>(pulumi.Input.decodeList<DefinitionAuthorization>(map['authorizations'], (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : pulumi.Output.create<List<DefinitionEligibleAuthorization>>(pulumi.Input.decodeList<DefinitionEligibleAuthorization>(map['eligibleAuthorizations'], (value) => DefinitionEligibleAuthorization.fromMap((value as Map).cast<String, dynamic>()))),
-      lighthouseDefinitionId: map['lighthouseDefinitionId'] == null ? null : pulumi.Output.create<String>(map['lighthouseDefinitionId'] as String),
-      managingTenantId: map['managingTenantId'] == null ? null : pulumi.Output.create<String>(map['managingTenantId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<DefinitionPlan>(DefinitionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<DefinitionAuthorization>(map['authorizations'], (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<DefinitionEligibleAuthorization>(map['eligibleAuthorizations'], (value) => DefinitionEligibleAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lighthouseDefinitionId: map['lighthouseDefinitionId'] == null ? null : (map['lighthouseDefinitionId'] as String).input(),
+      managingTenantId: map['managingTenantId'] == null ? null : (map['managingTenantId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plan: map['plan'] == null ? null : (DefinitionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

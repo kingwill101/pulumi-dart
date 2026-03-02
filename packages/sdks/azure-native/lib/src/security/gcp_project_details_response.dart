@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details about the project represented by the security connector
 class GcpProjectDetailsResponse {
   /// The GCP Project id
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
   /// GCP project name
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// The unique GCP Project number
-  final String? projectNumber;
+  final pulumi.Input<String>? projectNumber;
   /// The GCP workload identity federation pool id
-  final String workloadIdentityPoolId;
+  final pulumi.Input<String> workloadIdentityPoolId;
 
   /// Creates a new [GcpProjectDetailsResponse].
   /// [projectId] The GCP Project id
@@ -35,10 +36,10 @@ class GcpProjectDetailsResponse {
 
   factory GcpProjectDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GcpProjectDetailsResponse(
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
-      projectName: map['projectName'] as String,
-      projectNumber: map['projectNumber'] == null ? null : map['projectNumber'] as String,
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] as String,
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
     );
   }
 }

@@ -18,15 +18,11 @@ class GetServingConfigArgs {
   /// [project] Optional.
   /// [servingConfigId] Required.
   GetServingConfigArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> servingConfigId,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      servingConfigId = pulumi.Input.asInput<String>(servingConfigId);
+    required this.catalogId,
+    required this.location,
+    this.project,
+    required this.servingConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetServingConfigArgs {
 
   factory GetServingConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetServingConfigArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      servingConfigId: pulumi.Output.create<String>(map['servingConfigId'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      servingConfigId: (map['servingConfigId'] as String).input(),
     );
   }
 }

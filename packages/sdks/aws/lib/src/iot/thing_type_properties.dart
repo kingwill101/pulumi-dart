@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThingTypeProperties {
   /// The description of the thing type.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A list of searchable thing attribute names.
-  final List<String>? searchableAttributes;
+  final pulumi.Input<List<String>>? searchableAttributes;
 
   /// Creates a new [ThingTypeProperties].
   /// [description] The description of the thing type.
@@ -24,8 +25,8 @@ class ThingTypeProperties {
 
   factory ThingTypeProperties.fromMap(Map<String, dynamic> map) {
     return ThingTypeProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      searchableAttributes: map['searchableAttributes'] == null ? null : (map['searchableAttributes'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      searchableAttributes: map['searchableAttributes'] == null ? null : ((map['searchableAttributes'] as List).cast<String>()).input(),
     );
   }
 }

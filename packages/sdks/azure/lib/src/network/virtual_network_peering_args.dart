@@ -51,33 +51,20 @@ class VirtualNetworkPeeringArgs {
   /// [useRemoteGateways] Controls if remote gateways can be used on the local virtual network. If the flag is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to `true`. This flag cannot be set if virtual network already has a gateway. Defaults to `false`.
   /// [virtualNetworkName] The name of the virtual network. Changing this forces a new resource to be created.
   VirtualNetworkPeeringArgs({
-    pulumi.Output<bool>? allowForwardedTraffic,
-    pulumi.Output<bool>? allowGatewayTransit,
-    pulumi.Output<bool>? allowVirtualNetworkAccess,
-    pulumi.Output<List<String>>? localSubnetNames,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? onlyIpv6PeeringEnabled,
-    pulumi.Output<bool>? peerCompleteVirtualNetworksEnabled,
-    pulumi.Output<List<String>>? remoteSubnetNames,
-    required pulumi.Output<String> remoteVirtualNetworkId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? triggers,
-    pulumi.Output<bool>? useRemoteGateways,
-    required pulumi.Output<String> virtualNetworkName,
-  }) :
-      allowForwardedTraffic = pulumi.Input.asOptionalInput<bool>(allowForwardedTraffic),
-      allowGatewayTransit = pulumi.Input.asOptionalInput<bool>(allowGatewayTransit),
-      allowVirtualNetworkAccess = pulumi.Input.asOptionalInput<bool>(allowVirtualNetworkAccess),
-      localSubnetNames = pulumi.Input.asOptionalInput<List<String>>(localSubnetNames),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      onlyIpv6PeeringEnabled = pulumi.Input.asOptionalInput<bool>(onlyIpv6PeeringEnabled),
-      peerCompleteVirtualNetworksEnabled = pulumi.Input.asOptionalInput<bool>(peerCompleteVirtualNetworksEnabled),
-      remoteSubnetNames = pulumi.Input.asOptionalInput<List<String>>(remoteSubnetNames),
-      remoteVirtualNetworkId = pulumi.Input.asInput<String>(remoteVirtualNetworkId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers),
-      useRemoteGateways = pulumi.Input.asOptionalInput<bool>(useRemoteGateways),
-      virtualNetworkName = pulumi.Input.asInput<String>(virtualNetworkName);
+    this.allowForwardedTraffic,
+    this.allowGatewayTransit,
+    this.allowVirtualNetworkAccess,
+    this.localSubnetNames,
+    this.name,
+    this.onlyIpv6PeeringEnabled,
+    this.peerCompleteVirtualNetworksEnabled,
+    this.remoteSubnetNames,
+    required this.remoteVirtualNetworkId,
+    required this.resourceGroupName,
+    this.triggers,
+    this.useRemoteGateways,
+    required this.virtualNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class VirtualNetworkPeeringArgs {
 
   factory VirtualNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPeeringArgs(
-      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : pulumi.Output.create<bool>(map['allowForwardedTraffic'] as bool),
-      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : pulumi.Output.create<bool>(map['allowGatewayTransit'] as bool),
-      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : pulumi.Output.create<bool>(map['allowVirtualNetworkAccess'] as bool),
-      localSubnetNames: map['localSubnetNames'] == null ? null : pulumi.Output.create<List<String>>((map['localSubnetNames'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      onlyIpv6PeeringEnabled: map['onlyIpv6PeeringEnabled'] == null ? null : pulumi.Output.create<bool>(map['onlyIpv6PeeringEnabled'] as bool),
-      peerCompleteVirtualNetworksEnabled: map['peerCompleteVirtualNetworksEnabled'] == null ? null : pulumi.Output.create<bool>(map['peerCompleteVirtualNetworksEnabled'] as bool),
-      remoteSubnetNames: map['remoteSubnetNames'] == null ? null : pulumi.Output.create<List<String>>((map['remoteSubnetNames'] as List).cast<String>()),
-      remoteVirtualNetworkId: pulumi.Output.create<String>(map['remoteVirtualNetworkId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
-      useRemoteGateways: map['useRemoteGateways'] == null ? null : pulumi.Output.create<bool>(map['useRemoteGateways'] as bool),
-      virtualNetworkName: pulumi.Output.create<String>(map['virtualNetworkName'] as String),
+      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic'] as bool).input(),
+      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit'] as bool).input(),
+      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess'] as bool).input(),
+      localSubnetNames: map['localSubnetNames'] == null ? null : ((map['localSubnetNames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      onlyIpv6PeeringEnabled: map['onlyIpv6PeeringEnabled'] == null ? null : (map['onlyIpv6PeeringEnabled'] as bool).input(),
+      peerCompleteVirtualNetworksEnabled: map['peerCompleteVirtualNetworksEnabled'] == null ? null : (map['peerCompleteVirtualNetworksEnabled'] as bool).input(),
+      remoteSubnetNames: map['remoteSubnetNames'] == null ? null : ((map['remoteSubnetNames'] as List).cast<String>()).input(),
+      remoteVirtualNetworkId: (map['remoteVirtualNetworkId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways'] as bool).input(),
+      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }
 }

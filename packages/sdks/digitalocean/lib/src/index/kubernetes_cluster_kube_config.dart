@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterKubeConfig {
   /// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-  final String? clientCertificate;
+  final pulumi.Input<String>? clientCertificate;
   /// The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-  final String? clientKey;
+  final pulumi.Input<String>? clientKey;
   /// The base64 encoded public certificate for the cluster's certificate authority.
-  final String? clusterCaCertificate;
+  final pulumi.Input<String>? clusterCaCertificate;
   /// The date and time when the credentials will expire and need to be regenerated.
-  final String? expiresAt;
+  final pulumi.Input<String>? expiresAt;
   /// The URL of the API server on the Kubernetes master node.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// The full contents of the Kubernetes cluster's kubeconfig file.
-  final String? rawConfig;
+  final pulumi.Input<String>? rawConfig;
   /// The DigitalOcean API access token used by clients to access the cluster.
-  final String? token;
+  final pulumi.Input<String>? token;
 
   /// Creates a new [KubernetesClusterKubeConfig].
   /// [clientCertificate] The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
@@ -49,13 +50,13 @@ class KubernetesClusterKubeConfig {
 
   factory KubernetesClusterKubeConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterKubeConfig(
-      clientCertificate: map['clientCertificate'] == null ? null : map['clientCertificate'] as String,
-      clientKey: map['clientKey'] == null ? null : map['clientKey'] as String,
-      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : map['clusterCaCertificate'] as String,
-      expiresAt: map['expiresAt'] == null ? null : map['expiresAt'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
-      rawConfig: map['rawConfig'] == null ? null : map['rawConfig'] as String,
-      token: map['token'] == null ? null : map['token'] as String,
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
+      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate'] as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      rawConfig: map['rawConfig'] == null ? null : (map['rawConfig'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

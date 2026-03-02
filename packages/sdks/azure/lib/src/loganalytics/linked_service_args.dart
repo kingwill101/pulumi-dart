@@ -24,15 +24,11 @@ class LinkedServiceArgs {
   /// [workspaceId] The ID of the Log Analytics Workspace that will contain the Log Analytics Linked Service resource.
   /// [writeAccessId] The ID of the writable Resource that will be linked to the workspace. This should be used for linking to a Log Analytics Cluster resource.
   LinkedServiceArgs({
-    pulumi.Output<String>? readAccessId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceId,
-    pulumi.Output<String>? writeAccessId,
-  }) :
-      readAccessId = pulumi.Input.asOptionalInput<String>(readAccessId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId),
-      writeAccessId = pulumi.Input.asOptionalInput<String>(writeAccessId);
+    this.readAccessId,
+    required this.resourceGroupName,
+    required this.workspaceId,
+    this.writeAccessId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class LinkedServiceArgs {
 
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
-      readAccessId: map['readAccessId'] == null ? null : pulumi.Output.create<String>(map['readAccessId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
-      writeAccessId: map['writeAccessId'] == null ? null : pulumi.Output.create<String>(map['writeAccessId'] as String),
+      readAccessId: map['readAccessId'] == null ? null : (map['readAccessId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
+      writeAccessId: map['writeAccessId'] == null ? null : (map['writeAccessId'] as String).input(),
     );
   }
 }

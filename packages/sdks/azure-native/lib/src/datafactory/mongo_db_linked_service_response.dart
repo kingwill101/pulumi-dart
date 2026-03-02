@@ -8,38 +8,38 @@ import 'parameter_specification_response.dart';
 /// Linked service for MongoDb data source.
 class MongoDbLinkedServiceResponse {
   /// Specifies whether to allow self-signed certificates from the server. The default value is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic allowSelfSignedServerCert;
+  final pulumi.Input<dynamic>? allowSelfSignedServerCert;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Database to verify the username and password. Type: string (or Expression with resultType string).
-  final dynamic authSource;
+  final pulumi.Input<dynamic>? authSource;
   /// The authentication type to be used to connect to the MongoDB database.
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The name of the MongoDB database that you want to access. Type: string (or Expression with resultType string).
-  final dynamic databaseName;
+  final pulumi.Input<dynamic> databaseName;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specifies whether the connections to the server are encrypted using SSL. The default value is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic enableSsl;
+  final pulumi.Input<dynamic>? enableSsl;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// Password for authentication.
-  final AzureKeyVaultSecretReferenceResponse? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
   /// The TCP port number that the MongoDB server uses to listen for client connections. The default value is 27017. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic port;
+  final pulumi.Input<dynamic>? port;
   /// The IP address or server name of the MongoDB server. Type: string (or Expression with resultType string).
-  final dynamic server;
+  final pulumi.Input<dynamic> server;
   /// Type of linked service.
   /// Expected value is 'MongoDb'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Username for authentication. Type: string (or Expression with resultType string).
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MongoDbLinkedServiceResponse].
   /// [allowSelfSignedServerCert] Specifies whether to allow self-signed certificates from the server. The default value is false. Type: boolean (or Expression with resultType boolean).
@@ -83,13 +83,13 @@ class MongoDbLinkedServiceResponse {
       'annotations': ?annotations,
       'authSource': ?authSource,
       'authenticationType': ?authenticationType,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'databaseName': databaseName,
       'description': ?description,
       'enableSsl': ?enableSsl,
       'encryptedCredential': ?encryptedCredential,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'port': ?port,
       'server': server,
       'type': type,
@@ -100,22 +100,22 @@ class MongoDbLinkedServiceResponse {
 
   factory MongoDbLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbLinkedServiceResponse(
-      allowSelfSignedServerCert: map['allowSelfSignedServerCert'] == null ? null : map['allowSelfSignedServerCert'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authSource: map['authSource'] == null ? null : map['authSource'],
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      databaseName: map['databaseName'],
-      description: map['description'] == null ? null : map['description'] as String,
-      enableSsl: map['enableSsl'] == null ? null : map['enableSsl'],
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'],
-      server: map['server'],
-      type: map['type'] as String,
-      username: map['username'] == null ? null : map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      allowSelfSignedServerCert: map['allowSelfSignedServerCert'] == null ? null : (map['allowSelfSignedServerCert']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authSource: map['authSource'] == null ? null : (map['authSource']).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      databaseName: (map['databaseName']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableSsl: map['enableSsl'] == null ? null : (map['enableSsl']).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']).input(),
+      server: (map['server']).input(),
+      type: (map['type'] as String).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

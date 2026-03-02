@@ -30,17 +30,12 @@ class SourceCredentialArgs {
   /// [token] For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
   /// [userName] The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
   SourceCredentialArgs({
-    required pulumi.Output<String> authType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serverType,
-    required pulumi.Output<String> token,
-    pulumi.Output<String>? userName,
-  }) :
-      authType = pulumi.Input.asInput<String>(authType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverType = pulumi.Input.asInput<String>(serverType),
-      token = pulumi.Input.asInput<String>(token),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    required this.authType,
+    this.region,
+    required this.serverType,
+    required this.token,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class SourceCredentialArgs {
 
   factory SourceCredentialArgs.fromMap(Map<String, dynamic> map) {
     return SourceCredentialArgs(
-      authType: pulumi.Output.create<String>(map['authType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverType: pulumi.Output.create<String>(map['serverType'] as String),
-      token: pulumi.Output.create<String>(map['token'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      authType: (map['authType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverType: (map['serverType'] as String).input(),
+      token: (map['token'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

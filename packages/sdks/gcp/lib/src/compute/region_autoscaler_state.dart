@@ -42,23 +42,15 @@ class RegionAutoscalerState {
   /// [selfLink] The URI of the created resource.
   /// [target] URL of the managed instance group that this autoscaler will scale.
   RegionAutoscalerState({
-    pulumi.Output<RegionAutoscalerAutoscalingPolicy>? autoscalingPolicy,
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? target,
-  }) :
-      autoscalingPolicy = pulumi.Input.asOptionalInput<RegionAutoscalerAutoscalingPolicy>(autoscalingPolicy),
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      target = pulumi.Input.asOptionalInput<String>(target);
+    this.autoscalingPolicy,
+    this.creationTimestamp,
+    this.description,
+    this.name,
+    this.project,
+    this.region,
+    this.selfLink,
+    this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class RegionAutoscalerState {
 
   factory RegionAutoscalerState.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerState(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : pulumi.Output.create<RegionAutoscalerAutoscalingPolicy>(RegionAutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())),
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (RegionAutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

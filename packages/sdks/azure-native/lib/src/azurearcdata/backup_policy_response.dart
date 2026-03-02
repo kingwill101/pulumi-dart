@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The backup profile for the SQL server.
 class BackupPolicyResponse {
   /// The differential backup interval in hours.
-  final int? differentialBackupHours;
+  final pulumi.Input<int>? differentialBackupHours;
   /// The value indicating days between full backups.
-  final int? fullBackupDays;
+  final pulumi.Input<int>? fullBackupDays;
   /// The retention period for all the databases in this managed instance.
-  final int? retentionPeriodDays;
+  final pulumi.Input<int>? retentionPeriodDays;
   /// The value indicating minutes between transaction log backups.
-  final int? transactionLogBackupMinutes;
+  final pulumi.Input<int>? transactionLogBackupMinutes;
 
   /// Creates a new [BackupPolicyResponse].
   /// [differentialBackupHours] The differential backup interval in hours.
@@ -35,10 +36,10 @@ class BackupPolicyResponse {
 
   factory BackupPolicyResponse.fromMap(Map<String, dynamic> map) {
     return BackupPolicyResponse(
-      differentialBackupHours: map['differentialBackupHours'] == null ? null : map['differentialBackupHours'] as int,
-      fullBackupDays: map['fullBackupDays'] == null ? null : map['fullBackupDays'] as int,
-      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : map['retentionPeriodDays'] as int,
-      transactionLogBackupMinutes: map['transactionLogBackupMinutes'] == null ? null : map['transactionLogBackupMinutes'] as int,
+      differentialBackupHours: map['differentialBackupHours'] == null ? null : (map['differentialBackupHours'] as int).input(),
+      fullBackupDays: map['fullBackupDays'] == null ? null : (map['fullBackupDays'] as int).input(),
+      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays'] as int).input(),
+      transactionLogBackupMinutes: map['transactionLogBackupMinutes'] == null ? null : (map['transactionLogBackupMinutes'] as int).input(),
     );
   }
 }

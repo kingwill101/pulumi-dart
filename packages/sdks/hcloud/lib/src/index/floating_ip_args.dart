@@ -31,21 +31,14 @@ class FloatingIpArgs {
   /// [serverId] Server to assign the Floating IP to. Optional if `home_location` argument is passed.
   /// [type] Type of the Floating IP. `ipv4` `ipv6`
   FloatingIpArgs({
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? homeLocation,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? serverId,
-    required pulumi.Output<String> type,
-  }) :
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      homeLocation = pulumi.Input.asOptionalInput<String>(homeLocation),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asOptionalInput<int>(serverId),
-      type = pulumi.Input.asInput<String>(type);
+    this.deleteProtection,
+    this.description,
+    this.homeLocation,
+    this.labels,
+    this.name,
+    this.serverId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class FloatingIpArgs {
 
   factory FloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpArgs(
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      homeLocation: map['homeLocation'] == null ? null : pulumi.Output.create<String>(map['homeLocation'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<int>(map['serverId'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      homeLocation: map['homeLocation'] == null ? null : (map['homeLocation'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -44,27 +44,17 @@ class DeviceArgs {
   /// [type] Type of device.
   /// [vendor] Vendor of the device.
   DeviceArgs({
-    pulumi.Output<DeviceAwsLocation>? awsLocation,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> globalNetworkId,
-    pulumi.Output<DeviceLocation>? location,
-    pulumi.Output<String>? model,
-    pulumi.Output<String>? serialNumber,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? vendor,
-  }) :
-      awsLocation = pulumi.Input.asOptionalInput<DeviceAwsLocation>(awsLocation),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      location = pulumi.Input.asOptionalInput<DeviceLocation>(location),
-      model = pulumi.Input.asOptionalInput<String>(model),
-      serialNumber = pulumi.Input.asOptionalInput<String>(serialNumber),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vendor = pulumi.Input.asOptionalInput<String>(vendor);
+    this.awsLocation,
+    this.description,
+    required this.globalNetworkId,
+    this.location,
+    this.model,
+    this.serialNumber,
+    this.siteId,
+    this.tags,
+    this.type,
+    this.vendor,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      awsLocation: map['awsLocation'] == null ? null : pulumi.Output.create<DeviceAwsLocation>(DeviceAwsLocation.fromMap((map['awsLocation'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<DeviceLocation>(DeviceLocation.fromMap((map['location'] as Map).cast<String, dynamic>())),
-      model: map['model'] == null ? null : pulumi.Output.create<String>(map['model'] as String),
-      serialNumber: map['serialNumber'] == null ? null : pulumi.Output.create<String>(map['serialNumber'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vendor: map['vendor'] == null ? null : pulumi.Output.create<String>(map['vendor'] as String),
+      awsLocation: map['awsLocation'] == null ? null : (DeviceAwsLocation.fromMap((map['awsLocation'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      location: map['location'] == null ? null : (DeviceLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
     );
   }
 }

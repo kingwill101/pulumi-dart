@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a node pool.
 class GkeNodePoolAcceleratorConfig {
   /// The number of accelerator cards exposed to an instance.
-  final String? acceleratorCount;
+  final pulumi.Input<String>? acceleratorCount;
   /// The accelerator type resource namename (see GPUs on Compute Engine).
-  final String? acceleratorType;
+  final pulumi.Input<String>? acceleratorType;
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-  final String? gpuPartitionSize;
+  final pulumi.Input<String>? gpuPartitionSize;
 
   /// Creates a new [GkeNodePoolAcceleratorConfig].
   /// [acceleratorCount] The number of accelerator cards exposed to an instance.
@@ -30,9 +31,9 @@ class GkeNodePoolAcceleratorConfig {
 
   factory GkeNodePoolAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return GkeNodePoolAcceleratorConfig(
-      acceleratorCount: map['acceleratorCount'] == null ? null : map['acceleratorCount'] as String,
-      acceleratorType: map['acceleratorType'] == null ? null : map['acceleratorType'] as String,
-      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : map['gpuPartitionSize'] as String,
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as String).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
+      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : (map['gpuPartitionSize'] as String).input(),
     );
   }
 }

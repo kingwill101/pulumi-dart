@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the error.
 class ErrorResponse {
   /// The error code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// The error ID.
-  final double? id;
+  final pulumi.Input<double>? id;
   /// The detailed error message.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The error possible causes.
-  final String? possibleCauses;
+  final pulumi.Input<String>? possibleCauses;
   /// The error recommended action
-  final String? recommendedAction;
+  final pulumi.Input<String>? recommendedAction;
   /// The account ID used to login.
-  final String? runAsAccountId;
+  final pulumi.Input<String>? runAsAccountId;
   /// The error severity
-  final String? severity;
+  final pulumi.Input<String>? severity;
   /// The summarized error message.
-  final String? summaryMessage;
+  final pulumi.Input<String>? summaryMessage;
   /// Time when this error was last updated.
-  final String? updatedTimeStamp;
+  final pulumi.Input<String>? updatedTimeStamp;
 
   /// Creates a new [ErrorResponse].
   /// [code] The error code.
@@ -60,15 +61,15 @@ class ErrorResponse {
 
   factory ErrorResponse.fromMap(Map<String, dynamic> map) {
     return ErrorResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      id: map['id'] == null ? null : map['id'] as double,
-      message: map['message'] == null ? null : map['message'] as String,
-      possibleCauses: map['possibleCauses'] == null ? null : map['possibleCauses'] as String,
-      recommendedAction: map['recommendedAction'] == null ? null : map['recommendedAction'] as String,
-      runAsAccountId: map['runAsAccountId'] == null ? null : map['runAsAccountId'] as String,
-      severity: map['severity'] == null ? null : map['severity'] as String,
-      summaryMessage: map['summaryMessage'] == null ? null : map['summaryMessage'] as String,
-      updatedTimeStamp: map['updatedTimeStamp'] == null ? null : map['updatedTimeStamp'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as double).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      possibleCauses: map['possibleCauses'] == null ? null : (map['possibleCauses'] as String).input(),
+      recommendedAction: map['recommendedAction'] == null ? null : (map['recommendedAction'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      summaryMessage: map['summaryMessage'] == null ? null : (map['summaryMessage'] as String).input(),
+      updatedTimeStamp: map['updatedTimeStamp'] == null ? null : (map['updatedTimeStamp'] as String).input(),
     );
   }
 }

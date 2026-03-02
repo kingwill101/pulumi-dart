@@ -43,27 +43,17 @@ class AndroidAppState {
   /// [sha1Hashes] The SHA1 certificate hashes for the AndroidApp.
   /// [sha256Hashes] The SHA256 certificate hashes for the AndroidApp.
   AndroidAppState({
-    pulumi.Output<String>? apiKeyId,
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? packageName,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? sha1Hashes,
-    pulumi.Output<List<String>>? sha256Hashes,
-  }) :
-      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      packageName = pulumi.Input.asOptionalInput<String>(packageName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sha1Hashes = pulumi.Input.asOptionalInput<List<String>>(sha1Hashes),
-      sha256Hashes = pulumi.Input.asOptionalInput<List<String>>(sha256Hashes);
+    this.apiKeyId,
+    this.appId,
+    this.deletionPolicy,
+    this.displayName,
+    this.etag,
+    this.name,
+    this.packageName,
+    this.project,
+    this.sha1Hashes,
+    this.sha256Hashes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class AndroidAppState {
 
   factory AndroidAppState.fromMap(Map<String, dynamic> map) {
     return AndroidAppState(
-      apiKeyId: map['apiKeyId'] == null ? null : pulumi.Output.create<String>(map['apiKeyId'] as String),
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      packageName: map['packageName'] == null ? null : pulumi.Output.create<String>(map['packageName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sha1Hashes: map['sha1Hashes'] == null ? null : pulumi.Output.create<List<String>>((map['sha1Hashes'] as List).cast<String>()),
-      sha256Hashes: map['sha256Hashes'] == null ? null : pulumi.Output.create<List<String>>((map['sha256Hashes'] as List).cast<String>()),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sha1Hashes: map['sha1Hashes'] == null ? null : ((map['sha1Hashes'] as List).cast<String>()).input(),
+      sha256Hashes: map['sha256Hashes'] == null ? null : ((map['sha256Hashes'] as List).cast<String>()).input(),
     );
   }
 }

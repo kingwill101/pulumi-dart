@@ -5,17 +5,17 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_field_params_res
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
   /// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
-  final List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse> requestCookiesToExclude;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>> requestCookiesToExclude;
   /// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
-  final List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse> requestHeadersToExclude;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>> requestHeadersToExclude;
   /// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
-  final List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse> requestQueryParamsToExclude;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>> requestQueryParamsToExclude;
   /// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
-  final List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse> requestUrisToExclude;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>> requestUrisToExclude;
   /// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-  final List<String> targetRuleIds;
+  final pulumi.Input<List<String>> targetRuleIds;
   /// Target WAF rule set to apply the preconfigured WAF exclusion.
-  final String targetRuleSet;
+  final pulumi.Input<String> targetRuleSet;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigExclusionResponse].
   /// [requestCookiesToExclude] A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -35,10 +35,10 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestCookiesToExclude': pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse, Map<String, dynamic>>(requestCookiesToExclude, (value) => value.toMap()),
-      'requestHeadersToExclude': pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse, Map<String, dynamic>>(requestHeadersToExclude, (value) => value.toMap()),
-      'requestQueryParamsToExclude': pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse, Map<String, dynamic>>(requestQueryParamsToExclude, (value) => value.toMap()),
-      'requestUrisToExclude': pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse, Map<String, dynamic>>(requestUrisToExclude, (value) => value.toMap()),
+      'requestCookiesToExclude': pulumi.Input.mapInputValue<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>, List<Map<String, dynamic>>>(requestCookiesToExclude, (value) => pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestHeadersToExclude': pulumi.Input.mapInputValue<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>, List<Map<String, dynamic>>>(requestHeadersToExclude, (value) => pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestQueryParamsToExclude': pulumi.Input.mapInputValue<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>, List<Map<String, dynamic>>>(requestQueryParamsToExclude, (value) => pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestUrisToExclude': pulumi.Input.mapInputValue<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>, List<Map<String, dynamic>>>(requestUrisToExclude, (value) => pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetRuleIds': targetRuleIds,
       'targetRuleSet': targetRuleSet,
     };
@@ -46,12 +46,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
 
   factory SecurityPolicyRulePreconfiguredWafConfigExclusionResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionResponse(
-      requestCookiesToExclude: pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>(map['requestCookiesToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      requestHeadersToExclude: pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>(map['requestHeadersToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      requestQueryParamsToExclude: pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>(map['requestQueryParamsToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      requestUrisToExclude: pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>(map['requestUrisToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      targetRuleIds: (map['targetRuleIds'] as List).cast<String>(),
-      targetRuleSet: map['targetRuleSet'] as String,
+      requestCookiesToExclude: (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>(map['requestCookiesToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeadersToExclude: (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>(map['requestHeadersToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestQueryParamsToExclude: (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>(map['requestQueryParamsToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestUrisToExclude: (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse>(map['requestUrisToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRuleIds: ((map['targetRuleIds'] as List).cast<String>()).input(),
+      targetRuleSet: (map['targetRuleSet'] as String).input(),
     );
   }
 }

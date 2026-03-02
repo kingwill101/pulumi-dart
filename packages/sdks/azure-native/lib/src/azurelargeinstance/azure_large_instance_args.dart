@@ -50,31 +50,19 @@ class AzureLargeInstanceArgs {
   /// [storageProfile] Specifies the storage settings for the Azure Large Instance disks.
   /// [tags] Resource tags.
   AzureLargeInstanceArgs({
-    pulumi.Output<String>? azureLargeInstanceId,
-    pulumi.Output<String>? azureLargeInstanceName,
-    pulumi.Output<HardwareProfile>? hardwareProfile,
-    pulumi.Output<String>? hwRevision,
-    pulumi.Output<String>? location,
-    pulumi.Output<NetworkProfile>? networkProfile,
-    pulumi.Output<OsProfile>? osProfile,
-    pulumi.Output<String>? powerState,
-    pulumi.Output<String>? proximityPlacementGroup,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<StorageProfile>? storageProfile,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      azureLargeInstanceId = pulumi.Input.asOptionalInput<String>(azureLargeInstanceId),
-      azureLargeInstanceName = pulumi.Input.asOptionalInput<String>(azureLargeInstanceName),
-      hardwareProfile = pulumi.Input.asOptionalInput<HardwareProfile>(hardwareProfile),
-      hwRevision = pulumi.Input.asOptionalInput<String>(hwRevision),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkProfile = pulumi.Input.asOptionalInput<NetworkProfile>(networkProfile),
-      osProfile = pulumi.Input.asOptionalInput<OsProfile>(osProfile),
-      powerState = pulumi.Input.asOptionalInput<String>(powerState),
-      proximityPlacementGroup = pulumi.Input.asOptionalInput<String>(proximityPlacementGroup),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageProfile = pulumi.Input.asOptionalInput<StorageProfile>(storageProfile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.azureLargeInstanceId,
+    this.azureLargeInstanceName,
+    this.hardwareProfile,
+    this.hwRevision,
+    this.location,
+    this.networkProfile,
+    this.osProfile,
+    this.powerState,
+    this.proximityPlacementGroup,
+    required this.resourceGroupName,
+    this.storageProfile,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class AzureLargeInstanceArgs {
 
   factory AzureLargeInstanceArgs.fromMap(Map<String, dynamic> map) {
     return AzureLargeInstanceArgs(
-      azureLargeInstanceId: map['azureLargeInstanceId'] == null ? null : pulumi.Output.create<String>(map['azureLargeInstanceId'] as String),
-      azureLargeInstanceName: map['azureLargeInstanceName'] == null ? null : pulumi.Output.create<String>(map['azureLargeInstanceName'] as String),
-      hardwareProfile: map['hardwareProfile'] == null ? null : pulumi.Output.create<HardwareProfile>(HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())),
-      hwRevision: map['hwRevision'] == null ? null : pulumi.Output.create<String>(map['hwRevision'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<NetworkProfile>(NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      osProfile: map['osProfile'] == null ? null : pulumi.Output.create<OsProfile>(OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())),
-      powerState: map['powerState'] == null ? null : pulumi.Output.create<String>(map['powerState'] as String),
-      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : pulumi.Output.create<String>(map['proximityPlacementGroup'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageProfile: map['storageProfile'] == null ? null : pulumi.Output.create<StorageProfile>(StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      azureLargeInstanceId: map['azureLargeInstanceId'] == null ? null : (map['azureLargeInstanceId'] as String).input(),
+      azureLargeInstanceName: map['azureLargeInstanceName'] == null ? null : (map['azureLargeInstanceName'] as String).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
+      hwRevision: map['hwRevision'] == null ? null : (map['hwRevision'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      powerState: map['powerState'] == null ? null : (map['powerState'] as String).input(),
+      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : (map['proximityPlacementGroup'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

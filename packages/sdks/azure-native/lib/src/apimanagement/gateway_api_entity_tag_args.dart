@@ -26,17 +26,12 @@ class GatewayApiEntityTagArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GatewayApiEntityTagArgs({
-    pulumi.Output<String>? apiId,
-    required pulumi.Output<String> gatewayId,
-    pulumi.Output<ProvisioningState>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      provisioningState = pulumi.Input.asOptionalInput<ProvisioningState>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.apiId,
+    required this.gatewayId,
+    this.provisioningState,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GatewayApiEntityTagArgs {
 
   factory GatewayApiEntityTagArgs.fromMap(Map<String, dynamic> map) {
     return GatewayApiEntityTagArgs(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<ProvisioningState>(ProvisioningState.fromValue(map['provisioningState'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (ProvisioningState.fromValue(map['provisioningState'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

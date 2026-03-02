@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The order by expression to be used in the report.
 class ReportConfigSortingResponse {
   /// Direction of sort.
-  final String? direction;
+  final pulumi.Input<String>? direction;
   /// The name of the column to sort.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ReportConfigSortingResponse].
   /// [direction] Direction of sort.
@@ -25,8 +26,8 @@ class ReportConfigSortingResponse {
 
   factory ReportConfigSortingResponse.fromMap(Map<String, dynamic> map) {
     return ReportConfigSortingResponse(
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      name: map['name'] as String,
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

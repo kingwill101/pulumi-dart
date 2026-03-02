@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGceSetupNetworkInterfaceAccessConfig {
   /// An external IP address associated with this instance. Specify an unused
@@ -7,7 +8,7 @@ class InstanceGceSetupNetworkInterfaceAccessConfig {
   /// undefined to use an IP from a shared ephemeral IP address pool. If you
   /// specify a static external IP address, it must live in the same region as
   /// the zone of the instance.
-  final String externalIp;
+  final pulumi.Input<String> externalIp;
 
   /// Creates a new [InstanceGceSetupNetworkInterfaceAccessConfig].
   /// [externalIp] An external IP address associated with this instance. Specify an unused
@@ -23,7 +24,7 @@ class InstanceGceSetupNetworkInterfaceAccessConfig {
 
   factory InstanceGceSetupNetworkInterfaceAccessConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupNetworkInterfaceAccessConfig(
-      externalIp: map['externalIp'] as String,
+      externalIp: (map['externalIp'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetWorkloadNetworkPublicIPArgs {
   /// [publicIPId] ID of the DNS zone.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetWorkloadNetworkPublicIPArgs({
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> publicIPId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      publicIPId = pulumi.Input.asInput<String>(publicIPId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.privateCloudName,
+    required this.publicIPId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWorkloadNetworkPublicIPArgs {
 
   factory GetWorkloadNetworkPublicIPArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkPublicIPArgs(
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      publicIPId: pulumi.Output.create<String>(map['publicIPId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      publicIPId: (map['publicIPId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

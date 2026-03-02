@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The helm deployment install options
 class HelmInstallOptions {
   /// The helm deployment atomic options
-  final String? atomic;
+  final pulumi.Input<String>? atomic;
   /// The helm deployment timeout options
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
   /// The helm deployment wait options
-  final String? wait;
+  final pulumi.Input<String>? wait;
 
   /// Creates a new [HelmInstallOptions].
   /// [atomic] The helm deployment atomic options
@@ -30,9 +31,9 @@ class HelmInstallOptions {
 
   factory HelmInstallOptions.fromMap(Map<String, dynamic> map) {
     return HelmInstallOptions(
-      atomic: map['atomic'] == null ? null : map['atomic'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
-      wait: map['wait'] == null ? null : map['wait'] as String,
+      atomic: map['atomic'] == null ? null : (map['atomic'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      wait: map['wait'] == null ? null : (map['wait'] as String).input(),
     );
   }
 }

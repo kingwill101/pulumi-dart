@@ -45,19 +45,13 @@ class RegionCompositeHealthCheckArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] URL of the region where the composite health check resides.
   RegionCompositeHealthCheckArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> healthDestination,
-    pulumi.Output<List<String>>? healthSources,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      healthDestination = pulumi.Input.asInput<String>(healthDestination),
-      healthSources = pulumi.Input.asOptionalInput<List<String>>(healthSources),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    this.description,
+    required this.healthDestination,
+    this.healthSources,
+    this.name,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class RegionCompositeHealthCheckArgs {
 
   factory RegionCompositeHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return RegionCompositeHealthCheckArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      healthDestination: pulumi.Output.create<String>(map['healthDestination'] as String),
-      healthSources: map['healthSources'] == null ? null : pulumi.Output.create<List<String>>((map['healthSources'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      healthDestination: (map['healthDestination'] as String).input(),
+      healthSources: map['healthSources'] == null ? null : ((map['healthSources'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

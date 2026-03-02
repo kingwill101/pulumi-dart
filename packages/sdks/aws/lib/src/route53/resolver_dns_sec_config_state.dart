@@ -22,17 +22,12 @@ class ResolverDnsSecConfigState {
   /// [resourceId] The ID of the virtual private cloud (VPC) that you're updating the DNSSEC validation status for.
   /// [validationStatus] The validation status for a DNSSEC configuration. The status can be one of the following: `ENABLING`, `ENABLED`, `DISABLING` and `DISABLED`.
   ResolverDnsSecConfigState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? validationStatus,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      validationStatus = pulumi.Input.asOptionalInput<String>(validationStatus);
+    this.arn,
+    this.ownerId,
+    this.region,
+    this.resourceId,
+    this.validationStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ResolverDnsSecConfigState {
 
   factory ResolverDnsSecConfigState.fromMap(Map<String, dynamic> map) {
     return ResolverDnsSecConfigState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      validationStatus: map['validationStatus'] == null ? null : pulumi.Output.create<String>(map['validationStatus'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      validationStatus: map['validationStatus'] == null ? null : (map['validationStatus'] as String).input(),
     );
   }
 }

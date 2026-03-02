@@ -25,17 +25,12 @@ class SchemaArgs {
   /// [schemaId] The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
   /// [type] The type of the schema definition.
   SchemaArgs({
-    pulumi.Output<String>? definition,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? schemaId,
-    pulumi.Output<SchemaType>? type,
-  }) :
-      definition = pulumi.Input.asOptionalInput<String>(definition),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaId = pulumi.Input.asOptionalInput<String>(schemaId),
-      type = pulumi.Input.asOptionalInput<SchemaType>(type);
+    this.definition,
+    this.name,
+    this.project,
+    this.schemaId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      definition: map['definition'] == null ? null : pulumi.Output.create<String>(map['definition'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaId: map['schemaId'] == null ? null : pulumi.Output.create<String>(map['schemaId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<SchemaType>(SchemaType.fromValue(map['type'] as String)),
+      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      type: map['type'] == null ? null : (SchemaType.fromValue(map['type'] as String)).input(),
     );
   }
 }

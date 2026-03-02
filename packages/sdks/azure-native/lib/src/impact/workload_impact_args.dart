@@ -17,11 +17,9 @@ class WorkloadImpactArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [workloadImpactName] workloadImpact resource
   WorkloadImpactArgs({
-    pulumi.Output<WorkloadImpactProperties>? properties,
-    pulumi.Output<String>? workloadImpactName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<WorkloadImpactProperties>(properties),
-      workloadImpactName = pulumi.Input.asOptionalInput<String>(workloadImpactName);
+    this.properties,
+    this.workloadImpactName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class WorkloadImpactArgs {
 
   factory WorkloadImpactArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadImpactArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<WorkloadImpactProperties>(WorkloadImpactProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      workloadImpactName: map['workloadImpactName'] == null ? null : pulumi.Output.create<String>(map['workloadImpactName'] as String),
+      properties: map['properties'] == null ? null : (WorkloadImpactProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      workloadImpactName: map['workloadImpactName'] == null ? null : (map['workloadImpactName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionSourceRepository {
   /// The URL pointing to the hosted repository where the function was defined at the time of deployment.
-  final String deployedUrl;
+  final pulumi.Input<String> deployedUrl;
   /// The URL pointing to the hosted repository where the function is defined.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GetFunctionSourceRepository].
   /// [deployedUrl] The URL pointing to the hosted repository where the function was defined at the time of deployment.
@@ -24,8 +25,8 @@ class GetFunctionSourceRepository {
 
   factory GetFunctionSourceRepository.fromMap(Map<String, dynamic> map) {
     return GetFunctionSourceRepository(
-      deployedUrl: map['deployedUrl'] as String,
-      url: map['url'] as String,
+      deployedUrl: (map['deployedUrl'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

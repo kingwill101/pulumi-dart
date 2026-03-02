@@ -68,29 +68,18 @@ class RegionSslPolicyState {
   /// [region] The region where the regional SSL policy resides.
   /// [selfLink] The URI of the created resource.
   RegionSslPolicyState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<List<String>>? customFeatures,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? enabledFeatures,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? minTlsVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? profile,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      customFeatures = pulumi.Input.asOptionalInput<List<String>>(customFeatures),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabledFeatures = pulumi.Input.asOptionalInput<List<String>>(enabledFeatures),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      minTlsVersion = pulumi.Input.asOptionalInput<String>(minTlsVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profile = pulumi.Input.asOptionalInput<String>(profile),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.creationTimestamp,
+    this.customFeatures,
+    this.description,
+    this.enabledFeatures,
+    this.fingerprint,
+    this.minTlsVersion,
+    this.name,
+    this.profile,
+    this.project,
+    this.region,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,17 +99,17 @@ class RegionSslPolicyState {
 
   factory RegionSslPolicyState.fromMap(Map<String, dynamic> map) {
     return RegionSslPolicyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      customFeatures: map['customFeatures'] == null ? null : pulumi.Output.create<List<String>>((map['customFeatures'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabledFeatures: map['enabledFeatures'] == null ? null : pulumi.Output.create<List<String>>((map['enabledFeatures'] as List).cast<String>()),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      minTlsVersion: map['minTlsVersion'] == null ? null : pulumi.Output.create<String>(map['minTlsVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profile: map['profile'] == null ? null : pulumi.Output.create<String>(map['profile'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabledFeatures: map['enabledFeatures'] == null ? null : ((map['enabledFeatures'] as List).cast<String>()).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

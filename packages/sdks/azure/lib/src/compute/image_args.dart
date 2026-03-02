@@ -47,25 +47,16 @@ class ImageArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneResilient] Is zone resiliency enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ImageArgs({
-    pulumi.Output<List<ImageDataDisk>>? dataDisks,
-    pulumi.Output<String>? hyperVGeneration,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<ImageOsDisk>? osDisk,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceVirtualMachineId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? zoneResilient,
-  }) :
-      dataDisks = pulumi.Input.asOptionalInput<List<ImageDataDisk>>(dataDisks),
-      hyperVGeneration = pulumi.Input.asOptionalInput<String>(hyperVGeneration),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      osDisk = pulumi.Input.asOptionalInput<ImageOsDisk>(osDisk),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceVirtualMachineId = pulumi.Input.asOptionalInput<String>(sourceVirtualMachineId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneResilient = pulumi.Input.asOptionalInput<bool>(zoneResilient);
+    this.dataDisks,
+    this.hyperVGeneration,
+    this.location,
+    this.name,
+    this.osDisk,
+    required this.resourceGroupName,
+    this.sourceVirtualMachineId,
+    this.tags,
+    this.zoneResilient,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      dataDisks: map['dataDisks'] == null ? null : pulumi.Output.create<List<ImageDataDisk>>(pulumi.Input.decodeList<ImageDataDisk>(map['dataDisks'], (value) => ImageDataDisk.fromMap((value as Map).cast<String, dynamic>()))),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : pulumi.Output.create<String>(map['hyperVGeneration'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      osDisk: map['osDisk'] == null ? null : pulumi.Output.create<ImageOsDisk>(ImageOsDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : pulumi.Output.create<String>(map['sourceVirtualMachineId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneResilient: map['zoneResilient'] == null ? null : pulumi.Output.create<bool>(map['zoneResilient'] as bool),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ImageDataDisk>(map['dataDisks'], (value) => ImageDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osDisk: map['osDisk'] == null ? null : (ImageOsDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : (map['sourceVirtualMachineId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneResilient: map['zoneResilient'] == null ? null : (map['zoneResilient'] as bool).input(),
     );
   }
 }

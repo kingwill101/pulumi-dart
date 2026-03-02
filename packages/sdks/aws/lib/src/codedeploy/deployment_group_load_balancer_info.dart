@@ -7,11 +7,11 @@ import 'deployment_group_load_balancer_info_target_group_pair_info.dart';
 
 class DeploymentGroupLoadBalancerInfo {
   /// The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
-  final List<DeploymentGroupLoadBalancerInfoElbInfo>? elbInfos;
+  final pulumi.Input<List<DeploymentGroupLoadBalancerInfoElbInfo>>? elbInfos;
   /// The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
-  final List<DeploymentGroupLoadBalancerInfoTargetGroupInfo>? targetGroupInfos;
+  final pulumi.Input<List<DeploymentGroupLoadBalancerInfoTargetGroupInfo>>? targetGroupInfos;
   /// The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elb_info` and `target_group_info`.
-  final DeploymentGroupLoadBalancerInfoTargetGroupPairInfo? targetGroupPairInfo;
+  final pulumi.Input<DeploymentGroupLoadBalancerInfoTargetGroupPairInfo>? targetGroupPairInfo;
 
   /// Creates a new [DeploymentGroupLoadBalancerInfo].
   /// [elbInfos] The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
@@ -25,17 +25,17 @@ class DeploymentGroupLoadBalancerInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elbInfos': ?elbInfos == null ? null : pulumi.Input.encodeList<DeploymentGroupLoadBalancerInfoElbInfo, Map<String, dynamic>>(elbInfos!, (value) => value.toMap()),
-      'targetGroupInfos': ?targetGroupInfos == null ? null : pulumi.Input.encodeList<DeploymentGroupLoadBalancerInfoTargetGroupInfo, Map<String, dynamic>>(targetGroupInfos!, (value) => value.toMap()),
-      'targetGroupPairInfo': ?targetGroupPairInfo == null ? null : targetGroupPairInfo!.toMap(),
+      'elbInfos': ?pulumi.Input.mapOptionalInputValue<List<DeploymentGroupLoadBalancerInfoElbInfo>, List<Map<String, dynamic>>>(elbInfos, (value) => pulumi.Input.encodeList<DeploymentGroupLoadBalancerInfoElbInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetGroupInfos': ?pulumi.Input.mapOptionalInputValue<List<DeploymentGroupLoadBalancerInfoTargetGroupInfo>, List<Map<String, dynamic>>>(targetGroupInfos, (value) => pulumi.Input.encodeList<DeploymentGroupLoadBalancerInfoTargetGroupInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetGroupPairInfo': ?pulumi.Input.mapOptionalInputValue<DeploymentGroupLoadBalancerInfoTargetGroupPairInfo, Map<String, dynamic>>(targetGroupPairInfo, (value) => value.toMap()),
     };
   }
 
   factory DeploymentGroupLoadBalancerInfo.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupLoadBalancerInfo(
-      elbInfos: map['elbInfos'] == null ? null : pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoElbInfo>(map['elbInfos'], (value) => DeploymentGroupLoadBalancerInfoElbInfo.fromMap((value as Map).cast<String, dynamic>())),
-      targetGroupInfos: map['targetGroupInfos'] == null ? null : pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoTargetGroupInfo>(map['targetGroupInfos'], (value) => DeploymentGroupLoadBalancerInfoTargetGroupInfo.fromMap((value as Map).cast<String, dynamic>())),
-      targetGroupPairInfo: map['targetGroupPairInfo'] == null ? null : DeploymentGroupLoadBalancerInfoTargetGroupPairInfo.fromMap((map['targetGroupPairInfo'] as Map).cast<String, dynamic>()),
+      elbInfos: map['elbInfos'] == null ? null : (pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoElbInfo>(map['elbInfos'], (value) => DeploymentGroupLoadBalancerInfoElbInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetGroupInfos: map['targetGroupInfos'] == null ? null : (pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoTargetGroupInfo>(map['targetGroupInfos'], (value) => DeploymentGroupLoadBalancerInfoTargetGroupInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetGroupPairInfo: map['targetGroupPairInfo'] == null ? null : (DeploymentGroupLoadBalancerInfoTargetGroupPairInfo.fromMap((map['targetGroupPairInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_interface_source_client_local.dart';
 
 class DomainDevicesInterfaceSourceClient {
   /// Specifies the address of the client for the network interface.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Controls local UDP settings for the network interface, managing configurations for local UDP traffic.
-  final DomainDevicesInterfaceSourceClientLocal? local;
+  final pulumi.Input<DomainDevicesInterfaceSourceClientLocal>? local;
   /// Specifies the port for the client source of the network interface.
-  final double? port;
+  final pulumi.Input<double>? port;
 
   /// Creates a new [DomainDevicesInterfaceSourceClient].
   /// [address] Specifies the address of the client for the network interface.
@@ -23,16 +24,16 @@ class DomainDevicesInterfaceSourceClient {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
-      'local': ?local == null ? null : local!.toMap(),
+      'local': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceClientLocal, Map<String, dynamic>>(local, (value) => value.toMap()),
       'port': ?port,
     };
   }
 
   factory DomainDevicesInterfaceSourceClient.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceClient(
-      address: map['address'] == null ? null : map['address'] as String,
-      local: map['local'] == null ? null : DomainDevicesInterfaceSourceClientLocal.fromMap((map['local'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'] as double,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      local: map['local'] == null ? null : (DomainDevicesInterfaceSourceClientLocal.fromMap((map['local'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
     );
   }
 }

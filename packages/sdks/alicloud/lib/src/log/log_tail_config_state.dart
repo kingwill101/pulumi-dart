@@ -31,23 +31,15 @@ class LogTailConfigState {
   /// [outputType] The output type. Currently, only LogService is supported.
   /// [project] The project name to the log store belongs.
   LogTailConfigState({
-    pulumi.Output<String>? inputDetail,
-    pulumi.Output<String>? inputType,
-    pulumi.Output<String>? lastModifyTime,
-    pulumi.Output<String>? logSample,
-    pulumi.Output<String>? logstore,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? outputType,
-    pulumi.Output<String>? project,
-  }) :
-      inputDetail = pulumi.Input.asOptionalInput<String>(inputDetail),
-      inputType = pulumi.Input.asOptionalInput<String>(inputType),
-      lastModifyTime = pulumi.Input.asOptionalInput<String>(lastModifyTime),
-      logSample = pulumi.Input.asOptionalInput<String>(logSample),
-      logstore = pulumi.Input.asOptionalInput<String>(logstore),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputType = pulumi.Input.asOptionalInput<String>(outputType),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.inputDetail,
+    this.inputType,
+    this.lastModifyTime,
+    this.logSample,
+    this.logstore,
+    this.name,
+    this.outputType,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class LogTailConfigState {
 
   factory LogTailConfigState.fromMap(Map<String, dynamic> map) {
     return LogTailConfigState(
-      inputDetail: map['inputDetail'] == null ? null : pulumi.Output.create<String>(map['inputDetail'] as String),
-      inputType: map['inputType'] == null ? null : pulumi.Output.create<String>(map['inputType'] as String),
-      lastModifyTime: map['lastModifyTime'] == null ? null : pulumi.Output.create<String>(map['lastModifyTime'] as String),
-      logSample: map['logSample'] == null ? null : pulumi.Output.create<String>(map['logSample'] as String),
-      logstore: map['logstore'] == null ? null : pulumi.Output.create<String>(map['logstore'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputType: map['outputType'] == null ? null : pulumi.Output.create<String>(map['outputType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      inputDetail: map['inputDetail'] == null ? null : (map['inputDetail'] as String).input(),
+      inputType: map['inputType'] == null ? null : (map['inputType'] as String).input(),
+      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime'] as String).input(),
+      logSample: map['logSample'] == null ? null : (map['logSample'] as String).input(),
+      logstore: map['logstore'] == null ? null : (map['logstore'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

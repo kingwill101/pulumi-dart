@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
   /// Whether shrinkage is prohibited. The values are described as follows:
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
   /// Expansion cooling time.
-  final int stabilizationWindowSeconds;
+  final pulumi.Input<int> stabilizationWindowSeconds;
   /// Flexible expansion step. The maximum number of instances per unit time.
-  final int step;
+  final pulumi.Input<int> step;
 
   /// Creates a new [GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule].
   /// [disabled] Whether shrinkage is prohibited. The values are described as follows:
@@ -29,9 +30,9 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
 
   factory GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule(
-      disabled: map['disabled'] as bool,
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] as int,
-      step: map['step'] as int,
+      disabled: (map['disabled'] as bool).input(),
+      stabilizationWindowSeconds: (map['stabilizationWindowSeconds'] as int).input(),
+      step: (map['step'] as int).input(),
     );
   }
 }

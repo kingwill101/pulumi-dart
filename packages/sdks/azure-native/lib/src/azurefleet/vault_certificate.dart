@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a single certificate reference in a Key Vault, and where the
 /// certificate should reside on the VM.
@@ -11,7 +12,7 @@ class VaultCertificate {
   /// &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
   /// &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
   /// formatted.
-  final String? certificateStore;
+  final pulumi.Input<String>? certificateStore;
   /// This is the URL of a certificate that has been uploaded to Key Vault as a
   /// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
   /// key
@@ -25,7 +26,7 @@ class VaultCertificate {
   /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
   /// or the [Azure Key Vault virtual machine extension for
   /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
-  final String? certificateUrl;
+  final pulumi.Input<String>? certificateUrl;
 
   /// Creates a new [VaultCertificate].
   /// [certificateStore] For Windows VMs, specifies the certificate store on the Virtual Machine to
@@ -44,8 +45,8 @@ class VaultCertificate {
 
   factory VaultCertificate.fromMap(Map<String, dynamic> map) {
     return VaultCertificate(
-      certificateStore: map['certificateStore'] == null ? null : map['certificateStore'] as String,
-      certificateUrl: map['certificateUrl'] == null ? null : map['certificateUrl'] as String,
+      certificateStore: map['certificateStore'] == null ? null : (map['certificateStore'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretV1AclRead {
   /// The date the secret was created.
-  final String? createdAt;
+  final pulumi.Input<String>? createdAt;
   /// Whether the secret is accessible project wide.
   /// Defaults to `true`.
-  final bool? projectAccess;
+  final pulumi.Input<bool>? projectAccess;
   /// The date the secret was last updated.
-  final String? updatedAt;
+  final pulumi.Input<String>? updatedAt;
   /// The list of user IDs, which are allowed to access the
   /// secret, when `project_access` is set to `false`.
-  final List<String>? users;
+  final pulumi.Input<List<String>>? users;
 
   /// Creates a new [SecretV1AclRead].
   /// [createdAt] The date the secret was created.
@@ -36,10 +37,10 @@ class SecretV1AclRead {
 
   factory SecretV1AclRead.fromMap(Map<String, dynamic> map) {
     return SecretV1AclRead(
-      createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      projectAccess: map['projectAccess'] == null ? null : map['projectAccess'] as bool,
-      updatedAt: map['updatedAt'] == null ? null : map['updatedAt'] as String,
-      users: map['users'] == null ? null : (map['users'] as List).cast<String>(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      projectAccess: map['projectAccess'] == null ? null : (map['projectAccess'] as bool).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
     );
   }
 }

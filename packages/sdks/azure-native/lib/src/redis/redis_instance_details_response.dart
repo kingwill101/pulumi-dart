@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of single instance of redis.
 class RedisInstanceDetailsResponse {
   /// Specifies whether the instance is a primary node.
-  final bool isMaster;
+  final pulumi.Input<bool> isMaster;
   /// Specifies whether the instance is a primary node.
-  final bool isPrimary;
+  final pulumi.Input<bool> isPrimary;
   /// If enableNonSslPort is true, provides Redis instance Non-SSL port.
-  final int nonSslPort;
+  final pulumi.Input<int> nonSslPort;
   /// If clustering is enabled, the Shard ID of Redis Instance
-  final int shardId;
+  final pulumi.Input<int> shardId;
   /// Redis instance SSL port.
-  final int sslPort;
+  final pulumi.Input<int> sslPort;
   /// If the Cache uses availability zones, specifies availability zone where this instance is located.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [RedisInstanceDetailsResponse].
   /// [isMaster] Specifies whether the instance is a primary node.
@@ -45,12 +46,12 @@ class RedisInstanceDetailsResponse {
 
   factory RedisInstanceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RedisInstanceDetailsResponse(
-      isMaster: map['isMaster'] as bool,
-      isPrimary: map['isPrimary'] as bool,
-      nonSslPort: map['nonSslPort'] as int,
-      shardId: map['shardId'] as int,
-      sslPort: map['sslPort'] as int,
-      zone: map['zone'] as String,
+      isMaster: (map['isMaster'] as bool).input(),
+      isPrimary: (map['isPrimary'] as bool).input(),
+      nonSslPort: (map['nonSslPort'] as int).input(),
+      shardId: (map['shardId'] as int).input(),
+      sslPort: (map['sslPort'] as int).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

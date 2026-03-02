@@ -47,33 +47,20 @@ class QueueState {
   /// [tags] Tags to apply to the Queue. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   QueueState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? hoursOfOperationId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? maxContacts,
-    pulumi.Output<String>? name,
-    pulumi.Output<QueueOutboundCallerConfig>? outboundCallerConfig,
-    pulumi.Output<String>? queueId,
-    pulumi.Output<List<String>>? quickConnectIds,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hoursOfOperationId = pulumi.Input.asOptionalInput<String>(hoursOfOperationId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      maxContacts = pulumi.Input.asOptionalInput<int>(maxContacts),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outboundCallerConfig = pulumi.Input.asOptionalInput<QueueOutboundCallerConfig>(outboundCallerConfig),
-      queueId = pulumi.Input.asOptionalInput<String>(queueId),
-      quickConnectIds = pulumi.Input.asOptionalInput<List<String>>(quickConnectIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.hoursOfOperationId,
+    this.instanceId,
+    this.maxContacts,
+    this.name,
+    this.outboundCallerConfig,
+    this.queueId,
+    this.quickConnectIds,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class QueueState {
 
   factory QueueState.fromMap(Map<String, dynamic> map) {
     return QueueState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hoursOfOperationId: map['hoursOfOperationId'] == null ? null : pulumi.Output.create<String>(map['hoursOfOperationId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      maxContacts: map['maxContacts'] == null ? null : pulumi.Output.create<int>(map['maxContacts'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outboundCallerConfig: map['outboundCallerConfig'] == null ? null : pulumi.Output.create<QueueOutboundCallerConfig>(QueueOutboundCallerConfig.fromMap((map['outboundCallerConfig'] as Map).cast<String, dynamic>())),
-      queueId: map['queueId'] == null ? null : pulumi.Output.create<String>(map['queueId'] as String),
-      quickConnectIds: map['quickConnectIds'] == null ? null : pulumi.Output.create<List<String>>((map['quickConnectIds'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hoursOfOperationId: map['hoursOfOperationId'] == null ? null : (map['hoursOfOperationId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      maxContacts: map['maxContacts'] == null ? null : (map['maxContacts'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outboundCallerConfig: map['outboundCallerConfig'] == null ? null : (QueueOutboundCallerConfig.fromMap((map['outboundCallerConfig'] as Map).cast<String, dynamic>())).input(),
+      queueId: map['queueId'] == null ? null : (map['queueId'] as String).input(),
+      quickConnectIds: map['quickConnectIds'] == null ? null : ((map['quickConnectIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorBackendPoolBackend {
   /// Location of the backend (IP address or FQDN)
-  final String address;
+  final pulumi.Input<String> address;
   /// Specifies if the backend is enabled or not. Valid options are `true` or `false`. Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The value to use as the host header sent to the backend.
-  final String hostHeader;
+  final pulumi.Input<String> hostHeader;
   /// The HTTP TCP port number. Possible values are between `1` - `65535`.
-  final int httpPort;
+  final pulumi.Input<int> httpPort;
   /// The HTTPS TCP port number. Possible values are between `1` - `65535`.
-  final int httpsPort;
+  final pulumi.Input<int> httpsPort;
   /// Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy. Defaults to `1`.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// Weight of this endpoint for load balancing purposes. Defaults to `50`.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [FrontdoorBackendPoolBackend].
   /// [address] Location of the backend (IP address or FQDN)
@@ -49,13 +50,13 @@ class FrontdoorBackendPoolBackend {
 
   factory FrontdoorBackendPoolBackend.fromMap(Map<String, dynamic> map) {
     return FrontdoorBackendPoolBackend(
-      address: map['address'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      hostHeader: map['hostHeader'] as String,
-      httpPort: map['httpPort'] as int,
-      httpsPort: map['httpsPort'] as int,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      address: (map['address'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      hostHeader: (map['hostHeader'] as String).input(),
+      httpPort: (map['httpPort'] as int).input(),
+      httpsPort: (map['httpsPort'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

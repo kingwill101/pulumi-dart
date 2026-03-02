@@ -31,19 +31,13 @@ class ReportArgs {
   /// [timeZone] Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
   /// [triggerTime] Report collection trigger time.
   ReportArgs({
-    pulumi.Output<String>? offerGuid,
-    pulumi.Output<String>? reportName,
-    required pulumi.Output<List<ResourceMetadata>> resources,
-    pulumi.Output<StorageInfo>? storageInfo,
-    required pulumi.Output<String> timeZone,
-    required pulumi.Output<String> triggerTime,
-  }) :
-      offerGuid = pulumi.Input.asOptionalInput<String>(offerGuid),
-      reportName = pulumi.Input.asOptionalInput<String>(reportName),
-      resources = pulumi.Input.asInput<List<ResourceMetadata>>(resources),
-      storageInfo = pulumi.Input.asOptionalInput<StorageInfo>(storageInfo),
-      timeZone = pulumi.Input.asInput<String>(timeZone),
-      triggerTime = pulumi.Input.asInput<String>(triggerTime);
+    this.offerGuid,
+    this.reportName,
+    required this.resources,
+    this.storageInfo,
+    required this.timeZone,
+    required this.triggerTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ReportArgs {
 
   factory ReportArgs.fromMap(Map<String, dynamic> map) {
     return ReportArgs(
-      offerGuid: map['offerGuid'] == null ? null : pulumi.Output.create<String>(map['offerGuid'] as String),
-      reportName: map['reportName'] == null ? null : pulumi.Output.create<String>(map['reportName'] as String),
-      resources: pulumi.Output.create<List<ResourceMetadata>>(pulumi.Input.decodeList<ResourceMetadata>(map['resources'], (value) => ResourceMetadata.fromMap((value as Map).cast<String, dynamic>()))),
-      storageInfo: map['storageInfo'] == null ? null : pulumi.Output.create<StorageInfo>(StorageInfo.fromMap((map['storageInfo'] as Map).cast<String, dynamic>())),
-      timeZone: pulumi.Output.create<String>(map['timeZone'] as String),
-      triggerTime: pulumi.Output.create<String>(map['triggerTime'] as String),
+      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid'] as String).input(),
+      reportName: map['reportName'] == null ? null : (map['reportName'] as String).input(),
+      resources: (pulumi.Input.decodeList<ResourceMetadata>(map['resources'], (value) => ResourceMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageInfo: map['storageInfo'] == null ? null : (StorageInfo.fromMap((map['storageInfo'] as Map).cast<String, dynamic>())).input(),
+      timeZone: (map['timeZone'] as String).input(),
+      triggerTime: (map['triggerTime'] as String).input(),
     );
   }
 }

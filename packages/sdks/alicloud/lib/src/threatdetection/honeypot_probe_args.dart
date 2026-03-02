@@ -44,29 +44,18 @@ class HoneypotProbeArgs {
   /// [uuid] Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
   /// [vpcId] The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
   HoneypotProbeArgs({
-    pulumi.Output<bool>? arp,
-    required pulumi.Output<String> controlNodeId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<HoneypotProbeHoneypotBindList>>? honeypotBindLists,
-    pulumi.Output<bool>? ping,
-    required pulumi.Output<String> probeType,
-    pulumi.Output<String>? probeVersion,
-    pulumi.Output<String>? proxyIp,
-    pulumi.Output<List<String>>? serviceIpLists,
-    pulumi.Output<String>? uuid,
-    pulumi.Output<String>? vpcId,
-  }) :
-      arp = pulumi.Input.asOptionalInput<bool>(arp),
-      controlNodeId = pulumi.Input.asInput<String>(controlNodeId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      honeypotBindLists = pulumi.Input.asOptionalInput<List<HoneypotProbeHoneypotBindList>>(honeypotBindLists),
-      ping = pulumi.Input.asOptionalInput<bool>(ping),
-      probeType = pulumi.Input.asInput<String>(probeType),
-      probeVersion = pulumi.Input.asOptionalInput<String>(probeVersion),
-      proxyIp = pulumi.Input.asOptionalInput<String>(proxyIp),
-      serviceIpLists = pulumi.Input.asOptionalInput<List<String>>(serviceIpLists),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.arp,
+    required this.controlNodeId,
+    required this.displayName,
+    this.honeypotBindLists,
+    this.ping,
+    required this.probeType,
+    this.probeVersion,
+    this.proxyIp,
+    this.serviceIpLists,
+    this.uuid,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class HoneypotProbeArgs {
 
   factory HoneypotProbeArgs.fromMap(Map<String, dynamic> map) {
     return HoneypotProbeArgs(
-      arp: map['arp'] == null ? null : pulumi.Output.create<bool>(map['arp'] as bool),
-      controlNodeId: pulumi.Output.create<String>(map['controlNodeId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      honeypotBindLists: map['honeypotBindLists'] == null ? null : pulumi.Output.create<List<HoneypotProbeHoneypotBindList>>(pulumi.Input.decodeList<HoneypotProbeHoneypotBindList>(map['honeypotBindLists'], (value) => HoneypotProbeHoneypotBindList.fromMap((value as Map).cast<String, dynamic>()))),
-      ping: map['ping'] == null ? null : pulumi.Output.create<bool>(map['ping'] as bool),
-      probeType: pulumi.Output.create<String>(map['probeType'] as String),
-      probeVersion: map['probeVersion'] == null ? null : pulumi.Output.create<String>(map['probeVersion'] as String),
-      proxyIp: map['proxyIp'] == null ? null : pulumi.Output.create<String>(map['proxyIp'] as String),
-      serviceIpLists: map['serviceIpLists'] == null ? null : pulumi.Output.create<List<String>>((map['serviceIpLists'] as List).cast<String>()),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      arp: map['arp'] == null ? null : (map['arp'] as bool).input(),
+      controlNodeId: (map['controlNodeId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      honeypotBindLists: map['honeypotBindLists'] == null ? null : (pulumi.Input.decodeList<HoneypotProbeHoneypotBindList>(map['honeypotBindLists'], (value) => HoneypotProbeHoneypotBindList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ping: map['ping'] == null ? null : (map['ping'] as bool).input(),
+      probeType: (map['probeType'] as String).input(),
+      probeVersion: map['probeVersion'] == null ? null : (map['probeVersion'] as String).input(),
+      proxyIp: map['proxyIp'] == null ? null : (map['proxyIp'] as String).input(),
+      serviceIpLists: map['serviceIpLists'] == null ? null : ((map['serviceIpLists'] as List).cast<String>()).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

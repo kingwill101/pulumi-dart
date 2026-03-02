@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
   /// (Output)
   /// Whether to disable conversation logging for the sessions.
-  final bool? disableConversationLogging;
+  final pulumi.Input<bool>? disableConversationLogging;
 
   /// Creates a new [AppVersionSnapshotAppLoggingSettingConversationLoggingSetting].
   /// [disableConversationLogging] (Output)
@@ -20,7 +21,7 @@ class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
 
   factory AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingConversationLoggingSetting(
-      disableConversationLogging: map['disableConversationLogging'] == null ? null : map['disableConversationLogging'] as bool,
+      disableConversationLogging: map['disableConversationLogging'] == null ? null : (map['disableConversationLogging'] as bool).input(),
     );
   }
 }

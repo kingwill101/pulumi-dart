@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupLaunchTemplate {
   /// ID of the launch template. Conflicts with `name`.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the launch template. Conflicts with `id`.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Template version. Can be version number, `$Latest`, or `$Default`. (Default: `$Default`).
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [GroupLaunchTemplate].
   /// [id] ID of the launch template. Conflicts with `name`.
@@ -29,9 +30,9 @@ class GroupLaunchTemplate {
 
   factory GroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return GroupLaunchTemplate(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

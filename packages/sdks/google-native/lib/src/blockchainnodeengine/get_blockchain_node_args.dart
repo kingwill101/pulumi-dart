@@ -16,13 +16,10 @@ class GetBlockchainNodeArgs {
   /// [location] Required.
   /// [project] Optional.
   GetBlockchainNodeArgs({
-    required pulumi.Output<String> blockchainNodeId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      blockchainNodeId = pulumi.Input.asInput<String>(blockchainNodeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.blockchainNodeId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBlockchainNodeArgs {
 
   factory GetBlockchainNodeArgs.fromMap(Map<String, dynamic> map) {
     return GetBlockchainNodeArgs(
-      blockchainNodeId: pulumi.Output.create<String>(map['blockchainNodeId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      blockchainNodeId: (map['blockchainNodeId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

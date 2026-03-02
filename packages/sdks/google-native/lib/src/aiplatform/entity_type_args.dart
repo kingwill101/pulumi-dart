@@ -38,27 +38,17 @@ class EntityTypeArgs {
   /// [offlineStorageTtlDays] Optional. Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than `offline_storage_ttl_days` since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
   /// [project] Optional.
   EntityTypeArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> entityTypeId,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> featurestoreId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudAiplatformV1FeaturestoreMonitoringConfig>? monitoringConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? offlineStorageTtlDays,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      monitoringConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1FeaturestoreMonitoringConfig>(monitoringConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      offlineStorageTtlDays = pulumi.Input.asOptionalInput<int>(offlineStorageTtlDays),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.entityTypeId,
+    this.etag,
+    required this.featurestoreId,
+    this.labels,
+    this.location,
+    this.monitoringConfig,
+    this.name,
+    this.offlineStorageTtlDays,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class EntityTypeArgs {
 
   factory EntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return EntityTypeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      entityTypeId: pulumi.Output.create<String>(map['entityTypeId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featurestoreId: pulumi.Output.create<String>(map['featurestoreId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      monitoringConfig: map['monitoringConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1FeaturestoreMonitoringConfig>(GoogleCloudAiplatformV1FeaturestoreMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : pulumi.Output.create<int>(map['offlineStorageTtlDays'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      entityTypeId: (map['entityTypeId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featurestoreId: (map['featurestoreId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : (map['offlineStorageTtlDays'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

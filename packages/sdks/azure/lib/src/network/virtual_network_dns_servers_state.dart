@@ -13,11 +13,9 @@ class VirtualNetworkDnsServersState {
   /// [dnsServers] List of IP addresses of DNS servers
   /// [virtualNetworkId] The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
   VirtualNetworkDnsServersState({
-    pulumi.Output<List<String>>? dnsServers,
-    pulumi.Output<String>? virtualNetworkId,
-  }) :
-      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
-      virtualNetworkId = pulumi.Input.asOptionalInput<String>(virtualNetworkId);
+    this.dnsServers,
+    this.virtualNetworkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class VirtualNetworkDnsServersState {
 
   factory VirtualNetworkDnsServersState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkDnsServersState(
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkId'] as String),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
     );
   }
 }

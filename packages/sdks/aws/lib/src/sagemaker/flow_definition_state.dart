@@ -41,27 +41,17 @@ class FlowDefinitionState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   FlowDefinitionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? flowDefinitionName,
-    pulumi.Output<FlowDefinitionHumanLoopActivationConfig>? humanLoopActivationConfig,
-    pulumi.Output<FlowDefinitionHumanLoopConfig>? humanLoopConfig,
-    pulumi.Output<FlowDefinitionHumanLoopRequestSource>? humanLoopRequestSource,
-    pulumi.Output<FlowDefinitionOutputConfig>? outputConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      flowDefinitionName = pulumi.Input.asOptionalInput<String>(flowDefinitionName),
-      humanLoopActivationConfig = pulumi.Input.asOptionalInput<FlowDefinitionHumanLoopActivationConfig>(humanLoopActivationConfig),
-      humanLoopConfig = pulumi.Input.asOptionalInput<FlowDefinitionHumanLoopConfig>(humanLoopConfig),
-      humanLoopRequestSource = pulumi.Input.asOptionalInput<FlowDefinitionHumanLoopRequestSource>(humanLoopRequestSource),
-      outputConfig = pulumi.Input.asOptionalInput<FlowDefinitionOutputConfig>(outputConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.flowDefinitionName,
+    this.humanLoopActivationConfig,
+    this.humanLoopConfig,
+    this.humanLoopRequestSource,
+    this.outputConfig,
+    this.region,
+    this.roleArn,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class FlowDefinitionState {
 
   factory FlowDefinitionState.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      flowDefinitionName: map['flowDefinitionName'] == null ? null : pulumi.Output.create<String>(map['flowDefinitionName'] as String),
-      humanLoopActivationConfig: map['humanLoopActivationConfig'] == null ? null : pulumi.Output.create<FlowDefinitionHumanLoopActivationConfig>(FlowDefinitionHumanLoopActivationConfig.fromMap((map['humanLoopActivationConfig'] as Map).cast<String, dynamic>())),
-      humanLoopConfig: map['humanLoopConfig'] == null ? null : pulumi.Output.create<FlowDefinitionHumanLoopConfig>(FlowDefinitionHumanLoopConfig.fromMap((map['humanLoopConfig'] as Map).cast<String, dynamic>())),
-      humanLoopRequestSource: map['humanLoopRequestSource'] == null ? null : pulumi.Output.create<FlowDefinitionHumanLoopRequestSource>(FlowDefinitionHumanLoopRequestSource.fromMap((map['humanLoopRequestSource'] as Map).cast<String, dynamic>())),
-      outputConfig: map['outputConfig'] == null ? null : pulumi.Output.create<FlowDefinitionOutputConfig>(FlowDefinitionOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      flowDefinitionName: map['flowDefinitionName'] == null ? null : (map['flowDefinitionName'] as String).input(),
+      humanLoopActivationConfig: map['humanLoopActivationConfig'] == null ? null : (FlowDefinitionHumanLoopActivationConfig.fromMap((map['humanLoopActivationConfig'] as Map).cast<String, dynamic>())).input(),
+      humanLoopConfig: map['humanLoopConfig'] == null ? null : (FlowDefinitionHumanLoopConfig.fromMap((map['humanLoopConfig'] as Map).cast<String, dynamic>())).input(),
+      humanLoopRequestSource: map['humanLoopRequestSource'] == null ? null : (FlowDefinitionHumanLoopRequestSource.fromMap((map['humanLoopRequestSource'] as Map).cast<String, dynamic>())).input(),
+      outputConfig: map['outputConfig'] == null ? null : (FlowDefinitionOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

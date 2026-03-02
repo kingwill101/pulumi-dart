@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Event represents a single event to a watched resource.
 class WatchEvent {
@@ -8,8 +9,8 @@ class WatchEvent {
   /// * If Type is Deleted: the state of the object immediately before deletion.
   /// * If Type is Error: *Status is recommended; other types may make sense
   /// depending on context.
-  final dynamic object;
-  final String type;
+  final pulumi.Input<dynamic> object;
+  final pulumi.Input<String> type;
 
   /// Creates a new [WatchEvent].
   /// [object] Object is:
@@ -28,8 +29,8 @@ class WatchEvent {
 
   factory WatchEvent.fromMap(Map<String, dynamic> map) {
     return WatchEvent(
-      object: map['object'],
-      type: map['type'] as String,
+      object: (map['object']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

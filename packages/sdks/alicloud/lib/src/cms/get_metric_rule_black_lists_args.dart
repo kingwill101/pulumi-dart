@@ -34,25 +34,16 @@ class GetMetricRuleBlackListsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   GetMetricRuleBlackListsArgs({
-    pulumi.Output<String>? category,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? metricRuleBlackListId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<int>? order,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      metricRuleBlackListId = pulumi.Input.asOptionalInput<String>(metricRuleBlackListId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      order = pulumi.Input.asOptionalInput<int>(order),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize);
+    this.category,
+    this.ids,
+    this.metricRuleBlackListId,
+    this.nameRegex,
+    this.namespace,
+    this.order,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class GetMetricRuleBlackListsArgs {
 
   factory GetMetricRuleBlackListsArgs.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleBlackListsArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      metricRuleBlackListId: map['metricRuleBlackListId'] == null ? null : pulumi.Output.create<String>(map['metricRuleBlackListId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      order: map['order'] == null ? null : pulumi.Output.create<int>(map['order'] as int),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      metricRuleBlackListId: map['metricRuleBlackListId'] == null ? null : (map['metricRuleBlackListId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
     );
   }
 }

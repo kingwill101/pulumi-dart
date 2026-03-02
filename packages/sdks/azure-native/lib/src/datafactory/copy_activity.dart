@@ -17,58 +17,58 @@ import 'user_property.dart';
 /// Copy activity.
 class CopyActivity {
   /// Maximum number of data integration units that can be used to perform this data movement. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic dataIntegrationUnits;
+  final pulumi.Input<dynamic>? dataIntegrationUnits;
   /// Activity depends on condition.
-  final List<ActivityDependency>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Whether to skip incompatible row. Default value is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic enableSkipIncompatibleRow;
+  final pulumi.Input<dynamic>? enableSkipIncompatibleRow;
   /// Specifies whether to copy data via an interim staging. Default value is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic enableStaging;
+  final pulumi.Input<dynamic>? enableStaging;
   /// List of inputs for the activity.
-  final List<DatasetReference>? inputs;
+  final pulumi.Input<List<DatasetReference>>? inputs;
   /// Linked service reference.
-  final LinkedServiceReference? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Log settings customer needs provide when enabling log.
-  final LogSettings? logSettings;
+  final pulumi.Input<LogSettings>? logSettings;
   /// (Deprecated. Please use LogSettings) Log storage settings customer need to provide when enabling session log.
-  final LogStorageSettings? logStorageSettings;
+  final pulumi.Input<LogStorageSettings>? logStorageSettings;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// List of outputs for the activity.
-  final List<DatasetReference>? outputs;
+  final pulumi.Input<List<DatasetReference>>? outputs;
   /// Maximum number of concurrent sessions opened on the source or sink to avoid overloading the data store. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic parallelCopies;
+  final pulumi.Input<dynamic>? parallelCopies;
   /// Activity policy.
-  final ActivityPolicy? policy;
+  final pulumi.Input<ActivityPolicy>? policy;
   /// Preserve rules.
-  final List<dynamic>? preserve;
+  final pulumi.Input<List<dynamic>>? preserve;
   /// Preserve Rules.
-  final List<dynamic>? preserveRules;
+  final pulumi.Input<List<dynamic>>? preserveRules;
   /// Redirect incompatible row settings when EnableSkipIncompatibleRow is true.
-  final RedirectIncompatibleRowSettings? redirectIncompatibleRowSettings;
+  final pulumi.Input<RedirectIncompatibleRowSettings>? redirectIncompatibleRowSettings;
   /// Copy activity sink.
-  final AvroSink sink;
+  final pulumi.Input<AvroSink> sink;
   /// Specify the fault tolerance for data consistency.
-  final SkipErrorFile? skipErrorFile;
+  final pulumi.Input<SkipErrorFile>? skipErrorFile;
   /// Copy activity source.
-  final AmazonMWSSource source;
+  final pulumi.Input<AmazonMWSSource> source;
   /// Specifies interim staging settings when EnableStaging is true.
-  final StagingSettings? stagingSettings;
+  final pulumi.Input<StagingSettings>? stagingSettings;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Copy activity translator. If not specified, tabular translator is used.
-  final dynamic translator;
+  final pulumi.Input<dynamic>? translator;
   /// Type of activity.
   /// Expected value is 'Copy'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserProperty>? userProperties;
+  final pulumi.Input<List<UserProperty>>? userProperties;
   /// Whether to enable Data Consistency validation. Type: boolean (or Expression with resultType boolean).
-  final dynamic validateDataConsistency;
+  final pulumi.Input<dynamic>? validateDataConsistency;
 
   /// Creates a new [CopyActivity].
   /// [dataIntegrationUnits] Maximum number of data integration units that can be used to perform this data movement. Type: integer (or Expression with resultType integer), minimum: 0.
@@ -129,62 +129,62 @@ class CopyActivity {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataIntegrationUnits': ?dataIntegrationUnits,
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'enableSkipIncompatibleRow': ?enableSkipIncompatibleRow,
       'enableStaging': ?enableStaging,
-      'inputs': ?inputs == null ? null : pulumi.Input.encodeList<DatasetReference, Map<String, dynamic>>(inputs!, (value) => value.toMap()),
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
-      'logSettings': ?logSettings == null ? null : logSettings!.toMap(),
-      'logStorageSettings': ?logStorageSettings == null ? null : logStorageSettings!.toMap(),
+      'inputs': ?pulumi.Input.mapOptionalInputValue<List<DatasetReference>, List<Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeList<DatasetReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'logSettings': ?pulumi.Input.mapOptionalInputValue<LogSettings, Map<String, dynamic>>(logSettings, (value) => value.toMap()),
+      'logStorageSettings': ?pulumi.Input.mapOptionalInputValue<LogStorageSettings, Map<String, dynamic>>(logStorageSettings, (value) => value.toMap()),
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'outputs': ?outputs == null ? null : pulumi.Input.encodeList<DatasetReference, Map<String, dynamic>>(outputs!, (value) => value.toMap()),
+      'outputs': ?pulumi.Input.mapOptionalInputValue<List<DatasetReference>, List<Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeList<DatasetReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parallelCopies': ?parallelCopies,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'preserve': ?preserve,
       'preserveRules': ?preserveRules,
-      'redirectIncompatibleRowSettings': ?redirectIncompatibleRowSettings == null ? null : redirectIncompatibleRowSettings!.toMap(),
-      'sink': sink.toMap(),
-      'skipErrorFile': ?skipErrorFile == null ? null : skipErrorFile!.toMap(),
-      'source': source.toMap(),
-      'stagingSettings': ?stagingSettings == null ? null : stagingSettings!.toMap(),
+      'redirectIncompatibleRowSettings': ?pulumi.Input.mapOptionalInputValue<RedirectIncompatibleRowSettings, Map<String, dynamic>>(redirectIncompatibleRowSettings, (value) => value.toMap()),
+      'sink': pulumi.Input.mapInputValue<AvroSink, Map<String, dynamic>>(sink, (value) => value.toMap()),
+      'skipErrorFile': ?pulumi.Input.mapOptionalInputValue<SkipErrorFile, Map<String, dynamic>>(skipErrorFile, (value) => value.toMap()),
+      'source': pulumi.Input.mapInputValue<AmazonMWSSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'stagingSettings': ?pulumi.Input.mapOptionalInputValue<StagingSettings, Map<String, dynamic>>(stagingSettings, (value) => value.toMap()),
       'state': ?state,
       'translator': ?translator,
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
       'validateDataConsistency': ?validateDataConsistency,
     };
   }
 
   factory CopyActivity.fromMap(Map<String, dynamic> map) {
     return CopyActivity(
-      dataIntegrationUnits: map['dataIntegrationUnits'] == null ? null : map['dataIntegrationUnits'],
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      enableSkipIncompatibleRow: map['enableSkipIncompatibleRow'] == null ? null : map['enableSkipIncompatibleRow'],
-      enableStaging: map['enableStaging'] == null ? null : map['enableStaging'],
-      inputs: map['inputs'] == null ? null : pulumi.Input.decodeList<DatasetReference>(map['inputs'], (value) => DatasetReference.fromMap((value as Map).cast<String, dynamic>())),
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      logSettings: map['logSettings'] == null ? null : LogSettings.fromMap((map['logSettings'] as Map).cast<String, dynamic>()),
-      logStorageSettings: map['logStorageSettings'] == null ? null : LogStorageSettings.fromMap((map['logStorageSettings'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      outputs: map['outputs'] == null ? null : pulumi.Input.decodeList<DatasetReference>(map['outputs'], (value) => DatasetReference.fromMap((value as Map).cast<String, dynamic>())),
-      parallelCopies: map['parallelCopies'] == null ? null : map['parallelCopies'],
-      policy: map['policy'] == null ? null : ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      preserve: map['preserve'] == null ? null : (map['preserve'] as List).cast<dynamic>(),
-      preserveRules: map['preserveRules'] == null ? null : (map['preserveRules'] as List).cast<dynamic>(),
-      redirectIncompatibleRowSettings: map['redirectIncompatibleRowSettings'] == null ? null : RedirectIncompatibleRowSettings.fromMap((map['redirectIncompatibleRowSettings'] as Map).cast<String, dynamic>()),
-      sink: AvroSink.fromMap((map['sink'] as Map).cast<String, dynamic>()),
-      skipErrorFile: map['skipErrorFile'] == null ? null : SkipErrorFile.fromMap((map['skipErrorFile'] as Map).cast<String, dynamic>()),
-      source: AmazonMWSSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      stagingSettings: map['stagingSettings'] == null ? null : StagingSettings.fromMap((map['stagingSettings'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
-      translator: map['translator'] == null ? null : map['translator'],
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>())),
-      validateDataConsistency: map['validateDataConsistency'] == null ? null : map['validateDataConsistency'],
+      dataIntegrationUnits: map['dataIntegrationUnits'] == null ? null : (map['dataIntegrationUnits']).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableSkipIncompatibleRow: map['enableSkipIncompatibleRow'] == null ? null : (map['enableSkipIncompatibleRow']).input(),
+      enableStaging: map['enableStaging'] == null ? null : (map['enableStaging']).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<DatasetReference>(map['inputs'], (value) => DatasetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      logSettings: map['logSettings'] == null ? null : (LogSettings.fromMap((map['logSettings'] as Map).cast<String, dynamic>())).input(),
+      logStorageSettings: map['logStorageSettings'] == null ? null : (LogStorageSettings.fromMap((map['logStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<DatasetReference>(map['outputs'], (value) => DatasetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parallelCopies: map['parallelCopies'] == null ? null : (map['parallelCopies']).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      preserve: map['preserve'] == null ? null : ((map['preserve'] as List).cast<dynamic>()).input(),
+      preserveRules: map['preserveRules'] == null ? null : ((map['preserveRules'] as List).cast<dynamic>()).input(),
+      redirectIncompatibleRowSettings: map['redirectIncompatibleRowSettings'] == null ? null : (RedirectIncompatibleRowSettings.fromMap((map['redirectIncompatibleRowSettings'] as Map).cast<String, dynamic>())).input(),
+      sink: (AvroSink.fromMap((map['sink'] as Map).cast<String, dynamic>())).input(),
+      skipErrorFile: map['skipErrorFile'] == null ? null : (SkipErrorFile.fromMap((map['skipErrorFile'] as Map).cast<String, dynamic>())).input(),
+      source: (AmazonMWSSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      stagingSettings: map['stagingSettings'] == null ? null : (StagingSettings.fromMap((map['stagingSettings'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      translator: map['translator'] == null ? null : (map['translator']).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validateDataConsistency: map['validateDataConsistency'] == null ? null : (map['validateDataConsistency']).input(),
     );
   }
 }

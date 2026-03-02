@@ -22,15 +22,11 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [vpnUserNamesFilter] The list of p2s vpn user names whose p2s vpn connection detailed health to retrieve for.
   GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs({
-    required pulumi.Output<String> gatewayName,
-    pulumi.Output<String>? outputBlobSasUrl,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? vpnUserNamesFilter,
-  }) :
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      outputBlobSasUrl = pulumi.Input.asOptionalInput<String>(outputBlobSasUrl),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vpnUserNamesFilter = pulumi.Input.asOptionalInput<List<String>>(vpnUserNamesFilter);
+    required this.gatewayName,
+    this.outputBlobSasUrl,
+    required this.resourceGroupName,
+    this.vpnUserNamesFilter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs {
 
   factory GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs.fromMap(Map<String, dynamic> map) {
     return GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs(
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      outputBlobSasUrl: map['outputBlobSasUrl'] == null ? null : pulumi.Output.create<String>(map['outputBlobSasUrl'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vpnUserNamesFilter: map['vpnUserNamesFilter'] == null ? null : pulumi.Output.create<List<String>>((map['vpnUserNamesFilter'] as List).cast<String>()),
+      gatewayName: (map['gatewayName'] as String).input(),
+      outputBlobSasUrl: map['outputBlobSasUrl'] == null ? null : (map['outputBlobSasUrl'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vpnUserNamesFilter: map['vpnUserNamesFilter'] == null ? null : ((map['vpnUserNamesFilter'] as List).cast<String>()).input(),
     );
   }
 }

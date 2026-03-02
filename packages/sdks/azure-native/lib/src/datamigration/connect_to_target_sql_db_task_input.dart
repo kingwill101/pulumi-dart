@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_connection_info.dart';
 
 /// Input for the task that validates connection to SQL DB and target server requirements
 class ConnectToTargetSqlDbTaskInput {
   /// Boolean flag indicating whether to query object counts for each database on the target server
-  final bool? queryObjectCounts;
+  final pulumi.Input<bool>? queryObjectCounts;
   /// Connection information for target SQL DB
-  final SqlConnectionInfo targetConnectionInfo;
+  final pulumi.Input<SqlConnectionInfo> targetConnectionInfo;
 
   /// Creates a new [ConnectToTargetSqlDbTaskInput].
   /// [queryObjectCounts] Boolean flag indicating whether to query object counts for each database on the target server
@@ -20,14 +21,14 @@ class ConnectToTargetSqlDbTaskInput {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'queryObjectCounts': ?queryObjectCounts,
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory ConnectToTargetSqlDbTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlDbTaskInput(
-      queryObjectCounts: map['queryObjectCounts'] == null ? null : map['queryObjectCounts'] as bool,
-      targetConnectionInfo: SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      queryObjectCounts: map['queryObjectCounts'] == null ? null : (map['queryObjectCounts'] as bool).input(),
+      targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

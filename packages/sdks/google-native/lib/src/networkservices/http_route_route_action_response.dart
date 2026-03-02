@@ -14,27 +14,27 @@ import 'http_route_urlrewrite_response.dart';
 /// The specifications for routing traffic and applying associated policies.
 class HttpRouteRouteActionResponse {
   /// The specification for allowing client side cross-origin requests.
-  final HttpRouteCorsPolicyResponse corsPolicy;
+  final pulumi.Input<HttpRouteCorsPolicyResponse> corsPolicy;
   /// The destination to which traffic should be forwarded.
-  final List<HttpRouteDestinationResponse> destinations;
+  final pulumi.Input<List<HttpRouteDestinationResponse>> destinations;
   /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
-  final HttpRouteFaultInjectionPolicyResponse faultInjectionPolicy;
+  final pulumi.Input<HttpRouteFaultInjectionPolicyResponse> faultInjectionPolicy;
   /// If set, the request is directed as configured by this field.
-  final HttpRouteRedirectResponse redirect;
+  final pulumi.Input<HttpRouteRedirectResponse> redirect;
   /// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
-  final HttpRouteHeaderModifierResponse requestHeaderModifier;
+  final pulumi.Input<HttpRouteHeaderModifierResponse> requestHeaderModifier;
   /// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
-  final HttpRouteRequestMirrorPolicyResponse requestMirrorPolicy;
+  final pulumi.Input<HttpRouteRequestMirrorPolicyResponse> requestMirrorPolicy;
   /// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
-  final HttpRouteHeaderModifierResponse responseHeaderModifier;
+  final pulumi.Input<HttpRouteHeaderModifierResponse> responseHeaderModifier;
   /// Specifies the retry policy associated with this route.
-  final HttpRouteRetryPolicyResponse retryPolicy;
+  final pulumi.Input<HttpRouteRetryPolicyResponse> retryPolicy;
   /// Optional. Specifies cookie-based stateful session affinity.
-  final HttpRouteStatefulSessionAffinityPolicyResponse statefulSessionAffinity;
+  final pulumi.Input<HttpRouteStatefulSessionAffinityPolicyResponse> statefulSessionAffinity;
   /// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
-  final String timeout;
+  final pulumi.Input<String> timeout;
   /// The specification for rewrite URL before forwarding requests to the destination.
-  final HttpRouteURLRewriteResponse urlRewrite;
+  final pulumi.Input<HttpRouteURLRewriteResponse> urlRewrite;
 
   /// Creates a new [HttpRouteRouteActionResponse].
   /// [corsPolicy] The specification for allowing client side cross-origin requests.
@@ -64,33 +64,33 @@ class HttpRouteRouteActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'corsPolicy': corsPolicy.toMap(),
-      'destinations': pulumi.Input.encodeList<HttpRouteDestinationResponse, Map<String, dynamic>>(destinations, (value) => value.toMap()),
-      'faultInjectionPolicy': faultInjectionPolicy.toMap(),
-      'redirect': redirect.toMap(),
-      'requestHeaderModifier': requestHeaderModifier.toMap(),
-      'requestMirrorPolicy': requestMirrorPolicy.toMap(),
-      'responseHeaderModifier': responseHeaderModifier.toMap(),
-      'retryPolicy': retryPolicy.toMap(),
-      'statefulSessionAffinity': statefulSessionAffinity.toMap(),
+      'corsPolicy': pulumi.Input.mapInputValue<HttpRouteCorsPolicyResponse, Map<String, dynamic>>(corsPolicy, (value) => value.toMap()),
+      'destinations': pulumi.Input.mapInputValue<List<HttpRouteDestinationResponse>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<HttpRouteDestinationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'faultInjectionPolicy': pulumi.Input.mapInputValue<HttpRouteFaultInjectionPolicyResponse, Map<String, dynamic>>(faultInjectionPolicy, (value) => value.toMap()),
+      'redirect': pulumi.Input.mapInputValue<HttpRouteRedirectResponse, Map<String, dynamic>>(redirect, (value) => value.toMap()),
+      'requestHeaderModifier': pulumi.Input.mapInputValue<HttpRouteHeaderModifierResponse, Map<String, dynamic>>(requestHeaderModifier, (value) => value.toMap()),
+      'requestMirrorPolicy': pulumi.Input.mapInputValue<HttpRouteRequestMirrorPolicyResponse, Map<String, dynamic>>(requestMirrorPolicy, (value) => value.toMap()),
+      'responseHeaderModifier': pulumi.Input.mapInputValue<HttpRouteHeaderModifierResponse, Map<String, dynamic>>(responseHeaderModifier, (value) => value.toMap()),
+      'retryPolicy': pulumi.Input.mapInputValue<HttpRouteRetryPolicyResponse, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'statefulSessionAffinity': pulumi.Input.mapInputValue<HttpRouteStatefulSessionAffinityPolicyResponse, Map<String, dynamic>>(statefulSessionAffinity, (value) => value.toMap()),
       'timeout': timeout,
-      'urlRewrite': urlRewrite.toMap(),
+      'urlRewrite': pulumi.Input.mapInputValue<HttpRouteURLRewriteResponse, Map<String, dynamic>>(urlRewrite, (value) => value.toMap()),
     };
   }
 
   factory HttpRouteRouteActionResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteActionResponse(
-      corsPolicy: HttpRouteCorsPolicyResponse.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>()),
-      destinations: pulumi.Input.decodeList<HttpRouteDestinationResponse>(map['destinations'], (value) => HttpRouteDestinationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      faultInjectionPolicy: HttpRouteFaultInjectionPolicyResponse.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>()),
-      redirect: HttpRouteRedirectResponse.fromMap((map['redirect'] as Map).cast<String, dynamic>()),
-      requestHeaderModifier: HttpRouteHeaderModifierResponse.fromMap((map['requestHeaderModifier'] as Map).cast<String, dynamic>()),
-      requestMirrorPolicy: HttpRouteRequestMirrorPolicyResponse.fromMap((map['requestMirrorPolicy'] as Map).cast<String, dynamic>()),
-      responseHeaderModifier: HttpRouteHeaderModifierResponse.fromMap((map['responseHeaderModifier'] as Map).cast<String, dynamic>()),
-      retryPolicy: HttpRouteRetryPolicyResponse.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>()),
-      statefulSessionAffinity: HttpRouteStatefulSessionAffinityPolicyResponse.fromMap((map['statefulSessionAffinity'] as Map).cast<String, dynamic>()),
-      timeout: map['timeout'] as String,
-      urlRewrite: HttpRouteURLRewriteResponse.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>()),
+      corsPolicy: (HttpRouteCorsPolicyResponse.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>())).input(),
+      destinations: (pulumi.Input.decodeList<HttpRouteDestinationResponse>(map['destinations'], (value) => HttpRouteDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      faultInjectionPolicy: (HttpRouteFaultInjectionPolicyResponse.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>())).input(),
+      redirect: (HttpRouteRedirectResponse.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
+      requestHeaderModifier: (HttpRouteHeaderModifierResponse.fromMap((map['requestHeaderModifier'] as Map).cast<String, dynamic>())).input(),
+      requestMirrorPolicy: (HttpRouteRequestMirrorPolicyResponse.fromMap((map['requestMirrorPolicy'] as Map).cast<String, dynamic>())).input(),
+      responseHeaderModifier: (HttpRouteHeaderModifierResponse.fromMap((map['responseHeaderModifier'] as Map).cast<String, dynamic>())).input(),
+      retryPolicy: (HttpRouteRetryPolicyResponse.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      statefulSessionAffinity: (HttpRouteStatefulSessionAffinityPolicyResponse.fromMap((map['statefulSessionAffinity'] as Map).cast<String, dynamic>())).input(),
+      timeout: (map['timeout'] as String).input(),
+      urlRewrite: (HttpRouteURLRewriteResponse.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

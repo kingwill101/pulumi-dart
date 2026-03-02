@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourcesResourceTagMappingListComplianceDetail {
   /// Whether the resource is compliant.
   /// * `keys_with_noncompliant_values ` - Set of tag keys with non-compliant tag values.
   /// * `non_compliant_keys ` - Set of non-compliant tag keys.
-  final bool complianceStatus;
-  final List<String> keysWithNoncompliantValues;
-  final List<String> nonCompliantKeys;
+  final pulumi.Input<bool> complianceStatus;
+  final pulumi.Input<List<String>> keysWithNoncompliantValues;
+  final pulumi.Input<List<String>> nonCompliantKeys;
 
   /// Creates a new [GetResourcesResourceTagMappingListComplianceDetail].
   /// [complianceStatus] Whether the resource is compliant.
@@ -29,9 +30,9 @@ class GetResourcesResourceTagMappingListComplianceDetail {
 
   factory GetResourcesResourceTagMappingListComplianceDetail.fromMap(Map<String, dynamic> map) {
     return GetResourcesResourceTagMappingListComplianceDetail(
-      complianceStatus: map['complianceStatus'] as bool,
-      keysWithNoncompliantValues: (map['keysWithNoncompliantValues'] as List).cast<String>(),
-      nonCompliantKeys: (map['nonCompliantKeys'] as List).cast<String>(),
+      complianceStatus: (map['complianceStatus'] as bool).input(),
+      keysWithNoncompliantValues: ((map['keysWithNoncompliantValues'] as List).cast<String>()).input(),
+      nonCompliantKeys: ((map['nonCompliantKeys'] as List).cast<String>()).input(),
     );
   }
 }

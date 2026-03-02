@@ -41,27 +41,17 @@ class NotificationChannelArgs {
   /// [tags] The tags of the resource.
   /// [webHookUrl] The webhook URL to send notifications to.
   NotificationChannelArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? emailRecipient,
-    pulumi.Output<List<Event>>? events,
-    required pulumi.Output<String> labName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notificationLocale,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? webHookUrl,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      emailRecipient = pulumi.Input.asOptionalInput<String>(emailRecipient),
-      events = pulumi.Input.asOptionalInput<List<Event>>(events),
-      labName = pulumi.Input.asInput<String>(labName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationLocale = pulumi.Input.asOptionalInput<String>(notificationLocale),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      webHookUrl = pulumi.Input.asOptionalInput<String>(webHookUrl);
+    this.description,
+    this.emailRecipient,
+    this.events,
+    required this.labName,
+    this.location,
+    this.name,
+    this.notificationLocale,
+    required this.resourceGroupName,
+    this.tags,
+    this.webHookUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class NotificationChannelArgs {
 
   factory NotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return NotificationChannelArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      emailRecipient: map['emailRecipient'] == null ? null : pulumi.Output.create<String>(map['emailRecipient'] as String),
-      events: map['events'] == null ? null : pulumi.Output.create<List<Event>>(pulumi.Input.decodeList<Event>(map['events'], (value) => Event.fromMap((value as Map).cast<String, dynamic>()))),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationLocale: map['notificationLocale'] == null ? null : pulumi.Output.create<String>(map['notificationLocale'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      webHookUrl: map['webHookUrl'] == null ? null : pulumi.Output.create<String>(map['webHookUrl'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      emailRecipient: map['emailRecipient'] == null ? null : (map['emailRecipient'] as String).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<Event>(map['events'], (value) => Event.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labName: (map['labName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationLocale: map['notificationLocale'] == null ? null : (map['notificationLocale'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      webHookUrl: map['webHookUrl'] == null ? null : (map['webHookUrl'] as String).input(),
     );
   }
 }

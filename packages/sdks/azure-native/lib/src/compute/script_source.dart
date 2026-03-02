@@ -6,9 +6,9 @@ import 'gallery_script_parameter.dart';
 /// The source script from which the Script Version is going to be created.
 class ScriptSource {
   /// Optional. Any input parameters that needs to passed to the script and are accessed within the script for its execution.
-  final List<GalleryScriptParameter>? parameters;
+  final pulumi.Input<List<GalleryScriptParameter>>? parameters;
   /// Required. The link of the source script, it must be a readable storage blob with SAS URI or publicly accessible URI or managed identity enabled.
-  final String scriptLink;
+  final pulumi.Input<String> scriptLink;
 
   /// Creates a new [ScriptSource].
   /// [parameters] Optional. Any input parameters that needs to passed to the script and are accessed within the script for its execution.
@@ -20,15 +20,15 @@ class ScriptSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<GalleryScriptParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<GalleryScriptParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GalleryScriptParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scriptLink': scriptLink,
     };
   }
 
   factory ScriptSource.fromMap(Map<String, dynamic> map) {
     return ScriptSource(
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<GalleryScriptParameter>(map['parameters'], (value) => GalleryScriptParameter.fromMap((value as Map).cast<String, dynamic>())),
-      scriptLink: map['scriptLink'] as String,
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GalleryScriptParameter>(map['parameters'], (value) => GalleryScriptParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scriptLink: (map['scriptLink'] as String).input(),
     );
   }
 }

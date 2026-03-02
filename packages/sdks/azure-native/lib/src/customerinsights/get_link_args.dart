@@ -19,13 +19,10 @@ class GetLinkArgs {
   /// [linkName] The name of the link.
   /// [resourceGroupName] The name of the resource group.
   GetLinkArgs({
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> linkName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hubName = pulumi.Input.asInput<String>(hubName),
-      linkName = pulumi.Input.asInput<String>(linkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hubName,
+    required this.linkName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLinkArgs {
 
   factory GetLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkArgs(
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      linkName: pulumi.Output.create<String>(map['linkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hubName: (map['hubName'] as String).input(),
+      linkName: (map['linkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

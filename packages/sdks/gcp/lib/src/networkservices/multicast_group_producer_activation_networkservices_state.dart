@@ -78,35 +78,21 @@ class MulticastGroupProducerActivationNetworkservicesState {
   /// [uniqueId] The Google-generated UUID for the resource. This value is
   /// [updateTime] The timestamp when the multicast group producer activation
   MulticastGroupProducerActivationNetworkservicesState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? multicastGroupProducerActivationId,
-    pulumi.Output<String>? multicastGroupRangeActivation,
-    pulumi.Output<String>? multicastProducerAssociation,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<MulticastGroupProducerActivationState>>? states,
-    pulumi.Output<String>? uniqueId,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      multicastGroupProducerActivationId = pulumi.Input.asOptionalInput<String>(multicastGroupProducerActivationId),
-      multicastGroupRangeActivation = pulumi.Input.asOptionalInput<String>(multicastGroupRangeActivation),
-      multicastProducerAssociation = pulumi.Input.asOptionalInput<String>(multicastProducerAssociation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      states = pulumi.Input.asOptionalInput<List<MulticastGroupProducerActivationState>>(states),
-      uniqueId = pulumi.Input.asOptionalInput<String>(uniqueId),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.multicastGroupProducerActivationId,
+    this.multicastGroupRangeActivation,
+    this.multicastProducerAssociation,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.states,
+    this.uniqueId,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -129,20 +115,20 @@ class MulticastGroupProducerActivationNetworkservicesState {
 
   factory MulticastGroupProducerActivationNetworkservicesState.fromMap(Map<String, dynamic> map) {
     return MulticastGroupProducerActivationNetworkservicesState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      multicastGroupProducerActivationId: map['multicastGroupProducerActivationId'] == null ? null : pulumi.Output.create<String>(map['multicastGroupProducerActivationId'] as String),
-      multicastGroupRangeActivation: map['multicastGroupRangeActivation'] == null ? null : pulumi.Output.create<String>(map['multicastGroupRangeActivation'] as String),
-      multicastProducerAssociation: map['multicastProducerAssociation'] == null ? null : pulumi.Output.create<String>(map['multicastProducerAssociation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      states: map['states'] == null ? null : pulumi.Output.create<List<MulticastGroupProducerActivationState>>(pulumi.Input.decodeList<MulticastGroupProducerActivationState>(map['states'], (value) => MulticastGroupProducerActivationState.fromMap((value as Map).cast<String, dynamic>()))),
-      uniqueId: map['uniqueId'] == null ? null : pulumi.Output.create<String>(map['uniqueId'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      multicastGroupProducerActivationId: map['multicastGroupProducerActivationId'] == null ? null : (map['multicastGroupProducerActivationId'] as String).input(),
+      multicastGroupRangeActivation: map['multicastGroupRangeActivation'] == null ? null : (map['multicastGroupRangeActivation'] as String).input(),
+      multicastProducerAssociation: map['multicastProducerAssociation'] == null ? null : (map['multicastProducerAssociation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticastGroupProducerActivationState>(map['states'], (value) => MulticastGroupProducerActivationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

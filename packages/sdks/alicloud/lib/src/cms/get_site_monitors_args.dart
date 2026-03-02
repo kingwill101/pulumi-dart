@@ -22,15 +22,11 @@ class GetSiteMonitorsArgs {
   /// [taskId] Task ID.
   /// [taskType] Task Type.
   GetSiteMonitorsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? taskId,
-    pulumi.Output<String>? taskType,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      taskId = pulumi.Input.asOptionalInput<String>(taskId),
-      taskType = pulumi.Input.asOptionalInput<String>(taskType);
+    this.ids,
+    this.outputFile,
+    this.taskId,
+    this.taskType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSiteMonitorsArgs {
 
   factory GetSiteMonitorsArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteMonitorsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      taskId: map['taskId'] == null ? null : pulumi.Output.create<String>(map['taskId'] as String),
-      taskType: map['taskType'] == null ? null : pulumi.Output.create<String>(map['taskType'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      taskType: map['taskType'] == null ? null : (map['taskType'] as String).input(),
     );
   }
 }

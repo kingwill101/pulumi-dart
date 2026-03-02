@@ -58,35 +58,21 @@ class CertCheckMonitorState {
   /// [tags] The tags that will be associated with the monitor. See Nested tag blocks below for details
   /// [useUnsupportedLegacyRuntime] A boolean attribute to be set true by the customer, if they would like to use the unsupported legacy runtime of Synthetic Monitors by means of an exemption given until the October 22, 2024 Legacy Runtime EOL. Setting this attribute to true would allow skipping validation performed by the the New Relic Terraform Provider starting v3.43.0 to disallow using the legacy runtime with new monitors. This would, hence, allow creation of monitors in the legacy runtime until the October 22, 2024 Legacy Runtime EOL, if exempt by the API.
   CertCheckMonitorState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<int>? certificateExpiration,
-    pulumi.Output<String>? domain,
-    pulumi.Output<List<String>>? locationsPrivates,
-    pulumi.Output<List<String>>? locationsPublics,
-    pulumi.Output<String>? monitorId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? period,
-    pulumi.Output<int>? periodInMinutes,
-    pulumi.Output<String>? runtimeType_,
-    pulumi.Output<String>? runtimeTypeVersion,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<CertCheckMonitorTag>>? tags,
-    pulumi.Output<bool>? useUnsupportedLegacyRuntime,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      certificateExpiration = pulumi.Input.asOptionalInput<int>(certificateExpiration),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      locationsPrivates = pulumi.Input.asOptionalInput<List<String>>(locationsPrivates),
-      locationsPublics = pulumi.Input.asOptionalInput<List<String>>(locationsPublics),
-      monitorId = pulumi.Input.asOptionalInput<String>(monitorId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      periodInMinutes = pulumi.Input.asOptionalInput<int>(periodInMinutes),
-      runtimeType_ = pulumi.Input.asOptionalInput<String>(runtimeType_),
-      runtimeTypeVersion = pulumi.Input.asOptionalInput<String>(runtimeTypeVersion),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<CertCheckMonitorTag>>(tags),
-      useUnsupportedLegacyRuntime = pulumi.Input.asOptionalInput<bool>(useUnsupportedLegacyRuntime);
+    this.accountId,
+    this.certificateExpiration,
+    this.domain,
+    this.locationsPrivates,
+    this.locationsPublics,
+    this.monitorId,
+    this.name,
+    this.period,
+    this.periodInMinutes,
+    this.runtimeType_,
+    this.runtimeTypeVersion,
+    this.status,
+    this.tags,
+    this.useUnsupportedLegacyRuntime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class CertCheckMonitorState {
 
   factory CertCheckMonitorState.fromMap(Map<String, dynamic> map) {
     return CertCheckMonitorState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      certificateExpiration: map['certificateExpiration'] == null ? null : pulumi.Output.create<int>(map['certificateExpiration'] as int),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      locationsPrivates: map['locationsPrivates'] == null ? null : pulumi.Output.create<List<String>>((map['locationsPrivates'] as List).cast<String>()),
-      locationsPublics: map['locationsPublics'] == null ? null : pulumi.Output.create<List<String>>((map['locationsPublics'] as List).cast<String>()),
-      monitorId: map['monitorId'] == null ? null : pulumi.Output.create<String>(map['monitorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      periodInMinutes: map['periodInMinutes'] == null ? null : pulumi.Output.create<int>(map['periodInMinutes'] as int),
-      runtimeType_: map['runtimeType'] == null ? null : pulumi.Output.create<String>(map['runtimeType'] as String),
-      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : pulumi.Output.create<String>(map['runtimeTypeVersion'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<CertCheckMonitorTag>>(pulumi.Input.decodeList<CertCheckMonitorTag>(map['tags'], (value) => CertCheckMonitorTag.fromMap((value as Map).cast<String, dynamic>()))),
-      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : pulumi.Output.create<bool>(map['useUnsupportedLegacyRuntime'] as bool),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      certificateExpiration: map['certificateExpiration'] == null ? null : (map['certificateExpiration'] as int).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      locationsPrivates: map['locationsPrivates'] == null ? null : ((map['locationsPrivates'] as List).cast<String>()).input(),
+      locationsPublics: map['locationsPublics'] == null ? null : ((map['locationsPublics'] as List).cast<String>()).input(),
+      monitorId: map['monitorId'] == null ? null : (map['monitorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      periodInMinutes: map['periodInMinutes'] == null ? null : (map['periodInMinutes'] as int).input(),
+      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType'] as String).input(),
+      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : (map['runtimeTypeVersion'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<CertCheckMonitorTag>(map['tags'], (value) => CertCheckMonitorTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : (map['useUnsupportedLegacyRuntime'] as bool).input(),
     );
   }
 }

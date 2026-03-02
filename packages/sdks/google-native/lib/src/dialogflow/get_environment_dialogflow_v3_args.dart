@@ -18,15 +18,11 @@ class GetEnvironmentDialogflowV3Args {
   /// [location] Required.
   /// [project] Optional.
   GetEnvironmentDialogflowV3Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.agentId,
+    required this.environmentId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetEnvironmentDialogflowV3Args {
 
   factory GetEnvironmentDialogflowV3Args.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentDialogflowV3Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      agentId: (map['agentId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

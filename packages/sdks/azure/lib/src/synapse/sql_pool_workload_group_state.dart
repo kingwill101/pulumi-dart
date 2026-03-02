@@ -31,23 +31,15 @@ class SqlPoolWorkloadGroupState {
   /// [queryExecutionTimeoutInSeconds] The workload group query execution timeout.
   /// [sqlPoolId] The ID of the Synapse SQL Pool. Changing this forces a new Synapse SQL Pool Workload Group to be created.
   SqlPoolWorkloadGroupState({
-    pulumi.Output<String>? importance,
-    pulumi.Output<int>? maxResourcePercent,
-    pulumi.Output<double>? maxResourcePercentPerRequest,
-    pulumi.Output<int>? minResourcePercent,
-    pulumi.Output<double>? minResourcePercentPerRequest,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? queryExecutionTimeoutInSeconds,
-    pulumi.Output<String>? sqlPoolId,
-  }) :
-      importance = pulumi.Input.asOptionalInput<String>(importance),
-      maxResourcePercent = pulumi.Input.asOptionalInput<int>(maxResourcePercent),
-      maxResourcePercentPerRequest = pulumi.Input.asOptionalInput<double>(maxResourcePercentPerRequest),
-      minResourcePercent = pulumi.Input.asOptionalInput<int>(minResourcePercent),
-      minResourcePercentPerRequest = pulumi.Input.asOptionalInput<double>(minResourcePercentPerRequest),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryExecutionTimeoutInSeconds = pulumi.Input.asOptionalInput<int>(queryExecutionTimeoutInSeconds),
-      sqlPoolId = pulumi.Input.asOptionalInput<String>(sqlPoolId);
+    this.importance,
+    this.maxResourcePercent,
+    this.maxResourcePercentPerRequest,
+    this.minResourcePercent,
+    this.minResourcePercentPerRequest,
+    this.name,
+    this.queryExecutionTimeoutInSeconds,
+    this.sqlPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class SqlPoolWorkloadGroupState {
 
   factory SqlPoolWorkloadGroupState.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadGroupState(
-      importance: map['importance'] == null ? null : pulumi.Output.create<String>(map['importance'] as String),
-      maxResourcePercent: map['maxResourcePercent'] == null ? null : pulumi.Output.create<int>(map['maxResourcePercent'] as int),
-      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : pulumi.Output.create<double>(map['maxResourcePercentPerRequest'] as double),
-      minResourcePercent: map['minResourcePercent'] == null ? null : pulumi.Output.create<int>(map['minResourcePercent'] as int),
-      minResourcePercentPerRequest: map['minResourcePercentPerRequest'] == null ? null : pulumi.Output.create<double>(map['minResourcePercentPerRequest'] as double),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryExecutionTimeoutInSeconds: map['queryExecutionTimeoutInSeconds'] == null ? null : pulumi.Output.create<int>(map['queryExecutionTimeoutInSeconds'] as int),
-      sqlPoolId: map['sqlPoolId'] == null ? null : pulumi.Output.create<String>(map['sqlPoolId'] as String),
+      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
+      maxResourcePercent: map['maxResourcePercent'] == null ? null : (map['maxResourcePercent'] as int).input(),
+      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : (map['maxResourcePercentPerRequest'] as double).input(),
+      minResourcePercent: map['minResourcePercent'] == null ? null : (map['minResourcePercent'] as int).input(),
+      minResourcePercentPerRequest: map['minResourcePercentPerRequest'] == null ? null : (map['minResourcePercentPerRequest'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryExecutionTimeoutInSeconds: map['queryExecutionTimeoutInSeconds'] == null ? null : (map['queryExecutionTimeoutInSeconds'] as int).input(),
+      sqlPoolId: map['sqlPoolId'] == null ? null : (map['sqlPoolId'] as String).input(),
     );
   }
 }

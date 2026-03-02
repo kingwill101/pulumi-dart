@@ -52,35 +52,21 @@ class CapacityReservationArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tenancy] Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
   CapacityReservationArgs({
-    required pulumi.Output<String> availabilityZone,
-    pulumi.Output<bool>? ebsOptimized,
-    pulumi.Output<String>? endDate,
-    pulumi.Output<String>? endDateType,
-    pulumi.Output<bool>? ephemeralStorage,
-    required pulumi.Output<int> instanceCount,
-    pulumi.Output<String>? instanceMatchCriteria,
-    required pulumi.Output<String> instancePlatform,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? outpostArn,
-    pulumi.Output<String>? placementGroupArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenancy,
-  }) :
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      ebsOptimized = pulumi.Input.asOptionalInput<bool>(ebsOptimized),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      endDateType = pulumi.Input.asOptionalInput<String>(endDateType),
-      ephemeralStorage = pulumi.Input.asOptionalInput<bool>(ephemeralStorage),
-      instanceCount = pulumi.Input.asInput<int>(instanceCount),
-      instanceMatchCriteria = pulumi.Input.asOptionalInput<String>(instanceMatchCriteria),
-      instancePlatform = pulumi.Input.asInput<String>(instancePlatform),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      outpostArn = pulumi.Input.asOptionalInput<String>(outpostArn),
-      placementGroupArn = pulumi.Input.asOptionalInput<String>(placementGroupArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenancy = pulumi.Input.asOptionalInput<String>(tenancy);
+    required this.availabilityZone,
+    this.ebsOptimized,
+    this.endDate,
+    this.endDateType,
+    this.ephemeralStorage,
+    required this.instanceCount,
+    this.instanceMatchCriteria,
+    required this.instancePlatform,
+    required this.instanceType,
+    this.outpostArn,
+    this.placementGroupArn,
+    this.region,
+    this.tags,
+    this.tenancy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class CapacityReservationArgs {
 
   factory CapacityReservationArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationArgs(
-      availabilityZone: pulumi.Output.create<String>(map['availabilityZone'] as String),
-      ebsOptimized: map['ebsOptimized'] == null ? null : pulumi.Output.create<bool>(map['ebsOptimized'] as bool),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<String>(map['endDate'] as String),
-      endDateType: map['endDateType'] == null ? null : pulumi.Output.create<String>(map['endDateType'] as String),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : pulumi.Output.create<bool>(map['ephemeralStorage'] as bool),
-      instanceCount: pulumi.Output.create<int>(map['instanceCount'] as int),
-      instanceMatchCriteria: map['instanceMatchCriteria'] == null ? null : pulumi.Output.create<String>(map['instanceMatchCriteria'] as String),
-      instancePlatform: pulumi.Output.create<String>(map['instancePlatform'] as String),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      outpostArn: map['outpostArn'] == null ? null : pulumi.Output.create<String>(map['outpostArn'] as String),
-      placementGroupArn: map['placementGroupArn'] == null ? null : pulumi.Output.create<String>(map['placementGroupArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenancy: map['tenancy'] == null ? null : pulumi.Output.create<String>(map['tenancy'] as String),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      ebsOptimized: map['ebsOptimized'] == null ? null : (map['ebsOptimized'] as bool).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      endDateType: map['endDateType'] == null ? null : (map['endDateType'] as String).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage'] as bool).input(),
+      instanceCount: (map['instanceCount'] as int).input(),
+      instanceMatchCriteria: map['instanceMatchCriteria'] == null ? null : (map['instanceMatchCriteria'] as String).input(),
+      instancePlatform: (map['instancePlatform'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
+      placementGroupArn: map['placementGroupArn'] == null ? null : (map['placementGroupArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenancy: map['tenancy'] == null ? null : (map['tenancy'] as String).input(),
     );
   }
 }

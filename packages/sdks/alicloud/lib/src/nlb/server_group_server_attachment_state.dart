@@ -43,25 +43,16 @@ class ServerGroupServerAttachmentState {
   /// [weight] The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
   /// [zoneId] The zone ID of the server.
   ServerGroupServerAttachmentState({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? serverGroupId,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<String>? serverIp,
-    pulumi.Output<String>? serverType,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? weight,
-    pulumi.Output<String>? zoneId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      serverGroupId = pulumi.Input.asOptionalInput<String>(serverGroupId),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      serverIp = pulumi.Input.asOptionalInput<String>(serverIp),
-      serverType = pulumi.Input.asOptionalInput<String>(serverType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      weight = pulumi.Input.asOptionalInput<int>(weight),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.description,
+    this.port,
+    this.serverGroupId,
+    this.serverId,
+    this.serverIp,
+    this.serverType,
+    this.status,
+    this.weight,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class ServerGroupServerAttachmentState {
 
   factory ServerGroupServerAttachmentState.fromMap(Map<String, dynamic> map) {
     return ServerGroupServerAttachmentState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      serverGroupId: map['serverGroupId'] == null ? null : pulumi.Output.create<String>(map['serverGroupId'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      serverIp: map['serverIp'] == null ? null : pulumi.Output.create<String>(map['serverIp'] as String),
-      serverType: map['serverType'] == null ? null : pulumi.Output.create<String>(map['serverType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      serverIp: map['serverIp'] == null ? null : (map['serverIp'] as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

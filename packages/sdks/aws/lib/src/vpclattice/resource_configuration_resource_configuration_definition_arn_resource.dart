@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceConfigurationResourceConfigurationDefinitionArnResource {
   /// The ARN of the Resource for this configuration.
-  final String arn;
+  final pulumi.Input<String> arn;
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinitionArnResource].
   /// [arn] The ARN of the Resource for this configuration.
@@ -19,7 +20,7 @@ class ResourceConfigurationResourceConfigurationDefinitionArnResource {
 
   factory ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationResourceConfigurationDefinitionArnResource(
-      arn: map['arn'] as String,
+      arn: (map['arn'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'audio_stream.dart';
 import 'text_stream.dart';
 import 'video_stream.dart';
@@ -7,13 +8,13 @@ import 'video_stream.dart';
 /// Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
 class ElementaryStream {
   /// Encoding of an audio stream.
-  final AudioStream? audioStream;
+  final pulumi.Input<AudioStream>? audioStream;
   /// A unique key for this elementary stream.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Encoding of a text stream. For example, closed captions or subtitles.
-  final TextStream? textStream;
+  final pulumi.Input<TextStream>? textStream;
   /// Encoding of a video stream.
-  final VideoStream? videoStream;
+  final pulumi.Input<VideoStream>? videoStream;
 
   /// Creates a new [ElementaryStream].
   /// [audioStream] Encoding of an audio stream.
@@ -29,19 +30,19 @@ class ElementaryStream {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioStream': ?audioStream == null ? null : audioStream!.toMap(),
+      'audioStream': ?pulumi.Input.mapOptionalInputValue<AudioStream, Map<String, dynamic>>(audioStream, (value) => value.toMap()),
       'key': ?key,
-      'textStream': ?textStream == null ? null : textStream!.toMap(),
-      'videoStream': ?videoStream == null ? null : videoStream!.toMap(),
+      'textStream': ?pulumi.Input.mapOptionalInputValue<TextStream, Map<String, dynamic>>(textStream, (value) => value.toMap()),
+      'videoStream': ?pulumi.Input.mapOptionalInputValue<VideoStream, Map<String, dynamic>>(videoStream, (value) => value.toMap()),
     };
   }
 
   factory ElementaryStream.fromMap(Map<String, dynamic> map) {
     return ElementaryStream(
-      audioStream: map['audioStream'] == null ? null : AudioStream.fromMap((map['audioStream'] as Map).cast<String, dynamic>()),
-      key: map['key'] == null ? null : map['key'] as String,
-      textStream: map['textStream'] == null ? null : TextStream.fromMap((map['textStream'] as Map).cast<String, dynamic>()),
-      videoStream: map['videoStream'] == null ? null : VideoStream.fromMap((map['videoStream'] as Map).cast<String, dynamic>()),
+      audioStream: map['audioStream'] == null ? null : (AudioStream.fromMap((map['audioStream'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      textStream: map['textStream'] == null ? null : (TextStream.fromMap((map['textStream'] as Map).cast<String, dynamic>())).input(),
+      videoStream: map['videoStream'] == null ? null : (VideoStream.fromMap((map['videoStream'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

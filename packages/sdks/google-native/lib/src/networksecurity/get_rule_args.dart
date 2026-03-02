@@ -18,15 +18,11 @@ class GetRuleArgs {
   /// [project] Optional.
   /// [ruleId] Required.
   GetRuleArgs({
-    required pulumi.Output<String> gatewaySecurityPolicyId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> ruleId,
-  }) :
-      gatewaySecurityPolicyId = pulumi.Input.asInput<String>(gatewaySecurityPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ruleId = pulumi.Input.asInput<String>(ruleId);
+    required this.gatewaySecurityPolicyId,
+    required this.location,
+    this.project,
+    required this.ruleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetRuleArgs {
 
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRuleArgs(
-      gatewaySecurityPolicyId: pulumi.Output.create<String>(map['gatewaySecurityPolicyId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      ruleId: pulumi.Output.create<String>(map['ruleId'] as String),
+      gatewaySecurityPolicyId: (map['gatewaySecurityPolicyId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      ruleId: (map['ruleId'] as String).input(),
     );
   }
 }

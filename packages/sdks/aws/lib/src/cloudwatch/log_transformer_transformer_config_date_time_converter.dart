@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigDateTimeConverter {
   /// Specifies the locale of the source field. Defaults to `locale.ROOT`.
-  final String? locale;
+  final pulumi.Input<String>? locale;
   /// Specifies the list of patterns to match against the `source` field.
-  final List<String> matchPatterns;
+  final pulumi.Input<List<String>> matchPatterns;
   /// Specifies the key to apply the date conversion to.
-  final String source;
+  final pulumi.Input<String> source;
   /// Specifies the time zone of the source field. Defaults to `UTC`.
-  final String? sourceTimezone;
+  final pulumi.Input<String>? sourceTimezone;
   /// Specifies the JSON field to store the result in.
-  final String target;
+  final pulumi.Input<String> target;
   /// Specifies the datetime format to use for the converted data in the target field. Defaults to `yyyy-MM-dd'T'HH:mm:ss.SSS'Z`.
-  final String? targetFormat;
+  final pulumi.Input<String>? targetFormat;
   /// Specifies the time zone of the target field. Defaults to `UTC`.
-  final String? targetTimezone;
+  final pulumi.Input<String>? targetTimezone;
 
   /// Creates a new [LogTransformerTransformerConfigDateTimeConverter].
   /// [locale] Specifies the locale of the source field. Defaults to `locale.ROOT`.
@@ -49,13 +50,13 @@ class LogTransformerTransformerConfigDateTimeConverter {
 
   factory LogTransformerTransformerConfigDateTimeConverter.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigDateTimeConverter(
-      locale: map['locale'] == null ? null : map['locale'] as String,
-      matchPatterns: (map['matchPatterns'] as List).cast<String>(),
-      source: map['source'] as String,
-      sourceTimezone: map['sourceTimezone'] == null ? null : map['sourceTimezone'] as String,
-      target: map['target'] as String,
-      targetFormat: map['targetFormat'] == null ? null : map['targetFormat'] as String,
-      targetTimezone: map['targetTimezone'] == null ? null : map['targetTimezone'] as String,
+      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
+      matchPatterns: ((map['matchPatterns'] as List).cast<String>()).input(),
+      source: (map['source'] as String).input(),
+      sourceTimezone: map['sourceTimezone'] == null ? null : (map['sourceTimezone'] as String).input(),
+      target: (map['target'] as String).input(),
+      targetFormat: map['targetFormat'] == null ? null : (map['targetFormat'] as String).input(),
+      targetTimezone: map['targetTimezone'] == null ? null : (map['targetTimezone'] as String).input(),
     );
   }
 }

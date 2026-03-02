@@ -22,17 +22,12 @@ class DeviceState {
   /// [deviceFleetName] The name of the Device Fleet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DeviceState({
-    pulumi.Output<String>? agentVersion,
-    pulumi.Output<String>? arn,
-    pulumi.Output<DeviceDevice>? device,
-    pulumi.Output<String>? deviceFleetName,
-    pulumi.Output<String>? region,
-  }) :
-      agentVersion = pulumi.Input.asOptionalInput<String>(agentVersion),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      device = pulumi.Input.asOptionalInput<DeviceDevice>(device),
-      deviceFleetName = pulumi.Input.asOptionalInput<String>(deviceFleetName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.agentVersion,
+    this.arn,
+    this.device,
+    this.deviceFleetName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      agentVersion: map['agentVersion'] == null ? null : pulumi.Output.create<String>(map['agentVersion'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      device: map['device'] == null ? null : pulumi.Output.create<DeviceDevice>(DeviceDevice.fromMap((map['device'] as Map).cast<String, dynamic>())),
-      deviceFleetName: map['deviceFleetName'] == null ? null : pulumi.Output.create<String>(map['deviceFleetName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      device: map['device'] == null ? null : (DeviceDevice.fromMap((map['device'] as Map).cast<String, dynamic>())).input(),
+      deviceFleetName: map['deviceFleetName'] == null ? null : (map['deviceFleetName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

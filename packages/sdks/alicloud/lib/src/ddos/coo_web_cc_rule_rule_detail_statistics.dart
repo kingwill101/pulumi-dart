@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CooWebCcRuleRuleDetailStatistics {
   /// The statistic source. Valid values:
-  final String field;
+  final pulumi.Input<String> field;
   /// Set this parameter only when the statistic source is `header`.
-  final String? headerName;
+  final pulumi.Input<String>? headerName;
   /// The deduplication mode. Valid values:
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [CooWebCcRuleRuleDetailStatistics].
   /// [field] The statistic source. Valid values:
@@ -29,9 +30,9 @@ class CooWebCcRuleRuleDetailStatistics {
 
   factory CooWebCcRuleRuleDetailStatistics.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetailStatistics(
-      field: map['field'] as String,
-      headerName: map['headerName'] == null ? null : map['headerName'] as String,
-      mode: map['mode'] as String,
+      field: (map['field'] as String).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

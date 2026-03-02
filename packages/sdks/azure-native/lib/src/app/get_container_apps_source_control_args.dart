@@ -19,13 +19,10 @@ class GetContainerAppsSourceControlArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlName] Name of the Container App SourceControl.
   GetContainerAppsSourceControlArgs({
-    required pulumi.Output<String> containerAppName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sourceControlName,
-  }) :
-      containerAppName = pulumi.Input.asInput<String>(containerAppName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceControlName = pulumi.Input.asInput<String>(sourceControlName);
+    required this.containerAppName,
+    required this.resourceGroupName,
+    required this.sourceControlName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetContainerAppsSourceControlArgs {
 
   factory GetContainerAppsSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsSourceControlArgs(
-      containerAppName: pulumi.Output.create<String>(map['containerAppName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceControlName: pulumi.Output.create<String>(map['sourceControlName'] as String),
+      containerAppName: (map['containerAppName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceControlName: (map['sourceControlName'] as String).input(),
     );
   }
 }

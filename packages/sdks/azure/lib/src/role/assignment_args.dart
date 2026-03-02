@@ -53,29 +53,18 @@ class AssignmentArgs {
   /// [scope] The scope at which the Role Assignment applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`, or `/providers/Microsoft.Management/managementGroups/myMG`. Changing this forces a new resource to be created.
   /// [skipServicePrincipalAadCheck] If the `principal_id` is a newly provisioned `Service Principal` set this value to `true` to skip the `Azure Active Directory` check which may fail due to replication lag. This argument is only valid if the `principal_id` is a `Service Principal` identity. Defaults to `false`.
   AssignmentArgs({
-    pulumi.Output<String>? condition,
-    pulumi.Output<String>? conditionVersion,
-    pulumi.Output<String>? delegatedManagedIdentityResourceId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> principalId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<String>? roleDefinitionName,
-    required pulumi.Output<String> scope,
-    pulumi.Output<bool>? skipServicePrincipalAadCheck,
-  }) :
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      conditionVersion = pulumi.Input.asOptionalInput<String>(conditionVersion),
-      delegatedManagedIdentityResourceId = pulumi.Input.asOptionalInput<String>(delegatedManagedIdentityResourceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      roleDefinitionName = pulumi.Input.asOptionalInput<String>(roleDefinitionName),
-      scope = pulumi.Input.asInput<String>(scope),
-      skipServicePrincipalAadCheck = pulumi.Input.asOptionalInput<bool>(skipServicePrincipalAadCheck);
+    this.condition,
+    this.conditionVersion,
+    this.delegatedManagedIdentityResourceId,
+    this.description,
+    this.name,
+    required this.principalId,
+    this.principalType,
+    this.roleDefinitionId,
+    this.roleDefinitionName,
+    required this.scope,
+    this.skipServicePrincipalAadCheck,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,17 +84,17 @@ class AssignmentArgs {
 
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      conditionVersion: map['conditionVersion'] == null ? null : pulumi.Output.create<String>(map['conditionVersion'] as String),
-      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] == null ? null : pulumi.Output.create<String>(map['delegatedManagedIdentityResourceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      roleDefinitionName: map['roleDefinitionName'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      skipServicePrincipalAadCheck: map['skipServicePrincipalAadCheck'] == null ? null : pulumi.Output.create<bool>(map['skipServicePrincipalAadCheck'] as bool),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
+      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] == null ? null : (map['delegatedManagedIdentityResourceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      roleDefinitionName: map['roleDefinitionName'] == null ? null : (map['roleDefinitionName'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      skipServicePrincipalAadCheck: map['skipServicePrincipalAadCheck'] == null ? null : (map['skipServicePrincipalAadCheck'] as bool).input(),
     );
   }
 }

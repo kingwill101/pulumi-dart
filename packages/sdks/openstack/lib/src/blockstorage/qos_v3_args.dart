@@ -26,15 +26,11 @@ class QosV3Args {
   /// [region] The region in which to create the qos. If omitted,
   /// [specs] Key/Value pairs of specs for the qos.
   QosV3Args({
-    pulumi.Output<String>? consumer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? specs,
-  }) :
-      consumer = pulumi.Input.asOptionalInput<String>(consumer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      specs = pulumi.Input.asOptionalInput<Map<String, String>>(specs);
+    this.consumer,
+    this.name,
+    this.region,
+    this.specs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class QosV3Args {
 
   factory QosV3Args.fromMap(Map<String, dynamic> map) {
     return QosV3Args(
-      consumer: map['consumer'] == null ? null : pulumi.Output.create<String>(map['consumer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      specs: map['specs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['specs'] as Map).cast<String, String>()),
+      consumer: map['consumer'] == null ? null : (map['consumer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      specs: map['specs'] == null ? null : ((map['specs'] as Map).cast<String, String>()).input(),
     );
   }
 }

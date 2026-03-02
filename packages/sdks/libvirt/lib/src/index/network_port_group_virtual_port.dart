@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_port_group_virtual_port_params.dart';
 
 class NetworkPortGroupVirtualPort {
   /// Defines parameters for the virtual port in the port group.
-  final NetworkPortGroupVirtualPortParams? params;
+  final pulumi.Input<NetworkPortGroupVirtualPortParams>? params;
 
   /// Creates a new [NetworkPortGroupVirtualPort].
   /// [params] Defines parameters for the virtual port in the port group.
@@ -14,13 +15,13 @@ class NetworkPortGroupVirtualPort {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'params': ?params == null ? null : params!.toMap(),
+      'params': ?pulumi.Input.mapOptionalInputValue<NetworkPortGroupVirtualPortParams, Map<String, dynamic>>(params, (value) => value.toMap()),
     };
   }
 
   factory NetworkPortGroupVirtualPort.fromMap(Map<String, dynamic> map) {
     return NetworkPortGroupVirtualPort(
-      params: map['params'] == null ? null : NetworkPortGroupVirtualPortParams.fromMap((map['params'] as Map).cast<String, dynamic>()),
+      params: map['params'] == null ? null : (NetworkPortGroupVirtualPortParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

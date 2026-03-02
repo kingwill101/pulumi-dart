@@ -19,13 +19,10 @@ class GetAccountProjectArgs {
   /// [name] The name of the Cognitive Services Account Project.
   /// [resourceGroupName] The name of the Resource Group where the Cognitive Services Account exists.
   GetAccountProjectArgs({
-    required pulumi.Output<String> cognitiveAccountName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cognitiveAccountName = pulumi.Input.asInput<String>(cognitiveAccountName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cognitiveAccountName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccountProjectArgs {
 
   factory GetAccountProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountProjectArgs(
-      cognitiveAccountName: pulumi.Output.create<String>(map['cognitiveAccountName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cognitiveAccountName: (map['cognitiveAccountName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetRateBasedRuleArgs {
   /// Creates a new [GetRateBasedRuleArgs].
   /// [name] Name of the WAF rate based rule.
   GetRateBasedRuleArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetRateBasedRuleArgs {
 
   factory GetRateBasedRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRateBasedRuleArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

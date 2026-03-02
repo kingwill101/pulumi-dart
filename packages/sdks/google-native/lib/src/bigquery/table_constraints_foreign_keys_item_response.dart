@@ -5,9 +5,9 @@ import 'table_constraints_foreign_keys_item_column_references_item_response.dart
 import 'table_constraints_foreign_keys_item_referenced_table_response.dart';
 
 class TableConstraintsForeignKeysItemResponse {
-  final List<TableConstraintsForeignKeysItemColumnReferencesItemResponse> columnReferences;
-  final String name;
-  final TableConstraintsForeignKeysItemReferencedTableResponse referencedTable;
+  final pulumi.Input<List<TableConstraintsForeignKeysItemColumnReferencesItemResponse>> columnReferences;
+  final pulumi.Input<String> name;
+  final pulumi.Input<TableConstraintsForeignKeysItemReferencedTableResponse> referencedTable;
 
   /// Creates a new [TableConstraintsForeignKeysItemResponse].
   /// [columnReferences] Required.
@@ -21,17 +21,17 @@ class TableConstraintsForeignKeysItemResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columnReferences': pulumi.Input.encodeList<TableConstraintsForeignKeysItemColumnReferencesItemResponse, Map<String, dynamic>>(columnReferences, (value) => value.toMap()),
+      'columnReferences': pulumi.Input.mapInputValue<List<TableConstraintsForeignKeysItemColumnReferencesItemResponse>, List<Map<String, dynamic>>>(columnReferences, (value) => pulumi.Input.encodeList<TableConstraintsForeignKeysItemColumnReferencesItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
-      'referencedTable': referencedTable.toMap(),
+      'referencedTable': pulumi.Input.mapInputValue<TableConstraintsForeignKeysItemReferencedTableResponse, Map<String, dynamic>>(referencedTable, (value) => value.toMap()),
     };
   }
 
   factory TableConstraintsForeignKeysItemResponse.fromMap(Map<String, dynamic> map) {
     return TableConstraintsForeignKeysItemResponse(
-      columnReferences: pulumi.Input.decodeList<TableConstraintsForeignKeysItemColumnReferencesItemResponse>(map['columnReferences'], (value) => TableConstraintsForeignKeysItemColumnReferencesItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      referencedTable: TableConstraintsForeignKeysItemReferencedTableResponse.fromMap((map['referencedTable'] as Map).cast<String, dynamic>()),
+      columnReferences: (pulumi.Input.decodeList<TableConstraintsForeignKeysItemColumnReferencesItemResponse>(map['columnReferences'], (value) => TableConstraintsForeignKeysItemColumnReferencesItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      referencedTable: (TableConstraintsForeignKeysItemReferencedTableResponse.fromMap((map['referencedTable'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

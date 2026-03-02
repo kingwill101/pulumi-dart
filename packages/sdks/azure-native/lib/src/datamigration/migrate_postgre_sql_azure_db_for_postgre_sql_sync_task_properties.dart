@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migrate_postgre_sql_azure_db_for_postgre_sql_sync_task_input.dart';
 
 /// Properties for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final Map<String, String>? clientData;
+  final pulumi.Input<Map<String, String>>? clientData;
   /// DateTime in UTC when the task was created
-  final String? createdOn;
+  final pulumi.Input<String>? createdOn;
   /// Task input
-  final MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput? input;
+  final pulumi.Input<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput>? input;
   /// whether the task can be cloned or not
-  final bool? isCloneable;
+  final pulumi.Input<bool>? isCloneable;
   /// task id
-  final String? taskId;
+  final pulumi.Input<String>? taskId;
   /// Task type.
   /// Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
 
   /// Creates a new [MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties].
   /// [clientData] Key value pairs of client data to attach meta data information to task
@@ -38,7 +39,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties {
     return <String, dynamic>{
       'clientData': ?clientData,
       'createdOn': ?createdOn,
-      'input': ?input == null ? null : input!.toMap(),
+      'input': ?pulumi.Input.mapOptionalInputValue<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput, Map<String, dynamic>>(input, (value) => value.toMap()),
       'isCloneable': ?isCloneable,
       'taskId': ?taskId,
       'taskType': taskType,
@@ -47,12 +48,12 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties {
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties(
-      clientData: map['clientData'] == null ? null : (map['clientData'] as Map).cast<String, String>(),
-      createdOn: map['createdOn'] == null ? null : map['createdOn'] as String,
-      input: map['input'] == null ? null : MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      isCloneable: map['isCloneable'] == null ? null : map['isCloneable'] as bool,
-      taskId: map['taskId'] == null ? null : map['taskId'] as String,
-      taskType: map['taskType'] as String,
+      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
+      createdOn: map['createdOn'] == null ? null : (map['createdOn'] as String).input(),
+      input: map['input'] == null ? null : (MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      isCloneable: map['isCloneable'] == null ? null : (map['isCloneable'] as bool).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

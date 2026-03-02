@@ -22,17 +22,12 @@ class PortfolioState {
   /// [portfolioName] The name of the portfolio
   /// [providerName] The provider name of the portfolio
   PortfolioState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? portfolioArn,
-    pulumi.Output<String>? portfolioName,
-    pulumi.Output<String>? providerName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      portfolioArn = pulumi.Input.asOptionalInput<String>(portfolioArn),
-      portfolioName = pulumi.Input.asOptionalInput<String>(portfolioName),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName);
+    this.createTime,
+    this.description,
+    this.portfolioArn,
+    this.portfolioName,
+    this.providerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class PortfolioState {
 
   factory PortfolioState.fromMap(Map<String, dynamic> map) {
     return PortfolioState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      portfolioArn: map['portfolioArn'] == null ? null : pulumi.Output.create<String>(map['portfolioArn'] as String),
-      portfolioName: map['portfolioName'] == null ? null : pulumi.Output.create<String>(map['portfolioName'] as String),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      portfolioArn: map['portfolioArn'] == null ? null : (map['portfolioArn'] as String).input(),
+      portfolioName: map['portfolioName'] == null ? null : (map['portfolioName'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
     );
   }
 }

@@ -20,15 +20,11 @@ class IamAuditConfigState {
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   IamAuditConfigState({
-    pulumi.Output<List<IamAuditConfigAuditLogConfig>>? auditLogConfigs,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? folder,
-    pulumi.Output<String>? service,
-  }) :
-      auditLogConfigs = pulumi.Input.asOptionalInput<List<IamAuditConfigAuditLogConfig>>(auditLogConfigs),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.auditLogConfigs,
+    this.etag,
+    this.folder,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class IamAuditConfigState {
 
   factory IamAuditConfigState.fromMap(Map<String, dynamic> map) {
     return IamAuditConfigState(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Output.create<List<IamAuditConfigAuditLogConfig>>(pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

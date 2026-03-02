@@ -26,15 +26,11 @@ class KeyRingImportJobArgs {
   /// [keyRing] The KeyRing that this import job belongs to.
   /// [protectionLevel] The protection level of the ImportJob. This must match the protectionLevel of the
   KeyRingImportJobArgs({
-    required pulumi.Output<String> importJobId,
-    required pulumi.Output<String> importMethod,
-    required pulumi.Output<String> keyRing,
-    required pulumi.Output<String> protectionLevel,
-  }) :
-      importJobId = pulumi.Input.asInput<String>(importJobId),
-      importMethod = pulumi.Input.asInput<String>(importMethod),
-      keyRing = pulumi.Input.asInput<String>(keyRing),
-      protectionLevel = pulumi.Input.asInput<String>(protectionLevel);
+    required this.importJobId,
+    required this.importMethod,
+    required this.keyRing,
+    required this.protectionLevel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class KeyRingImportJobArgs {
 
   factory KeyRingImportJobArgs.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobArgs(
-      importJobId: pulumi.Output.create<String>(map['importJobId'] as String),
-      importMethod: pulumi.Output.create<String>(map['importMethod'] as String),
-      keyRing: pulumi.Output.create<String>(map['keyRing'] as String),
-      protectionLevel: pulumi.Output.create<String>(map['protectionLevel'] as String),
+      importJobId: (map['importJobId'] as String).input(),
+      importMethod: (map['importMethod'] as String).input(),
+      keyRing: (map['keyRing'] as String).input(),
+      protectionLevel: (map['protectionLevel'] as String).input(),
     );
   }
 }

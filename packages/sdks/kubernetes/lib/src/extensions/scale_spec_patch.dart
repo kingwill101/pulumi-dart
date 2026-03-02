@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// describes the attributes of a scale subresource
 class ScaleSpecPatch {
   /// desired number of instances for the scaled object.
-  final int? replicas;
+  final pulumi.Input<int>? replicas;
 
   /// Creates a new [ScaleSpecPatch].
   /// [replicas] desired number of instances for the scaled object.
@@ -20,7 +21,7 @@ class ScaleSpecPatch {
 
   factory ScaleSpecPatch.fromMap(Map<String, dynamic> map) {
     return ScaleSpecPatch(
-      replicas: map['replicas'] == null ? null : map['replicas'] as int,
+      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
     );
   }
 }

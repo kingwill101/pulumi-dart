@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
 class LivenessCheckResponseAppengineV1beta {
   /// Interval between health checks.
-  final String checkInterval;
+  final pulumi.Input<String> checkInterval;
   /// Number of consecutive failed checks required before considering the VM unhealthy.
-  final int failureThreshold;
+  final pulumi.Input<int> failureThreshold;
   /// Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com"
-  final String host;
+  final pulumi.Input<String> host;
   /// The initial delay before starting to execute the checks.
-  final String initialDelay;
+  final pulumi.Input<String> initialDelay;
   /// The request path.
-  final String path;
+  final pulumi.Input<String> path;
   /// Number of consecutive successful checks required before considering the VM healthy.
-  final int successThreshold;
+  final pulumi.Input<int> successThreshold;
   /// Time before the check is considered failed.
-  final String timeout;
+  final pulumi.Input<String> timeout;
 
   /// Creates a new [LivenessCheckResponseAppengineV1beta].
   /// [checkInterval] Interval between health checks.
@@ -50,13 +51,13 @@ class LivenessCheckResponseAppengineV1beta {
 
   factory LivenessCheckResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return LivenessCheckResponseAppengineV1beta(
-      checkInterval: map['checkInterval'] as String,
-      failureThreshold: map['failureThreshold'] as int,
-      host: map['host'] as String,
-      initialDelay: map['initialDelay'] as String,
-      path: map['path'] as String,
-      successThreshold: map['successThreshold'] as int,
-      timeout: map['timeout'] as String,
+      checkInterval: (map['checkInterval'] as String).input(),
+      failureThreshold: (map['failureThreshold'] as int).input(),
+      host: (map['host'] as String).input(),
+      initialDelay: (map['initialDelay'] as String).input(),
+      path: (map['path'] as String).input(),
+      successThreshold: (map['successThreshold'] as int).input(),
+      timeout: (map['timeout'] as String).input(),
     );
   }
 }

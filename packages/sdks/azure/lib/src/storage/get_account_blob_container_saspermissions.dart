@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountBlobContainerSASPermissions {
   /// Should Add permissions be enabled for this SAS?
-  final bool add;
+  final pulumi.Input<bool> add;
   /// Should Create permissions be enabled for this SAS?
-  final bool create;
+  final pulumi.Input<bool> create;
   /// Should Delete permissions be enabled for this SAS?
-  final bool delete;
+  final pulumi.Input<bool> delete;
   /// Should List permissions be enabled for this SAS?
   ///
   /// Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/storageservices/create-service-sas)
   /// for additional details on the fields above.
-  final bool list;
+  final pulumi.Input<bool> list;
   /// Should Read permissions be enabled for this SAS?
-  final bool read;
+  final pulumi.Input<bool> read;
   /// Should Write permissions be enabled for this SAS?
-  final bool write;
+  final pulumi.Input<bool> write;
 
   /// Creates a new [GetAccountBlobContainerSASPermissions].
   /// [add] Should Add permissions be enabled for this SAS?
@@ -47,12 +48,12 @@ class GetAccountBlobContainerSASPermissions {
 
   factory GetAccountBlobContainerSASPermissions.fromMap(Map<String, dynamic> map) {
     return GetAccountBlobContainerSASPermissions(
-      add: map['add'] as bool,
-      create: map['create'] as bool,
-      delete: map['delete'] as bool,
-      list: map['list'] as bool,
-      read: map['read'] as bool,
-      write: map['write'] as bool,
+      add: (map['add'] as bool).input(),
+      create: (map['create'] as bool).input(),
+      delete: (map['delete'] as bool).input(),
+      list: (map['list'] as bool).input(),
+      read: (map['read'] as bool).input(),
+      write: (map['write'] as bool).input(),
     );
   }
 }

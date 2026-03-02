@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_stage_target_channel_target_info.dart';
 import 'plan_stage_target_contact_target_info.dart';
 
 class PlanStageTarget {
   /// A configuration block for specifying information about the contact channel that Incident Manager engages. See Channel Target Info for more details.
-  final PlanStageTargetChannelTargetInfo? channelTargetInfo;
+  final pulumi.Input<PlanStageTargetChannelTargetInfo>? channelTargetInfo;
   /// A configuration block for specifying information about the contact that Incident Manager engages. See Contact Target Info for more details.
-  final PlanStageTargetContactTargetInfo? contactTargetInfo;
+  final pulumi.Input<PlanStageTargetContactTargetInfo>? contactTargetInfo;
 
   /// Creates a new [PlanStageTarget].
   /// [channelTargetInfo] A configuration block for specifying information about the contact channel that Incident Manager engages. See Channel Target Info for more details.
@@ -19,15 +20,15 @@ class PlanStageTarget {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channelTargetInfo': ?channelTargetInfo == null ? null : channelTargetInfo!.toMap(),
-      'contactTargetInfo': ?contactTargetInfo == null ? null : contactTargetInfo!.toMap(),
+      'channelTargetInfo': ?pulumi.Input.mapOptionalInputValue<PlanStageTargetChannelTargetInfo, Map<String, dynamic>>(channelTargetInfo, (value) => value.toMap()),
+      'contactTargetInfo': ?pulumi.Input.mapOptionalInputValue<PlanStageTargetContactTargetInfo, Map<String, dynamic>>(contactTargetInfo, (value) => value.toMap()),
     };
   }
 
   factory PlanStageTarget.fromMap(Map<String, dynamic> map) {
     return PlanStageTarget(
-      channelTargetInfo: map['channelTargetInfo'] == null ? null : PlanStageTargetChannelTargetInfo.fromMap((map['channelTargetInfo'] as Map).cast<String, dynamic>()),
-      contactTargetInfo: map['contactTargetInfo'] == null ? null : PlanStageTargetContactTargetInfo.fromMap((map['contactTargetInfo'] as Map).cast<String, dynamic>()),
+      channelTargetInfo: map['channelTargetInfo'] == null ? null : (PlanStageTargetChannelTargetInfo.fromMap((map['channelTargetInfo'] as Map).cast<String, dynamic>())).input(),
+      contactTargetInfo: map['contactTargetInfo'] == null ? null : (PlanStageTargetContactTargetInfo.fromMap((map['contactTargetInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

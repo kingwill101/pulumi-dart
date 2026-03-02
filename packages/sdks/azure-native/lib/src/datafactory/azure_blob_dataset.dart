@@ -10,36 +10,36 @@ import 'parameter_specification.dart';
 /// The Azure Blob storage.
 class AzureBlobDataset {
   /// List of tags that can be used for describing the Dataset.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The data compression method used for the blob storage.
-  final DatasetCompression? compression;
+  final pulumi.Input<DatasetCompression>? compression;
   /// Dataset description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name of the Azure Blob. Type: string (or Expression with resultType string).
-  final dynamic fileName;
+  final pulumi.Input<dynamic>? fileName;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final DatasetFolder? folder;
+  final pulumi.Input<DatasetFolder>? folder;
   /// The path of the Azure Blob storage. Type: string (or Expression with resultType string).
-  final dynamic folderPath;
+  final pulumi.Input<dynamic>? folderPath;
   /// The format of the Azure Blob storage.
-  final AvroFormat? format;
+  final pulumi.Input<AvroFormat>? format;
   /// Linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The end of Azure Blob's modified datetime. Type: string (or Expression with resultType string).
-  final dynamic modifiedDatetimeEnd;
+  final pulumi.Input<dynamic>? modifiedDatetimeEnd;
   /// The start of Azure Blob's modified datetime. Type: string (or Expression with resultType string).
-  final dynamic modifiedDatetimeStart;
+  final pulumi.Input<dynamic>? modifiedDatetimeStart;
   /// Parameters for dataset.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-  final dynamic structure;
+  final pulumi.Input<dynamic>? structure;
   /// The root of blob path. Type: string (or Expression with resultType string).
-  final dynamic tableRootLocation;
+  final pulumi.Input<dynamic>? tableRootLocation;
   /// Type of dataset.
   /// Expected value is 'AzureBlob'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AzureBlobDataset].
   /// [annotations] List of tags that can be used for describing the Dataset.
@@ -78,16 +78,16 @@ class AzureBlobDataset {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'compression': ?compression == null ? null : compression!.toMap(),
+      'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompression, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
       'fileName': ?fileName,
-      'folder': ?folder == null ? null : folder!.toMap(),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'folderPath': ?folderPath,
-      'format': ?format == null ? null : format!.toMap(),
-      'linkedServiceName': linkedServiceName.toMap(),
+      'format': ?pulumi.Input.mapOptionalInputValue<AvroFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'modifiedDatetimeEnd': ?modifiedDatetimeEnd,
       'modifiedDatetimeStart': ?modifiedDatetimeStart,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schema': ?schema,
       'structure': ?structure,
       'tableRootLocation': ?tableRootLocation,
@@ -97,21 +97,21 @@ class AzureBlobDataset {
 
   factory AzureBlobDataset.fromMap(Map<String, dynamic> map) {
     return AzureBlobDataset(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      compression: map['compression'] == null ? null : DatasetCompression.fromMap((map['compression'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      fileName: map['fileName'] == null ? null : map['fileName'],
-      folder: map['folder'] == null ? null : DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
-      folderPath: map['folderPath'] == null ? null : map['folderPath'],
-      format: map['format'] == null ? null : AvroFormat.fromMap((map['format'] as Map).cast<String, dynamic>()),
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : map['modifiedDatetimeEnd'],
-      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : map['modifiedDatetimeStart'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      schema: map['schema'] == null ? null : map['schema'],
-      structure: map['structure'] == null ? null : map['structure'],
-      tableRootLocation: map['tableRootLocation'] == null ? null : map['tableRootLocation'],
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      compression: map['compression'] == null ? null : (DatasetCompression.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
+      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      format: map['format'] == null ? null : (AvroFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']).input(),
+      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      structure: map['structure'] == null ? null : (map['structure']).input(),
+      tableRootLocation: map['tableRootLocation'] == null ? null : (map['tableRootLocation']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

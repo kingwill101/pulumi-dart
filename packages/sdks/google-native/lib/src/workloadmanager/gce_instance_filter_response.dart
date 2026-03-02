@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message describing compute engine instance filter
 class GceInstanceFilterResponse {
   /// Service account of compute engine
-  final List<String> serviceAccounts;
+  final pulumi.Input<List<String>> serviceAccounts;
 
   /// Creates a new [GceInstanceFilterResponse].
   /// [serviceAccounts] Service account of compute engine
@@ -20,7 +21,7 @@ class GceInstanceFilterResponse {
 
   factory GceInstanceFilterResponse.fromMap(Map<String, dynamic> map) {
     return GceInstanceFilterResponse(
-      serviceAccounts: (map['serviceAccounts'] as List).cast<String>(),
+      serviceAccounts: ((map['serviceAccounts'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IntegrationRuntimeSsisPipelineExternalComputeScale {
   /// Specifies the number of the external nodes, which should be greater than `0` and less than `11`.
-  final int? numberOfExternalNodes;
+  final pulumi.Input<int>? numberOfExternalNodes;
   /// Specifies the number of the pipeline nodes, which should be greater than `0` and less than `11`.
-  final int? numberOfPipelineNodes;
+  final pulumi.Input<int>? numberOfPipelineNodes;
   /// Specifies the time to live (in minutes) setting of integration runtime which will execute copy activity. Possible values are at least `5`.
-  final int? timeToLive;
+  final pulumi.Input<int>? timeToLive;
 
   /// Creates a new [IntegrationRuntimeSsisPipelineExternalComputeScale].
   /// [numberOfExternalNodes] Specifies the number of the external nodes, which should be greater than `0` and less than `11`.
@@ -29,9 +30,9 @@ class IntegrationRuntimeSsisPipelineExternalComputeScale {
 
   factory IntegrationRuntimeSsisPipelineExternalComputeScale.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisPipelineExternalComputeScale(
-      numberOfExternalNodes: map['numberOfExternalNodes'] == null ? null : map['numberOfExternalNodes'] as int,
-      numberOfPipelineNodes: map['numberOfPipelineNodes'] == null ? null : map['numberOfPipelineNodes'] as int,
-      timeToLive: map['timeToLive'] == null ? null : map['timeToLive'] as int,
+      numberOfExternalNodes: map['numberOfExternalNodes'] == null ? null : (map['numberOfExternalNodes'] as int).input(),
+      numberOfPipelineNodes: map['numberOfPipelineNodes'] == null ? null : (map['numberOfPipelineNodes'] as int).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
     );
   }
 }

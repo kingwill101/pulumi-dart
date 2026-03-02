@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The environment variable to pass to the script in the container instance.
 class EnvironmentVariable {
   /// The name of the environment variable.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the secure environment variable.
-  final String? secureValue;
+  final pulumi.Input<String>? secureValue;
   /// The value of the environment variable.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [EnvironmentVariable].
   /// [name] The name of the environment variable.
@@ -30,9 +31,9 @@ class EnvironmentVariable {
 
   factory EnvironmentVariable.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariable(
-      name: map['name'] as String,
-      secureValue: map['secureValue'] == null ? null : map['secureValue'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: (map['name'] as String).input(),
+      secureValue: map['secureValue'] == null ? null : (map['secureValue'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

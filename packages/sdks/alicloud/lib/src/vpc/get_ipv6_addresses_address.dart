@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpv6AddressesAddress {
   /// The ID of the instance that is assigned the IPv6 address.
-  final String associatedInstanceId;
+  final pulumi.Input<String> associatedInstanceId;
   /// The type of the instance that is assigned the IPv6 address.
-  final String associatedInstanceType;
+  final pulumi.Input<String> associatedInstanceType;
   /// The time when the IPv6 address was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Ipv6 Address.
-  final String id;
+  final pulumi.Input<String> id;
   /// The address of the Ipv6 Address.
-  final String ipv6Address;
+  final pulumi.Input<String> ipv6Address;
   /// The ID of the IPv6 address.
-  final String ipv6AddressId;
+  final pulumi.Input<String> ipv6AddressId;
   /// The name of the IPv6 address.
-  final String ipv6AddressName;
+  final pulumi.Input<String> ipv6AddressName;
   /// The ID of the IPv6 gateway to which the IPv6 address belongs.
-  final String ipv6GatewayId;
+  final pulumi.Input<String> ipv6GatewayId;
   /// The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The status of the IPv6 address. Valid values:`Pending` or `Available`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the VPC to which the IPv6 address belongs.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of the vSwitch to which the IPv6 address belongs.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetIpv6AddressesAddress].
   /// [associatedInstanceId] The ID of the instance that is assigned the IPv6 address.
@@ -74,18 +75,18 @@ class GetIpv6AddressesAddress {
 
   factory GetIpv6AddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetIpv6AddressesAddress(
-      associatedInstanceId: map['associatedInstanceId'] as String,
-      associatedInstanceType: map['associatedInstanceType'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      ipv6Address: map['ipv6Address'] as String,
-      ipv6AddressId: map['ipv6AddressId'] as String,
-      ipv6AddressName: map['ipv6AddressName'] as String,
-      ipv6GatewayId: map['ipv6GatewayId'] as String,
-      networkType: map['networkType'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      associatedInstanceId: (map['associatedInstanceId'] as String).input(),
+      associatedInstanceType: (map['associatedInstanceType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipv6Address: (map['ipv6Address'] as String).input(),
+      ipv6AddressId: (map['ipv6AddressId'] as String).input(),
+      ipv6AddressName: (map['ipv6AddressName'] as String).input(),
+      ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

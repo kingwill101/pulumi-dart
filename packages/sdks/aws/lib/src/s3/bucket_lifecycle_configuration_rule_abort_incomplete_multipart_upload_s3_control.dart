@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control {
   /// Number of days after which Amazon S3 aborts an incomplete multipart upload.
-  final int daysAfterInitiation;
+  final pulumi.Input<int> daysAfterInitiation;
 
   /// Creates a new [BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control].
   /// [daysAfterInitiation] Number of days after which Amazon S3 aborts an incomplete multipart upload.
@@ -19,7 +20,7 @@ class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control {
 
   factory BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control(
-      daysAfterInitiation: map['daysAfterInitiation'] as int,
+      daysAfterInitiation: (map['daysAfterInitiation'] as int).input(),
     );
   }
 }

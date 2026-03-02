@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackupPoliciesPolicy {
   /// The ID of the anti-ransomware policy.
-  final int backupPolicyId;
+  final pulumi.Input<int> backupPolicyId;
   /// The name of the anti-ransomware policy.
-  final String backupPolicyName;
+  final pulumi.Input<String> backupPolicyName;
   /// The ID of the anti-ransomware policy.
-  final int id;
+  final pulumi.Input<int> id;
   /// The configurations of the anti-ransomware policy.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// The ID of the region that you specified for data backup when you installed the anti-ransomware agent for the server not deployed on Alibaba Cloud.
-  final String policyRegionId;
+  final pulumi.Input<String> policyRegionId;
   /// The version of the anti-ransomware policy.
-  final String policyVersion;
+  final pulumi.Input<String> policyVersion;
   /// The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The UUIDs of the servers to which the anti-ransomware policy is applied.
-  final List<String> uuidLists;
+  final pulumi.Input<List<String>> uuidLists;
 
   /// Creates a new [GetBackupPoliciesPolicy].
   /// [backupPolicyId] The ID of the anti-ransomware policy.
@@ -54,14 +55,14 @@ class GetBackupPoliciesPolicy {
 
   factory GetBackupPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackupPoliciesPolicy(
-      backupPolicyId: map['backupPolicyId'] as int,
-      backupPolicyName: map['backupPolicyName'] as String,
-      id: map['id'] as int,
-      policy: map['policy'] as String,
-      policyRegionId: map['policyRegionId'] as String,
-      policyVersion: map['policyVersion'] as String,
-      status: map['status'] as String,
-      uuidLists: (map['uuidLists'] as List).cast<String>(),
+      backupPolicyId: (map['backupPolicyId'] as int).input(),
+      backupPolicyName: (map['backupPolicyName'] as String).input(),
+      id: (map['id'] as int).input(),
+      policy: (map['policy'] as String).input(),
+      policyRegionId: (map['policyRegionId'] as String).input(),
+      policyVersion: (map['policyVersion'] as String).input(),
+      status: (map['status'] as String).input(),
+      uuidLists: ((map['uuidLists'] as List).cast<String>()).input(),
     );
   }
 }

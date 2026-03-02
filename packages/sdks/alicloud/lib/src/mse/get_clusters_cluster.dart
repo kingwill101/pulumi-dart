@@ -5,49 +5,49 @@ import 'get_clusters_cluster_instance_model.dart';
 
 class GetClustersCluster {
   /// The id of acl.
-  final String aclId;
+  final pulumi.Input<String> aclId;
   /// The version of app.
-  final String appVersion;
+  final pulumi.Input<String> appVersion;
   /// ID of the MSE Cluster.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// ID of the OOS Executions.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The type of MSE Cluster.
-  final String clusterType;
+  final pulumi.Input<String> clusterType;
   /// The num of cpu.
-  final int cpu;
+  final pulumi.Input<int> cpu;
   /// The health status of the instance.
-  final String healthStatus;
+  final pulumi.Input<String> healthStatus;
   /// ID of the MSE Cluster.
-  final String id;
+  final pulumi.Input<String> id;
   /// Time-consuming to create.
-  final int initCostTime;
+  final pulumi.Input<int> initCostTime;
   /// The count of instance.
-  final int instanceCount;
+  final pulumi.Input<int> instanceCount;
   /// ID of the MSE Cluster.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The list of instance nodes.
-  final List<GetClustersClusterInstanceModel> instanceModels;
+  final pulumi.Input<List<GetClustersClusterInstanceModel>> instanceModels;
   /// The address of public network.
-  final String internetAddress;
+  final pulumi.Input<String> internetAddress;
   /// The domain of public network.
-  final String internetDomain;
+  final pulumi.Input<String> internetDomain;
   /// The port of public network.
-  final String internetPort;
+  final pulumi.Input<String> internetPort;
   /// The address of private network.
-  final String intranetAddress;
+  final pulumi.Input<String> intranetAddress;
   /// The domain of private network.
-  final String intranetDomain;
+  final pulumi.Input<String> intranetDomain;
   /// The port of private network.
-  final String intranetPort;
+  final pulumi.Input<String> intranetPort;
   /// The memory size.
-  final int memoryCapacity;
+  final pulumi.Input<int> memoryCapacity;
   /// The type of payment.
-  final String payInfo;
+  final pulumi.Input<String> payInfo;
   /// The public network bandwidth.
-  final String pubNetworkFlow;
+  final pulumi.Input<String> pubNetworkFlow;
   /// The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetClustersCluster].
   /// [aclId] The id of acl.
@@ -110,7 +110,7 @@ class GetClustersCluster {
       'initCostTime': initCostTime,
       'instanceCount': instanceCount,
       'instanceId': instanceId,
-      'instanceModels': pulumi.Input.encodeList<GetClustersClusterInstanceModel, Map<String, dynamic>>(instanceModels, (value) => value.toMap()),
+      'instanceModels': pulumi.Input.mapInputValue<List<GetClustersClusterInstanceModel>, List<Map<String, dynamic>>>(instanceModels, (value) => pulumi.Input.encodeList<GetClustersClusterInstanceModel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'internetAddress': internetAddress,
       'internetDomain': internetDomain,
       'internetPort': internetPort,
@@ -126,28 +126,28 @@ class GetClustersCluster {
 
   factory GetClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetClustersCluster(
-      aclId: map['aclId'] as String,
-      appVersion: map['appVersion'] as String,
-      clusterId: map['clusterId'] as String,
-      clusterName: map['clusterName'] as String,
-      clusterType: map['clusterType'] as String,
-      cpu: map['cpu'] as int,
-      healthStatus: map['healthStatus'] as String,
-      id: map['id'] as String,
-      initCostTime: map['initCostTime'] as int,
-      instanceCount: map['instanceCount'] as int,
-      instanceId: map['instanceId'] as String,
-      instanceModels: pulumi.Input.decodeList<GetClustersClusterInstanceModel>(map['instanceModels'], (value) => GetClustersClusterInstanceModel.fromMap((value as Map).cast<String, dynamic>())),
-      internetAddress: map['internetAddress'] as String,
-      internetDomain: map['internetDomain'] as String,
-      internetPort: map['internetPort'] as String,
-      intranetAddress: map['intranetAddress'] as String,
-      intranetDomain: map['intranetDomain'] as String,
-      intranetPort: map['intranetPort'] as String,
-      memoryCapacity: map['memoryCapacity'] as int,
-      payInfo: map['payInfo'] as String,
-      pubNetworkFlow: map['pubNetworkFlow'] as String,
-      status: map['status'] as String,
+      aclId: (map['aclId'] as String).input(),
+      appVersion: (map['appVersion'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterType: (map['clusterType'] as String).input(),
+      cpu: (map['cpu'] as int).input(),
+      healthStatus: (map['healthStatus'] as String).input(),
+      id: (map['id'] as String).input(),
+      initCostTime: (map['initCostTime'] as int).input(),
+      instanceCount: (map['instanceCount'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceModels: (pulumi.Input.decodeList<GetClustersClusterInstanceModel>(map['instanceModels'], (value) => GetClustersClusterInstanceModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internetAddress: (map['internetAddress'] as String).input(),
+      internetDomain: (map['internetDomain'] as String).input(),
+      internetPort: (map['internetPort'] as String).input(),
+      intranetAddress: (map['intranetAddress'] as String).input(),
+      intranetDomain: (map['intranetDomain'] as String).input(),
+      intranetPort: (map['intranetPort'] as String).input(),
+      memoryCapacity: (map['memoryCapacity'] as int).input(),
+      payInfo: (map['payInfo'] as String).input(),
+      pubNetworkFlow: (map['pubNetworkFlow'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

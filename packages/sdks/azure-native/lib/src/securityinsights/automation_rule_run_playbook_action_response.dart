@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'playbook_action_properties_response.dart';
 
 /// Describes an automation rule action to run a playbook
 class AutomationRuleRunPlaybookActionResponse {
-  final PlaybookActionPropertiesResponse? actionConfiguration;
+  final pulumi.Input<PlaybookActionPropertiesResponse>? actionConfiguration;
   /// The type of the automation rule action.
   /// Expected value is 'RunPlaybook'.
-  final String actionType;
-  final int order;
+  final pulumi.Input<String> actionType;
+  final pulumi.Input<int> order;
 
   /// Creates a new [AutomationRuleRunPlaybookActionResponse].
   /// [actionConfiguration] Optional.
@@ -22,7 +23,7 @@ class AutomationRuleRunPlaybookActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionConfiguration': ?actionConfiguration == null ? null : actionConfiguration!.toMap(),
+      'actionConfiguration': ?pulumi.Input.mapOptionalInputValue<PlaybookActionPropertiesResponse, Map<String, dynamic>>(actionConfiguration, (value) => value.toMap()),
       'actionType': actionType,
       'order': order,
     };
@@ -30,9 +31,9 @@ class AutomationRuleRunPlaybookActionResponse {
 
   factory AutomationRuleRunPlaybookActionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRunPlaybookActionResponse(
-      actionConfiguration: map['actionConfiguration'] == null ? null : PlaybookActionPropertiesResponse.fromMap((map['actionConfiguration'] as Map).cast<String, dynamic>()),
-      actionType: map['actionType'] as String,
-      order: map['order'] as int,
+      actionConfiguration: map['actionConfiguration'] == null ? null : (PlaybookActionPropertiesResponse.fromMap((map['actionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      actionType: (map['actionType'] as String).input(),
+      order: (map['order'] as int).input(),
     );
   }
 }

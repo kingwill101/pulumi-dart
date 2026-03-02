@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Marketplace offer details of Agri solution.
 class MarketPlaceOfferDetailsResponse {
   /// Publisher Id.
-  final String publisherId;
+  final pulumi.Input<String> publisherId;
   /// Saas offer Id.
-  final String saasOfferId;
+  final pulumi.Input<String> saasOfferId;
 
   /// Creates a new [MarketPlaceOfferDetailsResponse].
   /// [publisherId] Publisher Id.
@@ -25,8 +26,8 @@ class MarketPlaceOfferDetailsResponse {
 
   factory MarketPlaceOfferDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MarketPlaceOfferDetailsResponse(
-      publisherId: map['publisherId'] as String,
-      saasOfferId: map['saasOfferId'] as String,
+      publisherId: (map['publisherId'] as String).input(),
+      saasOfferId: (map['saasOfferId'] as String).input(),
     );
   }
 }

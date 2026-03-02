@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_image_scanning_configuration_ecr_configuration.dart';
 
 class ImageImageScanningConfiguration {
   /// Configuration block with ECR configuration. Detailed below.
-  final ImageImageScanningConfigurationEcrConfiguration? ecrConfiguration;
+  final pulumi.Input<ImageImageScanningConfigurationEcrConfiguration>? ecrConfiguration;
   /// Indicates whether Image Builder keeps a snapshot of the vulnerability scans that Amazon Inspector runs against the build instance when you create a new image. Defaults to `false`.
-  final bool? imageScanningEnabled;
+  final pulumi.Input<bool>? imageScanningEnabled;
 
   /// Creates a new [ImageImageScanningConfiguration].
   /// [ecrConfiguration] Configuration block with ECR configuration. Detailed below.
@@ -18,15 +19,15 @@ class ImageImageScanningConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ecrConfiguration': ?ecrConfiguration == null ? null : ecrConfiguration!.toMap(),
+      'ecrConfiguration': ?pulumi.Input.mapOptionalInputValue<ImageImageScanningConfigurationEcrConfiguration, Map<String, dynamic>>(ecrConfiguration, (value) => value.toMap()),
       'imageScanningEnabled': ?imageScanningEnabled,
     };
   }
 
   factory ImageImageScanningConfiguration.fromMap(Map<String, dynamic> map) {
     return ImageImageScanningConfiguration(
-      ecrConfiguration: map['ecrConfiguration'] == null ? null : ImageImageScanningConfigurationEcrConfiguration.fromMap((map['ecrConfiguration'] as Map).cast<String, dynamic>()),
-      imageScanningEnabled: map['imageScanningEnabled'] == null ? null : map['imageScanningEnabled'] as bool,
+      ecrConfiguration: map['ecrConfiguration'] == null ? null : (ImageImageScanningConfigurationEcrConfiguration.fromMap((map['ecrConfiguration'] as Map).cast<String, dynamic>())).input(),
+      imageScanningEnabled: map['imageScanningEnabled'] == null ? null : (map['imageScanningEnabled'] as bool).input(),
     );
   }
 }

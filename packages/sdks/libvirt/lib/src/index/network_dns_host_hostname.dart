@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkDnsHostHostname {
   /// Sets the value of each hostname in the DNS configuration, allowing for individual identification.
-  final String hostname;
+  final pulumi.Input<String> hostname;
 
   /// Creates a new [NetworkDnsHostHostname].
   /// [hostname] Sets the value of each hostname in the DNS configuration, allowing for individual identification.
@@ -19,7 +20,7 @@ class NetworkDnsHostHostname {
 
   factory NetworkDnsHostHostname.fromMap(Map<String, dynamic> map) {
     return NetworkDnsHostHostname(
-      hostname: map['hostname'] as String,
+      hostname: (map['hostname'] as String).input(),
     );
   }
 }

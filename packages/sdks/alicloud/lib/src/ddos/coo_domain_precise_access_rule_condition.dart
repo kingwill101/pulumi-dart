@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CooDomainPreciseAccessRuleCondition {
   /// Matching content.
-  final String content;
+  final pulumi.Input<String> content;
   /// Matching field.
-  final String field;
+  final pulumi.Input<String> field;
   /// Custom HTTP header field name.
   ///
   /// > **NOTE:**  Valid only when `Field` is `header`.
-  final String? headerName;
+  final pulumi.Input<String>? headerName;
   /// Matching method.
-  final String matchMethod;
+  final pulumi.Input<String> matchMethod;
 
   /// Creates a new [CooDomainPreciseAccessRuleCondition].
   /// [content] Matching content.
@@ -36,10 +37,10 @@ class CooDomainPreciseAccessRuleCondition {
 
   factory CooDomainPreciseAccessRuleCondition.fromMap(Map<String, dynamic> map) {
     return CooDomainPreciseAccessRuleCondition(
-      content: map['content'] as String,
-      field: map['field'] as String,
-      headerName: map['headerName'] == null ? null : map['headerName'] as String,
-      matchMethod: map['matchMethod'] as String,
+      content: (map['content'] as String).input(),
+      field: (map['field'] as String).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
+      matchMethod: (map['matchMethod'] as String).input(),
     );
   }
 }

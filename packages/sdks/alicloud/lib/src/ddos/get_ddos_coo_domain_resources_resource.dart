@@ -5,41 +5,41 @@ import 'get_ddos_coo_domain_resources_resource_proxy_type.dart';
 
 class GetDdosCooDomainResourcesResource {
   /// The IP addresses in the blacklist for the domain name.
-  final List<String> blackLists;
+  final pulumi.Input<List<String>> blackLists;
   /// Whether frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
-  final bool ccEnabled;
+  final pulumi.Input<bool> ccEnabled;
   /// Whether custom frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
-  final bool ccRuleEnabled;
+  final pulumi.Input<bool> ccRuleEnabled;
   /// The mode of the Frequency Control policy.
-  final String ccTemplate;
+  final pulumi.Input<String> ccTemplate;
   /// The name of the certificate.
-  final String certName;
+  final pulumi.Input<String> certName;
   /// The domain name of the website that you want to add to the instance.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// Whether Http2.0 is enabled.
-  final bool http2Enable;
+  final pulumi.Input<bool> http2Enable;
   /// The advanced HTTPS settings.
-  final String httpsExt;
+  final pulumi.Input<String> httpsExt;
   /// The ID of the Domain Resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// A ID list of Ddoscoo instance.
-  final List<String> instanceIds;
+  final pulumi.Input<List<String>> instanceIds;
   /// The type of backload algorithm.
-  final String policyMode;
+  final pulumi.Input<String> policyMode;
   /// Whether the website service forwarding rules have been turned on.
-  final bool proxyEnabled;
+  final pulumi.Input<bool> proxyEnabled;
   /// Protocol type and port number information.
-  final List<GetDdosCooDomainResourcesResourceProxyType> proxyTypes;
+  final pulumi.Input<List<GetDdosCooDomainResourcesResourceProxyType>> proxyTypes;
   /// Server address information of the source station.
-  final List<String> realServers;
+  final pulumi.Input<List<String>> realServers;
   /// Server address type.
-  final int rsType;
+  final pulumi.Input<int> rsType;
   /// The type of the cipher suite.
-  final String sslCiphers;
+  final pulumi.Input<String> sslCiphers;
   /// The version of the TLS protocol.
-  final String sslProtocols;
+  final pulumi.Input<String> sslProtocols;
   /// The IP addresses in the whitelist for the domain name.
-  final List<String> whiteLists;
+  final pulumi.Input<List<String>> whiteLists;
 
   /// Creates a new [GetDdosCooDomainResourcesResource].
   /// [blackLists] The IP addresses in the blacklist for the domain name.
@@ -95,7 +95,7 @@ class GetDdosCooDomainResourcesResource {
       'instanceIds': instanceIds,
       'policyMode': policyMode,
       'proxyEnabled': proxyEnabled,
-      'proxyTypes': pulumi.Input.encodeList<GetDdosCooDomainResourcesResourceProxyType, Map<String, dynamic>>(proxyTypes, (value) => value.toMap()),
+      'proxyTypes': pulumi.Input.mapInputValue<List<GetDdosCooDomainResourcesResourceProxyType>, List<Map<String, dynamic>>>(proxyTypes, (value) => pulumi.Input.encodeList<GetDdosCooDomainResourcesResourceProxyType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'realServers': realServers,
       'rsType': rsType,
       'sslCiphers': sslCiphers,
@@ -106,24 +106,24 @@ class GetDdosCooDomainResourcesResource {
 
   factory GetDdosCooDomainResourcesResource.fromMap(Map<String, dynamic> map) {
     return GetDdosCooDomainResourcesResource(
-      blackLists: (map['blackLists'] as List).cast<String>(),
-      ccEnabled: map['ccEnabled'] as bool,
-      ccRuleEnabled: map['ccRuleEnabled'] as bool,
-      ccTemplate: map['ccTemplate'] as String,
-      certName: map['certName'] as String,
-      domain: map['domain'] as String,
-      http2Enable: map['http2Enable'] as bool,
-      httpsExt: map['httpsExt'] as String,
-      id: map['id'] as String,
-      instanceIds: (map['instanceIds'] as List).cast<String>(),
-      policyMode: map['policyMode'] as String,
-      proxyEnabled: map['proxyEnabled'] as bool,
-      proxyTypes: pulumi.Input.decodeList<GetDdosCooDomainResourcesResourceProxyType>(map['proxyTypes'], (value) => GetDdosCooDomainResourcesResourceProxyType.fromMap((value as Map).cast<String, dynamic>())),
-      realServers: (map['realServers'] as List).cast<String>(),
-      rsType: map['rsType'] as int,
-      sslCiphers: map['sslCiphers'] as String,
-      sslProtocols: map['sslProtocols'] as String,
-      whiteLists: (map['whiteLists'] as List).cast<String>(),
+      blackLists: ((map['blackLists'] as List).cast<String>()).input(),
+      ccEnabled: (map['ccEnabled'] as bool).input(),
+      ccRuleEnabled: (map['ccRuleEnabled'] as bool).input(),
+      ccTemplate: (map['ccTemplate'] as String).input(),
+      certName: (map['certName'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      http2Enable: (map['http2Enable'] as bool).input(),
+      httpsExt: (map['httpsExt'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
+      policyMode: (map['policyMode'] as String).input(),
+      proxyEnabled: (map['proxyEnabled'] as bool).input(),
+      proxyTypes: (pulumi.Input.decodeList<GetDdosCooDomainResourcesResourceProxyType>(map['proxyTypes'], (value) => GetDdosCooDomainResourcesResourceProxyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      realServers: ((map['realServers'] as List).cast<String>()).input(),
+      rsType: (map['rsType'] as int).input(),
+      sslCiphers: (map['sslCiphers'] as String).input(),
+      sslProtocols: (map['sslProtocols'] as String).input(),
+      whiteLists: ((map['whiteLists'] as List).cast<String>()).input(),
     );
   }
 }

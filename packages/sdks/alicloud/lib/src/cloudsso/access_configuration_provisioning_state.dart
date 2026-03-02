@@ -22,17 +22,12 @@ class AccessConfigurationProvisioningState {
   /// [targetId] The ID of the target to create the resource range.
   /// [targetType] The type of the resource range target to be accessed. Valid values: `RD-Account`.
   AccessConfigurationProvisioningState({
-    pulumi.Output<String>? accessConfigurationId,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? targetId,
-    pulumi.Output<String>? targetType,
-  }) :
-      accessConfigurationId = pulumi.Input.asOptionalInput<String>(accessConfigurationId),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType);
+    this.accessConfigurationId,
+    this.directoryId,
+    this.status,
+    this.targetId,
+    this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class AccessConfigurationProvisioningState {
 
   factory AccessConfigurationProvisioningState.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationProvisioningState(
-      accessConfigurationId: map['accessConfigurationId'] == null ? null : pulumi.Output.create<String>(map['accessConfigurationId'] as String),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

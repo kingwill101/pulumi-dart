@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataflowEndpoint Authentication X509 properties
 class DataflowEndpointAuthenticationX509Response {
   /// Secret reference of the X.509 certificate.
-  final String secretRef;
+  final pulumi.Input<String> secretRef;
 
   /// Creates a new [DataflowEndpointAuthenticationX509Response].
   /// [secretRef] Secret reference of the X.509 certificate.
@@ -20,7 +21,7 @@ class DataflowEndpointAuthenticationX509Response {
 
   factory DataflowEndpointAuthenticationX509Response.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointAuthenticationX509Response(
-      secretRef: map['secretRef'] as String,
+      secretRef: (map['secretRef'] as String).input(),
     );
   }
 }

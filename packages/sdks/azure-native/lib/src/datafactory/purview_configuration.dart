@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Purview configuration.
 class PurviewConfiguration {
   /// Purview resource id.
-  final String? purviewResourceId;
+  final pulumi.Input<String>? purviewResourceId;
 
   /// Creates a new [PurviewConfiguration].
   /// [purviewResourceId] Purview resource id.
@@ -20,7 +21,7 @@ class PurviewConfiguration {
 
   factory PurviewConfiguration.fromMap(Map<String, dynamic> map) {
     return PurviewConfiguration(
-      purviewResourceId: map['purviewResourceId'] == null ? null : map['purviewResourceId'] as String,
+      purviewResourceId: map['purviewResourceId'] == null ? null : (map['purviewResourceId'] as String).input(),
     );
   }
 }

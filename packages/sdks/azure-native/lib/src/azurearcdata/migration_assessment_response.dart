@@ -7,13 +7,13 @@ import 'sku_recommendation_results_response.dart';
 /// The migration assessment related configuration.
 class MigrationAssessmentResponse {
   /// The time when Migration Assessment Report upload was last performed.
-  final String assessmentUploadTime;
+  final pulumi.Input<String> assessmentUploadTime;
   /// Indicates if migration assessment is enabled for this SQL Server instance.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target.
-  final List<MigrationAssessmentResponseServerAssessments> serverAssessments;
+  final pulumi.Input<List<MigrationAssessmentResponseServerAssessments>> serverAssessments;
   /// SKU Recommendation results for Azure migration targets for SQL Server.
-  final SkuRecommendationResultsResponse skuRecommendationResults;
+  final pulumi.Input<SkuRecommendationResultsResponse> skuRecommendationResults;
 
   /// Creates a new [MigrationAssessmentResponse].
   /// [assessmentUploadTime] The time when Migration Assessment Report upload was last performed.
@@ -31,17 +31,17 @@ class MigrationAssessmentResponse {
     return <String, dynamic>{
       'assessmentUploadTime': assessmentUploadTime,
       'enabled': ?enabled,
-      'serverAssessments': pulumi.Input.encodeList<MigrationAssessmentResponseServerAssessments, Map<String, dynamic>>(serverAssessments, (value) => value.toMap()),
-      'skuRecommendationResults': skuRecommendationResults.toMap(),
+      'serverAssessments': pulumi.Input.mapInputValue<List<MigrationAssessmentResponseServerAssessments>, List<Map<String, dynamic>>>(serverAssessments, (value) => pulumi.Input.encodeList<MigrationAssessmentResponseServerAssessments, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'skuRecommendationResults': pulumi.Input.mapInputValue<SkuRecommendationResultsResponse, Map<String, dynamic>>(skuRecommendationResults, (value) => value.toMap()),
     };
   }
 
   factory MigrationAssessmentResponse.fromMap(Map<String, dynamic> map) {
     return MigrationAssessmentResponse(
-      assessmentUploadTime: map['assessmentUploadTime'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      serverAssessments: pulumi.Input.decodeList<MigrationAssessmentResponseServerAssessments>(map['serverAssessments'], (value) => MigrationAssessmentResponseServerAssessments.fromMap((value as Map).cast<String, dynamic>())),
-      skuRecommendationResults: SkuRecommendationResultsResponse.fromMap((map['skuRecommendationResults'] as Map).cast<String, dynamic>()),
+      assessmentUploadTime: (map['assessmentUploadTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      serverAssessments: (pulumi.Input.decodeList<MigrationAssessmentResponseServerAssessments>(map['serverAssessments'], (value) => MigrationAssessmentResponseServerAssessments.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      skuRecommendationResults: (SkuRecommendationResultsResponse.fromMap((map['skuRecommendationResults'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

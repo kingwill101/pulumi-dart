@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The policy used for monitoring the application upgrade
 class RollingUpgradeMonitoringPolicyResponse {
   /// The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode.
-  final String failureAction;
+  final pulumi.Input<String> failureAction;
   /// The amount of time to retry health evaluation when the application or cluster is unhealthy before FailureAction is executed. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
-  final String healthCheckRetryTimeout;
+  final pulumi.Input<String> healthCheckRetryTimeout;
   /// The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
-  final String healthCheckStableDuration;
+  final pulumi.Input<String> healthCheckStableDuration;
   /// The amount of time to wait after completing an upgrade domain before applying health policies. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
-  final String healthCheckWaitDuration;
+  final pulumi.Input<String> healthCheckWaitDuration;
   /// The amount of time each upgrade domain has to complete before FailureAction is executed. Cannot be larger than 12 hours. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
-  final String upgradeDomainTimeout;
+  final pulumi.Input<String> upgradeDomainTimeout;
   /// The amount of time the overall upgrade has to complete before FailureAction is executed. Cannot be larger than 12 hours. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
-  final String upgradeTimeout;
+  final pulumi.Input<String> upgradeTimeout;
 
   /// Creates a new [RollingUpgradeMonitoringPolicyResponse].
   /// [failureAction] The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode.
@@ -45,12 +46,12 @@ class RollingUpgradeMonitoringPolicyResponse {
 
   factory RollingUpgradeMonitoringPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RollingUpgradeMonitoringPolicyResponse(
-      failureAction: map['failureAction'] as String,
-      healthCheckRetryTimeout: map['healthCheckRetryTimeout'] as String,
-      healthCheckStableDuration: map['healthCheckStableDuration'] as String,
-      healthCheckWaitDuration: map['healthCheckWaitDuration'] as String,
-      upgradeDomainTimeout: map['upgradeDomainTimeout'] as String,
-      upgradeTimeout: map['upgradeTimeout'] as String,
+      failureAction: (map['failureAction'] as String).input(),
+      healthCheckRetryTimeout: (map['healthCheckRetryTimeout'] as String).input(),
+      healthCheckStableDuration: (map['healthCheckStableDuration'] as String).input(),
+      healthCheckWaitDuration: (map['healthCheckWaitDuration'] as String).input(),
+      upgradeDomainTimeout: (map['upgradeDomainTimeout'] as String).input(),
+      upgradeTimeout: (map['upgradeTimeout'] as String).input(),
     );
   }
 }

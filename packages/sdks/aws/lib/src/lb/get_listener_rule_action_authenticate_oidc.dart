@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleActionAuthenticateOidc {
   /// Set of additional parameters for the request.
   /// Detailed below.
-  final Map<String, String> authenticationRequestExtraParams;
+  final pulumi.Input<Map<String, String>> authenticationRequestExtraParams;
   /// The authorization endpoint of the IdP.
-  final String authorizationEndpoint;
+  final pulumi.Input<String> authorizationEndpoint;
   /// OAuth 2.0 client identifier.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Issuer of the JWT.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// Behavior when the client is not authenticated.
-  final String onUnauthenticatedRequest;
+  final pulumi.Input<String> onUnauthenticatedRequest;
   /// Set of user claims requested.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// Name of the cookie used to maintain session information.
-  final String sessionCookieName;
+  final pulumi.Input<String> sessionCookieName;
   /// Maximum duration of the authentication session in seconds.
-  final int sessionTimeout;
+  final pulumi.Input<int> sessionTimeout;
   /// The token endpoint of the IdP.
-  final String tokenEndpoint;
+  final pulumi.Input<String> tokenEndpoint;
   /// The user info endpoint of the IdP.
-  final String userInfoEndpoint;
+  final pulumi.Input<String> userInfoEndpoint;
 
   /// Creates a new [GetListenerRuleActionAuthenticateOidc].
   /// [authenticationRequestExtraParams] Set of additional parameters for the request.
@@ -65,16 +66,16 @@ class GetListenerRuleActionAuthenticateOidc {
 
   factory GetListenerRuleActionAuthenticateOidc.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionAuthenticateOidc(
-      authenticationRequestExtraParams: (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
-      authorizationEndpoint: map['authorizationEndpoint'] as String,
-      clientId: map['clientId'] as String,
-      issuer: map['issuer'] as String,
-      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] as String,
-      scope: map['scope'] as String,
-      sessionCookieName: map['sessionCookieName'] as String,
-      sessionTimeout: map['sessionTimeout'] as int,
-      tokenEndpoint: map['tokenEndpoint'] as String,
-      userInfoEndpoint: map['userInfoEndpoint'] as String,
+      authenticationRequestExtraParams: ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
+      authorizationEndpoint: (map['authorizationEndpoint'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      onUnauthenticatedRequest: (map['onUnauthenticatedRequest'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      sessionCookieName: (map['sessionCookieName'] as String).input(),
+      sessionTimeout: (map['sessionTimeout'] as int).input(),
+      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
+      userInfoEndpoint: (map['userInfoEndpoint'] as String).input(),
     );
   }
 }

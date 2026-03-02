@@ -24,15 +24,11 @@ class QuotaPlanArgs {
   /// [planName] The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
   /// [quota] Quota property See `quota` below.
   QuotaPlanArgs({
-    pulumi.Output<bool>? isEffective,
-    required pulumi.Output<String> nickname,
-    required pulumi.Output<String> planName,
-    pulumi.Output<QuotaPlanQuota>? quota,
-  }) :
-      isEffective = pulumi.Input.asOptionalInput<bool>(isEffective),
-      nickname = pulumi.Input.asInput<String>(nickname),
-      planName = pulumi.Input.asInput<String>(planName),
-      quota = pulumi.Input.asOptionalInput<QuotaPlanQuota>(quota);
+    this.isEffective,
+    required this.nickname,
+    required this.planName,
+    this.quota,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class QuotaPlanArgs {
 
   factory QuotaPlanArgs.fromMap(Map<String, dynamic> map) {
     return QuotaPlanArgs(
-      isEffective: map['isEffective'] == null ? null : pulumi.Output.create<bool>(map['isEffective'] as bool),
-      nickname: pulumi.Output.create<String>(map['nickname'] as String),
-      planName: pulumi.Output.create<String>(map['planName'] as String),
-      quota: map['quota'] == null ? null : pulumi.Output.create<QuotaPlanQuota>(QuotaPlanQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())),
+      isEffective: map['isEffective'] == null ? null : (map['isEffective'] as bool).input(),
+      nickname: (map['nickname'] as String).input(),
+      planName: (map['planName'] as String).input(),
+      quota: map['quota'] == null ? null : (QuotaPlanQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

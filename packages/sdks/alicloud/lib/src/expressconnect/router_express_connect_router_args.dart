@@ -30,19 +30,13 @@ class RouterExpressConnectRouterArgs {
   /// [resourceGroupId] The ID of the resource group to which the ECR instance belongs.
   /// [tags] The tag of the resource.
   RouterExpressConnectRouterArgs({
-    required pulumi.Output<int> alibabaSideAsn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ecrName,
-    pulumi.Output<List<RouterExpressConnectRouterRegion>>? regions,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      alibabaSideAsn = pulumi.Input.asInput<int>(alibabaSideAsn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ecrName = pulumi.Input.asOptionalInput<String>(ecrName),
-      regions = pulumi.Input.asOptionalInput<List<RouterExpressConnectRouterRegion>>(regions),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.alibabaSideAsn,
+    this.description,
+    this.ecrName,
+    this.regions,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class RouterExpressConnectRouterArgs {
 
   factory RouterExpressConnectRouterArgs.fromMap(Map<String, dynamic> map) {
     return RouterExpressConnectRouterArgs(
-      alibabaSideAsn: pulumi.Output.create<int>(map['alibabaSideAsn'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ecrName: map['ecrName'] == null ? null : pulumi.Output.create<String>(map['ecrName'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<RouterExpressConnectRouterRegion>>(pulumi.Input.decodeList<RouterExpressConnectRouterRegion>(map['regions'], (value) => RouterExpressConnectRouterRegion.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      alibabaSideAsn: (map['alibabaSideAsn'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ecrName: map['ecrName'] == null ? null : (map['ecrName'] as String).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<RouterExpressConnectRouterRegion>(map['regions'], (value) => RouterExpressConnectRouterRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

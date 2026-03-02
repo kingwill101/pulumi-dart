@@ -20,17 +20,12 @@ class GetVersionDialogflowV3beta1Args {
   /// [project] Optional.
   /// [versionId] Required.
   GetVersionDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> flowId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> versionId,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      flowId = pulumi.Input.asInput<String>(flowId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      versionId = pulumi.Input.asInput<String>(versionId);
+    required this.agentId,
+    required this.flowId,
+    required this.location,
+    this.project,
+    required this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetVersionDialogflowV3beta1Args {
 
   factory GetVersionDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetVersionDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      flowId: pulumi.Output.create<String>(map['flowId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      versionId: pulumi.Output.create<String>(map['versionId'] as String),
+      agentId: (map['agentId'] as String).input(),
+      flowId: (map['flowId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

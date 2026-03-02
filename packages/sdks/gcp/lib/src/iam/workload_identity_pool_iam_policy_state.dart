@@ -21,15 +21,11 @@ class WorkloadIdentityPoolIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [workloadIdentityPoolId] Used to find the parent resource to bind the IAM policy to
   WorkloadIdentityPoolIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? workloadIdentityPoolId,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workloadIdentityPoolId = pulumi.Input.asOptionalInput<String>(workloadIdentityPoolId);
+    this.etag,
+    this.policyData,
+    this.project,
+    this.workloadIdentityPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class WorkloadIdentityPoolIamPolicyState {
 
   factory WorkloadIdentityPoolIamPolicyState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId'] as String).input(),
     );
   }
 }

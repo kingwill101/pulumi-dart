@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersSqsQueueParameters {
   /// The maximum number of records to include in each batch. Maximum value of 10000.
-  final int? batchSize;
+  final pulumi.Input<int>? batchSize;
   /// The maximum length of a time to wait for events. Maximum value of 300.
-  final int? maximumBatchingWindowInSeconds;
+  final pulumi.Input<int>? maximumBatchingWindowInSeconds;
 
   /// Creates a new [PipeSourceParametersSqsQueueParameters].
   /// [batchSize] The maximum number of records to include in each batch. Maximum value of 10000.
@@ -24,8 +25,8 @@ class PipeSourceParametersSqsQueueParameters {
 
   factory PipeSourceParametersSqsQueueParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSqsQueueParameters(
-      batchSize: map['batchSize'] == null ? null : map['batchSize'] as int,
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : map['maximumBatchingWindowInSeconds'] as int,
+      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
     );
   }
 }

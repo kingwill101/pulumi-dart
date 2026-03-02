@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeystoresAliasesSelfSignedCertSubject {
   /// Common name of the organization. Maximum length is 64 characters.
-  final String? commonName;
+  final pulumi.Input<String>? commonName;
   /// Two-letter country code. Example, IN for India, US for United States of America.
-  final String? countryCode;
+  final pulumi.Input<String>? countryCode;
   /// Email address. Max 255 characters.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// City or town name. Maximum length is 128 characters.
-  final String? locality;
+  final pulumi.Input<String>? locality;
   /// Organization name. Maximum length is 64 characters.
-  final String? org;
+  final pulumi.Input<String>? org;
   /// Organization team name. Maximum length is 64 characters.
-  final String? orgUnit;
+  final pulumi.Input<String>? orgUnit;
   /// State or district name. Maximum length is 128 characters.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [KeystoresAliasesSelfSignedCertSubject].
   /// [commonName] Common name of the organization. Maximum length is 64 characters.
@@ -49,13 +50,13 @@ class KeystoresAliasesSelfSignedCertSubject {
 
   factory KeystoresAliasesSelfSignedCertSubject.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertSubject(
-      commonName: map['commonName'] == null ? null : map['commonName'] as String,
-      countryCode: map['countryCode'] == null ? null : map['countryCode'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      locality: map['locality'] == null ? null : map['locality'] as String,
-      org: map['org'] == null ? null : map['org'] as String,
-      orgUnit: map['orgUnit'] == null ? null : map['orgUnit'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
+      org: map['org'] == null ? null : (map['org'] as String).input(),
+      orgUnit: map['orgUnit'] == null ? null : (map['orgUnit'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

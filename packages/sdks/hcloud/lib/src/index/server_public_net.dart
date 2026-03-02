@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerPublicNet {
-  final int? ipv4;
-  final bool? ipv4Enabled;
-  final int? ipv6;
-  final bool? ipv6Enabled;
+  final pulumi.Input<int>? ipv4;
+  final pulumi.Input<bool>? ipv4Enabled;
+  final pulumi.Input<int>? ipv6;
+  final pulumi.Input<bool>? ipv6Enabled;
 
   /// Creates a new [ServerPublicNet].
   /// [ipv4] Optional.
@@ -30,10 +31,10 @@ class ServerPublicNet {
 
   factory ServerPublicNet.fromMap(Map<String, dynamic> map) {
     return ServerPublicNet(
-      ipv4: map['ipv4'] == null ? null : map['ipv4'] as int,
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : map['ipv4Enabled'] as bool,
-      ipv6: map['ipv6'] == null ? null : map['ipv6'] as int,
-      ipv6Enabled: map['ipv6Enabled'] == null ? null : map['ipv6Enabled'] as bool,
+      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as int).input(),
+      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled'] as bool).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as int).input(),
+      ipv6Enabled: map['ipv6Enabled'] == null ? null : (map['ipv6Enabled'] as bool).input(),
     );
   }
 }

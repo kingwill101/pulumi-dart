@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of a single parameter for an entity.
 class GlobalParameterSpecification {
   /// Global Parameter type.
-  final String type;
+  final pulumi.Input<String> type;
   /// Value of parameter.
-  final dynamic value;
+  final pulumi.Input<dynamic> value;
 
   /// Creates a new [GlobalParameterSpecification].
   /// [type] Global Parameter type.
@@ -25,8 +26,8 @@ class GlobalParameterSpecification {
 
   factory GlobalParameterSpecification.fromMap(Map<String, dynamic> map) {
     return GlobalParameterSpecification(
-      type: map['type'] as String,
-      value: map['value'],
+      type: (map['type'] as String).input(),
+      value: (map['value']).input(),
     );
   }
 }

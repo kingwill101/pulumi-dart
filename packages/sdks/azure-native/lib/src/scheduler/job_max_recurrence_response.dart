@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobMaxRecurrenceResponse {
   /// Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
-  final String? frequency;
+  final pulumi.Input<String>? frequency;
   /// Gets or sets the interval between retries.
-  final int? interval;
+  final pulumi.Input<int>? interval;
 
   /// Creates a new [JobMaxRecurrenceResponse].
   /// [frequency] Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
@@ -24,8 +25,8 @@ class JobMaxRecurrenceResponse {
 
   factory JobMaxRecurrenceResponse.fromMap(Map<String, dynamic> map) {
     return JobMaxRecurrenceResponse(
-      frequency: map['frequency'] == null ? null : map['frequency'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as int,
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
     );
   }
 }

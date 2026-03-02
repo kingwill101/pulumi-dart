@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Call-specific metadata.
 class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
   /// The audio channel that contains the agent.
-  final int agentChannel;
+  final pulumi.Input<int> agentChannel;
   /// The audio channel that contains the customer.
-  final int customerChannel;
+  final pulumi.Input<int> customerChannel;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse].
   /// [agentChannel] The audio channel that contains the agent.
@@ -25,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
 
   factory GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse(
-      agentChannel: map['agentChannel'] as int,
-      customerChannel: map['customerChannel'] as int,
+      agentChannel: (map['agentChannel'] as int).input(),
+      customerChannel: (map['customerChannel'] as int).input(),
     );
   }
 }

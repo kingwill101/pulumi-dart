@@ -6,9 +6,9 @@ import 'namespace_asset_status_management_action_response.dart';
 /// Defines the asset status management group properties.
 class NamespaceAssetStatusManagementGroupResponse {
   /// Array of action statuses that describe the status of each action.
-  final List<NamespaceAssetStatusManagementActionResponse> actions;
+  final pulumi.Input<List<NamespaceAssetStatusManagementActionResponse>> actions;
   /// The name of the management group. Must be unique within the status.managementGroups array. This name is used to correlate between the spec and status event information.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [NamespaceAssetStatusManagementGroupResponse].
   /// [actions] Array of action statuses that describe the status of each action.
@@ -20,15 +20,15 @@ class NamespaceAssetStatusManagementGroupResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<NamespaceAssetStatusManagementActionResponse, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'actions': pulumi.Input.mapInputValue<List<NamespaceAssetStatusManagementActionResponse>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<NamespaceAssetStatusManagementActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory NamespaceAssetStatusManagementGroupResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceAssetStatusManagementGroupResponse(
-      actions: pulumi.Input.decodeList<NamespaceAssetStatusManagementActionResponse>(map['actions'], (value) => NamespaceAssetStatusManagementActionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      actions: (pulumi.Input.decodeList<NamespaceAssetStatusManagementActionResponse>(map['actions'], (value) => NamespaceAssetStatusManagementActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

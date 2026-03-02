@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapStorageVirtualMachineEndpointManagement {
   /// The Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
-  final String? dnsName;
+  final pulumi.Input<String>? dnsName;
   /// IP addresses of the storage virtual machine endpoint.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
 
   /// Creates a new [OntapStorageVirtualMachineEndpointManagement].
   /// [dnsName] The Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
@@ -24,8 +25,8 @@ class OntapStorageVirtualMachineEndpointManagement {
 
   factory OntapStorageVirtualMachineEndpointManagement.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineEndpointManagement(
-      dnsName: map['dnsName'] == null ? null : map['dnsName'] as String,
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
     );
   }
 }

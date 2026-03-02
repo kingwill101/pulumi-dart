@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataflowEndpoint Authentication UserAssignedManagedIdentity properties
 class DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
   /// Client ID for the user-assigned managed identity.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// Tenant ID.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse].
   /// [clientId] Client ID for the user-assigned managed identity.
@@ -30,9 +31,9 @@ class DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
 
   factory DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse(
-      clientId: map['clientId'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      tenantId: map['tenantId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

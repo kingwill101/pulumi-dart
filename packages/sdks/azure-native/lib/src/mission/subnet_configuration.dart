@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subnet Configuration
 class SubnetConfiguration {
   /// Network prefix size.
-  final int networkPrefixSize;
+  final pulumi.Input<int> networkPrefixSize;
   /// Subnet delegation.
-  final String? subnetDelegation;
+  final pulumi.Input<String>? subnetDelegation;
   /// Subnet name.
-  final String subnetName;
+  final pulumi.Input<String> subnetName;
 
   /// Creates a new [SubnetConfiguration].
   /// [networkPrefixSize] Network prefix size.
@@ -30,9 +31,9 @@ class SubnetConfiguration {
 
   factory SubnetConfiguration.fromMap(Map<String, dynamic> map) {
     return SubnetConfiguration(
-      networkPrefixSize: map['networkPrefixSize'] as int,
-      subnetDelegation: map['subnetDelegation'] == null ? null : map['subnetDelegation'] as String,
-      subnetName: map['subnetName'] as String,
+      networkPrefixSize: (map['networkPrefixSize'] as int).input(),
+      subnetDelegation: map['subnetDelegation'] == null ? null : (map['subnetDelegation'] as String).input(),
+      subnetName: (map['subnetName'] as String).input(),
     );
   }
 }

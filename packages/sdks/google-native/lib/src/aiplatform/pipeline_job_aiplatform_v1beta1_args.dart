@@ -46,31 +46,19 @@ class PipelineJobAiplatformV1beta1Args {
   /// [serviceAccount] The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
   /// [templateUri] A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
   PipelineJobAiplatformV1beta1Args({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GoogleCloudAiplatformV1beta1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? pipelineJobId,
-    pulumi.Output<Map<String, String>>? pipelineSpec,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? reservedIpRanges,
-    pulumi.Output<GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig>? runtimeConfig,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<String>? templateUri,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1EncryptionSpec>(encryptionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      pipelineJobId = pulumi.Input.asOptionalInput<String>(pipelineJobId),
-      pipelineSpec = pulumi.Input.asOptionalInput<Map<String, String>>(pipelineSpec),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservedIpRanges = pulumi.Input.asOptionalInput<List<String>>(reservedIpRanges),
-      runtimeConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig>(runtimeConfig),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      templateUri = pulumi.Input.asOptionalInput<String>(templateUri);
+    this.displayName,
+    this.encryptionSpec,
+    this.labels,
+    this.location,
+    this.network,
+    this.pipelineJobId,
+    this.pipelineSpec,
+    this.project,
+    this.reservedIpRanges,
+    this.runtimeConfig,
+    this.serviceAccount,
+    this.templateUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class PipelineJobAiplatformV1beta1Args {
 
   factory PipelineJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return PipelineJobAiplatformV1beta1Args(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1EncryptionSpec>(GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      pipelineJobId: map['pipelineJobId'] == null ? null : pulumi.Output.create<String>(map['pipelineJobId'] as String),
-      pipelineSpec: map['pipelineSpec'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pipelineSpec'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservedIpRanges: map['reservedIpRanges'] == null ? null : pulumi.Output.create<List<String>>((map['reservedIpRanges'] as List).cast<String>()),
-      runtimeConfig: map['runtimeConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig>(GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      templateUri: map['templateUri'] == null ? null : pulumi.Output.create<String>(map['templateUri'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      pipelineJobId: map['pipelineJobId'] == null ? null : (map['pipelineJobId'] as String).input(),
+      pipelineSpec: map['pipelineSpec'] == null ? null : ((map['pipelineSpec'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges'] as List).cast<String>()).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      templateUri: map['templateUri'] == null ? null : (map['templateUri'] as String).input(),
     );
   }
 }

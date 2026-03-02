@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime {
   /// Starting hour of the 10-hour window for updates
-  final int hours;
+  final pulumi.Input<int> hours;
   /// Starting minute of the 10-hour window for updates
-  final int minutes;
+  final pulumi.Input<int> minutes;
 
   /// Creates a new [GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime].
   /// [hours] Starting hour of the 10-hour window for updates
@@ -24,8 +25,8 @@ class GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime {
 
   factory GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap(Map<String, dynamic> map) {
     return GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime(
-      hours: map['hours'] as int,
-      minutes: map['minutes'] as int,
+      hours: (map['hours'] as int).input(),
+      minutes: (map['minutes'] as int).input(),
     );
   }
 }

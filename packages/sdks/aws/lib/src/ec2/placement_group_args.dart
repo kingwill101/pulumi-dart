@@ -31,19 +31,13 @@ class PlacementGroupArgs {
   /// [strategy] The placement strategy. Can be `cluster`, `partition` or `spread`.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   PlacementGroupArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? partitionCount,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? spreadLevel,
-    required pulumi.Output<String> strategy,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionCount = pulumi.Input.asOptionalInput<int>(partitionCount),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spreadLevel = pulumi.Input.asOptionalInput<String>(spreadLevel),
-      strategy = pulumi.Input.asInput<String>(strategy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    this.partitionCount,
+    this.region,
+    this.spreadLevel,
+    required this.strategy,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class PlacementGroupArgs {
 
   factory PlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionCount: map['partitionCount'] == null ? null : pulumi.Output.create<int>(map['partitionCount'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spreadLevel: map['spreadLevel'] == null ? null : pulumi.Output.create<String>(map['spreadLevel'] as String),
-      strategy: pulumi.Output.create<String>(map['strategy'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spreadLevel: map['spreadLevel'] == null ? null : (map['spreadLevel'] as String).input(),
+      strategy: (map['strategy'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

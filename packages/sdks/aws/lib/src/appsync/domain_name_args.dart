@@ -22,15 +22,11 @@ class DomainNameArgs {
   /// [domainName] Domain name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DomainNameArgs({
-    required pulumi.Output<String> certificateArn,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? region,
-  }) :
-      certificateArn = pulumi.Input.asInput<String>(certificateArn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.certificateArn,
+    this.description,
+    required this.domainName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DomainNameArgs {
 
   factory DomainNameArgs.fromMap(Map<String, dynamic> map) {
     return DomainNameArgs(
-      certificateArn: pulumi.Output.create<String>(map['certificateArn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      certificateArn: (map['certificateArn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

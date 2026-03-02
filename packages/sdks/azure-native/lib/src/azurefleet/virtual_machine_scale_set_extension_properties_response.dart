@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_secret_reference_response.dart';
 
 /// Describes the properties of a Virtual Machine Scale Set Extension.
@@ -7,34 +8,34 @@ class VirtualMachineScaleSetExtensionPropertiesResponse {
   /// Indicates whether the extension should use a newer minor version if one is
   /// available at deployment time. Once deployed, however, the extension will not
   /// upgrade minor versions unless redeployed, even with this property set to true.
-  final bool? autoUpgradeMinorVersion;
+  final pulumi.Input<bool>? autoUpgradeMinorVersion;
   /// Indicates whether the extension should be automatically upgraded by the
   /// platform if there is a newer version of the extension available.
-  final bool? enableAutomaticUpgrade;
+  final pulumi.Input<bool>? enableAutomaticUpgrade;
   /// If a value is provided and is different from the previous value, the extension
   /// handler will be forced to update even if the extension configuration has not
   /// changed.
-  final String? forceUpdateTag;
+  final pulumi.Input<String>? forceUpdateTag;
   /// The extensions protected settings that are passed by reference, and consumed
   /// from key vault
-  final KeyVaultSecretReferenceResponse? protectedSettingsFromKeyVault;
+  final pulumi.Input<KeyVaultSecretReferenceResponse>? protectedSettingsFromKeyVault;
   /// Collection of extension names after which this extension needs to be
   /// provisioned.
-  final List<String>? provisionAfterExtensions;
+  final pulumi.Input<List<String>>? provisionAfterExtensions;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The name of the extension handler publisher.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// Json formatted public settings for the extension.
-  final dynamic settings;
+  final pulumi.Input<dynamic>? settings;
   /// Indicates whether failures stemming from the extension will be suppressed
   /// (Operational failures such as not connecting to the VM will not be suppressed
   /// regardless of this value). The default is false.
-  final bool? suppressFailures;
+  final pulumi.Input<bool>? suppressFailures;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Specifies the version of the script handler.
-  final String? typeHandlerVersion;
+  final pulumi.Input<String>? typeHandlerVersion;
 
   /// Creates a new [VirtualMachineScaleSetExtensionPropertiesResponse].
   /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is
@@ -67,7 +68,7 @@ class VirtualMachineScaleSetExtensionPropertiesResponse {
       'autoUpgradeMinorVersion': ?autoUpgradeMinorVersion,
       'enableAutomaticUpgrade': ?enableAutomaticUpgrade,
       'forceUpdateTag': ?forceUpdateTag,
-      'protectedSettingsFromKeyVault': ?protectedSettingsFromKeyVault == null ? null : protectedSettingsFromKeyVault!.toMap(),
+      'protectedSettingsFromKeyVault': ?pulumi.Input.mapOptionalInputValue<KeyVaultSecretReferenceResponse, Map<String, dynamic>>(protectedSettingsFromKeyVault, (value) => value.toMap()),
       'provisionAfterExtensions': ?provisionAfterExtensions,
       'provisioningState': provisioningState,
       'publisher': ?publisher,
@@ -80,17 +81,17 @@ class VirtualMachineScaleSetExtensionPropertiesResponse {
 
   factory VirtualMachineScaleSetExtensionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtensionPropertiesResponse(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion'] as bool,
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade'] as bool,
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : KeyVaultSecretReferenceResponse.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>()),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : (map['provisionAfterExtensions'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      settings: map['settings'] == null ? null : map['settings'],
-      suppressFailures: map['suppressFailures'] == null ? null : map['suppressFailures'] as bool,
-      type: map['type'] == null ? null : map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (KeyVaultSecretReferenceResponse.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']).input(),
+      suppressFailures: map['suppressFailures'] == null ? null : (map['suppressFailures'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

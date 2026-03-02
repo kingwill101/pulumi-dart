@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains infrastructure information about the Appliance
 class AppliancePropertiesInfrastructureConfigResponse {
   /// Information about the connected appliance.
-  final String? provider;
+  final pulumi.Input<String>? provider;
 
   /// Creates a new [AppliancePropertiesInfrastructureConfigResponse].
   /// [provider] Information about the connected appliance.
@@ -20,7 +21,7 @@ class AppliancePropertiesInfrastructureConfigResponse {
 
   factory AppliancePropertiesInfrastructureConfigResponse.fromMap(Map<String, dynamic> map) {
     return AppliancePropertiesInfrastructureConfigResponse(
-      provider: map['provider'] == null ? null : map['provider'] as String,
+      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
     );
   }
 }

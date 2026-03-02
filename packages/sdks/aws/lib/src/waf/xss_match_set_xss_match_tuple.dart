@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'xss_match_set_xss_match_tuple_field_to_match.dart';
 
 class XssMatchSetXssMatchTuple {
   /// Specifies where in a web request to look for cross-site scripting attacks.
-  final XssMatchSetXssMatchTupleFieldToMatch fieldToMatch;
+  final pulumi.Input<XssMatchSetXssMatchTupleFieldToMatch> fieldToMatch;
   /// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
   /// If you specify a transformation, AWS WAF performs the transformation on `target_string` before inspecting a request for a match.
   /// e.g., `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
   /// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_XssMatchTuple.html#WAF-Type-XssMatchTuple-TextTransformation)
   /// for all supported values.
-  final String textTransformation;
+  final pulumi.Input<String> textTransformation;
 
   /// Creates a new [XssMatchSetXssMatchTuple].
   /// [fieldToMatch] Specifies where in a web request to look for cross-site scripting attacks.
@@ -22,15 +23,15 @@ class XssMatchSetXssMatchTuple {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldToMatch': fieldToMatch.toMap(),
+      'fieldToMatch': pulumi.Input.mapInputValue<XssMatchSetXssMatchTupleFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
       'textTransformation': textTransformation,
     };
   }
 
   factory XssMatchSetXssMatchTuple.fromMap(Map<String, dynamic> map) {
     return XssMatchSetXssMatchTuple(
-      fieldToMatch: XssMatchSetXssMatchTupleFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
-      textTransformation: map['textTransformation'] as String,
+      fieldToMatch: (XssMatchSetXssMatchTupleFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      textTransformation: (map['textTransformation'] as String).input(),
     );
   }
 }

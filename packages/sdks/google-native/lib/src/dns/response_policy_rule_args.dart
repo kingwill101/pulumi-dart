@@ -33,23 +33,15 @@ class ResponsePolicyRuleArgs {
   /// [responsePolicy] Required.
   /// [ruleName] An identifier for this rule. Must be unique with the ResponsePolicy.
   ResponsePolicyRuleArgs({
-    pulumi.Output<ResponsePolicyRuleBehaviorDnsV1beta2>? behavior,
-    pulumi.Output<String>? clientOperationId,
-    pulumi.Output<String>? dnsName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ResponsePolicyRuleLocalDataDnsV1beta2>? localData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> responsePolicy,
-    pulumi.Output<String>? ruleName,
-  }) :
-      behavior = pulumi.Input.asOptionalInput<ResponsePolicyRuleBehaviorDnsV1beta2>(behavior),
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      localData = pulumi.Input.asOptionalInput<ResponsePolicyRuleLocalDataDnsV1beta2>(localData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      responsePolicy = pulumi.Input.asInput<String>(responsePolicy),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName);
+    this.behavior,
+    this.clientOperationId,
+    this.dnsName,
+    this.kind,
+    this.localData,
+    this.project,
+    required this.responsePolicy,
+    this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class ResponsePolicyRuleArgs {
 
   factory ResponsePolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleArgs(
-      behavior: map['behavior'] == null ? null : pulumi.Output.create<ResponsePolicyRuleBehaviorDnsV1beta2>(ResponsePolicyRuleBehaviorDnsV1beta2.fromValue(map['behavior'] as String)),
-      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
-      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      localData: map['localData'] == null ? null : pulumi.Output.create<ResponsePolicyRuleLocalDataDnsV1beta2>(ResponsePolicyRuleLocalDataDnsV1beta2.fromMap((map['localData'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      responsePolicy: pulumi.Output.create<String>(map['responsePolicy'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      behavior: map['behavior'] == null ? null : (ResponsePolicyRuleBehaviorDnsV1beta2.fromValue(map['behavior'] as String)).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      localData: map['localData'] == null ? null : (ResponsePolicyRuleLocalDataDnsV1beta2.fromMap((map['localData'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      responsePolicy: (map['responsePolicy'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

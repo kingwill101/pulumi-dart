@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_disk_mirror_source_vhost_user_dbus.dart';
 import 'domain_devices_disk_mirror_source_vhost_user_dev.dart';
 import 'domain_devices_disk_mirror_source_vhost_user_file.dart';
@@ -14,35 +15,35 @@ import 'domain_devices_disk_mirror_source_vhost_user_unix.dart';
 
 class DomainDevicesDiskMirrorSourceVhostUser {
   /// Configures the DBus source for the EGD backend.
-  final DomainDevicesDiskMirrorSourceVhostUserDbus? dbus;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserDbus>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final DomainDevicesDiskMirrorSourceVhostUserDev? dev;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserDev>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final DomainDevicesDiskMirrorSourceVhostUserFile? file;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserFile>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final DomainDevicesDiskMirrorSourceVhostUserNmdm? nmdm;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserNmdm>? nmdm;
   /// Configures a null device type in the VHostUser source configuration for the mirrored disk.
-  final bool? null_;
+  final pulumi.Input<bool>? null_;
   /// Defines a pipe source for the EGD backend.
-  final DomainDevicesDiskMirrorSourceVhostUserPipe? pipe;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserPipe>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final DomainDevicesDiskMirrorSourceVhostUserPty? pty;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserPty>? pty;
   /// Configures the QEMU guest agent for the random number generator backend.
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent? qemuvdAgent;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent>? qemuvdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final DomainDevicesDiskMirrorSourceVhostUserSpicePort? spicePort;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserSpicePort>? spicePort;
   /// Configures the Spice VMC settings in the VHostUser source configuration for the mirrored disk.
-  final bool? spiceVmc;
+  final pulumi.Input<bool>? spiceVmc;
   /// Configures standard I/O settings for the VHostUser interface associated with the mirrored disk.
-  final bool? stdIo;
+  final pulumi.Input<bool>? stdIo;
   /// Configures TCP settings for the random number generator backend.
-  final DomainDevicesDiskMirrorSourceVhostUserTcp? tcp;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserTcp>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final DomainDevicesDiskMirrorSourceVhostUserUdp? udp;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserUdp>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final DomainDevicesDiskMirrorSourceVhostUserUnix? unix;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceVhostUserUnix>? unix;
   /// Configures the VHostUser virtual channel settings for the source backing store.
-  final bool? vc;
+  final pulumi.Input<bool>? vc;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceVhostUser].
   /// [dbus] Configures the DBus source for the EGD backend.
@@ -80,41 +81,41 @@ class DomainDevicesDiskMirrorSourceVhostUser {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbus': ?dbus == null ? null : dbus!.toMap(),
-      'dev': ?dev == null ? null : dev!.toMap(),
-      'file': ?file == null ? null : file!.toMap(),
-      'nmdm': ?nmdm == null ? null : nmdm!.toMap(),
+      'dbus': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserDbus, Map<String, dynamic>>(dbus, (value) => value.toMap()),
+      'dev': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserDev, Map<String, dynamic>>(dev, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'nmdm': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserNmdm, Map<String, dynamic>>(nmdm, (value) => value.toMap()),
       'null': ?null_,
-      'pipe': ?pipe == null ? null : pipe!.toMap(),
-      'pty': ?pty == null ? null : pty!.toMap(),
-      'qemuvdAgent': ?qemuvdAgent == null ? null : qemuvdAgent!.toMap(),
-      'spicePort': ?spicePort == null ? null : spicePort!.toMap(),
+      'pipe': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserPipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
+      'pty': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserPty, Map<String, dynamic>>(pty, (value) => value.toMap()),
+      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
-      'tcp': ?tcp == null ? null : tcp!.toMap(),
-      'udp': ?udp == null ? null : udp!.toMap(),
-      'unix': ?unix == null ? null : unix!.toMap(),
+      'tcp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserTcp, Map<String, dynamic>>(tcp, (value) => value.toMap()),
+      'udp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserUdp, Map<String, dynamic>>(udp, (value) => value.toMap()),
+      'unix': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceVhostUserUnix, Map<String, dynamic>>(unix, (value) => value.toMap()),
       'vc': ?vc,
     };
   }
 
   factory DomainDevicesDiskMirrorSourceVhostUser.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceVhostUser(
-      dbus: map['dbus'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>()),
-      dev: map['dev'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserDev.fromMap((map['dev'] as Map).cast<String, dynamic>()),
-      file: map['file'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      nmdm: map['nmdm'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>()),
-      null_: map['null'] == null ? null : map['null'] as bool,
-      pipe: map['pipe'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserPipe.fromMap((map['pipe'] as Map).cast<String, dynamic>()),
-      pty: map['pty'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserPty.fromMap((map['pty'] as Map).cast<String, dynamic>()),
-      qemuvdAgent: map['qemuvdAgent'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>()),
-      spicePort: map['spicePort'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>()),
-      spiceVmc: map['spiceVmc'] == null ? null : map['spiceVmc'] as bool,
-      stdIo: map['stdIo'] == null ? null : map['stdIo'] as bool,
-      tcp: map['tcp'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>()),
-      udp: map['udp'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserUdp.fromMap((map['udp'] as Map).cast<String, dynamic>()),
-      unix: map['unix'] == null ? null : DomainDevicesDiskMirrorSourceVhostUserUnix.fromMap((map['unix'] as Map).cast<String, dynamic>()),
-      vc: map['vc'] == null ? null : map['vc'] as bool,
+      dbus: map['dbus'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>())).input(),
+      dev: map['dev'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserDev.fromMap((map['dev'] as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      nmdm: map['nmdm'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>())).input(),
+      null_: map['null'] == null ? null : (map['null'] as bool).input(),
+      pipe: map['pipe'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserPipe.fromMap((map['pipe'] as Map).cast<String, dynamic>())).input(),
+      pty: map['pty'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserPty.fromMap((map['pty'] as Map).cast<String, dynamic>())).input(),
+      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>())).input(),
+      spicePort: map['spicePort'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>())).input(),
+      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc'] as bool).input(),
+      stdIo: map['stdIo'] == null ? null : (map['stdIo'] as bool).input(),
+      tcp: map['tcp'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserUdp.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
+      unix: map['unix'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserUnix.fromMap((map['unix'] as Map).cast<String, dynamic>())).input(),
+      vc: map['vc'] == null ? null : (map['vc'] as bool).input(),
     );
   }
 }

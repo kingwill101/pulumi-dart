@@ -26,17 +26,12 @@ class Python2PackageArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [tags] Gets or sets the tags attached to the resource.
   Python2PackageArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<ContentLink> contentLink,
-    pulumi.Output<String>? packageName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      contentLink = pulumi.Input.asInput<ContentLink>(contentLink),
-      packageName = pulumi.Input.asOptionalInput<String>(packageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.automationAccountName,
+    required this.contentLink,
+    this.packageName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class Python2PackageArgs {
 
   factory Python2PackageArgs.fromMap(Map<String, dynamic> map) {
     return Python2PackageArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      contentLink: pulumi.Output.create<ContentLink>(ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())),
-      packageName: map['packageName'] == null ? null : pulumi.Output.create<String>(map['packageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      contentLink: (ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

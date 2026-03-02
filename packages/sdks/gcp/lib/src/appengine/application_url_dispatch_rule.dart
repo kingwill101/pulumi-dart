@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationUrlDispatchRule {
-  final String? domain;
-  final String? path;
-  final String? service;
+  final pulumi.Input<String>? domain;
+  final pulumi.Input<String>? path;
+  final pulumi.Input<String>? service;
 
   /// Creates a new [ApplicationUrlDispatchRule].
   /// [domain] Optional.
@@ -26,9 +27,9 @@ class ApplicationUrlDispatchRule {
 
   factory ApplicationUrlDispatchRule.fromMap(Map<String, dynamic> map) {
     return ApplicationUrlDispatchRule(
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      service: map['service'] == null ? null : map['service'] as String,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

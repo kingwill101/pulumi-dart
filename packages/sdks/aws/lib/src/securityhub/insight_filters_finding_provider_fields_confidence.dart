@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersFindingProviderFieldsConfidence {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
-  final String? eq;
+  final pulumi.Input<String>? eq;
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  final String? gte;
+  final pulumi.Input<String>? gte;
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  final String? lte;
+  final pulumi.Input<String>? lte;
 
   /// Creates a new [InsightFiltersFindingProviderFieldsConfidence].
   /// [eq] The equal-to condition to be applied to a single field when querying for findings, provided as a String.
@@ -29,9 +30,9 @@ class InsightFiltersFindingProviderFieldsConfidence {
 
   factory InsightFiltersFindingProviderFieldsConfidence.fromMap(Map<String, dynamic> map) {
     return InsightFiltersFindingProviderFieldsConfidence(
-      eq: map['eq'] == null ? null : map['eq'] as String,
-      gte: map['gte'] == null ? null : map['gte'] as String,
-      lte: map['lte'] == null ? null : map['lte'] as String,
+      eq: map['eq'] == null ? null : (map['eq'] as String).input(),
+      gte: map['gte'] == null ? null : (map['gte'] as String).input(),
+      lte: map['lte'] == null ? null : (map['lte'] as String).input(),
     );
   }
 }

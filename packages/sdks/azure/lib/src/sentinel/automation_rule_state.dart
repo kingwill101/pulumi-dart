@@ -48,31 +48,19 @@ class AutomationRuleState {
   /// [triggersOn] Specifies what triggers this automation rule. Possible values are `Alerts` and `Incidents`. Defaults to `Incidents`.
   /// [triggersWhen] Specifies when will this automation rule be triggered. Possible values are `Created` and `Updated`. Defaults to `Created`.
   AutomationRuleState({
-    pulumi.Output<List<AutomationRuleActionIncidentTask>>? actionIncidentTasks,
-    pulumi.Output<List<AutomationRuleActionIncident>>? actionIncidents,
-    pulumi.Output<List<AutomationRuleActionPlaybook>>? actionPlaybooks,
-    pulumi.Output<String>? conditionJson,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? expiration,
-    pulumi.Output<String>? logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? order,
-    pulumi.Output<String>? triggersOn,
-    pulumi.Output<String>? triggersWhen,
-  }) :
-      actionIncidentTasks = pulumi.Input.asOptionalInput<List<AutomationRuleActionIncidentTask>>(actionIncidentTasks),
-      actionIncidents = pulumi.Input.asOptionalInput<List<AutomationRuleActionIncident>>(actionIncidents),
-      actionPlaybooks = pulumi.Input.asOptionalInput<List<AutomationRuleActionPlaybook>>(actionPlaybooks),
-      conditionJson = pulumi.Input.asOptionalInput<String>(conditionJson),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      expiration = pulumi.Input.asOptionalInput<String>(expiration),
-      logAnalyticsWorkspaceId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      order = pulumi.Input.asOptionalInput<int>(order),
-      triggersOn = pulumi.Input.asOptionalInput<String>(triggersOn),
-      triggersWhen = pulumi.Input.asOptionalInput<String>(triggersWhen);
+    this.actionIncidentTasks,
+    this.actionIncidents,
+    this.actionPlaybooks,
+    this.conditionJson,
+    this.displayName,
+    this.enabled,
+    this.expiration,
+    this.logAnalyticsWorkspaceId,
+    this.name,
+    this.order,
+    this.triggersOn,
+    this.triggersWhen,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class AutomationRuleState {
 
   factory AutomationRuleState.fromMap(Map<String, dynamic> map) {
     return AutomationRuleState(
-      actionIncidentTasks: map['actionIncidentTasks'] == null ? null : pulumi.Output.create<List<AutomationRuleActionIncidentTask>>(pulumi.Input.decodeList<AutomationRuleActionIncidentTask>(map['actionIncidentTasks'], (value) => AutomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>()))),
-      actionIncidents: map['actionIncidents'] == null ? null : pulumi.Output.create<List<AutomationRuleActionIncident>>(pulumi.Input.decodeList<AutomationRuleActionIncident>(map['actionIncidents'], (value) => AutomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>()))),
-      actionPlaybooks: map['actionPlaybooks'] == null ? null : pulumi.Output.create<List<AutomationRuleActionPlaybook>>(pulumi.Input.decodeList<AutomationRuleActionPlaybook>(map['actionPlaybooks'], (value) => AutomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>()))),
-      conditionJson: map['conditionJson'] == null ? null : pulumi.Output.create<String>(map['conditionJson'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      expiration: map['expiration'] == null ? null : pulumi.Output.create<String>(map['expiration'] as String),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      order: map['order'] == null ? null : pulumi.Output.create<int>(map['order'] as int),
-      triggersOn: map['triggersOn'] == null ? null : pulumi.Output.create<String>(map['triggersOn'] as String),
-      triggersWhen: map['triggersWhen'] == null ? null : pulumi.Output.create<String>(map['triggersWhen'] as String),
+      actionIncidentTasks: map['actionIncidentTasks'] == null ? null : (pulumi.Input.decodeList<AutomationRuleActionIncidentTask>(map['actionIncidentTasks'], (value) => AutomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actionIncidents: map['actionIncidents'] == null ? null : (pulumi.Input.decodeList<AutomationRuleActionIncident>(map['actionIncidents'], (value) => AutomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actionPlaybooks: map['actionPlaybooks'] == null ? null : (pulumi.Input.decodeList<AutomationRuleActionPlaybook>(map['actionPlaybooks'], (value) => AutomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditionJson: map['conditionJson'] == null ? null : (map['conditionJson'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      triggersOn: map['triggersOn'] == null ? null : (map['triggersOn'] as String).input(),
+      triggersWhen: map['triggersWhen'] == null ? null : (map['triggersWhen'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
   /// (Optional)
-  final bool? enableIntegrityMonitoring;
+  final pulumi.Input<bool>? enableIntegrityMonitoring;
   /// (Optional)
-  final bool? enableSecureBoot;
+  final pulumi.Input<bool>? enableSecureBoot;
   /// (Optional)
-  final bool? enableVtpm;
+  final pulumi.Input<bool>? enableVtpm;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] (Optional)
@@ -29,9 +30,9 @@ class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
-      enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring'] as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableVtpm: map['enableVtpm'] == null ? null : (map['enableVtpm'] as bool).input(),
     );
   }
 }

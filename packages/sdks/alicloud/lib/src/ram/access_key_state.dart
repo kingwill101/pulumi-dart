@@ -35,23 +35,15 @@ class AccessKeyState {
   /// [status] The status of the AccessKey. Value:
   /// [userName] The RAM user name.
   AccessKeyState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? encryptedSecret,
-    pulumi.Output<String>? keyFingerprint,
-    pulumi.Output<String>? pgpKey,
-    pulumi.Output<String>? secret,
-    pulumi.Output<String>? secretFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? userName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      encryptedSecret = pulumi.Input.asOptionalInput<String>(encryptedSecret),
-      keyFingerprint = pulumi.Input.asOptionalInput<String>(keyFingerprint),
-      pgpKey = pulumi.Input.asOptionalInput<String>(pgpKey),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      secretFile = pulumi.Input.asOptionalInput<String>(secretFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.createTime,
+    this.encryptedSecret,
+    this.keyFingerprint,
+    this.pgpKey,
+    this.secret,
+    this.secretFile,
+    this.status,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class AccessKeyState {
 
   factory AccessKeyState.fromMap(Map<String, dynamic> map) {
     return AccessKeyState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      encryptedSecret: map['encryptedSecret'] == null ? null : pulumi.Output.create<String>(map['encryptedSecret'] as String),
-      keyFingerprint: map['keyFingerprint'] == null ? null : pulumi.Output.create<String>(map['keyFingerprint'] as String),
-      pgpKey: map['pgpKey'] == null ? null : pulumi.Output.create<String>(map['pgpKey'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      secretFile: map['secretFile'] == null ? null : pulumi.Output.create<String>(map['secretFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      encryptedSecret: map['encryptedSecret'] == null ? null : (map['encryptedSecret'] as String).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      secretFile: map['secretFile'] == null ? null : (map['secretFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsFunctionAppAuthSettingsV2MicrosoftV2 {
   /// Specifies a list of Allowed Audiences that will be requested as part of Microsoft Sign-In authentication.
-  final List<String>? allowedAudiences;
+  final pulumi.Input<List<String>>? allowedAudiences;
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
   ///
   /// !> **Note:** A setting with this name must exist in `app_settings` to function correctly.
-  final String clientSecretSettingName;
+  final pulumi.Input<String> clientSecretSettingName;
   /// The list of Login scopes that should be requested as part of Microsoft Account authentication.
-  final List<String>? loginScopes;
+  final pulumi.Input<List<String>>? loginScopes;
 
   /// Creates a new [WindowsFunctionAppAuthSettingsV2MicrosoftV2].
   /// [allowedAudiences] Specifies a list of Allowed Audiences that will be requested as part of Microsoft Sign-In authentication.
@@ -36,10 +37,10 @@ class WindowsFunctionAppAuthSettingsV2MicrosoftV2 {
 
   factory WindowsFunctionAppAuthSettingsV2MicrosoftV2.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppAuthSettingsV2MicrosoftV2(
-      allowedAudiences: map['allowedAudiences'] == null ? null : (map['allowedAudiences'] as List).cast<String>(),
-      clientId: map['clientId'] as String,
-      clientSecretSettingName: map['clientSecretSettingName'] as String,
-      loginScopes: map['loginScopes'] == null ? null : (map['loginScopes'] as List).cast<String>(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecretSettingName: (map['clientSecretSettingName'] as String).input(),
+      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes'] as List).cast<String>()).input(),
     );
   }
 }

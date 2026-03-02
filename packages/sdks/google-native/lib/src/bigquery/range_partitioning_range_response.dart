@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [TrustedTester] [Required] Defines the ranges for range partitioning.
 class RangePartitioningRangeResponse {
   /// [TrustedTester] [Required] The end of range partitioning, exclusive.
-  final String end;
+  final pulumi.Input<String> end;
   /// [TrustedTester] [Required] The width of each interval.
-  final String interval;
+  final pulumi.Input<String> interval;
   /// [TrustedTester] [Required] The start of range partitioning, inclusive.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [RangePartitioningRangeResponse].
   /// [end] [TrustedTester] [Required] The end of range partitioning, exclusive.
@@ -30,9 +31,9 @@ class RangePartitioningRangeResponse {
 
   factory RangePartitioningRangeResponse.fromMap(Map<String, dynamic> map) {
     return RangePartitioningRangeResponse(
-      end: map['end'] as String,
-      interval: map['interval'] as String,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      interval: (map['interval'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

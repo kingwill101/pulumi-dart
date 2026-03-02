@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FastHttpAppVirtualServer {
   /// IP4/IPv6 address to be used for virtual server ex: `10.1.1.1`
-  final String ip;
+  final pulumi.Input<String> ip;
   /// Port number to used for accessing virtual server/application
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [FastHttpAppVirtualServer].
   /// [ip] IP4/IPv6 address to be used for virtual server ex: `10.1.1.1`
@@ -24,8 +25,8 @@ class FastHttpAppVirtualServer {
 
   factory FastHttpAppVirtualServer.fromMap(Map<String, dynamic> map) {
     return FastHttpAppVirtualServer(
-      ip: map['ip'] as String,
-      port: map['port'] as int,
+      ip: (map['ip'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

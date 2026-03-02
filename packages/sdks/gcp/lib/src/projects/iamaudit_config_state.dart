@@ -21,15 +21,11 @@ class IAMAuditConfigState {
   /// [project] The project id of the target project. This is not
   /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   IAMAuditConfigState({
-    pulumi.Output<List<IAMAuditConfigAuditLogConfig>>? auditLogConfigs,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? service,
-  }) :
-      auditLogConfigs = pulumi.Input.asOptionalInput<List<IAMAuditConfigAuditLogConfig>>(auditLogConfigs),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.auditLogConfigs,
+    this.etag,
+    this.project,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class IAMAuditConfigState {
 
   factory IAMAuditConfigState.fromMap(Map<String, dynamic> map) {
     return IAMAuditConfigState(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Output.create<List<IAMAuditConfigAuditLogConfig>>(pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

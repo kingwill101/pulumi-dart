@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Class for ACR Properties.
 class ACRProperties {
   /// Gets or sets the azure container registry name.
-  final String? registryName;
+  final pulumi.Input<String>? registryName;
   /// Gets or sets the resource group of the resource.
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// Gets or sets the subscription id of the resource.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Gets or sets the tenant id.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ACRProperties].
   /// [registryName] Gets or sets the azure container registry name.
@@ -35,10 +36,10 @@ class ACRProperties {
 
   factory ACRProperties.fromMap(Map<String, dynamic> map) {
     return ACRProperties(
-      registryName: map['registryName'] == null ? null : map['registryName'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      registryName: map['registryName'] == null ? null : (map['registryName'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

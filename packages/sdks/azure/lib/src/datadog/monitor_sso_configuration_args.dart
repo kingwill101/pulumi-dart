@@ -24,17 +24,12 @@ class MonitorSsoConfigurationArgs {
   /// [singleSignOn] The state of SingleSignOn configuration. Possible values are `Enable`, `Disable`, `Initial` and `Existing`.
   /// [singleSignOnEnabled] Optional.
   MonitorSsoConfigurationArgs({
-    required pulumi.Output<String> datadogMonitorId,
-    required pulumi.Output<String> enterpriseApplicationId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? singleSignOn,
-    pulumi.Output<String>? singleSignOnEnabled,
-  }) :
-      datadogMonitorId = pulumi.Input.asInput<String>(datadogMonitorId),
-      enterpriseApplicationId = pulumi.Input.asInput<String>(enterpriseApplicationId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      singleSignOn = pulumi.Input.asOptionalInput<String>(singleSignOn),
-      singleSignOnEnabled = pulumi.Input.asOptionalInput<String>(singleSignOnEnabled);
+    required this.datadogMonitorId,
+    required this.enterpriseApplicationId,
+    this.name,
+    this.singleSignOn,
+    this.singleSignOnEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class MonitorSsoConfigurationArgs {
 
   factory MonitorSsoConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MonitorSsoConfigurationArgs(
-      datadogMonitorId: pulumi.Output.create<String>(map['datadogMonitorId'] as String),
-      enterpriseApplicationId: pulumi.Output.create<String>(map['enterpriseApplicationId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      singleSignOn: map['singleSignOn'] == null ? null : pulumi.Output.create<String>(map['singleSignOn'] as String),
-      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : pulumi.Output.create<String>(map['singleSignOnEnabled'] as String),
+      datadogMonitorId: (map['datadogMonitorId'] as String).input(),
+      enterpriseApplicationId: (map['enterpriseApplicationId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      singleSignOn: map['singleSignOn'] == null ? null : (map['singleSignOn'] as String).input(),
+      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled'] as String).input(),
     );
   }
 }

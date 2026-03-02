@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricBucketOptionsExplicitBuckets {
   /// The values must be monotonically increasing.
-  final List<double> bounds;
+  final pulumi.Input<List<double>> bounds;
 
   /// Creates a new [MetricBucketOptionsExplicitBuckets].
   /// [bounds] The values must be monotonically increasing.
@@ -19,7 +20,7 @@ class MetricBucketOptionsExplicitBuckets {
 
   factory MetricBucketOptionsExplicitBuckets.fromMap(Map<String, dynamic> map) {
     return MetricBucketOptionsExplicitBuckets(
-      bounds: (map['bounds'] as List).cast<double>(),
+      bounds: ((map['bounds'] as List).cast<double>()).input(),
     );
   }
 }

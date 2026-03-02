@@ -9,13 +9,13 @@ import 'topic_configuration.dart';
 /// Definition of NotificationConfiguration
 class NotificationConfiguration {
   /// Enables delivery of events to Amazon EventBridge. Amazon S3 can send events to Amazon EventBridge whenever certain events happen in your bucket, see [Using EventBridge](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html) in the *Amazon S3 User Guide*. Unlike other destinations, delivery of events to EventBridge can be either enabled or disabled for a bucket. If enabled, all events will be sent to EventBridge and you can use EventBridge rules to route events to additional targets. For more information, see [What Is Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) in the *Amazon EventBridge User Guide*
-  final EventBridgeConfiguration? eventBridgeConfiguration;
+  final pulumi.Input<EventBridgeConfiguration>? eventBridgeConfiguration;
   /// Describes the LAMlong functions to invoke and the events for which to invoke them.
-  final List<LambdaConfiguration>? lambdaConfigurations;
+  final pulumi.Input<List<LambdaConfiguration>>? lambdaConfigurations;
   /// The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
-  final List<QueueConfiguration>? queueConfigurations;
+  final pulumi.Input<List<QueueConfiguration>>? queueConfigurations;
   /// The topic to which notifications are sent and the events for which notifications are generated.
-  final List<TopicConfiguration>? topicConfigurations;
+  final pulumi.Input<List<TopicConfiguration>>? topicConfigurations;
 
   /// Creates a new [NotificationConfiguration].
   /// [eventBridgeConfiguration] Enables delivery of events to Amazon EventBridge. Amazon S3 can send events to Amazon EventBridge whenever certain events happen in your bucket, see [Using EventBridge](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html) in the *Amazon S3 User Guide*. Unlike other destinations, delivery of events to EventBridge can be either enabled or disabled for a bucket. If enabled, all events will be sent to EventBridge and you can use EventBridge rules to route events to additional targets. For more information, see [What Is Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) in the *Amazon EventBridge User Guide*
@@ -31,19 +31,19 @@ class NotificationConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventBridgeConfiguration': ?eventBridgeConfiguration == null ? null : eventBridgeConfiguration!.toMap(),
-      'lambdaConfigurations': ?lambdaConfigurations == null ? null : pulumi.Input.encodeList<LambdaConfiguration, Map<String, dynamic>>(lambdaConfigurations!, (value) => value.toMap()),
-      'queueConfigurations': ?queueConfigurations == null ? null : pulumi.Input.encodeList<QueueConfiguration, Map<String, dynamic>>(queueConfigurations!, (value) => value.toMap()),
-      'topicConfigurations': ?topicConfigurations == null ? null : pulumi.Input.encodeList<TopicConfiguration, Map<String, dynamic>>(topicConfigurations!, (value) => value.toMap()),
+      'eventBridgeConfiguration': ?pulumi.Input.mapOptionalInputValue<EventBridgeConfiguration, Map<String, dynamic>>(eventBridgeConfiguration, (value) => value.toMap()),
+      'lambdaConfigurations': ?pulumi.Input.mapOptionalInputValue<List<LambdaConfiguration>, List<Map<String, dynamic>>>(lambdaConfigurations, (value) => pulumi.Input.encodeList<LambdaConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'queueConfigurations': ?pulumi.Input.mapOptionalInputValue<List<QueueConfiguration>, List<Map<String, dynamic>>>(queueConfigurations, (value) => pulumi.Input.encodeList<QueueConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'topicConfigurations': ?pulumi.Input.mapOptionalInputValue<List<TopicConfiguration>, List<Map<String, dynamic>>>(topicConfigurations, (value) => pulumi.Input.encodeList<TopicConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return NotificationConfiguration(
-      eventBridgeConfiguration: map['eventBridgeConfiguration'] == null ? null : EventBridgeConfiguration.fromMap((map['eventBridgeConfiguration'] as Map).cast<String, dynamic>()),
-      lambdaConfigurations: map['lambdaConfigurations'] == null ? null : pulumi.Input.decodeList<LambdaConfiguration>(map['lambdaConfigurations'], (value) => LambdaConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      queueConfigurations: map['queueConfigurations'] == null ? null : pulumi.Input.decodeList<QueueConfiguration>(map['queueConfigurations'], (value) => QueueConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      topicConfigurations: map['topicConfigurations'] == null ? null : pulumi.Input.decodeList<TopicConfiguration>(map['topicConfigurations'], (value) => TopicConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      eventBridgeConfiguration: map['eventBridgeConfiguration'] == null ? null : (EventBridgeConfiguration.fromMap((map['eventBridgeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      lambdaConfigurations: map['lambdaConfigurations'] == null ? null : (pulumi.Input.decodeList<LambdaConfiguration>(map['lambdaConfigurations'], (value) => LambdaConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queueConfigurations: map['queueConfigurations'] == null ? null : (pulumi.Input.decodeList<QueueConfiguration>(map['queueConfigurations'], (value) => QueueConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      topicConfigurations: map['topicConfigurations'] == null ? null : (pulumi.Input.decodeList<TopicConfiguration>(map['topicConfigurations'], (value) => TopicConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

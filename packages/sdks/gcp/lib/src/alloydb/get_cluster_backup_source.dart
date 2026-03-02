@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterBackupSource {
   /// The name of the backup resource.
-  final String backupName;
+  final pulumi.Input<String> backupName;
 
   /// Creates a new [GetClusterBackupSource].
   /// [backupName] The name of the backup resource.
@@ -19,7 +20,7 @@ class GetClusterBackupSource {
 
   factory GetClusterBackupSource.fromMap(Map<String, dynamic> map) {
     return GetClusterBackupSource(
-      backupName: map['backupName'] as String,
+      backupName: (map['backupName'] as String).input(),
     );
   }
 }

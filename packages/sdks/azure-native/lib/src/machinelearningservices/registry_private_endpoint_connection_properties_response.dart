@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_resource_response.dart';
 import 'registry_private_link_service_connection_state_response.dart';
 
 /// Properties of the Private Endpoint Connection
 class RegistryPrivateEndpointConnectionPropertiesResponse {
   /// The group ids
-  final List<String>? groupIds;
+  final pulumi.Input<List<String>>? groupIds;
   /// The PE network resource that is linked to this PE connection.
-  final PrivateEndpointResourceResponse? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResourceResponse>? privateEndpoint;
   /// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// The connection state.
-  final RegistryPrivateLinkServiceConnectionStateResponse? registryPrivateLinkServiceConnectionState;
+  final pulumi.Input<RegistryPrivateLinkServiceConnectionStateResponse>? registryPrivateLinkServiceConnectionState;
 
   /// Creates a new [RegistryPrivateEndpointConnectionPropertiesResponse].
   /// [groupIds] The group ids
@@ -29,18 +30,18 @@ class RegistryPrivateEndpointConnectionPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupIds': ?groupIds,
-      'privateEndpoint': ?privateEndpoint == null ? null : privateEndpoint!.toMap(),
+      'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointResourceResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
-      'registryPrivateLinkServiceConnectionState': ?registryPrivateLinkServiceConnectionState == null ? null : registryPrivateLinkServiceConnectionState!.toMap(),
+      'registryPrivateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<RegistryPrivateLinkServiceConnectionStateResponse, Map<String, dynamic>>(registryPrivateLinkServiceConnectionState, (value) => value.toMap()),
     };
   }
 
   factory RegistryPrivateEndpointConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RegistryPrivateEndpointConnectionPropertiesResponse(
-      groupIds: map['groupIds'] == null ? null : (map['groupIds'] as List).cast<String>(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : PrivateEndpointResourceResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      registryPrivateLinkServiceConnectionState: map['registryPrivateLinkServiceConnectionState'] == null ? null : RegistryPrivateLinkServiceConnectionStateResponse.fromMap((map['registryPrivateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResourceResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      registryPrivateLinkServiceConnectionState: map['registryPrivateLinkServiceConnectionState'] == null ? null : (RegistryPrivateLinkServiceConnectionStateResponse.fromMap((map['registryPrivateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

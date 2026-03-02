@@ -20,17 +20,12 @@ class GetDataTaxonomyAttributeIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetDataTaxonomyAttributeIamPolicyArgs({
-    required pulumi.Output<String> attributeId,
-    required pulumi.Output<String> dataTaxonomyId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      attributeId = pulumi.Input.asInput<String>(attributeId),
-      dataTaxonomyId = pulumi.Input.asInput<String>(dataTaxonomyId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.attributeId,
+    required this.dataTaxonomyId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetDataTaxonomyAttributeIamPolicyArgs {
 
   factory GetDataTaxonomyAttributeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDataTaxonomyAttributeIamPolicyArgs(
-      attributeId: pulumi.Output.create<String>(map['attributeId'] as String),
-      dataTaxonomyId: pulumi.Output.create<String>(map['dataTaxonomyId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      attributeId: (map['attributeId'] as String).input(),
+      dataTaxonomyId: (map['dataTaxonomyId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

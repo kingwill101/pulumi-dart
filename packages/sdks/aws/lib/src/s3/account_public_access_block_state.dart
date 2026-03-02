@@ -27,17 +27,12 @@ class AccountPublicAccessBlockState {
   /// [ignorePublicAcls] Whether Amazon S3 should ignore public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set. When set to `true` causes Amazon S3 to:
   /// [restrictPublicBuckets] Whether Amazon S3 should restrict public bucket policies for buckets in this account. Defaults to `false`. Enabling this setting does not affect previously stored bucket policies, except that public and cross-account access within any public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`:
   AccountPublicAccessBlockState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<bool>? blockPublicAcls,
-    pulumi.Output<bool>? blockPublicPolicy,
-    pulumi.Output<bool>? ignorePublicAcls,
-    pulumi.Output<bool>? restrictPublicBuckets,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      blockPublicAcls = pulumi.Input.asOptionalInput<bool>(blockPublicAcls),
-      blockPublicPolicy = pulumi.Input.asOptionalInput<bool>(blockPublicPolicy),
-      ignorePublicAcls = pulumi.Input.asOptionalInput<bool>(ignorePublicAcls),
-      restrictPublicBuckets = pulumi.Input.asOptionalInput<bool>(restrictPublicBuckets);
+    this.accountId,
+    this.blockPublicAcls,
+    this.blockPublicPolicy,
+    this.ignorePublicAcls,
+    this.restrictPublicBuckets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AccountPublicAccessBlockState {
 
   factory AccountPublicAccessBlockState.fromMap(Map<String, dynamic> map) {
     return AccountPublicAccessBlockState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      blockPublicAcls: map['blockPublicAcls'] == null ? null : pulumi.Output.create<bool>(map['blockPublicAcls'] as bool),
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : pulumi.Output.create<bool>(map['blockPublicPolicy'] as bool),
-      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : pulumi.Output.create<bool>(map['ignorePublicAcls'] as bool),
-      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : pulumi.Output.create<bool>(map['restrictPublicBuckets'] as bool),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      blockPublicAcls: map['blockPublicAcls'] == null ? null : (map['blockPublicAcls'] as bool).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
+      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : (map['ignorePublicAcls'] as bool).input(),
+      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : (map['restrictPublicBuckets'] as bool).input(),
     );
   }
 }

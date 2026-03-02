@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_stats_dimensions_response.dart';
 
 /// Stats for the requested dimensions: QPS, duration, and error/warning rate
 class EnterpriseCrmEventbusStatsResponse {
   /// Dimensions that these stats have been aggregated on.
-  final EnterpriseCrmEventbusStatsDimensionsResponse dimensions;
+  final pulumi.Input<EnterpriseCrmEventbusStatsDimensionsResponse> dimensions;
   /// Average duration in seconds.
-  final double durationInSeconds;
+  final pulumi.Input<double> durationInSeconds;
   /// Average error rate.
-  final double errorRate;
+  final pulumi.Input<double> errorRate;
   /// Queries per second.
-  final double qps;
+  final pulumi.Input<double> qps;
   /// Average warning rate.
-  final double warningRate;
+  final pulumi.Input<double> warningRate;
 
   /// Creates a new [EnterpriseCrmEventbusStatsResponse].
   /// [dimensions] Dimensions that these stats have been aggregated on.
@@ -31,7 +32,7 @@ class EnterpriseCrmEventbusStatsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': dimensions.toMap(),
+      'dimensions': pulumi.Input.mapInputValue<EnterpriseCrmEventbusStatsDimensionsResponse, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
       'durationInSeconds': durationInSeconds,
       'errorRate': errorRate,
       'qps': qps,
@@ -41,11 +42,11 @@ class EnterpriseCrmEventbusStatsResponse {
 
   factory EnterpriseCrmEventbusStatsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStatsResponse(
-      dimensions: EnterpriseCrmEventbusStatsDimensionsResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
-      durationInSeconds: map['durationInSeconds'] as double,
-      errorRate: map['errorRate'] as double,
-      qps: map['qps'] as double,
-      warningRate: map['warningRate'] as double,
+      dimensions: (EnterpriseCrmEventbusStatsDimensionsResponse.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
+      durationInSeconds: (map['durationInSeconds'] as double).input(),
+      errorRate: (map['errorRate'] as double).input(),
+      qps: (map['qps'] as double).input(),
+      warningRate: (map['warningRate'] as double).input(),
     );
   }
 }

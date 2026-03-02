@@ -19,13 +19,10 @@ class GetSecretArgs {
   /// [secretName] The name of the secret.
   /// [vaultName] The name of the vault.
   GetSecretArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> secretName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretName = pulumi.Input.asInput<String>(secretName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.resourceGroupName,
+    required this.secretName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretName: pulumi.Output.create<String>(map['secretName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

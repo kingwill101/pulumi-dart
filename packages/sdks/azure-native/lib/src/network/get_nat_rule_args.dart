@@ -19,13 +19,10 @@ class GetNatRuleArgs {
   /// [natRuleName] The name of the nat rule.
   /// [resourceGroupName] The resource group name of the VpnGateway.
   GetNatRuleArgs({
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> natRuleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      natRuleName = pulumi.Input.asInput<String>(natRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.gatewayName,
+    required this.natRuleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNatRuleArgs {
 
   factory GetNatRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNatRuleArgs(
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      natRuleName: pulumi.Output.create<String>(map['natRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      gatewayName: (map['gatewayName'] as String).input(),
+      natRuleName: (map['natRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

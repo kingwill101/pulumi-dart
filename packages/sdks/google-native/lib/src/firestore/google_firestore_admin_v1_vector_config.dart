@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The index configuration to support vector search operations
 class GoogleFirestoreAdminV1VectorConfig {
   /// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
-  final int dimension;
+  final pulumi.Input<int> dimension;
   /// Indicates the vector index is a flat index.
-  final Map<String, dynamic>? flat;
+  final pulumi.Input<Map<String, dynamic>>? flat;
 
   /// Creates a new [GoogleFirestoreAdminV1VectorConfig].
   /// [dimension] The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
@@ -25,8 +26,8 @@ class GoogleFirestoreAdminV1VectorConfig {
 
   factory GoogleFirestoreAdminV1VectorConfig.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1VectorConfig(
-      dimension: map['dimension'] as int,
-      flat: map['flat'] == null ? null : (map['flat'] as Map).cast<String, dynamic>(),
+      dimension: (map['dimension'] as int).input(),
+      flat: map['flat'] == null ? null : ((map['flat'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

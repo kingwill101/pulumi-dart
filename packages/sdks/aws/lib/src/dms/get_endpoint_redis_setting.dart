@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointRedisSetting {
-  final String authPassword;
-  final String authType;
-  final String authUserName;
-  final int port;
-  final String serverName;
-  final String sslCaCertificateArn;
-  final String sslSecurityProtocol;
+  final pulumi.Input<String> authPassword;
+  final pulumi.Input<String> authType;
+  final pulumi.Input<String> authUserName;
+  final pulumi.Input<int> port;
+  final pulumi.Input<String> serverName;
+  final pulumi.Input<String> sslCaCertificateArn;
+  final pulumi.Input<String> sslSecurityProtocol;
 
   /// Creates a new [GetEndpointRedisSetting].
   /// [authPassword] Required.
@@ -42,13 +43,13 @@ class GetEndpointRedisSetting {
 
   factory GetEndpointRedisSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointRedisSetting(
-      authPassword: map['authPassword'] as String,
-      authType: map['authType'] as String,
-      authUserName: map['authUserName'] as String,
-      port: map['port'] as int,
-      serverName: map['serverName'] as String,
-      sslCaCertificateArn: map['sslCaCertificateArn'] as String,
-      sslSecurityProtocol: map['sslSecurityProtocol'] as String,
+      authPassword: (map['authPassword'] as String).input(),
+      authType: (map['authType'] as String).input(),
+      authUserName: (map['authUserName'] as String).input(),
+      port: (map['port'] as int).input(),
+      serverName: (map['serverName'] as String).input(),
+      sslCaCertificateArn: (map['sslCaCertificateArn'] as String).input(),
+      sslSecurityProtocol: (map['sslSecurityProtocol'] as String).input(),
     );
   }
 }

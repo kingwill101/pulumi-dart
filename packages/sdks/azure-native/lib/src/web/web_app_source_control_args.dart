@@ -41,27 +41,17 @@ class WebAppSourceControlArgs {
   /// [repoUrl] Repository or source control URL.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   WebAppSourceControlArgs({
-    pulumi.Output<String>? branch,
-    pulumi.Output<bool>? deploymentRollbackEnabled,
-    pulumi.Output<GitHubActionConfiguration>? gitHubActionConfiguration,
-    pulumi.Output<bool>? isGitHubAction,
-    pulumi.Output<bool>? isManualIntegration,
-    pulumi.Output<bool>? isMercurial,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? repoUrl,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      branch = pulumi.Input.asOptionalInput<String>(branch),
-      deploymentRollbackEnabled = pulumi.Input.asOptionalInput<bool>(deploymentRollbackEnabled),
-      gitHubActionConfiguration = pulumi.Input.asOptionalInput<GitHubActionConfiguration>(gitHubActionConfiguration),
-      isGitHubAction = pulumi.Input.asOptionalInput<bool>(isGitHubAction),
-      isManualIntegration = pulumi.Input.asOptionalInput<bool>(isManualIntegration),
-      isMercurial = pulumi.Input.asOptionalInput<bool>(isMercurial),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      repoUrl = pulumi.Input.asOptionalInput<String>(repoUrl),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.branch,
+    this.deploymentRollbackEnabled,
+    this.gitHubActionConfiguration,
+    this.isGitHubAction,
+    this.isManualIntegration,
+    this.isMercurial,
+    this.kind,
+    required this.name,
+    this.repoUrl,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class WebAppSourceControlArgs {
 
   factory WebAppSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSourceControlArgs(
-      branch: map['branch'] == null ? null : pulumi.Output.create<String>(map['branch'] as String),
-      deploymentRollbackEnabled: map['deploymentRollbackEnabled'] == null ? null : pulumi.Output.create<bool>(map['deploymentRollbackEnabled'] as bool),
-      gitHubActionConfiguration: map['gitHubActionConfiguration'] == null ? null : pulumi.Output.create<GitHubActionConfiguration>(GitHubActionConfiguration.fromMap((map['gitHubActionConfiguration'] as Map).cast<String, dynamic>())),
-      isGitHubAction: map['isGitHubAction'] == null ? null : pulumi.Output.create<bool>(map['isGitHubAction'] as bool),
-      isManualIntegration: map['isManualIntegration'] == null ? null : pulumi.Output.create<bool>(map['isManualIntegration'] as bool),
-      isMercurial: map['isMercurial'] == null ? null : pulumi.Output.create<bool>(map['isMercurial'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      repoUrl: map['repoUrl'] == null ? null : pulumi.Output.create<String>(map['repoUrl'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      deploymentRollbackEnabled: map['deploymentRollbackEnabled'] == null ? null : (map['deploymentRollbackEnabled'] as bool).input(),
+      gitHubActionConfiguration: map['gitHubActionConfiguration'] == null ? null : (GitHubActionConfiguration.fromMap((map['gitHubActionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      isGitHubAction: map['isGitHubAction'] == null ? null : (map['isGitHubAction'] as bool).input(),
+      isManualIntegration: map['isManualIntegration'] == null ? null : (map['isManualIntegration'] as bool).input(),
+      isMercurial: map['isMercurial'] == null ? null : (map['isMercurial'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

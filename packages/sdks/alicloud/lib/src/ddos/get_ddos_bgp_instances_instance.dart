@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDdosBgpInstancesInstance {
   /// The instance's elastic defend bandwidth.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The instance's base defend bandwidth.
-  final int baseBandwidth;
+  final pulumi.Input<int> baseBandwidth;
   /// The instance's id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The instance's count of ip config.
-  final int ipCount;
+  final pulumi.Input<int> ipCount;
   /// The instance's IP version.
-  final String ipType;
+  final pulumi.Input<String> ipType;
   /// The instance's remark.
-  final String name;
+  final pulumi.Input<String> name;
   /// Normal defend bandwidth of the instance. The unit is Gbps.
-  final int normalBandwidth;
+  final pulumi.Input<int> normalBandwidth;
   /// The instance's region.
-  final String region;
+  final pulumi.Input<String> region;
   /// The instance's type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDdosBgpInstancesInstance].
   /// [bandwidth] The instance's elastic defend bandwidth.
@@ -59,15 +60,15 @@ class GetDdosBgpInstancesInstance {
 
   factory GetDdosBgpInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetDdosBgpInstancesInstance(
-      bandwidth: map['bandwidth'] as int,
-      baseBandwidth: map['baseBandwidth'] as int,
-      id: map['id'] as String,
-      ipCount: map['ipCount'] as int,
-      ipType: map['ipType'] as String,
-      name: map['name'] as String,
-      normalBandwidth: map['normalBandwidth'] as int,
-      region: map['region'] as String,
-      type: map['type'] as String,
+      bandwidth: (map['bandwidth'] as int).input(),
+      baseBandwidth: (map['baseBandwidth'] as int).input(),
+      id: (map['id'] as String).input(),
+      ipCount: (map['ipCount'] as int).input(),
+      ipType: (map['ipType'] as String).input(),
+      name: (map['name'] as String).input(),
+      normalBandwidth: (map['normalBandwidth'] as int).input(),
+      region: (map['region'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

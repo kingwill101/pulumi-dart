@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainRuleBasedMatchingExportingConfigS3Exporting {
   /// The name of the S3 bucket where Identity Resolution Jobs write result files.
-  final String s3BucketName;
+  final pulumi.Input<String> s3BucketName;
   /// The S3 key name of the location where Identity Resolution Jobs write result files.
-  final String? s3KeyName;
+  final pulumi.Input<String>? s3KeyName;
 
   /// Creates a new [DomainRuleBasedMatchingExportingConfigS3Exporting].
   /// [s3BucketName] The name of the S3 bucket where Identity Resolution Jobs write result files.
@@ -24,8 +25,8 @@ class DomainRuleBasedMatchingExportingConfigS3Exporting {
 
   factory DomainRuleBasedMatchingExportingConfigS3Exporting.fromMap(Map<String, dynamic> map) {
     return DomainRuleBasedMatchingExportingConfigS3Exporting(
-      s3BucketName: map['s3BucketName'] as String,
-      s3KeyName: map['s3KeyName'] == null ? null : map['s3KeyName'] as String,
+      s3BucketName: (map['s3BucketName'] as String).input(),
+      s3KeyName: map['s3KeyName'] == null ? null : (map['s3KeyName'] as String).input(),
     );
   }
 }

@@ -39,27 +39,17 @@ class DataAttributeBindingArgs {
   /// [project] Optional.
   /// [resource] Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
   DataAttributeBindingArgs({
-    pulumi.Output<List<String>>? attributes,
-    required pulumi.Output<String> dataAttributeBindingId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<GoogleCloudDataplexV1DataAttributeBindingPath>>? paths,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? resource,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<List<String>>(attributes),
-      dataAttributeBindingId = pulumi.Input.asInput<String>(dataAttributeBindingId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      paths = pulumi.Input.asOptionalInput<List<GoogleCloudDataplexV1DataAttributeBindingPath>>(paths),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asOptionalInput<String>(resource);
+    this.attributes,
+    required this.dataAttributeBindingId,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.location,
+    this.paths,
+    this.project,
+    this.resource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class DataAttributeBindingArgs {
 
   factory DataAttributeBindingArgs.fromMap(Map<String, dynamic> map) {
     return DataAttributeBindingArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<String>>((map['attributes'] as List).cast<String>()),
-      dataAttributeBindingId: pulumi.Output.create<String>(map['dataAttributeBindingId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      paths: map['paths'] == null ? null : pulumi.Output.create<List<GoogleCloudDataplexV1DataAttributeBindingPath>>(pulumi.Input.decodeList<GoogleCloudDataplexV1DataAttributeBindingPath>(map['paths'], (value) => GoogleCloudDataplexV1DataAttributeBindingPath.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resource: map['resource'] == null ? null : pulumi.Output.create<String>(map['resource'] as String),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as List).cast<String>()).input(),
+      dataAttributeBindingId: (map['dataAttributeBindingId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1DataAttributeBindingPath>(map['paths'], (value) => GoogleCloudDataplexV1DataAttributeBindingPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Credentials to access the event streaming service attached to the purview account.
 class CredentialsResponse {
   /// Identity identifier for UserAssign type.
-  final String? identityId;
+  final pulumi.Input<String>? identityId;
   /// Identity Type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [CredentialsResponse].
   /// [identityId] Identity identifier for UserAssign type.
@@ -25,8 +26,8 @@ class CredentialsResponse {
 
   factory CredentialsResponse.fromMap(Map<String, dynamic> map) {
     return CredentialsResponse(
-      identityId: map['identityId'] == null ? null : map['identityId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

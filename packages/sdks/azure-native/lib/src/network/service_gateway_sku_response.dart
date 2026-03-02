@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU of a service gateway.
 class ServiceGatewaySkuResponse {
   /// Name of a service gateway SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Tier of a service gateway SKU.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [ServiceGatewaySkuResponse].
   /// [name] Name of a service gateway SKU.
@@ -25,8 +26,8 @@ class ServiceGatewaySkuResponse {
 
   factory ServiceGatewaySkuResponse.fromMap(Map<String, dynamic> map) {
     return ServiceGatewaySkuResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

@@ -5,8 +5,8 @@ import 'get_db_nodes_db_node_property.dart';
 
 class GetDbNodesDbNode {
   /// The dbnode name
-  final String name;
-  final List<GetDbNodesDbNodeProperty> properties;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<GetDbNodesDbNodeProperty>> properties;
 
   /// Creates a new [GetDbNodesDbNode].
   /// [name] The dbnode name
@@ -19,14 +19,14 @@ class GetDbNodesDbNode {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': pulumi.Input.encodeList<GetDbNodesDbNodeProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<List<GetDbNodesDbNodeProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<GetDbNodesDbNodeProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetDbNodesDbNode.fromMap(Map<String, dynamic> map) {
     return GetDbNodesDbNode(
-      name: map['name'] as String,
-      properties: pulumi.Input.decodeList<GetDbNodesDbNodeProperty>(map['properties'], (value) => GetDbNodesDbNodeProperty.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      properties: (pulumi.Input.decodeList<GetDbNodesDbNodeProperty>(map['properties'], (value) => GetDbNodesDbNodeProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

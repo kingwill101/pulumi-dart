@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicIngestionDataSourceSettingsCloudStorageTextFormat {
   /// The delimiter to use when using the 'text' format. Each line of text as
   /// specified by the delimiter will be set to the 'data' field of a Pub/Sub
   /// message. When unset, '\n' is used.
-  final String? delimiter;
+  final pulumi.Input<String>? delimiter;
 
   /// Creates a new [TopicIngestionDataSourceSettingsCloudStorageTextFormat].
   /// [delimiter] The delimiter to use when using the 'text' format. Each line of text as
@@ -21,7 +22,7 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormat {
 
   factory TopicIngestionDataSourceSettingsCloudStorageTextFormat.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettingsCloudStorageTextFormat(
-      delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
     );
   }
 }

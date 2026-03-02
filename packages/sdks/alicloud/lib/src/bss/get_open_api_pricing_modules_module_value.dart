@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOpenApiPricingModulesModuleValue {
   /// The module Code corresponds to the attribute value.
-  final String name;
+  final pulumi.Input<String> name;
   /// Module value description information.
-  final String remark;
+  final pulumi.Input<String> remark;
   /// The attribute value type corresponding to the module Code. Value:
   /// * single_float: single value type.
   /// * range_float: range value type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The module Code corresponds to the attribute value.
   /// > format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetOpenApiPricingModulesModuleValue].
   /// [name] The module Code corresponds to the attribute value.
@@ -37,10 +38,10 @@ class GetOpenApiPricingModulesModuleValue {
 
   factory GetOpenApiPricingModulesModuleValue.fromMap(Map<String, dynamic> map) {
     return GetOpenApiPricingModulesModuleValue(
-      name: map['name'] as String,
-      remark: map['remark'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      remark: (map['remark'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

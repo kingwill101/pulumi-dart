@@ -21,13 +21,10 @@ class BrowserSettingsAssociationArgs {
   /// [portalArn] ARN of the portal to associate with the browser settings. Forces replacement if changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BrowserSettingsAssociationArgs({
-    required pulumi.Output<String> browserSettingsArn,
-    required pulumi.Output<String> portalArn,
-    pulumi.Output<String>? region,
-  }) :
-      browserSettingsArn = pulumi.Input.asInput<String>(browserSettingsArn),
-      portalArn = pulumi.Input.asInput<String>(portalArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.browserSettingsArn,
+    required this.portalArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class BrowserSettingsAssociationArgs {
 
   factory BrowserSettingsAssociationArgs.fromMap(Map<String, dynamic> map) {
     return BrowserSettingsAssociationArgs(
-      browserSettingsArn: pulumi.Output.create<String>(map['browserSettingsArn'] as String),
-      portalArn: pulumi.Output.create<String>(map['portalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      browserSettingsArn: (map['browserSettingsArn'] as String).input(),
+      portalArn: (map['portalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

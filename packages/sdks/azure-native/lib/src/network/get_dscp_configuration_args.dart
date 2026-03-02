@@ -16,11 +16,9 @@ class GetDscpConfigurationArgs {
   /// [dscpConfigurationName] The name of the resource.
   /// [resourceGroupName] The name of the resource group.
   GetDscpConfigurationArgs({
-    required pulumi.Output<String> dscpConfigurationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dscpConfigurationName = pulumi.Input.asInput<String>(dscpConfigurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dscpConfigurationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDscpConfigurationArgs {
 
   factory GetDscpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetDscpConfigurationArgs(
-      dscpConfigurationName: pulumi.Output.create<String>(map['dscpConfigurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dscpConfigurationName: (map['dscpConfigurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

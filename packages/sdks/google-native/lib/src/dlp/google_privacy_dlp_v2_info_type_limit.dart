@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_info_type.dart';
 
 /// Max findings configuration per infoType, per content item or long running DlpJob.
 class GooglePrivacyDlpV2InfoTypeLimit {
   /// Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
-  final GooglePrivacyDlpV2InfoType? infoType;
+  final pulumi.Input<GooglePrivacyDlpV2InfoType>? infoType;
   /// Max findings limit for the given infoType.
-  final int? maxFindings;
+  final pulumi.Input<int>? maxFindings;
 
   /// Creates a new [GooglePrivacyDlpV2InfoTypeLimit].
   /// [infoType] Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
@@ -19,15 +20,15 @@ class GooglePrivacyDlpV2InfoTypeLimit {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoType': ?infoType == null ? null : infoType!.toMap(),
+      'infoType': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2InfoType, Map<String, dynamic>>(infoType, (value) => value.toMap()),
       'maxFindings': ?maxFindings,
     };
   }
 
   factory GooglePrivacyDlpV2InfoTypeLimit.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoTypeLimit(
-      infoType: map['infoType'] == null ? null : GooglePrivacyDlpV2InfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>()),
-      maxFindings: map['maxFindings'] == null ? null : map['maxFindings'] as int,
+      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
+      maxFindings: map['maxFindings'] == null ? null : (map['maxFindings'] as int).input(),
     );
   }
 }

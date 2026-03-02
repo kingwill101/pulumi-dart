@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage {
   /// (Output)
   /// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
-  final String? locale;
+  final pulumi.Input<String>? locale;
   /// (Output)
   /// The localized error message in the above locale.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage].
   /// [locale] (Output)
@@ -26,8 +27,8 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage {
 
   factory ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage(
-      locale: map['locale'] == null ? null : map['locale'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

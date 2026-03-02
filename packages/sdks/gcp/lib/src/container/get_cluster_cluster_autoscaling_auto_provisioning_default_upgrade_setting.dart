@@ -5,13 +5,13 @@ import 'get_cluster_cluster_autoscaling_auto_provisioning_default_upgrade_settin
 
 class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
   /// Settings for blue-green upgrade strategy.
-  final List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting> blueGreenSettings;
+  final pulumi.Input<List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting>> blueGreenSettings;
   /// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
-  final int maxSurge;
+  final pulumi.Input<int> maxSurge;
   /// The maximum number of nodes that can be simultaneously unavailable during the upgrade process.
-  final int maxUnavailable;
+  final pulumi.Input<int> maxUnavailable;
   /// Update strategy of the node pool.
-  final String strategy;
+  final pulumi.Input<String> strategy;
 
   /// Creates a new [GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting].
   /// [blueGreenSettings] Settings for blue-green upgrade strategy.
@@ -27,7 +27,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blueGreenSettings': pulumi.Input.encodeList<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting, Map<String, dynamic>>(blueGreenSettings, (value) => value.toMap()),
+      'blueGreenSettings': pulumi.Input.mapInputValue<List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting>, List<Map<String, dynamic>>>(blueGreenSettings, (value) => pulumi.Input.encodeList<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maxSurge': maxSurge,
       'maxUnavailable': maxUnavailable,
       'strategy': strategy,
@@ -36,10 +36,10 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
 
   factory GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting.fromMap(Map<String, dynamic> map) {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting(
-      blueGreenSettings: pulumi.Input.decodeList<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting>(map['blueGreenSettings'], (value) => GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting.fromMap((value as Map).cast<String, dynamic>())),
-      maxSurge: map['maxSurge'] as int,
-      maxUnavailable: map['maxUnavailable'] as int,
-      strategy: map['strategy'] as String,
+      blueGreenSettings: (pulumi.Input.decodeList<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting>(map['blueGreenSettings'], (value) => GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxSurge: (map['maxSurge'] as int).input(),
+      maxUnavailable: (map['maxUnavailable'] as int).input(),
+      strategy: (map['strategy'] as String).input(),
     );
   }
 }

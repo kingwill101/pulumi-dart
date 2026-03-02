@@ -6,7 +6,7 @@ import 'business_identity_response.dart';
 /// The B2B partner content.
 class B2BPartnerContentResponse {
   /// The list of partner business identities.
-  final List<BusinessIdentityResponse>? businessIdentities;
+  final pulumi.Input<List<BusinessIdentityResponse>>? businessIdentities;
 
   /// Creates a new [B2BPartnerContentResponse].
   /// [businessIdentities] The list of partner business identities.
@@ -16,13 +16,13 @@ class B2BPartnerContentResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'businessIdentities': ?businessIdentities == null ? null : pulumi.Input.encodeList<BusinessIdentityResponse, Map<String, dynamic>>(businessIdentities!, (value) => value.toMap()),
+      'businessIdentities': ?pulumi.Input.mapOptionalInputValue<List<BusinessIdentityResponse>, List<Map<String, dynamic>>>(businessIdentities, (value) => pulumi.Input.encodeList<BusinessIdentityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory B2BPartnerContentResponse.fromMap(Map<String, dynamic> map) {
     return B2BPartnerContentResponse(
-      businessIdentities: map['businessIdentities'] == null ? null : pulumi.Input.decodeList<BusinessIdentityResponse>(map['businessIdentities'], (value) => BusinessIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      businessIdentities: map['businessIdentities'] == null ? null : (pulumi.Input.decodeList<BusinessIdentityResponse>(map['businessIdentities'], (value) => BusinessIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

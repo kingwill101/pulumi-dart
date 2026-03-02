@@ -42,27 +42,17 @@ class DiscoveryConfigArgs {
   /// [status] A status for this configuration.
   /// [targets] Target to match against for determining what to scan and how frequently.
   DiscoveryConfigArgs({
-    pulumi.Output<List<GooglePrivacyDlpV2DataProfileAction>>? actions,
-    pulumi.Output<String>? configId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? inspectTemplates,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<GooglePrivacyDlpV2OrgConfig>? orgConfig,
-    pulumi.Output<String>? project,
-    required pulumi.Output<DiscoveryConfigStatus> status,
-    pulumi.Output<List<GooglePrivacyDlpV2DiscoveryTarget>>? targets,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<GooglePrivacyDlpV2DataProfileAction>>(actions),
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inspectTemplates = pulumi.Input.asOptionalInput<List<String>>(inspectTemplates),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgConfig = pulumi.Input.asOptionalInput<GooglePrivacyDlpV2OrgConfig>(orgConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      status = pulumi.Input.asInput<DiscoveryConfigStatus>(status),
-      targets = pulumi.Input.asOptionalInput<List<GooglePrivacyDlpV2DiscoveryTarget>>(targets);
+    this.actions,
+    this.configId,
+    this.displayName,
+    this.inspectTemplates,
+    this.location,
+    this.name,
+    this.orgConfig,
+    this.project,
+    required this.status,
+    this.targets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class DiscoveryConfigArgs {
 
   factory DiscoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveryConfigArgs(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<GooglePrivacyDlpV2DataProfileAction>>(pulumi.Input.decodeList<GooglePrivacyDlpV2DataProfileAction>(map['actions'], (value) => GooglePrivacyDlpV2DataProfileAction.fromMap((value as Map).cast<String, dynamic>()))),
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inspectTemplates: map['inspectTemplates'] == null ? null : pulumi.Output.create<List<String>>((map['inspectTemplates'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgConfig: map['orgConfig'] == null ? null : pulumi.Output.create<GooglePrivacyDlpV2OrgConfig>(GooglePrivacyDlpV2OrgConfig.fromMap((map['orgConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      status: pulumi.Output.create<DiscoveryConfigStatus>(DiscoveryConfigStatus.fromValue(map['status'] as String)),
-      targets: map['targets'] == null ? null : pulumi.Output.create<List<GooglePrivacyDlpV2DiscoveryTarget>>(pulumi.Input.decodeList<GooglePrivacyDlpV2DiscoveryTarget>(map['targets'], (value) => GooglePrivacyDlpV2DiscoveryTarget.fromMap((value as Map).cast<String, dynamic>()))),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DataProfileAction>(map['actions'], (value) => GooglePrivacyDlpV2DataProfileAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inspectTemplates: map['inspectTemplates'] == null ? null : ((map['inspectTemplates'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgConfig: map['orgConfig'] == null ? null : (GooglePrivacyDlpV2OrgConfig.fromMap((map['orgConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      status: (DiscoveryConfigStatus.fromValue(map['status'] as String)).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DiscoveryTarget>(map['targets'], (value) => GooglePrivacyDlpV2DiscoveryTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

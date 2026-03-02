@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppJobConfig {
   /// Size of the build instance. Valid values: `STANDARD_8GB`, `LARGE_16GB`, and `XLARGE_72GB`. Default: `STANDARD_8GB`.
-  final String? buildComputeType;
+  final pulumi.Input<String>? buildComputeType;
 
   /// Creates a new [AppJobConfig].
   /// [buildComputeType] Size of the build instance. Valid values: `STANDARD_8GB`, `LARGE_16GB`, and `XLARGE_72GB`. Default: `STANDARD_8GB`.
@@ -19,7 +20,7 @@ class AppJobConfig {
 
   factory AppJobConfig.fromMap(Map<String, dynamic> map) {
     return AppJobConfig(
-      buildComputeType: map['buildComputeType'] == null ? null : map['buildComputeType'] as String,
+      buildComputeType: map['buildComputeType'] == null ? null : (map['buildComputeType'] as String).input(),
     );
   }
 }

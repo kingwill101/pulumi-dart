@@ -27,17 +27,12 @@ class KeyHandleState {
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceTypeSelector] Selector of the resource type where we want to protect resources.
   KeyHandleState({
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? resourceTypeSelector,
-  }) :
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceTypeSelector = pulumi.Input.asOptionalInput<String>(resourceTypeSelector);
+    this.kmsKey,
+    this.location,
+    this.name,
+    this.project,
+    this.resourceTypeSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class KeyHandleState {
 
   factory KeyHandleState.fromMap(Map<String, dynamic> map) {
     return KeyHandleState(
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceTypeSelector: map['resourceTypeSelector'] == null ? null : pulumi.Output.create<String>(map['resourceTypeSelector'] as String),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceTypeSelector: map['resourceTypeSelector'] == null ? null : (map['resourceTypeSelector'] as String).input(),
     );
   }
 }

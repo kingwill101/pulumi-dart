@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstancePscConfigServiceAttachment {
   /// (Output)
   /// Status of the service attachment connection.
-  final String? connectionStatus;
+  final pulumi.Input<String>? connectionStatus;
   /// Fully qualified domain name that will be used in the private DNS record created for the service attachment.
-  final String? localFqdn;
+  final pulumi.Input<String>? localFqdn;
   /// URI of the service attachment to connect to.
-  final String? targetServiceAttachmentUri;
+  final pulumi.Input<String>? targetServiceAttachmentUri;
 
   /// Creates a new [InstancePscConfigServiceAttachment].
   /// [connectionStatus] (Output)
@@ -30,9 +31,9 @@ class InstancePscConfigServiceAttachment {
 
   factory InstancePscConfigServiceAttachment.fromMap(Map<String, dynamic> map) {
     return InstancePscConfigServiceAttachment(
-      connectionStatus: map['connectionStatus'] == null ? null : map['connectionStatus'] as String,
-      localFqdn: map['localFqdn'] == null ? null : map['localFqdn'] as String,
-      targetServiceAttachmentUri: map['targetServiceAttachmentUri'] == null ? null : map['targetServiceAttachmentUri'] as String,
+      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus'] as String).input(),
+      localFqdn: map['localFqdn'] == null ? null : (map['localFqdn'] as String).input(),
+      targetServiceAttachmentUri: map['targetServiceAttachmentUri'] == null ? null : (map['targetServiceAttachmentUri'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetReportByDepartmentArgs {
   /// [departmentId] Department ID
   /// [reportName] Report Name.
   GetReportByDepartmentArgs({
-    required pulumi.Output<String> departmentId,
-    required pulumi.Output<String> reportName,
-  }) :
-      departmentId = pulumi.Input.asInput<String>(departmentId),
-      reportName = pulumi.Input.asInput<String>(reportName);
+    required this.departmentId,
+    required this.reportName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetReportByDepartmentArgs {
 
   factory GetReportByDepartmentArgs.fromMap(Map<String, dynamic> map) {
     return GetReportByDepartmentArgs(
-      departmentId: pulumi.Output.create<String>(map['departmentId'] as String),
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
+      departmentId: (map['departmentId'] as String).input(),
+      reportName: (map['reportName'] as String).input(),
     );
   }
 }

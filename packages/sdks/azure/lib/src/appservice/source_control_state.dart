@@ -42,27 +42,17 @@ class SourceControlState {
   /// [useMercurial] The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
   /// [usesGithubAction] Indicates if the Slot uses a GitHub action for deployment. This value is decoded by the service from the repository information supplied.
   SourceControlState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? branch,
-    pulumi.Output<SourceControlGithubActionConfiguration>? githubActionConfiguration,
-    pulumi.Output<String>? repoUrl,
-    pulumi.Output<bool>? rollbackEnabled,
-    pulumi.Output<String>? scmType,
-    pulumi.Output<bool>? useLocalGit,
-    pulumi.Output<bool>? useManualIntegration,
-    pulumi.Output<bool>? useMercurial,
-    pulumi.Output<bool>? usesGithubAction,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      branch = pulumi.Input.asOptionalInput<String>(branch),
-      githubActionConfiguration = pulumi.Input.asOptionalInput<SourceControlGithubActionConfiguration>(githubActionConfiguration),
-      repoUrl = pulumi.Input.asOptionalInput<String>(repoUrl),
-      rollbackEnabled = pulumi.Input.asOptionalInput<bool>(rollbackEnabled),
-      scmType = pulumi.Input.asOptionalInput<String>(scmType),
-      useLocalGit = pulumi.Input.asOptionalInput<bool>(useLocalGit),
-      useManualIntegration = pulumi.Input.asOptionalInput<bool>(useManualIntegration),
-      useMercurial = pulumi.Input.asOptionalInput<bool>(useMercurial),
-      usesGithubAction = pulumi.Input.asOptionalInput<bool>(usesGithubAction);
+    this.appId,
+    this.branch,
+    this.githubActionConfiguration,
+    this.repoUrl,
+    this.rollbackEnabled,
+    this.scmType,
+    this.useLocalGit,
+    this.useManualIntegration,
+    this.useMercurial,
+    this.usesGithubAction,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class SourceControlState {
 
   factory SourceControlState.fromMap(Map<String, dynamic> map) {
     return SourceControlState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      branch: map['branch'] == null ? null : pulumi.Output.create<String>(map['branch'] as String),
-      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : pulumi.Output.create<SourceControlGithubActionConfiguration>(SourceControlGithubActionConfiguration.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>())),
-      repoUrl: map['repoUrl'] == null ? null : pulumi.Output.create<String>(map['repoUrl'] as String),
-      rollbackEnabled: map['rollbackEnabled'] == null ? null : pulumi.Output.create<bool>(map['rollbackEnabled'] as bool),
-      scmType: map['scmType'] == null ? null : pulumi.Output.create<String>(map['scmType'] as String),
-      useLocalGit: map['useLocalGit'] == null ? null : pulumi.Output.create<bool>(map['useLocalGit'] as bool),
-      useManualIntegration: map['useManualIntegration'] == null ? null : pulumi.Output.create<bool>(map['useManualIntegration'] as bool),
-      useMercurial: map['useMercurial'] == null ? null : pulumi.Output.create<bool>(map['useMercurial'] as bool),
-      usesGithubAction: map['usesGithubAction'] == null ? null : pulumi.Output.create<bool>(map['usesGithubAction'] as bool),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : (SourceControlGithubActionConfiguration.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      rollbackEnabled: map['rollbackEnabled'] == null ? null : (map['rollbackEnabled'] as bool).input(),
+      scmType: map['scmType'] == null ? null : (map['scmType'] as String).input(),
+      useLocalGit: map['useLocalGit'] == null ? null : (map['useLocalGit'] as bool).input(),
+      useManualIntegration: map['useManualIntegration'] == null ? null : (map['useManualIntegration'] as bool).input(),
+      useMercurial: map['useMercurial'] == null ? null : (map['useMercurial'] as bool).input(),
+      usesGithubAction: map['usesGithubAction'] == null ? null : (map['usesGithubAction'] as bool).input(),
     );
   }
 }

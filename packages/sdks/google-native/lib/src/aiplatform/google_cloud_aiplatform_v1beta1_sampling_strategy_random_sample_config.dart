@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Requests are randomly selected.
 class GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig {
   /// Sample rate (0, 1]
-  final double? sampleRate;
+  final pulumi.Input<double>? sampleRate;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig].
   /// [sampleRate] Sample rate (0, 1]
@@ -20,7 +21,7 @@ class GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig {
 
   factory GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig(
-      sampleRate: map['sampleRate'] == null ? null : map['sampleRate'] as double,
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
     );
   }
 }

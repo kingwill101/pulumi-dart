@@ -22,15 +22,11 @@ class GetCustomDomainArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   GetCustomDomainArgs({
-    required pulumi.Output<String> appName,
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      appName = pulumi.Input.asInput<String>(appName),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.appName,
+    required this.domainName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCustomDomainArgs {
 
   factory GetCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainArgs(
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      appName: (map['appName'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

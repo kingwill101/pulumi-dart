@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserTenantsTenant {
   /// The user tenant id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the user tenant.
-  final String status;
+  final pulumi.Input<String> status;
   /// The name of the user tenant.
-  final String tenantName;
+  final pulumi.Input<String> tenantName;
   /// The user tenant id. Same as id.
-  final String tid;
+  final pulumi.Input<String> tid;
 
   /// Creates a new [GetUserTenantsTenant].
   /// [id] The user tenant id.
@@ -34,10 +35,10 @@ class GetUserTenantsTenant {
 
   factory GetUserTenantsTenant.fromMap(Map<String, dynamic> map) {
     return GetUserTenantsTenant(
-      id: map['id'] as String,
-      status: map['status'] as String,
-      tenantName: map['tenantName'] as String,
-      tid: map['tid'] as String,
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
+      tenantName: (map['tenantName'] as String).input(),
+      tid: (map['tid'] as String).input(),
     );
   }
 }

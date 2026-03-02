@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes HttpsTrigger, could be used to connect web hooks to function.
 class HttpsTriggerResponse {
   /// The security level for the function.
-  final String securityLevel;
+  final pulumi.Input<String> securityLevel;
   /// The deployed url for the function.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [HttpsTriggerResponse].
   /// [securityLevel] The security level for the function.
@@ -25,8 +26,8 @@ class HttpsTriggerResponse {
 
   factory HttpsTriggerResponse.fromMap(Map<String, dynamic> map) {
     return HttpsTriggerResponse(
-      securityLevel: map['securityLevel'] as String,
-      url: map['url'] as String,
+      securityLevel: (map['securityLevel'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

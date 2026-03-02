@@ -30,19 +30,13 @@ class CollectorPolicyArgs {
   /// [tags] A mapping of tags which should be assigned to the Network Function Collector Policy.
   /// [trafficCollectorId] Specifies the Azure Traffic Collector ID of the Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
   CollectorPolicyArgs({
-    required pulumi.Output<CollectorPolicyIpfxEmission> ipfxEmission,
-    required pulumi.Output<CollectorPolicyIpfxIngestion> ipfxIngestion,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trafficCollectorId,
-  }) :
-      ipfxEmission = pulumi.Input.asInput<CollectorPolicyIpfxEmission>(ipfxEmission),
-      ipfxIngestion = pulumi.Input.asInput<CollectorPolicyIpfxIngestion>(ipfxIngestion),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficCollectorId = pulumi.Input.asInput<String>(trafficCollectorId);
+    required this.ipfxEmission,
+    required this.ipfxIngestion,
+    this.location,
+    this.name,
+    this.tags,
+    required this.trafficCollectorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class CollectorPolicyArgs {
 
   factory CollectorPolicyArgs.fromMap(Map<String, dynamic> map) {
     return CollectorPolicyArgs(
-      ipfxEmission: pulumi.Output.create<CollectorPolicyIpfxEmission>(CollectorPolicyIpfxEmission.fromMap((map['ipfxEmission'] as Map).cast<String, dynamic>())),
-      ipfxIngestion: pulumi.Output.create<CollectorPolicyIpfxIngestion>(CollectorPolicyIpfxIngestion.fromMap((map['ipfxIngestion'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficCollectorId: pulumi.Output.create<String>(map['trafficCollectorId'] as String),
+      ipfxEmission: (CollectorPolicyIpfxEmission.fromMap((map['ipfxEmission'] as Map).cast<String, dynamic>())).input(),
+      ipfxIngestion: (CollectorPolicyIpfxIngestion.fromMap((map['ipfxIngestion'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficCollectorId: (map['trafficCollectorId'] as String).input(),
     );
   }
 }

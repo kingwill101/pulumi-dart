@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VM-VM placement policy properties
 class VmVmPlacementPolicyProperties {
   /// placement policy affinity type
-  final String affinityType;
+  final pulumi.Input<String> affinityType;
   /// Display name of the placement policy
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Whether the placement policy is enabled or disabled
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Placement Policy type
   /// Expected value is 'VmVm'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Virtual machine members list
-  final List<String> vmMembers;
+  final pulumi.Input<List<String>> vmMembers;
 
   /// Creates a new [VmVmPlacementPolicyProperties].
   /// [affinityType] placement policy affinity type
@@ -41,11 +42,11 @@ class VmVmPlacementPolicyProperties {
 
   factory VmVmPlacementPolicyProperties.fromMap(Map<String, dynamic> map) {
     return VmVmPlacementPolicyProperties(
-      affinityType: map['affinityType'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] as String,
-      vmMembers: (map['vmMembers'] as List).cast<String>(),
+      affinityType: (map['affinityType'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      vmMembers: ((map['vmMembers'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_configuration.dart';
 
 /// properties for Arc-enabled edge device with HCI OS.
 class HciEdgeDeviceProperties {
   /// Device Configuration
-  final DeviceConfiguration? deviceConfiguration;
+  final pulumi.Input<DeviceConfiguration>? deviceConfiguration;
 
   /// Creates a new [HciEdgeDeviceProperties].
   /// [deviceConfiguration] Device Configuration
@@ -15,13 +16,13 @@ class HciEdgeDeviceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deviceConfiguration': ?deviceConfiguration == null ? null : deviceConfiguration!.toMap(),
+      'deviceConfiguration': ?pulumi.Input.mapOptionalInputValue<DeviceConfiguration, Map<String, dynamic>>(deviceConfiguration, (value) => value.toMap()),
     };
   }
 
   factory HciEdgeDeviceProperties.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceProperties(
-      deviceConfiguration: map['deviceConfiguration'] == null ? null : DeviceConfiguration.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>()),
+      deviceConfiguration: map['deviceConfiguration'] == null ? null : (DeviceConfiguration.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

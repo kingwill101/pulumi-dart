@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact agreement protocol settings.
 class EdifactProcessingSettings {
   /// The value indicating whether to create empty xml tags for trailing separators.
-  final bool createEmptyXmlTagsForTrailingSeparators;
+  final pulumi.Input<bool> createEmptyXmlTagsForTrailingSeparators;
   /// The value indicating whether to mask security information.
-  final bool maskSecurityInfo;
+  final pulumi.Input<bool> maskSecurityInfo;
   /// The value indicating whether to preserve interchange.
-  final bool preserveInterchange;
+  final pulumi.Input<bool> preserveInterchange;
   /// The value indicating whether to suspend interchange on error.
-  final bool suspendInterchangeOnError;
+  final pulumi.Input<bool> suspendInterchangeOnError;
   /// The value indicating whether to use dot as decimal separator.
-  final bool useDotAsDecimalSeparator;
+  final pulumi.Input<bool> useDotAsDecimalSeparator;
 
   /// Creates a new [EdifactProcessingSettings].
   /// [createEmptyXmlTagsForTrailingSeparators] The value indicating whether to create empty xml tags for trailing separators.
@@ -40,11 +41,11 @@ class EdifactProcessingSettings {
 
   factory EdifactProcessingSettings.fromMap(Map<String, dynamic> map) {
     return EdifactProcessingSettings(
-      createEmptyXmlTagsForTrailingSeparators: map['createEmptyXmlTagsForTrailingSeparators'] as bool,
-      maskSecurityInfo: map['maskSecurityInfo'] as bool,
-      preserveInterchange: map['preserveInterchange'] as bool,
-      suspendInterchangeOnError: map['suspendInterchangeOnError'] as bool,
-      useDotAsDecimalSeparator: map['useDotAsDecimalSeparator'] as bool,
+      createEmptyXmlTagsForTrailingSeparators: (map['createEmptyXmlTagsForTrailingSeparators'] as bool).input(),
+      maskSecurityInfo: (map['maskSecurityInfo'] as bool).input(),
+      preserveInterchange: (map['preserveInterchange'] as bool).input(),
+      suspendInterchangeOnError: (map['suspendInterchangeOnError'] as bool).input(),
+      useDotAsDecimalSeparator: (map['useDotAsDecimalSeparator'] as bool).input(),
     );
   }
 }

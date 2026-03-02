@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StandardAppVersionDeploymentZip {
   /// files count
-  final int? filesCount;
+  final pulumi.Input<int>? filesCount;
   /// Source URL
-  final String sourceUrl;
+  final pulumi.Input<String> sourceUrl;
 
   /// Creates a new [StandardAppVersionDeploymentZip].
   /// [filesCount] files count
@@ -24,8 +25,8 @@ class StandardAppVersionDeploymentZip {
 
   factory StandardAppVersionDeploymentZip.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionDeploymentZip(
-      filesCount: map['filesCount'] == null ? null : map['filesCount'] as int,
-      sourceUrl: map['sourceUrl'] as String,
+      filesCount: map['filesCount'] == null ? null : (map['filesCount'] as int).input(),
+      sourceUrl: (map['sourceUrl'] as String).input(),
     );
   }
 }

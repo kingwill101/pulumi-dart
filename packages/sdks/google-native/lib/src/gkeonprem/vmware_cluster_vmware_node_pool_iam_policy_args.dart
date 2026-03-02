@@ -28,21 +28,14 @@ class VmwareClusterVmwareNodePoolIamPolicyArgs {
   /// [vmwareClusterId] Required.
   /// [vmwareNodePoolId] Required.
   VmwareClusterVmwareNodePoolIamPolicyArgs({
-    pulumi.Output<List<Binding>>? bindings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? version,
-    required pulumi.Output<String> vmwareClusterId,
-    required pulumi.Output<String> vmwareNodePoolId,
-  }) :
-      bindings = pulumi.Input.asOptionalInput<List<Binding>>(bindings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      version = pulumi.Input.asOptionalInput<int>(version),
-      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
-      vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
+    this.bindings,
+    this.etag,
+    this.location,
+    this.project,
+    this.version,
+    required this.vmwareClusterId,
+    required this.vmwareNodePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class VmwareClusterVmwareNodePoolIamPolicyArgs {
 
   factory VmwareClusterVmwareNodePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VmwareClusterVmwareNodePoolIamPolicyArgs(
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<Binding>>(pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
-      vmwareClusterId: pulumi.Output.create<String>(map['vmwareClusterId'] as String),
-      vmwareNodePoolId: pulumi.Output.create<String>(map['vmwareNodePoolId'] as String),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
+      vmwareClusterId: (map['vmwareClusterId'] as String).input(),
+      vmwareNodePoolId: (map['vmwareNodePoolId'] as String).input(),
     );
   }
 }

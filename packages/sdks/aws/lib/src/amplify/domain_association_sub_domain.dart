@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAssociationSubDomain {
   /// Branch name setting for the subdomain.
-  final String branchName;
+  final pulumi.Input<String> branchName;
   /// DNS record for the subdomain in a space-prefixed and space-delimited format (` CNAME <target>`).
-  final String? dnsRecord;
+  final pulumi.Input<String>? dnsRecord;
   /// Prefix setting for the subdomain.
-  final String prefix;
+  final pulumi.Input<String> prefix;
   /// Verified status of the subdomain.
-  final bool? verified;
+  final pulumi.Input<bool>? verified;
 
   /// Creates a new [DomainAssociationSubDomain].
   /// [branchName] Branch name setting for the subdomain.
@@ -34,10 +35,10 @@ class DomainAssociationSubDomain {
 
   factory DomainAssociationSubDomain.fromMap(Map<String, dynamic> map) {
     return DomainAssociationSubDomain(
-      branchName: map['branchName'] as String,
-      dnsRecord: map['dnsRecord'] == null ? null : map['dnsRecord'] as String,
-      prefix: map['prefix'] as String,
-      verified: map['verified'] == null ? null : map['verified'] as bool,
+      branchName: (map['branchName'] as String).input(),
+      dnsRecord: map['dnsRecord'] == null ? null : (map['dnsRecord'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
+      verified: map['verified'] == null ? null : (map['verified'] as bool).input(),
     );
   }
 }

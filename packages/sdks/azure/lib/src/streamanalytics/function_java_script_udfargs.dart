@@ -30,19 +30,13 @@ class FunctionJavaScriptUDFArgs {
   /// [script] The JavaScript of this UDF Function.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
   FunctionJavaScriptUDFArgs({
-    required pulumi.Output<List<FunctionJavaScriptUDFInput>> inputs,
-    pulumi.Output<String>? name,
-    required pulumi.Output<FunctionJavaScriptUDFOutput> output,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> script,
-    required pulumi.Output<String> streamAnalyticsJobName,
-  }) :
-      inputs = pulumi.Input.asInput<List<FunctionJavaScriptUDFInput>>(inputs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      output = pulumi.Input.asInput<FunctionJavaScriptUDFOutput>(output),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      script = pulumi.Input.asInput<String>(script),
-      streamAnalyticsJobName = pulumi.Input.asInput<String>(streamAnalyticsJobName);
+    required this.inputs,
+    this.name,
+    required this.output,
+    required this.resourceGroupName,
+    required this.script,
+    required this.streamAnalyticsJobName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class FunctionJavaScriptUDFArgs {
 
   factory FunctionJavaScriptUDFArgs.fromMap(Map<String, dynamic> map) {
     return FunctionJavaScriptUDFArgs(
-      inputs: pulumi.Output.create<List<FunctionJavaScriptUDFInput>>(pulumi.Input.decodeList<FunctionJavaScriptUDFInput>(map['inputs'], (value) => FunctionJavaScriptUDFInput.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      output: pulumi.Output.create<FunctionJavaScriptUDFOutput>(FunctionJavaScriptUDFOutput.fromMap((map['output'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      script: pulumi.Output.create<String>(map['script'] as String),
-      streamAnalyticsJobName: pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
+      inputs: (pulumi.Input.decodeList<FunctionJavaScriptUDFInput>(map['inputs'], (value) => FunctionJavaScriptUDFInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      output: (FunctionJavaScriptUDFOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      script: (map['script'] as String).input(),
+      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
     );
   }
 }

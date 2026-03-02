@@ -25,17 +25,12 @@ class GetCapacityPoolBucketArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] The name of the volume
   GetCapacityPoolBucketArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> bucketName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> volumeName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      bucketName = pulumi.Input.asInput<String>(bucketName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      volumeName = pulumi.Input.asInput<String>(volumeName);
+    required this.accountName,
+    required this.bucketName,
+    required this.poolName,
+    required this.resourceGroupName,
+    required this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetCapacityPoolBucketArgs {
 
   factory GetCapacityPoolBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolBucketArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      bucketName: pulumi.Output.create<String>(map['bucketName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      bucketName: (map['bucketName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

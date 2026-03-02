@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The authentication info when auth_type is azureBlobStorageSinkConnector
 class AzureBlobStorageSinkConnectorServiceInfo {
   /// The connector service type.
   /// Expected value is 'AzureBlobStorageSinkConnector'.
-  final String connectorServiceType;
+  final pulumi.Input<String> connectorServiceType;
   /// Azure Blob Storage Account Key
-  final String? storageAccountKey;
+  final pulumi.Input<String>? storageAccountKey;
   /// Azure Blob Storage Account Name
-  final String? storageAccountName;
+  final pulumi.Input<String>? storageAccountName;
   /// Azure Blob Storage Account Container Name
-  final String? storageContainerName;
+  final pulumi.Input<String>? storageContainerName;
 
   /// Creates a new [AzureBlobStorageSinkConnectorServiceInfo].
   /// [connectorServiceType] The connector service type.
@@ -36,10 +37,10 @@ class AzureBlobStorageSinkConnectorServiceInfo {
 
   factory AzureBlobStorageSinkConnectorServiceInfo.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageSinkConnectorServiceInfo(
-      connectorServiceType: map['connectorServiceType'] as String,
-      storageAccountKey: map['storageAccountKey'] == null ? null : map['storageAccountKey'] as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
-      storageContainerName: map['storageContainerName'] == null ? null : map['storageContainerName'] as String,
+      connectorServiceType: (map['connectorServiceType'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
     );
   }
 }

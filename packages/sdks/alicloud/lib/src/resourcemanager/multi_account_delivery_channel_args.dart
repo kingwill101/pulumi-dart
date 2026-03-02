@@ -28,17 +28,12 @@ class MultiAccountDeliveryChannelArgs {
   /// [resourceChangeDelivery] The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
   /// [resourceSnapshotDelivery] The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
   MultiAccountDeliveryChannelArgs({
-    required pulumi.Output<String> deliveryChannelDescription,
-    required pulumi.Output<MultiAccountDeliveryChannelDeliveryChannelFilter> deliveryChannelFilter,
-    required pulumi.Output<String> multiAccountDeliveryChannelName,
-    pulumi.Output<MultiAccountDeliveryChannelResourceChangeDelivery>? resourceChangeDelivery,
-    pulumi.Output<MultiAccountDeliveryChannelResourceSnapshotDelivery>? resourceSnapshotDelivery,
-  }) :
-      deliveryChannelDescription = pulumi.Input.asInput<String>(deliveryChannelDescription),
-      deliveryChannelFilter = pulumi.Input.asInput<MultiAccountDeliveryChannelDeliveryChannelFilter>(deliveryChannelFilter),
-      multiAccountDeliveryChannelName = pulumi.Input.asInput<String>(multiAccountDeliveryChannelName),
-      resourceChangeDelivery = pulumi.Input.asOptionalInput<MultiAccountDeliveryChannelResourceChangeDelivery>(resourceChangeDelivery),
-      resourceSnapshotDelivery = pulumi.Input.asOptionalInput<MultiAccountDeliveryChannelResourceSnapshotDelivery>(resourceSnapshotDelivery);
+    required this.deliveryChannelDescription,
+    required this.deliveryChannelFilter,
+    required this.multiAccountDeliveryChannelName,
+    this.resourceChangeDelivery,
+    this.resourceSnapshotDelivery,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class MultiAccountDeliveryChannelArgs {
 
   factory MultiAccountDeliveryChannelArgs.fromMap(Map<String, dynamic> map) {
     return MultiAccountDeliveryChannelArgs(
-      deliveryChannelDescription: pulumi.Output.create<String>(map['deliveryChannelDescription'] as String),
-      deliveryChannelFilter: pulumi.Output.create<MultiAccountDeliveryChannelDeliveryChannelFilter>(MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter'] as Map).cast<String, dynamic>())),
-      multiAccountDeliveryChannelName: pulumi.Output.create<String>(map['multiAccountDeliveryChannelName'] as String),
-      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : pulumi.Output.create<MultiAccountDeliveryChannelResourceChangeDelivery>(MultiAccountDeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery'] as Map).cast<String, dynamic>())),
-      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : pulumi.Output.create<MultiAccountDeliveryChannelResourceSnapshotDelivery>(MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery'] as Map).cast<String, dynamic>())),
+      deliveryChannelDescription: (map['deliveryChannelDescription'] as String).input(),
+      deliveryChannelFilter: (MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter'] as Map).cast<String, dynamic>())).input(),
+      multiAccountDeliveryChannelName: (map['multiAccountDeliveryChannelName'] as String).input(),
+      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery'] as Map).cast<String, dynamic>())).input(),
+      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

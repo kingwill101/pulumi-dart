@@ -19,13 +19,10 @@ class GetPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The PrivateEndpointConnection name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   GetPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.namespaceName,
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

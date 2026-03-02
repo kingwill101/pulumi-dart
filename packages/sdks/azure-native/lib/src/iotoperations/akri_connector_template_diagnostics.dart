@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'akri_connectors_diagnostics_logs.dart';
 
 /// AkriConnectorTemplateDiagnostics properties.
 class AkriConnectorTemplateDiagnostics {
   /// The log settings for the Connector template.
-  final AkriConnectorsDiagnosticsLogs logs;
+  final pulumi.Input<AkriConnectorsDiagnosticsLogs> logs;
 
   /// Creates a new [AkriConnectorTemplateDiagnostics].
   /// [logs] The log settings for the Connector template.
@@ -15,13 +16,13 @@ class AkriConnectorTemplateDiagnostics {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logs': logs.toMap(),
+      'logs': pulumi.Input.mapInputValue<AkriConnectorsDiagnosticsLogs, Map<String, dynamic>>(logs, (value) => value.toMap()),
     };
   }
 
   factory AkriConnectorTemplateDiagnostics.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateDiagnostics(
-      logs: AkriConnectorsDiagnosticsLogs.fromMap((map['logs'] as Map).cast<String, dynamic>()),
+      logs: (AkriConnectorsDiagnosticsLogs.fromMap((map['logs'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

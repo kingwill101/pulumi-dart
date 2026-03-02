@@ -25,19 +25,13 @@ class CertificateBindingState {
   /// [sslState] The type of certificate binding. Allowed values are `IpBasedEnabled` or `SniEnabled`. Changing this forces a new App Service Certificate Binding to be created.
   /// [thumbprint] The certificate thumbprint.
   CertificateBindingState({
-    pulumi.Output<String>? appServiceName,
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? hostnameBindingId,
-    pulumi.Output<String>? sslState,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      appServiceName = pulumi.Input.asOptionalInput<String>(appServiceName),
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      hostnameBindingId = pulumi.Input.asOptionalInput<String>(hostnameBindingId),
-      sslState = pulumi.Input.asOptionalInput<String>(sslState),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.appServiceName,
+    this.certificateId,
+    this.hostname,
+    this.hostnameBindingId,
+    this.sslState,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class CertificateBindingState {
 
   factory CertificateBindingState.fromMap(Map<String, dynamic> map) {
     return CertificateBindingState(
-      appServiceName: map['appServiceName'] == null ? null : pulumi.Output.create<String>(map['appServiceName'] as String),
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      hostnameBindingId: map['hostnameBindingId'] == null ? null : pulumi.Output.create<String>(map['hostnameBindingId'] as String),
-      sslState: map['sslState'] == null ? null : pulumi.Output.create<String>(map['sslState'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hostnameBindingId: map['hostnameBindingId'] == null ? null : (map['hostnameBindingId'] as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

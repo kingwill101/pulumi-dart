@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The runbook property associated with the entity.
 class RunbookAssociationProperty {
   /// Gets or sets the name of the runbook.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [RunbookAssociationProperty].
   /// [name] Gets or sets the name of the runbook.
@@ -20,7 +21,7 @@ class RunbookAssociationProperty {
 
   factory RunbookAssociationProperty.fromMap(Map<String, dynamic> map) {
     return RunbookAssociationProperty(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

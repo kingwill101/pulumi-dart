@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for fleetspace Account in the fleetspace.
 class FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
   /// The location of  global database account in the Fleetspace Account.
-  final String? armLocation;
+  final pulumi.Input<String>? armLocation;
   /// The resource identifier of global database account in the Fleetspace Account.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [FleetspaceAccountPropertiesGlobalDatabaseAccountProperties].
   /// [armLocation] The location of  global database account in the Fleetspace Account.
@@ -25,8 +26,8 @@ class FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
 
   factory FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap(Map<String, dynamic> map) {
     return FleetspaceAccountPropertiesGlobalDatabaseAccountProperties(
-      armLocation: map['armLocation'] == null ? null : map['armLocation'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      armLocation: map['armLocation'] == null ? null : (map['armLocation'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

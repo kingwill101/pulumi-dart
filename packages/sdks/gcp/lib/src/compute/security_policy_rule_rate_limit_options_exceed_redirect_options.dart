@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
   /// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
-  final String? target;
+  final pulumi.Input<String>? target;
   /// Type of the redirect action.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions].
   /// [target] Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
@@ -24,8 +25,8 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
 
   factory SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(
-      target: map['target'] == null ? null : map['target'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

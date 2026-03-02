@@ -28,21 +28,14 @@ class RouteState {
   /// [targetVpcSubnetId] The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
   /// [type] The type of the route.
   RouteState({
-    pulumi.Output<String>? clientVpnEndpointId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destinationCidrBlock,
-    pulumi.Output<String>? origin,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetVpcSubnetId,
-    pulumi.Output<String>? type,
-  }) :
-      clientVpnEndpointId = pulumi.Input.asOptionalInput<String>(clientVpnEndpointId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationCidrBlock = pulumi.Input.asOptionalInput<String>(destinationCidrBlock),
-      origin = pulumi.Input.asOptionalInput<String>(origin),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetVpcSubnetId = pulumi.Input.asOptionalInput<String>(targetVpcSubnetId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.clientVpnEndpointId,
+    this.description,
+    this.destinationCidrBlock,
+    this.origin,
+    this.region,
+    this.targetVpcSubnetId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class RouteState {
 
   factory RouteState.fromMap(Map<String, dynamic> map) {
     return RouteState(
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : pulumi.Output.create<String>(map['clientVpnEndpointId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      origin: map['origin'] == null ? null : pulumi.Output.create<String>(map['origin'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetVpcSubnetId: map['targetVpcSubnetId'] == null ? null : pulumi.Output.create<String>(map['targetVpcSubnetId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : (map['clientVpnEndpointId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
+      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetVpcSubnetId: map['targetVpcSubnetId'] == null ? null : (map['targetVpcSubnetId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

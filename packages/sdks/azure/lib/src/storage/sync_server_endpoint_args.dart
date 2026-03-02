@@ -39,25 +39,16 @@ class SyncServerEndpointArgs {
   /// [tierFilesOlderThanDays] Files older than the specified age will be tiered to the cloud.
   /// [volumeFreeSpacePercent] What percentage of free space on the volume should be preserved? Defaults to `20`.
   SyncServerEndpointArgs({
-    pulumi.Output<bool>? cloudTieringEnabled,
-    pulumi.Output<String>? initialDownloadPolicy,
-    pulumi.Output<String>? localCacheMode,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> registeredServerId,
-    required pulumi.Output<String> serverLocalPath,
-    required pulumi.Output<String> storageSyncGroupId,
-    pulumi.Output<int>? tierFilesOlderThanDays,
-    pulumi.Output<int>? volumeFreeSpacePercent,
-  }) :
-      cloudTieringEnabled = pulumi.Input.asOptionalInput<bool>(cloudTieringEnabled),
-      initialDownloadPolicy = pulumi.Input.asOptionalInput<String>(initialDownloadPolicy),
-      localCacheMode = pulumi.Input.asOptionalInput<String>(localCacheMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      registeredServerId = pulumi.Input.asInput<String>(registeredServerId),
-      serverLocalPath = pulumi.Input.asInput<String>(serverLocalPath),
-      storageSyncGroupId = pulumi.Input.asInput<String>(storageSyncGroupId),
-      tierFilesOlderThanDays = pulumi.Input.asOptionalInput<int>(tierFilesOlderThanDays),
-      volumeFreeSpacePercent = pulumi.Input.asOptionalInput<int>(volumeFreeSpacePercent);
+    this.cloudTieringEnabled,
+    this.initialDownloadPolicy,
+    this.localCacheMode,
+    this.name,
+    required this.registeredServerId,
+    required this.serverLocalPath,
+    required this.storageSyncGroupId,
+    this.tierFilesOlderThanDays,
+    this.volumeFreeSpacePercent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class SyncServerEndpointArgs {
 
   factory SyncServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return SyncServerEndpointArgs(
-      cloudTieringEnabled: map['cloudTieringEnabled'] == null ? null : pulumi.Output.create<bool>(map['cloudTieringEnabled'] as bool),
-      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : pulumi.Output.create<String>(map['initialDownloadPolicy'] as String),
-      localCacheMode: map['localCacheMode'] == null ? null : pulumi.Output.create<String>(map['localCacheMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      registeredServerId: pulumi.Output.create<String>(map['registeredServerId'] as String),
-      serverLocalPath: pulumi.Output.create<String>(map['serverLocalPath'] as String),
-      storageSyncGroupId: pulumi.Output.create<String>(map['storageSyncGroupId'] as String),
-      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : pulumi.Output.create<int>(map['tierFilesOlderThanDays'] as int),
-      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : pulumi.Output.create<int>(map['volumeFreeSpacePercent'] as int),
+      cloudTieringEnabled: map['cloudTieringEnabled'] == null ? null : (map['cloudTieringEnabled'] as bool).input(),
+      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : (map['initialDownloadPolicy'] as String).input(),
+      localCacheMode: map['localCacheMode'] == null ? null : (map['localCacheMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      registeredServerId: (map['registeredServerId'] as String).input(),
+      serverLocalPath: (map['serverLocalPath'] as String).input(),
+      storageSyncGroupId: (map['storageSyncGroupId'] as String).input(),
+      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : (map['tierFilesOlderThanDays'] as int).input(),
+      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : (map['volumeFreeSpacePercent'] as int).input(),
     );
   }
 }

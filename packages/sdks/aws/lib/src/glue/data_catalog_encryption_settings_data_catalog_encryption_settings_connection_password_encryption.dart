@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption {
   /// A KMS key ARN that is used to encrypt the connection password. If connection password protection is enabled, the caller of CreateConnection and UpdateConnection needs at least `kms:Encrypt` permission on the specified AWS KMS key, to encrypt passwords before storing them in the Data Catalog.
-  final String? awsKmsKeyId;
+  final pulumi.Input<String>? awsKmsKeyId;
   /// When set to `true`, passwords remain encrypted in the responses of GetConnection and GetConnections. This encryption takes effect independently of the catalog encryption.
-  final bool returnConnectionPasswordEncrypted;
+  final pulumi.Input<bool> returnConnectionPasswordEncrypted;
 
   /// Creates a new [DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption].
   /// [awsKmsKeyId] A KMS key ARN that is used to encrypt the connection password. If connection password protection is enabled, the caller of CreateConnection and UpdateConnection needs at least `kms:Encrypt` permission on the specified AWS KMS key, to encrypt passwords before storing them in the Data Catalog.
@@ -24,8 +25,8 @@ class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswo
 
   factory DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption(
-      awsKmsKeyId: map['awsKmsKeyId'] == null ? null : map['awsKmsKeyId'] as String,
-      returnConnectionPasswordEncrypted: map['returnConnectionPasswordEncrypted'] as bool,
+      awsKmsKeyId: map['awsKmsKeyId'] == null ? null : (map['awsKmsKeyId'] as String).input(),
+      returnConnectionPasswordEncrypted: (map['returnConnectionPasswordEncrypted'] as bool).input(),
     );
   }
 }

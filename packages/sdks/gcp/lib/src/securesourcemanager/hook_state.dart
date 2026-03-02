@@ -53,33 +53,20 @@ class HookState {
   /// [uid] Unique identifier of the hook.
   /// [updateTime] Update timestamp.
   HookState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<List<String>>? events,
-    pulumi.Output<String>? hookId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<HookPushOption>? pushOption,
-    pulumi.Output<String>? repositoryId,
-    pulumi.Output<String>? sensitiveQueryString,
-    pulumi.Output<String>? targetUri,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      events = pulumi.Input.asOptionalInput<List<String>>(events),
-      hookId = pulumi.Input.asOptionalInput<String>(hookId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pushOption = pulumi.Input.asOptionalInput<HookPushOption>(pushOption),
-      repositoryId = pulumi.Input.asOptionalInput<String>(repositoryId),
-      sensitiveQueryString = pulumi.Input.asOptionalInput<String>(sensitiveQueryString),
-      targetUri = pulumi.Input.asOptionalInput<String>(targetUri),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.disabled,
+    this.events,
+    this.hookId,
+    this.location,
+    this.name,
+    this.project,
+    this.pushOption,
+    this.repositoryId,
+    this.sensitiveQueryString,
+    this.targetUri,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class HookState {
 
   factory HookState.fromMap(Map<String, dynamic> map) {
     return HookState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      events: map['events'] == null ? null : pulumi.Output.create<List<String>>((map['events'] as List).cast<String>()),
-      hookId: map['hookId'] == null ? null : pulumi.Output.create<String>(map['hookId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pushOption: map['pushOption'] == null ? null : pulumi.Output.create<HookPushOption>(HookPushOption.fromMap((map['pushOption'] as Map).cast<String, dynamic>())),
-      repositoryId: map['repositoryId'] == null ? null : pulumi.Output.create<String>(map['repositoryId'] as String),
-      sensitiveQueryString: map['sensitiveQueryString'] == null ? null : pulumi.Output.create<String>(map['sensitiveQueryString'] as String),
-      targetUri: map['targetUri'] == null ? null : pulumi.Output.create<String>(map['targetUri'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      hookId: map['hookId'] == null ? null : (map['hookId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pushOption: map['pushOption'] == null ? null : (HookPushOption.fromMap((map['pushOption'] as Map).cast<String, dynamic>())).input(),
+      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId'] as String).input(),
+      sensitiveQueryString: map['sensitiveQueryString'] == null ? null : (map['sensitiveQueryString'] as String).input(),
+      targetUri: map['targetUri'] == null ? null : (map['targetUri'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

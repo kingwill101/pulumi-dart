@@ -5,11 +5,11 @@ import 'endpoint_access_vpc_endpoint_network_interface.dart';
 
 class EndpointAccessVpcEndpoint {
   /// One or more network interfaces of the endpoint. Also known as an interface endpoint. See details below.
-  final List<EndpointAccessVpcEndpointNetworkInterface>? networkInterfaces;
+  final pulumi.Input<List<EndpointAccessVpcEndpointNetworkInterface>>? networkInterfaces;
   /// The connection endpoint ID for connecting an Amazon Redshift cluster through the proxy.
-  final String? vpcEndpointId;
+  final pulumi.Input<String>? vpcEndpointId;
   /// The VPC identifier that the endpoint is associated.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [EndpointAccessVpcEndpoint].
   /// [networkInterfaces] One or more network interfaces of the endpoint. Also known as an interface endpoint. See details below.
@@ -23,7 +23,7 @@ class EndpointAccessVpcEndpoint {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<EndpointAccessVpcEndpointNetworkInterface, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<EndpointAccessVpcEndpointNetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<EndpointAccessVpcEndpointNetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcEndpointId': ?vpcEndpointId,
       'vpcId': ?vpcId,
     };
@@ -31,9 +31,9 @@ class EndpointAccessVpcEndpoint {
 
   factory EndpointAccessVpcEndpoint.fromMap(Map<String, dynamic> map) {
     return EndpointAccessVpcEndpoint(
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<EndpointAccessVpcEndpointNetworkInterface>(map['networkInterfaces'], (value) => EndpointAccessVpcEndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : map['vpcEndpointId'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<EndpointAccessVpcEndpointNetworkInterface>(map['networkInterfaces'], (value) => EndpointAccessVpcEndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

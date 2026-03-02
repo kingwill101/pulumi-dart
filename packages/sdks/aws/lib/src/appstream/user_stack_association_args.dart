@@ -27,17 +27,12 @@ class UserStackAssociationArgs {
   /// [stackName] Name of the stack that is associated with the user.
   /// [userName] Email address of the user who is associated with the stack.
   UserStackAssociationArgs({
-    required pulumi.Output<String> authenticationType,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? sendEmailNotification,
-    required pulumi.Output<String> stackName,
-    required pulumi.Output<String> userName,
-  }) :
-      authenticationType = pulumi.Input.asInput<String>(authenticationType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sendEmailNotification = pulumi.Input.asOptionalInput<bool>(sendEmailNotification),
-      stackName = pulumi.Input.asInput<String>(stackName),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.authenticationType,
+    this.region,
+    this.sendEmailNotification,
+    required this.stackName,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class UserStackAssociationArgs {
 
   factory UserStackAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserStackAssociationArgs(
-      authenticationType: pulumi.Output.create<String>(map['authenticationType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sendEmailNotification: map['sendEmailNotification'] == null ? null : pulumi.Output.create<bool>(map['sendEmailNotification'] as bool),
-      stackName: pulumi.Output.create<String>(map['stackName'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      authenticationType: (map['authenticationType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sendEmailNotification: map['sendEmailNotification'] == null ? null : (map['sendEmailNotification'] as bool).input(),
+      stackName: (map['stackName'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

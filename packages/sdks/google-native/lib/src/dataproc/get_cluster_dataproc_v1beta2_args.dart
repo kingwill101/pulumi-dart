@@ -16,13 +16,10 @@ class GetClusterDataprocV1beta2Args {
   /// [project] Optional.
   /// [region] Required.
   GetClusterDataprocV1beta2Args({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    required this.clusterName,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetClusterDataprocV1beta2Args {
 
   factory GetClusterDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetClusterDataprocV1beta2Args(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

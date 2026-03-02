@@ -25,17 +25,12 @@ class GetWorkspaceArgs {
   /// [userName] User name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspace_id`.
   /// [workspaceId] ID of the WorkSpace. You cannot combine this parameter with `directory_id`.
   GetWorkspaceArgs({
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? userName,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userName = pulumi.Input.asOptionalInput<String>(userName),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.directoryId,
+    this.region,
+    this.tags,
+    this.userName,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetWorkspaceArgs {
 
   factory GetWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceArgs(
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_agent_spn_properties_base.dart';
 
 /// Collector agent property class.
 class CollectorAgentPropertiesBase {
   /// Gets the collector agent id.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Gets the collector last heartbeat time.
-  final String? lastHeartbeatUtc;
+  final pulumi.Input<String>? lastHeartbeatUtc;
   /// Gets or sets the SPN details.
-  final CollectorAgentSpnPropertiesBase? spnDetails;
+  final pulumi.Input<CollectorAgentSpnPropertiesBase>? spnDetails;
   /// Gets the collector agent version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [CollectorAgentPropertiesBase].
   /// [id] Gets the collector agent id.
@@ -29,17 +30,17 @@ class CollectorAgentPropertiesBase {
     return <String, dynamic>{
       'id': ?id,
       'lastHeartbeatUtc': ?lastHeartbeatUtc,
-      'spnDetails': ?spnDetails == null ? null : spnDetails!.toMap(),
+      'spnDetails': ?pulumi.Input.mapOptionalInputValue<CollectorAgentSpnPropertiesBase, Map<String, dynamic>>(spnDetails, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory CollectorAgentPropertiesBase.fromMap(Map<String, dynamic> map) {
     return CollectorAgentPropertiesBase(
-      id: map['id'] == null ? null : map['id'] as String,
-      lastHeartbeatUtc: map['lastHeartbeatUtc'] == null ? null : map['lastHeartbeatUtc'] as String,
-      spnDetails: map['spnDetails'] == null ? null : CollectorAgentSpnPropertiesBase.fromMap((map['spnDetails'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      lastHeartbeatUtc: map['lastHeartbeatUtc'] == null ? null : (map['lastHeartbeatUtc'] as String).input(),
+      spnDetails: map['spnDetails'] == null ? null : (CollectorAgentSpnPropertiesBase.fromMap((map['spnDetails'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -8,13 +8,13 @@ import 'sole_tenant_node_type.dart';
 /// Preferences concerning Sole Tenancy nodes and VMs.
 class SoleTenancyPreferences {
   /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-  final SoleTenancyPreferencesCommitmentPlan? commitmentPlan;
+  final pulumi.Input<SoleTenancyPreferencesCommitmentPlan>? commitmentPlan;
   /// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
-  final double? cpuOvercommitRatio;
+  final pulumi.Input<double>? cpuOvercommitRatio;
   /// Sole Tenancy nodes maintenance policy.
-  final SoleTenancyPreferencesHostMaintenancePolicy? hostMaintenancePolicy;
+  final pulumi.Input<SoleTenancyPreferencesHostMaintenancePolicy>? hostMaintenancePolicy;
   /// A list of sole tenant node types. An empty list means that all possible node types will be considered.
-  final List<SoleTenantNodeType>? nodeTypes;
+  final pulumi.Input<List<SoleTenantNodeType>>? nodeTypes;
 
   /// Creates a new [SoleTenancyPreferences].
   /// [commitmentPlan] Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
@@ -30,19 +30,19 @@ class SoleTenancyPreferences {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'commitmentPlan': ?commitmentPlan == null ? null : commitmentPlan!.value,
+      'commitmentPlan': ?pulumi.Input.mapOptionalInputValue<SoleTenancyPreferencesCommitmentPlan, String>(commitmentPlan, (value) => value.value),
       'cpuOvercommitRatio': ?cpuOvercommitRatio,
-      'hostMaintenancePolicy': ?hostMaintenancePolicy == null ? null : hostMaintenancePolicy!.value,
-      'nodeTypes': ?nodeTypes == null ? null : pulumi.Input.encodeList<SoleTenantNodeType, Map<String, dynamic>>(nodeTypes!, (value) => value.toMap()),
+      'hostMaintenancePolicy': ?pulumi.Input.mapOptionalInputValue<SoleTenancyPreferencesHostMaintenancePolicy, String>(hostMaintenancePolicy, (value) => value.value),
+      'nodeTypes': ?pulumi.Input.mapOptionalInputValue<List<SoleTenantNodeType>, List<Map<String, dynamic>>>(nodeTypes, (value) => pulumi.Input.encodeList<SoleTenantNodeType, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SoleTenancyPreferences.fromMap(Map<String, dynamic> map) {
     return SoleTenancyPreferences(
-      commitmentPlan: map['commitmentPlan'] == null ? null : SoleTenancyPreferencesCommitmentPlan.fromValue(map['commitmentPlan'] as String),
-      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : map['cpuOvercommitRatio'] as double,
-      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : SoleTenancyPreferencesHostMaintenancePolicy.fromValue(map['hostMaintenancePolicy'] as String),
-      nodeTypes: map['nodeTypes'] == null ? null : pulumi.Input.decodeList<SoleTenantNodeType>(map['nodeTypes'], (value) => SoleTenantNodeType.fromMap((value as Map).cast<String, dynamic>())),
+      commitmentPlan: map['commitmentPlan'] == null ? null : (SoleTenancyPreferencesCommitmentPlan.fromValue(map['commitmentPlan'] as String)).input(),
+      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio'] as double).input(),
+      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (SoleTenancyPreferencesHostMaintenancePolicy.fromValue(map['hostMaintenancePolicy'] as String)).input(),
+      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<SoleTenantNodeType>(map['nodeTypes'], (value) => SoleTenantNodeType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

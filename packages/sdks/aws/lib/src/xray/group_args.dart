@@ -26,17 +26,12 @@ class GroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   GroupArgs({
-    required pulumi.Output<String> filterExpression,
-    required pulumi.Output<String> groupName,
-    pulumi.Output<GroupInsightsConfiguration>? insightsConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filterExpression = pulumi.Input.asInput<String>(filterExpression),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      insightsConfiguration = pulumi.Input.asOptionalInput<GroupInsightsConfiguration>(insightsConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.filterExpression,
+    required this.groupName,
+    this.insightsConfiguration,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      filterExpression: pulumi.Output.create<String>(map['filterExpression'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      insightsConfiguration: map['insightsConfiguration'] == null ? null : pulumi.Output.create<GroupInsightsConfiguration>(GroupInsightsConfiguration.fromMap((map['insightsConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filterExpression: (map['filterExpression'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      insightsConfiguration: map['insightsConfiguration'] == null ? null : (GroupInsightsConfiguration.fromMap((map['insightsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

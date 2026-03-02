@@ -25,17 +25,12 @@ class GetTargetArgs {
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [targetName] String that represents a Target resource name.
   GetTargetArgs({
-    required pulumi.Output<String> parentProviderNamespace,
-    required pulumi.Output<String> parentResourceName,
-    required pulumi.Output<String> parentResourceType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetName,
-  }) :
-      parentProviderNamespace = pulumi.Input.asInput<String>(parentProviderNamespace),
-      parentResourceName = pulumi.Input.asInput<String>(parentResourceName),
-      parentResourceType = pulumi.Input.asInput<String>(parentResourceType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetName = pulumi.Input.asInput<String>(targetName);
+    required this.parentProviderNamespace,
+    required this.parentResourceName,
+    required this.parentResourceType,
+    required this.resourceGroupName,
+    required this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetTargetArgs {
 
   factory GetTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetArgs(
-      parentProviderNamespace: pulumi.Output.create<String>(map['parentProviderNamespace'] as String),
-      parentResourceName: pulumi.Output.create<String>(map['parentResourceName'] as String),
-      parentResourceType: pulumi.Output.create<String>(map['parentResourceType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+      parentProviderNamespace: (map['parentProviderNamespace'] as String).input(),
+      parentResourceName: (map['parentResourceName'] as String).input(),
+      parentResourceType: (map['parentResourceType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
     );
   }
 }

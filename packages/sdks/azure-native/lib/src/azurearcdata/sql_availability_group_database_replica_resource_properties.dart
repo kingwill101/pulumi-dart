@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of Arc Sql availability group database replica resource
 class SqlAvailabilityGroupDatabaseReplicaResourceProperties {
   /// the database name.
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
 
   /// Creates a new [SqlAvailabilityGroupDatabaseReplicaResourceProperties].
   /// [databaseName] the database name.
@@ -20,7 +21,7 @@ class SqlAvailabilityGroupDatabaseReplicaResourceProperties {
 
   factory SqlAvailabilityGroupDatabaseReplicaResourceProperties.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupDatabaseReplicaResourceProperties(
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
     );
   }
 }

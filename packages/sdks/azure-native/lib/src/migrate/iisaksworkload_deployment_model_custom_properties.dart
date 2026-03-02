@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iisaksworkload_deployment.dart';
 
 /// IIS workload instance model custom properties.
 class IISAKSWorkloadDeploymentModelCustomProperties {
   /// IIS AKS workload deployment.
-  final IISAKSWorkloadDeployment? iisAksWorkloadDeploymentProperties;
+  final pulumi.Input<IISAKSWorkloadDeployment>? iisAksWorkloadDeploymentProperties;
   /// Gets or sets the instance type.
   /// Expected value is 'IISAKSWorkloadDeploymentModelCustomProperties'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [IISAKSWorkloadDeploymentModelCustomProperties].
   /// [iisAksWorkloadDeploymentProperties] IIS AKS workload deployment.
@@ -20,15 +21,15 @@ class IISAKSWorkloadDeploymentModelCustomProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iisAksWorkloadDeploymentProperties': ?iisAksWorkloadDeploymentProperties == null ? null : iisAksWorkloadDeploymentProperties!.toMap(),
+      'iisAksWorkloadDeploymentProperties': ?pulumi.Input.mapOptionalInputValue<IISAKSWorkloadDeployment, Map<String, dynamic>>(iisAksWorkloadDeploymentProperties, (value) => value.toMap()),
       'instanceType': instanceType,
     };
   }
 
   factory IISAKSWorkloadDeploymentModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return IISAKSWorkloadDeploymentModelCustomProperties(
-      iisAksWorkloadDeploymentProperties: map['iisAksWorkloadDeploymentProperties'] == null ? null : IISAKSWorkloadDeployment.fromMap((map['iisAksWorkloadDeploymentProperties'] as Map).cast<String, dynamic>()),
-      instanceType: map['instanceType'] as String,
+      iisAksWorkloadDeploymentProperties: map['iisAksWorkloadDeploymentProperties'] == null ? null : (IISAKSWorkloadDeployment.fromMap((map['iisAksWorkloadDeploymentProperties'] as Map).cast<String, dynamic>())).input(),
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

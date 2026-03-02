@@ -19,13 +19,10 @@ class GetIPv6FirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   GetIPv6FirewallRuleArgs({
-    required pulumi.Output<String> firewallRuleName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      firewallRuleName = pulumi.Input.asInput<String>(firewallRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.firewallRuleName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIPv6FirewallRuleArgs {
 
   factory GetIPv6FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetIPv6FirewallRuleArgs(
-      firewallRuleName: pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      firewallRuleName: (map['firewallRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

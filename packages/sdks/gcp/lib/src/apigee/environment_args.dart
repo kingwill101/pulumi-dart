@@ -63,29 +63,18 @@ class EnvironmentArgs {
   /// [properties] Key-value pairs that may be used for customizing the environment.
   /// [type] Types that can be selected for an Environment. Each of the types are
   EnvironmentArgs({
-    pulumi.Output<String>? apiProxyType,
-    pulumi.Output<EnvironmentClientIpResolutionConfig>? clientIpResolutionConfig,
-    pulumi.Output<String>? deploymentType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? forwardProxyUri,
-    pulumi.Output<String>? name,
-    pulumi.Output<EnvironmentNodeConfig>? nodeConfig,
-    required pulumi.Output<String> orgId,
-    pulumi.Output<EnvironmentProperties>? properties,
-    pulumi.Output<String>? type,
-  }) :
-      apiProxyType = pulumi.Input.asOptionalInput<String>(apiProxyType),
-      clientIpResolutionConfig = pulumi.Input.asOptionalInput<EnvironmentClientIpResolutionConfig>(clientIpResolutionConfig),
-      deploymentType = pulumi.Input.asOptionalInput<String>(deploymentType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      forwardProxyUri = pulumi.Input.asOptionalInput<String>(forwardProxyUri),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeConfig = pulumi.Input.asOptionalInput<EnvironmentNodeConfig>(nodeConfig),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      properties = pulumi.Input.asOptionalInput<EnvironmentProperties>(properties),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.apiProxyType,
+    this.clientIpResolutionConfig,
+    this.deploymentType,
+    this.description,
+    this.displayName,
+    this.forwardProxyUri,
+    this.name,
+    this.nodeConfig,
+    required this.orgId,
+    this.properties,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,17 +94,17 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      apiProxyType: map['apiProxyType'] == null ? null : pulumi.Output.create<String>(map['apiProxyType'] as String),
-      clientIpResolutionConfig: map['clientIpResolutionConfig'] == null ? null : pulumi.Output.create<EnvironmentClientIpResolutionConfig>(EnvironmentClientIpResolutionConfig.fromMap((map['clientIpResolutionConfig'] as Map).cast<String, dynamic>())),
-      deploymentType: map['deploymentType'] == null ? null : pulumi.Output.create<String>(map['deploymentType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      forwardProxyUri: map['forwardProxyUri'] == null ? null : pulumi.Output.create<String>(map['forwardProxyUri'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeConfig: map['nodeConfig'] == null ? null : pulumi.Output.create<EnvironmentNodeConfig>(EnvironmentNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<EnvironmentProperties>(EnvironmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      apiProxyType: map['apiProxyType'] == null ? null : (map['apiProxyType'] as String).input(),
+      clientIpResolutionConfig: map['clientIpResolutionConfig'] == null ? null : (EnvironmentClientIpResolutionConfig.fromMap((map['clientIpResolutionConfig'] as Map).cast<String, dynamic>())).input(),
+      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      forwardProxyUri: map['forwardProxyUri'] == null ? null : (map['forwardProxyUri'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (EnvironmentNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
+      orgId: (map['orgId'] as String).input(),
+      properties: map['properties'] == null ? null : (EnvironmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

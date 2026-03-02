@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 class StatusConditionResponse {
   /// Canonical code of the condition.
-  final String canonicalCode;
+  final pulumi.Input<String> canonicalCode;
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-  final String code;
+  final pulumi.Input<String> code;
   /// Human-friendly representation of the condition
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [StatusConditionResponse].
   /// [canonicalCode] Canonical code of the condition.
@@ -30,9 +31,9 @@ class StatusConditionResponse {
 
   factory StatusConditionResponse.fromMap(Map<String, dynamic> map) {
     return StatusConditionResponse(
-      canonicalCode: map['canonicalCode'] as String,
-      code: map['code'] as String,
-      message: map['message'] as String,
+      canonicalCode: (map['canonicalCode'] as String).input(),
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

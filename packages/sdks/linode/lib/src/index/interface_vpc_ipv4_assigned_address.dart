@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterfaceVpcIpv4AssignedAddress {
   /// The assigned IPv4 address.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
-  final String? nat11Address;
+  final pulumi.Input<String>? nat11Address;
   /// Whether this address is the primary address for the interface.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
 
   /// Creates a new [InterfaceVpcIpv4AssignedAddress].
   /// [address] The assigned IPv4 address.
@@ -29,9 +30,9 @@ class InterfaceVpcIpv4AssignedAddress {
 
   factory InterfaceVpcIpv4AssignedAddress.fromMap(Map<String, dynamic> map) {
     return InterfaceVpcIpv4AssignedAddress(
-      address: map['address'] == null ? null : map['address'] as String,
-      nat11Address: map['nat11Address'] == null ? null : map['nat11Address'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      nat11Address: map['nat11Address'] == null ? null : (map['nat11Address'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetAccountDeletionCheckTaskArgs {
   /// Creates a new [GetAccountDeletionCheckTaskArgs].
   /// [accountId] The ID of the member that you want to delete.
   GetAccountDeletionCheckTaskArgs({
-    required pulumi.Output<String> accountId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId);
+    required this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAccountDeletionCheckTaskArgs {
 
   factory GetAccountDeletionCheckTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountDeletionCheckTaskArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
+      accountId: (map['accountId'] as String).input(),
     );
   }
 }

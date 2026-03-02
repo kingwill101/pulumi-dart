@@ -19,13 +19,10 @@ class ImageArgs {
   /// [desktopId] The desktop id of the desktop.
   /// [imageName] The name of the image.
   ImageArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> desktopId,
-    pulumi.Output<String>? imageName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      desktopId = pulumi.Input.asInput<String>(desktopId),
-      imageName = pulumi.Input.asOptionalInput<String>(imageName);
+    this.description,
+    required this.desktopId,
+    this.imageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      desktopId: pulumi.Output.create<String>(map['desktopId'] as String),
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      desktopId: (map['desktopId'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
     );
   }
 }

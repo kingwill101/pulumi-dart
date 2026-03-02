@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Disk encryption configuration for an instance.
 class DiskEncryptionConfigurationResponse {
   /// This is always `sql#diskEncryptionConfiguration`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Resource name of KMS key for disk encryption
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
 
   /// Creates a new [DiskEncryptionConfigurationResponse].
   /// [kind] This is always `sql#diskEncryptionConfiguration`.
@@ -25,8 +26,8 @@ class DiskEncryptionConfigurationResponse {
 
   factory DiskEncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfigurationResponse(
-      kind: map['kind'] as String,
-      kmsKeyName: map['kmsKeyName'] as String,
+      kind: (map['kind'] as String).input(),
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
     );
   }
 }

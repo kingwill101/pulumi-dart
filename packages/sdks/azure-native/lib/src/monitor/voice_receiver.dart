@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A voice receiver.
 class VoiceReceiver {
   /// The country code of the voice receiver.
-  final String countryCode;
+  final pulumi.Input<String> countryCode;
   /// The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The phone number of the voice receiver.
-  final String phoneNumber;
+  final pulumi.Input<String> phoneNumber;
 
   /// Creates a new [VoiceReceiver].
   /// [countryCode] The country code of the voice receiver.
@@ -30,9 +31,9 @@ class VoiceReceiver {
 
   factory VoiceReceiver.fromMap(Map<String, dynamic> map) {
     return VoiceReceiver(
-      countryCode: map['countryCode'] as String,
-      name: map['name'] as String,
-      phoneNumber: map['phoneNumber'] as String,
+      countryCode: (map['countryCode'] as String).input(),
+      name: (map['name'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
     );
   }
 }

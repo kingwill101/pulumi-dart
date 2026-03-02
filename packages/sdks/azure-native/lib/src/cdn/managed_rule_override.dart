@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a managed rule group override setting.
 class ManagedRuleOverride {
   /// Describes the override action to be applied when rule matches.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
-  final String? enabledState;
+  final pulumi.Input<String>? enabledState;
   /// Identifier for the managed rule.
-  final String ruleId;
+  final pulumi.Input<String> ruleId;
 
   /// Creates a new [ManagedRuleOverride].
   /// [action] Describes the override action to be applied when rule matches.
@@ -30,9 +31,9 @@ class ManagedRuleOverride {
 
   factory ManagedRuleOverride.fromMap(Map<String, dynamic> map) {
     return ManagedRuleOverride(
-      action: map['action'] == null ? null : map['action'] as String,
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      ruleId: map['ruleId'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      ruleId: (map['ruleId'] as String).input(),
     );
   }
 }

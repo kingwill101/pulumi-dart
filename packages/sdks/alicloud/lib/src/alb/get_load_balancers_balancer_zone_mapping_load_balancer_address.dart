@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
   /// IPv4 address.
-  final String address;
+  final pulumi.Input<String> address;
   /// The elastic IP address (EIP).
-  final String allocationId;
+  final pulumi.Input<String> allocationId;
   /// The type of EIP.
-  final String eipType;
+  final pulumi.Input<String> eipType;
   /// The private IPv4 address.
-  final String intranetAddress;
+  final pulumi.Input<String> intranetAddress;
   /// The health status of the private IPv4 address of the ALB instance.
-  final String intranetAddressHcStatus;
+  final pulumi.Input<String> intranetAddressHcStatus;
   /// The IPv4 link-local addresses.
-  final List<String> ipv4LocalAddresses;
+  final pulumi.Input<List<String>> ipv4LocalAddresses;
   /// IPv6 address.
-  final String ipv6Address;
+  final pulumi.Input<String> ipv6Address;
   /// The health status of the private IPv6 address of the ALB instance.
-  final String ipv6AddressHcStatus;
+  final pulumi.Input<String> ipv6AddressHcStatus;
   /// The IPv6 link-local addresses.
-  final List<String> ipv6LocalAddresses;
+  final pulumi.Input<List<String>> ipv6LocalAddresses;
 
   /// Creates a new [GetLoadBalancersBalancerZoneMappingLoadBalancerAddress].
   /// [address] IPv4 address.
@@ -59,15 +60,15 @@ class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
 
   factory GetLoadBalancersBalancerZoneMappingLoadBalancerAddress.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerZoneMappingLoadBalancerAddress(
-      address: map['address'] as String,
-      allocationId: map['allocationId'] as String,
-      eipType: map['eipType'] as String,
-      intranetAddress: map['intranetAddress'] as String,
-      intranetAddressHcStatus: map['intranetAddressHcStatus'] as String,
-      ipv4LocalAddresses: (map['ipv4LocalAddresses'] as List).cast<String>(),
-      ipv6Address: map['ipv6Address'] as String,
-      ipv6AddressHcStatus: map['ipv6AddressHcStatus'] as String,
-      ipv6LocalAddresses: (map['ipv6LocalAddresses'] as List).cast<String>(),
+      address: (map['address'] as String).input(),
+      allocationId: (map['allocationId'] as String).input(),
+      eipType: (map['eipType'] as String).input(),
+      intranetAddress: (map['intranetAddress'] as String).input(),
+      intranetAddressHcStatus: (map['intranetAddressHcStatus'] as String).input(),
+      ipv4LocalAddresses: ((map['ipv4LocalAddresses'] as List).cast<String>()).input(),
+      ipv6Address: (map['ipv6Address'] as String).input(),
+      ipv6AddressHcStatus: (map['ipv6AddressHcStatus'] as String).input(),
+      ipv6LocalAddresses: ((map['ipv6LocalAddresses'] as List).cast<String>()).input(),
     );
   }
 }

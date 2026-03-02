@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tracking_info_response.dart';
 
 /// Represents a single status change.
 class OrderStatusResponse {
   /// Dictionary to hold generic information which is not stored
   /// by the already existing properties
-  final Map<String, String> additionalOrderDetails;
+  final pulumi.Input<Map<String, String>> additionalOrderDetails;
   /// Comments related to this status change.
-  final String? comments;
+  final pulumi.Input<String>? comments;
   /// Status of the order as per the allowed status types.
-  final String status;
+  final pulumi.Input<String> status;
   /// Tracking information related to the state in the ordering flow
-  final TrackingInfoResponse trackingInformation;
+  final pulumi.Input<TrackingInfoResponse> trackingInformation;
   /// Time of status update.
-  final String updateDateTime;
+  final pulumi.Input<String> updateDateTime;
 
   /// Creates a new [OrderStatusResponse].
   /// [additionalOrderDetails] Dictionary to hold generic information which is not stored
@@ -35,18 +36,18 @@ class OrderStatusResponse {
       'additionalOrderDetails': additionalOrderDetails,
       'comments': ?comments,
       'status': status,
-      'trackingInformation': trackingInformation.toMap(),
+      'trackingInformation': pulumi.Input.mapInputValue<TrackingInfoResponse, Map<String, dynamic>>(trackingInformation, (value) => value.toMap()),
       'updateDateTime': updateDateTime,
     };
   }
 
   factory OrderStatusResponse.fromMap(Map<String, dynamic> map) {
     return OrderStatusResponse(
-      additionalOrderDetails: (map['additionalOrderDetails'] as Map).cast<String, String>(),
-      comments: map['comments'] == null ? null : map['comments'] as String,
-      status: map['status'] as String,
-      trackingInformation: TrackingInfoResponse.fromMap((map['trackingInformation'] as Map).cast<String, dynamic>()),
-      updateDateTime: map['updateDateTime'] as String,
+      additionalOrderDetails: ((map['additionalOrderDetails'] as Map).cast<String, String>()).input(),
+      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
+      status: (map['status'] as String).input(),
+      trackingInformation: (TrackingInfoResponse.fromMap((map['trackingInformation'] as Map).cast<String, dynamic>())).input(),
+      updateDateTime: (map['updateDateTime'] as String).input(),
     );
   }
 }

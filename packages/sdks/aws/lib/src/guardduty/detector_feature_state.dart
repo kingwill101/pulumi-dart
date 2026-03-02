@@ -23,17 +23,12 @@ class DetectorFeatureState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
   DetectorFeatureState({
-    pulumi.Output<List<DetectorFeatureAdditionalConfiguration>>? additionalConfigurations,
-    pulumi.Output<String>? detectorId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-  }) :
-      additionalConfigurations = pulumi.Input.asOptionalInput<List<DetectorFeatureAdditionalConfiguration>>(additionalConfigurations),
-      detectorId = pulumi.Input.asOptionalInput<String>(detectorId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.additionalConfigurations,
+    this.detectorId,
+    this.name,
+    this.region,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class DetectorFeatureState {
 
   factory DetectorFeatureState.fromMap(Map<String, dynamic> map) {
     return DetectorFeatureState(
-      additionalConfigurations: map['additionalConfigurations'] == null ? null : pulumi.Output.create<List<DetectorFeatureAdditionalConfiguration>>(pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      detectorId: map['detectorId'] == null ? null : pulumi.Output.create<String>(map['detectorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : (pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class VirtualMachineConfigurationAssignmentArgs {
   /// [name] The name of the Guest Configuration that will be assigned in this Guest Configuration Assignment. Changing this forces a new resource to be created.
   /// [virtualMachineId] The resource ID of the Policy Virtual Machine which this Guest Configuration Assignment should apply to. Changing this forces a new resource to be created.
   VirtualMachineConfigurationAssignmentArgs({
-    required pulumi.Output<VirtualMachineConfigurationAssignmentConfiguration> configuration,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> virtualMachineId,
-  }) :
-      configuration = pulumi.Input.asInput<VirtualMachineConfigurationAssignmentConfiguration>(configuration),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      virtualMachineId = pulumi.Input.asInput<String>(virtualMachineId);
+    required this.configuration,
+    this.location,
+    this.name,
+    required this.virtualMachineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class VirtualMachineConfigurationAssignmentArgs {
 
   factory VirtualMachineConfigurationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfigurationAssignmentArgs(
-      configuration: pulumi.Output.create<VirtualMachineConfigurationAssignmentConfiguration>(VirtualMachineConfigurationAssignmentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      virtualMachineId: pulumi.Output.create<String>(map['virtualMachineId'] as String),
+      configuration: (VirtualMachineConfigurationAssignmentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      virtualMachineId: (map['virtualMachineId'] as String).input(),
     );
   }
 }

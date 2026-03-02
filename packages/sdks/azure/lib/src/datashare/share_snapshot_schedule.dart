@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ShareSnapshotSchedule {
   /// The name of the snapshot schedule.
-  final String name;
+  final pulumi.Input<String> name;
   /// The interval of the synchronization with the source data. Possible values are `Hour` and `Day`.
-  final String recurrence;
+  final pulumi.Input<String> recurrence;
   /// The synchronization with the source data's start time.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [ShareSnapshotSchedule].
   /// [name] The name of the snapshot schedule.
@@ -29,9 +30,9 @@ class ShareSnapshotSchedule {
 
   factory ShareSnapshotSchedule.fromMap(Map<String, dynamic> map) {
     return ShareSnapshotSchedule(
-      name: map['name'] as String,
-      recurrence: map['recurrence'] as String,
-      startTime: map['startTime'] as String,
+      name: (map['name'] as String).input(),
+      recurrence: (map['recurrence'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

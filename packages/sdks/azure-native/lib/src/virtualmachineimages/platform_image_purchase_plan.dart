@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Purchase plan configuration for platform image.
 class PlatformImagePurchasePlan {
   /// Name of the purchase plan.
-  final String planName;
+  final pulumi.Input<String> planName;
   /// Product of the purchase plan.
-  final String planProduct;
+  final pulumi.Input<String> planProduct;
   /// Publisher of the purchase plan.
-  final String planPublisher;
+  final pulumi.Input<String> planPublisher;
 
   /// Creates a new [PlatformImagePurchasePlan].
   /// [planName] Name of the purchase plan.
@@ -30,9 +31,9 @@ class PlatformImagePurchasePlan {
 
   factory PlatformImagePurchasePlan.fromMap(Map<String, dynamic> map) {
     return PlatformImagePurchasePlan(
-      planName: map['planName'] as String,
-      planProduct: map['planProduct'] as String,
-      planPublisher: map['planPublisher'] as String,
+      planName: (map['planName'] as String).input(),
+      planProduct: (map['planProduct'] as String).input(),
+      planPublisher: (map['planPublisher'] as String).input(),
     );
   }
 }

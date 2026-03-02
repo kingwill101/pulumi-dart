@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// HyperV to AzStackHCI Replication extension model custom properties.
 class HyperVToAzStackHCIReplicationExtensionModelCustomProperties {
   /// Gets or sets the ARM Id of the target AzStackHCI fabric.
-  final String azStackHciFabricArmId;
+  final pulumi.Input<String> azStackHciFabricArmId;
   /// Gets or sets the ARM Id of the source HyperV fabric.
-  final String hyperVFabricArmId;
+  final pulumi.Input<String> hyperVFabricArmId;
   /// Gets or sets the instance type.
   /// Expected value is 'HyperVToAzStackHCI'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the storage account Id.
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
   /// Gets or sets the Sas Secret of storage account.
-  final String? storageAccountSasSecretName;
+  final pulumi.Input<String>? storageAccountSasSecretName;
 
   /// Creates a new [HyperVToAzStackHCIReplicationExtensionModelCustomProperties].
   /// [azStackHciFabricArmId] Gets or sets the ARM Id of the target AzStackHCI fabric.
@@ -41,11 +42,11 @@ class HyperVToAzStackHCIReplicationExtensionModelCustomProperties {
 
   factory HyperVToAzStackHCIReplicationExtensionModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return HyperVToAzStackHCIReplicationExtensionModelCustomProperties(
-      azStackHciFabricArmId: map['azStackHciFabricArmId'] as String,
-      hyperVFabricArmId: map['hyperVFabricArmId'] as String,
-      instanceType: map['instanceType'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : map['storageAccountSasSecretName'] as String,
+      azStackHciFabricArmId: (map['azStackHciFabricArmId'] as String).input(),
+      hyperVFabricArmId: (map['hyperVFabricArmId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName'] as String).input(),
     );
   }
 }

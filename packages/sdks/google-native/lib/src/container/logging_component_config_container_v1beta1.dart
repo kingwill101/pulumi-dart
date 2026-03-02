@@ -6,7 +6,7 @@ import 'logging_component_config_enable_components_item_container_v1beta1.dart';
 /// LoggingComponentConfig is cluster logging component configuration.
 class LoggingComponentConfigContainerV1beta1 {
   /// Select components to collect logs. An empty set would disable all logging.
-  final List<LoggingComponentConfigEnableComponentsItemContainerV1beta1>? enableComponents;
+  final pulumi.Input<List<LoggingComponentConfigEnableComponentsItemContainerV1beta1>>? enableComponents;
 
   /// Creates a new [LoggingComponentConfigContainerV1beta1].
   /// [enableComponents] Select components to collect logs. An empty set would disable all logging.
@@ -16,13 +16,13 @@ class LoggingComponentConfigContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enableComponents': ?enableComponents == null ? null : pulumi.Input.encodeList<LoggingComponentConfigEnableComponentsItemContainerV1beta1, String>(enableComponents!, (value) => value.value),
+      'enableComponents': ?pulumi.Input.mapOptionalInputValue<List<LoggingComponentConfigEnableComponentsItemContainerV1beta1>, List<String>>(enableComponents, (value) => pulumi.Input.encodeList<LoggingComponentConfigEnableComponentsItemContainerV1beta1, String>(value, (value) => value.value)),
     };
   }
 
   factory LoggingComponentConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return LoggingComponentConfigContainerV1beta1(
-      enableComponents: map['enableComponents'] == null ? null : pulumi.Input.decodeList<LoggingComponentConfigEnableComponentsItemContainerV1beta1>(map['enableComponents'], (value) => LoggingComponentConfigEnableComponentsItemContainerV1beta1.fromValue(value as String)),
+      enableComponents: map['enableComponents'] == null ? null : (pulumi.Input.decodeList<LoggingComponentConfigEnableComponentsItemContainerV1beta1>(map['enableComponents'], (value) => LoggingComponentConfigEnableComponentsItemContainerV1beta1.fromValue(value as String))).input(),
     );
   }
 }

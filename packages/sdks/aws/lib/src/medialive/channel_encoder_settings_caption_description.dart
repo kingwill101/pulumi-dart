@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_caption_description_destination_settings.dart';
 
 class ChannelEncoderSettingsCaptionDescription {
   /// Indicates whether the caption track implements accessibility features such as written descriptions of spoken dialog, music, and sounds.
-  final String? accessibility;
+  final pulumi.Input<String>? accessibility;
   /// Specifies which input caption selector to use as a caption source when generating output captions. This field should match a captionSelector name.
-  final String captionSelectorName;
+  final pulumi.Input<String> captionSelectorName;
   /// Additional settings for captions destination that depend on the destination type. See Destination Settings for more details.
-  final ChannelEncoderSettingsCaptionDescriptionDestinationSettings? destinationSettings;
+  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettings>? destinationSettings;
   /// ISO 639-2 three-digit code.
-  final String? languageCode;
+  final pulumi.Input<String>? languageCode;
   /// Human readable information to indicate captions available for players (eg. English, or Spanish).
-  final String? languageDescription;
+  final pulumi.Input<String>? languageDescription;
   /// Name of the caption description. Used to associate a caption description with an output. Names must be unique within an event.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescription].
   /// [accessibility] Indicates whether the caption track implements accessibility features such as written descriptions of spoken dialog, music, and sounds.
@@ -36,7 +37,7 @@ class ChannelEncoderSettingsCaptionDescription {
     return <String, dynamic>{
       'accessibility': ?accessibility,
       'captionSelectorName': captionSelectorName,
-      'destinationSettings': ?destinationSettings == null ? null : destinationSettings!.toMap(),
+      'destinationSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsCaptionDescriptionDestinationSettings, Map<String, dynamic>>(destinationSettings, (value) => value.toMap()),
       'languageCode': ?languageCode,
       'languageDescription': ?languageDescription,
       'name': name,
@@ -45,12 +46,12 @@ class ChannelEncoderSettingsCaptionDescription {
 
   factory ChannelEncoderSettingsCaptionDescription.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsCaptionDescription(
-      accessibility: map['accessibility'] == null ? null : map['accessibility'] as String,
-      captionSelectorName: map['captionSelectorName'] as String,
-      destinationSettings: map['destinationSettings'] == null ? null : ChannelEncoderSettingsCaptionDescriptionDestinationSettings.fromMap((map['destinationSettings'] as Map).cast<String, dynamic>()),
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
-      languageDescription: map['languageDescription'] == null ? null : map['languageDescription'] as String,
-      name: map['name'] as String,
+      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      captionSelectorName: (map['captionSelectorName'] as String).input(),
+      destinationSettings: map['destinationSettings'] == null ? null : (ChannelEncoderSettingsCaptionDescriptionDestinationSettings.fromMap((map['destinationSettings'] as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageDescription: map['languageDescription'] == null ? null : (map['languageDescription'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

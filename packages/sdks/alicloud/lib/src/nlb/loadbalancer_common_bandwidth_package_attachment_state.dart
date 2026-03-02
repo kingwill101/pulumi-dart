@@ -16,13 +16,10 @@ class LoadbalancerCommonBandwidthPackageAttachmentState {
   /// [loadBalancerId] The ID of the EIP bandwidth plan.
   /// [status] Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
   LoadbalancerCommonBandwidthPackageAttachmentState({
-    pulumi.Output<String>? bandwidthPackageId,
-    pulumi.Output<String>? loadBalancerId,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidthPackageId = pulumi.Input.asOptionalInput<String>(bandwidthPackageId),
-      loadBalancerId = pulumi.Input.asOptionalInput<String>(loadBalancerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidthPackageId,
+    this.loadBalancerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class LoadbalancerCommonBandwidthPackageAttachmentState {
 
   factory LoadbalancerCommonBandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadbalancerCommonBandwidthPackageAttachmentState(
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : pulumi.Output.create<String>(map['bandwidthPackageId'] as String),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId'] as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

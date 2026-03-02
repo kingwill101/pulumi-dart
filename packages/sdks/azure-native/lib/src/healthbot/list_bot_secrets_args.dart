@@ -16,11 +16,9 @@ class ListBotSecretsArgs {
   /// [botName] The name of the Bot resource.
   /// [resourceGroupName] The name of the Bot resource group in the user subscription.
   ListBotSecretsArgs({
-    required pulumi.Output<String> botName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      botName = pulumi.Input.asInput<String>(botName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.botName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListBotSecretsArgs {
 
   factory ListBotSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListBotSecretsArgs(
-      botName: pulumi.Output.create<String>(map['botName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      botName: (map['botName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkManagedServiceManagedS3BackupAccess {
-  final List<String> ipv4Addresses;
+  final pulumi.Input<List<String>> ipv4Addresses;
   /// The status of the network resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetNetworkManagedServiceManagedS3BackupAccess].
   /// [ipv4Addresses] Required.
@@ -23,8 +24,8 @@ class GetNetworkManagedServiceManagedS3BackupAccess {
 
   factory GetNetworkManagedServiceManagedS3BackupAccess.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagedServiceManagedS3BackupAccess(
-      ipv4Addresses: (map['ipv4Addresses'] as List).cast<String>(),
-      status: map['status'] as String,
+      ipv4Addresses: ((map['ipv4Addresses'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

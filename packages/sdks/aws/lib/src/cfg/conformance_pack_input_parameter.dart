@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConformancePackInputParameter {
   /// The input key.
-  final String parameterName;
+  final pulumi.Input<String> parameterName;
   /// The input value.
-  final String parameterValue;
+  final pulumi.Input<String> parameterValue;
 
   /// Creates a new [ConformancePackInputParameter].
   /// [parameterName] The input key.
@@ -24,8 +25,8 @@ class ConformancePackInputParameter {
 
   factory ConformancePackInputParameter.fromMap(Map<String, dynamic> map) {
     return ConformancePackInputParameter(
-      parameterName: map['parameterName'] as String,
-      parameterValue: map['parameterValue'] as String,
+      parameterName: (map['parameterName'] as String).input(),
+      parameterValue: (map['parameterValue'] as String).input(),
     );
   }
 }

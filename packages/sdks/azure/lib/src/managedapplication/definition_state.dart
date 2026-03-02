@@ -46,31 +46,19 @@ class DefinitionState {
   /// [resourceGroupName] The name of the Resource Group where the Managed Application Definition should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   DefinitionState({
-    pulumi.Output<List<DefinitionAuthorization>>? authorizations,
-    pulumi.Output<String>? createUiDefinition,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? lockLevel,
-    pulumi.Output<String>? mainTemplate,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? packageEnabled,
-    pulumi.Output<String>? packageFileUri,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      authorizations = pulumi.Input.asOptionalInput<List<DefinitionAuthorization>>(authorizations),
-      createUiDefinition = pulumi.Input.asOptionalInput<String>(createUiDefinition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      lockLevel = pulumi.Input.asOptionalInput<String>(lockLevel),
-      mainTemplate = pulumi.Input.asOptionalInput<String>(mainTemplate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      packageEnabled = pulumi.Input.asOptionalInput<bool>(packageEnabled),
-      packageFileUri = pulumi.Input.asOptionalInput<String>(packageFileUri),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.authorizations,
+    this.createUiDefinition,
+    this.description,
+    this.displayName,
+    this.location,
+    this.lockLevel,
+    this.mainTemplate,
+    this.name,
+    this.packageEnabled,
+    this.packageFileUri,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class DefinitionState {
 
   factory DefinitionState.fromMap(Map<String, dynamic> map) {
     return DefinitionState(
-      authorizations: map['authorizations'] == null ? null : pulumi.Output.create<List<DefinitionAuthorization>>(pulumi.Input.decodeList<DefinitionAuthorization>(map['authorizations'], (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>()))),
-      createUiDefinition: map['createUiDefinition'] == null ? null : pulumi.Output.create<String>(map['createUiDefinition'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      lockLevel: map['lockLevel'] == null ? null : pulumi.Output.create<String>(map['lockLevel'] as String),
-      mainTemplate: map['mainTemplate'] == null ? null : pulumi.Output.create<String>(map['mainTemplate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      packageEnabled: map['packageEnabled'] == null ? null : pulumi.Output.create<bool>(map['packageEnabled'] as bool),
-      packageFileUri: map['packageFileUri'] == null ? null : pulumi.Output.create<String>(map['packageFileUri'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<DefinitionAuthorization>(map['authorizations'], (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createUiDefinition: map['createUiDefinition'] == null ? null : (map['createUiDefinition'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      lockLevel: map['lockLevel'] == null ? null : (map['lockLevel'] as String).input(),
+      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packageEnabled: map['packageEnabled'] == null ? null : (map['packageEnabled'] as bool).input(),
+      packageFileUri: map['packageFileUri'] == null ? null : (map['packageFileUri'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

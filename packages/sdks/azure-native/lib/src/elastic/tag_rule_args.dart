@@ -23,15 +23,11 @@ class TagRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleSetName] Tag Rule Set resource name
   TagRuleArgs({
-    required pulumi.Output<String> monitorName,
-    pulumi.Output<MonitoringTagRulesProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleSetName,
-  }) :
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      properties = pulumi.Input.asOptionalInput<MonitoringTagRulesProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleSetName = pulumi.Input.asOptionalInput<String>(ruleSetName);
+    required this.monitorName,
+    this.properties,
+    required this.resourceGroupName,
+    this.ruleSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TagRuleArgs {
 
   factory TagRuleArgs.fromMap(Map<String, dynamic> map) {
     return TagRuleArgs(
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MonitoringTagRulesProperties>(MonitoringTagRulesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleSetName: map['ruleSetName'] == null ? null : pulumi.Output.create<String>(map['ruleSetName'] as String),
+      monitorName: (map['monitorName'] as String).input(),
+      properties: map['properties'] == null ? null : (MonitoringTagRulesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleSetName: map['ruleSetName'] == null ? null : (map['ruleSetName'] as String).input(),
     );
   }
 }

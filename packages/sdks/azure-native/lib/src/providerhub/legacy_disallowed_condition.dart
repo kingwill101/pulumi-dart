@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LegacyDisallowedCondition {
   /// The disallowed legacy operations.
-  final List<String>? disallowedLegacyOperations;
+  final pulumi.Input<List<String>>? disallowedLegacyOperations;
   /// Feature string.
-  final String? feature;
+  final pulumi.Input<String>? feature;
 
   /// Creates a new [LegacyDisallowedCondition].
   /// [disallowedLegacyOperations] The disallowed legacy operations.
@@ -24,8 +25,8 @@ class LegacyDisallowedCondition {
 
   factory LegacyDisallowedCondition.fromMap(Map<String, dynamic> map) {
     return LegacyDisallowedCondition(
-      disallowedLegacyOperations: map['disallowedLegacyOperations'] == null ? null : (map['disallowedLegacyOperations'] as List).cast<String>(),
-      feature: map['feature'] == null ? null : map['feature'] as String,
+      disallowedLegacyOperations: map['disallowedLegacyOperations'] == null ? null : ((map['disallowedLegacyOperations'] as List).cast<String>()).input(),
+      feature: map['feature'] == null ? null : (map['feature'] as String).input(),
     );
   }
 }

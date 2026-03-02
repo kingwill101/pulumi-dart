@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification {
   /// Specifies the strategy to use in launching On-Demand instance fleets. Currently, the only option is `lowest-price` (the default), which launches the lowest price first.
-  final String allocationStrategy;
+  final pulumi.Input<String> allocationStrategy;
 
   /// Creates a new [ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification].
   /// [allocationStrategy] Specifies the strategy to use in launching On-Demand instance fleets. Currently, the only option is `lowest-price` (the default), which launches the lowest price first.
@@ -19,7 +20,7 @@ class ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification {
 
   factory ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification(
-      allocationStrategy: map['allocationStrategy'] as String,
+      allocationStrategy: (map['allocationStrategy'] as String).input(),
     );
   }
 }

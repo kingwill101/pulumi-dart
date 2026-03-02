@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerSubnetMapping {
   /// Allocation ID of the Elastic IP address for an internet-facing load balancer.
-  final String? allocationId;
+  final pulumi.Input<String>? allocationId;
   /// IPv6 address. You associate IPv6 CIDR blocks with your VPC and choose the subnets where you launch both internet-facing and internal Application Load Balancers or Network Load Balancers.
-  final String? ipv6Address;
-  final String? outpostId;
+  final pulumi.Input<String>? ipv6Address;
+  final pulumi.Input<String>? outpostId;
   /// Private IPv4 address for an internal load balancer.
-  final String? privateIpv4Address;
+  final pulumi.Input<String>? privateIpv4Address;
   /// ID of the subnet of which to attach to the load balancer. You can specify only one subnet per Availability Zone.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [LoadBalancerSubnetMapping].
   /// [allocationId] Allocation ID of the Elastic IP address for an internet-facing load balancer.
@@ -38,11 +39,11 @@ class LoadBalancerSubnetMapping {
 
   factory LoadBalancerSubnetMapping.fromMap(Map<String, dynamic> map) {
     return LoadBalancerSubnetMapping(
-      allocationId: map['allocationId'] == null ? null : map['allocationId'] as String,
-      ipv6Address: map['ipv6Address'] == null ? null : map['ipv6Address'] as String,
-      outpostId: map['outpostId'] == null ? null : map['outpostId'] as String,
-      privateIpv4Address: map['privateIpv4Address'] == null ? null : map['privateIpv4Address'] as String,
-      subnetId: map['subnetId'] as String,
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      outpostId: map['outpostId'] == null ? null : (map['outpostId'] as String).input(),
+      privateIpv4Address: map['privateIpv4Address'] == null ? null : (map['privateIpv4Address'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure container mapping of the endpoint.
 class AzureContainerInfoResponse {
   /// Container name (Based on the data format specified, this represents the name of Azure Files/Page blob/Block blob).
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// Storage format used for the file represented by the share.
-  final String dataFormat;
+  final pulumi.Input<String> dataFormat;
   /// ID of the storage account credential used to access storage.
-  final String storageAccountCredentialId;
+  final pulumi.Input<String> storageAccountCredentialId;
 
   /// Creates a new [AzureContainerInfoResponse].
   /// [containerName] Container name (Based on the data format specified, this represents the name of Azure Files/Page blob/Block blob).
@@ -30,9 +31,9 @@ class AzureContainerInfoResponse {
 
   factory AzureContainerInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureContainerInfoResponse(
-      containerName: map['containerName'] as String,
-      dataFormat: map['dataFormat'] as String,
-      storageAccountCredentialId: map['storageAccountCredentialId'] as String,
+      containerName: (map['containerName'] as String).input(),
+      dataFormat: (map['dataFormat'] as String).input(),
+      storageAccountCredentialId: (map['storageAccountCredentialId'] as String).input(),
     );
   }
 }

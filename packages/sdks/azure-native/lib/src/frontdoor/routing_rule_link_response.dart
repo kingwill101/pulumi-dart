@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the Resource ID for a Routing Rule.
 class RoutingRuleLinkResponse {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [RoutingRuleLinkResponse].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class RoutingRuleLinkResponse {
 
   factory RoutingRuleLinkResponse.fromMap(Map<String, dynamic> map) {
     return RoutingRuleLinkResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

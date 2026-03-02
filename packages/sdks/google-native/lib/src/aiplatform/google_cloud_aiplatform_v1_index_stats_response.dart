@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Stats of the Index.
 class GoogleCloudAiplatformV1IndexStatsResponse {
   /// The number of shards in the Index.
-  final int shardsCount;
+  final pulumi.Input<int> shardsCount;
   /// The number of vectors in the Index.
-  final String vectorsCount;
+  final pulumi.Input<String> vectorsCount;
 
   /// Creates a new [GoogleCloudAiplatformV1IndexStatsResponse].
   /// [shardsCount] The number of shards in the Index.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1IndexStatsResponse {
 
   factory GoogleCloudAiplatformV1IndexStatsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1IndexStatsResponse(
-      shardsCount: map['shardsCount'] as int,
-      vectorsCount: map['vectorsCount'] as String,
+      shardsCount: (map['shardsCount'] as int).input(),
+      vectorsCount: (map['vectorsCount'] as String).input(),
     );
   }
 }

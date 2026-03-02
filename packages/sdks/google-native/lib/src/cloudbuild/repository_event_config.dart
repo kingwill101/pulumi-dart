@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pull_request_filter.dart';
 import 'push_filter.dart';
 
 /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
 class RepositoryEventConfig {
   /// Filter to match changes in pull requests.
-  final PullRequestFilter? pullRequest;
+  final pulumi.Input<PullRequestFilter>? pullRequest;
   /// Filter to match changes in refs like branches, tags.
-  final PushFilter? push;
+  final pulumi.Input<PushFilter>? push;
   /// The resource name of the Repo API resource.
-  final String? repository;
+  final pulumi.Input<String>? repository;
 
   /// Creates a new [RepositoryEventConfig].
   /// [pullRequest] Filter to match changes in pull requests.
@@ -24,17 +25,17 @@ class RepositoryEventConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pullRequest': ?pullRequest == null ? null : pullRequest!.toMap(),
-      'push': ?push == null ? null : push!.toMap(),
+      'pullRequest': ?pulumi.Input.mapOptionalInputValue<PullRequestFilter, Map<String, dynamic>>(pullRequest, (value) => value.toMap()),
+      'push': ?pulumi.Input.mapOptionalInputValue<PushFilter, Map<String, dynamic>>(push, (value) => value.toMap()),
       'repository': ?repository,
     };
   }
 
   factory RepositoryEventConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryEventConfig(
-      pullRequest: map['pullRequest'] == null ? null : PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: map['push'] == null ? null : PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>()),
-      repository: map['repository'] == null ? null : map['repository'] as String,
+      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
     );
   }
 }

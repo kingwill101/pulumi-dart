@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersBalancerOperationLock {
   /// The reason why the NLB instance is locked.
-  final String lockReason;
+  final pulumi.Input<String> lockReason;
   /// The type of lock.
-  final String lockType;
+  final pulumi.Input<String> lockType;
 
   /// Creates a new [GetLoadBalancersBalancerOperationLock].
   /// [lockReason] The reason why the NLB instance is locked.
@@ -24,8 +25,8 @@ class GetLoadBalancersBalancerOperationLock {
 
   factory GetLoadBalancersBalancerOperationLock.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerOperationLock(
-      lockReason: map['lockReason'] as String,
-      lockType: map['lockType'] as String,
+      lockReason: (map['lockReason'] as String).input(),
+      lockType: (map['lockType'] as String).input(),
     );
   }
 }

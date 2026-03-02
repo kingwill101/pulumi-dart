@@ -22,15 +22,11 @@ class GetProductGroupLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetProductGroupLinkArgs({
-    required pulumi.Output<String> groupLinkId,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      groupLinkId = pulumi.Input.asInput<String>(groupLinkId),
-      productId = pulumi.Input.asInput<String>(productId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.groupLinkId,
+    required this.productId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetProductGroupLinkArgs {
 
   factory GetProductGroupLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetProductGroupLinkArgs(
-      groupLinkId: pulumi.Output.create<String>(map['groupLinkId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      groupLinkId: (map['groupLinkId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

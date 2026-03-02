@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular {
-  final String apiKey;
+  final pulumi.Input<String> apiKey;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular].
   /// [apiKey] Required.
@@ -18,7 +19,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular 
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular(
-      apiKey: map['apiKey'] as String,
+      apiKey: (map['apiKey'] as String).input(),
     );
   }
 }

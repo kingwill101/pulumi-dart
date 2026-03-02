@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentityPoolCognitoIdentityProvider {
   /// The client ID for the Amazon Cognito Identity User Pool.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The provider name for an Amazon Cognito Identity User Pool.
-  final String? providerName;
+  final pulumi.Input<String>? providerName;
   /// Whether server-side token validation is enabled for the identity provider’s token or not.
-  final bool? serverSideTokenCheck;
+  final pulumi.Input<bool>? serverSideTokenCheck;
 
   /// Creates a new [IdentityPoolCognitoIdentityProvider].
   /// [clientId] The client ID for the Amazon Cognito Identity User Pool.
@@ -29,9 +30,9 @@ class IdentityPoolCognitoIdentityProvider {
 
   factory IdentityPoolCognitoIdentityProvider.fromMap(Map<String, dynamic> map) {
     return IdentityPoolCognitoIdentityProvider(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      providerName: map['providerName'] == null ? null : map['providerName'] as String,
-      serverSideTokenCheck: map['serverSideTokenCheck'] == null ? null : map['serverSideTokenCheck'] as bool,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      serverSideTokenCheck: map['serverSideTokenCheck'] == null ? null : (map['serverSideTokenCheck'] as bool).input(),
     );
   }
 }

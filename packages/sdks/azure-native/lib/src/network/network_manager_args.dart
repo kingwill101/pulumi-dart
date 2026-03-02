@@ -35,23 +35,15 @@ class NetworkManagerArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   NetworkManagerArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? networkManagerName,
-    pulumi.Output<List<String>>? networkManagerScopeAccesses,
-    required pulumi.Output<NetworkManagerPropertiesNetworkManagerScopes> networkManagerScopes,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkManagerName = pulumi.Input.asOptionalInput<String>(networkManagerName),
-      networkManagerScopeAccesses = pulumi.Input.asOptionalInput<List<String>>(networkManagerScopeAccesses),
-      networkManagerScopes = pulumi.Input.asInput<NetworkManagerPropertiesNetworkManagerScopes>(networkManagerScopes),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.id,
+    this.location,
+    this.networkManagerName,
+    this.networkManagerScopeAccesses,
+    required this.networkManagerScopes,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class NetworkManagerArgs {
 
   factory NetworkManagerArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkManagerName: map['networkManagerName'] == null ? null : pulumi.Output.create<String>(map['networkManagerName'] as String),
-      networkManagerScopeAccesses: map['networkManagerScopeAccesses'] == null ? null : pulumi.Output.create<List<String>>((map['networkManagerScopeAccesses'] as List).cast<String>()),
-      networkManagerScopes: pulumi.Output.create<NetworkManagerPropertiesNetworkManagerScopes>(NetworkManagerPropertiesNetworkManagerScopes.fromMap((map['networkManagerScopes'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkManagerName: map['networkManagerName'] == null ? null : (map['networkManagerName'] as String).input(),
+      networkManagerScopeAccesses: map['networkManagerScopeAccesses'] == null ? null : ((map['networkManagerScopeAccesses'] as List).cast<String>()).input(),
+      networkManagerScopes: (NetworkManagerPropertiesNetworkManagerScopes.fromMap((map['networkManagerScopes'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

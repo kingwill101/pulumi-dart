@@ -56,33 +56,20 @@ class RegisteredDomainArgs {
   /// [techPrivacy] Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
   /// [transferLock] Whether the domain is locked for transfer. Default: `true`.
   RegisteredDomainArgs({
-    pulumi.Output<RegisteredDomainAdminContact>? adminContact,
-    pulumi.Output<bool>? adminPrivacy,
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<RegisteredDomainBillingContact>? billingContact,
-    pulumi.Output<bool>? billingPrivacy,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<List<RegisteredDomainNameServer>>? nameServers,
-    pulumi.Output<RegisteredDomainRegistrantContact>? registrantContact,
-    pulumi.Output<bool>? registrantPrivacy,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<RegisteredDomainTechContact>? techContact,
-    pulumi.Output<bool>? techPrivacy,
-    pulumi.Output<bool>? transferLock,
-  }) :
-      adminContact = pulumi.Input.asOptionalInput<RegisteredDomainAdminContact>(adminContact),
-      adminPrivacy = pulumi.Input.asOptionalInput<bool>(adminPrivacy),
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      billingContact = pulumi.Input.asOptionalInput<RegisteredDomainBillingContact>(billingContact),
-      billingPrivacy = pulumi.Input.asOptionalInput<bool>(billingPrivacy),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      nameServers = pulumi.Input.asOptionalInput<List<RegisteredDomainNameServer>>(nameServers),
-      registrantContact = pulumi.Input.asOptionalInput<RegisteredDomainRegistrantContact>(registrantContact),
-      registrantPrivacy = pulumi.Input.asOptionalInput<bool>(registrantPrivacy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      techContact = pulumi.Input.asOptionalInput<RegisteredDomainTechContact>(techContact),
-      techPrivacy = pulumi.Input.asOptionalInput<bool>(techPrivacy),
-      transferLock = pulumi.Input.asOptionalInput<bool>(transferLock);
+    this.adminContact,
+    this.adminPrivacy,
+    this.autoRenew,
+    this.billingContact,
+    this.billingPrivacy,
+    required this.domainName,
+    this.nameServers,
+    this.registrantContact,
+    this.registrantPrivacy,
+    this.tags,
+    this.techContact,
+    this.techPrivacy,
+    this.transferLock,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,19 +91,19 @@ class RegisteredDomainArgs {
 
   factory RegisteredDomainArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredDomainArgs(
-      adminContact: map['adminContact'] == null ? null : pulumi.Output.create<RegisteredDomainAdminContact>(RegisteredDomainAdminContact.fromMap((map['adminContact'] as Map).cast<String, dynamic>())),
-      adminPrivacy: map['adminPrivacy'] == null ? null : pulumi.Output.create<bool>(map['adminPrivacy'] as bool),
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      billingContact: map['billingContact'] == null ? null : pulumi.Output.create<RegisteredDomainBillingContact>(RegisteredDomainBillingContact.fromMap((map['billingContact'] as Map).cast<String, dynamic>())),
-      billingPrivacy: map['billingPrivacy'] == null ? null : pulumi.Output.create<bool>(map['billingPrivacy'] as bool),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      nameServers: map['nameServers'] == null ? null : pulumi.Output.create<List<RegisteredDomainNameServer>>(pulumi.Input.decodeList<RegisteredDomainNameServer>(map['nameServers'], (value) => RegisteredDomainNameServer.fromMap((value as Map).cast<String, dynamic>()))),
-      registrantContact: map['registrantContact'] == null ? null : pulumi.Output.create<RegisteredDomainRegistrantContact>(RegisteredDomainRegistrantContact.fromMap((map['registrantContact'] as Map).cast<String, dynamic>())),
-      registrantPrivacy: map['registrantPrivacy'] == null ? null : pulumi.Output.create<bool>(map['registrantPrivacy'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      techContact: map['techContact'] == null ? null : pulumi.Output.create<RegisteredDomainTechContact>(RegisteredDomainTechContact.fromMap((map['techContact'] as Map).cast<String, dynamic>())),
-      techPrivacy: map['techPrivacy'] == null ? null : pulumi.Output.create<bool>(map['techPrivacy'] as bool),
-      transferLock: map['transferLock'] == null ? null : pulumi.Output.create<bool>(map['transferLock'] as bool),
+      adminContact: map['adminContact'] == null ? null : (RegisteredDomainAdminContact.fromMap((map['adminContact'] as Map).cast<String, dynamic>())).input(),
+      adminPrivacy: map['adminPrivacy'] == null ? null : (map['adminPrivacy'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      billingContact: map['billingContact'] == null ? null : (RegisteredDomainBillingContact.fromMap((map['billingContact'] as Map).cast<String, dynamic>())).input(),
+      billingPrivacy: map['billingPrivacy'] == null ? null : (map['billingPrivacy'] as bool).input(),
+      domainName: (map['domainName'] as String).input(),
+      nameServers: map['nameServers'] == null ? null : (pulumi.Input.decodeList<RegisteredDomainNameServer>(map['nameServers'], (value) => RegisteredDomainNameServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      registrantContact: map['registrantContact'] == null ? null : (RegisteredDomainRegistrantContact.fromMap((map['registrantContact'] as Map).cast<String, dynamic>())).input(),
+      registrantPrivacy: map['registrantPrivacy'] == null ? null : (map['registrantPrivacy'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      techContact: map['techContact'] == null ? null : (RegisteredDomainTechContact.fromMap((map['techContact'] as Map).cast<String, dynamic>())).input(),
+      techPrivacy: map['techPrivacy'] == null ? null : (map['techPrivacy'] as bool).input(),
+      transferLock: map['transferLock'] == null ? null : (map['transferLock'] as bool).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetManagedEnvironmentsStorageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageName] Name of the storage.
   GetManagedEnvironmentsStorageArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageName = pulumi.Input.asInput<String>(storageName);
+    required this.environmentName,
+    required this.resourceGroupName,
+    required this.storageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedEnvironmentsStorageArgs {
 
   factory GetManagedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedEnvironmentsStorageArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageName: pulumi.Output.create<String>(map['storageName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageName: (map['storageName'] as String).input(),
     );
   }
 }

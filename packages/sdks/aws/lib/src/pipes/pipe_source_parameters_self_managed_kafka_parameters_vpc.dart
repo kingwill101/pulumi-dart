@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersSelfManagedKafkaParametersVpc {
-  final List<String>? securityGroups;
-  final List<String>? subnets;
+  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>>? subnets;
 
   /// Creates a new [PipeSourceParametersSelfManagedKafkaParametersVpc].
   /// [securityGroups] Optional.
@@ -22,8 +23,8 @@ class PipeSourceParametersSelfManagedKafkaParametersVpc {
 
   factory PipeSourceParametersSelfManagedKafkaParametersVpc.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParametersVpc(
-      securityGroups: map['securityGroups'] == null ? null : (map['securityGroups'] as List).cast<String>(),
-      subnets: map['subnets'] == null ? null : (map['subnets'] as List).cast<String>(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      subnets: map['subnets'] == null ? null : ((map['subnets'] as List).cast<String>()).input(),
     );
   }
 }

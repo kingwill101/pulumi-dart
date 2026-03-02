@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainConfigFunctionArg {
   /// The name of arg.
-  final String argName;
+  final pulumi.Input<String> argName;
   /// The value of arg.
-  final String argValue;
+  final pulumi.Input<String> argValue;
 
   /// Creates a new [DomainConfigFunctionArg].
   /// [argName] The name of arg.
@@ -24,8 +25,8 @@ class DomainConfigFunctionArg {
 
   factory DomainConfigFunctionArg.fromMap(Map<String, dynamic> map) {
     return DomainConfigFunctionArg(
-      argName: map['argName'] as String,
-      argValue: map['argValue'] as String,
+      argName: (map['argName'] as String).input(),
+      argValue: (map['argValue'] as String).input(),
     );
   }
 }

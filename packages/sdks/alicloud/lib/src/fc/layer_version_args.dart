@@ -33,21 +33,14 @@ class LayerVersionArgs {
   /// [skipDestroy] Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
   /// [zipFile] The ZIP package of the function code that is encoded in the Base64 format.
   LayerVersionArgs({
-    required pulumi.Output<List<String>> compatibleRuntimes,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> layerName,
-    pulumi.Output<String>? ossBucketName,
-    pulumi.Output<String>? ossObjectName,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<String>? zipFile,
-  }) :
-      compatibleRuntimes = pulumi.Input.asInput<List<String>>(compatibleRuntimes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      layerName = pulumi.Input.asInput<String>(layerName),
-      ossBucketName = pulumi.Input.asOptionalInput<String>(ossBucketName),
-      ossObjectName = pulumi.Input.asOptionalInput<String>(ossObjectName),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      zipFile = pulumi.Input.asOptionalInput<String>(zipFile);
+    required this.compatibleRuntimes,
+    this.description,
+    required this.layerName,
+    this.ossBucketName,
+    this.ossObjectName,
+    this.skipDestroy,
+    this.zipFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class LayerVersionArgs {
 
   factory LayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return LayerVersionArgs(
-      compatibleRuntimes: pulumi.Output.create<List<String>>((map['compatibleRuntimes'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      layerName: pulumi.Output.create<String>(map['layerName'] as String),
-      ossBucketName: map['ossBucketName'] == null ? null : pulumi.Output.create<String>(map['ossBucketName'] as String),
-      ossObjectName: map['ossObjectName'] == null ? null : pulumi.Output.create<String>(map['ossObjectName'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      zipFile: map['zipFile'] == null ? null : pulumi.Output.create<String>(map['zipFile'] as String),
+      compatibleRuntimes: ((map['compatibleRuntimes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      layerName: (map['layerName'] as String).input(),
+      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName'] as String).input(),
+      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
     );
   }
 }

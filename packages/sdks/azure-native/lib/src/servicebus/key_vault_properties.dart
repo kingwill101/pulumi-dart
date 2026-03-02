@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_assigned_identity_properties.dart';
 
 /// Properties to configure keyVault Properties
 class KeyVaultProperties {
-  final UserAssignedIdentityProperties? identity;
+  final pulumi.Input<UserAssignedIdentityProperties>? identity;
   /// Name of the Key from KeyVault
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// Uri of KeyVault
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// Version of KeyVault
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
 
   /// Creates a new [KeyVaultProperties].
   /// [identity] Optional.
@@ -26,7 +27,7 @@ class KeyVaultProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<UserAssignedIdentityProperties, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'keyName': ?keyName,
       'keyVaultUri': ?keyVaultUri,
       'keyVersion': ?keyVersion,
@@ -35,10 +36,10 @@ class KeyVaultProperties {
 
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
-      identity: map['identity'] == null ? null : UserAssignedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
+      identity: map['identity'] == null ? null : (UserAssignedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
     );
   }
 }

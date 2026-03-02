@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceWarmNodeConfiguration {
   /// Elasticsearch cluster cold data node disk number
-  final int? amount;
+  final pulumi.Input<int>? amount;
   /// Elasticsearch cluster cold data node disk size
-  final int? disk;
+  final pulumi.Input<int>? disk;
   /// Elasticsearch cluster cold data node Disk encryption
-  final bool? diskEncryption;
+  final pulumi.Input<bool>? diskEncryption;
   /// Elasticsearch cluster cold data node disk type
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// Elasticsearch cluster cold data node Disk Specification
-  final String? spec;
+  final pulumi.Input<String>? spec;
 
   /// Creates a new [InstanceWarmNodeConfiguration].
   /// [amount] Elasticsearch cluster cold data node disk number
@@ -39,11 +40,11 @@ class InstanceWarmNodeConfiguration {
 
   factory InstanceWarmNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceWarmNodeConfiguration(
-      amount: map['amount'] == null ? null : map['amount'] as int,
-      disk: map['disk'] == null ? null : map['disk'] as int,
-      diskEncryption: map['diskEncryption'] == null ? null : map['diskEncryption'] as bool,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      spec: map['spec'] == null ? null : map['spec'] as String,
+      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
+      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
+      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption'] as bool).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
     );
   }
 }

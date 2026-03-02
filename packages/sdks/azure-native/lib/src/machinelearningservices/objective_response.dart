@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Optimization objective.
 class ObjectiveResponse {
   /// [Required] Defines supported metric goals for hyperparameter tuning
-  final String goal;
+  final pulumi.Input<String> goal;
   /// [Required] Name of the metric to optimize.
-  final String primaryMetric;
+  final pulumi.Input<String> primaryMetric;
 
   /// Creates a new [ObjectiveResponse].
   /// [goal] [Required] Defines supported metric goals for hyperparameter tuning
@@ -25,8 +26,8 @@ class ObjectiveResponse {
 
   factory ObjectiveResponse.fromMap(Map<String, dynamic> map) {
     return ObjectiveResponse(
-      goal: map['goal'] as String,
-      primaryMetric: map['primaryMetric'] as String,
+      goal: (map['goal'] as String).input(),
+      primaryMetric: (map['primaryMetric'] as String).input(),
     );
   }
 }

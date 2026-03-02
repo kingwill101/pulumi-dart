@@ -37,25 +37,16 @@ class KeywordLibArgs {
   /// [matchMode] The matching method. Valid values:fuzzy: fuzzy match precise: exact match
   /// [resourceType] The moderation scenario to which the text library applies. Valid values:TEXT: text anti-spam、IMAGE: ad violation detection、VOICE: audio anti-spam
   KeywordLibArgs({
-    pulumi.Output<List<String>>? bizTypes,
-    pulumi.Output<String>? category,
-    pulumi.Output<bool>? enable,
-    required pulumi.Output<String> keywordLibName,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? libType,
-    pulumi.Output<String>? matchMode,
-    required pulumi.Output<String> resourceType,
-  }) :
-      bizTypes = pulumi.Input.asOptionalInput<List<String>>(bizTypes),
-      category = pulumi.Input.asOptionalInput<String>(category),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      keywordLibName = pulumi.Input.asInput<String>(keywordLibName),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      language = pulumi.Input.asOptionalInput<String>(language),
-      libType = pulumi.Input.asOptionalInput<String>(libType),
-      matchMode = pulumi.Input.asOptionalInput<String>(matchMode),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    this.bizTypes,
+    this.category,
+    this.enable,
+    required this.keywordLibName,
+    this.lang,
+    this.language,
+    this.libType,
+    this.matchMode,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class KeywordLibArgs {
 
   factory KeywordLibArgs.fromMap(Map<String, dynamic> map) {
     return KeywordLibArgs(
-      bizTypes: map['bizTypes'] == null ? null : pulumi.Output.create<List<String>>((map['bizTypes'] as List).cast<String>()),
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      keywordLibName: pulumi.Output.create<String>(map['keywordLibName'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      libType: map['libType'] == null ? null : pulumi.Output.create<String>(map['libType'] as String),
-      matchMode: map['matchMode'] == null ? null : pulumi.Output.create<String>(map['matchMode'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes'] as List).cast<String>()).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      keywordLibName: (map['keywordLibName'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      libType: map['libType'] == null ? null : (map['libType'] as String).input(),
+      matchMode: map['matchMode'] == null ? null : (map['matchMode'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

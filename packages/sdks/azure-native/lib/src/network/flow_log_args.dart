@@ -56,35 +56,21 @@ class FlowLogArgs {
   /// [tags] Resource tags.
   /// [targetResourceId] ID of network security group to which flow log will be applied.
   FlowLogArgs({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? enabledFilteringCriteria,
-    pulumi.Output<TrafficAnalyticsProperties>? flowAnalyticsConfiguration,
-    pulumi.Output<String>? flowLogName,
-    pulumi.Output<FlowLogFormatParameters>? format,
-    pulumi.Output<String>? id,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkWatcherName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<RetentionPolicyParameters>? retentionPolicy,
-    required pulumi.Output<String> storageId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetResourceId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      enabledFilteringCriteria = pulumi.Input.asOptionalInput<String>(enabledFilteringCriteria),
-      flowAnalyticsConfiguration = pulumi.Input.asOptionalInput<TrafficAnalyticsProperties>(flowAnalyticsConfiguration),
-      flowLogName = pulumi.Input.asOptionalInput<String>(flowLogName),
-      format = pulumi.Input.asOptionalInput<FlowLogFormatParameters>(format),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkWatcherName = pulumi.Input.asInput<String>(networkWatcherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retentionPolicy = pulumi.Input.asOptionalInput<RetentionPolicyParameters>(retentionPolicy),
-      storageId = pulumi.Input.asInput<String>(storageId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId);
+    this.enabled,
+    this.enabledFilteringCriteria,
+    this.flowAnalyticsConfiguration,
+    this.flowLogName,
+    this.format,
+    this.id,
+    this.identity,
+    this.location,
+    required this.networkWatcherName,
+    required this.resourceGroupName,
+    this.retentionPolicy,
+    required this.storageId,
+    this.tags,
+    required this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class FlowLogArgs {
 
   factory FlowLogArgs.fromMap(Map<String, dynamic> map) {
     return FlowLogArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      enabledFilteringCriteria: map['enabledFilteringCriteria'] == null ? null : pulumi.Output.create<String>(map['enabledFilteringCriteria'] as String),
-      flowAnalyticsConfiguration: map['flowAnalyticsConfiguration'] == null ? null : pulumi.Output.create<TrafficAnalyticsProperties>(TrafficAnalyticsProperties.fromMap((map['flowAnalyticsConfiguration'] as Map).cast<String, dynamic>())),
-      flowLogName: map['flowLogName'] == null ? null : pulumi.Output.create<String>(map['flowLogName'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<FlowLogFormatParameters>(FlowLogFormatParameters.fromMap((map['format'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkWatcherName: pulumi.Output.create<String>(map['networkWatcherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionPolicy: map['retentionPolicy'] == null ? null : pulumi.Output.create<RetentionPolicyParameters>(RetentionPolicyParameters.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())),
-      storageId: pulumi.Output.create<String>(map['storageId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabledFilteringCriteria: map['enabledFilteringCriteria'] == null ? null : (map['enabledFilteringCriteria'] as String).input(),
+      flowAnalyticsConfiguration: map['flowAnalyticsConfiguration'] == null ? null : (TrafficAnalyticsProperties.fromMap((map['flowAnalyticsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
+      format: map['format'] == null ? null : (FlowLogFormatParameters.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkWatcherName: (map['networkWatcherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyParameters.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      storageId: (map['storageId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }
 }

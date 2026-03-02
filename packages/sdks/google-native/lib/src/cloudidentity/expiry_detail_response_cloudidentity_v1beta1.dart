@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The `MembershipRole` expiry details.
 class ExpiryDetailResponseCloudidentityV1beta1 {
   /// The time at which the `MembershipRole` will expire.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
 
   /// Creates a new [ExpiryDetailResponseCloudidentityV1beta1].
   /// [expireTime] The time at which the `MembershipRole` will expire.
@@ -20,7 +21,7 @@ class ExpiryDetailResponseCloudidentityV1beta1 {
 
   factory ExpiryDetailResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return ExpiryDetailResponseCloudidentityV1beta1(
-      expireTime: map['expireTime'] as String,
+      expireTime: (map['expireTime'] as String).input(),
     );
   }
 }

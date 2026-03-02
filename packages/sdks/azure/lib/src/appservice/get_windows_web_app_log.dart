@@ -6,13 +6,13 @@ import 'get_windows_web_app_log_http_log.dart';
 
 class GetWindowsWebAppLog {
   /// A `application_logs` block as defined above.
-  final List<GetWindowsWebAppLogApplicationLog> applicationLogs;
+  final pulumi.Input<List<GetWindowsWebAppLogApplicationLog>> applicationLogs;
   /// Is Detailed Error Messaging enabled.
-  final bool detailedErrorMessages;
+  final pulumi.Input<bool> detailedErrorMessages;
   /// Is Failed Request Tracing enabled.
-  final bool failedRequestTracing;
+  final pulumi.Input<bool> failedRequestTracing;
   /// An `http_logs` block as defined above.
-  final List<GetWindowsWebAppLogHttpLog> httpLogs;
+  final pulumi.Input<List<GetWindowsWebAppLogHttpLog>> httpLogs;
 
   /// Creates a new [GetWindowsWebAppLog].
   /// [applicationLogs] A `application_logs` block as defined above.
@@ -28,19 +28,19 @@ class GetWindowsWebAppLog {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationLogs': pulumi.Input.encodeList<GetWindowsWebAppLogApplicationLog, Map<String, dynamic>>(applicationLogs, (value) => value.toMap()),
+      'applicationLogs': pulumi.Input.mapInputValue<List<GetWindowsWebAppLogApplicationLog>, List<Map<String, dynamic>>>(applicationLogs, (value) => pulumi.Input.encodeList<GetWindowsWebAppLogApplicationLog, Map<String, dynamic>>(value, (value) => value.toMap())),
       'detailedErrorMessages': detailedErrorMessages,
       'failedRequestTracing': failedRequestTracing,
-      'httpLogs': pulumi.Input.encodeList<GetWindowsWebAppLogHttpLog, Map<String, dynamic>>(httpLogs, (value) => value.toMap()),
+      'httpLogs': pulumi.Input.mapInputValue<List<GetWindowsWebAppLogHttpLog>, List<Map<String, dynamic>>>(httpLogs, (value) => pulumi.Input.encodeList<GetWindowsWebAppLogHttpLog, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetWindowsWebAppLog.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppLog(
-      applicationLogs: pulumi.Input.decodeList<GetWindowsWebAppLogApplicationLog>(map['applicationLogs'], (value) => GetWindowsWebAppLogApplicationLog.fromMap((value as Map).cast<String, dynamic>())),
-      detailedErrorMessages: map['detailedErrorMessages'] as bool,
-      failedRequestTracing: map['failedRequestTracing'] as bool,
-      httpLogs: pulumi.Input.decodeList<GetWindowsWebAppLogHttpLog>(map['httpLogs'], (value) => GetWindowsWebAppLogHttpLog.fromMap((value as Map).cast<String, dynamic>())),
+      applicationLogs: (pulumi.Input.decodeList<GetWindowsWebAppLogApplicationLog>(map['applicationLogs'], (value) => GetWindowsWebAppLogApplicationLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      detailedErrorMessages: (map['detailedErrorMessages'] as bool).input(),
+      failedRequestTracing: (map['failedRequestTracing'] as bool).input(),
+      httpLogs: (pulumi.Input.decodeList<GetWindowsWebAppLogHttpLog>(map['httpLogs'], (value) => GetWindowsWebAppLogHttpLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

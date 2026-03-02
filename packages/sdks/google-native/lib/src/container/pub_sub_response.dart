@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'filter_response.dart';
 
 /// Pub/Sub specific notification config.
 class PubSubResponse {
   /// Enable notifications for Pub/Sub.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
-  final FilterResponse filter;
+  final pulumi.Input<FilterResponse> filter;
   /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [PubSubResponse].
   /// [enabled] Enable notifications for Pub/Sub.
@@ -24,16 +25,16 @@ class PubSubResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'filter': filter.toMap(),
+      'filter': pulumi.Input.mapInputValue<FilterResponse, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'topic': topic,
     };
   }
 
   factory PubSubResponse.fromMap(Map<String, dynamic> map) {
     return PubSubResponse(
-      enabled: map['enabled'] as bool,
-      filter: FilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      topic: map['topic'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      filter: (FilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

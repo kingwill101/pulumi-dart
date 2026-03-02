@@ -30,19 +30,13 @@ class VolumeGroupArgs {
   /// [volumeGroupName] The name of the volumeGroup
   /// [volumes] List of volumes from group
   VolumeGroupArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<VolumeGroupMetaData>? groupMetaData,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? volumeGroupName,
-    pulumi.Output<List<VolumeGroupVolumeProperties>>? volumes,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      groupMetaData = pulumi.Input.asOptionalInput<VolumeGroupMetaData>(groupMetaData),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      volumeGroupName = pulumi.Input.asOptionalInput<String>(volumeGroupName),
-      volumes = pulumi.Input.asOptionalInput<List<VolumeGroupVolumeProperties>>(volumes);
+    required this.accountName,
+    this.groupMetaData,
+    this.location,
+    required this.resourceGroupName,
+    this.volumeGroupName,
+    this.volumes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class VolumeGroupArgs {
 
   factory VolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      groupMetaData: map['groupMetaData'] == null ? null : pulumi.Output.create<VolumeGroupMetaData>(VolumeGroupMetaData.fromMap((map['groupMetaData'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumeGroupName: map['volumeGroupName'] == null ? null : pulumi.Output.create<String>(map['volumeGroupName'] as String),
-      volumes: map['volumes'] == null ? null : pulumi.Output.create<List<VolumeGroupVolumeProperties>>(pulumi.Input.decodeList<VolumeGroupVolumeProperties>(map['volumes'], (value) => VolumeGroupVolumeProperties.fromMap((value as Map).cast<String, dynamic>()))),
+      accountName: (map['accountName'] as String).input(),
+      groupMetaData: map['groupMetaData'] == null ? null : (VolumeGroupMetaData.fromMap((map['groupMetaData'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      volumeGroupName: map['volumeGroupName'] == null ? null : (map['volumeGroupName'] as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeGroupVolumeProperties>(map['volumes'], (value) => VolumeGroupVolumeProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

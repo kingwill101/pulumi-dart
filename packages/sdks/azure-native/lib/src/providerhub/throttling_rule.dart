@@ -5,13 +5,13 @@ import 'throttling_metric.dart';
 
 class ThrottlingRule {
   /// The action.
-  final String action;
+  final pulumi.Input<String> action;
   /// The application id.
-  final List<String>? applicationId;
+  final pulumi.Input<List<String>>? applicationId;
   /// The metrics.
-  final List<ThrottlingMetric> metrics;
+  final pulumi.Input<List<ThrottlingMetric>> metrics;
   /// The required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
 
   /// Creates a new [ThrottlingRule].
   /// [action] The action.
@@ -29,17 +29,17 @@ class ThrottlingRule {
     return <String, dynamic>{
       'action': action,
       'applicationId': ?applicationId,
-      'metrics': pulumi.Input.encodeList<ThrottlingMetric, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'metrics': pulumi.Input.mapInputValue<List<ThrottlingMetric>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<ThrottlingMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requiredFeatures': ?requiredFeatures,
     };
   }
 
   factory ThrottlingRule.fromMap(Map<String, dynamic> map) {
     return ThrottlingRule(
-      action: map['action'] as String,
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as List).cast<String>(),
-      metrics: pulumi.Input.decodeList<ThrottlingMetric>(map['metrics'], (value) => ThrottlingMetric.fromMap((value as Map).cast<String, dynamic>())),
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
+      action: (map['action'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as List).cast<String>()).input(),
+      metrics: (pulumi.Input.decodeList<ThrottlingMetric>(map['metrics'], (value) => ThrottlingMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
     );
   }
 }

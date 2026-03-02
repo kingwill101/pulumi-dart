@@ -16,13 +16,10 @@ class CostAllocationTagState {
   /// [tagKey] The key for the cost allocation tag.
   /// [type] The type of cost allocation tag.
   CostAllocationTagState({
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? tagKey,
-    pulumi.Output<String>? type,
-  }) :
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tagKey = pulumi.Input.asOptionalInput<String>(tagKey),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.status,
+    this.tagKey,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CostAllocationTagState {
 
   factory CostAllocationTagState.fromMap(Map<String, dynamic> map) {
     return CostAllocationTagState(
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tagKey: map['tagKey'] == null ? null : pulumi.Output.create<String>(map['tagKey'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

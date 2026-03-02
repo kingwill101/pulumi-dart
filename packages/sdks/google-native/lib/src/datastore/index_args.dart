@@ -23,15 +23,11 @@ class IndexArgs {
   /// [project] Optional.
   /// [properties] An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
   IndexArgs({
-    required pulumi.Output<IndexAncestor> ancestor,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<GoogleDatastoreAdminV1IndexedProperty>> properties,
-  }) :
-      ancestor = pulumi.Input.asInput<IndexAncestor>(ancestor),
-      kind = pulumi.Input.asInput<String>(kind),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      properties = pulumi.Input.asInput<List<GoogleDatastoreAdminV1IndexedProperty>>(properties);
+    required this.ancestor,
+    required this.kind,
+    this.project,
+    required this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      ancestor: pulumi.Output.create<IndexAncestor>(IndexAncestor.fromValue(map['ancestor'] as String)),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      properties: pulumi.Output.create<List<GoogleDatastoreAdminV1IndexedProperty>>(pulumi.Input.decodeList<GoogleDatastoreAdminV1IndexedProperty>(map['properties'], (value) => GoogleDatastoreAdminV1IndexedProperty.fromMap((value as Map).cast<String, dynamic>()))),
+      ancestor: (IndexAncestor.fromValue(map['ancestor'] as String)).input(),
+      kind: (map['kind'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      properties: (pulumi.Input.decodeList<GoogleDatastoreAdminV1IndexedProperty>(map['properties'], (value) => GoogleDatastoreAdminV1IndexedProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,17 +20,12 @@ class GetFeedbackMessageArgs {
   /// [feedbackThreadId] Required.
   /// [project] Optional.
   GetFeedbackMessageArgs({
-    required pulumi.Output<String> annotatedDatasetId,
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> feedbackMessageId,
-    required pulumi.Output<String> feedbackThreadId,
-    pulumi.Output<String>? project,
-  }) :
-      annotatedDatasetId = pulumi.Input.asInput<String>(annotatedDatasetId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      feedbackMessageId = pulumi.Input.asInput<String>(feedbackMessageId),
-      feedbackThreadId = pulumi.Input.asInput<String>(feedbackThreadId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.annotatedDatasetId,
+    required this.datasetId,
+    required this.feedbackMessageId,
+    required this.feedbackThreadId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetFeedbackMessageArgs {
 
   factory GetFeedbackMessageArgs.fromMap(Map<String, dynamic> map) {
     return GetFeedbackMessageArgs(
-      annotatedDatasetId: pulumi.Output.create<String>(map['annotatedDatasetId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      feedbackMessageId: pulumi.Output.create<String>(map['feedbackMessageId'] as String),
-      feedbackThreadId: pulumi.Output.create<String>(map['feedbackThreadId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotatedDatasetId: (map['annotatedDatasetId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      feedbackMessageId: (map['feedbackMessageId'] as String).input(),
+      feedbackThreadId: (map['feedbackThreadId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

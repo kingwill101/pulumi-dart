@@ -37,25 +37,16 @@ class EventSubscriptionArgs {
   /// [sourceType] The type of source that will be generating the events. Valid options are `db-instance`, `db-security-group`, `db-parameter-group`, `db-snapshot`, `db-cluster` or `db-cluster-snapshot`. If not set, all sources will be subscribed to.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   EventSubscriptionArgs({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? eventCategories,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> snsTopicArn,
-    pulumi.Output<List<String>>? sourceIds,
-    pulumi.Output<String>? sourceType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      eventCategories = pulumi.Input.asOptionalInput<List<String>>(eventCategories),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snsTopicArn = pulumi.Input.asInput<String>(snsTopicArn),
-      sourceIds = pulumi.Input.asOptionalInput<List<String>>(sourceIds),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.enabled,
+    this.eventCategories,
+    this.name,
+    this.namePrefix,
+    this.region,
+    required this.snsTopicArn,
+    this.sourceIds,
+    this.sourceType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class EventSubscriptionArgs {
 
   factory EventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      eventCategories: map['eventCategories'] == null ? null : pulumi.Output.create<List<String>>((map['eventCategories'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snsTopicArn: pulumi.Output.create<String>(map['snsTopicArn'] as String),
-      sourceIds: map['sourceIds'] == null ? null : pulumi.Output.create<List<String>>((map['sourceIds'] as List).cast<String>()),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      eventCategories: map['eventCategories'] == null ? null : ((map['eventCategories'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snsTopicArn: (map['snsTopicArn'] as String).input(),
+      sourceIds: map['sourceIds'] == null ? null : ((map['sourceIds'] as List).cast<String>()).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

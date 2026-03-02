@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the parameters for using CDN managed certificate for securing custom domain.
 class CdnCertificateSourceParametersResponse {
   /// Type of certificate used
-  final String certificateType;
+  final pulumi.Input<String> certificateType;
   /// Expected value is 'CdnCertificateSourceParameters'.
-  final String typeName;
+  final pulumi.Input<String> typeName;
 
   /// Creates a new [CdnCertificateSourceParametersResponse].
   /// [certificateType] Type of certificate used
@@ -25,8 +26,8 @@ class CdnCertificateSourceParametersResponse {
 
   factory CdnCertificateSourceParametersResponse.fromMap(Map<String, dynamic> map) {
     return CdnCertificateSourceParametersResponse(
-      certificateType: map['certificateType'] as String,
-      typeName: map['typeName'] as String,
+      certificateType: (map['certificateType'] as String).input(),
+      typeName: (map['typeName'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Route Target Configuration.
 class RouteTargetInformation {
   /// Route Targets to be applied for outgoing routes into CE.
-  final List<String>? exportIpv4RouteTargets;
+  final pulumi.Input<List<String>>? exportIpv4RouteTargets;
   /// Route Targets to be applied for outgoing routes from CE.
-  final List<String>? exportIpv6RouteTargets;
+  final pulumi.Input<List<String>>? exportIpv6RouteTargets;
   /// Route Targets to be applied for incoming routes into CE.
-  final List<String>? importIpv4RouteTargets;
+  final pulumi.Input<List<String>>? importIpv4RouteTargets;
   /// Route Targets to be applied for incoming routes from CE.
-  final List<String>? importIpv6RouteTargets;
+  final pulumi.Input<List<String>>? importIpv6RouteTargets;
 
   /// Creates a new [RouteTargetInformation].
   /// [exportIpv4RouteTargets] Route Targets to be applied for outgoing routes into CE.
@@ -35,10 +36,10 @@ class RouteTargetInformation {
 
   factory RouteTargetInformation.fromMap(Map<String, dynamic> map) {
     return RouteTargetInformation(
-      exportIpv4RouteTargets: map['exportIpv4RouteTargets'] == null ? null : (map['exportIpv4RouteTargets'] as List).cast<String>(),
-      exportIpv6RouteTargets: map['exportIpv6RouteTargets'] == null ? null : (map['exportIpv6RouteTargets'] as List).cast<String>(),
-      importIpv4RouteTargets: map['importIpv4RouteTargets'] == null ? null : (map['importIpv4RouteTargets'] as List).cast<String>(),
-      importIpv6RouteTargets: map['importIpv6RouteTargets'] == null ? null : (map['importIpv6RouteTargets'] as List).cast<String>(),
+      exportIpv4RouteTargets: map['exportIpv4RouteTargets'] == null ? null : ((map['exportIpv4RouteTargets'] as List).cast<String>()).input(),
+      exportIpv6RouteTargets: map['exportIpv6RouteTargets'] == null ? null : ((map['exportIpv6RouteTargets'] as List).cast<String>()).input(),
+      importIpv4RouteTargets: map['importIpv4RouteTargets'] == null ? null : ((map['importIpv4RouteTargets'] as List).cast<String>()).input(),
+      importIpv6RouteTargets: map['importIpv6RouteTargets'] == null ? null : ((map['importIpv6RouteTargets'] as List).cast<String>()).input(),
     );
   }
 }

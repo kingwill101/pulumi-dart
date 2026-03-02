@@ -36,25 +36,16 @@ class AnywhereCacheState {
   /// [updateTime] The modification time of the cache instance metadata in RFC 3339 format.
   /// [zone] The zone in which the cache instance needs to be created. For example, `us-central1-a.`
   AnywhereCacheState({
-    pulumi.Output<String>? admissionPolicy,
-    pulumi.Output<String>? anywhereCacheId,
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? pendingUpdate,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? ttl,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<String>? zone,
-  }) :
-      admissionPolicy = pulumi.Input.asOptionalInput<String>(admissionPolicy),
-      anywhereCacheId = pulumi.Input.asOptionalInput<String>(anywhereCacheId),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      pendingUpdate = pulumi.Input.asOptionalInput<bool>(pendingUpdate),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.admissionPolicy,
+    this.anywhereCacheId,
+    this.bucket,
+    this.createTime,
+    this.pendingUpdate,
+    this.state,
+    this.ttl,
+    this.updateTime,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class AnywhereCacheState {
 
   factory AnywhereCacheState.fromMap(Map<String, dynamic> map) {
     return AnywhereCacheState(
-      admissionPolicy: map['admissionPolicy'] == null ? null : pulumi.Output.create<String>(map['admissionPolicy'] as String),
-      anywhereCacheId: map['anywhereCacheId'] == null ? null : pulumi.Output.create<String>(map['anywhereCacheId'] as String),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      pendingUpdate: map['pendingUpdate'] == null ? null : pulumi.Output.create<bool>(map['pendingUpdate'] as bool),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      admissionPolicy: map['admissionPolicy'] == null ? null : (map['admissionPolicy'] as String).input(),
+      anywhereCacheId: map['anywhereCacheId'] == null ? null : (map['anywhereCacheId'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      pendingUpdate: map['pendingUpdate'] == null ? null : (map['pendingUpdate'] as bool).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

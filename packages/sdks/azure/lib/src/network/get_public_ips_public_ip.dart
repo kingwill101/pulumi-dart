@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPublicIPsPublicIp {
   /// The Domain Name Label of the Public IP Address
-  final String domainNameLabel;
+  final pulumi.Input<String> domainNameLabel;
   /// The FQDN of the Public IP Address
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// The ID of the Public IP Address
-  final String id;
+  final pulumi.Input<String> id;
   /// The IP address of the Public IP Address
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The Name of the Public IP Address
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetPublicIPsPublicIp].
   /// [domainNameLabel] The Domain Name Label of the Public IP Address
@@ -39,11 +40,11 @@ class GetPublicIPsPublicIp {
 
   factory GetPublicIPsPublicIp.fromMap(Map<String, dynamic> map) {
     return GetPublicIPsPublicIp(
-      domainNameLabel: map['domainNameLabel'] as String,
-      fqdn: map['fqdn'] as String,
-      id: map['id'] as String,
-      ipAddress: map['ipAddress'] as String,
-      name: map['name'] as String,
+      domainNameLabel: (map['domainNameLabel'] as String).input(),
+      fqdn: (map['fqdn'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

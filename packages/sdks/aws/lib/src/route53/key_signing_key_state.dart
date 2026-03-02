@@ -51,35 +51,21 @@ class KeySigningKeyState {
   /// [signingAlgorithmType] An integer used to represent the signing algorithm. This value must follow the guidelines provided by [RFC-8624 Section 3.1](https://tools.ietf.org/html/rfc8624#section-3.1).
   /// [status] Status of the key-signing key (KSK). Valid values: `ACTIVE`, `INACTIVE`. Defaults to `ACTIVE`.
   KeySigningKeyState({
-    pulumi.Output<String>? digestAlgorithmMnemonic,
-    pulumi.Output<int>? digestAlgorithmType,
-    pulumi.Output<String>? digestValue,
-    pulumi.Output<String>? dnskeyRecord,
-    pulumi.Output<String>? dsRecord,
-    pulumi.Output<int>? flag,
-    pulumi.Output<String>? hostedZoneId,
-    pulumi.Output<String>? keyManagementServiceArn,
-    pulumi.Output<int>? keyTag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? signingAlgorithmMnemonic,
-    pulumi.Output<int>? signingAlgorithmType,
-    pulumi.Output<String>? status,
-  }) :
-      digestAlgorithmMnemonic = pulumi.Input.asOptionalInput<String>(digestAlgorithmMnemonic),
-      digestAlgorithmType = pulumi.Input.asOptionalInput<int>(digestAlgorithmType),
-      digestValue = pulumi.Input.asOptionalInput<String>(digestValue),
-      dnskeyRecord = pulumi.Input.asOptionalInput<String>(dnskeyRecord),
-      dsRecord = pulumi.Input.asOptionalInput<String>(dsRecord),
-      flag = pulumi.Input.asOptionalInput<int>(flag),
-      hostedZoneId = pulumi.Input.asOptionalInput<String>(hostedZoneId),
-      keyManagementServiceArn = pulumi.Input.asOptionalInput<String>(keyManagementServiceArn),
-      keyTag = pulumi.Input.asOptionalInput<int>(keyTag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      signingAlgorithmMnemonic = pulumi.Input.asOptionalInput<String>(signingAlgorithmMnemonic),
-      signingAlgorithmType = pulumi.Input.asOptionalInput<int>(signingAlgorithmType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.digestAlgorithmMnemonic,
+    this.digestAlgorithmType,
+    this.digestValue,
+    this.dnskeyRecord,
+    this.dsRecord,
+    this.flag,
+    this.hostedZoneId,
+    this.keyManagementServiceArn,
+    this.keyTag,
+    this.name,
+    this.publicKey,
+    this.signingAlgorithmMnemonic,
+    this.signingAlgorithmType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class KeySigningKeyState {
 
   factory KeySigningKeyState.fromMap(Map<String, dynamic> map) {
     return KeySigningKeyState(
-      digestAlgorithmMnemonic: map['digestAlgorithmMnemonic'] == null ? null : pulumi.Output.create<String>(map['digestAlgorithmMnemonic'] as String),
-      digestAlgorithmType: map['digestAlgorithmType'] == null ? null : pulumi.Output.create<int>(map['digestAlgorithmType'] as int),
-      digestValue: map['digestValue'] == null ? null : pulumi.Output.create<String>(map['digestValue'] as String),
-      dnskeyRecord: map['dnskeyRecord'] == null ? null : pulumi.Output.create<String>(map['dnskeyRecord'] as String),
-      dsRecord: map['dsRecord'] == null ? null : pulumi.Output.create<String>(map['dsRecord'] as String),
-      flag: map['flag'] == null ? null : pulumi.Output.create<int>(map['flag'] as int),
-      hostedZoneId: map['hostedZoneId'] == null ? null : pulumi.Output.create<String>(map['hostedZoneId'] as String),
-      keyManagementServiceArn: map['keyManagementServiceArn'] == null ? null : pulumi.Output.create<String>(map['keyManagementServiceArn'] as String),
-      keyTag: map['keyTag'] == null ? null : pulumi.Output.create<int>(map['keyTag'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      signingAlgorithmMnemonic: map['signingAlgorithmMnemonic'] == null ? null : pulumi.Output.create<String>(map['signingAlgorithmMnemonic'] as String),
-      signingAlgorithmType: map['signingAlgorithmType'] == null ? null : pulumi.Output.create<int>(map['signingAlgorithmType'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      digestAlgorithmMnemonic: map['digestAlgorithmMnemonic'] == null ? null : (map['digestAlgorithmMnemonic'] as String).input(),
+      digestAlgorithmType: map['digestAlgorithmType'] == null ? null : (map['digestAlgorithmType'] as int).input(),
+      digestValue: map['digestValue'] == null ? null : (map['digestValue'] as String).input(),
+      dnskeyRecord: map['dnskeyRecord'] == null ? null : (map['dnskeyRecord'] as String).input(),
+      dsRecord: map['dsRecord'] == null ? null : (map['dsRecord'] as String).input(),
+      flag: map['flag'] == null ? null : (map['flag'] as int).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      keyManagementServiceArn: map['keyManagementServiceArn'] == null ? null : (map['keyManagementServiceArn'] as String).input(),
+      keyTag: map['keyTag'] == null ? null : (map['keyTag'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      signingAlgorithmMnemonic: map['signingAlgorithmMnemonic'] == null ? null : (map['signingAlgorithmMnemonic'] as String).input(),
+      signingAlgorithmType: map['signingAlgorithmType'] == null ? null : (map['signingAlgorithmType'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

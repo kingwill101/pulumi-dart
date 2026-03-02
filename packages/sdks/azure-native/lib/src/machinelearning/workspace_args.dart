@@ -35,23 +35,15 @@ class WorkspaceArgs {
   /// [userStorageAccountId] The fully qualified arm id of the storage account associated with this workspace.
   /// [workspaceName] The name of the machine learning workspace.
   WorkspaceArgs({
-    pulumi.Output<String>? keyVaultIdentifierId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> ownerEmail,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userStorageAccountId,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      keyVaultIdentifierId = pulumi.Input.asOptionalInput<String>(keyVaultIdentifierId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      ownerEmail = pulumi.Input.asInput<String>(ownerEmail),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userStorageAccountId = pulumi.Input.asInput<String>(userStorageAccountId),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.keyVaultIdentifierId,
+    this.location,
+    required this.ownerEmail,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    required this.userStorageAccountId,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      keyVaultIdentifierId: map['keyVaultIdentifierId'] == null ? null : pulumi.Output.create<String>(map['keyVaultIdentifierId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      ownerEmail: pulumi.Output.create<String>(map['ownerEmail'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userStorageAccountId: pulumi.Output.create<String>(map['userStorageAccountId'] as String),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      keyVaultIdentifierId: map['keyVaultIdentifierId'] == null ? null : (map['keyVaultIdentifierId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      ownerEmail: (map['ownerEmail'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userStorageAccountId: (map['userStorageAccountId'] as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

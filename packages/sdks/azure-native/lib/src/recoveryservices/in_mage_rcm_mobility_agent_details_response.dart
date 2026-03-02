@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm mobility agent details.
 class InMageRcmMobilityAgentDetailsResponse {
   /// The agent version expiry date.
-  final String agentVersionExpiryDate;
+  final pulumi.Input<String> agentVersionExpiryDate;
   /// The driver version.
-  final String driverVersion;
+  final pulumi.Input<String> driverVersion;
   /// The driver version expiry date.
-  final String driverVersionExpiryDate;
+  final pulumi.Input<String> driverVersionExpiryDate;
   /// A value indicating whether agent is upgradeable or not.
-  final String isUpgradeable;
+  final pulumi.Input<String> isUpgradeable;
   /// The time of the last heartbeat received from the agent.
-  final String lastHeartbeatUtc;
+  final pulumi.Input<String> lastHeartbeatUtc;
   /// The latest agent version release date.
-  final String latestAgentReleaseDate;
+  final pulumi.Input<String> latestAgentReleaseDate;
   /// The latest upgradeable version available without reboot.
-  final String latestUpgradableVersionWithoutReboot;
+  final pulumi.Input<String> latestUpgradableVersionWithoutReboot;
   /// The latest agent version available.
-  final String latestVersion;
+  final pulumi.Input<String> latestVersion;
   /// The whether update is possible or not.
-  final List<String> reasonsBlockingUpgrade;
+  final pulumi.Input<List<String>> reasonsBlockingUpgrade;
   /// The agent version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [InMageRcmMobilityAgentDetailsResponse].
   /// [agentVersionExpiryDate] The agent version expiry date.
@@ -65,16 +66,16 @@ class InMageRcmMobilityAgentDetailsResponse {
 
   factory InMageRcmMobilityAgentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmMobilityAgentDetailsResponse(
-      agentVersionExpiryDate: map['agentVersionExpiryDate'] as String,
-      driverVersion: map['driverVersion'] as String,
-      driverVersionExpiryDate: map['driverVersionExpiryDate'] as String,
-      isUpgradeable: map['isUpgradeable'] as String,
-      lastHeartbeatUtc: map['lastHeartbeatUtc'] as String,
-      latestAgentReleaseDate: map['latestAgentReleaseDate'] as String,
-      latestUpgradableVersionWithoutReboot: map['latestUpgradableVersionWithoutReboot'] as String,
-      latestVersion: map['latestVersion'] as String,
-      reasonsBlockingUpgrade: (map['reasonsBlockingUpgrade'] as List).cast<String>(),
-      version: map['version'] as String,
+      agentVersionExpiryDate: (map['agentVersionExpiryDate'] as String).input(),
+      driverVersion: (map['driverVersion'] as String).input(),
+      driverVersionExpiryDate: (map['driverVersionExpiryDate'] as String).input(),
+      isUpgradeable: (map['isUpgradeable'] as String).input(),
+      lastHeartbeatUtc: (map['lastHeartbeatUtc'] as String).input(),
+      latestAgentReleaseDate: (map['latestAgentReleaseDate'] as String).input(),
+      latestUpgradableVersionWithoutReboot: (map['latestUpgradableVersionWithoutReboot'] as String).input(),
+      latestVersion: (map['latestVersion'] as String).input(),
+      reasonsBlockingUpgrade: ((map['reasonsBlockingUpgrade'] as List).cast<String>()).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -53,35 +53,21 @@ class ConversationArgs {
   /// [startTime] The time at which the conversation started.
   /// [ttl] Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
   ConversationArgs({
-    pulumi.Output<String>? agentId,
-    pulumi.Output<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>? callMetadata,
-    pulumi.Output<String>? conversationId,
-    pulumi.Output<GoogleCloudContactcenterinsightsV1ConversationDataSource>? dataSource,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<ConversationMedium>? medium,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? obfuscatedUserId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? ttl,
-  }) :
-      agentId = pulumi.Input.asOptionalInput<String>(agentId),
-      callMetadata = pulumi.Input.asOptionalInput<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>(callMetadata),
-      conversationId = pulumi.Input.asOptionalInput<String>(conversationId),
-      dataSource = pulumi.Input.asOptionalInput<GoogleCloudContactcenterinsightsV1ConversationDataSource>(dataSource),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      medium = pulumi.Input.asOptionalInput<ConversationMedium>(medium),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      obfuscatedUserId = pulumi.Input.asOptionalInput<String>(obfuscatedUserId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    this.agentId,
+    this.callMetadata,
+    this.conversationId,
+    this.dataSource,
+    this.expireTime,
+    this.labels,
+    this.languageCode,
+    this.location,
+    this.medium,
+    this.name,
+    this.obfuscatedUserId,
+    this.project,
+    this.startTime,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class ConversationArgs {
 
   factory ConversationArgs.fromMap(Map<String, dynamic> map) {
     return ConversationArgs(
-      agentId: map['agentId'] == null ? null : pulumi.Output.create<String>(map['agentId'] as String),
-      callMetadata: map['callMetadata'] == null ? null : pulumi.Output.create<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>(GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromMap((map['callMetadata'] as Map).cast<String, dynamic>())),
-      conversationId: map['conversationId'] == null ? null : pulumi.Output.create<String>(map['conversationId'] as String),
-      dataSource: map['dataSource'] == null ? null : pulumi.Output.create<GoogleCloudContactcenterinsightsV1ConversationDataSource>(GoogleCloudContactcenterinsightsV1ConversationDataSource.fromMap((map['dataSource'] as Map).cast<String, dynamic>())),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      medium: map['medium'] == null ? null : pulumi.Output.create<ConversationMedium>(ConversationMedium.fromValue(map['medium'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      obfuscatedUserId: map['obfuscatedUserId'] == null ? null : pulumi.Output.create<String>(map['obfuscatedUserId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
+      callMetadata: map['callMetadata'] == null ? null : (GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromMap((map['callMetadata'] as Map).cast<String, dynamic>())).input(),
+      conversationId: map['conversationId'] == null ? null : (map['conversationId'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (GoogleCloudContactcenterinsightsV1ConversationDataSource.fromMap((map['dataSource'] as Map).cast<String, dynamic>())).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      medium: map['medium'] == null ? null : (ConversationMedium.fromValue(map['medium'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      obfuscatedUserId: map['obfuscatedUserId'] == null ? null : (map['obfuscatedUserId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

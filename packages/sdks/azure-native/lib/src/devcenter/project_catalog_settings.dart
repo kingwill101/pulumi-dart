@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings to be used when associating a project with a catalog.
 class ProjectCatalogSettings {
   /// Indicates catalog item types that can be synced.
-  final List<String>? catalogItemSyncTypes;
+  final pulumi.Input<List<String>>? catalogItemSyncTypes;
 
   /// Creates a new [ProjectCatalogSettings].
   /// [catalogItemSyncTypes] Indicates catalog item types that can be synced.
@@ -20,7 +21,7 @@ class ProjectCatalogSettings {
 
   factory ProjectCatalogSettings.fromMap(Map<String, dynamic> map) {
     return ProjectCatalogSettings(
-      catalogItemSyncTypes: map['catalogItemSyncTypes'] == null ? null : (map['catalogItemSyncTypes'] as List).cast<String>(),
+      catalogItemSyncTypes: map['catalogItemSyncTypes'] == null ? null : ((map['catalogItemSyncTypes'] as List).cast<String>()).input(),
     );
   }
 }

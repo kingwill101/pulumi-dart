@@ -53,35 +53,21 @@ class PoolArgs {
   /// [tags] Resource tags.
   /// [virtualNetworkType] Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
   PoolArgs({
-    required pulumi.Output<String> devBoxDefinitionName,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> licenseType,
-    required pulumi.Output<String> localAdministrator,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? managedVirtualNetworkRegions,
-    required pulumi.Output<String> networkConnectionName,
-    pulumi.Output<String>? poolName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? singleSignOnStatus,
-    pulumi.Output<StopOnDisconnectConfiguration>? stopOnDisconnect,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualNetworkType,
-  }) :
-      devBoxDefinitionName = pulumi.Input.asInput<String>(devBoxDefinitionName),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      licenseType = pulumi.Input.asInput<String>(licenseType),
-      localAdministrator = pulumi.Input.asInput<String>(localAdministrator),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedVirtualNetworkRegions = pulumi.Input.asOptionalInput<List<String>>(managedVirtualNetworkRegions),
-      networkConnectionName = pulumi.Input.asInput<String>(networkConnectionName),
-      poolName = pulumi.Input.asOptionalInput<String>(poolName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      singleSignOnStatus = pulumi.Input.asOptionalInput<String>(singleSignOnStatus),
-      stopOnDisconnect = pulumi.Input.asOptionalInput<StopOnDisconnectConfiguration>(stopOnDisconnect),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualNetworkType = pulumi.Input.asOptionalInput<String>(virtualNetworkType);
+    required this.devBoxDefinitionName,
+    this.displayName,
+    required this.licenseType,
+    required this.localAdministrator,
+    this.location,
+    this.managedVirtualNetworkRegions,
+    required this.networkConnectionName,
+    this.poolName,
+    required this.projectName,
+    required this.resourceGroupName,
+    this.singleSignOnStatus,
+    this.stopOnDisconnect,
+    this.tags,
+    this.virtualNetworkType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class PoolArgs {
 
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
-      devBoxDefinitionName: pulumi.Output.create<String>(map['devBoxDefinitionName'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      licenseType: pulumi.Output.create<String>(map['licenseType'] as String),
-      localAdministrator: pulumi.Output.create<String>(map['localAdministrator'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedVirtualNetworkRegions: map['managedVirtualNetworkRegions'] == null ? null : pulumi.Output.create<List<String>>((map['managedVirtualNetworkRegions'] as List).cast<String>()),
-      networkConnectionName: pulumi.Output.create<String>(map['networkConnectionName'] as String),
-      poolName: map['poolName'] == null ? null : pulumi.Output.create<String>(map['poolName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      singleSignOnStatus: map['singleSignOnStatus'] == null ? null : pulumi.Output.create<String>(map['singleSignOnStatus'] as String),
-      stopOnDisconnect: map['stopOnDisconnect'] == null ? null : pulumi.Output.create<StopOnDisconnectConfiguration>(StopOnDisconnectConfiguration.fromMap((map['stopOnDisconnect'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualNetworkType: map['virtualNetworkType'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkType'] as String),
+      devBoxDefinitionName: (map['devBoxDefinitionName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      licenseType: (map['licenseType'] as String).input(),
+      localAdministrator: (map['localAdministrator'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedVirtualNetworkRegions: map['managedVirtualNetworkRegions'] == null ? null : ((map['managedVirtualNetworkRegions'] as List).cast<String>()).input(),
+      networkConnectionName: (map['networkConnectionName'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      singleSignOnStatus: map['singleSignOnStatus'] == null ? null : (map['singleSignOnStatus'] as String).input(),
+      stopOnDisconnect: map['stopOnDisconnect'] == null ? null : (StopOnDisconnectConfiguration.fromMap((map['stopOnDisconnect'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNetworkType: map['virtualNetworkType'] == null ? null : (map['virtualNetworkType'] as String).input(),
     );
   }
 }

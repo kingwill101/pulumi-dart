@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_sku_response.dart';
 
 /// The disk configuration required for the selected volume.
 class DiskVolumeConfigurationResponse {
   /// The total number of disks required for the concerned volume.
-  final double? count;
+  final pulumi.Input<double>? count;
   /// The disk size in GB.
-  final double? sizeGB;
+  final pulumi.Input<double>? sizeGB;
   /// The disk SKU details.
-  final DiskSkuResponse? sku;
+  final pulumi.Input<DiskSkuResponse>? sku;
 
   /// Creates a new [DiskVolumeConfigurationResponse].
   /// [count] The total number of disks required for the concerned volume.
@@ -25,15 +26,15 @@ class DiskVolumeConfigurationResponse {
     return <String, dynamic>{
       'count': ?count,
       'sizeGB': ?sizeGB,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?pulumi.Input.mapOptionalInputValue<DiskSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
     };
   }
 
   factory DiskVolumeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DiskVolumeConfigurationResponse(
-      count: map['count'] == null ? null : map['count'] as double,
-      sizeGB: map['sizeGB'] == null ? null : map['sizeGB'] as double,
-      sku: map['sku'] == null ? null : DiskSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      count: map['count'] == null ? null : (map['count'] as double).input(),
+      sizeGB: map['sizeGB'] == null ? null : (map['sizeGB'] as double).input(),
+      sku: map['sku'] == null ? null : (DiskSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

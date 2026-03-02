@@ -23,15 +23,11 @@ class ConfigurationProfileHCRPAssignmentArgs {
   /// [properties] Properties of the configuration profile assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ConfigurationProfileHCRPAssignmentArgs({
-    pulumi.Output<String>? configurationProfileAssignmentName,
-    required pulumi.Output<String> machineName,
-    pulumi.Output<ConfigurationProfileAssignmentProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationProfileAssignmentName = pulumi.Input.asOptionalInput<String>(configurationProfileAssignmentName),
-      machineName = pulumi.Input.asInput<String>(machineName),
-      properties = pulumi.Input.asOptionalInput<ConfigurationProfileAssignmentProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.configurationProfileAssignmentName,
+    required this.machineName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ConfigurationProfileHCRPAssignmentArgs {
 
   factory ConfigurationProfileHCRPAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileHCRPAssignmentArgs(
-      configurationProfileAssignmentName: map['configurationProfileAssignmentName'] == null ? null : pulumi.Output.create<String>(map['configurationProfileAssignmentName'] as String),
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConfigurationProfileAssignmentProperties>(ConfigurationProfileAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationProfileAssignmentName: map['configurationProfileAssignmentName'] == null ? null : (map['configurationProfileAssignmentName'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

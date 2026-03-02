@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelLineLineChannel {
   /// The access token which is used to call the Line Channel API.
-  final String accessToken;
+  final pulumi.Input<String> accessToken;
   /// The secret which is used to access the Line Channel.
-  final String secret;
+  final pulumi.Input<String> secret;
 
   /// Creates a new [ChannelLineLineChannel].
   /// [accessToken] The access token which is used to call the Line Channel API.
@@ -24,8 +25,8 @@ class ChannelLineLineChannel {
 
   factory ChannelLineLineChannel.fromMap(Map<String, dynamic> map) {
     return ChannelLineLineChannel(
-      accessToken: map['accessToken'] as String,
-      secret: map['secret'] as String,
+      accessToken: (map['accessToken'] as String).input(),
+      secret: (map['secret'] as String).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OS configurations for HCI device.
 class OsProfileResponse {
   /// Version of assembly present on device
-  final String assemblyVersion;
+  final pulumi.Input<String> assemblyVersion;
   /// OS Base Image Version
-  final String baseImageVersion;
+  final pulumi.Input<String> baseImageVersion;
   /// The boot type of the device. e.g. UEFI, Legacy etc
-  final String bootType;
+  final pulumi.Input<String> bootType;
   /// OS Build Number
-  final String buildNumber;
+  final pulumi.Input<String> buildNumber;
   /// OS Image Version
-  final String imageVersion;
+  final pulumi.Input<String> imageVersion;
   /// OS SKU (e.g., “ Microsoft Azure Linux ROE“, “Azure Stack HCI", "Microsoft Azure Linux 3.0")
-  final String osSku;
+  final pulumi.Input<String> osSku;
   /// OS type (“windows", “linux”)
-  final String osType;
+  final pulumi.Input<String> osType;
   /// OS Version
-  final String osVersion;
+  final pulumi.Input<String> osVersion;
 
   /// Creates a new [OsProfileResponse].
   /// [assemblyVersion] Version of assembly present on device
@@ -55,14 +56,14 @@ class OsProfileResponse {
 
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
-      assemblyVersion: map['assemblyVersion'] as String,
-      baseImageVersion: map['baseImageVersion'] as String,
-      bootType: map['bootType'] as String,
-      buildNumber: map['buildNumber'] as String,
-      imageVersion: map['imageVersion'] as String,
-      osSku: map['osSku'] as String,
-      osType: map['osType'] as String,
-      osVersion: map['osVersion'] as String,
+      assemblyVersion: (map['assemblyVersion'] as String).input(),
+      baseImageVersion: (map['baseImageVersion'] as String).input(),
+      bootType: (map['bootType'] as String).input(),
+      buildNumber: (map['buildNumber'] as String).input(),
+      imageVersion: (map['imageVersion'] as String).input(),
+      osSku: (map['osSku'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      osVersion: (map['osVersion'] as String).input(),
     );
   }
 }

@@ -23,17 +23,12 @@ class RdsParameterGroupState {
   /// [parameterGroupDesc] The description of the parameter template.
   /// [parameterGroupName] The name of the parameter template.
   RdsParameterGroupState({
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<List<RdsParameterGroupParamDetail>>? paramDetails,
-    pulumi.Output<String>? parameterGroupDesc,
-    pulumi.Output<String>? parameterGroupName,
-  }) :
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      paramDetails = pulumi.Input.asOptionalInput<List<RdsParameterGroupParamDetail>>(paramDetails),
-      parameterGroupDesc = pulumi.Input.asOptionalInput<String>(parameterGroupDesc),
-      parameterGroupName = pulumi.Input.asOptionalInput<String>(parameterGroupName);
+    this.engine,
+    this.engineVersion,
+    this.paramDetails,
+    this.parameterGroupDesc,
+    this.parameterGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class RdsParameterGroupState {
 
   factory RdsParameterGroupState.fromMap(Map<String, dynamic> map) {
     return RdsParameterGroupState(
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      paramDetails: map['paramDetails'] == null ? null : pulumi.Output.create<List<RdsParameterGroupParamDetail>>(pulumi.Input.decodeList<RdsParameterGroupParamDetail>(map['paramDetails'], (value) => RdsParameterGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : pulumi.Output.create<String>(map['parameterGroupDesc'] as String),
-      parameterGroupName: map['parameterGroupName'] == null ? null : pulumi.Output.create<String>(map['parameterGroupName'] as String),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      paramDetails: map['paramDetails'] == null ? null : (pulumi.Input.decodeList<RdsParameterGroupParamDetail>(map['paramDetails'], (value) => RdsParameterGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameterGroupDesc: map['parameterGroupDesc'] == null ? null : (map['parameterGroupDesc'] as String).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
     );
   }
 }

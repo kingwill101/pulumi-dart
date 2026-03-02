@@ -32,19 +32,13 @@ class ResourceSlicePatchResourceK8sIoV1alpha2Args {
   /// [namedResources] NamedResources describes available resources using the named resources model.
   /// [nodeName] NodeName identifies the node which provides the resources if they are local to a node.
   ResourceSlicePatchResourceK8sIoV1alpha2Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? driverName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<NamedResourcesResourcesPatch>? namedResources,
-    pulumi.Output<String>? nodeName,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      driverName = pulumi.Input.asOptionalInput<String>(driverName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      namedResources = pulumi.Input.asOptionalInput<NamedResourcesResourcesPatch>(namedResources),
-      nodeName = pulumi.Input.asOptionalInput<String>(nodeName);
+    this.apiVersion,
+    this.driverName,
+    this.kind,
+    this.metadata,
+    this.namedResources,
+    this.nodeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class ResourceSlicePatchResourceK8sIoV1alpha2Args {
 
   factory ResourceSlicePatchResourceK8sIoV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return ResourceSlicePatchResourceK8sIoV1alpha2Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      driverName: map['driverName'] == null ? null : pulumi.Output.create<String>(map['driverName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      namedResources: map['namedResources'] == null ? null : pulumi.Output.create<NamedResourcesResourcesPatch>(NamedResourcesResourcesPatch.fromMap((map['namedResources'] as Map).cast<String, dynamic>())),
-      nodeName: map['nodeName'] == null ? null : pulumi.Output.create<String>(map['nodeName'] as String),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesResourcesPatch.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
     );
   }
 }

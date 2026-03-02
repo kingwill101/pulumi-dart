@@ -23,17 +23,12 @@ class ObjectReplicationState {
   /// [sourceObjectReplicationId] The ID of the Object Replication in the source storage account.
   /// [sourceStorageAccountId] The ID of the source storage account. Changing this forces a new Storage Object Replication to be created.
   ObjectReplicationState({
-    pulumi.Output<String>? destinationObjectReplicationId,
-    pulumi.Output<String>? destinationStorageAccountId,
-    pulumi.Output<List<ObjectReplicationRule>>? rules,
-    pulumi.Output<String>? sourceObjectReplicationId,
-    pulumi.Output<String>? sourceStorageAccountId,
-  }) :
-      destinationObjectReplicationId = pulumi.Input.asOptionalInput<String>(destinationObjectReplicationId),
-      destinationStorageAccountId = pulumi.Input.asOptionalInput<String>(destinationStorageAccountId),
-      rules = pulumi.Input.asOptionalInput<List<ObjectReplicationRule>>(rules),
-      sourceObjectReplicationId = pulumi.Input.asOptionalInput<String>(sourceObjectReplicationId),
-      sourceStorageAccountId = pulumi.Input.asOptionalInput<String>(sourceStorageAccountId);
+    this.destinationObjectReplicationId,
+    this.destinationStorageAccountId,
+    this.rules,
+    this.sourceObjectReplicationId,
+    this.sourceStorageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ObjectReplicationState {
 
   factory ObjectReplicationState.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationState(
-      destinationObjectReplicationId: map['destinationObjectReplicationId'] == null ? null : pulumi.Output.create<String>(map['destinationObjectReplicationId'] as String),
-      destinationStorageAccountId: map['destinationStorageAccountId'] == null ? null : pulumi.Output.create<String>(map['destinationStorageAccountId'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<ObjectReplicationRule>>(pulumi.Input.decodeList<ObjectReplicationRule>(map['rules'], (value) => ObjectReplicationRule.fromMap((value as Map).cast<String, dynamic>()))),
-      sourceObjectReplicationId: map['sourceObjectReplicationId'] == null ? null : pulumi.Output.create<String>(map['sourceObjectReplicationId'] as String),
-      sourceStorageAccountId: map['sourceStorageAccountId'] == null ? null : pulumi.Output.create<String>(map['sourceStorageAccountId'] as String),
+      destinationObjectReplicationId: map['destinationObjectReplicationId'] == null ? null : (map['destinationObjectReplicationId'] as String).input(),
+      destinationStorageAccountId: map['destinationStorageAccountId'] == null ? null : (map['destinationStorageAccountId'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ObjectReplicationRule>(map['rules'], (value) => ObjectReplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceObjectReplicationId: map['sourceObjectReplicationId'] == null ? null : (map['sourceObjectReplicationId'] as String).input(),
+      sourceStorageAccountId: map['sourceStorageAccountId'] == null ? null : (map['sourceStorageAccountId'] as String).input(),
     );
   }
 }

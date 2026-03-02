@@ -28,19 +28,13 @@ class RouterTrAssociationArgs {
   /// [transitRouterId] The ID of the forwarding router instance.
   /// [transitRouterOwnerId] The ID of the Alibaba Cloud account to which the forwarding router belongs.
   RouterTrAssociationArgs({
-    pulumi.Output<List<String>>? allowedPrefixes,
-    required pulumi.Output<String> associationRegionId,
-    pulumi.Output<String>? cenId,
-    required pulumi.Output<String> ecrId,
-    pulumi.Output<String>? transitRouterId,
-    pulumi.Output<int>? transitRouterOwnerId,
-  }) :
-      allowedPrefixes = pulumi.Input.asOptionalInput<List<String>>(allowedPrefixes),
-      associationRegionId = pulumi.Input.asInput<String>(associationRegionId),
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      ecrId = pulumi.Input.asInput<String>(ecrId),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId),
-      transitRouterOwnerId = pulumi.Input.asOptionalInput<int>(transitRouterOwnerId);
+    this.allowedPrefixes,
+    required this.associationRegionId,
+    this.cenId,
+    required this.ecrId,
+    this.transitRouterId,
+    this.transitRouterOwnerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RouterTrAssociationArgs {
 
   factory RouterTrAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouterTrAssociationArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['allowedPrefixes'] as List).cast<String>()),
-      associationRegionId: pulumi.Output.create<String>(map['associationRegionId'] as String),
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      ecrId: pulumi.Output.create<String>(map['ecrId'] as String),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
-      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : pulumi.Output.create<int>(map['transitRouterOwnerId'] as int),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
+      associationRegionId: (map['associationRegionId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      ecrId: (map['ecrId'] as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : (map['transitRouterOwnerId'] as int).input(),
     );
   }
 }

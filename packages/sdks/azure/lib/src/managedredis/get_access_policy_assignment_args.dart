@@ -21,13 +21,10 @@ class GetAccessPolicyAssignmentArgs {
   /// [objectId] The object ID of the Azure Active Directory user, group, service principal, or managed identity.
   /// [resourceGroupName] The name of the Resource Group where the Managed Redis instance exists.
   GetAccessPolicyAssignmentArgs({
-    required pulumi.Output<String> managedRedisName,
-    required pulumi.Output<String> objectId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      managedRedisName = pulumi.Input.asInput<String>(managedRedisName),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.managedRedisName,
+    required this.objectId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetAccessPolicyAssignmentArgs {
 
   factory GetAccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyAssignmentArgs(
-      managedRedisName: pulumi.Output.create<String>(map['managedRedisName'] as String),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      managedRedisName: (map['managedRedisName'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -5,13 +5,13 @@ import 'get_load_balancers_balancer_zone_mapping_load_balancer_address.dart';
 
 class GetLoadBalancersBalancerZoneMapping {
   /// (Available since v1.250.0) The address of the ALB instance.
-  final List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
+  final pulumi.Input<List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress>> loadBalancerAddresses;
   /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the vSwitch that corresponds to the zone.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The zone ID of the resource.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetLoadBalancersBalancerZoneMapping].
   /// [loadBalancerAddresses] (Available since v1.250.0) The address of the ALB instance.
@@ -27,7 +27,7 @@ class GetLoadBalancersBalancerZoneMapping {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loadBalancerAddresses': pulumi.Input.encodeList<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress, Map<String, dynamic>>(loadBalancerAddresses, (value) => value.toMap()),
+      'loadBalancerAddresses': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress>, List<Map<String, dynamic>>>(loadBalancerAddresses, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
       'vswitchId': vswitchId,
       'zoneId': zoneId,
@@ -36,10 +36,10 @@ class GetLoadBalancersBalancerZoneMapping {
 
   factory GetLoadBalancersBalancerZoneMapping.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerZoneMapping(
-      loadBalancerAddresses: pulumi.Input.decodeList<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress>(map['loadBalancerAddresses'], (value) => GetLoadBalancersBalancerZoneMappingLoadBalancerAddress.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      loadBalancerAddresses: (pulumi.Input.decodeList<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress>(map['loadBalancerAddresses'], (value) => GetLoadBalancersBalancerZoneMappingLoadBalancerAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

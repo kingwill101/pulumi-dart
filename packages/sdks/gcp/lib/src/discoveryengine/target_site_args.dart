@@ -37,19 +37,13 @@ class TargetSiteArgs {
   /// [providedUriPattern] The user provided URI pattern from which the `generated_uri_pattern` is
   /// [type] The possible target site types.
   TargetSiteArgs({
-    required pulumi.Output<String> dataStoreId,
-    pulumi.Output<bool>? exactMatch,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> providedUriPattern,
-    pulumi.Output<String>? type,
-  }) :
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      exactMatch = pulumi.Input.asOptionalInput<bool>(exactMatch),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      providedUriPattern = pulumi.Input.asInput<String>(providedUriPattern),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.dataStoreId,
+    this.exactMatch,
+    required this.location,
+    this.project,
+    required this.providedUriPattern,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,12 +58,12 @@ class TargetSiteArgs {
 
   factory TargetSiteArgs.fromMap(Map<String, dynamic> map) {
     return TargetSiteArgs(
-      dataStoreId: pulumi.Output.create<String>(map['dataStoreId'] as String),
-      exactMatch: map['exactMatch'] == null ? null : pulumi.Output.create<bool>(map['exactMatch'] as bool),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      providedUriPattern: pulumi.Output.create<String>(map['providedUriPattern'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      dataStoreId: (map['dataStoreId'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as bool).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      providedUriPattern: (map['providedUriPattern'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

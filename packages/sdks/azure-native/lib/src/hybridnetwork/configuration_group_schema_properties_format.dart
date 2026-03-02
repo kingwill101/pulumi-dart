@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration group schema properties.
 class ConfigurationGroupSchemaPropertiesFormat {
   /// Description of what schema can contain.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Name and value pairs that define the configuration value. It can be a well formed escaped JSON string.
-  final String? schemaDefinition;
+  final pulumi.Input<String>? schemaDefinition;
 
   /// Creates a new [ConfigurationGroupSchemaPropertiesFormat].
   /// [description] Description of what schema can contain.
@@ -25,8 +26,8 @@ class ConfigurationGroupSchemaPropertiesFormat {
 
   factory ConfigurationGroupSchemaPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupSchemaPropertiesFormat(
-      description: map['description'] == null ? null : map['description'] as String,
-      schemaDefinition: map['schemaDefinition'] == null ? null : map['schemaDefinition'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition'] as String).input(),
     );
   }
 }

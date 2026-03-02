@@ -49,33 +49,20 @@ class ProviderArgs {
   /// [username] Username with API access to the BigIP
   /// [validateCertsDisable] If set to true, Disables TLS certificate check on BIG-IP. Default : True
   ProviderArgs({
-    pulumi.Output<String>? address,
-    pulumi.Output<int>? apiRetries,
-    pulumi.Output<int>? apiTimeout,
-    pulumi.Output<String>? loginRef,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? port,
-    pulumi.Output<bool>? teemDisable,
-    pulumi.Output<bool>? tokenAuth,
-    pulumi.Output<int>? tokenTimeout,
-    pulumi.Output<String>? tokenValue,
-    pulumi.Output<String>? trustedCertPath,
-    pulumi.Output<String>? username,
-    pulumi.Output<bool>? validateCertsDisable,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      apiRetries = pulumi.Input.asOptionalInput<int>(apiRetries),
-      apiTimeout = pulumi.Input.asOptionalInput<int>(apiTimeout),
-      loginRef = pulumi.Input.asOptionalInput<String>(loginRef),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      port = pulumi.Input.asOptionalInput<String>(port),
-      teemDisable = pulumi.Input.asOptionalInput<bool>(teemDisable),
-      tokenAuth = pulumi.Input.asOptionalInput<bool>(tokenAuth),
-      tokenTimeout = pulumi.Input.asOptionalInput<int>(tokenTimeout),
-      tokenValue = pulumi.Input.asOptionalInput<String>(tokenValue),
-      trustedCertPath = pulumi.Input.asOptionalInput<String>(trustedCertPath),
-      username = pulumi.Input.asOptionalInput<String>(username),
-      validateCertsDisable = pulumi.Input.asOptionalInput<bool>(validateCertsDisable);
+    this.address,
+    this.apiRetries,
+    this.apiTimeout,
+    this.loginRef,
+    this.password,
+    this.port,
+    this.teemDisable,
+    this.tokenAuth,
+    this.tokenTimeout,
+    this.tokenValue,
+    this.trustedCertPath,
+    this.username,
+    this.validateCertsDisable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      apiRetries: map['apiRetries'] == null ? null : pulumi.Output.create<int>(map['apiRetries'] as int),
-      apiTimeout: map['apiTimeout'] == null ? null : pulumi.Output.create<int>(map['apiTimeout'] as int),
-      loginRef: map['loginRef'] == null ? null : pulumi.Output.create<String>(map['loginRef'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
-      teemDisable: map['teemDisable'] == null ? null : pulumi.Output.create<bool>(map['teemDisable'] as bool),
-      tokenAuth: map['tokenAuth'] == null ? null : pulumi.Output.create<bool>(map['tokenAuth'] as bool),
-      tokenTimeout: map['tokenTimeout'] == null ? null : pulumi.Output.create<int>(map['tokenTimeout'] as int),
-      tokenValue: map['tokenValue'] == null ? null : pulumi.Output.create<String>(map['tokenValue'] as String),
-      trustedCertPath: map['trustedCertPath'] == null ? null : pulumi.Output.create<String>(map['trustedCertPath'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
-      validateCertsDisable: map['validateCertsDisable'] == null ? null : pulumi.Output.create<bool>(map['validateCertsDisable'] as bool),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      apiRetries: map['apiRetries'] == null ? null : (map['apiRetries'] as int).input(),
+      apiTimeout: map['apiTimeout'] == null ? null : (map['apiTimeout'] as int).input(),
+      loginRef: map['loginRef'] == null ? null : (map['loginRef'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      teemDisable: map['teemDisable'] == null ? null : (map['teemDisable'] as bool).input(),
+      tokenAuth: map['tokenAuth'] == null ? null : (map['tokenAuth'] as bool).input(),
+      tokenTimeout: map['tokenTimeout'] == null ? null : (map['tokenTimeout'] as int).input(),
+      tokenValue: map['tokenValue'] == null ? null : (map['tokenValue'] as String).input(),
+      trustedCertPath: map['trustedCertPath'] == null ? null : (map['trustedCertPath'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
+      validateCertsDisable: map['validateCertsDisable'] == null ? null : (map['validateCertsDisable'] as bool).input(),
     );
   }
 }

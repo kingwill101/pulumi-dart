@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'akri_connector_template_helm_auth_secret_ref.dart';
 
 /// AkriConnectorTemplateHelmContainerRegistrySettings properties.
 class AkriConnectorTemplateHelmContainerRegistrySettings {
   /// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
-  final AkriConnectorTemplateHelmAuthSecretRef? authSecretRef;
+  final pulumi.Input<AkriConnectorTemplateHelmAuthSecretRef>? authSecretRef;
   /// The registry to use for the Helm chart.
-  final String registry;
+  final pulumi.Input<String> registry;
 
   /// Creates a new [AkriConnectorTemplateHelmContainerRegistrySettings].
   /// [authSecretRef] Optional reference to a secret in the same namespace to use for pulling the Helm chart.
@@ -19,15 +20,15 @@ class AkriConnectorTemplateHelmContainerRegistrySettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authSecretRef': ?authSecretRef == null ? null : authSecretRef!.toMap(),
+      'authSecretRef': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateHelmAuthSecretRef, Map<String, dynamic>>(authSecretRef, (value) => value.toMap()),
       'registry': registry,
     };
   }
 
   factory AkriConnectorTemplateHelmContainerRegistrySettings.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmContainerRegistrySettings(
-      authSecretRef: map['authSecretRef'] == null ? null : AkriConnectorTemplateHelmAuthSecretRef.fromMap((map['authSecretRef'] as Map).cast<String, dynamic>()),
-      registry: map['registry'] as String,
+      authSecretRef: map['authSecretRef'] == null ? null : (AkriConnectorTemplateHelmAuthSecretRef.fromMap((map['authSecretRef'] as Map).cast<String, dynamic>())).input(),
+      registry: (map['registry'] as String).input(),
     );
   }
 }

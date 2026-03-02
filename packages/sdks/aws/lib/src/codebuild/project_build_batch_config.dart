@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_build_batch_config_restrictions.dart';
 
 class ProjectBuildBatchConfig {
   /// Specifies if the build artifacts for the batch build should be combined into a single
   /// artifact location.
-  final bool? combineArtifacts;
+  final pulumi.Input<bool>? combineArtifacts;
   /// Configuration block specifying the restrictions for the batch build. Detailed below.
-  final ProjectBuildBatchConfigRestrictions? restrictions;
+  final pulumi.Input<ProjectBuildBatchConfigRestrictions>? restrictions;
   /// Specifies the service role ARN for the batch build project.
-  final String serviceRole;
+  final pulumi.Input<String> serviceRole;
   /// Specifies the maximum amount of time, in minutes, that the batch build must be
   /// completed in.
-  final int? timeoutInMins;
+  final pulumi.Input<int>? timeoutInMins;
 
   /// Creates a new [ProjectBuildBatchConfig].
   /// [combineArtifacts] Specifies if the build artifacts for the batch build should be combined into a single
@@ -29,7 +30,7 @@ class ProjectBuildBatchConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'combineArtifacts': ?combineArtifacts,
-      'restrictions': ?restrictions == null ? null : restrictions!.toMap(),
+      'restrictions': ?pulumi.Input.mapOptionalInputValue<ProjectBuildBatchConfigRestrictions, Map<String, dynamic>>(restrictions, (value) => value.toMap()),
       'serviceRole': serviceRole,
       'timeoutInMins': ?timeoutInMins,
     };
@@ -37,10 +38,10 @@ class ProjectBuildBatchConfig {
 
   factory ProjectBuildBatchConfig.fromMap(Map<String, dynamic> map) {
     return ProjectBuildBatchConfig(
-      combineArtifacts: map['combineArtifacts'] == null ? null : map['combineArtifacts'] as bool,
-      restrictions: map['restrictions'] == null ? null : ProjectBuildBatchConfigRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>()),
-      serviceRole: map['serviceRole'] as String,
-      timeoutInMins: map['timeoutInMins'] == null ? null : map['timeoutInMins'] as int,
+      combineArtifacts: map['combineArtifacts'] == null ? null : (map['combineArtifacts'] as bool).input(),
+      restrictions: map['restrictions'] == null ? null : (ProjectBuildBatchConfigRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
+      serviceRole: (map['serviceRole'] as String).input(),
+      timeoutInMins: map['timeoutInMins'] == null ? null : (map['timeoutInMins'] as int).input(),
     );
   }
 }

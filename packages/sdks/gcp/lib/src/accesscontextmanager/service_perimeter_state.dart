@@ -73,27 +73,17 @@ class ServicePerimeterState {
   /// [updateTime] Time the AccessPolicy was updated in UTC.
   /// [useExplicitDryRunSpec] Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   ServicePerimeterState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? perimeterType,
-    pulumi.Output<ServicePerimeterSpec>? spec,
-    pulumi.Output<ServicePerimeterStatus>? status,
-    pulumi.Output<String>? title,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<bool>? useExplicitDryRunSpec,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      perimeterType = pulumi.Input.asOptionalInput<String>(perimeterType),
-      spec = pulumi.Input.asOptionalInput<ServicePerimeterSpec>(spec),
-      status = pulumi.Input.asOptionalInput<ServicePerimeterStatus>(status),
-      title = pulumi.Input.asOptionalInput<String>(title),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      useExplicitDryRunSpec = pulumi.Input.asOptionalInput<bool>(useExplicitDryRunSpec);
+    this.createTime,
+    this.description,
+    this.name,
+    this.parent,
+    this.perimeterType,
+    this.spec,
+    this.status,
+    this.title,
+    this.updateTime,
+    this.useExplicitDryRunSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,16 +102,16 @@ class ServicePerimeterState {
 
   factory ServicePerimeterState.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      perimeterType: map['perimeterType'] == null ? null : pulumi.Output.create<String>(map['perimeterType'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<ServicePerimeterSpec>(ServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<ServicePerimeterStatus>(ServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>())),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : pulumi.Output.create<bool>(map['useExplicitDryRunSpec'] as bool),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      perimeterType: map['perimeterType'] == null ? null : (map['perimeterType'] as String).input(),
+      spec: map['spec'] == null ? null : (ServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : (map['useExplicitDryRunSpec'] as bool).input(),
     );
   }
 }

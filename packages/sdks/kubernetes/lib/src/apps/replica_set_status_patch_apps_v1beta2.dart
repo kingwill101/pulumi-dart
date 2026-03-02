@@ -6,17 +6,17 @@ import 'replica_set_condition_patch_apps_v1beta2.dart';
 /// ReplicaSetStatus represents the current status of a ReplicaSet.
 class ReplicaSetStatusPatchAppsV1beta2 {
   /// The number of available replicas (ready for at least minReadySeconds) for this replica set.
-  final int? availableReplicas;
+  final pulumi.Input<int>? availableReplicas;
   /// Represents the latest available observations of a replica set's current state.
-  final List<ReplicaSetConditionPatchAppsV1beta2>? conditions;
+  final pulumi.Input<List<ReplicaSetConditionPatchAppsV1beta2>>? conditions;
   /// The number of pods that have labels matching the labels of the pod template of the replicaset.
-  final int? fullyLabeledReplicas;
+  final pulumi.Input<int>? fullyLabeledReplicas;
   /// ObservedGeneration reflects the generation of the most recently observed ReplicaSet.
-  final int? observedGeneration;
+  final pulumi.Input<int>? observedGeneration;
   /// The number of ready replicas for this replica set.
-  final int? readyReplicas;
+  final pulumi.Input<int>? readyReplicas;
   /// Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
-  final int? replicas;
+  final pulumi.Input<int>? replicas;
 
   /// Creates a new [ReplicaSetStatusPatchAppsV1beta2].
   /// [availableReplicas] The number of available replicas (ready for at least minReadySeconds) for this replica set.
@@ -37,7 +37,7 @@ class ReplicaSetStatusPatchAppsV1beta2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availableReplicas': ?availableReplicas,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ReplicaSetConditionPatchAppsV1beta2, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ReplicaSetConditionPatchAppsV1beta2>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ReplicaSetConditionPatchAppsV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fullyLabeledReplicas': ?fullyLabeledReplicas,
       'observedGeneration': ?observedGeneration,
       'readyReplicas': ?readyReplicas,
@@ -47,12 +47,12 @@ class ReplicaSetStatusPatchAppsV1beta2 {
 
   factory ReplicaSetStatusPatchAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return ReplicaSetStatusPatchAppsV1beta2(
-      availableReplicas: map['availableReplicas'] == null ? null : map['availableReplicas'] as int,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ReplicaSetConditionPatchAppsV1beta2>(map['conditions'], (value) => ReplicaSetConditionPatchAppsV1beta2.fromMap((value as Map).cast<String, dynamic>())),
-      fullyLabeledReplicas: map['fullyLabeledReplicas'] == null ? null : map['fullyLabeledReplicas'] as int,
-      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as int,
-      readyReplicas: map['readyReplicas'] == null ? null : map['readyReplicas'] as int,
-      replicas: map['replicas'] == null ? null : map['replicas'] as int,
+      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas'] as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ReplicaSetConditionPatchAppsV1beta2>(map['conditions'], (value) => ReplicaSetConditionPatchAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullyLabeledReplicas: map['fullyLabeledReplicas'] == null ? null : (map['fullyLabeledReplicas'] as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas'] as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
     );
   }
 }

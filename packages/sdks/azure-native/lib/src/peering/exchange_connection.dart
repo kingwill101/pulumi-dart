@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bgp_session.dart';
 
 /// The properties that define an exchange connection.
 class ExchangeConnection {
   /// The BGP session associated with the connection.
-  final BgpSession? bgpSession;
+  final pulumi.Input<BgpSession>? bgpSession;
   /// The unique identifier (GUID) for the connection.
-  final String? connectionIdentifier;
+  final pulumi.Input<String>? connectionIdentifier;
   /// The PeeringDB.com ID of the facility at which the connection has to be set up.
-  final int? peeringDBFacilityId;
+  final pulumi.Input<int>? peeringDBFacilityId;
 
   /// Creates a new [ExchangeConnection].
   /// [bgpSession] The BGP session associated with the connection.
@@ -23,7 +24,7 @@ class ExchangeConnection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpSession': ?bgpSession == null ? null : bgpSession!.toMap(),
+      'bgpSession': ?pulumi.Input.mapOptionalInputValue<BgpSession, Map<String, dynamic>>(bgpSession, (value) => value.toMap()),
       'connectionIdentifier': ?connectionIdentifier,
       'peeringDBFacilityId': ?peeringDBFacilityId,
     };
@@ -31,9 +32,9 @@ class ExchangeConnection {
 
   factory ExchangeConnection.fromMap(Map<String, dynamic> map) {
     return ExchangeConnection(
-      bgpSession: map['bgpSession'] == null ? null : BgpSession.fromMap((map['bgpSession'] as Map).cast<String, dynamic>()),
-      connectionIdentifier: map['connectionIdentifier'] == null ? null : map['connectionIdentifier'] as String,
-      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : map['peeringDBFacilityId'] as int,
+      bgpSession: map['bgpSession'] == null ? null : (BgpSession.fromMap((map['bgpSession'] as Map).cast<String, dynamic>())).input(),
+      connectionIdentifier: map['connectionIdentifier'] == null ? null : (map['connectionIdentifier'] as String).input(),
+      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : (map['peeringDBFacilityId'] as int).input(),
     );
   }
 }

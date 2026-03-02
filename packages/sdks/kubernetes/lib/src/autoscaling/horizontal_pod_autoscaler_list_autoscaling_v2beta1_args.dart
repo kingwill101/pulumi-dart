@@ -24,15 +24,11 @@ class HorizontalPodAutoscalerListAutoscalingV2beta1Args {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] metadata is the standard list metadata.
   HorizontalPodAutoscalerListAutoscalingV2beta1Args({
-    pulumi.Output<String>? apiVersion,
-    required pulumi.Output<List<HorizontalPodAutoscalerAutoscalingV2beta1Resource>> items,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ListMeta>? metadata,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      items = pulumi.Input.asInput<List<HorizontalPodAutoscalerAutoscalingV2beta1Resource>>(items),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ListMeta>(metadata);
+    this.apiVersion,
+    required this.items,
+    this.kind,
+    this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class HorizontalPodAutoscalerListAutoscalingV2beta1Args {
 
   factory HorizontalPodAutoscalerListAutoscalingV2beta1Args.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerListAutoscalingV2beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      items: pulumi.Output.create<List<HorizontalPodAutoscalerAutoscalingV2beta1Resource>>((map['items'] as List).cast<HorizontalPodAutoscalerAutoscalingV2beta1Resource>()),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ListMeta>(ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      items: ((map['items'] as List).cast<HorizontalPodAutoscalerAutoscalingV2beta1Resource>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

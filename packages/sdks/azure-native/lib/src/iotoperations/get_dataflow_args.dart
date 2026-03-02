@@ -22,15 +22,11 @@ class GetDataflowArgs {
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDataflowArgs({
-    required pulumi.Output<String> dataflowName,
-    required pulumi.Output<String> dataflowProfileName,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataflowName = pulumi.Input.asInput<String>(dataflowName),
-      dataflowProfileName = pulumi.Input.asInput<String>(dataflowProfileName),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dataflowName,
+    required this.dataflowProfileName,
+    required this.instanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDataflowArgs {
 
   factory GetDataflowArgs.fromMap(Map<String, dynamic> map) {
     return GetDataflowArgs(
-      dataflowName: pulumi.Output.create<String>(map['dataflowName'] as String),
-      dataflowProfileName: pulumi.Output.create<String>(map['dataflowProfileName'] as String),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataflowName: (map['dataflowName'] as String).input(),
+      dataflowProfileName: (map['dataflowProfileName'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

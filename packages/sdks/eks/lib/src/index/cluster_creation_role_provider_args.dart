@@ -14,11 +14,9 @@ class ClusterCreationRoleProviderArgs {
   /// [profile] Optional.
   /// [region] Optional.
   ClusterCreationRoleProviderArgs({
-    pulumi.Output<String>? profile,
-    pulumi.Output<String>? region,
-  }) :
-      profile = pulumi.Input.asOptionalInput<String>(profile),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.profile,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class ClusterCreationRoleProviderArgs {
 
   factory ClusterCreationRoleProviderArgs.fromMap(Map<String, dynamic> map) {
     return ClusterCreationRoleProviderArgs(
-      profile: map['profile'] == null ? null : pulumi.Output.create<String>(map['profile'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

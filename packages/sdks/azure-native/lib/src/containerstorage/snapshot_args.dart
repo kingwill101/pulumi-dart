@@ -22,15 +22,11 @@ class SnapshotArgs {
   /// [snapshotName] Volume Snapshot Resource
   /// [source] Reference to the source volume
   SnapshotArgs({
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? snapshotName,
-    required pulumi.Output<String> source,
-  }) :
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      source = pulumi.Input.asInput<String>(source);
+    required this.poolName,
+    required this.resourceGroupName,
+    this.snapshotName,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

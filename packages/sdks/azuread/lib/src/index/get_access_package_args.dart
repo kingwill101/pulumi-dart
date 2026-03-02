@@ -21,13 +21,10 @@ class GetAccessPackageArgs {
   /// [displayName] The display name of the access package.
   /// [objectId] The ID of this access package.
   GetAccessPackageArgs({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? objectId,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId);
+    this.catalogId,
+    this.displayName,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetAccessPackageArgs {
 
   factory GetAccessPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPackageArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

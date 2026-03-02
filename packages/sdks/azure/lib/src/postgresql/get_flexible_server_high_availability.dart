@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFlexibleServerHighAvailability {
   /// The high availability mode of the PostgreSQL Flexible Server.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The availability zone of the standby Flexible Server.
-  final String standbyAvailabilityZone;
+  final pulumi.Input<String> standbyAvailabilityZone;
 
   /// Creates a new [GetFlexibleServerHighAvailability].
   /// [mode] The high availability mode of the PostgreSQL Flexible Server.
@@ -24,8 +25,8 @@ class GetFlexibleServerHighAvailability {
 
   factory GetFlexibleServerHighAvailability.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerHighAvailability(
-      mode: map['mode'] as String,
-      standbyAvailabilityZone: map['standbyAvailabilityZone'] as String,
+      mode: (map['mode'] as String).input(),
+      standbyAvailabilityZone: (map['standbyAvailabilityZone'] as String).input(),
     );
   }
 }

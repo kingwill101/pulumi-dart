@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_gateway_target_target_configuration_mcp.dart';
 
 class AgentcoreGatewayTargetTargetConfiguration {
   /// Model Context Protocol (MCP) configuration. See `mcp` below.
-  final AgentcoreGatewayTargetTargetConfigurationMcp? mcp;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcp>? mcp;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfiguration].
   /// [mcp] Model Context Protocol (MCP) configuration. See `mcp` below.
@@ -14,13 +15,13 @@ class AgentcoreGatewayTargetTargetConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mcp': ?mcp == null ? null : mcp!.toMap(),
+      'mcp': ?pulumi.Input.mapOptionalInputValue<AgentcoreGatewayTargetTargetConfigurationMcp, Map<String, dynamic>>(mcp, (value) => value.toMap()),
     };
   }
 
   factory AgentcoreGatewayTargetTargetConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfiguration(
-      mcp: map['mcp'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcp.fromMap((map['mcp'] as Map).cast<String, dynamic>()),
+      mcp: map['mcp'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcp.fromMap((map['mcp'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

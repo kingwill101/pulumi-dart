@@ -44,19 +44,13 @@ class FunctionIamBindingArgs {
   /// [region] The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
   FunctionIamBindingArgs({
-    required pulumi.Output<String> cloudFunction,
-    pulumi.Output<FunctionIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-  }) :
-      cloudFunction = pulumi.Input.asInput<String>(cloudFunction),
-      condition = pulumi.Input.asOptionalInput<FunctionIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role);
+    required this.cloudFunction,
+    this.condition,
+    required this.members,
+    this.project,
+    this.region,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,12 +65,12 @@ class FunctionIamBindingArgs {
 
   factory FunctionIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return FunctionIamBindingArgs(
-      cloudFunction: pulumi.Output.create<String>(map['cloudFunction'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<FunctionIamBindingCondition>(FunctionIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      cloudFunction: (map['cloudFunction'] as String).input(),
+      condition: map['condition'] == null ? null : (FunctionIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

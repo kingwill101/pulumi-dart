@@ -16,11 +16,9 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs {
   /// [bandwidthPackageId] Specifies whether only to precheck the request. Valid values:
   /// [loadBalancerId] The ID of the EIP bandwidth plan.
   LoadbalancerCommonBandwidthPackageAttachmentArgs({
-    required pulumi.Output<String> bandwidthPackageId,
-    required pulumi.Output<String> loadBalancerId,
-  }) :
-      bandwidthPackageId = pulumi.Input.asInput<String>(bandwidthPackageId),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId);
+    required this.bandwidthPackageId,
+    required this.loadBalancerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs {
 
   factory LoadbalancerCommonBandwidthPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LoadbalancerCommonBandwidthPackageAttachmentArgs(
-      bandwidthPackageId: pulumi.Output.create<String>(map['bandwidthPackageId'] as String),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
+      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
     );
   }
 }

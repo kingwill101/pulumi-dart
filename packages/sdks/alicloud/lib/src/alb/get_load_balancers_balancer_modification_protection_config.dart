@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersBalancerModificationProtectionConfig {
   /// The reason for modification protection.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetLoadBalancersBalancerModificationProtectionConfig].
   /// [reason] The reason for modification protection.
@@ -24,8 +25,8 @@ class GetLoadBalancersBalancerModificationProtectionConfig {
 
   factory GetLoadBalancersBalancerModificationProtectionConfig.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerModificationProtectionConfig(
-      reason: map['reason'] as String,
-      status: map['status'] as String,
+      reason: (map['reason'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

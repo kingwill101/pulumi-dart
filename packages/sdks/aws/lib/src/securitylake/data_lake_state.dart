@@ -32,23 +32,15 @@ class DataLakeState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   DataLakeState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<DataLakeConfiguration>? configuration,
-    pulumi.Output<String>? metaStoreManagerRoleArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? s3BucketArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<DataLakeTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configuration = pulumi.Input.asOptionalInput<DataLakeConfiguration>(configuration),
-      metaStoreManagerRoleArn = pulumi.Input.asOptionalInput<String>(metaStoreManagerRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3BucketArn = pulumi.Input.asOptionalInput<String>(s3BucketArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<DataLakeTimeouts>(timeouts);
+    this.arn,
+    this.configuration,
+    this.metaStoreManagerRoleArn,
+    this.region,
+    this.s3BucketArn,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class DataLakeState {
 
   factory DataLakeState.fromMap(Map<String, dynamic> map) {
     return DataLakeState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<DataLakeConfiguration>(DataLakeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      metaStoreManagerRoleArn: map['metaStoreManagerRoleArn'] == null ? null : pulumi.Output.create<String>(map['metaStoreManagerRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3BucketArn: map['s3BucketArn'] == null ? null : pulumi.Output.create<String>(map['s3BucketArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DataLakeTimeouts>(DataLakeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configuration: map['configuration'] == null ? null : (DataLakeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      metaStoreManagerRoleArn: map['metaStoreManagerRoleArn'] == null ? null : (map['metaStoreManagerRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3BucketArn: map['s3BucketArn'] == null ? null : (map['s3BucketArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (DataLakeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

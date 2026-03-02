@@ -19,15 +19,11 @@ class ExecutionState {
   /// [input] The Input information for this execution.
   /// [status] The status of the resource. Valid values: `Stopped`.
   ExecutionState({
-    pulumi.Output<String>? executionName,
-    pulumi.Output<String>? flowName,
-    pulumi.Output<String>? input,
-    pulumi.Output<String>? status,
-  }) :
-      executionName = pulumi.Input.asOptionalInput<String>(executionName),
-      flowName = pulumi.Input.asOptionalInput<String>(flowName),
-      input = pulumi.Input.asOptionalInput<String>(input),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.executionName,
+    this.flowName,
+    this.input,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ExecutionState {
 
   factory ExecutionState.fromMap(Map<String, dynamic> map) {
     return ExecutionState(
-      executionName: map['executionName'] == null ? null : pulumi.Output.create<String>(map['executionName'] as String),
-      flowName: map['flowName'] == null ? null : pulumi.Output.create<String>(map['flowName'] as String),
-      input: map['input'] == null ? null : pulumi.Output.create<String>(map['input'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      executionName: map['executionName'] == null ? null : (map['executionName'] as String).input(),
+      flowName: map['flowName'] == null ? null : (map['flowName'] as String).input(),
+      input: map['input'] == null ? null : (map['input'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

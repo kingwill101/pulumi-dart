@@ -16,11 +16,9 @@ class GetLinkerDryrunArgs {
   /// [dryrunName] The name of dryrun.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource to be connected.
   GetLinkerDryrunArgs({
-    required pulumi.Output<String> dryrunName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      dryrunName = pulumi.Input.asInput<String>(dryrunName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.dryrunName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLinkerDryrunArgs {
 
   factory GetLinkerDryrunArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkerDryrunArgs(
-      dryrunName: pulumi.Output.create<String>(map['dryrunName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      dryrunName: (map['dryrunName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

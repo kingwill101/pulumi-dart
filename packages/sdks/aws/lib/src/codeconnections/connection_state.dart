@@ -36,27 +36,17 @@ class ConnectionState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   ConnectionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? connectionStatus,
-    pulumi.Output<String>? hostArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerAccountId,
-    pulumi.Output<String>? providerType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ConnectionTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      connectionStatus = pulumi.Input.asOptionalInput<String>(connectionStatus),
-      hostArn = pulumi.Input.asOptionalInput<String>(hostArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerAccountId = pulumi.Input.asOptionalInput<String>(ownerAccountId),
-      providerType = pulumi.Input.asOptionalInput<String>(providerType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ConnectionTimeouts>(timeouts);
+    this.arn,
+    this.connectionStatus,
+    this.hostArn,
+    this.name,
+    this.ownerAccountId,
+    this.providerType,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +65,16 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      connectionStatus: map['connectionStatus'] == null ? null : pulumi.Output.create<String>(map['connectionStatus'] as String),
-      hostArn: map['hostArn'] == null ? null : pulumi.Output.create<String>(map['hostArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerAccountId: map['ownerAccountId'] == null ? null : pulumi.Output.create<String>(map['ownerAccountId'] as String),
-      providerType: map['providerType'] == null ? null : pulumi.Output.create<String>(map['providerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ConnectionTimeouts>(ConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus'] as String).input(),
+      hostArn: map['hostArn'] == null ? null : (map['hostArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
+      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

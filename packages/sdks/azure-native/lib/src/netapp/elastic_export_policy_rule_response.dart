@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Elastic Volume Export Policy Rule
 class ElasticExportPolicyRuleResponse {
   /// Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
-  final List<String>? allowedClients;
+  final pulumi.Input<List<String>>? allowedClients;
   /// Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
-  final String? nfsv3;
+  final pulumi.Input<String>? nfsv3;
   /// Allows clients to access the volume with at least NFSv4.1 protocol.
-  final String? nfsv4;
+  final pulumi.Input<String>? nfsv4;
   /// Indicates whether root access to the volume is granted to clients affected by this rule
-  final String? rootAccess;
+  final pulumi.Input<String>? rootAccess;
   /// Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
-  final int? ruleIndex;
+  final pulumi.Input<int>? ruleIndex;
   /// Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
-  final String? unixAccessRule;
+  final pulumi.Input<String>? unixAccessRule;
 
   /// Creates a new [ElasticExportPolicyRuleResponse].
   /// [allowedClients] Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
@@ -45,12 +46,12 @@ class ElasticExportPolicyRuleResponse {
 
   factory ElasticExportPolicyRuleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticExportPolicyRuleResponse(
-      allowedClients: map['allowedClients'] == null ? null : (map['allowedClients'] as List).cast<String>(),
-      nfsv3: map['nfsv3'] == null ? null : map['nfsv3'] as String,
-      nfsv4: map['nfsv4'] == null ? null : map['nfsv4'] as String,
-      rootAccess: map['rootAccess'] == null ? null : map['rootAccess'] as String,
-      ruleIndex: map['ruleIndex'] == null ? null : map['ruleIndex'] as int,
-      unixAccessRule: map['unixAccessRule'] == null ? null : map['unixAccessRule'] as String,
+      allowedClients: map['allowedClients'] == null ? null : ((map['allowedClients'] as List).cast<String>()).input(),
+      nfsv3: map['nfsv3'] == null ? null : (map['nfsv3'] as String).input(),
+      nfsv4: map['nfsv4'] == null ? null : (map['nfsv4'] as String).input(),
+      rootAccess: map['rootAccess'] == null ? null : (map['rootAccess'] as String).input(),
+      ruleIndex: map['ruleIndex'] == null ? null : (map['ruleIndex'] as int).input(),
+      unixAccessRule: map['unixAccessRule'] == null ? null : (map['unixAccessRule'] as String).input(),
     );
   }
 }

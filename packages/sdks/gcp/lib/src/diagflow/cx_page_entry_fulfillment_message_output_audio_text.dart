@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxPageEntryFulfillmentMessageOutputAudioText {
   /// (Output)
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-  final bool? allowPlaybackInterruption;
+  final pulumi.Input<bool>? allowPlaybackInterruption;
   /// The SSML text to be synthesized. For more information, see SSML.
   /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-  final String? ssml;
+  final pulumi.Input<String>? ssml;
   /// The raw text to be synthesized.
   /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-  final String? text;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [CxPageEntryFulfillmentMessageOutputAudioText].
   /// [allowPlaybackInterruption] (Output)
@@ -32,9 +33,9 @@ class CxPageEntryFulfillmentMessageOutputAudioText {
 
   factory CxPageEntryFulfillmentMessageOutputAudioText.fromMap(Map<String, dynamic> map) {
     return CxPageEntryFulfillmentMessageOutputAudioText(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : map['allowPlaybackInterruption'] as bool,
-      ssml: map['ssml'] == null ? null : map['ssml'] as String,
-      text: map['text'] == null ? null : map['text'] as String,
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption'] as bool).input(),
+      ssml: map['ssml'] == null ? null : (map['ssml'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

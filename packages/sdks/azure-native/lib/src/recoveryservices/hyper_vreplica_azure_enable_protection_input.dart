@@ -7,70 +7,70 @@ import 'security_profile_properties.dart';
 /// HyperVReplicaAzure specific enable protection input.
 class HyperVReplicaAzureEnableProtectionInput {
   /// The DiskEncryptionSet ARM Id.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// The disk type.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// The list of VHD Ids of disks to be protected.
-  final List<String>? disksToInclude;
+  final pulumi.Input<List<String>>? disksToInclude;
   /// The disks to include list for managed disks.
-  final List<HyperVReplicaAzureDiskInputDetails>? disksToIncludeForManagedDisks;
+  final pulumi.Input<List<HyperVReplicaAzureDiskInputDetails>>? disksToIncludeForManagedDisks;
   /// The selected option to enable RDP\SSH on target vm after failover. String value of SrsDataContract.EnableRDPOnTargetOption enum.
-  final String? enableRdpOnTargetOption;
+  final pulumi.Input<String>? enableRdpOnTargetOption;
   /// The Hyper-V host VM Id.
-  final String? hvHostVmId;
+  final pulumi.Input<String>? hvHostVmId;
   /// The class type.
   /// Expected value is 'HyperVReplicaAzure'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// License type.
-  final String? licenseType;
+  final pulumi.Input<String>? licenseType;
   /// The license type for Linux VM's.
-  final String? linuxLicenseType;
+  final pulumi.Input<String>? linuxLicenseType;
   /// The storage account to be used for logging during replication.
-  final String? logStorageAccountId;
+  final pulumi.Input<String>? logStorageAccountId;
   /// The OS type associated with VM.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// The tags for the seed managed disks.
-  final Map<String, String>? seedManagedDiskTags;
+  final pulumi.Input<Map<String, String>>? seedManagedDiskTags;
   /// The SQL Server license type.
-  final String? sqlServerLicenseType;
+  final pulumi.Input<String>? sqlServerLicenseType;
   /// The target availability set ARM Id for resource manager deployment.
-  final String? targetAvailabilitySetId;
+  final pulumi.Input<String>? targetAvailabilitySetId;
   /// The target availability zone.
-  final String? targetAvailabilityZone;
+  final pulumi.Input<String>? targetAvailabilityZone;
   /// The selected target Azure network Id.
-  final String? targetAzureNetworkId;
+  final pulumi.Input<String>? targetAzureNetworkId;
   /// The selected target Azure subnet Id.
-  final String? targetAzureSubnetId;
+  final pulumi.Input<String>? targetAzureSubnetId;
   /// The Id of the target resource group (for classic deployment) in which the failover VM is to be created.
-  final String? targetAzureV1ResourceGroupId;
+  final pulumi.Input<String>? targetAzureV1ResourceGroupId;
   /// The Id of the target resource group (for resource manager deployment) in which the failover VM is to be created.
-  final String? targetAzureV2ResourceGroupId;
+  final pulumi.Input<String>? targetAzureV2ResourceGroupId;
   /// The target azure VM Name.
-  final String? targetAzureVmName;
+  final pulumi.Input<String>? targetAzureVmName;
   /// The tags for the target managed disks.
-  final Map<String, String>? targetManagedDiskTags;
+  final pulumi.Input<Map<String, String>>? targetManagedDiskTags;
   /// The tags for the target NICs.
-  final Map<String, String>? targetNicTags;
+  final pulumi.Input<Map<String, String>>? targetNicTags;
   /// The proximity placement group ARM Id.
-  final String? targetProximityPlacementGroupId;
+  final pulumi.Input<String>? targetProximityPlacementGroupId;
   /// The storage account Id.
-  final String? targetStorageAccountId;
+  final pulumi.Input<String>? targetStorageAccountId;
   /// The target VM security profile.
-  final SecurityProfileProperties? targetVmSecurityProfile;
+  final pulumi.Input<SecurityProfileProperties>? targetVmSecurityProfile;
   /// The target VM size.
-  final String? targetVmSize;
+  final pulumi.Input<String>? targetVmSize;
   /// The target VM tags.
-  final Map<String, String>? targetVmTags;
+  final pulumi.Input<Map<String, String>>? targetVmTags;
   /// A value indicating whether managed disks should be used during failover.
-  final String? useManagedDisks;
+  final pulumi.Input<String>? useManagedDisks;
   /// A value indicating whether managed disks should be used during replication.
-  final String? useManagedDisksForReplication;
+  final pulumi.Input<String>? useManagedDisksForReplication;
   /// The OS name selected by user.
-  final String? userSelectedOSName;
+  final pulumi.Input<String>? userSelectedOSName;
   /// The OS disk VHD id associated with VM.
-  final String? vhdId;
+  final pulumi.Input<String>? vhdId;
   /// The VM Name.
-  final String? vmName;
+  final pulumi.Input<String>? vmName;
 
   /// Creates a new [HyperVReplicaAzureEnableProtectionInput].
   /// [diskEncryptionSetId] The DiskEncryptionSet ARM Id.
@@ -145,7 +145,7 @@ class HyperVReplicaAzureEnableProtectionInput {
       'diskEncryptionSetId': ?diskEncryptionSetId,
       'diskType': ?diskType,
       'disksToInclude': ?disksToInclude,
-      'disksToIncludeForManagedDisks': ?disksToIncludeForManagedDisks == null ? null : pulumi.Input.encodeList<HyperVReplicaAzureDiskInputDetails, Map<String, dynamic>>(disksToIncludeForManagedDisks!, (value) => value.toMap()),
+      'disksToIncludeForManagedDisks': ?pulumi.Input.mapOptionalInputValue<List<HyperVReplicaAzureDiskInputDetails>, List<Map<String, dynamic>>>(disksToIncludeForManagedDisks, (value) => pulumi.Input.encodeList<HyperVReplicaAzureDiskInputDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableRdpOnTargetOption': ?enableRdpOnTargetOption,
       'hvHostVmId': ?hvHostVmId,
       'instanceType': instanceType,
@@ -166,7 +166,7 @@ class HyperVReplicaAzureEnableProtectionInput {
       'targetNicTags': ?targetNicTags,
       'targetProximityPlacementGroupId': ?targetProximityPlacementGroupId,
       'targetStorageAccountId': ?targetStorageAccountId,
-      'targetVmSecurityProfile': ?targetVmSecurityProfile == null ? null : targetVmSecurityProfile!.toMap(),
+      'targetVmSecurityProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileProperties, Map<String, dynamic>>(targetVmSecurityProfile, (value) => value.toMap()),
       'targetVmSize': ?targetVmSize,
       'targetVmTags': ?targetVmTags,
       'useManagedDisks': ?useManagedDisks,
@@ -179,38 +179,38 @@ class HyperVReplicaAzureEnableProtectionInput {
 
   factory HyperVReplicaAzureEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaAzureEnableProtectionInput(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      disksToInclude: map['disksToInclude'] == null ? null : (map['disksToInclude'] as List).cast<String>(),
-      disksToIncludeForManagedDisks: map['disksToIncludeForManagedDisks'] == null ? null : pulumi.Input.decodeList<HyperVReplicaAzureDiskInputDetails>(map['disksToIncludeForManagedDisks'], (value) => HyperVReplicaAzureDiskInputDetails.fromMap((value as Map).cast<String, dynamic>())),
-      enableRdpOnTargetOption: map['enableRdpOnTargetOption'] == null ? null : map['enableRdpOnTargetOption'] as String,
-      hvHostVmId: map['hvHostVmId'] == null ? null : map['hvHostVmId'] as String,
-      instanceType: map['instanceType'] as String,
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
-      linuxLicenseType: map['linuxLicenseType'] == null ? null : map['linuxLicenseType'] as String,
-      logStorageAccountId: map['logStorageAccountId'] == null ? null : map['logStorageAccountId'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      seedManagedDiskTags: map['seedManagedDiskTags'] == null ? null : (map['seedManagedDiskTags'] as Map).cast<String, String>(),
-      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : map['sqlServerLicenseType'] as String,
-      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : map['targetAvailabilitySetId'] as String,
-      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : map['targetAvailabilityZone'] as String,
-      targetAzureNetworkId: map['targetAzureNetworkId'] == null ? null : map['targetAzureNetworkId'] as String,
-      targetAzureSubnetId: map['targetAzureSubnetId'] == null ? null : map['targetAzureSubnetId'] as String,
-      targetAzureV1ResourceGroupId: map['targetAzureV1ResourceGroupId'] == null ? null : map['targetAzureV1ResourceGroupId'] as String,
-      targetAzureV2ResourceGroupId: map['targetAzureV2ResourceGroupId'] == null ? null : map['targetAzureV2ResourceGroupId'] as String,
-      targetAzureVmName: map['targetAzureVmName'] == null ? null : map['targetAzureVmName'] as String,
-      targetManagedDiskTags: map['targetManagedDiskTags'] == null ? null : (map['targetManagedDiskTags'] as Map).cast<String, String>(),
-      targetNicTags: map['targetNicTags'] == null ? null : (map['targetNicTags'] as Map).cast<String, String>(),
-      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : map['targetProximityPlacementGroupId'] as String,
-      targetStorageAccountId: map['targetStorageAccountId'] == null ? null : map['targetStorageAccountId'] as String,
-      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : SecurityProfileProperties.fromMap((map['targetVmSecurityProfile'] as Map).cast<String, dynamic>()),
-      targetVmSize: map['targetVmSize'] == null ? null : map['targetVmSize'] as String,
-      targetVmTags: map['targetVmTags'] == null ? null : (map['targetVmTags'] as Map).cast<String, String>(),
-      useManagedDisks: map['useManagedDisks'] == null ? null : map['useManagedDisks'] as String,
-      useManagedDisksForReplication: map['useManagedDisksForReplication'] == null ? null : map['useManagedDisksForReplication'] as String,
-      userSelectedOSName: map['userSelectedOSName'] == null ? null : map['userSelectedOSName'] as String,
-      vhdId: map['vhdId'] == null ? null : map['vhdId'] as String,
-      vmName: map['vmName'] == null ? null : map['vmName'] as String,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      disksToInclude: map['disksToInclude'] == null ? null : ((map['disksToInclude'] as List).cast<String>()).input(),
+      disksToIncludeForManagedDisks: map['disksToIncludeForManagedDisks'] == null ? null : (pulumi.Input.decodeList<HyperVReplicaAzureDiskInputDetails>(map['disksToIncludeForManagedDisks'], (value) => HyperVReplicaAzureDiskInputDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableRdpOnTargetOption: map['enableRdpOnTargetOption'] == null ? null : (map['enableRdpOnTargetOption'] as String).input(),
+      hvHostVmId: map['hvHostVmId'] == null ? null : (map['hvHostVmId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      linuxLicenseType: map['linuxLicenseType'] == null ? null : (map['linuxLicenseType'] as String).input(),
+      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      seedManagedDiskTags: map['seedManagedDiskTags'] == null ? null : ((map['seedManagedDiskTags'] as Map).cast<String, String>()).input(),
+      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : (map['sqlServerLicenseType'] as String).input(),
+      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : (map['targetAvailabilitySetId'] as String).input(),
+      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : (map['targetAvailabilityZone'] as String).input(),
+      targetAzureNetworkId: map['targetAzureNetworkId'] == null ? null : (map['targetAzureNetworkId'] as String).input(),
+      targetAzureSubnetId: map['targetAzureSubnetId'] == null ? null : (map['targetAzureSubnetId'] as String).input(),
+      targetAzureV1ResourceGroupId: map['targetAzureV1ResourceGroupId'] == null ? null : (map['targetAzureV1ResourceGroupId'] as String).input(),
+      targetAzureV2ResourceGroupId: map['targetAzureV2ResourceGroupId'] == null ? null : (map['targetAzureV2ResourceGroupId'] as String).input(),
+      targetAzureVmName: map['targetAzureVmName'] == null ? null : (map['targetAzureVmName'] as String).input(),
+      targetManagedDiskTags: map['targetManagedDiskTags'] == null ? null : ((map['targetManagedDiskTags'] as Map).cast<String, String>()).input(),
+      targetNicTags: map['targetNicTags'] == null ? null : ((map['targetNicTags'] as Map).cast<String, String>()).input(),
+      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : (map['targetProximityPlacementGroupId'] as String).input(),
+      targetStorageAccountId: map['targetStorageAccountId'] == null ? null : (map['targetStorageAccountId'] as String).input(),
+      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : (SecurityProfileProperties.fromMap((map['targetVmSecurityProfile'] as Map).cast<String, dynamic>())).input(),
+      targetVmSize: map['targetVmSize'] == null ? null : (map['targetVmSize'] as String).input(),
+      targetVmTags: map['targetVmTags'] == null ? null : ((map['targetVmTags'] as Map).cast<String, String>()).input(),
+      useManagedDisks: map['useManagedDisks'] == null ? null : (map['useManagedDisks'] as String).input(),
+      useManagedDisksForReplication: map['useManagedDisksForReplication'] == null ? null : (map['useManagedDisksForReplication'] as String).input(),
+      userSelectedOSName: map['userSelectedOSName'] == null ? null : (map['userSelectedOSName'] as String).input(),
+      vhdId: map['vhdId'] == null ? null : (map['vhdId'] as String).input(),
+      vmName: map['vmName'] == null ? null : (map['vmName'] as String).input(),
     );
   }
 }

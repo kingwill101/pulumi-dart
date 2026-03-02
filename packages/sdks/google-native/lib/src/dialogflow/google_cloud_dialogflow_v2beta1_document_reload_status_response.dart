@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_rpc_status_response_dialogflow_v2beta1.dart';
 
 /// The status of a reload attempt.
 class GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse {
   /// The status of a reload attempt or the initial load.
-  final GoogleRpcStatusResponseDialogflowV2beta1 status;
+  final pulumi.Input<GoogleRpcStatusResponseDialogflowV2beta1> status;
   /// The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
-  final String time;
+  final pulumi.Input<String> time;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse].
   /// [status] The status of a reload attempt or the initial load.
@@ -19,15 +20,15 @@ class GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<GoogleRpcStatusResponseDialogflowV2beta1, Map<String, dynamic>>(status, (value) => value.toMap()),
       'time': time,
     };
   }
 
   factory GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse(
-      status: GoogleRpcStatusResponseDialogflowV2beta1.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      time: map['time'] as String,
+      status: (GoogleRpcStatusResponseDialogflowV2beta1.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      time: (map['time'] as String).input(),
     );
   }
 }

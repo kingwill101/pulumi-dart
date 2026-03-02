@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigrateSqlServerSqlDbTaskOutputTableLevelResponse {
   /// Migration end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Wildcard string prefix to use for querying all errors of the item
-  final String errorPrefix;
+  final pulumi.Input<String> errorPrefix;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Number of successfully completed items
-  final double itemsCompletedCount;
+  final pulumi.Input<double> itemsCompletedCount;
   /// Number of items
-  final double itemsCount;
+  final pulumi.Input<double> itemsCount;
   /// Name of the item
-  final String objectName;
+  final pulumi.Input<String> objectName;
   /// Wildcard string prefix to use for querying all sub-tem results of the item
-  final String resultPrefix;
+  final pulumi.Input<String> resultPrefix;
   /// Result type
   /// Expected value is 'TableLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Migration start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current state of migration
-  final String state;
+  final pulumi.Input<String> state;
   /// Status message
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
 
   /// Creates a new [MigrateSqlServerSqlDbTaskOutputTableLevelResponse].
   /// [endedOn] Migration end time
@@ -70,17 +71,17 @@ class MigrateSqlServerSqlDbTaskOutputTableLevelResponse {
 
   factory MigrateSqlServerSqlDbTaskOutputTableLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbTaskOutputTableLevelResponse(
-      endedOn: map['endedOn'] as String,
-      errorPrefix: map['errorPrefix'] as String,
-      id: map['id'] as String,
-      itemsCompletedCount: map['itemsCompletedCount'] as double,
-      itemsCount: map['itemsCount'] as double,
-      objectName: map['objectName'] as String,
-      resultPrefix: map['resultPrefix'] as String,
-      resultType: map['resultType'] as String,
-      startedOn: map['startedOn'] as String,
-      state: map['state'] as String,
-      statusMessage: map['statusMessage'] as String,
+      endedOn: (map['endedOn'] as String).input(),
+      errorPrefix: (map['errorPrefix'] as String).input(),
+      id: (map['id'] as String).input(),
+      itemsCompletedCount: (map['itemsCompletedCount'] as double).input(),
+      itemsCount: (map['itemsCount'] as double).input(),
+      objectName: (map['objectName'] as String).input(),
+      resultPrefix: (map['resultPrefix'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      state: (map['state'] as String).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
     );
   }
 }

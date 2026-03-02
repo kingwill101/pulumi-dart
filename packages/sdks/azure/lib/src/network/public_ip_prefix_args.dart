@@ -48,27 +48,17 @@ class PublicIpPrefixArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zones] Specifies a list of Availability Zones in which this Public IP Prefix should be located. Changing this forces a new Public IP Prefix to be created.
   PublicIpPrefixArgs({
-    pulumi.Output<String>? customIpPrefixId,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? prefixLength,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sku,
-    pulumi.Output<String>? skuTier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      customIpPrefixId = pulumi.Input.asOptionalInput<String>(customIpPrefixId),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      prefixLength = pulumi.Input.asOptionalInput<int>(prefixLength),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      skuTier = pulumi.Input.asOptionalInput<String>(skuTier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.customIpPrefixId,
+    this.ipVersion,
+    this.location,
+    this.name,
+    this.prefixLength,
+    required this.resourceGroupName,
+    this.sku,
+    this.skuTier,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,16 +77,16 @@ class PublicIpPrefixArgs {
 
   factory PublicIpPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicIpPrefixArgs(
-      customIpPrefixId: map['customIpPrefixId'] == null ? null : pulumi.Output.create<String>(map['customIpPrefixId'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      prefixLength: map['prefixLength'] == null ? null : pulumi.Output.create<int>(map['prefixLength'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      skuTier: map['skuTier'] == null ? null : pulumi.Output.create<String>(map['skuTier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      customIpPrefixId: map['customIpPrefixId'] == null ? null : (map['customIpPrefixId'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      skuTier: map['skuTier'] == null ? null : (map['skuTier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

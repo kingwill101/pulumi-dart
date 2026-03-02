@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectoryConnectSetting {
-  final List<String> availabilityZones;
+  final pulumi.Input<List<String>> availabilityZones;
   /// IP addresses of the AD Connector servers.
-  final List<String> connectIps;
+  final pulumi.Input<List<String>> connectIps;
   /// DNS IP addresses of the domain to connect to.
-  final List<String> customerDnsIps;
+  final pulumi.Input<List<String>> customerDnsIps;
   /// Username corresponding to the password provided.
-  final String customerUsername;
+  final pulumi.Input<String> customerUsername;
   /// Identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
   /// ID of the VPC that the connector is in.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetDirectoryConnectSetting].
   /// [availabilityZones] Required.
@@ -43,12 +44,12 @@ class GetDirectoryConnectSetting {
 
   factory GetDirectoryConnectSetting.fromMap(Map<String, dynamic> map) {
     return GetDirectoryConnectSetting(
-      availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      connectIps: (map['connectIps'] as List).cast<String>(),
-      customerDnsIps: (map['customerDnsIps'] as List).cast<String>(),
-      customerUsername: map['customerUsername'] as String,
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
+      availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
+      connectIps: ((map['connectIps'] as List).cast<String>()).input(),
+      customerDnsIps: ((map['customerDnsIps'] as List).cast<String>()).input(),
+      customerUsername: (map['customerUsername'] as String).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

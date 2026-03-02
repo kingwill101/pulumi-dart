@@ -19,13 +19,10 @@ class DataConnectorAwsCloudTrailArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this AWS CloudTrail Data Connector resides in. Changing this forces a new AWS CloudTrail Data Connector to be created.
   /// [name] The name which should be used for this AWS CloudTrail Data Connector. Changing this forces a new AWS CloudTrail Data Connector to be created.
   DataConnectorAwsCloudTrailArgs({
-    required pulumi.Output<String> awsRoleArn,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-  }) :
-      awsRoleArn = pulumi.Input.asInput<String>(awsRoleArn),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.awsRoleArn,
+    required this.logAnalyticsWorkspaceId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DataConnectorAwsCloudTrailArgs {
 
   factory DataConnectorAwsCloudTrailArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorAwsCloudTrailArgs(
-      awsRoleArn: pulumi.Output.create<String>(map['awsRoleArn'] as String),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      awsRoleArn: (map['awsRoleArn'] as String).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

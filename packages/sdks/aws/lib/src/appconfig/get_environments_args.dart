@@ -16,11 +16,9 @@ class GetEnvironmentsArgs {
   /// [applicationId] ID of the AppConfig Application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetEnvironmentsArgs({
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<String>? region,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.applicationId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEnvironmentsArgs {
 
   factory GetEnvironmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentsArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReportTemplateReportScope {
   /// Key for reporting scope, currently supported:
   /// - AggregatorId
   /// - CompliancePackId
   /// - RuleId
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The matching logic. Currently, only In is supported.
-  final String? matchType;
+  final pulumi.Input<String>? matchType;
   /// The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ReportTemplateReportScope].
   /// [key] Key for reporting scope, currently supported:
@@ -32,9 +33,9 @@ class ReportTemplateReportScope {
 
   factory ReportTemplateReportScope.fromMap(Map<String, dynamic> map) {
     return ReportTemplateReportScope(
-      key: map['key'] == null ? null : map['key'] as String,
-      matchType: map['matchType'] == null ? null : map['matchType'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

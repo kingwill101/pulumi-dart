@@ -25,17 +25,12 @@ class LocationFsxLustreArgs {
   /// [subdirectory] Subdirectory to perform actions as source or destination.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LocationFsxLustreArgs({
-    required pulumi.Output<String> fsxFilesystemArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> securityGroupArns,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      fsxFilesystemArn = pulumi.Input.asInput<String>(fsxFilesystemArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupArns = pulumi.Input.asInput<List<String>>(securityGroupArns),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.fsxFilesystemArn,
+    this.region,
+    required this.securityGroupArns,
+    this.subdirectory,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LocationFsxLustreArgs {
 
   factory LocationFsxLustreArgs.fromMap(Map<String, dynamic> map) {
     return LocationFsxLustreArgs(
-      fsxFilesystemArn: pulumi.Output.create<String>(map['fsxFilesystemArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupArns: pulumi.Output.create<List<String>>((map['securityGroupArns'] as List).cast<String>()),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      fsxFilesystemArn: (map['fsxFilesystemArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupArns: ((map['securityGroupArns'] as List).cast<String>()).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

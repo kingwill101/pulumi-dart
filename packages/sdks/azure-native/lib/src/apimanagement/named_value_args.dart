@@ -35,23 +35,15 @@ class NamedValueArgs {
   /// [tags] Optional tags that when provided can be used to filter the NamedValue list.
   /// [value] Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   NamedValueArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<KeyVaultContractCreateProperties>? keyVault,
-    pulumi.Output<String>? namedValueId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? secret,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? value,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      keyVault = pulumi.Input.asOptionalInput<KeyVaultContractCreateProperties>(keyVault),
-      namedValueId = pulumi.Input.asOptionalInput<String>(namedValueId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secret = pulumi.Input.asOptionalInput<bool>(secret),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    required this.displayName,
+    this.keyVault,
+    this.namedValueId,
+    required this.resourceGroupName,
+    this.secret,
+    required this.serviceName,
+    this.tags,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class NamedValueArgs {
 
   factory NamedValueArgs.fromMap(Map<String, dynamic> map) {
     return NamedValueArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      keyVault: map['keyVault'] == null ? null : pulumi.Output.create<KeyVaultContractCreateProperties>(KeyVaultContractCreateProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())),
-      namedValueId: map['namedValueId'] == null ? null : pulumi.Output.create<String>(map['namedValueId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<bool>(map['secret'] as bool),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      displayName: (map['displayName'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (KeyVaultContractCreateProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      namedValueId: map['namedValueId'] == null ? null : (map['namedValueId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as bool).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

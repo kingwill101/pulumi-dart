@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagePipelineImageScanningConfigurationEcrConfiguration {
   /// Tags that are added to the output containers that are scanned
-  final List<String> containerTags;
+  final pulumi.Input<List<String>> containerTags;
   /// The name of the container repository that Amazon Inspector scans
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
 
   /// Creates a new [GetImagePipelineImageScanningConfigurationEcrConfiguration].
   /// [containerTags] Tags that are added to the output containers that are scanned
@@ -24,8 +25,8 @@ class GetImagePipelineImageScanningConfigurationEcrConfiguration {
 
   factory GetImagePipelineImageScanningConfigurationEcrConfiguration.fromMap(Map<String, dynamic> map) {
     return GetImagePipelineImageScanningConfigurationEcrConfiguration(
-      containerTags: (map['containerTags'] as List).cast<String>(),
-      repositoryName: map['repositoryName'] as String,
+      containerTags: ((map['containerTags'] as List).cast<String>()).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
     );
   }
 }

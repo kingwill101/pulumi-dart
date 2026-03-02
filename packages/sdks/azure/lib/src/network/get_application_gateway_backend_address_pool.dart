@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayBackendAddressPool {
   /// A list of FQDNs which are part of the Backend Address Pool.
-  final List<String> fqdns;
+  final pulumi.Input<List<String>> fqdns;
   /// The ID of the Rewrite Rule Set
-  final String id;
+  final pulumi.Input<String> id;
   /// A list of IP Addresses which are part of the Backend Address Pool.
-  final List<String> ipAddresses;
+  final pulumi.Input<List<String>> ipAddresses;
   /// The name of this Application Gateway.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetApplicationGatewayBackendAddressPool].
   /// [fqdns] A list of FQDNs which are part of the Backend Address Pool.
@@ -34,10 +35,10 @@ class GetApplicationGatewayBackendAddressPool {
 
   factory GetApplicationGatewayBackendAddressPool.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayBackendAddressPool(
-      fqdns: (map['fqdns'] as List).cast<String>(),
-      id: map['id'] as String,
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
-      name: map['name'] as String,
+      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

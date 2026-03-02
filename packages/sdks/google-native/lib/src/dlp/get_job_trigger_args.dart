@@ -16,13 +16,10 @@ class GetJobTriggerArgs {
   /// [location] Required.
   /// [project] Optional.
   GetJobTriggerArgs({
-    required pulumi.Output<String> jobTriggerId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      jobTriggerId = pulumi.Input.asInput<String>(jobTriggerId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.jobTriggerId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetJobTriggerArgs {
 
   factory GetJobTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetJobTriggerArgs(
-      jobTriggerId: pulumi.Output.create<String>(map['jobTriggerId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      jobTriggerId: (map['jobTriggerId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

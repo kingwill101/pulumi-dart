@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVlansVlan {
   /// When the VLAN was created.
-  final String created;
+  final pulumi.Input<String> created;
   /// The unique label of the VLAN.
-  final String label;
+  final pulumi.Input<String> label;
   /// The running Linodes currently attached to the VLAN.
-  final List<int> linodes;
+  final pulumi.Input<List<int>> linodes;
   /// The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetVlansVlan].
   /// [created] When the VLAN was created.
@@ -34,10 +35,10 @@ class GetVlansVlan {
 
   factory GetVlansVlan.fromMap(Map<String, dynamic> map) {
     return GetVlansVlan(
-      created: map['created'] as String,
-      label: map['label'] as String,
-      linodes: (map['linodes'] as List).cast<int>(),
-      region: map['region'] as String,
+      created: (map['created'] as String).input(),
+      label: (map['label'] as String).input(),
+      linodes: ((map['linodes'] as List).cast<int>()).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

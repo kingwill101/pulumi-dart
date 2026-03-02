@@ -24,15 +24,11 @@ class GetOutpostInstanceTypeArgs {
   /// [preferredInstanceTypes] Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instance_type`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetOutpostInstanceTypeArgs({
-    required pulumi.Output<String> arn,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<List<String>>? preferredInstanceTypes,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asInput<String>(arn),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      preferredInstanceTypes = pulumi.Input.asOptionalInput<List<String>>(preferredInstanceTypes),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.arn,
+    this.instanceType,
+    this.preferredInstanceTypes,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetOutpostInstanceTypeArgs {
 
   factory GetOutpostInstanceTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostInstanceTypeArgs(
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      preferredInstanceTypes: map['preferredInstanceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['preferredInstanceTypes'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: (map['arn'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      preferredInstanceTypes: map['preferredInstanceTypes'] == null ? null : ((map['preferredInstanceTypes'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

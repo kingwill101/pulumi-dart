@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionEventingRuntimeDataStatus {
   /// An arbitrary description for the Connection.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// (Output)
   /// State of the Eventing
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [ConnectionEventingRuntimeDataStatus].
   /// [description] An arbitrary description for the Connection.
@@ -25,8 +26,8 @@ class ConnectionEventingRuntimeDataStatus {
 
   factory ConnectionEventingRuntimeDataStatus.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingRuntimeDataStatus(
-      description: map['description'] == null ? null : map['description'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

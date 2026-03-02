@@ -5,7 +5,7 @@ import 'cx_flow_knowledge_connector_settings_trigger_fulfillment_message_mixed_a
 
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
   /// Segments this audio response is composed of.
-  final List<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>? segments;
+  final pulumi.Input<List<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>>? segments;
 
   /// Creates a new [CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio].
   /// [segments] Segments this audio response is composed of.
@@ -15,13 +15,13 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'segments': ?segments == null ? null : pulumi.Input.encodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment, Map<String, dynamic>>(segments!, (value) => value.toMap()),
+      'segments': ?pulumi.Input.mapOptionalInputValue<List<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>, List<Map<String, dynamic>>>(segments, (value) => pulumi.Input.encodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio(
-      segments: map['segments'] == null ? null : pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>(map['segments'], (value) => CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap((value as Map).cast<String, dynamic>())),
+      segments: map['segments'] == null ? null : (pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>(map['segments'], (value) => CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

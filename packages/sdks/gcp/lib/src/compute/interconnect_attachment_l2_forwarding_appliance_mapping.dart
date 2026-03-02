@@ -5,13 +5,13 @@ import 'interconnect_attachment_l2_forwarding_appliance_mapping_inner_vlan_to_ap
 
 class InterconnectAttachmentL2ForwardingApplianceMapping {
   /// The appliance IP address.
-  final String? applianceIpAddress;
+  final pulumi.Input<String>? applianceIpAddress;
   /// Structure is documented below.
-  final List<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>? innerVlanToApplianceMappings;
+  final pulumi.Input<List<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>>? innerVlanToApplianceMappings;
   /// The name of this appliance mapping rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The VLAN tag.
-  final String? vlanId;
+  final pulumi.Input<String>? vlanId;
 
   /// Creates a new [InterconnectAttachmentL2ForwardingApplianceMapping].
   /// [applianceIpAddress] The appliance IP address.
@@ -28,7 +28,7 @@ class InterconnectAttachmentL2ForwardingApplianceMapping {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applianceIpAddress': ?applianceIpAddress,
-      'innerVlanToApplianceMappings': ?innerVlanToApplianceMappings == null ? null : pulumi.Input.encodeList<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping, Map<String, dynamic>>(innerVlanToApplianceMappings!, (value) => value.toMap()),
+      'innerVlanToApplianceMappings': ?pulumi.Input.mapOptionalInputValue<List<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>, List<Map<String, dynamic>>>(innerVlanToApplianceMappings, (value) => pulumi.Input.encodeList<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'vlanId': ?vlanId,
     };
@@ -36,10 +36,10 @@ class InterconnectAttachmentL2ForwardingApplianceMapping {
 
   factory InterconnectAttachmentL2ForwardingApplianceMapping.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentL2ForwardingApplianceMapping(
-      applianceIpAddress: map['applianceIpAddress'] == null ? null : map['applianceIpAddress'] as String,
-      innerVlanToApplianceMappings: map['innerVlanToApplianceMappings'] == null ? null : pulumi.Input.decodeList<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>(map['innerVlanToApplianceMappings'], (value) => InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      vlanId: map['vlanId'] == null ? null : map['vlanId'] as String,
+      applianceIpAddress: map['applianceIpAddress'] == null ? null : (map['applianceIpAddress'] as String).input(),
+      innerVlanToApplianceMappings: map['innerVlanToApplianceMappings'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>(map['innerVlanToApplianceMappings'], (value) => InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as String).input(),
     );
   }
 }

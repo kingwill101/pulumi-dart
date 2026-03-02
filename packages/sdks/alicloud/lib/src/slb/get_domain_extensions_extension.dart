@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainExtensionsExtension {
   /// The domain name.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// The ID of the domain extension.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the certificate used by the domain name.
-  final String serverCertificateId;
+  final pulumi.Input<String> serverCertificateId;
 
   /// Creates a new [GetDomainExtensionsExtension].
   /// [domain] The domain name.
@@ -29,9 +30,9 @@ class GetDomainExtensionsExtension {
 
   factory GetDomainExtensionsExtension.fromMap(Map<String, dynamic> map) {
     return GetDomainExtensionsExtension(
-      domain: map['domain'] as String,
-      id: map['id'] as String,
-      serverCertificateId: map['serverCertificateId'] as String,
+      domain: (map['domain'] as String).input(),
+      id: (map['id'] as String).input(),
+      serverCertificateId: (map['serverCertificateId'] as String).input(),
     );
   }
 }

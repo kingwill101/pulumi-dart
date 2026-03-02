@@ -22,13 +22,10 @@ class GetBackupVaultArgs {
   /// [location] The location in which the Backup Vault resource belongs.
   /// [project] The project in which the resource belongs. If it
   GetBackupVaultArgs({
-    required pulumi.Output<String> backupVaultId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      backupVaultId = pulumi.Input.asInput<String>(backupVaultId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backupVaultId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetBackupVaultArgs {
 
   factory GetBackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupVaultArgs(
-      backupVaultId: pulumi.Output.create<String>(map['backupVaultId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupVaultId: (map['backupVaultId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

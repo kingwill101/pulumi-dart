@@ -22,15 +22,11 @@ class ListWorkflowCallbackUrlArgs {
   /// [resourceGroupName] The resource group name.
   /// [workflowName] The workflow name.
   ListWorkflowCallbackUrlArgs({
-    pulumi.Output<String>? keyType,
-    pulumi.Output<String>? notAfter,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workflowName,
-  }) :
-      keyType = pulumi.Input.asOptionalInput<String>(keyType),
-      notAfter = pulumi.Input.asOptionalInput<String>(notAfter),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workflowName = pulumi.Input.asInput<String>(workflowName);
+    this.keyType,
+    this.notAfter,
+    required this.resourceGroupName,
+    required this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListWorkflowCallbackUrlArgs {
 
   factory ListWorkflowCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkflowCallbackUrlArgs(
-      keyType: map['keyType'] == null ? null : pulumi.Output.create<String>(map['keyType'] as String),
-      notAfter: map['notAfter'] == null ? null : pulumi.Output.create<String>(map['notAfter'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

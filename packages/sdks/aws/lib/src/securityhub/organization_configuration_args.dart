@@ -23,15 +23,11 @@ class OrganizationConfigurationArgs {
   /// [organizationConfiguration] Provides information about the way an organization is configured in Security Hub.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationConfigurationArgs({
-    required pulumi.Output<bool> autoEnable,
-    pulumi.Output<String>? autoEnableStandards,
-    pulumi.Output<OrganizationConfigurationOrganizationConfiguration>? organizationConfiguration,
-    pulumi.Output<String>? region,
-  }) :
-      autoEnable = pulumi.Input.asInput<bool>(autoEnable),
-      autoEnableStandards = pulumi.Input.asOptionalInput<String>(autoEnableStandards),
-      organizationConfiguration = pulumi.Input.asOptionalInput<OrganizationConfigurationOrganizationConfiguration>(organizationConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.autoEnable,
+    this.autoEnableStandards,
+    this.organizationConfiguration,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class OrganizationConfigurationArgs {
 
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
-      autoEnable: pulumi.Output.create<bool>(map['autoEnable'] as bool),
-      autoEnableStandards: map['autoEnableStandards'] == null ? null : pulumi.Output.create<String>(map['autoEnableStandards'] as String),
-      organizationConfiguration: map['organizationConfiguration'] == null ? null : pulumi.Output.create<OrganizationConfigurationOrganizationConfiguration>(OrganizationConfigurationOrganizationConfiguration.fromMap((map['organizationConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoEnable: (map['autoEnable'] as bool).input(),
+      autoEnableStandards: map['autoEnableStandards'] == null ? null : (map['autoEnableStandards'] as String).input(),
+      organizationConfiguration: map['organizationConfiguration'] == null ? null : (OrganizationConfigurationOrganizationConfiguration.fromMap((map['organizationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

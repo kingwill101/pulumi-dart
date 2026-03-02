@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryScheduleConfiguration {
   /// When to trigger the scheduled query run. This can be a cron expression or a rate expression.
-  final String scheduleExpression;
+  final pulumi.Input<String> scheduleExpression;
 
   /// Creates a new [ScheduledQueryScheduleConfiguration].
   /// [scheduleExpression] When to trigger the scheduled query run. This can be a cron expression or a rate expression.
@@ -19,7 +20,7 @@ class ScheduledQueryScheduleConfiguration {
 
   factory ScheduledQueryScheduleConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryScheduleConfiguration(
-      scheduleExpression: map['scheduleExpression'] as String,
+      scheduleExpression: (map['scheduleExpression'] as String).input(),
     );
   }
 }

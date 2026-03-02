@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSitesSite {
   /// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
-  final String accessType;
+  final pulumi.Input<String> accessType;
   /// Acceleration area
-  final String coverage;
+  final pulumi.Input<String> coverage;
   /// Creation time
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the resource supplied above.
-  final int id;
+  final pulumi.Input<int> id;
   /// The ID of the associated package instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Modification time
-  final String modifyTime;
+  final pulumi.Input<String> modifyTime;
   /// Site Resolution Name Server List
-  final String nameServerList;
+  final pulumi.Input<String> nameServerList;
   /// The ID of the resource group
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Site ID
-  final int siteId;
+  final pulumi.Input<int> siteId;
   /// Site Name
-  final String siteName;
+  final pulumi.Input<String> siteName;
   /// The status of the resource
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetSitesSite].
   /// [accessType] Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
@@ -69,17 +70,17 @@ class GetSitesSite {
 
   factory GetSitesSite.fromMap(Map<String, dynamic> map) {
     return GetSitesSite(
-      accessType: map['accessType'] as String,
-      coverage: map['coverage'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as int,
-      instanceId: map['instanceId'] as String,
-      modifyTime: map['modifyTime'] as String,
-      nameServerList: map['nameServerList'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      siteId: map['siteId'] as int,
-      siteName: map['siteName'] as String,
-      status: map['status'] as String,
+      accessType: (map['accessType'] as String).input(),
+      coverage: (map['coverage'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      modifyTime: (map['modifyTime'] as String).input(),
+      nameServerList: (map['nameServerList'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      siteId: (map['siteId'] as int).input(),
+      siteName: (map['siteName'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

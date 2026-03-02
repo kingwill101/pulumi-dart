@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_storage_bucket_lifecycle_rule_expiration.dart';
 import 'object_storage_bucket_lifecycle_rule_noncurrent_version_expiration.dart';
 
@@ -9,17 +10,17 @@ class ObjectStorageBucketLifecycleRule {
   /// * `expiration` - (Optional) Specifies a period in the object's expire.
   ///
   /// * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
-  final int? abortIncompleteMultipartUploadDays;
+  final pulumi.Input<int>? abortIncompleteMultipartUploadDays;
   /// Specifies whether the lifecycle rule is active.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Specifies a period in the object's expire.
-  final ObjectStorageBucketLifecycleRuleExpiration? expiration;
+  final pulumi.Input<ObjectStorageBucketLifecycleRuleExpiration>? expiration;
   /// The unique identifier for the rule.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies when non-current object versions expire.
-  final ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration? noncurrentVersionExpiration;
+  final pulumi.Input<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration>? noncurrentVersionExpiration;
   /// The object key prefix identifying one or more objects to which the rule applies.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [ObjectStorageBucketLifecycleRule].
   /// [abortIncompleteMultipartUploadDays] Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
@@ -41,21 +42,21 @@ class ObjectStorageBucketLifecycleRule {
     return <String, dynamic>{
       'abortIncompleteMultipartUploadDays': ?abortIncompleteMultipartUploadDays,
       'enabled': enabled,
-      'expiration': ?expiration == null ? null : expiration!.toMap(),
+      'expiration': ?pulumi.Input.mapOptionalInputValue<ObjectStorageBucketLifecycleRuleExpiration, Map<String, dynamic>>(expiration, (value) => value.toMap()),
       'id': ?id,
-      'noncurrentVersionExpiration': ?noncurrentVersionExpiration == null ? null : noncurrentVersionExpiration!.toMap(),
+      'noncurrentVersionExpiration': ?pulumi.Input.mapOptionalInputValue<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration, Map<String, dynamic>>(noncurrentVersionExpiration, (value) => value.toMap()),
       'prefix': ?prefix,
     };
   }
 
   factory ObjectStorageBucketLifecycleRule.fromMap(Map<String, dynamic> map) {
     return ObjectStorageBucketLifecycleRule(
-      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : map['abortIncompleteMultipartUploadDays'] as int,
-      enabled: map['enabled'] as bool,
-      expiration: map['expiration'] == null ? null : ObjectStorageBucketLifecycleRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>()),
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : (map['abortIncompleteMultipartUploadDays'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
+      expiration: map['expiration'] == null ? null : (ObjectStorageBucketLifecycleRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

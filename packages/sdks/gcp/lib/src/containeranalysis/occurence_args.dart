@@ -39,17 +39,12 @@ class OccurenceArgs {
   /// [remediation] A description of actions that can be taken to remedy the note.
   /// [resourceUri] Required. Immutable. A URI that represents the resource for which
   OccurenceArgs({
-    required pulumi.Output<OccurenceAttestation> attestation,
-    required pulumi.Output<String> noteName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? remediation,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      attestation = pulumi.Input.asInput<OccurenceAttestation>(attestation),
-      noteName = pulumi.Input.asInput<String>(noteName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      remediation = pulumi.Input.asOptionalInput<String>(remediation),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.attestation,
+    required this.noteName,
+    this.project,
+    this.remediation,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class OccurenceArgs {
 
   factory OccurenceArgs.fromMap(Map<String, dynamic> map) {
     return OccurenceArgs(
-      attestation: pulumi.Output.create<OccurenceAttestation>(OccurenceAttestation.fromMap((map['attestation'] as Map).cast<String, dynamic>())),
-      noteName: pulumi.Output.create<String>(map['noteName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      remediation: map['remediation'] == null ? null : pulumi.Output.create<String>(map['remediation'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      attestation: (OccurenceAttestation.fromMap((map['attestation'] as Map).cast<String, dynamic>())).input(),
+      noteName: (map['noteName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      remediation: map['remediation'] == null ? null : (map['remediation'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

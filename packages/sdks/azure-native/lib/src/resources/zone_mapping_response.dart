@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneMappingResponse {
   /// The location of the zone mapping.
-  final String? location;
-  final List<String>? zones;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [ZoneMappingResponse].
   /// [location] The location of the zone mapping.
@@ -23,8 +24,8 @@ class ZoneMappingResponse {
 
   factory ZoneMappingResponse.fromMap(Map<String, dynamic> map) {
     return ZoneMappingResponse(
-      location: map['location'] == null ? null : map['location'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

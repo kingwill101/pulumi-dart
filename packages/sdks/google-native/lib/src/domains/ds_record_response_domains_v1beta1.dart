@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
 class DsRecordResponseDomainsV1beta1 {
   /// The algorithm used to generate the referenced DNSKEY.
-  final String algorithm;
+  final pulumi.Input<String> algorithm;
   /// The digest generated from the referenced DNSKEY.
-  final String digest;
+  final pulumi.Input<String> digest;
   /// The hash function used to generate the digest of the referenced DNSKEY.
-  final String digestType;
+  final pulumi.Input<String> digestType;
   /// The key tag of the record. Must be set in range 0 -- 65535.
-  final int keyTag;
+  final pulumi.Input<int> keyTag;
 
   /// Creates a new [DsRecordResponseDomainsV1beta1].
   /// [algorithm] The algorithm used to generate the referenced DNSKEY.
@@ -35,10 +36,10 @@ class DsRecordResponseDomainsV1beta1 {
 
   factory DsRecordResponseDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return DsRecordResponseDomainsV1beta1(
-      algorithm: map['algorithm'] as String,
-      digest: map['digest'] as String,
-      digestType: map['digestType'] as String,
-      keyTag: map['keyTag'] as int,
+      algorithm: (map['algorithm'] as String).input(),
+      digest: (map['digest'] as String).input(),
+      digestType: (map['digestType'] as String).input(),
+      keyTag: (map['keyTag'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionSecretVolumeVersion {
   /// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
-  final String path;
+  final pulumi.Input<String> path;
   /// Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetFunctionSecretVolumeVersion].
   /// [path] Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
@@ -24,8 +25,8 @@ class GetFunctionSecretVolumeVersion {
 
   factory GetFunctionSecretVolumeVersion.fromMap(Map<String, dynamic> map) {
     return GetFunctionSecretVolumeVersion(
-      path: map['path'] as String,
-      version: map['version'] as String,
+      path: (map['path'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

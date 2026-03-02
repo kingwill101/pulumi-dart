@@ -19,15 +19,11 @@ class RandomBytesState {
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [length] The number of bytes requested. The minimum value for length is 1.
   RandomBytesState({
-    pulumi.Output<String>? base64,
-    pulumi.Output<String>? hex,
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<int>? length,
-  }) :
-      base64 = pulumi.Input.asOptionalInput<String>(base64),
-      hex = pulumi.Input.asOptionalInput<String>(hex),
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      length = pulumi.Input.asOptionalInput<int>(length);
+    this.base64,
+    this.hex,
+    this.keepers,
+    this.length,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class RandomBytesState {
 
   factory RandomBytesState.fromMap(Map<String, dynamic> map) {
     return RandomBytesState(
-      base64: map['base64'] == null ? null : pulumi.Output.create<String>(map['base64'] as String),
-      hex: map['hex'] == null ? null : pulumi.Output.create<String>(map['hex'] as String),
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      length: map['length'] == null ? null : pulumi.Output.create<int>(map['length'] as int),
+      base64: map['base64'] == null ? null : (map['base64'] as String).input(),
+      hex: map['hex'] == null ? null : (map['hex'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      length: map['length'] == null ? null : (map['length'] as int).input(),
     );
   }
 }

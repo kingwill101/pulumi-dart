@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UptimeCheckConfigHttpCheckPingConfig {
   /// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
-  final int pingsCount;
+  final pulumi.Input<int> pingsCount;
 
   /// Creates a new [UptimeCheckConfigHttpCheckPingConfig].
   /// [pingsCount] Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
@@ -19,7 +20,7 @@ class UptimeCheckConfigHttpCheckPingConfig {
 
   factory UptimeCheckConfigHttpCheckPingConfig.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigHttpCheckPingConfig(
-      pingsCount: map['pingsCount'] as int,
+      pingsCount: (map['pingsCount'] as int).input(),
     );
   }
 }

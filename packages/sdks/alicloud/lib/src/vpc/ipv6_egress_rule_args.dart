@@ -25,17 +25,12 @@ class Ipv6EgressRuleArgs {
   /// [ipv6EgressRuleName] The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
   /// [ipv6GatewayId] The ID of the IPv6 gateway.
   Ipv6EgressRuleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? ipv6EgressRuleName,
-    required pulumi.Output<String> ipv6GatewayId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      ipv6EgressRuleName = pulumi.Input.asOptionalInput<String>(ipv6EgressRuleName),
-      ipv6GatewayId = pulumi.Input.asInput<String>(ipv6GatewayId);
+    this.description,
+    required this.instanceId,
+    this.instanceType,
+    this.ipv6EgressRuleName,
+    required this.ipv6GatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class Ipv6EgressRuleArgs {
 
   factory Ipv6EgressRuleArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6EgressRuleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : pulumi.Output.create<String>(map['ipv6EgressRuleName'] as String),
-      ipv6GatewayId: pulumi.Output.create<String>(map['ipv6GatewayId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : (map['ipv6EgressRuleName'] as String).input(),
+      ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
     );
   }
 }

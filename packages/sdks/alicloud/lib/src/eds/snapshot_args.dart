@@ -22,15 +22,11 @@ class SnapshotArgs {
   /// [snapshotName] The name of the Snapshot.
   /// [sourceDiskType] The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
   SnapshotArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> desktopId,
-    required pulumi.Output<String> snapshotName,
-    required pulumi.Output<String> sourceDiskType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      desktopId = pulumi.Input.asInput<String>(desktopId),
-      snapshotName = pulumi.Input.asInput<String>(snapshotName),
-      sourceDiskType = pulumi.Input.asInput<String>(sourceDiskType);
+    this.description,
+    required this.desktopId,
+    required this.snapshotName,
+    required this.sourceDiskType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      desktopId: pulumi.Output.create<String>(map['desktopId'] as String),
-      snapshotName: pulumi.Output.create<String>(map['snapshotName'] as String),
-      sourceDiskType: pulumi.Output.create<String>(map['sourceDiskType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      desktopId: (map['desktopId'] as String).input(),
+      snapshotName: (map['snapshotName'] as String).input(),
+      sourceDiskType: (map['sourceDiskType'] as String).input(),
     );
   }
 }

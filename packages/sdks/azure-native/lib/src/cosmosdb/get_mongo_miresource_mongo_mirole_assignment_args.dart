@@ -19,13 +19,10 @@ class GetMongoMIResourceMongoMIRoleAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [roleAssignmentId] The GUID for the Role Assignment.
   GetMongoMIResourceMongoMIRoleAssignmentArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleAssignmentId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleAssignmentId = pulumi.Input.asInput<String>(roleAssignmentId);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.roleAssignmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMongoMIResourceMongoMIRoleAssignmentArgs {
 
   factory GetMongoMIResourceMongoMIRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetMongoMIResourceMongoMIRoleAssignmentArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleAssignmentId: pulumi.Output.create<String>(map['roleAssignmentId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleAssignmentId: (map['roleAssignmentId'] as String).input(),
     );
   }
 }

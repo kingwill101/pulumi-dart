@@ -21,15 +21,11 @@ class ServicePerimeterDryRunResourceState {
   /// [perimeterName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
   ServicePerimeterDryRunResourceState({
-    pulumi.Output<String>? accessPolicyId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? perimeterName,
-    pulumi.Output<String>? resource,
-  }) :
-      accessPolicyId = pulumi.Input.asOptionalInput<String>(accessPolicyId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      perimeterName = pulumi.Input.asOptionalInput<String>(perimeterName),
-      resource = pulumi.Input.asOptionalInput<String>(resource);
+    this.accessPolicyId,
+    this.etag,
+    this.perimeterName,
+    this.resource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ServicePerimeterDryRunResourceState {
 
   factory ServicePerimeterDryRunResourceState.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunResourceState(
-      accessPolicyId: map['accessPolicyId'] == null ? null : pulumi.Output.create<String>(map['accessPolicyId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      perimeterName: map['perimeterName'] == null ? null : pulumi.Output.create<String>(map['perimeterName'] as String),
-      resource: map['resource'] == null ? null : pulumi.Output.create<String>(map['resource'] as String),
+      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      perimeterName: map['perimeterName'] == null ? null : (map['perimeterName'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
     );
   }
 }

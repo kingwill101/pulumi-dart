@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration {
   /// Name of S3 bucket.
-  final String bucketName;
-  final String encryptionOption;
+  final pulumi.Input<String> bucketName;
+  final pulumi.Input<String> encryptionOption;
   /// AWS KMS key ID for S3 location with AWS maanged key.
-  final String kmsKeyId;
+  final pulumi.Input<String> kmsKeyId;
   /// Object key preview for S3 location.
-  final String objectKeyPrefix;
+  final pulumi.Input<String> objectKeyPrefix;
 
   /// Creates a new [GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration].
   /// [bucketName] Name of S3 bucket.
@@ -33,10 +34,10 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Confi
 
   factory GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration.fromMap(Map<String, dynamic> map) {
     return GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration(
-      bucketName: map['bucketName'] as String,
-      encryptionOption: map['encryptionOption'] as String,
-      kmsKeyId: map['kmsKeyId'] as String,
-      objectKeyPrefix: map['objectKeyPrefix'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      encryptionOption: (map['encryptionOption'] as String).input(),
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
+      objectKeyPrefix: (map['objectKeyPrefix'] as String).input(),
     );
   }
 }

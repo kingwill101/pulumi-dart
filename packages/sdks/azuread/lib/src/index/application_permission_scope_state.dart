@@ -35,23 +35,15 @@ class ApplicationPermissionScopeState {
   /// [userConsentDisplayName] Display name for the delegated permission that appears in the end user consent experience.
   /// [value] The value that is used for the `scp` claim in OAuth access tokens.
   ApplicationPermissionScopeState({
-    pulumi.Output<String>? adminConsentDescription,
-    pulumi.Output<String>? adminConsentDisplayName,
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? scopeId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? userConsentDescription,
-    pulumi.Output<String>? userConsentDisplayName,
-    pulumi.Output<String>? value,
-  }) :
-      adminConsentDescription = pulumi.Input.asOptionalInput<String>(adminConsentDescription),
-      adminConsentDisplayName = pulumi.Input.asOptionalInput<String>(adminConsentDisplayName),
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      scopeId = pulumi.Input.asOptionalInput<String>(scopeId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      userConsentDescription = pulumi.Input.asOptionalInput<String>(userConsentDescription),
-      userConsentDisplayName = pulumi.Input.asOptionalInput<String>(userConsentDisplayName),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.adminConsentDescription,
+    this.adminConsentDisplayName,
+    this.applicationId,
+    this.scopeId,
+    this.type,
+    this.userConsentDescription,
+    this.userConsentDisplayName,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ApplicationPermissionScopeState {
 
   factory ApplicationPermissionScopeState.fromMap(Map<String, dynamic> map) {
     return ApplicationPermissionScopeState(
-      adminConsentDescription: map['adminConsentDescription'] == null ? null : pulumi.Output.create<String>(map['adminConsentDescription'] as String),
-      adminConsentDisplayName: map['adminConsentDisplayName'] == null ? null : pulumi.Output.create<String>(map['adminConsentDisplayName'] as String),
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      scopeId: map['scopeId'] == null ? null : pulumi.Output.create<String>(map['scopeId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      userConsentDescription: map['userConsentDescription'] == null ? null : pulumi.Output.create<String>(map['userConsentDescription'] as String),
-      userConsentDisplayName: map['userConsentDisplayName'] == null ? null : pulumi.Output.create<String>(map['userConsentDisplayName'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      adminConsentDescription: map['adminConsentDescription'] == null ? null : (map['adminConsentDescription'] as String).input(),
+      adminConsentDisplayName: map['adminConsentDisplayName'] == null ? null : (map['adminConsentDisplayName'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      scopeId: map['scopeId'] == null ? null : (map['scopeId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userConsentDescription: map['userConsentDescription'] == null ? null : (map['userConsentDescription'] as String).input(),
+      userConsentDisplayName: map['userConsentDisplayName'] == null ? null : (map['userConsentDisplayName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

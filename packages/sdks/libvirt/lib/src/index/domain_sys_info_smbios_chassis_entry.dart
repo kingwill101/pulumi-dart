@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSysInfoSmbiosChassisEntry {
   /// Specifies the file associated with the firmware configuration entry.
-  final String? file;
+  final pulumi.Input<String>? file;
   /// Defines the name of the firmware configuration entry.
-  final String name;
+  final pulumi.Input<String> name;
   /// Sets the value for the firmware configuration entry.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DomainSysInfoSmbiosChassisEntry].
   /// [file] Specifies the file associated with the firmware configuration entry.
@@ -29,9 +30,9 @@ class DomainSysInfoSmbiosChassisEntry {
 
   factory DomainSysInfoSmbiosChassisEntry.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosChassisEntry(
-      file: map['file'] == null ? null : map['file'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      file: map['file'] == null ? null : (map['file'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -21,17 +21,12 @@ class ListGlobalRulestackAppIdsArgs {
   /// [skip] Optional.
   /// [top] Optional.
   ListGlobalRulestackAppIdsArgs({
-    pulumi.Output<String>? appIdVersion,
-    pulumi.Output<String>? appPrefix,
-    required pulumi.Output<String> globalRulestackName,
-    pulumi.Output<String>? skip,
-    pulumi.Output<int>? top,
-  }) :
-      appIdVersion = pulumi.Input.asOptionalInput<String>(appIdVersion),
-      appPrefix = pulumi.Input.asOptionalInput<String>(appPrefix),
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      skip = pulumi.Input.asOptionalInput<String>(skip),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    this.appIdVersion,
+    this.appPrefix,
+    required this.globalRulestackName,
+    this.skip,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +40,11 @@ class ListGlobalRulestackAppIdsArgs {
 
   factory ListGlobalRulestackAppIdsArgs.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackAppIdsArgs(
-      appIdVersion: map['appIdVersion'] == null ? null : pulumi.Output.create<String>(map['appIdVersion'] as String),
-      appPrefix: map['appPrefix'] == null ? null : pulumi.Output.create<String>(map['appPrefix'] as String),
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<String>(map['skip'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      appIdVersion: map['appIdVersion'] == null ? null : (map['appIdVersion'] as String).input(),
+      appPrefix: map['appPrefix'] == null ? null : (map['appPrefix'] as String).input(),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

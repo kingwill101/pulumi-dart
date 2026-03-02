@@ -24,17 +24,12 @@ class InstanceArgs {
   /// [name] Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
   /// [project] Optional.
   InstanceArgs({
-    required pulumi.Output<Config> config,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      config = pulumi.Input.asInput<Config>(config),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.config,
+    required this.instanceId,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      config: pulumi.Output.create<Config>(Config.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      config: (Config.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

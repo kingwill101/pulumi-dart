@@ -31,19 +31,13 @@ class AliasArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingConfig] Lambda alias' route configuration settings. See below.
   AliasArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> functionName,
-    required pulumi.Output<String> functionVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<AliasRoutingConfig>? routingConfig,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      functionName = pulumi.Input.asInput<String>(functionName),
-      functionVersion = pulumi.Input.asInput<String>(functionVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingConfig = pulumi.Input.asOptionalInput<AliasRoutingConfig>(routingConfig);
+    this.description,
+    required this.functionName,
+    required this.functionVersion,
+    this.name,
+    this.region,
+    this.routingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      functionVersion: pulumi.Output.create<String>(map['functionVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingConfig: map['routingConfig'] == null ? null : pulumi.Output.create<AliasRoutingConfig>(AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
+      functionVersion: (map['functionVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

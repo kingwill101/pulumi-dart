@@ -22,15 +22,11 @@ class ServiceLinkedRoleArgs {
   /// [description] The description of the role.
   /// [tags] Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ServiceLinkedRoleArgs({
-    required pulumi.Output<String> awsServiceName,
-    pulumi.Output<String>? customSuffix,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      awsServiceName = pulumi.Input.asInput<String>(awsServiceName),
-      customSuffix = pulumi.Input.asOptionalInput<String>(customSuffix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.awsServiceName,
+    this.customSuffix,
+    this.description,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServiceLinkedRoleArgs {
 
   factory ServiceLinkedRoleArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleArgs(
-      awsServiceName: pulumi.Output.create<String>(map['awsServiceName'] as String),
-      customSuffix: map['customSuffix'] == null ? null : pulumi.Output.create<String>(map['customSuffix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      awsServiceName: (map['awsServiceName'] as String).input(),
+      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

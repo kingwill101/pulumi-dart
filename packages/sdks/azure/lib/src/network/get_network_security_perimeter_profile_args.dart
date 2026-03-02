@@ -16,11 +16,9 @@ class GetNetworkSecurityPerimeterProfileArgs {
   /// [name] The name of this Network Security Perimeter Profile.
   /// [networkSecurityPerimeterId] The ID of the Network Security Perimeter.
   GetNetworkSecurityPerimeterProfileArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> networkSecurityPerimeterId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      networkSecurityPerimeterId = pulumi.Input.asInput<String>(networkSecurityPerimeterId);
+    required this.name,
+    required this.networkSecurityPerimeterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkSecurityPerimeterProfileArgs {
 
   factory GetNetworkSecurityPerimeterProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterProfileArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      networkSecurityPerimeterId: pulumi.Output.create<String>(map['networkSecurityPerimeterId'] as String),
+      name: (map['name'] as String).input(),
+      networkSecurityPerimeterId: (map['networkSecurityPerimeterId'] as String).input(),
     );
   }
 }

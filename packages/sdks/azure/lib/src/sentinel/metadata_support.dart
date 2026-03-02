@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetadataSupport {
   /// The email address of the support contact.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// The link for support help.
-  final String? link;
+  final pulumi.Input<String>? link;
   /// The name of the support contact.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of support for content item. Possible values are `Microsoft`, `Partner` and `Community`.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [MetadataSupport].
   /// [email] The email address of the support contact.
@@ -34,10 +35,10 @@ class MetadataSupport {
 
   factory MetadataSupport.fromMap(Map<String, dynamic> map) {
     return MetadataSupport(
-      email: map['email'] == null ? null : map['email'] as String,
-      link: map['link'] == null ? null : map['link'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      link: map['link'] == null ? null : (map['link'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

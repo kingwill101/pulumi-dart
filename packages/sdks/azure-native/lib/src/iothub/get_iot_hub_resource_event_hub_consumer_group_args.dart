@@ -22,15 +22,11 @@ class GetIotHubResourceEventHubConsumerGroupArgs {
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
   GetIotHubResourceEventHubConsumerGroupArgs({
-    required pulumi.Output<String> eventHubEndpointName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      eventHubEndpointName = pulumi.Input.asInput<String>(eventHubEndpointName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.eventHubEndpointName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetIotHubResourceEventHubConsumerGroupArgs {
 
   factory GetIotHubResourceEventHubConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetIotHubResourceEventHubConsumerGroupArgs(
-      eventHubEndpointName: pulumi.Output.create<String>(map['eventHubEndpointName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      eventHubEndpointName: (map['eventHubEndpointName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetConfigurationProfileHCIAssignmentArgs {
   /// [configurationProfileAssignmentName] The configuration profile assignment name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetConfigurationProfileHCIAssignmentArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> configurationProfileAssignmentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      configurationProfileAssignmentName = pulumi.Input.asInput<String>(configurationProfileAssignmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.configurationProfileAssignmentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConfigurationProfileHCIAssignmentArgs {
 
   factory GetConfigurationProfileHCIAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfileHCIAssignmentArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      configurationProfileAssignmentName: pulumi.Output.create<String>(map['configurationProfileAssignmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      configurationProfileAssignmentName: (map['configurationProfileAssignmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

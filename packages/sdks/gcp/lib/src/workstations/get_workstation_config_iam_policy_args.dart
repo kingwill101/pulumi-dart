@@ -27,15 +27,11 @@ class GetWorkstationConfigIamPolicyArgs {
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] Used to find the parent resource to bind the IAM policy to
   GetWorkstationConfigIamPolicyArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workstationClusterId,
-    required pulumi.Output<String> workstationConfigId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId);
+    this.location,
+    this.project,
+    required this.workstationClusterId,
+    required this.workstationConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class GetWorkstationConfigIamPolicyArgs {
 
   factory GetWorkstationConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationConfigIamPolicyArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workstationClusterId: pulumi.Output.create<String>(map['workstationClusterId'] as String),
-      workstationConfigId: pulumi.Output.create<String>(map['workstationConfigId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workstationClusterId: (map['workstationClusterId'] as String).input(),
+      workstationConfigId: (map['workstationConfigId'] as String).input(),
     );
   }
 }

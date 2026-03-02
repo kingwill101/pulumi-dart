@@ -31,21 +31,14 @@ class GetDbInstancePlansArgs {
   /// [planType] The type of the Plan. Valid values: `PauseResume`, `Resize`.
   /// [status] Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
   GetDbInstancePlansArgs({
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? planScheduleType,
-    pulumi.Output<String>? planType,
-    pulumi.Output<String>? status,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      planScheduleType = pulumi.Input.asOptionalInput<String>(planScheduleType),
-      planType = pulumi.Input.asOptionalInput<String>(planType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.dbInstanceId,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.planScheduleType,
+    this.planType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetDbInstancePlansArgs {
 
   factory GetDbInstancePlansArgs.fromMap(Map<String, dynamic> map) {
     return GetDbInstancePlansArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      planScheduleType: map['planScheduleType'] == null ? null : pulumi.Output.create<String>(map['planScheduleType'] as String),
-      planType: map['planType'] == null ? null : pulumi.Output.create<String>(map['planType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      planScheduleType: map['planScheduleType'] == null ? null : (map['planScheduleType'] as String).input(),
+      planType: map['planType'] == null ? null : (map['planType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

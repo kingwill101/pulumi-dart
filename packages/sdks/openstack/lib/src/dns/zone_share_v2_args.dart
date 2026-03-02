@@ -27,15 +27,11 @@ class ZoneShareV2Args {
   /// [targetProjectId] The ID of the target project with which the
   /// [zoneId] The ID of the DNS zone to be shared.
   ZoneShareV2Args({
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> targetProjectId,
-    required pulumi.Output<String> zoneId,
-  }) :
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetProjectId = pulumi.Input.asInput<String>(targetProjectId),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.projectId,
+    this.region,
+    required this.targetProjectId,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class ZoneShareV2Args {
 
   factory ZoneShareV2Args.fromMap(Map<String, dynamic> map) {
     return ZoneShareV2Args(
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetProjectId: pulumi.Output.create<String>(map['targetProjectId'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetProjectId: (map['targetProjectId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetEntityArgs {
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEntityArgs({
-    required pulumi.Output<String> entityName,
-    required pulumi.Output<String> healthModelName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      entityName = pulumi.Input.asInput<String>(entityName),
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.entityName,
+    required this.healthModelName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEntityArgs {
 
   factory GetEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityArgs(
-      entityName: pulumi.Output.create<String>(map['entityName'] as String),
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      entityName: (map['entityName'] as String).input(),
+      healthModelName: (map['healthModelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

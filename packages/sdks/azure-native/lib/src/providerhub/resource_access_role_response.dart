@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceAccessRoleResponse {
   /// The actions.
-  final List<String>? actions;
+  final pulumi.Input<List<String>>? actions;
   /// The allowed group claims.
-  final List<String>? allowedGroupClaims;
+  final pulumi.Input<List<String>>? allowedGroupClaims;
 
   /// Creates a new [ResourceAccessRoleResponse].
   /// [actions] The actions.
@@ -24,8 +25,8 @@ class ResourceAccessRoleResponse {
 
   factory ResourceAccessRoleResponse.fromMap(Map<String, dynamic> map) {
     return ResourceAccessRoleResponse(
-      actions: map['actions'] == null ? null : (map['actions'] as List).cast<String>(),
-      allowedGroupClaims: map['allowedGroupClaims'] == null ? null : (map['allowedGroupClaims'] as List).cast<String>(),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      allowedGroupClaims: map['allowedGroupClaims'] == null ? null : ((map['allowedGroupClaims'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_oauth2_credential_provider_oauth2_provider_config_custom_oauth2_provider_config_oauth_discovery.dart';
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig {
   /// Used together with write-only credentials to trigger an update. Increment this value when an update to `client_id_wo` or `client_secret_wo` is required.
   ///
   /// **OAuth Discovery Configuration:**
-  final int? clientCredentialsWoVersion;
+  final pulumi.Input<int>? clientCredentialsWoVersion;
   /// OAuth2 client ID. Cannot be used with `client_id_wo`. Must be used together with `client_secret`.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only OAuth2 client ID. Cannot be used with `client_id`. Must be used together with `client_secret_wo` and `client_credentials_wo_version`.
-  final String? clientIdWo;
+  final pulumi.Input<String>? clientIdWo;
   /// OAuth2 client secret. Cannot be used with `client_secret_wo`. Must be used together with `client_id`.
   ///
   /// **Write-Only Credentials (choose one pair):**
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only OAuth2 client secret. Cannot be used with `client_secret`. Must be used together with `client_id_wo` and `client_credentials_wo_version`.
-  final String? clientSecretWo;
+  final pulumi.Input<String>? clientSecretWo;
   /// OAuth discovery configuration. See `oauth_discovery` below.
-  final AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery? oauthDiscovery;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery>? oauthDiscovery;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig].
   /// [clientCredentialsWoVersion] Used together with write-only credentials to trigger an update. Increment this value when an update to `client_id_wo` or `client_secret_wo` is required.
@@ -45,18 +46,18 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
       'clientIdWo': ?clientIdWo,
       'clientSecret': ?clientSecret,
       'clientSecretWo': ?clientSecretWo,
-      'oauthDiscovery': ?oauthDiscovery == null ? null : oauthDiscovery!.toMap(),
+      'oauthDiscovery': ?pulumi.Input.mapOptionalInputValue<AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery, Map<String, dynamic>>(oauthDiscovery, (value) => value.toMap()),
     };
   }
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig(
-      clientCredentialsWoVersion: map['clientCredentialsWoVersion'] == null ? null : map['clientCredentialsWoVersion'] as int,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientIdWo: map['clientIdWo'] == null ? null : map['clientIdWo'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      clientSecretWo: map['clientSecretWo'] == null ? null : map['clientSecretWo'] as String,
-      oauthDiscovery: map['oauthDiscovery'] == null ? null : AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery.fromMap((map['oauthDiscovery'] as Map).cast<String, dynamic>()),
+      clientCredentialsWoVersion: map['clientCredentialsWoVersion'] == null ? null : (map['clientCredentialsWoVersion'] as int).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientIdWo: map['clientIdWo'] == null ? null : (map['clientIdWo'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecretWo: map['clientSecretWo'] == null ? null : (map['clientSecretWo'] as String).input(),
+      oauthDiscovery: map['oauthDiscovery'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery.fromMap((map['oauthDiscovery'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

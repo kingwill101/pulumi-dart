@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of the runbook property type.
 class ContentHash {
   /// Gets or sets the content hash algorithm used to hash the content.
-  final String algorithm;
+  final pulumi.Input<String> algorithm;
   /// Gets or sets expected hash value of the content.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ContentHash].
   /// [algorithm] Gets or sets the content hash algorithm used to hash the content.
@@ -25,8 +26,8 @@ class ContentHash {
 
   factory ContentHash.fromMap(Map<String, dynamic> map) {
     return ContentHash(
-      algorithm: map['algorithm'] as String,
-      value: map['value'] as String,
+      algorithm: (map['algorithm'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

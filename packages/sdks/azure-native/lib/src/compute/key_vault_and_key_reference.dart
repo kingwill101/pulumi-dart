@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_vault.dart';
 
 /// Key Vault Key Url and vault id of KeK, KeK is optional and when provided is used to unwrap the encryptionKey
 class KeyVaultAndKeyReference {
   /// Url pointing to a key or secret in KeyVault
-  final String keyUrl;
+  final pulumi.Input<String> keyUrl;
   /// Resource id of the KeyVault containing the key or secret
-  final SourceVault sourceVault;
+  final pulumi.Input<SourceVault> sourceVault;
 
   /// Creates a new [KeyVaultAndKeyReference].
   /// [keyUrl] Url pointing to a key or secret in KeyVault
@@ -20,14 +21,14 @@ class KeyVaultAndKeyReference {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keyUrl': keyUrl,
-      'sourceVault': sourceVault.toMap(),
+      'sourceVault': pulumi.Input.mapInputValue<SourceVault, Map<String, dynamic>>(sourceVault, (value) => value.toMap()),
     };
   }
 
   factory KeyVaultAndKeyReference.fromMap(Map<String, dynamic> map) {
     return KeyVaultAndKeyReference(
-      keyUrl: map['keyUrl'] as String,
-      sourceVault: SourceVault.fromMap((map['sourceVault'] as Map).cast<String, dynamic>()),
+      keyUrl: (map['keyUrl'] as String).input(),
+      sourceVault: (SourceVault.fromMap((map['sourceVault'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

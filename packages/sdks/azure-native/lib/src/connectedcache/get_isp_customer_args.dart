@@ -16,11 +16,9 @@ class GetIspCustomerArgs {
   /// [customerResourceName] Name of the Customer resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetIspCustomerArgs({
-    required pulumi.Output<String> customerResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      customerResourceName = pulumi.Input.asInput<String>(customerResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.customerResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIspCustomerArgs {
 
   factory GetIspCustomerArgs.fromMap(Map<String, dynamic> map) {
     return GetIspCustomerArgs(
-      customerResourceName: pulumi.Output.create<String>(map['customerResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      customerResourceName: (map['customerResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

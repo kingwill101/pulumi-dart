@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Alert configuration details
 class AlertConfigurationResponse {
   /// Optional list of action group resource IDs to be notified when the alert is triggered.
-  final List<String>? actionGroupIds;
+  final pulumi.Input<List<String>>? actionGroupIds;
   /// The alert rule description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The severity of triggered alert.
-  final String severity;
+  final pulumi.Input<String> severity;
 
   /// Creates a new [AlertConfigurationResponse].
   /// [actionGroupIds] Optional list of action group resource IDs to be notified when the alert is triggered.
@@ -30,9 +31,9 @@ class AlertConfigurationResponse {
 
   factory AlertConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationResponse(
-      actionGroupIds: map['actionGroupIds'] == null ? null : (map['actionGroupIds'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      severity: map['severity'] as String,
+      actionGroupIds: map['actionGroupIds'] == null ? null : ((map['actionGroupIds'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      severity: (map['severity'] as String).input(),
     );
   }
 }

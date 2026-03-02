@@ -10,9 +10,8 @@ class ServiceServiceState {
   /// Creates a new [ServiceServiceState].
   /// [status] The status of the Service.
   ServiceServiceState({
-    pulumi.Output<String>? status,
-  }) :
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class ServiceServiceState {
 
   factory ServiceServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceServiceState(
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

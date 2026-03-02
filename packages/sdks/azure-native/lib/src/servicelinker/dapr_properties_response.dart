@@ -6,19 +6,19 @@ import 'dapr_metadata_response.dart';
 /// Indicates some additional properties for dapr client type
 class DaprPropertiesResponse {
   /// The direction supported by the dapr binding component
-  final String bindingComponentDirection;
+  final pulumi.Input<String> bindingComponentDirection;
   /// The dapr component type
-  final String? componentType;
+  final pulumi.Input<String>? componentType;
   /// Additional dapr metadata
-  final List<DaprMetadataResponse>? metadata;
+  final pulumi.Input<List<DaprMetadataResponse>>? metadata;
   /// The runtime version supported by the properties
-  final String runtimeVersion;
+  final pulumi.Input<String> runtimeVersion;
   /// The dapr component scopes
-  final List<String>? scopes;
+  final pulumi.Input<List<String>>? scopes;
   /// The name of a secret store dapr to retrieve secret
-  final String? secretStoreComponent;
+  final pulumi.Input<String>? secretStoreComponent;
   /// The dapr component version
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [DaprPropertiesResponse].
   /// [bindingComponentDirection] The direction supported by the dapr binding component
@@ -42,7 +42,7 @@ class DaprPropertiesResponse {
     return <String, dynamic>{
       'bindingComponentDirection': bindingComponentDirection,
       'componentType': ?componentType,
-      'metadata': ?metadata == null ? null : pulumi.Input.encodeList<DaprMetadataResponse, Map<String, dynamic>>(metadata!, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<List<DaprMetadataResponse>, List<Map<String, dynamic>>>(metadata, (value) => pulumi.Input.encodeList<DaprMetadataResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'runtimeVersion': runtimeVersion,
       'scopes': ?scopes,
       'secretStoreComponent': ?secretStoreComponent,
@@ -52,13 +52,13 @@ class DaprPropertiesResponse {
 
   factory DaprPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DaprPropertiesResponse(
-      bindingComponentDirection: map['bindingComponentDirection'] as String,
-      componentType: map['componentType'] == null ? null : map['componentType'] as String,
-      metadata: map['metadata'] == null ? null : pulumi.Input.decodeList<DaprMetadataResponse>(map['metadata'], (value) => DaprMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
-      runtimeVersion: map['runtimeVersion'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
-      secretStoreComponent: map['secretStoreComponent'] == null ? null : map['secretStoreComponent'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      bindingComponentDirection: (map['bindingComponentDirection'] as String).input(),
+      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<DaprMetadataResponse>(map['metadata'], (value) => DaprMetadataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runtimeVersion: (map['runtimeVersion'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      secretStoreComponent: map['secretStoreComponent'] == null ? null : (map['secretStoreComponent'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

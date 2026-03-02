@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataMaskingEntityResponse {
   /// Data masking mode.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The name of an entity to mask (e.g. a name of a header or a query parameter).
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DataMaskingEntityResponse].
   /// [mode] Data masking mode.
@@ -24,8 +25,8 @@ class DataMaskingEntityResponse {
 
   factory DataMaskingEntityResponse.fromMap(Map<String, dynamic> map) {
     return DataMaskingEntityResponse(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

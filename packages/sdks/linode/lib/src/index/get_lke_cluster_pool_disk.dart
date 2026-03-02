@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLkeClusterPoolDisk {
   /// The size of this custom disk partition in MB.
-  final int size;
+  final pulumi.Input<int> size;
   /// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetLkeClusterPoolDisk].
   /// [size] The size of this custom disk partition in MB.
@@ -24,8 +25,8 @@ class GetLkeClusterPoolDisk {
 
   factory GetLkeClusterPoolDisk.fromMap(Map<String, dynamic> map) {
     return GetLkeClusterPoolDisk(
-      size: map['size'] as int,
-      type: map['type'] as String,
+      size: (map['size'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

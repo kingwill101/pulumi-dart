@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification of a TLS certificate provider instance. Workloads may have one or more CertificateProvider instances (plugins) and one of them is enabled and configured by specifying this message. Workloads use the values from this message to locate and load the CertificateProvider instance configuration.
 class CertificateProviderInstanceResponse {
   /// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-  final String pluginInstance;
+  final pulumi.Input<String> pluginInstance;
 
   /// Creates a new [CertificateProviderInstanceResponse].
   /// [pluginInstance] Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
@@ -20,7 +21,7 @@ class CertificateProviderInstanceResponse {
 
   factory CertificateProviderInstanceResponse.fromMap(Map<String, dynamic> map) {
     return CertificateProviderInstanceResponse(
-      pluginInstance: map['pluginInstance'] as String,
+      pluginInstance: (map['pluginInstance'] as String).input(),
     );
   }
 }

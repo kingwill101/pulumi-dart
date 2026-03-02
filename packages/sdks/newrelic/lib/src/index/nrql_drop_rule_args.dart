@@ -22,15 +22,11 @@ class NrqlDropRuleArgs {
   /// [description] The description of the drop rule.
   /// [nrql] A NRQL string that specifies what data types to drop.
   NrqlDropRuleArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> nrql,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      nrql = pulumi.Input.asInput<String>(nrql);
+    this.accountId,
+    required this.action,
+    this.description,
+    required this.nrql,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NrqlDropRuleArgs {
 
   factory NrqlDropRuleArgs.fromMap(Map<String, dynamic> map) {
     return NrqlDropRuleArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      nrql: pulumi.Output.create<String>(map['nrql'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      nrql: (map['nrql'] as String).input(),
     );
   }
 }

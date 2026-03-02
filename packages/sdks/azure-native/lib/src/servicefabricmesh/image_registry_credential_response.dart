@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Image registry credential.
 class ImageRegistryCredentialResponse {
   /// The password for the private registry. The password is required for create or update operations, however it is not returned in the get or list operations.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Docker image registry server, without protocol such as `http` and `https`.
-  final String server;
+  final pulumi.Input<String> server;
   /// The username for the private registry.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [ImageRegistryCredentialResponse].
   /// [password] The password for the private registry. The password is required for create or update operations, however it is not returned in the get or list operations.
@@ -30,9 +31,9 @@ class ImageRegistryCredentialResponse {
 
   factory ImageRegistryCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ImageRegistryCredentialResponse(
-      password: map['password'] == null ? null : map['password'] as String,
-      server: map['server'] as String,
-      username: map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      server: (map['server'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

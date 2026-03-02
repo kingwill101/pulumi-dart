@@ -22,15 +22,11 @@ class HoneypotNodeArgs {
   /// [nodeName] Management node name.
   /// [securityGroupProbeIpLists] Release the collection of network segments.
   HoneypotNodeArgs({
-    pulumi.Output<bool>? allowHoneypotAccessInternet,
-    required pulumi.Output<int> availableProbeNum,
-    required pulumi.Output<String> nodeName,
-    pulumi.Output<List<String>>? securityGroupProbeIpLists,
-  }) :
-      allowHoneypotAccessInternet = pulumi.Input.asOptionalInput<bool>(allowHoneypotAccessInternet),
-      availableProbeNum = pulumi.Input.asInput<int>(availableProbeNum),
-      nodeName = pulumi.Input.asInput<String>(nodeName),
-      securityGroupProbeIpLists = pulumi.Input.asOptionalInput<List<String>>(securityGroupProbeIpLists);
+    this.allowHoneypotAccessInternet,
+    required this.availableProbeNum,
+    required this.nodeName,
+    this.securityGroupProbeIpLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class HoneypotNodeArgs {
 
   factory HoneypotNodeArgs.fromMap(Map<String, dynamic> map) {
     return HoneypotNodeArgs(
-      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : pulumi.Output.create<bool>(map['allowHoneypotAccessInternet'] as bool),
-      availableProbeNum: pulumi.Output.create<int>(map['availableProbeNum'] as int),
-      nodeName: pulumi.Output.create<String>(map['nodeName'] as String),
-      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupProbeIpLists'] as List).cast<String>()),
+      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : (map['allowHoneypotAccessInternet'] as bool).input(),
+      availableProbeNum: (map['availableProbeNum'] as int).input(),
+      nodeName: (map['nodeName'] as String).input(),
+      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : ((map['securityGroupProbeIpLists'] as List).cast<String>()).input(),
     );
   }
 }

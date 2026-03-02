@@ -30,21 +30,14 @@ class CustomDomainArgs {
   /// [redirectTarget] A domain name that this `CustomDomain` should direct traffic towards. If specified, Hosting will respond to requests against this custom domain with an HTTP 301 code, and route traffic to the specified `redirect_target` instead.
   /// [siteId] Required.
   CustomDomainArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<CustomDomainCertPreference>? certPreference,
-    required pulumi.Output<String> customDomainId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? redirectTarget,
-    required pulumi.Output<String> siteId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      certPreference = pulumi.Input.asOptionalInput<CustomDomainCertPreference>(certPreference),
-      customDomainId = pulumi.Input.asInput<String>(customDomainId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      redirectTarget = pulumi.Input.asOptionalInput<String>(redirectTarget),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    this.annotations,
+    this.certPreference,
+    required this.customDomainId,
+    this.labels,
+    this.project,
+    this.redirectTarget,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      certPreference: map['certPreference'] == null ? null : pulumi.Output.create<CustomDomainCertPreference>(CustomDomainCertPreference.fromValue(map['certPreference'] as String)),
-      customDomainId: pulumi.Output.create<String>(map['customDomainId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      redirectTarget: map['redirectTarget'] == null ? null : pulumi.Output.create<String>(map['redirectTarget'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      certPreference: map['certPreference'] == null ? null : (CustomDomainCertPreference.fromValue(map['certPreference'] as String)).input(),
+      customDomainId: (map['customDomainId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

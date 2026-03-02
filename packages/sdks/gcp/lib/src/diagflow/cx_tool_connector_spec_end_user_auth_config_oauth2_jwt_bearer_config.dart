@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
   /// Client key value or parameter name to pass it through.
-  final String clientKey;
+  final pulumi.Input<String> clientKey;
   /// Issuer value or parameter name to pass it through.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// Subject value or parameter name to pass it through.
-  final String subject;
+  final pulumi.Input<String> subject;
 
   /// Creates a new [CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig].
   /// [clientKey] Client key value or parameter name to pass it through.
@@ -29,9 +30,9 @@ class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
 
   factory CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.fromMap(Map<String, dynamic> map) {
     return CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig(
-      clientKey: map['clientKey'] as String,
-      issuer: map['issuer'] as String,
-      subject: map['subject'] as String,
+      clientKey: (map['clientKey'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      subject: (map['subject'] as String).input(),
     );
   }
 }

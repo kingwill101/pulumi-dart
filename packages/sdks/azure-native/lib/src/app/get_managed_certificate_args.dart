@@ -19,13 +19,10 @@ class GetManagedCertificateArgs {
   /// [managedCertificateName] Name of the Managed Certificate.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetManagedCertificateArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> managedCertificateName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      managedCertificateName = pulumi.Input.asInput<String>(managedCertificateName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    required this.managedCertificateName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedCertificateArgs {
 
   factory GetManagedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedCertificateArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      managedCertificateName: pulumi.Output.create<String>(map['managedCertificateName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      managedCertificateName: (map['managedCertificateName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

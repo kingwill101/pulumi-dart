@@ -19,13 +19,10 @@ class GetRelationshipLinkArgs {
   /// [relationshipLinkName] The name of the relationship link.
   /// [resourceGroupName] The name of the resource group.
   GetRelationshipLinkArgs({
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> relationshipLinkName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hubName = pulumi.Input.asInput<String>(hubName),
-      relationshipLinkName = pulumi.Input.asInput<String>(relationshipLinkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hubName,
+    required this.relationshipLinkName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRelationshipLinkArgs {
 
   factory GetRelationshipLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetRelationshipLinkArgs(
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      relationshipLinkName: pulumi.Output.create<String>(map['relationshipLinkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hubName: (map['hubName'] as String).input(),
+      relationshipLinkName: (map['relationshipLinkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

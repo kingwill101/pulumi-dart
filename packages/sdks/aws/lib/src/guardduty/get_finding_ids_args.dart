@@ -16,11 +16,9 @@ class GetFindingIdsArgs {
   /// [detectorId] ID of the GuardDuty detector.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetFindingIdsArgs({
-    required pulumi.Output<String> detectorId,
-    pulumi.Output<String>? region,
-  }) :
-      detectorId = pulumi.Input.asInput<String>(detectorId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.detectorId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFindingIdsArgs {
 
   factory GetFindingIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetFindingIdsArgs(
-      detectorId: pulumi.Output.create<String>(map['detectorId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      detectorId: (map['detectorId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

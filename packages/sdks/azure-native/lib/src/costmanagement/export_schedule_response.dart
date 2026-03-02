@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'export_recurrence_period_response.dart';
 
 /// The schedule associated with the export.
 class ExportScheduleResponse {
   /// The schedule recurrence.
-  final String? recurrence;
+  final pulumi.Input<String>? recurrence;
   /// Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-  final ExportRecurrencePeriodResponse? recurrencePeriod;
+  final pulumi.Input<ExportRecurrencePeriodResponse>? recurrencePeriod;
   /// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ExportScheduleResponse].
   /// [recurrence] The schedule recurrence.
@@ -24,16 +25,16 @@ class ExportScheduleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'recurrence': ?recurrence,
-      'recurrencePeriod': ?recurrencePeriod == null ? null : recurrencePeriod!.toMap(),
+      'recurrencePeriod': ?pulumi.Input.mapOptionalInputValue<ExportRecurrencePeriodResponse, Map<String, dynamic>>(recurrencePeriod, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory ExportScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ExportScheduleResponse(
-      recurrence: map['recurrence'] == null ? null : map['recurrence'] as String,
-      recurrencePeriod: map['recurrencePeriod'] == null ? null : ExportRecurrencePeriodResponse.fromMap((map['recurrencePeriod'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      recurrence: map['recurrence'] == null ? null : (map['recurrence'] as String).input(),
+      recurrencePeriod: map['recurrencePeriod'] == null ? null : (ExportRecurrencePeriodResponse.fromMap((map['recurrencePeriod'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

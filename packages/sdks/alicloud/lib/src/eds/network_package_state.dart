@@ -19,15 +19,11 @@ class NetworkPackageState {
   /// [officeSiteId] The ID of office site.
   /// [status] The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
   NetworkPackageState({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? internetChargeType,
-    pulumi.Output<String>? officeSiteId,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      officeSiteId = pulumi.Input.asOptionalInput<String>(officeSiteId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidth,
+    this.internetChargeType,
+    this.officeSiteId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class NetworkPackageState {
 
   factory NetworkPackageState.fromMap(Map<String, dynamic> map) {
     return NetworkPackageState(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      officeSiteId: map['officeSiteId'] == null ? null : pulumi.Output.create<String>(map['officeSiteId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PacketMirroringNetworkInfoResponse {
   /// Unique identifier for the network; defined by the server.
-  final String canonicalUrl;
+  final pulumi.Input<String> canonicalUrl;
   /// URL of the network resource.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [PacketMirroringNetworkInfoResponse].
   /// [canonicalUrl] Unique identifier for the network; defined by the server.
@@ -24,8 +25,8 @@ class PacketMirroringNetworkInfoResponse {
 
   factory PacketMirroringNetworkInfoResponse.fromMap(Map<String, dynamic> map) {
     return PacketMirroringNetworkInfoResponse(
-      canonicalUrl: map['canonicalUrl'] as String,
-      url: map['url'] as String,
+      canonicalUrl: (map['canonicalUrl'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

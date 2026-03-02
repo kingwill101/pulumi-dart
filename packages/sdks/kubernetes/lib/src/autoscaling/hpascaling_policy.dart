@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// HPAScalingPolicy is a single policy which must hold true for a specified past interval.
 class HPAScalingPolicy {
   /// periodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).
-  final int periodSeconds;
+  final pulumi.Input<int> periodSeconds;
   /// type is used to specify the scaling policy.
-  final String type;
+  final pulumi.Input<String> type;
   /// value contains the amount of change which is permitted by the policy. It must be greater than zero
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [HPAScalingPolicy].
   /// [periodSeconds] periodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).
@@ -30,9 +31,9 @@ class HPAScalingPolicy {
 
   factory HPAScalingPolicy.fromMap(Map<String, dynamic> map) {
     return HPAScalingPolicy(
-      periodSeconds: map['periodSeconds'] as int,
-      type: map['type'] as String,
-      value: map['value'] as int,
+      periodSeconds: (map['periodSeconds'] as int).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

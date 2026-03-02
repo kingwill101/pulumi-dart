@@ -32,21 +32,14 @@ class ApiAccessKeyState {
   /// [notes] Additional notes about the API access key.
   /// [userId] Required if `key_type` is `USER`. The New Relic user ID for which the API access key will be created.
   ApiAccessKeyState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? ingestType,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? keyType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notes,
-    pulumi.Output<String>? userId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      ingestType = pulumi.Input.asOptionalInput<String>(ingestType),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      keyType = pulumi.Input.asOptionalInput<String>(keyType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.accountId,
+    this.ingestType,
+    this.key,
+    this.keyType,
+    this.name,
+    this.notes,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ApiAccessKeyState {
 
   factory ApiAccessKeyState.fromMap(Map<String, dynamic> map) {
     return ApiAccessKeyState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      ingestType: map['ingestType'] == null ? null : pulumi.Output.create<String>(map['ingestType'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      keyType: map['keyType'] == null ? null : pulumi.Output.create<String>(map['keyType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      ingestType: map['ingestType'] == null ? null : (map['ingestType'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

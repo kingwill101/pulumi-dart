@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of S3WordsList
 class S3WordsList {
   /// Property bucketName
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// Property objectKey
-  final String? objectKey;
+  final pulumi.Input<String>? objectKey;
 
   /// Creates a new [S3WordsList].
   /// [bucketName] Property bucketName
@@ -25,8 +26,8 @@ class S3WordsList {
 
   factory S3WordsList.fromMap(Map<String, dynamic> map) {
     return S3WordsList(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      objectKey: map['objectKey'] == null ? null : map['objectKey'] as String,
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      objectKey: map['objectKey'] == null ? null : (map['objectKey'] as String).input(),
     );
   }
 }

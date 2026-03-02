@@ -67,31 +67,19 @@ class OrganizationVpcFlowLogsConfigArgs {
   /// [state] Optional. The state of the VPC Flow Log configuration. Default value
   /// [vpcFlowLogsConfigId] Required. ID of the `VpcFlowLogsConfig`.
   OrganizationVpcFlowLogsConfigArgs({
-    pulumi.Output<String>? aggregationInterval,
-    pulumi.Output<String>? crossProjectMetadata,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filterExpr,
-    pulumi.Output<double>? flowSampling,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? metadata,
-    pulumi.Output<List<String>>? metadataFields,
-    required pulumi.Output<String> organization,
-    pulumi.Output<String>? state,
-    required pulumi.Output<String> vpcFlowLogsConfigId,
-  }) :
-      aggregationInterval = pulumi.Input.asOptionalInput<String>(aggregationInterval),
-      crossProjectMetadata = pulumi.Input.asOptionalInput<String>(crossProjectMetadata),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filterExpr = pulumi.Input.asOptionalInput<String>(filterExpr),
-      flowSampling = pulumi.Input.asOptionalInput<double>(flowSampling),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<String>(metadata),
-      metadataFields = pulumi.Input.asOptionalInput<List<String>>(metadataFields),
-      organization = pulumi.Input.asInput<String>(organization),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      vpcFlowLogsConfigId = pulumi.Input.asInput<String>(vpcFlowLogsConfigId);
+    this.aggregationInterval,
+    this.crossProjectMetadata,
+    this.description,
+    this.filterExpr,
+    this.flowSampling,
+    this.labels,
+    required this.location,
+    this.metadata,
+    this.metadataFields,
+    required this.organization,
+    this.state,
+    required this.vpcFlowLogsConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,18 +100,18 @@ class OrganizationVpcFlowLogsConfigArgs {
 
   factory OrganizationVpcFlowLogsConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationVpcFlowLogsConfigArgs(
-      aggregationInterval: map['aggregationInterval'] == null ? null : pulumi.Output.create<String>(map['aggregationInterval'] as String),
-      crossProjectMetadata: map['crossProjectMetadata'] == null ? null : pulumi.Output.create<String>(map['crossProjectMetadata'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filterExpr: map['filterExpr'] == null ? null : pulumi.Output.create<String>(map['filterExpr'] as String),
-      flowSampling: map['flowSampling'] == null ? null : pulumi.Output.create<double>(map['flowSampling'] as double),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<String>(map['metadata'] as String),
-      metadataFields: map['metadataFields'] == null ? null : pulumi.Output.create<List<String>>((map['metadataFields'] as List).cast<String>()),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      vpcFlowLogsConfigId: pulumi.Output.create<String>(map['vpcFlowLogsConfigId'] as String),
+      aggregationInterval: map['aggregationInterval'] == null ? null : (map['aggregationInterval'] as String).input(),
+      crossProjectMetadata: map['crossProjectMetadata'] == null ? null : (map['crossProjectMetadata'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filterExpr: map['filterExpr'] == null ? null : (map['filterExpr'] as String).input(),
+      flowSampling: map['flowSampling'] == null ? null : (map['flowSampling'] as double).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadataFields: map['metadataFields'] == null ? null : ((map['metadataFields'] as List).cast<String>()).input(),
+      organization: (map['organization'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      vpcFlowLogsConfigId: (map['vpcFlowLogsConfigId'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Permissions the identity has for keys, secrets, certificates and storage.
 class PermissionsResponse {
   /// Permissions to certificates
-  final List<String>? certificates;
+  final pulumi.Input<List<String>>? certificates;
   /// Permissions to keys
-  final List<String>? keys;
+  final pulumi.Input<List<String>>? keys;
   /// Permissions to secrets
-  final List<String>? secrets;
+  final pulumi.Input<List<String>>? secrets;
   /// Permissions to storage accounts
-  final List<String>? storage;
+  final pulumi.Input<List<String>>? storage;
 
   /// Creates a new [PermissionsResponse].
   /// [certificates] Permissions to certificates
@@ -35,10 +36,10 @@ class PermissionsResponse {
 
   factory PermissionsResponse.fromMap(Map<String, dynamic> map) {
     return PermissionsResponse(
-      certificates: map['certificates'] == null ? null : (map['certificates'] as List).cast<String>(),
-      keys: map['keys'] == null ? null : (map['keys'] as List).cast<String>(),
-      secrets: map['secrets'] == null ? null : (map['secrets'] as List).cast<String>(),
-      storage: map['storage'] == null ? null : (map['storage'] as List).cast<String>(),
+      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<String>()).input(),
+      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      secrets: map['secrets'] == null ? null : ((map['secrets'] as List).cast<String>()).input(),
+      storage: map['storage'] == null ? null : ((map['storage'] as List).cast<String>()).input(),
     );
   }
 }

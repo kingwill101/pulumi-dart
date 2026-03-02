@@ -46,31 +46,19 @@ class IpsecPolicyState {
   /// [tunnelLocalAddress] Specifies the local endpoint IP address of the IPsec tunnel. This parameter is only valid when mode is tunnel.
   /// [tunnelRemoteAddress] Specifies the remote endpoint IP address of the IPsec tunnel. This parameter is only valid when mode is tunnel.
   IpsecPolicyState({
-    pulumi.Output<String>? authAlgorithm,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? encryptAlgorithm,
-    pulumi.Output<String>? ipcomp,
-    pulumi.Output<int>? kbLifetime,
-    pulumi.Output<int>? lifetime,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? perfectForwardSecrecy,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? tunnelLocalAddress,
-    pulumi.Output<String>? tunnelRemoteAddress,
-  }) :
-      authAlgorithm = pulumi.Input.asOptionalInput<String>(authAlgorithm),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptAlgorithm = pulumi.Input.asOptionalInput<String>(encryptAlgorithm),
-      ipcomp = pulumi.Input.asOptionalInput<String>(ipcomp),
-      kbLifetime = pulumi.Input.asOptionalInput<int>(kbLifetime),
-      lifetime = pulumi.Input.asOptionalInput<int>(lifetime),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      perfectForwardSecrecy = pulumi.Input.asOptionalInput<String>(perfectForwardSecrecy),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      tunnelLocalAddress = pulumi.Input.asOptionalInput<String>(tunnelLocalAddress),
-      tunnelRemoteAddress = pulumi.Input.asOptionalInput<String>(tunnelRemoteAddress);
+    this.authAlgorithm,
+    this.description,
+    this.encryptAlgorithm,
+    this.ipcomp,
+    this.kbLifetime,
+    this.lifetime,
+    this.mode,
+    this.name,
+    this.perfectForwardSecrecy,
+    this.protocol,
+    this.tunnelLocalAddress,
+    this.tunnelRemoteAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class IpsecPolicyState {
 
   factory IpsecPolicyState.fromMap(Map<String, dynamic> map) {
     return IpsecPolicyState(
-      authAlgorithm: map['authAlgorithm'] == null ? null : pulumi.Output.create<String>(map['authAlgorithm'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptAlgorithm: map['encryptAlgorithm'] == null ? null : pulumi.Output.create<String>(map['encryptAlgorithm'] as String),
-      ipcomp: map['ipcomp'] == null ? null : pulumi.Output.create<String>(map['ipcomp'] as String),
-      kbLifetime: map['kbLifetime'] == null ? null : pulumi.Output.create<int>(map['kbLifetime'] as int),
-      lifetime: map['lifetime'] == null ? null : pulumi.Output.create<int>(map['lifetime'] as int),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      perfectForwardSecrecy: map['perfectForwardSecrecy'] == null ? null : pulumi.Output.create<String>(map['perfectForwardSecrecy'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      tunnelLocalAddress: map['tunnelLocalAddress'] == null ? null : pulumi.Output.create<String>(map['tunnelLocalAddress'] as String),
-      tunnelRemoteAddress: map['tunnelRemoteAddress'] == null ? null : pulumi.Output.create<String>(map['tunnelRemoteAddress'] as String),
+      authAlgorithm: map['authAlgorithm'] == null ? null : (map['authAlgorithm'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptAlgorithm: map['encryptAlgorithm'] == null ? null : (map['encryptAlgorithm'] as String).input(),
+      ipcomp: map['ipcomp'] == null ? null : (map['ipcomp'] as String).input(),
+      kbLifetime: map['kbLifetime'] == null ? null : (map['kbLifetime'] as int).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      perfectForwardSecrecy: map['perfectForwardSecrecy'] == null ? null : (map['perfectForwardSecrecy'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      tunnelLocalAddress: map['tunnelLocalAddress'] == null ? null : (map['tunnelLocalAddress'] as String).input(),
+      tunnelRemoteAddress: map['tunnelRemoteAddress'] == null ? null : (map['tunnelRemoteAddress'] as String).input(),
     );
   }
 }

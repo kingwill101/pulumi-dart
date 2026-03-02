@@ -51,35 +51,21 @@ class VvpInstanceState {
   /// [vvpInstanceName] The name of the workspace.
   /// [zoneId] The zone ID of the resource.
   VvpInstanceState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<int>? duration,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? pricingCycle,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<VvpInstanceResourceSpec>? resourceSpec,
-    pulumi.Output<String>? status,
-    pulumi.Output<VvpInstanceStorage>? storage,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<List<String>>? vswitchIds,
-    pulumi.Output<String>? vvpInstanceName,
-    pulumi.Output<String>? zoneId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      duration = pulumi.Input.asOptionalInput<int>(duration),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      pricingCycle = pulumi.Input.asOptionalInput<String>(pricingCycle),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceSpec = pulumi.Input.asOptionalInput<VvpInstanceResourceSpec>(resourceSpec),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      storage = pulumi.Input.asOptionalInput<VvpInstanceStorage>(storage),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchIds = pulumi.Input.asOptionalInput<List<String>>(vswitchIds),
-      vvpInstanceName = pulumi.Input.asOptionalInput<String>(vvpInstanceName),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.createTime,
+    this.duration,
+    this.paymentType,
+    this.pricingCycle,
+    this.resourceGroupId,
+    this.resourceId,
+    this.resourceSpec,
+    this.status,
+    this.storage,
+    this.tags,
+    this.vpcId,
+    this.vswitchIds,
+    this.vvpInstanceName,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class VvpInstanceState {
 
   factory VvpInstanceState.fromMap(Map<String, dynamic> map) {
     return VvpInstanceState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<int>(map['duration'] as int),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      pricingCycle: map['pricingCycle'] == null ? null : pulumi.Output.create<String>(map['pricingCycle'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceSpec: map['resourceSpec'] == null ? null : pulumi.Output.create<VvpInstanceResourceSpec>(VvpInstanceResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      storage: map['storage'] == null ? null : pulumi.Output.create<VvpInstanceStorage>(VvpInstanceStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchIds: map['vswitchIds'] == null ? null : pulumi.Output.create<List<String>>((map['vswitchIds'] as List).cast<String>()),
-      vvpInstanceName: map['vvpInstanceName'] == null ? null : pulumi.Output.create<String>(map['vvpInstanceName'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : (VvpInstanceResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      storage: map['storage'] == null ? null : (VvpInstanceStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      vvpInstanceName: map['vvpInstanceName'] == null ? null : (map['vvpInstanceName'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

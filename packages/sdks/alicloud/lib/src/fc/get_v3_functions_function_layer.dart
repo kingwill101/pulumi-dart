@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetV3FunctionsFunctionLayer {
   /// The resource identifier of the layer version.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// The size of the layer code package. Unit: bytes.
-  final String size;
+  final pulumi.Input<String> size;
 
   /// Creates a new [GetV3FunctionsFunctionLayer].
   /// [arn] The resource identifier of the layer version.
@@ -24,8 +25,8 @@ class GetV3FunctionsFunctionLayer {
 
   factory GetV3FunctionsFunctionLayer.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionLayer(
-      arn: map['arn'] as String,
-      size: map['size'] as String,
+      arn: (map['arn'] as String).input(),
+      size: (map['size'] as String).input(),
     );
   }
 }

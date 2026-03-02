@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata about the resource
 class DataCollectionRuleResponseMetadata {
   /// Azure offering managing this resource on-behalf-of customer.
-  final String provisionedBy;
+  final pulumi.Input<String> provisionedBy;
   /// Resource Id of azure offering managing this resource on-behalf-of customer.
-  final String provisionedByResourceId;
+  final pulumi.Input<String> provisionedByResourceId;
 
   /// Creates a new [DataCollectionRuleResponseMetadata].
   /// [provisionedBy] Azure offering managing this resource on-behalf-of customer.
@@ -25,8 +26,8 @@ class DataCollectionRuleResponseMetadata {
 
   factory DataCollectionRuleResponseMetadata.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleResponseMetadata(
-      provisionedBy: map['provisionedBy'] as String,
-      provisionedByResourceId: map['provisionedByResourceId'] as String,
+      provisionedBy: (map['provisionedBy'] as String).input(),
+      provisionedByResourceId: (map['provisionedByResourceId'] as String).input(),
     );
   }
 }

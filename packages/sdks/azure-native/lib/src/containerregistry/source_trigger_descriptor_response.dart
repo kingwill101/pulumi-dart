@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The source trigger that caused a run.
 class SourceTriggerDescriptorResponse {
   /// The branch name in the repository.
-  final String? branchName;
+  final pulumi.Input<String>? branchName;
   /// The unique ID that identifies a commit.
-  final String? commitId;
+  final pulumi.Input<String>? commitId;
   /// The event type of the trigger.
-  final String? eventType;
+  final pulumi.Input<String>? eventType;
   /// The unique ID of the trigger.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The source control provider type.
-  final String? providerType;
+  final pulumi.Input<String>? providerType;
   /// The unique ID that identifies pull request.
-  final String? pullRequestId;
+  final pulumi.Input<String>? pullRequestId;
   /// The repository URL.
-  final String? repositoryUrl;
+  final pulumi.Input<String>? repositoryUrl;
 
   /// Creates a new [SourceTriggerDescriptorResponse].
   /// [branchName] The branch name in the repository.
@@ -50,13 +51,13 @@ class SourceTriggerDescriptorResponse {
 
   factory SourceTriggerDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return SourceTriggerDescriptorResponse(
-      branchName: map['branchName'] == null ? null : map['branchName'] as String,
-      commitId: map['commitId'] == null ? null : map['commitId'] as String,
-      eventType: map['eventType'] == null ? null : map['eventType'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      providerType: map['providerType'] == null ? null : map['providerType'] as String,
-      pullRequestId: map['pullRequestId'] == null ? null : map['pullRequestId'] as String,
-      repositoryUrl: map['repositoryUrl'] == null ? null : map['repositoryUrl'] as String,
+      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
+      commitId: map['commitId'] == null ? null : (map['commitId'] as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
+      pullRequestId: map['pullRequestId'] == null ? null : (map['pullRequestId'] as String).input(),
+      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl'] as String).input(),
     );
   }
 }

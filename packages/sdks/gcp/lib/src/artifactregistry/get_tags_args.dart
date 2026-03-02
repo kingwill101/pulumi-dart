@@ -25,17 +25,12 @@ class GetTagsArgs {
   /// [project] The project ID in which the resource belongs. If it is not provided, the provider project is used.
   /// [repositoryId] The last part of the repository name to fetch from.
   GetTagsArgs({
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> packageName,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      location = pulumi.Input.asInput<String>(location),
-      packageName = pulumi.Input.asInput<String>(packageName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+    this.filter,
+    required this.location,
+    required this.packageName,
+    this.project,
+    required this.repositoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetTagsArgs {
 
   factory GetTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetTagsArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      packageName: pulumi.Output.create<String>(map['packageName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      location: (map['location'] as String).input(),
+      packageName: (map['packageName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
     );
   }
 }

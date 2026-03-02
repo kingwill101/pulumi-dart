@@ -26,15 +26,11 @@ class OrganizationConfigurationArgs {
   /// [detectorId] The detector ID of the GuardDuty account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationConfigurationArgs({
-    required pulumi.Output<String> autoEnableOrganizationMembers,
-    pulumi.Output<OrganizationConfigurationDatasources>? datasources,
-    required pulumi.Output<String> detectorId,
-    pulumi.Output<String>? region,
-  }) :
-      autoEnableOrganizationMembers = pulumi.Input.asInput<String>(autoEnableOrganizationMembers),
-      datasources = pulumi.Input.asOptionalInput<OrganizationConfigurationDatasources>(datasources),
-      detectorId = pulumi.Input.asInput<String>(detectorId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.autoEnableOrganizationMembers,
+    this.datasources,
+    required this.detectorId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class OrganizationConfigurationArgs {
 
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
-      autoEnableOrganizationMembers: pulumi.Output.create<String>(map['autoEnableOrganizationMembers'] as String),
-      datasources: map['datasources'] == null ? null : pulumi.Output.create<OrganizationConfigurationDatasources>(OrganizationConfigurationDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())),
-      detectorId: pulumi.Output.create<String>(map['detectorId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoEnableOrganizationMembers: (map['autoEnableOrganizationMembers'] as String).input(),
+      datasources: map['datasources'] == null ? null : (OrganizationConfigurationDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())).input(),
+      detectorId: (map['detectorId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

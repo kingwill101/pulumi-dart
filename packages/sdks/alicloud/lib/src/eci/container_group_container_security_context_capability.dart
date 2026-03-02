@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerGroupContainerSecurityContextCapability {
-  final List<String>? adds;
+  final pulumi.Input<List<String>>? adds;
 
   /// Creates a new [ContainerGroupContainerSecurityContextCapability].
   /// [adds] Optional.
@@ -18,7 +19,7 @@ class ContainerGroupContainerSecurityContextCapability {
 
   factory ContainerGroupContainerSecurityContextCapability.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerSecurityContextCapability(
-      adds: map['adds'] == null ? null : (map['adds'] as List).cast<String>(),
+      adds: map['adds'] == null ? null : ((map['adds'] as List).cast<String>()).input(),
     );
   }
 }

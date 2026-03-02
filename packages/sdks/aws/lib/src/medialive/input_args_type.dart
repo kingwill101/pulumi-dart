@@ -47,29 +47,18 @@ class InputArgsType {
   /// [type] The different types of inputs that AWS Elemental MediaLive supports.
   /// [vpc] Settings for a private VPC Input. See VPC for more details.
   InputArgsType({
-    pulumi.Output<List<InputDestination>>? destinations,
-    pulumi.Output<List<InputInputDevice>>? inputDevices,
-    pulumi.Output<List<String>>? inputSecurityGroups,
-    pulumi.Output<List<InputMediaConnectFlow>>? mediaConnectFlows,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<List<InputSource>>? sources,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-    pulumi.Output<InputVpc>? vpc,
-  }) :
-      destinations = pulumi.Input.asOptionalInput<List<InputDestination>>(destinations),
-      inputDevices = pulumi.Input.asOptionalInput<List<InputInputDevice>>(inputDevices),
-      inputSecurityGroups = pulumi.Input.asOptionalInput<List<String>>(inputSecurityGroups),
-      mediaConnectFlows = pulumi.Input.asOptionalInput<List<InputMediaConnectFlow>>(mediaConnectFlows),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      sources = pulumi.Input.asOptionalInput<List<InputSource>>(sources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type),
-      vpc = pulumi.Input.asOptionalInput<InputVpc>(vpc);
+    this.destinations,
+    this.inputDevices,
+    this.inputSecurityGroups,
+    this.mediaConnectFlows,
+    this.name,
+    this.region,
+    this.roleArn,
+    this.sources,
+    this.tags,
+    required this.type,
+    this.vpc,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class InputArgsType {
 
   factory InputArgsType.fromMap(Map<String, dynamic> map) {
     return InputArgsType(
-      destinations: map['destinations'] == null ? null : pulumi.Output.create<List<InputDestination>>(pulumi.Input.decodeList<InputDestination>(map['destinations'], (value) => InputDestination.fromMap((value as Map).cast<String, dynamic>()))),
-      inputDevices: map['inputDevices'] == null ? null : pulumi.Output.create<List<InputInputDevice>>(pulumi.Input.decodeList<InputInputDevice>(map['inputDevices'], (value) => InputInputDevice.fromMap((value as Map).cast<String, dynamic>()))),
-      inputSecurityGroups: map['inputSecurityGroups'] == null ? null : pulumi.Output.create<List<String>>((map['inputSecurityGroups'] as List).cast<String>()),
-      mediaConnectFlows: map['mediaConnectFlows'] == null ? null : pulumi.Output.create<List<InputMediaConnectFlow>>(pulumi.Input.decodeList<InputMediaConnectFlow>(map['mediaConnectFlows'], (value) => InputMediaConnectFlow.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      sources: map['sources'] == null ? null : pulumi.Output.create<List<InputSource>>(pulumi.Input.decodeList<InputSource>(map['sources'], (value) => InputSource.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      vpc: map['vpc'] == null ? null : pulumi.Output.create<InputVpc>(InputVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<InputDestination>(map['destinations'], (value) => InputDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputDevices: map['inputDevices'] == null ? null : (pulumi.Input.decodeList<InputInputDevice>(map['inputDevices'], (value) => InputInputDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputSecurityGroups: map['inputSecurityGroups'] == null ? null : ((map['inputSecurityGroups'] as List).cast<String>()).input(),
+      mediaConnectFlows: map['mediaConnectFlows'] == null ? null : (pulumi.Input.decodeList<InputMediaConnectFlow>(map['mediaConnectFlows'], (value) => InputMediaConnectFlow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<InputSource>(map['sources'], (value) => InputSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      vpc: map['vpc'] == null ? null : (InputVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

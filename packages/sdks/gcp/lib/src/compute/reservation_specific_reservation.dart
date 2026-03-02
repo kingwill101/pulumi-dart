@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reservation_specific_reservation_instance_properties.dart';
 
 class ReservationSpecificReservation {
   /// (Output)
   /// Indicates how many instances are actually usable currently.
-  final int? assuredCount;
+  final pulumi.Input<int>? assuredCount;
   /// The number of resources that are allocated.
-  final int count;
+  final pulumi.Input<int> count;
   /// (Output)
   /// How many instances are in use.
-  final int? inUseCount;
+  final pulumi.Input<int>? inUseCount;
   /// The instance properties for the reservation.
   /// Structure is documented below.
-  final ReservationSpecificReservationInstanceProperties? instanceProperties;
+  final pulumi.Input<ReservationSpecificReservationInstanceProperties>? instanceProperties;
   /// Specifies the instance template to create the reservation. If you use this field, you must exclude the
   /// instanceProperties field.
-  final String? sourceInstanceTemplate;
+  final pulumi.Input<String>? sourceInstanceTemplate;
 
   /// Creates a new [ReservationSpecificReservation].
   /// [assuredCount] (Output)
@@ -37,18 +38,18 @@ class ReservationSpecificReservation {
       'assuredCount': ?assuredCount,
       'count': count,
       'inUseCount': ?inUseCount,
-      'instanceProperties': ?instanceProperties == null ? null : instanceProperties!.toMap(),
+      'instanceProperties': ?pulumi.Input.mapOptionalInputValue<ReservationSpecificReservationInstanceProperties, Map<String, dynamic>>(instanceProperties, (value) => value.toMap()),
       'sourceInstanceTemplate': ?sourceInstanceTemplate,
     };
   }
 
   factory ReservationSpecificReservation.fromMap(Map<String, dynamic> map) {
     return ReservationSpecificReservation(
-      assuredCount: map['assuredCount'] == null ? null : map['assuredCount'] as int,
-      count: map['count'] as int,
-      inUseCount: map['inUseCount'] == null ? null : map['inUseCount'] as int,
-      instanceProperties: map['instanceProperties'] == null ? null : ReservationSpecificReservationInstanceProperties.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>()),
-      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : map['sourceInstanceTemplate'] as String,
+      assuredCount: map['assuredCount'] == null ? null : (map['assuredCount'] as int).input(),
+      count: (map['count'] as int).input(),
+      inUseCount: map['inUseCount'] == null ? null : (map['inUseCount'] as int).input(),
+      instanceProperties: map['instanceProperties'] == null ? null : (ReservationSpecificReservationInstanceProperties.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>())).input(),
+      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate'] as String).input(),
     );
   }
 }

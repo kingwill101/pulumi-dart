@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_controller_hub_config.dart';
 
 /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
 class PolicyControllerMembershipSpec {
   /// Policy Controller configuration for the cluster.
-  final PolicyControllerHubConfig? policyControllerHubConfig;
+  final pulumi.Input<PolicyControllerHubConfig>? policyControllerHubConfig;
   /// Version of Policy Controller installed.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [PolicyControllerMembershipSpec].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster.
@@ -19,15 +20,15 @@ class PolicyControllerMembershipSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyControllerHubConfig': ?policyControllerHubConfig == null ? null : policyControllerHubConfig!.toMap(),
+      'policyControllerHubConfig': ?pulumi.Input.mapOptionalInputValue<PolicyControllerHubConfig, Map<String, dynamic>>(policyControllerHubConfig, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory PolicyControllerMembershipSpec.fromMap(Map<String, dynamic> map) {
     return PolicyControllerMembershipSpec(
-      policyControllerHubConfig: map['policyControllerHubConfig'] == null ? null : PolicyControllerHubConfig.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      policyControllerHubConfig: map['policyControllerHubConfig'] == null ? null : (PolicyControllerHubConfig.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

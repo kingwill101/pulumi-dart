@@ -46,23 +46,15 @@ class SecretVersionArgs {
   /// [secretDataWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [secretDataWoVersion] Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   SecretVersionArgs({
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? isSecretDataBase64,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> secret,
-    pulumi.Output<String>? secretData,
-    pulumi.Output<String>? secretDataWo,
-    pulumi.Output<int>? secretDataWoVersion,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      isSecretDataBase64 = pulumi.Input.asOptionalInput<bool>(isSecretDataBase64),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secret = pulumi.Input.asInput<String>(secret),
-      secretData = pulumi.Input.asOptionalInput<String>(secretData),
-      secretDataWo = pulumi.Input.asOptionalInput<String>(secretDataWo),
-      secretDataWoVersion = pulumi.Input.asOptionalInput<int>(secretDataWoVersion);
+    this.deletionPolicy,
+    this.enabled,
+    this.isSecretDataBase64,
+    this.project,
+    required this.secret,
+    this.secretData,
+    this.secretDataWo,
+    this.secretDataWoVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class SecretVersionArgs {
 
   factory SecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return SecretVersionArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : pulumi.Output.create<bool>(map['isSecretDataBase64'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secret: pulumi.Output.create<String>(map['secret'] as String),
-      secretData: map['secretData'] == null ? null : pulumi.Output.create<String>(map['secretData'] as String),
-      secretDataWo: map['secretDataWo'] == null ? null : pulumi.Output.create<String>(map['secretDataWo'] as String),
-      secretDataWoVersion: map['secretDataWoVersion'] == null ? null : pulumi.Output.create<int>(map['secretDataWoVersion'] as int),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secret: (map['secret'] as String).input(),
+      secretData: map['secretData'] == null ? null : (map['secretData'] as String).input(),
+      secretDataWo: map['secretDataWo'] == null ? null : (map['secretDataWo'] as String).input(),
+      secretDataWoVersion: map['secretDataWoVersion'] == null ? null : (map['secretDataWoVersion'] as int).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackSetManagedExecution {
   /// When set to true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order. Default is false.
-  final bool? active;
+  final pulumi.Input<bool>? active;
 
   /// Creates a new [StackSetManagedExecution].
   /// [active] When set to true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order. Default is false.
@@ -19,7 +20,7 @@ class StackSetManagedExecution {
 
   factory StackSetManagedExecution.fromMap(Map<String, dynamic> map) {
     return StackSetManagedExecution(
-      active: map['active'] == null ? null : map['active'] as bool,
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
     );
   }
 }

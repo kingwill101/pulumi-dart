@@ -31,21 +31,14 @@ class ReplicationArgs {
   /// [tags] The tags of the resource.
   /// [zoneRedundancy] Whether or not zone redundancy is enabled for this container registry replication
   ReplicationArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? regionEndpointEnabled,
-    required pulumi.Output<String> registryName,
-    pulumi.Output<String>? replicationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? zoneRedundancy,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      regionEndpointEnabled = pulumi.Input.asOptionalInput<bool>(regionEndpointEnabled),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      replicationName = pulumi.Input.asOptionalInput<String>(replicationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundancy = pulumi.Input.asOptionalInput<String>(zoneRedundancy);
+    this.location,
+    this.regionEndpointEnabled,
+    required this.registryName,
+    this.replicationName,
+    required this.resourceGroupName,
+    this.tags,
+    this.zoneRedundancy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ReplicationArgs {
 
   factory ReplicationArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      regionEndpointEnabled: map['regionEndpointEnabled'] == null ? null : pulumi.Output.create<bool>(map['regionEndpointEnabled'] as bool),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      replicationName: map['replicationName'] == null ? null : pulumi.Output.create<String>(map['replicationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundancy: map['zoneRedundancy'] == null ? null : pulumi.Output.create<String>(map['zoneRedundancy'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      regionEndpointEnabled: map['regionEndpointEnabled'] == null ? null : (map['regionEndpointEnabled'] as bool).input(),
+      registryName: (map['registryName'] as String).input(),
+      replicationName: map['replicationName'] == null ? null : (map['replicationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundancy: map['zoneRedundancy'] == null ? null : (map['zoneRedundancy'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetTestablePermissionsArgs {
   /// [fullResourceName] See [full resource name documentation](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more detail.
   /// [stages] The acceptable release stages of the permission in the output. Note that `BETA` does not include permissions in `GA`, but you can specify both with `["GA", "BETA"]` for example. Can be a list of `"ALPHA"`, `"BETA"`, `"GA"`, `"DEPRECATED"`. Default is `["GA"]`.
   GetTestablePermissionsArgs({
-    pulumi.Output<String>? customSupportLevel,
-    required pulumi.Output<String> fullResourceName,
-    pulumi.Output<List<String>>? stages,
-  }) :
-      customSupportLevel = pulumi.Input.asOptionalInput<String>(customSupportLevel),
-      fullResourceName = pulumi.Input.asInput<String>(fullResourceName),
-      stages = pulumi.Input.asOptionalInput<List<String>>(stages);
+    this.customSupportLevel,
+    required this.fullResourceName,
+    this.stages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTestablePermissionsArgs {
 
   factory GetTestablePermissionsArgs.fromMap(Map<String, dynamic> map) {
     return GetTestablePermissionsArgs(
-      customSupportLevel: map['customSupportLevel'] == null ? null : pulumi.Output.create<String>(map['customSupportLevel'] as String),
-      fullResourceName: pulumi.Output.create<String>(map['fullResourceName'] as String),
-      stages: map['stages'] == null ? null : pulumi.Output.create<List<String>>((map['stages'] as List).cast<String>()),
+      customSupportLevel: map['customSupportLevel'] == null ? null : (map['customSupportLevel'] as String).input(),
+      fullResourceName: (map['fullResourceName'] as String).input(),
+      stages: map['stages'] == null ? null : ((map['stages'] as List).cast<String>()).input(),
     );
   }
 }

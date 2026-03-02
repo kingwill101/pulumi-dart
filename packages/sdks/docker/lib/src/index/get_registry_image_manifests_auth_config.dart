@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegistryImageManifestsAuthConfig {
   /// The address of the Docker registry.
-  final String address;
+  final pulumi.Input<String> address;
   /// The password for the Docker registry.
-  final String password;
+  final pulumi.Input<String> password;
   /// The username for the Docker registry.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetRegistryImageManifestsAuthConfig].
   /// [address] The address of the Docker registry.
@@ -29,9 +30,9 @@ class GetRegistryImageManifestsAuthConfig {
 
   factory GetRegistryImageManifestsAuthConfig.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageManifestsAuthConfig(
-      address: map['address'] as String,
-      password: map['password'] as String,
-      username: map['username'] as String,
+      address: (map['address'] as String).input(),
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

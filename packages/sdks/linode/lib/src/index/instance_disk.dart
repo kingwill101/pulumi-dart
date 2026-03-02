@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceDisk {
   /// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
-  final List<String>? authorizedKeys;
+  final pulumi.Input<List<String>>? authorizedKeys;
   /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
-  final List<String>? authorizedUsers;
+  final pulumi.Input<List<String>>? authorizedUsers;
   /// The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
-  final String? filesystem;
+  final pulumi.Input<String>? filesystem;
   /// The ID of the Placement Group.
-  final int? id;
+  final pulumi.Input<int>? id;
   /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-  final String label;
+  final pulumi.Input<String> label;
   /// If true, this Disk is read-only.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// The password that will be initialially assigned to the 'root' user account.
-  final String? rootPass;
+  final pulumi.Input<String>? rootPass;
   /// The size of the Disk in MB.
-  final int size;
+  final pulumi.Input<int> size;
   /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-  final Map<String, String>? stackscriptData;
+  final pulumi.Input<Map<String, String>>? stackscriptData;
   /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
-  final int? stackscriptId;
+  final pulumi.Input<int>? stackscriptId;
 
   /// Creates a new [InstanceDisk].
   /// [authorizedKeys] A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
@@ -69,17 +70,17 @@ class InstanceDisk {
 
   factory InstanceDisk.fromMap(Map<String, dynamic> map) {
     return InstanceDisk(
-      authorizedKeys: map['authorizedKeys'] == null ? null : (map['authorizedKeys'] as List).cast<String>(),
-      authorizedUsers: map['authorizedUsers'] == null ? null : (map['authorizedUsers'] as List).cast<String>(),
-      filesystem: map['filesystem'] == null ? null : map['filesystem'] as String,
-      id: map['id'] == null ? null : map['id'] as int,
-      image: map['image'] == null ? null : map['image'] as String,
-      label: map['label'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      rootPass: map['rootPass'] == null ? null : map['rootPass'] as String,
-      size: map['size'] as int,
-      stackscriptData: map['stackscriptData'] == null ? null : (map['stackscriptData'] as Map).cast<String, String>(),
-      stackscriptId: map['stackscriptId'] == null ? null : map['stackscriptId'] as int,
+      authorizedKeys: map['authorizedKeys'] == null ? null : ((map['authorizedKeys'] as List).cast<String>()).input(),
+      authorizedUsers: map['authorizedUsers'] == null ? null : ((map['authorizedUsers'] as List).cast<String>()).input(),
+      filesystem: map['filesystem'] == null ? null : (map['filesystem'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      label: (map['label'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      rootPass: map['rootPass'] == null ? null : (map['rootPass'] as String).input(),
+      size: (map['size'] as int).input(),
+      stackscriptData: map['stackscriptData'] == null ? null : ((map['stackscriptData'] as Map).cast<String, String>()).input(),
+      stackscriptId: map['stackscriptId'] == null ? null : (map['stackscriptId'] as int).input(),
     );
   }
 }

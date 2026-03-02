@@ -28,19 +28,13 @@ class JobArgs {
   /// [priority] The priority of this Batch Job, possible values can range from -1000 (lowest) to 1000 (highest). Defaults to `0`.
   /// [taskRetryMaximum] The number of retries to each Batch Task belongs to this Batch Job. If this is set to `0`, the Batch service does not retry Tasks. If this is set to `-1`, the Batch service retries Batch Tasks without limit.
   JobArgs({
-    required pulumi.Output<String> batchPoolId,
-    pulumi.Output<Map<String, String>>? commonEnvironmentProperties,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<int>? taskRetryMaximum,
-  }) :
-      batchPoolId = pulumi.Input.asInput<String>(batchPoolId),
-      commonEnvironmentProperties = pulumi.Input.asOptionalInput<Map<String, String>>(commonEnvironmentProperties),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      taskRetryMaximum = pulumi.Input.asOptionalInput<int>(taskRetryMaximum);
+    required this.batchPoolId,
+    this.commonEnvironmentProperties,
+    this.displayName,
+    this.name,
+    this.priority,
+    this.taskRetryMaximum,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      batchPoolId: pulumi.Output.create<String>(map['batchPoolId'] as String),
-      commonEnvironmentProperties: map['commonEnvironmentProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['commonEnvironmentProperties'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      taskRetryMaximum: map['taskRetryMaximum'] == null ? null : pulumi.Output.create<int>(map['taskRetryMaximum'] as int),
+      batchPoolId: (map['batchPoolId'] as String).input(),
+      commonEnvironmentProperties: map['commonEnvironmentProperties'] == null ? null : ((map['commonEnvironmentProperties'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      taskRetryMaximum: map['taskRetryMaximum'] == null ? null : (map['taskRetryMaximum'] as int).input(),
     );
   }
 }

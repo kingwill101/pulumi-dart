@@ -31,19 +31,13 @@ class EndpointV3Args {
   /// [serviceId] The endpoint service ID.
   /// [url] The endpoint url.
   EndpointV3Args({
-    required pulumi.Output<String> endpointRegion,
-    pulumi.Output<String>? interface,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceId,
-    required pulumi.Output<String> url,
-  }) :
-      endpointRegion = pulumi.Input.asInput<String>(endpointRegion),
-      interface = pulumi.Input.asOptionalInput<String>(interface),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      url = pulumi.Input.asInput<String>(url);
+    required this.endpointRegion,
+    this.interface,
+    this.name,
+    this.region,
+    required this.serviceId,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class EndpointV3Args {
 
   factory EndpointV3Args.fromMap(Map<String, dynamic> map) {
     return EndpointV3Args(
-      endpointRegion: pulumi.Output.create<String>(map['endpointRegion'] as String),
-      interface: map['interface'] == null ? null : pulumi.Output.create<String>(map['interface'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      url: pulumi.Output.create<String>(map['url'] as String),
+      endpointRegion: (map['endpointRegion'] as String).input(),
+      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetNamedLocationArgs {
   /// Creates a new [GetNamedLocationArgs].
   /// [displayName] Specifies the display named of the named location to look up.
   GetNamedLocationArgs({
-    required pulumi.Output<String> displayName,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName);
+    required this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetNamedLocationArgs {
 
   factory GetNamedLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetNamedLocationArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      displayName: (map['displayName'] as String).input(),
     );
   }
 }

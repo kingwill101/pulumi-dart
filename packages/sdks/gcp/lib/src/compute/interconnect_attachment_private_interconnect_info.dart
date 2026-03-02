@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectAttachmentPrivateInterconnectInfo {
   /// (Output)
   /// 802.1q encapsulation tag to be used for traffic between
   /// Google and the customer, going to and from this network and region.
-  final int? tag8021q;
+  final pulumi.Input<int>? tag8021q;
 
   /// Creates a new [InterconnectAttachmentPrivateInterconnectInfo].
   /// [tag8021q] (Output)
@@ -21,7 +22,7 @@ class InterconnectAttachmentPrivateInterconnectInfo {
 
   factory InterconnectAttachmentPrivateInterconnectInfo.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentPrivateInterconnectInfo(
-      tag8021q: map['tag8021q'] == null ? null : map['tag8021q'] as int,
+      tag8021q: map['tag8021q'] == null ? null : (map['tag8021q'] as int).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetConfigurationProfileArgs {
   /// Creates a new [GetConfigurationProfileArgs].
   /// [profileName] The name of the configuration profile. The profile name should be set to 'default', all other names will be overwritten.
   GetConfigurationProfileArgs({
-    required pulumi.Output<String> profileName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName);
+    required this.profileName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetConfigurationProfileArgs {
 
   factory GetConfigurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfileArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
+      profileName: (map['profileName'] as String).input(),
     );
   }
 }

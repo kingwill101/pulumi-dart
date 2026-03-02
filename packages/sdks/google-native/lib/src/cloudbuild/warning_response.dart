@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A non-fatal problem encountered during the execution of the build.
 class WarningResponse {
   /// The priority for this warning.
-  final String priority;
+  final pulumi.Input<String> priority;
   /// Explanation of the warning generated.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [WarningResponse].
   /// [priority] The priority for this warning.
@@ -25,8 +26,8 @@ class WarningResponse {
 
   factory WarningResponse.fromMap(Map<String, dynamic> map) {
     return WarningResponse(
-      priority: map['priority'] as String,
-      text: map['text'] as String,
+      priority: (map['priority'] as String).input(),
+      text: (map['text'] as String).input(),
     );
   }
 }

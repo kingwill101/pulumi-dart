@@ -53,33 +53,20 @@ class WorkspaceArgs {
   /// [workspaceCapping] The daily volume cap for ingestion.
   /// [workspaceName] The name of the workspace.
   WorkspaceArgs({
-    pulumi.Output<String>? defaultDataCollectionRuleResourceId,
-    pulumi.Output<WorkspaceFeatures>? features,
-    pulumi.Output<bool>? forceCmkForQuery,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicNetworkAccessForIngestion,
-    pulumi.Output<String>? publicNetworkAccessForQuery,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? retentionInDays,
-    pulumi.Output<WorkspaceSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<WorkspaceCapping>? workspaceCapping,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      defaultDataCollectionRuleResourceId = pulumi.Input.asOptionalInput<String>(defaultDataCollectionRuleResourceId),
-      features = pulumi.Input.asOptionalInput<WorkspaceFeatures>(features),
-      forceCmkForQuery = pulumi.Input.asOptionalInput<bool>(forceCmkForQuery),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicNetworkAccessForIngestion = pulumi.Input.asOptionalInput<String>(publicNetworkAccessForIngestion),
-      publicNetworkAccessForQuery = pulumi.Input.asOptionalInput<String>(publicNetworkAccessForQuery),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      sku = pulumi.Input.asOptionalInput<WorkspaceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceCapping = pulumi.Input.asOptionalInput<WorkspaceCapping>(workspaceCapping),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.defaultDataCollectionRuleResourceId,
+    this.features,
+    this.forceCmkForQuery,
+    this.identity,
+    this.location,
+    this.publicNetworkAccessForIngestion,
+    this.publicNetworkAccessForQuery,
+    required this.resourceGroupName,
+    this.retentionInDays,
+    this.sku,
+    this.tags,
+    this.workspaceCapping,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      defaultDataCollectionRuleResourceId: map['defaultDataCollectionRuleResourceId'] == null ? null : pulumi.Output.create<String>(map['defaultDataCollectionRuleResourceId'] as String),
-      features: map['features'] == null ? null : pulumi.Output.create<WorkspaceFeatures>(WorkspaceFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())),
-      forceCmkForQuery: map['forceCmkForQuery'] == null ? null : pulumi.Output.create<bool>(map['forceCmkForQuery'] as bool),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicNetworkAccessForIngestion: map['publicNetworkAccessForIngestion'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccessForIngestion'] as String),
-      publicNetworkAccessForQuery: map['publicNetworkAccessForQuery'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccessForQuery'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      sku: map['sku'] == null ? null : pulumi.Output.create<WorkspaceSku>(WorkspaceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceCapping: map['workspaceCapping'] == null ? null : pulumi.Output.create<WorkspaceCapping>(WorkspaceCapping.fromMap((map['workspaceCapping'] as Map).cast<String, dynamic>())),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      defaultDataCollectionRuleResourceId: map['defaultDataCollectionRuleResourceId'] == null ? null : (map['defaultDataCollectionRuleResourceId'] as String).input(),
+      features: map['features'] == null ? null : (WorkspaceFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
+      forceCmkForQuery: map['forceCmkForQuery'] == null ? null : (map['forceCmkForQuery'] as bool).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicNetworkAccessForIngestion: map['publicNetworkAccessForIngestion'] == null ? null : (map['publicNetworkAccessForIngestion'] as String).input(),
+      publicNetworkAccessForQuery: map['publicNetworkAccessForQuery'] == null ? null : (map['publicNetworkAccessForQuery'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      sku: map['sku'] == null ? null : (WorkspaceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceCapping: map['workspaceCapping'] == null ? null : (WorkspaceCapping.fromMap((map['workspaceCapping'] as Map).cast<String, dynamic>())).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

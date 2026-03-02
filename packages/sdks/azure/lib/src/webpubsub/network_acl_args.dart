@@ -24,15 +24,11 @@ class NetworkAclArgs {
   /// [publicNetwork] A `public_network` block as defined below.
   /// [webPubsubId] The ID of the Web Pubsub service. Changing this forces a new resource to be created.
   NetworkAclArgs({
-    pulumi.Output<String>? defaultAction,
-    pulumi.Output<List<NetworkAclPrivateEndpoint>>? privateEndpoints,
-    required pulumi.Output<NetworkAclPublicNetwork> publicNetwork,
-    required pulumi.Output<String> webPubsubId,
-  }) :
-      defaultAction = pulumi.Input.asOptionalInput<String>(defaultAction),
-      privateEndpoints = pulumi.Input.asOptionalInput<List<NetworkAclPrivateEndpoint>>(privateEndpoints),
-      publicNetwork = pulumi.Input.asInput<NetworkAclPublicNetwork>(publicNetwork),
-      webPubsubId = pulumi.Input.asInput<String>(webPubsubId);
+    this.defaultAction,
+    this.privateEndpoints,
+    required this.publicNetwork,
+    required this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class NetworkAclArgs {
 
   factory NetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclArgs(
-      defaultAction: map['defaultAction'] == null ? null : pulumi.Output.create<String>(map['defaultAction'] as String),
-      privateEndpoints: map['privateEndpoints'] == null ? null : pulumi.Output.create<List<NetworkAclPrivateEndpoint>>(pulumi.Input.decodeList<NetworkAclPrivateEndpoint>(map['privateEndpoints'], (value) => NetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      publicNetwork: pulumi.Output.create<NetworkAclPublicNetwork>(NetworkAclPublicNetwork.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())),
-      webPubsubId: pulumi.Output.create<String>(map['webPubsubId'] as String),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkAclPrivateEndpoint>(map['privateEndpoints'], (value) => NetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetwork: (NetworkAclPublicNetwork.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())).input(),
+      webPubsubId: (map['webPubsubId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppServiceAuthSettingsTwitter {
   /// The consumer key of the Twitter app used for login
-  final String consumerKey;
+  final pulumi.Input<String> consumerKey;
   /// The consumer secret of the Twitter app used for login.
-  final String consumerSecret;
+  final pulumi.Input<String> consumerSecret;
 
   /// Creates a new [AppServiceAuthSettingsTwitter].
   /// [consumerKey] The consumer key of the Twitter app used for login
@@ -24,8 +25,8 @@ class AppServiceAuthSettingsTwitter {
 
   factory AppServiceAuthSettingsTwitter.fromMap(Map<String, dynamic> map) {
     return AppServiceAuthSettingsTwitter(
-      consumerKey: map['consumerKey'] as String,
-      consumerSecret: map['consumerSecret'] as String,
+      consumerKey: (map['consumerKey'] as String).input(),
+      consumerSecret: (map['consumerSecret'] as String).input(),
     );
   }
 }

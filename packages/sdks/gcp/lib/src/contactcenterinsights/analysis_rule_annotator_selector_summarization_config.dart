@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalysisRuleAnnotatorSelectorSummarizationConfig {
   /// Resource name of the Dialogflow conversation profile.
   /// Format:
   /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
-  final String? conversationProfile;
+  final pulumi.Input<String>? conversationProfile;
   /// Default summarization model to be used.
   /// Possible values:
   /// SUMMARIZATION_MODEL_UNSPECIFIED
   /// BASELINE_MODEL
   /// BASELINE_MODEL_V2_0
   /// Possible values are: `BASELINE_MODEL`, `BASELINE_MODEL_V2_0`.
-  final String? summarizationModel;
+  final pulumi.Input<String>? summarizationModel;
 
   /// Creates a new [AnalysisRuleAnnotatorSelectorSummarizationConfig].
   /// [conversationProfile] Resource name of the Dialogflow conversation profile.
@@ -31,8 +32,8 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig {
 
   factory AnalysisRuleAnnotatorSelectorSummarizationConfig.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelectorSummarizationConfig(
-      conversationProfile: map['conversationProfile'] == null ? null : map['conversationProfile'] as String,
-      summarizationModel: map['summarizationModel'] == null ? null : map['summarizationModel'] as String,
+      conversationProfile: map['conversationProfile'] == null ? null : (map['conversationProfile'] as String).input(),
+      summarizationModel: map['summarizationModel'] == null ? null : (map['summarizationModel'] as String).input(),
     );
   }
 }

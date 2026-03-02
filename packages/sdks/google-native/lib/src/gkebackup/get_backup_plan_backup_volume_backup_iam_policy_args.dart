@@ -22,19 +22,13 @@ class GetBackupPlanBackupVolumeBackupIamPolicyArgs {
   /// [project] Optional.
   /// [volumeBackupId] Required.
   GetBackupPlanBackupVolumeBackupIamPolicyArgs({
-    required pulumi.Output<String> backupId,
-    required pulumi.Output<String> backupPlanId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> volumeBackupId,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      volumeBackupId = pulumi.Input.asInput<String>(volumeBackupId);
+    required this.backupId,
+    required this.backupPlanId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.volumeBackupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class GetBackupPlanBackupVolumeBackupIamPolicyArgs {
 
   factory GetBackupPlanBackupVolumeBackupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanBackupVolumeBackupIamPolicyArgs(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      backupPlanId: pulumi.Output.create<String>(map['backupPlanId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      volumeBackupId: pulumi.Output.create<String>(map['volumeBackupId'] as String),
+      backupId: (map['backupId'] as String).input(),
+      backupPlanId: (map['backupPlanId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      volumeBackupId: (map['volumeBackupId'] as String).input(),
     );
   }
 }

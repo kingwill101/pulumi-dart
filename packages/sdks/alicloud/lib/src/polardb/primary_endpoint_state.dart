@@ -45,31 +45,19 @@ class PrimaryEndpointState {
   /// [sslEnabled] Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
   /// [sslExpireTime] The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   PrimaryEndpointState({
-    pulumi.Output<String>? connectionPrefix,
-    pulumi.Output<String>? dbClusterId,
-    pulumi.Output<String>? dbEndpointDescription,
-    pulumi.Output<String>? dbEndpointId,
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<String>? netType,
-    pulumi.Output<String>? port,
-    pulumi.Output<String>? sslAutoRotate,
-    pulumi.Output<String>? sslCertificateUrl,
-    pulumi.Output<String>? sslConnectionString,
-    pulumi.Output<String>? sslEnabled,
-    pulumi.Output<String>? sslExpireTime,
-  }) :
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      dbClusterId = pulumi.Input.asOptionalInput<String>(dbClusterId),
-      dbEndpointDescription = pulumi.Input.asOptionalInput<String>(dbEndpointDescription),
-      dbEndpointId = pulumi.Input.asOptionalInput<String>(dbEndpointId),
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      netType = pulumi.Input.asOptionalInput<String>(netType),
-      port = pulumi.Input.asOptionalInput<String>(port),
-      sslAutoRotate = pulumi.Input.asOptionalInput<String>(sslAutoRotate),
-      sslCertificateUrl = pulumi.Input.asOptionalInput<String>(sslCertificateUrl),
-      sslConnectionString = pulumi.Input.asOptionalInput<String>(sslConnectionString),
-      sslEnabled = pulumi.Input.asOptionalInput<String>(sslEnabled),
-      sslExpireTime = pulumi.Input.asOptionalInput<String>(sslExpireTime);
+    this.connectionPrefix,
+    this.dbClusterId,
+    this.dbEndpointDescription,
+    this.dbEndpointId,
+    this.endpointType,
+    this.netType,
+    this.port,
+    this.sslAutoRotate,
+    this.sslCertificateUrl,
+    this.sslConnectionString,
+    this.sslEnabled,
+    this.sslExpireTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class PrimaryEndpointState {
 
   factory PrimaryEndpointState.fromMap(Map<String, dynamic> map) {
     return PrimaryEndpointState(
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      dbClusterId: map['dbClusterId'] == null ? null : pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : pulumi.Output.create<String>(map['dbEndpointDescription'] as String),
-      dbEndpointId: map['dbEndpointId'] == null ? null : pulumi.Output.create<String>(map['dbEndpointId'] as String),
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      netType: map['netType'] == null ? null : pulumi.Output.create<String>(map['netType'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
-      sslAutoRotate: map['sslAutoRotate'] == null ? null : pulumi.Output.create<String>(map['sslAutoRotate'] as String),
-      sslCertificateUrl: map['sslCertificateUrl'] == null ? null : pulumi.Output.create<String>(map['sslCertificateUrl'] as String),
-      sslConnectionString: map['sslConnectionString'] == null ? null : pulumi.Output.create<String>(map['sslConnectionString'] as String),
-      sslEnabled: map['sslEnabled'] == null ? null : pulumi.Output.create<String>(map['sslEnabled'] as String),
-      sslExpireTime: map['sslExpireTime'] == null ? null : pulumi.Output.create<String>(map['sslExpireTime'] as String),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
+      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription'] as String).input(),
+      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      sslAutoRotate: map['sslAutoRotate'] == null ? null : (map['sslAutoRotate'] as String).input(),
+      sslCertificateUrl: map['sslCertificateUrl'] == null ? null : (map['sslCertificateUrl'] as String).input(),
+      sslConnectionString: map['sslConnectionString'] == null ? null : (map['sslConnectionString'] as String).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as String).input(),
+      sslExpireTime: map['sslExpireTime'] == null ? null : (map['sslExpireTime'] as String).input(),
     );
   }
 }

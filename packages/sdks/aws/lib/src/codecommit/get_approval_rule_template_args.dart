@@ -16,11 +16,9 @@ class GetApprovalRuleTemplateArgs {
   /// [name] Name for the approval rule template. This needs to be less than 100 characters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetApprovalRuleTemplateArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetApprovalRuleTemplateArgs {
 
   factory GetApprovalRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetApprovalRuleTemplateArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

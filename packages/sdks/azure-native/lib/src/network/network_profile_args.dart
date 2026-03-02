@@ -29,19 +29,13 @@ class NetworkProfileArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   NetworkProfileArgs({
-    pulumi.Output<List<ContainerNetworkInterfaceConfiguration>>? containerNetworkInterfaceConfigurations,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? networkProfileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      containerNetworkInterfaceConfigurations = pulumi.Input.asOptionalInput<List<ContainerNetworkInterfaceConfiguration>>(containerNetworkInterfaceConfigurations),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkProfileName = pulumi.Input.asOptionalInput<String>(networkProfileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.containerNetworkInterfaceConfigurations,
+    this.id,
+    this.location,
+    this.networkProfileName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class NetworkProfileArgs {
 
   factory NetworkProfileArgs.fromMap(Map<String, dynamic> map) {
     return NetworkProfileArgs(
-      containerNetworkInterfaceConfigurations: map['containerNetworkInterfaceConfigurations'] == null ? null : pulumi.Output.create<List<ContainerNetworkInterfaceConfiguration>>(pulumi.Input.decodeList<ContainerNetworkInterfaceConfiguration>(map['containerNetworkInterfaceConfigurations'], (value) => ContainerNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkProfileName: map['networkProfileName'] == null ? null : pulumi.Output.create<String>(map['networkProfileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      containerNetworkInterfaceConfigurations: map['containerNetworkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<ContainerNetworkInterfaceConfiguration>(map['containerNetworkInterfaceConfigurations'], (value) => ContainerNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkProfileName: map['networkProfileName'] == null ? null : (map['networkProfileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

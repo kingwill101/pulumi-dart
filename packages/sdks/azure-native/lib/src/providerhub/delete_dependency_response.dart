@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeleteDependencyResponse {
   /// Linked property.
-  final String? linkedProperty;
+  final pulumi.Input<String>? linkedProperty;
   /// Linked type.
-  final String? linkedType;
+  final pulumi.Input<String>? linkedType;
   /// Required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
 
   /// Creates a new [DeleteDependencyResponse].
   /// [linkedProperty] Linked property.
@@ -29,9 +30,9 @@ class DeleteDependencyResponse {
 
   factory DeleteDependencyResponse.fromMap(Map<String, dynamic> map) {
     return DeleteDependencyResponse(
-      linkedProperty: map['linkedProperty'] == null ? null : map['linkedProperty'] as String,
-      linkedType: map['linkedType'] == null ? null : map['linkedType'] as String,
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
+      linkedProperty: map['linkedProperty'] == null ? null : (map['linkedProperty'] as String).input(),
+      linkedType: map['linkedType'] == null ? null : (map['linkedType'] as String).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
     );
   }
 }

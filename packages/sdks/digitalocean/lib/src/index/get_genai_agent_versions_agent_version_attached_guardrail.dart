@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentVersionsAgentVersionAttachedGuardrail {
   /// Whether the guardrail is deleted
-  final bool isDeleted;
+  final pulumi.Input<bool> isDeleted;
   /// Name of the guardrail
-  final String name;
+  final pulumi.Input<String> name;
   /// Guardrail priority
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Guardrail UUID
-  final String uuid;
+  final pulumi.Input<String> uuid;
 
   /// Creates a new [GetGenaiAgentVersionsAgentVersionAttachedGuardrail].
   /// [isDeleted] Whether the guardrail is deleted
@@ -34,10 +35,10 @@ class GetGenaiAgentVersionsAgentVersionAttachedGuardrail {
 
   factory GetGenaiAgentVersionsAgentVersionAttachedGuardrail.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentVersionsAgentVersionAttachedGuardrail(
-      isDeleted: map['isDeleted'] as bool,
-      name: map['name'] as String,
-      priority: map['priority'] as int,
-      uuid: map['uuid'] as String,
+      isDeleted: (map['isDeleted'] as bool).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

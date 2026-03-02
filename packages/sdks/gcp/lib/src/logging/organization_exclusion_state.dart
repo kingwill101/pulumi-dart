@@ -25,17 +25,12 @@ class OrganizationExclusionState {
   /// [name] The name of the logging exclusion.
   /// [orgId] The organization to create the exclusion in.
   OrganizationExclusionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId);
+    this.description,
+    this.disabled,
+    this.filter,
+    this.name,
+    this.orgId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class OrganizationExclusionState {
 
   factory OrganizationExclusionState.fromMap(Map<String, dynamic> map) {
     return OrganizationExclusionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
     );
   }
 }

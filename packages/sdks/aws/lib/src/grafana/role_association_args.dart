@@ -27,17 +27,12 @@ class RoleAssociationArgs {
   /// [userIds] The AWS SSO user ids to be assigned the role given in `role`.
   /// [workspaceId] The workspace id.
   RoleAssociationArgs({
-    pulumi.Output<List<String>>? groupIds,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-    pulumi.Output<List<String>>? userIds,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      groupIds = pulumi.Input.asOptionalInput<List<String>>(groupIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role),
-      userIds = pulumi.Input.asOptionalInput<List<String>>(userIds),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.groupIds,
+    this.region,
+    required this.role,
+    this.userIds,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class RoleAssociationArgs {
 
   factory RoleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssociationArgs(
-      groupIds: map['groupIds'] == null ? null : pulumi.Output.create<List<String>>((map['groupIds'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      userIds: map['userIds'] == null ? null : pulumi.Output.create<List<String>>((map['userIds'] as List).cast<String>()),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
+      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

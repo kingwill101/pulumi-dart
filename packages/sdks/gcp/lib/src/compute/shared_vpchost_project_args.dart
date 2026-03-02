@@ -13,9 +13,8 @@ class SharedVPCHostProjectArgs {
   /// Creates a new [SharedVPCHostProjectArgs].
   /// [project] The ID of the project that will serve as a Shared VPC host project
   SharedVPCHostProjectArgs({
-    required pulumi.Output<String> project,
-  }) :
-      project = pulumi.Input.asInput<String>(project);
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class SharedVPCHostProjectArgs {
 
   factory SharedVPCHostProjectArgs.fromMap(Map<String, dynamic> map) {
     return SharedVPCHostProjectArgs(
-      project: pulumi.Output.create<String>(map['project'] as String),
+      project: (map['project'] as String).input(),
     );
   }
 }

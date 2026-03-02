@@ -25,19 +25,13 @@ class PublishTaskState {
   /// [modifyTime] UTC time for task modification
   /// [status] The status of the task.
   PublishTaskState({
-    pulumi.Output<String>? agentKey,
-    pulumi.Output<String>? bizType,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<List<String>>? dataIdLists,
-    pulumi.Output<String>? modifyTime,
-    pulumi.Output<String>? status,
-  }) :
-      agentKey = pulumi.Input.asOptionalInput<String>(agentKey),
-      bizType = pulumi.Input.asOptionalInput<String>(bizType),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataIdLists = pulumi.Input.asOptionalInput<List<String>>(dataIdLists),
-      modifyTime = pulumi.Input.asOptionalInput<String>(modifyTime),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.agentKey,
+    this.bizType,
+    this.createTime,
+    this.dataIdLists,
+    this.modifyTime,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class PublishTaskState {
 
   factory PublishTaskState.fromMap(Map<String, dynamic> map) {
     return PublishTaskState(
-      agentKey: map['agentKey'] == null ? null : pulumi.Output.create<String>(map['agentKey'] as String),
-      bizType: map['bizType'] == null ? null : pulumi.Output.create<String>(map['bizType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataIdLists: map['dataIdLists'] == null ? null : pulumi.Output.create<List<String>>((map['dataIdLists'] as List).cast<String>()),
-      modifyTime: map['modifyTime'] == null ? null : pulumi.Output.create<String>(map['modifyTime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      agentKey: map['agentKey'] == null ? null : (map['agentKey'] as String).input(),
+      bizType: map['bizType'] == null ? null : (map['bizType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataIdLists: map['dataIdLists'] == null ? null : ((map['dataIdLists'] as List).cast<String>()).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

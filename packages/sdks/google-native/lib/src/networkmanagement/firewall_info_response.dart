@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
 class FirewallInfoResponse {
   /// Possible values: ALLOW, DENY
-  final String action;
+  final pulumi.Input<String> action;
   /// Possible values: INGRESS, EGRESS
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The firewall rule's type.
-  final String firewallRuleType;
+  final pulumi.Input<String> firewallRuleType;
   /// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
-  final String networkUri;
+  final pulumi.Input<String> networkUri;
   /// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// The priority of the firewall rule.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The target service accounts specified by the firewall rule.
-  final List<String> targetServiceAccounts;
+  final pulumi.Input<List<String>> targetServiceAccounts;
   /// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
-  final List<String> targetTags;
+  final pulumi.Input<List<String>> targetTags;
   /// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [FirewallInfoResponse].
   /// [action] Possible values: ALLOW, DENY
@@ -65,16 +66,16 @@ class FirewallInfoResponse {
 
   factory FirewallInfoResponse.fromMap(Map<String, dynamic> map) {
     return FirewallInfoResponse(
-      action: map['action'] as String,
-      direction: map['direction'] as String,
-      displayName: map['displayName'] as String,
-      firewallRuleType: map['firewallRuleType'] as String,
-      networkUri: map['networkUri'] as String,
-      policy: map['policy'] as String,
-      priority: map['priority'] as int,
-      targetServiceAccounts: (map['targetServiceAccounts'] as List).cast<String>(),
-      targetTags: (map['targetTags'] as List).cast<String>(),
-      uri: map['uri'] as String,
+      action: (map['action'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      firewallRuleType: (map['firewallRuleType'] as String).input(),
+      networkUri: (map['networkUri'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      targetServiceAccounts: ((map['targetServiceAccounts'] as List).cast<String>()).input(),
+      targetTags: ((map['targetTags'] as List).cast<String>()).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

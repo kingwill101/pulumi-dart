@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// State of the Private Link Service connection.
 class RemotePrivateLinkServiceConnectionState {
   /// State of Private Link Connection.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [RemotePrivateLinkServiceConnectionState].
   /// [status] State of Private Link Connection.
@@ -20,7 +21,7 @@ class RemotePrivateLinkServiceConnectionState {
 
   factory RemotePrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return RemotePrivateLinkServiceConnectionState(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

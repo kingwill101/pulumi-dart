@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Policy that defines tcp request retry conditions
 class TcpRetryPolicy {
   /// Maximum number of attempts to connect to the tcp service
-  final int? maxConnectAttempts;
+  final pulumi.Input<int>? maxConnectAttempts;
 
   /// Creates a new [TcpRetryPolicy].
   /// [maxConnectAttempts] Maximum number of attempts to connect to the tcp service
@@ -20,7 +21,7 @@ class TcpRetryPolicy {
 
   factory TcpRetryPolicy.fromMap(Map<String, dynamic> map) {
     return TcpRetryPolicy(
-      maxConnectAttempts: map['maxConnectAttempts'] == null ? null : map['maxConnectAttempts'] as int,
+      maxConnectAttempts: map['maxConnectAttempts'] == null ? null : (map['maxConnectAttempts'] as int).input(),
     );
   }
 }

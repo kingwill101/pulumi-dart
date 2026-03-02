@@ -5,37 +5,37 @@ import 'get_elasticity_assurances_assurance_allocated_resource.dart';
 
 class GetElasticityAssurancesAssurance {
   /// Details of resource allocation.
-  final List<GetElasticityAssurancesAssuranceAllocatedResource> allocatedResources;
+  final pulumi.Input<List<GetElasticityAssurancesAssuranceAllocatedResource>> allocatedResources;
   /// Description of flexible guarantee service.
-  final String description;
+  final pulumi.Input<String> description;
   /// The first ID of the resource
-  final String elasticityAssuranceId;
+  final pulumi.Input<String> elasticityAssuranceId;
   /// Flexible guarantee service failure time.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// ID of flexible guarantee service.
-  final String id;
+  final pulumi.Input<String> id;
   /// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
-  final String instanceChargeType;
+  final pulumi.Input<String> instanceChargeType;
   /// The ID of the elasticity assurance.
-  final String privatePoolOptionsId;
+  final pulumi.Input<String> privatePoolOptionsId;
   /// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
-  final String privatePoolOptionsMatchCriteria;
+  final pulumi.Input<String> privatePoolOptionsMatchCriteria;
   /// The name of the elasticity assurance.
-  final String privatePoolOptionsName;
+  final pulumi.Input<String> privatePoolOptionsName;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Flexible guarantee service effective time.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
-  final String startTimeType;
+  final pulumi.Input<String> startTimeType;
   /// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag key-value pair information bound by the elastic guarantee service.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The total number of flexible guarantee services.
-  final String totalAssuranceTimes;
+  final pulumi.Input<String> totalAssuranceTimes;
   /// This parameter is not yet available.
-  final int usedAssuranceTimes;
+  final pulumi.Input<int> usedAssuranceTimes;
 
   /// Creates a new [GetElasticityAssurancesAssurance].
   /// [allocatedResources] Details of resource allocation.
@@ -75,7 +75,7 @@ class GetElasticityAssurancesAssurance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocatedResources': pulumi.Input.encodeList<GetElasticityAssurancesAssuranceAllocatedResource, Map<String, dynamic>>(allocatedResources, (value) => value.toMap()),
+      'allocatedResources': pulumi.Input.mapInputValue<List<GetElasticityAssurancesAssuranceAllocatedResource>, List<Map<String, dynamic>>>(allocatedResources, (value) => pulumi.Input.encodeList<GetElasticityAssurancesAssuranceAllocatedResource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
       'elasticityAssuranceId': elasticityAssuranceId,
       'endTime': endTime,
@@ -96,22 +96,22 @@ class GetElasticityAssurancesAssurance {
 
   factory GetElasticityAssurancesAssurance.fromMap(Map<String, dynamic> map) {
     return GetElasticityAssurancesAssurance(
-      allocatedResources: pulumi.Input.decodeList<GetElasticityAssurancesAssuranceAllocatedResource>(map['allocatedResources'], (value) => GetElasticityAssurancesAssuranceAllocatedResource.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      elasticityAssuranceId: map['elasticityAssuranceId'] as String,
-      endTime: map['endTime'] as String,
-      id: map['id'] as String,
-      instanceChargeType: map['instanceChargeType'] as String,
-      privatePoolOptionsId: map['privatePoolOptionsId'] as String,
-      privatePoolOptionsMatchCriteria: map['privatePoolOptionsMatchCriteria'] as String,
-      privatePoolOptionsName: map['privatePoolOptionsName'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      startTime: map['startTime'] as String,
-      startTimeType: map['startTimeType'] as String,
-      status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      totalAssuranceTimes: map['totalAssuranceTimes'] as String,
-      usedAssuranceTimes: map['usedAssuranceTimes'] as int,
+      allocatedResources: (pulumi.Input.decodeList<GetElasticityAssurancesAssuranceAllocatedResource>(map['allocatedResources'], (value) => GetElasticityAssurancesAssuranceAllocatedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: (map['description'] as String).input(),
+      elasticityAssuranceId: (map['elasticityAssuranceId'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceChargeType: (map['instanceChargeType'] as String).input(),
+      privatePoolOptionsId: (map['privatePoolOptionsId'] as String).input(),
+      privatePoolOptionsMatchCriteria: (map['privatePoolOptionsMatchCriteria'] as String).input(),
+      privatePoolOptionsName: (map['privatePoolOptionsName'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      startTimeType: (map['startTimeType'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      totalAssuranceTimes: (map['totalAssuranceTimes'] as String).input(),
+      usedAssuranceTimes: (map['usedAssuranceTimes'] as int).input(),
     );
   }
 }

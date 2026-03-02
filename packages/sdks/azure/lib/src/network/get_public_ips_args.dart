@@ -22,15 +22,11 @@ class GetPublicIPsArgs {
   /// [namePrefix] A prefix match used for the IP Addresses `name` field, case sensitive.
   /// [resourceGroupName] Specifies the name of the resource group.
   GetPublicIPsArgs({
-    pulumi.Output<String>? allocationType,
-    pulumi.Output<String>? attachmentStatus,
-    pulumi.Output<String>? namePrefix,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      allocationType = pulumi.Input.asOptionalInput<String>(allocationType),
-      attachmentStatus = pulumi.Input.asOptionalInput<String>(attachmentStatus),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.allocationType,
+    this.attachmentStatus,
+    this.namePrefix,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPublicIPsArgs {
 
   factory GetPublicIPsArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIPsArgs(
-      allocationType: map['allocationType'] == null ? null : pulumi.Output.create<String>(map['allocationType'] as String),
-      attachmentStatus: map['attachmentStatus'] == null ? null : pulumi.Output.create<String>(map['attachmentStatus'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      allocationType: map['allocationType'] == null ? null : (map['allocationType'] as String).input(),
+      attachmentStatus: map['attachmentStatus'] == null ? null : (map['attachmentStatus'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

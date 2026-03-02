@@ -16,13 +16,10 @@ class AccessPackageResourcePackageAssociationState {
   /// [accessType] The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
   /// [catalogResourceAssociationId] The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
   AccessPackageResourcePackageAssociationState({
-    pulumi.Output<String>? accessPackageId,
-    pulumi.Output<String>? accessType,
-    pulumi.Output<String>? catalogResourceAssociationId,
-  }) :
-      accessPackageId = pulumi.Input.asOptionalInput<String>(accessPackageId),
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      catalogResourceAssociationId = pulumi.Input.asOptionalInput<String>(catalogResourceAssociationId);
+    this.accessPackageId,
+    this.accessType,
+    this.catalogResourceAssociationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AccessPackageResourcePackageAssociationState {
 
   factory AccessPackageResourcePackageAssociationState.fromMap(Map<String, dynamic> map) {
     return AccessPackageResourcePackageAssociationState(
-      accessPackageId: map['accessPackageId'] == null ? null : pulumi.Output.create<String>(map['accessPackageId'] as String),
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      catalogResourceAssociationId: map['catalogResourceAssociationId'] == null ? null : pulumi.Output.create<String>(map['catalogResourceAssociationId'] as String),
+      accessPackageId: map['accessPackageId'] == null ? null : (map['accessPackageId'] as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      catalogResourceAssociationId: map['catalogResourceAssociationId'] == null ? null : (map['catalogResourceAssociationId'] as String).input(),
     );
   }
 }

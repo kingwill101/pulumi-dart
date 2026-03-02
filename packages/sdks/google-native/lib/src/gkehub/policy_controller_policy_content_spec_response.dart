@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_controller_template_library_config_response.dart';
 
 /// PolicyContentSpec defines the user's desired content configuration on the cluster.
 class PolicyControllerPolicyContentSpecResponse {
   /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-  final Map<String, String> bundles;
+  final pulumi.Input<Map<String, String>> bundles;
   /// Configures the installation of the Template Library.
-  final PolicyControllerTemplateLibraryConfigResponse templateLibrary;
+  final pulumi.Input<PolicyControllerTemplateLibraryConfigResponse> templateLibrary;
 
   /// Creates a new [PolicyControllerPolicyContentSpecResponse].
   /// [bundles] map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
@@ -20,14 +21,14 @@ class PolicyControllerPolicyContentSpecResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bundles': bundles,
-      'templateLibrary': templateLibrary.toMap(),
+      'templateLibrary': pulumi.Input.mapInputValue<PolicyControllerTemplateLibraryConfigResponse, Map<String, dynamic>>(templateLibrary, (value) => value.toMap()),
     };
   }
 
   factory PolicyControllerPolicyContentSpecResponse.fromMap(Map<String, dynamic> map) {
     return PolicyControllerPolicyContentSpecResponse(
-      bundles: (map['bundles'] as Map).cast<String, String>(),
-      templateLibrary: PolicyControllerTemplateLibraryConfigResponse.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>()),
+      bundles: ((map['bundles'] as Map).cast<String, String>()).input(),
+      templateLibrary: (PolicyControllerTemplateLibraryConfigResponse.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

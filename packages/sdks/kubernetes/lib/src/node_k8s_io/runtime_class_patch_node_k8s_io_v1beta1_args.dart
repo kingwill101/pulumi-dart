@@ -31,19 +31,13 @@ class RuntimeClassPatchNodeK8sIoV1beta1Args {
   /// [overhead] Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
   /// [scheduling] Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
   RuntimeClassPatchNodeK8sIoV1beta1Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? handler,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<OverheadPatchNodeK8sIoV1beta1>? overhead,
-    pulumi.Output<SchedulingPatchNodeK8sIoV1beta1>? scheduling,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      handler = pulumi.Input.asOptionalInput<String>(handler),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      overhead = pulumi.Input.asOptionalInput<OverheadPatchNodeK8sIoV1beta1>(overhead),
-      scheduling = pulumi.Input.asOptionalInput<SchedulingPatchNodeK8sIoV1beta1>(scheduling);
+    this.apiVersion,
+    this.handler,
+    this.kind,
+    this.metadata,
+    this.overhead,
+    this.scheduling,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class RuntimeClassPatchNodeK8sIoV1beta1Args {
 
   factory RuntimeClassPatchNodeK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return RuntimeClassPatchNodeK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      handler: map['handler'] == null ? null : pulumi.Output.create<String>(map['handler'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      overhead: map['overhead'] == null ? null : pulumi.Output.create<OverheadPatchNodeK8sIoV1beta1>(OverheadPatchNodeK8sIoV1beta1.fromMap((map['overhead'] as Map).cast<String, dynamic>())),
-      scheduling: map['scheduling'] == null ? null : pulumi.Output.create<SchedulingPatchNodeK8sIoV1beta1>(SchedulingPatchNodeK8sIoV1beta1.fromMap((map['scheduling'] as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      handler: map['handler'] == null ? null : (map['handler'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      overhead: map['overhead'] == null ? null : (OverheadPatchNodeK8sIoV1beta1.fromMap((map['overhead'] as Map).cast<String, dynamic>())).input(),
+      scheduling: map['scheduling'] == null ? null : (SchedulingPatchNodeK8sIoV1beta1.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

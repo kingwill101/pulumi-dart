@@ -18,15 +18,11 @@ class GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs {
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
   GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs({
-    required pulumi.Output<String> browserDlpRuleId,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> partnerTenantId,
-  }) :
-      browserDlpRuleId = pulumi.Input.asInput<String>(browserDlpRuleId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
+    required this.browserDlpRuleId,
+    this.optionsRequestedPolicyVersion,
+    required this.organizationId,
+    required this.partnerTenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs {
 
   factory GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs(
-      browserDlpRuleId: pulumi.Output.create<String>(map['browserDlpRuleId'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      partnerTenantId: pulumi.Output.create<String>(map['partnerTenantId'] as String),
+      browserDlpRuleId: (map['browserDlpRuleId'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      partnerTenantId: (map['partnerTenantId'] as String).input(),
     );
   }
 }

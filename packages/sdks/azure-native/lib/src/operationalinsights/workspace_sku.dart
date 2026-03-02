@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU (tier) of a workspace.
 class WorkspaceSku {
   /// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
-  final int? capacityReservationLevel;
+  final pulumi.Input<int>? capacityReservationLevel;
   /// The name of the SKU.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [WorkspaceSku].
   /// [capacityReservationLevel] The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
@@ -25,8 +26,8 @@ class WorkspaceSku {
 
   factory WorkspaceSku.fromMap(Map<String, dynamic> map) {
     return WorkspaceSku(
-      capacityReservationLevel: map['capacityReservationLevel'] == null ? null : map['capacityReservationLevel'] as int,
-      name: map['name'] as String,
+      capacityReservationLevel: map['capacityReservationLevel'] == null ? null : (map['capacityReservationLevel'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

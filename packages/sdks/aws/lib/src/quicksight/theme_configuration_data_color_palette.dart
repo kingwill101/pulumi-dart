@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThemeConfigurationDataColorPalette {
   /// List of hexadecimal codes for the colors. Minimum of 8 items and maximum of 20 items.
-  final List<String>? colors;
+  final pulumi.Input<List<String>>? colors;
   /// The hexadecimal code of a color that applies to charts where a lack of data is highlighted.
-  final String? emptyFillColor;
+  final pulumi.Input<String>? emptyFillColor;
   /// The minimum and maximum hexadecimal codes that describe a color gradient. List of exactly 2 items.
-  final List<String>? minMaxGradients;
+  final pulumi.Input<List<String>>? minMaxGradients;
 
   /// Creates a new [ThemeConfigurationDataColorPalette].
   /// [colors] List of hexadecimal codes for the colors. Minimum of 8 items and maximum of 20 items.
@@ -29,9 +30,9 @@ class ThemeConfigurationDataColorPalette {
 
   factory ThemeConfigurationDataColorPalette.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationDataColorPalette(
-      colors: map['colors'] == null ? null : (map['colors'] as List).cast<String>(),
-      emptyFillColor: map['emptyFillColor'] == null ? null : map['emptyFillColor'] as String,
-      minMaxGradients: map['minMaxGradients'] == null ? null : (map['minMaxGradients'] as List).cast<String>(),
+      colors: map['colors'] == null ? null : ((map['colors'] as List).cast<String>()).input(),
+      emptyFillColor: map['emptyFillColor'] == null ? null : (map['emptyFillColor'] as String).input(),
+      minMaxGradients: map['minMaxGradients'] == null ? null : ((map['minMaxGradients'] as List).cast<String>()).input(),
     );
   }
 }

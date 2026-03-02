@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemTarget {
   /// Configures the directory path for the target where the filesystem is mounted.
-  final String dir;
+  final pulumi.Input<String> dir;
 
   /// Creates a new [DomainDevicesFilesystemTarget].
   /// [dir] Configures the directory path for the target where the filesystem is mounted.
@@ -19,7 +20,7 @@ class DomainDevicesFilesystemTarget {
 
   factory DomainDevicesFilesystemTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemTarget(
-      dir: map['dir'] as String,
+      dir: (map['dir'] as String).input(),
     );
   }
 }

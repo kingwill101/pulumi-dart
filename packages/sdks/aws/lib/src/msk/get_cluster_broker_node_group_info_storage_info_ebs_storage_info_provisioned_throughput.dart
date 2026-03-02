@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput {
-  final bool enabled;
-  final int volumeThroughput;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<int> volumeThroughput;
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput].
   /// [enabled] Required.
@@ -22,8 +23,8 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughpu
 
   factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput(
-      enabled: map['enabled'] as bool,
-      volumeThroughput: map['volumeThroughput'] as int,
+      enabled: (map['enabled'] as bool).input(),
+      volumeThroughput: (map['volumeThroughput'] as int).input(),
     );
   }
 }

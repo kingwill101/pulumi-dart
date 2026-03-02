@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Synchronization details at data set level
 class SynchronizationDetailsResponse {
   /// Id of data set
-  final String dataSetId;
+  final pulumi.Input<String> dataSetId;
   /// Type of the data set
-  final String dataSetType;
+  final pulumi.Input<String> dataSetType;
   /// Duration of data set level copy
-  final int durationMs;
+  final pulumi.Input<int> durationMs;
   /// End time of data set level copy
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The number of files read from the source data set
-  final double filesRead;
+  final pulumi.Input<double> filesRead;
   /// The number of files written into the sink data set
-  final double filesWritten;
+  final pulumi.Input<double> filesWritten;
   /// Error message if any
-  final String message;
+  final pulumi.Input<String> message;
   /// Name of the data set
-  final String name;
+  final pulumi.Input<String> name;
   /// The number of files copied into the sink data set
-  final double rowsCopied;
+  final pulumi.Input<double> rowsCopied;
   /// The number of rows read from the source data set.
-  final double rowsRead;
+  final pulumi.Input<double> rowsRead;
   /// The size of the data read from the source data set in bytes
-  final double sizeRead;
+  final pulumi.Input<double> sizeRead;
   /// The size of the data written into the sink data set in bytes
-  final double sizeWritten;
+  final pulumi.Input<double> sizeWritten;
   /// Start time of data set level copy
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Raw Status
-  final String status;
+  final pulumi.Input<String> status;
   /// The vCore units consumed for the data set synchronization
-  final double vCore;
+  final pulumi.Input<double> vCore;
 
   /// Creates a new [SynchronizationDetailsResponse].
   /// [dataSetId] Id of data set
@@ -90,21 +91,21 @@ class SynchronizationDetailsResponse {
 
   factory SynchronizationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SynchronizationDetailsResponse(
-      dataSetId: map['dataSetId'] as String,
-      dataSetType: map['dataSetType'] as String,
-      durationMs: map['durationMs'] as int,
-      endTime: map['endTime'] as String,
-      filesRead: map['filesRead'] as double,
-      filesWritten: map['filesWritten'] as double,
-      message: map['message'] as String,
-      name: map['name'] as String,
-      rowsCopied: map['rowsCopied'] as double,
-      rowsRead: map['rowsRead'] as double,
-      sizeRead: map['sizeRead'] as double,
-      sizeWritten: map['sizeWritten'] as double,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      vCore: map['vCore'] as double,
+      dataSetId: (map['dataSetId'] as String).input(),
+      dataSetType: (map['dataSetType'] as String).input(),
+      durationMs: (map['durationMs'] as int).input(),
+      endTime: (map['endTime'] as String).input(),
+      filesRead: (map['filesRead'] as double).input(),
+      filesWritten: (map['filesWritten'] as double).input(),
+      message: (map['message'] as String).input(),
+      name: (map['name'] as String).input(),
+      rowsCopied: (map['rowsCopied'] as double).input(),
+      rowsRead: (map['rowsRead'] as double).input(),
+      sizeRead: (map['sizeRead'] as double).input(),
+      sizeWritten: (map['sizeWritten'] as double).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      vCore: (map['vCore'] as double).input(),
     );
   }
 }

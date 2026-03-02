@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Application Gateway global configuration.
 class ApplicationGatewayGlobalConfiguration {
   /// Enable request buffering.
-  final bool? enableRequestBuffering;
+  final pulumi.Input<bool>? enableRequestBuffering;
   /// Enable response buffering.
-  final bool? enableResponseBuffering;
+  final pulumi.Input<bool>? enableResponseBuffering;
 
   /// Creates a new [ApplicationGatewayGlobalConfiguration].
   /// [enableRequestBuffering] Enable request buffering.
@@ -25,8 +26,8 @@ class ApplicationGatewayGlobalConfiguration {
 
   factory ApplicationGatewayGlobalConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayGlobalConfiguration(
-      enableRequestBuffering: map['enableRequestBuffering'] == null ? null : map['enableRequestBuffering'] as bool,
-      enableResponseBuffering: map['enableResponseBuffering'] == null ? null : map['enableResponseBuffering'] as bool,
+      enableRequestBuffering: map['enableRequestBuffering'] == null ? null : (map['enableRequestBuffering'] as bool).input(),
+      enableResponseBuffering: map['enableResponseBuffering'] == null ? null : (map['enableResponseBuffering'] as bool).input(),
     );
   }
 }

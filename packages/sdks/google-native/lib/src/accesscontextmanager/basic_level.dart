@@ -7,9 +7,9 @@ import 'condition.dart';
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
 class BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-  final BasicLevelCombiningFunction? combiningFunction;
+  final pulumi.Input<BasicLevelCombiningFunction>? combiningFunction;
   /// A list of requirements for the `AccessLevel` to be granted.
-  final List<Condition> conditions;
+  final pulumi.Input<List<Condition>> conditions;
 
   /// Creates a new [BasicLevel].
   /// [combiningFunction] How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
@@ -21,15 +21,15 @@ class BasicLevel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'combiningFunction': ?combiningFunction == null ? null : combiningFunction!.value,
-      'conditions': pulumi.Input.encodeList<Condition, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'combiningFunction': ?pulumi.Input.mapOptionalInputValue<BasicLevelCombiningFunction, String>(combiningFunction, (value) => value.value),
+      'conditions': pulumi.Input.mapInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BasicLevel.fromMap(Map<String, dynamic> map) {
     return BasicLevel(
-      combiningFunction: map['combiningFunction'] == null ? null : BasicLevelCombiningFunction.fromValue(map['combiningFunction'] as String),
-      conditions: pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>())),
+      combiningFunction: map['combiningFunction'] == null ? null : (BasicLevelCombiningFunction.fromValue(map['combiningFunction'] as String)).input(),
+      conditions: (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

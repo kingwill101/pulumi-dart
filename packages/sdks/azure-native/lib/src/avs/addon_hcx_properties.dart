@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of an HCX addon
 class AddonHcxProperties {
   /// Addon type
   /// Expected value is 'HCX'.
-  final String addonType;
+  final pulumi.Input<String> addonType;
   /// The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-  final String offer;
+  final pulumi.Input<String> offer;
 
   /// Creates a new [AddonHcxProperties].
   /// [addonType] Addon type
@@ -26,8 +27,8 @@ class AddonHcxProperties {
 
   factory AddonHcxProperties.fromMap(Map<String, dynamic> map) {
     return AddonHcxProperties(
-      addonType: map['addonType'] as String,
-      offer: map['offer'] as String,
+      addonType: (map['addonType'] as String).input(),
+      offer: (map['offer'] as String).input(),
     );
   }
 }

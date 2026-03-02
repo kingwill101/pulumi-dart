@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UnitKindOutputVariableMappingFrom {
   /// Alias of the dependency that the outputVariable will pass its value to
-  final String dependency;
+  final pulumi.Input<String> dependency;
   /// Name of the outputVariable on the dependency
-  final String outputVariable;
+  final pulumi.Input<String> outputVariable;
 
   /// Creates a new [UnitKindOutputVariableMappingFrom].
   /// [dependency] Alias of the dependency that the outputVariable will pass its value to
@@ -24,8 +25,8 @@ class UnitKindOutputVariableMappingFrom {
 
   factory UnitKindOutputVariableMappingFrom.fromMap(Map<String, dynamic> map) {
     return UnitKindOutputVariableMappingFrom(
-      dependency: map['dependency'] as String,
-      outputVariable: map['outputVariable'] as String,
+      dependency: (map['dependency'] as String).input(),
+      outputVariable: (map['outputVariable'] as String).input(),
     );
   }
 }

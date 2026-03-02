@@ -6,7 +6,7 @@ import 'management_policy_rule.dart';
 /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 class ManagementPolicySchema {
   /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
-  final List<ManagementPolicyRule> rules;
+  final pulumi.Input<List<ManagementPolicyRule>> rules;
 
   /// Creates a new [ManagementPolicySchema].
   /// [rules] The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
@@ -16,13 +16,13 @@ class ManagementPolicySchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': pulumi.Input.encodeList<ManagementPolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<ManagementPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ManagementPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagementPolicySchema.fromMap(Map<String, dynamic> map) {
     return ManagementPolicySchema(
-      rules: pulumi.Input.decodeList<ManagementPolicyRule>(map['rules'], (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: (pulumi.Input.decodeList<ManagementPolicyRule>(map['rules'], (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The workflow parameters.
 class WorkflowParameterResponse {
   /// The description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The metadata.
-  final dynamic metadata;
+  final pulumi.Input<dynamic>? metadata;
   /// The type.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The value.
-  final dynamic value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [WorkflowParameterResponse].
   /// [description] The description.
@@ -35,10 +36,10 @@ class WorkflowParameterResponse {
 
   factory WorkflowParameterResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowParameterResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'],
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value']).input(),
     );
   }
 }

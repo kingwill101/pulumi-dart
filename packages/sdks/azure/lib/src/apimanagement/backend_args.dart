@@ -54,33 +54,20 @@ class BackendArgs {
   /// [tls] A `tls` block as documented below.
   /// [url] The backend host URL should be specified in the format `"https://backend.com/api"`, avoiding trailing slashes (/) to minimize misconfiguration risks. Azure API Management instance will append the backend resource name to this URL. This URL typically serves as the `base-url` in the [`set-backend-service`](https://learn.microsoft.com/azure/api-management/set-backend-service-policy) policy, enabling seamless transitions from frontend to backend.
   BackendArgs({
-    required pulumi.Output<String> apiManagementName,
-    pulumi.Output<BackendCircuitBreakerRule>? circuitBreakerRule,
-    pulumi.Output<BackendCredentials>? credentials,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<BackendProxy>? proxy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<BackendServiceFabricCluster>? serviceFabricCluster,
-    pulumi.Output<String>? title,
-    pulumi.Output<BackendTls>? tls,
-    required pulumi.Output<String> url,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      circuitBreakerRule = pulumi.Input.asOptionalInput<BackendCircuitBreakerRule>(circuitBreakerRule),
-      credentials = pulumi.Input.asOptionalInput<BackendCredentials>(credentials),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      proxy = pulumi.Input.asOptionalInput<BackendProxy>(proxy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      serviceFabricCluster = pulumi.Input.asOptionalInput<BackendServiceFabricCluster>(serviceFabricCluster),
-      title = pulumi.Input.asOptionalInput<String>(title),
-      tls = pulumi.Input.asOptionalInput<BackendTls>(tls),
-      url = pulumi.Input.asInput<String>(url);
+    required this.apiManagementName,
+    this.circuitBreakerRule,
+    this.credentials,
+    this.description,
+    this.name,
+    required this.protocol,
+    this.proxy,
+    required this.resourceGroupName,
+    this.resourceId,
+    this.serviceFabricCluster,
+    this.title,
+    this.tls,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class BackendArgs {
 
   factory BackendArgs.fromMap(Map<String, dynamic> map) {
     return BackendArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      circuitBreakerRule: map['circuitBreakerRule'] == null ? null : pulumi.Output.create<BackendCircuitBreakerRule>(BackendCircuitBreakerRule.fromMap((map['circuitBreakerRule'] as Map).cast<String, dynamic>())),
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<BackendCredentials>(BackendCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      proxy: map['proxy'] == null ? null : pulumi.Output.create<BackendProxy>(BackendProxy.fromMap((map['proxy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : pulumi.Output.create<BackendServiceFabricCluster>(BackendServiceFabricCluster.fromMap((map['serviceFabricCluster'] as Map).cast<String, dynamic>())),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
-      tls: map['tls'] == null ? null : pulumi.Output.create<BackendTls>(BackendTls.fromMap((map['tls'] as Map).cast<String, dynamic>())),
-      url: pulumi.Output.create<String>(map['url'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      circuitBreakerRule: map['circuitBreakerRule'] == null ? null : (BackendCircuitBreakerRule.fromMap((map['circuitBreakerRule'] as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (BackendCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      proxy: map['proxy'] == null ? null : (BackendProxy.fromMap((map['proxy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : (BackendServiceFabricCluster.fromMap((map['serviceFabricCluster'] as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      tls: map['tls'] == null ? null : (BackendTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

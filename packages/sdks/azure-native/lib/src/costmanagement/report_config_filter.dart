@@ -6,13 +6,13 @@ import 'report_config_comparison_expression.dart';
 /// The filter expression to be used in the report.
 class ReportConfigFilter {
   /// The logical "AND" expression. Must have at least 2 items.
-  final List<ReportConfigFilter>? and;
+  final pulumi.Input<List<ReportConfigFilter>>? and;
   /// Has comparison expression for a dimension
-  final ReportConfigComparisonExpression? dimensions;
+  final pulumi.Input<ReportConfigComparisonExpression>? dimensions;
   /// The logical "OR" expression. Must have at least 2 items.
-  final List<ReportConfigFilter>? or;
+  final pulumi.Input<List<ReportConfigFilter>>? or;
   /// Has comparison expression for a tag
-  final ReportConfigComparisonExpression? tags;
+  final pulumi.Input<ReportConfigComparisonExpression>? tags;
 
   /// Creates a new [ReportConfigFilter].
   /// [and] The logical "AND" expression. Must have at least 2 items.
@@ -28,19 +28,19 @@ class ReportConfigFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'and': ?and == null ? null : pulumi.Input.encodeList<ReportConfigFilter, Map<String, dynamic>>(and!, (value) => value.toMap()),
-      'dimensions': ?dimensions == null ? null : dimensions!.toMap(),
-      'or': ?or == null ? null : pulumi.Input.encodeList<ReportConfigFilter, Map<String, dynamic>>(or!, (value) => value.toMap()),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'and': ?pulumi.Input.mapOptionalInputValue<List<ReportConfigFilter>, List<Map<String, dynamic>>>(and, (value) => pulumi.Input.encodeList<ReportConfigFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<ReportConfigComparisonExpression, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'or': ?pulumi.Input.mapOptionalInputValue<List<ReportConfigFilter>, List<Map<String, dynamic>>>(or, (value) => pulumi.Input.encodeList<ReportConfigFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?pulumi.Input.mapOptionalInputValue<ReportConfigComparisonExpression, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory ReportConfigFilter.fromMap(Map<String, dynamic> map) {
     return ReportConfigFilter(
-      and: map['and'] == null ? null : pulumi.Input.decodeList<ReportConfigFilter>(map['and'], (value) => ReportConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
-      dimensions: map['dimensions'] == null ? null : ReportConfigComparisonExpression.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
-      or: map['or'] == null ? null : pulumi.Input.decodeList<ReportConfigFilter>(map['or'], (value) => ReportConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : ReportConfigComparisonExpression.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      and: map['and'] == null ? null : (pulumi.Input.decodeList<ReportConfigFilter>(map['and'], (value) => ReportConfigFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (ReportConfigComparisonExpression.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
+      or: map['or'] == null ? null : (pulumi.Input.decodeList<ReportConfigFilter>(map['or'], (value) => ReportConfigFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (ReportConfigComparisonExpression.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceConnectionPoolConfig {
   /// Whether to enabled Managed Connection Pool.
-  final bool enabled;
-  final Map<String, String> flags;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<Map<String, String>> flags;
   /// The number of running poolers per instance.
-  final int poolerCount;
+  final pulumi.Input<int> poolerCount;
 
   /// Creates a new [GetInstanceConnectionPoolConfig].
   /// [enabled] Whether to enabled Managed Connection Pool.
@@ -28,9 +29,9 @@ class GetInstanceConnectionPoolConfig {
 
   factory GetInstanceConnectionPoolConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceConnectionPoolConfig(
-      enabled: map['enabled'] as bool,
-      flags: (map['flags'] as Map).cast<String, String>(),
-      poolerCount: map['poolerCount'] as int,
+      enabled: (map['enabled'] as bool).input(),
+      flags: ((map['flags'] as Map).cast<String, String>()).input(),
+      poolerCount: (map['poolerCount'] as int).input(),
     );
   }
 }

@@ -9,16 +9,16 @@ class ManagedZoneDnssecConfig {
   /// you must also provide one for the other.
   /// default_key_specs can only be updated when the state is `off`.
   /// Structure is documented below.
-  final List<ManagedZoneDnssecConfigDefaultKeySpec>? defaultKeySpecs;
+  final pulumi.Input<List<ManagedZoneDnssecConfigDefaultKeySpec>>? defaultKeySpecs;
   /// Identifies what kind of resource this is
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Specifies the mechanism used to provide authenticated denial-of-existence responses.
   /// non_existence can only be updated when the state is `off`.
   /// Possible values are: `nsec`, `nsec3`.
-  final String? nonExistence;
+  final pulumi.Input<String>? nonExistence;
   /// Specifies whether DNSSEC is enabled, and what mode it is in
   /// Possible values are: `off`, `on`, `transfer`.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [ManagedZoneDnssecConfig].
   /// [defaultKeySpecs] Specifies parameters that will be used for generating initial DnsKeys
@@ -34,7 +34,7 @@ class ManagedZoneDnssecConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultKeySpecs': ?defaultKeySpecs == null ? null : pulumi.Input.encodeList<ManagedZoneDnssecConfigDefaultKeySpec, Map<String, dynamic>>(defaultKeySpecs!, (value) => value.toMap()),
+      'defaultKeySpecs': ?pulumi.Input.mapOptionalInputValue<List<ManagedZoneDnssecConfigDefaultKeySpec>, List<Map<String, dynamic>>>(defaultKeySpecs, (value) => pulumi.Input.encodeList<ManagedZoneDnssecConfigDefaultKeySpec, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
       'nonExistence': ?nonExistence,
       'state': ?state,
@@ -43,10 +43,10 @@ class ManagedZoneDnssecConfig {
 
   factory ManagedZoneDnssecConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneDnssecConfig(
-      defaultKeySpecs: map['defaultKeySpecs'] == null ? null : pulumi.Input.decodeList<ManagedZoneDnssecConfigDefaultKeySpec>(map['defaultKeySpecs'], (value) => ManagedZoneDnssecConfigDefaultKeySpec.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      nonExistence: map['nonExistence'] == null ? null : map['nonExistence'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      defaultKeySpecs: map['defaultKeySpecs'] == null ? null : (pulumi.Input.decodeList<ManagedZoneDnssecConfigDefaultKeySpec>(map['defaultKeySpecs'], (value) => ManagedZoneDnssecConfigDefaultKeySpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      nonExistence: map['nonExistence'] == null ? null : (map['nonExistence'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

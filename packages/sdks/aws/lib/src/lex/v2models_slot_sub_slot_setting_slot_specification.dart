@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting.dart';
 
 class V2modelsSlotSubSlotSettingSlotSpecification {
-  final String mapBlockKey;
+  final pulumi.Input<String> mapBlockKey;
   /// Unique identifier assigned to the slot type.
-  final String slotTypeId;
+  final pulumi.Input<String> slotTypeId;
   /// Elicitation setting details for constituent sub slots of a composite slot.
   /// See the `value_elicitation_setting` argument reference below.
-  final List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>? valueElicitationSettings;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>>? valueElicitationSettings;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecification].
   /// [mapBlockKey] Required.
@@ -25,15 +25,15 @@ class V2modelsSlotSubSlotSettingSlotSpecification {
     return <String, dynamic>{
       'mapBlockKey': mapBlockKey,
       'slotTypeId': slotTypeId,
-      'valueElicitationSettings': ?valueElicitationSettings == null ? null : pulumi.Input.encodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting, Map<String, dynamic>>(valueElicitationSettings!, (value) => value.toMap()),
+      'valueElicitationSettings': ?pulumi.Input.mapOptionalInputValue<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>, List<Map<String, dynamic>>>(valueElicitationSettings, (value) => pulumi.Input.encodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory V2modelsSlotSubSlotSettingSlotSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecification(
-      mapBlockKey: map['mapBlockKey'] as String,
-      slotTypeId: map['slotTypeId'] as String,
-      valueElicitationSettings: map['valueElicitationSettings'] == null ? null : pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>(map['valueElicitationSettings'], (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting.fromMap((value as Map).cast<String, dynamic>())),
+      mapBlockKey: (map['mapBlockKey'] as String).input(),
+      slotTypeId: (map['slotTypeId'] as String).input(),
+      valueElicitationSettings: map['valueElicitationSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>(map['valueElicitationSettings'], (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

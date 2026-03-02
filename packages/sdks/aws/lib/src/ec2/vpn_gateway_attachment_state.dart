@@ -16,13 +16,10 @@ class VpnGatewayAttachmentState {
   /// [vpcId] The ID of the VPC.
   /// [vpnGatewayId] The ID of the Virtual Private Gateway.
   VpnGatewayAttachmentState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vpnGatewayId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpnGatewayId = pulumi.Input.asOptionalInput<String>(vpnGatewayId);
+    this.region,
+    this.vpcId,
+    this.vpnGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class VpnGatewayAttachmentState {
 
   factory VpnGatewayAttachmentState.fromMap(Map<String, dynamic> map) {
     return VpnGatewayAttachmentState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : pulumi.Output.create<String>(map['vpnGatewayId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
     );
   }
 }

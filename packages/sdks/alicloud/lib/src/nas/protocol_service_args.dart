@@ -43,23 +43,15 @@ class ProtocolServiceArgs {
   /// [vpcId] The VpcId of the protocol service, which must be consistent with the VPC of the file system.
   /// [vswitchId] The VSwitchId of the protocol service.
   ProtocolServiceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> fileSystemId,
-    required pulumi.Output<String> protocolSpec,
-    pulumi.Output<int>? protocolThroughput,
-    required pulumi.Output<String> protocolType,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      protocolSpec = pulumi.Input.asInput<String>(protocolSpec),
-      protocolThroughput = pulumi.Input.asOptionalInput<int>(protocolThroughput),
-      protocolType = pulumi.Input.asInput<String>(protocolType),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.description,
+    this.dryRun,
+    required this.fileSystemId,
+    required this.protocolSpec,
+    this.protocolThroughput,
+    required this.protocolType,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class ProtocolServiceArgs {
 
   factory ProtocolServiceArgs.fromMap(Map<String, dynamic> map) {
     return ProtocolServiceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      protocolSpec: pulumi.Output.create<String>(map['protocolSpec'] as String),
-      protocolThroughput: map['protocolThroughput'] == null ? null : pulumi.Output.create<int>(map['protocolThroughput'] as int),
-      protocolType: pulumi.Output.create<String>(map['protocolType'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      protocolSpec: (map['protocolSpec'] as String).input(),
+      protocolThroughput: map['protocolThroughput'] == null ? null : (map['protocolThroughput'] as int).input(),
+      protocolType: (map['protocolType'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

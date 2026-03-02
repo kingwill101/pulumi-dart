@@ -27,17 +27,12 @@ class DataGroupArgs {
   /// [recordsSrc] Path to a file with records in it,The file should be well-formed,it includes records, one per line,that resemble the following format "key separator value". For example, `foo := bar`.
   /// [type] datagroup type (applies to the `name` field of the record), supports: `string`, `ip` or `integer`
   DataGroupArgs({
-    pulumi.Output<bool>? internal,
-    required pulumi.Output<String> name,
-    pulumi.Output<List<DataGroupRecord>>? records,
-    pulumi.Output<String>? recordsSrc,
-    required pulumi.Output<String> type,
-  }) :
-      internal = pulumi.Input.asOptionalInput<bool>(internal),
-      name = pulumi.Input.asInput<String>(name),
-      records = pulumi.Input.asOptionalInput<List<DataGroupRecord>>(records),
-      recordsSrc = pulumi.Input.asOptionalInput<String>(recordsSrc),
-      type = pulumi.Input.asInput<String>(type);
+    this.internal,
+    required this.name,
+    this.records,
+    this.recordsSrc,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class DataGroupArgs {
 
   factory DataGroupArgs.fromMap(Map<String, dynamic> map) {
     return DataGroupArgs(
-      internal: map['internal'] == null ? null : pulumi.Output.create<bool>(map['internal'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      records: map['records'] == null ? null : pulumi.Output.create<List<DataGroupRecord>>(pulumi.Input.decodeList<DataGroupRecord>(map['records'], (value) => DataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      recordsSrc: map['recordsSrc'] == null ? null : pulumi.Output.create<String>(map['recordsSrc'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      internal: map['internal'] == null ? null : (map['internal'] as bool).input(),
+      name: (map['name'] as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<DataGroupRecord>(map['records'], (value) => DataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordsSrc: map['recordsSrc'] == null ? null : (map['recordsSrc'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

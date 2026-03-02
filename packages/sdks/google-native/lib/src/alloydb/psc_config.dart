@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PscConfig contains PSC related configuration at a cluster level. NEXT ID: 2
 class PscConfig {
   /// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
-  final bool? pscEnabled;
+  final pulumi.Input<bool>? pscEnabled;
 
   /// Creates a new [PscConfig].
   /// [pscEnabled] Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
@@ -20,7 +21,7 @@ class PscConfig {
 
   factory PscConfig.fromMap(Map<String, dynamic> map) {
     return PscConfig(
-      pscEnabled: map['pscEnabled'] == null ? null : map['pscEnabled'] as bool,
+      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled'] as bool).input(),
     );
   }
 }

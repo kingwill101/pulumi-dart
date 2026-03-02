@@ -31,19 +31,13 @@ class PlanArgs {
   /// [scanSettings] Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   /// [tags] Metadata that you can assign to help organize the plans you create. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   PlanArgs({
-    pulumi.Output<List<PlanAdvancedBackupSetting>>? advancedBackupSettings,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<PlanRule>> rules,
-    pulumi.Output<List<PlanScanSetting>>? scanSettings,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      advancedBackupSettings = pulumi.Input.asOptionalInput<List<PlanAdvancedBackupSetting>>(advancedBackupSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asInput<List<PlanRule>>(rules),
-      scanSettings = pulumi.Input.asOptionalInput<List<PlanScanSetting>>(scanSettings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.advancedBackupSettings,
+    this.name,
+    this.region,
+    required this.rules,
+    this.scanSettings,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class PlanArgs {
 
   factory PlanArgs.fromMap(Map<String, dynamic> map) {
     return PlanArgs(
-      advancedBackupSettings: map['advancedBackupSettings'] == null ? null : pulumi.Output.create<List<PlanAdvancedBackupSetting>>(pulumi.Input.decodeList<PlanAdvancedBackupSetting>(map['advancedBackupSettings'], (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: pulumi.Output.create<List<PlanRule>>(pulumi.Input.decodeList<PlanRule>(map['rules'], (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>()))),
-      scanSettings: map['scanSettings'] == null ? null : pulumi.Output.create<List<PlanScanSetting>>(pulumi.Input.decodeList<PlanScanSetting>(map['scanSettings'], (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      advancedBackupSettings: map['advancedBackupSettings'] == null ? null : (pulumi.Input.decodeList<PlanAdvancedBackupSetting>(map['advancedBackupSettings'], (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: (pulumi.Input.decodeList<PlanRule>(map['rules'], (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scanSettings: map['scanSettings'] == null ? null : (pulumi.Input.decodeList<PlanScanSetting>(map['scanSettings'], (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

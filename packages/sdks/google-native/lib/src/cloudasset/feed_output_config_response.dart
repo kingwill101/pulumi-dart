@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pubsub_destination_response.dart';
 
 /// Output configuration for asset feed destination.
 class FeedOutputConfigResponse {
   /// Destination on Pub/Sub.
-  final PubsubDestinationResponse pubsubDestination;
+  final pulumi.Input<PubsubDestinationResponse> pubsubDestination;
 
   /// Creates a new [FeedOutputConfigResponse].
   /// [pubsubDestination] Destination on Pub/Sub.
@@ -15,13 +16,13 @@ class FeedOutputConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pubsubDestination': pubsubDestination.toMap(),
+      'pubsubDestination': pulumi.Input.mapInputValue<PubsubDestinationResponse, Map<String, dynamic>>(pubsubDestination, (value) => value.toMap()),
     };
   }
 
   factory FeedOutputConfigResponse.fromMap(Map<String, dynamic> map) {
     return FeedOutputConfigResponse(
-      pubsubDestination: PubsubDestinationResponse.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
+      pubsubDestination: (PubsubDestinationResponse.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

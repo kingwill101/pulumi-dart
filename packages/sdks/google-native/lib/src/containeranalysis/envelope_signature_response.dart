@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvelopeSignatureResponse {
-  final String keyid;
-  final String sig;
+  final pulumi.Input<String> keyid;
+  final pulumi.Input<String> sig;
 
   /// Creates a new [EnvelopeSignatureResponse].
   /// [keyid] Required.
@@ -22,8 +23,8 @@ class EnvelopeSignatureResponse {
 
   factory EnvelopeSignatureResponse.fromMap(Map<String, dynamic> map) {
     return EnvelopeSignatureResponse(
-      keyid: map['keyid'] as String,
-      sig: map['sig'] as String,
+      keyid: (map['keyid'] as String).input(),
+      sig: (map['sig'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class PrefixArgs {
   /// [prefixName] The name of the prefix.
   /// [resourceGroupName] The name of the resource group.
   PrefixArgs({
-    required pulumi.Output<String> peeringServiceName,
-    pulumi.Output<String>? peeringServicePrefixKey,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? prefixName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      peeringServiceName = pulumi.Input.asInput<String>(peeringServiceName),
-      peeringServicePrefixKey = pulumi.Input.asOptionalInput<String>(peeringServicePrefixKey),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      prefixName = pulumi.Input.asOptionalInput<String>(prefixName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.peeringServiceName,
+    this.peeringServicePrefixKey,
+    this.prefix,
+    this.prefixName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PrefixArgs {
 
   factory PrefixArgs.fromMap(Map<String, dynamic> map) {
     return PrefixArgs(
-      peeringServiceName: pulumi.Output.create<String>(map['peeringServiceName'] as String),
-      peeringServicePrefixKey: map['peeringServicePrefixKey'] == null ? null : pulumi.Output.create<String>(map['peeringServicePrefixKey'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      prefixName: map['prefixName'] == null ? null : pulumi.Output.create<String>(map['prefixName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      peeringServiceName: (map['peeringServiceName'] as String).input(),
+      peeringServicePrefixKey: map['peeringServicePrefixKey'] == null ? null : (map['peeringServicePrefixKey'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefixName: map['prefixName'] == null ? null : (map['prefixName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SaasBotDefenseProfileProtectedEndpoint {
   /// Specifies the path to the web page to be protected by BD. For example, `/login`.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// hostname or IP address of the web page to be protected by the Bot Defense
-  final String? host;
+  final pulumi.Input<String>? host;
   /// Specifies whether the BIG-IP or F5 XC Bot Defense handles mitigation of malicious HTTP requests. This field is enabled only if the Service Level field is set to Advanced/Premium
-  final String? mitigationAction;
+  final pulumi.Input<String>? mitigationAction;
   /// Unique name for the protected endpoint
-  final String name;
+  final pulumi.Input<String> name;
   /// POST field to protect the path when it has a POST method, `enabled` or `disabled`
-  final String? post;
+  final pulumi.Input<String>? post;
   /// PUT field to protect the path when it has a PUT method,`enabled` or `disabled`
-  final String? put;
+  final pulumi.Input<String>? put;
 
   /// Creates a new [SaasBotDefenseProfileProtectedEndpoint].
   /// [endpoint] Specifies the path to the web page to be protected by BD. For example, `/login`.
@@ -44,12 +45,12 @@ class SaasBotDefenseProfileProtectedEndpoint {
 
   factory SaasBotDefenseProfileProtectedEndpoint.fromMap(Map<String, dynamic> map) {
     return SaasBotDefenseProfileProtectedEndpoint(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
-      mitigationAction: map['mitigationAction'] == null ? null : map['mitigationAction'] as String,
-      name: map['name'] as String,
-      post: map['post'] == null ? null : map['post'] as String,
-      put: map['put'] == null ? null : map['put'] as String,
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      mitigationAction: map['mitigationAction'] == null ? null : (map['mitigationAction'] as String).input(),
+      name: (map['name'] as String).input(),
+      post: map['post'] == null ? null : (map['post'] as String).input(),
+      put: map['put'] == null ? null : (map['put'] as String).input(),
     );
   }
 }

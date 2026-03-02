@@ -16,11 +16,9 @@ class RoleAttachmentArgs {
   /// [instanceIds] The list of ECS instance's IDs.
   /// [roleName] The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
   RoleAttachmentArgs({
-    required pulumi.Output<List<String>> instanceIds,
-    required pulumi.Output<String> roleName,
-  }) :
-      instanceIds = pulumi.Input.asInput<List<String>>(instanceIds),
-      roleName = pulumi.Input.asInput<String>(roleName);
+    required this.instanceIds,
+    required this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class RoleAttachmentArgs {
 
   factory RoleAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleAttachmentArgs(
-      instanceIds: pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+      instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

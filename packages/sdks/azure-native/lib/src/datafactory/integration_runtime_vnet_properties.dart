@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VNet properties for managed integration runtime.
 class IntegrationRuntimeVNetProperties {
   /// Resource IDs of the public IP addresses that this integration runtime will use.
-  final List<String>? publicIPs;
+  final pulumi.Input<List<String>>? publicIPs;
   /// The name of the subnet this integration runtime will join.
-  final String? subnet;
+  final pulumi.Input<String>? subnet;
   /// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
   /// The ID of the VNet that this integration runtime will join.
-  final String? vNetId;
+  final pulumi.Input<String>? vNetId;
 
   /// Creates a new [IntegrationRuntimeVNetProperties].
   /// [publicIPs] Resource IDs of the public IP addresses that this integration runtime will use.
@@ -35,10 +36,10 @@ class IntegrationRuntimeVNetProperties {
 
   factory IntegrationRuntimeVNetProperties.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeVNetProperties(
-      publicIPs: map['publicIPs'] == null ? null : (map['publicIPs'] as List).cast<String>(),
-      subnet: map['subnet'] == null ? null : map['subnet'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      vNetId: map['vNetId'] == null ? null : map['vNetId'] as String,
+      publicIPs: map['publicIPs'] == null ? null : ((map['publicIPs'] as List).cast<String>()).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      vNetId: map['vNetId'] == null ? null : (map['vNetId'] as String).input(),
     );
   }
 }

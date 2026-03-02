@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnConnectionRoute {
   /// The CIDR block associated with the local subnet of the customer data center.
-  final String? destinationCidrBlock;
+  final pulumi.Input<String>? destinationCidrBlock;
   /// Indicates how the routes were provided.
-  final String? source;
+  final pulumi.Input<String>? source;
   /// The current state of the static route.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [VpnConnectionRoute].
   /// [destinationCidrBlock] The CIDR block associated with the local subnet of the customer data center.
@@ -29,9 +30,9 @@ class VpnConnectionRoute {
 
   factory VpnConnectionRoute.fromMap(Map<String, dynamic> map) {
     return VpnConnectionRoute(
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : map['destinationCidrBlock'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

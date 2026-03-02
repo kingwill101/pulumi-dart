@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'update_info_response.dart';
 
 /// Represents additional information about the state of the cluster.
 class StateInfoResponse {
   /// Describes ongoing update on the cluster when cluster state is UPDATING.
-  final UpdateInfoResponse updateInfo;
+  final pulumi.Input<UpdateInfoResponse> updateInfo;
 
   /// Creates a new [StateInfoResponse].
   /// [updateInfo] Describes ongoing update on the cluster when cluster state is UPDATING.
@@ -15,13 +16,13 @@ class StateInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'updateInfo': updateInfo.toMap(),
+      'updateInfo': pulumi.Input.mapInputValue<UpdateInfoResponse, Map<String, dynamic>>(updateInfo, (value) => value.toMap()),
     };
   }
 
   factory StateInfoResponse.fromMap(Map<String, dynamic> map) {
     return StateInfoResponse(
-      updateInfo: UpdateInfoResponse.fromMap((map['updateInfo'] as Map).cast<String, dynamic>()),
+      updateInfo: (UpdateInfoResponse.fromMap((map['updateInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

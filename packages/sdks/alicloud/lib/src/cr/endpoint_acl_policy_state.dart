@@ -22,17 +22,12 @@ class EndpointAclPolicyState {
   /// [instanceId] The ID of the CR Instance.
   /// [moduleName] The module that needs to set the access policy. Valid values: `Registry`.
   EndpointAclPolicyState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<String>? entry,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? moduleName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      entry = pulumi.Input.asOptionalInput<String>(entry),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      moduleName = pulumi.Input.asOptionalInput<String>(moduleName);
+    this.description,
+    this.endpointType,
+    this.entry,
+    this.instanceId,
+    this.moduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EndpointAclPolicyState {
 
   factory EndpointAclPolicyState.fromMap(Map<String, dynamic> map) {
     return EndpointAclPolicyState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      entry: map['entry'] == null ? null : pulumi.Output.create<String>(map['entry'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      moduleName: map['moduleName'] == null ? null : pulumi.Output.create<String>(map['moduleName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      entry: map['entry'] == null ? null : (map['entry'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      moduleName: map['moduleName'] == null ? null : (map['moduleName'] as String).input(),
     );
   }
 }

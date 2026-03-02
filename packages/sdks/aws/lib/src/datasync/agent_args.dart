@@ -37,25 +37,16 @@ class AgentArgs {
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcEndpointId] The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
   AgentArgs({
-    pulumi.Output<String>? activationKey,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateLinkEndpoint,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupArns,
-    pulumi.Output<List<String>>? subnetArns,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcEndpointId,
-  }) :
-      activationKey = pulumi.Input.asOptionalInput<String>(activationKey),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateLinkEndpoint = pulumi.Input.asOptionalInput<String>(privateLinkEndpoint),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupArns = pulumi.Input.asOptionalInput<List<String>>(securityGroupArns),
-      subnetArns = pulumi.Input.asOptionalInput<List<String>>(subnetArns),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcEndpointId = pulumi.Input.asOptionalInput<String>(vpcEndpointId);
+    this.activationKey,
+    this.ipAddress,
+    this.name,
+    this.privateLinkEndpoint,
+    this.region,
+    this.securityGroupArns,
+    this.subnetArns,
+    this.tags,
+    this.vpcEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class AgentArgs {
 
   factory AgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentArgs(
-      activationKey: map['activationKey'] == null ? null : pulumi.Output.create<String>(map['activationKey'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateLinkEndpoint: map['privateLinkEndpoint'] == null ? null : pulumi.Output.create<String>(map['privateLinkEndpoint'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupArns: map['securityGroupArns'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupArns'] as List).cast<String>()),
-      subnetArns: map['subnetArns'] == null ? null : pulumi.Output.create<List<String>>((map['subnetArns'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointId'] as String),
+      activationKey: map['activationKey'] == null ? null : (map['activationKey'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateLinkEndpoint: map['privateLinkEndpoint'] == null ? null : (map['privateLinkEndpoint'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupArns: map['securityGroupArns'] == null ? null : ((map['securityGroupArns'] as List).cast<String>()).input(),
+      subnetArns: map['subnetArns'] == null ? null : ((map['subnetArns'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
     );
   }
 }

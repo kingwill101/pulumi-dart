@@ -8,16 +8,16 @@ class ToolDataStoreToolEngineSource {
   /// If empty, the search applies to all DataStores associated with the
   /// Engine.
   /// Structure is documented below.
-  final List<ToolDataStoreToolEngineSourceDataStoreSource>? dataStoreSources;
+  final pulumi.Input<List<ToolDataStoreToolEngineSourceDataStoreSource>>? dataStoreSources;
   /// Full resource name of the Engine.
   /// Format:
   /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
-  final String engine;
+  final pulumi.Input<String> engine;
   /// A filter applied to the search across the Engine. Not relevant and not
   /// used if 'data_store_sources' is provided.
   /// See:
   /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-  final String? filter;
+  final pulumi.Input<String>? filter;
 
   /// Creates a new [ToolDataStoreToolEngineSource].
   /// [dataStoreSources] Use to target specific DataStores within the Engine.
@@ -31,7 +31,7 @@ class ToolDataStoreToolEngineSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataStoreSources': ?dataStoreSources == null ? null : pulumi.Input.encodeList<ToolDataStoreToolEngineSourceDataStoreSource, Map<String, dynamic>>(dataStoreSources!, (value) => value.toMap()),
+      'dataStoreSources': ?pulumi.Input.mapOptionalInputValue<List<ToolDataStoreToolEngineSourceDataStoreSource>, List<Map<String, dynamic>>>(dataStoreSources, (value) => pulumi.Input.encodeList<ToolDataStoreToolEngineSourceDataStoreSource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'engine': engine,
       'filter': ?filter,
     };
@@ -39,9 +39,9 @@ class ToolDataStoreToolEngineSource {
 
   factory ToolDataStoreToolEngineSource.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolEngineSource(
-      dataStoreSources: map['dataStoreSources'] == null ? null : pulumi.Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSource>(map['dataStoreSources'], (value) => ToolDataStoreToolEngineSourceDataStoreSource.fromMap((value as Map).cast<String, dynamic>())),
-      engine: map['engine'] as String,
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      dataStoreSources: map['dataStoreSources'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSource>(map['dataStoreSources'], (value) => ToolDataStoreToolEngineSourceDataStoreSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      engine: (map['engine'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
     );
   }
 }

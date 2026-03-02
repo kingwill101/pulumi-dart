@@ -12,28 +12,28 @@ import 'shipping_address.dart';
 /// DataBox Disk Job Details.
 class DataBoxDiskJobDetails {
   /// Contact details for notification and shipping.
-  final ContactDetails contactDetails;
+  final pulumi.Input<ContactDetails> contactDetails;
   /// Details of the data to be exported from azure.
-  final List<DataExportDetails>? dataExportDetails;
+  final pulumi.Input<List<DataExportDetails>>? dataExportDetails;
   /// Details of the data to be imported into azure.
-  final List<DataImportDetails>? dataImportDetails;
+  final pulumi.Input<List<DataImportDetails>>? dataImportDetails;
   /// The expected size of the data, which needs to be transferred in this job, in terabytes.
-  final int? expectedDataSizeInTeraBytes;
+  final pulumi.Input<int>? expectedDataSizeInTeraBytes;
   /// Indicates the type of job details.
   /// Expected value is 'DataBoxDisk'.
-  final String jobDetailsType;
+  final pulumi.Input<String> jobDetailsType;
   /// Details about which key encryption type is being used.
-  final KeyEncryptionKey? keyEncryptionKey;
+  final pulumi.Input<KeyEncryptionKey>? keyEncryptionKey;
   /// User entered passkey for DataBox Disk job.
-  final String? passkey;
+  final pulumi.Input<String>? passkey;
   /// Preferences for the order.
-  final Preferences? preferences;
+  final pulumi.Input<Preferences>? preferences;
   /// User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
-  final Map<String, int>? preferredDisks;
+  final pulumi.Input<Map<String, int>>? preferredDisks;
   /// Optional Reverse Shipping details for order.
-  final ReverseShippingDetails? reverseShippingDetails;
+  final pulumi.Input<ReverseShippingDetails>? reverseShippingDetails;
   /// Shipping address of the customer.
-  final ShippingAddress? shippingAddress;
+  final pulumi.Input<ShippingAddress>? shippingAddress;
 
   /// Creates a new [DataBoxDiskJobDetails].
   /// [contactDetails] Contact details for notification and shipping.
@@ -63,33 +63,33 @@ class DataBoxDiskJobDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contactDetails': contactDetails.toMap(),
-      'dataExportDetails': ?dataExportDetails == null ? null : pulumi.Input.encodeList<DataExportDetails, Map<String, dynamic>>(dataExportDetails!, (value) => value.toMap()),
-      'dataImportDetails': ?dataImportDetails == null ? null : pulumi.Input.encodeList<DataImportDetails, Map<String, dynamic>>(dataImportDetails!, (value) => value.toMap()),
+      'contactDetails': pulumi.Input.mapInputValue<ContactDetails, Map<String, dynamic>>(contactDetails, (value) => value.toMap()),
+      'dataExportDetails': ?pulumi.Input.mapOptionalInputValue<List<DataExportDetails>, List<Map<String, dynamic>>>(dataExportDetails, (value) => pulumi.Input.encodeList<DataExportDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataImportDetails': ?pulumi.Input.mapOptionalInputValue<List<DataImportDetails>, List<Map<String, dynamic>>>(dataImportDetails, (value) => pulumi.Input.encodeList<DataImportDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
       'expectedDataSizeInTeraBytes': ?expectedDataSizeInTeraBytes,
       'jobDetailsType': jobDetailsType,
-      'keyEncryptionKey': ?keyEncryptionKey == null ? null : keyEncryptionKey!.toMap(),
+      'keyEncryptionKey': ?pulumi.Input.mapOptionalInputValue<KeyEncryptionKey, Map<String, dynamic>>(keyEncryptionKey, (value) => value.toMap()),
       'passkey': ?passkey,
-      'preferences': ?preferences == null ? null : preferences!.toMap(),
+      'preferences': ?pulumi.Input.mapOptionalInputValue<Preferences, Map<String, dynamic>>(preferences, (value) => value.toMap()),
       'preferredDisks': ?preferredDisks,
-      'reverseShippingDetails': ?reverseShippingDetails == null ? null : reverseShippingDetails!.toMap(),
-      'shippingAddress': ?shippingAddress == null ? null : shippingAddress!.toMap(),
+      'reverseShippingDetails': ?pulumi.Input.mapOptionalInputValue<ReverseShippingDetails, Map<String, dynamic>>(reverseShippingDetails, (value) => value.toMap()),
+      'shippingAddress': ?pulumi.Input.mapOptionalInputValue<ShippingAddress, Map<String, dynamic>>(shippingAddress, (value) => value.toMap()),
     };
   }
 
   factory DataBoxDiskJobDetails.fromMap(Map<String, dynamic> map) {
     return DataBoxDiskJobDetails(
-      contactDetails: ContactDetails.fromMap((map['contactDetails'] as Map).cast<String, dynamic>()),
-      dataExportDetails: map['dataExportDetails'] == null ? null : pulumi.Input.decodeList<DataExportDetails>(map['dataExportDetails'], (value) => DataExportDetails.fromMap((value as Map).cast<String, dynamic>())),
-      dataImportDetails: map['dataImportDetails'] == null ? null : pulumi.Input.decodeList<DataImportDetails>(map['dataImportDetails'], (value) => DataImportDetails.fromMap((value as Map).cast<String, dynamic>())),
-      expectedDataSizeInTeraBytes: map['expectedDataSizeInTeraBytes'] == null ? null : map['expectedDataSizeInTeraBytes'] as int,
-      jobDetailsType: map['jobDetailsType'] as String,
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : KeyEncryptionKey.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>()),
-      passkey: map['passkey'] == null ? null : map['passkey'] as String,
-      preferences: map['preferences'] == null ? null : Preferences.fromMap((map['preferences'] as Map).cast<String, dynamic>()),
-      preferredDisks: map['preferredDisks'] == null ? null : (map['preferredDisks'] as Map).cast<String, int>(),
-      reverseShippingDetails: map['reverseShippingDetails'] == null ? null : ReverseShippingDetails.fromMap((map['reverseShippingDetails'] as Map).cast<String, dynamic>()),
-      shippingAddress: map['shippingAddress'] == null ? null : ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>()),
+      contactDetails: (ContactDetails.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
+      dataExportDetails: map['dataExportDetails'] == null ? null : (pulumi.Input.decodeList<DataExportDetails>(map['dataExportDetails'], (value) => DataExportDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataImportDetails: map['dataImportDetails'] == null ? null : (pulumi.Input.decodeList<DataImportDetails>(map['dataImportDetails'], (value) => DataImportDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedDataSizeInTeraBytes: map['expectedDataSizeInTeraBytes'] == null ? null : (map['expectedDataSizeInTeraBytes'] as int).input(),
+      jobDetailsType: (map['jobDetailsType'] as String).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyEncryptionKey.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      passkey: map['passkey'] == null ? null : (map['passkey'] as String).input(),
+      preferences: map['preferences'] == null ? null : (Preferences.fromMap((map['preferences'] as Map).cast<String, dynamic>())).input(),
+      preferredDisks: map['preferredDisks'] == null ? null : ((map['preferredDisks'] as Map).cast<String, int>()).input(),
+      reverseShippingDetails: map['reverseShippingDetails'] == null ? null : (ReverseShippingDetails.fromMap((map['reverseShippingDetails'] as Map).cast<String, dynamic>())).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

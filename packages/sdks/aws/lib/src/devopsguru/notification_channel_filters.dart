@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationChannelFilters {
   /// Events to receive notifications for. Valid values are `NEW_INSIGHT`, `CLOSED_INSIGHT`, `NEW_ASSOCIATION`, `SEVERITY_UPGRADED`, and `NEW_RECOMMENDATION`.
-  final List<String>? messageTypes;
+  final pulumi.Input<List<String>>? messageTypes;
   /// Severity levels to receive notifications for. Valid values are `LOW`, `MEDIUM`, and `HIGH`.
-  final List<String>? severities;
+  final pulumi.Input<List<String>>? severities;
 
   /// Creates a new [NotificationChannelFilters].
   /// [messageTypes] Events to receive notifications for. Valid values are `NEW_INSIGHT`, `CLOSED_INSIGHT`, `NEW_ASSOCIATION`, `SEVERITY_UPGRADED`, and `NEW_RECOMMENDATION`.
@@ -24,8 +25,8 @@ class NotificationChannelFilters {
 
   factory NotificationChannelFilters.fromMap(Map<String, dynamic> map) {
     return NotificationChannelFilters(
-      messageTypes: map['messageTypes'] == null ? null : (map['messageTypes'] as List).cast<String>(),
-      severities: map['severities'] == null ? null : (map['severities'] as List).cast<String>(),
+      messageTypes: map['messageTypes'] == null ? null : ((map['messageTypes'] as List).cast<String>()).input(),
+      severities: map['severities'] == null ? null : ((map['severities'] as List).cast<String>()).input(),
     );
   }
 }

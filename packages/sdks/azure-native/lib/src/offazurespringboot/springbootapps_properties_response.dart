@@ -9,61 +9,61 @@ import 'springbootapps_properties_response_miscs.dart';
 /// The springbootapps resource definition.
 class SpringbootappsPropertiesResponse {
   /// The name of SpringBootApp.
-  final String? appName;
+  final pulumi.Input<String>? appName;
   /// The application port.
-  final int? appPort;
+  final pulumi.Input<int>? appPort;
   /// The application type, whether it is a SpringBoot app.
-  final String? appType;
+  final pulumi.Input<String>? appType;
   /// The application configuration file list.
-  final List<SpringbootappsPropertiesResponseApplicationConfigurations>? applicationConfigurations;
+  final pulumi.Input<List<SpringbootappsPropertiesResponseApplicationConfigurations>>? applicationConfigurations;
   /// The artifact name of SpringBootApp.
-  final String? artifactName;
+  final pulumi.Input<String>? artifactName;
   /// The application binding port list.
-  final List<int>? bindingPorts;
+  final pulumi.Input<List<int>>? bindingPorts;
   /// The jdk version in build.
-  final String? buildJdkVersion;
+  final pulumi.Input<String>? buildJdkVersion;
   /// The certificate file list.
-  final List<String>? certificates;
+  final pulumi.Input<List<String>>? certificates;
   /// The checksum of jar file.
-  final String? checksum;
+  final pulumi.Input<String>? checksum;
   /// The connection string list.
-  final List<String>? connectionStrings;
+  final pulumi.Input<List<String>>? connectionStrings;
   /// The dependency list.
-  final List<String>? dependencies;
+  final pulumi.Input<List<String>>? dependencies;
   /// The environment variable list.
-  final List<String>? environments;
+  final pulumi.Input<List<String>>? environments;
   /// The list of errors.
-  final List<ErrorResponse>? errors;
+  final pulumi.Input<List<ErrorResponse>>? errors;
   /// The total instance count the app deployed.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// The breakdown info for app instances on all the servers
-  final List<SpringbootappsPropertiesResponseInstances>? instances;
+  final pulumi.Input<List<SpringbootappsPropertiesResponseInstances>>? instances;
   /// The jar file location on the server.
-  final String? jarFileLocation;
+  final pulumi.Input<String>? jarFileLocation;
   /// The jvm heap memory allocated.
-  final int? jvmMemoryInMB;
+  final pulumi.Input<int>? jvmMemoryInMB;
   /// The jvm options.
-  final List<String>? jvmOptions;
+  final pulumi.Input<List<String>>? jvmOptions;
   /// Resource labels
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// Time when this springbootapps jar file was last modified.
-  final String? lastModifiedTime;
+  final pulumi.Input<String>? lastModifiedTime;
   /// Time when this springbootapps instance was last refreshed.
-  final String? lastUpdatedTime;
+  final pulumi.Input<String>? lastUpdatedTime;
   /// The machine ARM id list the app belongs to.
-  final List<String>? machineArmIds;
+  final pulumi.Input<List<String>>? machineArmIds;
   /// The other types of date collected.
-  final List<SpringbootappsPropertiesResponseMiscs>? miscs;
+  final pulumi.Input<List<SpringbootappsPropertiesResponseMiscs>>? miscs;
   /// The resource provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The jdk version installed on server
-  final String? runtimeJdkVersion;
+  final pulumi.Input<String>? runtimeJdkVersion;
   /// The server list the app installed
-  final List<String>? servers;
+  final pulumi.Input<List<String>>? servers;
   /// The spring boot version.
-  final String? springBootVersion;
+  final pulumi.Input<String>? springBootVersion;
   /// The static content location list.
-  final List<String>? staticContentLocations;
+  final pulumi.Input<List<String>>? staticContentLocations;
 
   /// Creates a new [SpringbootappsPropertiesResponse].
   /// [appName] The name of SpringBootApp.
@@ -130,7 +130,7 @@ class SpringbootappsPropertiesResponse {
       'appName': ?appName,
       'appPort': ?appPort,
       'appType': ?appType,
-      'applicationConfigurations': ?applicationConfigurations == null ? null : pulumi.Input.encodeList<SpringbootappsPropertiesResponseApplicationConfigurations, Map<String, dynamic>>(applicationConfigurations!, (value) => value.toMap()),
+      'applicationConfigurations': ?pulumi.Input.mapOptionalInputValue<List<SpringbootappsPropertiesResponseApplicationConfigurations>, List<Map<String, dynamic>>>(applicationConfigurations, (value) => pulumi.Input.encodeList<SpringbootappsPropertiesResponseApplicationConfigurations, Map<String, dynamic>>(value, (value) => value.toMap())),
       'artifactName': ?artifactName,
       'bindingPorts': ?bindingPorts,
       'buildJdkVersion': ?buildJdkVersion,
@@ -139,9 +139,9 @@ class SpringbootappsPropertiesResponse {
       'connectionStrings': ?connectionStrings,
       'dependencies': ?dependencies,
       'environments': ?environments,
-      'errors': ?errors == null ? null : pulumi.Input.encodeList<ErrorResponse, Map<String, dynamic>>(errors!, (value) => value.toMap()),
+      'errors': ?pulumi.Input.mapOptionalInputValue<List<ErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceCount': ?instanceCount,
-      'instances': ?instances == null ? null : pulumi.Input.encodeList<SpringbootappsPropertiesResponseInstances, Map<String, dynamic>>(instances!, (value) => value.toMap()),
+      'instances': ?pulumi.Input.mapOptionalInputValue<List<SpringbootappsPropertiesResponseInstances>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<SpringbootappsPropertiesResponseInstances, Map<String, dynamic>>(value, (value) => value.toMap())),
       'jarFileLocation': ?jarFileLocation,
       'jvmMemoryInMB': ?jvmMemoryInMB,
       'jvmOptions': ?jvmOptions,
@@ -149,7 +149,7 @@ class SpringbootappsPropertiesResponse {
       'lastModifiedTime': ?lastModifiedTime,
       'lastUpdatedTime': ?lastUpdatedTime,
       'machineArmIds': ?machineArmIds,
-      'miscs': ?miscs == null ? null : pulumi.Input.encodeList<SpringbootappsPropertiesResponseMiscs, Map<String, dynamic>>(miscs!, (value) => value.toMap()),
+      'miscs': ?pulumi.Input.mapOptionalInputValue<List<SpringbootappsPropertiesResponseMiscs>, List<Map<String, dynamic>>>(miscs, (value) => pulumi.Input.encodeList<SpringbootappsPropertiesResponseMiscs, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'runtimeJdkVersion': ?runtimeJdkVersion,
       'servers': ?servers,
@@ -160,34 +160,34 @@ class SpringbootappsPropertiesResponse {
 
   factory SpringbootappsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SpringbootappsPropertiesResponse(
-      appName: map['appName'] == null ? null : map['appName'] as String,
-      appPort: map['appPort'] == null ? null : map['appPort'] as int,
-      appType: map['appType'] == null ? null : map['appType'] as String,
-      applicationConfigurations: map['applicationConfigurations'] == null ? null : pulumi.Input.decodeList<SpringbootappsPropertiesResponseApplicationConfigurations>(map['applicationConfigurations'], (value) => SpringbootappsPropertiesResponseApplicationConfigurations.fromMap((value as Map).cast<String, dynamic>())),
-      artifactName: map['artifactName'] == null ? null : map['artifactName'] as String,
-      bindingPorts: map['bindingPorts'] == null ? null : (map['bindingPorts'] as List).cast<int>(),
-      buildJdkVersion: map['buildJdkVersion'] == null ? null : map['buildJdkVersion'] as String,
-      certificates: map['certificates'] == null ? null : (map['certificates'] as List).cast<String>(),
-      checksum: map['checksum'] == null ? null : map['checksum'] as String,
-      connectionStrings: map['connectionStrings'] == null ? null : (map['connectionStrings'] as List).cast<String>(),
-      dependencies: map['dependencies'] == null ? null : (map['dependencies'] as List).cast<String>(),
-      environments: map['environments'] == null ? null : (map['environments'] as List).cast<String>(),
-      errors: map['errors'] == null ? null : pulumi.Input.decodeList<ErrorResponse>(map['errors'], (value) => ErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      instances: map['instances'] == null ? null : pulumi.Input.decodeList<SpringbootappsPropertiesResponseInstances>(map['instances'], (value) => SpringbootappsPropertiesResponseInstances.fromMap((value as Map).cast<String, dynamic>())),
-      jarFileLocation: map['jarFileLocation'] == null ? null : map['jarFileLocation'] as String,
-      jvmMemoryInMB: map['jvmMemoryInMB'] == null ? null : map['jvmMemoryInMB'] as int,
-      jvmOptions: map['jvmOptions'] == null ? null : (map['jvmOptions'] as List).cast<String>(),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : map['lastUpdatedTime'] as String,
-      machineArmIds: map['machineArmIds'] == null ? null : (map['machineArmIds'] as List).cast<String>(),
-      miscs: map['miscs'] == null ? null : pulumi.Input.decodeList<SpringbootappsPropertiesResponseMiscs>(map['miscs'], (value) => SpringbootappsPropertiesResponseMiscs.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      runtimeJdkVersion: map['runtimeJdkVersion'] == null ? null : map['runtimeJdkVersion'] as String,
-      servers: map['servers'] == null ? null : (map['servers'] as List).cast<String>(),
-      springBootVersion: map['springBootVersion'] == null ? null : map['springBootVersion'] as String,
-      staticContentLocations: map['staticContentLocations'] == null ? null : (map['staticContentLocations'] as List).cast<String>(),
+      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
+      appPort: map['appPort'] == null ? null : (map['appPort'] as int).input(),
+      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      applicationConfigurations: map['applicationConfigurations'] == null ? null : (pulumi.Input.decodeList<SpringbootappsPropertiesResponseApplicationConfigurations>(map['applicationConfigurations'], (value) => SpringbootappsPropertiesResponseApplicationConfigurations.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      artifactName: map['artifactName'] == null ? null : (map['artifactName'] as String).input(),
+      bindingPorts: map['bindingPorts'] == null ? null : ((map['bindingPorts'] as List).cast<int>()).input(),
+      buildJdkVersion: map['buildJdkVersion'] == null ? null : (map['buildJdkVersion'] as String).input(),
+      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<String>()).input(),
+      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
+      connectionStrings: map['connectionStrings'] == null ? null : ((map['connectionStrings'] as List).cast<String>()).input(),
+      dependencies: map['dependencies'] == null ? null : ((map['dependencies'] as List).cast<String>()).input(),
+      environments: map['environments'] == null ? null : ((map['environments'] as List).cast<String>()).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ErrorResponse>(map['errors'], (value) => ErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<SpringbootappsPropertiesResponseInstances>(map['instances'], (value) => SpringbootappsPropertiesResponseInstances.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jarFileLocation: map['jarFileLocation'] == null ? null : (map['jarFileLocation'] as String).input(),
+      jvmMemoryInMB: map['jvmMemoryInMB'] == null ? null : (map['jvmMemoryInMB'] as int).input(),
+      jvmOptions: map['jvmOptions'] == null ? null : ((map['jvmOptions'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
+      machineArmIds: map['machineArmIds'] == null ? null : ((map['machineArmIds'] as List).cast<String>()).input(),
+      miscs: map['miscs'] == null ? null : (pulumi.Input.decodeList<SpringbootappsPropertiesResponseMiscs>(map['miscs'], (value) => SpringbootappsPropertiesResponseMiscs.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      runtimeJdkVersion: map['runtimeJdkVersion'] == null ? null : (map['runtimeJdkVersion'] as String).input(),
+      servers: map['servers'] == null ? null : ((map['servers'] as List).cast<String>()).input(),
+      springBootVersion: map['springBootVersion'] == null ? null : (map['springBootVersion'] as String).input(),
+      staticContentLocations: map['staticContentLocations'] == null ? null : ((map['staticContentLocations'] as List).cast<String>()).input(),
     );
   }
 }

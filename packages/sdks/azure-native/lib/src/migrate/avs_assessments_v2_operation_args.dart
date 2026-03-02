@@ -23,15 +23,11 @@ class AvsAssessmentsV2OperationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AvsAssessmentsV2OperationArgs({
-    pulumi.Output<String>? assessmentName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<AvsAssessmentPropertiesV2>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assessmentName = pulumi.Input.asOptionalInput<String>(assessmentName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<AvsAssessmentPropertiesV2>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.assessmentName,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AvsAssessmentsV2OperationArgs {
 
   factory AvsAssessmentsV2OperationArgs.fromMap(Map<String, dynamic> map) {
     return AvsAssessmentsV2OperationArgs(
-      assessmentName: map['assessmentName'] == null ? null : pulumi.Output.create<String>(map['assessmentName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AvsAssessmentPropertiesV2>(AvsAssessmentPropertiesV2.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (AvsAssessmentPropertiesV2.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

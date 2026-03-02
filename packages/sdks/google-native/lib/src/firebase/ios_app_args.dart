@@ -33,23 +33,15 @@ class IosAppArgs {
   /// [project] Optional.
   /// [teamId] The Apple Developer Team ID associated with the App in the App Store.
   IosAppArgs({
-    pulumi.Output<String>? apiKeyId,
-    pulumi.Output<String>? appStoreId,
-    pulumi.Output<String>? bundleId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? teamId,
-  }) :
-      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-      appStoreId = pulumi.Input.asOptionalInput<String>(appStoreId),
-      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      teamId = pulumi.Input.asOptionalInput<String>(teamId);
+    this.apiKeyId,
+    this.appStoreId,
+    this.bundleId,
+    this.displayName,
+    this.etag,
+    this.name,
+    this.project,
+    this.teamId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class IosAppArgs {
 
   factory IosAppArgs.fromMap(Map<String, dynamic> map) {
     return IosAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : pulumi.Output.create<String>(map['apiKeyId'] as String),
-      appStoreId: map['appStoreId'] == null ? null : pulumi.Output.create<String>(map['appStoreId'] as String),
-      bundleId: map['bundleId'] == null ? null : pulumi.Output.create<String>(map['bundleId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      teamId: map['teamId'] == null ? null : pulumi.Output.create<String>(map['teamId'] as String),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
+      appStoreId: map['appStoreId'] == null ? null : (map['appStoreId'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
     );
   }
 }

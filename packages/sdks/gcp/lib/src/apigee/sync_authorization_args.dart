@@ -19,11 +19,9 @@ class SyncAuthorizationArgs {
   /// [identities] Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
   /// [name] Name of the Apigee organization.
   SyncAuthorizationArgs({
-    required pulumi.Output<List<String>> identities,
-    pulumi.Output<String>? name,
-  }) :
-      identities = pulumi.Input.asInput<List<String>>(identities),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.identities,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class SyncAuthorizationArgs {
 
   factory SyncAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return SyncAuthorizationArgs(
-      identities: pulumi.Output.create<List<String>>((map['identities'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      identities: ((map['identities'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

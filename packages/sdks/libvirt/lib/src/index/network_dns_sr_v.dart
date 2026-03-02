@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkDnsSrV {
   /// Defines the domain name used for the SRV record.
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// Specifies the port number associated with the SRV record.
-  final double? port;
+  final pulumi.Input<double>? port;
   /// Sets the priority of the SRV record, influencing the selection order for clients.
-  final double? priority;
+  final pulumi.Input<double>? priority;
   /// Defines the protocol (e.g., TCP or UDP) used for the SRV record.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Specifies the service name associated with the SRV record.
-  final String? service;
+  final pulumi.Input<String>? service;
   /// Indicates the target host name to contact for the specified service.
-  final String? target;
+  final pulumi.Input<String>? target;
   /// Sets the weight for load balancing among SRV records.
-  final double? weight;
+  final pulumi.Input<double>? weight;
 
   /// Creates a new [NetworkDnsSrV].
   /// [domain] Defines the domain name used for the SRV record.
@@ -49,13 +50,13 @@ class NetworkDnsSrV {
 
   factory NetworkDnsSrV.fromMap(Map<String, dynamic> map) {
     return NetworkDnsSrV(
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      port: map['port'] == null ? null : map['port'] as double,
-      priority: map['priority'] == null ? null : map['priority'] as double,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      service: map['service'] == null ? null : map['service'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as double,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as double).input(),
     );
   }
 }

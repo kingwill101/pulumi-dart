@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The config specifying which default library templates to install.
 class PolicyControllerTemplateLibraryConfigResponseGkehubV1beta {
   /// Configures the manner in which the template library is installed on the cluster.
-  final String installation;
+  final pulumi.Input<String> installation;
 
   /// Creates a new [PolicyControllerTemplateLibraryConfigResponseGkehubV1beta].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
@@ -20,7 +21,7 @@ class PolicyControllerTemplateLibraryConfigResponseGkehubV1beta {
 
   factory PolicyControllerTemplateLibraryConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfigResponseGkehubV1beta(
-      installation: map['installation'] as String,
+      installation: (map['installation'] as String).input(),
     );
   }
 }

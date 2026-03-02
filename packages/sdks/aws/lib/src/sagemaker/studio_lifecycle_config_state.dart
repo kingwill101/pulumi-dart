@@ -28,21 +28,14 @@ class StudioLifecycleConfigState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   StudioLifecycleConfigState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? studioLifecycleConfigAppType,
-    pulumi.Output<String>? studioLifecycleConfigContent,
-    pulumi.Output<String>? studioLifecycleConfigName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      studioLifecycleConfigAppType = pulumi.Input.asOptionalInput<String>(studioLifecycleConfigAppType),
-      studioLifecycleConfigContent = pulumi.Input.asOptionalInput<String>(studioLifecycleConfigContent),
-      studioLifecycleConfigName = pulumi.Input.asOptionalInput<String>(studioLifecycleConfigName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.region,
+    this.studioLifecycleConfigAppType,
+    this.studioLifecycleConfigContent,
+    this.studioLifecycleConfigName,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class StudioLifecycleConfigState {
 
   factory StudioLifecycleConfigState.fromMap(Map<String, dynamic> map) {
     return StudioLifecycleConfigState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      studioLifecycleConfigAppType: map['studioLifecycleConfigAppType'] == null ? null : pulumi.Output.create<String>(map['studioLifecycleConfigAppType'] as String),
-      studioLifecycleConfigContent: map['studioLifecycleConfigContent'] == null ? null : pulumi.Output.create<String>(map['studioLifecycleConfigContent'] as String),
-      studioLifecycleConfigName: map['studioLifecycleConfigName'] == null ? null : pulumi.Output.create<String>(map['studioLifecycleConfigName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      studioLifecycleConfigAppType: map['studioLifecycleConfigAppType'] == null ? null : (map['studioLifecycleConfigAppType'] as String).input(),
+      studioLifecycleConfigContent: map['studioLifecycleConfigContent'] == null ? null : (map['studioLifecycleConfigContent'] as String).input(),
+      studioLifecycleConfigName: map['studioLifecycleConfigName'] == null ? null : (map['studioLifecycleConfigName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

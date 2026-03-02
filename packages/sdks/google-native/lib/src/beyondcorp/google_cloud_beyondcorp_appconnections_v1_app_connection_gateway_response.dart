@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gateway represents a user facing component that serves as an entrance to enable connectivity.
 class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse {
   /// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
-  final String appGateway;
+  final pulumi.Input<String> appGateway;
   /// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
-  final int ingressPort;
+  final pulumi.Input<int> ingressPort;
   /// L7 private service connection for this resource.
-  final String l7psc;
+  final pulumi.Input<String> l7psc;
   /// The type of hosting used by the gateway.
-  final String type;
+  final pulumi.Input<String> type;
   /// Server-defined URI for this resource.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse].
   /// [appGateway] AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
@@ -40,11 +41,11 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse {
 
   factory GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse(
-      appGateway: map['appGateway'] as String,
-      ingressPort: map['ingressPort'] as int,
-      l7psc: map['l7psc'] as String,
-      type: map['type'] as String,
-      uri: map['uri'] as String,
+      appGateway: (map['appGateway'] as String).input(),
+      ingressPort: (map['ingressPort'] as int).input(),
+      l7psc: (map['l7psc'] as String).input(),
+      type: (map['type'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

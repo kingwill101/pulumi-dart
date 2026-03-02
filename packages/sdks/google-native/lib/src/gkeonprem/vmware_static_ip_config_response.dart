@@ -6,7 +6,7 @@ import 'vmware_ip_block_response.dart';
 /// Represents the network configuration required for the VMware user clusters with Static IP configurations.
 class VmwareStaticIpConfigResponse {
   /// Represents the configuration values for static IP allocation to nodes.
-  final List<VmwareIpBlockResponse> ipBlocks;
+  final pulumi.Input<List<VmwareIpBlockResponse>> ipBlocks;
 
   /// Creates a new [VmwareStaticIpConfigResponse].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.
@@ -16,13 +16,13 @@ class VmwareStaticIpConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipBlocks': pulumi.Input.encodeList<VmwareIpBlockResponse, Map<String, dynamic>>(ipBlocks, (value) => value.toMap()),
+      'ipBlocks': pulumi.Input.mapInputValue<List<VmwareIpBlockResponse>, List<Map<String, dynamic>>>(ipBlocks, (value) => pulumi.Input.encodeList<VmwareIpBlockResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VmwareStaticIpConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareStaticIpConfigResponse(
-      ipBlocks: pulumi.Input.decodeList<VmwareIpBlockResponse>(map['ipBlocks'], (value) => VmwareIpBlockResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipBlocks: (pulumi.Input.decodeList<VmwareIpBlockResponse>(map['ipBlocks'], (value) => VmwareIpBlockResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

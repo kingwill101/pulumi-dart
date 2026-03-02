@@ -41,27 +41,17 @@ class VirtualNodeArgs {
   /// [vswitchId] The vswitch id.
   /// [zoneId] The Zone.
   VirtualNodeArgs({
-    pulumi.Output<String>? eipInstanceId,
-    pulumi.Output<bool>? enablePublicNetwork,
-    required pulumi.Output<String> kubeConfig,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> securityGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<VirtualNodeTaint>>? taints,
-    pulumi.Output<String>? virtualNodeName,
-    required pulumi.Output<String> vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      eipInstanceId = pulumi.Input.asOptionalInput<String>(eipInstanceId),
-      enablePublicNetwork = pulumi.Input.asOptionalInput<bool>(enablePublicNetwork),
-      kubeConfig = pulumi.Input.asInput<String>(kubeConfig),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      taints = pulumi.Input.asOptionalInput<List<VirtualNodeTaint>>(taints),
-      virtualNodeName = pulumi.Input.asOptionalInput<String>(virtualNodeName),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.eipInstanceId,
+    this.enablePublicNetwork,
+    required this.kubeConfig,
+    this.resourceGroupId,
+    required this.securityGroupId,
+    this.tags,
+    this.taints,
+    this.virtualNodeName,
+    required this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class VirtualNodeArgs {
 
   factory VirtualNodeArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNodeArgs(
-      eipInstanceId: map['eipInstanceId'] == null ? null : pulumi.Output.create<String>(map['eipInstanceId'] as String),
-      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : pulumi.Output.create<bool>(map['enablePublicNetwork'] as bool),
-      kubeConfig: pulumi.Output.create<String>(map['kubeConfig'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      taints: map['taints'] == null ? null : pulumi.Output.create<List<VirtualNodeTaint>>(pulumi.Input.decodeList<VirtualNodeTaint>(map['taints'], (value) => VirtualNodeTaint.fromMap((value as Map).cast<String, dynamic>()))),
-      virtualNodeName: map['virtualNodeName'] == null ? null : pulumi.Output.create<String>(map['virtualNodeName'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      eipInstanceId: map['eipInstanceId'] == null ? null : (map['eipInstanceId'] as String).input(),
+      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork'] as bool).input(),
+      kubeConfig: (map['kubeConfig'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<VirtualNodeTaint>(map['taints'], (value) => VirtualNodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNodeName: map['virtualNodeName'] == null ? null : (map['virtualNodeName'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

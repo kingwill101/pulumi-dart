@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NrqlAlertConditionNrql {
   /// The New Relic account ID to use as the basis for the NRQL alert condition's `query`; will default to `account_id` if unspecified.
-  final String? dataAccountId;
+  final pulumi.Input<String>? dataAccountId;
   /// NRQL queries are evaluated in one-minute time windows. The start time depends on the value you provide in the NRQL condition's `evaluation_offset`.
-  final int? evaluationOffset;
-  final String query;
+  final pulumi.Input<int>? evaluationOffset;
+  final pulumi.Input<String> query;
   /// NRQL queries are evaluated in one-minute time windows. The start time depends on the value you provide in the NRQL condition's `since_value`.
-  final String? sinceValue;
+  final pulumi.Input<String>? sinceValue;
 
   /// Creates a new [NrqlAlertConditionNrql].
   /// [dataAccountId] The New Relic account ID to use as the basis for the NRQL alert condition's `query`; will default to `account_id` if unspecified.
@@ -33,10 +34,10 @@ class NrqlAlertConditionNrql {
 
   factory NrqlAlertConditionNrql.fromMap(Map<String, dynamic> map) {
     return NrqlAlertConditionNrql(
-      dataAccountId: map['dataAccountId'] == null ? null : map['dataAccountId'] as String,
-      evaluationOffset: map['evaluationOffset'] == null ? null : map['evaluationOffset'] as int,
-      query: map['query'] as String,
-      sinceValue: map['sinceValue'] == null ? null : map['sinceValue'] as String,
+      dataAccountId: map['dataAccountId'] == null ? null : (map['dataAccountId'] as String).input(),
+      evaluationOffset: map['evaluationOffset'] == null ? null : (map['evaluationOffset'] as int).input(),
+      query: (map['query'] as String).input(),
+      sinceValue: map['sinceValue'] == null ? null : (map['sinceValue'] as String).input(),
     );
   }
 }

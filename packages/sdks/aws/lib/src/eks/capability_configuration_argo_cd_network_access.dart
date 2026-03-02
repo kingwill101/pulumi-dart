@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapabilityConfigurationArgoCdNetworkAccess {
   /// VPC Endpoint IDs.
-  final List<String>? vpceIds;
+  final pulumi.Input<List<String>>? vpceIds;
 
   /// Creates a new [CapabilityConfigurationArgoCdNetworkAccess].
   /// [vpceIds] VPC Endpoint IDs.
@@ -19,7 +20,7 @@ class CapabilityConfigurationArgoCdNetworkAccess {
 
   factory CapabilityConfigurationArgoCdNetworkAccess.fromMap(Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCdNetworkAccess(
-      vpceIds: map['vpceIds'] == null ? null : (map['vpceIds'] as List).cast<String>(),
+      vpceIds: map['vpceIds'] == null ? null : ((map['vpceIds'] as List).cast<String>()).input(),
     );
   }
 }

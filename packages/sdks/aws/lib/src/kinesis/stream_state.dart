@@ -48,33 +48,20 @@ class StreamState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   StreamState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? encryptionType,
-    pulumi.Output<bool>? enforceConsumerDeletion,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<int>? maxRecordSizeInKib,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? retentionPeriod,
-    pulumi.Output<int>? shardCount,
-    pulumi.Output<List<String>>? shardLevelMetrics,
-    pulumi.Output<StreamStreamModeDetails>? streamModeDetails,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      encryptionType = pulumi.Input.asOptionalInput<String>(encryptionType),
-      enforceConsumerDeletion = pulumi.Input.asOptionalInput<bool>(enforceConsumerDeletion),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      maxRecordSizeInKib = pulumi.Input.asOptionalInput<int>(maxRecordSizeInKib),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod),
-      shardCount = pulumi.Input.asOptionalInput<int>(shardCount),
-      shardLevelMetrics = pulumi.Input.asOptionalInput<List<String>>(shardLevelMetrics),
-      streamModeDetails = pulumi.Input.asOptionalInput<StreamStreamModeDetails>(streamModeDetails),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.encryptionType,
+    this.enforceConsumerDeletion,
+    this.kmsKeyId,
+    this.maxRecordSizeInKib,
+    this.name,
+    this.region,
+    this.retentionPeriod,
+    this.shardCount,
+    this.shardLevelMetrics,
+    this.streamModeDetails,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class StreamState {
 
   factory StreamState.fromMap(Map<String, dynamic> map) {
     return StreamState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      encryptionType: map['encryptionType'] == null ? null : pulumi.Output.create<String>(map['encryptionType'] as String),
-      enforceConsumerDeletion: map['enforceConsumerDeletion'] == null ? null : pulumi.Output.create<bool>(map['enforceConsumerDeletion'] as bool),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      maxRecordSizeInKib: map['maxRecordSizeInKib'] == null ? null : pulumi.Output.create<int>(map['maxRecordSizeInKib'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionPeriod: map['retentionPeriod'] == null ? null : pulumi.Output.create<int>(map['retentionPeriod'] as int),
-      shardCount: map['shardCount'] == null ? null : pulumi.Output.create<int>(map['shardCount'] as int),
-      shardLevelMetrics: map['shardLevelMetrics'] == null ? null : pulumi.Output.create<List<String>>((map['shardLevelMetrics'] as List).cast<String>()),
-      streamModeDetails: map['streamModeDetails'] == null ? null : pulumi.Output.create<StreamStreamModeDetails>(StreamStreamModeDetails.fromMap((map['streamModeDetails'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      enforceConsumerDeletion: map['enforceConsumerDeletion'] == null ? null : (map['enforceConsumerDeletion'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      maxRecordSizeInKib: map['maxRecordSizeInKib'] == null ? null : (map['maxRecordSizeInKib'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as int).input(),
+      shardLevelMetrics: map['shardLevelMetrics'] == null ? null : ((map['shardLevelMetrics'] as List).cast<String>()).input(),
+      streamModeDetails: map['streamModeDetails'] == null ? null : (StreamStreamModeDetails.fromMap((map['streamModeDetails'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

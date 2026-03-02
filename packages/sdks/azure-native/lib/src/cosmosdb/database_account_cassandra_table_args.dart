@@ -29,19 +29,13 @@ class DatabaseAccountCassandraTableArgs {
   /// [resourceGroupName] Name of an Azure resource group.
   /// [tableName] Cosmos DB table name.
   DatabaseAccountCassandraTableArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> keyspaceName,
-    required pulumi.Output<Map<String, String>> options,
-    required pulumi.Output<CassandraTableResource> resource,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? tableName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      keyspaceName = pulumi.Input.asInput<String>(keyspaceName),
-      options = pulumi.Input.asInput<Map<String, String>>(options),
-      resource = pulumi.Input.asInput<CassandraTableResource>(resource),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    required this.accountName,
+    required this.keyspaceName,
+    required this.options,
+    required this.resource,
+    required this.resourceGroupName,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DatabaseAccountCassandraTableArgs {
 
   factory DatabaseAccountCassandraTableArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountCassandraTableArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      keyspaceName: pulumi.Output.create<String>(map['keyspaceName'] as String),
-      options: pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      resource: pulumi.Output.create<CassandraTableResource>(CassandraTableResource.fromMap((map['resource'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      keyspaceName: (map['keyspaceName'] as String).input(),
+      options: ((map['options'] as Map).cast<String, String>()).input(),
+      resource: (CassandraTableResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

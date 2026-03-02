@@ -19,13 +19,10 @@ class VolumeSnapshotArgs {
   /// [tags] A list of the tags to be applied to this volume snapshot.
   /// [volumeId] The ID of the volume from which the volume snapshot originated.
   VolumeSnapshotArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? tags,
-    required pulumi.Output<String> volumeId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+    this.name,
+    this.tags,
+    required this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class VolumeSnapshotArgs {
 
   factory VolumeSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

@@ -42,29 +42,18 @@ class DomainRecordState {
   /// [ttlSec] 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
   /// [weight] The relative weight of this Record. Higher values are preferred.
   DomainRecordState({
-    pulumi.Output<int>? domainId,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? recordType,
-    pulumi.Output<String>? service,
-    pulumi.Output<String>? tag,
-    pulumi.Output<String>? target,
-    pulumi.Output<int>? ttlSec,
-    pulumi.Output<int>? weight,
-  }) :
-      domainId = pulumi.Input.asOptionalInput<int>(domainId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      recordType = pulumi.Input.asOptionalInput<String>(recordType),
-      service = pulumi.Input.asOptionalInput<String>(service),
-      tag = pulumi.Input.asOptionalInput<String>(tag),
-      target = pulumi.Input.asOptionalInput<String>(target),
-      ttlSec = pulumi.Input.asOptionalInput<int>(ttlSec),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.domainId,
+    this.name,
+    this.port,
+    this.priority,
+    this.protocol,
+    this.recordType,
+    this.service,
+    this.tag,
+    this.target,
+    this.ttlSec,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class DomainRecordState {
 
   factory DomainRecordState.fromMap(Map<String, dynamic> map) {
     return DomainRecordState(
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<int>(map['domainId'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      recordType: map['recordType'] == null ? null : pulumi.Output.create<String>(map['recordType'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
-      ttlSec: map['ttlSec'] == null ? null : pulumi.Output.create<int>(map['ttlSec'] as int),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      ttlSec: map['ttlSec'] == null ? null : (map['ttlSec'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

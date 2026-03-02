@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProactiveEngagementEmergencyContact {
   /// Additional notes regarding the contact.
-  final String? contactNotes;
+  final pulumi.Input<String>? contactNotes;
   /// A valid email address that will be used for this contact.
-  final String emailAddress;
+  final pulumi.Input<String> emailAddress;
   /// A phone number, starting with `+` and up to 15 digits that will be used for this contact.
-  final String? phoneNumber;
+  final pulumi.Input<String>? phoneNumber;
 
   /// Creates a new [ProactiveEngagementEmergencyContact].
   /// [contactNotes] Additional notes regarding the contact.
@@ -29,9 +30,9 @@ class ProactiveEngagementEmergencyContact {
 
   factory ProactiveEngagementEmergencyContact.fromMap(Map<String, dynamic> map) {
     return ProactiveEngagementEmergencyContact(
-      contactNotes: map['contactNotes'] == null ? null : map['contactNotes'] as String,
-      emailAddress: map['emailAddress'] as String,
-      phoneNumber: map['phoneNumber'] == null ? null : map['phoneNumber'] as String,
+      contactNotes: map['contactNotes'] == null ? null : (map['contactNotes'] as String).input(),
+      emailAddress: (map['emailAddress'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
     );
   }
 }

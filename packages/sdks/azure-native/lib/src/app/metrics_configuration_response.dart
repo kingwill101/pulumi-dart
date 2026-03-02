@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of Open Telemetry metrics
 class MetricsConfigurationResponse {
   /// Open telemetry metrics destinations
-  final List<String>? destinations;
+  final pulumi.Input<List<String>>? destinations;
   /// Boolean indicating if including keda metrics
-  final bool? includeKeda;
+  final pulumi.Input<bool>? includeKeda;
 
   /// Creates a new [MetricsConfigurationResponse].
   /// [destinations] Open telemetry metrics destinations
@@ -25,8 +26,8 @@ class MetricsConfigurationResponse {
 
   factory MetricsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return MetricsConfigurationResponse(
-      destinations: map['destinations'] == null ? null : (map['destinations'] as List).cast<String>(),
-      includeKeda: map['includeKeda'] == null ? null : map['includeKeda'] as bool,
+      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
+      includeKeda: map['includeKeda'] == null ? null : (map['includeKeda'] as bool).input(),
     );
   }
 }

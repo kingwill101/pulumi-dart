@@ -60,27 +60,17 @@ class RegionHealthSourceState {
   /// [sourceType] Specifies the type of the `HealthSource`. The only allowed value
   /// [sources] URLs to the source resources. Must be size 1. Must be a
   RegionHealthSourceState({
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<String>? healthAggregationPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLinkWithId,
-    pulumi.Output<String>? sourceType,
-    pulumi.Output<String>? sources,
-  }) :
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      healthAggregationPolicy = pulumi.Input.asOptionalInput<String>(healthAggregationPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLinkWithId = pulumi.Input.asOptionalInput<String>(selfLinkWithId),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      sources = pulumi.Input.asOptionalInput<String>(sources);
+    this.creationTimestamp,
+    this.description,
+    this.fingerprint,
+    this.healthAggregationPolicy,
+    this.name,
+    this.project,
+    this.region,
+    this.selfLinkWithId,
+    this.sourceType,
+    this.sources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,16 +89,16 @@ class RegionHealthSourceState {
 
   factory RegionHealthSourceState.fromMap(Map<String, dynamic> map) {
     return RegionHealthSourceState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      healthAggregationPolicy: map['healthAggregationPolicy'] == null ? null : pulumi.Output.create<String>(map['healthAggregationPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : pulumi.Output.create<String>(map['selfLinkWithId'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      sources: map['sources'] == null ? null : pulumi.Output.create<String>(map['sources'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      healthAggregationPolicy: map['healthAggregationPolicy'] == null ? null : (map['healthAggregationPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      sources: map['sources'] == null ? null : (map['sources'] as String).input(),
     );
   }
 }

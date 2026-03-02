@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dapr_response_app_health.dart';
 
 /// Container App Dapr configuration.
 class DaprResponse {
   /// Dapr application health check configuration
-  final DaprResponseAppHealth? appHealth;
+  final pulumi.Input<DaprResponseAppHealth>? appHealth;
   /// Dapr application identifier
-  final String? appId;
+  final pulumi.Input<String>? appId;
   /// Tells Dapr which port your application is listening on
-  final int? appPort;
+  final pulumi.Input<int>? appPort;
   /// Tells Dapr which protocol your application is using. Valid options are http and grpc. Default is http
-  final String? appProtocol;
+  final pulumi.Input<String>? appProtocol;
   /// Enables API logging for the Dapr sidecar
-  final bool? enableApiLogging;
+  final pulumi.Input<bool>? enableApiLogging;
   /// Boolean indicating if the Dapr side car is enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Increasing max size of request body http and grpc servers parameter in MB to handle uploading of big files. Default is 4 MB.
-  final int? httpMaxRequestSize;
+  final pulumi.Input<int>? httpMaxRequestSize;
   /// Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
-  final int? httpReadBufferSize;
+  final pulumi.Input<int>? httpReadBufferSize;
   /// Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
-  final String? logLevel;
+  final pulumi.Input<String>? logLevel;
   /// Maximum number of concurrent requests, events handled by the Dapr sidecar
-  final int? maxConcurrency;
+  final pulumi.Input<int>? maxConcurrency;
 
   /// Creates a new [DaprResponse].
   /// [appHealth] Dapr application health check configuration
@@ -51,7 +52,7 @@ class DaprResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appHealth': ?appHealth == null ? null : appHealth!.toMap(),
+      'appHealth': ?pulumi.Input.mapOptionalInputValue<DaprResponseAppHealth, Map<String, dynamic>>(appHealth, (value) => value.toMap()),
       'appId': ?appId,
       'appPort': ?appPort,
       'appProtocol': ?appProtocol,
@@ -66,16 +67,16 @@ class DaprResponse {
 
   factory DaprResponse.fromMap(Map<String, dynamic> map) {
     return DaprResponse(
-      appHealth: map['appHealth'] == null ? null : DaprResponseAppHealth.fromMap((map['appHealth'] as Map).cast<String, dynamic>()),
-      appId: map['appId'] == null ? null : map['appId'] as String,
-      appPort: map['appPort'] == null ? null : map['appPort'] as int,
-      appProtocol: map['appProtocol'] == null ? null : map['appProtocol'] as String,
-      enableApiLogging: map['enableApiLogging'] == null ? null : map['enableApiLogging'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      httpMaxRequestSize: map['httpMaxRequestSize'] == null ? null : map['httpMaxRequestSize'] as int,
-      httpReadBufferSize: map['httpReadBufferSize'] == null ? null : map['httpReadBufferSize'] as int,
-      logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
-      maxConcurrency: map['maxConcurrency'] == null ? null : map['maxConcurrency'] as int,
+      appHealth: map['appHealth'] == null ? null : (DaprResponseAppHealth.fromMap((map['appHealth'] as Map).cast<String, dynamic>())).input(),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      appPort: map['appPort'] == null ? null : (map['appPort'] as int).input(),
+      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol'] as String).input(),
+      enableApiLogging: map['enableApiLogging'] == null ? null : (map['enableApiLogging'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      httpMaxRequestSize: map['httpMaxRequestSize'] == null ? null : (map['httpMaxRequestSize'] as int).input(),
+      httpReadBufferSize: map['httpReadBufferSize'] == null ? null : (map['httpReadBufferSize'] as int).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as int).input(),
     );
   }
 }

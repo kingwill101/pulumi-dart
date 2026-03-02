@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MPI distribution configuration.
 class Mpi {
   /// Enum to determine the job distribution type.
   /// Expected value is 'Mpi'.
-  final String distributionType;
+  final pulumi.Input<String> distributionType;
   /// Number of processes per MPI node.
-  final int? processCountPerInstance;
+  final pulumi.Input<int>? processCountPerInstance;
 
   /// Creates a new [Mpi].
   /// [distributionType] Enum to determine the job distribution type.
@@ -26,8 +27,8 @@ class Mpi {
 
   factory Mpi.fromMap(Map<String, dynamic> map) {
     return Mpi(
-      distributionType: map['distributionType'] as String,
-      processCountPerInstance: map['processCountPerInstance'] == null ? null : map['processCountPerInstance'] as int,
+      distributionType: (map['distributionType'] as String).input(),
+      processCountPerInstance: map['processCountPerInstance'] == null ? null : (map['processCountPerInstance'] as int).input(),
     );
   }
 }

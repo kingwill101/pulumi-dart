@@ -23,17 +23,12 @@ class SpacesKeyState {
   /// [name] The name of the key
   /// [secretKey] The access key secret of the key
   SpacesKeyState({
-    pulumi.Output<String>? accessKey,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<List<SpacesKeyGrant>>? grants,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? secretKey,
-  }) :
-      accessKey = pulumi.Input.asOptionalInput<String>(accessKey),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      grants = pulumi.Input.asOptionalInput<List<SpacesKeyGrant>>(grants),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      secretKey = pulumi.Input.asOptionalInput<String>(secretKey);
+    this.accessKey,
+    this.createdAt,
+    this.grants,
+    this.name,
+    this.secretKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class SpacesKeyState {
 
   factory SpacesKeyState.fromMap(Map<String, dynamic> map) {
     return SpacesKeyState(
-      accessKey: map['accessKey'] == null ? null : pulumi.Output.create<String>(map['accessKey'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      grants: map['grants'] == null ? null : pulumi.Output.create<List<SpacesKeyGrant>>(pulumi.Input.decodeList<SpacesKeyGrant>(map['grants'], (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      secretKey: map['secretKey'] == null ? null : pulumi.Output.create<String>(map['secretKey'] as String),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<SpacesKeyGrant>(map['grants'], (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
     );
   }
 }

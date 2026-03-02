@@ -6,9 +6,9 @@ import 'draft_package_intune_app_metadata_item.dart';
 /// The metadata of Intune app(s) used for generation.
 class DraftPackageIntuneAppMetadata {
   /// The Metadata of the Intune App through intunewin file uploading.
-  final DraftPackageIntuneAppMetadataItem? intuneApp;
+  final pulumi.Input<DraftPackageIntuneAppMetadataItem>? intuneApp;
   /// The Metadata of dependencies of the Intune App through intunewin file uploading.
-  final List<DraftPackageIntuneAppMetadataItem>? intuneAppDependencies;
+  final pulumi.Input<List<DraftPackageIntuneAppMetadataItem>>? intuneAppDependencies;
 
   /// Creates a new [DraftPackageIntuneAppMetadata].
   /// [intuneApp] The Metadata of the Intune App through intunewin file uploading.
@@ -20,15 +20,15 @@ class DraftPackageIntuneAppMetadata {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'intuneApp': ?intuneApp == null ? null : intuneApp!.toMap(),
-      'intuneAppDependencies': ?intuneAppDependencies == null ? null : pulumi.Input.encodeList<DraftPackageIntuneAppMetadataItem, Map<String, dynamic>>(intuneAppDependencies!, (value) => value.toMap()),
+      'intuneApp': ?pulumi.Input.mapOptionalInputValue<DraftPackageIntuneAppMetadataItem, Map<String, dynamic>>(intuneApp, (value) => value.toMap()),
+      'intuneAppDependencies': ?pulumi.Input.mapOptionalInputValue<List<DraftPackageIntuneAppMetadataItem>, List<Map<String, dynamic>>>(intuneAppDependencies, (value) => pulumi.Input.encodeList<DraftPackageIntuneAppMetadataItem, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DraftPackageIntuneAppMetadata.fromMap(Map<String, dynamic> map) {
     return DraftPackageIntuneAppMetadata(
-      intuneApp: map['intuneApp'] == null ? null : DraftPackageIntuneAppMetadataItem.fromMap((map['intuneApp'] as Map).cast<String, dynamic>()),
-      intuneAppDependencies: map['intuneAppDependencies'] == null ? null : pulumi.Input.decodeList<DraftPackageIntuneAppMetadataItem>(map['intuneAppDependencies'], (value) => DraftPackageIntuneAppMetadataItem.fromMap((value as Map).cast<String, dynamic>())),
+      intuneApp: map['intuneApp'] == null ? null : (DraftPackageIntuneAppMetadataItem.fromMap((map['intuneApp'] as Map).cast<String, dynamic>())).input(),
+      intuneAppDependencies: map['intuneAppDependencies'] == null ? null : (pulumi.Input.decodeList<DraftPackageIntuneAppMetadataItem>(map['intuneAppDependencies'], (value) => DraftPackageIntuneAppMetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

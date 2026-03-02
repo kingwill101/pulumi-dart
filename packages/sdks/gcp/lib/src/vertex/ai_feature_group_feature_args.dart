@@ -34,21 +34,14 @@ class AiFeatureGroupFeatureArgs {
   /// [region] The region for the resource. It should be the same as the feature group's region.
   /// [versionColumnName] The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
   AiFeatureGroupFeatureArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> featureGroup,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? versionColumnName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      featureGroup = pulumi.Input.asInput<String>(featureGroup),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      versionColumnName = pulumi.Input.asOptionalInput<String>(versionColumnName);
+    this.description,
+    required this.featureGroup,
+    this.labels,
+    this.name,
+    this.project,
+    required this.region,
+    this.versionColumnName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class AiFeatureGroupFeatureArgs {
 
   factory AiFeatureGroupFeatureArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupFeatureArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      featureGroup: pulumi.Output.create<String>(map['featureGroup'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      versionColumnName: map['versionColumnName'] == null ? null : pulumi.Output.create<String>(map['versionColumnName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      featureGroup: (map['featureGroup'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName'] as String).input(),
     );
   }
 }

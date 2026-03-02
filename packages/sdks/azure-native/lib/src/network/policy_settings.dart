@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_settings_log_scrubbing.dart';
 
 /// Defines contents of a web application firewall global configuration.
 class PolicySettings {
   /// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-  final String? customBlockResponseBody;
+  final pulumi.Input<String>? customBlockResponseBody;
   /// If the action type is block, customer can override the response status code.
-  final int? customBlockResponseStatusCode;
+  final pulumi.Input<int>? customBlockResponseStatusCode;
   /// Whether allow WAF to enforce file upload limits.
-  final bool? fileUploadEnforcement;
+  final pulumi.Input<bool>? fileUploadEnforcement;
   /// Maximum file upload size in Mb for WAF.
-  final int? fileUploadLimitInMb;
+  final pulumi.Input<int>? fileUploadLimitInMb;
   /// Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
-  final int? jsChallengeCookieExpirationInMins;
+  final pulumi.Input<int>? jsChallengeCookieExpirationInMins;
   /// To scrub sensitive log fields
-  final PolicySettingsLogScrubbing? logScrubbing;
+  final pulumi.Input<PolicySettingsLogScrubbing>? logScrubbing;
   /// Maximum request body size in Kb for WAF.
-  final int? maxRequestBodySizeInKb;
+  final pulumi.Input<int>? maxRequestBodySizeInKb;
   /// The mode of the policy.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Whether to allow WAF to check request Body.
-  final bool? requestBodyCheck;
+  final pulumi.Input<bool>? requestBodyCheck;
   /// Whether allow WAF to enforce request body limits.
-  final bool? requestBodyEnforcement;
+  final pulumi.Input<bool>? requestBodyEnforcement;
   /// Max inspection limit in KB for request body inspection for WAF.
-  final int? requestBodyInspectLimitInKB;
+  final pulumi.Input<int>? requestBodyInspectLimitInKB;
   /// The state of the policy.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [PolicySettings].
   /// [customBlockResponseBody] If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
@@ -64,7 +65,7 @@ class PolicySettings {
       'fileUploadEnforcement': ?fileUploadEnforcement,
       'fileUploadLimitInMb': ?fileUploadLimitInMb,
       'jsChallengeCookieExpirationInMins': ?jsChallengeCookieExpirationInMins,
-      'logScrubbing': ?logScrubbing == null ? null : logScrubbing!.toMap(),
+      'logScrubbing': ?pulumi.Input.mapOptionalInputValue<PolicySettingsLogScrubbing, Map<String, dynamic>>(logScrubbing, (value) => value.toMap()),
       'maxRequestBodySizeInKb': ?maxRequestBodySizeInKb,
       'mode': ?mode,
       'requestBodyCheck': ?requestBodyCheck,
@@ -76,18 +77,18 @@ class PolicySettings {
 
   factory PolicySettings.fromMap(Map<String, dynamic> map) {
     return PolicySettings(
-      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : map['customBlockResponseBody'] as String,
-      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : map['customBlockResponseStatusCode'] as int,
-      fileUploadEnforcement: map['fileUploadEnforcement'] == null ? null : map['fileUploadEnforcement'] as bool,
-      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : map['fileUploadLimitInMb'] as int,
-      jsChallengeCookieExpirationInMins: map['jsChallengeCookieExpirationInMins'] == null ? null : map['jsChallengeCookieExpirationInMins'] as int,
-      logScrubbing: map['logScrubbing'] == null ? null : PolicySettingsLogScrubbing.fromMap((map['logScrubbing'] as Map).cast<String, dynamic>()),
-      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : map['maxRequestBodySizeInKb'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      requestBodyCheck: map['requestBodyCheck'] == null ? null : map['requestBodyCheck'] as bool,
-      requestBodyEnforcement: map['requestBodyEnforcement'] == null ? null : map['requestBodyEnforcement'] as bool,
-      requestBodyInspectLimitInKB: map['requestBodyInspectLimitInKB'] == null ? null : map['requestBodyInspectLimitInKB'] as int,
-      state: map['state'] == null ? null : map['state'] as String,
+      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : (map['customBlockResponseBody'] as String).input(),
+      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : (map['customBlockResponseStatusCode'] as int).input(),
+      fileUploadEnforcement: map['fileUploadEnforcement'] == null ? null : (map['fileUploadEnforcement'] as bool).input(),
+      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : (map['fileUploadLimitInMb'] as int).input(),
+      jsChallengeCookieExpirationInMins: map['jsChallengeCookieExpirationInMins'] == null ? null : (map['jsChallengeCookieExpirationInMins'] as int).input(),
+      logScrubbing: map['logScrubbing'] == null ? null : (PolicySettingsLogScrubbing.fromMap((map['logScrubbing'] as Map).cast<String, dynamic>())).input(),
+      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : (map['maxRequestBodySizeInKb'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck'] as bool).input(),
+      requestBodyEnforcement: map['requestBodyEnforcement'] == null ? null : (map['requestBodyEnforcement'] as bool).input(),
+      requestBodyInspectLimitInKB: map['requestBodyInspectLimitInKB'] == null ? null : (map['requestBodyInspectLimitInKB'] as int).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

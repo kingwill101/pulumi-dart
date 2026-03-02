@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the Connector.
 class ConnectorProperties {
   /// connector type
-  final String connectorType;
+  final pulumi.Input<String> connectorType;
 
   /// Creates a new [ConnectorProperties].
   /// [connectorType] connector type
@@ -20,7 +21,7 @@ class ConnectorProperties {
 
   factory ConnectorProperties.fromMap(Map<String, dynamic> map) {
     return ConnectorProperties(
-      connectorType: map['connectorType'] as String,
+      connectorType: (map['connectorType'] as String).input(),
     );
   }
 }

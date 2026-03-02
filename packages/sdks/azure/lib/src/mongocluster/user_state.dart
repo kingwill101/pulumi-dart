@@ -23,17 +23,12 @@ class UserState {
   /// [principalType] The principal type for the Mongo Cluster User. Possible values are `user` and `servicePrincipal`. Changing this forces a new resource to be created.
   /// [roles] One or more `role` blocks as defined below. Changing this forces a new resource to be created.
   UserState({
-    pulumi.Output<String>? identityProviderType,
-    pulumi.Output<String>? mongoClusterId,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<List<UserRole>>? roles,
-  }) :
-      identityProviderType = pulumi.Input.asOptionalInput<String>(identityProviderType),
-      mongoClusterId = pulumi.Input.asOptionalInput<String>(mongoClusterId),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      roles = pulumi.Input.asOptionalInput<List<UserRole>>(roles);
+    this.identityProviderType,
+    this.mongoClusterId,
+    this.objectId,
+    this.principalType,
+    this.roles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      identityProviderType: map['identityProviderType'] == null ? null : pulumi.Output.create<String>(map['identityProviderType'] as String),
-      mongoClusterId: map['mongoClusterId'] == null ? null : pulumi.Output.create<String>(map['mongoClusterId'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<UserRole>>(pulumi.Input.decodeList<UserRole>(map['roles'], (value) => UserRole.fromMap((value as Map).cast<String, dynamic>()))),
+      identityProviderType: map['identityProviderType'] == null ? null : (map['identityProviderType'] as String).input(),
+      mongoClusterId: map['mongoClusterId'] == null ? null : (map['mongoClusterId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<UserRole>(map['roles'], (value) => UserRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

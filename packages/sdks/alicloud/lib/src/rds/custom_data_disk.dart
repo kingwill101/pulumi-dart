@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomDataDisk {
   /// Instance storage type
   /// local_ssd: local SSD disk
   /// cloud_essd:ESSD PL1 cloud disk
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Cloud Disk Performance
   /// Currently only supports PL1
-  final String? performanceLevel;
+  final pulumi.Input<String>? performanceLevel;
   /// Instance storage space. Unit: GB.
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [CustomDataDisk].
   /// [category] Instance storage type
@@ -32,9 +33,9 @@ class CustomDataDisk {
 
   factory CustomDataDisk.fromMap(Map<String, dynamic> map) {
     return CustomDataDisk(
-      category: map['category'] == null ? null : map['category'] as String,
-      performanceLevel: map['performanceLevel'] == null ? null : map['performanceLevel'] as String,
-      size: map['size'] == null ? null : map['size'] as int,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

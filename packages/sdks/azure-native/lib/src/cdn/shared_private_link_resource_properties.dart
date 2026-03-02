@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_reference.dart';
 import 'shared_private_link_resource_status.dart';
 
 /// Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin.
 class SharedPrivateLinkResourceProperties {
   /// The group id from the provider of resource the shared private link resource is for.
-  final String? groupId;
+  final pulumi.Input<String>? groupId;
   /// The resource id of the resource the shared private link resource is for.
-  final ResourceReference? privateLink;
+  final pulumi.Input<ResourceReference>? privateLink;
   /// The location of the shared private link resource
-  final String? privateLinkLocation;
+  final pulumi.Input<String>? privateLinkLocation;
   /// The request message for requesting approval of the shared private link resource.
-  final String? requestMessage;
+  final pulumi.Input<String>? requestMessage;
   /// Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
-  final SharedPrivateLinkResourceStatus? status;
+  final pulumi.Input<SharedPrivateLinkResourceStatus>? status;
 
   /// Creates a new [SharedPrivateLinkResourceProperties].
   /// [groupId] The group id from the provider of resource the shared private link resource is for.
@@ -33,20 +34,20 @@ class SharedPrivateLinkResourceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupId': ?groupId,
-      'privateLink': ?privateLink == null ? null : privateLink!.toMap(),
+      'privateLink': ?pulumi.Input.mapOptionalInputValue<ResourceReference, Map<String, dynamic>>(privateLink, (value) => value.toMap()),
       'privateLinkLocation': ?privateLinkLocation,
       'requestMessage': ?requestMessage,
-      'status': ?status == null ? null : status!.value,
+      'status': ?pulumi.Input.mapOptionalInputValue<SharedPrivateLinkResourceStatus, String>(status, (value) => value.value),
     };
   }
 
   factory SharedPrivateLinkResourceProperties.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceProperties(
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
-      privateLink: map['privateLink'] == null ? null : ResourceReference.fromMap((map['privateLink'] as Map).cast<String, dynamic>()),
-      privateLinkLocation: map['privateLinkLocation'] == null ? null : map['privateLinkLocation'] as String,
-      requestMessage: map['requestMessage'] == null ? null : map['requestMessage'] as String,
-      status: map['status'] == null ? null : SharedPrivateLinkResourceStatus.fromValue(map['status'] as String),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      privateLink: map['privateLink'] == null ? null : (ResourceReference.fromMap((map['privateLink'] as Map).cast<String, dynamic>())).input(),
+      privateLinkLocation: map['privateLinkLocation'] == null ? null : (map['privateLinkLocation'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      status: map['status'] == null ? null : (SharedPrivateLinkResourceStatus.fromValue(map['status'] as String)).input(),
     );
   }
 }

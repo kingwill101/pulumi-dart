@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
   /// Available VM SKUs for the Azure SQL Virtual Machine.
-  final List<String>? availableVmSkus;
+  final pulumi.Input<List<String>>? availableVmSkus;
   /// The virtual machine family of the target SKU.
-  final String? virtualMachineFamily;
+  final pulumi.Input<String>? virtualMachineFamily;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory].
   /// [availableVmSkus] Available VM SKUs for the Azure SQL Virtual Machine.
@@ -24,8 +25,8 @@ class SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
 
   factory SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory(
-      availableVmSkus: map['availableVmSkus'] == null ? null : (map['availableVmSkus'] as List).cast<String>(),
-      virtualMachineFamily: map['virtualMachineFamily'] == null ? null : map['virtualMachineFamily'] as String,
+      availableVmSkus: map['availableVmSkus'] == null ? null : ((map['availableVmSkus'] as List).cast<String>()).input(),
+      virtualMachineFamily: map['virtualMachineFamily'] == null ? null : (map['virtualMachineFamily'] as String).input(),
     );
   }
 }

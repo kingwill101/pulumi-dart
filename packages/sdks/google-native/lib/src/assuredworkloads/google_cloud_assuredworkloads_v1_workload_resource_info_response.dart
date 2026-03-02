@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represent the resources that are children of this Workload.
 class GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse {
   /// Resource identifier. For a project this represents project_number.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// Indicates the type of resource.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse].
   /// [resourceId] Resource identifier. For a project this represents project_number.
@@ -25,8 +26,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse {
 
   factory GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse(
-      resourceId: map['resourceId'] as String,
-      resourceType: map['resourceType'] as String,
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

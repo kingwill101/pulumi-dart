@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to Storage Resource
 class StorageProfileResponse {
   /// Resource Id of Storage Resource
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [StorageProfileResponse].
   /// [id] Resource Id of Storage Resource
@@ -20,7 +21,7 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

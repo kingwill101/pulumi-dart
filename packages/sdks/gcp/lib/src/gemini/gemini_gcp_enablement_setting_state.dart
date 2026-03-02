@@ -54,31 +54,19 @@ class GeminiGcpEnablementSettingState {
   /// [updateTime] Update time stamp.
   /// [webGroundingType] Web grounding type.
   GeminiGcpEnablementSettingState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? disableWebGrounding,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<bool>? enableCustomerDataSharing,
-    pulumi.Output<String>? geminiGcpEnablementSettingId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<String>? webGroundingType,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      disableWebGrounding = pulumi.Input.asOptionalInput<bool>(disableWebGrounding),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      enableCustomerDataSharing = pulumi.Input.asOptionalInput<bool>(enableCustomerDataSharing),
-      geminiGcpEnablementSettingId = pulumi.Input.asOptionalInput<String>(geminiGcpEnablementSettingId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      webGroundingType = pulumi.Input.asOptionalInput<String>(webGroundingType);
+    this.createTime,
+    this.disableWebGrounding,
+    this.effectiveLabels,
+    this.enableCustomerDataSharing,
+    this.geminiGcpEnablementSettingId,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+    this.webGroundingType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class GeminiGcpEnablementSettingState {
 
   factory GeminiGcpEnablementSettingState.fromMap(Map<String, dynamic> map) {
     return GeminiGcpEnablementSettingState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      disableWebGrounding: map['disableWebGrounding'] == null ? null : pulumi.Output.create<bool>(map['disableWebGrounding'] as bool),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      enableCustomerDataSharing: map['enableCustomerDataSharing'] == null ? null : pulumi.Output.create<bool>(map['enableCustomerDataSharing'] as bool),
-      geminiGcpEnablementSettingId: map['geminiGcpEnablementSettingId'] == null ? null : pulumi.Output.create<String>(map['geminiGcpEnablementSettingId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      webGroundingType: map['webGroundingType'] == null ? null : pulumi.Output.create<String>(map['webGroundingType'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      disableWebGrounding: map['disableWebGrounding'] == null ? null : (map['disableWebGrounding'] as bool).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      enableCustomerDataSharing: map['enableCustomerDataSharing'] == null ? null : (map['enableCustomerDataSharing'] as bool).input(),
+      geminiGcpEnablementSettingId: map['geminiGcpEnablementSettingId'] == null ? null : (map['geminiGcpEnablementSettingId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType'] as String).input(),
     );
   }
 }

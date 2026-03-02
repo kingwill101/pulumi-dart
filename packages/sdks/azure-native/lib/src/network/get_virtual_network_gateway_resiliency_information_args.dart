@@ -19,13 +19,10 @@ class GetVirtualNetworkGatewayResiliencyInformationArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
   GetVirtualNetworkGatewayResiliencyInformationArgs({
-    pulumi.Output<bool>? attemptRefresh,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkGatewayName,
-  }) :
-      attemptRefresh = pulumi.Input.asOptionalInput<bool>(attemptRefresh),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkGatewayName = pulumi.Input.asInput<String>(virtualNetworkGatewayName);
+    this.attemptRefresh,
+    required this.resourceGroupName,
+    required this.virtualNetworkGatewayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualNetworkGatewayResiliencyInformationArgs {
 
   factory GetVirtualNetworkGatewayResiliencyInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayResiliencyInformationArgs(
-      attemptRefresh: map['attemptRefresh'] == null ? null : pulumi.Output.create<bool>(map['attemptRefresh'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkGatewayName: pulumi.Output.create<String>(map['virtualNetworkGatewayName'] as String),
+      attemptRefresh: map['attemptRefresh'] == null ? null : (map['attemptRefresh'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkGatewayName: (map['virtualNetworkGatewayName'] as String).input(),
     );
   }
 }

@@ -44,29 +44,18 @@ class DiskState {
   /// [status] The status of the disk.
   /// [tags] The label to which the instance is bound.
   DiskState({
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? diskName,
-    pulumi.Output<bool>? encrypted,
-    pulumi.Output<String>? ensRegionId,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      diskName = pulumi.Input.asOptionalInput<String>(diskName),
-      encrypted = pulumi.Input.asOptionalInput<bool>(encrypted),
-      ensRegionId = pulumi.Input.asOptionalInput<String>(ensRegionId),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.category,
+    this.createTime,
+    this.diskName,
+    this.encrypted,
+    this.ensRegionId,
+    this.kmsKeyId,
+    this.paymentType,
+    this.size,
+    this.snapshotId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class DiskState {
 
   factory DiskState.fromMap(Map<String, dynamic> map) {
     return DiskState(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      diskName: map['diskName'] == null ? null : pulumi.Output.create<String>(map['diskName'] as String),
-      encrypted: map['encrypted'] == null ? null : pulumi.Output.create<bool>(map['encrypted'] as bool),
-      ensRegionId: map['ensRegionId'] == null ? null : pulumi.Output.create<String>(map['ensRegionId'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

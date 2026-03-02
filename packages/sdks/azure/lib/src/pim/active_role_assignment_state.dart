@@ -30,21 +30,14 @@ class ActiveRoleAssignmentState {
   /// [scope] The scope for this role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
   /// [ticket] A `ticket` block as defined below. Changing this forces a new resource to be created.
   ActiveRoleAssignmentState({
-    pulumi.Output<String>? justification,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<ActiveRoleAssignmentSchedule>? schedule,
-    pulumi.Output<String>? scope,
-    pulumi.Output<ActiveRoleAssignmentTicket>? ticket,
-  }) :
-      justification = pulumi.Input.asOptionalInput<String>(justification),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      schedule = pulumi.Input.asOptionalInput<ActiveRoleAssignmentSchedule>(schedule),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      ticket = pulumi.Input.asOptionalInput<ActiveRoleAssignmentTicket>(ticket);
+    this.justification,
+    this.principalId,
+    this.principalType,
+    this.roleDefinitionId,
+    this.schedule,
+    this.scope,
+    this.ticket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ActiveRoleAssignmentState {
 
   factory ActiveRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentState(
-      justification: map['justification'] == null ? null : pulumi.Output.create<String>(map['justification'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<ActiveRoleAssignmentSchedule>(ActiveRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      ticket: map['ticket'] == null ? null : pulumi.Output.create<ActiveRoleAssignmentTicket>(ActiveRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())),
+      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      schedule: map['schedule'] == null ? null : (ActiveRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      ticket: map['ticket'] == null ? null : (ActiveRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

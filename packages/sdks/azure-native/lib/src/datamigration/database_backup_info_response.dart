@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about backup files when existing backup mode is used.
 class DatabaseBackupInfoResponse {
   /// The list of backup files for the current database.
-  final List<String> backupFiles;
+  final pulumi.Input<List<String>> backupFiles;
   /// Date and time when the backup operation finished.
-  final String backupFinishDate;
+  final pulumi.Input<String> backupFinishDate;
   /// Backup Type.
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// Database name.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Number of files in the backup set.
-  final int familyCount;
+  final pulumi.Input<int> familyCount;
   /// Whether the backup set is compressed
-  final bool isCompressed;
+  final pulumi.Input<bool> isCompressed;
   /// Database was damaged when backed up, but the backup operation was requested to continue despite errors.
-  final bool isDamaged;
+  final pulumi.Input<bool> isDamaged;
   /// Position of current database backup in the file.
-  final int position;
+  final pulumi.Input<int> position;
 
   /// Creates a new [DatabaseBackupInfoResponse].
   /// [backupFiles] The list of backup files for the current database.
@@ -55,14 +56,14 @@ class DatabaseBackupInfoResponse {
 
   factory DatabaseBackupInfoResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseBackupInfoResponse(
-      backupFiles: (map['backupFiles'] as List).cast<String>(),
-      backupFinishDate: map['backupFinishDate'] as String,
-      backupType: map['backupType'] as String,
-      databaseName: map['databaseName'] as String,
-      familyCount: map['familyCount'] as int,
-      isCompressed: map['isCompressed'] as bool,
-      isDamaged: map['isDamaged'] as bool,
-      position: map['position'] as int,
+      backupFiles: ((map['backupFiles'] as List).cast<String>()).input(),
+      backupFinishDate: (map['backupFinishDate'] as String).input(),
+      backupType: (map['backupType'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      familyCount: (map['familyCount'] as int).input(),
+      isCompressed: (map['isCompressed'] as bool).input(),
+      isDamaged: (map['isDamaged'] as bool).input(),
+      position: (map['position'] as int).input(),
     );
   }
 }

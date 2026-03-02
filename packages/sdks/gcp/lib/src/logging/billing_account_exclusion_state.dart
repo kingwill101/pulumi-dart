@@ -25,17 +25,12 @@ class BillingAccountExclusionState {
   /// [filter] The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// [name] The name of the logging exclusion.
   BillingAccountExclusionState({
-    pulumi.Output<String>? billingAccount,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? name,
-  }) :
-      billingAccount = pulumi.Input.asOptionalInput<String>(billingAccount),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.billingAccount,
+    this.description,
+    this.disabled,
+    this.filter,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BillingAccountExclusionState {
 
   factory BillingAccountExclusionState.fromMap(Map<String, dynamic> map) {
     return BillingAccountExclusionState(
-      billingAccount: map['billingAccount'] == null ? null : pulumi.Output.create<String>(map['billingAccount'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

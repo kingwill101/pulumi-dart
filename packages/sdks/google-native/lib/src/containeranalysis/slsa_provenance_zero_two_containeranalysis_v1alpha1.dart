@@ -9,17 +9,17 @@ import 'google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa
 /// SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
 class SlsaProvenanceZeroTwoContaineranalysisV1alpha1 {
   /// Lists the steps in the build.
-  final Map<String, String>? buildConfig;
+  final pulumi.Input<Map<String, String>>? buildConfig;
   /// URI indicating what type of build was performed.
-  final String? buildType;
+  final pulumi.Input<String>? buildType;
   /// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
-  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder? builder;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder>? builder;
   /// Identifies the event that kicked off the build.
-  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation? invocation;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation>? invocation;
   /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
-  final List<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>? materials;
+  final pulumi.Input<List<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>>? materials;
   /// Other properties of the build.
-  final GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata? metadata;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata>? metadata;
 
   /// Creates a new [SlsaProvenanceZeroTwoContaineranalysisV1alpha1].
   /// [buildConfig] Lists the steps in the build.
@@ -41,21 +41,21 @@ class SlsaProvenanceZeroTwoContaineranalysisV1alpha1 {
     return <String, dynamic>{
       'buildConfig': ?buildConfig,
       'buildType': ?buildType,
-      'builder': ?builder == null ? null : builder!.toMap(),
-      'invocation': ?invocation == null ? null : invocation!.toMap(),
-      'materials': ?materials == null ? null : pulumi.Input.encodeList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial, Map<String, dynamic>>(materials!, (value) => value.toMap()),
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'builder': ?pulumi.Input.mapOptionalInputValue<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder, Map<String, dynamic>>(builder, (value) => value.toMap()),
+      'invocation': ?pulumi.Input.mapOptionalInputValue<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation, Map<String, dynamic>>(invocation, (value) => value.toMap()),
+      'materials': ?pulumi.Input.mapOptionalInputValue<List<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>, List<Map<String, dynamic>>>(materials, (value) => pulumi.Input.encodeList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
   }
 
   factory SlsaProvenanceZeroTwoContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceZeroTwoContaineranalysisV1alpha1(
-      buildConfig: map['buildConfig'] == null ? null : (map['buildConfig'] as Map).cast<String, String>(),
-      buildType: map['buildType'] == null ? null : map['buildType'] as String,
-      builder: map['builder'] == null ? null : GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder.fromMap((map['builder'] as Map).cast<String, dynamic>()),
-      invocation: map['invocation'] == null ? null : GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation.fromMap((map['invocation'] as Map).cast<String, dynamic>()),
-      materials: map['materials'] == null ? null : pulumi.Input.decodeList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>(map['materials'], (value) => GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      buildConfig: map['buildConfig'] == null ? null : ((map['buildConfig'] as Map).cast<String, String>()).input(),
+      buildType: map['buildType'] == null ? null : (map['buildType'] as String).input(),
+      builder: map['builder'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder.fromMap((map['builder'] as Map).cast<String, dynamic>())).input(),
+      invocation: map['invocation'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation.fromMap((map['invocation'] as Map).cast<String, dynamic>())).input(),
+      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>(map['materials'], (value) => GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

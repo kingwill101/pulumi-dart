@@ -5,17 +5,17 @@ import 'get_grey_tag_routes_route_dubbo_rule_item.dart';
 
 class GetGreyTagRoutesRouteDubboRule {
   /// The conditional Patterns for Grayscale Rules.
-  final String condition;
+  final pulumi.Input<String> condition;
   /// The service group.
-  final String group;
+  final pulumi.Input<String> group;
   /// A list of conditions items.
-  final List<GetGreyTagRoutesRouteDubboRuleItem> items;
+  final pulumi.Input<List<GetGreyTagRoutesRouteDubboRuleItem>> items;
   /// The method name
-  final String methodName;
+  final pulumi.Input<String> methodName;
   /// The service name.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
   /// The service version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetGreyTagRoutesRouteDubboRule].
   /// [condition] The conditional Patterns for Grayscale Rules.
@@ -37,7 +37,7 @@ class GetGreyTagRoutesRouteDubboRule {
     return <String, dynamic>{
       'condition': condition,
       'group': group,
-      'items': pulumi.Input.encodeList<GetGreyTagRoutesRouteDubboRuleItem, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items': pulumi.Input.mapInputValue<List<GetGreyTagRoutesRouteDubboRuleItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<GetGreyTagRoutesRouteDubboRuleItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'methodName': methodName,
       'serviceName': serviceName,
       'version': version,
@@ -46,12 +46,12 @@ class GetGreyTagRoutesRouteDubboRule {
 
   factory GetGreyTagRoutesRouteDubboRule.fromMap(Map<String, dynamic> map) {
     return GetGreyTagRoutesRouteDubboRule(
-      condition: map['condition'] as String,
-      group: map['group'] as String,
-      items: pulumi.Input.decodeList<GetGreyTagRoutesRouteDubboRuleItem>(map['items'], (value) => GetGreyTagRoutesRouteDubboRuleItem.fromMap((value as Map).cast<String, dynamic>())),
-      methodName: map['methodName'] as String,
-      serviceName: map['serviceName'] as String,
-      version: map['version'] as String,
+      condition: (map['condition'] as String).input(),
+      group: (map['group'] as String).input(),
+      items: (pulumi.Input.decodeList<GetGreyTagRoutesRouteDubboRuleItem>(map['items'], (value) => GetGreyTagRoutesRouteDubboRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      methodName: (map['methodName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

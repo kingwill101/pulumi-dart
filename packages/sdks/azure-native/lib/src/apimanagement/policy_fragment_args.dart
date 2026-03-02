@@ -28,19 +28,13 @@ class PolicyFragmentArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Contents of the policy fragment.
   PolicyFragmentArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? id,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> value,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      value = pulumi.Input.asInput<String>(value);
+    this.description,
+    this.format,
+    this.id,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class PolicyFragmentArgs {
 
   factory PolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyFragmentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

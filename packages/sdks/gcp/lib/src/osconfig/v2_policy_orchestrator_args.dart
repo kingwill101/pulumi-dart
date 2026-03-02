@@ -58,23 +58,15 @@ class V2PolicyOrchestratorArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [state] Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
   V2PolicyOrchestratorArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<V2PolicyOrchestratorOrchestratedResource> orchestratedResource,
-    pulumi.Output<V2PolicyOrchestratorOrchestrationScope>? orchestrationScope,
-    required pulumi.Output<String> policyOrchestratorId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? state,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      orchestratedResource = pulumi.Input.asInput<V2PolicyOrchestratorOrchestratedResource>(orchestratedResource),
-      orchestrationScope = pulumi.Input.asOptionalInput<V2PolicyOrchestratorOrchestrationScope>(orchestrationScope),
-      policyOrchestratorId = pulumi.Input.asInput<String>(policyOrchestratorId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    required this.action,
+    this.description,
+    this.labels,
+    required this.orchestratedResource,
+    this.orchestrationScope,
+    required this.policyOrchestratorId,
+    this.project,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,14 +83,14 @@ class V2PolicyOrchestratorArgs {
 
   factory V2PolicyOrchestratorArgs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      orchestratedResource: pulumi.Output.create<V2PolicyOrchestratorOrchestratedResource>(V2PolicyOrchestratorOrchestratedResource.fromMap((map['orchestratedResource'] as Map).cast<String, dynamic>())),
-      orchestrationScope: map['orchestrationScope'] == null ? null : pulumi.Output.create<V2PolicyOrchestratorOrchestrationScope>(V2PolicyOrchestratorOrchestrationScope.fromMap((map['orchestrationScope'] as Map).cast<String, dynamic>())),
-      policyOrchestratorId: pulumi.Output.create<String>(map['policyOrchestratorId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      orchestratedResource: (V2PolicyOrchestratorOrchestratedResource.fromMap((map['orchestratedResource'] as Map).cast<String, dynamic>())).input(),
+      orchestrationScope: map['orchestrationScope'] == null ? null : (V2PolicyOrchestratorOrchestrationScope.fromMap((map['orchestrationScope'] as Map).cast<String, dynamic>())).input(),
+      policyOrchestratorId: (map['policyOrchestratorId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ReplicatingStep contains specific step details.
 class ReplicatingStepResponse {
   /// The source disks replication rate for the last 30 minutes in bytes per second.
-  final String lastThirtyMinutesAverageBytesPerSecond;
+  final pulumi.Input<String> lastThirtyMinutesAverageBytesPerSecond;
   /// The source disks replication rate for the last 2 minutes in bytes per second.
-  final String lastTwoMinutesAverageBytesPerSecond;
+  final pulumi.Input<String> lastTwoMinutesAverageBytesPerSecond;
   /// Replicated bytes in the step.
-  final String replicatedBytes;
+  final pulumi.Input<String> replicatedBytes;
   /// Total bytes to be handled in the step.
-  final String totalBytes;
+  final pulumi.Input<String> totalBytes;
 
   /// Creates a new [ReplicatingStepResponse].
   /// [lastThirtyMinutesAverageBytesPerSecond] The source disks replication rate for the last 30 minutes in bytes per second.
@@ -35,10 +36,10 @@ class ReplicatingStepResponse {
 
   factory ReplicatingStepResponse.fromMap(Map<String, dynamic> map) {
     return ReplicatingStepResponse(
-      lastThirtyMinutesAverageBytesPerSecond: map['lastThirtyMinutesAverageBytesPerSecond'] as String,
-      lastTwoMinutesAverageBytesPerSecond: map['lastTwoMinutesAverageBytesPerSecond'] as String,
-      replicatedBytes: map['replicatedBytes'] as String,
-      totalBytes: map['totalBytes'] as String,
+      lastThirtyMinutesAverageBytesPerSecond: (map['lastThirtyMinutesAverageBytesPerSecond'] as String).input(),
+      lastTwoMinutesAverageBytesPerSecond: (map['lastTwoMinutesAverageBytesPerSecond'] as String).input(),
+      replicatedBytes: (map['replicatedBytes'] as String).input(),
+      totalBytes: (map['totalBytes'] as String).input(),
     );
   }
 }

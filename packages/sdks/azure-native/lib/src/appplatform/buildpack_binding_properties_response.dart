@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'buildpack_binding_launch_properties_response.dart';
 
 /// Properties of a buildpack binding
 class BuildpackBindingPropertiesResponse {
   /// Buildpack Binding Type
-  final String? bindingType;
+  final pulumi.Input<String>? bindingType;
   /// The object describes the buildpack binding launch properties
-  final BuildpackBindingLaunchPropertiesResponse? launchProperties;
+  final pulumi.Input<BuildpackBindingLaunchPropertiesResponse>? launchProperties;
   /// State of the Buildpack Binding.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [BuildpackBindingPropertiesResponse].
   /// [bindingType] Buildpack Binding Type
@@ -24,16 +25,16 @@ class BuildpackBindingPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bindingType': ?bindingType,
-      'launchProperties': ?launchProperties == null ? null : launchProperties!.toMap(),
+      'launchProperties': ?pulumi.Input.mapOptionalInputValue<BuildpackBindingLaunchPropertiesResponse, Map<String, dynamic>>(launchProperties, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory BuildpackBindingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BuildpackBindingPropertiesResponse(
-      bindingType: map['bindingType'] == null ? null : map['bindingType'] as String,
-      launchProperties: map['launchProperties'] == null ? null : BuildpackBindingLaunchPropertiesResponse.fromMap((map['launchProperties'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
+      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
+      launchProperties: map['launchProperties'] == null ? null : (BuildpackBindingLaunchPropertiesResponse.fromMap((map['launchProperties'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

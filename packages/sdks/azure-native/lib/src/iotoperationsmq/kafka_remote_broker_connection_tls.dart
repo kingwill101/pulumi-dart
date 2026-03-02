@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kafka RemoteBrokerConnection TLS details
 class KafkaRemoteBrokerConnectionTls {
   /// Tls Enabled on Remote Broker Connection.
-  final bool tlsEnabled;
+  final pulumi.Input<bool> tlsEnabled;
   /// Trusted CA certificate name for Remote Broker.
-  final String? trustedCaCertificateConfigMap;
+  final pulumi.Input<String>? trustedCaCertificateConfigMap;
 
   /// Creates a new [KafkaRemoteBrokerConnectionTls].
   /// [tlsEnabled] Tls Enabled on Remote Broker Connection.
@@ -25,8 +26,8 @@ class KafkaRemoteBrokerConnectionTls {
 
   factory KafkaRemoteBrokerConnectionTls.fromMap(Map<String, dynamic> map) {
     return KafkaRemoteBrokerConnectionTls(
-      tlsEnabled: map['tlsEnabled'] as bool,
-      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : map['trustedCaCertificateConfigMap'] as String,
+      tlsEnabled: (map['tlsEnabled'] as bool).input(),
+      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : (map['trustedCaCertificateConfigMap'] as String).input(),
     );
   }
 }

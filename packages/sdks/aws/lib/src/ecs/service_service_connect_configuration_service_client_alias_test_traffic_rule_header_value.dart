@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue {
   /// Exact string value to match in the header.
-  final String exact;
+  final pulumi.Input<String> exact;
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue].
   /// [exact] Exact string value to match in the header.
@@ -19,7 +20,7 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderV
 
   factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue(
-      exact: map['exact'] as String,
+      exact: (map['exact'] as String).input(),
     );
   }
 }

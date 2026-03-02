@@ -5,17 +5,17 @@ import 'plan_workflow_step_route53_health_check_config_record_set.dart';
 
 class PlanWorkflowStepRoute53HealthCheckConfig {
   /// ARN of the cross-account role to assume.
-  final String? crossAccountRole;
+  final pulumi.Input<String>? crossAccountRole;
   /// External ID for cross-account role assumption.
-  final String? externalId;
+  final pulumi.Input<String>? externalId;
   /// Route53 hosted zone ID.
-  final String hostedZoneId;
+  final pulumi.Input<String> hostedZoneId;
   /// DNS record name.
-  final String recordName;
+  final pulumi.Input<String> recordName;
   /// Configuration block for record sets. See Record Set below.
-  final List<PlanWorkflowStepRoute53HealthCheckConfigRecordSet>? recordSets;
+  final pulumi.Input<List<PlanWorkflowStepRoute53HealthCheckConfigRecordSet>>? recordSets;
   /// Timeout in minutes.
-  final int? timeoutMinutes;
+  final pulumi.Input<int>? timeoutMinutes;
 
   /// Creates a new [PlanWorkflowStepRoute53HealthCheckConfig].
   /// [crossAccountRole] ARN of the cross-account role to assume.
@@ -39,19 +39,19 @@ class PlanWorkflowStepRoute53HealthCheckConfig {
       'externalId': ?externalId,
       'hostedZoneId': hostedZoneId,
       'recordName': recordName,
-      'recordSets': ?recordSets == null ? null : pulumi.Input.encodeList<PlanWorkflowStepRoute53HealthCheckConfigRecordSet, Map<String, dynamic>>(recordSets!, (value) => value.toMap()),
+      'recordSets': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepRoute53HealthCheckConfigRecordSet>, List<Map<String, dynamic>>>(recordSets, (value) => pulumi.Input.encodeList<PlanWorkflowStepRoute53HealthCheckConfigRecordSet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeoutMinutes': ?timeoutMinutes,
     };
   }
 
   factory PlanWorkflowStepRoute53HealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepRoute53HealthCheckConfig(
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      hostedZoneId: map['hostedZoneId'] as String,
-      recordName: map['recordName'] as String,
-      recordSets: map['recordSets'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepRoute53HealthCheckConfigRecordSet>(map['recordSets'], (value) => PlanWorkflowStepRoute53HealthCheckConfigRecordSet.fromMap((value as Map).cast<String, dynamic>())),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
+      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      hostedZoneId: (map['hostedZoneId'] as String).input(),
+      recordName: (map['recordName'] as String).input(),
+      recordSets: map['recordSets'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepRoute53HealthCheckConfigRecordSet>(map['recordSets'], (value) => PlanWorkflowStepRoute53HealthCheckConfigRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
     );
   }
 }

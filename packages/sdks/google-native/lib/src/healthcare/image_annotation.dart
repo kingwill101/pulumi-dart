@@ -6,9 +6,9 @@ import 'bounding_poly.dart';
 /// Image annotation.
 class ImageAnnotation {
   /// The list of polygons outlining the sensitive regions in the image.
-  final List<BoundingPoly>? boundingPolys;
+  final pulumi.Input<List<BoundingPoly>>? boundingPolys;
   /// 0-based index of the image frame. For example, an image frame in a DICOM instance.
-  final int? frameIndex;
+  final pulumi.Input<int>? frameIndex;
 
   /// Creates a new [ImageAnnotation].
   /// [boundingPolys] The list of polygons outlining the sensitive regions in the image.
@@ -20,15 +20,15 @@ class ImageAnnotation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'boundingPolys': ?boundingPolys == null ? null : pulumi.Input.encodeList<BoundingPoly, Map<String, dynamic>>(boundingPolys!, (value) => value.toMap()),
+      'boundingPolys': ?pulumi.Input.mapOptionalInputValue<List<BoundingPoly>, List<Map<String, dynamic>>>(boundingPolys, (value) => pulumi.Input.encodeList<BoundingPoly, Map<String, dynamic>>(value, (value) => value.toMap())),
       'frameIndex': ?frameIndex,
     };
   }
 
   factory ImageAnnotation.fromMap(Map<String, dynamic> map) {
     return ImageAnnotation(
-      boundingPolys: map['boundingPolys'] == null ? null : pulumi.Input.decodeList<BoundingPoly>(map['boundingPolys'], (value) => BoundingPoly.fromMap((value as Map).cast<String, dynamic>())),
-      frameIndex: map['frameIndex'] == null ? null : map['frameIndex'] as int,
+      boundingPolys: map['boundingPolys'] == null ? null : (pulumi.Input.decodeList<BoundingPoly>(map['boundingPolys'], (value) => BoundingPoly.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      frameIndex: map['frameIndex'] == null ? null : (map['frameIndex'] as int).input(),
     );
   }
 }

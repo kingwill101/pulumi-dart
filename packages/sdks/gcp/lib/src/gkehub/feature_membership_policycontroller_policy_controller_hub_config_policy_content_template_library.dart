@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
   /// Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
-  final String? installation;
+  final pulumi.Input<String>? installation;
 
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary].
   /// [installation] Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
@@ -19,7 +20,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTem
 
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary(
-      installation: map['installation'] == null ? null : map['installation'] as String,
+      installation: map['installation'] == null ? null : (map['installation'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_endpoints_configuration.dart';
 import 'integration_service_environmen_encryption_configuration.dart';
 import 'network_configuration.dart';
@@ -7,17 +8,17 @@ import 'network_configuration.dart';
 /// The integration service environment properties.
 class IntegrationServiceEnvironmentProperties {
   /// The encryption configuration.
-  final IntegrationServiceEnvironmenEncryptionConfiguration? encryptionConfiguration;
+  final pulumi.Input<IntegrationServiceEnvironmenEncryptionConfiguration>? encryptionConfiguration;
   /// The endpoints configuration.
-  final FlowEndpointsConfiguration? endpointsConfiguration;
+  final pulumi.Input<FlowEndpointsConfiguration>? endpointsConfiguration;
   /// Gets the tracking id.
-  final String? integrationServiceEnvironmentId;
+  final pulumi.Input<String>? integrationServiceEnvironmentId;
   /// The network configuration.
-  final NetworkConfiguration? networkConfiguration;
+  final pulumi.Input<NetworkConfiguration>? networkConfiguration;
   /// The provisioning state.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// The integration service environment state.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [IntegrationServiceEnvironmentProperties].
   /// [encryptionConfiguration] The encryption configuration.
@@ -37,10 +38,10 @@ class IntegrationServiceEnvironmentProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionConfiguration': ?encryptionConfiguration == null ? null : encryptionConfiguration!.toMap(),
-      'endpointsConfiguration': ?endpointsConfiguration == null ? null : endpointsConfiguration!.toMap(),
+      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<IntegrationServiceEnvironmenEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
+      'endpointsConfiguration': ?pulumi.Input.mapOptionalInputValue<FlowEndpointsConfiguration, Map<String, dynamic>>(endpointsConfiguration, (value) => value.toMap()),
       'integrationServiceEnvironmentId': ?integrationServiceEnvironmentId,
-      'networkConfiguration': ?networkConfiguration == null ? null : networkConfiguration!.toMap(),
+      'networkConfiguration': ?pulumi.Input.mapOptionalInputValue<NetworkConfiguration, Map<String, dynamic>>(networkConfiguration, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
       'state': ?state,
     };
@@ -48,12 +49,12 @@ class IntegrationServiceEnvironmentProperties {
 
   factory IntegrationServiceEnvironmentProperties.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentProperties(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : IntegrationServiceEnvironmenEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
-      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : FlowEndpointsConfiguration.fromMap((map['endpointsConfiguration'] as Map).cast<String, dynamic>()),
-      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : map['integrationServiceEnvironmentId'] as String,
-      networkConfiguration: map['networkConfiguration'] == null ? null : NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (IntegrationServiceEnvironmenEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : (FlowEndpointsConfiguration.fromMap((map['endpointsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId'] as String).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

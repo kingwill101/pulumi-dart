@@ -17,11 +17,9 @@ class ManagedOpArgs {
   /// [managedOpsName] Name of the resource.
   /// [properties] The resource-specific properties for this resource.
   ManagedOpArgs({
-    pulumi.Output<String>? managedOpsName,
-    pulumi.Output<ManagedOpsProperties>? properties,
-  }) :
-      managedOpsName = pulumi.Input.asOptionalInput<String>(managedOpsName),
-      properties = pulumi.Input.asOptionalInput<ManagedOpsProperties>(properties);
+    this.managedOpsName,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ManagedOpArgs {
 
   factory ManagedOpArgs.fromMap(Map<String, dynamic> map) {
     return ManagedOpArgs(
-      managedOpsName: map['managedOpsName'] == null ? null : pulumi.Output.create<String>(map['managedOpsName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ManagedOpsProperties>(ManagedOpsProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      managedOpsName: map['managedOpsName'] == null ? null : (map['managedOpsName'] as String).input(),
+      properties: map['properties'] == null ? null : (ManagedOpsProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

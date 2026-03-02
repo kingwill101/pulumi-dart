@@ -26,17 +26,12 @@ class GeoBackupPolicyArgs {
   /// [serverName] The name of the server.
   /// [state] The state of the geo backup policy.
   GeoBackupPolicyArgs({
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? geoBackupPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<GeoBackupPolicyState> state,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      geoBackupPolicyName = pulumi.Input.asOptionalInput<String>(geoBackupPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      state = pulumi.Input.asInput<GeoBackupPolicyState>(state);
+    required this.databaseName,
+    this.geoBackupPolicyName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GeoBackupPolicyArgs {
 
   factory GeoBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GeoBackupPolicyArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      geoBackupPolicyName: map['geoBackupPolicyName'] == null ? null : pulumi.Output.create<String>(map['geoBackupPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      state: pulumi.Output.create<GeoBackupPolicyState>(GeoBackupPolicyState.fromValue(map['state'] as String)),
+      databaseName: (map['databaseName'] as String).input(),
+      geoBackupPolicyName: map['geoBackupPolicyName'] == null ? null : (map['geoBackupPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      state: (GeoBackupPolicyState.fromValue(map['state'] as String)).input(),
     );
   }
 }

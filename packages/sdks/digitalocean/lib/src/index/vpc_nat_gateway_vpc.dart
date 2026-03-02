@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcNatGatewayVpc {
   /// Boolean flag indicating if this should be the default gateway in this VPC
-  final bool? defaultGateway;
+  final pulumi.Input<bool>? defaultGateway;
   /// The private IP of the VPC NAT Gateway
-  final String? gatewayIp;
+  final pulumi.Input<String>? gatewayIp;
   /// The ID of the ingress VPC
-  final String vpcUuid;
+  final pulumi.Input<String> vpcUuid;
 
   /// Creates a new [VpcNatGatewayVpc].
   /// [defaultGateway] Boolean flag indicating if this should be the default gateway in this VPC
@@ -29,9 +30,9 @@ class VpcNatGatewayVpc {
 
   factory VpcNatGatewayVpc.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayVpc(
-      defaultGateway: map['defaultGateway'] == null ? null : map['defaultGateway'] as bool,
-      gatewayIp: map['gatewayIp'] == null ? null : map['gatewayIp'] as String,
-      vpcUuid: map['vpcUuid'] as String,
+      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway'] as bool).input(),
+      gatewayIp: map['gatewayIp'] == null ? null : (map['gatewayIp'] as String).input(),
+      vpcUuid: (map['vpcUuid'] as String).input(),
     );
   }
 }

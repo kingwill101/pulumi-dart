@@ -24,17 +24,12 @@ class StandardsControlAssociationState {
   /// [standardsArn] The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
   /// [updatedReason] The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
   StandardsControlAssociationState({
-    pulumi.Output<String>? associationStatus,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityControlId,
-    pulumi.Output<String>? standardsArn,
-    pulumi.Output<String>? updatedReason,
-  }) :
-      associationStatus = pulumi.Input.asOptionalInput<String>(associationStatus),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityControlId = pulumi.Input.asOptionalInput<String>(securityControlId),
-      standardsArn = pulumi.Input.asOptionalInput<String>(standardsArn),
-      updatedReason = pulumi.Input.asOptionalInput<String>(updatedReason);
+    this.associationStatus,
+    this.region,
+    this.securityControlId,
+    this.standardsArn,
+    this.updatedReason,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class StandardsControlAssociationState {
 
   factory StandardsControlAssociationState.fromMap(Map<String, dynamic> map) {
     return StandardsControlAssociationState(
-      associationStatus: map['associationStatus'] == null ? null : pulumi.Output.create<String>(map['associationStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityControlId: map['securityControlId'] == null ? null : pulumi.Output.create<String>(map['securityControlId'] as String),
-      standardsArn: map['standardsArn'] == null ? null : pulumi.Output.create<String>(map['standardsArn'] as String),
-      updatedReason: map['updatedReason'] == null ? null : pulumi.Output.create<String>(map['updatedReason'] as String),
+      associationStatus: map['associationStatus'] == null ? null : (map['associationStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityControlId: map['securityControlId'] == null ? null : (map['securityControlId'] as String).input(),
+      standardsArn: map['standardsArn'] == null ? null : (map['standardsArn'] as String).input(),
+      updatedReason: map['updatedReason'] == null ? null : (map['updatedReason'] as String).input(),
     );
   }
 }

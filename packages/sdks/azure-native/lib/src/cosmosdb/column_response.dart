@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cosmos DB Cassandra table column
 class ColumnResponse {
   /// Name of the Cosmos DB Cassandra table column
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Type of the Cosmos DB Cassandra table column
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ColumnResponse].
   /// [name] Name of the Cosmos DB Cassandra table column
@@ -25,8 +26,8 @@ class ColumnResponse {
 
   factory ColumnResponse.fromMap(Map<String, dynamic> map) {
     return ColumnResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

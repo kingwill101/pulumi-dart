@@ -38,25 +38,16 @@ class CapabilityArgs {
   /// [timeouts] Optional.
   /// [type] Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
   CapabilityArgs({
-    required pulumi.Output<String> capabilityName,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<CapabilityConfiguration>? configuration,
-    required pulumi.Output<String> deletePropagationPolicy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<CapabilityTimeouts>? timeouts,
-    required pulumi.Output<String> type,
-  }) :
-      capabilityName = pulumi.Input.asInput<String>(capabilityName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      configuration = pulumi.Input.asOptionalInput<CapabilityConfiguration>(configuration),
-      deletePropagationPolicy = pulumi.Input.asInput<String>(deletePropagationPolicy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<CapabilityTimeouts>(timeouts),
-      type = pulumi.Input.asInput<String>(type);
+    required this.capabilityName,
+    required this.clusterName,
+    this.configuration,
+    required this.deletePropagationPolicy,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    this.timeouts,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class CapabilityArgs {
 
   factory CapabilityArgs.fromMap(Map<String, dynamic> map) {
     return CapabilityArgs(
-      capabilityName: pulumi.Output.create<String>(map['capabilityName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<CapabilityConfiguration>(CapabilityConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      deletePropagationPolicy: pulumi.Output.create<String>(map['deletePropagationPolicy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CapabilityTimeouts>(CapabilityTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      capabilityName: (map['capabilityName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      configuration: map['configuration'] == null ? null : (CapabilityConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      deletePropagationPolicy: (map['deletePropagationPolicy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (CapabilityTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

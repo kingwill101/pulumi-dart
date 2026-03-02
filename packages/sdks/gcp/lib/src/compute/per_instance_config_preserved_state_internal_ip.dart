@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'per_instance_config_preserved_state_internal_ip_ip_address.dart';
 
 class PerInstanceConfigPreservedStateInternalIp {
   /// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
   /// Default value is `NEVER`.
   /// Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-  final String? autoDelete;
+  final pulumi.Input<String>? autoDelete;
   /// The identifier for this object. Format specified above.
-  final String interfaceName;
+  final pulumi.Input<String> interfaceName;
   /// Ip address representation
   /// Structure is documented below.
-  final PerInstanceConfigPreservedStateInternalIpIpAddress? ipAddress;
+  final pulumi.Input<PerInstanceConfigPreservedStateInternalIpIpAddress>? ipAddress;
 
   /// Creates a new [PerInstanceConfigPreservedStateInternalIp].
   /// [autoDelete] These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
@@ -27,15 +28,15 @@ class PerInstanceConfigPreservedStateInternalIp {
     return <String, dynamic>{
       'autoDelete': ?autoDelete,
       'interfaceName': interfaceName,
-      'ipAddress': ?ipAddress == null ? null : ipAddress!.toMap(),
+      'ipAddress': ?pulumi.Input.mapOptionalInputValue<PerInstanceConfigPreservedStateInternalIpIpAddress, Map<String, dynamic>>(ipAddress, (value) => value.toMap()),
     };
   }
 
   factory PerInstanceConfigPreservedStateInternalIp.fromMap(Map<String, dynamic> map) {
     return PerInstanceConfigPreservedStateInternalIp(
-      autoDelete: map['autoDelete'] == null ? null : map['autoDelete'] as String,
-      interfaceName: map['interfaceName'] as String,
-      ipAddress: map['ipAddress'] == null ? null : PerInstanceConfigPreservedStateInternalIpIpAddress.fromMap((map['ipAddress'] as Map).cast<String, dynamic>()),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as String).input(),
+      interfaceName: (map['interfaceName'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (PerInstanceConfigPreservedStateInternalIpIpAddress.fromMap((map['ipAddress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -4,24 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_backups_automatic_disk.dart';
 
 class GetInstanceBackupsAutomatic {
-  final bool available;
+  final pulumi.Input<bool> available;
   /// A list of the labels of the Configuration profiles that are part of the Backup.
-  final List<String> configs;
+  final pulumi.Input<List<String>> configs;
   /// The date the Backup was taken.
-  final String created;
-  final List<GetInstanceBackupsAutomaticDisk> disks;
+  final pulumi.Input<String> created;
+  final pulumi.Input<List<GetInstanceBackupsAutomaticDisk>> disks;
   /// The date the Backup completed.
-  final String finished;
+  final pulumi.Input<String> finished;
   /// The unique ID of this Backup.
-  final int id;
+  final pulumi.Input<int> id;
   /// The label of this disk.
-  final String label;
+  final pulumi.Input<String> label;
   /// The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
-  final String status;
+  final pulumi.Input<String> status;
   /// This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
-  final String type;
+  final pulumi.Input<String> type;
   /// The date the Backup was most recently updated.
-  final String updated;
+  final pulumi.Input<String> updated;
 
   /// Creates a new [GetInstanceBackupsAutomatic].
   /// [available] Required.
@@ -52,7 +52,7 @@ class GetInstanceBackupsAutomatic {
       'available': available,
       'configs': configs,
       'created': created,
-      'disks': pulumi.Input.encodeList<GetInstanceBackupsAutomaticDisk, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks': pulumi.Input.mapInputValue<List<GetInstanceBackupsAutomaticDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<GetInstanceBackupsAutomaticDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'finished': finished,
       'id': id,
       'label': label,
@@ -64,16 +64,16 @@ class GetInstanceBackupsAutomatic {
 
   factory GetInstanceBackupsAutomatic.fromMap(Map<String, dynamic> map) {
     return GetInstanceBackupsAutomatic(
-      available: map['available'] as bool,
-      configs: (map['configs'] as List).cast<String>(),
-      created: map['created'] as String,
-      disks: pulumi.Input.decodeList<GetInstanceBackupsAutomaticDisk>(map['disks'], (value) => GetInstanceBackupsAutomaticDisk.fromMap((value as Map).cast<String, dynamic>())),
-      finished: map['finished'] as String,
-      id: map['id'] as int,
-      label: map['label'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
-      updated: map['updated'] as String,
+      available: (map['available'] as bool).input(),
+      configs: ((map['configs'] as List).cast<String>()).input(),
+      created: (map['created'] as String).input(),
+      disks: (pulumi.Input.decodeList<GetInstanceBackupsAutomaticDisk>(map['disks'], (value) => GetInstanceBackupsAutomaticDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      finished: (map['finished'] as String).input(),
+      id: (map['id'] as int).input(),
+      label: (map['label'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
+      updated: (map['updated'] as String).input(),
     );
   }
 }

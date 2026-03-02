@@ -41,25 +41,16 @@ class GetShareNetworkArgs {
   /// [securityServiceId] The security service IDs associated with
   /// [segmentationId] The share network segmentation ID.
   GetShareNetworkArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? ipVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkType,
-    pulumi.Output<String>? neutronNetId,
-    pulumi.Output<String>? neutronSubnetId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityServiceId,
-    pulumi.Output<int>? segmentationId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipVersion = pulumi.Input.asOptionalInput<int>(ipVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkType = pulumi.Input.asOptionalInput<String>(networkType),
-      neutronNetId = pulumi.Input.asOptionalInput<String>(neutronNetId),
-      neutronSubnetId = pulumi.Input.asOptionalInput<String>(neutronSubnetId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityServiceId = pulumi.Input.asOptionalInput<String>(securityServiceId),
-      segmentationId = pulumi.Input.asOptionalInput<int>(segmentationId);
+    this.description,
+    this.ipVersion,
+    this.name,
+    this.networkType,
+    this.neutronNetId,
+    this.neutronSubnetId,
+    this.region,
+    this.securityServiceId,
+    this.segmentationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class GetShareNetworkArgs {
 
   factory GetShareNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetShareNetworkArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<int>(map['ipVersion'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkType: map['networkType'] == null ? null : pulumi.Output.create<String>(map['networkType'] as String),
-      neutronNetId: map['neutronNetId'] == null ? null : pulumi.Output.create<String>(map['neutronNetId'] as String),
-      neutronSubnetId: map['neutronSubnetId'] == null ? null : pulumi.Output.create<String>(map['neutronSubnetId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityServiceId: map['securityServiceId'] == null ? null : pulumi.Output.create<String>(map['securityServiceId'] as String),
-      segmentationId: map['segmentationId'] == null ? null : pulumi.Output.create<int>(map['segmentationId'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      neutronNetId: map['neutronNetId'] == null ? null : (map['neutronNetId'] as String).input(),
+      neutronSubnetId: map['neutronSubnetId'] == null ? null : (map['neutronSubnetId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityServiceId: map['securityServiceId'] == null ? null : (map['securityServiceId'] as String).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
     );
   }
 }

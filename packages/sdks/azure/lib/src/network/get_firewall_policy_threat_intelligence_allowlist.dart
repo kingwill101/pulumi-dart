@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallPolicyThreatIntelligenceAllowlist {
-  final List<String> fqdns;
-  final List<String> ipAddresses;
+  final pulumi.Input<List<String>> fqdns;
+  final pulumi.Input<List<String>> ipAddresses;
 
   /// Creates a new [GetFirewallPolicyThreatIntelligenceAllowlist].
   /// [fqdns] Required.
@@ -22,8 +23,8 @@ class GetFirewallPolicyThreatIntelligenceAllowlist {
 
   factory GetFirewallPolicyThreatIntelligenceAllowlist.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyThreatIntelligenceAllowlist(
-      fqdns: (map['fqdns'] as List).cast<String>(),
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
+      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
     );
   }
 }

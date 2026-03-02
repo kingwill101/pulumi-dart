@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage {
-  final String revisionDatetime;
-  final String version;
+  final pulumi.Input<String> revisionDatetime;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage].
   /// [revisionDatetime] Required.
@@ -22,8 +23,8 @@ class GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage {
 
   factory GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage.fromMap(Map<String, dynamic> map) {
     return GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage(
-      revisionDatetime: map['revisionDatetime'] as String,
-      version: map['version'] as String,
+      revisionDatetime: (map['revisionDatetime'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

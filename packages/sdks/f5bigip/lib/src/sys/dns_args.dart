@@ -22,15 +22,11 @@ class DnsArgs {
   /// [numberOfDots] Configures the number of dots needed in a name before an initial absolute query will be made.
   /// [searches] Specifies the domains that the system searches for local domain lookups, to resolve local host names.
   DnsArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<List<String>> nameServers,
-    pulumi.Output<int>? numberOfDots,
-    pulumi.Output<List<String>>? searches,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      nameServers = pulumi.Input.asInput<List<String>>(nameServers),
-      numberOfDots = pulumi.Input.asOptionalInput<int>(numberOfDots),
-      searches = pulumi.Input.asOptionalInput<List<String>>(searches);
+    required this.description,
+    required this.nameServers,
+    this.numberOfDots,
+    this.searches,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DnsArgs {
 
   factory DnsArgs.fromMap(Map<String, dynamic> map) {
     return DnsArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      nameServers: pulumi.Output.create<List<String>>((map['nameServers'] as List).cast<String>()),
-      numberOfDots: map['numberOfDots'] == null ? null : pulumi.Output.create<int>(map['numberOfDots'] as int),
-      searches: map['searches'] == null ? null : pulumi.Output.create<List<String>>((map['searches'] as List).cast<String>()),
+      description: (map['description'] as String).input(),
+      nameServers: ((map['nameServers'] as List).cast<String>()).input(),
+      numberOfDots: map['numberOfDots'] == null ? null : (map['numberOfDots'] as int).input(),
+      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
     );
   }
 }

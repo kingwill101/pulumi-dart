@@ -28,21 +28,14 @@ class HostedPrivateVirtualInterfaceAccepterState {
   /// [virtualInterfaceId] The ID of the Direct Connect virtual interface to accept.
   /// [vpnGatewayId] The ID of the virtual private gateway to which to connect the virtual interface.
   HostedPrivateVirtualInterfaceAccepterState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? dxGatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? virtualInterfaceId,
-    pulumi.Output<String>? vpnGatewayId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      dxGatewayId = pulumi.Input.asOptionalInput<String>(dxGatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      virtualInterfaceId = pulumi.Input.asOptionalInput<String>(virtualInterfaceId),
-      vpnGatewayId = pulumi.Input.asOptionalInput<String>(vpnGatewayId);
+    this.arn,
+    this.dxGatewayId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.virtualInterfaceId,
+    this.vpnGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class HostedPrivateVirtualInterfaceAccepterState {
 
   factory HostedPrivateVirtualInterfaceAccepterState.fromMap(Map<String, dynamic> map) {
     return HostedPrivateVirtualInterfaceAccepterState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      dxGatewayId: map['dxGatewayId'] == null ? null : pulumi.Output.create<String>(map['dxGatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      virtualInterfaceId: map['virtualInterfaceId'] == null ? null : pulumi.Output.create<String>(map['virtualInterfaceId'] as String),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : pulumi.Output.create<String>(map['vpnGatewayId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      dxGatewayId: map['dxGatewayId'] == null ? null : (map['dxGatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      virtualInterfaceId: map['virtualInterfaceId'] == null ? null : (map['virtualInterfaceId'] as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetSqlVirtualMachineGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlVirtualMachineGroupName] Name of the SQL virtual machine group.
   GetSqlVirtualMachineGroupArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlVirtualMachineGroupName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlVirtualMachineGroupName = pulumi.Input.asInput<String>(sqlVirtualMachineGroupName);
+    required this.resourceGroupName,
+    required this.sqlVirtualMachineGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSqlVirtualMachineGroupArgs {
 
   factory GetSqlVirtualMachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlVirtualMachineGroupArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlVirtualMachineGroupName: pulumi.Output.create<String>(map['sqlVirtualMachineGroupName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlVirtualMachineGroupName: (map['sqlVirtualMachineGroupName'] as String).input(),
     );
   }
 }

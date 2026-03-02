@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_routers_router_bgp_advertised_ip_range.dart';
 
 class GetRoutersRouterBgp {
-  final String advertiseMode;
-  final List<String> advertisedGroups;
-  final List<GetRoutersRouterBgpAdvertisedIpRange> advertisedIpRanges;
-  final int asn;
-  final int keepaliveInterval;
+  final pulumi.Input<String> advertiseMode;
+  final pulumi.Input<List<String>> advertisedGroups;
+  final pulumi.Input<List<GetRoutersRouterBgpAdvertisedIpRange>> advertisedIpRanges;
+  final pulumi.Input<int> asn;
+  final pulumi.Input<int> keepaliveInterval;
 
   /// Creates a new [GetRoutersRouterBgp].
   /// [advertiseMode] Required.
@@ -28,7 +28,7 @@ class GetRoutersRouterBgp {
     return <String, dynamic>{
       'advertiseMode': advertiseMode,
       'advertisedGroups': advertisedGroups,
-      'advertisedIpRanges': pulumi.Input.encodeList<GetRoutersRouterBgpAdvertisedIpRange, Map<String, dynamic>>(advertisedIpRanges, (value) => value.toMap()),
+      'advertisedIpRanges': pulumi.Input.mapInputValue<List<GetRoutersRouterBgpAdvertisedIpRange>, List<Map<String, dynamic>>>(advertisedIpRanges, (value) => pulumi.Input.encodeList<GetRoutersRouterBgpAdvertisedIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'asn': asn,
       'keepaliveInterval': keepaliveInterval,
     };
@@ -36,11 +36,11 @@ class GetRoutersRouterBgp {
 
   factory GetRoutersRouterBgp.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterBgp(
-      advertiseMode: map['advertiseMode'] as String,
-      advertisedGroups: (map['advertisedGroups'] as List).cast<String>(),
-      advertisedIpRanges: pulumi.Input.decodeList<GetRoutersRouterBgpAdvertisedIpRange>(map['advertisedIpRanges'], (value) => GetRoutersRouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>())),
-      asn: map['asn'] as int,
-      keepaliveInterval: map['keepaliveInterval'] as int,
+      advertiseMode: (map['advertiseMode'] as String).input(),
+      advertisedGroups: ((map['advertisedGroups'] as List).cast<String>()).input(),
+      advertisedIpRanges: (pulumi.Input.decodeList<GetRoutersRouterBgpAdvertisedIpRange>(map['advertisedIpRanges'], (value) => GetRoutersRouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      asn: (map['asn'] as int).input(),
+      keepaliveInterval: (map['keepaliveInterval'] as int).input(),
     );
   }
 }

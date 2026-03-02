@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Legal agreement for a top level domain.
 class TldLegalAgreementResponse {
   /// Unique identifier for the agreement.
-  final String agreementKey;
+  final pulumi.Input<String> agreementKey;
   /// Agreement details.
-  final String content;
+  final pulumi.Input<String> content;
   /// Agreement title.
-  final String title;
+  final pulumi.Input<String> title;
   /// URL where a copy of the agreement details is hosted.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [TldLegalAgreementResponse].
   /// [agreementKey] Unique identifier for the agreement.
@@ -35,10 +36,10 @@ class TldLegalAgreementResponse {
 
   factory TldLegalAgreementResponse.fromMap(Map<String, dynamic> map) {
     return TldLegalAgreementResponse(
-      agreementKey: map['agreementKey'] as String,
-      content: map['content'] as String,
-      title: map['title'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      agreementKey: (map['agreementKey'] as String).input(),
+      content: (map['content'] as String).input(),
+      title: (map['title'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

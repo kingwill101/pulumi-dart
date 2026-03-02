@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeliveryChannelResourceSnapshotDeliverySlsProperties {
-  final String? oversizedDataOssTargetArn;
+  final pulumi.Input<String>? oversizedDataOssTargetArn;
 
   /// Creates a new [DeliveryChannelResourceSnapshotDeliverySlsProperties].
   /// [oversizedDataOssTargetArn] Optional.
@@ -18,7 +19,7 @@ class DeliveryChannelResourceSnapshotDeliverySlsProperties {
 
   factory DeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelResourceSnapshotDeliverySlsProperties(
-      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : map['oversizedDataOssTargetArn'] as String,
+      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : (map['oversizedDataOssTargetArn'] as String).input(),
     );
   }
 }

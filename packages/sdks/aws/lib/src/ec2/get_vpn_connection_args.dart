@@ -20,13 +20,10 @@ class GetVpnConnectionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpnConnectionId] Identifier of the EC2 VPN Connection.
   GetVpnConnectionArgs({
-    pulumi.Output<List<GetVpnConnectionFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vpnConnectionId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVpnConnectionFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpnConnectionId = pulumi.Input.asOptionalInput<String>(vpnConnectionId);
+    this.filters,
+    this.region,
+    this.vpnConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetVpnConnectionArgs {
 
   factory GetVpnConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnConnectionArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpnConnectionFilter>>(pulumi.Input.decodeList<GetVpnConnectionFilter>(map['filters'], (value) => GetVpnConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpnConnectionId: map['vpnConnectionId'] == null ? null : pulumi.Output.create<String>(map['vpnConnectionId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpnConnectionFilter>(map['filters'], (value) => GetVpnConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpnConnectionId: map['vpnConnectionId'] == null ? null : (map['vpnConnectionId'] as String).input(),
     );
   }
 }

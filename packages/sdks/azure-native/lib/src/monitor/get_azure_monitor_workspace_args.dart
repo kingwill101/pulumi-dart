@@ -16,11 +16,9 @@ class GetAzureMonitorWorkspaceArgs {
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAzureMonitorWorkspaceArgs({
-    required pulumi.Output<String> azureMonitorWorkspaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureMonitorWorkspaceName = pulumi.Input.asInput<String>(azureMonitorWorkspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureMonitorWorkspaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAzureMonitorWorkspaceArgs {
 
   factory GetAzureMonitorWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureMonitorWorkspaceArgs(
-      azureMonitorWorkspaceName: pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains information used to connect to a Kubernetes cluster
 class KubernetesConnectionDetailsResponse {
   /// Gets the Instance type.
   /// Expected value is 'Kubernetes'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets the kubeconfig for the cluster.
-  final String? kubeConfig;
+  final pulumi.Input<String>? kubeConfig;
 
   /// Creates a new [KubernetesConnectionDetailsResponse].
   /// [instanceType] Gets the Instance type.
@@ -26,8 +27,8 @@ class KubernetesConnectionDetailsResponse {
 
   factory KubernetesConnectionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesConnectionDetailsResponse(
-      instanceType: map['instanceType'] as String,
-      kubeConfig: map['kubeConfig'] == null ? null : map['kubeConfig'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig'] as String).input(),
     );
   }
 }

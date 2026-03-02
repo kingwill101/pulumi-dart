@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkEndpointListNetworkEndpoint {
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORT.
   /// The instance must be in the same zone as the network endpoint group.
-  final String? instance;
+  final pulumi.Input<String>? instance;
   /// IPv4 address of network endpoint. The IP address must belong
   /// to a VM in GCE (either the primary IP or as part of an aliased IP
   /// range).
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Port number of network endpoint.
   /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [NetworkEndpointListNetworkEndpoint].
   /// [instance] The name for a specific VM instance that the IP address belongs to.
@@ -35,9 +36,9 @@ class NetworkEndpointListNetworkEndpoint {
 
   factory NetworkEndpointListNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointListNetworkEndpoint(
-      instance: map['instance'] == null ? null : map['instance'] as String,
-      ipAddress: map['ipAddress'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

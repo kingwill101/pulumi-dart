@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainsDomainRecordLine {
-  final String fatherCode;
-  final String lineCode;
-  final String lineDisplayName;
-  final String lineName;
+  final pulumi.Input<String> fatherCode;
+  final pulumi.Input<String> lineCode;
+  final pulumi.Input<String> lineDisplayName;
+  final pulumi.Input<String> lineName;
 
   /// Creates a new [GetDomainsDomainRecordLine].
   /// [fatherCode] Required.
@@ -30,10 +31,10 @@ class GetDomainsDomainRecordLine {
 
   factory GetDomainsDomainRecordLine.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomainRecordLine(
-      fatherCode: map['fatherCode'] as String,
-      lineCode: map['lineCode'] as String,
-      lineDisplayName: map['lineDisplayName'] as String,
-      lineName: map['lineName'] as String,
+      fatherCode: (map['fatherCode'] as String).input(),
+      lineCode: (map['lineCode'] as String).input(),
+      lineDisplayName: (map['lineDisplayName'] as String).input(),
+      lineName: (map['lineName'] as String).input(),
     );
   }
 }

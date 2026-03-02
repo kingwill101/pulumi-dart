@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_vector_ingestion_configuration_chunking_configuration_fixed_size_chunking_configuration.dart';
 import 'agent_data_source_vector_ingestion_configuration_chunking_configuration_hierarchical_chunking_configuration.dart';
 import 'agent_data_source_vector_ingestion_configuration_chunking_configuration_semantic_chunking_configuration.dart';
 
 class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   /// Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.
-  final String chunkingStrategy;
+  final pulumi.Input<String> chunkingStrategy;
   /// Configurations for when you choose fixed-size chunking. Requires chunking_strategy as `FIXED_SIZE`. See `fixed_size_chunking_configuration` for details.
-  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration? fixedSizeChunkingConfiguration;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration>? fixedSizeChunkingConfiguration;
   /// Configurations for when you choose hierarchical chunking. Requires chunking_strategy as `HIERARCHICAL`. See `hierarchical_chunking_configuration` for details.
-  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration? hierarchicalChunkingConfiguration;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration>? hierarchicalChunkingConfiguration;
   /// Configurations for when you choose semantic chunking. Requires chunking_strategy as `SEMANTIC`. See `semantic_chunking_configuration` for details.
-  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration? semanticChunkingConfiguration;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration>? semanticChunkingConfiguration;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfiguration].
   /// [chunkingStrategy] Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.
@@ -29,18 +30,18 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'chunkingStrategy': chunkingStrategy,
-      'fixedSizeChunkingConfiguration': ?fixedSizeChunkingConfiguration == null ? null : fixedSizeChunkingConfiguration!.toMap(),
-      'hierarchicalChunkingConfiguration': ?hierarchicalChunkingConfiguration == null ? null : hierarchicalChunkingConfiguration!.toMap(),
-      'semanticChunkingConfiguration': ?semanticChunkingConfiguration == null ? null : semanticChunkingConfiguration!.toMap(),
+      'fixedSizeChunkingConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration, Map<String, dynamic>>(fixedSizeChunkingConfiguration, (value) => value.toMap()),
+      'hierarchicalChunkingConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration, Map<String, dynamic>>(hierarchicalChunkingConfiguration, (value) => value.toMap()),
+      'semanticChunkingConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration, Map<String, dynamic>>(semanticChunkingConfiguration, (value) => value.toMap()),
     };
   }
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfiguration(
-      chunkingStrategy: map['chunkingStrategy'] as String,
-      fixedSizeChunkingConfiguration: map['fixedSizeChunkingConfiguration'] == null ? null : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap((map['fixedSizeChunkingConfiguration'] as Map).cast<String, dynamic>()),
-      hierarchicalChunkingConfiguration: map['hierarchicalChunkingConfiguration'] == null ? null : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration.fromMap((map['hierarchicalChunkingConfiguration'] as Map).cast<String, dynamic>()),
-      semanticChunkingConfiguration: map['semanticChunkingConfiguration'] == null ? null : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap((map['semanticChunkingConfiguration'] as Map).cast<String, dynamic>()),
+      chunkingStrategy: (map['chunkingStrategy'] as String).input(),
+      fixedSizeChunkingConfiguration: map['fixedSizeChunkingConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap((map['fixedSizeChunkingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      hierarchicalChunkingConfiguration: map['hierarchicalChunkingConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration.fromMap((map['hierarchicalChunkingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      semanticChunkingConfiguration: map['semanticChunkingConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap((map['semanticChunkingConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'condition_iam_compute_beta.dart';
 import 'condition_op_compute_beta.dart';
 import 'condition_sys_compute_beta.dart';
@@ -7,15 +8,15 @@ import 'condition_sys_compute_beta.dart';
 /// This is deprecated and has no effect. Do not use.
 class ConditionComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final ConditionIamComputeBeta? iam;
+  final pulumi.Input<ConditionIamComputeBeta>? iam;
   /// This is deprecated and has no effect. Do not use.
-  final ConditionOpComputeBeta? op;
+  final pulumi.Input<ConditionOpComputeBeta>? op;
   /// This is deprecated and has no effect. Do not use.
-  final String? svc;
+  final pulumi.Input<String>? svc;
   /// This is deprecated and has no effect. Do not use.
-  final ConditionSysComputeBeta? sys;
+  final pulumi.Input<ConditionSysComputeBeta>? sys;
   /// This is deprecated and has no effect. Do not use.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ConditionComputeBeta].
   /// [iam] This is deprecated and has no effect. Do not use.
@@ -33,21 +34,21 @@ class ConditionComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iam': ?iam == null ? null : iam!.value,
-      'op': ?op == null ? null : op!.value,
+      'iam': ?pulumi.Input.mapOptionalInputValue<ConditionIamComputeBeta, String>(iam, (value) => value.value),
+      'op': ?pulumi.Input.mapOptionalInputValue<ConditionOpComputeBeta, String>(op, (value) => value.value),
       'svc': ?svc,
-      'sys': ?sys == null ? null : sys!.value,
+      'sys': ?pulumi.Input.mapOptionalInputValue<ConditionSysComputeBeta, String>(sys, (value) => value.value),
       'values': ?values,
     };
   }
 
   factory ConditionComputeBeta.fromMap(Map<String, dynamic> map) {
     return ConditionComputeBeta(
-      iam: map['iam'] == null ? null : ConditionIamComputeBeta.fromValue(map['iam'] as String),
-      op: map['op'] == null ? null : ConditionOpComputeBeta.fromValue(map['op'] as String),
-      svc: map['svc'] == null ? null : map['svc'] as String,
-      sys: map['sys'] == null ? null : ConditionSysComputeBeta.fromValue(map['sys'] as String),
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      iam: map['iam'] == null ? null : (ConditionIamComputeBeta.fromValue(map['iam'] as String)).input(),
+      op: map['op'] == null ? null : (ConditionOpComputeBeta.fromValue(map['op'] as String)).input(),
+      svc: map['svc'] == null ? null : (map['svc'] as String).input(),
+      sys: map['sys'] == null ? null : (ConditionSysComputeBeta.fromValue(map['sys'] as String)).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

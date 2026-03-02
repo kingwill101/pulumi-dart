@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceDeploymentConfigurationLinearConfiguration {
   /// Time to wait between deployment steps
-  final String stepBakeTimeInMinutes;
+  final pulumi.Input<String> stepBakeTimeInMinutes;
   /// Percentage of traffic to shift in each step
-  final double stepPercent;
+  final pulumi.Input<double> stepPercent;
 
   /// Creates a new [GetServiceDeploymentConfigurationLinearConfiguration].
   /// [stepBakeTimeInMinutes] Time to wait between deployment steps
@@ -24,8 +25,8 @@ class GetServiceDeploymentConfigurationLinearConfiguration {
 
   factory GetServiceDeploymentConfigurationLinearConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationLinearConfiguration(
-      stepBakeTimeInMinutes: map['stepBakeTimeInMinutes'] as String,
-      stepPercent: map['stepPercent'] as double,
+      stepBakeTimeInMinutes: (map['stepBakeTimeInMinutes'] as String).input(),
+      stepPercent: (map['stepPercent'] as double).input(),
     );
   }
 }

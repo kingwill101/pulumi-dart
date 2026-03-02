@@ -44,31 +44,19 @@ class ConsentArtifactHealthcareV1beta1Args {
   /// [userSignature] Optional. User's signature.
   /// [witnessSignature] Optional. A signature from a witness.
   ConsentArtifactHealthcareV1beta1Args({
-    pulumi.Output<List<ImageHealthcareV1beta1>>? consentContentScreenshots,
-    pulumi.Output<String>? consentContentVersion,
-    required pulumi.Output<String> consentStoreId,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<SignatureHealthcareV1beta1>? guardianSignature,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> userId,
-    pulumi.Output<SignatureHealthcareV1beta1>? userSignature,
-    pulumi.Output<SignatureHealthcareV1beta1>? witnessSignature,
-  }) :
-      consentContentScreenshots = pulumi.Input.asOptionalInput<List<ImageHealthcareV1beta1>>(consentContentScreenshots),
-      consentContentVersion = pulumi.Input.asOptionalInput<String>(consentContentVersion),
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      guardianSignature = pulumi.Input.asOptionalInput<SignatureHealthcareV1beta1>(guardianSignature),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userId = pulumi.Input.asInput<String>(userId),
-      userSignature = pulumi.Input.asOptionalInput<SignatureHealthcareV1beta1>(userSignature),
-      witnessSignature = pulumi.Input.asOptionalInput<SignatureHealthcareV1beta1>(witnessSignature);
+    this.consentContentScreenshots,
+    this.consentContentVersion,
+    required this.consentStoreId,
+    required this.datasetId,
+    this.guardianSignature,
+    this.location,
+    this.metadata,
+    this.name,
+    this.project,
+    required this.userId,
+    this.userSignature,
+    this.witnessSignature,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class ConsentArtifactHealthcareV1beta1Args {
 
   factory ConsentArtifactHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConsentArtifactHealthcareV1beta1Args(
-      consentContentScreenshots: map['consentContentScreenshots'] == null ? null : pulumi.Output.create<List<ImageHealthcareV1beta1>>(pulumi.Input.decodeList<ImageHealthcareV1beta1>(map['consentContentScreenshots'], (value) => ImageHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
-      consentContentVersion: map['consentContentVersion'] == null ? null : pulumi.Output.create<String>(map['consentContentVersion'] as String),
-      consentStoreId: pulumi.Output.create<String>(map['consentStoreId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      guardianSignature: map['guardianSignature'] == null ? null : pulumi.Output.create<SignatureHealthcareV1beta1>(SignatureHealthcareV1beta1.fromMap((map['guardianSignature'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
-      userSignature: map['userSignature'] == null ? null : pulumi.Output.create<SignatureHealthcareV1beta1>(SignatureHealthcareV1beta1.fromMap((map['userSignature'] as Map).cast<String, dynamic>())),
-      witnessSignature: map['witnessSignature'] == null ? null : pulumi.Output.create<SignatureHealthcareV1beta1>(SignatureHealthcareV1beta1.fromMap((map['witnessSignature'] as Map).cast<String, dynamic>())),
+      consentContentScreenshots: map['consentContentScreenshots'] == null ? null : (pulumi.Input.decodeList<ImageHealthcareV1beta1>(map['consentContentScreenshots'], (value) => ImageHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consentContentVersion: map['consentContentVersion'] == null ? null : (map['consentContentVersion'] as String).input(),
+      consentStoreId: (map['consentStoreId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      guardianSignature: map['guardianSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['guardianSignature'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      userSignature: map['userSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['userSignature'] as Map).cast<String, dynamic>())).input(),
+      witnessSignature: map['witnessSignature'] == null ? null : (SignatureHealthcareV1beta1.fromMap((map['witnessSignature'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

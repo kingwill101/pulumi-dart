@@ -29,19 +29,13 @@ class GetResourceShareArgs {
   /// [resourceShareStatus] Specifies that you want to retrieve details of only those resource shares that have this status. Valid values are `PENDING`, `ACTIVE`, `FAILED`, `DELETING`, and `DELETED`.
   /// [tags] Tags attached to the resource share.
   GetResourceShareArgs({
-    pulumi.Output<List<GetResourceShareFilter>>? filters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceOwner,
-    pulumi.Output<String>? resourceShareStatus,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetResourceShareFilter>>(filters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceOwner = pulumi.Input.asInput<String>(resourceOwner),
-      resourceShareStatus = pulumi.Input.asOptionalInput<String>(resourceShareStatus),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.name,
+    this.region,
+    required this.resourceOwner,
+    this.resourceShareStatus,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GetResourceShareArgs {
 
   factory GetResourceShareArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceShareArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetResourceShareFilter>>(pulumi.Input.decodeList<GetResourceShareFilter>(map['filters'], (value) => GetResourceShareFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceOwner: pulumi.Output.create<String>(map['resourceOwner'] as String),
-      resourceShareStatus: map['resourceShareStatus'] == null ? null : pulumi.Output.create<String>(map['resourceShareStatus'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetResourceShareFilter>(map['filters'], (value) => GetResourceShareFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceOwner: (map['resourceOwner'] as String).input(),
+      resourceShareStatus: map['resourceShareStatus'] == null ? null : (map['resourceShareStatus'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

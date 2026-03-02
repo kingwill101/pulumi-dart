@@ -21,15 +21,11 @@ class NotificationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [topicArn] Topic ARN for notifications to be sent through
   NotificationState({
-    pulumi.Output<List<String>>? groupNames,
-    pulumi.Output<List<NotificationType>>? notifications,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? topicArn,
-  }) :
-      groupNames = pulumi.Input.asOptionalInput<List<String>>(groupNames),
-      notifications = pulumi.Input.asOptionalInput<List<NotificationType>>(notifications),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      topicArn = pulumi.Input.asOptionalInput<String>(topicArn);
+    this.groupNames,
+    this.notifications,
+    this.region,
+    this.topicArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class NotificationState {
 
   factory NotificationState.fromMap(Map<String, dynamic> map) {
     return NotificationState(
-      groupNames: map['groupNames'] == null ? null : pulumi.Output.create<List<String>>((map['groupNames'] as List).cast<String>()),
-      notifications: map['notifications'] == null ? null : pulumi.Output.create<List<NotificationType>>(pulumi.Input.decodeList<NotificationType>(map['notifications'], (value) => NotificationType.fromValue(value as String))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      topicArn: map['topicArn'] == null ? null : pulumi.Output.create<String>(map['topicArn'] as String),
+      groupNames: map['groupNames'] == null ? null : ((map['groupNames'] as List).cast<String>()).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<NotificationType>(map['notifications'], (value) => NotificationType.fromValue(value as String))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
     );
   }
 }

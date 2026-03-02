@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterConfidentialComputing {
   /// Should the SGX quote helper be enabled?
-  final bool sgxQuoteHelperEnabled;
+  final pulumi.Input<bool> sgxQuoteHelperEnabled;
 
   /// Creates a new [KubernetesClusterConfidentialComputing].
   /// [sgxQuoteHelperEnabled] Should the SGX quote helper be enabled?
@@ -19,7 +20,7 @@ class KubernetesClusterConfidentialComputing {
 
   factory KubernetesClusterConfidentialComputing.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterConfidentialComputing(
-      sgxQuoteHelperEnabled: map['sgxQuoteHelperEnabled'] as bool,
+      sgxQuoteHelperEnabled: (map['sgxQuoteHelperEnabled'] as bool).input(),
     );
   }
 }

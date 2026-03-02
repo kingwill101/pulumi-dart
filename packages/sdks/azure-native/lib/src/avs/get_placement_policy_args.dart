@@ -22,15 +22,11 @@ class GetPlacementPolicyArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPlacementPolicyArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> placementPolicyName,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      placementPolicyName = pulumi.Input.asInput<String>(placementPolicyName),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.placementPolicyName,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPlacementPolicyArgs {
 
   factory GetPlacementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPlacementPolicyArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      placementPolicyName: pulumi.Output.create<String>(map['placementPolicyName'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      placementPolicyName: (map['placementPolicyName'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

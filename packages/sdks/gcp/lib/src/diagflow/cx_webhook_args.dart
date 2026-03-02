@@ -42,25 +42,16 @@ class CxWebhookArgs {
   /// [serviceDirectory] Configuration for a Service Directory service.
   /// [timeout] Webhook execution timeout.
   CxWebhookArgs({
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableSpellCorrection,
-    pulumi.Output<bool>? enableStackdriverLogging,
-    pulumi.Output<CxWebhookGenericWebService>? genericWebService,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? securitySettings,
-    pulumi.Output<CxWebhookServiceDirectory>? serviceDirectory,
-    pulumi.Output<String>? timeout,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableSpellCorrection = pulumi.Input.asOptionalInput<bool>(enableSpellCorrection),
-      enableStackdriverLogging = pulumi.Input.asOptionalInput<bool>(enableStackdriverLogging),
-      genericWebService = pulumi.Input.asOptionalInput<CxWebhookGenericWebService>(genericWebService),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      securitySettings = pulumi.Input.asOptionalInput<String>(securitySettings),
-      serviceDirectory = pulumi.Input.asOptionalInput<CxWebhookServiceDirectory>(serviceDirectory),
-      timeout = pulumi.Input.asOptionalInput<String>(timeout);
+    this.disabled,
+    required this.displayName,
+    this.enableSpellCorrection,
+    this.enableStackdriverLogging,
+    this.genericWebService,
+    this.parent,
+    this.securitySettings,
+    this.serviceDirectory,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class CxWebhookArgs {
 
   factory CxWebhookArgs.fromMap(Map<String, dynamic> map) {
     return CxWebhookArgs(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableSpellCorrection: map['enableSpellCorrection'] == null ? null : pulumi.Output.create<bool>(map['enableSpellCorrection'] as bool),
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : pulumi.Output.create<bool>(map['enableStackdriverLogging'] as bool),
-      genericWebService: map['genericWebService'] == null ? null : pulumi.Output.create<CxWebhookGenericWebService>(CxWebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      securitySettings: map['securitySettings'] == null ? null : pulumi.Output.create<String>(map['securitySettings'] as String),
-      serviceDirectory: map['serviceDirectory'] == null ? null : pulumi.Output.create<CxWebhookServiceDirectory>(CxWebhookServiceDirectory.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<String>(map['timeout'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      enableSpellCorrection: map['enableSpellCorrection'] == null ? null : (map['enableSpellCorrection'] as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
+      genericWebService: map['genericWebService'] == null ? null : (CxWebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings'] as String).input(),
+      serviceDirectory: map['serviceDirectory'] == null ? null : (CxWebhookServiceDirectory.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

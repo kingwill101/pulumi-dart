@@ -53,35 +53,21 @@ class RestApiArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RestApiArgs({
-    pulumi.Output<String>? apiKeySource,
-    pulumi.Output<List<String>>? binaryMediaTypes,
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableExecuteApiEndpoint,
-    pulumi.Output<RestApiEndpointConfiguration>? endpointConfiguration,
-    pulumi.Output<bool>? failOnWarnings,
-    pulumi.Output<String>? minimumCompressionSize,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? putRestApiMode,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      apiKeySource = pulumi.Input.asOptionalInput<String>(apiKeySource),
-      binaryMediaTypes = pulumi.Input.asOptionalInput<List<String>>(binaryMediaTypes),
-      body = pulumi.Input.asOptionalInput<String>(body),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableExecuteApiEndpoint = pulumi.Input.asOptionalInput<bool>(disableExecuteApiEndpoint),
-      endpointConfiguration = pulumi.Input.asOptionalInput<RestApiEndpointConfiguration>(endpointConfiguration),
-      failOnWarnings = pulumi.Input.asOptionalInput<bool>(failOnWarnings),
-      minimumCompressionSize = pulumi.Input.asOptionalInput<String>(minimumCompressionSize),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      putRestApiMode = pulumi.Input.asOptionalInput<String>(putRestApiMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.apiKeySource,
+    this.binaryMediaTypes,
+    this.body,
+    this.description,
+    this.disableExecuteApiEndpoint,
+    this.endpointConfiguration,
+    this.failOnWarnings,
+    this.minimumCompressionSize,
+    this.name,
+    this.parameters,
+    this.policy,
+    this.putRestApiMode,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class RestApiArgs {
 
   factory RestApiArgs.fromMap(Map<String, dynamic> map) {
     return RestApiArgs(
-      apiKeySource: map['apiKeySource'] == null ? null : pulumi.Output.create<String>(map['apiKeySource'] as String),
-      binaryMediaTypes: map['binaryMediaTypes'] == null ? null : pulumi.Output.create<List<String>>((map['binaryMediaTypes'] as List).cast<String>()),
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableExecuteApiEndpoint: map['disableExecuteApiEndpoint'] == null ? null : pulumi.Output.create<bool>(map['disableExecuteApiEndpoint'] as bool),
-      endpointConfiguration: map['endpointConfiguration'] == null ? null : pulumi.Output.create<RestApiEndpointConfiguration>(RestApiEndpointConfiguration.fromMap((map['endpointConfiguration'] as Map).cast<String, dynamic>())),
-      failOnWarnings: map['failOnWarnings'] == null ? null : pulumi.Output.create<bool>(map['failOnWarnings'] as bool),
-      minimumCompressionSize: map['minimumCompressionSize'] == null ? null : pulumi.Output.create<String>(map['minimumCompressionSize'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      putRestApiMode: map['putRestApiMode'] == null ? null : pulumi.Output.create<String>(map['putRestApiMode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      apiKeySource: map['apiKeySource'] == null ? null : (map['apiKeySource'] as String).input(),
+      binaryMediaTypes: map['binaryMediaTypes'] == null ? null : ((map['binaryMediaTypes'] as List).cast<String>()).input(),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableExecuteApiEndpoint: map['disableExecuteApiEndpoint'] == null ? null : (map['disableExecuteApiEndpoint'] as bool).input(),
+      endpointConfiguration: map['endpointConfiguration'] == null ? null : (RestApiEndpointConfiguration.fromMap((map['endpointConfiguration'] as Map).cast<String, dynamic>())).input(),
+      failOnWarnings: map['failOnWarnings'] == null ? null : (map['failOnWarnings'] as bool).input(),
+      minimumCompressionSize: map['minimumCompressionSize'] == null ? null : (map['minimumCompressionSize'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      putRestApiMode: map['putRestApiMode'] == null ? null : (map['putRestApiMode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

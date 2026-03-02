@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelDestinationSetting {
   /// Key used to extract the password from EC2 Parameter store.
-  final String? passwordParam;
+  final pulumi.Input<String>? passwordParam;
   /// Stream name RTMP destinations (URLs of type rtmp://)
-  final String? streamName;
+  final pulumi.Input<String>? streamName;
   /// A URL specifying a destination.
-  final String? url;
+  final pulumi.Input<String>? url;
   /// Username for destination.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ChannelDestinationSetting].
   /// [passwordParam] Key used to extract the password from EC2 Parameter store.
@@ -34,10 +35,10 @@ class ChannelDestinationSetting {
 
   factory ChannelDestinationSetting.fromMap(Map<String, dynamic> map) {
     return ChannelDestinationSetting(
-      passwordParam: map['passwordParam'] == null ? null : map['passwordParam'] as String,
-      streamName: map['streamName'] == null ? null : map['streamName'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      passwordParam: map['passwordParam'] == null ? null : (map['passwordParam'] as String).input(),
+      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

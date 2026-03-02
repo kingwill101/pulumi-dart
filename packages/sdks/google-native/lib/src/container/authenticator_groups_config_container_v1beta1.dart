@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for returning group information from authenticators.
 class AuthenticatorGroupsConfigContainerV1beta1 {
   /// Whether this cluster should return group membership lookups during authentication using a group of security groups.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The name of the security group-of-groups to be used. Only relevant if enabled = true.
-  final String? securityGroup;
+  final pulumi.Input<String>? securityGroup;
 
   /// Creates a new [AuthenticatorGroupsConfigContainerV1beta1].
   /// [enabled] Whether this cluster should return group membership lookups during authentication using a group of security groups.
@@ -25,8 +26,8 @@ class AuthenticatorGroupsConfigContainerV1beta1 {
 
   factory AuthenticatorGroupsConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AuthenticatorGroupsConfigContainerV1beta1(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      securityGroup: map['securityGroup'] == null ? null : map['securityGroup'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup'] as String).input(),
     );
   }
 }

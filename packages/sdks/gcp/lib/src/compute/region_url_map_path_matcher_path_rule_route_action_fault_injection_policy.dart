@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_url_map_path_matcher_path_rule_route_action_fault_injection_policy_abort.dart';
 import 'region_url_map_path_matcher_path_rule_route_action_fault_injection_policy_delay.dart';
 
 class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
   /// The specification for how client requests are aborted as part of fault injection.
   /// Structure is documented below.
-  final RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort? abort;
+  final pulumi.Input<RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort>? abort;
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   /// Structure is documented below.
-  final RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay? delay;
+  final pulumi.Input<RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay>? delay;
 
   /// Creates a new [RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
@@ -21,15 +22,15 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abort': ?abort == null ? null : abort!.toMap(),
-      'delay': ?delay == null ? null : delay!.toMap(),
+      'abort': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort, Map<String, dynamic>>(abort, (value) => value.toMap()),
+      'delay': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay, Map<String, dynamic>>(delay, (value) => value.toMap()),
     };
   }
 
   factory RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(
-      abort: map['abort'] == null ? null : RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>()),
-      delay: map['delay'] == null ? null : RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>()),
+      abort: map['abort'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

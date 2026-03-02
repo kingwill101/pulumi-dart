@@ -38,27 +38,17 @@ class UserDefinedFunctionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceUris] The configuration block for Resource URIs. See resource uris below for more details.
   UserDefinedFunctionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<String>? className,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerName,
-    pulumi.Output<String>? ownerType,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<UserDefinedFunctionResourceUri>>? resourceUris,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      className = pulumi.Input.asOptionalInput<String>(className),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerName = pulumi.Input.asOptionalInput<String>(ownerName),
-      ownerType = pulumi.Input.asOptionalInput<String>(ownerType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceUris = pulumi.Input.asOptionalInput<List<UserDefinedFunctionResourceUri>>(resourceUris);
+    this.arn,
+    this.catalogId,
+    this.className,
+    this.createTime,
+    this.databaseName,
+    this.name,
+    this.ownerName,
+    this.ownerType,
+    this.region,
+    this.resourceUris,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class UserDefinedFunctionState {
 
   factory UserDefinedFunctionState.fromMap(Map<String, dynamic> map) {
     return UserDefinedFunctionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      className: map['className'] == null ? null : pulumi.Output.create<String>(map['className'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerName: map['ownerName'] == null ? null : pulumi.Output.create<String>(map['ownerName'] as String),
-      ownerType: map['ownerType'] == null ? null : pulumi.Output.create<String>(map['ownerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceUris: map['resourceUris'] == null ? null : pulumi.Output.create<List<UserDefinedFunctionResourceUri>>(pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(map['resourceUris'], (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      className: map['className'] == null ? null : (map['className'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerName: map['ownerName'] == null ? null : (map['ownerName'] as String).input(),
+      ownerType: map['ownerType'] == null ? null : (map['ownerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceUris: map['resourceUris'] == null ? null : (pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(map['resourceUris'], (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

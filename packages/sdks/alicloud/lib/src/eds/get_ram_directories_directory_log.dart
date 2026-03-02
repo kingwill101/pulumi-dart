@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRamDirectoriesDirectoryLog {
   /// The level of log.
-  final String level;
+  final pulumi.Input<String> level;
   /// The message of log.
-  final String message;
+  final pulumi.Input<String> message;
   /// The step of log.
-  final String step;
+  final pulumi.Input<String> step;
   /// The time stamp of log.
-  final String timeStamp;
+  final pulumi.Input<String> timeStamp;
 
   /// Creates a new [GetRamDirectoriesDirectoryLog].
   /// [level] The level of log.
@@ -34,10 +35,10 @@ class GetRamDirectoriesDirectoryLog {
 
   factory GetRamDirectoriesDirectoryLog.fromMap(Map<String, dynamic> map) {
     return GetRamDirectoriesDirectoryLog(
-      level: map['level'] as String,
-      message: map['message'] as String,
-      step: map['step'] as String,
-      timeStamp: map['timeStamp'] as String,
+      level: (map['level'] as String).input(),
+      message: (map['message'] as String).input(),
+      step: (map['step'] as String).input(),
+      timeStamp: (map['timeStamp'] as String).input(),
     );
   }
 }

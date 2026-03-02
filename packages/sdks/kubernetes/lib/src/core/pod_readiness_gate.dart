@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PodReadinessGate contains the reference to a pod condition
 class PodReadinessGate {
   /// ConditionType refers to a condition in the pod's condition list with matching type.
-  final String conditionType;
+  final pulumi.Input<String> conditionType;
 
   /// Creates a new [PodReadinessGate].
   /// [conditionType] ConditionType refers to a condition in the pod's condition list with matching type.
@@ -20,7 +21,7 @@ class PodReadinessGate {
 
   factory PodReadinessGate.fromMap(Map<String, dynamic> map) {
     return PodReadinessGate(
-      conditionType: map['conditionType'] as String,
+      conditionType: (map['conditionType'] as String).input(),
     );
   }
 }

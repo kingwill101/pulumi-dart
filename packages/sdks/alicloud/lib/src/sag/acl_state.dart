@@ -10,9 +10,8 @@ class AclState {
   /// Creates a new [AclState].
   /// [name] The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
   AclState({
-    pulumi.Output<String>? name,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

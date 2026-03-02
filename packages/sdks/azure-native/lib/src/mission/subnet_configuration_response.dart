@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subnet Configuration
 class SubnetConfigurationResponse {
   /// Address prefix.
-  final String addressPrefix;
+  final pulumi.Input<String> addressPrefix;
   /// Network prefix size.
-  final int networkPrefixSize;
+  final pulumi.Input<int> networkPrefixSize;
   /// Network security group ID.
-  final String networkSecurityGroupResourceId;
+  final pulumi.Input<String> networkSecurityGroupResourceId;
   /// Subnet delegation.
-  final String? subnetDelegation;
+  final pulumi.Input<String>? subnetDelegation;
   /// Subnet name.
-  final String subnetName;
+  final pulumi.Input<String> subnetName;
   /// Subnet Resource ID.
-  final String subnetResourceId;
+  final pulumi.Input<String> subnetResourceId;
 
   /// Creates a new [SubnetConfigurationResponse].
   /// [addressPrefix] Address prefix.
@@ -45,12 +46,12 @@ class SubnetConfigurationResponse {
 
   factory SubnetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SubnetConfigurationResponse(
-      addressPrefix: map['addressPrefix'] as String,
-      networkPrefixSize: map['networkPrefixSize'] as int,
-      networkSecurityGroupResourceId: map['networkSecurityGroupResourceId'] as String,
-      subnetDelegation: map['subnetDelegation'] == null ? null : map['subnetDelegation'] as String,
-      subnetName: map['subnetName'] as String,
-      subnetResourceId: map['subnetResourceId'] as String,
+      addressPrefix: (map['addressPrefix'] as String).input(),
+      networkPrefixSize: (map['networkPrefixSize'] as int).input(),
+      networkSecurityGroupResourceId: (map['networkSecurityGroupResourceId'] as String).input(),
+      subnetDelegation: map['subnetDelegation'] == null ? null : (map['subnetDelegation'] as String).input(),
+      subnetName: (map['subnetName'] as String).input(),
+      subnetResourceId: (map['subnetResourceId'] as String).input(),
     );
   }
 }

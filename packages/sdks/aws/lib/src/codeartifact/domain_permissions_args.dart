@@ -25,17 +25,12 @@ class DomainPermissionsArgs {
   /// [policyRevision] The current revision of the resource policy to be set. This revision is used for optimistic locking, which prevents others from overwriting your changes to the domain's resource policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DomainPermissionsArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? domainOwner,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? policyRevision,
-    pulumi.Output<String>? region,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      domainOwner = pulumi.Input.asOptionalInput<String>(domainOwner),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      policyRevision = pulumi.Input.asOptionalInput<String>(policyRevision),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.domain,
+    this.domainOwner,
+    this.policyDocument,
+    this.policyRevision,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DomainPermissionsArgs {
 
   factory DomainPermissionsArgs.fromMap(Map<String, dynamic> map) {
     return DomainPermissionsArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      domainOwner: map['domainOwner'] == null ? null : pulumi.Output.create<String>(map['domainOwner'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyRevision: map['policyRevision'] == null ? null : pulumi.Output.create<String>(map['policyRevision'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      domain: (map['domain'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      policyRevision: map['policyRevision'] == null ? null : (map['policyRevision'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

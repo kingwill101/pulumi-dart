@@ -21,13 +21,10 @@ class ConnectorArgs {
   /// [connectorName] Name of the cloud account connector
   /// [hybridComputeSettings] Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
   ConnectorArgs({
-    pulumi.Output<AwAssumeRoleAuthenticationDetailsProperties>? authenticationDetails,
-    pulumi.Output<String>? connectorName,
-    pulumi.Output<HybridComputeSettingsProperties>? hybridComputeSettings,
-  }) :
-      authenticationDetails = pulumi.Input.asOptionalInput<AwAssumeRoleAuthenticationDetailsProperties>(authenticationDetails),
-      connectorName = pulumi.Input.asOptionalInput<String>(connectorName),
-      hybridComputeSettings = pulumi.Input.asOptionalInput<HybridComputeSettingsProperties>(hybridComputeSettings);
+    this.authenticationDetails,
+    this.connectorName,
+    this.hybridComputeSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      authenticationDetails: map['authenticationDetails'] == null ? null : pulumi.Output.create<AwAssumeRoleAuthenticationDetailsProperties>(AwAssumeRoleAuthenticationDetailsProperties.fromMap((map['authenticationDetails'] as Map).cast<String, dynamic>())),
-      connectorName: map['connectorName'] == null ? null : pulumi.Output.create<String>(map['connectorName'] as String),
-      hybridComputeSettings: map['hybridComputeSettings'] == null ? null : pulumi.Output.create<HybridComputeSettingsProperties>(HybridComputeSettingsProperties.fromMap((map['hybridComputeSettings'] as Map).cast<String, dynamic>())),
+      authenticationDetails: map['authenticationDetails'] == null ? null : (AwAssumeRoleAuthenticationDetailsProperties.fromMap((map['authenticationDetails'] as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      hybridComputeSettings: map['hybridComputeSettings'] == null ? null : (HybridComputeSettingsProperties.fromMap((map['hybridComputeSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

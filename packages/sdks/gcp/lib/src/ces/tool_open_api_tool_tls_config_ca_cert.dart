@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolOpenApiToolTlsConfigCaCert {
   /// (Output)
@@ -14,11 +15,11 @@ class ToolOpenApiToolTlsConfigCaCert {
   /// -out example.com.crt \
   /// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
   /// A base64-encoded string.
-  final String? cert;
+  final pulumi.Input<String>? cert;
   /// (Output)
   /// The name of the allowed custom CA certificates. This
   /// can be used to disambiguate the custom CA certificates.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Creates a new [ToolOpenApiToolTlsConfigCaCert].
   /// [cert] (Output)
@@ -37,8 +38,8 @@ class ToolOpenApiToolTlsConfigCaCert {
 
   factory ToolOpenApiToolTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolTlsConfigCaCert(
-      cert: map['cert'] == null ? null : map['cert'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

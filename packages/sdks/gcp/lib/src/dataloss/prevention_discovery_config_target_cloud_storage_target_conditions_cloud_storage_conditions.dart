@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions {
   /// Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
   /// Each value may be one of: `ALL_SUPPORTED_BUCKETS`, `AUTOCLASS_DISABLED`, `AUTOCLASS_ENABLED`.
-  final List<String>? includedBucketAttributes;
+  final pulumi.Input<List<String>>? includedBucketAttributes;
   /// Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes.
   /// Each value may be one of: `ALL_SUPPORTED_OBJECTS`, `STANDARD`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `REGIONAL`, `MULTI_REGIONAL`, `DURABLE_REDUCED_AVAILABILITY`.
-  final List<String>? includedObjectAttributes;
+  final pulumi.Input<List<String>>? includedObjectAttributes;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions].
   /// [includedBucketAttributes] Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
@@ -26,8 +27,8 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageCon
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions(
-      includedBucketAttributes: map['includedBucketAttributes'] == null ? null : (map['includedBucketAttributes'] as List).cast<String>(),
-      includedObjectAttributes: map['includedObjectAttributes'] == null ? null : (map['includedObjectAttributes'] as List).cast<String>(),
+      includedBucketAttributes: map['includedBucketAttributes'] == null ? null : ((map['includedBucketAttributes'] as List).cast<String>()).input(),
+      includedObjectAttributes: map['includedObjectAttributes'] == null ? null : ((map['includedObjectAttributes'] as List).cast<String>()).input(),
     );
   }
 }

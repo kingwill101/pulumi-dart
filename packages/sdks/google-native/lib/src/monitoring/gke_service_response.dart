@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 class GkeServiceResponse {
   /// The name of the parent cluster.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The location of the parent cluster. This may be a zone or region.
-  final String location;
+  final pulumi.Input<String> location;
   /// The name of the parent namespace.
-  final String namespaceName;
+  final pulumi.Input<String> namespaceName;
   /// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
-  final String project;
+  final pulumi.Input<String> project;
   /// The name of this service.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [GkeServiceResponse].
   /// [clusterName] The name of the parent cluster.
@@ -40,11 +41,11 @@ class GkeServiceResponse {
 
   factory GkeServiceResponse.fromMap(Map<String, dynamic> map) {
     return GkeServiceResponse(
-      clusterName: map['clusterName'] as String,
-      location: map['location'] as String,
-      namespaceName: map['namespaceName'] as String,
-      project: map['project'] as String,
-      serviceName: map['serviceName'] as String,
+      clusterName: (map['clusterName'] as String).input(),
+      location: (map['location'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      project: (map['project'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

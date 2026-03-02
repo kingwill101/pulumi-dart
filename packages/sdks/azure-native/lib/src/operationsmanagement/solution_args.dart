@@ -30,19 +30,13 @@ class SolutionArgs {
   /// [solutionName] User Solution Name.
   /// [tags] Resource tags
   SolutionArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<SolutionPlan>? plan,
-    pulumi.Output<SolutionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? solutionName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      plan = pulumi.Input.asOptionalInput<SolutionPlan>(plan),
-      properties = pulumi.Input.asOptionalInput<SolutionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asOptionalInput<String>(solutionName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.plan,
+    this.properties,
+    required this.resourceGroupName,
+    this.solutionName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class SolutionArgs {
 
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<SolutionPlan>(SolutionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SolutionProperties>(SolutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: map['solutionName'] == null ? null : pulumi.Output.create<String>(map['solutionName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      plan: map['plan'] == null ? null : (SolutionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SolutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: map['solutionName'] == null ? null : (map['solutionName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The container state.
 class ContainerStateResponse {
   /// Human-readable status of this state.
-  final String? detailStatus;
+  final pulumi.Input<String>? detailStatus;
   /// The container exit code.
-  final String? exitCode;
+  final pulumi.Input<String>? exitCode;
   /// Date/time when the container state finished.
-  final String? finishTime;
+  final pulumi.Input<String>? finishTime;
   /// Date/time when the container state started.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// The state of this container
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [ContainerStateResponse].
   /// [detailStatus] Human-readable status of this state.
@@ -40,11 +41,11 @@ class ContainerStateResponse {
 
   factory ContainerStateResponse.fromMap(Map<String, dynamic> map) {
     return ContainerStateResponse(
-      detailStatus: map['detailStatus'] == null ? null : map['detailStatus'] as String,
-      exitCode: map['exitCode'] == null ? null : map['exitCode'] as String,
-      finishTime: map['finishTime'] == null ? null : map['finishTime'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      detailStatus: map['detailStatus'] == null ? null : (map['detailStatus'] as String).input(),
+      exitCode: map['exitCode'] == null ? null : (map['exitCode'] as String).input(),
+      finishTime: map['finishTime'] == null ? null : (map['finishTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

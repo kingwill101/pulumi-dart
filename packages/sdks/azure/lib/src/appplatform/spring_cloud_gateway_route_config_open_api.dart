@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudGatewayRouteConfigOpenApi {
   /// The URI of OpenAPI specification.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [SpringCloudGatewayRouteConfigOpenApi].
   /// [uri] The URI of OpenAPI specification.
@@ -19,7 +20,7 @@ class SpringCloudGatewayRouteConfigOpenApi {
 
   factory SpringCloudGatewayRouteConfigOpenApi.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayRouteConfigOpenApi(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

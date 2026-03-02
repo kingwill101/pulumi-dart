@@ -49,33 +49,20 @@ class TargetHttpsProxyComputeV1Args {
   /// [sslPolicy] URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
   /// [urlMap] A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map
   TargetHttpsProxyComputeV1Args({
-    pulumi.Output<String>? authorizationPolicy,
-    pulumi.Output<String>? certificateMap,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? httpKeepAliveTimeoutSec,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? proxyBind,
-    pulumi.Output<TargetHttpsProxyQuicOverrideComputeV1>? quicOverride,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? serverTlsPolicy,
-    pulumi.Output<List<String>>? sslCertificates,
-    pulumi.Output<String>? sslPolicy,
-    pulumi.Output<String>? urlMap,
-  }) :
-      authorizationPolicy = pulumi.Input.asOptionalInput<String>(authorizationPolicy),
-      certificateMap = pulumi.Input.asOptionalInput<String>(certificateMap),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpKeepAliveTimeoutSec = pulumi.Input.asOptionalInput<int>(httpKeepAliveTimeoutSec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyBind = pulumi.Input.asOptionalInput<bool>(proxyBind),
-      quicOverride = pulumi.Input.asOptionalInput<TargetHttpsProxyQuicOverrideComputeV1>(quicOverride),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      serverTlsPolicy = pulumi.Input.asOptionalInput<String>(serverTlsPolicy),
-      sslCertificates = pulumi.Input.asOptionalInput<List<String>>(sslCertificates),
-      sslPolicy = pulumi.Input.asOptionalInput<String>(sslPolicy),
-      urlMap = pulumi.Input.asOptionalInput<String>(urlMap);
+    this.authorizationPolicy,
+    this.certificateMap,
+    this.description,
+    this.httpKeepAliveTimeoutSec,
+    this.name,
+    this.project,
+    this.proxyBind,
+    this.quicOverride,
+    this.requestId,
+    this.serverTlsPolicy,
+    this.sslCertificates,
+    this.sslPolicy,
+    this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class TargetHttpsProxyComputeV1Args {
 
   factory TargetHttpsProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return TargetHttpsProxyComputeV1Args(
-      authorizationPolicy: map['authorizationPolicy'] == null ? null : pulumi.Output.create<String>(map['authorizationPolicy'] as String),
-      certificateMap: map['certificateMap'] == null ? null : pulumi.Output.create<String>(map['certificateMap'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : pulumi.Output.create<int>(map['httpKeepAliveTimeoutSec'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyBind: map['proxyBind'] == null ? null : pulumi.Output.create<bool>(map['proxyBind'] as bool),
-      quicOverride: map['quicOverride'] == null ? null : pulumi.Output.create<TargetHttpsProxyQuicOverrideComputeV1>(TargetHttpsProxyQuicOverrideComputeV1.fromValue(map['quicOverride'] as String)),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : pulumi.Output.create<String>(map['serverTlsPolicy'] as String),
-      sslCertificates: map['sslCertificates'] == null ? null : pulumi.Output.create<List<String>>((map['sslCertificates'] as List).cast<String>()),
-      sslPolicy: map['sslPolicy'] == null ? null : pulumi.Output.create<String>(map['sslPolicy'] as String),
-      urlMap: map['urlMap'] == null ? null : pulumi.Output.create<String>(map['urlMap'] as String),
+      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy'] as String).input(),
+      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
+      quicOverride: map['quicOverride'] == null ? null : (TargetHttpsProxyQuicOverrideComputeV1.fromValue(map['quicOverride'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
+      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates'] as List).cast<String>()).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
     );
   }
 }

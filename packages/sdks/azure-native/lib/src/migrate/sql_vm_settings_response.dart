@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SQL VM assessment settings.
 class SqlVmSettingsResponse {
   /// Gets or sets the Azure VM families (calling instance series to keep it
   /// consistent with other targets).
-  final List<String>? instanceSeries;
+  final pulumi.Input<List<String>>? instanceSeries;
 
   /// Creates a new [SqlVmSettingsResponse].
   /// [instanceSeries] Gets or sets the Azure VM families (calling instance series to keep it
@@ -21,7 +22,7 @@ class SqlVmSettingsResponse {
 
   factory SqlVmSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlVmSettingsResponse(
-      instanceSeries: map['instanceSeries'] == null ? null : (map['instanceSeries'] as List).cast<String>(),
+      instanceSeries: map['instanceSeries'] == null ? null : ((map['instanceSeries'] as List).cast<String>()).input(),
     );
   }
 }

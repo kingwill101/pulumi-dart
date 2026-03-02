@@ -19,13 +19,10 @@ class ListArtifactStorePrivateEndPointsArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListArtifactStorePrivateEndPointsArgs({
-    required pulumi.Output<String> artifactStoreName,
-    required pulumi.Output<String> publisherName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      artifactStoreName = pulumi.Input.asInput<String>(artifactStoreName),
-      publisherName = pulumi.Input.asInput<String>(publisherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.artifactStoreName,
+    required this.publisherName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListArtifactStorePrivateEndPointsArgs {
 
   factory ListArtifactStorePrivateEndPointsArgs.fromMap(Map<String, dynamic> map) {
     return ListArtifactStorePrivateEndPointsArgs(
-      artifactStoreName: pulumi.Output.create<String>(map['artifactStoreName'] as String),
-      publisherName: pulumi.Output.create<String>(map['publisherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      artifactStoreName: (map['artifactStoreName'] as String).input(),
+      publisherName: (map['publisherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

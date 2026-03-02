@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountsAccount {
   /// The description of the account.
-  final String accountDescription;
+  final pulumi.Input<String> accountDescription;
   /// The name of the account.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The ID of the instance.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// The ID of the Account. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetAccountsAccount].
   /// [accountDescription] The description of the account.
@@ -39,11 +40,11 @@ class GetAccountsAccount {
 
   factory GetAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccount(
-      accountDescription: map['accountDescription'] as String,
-      accountName: map['accountName'] as String,
-      dbInstanceId: map['dbInstanceId'] as String,
-      id: map['id'] as String,
-      status: map['status'] as String,
+      accountDescription: (map['accountDescription'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

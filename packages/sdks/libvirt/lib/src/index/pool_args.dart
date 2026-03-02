@@ -41,25 +41,16 @@ class PoolArgs {
   /// [target] Target path and permissions for the storage pool
   /// [type] Specifies the type of the storage pool being defined.
   PoolArgs({
-    pulumi.Output<String>? allocationUnit,
-    pulumi.Output<String>? availableUnit,
-    pulumi.Output<String>? capacityUnit,
-    pulumi.Output<PoolFeatures>? features,
-    pulumi.Output<String>? name,
-    pulumi.Output<PoolRefresh>? refresh,
-    pulumi.Output<PoolSource>? source,
-    pulumi.Output<PoolTarget>? target,
-    required pulumi.Output<String> type,
-  }) :
-      allocationUnit = pulumi.Input.asOptionalInput<String>(allocationUnit),
-      availableUnit = pulumi.Input.asOptionalInput<String>(availableUnit),
-      capacityUnit = pulumi.Input.asOptionalInput<String>(capacityUnit),
-      features = pulumi.Input.asOptionalInput<PoolFeatures>(features),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      refresh = pulumi.Input.asOptionalInput<PoolRefresh>(refresh),
-      source = pulumi.Input.asOptionalInput<PoolSource>(source),
-      target = pulumi.Input.asOptionalInput<PoolTarget>(target),
-      type = pulumi.Input.asInput<String>(type);
+    this.allocationUnit,
+    this.availableUnit,
+    this.capacityUnit,
+    this.features,
+    this.name,
+    this.refresh,
+    this.source,
+    this.target,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class PoolArgs {
 
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
-      allocationUnit: map['allocationUnit'] == null ? null : pulumi.Output.create<String>(map['allocationUnit'] as String),
-      availableUnit: map['availableUnit'] == null ? null : pulumi.Output.create<String>(map['availableUnit'] as String),
-      capacityUnit: map['capacityUnit'] == null ? null : pulumi.Output.create<String>(map['capacityUnit'] as String),
-      features: map['features'] == null ? null : pulumi.Output.create<PoolFeatures>(PoolFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      refresh: map['refresh'] == null ? null : pulumi.Output.create<PoolRefresh>(PoolRefresh.fromMap((map['refresh'] as Map).cast<String, dynamic>())),
-      source: map['source'] == null ? null : pulumi.Output.create<PoolSource>(PoolSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      target: map['target'] == null ? null : pulumi.Output.create<PoolTarget>(PoolTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit'] as String).input(),
+      availableUnit: map['availableUnit'] == null ? null : (map['availableUnit'] as String).input(),
+      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit'] as String).input(),
+      features: map['features'] == null ? null : (PoolFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      refresh: map['refresh'] == null ? null : (PoolRefresh.fromMap((map['refresh'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (PoolSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (PoolTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

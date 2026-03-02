@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_rules.dart';
 
 /// Definition of the properties for a TagRules resource.
 class MonitoringTagRulesProperties {
   /// Rules for sending logs.
-  final LogRules? logRules;
+  final pulumi.Input<LogRules>? logRules;
   /// Provisioning state of the monitoring tag rules.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
 
   /// Creates a new [MonitoringTagRulesProperties].
   /// [logRules] Rules for sending logs.
@@ -19,15 +20,15 @@ class MonitoringTagRulesProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logRules': ?logRules == null ? null : logRules!.toMap(),
+      'logRules': ?pulumi.Input.mapOptionalInputValue<LogRules, Map<String, dynamic>>(logRules, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
     };
   }
 
   factory MonitoringTagRulesProperties.fromMap(Map<String, dynamic> map) {
     return MonitoringTagRulesProperties(
-      logRules: map['logRules'] == null ? null : LogRules.fromMap((map['logRules'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      logRules: map['logRules'] == null ? null : (LogRules.fromMap((map['logRules'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'get_instance_directory_service_ldap.dart';
 
 class GetInstanceDirectoryService {
   /// Configuration for LDAP servers.
-  final List<GetInstanceDirectoryServiceLdap> ldaps;
+  final pulumi.Input<List<GetInstanceDirectoryServiceLdap>> ldaps;
 
   /// Creates a new [GetInstanceDirectoryService].
   /// [ldaps] Configuration for LDAP servers.
@@ -15,13 +15,13 @@ class GetInstanceDirectoryService {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ldaps': pulumi.Input.encodeList<GetInstanceDirectoryServiceLdap, Map<String, dynamic>>(ldaps, (value) => value.toMap()),
+      'ldaps': pulumi.Input.mapInputValue<List<GetInstanceDirectoryServiceLdap>, List<Map<String, dynamic>>>(ldaps, (value) => pulumi.Input.encodeList<GetInstanceDirectoryServiceLdap, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetInstanceDirectoryService.fromMap(Map<String, dynamic> map) {
     return GetInstanceDirectoryService(
-      ldaps: pulumi.Input.decodeList<GetInstanceDirectoryServiceLdap>(map['ldaps'], (value) => GetInstanceDirectoryServiceLdap.fromMap((value as Map).cast<String, dynamic>())),
+      ldaps: (pulumi.Input.decodeList<GetInstanceDirectoryServiceLdap>(map['ldaps'], (value) => GetInstanceDirectoryServiceLdap.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

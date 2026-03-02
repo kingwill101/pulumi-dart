@@ -23,15 +23,11 @@ class AliasArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingConfigurations] The StateMachine alias' route configuration settings. Fields documented below
   AliasArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<AliasRoutingConfiguration>> routingConfigurations,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingConfigurations = pulumi.Input.asInput<List<AliasRoutingConfiguration>>(routingConfigurations);
+    this.description,
+    this.name,
+    this.region,
+    required this.routingConfigurations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingConfigurations: pulumi.Output.create<List<AliasRoutingConfiguration>>(pulumi.Input.decodeList<AliasRoutingConfiguration>(map['routingConfigurations'], (value) => AliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingConfigurations: (pulumi.Input.decodeList<AliasRoutingConfiguration>(map['routingConfigurations'], (value) => AliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

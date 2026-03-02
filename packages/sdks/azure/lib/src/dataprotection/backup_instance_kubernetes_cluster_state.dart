@@ -32,23 +32,15 @@ class BackupInstanceKubernetesClusterState {
   /// [snapshotResourceGroupName] The name of the Resource Group where snapshots are stored. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   BackupInstanceKubernetesClusterState({
-    pulumi.Output<BackupInstanceKubernetesClusterBackupDatasourceParameters>? backupDatasourceParameters,
-    pulumi.Output<String>? backupPolicyId,
-    pulumi.Output<String>? kubernetesClusterId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protectionState,
-    pulumi.Output<String>? snapshotResourceGroupName,
-    pulumi.Output<String>? vaultId,
-  }) :
-      backupDatasourceParameters = pulumi.Input.asOptionalInput<BackupInstanceKubernetesClusterBackupDatasourceParameters>(backupDatasourceParameters),
-      backupPolicyId = pulumi.Input.asOptionalInput<String>(backupPolicyId),
-      kubernetesClusterId = pulumi.Input.asOptionalInput<String>(kubernetesClusterId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectionState = pulumi.Input.asOptionalInput<String>(protectionState),
-      snapshotResourceGroupName = pulumi.Input.asOptionalInput<String>(snapshotResourceGroupName),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.backupDatasourceParameters,
+    this.backupPolicyId,
+    this.kubernetesClusterId,
+    this.location,
+    this.name,
+    this.protectionState,
+    this.snapshotResourceGroupName,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class BackupInstanceKubernetesClusterState {
 
   factory BackupInstanceKubernetesClusterState.fromMap(Map<String, dynamic> map) {
     return BackupInstanceKubernetesClusterState(
-      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : pulumi.Output.create<BackupInstanceKubernetesClusterBackupDatasourceParameters>(BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters'] as Map).cast<String, dynamic>())),
-      backupPolicyId: map['backupPolicyId'] == null ? null : pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : pulumi.Output.create<String>(map['kubernetesClusterId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectionState: map['protectionState'] == null ? null : pulumi.Output.create<String>(map['protectionState'] as String),
-      snapshotResourceGroupName: map['snapshotResourceGroupName'] == null ? null : pulumi.Output.create<String>(map['snapshotResourceGroupName'] as String),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : (BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters'] as Map).cast<String, dynamic>())).input(),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
+      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
+      snapshotResourceGroupName: map['snapshotResourceGroupName'] == null ? null : (map['snapshotResourceGroupName'] as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

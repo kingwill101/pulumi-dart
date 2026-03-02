@@ -55,33 +55,20 @@ class IpamIpamPoolArgs {
   /// [sourceIpamPoolId] The instance ID of the source IPAM address pool.
   /// [tags] The tag of the resource.
   IpamIpamPoolArgs({
-    pulumi.Output<int>? allocationDefaultCidrMask,
-    pulumi.Output<int>? allocationMaxCidrMask,
-    pulumi.Output<int>? allocationMinCidrMask,
-    pulumi.Output<bool>? autoImport,
-    pulumi.Output<bool>? clearAllocationDefaultCidrMask,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? ipamPoolDescription,
-    pulumi.Output<String>? ipamPoolName,
-    required pulumi.Output<String> ipamScopeId,
-    pulumi.Output<String>? poolRegionId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? sourceIpamPoolId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allocationDefaultCidrMask = pulumi.Input.asOptionalInput<int>(allocationDefaultCidrMask),
-      allocationMaxCidrMask = pulumi.Input.asOptionalInput<int>(allocationMaxCidrMask),
-      allocationMinCidrMask = pulumi.Input.asOptionalInput<int>(allocationMinCidrMask),
-      autoImport = pulumi.Input.asOptionalInput<bool>(autoImport),
-      clearAllocationDefaultCidrMask = pulumi.Input.asOptionalInput<bool>(clearAllocationDefaultCidrMask),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      ipamPoolDescription = pulumi.Input.asOptionalInput<String>(ipamPoolDescription),
-      ipamPoolName = pulumi.Input.asOptionalInput<String>(ipamPoolName),
-      ipamScopeId = pulumi.Input.asInput<String>(ipamScopeId),
-      poolRegionId = pulumi.Input.asOptionalInput<String>(poolRegionId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      sourceIpamPoolId = pulumi.Input.asOptionalInput<String>(sourceIpamPoolId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.allocationDefaultCidrMask,
+    this.allocationMaxCidrMask,
+    this.allocationMinCidrMask,
+    this.autoImport,
+    this.clearAllocationDefaultCidrMask,
+    this.ipVersion,
+    this.ipamPoolDescription,
+    this.ipamPoolName,
+    required this.ipamScopeId,
+    this.poolRegionId,
+    this.resourceGroupId,
+    this.sourceIpamPoolId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class IpamIpamPoolArgs {
 
   factory IpamIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolArgs(
-      allocationDefaultCidrMask: map['allocationDefaultCidrMask'] == null ? null : pulumi.Output.create<int>(map['allocationDefaultCidrMask'] as int),
-      allocationMaxCidrMask: map['allocationMaxCidrMask'] == null ? null : pulumi.Output.create<int>(map['allocationMaxCidrMask'] as int),
-      allocationMinCidrMask: map['allocationMinCidrMask'] == null ? null : pulumi.Output.create<int>(map['allocationMinCidrMask'] as int),
-      autoImport: map['autoImport'] == null ? null : pulumi.Output.create<bool>(map['autoImport'] as bool),
-      clearAllocationDefaultCidrMask: map['clearAllocationDefaultCidrMask'] == null ? null : pulumi.Output.create<bool>(map['clearAllocationDefaultCidrMask'] as bool),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      ipamPoolDescription: map['ipamPoolDescription'] == null ? null : pulumi.Output.create<String>(map['ipamPoolDescription'] as String),
-      ipamPoolName: map['ipamPoolName'] == null ? null : pulumi.Output.create<String>(map['ipamPoolName'] as String),
-      ipamScopeId: pulumi.Output.create<String>(map['ipamScopeId'] as String),
-      poolRegionId: map['poolRegionId'] == null ? null : pulumi.Output.create<String>(map['poolRegionId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : pulumi.Output.create<String>(map['sourceIpamPoolId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allocationDefaultCidrMask: map['allocationDefaultCidrMask'] == null ? null : (map['allocationDefaultCidrMask'] as int).input(),
+      allocationMaxCidrMask: map['allocationMaxCidrMask'] == null ? null : (map['allocationMaxCidrMask'] as int).input(),
+      allocationMinCidrMask: map['allocationMinCidrMask'] == null ? null : (map['allocationMinCidrMask'] as int).input(),
+      autoImport: map['autoImport'] == null ? null : (map['autoImport'] as bool).input(),
+      clearAllocationDefaultCidrMask: map['clearAllocationDefaultCidrMask'] == null ? null : (map['clearAllocationDefaultCidrMask'] as bool).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      ipamPoolDescription: map['ipamPoolDescription'] == null ? null : (map['ipamPoolDescription'] as String).input(),
+      ipamPoolName: map['ipamPoolName'] == null ? null : (map['ipamPoolName'] as String).input(),
+      ipamScopeId: (map['ipamScopeId'] as String).input(),
+      poolRegionId: map['poolRegionId'] == null ? null : (map['poolRegionId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : (map['sourceIpamPoolId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

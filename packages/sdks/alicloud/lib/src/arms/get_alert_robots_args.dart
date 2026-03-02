@@ -25,17 +25,12 @@ class GetAlertRobotsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [robotType] The robot type.
   GetAlertRobotsArgs({
-    pulumi.Output<String>? alertRobotName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? robotType,
-  }) :
-      alertRobotName = pulumi.Input.asOptionalInput<String>(alertRobotName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      robotType = pulumi.Input.asOptionalInput<String>(robotType);
+    this.alertRobotName,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.robotType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetAlertRobotsArgs {
 
   factory GetAlertRobotsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertRobotsArgs(
-      alertRobotName: map['alertRobotName'] == null ? null : pulumi.Output.create<String>(map['alertRobotName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      robotType: map['robotType'] == null ? null : pulumi.Output.create<String>(map['robotType'] as String),
+      alertRobotName: map['alertRobotName'] == null ? null : (map['alertRobotName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      robotType: map['robotType'] == null ? null : (map['robotType'] as String).input(),
     );
   }
 }

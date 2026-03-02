@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStorageBoxesStorageBoxSnapshotPlan {
   /// Day of the month when the Snapshot Plan is executed. Null means every day.
-  final int dayOfMonth;
+  final pulumi.Input<int> dayOfMonth;
   /// Day of the week when the Snapshot Plan is executed. Starts at 0 for Sunday til 6 for Saturday. Note that this differs from the API, which uses 1 (Monday) through 7 (Sunday). Null means every day.
-  final int dayOfWeek;
+  final pulumi.Input<int> dayOfWeek;
   /// Hour when the Snapshot Plan is executed (UTC).
-  final int hour;
+  final pulumi.Input<int> hour;
   /// Maximum amount of Snapshots that will be created by this Snapshot Plan. Older Snapshots will be deleted.
-  final int maxSnapshots;
+  final pulumi.Input<int> maxSnapshots;
   /// Minute when the Snapshot Plan is executed (UTC).
-  final int minute;
+  final pulumi.Input<int> minute;
 
   /// Creates a new [GetStorageBoxesStorageBoxSnapshotPlan].
   /// [dayOfMonth] Day of the month when the Snapshot Plan is executed. Null means every day.
@@ -39,11 +40,11 @@ class GetStorageBoxesStorageBoxSnapshotPlan {
 
   factory GetStorageBoxesStorageBoxSnapshotPlan.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxesStorageBoxSnapshotPlan(
-      dayOfMonth: map['dayOfMonth'] as int,
-      dayOfWeek: map['dayOfWeek'] as int,
-      hour: map['hour'] as int,
-      maxSnapshots: map['maxSnapshots'] as int,
-      minute: map['minute'] as int,
+      dayOfMonth: (map['dayOfMonth'] as int).input(),
+      dayOfWeek: (map['dayOfWeek'] as int).input(),
+      hour: (map['hour'] as int).input(),
+      maxSnapshots: (map['maxSnapshots'] as int).input(),
+      minute: (map['minute'] as int).input(),
     );
   }
 }

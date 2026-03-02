@@ -14,9 +14,8 @@ class EventArgs {
   /// Creates a new [EventArgs].
   /// [events] An event to insert into Insights. Multiple event blocks can be defined. See Events below for details.
   EventArgs({
-    required pulumi.Output<List<EventEvent>> events,
-  }) :
-      events = pulumi.Input.asInput<List<EventEvent>>(events);
+    required this.events,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class EventArgs {
 
   factory EventArgs.fromMap(Map<String, dynamic> map) {
     return EventArgs(
-      events: pulumi.Output.create<List<EventEvent>>(pulumi.Input.decodeList<EventEvent>(map['events'], (value) => EventEvent.fromMap((value as Map).cast<String, dynamic>()))),
+      events: (pulumi.Input.decodeList<EventEvent>(map['events'], (value) => EventEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

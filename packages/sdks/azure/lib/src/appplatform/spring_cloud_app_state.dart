@@ -53,35 +53,21 @@ class SpringCloudAppState {
   /// [tlsEnabled] Is End to End TLS Enabled? Defaults to `false`.
   /// [url] The public endpoint of the Spring Cloud Application.
   SpringCloudAppState({
-    pulumi.Output<String>? addonJson,
-    pulumi.Output<List<SpringCloudAppCustomPersistentDisk>>? customPersistentDisks,
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<bool>? httpsOnly,
-    pulumi.Output<SpringCloudAppIdentity>? identity,
-    pulumi.Output<SpringCloudAppIngressSettings>? ingressSettings,
-    pulumi.Output<bool>? isPublic,
-    pulumi.Output<String>? name,
-    pulumi.Output<SpringCloudAppPersistentDisk>? persistentDisk,
-    pulumi.Output<bool>? publicEndpointEnabled,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<bool>? tlsEnabled,
-    pulumi.Output<String>? url,
-  }) :
-      addonJson = pulumi.Input.asOptionalInput<String>(addonJson),
-      customPersistentDisks = pulumi.Input.asOptionalInput<List<SpringCloudAppCustomPersistentDisk>>(customPersistentDisks),
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      httpsOnly = pulumi.Input.asOptionalInput<bool>(httpsOnly),
-      identity = pulumi.Input.asOptionalInput<SpringCloudAppIdentity>(identity),
-      ingressSettings = pulumi.Input.asOptionalInput<SpringCloudAppIngressSettings>(ingressSettings),
-      isPublic = pulumi.Input.asOptionalInput<bool>(isPublic),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      persistentDisk = pulumi.Input.asOptionalInput<SpringCloudAppPersistentDisk>(persistentDisk),
-      publicEndpointEnabled = pulumi.Input.asOptionalInput<bool>(publicEndpointEnabled),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      tlsEnabled = pulumi.Input.asOptionalInput<bool>(tlsEnabled),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.addonJson,
+    this.customPersistentDisks,
+    this.fqdn,
+    this.httpsOnly,
+    this.identity,
+    this.ingressSettings,
+    this.isPublic,
+    this.name,
+    this.persistentDisk,
+    this.publicEndpointEnabled,
+    this.resourceGroupName,
+    this.serviceName,
+    this.tlsEnabled,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class SpringCloudAppState {
 
   factory SpringCloudAppState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppState(
-      addonJson: map['addonJson'] == null ? null : pulumi.Output.create<String>(map['addonJson'] as String),
-      customPersistentDisks: map['customPersistentDisks'] == null ? null : pulumi.Output.create<List<SpringCloudAppCustomPersistentDisk>>(pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(map['customPersistentDisks'], (value) => SpringCloudAppCustomPersistentDisk.fromMap((value as Map).cast<String, dynamic>()))),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      httpsOnly: map['httpsOnly'] == null ? null : pulumi.Output.create<bool>(map['httpsOnly'] as bool),
-      identity: map['identity'] == null ? null : pulumi.Output.create<SpringCloudAppIdentity>(SpringCloudAppIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      ingressSettings: map['ingressSettings'] == null ? null : pulumi.Output.create<SpringCloudAppIngressSettings>(SpringCloudAppIngressSettings.fromMap((map['ingressSettings'] as Map).cast<String, dynamic>())),
-      isPublic: map['isPublic'] == null ? null : pulumi.Output.create<bool>(map['isPublic'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      persistentDisk: map['persistentDisk'] == null ? null : pulumi.Output.create<SpringCloudAppPersistentDisk>(SpringCloudAppPersistentDisk.fromMap((map['persistentDisk'] as Map).cast<String, dynamic>())),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicEndpointEnabled'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      tlsEnabled: map['tlsEnabled'] == null ? null : pulumi.Output.create<bool>(map['tlsEnabled'] as bool),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      addonJson: map['addonJson'] == null ? null : (map['addonJson'] as String).input(),
+      customPersistentDisks: map['customPersistentDisks'] == null ? null : (pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(map['customPersistentDisks'], (value) => SpringCloudAppCustomPersistentDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      identity: map['identity'] == null ? null : (SpringCloudAppIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      ingressSettings: map['ingressSettings'] == null ? null : (SpringCloudAppIngressSettings.fromMap((map['ingressSettings'] as Map).cast<String, dynamic>())).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      persistentDisk: map['persistentDisk'] == null ? null : (SpringCloudAppPersistentDisk.fromMap((map['persistentDisk'] as Map).cast<String, dynamic>())).input(),
+      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled'] as bool).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeConfigEffectiveTaint {
   /// Effect for taint.
-  final String effect;
+  final pulumi.Input<String> effect;
   /// Key for taint.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value for taint.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetClusterNodePoolNodeConfigEffectiveTaint].
   /// [effect] Effect for taint.
@@ -29,9 +30,9 @@ class GetClusterNodePoolNodeConfigEffectiveTaint {
 
   factory GetClusterNodePoolNodeConfigEffectiveTaint.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigEffectiveTaint(
-      effect: map['effect'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      effect: (map['effect'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

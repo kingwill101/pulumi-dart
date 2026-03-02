@@ -57,35 +57,21 @@ class PatchBaselineArgs {
   /// [sources] Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   PatchBaselineArgs({
-    pulumi.Output<List<PatchBaselineApprovalRule>>? approvalRules,
-    pulumi.Output<List<String>>? approvedPatches,
-    pulumi.Output<String>? approvedPatchesComplianceLevel,
-    pulumi.Output<bool>? approvedPatchesEnableNonSecurity,
-    pulumi.Output<String>? availableSecurityUpdatesComplianceStatus,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<PatchBaselineGlobalFilter>>? globalFilters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? operatingSystem,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? rejectedPatches,
-    pulumi.Output<String>? rejectedPatchesAction,
-    pulumi.Output<List<PatchBaselineSource>>? sources,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      approvalRules = pulumi.Input.asOptionalInput<List<PatchBaselineApprovalRule>>(approvalRules),
-      approvedPatches = pulumi.Input.asOptionalInput<List<String>>(approvedPatches),
-      approvedPatchesComplianceLevel = pulumi.Input.asOptionalInput<String>(approvedPatchesComplianceLevel),
-      approvedPatchesEnableNonSecurity = pulumi.Input.asOptionalInput<bool>(approvedPatchesEnableNonSecurity),
-      availableSecurityUpdatesComplianceStatus = pulumi.Input.asOptionalInput<String>(availableSecurityUpdatesComplianceStatus),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      globalFilters = pulumi.Input.asOptionalInput<List<PatchBaselineGlobalFilter>>(globalFilters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operatingSystem = pulumi.Input.asOptionalInput<String>(operatingSystem),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rejectedPatches = pulumi.Input.asOptionalInput<List<String>>(rejectedPatches),
-      rejectedPatchesAction = pulumi.Input.asOptionalInput<String>(rejectedPatchesAction),
-      sources = pulumi.Input.asOptionalInput<List<PatchBaselineSource>>(sources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.approvalRules,
+    this.approvedPatches,
+    this.approvedPatchesComplianceLevel,
+    this.approvedPatchesEnableNonSecurity,
+    this.availableSecurityUpdatesComplianceStatus,
+    this.description,
+    this.globalFilters,
+    this.name,
+    this.operatingSystem,
+    this.region,
+    this.rejectedPatches,
+    this.rejectedPatchesAction,
+    this.sources,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class PatchBaselineArgs {
 
   factory PatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return PatchBaselineArgs(
-      approvalRules: map['approvalRules'] == null ? null : pulumi.Output.create<List<PatchBaselineApprovalRule>>(pulumi.Input.decodeList<PatchBaselineApprovalRule>(map['approvalRules'], (value) => PatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>()))),
-      approvedPatches: map['approvedPatches'] == null ? null : pulumi.Output.create<List<String>>((map['approvedPatches'] as List).cast<String>()),
-      approvedPatchesComplianceLevel: map['approvedPatchesComplianceLevel'] == null ? null : pulumi.Output.create<String>(map['approvedPatchesComplianceLevel'] as String),
-      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : pulumi.Output.create<bool>(map['approvedPatchesEnableNonSecurity'] as bool),
-      availableSecurityUpdatesComplianceStatus: map['availableSecurityUpdatesComplianceStatus'] == null ? null : pulumi.Output.create<String>(map['availableSecurityUpdatesComplianceStatus'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      globalFilters: map['globalFilters'] == null ? null : pulumi.Output.create<List<PatchBaselineGlobalFilter>>(pulumi.Input.decodeList<PatchBaselineGlobalFilter>(map['globalFilters'], (value) => PatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operatingSystem: map['operatingSystem'] == null ? null : pulumi.Output.create<String>(map['operatingSystem'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rejectedPatches: map['rejectedPatches'] == null ? null : pulumi.Output.create<List<String>>((map['rejectedPatches'] as List).cast<String>()),
-      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : pulumi.Output.create<String>(map['rejectedPatchesAction'] as String),
-      sources: map['sources'] == null ? null : pulumi.Output.create<List<PatchBaselineSource>>(pulumi.Input.decodeList<PatchBaselineSource>(map['sources'], (value) => PatchBaselineSource.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      approvalRules: map['approvalRules'] == null ? null : (pulumi.Input.decodeList<PatchBaselineApprovalRule>(map['approvalRules'], (value) => PatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      approvedPatches: map['approvedPatches'] == null ? null : ((map['approvedPatches'] as List).cast<String>()).input(),
+      approvedPatchesComplianceLevel: map['approvedPatchesComplianceLevel'] == null ? null : (map['approvedPatchesComplianceLevel'] as String).input(),
+      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : (map['approvedPatchesEnableNonSecurity'] as bool).input(),
+      availableSecurityUpdatesComplianceStatus: map['availableSecurityUpdatesComplianceStatus'] == null ? null : (map['availableSecurityUpdatesComplianceStatus'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      globalFilters: map['globalFilters'] == null ? null : (pulumi.Input.decodeList<PatchBaselineGlobalFilter>(map['globalFilters'], (value) => PatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rejectedPatches: map['rejectedPatches'] == null ? null : ((map['rejectedPatches'] as List).cast<String>()).input(),
+      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : (map['rejectedPatchesAction'] as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<PatchBaselineSource>(map['sources'], (value) => PatchBaselineSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

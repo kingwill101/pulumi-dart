@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclCaptchaConfigImmunityTimeProperty {
   /// The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default setting is 300.
-  final int? immunityTime;
+  final pulumi.Input<int>? immunityTime;
 
   /// Creates a new [WebAclCaptchaConfigImmunityTimeProperty].
   /// [immunityTime] The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default setting is 300.
@@ -19,7 +20,7 @@ class WebAclCaptchaConfigImmunityTimeProperty {
 
   factory WebAclCaptchaConfigImmunityTimeProperty.fromMap(Map<String, dynamic> map) {
     return WebAclCaptchaConfigImmunityTimeProperty(
-      immunityTime: map['immunityTime'] == null ? null : map['immunityTime'] as int,
+      immunityTime: map['immunityTime'] == null ? null : (map['immunityTime'] as int).input(),
     );
   }
 }

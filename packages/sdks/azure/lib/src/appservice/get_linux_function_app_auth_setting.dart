@@ -10,35 +10,35 @@ import 'get_linux_function_app_auth_setting_twitter.dart';
 
 class GetLinuxFunctionAppAuthSetting {
   /// An `active_directory` block as defined above.
-  final List<GetLinuxFunctionAppAuthSettingActiveDirectory> activeDirectories;
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingActiveDirectory>> activeDirectories;
   /// A map of login parameters sent to the OpenID Connect authorization endpoint when a user logs in.
-  final Map<String, String> additionalLoginParameters;
+  final pulumi.Input<Map<String, String>> additionalLoginParameters;
   /// External URLs that can be redirected to as part of logging in or logging out of the app.
-  final List<String> allowedExternalRedirectUrls;
+  final pulumi.Input<List<String>> allowedExternalRedirectUrls;
   /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
-  final String defaultProvider;
+  final pulumi.Input<String> defaultProvider;
   /// Is this backup job enabled?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A `facebook` block as defined below.
-  final List<GetLinuxFunctionAppAuthSettingFacebook> facebooks;
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingFacebook>> facebooks;
   /// A `github` block as defined below.
-  final List<GetLinuxFunctionAppAuthSettingGithub> githubs;
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingGithub>> githubs;
   /// A `google` block as defined below.
-  final List<GetLinuxFunctionAppAuthSettingGoogle> googles;
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingGoogle>> googles;
   /// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this Linux Web App.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// A `microsoft` block as defined below.
-  final List<GetLinuxFunctionAppAuthSettingMicrosoft> microsofts;
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingMicrosoft>> microsofts;
   /// The Runtime Version of the Authentication and Authorisation feature of this App.
-  final String runtimeVersion;
+  final pulumi.Input<String> runtimeVersion;
   /// The number of hours after session token expiration that a session token can be used to call the token refresh API.
-  final double tokenRefreshExtensionHours;
+  final pulumi.Input<double> tokenRefreshExtensionHours;
   /// Is the Token Store configuration Enabled.
-  final bool tokenStoreEnabled;
+  final pulumi.Input<bool> tokenStoreEnabled;
   /// A `twitter` block as defined below.
-  final List<GetLinuxFunctionAppAuthSettingTwitter> twitters;
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingTwitter>> twitters;
   /// The action to taken when an unauthenticated client attempts to access the app.
-  final String unauthenticatedClientAction;
+  final pulumi.Input<String> unauthenticatedClientAction;
 
   /// Creates a new [GetLinuxFunctionAppAuthSetting].
   /// [activeDirectories] An `active_directory` block as defined above.
@@ -76,41 +76,41 @@ class GetLinuxFunctionAppAuthSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectories': pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingActiveDirectory, Map<String, dynamic>>(activeDirectories, (value) => value.toMap()),
+      'activeDirectories': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingActiveDirectory>, List<Map<String, dynamic>>>(activeDirectories, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingActiveDirectory, Map<String, dynamic>>(value, (value) => value.toMap())),
       'additionalLoginParameters': additionalLoginParameters,
       'allowedExternalRedirectUrls': allowedExternalRedirectUrls,
       'defaultProvider': defaultProvider,
       'enabled': enabled,
-      'facebooks': pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingFacebook, Map<String, dynamic>>(facebooks, (value) => value.toMap()),
-      'githubs': pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingGithub, Map<String, dynamic>>(githubs, (value) => value.toMap()),
-      'googles': pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingGoogle, Map<String, dynamic>>(googles, (value) => value.toMap()),
+      'facebooks': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingFacebook>, List<Map<String, dynamic>>>(facebooks, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingFacebook, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'githubs': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingGithub>, List<Map<String, dynamic>>>(githubs, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingGithub, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'googles': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingGoogle>, List<Map<String, dynamic>>>(googles, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingGoogle, Map<String, dynamic>>(value, (value) => value.toMap())),
       'issuer': issuer,
-      'microsofts': pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingMicrosoft, Map<String, dynamic>>(microsofts, (value) => value.toMap()),
+      'microsofts': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingMicrosoft>, List<Map<String, dynamic>>>(microsofts, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingMicrosoft, Map<String, dynamic>>(value, (value) => value.toMap())),
       'runtimeVersion': runtimeVersion,
       'tokenRefreshExtensionHours': tokenRefreshExtensionHours,
       'tokenStoreEnabled': tokenStoreEnabled,
-      'twitters': pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingTwitter, Map<String, dynamic>>(twitters, (value) => value.toMap()),
+      'twitters': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingTwitter>, List<Map<String, dynamic>>>(twitters, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingTwitter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'unauthenticatedClientAction': unauthenticatedClientAction,
     };
   }
 
   factory GetLinuxFunctionAppAuthSetting.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppAuthSetting(
-      activeDirectories: pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingActiveDirectory>(map['activeDirectories'], (value) => GetLinuxFunctionAppAuthSettingActiveDirectory.fromMap((value as Map).cast<String, dynamic>())),
-      additionalLoginParameters: (map['additionalLoginParameters'] as Map).cast<String, String>(),
-      allowedExternalRedirectUrls: (map['allowedExternalRedirectUrls'] as List).cast<String>(),
-      defaultProvider: map['defaultProvider'] as String,
-      enabled: map['enabled'] as bool,
-      facebooks: pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingFacebook>(map['facebooks'], (value) => GetLinuxFunctionAppAuthSettingFacebook.fromMap((value as Map).cast<String, dynamic>())),
-      githubs: pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingGithub>(map['githubs'], (value) => GetLinuxFunctionAppAuthSettingGithub.fromMap((value as Map).cast<String, dynamic>())),
-      googles: pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingGoogle>(map['googles'], (value) => GetLinuxFunctionAppAuthSettingGoogle.fromMap((value as Map).cast<String, dynamic>())),
-      issuer: map['issuer'] as String,
-      microsofts: pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingMicrosoft>(map['microsofts'], (value) => GetLinuxFunctionAppAuthSettingMicrosoft.fromMap((value as Map).cast<String, dynamic>())),
-      runtimeVersion: map['runtimeVersion'] as String,
-      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] as double,
-      tokenStoreEnabled: map['tokenStoreEnabled'] as bool,
-      twitters: pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingTwitter>(map['twitters'], (value) => GetLinuxFunctionAppAuthSettingTwitter.fromMap((value as Map).cast<String, dynamic>())),
-      unauthenticatedClientAction: map['unauthenticatedClientAction'] as String,
+      activeDirectories: (pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingActiveDirectory>(map['activeDirectories'], (value) => GetLinuxFunctionAppAuthSettingActiveDirectory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalLoginParameters: ((map['additionalLoginParameters'] as Map).cast<String, String>()).input(),
+      allowedExternalRedirectUrls: ((map['allowedExternalRedirectUrls'] as List).cast<String>()).input(),
+      defaultProvider: (map['defaultProvider'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      facebooks: (pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingFacebook>(map['facebooks'], (value) => GetLinuxFunctionAppAuthSettingFacebook.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      githubs: (pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingGithub>(map['githubs'], (value) => GetLinuxFunctionAppAuthSettingGithub.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      googles: (pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingGoogle>(map['googles'], (value) => GetLinuxFunctionAppAuthSettingGoogle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      issuer: (map['issuer'] as String).input(),
+      microsofts: (pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingMicrosoft>(map['microsofts'], (value) => GetLinuxFunctionAppAuthSettingMicrosoft.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runtimeVersion: (map['runtimeVersion'] as String).input(),
+      tokenRefreshExtensionHours: (map['tokenRefreshExtensionHours'] as double).input(),
+      tokenStoreEnabled: (map['tokenStoreEnabled'] as bool).input(),
+      twitters: (pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingTwitter>(map['twitters'], (value) => GetLinuxFunctionAppAuthSettingTwitter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unauthenticatedClientAction: (map['unauthenticatedClientAction'] as String).input(),
     );
   }
 }

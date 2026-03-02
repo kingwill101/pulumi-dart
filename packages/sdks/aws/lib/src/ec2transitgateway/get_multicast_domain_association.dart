@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMulticastDomainAssociation {
   /// The ID of the subnet associated with the transit gateway multicast domain.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// The ID of the transit gateway attachment.
-  final String transitGatewayAttachmentId;
+  final pulumi.Input<String> transitGatewayAttachmentId;
 
   /// Creates a new [GetMulticastDomainAssociation].
   /// [subnetId] The ID of the subnet associated with the transit gateway multicast domain.
@@ -24,8 +25,8 @@ class GetMulticastDomainAssociation {
 
   factory GetMulticastDomainAssociation.fromMap(Map<String, dynamic> map) {
     return GetMulticastDomainAssociation(
-      subnetId: map['subnetId'] as String,
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] as String,
+      subnetId: (map['subnetId'] as String).input(),
+      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
     );
   }
 }

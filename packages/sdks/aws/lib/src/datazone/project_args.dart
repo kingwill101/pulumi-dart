@@ -33,21 +33,14 @@ class ProjectArgs {
   /// [skipDeletionCheck] Optional flag to delete all child entities within the project.
   /// [timeouts] Optional.
   ProjectArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainIdentifier,
-    pulumi.Output<List<String>>? glossaryTerms,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDeletionCheck,
-    pulumi.Output<ProjectTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
-      glossaryTerms = pulumi.Input.asOptionalInput<List<String>>(glossaryTerms),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDeletionCheck = pulumi.Input.asOptionalInput<bool>(skipDeletionCheck),
-      timeouts = pulumi.Input.asOptionalInput<ProjectTimeouts>(timeouts);
+    this.description,
+    required this.domainIdentifier,
+    this.glossaryTerms,
+    this.name,
+    this.region,
+    this.skipDeletionCheck,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      glossaryTerms: map['glossaryTerms'] == null ? null : pulumi.Output.create<List<String>>((map['glossaryTerms'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : pulumi.Output.create<bool>(map['skipDeletionCheck'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ProjectTimeouts>(ProjectTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: (map['domainIdentifier'] as String).input(),
+      glossaryTerms: map['glossaryTerms'] == null ? null : ((map['glossaryTerms'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : (map['skipDeletionCheck'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (ProjectTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

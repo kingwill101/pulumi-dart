@@ -13,11 +13,9 @@ class GroupPoliciesExclusiveState {
   /// [groupName] IAM group name.
   /// [policyNames] A list of inline policy names to be assigned to the group. Policies attached to this group but not configured in this argument will be removed.
   GroupPoliciesExclusiveState({
-    pulumi.Output<String>? groupName,
-    pulumi.Output<List<String>>? policyNames,
-  }) :
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      policyNames = pulumi.Input.asOptionalInput<List<String>>(policyNames);
+    this.groupName,
+    this.policyNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class GroupPoliciesExclusiveState {
 
   factory GroupPoliciesExclusiveState.fromMap(Map<String, dynamic> map) {
     return GroupPoliciesExclusiveState(
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      policyNames: map['policyNames'] == null ? null : pulumi.Output.create<List<String>>((map['policyNames'] as List).cast<String>()),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceProviderCapabilities {
   /// The effect.
-  final String effect;
+  final pulumi.Input<String> effect;
   /// The quota id.
-  final String quotaId;
+  final pulumi.Input<String> quotaId;
   /// The required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
 
   /// Creates a new [ResourceProviderCapabilities].
   /// [effect] The effect.
@@ -29,9 +30,9 @@ class ResourceProviderCapabilities {
 
   factory ResourceProviderCapabilities.fromMap(Map<String, dynamic> map) {
     return ResourceProviderCapabilities(
-      effect: map['effect'] as String,
-      quotaId: map['quotaId'] as String,
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
+      effect: (map['effect'] as String).input(),
+      quotaId: (map['quotaId'] as String).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
     );
   }
 }

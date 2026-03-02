@@ -28,21 +28,14 @@ class VpcState {
   /// [region] The DigitalOcean region slug for the VPC's location.
   /// [vpcUrn] The uniform resource name (URN) for the VPC.
   VpcState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<bool>? default_,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipRange,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vpcUrn,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      default_ = pulumi.Input.asOptionalInput<bool>(default_),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcUrn = pulumi.Input.asOptionalInput<String>(vpcUrn);
+    this.createdAt,
+    this.default_,
+    this.description,
+    this.ipRange,
+    this.name,
+    this.region,
+    this.vpcUrn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class VpcState {
 
   factory VpcState.fromMap(Map<String, dynamic> map) {
     return VpcState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      default_: map['default'] == null ? null : pulumi.Output.create<bool>(map['default'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcUrn: map['vpcUrn'] == null ? null : pulumi.Output.create<String>(map['vpcUrn'] as String),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      default_: map['default'] == null ? null : (map['default'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcUrn: map['vpcUrn'] == null ? null : (map['vpcUrn'] as String).input(),
     );
   }
 }

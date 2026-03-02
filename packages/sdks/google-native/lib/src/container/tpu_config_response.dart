@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for Cloud TPU.
 class TpuConfigResponse {
   /// Whether Cloud TPU integration is enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// IPv4 CIDR block reserved for Cloud TPU in the VPC.
-  final String ipv4CidrBlock;
+  final pulumi.Input<String> ipv4CidrBlock;
   /// Whether to use service networking for Cloud TPU or not.
-  final bool useServiceNetworking;
+  final pulumi.Input<bool> useServiceNetworking;
 
   /// Creates a new [TpuConfigResponse].
   /// [enabled] Whether Cloud TPU integration is enabled or not.
@@ -30,9 +31,9 @@ class TpuConfigResponse {
 
   factory TpuConfigResponse.fromMap(Map<String, dynamic> map) {
     return TpuConfigResponse(
-      enabled: map['enabled'] as bool,
-      ipv4CidrBlock: map['ipv4CidrBlock'] as String,
-      useServiceNetworking: map['useServiceNetworking'] as bool,
+      enabled: (map['enabled'] as bool).input(),
+      ipv4CidrBlock: (map['ipv4CidrBlock'] as String).input(),
+      useServiceNetworking: (map['useServiceNetworking'] as bool).input(),
     );
   }
 }

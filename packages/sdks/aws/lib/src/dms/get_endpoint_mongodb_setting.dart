@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointMongodbSetting {
-  final String authMechanism;
-  final String authSource;
-  final String authType;
-  final String docsToInvestigate;
-  final String extractDocId;
-  final String nestingLevel;
+  final pulumi.Input<String> authMechanism;
+  final pulumi.Input<String> authSource;
+  final pulumi.Input<String> authType;
+  final pulumi.Input<String> docsToInvestigate;
+  final pulumi.Input<String> extractDocId;
+  final pulumi.Input<String> nestingLevel;
 
   /// Creates a new [GetEndpointMongodbSetting].
   /// [authMechanism] Required.
@@ -38,12 +39,12 @@ class GetEndpointMongodbSetting {
 
   factory GetEndpointMongodbSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointMongodbSetting(
-      authMechanism: map['authMechanism'] as String,
-      authSource: map['authSource'] as String,
-      authType: map['authType'] as String,
-      docsToInvestigate: map['docsToInvestigate'] as String,
-      extractDocId: map['extractDocId'] as String,
-      nestingLevel: map['nestingLevel'] as String,
+      authMechanism: (map['authMechanism'] as String).input(),
+      authSource: (map['authSource'] as String).input(),
+      authType: (map['authType'] as String).input(),
+      docsToInvestigate: (map['docsToInvestigate'] as String).input(),
+      extractDocId: (map['extractDocId'] as String).input(),
+      nestingLevel: (map['nestingLevel'] as String).input(),
     );
   }
 }

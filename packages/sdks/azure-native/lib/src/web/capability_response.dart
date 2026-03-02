@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the capabilities/features allowed for a specific SKU.
 class CapabilityResponse {
   /// Name of the SKU capability.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Reason of the SKU capability.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// Value of the SKU capability.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [CapabilityResponse].
   /// [name] Name of the SKU capability.
@@ -30,9 +31,9 @@ class CapabilityResponse {
 
   factory CapabilityResponse.fromMap(Map<String, dynamic> map) {
     return CapabilityResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model for disk for that pool is using
 class Disk {
   /// ID is the disk identifier visible to the OS. It is typically the WWN or disk ID in formats such as eui.e8238fa6bf530001001b448b45263379 or 0x5002cf6cbc5dd460
-  final String id;
+  final pulumi.Input<String> id;
   /// Reference is the location of the disk in an external system.
-  final String reference;
+  final pulumi.Input<String> reference;
 
   /// Creates a new [Disk].
   /// [id] ID is the disk identifier visible to the OS. It is typically the WWN or disk ID in formats such as eui.e8238fa6bf530001001b448b45263379 or 0x5002cf6cbc5dd460
@@ -25,8 +26,8 @@ class Disk {
 
   factory Disk.fromMap(Map<String, dynamic> map) {
     return Disk(
-      id: map['id'] as String,
-      reference: map['reference'] as String,
+      id: (map['id'] as String).input(),
+      reference: (map['reference'] as String).input(),
     );
   }
 }

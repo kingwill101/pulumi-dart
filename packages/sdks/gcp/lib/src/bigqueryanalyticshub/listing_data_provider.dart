@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListingDataProvider {
   /// Name of the data provider.
-  final String name;
+  final pulumi.Input<String> name;
   /// Email or URL of the data provider.
-  final String? primaryContact;
+  final pulumi.Input<String>? primaryContact;
 
   /// Creates a new [ListingDataProvider].
   /// [name] Name of the data provider.
@@ -24,8 +25,8 @@ class ListingDataProvider {
 
   factory ListingDataProvider.fromMap(Map<String, dynamic> map) {
     return ListingDataProvider(
-      name: map['name'] as String,
-      primaryContact: map['primaryContact'] == null ? null : map['primaryContact'] as String,
+      name: (map['name'] as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
     );
   }
 }

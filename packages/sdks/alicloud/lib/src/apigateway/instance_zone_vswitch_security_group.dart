@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceZoneVswitchSecurityGroup {
   /// The CIDR block of the VSwitch.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// The ID of the security group.
-  final String securityGroup;
+  final pulumi.Input<String> securityGroup;
   /// The VSwitch ID.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The zone ID.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [InstanceZoneVswitchSecurityGroup].
   /// [cidrBlock] The CIDR block of the VSwitch.
@@ -34,10 +35,10 @@ class InstanceZoneVswitchSecurityGroup {
 
   factory InstanceZoneVswitchSecurityGroup.fromMap(Map<String, dynamic> map) {
     return InstanceZoneVswitchSecurityGroup(
-      cidrBlock: map['cidrBlock'] as String,
-      securityGroup: map['securityGroup'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      securityGroup: (map['securityGroup'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

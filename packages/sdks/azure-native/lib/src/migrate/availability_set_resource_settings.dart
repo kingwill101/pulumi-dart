@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the availability set resource settings.
 class AvailabilitySetResourceSettings {
   /// Gets or sets the target fault domain.
-  final int? faultDomain;
+  final pulumi.Input<int>? faultDomain;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Compute/availabilitySets'.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Gets or sets the Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Gets or sets the target resource group name.
-  final String? targetResourceGroupName;
+  final pulumi.Input<String>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final String? targetResourceName;
+  final pulumi.Input<String>? targetResourceName;
   /// Gets or sets the target update domain.
-  final int? updateDomain;
+  final pulumi.Input<int>? updateDomain;
 
   /// Creates a new [AvailabilitySetResourceSettings].
   /// [faultDomain] Gets or sets the target fault domain.
@@ -46,12 +47,12 @@ class AvailabilitySetResourceSettings {
 
   factory AvailabilitySetResourceSettings.fromMap(Map<String, dynamic> map) {
     return AvailabilitySetResourceSettings(
-      faultDomain: map['faultDomain'] == null ? null : map['faultDomain'] as int,
-      resourceType: map['resourceType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : map['targetResourceGroupName'] as String,
-      targetResourceName: map['targetResourceName'] == null ? null : map['targetResourceName'] as String,
-      updateDomain: map['updateDomain'] == null ? null : map['updateDomain'] as int,
+      faultDomain: map['faultDomain'] == null ? null : (map['faultDomain'] as int).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
+      updateDomain: map['updateDomain'] == null ? null : (map['updateDomain'] as int).input(),
     );
   }
 }

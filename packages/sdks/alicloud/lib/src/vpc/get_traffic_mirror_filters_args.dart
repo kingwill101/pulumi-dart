@@ -25,17 +25,12 @@ class GetTrafficMirrorFiltersArgs {
   /// [status] The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
   /// [trafficMirrorFilterName] The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
   GetTrafficMirrorFiltersArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? trafficMirrorFilterName,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      trafficMirrorFilterName = pulumi.Input.asOptionalInput<String>(trafficMirrorFilterName);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.trafficMirrorFilterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetTrafficMirrorFiltersArgs {
 
   factory GetTrafficMirrorFiltersArgs.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorFiltersArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      trafficMirrorFilterName: map['trafficMirrorFilterName'] == null ? null : pulumi.Output.create<String>(map['trafficMirrorFilterName'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      trafficMirrorFilterName: map['trafficMirrorFilterName'] == null ? null : (map['trafficMirrorFilterName'] as String).input(),
     );
   }
 }

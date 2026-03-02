@@ -7,11 +7,11 @@ import 'private_link_service_connection_state.dart';
 /// Private link service proxy details.
 class PrivateLinkServiceProxy {
   /// Group connectivity information.
-  final List<GroupConnectivityInformation>? groupConnectivityInformation;
+  final pulumi.Input<List<GroupConnectivityInformation>>? groupConnectivityInformation;
   /// NRP resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Remote private link service connection state
-  final PrivateLinkServiceConnectionState? remotePrivateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState>? remotePrivateLinkServiceConnectionState;
 
   /// Creates a new [PrivateLinkServiceProxy].
   /// [groupConnectivityInformation] Group connectivity information.
@@ -25,17 +25,17 @@ class PrivateLinkServiceProxy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupConnectivityInformation': ?groupConnectivityInformation == null ? null : pulumi.Input.encodeList<GroupConnectivityInformation, Map<String, dynamic>>(groupConnectivityInformation!, (value) => value.toMap()),
+      'groupConnectivityInformation': ?pulumi.Input.mapOptionalInputValue<List<GroupConnectivityInformation>, List<Map<String, dynamic>>>(groupConnectivityInformation, (value) => pulumi.Input.encodeList<GroupConnectivityInformation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
-      'remotePrivateLinkServiceConnectionState': ?remotePrivateLinkServiceConnectionState == null ? null : remotePrivateLinkServiceConnectionState!.toMap(),
+      'remotePrivateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServiceConnectionState, Map<String, dynamic>>(remotePrivateLinkServiceConnectionState, (value) => value.toMap()),
     };
   }
 
   factory PrivateLinkServiceProxy.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceProxy(
-      groupConnectivityInformation: map['groupConnectivityInformation'] == null ? null : pulumi.Input.decodeList<GroupConnectivityInformation>(map['groupConnectivityInformation'], (value) => GroupConnectivityInformation.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      remotePrivateLinkServiceConnectionState: map['remotePrivateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionState.fromMap((map['remotePrivateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+      groupConnectivityInformation: map['groupConnectivityInformation'] == null ? null : (pulumi.Input.decodeList<GroupConnectivityInformation>(map['groupConnectivityInformation'], (value) => GroupConnectivityInformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      remotePrivateLinkServiceConnectionState: map['remotePrivateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionState.fromMap((map['remotePrivateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

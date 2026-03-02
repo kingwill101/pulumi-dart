@@ -43,29 +43,18 @@ class SnapshotCopyArgs {
   /// [tags] A map of tags for the snapshot.
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   SnapshotCopyArgs({
-    pulumi.Output<int>? completionDurationMinutes,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? encrypted,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<bool>? permanentRestore,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sourceRegion,
-    required pulumi.Output<String> sourceSnapshotId,
-    pulumi.Output<String>? storageTier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? temporaryRestoreDays,
-  }) :
-      completionDurationMinutes = pulumi.Input.asOptionalInput<int>(completionDurationMinutes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encrypted = pulumi.Input.asOptionalInput<bool>(encrypted),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      permanentRestore = pulumi.Input.asOptionalInput<bool>(permanentRestore),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceRegion = pulumi.Input.asInput<String>(sourceRegion),
-      sourceSnapshotId = pulumi.Input.asInput<String>(sourceSnapshotId),
-      storageTier = pulumi.Input.asOptionalInput<String>(storageTier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      temporaryRestoreDays = pulumi.Input.asOptionalInput<int>(temporaryRestoreDays);
+    this.completionDurationMinutes,
+    this.description,
+    this.encrypted,
+    this.kmsKeyId,
+    this.permanentRestore,
+    this.region,
+    required this.sourceRegion,
+    required this.sourceSnapshotId,
+    this.storageTier,
+    this.tags,
+    this.temporaryRestoreDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class SnapshotCopyArgs {
 
   factory SnapshotCopyArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyArgs(
-      completionDurationMinutes: map['completionDurationMinutes'] == null ? null : pulumi.Output.create<int>(map['completionDurationMinutes'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encrypted: map['encrypted'] == null ? null : pulumi.Output.create<bool>(map['encrypted'] as bool),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      permanentRestore: map['permanentRestore'] == null ? null : pulumi.Output.create<bool>(map['permanentRestore'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceRegion: pulumi.Output.create<String>(map['sourceRegion'] as String),
-      sourceSnapshotId: pulumi.Output.create<String>(map['sourceSnapshotId'] as String),
-      storageTier: map['storageTier'] == null ? null : pulumi.Output.create<String>(map['storageTier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : pulumi.Output.create<int>(map['temporaryRestoreDays'] as int),
+      completionDurationMinutes: map['completionDurationMinutes'] == null ? null : (map['completionDurationMinutes'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      permanentRestore: map['permanentRestore'] == null ? null : (map['permanentRestore'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceRegion: (map['sourceRegion'] as String).input(),
+      sourceSnapshotId: (map['sourceSnapshotId'] as String).input(),
+      storageTier: map['storageTier'] == null ? null : (map['storageTier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : (map['temporaryRestoreDays'] as int).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_state.dart';
 import 'private_endpoint.dart';
 
 class PrivateEndpointConnection {
   /// GroupIds from the private link service resource.
-  final List<String>? groupIds;
+  final pulumi.Input<List<String>>? groupIds;
   /// The Private Endpoint resource for this Connection.
-  final PrivateEndpoint? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
   /// Details about the state of the connection.
-  final ConnectionState? privateLinkServiceConnectionState;
+  final pulumi.Input<ConnectionState>? privateLinkServiceConnectionState;
   /// Provisioning state of the Private Endpoint Connection.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
 
   /// Creates a new [PrivateEndpointConnection].
   /// [groupIds] GroupIds from the private link service resource.
@@ -28,18 +29,18 @@ class PrivateEndpointConnection {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupIds': ?groupIds,
-      'privateEndpoint': ?privateEndpoint == null ? null : privateEndpoint!.toMap(),
-      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState == null ? null : privateLinkServiceConnectionState!.toMap(),
+      'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<PrivateEndpoint, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<ConnectionState, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
     };
   }
 
   factory PrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnection(
-      groupIds: map['groupIds'] == null ? null : (map['groupIds'] as List).cast<String>(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : PrivateEndpoint.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : ConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpoint.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (ConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
     );
   }
 }

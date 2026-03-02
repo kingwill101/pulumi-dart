@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting {
   /// (Output)
   /// The default prompt template used by the system.
   /// This field is for display purposes to show the user what prompt
   /// the system uses by default. It is OUTPUT_ONLY.
-  final String? defaultPromptTemplate;
+  final pulumi.Input<String>? defaultPromptTemplate;
 
   /// Creates a new [AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting].
   /// [defaultPromptTemplate] (Output)
@@ -22,7 +23,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting {
 
   factory AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting(
-      defaultPromptTemplate: map['defaultPromptTemplate'] == null ? null : map['defaultPromptTemplate'] as String,
+      defaultPromptTemplate: map['defaultPromptTemplate'] == null ? null : (map['defaultPromptTemplate'] as String).input(),
     );
   }
 }

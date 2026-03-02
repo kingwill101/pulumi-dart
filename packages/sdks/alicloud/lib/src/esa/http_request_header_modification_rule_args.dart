@@ -36,21 +36,14 @@ class HttpRequestHeaderModificationRuleArgs {
   /// [siteId] The site ID.
   /// [siteVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   HttpRequestHeaderModificationRuleArgs({
-    required pulumi.Output<List<HttpRequestHeaderModificationRuleRequestHeaderModification>> requestHeaderModifications,
-    pulumi.Output<String>? rule,
-    pulumi.Output<String>? ruleEnable,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<int>? sequence,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<int>? siteVersion,
-  }) :
-      requestHeaderModifications = pulumi.Input.asInput<List<HttpRequestHeaderModificationRuleRequestHeaderModification>>(requestHeaderModifications),
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      ruleEnable = pulumi.Input.asOptionalInput<String>(ruleEnable),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      sequence = pulumi.Input.asOptionalInput<int>(sequence),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion);
+    required this.requestHeaderModifications,
+    this.rule,
+    this.ruleEnable,
+    this.ruleName,
+    this.sequence,
+    required this.siteId,
+    this.siteVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class HttpRequestHeaderModificationRuleArgs {
 
   factory HttpRequestHeaderModificationRuleArgs.fromMap(Map<String, dynamic> map) {
     return HttpRequestHeaderModificationRuleArgs(
-      requestHeaderModifications: pulumi.Output.create<List<HttpRequestHeaderModificationRuleRequestHeaderModification>>(pulumi.Input.decodeList<HttpRequestHeaderModificationRuleRequestHeaderModification>(map['requestHeaderModifications'], (value) => HttpRequestHeaderModificationRuleRequestHeaderModification.fromMap((value as Map).cast<String, dynamic>()))),
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      ruleEnable: map['ruleEnable'] == null ? null : pulumi.Output.create<String>(map['ruleEnable'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      sequence: map['sequence'] == null ? null : pulumi.Output.create<int>(map['sequence'] as int),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
+      requestHeaderModifications: (pulumi.Input.decodeList<HttpRequestHeaderModificationRuleRequestHeaderModification>(map['requestHeaderModifications'], (value) => HttpRequestHeaderModificationRuleRequestHeaderModification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      siteId: (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
     );
   }
 }

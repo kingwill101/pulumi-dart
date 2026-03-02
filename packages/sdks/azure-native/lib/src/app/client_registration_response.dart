@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the app registration for providers that have client ids and client secrets
 class ClientRegistrationResponse {
   /// The Client ID of the app used for login.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The app setting name that contains the client secret.
-  final String? clientSecretSettingName;
+  final pulumi.Input<String>? clientSecretSettingName;
 
   /// Creates a new [ClientRegistrationResponse].
   /// [clientId] The Client ID of the app used for login.
@@ -25,8 +26,8 @@ class ClientRegistrationResponse {
 
   factory ClientRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return ClientRegistrationResponse(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : map['clientSecretSettingName'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
     );
   }
 }

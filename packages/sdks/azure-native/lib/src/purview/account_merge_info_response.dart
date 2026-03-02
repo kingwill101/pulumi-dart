@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The public Account Merge Info model.
 class AccountMergeInfoResponse {
   /// The account location of the *other* account in the merge operation.
-  final String accountLocation;
+  final pulumi.Input<String> accountLocation;
   /// The account name of the *other* account in the merge operation.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The resource group name of the *other* account in the merge operation.
-  final String accountResourceGroupName;
+  final pulumi.Input<String> accountResourceGroupName;
   /// The subscription id of the *other* account in the merge operation.
-  final String accountSubscriptionId;
+  final pulumi.Input<String> accountSubscriptionId;
   /// The deprovisioned status of the account.
   /// Only applicable for the secondary account.
-  final bool deprovisioned;
+  final pulumi.Input<bool> deprovisioned;
   /// The status of the merge operation.
-  final String mergeStatus;
+  final pulumi.Input<String> mergeStatus;
   /// The account's type for the merge operation.
-  final String typeOfAccount;
+  final pulumi.Input<String> typeOfAccount;
 
   /// Creates a new [AccountMergeInfoResponse].
   /// [accountLocation] The account location of the *other* account in the merge operation.
@@ -51,13 +52,13 @@ class AccountMergeInfoResponse {
 
   factory AccountMergeInfoResponse.fromMap(Map<String, dynamic> map) {
     return AccountMergeInfoResponse(
-      accountLocation: map['accountLocation'] as String,
-      accountName: map['accountName'] as String,
-      accountResourceGroupName: map['accountResourceGroupName'] as String,
-      accountSubscriptionId: map['accountSubscriptionId'] as String,
-      deprovisioned: map['deprovisioned'] as bool,
-      mergeStatus: map['mergeStatus'] as String,
-      typeOfAccount: map['typeOfAccount'] as String,
+      accountLocation: (map['accountLocation'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      accountResourceGroupName: (map['accountResourceGroupName'] as String).input(),
+      accountSubscriptionId: (map['accountSubscriptionId'] as String).input(),
+      deprovisioned: (map['deprovisioned'] as bool).input(),
+      mergeStatus: (map['mergeStatus'] as String).input(),
+      typeOfAccount: (map['typeOfAccount'] as String).input(),
     );
   }
 }

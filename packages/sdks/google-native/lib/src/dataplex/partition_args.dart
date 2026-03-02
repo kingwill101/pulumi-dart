@@ -27,21 +27,14 @@ class PartitionArgs {
   /// [values] Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
   /// [zone] Optional.
   PartitionArgs({
-    required pulumi.Output<String> entityId,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> lakeId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<String>> values,
-    pulumi.Output<String>? zone,
-  }) :
-      entityId = pulumi.Input.asInput<String>(entityId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      values = pulumi.Input.asInput<List<String>>(values),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.entityId,
+    this.etag,
+    required this.lakeId,
+    this.location,
+    this.project,
+    required this.values,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,13 +50,13 @@ class PartitionArgs {
 
   factory PartitionArgs.fromMap(Map<String, dynamic> map) {
     return PartitionArgs(
-      entityId: pulumi.Output.create<String>(map['entityId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      lakeId: pulumi.Output.create<String>(map['lakeId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      values: pulumi.Output.create<List<String>>((map['values'] as List).cast<String>()),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      entityId: (map['entityId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      lakeId: (map['lakeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

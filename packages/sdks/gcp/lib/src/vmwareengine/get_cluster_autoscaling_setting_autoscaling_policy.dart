@@ -6,18 +6,18 @@ import 'get_cluster_autoscaling_setting_autoscaling_policy_cpu_threshold.dart';
 import 'get_cluster_autoscaling_setting_autoscaling_policy_storage_threshold.dart';
 
 class GetClusterAutoscalingSettingAutoscalingPolicy {
-  final String autoscalePolicyId;
+  final pulumi.Input<String> autoscalePolicyId;
   /// Utilization thresholds pertaining to amount of consumed memory.
-  final List<GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold> consumedMemoryThresholds;
+  final pulumi.Input<List<GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold>> consumedMemoryThresholds;
   /// Utilization thresholds pertaining to CPU utilization.
-  final List<GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold> cpuThresholds;
+  final pulumi.Input<List<GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold>> cpuThresholds;
   /// The canonical identifier of the node type to add or remove.
-  final String nodeTypeId;
+  final pulumi.Input<String> nodeTypeId;
   /// Number of nodes to add to a cluster during a scale-out operation.
   /// Must be divisible by 2 for stretched clusters.
-  final int scaleOutSize;
+  final pulumi.Input<int> scaleOutSize;
   /// Utilization thresholds pertaining to amount of consumed storage.
-  final List<GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold> storageThresholds;
+  final pulumi.Input<List<GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold>> storageThresholds;
 
   /// Creates a new [GetClusterAutoscalingSettingAutoscalingPolicy].
   /// [autoscalePolicyId] Required.
@@ -38,22 +38,22 @@ class GetClusterAutoscalingSettingAutoscalingPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoscalePolicyId': autoscalePolicyId,
-      'consumedMemoryThresholds': pulumi.Input.encodeList<GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold, Map<String, dynamic>>(consumedMemoryThresholds, (value) => value.toMap()),
-      'cpuThresholds': pulumi.Input.encodeList<GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold, Map<String, dynamic>>(cpuThresholds, (value) => value.toMap()),
+      'consumedMemoryThresholds': pulumi.Input.mapInputValue<List<GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold>, List<Map<String, dynamic>>>(consumedMemoryThresholds, (value) => pulumi.Input.encodeList<GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cpuThresholds': pulumi.Input.mapInputValue<List<GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold>, List<Map<String, dynamic>>>(cpuThresholds, (value) => pulumi.Input.encodeList<GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeTypeId': nodeTypeId,
       'scaleOutSize': scaleOutSize,
-      'storageThresholds': pulumi.Input.encodeList<GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold, Map<String, dynamic>>(storageThresholds, (value) => value.toMap()),
+      'storageThresholds': pulumi.Input.mapInputValue<List<GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold>, List<Map<String, dynamic>>>(storageThresholds, (value) => pulumi.Input.encodeList<GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClusterAutoscalingSettingAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterAutoscalingSettingAutoscalingPolicy(
-      autoscalePolicyId: map['autoscalePolicyId'] as String,
-      consumedMemoryThresholds: pulumi.Input.decodeList<GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold>(map['consumedMemoryThresholds'], (value) => GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold.fromMap((value as Map).cast<String, dynamic>())),
-      cpuThresholds: pulumi.Input.decodeList<GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold>(map['cpuThresholds'], (value) => GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold.fromMap((value as Map).cast<String, dynamic>())),
-      nodeTypeId: map['nodeTypeId'] as String,
-      scaleOutSize: map['scaleOutSize'] as int,
-      storageThresholds: pulumi.Input.decodeList<GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold>(map['storageThresholds'], (value) => GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold.fromMap((value as Map).cast<String, dynamic>())),
+      autoscalePolicyId: (map['autoscalePolicyId'] as String).input(),
+      consumedMemoryThresholds: (pulumi.Input.decodeList<GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold>(map['consumedMemoryThresholds'], (value) => GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpuThresholds: (pulumi.Input.decodeList<GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold>(map['cpuThresholds'], (value) => GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeTypeId: (map['nodeTypeId'] as String).input(),
+      scaleOutSize: (map['scaleOutSize'] as int).input(),
+      storageThresholds: (pulumi.Input.decodeList<GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold>(map['storageThresholds'], (value) => GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

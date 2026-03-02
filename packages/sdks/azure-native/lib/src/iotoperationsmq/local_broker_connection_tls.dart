@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mqtt Local Broker Connection TLS details
 class LocalBrokerConnectionTls {
   /// Tls Enabled on Local Broker Connection.
-  final bool? tlsEnabled;
+  final pulumi.Input<bool>? tlsEnabled;
   /// Trusted CA certificate config map name for Local Broker.
-  final String? trustedCaCertificateConfigMap;
+  final pulumi.Input<String>? trustedCaCertificateConfigMap;
 
   /// Creates a new [LocalBrokerConnectionTls].
   /// [tlsEnabled] Tls Enabled on Local Broker Connection.
@@ -25,8 +26,8 @@ class LocalBrokerConnectionTls {
 
   factory LocalBrokerConnectionTls.fromMap(Map<String, dynamic> map) {
     return LocalBrokerConnectionTls(
-      tlsEnabled: map['tlsEnabled'] == null ? null : map['tlsEnabled'] as bool,
-      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : map['trustedCaCertificateConfigMap'] as String,
+      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled'] as bool).input(),
+      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : (map['trustedCaCertificateConfigMap'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class FirewallAttachmentState {
   /// [labelSelectors] List of label selectors used to
   /// [serverIds] List of Server IDs to attach to the
   FirewallAttachmentState({
-    pulumi.Output<int>? firewallId,
-    pulumi.Output<List<String>>? labelSelectors,
-    pulumi.Output<List<int>>? serverIds,
-  }) :
-      firewallId = pulumi.Input.asOptionalInput<int>(firewallId),
-      labelSelectors = pulumi.Input.asOptionalInput<List<String>>(labelSelectors),
-      serverIds = pulumi.Input.asOptionalInput<List<int>>(serverIds);
+    this.firewallId,
+    this.labelSelectors,
+    this.serverIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class FirewallAttachmentState {
 
   factory FirewallAttachmentState.fromMap(Map<String, dynamic> map) {
     return FirewallAttachmentState(
-      firewallId: map['firewallId'] == null ? null : pulumi.Output.create<int>(map['firewallId'] as int),
-      labelSelectors: map['labelSelectors'] == null ? null : pulumi.Output.create<List<String>>((map['labelSelectors'] as List).cast<String>()),
-      serverIds: map['serverIds'] == null ? null : pulumi.Output.create<List<int>>((map['serverIds'] as List).cast<int>()),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
+      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors'] as List).cast<String>()).input(),
+      serverIds: map['serverIds'] == null ? null : ((map['serverIds'] as List).cast<int>()).input(),
     );
   }
 }

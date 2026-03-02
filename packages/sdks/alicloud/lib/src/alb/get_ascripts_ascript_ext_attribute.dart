@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAscriptsAscriptExtAttribute {
   /// The key of the extended attribute.
-  final String attributeKey;
+  final pulumi.Input<String> attributeKey;
   /// The value of the extended attribute.
-  final String attributeValue;
+  final pulumi.Input<String> attributeValue;
 
   /// Creates a new [GetAscriptsAscriptExtAttribute].
   /// [attributeKey] The key of the extended attribute.
@@ -24,8 +25,8 @@ class GetAscriptsAscriptExtAttribute {
 
   factory GetAscriptsAscriptExtAttribute.fromMap(Map<String, dynamic> map) {
     return GetAscriptsAscriptExtAttribute(
-      attributeKey: map['attributeKey'] as String,
-      attributeValue: map['attributeValue'] as String,
+      attributeKey: (map['attributeKey'] as String).input(),
+      attributeValue: (map['attributeValue'] as String).input(),
     );
   }
 }

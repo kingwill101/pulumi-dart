@@ -25,17 +25,12 @@ class GetZoneRrsetArgs {
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   /// [zone] ID or Name of the parent Zone.
   GetZoneRrsetArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? withSelector,
-    required pulumi.Output<String> zone,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.id,
+    this.name,
+    this.type,
+    this.withSelector,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetZoneRrsetArgs {
 
   factory GetZoneRrsetArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneRrsetArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

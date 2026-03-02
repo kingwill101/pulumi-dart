@@ -47,31 +47,19 @@ class MicrosoftSecurityIncidentCreationAlertRuleArgs {
   /// [severitiesFilter] the alerts' severities on which the cases will be generated
   /// [workspaceName] The name of the workspace.
   MicrosoftSecurityIncidentCreationAlertRuleArgs({
-    pulumi.Output<String>? alertRuleTemplateName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<String>>? displayNamesExcludeFilter,
-    pulumi.Output<List<String>>? displayNamesFilter,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> productFilter,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleId,
-    pulumi.Output<List<String>>? severitiesFilter,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      alertRuleTemplateName = pulumi.Input.asOptionalInput<String>(alertRuleTemplateName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      displayNamesExcludeFilter = pulumi.Input.asOptionalInput<List<String>>(displayNamesExcludeFilter),
-      displayNamesFilter = pulumi.Input.asOptionalInput<List<String>>(displayNamesFilter),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      kind = pulumi.Input.asInput<String>(kind),
-      productFilter = pulumi.Input.asInput<String>(productFilter),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId),
-      severitiesFilter = pulumi.Input.asOptionalInput<List<String>>(severitiesFilter),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.alertRuleTemplateName,
+    this.description,
+    required this.displayName,
+    this.displayNamesExcludeFilter,
+    this.displayNamesFilter,
+    required this.enabled,
+    required this.kind,
+    required this.productFilter,
+    required this.resourceGroupName,
+    this.ruleId,
+    this.severitiesFilter,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class MicrosoftSecurityIncidentCreationAlertRuleArgs {
 
   factory MicrosoftSecurityIncidentCreationAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return MicrosoftSecurityIncidentCreationAlertRuleArgs(
-      alertRuleTemplateName: map['alertRuleTemplateName'] == null ? null : pulumi.Output.create<String>(map['alertRuleTemplateName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      displayNamesExcludeFilter: map['displayNamesExcludeFilter'] == null ? null : pulumi.Output.create<List<String>>((map['displayNamesExcludeFilter'] as List).cast<String>()),
-      displayNamesFilter: map['displayNamesFilter'] == null ? null : pulumi.Output.create<List<String>>((map['displayNamesFilter'] as List).cast<String>()),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      productFilter: pulumi.Output.create<String>(map['productFilter'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
-      severitiesFilter: map['severitiesFilter'] == null ? null : pulumi.Output.create<List<String>>((map['severitiesFilter'] as List).cast<String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      alertRuleTemplateName: map['alertRuleTemplateName'] == null ? null : (map['alertRuleTemplateName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      displayNamesExcludeFilter: map['displayNamesExcludeFilter'] == null ? null : ((map['displayNamesExcludeFilter'] as List).cast<String>()).input(),
+      displayNamesFilter: map['displayNamesFilter'] == null ? null : ((map['displayNamesFilter'] as List).cast<String>()).input(),
+      enabled: (map['enabled'] as bool).input(),
+      kind: (map['kind'] as String).input(),
+      productFilter: (map['productFilter'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      severitiesFilter: map['severitiesFilter'] == null ? null : ((map['severitiesFilter'] as List).cast<String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

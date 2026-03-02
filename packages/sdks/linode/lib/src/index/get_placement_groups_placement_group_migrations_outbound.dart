@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlacementGroupsPlacementGroupMigrationsOutbound {
   /// The unique identifier for the Linode being migrated out of the placement group.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
 
   /// Creates a new [GetPlacementGroupsPlacementGroupMigrationsOutbound].
   /// [linodeId] The unique identifier for the Linode being migrated out of the placement group.
@@ -19,7 +20,7 @@ class GetPlacementGroupsPlacementGroupMigrationsOutbound {
 
   factory GetPlacementGroupsPlacementGroupMigrationsOutbound.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsPlacementGroupMigrationsOutbound(
-      linodeId: map['linodeId'] as int,
+      linodeId: (map['linodeId'] as int).input(),
     );
   }
 }

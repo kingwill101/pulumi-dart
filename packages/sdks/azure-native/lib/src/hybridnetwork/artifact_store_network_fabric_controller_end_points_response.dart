@@ -6,7 +6,7 @@ import 'referenced_resource_response.dart';
 /// List of network fabric controller ids.
 class ArtifactStoreNetworkFabricControllerEndPointsResponse {
   /// list of network fabric controllers.
-  final List<ReferencedResourceResponse>? networkFabricControllerIds;
+  final pulumi.Input<List<ReferencedResourceResponse>>? networkFabricControllerIds;
 
   /// Creates a new [ArtifactStoreNetworkFabricControllerEndPointsResponse].
   /// [networkFabricControllerIds] list of network fabric controllers.
@@ -16,13 +16,13 @@ class ArtifactStoreNetworkFabricControllerEndPointsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkFabricControllerIds': ?networkFabricControllerIds == null ? null : pulumi.Input.encodeList<ReferencedResourceResponse, Map<String, dynamic>>(networkFabricControllerIds!, (value) => value.toMap()),
+      'networkFabricControllerIds': ?pulumi.Input.mapOptionalInputValue<List<ReferencedResourceResponse>, List<Map<String, dynamic>>>(networkFabricControllerIds, (value) => pulumi.Input.encodeList<ReferencedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ArtifactStoreNetworkFabricControllerEndPointsResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactStoreNetworkFabricControllerEndPointsResponse(
-      networkFabricControllerIds: map['networkFabricControllerIds'] == null ? null : pulumi.Input.decodeList<ReferencedResourceResponse>(map['networkFabricControllerIds'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkFabricControllerIds: map['networkFabricControllerIds'] == null ? null : (pulumi.Input.decodeList<ReferencedResourceResponse>(map['networkFabricControllerIds'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

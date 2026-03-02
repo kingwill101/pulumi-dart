@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ElasticsearchLogsFilteringTag {
   /// Specifies the type of action which should be taken when the Tag matches the `name` and `value`. Possible values are `Exclude` and `Include`.
-  final String action;
+  final pulumi.Input<String> action;
   /// Specifies the name (key) of the Tag which should be filtered.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the value of the Tag which should be filtered.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ElasticsearchLogsFilteringTag].
   /// [action] Specifies the type of action which should be taken when the Tag matches the `name` and `value`. Possible values are `Exclude` and `Include`.
@@ -29,9 +30,9 @@ class ElasticsearchLogsFilteringTag {
 
   factory ElasticsearchLogsFilteringTag.fromMap(Map<String, dynamic> map) {
     return ElasticsearchLogsFilteringTag(
-      action: map['action'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      action: (map['action'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

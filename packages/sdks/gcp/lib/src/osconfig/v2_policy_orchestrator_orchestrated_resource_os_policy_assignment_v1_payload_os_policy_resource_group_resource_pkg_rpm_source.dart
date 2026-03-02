@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_os_policy_resource_group_resource_pkg_rpm_source_gcs.dart';
 import 'v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_os_policy_resource_group_resource_pkg_rpm_source_remote.dart';
 
@@ -8,15 +9,15 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// based on the file type:
   /// Remote: A checksum must be specified.
   /// Cloud Storage: An object generation number must be specified.
-  final bool? allowInsecure;
+  final pulumi.Input<bool>? allowInsecure;
   /// Specifies a file available as a Cloud Storage Object.
   /// Structure is documented below.
-  final V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs? gcs;
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs>? gcs;
   /// A local path within the VM to use.
-  final String? localPath;
+  final pulumi.Input<String>? localPath;
   /// Specifies a file available via some URI.
   /// Structure is documented below.
-  final V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote? remote;
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote>? remote;
 
   /// Creates a new [V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource].
   /// [allowInsecure] Defaults to false. When false, files are subject to validations
@@ -33,18 +34,18 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInsecure': ?allowInsecure,
-      'gcs': ?gcs == null ? null : gcs!.toMap(),
+      'gcs': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs, Map<String, dynamic>>(gcs, (value) => value.toMap()),
       'localPath': ?localPath,
-      'remote': ?remote == null ? null : remote!.toMap(),
+      'remote': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote, Map<String, dynamic>>(remote, (value) => value.toMap()),
     };
   }
 
   factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource(
-      allowInsecure: map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
-      gcs: map['gcs'] == null ? null : V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
-      localPath: map['localPath'] == null ? null : map['localPath'] as String,
-      remote: map['remote'] == null ? null : V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote.fromMap((map['remote'] as Map).cast<String, dynamic>()),
+      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure'] as bool).input(),
+      gcs: map['gcs'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
+      remote: map['remote'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote.fromMap((map['remote'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

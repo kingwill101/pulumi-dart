@@ -18,15 +18,11 @@ class GetAliasArgs {
   /// [keystoreId] Required.
   /// [organizationId] Required.
   GetAliasArgs({
-    required pulumi.Output<String> aliasId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> keystoreId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      aliasId = pulumi.Input.asInput<String>(aliasId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      keystoreId = pulumi.Input.asInput<String>(keystoreId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.aliasId,
+    required this.environmentId,
+    required this.keystoreId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetAliasArgs {
 
   factory GetAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetAliasArgs(
-      aliasId: pulumi.Output.create<String>(map['aliasId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      keystoreId: pulumi.Output.create<String>(map['keystoreId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      aliasId: (map['aliasId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      keystoreId: (map['keystoreId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

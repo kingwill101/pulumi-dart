@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model that represents the Customer Managed Storage for an Experiment.
 class CustomerDataStoragePropertiesResponse {
   /// Name of the Azure Blob Storage container to use or create.
-  final String? blobContainerName;
+  final pulumi.Input<String>? blobContainerName;
   /// ARM Resource ID of the Storage account to use for Customer Data storage.
-  final String? storageAccountResourceId;
+  final pulumi.Input<String>? storageAccountResourceId;
 
   /// Creates a new [CustomerDataStoragePropertiesResponse].
   /// [blobContainerName] Name of the Azure Blob Storage container to use or create.
@@ -25,8 +26,8 @@ class CustomerDataStoragePropertiesResponse {
 
   factory CustomerDataStoragePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomerDataStoragePropertiesResponse(
-      blobContainerName: map['blobContainerName'] == null ? null : map['blobContainerName'] as String,
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : map['storageAccountResourceId'] as String,
+      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName'] as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
     );
   }
 }

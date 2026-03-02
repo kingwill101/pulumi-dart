@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FastHttpsAppWafSecurityPolicy {
   /// Setting `true` will enable FAST to create WAF Security Policy.
-  final bool enable;
+  final pulumi.Input<bool> enable;
 
   /// Creates a new [FastHttpsAppWafSecurityPolicy].
   /// [enable] Setting `true` will enable FAST to create WAF Security Policy.
@@ -19,7 +20,7 @@ class FastHttpsAppWafSecurityPolicy {
 
   factory FastHttpsAppWafSecurityPolicy.fromMap(Map<String, dynamic> map) {
     return FastHttpsAppWafSecurityPolicy(
-      enable: map['enable'] as bool,
+      enable: (map['enable'] as bool).input(),
     );
   }
 }

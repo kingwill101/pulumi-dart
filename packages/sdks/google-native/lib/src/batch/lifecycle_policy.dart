@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'action_condition.dart';
 import 'lifecycle_policy_action.dart';
 
 /// LifecyclePolicy describes how to deal with task failures based on different conditions.
 class LifecyclePolicy {
   /// Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
-  final LifecyclePolicyAction? action;
+  final pulumi.Input<LifecyclePolicyAction>? action;
   /// Conditions that decide why a task failure is dealt with a specific action.
-  final ActionCondition? actionCondition;
+  final pulumi.Input<ActionCondition>? actionCondition;
 
   /// Creates a new [LifecyclePolicy].
   /// [action] Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
@@ -20,15 +21,15 @@ class LifecyclePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.value,
-      'actionCondition': ?actionCondition == null ? null : actionCondition!.toMap(),
+      'action': ?pulumi.Input.mapOptionalInputValue<LifecyclePolicyAction, String>(action, (value) => value.value),
+      'actionCondition': ?pulumi.Input.mapOptionalInputValue<ActionCondition, Map<String, dynamic>>(actionCondition, (value) => value.toMap()),
     };
   }
 
   factory LifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicy(
-      action: map['action'] == null ? null : LifecyclePolicyAction.fromValue(map['action'] as String),
-      actionCondition: map['actionCondition'] == null ? null : ActionCondition.fromMap((map['actionCondition'] as Map).cast<String, dynamic>()),
+      action: map['action'] == null ? null : (LifecyclePolicyAction.fromValue(map['action'] as String)).input(),
+      actionCondition: map['actionCondition'] == null ? null : (ActionCondition.fromMap((map['actionCondition'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

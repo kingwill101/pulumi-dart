@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Start and end times for a build execution phase.
 class TimeSpanResponse {
   /// End of time span.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Start of time span.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [TimeSpanResponse].
   /// [endTime] End of time span.
@@ -25,8 +26,8 @@ class TimeSpanResponse {
 
   factory TimeSpanResponse.fromMap(Map<String, dynamic> map) {
     return TimeSpanResponse(
-      endTime: map['endTime'] as String,
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

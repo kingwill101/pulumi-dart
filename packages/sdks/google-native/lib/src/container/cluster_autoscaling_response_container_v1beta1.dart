@@ -7,15 +7,15 @@ import 'resource_limit_response_container_v1beta1.dart';
 /// ClusterAutoscaling contains global, per-cluster information required by Cluster Autoscaler to automatically adjust the size of the cluster and create/delete node pools based on the current needs.
 class ClusterAutoscalingResponseContainerV1beta1 {
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.
-  final List<String> autoprovisioningLocations;
+  final pulumi.Input<List<String>> autoprovisioningLocations;
   /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
-  final AutoprovisioningNodePoolDefaultsResponseContainerV1beta1 autoprovisioningNodePoolDefaults;
+  final pulumi.Input<AutoprovisioningNodePoolDefaultsResponseContainerV1beta1> autoprovisioningNodePoolDefaults;
   /// Defines autoscaling behaviour.
-  final String autoscalingProfile;
+  final pulumi.Input<String> autoscalingProfile;
   /// Enables automatic node pool creation and deletion.
-  final bool enableNodeAutoprovisioning;
+  final pulumi.Input<bool> enableNodeAutoprovisioning;
   /// Contains global constraints regarding minimum and maximum amount of resources in the cluster.
-  final List<ResourceLimitResponseContainerV1beta1> resourceLimits;
+  final pulumi.Input<List<ResourceLimitResponseContainerV1beta1>> resourceLimits;
 
   /// Creates a new [ClusterAutoscalingResponseContainerV1beta1].
   /// [autoprovisioningLocations] The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.
@@ -34,20 +34,20 @@ class ClusterAutoscalingResponseContainerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoprovisioningLocations': autoprovisioningLocations,
-      'autoprovisioningNodePoolDefaults': autoprovisioningNodePoolDefaults.toMap(),
+      'autoprovisioningNodePoolDefaults': pulumi.Input.mapInputValue<AutoprovisioningNodePoolDefaultsResponseContainerV1beta1, Map<String, dynamic>>(autoprovisioningNodePoolDefaults, (value) => value.toMap()),
       'autoscalingProfile': autoscalingProfile,
       'enableNodeAutoprovisioning': enableNodeAutoprovisioning,
-      'resourceLimits': pulumi.Input.encodeList<ResourceLimitResponseContainerV1beta1, Map<String, dynamic>>(resourceLimits, (value) => value.toMap()),
+      'resourceLimits': pulumi.Input.mapInputValue<List<ResourceLimitResponseContainerV1beta1>, List<Map<String, dynamic>>>(resourceLimits, (value) => pulumi.Input.encodeList<ResourceLimitResponseContainerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ClusterAutoscalingResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscalingResponseContainerV1beta1(
-      autoprovisioningLocations: (map['autoprovisioningLocations'] as List).cast<String>(),
-      autoprovisioningNodePoolDefaults: AutoprovisioningNodePoolDefaultsResponseContainerV1beta1.fromMap((map['autoprovisioningNodePoolDefaults'] as Map).cast<String, dynamic>()),
-      autoscalingProfile: map['autoscalingProfile'] as String,
-      enableNodeAutoprovisioning: map['enableNodeAutoprovisioning'] as bool,
-      resourceLimits: pulumi.Input.decodeList<ResourceLimitResponseContainerV1beta1>(map['resourceLimits'], (value) => ResourceLimitResponseContainerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      autoprovisioningLocations: ((map['autoprovisioningLocations'] as List).cast<String>()).input(),
+      autoprovisioningNodePoolDefaults: (AutoprovisioningNodePoolDefaultsResponseContainerV1beta1.fromMap((map['autoprovisioningNodePoolDefaults'] as Map).cast<String, dynamic>())).input(),
+      autoscalingProfile: (map['autoscalingProfile'] as String).input(),
+      enableNodeAutoprovisioning: (map['enableNodeAutoprovisioning'] as bool).input(),
+      resourceLimits: (pulumi.Input.decodeList<ResourceLimitResponseContainerV1beta1>(map['resourceLimits'], (value) => ResourceLimitResponseContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

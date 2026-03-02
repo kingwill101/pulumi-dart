@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceLiveTrace {
   /// Whether the log category `ConnectivityLogs` is enabled? Defaults to `true`
-  final bool? connectivityLogsEnabled;
+  final pulumi.Input<bool>? connectivityLogsEnabled;
   /// Whether the live trace is enabled? Defaults to `true`.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Whether the log category `HttpRequestLogs` is enabled? Defaults to `true`
-  final bool? httpRequestLogsEnabled;
+  final pulumi.Input<bool>? httpRequestLogsEnabled;
   /// Whether the log category `MessagingLogs` is enabled? Defaults to `true`
-  final bool? messagingLogsEnabled;
+  final pulumi.Input<bool>? messagingLogsEnabled;
 
   /// Creates a new [ServiceLiveTrace].
   /// [connectivityLogsEnabled] Whether the log category `ConnectivityLogs` is enabled? Defaults to `true`
@@ -34,10 +35,10 @@ class ServiceLiveTrace {
 
   factory ServiceLiveTrace.fromMap(Map<String, dynamic> map) {
     return ServiceLiveTrace(
-      connectivityLogsEnabled: map['connectivityLogsEnabled'] == null ? null : map['connectivityLogsEnabled'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      httpRequestLogsEnabled: map['httpRequestLogsEnabled'] == null ? null : map['httpRequestLogsEnabled'] as bool,
-      messagingLogsEnabled: map['messagingLogsEnabled'] == null ? null : map['messagingLogsEnabled'] as bool,
+      connectivityLogsEnabled: map['connectivityLogsEnabled'] == null ? null : (map['connectivityLogsEnabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      httpRequestLogsEnabled: map['httpRequestLogsEnabled'] == null ? null : (map['httpRequestLogsEnabled'] as bool).input(),
+      messagingLogsEnabled: map['messagingLogsEnabled'] == null ? null : (map['messagingLogsEnabled'] as bool).input(),
     );
   }
 }

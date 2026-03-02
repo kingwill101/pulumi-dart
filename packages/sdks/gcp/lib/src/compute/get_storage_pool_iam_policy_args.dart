@@ -22,13 +22,10 @@ class GetStoragePoolIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the storage pool resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   GetStoragePoolIamPolicyArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.name,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetStoragePoolIamPolicyArgs {
 
   factory GetStoragePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetStoragePoolIamPolicyArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

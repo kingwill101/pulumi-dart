@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentKendraConfiguration {
   /// ARN of the Kendra index.
-  final String kendraIndex;
+  final pulumi.Input<String> kendraIndex;
   /// Query filter string for Kendra.
-  final String? queryFilterString;
+  final pulumi.Input<String>? queryFilterString;
   /// Whether the query filter string is enabled.
-  final bool? queryFilterStringEnabled;
+  final pulumi.Input<bool>? queryFilterStringEnabled;
 
   /// Creates a new [V2modelsIntentKendraConfiguration].
   /// [kendraIndex] ARN of the Kendra index.
@@ -29,9 +30,9 @@ class V2modelsIntentKendraConfiguration {
 
   factory V2modelsIntentKendraConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentKendraConfiguration(
-      kendraIndex: map['kendraIndex'] as String,
-      queryFilterString: map['queryFilterString'] == null ? null : map['queryFilterString'] as String,
-      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null ? null : map['queryFilterStringEnabled'] as bool,
+      kendraIndex: (map['kendraIndex'] as String).input(),
+      queryFilterString: map['queryFilterString'] == null ? null : (map['queryFilterString'] as String).input(),
+      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null ? null : (map['queryFilterStringEnabled'] as bool).input(),
     );
   }
 }

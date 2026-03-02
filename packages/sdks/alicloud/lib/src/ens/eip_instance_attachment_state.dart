@@ -28,17 +28,12 @@ class EipInstanceAttachmentState {
   /// [standby] Indicates whether the EIP is a backup EIP. Value:
   /// [status] The status of the EIP.
   EipInstanceAttachmentState({
-    pulumi.Output<String>? allocationId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<bool>? standby,
-    pulumi.Output<String>? status,
-  }) :
-      allocationId = pulumi.Input.asOptionalInput<String>(allocationId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      standby = pulumi.Input.asOptionalInput<bool>(standby),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.allocationId,
+    this.instanceId,
+    this.instanceType,
+    this.standby,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class EipInstanceAttachmentState {
 
   factory EipInstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return EipInstanceAttachmentState(
-      allocationId: map['allocationId'] == null ? null : pulumi.Output.create<String>(map['allocationId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      standby: map['standby'] == null ? null : pulumi.Output.create<bool>(map['standby'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      standby: map['standby'] == null ? null : (map['standby'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

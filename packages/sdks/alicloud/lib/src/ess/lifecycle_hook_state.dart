@@ -28,21 +28,14 @@ class LifecycleHookState {
   /// [notificationMetadata] Additional information that you want to include when Auto Scaling sends a message to the notification target.
   /// [scalingGroupId] The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
   LifecycleHookState({
-    pulumi.Output<String>? defaultResult,
-    pulumi.Output<int>? heartbeatTimeout,
-    pulumi.Output<String>? lifecycleTransition,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notificationArn,
-    pulumi.Output<String>? notificationMetadata,
-    pulumi.Output<String>? scalingGroupId,
-  }) :
-      defaultResult = pulumi.Input.asOptionalInput<String>(defaultResult),
-      heartbeatTimeout = pulumi.Input.asOptionalInput<int>(heartbeatTimeout),
-      lifecycleTransition = pulumi.Input.asOptionalInput<String>(lifecycleTransition),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationArn = pulumi.Input.asOptionalInput<String>(notificationArn),
-      notificationMetadata = pulumi.Input.asOptionalInput<String>(notificationMetadata),
-      scalingGroupId = pulumi.Input.asOptionalInput<String>(scalingGroupId);
+    this.defaultResult,
+    this.heartbeatTimeout,
+    this.lifecycleTransition,
+    this.name,
+    this.notificationArn,
+    this.notificationMetadata,
+    this.scalingGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class LifecycleHookState {
 
   factory LifecycleHookState.fromMap(Map<String, dynamic> map) {
     return LifecycleHookState(
-      defaultResult: map['defaultResult'] == null ? null : pulumi.Output.create<String>(map['defaultResult'] as String),
-      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : pulumi.Output.create<int>(map['heartbeatTimeout'] as int),
-      lifecycleTransition: map['lifecycleTransition'] == null ? null : pulumi.Output.create<String>(map['lifecycleTransition'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationArn: map['notificationArn'] == null ? null : pulumi.Output.create<String>(map['notificationArn'] as String),
-      notificationMetadata: map['notificationMetadata'] == null ? null : pulumi.Output.create<String>(map['notificationMetadata'] as String),
-      scalingGroupId: map['scalingGroupId'] == null ? null : pulumi.Output.create<String>(map['scalingGroupId'] as String),
+      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult'] as String).input(),
+      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout'] as int).input(),
+      lifecycleTransition: map['lifecycleTransition'] == null ? null : (map['lifecycleTransition'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn'] as String).input(),
+      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata'] as String).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
     );
   }
 }

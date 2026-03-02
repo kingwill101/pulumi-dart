@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceNetworkInterface {
   /// Whether or not to delete the network interface on instance termination. Defaults to `false`. Currently, the only valid value is `false`, as this is only supported when creating new network interfaces when launching an instance.
-  final bool? deleteOnTermination;
+  final pulumi.Input<bool>? deleteOnTermination;
   /// Integer index of the network interface attachment. Limited by instance type.
-  final int deviceIndex;
+  final pulumi.Input<int> deviceIndex;
   /// Integer index of the network card. Limited by instance type. The default index is `0`.
-  final int? networkCardIndex;
+  final pulumi.Input<int>? networkCardIndex;
   /// ID of the network interface to attach.
-  final String networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
 
   /// Creates a new [InstanceNetworkInterface].
   /// [deleteOnTermination] Whether or not to delete the network interface on instance termination. Defaults to `false`. Currently, the only valid value is `false`, as this is only supported when creating new network interfaces when launching an instance.
@@ -34,10 +35,10 @@ class InstanceNetworkInterface {
 
   factory InstanceNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkInterface(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : map['deleteOnTermination'] as bool,
-      deviceIndex: map['deviceIndex'] as int,
-      networkCardIndex: map['networkCardIndex'] == null ? null : map['networkCardIndex'] as int,
-      networkInterfaceId: map['networkInterfaceId'] as String,
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
+      deviceIndex: (map['deviceIndex'] as int).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class AuthorizationAccessPolicyArgs {
   /// [serviceName] The name of the API Management service.
   /// [tenantId] The Tenant Id
   AuthorizationAccessPolicyArgs({
-    pulumi.Output<String>? authorizationAccessPolicyId,
-    required pulumi.Output<String> authorizationId,
-    required pulumi.Output<String> authorizationProviderId,
-    pulumi.Output<String>? objectId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? tenantId,
-  }) :
-      authorizationAccessPolicyId = pulumi.Input.asOptionalInput<String>(authorizationAccessPolicyId),
-      authorizationId = pulumi.Input.asInput<String>(authorizationId),
-      authorizationProviderId = pulumi.Input.asInput<String>(authorizationProviderId),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.authorizationAccessPolicyId,
+    required this.authorizationId,
+    required this.authorizationProviderId,
+    this.objectId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class AuthorizationAccessPolicyArgs {
 
   factory AuthorizationAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationAccessPolicyArgs(
-      authorizationAccessPolicyId: map['authorizationAccessPolicyId'] == null ? null : pulumi.Output.create<String>(map['authorizationAccessPolicyId'] as String),
-      authorizationId: pulumi.Output.create<String>(map['authorizationId'] as String),
-      authorizationProviderId: pulumi.Output.create<String>(map['authorizationProviderId'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      authorizationAccessPolicyId: map['authorizationAccessPolicyId'] == null ? null : (map['authorizationAccessPolicyId'] as String).input(),
+      authorizationId: (map['authorizationId'] as String).input(),
+      authorizationProviderId: (map['authorizationProviderId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

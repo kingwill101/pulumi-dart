@@ -16,11 +16,9 @@ class ListVpnServerConfigurationRadiusSecretsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vpnServerConfigurationName] The name of the VpnServerConfiguration.
   ListVpnServerConfigurationRadiusSecretsArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vpnServerConfigurationName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vpnServerConfigurationName = pulumi.Input.asInput<String>(vpnServerConfigurationName);
+    required this.resourceGroupName,
+    required this.vpnServerConfigurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListVpnServerConfigurationRadiusSecretsArgs {
 
   factory ListVpnServerConfigurationRadiusSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListVpnServerConfigurationRadiusSecretsArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vpnServerConfigurationName: pulumi.Output.create<String>(map['vpnServerConfigurationName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vpnServerConfigurationName: (map['vpnServerConfigurationName'] as String).input(),
     );
   }
 }

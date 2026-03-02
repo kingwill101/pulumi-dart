@@ -22,15 +22,11 @@ class NetworkManagerSubscriptionConnectionArgs {
   /// [networkManagerId] Specifies the ID of the Network Manager which the Subscription is connected to.
   /// [subscriptionId] Specifies the ID of the target Subscription. Changing this forces a new resource to be created.
   NetworkManagerSubscriptionConnectionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkManagerId,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkManagerId = pulumi.Input.asInput<String>(networkManagerId),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    this.description,
+    this.name,
+    required this.networkManagerId,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NetworkManagerSubscriptionConnectionArgs {
 
   factory NetworkManagerSubscriptionConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerSubscriptionConnectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkManagerId: pulumi.Output.create<String>(map['networkManagerId'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkManagerId: (map['networkManagerId'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

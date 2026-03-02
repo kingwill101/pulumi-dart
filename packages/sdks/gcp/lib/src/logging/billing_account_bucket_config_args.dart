@@ -33,21 +33,14 @@ class BillingAccountBucketConfigArgs {
   /// [location] The location of the bucket.
   /// [retentionDays] Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
   BillingAccountBucketConfigArgs({
-    required pulumi.Output<String> billingAccount,
-    required pulumi.Output<String> bucketId,
-    pulumi.Output<BillingAccountBucketConfigCmekSettings>? cmekSettings,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<BillingAccountBucketConfigIndexConfig>>? indexConfigs,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? retentionDays,
-  }) :
-      billingAccount = pulumi.Input.asInput<String>(billingAccount),
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      cmekSettings = pulumi.Input.asOptionalInput<BillingAccountBucketConfigCmekSettings>(cmekSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexConfigs = pulumi.Input.asOptionalInput<List<BillingAccountBucketConfigIndexConfig>>(indexConfigs),
-      location = pulumi.Input.asInput<String>(location),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
+    required this.billingAccount,
+    required this.bucketId,
+    this.cmekSettings,
+    this.description,
+    this.indexConfigs,
+    required this.location,
+    this.retentionDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class BillingAccountBucketConfigArgs {
 
   factory BillingAccountBucketConfigArgs.fromMap(Map<String, dynamic> map) {
     return BillingAccountBucketConfigArgs(
-      billingAccount: pulumi.Output.create<String>(map['billingAccount'] as String),
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      cmekSettings: map['cmekSettings'] == null ? null : pulumi.Output.create<BillingAccountBucketConfigCmekSettings>(BillingAccountBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexConfigs: map['indexConfigs'] == null ? null : pulumi.Output.create<List<BillingAccountBucketConfigIndexConfig>>(pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(map['indexConfigs'], (value) => BillingAccountBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
+      billingAccount: (map['billingAccount'] as String).input(),
+      bucketId: (map['bucketId'] as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (BillingAccountBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(map['indexConfigs'], (value) => BillingAccountBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (map['location'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
     );
   }
 }

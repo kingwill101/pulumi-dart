@@ -25,17 +25,12 @@ class FunctionAppHybridConnectionArgs {
   /// [relayId] The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
   /// [sendKeyName] The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
   FunctionAppHybridConnectionArgs({
-    required pulumi.Output<String> functionAppId,
-    required pulumi.Output<String> hostname,
-    required pulumi.Output<int> port,
-    required pulumi.Output<String> relayId,
-    pulumi.Output<String>? sendKeyName,
-  }) :
-      functionAppId = pulumi.Input.asInput<String>(functionAppId),
-      hostname = pulumi.Input.asInput<String>(hostname),
-      port = pulumi.Input.asInput<int>(port),
-      relayId = pulumi.Input.asInput<String>(relayId),
-      sendKeyName = pulumi.Input.asOptionalInput<String>(sendKeyName);
+    required this.functionAppId,
+    required this.hostname,
+    required this.port,
+    required this.relayId,
+    this.sendKeyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class FunctionAppHybridConnectionArgs {
 
   factory FunctionAppHybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionAppHybridConnectionArgs(
-      functionAppId: pulumi.Output.create<String>(map['functionAppId'] as String),
-      hostname: pulumi.Output.create<String>(map['hostname'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      relayId: pulumi.Output.create<String>(map['relayId'] as String),
-      sendKeyName: map['sendKeyName'] == null ? null : pulumi.Output.create<String>(map['sendKeyName'] as String),
+      functionAppId: (map['functionAppId'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      port: (map['port'] as int).input(),
+      relayId: (map['relayId'] as String).input(),
+      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName'] as String).input(),
     );
   }
 }

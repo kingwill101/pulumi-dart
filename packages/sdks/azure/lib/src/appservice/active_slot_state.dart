@@ -16,13 +16,10 @@ class ActiveSlotState {
   /// [appServiceSlotName] The name of the App Service Slot which should be promoted to the Production Slot within the App Service.
   /// [resourceGroupName] The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
   ActiveSlotState({
-    pulumi.Output<String>? appServiceName,
-    pulumi.Output<String>? appServiceSlotName,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      appServiceName = pulumi.Input.asOptionalInput<String>(appServiceName),
-      appServiceSlotName = pulumi.Input.asOptionalInput<String>(appServiceSlotName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.appServiceName,
+    this.appServiceSlotName,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ActiveSlotState {
 
   factory ActiveSlotState.fromMap(Map<String, dynamic> map) {
     return ActiveSlotState(
-      appServiceName: map['appServiceName'] == null ? null : pulumi.Output.create<String>(map['appServiceName'] as String),
-      appServiceSlotName: map['appServiceSlotName'] == null ? null : pulumi.Output.create<String>(map['appServiceSlotName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName'] as String).input(),
+      appServiceSlotName: map['appServiceSlotName'] == null ? null : (map['appServiceSlotName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

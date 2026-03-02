@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsVirtualMachineInboundNatRule {
   /// The Backend Port associated with this NAT Rule. Changing this forces a new resource to be created.
-  final int backendPort;
+  final pulumi.Input<int> backendPort;
   /// The frontend port associated with this Inbound NAT Rule.
-  final int? frontendPort;
+  final pulumi.Input<int>? frontendPort;
   /// The Protocol used for this NAT Rule. Possible values are `Tcp` and `Udp`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [WindowsVirtualMachineInboundNatRule].
   /// [backendPort] The Backend Port associated with this NAT Rule. Changing this forces a new resource to be created.
@@ -29,9 +30,9 @@ class WindowsVirtualMachineInboundNatRule {
 
   factory WindowsVirtualMachineInboundNatRule.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineInboundNatRule(
-      backendPort: map['backendPort'] as int,
-      frontendPort: map['frontendPort'] == null ? null : map['frontendPort'] as int,
-      protocol: map['protocol'] as String,
+      backendPort: (map['backendPort'] as int).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

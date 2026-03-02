@@ -32,21 +32,14 @@ class AlertsSuppressionRuleArgs {
   /// [state] Possible states of the rule
   /// [suppressionAlertsScope] The suppression conditions
   AlertsSuppressionRuleArgs({
-    required pulumi.Output<String> alertType,
-    pulumi.Output<String>? alertsSuppressionRuleName,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? expirationDateUtc,
-    required pulumi.Output<String> reason,
-    required pulumi.Output<String> state,
-    pulumi.Output<SuppressionAlertsScope>? suppressionAlertsScope,
-  }) :
-      alertType = pulumi.Input.asInput<String>(alertType),
-      alertsSuppressionRuleName = pulumi.Input.asOptionalInput<String>(alertsSuppressionRuleName),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      expirationDateUtc = pulumi.Input.asOptionalInput<String>(expirationDateUtc),
-      reason = pulumi.Input.asInput<String>(reason),
-      state = pulumi.Input.asInput<String>(state),
-      suppressionAlertsScope = pulumi.Input.asOptionalInput<SuppressionAlertsScope>(suppressionAlertsScope);
+    required this.alertType,
+    this.alertsSuppressionRuleName,
+    this.comment,
+    this.expirationDateUtc,
+    required this.reason,
+    required this.state,
+    this.suppressionAlertsScope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class AlertsSuppressionRuleArgs {
 
   factory AlertsSuppressionRuleArgs.fromMap(Map<String, dynamic> map) {
     return AlertsSuppressionRuleArgs(
-      alertType: pulumi.Output.create<String>(map['alertType'] as String),
-      alertsSuppressionRuleName: map['alertsSuppressionRuleName'] == null ? null : pulumi.Output.create<String>(map['alertsSuppressionRuleName'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      expirationDateUtc: map['expirationDateUtc'] == null ? null : pulumi.Output.create<String>(map['expirationDateUtc'] as String),
-      reason: pulumi.Output.create<String>(map['reason'] as String),
-      state: pulumi.Output.create<String>(map['state'] as String),
-      suppressionAlertsScope: map['suppressionAlertsScope'] == null ? null : pulumi.Output.create<SuppressionAlertsScope>(SuppressionAlertsScope.fromMap((map['suppressionAlertsScope'] as Map).cast<String, dynamic>())),
+      alertType: (map['alertType'] as String).input(),
+      alertsSuppressionRuleName: map['alertsSuppressionRuleName'] == null ? null : (map['alertsSuppressionRuleName'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      expirationDateUtc: map['expirationDateUtc'] == null ? null : (map['expirationDateUtc'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      state: (map['state'] as String).input(),
+      suppressionAlertsScope: map['suppressionAlertsScope'] == null ? null : (SuppressionAlertsScope.fromMap((map['suppressionAlertsScope'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

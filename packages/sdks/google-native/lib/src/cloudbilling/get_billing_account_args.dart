@@ -12,9 +12,8 @@ class GetBillingAccountArgs {
   /// Creates a new [GetBillingAccountArgs].
   /// [billingAccountId] Required.
   GetBillingAccountArgs({
-    required pulumi.Output<String> billingAccountId,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId);
+    required this.billingAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetBillingAccountArgs {
 
   factory GetBillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
     );
   }
 }

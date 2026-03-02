@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Recovery plan script action details.
 class RecoveryPlanScriptActionDetails {
   /// The fabric location.
-  final String fabricLocation;
+  final pulumi.Input<String> fabricLocation;
   /// Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
   /// Expected value is 'ScriptActionDetails'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The script path.
-  final String path;
+  final pulumi.Input<String> path;
   /// The script timeout.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [RecoveryPlanScriptActionDetails].
   /// [fabricLocation] The fabric location.
@@ -36,10 +37,10 @@ class RecoveryPlanScriptActionDetails {
 
   factory RecoveryPlanScriptActionDetails.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanScriptActionDetails(
-      fabricLocation: map['fabricLocation'] as String,
-      instanceType: map['instanceType'] as String,
-      path: map['path'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      fabricLocation: (map['fabricLocation'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      path: (map['path'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

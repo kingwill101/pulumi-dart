@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecommendationPreferencesExternalMetricsPreference {
   /// The source options for external metrics preferences. Valid values: `Datadog`, `Dynatrace`, `NewRelic`, `Instana`.
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [RecommendationPreferencesExternalMetricsPreference].
   /// [source] The source options for external metrics preferences. Valid values: `Datadog`, `Dynatrace`, `NewRelic`, `Instana`.
@@ -19,7 +20,7 @@ class RecommendationPreferencesExternalMetricsPreference {
 
   factory RecommendationPreferencesExternalMetricsPreference.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesExternalMetricsPreference(
-      source: map['source'] as String,
+      source: (map['source'] as String).input(),
     );
   }
 }

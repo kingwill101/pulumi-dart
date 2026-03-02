@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SiteDeliveryTaskHttpDeliveryStandardAuthParam {
-  final int? expiredTime;
-  final String? privateKey;
-  final String? urlPath;
+  final pulumi.Input<int>? expiredTime;
+  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String>? urlPath;
 
   /// Creates a new [SiteDeliveryTaskHttpDeliveryStandardAuthParam].
   /// [expiredTime] Optional.
@@ -26,9 +27,9 @@ class SiteDeliveryTaskHttpDeliveryStandardAuthParam {
 
   factory SiteDeliveryTaskHttpDeliveryStandardAuthParam.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskHttpDeliveryStandardAuthParam(
-      expiredTime: map['expiredTime'] == null ? null : map['expiredTime'] as int,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      urlPath: map['urlPath'] == null ? null : map['urlPath'] as String,
+      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime'] as int).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      urlPath: map['urlPath'] == null ? null : (map['urlPath'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_config.dart';
 
 /// BrokerAuthorization Resource properties
 class BrokerAuthorizationProperties {
   /// The list of authorization policies supported by the Authorization Resource.
-  final AuthorizationConfig authorizationPolicies;
+  final pulumi.Input<AuthorizationConfig> authorizationPolicies;
 
   /// Creates a new [BrokerAuthorizationProperties].
   /// [authorizationPolicies] The list of authorization policies supported by the Authorization Resource.
@@ -15,13 +16,13 @@ class BrokerAuthorizationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationPolicies': authorizationPolicies.toMap(),
+      'authorizationPolicies': pulumi.Input.mapInputValue<AuthorizationConfig, Map<String, dynamic>>(authorizationPolicies, (value) => value.toMap()),
     };
   }
 
   factory BrokerAuthorizationProperties.fromMap(Map<String, dynamic> map) {
     return BrokerAuthorizationProperties(
-      authorizationPolicies: AuthorizationConfig.fromMap((map['authorizationPolicies'] as Map).cast<String, dynamic>()),
+      authorizationPolicies: (AuthorizationConfig.fromMap((map['authorizationPolicies'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

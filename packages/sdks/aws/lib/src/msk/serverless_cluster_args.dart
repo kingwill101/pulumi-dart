@@ -27,17 +27,12 @@ class ServerlessClusterArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfigs] VPC configuration information. See below.
   ServerlessClusterArgs({
-    required pulumi.Output<ServerlessClusterClientAuthentication> clientAuthentication,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<ServerlessClusterVpcConfig>> vpcConfigs,
-  }) :
-      clientAuthentication = pulumi.Input.asInput<ServerlessClusterClientAuthentication>(clientAuthentication),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcConfigs = pulumi.Input.asInput<List<ServerlessClusterVpcConfig>>(vpcConfigs);
+    required this.clientAuthentication,
+    this.clusterName,
+    this.region,
+    this.tags,
+    required this.vpcConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ServerlessClusterArgs {
 
   factory ServerlessClusterArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterArgs(
-      clientAuthentication: pulumi.Output.create<ServerlessClusterClientAuthentication>(ServerlessClusterClientAuthentication.fromMap((map['clientAuthentication'] as Map).cast<String, dynamic>())),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcConfigs: pulumi.Output.create<List<ServerlessClusterVpcConfig>>(pulumi.Input.decodeList<ServerlessClusterVpcConfig>(map['vpcConfigs'], (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      clientAuthentication: (ServerlessClusterClientAuthentication.fromMap((map['clientAuthentication'] as Map).cast<String, dynamic>())).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcConfigs: (pulumi.Input.decodeList<ServerlessClusterVpcConfig>(map['vpcConfigs'], (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

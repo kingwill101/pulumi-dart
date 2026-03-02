@@ -20,17 +20,12 @@ class GetEntityTypeDialogflowV3beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetEntityTypeDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> entityTypeId,
-    pulumi.Output<String>? languageCode,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.agentId,
+    required this.entityTypeId,
+    this.languageCode,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetEntityTypeDialogflowV3beta1Args {
 
   factory GetEntityTypeDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEntityTypeDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      entityTypeId: pulumi.Output.create<String>(map['entityTypeId'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      agentId: (map['agentId'] as String).input(),
+      entityTypeId: (map['entityTypeId'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

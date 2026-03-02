@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseSystemVersionsVersion {
   /// Indicates if this version of the Oracle Database software is the latest version for a release.
-  final bool latestVersion;
+  final pulumi.Input<bool> latestVersion;
   /// The name of the Oracle Database version.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates if this version of the Oracle Database software supports pluggable databases.
-  final bool pluggableDatabaseSupported;
+  final pulumi.Input<bool> pluggableDatabaseSupported;
   /// The value of the Oracle Database version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetDatabaseSystemVersionsVersion].
   /// [latestVersion] Indicates if this version of the Oracle Database software is the latest version for a release.
@@ -34,10 +35,10 @@ class GetDatabaseSystemVersionsVersion {
 
   factory GetDatabaseSystemVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetDatabaseSystemVersionsVersion(
-      latestVersion: map['latestVersion'] as bool,
-      name: map['name'] as String,
-      pluggableDatabaseSupported: map['pluggableDatabaseSupported'] as bool,
-      version: map['version'] as String,
+      latestVersion: (map['latestVersion'] as bool).input(),
+      name: (map['name'] as String).input(),
+      pluggableDatabaseSupported: (map['pluggableDatabaseSupported'] as bool).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

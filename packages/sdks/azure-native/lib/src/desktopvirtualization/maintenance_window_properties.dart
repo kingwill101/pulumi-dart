@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'day_of_week.dart';
 
 /// Maintenance window starting hour and day of week.
 class MaintenanceWindowProperties {
   /// Day of the week.
-  final DayOfWeek? dayOfWeek;
+  final pulumi.Input<DayOfWeek>? dayOfWeek;
   /// The update start hour of the day. (0 - 23)
-  final int? hour;
+  final pulumi.Input<int>? hour;
 
   /// Creates a new [MaintenanceWindowProperties].
   /// [dayOfWeek] Day of the week.
@@ -19,15 +20,15 @@ class MaintenanceWindowProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dayOfWeek': ?dayOfWeek == null ? null : dayOfWeek!.value,
+      'dayOfWeek': ?pulumi.Input.mapOptionalInputValue<DayOfWeek, String>(dayOfWeek, (value) => value.value),
       'hour': ?hour,
     };
   }
 
   factory MaintenanceWindowProperties.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowProperties(
-      dayOfWeek: map['dayOfWeek'] == null ? null : DayOfWeek.fromValue(map['dayOfWeek'] as String),
-      hour: map['hour'] == null ? null : map['hour'] as int,
+      dayOfWeek: map['dayOfWeek'] == null ? null : (DayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
+      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
     );
   }
 }

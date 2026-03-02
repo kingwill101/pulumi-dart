@@ -6,9 +6,9 @@ import 'active_directory_domain_controller.dart';
 /// Details about the Active Directory domain controllers associated with this AD connector instance
 class ActiveDirectoryDomainControllers {
   /// Information about the Primary Domain Controller (PDC) in the AD domain.
-  final ActiveDirectoryDomainController? primaryDomainController;
+  final pulumi.Input<ActiveDirectoryDomainController>? primaryDomainController;
   /// null
-  final List<ActiveDirectoryDomainController>? secondaryDomainControllers;
+  final pulumi.Input<List<ActiveDirectoryDomainController>>? secondaryDomainControllers;
 
   /// Creates a new [ActiveDirectoryDomainControllers].
   /// [primaryDomainController] Information about the Primary Domain Controller (PDC) in the AD domain.
@@ -20,15 +20,15 @@ class ActiveDirectoryDomainControllers {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryDomainController': ?primaryDomainController == null ? null : primaryDomainController!.toMap(),
-      'secondaryDomainControllers': ?secondaryDomainControllers == null ? null : pulumi.Input.encodeList<ActiveDirectoryDomainController, Map<String, dynamic>>(secondaryDomainControllers!, (value) => value.toMap()),
+      'primaryDomainController': ?pulumi.Input.mapOptionalInputValue<ActiveDirectoryDomainController, Map<String, dynamic>>(primaryDomainController, (value) => value.toMap()),
+      'secondaryDomainControllers': ?pulumi.Input.mapOptionalInputValue<List<ActiveDirectoryDomainController>, List<Map<String, dynamic>>>(secondaryDomainControllers, (value) => pulumi.Input.encodeList<ActiveDirectoryDomainController, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ActiveDirectoryDomainControllers.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryDomainControllers(
-      primaryDomainController: map['primaryDomainController'] == null ? null : ActiveDirectoryDomainController.fromMap((map['primaryDomainController'] as Map).cast<String, dynamic>()),
-      secondaryDomainControllers: map['secondaryDomainControllers'] == null ? null : pulumi.Input.decodeList<ActiveDirectoryDomainController>(map['secondaryDomainControllers'], (value) => ActiveDirectoryDomainController.fromMap((value as Map).cast<String, dynamic>())),
+      primaryDomainController: map['primaryDomainController'] == null ? null : (ActiveDirectoryDomainController.fromMap((map['primaryDomainController'] as Map).cast<String, dynamic>())).input(),
+      secondaryDomainControllers: map['secondaryDomainControllers'] == null ? null : (pulumi.Input.decodeList<ActiveDirectoryDomainController>(map['secondaryDomainControllers'], (value) => ActiveDirectoryDomainController.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

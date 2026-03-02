@@ -6,9 +6,9 @@ import 'advanced_field_selector_response.dart';
 /// Definition of AdvancedEventSelector
 class AdvancedEventSelectorResponse {
   /// Contains all selector statements in an advanced event selector.
-  final List<AdvancedFieldSelectorResponse>? fieldSelectors;
+  final pulumi.Input<List<AdvancedFieldSelectorResponse>>? fieldSelectors;
   /// An optional, descriptive name for an advanced event selector, such as 'Log data events for only two S3 buckets'.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AdvancedEventSelectorResponse].
   /// [fieldSelectors] Contains all selector statements in an advanced event selector.
@@ -20,15 +20,15 @@ class AdvancedEventSelectorResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldSelectors': ?fieldSelectors == null ? null : pulumi.Input.encodeList<AdvancedFieldSelectorResponse, Map<String, dynamic>>(fieldSelectors!, (value) => value.toMap()),
+      'fieldSelectors': ?pulumi.Input.mapOptionalInputValue<List<AdvancedFieldSelectorResponse>, List<Map<String, dynamic>>>(fieldSelectors, (value) => pulumi.Input.encodeList<AdvancedFieldSelectorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
     };
   }
 
   factory AdvancedEventSelectorResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedEventSelectorResponse(
-      fieldSelectors: map['fieldSelectors'] == null ? null : pulumi.Input.decodeList<AdvancedFieldSelectorResponse>(map['fieldSelectors'], (value) => AdvancedFieldSelectorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
+      fieldSelectors: map['fieldSelectors'] == null ? null : (pulumi.Input.decodeList<AdvancedFieldSelectorResponse>(map['fieldSelectors'], (value) => AdvancedFieldSelectorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

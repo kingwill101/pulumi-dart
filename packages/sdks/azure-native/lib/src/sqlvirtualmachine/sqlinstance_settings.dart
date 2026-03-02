@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Set the server/instance-level settings for SQL Server.
 class SQLInstanceSettings {
   /// SQL Server Collation.
-  final String? collation;
+  final pulumi.Input<String>? collation;
   /// SQL Server IFI.
-  final bool? isIfiEnabled;
+  final pulumi.Input<bool>? isIfiEnabled;
   /// SQL Server LPIM.
-  final bool? isLpimEnabled;
+  final pulumi.Input<bool>? isLpimEnabled;
   /// SQL Server Optimize for Adhoc workloads.
-  final bool? isOptimizeForAdHocWorkloadsEnabled;
+  final pulumi.Input<bool>? isOptimizeForAdHocWorkloadsEnabled;
   /// SQL Server MAXDOP.
-  final int? maxDop;
+  final pulumi.Input<int>? maxDop;
   /// SQL Server maximum memory.
-  final int? maxServerMemoryMB;
+  final pulumi.Input<int>? maxServerMemoryMB;
   /// SQL Server minimum memory.
-  final int? minServerMemoryMB;
+  final pulumi.Input<int>? minServerMemoryMB;
 
   /// Creates a new [SQLInstanceSettings].
   /// [collation] SQL Server Collation.
@@ -50,13 +51,13 @@ class SQLInstanceSettings {
 
   factory SQLInstanceSettings.fromMap(Map<String, dynamic> map) {
     return SQLInstanceSettings(
-      collation: map['collation'] == null ? null : map['collation'] as String,
-      isIfiEnabled: map['isIfiEnabled'] == null ? null : map['isIfiEnabled'] as bool,
-      isLpimEnabled: map['isLpimEnabled'] == null ? null : map['isLpimEnabled'] as bool,
-      isOptimizeForAdHocWorkloadsEnabled: map['isOptimizeForAdHocWorkloadsEnabled'] == null ? null : map['isOptimizeForAdHocWorkloadsEnabled'] as bool,
-      maxDop: map['maxDop'] == null ? null : map['maxDop'] as int,
-      maxServerMemoryMB: map['maxServerMemoryMB'] == null ? null : map['maxServerMemoryMB'] as int,
-      minServerMemoryMB: map['minServerMemoryMB'] == null ? null : map['minServerMemoryMB'] as int,
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      isIfiEnabled: map['isIfiEnabled'] == null ? null : (map['isIfiEnabled'] as bool).input(),
+      isLpimEnabled: map['isLpimEnabled'] == null ? null : (map['isLpimEnabled'] as bool).input(),
+      isOptimizeForAdHocWorkloadsEnabled: map['isOptimizeForAdHocWorkloadsEnabled'] == null ? null : (map['isOptimizeForAdHocWorkloadsEnabled'] as bool).input(),
+      maxDop: map['maxDop'] == null ? null : (map['maxDop'] as int).input(),
+      maxServerMemoryMB: map['maxServerMemoryMB'] == null ? null : (map['maxServerMemoryMB'] as int).input(),
+      minServerMemoryMB: map['minServerMemoryMB'] == null ? null : (map['minServerMemoryMB'] as int).input(),
     );
   }
 }

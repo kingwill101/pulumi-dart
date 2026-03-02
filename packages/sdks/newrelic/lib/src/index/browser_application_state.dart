@@ -31,23 +31,15 @@ class BrowserApplicationState {
   /// [loaderType] Determines the browser loader configured. Valid values are `SPA`, `PRO`, and `LITE`. The default is `SPA`. Refer to the [browser agent loader documentation](https://docs.newrelic.com/docs/browser/browser-monitoring/installation/install-browser-monitoring-agent/#agent-types) for more information on valid loader types.
   /// [name] The name of the browser application.
   BrowserApplicationState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<bool>? cookiesEnabled,
-    pulumi.Output<bool>? distributedTracingEnabled,
-    pulumi.Output<String>? guid,
-    pulumi.Output<String>? jsConfig,
-    pulumi.Output<String>? loaderType,
-    pulumi.Output<String>? name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      cookiesEnabled = pulumi.Input.asOptionalInput<bool>(cookiesEnabled),
-      distributedTracingEnabled = pulumi.Input.asOptionalInput<bool>(distributedTracingEnabled),
-      guid = pulumi.Input.asOptionalInput<String>(guid),
-      jsConfig = pulumi.Input.asOptionalInput<String>(jsConfig),
-      loaderType = pulumi.Input.asOptionalInput<String>(loaderType),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accountId,
+    this.applicationId,
+    this.cookiesEnabled,
+    this.distributedTracingEnabled,
+    this.guid,
+    this.jsConfig,
+    this.loaderType,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class BrowserApplicationState {
 
   factory BrowserApplicationState.fromMap(Map<String, dynamic> map) {
     return BrowserApplicationState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      cookiesEnabled: map['cookiesEnabled'] == null ? null : pulumi.Output.create<bool>(map['cookiesEnabled'] as bool),
-      distributedTracingEnabled: map['distributedTracingEnabled'] == null ? null : pulumi.Output.create<bool>(map['distributedTracingEnabled'] as bool),
-      guid: map['guid'] == null ? null : pulumi.Output.create<String>(map['guid'] as String),
-      jsConfig: map['jsConfig'] == null ? null : pulumi.Output.create<String>(map['jsConfig'] as String),
-      loaderType: map['loaderType'] == null ? null : pulumi.Output.create<String>(map['loaderType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      cookiesEnabled: map['cookiesEnabled'] == null ? null : (map['cookiesEnabled'] as bool).input(),
+      distributedTracingEnabled: map['distributedTracingEnabled'] == null ? null : (map['distributedTracingEnabled'] as bool).input(),
+      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      jsConfig: map['jsConfig'] == null ? null : (map['jsConfig'] as String).input(),
+      loaderType: map['loaderType'] == null ? null : (map['loaderType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

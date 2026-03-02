@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data flow reference type.
 class DataFlowReferenceResponse {
   /// Reference data flow parameters from dataset.
-  final dynamic datasetParameters;
+  final pulumi.Input<dynamic>? datasetParameters;
   /// Data flow parameters
-  final Map<String, dynamic>? parameters;
+  final pulumi.Input<Map<String, dynamic>>? parameters;
   /// Reference data flow name.
-  final String referenceName;
+  final pulumi.Input<String> referenceName;
   /// Data flow reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DataFlowReferenceResponse].
   /// [datasetParameters] Reference data flow parameters from dataset.
@@ -35,10 +36,10 @@ class DataFlowReferenceResponse {
 
   factory DataFlowReferenceResponse.fromMap(Map<String, dynamic> map) {
     return DataFlowReferenceResponse(
-      datasetParameters: map['datasetParameters'] == null ? null : map['datasetParameters'],
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, dynamic>(),
-      referenceName: map['referenceName'] as String,
-      type: map['type'] as String,
+      datasetParameters: map['datasetParameters'] == null ? null : (map['datasetParameters']).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      referenceName: (map['referenceName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

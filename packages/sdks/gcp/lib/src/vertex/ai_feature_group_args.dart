@@ -33,19 +33,13 @@ class AiFeatureGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature group. eg us-central1
   AiFeatureGroupArgs({
-    pulumi.Output<AiFeatureGroupBigQuery>? bigQuery,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      bigQuery = pulumi.Input.asOptionalInput<AiFeatureGroupBigQuery>(bigQuery),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bigQuery,
+    this.description,
+    this.labels,
+    this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class AiFeatureGroupArgs {
 
   factory AiFeatureGroupArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupArgs(
-      bigQuery: map['bigQuery'] == null ? null : pulumi.Output.create<AiFeatureGroupBigQuery>(AiFeatureGroupBigQuery.fromMap((map['bigQuery'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bigQuery: map['bigQuery'] == null ? null : (AiFeatureGroupBigQuery.fromMap((map['bigQuery'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

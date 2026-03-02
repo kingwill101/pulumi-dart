@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageOutputResourceContainer {
   /// Set of URIs for created containers.
-  final List<String> imageUris;
+  final pulumi.Input<List<String>> imageUris;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetImageOutputResourceContainer].
   /// [imageUris] Set of URIs for created containers.
@@ -24,8 +25,8 @@ class GetImageOutputResourceContainer {
 
   factory GetImageOutputResourceContainer.fromMap(Map<String, dynamic> map) {
     return GetImageOutputResourceContainer(
-      imageUris: (map['imageUris'] as List).cast<String>(),
-      region: map['region'] as String,
+      imageUris: ((map['imageUris'] as List).cast<String>()).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

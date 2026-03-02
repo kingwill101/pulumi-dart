@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkWatcherFlowLogTrafficAnalytics {
   /// Boolean flag to enable/disable traffic analytics.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// How frequently service should do flow analytics in minutes. Defaults to `60`.
-  final int? intervalInMinutes;
+  final pulumi.Input<int>? intervalInMinutes;
   /// The resource GUID of the attached workspace.
-  final String workspaceId;
+  final pulumi.Input<String> workspaceId;
   /// The location of the attached workspace.
-  final String workspaceRegion;
+  final pulumi.Input<String> workspaceRegion;
   /// The resource ID of the attached workspace.
-  final String workspaceResourceId;
+  final pulumi.Input<String> workspaceResourceId;
 
   /// Creates a new [NetworkWatcherFlowLogTrafficAnalytics].
   /// [enabled] Boolean flag to enable/disable traffic analytics.
@@ -39,11 +40,11 @@ class NetworkWatcherFlowLogTrafficAnalytics {
 
   factory NetworkWatcherFlowLogTrafficAnalytics.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogTrafficAnalytics(
-      enabled: map['enabled'] as bool,
-      intervalInMinutes: map['intervalInMinutes'] == null ? null : map['intervalInMinutes'] as int,
-      workspaceId: map['workspaceId'] as String,
-      workspaceRegion: map['workspaceRegion'] as String,
-      workspaceResourceId: map['workspaceResourceId'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      intervalInMinutes: map['intervalInMinutes'] == null ? null : (map['intervalInMinutes'] as int).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
+      workspaceRegion: (map['workspaceRegion'] as String).input(),
+      workspaceResourceId: (map['workspaceResourceId'] as String).input(),
     );
   }
 }

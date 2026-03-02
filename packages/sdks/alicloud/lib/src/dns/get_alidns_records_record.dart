@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlidnsRecordsRecord {
   /// The domain name associated to the records.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// ID of the resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
-  final String line;
+  final pulumi.Input<String> line;
   /// Indicates whether the record is locked.
-  final bool locked;
+  final pulumi.Input<bool> locked;
   /// Priority of the `MX` record.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// ID of the record.
-  final String recordId;
+  final pulumi.Input<String> recordId;
   /// The remark of the domain record.  **NOTE:** Available in 1.144.0+.
-  final String remark;
+  final pulumi.Input<String> remark;
   /// Host record of the domain.
-  final String rr;
+  final pulumi.Input<String> rr;
   /// Record status. Valid values: `ENABLE` and `DISABLE`.
-  final String status;
+  final pulumi.Input<String> status;
   /// TTL of the record.
-  final int ttl;
+  final pulumi.Input<int> ttl;
   /// Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
-  final String type;
+  final pulumi.Input<String> type;
   /// Host record value of the domain.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetAlidnsRecordsRecord].
   /// [domainName] The domain name associated to the records.
@@ -74,18 +75,18 @@ class GetAlidnsRecordsRecord {
 
   factory GetAlidnsRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetAlidnsRecordsRecord(
-      domainName: map['domainName'] as String,
-      id: map['id'] as String,
-      line: map['line'] as String,
-      locked: map['locked'] as bool,
-      priority: map['priority'] as int,
-      recordId: map['recordId'] as String,
-      remark: map['remark'] as String,
-      rr: map['rr'] as String,
-      status: map['status'] as String,
-      ttl: map['ttl'] as int,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      domainName: (map['domainName'] as String).input(),
+      id: (map['id'] as String).input(),
+      line: (map['line'] as String).input(),
+      locked: (map['locked'] as bool).input(),
+      priority: (map['priority'] as int).input(),
+      recordId: (map['recordId'] as String).input(),
+      remark: (map['remark'] as String).input(),
+      rr: (map['rr'] as String).input(),
+      status: (map['status'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

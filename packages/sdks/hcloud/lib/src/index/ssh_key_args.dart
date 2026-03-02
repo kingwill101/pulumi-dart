@@ -19,13 +19,10 @@ class SshKeyArgs {
   /// [name] Name of the SSH Key.
   /// [publicKey] Public key of the SSH Key pair. If this is a file, it can be read using the `file` interpolation function.
   SshKeyArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> publicKey,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicKey = pulumi.Input.asInput<String>(publicKey);
+    this.labels,
+    this.name,
+    required this.publicKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SshKeyArgs {
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicKey: pulumi.Output.create<String>(map['publicKey'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicKey: (map['publicKey'] as String).input(),
     );
   }
 }

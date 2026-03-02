@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.
 class GlusterfsVolumeSourcePatch {
   /// endpoints is the endpoint name that details Glusterfs topology.
-  final String? endpoints;
+  final pulumi.Input<String>? endpoints;
   /// path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-  final String? path;
+  final pulumi.Input<String>? path;
   /// readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [GlusterfsVolumeSourcePatch].
   /// [endpoints] endpoints is the endpoint name that details Glusterfs topology.
@@ -30,9 +31,9 @@ class GlusterfsVolumeSourcePatch {
 
   factory GlusterfsVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return GlusterfsVolumeSourcePatch(
-      endpoints: map['endpoints'] == null ? null : map['endpoints'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      endpoints: map['endpoints'] == null ? null : (map['endpoints'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
     );
   }
 }

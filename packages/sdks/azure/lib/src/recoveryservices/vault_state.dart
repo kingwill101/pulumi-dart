@@ -58,35 +58,21 @@ class VaultState {
   /// [storageModeType] The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`.
   /// [tags] A mapping of tags to assign to the resource.
   VaultState({
-    pulumi.Output<bool>? classicVmwareReplicationEnabled,
-    pulumi.Output<bool>? crossRegionRestoreEnabled,
-    pulumi.Output<VaultEncryption>? encryption,
-    pulumi.Output<VaultIdentity>? identity,
-    pulumi.Output<String>? immutability,
-    pulumi.Output<String>? location,
-    pulumi.Output<VaultMonitoring>? monitoring,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sku,
-    pulumi.Output<bool>? softDeleteEnabled,
-    pulumi.Output<String>? storageModeType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      classicVmwareReplicationEnabled = pulumi.Input.asOptionalInput<bool>(classicVmwareReplicationEnabled),
-      crossRegionRestoreEnabled = pulumi.Input.asOptionalInput<bool>(crossRegionRestoreEnabled),
-      encryption = pulumi.Input.asOptionalInput<VaultEncryption>(encryption),
-      identity = pulumi.Input.asOptionalInput<VaultIdentity>(identity),
-      immutability = pulumi.Input.asOptionalInput<String>(immutability),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      monitoring = pulumi.Input.asOptionalInput<VaultMonitoring>(monitoring),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      softDeleteEnabled = pulumi.Input.asOptionalInput<bool>(softDeleteEnabled),
-      storageModeType = pulumi.Input.asOptionalInput<String>(storageModeType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.classicVmwareReplicationEnabled,
+    this.crossRegionRestoreEnabled,
+    this.encryption,
+    this.identity,
+    this.immutability,
+    this.location,
+    this.monitoring,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.sku,
+    this.softDeleteEnabled,
+    this.storageModeType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class VaultState {
 
   factory VaultState.fromMap(Map<String, dynamic> map) {
     return VaultState(
-      classicVmwareReplicationEnabled: map['classicVmwareReplicationEnabled'] == null ? null : pulumi.Output.create<bool>(map['classicVmwareReplicationEnabled'] as bool),
-      crossRegionRestoreEnabled: map['crossRegionRestoreEnabled'] == null ? null : pulumi.Output.create<bool>(map['crossRegionRestoreEnabled'] as bool),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<VaultEncryption>(VaultEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<VaultIdentity>(VaultIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      immutability: map['immutability'] == null ? null : pulumi.Output.create<String>(map['immutability'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      monitoring: map['monitoring'] == null ? null : pulumi.Output.create<VaultMonitoring>(VaultMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      softDeleteEnabled: map['softDeleteEnabled'] == null ? null : pulumi.Output.create<bool>(map['softDeleteEnabled'] as bool),
-      storageModeType: map['storageModeType'] == null ? null : pulumi.Output.create<String>(map['storageModeType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      classicVmwareReplicationEnabled: map['classicVmwareReplicationEnabled'] == null ? null : (map['classicVmwareReplicationEnabled'] as bool).input(),
+      crossRegionRestoreEnabled: map['crossRegionRestoreEnabled'] == null ? null : (map['crossRegionRestoreEnabled'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (VaultEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (VaultIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      immutability: map['immutability'] == null ? null : (map['immutability'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      monitoring: map['monitoring'] == null ? null : (VaultMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      softDeleteEnabled: map['softDeleteEnabled'] == null ? null : (map['softDeleteEnabled'] as bool).input(),
+      storageModeType: map['storageModeType'] == null ? null : (map['storageModeType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

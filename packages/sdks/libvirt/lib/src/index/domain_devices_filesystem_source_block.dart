@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemSourceBlock {
   /// Sets the block device path for the filesystem source.
-  final String dev;
+  final pulumi.Input<String> dev;
 
   /// Creates a new [DomainDevicesFilesystemSourceBlock].
   /// [dev] Sets the block device path for the filesystem source.
@@ -19,7 +20,7 @@ class DomainDevicesFilesystemSourceBlock {
 
   factory DomainDevicesFilesystemSourceBlock.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceBlock(
-      dev: map['dev'] as String,
+      dev: (map['dev'] as String).input(),
     );
   }
 }

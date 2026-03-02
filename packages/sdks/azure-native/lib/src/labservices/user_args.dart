@@ -25,17 +25,12 @@ class UserArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
   UserArgs({
-    pulumi.Output<String>? additionalUsageQuota,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> labName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? userName,
-  }) :
-      additionalUsageQuota = pulumi.Input.asOptionalInput<String>(additionalUsageQuota),
-      email = pulumi.Input.asInput<String>(email),
-      labName = pulumi.Input.asInput<String>(labName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.additionalUsageQuota,
+    required this.email,
+    required this.labName,
+    required this.resourceGroupName,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      additionalUsageQuota: map['additionalUsageQuota'] == null ? null : pulumi.Output.create<String>(map['additionalUsageQuota'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      additionalUsageQuota: map['additionalUsageQuota'] == null ? null : (map['additionalUsageQuota'] as String).input(),
+      email: (map['email'] as String).input(),
+      labName: (map['labName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

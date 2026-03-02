@@ -6,8 +6,8 @@ import 'get_app_spec_ingress_secure_header.dart';
 
 class GetAppSpecIngress {
   /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-  final List<GetAppSpecIngressRule>? rules;
-  final GetAppSpecIngressSecureHeader secureHeader;
+  final pulumi.Input<List<GetAppSpecIngressRule>>? rules;
+  final pulumi.Input<GetAppSpecIngressSecureHeader> secureHeader;
 
   /// Creates a new [GetAppSpecIngress].
   /// [rules] The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
@@ -19,15 +19,15 @@ class GetAppSpecIngress {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<GetAppSpecIngressRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
-      'secureHeader': secureHeader.toMap(),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecIngressRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<GetAppSpecIngressRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secureHeader': pulumi.Input.mapInputValue<GetAppSpecIngressSecureHeader, Map<String, dynamic>>(secureHeader, (value) => value.toMap()),
     };
   }
 
   factory GetAppSpecIngress.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngress(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<GetAppSpecIngressRule>(map['rules'], (value) => GetAppSpecIngressRule.fromMap((value as Map).cast<String, dynamic>())),
-      secureHeader: GetAppSpecIngressSecureHeader.fromMap((map['secureHeader'] as Map).cast<String, dynamic>()),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GetAppSpecIngressRule>(map['rules'], (value) => GetAppSpecIngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secureHeader: (GetAppSpecIngressSecureHeader.fromMap((map['secureHeader'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

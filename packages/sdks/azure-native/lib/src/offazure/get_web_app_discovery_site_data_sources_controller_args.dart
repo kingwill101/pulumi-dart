@@ -22,15 +22,11 @@ class GetWebAppDiscoverySiteDataSourcesControllerArgs {
   /// [siteName] Site name
   /// [webAppSiteName] Web app site name.
   GetWebAppDiscoverySiteDataSourcesControllerArgs({
-    required pulumi.Output<String> discoverySiteDataSourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-    required pulumi.Output<String> webAppSiteName,
-  }) :
-      discoverySiteDataSourceName = pulumi.Input.asInput<String>(discoverySiteDataSourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      webAppSiteName = pulumi.Input.asInput<String>(webAppSiteName);
+    required this.discoverySiteDataSourceName,
+    required this.resourceGroupName,
+    required this.siteName,
+    required this.webAppSiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWebAppDiscoverySiteDataSourcesControllerArgs {
 
   factory GetWebAppDiscoverySiteDataSourcesControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppDiscoverySiteDataSourcesControllerArgs(
-      discoverySiteDataSourceName: pulumi.Output.create<String>(map['discoverySiteDataSourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      webAppSiteName: pulumi.Output.create<String>(map['webAppSiteName'] as String),
+      discoverySiteDataSourceName: (map['discoverySiteDataSourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      webAppSiteName: (map['webAppSiteName'] as String).input(),
     );
   }
 }

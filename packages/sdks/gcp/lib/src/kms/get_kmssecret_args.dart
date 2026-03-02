@@ -21,13 +21,10 @@ class GetKMSSecretArgs {
   /// [ciphertext] The ciphertext to be decrypted, encoded in base64
   /// [cryptoKey] The id of the CryptoKey that will be used to
   GetKMSSecretArgs({
-    pulumi.Output<String>? additionalAuthenticatedData,
-    required pulumi.Output<String> ciphertext,
-    required pulumi.Output<String> cryptoKey,
-  }) :
-      additionalAuthenticatedData = pulumi.Input.asOptionalInput<String>(additionalAuthenticatedData),
-      ciphertext = pulumi.Input.asInput<String>(ciphertext),
-      cryptoKey = pulumi.Input.asInput<String>(cryptoKey);
+    this.additionalAuthenticatedData,
+    required this.ciphertext,
+    required this.cryptoKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetKMSSecretArgs {
 
   factory GetKMSSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretArgs(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : pulumi.Output.create<String>(map['additionalAuthenticatedData'] as String),
-      ciphertext: pulumi.Output.create<String>(map['ciphertext'] as String),
-      cryptoKey: pulumi.Output.create<String>(map['cryptoKey'] as String),
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData'] as String).input(),
+      ciphertext: (map['ciphertext'] as String).input(),
+      cryptoKey: (map['cryptoKey'] as String).input(),
     );
   }
 }

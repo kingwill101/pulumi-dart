@@ -28,19 +28,13 @@ class GetOtsBackupPlansArgs {
   /// [planName] The ID of the backup plan.
   /// [vaultId] The ID of backup vault the OtsBackupPlan used.
   GetOtsBackupPlansArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? planName,
-    pulumi.Output<String>? vaultId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      planName = pulumi.Input.asOptionalInput<String>(planName),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.planId,
+    this.planName,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetOtsBackupPlansArgs {
 
   factory GetOtsBackupPlansArgs.fromMap(Map<String, dynamic> map) {
     return GetOtsBackupPlansArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      planName: map['planName'] == null ? null : pulumi.Output.create<String>(map['planName'] as String),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

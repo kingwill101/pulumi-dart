@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceTemplateVolumeGc {
   /// GCS Bucket name
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// A list of flags to pass to the gcsfuse command for configuring this volume.
   /// Flags should be passed without leading dashes.
-  final List<String> mountOptions;
+  final pulumi.Input<List<String>> mountOptions;
   /// If true, mount the GCS bucket as read-only
-  final bool readOnly;
+  final pulumi.Input<bool> readOnly;
 
   /// Creates a new [GetServiceTemplateVolumeGc].
   /// [bucket] GCS Bucket name
@@ -30,9 +31,9 @@ class GetServiceTemplateVolumeGc {
 
   factory GetServiceTemplateVolumeGc.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateVolumeGc(
-      bucket: map['bucket'] as String,
-      mountOptions: (map['mountOptions'] as List).cast<String>(),
-      readOnly: map['readOnly'] as bool,
+      bucket: (map['bucket'] as String).input(),
+      mountOptions: ((map['mountOptions'] as List).cast<String>()).input(),
+      readOnly: (map['readOnly'] as bool).input(),
     );
   }
 }

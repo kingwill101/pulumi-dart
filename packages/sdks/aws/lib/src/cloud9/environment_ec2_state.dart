@@ -54,33 +54,20 @@ class EnvironmentEC2State {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The type of the environment (e.g., `ssh` or `ec2`).
   EnvironmentEC2State({
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? automaticStopTimeMinutes,
-    pulumi.Output<String>? connectionType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? imageId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      automaticStopTimeMinutes = pulumi.Input.asOptionalInput<int>(automaticStopTimeMinutes),
-      connectionType = pulumi.Input.asOptionalInput<String>(connectionType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerArn = pulumi.Input.asOptionalInput<String>(ownerArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.automaticStopTimeMinutes,
+    this.connectionType,
+    this.description,
+    this.imageId,
+    this.instanceType,
+    this.name,
+    this.ownerArn,
+    this.region,
+    this.subnetId,
+    this.tags,
+    this.tagsAll,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class EnvironmentEC2State {
 
   factory EnvironmentEC2State.fromMap(Map<String, dynamic> map) {
     return EnvironmentEC2State(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      automaticStopTimeMinutes: map['automaticStopTimeMinutes'] == null ? null : pulumi.Output.create<int>(map['automaticStopTimeMinutes'] as int),
-      connectionType: map['connectionType'] == null ? null : pulumi.Output.create<String>(map['connectionType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerArn: map['ownerArn'] == null ? null : pulumi.Output.create<String>(map['ownerArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      automaticStopTimeMinutes: map['automaticStopTimeMinutes'] == null ? null : (map['automaticStopTimeMinutes'] as int).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerArn: map['ownerArn'] == null ? null : (map['ownerArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -58,27 +58,17 @@ class GlobalReplicationGroupArgs {
   /// [primaryReplicationGroupId] The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primary_replication_group_id` is changed, creates a new resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GlobalReplicationGroupArgs({
-    pulumi.Output<bool>? automaticFailoverEnabled,
-    pulumi.Output<String>? cacheNodeType,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<String>? globalReplicationGroupDescription,
-    required pulumi.Output<String> globalReplicationGroupIdSuffix,
-    pulumi.Output<int>? numNodeGroups,
-    pulumi.Output<String>? parameterGroupName,
-    required pulumi.Output<String> primaryReplicationGroupId,
-    pulumi.Output<String>? region,
-  }) :
-      automaticFailoverEnabled = pulumi.Input.asOptionalInput<bool>(automaticFailoverEnabled),
-      cacheNodeType = pulumi.Input.asOptionalInput<String>(cacheNodeType),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      globalReplicationGroupDescription = pulumi.Input.asOptionalInput<String>(globalReplicationGroupDescription),
-      globalReplicationGroupIdSuffix = pulumi.Input.asInput<String>(globalReplicationGroupIdSuffix),
-      numNodeGroups = pulumi.Input.asOptionalInput<int>(numNodeGroups),
-      parameterGroupName = pulumi.Input.asOptionalInput<String>(parameterGroupName),
-      primaryReplicationGroupId = pulumi.Input.asInput<String>(primaryReplicationGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.automaticFailoverEnabled,
+    this.cacheNodeType,
+    this.engine,
+    this.engineVersion,
+    this.globalReplicationGroupDescription,
+    required this.globalReplicationGroupIdSuffix,
+    this.numNodeGroups,
+    this.parameterGroupName,
+    required this.primaryReplicationGroupId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,16 +87,16 @@ class GlobalReplicationGroupArgs {
 
   factory GlobalReplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GlobalReplicationGroupArgs(
-      automaticFailoverEnabled: map['automaticFailoverEnabled'] == null ? null : pulumi.Output.create<bool>(map['automaticFailoverEnabled'] as bool),
-      cacheNodeType: map['cacheNodeType'] == null ? null : pulumi.Output.create<String>(map['cacheNodeType'] as String),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      globalReplicationGroupDescription: map['globalReplicationGroupDescription'] == null ? null : pulumi.Output.create<String>(map['globalReplicationGroupDescription'] as String),
-      globalReplicationGroupIdSuffix: pulumi.Output.create<String>(map['globalReplicationGroupIdSuffix'] as String),
-      numNodeGroups: map['numNodeGroups'] == null ? null : pulumi.Output.create<int>(map['numNodeGroups'] as int),
-      parameterGroupName: map['parameterGroupName'] == null ? null : pulumi.Output.create<String>(map['parameterGroupName'] as String),
-      primaryReplicationGroupId: pulumi.Output.create<String>(map['primaryReplicationGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      automaticFailoverEnabled: map['automaticFailoverEnabled'] == null ? null : (map['automaticFailoverEnabled'] as bool).input(),
+      cacheNodeType: map['cacheNodeType'] == null ? null : (map['cacheNodeType'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      globalReplicationGroupDescription: map['globalReplicationGroupDescription'] == null ? null : (map['globalReplicationGroupDescription'] as String).input(),
+      globalReplicationGroupIdSuffix: (map['globalReplicationGroupIdSuffix'] as String).input(),
+      numNodeGroups: map['numNodeGroups'] == null ? null : (map['numNodeGroups'] as int).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
+      primaryReplicationGroupId: (map['primaryReplicationGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

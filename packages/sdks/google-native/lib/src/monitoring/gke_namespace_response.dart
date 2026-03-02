@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
 class GkeNamespaceResponse {
   /// The name of the parent cluster.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The location of the parent cluster. This may be a zone or region.
-  final String location;
+  final pulumi.Input<String> location;
   /// The name of this namespace.
-  final String namespaceName;
+  final pulumi.Input<String> namespaceName;
   /// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [GkeNamespaceResponse].
   /// [clusterName] The name of the parent cluster.
@@ -35,10 +36,10 @@ class GkeNamespaceResponse {
 
   factory GkeNamespaceResponse.fromMap(Map<String, dynamic> map) {
     return GkeNamespaceResponse(
-      clusterName: map['clusterName'] as String,
-      location: map['location'] as String,
-      namespaceName: map['namespaceName'] as String,
-      project: map['project'] as String,
+      clusterName: (map['clusterName'] as String).input(),
+      location: (map['location'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

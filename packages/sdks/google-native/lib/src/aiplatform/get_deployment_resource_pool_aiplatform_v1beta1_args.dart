@@ -16,13 +16,10 @@ class GetDeploymentResourcePoolAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetDeploymentResourcePoolAiplatformV1beta1Args({
-    required pulumi.Output<String> deploymentResourcePoolId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      deploymentResourcePoolId = pulumi.Input.asInput<String>(deploymentResourcePoolId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.deploymentResourcePoolId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDeploymentResourcePoolAiplatformV1beta1Args {
 
   factory GetDeploymentResourcePoolAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDeploymentResourcePoolAiplatformV1beta1Args(
-      deploymentResourcePoolId: pulumi.Output.create<String>(map['deploymentResourcePoolId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      deploymentResourcePoolId: (map['deploymentResourcePoolId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

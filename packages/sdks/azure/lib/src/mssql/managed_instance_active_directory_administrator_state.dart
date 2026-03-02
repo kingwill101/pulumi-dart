@@ -22,17 +22,12 @@ class ManagedInstanceActiveDirectoryAdministratorState {
   /// [objectId] The Object ID of the principal to set as the Managed Instance Administrator.
   /// [tenantId] The Azure Active Directory Tenant ID.
   ManagedInstanceActiveDirectoryAdministratorState({
-    pulumi.Output<bool>? azureadAuthenticationOnly,
-    pulumi.Output<String>? loginUsername,
-    pulumi.Output<String>? managedInstanceId,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<String>? tenantId,
-  }) :
-      azureadAuthenticationOnly = pulumi.Input.asOptionalInput<bool>(azureadAuthenticationOnly),
-      loginUsername = pulumi.Input.asOptionalInput<String>(loginUsername),
-      managedInstanceId = pulumi.Input.asOptionalInput<String>(managedInstanceId),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.azureadAuthenticationOnly,
+    this.loginUsername,
+    this.managedInstanceId,
+    this.objectId,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ManagedInstanceActiveDirectoryAdministratorState {
 
   factory ManagedInstanceActiveDirectoryAdministratorState.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceActiveDirectoryAdministratorState(
-      azureadAuthenticationOnly: map['azureadAuthenticationOnly'] == null ? null : pulumi.Output.create<bool>(map['azureadAuthenticationOnly'] as bool),
-      loginUsername: map['loginUsername'] == null ? null : pulumi.Output.create<String>(map['loginUsername'] as String),
-      managedInstanceId: map['managedInstanceId'] == null ? null : pulumi.Output.create<String>(map['managedInstanceId'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      azureadAuthenticationOnly: map['azureadAuthenticationOnly'] == null ? null : (map['azureadAuthenticationOnly'] as bool).input(),
+      loginUsername: map['loginUsername'] == null ? null : (map['loginUsername'] as String).input(),
+      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

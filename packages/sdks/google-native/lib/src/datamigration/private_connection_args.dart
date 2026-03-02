@@ -36,25 +36,16 @@ class PrivateConnectionArgs {
   /// [skipValidation] Optional. If set to true, will skip validations.
   /// [vpcPeeringConfig] VPC peering configuration.
   PrivateConnectionArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> privateConnectionId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<bool>? skipValidation,
-    pulumi.Output<VpcPeeringConfig>? vpcPeeringConfig,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      skipValidation = pulumi.Input.asOptionalInput<bool>(skipValidation),
-      vpcPeeringConfig = pulumi.Input.asOptionalInput<VpcPeeringConfig>(vpcPeeringConfig);
+    this.displayName,
+    this.labels,
+    this.location,
+    this.name,
+    required this.privateConnectionId,
+    this.project,
+    this.requestId,
+    this.skipValidation,
+    this.vpcPeeringConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class PrivateConnectionArgs {
 
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateConnectionId: pulumi.Output.create<String>(map['privateConnectionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      skipValidation: map['skipValidation'] == null ? null : pulumi.Output.create<bool>(map['skipValidation'] as bool),
-      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : pulumi.Output.create<VpcPeeringConfig>(VpcPeeringConfig.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateConnectionId: (map['privateConnectionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation'] as bool).input(),
+      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (VpcPeeringConfig.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

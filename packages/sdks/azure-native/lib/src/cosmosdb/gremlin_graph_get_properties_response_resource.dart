@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'conflict_resolution_policy_response.dart';
 import 'container_partition_key_response.dart';
 import 'indexing_policy_response.dart';
@@ -8,29 +9,29 @@ import 'unique_key_policy_response.dart';
 
 class GremlinGraphGetPropertiesResponseResource {
   /// Analytical TTL.
-  final double? analyticalStorageTtl;
+  final pulumi.Input<double>? analyticalStorageTtl;
   /// The conflict resolution policy for the graph.
-  final ConflictResolutionPolicyResponse? conflictResolutionPolicy;
+  final pulumi.Input<ConflictResolutionPolicyResponse>? conflictResolutionPolicy;
   /// Enum to indicate the mode of resource creation.
-  final String? createMode;
+  final pulumi.Input<String>? createMode;
   /// Default time to live
-  final int? defaultTtl;
+  final pulumi.Input<int>? defaultTtl;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Name of the Cosmos DB Gremlin graph
-  final String id;
+  final pulumi.Input<String> id;
   /// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
-  final IndexingPolicyResponse? indexingPolicy;
+  final pulumi.Input<IndexingPolicyResponse>? indexingPolicy;
   /// The configuration of the partition key to be used for partitioning data into multiple partitions
-  final ContainerPartitionKeyResponse? partitionKey;
+  final pulumi.Input<ContainerPartitionKeyResponse>? partitionKey;
   /// Parameters to indicate the information about the restore
-  final ResourceRestoreParametersResponse? restoreParameters;
+  final pulumi.Input<ResourceRestoreParametersResponse>? restoreParameters;
   /// A system generated property. A unique identifier.
-  final String rid;
+  final pulumi.Input<String> rid;
   /// A system generated property that denotes the last updated timestamp of the resource.
-  final double ts;
+  final pulumi.Input<double> ts;
   /// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
-  final UniqueKeyPolicyResponse? uniqueKeyPolicy;
+  final pulumi.Input<UniqueKeyPolicyResponse>? uniqueKeyPolicy;
 
   /// Creates a new [GremlinGraphGetPropertiesResponseResource].
   /// [analyticalStorageTtl] Analytical TTL.
@@ -63,34 +64,34 @@ class GremlinGraphGetPropertiesResponseResource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'analyticalStorageTtl': ?analyticalStorageTtl,
-      'conflictResolutionPolicy': ?conflictResolutionPolicy == null ? null : conflictResolutionPolicy!.toMap(),
+      'conflictResolutionPolicy': ?pulumi.Input.mapOptionalInputValue<ConflictResolutionPolicyResponse, Map<String, dynamic>>(conflictResolutionPolicy, (value) => value.toMap()),
       'createMode': ?createMode,
       'defaultTtl': ?defaultTtl,
       'etag': etag,
       'id': id,
-      'indexingPolicy': ?indexingPolicy == null ? null : indexingPolicy!.toMap(),
-      'partitionKey': ?partitionKey == null ? null : partitionKey!.toMap(),
-      'restoreParameters': ?restoreParameters == null ? null : restoreParameters!.toMap(),
+      'indexingPolicy': ?pulumi.Input.mapOptionalInputValue<IndexingPolicyResponse, Map<String, dynamic>>(indexingPolicy, (value) => value.toMap()),
+      'partitionKey': ?pulumi.Input.mapOptionalInputValue<ContainerPartitionKeyResponse, Map<String, dynamic>>(partitionKey, (value) => value.toMap()),
+      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParametersResponse, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
       'rid': rid,
       'ts': ts,
-      'uniqueKeyPolicy': ?uniqueKeyPolicy == null ? null : uniqueKeyPolicy!.toMap(),
+      'uniqueKeyPolicy': ?pulumi.Input.mapOptionalInputValue<UniqueKeyPolicyResponse, Map<String, dynamic>>(uniqueKeyPolicy, (value) => value.toMap()),
     };
   }
 
   factory GremlinGraphGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return GremlinGraphGetPropertiesResponseResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : map['analyticalStorageTtl'] as double,
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : ConflictResolutionPolicyResponse.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>()),
-      createMode: map['createMode'] == null ? null : map['createMode'] as String,
-      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl'] as int,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      indexingPolicy: map['indexingPolicy'] == null ? null : IndexingPolicyResponse.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>()),
-      partitionKey: map['partitionKey'] == null ? null : ContainerPartitionKeyResponse.fromMap((map['partitionKey'] as Map).cast<String, dynamic>()),
-      restoreParameters: map['restoreParameters'] == null ? null : ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>()),
-      rid: map['rid'] as String,
-      ts: map['ts'] as double,
-      uniqueKeyPolicy: map['uniqueKeyPolicy'] == null ? null : UniqueKeyPolicyResponse.fromMap((map['uniqueKeyPolicy'] as Map).cast<String, dynamic>()),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as double).input(),
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (ConflictResolutionPolicyResponse.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>())).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      etag: (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      indexingPolicy: map['indexingPolicy'] == null ? null : (IndexingPolicyResponse.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>())).input(),
+      partitionKey: map['partitionKey'] == null ? null : (ContainerPartitionKeyResponse.fromMap((map['partitionKey'] as Map).cast<String, dynamic>())).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      rid: (map['rid'] as String).input(),
+      ts: (map['ts'] as double).input(),
+      uniqueKeyPolicy: map['uniqueKeyPolicy'] == null ? null : (UniqueKeyPolicyResponse.fromMap((map['uniqueKeyPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

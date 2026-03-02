@@ -6,13 +6,13 @@ import 'virtual_directory_response.dart';
 /// Virtual application in an app.
 class VirtualApplicationResponse {
   /// Physical path.
-  final String? physicalPath;
+  final pulumi.Input<String>? physicalPath;
   /// <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-  final bool? preloadEnabled;
+  final pulumi.Input<bool>? preloadEnabled;
   /// Virtual directories for virtual application.
-  final List<VirtualDirectoryResponse>? virtualDirectories;
+  final pulumi.Input<List<VirtualDirectoryResponse>>? virtualDirectories;
   /// Virtual path.
-  final String? virtualPath;
+  final pulumi.Input<String>? virtualPath;
 
   /// Creates a new [VirtualApplicationResponse].
   /// [physicalPath] Physical path.
@@ -30,17 +30,17 @@ class VirtualApplicationResponse {
     return <String, dynamic>{
       'physicalPath': ?physicalPath,
       'preloadEnabled': ?preloadEnabled,
-      'virtualDirectories': ?virtualDirectories == null ? null : pulumi.Input.encodeList<VirtualDirectoryResponse, Map<String, dynamic>>(virtualDirectories!, (value) => value.toMap()),
+      'virtualDirectories': ?pulumi.Input.mapOptionalInputValue<List<VirtualDirectoryResponse>, List<Map<String, dynamic>>>(virtualDirectories, (value) => pulumi.Input.encodeList<VirtualDirectoryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'virtualPath': ?virtualPath,
     };
   }
 
   factory VirtualApplicationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplicationResponse(
-      physicalPath: map['physicalPath'] == null ? null : map['physicalPath'] as String,
-      preloadEnabled: map['preloadEnabled'] == null ? null : map['preloadEnabled'] as bool,
-      virtualDirectories: map['virtualDirectories'] == null ? null : pulumi.Input.decodeList<VirtualDirectoryResponse>(map['virtualDirectories'], (value) => VirtualDirectoryResponse.fromMap((value as Map).cast<String, dynamic>())),
-      virtualPath: map['virtualPath'] == null ? null : map['virtualPath'] as String,
+      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath'] as String).input(),
+      preloadEnabled: map['preloadEnabled'] == null ? null : (map['preloadEnabled'] as bool).input(),
+      virtualDirectories: map['virtualDirectories'] == null ? null : (pulumi.Input.decodeList<VirtualDirectoryResponse>(map['virtualDirectories'], (value) => VirtualDirectoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties specific to the dashboard definition.
 class DashboardDefinitionProperties {
   /// The dashboard definition data in JSON format.
-  final String? serializedData;
+  final pulumi.Input<String>? serializedData;
 
   /// Creates a new [DashboardDefinitionProperties].
   /// [serializedData] The dashboard definition data in JSON format.
@@ -20,7 +21,7 @@ class DashboardDefinitionProperties {
 
   factory DashboardDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return DashboardDefinitionProperties(
-      serializedData: map['serializedData'] == null ? null : map['serializedData'] as String,
+      serializedData: map['serializedData'] == null ? null : (map['serializedData'] as String).input(),
     );
   }
 }

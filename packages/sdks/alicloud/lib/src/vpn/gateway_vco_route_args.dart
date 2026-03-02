@@ -25,17 +25,12 @@ class GatewayVcoRouteArgs {
   /// [vpnConnectionId] The id of the vpn attachment.
   /// [weight] The weight value of the destination route. Valid values: `0`, `100`.
   GatewayVcoRouteArgs({
-    required pulumi.Output<String> nextHop,
-    pulumi.Output<String>? overlayMode,
-    required pulumi.Output<String> routeDest,
-    required pulumi.Output<String> vpnConnectionId,
-    required pulumi.Output<int> weight,
-  }) :
-      nextHop = pulumi.Input.asInput<String>(nextHop),
-      overlayMode = pulumi.Input.asOptionalInput<String>(overlayMode),
-      routeDest = pulumi.Input.asInput<String>(routeDest),
-      vpnConnectionId = pulumi.Input.asInput<String>(vpnConnectionId),
-      weight = pulumi.Input.asInput<int>(weight);
+    required this.nextHop,
+    this.overlayMode,
+    required this.routeDest,
+    required this.vpnConnectionId,
+    required this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GatewayVcoRouteArgs {
 
   factory GatewayVcoRouteArgs.fromMap(Map<String, dynamic> map) {
     return GatewayVcoRouteArgs(
-      nextHop: pulumi.Output.create<String>(map['nextHop'] as String),
-      overlayMode: map['overlayMode'] == null ? null : pulumi.Output.create<String>(map['overlayMode'] as String),
-      routeDest: pulumi.Output.create<String>(map['routeDest'] as String),
-      vpnConnectionId: pulumi.Output.create<String>(map['vpnConnectionId'] as String),
-      weight: pulumi.Output.create<int>(map['weight'] as int),
+      nextHop: (map['nextHop'] as String).input(),
+      overlayMode: map['overlayMode'] == null ? null : (map['overlayMode'] as String).input(),
+      routeDest: (map['routeDest'] as String).input(),
+      vpnConnectionId: (map['vpnConnectionId'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

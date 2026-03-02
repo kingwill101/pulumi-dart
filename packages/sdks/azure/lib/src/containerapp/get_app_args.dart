@@ -19,13 +19,10 @@ class GetAppArgs {
   /// [readSecrets] Should the data source read the secrets from the Container App? Defaults to `true`.
   /// [resourceGroupName] The name of the Resource Group where this Container App exists.
   GetAppArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<bool>? readSecrets,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      readSecrets = pulumi.Input.asOptionalInput<bool>(readSecrets),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    this.readSecrets,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAppArgs {
 
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      readSecrets: map['readSecrets'] == null ? null : pulumi.Output.create<bool>(map['readSecrets'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      readSecrets: map['readSecrets'] == null ? null : (map['readSecrets'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

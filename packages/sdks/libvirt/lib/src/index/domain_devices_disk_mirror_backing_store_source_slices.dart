@@ -5,7 +5,7 @@ import 'domain_devices_disk_mirror_backing_store_source_slices_slice.dart';
 
 class DomainDevicesDiskMirrorBackingStoreSourceSlices {
   /// Specifies individual slice configurations within the mirror source.
-  final List<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice>? slices;
+  final pulumi.Input<List<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice>>? slices;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.
@@ -15,13 +15,13 @@ class DomainDevicesDiskMirrorBackingStoreSourceSlices {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'slices': ?slices == null ? null : pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice, Map<String, dynamic>>(slices!, (value) => value.toMap()),
+      'slices': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice>, List<Map<String, dynamic>>>(slices, (value) => pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskMirrorBackingStoreSourceSlices.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceSlices(
-      slices: map['slices'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice>(map['slices'], (value) => DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>())),
+      slices: map['slices'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice>(map['slices'], (value) => DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

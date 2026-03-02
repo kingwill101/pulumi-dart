@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enrichment_domain_whois_contact_response.dart';
 
 /// The set of contacts associated with this domain
 class EnrichmentDomainWhoisContactsResponse {
   /// The admin contact for this whois record
-  final EnrichmentDomainWhoisContactResponse? admin;
+  final pulumi.Input<EnrichmentDomainWhoisContactResponse>? admin;
   /// The billing contact for this whois record
-  final EnrichmentDomainWhoisContactResponse? billing;
+  final pulumi.Input<EnrichmentDomainWhoisContactResponse>? billing;
   /// The registrant contact for this whois record
-  final EnrichmentDomainWhoisContactResponse? registrant;
+  final pulumi.Input<EnrichmentDomainWhoisContactResponse>? registrant;
   /// The technical contact for this whois record
-  final EnrichmentDomainWhoisContactResponse? tech;
+  final pulumi.Input<EnrichmentDomainWhoisContactResponse>? tech;
 
   /// Creates a new [EnrichmentDomainWhoisContactsResponse].
   /// [admin] The admin contact for this whois record
@@ -27,19 +28,19 @@ class EnrichmentDomainWhoisContactsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'admin': ?admin == null ? null : admin!.toMap(),
-      'billing': ?billing == null ? null : billing!.toMap(),
-      'registrant': ?registrant == null ? null : registrant!.toMap(),
-      'tech': ?tech == null ? null : tech!.toMap(),
+      'admin': ?pulumi.Input.mapOptionalInputValue<EnrichmentDomainWhoisContactResponse, Map<String, dynamic>>(admin, (value) => value.toMap()),
+      'billing': ?pulumi.Input.mapOptionalInputValue<EnrichmentDomainWhoisContactResponse, Map<String, dynamic>>(billing, (value) => value.toMap()),
+      'registrant': ?pulumi.Input.mapOptionalInputValue<EnrichmentDomainWhoisContactResponse, Map<String, dynamic>>(registrant, (value) => value.toMap()),
+      'tech': ?pulumi.Input.mapOptionalInputValue<EnrichmentDomainWhoisContactResponse, Map<String, dynamic>>(tech, (value) => value.toMap()),
     };
   }
 
   factory EnrichmentDomainWhoisContactsResponse.fromMap(Map<String, dynamic> map) {
     return EnrichmentDomainWhoisContactsResponse(
-      admin: map['admin'] == null ? null : EnrichmentDomainWhoisContactResponse.fromMap((map['admin'] as Map).cast<String, dynamic>()),
-      billing: map['billing'] == null ? null : EnrichmentDomainWhoisContactResponse.fromMap((map['billing'] as Map).cast<String, dynamic>()),
-      registrant: map['registrant'] == null ? null : EnrichmentDomainWhoisContactResponse.fromMap((map['registrant'] as Map).cast<String, dynamic>()),
-      tech: map['tech'] == null ? null : EnrichmentDomainWhoisContactResponse.fromMap((map['tech'] as Map).cast<String, dynamic>()),
+      admin: map['admin'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['admin'] as Map).cast<String, dynamic>())).input(),
+      billing: map['billing'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['billing'] as Map).cast<String, dynamic>())).input(),
+      registrant: map['registrant'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['registrant'] as Map).cast<String, dynamic>())).input(),
+      tech: map['tech'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['tech'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

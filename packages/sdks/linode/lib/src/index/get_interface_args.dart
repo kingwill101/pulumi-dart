@@ -14,11 +14,9 @@ class GetInterfaceArgs {
   /// [id] Required.
   /// [linodeId] Required.
   GetInterfaceArgs({
-    required pulumi.Output<String> id,
-    required pulumi.Output<int> linodeId,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      linodeId = pulumi.Input.asInput<int>(linodeId);
+    required this.id,
+    required this.linodeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetInterfaceArgs {
 
   factory GetInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetInterfaceArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      linodeId: pulumi.Output.create<int>(map['linodeId'] as int),
+      id: (map['id'] as String).input(),
+      linodeId: (map['linodeId'] as int).input(),
     );
   }
 }

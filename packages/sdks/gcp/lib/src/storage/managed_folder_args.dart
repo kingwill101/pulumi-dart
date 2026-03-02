@@ -23,13 +23,10 @@ class ManagedFolderArgs {
   /// [forceDestroy] Allows the deletion of a managed folder even if contains
   /// [name] The name of the managed folder expressed as a path. Must include
   ManagedFolderArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? name,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.bucket,
+    this.forceDestroy,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class ManagedFolderArgs {
 
   factory ManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      bucket: (map['bucket'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

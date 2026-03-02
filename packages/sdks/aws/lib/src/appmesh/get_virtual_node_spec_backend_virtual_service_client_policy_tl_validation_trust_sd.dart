@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd {
-  final String secretName;
+  final pulumi.Input<String> secretName;
 
   /// Creates a new [GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd].
   /// [secretName] Required.
@@ -18,7 +19,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd {
 
   factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationTrustSd(
-      secretName: map['secretName'] as String,
+      secretName: (map['secretName'] as String).input(),
     );
   }
 }

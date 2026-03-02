@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
   /// PEM certificate of the PKI used for validation. Must only contain one
   /// ca certificate(either root or intermediate cert).
-  final String? pemCertificate;
+  final pulumi.Input<String>? pemCertificate;
 
   /// Creates a new [WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor].
   /// [pemCertificate] PEM certificate of the PKI used for validation. Must only contain one
@@ -20,7 +21,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
 
   factory WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor(
-      pemCertificate: map['pemCertificate'] == null ? null : map['pemCertificate'] as String,
+      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate'] as String).input(),
     );
   }
 }

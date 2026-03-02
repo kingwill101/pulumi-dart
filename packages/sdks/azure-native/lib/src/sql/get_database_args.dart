@@ -25,17 +25,12 @@ class GetDatabaseArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   GetDatabaseArgs({
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? expand,
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.databaseName,
+    this.expand,
+    this.filter,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetDatabaseArgs {
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

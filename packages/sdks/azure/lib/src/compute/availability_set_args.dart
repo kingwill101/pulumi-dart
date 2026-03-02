@@ -38,23 +38,15 @@ class AvailabilitySetArgs {
   /// [resourceGroupName] The name of the resource group in which to create the availability set. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   AvailabilitySetArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? managed,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? platformFaultDomainCount,
-    pulumi.Output<int>? platformUpdateDomainCount,
-    pulumi.Output<String>? proximityPlacementGroupId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managed = pulumi.Input.asOptionalInput<bool>(managed),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      platformFaultDomainCount = pulumi.Input.asOptionalInput<int>(platformFaultDomainCount),
-      platformUpdateDomainCount = pulumi.Input.asOptionalInput<int>(platformUpdateDomainCount),
-      proximityPlacementGroupId = pulumi.Input.asOptionalInput<String>(proximityPlacementGroupId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.managed,
+    this.name,
+    this.platformFaultDomainCount,
+    this.platformUpdateDomainCount,
+    this.proximityPlacementGroupId,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class AvailabilitySetArgs {
 
   factory AvailabilitySetArgs.fromMap(Map<String, dynamic> map) {
     return AvailabilitySetArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managed: map['managed'] == null ? null : pulumi.Output.create<bool>(map['managed'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : pulumi.Output.create<int>(map['platformFaultDomainCount'] as int),
-      platformUpdateDomainCount: map['platformUpdateDomainCount'] == null ? null : pulumi.Output.create<int>(map['platformUpdateDomainCount'] as int),
-      proximityPlacementGroupId: map['proximityPlacementGroupId'] == null ? null : pulumi.Output.create<String>(map['proximityPlacementGroupId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : (map['platformFaultDomainCount'] as int).input(),
+      platformUpdateDomainCount: map['platformUpdateDomainCount'] == null ? null : (map['platformUpdateDomainCount'] as int).input(),
+      proximityPlacementGroupId: map['proximityPlacementGroupId'] == null ? null : (map['proximityPlacementGroupId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserRole {
   /// The name of the database to which the role will be applied. Changing this forces a new resource to be created.
-  final String database;
+  final pulumi.Input<String> database;
   /// The role name. The only possible value is `root`. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [UserRole].
   /// [database] The name of the database to which the role will be applied. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class UserRole {
 
   factory UserRole.fromMap(Map<String, dynamic> map) {
     return UserRole(
-      database: map['database'] as String,
-      name: map['name'] as String,
+      database: (map['database'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

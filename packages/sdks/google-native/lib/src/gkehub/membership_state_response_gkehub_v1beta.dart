@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MembershipState describes the state of a Membership resource.
 class MembershipStateResponseGkehubV1beta {
   /// The current state of the Membership resource.
-  final String code;
+  final pulumi.Input<String> code;
 
   /// Creates a new [MembershipStateResponseGkehubV1beta].
   /// [code] The current state of the Membership resource.
@@ -20,7 +21,7 @@ class MembershipStateResponseGkehubV1beta {
 
   factory MembershipStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return MembershipStateResponseGkehubV1beta(
-      code: map['code'] as String,
+      code: (map['code'] as String).input(),
     );
   }
 }

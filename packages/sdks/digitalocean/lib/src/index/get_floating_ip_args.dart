@@ -13,9 +13,8 @@ class GetFloatingIpArgs {
   /// Creates a new [GetFloatingIpArgs].
   /// [ipAddress] The allocated IP address of the specific floating IP to retrieve.
   GetFloatingIpArgs({
-    required pulumi.Output<String> ipAddress,
-  }) :
-      ipAddress = pulumi.Input.asInput<String>(ipAddress);
+    required this.ipAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetFloatingIpArgs {
 
   factory GetFloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpArgs(
-      ipAddress: pulumi.Output.create<String>(map['ipAddress'] as String),
+      ipAddress: (map['ipAddress'] as String).input(),
     );
   }
 }

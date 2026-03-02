@@ -6,18 +6,18 @@ import 'metadata_item.dart';
 /// Azure data lake store write settings.
 class AzureDataLakeStoreWriteSettings {
   /// The type of copy behavior for copy sink.
-  final dynamic copyBehavior;
+  final pulumi.Input<dynamic>? copyBehavior;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Specifies the expiry time of the written files. The time is applied to the UTC time zone in the format of "2018-12-01T05:00:00Z". Default value is NULL. Type: string (or Expression with resultType string).
-  final dynamic expiryDateTime;
+  final pulumi.Input<dynamic>? expiryDateTime;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
-  final List<MetadataItem>? metadata;
+  final pulumi.Input<List<MetadataItem>>? metadata;
   /// The write setting type.
   /// Expected value is 'AzureDataLakeStoreWriteSettings'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AzureDataLakeStoreWriteSettings].
   /// [copyBehavior] The type of copy behavior for copy sink.
@@ -41,19 +41,19 @@ class AzureDataLakeStoreWriteSettings {
       'disableMetricsCollection': ?disableMetricsCollection,
       'expiryDateTime': ?expiryDateTime,
       'maxConcurrentConnections': ?maxConcurrentConnections,
-      'metadata': ?metadata == null ? null : pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(metadata!, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<List<MetadataItem>, List<Map<String, dynamic>>>(metadata, (value) => pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory AzureDataLakeStoreWriteSettings.fromMap(Map<String, dynamic> map) {
     return AzureDataLakeStoreWriteSettings(
-      copyBehavior: map['copyBehavior'] == null ? null : map['copyBehavior'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      expiryDateTime: map['expiryDateTime'] == null ? null : map['expiryDateTime'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      metadata: map['metadata'] == null ? null : pulumi.Input.decodeList<MetadataItem>(map['metadata'], (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      copyBehavior: map['copyBehavior'] == null ? null : (map['copyBehavior']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      expiryDateTime: map['expiryDateTime'] == null ? null : (map['expiryDateTime']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItem>(map['metadata'], (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

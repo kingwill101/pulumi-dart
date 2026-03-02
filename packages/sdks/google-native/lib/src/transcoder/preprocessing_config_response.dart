@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'audio_response.dart';
 import 'color_response.dart';
 import 'crop_response.dart';
@@ -11,19 +12,19 @@ import 'pad_response.dart';
 /// Preprocessing configurations.
 class PreprocessingConfigResponse {
   /// Audio preprocessing configuration.
-  final AudioResponse audio;
+  final pulumi.Input<AudioResponse> audio;
   /// Color preprocessing configuration.
-  final ColorResponse color;
+  final pulumi.Input<ColorResponse> color;
   /// Specify the video cropping configuration.
-  final CropResponse crop;
+  final pulumi.Input<CropResponse> crop;
   /// Deblock preprocessing configuration.
-  final DeblockResponse deblock;
+  final pulumi.Input<DeblockResponse> deblock;
   /// Specify the video deinterlace configuration.
-  final DeinterlaceResponse deinterlace;
+  final pulumi.Input<DeinterlaceResponse> deinterlace;
   /// Denoise preprocessing configuration.
-  final DenoiseResponse denoise;
+  final pulumi.Input<DenoiseResponse> denoise;
   /// Specify the video pad filter configuration.
-  final PadResponse pad;
+  final pulumi.Input<PadResponse> pad;
 
   /// Creates a new [PreprocessingConfigResponse].
   /// [audio] Audio preprocessing configuration.
@@ -45,25 +46,25 @@ class PreprocessingConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audio': audio.toMap(),
-      'color': color.toMap(),
-      'crop': crop.toMap(),
-      'deblock': deblock.toMap(),
-      'deinterlace': deinterlace.toMap(),
-      'denoise': denoise.toMap(),
-      'pad': pad.toMap(),
+      'audio': pulumi.Input.mapInputValue<AudioResponse, Map<String, dynamic>>(audio, (value) => value.toMap()),
+      'color': pulumi.Input.mapInputValue<ColorResponse, Map<String, dynamic>>(color, (value) => value.toMap()),
+      'crop': pulumi.Input.mapInputValue<CropResponse, Map<String, dynamic>>(crop, (value) => value.toMap()),
+      'deblock': pulumi.Input.mapInputValue<DeblockResponse, Map<String, dynamic>>(deblock, (value) => value.toMap()),
+      'deinterlace': pulumi.Input.mapInputValue<DeinterlaceResponse, Map<String, dynamic>>(deinterlace, (value) => value.toMap()),
+      'denoise': pulumi.Input.mapInputValue<DenoiseResponse, Map<String, dynamic>>(denoise, (value) => value.toMap()),
+      'pad': pulumi.Input.mapInputValue<PadResponse, Map<String, dynamic>>(pad, (value) => value.toMap()),
     };
   }
 
   factory PreprocessingConfigResponse.fromMap(Map<String, dynamic> map) {
     return PreprocessingConfigResponse(
-      audio: AudioResponse.fromMap((map['audio'] as Map).cast<String, dynamic>()),
-      color: ColorResponse.fromMap((map['color'] as Map).cast<String, dynamic>()),
-      crop: CropResponse.fromMap((map['crop'] as Map).cast<String, dynamic>()),
-      deblock: DeblockResponse.fromMap((map['deblock'] as Map).cast<String, dynamic>()),
-      deinterlace: DeinterlaceResponse.fromMap((map['deinterlace'] as Map).cast<String, dynamic>()),
-      denoise: DenoiseResponse.fromMap((map['denoise'] as Map).cast<String, dynamic>()),
-      pad: PadResponse.fromMap((map['pad'] as Map).cast<String, dynamic>()),
+      audio: (AudioResponse.fromMap((map['audio'] as Map).cast<String, dynamic>())).input(),
+      color: (ColorResponse.fromMap((map['color'] as Map).cast<String, dynamic>())).input(),
+      crop: (CropResponse.fromMap((map['crop'] as Map).cast<String, dynamic>())).input(),
+      deblock: (DeblockResponse.fromMap((map['deblock'] as Map).cast<String, dynamic>())).input(),
+      deinterlace: (DeinterlaceResponse.fromMap((map['deinterlace'] as Map).cast<String, dynamic>())).input(),
+      denoise: (DenoiseResponse.fromMap((map['denoise'] as Map).cast<String, dynamic>())).input(),
+      pad: (PadResponse.fromMap((map['pad'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class ExportPipelineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [target] The target properties of the export pipeline.
   ExportPipelineArgs({
-    pulumi.Output<String>? exportPipelineName,
-    pulumi.Output<IdentityProperties>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? options,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ExportPipelineTargetProperties> target,
-  }) :
-      exportPipelineName = pulumi.Input.asOptionalInput<String>(exportPipelineName),
-      identity = pulumi.Input.asOptionalInput<IdentityProperties>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      options = pulumi.Input.asOptionalInput<List<String>>(options),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      target = pulumi.Input.asInput<ExportPipelineTargetProperties>(target);
+    this.exportPipelineName,
+    this.identity,
+    this.location,
+    this.options,
+    required this.registryName,
+    required this.resourceGroupName,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ExportPipelineArgs {
 
   factory ExportPipelineArgs.fromMap(Map<String, dynamic> map) {
     return ExportPipelineArgs(
-      exportPipelineName: map['exportPipelineName'] == null ? null : pulumi.Output.create<String>(map['exportPipelineName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<IdentityProperties>(IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<List<String>>((map['options'] as List).cast<String>()),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      target: pulumi.Output.create<ExportPipelineTargetProperties>(ExportPipelineTargetProperties.fromMap((map['target'] as Map).cast<String, dynamic>())),
+      exportPipelineName: map['exportPipelineName'] == null ? null : (map['exportPipelineName'] as String).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      options: map['options'] == null ? null : ((map['options'] as List).cast<String>()).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      target: (ExportPipelineTargetProperties.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,19 +34,13 @@ class AiDatasetArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the dataset. eg us-central1
   AiDatasetArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<AiDatasetEncryptionSpec>? encryptionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> metadataSchemaUri,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<AiDatasetEncryptionSpec>(encryptionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      metadataSchemaUri = pulumi.Input.asInput<String>(metadataSchemaUri),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.displayName,
+    this.encryptionSpec,
+    this.labels,
+    required this.metadataSchemaUri,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class AiDatasetArgs {
 
   factory AiDatasetArgs.fromMap(Map<String, dynamic> map) {
     return AiDatasetArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiDatasetEncryptionSpec>(AiDatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      metadataSchemaUri: pulumi.Output.create<String>(map['metadataSchemaUri'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiDatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      metadataSchemaUri: (map['metadataSchemaUri'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

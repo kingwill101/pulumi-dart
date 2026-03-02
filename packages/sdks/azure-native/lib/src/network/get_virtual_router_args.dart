@@ -19,13 +19,10 @@ class GetVirtualRouterArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualRouterName] The name of the Virtual Router.
   GetVirtualRouterArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualRouterName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualRouterName = pulumi.Input.asInput<String>(virtualRouterName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.virtualRouterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualRouterArgs {
 
   factory GetVirtualRouterArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualRouterName: pulumi.Output.create<String>(map['virtualRouterName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualRouterName: (map['virtualRouterName'] as String).input(),
     );
   }
 }

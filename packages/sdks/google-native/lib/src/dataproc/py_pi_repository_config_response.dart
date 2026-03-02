@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for PyPi repository
 class PyPiRepositoryConfigResponse {
   /// Optional. PyPi repository address
-  final String pypiRepository;
+  final pulumi.Input<String> pypiRepository;
 
   /// Creates a new [PyPiRepositoryConfigResponse].
   /// [pypiRepository] Optional. PyPi repository address
@@ -20,7 +21,7 @@ class PyPiRepositoryConfigResponse {
 
   factory PyPiRepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return PyPiRepositoryConfigResponse(
-      pypiRepository: map['pypiRepository'] as String,
+      pypiRepository: (map['pypiRepository'] as String).input(),
     );
   }
 }

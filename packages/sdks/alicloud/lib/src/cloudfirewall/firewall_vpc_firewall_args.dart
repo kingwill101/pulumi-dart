@@ -30,19 +30,13 @@ class FirewallVpcFirewallArgs {
   /// [status] The status of the resource. Valid values:
   /// [vpcFirewallName] The name of the VPC firewall instance.
   FirewallVpcFirewallArgs({
-    pulumi.Output<String>? lang,
-    required pulumi.Output<FirewallVpcFirewallLocalVpc> localVpc,
-    pulumi.Output<String>? memberUid,
-    required pulumi.Output<FirewallVpcFirewallPeerVpc> peerVpc,
-    required pulumi.Output<String> status,
-    required pulumi.Output<String> vpcFirewallName,
-  }) :
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      localVpc = pulumi.Input.asInput<FirewallVpcFirewallLocalVpc>(localVpc),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      peerVpc = pulumi.Input.asInput<FirewallVpcFirewallPeerVpc>(peerVpc),
-      status = pulumi.Input.asInput<String>(status),
-      vpcFirewallName = pulumi.Input.asInput<String>(vpcFirewallName);
+    this.lang,
+    required this.localVpc,
+    this.memberUid,
+    required this.peerVpc,
+    required this.status,
+    required this.vpcFirewallName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class FirewallVpcFirewallArgs {
 
   factory FirewallVpcFirewallArgs.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallArgs(
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      localVpc: pulumi.Output.create<FirewallVpcFirewallLocalVpc>(FirewallVpcFirewallLocalVpc.fromMap((map['localVpc'] as Map).cast<String, dynamic>())),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      peerVpc: pulumi.Output.create<FirewallVpcFirewallPeerVpc>(FirewallVpcFirewallPeerVpc.fromMap((map['peerVpc'] as Map).cast<String, dynamic>())),
-      status: pulumi.Output.create<String>(map['status'] as String),
-      vpcFirewallName: pulumi.Output.create<String>(map['vpcFirewallName'] as String),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      localVpc: (FirewallVpcFirewallLocalVpc.fromMap((map['localVpc'] as Map).cast<String, dynamic>())).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      peerVpc: (FirewallVpcFirewallPeerVpc.fromMap((map['peerVpc'] as Map).cast<String, dynamic>())).input(),
+      status: (map['status'] as String).input(),
+      vpcFirewallName: (map['vpcFirewallName'] as String).input(),
     );
   }
 }

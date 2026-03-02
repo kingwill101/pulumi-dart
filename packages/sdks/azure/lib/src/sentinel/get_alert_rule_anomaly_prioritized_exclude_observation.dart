@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertRuleAnomalyPrioritizedExcludeObservation {
   /// The description of the threshold observation.
-  final String description;
+  final pulumi.Input<String> description;
   /// The excluded value per `description`.
-  final String exclude;
+  final pulumi.Input<String> exclude;
   /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
-  final String name;
+  final pulumi.Input<String> name;
   /// The prioritized value per `description`.
-  final String prioritize;
+  final pulumi.Input<String> prioritize;
 
   /// Creates a new [GetAlertRuleAnomalyPrioritizedExcludeObservation].
   /// [description] The description of the threshold observation.
@@ -34,10 +35,10 @@ class GetAlertRuleAnomalyPrioritizedExcludeObservation {
 
   factory GetAlertRuleAnomalyPrioritizedExcludeObservation.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleAnomalyPrioritizedExcludeObservation(
-      description: map['description'] as String,
-      exclude: map['exclude'] as String,
-      name: map['name'] as String,
-      prioritize: map['prioritize'] as String,
+      description: (map['description'] as String).input(),
+      exclude: (map['exclude'] as String).input(),
+      name: (map['name'] as String).input(),
+      prioritize: (map['prioritize'] as String).input(),
     );
   }
 }

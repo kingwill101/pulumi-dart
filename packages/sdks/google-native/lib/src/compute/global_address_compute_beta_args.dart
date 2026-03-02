@@ -56,35 +56,21 @@ class GlobalAddressComputeBetaArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [subnetwork] The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
   GlobalAddressComputeBetaArgs({
-    pulumi.Output<String>? address,
-    pulumi.Output<GlobalAddressAddressTypeComputeBeta>? addressType,
-    pulumi.Output<String>? description,
-    pulumi.Output<GlobalAddressIpVersionComputeBeta>? ipVersion,
-    pulumi.Output<GlobalAddressIpv6EndpointTypeComputeBeta>? ipv6EndpointType,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<GlobalAddressNetworkTierComputeBeta>? networkTier,
-    pulumi.Output<int>? prefixLength,
-    pulumi.Output<String>? project,
-    pulumi.Output<GlobalAddressPurposeComputeBeta>? purpose,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? subnetwork,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      addressType = pulumi.Input.asOptionalInput<GlobalAddressAddressTypeComputeBeta>(addressType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipVersion = pulumi.Input.asOptionalInput<GlobalAddressIpVersionComputeBeta>(ipVersion),
-      ipv6EndpointType = pulumi.Input.asOptionalInput<GlobalAddressIpv6EndpointTypeComputeBeta>(ipv6EndpointType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      networkTier = pulumi.Input.asOptionalInput<GlobalAddressNetworkTierComputeBeta>(networkTier),
-      prefixLength = pulumi.Input.asOptionalInput<int>(prefixLength),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      purpose = pulumi.Input.asOptionalInput<GlobalAddressPurposeComputeBeta>(purpose),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork);
+    this.address,
+    this.addressType,
+    this.description,
+    this.ipVersion,
+    this.ipv6EndpointType,
+    this.labels,
+    this.name,
+    this.network,
+    this.networkTier,
+    this.prefixLength,
+    this.project,
+    this.purpose,
+    this.requestId,
+    this.subnetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class GlobalAddressComputeBetaArgs {
 
   factory GlobalAddressComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GlobalAddressComputeBetaArgs(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      addressType: map['addressType'] == null ? null : pulumi.Output.create<GlobalAddressAddressTypeComputeBeta>(GlobalAddressAddressTypeComputeBeta.fromValue(map['addressType'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<GlobalAddressIpVersionComputeBeta>(GlobalAddressIpVersionComputeBeta.fromValue(map['ipVersion'] as String)),
-      ipv6EndpointType: map['ipv6EndpointType'] == null ? null : pulumi.Output.create<GlobalAddressIpv6EndpointTypeComputeBeta>(GlobalAddressIpv6EndpointTypeComputeBeta.fromValue(map['ipv6EndpointType'] as String)),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      networkTier: map['networkTier'] == null ? null : pulumi.Output.create<GlobalAddressNetworkTierComputeBeta>(GlobalAddressNetworkTierComputeBeta.fromValue(map['networkTier'] as String)),
-      prefixLength: map['prefixLength'] == null ? null : pulumi.Output.create<int>(map['prefixLength'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<GlobalAddressPurposeComputeBeta>(GlobalAddressPurposeComputeBeta.fromValue(map['purpose'] as String)),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      subnetwork: map['subnetwork'] == null ? null : pulumi.Output.create<String>(map['subnetwork'] as String),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      addressType: map['addressType'] == null ? null : (GlobalAddressAddressTypeComputeBeta.fromValue(map['addressType'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (GlobalAddressIpVersionComputeBeta.fromValue(map['ipVersion'] as String)).input(),
+      ipv6EndpointType: map['ipv6EndpointType'] == null ? null : (GlobalAddressIpv6EndpointTypeComputeBeta.fromValue(map['ipv6EndpointType'] as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      networkTier: map['networkTier'] == null ? null : (GlobalAddressNetworkTierComputeBeta.fromValue(map['networkTier'] as String)).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      purpose: map['purpose'] == null ? null : (GlobalAddressPurposeComputeBeta.fromValue(map['purpose'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
     );
   }
 }

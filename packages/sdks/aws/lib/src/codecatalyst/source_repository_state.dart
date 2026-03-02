@@ -24,17 +24,12 @@ class SourceRepositoryState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spaceName] The name of the CodeCatalyst space.
   SourceRepositoryState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? spaceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spaceName = pulumi.Input.asOptionalInput<String>(spaceName);
+    this.description,
+    this.name,
+    this.projectName,
+    this.region,
+    this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class SourceRepositoryState {
 
   factory SourceRepositoryState.fromMap(Map<String, dynamic> map) {
     return SourceRepositoryState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spaceName: map['spaceName'] == null ? null : pulumi.Output.create<String>(map['spaceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
     );
   }
 }

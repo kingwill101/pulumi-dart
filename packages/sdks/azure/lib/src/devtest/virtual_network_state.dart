@@ -29,21 +29,14 @@ class VirtualNetworkState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [uniqueIdentifier] The unique immutable identifier of the Dev Test Virtual Network.
   VirtualNetworkState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? labName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<VirtualNetworkSubnet>? subnet,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? uniqueIdentifier,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labName = pulumi.Input.asOptionalInput<String>(labName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      subnet = pulumi.Input.asOptionalInput<VirtualNetworkSubnet>(subnet),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      uniqueIdentifier = pulumi.Input.asOptionalInput<String>(uniqueIdentifier);
+    this.description,
+    this.labName,
+    this.name,
+    this.resourceGroupName,
+    this.subnet,
+    this.tags,
+    this.uniqueIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class VirtualNetworkState {
 
   factory VirtualNetworkState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labName: map['labName'] == null ? null : pulumi.Output.create<String>(map['labName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<VirtualNetworkSubnet>(VirtualNetworkSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      uniqueIdentifier: map['uniqueIdentifier'] == null ? null : pulumi.Output.create<String>(map['uniqueIdentifier'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labName: map['labName'] == null ? null : (map['labName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      subnet: map['subnet'] == null ? null : (VirtualNetworkSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      uniqueIdentifier: map['uniqueIdentifier'] == null ? null : (map['uniqueIdentifier'] as String).input(),
     );
   }
 }

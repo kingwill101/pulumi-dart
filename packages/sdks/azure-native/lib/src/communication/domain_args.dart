@@ -31,21 +31,14 @@ class DomainArgs {
   /// [tags] Resource tags.
   /// [userEngagementTracking] Describes whether user engagement tracking is enabled or disabled.
   DomainArgs({
-    required pulumi.Output<String> domainManagement,
-    pulumi.Output<String>? domainName,
-    required pulumi.Output<String> emailServiceName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? userEngagementTracking,
-  }) :
-      domainManagement = pulumi.Input.asInput<String>(domainManagement),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      emailServiceName = pulumi.Input.asInput<String>(emailServiceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userEngagementTracking = pulumi.Input.asOptionalInput<String>(userEngagementTracking);
+    required this.domainManagement,
+    this.domainName,
+    required this.emailServiceName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.userEngagementTracking,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      domainManagement: pulumi.Output.create<String>(map['domainManagement'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      emailServiceName: pulumi.Output.create<String>(map['emailServiceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userEngagementTracking: map['userEngagementTracking'] == null ? null : pulumi.Output.create<String>(map['userEngagementTracking'] as String),
+      domainManagement: (map['domainManagement'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      emailServiceName: (map['emailServiceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userEngagementTracking: map['userEngagementTracking'] == null ? null : (map['userEngagementTracking'] as String).input(),
     );
   }
 }

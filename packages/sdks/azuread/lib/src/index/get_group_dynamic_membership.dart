@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupDynamicMembership {
   /// Whether rule processing is "On" (true) or "Paused" (false).
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The rule that determines membership of this group.
-  final String rule;
+  final pulumi.Input<String> rule;
 
   /// Creates a new [GetGroupDynamicMembership].
   /// [enabled] Whether rule processing is "On" (true) or "Paused" (false).
@@ -24,8 +25,8 @@ class GetGroupDynamicMembership {
 
   factory GetGroupDynamicMembership.fromMap(Map<String, dynamic> map) {
     return GetGroupDynamicMembership(
-      enabled: map['enabled'] as bool,
-      rule: map['rule'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      rule: (map['rule'] as String).input(),
     );
   }
 }

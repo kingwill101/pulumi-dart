@@ -5,63 +5,63 @@ import 'explain_query_step_response.dart';
 
 class ExplainQueryStageResponse {
   /// Number of parallel input segments completed.
-  final String completedParallelInputs;
+  final pulumi.Input<String> completedParallelInputs;
   /// Milliseconds the average shard spent on CPU-bound tasks.
-  final String computeMsAvg;
+  final pulumi.Input<String> computeMsAvg;
   /// Milliseconds the slowest shard spent on CPU-bound tasks.
-  final String computeMsMax;
+  final pulumi.Input<String> computeMsMax;
   /// Relative amount of time the average shard spent on CPU-bound tasks.
-  final double computeRatioAvg;
+  final pulumi.Input<double> computeRatioAvg;
   /// Relative amount of time the slowest shard spent on CPU-bound tasks.
-  final double computeRatioMax;
+  final pulumi.Input<double> computeRatioMax;
   /// Stage end time represented as milliseconds since epoch.
-  final String endMs;
+  final pulumi.Input<String> endMs;
   /// IDs for stages that are inputs to this stage.
-  final List<String> inputStages;
+  final pulumi.Input<List<String>> inputStages;
   /// Human-readable name for stage.
-  final String name;
+  final pulumi.Input<String> name;
   /// Number of parallel input segments to be processed.
-  final String parallelInputs;
+  final pulumi.Input<String> parallelInputs;
   /// Milliseconds the average shard spent reading input.
-  final String readMsAvg;
+  final pulumi.Input<String> readMsAvg;
   /// Milliseconds the slowest shard spent reading input.
-  final String readMsMax;
+  final pulumi.Input<String> readMsMax;
   /// Relative amount of time the average shard spent reading input.
-  final double readRatioAvg;
+  final pulumi.Input<double> readRatioAvg;
   /// Relative amount of time the slowest shard spent reading input.
-  final double readRatioMax;
+  final pulumi.Input<double> readRatioMax;
   /// Number of records read into the stage.
-  final String recordsRead;
+  final pulumi.Input<String> recordsRead;
   /// Number of records written by the stage.
-  final String recordsWritten;
+  final pulumi.Input<String> recordsWritten;
   /// Total number of bytes written to shuffle.
-  final String shuffleOutputBytes;
+  final pulumi.Input<String> shuffleOutputBytes;
   /// Total number of bytes written to shuffle and spilled to disk.
-  final String shuffleOutputBytesSpilled;
+  final pulumi.Input<String> shuffleOutputBytesSpilled;
   /// Slot-milliseconds used by the stage.
-  final String slotMs;
+  final pulumi.Input<String> slotMs;
   /// Stage start time represented as milliseconds since epoch.
-  final String startMs;
+  final pulumi.Input<String> startMs;
   /// Current status for the stage.
-  final String status;
+  final pulumi.Input<String> status;
   /// List of operations within the stage in dependency order (approximately chronological).
-  final List<ExplainQueryStepResponse> steps;
+  final pulumi.Input<List<ExplainQueryStepResponse>> steps;
   /// Milliseconds the average shard spent waiting to be scheduled.
-  final String waitMsAvg;
+  final pulumi.Input<String> waitMsAvg;
   /// Milliseconds the slowest shard spent waiting to be scheduled.
-  final String waitMsMax;
+  final pulumi.Input<String> waitMsMax;
   /// Relative amount of time the average shard spent waiting to be scheduled.
-  final double waitRatioAvg;
+  final pulumi.Input<double> waitRatioAvg;
   /// Relative amount of time the slowest shard spent waiting to be scheduled.
-  final double waitRatioMax;
+  final pulumi.Input<double> waitRatioMax;
   /// Milliseconds the average shard spent on writing output.
-  final String writeMsAvg;
+  final pulumi.Input<String> writeMsAvg;
   /// Milliseconds the slowest shard spent on writing output.
-  final String writeMsMax;
+  final pulumi.Input<String> writeMsMax;
   /// Relative amount of time the average shard spent on writing output.
-  final double writeRatioAvg;
+  final pulumi.Input<double> writeRatioAvg;
   /// Relative amount of time the slowest shard spent on writing output.
-  final double writeRatioMax;
+  final pulumi.Input<double> writeRatioMax;
 
   /// Creates a new [ExplainQueryStageResponse].
   /// [completedParallelInputs] Number of parallel input segments completed.
@@ -147,7 +147,7 @@ class ExplainQueryStageResponse {
       'slotMs': slotMs,
       'startMs': startMs,
       'status': status,
-      'steps': pulumi.Input.encodeList<ExplainQueryStepResponse, Map<String, dynamic>>(steps, (value) => value.toMap()),
+      'steps': pulumi.Input.mapInputValue<List<ExplainQueryStepResponse>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<ExplainQueryStepResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'waitMsAvg': waitMsAvg,
       'waitMsMax': waitMsMax,
       'waitRatioAvg': waitRatioAvg,
@@ -161,35 +161,35 @@ class ExplainQueryStageResponse {
 
   factory ExplainQueryStageResponse.fromMap(Map<String, dynamic> map) {
     return ExplainQueryStageResponse(
-      completedParallelInputs: map['completedParallelInputs'] as String,
-      computeMsAvg: map['computeMsAvg'] as String,
-      computeMsMax: map['computeMsMax'] as String,
-      computeRatioAvg: map['computeRatioAvg'] as double,
-      computeRatioMax: map['computeRatioMax'] as double,
-      endMs: map['endMs'] as String,
-      inputStages: (map['inputStages'] as List).cast<String>(),
-      name: map['name'] as String,
-      parallelInputs: map['parallelInputs'] as String,
-      readMsAvg: map['readMsAvg'] as String,
-      readMsMax: map['readMsMax'] as String,
-      readRatioAvg: map['readRatioAvg'] as double,
-      readRatioMax: map['readRatioMax'] as double,
-      recordsRead: map['recordsRead'] as String,
-      recordsWritten: map['recordsWritten'] as String,
-      shuffleOutputBytes: map['shuffleOutputBytes'] as String,
-      shuffleOutputBytesSpilled: map['shuffleOutputBytesSpilled'] as String,
-      slotMs: map['slotMs'] as String,
-      startMs: map['startMs'] as String,
-      status: map['status'] as String,
-      steps: pulumi.Input.decodeList<ExplainQueryStepResponse>(map['steps'], (value) => ExplainQueryStepResponse.fromMap((value as Map).cast<String, dynamic>())),
-      waitMsAvg: map['waitMsAvg'] as String,
-      waitMsMax: map['waitMsMax'] as String,
-      waitRatioAvg: map['waitRatioAvg'] as double,
-      waitRatioMax: map['waitRatioMax'] as double,
-      writeMsAvg: map['writeMsAvg'] as String,
-      writeMsMax: map['writeMsMax'] as String,
-      writeRatioAvg: map['writeRatioAvg'] as double,
-      writeRatioMax: map['writeRatioMax'] as double,
+      completedParallelInputs: (map['completedParallelInputs'] as String).input(),
+      computeMsAvg: (map['computeMsAvg'] as String).input(),
+      computeMsMax: (map['computeMsMax'] as String).input(),
+      computeRatioAvg: (map['computeRatioAvg'] as double).input(),
+      computeRatioMax: (map['computeRatioMax'] as double).input(),
+      endMs: (map['endMs'] as String).input(),
+      inputStages: ((map['inputStages'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      parallelInputs: (map['parallelInputs'] as String).input(),
+      readMsAvg: (map['readMsAvg'] as String).input(),
+      readMsMax: (map['readMsMax'] as String).input(),
+      readRatioAvg: (map['readRatioAvg'] as double).input(),
+      readRatioMax: (map['readRatioMax'] as double).input(),
+      recordsRead: (map['recordsRead'] as String).input(),
+      recordsWritten: (map['recordsWritten'] as String).input(),
+      shuffleOutputBytes: (map['shuffleOutputBytes'] as String).input(),
+      shuffleOutputBytesSpilled: (map['shuffleOutputBytesSpilled'] as String).input(),
+      slotMs: (map['slotMs'] as String).input(),
+      startMs: (map['startMs'] as String).input(),
+      status: (map['status'] as String).input(),
+      steps: (pulumi.Input.decodeList<ExplainQueryStepResponse>(map['steps'], (value) => ExplainQueryStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      waitMsAvg: (map['waitMsAvg'] as String).input(),
+      waitMsMax: (map['waitMsMax'] as String).input(),
+      waitRatioAvg: (map['waitRatioAvg'] as double).input(),
+      waitRatioMax: (map['waitRatioMax'] as double).input(),
+      writeMsAvg: (map['writeMsAvg'] as String).input(),
+      writeMsMax: (map['writeMsMax'] as String).input(),
+      writeRatioAvg: (map['writeRatioAvg'] as double).input(),
+      writeRatioMax: (map['writeRatioMax'] as double).input(),
     );
   }
 }

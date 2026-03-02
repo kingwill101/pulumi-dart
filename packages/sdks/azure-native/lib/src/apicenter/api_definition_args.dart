@@ -34,23 +34,15 @@ class ApiDefinitionArgs {
   /// [versionName] The name of the API version.
   /// [workspaceName] The name of the workspace.
   ApiDefinitionArgs({
-    required pulumi.Output<String> apiName,
-    pulumi.Output<String>? definitionName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> title,
-    required pulumi.Output<String> versionName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      apiName = pulumi.Input.asInput<String>(apiName),
-      definitionName = pulumi.Input.asOptionalInput<String>(definitionName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      title = pulumi.Input.asInput<String>(title),
-      versionName = pulumi.Input.asInput<String>(versionName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.apiName,
+    this.definitionName,
+    this.description,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.title,
+    required this.versionName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ApiDefinitionArgs {
 
   factory ApiDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ApiDefinitionArgs(
-      apiName: pulumi.Output.create<String>(map['apiName'] as String),
-      definitionName: map['definitionName'] == null ? null : pulumi.Output.create<String>(map['definitionName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
-      versionName: pulumi.Output.create<String>(map['versionName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      apiName: (map['apiName'] as String).input(),
+      definitionName: map['definitionName'] == null ? null : (map['definitionName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      title: (map['title'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

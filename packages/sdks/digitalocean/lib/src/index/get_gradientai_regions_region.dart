@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiRegionsRegion {
   /// Inference URL for the model
-  final String inferenceUrl;
+  final pulumi.Input<String> inferenceUrl;
   /// Region where the model is deployed
-  final String region;
+  final pulumi.Input<String> region;
   /// Indicates if the model serves batch requests
-  final bool servesBatch;
+  final pulumi.Input<bool> servesBatch;
   /// Indicates if the model serves inference requests
-  final bool servesInference;
+  final pulumi.Input<bool> servesInference;
   /// Streaming inference URL for the model
-  final String streamInferenceUrl;
+  final pulumi.Input<String> streamInferenceUrl;
 
   /// Creates a new [GetGradientaiRegionsRegion].
   /// [inferenceUrl] Inference URL for the model
@@ -39,11 +40,11 @@ class GetGradientaiRegionsRegion {
 
   factory GetGradientaiRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetGradientaiRegionsRegion(
-      inferenceUrl: map['inferenceUrl'] as String,
-      region: map['region'] as String,
-      servesBatch: map['servesBatch'] as bool,
-      servesInference: map['servesInference'] as bool,
-      streamInferenceUrl: map['streamInferenceUrl'] as String,
+      inferenceUrl: (map['inferenceUrl'] as String).input(),
+      region: (map['region'] as String).input(),
+      servesBatch: (map['servesBatch'] as bool).input(),
+      servesInference: (map['servesInference'] as bool).input(),
+      streamInferenceUrl: (map['streamInferenceUrl'] as String).input(),
     );
   }
 }

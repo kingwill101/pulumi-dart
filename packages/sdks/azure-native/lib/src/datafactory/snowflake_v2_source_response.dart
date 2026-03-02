@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'snowflake_export_copy_command_response.dart';
 
 /// A copy activity snowflake source.
 class SnowflakeV2SourceResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Snowflake export settings.
-  final SnowflakeExportCopyCommandResponse exportSettings;
+  final pulumi.Input<SnowflakeExportCopyCommandResponse> exportSettings;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Snowflake Sql query. Type: string (or Expression with resultType string).
-  final dynamic query;
+  final pulumi.Input<dynamic>? query;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'SnowflakeV2Source'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SnowflakeV2SourceResponse].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -41,7 +42,7 @@ class SnowflakeV2SourceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disableMetricsCollection': ?disableMetricsCollection,
-      'exportSettings': exportSettings.toMap(),
+      'exportSettings': pulumi.Input.mapInputValue<SnowflakeExportCopyCommandResponse, Map<String, dynamic>>(exportSettings, (value) => value.toMap()),
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'query': ?query,
       'sourceRetryCount': ?sourceRetryCount,
@@ -52,13 +53,13 @@ class SnowflakeV2SourceResponse {
 
   factory SnowflakeV2SourceResponse.fromMap(Map<String, dynamic> map) {
     return SnowflakeV2SourceResponse(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      exportSettings: SnowflakeExportCopyCommandResponse.fromMap((map['exportSettings'] as Map).cast<String, dynamic>()),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      query: map['query'] == null ? null : map['query'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      exportSettings: (SnowflakeExportCopyCommandResponse.fromMap((map['exportSettings'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      query: map['query'] == null ? null : (map['query']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

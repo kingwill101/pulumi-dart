@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SigningProfileSignatureValidityPeriod {
   /// The time unit for signature validity. Valid values: `DAYS`, `MONTHS`, `YEARS`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The numerical value of the time unit for signature validity.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [SigningProfileSignatureValidityPeriod].
   /// [type] The time unit for signature validity. Valid values: `DAYS`, `MONTHS`, `YEARS`.
@@ -24,8 +25,8 @@ class SigningProfileSignatureValidityPeriod {
 
   factory SigningProfileSignatureValidityPeriod.fromMap(Map<String, dynamic> map) {
     return SigningProfileSignatureValidityPeriod(
-      type: map['type'] as String,
-      value: map['value'] as int,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

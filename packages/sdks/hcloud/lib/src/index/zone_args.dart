@@ -29,19 +29,13 @@ class ZoneArgs {
   /// [primaryNameservers] Primary nameservers of the Zone. Forbidden when mode is primary and required when mode is secondary.
   /// [ttl] Default Time To Live (TTL) of the Zone.
   ZoneArgs({
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ZonePrimaryNameserver>>? primaryNameservers,
-    pulumi.Output<int>? ttl,
-  }) :
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      mode = pulumi.Input.asInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryNameservers = pulumi.Input.asOptionalInput<List<ZonePrimaryNameserver>>(primaryNameservers),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl);
+    this.deleteProtection,
+    this.labels,
+    required this.mode,
+    this.name,
+    this.primaryNameservers,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ZoneArgs {
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryNameservers: map['primaryNameservers'] == null ? null : pulumi.Output.create<List<ZonePrimaryNameserver>>(pulumi.Input.decodeList<ZonePrimaryNameserver>(map['primaryNameservers'], (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      mode: (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryNameservers: map['primaryNameservers'] == null ? null : (pulumi.Input.decodeList<ZonePrimaryNameserver>(map['primaryNameservers'], (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

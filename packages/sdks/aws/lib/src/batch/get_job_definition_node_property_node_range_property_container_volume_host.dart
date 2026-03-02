@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost {
   /// The path on the host container instance that's presented to the container.
-  final String sourcePath;
+  final pulumi.Input<String> sourcePath;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost].
   /// [sourcePath] The path on the host container instance that's presented to the container.
@@ -19,7 +20,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost {
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost(
-      sourcePath: map['sourcePath'] as String,
+      sourcePath: (map['sourcePath'] as String).input(),
     );
   }
 }

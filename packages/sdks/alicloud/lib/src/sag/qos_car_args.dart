@@ -40,27 +40,17 @@ class QosCarArgs {
   /// [priority] The priority of the specified stream.
   /// [qosId] The instance ID of the QoS.
   QosCarArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> limitType,
-    pulumi.Output<int>? maxBandwidthAbs,
-    pulumi.Output<int>? maxBandwidthPercent,
-    pulumi.Output<int>? minBandwidthAbs,
-    pulumi.Output<int>? minBandwidthPercent,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? percentSourceType,
-    required pulumi.Output<int> priority,
-    required pulumi.Output<String> qosId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      limitType = pulumi.Input.asInput<String>(limitType),
-      maxBandwidthAbs = pulumi.Input.asOptionalInput<int>(maxBandwidthAbs),
-      maxBandwidthPercent = pulumi.Input.asOptionalInput<int>(maxBandwidthPercent),
-      minBandwidthAbs = pulumi.Input.asOptionalInput<int>(minBandwidthAbs),
-      minBandwidthPercent = pulumi.Input.asOptionalInput<int>(minBandwidthPercent),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      percentSourceType = pulumi.Input.asOptionalInput<String>(percentSourceType),
-      priority = pulumi.Input.asInput<int>(priority),
-      qosId = pulumi.Input.asInput<String>(qosId);
+    this.description,
+    required this.limitType,
+    this.maxBandwidthAbs,
+    this.maxBandwidthPercent,
+    this.minBandwidthAbs,
+    this.minBandwidthPercent,
+    this.name,
+    this.percentSourceType,
+    required this.priority,
+    required this.qosId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class QosCarArgs {
 
   factory QosCarArgs.fromMap(Map<String, dynamic> map) {
     return QosCarArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      limitType: pulumi.Output.create<String>(map['limitType'] as String),
-      maxBandwidthAbs: map['maxBandwidthAbs'] == null ? null : pulumi.Output.create<int>(map['maxBandwidthAbs'] as int),
-      maxBandwidthPercent: map['maxBandwidthPercent'] == null ? null : pulumi.Output.create<int>(map['maxBandwidthPercent'] as int),
-      minBandwidthAbs: map['minBandwidthAbs'] == null ? null : pulumi.Output.create<int>(map['minBandwidthAbs'] as int),
-      minBandwidthPercent: map['minBandwidthPercent'] == null ? null : pulumi.Output.create<int>(map['minBandwidthPercent'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      percentSourceType: map['percentSourceType'] == null ? null : pulumi.Output.create<String>(map['percentSourceType'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      qosId: pulumi.Output.create<String>(map['qosId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      limitType: (map['limitType'] as String).input(),
+      maxBandwidthAbs: map['maxBandwidthAbs'] == null ? null : (map['maxBandwidthAbs'] as int).input(),
+      maxBandwidthPercent: map['maxBandwidthPercent'] == null ? null : (map['maxBandwidthPercent'] as int).input(),
+      minBandwidthAbs: map['minBandwidthAbs'] == null ? null : (map['minBandwidthAbs'] as int).input(),
+      minBandwidthPercent: map['minBandwidthPercent'] == null ? null : (map['minBandwidthPercent'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      percentSourceType: map['percentSourceType'] == null ? null : (map['percentSourceType'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      qosId: (map['qosId'] as String).input(),
     );
   }
 }

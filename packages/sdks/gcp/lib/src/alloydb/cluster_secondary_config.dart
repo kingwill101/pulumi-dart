@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterSecondaryConfig {
   /// Name of the primary cluster must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  final String primaryClusterName;
+  final pulumi.Input<String> primaryClusterName;
 
   /// Creates a new [ClusterSecondaryConfig].
   /// [primaryClusterName] Name of the primary cluster must be in the format
@@ -20,7 +21,7 @@ class ClusterSecondaryConfig {
 
   factory ClusterSecondaryConfig.fromMap(Map<String, dynamic> map) {
     return ClusterSecondaryConfig(
-      primaryClusterName: map['primaryClusterName'] as String,
+      primaryClusterName: (map['primaryClusterName'] as String).input(),
     );
   }
 }

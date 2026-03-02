@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodeConfigSandboxConfig {
   /// Type of the sandbox to use for the node (e.g. 'gvisor')
-  final String sandboxType;
+  final pulumi.Input<String> sandboxType;
 
   /// Creates a new [GetClusterNodeConfigSandboxConfig].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor')
@@ -19,7 +20,7 @@ class GetClusterNodeConfigSandboxConfig {
 
   factory GetClusterNodeConfigSandboxConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigSandboxConfig(
-      sandboxType: map['sandboxType'] as String,
+      sandboxType: (map['sandboxType'] as String).input(),
     );
   }
 }

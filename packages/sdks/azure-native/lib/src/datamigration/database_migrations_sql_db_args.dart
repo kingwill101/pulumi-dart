@@ -22,15 +22,11 @@ class DatabaseMigrationsSqlDbArgs {
   /// [sqlDbInstanceName] Required.
   /// [targetDbName] The name of the target database.
   DatabaseMigrationsSqlDbArgs({
-    pulumi.Output<DatabaseMigrationPropertiesSqlDb>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlDbInstanceName,
-    pulumi.Output<String>? targetDbName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<DatabaseMigrationPropertiesSqlDb>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlDbInstanceName = pulumi.Input.asInput<String>(sqlDbInstanceName),
-      targetDbName = pulumi.Input.asOptionalInput<String>(targetDbName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.sqlDbInstanceName,
+    this.targetDbName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DatabaseMigrationsSqlDbArgs {
 
   factory DatabaseMigrationsSqlDbArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsSqlDbArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<DatabaseMigrationPropertiesSqlDb>(DatabaseMigrationPropertiesSqlDb.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlDbInstanceName: pulumi.Output.create<String>(map['sqlDbInstanceName'] as String),
-      targetDbName: map['targetDbName'] == null ? null : pulumi.Output.create<String>(map['targetDbName'] as String),
+      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlDb.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlDbInstanceName: (map['sqlDbInstanceName'] as String).input(),
+      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName'] as String).input(),
     );
   }
 }

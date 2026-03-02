@@ -6,40 +6,40 @@ import 'get_db_clusters_cluster_param_change_log.dart';
 
 class GetDbClustersCluster {
   /// The cache size for DBCluster.
-  final int cacheSize;
+  final pulumi.Input<int> cacheSize;
   /// The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
-  final int cpu;
+  final pulumi.Input<int> cpu;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
-  final String dbClusterClass;
+  final pulumi.Input<String> dbClusterClass;
   /// The DBCluster description.
-  final String dbClusterDescription;
+  final pulumi.Input<String> dbClusterDescription;
   /// The cluster ID.
-  final String dbClusterId;
+  final pulumi.Input<String> dbClusterId;
   /// The instance ID.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// The Engine of the DBCluster.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// The engine version of the DBCluster.
-  final String engineVersion;
-  final String id;
+  final pulumi.Input<String> engineVersion;
+  final pulumi.Input<String> id;
   /// The memory resource amount of DBCluster. Depends on `db_cluster_class`.
-  final int memory;
+  final pulumi.Input<int> memory;
   /// The configuration change logs of parameters.
-  final List<GetDbClustersClusterParamChangeLog> paramChangeLogs;
+  final pulumi.Input<List<GetDbClustersClusterParamChangeLog>> paramChangeLogs;
   /// The details about each parameter in DBCluster returned.
-  final List<GetDbClustersClusterParam> params;
+  final pulumi.Input<List<GetDbClustersClusterParam>> params;
   /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The ID of region for the cluster.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The status of the DBCluster. Valid values: `ACTIVATION`,`CREATING`,`DELETING`,`RESTARTING`,`ORDER_PREPARING`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the VPC for the cluster.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of zone for the cluster.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetDbClustersCluster].
   /// [cacheSize] The cache size for DBCluster.
@@ -94,8 +94,8 @@ class GetDbClustersCluster {
       'engineVersion': engineVersion,
       'id': id,
       'memory': memory,
-      'paramChangeLogs': pulumi.Input.encodeList<GetDbClustersClusterParamChangeLog, Map<String, dynamic>>(paramChangeLogs, (value) => value.toMap()),
-      'params': pulumi.Input.encodeList<GetDbClustersClusterParam, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'paramChangeLogs': pulumi.Input.mapInputValue<List<GetDbClustersClusterParamChangeLog>, List<Map<String, dynamic>>>(paramChangeLogs, (value) => pulumi.Input.encodeList<GetDbClustersClusterParamChangeLog, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'params': pulumi.Input.mapInputValue<List<GetDbClustersClusterParam>, List<Map<String, dynamic>>>(params, (value) => pulumi.Input.encodeList<GetDbClustersClusterParam, Map<String, dynamic>>(value, (value) => value.toMap())),
       'paymentType': paymentType,
       'regionId': regionId,
       'status': status,
@@ -106,24 +106,24 @@ class GetDbClustersCluster {
 
   factory GetDbClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetDbClustersCluster(
-      cacheSize: map['cacheSize'] as int,
-      cpu: map['cpu'] as int,
-      createTime: map['createTime'] as String,
-      dbClusterClass: map['dbClusterClass'] as String,
-      dbClusterDescription: map['dbClusterDescription'] as String,
-      dbClusterId: map['dbClusterId'] as String,
-      dbInstanceId: map['dbInstanceId'] as String,
-      engine: map['engine'] as String,
-      engineVersion: map['engineVersion'] as String,
-      id: map['id'] as String,
-      memory: map['memory'] as int,
-      paramChangeLogs: pulumi.Input.decodeList<GetDbClustersClusterParamChangeLog>(map['paramChangeLogs'], (value) => GetDbClustersClusterParamChangeLog.fromMap((value as Map).cast<String, dynamic>())),
-      params: pulumi.Input.decodeList<GetDbClustersClusterParam>(map['params'], (value) => GetDbClustersClusterParam.fromMap((value as Map).cast<String, dynamic>())),
-      paymentType: map['paymentType'] as String,
-      regionId: map['regionId'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
-      zoneId: map['zoneId'] as String,
+      cacheSize: (map['cacheSize'] as int).input(),
+      cpu: (map['cpu'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      dbClusterClass: (map['dbClusterClass'] as String).input(),
+      dbClusterDescription: (map['dbClusterDescription'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      id: (map['id'] as String).input(),
+      memory: (map['memory'] as int).input(),
+      paramChangeLogs: (pulumi.Input.decodeList<GetDbClustersClusterParamChangeLog>(map['paramChangeLogs'], (value) => GetDbClustersClusterParamChangeLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      params: (pulumi.Input.decodeList<GetDbClustersClusterParam>(map['params'], (value) => GetDbClustersClusterParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

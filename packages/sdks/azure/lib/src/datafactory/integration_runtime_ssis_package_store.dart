@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IntegrationRuntimeSsisPackageStore {
   /// Name of the Linked Service to associate with the packages.
-  final String linkedServiceName;
+  final pulumi.Input<String> linkedServiceName;
   /// Name of the package store.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [IntegrationRuntimeSsisPackageStore].
   /// [linkedServiceName] Name of the Linked Service to associate with the packages.
@@ -24,8 +25,8 @@ class IntegrationRuntimeSsisPackageStore {
 
   factory IntegrationRuntimeSsisPackageStore.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisPackageStore(
-      linkedServiceName: map['linkedServiceName'] as String,
-      name: map['name'] as String,
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

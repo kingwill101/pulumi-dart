@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetShareAclAccessPolicy {
   /// The time at which this Access Policy is valid until.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// The permissions which should be associated with this Shared Identifier. Possible value is combination of `r` (read), `w` (write), `d` (delete), and `l` (list).
-  final String permissions;
+  final pulumi.Input<String> permissions;
   /// The time at which this Access Policy is valid from.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [GetShareAclAccessPolicy].
   /// [expiry] The time at which this Access Policy is valid until.
@@ -29,9 +30,9 @@ class GetShareAclAccessPolicy {
 
   factory GetShareAclAccessPolicy.fromMap(Map<String, dynamic> map) {
     return GetShareAclAccessPolicy(
-      expiry: map['expiry'] as String,
-      permissions: map['permissions'] as String,
-      start: map['start'] as String,
+      expiry: (map['expiry'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The settings for the Cosmos DB database backing the service.
 class ServiceCosmosDbConfigurationInfo {
   /// The URI of the customer-managed key for the backing database.
-  final String? keyVaultKeyUri;
+  final pulumi.Input<String>? keyVaultKeyUri;
   /// The provisioned throughput for the backing database.
-  final double? offerThroughput;
+  final pulumi.Input<double>? offerThroughput;
 
   /// Creates a new [ServiceCosmosDbConfigurationInfo].
   /// [keyVaultKeyUri] The URI of the customer-managed key for the backing database.
@@ -25,8 +26,8 @@ class ServiceCosmosDbConfigurationInfo {
 
   factory ServiceCosmosDbConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceCosmosDbConfigurationInfo(
-      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : map['keyVaultKeyUri'] as String,
-      offerThroughput: map['offerThroughput'] == null ? null : map['offerThroughput'] as double,
+      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri'] as String).input(),
+      offerThroughput: map['offerThroughput'] == null ? null : (map['offerThroughput'] as double).input(),
     );
   }
 }

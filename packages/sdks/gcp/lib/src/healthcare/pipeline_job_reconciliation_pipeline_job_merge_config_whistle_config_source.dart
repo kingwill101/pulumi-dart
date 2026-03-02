@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource {
   /// Directory path where all the Whistle files are located.
   /// Example: gs://{bucket-id}/{path/to/import-root/dir}
-  final String importUriPrefix;
+  final pulumi.Input<String> importUriPrefix;
   /// Main configuration file which has the entrypoint or the root function.
   /// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource].
   /// [importUriPrefix] Directory path where all the Whistle files are located.
@@ -26,8 +27,8 @@ class PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource {
 
   factory PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource.fromMap(Map<String, dynamic> map) {
     return PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource(
-      importUriPrefix: map['importUriPrefix'] as String,
-      uri: map['uri'] as String,
+      importUriPrefix: (map['importUriPrefix'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

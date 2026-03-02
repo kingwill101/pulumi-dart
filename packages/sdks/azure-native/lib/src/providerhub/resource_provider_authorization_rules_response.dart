@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'async_operation_polling_rules_response.dart';
 
 class ResourceProviderAuthorizationRulesResponse {
   /// The async operation polling rules.
-  final AsyncOperationPollingRulesResponse? asyncOperationPollingRules;
+  final pulumi.Input<AsyncOperationPollingRulesResponse>? asyncOperationPollingRules;
 
   /// Creates a new [ResourceProviderAuthorizationRulesResponse].
   /// [asyncOperationPollingRules] The async operation polling rules.
@@ -14,13 +15,13 @@ class ResourceProviderAuthorizationRulesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'asyncOperationPollingRules': ?asyncOperationPollingRules == null ? null : asyncOperationPollingRules!.toMap(),
+      'asyncOperationPollingRules': ?pulumi.Input.mapOptionalInputValue<AsyncOperationPollingRulesResponse, Map<String, dynamic>>(asyncOperationPollingRules, (value) => value.toMap()),
     };
   }
 
   factory ResourceProviderAuthorizationRulesResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderAuthorizationRulesResponse(
-      asyncOperationPollingRules: map['asyncOperationPollingRules'] == null ? null : AsyncOperationPollingRulesResponse.fromMap((map['asyncOperationPollingRules'] as Map).cast<String, dynamic>()),
+      asyncOperationPollingRules: map['asyncOperationPollingRules'] == null ? null : (AsyncOperationPollingRulesResponse.fromMap((map['asyncOperationPollingRules'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

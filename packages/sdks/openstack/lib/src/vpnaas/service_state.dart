@@ -47,29 +47,18 @@ class ServiceState {
   /// [tenantId] The owner of the service. Required if admin wants to
   /// [valueSpecs] Map of additional options.
   ServiceState({
-    pulumi.Output<bool>? adminStateUp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? externalV4Ip,
-    pulumi.Output<String>? externalV6Ip,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      adminStateUp = pulumi.Input.asOptionalInput<bool>(adminStateUp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      externalV4Ip = pulumi.Input.asOptionalInput<String>(externalV4Ip),
-      externalV6Ip = pulumi.Input.asOptionalInput<String>(externalV6Ip),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.adminStateUp,
+    this.description,
+    this.externalV4Ip,
+    this.externalV6Ip,
+    this.name,
+    this.region,
+    this.routerId,
+    this.status,
+    this.subnetId,
+    this.tenantId,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      adminStateUp: map['adminStateUp'] == null ? null : pulumi.Output.create<bool>(map['adminStateUp'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      externalV4Ip: map['externalV4Ip'] == null ? null : pulumi.Output.create<String>(map['externalV4Ip'] as String),
-      externalV6Ip: map['externalV6Ip'] == null ? null : pulumi.Output.create<String>(map['externalV6Ip'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      externalV4Ip: map['externalV4Ip'] == null ? null : (map['externalV4Ip'] as String).input(),
+      externalV6Ip: map['externalV6Ip'] == null ? null : (map['externalV6Ip'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

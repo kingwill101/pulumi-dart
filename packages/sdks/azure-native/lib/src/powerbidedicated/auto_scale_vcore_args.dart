@@ -32,21 +32,14 @@ class AutoScaleVCoreArgs {
   /// [tags] Resource tags.
   /// [vcoreName] The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
   AutoScaleVCoreArgs({
-    pulumi.Output<int>? capacityLimit,
-    pulumi.Output<String>? capacityObjectId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<AutoScaleVCoreSku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vcoreName,
-  }) :
-      capacityLimit = pulumi.Input.asOptionalInput<int>(capacityLimit),
-      capacityObjectId = pulumi.Input.asOptionalInput<String>(capacityObjectId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<AutoScaleVCoreSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vcoreName = pulumi.Input.asOptionalInput<String>(vcoreName);
+    this.capacityLimit,
+    this.capacityObjectId,
+    this.location,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+    this.vcoreName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class AutoScaleVCoreArgs {
 
   factory AutoScaleVCoreArgs.fromMap(Map<String, dynamic> map) {
     return AutoScaleVCoreArgs(
-      capacityLimit: map['capacityLimit'] == null ? null : pulumi.Output.create<int>(map['capacityLimit'] as int),
-      capacityObjectId: map['capacityObjectId'] == null ? null : pulumi.Output.create<String>(map['capacityObjectId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<AutoScaleVCoreSku>(AutoScaleVCoreSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vcoreName: map['vcoreName'] == null ? null : pulumi.Output.create<String>(map['vcoreName'] as String),
+      capacityLimit: map['capacityLimit'] == null ? null : (map['capacityLimit'] as int).input(),
+      capacityObjectId: map['capacityObjectId'] == null ? null : (map['capacityObjectId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (AutoScaleVCoreSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vcoreName: map['vcoreName'] == null ? null : (map['vcoreName'] as String).input(),
     );
   }
 }

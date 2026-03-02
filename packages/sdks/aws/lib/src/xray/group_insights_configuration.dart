@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupInsightsConfiguration {
   /// Specifies whether insights are enabled.
-  final bool insightsEnabled;
+  final pulumi.Input<bool> insightsEnabled;
   /// Specifies whether insight notifications are enabled.
-  final bool? notificationsEnabled;
+  final pulumi.Input<bool>? notificationsEnabled;
 
   /// Creates a new [GroupInsightsConfiguration].
   /// [insightsEnabled] Specifies whether insights are enabled.
@@ -24,8 +25,8 @@ class GroupInsightsConfiguration {
 
   factory GroupInsightsConfiguration.fromMap(Map<String, dynamic> map) {
     return GroupInsightsConfiguration(
-      insightsEnabled: map['insightsEnabled'] as bool,
-      notificationsEnabled: map['notificationsEnabled'] == null ? null : map['notificationsEnabled'] as bool,
+      insightsEnabled: (map['insightsEnabled'] as bool).input(),
+      notificationsEnabled: map['notificationsEnabled'] == null ? null : (map['notificationsEnabled'] as bool).input(),
     );
   }
 }

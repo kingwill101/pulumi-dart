@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_address_range_response.dart';
 
 /// Network adapter configuration.
 class NetworkAdapterResponse {
   /// Adapter Name.
-  final String? adapterName;
+  final pulumi.Input<String>? adapterName;
   /// Array of DNS addresses.
-  final List<String>? dnsAddressArray;
+  final pulumi.Input<List<String>>? dnsAddressArray;
   /// Gateway id.
-  final String? gateway;
+  final pulumi.Input<String>? gateway;
   /// IP address.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// IP address range.
-  final IpAddressRangeResponse? ipAddressRange;
+  final pulumi.Input<IpAddressRangeResponse>? ipAddressRange;
   /// Type of IP assignment.
-  final String ipAssignmentType;
+  final pulumi.Input<String> ipAssignmentType;
   /// MAC address.
-  final String? macAddress;
+  final pulumi.Input<String>? macAddress;
   /// Subnet mask.
-  final String? subnetMask;
+  final pulumi.Input<String>? subnetMask;
   /// VLAN ID for the network setup.
-  final String? vlanId;
+  final pulumi.Input<String>? vlanId;
 
   /// Creates a new [NetworkAdapterResponse].
   /// [adapterName] Adapter Name.
@@ -51,7 +52,7 @@ class NetworkAdapterResponse {
       'dnsAddressArray': ?dnsAddressArray,
       'gateway': ?gateway,
       'ipAddress': ?ipAddress,
-      'ipAddressRange': ?ipAddressRange == null ? null : ipAddressRange!.toMap(),
+      'ipAddressRange': ?pulumi.Input.mapOptionalInputValue<IpAddressRangeResponse, Map<String, dynamic>>(ipAddressRange, (value) => value.toMap()),
       'ipAssignmentType': ipAssignmentType,
       'macAddress': ?macAddress,
       'subnetMask': ?subnetMask,
@@ -61,15 +62,15 @@ class NetworkAdapterResponse {
 
   factory NetworkAdapterResponse.fromMap(Map<String, dynamic> map) {
     return NetworkAdapterResponse(
-      adapterName: map['adapterName'] == null ? null : map['adapterName'] as String,
-      dnsAddressArray: map['dnsAddressArray'] == null ? null : (map['dnsAddressArray'] as List).cast<String>(),
-      gateway: map['gateway'] == null ? null : map['gateway'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      ipAddressRange: map['ipAddressRange'] == null ? null : IpAddressRangeResponse.fromMap((map['ipAddressRange'] as Map).cast<String, dynamic>()),
-      ipAssignmentType: map['ipAssignmentType'] as String,
-      macAddress: map['macAddress'] == null ? null : map['macAddress'] as String,
-      subnetMask: map['subnetMask'] == null ? null : map['subnetMask'] as String,
-      vlanId: map['vlanId'] == null ? null : map['vlanId'] as String,
+      adapterName: map['adapterName'] == null ? null : (map['adapterName'] as String).input(),
+      dnsAddressArray: map['dnsAddressArray'] == null ? null : ((map['dnsAddressArray'] as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddressRange: map['ipAddressRange'] == null ? null : (IpAddressRangeResponse.fromMap((map['ipAddressRange'] as Map).cast<String, dynamic>())).input(),
+      ipAssignmentType: (map['ipAssignmentType'] as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as String).input(),
     );
   }
 }

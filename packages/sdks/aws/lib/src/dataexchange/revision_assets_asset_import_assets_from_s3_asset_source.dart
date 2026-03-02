@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RevisionAssetsAssetImportAssetsFromS3AssetSource {
   /// The name of the S3 bucket.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The key of the object in the S3 bucket.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [RevisionAssetsAssetImportAssetsFromS3AssetSource].
   /// [bucket] The name of the S3 bucket.
@@ -24,8 +25,8 @@ class RevisionAssetsAssetImportAssetsFromS3AssetSource {
 
   factory RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetImportAssetsFromS3AssetSource(
-      bucket: map['bucket'] as String,
-      key: map['key'] as String,
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

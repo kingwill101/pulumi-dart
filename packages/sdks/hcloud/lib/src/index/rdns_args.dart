@@ -28,19 +28,13 @@ class RdnsArgs {
   /// [primaryIpId] The Primary IP the `ip_address` belongs to.
   /// [serverId] The server the `ip_address` belongs to.
   RdnsArgs({
-    required pulumi.Output<String> dnsPtr,
-    pulumi.Output<int>? floatingIpId,
-    required pulumi.Output<String> ipAddress,
-    pulumi.Output<int>? loadBalancerId,
-    pulumi.Output<int>? primaryIpId,
-    pulumi.Output<int>? serverId,
-  }) :
-      dnsPtr = pulumi.Input.asInput<String>(dnsPtr),
-      floatingIpId = pulumi.Input.asOptionalInput<int>(floatingIpId),
-      ipAddress = pulumi.Input.asInput<String>(ipAddress),
-      loadBalancerId = pulumi.Input.asOptionalInput<int>(loadBalancerId),
-      primaryIpId = pulumi.Input.asOptionalInput<int>(primaryIpId),
-      serverId = pulumi.Input.asOptionalInput<int>(serverId);
+    required this.dnsPtr,
+    this.floatingIpId,
+    required this.ipAddress,
+    this.loadBalancerId,
+    this.primaryIpId,
+    this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RdnsArgs {
 
   factory RdnsArgs.fromMap(Map<String, dynamic> map) {
     return RdnsArgs(
-      dnsPtr: pulumi.Output.create<String>(map['dnsPtr'] as String),
-      floatingIpId: map['floatingIpId'] == null ? null : pulumi.Output.create<int>(map['floatingIpId'] as int),
-      ipAddress: pulumi.Output.create<String>(map['ipAddress'] as String),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<int>(map['loadBalancerId'] as int),
-      primaryIpId: map['primaryIpId'] == null ? null : pulumi.Output.create<int>(map['primaryIpId'] as int),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<int>(map['serverId'] as int),
+      dnsPtr: (map['dnsPtr'] as String).input(),
+      floatingIpId: map['floatingIpId'] == null ? null : (map['floatingIpId'] as int).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as int).input(),
+      primaryIpId: map['primaryIpId'] == null ? null : (map['primaryIpId'] as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
     );
   }
 }

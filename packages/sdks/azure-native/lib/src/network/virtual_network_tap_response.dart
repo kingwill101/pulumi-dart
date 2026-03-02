@@ -8,29 +8,29 @@ import 'network_interface_tap_configuration_response.dart';
 /// Virtual Network Tap resource.
 class VirtualNetworkTapResponse {
   /// The reference to the private IP address on the internal Load Balancer that will receive the tap.
-  final FrontendIPConfigurationResponse? destinationLoadBalancerFrontEndIPConfiguration;
+  final pulumi.Input<FrontendIPConfigurationResponse>? destinationLoadBalancerFrontEndIPConfiguration;
   /// The reference to the private IP Address of the collector nic that will receive the tap.
-  final NetworkInterfaceIPConfigurationResponse? destinationNetworkInterfaceIPConfiguration;
+  final pulumi.Input<NetworkInterfaceIPConfigurationResponse>? destinationNetworkInterfaceIPConfiguration;
   /// The VXLAN destination port that will receive the tapped traffic.
-  final int? destinationPort;
+  final pulumi.Input<int>? destinationPort;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
-  final List<NetworkInterfaceTapConfigurationResponse> networkInterfaceTapConfigurations;
+  final pulumi.Input<List<NetworkInterfaceTapConfigurationResponse>> networkInterfaceTapConfigurations;
   /// The provisioning state of the virtual network tap resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The resource GUID property of the virtual network tap resource.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [VirtualNetworkTapResponse].
   /// [destinationLoadBalancerFrontEndIPConfiguration] The reference to the private IP address on the internal Load Balancer that will receive the tap.
@@ -62,14 +62,14 @@ class VirtualNetworkTapResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinationLoadBalancerFrontEndIPConfiguration': ?destinationLoadBalancerFrontEndIPConfiguration == null ? null : destinationLoadBalancerFrontEndIPConfiguration!.toMap(),
-      'destinationNetworkInterfaceIPConfiguration': ?destinationNetworkInterfaceIPConfiguration == null ? null : destinationNetworkInterfaceIPConfiguration!.toMap(),
+      'destinationLoadBalancerFrontEndIPConfiguration': ?pulumi.Input.mapOptionalInputValue<FrontendIPConfigurationResponse, Map<String, dynamic>>(destinationLoadBalancerFrontEndIPConfiguration, (value) => value.toMap()),
+      'destinationNetworkInterfaceIPConfiguration': ?pulumi.Input.mapOptionalInputValue<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(destinationNetworkInterfaceIPConfiguration, (value) => value.toMap()),
       'destinationPort': ?destinationPort,
       'etag': etag,
       'id': ?id,
       'location': ?location,
       'name': name,
-      'networkInterfaceTapConfigurations': pulumi.Input.encodeList<NetworkInterfaceTapConfigurationResponse, Map<String, dynamic>>(networkInterfaceTapConfigurations, (value) => value.toMap()),
+      'networkInterfaceTapConfigurations': pulumi.Input.mapInputValue<List<NetworkInterfaceTapConfigurationResponse>, List<Map<String, dynamic>>>(networkInterfaceTapConfigurations, (value) => pulumi.Input.encodeList<NetworkInterfaceTapConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
       'tags': ?tags,
@@ -79,18 +79,18 @@ class VirtualNetworkTapResponse {
 
   factory VirtualNetworkTapResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkTapResponse(
-      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : FrontendIPConfigurationResponse.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration'] as Map).cast<String, dynamic>()),
-      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : NetworkInterfaceIPConfigurationResponse.fromMap((map['destinationNetworkInterfaceIPConfiguration'] as Map).cast<String, dynamic>()),
-      destinationPort: map['destinationPort'] == null ? null : map['destinationPort'] as int,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      networkInterfaceTapConfigurations: pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(map['networkInterfaceTapConfigurations'], (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : (FrontendIPConfigurationResponse.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : (NetworkInterfaceIPConfigurationResponse.fromMap((map['destinationNetworkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      networkInterfaceTapConfigurations: (pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(map['networkInterfaceTapConfigurations'], (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

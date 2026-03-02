@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Retry settings for a batch inference operation.
 class BatchRetrySettingsResponse {
   /// Maximum retry count for a mini-batch
-  final int? maxRetries;
+  final pulumi.Input<int>? maxRetries;
   /// Invocation timeout for a mini-batch, in ISO 8601 format.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [BatchRetrySettingsResponse].
   /// [maxRetries] Maximum retry count for a mini-batch
@@ -25,8 +26,8 @@ class BatchRetrySettingsResponse {
 
   factory BatchRetrySettingsResponse.fromMap(Map<String, dynamic> map) {
     return BatchRetrySettingsResponse(
-      maxRetries: map['maxRetries'] == null ? null : map['maxRetries'] as int,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

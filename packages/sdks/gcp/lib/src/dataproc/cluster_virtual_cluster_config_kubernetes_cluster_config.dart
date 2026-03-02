@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_config.dart';
 import 'cluster_virtual_cluster_config_kubernetes_cluster_config_kubernetes_software_config.dart';
 
 class ClusterVirtualClusterConfigKubernetesClusterConfig {
   /// The configuration for running the Dataproc cluster on GKE.
-  final ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig gkeClusterConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig> gkeClusterConfig;
   /// A namespace within the Kubernetes cluster to deploy into.
   /// If this namespace does not exist, it is created.
   /// If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
   /// If not specified, the name of the Dataproc Cluster is used.
-  final String? kubernetesNamespace;
+  final pulumi.Input<String>? kubernetesNamespace;
   /// The software configuration for this Dataproc cluster running on Kubernetes.
-  final ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig kubernetesSoftwareConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig> kubernetesSoftwareConfig;
 
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfig].
   /// [gkeClusterConfig] The configuration for running the Dataproc cluster on GKE.
@@ -26,17 +27,17 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gkeClusterConfig': gkeClusterConfig.toMap(),
+      'gkeClusterConfig': pulumi.Input.mapInputValue<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig, Map<String, dynamic>>(gkeClusterConfig, (value) => value.toMap()),
       'kubernetesNamespace': ?kubernetesNamespace,
-      'kubernetesSoftwareConfig': kubernetesSoftwareConfig.toMap(),
+      'kubernetesSoftwareConfig': pulumi.Input.mapInputValue<ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig, Map<String, dynamic>>(kubernetesSoftwareConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterVirtualClusterConfigKubernetesClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfig(
-      gkeClusterConfig: ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>()),
-      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : map['kubernetesNamespace'] as String,
-      kubernetesSoftwareConfig: ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig.fromMap((map['kubernetesSoftwareConfig'] as Map).cast<String, dynamic>()),
+      gkeClusterConfig: (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : (map['kubernetesNamespace'] as String).input(),
+      kubernetesSoftwareConfig: (ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig.fromMap((map['kubernetesSoftwareConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

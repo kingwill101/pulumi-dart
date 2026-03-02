@@ -39,27 +39,17 @@ class TargetPoolArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [sessionAffinity] Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
   TargetPoolArgs({
-    pulumi.Output<String>? backupPool,
-    pulumi.Output<String>? description,
-    pulumi.Output<double>? failoverRatio,
-    pulumi.Output<List<String>>? healthChecks,
-    pulumi.Output<List<String>>? instances,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<TargetPoolSessionAffinity>? sessionAffinity,
-  }) :
-      backupPool = pulumi.Input.asOptionalInput<String>(backupPool),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      failoverRatio = pulumi.Input.asOptionalInput<double>(failoverRatio),
-      healthChecks = pulumi.Input.asOptionalInput<List<String>>(healthChecks),
-      instances = pulumi.Input.asOptionalInput<List<String>>(instances),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sessionAffinity = pulumi.Input.asOptionalInput<TargetPoolSessionAffinity>(sessionAffinity);
+    this.backupPool,
+    this.description,
+    this.failoverRatio,
+    this.healthChecks,
+    this.instances,
+    this.name,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.sessionAffinity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class TargetPoolArgs {
 
   factory TargetPoolArgs.fromMap(Map<String, dynamic> map) {
     return TargetPoolArgs(
-      backupPool: map['backupPool'] == null ? null : pulumi.Output.create<String>(map['backupPool'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      failoverRatio: map['failoverRatio'] == null ? null : pulumi.Output.create<double>(map['failoverRatio'] as double),
-      healthChecks: map['healthChecks'] == null ? null : pulumi.Output.create<List<String>>((map['healthChecks'] as List).cast<String>()),
-      instances: map['instances'] == null ? null : pulumi.Output.create<List<String>>((map['instances'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sessionAffinity: map['sessionAffinity'] == null ? null : pulumi.Output.create<TargetPoolSessionAffinity>(TargetPoolSessionAffinity.fromValue(map['sessionAffinity'] as String)),
+      backupPool: map['backupPool'] == null ? null : (map['backupPool'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      failoverRatio: map['failoverRatio'] == null ? null : (map['failoverRatio'] as double).input(),
+      healthChecks: map['healthChecks'] == null ? null : ((map['healthChecks'] as List).cast<String>()).input(),
+      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (TargetPoolSessionAffinity.fromValue(map['sessionAffinity'] as String)).input(),
     );
   }
 }

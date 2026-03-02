@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_role_management_policy_activation_rules_approval_stage.dart';
 
 class GroupRoleManagementPolicyActivationRules {
   /// An `approval_stage` block as defined below.
-  final GroupRoleManagementPolicyActivationRulesApprovalStage? approvalStage;
+  final pulumi.Input<GroupRoleManagementPolicyActivationRulesApprovalStage>? approvalStage;
   /// The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
-  final String? maximumDuration;
+  final pulumi.Input<String>? maximumDuration;
   /// Is approval required for activation. If `true` an `approval_stage` block must be provided.
-  final bool? requireApproval;
+  final pulumi.Input<bool>? requireApproval;
   /// Is a justification required during activation of the role.
-  final bool? requireJustification;
+  final pulumi.Input<bool>? requireJustification;
   /// Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
-  final bool? requireMultifactorAuthentication;
+  final pulumi.Input<bool>? requireMultifactorAuthentication;
   /// Is ticket information requrired during activation of the role.
-  final bool? requireTicketInfo;
+  final pulumi.Input<bool>? requireTicketInfo;
   /// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
-  final String? requiredConditionalAccessAuthenticationContext;
+  final pulumi.Input<String>? requiredConditionalAccessAuthenticationContext;
 
   /// Creates a new [GroupRoleManagementPolicyActivationRules].
   /// [approvalStage] An `approval_stage` block as defined below.
@@ -38,7 +39,7 @@ class GroupRoleManagementPolicyActivationRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'approvalStage': ?approvalStage == null ? null : approvalStage!.toMap(),
+      'approvalStage': ?pulumi.Input.mapOptionalInputValue<GroupRoleManagementPolicyActivationRulesApprovalStage, Map<String, dynamic>>(approvalStage, (value) => value.toMap()),
       'maximumDuration': ?maximumDuration,
       'requireApproval': ?requireApproval,
       'requireJustification': ?requireJustification,
@@ -50,13 +51,13 @@ class GroupRoleManagementPolicyActivationRules {
 
   factory GroupRoleManagementPolicyActivationRules.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyActivationRules(
-      approvalStage: map['approvalStage'] == null ? null : GroupRoleManagementPolicyActivationRulesApprovalStage.fromMap((map['approvalStage'] as Map).cast<String, dynamic>()),
-      maximumDuration: map['maximumDuration'] == null ? null : map['maximumDuration'] as String,
-      requireApproval: map['requireApproval'] == null ? null : map['requireApproval'] as bool,
-      requireJustification: map['requireJustification'] == null ? null : map['requireJustification'] as bool,
-      requireMultifactorAuthentication: map['requireMultifactorAuthentication'] == null ? null : map['requireMultifactorAuthentication'] as bool,
-      requireTicketInfo: map['requireTicketInfo'] == null ? null : map['requireTicketInfo'] as bool,
-      requiredConditionalAccessAuthenticationContext: map['requiredConditionalAccessAuthenticationContext'] == null ? null : map['requiredConditionalAccessAuthenticationContext'] as String,
+      approvalStage: map['approvalStage'] == null ? null : (GroupRoleManagementPolicyActivationRulesApprovalStage.fromMap((map['approvalStage'] as Map).cast<String, dynamic>())).input(),
+      maximumDuration: map['maximumDuration'] == null ? null : (map['maximumDuration'] as String).input(),
+      requireApproval: map['requireApproval'] == null ? null : (map['requireApproval'] as bool).input(),
+      requireJustification: map['requireJustification'] == null ? null : (map['requireJustification'] as bool).input(),
+      requireMultifactorAuthentication: map['requireMultifactorAuthentication'] == null ? null : (map['requireMultifactorAuthentication'] as bool).input(),
+      requireTicketInfo: map['requireTicketInfo'] == null ? null : (map['requireTicketInfo'] as bool).input(),
+      requiredConditionalAccessAuthenticationContext: map['requiredConditionalAccessAuthenticationContext'] == null ? null : (map['requiredConditionalAccessAuthenticationContext'] as String).input(),
     );
   }
 }

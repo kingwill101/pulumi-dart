@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines how to identify a parameter for a specific purpose e.g. expires
 class UrlSigningParamIdentifierResponse {
   /// Indicates the purpose of the parameter
-  final String paramIndicator;
+  final pulumi.Input<String> paramIndicator;
   /// Parameter name
-  final String paramName;
+  final pulumi.Input<String> paramName;
 
   /// Creates a new [UrlSigningParamIdentifierResponse].
   /// [paramIndicator] Indicates the purpose of the parameter
@@ -25,8 +26,8 @@ class UrlSigningParamIdentifierResponse {
 
   factory UrlSigningParamIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return UrlSigningParamIdentifierResponse(
-      paramIndicator: map['paramIndicator'] as String,
-      paramName: map['paramName'] as String,
+      paramIndicator: (map['paramIndicator'] as String).input(),
+      paramName: (map['paramName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WatchlistEntityCount {
   /// (Output)
   /// Output only. Count of asset type entities in the watchlist.
-  final int? asset;
+  final pulumi.Input<int>? asset;
   /// (Output)
   /// Output only. Count of user type entities in the watchlist.
-  final int? user;
+  final pulumi.Input<int>? user;
 
   /// Creates a new [WatchlistEntityCount].
   /// [asset] (Output)
@@ -26,8 +27,8 @@ class WatchlistEntityCount {
 
   factory WatchlistEntityCount.fromMap(Map<String, dynamic> map) {
     return WatchlistEntityCount(
-      asset: map['asset'] == null ? null : map['asset'] as int,
-      user: map['user'] == null ? null : map['user'] as int,
+      asset: map['asset'] == null ? null : (map['asset'] as int).input(),
+      user: map['user'] == null ? null : (map['user'] as int).input(),
     );
   }
 }

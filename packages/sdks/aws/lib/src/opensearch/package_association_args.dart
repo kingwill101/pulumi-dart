@@ -19,13 +19,10 @@ class PackageAssociationArgs {
   /// [packageId] Internal ID of the package to associate with a domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PackageAssociationArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> packageId,
-    pulumi.Output<String>? region,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      packageId = pulumi.Input.asInput<String>(packageId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.domainName,
+    required this.packageId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PackageAssociationArgs {
 
   factory PackageAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PackageAssociationArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      packageId: pulumi.Output.create<String>(map['packageId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      domainName: (map['domainName'] as String).input(),
+      packageId: (map['packageId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

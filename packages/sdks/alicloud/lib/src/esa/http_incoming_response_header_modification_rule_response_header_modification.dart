@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HttpIncomingResponseHeaderModificationRuleResponseHeaderModification {
   /// The response header name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Operation method. Possible values:
-  final String operation;
+  final pulumi.Input<String> operation;
   /// The value type. Value range:
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The response header value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [HttpIncomingResponseHeaderModificationRuleResponseHeaderModification].
   /// [name] The response header name.
@@ -34,10 +35,10 @@ class HttpIncomingResponseHeaderModificationRuleResponseHeaderModification {
 
   factory HttpIncomingResponseHeaderModificationRuleResponseHeaderModification.fromMap(Map<String, dynamic> map) {
     return HttpIncomingResponseHeaderModificationRuleResponseHeaderModification(
-      name: map['name'] as String,
-      operation: map['operation'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: (map['name'] as String).input(),
+      operation: (map['operation'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

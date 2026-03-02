@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_created_storage_account.dart';
 
 /// Details of storage account to be used for the Registry
 class StorageAccountDetails {
   /// Details of system created storage account to be used for the registry
-  final SystemCreatedStorageAccount? systemCreatedStorageAccount;
+  final pulumi.Input<SystemCreatedStorageAccount>? systemCreatedStorageAccount;
 
   /// Creates a new [StorageAccountDetails].
   /// [systemCreatedStorageAccount] Details of system created storage account to be used for the registry
@@ -15,13 +16,13 @@ class StorageAccountDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'systemCreatedStorageAccount': ?systemCreatedStorageAccount == null ? null : systemCreatedStorageAccount!.toMap(),
+      'systemCreatedStorageAccount': ?pulumi.Input.mapOptionalInputValue<SystemCreatedStorageAccount, Map<String, dynamic>>(systemCreatedStorageAccount, (value) => value.toMap()),
     };
   }
 
   factory StorageAccountDetails.fromMap(Map<String, dynamic> map) {
     return StorageAccountDetails(
-      systemCreatedStorageAccount: map['systemCreatedStorageAccount'] == null ? null : SystemCreatedStorageAccount.fromMap((map['systemCreatedStorageAccount'] as Map).cast<String, dynamic>()),
+      systemCreatedStorageAccount: map['systemCreatedStorageAccount'] == null ? null : (SystemCreatedStorageAccount.fromMap((map['systemCreatedStorageAccount'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -48,27 +48,17 @@ class ServiceArgs {
   /// [sourceConfiguration] The source to deploy to the App Runner service. Can be a code or an image repository. See Source Configuration below for more details.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ServiceArgs({
-    pulumi.Output<String>? autoScalingConfigurationArn,
-    pulumi.Output<ServiceEncryptionConfiguration>? encryptionConfiguration,
-    pulumi.Output<ServiceHealthCheckConfiguration>? healthCheckConfiguration,
-    pulumi.Output<ServiceInstanceConfiguration>? instanceConfiguration,
-    pulumi.Output<ServiceNetworkConfiguration>? networkConfiguration,
-    pulumi.Output<ServiceObservabilityConfiguration>? observabilityConfiguration,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<ServiceSourceConfiguration> sourceConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoScalingConfigurationArn = pulumi.Input.asOptionalInput<String>(autoScalingConfigurationArn),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<ServiceEncryptionConfiguration>(encryptionConfiguration),
-      healthCheckConfiguration = pulumi.Input.asOptionalInput<ServiceHealthCheckConfiguration>(healthCheckConfiguration),
-      instanceConfiguration = pulumi.Input.asOptionalInput<ServiceInstanceConfiguration>(instanceConfiguration),
-      networkConfiguration = pulumi.Input.asOptionalInput<ServiceNetworkConfiguration>(networkConfiguration),
-      observabilityConfiguration = pulumi.Input.asOptionalInput<ServiceObservabilityConfiguration>(observabilityConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      sourceConfiguration = pulumi.Input.asInput<ServiceSourceConfiguration>(sourceConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoScalingConfigurationArn,
+    this.encryptionConfiguration,
+    this.healthCheckConfiguration,
+    this.instanceConfiguration,
+    this.networkConfiguration,
+    this.observabilityConfiguration,
+    this.region,
+    required this.serviceName,
+    required this.sourceConfiguration,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,16 +77,16 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      autoScalingConfigurationArn: map['autoScalingConfigurationArn'] == null ? null : pulumi.Output.create<String>(map['autoScalingConfigurationArn'] as String),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<ServiceEncryptionConfiguration>(ServiceEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      healthCheckConfiguration: map['healthCheckConfiguration'] == null ? null : pulumi.Output.create<ServiceHealthCheckConfiguration>(ServiceHealthCheckConfiguration.fromMap((map['healthCheckConfiguration'] as Map).cast<String, dynamic>())),
-      instanceConfiguration: map['instanceConfiguration'] == null ? null : pulumi.Output.create<ServiceInstanceConfiguration>(ServiceInstanceConfiguration.fromMap((map['instanceConfiguration'] as Map).cast<String, dynamic>())),
-      networkConfiguration: map['networkConfiguration'] == null ? null : pulumi.Output.create<ServiceNetworkConfiguration>(ServiceNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())),
-      observabilityConfiguration: map['observabilityConfiguration'] == null ? null : pulumi.Output.create<ServiceObservabilityConfiguration>(ServiceObservabilityConfiguration.fromMap((map['observabilityConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      sourceConfiguration: pulumi.Output.create<ServiceSourceConfiguration>(ServiceSourceConfiguration.fromMap((map['sourceConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoScalingConfigurationArn: map['autoScalingConfigurationArn'] == null ? null : (map['autoScalingConfigurationArn'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (ServiceEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      healthCheckConfiguration: map['healthCheckConfiguration'] == null ? null : (ServiceHealthCheckConfiguration.fromMap((map['healthCheckConfiguration'] as Map).cast<String, dynamic>())).input(),
+      instanceConfiguration: map['instanceConfiguration'] == null ? null : (ServiceInstanceConfiguration.fromMap((map['instanceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (ServiceNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      observabilityConfiguration: map['observabilityConfiguration'] == null ? null : (ServiceObservabilityConfiguration.fromMap((map['observabilityConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      sourceConfiguration: (ServiceSourceConfiguration.fromMap((map['sourceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

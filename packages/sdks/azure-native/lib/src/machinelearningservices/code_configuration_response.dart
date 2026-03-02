@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for a scoring code asset.
 class CodeConfigurationResponse {
   /// ARM resource ID of the code asset.
-  final String? codeId;
+  final pulumi.Input<String>? codeId;
   /// [Required] The script to execute on startup. eg. "score.py"
-  final String scoringScript;
+  final pulumi.Input<String> scoringScript;
 
   /// Creates a new [CodeConfigurationResponse].
   /// [codeId] ARM resource ID of the code asset.
@@ -25,8 +26,8 @@ class CodeConfigurationResponse {
 
   factory CodeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CodeConfigurationResponse(
-      codeId: map['codeId'] == null ? null : map['codeId'] as String,
-      scoringScript: map['scoringScript'] as String,
+      codeId: map['codeId'] == null ? null : (map['codeId'] as String).input(),
+      scoringScript: (map['scoringScript'] as String).input(),
     );
   }
 }

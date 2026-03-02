@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Digest information.
 class DigestContaineranalysisV1alpha1 {
   /// `SHA1`, `SHA512` etc.
-  final String? algo;
+  final pulumi.Input<String>? algo;
   /// Value of the digest.
-  final String? digestBytes;
+  final pulumi.Input<String>? digestBytes;
 
   /// Creates a new [DigestContaineranalysisV1alpha1].
   /// [algo] `SHA1`, `SHA512` etc.
@@ -25,8 +26,8 @@ class DigestContaineranalysisV1alpha1 {
 
   factory DigestContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DigestContaineranalysisV1alpha1(
-      algo: map['algo'] == null ? null : map['algo'] as String,
-      digestBytes: map['digestBytes'] == null ? null : map['digestBytes'] as String,
+      algo: map['algo'] == null ? null : (map['algo'] as String).input(),
+      digestBytes: map['digestBytes'] == null ? null : (map['digestBytes'] as String).input(),
     );
   }
 }

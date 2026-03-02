@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageTimeouts {
   /// Used when creating the instance image (until the instance is available)
-  final String? create;
+  final pulumi.Input<String>? create;
 
   /// Creates a new [ImageTimeouts].
   /// [create] Used when creating the instance image (until the instance is available)
@@ -19,7 +20,7 @@ class ImageTimeouts {
 
   factory ImageTimeouts.fromMap(Map<String, dynamic> map) {
     return ImageTimeouts(
-      create: map['create'] == null ? null : map['create'] as String,
+      create: map['create'] == null ? null : (map['create'] as String).input(),
     );
   }
 }

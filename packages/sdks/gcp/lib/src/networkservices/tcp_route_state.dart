@@ -53,31 +53,19 @@ class TcpRouteState {
   /// [selfLink] Server-defined URL of this resource.
   /// [updateTime] Time the TcpRoute was updated in UTC.
   TcpRouteState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<List<String>>? gateways,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<List<String>>? meshes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<TcpRouteRule>>? rules,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      gateways = pulumi.Input.asOptionalInput<List<String>>(gateways),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      meshes = pulumi.Input.asOptionalInput<List<String>>(meshes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      rules = pulumi.Input.asOptionalInput<List<TcpRouteRule>>(rules),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.gateways,
+    this.labels,
+    this.meshes,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.rules,
+    this.selfLink,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class TcpRouteState {
 
   factory TcpRouteState.fromMap(Map<String, dynamic> map) {
     return TcpRouteState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      gateways: map['gateways'] == null ? null : pulumi.Output.create<List<String>>((map['gateways'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      meshes: map['meshes'] == null ? null : pulumi.Output.create<List<String>>((map['meshes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<TcpRouteRule>>(pulumi.Input.decodeList<TcpRouteRule>(map['rules'], (value) => TcpRouteRule.fromMap((value as Map).cast<String, dynamic>()))),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TcpRouteRule>(map['rules'], (value) => TcpRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

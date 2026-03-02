@@ -59,33 +59,20 @@ class ElasticPoolArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundant] Whether or not this elastic pool is zone redundant. `tier` needs to be `Premium` for `DTU` based or `BusinessCritical` for `vCore` based `sku`.
   ElasticPoolArgs({
-    pulumi.Output<String>? enclaveType,
-    pulumi.Output<String>? licenseType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? maintenanceConfigurationName,
-    pulumi.Output<int>? maxSizeBytes,
-    pulumi.Output<double>? maxSizeGb,
-    pulumi.Output<String>? name,
-    required pulumi.Output<ElasticPoolPerDatabaseSettings> perDatabaseSettings,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<ElasticPoolSku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? zoneRedundant,
-  }) :
-      enclaveType = pulumi.Input.asOptionalInput<String>(enclaveType),
-      licenseType = pulumi.Input.asOptionalInput<String>(licenseType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceConfigurationName = pulumi.Input.asOptionalInput<String>(maintenanceConfigurationName),
-      maxSizeBytes = pulumi.Input.asOptionalInput<int>(maxSizeBytes),
-      maxSizeGb = pulumi.Input.asOptionalInput<double>(maxSizeGb),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      perDatabaseSettings = pulumi.Input.asInput<ElasticPoolPerDatabaseSettings>(perDatabaseSettings),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      sku = pulumi.Input.asInput<ElasticPoolSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundant = pulumi.Input.asOptionalInput<bool>(zoneRedundant);
+    this.enclaveType,
+    this.licenseType,
+    this.location,
+    this.maintenanceConfigurationName,
+    this.maxSizeBytes,
+    this.maxSizeGb,
+    this.name,
+    required this.perDatabaseSettings,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.sku,
+    this.tags,
+    this.zoneRedundant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,19 +94,19 @@ class ElasticPoolArgs {
 
   factory ElasticPoolArgs.fromMap(Map<String, dynamic> map) {
     return ElasticPoolArgs(
-      enclaveType: map['enclaveType'] == null ? null : pulumi.Output.create<String>(map['enclaveType'] as String),
-      licenseType: map['licenseType'] == null ? null : pulumi.Output.create<String>(map['licenseType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceConfigurationName: map['maintenanceConfigurationName'] == null ? null : pulumi.Output.create<String>(map['maintenanceConfigurationName'] as String),
-      maxSizeBytes: map['maxSizeBytes'] == null ? null : pulumi.Output.create<int>(map['maxSizeBytes'] as int),
-      maxSizeGb: map['maxSizeGb'] == null ? null : pulumi.Output.create<double>(map['maxSizeGb'] as double),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      perDatabaseSettings: pulumi.Output.create<ElasticPoolPerDatabaseSettings>(ElasticPoolPerDatabaseSettings.fromMap((map['perDatabaseSettings'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      sku: pulumi.Output.create<ElasticPoolSku>(ElasticPoolSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundant: map['zoneRedundant'] == null ? null : pulumi.Output.create<bool>(map['zoneRedundant'] as bool),
+      enclaveType: map['enclaveType'] == null ? null : (map['enclaveType'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceConfigurationName: map['maintenanceConfigurationName'] == null ? null : (map['maintenanceConfigurationName'] as String).input(),
+      maxSizeBytes: map['maxSizeBytes'] == null ? null : (map['maxSizeBytes'] as int).input(),
+      maxSizeGb: map['maxSizeGb'] == null ? null : (map['maxSizeGb'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      perDatabaseSettings: (ElasticPoolPerDatabaseSettings.fromMap((map['perDatabaseSettings'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      sku: (ElasticPoolSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
     );
   }
 }

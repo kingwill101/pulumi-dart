@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationInclude {
   /// List of S3 bucket ARNs.
-  final List<String>? buckets;
+  final pulumi.Input<List<String>>? buckets;
   /// List of AWS Regions.
-  final List<String>? regions;
+  final pulumi.Input<List<String>>? regions;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationInclude].
   /// [buckets] List of S3 bucket ARNs.
@@ -24,8 +25,8 @@ class StorageLensConfigurationStorageLensConfigurationInclude {
 
   factory StorageLensConfigurationStorageLensConfigurationInclude.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationInclude(
-      buckets: map['buckets'] == null ? null : (map['buckets'] as List).cast<String>(),
-      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
+      buckets: map['buckets'] == null ? null : ((map['buckets'] as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouterStatusBestRoutesForRouterParam {
   /// Resource manager tags to be bound to the route. Tag keys and values have the
@@ -8,7 +9,7 @@ class RouterStatusBestRoutesForRouterParam {
   /// The field is immutable and causes resource replacement when mutated. This field is only
   /// set at create time and modifying this field after creation will trigger recreation.
   /// To apply tags to an existing resource, see the gcp.tags.TagBinding resource.
-  final Map<String, String> resourceManagerTags;
+  final pulumi.Input<Map<String, String>> resourceManagerTags;
 
   /// Creates a new [RouterStatusBestRoutesForRouterParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the route. Tag keys and values have the
@@ -24,7 +25,7 @@ class RouterStatusBestRoutesForRouterParam {
 
   factory RouterStatusBestRoutesForRouterParam.fromMap(Map<String, dynamic> map) {
     return RouterStatusBestRoutesForRouterParam(
-      resourceManagerTags: (map['resourceManagerTags'] as Map).cast<String, String>(),
+      resourceManagerTags: ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
     );
   }
 }

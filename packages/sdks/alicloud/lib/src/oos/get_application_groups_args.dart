@@ -25,17 +25,12 @@ class GetApplicationGroupsArgs {
   /// [nameRegex] A regex string to filter results by Application Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetApplicationGroupsArgs({
-    required pulumi.Output<String> applicationName,
-    pulumi.Output<String>? deployRegionId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      deployRegionId = pulumi.Input.asOptionalInput<String>(deployRegionId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.applicationName,
+    this.deployRegionId,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetApplicationGroupsArgs {
 
   factory GetApplicationGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupsArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      deployRegionId: map['deployRegionId'] == null ? null : pulumi.Output.create<String>(map['deployRegionId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      applicationName: (map['applicationName'] as String).input(),
+      deployRegionId: map['deployRegionId'] == null ? null : (map['deployRegionId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

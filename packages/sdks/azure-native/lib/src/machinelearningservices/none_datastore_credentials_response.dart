@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Empty/none datastore credentials.
 class NoneDatastoreCredentialsResponse {
   /// Enum to determine the datastore credentials type.
   /// Expected value is 'None'.
-  final String credentialsType;
+  final pulumi.Input<String> credentialsType;
 
   /// Creates a new [NoneDatastoreCredentialsResponse].
   /// [credentialsType] Enum to determine the datastore credentials type.
@@ -21,7 +22,7 @@ class NoneDatastoreCredentialsResponse {
 
   factory NoneDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return NoneDatastoreCredentialsResponse(
-      credentialsType: map['credentialsType'] as String,
+      credentialsType: (map['credentialsType'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Import SQL Collector properties class.
 class ImportSqlCollectorPropertiesResponse {
   /// When was import SQL collector first created.
-  final String createdTimestamp;
+  final pulumi.Input<String> createdTimestamp;
   /// The sql db extended details.
-  final String? discoverySiteId;
+  final pulumi.Input<String>? discoverySiteId;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// When was import SQL collector last updated.
-  final String updatedTimestamp;
+  final pulumi.Input<String> updatedTimestamp;
 
   /// Creates a new [ImportSqlCollectorPropertiesResponse].
   /// [createdTimestamp] When was import SQL collector first created.
@@ -35,10 +36,10 @@ class ImportSqlCollectorPropertiesResponse {
 
   factory ImportSqlCollectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportSqlCollectorPropertiesResponse(
-      createdTimestamp: map['createdTimestamp'] as String,
-      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      updatedTimestamp: map['updatedTimestamp'] as String,
+      createdTimestamp: (map['createdTimestamp'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );
   }
 }

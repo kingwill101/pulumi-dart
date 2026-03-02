@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Docker container configuration
 class Docker {
   /// Indicate whether container shall run in privileged or non-privileged mode.
-  final bool? privileged;
+  final pulumi.Input<bool>? privileged;
 
   /// Creates a new [Docker].
   /// [privileged] Indicate whether container shall run in privileged or non-privileged mode.
@@ -20,7 +21,7 @@ class Docker {
 
   factory Docker.fromMap(Map<String, dynamic> map) {
     return Docker(
-      privileged: map['privileged'] == null ? null : map['privileged'] as bool,
+      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
     );
   }
 }

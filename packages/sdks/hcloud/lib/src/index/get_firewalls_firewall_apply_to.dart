@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallsFirewallApplyTo {
-  final String labelSelector;
-  final int server;
+  final pulumi.Input<String> labelSelector;
+  final pulumi.Input<int> server;
 
   /// Creates a new [GetFirewallsFirewallApplyTo].
   /// [labelSelector] Required.
@@ -22,8 +23,8 @@ class GetFirewallsFirewallApplyTo {
 
   factory GetFirewallsFirewallApplyTo.fromMap(Map<String, dynamic> map) {
     return GetFirewallsFirewallApplyTo(
-      labelSelector: map['labelSelector'] as String,
-      server: map['server'] as int,
+      labelSelector: (map['labelSelector'] as String).input(),
+      server: (map['server'] as int).input(),
     );
   }
 }

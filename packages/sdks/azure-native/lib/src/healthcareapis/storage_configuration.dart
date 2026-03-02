@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration of connected storage
 class StorageConfiguration {
   /// The filesystem name of connected storage account.
-  final String? fileSystemName;
+  final pulumi.Input<String>? fileSystemName;
   /// The resource id of connected storage account.
-  final String? storageResourceId;
+  final pulumi.Input<String>? storageResourceId;
 
   /// Creates a new [StorageConfiguration].
   /// [fileSystemName] The filesystem name of connected storage account.
@@ -25,8 +26,8 @@ class StorageConfiguration {
 
   factory StorageConfiguration.fromMap(Map<String, dynamic> map) {
     return StorageConfiguration(
-      fileSystemName: map['fileSystemName'] == null ? null : map['fileSystemName'] as String,
-      storageResourceId: map['storageResourceId'] == null ? null : map['storageResourceId'] as String,
+      fileSystemName: map['fileSystemName'] == null ? null : (map['fileSystemName'] as String).input(),
+      storageResourceId: map['storageResourceId'] == null ? null : (map['storageResourceId'] as String).input(),
     );
   }
 }

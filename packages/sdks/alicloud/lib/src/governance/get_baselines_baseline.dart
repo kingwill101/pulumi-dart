@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBaselinesBaseline {
   /// Baseline ID
-  final String baselineId;
+  final pulumi.Input<String> baselineId;
   /// Baseline Name.
-  final String baselineName;
+  final pulumi.Input<String> baselineName;
   /// Baseline Description.
-  final String description;
+  final pulumi.Input<String> description;
 
   /// Creates a new [GetBaselinesBaseline].
   /// [baselineId] Baseline ID
@@ -29,9 +30,9 @@ class GetBaselinesBaseline {
 
   factory GetBaselinesBaseline.fromMap(Map<String, dynamic> map) {
     return GetBaselinesBaseline(
-      baselineId: map['baselineId'] as String,
-      baselineName: map['baselineName'] as String,
-      description: map['description'] as String,
+      baselineId: (map['baselineId'] as String).input(),
+      baselineName: (map['baselineName'] as String).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

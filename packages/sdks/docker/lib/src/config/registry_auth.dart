@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryAuth {
   /// Address of the registry
-  final String address;
-  final bool? authDisabled;
+  final pulumi.Input<String> address;
+  final pulumi.Input<bool>? authDisabled;
   /// Path to docker json file for registry auth. Defaults to `~/.docker/config.json`. If `DOCKER_CONFIG` is set, the value of `DOCKER_CONFIG` is used as the path. `config_file` has predencen over all other options.
-  final String? configFile;
+  final pulumi.Input<String>? configFile;
   /// Plain content of the docker json file for registry auth. `config_file_content` has precedence over username/password.
-  final String? configFileContent;
+  final pulumi.Input<String>? configFileContent;
   /// Password for the registry. Defaults to `DOCKER_REGISTRY_PASS` env variable if set.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Username for the registry. Defaults to `DOCKER_REGISTRY_USER` env variable if set.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [RegistryAuth].
   /// [address] Address of the registry
@@ -43,12 +44,12 @@ class RegistryAuth {
 
   factory RegistryAuth.fromMap(Map<String, dynamic> map) {
     return RegistryAuth(
-      address: map['address'] as String,
-      authDisabled: map['authDisabled'] == null ? null : map['authDisabled'] as bool,
-      configFile: map['configFile'] == null ? null : map['configFile'] as String,
-      configFileContent: map['configFileContent'] == null ? null : map['configFileContent'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      address: (map['address'] as String).input(),
+      authDisabled: map['authDisabled'] == null ? null : (map['authDisabled'] as bool).input(),
+      configFile: map['configFile'] == null ? null : (map['configFile'] as String).input(),
+      configFileContent: map['configFileContent'] == null ? null : (map['configFileContent'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

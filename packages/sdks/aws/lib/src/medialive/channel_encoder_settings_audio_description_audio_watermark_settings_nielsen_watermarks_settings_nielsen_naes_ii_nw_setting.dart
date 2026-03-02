@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting {
-  final String checkDigitString;
+  final pulumi.Input<String> checkDigitString;
   /// The Nielsen Source ID to include in the watermark.
-  final double sid;
+  final pulumi.Input<double> sid;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting].
   /// [checkDigitString] Required.
@@ -23,8 +24,8 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
 
   factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting(
-      checkDigitString: map['checkDigitString'] as String,
-      sid: map['sid'] as double,
+      checkDigitString: (map['checkDigitString'] as String).input(),
+      sid: (map['sid'] as double).input(),
     );
   }
 }

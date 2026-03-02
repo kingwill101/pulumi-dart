@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_agent_runtime_authorizer_configuration_custom_jwt_authorizer.dart';
 
 class AgentcoreAgentRuntimeAuthorizerConfiguration {
   /// JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
-  final AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer? customJwtAuthorizer;
+  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer>? customJwtAuthorizer;
 
   /// Creates a new [AgentcoreAgentRuntimeAuthorizerConfiguration].
   /// [customJwtAuthorizer] JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
@@ -14,13 +15,13 @@ class AgentcoreAgentRuntimeAuthorizerConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customJwtAuthorizer': ?customJwtAuthorizer == null ? null : customJwtAuthorizer!.toMap(),
+      'customJwtAuthorizer': ?pulumi.Input.mapOptionalInputValue<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer, Map<String, dynamic>>(customJwtAuthorizer, (value) => value.toMap()),
     };
   }
 
   factory AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAuthorizerConfiguration(
-      customJwtAuthorizer: map['customJwtAuthorizer'] == null ? null : AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer.fromMap((map['customJwtAuthorizer'] as Map).cast<String, dynamic>()),
+      customJwtAuthorizer: map['customJwtAuthorizer'] == null ? null : (AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer.fromMap((map['customJwtAuthorizer'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

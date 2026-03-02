@@ -25,17 +25,12 @@ class GetImageUploadUrlForEntityTypeArgs {
   /// [relativePath] Relative path of the image.
   /// [resourceGroupName] The name of the resource group.
   GetImageUploadUrlForEntityTypeArgs({
-    pulumi.Output<String>? entityType,
-    pulumi.Output<String>? entityTypeName,
-    required pulumi.Output<String> hubName,
-    pulumi.Output<String>? relativePath,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      entityType = pulumi.Input.asOptionalInput<String>(entityType),
-      entityTypeName = pulumi.Input.asOptionalInput<String>(entityTypeName),
-      hubName = pulumi.Input.asInput<String>(hubName),
-      relativePath = pulumi.Input.asOptionalInput<String>(relativePath),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.entityType,
+    this.entityTypeName,
+    required this.hubName,
+    this.relativePath,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetImageUploadUrlForEntityTypeArgs {
 
   factory GetImageUploadUrlForEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetImageUploadUrlForEntityTypeArgs(
-      entityType: map['entityType'] == null ? null : pulumi.Output.create<String>(map['entityType'] as String),
-      entityTypeName: map['entityTypeName'] == null ? null : pulumi.Output.create<String>(map['entityTypeName'] as String),
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      relativePath: map['relativePath'] == null ? null : pulumi.Output.create<String>(map['relativePath'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
+      entityTypeName: map['entityTypeName'] == null ? null : (map['entityTypeName'] as String).input(),
+      hubName: (map['hubName'] as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

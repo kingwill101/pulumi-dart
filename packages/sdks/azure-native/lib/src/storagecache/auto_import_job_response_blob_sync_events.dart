@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The storage account blob change feed status of the auto import job.
 class AutoImportJobResponseBlobSyncEvents {
   /// Number of deletions during auto import.
-  final double deletions;
+  final pulumi.Input<double> deletions;
   /// Number of directories imported during auto import.
-  final double importedDirectories;
+  final pulumi.Input<double> importedDirectories;
   /// Number of files imported during auto import.
-  final double importedFiles;
+  final pulumi.Input<double> importedFiles;
   /// Number of symlinks imported during auto import.
-  final double importedSymlinks;
+  final pulumi.Input<double> importedSymlinks;
   /// Date and time of the last Change Feed event consumed.
-  final String lastChangeFeedEventConsumedTime;
+  final pulumi.Input<String> lastChangeFeedEventConsumedTime;
   /// Date and time when last fully synchronized.
-  final String lastTimeFullySynchronized;
+  final pulumi.Input<String> lastTimeFullySynchronized;
   /// Number of preexisting directories during auto import.
-  final double preexistingDirectories;
+  final pulumi.Input<double> preexistingDirectories;
   /// Number of preexisting files during auto import.
-  final double preexistingFiles;
+  final pulumi.Input<double> preexistingFiles;
   /// Number of preexisting symlinks during auto import.
-  final double preexistingSymlinks;
+  final pulumi.Input<double> preexistingSymlinks;
   /// Rate of blob import per second during auto import.
-  final double rateOfBlobImport;
+  final pulumi.Input<double> rateOfBlobImport;
   /// Total number of blobs imported during auto import.
-  final double totalBlobsImported;
+  final pulumi.Input<double> totalBlobsImported;
   /// Total conflicts encountered during auto import.
-  final double totalConflicts;
+  final pulumi.Input<double> totalConflicts;
   /// Total errors encountered during auto import.
-  final double totalErrors;
+  final pulumi.Input<double> totalErrors;
 
   /// Creates a new [AutoImportJobResponseBlobSyncEvents].
   /// [deletions] Number of deletions during auto import.
@@ -80,19 +81,19 @@ class AutoImportJobResponseBlobSyncEvents {
 
   factory AutoImportJobResponseBlobSyncEvents.fromMap(Map<String, dynamic> map) {
     return AutoImportJobResponseBlobSyncEvents(
-      deletions: map['deletions'] as double,
-      importedDirectories: map['importedDirectories'] as double,
-      importedFiles: map['importedFiles'] as double,
-      importedSymlinks: map['importedSymlinks'] as double,
-      lastChangeFeedEventConsumedTime: map['lastChangeFeedEventConsumedTime'] as String,
-      lastTimeFullySynchronized: map['lastTimeFullySynchronized'] as String,
-      preexistingDirectories: map['preexistingDirectories'] as double,
-      preexistingFiles: map['preexistingFiles'] as double,
-      preexistingSymlinks: map['preexistingSymlinks'] as double,
-      rateOfBlobImport: map['rateOfBlobImport'] as double,
-      totalBlobsImported: map['totalBlobsImported'] as double,
-      totalConflicts: map['totalConflicts'] as double,
-      totalErrors: map['totalErrors'] as double,
+      deletions: (map['deletions'] as double).input(),
+      importedDirectories: (map['importedDirectories'] as double).input(),
+      importedFiles: (map['importedFiles'] as double).input(),
+      importedSymlinks: (map['importedSymlinks'] as double).input(),
+      lastChangeFeedEventConsumedTime: (map['lastChangeFeedEventConsumedTime'] as String).input(),
+      lastTimeFullySynchronized: (map['lastTimeFullySynchronized'] as String).input(),
+      preexistingDirectories: (map['preexistingDirectories'] as double).input(),
+      preexistingFiles: (map['preexistingFiles'] as double).input(),
+      preexistingSymlinks: (map['preexistingSymlinks'] as double).input(),
+      rateOfBlobImport: (map['rateOfBlobImport'] as double).input(),
+      totalBlobsImported: (map['totalBlobsImported'] as double).input(),
+      totalConflicts: (map['totalConflicts'] as double).input(),
+      totalErrors: (map['totalErrors'] as double).input(),
     );
   }
 }

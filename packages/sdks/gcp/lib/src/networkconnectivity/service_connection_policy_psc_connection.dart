@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_connection_policy_psc_connection_error.dart';
 import 'service_connection_policy_psc_connection_error_info.dart';
 
 class ServiceConnectionPolicyPscConnection {
   /// The resource reference of the consumer address.
-  final String? consumerAddress;
+  final pulumi.Input<String>? consumerAddress;
   /// The resource reference of the PSC Forwarding Rule within the consumer VPC.
-  final String? consumerForwardingRule;
+  final pulumi.Input<String>? consumerForwardingRule;
   /// The project where the PSC connection is created.
-  final String? consumerTargetProject;
+  final pulumi.Input<String>? consumerTargetProject;
   /// The most recent error during operating this connection.
   /// Structure is documented below.
-  final ServiceConnectionPolicyPscConnectionError? error;
+  final pulumi.Input<ServiceConnectionPolicyPscConnectionError>? error;
   /// The error info for the latest error during operating this connection.
   /// Structure is documented below.
-  final ServiceConnectionPolicyPscConnectionErrorInfo? errorInfo;
+  final pulumi.Input<ServiceConnectionPolicyPscConnectionErrorInfo>? errorInfo;
   /// The error type indicates whether the error is consumer facing, producer
   /// facing or system internal.
   /// Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
-  final String? errorType;
+  final pulumi.Input<String>? errorType;
   /// The last Compute Engine operation to setup PSC connection.
-  final String? gceOperation;
+  final pulumi.Input<String>? gceOperation;
   /// The PSC connection id of the PSC forwarding rule.
-  final String? pscConnectionId;
+  final pulumi.Input<String>? pscConnectionId;
   /// The state of the PSC connection.
   /// Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [ServiceConnectionPolicyPscConnection].
   /// [consumerAddress] The resource reference of the consumer address.
@@ -55,8 +56,8 @@ class ServiceConnectionPolicyPscConnection {
       'consumerAddress': ?consumerAddress,
       'consumerForwardingRule': ?consumerForwardingRule,
       'consumerTargetProject': ?consumerTargetProject,
-      'error': ?error == null ? null : error!.toMap(),
-      'errorInfo': ?errorInfo == null ? null : errorInfo!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<ServiceConnectionPolicyPscConnectionError, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'errorInfo': ?pulumi.Input.mapOptionalInputValue<ServiceConnectionPolicyPscConnectionErrorInfo, Map<String, dynamic>>(errorInfo, (value) => value.toMap()),
       'errorType': ?errorType,
       'gceOperation': ?gceOperation,
       'pscConnectionId': ?pscConnectionId,
@@ -66,15 +67,15 @@ class ServiceConnectionPolicyPscConnection {
 
   factory ServiceConnectionPolicyPscConnection.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyPscConnection(
-      consumerAddress: map['consumerAddress'] == null ? null : map['consumerAddress'] as String,
-      consumerForwardingRule: map['consumerForwardingRule'] == null ? null : map['consumerForwardingRule'] as String,
-      consumerTargetProject: map['consumerTargetProject'] == null ? null : map['consumerTargetProject'] as String,
-      error: map['error'] == null ? null : ServiceConnectionPolicyPscConnectionError.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      errorInfo: map['errorInfo'] == null ? null : ServiceConnectionPolicyPscConnectionErrorInfo.fromMap((map['errorInfo'] as Map).cast<String, dynamic>()),
-      errorType: map['errorType'] == null ? null : map['errorType'] as String,
-      gceOperation: map['gceOperation'] == null ? null : map['gceOperation'] as String,
-      pscConnectionId: map['pscConnectionId'] == null ? null : map['pscConnectionId'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      consumerAddress: map['consumerAddress'] == null ? null : (map['consumerAddress'] as String).input(),
+      consumerForwardingRule: map['consumerForwardingRule'] == null ? null : (map['consumerForwardingRule'] as String).input(),
+      consumerTargetProject: map['consumerTargetProject'] == null ? null : (map['consumerTargetProject'] as String).input(),
+      error: map['error'] == null ? null : (ServiceConnectionPolicyPscConnectionError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      errorInfo: map['errorInfo'] == null ? null : (ServiceConnectionPolicyPscConnectionErrorInfo.fromMap((map['errorInfo'] as Map).cast<String, dynamic>())).input(),
+      errorType: map['errorType'] == null ? null : (map['errorType'] as String).input(),
+      gceOperation: map['gceOperation'] == null ? null : (map['gceOperation'] as String).input(),
+      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

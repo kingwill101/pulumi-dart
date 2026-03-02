@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NamedValueValueFromKeyVault {
   /// The client ID of User Assigned Identity, for the API Management Service, which will be used to access the key vault secret. The System Assigned Identity will be used in absence.
-  final String? identityClientId;
+  final pulumi.Input<String>? identityClientId;
   /// The resource ID of the Key Vault Secret.
-  final String secretId;
+  final pulumi.Input<String> secretId;
 
   /// Creates a new [NamedValueValueFromKeyVault].
   /// [identityClientId] The client ID of User Assigned Identity, for the API Management Service, which will be used to access the key vault secret. The System Assigned Identity will be used in absence.
@@ -24,8 +25,8 @@ class NamedValueValueFromKeyVault {
 
   factory NamedValueValueFromKeyVault.fromMap(Map<String, dynamic> map) {
     return NamedValueValueFromKeyVault(
-      identityClientId: map['identityClientId'] == null ? null : map['identityClientId'] as String,
-      secretId: map['secretId'] as String,
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

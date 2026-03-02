@@ -22,17 +22,12 @@ class SelfIpState {
   /// [trafficGroup] Specifies the traffic group, defaults to `traffic-group-local-only` if not specified.
   /// [vlan] Specifies the VLAN for which you are setting a self IP address. This setting must be provided when a self IP is created.
   SelfIpState({
-    pulumi.Output<String>? ip,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? portLockdowns,
-    pulumi.Output<String>? trafficGroup,
-    pulumi.Output<String>? vlan,
-  }) :
-      ip = pulumi.Input.asOptionalInput<String>(ip),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portLockdowns = pulumi.Input.asOptionalInput<List<String>>(portLockdowns),
-      trafficGroup = pulumi.Input.asOptionalInput<String>(trafficGroup),
-      vlan = pulumi.Input.asOptionalInput<String>(vlan);
+    this.ip,
+    this.name,
+    this.portLockdowns,
+    this.trafficGroup,
+    this.vlan,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class SelfIpState {
 
   factory SelfIpState.fromMap(Map<String, dynamic> map) {
     return SelfIpState(
-      ip: map['ip'] == null ? null : pulumi.Output.create<String>(map['ip'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portLockdowns: map['portLockdowns'] == null ? null : pulumi.Output.create<List<String>>((map['portLockdowns'] as List).cast<String>()),
-      trafficGroup: map['trafficGroup'] == null ? null : pulumi.Output.create<String>(map['trafficGroup'] as String),
-      vlan: map['vlan'] == null ? null : pulumi.Output.create<String>(map['vlan'] as String),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portLockdowns: map['portLockdowns'] == null ? null : ((map['portLockdowns'] as List).cast<String>()).input(),
+      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup'] as String).input(),
+      vlan: map['vlan'] == null ? null : (map['vlan'] as String).input(),
     );
   }
 }

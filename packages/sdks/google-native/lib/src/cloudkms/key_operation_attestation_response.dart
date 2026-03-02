@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_chains_response.dart';
 
 /// Contains an HSM-generated attestation about a key operation. For more information, see [Verifying attestations] (https://cloud.google.com/kms/docs/attest-key).
 class KeyOperationAttestationResponse {
   /// The certificate chains needed to validate the attestation
-  final CertificateChainsResponse certChains;
+  final pulumi.Input<CertificateChainsResponse> certChains;
   /// The attestation data provided by the HSM when the key operation was performed.
-  final String content;
+  final pulumi.Input<String> content;
   /// The format of the attestation data.
-  final String format;
+  final pulumi.Input<String> format;
 
   /// Creates a new [KeyOperationAttestationResponse].
   /// [certChains] The certificate chains needed to validate the attestation
@@ -23,7 +24,7 @@ class KeyOperationAttestationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certChains': certChains.toMap(),
+      'certChains': pulumi.Input.mapInputValue<CertificateChainsResponse, Map<String, dynamic>>(certChains, (value) => value.toMap()),
       'content': content,
       'format': format,
     };
@@ -31,9 +32,9 @@ class KeyOperationAttestationResponse {
 
   factory KeyOperationAttestationResponse.fromMap(Map<String, dynamic> map) {
     return KeyOperationAttestationResponse(
-      certChains: CertificateChainsResponse.fromMap((map['certChains'] as Map).cast<String, dynamic>()),
-      content: map['content'] as String,
-      format: map['format'] as String,
+      certChains: (CertificateChainsResponse.fromMap((map['certChains'] as Map).cast<String, dynamic>())).input(),
+      content: (map['content'] as String).input(),
+      format: (map['format'] as String).input(),
     );
   }
 }

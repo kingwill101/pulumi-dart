@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference {
   /// Required. Name of a database within the instance.
-  final String database;
+  final pulumi.Input<String> database;
   /// Required. Name of a database resource, for example, a table within the database.
-  final String databaseResource;
+  final pulumi.Input<String> databaseResource;
   /// Required. The instance where this resource is located. For example: Cloud SQL instance ID.
-  final String instance;
+  final pulumi.Input<String> instance;
   /// Required. If within a project-level config, then this must match the config's project ID.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference].
   /// [database] Required. Name of a database within the instance.
@@ -34,10 +35,10 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferen
 
   factory PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference(
-      database: map['database'] as String,
-      databaseResource: map['databaseResource'] as String,
-      instance: map['instance'] as String,
-      projectId: map['projectId'] as String,
+      database: (map['database'] as String).input(),
+      databaseResource: (map['databaseResource'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

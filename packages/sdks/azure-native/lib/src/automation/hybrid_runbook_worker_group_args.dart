@@ -26,17 +26,12 @@ class HybridRunbookWorkerGroupArgs {
   /// [name] Gets or sets the name of the resource.
   /// [resourceGroupName] Name of an Azure Resource group.
   HybridRunbookWorkerGroupArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<RunAsCredentialAssociationProperty>? credential,
-    pulumi.Output<String>? hybridRunbookWorkerGroupName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      credential = pulumi.Input.asOptionalInput<RunAsCredentialAssociationProperty>(credential),
-      hybridRunbookWorkerGroupName = pulumi.Input.asOptionalInput<String>(hybridRunbookWorkerGroupName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    this.credential,
+    this.hybridRunbookWorkerGroupName,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class HybridRunbookWorkerGroupArgs {
 
   factory HybridRunbookWorkerGroupArgs.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerGroupArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      credential: map['credential'] == null ? null : pulumi.Output.create<RunAsCredentialAssociationProperty>(RunAsCredentialAssociationProperty.fromMap((map['credential'] as Map).cast<String, dynamic>())),
-      hybridRunbookWorkerGroupName: map['hybridRunbookWorkerGroupName'] == null ? null : pulumi.Output.create<String>(map['hybridRunbookWorkerGroupName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      credential: map['credential'] == null ? null : (RunAsCredentialAssociationProperty.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      hybridRunbookWorkerGroupName: map['hybridRunbookWorkerGroupName'] == null ? null : (map['hybridRunbookWorkerGroupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetSlackWorkspaceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [slackTeamName] Slack workspace name configured with AWS Chatbot.
   GetSlackWorkspaceArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> slackTeamName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      slackTeamName = pulumi.Input.asInput<String>(slackTeamName);
+    this.region,
+    required this.slackTeamName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSlackWorkspaceArgs {
 
   factory GetSlackWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetSlackWorkspaceArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      slackTeamName: pulumi.Output.create<String>(map['slackTeamName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      slackTeamName: (map['slackTeamName'] as String).input(),
     );
   }
 }

@@ -6,15 +6,15 @@ import 'scaling_rule_hybrid_metric_dimension.dart';
 class ScalingRuleHybridMetric {
   /// The structure of volumeMounts.
   /// See `dimensions` below for details.
-  final List<ScalingRuleHybridMetricDimension>? dimensions;
+  final pulumi.Input<List<ScalingRuleHybridMetricDimension>>? dimensions;
   /// The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// The reference ID of the metric in the metric expression.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the Hybrid Cloud Monitoring metric.
-  final String? metricName;
+  final pulumi.Input<String>? metricName;
   /// The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
-  final String? statistic;
+  final pulumi.Input<String>? statistic;
 
   /// Creates a new [ScalingRuleHybridMetric].
   /// [dimensions] The structure of volumeMounts.
@@ -32,7 +32,7 @@ class ScalingRuleHybridMetric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<ScalingRuleHybridMetricDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<ScalingRuleHybridMetricDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<ScalingRuleHybridMetricDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'expression': ?expression,
       'id': ?id,
       'metricName': ?metricName,
@@ -42,11 +42,11 @@ class ScalingRuleHybridMetric {
 
   factory ScalingRuleHybridMetric.fromMap(Map<String, dynamic> map) {
     return ScalingRuleHybridMetric(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<ScalingRuleHybridMetricDimension>(map['dimensions'], (value) => ScalingRuleHybridMetricDimension.fromMap((value as Map).cast<String, dynamic>())),
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      metricName: map['metricName'] == null ? null : map['metricName'] as String,
-      statistic: map['statistic'] == null ? null : map['statistic'] as String,
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScalingRuleHybridMetricDimension>(map['dimensions'], (value) => ScalingRuleHybridMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      statistic: map['statistic'] == null ? null : (map['statistic'] as String).input(),
     );
   }
 }

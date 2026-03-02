@@ -28,19 +28,13 @@ class GetProtectedItemArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [vaultName] The name of the recovery services vault.
   GetProtectedItemArgs({
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> fabricName,
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> protectedItemName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      containerName = pulumi.Input.asInput<String>(containerName),
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      protectedItemName = pulumi.Input.asInput<String>(protectedItemName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.containerName,
+    required this.fabricName,
+    this.filter,
+    required this.protectedItemName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetProtectedItemArgs {
 
   factory GetProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectedItemArgs(
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      protectedItemName: pulumi.Output.create<String>(map['protectedItemName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      containerName: (map['containerName'] as String).input(),
+      fabricName: (map['fabricName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      protectedItemName: (map['protectedItemName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

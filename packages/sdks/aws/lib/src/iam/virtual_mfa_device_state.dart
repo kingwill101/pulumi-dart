@@ -37,27 +37,17 @@ class VirtualMfaDeviceState {
   /// [userName] Name of the IAM user associated with this virtual MFA device.
   /// [virtualMfaDeviceName] Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   VirtualMfaDeviceState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? base32StringSeed,
-    pulumi.Output<String>? enableDate,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? qrCodePng,
-    pulumi.Output<String>? serialNumber,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? userName,
-    pulumi.Output<String>? virtualMfaDeviceName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      base32StringSeed = pulumi.Input.asOptionalInput<String>(base32StringSeed),
-      enableDate = pulumi.Input.asOptionalInput<String>(enableDate),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      qrCodePng = pulumi.Input.asOptionalInput<String>(qrCodePng),
-      serialNumber = pulumi.Input.asOptionalInput<String>(serialNumber),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userName = pulumi.Input.asOptionalInput<String>(userName),
-      virtualMfaDeviceName = pulumi.Input.asOptionalInput<String>(virtualMfaDeviceName);
+    this.arn,
+    this.base32StringSeed,
+    this.enableDate,
+    this.path,
+    this.qrCodePng,
+    this.serialNumber,
+    this.tags,
+    this.tagsAll,
+    this.userName,
+    this.virtualMfaDeviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class VirtualMfaDeviceState {
 
   factory VirtualMfaDeviceState.fromMap(Map<String, dynamic> map) {
     return VirtualMfaDeviceState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      base32StringSeed: map['base32StringSeed'] == null ? null : pulumi.Output.create<String>(map['base32StringSeed'] as String),
-      enableDate: map['enableDate'] == null ? null : pulumi.Output.create<String>(map['enableDate'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      qrCodePng: map['qrCodePng'] == null ? null : pulumi.Output.create<String>(map['qrCodePng'] as String),
-      serialNumber: map['serialNumber'] == null ? null : pulumi.Output.create<String>(map['serialNumber'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
-      virtualMfaDeviceName: map['virtualMfaDeviceName'] == null ? null : pulumi.Output.create<String>(map['virtualMfaDeviceName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      base32StringSeed: map['base32StringSeed'] == null ? null : (map['base32StringSeed'] as String).input(),
+      enableDate: map['enableDate'] == null ? null : (map['enableDate'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      qrCodePng: map['qrCodePng'] == null ? null : (map['qrCodePng'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      virtualMfaDeviceName: map['virtualMfaDeviceName'] == null ? null : (map['virtualMfaDeviceName'] as String).input(),
     );
   }
 }

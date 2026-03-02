@@ -28,19 +28,13 @@ class ShareArgs {
   /// [shareName] The name of the share.
   /// [terms] Share terms.
   ShareArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? shareKind,
-    pulumi.Output<String>? shareName,
-    pulumi.Output<String>? terms,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareKind = pulumi.Input.asOptionalInput<String>(shareKind),
-      shareName = pulumi.Input.asOptionalInput<String>(shareName),
-      terms = pulumi.Input.asOptionalInput<String>(terms);
+    required this.accountName,
+    this.description,
+    required this.resourceGroupName,
+    this.shareKind,
+    this.shareName,
+    this.terms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ShareArgs {
 
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareKind: map['shareKind'] == null ? null : pulumi.Output.create<String>(map['shareKind'] as String),
-      shareName: map['shareName'] == null ? null : pulumi.Output.create<String>(map['shareName'] as String),
-      terms: map['terms'] == null ? null : pulumi.Output.create<String>(map['terms'] as String),
+      accountName: (map['accountName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareKind: map['shareKind'] == null ? null : (map['shareKind'] as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      terms: map['terms'] == null ? null : (map['terms'] as String).input(),
     );
   }
 }

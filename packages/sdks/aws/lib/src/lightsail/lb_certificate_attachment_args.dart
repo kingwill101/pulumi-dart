@@ -21,13 +21,10 @@ class LbCertificateAttachmentArgs {
   /// [lbName] Name of the load balancer to which you want to associate the SSL/TLS certificate.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LbCertificateAttachmentArgs({
-    required pulumi.Output<String> certificateName,
-    required pulumi.Output<String> lbName,
-    pulumi.Output<String>? region,
-  }) :
-      certificateName = pulumi.Input.asInput<String>(certificateName),
-      lbName = pulumi.Input.asInput<String>(lbName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.certificateName,
+    required this.lbName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class LbCertificateAttachmentArgs {
 
   factory LbCertificateAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LbCertificateAttachmentArgs(
-      certificateName: pulumi.Output.create<String>(map['certificateName'] as String),
-      lbName: pulumi.Output.create<String>(map['lbName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      certificateName: (map['certificateName'] as String).input(),
+      lbName: (map['lbName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

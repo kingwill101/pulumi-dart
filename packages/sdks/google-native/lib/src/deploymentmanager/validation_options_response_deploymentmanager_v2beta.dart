@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Options for how to validate and process properties on a resource.
 class ValidationOptionsResponseDeploymentmanagerV2beta {
   /// Customize how deployment manager will validate the resource against schema errors.
-  final String schemaValidation;
+  final pulumi.Input<String> schemaValidation;
   /// Specify what to do with extra properties when executing a request.
-  final String undeclaredProperties;
+  final pulumi.Input<String> undeclaredProperties;
 
   /// Creates a new [ValidationOptionsResponseDeploymentmanagerV2beta].
   /// [schemaValidation] Customize how deployment manager will validate the resource against schema errors.
@@ -25,8 +26,8 @@ class ValidationOptionsResponseDeploymentmanagerV2beta {
 
   factory ValidationOptionsResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return ValidationOptionsResponseDeploymentmanagerV2beta(
-      schemaValidation: map['schemaValidation'] as String,
-      undeclaredProperties: map['undeclaredProperties'] as String,
+      schemaValidation: (map['schemaValidation'] as String).input(),
+      undeclaredProperties: (map['undeclaredProperties'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class TagArgs {
   /// [tagTriggers] List of values which cause the tag to be (re)created. This is useful for triggering a new tag when the source image changes.
   /// [targetImage] Name of the target image.
   TagArgs({
-    required pulumi.Output<String> sourceImage,
-    pulumi.Output<List<String>>? tagTriggers,
-    required pulumi.Output<String> targetImage,
-  }) :
-      sourceImage = pulumi.Input.asInput<String>(sourceImage),
-      tagTriggers = pulumi.Input.asOptionalInput<List<String>>(tagTriggers),
-      targetImage = pulumi.Input.asInput<String>(targetImage);
+    required this.sourceImage,
+    this.tagTriggers,
+    required this.targetImage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TagArgs {
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      sourceImage: pulumi.Output.create<String>(map['sourceImage'] as String),
-      tagTriggers: map['tagTriggers'] == null ? null : pulumi.Output.create<List<String>>((map['tagTriggers'] as List).cast<String>()),
-      targetImage: pulumi.Output.create<String>(map['targetImage'] as String),
+      sourceImage: (map['sourceImage'] as String).input(),
+      tagTriggers: map['tagTriggers'] == null ? null : ((map['tagTriggers'] as List).cast<String>()).input(),
+      targetImage: (map['targetImage'] as String).input(),
     );
   }
 }

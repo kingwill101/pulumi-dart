@@ -19,15 +19,11 @@ class MulticastGroupSourceState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transitGatewayMulticastDomainId] The ID of the transit gateway multicast domain.
   MulticastGroupSourceState({
-    pulumi.Output<String>? groupIpAddress,
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? transitGatewayMulticastDomainId,
-  }) :
-      groupIpAddress = pulumi.Input.asOptionalInput<String>(groupIpAddress),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transitGatewayMulticastDomainId = pulumi.Input.asOptionalInput<String>(transitGatewayMulticastDomainId);
+    this.groupIpAddress,
+    this.networkInterfaceId,
+    this.region,
+    this.transitGatewayMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class MulticastGroupSourceState {
 
   factory MulticastGroupSourceState.fromMap(Map<String, dynamic> map) {
     return MulticastGroupSourceState(
-      groupIpAddress: map['groupIpAddress'] == null ? null : pulumi.Output.create<String>(map['groupIpAddress'] as String),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayMulticastDomainId'] as String),
+      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : (map['transitGatewayMulticastDomainId'] as String).input(),
     );
   }
 }

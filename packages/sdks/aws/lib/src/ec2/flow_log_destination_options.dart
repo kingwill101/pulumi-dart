@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowLogDestinationOptions {
   /// File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, `parquet`.
-  final String? fileFormat;
+  final pulumi.Input<String>? fileFormat;
   /// Indicates whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: `false`.
-  final bool? hiveCompatiblePartitions;
+  final pulumi.Input<bool>? hiveCompatiblePartitions;
   /// Indicates whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: `false`.
-  final bool? perHourPartition;
+  final pulumi.Input<bool>? perHourPartition;
 
   /// Creates a new [FlowLogDestinationOptions].
   /// [fileFormat] File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, `parquet`.
@@ -29,9 +30,9 @@ class FlowLogDestinationOptions {
 
   factory FlowLogDestinationOptions.fromMap(Map<String, dynamic> map) {
     return FlowLogDestinationOptions(
-      fileFormat: map['fileFormat'] == null ? null : map['fileFormat'] as String,
-      hiveCompatiblePartitions: map['hiveCompatiblePartitions'] == null ? null : map['hiveCompatiblePartitions'] as bool,
-      perHourPartition: map['perHourPartition'] == null ? null : map['perHourPartition'] as bool,
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
+      hiveCompatiblePartitions: map['hiveCompatiblePartitions'] == null ? null : (map['hiveCompatiblePartitions'] as bool).input(),
+      perHourPartition: map['perHourPartition'] == null ? null : (map['perHourPartition'] as bool).input(),
     );
   }
 }

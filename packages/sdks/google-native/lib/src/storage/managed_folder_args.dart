@@ -34,23 +34,15 @@ class ManagedFolderArgs {
   /// [selfLink] The link to this managed folder.
   /// [updateTime] The last update time of the managed folder metadata in RFC 3339 format.
   ManagedFolderArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? metageneration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? updateTime,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metageneration = pulumi.Input.asOptionalInput<String>(metageneration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    required this.bucket,
+    this.createTime,
+    this.id,
+    this.kind,
+    this.metageneration,
+    this.name,
+    this.selfLink,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ManagedFolderArgs {
 
   factory ManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metageneration: map['metageneration'] == null ? null : pulumi.Output.create<String>(map['metageneration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      bucket: (map['bucket'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metageneration: map['metageneration'] == null ? null : (map['metageneration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

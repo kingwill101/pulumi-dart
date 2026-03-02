@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_registry_basic_credentials_response.dart';
 
 /// Container registry resource payload.
 class ContainerRegistryPropertiesResponse {
   /// The credentials of the container registry resource.
-  final ContainerRegistryBasicCredentialsResponse credentials;
+  final pulumi.Input<ContainerRegistryBasicCredentialsResponse> credentials;
   /// State of the Container Registry.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ContainerRegistryPropertiesResponse].
   /// [credentials] The credentials of the container registry resource.
@@ -19,15 +20,15 @@ class ContainerRegistryPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentials': credentials.toMap(),
+      'credentials': pulumi.Input.mapInputValue<ContainerRegistryBasicCredentialsResponse, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory ContainerRegistryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryPropertiesResponse(
-      credentials: ContainerRegistryBasicCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
+      credentials: (ContainerRegistryBasicCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The named port. For example: <"http", 80>.
 class NamedPortResponseComputeV1 {
   /// The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
-  final String name;
+  final pulumi.Input<String> name;
   /// The port number, which can be a value between 1 and 65535.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [NamedPortResponseComputeV1].
   /// [name] The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
@@ -25,8 +26,8 @@ class NamedPortResponseComputeV1 {
 
   factory NamedPortResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return NamedPortResponseComputeV1(
-      name: map['name'] as String,
-      port: map['port'] as int,
+      name: (map['name'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

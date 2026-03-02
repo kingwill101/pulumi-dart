@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Visual icon definition of an entity
 class IconDefinitionResponse {
   /// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
-  final String? customData;
+  final pulumi.Input<String>? customData;
   /// Name of the built-in icon, or 'Custom' to use customData
-  final String iconName;
+  final pulumi.Input<String> iconName;
 
   /// Creates a new [IconDefinitionResponse].
   /// [customData] Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
@@ -25,8 +26,8 @@ class IconDefinitionResponse {
 
   factory IconDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return IconDefinitionResponse(
-      customData: map['customData'] == null ? null : map['customData'] as String,
-      iconName: map['iconName'] as String,
+      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
+      iconName: (map['iconName'] as String).input(),
     );
   }
 }

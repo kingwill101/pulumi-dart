@@ -22,17 +22,12 @@ class PrivateLinkScopeState {
   /// [resourceGroupName] The name of the Resource Group where the Azure Monitor Private Link Scope should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Monitor Private Link Scope.
   PrivateLinkScopeState({
-    pulumi.Output<String>? ingestionAccessMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? queryAccessMode,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ingestionAccessMode = pulumi.Input.asOptionalInput<String>(ingestionAccessMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryAccessMode = pulumi.Input.asOptionalInput<String>(queryAccessMode),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.ingestionAccessMode,
+    this.name,
+    this.queryAccessMode,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class PrivateLinkScopeState {
 
   factory PrivateLinkScopeState.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopeState(
-      ingestionAccessMode: map['ingestionAccessMode'] == null ? null : pulumi.Output.create<String>(map['ingestionAccessMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryAccessMode: map['queryAccessMode'] == null ? null : pulumi.Output.create<String>(map['queryAccessMode'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ingestionAccessMode: map['ingestionAccessMode'] == null ? null : (map['ingestionAccessMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryAccessMode: map['queryAccessMode'] == null ? null : (map['queryAccessMode'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

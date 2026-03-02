@@ -39,17 +39,12 @@ class ScopeIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [scopeId] Used to find the parent resource to bind the IAM policy to
   ScopeIamBindingArgs({
-    pulumi.Output<ScopeIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> scopeId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ScopeIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      scopeId = pulumi.Input.asInput<String>(scopeId);
+    this.condition,
+    required this.members,
+    this.project,
+    required this.role,
+    required this.scopeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,11 +58,11 @@ class ScopeIamBindingArgs {
 
   factory ScopeIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ScopeIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ScopeIamBindingCondition>(ScopeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      scopeId: pulumi.Output.create<String>(map['scopeId'] as String),
+      condition: map['condition'] == null ? null : (ScopeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceNodeConfig {
   /// (Output)
   /// Output only. Memory size in GB of the node.
-  final double? sizeGb;
+  final pulumi.Input<double>? sizeGb;
 
   /// Creates a new [InstanceNodeConfig].
   /// [sizeGb] (Output)
@@ -20,7 +21,7 @@ class InstanceNodeConfig {
 
   factory InstanceNodeConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNodeConfig(
-      sizeGb: map['sizeGb'] == null ? null : map['sizeGb'] as double,
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as double).input(),
     );
   }
 }

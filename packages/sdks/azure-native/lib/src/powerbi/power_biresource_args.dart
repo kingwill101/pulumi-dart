@@ -30,19 +30,13 @@ class PowerBIResourceArgs {
   /// [tags] Specifies the tags of the resource.
   /// [tenantId] Specifies the tenant id of the resource.
   PowerBIResourceArgs({
-    pulumi.Output<String>? azureResourceName,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<PrivateEndpointConnectionPowerbi>>? privateEndpointConnections,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      azureResourceName = pulumi.Input.asOptionalInput<String>(azureResourceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateEndpointConnections = pulumi.Input.asOptionalInput<List<PrivateEndpointConnectionPowerbi>>(privateEndpointConnections),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.azureResourceName,
+    this.location,
+    this.privateEndpointConnections,
+    required this.resourceGroupName,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class PowerBIResourceArgs {
 
   factory PowerBIResourceArgs.fromMap(Map<String, dynamic> map) {
     return PowerBIResourceArgs(
-      azureResourceName: map['azureResourceName'] == null ? null : pulumi.Output.create<String>(map['azureResourceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : pulumi.Output.create<List<PrivateEndpointConnectionPowerbi>>((map['privateEndpointConnections'] as List).cast<PrivateEndpointConnectionPowerbi>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections'] as List).cast<PrivateEndpointConnectionPowerbi>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

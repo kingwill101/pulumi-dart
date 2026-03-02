@@ -28,19 +28,13 @@ class ListNetworkManagerDeploymentStatusArgs {
   /// [skipToken] Continuation token for pagination, capturing the next page size and offset, as well as the context of the query.
   /// [top] An optional query parameter which specifies the maximum number of records to be returned by the server.
   ListNetworkManagerDeploymentStatusArgs({
-    pulumi.Output<List<String>>? deploymentTypes,
-    required pulumi.Output<String> networkManagerName,
-    pulumi.Output<List<String>>? regions,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-    pulumi.Output<int>? top,
-  }) :
-      deploymentTypes = pulumi.Input.asOptionalInput<List<String>>(deploymentTypes),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    this.deploymentTypes,
+    required this.networkManagerName,
+    this.regions,
+    required this.resourceGroupName,
+    this.skipToken,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ListNetworkManagerDeploymentStatusArgs {
 
   factory ListNetworkManagerDeploymentStatusArgs.fromMap(Map<String, dynamic> map) {
     return ListNetworkManagerDeploymentStatusArgs(
-      deploymentTypes: map['deploymentTypes'] == null ? null : pulumi.Output.create<List<String>>((map['deploymentTypes'] as List).cast<String>()),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      deploymentTypes: map['deploymentTypes'] == null ? null : ((map['deploymentTypes'] as List).cast<String>()).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

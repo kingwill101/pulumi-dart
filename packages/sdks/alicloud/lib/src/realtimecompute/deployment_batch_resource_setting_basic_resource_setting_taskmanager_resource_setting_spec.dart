@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
-  final double? cpu;
-  final String? memory;
+  final pulumi.Input<double>? cpu;
+  final pulumi.Input<String>? memory;
 
   /// Creates a new [DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec].
   /// [cpu] Optional.
@@ -22,8 +23,8 @@ class DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSetti
 
   factory DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec.fromMap(Map<String, dynamic> map) {
     return DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec(
-      cpu: map['cpu'] == null ? null : map['cpu'] as double,
-      memory: map['memory'] == null ? null : map['memory'] as String,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
     );
   }
 }

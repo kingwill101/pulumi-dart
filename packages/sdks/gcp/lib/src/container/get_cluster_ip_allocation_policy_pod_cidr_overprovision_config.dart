@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
 
   /// Creates a new [GetClusterIpAllocationPolicyPodCidrOverprovisionConfig].
   /// [disabled] Required.
@@ -18,7 +19,7 @@ class GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
 
   factory GetClusterIpAllocationPolicyPodCidrOverprovisionConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterIpAllocationPolicyPodCidrOverprovisionConfig(
-      disabled: map['disabled'] as bool,
+      disabled: (map['disabled'] as bool).input(),
     );
   }
 }

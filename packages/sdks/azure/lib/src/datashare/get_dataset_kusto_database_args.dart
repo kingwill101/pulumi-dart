@@ -16,11 +16,9 @@ class GetDatasetKustoDatabaseArgs {
   /// [name] The name of this Data Share Kusto Database Dataset.
   /// [shareId] The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created.
   GetDatasetKustoDatabaseArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> shareId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      shareId = pulumi.Input.asInput<String>(shareId);
+    required this.name,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatasetKustoDatabaseArgs {
 
   factory GetDatasetKustoDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetKustoDatabaseArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
+      name: (map['name'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

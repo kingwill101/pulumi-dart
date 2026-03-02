@@ -54,25 +54,16 @@ class ApplicationCredentialState {
   /// [secret] The secret for the application credential. If omitted,
   /// [unrestricted] A flag indicating whether the application
   ApplicationCredentialState({
-    pulumi.Output<List<ApplicationCredentialAccessRule>>? accessRules,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expiresAt,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? roles,
-    pulumi.Output<String>? secret,
-    pulumi.Output<bool>? unrestricted,
-  }) :
-      accessRules = pulumi.Input.asOptionalInput<List<ApplicationCredentialAccessRule>>(accessRules),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expiresAt = pulumi.Input.asOptionalInput<String>(expiresAt),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roles = pulumi.Input.asOptionalInput<List<String>>(roles),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      unrestricted = pulumi.Input.asOptionalInput<bool>(unrestricted);
+    this.accessRules,
+    this.description,
+    this.expiresAt,
+    this.name,
+    this.projectId,
+    this.region,
+    this.roles,
+    this.secret,
+    this.unrestricted,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,15 +81,15 @@ class ApplicationCredentialState {
 
   factory ApplicationCredentialState.fromMap(Map<String, dynamic> map) {
     return ApplicationCredentialState(
-      accessRules: map['accessRules'] == null ? null : pulumi.Output.create<List<ApplicationCredentialAccessRule>>(pulumi.Input.decodeList<ApplicationCredentialAccessRule>(map['accessRules'], (value) => ApplicationCredentialAccessRule.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expiresAt: map['expiresAt'] == null ? null : pulumi.Output.create<String>(map['expiresAt'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      unrestricted: map['unrestricted'] == null ? null : pulumi.Output.create<bool>(map['unrestricted'] as bool),
+      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<ApplicationCredentialAccessRule>(map['accessRules'], (value) => ApplicationCredentialAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      unrestricted: map['unrestricted'] == null ? null : (map['unrestricted'] as bool).input(),
     );
   }
 }

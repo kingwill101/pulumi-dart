@@ -8,50 +8,50 @@ import 'parameter_specification.dart';
 /// SAP Table Linked Service.
 class SapTableLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Client ID of the client on the SAP system where the table is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
-  final dynamic clientId;
+  final pulumi.Input<dynamic>? clientId;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Language of the SAP system where the table is located. The default value is EN. Type: string (or Expression with resultType string).
-  final dynamic language;
+  final pulumi.Input<dynamic>? language;
   /// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
-  final dynamic logonGroup;
+  final pulumi.Input<dynamic>? logonGroup;
   /// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
-  final dynamic messageServer;
+  final pulumi.Input<dynamic>? messageServer;
   /// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
-  final dynamic messageServerService;
+  final pulumi.Input<dynamic>? messageServerService;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// Password to access the SAP server where the table is located.
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// Host name of the SAP instance where the table is located. Type: string (or Expression with resultType string).
-  final dynamic server;
+  final pulumi.Input<dynamic>? server;
   /// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
-  final dynamic sncLibraryPath;
+  final pulumi.Input<dynamic>? sncLibraryPath;
   /// SNC activation flag (Boolean) to access the SAP server where the table is located. Type: boolean (or Expression with resultType boolean).
-  final dynamic sncMode;
+  final pulumi.Input<dynamic>? sncMode;
   /// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
-  final dynamic sncMyName;
+  final pulumi.Input<dynamic>? sncMyName;
   /// Communication partner's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
-  final dynamic sncPartnerName;
+  final pulumi.Input<dynamic>? sncPartnerName;
   /// SNC Quality of Protection. Allowed value include: 1, 2, 3, 8, 9. Type: string (or Expression with resultType string).
-  final dynamic sncQop;
+  final pulumi.Input<dynamic>? sncQop;
   /// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
-  final dynamic systemId;
+  final pulumi.Input<dynamic>? systemId;
   /// System number of the SAP system where the table is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
-  final dynamic systemNumber;
+  final pulumi.Input<dynamic>? systemNumber;
   /// Type of linked service.
   /// Expected value is 'SapTable'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
-  final dynamic userName;
+  final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [SapTableLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -105,15 +105,15 @@ class SapTableLinkedService {
     return <String, dynamic>{
       'annotations': ?annotations,
       'clientId': ?clientId,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'language': ?language,
       'logonGroup': ?logonGroup,
       'messageServer': ?messageServer,
       'messageServerService': ?messageServerService,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'server': ?server,
       'sncLibraryPath': ?sncLibraryPath,
       'sncMode': ?sncMode,
@@ -130,28 +130,28 @@ class SapTableLinkedService {
 
   factory SapTableLinkedService.fromMap(Map<String, dynamic> map) {
     return SapTableLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      clientId: map['clientId'] == null ? null : map['clientId'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      language: map['language'] == null ? null : map['language'],
-      logonGroup: map['logonGroup'] == null ? null : map['logonGroup'],
-      messageServer: map['messageServer'] == null ? null : map['messageServer'],
-      messageServerService: map['messageServerService'] == null ? null : map['messageServerService'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      server: map['server'] == null ? null : map['server'],
-      sncLibraryPath: map['sncLibraryPath'] == null ? null : map['sncLibraryPath'],
-      sncMode: map['sncMode'] == null ? null : map['sncMode'],
-      sncMyName: map['sncMyName'] == null ? null : map['sncMyName'],
-      sncPartnerName: map['sncPartnerName'] == null ? null : map['sncPartnerName'],
-      sncQop: map['sncQop'] == null ? null : map['sncQop'],
-      systemId: map['systemId'] == null ? null : map['systemId'],
-      systemNumber: map['systemNumber'] == null ? null : map['systemNumber'],
-      type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      language: map['language'] == null ? null : (map['language']).input(),
+      logonGroup: map['logonGroup'] == null ? null : (map['logonGroup']).input(),
+      messageServer: map['messageServer'] == null ? null : (map['messageServer']).input(),
+      messageServerService: map['messageServerService'] == null ? null : (map['messageServerService']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      server: map['server'] == null ? null : (map['server']).input(),
+      sncLibraryPath: map['sncLibraryPath'] == null ? null : (map['sncLibraryPath']).input(),
+      sncMode: map['sncMode'] == null ? null : (map['sncMode']).input(),
+      sncMyName: map['sncMyName'] == null ? null : (map['sncMyName']).input(),
+      sncPartnerName: map['sncPartnerName'] == null ? null : (map['sncPartnerName']).input(),
+      sncQop: map['sncQop'] == null ? null : (map['sncQop']).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId']).input(),
+      systemNumber: map['systemNumber'] == null ? null : (map['systemNumber']).input(),
+      type: (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

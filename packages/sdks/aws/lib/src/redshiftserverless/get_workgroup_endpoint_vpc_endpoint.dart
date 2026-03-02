@@ -5,11 +5,11 @@ import 'get_workgroup_endpoint_vpc_endpoint_network_interface.dart';
 
 class GetWorkgroupEndpointVpcEndpoint {
   /// The network interfaces of the endpoint.. See `Network Interface` below.
-  final List<GetWorkgroupEndpointVpcEndpointNetworkInterface> networkInterfaces;
+  final pulumi.Input<List<GetWorkgroupEndpointVpcEndpointNetworkInterface>> networkInterfaces;
   /// The DNS address of the VPC endpoint.
-  final String vpcEndpointId;
+  final pulumi.Input<String> vpcEndpointId;
   /// The port that Amazon Redshift Serverless listens on.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetWorkgroupEndpointVpcEndpoint].
   /// [networkInterfaces] The network interfaces of the endpoint.. See `Network Interface` below.
@@ -23,7 +23,7 @@ class GetWorkgroupEndpointVpcEndpoint {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces': pulumi.Input.encodeList<GetWorkgroupEndpointVpcEndpointNetworkInterface, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces': pulumi.Input.mapInputValue<List<GetWorkgroupEndpointVpcEndpointNetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<GetWorkgroupEndpointVpcEndpointNetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcEndpointId': vpcEndpointId,
       'vpcId': vpcId,
     };
@@ -31,9 +31,9 @@ class GetWorkgroupEndpointVpcEndpoint {
 
   factory GetWorkgroupEndpointVpcEndpoint.fromMap(Map<String, dynamic> map) {
     return GetWorkgroupEndpointVpcEndpoint(
-      networkInterfaces: pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpointNetworkInterface>(map['networkInterfaces'], (value) => GetWorkgroupEndpointVpcEndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
-      vpcEndpointId: map['vpcEndpointId'] as String,
-      vpcId: map['vpcId'] as String,
+      networkInterfaces: (pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpointNetworkInterface>(map['networkInterfaces'], (value) => GetWorkgroupEndpointVpcEndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

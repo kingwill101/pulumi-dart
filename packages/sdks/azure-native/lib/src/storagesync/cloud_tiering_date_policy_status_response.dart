@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of the date policy
 class CloudTieringDatePolicyStatusResponse {
   /// Last updated timestamp
-  final String lastUpdatedTimestamp;
+  final pulumi.Input<String> lastUpdatedTimestamp;
   /// Most recent access time of tiered files
-  final String tieredFilesMostRecentAccessTimestamp;
+  final pulumi.Input<String> tieredFilesMostRecentAccessTimestamp;
 
   /// Creates a new [CloudTieringDatePolicyStatusResponse].
   /// [lastUpdatedTimestamp] Last updated timestamp
@@ -25,8 +26,8 @@ class CloudTieringDatePolicyStatusResponse {
 
   factory CloudTieringDatePolicyStatusResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringDatePolicyStatusResponse(
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] as String,
-      tieredFilesMostRecentAccessTimestamp: map['tieredFilesMostRecentAccessTimestamp'] as String,
+      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
+      tieredFilesMostRecentAccessTimestamp: (map['tieredFilesMostRecentAccessTimestamp'] as String).input(),
     );
   }
 }

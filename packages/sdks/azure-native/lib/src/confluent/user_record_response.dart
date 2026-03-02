@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_entity_response.dart';
 
 /// Record of the user
 class UserRecordResponse {
   /// Auth type of the user
-  final String? authType;
+  final pulumi.Input<String>? authType;
   /// Email of the user
-  final String? email;
+  final pulumi.Input<String>? email;
   /// Name of the user
-  final String? fullName;
+  final pulumi.Input<String>? fullName;
   /// Id of the user
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Type of account
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Metadata of the record
-  final MetadataEntityResponse? metadata;
+  final pulumi.Input<MetadataEntityResponse>? metadata;
 
   /// Creates a new [UserRecordResponse].
   /// [authType] Auth type of the user
@@ -40,18 +41,18 @@ class UserRecordResponse {
       'fullName': ?fullName,
       'id': ?id,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<MetadataEntityResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
   }
 
   factory UserRecordResponse.fromMap(Map<String, dynamic> map) {
     return UserRecordResponse(
-      authType: map['authType'] == null ? null : map['authType'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      fullName: map['fullName'] == null ? null : map['fullName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

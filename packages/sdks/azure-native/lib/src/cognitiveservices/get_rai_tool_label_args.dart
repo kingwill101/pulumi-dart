@@ -19,13 +19,10 @@ class GetRaiToolLabelArgs {
   /// [raiToolConnectionName] The name of the Rai Tool Label
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetRaiToolLabelArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> raiToolConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      raiToolConnectionName = pulumi.Input.asInput<String>(raiToolConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.raiToolConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRaiToolLabelArgs {
 
   factory GetRaiToolLabelArgs.fromMap(Map<String, dynamic> map) {
     return GetRaiToolLabelArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      raiToolConnectionName: pulumi.Output.create<String>(map['raiToolConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      raiToolConnectionName: (map['raiToolConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

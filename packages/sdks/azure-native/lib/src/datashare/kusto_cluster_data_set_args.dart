@@ -29,19 +29,13 @@ class KustoClusterDataSetArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share to add the data set to.
   KustoClusterDataSetArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? dataSetName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> kustoClusterResourceId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dataSetName = pulumi.Input.asOptionalInput<String>(dataSetName),
-      kind = pulumi.Input.asInput<String>(kind),
-      kustoClusterResourceId = pulumi.Input.asInput<String>(kustoClusterResourceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareName = pulumi.Input.asInput<String>(shareName);
+    required this.accountName,
+    this.dataSetName,
+    required this.kind,
+    required this.kustoClusterResourceId,
+    required this.resourceGroupName,
+    required this.shareName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class KustoClusterDataSetArgs {
 
   factory KustoClusterDataSetArgs.fromMap(Map<String, dynamic> map) {
     return KustoClusterDataSetArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dataSetName: map['dataSetName'] == null ? null : pulumi.Output.create<String>(map['dataSetName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      kustoClusterResourceId: pulumi.Output.create<String>(map['kustoClusterResourceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      kustoClusterResourceId: (map['kustoClusterResourceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IotHubDeviceUpdateInstanceDiagnosticStorageAccount {
   /// Connection String of the Diagnostic Storage Account.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// Resource ID of the Diagnostic Storage Account.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [IotHubDeviceUpdateInstanceDiagnosticStorageAccount].
   /// [connectionString] Connection String of the Diagnostic Storage Account.
@@ -24,8 +25,8 @@ class IotHubDeviceUpdateInstanceDiagnosticStorageAccount {
 
   factory IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap(Map<String, dynamic> map) {
     return IotHubDeviceUpdateInstanceDiagnosticStorageAccount(
-      connectionString: map['connectionString'] as String,
-      id: map['id'] as String,
+      connectionString: (map['connectionString'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

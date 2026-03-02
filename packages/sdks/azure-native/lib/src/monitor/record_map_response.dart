@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Record map for schema in azure monitor.
 class RecordMapResponse {
   /// Record Map Key.
-  final String from;
+  final pulumi.Input<String> from;
   /// Record Map Value.
-  final String to;
+  final pulumi.Input<String> to;
 
   /// Creates a new [RecordMapResponse].
   /// [from] Record Map Key.
@@ -25,8 +26,8 @@ class RecordMapResponse {
 
   factory RecordMapResponse.fromMap(Map<String, dynamic> map) {
     return RecordMapResponse(
-      from: map['from'] as String,
-      to: map['to'] as String,
+      from: (map['from'] as String).input(),
+      to: (map['to'] as String).input(),
     );
   }
 }

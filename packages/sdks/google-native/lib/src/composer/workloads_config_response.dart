@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduler_resource_response.dart';
 import 'triggerer_resource_response.dart';
 import 'web_server_resource_response.dart';
@@ -8,13 +9,13 @@ import 'worker_resource_response.dart';
 /// The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 class WorkloadsConfigResponse {
   /// Optional. Resources used by Airflow schedulers.
-  final SchedulerResourceResponse scheduler;
+  final pulumi.Input<SchedulerResourceResponse> scheduler;
   /// Optional. Resources used by Airflow triggerers.
-  final TriggererResourceResponse triggerer;
+  final pulumi.Input<TriggererResourceResponse> triggerer;
   /// Optional. Resources used by Airflow web server.
-  final WebServerResourceResponse webServer;
+  final pulumi.Input<WebServerResourceResponse> webServer;
   /// Optional. Resources used by Airflow workers.
-  final WorkerResourceResponse worker;
+  final pulumi.Input<WorkerResourceResponse> worker;
 
   /// Creates a new [WorkloadsConfigResponse].
   /// [scheduler] Optional. Resources used by Airflow schedulers.
@@ -30,19 +31,19 @@ class WorkloadsConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scheduler': scheduler.toMap(),
-      'triggerer': triggerer.toMap(),
-      'webServer': webServer.toMap(),
-      'worker': worker.toMap(),
+      'scheduler': pulumi.Input.mapInputValue<SchedulerResourceResponse, Map<String, dynamic>>(scheduler, (value) => value.toMap()),
+      'triggerer': pulumi.Input.mapInputValue<TriggererResourceResponse, Map<String, dynamic>>(triggerer, (value) => value.toMap()),
+      'webServer': pulumi.Input.mapInputValue<WebServerResourceResponse, Map<String, dynamic>>(webServer, (value) => value.toMap()),
+      'worker': pulumi.Input.mapInputValue<WorkerResourceResponse, Map<String, dynamic>>(worker, (value) => value.toMap()),
     };
   }
 
   factory WorkloadsConfigResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadsConfigResponse(
-      scheduler: SchedulerResourceResponse.fromMap((map['scheduler'] as Map).cast<String, dynamic>()),
-      triggerer: TriggererResourceResponse.fromMap((map['triggerer'] as Map).cast<String, dynamic>()),
-      webServer: WebServerResourceResponse.fromMap((map['webServer'] as Map).cast<String, dynamic>()),
-      worker: WorkerResourceResponse.fromMap((map['worker'] as Map).cast<String, dynamic>()),
+      scheduler: (SchedulerResourceResponse.fromMap((map['scheduler'] as Map).cast<String, dynamic>())).input(),
+      triggerer: (TriggererResourceResponse.fromMap((map['triggerer'] as Map).cast<String, dynamic>())).input(),
+      webServer: (WebServerResourceResponse.fromMap((map['webServer'] as Map).cast<String, dynamic>())).input(),
+      worker: (WorkerResourceResponse.fromMap((map['worker'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'priority_level_configuration_condition_patch_flowcontrol_apiserver_k8s_i
 /// PriorityLevelConfigurationStatus represents the current state of a "request-priority".
 class PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta2 {
   /// `conditions` is the current state of "request-priority".
-  final List<PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2>? conditions;
+  final pulumi.Input<List<PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2>>? conditions;
 
   /// Creates a new [PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta2].
   /// [conditions] `conditions` is the current state of "request-priority".
@@ -16,13 +16,13 @@ class PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta2(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2>(map['conditions'], (value) => PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2>(map['conditions'], (value) => PriorityLevelConfigurationConditionPatchFlowcontrolApiserverK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

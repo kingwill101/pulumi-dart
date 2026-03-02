@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectCapabilityHost {
   /// List of AI services connections.
-  final List<String>? aiServicesConnections;
+  final pulumi.Input<List<String>>? aiServicesConnections;
   /// List of connection names from those available in the account or project to be used as a storage resource.
-  final List<String>? storageConnections;
+  final pulumi.Input<List<String>>? storageConnections;
   /// List of connection names from those available in the account or project to be used for Thread storage.
-  final List<String>? threadStorageConnections;
+  final pulumi.Input<List<String>>? threadStorageConnections;
   /// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
-  final List<String>? vectorStoreConnections;
+  final pulumi.Input<List<String>>? vectorStoreConnections;
 
   /// Creates a new [ProjectCapabilityHost].
   /// [aiServicesConnections] List of AI services connections.
@@ -34,10 +35,10 @@ class ProjectCapabilityHost {
 
   factory ProjectCapabilityHost.fromMap(Map<String, dynamic> map) {
     return ProjectCapabilityHost(
-      aiServicesConnections: map['aiServicesConnections'] == null ? null : (map['aiServicesConnections'] as List).cast<String>(),
-      storageConnections: map['storageConnections'] == null ? null : (map['storageConnections'] as List).cast<String>(),
-      threadStorageConnections: map['threadStorageConnections'] == null ? null : (map['threadStorageConnections'] as List).cast<String>(),
-      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : (map['vectorStoreConnections'] as List).cast<String>(),
+      aiServicesConnections: map['aiServicesConnections'] == null ? null : ((map['aiServicesConnections'] as List).cast<String>()).input(),
+      storageConnections: map['storageConnections'] == null ? null : ((map['storageConnections'] as List).cast<String>()).input(),
+      threadStorageConnections: map['threadStorageConnections'] == null ? null : ((map['threadStorageConnections'] as List).cast<String>()).input(),
+      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : ((map['vectorStoreConnections'] as List).cast<String>()).input(),
     );
   }
 }

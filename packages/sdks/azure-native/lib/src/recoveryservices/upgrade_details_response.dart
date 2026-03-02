@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details for upgrading vault.
 class UpgradeDetailsResponse {
   /// UTC time at which the upgrade operation has ended.
-  final String endTimeUtc;
+  final pulumi.Input<String> endTimeUtc;
   /// UTC time at which the upgrade operation status was last updated.
-  final String lastUpdatedTimeUtc;
+  final pulumi.Input<String> lastUpdatedTimeUtc;
   /// Message to the user containing information about the upgrade operation.
-  final String message;
+  final pulumi.Input<String> message;
   /// ID of the vault upgrade operation.
-  final String operationId;
+  final pulumi.Input<String> operationId;
   /// Resource ID of the vault before the upgrade.
-  final String previousResourceId;
+  final pulumi.Input<String> previousResourceId;
   /// UTC time at which the upgrade operation has started.
-  final String startTimeUtc;
+  final pulumi.Input<String> startTimeUtc;
   /// Status of the vault upgrade operation.
-  final String status;
+  final pulumi.Input<String> status;
   /// The way the vault upgrade was triggered.
-  final String triggerType;
+  final pulumi.Input<String> triggerType;
   /// Resource ID of the upgraded vault.
-  final String upgradedResourceId;
+  final pulumi.Input<String> upgradedResourceId;
 
   /// Creates a new [UpgradeDetailsResponse].
   /// [endTimeUtc] UTC time at which the upgrade operation has ended.
@@ -60,15 +61,15 @@ class UpgradeDetailsResponse {
 
   factory UpgradeDetailsResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeDetailsResponse(
-      endTimeUtc: map['endTimeUtc'] as String,
-      lastUpdatedTimeUtc: map['lastUpdatedTimeUtc'] as String,
-      message: map['message'] as String,
-      operationId: map['operationId'] as String,
-      previousResourceId: map['previousResourceId'] as String,
-      startTimeUtc: map['startTimeUtc'] as String,
-      status: map['status'] as String,
-      triggerType: map['triggerType'] as String,
-      upgradedResourceId: map['upgradedResourceId'] as String,
+      endTimeUtc: (map['endTimeUtc'] as String).input(),
+      lastUpdatedTimeUtc: (map['lastUpdatedTimeUtc'] as String).input(),
+      message: (map['message'] as String).input(),
+      operationId: (map['operationId'] as String).input(),
+      previousResourceId: (map['previousResourceId'] as String).input(),
+      startTimeUtc: (map['startTimeUtc'] as String).input(),
+      status: (map['status'] as String).input(),
+      triggerType: (map['triggerType'] as String).input(),
+      upgradedResourceId: (map['upgradedResourceId'] as String).input(),
     );
   }
 }

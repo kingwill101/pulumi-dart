@@ -39,23 +39,15 @@ class GdcServiceInstanceArgs {
   /// [serviceInstanceId] Id of the service instance.
   /// [sparkServiceInstanceConfig] Spark-specific service instance configuration.
   GdcServiceInstanceArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GdcServiceInstanceGdceCluster>? gdceCluster,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceAccount,
-    required pulumi.Output<String> serviceInstanceId,
-    pulumi.Output<Map<String, dynamic>>? sparkServiceInstanceConfig,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gdceCluster = pulumi.Input.asOptionalInput<GdcServiceInstanceGdceCluster>(gdceCluster),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      serviceInstanceId = pulumi.Input.asInput<String>(serviceInstanceId),
-      sparkServiceInstanceConfig = pulumi.Input.asOptionalInput<Map<String, dynamic>>(sparkServiceInstanceConfig);
+    this.displayName,
+    this.gdceCluster,
+    this.labels,
+    required this.location,
+    this.project,
+    this.serviceAccount,
+    required this.serviceInstanceId,
+    this.sparkServiceInstanceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class GdcServiceInstanceArgs {
 
   factory GdcServiceInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GdcServiceInstanceArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      gdceCluster: map['gdceCluster'] == null ? null : pulumi.Output.create<GdcServiceInstanceGdceCluster>(GdcServiceInstanceGdceCluster.fromMap((map['gdceCluster'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      serviceInstanceId: pulumi.Output.create<String>(map['serviceInstanceId'] as String),
-      sparkServiceInstanceConfig: map['sparkServiceInstanceConfig'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['sparkServiceInstanceConfig'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      gdceCluster: map['gdceCluster'] == null ? null : (GdcServiceInstanceGdceCluster.fromMap((map['gdceCluster'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      serviceInstanceId: (map['serviceInstanceId'] as String).input(),
+      sparkServiceInstanceConfig: map['sparkServiceInstanceConfig'] == null ? null : ((map['sparkServiceInstanceConfig'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

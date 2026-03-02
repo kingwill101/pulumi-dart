@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefaultObjectAccessControlProjectTeam {
   /// The project team associated with the entity
-  final String? projectNumber;
+  final pulumi.Input<String>? projectNumber;
   /// The team.
   /// Possible values are: `editors`, `owners`, `viewers`.
-  final String? team;
+  final pulumi.Input<String>? team;
 
   /// Creates a new [DefaultObjectAccessControlProjectTeam].
   /// [projectNumber] The project team associated with the entity
@@ -25,8 +26,8 @@ class DefaultObjectAccessControlProjectTeam {
 
   factory DefaultObjectAccessControlProjectTeam.fromMap(Map<String, dynamic> map) {
     return DefaultObjectAccessControlProjectTeam(
-      projectNumber: map['projectNumber'] == null ? null : map['projectNumber'] as String,
-      team: map['team'] == null ? null : map['team'] as String,
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      team: map['team'] == null ? null : (map['team'] as String).input(),
     );
   }
 }

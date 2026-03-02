@@ -26,17 +26,12 @@ class DynamicTagGroupArgs {
   /// [tagKey] The tag keys of the cloud resources.
   /// [templateIdLists] The IDs of the alert templates.
   DynamicTagGroupArgs({
-    required pulumi.Output<List<String>> contactGroupLists,
-    pulumi.Output<String>? matchExpressFilterRelation,
-    required pulumi.Output<List<DynamicTagGroupMatchExpress>> matchExpresses,
-    required pulumi.Output<String> tagKey,
-    pulumi.Output<List<String>>? templateIdLists,
-  }) :
-      contactGroupLists = pulumi.Input.asInput<List<String>>(contactGroupLists),
-      matchExpressFilterRelation = pulumi.Input.asOptionalInput<String>(matchExpressFilterRelation),
-      matchExpresses = pulumi.Input.asInput<List<DynamicTagGroupMatchExpress>>(matchExpresses),
-      tagKey = pulumi.Input.asInput<String>(tagKey),
-      templateIdLists = pulumi.Input.asOptionalInput<List<String>>(templateIdLists);
+    required this.contactGroupLists,
+    this.matchExpressFilterRelation,
+    required this.matchExpresses,
+    required this.tagKey,
+    this.templateIdLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DynamicTagGroupArgs {
 
   factory DynamicTagGroupArgs.fromMap(Map<String, dynamic> map) {
     return DynamicTagGroupArgs(
-      contactGroupLists: pulumi.Output.create<List<String>>((map['contactGroupLists'] as List).cast<String>()),
-      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : pulumi.Output.create<String>(map['matchExpressFilterRelation'] as String),
-      matchExpresses: pulumi.Output.create<List<DynamicTagGroupMatchExpress>>(pulumi.Input.decodeList<DynamicTagGroupMatchExpress>(map['matchExpresses'], (value) => DynamicTagGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>()))),
-      tagKey: pulumi.Output.create<String>(map['tagKey'] as String),
-      templateIdLists: map['templateIdLists'] == null ? null : pulumi.Output.create<List<String>>((map['templateIdLists'] as List).cast<String>()),
+      contactGroupLists: ((map['contactGroupLists'] as List).cast<String>()).input(),
+      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation'] as String).input(),
+      matchExpresses: (pulumi.Input.decodeList<DynamicTagGroupMatchExpress>(map['matchExpresses'], (value) => DynamicTagGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tagKey: (map['tagKey'] as String).input(),
+      templateIdLists: map['templateIdLists'] == null ? null : ((map['templateIdLists'] as List).cast<String>()).input(),
     );
   }
 }

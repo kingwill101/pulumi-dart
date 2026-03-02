@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorIdentity {
   /// The Principal ID for the Service Principal associated with the Identity of this Azure Native New Relic Monitor.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// The Tenant ID for the Service Principal associated with the Identity of this Azure Native New Relic Monitor.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Specifies the identity type of the Azure Native New Relic Monitor. The only possible value is `SystemAssigned`. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MonitorIdentity].
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Azure Native New Relic Monitor.
@@ -29,9 +30,9 @@ class MonitorIdentity {
 
   factory MonitorIdentity.fromMap(Map<String, dynamic> map) {
     return MonitorIdentity(
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

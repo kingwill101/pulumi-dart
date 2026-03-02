@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp {
   /// Hostname of the machine. VM's name will be used if this field is empty.
-  final String? hostname;
+  final pulumi.Input<String>? hostname;
   /// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
-  final String ip;
+  final pulumi.Input<String> ip;
 
   /// Creates a new [VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp].
   /// [hostname] Hostname of the machine. VM's name will be used if this field is empty.
@@ -24,8 +25,8 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp {
 
   factory VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp(
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      ip: map['ip'] as String,
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      ip: (map['ip'] as String).input(),
     );
   }
 }

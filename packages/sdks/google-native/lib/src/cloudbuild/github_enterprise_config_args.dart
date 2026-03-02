@@ -45,31 +45,19 @@ class GithubEnterpriseConfigArgs {
   /// [sslCa] Optional. SSL certificate to use for requests to GitHub Enterprise.
   /// [webhookKey] The key that should be attached to webhook calls to the ReceiveWebhook endpoint.
   GithubEnterpriseConfigArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? gheConfigId,
-    pulumi.Output<String>? hostUrl,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? peeredNetwork,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<GitHubEnterpriseSecrets>? secrets,
-    pulumi.Output<String>? sslCa,
-    pulumi.Output<String>? webhookKey,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gheConfigId = pulumi.Input.asOptionalInput<String>(gheConfigId),
-      hostUrl = pulumi.Input.asOptionalInput<String>(hostUrl),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peeredNetwork = pulumi.Input.asOptionalInput<String>(peeredNetwork),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      secrets = pulumi.Input.asOptionalInput<GitHubEnterpriseSecrets>(secrets),
-      sslCa = pulumi.Input.asOptionalInput<String>(sslCa),
-      webhookKey = pulumi.Input.asOptionalInput<String>(webhookKey);
+    required this.appId,
+    this.displayName,
+    this.gheConfigId,
+    this.hostUrl,
+    this.location,
+    this.name,
+    this.peeredNetwork,
+    this.project,
+    this.projectId,
+    this.secrets,
+    this.sslCa,
+    this.webhookKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class GithubEnterpriseConfigArgs {
 
   factory GithubEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
     return GithubEnterpriseConfigArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      gheConfigId: map['gheConfigId'] == null ? null : pulumi.Output.create<String>(map['gheConfigId'] as String),
-      hostUrl: map['hostUrl'] == null ? null : pulumi.Output.create<String>(map['hostUrl'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peeredNetwork: map['peeredNetwork'] == null ? null : pulumi.Output.create<String>(map['peeredNetwork'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      secrets: map['secrets'] == null ? null : pulumi.Output.create<GitHubEnterpriseSecrets>(GitHubEnterpriseSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())),
-      sslCa: map['sslCa'] == null ? null : pulumi.Output.create<String>(map['sslCa'] as String),
-      webhookKey: map['webhookKey'] == null ? null : pulumi.Output.create<String>(map['webhookKey'] as String),
+      appId: (map['appId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      gheConfigId: map['gheConfigId'] == null ? null : (map['gheConfigId'] as String).input(),
+      hostUrl: map['hostUrl'] == null ? null : (map['hostUrl'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      secrets: map['secrets'] == null ? null : (GitHubEnterpriseSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey'] as String).input(),
     );
   }
 }

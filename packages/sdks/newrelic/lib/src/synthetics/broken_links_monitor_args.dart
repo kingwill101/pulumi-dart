@@ -52,29 +52,18 @@ class BrokenLinksMonitorArgs {
   /// [uri] The URI the monitor runs against.
   /// [useUnsupportedLegacyRuntime] A boolean attribute to be set true by the customer, if they would like to use the unsupported legacy runtime of Synthetic Monitors by means of an exemption given until the October 22, 2024 Legacy Runtime EOL. Setting this attribute to true would allow skipping validation performed by the the New Relic Terraform Provider starting v3.43.0 to disallow using the legacy runtime with new monitors. This would, hence, allow creation of monitors in the legacy runtime until the October 22, 2024 Legacy Runtime EOL, if exempt by the API.
   BrokenLinksMonitorArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<List<String>>? locationsPrivates,
-    pulumi.Output<List<String>>? locationsPublics,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> period,
-    pulumi.Output<String>? runtimeType_,
-    pulumi.Output<String>? runtimeTypeVersion,
-    required pulumi.Output<String> status,
-    pulumi.Output<List<BrokenLinksMonitorTag>>? tags,
-    required pulumi.Output<String> uri,
-    pulumi.Output<bool>? useUnsupportedLegacyRuntime,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      locationsPrivates = pulumi.Input.asOptionalInput<List<String>>(locationsPrivates),
-      locationsPublics = pulumi.Input.asOptionalInput<List<String>>(locationsPublics),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      period = pulumi.Input.asInput<String>(period),
-      runtimeType_ = pulumi.Input.asOptionalInput<String>(runtimeType_),
-      runtimeTypeVersion = pulumi.Input.asOptionalInput<String>(runtimeTypeVersion),
-      status = pulumi.Input.asInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<BrokenLinksMonitorTag>>(tags),
-      uri = pulumi.Input.asInput<String>(uri),
-      useUnsupportedLegacyRuntime = pulumi.Input.asOptionalInput<bool>(useUnsupportedLegacyRuntime);
+    this.accountId,
+    this.locationsPrivates,
+    this.locationsPublics,
+    this.name,
+    required this.period,
+    this.runtimeType_,
+    this.runtimeTypeVersion,
+    required this.status,
+    this.tags,
+    required this.uri,
+    this.useUnsupportedLegacyRuntime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,17 +83,17 @@ class BrokenLinksMonitorArgs {
 
   factory BrokenLinksMonitorArgs.fromMap(Map<String, dynamic> map) {
     return BrokenLinksMonitorArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      locationsPrivates: map['locationsPrivates'] == null ? null : pulumi.Output.create<List<String>>((map['locationsPrivates'] as List).cast<String>()),
-      locationsPublics: map['locationsPublics'] == null ? null : pulumi.Output.create<List<String>>((map['locationsPublics'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      period: pulumi.Output.create<String>(map['period'] as String),
-      runtimeType_: map['runtimeType'] == null ? null : pulumi.Output.create<String>(map['runtimeType'] as String),
-      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : pulumi.Output.create<String>(map['runtimeTypeVersion'] as String),
-      status: pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<BrokenLinksMonitorTag>>(pulumi.Input.decodeList<BrokenLinksMonitorTag>(map['tags'], (value) => BrokenLinksMonitorTag.fromMap((value as Map).cast<String, dynamic>()))),
-      uri: pulumi.Output.create<String>(map['uri'] as String),
-      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : pulumi.Output.create<bool>(map['useUnsupportedLegacyRuntime'] as bool),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      locationsPrivates: map['locationsPrivates'] == null ? null : ((map['locationsPrivates'] as List).cast<String>()).input(),
+      locationsPublics: map['locationsPublics'] == null ? null : ((map['locationsPublics'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      period: (map['period'] as String).input(),
+      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType'] as String).input(),
+      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : (map['runtimeTypeVersion'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<BrokenLinksMonitorTag>(map['tags'], (value) => BrokenLinksMonitorTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uri: (map['uri'] as String).input(),
+      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : (map['useUnsupportedLegacyRuntime'] as bool).input(),
     );
   }
 }

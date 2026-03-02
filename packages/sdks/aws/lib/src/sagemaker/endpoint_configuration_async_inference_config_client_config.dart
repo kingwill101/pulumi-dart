@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointConfigurationAsyncInferenceConfigClientConfig {
   /// Maximum number of concurrent requests sent by the SageMaker AI client to the model container. If no value is provided, SageMaker AI will choose an optimal value for you.
-  final int? maxConcurrentInvocationsPerInstance;
+  final pulumi.Input<int>? maxConcurrentInvocationsPerInstance;
 
   /// Creates a new [EndpointConfigurationAsyncInferenceConfigClientConfig].
   /// [maxConcurrentInvocationsPerInstance] Maximum number of concurrent requests sent by the SageMaker AI client to the model container. If no value is provided, SageMaker AI will choose an optimal value for you.
@@ -19,7 +20,7 @@ class EndpointConfigurationAsyncInferenceConfigClientConfig {
 
   factory EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfigClientConfig(
-      maxConcurrentInvocationsPerInstance: map['maxConcurrentInvocationsPerInstance'] == null ? null : map['maxConcurrentInvocationsPerInstance'] as int,
+      maxConcurrentInvocationsPerInstance: map['maxConcurrentInvocationsPerInstance'] == null ? null : (map['maxConcurrentInvocationsPerInstance'] as int).input(),
     );
   }
 }

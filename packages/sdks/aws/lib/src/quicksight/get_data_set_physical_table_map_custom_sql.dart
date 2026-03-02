@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_data_set_physical_table_map_custom_sql_column.dart';
 
 class GetDataSetPhysicalTableMapCustomSql {
-  final List<GetDataSetPhysicalTableMapCustomSqlColumn> columns;
-  final String dataSourceArn;
-  final String name;
-  final String sqlQuery;
+  final pulumi.Input<List<GetDataSetPhysicalTableMapCustomSqlColumn>> columns;
+  final pulumi.Input<String> dataSourceArn;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> sqlQuery;
 
   /// Creates a new [GetDataSetPhysicalTableMapCustomSql].
   /// [columns] Required.
@@ -23,7 +23,7 @@ class GetDataSetPhysicalTableMapCustomSql {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': pulumi.Input.encodeList<GetDataSetPhysicalTableMapCustomSqlColumn, Map<String, dynamic>>(columns, (value) => value.toMap()),
+      'columns': pulumi.Input.mapInputValue<List<GetDataSetPhysicalTableMapCustomSqlColumn>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<GetDataSetPhysicalTableMapCustomSqlColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataSourceArn': dataSourceArn,
       'name': name,
       'sqlQuery': sqlQuery,
@@ -32,10 +32,10 @@ class GetDataSetPhysicalTableMapCustomSql {
 
   factory GetDataSetPhysicalTableMapCustomSql.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapCustomSql(
-      columns: pulumi.Input.decodeList<GetDataSetPhysicalTableMapCustomSqlColumn>(map['columns'], (value) => GetDataSetPhysicalTableMapCustomSqlColumn.fromMap((value as Map).cast<String, dynamic>())),
-      dataSourceArn: map['dataSourceArn'] as String,
-      name: map['name'] as String,
-      sqlQuery: map['sqlQuery'] as String,
+      columns: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapCustomSqlColumn>(map['columns'], (value) => GetDataSetPhysicalTableMapCustomSqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSourceArn: (map['dataSourceArn'] as String).input(),
+      name: (map['name'] as String).input(),
+      sqlQuery: (map['sqlQuery'] as String).input(),
     );
   }
 }

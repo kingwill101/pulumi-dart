@@ -16,11 +16,9 @@ class GetSiteNetworkServiceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteNetworkServiceName] The name of the site network service.
   GetSiteNetworkServiceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteNetworkServiceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteNetworkServiceName = pulumi.Input.asInput<String>(siteNetworkServiceName);
+    required this.resourceGroupName,
+    required this.siteNetworkServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSiteNetworkServiceArgs {
 
   factory GetSiteNetworkServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteNetworkServiceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteNetworkServiceName: pulumi.Output.create<String>(map['siteNetworkServiceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteNetworkServiceName: (map['siteNetworkServiceName'] as String).input(),
     );
   }
 }

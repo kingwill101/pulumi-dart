@@ -6,9 +6,9 @@ import 'event_response.dart';
 /// The instance view of the container group. Only valid in response.
 class ContainerGroupPropertiesResponseInstanceView {
   /// The events of this container group.
-  final List<EventResponse> events;
+  final pulumi.Input<List<EventResponse>> events;
   /// The state of the container group. Only valid in response.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [ContainerGroupPropertiesResponseInstanceView].
   /// [events] The events of this container group.
@@ -20,15 +20,15 @@ class ContainerGroupPropertiesResponseInstanceView {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'events': pulumi.Input.encodeList<EventResponse, Map<String, dynamic>>(events, (value) => value.toMap()),
+      'events': pulumi.Input.mapInputValue<List<EventResponse>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<EventResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': state,
     };
   }
 
   factory ContainerGroupPropertiesResponseInstanceView.fromMap(Map<String, dynamic> map) {
     return ContainerGroupPropertiesResponseInstanceView(
-      events: pulumi.Input.decodeList<EventResponse>(map['events'], (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
+      events: (pulumi.Input.decodeList<EventResponse>(map['events'], (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

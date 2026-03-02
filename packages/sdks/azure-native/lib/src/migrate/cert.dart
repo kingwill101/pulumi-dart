@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// WebApplication certificate.
 class Cert {
   /// Gets or sets the Certificate data.
-  final String? certData;
+  final pulumi.Input<String>? certData;
   /// Gets or sets a value indicating whether certificate is needed or not.
-  final bool? certNeeded;
+  final pulumi.Input<bool>? certNeeded;
   /// Gets or sets a value indicating whether certificate is provided or not.
-  final bool? certProvided;
+  final pulumi.Input<bool>? certProvided;
   /// Gets or sets the type of secret store for the certificate.
-  final String? secretStore;
+  final pulumi.Input<String>? secretStore;
 
   /// Creates a new [Cert].
   /// [certData] Gets or sets the Certificate data.
@@ -35,10 +36,10 @@ class Cert {
 
   factory Cert.fromMap(Map<String, dynamic> map) {
     return Cert(
-      certData: map['certData'] == null ? null : map['certData'] as String,
-      certNeeded: map['certNeeded'] == null ? null : map['certNeeded'] as bool,
-      certProvided: map['certProvided'] == null ? null : map['certProvided'] as bool,
-      secretStore: map['secretStore'] == null ? null : map['secretStore'] as String,
+      certData: map['certData'] == null ? null : (map['certData'] as String).input(),
+      certNeeded: map['certNeeded'] == null ? null : (map['certNeeded'] as bool).input(),
+      certProvided: map['certProvided'] == null ? null : (map['certProvided'] as bool).input(),
+      secretStore: map['secretStore'] == null ? null : (map['secretStore'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class WebAclLoggingConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] Amazon Resource Name (ARN) of the web ACL that you want to associate with `log_destination_configs`.
   WebAclLoggingConfigurationArgs({
-    required pulumi.Output<List<String>> logDestinationConfigs,
-    pulumi.Output<WebAclLoggingConfigurationLoggingFilter>? loggingFilter,
-    pulumi.Output<List<WebAclLoggingConfigurationRedactedField>>? redactedFields,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-  }) :
-      logDestinationConfigs = pulumi.Input.asInput<List<String>>(logDestinationConfigs),
-      loggingFilter = pulumi.Input.asOptionalInput<WebAclLoggingConfigurationLoggingFilter>(loggingFilter),
-      redactedFields = pulumi.Input.asOptionalInput<List<WebAclLoggingConfigurationRedactedField>>(redactedFields),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn);
+    required this.logDestinationConfigs,
+    this.loggingFilter,
+    this.redactedFields,
+    this.region,
+    required this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class WebAclLoggingConfigurationArgs {
 
   factory WebAclLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationArgs(
-      logDestinationConfigs: pulumi.Output.create<List<String>>((map['logDestinationConfigs'] as List).cast<String>()),
-      loggingFilter: map['loggingFilter'] == null ? null : pulumi.Output.create<WebAclLoggingConfigurationLoggingFilter>(WebAclLoggingConfigurationLoggingFilter.fromMap((map['loggingFilter'] as Map).cast<String, dynamic>())),
-      redactedFields: map['redactedFields'] == null ? null : pulumi.Output.create<List<WebAclLoggingConfigurationRedactedField>>(pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedField>(map['redactedFields'], (value) => WebAclLoggingConfigurationRedactedField.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
+      logDestinationConfigs: ((map['logDestinationConfigs'] as List).cast<String>()).input(),
+      loggingFilter: map['loggingFilter'] == null ? null : (WebAclLoggingConfigurationLoggingFilter.fromMap((map['loggingFilter'] as Map).cast<String, dynamic>())).input(),
+      redactedFields: map['redactedFields'] == null ? null : (pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedField>(map['redactedFields'], (value) => WebAclLoggingConfigurationRedactedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
     );
   }
 }

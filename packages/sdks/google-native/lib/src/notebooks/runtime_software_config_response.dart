@@ -6,31 +6,31 @@ import 'container_image_response.dart';
 /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 class RuntimeSoftwareConfigResponse {
   /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
-  final String customGpuDriverPath;
+  final pulumi.Input<String> customGpuDriverPath;
   /// Bool indicating whether JupyterLab terminal will be available or not. Default: False
-  final bool disableTerminal;
+  final pulumi.Input<bool> disableTerminal;
   /// Verifies core internal services are running. Default: True
-  final bool enableHealthMonitoring;
+  final pulumi.Input<bool> enableHealthMonitoring;
   /// Runtime will automatically shutdown after idle_shutdown_time. Default: True
-  final bool idleShutdown;
+  final pulumi.Input<bool> idleShutdown;
   /// Time in minutes to wait before shutting down runtime. Default: 180 minutes
-  final int idleShutdownTimeout;
+  final pulumi.Input<int> idleShutdownTimeout;
   /// Install Nvidia Driver automatically. Default: True
-  final bool installGpuDriver;
+  final pulumi.Input<bool> installGpuDriver;
   /// Optional. Use a list of container images to use as Kernels in the notebook instance.
-  final List<ContainerImageResponse> kernels;
+  final pulumi.Input<List<ContainerImageResponse>> kernels;
   /// Bool indicating whether mixer client should be disabled. Default: False
-  final bool mixerDisabled;
+  final pulumi.Input<bool> mixerDisabled;
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
-  final String notebookUpgradeSchedule;
+  final pulumi.Input<String> notebookUpgradeSchedule;
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
-  final String postStartupScript;
+  final pulumi.Input<String> postStartupScript;
   /// Behavior for the post startup script.
-  final String postStartupScriptBehavior;
+  final pulumi.Input<String> postStartupScriptBehavior;
   /// Bool indicating whether an newer image is available in an image family.
-  final bool upgradeable;
+  final pulumi.Input<bool> upgradeable;
   /// version of boot image such as M100, from release label of the image.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [RuntimeSoftwareConfigResponse].
   /// [customGpuDriverPath] Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -70,7 +70,7 @@ class RuntimeSoftwareConfigResponse {
       'idleShutdown': idleShutdown,
       'idleShutdownTimeout': idleShutdownTimeout,
       'installGpuDriver': installGpuDriver,
-      'kernels': pulumi.Input.encodeList<ContainerImageResponse, Map<String, dynamic>>(kernels, (value) => value.toMap()),
+      'kernels': pulumi.Input.mapInputValue<List<ContainerImageResponse>, List<Map<String, dynamic>>>(kernels, (value) => pulumi.Input.encodeList<ContainerImageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mixerDisabled': mixerDisabled,
       'notebookUpgradeSchedule': notebookUpgradeSchedule,
       'postStartupScript': postStartupScript,
@@ -82,19 +82,19 @@ class RuntimeSoftwareConfigResponse {
 
   factory RuntimeSoftwareConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeSoftwareConfigResponse(
-      customGpuDriverPath: map['customGpuDriverPath'] as String,
-      disableTerminal: map['disableTerminal'] as bool,
-      enableHealthMonitoring: map['enableHealthMonitoring'] as bool,
-      idleShutdown: map['idleShutdown'] as bool,
-      idleShutdownTimeout: map['idleShutdownTimeout'] as int,
-      installGpuDriver: map['installGpuDriver'] as bool,
-      kernels: pulumi.Input.decodeList<ContainerImageResponse>(map['kernels'], (value) => ContainerImageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      mixerDisabled: map['mixerDisabled'] as bool,
-      notebookUpgradeSchedule: map['notebookUpgradeSchedule'] as String,
-      postStartupScript: map['postStartupScript'] as String,
-      postStartupScriptBehavior: map['postStartupScriptBehavior'] as String,
-      upgradeable: map['upgradeable'] as bool,
-      version: map['version'] as String,
+      customGpuDriverPath: (map['customGpuDriverPath'] as String).input(),
+      disableTerminal: (map['disableTerminal'] as bool).input(),
+      enableHealthMonitoring: (map['enableHealthMonitoring'] as bool).input(),
+      idleShutdown: (map['idleShutdown'] as bool).input(),
+      idleShutdownTimeout: (map['idleShutdownTimeout'] as int).input(),
+      installGpuDriver: (map['installGpuDriver'] as bool).input(),
+      kernels: (pulumi.Input.decodeList<ContainerImageResponse>(map['kernels'], (value) => ContainerImageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mixerDisabled: (map['mixerDisabled'] as bool).input(),
+      notebookUpgradeSchedule: (map['notebookUpgradeSchedule'] as String).input(),
+      postStartupScript: (map['postStartupScript'] as String).input(),
+      postStartupScriptBehavior: (map['postStartupScriptBehavior'] as String).input(),
+      upgradeable: (map['upgradeable'] as bool).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

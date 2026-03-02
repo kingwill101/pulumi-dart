@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The storage configuration provides the non-secret connection details about the customer storage account that is used to store the environment's data.
 class Gen2StorageConfigurationOutputResponse {
   /// The name of the storage account that will hold the environment's Gen2 data.
-  final String accountName;
+  final pulumi.Input<String> accountName;
 
   /// Creates a new [Gen2StorageConfigurationOutputResponse].
   /// [accountName] The name of the storage account that will hold the environment's Gen2 data.
@@ -20,7 +21,7 @@ class Gen2StorageConfigurationOutputResponse {
 
   factory Gen2StorageConfigurationOutputResponse.fromMap(Map<String, dynamic> map) {
     return Gen2StorageConfigurationOutputResponse(
-      accountName: map['accountName'] as String,
+      accountName: (map['accountName'] as String).input(),
     );
   }
 }

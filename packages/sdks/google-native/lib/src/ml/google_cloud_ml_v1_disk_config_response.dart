@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the config of disk options.
 class GoogleCloudMlV1DiskConfigResponse {
   /// Size in GB of the boot disk (default is 100GB).
-  final int bootDiskSizeGb;
+  final pulumi.Input<int> bootDiskSizeGb;
   /// Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-  final String bootDiskType;
+  final pulumi.Input<String> bootDiskType;
 
   /// Creates a new [GoogleCloudMlV1DiskConfigResponse].
   /// [bootDiskSizeGb] Size in GB of the boot disk (default is 100GB).
@@ -25,8 +26,8 @@ class GoogleCloudMlV1DiskConfigResponse {
 
   factory GoogleCloudMlV1DiskConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1DiskConfigResponse(
-      bootDiskSizeGb: map['bootDiskSizeGb'] as int,
-      bootDiskType: map['bootDiskType'] as String,
+      bootDiskSizeGb: (map['bootDiskSizeGb'] as int).input(),
+      bootDiskType: (map['bootDiskType'] as String).input(),
     );
   }
 }

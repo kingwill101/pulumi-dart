@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotAgentToolset {
   /// (Output)
   /// The tools IDs to filter the toolset.
-  final List<String>? toolIds;
+  final pulumi.Input<List<String>>? toolIds;
   /// (Output)
   /// The resource name of the Toolset from which this tool is derived.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final String? toolset;
+  final pulumi.Input<String>? toolset;
 
   /// Creates a new [AppVersionSnapshotAgentToolset].
   /// [toolIds] (Output)
@@ -28,8 +29,8 @@ class AppVersionSnapshotAgentToolset {
 
   factory AppVersionSnapshotAgentToolset.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAgentToolset(
-      toolIds: map['toolIds'] == null ? null : (map['toolIds'] as List).cast<String>(),
-      toolset: map['toolset'] == null ? null : map['toolset'] as String,
+      toolIds: map['toolIds'] == null ? null : ((map['toolIds'] as List).cast<String>()).input(),
+      toolset: map['toolset'] == null ? null : (map['toolset'] as String).input(),
     );
   }
 }

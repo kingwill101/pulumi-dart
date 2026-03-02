@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkInsightsAnalysisExplanationPortRange {
-  final int from;
-  final int to;
+  final pulumi.Input<int> from;
+  final pulumi.Input<int> to;
 
   /// Creates a new [GetNetworkInsightsAnalysisExplanationPortRange].
   /// [from] Required.
@@ -22,8 +23,8 @@ class GetNetworkInsightsAnalysisExplanationPortRange {
 
   factory GetNetworkInsightsAnalysisExplanationPortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisExplanationPortRange(
-      from: map['from'] as int,
-      to: map['to'] as int,
+      from: (map['from'] as int).input(),
+      to: (map['to'] as int).input(),
     );
   }
 }

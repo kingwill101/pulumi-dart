@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxVolumeNas1Configuration {
   /// The size of the network attached storage.
-  final int size;
+  final pulumi.Input<int> size;
   /// The type of the network attached storage.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [KxVolumeNas1Configuration].
   /// [size] The size of the network attached storage.
@@ -24,8 +25,8 @@ class KxVolumeNas1Configuration {
 
   factory KxVolumeNas1Configuration.fromMap(Map<String, dynamic> map) {
     return KxVolumeNas1Configuration(
-      size: map['size'] as int,
-      type: map['type'] as String,
+      size: (map['size'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

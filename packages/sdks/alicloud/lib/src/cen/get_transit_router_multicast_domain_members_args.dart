@@ -22,15 +22,11 @@ class GetTransitRouterMulticastDomainMembersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
   GetTransitRouterMulticastDomainMembersArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> transitRouterMulticastDomainId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      transitRouterMulticastDomainId = pulumi.Input.asInput<String>(transitRouterMulticastDomainId);
+    this.ids,
+    this.networkInterfaceId,
+    this.outputFile,
+    required this.transitRouterMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetTransitRouterMulticastDomainMembersArgs {
 
   factory GetTransitRouterMulticastDomainMembersArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterMulticastDomainMembersArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      transitRouterMulticastDomainId: pulumi.Output.create<String>(map['transitRouterMulticastDomainId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
     );
   }
 }

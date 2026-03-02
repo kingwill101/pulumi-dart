@@ -31,23 +31,15 @@ class CosmosdbDataConnectionState {
   /// [retrievalStartDate] If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date. Changing this forces a new Kusto Cosmos DB Connection to be created.
   /// [tableName] The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table. Changing this forces a new Kusto Cosmos DB Connection to be created.
   CosmosdbDataConnectionState({
-    pulumi.Output<String>? cosmosdbContainerId,
-    pulumi.Output<String>? kustoDatabaseId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedIdentityId,
-    pulumi.Output<String>? mappingRuleName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? retrievalStartDate,
-    pulumi.Output<String>? tableName,
-  }) :
-      cosmosdbContainerId = pulumi.Input.asOptionalInput<String>(cosmosdbContainerId),
-      kustoDatabaseId = pulumi.Input.asOptionalInput<String>(kustoDatabaseId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedIdentityId = pulumi.Input.asOptionalInput<String>(managedIdentityId),
-      mappingRuleName = pulumi.Input.asOptionalInput<String>(mappingRuleName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      retrievalStartDate = pulumi.Input.asOptionalInput<String>(retrievalStartDate),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    this.cosmosdbContainerId,
+    this.kustoDatabaseId,
+    this.location,
+    this.managedIdentityId,
+    this.mappingRuleName,
+    this.name,
+    this.retrievalStartDate,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class CosmosdbDataConnectionState {
 
   factory CosmosdbDataConnectionState.fromMap(Map<String, dynamic> map) {
     return CosmosdbDataConnectionState(
-      cosmosdbContainerId: map['cosmosdbContainerId'] == null ? null : pulumi.Output.create<String>(map['cosmosdbContainerId'] as String),
-      kustoDatabaseId: map['kustoDatabaseId'] == null ? null : pulumi.Output.create<String>(map['kustoDatabaseId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedIdentityId: map['managedIdentityId'] == null ? null : pulumi.Output.create<String>(map['managedIdentityId'] as String),
-      mappingRuleName: map['mappingRuleName'] == null ? null : pulumi.Output.create<String>(map['mappingRuleName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      retrievalStartDate: map['retrievalStartDate'] == null ? null : pulumi.Output.create<String>(map['retrievalStartDate'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      cosmosdbContainerId: map['cosmosdbContainerId'] == null ? null : (map['cosmosdbContainerId'] as String).input(),
+      kustoDatabaseId: map['kustoDatabaseId'] == null ? null : (map['kustoDatabaseId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedIdentityId: map['managedIdentityId'] == null ? null : (map['managedIdentityId'] as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

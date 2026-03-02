@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceCustomDomain {
   /// Domain name
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// (Output)
   /// Status of the custom domain.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [InstanceCustomDomain].
   /// [domain] Domain name
@@ -25,8 +26,8 @@ class InstanceCustomDomain {
 
   factory InstanceCustomDomain.fromMap(Map<String, dynamic> map) {
     return InstanceCustomDomain(
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -43,29 +43,18 @@ class GetClustersArgs {
   /// [resourceGroupId] The Resource Group ID.
   /// [tags] A mapping of tags to assign to the resource.
   GetClustersArgs({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<List<String>>? clusterStates,
-    pulumi.Output<List<String>>? clusterTypes,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<int>? maxResults,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? nextToken,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<List<String>>? paymentTypes,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      clusterStates = pulumi.Input.asOptionalInput<List<String>>(clusterStates),
-      clusterTypes = pulumi.Input.asOptionalInput<List<String>>(clusterTypes),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      maxResults = pulumi.Input.asOptionalInput<int>(maxResults),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      nextToken = pulumi.Input.asOptionalInput<String>(nextToken),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      paymentTypes = pulumi.Input.asOptionalInput<List<String>>(paymentTypes),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.clusterName,
+    this.clusterStates,
+    this.clusterTypes,
+    this.ids,
+    this.maxResults,
+    this.nameRegex,
+    this.nextToken,
+    this.outputFile,
+    this.paymentTypes,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GetClustersArgs {
 
   factory GetClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetClustersArgs(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterStates: map['clusterStates'] == null ? null : pulumi.Output.create<List<String>>((map['clusterStates'] as List).cast<String>()),
-      clusterTypes: map['clusterTypes'] == null ? null : pulumi.Output.create<List<String>>((map['clusterTypes'] as List).cast<String>()),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      maxResults: map['maxResults'] == null ? null : pulumi.Output.create<int>(map['maxResults'] as int),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      nextToken: map['nextToken'] == null ? null : pulumi.Output.create<String>(map['nextToken'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      paymentTypes: map['paymentTypes'] == null ? null : pulumi.Output.create<List<String>>((map['paymentTypes'] as List).cast<String>()),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      clusterStates: map['clusterStates'] == null ? null : ((map['clusterStates'] as List).cast<String>()).input(),
+      clusterTypes: map['clusterTypes'] == null ? null : ((map['clusterTypes'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      nextToken: map['nextToken'] == null ? null : (map['nextToken'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      paymentTypes: map['paymentTypes'] == null ? null : ((map['paymentTypes'] as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

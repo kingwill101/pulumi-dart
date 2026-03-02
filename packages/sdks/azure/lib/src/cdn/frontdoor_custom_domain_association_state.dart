@@ -15,11 +15,9 @@ class FrontdoorCustomDomainAssociationState {
   /// [cdnFrontdoorCustomDomainId] The ID of the Front Door Custom Domain that should be managed by the association resource. Changing this forces a new association resource to be created.
   /// [cdnFrontdoorRouteIds] One or more IDs of the Front Door Route to which the Front Door Custom Domain is associated with.
   FrontdoorCustomDomainAssociationState({
-    pulumi.Output<String>? cdnFrontdoorCustomDomainId,
-    pulumi.Output<List<String>>? cdnFrontdoorRouteIds,
-  }) :
-      cdnFrontdoorCustomDomainId = pulumi.Input.asOptionalInput<String>(cdnFrontdoorCustomDomainId),
-      cdnFrontdoorRouteIds = pulumi.Input.asOptionalInput<List<String>>(cdnFrontdoorRouteIds);
+    this.cdnFrontdoorCustomDomainId,
+    this.cdnFrontdoorRouteIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class FrontdoorCustomDomainAssociationState {
 
   factory FrontdoorCustomDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return FrontdoorCustomDomainAssociationState(
-      cdnFrontdoorCustomDomainId: map['cdnFrontdoorCustomDomainId'] == null ? null : pulumi.Output.create<String>(map['cdnFrontdoorCustomDomainId'] as String),
-      cdnFrontdoorRouteIds: map['cdnFrontdoorRouteIds'] == null ? null : pulumi.Output.create<List<String>>((map['cdnFrontdoorRouteIds'] as List).cast<String>()),
+      cdnFrontdoorCustomDomainId: map['cdnFrontdoorCustomDomainId'] == null ? null : (map['cdnFrontdoorCustomDomainId'] as String).input(),
+      cdnFrontdoorRouteIds: map['cdnFrontdoorRouteIds'] == null ? null : ((map['cdnFrontdoorRouteIds'] as List).cast<String>()).input(),
     );
   }
 }

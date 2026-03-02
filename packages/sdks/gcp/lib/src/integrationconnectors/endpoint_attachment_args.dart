@@ -35,21 +35,14 @@ class EndpointAttachmentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceAttachment] The path of the service attachment.
   EndpointAttachmentArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? endpointGlobalAccess,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceAttachment,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointGlobalAccess = pulumi.Input.asOptionalInput<bool>(endpointGlobalAccess),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAttachment = pulumi.Input.asInput<String>(serviceAttachment);
+    this.description,
+    this.endpointGlobalAccess,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    required this.serviceAttachment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class EndpointAttachmentArgs {
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointGlobalAccess: map['endpointGlobalAccess'] == null ? null : pulumi.Output.create<bool>(map['endpointGlobalAccess'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAttachment: pulumi.Output.create<String>(map['serviceAttachment'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointGlobalAccess: map['endpointGlobalAccess'] == null ? null : (map['endpointGlobalAccess'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAttachment: (map['serviceAttachment'] as String).input(),
     );
   }
 }

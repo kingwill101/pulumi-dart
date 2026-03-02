@@ -45,29 +45,18 @@ class SecretArgs {
   /// [ttl] Input only. The TTL for the Secret.
   /// [versionAliases] Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
   SecretArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<Replication> replication,
-    pulumi.Output<Rotation>? rotation,
-    required pulumi.Output<String> secretId,
-    pulumi.Output<List<Topic>>? topics,
-    pulumi.Output<String>? ttl,
-    pulumi.Output<Map<String, String>>? versionAliases,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replication = pulumi.Input.asInput<Replication>(replication),
-      rotation = pulumi.Input.asOptionalInput<Rotation>(rotation),
-      secretId = pulumi.Input.asInput<String>(secretId),
-      topics = pulumi.Input.asOptionalInput<List<Topic>>(topics),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl),
-      versionAliases = pulumi.Input.asOptionalInput<Map<String, String>>(versionAliases);
+    this.annotations,
+    this.etag,
+    this.expireTime,
+    this.labels,
+    this.project,
+    required this.replication,
+    this.rotation,
+    required this.secretId,
+    this.topics,
+    this.ttl,
+    this.versionAliases,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replication: pulumi.Output.create<Replication>(Replication.fromMap((map['replication'] as Map).cast<String, dynamic>())),
-      rotation: map['rotation'] == null ? null : pulumi.Output.create<Rotation>(Rotation.fromMap((map['rotation'] as Map).cast<String, dynamic>())),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
-      topics: map['topics'] == null ? null : pulumi.Output.create<List<Topic>>(pulumi.Input.decodeList<Topic>(map['topics'], (value) => Topic.fromMap((value as Map).cast<String, dynamic>()))),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
-      versionAliases: map['versionAliases'] == null ? null : pulumi.Output.create<Map<String, String>>((map['versionAliases'] as Map).cast<String, String>()),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replication: (Replication.fromMap((map['replication'] as Map).cast<String, dynamic>())).input(),
+      rotation: map['rotation'] == null ? null : (Rotation.fromMap((map['rotation'] as Map).cast<String, dynamic>())).input(),
+      secretId: (map['secretId'] as String).input(),
+      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<Topic>(map['topics'], (value) => Topic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases'] as Map).cast<String, String>()).input(),
     );
   }
 }

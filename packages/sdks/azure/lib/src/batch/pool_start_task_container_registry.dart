@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolStartTaskContainerRegistry {
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The container registry URL. Changing this forces a new resource to be created.
-  final String registryServer;
+  final pulumi.Input<String> registryServer;
   /// The User Assigned Identity to use for Container Registry access.
-  final String? userAssignedIdentityId;
-  final String? userName;
+  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [PoolStartTaskContainerRegistry].
   /// [password] Optional.
@@ -32,10 +33,10 @@ class PoolStartTaskContainerRegistry {
 
   factory PoolStartTaskContainerRegistry.fromMap(Map<String, dynamic> map) {
     return PoolStartTaskContainerRegistry(
-      password: map['password'] == null ? null : map['password'] as String,
-      registryServer: map['registryServer'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : map['userAssignedIdentityId'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      registryServer: (map['registryServer'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

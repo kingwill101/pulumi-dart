@@ -16,11 +16,9 @@ class GetDeploymentStacksWhatIfResultsAtManagementGroupArgs {
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.
   /// [managementGroupId] The name of the management group. The name is case insensitive.
   GetDeploymentStacksWhatIfResultsAtManagementGroupArgs({
-    required pulumi.Output<String> deploymentStacksWhatIfResultName,
-    required pulumi.Output<String> managementGroupId,
-  }) :
-      deploymentStacksWhatIfResultName = pulumi.Input.asInput<String>(deploymentStacksWhatIfResultName),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId);
+    required this.deploymentStacksWhatIfResultName,
+    required this.managementGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeploymentStacksWhatIfResultsAtManagementGroupArgs {
 
   factory GetDeploymentStacksWhatIfResultsAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentStacksWhatIfResultsAtManagementGroupArgs(
-      deploymentStacksWhatIfResultName: pulumi.Output.create<String>(map['deploymentStacksWhatIfResultName'] as String),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
+      deploymentStacksWhatIfResultName: (map['deploymentStacksWhatIfResultName'] as String).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
     );
   }
 }

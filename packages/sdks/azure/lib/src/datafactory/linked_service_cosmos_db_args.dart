@@ -45,29 +45,18 @@ class LinkedServiceCosmosDbArgs {
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   LinkedServiceCosmosDbArgs({
-    pulumi.Output<String>? accountEndpoint,
-    pulumi.Output<String>? accountKey,
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? connectionString,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-  }) :
-      accountEndpoint = pulumi.Input.asOptionalInput<String>(accountEndpoint),
-      accountKey = pulumi.Input.asOptionalInput<String>(accountKey),
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters);
+    this.accountEndpoint,
+    this.accountKey,
+    this.additionalProperties,
+    this.annotations,
+    this.connectionString,
+    required this.dataFactoryId,
+    this.database,
+    this.description,
+    this.integrationRuntimeName,
+    this.name,
+    this.parameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class LinkedServiceCosmosDbArgs {
 
   factory LinkedServiceCosmosDbArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceCosmosDbArgs(
-      accountEndpoint: map['accountEndpoint'] == null ? null : pulumi.Output.create<String>(map['accountEndpoint'] as String),
-      accountKey: map['accountKey'] == null ? null : pulumi.Output.create<String>(map['accountKey'] as String),
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
+      accountEndpoint: map['accountEndpoint'] == null ? null : (map['accountEndpoint'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

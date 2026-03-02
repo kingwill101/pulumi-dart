@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyDdosProtectionConfigResponseComputeBeta {
-  final String ddosProtection;
+  final pulumi.Input<String> ddosProtection;
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigResponseComputeBeta].
   /// [ddosProtection] Required.
@@ -18,7 +19,7 @@ class SecurityPolicyDdosProtectionConfigResponseComputeBeta {
 
   factory SecurityPolicyDdosProtectionConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyDdosProtectionConfigResponseComputeBeta(
-      ddosProtection: map['ddosProtection'] as String,
+      ddosProtection: (map['ddosProtection'] as String).input(),
     );
   }
 }

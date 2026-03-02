@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag {
   /// The IP Tag associated with the Public IP, such as `SQL` or `Storage`. Changing this forces a new resource to be created.
-  final String tag;
+  final pulumi.Input<String> tag;
   /// The Type of IP Tag, such as `FirstPartyUsage`. Changing this forces a new resource to be created.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag].
   /// [tag] The IP Tag associated with the Public IP, such as `SQL` or `Storage`. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpA
 
   factory OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag(
-      tag: map['tag'] as String,
-      type: map['type'] as String,
+      tag: (map['tag'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -32,17 +32,12 @@ class GroupArgs {
   /// [parentName] The name of the group's parent, if it has one. The format is
   /// [project] The ID of the project in which the resource belongs.
   GroupArgs({
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> filter,
-    pulumi.Output<bool>? isCluster,
-    pulumi.Output<String>? parentName,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      filter = pulumi.Input.asInput<String>(filter),
-      isCluster = pulumi.Input.asOptionalInput<bool>(isCluster),
-      parentName = pulumi.Input.asOptionalInput<String>(parentName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.displayName,
+    required this.filter,
+    this.isCluster,
+    this.parentName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      isCluster: map['isCluster'] == null ? null : pulumi.Output.create<bool>(map['isCluster'] as bool),
-      parentName: map['parentName'] == null ? null : pulumi.Output.create<String>(map['parentName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: (map['displayName'] as String).input(),
+      filter: (map['filter'] as String).input(),
+      isCluster: map['isCluster'] == null ? null : (map['isCluster'] as bool).input(),
+      parentName: map['parentName'] == null ? null : (map['parentName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

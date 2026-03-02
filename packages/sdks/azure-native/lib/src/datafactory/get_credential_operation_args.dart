@@ -19,13 +19,10 @@ class GetCredentialOperationArgs {
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
   GetCredentialOperationArgs({
-    required pulumi.Output<String> credentialName,
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      credentialName = pulumi.Input.asInput<String>(credentialName),
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.credentialName,
+    required this.factoryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCredentialOperationArgs {
 
   factory GetCredentialOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetCredentialOperationArgs(
-      credentialName: pulumi.Output.create<String>(map['credentialName'] as String),
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      credentialName: (map['credentialName'] as String).input(),
+      factoryName: (map['factoryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

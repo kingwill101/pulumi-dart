@@ -19,13 +19,10 @@ class GroupQuotaArgs {
   /// [managementGroupId] Management Group Id.
   /// [properties] Optional.
   GroupQuotaArgs({
-    pulumi.Output<String>? groupQuotaName,
-    required pulumi.Output<String> managementGroupId,
-    pulumi.Output<GroupQuotasEntityProperties>? properties,
-  }) :
-      groupQuotaName = pulumi.Input.asOptionalInput<String>(groupQuotaName),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      properties = pulumi.Input.asOptionalInput<GroupQuotasEntityProperties>(properties);
+    this.groupQuotaName,
+    required this.managementGroupId,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GroupQuotaArgs {
 
   factory GroupQuotaArgs.fromMap(Map<String, dynamic> map) {
     return GroupQuotaArgs(
-      groupQuotaName: map['groupQuotaName'] == null ? null : pulumi.Output.create<String>(map['groupQuotaName'] as String),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<GroupQuotasEntityProperties>(GroupQuotasEntityProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      groupQuotaName: map['groupQuotaName'] == null ? null : (map['groupQuotaName'] as String).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      properties: map['properties'] == null ? null : (GroupQuotasEntityProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

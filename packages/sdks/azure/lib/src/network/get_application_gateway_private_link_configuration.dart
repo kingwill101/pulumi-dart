@@ -5,11 +5,11 @@ import 'get_application_gateway_private_link_configuration_ip_configuration.dart
 
 class GetApplicationGatewayPrivateLinkConfiguration {
   /// The ID of the Rewrite Rule Set
-  final String id;
+  final pulumi.Input<String> id;
   /// One or more `ip_configuration` blocks as defined below.
-  final List<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration> ipConfigurations;
+  final pulumi.Input<List<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>> ipConfigurations;
   /// The name of this Application Gateway.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetApplicationGatewayPrivateLinkConfiguration].
   /// [id] The ID of the Rewrite Rule Set
@@ -24,16 +24,16 @@ class GetApplicationGatewayPrivateLinkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'ipConfigurations': pulumi.Input.encodeList<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations': pulumi.Input.mapInputValue<List<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory GetApplicationGatewayPrivateLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayPrivateLinkConfiguration(
-      id: map['id'] as String,
-      ipConfigurations: pulumi.Input.decodeList<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>(map['ipConfigurations'], (value) => GetApplicationGatewayPrivateLinkConfigurationIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      id: (map['id'] as String).input(),
+      ipConfigurations: (pulumi.Input.decodeList<GetApplicationGatewayPrivateLinkConfigurationIpConfiguration>(map['ipConfigurations'], (value) => GetApplicationGatewayPrivateLinkConfigurationIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypesType {
   /// Cpu size of the instance type.
-  final int cpuSize;
+  final pulumi.Input<int> cpuSize;
   /// Mem size of the instance type.
-  final int memSize;
+  final pulumi.Input<int> memSize;
   /// Name of the instance type.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetInstanceTypesType].
   /// [cpuSize] Cpu size of the instance type.
@@ -29,9 +30,9 @@ class GetInstanceTypesType {
 
   factory GetInstanceTypesType.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesType(
-      cpuSize: map['cpuSize'] as int,
-      memSize: map['memSize'] as int,
-      value: map['value'] as String,
+      cpuSize: (map['cpuSize'] as int).input(),
+      memSize: (map['memSize'] as int).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

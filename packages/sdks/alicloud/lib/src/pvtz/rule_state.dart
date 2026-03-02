@@ -23,17 +23,12 @@ class RuleState {
   /// [type] The type of the rule. Valid values: `OUTBOUND`.
   /// [zoneName] The name of the forwarding zone.
   RuleState({
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<List<RuleForwardIp>>? forwardIps,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? zoneName,
-  }) :
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      forwardIps = pulumi.Input.asOptionalInput<List<RuleForwardIp>>(forwardIps),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      zoneName = pulumi.Input.asOptionalInput<String>(zoneName);
+    this.endpointId,
+    this.forwardIps,
+    this.ruleName,
+    this.type,
+    this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      forwardIps: map['forwardIps'] == null ? null : pulumi.Output.create<List<RuleForwardIp>>(pulumi.Input.decodeList<RuleForwardIp>(map['forwardIps'], (value) => RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      zoneName: map['zoneName'] == null ? null : pulumi.Output.create<String>(map['zoneName'] as String),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      forwardIps: map['forwardIps'] == null ? null : (pulumi.Input.decodeList<RuleForwardIp>(map['forwardIps'], (value) => RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'policy_binding_response_gkehub_v1alpha.dart';
 /// BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
 class BinaryAuthorizationConfigResponseGkehubV1alpha {
   /// Optional. Mode of operation for binauthz policy evaluation.
-  final String evaluationMode;
+  final pulumi.Input<String> evaluationMode;
   /// Optional. Binauthz policies that apply to this cluster.
-  final List<PolicyBindingResponseGkehubV1alpha> policyBindings;
+  final pulumi.Input<List<PolicyBindingResponseGkehubV1alpha>> policyBindings;
 
   /// Creates a new [BinaryAuthorizationConfigResponseGkehubV1alpha].
   /// [evaluationMode] Optional. Mode of operation for binauthz policy evaluation.
@@ -21,14 +21,14 @@ class BinaryAuthorizationConfigResponseGkehubV1alpha {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'evaluationMode': evaluationMode,
-      'policyBindings': pulumi.Input.encodeList<PolicyBindingResponseGkehubV1alpha, Map<String, dynamic>>(policyBindings, (value) => value.toMap()),
+      'policyBindings': pulumi.Input.mapInputValue<List<PolicyBindingResponseGkehubV1alpha>, List<Map<String, dynamic>>>(policyBindings, (value) => pulumi.Input.encodeList<PolicyBindingResponseGkehubV1alpha, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BinaryAuthorizationConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorizationConfigResponseGkehubV1alpha(
-      evaluationMode: map['evaluationMode'] as String,
-      policyBindings: pulumi.Input.decodeList<PolicyBindingResponseGkehubV1alpha>(map['policyBindings'], (value) => PolicyBindingResponseGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>())),
+      evaluationMode: (map['evaluationMode'] as String).input(),
+      policyBindings: (pulumi.Input.decodeList<PolicyBindingResponseGkehubV1alpha>(map['policyBindings'], (value) => PolicyBindingResponseGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

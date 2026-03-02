@@ -19,13 +19,10 @@ class Ipv6RangeArgs {
   /// [prefixLength] The prefix length of the IPv6 range.
   /// [routeTarget] The IPv6 SLAAC address to assign this range to.
   Ipv6RangeArgs({
-    pulumi.Output<int>? linodeId,
-    required pulumi.Output<int> prefixLength,
-    pulumi.Output<String>? routeTarget,
-  }) :
-      linodeId = pulumi.Input.asOptionalInput<int>(linodeId),
-      prefixLength = pulumi.Input.asInput<int>(prefixLength),
-      routeTarget = pulumi.Input.asOptionalInput<String>(routeTarget);
+    this.linodeId,
+    required this.prefixLength,
+    this.routeTarget,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class Ipv6RangeArgs {
 
   factory Ipv6RangeArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6RangeArgs(
-      linodeId: map['linodeId'] == null ? null : pulumi.Output.create<int>(map['linodeId'] as int),
-      prefixLength: pulumi.Output.create<int>(map['prefixLength'] as int),
-      routeTarget: map['routeTarget'] == null ? null : pulumi.Output.create<String>(map['routeTarget'] as String),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      prefixLength: (map['prefixLength'] as int).input(),
+      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget'] as String).input(),
     );
   }
 }

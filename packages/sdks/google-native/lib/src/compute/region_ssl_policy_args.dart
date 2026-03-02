@@ -38,25 +38,16 @@ class RegionSslPolicyArgs {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [tlsSettings] Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   RegionSslPolicyArgs({
-    pulumi.Output<List<String>>? customFeatures,
-    pulumi.Output<String>? description,
-    pulumi.Output<RegionSslPolicyMinTlsVersion>? minTlsVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<RegionSslPolicyProfile>? profile,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<ServerTlsSettings>? tlsSettings,
-  }) :
-      customFeatures = pulumi.Input.asOptionalInput<List<String>>(customFeatures),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      minTlsVersion = pulumi.Input.asOptionalInput<RegionSslPolicyMinTlsVersion>(minTlsVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profile = pulumi.Input.asOptionalInput<RegionSslPolicyProfile>(profile),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      tlsSettings = pulumi.Input.asOptionalInput<ServerTlsSettings>(tlsSettings);
+    this.customFeatures,
+    this.description,
+    this.minTlsVersion,
+    this.name,
+    this.profile,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.tlsSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class RegionSslPolicyArgs {
 
   factory RegionSslPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionSslPolicyArgs(
-      customFeatures: map['customFeatures'] == null ? null : pulumi.Output.create<List<String>>((map['customFeatures'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      minTlsVersion: map['minTlsVersion'] == null ? null : pulumi.Output.create<RegionSslPolicyMinTlsVersion>(RegionSslPolicyMinTlsVersion.fromValue(map['minTlsVersion'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profile: map['profile'] == null ? null : pulumi.Output.create<RegionSslPolicyProfile>(RegionSslPolicyProfile.fromValue(map['profile'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      tlsSettings: map['tlsSettings'] == null ? null : pulumi.Output.create<ServerTlsSettings>(ServerTlsSettings.fromMap((map['tlsSettings'] as Map).cast<String, dynamic>())),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (RegionSslPolicyMinTlsVersion.fromValue(map['minTlsVersion'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profile: map['profile'] == null ? null : (RegionSslPolicyProfile.fromValue(map['profile'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      tlsSettings: map['tlsSettings'] == null ? null : (ServerTlsSettings.fromMap((map['tlsSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

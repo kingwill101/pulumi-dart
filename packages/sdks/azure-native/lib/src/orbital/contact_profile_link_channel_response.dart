@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'end_point_response.dart';
 
 /// Contact Profile Link Channel.
 class ContactProfileLinkChannelResponse {
   /// Bandwidth in MHz.
-  final double bandwidthMHz;
+  final pulumi.Input<double> bandwidthMHz;
   /// Center Frequency in MHz.
-  final double centerFrequencyMHz;
+  final pulumi.Input<double> centerFrequencyMHz;
   /// Currently unused.
-  final String? decodingConfiguration;
+  final pulumi.Input<String>? decodingConfiguration;
   /// Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
-  final String? demodulationConfiguration;
+  final pulumi.Input<String>? demodulationConfiguration;
   /// Currently unused.
-  final String? encodingConfiguration;
+  final pulumi.Input<String>? encodingConfiguration;
   /// Customer end point to store and retrieve data during a contact with the spacecraft.
-  final EndPointResponse endPoint;
+  final pulumi.Input<EndPointResponse> endPoint;
   /// Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
-  final String? modulationConfiguration;
+  final pulumi.Input<String>? modulationConfiguration;
   /// Channel name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ContactProfileLinkChannelResponse].
   /// [bandwidthMHz] Bandwidth in MHz.
@@ -48,7 +49,7 @@ class ContactProfileLinkChannelResponse {
       'decodingConfiguration': ?decodingConfiguration,
       'demodulationConfiguration': ?demodulationConfiguration,
       'encodingConfiguration': ?encodingConfiguration,
-      'endPoint': endPoint.toMap(),
+      'endPoint': pulumi.Input.mapInputValue<EndPointResponse, Map<String, dynamic>>(endPoint, (value) => value.toMap()),
       'modulationConfiguration': ?modulationConfiguration,
       'name': name,
     };
@@ -56,14 +57,14 @@ class ContactProfileLinkChannelResponse {
 
   factory ContactProfileLinkChannelResponse.fromMap(Map<String, dynamic> map) {
     return ContactProfileLinkChannelResponse(
-      bandwidthMHz: map['bandwidthMHz'] as double,
-      centerFrequencyMHz: map['centerFrequencyMHz'] as double,
-      decodingConfiguration: map['decodingConfiguration'] == null ? null : map['decodingConfiguration'] as String,
-      demodulationConfiguration: map['demodulationConfiguration'] == null ? null : map['demodulationConfiguration'] as String,
-      encodingConfiguration: map['encodingConfiguration'] == null ? null : map['encodingConfiguration'] as String,
-      endPoint: EndPointResponse.fromMap((map['endPoint'] as Map).cast<String, dynamic>()),
-      modulationConfiguration: map['modulationConfiguration'] == null ? null : map['modulationConfiguration'] as String,
-      name: map['name'] as String,
+      bandwidthMHz: (map['bandwidthMHz'] as double).input(),
+      centerFrequencyMHz: (map['centerFrequencyMHz'] as double).input(),
+      decodingConfiguration: map['decodingConfiguration'] == null ? null : (map['decodingConfiguration'] as String).input(),
+      demodulationConfiguration: map['demodulationConfiguration'] == null ? null : (map['demodulationConfiguration'] as String).input(),
+      encodingConfiguration: map['encodingConfiguration'] == null ? null : (map['encodingConfiguration'] as String).input(),
+      endPoint: (EndPointResponse.fromMap((map['endPoint'] as Map).cast<String, dynamic>())).input(),
+      modulationConfiguration: map['modulationConfiguration'] == null ? null : (map['modulationConfiguration'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

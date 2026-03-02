@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_connection_info_response.dart';
 
 /// Input for the task that validates connection to Azure SQL Database Managed Instance.
 class ConnectToTargetSqlMITaskInputResponse {
   /// Flag for whether to collect agent jobs from target SQL MI server.
-  final bool? collectAgentJobs;
+  final pulumi.Input<bool>? collectAgentJobs;
   /// Flag for whether to collect logins from target SQL MI server.
-  final bool? collectLogins;
+  final pulumi.Input<bool>? collectLogins;
   /// Connection information for target SQL Server
-  final SqlConnectionInfoResponse targetConnectionInfo;
+  final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
   /// Flag for whether to validate SSIS catalog is reachable on the target SQL MI server.
-  final bool? validateSsisCatalogOnly;
+  final pulumi.Input<bool>? validateSsisCatalogOnly;
 
   /// Creates a new [ConnectToTargetSqlMITaskInputResponse].
   /// [collectAgentJobs] Flag for whether to collect agent jobs from target SQL MI server.
@@ -29,17 +30,17 @@ class ConnectToTargetSqlMITaskInputResponse {
     return <String, dynamic>{
       'collectAgentJobs': ?collectAgentJobs,
       'collectLogins': ?collectLogins,
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
       'validateSsisCatalogOnly': ?validateSsisCatalogOnly,
     };
   }
 
   factory ConnectToTargetSqlMITaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlMITaskInputResponse(
-      collectAgentJobs: map['collectAgentJobs'] == null ? null : map['collectAgentJobs'] as bool,
-      collectLogins: map['collectLogins'] == null ? null : map['collectLogins'] as bool,
-      targetConnectionInfo: SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
-      validateSsisCatalogOnly: map['validateSsisCatalogOnly'] == null ? null : map['validateSsisCatalogOnly'] as bool,
+      collectAgentJobs: map['collectAgentJobs'] == null ? null : (map['collectAgentJobs'] as bool).input(),
+      collectLogins: map['collectLogins'] == null ? null : (map['collectLogins'] as bool).input(),
+      targetConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      validateSsisCatalogOnly: map['validateSsisCatalogOnly'] == null ? null : (map['validateSsisCatalogOnly'] as bool).input(),
     );
   }
 }

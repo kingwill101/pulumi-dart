@@ -23,15 +23,11 @@ class NetworkFirewallPolicyAssociationArgs {
   /// [name] The name for an association.
   /// [project] The ID of the project in which the resource belongs.
   NetworkFirewallPolicyAssociationArgs({
-    required pulumi.Output<String> attachmentTarget,
-    required pulumi.Output<String> firewallPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.attachmentTarget,
+    required this.firewallPolicy,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class NetworkFirewallPolicyAssociationArgs {
 
   factory NetworkFirewallPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyAssociationArgs(
-      attachmentTarget: pulumi.Output.create<String>(map['attachmentTarget'] as String),
-      firewallPolicy: pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      attachmentTarget: (map['attachmentTarget'] as String).input(),
+      firewallPolicy: (map['firewallPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

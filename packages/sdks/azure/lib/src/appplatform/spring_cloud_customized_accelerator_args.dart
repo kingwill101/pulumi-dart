@@ -35,23 +35,15 @@ class SpringCloudCustomizedAcceleratorArgs {
   /// [name] The name which should be used for this Spring Cloud Customized Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   /// [springCloudAcceleratorId] The ID of the Spring Cloud Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   SpringCloudCustomizedAcceleratorArgs({
-    pulumi.Output<List<String>>? acceleratorTags,
-    pulumi.Output<String>? acceleratorType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<SpringCloudCustomizedAcceleratorGitRepository> gitRepository,
-    pulumi.Output<String>? iconUrl,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> springCloudAcceleratorId,
-  }) :
-      acceleratorTags = pulumi.Input.asOptionalInput<List<String>>(acceleratorTags),
-      acceleratorType = pulumi.Input.asOptionalInput<String>(acceleratorType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gitRepository = pulumi.Input.asInput<SpringCloudCustomizedAcceleratorGitRepository>(gitRepository),
-      iconUrl = pulumi.Input.asOptionalInput<String>(iconUrl),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudAcceleratorId = pulumi.Input.asInput<String>(springCloudAcceleratorId);
+    this.acceleratorTags,
+    this.acceleratorType,
+    this.description,
+    this.displayName,
+    required this.gitRepository,
+    this.iconUrl,
+    this.name,
+    required this.springCloudAcceleratorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class SpringCloudCustomizedAcceleratorArgs {
 
   factory SpringCloudCustomizedAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudCustomizedAcceleratorArgs(
-      acceleratorTags: map['acceleratorTags'] == null ? null : pulumi.Output.create<List<String>>((map['acceleratorTags'] as List).cast<String>()),
-      acceleratorType: map['acceleratorType'] == null ? null : pulumi.Output.create<String>(map['acceleratorType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      gitRepository: pulumi.Output.create<SpringCloudCustomizedAcceleratorGitRepository>(SpringCloudCustomizedAcceleratorGitRepository.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())),
-      iconUrl: map['iconUrl'] == null ? null : pulumi.Output.create<String>(map['iconUrl'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudAcceleratorId: pulumi.Output.create<String>(map['springCloudAcceleratorId'] as String),
+      acceleratorTags: map['acceleratorTags'] == null ? null : ((map['acceleratorTags'] as List).cast<String>()).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      gitRepository: (SpringCloudCustomizedAcceleratorGitRepository.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())).input(),
+      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudAcceleratorId: (map['springCloudAcceleratorId'] as String).input(),
     );
   }
 }

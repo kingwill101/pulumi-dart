@@ -41,27 +41,17 @@ class SessionLoggerState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   SessionLoggerState({
-    pulumi.Output<Map<String, String>>? additionalEncryptionContext,
-    pulumi.Output<List<String>>? associatedPortalArns,
-    pulumi.Output<String>? customerManagedKey,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<SessionLoggerEventFilter>? eventFilter,
-    pulumi.Output<SessionLoggerLogConfiguration>? logConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sessionLoggerArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      additionalEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(additionalEncryptionContext),
-      associatedPortalArns = pulumi.Input.asOptionalInput<List<String>>(associatedPortalArns),
-      customerManagedKey = pulumi.Input.asOptionalInput<String>(customerManagedKey),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      eventFilter = pulumi.Input.asOptionalInput<SessionLoggerEventFilter>(eventFilter),
-      logConfiguration = pulumi.Input.asOptionalInput<SessionLoggerLogConfiguration>(logConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sessionLoggerArn = pulumi.Input.asOptionalInput<String>(sessionLoggerArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.additionalEncryptionContext,
+    this.associatedPortalArns,
+    this.customerManagedKey,
+    this.displayName,
+    this.eventFilter,
+    this.logConfiguration,
+    this.region,
+    this.sessionLoggerArn,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class SessionLoggerState {
 
   factory SessionLoggerState.fromMap(Map<String, dynamic> map) {
     return SessionLoggerState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalEncryptionContext'] as Map).cast<String, String>()),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : pulumi.Output.create<List<String>>((map['associatedPortalArns'] as List).cast<String>()),
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<String>(map['customerManagedKey'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      eventFilter: map['eventFilter'] == null ? null : pulumi.Output.create<SessionLoggerEventFilter>(SessionLoggerEventFilter.fromMap((map['eventFilter'] as Map).cast<String, dynamic>())),
-      logConfiguration: map['logConfiguration'] == null ? null : pulumi.Output.create<SessionLoggerLogConfiguration>(SessionLoggerLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sessionLoggerArn: map['sessionLoggerArn'] == null ? null : pulumi.Output.create<String>(map['sessionLoggerArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      eventFilter: map['eventFilter'] == null ? null : (SessionLoggerEventFilter.fromMap((map['eventFilter'] as Map).cast<String, dynamic>())).input(),
+      logConfiguration: map['logConfiguration'] == null ? null : (SessionLoggerLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sessionLoggerArn: map['sessionLoggerArn'] == null ? null : (map['sessionLoggerArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

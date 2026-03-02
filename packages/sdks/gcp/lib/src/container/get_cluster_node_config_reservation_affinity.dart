@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodeConfigReservationAffinity {
   /// Corresponds to the type of reservation consumption.
-  final String consumeReservationType;
+  final pulumi.Input<String> consumeReservationType;
   /// The label key of a reservation resource.
-  final String key;
+  final pulumi.Input<String> key;
   /// The label values of the reservation resource.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetClusterNodeConfigReservationAffinity].
   /// [consumeReservationType] Corresponds to the type of reservation consumption.
@@ -29,9 +30,9 @@ class GetClusterNodeConfigReservationAffinity {
 
   factory GetClusterNodeConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigReservationAffinity(
-      consumeReservationType: map['consumeReservationType'] as String,
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      consumeReservationType: (map['consumeReservationType'] as String).input(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

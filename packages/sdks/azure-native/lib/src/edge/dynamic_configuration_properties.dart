@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dynamic Configuration Properties
 class DynamicConfigurationProperties {
   /// Current Version of dynamic configuration
-  final String currentVersion;
+  final pulumi.Input<String> currentVersion;
 
   /// Creates a new [DynamicConfigurationProperties].
   /// [currentVersion] Current Version of dynamic configuration
@@ -20,7 +21,7 @@ class DynamicConfigurationProperties {
 
   factory DynamicConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationProperties(
-      currentVersion: map['currentVersion'] as String,
+      currentVersion: (map['currentVersion'] as String).input(),
     );
   }
 }

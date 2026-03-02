@@ -29,19 +29,13 @@ class JitNetworkAccessPolicyArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [virtualMachines] Configurations for Microsoft.Compute/virtualMachines resource type.
   JitNetworkAccessPolicyArgs({
-    required pulumi.Output<String> ascLocation,
-    pulumi.Output<String>? jitNetworkAccessPolicyName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<List<JitNetworkAccessRequest>>? requests,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<JitNetworkAccessPolicyVirtualMachine>> virtualMachines,
-  }) :
-      ascLocation = pulumi.Input.asInput<String>(ascLocation),
-      jitNetworkAccessPolicyName = pulumi.Input.asOptionalInput<String>(jitNetworkAccessPolicyName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      requests = pulumi.Input.asOptionalInput<List<JitNetworkAccessRequest>>(requests),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachines = pulumi.Input.asInput<List<JitNetworkAccessPolicyVirtualMachine>>(virtualMachines);
+    required this.ascLocation,
+    this.jitNetworkAccessPolicyName,
+    this.kind,
+    this.requests,
+    required this.resourceGroupName,
+    required this.virtualMachines,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class JitNetworkAccessPolicyArgs {
 
   factory JitNetworkAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessPolicyArgs(
-      ascLocation: pulumi.Output.create<String>(map['ascLocation'] as String),
-      jitNetworkAccessPolicyName: map['jitNetworkAccessPolicyName'] == null ? null : pulumi.Output.create<String>(map['jitNetworkAccessPolicyName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      requests: map['requests'] == null ? null : pulumi.Output.create<List<JitNetworkAccessRequest>>(pulumi.Input.decodeList<JitNetworkAccessRequest>(map['requests'], (value) => JitNetworkAccessRequest.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachines: pulumi.Output.create<List<JitNetworkAccessPolicyVirtualMachine>>(pulumi.Input.decodeList<JitNetworkAccessPolicyVirtualMachine>(map['virtualMachines'], (value) => JitNetworkAccessPolicyVirtualMachine.fromMap((value as Map).cast<String, dynamic>()))),
+      ascLocation: (map['ascLocation'] as String).input(),
+      jitNetworkAccessPolicyName: map['jitNetworkAccessPolicyName'] == null ? null : (map['jitNetworkAccessPolicyName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<JitNetworkAccessRequest>(map['requests'], (value) => JitNetworkAccessRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachines: (pulumi.Input.decodeList<JitNetworkAccessPolicyVirtualMachine>(map['virtualMachines'], (value) => JitNetworkAccessPolicyVirtualMachine.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

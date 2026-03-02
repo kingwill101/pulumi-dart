@@ -19,13 +19,10 @@ class GetConnectionGatewayArgs {
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
   GetConnectionGatewayArgs({
-    required pulumi.Output<String> connectionGatewayName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      connectionGatewayName = pulumi.Input.asInput<String>(connectionGatewayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    required this.connectionGatewayName,
+    required this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConnectionGatewayArgs {
 
   factory GetConnectionGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionGatewayArgs(
-      connectionGatewayName: pulumi.Output.create<String>(map['connectionGatewayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      connectionGatewayName: (map['connectionGatewayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

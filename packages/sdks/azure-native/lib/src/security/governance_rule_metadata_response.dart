@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The governance rule metadata
 class GovernanceRuleMetadataResponse {
   /// Governance rule Created by object id (GUID)
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// Governance rule creation date
-  final String createdOn;
+  final pulumi.Input<String> createdOn;
   /// Governance rule last updated by object id (GUID)
-  final String updatedBy;
+  final pulumi.Input<String> updatedBy;
   /// Governance rule last update date
-  final String updatedOn;
+  final pulumi.Input<String> updatedOn;
 
   /// Creates a new [GovernanceRuleMetadataResponse].
   /// [createdBy] Governance rule Created by object id (GUID)
@@ -35,10 +36,10 @@ class GovernanceRuleMetadataResponse {
 
   factory GovernanceRuleMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GovernanceRuleMetadataResponse(
-      createdBy: map['createdBy'] as String,
-      createdOn: map['createdOn'] as String,
-      updatedBy: map['updatedBy'] as String,
-      updatedOn: map['updatedOn'] as String,
+      createdBy: (map['createdBy'] as String).input(),
+      createdOn: (map['createdOn'] as String).input(),
+      updatedBy: (map['updatedBy'] as String).input(),
+      updatedOn: (map['updatedOn'] as String).input(),
     );
   }
 }

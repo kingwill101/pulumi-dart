@@ -20,13 +20,10 @@ class SqlInjectionMatchSetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sqlInjectionMatchTuples] The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
   SqlInjectionMatchSetArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>? sqlInjectionMatchTuples,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sqlInjectionMatchTuples = pulumi.Input.asOptionalInput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>(sqlInjectionMatchTuples);
+    this.name,
+    this.region,
+    this.sqlInjectionMatchTuples,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SqlInjectionMatchSetArgs {
 
   factory SqlInjectionMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return SqlInjectionMatchSetArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sqlInjectionMatchTuples: map['sqlInjectionMatchTuples'] == null ? null : pulumi.Output.create<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>(pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(map['sqlInjectionMatchTuples'], (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>()))),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sqlInjectionMatchTuples: map['sqlInjectionMatchTuples'] == null ? null : (pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(map['sqlInjectionMatchTuples'], (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

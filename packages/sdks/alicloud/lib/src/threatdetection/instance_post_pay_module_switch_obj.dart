@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstancePostPayModuleSwitchObj {
   /// Agentless Detection Module. Valid values:
-  final int? agentless;
+  final pulumi.Input<int>? agentless;
   /// Anti-Ransomware Module. Valid values:
-  final int? antiRansomware;
+  final pulumi.Input<int>? antiRansomware;
   /// Basic service module. Valid values:
-  final int? basicService;
+  final pulumi.Input<int>? basicService;
   /// Cloud Security Configuration Check Module. Valid values:
-  final int? cspm;
+  final pulumi.Input<int>? cspm;
   /// Threat Analysis and Response Module. Valid values:
-  final int? ctdr;
+  final pulumi.Input<int>? ctdr;
   /// Log Management Module. Valid values:
-  final int? ctdrStorage;
+  final pulumi.Input<int>? ctdrStorage;
   /// Host and Container Security Module. Valid values:
-  final int? postHost;
+  final pulumi.Input<int>? postHost;
   /// Application Protection Module. Valid values:
-  final int? rasp;
+  final pulumi.Input<int>? rasp;
   /// Malicious File Detection SDK Module. Valid values:
-  final int? sdk;
+  final pulumi.Input<int>? sdk;
   /// Serverless Security Module. Valid values:
-  final int? serverless;
+  final pulumi.Input<int>? serverless;
   /// Vulnerability Repair Module. Valid values:
-  final int? vul;
+  final pulumi.Input<int>? vul;
   /// File Tamper Protection Module. Valid values:
-  final int? webLock;
+  final pulumi.Input<int>? webLock;
 
   /// Creates a new [InstancePostPayModuleSwitchObj].
   /// [agentless] Agentless Detection Module. Valid values:
@@ -74,18 +75,18 @@ class InstancePostPayModuleSwitchObj {
 
   factory InstancePostPayModuleSwitchObj.fromMap(Map<String, dynamic> map) {
     return InstancePostPayModuleSwitchObj(
-      agentless: map['agentless'] == null ? null : map['agentless'] as int,
-      antiRansomware: map['antiRansomware'] == null ? null : map['antiRansomware'] as int,
-      basicService: map['basicService'] == null ? null : map['basicService'] as int,
-      cspm: map['cspm'] == null ? null : map['cspm'] as int,
-      ctdr: map['ctdr'] == null ? null : map['ctdr'] as int,
-      ctdrStorage: map['ctdrStorage'] == null ? null : map['ctdrStorage'] as int,
-      postHost: map['postHost'] == null ? null : map['postHost'] as int,
-      rasp: map['rasp'] == null ? null : map['rasp'] as int,
-      sdk: map['sdk'] == null ? null : map['sdk'] as int,
-      serverless: map['serverless'] == null ? null : map['serverless'] as int,
-      vul: map['vul'] == null ? null : map['vul'] as int,
-      webLock: map['webLock'] == null ? null : map['webLock'] as int,
+      agentless: map['agentless'] == null ? null : (map['agentless'] as int).input(),
+      antiRansomware: map['antiRansomware'] == null ? null : (map['antiRansomware'] as int).input(),
+      basicService: map['basicService'] == null ? null : (map['basicService'] as int).input(),
+      cspm: map['cspm'] == null ? null : (map['cspm'] as int).input(),
+      ctdr: map['ctdr'] == null ? null : (map['ctdr'] as int).input(),
+      ctdrStorage: map['ctdrStorage'] == null ? null : (map['ctdrStorage'] as int).input(),
+      postHost: map['postHost'] == null ? null : (map['postHost'] as int).input(),
+      rasp: map['rasp'] == null ? null : (map['rasp'] as int).input(),
+      sdk: map['sdk'] == null ? null : (map['sdk'] as int).input(),
+      serverless: map['serverless'] == null ? null : (map['serverless'] as int).input(),
+      vul: map['vul'] == null ? null : (map['vul'] as int).input(),
+      webLock: map['webLock'] == null ? null : (map['webLock'] as int).input(),
     );
   }
 }

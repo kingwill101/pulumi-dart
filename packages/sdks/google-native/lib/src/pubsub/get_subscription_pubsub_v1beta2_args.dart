@@ -14,11 +14,9 @@ class GetSubscriptionPubsubV1beta2Args {
   /// [project] Optional.
   /// [subscriptionId] Required.
   GetSubscriptionPubsubV1beta2Args({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    this.project,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetSubscriptionPubsubV1beta2Args {
 
   factory GetSubscriptionPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionPubsubV1beta2Args(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

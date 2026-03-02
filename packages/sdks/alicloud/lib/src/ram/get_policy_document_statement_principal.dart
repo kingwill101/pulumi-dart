@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyDocumentStatementPrincipal {
   /// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-  final String entity;
+  final pulumi.Input<String> entity;
   /// The identifiers of the principal.
-  final List<String> identifiers;
+  final pulumi.Input<List<String>> identifiers;
 
   /// Creates a new [GetPolicyDocumentStatementPrincipal].
   /// [entity] The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
@@ -24,8 +25,8 @@ class GetPolicyDocumentStatementPrincipal {
 
   factory GetPolicyDocumentStatementPrincipal.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentStatementPrincipal(
-      entity: map['entity'] as String,
-      identifiers: (map['identifiers'] as List).cast<String>(),
+      entity: (map['entity'] as String).input(),
+      identifiers: ((map['identifiers'] as List).cast<String>()).input(),
     );
   }
 }

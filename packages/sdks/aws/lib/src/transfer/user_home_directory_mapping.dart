@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserHomeDirectoryMapping {
   /// Represents an entry and a target.
-  final String entry;
+  final pulumi.Input<String> entry;
   /// Represents the map target.
   ///
   /// The `Restricted` option is achieved using the following mapping:
@@ -14,7 +15,7 @@ class UserHomeDirectoryMapping {
   /// target = "/${aws_s3_bucket.foo.id}/$${Transfer:UserName}"
   /// }
   /// ```
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [UserHomeDirectoryMapping].
   /// [entry] Represents an entry and a target.
@@ -33,8 +34,8 @@ class UserHomeDirectoryMapping {
 
   factory UserHomeDirectoryMapping.fromMap(Map<String, dynamic> map) {
     return UserHomeDirectoryMapping(
-      entry: map['entry'] as String,
-      target: map['target'] as String,
+      entry: (map['entry'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

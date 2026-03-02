@@ -16,11 +16,9 @@ class GetDnssecConfigArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
   GetDnssecConfigArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> zoneName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      zoneName = pulumi.Input.asInput<String>(zoneName);
+    required this.resourceGroupName,
+    required this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDnssecConfigArgs {
 
   factory GetDnssecConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetDnssecConfigArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      zoneName: pulumi.Output.create<String>(map['zoneName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      zoneName: (map['zoneName'] as String).input(),
     );
   }
 }

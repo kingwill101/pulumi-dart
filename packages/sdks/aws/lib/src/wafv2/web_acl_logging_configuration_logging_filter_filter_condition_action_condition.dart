@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition {
   /// Action setting that a log record must contain in order to meet the condition. Valid values for `action` are `ALLOW`, `BLOCK`, `COUNT`, `CAPTCHA`, `CHALLENGE` and `EXCLUDED_AS_COUNT`.
-  final String action;
+  final pulumi.Input<String> action;
 
   /// Creates a new [WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition].
   /// [action] Action setting that a log record must contain in order to meet the condition. Valid values for `action` are `ALLOW`, `BLOCK`, `COUNT`, `CAPTCHA`, `CHALLENGE` and `EXCLUDED_AS_COUNT`.
@@ -19,7 +20,7 @@ class WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition {
 
   factory WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition(
-      action: map['action'] as String,
+      action: (map['action'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesSmm {
   /// Configures the state of the SMM feature, indicating whether it is active.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Configures the Memory Type Range Register (MTRR) for SMM, providing control over memory regions.
-  final double? tseg;
+  final pulumi.Input<double>? tseg;
   /// Sets the unit of the TSEG (Trusted Secure Environment Group) size for SMM configuration.
-  final String? tsegUnit;
+  final pulumi.Input<String>? tsegUnit;
 
   /// Creates a new [DomainFeaturesSmm].
   /// [state] Configures the state of the SMM feature, indicating whether it is active.
@@ -29,9 +30,9 @@ class DomainFeaturesSmm {
 
   factory DomainFeaturesSmm.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesSmm(
-      state: map['state'] == null ? null : map['state'] as String,
-      tseg: map['tseg'] == null ? null : map['tseg'] as double,
-      tsegUnit: map['tsegUnit'] == null ? null : map['tsegUnit'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tseg: map['tseg'] == null ? null : (map['tseg'] as double).input(),
+      tsegUnit: map['tsegUnit'] == null ? null : (map['tsegUnit'] as String).input(),
     );
   }
 }

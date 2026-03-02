@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTargetGroupHealthCheck {
-  final bool enabled;
-  final int healthyThreshold;
-  final int interval;
-  final String matcher;
-  final String path;
-  final String port;
-  final String protocol;
-  final int timeout;
-  final int unhealthyThreshold;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<int> healthyThreshold;
+  final pulumi.Input<int> interval;
+  final pulumi.Input<String> matcher;
+  final pulumi.Input<String> path;
+  final pulumi.Input<String> port;
+  final pulumi.Input<String> protocol;
+  final pulumi.Input<int> timeout;
+  final pulumi.Input<int> unhealthyThreshold;
 
   /// Creates a new [GetTargetGroupHealthCheck].
   /// [enabled] Required.
@@ -50,15 +51,15 @@ class GetTargetGroupHealthCheck {
 
   factory GetTargetGroupHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetTargetGroupHealthCheck(
-      enabled: map['enabled'] as bool,
-      healthyThreshold: map['healthyThreshold'] as int,
-      interval: map['interval'] as int,
-      matcher: map['matcher'] as String,
-      path: map['path'] as String,
-      port: map['port'] as String,
-      protocol: map['protocol'] as String,
-      timeout: map['timeout'] as int,
-      unhealthyThreshold: map['unhealthyThreshold'] as int,
+      enabled: (map['enabled'] as bool).input(),
+      healthyThreshold: (map['healthyThreshold'] as int).input(),
+      interval: (map['interval'] as int).input(),
+      matcher: (map['matcher'] as String).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      timeout: (map['timeout'] as int).input(),
+      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class IntegrationRuntimeSelfHostedArgs {
   /// [name] The name which should be used for this Synapse Self-hosted Integration Runtime. Changing this forces a new Synapse Self-hosted Integration Runtime to be created.
   /// [synapseWorkspaceId] The Synapse Workspace ID in which to associate the Integration Runtime with. Changing this forces a new Synapse Self-hosted Integration Runtime to be created.
   IntegrationRuntimeSelfHostedArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> synapseWorkspaceId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      synapseWorkspaceId = pulumi.Input.asInput<String>(synapseWorkspaceId);
+    this.description,
+    this.name,
+    required this.synapseWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class IntegrationRuntimeSelfHostedArgs {
 
   factory IntegrationRuntimeSelfHostedArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      synapseWorkspaceId: pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
     );
   }
 }

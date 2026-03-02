@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver {
   /// The entry point of job application.
-  final String entryPoint;
+  final pulumi.Input<String> entryPoint;
   /// The arguments for job application.
-  final List<String>? entryPointArguments;
+  final pulumi.Input<List<String>>? entryPointArguments;
   /// The Spark submit parameters that are used for job runs.
-  final String? sparkSubmitParameters;
+  final pulumi.Input<String>? sparkSubmitParameters;
 
   /// Creates a new [JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver].
   /// [entryPoint] The entry point of job application.
@@ -29,9 +30,9 @@ class JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver {
 
   factory JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver(
-      entryPoint: map['entryPoint'] as String,
-      entryPointArguments: map['entryPointArguments'] == null ? null : (map['entryPointArguments'] as List).cast<String>(),
-      sparkSubmitParameters: map['sparkSubmitParameters'] == null ? null : map['sparkSubmitParameters'] as String,
+      entryPoint: (map['entryPoint'] as String).input(),
+      entryPointArguments: map['entryPointArguments'] == null ? null : ((map['entryPointArguments'] as List).cast<String>()).input(),
+      sparkSubmitParameters: map['sparkSubmitParameters'] == null ? null : (map['sparkSubmitParameters'] as String).input(),
     );
   }
 }

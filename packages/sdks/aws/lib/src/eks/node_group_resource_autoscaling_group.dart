@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeGroupResourceAutoscalingGroup {
   /// Name of the AutoScaling Group.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [NodeGroupResourceAutoscalingGroup].
   /// [name] Name of the AutoScaling Group.
@@ -19,7 +20,7 @@ class NodeGroupResourceAutoscalingGroup {
 
   factory NodeGroupResourceAutoscalingGroup.fromMap(Map<String, dynamic> map) {
     return NodeGroupResourceAutoscalingGroup(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

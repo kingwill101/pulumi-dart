@@ -41,27 +41,17 @@ class TaskCloudtasksV2beta3Args {
   /// [responseView] The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
   /// [scheduleTime] The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
   TaskCloudtasksV2beta3Args({
-    pulumi.Output<AppEngineHttpRequestCloudtasksV2beta3>? appEngineHttpRequest,
-    pulumi.Output<String>? dispatchDeadline,
-    pulumi.Output<HttpRequestCloudtasksV2beta3>? httpRequest,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<PullMessageCloudtasksV2beta3>? pullMessage,
-    required pulumi.Output<String> queueId,
-    pulumi.Output<TaskResponseViewCloudtasksV2beta3>? responseView,
-    pulumi.Output<String>? scheduleTime,
-  }) :
-      appEngineHttpRequest = pulumi.Input.asOptionalInput<AppEngineHttpRequestCloudtasksV2beta3>(appEngineHttpRequest),
-      dispatchDeadline = pulumi.Input.asOptionalInput<String>(dispatchDeadline),
-      httpRequest = pulumi.Input.asOptionalInput<HttpRequestCloudtasksV2beta3>(httpRequest),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pullMessage = pulumi.Input.asOptionalInput<PullMessageCloudtasksV2beta3>(pullMessage),
-      queueId = pulumi.Input.asInput<String>(queueId),
-      responseView = pulumi.Input.asOptionalInput<TaskResponseViewCloudtasksV2beta3>(responseView),
-      scheduleTime = pulumi.Input.asOptionalInput<String>(scheduleTime);
+    this.appEngineHttpRequest,
+    this.dispatchDeadline,
+    this.httpRequest,
+    this.location,
+    this.name,
+    this.project,
+    this.pullMessage,
+    required this.queueId,
+    this.responseView,
+    this.scheduleTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class TaskCloudtasksV2beta3Args {
 
   factory TaskCloudtasksV2beta3Args.fromMap(Map<String, dynamic> map) {
     return TaskCloudtasksV2beta3Args(
-      appEngineHttpRequest: map['appEngineHttpRequest'] == null ? null : pulumi.Output.create<AppEngineHttpRequestCloudtasksV2beta3>(AppEngineHttpRequestCloudtasksV2beta3.fromMap((map['appEngineHttpRequest'] as Map).cast<String, dynamic>())),
-      dispatchDeadline: map['dispatchDeadline'] == null ? null : pulumi.Output.create<String>(map['dispatchDeadline'] as String),
-      httpRequest: map['httpRequest'] == null ? null : pulumi.Output.create<HttpRequestCloudtasksV2beta3>(HttpRequestCloudtasksV2beta3.fromMap((map['httpRequest'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pullMessage: map['pullMessage'] == null ? null : pulumi.Output.create<PullMessageCloudtasksV2beta3>(PullMessageCloudtasksV2beta3.fromMap((map['pullMessage'] as Map).cast<String, dynamic>())),
-      queueId: pulumi.Output.create<String>(map['queueId'] as String),
-      responseView: map['responseView'] == null ? null : pulumi.Output.create<TaskResponseViewCloudtasksV2beta3>(TaskResponseViewCloudtasksV2beta3.fromValue(map['responseView'] as String)),
-      scheduleTime: map['scheduleTime'] == null ? null : pulumi.Output.create<String>(map['scheduleTime'] as String),
+      appEngineHttpRequest: map['appEngineHttpRequest'] == null ? null : (AppEngineHttpRequestCloudtasksV2beta3.fromMap((map['appEngineHttpRequest'] as Map).cast<String, dynamic>())).input(),
+      dispatchDeadline: map['dispatchDeadline'] == null ? null : (map['dispatchDeadline'] as String).input(),
+      httpRequest: map['httpRequest'] == null ? null : (HttpRequestCloudtasksV2beta3.fromMap((map['httpRequest'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pullMessage: map['pullMessage'] == null ? null : (PullMessageCloudtasksV2beta3.fromMap((map['pullMessage'] as Map).cast<String, dynamic>())).input(),
+      queueId: (map['queueId'] as String).input(),
+      responseView: map['responseView'] == null ? null : (TaskResponseViewCloudtasksV2beta3.fromValue(map['responseView'] as String)).input(),
+      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime'] as String).input(),
     );
   }
 }

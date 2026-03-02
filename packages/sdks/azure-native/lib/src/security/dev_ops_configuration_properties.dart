@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization.dart';
 
 /// DevOps Configuration properties.
 class DevOpsConfigurationProperties {
   /// Authorization payload.
-  final Authorization? authorization;
+  final pulumi.Input<Authorization>? authorization;
   /// AutoDiscovery states.
-  final String? autoDiscovery;
+  final pulumi.Input<String>? autoDiscovery;
   /// The provisioning state of the resource.
   ///
   /// Pending - Provisioning pending.
@@ -17,10 +18,10 @@ class DevOpsConfigurationProperties {
   /// PendingDeletion - Deletion pending.
   /// DeletionSuccess - Deletion successful.
   /// DeletionFailure - Deletion failure.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// List of top-level inventory to select when AutoDiscovery is disabled.
   /// This field is ignored when AutoDiscovery is enabled.
-  final List<String>? topLevelInventoryList;
+  final pulumi.Input<List<String>>? topLevelInventoryList;
 
   /// Creates a new [DevOpsConfigurationProperties].
   /// [authorization] Authorization payload.
@@ -36,7 +37,7 @@ class DevOpsConfigurationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorization': ?authorization == null ? null : authorization!.toMap(),
+      'authorization': ?pulumi.Input.mapOptionalInputValue<Authorization, Map<String, dynamic>>(authorization, (value) => value.toMap()),
       'autoDiscovery': ?autoDiscovery,
       'provisioningState': ?provisioningState,
       'topLevelInventoryList': ?topLevelInventoryList,
@@ -45,10 +46,10 @@ class DevOpsConfigurationProperties {
 
   factory DevOpsConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return DevOpsConfigurationProperties(
-      authorization: map['authorization'] == null ? null : Authorization.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
-      autoDiscovery: map['autoDiscovery'] == null ? null : map['autoDiscovery'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      topLevelInventoryList: map['topLevelInventoryList'] == null ? null : (map['topLevelInventoryList'] as List).cast<String>(),
+      authorization: map['authorization'] == null ? null : (Authorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
+      autoDiscovery: map['autoDiscovery'] == null ? null : (map['autoDiscovery'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      topLevelInventoryList: map['topLevelInventoryList'] == null ? null : ((map['topLevelInventoryList'] as List).cast<String>()).input(),
     );
   }
 }

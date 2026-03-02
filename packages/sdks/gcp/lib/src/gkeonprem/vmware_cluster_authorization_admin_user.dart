@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareClusterAuthorizationAdminUser {
   /// The name of the user, e.g. `my-gcp-id@gmail.com`.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [VMwareClusterAuthorizationAdminUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -19,7 +20,7 @@ class VMwareClusterAuthorizationAdminUser {
 
   factory VMwareClusterAuthorizationAdminUser.fromMap(Map<String, dynamic> map) {
     return VMwareClusterAuthorizationAdminUser(
-      username: map['username'] as String,
+      username: (map['username'] as String).input(),
     );
   }
 }

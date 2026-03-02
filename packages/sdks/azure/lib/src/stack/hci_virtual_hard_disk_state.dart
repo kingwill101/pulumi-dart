@@ -48,33 +48,20 @@ class HciVirtualHardDiskState {
   /// [storagePathId] The ID of the Azure Stack HCI Storage Path used for this Virtual Hard Disk. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Virtual Hard Disk.
   HciVirtualHardDiskState({
-    pulumi.Output<int>? blockSizeInBytes,
-    pulumi.Output<String>? customLocationId,
-    pulumi.Output<String>? diskFileFormat,
-    pulumi.Output<int>? diskSizeInGb,
-    pulumi.Output<bool>? dynamicEnabled,
-    pulumi.Output<String>? hypervGeneration,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? logicalSectorInBytes,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? physicalSectorInBytes,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? storagePathId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      blockSizeInBytes = pulumi.Input.asOptionalInput<int>(blockSizeInBytes),
-      customLocationId = pulumi.Input.asOptionalInput<String>(customLocationId),
-      diskFileFormat = pulumi.Input.asOptionalInput<String>(diskFileFormat),
-      diskSizeInGb = pulumi.Input.asOptionalInput<int>(diskSizeInGb),
-      dynamicEnabled = pulumi.Input.asOptionalInput<bool>(dynamicEnabled),
-      hypervGeneration = pulumi.Input.asOptionalInput<String>(hypervGeneration),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logicalSectorInBytes = pulumi.Input.asOptionalInput<int>(logicalSectorInBytes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      physicalSectorInBytes = pulumi.Input.asOptionalInput<int>(physicalSectorInBytes),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      storagePathId = pulumi.Input.asOptionalInput<String>(storagePathId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.blockSizeInBytes,
+    this.customLocationId,
+    this.diskFileFormat,
+    this.diskSizeInGb,
+    this.dynamicEnabled,
+    this.hypervGeneration,
+    this.location,
+    this.logicalSectorInBytes,
+    this.name,
+    this.physicalSectorInBytes,
+    this.resourceGroupName,
+    this.storagePathId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class HciVirtualHardDiskState {
 
   factory HciVirtualHardDiskState.fromMap(Map<String, dynamic> map) {
     return HciVirtualHardDiskState(
-      blockSizeInBytes: map['blockSizeInBytes'] == null ? null : pulumi.Output.create<int>(map['blockSizeInBytes'] as int),
-      customLocationId: map['customLocationId'] == null ? null : pulumi.Output.create<String>(map['customLocationId'] as String),
-      diskFileFormat: map['diskFileFormat'] == null ? null : pulumi.Output.create<String>(map['diskFileFormat'] as String),
-      diskSizeInGb: map['diskSizeInGb'] == null ? null : pulumi.Output.create<int>(map['diskSizeInGb'] as int),
-      dynamicEnabled: map['dynamicEnabled'] == null ? null : pulumi.Output.create<bool>(map['dynamicEnabled'] as bool),
-      hypervGeneration: map['hypervGeneration'] == null ? null : pulumi.Output.create<String>(map['hypervGeneration'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logicalSectorInBytes: map['logicalSectorInBytes'] == null ? null : pulumi.Output.create<int>(map['logicalSectorInBytes'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      physicalSectorInBytes: map['physicalSectorInBytes'] == null ? null : pulumi.Output.create<int>(map['physicalSectorInBytes'] as int),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storagePathId: map['storagePathId'] == null ? null : pulumi.Output.create<String>(map['storagePathId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      blockSizeInBytes: map['blockSizeInBytes'] == null ? null : (map['blockSizeInBytes'] as int).input(),
+      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId'] as String).input(),
+      diskFileFormat: map['diskFileFormat'] == null ? null : (map['diskFileFormat'] as String).input(),
+      diskSizeInGb: map['diskSizeInGb'] == null ? null : (map['diskSizeInGb'] as int).input(),
+      dynamicEnabled: map['dynamicEnabled'] == null ? null : (map['dynamicEnabled'] as bool).input(),
+      hypervGeneration: map['hypervGeneration'] == null ? null : (map['hypervGeneration'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logicalSectorInBytes: map['logicalSectorInBytes'] == null ? null : (map['logicalSectorInBytes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      physicalSectorInBytes: map['physicalSectorInBytes'] == null ? null : (map['physicalSectorInBytes'] as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      storagePathId: map['storagePathId'] == null ? null : (map['storagePathId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

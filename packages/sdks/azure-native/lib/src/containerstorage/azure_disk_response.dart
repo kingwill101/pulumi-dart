@@ -7,13 +7,13 @@ import 'encryption_response.dart';
 /// Azure Disk Pool Properties
 class AzureDiskResponse {
   /// Only required if individual disk selection is desired. Path to disk, e.g. <nodename>:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
-  final List<DiskResponse>? disks;
+  final pulumi.Input<List<DiskResponse>>? disks;
   /// Encryption specifies the encryption configuration for the Azure Disk pool
-  final EncryptionResponse? encryption;
+  final pulumi.Input<EncryptionResponse>? encryption;
   /// Managed resource group for the pool.
-  final String resourceGroup;
+  final pulumi.Input<String> resourceGroup;
   /// Sku name
-  final String? skuName;
+  final pulumi.Input<String>? skuName;
 
   /// Creates a new [AzureDiskResponse].
   /// [disks] Only required if individual disk selection is desired. Path to disk, e.g. <nodename>:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
@@ -29,8 +29,8 @@ class AzureDiskResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': ?disks == null ? null : pulumi.Input.encodeList<DiskResponse, Map<String, dynamic>>(disks!, (value) => value.toMap()),
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'disks': ?pulumi.Input.mapOptionalInputValue<List<DiskResponse>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<DiskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<EncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'resourceGroup': resourceGroup,
       'skuName': ?skuName,
     };
@@ -38,10 +38,10 @@ class AzureDiskResponse {
 
   factory AzureDiskResponse.fromMap(Map<String, dynamic> map) {
     return AzureDiskResponse(
-      disks: map['disks'] == null ? null : pulumi.Input.decodeList<DiskResponse>(map['disks'], (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>())),
-      encryption: map['encryption'] == null ? null : EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      resourceGroup: map['resourceGroup'] as String,
-      skuName: map['skuName'] == null ? null : map['skuName'] as String,
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<DiskResponse>(map['disks'], (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
     );
   }
 }

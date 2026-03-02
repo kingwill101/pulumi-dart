@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleRepairRolloutRuleRepairPhaseRollback {
   /// Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
-  final String? destinationPhase;
+  final pulumi.Input<String>? destinationPhase;
   /// Optional. If pending rollout exists on the target, the rollback operation will be aborted.
-  final bool? disableRollbackIfRolloutPending;
+  final pulumi.Input<bool>? disableRollbackIfRolloutPending;
 
   /// Creates a new [AutomationRuleRepairRolloutRuleRepairPhaseRollback].
   /// [destinationPhase] Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
@@ -24,8 +25,8 @@ class AutomationRuleRepairRolloutRuleRepairPhaseRollback {
 
   factory AutomationRuleRepairRolloutRuleRepairPhaseRollback.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRepairRolloutRuleRepairPhaseRollback(
-      destinationPhase: map['destinationPhase'] == null ? null : map['destinationPhase'] as String,
-      disableRollbackIfRolloutPending: map['disableRollbackIfRolloutPending'] == null ? null : map['disableRollbackIfRolloutPending'] as bool,
+      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase'] as String).input(),
+      disableRollbackIfRolloutPending: map['disableRollbackIfRolloutPending'] == null ? null : (map['disableRollbackIfRolloutPending'] as bool).input(),
     );
   }
 }

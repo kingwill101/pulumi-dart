@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnvironmentConfigWorkloadsConfigDagProcessor {
   /// Number of DAG processors.
-  final int count;
+  final pulumi.Input<int> count;
   /// CPU request and limit for DAG processor.
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// Memory (GB) request and limit for DAG processor.
-  final double memoryGb;
+  final pulumi.Input<double> memoryGb;
   /// Storage (GB) request and limit for DAG processor.
-  final double storageGb;
+  final pulumi.Input<double> storageGb;
 
   /// Creates a new [GetEnvironmentConfigWorkloadsConfigDagProcessor].
   /// [count] Number of DAG processors.
@@ -34,10 +35,10 @@ class GetEnvironmentConfigWorkloadsConfigDagProcessor {
 
   factory GetEnvironmentConfigWorkloadsConfigDagProcessor.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigDagProcessor(
-      count: map['count'] as int,
-      cpu: map['cpu'] as double,
-      memoryGb: map['memoryGb'] as double,
-      storageGb: map['storageGb'] as double,
+      count: (map['count'] as int).input(),
+      cpu: (map['cpu'] as double).input(),
+      memoryGb: (map['memoryGb'] as double).input(),
+      storageGb: (map['storageGb'] as double).input(),
     );
   }
 }

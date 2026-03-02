@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Profile for how to handle networking for Lab Plans.
 class LabPlanNetworkProfile {
   /// The external subnet resource id
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [LabPlanNetworkProfile].
   /// [subnetId] The external subnet resource id
@@ -20,7 +21,7 @@ class LabPlanNetworkProfile {
 
   factory LabPlanNetworkProfile.fromMap(Map<String, dynamic> map) {
     return LabPlanNetworkProfile(
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

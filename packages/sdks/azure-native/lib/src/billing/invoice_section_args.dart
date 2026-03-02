@@ -26,17 +26,12 @@ class InvoiceSectionArgs {
   /// [properties] An invoice section.
   /// [tags] Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
   InvoiceSectionArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> billingProfileName,
-    pulumi.Output<String>? invoiceSectionName,
-    pulumi.Output<InvoiceSectionProperties>? properties,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingProfileName = pulumi.Input.asInput<String>(billingProfileName),
-      invoiceSectionName = pulumi.Input.asOptionalInput<String>(invoiceSectionName),
-      properties = pulumi.Input.asOptionalInput<InvoiceSectionProperties>(properties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.billingAccountName,
+    required this.billingProfileName,
+    this.invoiceSectionName,
+    this.properties,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class InvoiceSectionArgs {
 
   factory InvoiceSectionArgs.fromMap(Map<String, dynamic> map) {
     return InvoiceSectionArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingProfileName: pulumi.Output.create<String>(map['billingProfileName'] as String),
-      invoiceSectionName: map['invoiceSectionName'] == null ? null : pulumi.Output.create<String>(map['invoiceSectionName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<InvoiceSectionProperties>(InvoiceSectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingProfileName: (map['billingProfileName'] as String).input(),
+      invoiceSectionName: map['invoiceSectionName'] == null ? null : (map['invoiceSectionName'] as String).input(),
+      properties: map['properties'] == null ? null : (InvoiceSectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

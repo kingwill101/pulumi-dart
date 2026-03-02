@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SkuCostResponse {
   /// The extended unit.
-  final String? extendedUnit;
+  final pulumi.Input<String>? extendedUnit;
   /// The meter id.
-  final String meterId;
+  final pulumi.Input<String> meterId;
   /// The quantity.
-  final int? quantity;
+  final pulumi.Input<int>? quantity;
 
   /// Creates a new [SkuCostResponse].
   /// [extendedUnit] The extended unit.
@@ -29,9 +30,9 @@ class SkuCostResponse {
 
   factory SkuCostResponse.fromMap(Map<String, dynamic> map) {
     return SkuCostResponse(
-      extendedUnit: map['extendedUnit'] == null ? null : map['extendedUnit'] as String,
-      meterId: map['meterId'] as String,
-      quantity: map['quantity'] == null ? null : map['quantity'] as int,
+      extendedUnit: map['extendedUnit'] == null ? null : (map['extendedUnit'] as String).input(),
+      meterId: (map['meterId'] as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
     );
   }
 }

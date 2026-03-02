@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Spring Cloud Gateway route definition
 class ScgRouteResponse {
   /// Filters of the route
-  final List<String>? filters;
+  final pulumi.Input<List<String>>? filters;
   /// Id of the route
-  final String id;
+  final pulumi.Input<String> id;
   /// Order of the route
-  final double? order;
+  final pulumi.Input<double>? order;
   /// Predicates of the route
-  final List<String>? predicates;
+  final pulumi.Input<List<String>>? predicates;
   /// Uri of the route
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ScgRouteResponse].
   /// [filters] Filters of the route
@@ -40,11 +41,11 @@ class ScgRouteResponse {
 
   factory ScgRouteResponse.fromMap(Map<String, dynamic> map) {
     return ScgRouteResponse(
-      filters: map['filters'] == null ? null : (map['filters'] as List).cast<String>(),
-      id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as double,
-      predicates: map['predicates'] == null ? null : (map['predicates'] as List).cast<String>(),
-      uri: map['uri'] as String,
+      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as double).input(),
+      predicates: map['predicates'] == null ? null : ((map['predicates'] as List).cast<String>()).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

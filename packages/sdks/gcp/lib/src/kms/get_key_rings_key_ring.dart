@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeyRingsKeyRing {
-  final String id;
-  final String name;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetKeyRingsKeyRing].
   /// [id] Required.
@@ -22,8 +23,8 @@ class GetKeyRingsKeyRing {
 
   factory GetKeyRingsKeyRing.fromMap(Map<String, dynamic> map) {
     return GetKeyRingsKeyRing(
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

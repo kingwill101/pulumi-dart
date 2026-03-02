@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerDeletionProtectionConfig {
   /// Remove the Protection Status
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
-  final String? enabledTime;
+  final pulumi.Input<String>? enabledTime;
 
   /// Creates a new [LoadBalancerDeletionProtectionConfig].
   /// [enabled] Remove the Protection Status
@@ -24,8 +25,8 @@ class LoadBalancerDeletionProtectionConfig {
 
   factory LoadBalancerDeletionProtectionConfig.fromMap(Map<String, dynamic> map) {
     return LoadBalancerDeletionProtectionConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      enabledTime: map['enabledTime'] == null ? null : map['enabledTime'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabledTime: map['enabledTime'] == null ? null : (map['enabledTime'] as String).input(),
     );
   }
 }

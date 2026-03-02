@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Standard rollout policy is the default policy for blue-green.
 class StandardRolloutPolicyContainerV1beta1 {
   /// Number of blue nodes to drain in a batch.
-  final int? batchNodeCount;
+  final pulumi.Input<int>? batchNodeCount;
   /// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
-  final double? batchPercentage;
+  final pulumi.Input<double>? batchPercentage;
   /// Soak time after each batch gets drained. Default to zero.
-  final String? batchSoakDuration;
+  final pulumi.Input<String>? batchSoakDuration;
 
   /// Creates a new [StandardRolloutPolicyContainerV1beta1].
   /// [batchNodeCount] Number of blue nodes to drain in a batch.
@@ -30,9 +31,9 @@ class StandardRolloutPolicyContainerV1beta1 {
 
   factory StandardRolloutPolicyContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return StandardRolloutPolicyContainerV1beta1(
-      batchNodeCount: map['batchNodeCount'] == null ? null : map['batchNodeCount'] as int,
-      batchPercentage: map['batchPercentage'] == null ? null : map['batchPercentage'] as double,
-      batchSoakDuration: map['batchSoakDuration'] == null ? null : map['batchSoakDuration'] as String,
+      batchNodeCount: map['batchNodeCount'] == null ? null : (map['batchNodeCount'] as int).input(),
+      batchPercentage: map['batchPercentage'] == null ? null : (map['batchPercentage'] as double).input(),
+      batchSoakDuration: map['batchSoakDuration'] == null ? null : (map['batchSoakDuration'] as String).input(),
     );
   }
 }

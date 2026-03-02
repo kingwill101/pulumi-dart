@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
 class TruncationSelectionPolicyResponse {
   /// Number of intervals by which to delay the first evaluation.
-  final int? delayEvaluation;
+  final pulumi.Input<int>? delayEvaluation;
   /// Interval (number of runs) between policy evaluations.
-  final int? evaluationInterval;
+  final pulumi.Input<int>? evaluationInterval;
   /// Expected value is 'TruncationSelection'.
-  final String policyType;
+  final pulumi.Input<String> policyType;
   /// The percentage of runs to cancel at each evaluation interval.
-  final int? truncationPercentage;
+  final pulumi.Input<int>? truncationPercentage;
 
   /// Creates a new [TruncationSelectionPolicyResponse].
   /// [delayEvaluation] Number of intervals by which to delay the first evaluation.
@@ -35,10 +36,10 @@ class TruncationSelectionPolicyResponse {
 
   factory TruncationSelectionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TruncationSelectionPolicyResponse(
-      delayEvaluation: map['delayEvaluation'] == null ? null : map['delayEvaluation'] as int,
-      evaluationInterval: map['evaluationInterval'] == null ? null : map['evaluationInterval'] as int,
-      policyType: map['policyType'] as String,
-      truncationPercentage: map['truncationPercentage'] == null ? null : map['truncationPercentage'] as int,
+      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation'] as int).input(),
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as int).input(),
+      policyType: (map['policyType'] as String).input(),
+      truncationPercentage: map['truncationPercentage'] == null ? null : (map['truncationPercentage'] as int).input(),
     );
   }
 }

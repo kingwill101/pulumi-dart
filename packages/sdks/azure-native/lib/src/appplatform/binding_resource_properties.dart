@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Binding resource properties payload
 class BindingResourceProperties {
   /// Binding parameters of the Binding resource
-  final Map<String, String>? bindingParameters;
+  final pulumi.Input<Map<String, String>>? bindingParameters;
   /// The key of the bound resource
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The Azure resource id of the bound resource
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [BindingResourceProperties].
   /// [bindingParameters] Binding parameters of the Binding resource
@@ -30,9 +31,9 @@ class BindingResourceProperties {
 
   factory BindingResourceProperties.fromMap(Map<String, dynamic> map) {
     return BindingResourceProperties(
-      bindingParameters: map['bindingParameters'] == null ? null : (map['bindingParameters'] as Map).cast<String, String>(),
-      key: map['key'] == null ? null : map['key'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      bindingParameters: map['bindingParameters'] == null ? null : ((map['bindingParameters'] as Map).cast<String, String>()).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

@@ -42,19 +42,13 @@ class IamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [tableId] Used to find the parent resource to bind the IAM policy to
   IamBindingArgs({
-    pulumi.Output<IamBindingCondition>? condition,
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> tableId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IamBindingCondition>(condition),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      tableId = pulumi.Input.asInput<String>(tableId);
+    this.condition,
+    required this.datasetId,
+    required this.members,
+    this.project,
+    required this.role,
+    required this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,12 +63,12 @@ class IamBindingArgs {
 
   factory IamBindingArgs.fromMap(Map<String, dynamic> map) {
     return IamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IamBindingCondition>(IamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      tableId: pulumi.Output.create<String>(map['tableId'] as String),
+      condition: map['condition'] == null ? null : (IamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

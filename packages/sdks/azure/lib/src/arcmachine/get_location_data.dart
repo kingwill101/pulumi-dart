@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLocationData {
   /// The city or locality where the resource is located.
-  final String city;
+  final pulumi.Input<String> city;
   /// The country or region where the resource is located.
-  final String countryOrRegion;
+  final pulumi.Input<String> countryOrRegion;
   /// The district, state, or province where the resource is located.
-  final String district;
+  final pulumi.Input<String> district;
   /// The name of this Azure Arc machine.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetLocationData].
   /// [city] The city or locality where the resource is located.
@@ -34,10 +35,10 @@ class GetLocationData {
 
   factory GetLocationData.fromMap(Map<String, dynamic> map) {
     return GetLocationData(
-      city: map['city'] as String,
-      countryOrRegion: map['countryOrRegion'] as String,
-      district: map['district'] as String,
-      name: map['name'] as String,
+      city: (map['city'] as String).input(),
+      countryOrRegion: (map['countryOrRegion'] as String).input(),
+      district: (map['district'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

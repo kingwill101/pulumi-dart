@@ -13,11 +13,9 @@ class HpcClusterState {
   /// [description] The description of ECS Hpc Cluster.
   /// [name] The name of ECS Hpc Cluster.
   HpcClusterState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.description,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class HpcClusterState {
 
   factory HpcClusterState.fromMap(Map<String, dynamic> map) {
     return HpcClusterState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

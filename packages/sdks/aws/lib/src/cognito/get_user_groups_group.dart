@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserGroupsGroup {
   /// Description of the user group.
-  final String description;
+  final pulumi.Input<String> description;
   /// Name of the user group.
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// Precedence of the user group.
-  final int precedence;
+  final pulumi.Input<int> precedence;
   /// ARN of the IAM role to be associated with the user group.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [GetUserGroupsGroup].
   /// [description] Description of the user group.
@@ -34,10 +35,10 @@ class GetUserGroupsGroup {
 
   factory GetUserGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetUserGroupsGroup(
-      description: map['description'] as String,
-      groupName: map['groupName'] as String,
-      precedence: map['precedence'] as int,
-      roleArn: map['roleArn'] as String,
+      description: (map['description'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      precedence: (map['precedence'] as int).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class GetZoneArgs {
   /// [name] The name of the DNS Zone.
   /// [resourceGroupName] The Name of the Resource Group where the DNS Zone exists.
   GetZoneArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    required this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetZoneArgs {
 
   factory GetZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

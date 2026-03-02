@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification defining the post-renderer to use.
 class PostRenderer {
   /// Arguments to pass to the post-renderer command.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// Path to an executable to be used for post rendering.
-  final String command;
+  final pulumi.Input<String> command;
 
   /// Creates a new [PostRenderer].
   /// [args] Arguments to pass to the post-renderer command.
@@ -25,8 +26,8 @@ class PostRenderer {
 
   factory PostRenderer.fromMap(Map<String, dynamic> map) {
     return PostRenderer(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      command: map['command'] as String,
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      command: (map['command'] as String).input(),
     );
   }
 }

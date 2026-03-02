@@ -22,15 +22,11 @@ class OpenIdConnectProviderArgs {
   /// [thumbprintLists] List of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). For certain OIDC identity providers (e.g., Auth0, GitHub, GitLab, Google, or those using an Amazon S3-hosted JWKS endpoint), AWS relies on its own library of trusted root certificate authorities (CAs) for validation instead of using any configured thumbprints. In these cases, any configured `thumbprint_list` is retained in the configuration but not used for verification. For other IdPs, if no `thumbprint_list` is provided, IAM automatically retrieves and uses the top intermediate CA thumbprint from the OIDC IdP server certificate. However, if a `thumbprint_list` is initially configured and later removed, Terraform does not prompt IAM to retrieve a thumbprint the same way. Instead, it continues using the original thumbprint list from the initial configuration. This differs from the behavior when creating an `aws.iam.OpenIdConnectProvider` without a `thumbprint_list`.
   /// [url] URL of the identity provider, corresponding to the `iss` claim.
   OpenIdConnectProviderArgs({
-    required pulumi.Output<List<String>> clientIdLists,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? thumbprintLists,
-    required pulumi.Output<String> url,
-  }) :
-      clientIdLists = pulumi.Input.asInput<List<String>>(clientIdLists),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      thumbprintLists = pulumi.Input.asOptionalInput<List<String>>(thumbprintLists),
-      url = pulumi.Input.asInput<String>(url);
+    required this.clientIdLists,
+    this.tags,
+    this.thumbprintLists,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class OpenIdConnectProviderArgs {
 
   factory OpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectProviderArgs(
-      clientIdLists: pulumi.Output.create<List<String>>((map['clientIdLists'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      thumbprintLists: map['thumbprintLists'] == null ? null : pulumi.Output.create<List<String>>((map['thumbprintLists'] as List).cast<String>()),
-      url: pulumi.Output.create<String>(map['url'] as String),
+      clientIdLists: ((map['clientIdLists'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      thumbprintLists: map['thumbprintLists'] == null ? null : ((map['thumbprintLists'] as List).cast<String>()).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

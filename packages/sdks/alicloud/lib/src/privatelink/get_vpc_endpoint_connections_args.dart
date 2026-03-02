@@ -25,17 +25,12 @@ class GetVpcEndpointConnectionsArgs {
   /// [serviceId] The ID of the Vpc Endpoint Service.
   /// [status] The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
   GetVpcEndpointConnectionsArgs({
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<int>? endpointOwnerId,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> serviceId,
-    pulumi.Output<String>? status,
-  }) :
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      endpointOwnerId = pulumi.Input.asOptionalInput<int>(endpointOwnerId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.endpointId,
+    this.endpointOwnerId,
+    this.outputFile,
+    required this.serviceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetVpcEndpointConnectionsArgs {
 
   factory GetVpcEndpointConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointConnectionsArgs(
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      endpointOwnerId: map['endpointOwnerId'] == null ? null : pulumi.Output.create<int>(map['endpointOwnerId'] as int),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      endpointOwnerId: map['endpointOwnerId'] == null ? null : (map['endpointOwnerId'] as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -39,19 +39,13 @@ class AutoscalerArgs {
   /// [target] URL of the managed instance group that this autoscaler will scale.
   /// [zone] URL of the zone where the instance group resides.
   AutoscalerArgs({
-    required pulumi.Output<AutoscalerAutoscalingPolicy> autoscalingPolicy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> target,
-    pulumi.Output<String>? zone,
-  }) :
-      autoscalingPolicy = pulumi.Input.asInput<AutoscalerAutoscalingPolicy>(autoscalingPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      target = pulumi.Input.asInput<String>(target),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.autoscalingPolicy,
+    this.description,
+    this.name,
+    this.project,
+    required this.target,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class AutoscalerArgs {
 
   factory AutoscalerArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalerArgs(
-      autoscalingPolicy: pulumi.Output.create<AutoscalerAutoscalingPolicy>(AutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      target: pulumi.Output.create<String>(map['target'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      autoscalingPolicy: (AutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      target: (map['target'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

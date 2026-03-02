@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceSettings {
   /// Project IDs for data projects hosted in a workspace.
-  final List<String> dataProjectIds;
+  final pulumi.Input<List<String>> dataProjectIds;
 
   /// Creates a new [WorkspaceSettings].
   /// [dataProjectIds] Project IDs for data projects hosted in a workspace.
@@ -19,7 +20,7 @@ class WorkspaceSettings {
 
   factory WorkspaceSettings.fromMap(Map<String, dynamic> map) {
     return WorkspaceSettings(
-      dataProjectIds: (map['dataProjectIds'] as List).cast<String>(),
+      dataProjectIds: ((map['dataProjectIds'] as List).cast<String>()).input(),
     );
   }
 }

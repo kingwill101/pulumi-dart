@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the VM.
 class VMInfoResponse {
   /// Azure resource Id of the VM.
-  final String id;
+  final pulumi.Input<String> id;
   /// UUID(Universally Unique Identifier) of the VM.
-  final String uuid;
+  final pulumi.Input<String> uuid;
 
   /// Creates a new [VMInfoResponse].
   /// [id] Azure resource Id of the VM.
@@ -25,8 +26,8 @@ class VMInfoResponse {
 
   factory VMInfoResponse.fromMap(Map<String, dynamic> map) {
     return VMInfoResponse(
-      id: map['id'] as String,
-      uuid: map['uuid'] as String,
+      id: (map['id'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

@@ -32,23 +32,15 @@ class ReservationBigqueryreservationV1beta1Args {
   /// [reservationId] The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
   /// [slotCapacity] Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceeds the project's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the project's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions, slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.
   ReservationBigqueryreservationV1beta1Args({
-    pulumi.Output<String>? concurrency,
-    pulumi.Output<bool>? ignoreIdleSlots,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? multiRegionAuxiliary,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? reservationId,
-    pulumi.Output<String>? slotCapacity,
-  }) :
-      concurrency = pulumi.Input.asOptionalInput<String>(concurrency),
-      ignoreIdleSlots = pulumi.Input.asOptionalInput<bool>(ignoreIdleSlots),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      multiRegionAuxiliary = pulumi.Input.asOptionalInput<bool>(multiRegionAuxiliary),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservationId = pulumi.Input.asOptionalInput<String>(reservationId),
-      slotCapacity = pulumi.Input.asOptionalInput<String>(slotCapacity);
+    this.concurrency,
+    this.ignoreIdleSlots,
+    this.location,
+    this.multiRegionAuxiliary,
+    this.name,
+    this.project,
+    this.reservationId,
+    this.slotCapacity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class ReservationBigqueryreservationV1beta1Args {
 
   factory ReservationBigqueryreservationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ReservationBigqueryreservationV1beta1Args(
-      concurrency: map['concurrency'] == null ? null : pulumi.Output.create<String>(map['concurrency'] as String),
-      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : pulumi.Output.create<bool>(map['ignoreIdleSlots'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : pulumi.Output.create<bool>(map['multiRegionAuxiliary'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservationId: map['reservationId'] == null ? null : pulumi.Output.create<String>(map['reservationId'] as String),
-      slotCapacity: map['slotCapacity'] == null ? null : pulumi.Output.create<String>(map['slotCapacity'] as String),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as String).input(),
+      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservationId: map['reservationId'] == null ? null : (map['reservationId'] as String).input(),
+      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity'] as String).input(),
     );
   }
 }

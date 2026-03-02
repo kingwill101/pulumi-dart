@@ -22,19 +22,13 @@ class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs({
-    required pulumi.Output<String> caPoolId,
-    required pulumi.Output<String> certificateAuthorityId,
-    required pulumi.Output<String> certificateRevocationListId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      caPoolId = pulumi.Input.asInput<String>(caPoolId),
-      certificateAuthorityId = pulumi.Input.asInput<String>(certificateAuthorityId),
-      certificateRevocationListId = pulumi.Input.asInput<String>(certificateRevocationListId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.caPoolId,
+    required this.certificateAuthorityId,
+    required this.certificateRevocationListId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs {
 
   factory GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs(
-      caPoolId: pulumi.Output.create<String>(map['caPoolId'] as String),
-      certificateAuthorityId: pulumi.Output.create<String>(map['certificateAuthorityId'] as String),
-      certificateRevocationListId: pulumi.Output.create<String>(map['certificateRevocationListId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      caPoolId: (map['caPoolId'] as String).input(),
+      certificateAuthorityId: (map['certificateAuthorityId'] as String).input(),
+      certificateRevocationListId: (map['certificateRevocationListId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

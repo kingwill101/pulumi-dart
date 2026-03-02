@@ -29,19 +29,13 @@ class SqlServerDatabaseArgs {
   /// [sqlServerInstanceName] Name of SQL Server Instance
   /// [tags] Resource tags.
   SqlServerDatabaseArgs({
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<SqlServerDatabaseResourceProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlServerInstanceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<SqlServerDatabaseResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerInstanceName = pulumi.Input.asInput<String>(sqlServerInstanceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.databaseName,
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    required this.sqlServerInstanceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class SqlServerDatabaseArgs {
 
   factory SqlServerDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseArgs(
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<SqlServerDatabaseResourceProperties>(SqlServerDatabaseResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerInstanceName: pulumi.Output.create<String>(map['sqlServerInstanceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (SqlServerDatabaseResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

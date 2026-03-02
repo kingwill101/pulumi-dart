@@ -52,31 +52,19 @@ class ClientTlsPolicyState {
   /// [sni] Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   /// [updateTime] Time the ClientTlsPolicy was updated in UTC.
   ClientTlsPolicyState({
-    pulumi.Output<ClientTlsPolicyClientCertificate>? clientCertificate,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<ClientTlsPolicyServerValidationCa>>? serverValidationCas,
-    pulumi.Output<String>? sni,
-    pulumi.Output<String>? updateTime,
-  }) :
-      clientCertificate = pulumi.Input.asOptionalInput<ClientTlsPolicyClientCertificate>(clientCertificate),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      serverValidationCas = pulumi.Input.asOptionalInput<List<ClientTlsPolicyServerValidationCa>>(serverValidationCas),
-      sni = pulumi.Input.asOptionalInput<String>(sni),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.clientCertificate,
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.serverValidationCas,
+    this.sni,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class ClientTlsPolicyState {
 
   factory ClientTlsPolicyState.fromMap(Map<String, dynamic> map) {
     return ClientTlsPolicyState(
-      clientCertificate: map['clientCertificate'] == null ? null : pulumi.Output.create<ClientTlsPolicyClientCertificate>(ClientTlsPolicyClientCertificate.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      serverValidationCas: map['serverValidationCas'] == null ? null : pulumi.Output.create<List<ClientTlsPolicyServerValidationCa>>(pulumi.Input.decodeList<ClientTlsPolicyServerValidationCa>(map['serverValidationCas'], (value) => ClientTlsPolicyServerValidationCa.fromMap((value as Map).cast<String, dynamic>()))),
-      sni: map['sni'] == null ? null : pulumi.Output.create<String>(map['sni'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      clientCertificate: map['clientCertificate'] == null ? null : (ClientTlsPolicyClientCertificate.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      serverValidationCas: map['serverValidationCas'] == null ? null : (pulumi.Input.decodeList<ClientTlsPolicyServerValidationCa>(map['serverValidationCas'], (value) => ClientTlsPolicyServerValidationCa.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sni: map['sni'] == null ? null : (map['sni'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -6,19 +6,19 @@ import 'artifact_parameter_properties.dart';
 /// Properties of an artifact.
 class ArtifactInstallProperties {
   /// The artifact's identifier.
-  final String? artifactId;
+  final pulumi.Input<String>? artifactId;
   /// The artifact's title.
-  final String? artifactTitle;
+  final pulumi.Input<String>? artifactTitle;
   /// The status message from the deployment.
-  final String? deploymentStatusMessage;
+  final pulumi.Input<String>? deploymentStatusMessage;
   /// The time that the artifact starts to install on the virtual machine.
-  final String? installTime;
+  final pulumi.Input<String>? installTime;
   /// The parameters of the artifact.
-  final List<ArtifactParameterProperties>? parameters;
+  final pulumi.Input<List<ArtifactParameterProperties>>? parameters;
   /// The status of the artifact.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The status message from the virtual machine extension.
-  final String? vmExtensionStatusMessage;
+  final pulumi.Input<String>? vmExtensionStatusMessage;
 
   /// Creates a new [ArtifactInstallProperties].
   /// [artifactId] The artifact's identifier.
@@ -44,7 +44,7 @@ class ArtifactInstallProperties {
       'artifactTitle': ?artifactTitle,
       'deploymentStatusMessage': ?deploymentStatusMessage,
       'installTime': ?installTime,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ArtifactParameterProperties, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ArtifactParameterProperties>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ArtifactParameterProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': ?status,
       'vmExtensionStatusMessage': ?vmExtensionStatusMessage,
     };
@@ -52,13 +52,13 @@ class ArtifactInstallProperties {
 
   factory ArtifactInstallProperties.fromMap(Map<String, dynamic> map) {
     return ArtifactInstallProperties(
-      artifactId: map['artifactId'] == null ? null : map['artifactId'] as String,
-      artifactTitle: map['artifactTitle'] == null ? null : map['artifactTitle'] as String,
-      deploymentStatusMessage: map['deploymentStatusMessage'] == null ? null : map['deploymentStatusMessage'] as String,
-      installTime: map['installTime'] == null ? null : map['installTime'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ArtifactParameterProperties>(map['parameters'], (value) => ArtifactParameterProperties.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      vmExtensionStatusMessage: map['vmExtensionStatusMessage'] == null ? null : map['vmExtensionStatusMessage'] as String,
+      artifactId: map['artifactId'] == null ? null : (map['artifactId'] as String).input(),
+      artifactTitle: map['artifactTitle'] == null ? null : (map['artifactTitle'] as String).input(),
+      deploymentStatusMessage: map['deploymentStatusMessage'] == null ? null : (map['deploymentStatusMessage'] as String).input(),
+      installTime: map['installTime'] == null ? null : (map['installTime'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ArtifactParameterProperties>(map['parameters'], (value) => ArtifactParameterProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vmExtensionStatusMessage: map['vmExtensionStatusMessage'] == null ? null : (map['vmExtensionStatusMessage'] as String).input(),
     );
   }
 }

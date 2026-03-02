@@ -32,19 +32,13 @@ class GetSharedImageVersionArgs {
   /// [sortVersionsBySemver] Sort available versions taking SemVer versioning scheme into account. Defaults to `false`.
   /// [tags] A mapping of tags assigned to the Shared Image.
   GetSharedImageVersionArgs({
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> imageName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? sortVersionsBySemver,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      imageName = pulumi.Input.asInput<String>(imageName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sortVersionsBySemver = pulumi.Input.asOptionalInput<bool>(sortVersionsBySemver),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.galleryName,
+    required this.imageName,
+    required this.name,
+    required this.resourceGroupName,
+    this.sortVersionsBySemver,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class GetSharedImageVersionArgs {
 
   factory GetSharedImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionArgs(
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      imageName: pulumi.Output.create<String>(map['imageName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sortVersionsBySemver: map['sortVersionsBySemver'] == null ? null : pulumi.Output.create<bool>(map['sortVersionsBySemver'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      galleryName: (map['galleryName'] as String).input(),
+      imageName: (map['imageName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sortVersionsBySemver: map['sortVersionsBySemver'] == null ? null : (map['sortVersionsBySemver'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Instruction from a PDF file.
 class GoogleCloudDatalabelingV1beta1PdfInstruction {
   /// PDF file for the instruction. Only gcs path is allowed.
-  final String? gcsFileUri;
+  final pulumi.Input<String>? gcsFileUri;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1PdfInstruction].
   /// [gcsFileUri] PDF file for the instruction. Only gcs path is allowed.
@@ -20,7 +21,7 @@ class GoogleCloudDatalabelingV1beta1PdfInstruction {
 
   factory GoogleCloudDatalabelingV1beta1PdfInstruction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1PdfInstruction(
-      gcsFileUri: map['gcsFileUri'] == null ? null : map['gcsFileUri'] as String,
+      gcsFileUri: map['gcsFileUri'] == null ? null : (map['gcsFileUri'] as String).input(),
     );
   }
 }

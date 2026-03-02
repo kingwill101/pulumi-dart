@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed data disk description.
 class VmssDataDiskResponse {
   /// Managed data disk letter. It can not use the reserved letter C or D and it can not change after created.
-  final String diskLetter;
+  final pulumi.Input<String> diskLetter;
   /// Disk size for each vm in the node type in GBs.
-  final int diskSizeGB;
+  final pulumi.Input<int> diskSizeGB;
   /// Managed data disk type. Specifies the storage account type for the managed disk
-  final String diskType;
+  final pulumi.Input<String> diskType;
   /// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM. Lun 0 is reserved for the service fabric data disk.
-  final int lun;
+  final pulumi.Input<int> lun;
 
   /// Creates a new [VmssDataDiskResponse].
   /// [diskLetter] Managed data disk letter. It can not use the reserved letter C or D and it can not change after created.
@@ -35,10 +36,10 @@ class VmssDataDiskResponse {
 
   factory VmssDataDiskResponse.fromMap(Map<String, dynamic> map) {
     return VmssDataDiskResponse(
-      diskLetter: map['diskLetter'] as String,
-      diskSizeGB: map['diskSizeGB'] as int,
-      diskType: map['diskType'] as String,
-      lun: map['lun'] as int,
+      diskLetter: (map['diskLetter'] as String).input(),
+      diskSizeGB: (map['diskSizeGB'] as int).input(),
+      diskType: (map['diskType'] as String).input(),
+      lun: (map['lun'] as int).input(),
     );
   }
 }

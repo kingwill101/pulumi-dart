@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Serializer and deserializer information.
 class SerDeInfoResponse {
   /// The fully qualified Java class name of the serialization library.
-  final String serializationLib;
+  final pulumi.Input<String> serializationLib;
 
   /// Creates a new [SerDeInfoResponse].
   /// [serializationLib] The fully qualified Java class name of the serialization library.
@@ -20,7 +21,7 @@ class SerDeInfoResponse {
 
   factory SerDeInfoResponse.fromMap(Map<String, dynamic> map) {
     return SerDeInfoResponse(
-      serializationLib: map['serializationLib'] as String,
+      serializationLib: (map['serializationLib'] as String).input(),
     );
   }
 }

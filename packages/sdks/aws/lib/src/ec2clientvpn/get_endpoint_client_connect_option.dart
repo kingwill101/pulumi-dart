@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointClientConnectOption {
-  final bool enabled;
-  final String lambdaFunctionArn;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<String> lambdaFunctionArn;
 
   /// Creates a new [GetEndpointClientConnectOption].
   /// [enabled] Required.
@@ -22,8 +23,8 @@ class GetEndpointClientConnectOption {
 
   factory GetEndpointClientConnectOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointClientConnectOption(
-      enabled: map['enabled'] as bool,
-      lambdaFunctionArn: map['lambdaFunctionArn'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      lambdaFunctionArn: (map['lambdaFunctionArn'] as String).input(),
     );
   }
 }

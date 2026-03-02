@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataLfTagExpression {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final String? catalogId;
+  final pulumi.Input<String>? catalogId;
   /// Name of the table.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OptInResourceDataLfTagExpression].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -24,8 +25,8 @@ class OptInResourceDataLfTagExpression {
 
   factory OptInResourceDataLfTagExpression.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataLfTagExpression(
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      name: map['name'] as String,
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

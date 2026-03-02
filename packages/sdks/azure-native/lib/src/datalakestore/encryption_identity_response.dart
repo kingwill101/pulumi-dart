@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The encryption identity properties.
 class EncryptionIdentityResponse {
   /// The principal identifier associated with the encryption.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant identifier associated with the encryption.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [EncryptionIdentityResponse].
   /// [principalId] The principal identifier associated with the encryption.
@@ -30,9 +31,9 @@ class EncryptionIdentityResponse {
 
   factory EncryptionIdentityResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

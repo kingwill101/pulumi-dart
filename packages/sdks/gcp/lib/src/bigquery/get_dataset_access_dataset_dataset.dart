@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatasetAccessDatasetDataset {
   /// The dataset ID.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// The ID of the project containing this table.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [GetDatasetAccessDatasetDataset].
   /// [datasetId] The dataset ID.
@@ -24,8 +25,8 @@ class GetDatasetAccessDatasetDataset {
 
   factory GetDatasetAccessDatasetDataset.fromMap(Map<String, dynamic> map) {
     return GetDatasetAccessDatasetDataset(
-      datasetId: map['datasetId'] as String,
-      projectId: map['projectId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

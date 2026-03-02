@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the compound assessment.
 class CompoundAssessmentDetailsResponse {
   /// Timestamp when the assessment was created.
-  final String? createdTimestamp;
+  final pulumi.Input<String>? createdTimestamp;
   /// Status of the assessment.
-  final String status;
+  final pulumi.Input<String> status;
   /// Timestamp when the assessment was last updated.
-  final String? updatedTimestamp;
+  final pulumi.Input<String>? updatedTimestamp;
 
   /// Creates a new [CompoundAssessmentDetailsResponse].
   /// [createdTimestamp] Timestamp when the assessment was created.
@@ -30,9 +31,9 @@ class CompoundAssessmentDetailsResponse {
 
   factory CompoundAssessmentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentDetailsResponse(
-      createdTimestamp: map['createdTimestamp'] == null ? null : map['createdTimestamp'] as String,
-      status: map['status'] as String,
-      updatedTimestamp: map['updatedTimestamp'] == null ? null : map['updatedTimestamp'] as String,
+      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp'] as String).input(),
+      status: (map['status'] as String).input(),
+      updatedTimestamp: map['updatedTimestamp'] == null ? null : (map['updatedTimestamp'] as String).input(),
     );
   }
 }

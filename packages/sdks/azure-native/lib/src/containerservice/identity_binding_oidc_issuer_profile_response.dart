@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IdentityBinding OIDC issuer profile.
 class IdentityBindingOidcIssuerProfileResponse {
   /// The OIDC issuer URL of the IdentityBinding.
-  final String oidcIssuerUrl;
+  final pulumi.Input<String> oidcIssuerUrl;
 
   /// Creates a new [IdentityBindingOidcIssuerProfileResponse].
   /// [oidcIssuerUrl] The OIDC issuer URL of the IdentityBinding.
@@ -20,7 +21,7 @@ class IdentityBindingOidcIssuerProfileResponse {
 
   factory IdentityBindingOidcIssuerProfileResponse.fromMap(Map<String, dynamic> map) {
     return IdentityBindingOidcIssuerProfileResponse(
-      oidcIssuerUrl: map['oidcIssuerUrl'] as String,
+      oidcIssuerUrl: (map['oidcIssuerUrl'] as String).input(),
     );
   }
 }

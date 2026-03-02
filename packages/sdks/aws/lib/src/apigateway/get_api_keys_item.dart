@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApiKeysItem {
   /// Date and time when the API Key was created.
-  final String createdDate;
+  final pulumi.Input<String> createdDate;
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
-  final String customerId;
+  final pulumi.Input<String> customerId;
   /// Description of the API Key.
-  final String description;
+  final pulumi.Input<String> description;
   /// Whether the API Key is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// ID of the API Key.
-  final String id;
+  final pulumi.Input<String> id;
   /// Date and time when the API Key was last updated.
-  final String lastUpdatedDate;
+  final pulumi.Input<String> lastUpdatedDate;
   /// Name of the API Key.
-  final String name;
-  final List<String> stageKeys;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<String>> stageKeys;
   /// Map of tags for the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Value of the API Key.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetApiKeysItem].
   /// [createdDate] Date and time when the API Key was created.
@@ -63,16 +64,16 @@ class GetApiKeysItem {
 
   factory GetApiKeysItem.fromMap(Map<String, dynamic> map) {
     return GetApiKeysItem(
-      createdDate: map['createdDate'] as String,
-      customerId: map['customerId'] as String,
-      description: map['description'] as String,
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      lastUpdatedDate: map['lastUpdatedDate'] as String,
-      name: map['name'] as String,
-      stageKeys: (map['stageKeys'] as List).cast<String>(),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      value: map['value'] as String,
+      createdDate: (map['createdDate'] as String).input(),
+      customerId: (map['customerId'] as String).input(),
+      description: (map['description'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      lastUpdatedDate: (map['lastUpdatedDate'] as String).input(),
+      name: (map['name'] as String).input(),
+      stageKeys: ((map['stageKeys'] as List).cast<String>()).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

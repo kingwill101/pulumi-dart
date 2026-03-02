@@ -16,11 +16,9 @@ class OrganizationAdminAccountArgs {
   /// [adminAccountId] The AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationAdminAccountArgs({
-    required pulumi.Output<String> adminAccountId,
-    pulumi.Output<String>? region,
-  }) :
-      adminAccountId = pulumi.Input.asInput<String>(adminAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.adminAccountId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class OrganizationAdminAccountArgs {
 
   factory OrganizationAdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationAdminAccountArgs(
-      adminAccountId: pulumi.Output.create<String>(map['adminAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      adminAccountId: (map['adminAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetNetworkSecurityPerimeterArgs {
   /// [networkSecurityPerimeterName] The name of the network security perimeter.
   /// [resourceGroupName] The name of the resource group.
   GetNetworkSecurityPerimeterArgs({
-    required pulumi.Output<String> networkSecurityPerimeterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkSecurityPerimeterName = pulumi.Input.asInput<String>(networkSecurityPerimeterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkSecurityPerimeterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkSecurityPerimeterArgs {
 
   factory GetNetworkSecurityPerimeterArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterArgs(
-      networkSecurityPerimeterName: pulumi.Output.create<String>(map['networkSecurityPerimeterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

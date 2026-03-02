@@ -28,19 +28,13 @@ class AppTemplateState {
   /// [scene] Application Template scenario. Valid values: ["business", "classroom"].
   /// [status] Application template usage status.
   AppTemplateState({
-    pulumi.Output<String>? appTemplateName,
-    pulumi.Output<List<String>>? componentLists,
-    pulumi.Output<List<AppTemplateConfigList>>? configLists,
-    pulumi.Output<String>? integrationMode,
-    pulumi.Output<String>? scene,
-    pulumi.Output<String>? status,
-  }) :
-      appTemplateName = pulumi.Input.asOptionalInput<String>(appTemplateName),
-      componentLists = pulumi.Input.asOptionalInput<List<String>>(componentLists),
-      configLists = pulumi.Input.asOptionalInput<List<AppTemplateConfigList>>(configLists),
-      integrationMode = pulumi.Input.asOptionalInput<String>(integrationMode),
-      scene = pulumi.Input.asOptionalInput<String>(scene),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.appTemplateName,
+    this.componentLists,
+    this.configLists,
+    this.integrationMode,
+    this.scene,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AppTemplateState {
 
   factory AppTemplateState.fromMap(Map<String, dynamic> map) {
     return AppTemplateState(
-      appTemplateName: map['appTemplateName'] == null ? null : pulumi.Output.create<String>(map['appTemplateName'] as String),
-      componentLists: map['componentLists'] == null ? null : pulumi.Output.create<List<String>>((map['componentLists'] as List).cast<String>()),
-      configLists: map['configLists'] == null ? null : pulumi.Output.create<List<AppTemplateConfigList>>(pulumi.Input.decodeList<AppTemplateConfigList>(map['configLists'], (value) => AppTemplateConfigList.fromMap((value as Map).cast<String, dynamic>()))),
-      integrationMode: map['integrationMode'] == null ? null : pulumi.Output.create<String>(map['integrationMode'] as String),
-      scene: map['scene'] == null ? null : pulumi.Output.create<String>(map['scene'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      appTemplateName: map['appTemplateName'] == null ? null : (map['appTemplateName'] as String).input(),
+      componentLists: map['componentLists'] == null ? null : ((map['componentLists'] as List).cast<String>()).input(),
+      configLists: map['configLists'] == null ? null : (pulumi.Input.decodeList<AppTemplateConfigList>(map['configLists'], (value) => AppTemplateConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      integrationMode: map['integrationMode'] == null ? null : (map['integrationMode'] as String).input(),
+      scene: map['scene'] == null ? null : (map['scene'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

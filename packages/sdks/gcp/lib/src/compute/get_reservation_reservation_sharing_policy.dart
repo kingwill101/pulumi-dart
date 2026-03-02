@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReservationReservationSharingPolicy {
   /// Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
-  final String serviceShareType;
+  final pulumi.Input<String> serviceShareType;
 
   /// Creates a new [GetReservationReservationSharingPolicy].
   /// [serviceShareType] Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
@@ -19,7 +20,7 @@ class GetReservationReservationSharingPolicy {
 
   factory GetReservationReservationSharingPolicy.fromMap(Map<String, dynamic> map) {
     return GetReservationReservationSharingPolicy(
-      serviceShareType: map['serviceShareType'] as String,
+      serviceShareType: (map['serviceShareType'] as String).input(),
     );
   }
 }

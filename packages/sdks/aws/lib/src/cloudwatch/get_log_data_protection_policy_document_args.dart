@@ -28,17 +28,12 @@ class GetLogDataProtectionPolicyDocumentArgs {
   /// [statements] Configures the data protection policy.
   /// [version] Optional.
   GetLogDataProtectionPolicyDocumentArgs({
-    pulumi.Output<GetLogDataProtectionPolicyDocumentConfiguration>? configuration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> name,
-    required pulumi.Output<List<GetLogDataProtectionPolicyDocumentStatement>> statements,
-    pulumi.Output<String>? version,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<GetLogDataProtectionPolicyDocumentConfiguration>(configuration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asInput<String>(name),
-      statements = pulumi.Input.asInput<List<GetLogDataProtectionPolicyDocumentStatement>>(statements),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.configuration,
+    this.description,
+    required this.name,
+    required this.statements,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class GetLogDataProtectionPolicyDocumentArgs {
 
   factory GetLogDataProtectionPolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentArgs(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<GetLogDataProtectionPolicyDocumentConfiguration>(GetLogDataProtectionPolicyDocumentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      statements: pulumi.Output.create<List<GetLogDataProtectionPolicyDocumentStatement>>(pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentStatement>(map['statements'], (value) => GetLogDataProtectionPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      configuration: map['configuration'] == null ? null : (GetLogDataProtectionPolicyDocumentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      statements: (pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentStatement>(map['statements'], (value) => GetLogDataProtectionPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

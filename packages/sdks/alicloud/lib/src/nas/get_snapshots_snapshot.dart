@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotsSnapshot {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the snapshot.
-  final String description;
+  final pulumi.Input<String> description;
   /// The type of the encryption.
-  final int encryptType;
+  final pulumi.Input<int> encryptType;
   /// The ID of the Snapshot.
-  final String id;
+  final pulumi.Input<String> id;
   /// The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
-  final String progress;
+  final pulumi.Input<String> progress;
   /// The remaining time that is required to create the snapshot. Unit: seconds.
-  final int remainTime;
+  final pulumi.Input<int> remainTime;
   /// The retention period of the automatic snapshot. Unit: days.
-  final int retentionDays;
+  final pulumi.Input<int> retentionDays;
   /// The ID of the resource.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// The name of the snapshot.
-  final String snapshotName;
+  final pulumi.Input<String> snapshotName;
   /// The ID of the source file system.
-  final String sourceFileSystemId;
+  final pulumi.Input<String> sourceFileSystemId;
   /// The capacity of the source file system. Unit: GiB.
-  final String sourceFileSystemSize;
+  final pulumi.Input<String> sourceFileSystemSize;
   /// The version of the source file system.
-  final String sourceFileSystemVersion;
+  final pulumi.Input<String> sourceFileSystemVersion;
   /// The status of the snapshot.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetSnapshotsSnapshot].
   /// [createTime] The creation time of the resource.
@@ -79,19 +80,19 @@ class GetSnapshotsSnapshot {
 
   factory GetSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsSnapshot(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      encryptType: map['encryptType'] as int,
-      id: map['id'] as String,
-      progress: map['progress'] as String,
-      remainTime: map['remainTime'] as int,
-      retentionDays: map['retentionDays'] as int,
-      snapshotId: map['snapshotId'] as String,
-      snapshotName: map['snapshotName'] as String,
-      sourceFileSystemId: map['sourceFileSystemId'] as String,
-      sourceFileSystemSize: map['sourceFileSystemSize'] as String,
-      sourceFileSystemVersion: map['sourceFileSystemVersion'] as String,
-      status: map['status'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      encryptType: (map['encryptType'] as int).input(),
+      id: (map['id'] as String).input(),
+      progress: (map['progress'] as String).input(),
+      remainTime: (map['remainTime'] as int).input(),
+      retentionDays: (map['retentionDays'] as int).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      snapshotName: (map['snapshotName'] as String).input(),
+      sourceFileSystemId: (map['sourceFileSystemId'] as String).input(),
+      sourceFileSystemSize: (map['sourceFileSystemSize'] as String).input(),
+      sourceFileSystemVersion: (map['sourceFileSystemVersion'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -21,15 +21,11 @@ class GetQuicksightAnalysisArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
   GetQuicksightAnalysisArgs({
-    required pulumi.Output<String> analysisId,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      analysisId = pulumi.Input.asInput<String>(analysisId),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.analysisId,
+    this.awsAccountId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class GetQuicksightAnalysisArgs {
 
   factory GetQuicksightAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return GetQuicksightAnalysisArgs(
-      analysisId: pulumi.Output.create<String>(map['analysisId'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      analysisId: (map['analysisId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

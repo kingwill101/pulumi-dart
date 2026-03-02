@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of Fast Socket feature.
 class FastSocketResponse {
   /// Whether Fast Socket features are enabled in the node pool.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [FastSocketResponse].
   /// [enabled] Whether Fast Socket features are enabled in the node pool.
@@ -20,7 +21,7 @@ class FastSocketResponse {
 
   factory FastSocketResponse.fromMap(Map<String, dynamic> map) {
     return FastSocketResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

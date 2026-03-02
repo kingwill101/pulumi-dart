@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The entry of VM image upgrade history.
 class UpgradeHistoryEntryResponse {
   /// Action. Rolloback or Upgrade.
-  final String action;
+  final pulumi.Input<String> action;
   /// The container image before this instance upgrade.
-  final String containerImage;
+  final pulumi.Input<String> containerImage;
   /// The time that this instance upgrade history entry is created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The framework of this notebook instance.
-  final String framework;
+  final pulumi.Input<String> framework;
   /// The snapshot of the boot disk of this notebook instance before upgrade.
-  final String snapshot;
+  final pulumi.Input<String> snapshot;
   /// The state of this instance upgrade history entry.
-  final String state;
+  final pulumi.Input<String> state;
   /// Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
-  final String targetImage;
+  final pulumi.Input<String> targetImage;
   /// Target VM Version, like m63.
-  final String targetVersion;
+  final pulumi.Input<String> targetVersion;
   /// The version of the notebook instance before this upgrade.
-  final String version;
+  final pulumi.Input<String> version;
   /// The VM image before this instance upgrade.
-  final String vmImage;
+  final pulumi.Input<String> vmImage;
 
   /// Creates a new [UpgradeHistoryEntryResponse].
   /// [action] Action. Rolloback or Upgrade.
@@ -65,16 +66,16 @@ class UpgradeHistoryEntryResponse {
 
   factory UpgradeHistoryEntryResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeHistoryEntryResponse(
-      action: map['action'] as String,
-      containerImage: map['containerImage'] as String,
-      createTime: map['createTime'] as String,
-      framework: map['framework'] as String,
-      snapshot: map['snapshot'] as String,
-      state: map['state'] as String,
-      targetImage: map['targetImage'] as String,
-      targetVersion: map['targetVersion'] as String,
-      version: map['version'] as String,
-      vmImage: map['vmImage'] as String,
+      action: (map['action'] as String).input(),
+      containerImage: (map['containerImage'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      framework: (map['framework'] as String).input(),
+      snapshot: (map['snapshot'] as String).input(),
+      state: (map['state'] as String).input(),
+      targetImage: (map['targetImage'] as String).input(),
+      targetVersion: (map['targetVersion'] as String).input(),
+      version: (map['version'] as String).input(),
+      vmImage: (map['vmImage'] as String).input(),
     );
   }
 }

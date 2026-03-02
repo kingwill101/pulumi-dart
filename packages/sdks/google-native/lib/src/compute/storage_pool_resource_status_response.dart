@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Output Only] Contains output only fields.
 class StoragePoolResourceStatusResponse {
   /// Sum of all the disks' provisioned IOPS.
-  final String aggregateDiskProvisionedIops;
+  final pulumi.Input<String> aggregateDiskProvisionedIops;
   /// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
-  final String aggregateDiskSizeGb;
+  final pulumi.Input<String> aggregateDiskSizeGb;
   /// Timestamp of the last successful resize in RFC3339 text format.
-  final String lastResizeTimestamp;
+  final pulumi.Input<String> lastResizeTimestamp;
   /// Maximum allowed aggregate disk size in gigabytes.
-  final String maxAggregateDiskSizeGb;
+  final pulumi.Input<String> maxAggregateDiskSizeGb;
   /// Number of disks used.
-  final String numberOfDisks;
+  final pulumi.Input<String> numberOfDisks;
   /// Space used by data stored in disks within the storage pool (in bytes).
-  final String usedBytes;
+  final pulumi.Input<String> usedBytes;
   /// Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
-  final String usedReducedBytes;
+  final pulumi.Input<String> usedReducedBytes;
   /// Sum of all the disks' provisioned throughput in MB/s.
-  final String usedThroughput;
+  final pulumi.Input<String> usedThroughput;
 
   /// Creates a new [StoragePoolResourceStatusResponse].
   /// [aggregateDiskProvisionedIops] Sum of all the disks' provisioned IOPS.
@@ -55,14 +56,14 @@ class StoragePoolResourceStatusResponse {
 
   factory StoragePoolResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return StoragePoolResourceStatusResponse(
-      aggregateDiskProvisionedIops: map['aggregateDiskProvisionedIops'] as String,
-      aggregateDiskSizeGb: map['aggregateDiskSizeGb'] as String,
-      lastResizeTimestamp: map['lastResizeTimestamp'] as String,
-      maxAggregateDiskSizeGb: map['maxAggregateDiskSizeGb'] as String,
-      numberOfDisks: map['numberOfDisks'] as String,
-      usedBytes: map['usedBytes'] as String,
-      usedReducedBytes: map['usedReducedBytes'] as String,
-      usedThroughput: map['usedThroughput'] as String,
+      aggregateDiskProvisionedIops: (map['aggregateDiskProvisionedIops'] as String).input(),
+      aggregateDiskSizeGb: (map['aggregateDiskSizeGb'] as String).input(),
+      lastResizeTimestamp: (map['lastResizeTimestamp'] as String).input(),
+      maxAggregateDiskSizeGb: (map['maxAggregateDiskSizeGb'] as String).input(),
+      numberOfDisks: (map['numberOfDisks'] as String).input(),
+      usedBytes: (map['usedBytes'] as String).input(),
+      usedReducedBytes: (map['usedReducedBytes'] as String).input(),
+      usedThroughput: (map['usedThroughput'] as String).input(),
     );
   }
 }

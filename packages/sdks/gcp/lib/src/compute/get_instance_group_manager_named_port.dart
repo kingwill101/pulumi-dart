@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceGroupManagerNamedPort {
   /// The name of the instance group. Either `name` or `self_link` must be provided.
-  final String name;
+  final pulumi.Input<String> name;
   /// The port number.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [GetInstanceGroupManagerNamedPort].
   /// [name] The name of the instance group. Either `name` or `self_link` must be provided.
@@ -24,8 +25,8 @@ class GetInstanceGroupManagerNamedPort {
 
   factory GetInstanceGroupManagerNamedPort.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerNamedPort(
-      name: map['name'] as String,
-      port: map['port'] as int,
+      name: (map['name'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

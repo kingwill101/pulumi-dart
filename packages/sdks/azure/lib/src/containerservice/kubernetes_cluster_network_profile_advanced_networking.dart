@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterNetworkProfileAdvancedNetworking {
   /// Is observability enabled? Defaults to `false`.
-  final bool? observabilityEnabled;
+  final pulumi.Input<bool>? observabilityEnabled;
   /// Is security enabled? Defaults to `false`.
-  final bool? securityEnabled;
+  final pulumi.Input<bool>? securityEnabled;
 
   /// Creates a new [KubernetesClusterNetworkProfileAdvancedNetworking].
   /// [observabilityEnabled] Is observability enabled? Defaults to `false`.
@@ -24,8 +25,8 @@ class KubernetesClusterNetworkProfileAdvancedNetworking {
 
   factory KubernetesClusterNetworkProfileAdvancedNetworking.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNetworkProfileAdvancedNetworking(
-      observabilityEnabled: map['observabilityEnabled'] == null ? null : map['observabilityEnabled'] as bool,
-      securityEnabled: map['securityEnabled'] == null ? null : map['securityEnabled'] as bool,
+      observabilityEnabled: map['observabilityEnabled'] == null ? null : (map['observabilityEnabled'] as bool).input(),
+      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled'] as bool).input(),
     );
   }
 }

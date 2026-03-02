@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VoiceConnectorOriginationRoute {
   /// The FQDN or IP address to contact for origination traffic.
-  final String host;
+  final pulumi.Input<String> host;
   /// The designated origination route port. Defaults to `5060`.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// The priority associated with the host, with 1 being the highest priority. Higher priority hosts are attempted first.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The protocol to use for the origination route. Encryption-enabled Amazon Chime Voice Connectors use TCP protocol by default.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The weight associated with the host. If hosts are equal in priority, calls are redistributed among them based on their relative weight.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [VoiceConnectorOriginationRoute].
   /// [host] The FQDN or IP address to contact for origination traffic.
@@ -39,11 +40,11 @@ class VoiceConnectorOriginationRoute {
 
   factory VoiceConnectorOriginationRoute.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorOriginationRoute(
-      host: map['host'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      priority: map['priority'] as int,
-      protocol: map['protocol'] as String,
-      weight: map['weight'] as int,
+      host: (map['host'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

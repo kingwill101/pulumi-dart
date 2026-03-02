@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Task Properties class.
 class TaskProperties {
   /// Task Description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Task Dislay Name
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Task Scope
-  final String scope;
+  final pulumi.Input<String> scope;
   /// associated Wave Id
-  final String scopeId;
+  final pulumi.Input<String> scopeId;
   /// Task Stage
-  final String? stage;
+  final pulumi.Input<String>? stage;
   /// Task Status
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [TaskProperties].
   /// [description] Task Description
@@ -45,12 +46,12 @@ class TaskProperties {
 
   factory TaskProperties.fromMap(Map<String, dynamic> map) {
     return TaskProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] as String,
-      scope: map['scope'] as String,
-      scopeId: map['scopeId'] as String,
-      stage: map['stage'] == null ? null : map['stage'] as String,
-      status: map['status'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

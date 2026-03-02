@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTenantCustomizationsCertificate {
   /// ARN of the distribution tenant.
-  final String? arn;
+  final pulumi.Input<String>? arn;
 
   /// Creates a new [DistributionTenantCustomizationsCertificate].
   /// [arn] ARN of the distribution tenant.
@@ -19,7 +20,7 @@ class DistributionTenantCustomizationsCertificate {
 
   factory DistributionTenantCustomizationsCertificate.fromMap(Map<String, dynamic> map) {
     return DistributionTenantCustomizationsCertificate(
-      arn: map['arn'] == null ? null : map['arn'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
     );
   }
 }

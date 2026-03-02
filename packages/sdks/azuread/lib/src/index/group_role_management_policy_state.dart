@@ -35,23 +35,15 @@ class GroupRoleManagementPolicyState {
   /// [notificationRules] A `notification_rules` block as defined below.
   /// [roleId] The type of assignment this policy coveres. Can be either `member` or `owner`.
   GroupRoleManagementPolicyState({
-    pulumi.Output<GroupRoleManagementPolicyActivationRules>? activationRules,
-    pulumi.Output<GroupRoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GroupRoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<GroupRoleManagementPolicyNotificationRules>? notificationRules,
-    pulumi.Output<String>? roleId,
-  }) :
-      activationRules = pulumi.Input.asOptionalInput<GroupRoleManagementPolicyActivationRules>(activationRules),
-      activeAssignmentRules = pulumi.Input.asOptionalInput<GroupRoleManagementPolicyActiveAssignmentRules>(activeAssignmentRules),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      eligibleAssignmentRules = pulumi.Input.asOptionalInput<GroupRoleManagementPolicyEligibleAssignmentRules>(eligibleAssignmentRules),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      notificationRules = pulumi.Input.asOptionalInput<GroupRoleManagementPolicyNotificationRules>(notificationRules),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId);
+    this.activationRules,
+    this.activeAssignmentRules,
+    this.description,
+    this.displayName,
+    this.eligibleAssignmentRules,
+    this.groupId,
+    this.notificationRules,
+    this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class GroupRoleManagementPolicyState {
 
   factory GroupRoleManagementPolicyState.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyState(
-      activationRules: map['activationRules'] == null ? null : pulumi.Output.create<GroupRoleManagementPolicyActivationRules>(GroupRoleManagementPolicyActivationRules.fromMap((map['activationRules'] as Map).cast<String, dynamic>())),
-      activeAssignmentRules: map['activeAssignmentRules'] == null ? null : pulumi.Output.create<GroupRoleManagementPolicyActiveAssignmentRules>(GroupRoleManagementPolicyActiveAssignmentRules.fromMap((map['activeAssignmentRules'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      eligibleAssignmentRules: map['eligibleAssignmentRules'] == null ? null : pulumi.Output.create<GroupRoleManagementPolicyEligibleAssignmentRules>(GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((map['eligibleAssignmentRules'] as Map).cast<String, dynamic>())),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      notificationRules: map['notificationRules'] == null ? null : pulumi.Output.create<GroupRoleManagementPolicyNotificationRules>(GroupRoleManagementPolicyNotificationRules.fromMap((map['notificationRules'] as Map).cast<String, dynamic>())),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
+      activationRules: map['activationRules'] == null ? null : (GroupRoleManagementPolicyActivationRules.fromMap((map['activationRules'] as Map).cast<String, dynamic>())).input(),
+      activeAssignmentRules: map['activeAssignmentRules'] == null ? null : (GroupRoleManagementPolicyActiveAssignmentRules.fromMap((map['activeAssignmentRules'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      eligibleAssignmentRules: map['eligibleAssignmentRules'] == null ? null : (GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((map['eligibleAssignmentRules'] as Map).cast<String, dynamic>())).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      notificationRules: map['notificationRules'] == null ? null : (GroupRoleManagementPolicyNotificationRules.fromMap((map['notificationRules'] as Map).cast<String, dynamic>())).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
     );
   }
 }

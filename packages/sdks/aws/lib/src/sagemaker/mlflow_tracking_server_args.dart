@@ -37,25 +37,16 @@ class MlflowTrackingServerArgs {
   /// [trackingServerSize] The size of the tracking server you want to create. You can choose between "Small", "Medium", and "Large". The default MLflow Tracking Server configuration size is "Small". You can choose a size depending on the projected use of the tracking server such as the volume of data logged, number of users, and frequency of use.
   /// [weeklyMaintenanceWindowStart] The day and time of the week in Coordinated Universal Time (UTC) 24-hour standard time that weekly maintenance updates are scheduled. For example: TUE:03:30.
   MlflowTrackingServerArgs({
-    required pulumi.Output<String> artifactStoreUri,
-    pulumi.Output<bool>? automaticModelRegistration,
-    pulumi.Output<String>? mlflowVersion,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trackingServerName,
-    pulumi.Output<String>? trackingServerSize,
-    pulumi.Output<String>? weeklyMaintenanceWindowStart,
-  }) :
-      artifactStoreUri = pulumi.Input.asInput<String>(artifactStoreUri),
-      automaticModelRegistration = pulumi.Input.asOptionalInput<bool>(automaticModelRegistration),
-      mlflowVersion = pulumi.Input.asOptionalInput<String>(mlflowVersion),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trackingServerName = pulumi.Input.asInput<String>(trackingServerName),
-      trackingServerSize = pulumi.Input.asOptionalInput<String>(trackingServerSize),
-      weeklyMaintenanceWindowStart = pulumi.Input.asOptionalInput<String>(weeklyMaintenanceWindowStart);
+    required this.artifactStoreUri,
+    this.automaticModelRegistration,
+    this.mlflowVersion,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    required this.trackingServerName,
+    this.trackingServerSize,
+    this.weeklyMaintenanceWindowStart,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class MlflowTrackingServerArgs {
 
   factory MlflowTrackingServerArgs.fromMap(Map<String, dynamic> map) {
     return MlflowTrackingServerArgs(
-      artifactStoreUri: pulumi.Output.create<String>(map['artifactStoreUri'] as String),
-      automaticModelRegistration: map['automaticModelRegistration'] == null ? null : pulumi.Output.create<bool>(map['automaticModelRegistration'] as bool),
-      mlflowVersion: map['mlflowVersion'] == null ? null : pulumi.Output.create<String>(map['mlflowVersion'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trackingServerName: pulumi.Output.create<String>(map['trackingServerName'] as String),
-      trackingServerSize: map['trackingServerSize'] == null ? null : pulumi.Output.create<String>(map['trackingServerSize'] as String),
-      weeklyMaintenanceWindowStart: map['weeklyMaintenanceWindowStart'] == null ? null : pulumi.Output.create<String>(map['weeklyMaintenanceWindowStart'] as String),
+      artifactStoreUri: (map['artifactStoreUri'] as String).input(),
+      automaticModelRegistration: map['automaticModelRegistration'] == null ? null : (map['automaticModelRegistration'] as bool).input(),
+      mlflowVersion: map['mlflowVersion'] == null ? null : (map['mlflowVersion'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trackingServerName: (map['trackingServerName'] as String).input(),
+      trackingServerSize: map['trackingServerSize'] == null ? null : (map['trackingServerSize'] as String).input(),
+      weeklyMaintenanceWindowStart: map['weeklyMaintenanceWindowStart'] == null ? null : (map['weeklyMaintenanceWindowStart'] as String).input(),
     );
   }
 }

@@ -52,27 +52,17 @@ class QuoteSetV3Args {
   /// [volumeTypeQuota] Key/Value pairs for setting quota for
   /// [volumes] Quota value for volumes. Changing this updates the
   QuoteSetV3Args({
-    pulumi.Output<int>? backupGigabytes,
-    pulumi.Output<int>? backups,
-    pulumi.Output<int>? gigabytes,
-    pulumi.Output<int>? groups,
-    pulumi.Output<int>? perVolumeGigabytes,
-    required pulumi.Output<String> projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? snapshots,
-    pulumi.Output<Map<String, String>>? volumeTypeQuota,
-    pulumi.Output<int>? volumes,
-  }) :
-      backupGigabytes = pulumi.Input.asOptionalInput<int>(backupGigabytes),
-      backups = pulumi.Input.asOptionalInput<int>(backups),
-      gigabytes = pulumi.Input.asOptionalInput<int>(gigabytes),
-      groups = pulumi.Input.asOptionalInput<int>(groups),
-      perVolumeGigabytes = pulumi.Input.asOptionalInput<int>(perVolumeGigabytes),
-      projectId = pulumi.Input.asInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshots = pulumi.Input.asOptionalInput<int>(snapshots),
-      volumeTypeQuota = pulumi.Input.asOptionalInput<Map<String, String>>(volumeTypeQuota),
-      volumes = pulumi.Input.asOptionalInput<int>(volumes);
+    this.backupGigabytes,
+    this.backups,
+    this.gigabytes,
+    this.groups,
+    this.perVolumeGigabytes,
+    required this.projectId,
+    this.region,
+    this.snapshots,
+    this.volumeTypeQuota,
+    this.volumes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,16 +81,16 @@ class QuoteSetV3Args {
 
   factory QuoteSetV3Args.fromMap(Map<String, dynamic> map) {
     return QuoteSetV3Args(
-      backupGigabytes: map['backupGigabytes'] == null ? null : pulumi.Output.create<int>(map['backupGigabytes'] as int),
-      backups: map['backups'] == null ? null : pulumi.Output.create<int>(map['backups'] as int),
-      gigabytes: map['gigabytes'] == null ? null : pulumi.Output.create<int>(map['gigabytes'] as int),
-      groups: map['groups'] == null ? null : pulumi.Output.create<int>(map['groups'] as int),
-      perVolumeGigabytes: map['perVolumeGigabytes'] == null ? null : pulumi.Output.create<int>(map['perVolumeGigabytes'] as int),
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshots: map['snapshots'] == null ? null : pulumi.Output.create<int>(map['snapshots'] as int),
-      volumeTypeQuota: map['volumeTypeQuota'] == null ? null : pulumi.Output.create<Map<String, String>>((map['volumeTypeQuota'] as Map).cast<String, String>()),
-      volumes: map['volumes'] == null ? null : pulumi.Output.create<int>(map['volumes'] as int),
+      backupGigabytes: map['backupGigabytes'] == null ? null : (map['backupGigabytes'] as int).input(),
+      backups: map['backups'] == null ? null : (map['backups'] as int).input(),
+      gigabytes: map['gigabytes'] == null ? null : (map['gigabytes'] as int).input(),
+      groups: map['groups'] == null ? null : (map['groups'] as int).input(),
+      perVolumeGigabytes: map['perVolumeGigabytes'] == null ? null : (map['perVolumeGigabytes'] as int).input(),
+      projectId: (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshots: map['snapshots'] == null ? null : (map['snapshots'] as int).input(),
+      volumeTypeQuota: map['volumeTypeQuota'] == null ? null : ((map['volumeTypeQuota'] as Map).cast<String, String>()).input(),
+      volumes: map['volumes'] == null ? null : (map['volumes'] as int).input(),
     );
   }
 }

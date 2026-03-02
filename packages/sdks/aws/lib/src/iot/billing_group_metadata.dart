@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BillingGroupMetadata {
-  final String creationDate;
+  final pulumi.Input<String> creationDate;
 
   /// Creates a new [BillingGroupMetadata].
   /// [creationDate] Required.
@@ -18,7 +19,7 @@ class BillingGroupMetadata {
 
   factory BillingGroupMetadata.fromMap(Map<String, dynamic> map) {
     return BillingGroupMetadata(
-      creationDate: map['creationDate'] as String,
+      creationDate: (map['creationDate'] as String).input(),
     );
   }
 }

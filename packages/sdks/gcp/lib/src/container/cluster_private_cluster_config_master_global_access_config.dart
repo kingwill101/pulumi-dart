@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterPrivateClusterConfigMasterGlobalAccessConfig {
   /// Whether the cluster master is accessible globally or
   /// not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterPrivateClusterConfigMasterGlobalAccessConfig].
   /// [enabled] Whether the cluster master is accessible globally or
@@ -20,7 +21,7 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 
   factory ClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPrivateClusterConfigMasterGlobalAccessConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

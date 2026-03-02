@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipe_source_parameters_managed_streaming_kafka_parameters_credentials.dart';
 
 class PipeSourceParametersManagedStreamingKafkaParameters {
   /// The maximum number of records to include in each batch. Maximum value of 10000.
-  final int? batchSize;
+  final pulumi.Input<int>? batchSize;
   /// The name of the destination queue to consume. Maximum value of 200.
-  final String? consumerGroupId;
+  final pulumi.Input<String>? consumerGroupId;
   /// The credentials needed to access the resource. Detailed below.
-  final PipeSourceParametersManagedStreamingKafkaParametersCredentials? credentials;
+  final pulumi.Input<PipeSourceParametersManagedStreamingKafkaParametersCredentials>? credentials;
   /// The maximum length of a time to wait for events. Maximum value of 300.
-  final int? maximumBatchingWindowInSeconds;
+  final pulumi.Input<int>? maximumBatchingWindowInSeconds;
   /// The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
-  final String? startingPosition;
+  final pulumi.Input<String>? startingPosition;
   /// The name of the topic that the pipe will read from. Maximum length of 249.
-  final String topicName;
+  final pulumi.Input<String> topicName;
 
   /// Creates a new [PipeSourceParametersManagedStreamingKafkaParameters].
   /// [batchSize] The maximum number of records to include in each batch. Maximum value of 10000.
@@ -36,7 +37,7 @@ class PipeSourceParametersManagedStreamingKafkaParameters {
     return <String, dynamic>{
       'batchSize': ?batchSize,
       'consumerGroupId': ?consumerGroupId,
-      'credentials': ?credentials == null ? null : credentials!.toMap(),
+      'credentials': ?pulumi.Input.mapOptionalInputValue<PipeSourceParametersManagedStreamingKafkaParametersCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'maximumBatchingWindowInSeconds': ?maximumBatchingWindowInSeconds,
       'startingPosition': ?startingPosition,
       'topicName': topicName,
@@ -45,12 +46,12 @@ class PipeSourceParametersManagedStreamingKafkaParameters {
 
   factory PipeSourceParametersManagedStreamingKafkaParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersManagedStreamingKafkaParameters(
-      batchSize: map['batchSize'] == null ? null : map['batchSize'] as int,
-      consumerGroupId: map['consumerGroupId'] == null ? null : map['consumerGroupId'] as String,
-      credentials: map['credentials'] == null ? null : PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : map['maximumBatchingWindowInSeconds'] as int,
-      startingPosition: map['startingPosition'] == null ? null : map['startingPosition'] as String,
-      topicName: map['topicName'] as String,
+      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
+      credentials: map['credentials'] == null ? null : (PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
+      startingPosition: map['startingPosition'] == null ? null : (map['startingPosition'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

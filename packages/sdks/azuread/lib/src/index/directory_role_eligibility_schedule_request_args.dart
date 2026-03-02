@@ -22,15 +22,11 @@ class DirectoryRoleEligibilityScheduleRequestArgs {
   /// [principalId] The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
   /// [roleDefinitionId] The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
   DirectoryRoleEligibilityScheduleRequestArgs({
-    required pulumi.Output<String> directoryScopeId,
-    required pulumi.Output<String> justification,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> roleDefinitionId,
-  }) :
-      directoryScopeId = pulumi.Input.asInput<String>(directoryScopeId),
-      justification = pulumi.Input.asInput<String>(justification),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      roleDefinitionId = pulumi.Input.asInput<String>(roleDefinitionId);
+    required this.directoryScopeId,
+    required this.justification,
+    required this.principalId,
+    required this.roleDefinitionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DirectoryRoleEligibilityScheduleRequestArgs {
 
   factory DirectoryRoleEligibilityScheduleRequestArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleEligibilityScheduleRequestArgs(
-      directoryScopeId: pulumi.Output.create<String>(map['directoryScopeId'] as String),
-      justification: pulumi.Output.create<String>(map['justification'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      roleDefinitionId: pulumi.Output.create<String>(map['roleDefinitionId'] as String),
+      directoryScopeId: (map['directoryScopeId'] as String).input(),
+      justification: (map['justification'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

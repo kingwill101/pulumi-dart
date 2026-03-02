@@ -31,21 +31,14 @@ class ChannelArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`.
   ChannelArgs({
-    pulumi.Output<bool>? authorized,
-    pulumi.Output<String>? latencyMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recordingConfigurationArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      authorized = pulumi.Input.asOptionalInput<bool>(authorized),
-      latencyMode = pulumi.Input.asOptionalInput<String>(latencyMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recordingConfigurationArn = pulumi.Input.asOptionalInput<String>(recordingConfigurationArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.authorized,
+    this.latencyMode,
+    this.name,
+    this.recordingConfigurationArn,
+    this.region,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      authorized: map['authorized'] == null ? null : pulumi.Output.create<bool>(map['authorized'] as bool),
-      latencyMode: map['latencyMode'] == null ? null : pulumi.Output.create<String>(map['latencyMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recordingConfigurationArn: map['recordingConfigurationArn'] == null ? null : pulumi.Output.create<String>(map['recordingConfigurationArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      authorized: map['authorized'] == null ? null : (map['authorized'] as bool).input(),
+      latencyMode: map['latencyMode'] == null ? null : (map['latencyMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recordingConfigurationArn: map['recordingConfigurationArn'] == null ? null : (map['recordingConfigurationArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

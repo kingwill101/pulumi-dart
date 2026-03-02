@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the hardware settings for the Azure Bare Metal Instance.
 class HardwareProfile {
   /// Specifies the Azure Bare Metal Instance SKU.
-  final String? azureBareMetalInstanceSize;
+  final pulumi.Input<String>? azureBareMetalInstanceSize;
   /// Name of the hardware type (vendor and/or their product name)
-  final String? hardwareType;
+  final pulumi.Input<String>? hardwareType;
 
   /// Creates a new [HardwareProfile].
   /// [azureBareMetalInstanceSize] Specifies the Azure Bare Metal Instance SKU.
@@ -25,8 +26,8 @@ class HardwareProfile {
 
   factory HardwareProfile.fromMap(Map<String, dynamic> map) {
     return HardwareProfile(
-      azureBareMetalInstanceSize: map['azureBareMetalInstanceSize'] == null ? null : map['azureBareMetalInstanceSize'] as String,
-      hardwareType: map['hardwareType'] == null ? null : map['hardwareType'] as String,
+      azureBareMetalInstanceSize: map['azureBareMetalInstanceSize'] == null ? null : (map['azureBareMetalInstanceSize'] as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
     );
   }
 }

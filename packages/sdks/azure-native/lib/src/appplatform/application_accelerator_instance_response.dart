@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationAcceleratorInstanceResponse {
   /// Name of the Application Accelerator instance.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status of the Application Accelerator instance. It can be Pending, Running, Succeeded, Failed, Unknown.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ApplicationAcceleratorInstanceResponse].
   /// [name] Name of the Application Accelerator instance.
@@ -24,8 +25,8 @@ class ApplicationAcceleratorInstanceResponse {
 
   factory ApplicationAcceleratorInstanceResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationAcceleratorInstanceResponse(
-      name: map['name'] as String,
-      status: map['status'] as String,
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

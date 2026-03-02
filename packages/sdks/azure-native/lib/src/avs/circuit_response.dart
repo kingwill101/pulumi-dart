@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An ExpressRoute Circuit
 class CircuitResponse {
   /// Identifier of the ExpressRoute Circuit (Microsoft Colo only)
-  final String expressRouteID;
+  final pulumi.Input<String> expressRouteID;
   /// ExpressRoute Circuit private peering identifier
-  final String expressRoutePrivatePeeringID;
+  final pulumi.Input<String> expressRoutePrivatePeeringID;
   /// CIDR of primary subnet
-  final String primarySubnet;
+  final pulumi.Input<String> primarySubnet;
   /// CIDR of secondary subnet
-  final String secondarySubnet;
+  final pulumi.Input<String> secondarySubnet;
 
   /// Creates a new [CircuitResponse].
   /// [expressRouteID] Identifier of the ExpressRoute Circuit (Microsoft Colo only)
@@ -35,10 +36,10 @@ class CircuitResponse {
 
   factory CircuitResponse.fromMap(Map<String, dynamic> map) {
     return CircuitResponse(
-      expressRouteID: map['expressRouteID'] as String,
-      expressRoutePrivatePeeringID: map['expressRoutePrivatePeeringID'] as String,
-      primarySubnet: map['primarySubnet'] as String,
-      secondarySubnet: map['secondarySubnet'] as String,
+      expressRouteID: (map['expressRouteID'] as String).input(),
+      expressRoutePrivatePeeringID: (map['expressRoutePrivatePeeringID'] as String).input(),
+      primarySubnet: (map['primarySubnet'] as String).input(),
+      secondarySubnet: (map['secondarySubnet'] as String).input(),
     );
   }
 }

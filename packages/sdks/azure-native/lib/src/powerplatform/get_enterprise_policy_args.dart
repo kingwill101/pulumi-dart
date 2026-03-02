@@ -16,11 +16,9 @@ class GetEnterprisePolicyArgs {
   /// [enterprisePolicyName] The EnterprisePolicy name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEnterprisePolicyArgs({
-    required pulumi.Output<String> enterprisePolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      enterprisePolicyName = pulumi.Input.asInput<String>(enterprisePolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.enterprisePolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEnterprisePolicyArgs {
 
   factory GetEnterprisePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterprisePolicyArgs(
-      enterprisePolicyName: pulumi.Output.create<String>(map['enterprisePolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      enterprisePolicyName: (map['enterprisePolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

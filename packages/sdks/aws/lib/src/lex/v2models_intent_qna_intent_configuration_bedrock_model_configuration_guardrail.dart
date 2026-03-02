@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail {
   /// Identifier of the guardrail.
-  final String identifier;
+  final pulumi.Input<String> identifier;
   /// Version of the guardrail.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail].
   /// [identifier] Identifier of the guardrail.
@@ -24,8 +25,8 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail {
 
   factory V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail(
-      identifier: map['identifier'] as String,
-      version: map['version'] as String,
+      identifier: (map['identifier'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

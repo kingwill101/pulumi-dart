@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Identifies an object.
 class NameIdentifierResponse {
   /// Name of the object.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [NameIdentifierResponse].
   /// [name] Name of the object.
@@ -20,7 +21,7 @@ class NameIdentifierResponse {
 
   factory NameIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return NameIdentifierResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -12,57 +12,57 @@ import 'timer_trigger_descriptor_response.dart';
 /// Run resource properties
 class RunResponse {
   /// The machine configuration of the run agent.
-  final AgentPropertiesResponse? agentConfiguration;
+  final pulumi.Input<AgentPropertiesResponse>? agentConfiguration;
   /// The dedicated agent pool for the run.
-  final String? agentPoolName;
+  final pulumi.Input<String>? agentPoolName;
   /// The time the run was scheduled.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// The list of custom registries that were logged in during this run.
-  final List<String>? customRegistries;
+  final pulumi.Input<List<String>>? customRegistries;
   /// The time the run finished.
-  final String? finishTime;
+  final pulumi.Input<String>? finishTime;
   /// The resource ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// The image update trigger that caused the run. This is applicable if the task has base image trigger configured.
-  final ImageUpdateTriggerResponse? imageUpdateTrigger;
+  final pulumi.Input<ImageUpdateTriggerResponse>? imageUpdateTrigger;
   /// The value that indicates whether archiving is enabled or not.
-  final bool? isArchiveEnabled;
+  final pulumi.Input<bool>? isArchiveEnabled;
   /// The last updated time for the run.
-  final String? lastUpdatedTime;
+  final pulumi.Input<String>? lastUpdatedTime;
   /// The image description for the log artifact.
-  final ImageDescriptorResponse logArtifact;
+  final pulumi.Input<ImageDescriptorResponse> logArtifact;
   /// The name of the resource.
-  final String name;
+  final pulumi.Input<String> name;
   /// The list of all images that were generated from the run. This is applicable if the run generates base image dependencies.
-  final List<ImageDescriptorResponse>? outputImages;
+  final pulumi.Input<List<ImageDescriptorResponse>>? outputImages;
   /// The platform properties against which the run will happen.
-  final PlatformPropertiesResponse? platform;
+  final pulumi.Input<PlatformPropertiesResponse>? platform;
   /// The provisioning state of a run.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// The error message received from backend systems after the run is scheduled.
-  final String runErrorMessage;
+  final pulumi.Input<String> runErrorMessage;
   /// The unique identifier for the run.
-  final String? runId;
+  final pulumi.Input<String>? runId;
   /// The type of run.
-  final String? runType;
+  final pulumi.Input<String>? runType;
   /// The scope of the credentials that were used to login to the source registry during this run.
-  final String? sourceRegistryAuth;
+  final pulumi.Input<String>? sourceRegistryAuth;
   /// The source trigger that caused the run.
-  final SourceTriggerDescriptorResponse? sourceTrigger;
+  final pulumi.Input<SourceTriggerDescriptorResponse>? sourceTrigger;
   /// The time the run started.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// The current status of the run.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The task against which run was scheduled.
-  final String? task;
+  final pulumi.Input<String>? task;
   /// The timer trigger that caused the run.
-  final TimerTriggerDescriptorResponse? timerTrigger;
+  final pulumi.Input<TimerTriggerDescriptorResponse>? timerTrigger;
   /// The type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
   /// The update trigger token passed for the Run.
-  final String? updateTriggerToken;
+  final pulumi.Input<String>? updateTriggerToken;
 
   /// Creates a new [RunResponse].
   /// [agentConfiguration] The machine configuration of the run agent.
@@ -122,30 +122,30 @@ class RunResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentConfiguration': ?agentConfiguration == null ? null : agentConfiguration!.toMap(),
+      'agentConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentPropertiesResponse, Map<String, dynamic>>(agentConfiguration, (value) => value.toMap()),
       'agentPoolName': ?agentPoolName,
       'createTime': ?createTime,
       'customRegistries': ?customRegistries,
       'finishTime': ?finishTime,
       'id': id,
-      'imageUpdateTrigger': ?imageUpdateTrigger == null ? null : imageUpdateTrigger!.toMap(),
+      'imageUpdateTrigger': ?pulumi.Input.mapOptionalInputValue<ImageUpdateTriggerResponse, Map<String, dynamic>>(imageUpdateTrigger, (value) => value.toMap()),
       'isArchiveEnabled': ?isArchiveEnabled,
       'lastUpdatedTime': ?lastUpdatedTime,
-      'logArtifact': logArtifact.toMap(),
+      'logArtifact': pulumi.Input.mapInputValue<ImageDescriptorResponse, Map<String, dynamic>>(logArtifact, (value) => value.toMap()),
       'name': name,
-      'outputImages': ?outputImages == null ? null : pulumi.Input.encodeList<ImageDescriptorResponse, Map<String, dynamic>>(outputImages!, (value) => value.toMap()),
-      'platform': ?platform == null ? null : platform!.toMap(),
+      'outputImages': ?pulumi.Input.mapOptionalInputValue<List<ImageDescriptorResponse>, List<Map<String, dynamic>>>(outputImages, (value) => pulumi.Input.encodeList<ImageDescriptorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'platform': ?pulumi.Input.mapOptionalInputValue<PlatformPropertiesResponse, Map<String, dynamic>>(platform, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
       'runErrorMessage': runErrorMessage,
       'runId': ?runId,
       'runType': ?runType,
       'sourceRegistryAuth': ?sourceRegistryAuth,
-      'sourceTrigger': ?sourceTrigger == null ? null : sourceTrigger!.toMap(),
+      'sourceTrigger': ?pulumi.Input.mapOptionalInputValue<SourceTriggerDescriptorResponse, Map<String, dynamic>>(sourceTrigger, (value) => value.toMap()),
       'startTime': ?startTime,
       'status': ?status,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'task': ?task,
-      'timerTrigger': ?timerTrigger == null ? null : timerTrigger!.toMap(),
+      'timerTrigger': ?pulumi.Input.mapOptionalInputValue<TimerTriggerDescriptorResponse, Map<String, dynamic>>(timerTrigger, (value) => value.toMap()),
       'type': type,
       'updateTriggerToken': ?updateTriggerToken,
     };
@@ -153,32 +153,32 @@ class RunResponse {
 
   factory RunResponse.fromMap(Map<String, dynamic> map) {
     return RunResponse(
-      agentConfiguration: map['agentConfiguration'] == null ? null : AgentPropertiesResponse.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>()),
-      agentPoolName: map['agentPoolName'] == null ? null : map['agentPoolName'] as String,
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      customRegistries: map['customRegistries'] == null ? null : (map['customRegistries'] as List).cast<String>(),
-      finishTime: map['finishTime'] == null ? null : map['finishTime'] as String,
-      id: map['id'] as String,
-      imageUpdateTrigger: map['imageUpdateTrigger'] == null ? null : ImageUpdateTriggerResponse.fromMap((map['imageUpdateTrigger'] as Map).cast<String, dynamic>()),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : map['isArchiveEnabled'] as bool,
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : map['lastUpdatedTime'] as String,
-      logArtifact: ImageDescriptorResponse.fromMap((map['logArtifact'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      outputImages: map['outputImages'] == null ? null : pulumi.Input.decodeList<ImageDescriptorResponse>(map['outputImages'], (value) => ImageDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      platform: map['platform'] == null ? null : PlatformPropertiesResponse.fromMap((map['platform'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      runErrorMessage: map['runErrorMessage'] as String,
-      runId: map['runId'] == null ? null : map['runId'] as String,
-      runType: map['runType'] == null ? null : map['runType'] as String,
-      sourceRegistryAuth: map['sourceRegistryAuth'] == null ? null : map['sourceRegistryAuth'] as String,
-      sourceTrigger: map['sourceTrigger'] == null ? null : SourceTriggerDescriptorResponse.fromMap((map['sourceTrigger'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      task: map['task'] == null ? null : map['task'] as String,
-      timerTrigger: map['timerTrigger'] == null ? null : TimerTriggerDescriptorResponse.fromMap((map['timerTrigger'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      updateTriggerToken: map['updateTriggerToken'] == null ? null : map['updateTriggerToken'] as String,
+      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentPropertiesResponse.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      customRegistries: map['customRegistries'] == null ? null : ((map['customRegistries'] as List).cast<String>()).input(),
+      finishTime: map['finishTime'] == null ? null : (map['finishTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageUpdateTrigger: map['imageUpdateTrigger'] == null ? null : (ImageUpdateTriggerResponse.fromMap((map['imageUpdateTrigger'] as Map).cast<String, dynamic>())).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
+      logArtifact: (ImageDescriptorResponse.fromMap((map['logArtifact'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      outputImages: map['outputImages'] == null ? null : (pulumi.Input.decodeList<ImageDescriptorResponse>(map['outputImages'], (value) => ImageDescriptorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platform: map['platform'] == null ? null : (PlatformPropertiesResponse.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      runErrorMessage: (map['runErrorMessage'] as String).input(),
+      runId: map['runId'] == null ? null : (map['runId'] as String).input(),
+      runType: map['runType'] == null ? null : (map['runType'] as String).input(),
+      sourceRegistryAuth: map['sourceRegistryAuth'] == null ? null : (map['sourceRegistryAuth'] as String).input(),
+      sourceTrigger: map['sourceTrigger'] == null ? null : (SourceTriggerDescriptorResponse.fromMap((map['sourceTrigger'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      task: map['task'] == null ? null : (map['task'] as String).input(),
+      timerTrigger: map['timerTrigger'] == null ? null : (TimerTriggerDescriptorResponse.fromMap((map['timerTrigger'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      updateTriggerToken: map['updateTriggerToken'] == null ? null : (map['updateTriggerToken'] as String).input(),
     );
   }
 }

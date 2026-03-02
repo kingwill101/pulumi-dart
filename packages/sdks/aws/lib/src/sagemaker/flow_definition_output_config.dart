@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDefinitionOutputConfig {
   /// The Amazon Key Management Service (KMS) key ARN for server-side encryption.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// The Amazon S3 path where the object containing human output will be made available.
-  final String s3OutputPath;
+  final pulumi.Input<String> s3OutputPath;
 
   /// Creates a new [FlowDefinitionOutputConfig].
   /// [kmsKeyId] The Amazon Key Management Service (KMS) key ARN for server-side encryption.
@@ -24,8 +25,8 @@ class FlowDefinitionOutputConfig {
 
   factory FlowDefinitionOutputConfig.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionOutputConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      s3OutputPath: map['s3OutputPath'] as String,
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      s3OutputPath: (map['s3OutputPath'] as String).input(),
     );
   }
 }

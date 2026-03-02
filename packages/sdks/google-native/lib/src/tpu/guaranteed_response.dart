@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Guaranteed tier definition.
 class GuaranteedResponse {
   /// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
-  final String minDuration;
+  final pulumi.Input<String> minDuration;
   /// Optional. Specifies the request should be scheduled on reserved capacity.
-  final bool reserved;
+  final pulumi.Input<bool> reserved;
 
   /// Creates a new [GuaranteedResponse].
   /// [minDuration] Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
@@ -25,8 +26,8 @@ class GuaranteedResponse {
 
   factory GuaranteedResponse.fromMap(Map<String, dynamic> map) {
     return GuaranteedResponse(
-      minDuration: map['minDuration'] as String,
-      reserved: map['reserved'] as bool,
+      minDuration: (map['minDuration'] as String).input(),
+      reserved: (map['reserved'] as bool).input(),
     );
   }
 }

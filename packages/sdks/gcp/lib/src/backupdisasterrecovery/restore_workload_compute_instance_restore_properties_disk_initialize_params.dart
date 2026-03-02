@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
   /// Optional. Specifies the disk name.
-  final String? diskName;
+  final pulumi.Input<String>? diskName;
   /// Optional. URL of the zone where the disk should be created.
-  final List<String>? replicaZones;
+  final pulumi.Input<List<String>>? replicaZones;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams].
   /// [diskName] Optional. Specifies the disk name.
@@ -24,8 +25,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams(
-      diskName: map['diskName'] == null ? null : map['diskName'] as String,
-      replicaZones: map['replicaZones'] == null ? null : (map['replicaZones'] as List).cast<String>(),
+      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
+      replicaZones: map['replicaZones'] == null ? null : ((map['replicaZones'] as List).cast<String>()).input(),
     );
   }
 }

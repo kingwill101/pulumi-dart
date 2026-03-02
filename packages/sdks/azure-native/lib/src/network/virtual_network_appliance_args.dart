@@ -32,21 +32,14 @@ class VirtualNetworkApplianceArgs {
   /// [tags] Resource tags.
   /// [virtualNetworkApplianceName] The name of the virtual network appliance.
   VirtualNetworkApplianceArgs({
-    pulumi.Output<String>? bandwidthInGbps,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SubnetNetwork>? subnet,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? virtualNetworkApplianceName,
-  }) :
-      bandwidthInGbps = pulumi.Input.asOptionalInput<String>(bandwidthInGbps),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnet = pulumi.Input.asOptionalInput<SubnetNetwork>(subnet),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualNetworkApplianceName = pulumi.Input.asOptionalInput<String>(virtualNetworkApplianceName);
+    this.bandwidthInGbps,
+    this.id,
+    this.location,
+    required this.resourceGroupName,
+    this.subnet,
+    this.tags,
+    this.virtualNetworkApplianceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VirtualNetworkApplianceArgs {
 
   factory VirtualNetworkApplianceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkApplianceArgs(
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : pulumi.Output.create<String>(map['bandwidthInGbps'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<SubnetNetwork>(map['subnet'] as SubnetNetwork),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualNetworkApplianceName: map['virtualNetworkApplianceName'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkApplianceName'] as String),
+      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : (map['bandwidthInGbps'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as SubnetNetwork).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNetworkApplianceName: map['virtualNetworkApplianceName'] == null ? null : (map['virtualNetworkApplianceName'] as String).input(),
     );
   }
 }

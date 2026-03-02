@@ -19,13 +19,10 @@ class GetServiceEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceEndpointName] The name of the ServiceEndpoint resource.
   GetServiceEndpointArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceEndpointName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceEndpointName = pulumi.Input.asInput<String>(serviceEndpointName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.serviceEndpointName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServiceEndpointArgs {
 
   factory GetServiceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceEndpointName: pulumi.Output.create<String>(map['serviceEndpointName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceEndpointName: (map['serviceEndpointName'] as String).input(),
     );
   }
 }

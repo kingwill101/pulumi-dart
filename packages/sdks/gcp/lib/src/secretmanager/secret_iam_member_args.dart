@@ -41,17 +41,12 @@ class SecretIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [secretId] Used to find the parent resource to bind the IAM policy to
   SecretIamMemberArgs({
-    pulumi.Output<SecretIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> secretId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SecretIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      secretId = pulumi.Input.asInput<String>(secretId);
+    this.condition,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,11 +60,11 @@ class SecretIamMemberArgs {
 
   factory SecretIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return SecretIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SecretIamMemberCondition>(SecretIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
+      condition: map['condition'] == null ? null : (SecretIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

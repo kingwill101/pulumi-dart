@@ -27,21 +27,14 @@ class GetAccessGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [startOffset] Optional.
   GetAccessGroupsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<int>? limit,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? orderBy,
-    pulumi.Output<String>? orderType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? startOffset,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      limit = pulumi.Input.asOptionalInput<int>(limit),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy),
-      orderType = pulumi.Input.asOptionalInput<String>(orderType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      startOffset = pulumi.Input.asOptionalInput<int>(startOffset);
+    this.ids,
+    this.limit,
+    this.nameRegex,
+    this.orderBy,
+    this.orderType,
+    this.outputFile,
+    this.startOffset,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,13 +50,13 @@ class GetAccessGroupsArgs {
 
   factory GetAccessGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessGroupsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      limit: map['limit'] == null ? null : pulumi.Output.create<int>(map['limit'] as int),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
-      orderType: map['orderType'] == null ? null : pulumi.Output.create<String>(map['orderType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      startOffset: map['startOffset'] == null ? null : pulumi.Output.create<int>(map['startOffset'] as int),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      startOffset: map['startOffset'] == null ? null : (map['startOffset'] as int).input(),
     );
   }
 }

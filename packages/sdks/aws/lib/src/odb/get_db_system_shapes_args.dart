@@ -16,11 +16,9 @@ class GetDbSystemShapesArgs {
   /// [availabilityZoneId] The physical ID of the AZ, for example, use1-az4. This ID persists across accounts.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetDbSystemShapesArgs({
-    pulumi.Output<String>? availabilityZoneId,
-    pulumi.Output<String>? region,
-  }) :
-      availabilityZoneId = pulumi.Input.asOptionalInput<String>(availabilityZoneId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.availabilityZoneId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDbSystemShapesArgs {
 
   factory GetDbSystemShapesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbSystemShapesArgs(
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

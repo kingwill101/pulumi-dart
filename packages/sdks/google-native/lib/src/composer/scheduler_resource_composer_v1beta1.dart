@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for resources used by Airflow schedulers.
 class SchedulerResourceComposerV1beta1 {
   /// Optional. The number of schedulers.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Optional. CPU request and limit for a single Airflow scheduler replica.
-  final double? cpu;
+  final pulumi.Input<double>? cpu;
   /// Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
-  final double? memoryGb;
+  final pulumi.Input<double>? memoryGb;
   /// Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
-  final double? storageGb;
+  final pulumi.Input<double>? storageGb;
 
   /// Creates a new [SchedulerResourceComposerV1beta1].
   /// [count] Optional. The number of schedulers.
@@ -35,10 +36,10 @@ class SchedulerResourceComposerV1beta1 {
 
   factory SchedulerResourceComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return SchedulerResourceComposerV1beta1(
-      count: map['count'] == null ? null : map['count'] as int,
-      cpu: map['cpu'] == null ? null : map['cpu'] as double,
-      memoryGb: map['memoryGb'] == null ? null : map['memoryGb'] as double,
-      storageGb: map['storageGb'] == null ? null : map['storageGb'] as double,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
+      storageGb: map['storageGb'] == null ? null : (map['storageGb'] as double).input(),
     );
   }
 }

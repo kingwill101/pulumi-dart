@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_execution_response.dart';
 
 /// Status event
 class StatusEventResponse {
   /// Description of the event.
-  final String description;
+  final pulumi.Input<String> description;
   /// The time this event occurred.
-  final String eventTime;
+  final pulumi.Input<String> eventTime;
   /// Task Execution
-  final TaskExecutionResponse taskExecution;
+  final pulumi.Input<TaskExecutionResponse> taskExecution;
   /// Task State
-  final String taskState;
+  final pulumi.Input<String> taskState;
   /// Type of the event.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [StatusEventResponse].
   /// [description] Description of the event.
@@ -33,7 +34,7 @@ class StatusEventResponse {
     return <String, dynamic>{
       'description': description,
       'eventTime': eventTime,
-      'taskExecution': taskExecution.toMap(),
+      'taskExecution': pulumi.Input.mapInputValue<TaskExecutionResponse, Map<String, dynamic>>(taskExecution, (value) => value.toMap()),
       'taskState': taskState,
       'type': type,
     };
@@ -41,11 +42,11 @@ class StatusEventResponse {
 
   factory StatusEventResponse.fromMap(Map<String, dynamic> map) {
     return StatusEventResponse(
-      description: map['description'] as String,
-      eventTime: map['eventTime'] as String,
-      taskExecution: TaskExecutionResponse.fromMap((map['taskExecution'] as Map).cast<String, dynamic>()),
-      taskState: map['taskState'] as String,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      eventTime: (map['eventTime'] as String).input(),
+      taskExecution: (TaskExecutionResponse.fromMap((map['taskExecution'] as Map).cast<String, dynamic>())).input(),
+      taskState: (map['taskState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

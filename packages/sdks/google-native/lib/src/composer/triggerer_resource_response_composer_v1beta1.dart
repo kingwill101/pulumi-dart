@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for resources used by Airflow triggerers.
 class TriggererResourceResponseComposerV1beta1 {
   /// Optional. The number of triggerers.
-  final int count;
+  final pulumi.Input<int> count;
   /// Optional. CPU request and limit for a single Airflow triggerer replica.
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
-  final double memoryGb;
+  final pulumi.Input<double> memoryGb;
 
   /// Creates a new [TriggererResourceResponseComposerV1beta1].
   /// [count] Optional. The number of triggerers.
@@ -30,9 +31,9 @@ class TriggererResourceResponseComposerV1beta1 {
 
   factory TriggererResourceResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return TriggererResourceResponseComposerV1beta1(
-      count: map['count'] as int,
-      cpu: map['cpu'] as double,
-      memoryGb: map['memoryGb'] as double,
+      count: (map['count'] as int).input(),
+      cpu: (map['cpu'] as double).input(),
+      memoryGb: (map['memoryGb'] as double).input(),
     );
   }
 }

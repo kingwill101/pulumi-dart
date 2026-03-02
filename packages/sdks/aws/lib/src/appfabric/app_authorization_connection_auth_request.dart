@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationConnectionAuthRequest {
   /// The authorization code returned by the application after permission is granted in the application OAuth page (after clicking on the AuthURL)..
-  final String code;
+  final pulumi.Input<String> code;
   /// The redirect URL that is specified in the AuthURL and the application client.
-  final String redirectUri;
+  final pulumi.Input<String> redirectUri;
 
   /// Creates a new [AppAuthorizationConnectionAuthRequest].
   /// [code] The authorization code returned by the application after permission is granted in the application OAuth page (after clicking on the AuthURL)..
@@ -24,8 +25,8 @@ class AppAuthorizationConnectionAuthRequest {
 
   factory AppAuthorizationConnectionAuthRequest.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationConnectionAuthRequest(
-      code: map['code'] as String,
-      redirectUri: map['redirectUri'] as String,
+      code: (map['code'] as String).input(),
+      redirectUri: (map['redirectUri'] as String).input(),
     );
   }
 }

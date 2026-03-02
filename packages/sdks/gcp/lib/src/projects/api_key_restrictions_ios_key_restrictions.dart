@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiKeyRestrictionsIosKeyRestrictions {
   /// A list of bundle IDs that are allowed when making API calls with this key.
-  final List<String> allowedBundleIds;
+  final pulumi.Input<List<String>> allowedBundleIds;
 
   /// Creates a new [ApiKeyRestrictionsIosKeyRestrictions].
   /// [allowedBundleIds] A list of bundle IDs that are allowed when making API calls with this key.
@@ -19,7 +20,7 @@ class ApiKeyRestrictionsIosKeyRestrictions {
 
   factory ApiKeyRestrictionsIosKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return ApiKeyRestrictionsIosKeyRestrictions(
-      allowedBundleIds: (map['allowedBundleIds'] as List).cast<String>(),
+      allowedBundleIds: ((map['allowedBundleIds'] as List).cast<String>()).input(),
     );
   }
 }

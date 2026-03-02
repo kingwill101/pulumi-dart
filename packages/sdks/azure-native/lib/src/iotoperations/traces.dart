@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'self_tracing.dart';
 
 /// Broker Diagnostic Trace properties
 class Traces {
   /// The cache size in megabytes.
-  final int? cacheSizeMegabytes;
+  final pulumi.Input<int>? cacheSizeMegabytes;
   /// The toggle to enable/disable traces.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The self tracing properties.
-  final SelfTracing? selfTracing;
+  final pulumi.Input<SelfTracing>? selfTracing;
   /// The span channel capacity.
-  final int? spanChannelCapacity;
+  final pulumi.Input<int>? spanChannelCapacity;
 
   /// Creates a new [Traces].
   /// [cacheSizeMegabytes] The cache size in megabytes.
@@ -29,17 +30,17 @@ class Traces {
     return <String, dynamic>{
       'cacheSizeMegabytes': ?cacheSizeMegabytes,
       'mode': ?mode,
-      'selfTracing': ?selfTracing == null ? null : selfTracing!.toMap(),
+      'selfTracing': ?pulumi.Input.mapOptionalInputValue<SelfTracing, Map<String, dynamic>>(selfTracing, (value) => value.toMap()),
       'spanChannelCapacity': ?spanChannelCapacity,
     };
   }
 
   factory Traces.fromMap(Map<String, dynamic> map) {
     return Traces(
-      cacheSizeMegabytes: map['cacheSizeMegabytes'] == null ? null : map['cacheSizeMegabytes'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      selfTracing: map['selfTracing'] == null ? null : SelfTracing.fromMap((map['selfTracing'] as Map).cast<String, dynamic>()),
-      spanChannelCapacity: map['spanChannelCapacity'] == null ? null : map['spanChannelCapacity'] as int,
+      cacheSizeMegabytes: map['cacheSizeMegabytes'] == null ? null : (map['cacheSizeMegabytes'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      selfTracing: map['selfTracing'] == null ? null : (SelfTracing.fromMap((map['selfTracing'] as Map).cast<String, dynamic>())).input(),
+      spanChannelCapacity: map['spanChannelCapacity'] == null ? null : (map['spanChannelCapacity'] as int).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
   /// Name for pod secondary ipv4 range which has the actual range defined ahead.
-  final List<String> podRangeNames;
+  final pulumi.Input<List<String>> podRangeNames;
 
   /// Creates a new [GetClusterIpAllocationPolicyAdditionalPodRangesConfig].
   /// [podRangeNames] Name for pod secondary ipv4 range which has the actual range defined ahead.
@@ -19,7 +20,7 @@ class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
 
   factory GetClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterIpAllocationPolicyAdditionalPodRangesConfig(
-      podRangeNames: (map['podRangeNames'] as List).cast<String>(),
+      podRangeNames: ((map['podRangeNames'] as List).cast<String>()).input(),
     );
   }
 }

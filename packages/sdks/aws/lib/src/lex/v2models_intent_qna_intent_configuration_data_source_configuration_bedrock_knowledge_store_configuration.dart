@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_intent_qna_intent_configuration_data_source_configuration_bedrock_knowledge_store_configuration_exact_response_fields.dart';
 
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration {
   /// ARN of the Bedrock Knowledge Base.
-  final String bedrockKnowledgeBaseArn;
+  final pulumi.Input<String> bedrockKnowledgeBaseArn;
   /// Whether to return exact responses from the knowledge base. Defaults to `false`.
-  final bool? exactResponse;
+  final pulumi.Input<bool>? exactResponse;
   /// Configuration block for exact response fields. See `exact_response_fields`.
-  final V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields? exactResponseFields;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields>? exactResponseFields;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration].
   /// [bedrockKnowledgeBaseArn] ARN of the Bedrock Knowledge Base.
@@ -24,15 +25,15 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
     return <String, dynamic>{
       'bedrockKnowledgeBaseArn': bedrockKnowledgeBaseArn,
       'exactResponse': ?exactResponse,
-      'exactResponseFields': ?exactResponseFields == null ? null : exactResponseFields!.toMap(),
+      'exactResponseFields': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields, Map<String, dynamic>>(exactResponseFields, (value) => value.toMap()),
     };
   }
 
   factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration(
-      bedrockKnowledgeBaseArn: map['bedrockKnowledgeBaseArn'] as String,
-      exactResponse: map['exactResponse'] == null ? null : map['exactResponse'] as bool,
-      exactResponseFields: map['exactResponseFields'] == null ? null : V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap((map['exactResponseFields'] as Map).cast<String, dynamic>()),
+      bedrockKnowledgeBaseArn: (map['bedrockKnowledgeBaseArn'] as String).input(),
+      exactResponse: map['exactResponse'] == null ? null : (map['exactResponse'] as bool).input(),
+      exactResponseFields: map['exactResponseFields'] == null ? null : (V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap((map['exactResponseFields'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

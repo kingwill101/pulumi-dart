@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceAttachmentConsumerProjectLimitComputeBeta {
   /// The value of the limit to set.
-  final int? connectionLimit;
+  final pulumi.Input<int>? connectionLimit;
   /// The network URL for the network to set the limit for.
-  final String? networkUrl;
+  final pulumi.Input<String>? networkUrl;
   /// The project id or number for the project to set the limit for.
-  final String? projectIdOrNum;
+  final pulumi.Input<String>? projectIdOrNum;
 
   /// Creates a new [ServiceAttachmentConsumerProjectLimitComputeBeta].
   /// [connectionLimit] The value of the limit to set.
@@ -29,9 +30,9 @@ class ServiceAttachmentConsumerProjectLimitComputeBeta {
 
   factory ServiceAttachmentConsumerProjectLimitComputeBeta.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConsumerProjectLimitComputeBeta(
-      connectionLimit: map['connectionLimit'] == null ? null : map['connectionLimit'] as int,
-      networkUrl: map['networkUrl'] == null ? null : map['networkUrl'] as String,
-      projectIdOrNum: map['projectIdOrNum'] == null ? null : map['projectIdOrNum'] as String,
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
+      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl'] as String).input(),
+      projectIdOrNum: map['projectIdOrNum'] == null ? null : (map['projectIdOrNum'] as String).input(),
     );
   }
 }

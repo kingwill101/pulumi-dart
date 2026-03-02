@@ -19,13 +19,10 @@ class RouteTablePropagationArgs {
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment.
   /// [transitGatewayRouteTableId] Identifier of EC2 Transit Gateway Route Table.
   RouteTablePropagationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> transitGatewayAttachmentId,
-    required pulumi.Output<String> transitGatewayRouteTableId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transitGatewayAttachmentId = pulumi.Input.asInput<String>(transitGatewayAttachmentId),
-      transitGatewayRouteTableId = pulumi.Input.asInput<String>(transitGatewayRouteTableId);
+    this.region,
+    required this.transitGatewayAttachmentId,
+    required this.transitGatewayRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RouteTablePropagationArgs {
 
   factory RouteTablePropagationArgs.fromMap(Map<String, dynamic> map) {
     return RouteTablePropagationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transitGatewayAttachmentId: pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayRouteTableId: pulumi.Output.create<String>(map['transitGatewayRouteTableId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
     );
   }
 }

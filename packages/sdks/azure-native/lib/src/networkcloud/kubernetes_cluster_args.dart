@@ -53,31 +53,19 @@ class KubernetesClusterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   KubernetesClusterArgs({
-    pulumi.Output<AadConfiguration>? aadConfiguration,
-    pulumi.Output<AdministratorConfiguration>? administratorConfiguration,
-    required pulumi.Output<ControlPlaneNodeConfiguration> controlPlaneNodeConfiguration,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    required pulumi.Output<List<InitialAgentPoolConfiguration>> initialAgentPoolConfigurations,
-    pulumi.Output<String>? kubernetesClusterName,
-    required pulumi.Output<String> kubernetesVersion,
-    pulumi.Output<String>? location,
-    pulumi.Output<ManagedResourceGroupConfiguration>? managedResourceGroupConfiguration,
-    required pulumi.Output<NetworkConfiguration> networkConfiguration,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      aadConfiguration = pulumi.Input.asOptionalInput<AadConfiguration>(aadConfiguration),
-      administratorConfiguration = pulumi.Input.asOptionalInput<AdministratorConfiguration>(administratorConfiguration),
-      controlPlaneNodeConfiguration = pulumi.Input.asInput<ControlPlaneNodeConfiguration>(controlPlaneNodeConfiguration),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      initialAgentPoolConfigurations = pulumi.Input.asInput<List<InitialAgentPoolConfiguration>>(initialAgentPoolConfigurations),
-      kubernetesClusterName = pulumi.Input.asOptionalInput<String>(kubernetesClusterName),
-      kubernetesVersion = pulumi.Input.asInput<String>(kubernetesVersion),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedResourceGroupConfiguration = pulumi.Input.asOptionalInput<ManagedResourceGroupConfiguration>(managedResourceGroupConfiguration),
-      networkConfiguration = pulumi.Input.asInput<NetworkConfiguration>(networkConfiguration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.aadConfiguration,
+    this.administratorConfiguration,
+    required this.controlPlaneNodeConfiguration,
+    required this.extendedLocation,
+    required this.initialAgentPoolConfigurations,
+    this.kubernetesClusterName,
+    required this.kubernetesVersion,
+    this.location,
+    this.managedResourceGroupConfiguration,
+    required this.networkConfiguration,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class KubernetesClusterArgs {
 
   factory KubernetesClusterArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterArgs(
-      aadConfiguration: map['aadConfiguration'] == null ? null : pulumi.Output.create<AadConfiguration>(AadConfiguration.fromMap((map['aadConfiguration'] as Map).cast<String, dynamic>())),
-      administratorConfiguration: map['administratorConfiguration'] == null ? null : pulumi.Output.create<AdministratorConfiguration>(AdministratorConfiguration.fromMap((map['administratorConfiguration'] as Map).cast<String, dynamic>())),
-      controlPlaneNodeConfiguration: pulumi.Output.create<ControlPlaneNodeConfiguration>(ControlPlaneNodeConfiguration.fromMap((map['controlPlaneNodeConfiguration'] as Map).cast<String, dynamic>())),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      initialAgentPoolConfigurations: pulumi.Output.create<List<InitialAgentPoolConfiguration>>(pulumi.Input.decodeList<InitialAgentPoolConfiguration>(map['initialAgentPoolConfigurations'], (value) => InitialAgentPoolConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      kubernetesClusterName: map['kubernetesClusterName'] == null ? null : pulumi.Output.create<String>(map['kubernetesClusterName'] as String),
-      kubernetesVersion: pulumi.Output.create<String>(map['kubernetesVersion'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : pulumi.Output.create<ManagedResourceGroupConfiguration>(ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())),
-      networkConfiguration: pulumi.Output.create<NetworkConfiguration>(NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      aadConfiguration: map['aadConfiguration'] == null ? null : (AadConfiguration.fromMap((map['aadConfiguration'] as Map).cast<String, dynamic>())).input(),
+      administratorConfiguration: map['administratorConfiguration'] == null ? null : (AdministratorConfiguration.fromMap((map['administratorConfiguration'] as Map).cast<String, dynamic>())).input(),
+      controlPlaneNodeConfiguration: (ControlPlaneNodeConfiguration.fromMap((map['controlPlaneNodeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      initialAgentPoolConfigurations: (pulumi.Input.decodeList<InitialAgentPoolConfiguration>(map['initialAgentPoolConfigurations'], (value) => InitialAgentPoolConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kubernetesClusterName: map['kubernetesClusterName'] == null ? null : (map['kubernetesClusterName'] as String).input(),
+      kubernetesVersion: (map['kubernetesVersion'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      networkConfiguration: (NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

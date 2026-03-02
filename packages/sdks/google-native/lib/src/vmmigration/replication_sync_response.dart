@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ReplicationSync contain information about the last replica sync to the cloud.
 class ReplicationSyncResponse {
   /// The most updated snapshot created time in the source that finished replication.
-  final String lastSyncTime;
+  final pulumi.Input<String> lastSyncTime;
 
   /// Creates a new [ReplicationSyncResponse].
   /// [lastSyncTime] The most updated snapshot created time in the source that finished replication.
@@ -20,7 +21,7 @@ class ReplicationSyncResponse {
 
   factory ReplicationSyncResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationSyncResponse(
-      lastSyncTime: map['lastSyncTime'] as String,
+      lastSyncTime: (map['lastSyncTime'] as String).input(),
     );
   }
 }

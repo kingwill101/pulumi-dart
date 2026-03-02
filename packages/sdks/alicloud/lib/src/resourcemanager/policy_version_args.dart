@@ -19,13 +19,10 @@ class PolicyVersionArgs {
   /// [policyDocument] The content of the policy. The content must be 1 to 2,048 characters in length.
   /// [policyName] The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   PolicyVersionArgs({
-    pulumi.Output<bool>? isDefaultVersion,
-    required pulumi.Output<String> policyDocument,
-    required pulumi.Output<String> policyName,
-  }) :
-      isDefaultVersion = pulumi.Input.asOptionalInput<bool>(isDefaultVersion),
-      policyDocument = pulumi.Input.asInput<String>(policyDocument),
-      policyName = pulumi.Input.asInput<String>(policyName);
+    this.isDefaultVersion,
+    required this.policyDocument,
+    required this.policyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PolicyVersionArgs {
 
   factory PolicyVersionArgs.fromMap(Map<String, dynamic> map) {
     return PolicyVersionArgs(
-      isDefaultVersion: map['isDefaultVersion'] == null ? null : pulumi.Output.create<bool>(map['isDefaultVersion'] as bool),
-      policyDocument: pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
+      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion'] as bool).input(),
+      policyDocument: (map['policyDocument'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationConfigMapMountDescV2 {
   /// The ID of the ConfigMap.
-  final String? configMapId;
+  final pulumi.Input<String>? configMapId;
   /// The key.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The mount path.
-  final String? mountPath;
+  final pulumi.Input<String>? mountPath;
 
   /// Creates a new [ApplicationConfigMapMountDescV2].
   /// [configMapId] The ID of the ConfigMap.
@@ -29,9 +30,9 @@ class ApplicationConfigMapMountDescV2 {
 
   factory ApplicationConfigMapMountDescV2.fromMap(Map<String, dynamic> map) {
     return ApplicationConfigMapMountDescV2(
-      configMapId: map['configMapId'] == null ? null : map['configMapId'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
+      configMapId: map['configMapId'] == null ? null : (map['configMapId'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
     );
   }
 }

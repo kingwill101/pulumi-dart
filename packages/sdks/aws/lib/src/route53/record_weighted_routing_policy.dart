@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecordWeightedRoutingPolicy {
   /// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [RecordWeightedRoutingPolicy].
   /// [weight] A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
@@ -19,7 +20,7 @@ class RecordWeightedRoutingPolicy {
 
   factory RecordWeightedRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordWeightedRoutingPolicy(
-      weight: map['weight'] as int,
+      weight: (map['weight'] as int).input(),
     );
   }
 }

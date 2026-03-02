@@ -6,9 +6,9 @@ import 'get_chains_chain_chain_config_router.dart';
 
 class GetChainsChainChainConfig {
   /// Each node in the delivery chain.
-  final List<GetChainsChainChainConfigNode> nodes;
+  final pulumi.Input<List<GetChainsChainChainConfigNode>> nodes;
   /// Execution sequence relationship between delivery chain nodes.
-  final List<GetChainsChainChainConfigRouter> routers;
+  final pulumi.Input<List<GetChainsChainChainConfigRouter>> routers;
 
   /// Creates a new [GetChainsChainChainConfig].
   /// [nodes] Each node in the delivery chain.
@@ -20,15 +20,15 @@ class GetChainsChainChainConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodes': pulumi.Input.encodeList<GetChainsChainChainConfigNode, Map<String, dynamic>>(nodes, (value) => value.toMap()),
-      'routers': pulumi.Input.encodeList<GetChainsChainChainConfigRouter, Map<String, dynamic>>(routers, (value) => value.toMap()),
+      'nodes': pulumi.Input.mapInputValue<List<GetChainsChainChainConfigNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<GetChainsChainChainConfigNode, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routers': pulumi.Input.mapInputValue<List<GetChainsChainChainConfigRouter>, List<Map<String, dynamic>>>(routers, (value) => pulumi.Input.encodeList<GetChainsChainChainConfigRouter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetChainsChainChainConfig.fromMap(Map<String, dynamic> map) {
     return GetChainsChainChainConfig(
-      nodes: pulumi.Input.decodeList<GetChainsChainChainConfigNode>(map['nodes'], (value) => GetChainsChainChainConfigNode.fromMap((value as Map).cast<String, dynamic>())),
-      routers: pulumi.Input.decodeList<GetChainsChainChainConfigRouter>(map['routers'], (value) => GetChainsChainChainConfigRouter.fromMap((value as Map).cast<String, dynamic>())),
+      nodes: (pulumi.Input.decodeList<GetChainsChainChainConfigNode>(map['nodes'], (value) => GetChainsChainChainConfigNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routers: (pulumi.Input.decodeList<GetChainsChainChainConfigRouter>(map['routers'], (value) => GetChainsChainChainConfigRouter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

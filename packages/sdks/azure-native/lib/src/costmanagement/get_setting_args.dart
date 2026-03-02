@@ -13,9 +13,8 @@ class GetSettingArgs {
   /// Creates a new [GetSettingArgs].
   /// [settingName] Name of the setting. Allowed values: myscope
   GetSettingArgs({
-    required pulumi.Output<String> settingName,
-  }) :
-      settingName = pulumi.Input.asInput<String>(settingName);
+    required this.settingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetSettingArgs {
 
   factory GetSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetSettingArgs(
-      settingName: pulumi.Output.create<String>(map['settingName'] as String),
+      settingName: (map['settingName'] as String).input(),
     );
   }
 }

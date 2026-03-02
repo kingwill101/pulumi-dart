@@ -27,19 +27,13 @@ class FederatedIdentityCredentialArgs {
   /// [resourceGroupName] Optional.
   /// [subject] Specifies the subject for this Federated Identity Credential.
   FederatedIdentityCredentialArgs({
-    required pulumi.Output<String> audience,
-    required pulumi.Output<String> issuer,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parentId,
-    pulumi.Output<String>? resourceGroupName,
-    required pulumi.Output<String> subject,
-  }) :
-      audience = pulumi.Input.asInput<String>(audience),
-      issuer = pulumi.Input.asInput<String>(issuer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentId = pulumi.Input.asInput<String>(parentId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      subject = pulumi.Input.asInput<String>(subject);
+    required this.audience,
+    required this.issuer,
+    this.name,
+    required this.parentId,
+    this.resourceGroupName,
+    required this.subject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class FederatedIdentityCredentialArgs {
 
   factory FederatedIdentityCredentialArgs.fromMap(Map<String, dynamic> map) {
     return FederatedIdentityCredentialArgs(
-      audience: pulumi.Output.create<String>(map['audience'] as String),
-      issuer: pulumi.Output.create<String>(map['issuer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentId: pulumi.Output.create<String>(map['parentId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subject: pulumi.Output.create<String>(map['subject'] as String),
+      audience: (map['audience'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentId: (map['parentId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      subject: (map['subject'] as String).input(),
     );
   }
 }

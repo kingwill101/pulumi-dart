@@ -5,9 +5,9 @@ import 'domain_devices_disk_source_vhost_user_pipe_sec_label.dart';
 
 class DomainDevicesDiskSourceVhostUserPipe {
   /// Sets the path for the pipe source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final List<DomainDevicesDiskSourceVhostUserPipeSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskSourceVhostUserPipeSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskSourceVhostUserPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
@@ -20,14 +20,14 @@ class DomainDevicesDiskSourceVhostUserPipe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskSourceVhostUserPipeSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskSourceVhostUserPipeSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskSourceVhostUserPipeSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskSourceVhostUserPipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceVhostUserPipe(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskSourceVhostUserPipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceVhostUserPipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

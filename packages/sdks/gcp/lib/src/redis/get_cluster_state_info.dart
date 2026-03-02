@@ -5,7 +5,7 @@ import 'get_cluster_state_info_update_info.dart';
 
 class GetClusterStateInfo {
   /// A nested object resource.
-  final List<GetClusterStateInfoUpdateInfo> updateInfos;
+  final pulumi.Input<List<GetClusterStateInfoUpdateInfo>> updateInfos;
 
   /// Creates a new [GetClusterStateInfo].
   /// [updateInfos] A nested object resource.
@@ -15,13 +15,13 @@ class GetClusterStateInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'updateInfos': pulumi.Input.encodeList<GetClusterStateInfoUpdateInfo, Map<String, dynamic>>(updateInfos, (value) => value.toMap()),
+      'updateInfos': pulumi.Input.mapInputValue<List<GetClusterStateInfoUpdateInfo>, List<Map<String, dynamic>>>(updateInfos, (value) => pulumi.Input.encodeList<GetClusterStateInfoUpdateInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClusterStateInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterStateInfo(
-      updateInfos: pulumi.Input.decodeList<GetClusterStateInfoUpdateInfo>(map['updateInfos'], (value) => GetClusterStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>())),
+      updateInfos: (pulumi.Input.decodeList<GetClusterStateInfoUpdateInfo>(map['updateInfos'], (value) => GetClusterStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

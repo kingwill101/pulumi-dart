@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_site_link_bgp.dart';
 
 class VpnSiteLink {
   /// A `bgp` block as defined above.
   ///
   /// > **Note:** The `link.bgp` has to be set when the `address_cidrs` isn't specified.
-  final VpnSiteLinkBgp? bgp;
+  final pulumi.Input<VpnSiteLinkBgp>? bgp;
   /// The FQDN of this VPN Site Link.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// The ID of the VPN Site Link.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The IP address of this VPN Site Link.
   ///
   /// > **Note:** Either `fqdn` or `ip_address` should be specified.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The name which should be used for this VPN Site Link.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the physical link at the VPN Site. Example: `ATT`, `Verizon`.
-  final String? providerName;
+  final pulumi.Input<String>? providerName;
   /// The speed of the VPN device at the branch location in unit of mbps. Defaults to `0`.
-  final int? speedInMbps;
+  final pulumi.Input<int>? speedInMbps;
 
   /// Creates a new [VpnSiteLink].
   /// [bgp] A `bgp` block as defined above.
@@ -42,7 +43,7 @@ class VpnSiteLink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgp': ?bgp == null ? null : bgp!.toMap(),
+      'bgp': ?pulumi.Input.mapOptionalInputValue<VpnSiteLinkBgp, Map<String, dynamic>>(bgp, (value) => value.toMap()),
       'fqdn': ?fqdn,
       'id': ?id,
       'ipAddress': ?ipAddress,
@@ -54,13 +55,13 @@ class VpnSiteLink {
 
   factory VpnSiteLink.fromMap(Map<String, dynamic> map) {
     return VpnSiteLink(
-      bgp: map['bgp'] == null ? null : VpnSiteLinkBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>()),
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      name: map['name'] as String,
-      providerName: map['providerName'] == null ? null : map['providerName'] as String,
-      speedInMbps: map['speedInMbps'] == null ? null : map['speedInMbps'] as int,
+      bgp: map['bgp'] == null ? null : (VpnSiteLinkBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: (map['name'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      speedInMbps: map['speedInMbps'] == null ? null : (map['speedInMbps'] as int).input(),
     );
   }
 }

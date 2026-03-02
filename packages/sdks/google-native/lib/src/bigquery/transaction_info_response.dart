@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransactionInfoResponse {
   /// // [Alpha] Id of the transaction.
-  final String transactionId;
+  final pulumi.Input<String> transactionId;
 
   /// Creates a new [TransactionInfoResponse].
   /// [transactionId] // [Alpha] Id of the transaction.
@@ -19,7 +20,7 @@ class TransactionInfoResponse {
 
   factory TransactionInfoResponse.fromMap(Map<String, dynamic> map) {
     return TransactionInfoResponse(
-      transactionId: map['transactionId'] as String,
+      transactionId: (map['transactionId'] as String).input(),
     );
   }
 }

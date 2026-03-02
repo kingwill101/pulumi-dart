@@ -5,7 +5,7 @@ import 'domain_devices_disk_throttle_filters_throttle_filter.dart';
 
 class DomainDevicesDiskThrottleFilters {
   /// Specifies individual throttle filter settings for the disk device.
-  final List<DomainDevicesDiskThrottleFiltersThrottleFilter>? throttleFilters;
+  final pulumi.Input<List<DomainDevicesDiskThrottleFiltersThrottleFilter>>? throttleFilters;
 
   /// Creates a new [DomainDevicesDiskThrottleFilters].
   /// [throttleFilters] Specifies individual throttle filter settings for the disk device.
@@ -15,13 +15,13 @@ class DomainDevicesDiskThrottleFilters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'throttleFilters': ?throttleFilters == null ? null : pulumi.Input.encodeList<DomainDevicesDiskThrottleFiltersThrottleFilter, Map<String, dynamic>>(throttleFilters!, (value) => value.toMap()),
+      'throttleFilters': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskThrottleFiltersThrottleFilter>, List<Map<String, dynamic>>>(throttleFilters, (value) => pulumi.Input.encodeList<DomainDevicesDiskThrottleFiltersThrottleFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskThrottleFilters.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskThrottleFilters(
-      throttleFilters: map['throttleFilters'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskThrottleFiltersThrottleFilter>(map['throttleFilters'], (value) => DomainDevicesDiskThrottleFiltersThrottleFilter.fromMap((value as Map).cast<String, dynamic>())),
+      throttleFilters: map['throttleFilters'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskThrottleFiltersThrottleFilter>(map['throttleFilters'], (value) => DomainDevicesDiskThrottleFiltersThrottleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of Task Hub
 class TaskHubPropertiesResponse {
   /// URL of the durable task scheduler dashboard
-  final String dashboardUrl;
+  final pulumi.Input<String> dashboardUrl;
   /// The status of the last operation
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [TaskHubPropertiesResponse].
   /// [dashboardUrl] URL of the durable task scheduler dashboard
@@ -25,8 +26,8 @@ class TaskHubPropertiesResponse {
 
   factory TaskHubPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TaskHubPropertiesResponse(
-      dashboardUrl: map['dashboardUrl'] as String,
-      provisioningState: map['provisioningState'] as String,
+      dashboardUrl: (map['dashboardUrl'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

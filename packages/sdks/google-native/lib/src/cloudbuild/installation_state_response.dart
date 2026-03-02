@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes stage and necessary actions to be taken by the user to complete the installation. Used for GitHub and GitHub Enterprise based connections.
 class InstallationStateResponse {
   /// Link to follow for next action. Empty string if the installation is already complete.
-  final String actionUri;
+  final pulumi.Input<String> actionUri;
   /// Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
-  final String message;
+  final pulumi.Input<String> message;
   /// Current step of the installation process.
-  final String stage;
+  final pulumi.Input<String> stage;
 
   /// Creates a new [InstallationStateResponse].
   /// [actionUri] Link to follow for next action. Empty string if the installation is already complete.
@@ -30,9 +31,9 @@ class InstallationStateResponse {
 
   factory InstallationStateResponse.fromMap(Map<String, dynamic> map) {
     return InstallationStateResponse(
-      actionUri: map['actionUri'] as String,
-      message: map['message'] as String,
-      stage: map['stage'] as String,
+      actionUri: (map['actionUri'] as String).input(),
+      message: (map['message'] as String).input(),
+      stage: (map['stage'] as String).input(),
     );
   }
 }

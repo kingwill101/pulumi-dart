@@ -41,27 +41,17 @@ class ADLSGen2FolderDataSetArgs {
   /// [storageAccountName] Storage account name of the source data set
   /// [subscriptionId] Subscription id of storage account
   ADLSGen2FolderDataSetArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? dataSetName,
-    required pulumi.Output<String> fileSystem,
-    required pulumi.Output<String> folderPath,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroup,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareName,
-    required pulumi.Output<String> storageAccountName,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dataSetName = pulumi.Input.asOptionalInput<String>(dataSetName),
-      fileSystem = pulumi.Input.asInput<String>(fileSystem),
-      folderPath = pulumi.Input.asInput<String>(folderPath),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareName = pulumi.Input.asInput<String>(shareName),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    required this.accountName,
+    this.dataSetName,
+    required this.fileSystem,
+    required this.folderPath,
+    required this.kind,
+    required this.resourceGroup,
+    required this.resourceGroupName,
+    required this.shareName,
+    required this.storageAccountName,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ADLSGen2FolderDataSetArgs {
 
   factory ADLSGen2FolderDataSetArgs.fromMap(Map<String, dynamic> map) {
     return ADLSGen2FolderDataSetArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dataSetName: map['dataSetName'] == null ? null : pulumi.Output.create<String>(map['dataSetName'] as String),
-      fileSystem: pulumi.Output.create<String>(map['fileSystem'] as String),
-      folderPath: pulumi.Output.create<String>(map['folderPath'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      fileSystem: (map['fileSystem'] as String).input(),
+      folderPath: (map['folderPath'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

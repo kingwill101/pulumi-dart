@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata of the data record
 class MetadataEntityResponse {
   /// Created Date Time
-  final String? createdAt;
+  final pulumi.Input<String>? createdAt;
   /// Deleted Date time
-  final String? deletedAt;
+  final pulumi.Input<String>? deletedAt;
   /// Resource name of the record
-  final String? resourceName;
+  final pulumi.Input<String>? resourceName;
   /// Self lookup url
-  final String? self;
+  final pulumi.Input<String>? self;
   /// Updated Date time
-  final String? updatedAt;
+  final pulumi.Input<String>? updatedAt;
 
   /// Creates a new [MetadataEntityResponse].
   /// [createdAt] Created Date Time
@@ -40,11 +41,11 @@ class MetadataEntityResponse {
 
   factory MetadataEntityResponse.fromMap(Map<String, dynamic> map) {
     return MetadataEntityResponse(
-      createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      deletedAt: map['deletedAt'] == null ? null : map['deletedAt'] as String,
-      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
-      self: map['self'] == null ? null : map['self'] as String,
-      updatedAt: map['updatedAt'] == null ? null : map['updatedAt'] as String,
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      self: map['self'] == null ? null : (map['self'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

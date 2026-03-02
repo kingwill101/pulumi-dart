@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LicenseResourceRequirementsResponse {
   /// Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
-  final int minGuestCpuCount;
+  final pulumi.Input<int> minGuestCpuCount;
   /// Minimum memory required to use the Instance. Enforced at Instance creation and Instance start.
-  final int minMemoryMb;
+  final pulumi.Input<int> minMemoryMb;
 
   /// Creates a new [LicenseResourceRequirementsResponse].
   /// [minGuestCpuCount] Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
@@ -24,8 +25,8 @@ class LicenseResourceRequirementsResponse {
 
   factory LicenseResourceRequirementsResponse.fromMap(Map<String, dynamic> map) {
     return LicenseResourceRequirementsResponse(
-      minGuestCpuCount: map['minGuestCpuCount'] as int,
-      minMemoryMb: map['minMemoryMb'] as int,
+      minGuestCpuCount: (map['minGuestCpuCount'] as int).input(),
+      minMemoryMb: (map['minMemoryMb'] as int).input(),
     );
   }
 }

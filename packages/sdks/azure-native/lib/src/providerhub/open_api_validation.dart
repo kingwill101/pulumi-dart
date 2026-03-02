@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OpenApiValidation {
   /// Indicates whether a non compliance response is allowed for a LIST call
-  final bool? allowNoncompliantCollectionResponse;
+  final pulumi.Input<bool>? allowNoncompliantCollectionResponse;
 
   /// Creates a new [OpenApiValidation].
   /// [allowNoncompliantCollectionResponse] Indicates whether a non compliance response is allowed for a LIST call
@@ -19,7 +20,7 @@ class OpenApiValidation {
 
   factory OpenApiValidation.fromMap(Map<String, dynamic> map) {
     return OpenApiValidation(
-      allowNoncompliantCollectionResponse: map['allowNoncompliantCollectionResponse'] == null ? null : map['allowNoncompliantCollectionResponse'] as bool,
+      allowNoncompliantCollectionResponse: map['allowNoncompliantCollectionResponse'] == null ? null : (map['allowNoncompliantCollectionResponse'] as bool).input(),
     );
   }
 }

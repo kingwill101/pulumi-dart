@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiTensorboardEncryptionSpec {
   /// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
   /// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
 
   /// Creates a new [AiTensorboardEncryptionSpec].
   /// [kmsKeyName] The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
@@ -20,7 +21,7 @@ class AiTensorboardEncryptionSpec {
 
   factory AiTensorboardEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return AiTensorboardEncryptionSpec(
-      kmsKeyName: map['kmsKeyName'] as String,
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
     );
   }
 }

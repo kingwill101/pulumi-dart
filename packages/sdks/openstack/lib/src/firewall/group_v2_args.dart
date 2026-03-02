@@ -63,27 +63,17 @@ class GroupV2Args {
   /// [shared] Sharing status of the firewall group (must be "true"
   /// [tenantId] This argument conflicts and is interchangeable with
   GroupV2Args({
-    pulumi.Output<bool>? adminStateUp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? egressFirewallPolicyId,
-    pulumi.Output<String>? ingressFirewallPolicyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? ports,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? shared,
-    pulumi.Output<String>? tenantId,
-  }) :
-      adminStateUp = pulumi.Input.asOptionalInput<bool>(adminStateUp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      egressFirewallPolicyId = pulumi.Input.asOptionalInput<String>(egressFirewallPolicyId),
-      ingressFirewallPolicyId = pulumi.Input.asOptionalInput<String>(ingressFirewallPolicyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ports = pulumi.Input.asOptionalInput<List<String>>(ports),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shared = pulumi.Input.asOptionalInput<bool>(shared),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.adminStateUp,
+    this.description,
+    this.egressFirewallPolicyId,
+    this.ingressFirewallPolicyId,
+    this.name,
+    this.ports,
+    this.projectId,
+    this.region,
+    this.shared,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,16 +92,16 @@ class GroupV2Args {
 
   factory GroupV2Args.fromMap(Map<String, dynamic> map) {
     return GroupV2Args(
-      adminStateUp: map['adminStateUp'] == null ? null : pulumi.Output.create<bool>(map['adminStateUp'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      egressFirewallPolicyId: map['egressFirewallPolicyId'] == null ? null : pulumi.Output.create<String>(map['egressFirewallPolicyId'] as String),
-      ingressFirewallPolicyId: map['ingressFirewallPolicyId'] == null ? null : pulumi.Output.create<String>(map['ingressFirewallPolicyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ports: map['ports'] == null ? null : pulumi.Output.create<List<String>>((map['ports'] as List).cast<String>()),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shared: map['shared'] == null ? null : pulumi.Output.create<bool>(map['shared'] as bool),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      egressFirewallPolicyId: map['egressFirewallPolicyId'] == null ? null : (map['egressFirewallPolicyId'] as String).input(),
+      ingressFirewallPolicyId: map['ingressFirewallPolicyId'] == null ? null : (map['ingressFirewallPolicyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

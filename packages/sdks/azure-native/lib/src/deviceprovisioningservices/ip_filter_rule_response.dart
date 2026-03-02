@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The IP filter rules for a provisioning Service.
 class IpFilterRuleResponse {
   /// The desired action for requests captured by this rule.
-  final String action;
+  final pulumi.Input<String> action;
   /// The name of the IP filter rule.
-  final String filterName;
+  final pulumi.Input<String> filterName;
   /// A string that contains the IP address range in CIDR notation for the rule.
-  final String ipMask;
+  final pulumi.Input<String> ipMask;
   /// Target for requests captured by this rule.
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [IpFilterRuleResponse].
   /// [action] The desired action for requests captured by this rule.
@@ -35,10 +36,10 @@ class IpFilterRuleResponse {
 
   factory IpFilterRuleResponse.fromMap(Map<String, dynamic> map) {
     return IpFilterRuleResponse(
-      action: map['action'] as String,
-      filterName: map['filterName'] as String,
-      ipMask: map['ipMask'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
+      action: (map['action'] as String).input(),
+      filterName: (map['filterName'] as String).input(),
+      ipMask: (map['ipMask'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

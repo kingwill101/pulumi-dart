@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'any_response.dart';
 import 'stack_trace_response.dart';
 
 /// An issue detected occurring during a test execution.
 class TestIssueResponse {
   /// Category of issue. Required.
-  final String category;
+  final pulumi.Input<String> category;
   /// A brief human-readable message describing the issue. Required.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// Severity of issue. Required.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// Deprecated in favor of stack trace fields inside specific warnings.
-  final StackTraceResponse stackTrace;
+  final pulumi.Input<StackTraceResponse> stackTrace;
   /// Type of issue. Required.
-  final String type;
+  final pulumi.Input<String> type;
   /// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
-  final AnyResponse warning;
+  final pulumi.Input<AnyResponse> warning;
 
   /// Creates a new [TestIssueResponse].
   /// [category] Category of issue. Required.
@@ -39,20 +40,20 @@ class TestIssueResponse {
       'category': category,
       'errorMessage': errorMessage,
       'severity': severity,
-      'stackTrace': stackTrace.toMap(),
+      'stackTrace': pulumi.Input.mapInputValue<StackTraceResponse, Map<String, dynamic>>(stackTrace, (value) => value.toMap()),
       'type': type,
-      'warning': warning.toMap(),
+      'warning': pulumi.Input.mapInputValue<AnyResponse, Map<String, dynamic>>(warning, (value) => value.toMap()),
     };
   }
 
   factory TestIssueResponse.fromMap(Map<String, dynamic> map) {
     return TestIssueResponse(
-      category: map['category'] as String,
-      errorMessage: map['errorMessage'] as String,
-      severity: map['severity'] as String,
-      stackTrace: StackTraceResponse.fromMap((map['stackTrace'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      warning: AnyResponse.fromMap((map['warning'] as Map).cast<String, dynamic>()),
+      category: (map['category'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      stackTrace: (StackTraceResponse.fromMap((map['stackTrace'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      warning: (AnyResponse.fromMap((map['warning'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

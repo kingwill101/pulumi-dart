@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_cluster_azure_monitor_profile_kube_state_metrics.dart';
 
 /// Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See aka.ms/AzureManagedPrometheus for an overview.
 class ManagedClusterAzureMonitorProfileMetrics {
   /// Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Kube State Metrics profile for the Azure Managed Prometheus addon. These optional settings are for the kube-state-metrics pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for details.
-  final ManagedClusterAzureMonitorProfileKubeStateMetrics? kubeStateMetrics;
+  final pulumi.Input<ManagedClusterAzureMonitorProfileKubeStateMetrics>? kubeStateMetrics;
 
   /// Creates a new [ManagedClusterAzureMonitorProfileMetrics].
   /// [enabled] Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
@@ -20,14 +21,14 @@ class ManagedClusterAzureMonitorProfileMetrics {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'kubeStateMetrics': ?kubeStateMetrics == null ? null : kubeStateMetrics!.toMap(),
+      'kubeStateMetrics': ?pulumi.Input.mapOptionalInputValue<ManagedClusterAzureMonitorProfileKubeStateMetrics, Map<String, dynamic>>(kubeStateMetrics, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterAzureMonitorProfileMetrics.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAzureMonitorProfileMetrics(
-      enabled: map['enabled'] as bool,
-      kubeStateMetrics: map['kubeStateMetrics'] == null ? null : ManagedClusterAzureMonitorProfileKubeStateMetrics.fromMap((map['kubeStateMetrics'] as Map).cast<String, dynamic>()),
+      enabled: (map['enabled'] as bool).input(),
+      kubeStateMetrics: map['kubeStateMetrics'] == null ? null : (ManagedClusterAzureMonitorProfileKubeStateMetrics.fromMap((map['kubeStateMetrics'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

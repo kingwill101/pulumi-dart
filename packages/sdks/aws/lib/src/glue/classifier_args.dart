@@ -32,19 +32,13 @@ class ClassifierArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [xmlClassifier] A classifier for XML content. Defined below.
   ClassifierArgs({
-    pulumi.Output<ClassifierCsvClassifier>? csvClassifier,
-    pulumi.Output<ClassifierGrokClassifier>? grokClassifier,
-    pulumi.Output<ClassifierJsonClassifier>? jsonClassifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<ClassifierXmlClassifier>? xmlClassifier,
-  }) :
-      csvClassifier = pulumi.Input.asOptionalInput<ClassifierCsvClassifier>(csvClassifier),
-      grokClassifier = pulumi.Input.asOptionalInput<ClassifierGrokClassifier>(grokClassifier),
-      jsonClassifier = pulumi.Input.asOptionalInput<ClassifierJsonClassifier>(jsonClassifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      xmlClassifier = pulumi.Input.asOptionalInput<ClassifierXmlClassifier>(xmlClassifier);
+    this.csvClassifier,
+    this.grokClassifier,
+    this.jsonClassifier,
+    this.name,
+    this.region,
+    this.xmlClassifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class ClassifierArgs {
 
   factory ClassifierArgs.fromMap(Map<String, dynamic> map) {
     return ClassifierArgs(
-      csvClassifier: map['csvClassifier'] == null ? null : pulumi.Output.create<ClassifierCsvClassifier>(ClassifierCsvClassifier.fromMap((map['csvClassifier'] as Map).cast<String, dynamic>())),
-      grokClassifier: map['grokClassifier'] == null ? null : pulumi.Output.create<ClassifierGrokClassifier>(ClassifierGrokClassifier.fromMap((map['grokClassifier'] as Map).cast<String, dynamic>())),
-      jsonClassifier: map['jsonClassifier'] == null ? null : pulumi.Output.create<ClassifierJsonClassifier>(ClassifierJsonClassifier.fromMap((map['jsonClassifier'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      xmlClassifier: map['xmlClassifier'] == null ? null : pulumi.Output.create<ClassifierXmlClassifier>(ClassifierXmlClassifier.fromMap((map['xmlClassifier'] as Map).cast<String, dynamic>())),
+      csvClassifier: map['csvClassifier'] == null ? null : (ClassifierCsvClassifier.fromMap((map['csvClassifier'] as Map).cast<String, dynamic>())).input(),
+      grokClassifier: map['grokClassifier'] == null ? null : (ClassifierGrokClassifier.fromMap((map['grokClassifier'] as Map).cast<String, dynamic>())).input(),
+      jsonClassifier: map['jsonClassifier'] == null ? null : (ClassifierJsonClassifier.fromMap((map['jsonClassifier'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      xmlClassifier: map['xmlClassifier'] == null ? null : (ClassifierXmlClassifier.fromMap((map['xmlClassifier'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

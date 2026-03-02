@@ -23,15 +23,11 @@ class SignalDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [signalDefinitionName] Name of the signal definition. Must be unique within a health model.
   SignalDefinitionArgs({
-    required pulumi.Output<String> healthModelName,
-    pulumi.Output<LogAnalyticsQuerySignalDefinitionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? signalDefinitionName,
-  }) :
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      properties = pulumi.Input.asOptionalInput<LogAnalyticsQuerySignalDefinitionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      signalDefinitionName = pulumi.Input.asOptionalInput<String>(signalDefinitionName);
+    required this.healthModelName,
+    this.properties,
+    required this.resourceGroupName,
+    this.signalDefinitionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SignalDefinitionArgs {
 
   factory SignalDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return SignalDefinitionArgs(
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<LogAnalyticsQuerySignalDefinitionProperties>(LogAnalyticsQuerySignalDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      signalDefinitionName: map['signalDefinitionName'] == null ? null : pulumi.Output.create<String>(map['signalDefinitionName'] as String),
+      healthModelName: (map['healthModelName'] as String).input(),
+      properties: map['properties'] == null ? null : (LogAnalyticsQuerySignalDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      signalDefinitionName: map['signalDefinitionName'] == null ? null : (map['signalDefinitionName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters that define the flow log format.
 class FlowLogFormatParameters {
   /// The file type of flow log.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The version (revision) of the flow log.
-  final int? version;
+  final pulumi.Input<int>? version;
 
   /// Creates a new [FlowLogFormatParameters].
   /// [type] The file type of flow log.
@@ -25,8 +26,8 @@ class FlowLogFormatParameters {
 
   factory FlowLogFormatParameters.fromMap(Map<String, dynamic> map) {
     return FlowLogFormatParameters(
-      type: map['type'] == null ? null : map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as int,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

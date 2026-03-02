@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a resource currently being monitored by the Elastic monitor resource.
 class MonitoredResourceResponse {
   /// The ARM id of the resource.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Reason for why the resource is sending logs (or why it is not sending).
-  final String? reasonForLogsStatus;
+  final pulumi.Input<String>? reasonForLogsStatus;
   /// Flag indicating the status of the resource for sending logs operation to Elastic.
-  final String? sendingLogs;
+  final pulumi.Input<String>? sendingLogs;
 
   /// Creates a new [MonitoredResourceResponse].
   /// [id] The ARM id of the resource.
@@ -30,9 +31,9 @@ class MonitoredResourceResponse {
 
   factory MonitoredResourceResponse.fromMap(Map<String, dynamic> map) {
     return MonitoredResourceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      reasonForLogsStatus: map['reasonForLogsStatus'] == null ? null : map['reasonForLogsStatus'] as String,
-      sendingLogs: map['sendingLogs'] == null ? null : map['sendingLogs'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      reasonForLogsStatus: map['reasonForLogsStatus'] == null ? null : (map['reasonForLogsStatus'] as String).input(),
+      sendingLogs: map['sendingLogs'] == null ? null : (map['sendingLogs'] as String).input(),
     );
   }
 }

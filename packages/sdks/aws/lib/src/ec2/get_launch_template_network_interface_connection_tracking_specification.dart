@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
-  final int tcpEstablishedTimeout;
-  final int udpStreamTimeout;
-  final int udpTimeout;
+  final pulumi.Input<int> tcpEstablishedTimeout;
+  final pulumi.Input<int> udpStreamTimeout;
+  final pulumi.Input<int> udpTimeout;
 
   /// Creates a new [GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification].
   /// [tcpEstablishedTimeout] Required.
@@ -26,9 +27,9 @@ class GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
 
   factory GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification(
-      tcpEstablishedTimeout: map['tcpEstablishedTimeout'] as int,
-      udpStreamTimeout: map['udpStreamTimeout'] as int,
-      udpTimeout: map['udpTimeout'] as int,
+      tcpEstablishedTimeout: (map['tcpEstablishedTimeout'] as int).input(),
+      udpStreamTimeout: (map['udpStreamTimeout'] as int).input(),
+      udpTimeout: (map['udpTimeout'] as int).input(),
     );
   }
 }

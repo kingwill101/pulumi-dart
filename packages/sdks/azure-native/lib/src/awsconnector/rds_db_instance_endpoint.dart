@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Endpoint
 class RdsDbInstanceEndpoint {
   /// Specifies the DNS address of the DB instance.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
-  final String? hostedZoneId;
+  final pulumi.Input<String>? hostedZoneId;
   /// Specifies the port that the database engine is listening on.
-  final String? port;
+  final pulumi.Input<String>? port;
 
   /// Creates a new [RdsDbInstanceEndpoint].
   /// [address] Specifies the DNS address of the DB instance.
@@ -30,9 +31,9 @@ class RdsDbInstanceEndpoint {
 
   factory RdsDbInstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return RdsDbInstanceEndpoint(
-      address: map['address'] == null ? null : map['address'] as String,
-      hostedZoneId: map['hostedZoneId'] == null ? null : map['hostedZoneId'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

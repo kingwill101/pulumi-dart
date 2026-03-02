@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PackagePackageSource {
   /// The name of the Amazon S3 bucket containing the package.
-  final String s3BucketName;
+  final pulumi.Input<String> s3BucketName;
   /// Key (file name) of the package.
-  final String s3Key;
+  final pulumi.Input<String> s3Key;
 
   /// Creates a new [PackagePackageSource].
   /// [s3BucketName] The name of the Amazon S3 bucket containing the package.
@@ -24,8 +25,8 @@ class PackagePackageSource {
 
   factory PackagePackageSource.fromMap(Map<String, dynamic> map) {
     return PackagePackageSource(
-      s3BucketName: map['s3BucketName'] as String,
-      s3Key: map['s3Key'] as String,
+      s3BucketName: (map['s3BucketName'] as String).input(),
+      s3Key: (map['s3Key'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
   /// (Output)
@@ -13,13 +14,13 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
   /// FAILED_ENABLING
   /// FAILED_DISABLING
   /// FAILED_UPDATING
-  final String? managementState;
+  final pulumi.Input<String>? managementState;
   /// (Output)
   /// The Database Management type.
   /// Possible values:
   /// BASIC
   /// ADVANCED
-  final String? managementType;
+  final pulumi.Input<String>? managementType;
 
   /// Creates a new [DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig].
   /// [managementState] (Output)
@@ -38,8 +39,8 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
 
   factory DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig(
-      managementState: map['managementState'] == null ? null : map['managementState'] as String,
-      managementType: map['managementType'] == null ? null : map['managementType'] as String,
+      managementState: map['managementState'] == null ? null : (map['managementState'] as String).input(),
+      managementType: map['managementType'] == null ? null : (map['managementType'] as String).input(),
     );
   }
 }

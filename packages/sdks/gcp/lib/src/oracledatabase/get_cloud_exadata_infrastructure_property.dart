@@ -7,59 +7,59 @@ import 'get_cloud_exadata_infrastructure_property_maintenance_window.dart';
 class GetCloudExadataInfrastructureProperty {
   /// The requested number of additional storage servers activated for the
   /// Exadata Infrastructure.
-  final int activatedStorageCount;
+  final pulumi.Input<int> activatedStorageCount;
   /// The requested number of additional storage servers for the Exadata
   /// Infrastructure.
-  final int additionalStorageCount;
+  final pulumi.Input<int> additionalStorageCount;
   /// The available storage can be allocated to the Exadata Infrastructure
   /// resource, in gigabytes (GB).
-  final int availableStorageSizeGb;
+  final pulumi.Input<int> availableStorageSizeGb;
   /// The number of compute servers for the Exadata Infrastructure.
-  final int computeCount;
+  final pulumi.Input<int> computeCount;
   /// The number of enabled CPU cores.
-  final int cpuCount;
+  final pulumi.Input<int> cpuCount;
   /// The list of customer contacts.
-  final List<GetCloudExadataInfrastructurePropertyCustomerContact> customerContacts;
+  final pulumi.Input<List<GetCloudExadataInfrastructurePropertyCustomerContact>> customerContacts;
   /// Size, in terabytes, of the DATA disk group.
-  final double dataStorageSizeTb;
+  final pulumi.Input<double> dataStorageSizeTb;
   /// The local node storage allocated in GBs.
-  final int dbNodeStorageSizeGb;
+  final pulumi.Input<int> dbNodeStorageSizeGb;
   /// The software version of the database servers (dom0) in the Exadata
   /// Infrastructure.
-  final String dbServerVersion;
+  final pulumi.Input<String> dbServerVersion;
   /// Maintenance window as defined by Oracle.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
-  final List<GetCloudExadataInfrastructurePropertyMaintenanceWindow> maintenanceWindows;
+  final pulumi.Input<List<GetCloudExadataInfrastructurePropertyMaintenanceWindow>> maintenanceWindows;
   /// The total number of CPU cores available.
-  final int maxCpuCount;
+  final pulumi.Input<int> maxCpuCount;
   /// The total available DATA disk group size.
-  final double maxDataStorageTb;
+  final pulumi.Input<double> maxDataStorageTb;
   /// The total local node storage available in GBs.
-  final int maxDbNodeStorageSizeGb;
+  final pulumi.Input<int> maxDbNodeStorageSizeGb;
   /// The total memory available in GBs.
-  final int maxMemoryGb;
+  final pulumi.Input<int> maxMemoryGb;
   /// The memory allocated in GBs.
-  final int memorySizeGb;
+  final pulumi.Input<int> memorySizeGb;
   /// The monthly software version of the database servers (dom0)
   /// in the Exadata Infrastructure. Example: 20.1.15
-  final String monthlyDbServerVersion;
+  final pulumi.Input<String> monthlyDbServerVersion;
   /// The monthly software version of the storage servers (cells)
   /// in the Exadata Infrastructure. Example: 20.1.15
-  final String monthlyStorageServerVersion;
+  final pulumi.Input<String> monthlyStorageServerVersion;
   /// The OCID of the next maintenance run.
-  final String nextMaintenanceRunId;
+  final pulumi.Input<String> nextMaintenanceRunId;
   /// The time when the next maintenance run will occur.
-  final String nextMaintenanceRunTime;
+  final pulumi.Input<String> nextMaintenanceRunTime;
   /// The time when the next security maintenance run will occur.
-  final String nextSecurityMaintenanceRunTime;
+  final pulumi.Input<String> nextSecurityMaintenanceRunTime;
   /// Deep link to the OCI console to view this resource.
-  final String ociUrl;
+  final pulumi.Input<String> ociUrl;
   /// OCID of created infra.
   /// https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
-  final String ocid;
+  final pulumi.Input<String> ocid;
   /// The shape of the Exadata Infrastructure. The shape determines the
   /// amount of CPU, storage, and memory resources allocated to the instance.
-  final String shape;
+  final pulumi.Input<String> shape;
   /// The current lifecycle state of the Exadata Infrastructure.
   /// Possible values:
   /// STATE_UNSPECIFIED
@@ -70,15 +70,15 @@ class GetCloudExadataInfrastructureProperty {
   /// TERMINATED
   /// FAILED
   /// MAINTENANCE_IN_PROGRESS
-  final String state;
+  final pulumi.Input<String> state;
   /// The number of Cloud Exadata storage servers for the Exadata Infrastructure.
-  final int storageCount;
+  final pulumi.Input<int> storageCount;
   /// The software version of the storage servers (cells) in the Exadata
   /// Infrastructure.
-  final String storageServerVersion;
+  final pulumi.Input<String> storageServerVersion;
   /// The total storage allocated to the Exadata Infrastructure
   /// resource, in gigabytes (GB).
-  final int totalStorageSizeGb;
+  final pulumi.Input<int> totalStorageSizeGb;
 
   /// Creates a new [GetCloudExadataInfrastructureProperty].
   /// [activatedStorageCount] The requested number of additional storage servers activated for the
@@ -145,11 +145,11 @@ class GetCloudExadataInfrastructureProperty {
       'availableStorageSizeGb': availableStorageSizeGb,
       'computeCount': computeCount,
       'cpuCount': cpuCount,
-      'customerContacts': pulumi.Input.encodeList<GetCloudExadataInfrastructurePropertyCustomerContact, Map<String, dynamic>>(customerContacts, (value) => value.toMap()),
+      'customerContacts': pulumi.Input.mapInputValue<List<GetCloudExadataInfrastructurePropertyCustomerContact>, List<Map<String, dynamic>>>(customerContacts, (value) => pulumi.Input.encodeList<GetCloudExadataInfrastructurePropertyCustomerContact, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataStorageSizeTb': dataStorageSizeTb,
       'dbNodeStorageSizeGb': dbNodeStorageSizeGb,
       'dbServerVersion': dbServerVersion,
-      'maintenanceWindows': pulumi.Input.encodeList<GetCloudExadataInfrastructurePropertyMaintenanceWindow, Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap()),
+      'maintenanceWindows': pulumi.Input.mapInputValue<List<GetCloudExadataInfrastructurePropertyMaintenanceWindow>, List<Map<String, dynamic>>>(maintenanceWindows, (value) => pulumi.Input.encodeList<GetCloudExadataInfrastructurePropertyMaintenanceWindow, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maxCpuCount': maxCpuCount,
       'maxDataStorageTb': maxDataStorageTb,
       'maxDbNodeStorageSizeGb': maxDbNodeStorageSizeGb,
@@ -172,33 +172,33 @@ class GetCloudExadataInfrastructureProperty {
 
   factory GetCloudExadataInfrastructureProperty.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructureProperty(
-      activatedStorageCount: map['activatedStorageCount'] as int,
-      additionalStorageCount: map['additionalStorageCount'] as int,
-      availableStorageSizeGb: map['availableStorageSizeGb'] as int,
-      computeCount: map['computeCount'] as int,
-      cpuCount: map['cpuCount'] as int,
-      customerContacts: pulumi.Input.decodeList<GetCloudExadataInfrastructurePropertyCustomerContact>(map['customerContacts'], (value) => GetCloudExadataInfrastructurePropertyCustomerContact.fromMap((value as Map).cast<String, dynamic>())),
-      dataStorageSizeTb: map['dataStorageSizeTb'] as double,
-      dbNodeStorageSizeGb: map['dbNodeStorageSizeGb'] as int,
-      dbServerVersion: map['dbServerVersion'] as String,
-      maintenanceWindows: pulumi.Input.decodeList<GetCloudExadataInfrastructurePropertyMaintenanceWindow>(map['maintenanceWindows'], (value) => GetCloudExadataInfrastructurePropertyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
-      maxCpuCount: map['maxCpuCount'] as int,
-      maxDataStorageTb: map['maxDataStorageTb'] as double,
-      maxDbNodeStorageSizeGb: map['maxDbNodeStorageSizeGb'] as int,
-      maxMemoryGb: map['maxMemoryGb'] as int,
-      memorySizeGb: map['memorySizeGb'] as int,
-      monthlyDbServerVersion: map['monthlyDbServerVersion'] as String,
-      monthlyStorageServerVersion: map['monthlyStorageServerVersion'] as String,
-      nextMaintenanceRunId: map['nextMaintenanceRunId'] as String,
-      nextMaintenanceRunTime: map['nextMaintenanceRunTime'] as String,
-      nextSecurityMaintenanceRunTime: map['nextSecurityMaintenanceRunTime'] as String,
-      ociUrl: map['ociUrl'] as String,
-      ocid: map['ocid'] as String,
-      shape: map['shape'] as String,
-      state: map['state'] as String,
-      storageCount: map['storageCount'] as int,
-      storageServerVersion: map['storageServerVersion'] as String,
-      totalStorageSizeGb: map['totalStorageSizeGb'] as int,
+      activatedStorageCount: (map['activatedStorageCount'] as int).input(),
+      additionalStorageCount: (map['additionalStorageCount'] as int).input(),
+      availableStorageSizeGb: (map['availableStorageSizeGb'] as int).input(),
+      computeCount: (map['computeCount'] as int).input(),
+      cpuCount: (map['cpuCount'] as int).input(),
+      customerContacts: (pulumi.Input.decodeList<GetCloudExadataInfrastructurePropertyCustomerContact>(map['customerContacts'], (value) => GetCloudExadataInfrastructurePropertyCustomerContact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataStorageSizeTb: (map['dataStorageSizeTb'] as double).input(),
+      dbNodeStorageSizeGb: (map['dbNodeStorageSizeGb'] as int).input(),
+      dbServerVersion: (map['dbServerVersion'] as String).input(),
+      maintenanceWindows: (pulumi.Input.decodeList<GetCloudExadataInfrastructurePropertyMaintenanceWindow>(map['maintenanceWindows'], (value) => GetCloudExadataInfrastructurePropertyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxCpuCount: (map['maxCpuCount'] as int).input(),
+      maxDataStorageTb: (map['maxDataStorageTb'] as double).input(),
+      maxDbNodeStorageSizeGb: (map['maxDbNodeStorageSizeGb'] as int).input(),
+      maxMemoryGb: (map['maxMemoryGb'] as int).input(),
+      memorySizeGb: (map['memorySizeGb'] as int).input(),
+      monthlyDbServerVersion: (map['monthlyDbServerVersion'] as String).input(),
+      monthlyStorageServerVersion: (map['monthlyStorageServerVersion'] as String).input(),
+      nextMaintenanceRunId: (map['nextMaintenanceRunId'] as String).input(),
+      nextMaintenanceRunTime: (map['nextMaintenanceRunTime'] as String).input(),
+      nextSecurityMaintenanceRunTime: (map['nextSecurityMaintenanceRunTime'] as String).input(),
+      ociUrl: (map['ociUrl'] as String).input(),
+      ocid: (map['ocid'] as String).input(),
+      shape: (map['shape'] as String).input(),
+      state: (map['state'] as String).input(),
+      storageCount: (map['storageCount'] as int).input(),
+      storageServerVersion: (map['storageServerVersion'] as String).input(),
+      totalStorageSizeGb: (map['totalStorageSizeGb'] as int).input(),
     );
   }
 }

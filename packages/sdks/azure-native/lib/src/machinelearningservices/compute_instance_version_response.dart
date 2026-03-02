@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Version of computeInstance.
 class ComputeInstanceVersionResponse {
   /// Runtime of compute instance.
-  final String? runtime;
+  final pulumi.Input<String>? runtime;
 
   /// Creates a new [ComputeInstanceVersionResponse].
   /// [runtime] Runtime of compute instance.
@@ -20,7 +21,7 @@ class ComputeInstanceVersionResponse {
 
   factory ComputeInstanceVersionResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceVersionResponse(
-      runtime: map['runtime'] == null ? null : map['runtime'] as String,
+      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
     );
   }
 }

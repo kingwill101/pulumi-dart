@@ -19,13 +19,10 @@ class GetKafkaConfigurationArgs {
   /// [kafkaConfigurationName] Name of kafka configuration.
   /// [resourceGroupName] The resource group name.
   GetKafkaConfigurationArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> kafkaConfigurationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      kafkaConfigurationName = pulumi.Input.asInput<String>(kafkaConfigurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.kafkaConfigurationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKafkaConfigurationArgs {
 
   factory GetKafkaConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetKafkaConfigurationArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      kafkaConfigurationName: pulumi.Output.create<String>(map['kafkaConfigurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      kafkaConfigurationName: (map['kafkaConfigurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

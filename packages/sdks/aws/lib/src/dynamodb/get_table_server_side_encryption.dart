@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableServerSideEncryption {
-  final bool enabled;
-  final String kmsKeyArn;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<String> kmsKeyArn;
 
   /// Creates a new [GetTableServerSideEncryption].
   /// [enabled] Required.
@@ -22,8 +23,8 @@ class GetTableServerSideEncryption {
 
   factory GetTableServerSideEncryption.fromMap(Map<String, dynamic> map) {
     return GetTableServerSideEncryption(
-      enabled: map['enabled'] as bool,
-      kmsKeyArn: map['kmsKeyArn'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
     );
   }
 }

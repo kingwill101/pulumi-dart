@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsAccessSettingsReauthSettings {
   /// Reauth session lifetime, how long before a user has to reauthenticate again.
   /// A duration in seconds with up to nine fractional digits, ending with 's'.
   /// Example: "3.5s".
-  final String maxAge;
+  final pulumi.Input<String> maxAge;
   /// Reauth method requested. The possible values are:
   /// * `LOGIN`: Prompts the user to log in again.
   /// * `SECURE_KEY`: User must use their secure key 2nd factor device.
   /// * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
   /// Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
-  final String method;
+  final pulumi.Input<String> method;
   /// How IAP determines the effective policy in cases of hierarchical policies.
   /// Policies are merged from higher in the hierarchy to lower in the hierarchy.
   /// The possible values are:
@@ -19,7 +20,7 @@ class SettingsAccessSettingsReauthSettings {
   /// Effective policy may only be the same or stricter.
   /// * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
   /// Possible values are: `MINIMUM`, `DEFAULT`.
-  final String policyType;
+  final pulumi.Input<String> policyType;
 
   /// Creates a new [SettingsAccessSettingsReauthSettings].
   /// [maxAge] Reauth session lifetime, how long before a user has to reauthenticate again.
@@ -41,9 +42,9 @@ class SettingsAccessSettingsReauthSettings {
 
   factory SettingsAccessSettingsReauthSettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsReauthSettings(
-      maxAge: map['maxAge'] as String,
-      method: map['method'] as String,
-      policyType: map['policyType'] as String,
+      maxAge: (map['maxAge'] as String).input(),
+      method: (map['method'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
     );
   }
 }

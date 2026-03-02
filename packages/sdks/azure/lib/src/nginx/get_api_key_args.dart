@@ -16,11 +16,9 @@ class GetApiKeyArgs {
   /// [name] The name of the NGINX Dataplane API Key.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that the API key is associated with.
   GetApiKeyArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> nginxDeploymentId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      nginxDeploymentId = pulumi.Input.asInput<String>(nginxDeploymentId);
+    required this.name,
+    required this.nginxDeploymentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetApiKeyArgs {
 
   factory GetApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetApiKeyArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      nginxDeploymentId: pulumi.Output.create<String>(map['nginxDeploymentId'] as String),
+      name: (map['name'] as String).input(),
+      nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
     );
   }
 }

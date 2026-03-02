@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkPoolAutoScale {
   /// The maximum number of nodes the Spark Pool can support. Must be between `3` and `200`.
-  final int maxNodeCount;
+  final pulumi.Input<int> maxNodeCount;
   /// The minimum number of nodes the Spark Pool can support. Must be between `3` and `200`.
-  final int minNodeCount;
+  final pulumi.Input<int> minNodeCount;
 
   /// Creates a new [SparkPoolAutoScale].
   /// [maxNodeCount] The maximum number of nodes the Spark Pool can support. Must be between `3` and `200`.
@@ -24,8 +25,8 @@ class SparkPoolAutoScale {
 
   factory SparkPoolAutoScale.fromMap(Map<String, dynamic> map) {
     return SparkPoolAutoScale(
-      maxNodeCount: map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] as int,
+      maxNodeCount: (map['maxNodeCount'] as int).input(),
+      minNodeCount: (map['minNodeCount'] as int).input(),
     );
   }
 }

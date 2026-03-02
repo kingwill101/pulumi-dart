@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
 class ManagedClusterAADProfileResponse {
   /// The list of AAD group object IDs that will have admin role of the cluster.
-  final List<String>? adminGroupObjectIDs;
+  final pulumi.Input<List<String>>? adminGroupObjectIDs;
   /// (DEPRECATED) The client AAD application ID. Learn more at https://aka.ms/aks/aad-legacy.
-  final String? clientAppID;
+  final pulumi.Input<String>? clientAppID;
   /// Whether to enable Azure RBAC for Kubernetes authorization.
-  final bool? enableAzureRBAC;
+  final pulumi.Input<bool>? enableAzureRBAC;
   /// Whether to enable managed AAD.
-  final bool? managed;
+  final pulumi.Input<bool>? managed;
   /// (DEPRECATED) The server AAD application ID. Learn more at https://aka.ms/aks/aad-legacy.
-  final String? serverAppID;
+  final pulumi.Input<String>? serverAppID;
   /// (DEPRECATED) The server AAD application secret. Learn more at https://aka.ms/aks/aad-legacy.
-  final String? serverAppSecret;
+  final pulumi.Input<String>? serverAppSecret;
   /// The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  final String? tenantID;
+  final pulumi.Input<String>? tenantID;
 
   /// Creates a new [ManagedClusterAADProfileResponse].
   /// [adminGroupObjectIDs] The list of AAD group object IDs that will have admin role of the cluster.
@@ -50,13 +51,13 @@ class ManagedClusterAADProfileResponse {
 
   factory ManagedClusterAADProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAADProfileResponse(
-      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : (map['adminGroupObjectIDs'] as List).cast<String>(),
-      clientAppID: map['clientAppID'] == null ? null : map['clientAppID'] as String,
-      enableAzureRBAC: map['enableAzureRBAC'] == null ? null : map['enableAzureRBAC'] as bool,
-      managed: map['managed'] == null ? null : map['managed'] as bool,
-      serverAppID: map['serverAppID'] == null ? null : map['serverAppID'] as String,
-      serverAppSecret: map['serverAppSecret'] == null ? null : map['serverAppSecret'] as String,
-      tenantID: map['tenantID'] == null ? null : map['tenantID'] as String,
+      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs'] as List).cast<String>()).input(),
+      clientAppID: map['clientAppID'] == null ? null : (map['clientAppID'] as String).input(),
+      enableAzureRBAC: map['enableAzureRBAC'] == null ? null : (map['enableAzureRBAC'] as bool).input(),
+      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
+      serverAppID: map['serverAppID'] == null ? null : (map['serverAppID'] as String).input(),
+      serverAppSecret: map['serverAppSecret'] == null ? null : (map['serverAppSecret'] as String).input(),
+      tenantID: map['tenantID'] == null ? null : (map['tenantID'] as String).input(),
     );
   }
 }

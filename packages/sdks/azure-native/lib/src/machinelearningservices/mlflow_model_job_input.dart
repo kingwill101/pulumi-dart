@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MLFlowModelJobInput {
   /// Description for the input.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Enum to determine the Job Input Type.
   /// Expected value is 'mlflow_model'.
-  final String jobInputType;
+  final pulumi.Input<String> jobInputType;
   /// Input Asset Delivery Mode.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// [Required] Input Asset URI.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [MLFlowModelJobInput].
   /// [description] Description for the input.
@@ -35,10 +36,10 @@ class MLFlowModelJobInput {
 
   factory MLFlowModelJobInput.fromMap(Map<String, dynamic> map) {
     return MLFlowModelJobInput(
-      description: map['description'] == null ? null : map['description'] as String,
-      jobInputType: map['jobInputType'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      uri: map['uri'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      jobInputType: (map['jobInputType'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

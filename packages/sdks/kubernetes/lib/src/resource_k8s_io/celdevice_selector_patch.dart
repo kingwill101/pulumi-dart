@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CELDeviceSelector contains a CEL expression for selecting a device.
 class CELDeviceSelectorPatch {
@@ -34,7 +35,7 @@ class CELDeviceSelectorPatch {
   /// cel.bind(dra, device.attributes["dra.example.com"], dra.someBool && dra.anotherBool)
   ///
   /// The length of the expression must be smaller or equal to 10 Ki. The cost of evaluating it is also limited based on the estimated number of logical steps.
-  final String? expression;
+  final pulumi.Input<String>? expression;
 
   /// Creates a new [CELDeviceSelectorPatch].
   /// [expression] Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.
@@ -50,7 +51,7 @@ class CELDeviceSelectorPatch {
 
   factory CELDeviceSelectorPatch.fromMap(Map<String, dynamic> map) {
     return CELDeviceSelectorPatch(
-      expression: map['expression'] == null ? null : map['expression'] as String,
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
     );
   }
 }

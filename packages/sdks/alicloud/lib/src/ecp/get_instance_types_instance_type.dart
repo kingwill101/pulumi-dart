@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypesInstanceType {
   /// The cpu core count of the current instance type.
-  final int cpuCoreCount;
+  final pulumi.Input<int> cpuCoreCount;
   /// The default resolution of the current instance type.
-  final String defaultResolution;
+  final pulumi.Input<String> defaultResolution;
   /// The list of available instance type.
-  final String instanceType;
-  final String instanceTypeFamily;
+  final pulumi.Input<String> instanceType;
+  final pulumi.Input<String> instanceTypeFamily;
   /// The name of the current instance type.
-  final String name;
+  final pulumi.Input<String> name;
   /// The English name of the current instance type.
-  final String nameEn;
+  final pulumi.Input<String> nameEn;
 
   /// Creates a new [GetInstanceTypesInstanceType].
   /// [cpuCoreCount] The cpu core count of the current instance type.
@@ -43,12 +44,12 @@ class GetInstanceTypesInstanceType {
 
   factory GetInstanceTypesInstanceType.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesInstanceType(
-      cpuCoreCount: map['cpuCoreCount'] as int,
-      defaultResolution: map['defaultResolution'] as String,
-      instanceType: map['instanceType'] as String,
-      instanceTypeFamily: map['instanceTypeFamily'] as String,
-      name: map['name'] as String,
-      nameEn: map['nameEn'] as String,
+      cpuCoreCount: (map['cpuCoreCount'] as int).input(),
+      defaultResolution: (map['defaultResolution'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      instanceTypeFamily: (map['instanceTypeFamily'] as String).input(),
+      name: (map['name'] as String).input(),
+      nameEn: (map['nameEn'] as String).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpsecServersServerIkeConfig {
   /// The IKE authentication algorithm.
-  final String ikeAuthAlg;
+  final pulumi.Input<String> ikeAuthAlg;
   /// The IKE encryption algorithm.
-  final String ikeEncAlg;
+  final pulumi.Input<String> ikeEncAlg;
   /// The IKE lifetime. Unit: seconds.
-  final int ikeLifetime;
+  final pulumi.Input<int> ikeLifetime;
   /// The IKE negotiation mode.
-  final String ikeMode;
+  final pulumi.Input<String> ikeMode;
   /// Diffie-Hellman key exchange algorithm.
-  final String ikePfs;
+  final pulumi.Input<String> ikePfs;
   /// The IKE version.
-  final String ikeVersion;
+  final pulumi.Input<String> ikeVersion;
   /// IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
-  final String localId;
+  final pulumi.Input<String> localId;
   /// The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
-  final String remoteId;
+  final pulumi.Input<String> remoteId;
 
   /// Creates a new [GetIpsecServersServerIkeConfig].
   /// [ikeAuthAlg] The IKE authentication algorithm.
@@ -54,14 +55,14 @@ class GetIpsecServersServerIkeConfig {
 
   factory GetIpsecServersServerIkeConfig.fromMap(Map<String, dynamic> map) {
     return GetIpsecServersServerIkeConfig(
-      ikeAuthAlg: map['ikeAuthAlg'] as String,
-      ikeEncAlg: map['ikeEncAlg'] as String,
-      ikeLifetime: map['ikeLifetime'] as int,
-      ikeMode: map['ikeMode'] as String,
-      ikePfs: map['ikePfs'] as String,
-      ikeVersion: map['ikeVersion'] as String,
-      localId: map['localId'] as String,
-      remoteId: map['remoteId'] as String,
+      ikeAuthAlg: (map['ikeAuthAlg'] as String).input(),
+      ikeEncAlg: (map['ikeEncAlg'] as String).input(),
+      ikeLifetime: (map['ikeLifetime'] as int).input(),
+      ikeMode: (map['ikeMode'] as String).input(),
+      ikePfs: (map['ikePfs'] as String).input(),
+      ikeVersion: (map['ikeVersion'] as String).input(),
+      localId: (map['localId'] as String).input(),
+      remoteId: (map['remoteId'] as String).input(),
     );
   }
 }

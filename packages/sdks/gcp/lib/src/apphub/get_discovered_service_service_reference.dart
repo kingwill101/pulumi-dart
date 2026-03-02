@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDiscoveredServiceServiceReference {
   /// Additional path under the resource URI.
-  final String path;
+  final pulumi.Input<String> path;
   /// The underlying resource URI.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GetDiscoveredServiceServiceReference].
   /// [path] Additional path under the resource URI.
@@ -24,8 +25,8 @@ class GetDiscoveredServiceServiceReference {
 
   factory GetDiscoveredServiceServiceReference.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredServiceServiceReference(
-      path: map['path'] as String,
-      uri: map['uri'] as String,
+      path: (map['path'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

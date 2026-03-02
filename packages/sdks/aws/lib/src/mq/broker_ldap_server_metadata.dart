@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerLdapServerMetadata {
   /// List of fully qualified domain names of the LDAP server and optional failover server.
-  final List<String>? hosts;
+  final pulumi.Input<List<String>>? hosts;
   /// Fully qualified name of the directory to search for a user's groups.
-  final String? roleBase;
+  final pulumi.Input<String>? roleBase;
   /// LDAP attribute that identifies the group name attribute in the object returned from the group membership query.
-  final String? roleName;
+  final pulumi.Input<String>? roleName;
   /// Search criteria for groups.
-  final String? roleSearchMatching;
+  final pulumi.Input<String>? roleSearchMatching;
   /// Whether the directory search scope is the entire sub-tree.
-  final bool? roleSearchSubtree;
+  final pulumi.Input<bool>? roleSearchSubtree;
   /// Service account password.
-  final String? serviceAccountPassword;
+  final pulumi.Input<String>? serviceAccountPassword;
   /// Service account username.
-  final String? serviceAccountUsername;
+  final pulumi.Input<String>? serviceAccountUsername;
   /// Fully qualified name of the directory where you want to search for users.
-  final String? userBase;
+  final pulumi.Input<String>? userBase;
   /// Name of the LDAP attribute for the user group membership.
-  final String? userRoleName;
+  final pulumi.Input<String>? userRoleName;
   /// Search criteria for users.
-  final String? userSearchMatching;
+  final pulumi.Input<String>? userSearchMatching;
   /// Whether the directory search scope is the entire sub-tree.
-  final bool? userSearchSubtree;
+  final pulumi.Input<bool>? userSearchSubtree;
 
   /// Creates a new [BrokerLdapServerMetadata].
   /// [hosts] List of fully qualified domain names of the LDAP server and optional failover server.
@@ -69,17 +70,17 @@ class BrokerLdapServerMetadata {
 
   factory BrokerLdapServerMetadata.fromMap(Map<String, dynamic> map) {
     return BrokerLdapServerMetadata(
-      hosts: map['hosts'] == null ? null : (map['hosts'] as List).cast<String>(),
-      roleBase: map['roleBase'] == null ? null : map['roleBase'] as String,
-      roleName: map['roleName'] == null ? null : map['roleName'] as String,
-      roleSearchMatching: map['roleSearchMatching'] == null ? null : map['roleSearchMatching'] as String,
-      roleSearchSubtree: map['roleSearchSubtree'] == null ? null : map['roleSearchSubtree'] as bool,
-      serviceAccountPassword: map['serviceAccountPassword'] == null ? null : map['serviceAccountPassword'] as String,
-      serviceAccountUsername: map['serviceAccountUsername'] == null ? null : map['serviceAccountUsername'] as String,
-      userBase: map['userBase'] == null ? null : map['userBase'] as String,
-      userRoleName: map['userRoleName'] == null ? null : map['userRoleName'] as String,
-      userSearchMatching: map['userSearchMatching'] == null ? null : map['userSearchMatching'] as String,
-      userSearchSubtree: map['userSearchSubtree'] == null ? null : map['userSearchSubtree'] as bool,
+      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
+      roleBase: map['roleBase'] == null ? null : (map['roleBase'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      roleSearchMatching: map['roleSearchMatching'] == null ? null : (map['roleSearchMatching'] as String).input(),
+      roleSearchSubtree: map['roleSearchSubtree'] == null ? null : (map['roleSearchSubtree'] as bool).input(),
+      serviceAccountPassword: map['serviceAccountPassword'] == null ? null : (map['serviceAccountPassword'] as String).input(),
+      serviceAccountUsername: map['serviceAccountUsername'] == null ? null : (map['serviceAccountUsername'] as String).input(),
+      userBase: map['userBase'] == null ? null : (map['userBase'] as String).input(),
+      userRoleName: map['userRoleName'] == null ? null : (map['userRoleName'] as String).input(),
+      userSearchMatching: map['userSearchMatching'] == null ? null : (map['userSearchMatching'] as String).input(),
+      userSearchSubtree: map['userSearchSubtree'] == null ? null : (map['userSearchSubtree'] as bool).input(),
     );
   }
 }

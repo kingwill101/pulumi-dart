@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertRuleTemplateScheduledTemplate {
   /// The description of this Sentinel Scheduled Alert Rule Template.
-  final String description;
+  final pulumi.Input<String> description;
   /// The query of this Sentinel Scheduled Alert Rule Template.
-  final String query;
+  final pulumi.Input<String> query;
   /// The ISO 8601 timespan duration between two consecutive queries.
-  final String queryFrequency;
+  final pulumi.Input<String> queryFrequency;
   /// The ISO 8601 timespan duration, which determine the time period of the data covered by the query.
-  final String queryPeriod;
+  final pulumi.Input<String> queryPeriod;
   /// The alert severity of this Sentinel Scheduled Alert Rule Template.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// A list of categories of attacks by which to classify the rule.
-  final List<String> tactics;
+  final pulumi.Input<List<String>> tactics;
   /// The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
-  final String triggerOperator;
+  final pulumi.Input<String> triggerOperator;
   /// The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
-  final int triggerThreshold;
+  final pulumi.Input<int> triggerThreshold;
 
   /// Creates a new [GetAlertRuleTemplateScheduledTemplate].
   /// [description] The description of this Sentinel Scheduled Alert Rule Template.
@@ -54,14 +55,14 @@ class GetAlertRuleTemplateScheduledTemplate {
 
   factory GetAlertRuleTemplateScheduledTemplate.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleTemplateScheduledTemplate(
-      description: map['description'] as String,
-      query: map['query'] as String,
-      queryFrequency: map['queryFrequency'] as String,
-      queryPeriod: map['queryPeriod'] as String,
-      severity: map['severity'] as String,
-      tactics: (map['tactics'] as List).cast<String>(),
-      triggerOperator: map['triggerOperator'] as String,
-      triggerThreshold: map['triggerThreshold'] as int,
+      description: (map['description'] as String).input(),
+      query: (map['query'] as String).input(),
+      queryFrequency: (map['queryFrequency'] as String).input(),
+      queryPeriod: (map['queryPeriod'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      tactics: ((map['tactics'] as List).cast<String>()).input(),
+      triggerOperator: (map['triggerOperator'] as String).input(),
+      triggerThreshold: (map['triggerThreshold'] as int).input(),
     );
   }
 }

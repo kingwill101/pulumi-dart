@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource map for schema in azure monitor.
 class ResourceMap {
   /// Resource Map Key.
-  final String from;
+  final pulumi.Input<String> from;
   /// Resource Map Value.
-  final String to;
+  final pulumi.Input<String> to;
 
   /// Creates a new [ResourceMap].
   /// [from] Resource Map Key.
@@ -25,8 +26,8 @@ class ResourceMap {
 
   factory ResourceMap.fromMap(Map<String, dynamic> map) {
     return ResourceMap(
-      from: map['from'] as String,
-      to: map['to'] as String,
+      from: (map['from'] as String).input(),
+      to: (map['to'] as String).input(),
     );
   }
 }

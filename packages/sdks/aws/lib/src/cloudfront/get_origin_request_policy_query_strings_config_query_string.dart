@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOriginRequestPolicyQueryStringsConfigQueryString {
-  final List<String> items;
+  final pulumi.Input<List<String>> items;
 
   /// Creates a new [GetOriginRequestPolicyQueryStringsConfigQueryString].
   /// [items] Required.
@@ -18,7 +19,7 @@ class GetOriginRequestPolicyQueryStringsConfigQueryString {
 
   factory GetOriginRequestPolicyQueryStringsConfigQueryString.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyQueryStringsConfigQueryString(
-      items: (map['items'] as List).cast<String>(),
+      items: ((map['items'] as List).cast<String>()).input(),
     );
   }
 }

@@ -37,21 +37,14 @@ class LimitV3Args {
   /// [resourceName] The resource that the limit applies to. Changing
   /// [serviceId] The service the limit applies to. Changing this
   LimitV3Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> resourceLimit,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> serviceId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceLimit = pulumi.Input.asInput<int>(resourceLimit),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.description,
+    this.domainId,
+    this.projectId,
+    this.region,
+    required this.resourceLimit,
+    required this.resourceName,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class LimitV3Args {
 
   factory LimitV3Args.fromMap(Map<String, dynamic> map) {
     return LimitV3Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceLimit: pulumi.Output.create<int>(map['resourceLimit'] as int),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceLimit: (map['resourceLimit'] as int).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

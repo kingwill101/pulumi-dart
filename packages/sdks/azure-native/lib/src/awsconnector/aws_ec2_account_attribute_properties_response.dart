@@ -6,9 +6,9 @@ import 'account_attribute_value_response.dart';
 /// Definition of awsEc2AccountAttribute
 class AwsEc2AccountAttributePropertiesResponse {
   /// <p>The name of the account attribute.</p>
-  final String? attributeName;
+  final pulumi.Input<String>? attributeName;
   /// <p>The values for the account attribute.</p>
-  final List<AccountAttributeValueResponse>? attributeValues;
+  final pulumi.Input<List<AccountAttributeValueResponse>>? attributeValues;
 
   /// Creates a new [AwsEc2AccountAttributePropertiesResponse].
   /// [attributeName] <p>The name of the account attribute.</p>
@@ -21,14 +21,14 @@ class AwsEc2AccountAttributePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributeName': ?attributeName,
-      'attributeValues': ?attributeValues == null ? null : pulumi.Input.encodeList<AccountAttributeValueResponse, Map<String, dynamic>>(attributeValues!, (value) => value.toMap()),
+      'attributeValues': ?pulumi.Input.mapOptionalInputValue<List<AccountAttributeValueResponse>, List<Map<String, dynamic>>>(attributeValues, (value) => pulumi.Input.encodeList<AccountAttributeValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsEc2AccountAttributePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2AccountAttributePropertiesResponse(
-      attributeName: map['attributeName'] == null ? null : map['attributeName'] as String,
-      attributeValues: map['attributeValues'] == null ? null : pulumi.Input.decodeList<AccountAttributeValueResponse>(map['attributeValues'], (value) => AccountAttributeValueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
+      attributeValues: map['attributeValues'] == null ? null : (pulumi.Input.decodeList<AccountAttributeValueResponse>(map['attributeValues'], (value) => AccountAttributeValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

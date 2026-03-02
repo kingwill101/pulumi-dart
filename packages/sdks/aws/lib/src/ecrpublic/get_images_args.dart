@@ -23,15 +23,11 @@ class GetImagesArgs {
   /// [registryId] AWS account ID associated with the public registry that contains the repository. If not specified, the default public registry is assumed.
   /// [repositoryName] Name of the public repository.
   GetImagesArgs({
-    pulumi.Output<List<GetImagesImageId>>? imageIds,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    required pulumi.Output<String> repositoryName,
-  }) :
-      imageIds = pulumi.Input.asOptionalInput<List<GetImagesImageId>>(imageIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName);
+    this.imageIds,
+    this.region,
+    this.registryId,
+    required this.repositoryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      imageIds: map['imageIds'] == null ? null : pulumi.Output.create<List<GetImagesImageId>>(pulumi.Input.decodeList<GetImagesImageId>(map['imageIds'], (value) => GetImagesImageId.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      repositoryName: pulumi.Output.create<String>(map['repositoryName'] as String),
+      imageIds: map['imageIds'] == null ? null : (pulumi.Input.decodeList<GetImagesImageId>(map['imageIds'], (value) => GetImagesImageId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
     );
   }
 }

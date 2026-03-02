@@ -7,10 +7,10 @@ import 'get_virtual_node_spec_listener_timeout_http2.dart';
 import 'get_virtual_node_spec_listener_timeout_tcp.dart';
 
 class GetVirtualNodeSpecListenerTimeout {
-  final List<GetVirtualNodeSpecListenerTimeoutGrpc> grpcs;
-  final List<GetVirtualNodeSpecListenerTimeoutHttp2> http2s;
-  final List<GetVirtualNodeSpecListenerTimeoutHttp> https;
-  final List<GetVirtualNodeSpecListenerTimeoutTcp> tcps;
+  final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutGrpc>> grpcs;
+  final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutHttp2>> http2s;
+  final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutHttp>> https;
+  final pulumi.Input<List<GetVirtualNodeSpecListenerTimeoutTcp>> tcps;
 
   /// Creates a new [GetVirtualNodeSpecListenerTimeout].
   /// [grpcs] Required.
@@ -26,19 +26,19 @@ class GetVirtualNodeSpecListenerTimeout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'grpcs': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutGrpc, Map<String, dynamic>>(grpcs, (value) => value.toMap()),
-      'http2s': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutHttp2, Map<String, dynamic>>(http2s, (value) => value.toMap()),
-      'https': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutHttp, Map<String, dynamic>>(https, (value) => value.toMap()),
-      'tcps': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutTcp, Map<String, dynamic>>(tcps, (value) => value.toMap()),
+      'grpcs': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecListenerTimeoutGrpc>, List<Map<String, dynamic>>>(grpcs, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutGrpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'http2s': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecListenerTimeoutHttp2>, List<Map<String, dynamic>>>(http2s, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutHttp2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'https': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecListenerTimeoutHttp>, List<Map<String, dynamic>>>(https, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutHttp, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tcps': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecListenerTimeoutTcp>, List<Map<String, dynamic>>>(tcps, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutTcp, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualNodeSpecListenerTimeout.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTimeout(
-      grpcs: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpc>(map['grpcs'], (value) => GetVirtualNodeSpecListenerTimeoutGrpc.fromMap((value as Map).cast<String, dynamic>())),
-      http2s: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2>(map['http2s'], (value) => GetVirtualNodeSpecListenerTimeoutHttp2.fromMap((value as Map).cast<String, dynamic>())),
-      https: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp>(map['https'], (value) => GetVirtualNodeSpecListenerTimeoutHttp.fromMap((value as Map).cast<String, dynamic>())),
-      tcps: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutTcp>(map['tcps'], (value) => GetVirtualNodeSpecListenerTimeoutTcp.fromMap((value as Map).cast<String, dynamic>())),
+      grpcs: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpc>(map['grpcs'], (value) => GetVirtualNodeSpecListenerTimeoutGrpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      http2s: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2>(map['http2s'], (value) => GetVirtualNodeSpecListenerTimeoutHttp2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      https: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp>(map['https'], (value) => GetVirtualNodeSpecListenerTimeoutHttp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tcps: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutTcp>(map['tcps'], (value) => GetVirtualNodeSpecListenerTimeoutTcp.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

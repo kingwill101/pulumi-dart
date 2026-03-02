@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Min and max value of a status code range.
 class MonitorConfigExpectedStatusCodeRangesItemResponse {
   /// Max status code.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// Min status code.
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [MonitorConfigExpectedStatusCodeRangesItemResponse].
   /// [max] Max status code.
@@ -25,8 +26,8 @@ class MonitorConfigExpectedStatusCodeRangesItemResponse {
 
   factory MonitorConfigExpectedStatusCodeRangesItemResponse.fromMap(Map<String, dynamic> map) {
     return MonitorConfigExpectedStatusCodeRangesItemResponse(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

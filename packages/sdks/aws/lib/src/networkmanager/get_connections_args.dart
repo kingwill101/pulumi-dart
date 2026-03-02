@@ -19,13 +19,10 @@ class GetConnectionsArgs {
   /// [globalNetworkId] ID of the Global Network of the connections to retrieve.
   /// [tags] Restricts the list to the connections with these tags.
   GetConnectionsArgs({
-    pulumi.Output<String>? deviceId,
-    required pulumi.Output<String> globalNetworkId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deviceId = pulumi.Input.asOptionalInput<String>(deviceId),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deviceId,
+    required this.globalNetworkId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConnectionsArgs {
 
   factory GetConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionsArgs(
-      deviceId: map['deviceId'] == null ? null : pulumi.Output.create<String>(map['deviceId'] as String),
-      globalNetworkId: pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
+      globalNetworkId: (map['globalNetworkId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

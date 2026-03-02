@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedZoneCloudLoggingConfig {
   /// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
-  final bool enableLogging;
+  final pulumi.Input<bool> enableLogging;
 
   /// Creates a new [ManagedZoneCloudLoggingConfig].
   /// [enableLogging] If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
@@ -19,7 +20,7 @@ class ManagedZoneCloudLoggingConfig {
 
   factory ManagedZoneCloudLoggingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneCloudLoggingConfig(
-      enableLogging: map['enableLogging'] as bool,
+      enableLogging: (map['enableLogging'] as bool).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver {
   /// The SQL file to be executed.
-  final String? entryPoint;
+  final pulumi.Input<String>? entryPoint;
   /// The Spark parameters to be included in the Spark SQL command.
-  final String? sparkSqlParameters;
+  final pulumi.Input<String>? sparkSqlParameters;
 
   /// Creates a new [JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver].
   /// [entryPoint] The SQL file to be executed.
@@ -24,8 +25,8 @@ class JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver {
 
   factory JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver(
-      entryPoint: map['entryPoint'] == null ? null : map['entryPoint'] as String,
-      sparkSqlParameters: map['sparkSqlParameters'] == null ? null : map['sparkSqlParameters'] as String,
+      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint'] as String).input(),
+      sparkSqlParameters: map['sparkSqlParameters'] == null ? null : (map['sparkSqlParameters'] as String).input(),
     );
   }
 }

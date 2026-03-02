@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'adhoc_based_tagging_criteria_response.dart';
 
 /// Adhoc trigger context
 class AdhocBasedTriggerContextResponse {
   /// Type of the specific object - used for deserializing
   /// Expected value is 'AdhocBasedTriggerContext'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// Tagging Criteria containing retention tag for adhoc backup.
-  final AdhocBasedTaggingCriteriaResponse taggingCriteria;
+  final pulumi.Input<AdhocBasedTaggingCriteriaResponse> taggingCriteria;
 
   /// Creates a new [AdhocBasedTriggerContextResponse].
   /// [objectType] Type of the specific object - used for deserializing
@@ -21,14 +22,14 @@ class AdhocBasedTriggerContextResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'objectType': objectType,
-      'taggingCriteria': taggingCriteria.toMap(),
+      'taggingCriteria': pulumi.Input.mapInputValue<AdhocBasedTaggingCriteriaResponse, Map<String, dynamic>>(taggingCriteria, (value) => value.toMap()),
     };
   }
 
   factory AdhocBasedTriggerContextResponse.fromMap(Map<String, dynamic> map) {
     return AdhocBasedTriggerContextResponse(
-      objectType: map['objectType'] as String,
-      taggingCriteria: AdhocBasedTaggingCriteriaResponse.fromMap((map['taggingCriteria'] as Map).cast<String, dynamic>()),
+      objectType: (map['objectType'] as String).input(),
+      taggingCriteria: (AdhocBasedTaggingCriteriaResponse.fromMap((map['taggingCriteria'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

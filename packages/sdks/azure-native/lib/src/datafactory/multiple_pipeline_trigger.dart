@@ -6,14 +6,14 @@ import 'trigger_pipeline_reference.dart';
 /// Base class for all triggers that support one to many model for trigger to pipeline.
 class MultiplePipelineTrigger {
   /// List of tags that can be used for describing the trigger.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Trigger description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Pipelines that need to be started.
-  final List<TriggerPipelineReference>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReference>>? pipelines;
   /// Trigger type.
   /// Expected value is 'MultiplePipelineTrigger'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MultiplePipelineTrigger].
   /// [annotations] List of tags that can be used for describing the trigger.
@@ -31,17 +31,17 @@ class MultiplePipelineTrigger {
     return <String, dynamic>{
       'annotations': ?annotations,
       'description': ?description,
-      'pipelines': ?pipelines == null ? null : pulumi.Input.encodeList<TriggerPipelineReference, Map<String, dynamic>>(pipelines!, (value) => value.toMap()),
+      'pipelines': ?pulumi.Input.mapOptionalInputValue<List<TriggerPipelineReference>, List<Map<String, dynamic>>>(pipelines, (value) => pulumi.Input.encodeList<TriggerPipelineReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory MultiplePipelineTrigger.fromMap(Map<String, dynamic> map) {
     return MultiplePipelineTrigger(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      pipelines: map['pipelines'] == null ? null : pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines'], (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines'], (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

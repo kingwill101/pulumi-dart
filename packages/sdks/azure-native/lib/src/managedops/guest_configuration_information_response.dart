@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Policy and Machine Configuration service information.
 class GuestConfigurationInformationResponse {
   /// Indicates whether the service is enabled.
-  final String enablementStatus;
+  final pulumi.Input<String> enablementStatus;
 
   /// Creates a new [GuestConfigurationInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
@@ -20,7 +21,7 @@ class GuestConfigurationInformationResponse {
 
   factory GuestConfigurationInformationResponse.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationInformationResponse(
-      enablementStatus: map['enablementStatus'] as String,
+      enablementStatus: (map['enablementStatus'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful {
   /// Minimum success percentage required.
-  final int minimumSuccessPercentage;
+  final pulumi.Input<int> minimumSuccessPercentage;
 
   /// Creates a new [PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful].
   /// [minimumSuccessPercentage] Minimum success percentage required.
@@ -19,7 +20,7 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful {
 
   factory PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful(
-      minimumSuccessPercentage: map['minimumSuccessPercentage'] as int,
+      minimumSuccessPercentage: (map['minimumSuccessPercentage'] as int).input(),
     );
   }
 }

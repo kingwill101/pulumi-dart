@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentAfterModelCallback {
   /// Human-readable description of the callback.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Whether the callback is disabled. Disabled callbacks are ignored by the
   /// agent.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// The python code to execute for the callback.
-  final String pythonCode;
+  final pulumi.Input<String> pythonCode;
 
   /// Creates a new [AgentAfterModelCallback].
   /// [description] Human-readable description of the callback.
@@ -30,9 +31,9 @@ class AgentAfterModelCallback {
 
   factory AgentAfterModelCallback.fromMap(Map<String, dynamic> map) {
     return AgentAfterModelCallback(
-      description: map['description'] == null ? null : map['description'] as String,
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      pythonCode: map['pythonCode'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      pythonCode: (map['pythonCode'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class AlertPolicyState {
   /// [incidentPreference] The rollup strategy for the policy, which can have one of the following values (the default value is `PER_POLICY`):
   /// [name] The name of the policy.
   AlertPolicyState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<List<String>>? channelIds,
-    pulumi.Output<String>? incidentPreference,
-    pulumi.Output<String>? name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      channelIds = pulumi.Input.asOptionalInput<List<String>>(channelIds),
-      incidentPreference = pulumi.Input.asOptionalInput<String>(incidentPreference),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accountId,
+    this.channelIds,
+    this.incidentPreference,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AlertPolicyState {
 
   factory AlertPolicyState.fromMap(Map<String, dynamic> map) {
     return AlertPolicyState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      channelIds: map['channelIds'] == null ? null : pulumi.Output.create<List<String>>((map['channelIds'] as List).cast<String>()),
-      incidentPreference: map['incidentPreference'] == null ? null : pulumi.Output.create<String>(map['incidentPreference'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      channelIds: map['channelIds'] == null ? null : ((map['channelIds'] as List).cast<String>()).input(),
+      incidentPreference: map['incidentPreference'] == null ? null : (map['incidentPreference'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

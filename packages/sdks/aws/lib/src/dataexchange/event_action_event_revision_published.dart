@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventActionEventRevisionPublished {
   /// The ID of the data set to monitor for revision publications.
   /// Changing this value will recreate the resource.
-  final String dataSetId;
+  final pulumi.Input<String> dataSetId;
 
   /// Creates a new [EventActionEventRevisionPublished].
   /// [dataSetId] The ID of the data set to monitor for revision publications.
@@ -20,7 +21,7 @@ class EventActionEventRevisionPublished {
 
   factory EventActionEventRevisionPublished.fromMap(Map<String, dynamic> map) {
     return EventActionEventRevisionPublished(
-      dataSetId: map['dataSetId'] as String,
+      dataSetId: (map['dataSetId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Source of the Cloud Storage file to be imported.
 class GoogleCloudDatalabelingV1beta1GcsSourceResponse {
   /// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
-  final String inputUri;
+  final pulumi.Input<String> inputUri;
   /// The format of the source file. Only "text/csv" is supported.
-  final String mimeType;
+  final pulumi.Input<String> mimeType;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1GcsSourceResponse].
   /// [inputUri] The input URI of source file. This must be a Cloud Storage path (`gs://...`).
@@ -25,8 +26,8 @@ class GoogleCloudDatalabelingV1beta1GcsSourceResponse {
 
   factory GoogleCloudDatalabelingV1beta1GcsSourceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1GcsSourceResponse(
-      inputUri: map['inputUri'] as String,
-      mimeType: map['mimeType'] as String,
+      inputUri: (map['inputUri'] as String).input(),
+      mimeType: (map['mimeType'] as String).input(),
     );
   }
 }

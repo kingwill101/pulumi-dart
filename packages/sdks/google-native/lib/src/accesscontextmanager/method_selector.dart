@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An allowed method or permission of a service specified in ApiOperation.
 class MethodSelector {
   /// Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If `*` used as value for `method`, then ALL methods and permissions are allowed.
-  final String? method;
+  final pulumi.Input<String>? method;
   /// Value for `permission` should be a valid Cloud IAM permission for the corresponding `service_name` in ApiOperation.
-  final String? permission;
+  final pulumi.Input<String>? permission;
 
   /// Creates a new [MethodSelector].
   /// [method] Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If `*` used as value for `method`, then ALL methods and permissions are allowed.
@@ -25,8 +26,8 @@ class MethodSelector {
 
   factory MethodSelector.fromMap(Map<String, dynamic> map) {
     return MethodSelector(
-      method: map['method'] == null ? null : map['method'] as String,
-      permission: map['permission'] == null ? null : map['permission'] as String,
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
     );
   }
 }

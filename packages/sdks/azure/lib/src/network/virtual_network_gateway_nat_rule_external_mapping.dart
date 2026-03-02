@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayNatRuleExternalMapping {
   /// The string CIDR representing the address space for the Virtual Network Gateway Nat Rule external mapping.
-  final String addressSpace;
+  final pulumi.Input<String> addressSpace;
   /// The single port range for the Virtual Network Gateway Nat Rule external mapping.
-  final String? portRange;
+  final pulumi.Input<String>? portRange;
 
   /// Creates a new [VirtualNetworkGatewayNatRuleExternalMapping].
   /// [addressSpace] The string CIDR representing the address space for the Virtual Network Gateway Nat Rule external mapping.
@@ -24,8 +25,8 @@ class VirtualNetworkGatewayNatRuleExternalMapping {
 
   factory VirtualNetworkGatewayNatRuleExternalMapping.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayNatRuleExternalMapping(
-      addressSpace: map['addressSpace'] as String,
-      portRange: map['portRange'] == null ? null : map['portRange'] as String,
+      addressSpace: (map['addressSpace'] as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
     );
   }
 }

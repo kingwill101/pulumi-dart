@@ -16,13 +16,10 @@ class BucketCnameTokenState {
   /// [domain] The custom domain
   /// [token] Token used to verify domain ownership
   BucketCnameTokenState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? token,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      token = pulumi.Input.asOptionalInput<String>(token);
+    this.bucket,
+    this.domain,
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class BucketCnameTokenState {
 
   factory BucketCnameTokenState.fromMap(Map<String, dynamic> map) {
     return BucketCnameTokenState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a connection to a MongoDB data source
 class MongoDbConnectionInfoResponse {
   /// Additional connection settings
-  final String? additionalSettings;
+  final pulumi.Input<String>? additionalSettings;
   /// Authentication type to use for connection
-  final String? authentication;
+  final pulumi.Input<String>? authentication;
   /// A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// Data source
-  final String? dataSource;
+  final pulumi.Input<String>? dataSource;
   /// Whether to encrypt the connection
-  final bool? encryptConnection;
-  final bool? enforceSSL;
+  final pulumi.Input<bool>? encryptConnection;
+  final pulumi.Input<bool>? enforceSSL;
   /// Password credential.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// port for server
-  final int? port;
+  final pulumi.Input<int>? port;
   /// server brand version
-  final String? serverBrandVersion;
+  final pulumi.Input<String>? serverBrandVersion;
   /// name of the server
-  final String? serverName;
+  final pulumi.Input<String>? serverName;
   /// server version
-  final String? serverVersion;
+  final pulumi.Input<String>? serverVersion;
   /// Whether to trust the server certificate
-  final bool? trustServerCertificate;
+  final pulumi.Input<bool>? trustServerCertificate;
   /// Type of connection info
   /// Expected value is 'MongoDbConnectionInfo'.
-  final String type;
+  final pulumi.Input<String> type;
   /// User name
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [MongoDbConnectionInfoResponse].
   /// [additionalSettings] Additional connection settings
@@ -85,20 +86,20 @@ class MongoDbConnectionInfoResponse {
 
   factory MongoDbConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbConnectionInfoResponse(
-      additionalSettings: map['additionalSettings'] == null ? null : map['additionalSettings'] as String,
-      authentication: map['authentication'] == null ? null : map['authentication'] as String,
-      connectionString: map['connectionString'] as String,
-      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
-      encryptConnection: map['encryptConnection'] == null ? null : map['encryptConnection'] as bool,
-      enforceSSL: map['enforceSSL'] == null ? null : map['enforceSSL'] as bool,
-      password: map['password'] == null ? null : map['password'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      serverBrandVersion: map['serverBrandVersion'] == null ? null : map['serverBrandVersion'] as String,
-      serverName: map['serverName'] == null ? null : map['serverName'] as String,
-      serverVersion: map['serverVersion'] == null ? null : map['serverVersion'] as String,
-      trustServerCertificate: map['trustServerCertificate'] == null ? null : map['trustServerCertificate'] as bool,
-      type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      additionalSettings: map['additionalSettings'] == null ? null : (map['additionalSettings'] as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection'] as bool).input(),
+      enforceSSL: map['enforceSSL'] == null ? null : (map['enforceSSL'] as bool).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      serverBrandVersion: map['serverBrandVersion'] == null ? null : (map['serverBrandVersion'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
+      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate'] as bool).input(),
+      type: (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

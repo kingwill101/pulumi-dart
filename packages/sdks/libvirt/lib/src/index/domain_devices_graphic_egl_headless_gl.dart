@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicEglHeadlessGl {
   /// Specifies the render node for the headless EGL graphics OpenGL settings.
-  final String? renderNode;
+  final pulumi.Input<String>? renderNode;
 
   /// Creates a new [DomainDevicesGraphicEglHeadlessGl].
   /// [renderNode] Specifies the render node for the headless EGL graphics OpenGL settings.
@@ -19,7 +20,7 @@ class DomainDevicesGraphicEglHeadlessGl {
 
   factory DomainDevicesGraphicEglHeadlessGl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicEglHeadlessGl(
-      renderNode: map['renderNode'] == null ? null : map['renderNode'] as String,
+      renderNode: map['renderNode'] == null ? null : (map['renderNode'] as String).input(),
     );
   }
 }

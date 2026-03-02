@@ -16,11 +16,9 @@ class GetStorageApplianceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageApplianceName] The name of the storage appliance.
   GetStorageApplianceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageApplianceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageApplianceName = pulumi.Input.asInput<String>(storageApplianceName);
+    required this.resourceGroupName,
+    required this.storageApplianceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStorageApplianceArgs {
 
   factory GetStorageApplianceArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageApplianceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageApplianceName: pulumi.Output.create<String>(map['storageApplianceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageApplianceName: (map['storageApplianceName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetTrackerArgs {
   /// [tags] Key-value map of resource tags for the tracker.
   /// [trackerName] Name of the tracker resource.
   GetTrackerArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trackerName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trackerName = pulumi.Input.asInput<String>(trackerName);
+    this.region,
+    this.tags,
+    required this.trackerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTrackerArgs {
 
   factory GetTrackerArgs.fromMap(Map<String, dynamic> map) {
     return GetTrackerArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trackerName: pulumi.Output.create<String>(map['trackerName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trackerName: (map['trackerName'] as String).input(),
     );
   }
 }

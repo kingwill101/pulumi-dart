@@ -29,17 +29,12 @@ class GetSecretVersionArgs {
   /// [secret] The secret to get the secret version for.
   /// [version] The version of the secret to get. If it
   GetSecretVersionArgs({
-    pulumi.Output<bool>? fetchSecretData,
-    pulumi.Output<bool>? isSecretDataBase64,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> secret,
-    pulumi.Output<String>? version,
-  }) :
-      fetchSecretData = pulumi.Input.asOptionalInput<bool>(fetchSecretData),
-      isSecretDataBase64 = pulumi.Input.asOptionalInput<bool>(isSecretDataBase64),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secret = pulumi.Input.asInput<String>(secret),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.fetchSecretData,
+    this.isSecretDataBase64,
+    this.project,
+    required this.secret,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class GetSecretVersionArgs {
 
   factory GetSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionArgs(
-      fetchSecretData: map['fetchSecretData'] == null ? null : pulumi.Output.create<bool>(map['fetchSecretData'] as bool),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : pulumi.Output.create<bool>(map['isSecretDataBase64'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secret: pulumi.Output.create<String>(map['secret'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      fetchSecretData: map['fetchSecretData'] == null ? null : (map['fetchSecretData'] as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secret: (map['secret'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

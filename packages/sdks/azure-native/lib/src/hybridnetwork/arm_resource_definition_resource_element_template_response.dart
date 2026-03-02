@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nsdartifact_profile_response.dart';
 
 /// The arm template RE.
 class ArmResourceDefinitionResourceElementTemplateResponse {
   /// Artifact profile properties.
-  final NSDArtifactProfileResponse? artifactProfile;
+  final pulumi.Input<NSDArtifactProfileResponse>? artifactProfile;
   /// Name and value pairs that define the parameter values. It can be  a well formed escaped JSON string.
-  final String? parameterValues;
+  final pulumi.Input<String>? parameterValues;
   /// The template type.
-  final String? templateType;
+  final pulumi.Input<String>? templateType;
 
   /// Creates a new [ArmResourceDefinitionResourceElementTemplateResponse].
   /// [artifactProfile] Artifact profile properties.
@@ -23,7 +24,7 @@ class ArmResourceDefinitionResourceElementTemplateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactProfile': ?artifactProfile == null ? null : artifactProfile!.toMap(),
+      'artifactProfile': ?pulumi.Input.mapOptionalInputValue<NSDArtifactProfileResponse, Map<String, dynamic>>(artifactProfile, (value) => value.toMap()),
       'parameterValues': ?parameterValues,
       'templateType': ?templateType,
     };
@@ -31,9 +32,9 @@ class ArmResourceDefinitionResourceElementTemplateResponse {
 
   factory ArmResourceDefinitionResourceElementTemplateResponse.fromMap(Map<String, dynamic> map) {
     return ArmResourceDefinitionResourceElementTemplateResponse(
-      artifactProfile: map['artifactProfile'] == null ? null : NSDArtifactProfileResponse.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>()),
-      parameterValues: map['parameterValues'] == null ? null : map['parameterValues'] as String,
-      templateType: map['templateType'] == null ? null : map['templateType'] as String,
+      artifactProfile: map['artifactProfile'] == null ? null : (NSDArtifactProfileResponse.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>())).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
+      templateType: map['templateType'] == null ? null : (map['templateType'] as String).input(),
     );
   }
 }

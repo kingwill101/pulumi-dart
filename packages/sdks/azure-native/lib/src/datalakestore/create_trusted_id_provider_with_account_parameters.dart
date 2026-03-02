@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters used to create a new trusted identity provider while creating a new Data Lake Store account.
 class CreateTrustedIdProviderWithAccountParameters {
   /// The URL of this trusted identity provider.
-  final String idProvider;
+  final pulumi.Input<String> idProvider;
   /// The unique name of the trusted identity provider to create.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CreateTrustedIdProviderWithAccountParameters].
   /// [idProvider] The URL of this trusted identity provider.
@@ -25,8 +26,8 @@ class CreateTrustedIdProviderWithAccountParameters {
 
   factory CreateTrustedIdProviderWithAccountParameters.fromMap(Map<String, dynamic> map) {
     return CreateTrustedIdProviderWithAccountParameters(
-      idProvider: map['idProvider'] as String,
-      name: map['name'] as String,
+      idProvider: (map['idProvider'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

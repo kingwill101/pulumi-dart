@@ -78,33 +78,20 @@ class CommonBandwithPackageArgs {
   /// [tags] The tag of the resource
   /// [zone] The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
   CommonBandwithPackageArgs({
-    required pulumi.Output<String> bandwidth,
-    pulumi.Output<String>? bandwidthPackageName,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? force,
-    pulumi.Output<String>? internetChargeType,
-    pulumi.Output<String>? isp,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? ratio,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? securityProtectionTypes,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? zone,
-  }) :
-      bandwidth = pulumi.Input.asInput<String>(bandwidth),
-      bandwidthPackageName = pulumi.Input.asOptionalInput<String>(bandwidthPackageName),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      force = pulumi.Input.asOptionalInput<String>(force),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      isp = pulumi.Input.asOptionalInput<String>(isp),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ratio = pulumi.Input.asOptionalInput<int>(ratio),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityProtectionTypes = pulumi.Input.asOptionalInput<List<String>>(securityProtectionTypes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.bandwidth,
+    this.bandwidthPackageName,
+    this.deletionProtection,
+    this.description,
+    this.force,
+    this.internetChargeType,
+    this.isp,
+    this.name,
+    this.ratio,
+    this.resourceGroupId,
+    this.securityProtectionTypes,
+    this.tags,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -126,19 +113,19 @@ class CommonBandwithPackageArgs {
 
   factory CommonBandwithPackageArgs.fromMap(Map<String, dynamic> map) {
     return CommonBandwithPackageArgs(
-      bandwidth: pulumi.Output.create<String>(map['bandwidth'] as String),
-      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : pulumi.Output.create<String>(map['bandwidthPackageName'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<String>(map['force'] as String),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      isp: map['isp'] == null ? null : pulumi.Output.create<String>(map['isp'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ratio: map['ratio'] == null ? null : pulumi.Output.create<int>(map['ratio'] as int),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : pulumi.Output.create<List<String>>((map['securityProtectionTypes'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      bandwidth: (map['bandwidth'] as String).input(),
+      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : (map['bandwidthPackageName'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityProtectionTypes: map['securityProtectionTypes'] == null ? null : ((map['securityProtectionTypes'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

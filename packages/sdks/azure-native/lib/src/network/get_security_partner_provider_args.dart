@@ -16,11 +16,9 @@ class GetSecurityPartnerProviderArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [securityPartnerProviderName] The name of the Security Partner Provider.
   GetSecurityPartnerProviderArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityPartnerProviderName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityPartnerProviderName = pulumi.Input.asInput<String>(securityPartnerProviderName);
+    required this.resourceGroupName,
+    required this.securityPartnerProviderName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSecurityPartnerProviderArgs {
 
   factory GetSecurityPartnerProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPartnerProviderArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityPartnerProviderName: pulumi.Output.create<String>(map['securityPartnerProviderName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityPartnerProviderName: (map['securityPartnerProviderName'] as String).input(),
     );
   }
 }

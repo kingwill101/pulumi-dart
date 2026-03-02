@@ -46,27 +46,17 @@ class TransferJobArgs {
   /// [status] Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
   /// [transferSpec] Transfer specification.
   TransferJobArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<EventStream>? eventStream,
-    pulumi.Output<String>? latestOperationName,
-    pulumi.Output<LoggingConfig>? loggingConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<NotificationConfig>? notificationConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<Schedule>? schedule,
-    pulumi.Output<TransferJobStatus>? status,
-    pulumi.Output<TransferSpec>? transferSpec,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventStream = pulumi.Input.asOptionalInput<EventStream>(eventStream),
-      latestOperationName = pulumi.Input.asOptionalInput<String>(latestOperationName),
-      loggingConfig = pulumi.Input.asOptionalInput<LoggingConfig>(loggingConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationConfig = pulumi.Input.asOptionalInput<NotificationConfig>(notificationConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schedule = pulumi.Input.asOptionalInput<Schedule>(schedule),
-      status = pulumi.Input.asOptionalInput<TransferJobStatus>(status),
-      transferSpec = pulumi.Input.asOptionalInput<TransferSpec>(transferSpec);
+    this.description,
+    this.eventStream,
+    this.latestOperationName,
+    this.loggingConfig,
+    this.name,
+    this.notificationConfig,
+    this.project,
+    this.schedule,
+    this.status,
+    this.transferSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class TransferJobArgs {
 
   factory TransferJobArgs.fromMap(Map<String, dynamic> map) {
     return TransferJobArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventStream: map['eventStream'] == null ? null : pulumi.Output.create<EventStream>(EventStream.fromMap((map['eventStream'] as Map).cast<String, dynamic>())),
-      latestOperationName: map['latestOperationName'] == null ? null : pulumi.Output.create<String>(map['latestOperationName'] as String),
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<LoggingConfig>(LoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationConfig: map['notificationConfig'] == null ? null : pulumi.Output.create<NotificationConfig>(NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<Schedule>(Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<TransferJobStatus>(TransferJobStatus.fromValue(map['status'] as String)),
-      transferSpec: map['transferSpec'] == null ? null : pulumi.Output.create<TransferSpec>(TransferSpec.fromMap((map['transferSpec'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventStream: map['eventStream'] == null ? null : (EventStream.fromMap((map['eventStream'] as Map).cast<String, dynamic>())).input(),
+      latestOperationName: map['latestOperationName'] == null ? null : (map['latestOperationName'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (LoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (TransferJobStatus.fromValue(map['status'] as String)).input(),
+      transferSpec: map['transferSpec'] == null ? null : (TransferSpec.fromMap((map['transferSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

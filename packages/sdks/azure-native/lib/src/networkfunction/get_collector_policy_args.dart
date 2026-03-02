@@ -19,13 +19,10 @@ class GetCollectorPolicyArgs {
   /// [collectorPolicyName] Collector Policy Name
   /// [resourceGroupName] The name of the resource group.
   GetCollectorPolicyArgs({
-    required pulumi.Output<String> azureTrafficCollectorName,
-    required pulumi.Output<String> collectorPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureTrafficCollectorName = pulumi.Input.asInput<String>(azureTrafficCollectorName),
-      collectorPolicyName = pulumi.Input.asInput<String>(collectorPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureTrafficCollectorName,
+    required this.collectorPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCollectorPolicyArgs {
 
   factory GetCollectorPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCollectorPolicyArgs(
-      azureTrafficCollectorName: pulumi.Output.create<String>(map['azureTrafficCollectorName'] as String),
-      collectorPolicyName: pulumi.Output.create<String>(map['collectorPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureTrafficCollectorName: (map['azureTrafficCollectorName'] as String).input(),
+      collectorPolicyName: (map['collectorPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

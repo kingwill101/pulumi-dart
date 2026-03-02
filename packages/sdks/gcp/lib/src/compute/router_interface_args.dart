@@ -59,29 +59,18 @@ class RouterInterfaceArgs {
   /// [subnetwork] The URI of the subnetwork resource that this interface
   /// [vpnTunnel] The name or resource link to the VPN tunnel this
   RouterInterfaceArgs({
-    pulumi.Output<String>? interconnectAttachment,
-    pulumi.Output<String>? ipRange,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateIpAddress,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? redundantInterface,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> router,
-    pulumi.Output<String>? subnetwork,
-    pulumi.Output<String>? vpnTunnel,
-  }) :
-      interconnectAttachment = pulumi.Input.asOptionalInput<String>(interconnectAttachment),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateIpAddress = pulumi.Input.asOptionalInput<String>(privateIpAddress),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      redundantInterface = pulumi.Input.asOptionalInput<String>(redundantInterface),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      router = pulumi.Input.asInput<String>(router),
-      subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork),
-      vpnTunnel = pulumi.Input.asOptionalInput<String>(vpnTunnel);
+    this.interconnectAttachment,
+    this.ipRange,
+    this.ipVersion,
+    this.name,
+    this.privateIpAddress,
+    this.project,
+    this.redundantInterface,
+    this.region,
+    required this.router,
+    this.subnetwork,
+    this.vpnTunnel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,17 +90,17 @@ class RouterInterfaceArgs {
 
   factory RouterInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceArgs(
-      interconnectAttachment: map['interconnectAttachment'] == null ? null : pulumi.Output.create<String>(map['interconnectAttachment'] as String),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateIpAddress: map['privateIpAddress'] == null ? null : pulumi.Output.create<String>(map['privateIpAddress'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      redundantInterface: map['redundantInterface'] == null ? null : pulumi.Output.create<String>(map['redundantInterface'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      router: pulumi.Output.create<String>(map['router'] as String),
-      subnetwork: map['subnetwork'] == null ? null : pulumi.Output.create<String>(map['subnetwork'] as String),
-      vpnTunnel: map['vpnTunnel'] == null ? null : pulumi.Output.create<String>(map['vpnTunnel'] as String),
+      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment'] as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      redundantInterface: map['redundantInterface'] == null ? null : (map['redundantInterface'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      router: (map['router'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      vpnTunnel: map['vpnTunnel'] == null ? null : (map['vpnTunnel'] as String).input(),
     );
   }
 }

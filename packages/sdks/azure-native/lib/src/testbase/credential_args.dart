@@ -25,17 +25,12 @@ class CredentialArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   CredentialArgs({
-    pulumi.Output<String>? credentialName,
-    required pulumi.Output<String> credentialType,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      credentialName = pulumi.Input.asOptionalInput<String>(credentialName),
-      credentialType = pulumi.Input.asInput<String>(credentialType),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    this.credentialName,
+    required this.credentialType,
+    required this.displayName,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CredentialArgs {
 
   factory CredentialArgs.fromMap(Map<String, dynamic> map) {
     return CredentialArgs(
-      credentialName: map['credentialName'] == null ? null : pulumi.Output.create<String>(map['credentialName'] as String),
-      credentialType: pulumi.Output.create<String>(map['credentialType'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
+      credentialType: (map['credentialType'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

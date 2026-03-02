@@ -19,13 +19,10 @@ class ApplicationAccessPointArgs {
   /// [description] Description .
   /// [policies] The policies that have bound to the Application Access Point (AAP).
   ApplicationAccessPointArgs({
-    required pulumi.Output<String> applicationAccessPointName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<String>> policies,
-  }) :
-      applicationAccessPointName = pulumi.Input.asInput<String>(applicationAccessPointName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      policies = pulumi.Input.asInput<List<String>>(policies);
+    required this.applicationAccessPointName,
+    this.description,
+    required this.policies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApplicationAccessPointArgs {
 
   factory ApplicationAccessPointArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessPointArgs(
-      applicationAccessPointName: pulumi.Output.create<String>(map['applicationAccessPointName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      policies: pulumi.Output.create<List<String>>((map['policies'] as List).cast<String>()),
+      applicationAccessPointName: (map['applicationAccessPointName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policies: ((map['policies'] as List).cast<String>()).input(),
     );
   }
 }

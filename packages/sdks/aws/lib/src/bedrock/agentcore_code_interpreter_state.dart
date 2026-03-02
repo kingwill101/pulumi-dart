@@ -40,27 +40,17 @@ class AgentcoreCodeInterpreterState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   AgentcoreCodeInterpreterState({
-    pulumi.Output<String>? codeInterpreterArn,
-    pulumi.Output<String>? codeInterpreterId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? executionRoleArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<AgentcoreCodeInterpreterNetworkConfiguration>? networkConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<AgentcoreCodeInterpreterTimeouts>? timeouts,
-  }) :
-      codeInterpreterArn = pulumi.Input.asOptionalInput<String>(codeInterpreterArn),
-      codeInterpreterId = pulumi.Input.asOptionalInput<String>(codeInterpreterId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionRoleArn = pulumi.Input.asOptionalInput<String>(executionRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfiguration = pulumi.Input.asOptionalInput<AgentcoreCodeInterpreterNetworkConfiguration>(networkConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreCodeInterpreterTimeouts>(timeouts);
+    this.codeInterpreterArn,
+    this.codeInterpreterId,
+    this.description,
+    this.executionRoleArn,
+    this.name,
+    this.networkConfiguration,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class AgentcoreCodeInterpreterState {
 
   factory AgentcoreCodeInterpreterState.fromMap(Map<String, dynamic> map) {
     return AgentcoreCodeInterpreterState(
-      codeInterpreterArn: map['codeInterpreterArn'] == null ? null : pulumi.Output.create<String>(map['codeInterpreterArn'] as String),
-      codeInterpreterId: map['codeInterpreterId'] == null ? null : pulumi.Output.create<String>(map['codeInterpreterId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionRoleArn: map['executionRoleArn'] == null ? null : pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfiguration: map['networkConfiguration'] == null ? null : pulumi.Output.create<AgentcoreCodeInterpreterNetworkConfiguration>(AgentcoreCodeInterpreterNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreCodeInterpreterTimeouts>(AgentcoreCodeInterpreterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      codeInterpreterArn: map['codeInterpreterArn'] == null ? null : (map['codeInterpreterArn'] as String).input(),
+      codeInterpreterId: map['codeInterpreterId'] == null ? null : (map['codeInterpreterId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (AgentcoreCodeInterpreterNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreCodeInterpreterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

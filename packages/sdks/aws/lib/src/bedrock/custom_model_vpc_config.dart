@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomModelVpcConfig {
   /// VPC configuration security group IDs.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// VPC configuration subnets.
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
 
   /// Creates a new [CustomModelVpcConfig].
   /// [securityGroupIds] VPC configuration security group IDs.
@@ -24,8 +25,8 @@ class CustomModelVpcConfig {
 
   factory CustomModelVpcConfig.fromMap(Map<String, dynamic> map) {
     return CustomModelVpcConfig(
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }
 }

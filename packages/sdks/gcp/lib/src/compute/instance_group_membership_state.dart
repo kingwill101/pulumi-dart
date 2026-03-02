@@ -20,15 +20,11 @@ class InstanceGroupMembershipState {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the instance group resides.
   InstanceGroupMembershipState({
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? instanceGroup,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      instanceGroup = pulumi.Input.asOptionalInput<String>(instanceGroup),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.instance,
+    this.instanceGroup,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class InstanceGroupMembershipState {
 
   factory InstanceGroupMembershipState.fromMap(Map<String, dynamic> map) {
     return InstanceGroupMembershipState(
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      instanceGroup: map['instanceGroup'] == null ? null : pulumi.Output.create<String>(map['instanceGroup'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      instanceGroup: map['instanceGroup'] == null ? null : (map['instanceGroup'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

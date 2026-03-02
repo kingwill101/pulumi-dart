@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesPostgresqlFlexibleServer {
-  final bool? restartServerOnConfigurationValueChange;
+  final pulumi.Input<bool>? restartServerOnConfigurationValueChange;
 
   /// Creates a new [FeaturesPostgresqlFlexibleServer].
   /// [restartServerOnConfigurationValueChange] Optional.
@@ -18,7 +19,7 @@ class FeaturesPostgresqlFlexibleServer {
 
   factory FeaturesPostgresqlFlexibleServer.fromMap(Map<String, dynamic> map) {
     return FeaturesPostgresqlFlexibleServer(
-      restartServerOnConfigurationValueChange: map['restartServerOnConfigurationValueChange'] == null ? null : map['restartServerOnConfigurationValueChange'] as bool,
+      restartServerOnConfigurationValueChange: map['restartServerOnConfigurationValueChange'] == null ? null : (map['restartServerOnConfigurationValueChange'] as bool).input(),
     );
   }
 }

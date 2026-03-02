@@ -14,33 +14,33 @@ import 'rule_group_rule_statement_xss_match_statement_field_to_match_uri_fragmen
 
 class RuleGroupRuleStatementXssMatchStatementFieldToMatch {
   /// Inspect all query arguments.
-  final Map<String, dynamic>? allQueryArguments;
+  final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
   /// Inspect the request body, which immediately follows the request headers.
-  final RuleGroupRuleStatementXssMatchStatementFieldToMatchBody? body;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatementFieldToMatchBody>? body;
   /// Inspect the cookies in the web request. See Cookies below for details.
-  final RuleGroupRuleStatementXssMatchStatementFieldToMatchCookies? cookies;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatementFieldToMatchCookies>? cookies;
   /// Inspect the request headers. See Header Order below for details.
-  final List<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder>? headerOrders;
+  final pulumi.Input<List<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder>>? headerOrders;
   /// Inspect the request headers. See Headers below for details.
-  final List<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader>? headers;
+  final pulumi.Input<List<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader>>? headers;
   /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
-  final RuleGroupRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint? ja3Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
   /// Inspect the JA4 fingerprint. See `ja4_fingerprint` below for details.
-  final RuleGroupRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint? ja4Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body for details.
-  final RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBody? jsonBody;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBody>? jsonBody;
   /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
-  final Map<String, dynamic>? method;
+  final pulumi.Input<Map<String, dynamic>>? method;
   /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
-  final Map<String, dynamic>? queryString;
+  final pulumi.Input<Map<String, dynamic>>? queryString;
   /// Inspect a single header. See Single Header below for details.
-  final RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleHeader? singleHeader;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleHeader>? singleHeader;
   /// Inspect a single query argument. See Single Query Argument below for details.
-  final RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument? singleQueryArgument;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
   /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See URI Fragment below for details.
-  final RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment? uriFragment;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment>? uriFragment;
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
-  final Map<String, dynamic>? uriPath;
+  final pulumi.Input<Map<String, dynamic>>? uriPath;
 
   /// Creates a new [RuleGroupRuleStatementXssMatchStatementFieldToMatch].
   /// [allQueryArguments] Inspect all query arguments.
@@ -77,38 +77,38 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allQueryArguments': ?allQueryArguments,
-      'body': ?body == null ? null : body!.toMap(),
-      'cookies': ?cookies == null ? null : cookies!.toMap(),
-      'headerOrders': ?headerOrders == null ? null : pulumi.Input.encodeList<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder, Map<String, dynamic>>(headerOrders!, (value) => value.toMap()),
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
-      'ja3Fingerprint': ?ja3Fingerprint == null ? null : ja3Fingerprint!.toMap(),
-      'ja4Fingerprint': ?ja4Fingerprint == null ? null : ja4Fingerprint!.toMap(),
-      'jsonBody': ?jsonBody == null ? null : jsonBody!.toMap(),
+      'body': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementXssMatchStatementFieldToMatchBody, Map<String, dynamic>>(body, (value) => value.toMap()),
+      'cookies': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementXssMatchStatementFieldToMatchCookies, Map<String, dynamic>>(cookies, (value) => value.toMap()),
+      'headerOrders': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder>, List<Map<String, dynamic>>>(headerOrders, (value) => pulumi.Input.encodeList<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ja3Fingerprint': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint, Map<String, dynamic>>(ja3Fingerprint, (value) => value.toMap()),
+      'ja4Fingerprint': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint, Map<String, dynamic>>(ja4Fingerprint, (value) => value.toMap()),
+      'jsonBody': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBody, Map<String, dynamic>>(jsonBody, (value) => value.toMap()),
       'method': ?method,
       'queryString': ?queryString,
-      'singleHeader': ?singleHeader == null ? null : singleHeader!.toMap(),
-      'singleQueryArgument': ?singleQueryArgument == null ? null : singleQueryArgument!.toMap(),
-      'uriFragment': ?uriFragment == null ? null : uriFragment!.toMap(),
+      'singleHeader': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleHeader, Map<String, dynamic>>(singleHeader, (value) => value.toMap()),
+      'singleQueryArgument': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument, Map<String, dynamic>>(singleQueryArgument, (value) => value.toMap()),
+      'uriFragment': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment, Map<String, dynamic>>(uriFragment, (value) => value.toMap()),
       'uriPath': ?uriPath,
     };
   }
 
   factory RuleGroupRuleStatementXssMatchStatementFieldToMatch.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementXssMatchStatementFieldToMatch(
-      allQueryArguments: map['allQueryArguments'] == null ? null : (map['allQueryArguments'] as Map).cast<String, dynamic>(),
-      body: map['body'] == null ? null : RuleGroupRuleStatementXssMatchStatementFieldToMatchBody.fromMap((map['body'] as Map).cast<String, dynamic>()),
-      cookies: map['cookies'] == null ? null : RuleGroupRuleStatementXssMatchStatementFieldToMatchCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>()),
-      headerOrders: map['headerOrders'] == null ? null : pulumi.Input.decodeList<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder>(map['headerOrders'], (value) => RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder.fromMap((value as Map).cast<String, dynamic>())),
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader>(map['headers'], (value) => RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader.fromMap((value as Map).cast<String, dynamic>())),
-      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : RuleGroupRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint.fromMap((map['ja3Fingerprint'] as Map).cast<String, dynamic>()),
-      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : RuleGroupRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint.fromMap((map['ja4Fingerprint'] as Map).cast<String, dynamic>()),
-      jsonBody: map['jsonBody'] == null ? null : RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBody.fromMap((map['jsonBody'] as Map).cast<String, dynamic>()),
-      method: map['method'] == null ? null : (map['method'] as Map).cast<String, dynamic>(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as Map).cast<String, dynamic>(),
-      singleHeader: map['singleHeader'] == null ? null : RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleHeader.fromMap((map['singleHeader'] as Map).cast<String, dynamic>()),
-      singleQueryArgument: map['singleQueryArgument'] == null ? null : RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument.fromMap((map['singleQueryArgument'] as Map).cast<String, dynamic>()),
-      uriFragment: map['uriFragment'] == null ? null : RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment.fromMap((map['uriFragment'] as Map).cast<String, dynamic>()),
-      uriPath: map['uriPath'] == null ? null : (map['uriPath'] as Map).cast<String, dynamic>(),
+      allQueryArguments: map['allQueryArguments'] == null ? null : ((map['allQueryArguments'] as Map).cast<String, dynamic>()).input(),
+      body: map['body'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatchBody.fromMap((map['body'] as Map).cast<String, dynamic>())).input(),
+      cookies: map['cookies'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatchCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>())).input(),
+      headerOrders: map['headerOrders'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder>(map['headerOrders'], (value) => RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader>(map['headers'], (value) => RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint.fromMap((map['ja3Fingerprint'] as Map).cast<String, dynamic>())).input(),
+      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint.fromMap((map['ja4Fingerprint'] as Map).cast<String, dynamic>())).input(),
+      jsonBody: map['jsonBody'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBody.fromMap((map['jsonBody'] as Map).cast<String, dynamic>())).input(),
+      method: map['method'] == null ? null : ((map['method'] as Map).cast<String, dynamic>()).input(),
+      queryString: map['queryString'] == null ? null : ((map['queryString'] as Map).cast<String, dynamic>()).input(),
+      singleHeader: map['singleHeader'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleHeader.fromMap((map['singleHeader'] as Map).cast<String, dynamic>())).input(),
+      singleQueryArgument: map['singleQueryArgument'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument.fromMap((map['singleQueryArgument'] as Map).cast<String, dynamic>())).input(),
+      uriFragment: map['uriFragment'] == null ? null : (RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment.fromMap((map['uriFragment'] as Map).cast<String, dynamic>())).input(),
+      uriPath: map['uriPath'] == null ? null : ((map['uriPath'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

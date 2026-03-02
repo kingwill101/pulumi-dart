@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStaticWebAppIdentity {
   /// The list of Managed Identity IDs which are assigned to this Static Web App resource.
-  final List<String> identityIds;
-  final String principalId;
-  final String tenantId;
+  final pulumi.Input<List<String>> identityIds;
+  final pulumi.Input<String> principalId;
+  final pulumi.Input<String> tenantId;
   /// The Type of Managed Identity assigned to this Static Web App resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetStaticWebAppIdentity].
   /// [identityIds] The list of Managed Identity IDs which are assigned to this Static Web App resource.
@@ -32,10 +33,10 @@ class GetStaticWebAppIdentity {
 
   factory GetStaticWebAppIdentity.fromMap(Map<String, dynamic> map) {
     return GetStaticWebAppIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

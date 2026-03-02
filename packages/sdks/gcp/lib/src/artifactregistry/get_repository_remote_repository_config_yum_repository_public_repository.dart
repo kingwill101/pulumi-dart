@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository {
   /// A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
-  final String repositoryBase;
+  final pulumi.Input<String> repositoryBase;
   /// Specific repository from the base, e.g. '"pub/rocky/9/BaseOS/x86_64/os"'
-  final String repositoryPath;
+  final pulumi.Input<String> repositoryPath;
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository].
   /// [repositoryBase] A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
@@ -24,8 +25,8 @@ class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository {
 
   factory GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository(
-      repositoryBase: map['repositoryBase'] as String,
-      repositoryPath: map['repositoryPath'] as String,
+      repositoryBase: (map['repositoryBase'] as String).input(),
+      repositoryPath: (map['repositoryPath'] as String).input(),
     );
   }
 }

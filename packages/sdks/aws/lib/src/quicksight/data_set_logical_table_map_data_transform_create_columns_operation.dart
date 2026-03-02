@@ -5,7 +5,7 @@ import 'data_set_logical_table_map_data_transform_create_columns_operation_colum
 
 class DataSetLogicalTableMapDataTransformCreateColumnsOperation {
   /// Calculated columns to create. See columns.
-  final List<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn> columns;
+  final pulumi.Input<List<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>> columns;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformCreateColumnsOperation].
   /// [columns] Calculated columns to create. See columns.
@@ -15,13 +15,13 @@ class DataSetLogicalTableMapDataTransformCreateColumnsOperation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': pulumi.Input.encodeList<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn, Map<String, dynamic>>(columns, (value) => value.toMap()),
+      'columns': pulumi.Input.mapInputValue<List<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformCreateColumnsOperation(
-      columns: pulumi.Input.decodeList<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>(map['columns'], (value) => DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap((value as Map).cast<String, dynamic>())),
+      columns: (pulumi.Input.decodeList<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>(map['columns'], (value) => DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

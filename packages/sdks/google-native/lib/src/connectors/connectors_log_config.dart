@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Log configuration for the connection.
 class ConnectorsLogConfig {
   /// Enabled represents whether logging is enabled or not for a connection.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ConnectorsLogConfig].
   /// [enabled] Enabled represents whether logging is enabled or not for a connection.
@@ -20,7 +21,7 @@ class ConnectorsLogConfig {
 
   factory ConnectorsLogConfig.fromMap(Map<String, dynamic> map) {
     return ConnectorsLogConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

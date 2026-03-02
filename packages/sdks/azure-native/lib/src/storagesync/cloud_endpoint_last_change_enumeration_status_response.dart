@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cloud endpoint change enumeration status object
 class CloudEndpointLastChangeEnumerationStatusResponse {
   /// Timestamp when change enumeration completed
-  final String completedTimestamp;
+  final pulumi.Input<String> completedTimestamp;
   /// Count of directories in the namespace
-  final double namespaceDirectoriesCount;
+  final pulumi.Input<double> namespaceDirectoriesCount;
   /// Count of files in the namespace
-  final double namespaceFilesCount;
+  final pulumi.Input<double> namespaceFilesCount;
   /// Namespace size in bytes
-  final double namespaceSizeBytes;
+  final pulumi.Input<double> namespaceSizeBytes;
   /// Timestamp of when change enumeration is expected to run again
-  final String nextRunTimestamp;
+  final pulumi.Input<String> nextRunTimestamp;
   /// Timestamp when change enumeration started
-  final String startedTimestamp;
+  final pulumi.Input<String> startedTimestamp;
 
   /// Creates a new [CloudEndpointLastChangeEnumerationStatusResponse].
   /// [completedTimestamp] Timestamp when change enumeration completed
@@ -45,12 +46,12 @@ class CloudEndpointLastChangeEnumerationStatusResponse {
 
   factory CloudEndpointLastChangeEnumerationStatusResponse.fromMap(Map<String, dynamic> map) {
     return CloudEndpointLastChangeEnumerationStatusResponse(
-      completedTimestamp: map['completedTimestamp'] as String,
-      namespaceDirectoriesCount: map['namespaceDirectoriesCount'] as double,
-      namespaceFilesCount: map['namespaceFilesCount'] as double,
-      namespaceSizeBytes: map['namespaceSizeBytes'] as double,
-      nextRunTimestamp: map['nextRunTimestamp'] as String,
-      startedTimestamp: map['startedTimestamp'] as String,
+      completedTimestamp: (map['completedTimestamp'] as String).input(),
+      namespaceDirectoriesCount: (map['namespaceDirectoriesCount'] as double).input(),
+      namespaceFilesCount: (map['namespaceFilesCount'] as double).input(),
+      namespaceSizeBytes: (map['namespaceSizeBytes'] as double).input(),
+      nextRunTimestamp: (map['nextRunTimestamp'] as String).input(),
+      startedTimestamp: (map['startedTimestamp'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs {
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs({
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<String>? functionAppName,
-    pulumi.Output<String>? functionAppRegion,
-    pulumi.Output<String>? functionAppResourceId,
-    pulumi.Output<bool>? isForced,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      functionAppName = pulumi.Input.asOptionalInput<String>(functionAppName),
-      functionAppRegion = pulumi.Input.asOptionalInput<String>(functionAppRegion),
-      functionAppResourceId = pulumi.Input.asOptionalInput<String>(functionAppResourceId),
-      isForced = pulumi.Input.asOptionalInput<bool>(isForced),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    this.functionAppName,
+    this.functionAppRegion,
+    this.functionAppResourceId,
+    this.isForced,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs {
 
   factory StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      functionAppName: map['functionAppName'] == null ? null : pulumi.Output.create<String>(map['functionAppName'] as String),
-      functionAppRegion: map['functionAppRegion'] == null ? null : pulumi.Output.create<String>(map['functionAppRegion'] as String),
-      functionAppResourceId: map['functionAppResourceId'] == null ? null : pulumi.Output.create<String>(map['functionAppResourceId'] as String),
-      isForced: map['isForced'] == null ? null : pulumi.Output.create<bool>(map['isForced'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      functionAppName: map['functionAppName'] == null ? null : (map['functionAppName'] as String).input(),
+      functionAppRegion: map['functionAppRegion'] == null ? null : (map['functionAppRegion'] as String).input(),
+      functionAppResourceId: map['functionAppResourceId'] == null ? null : (map['functionAppResourceId'] as String).input(),
+      isForced: map['isForced'] == null ? null : (map['isForced'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

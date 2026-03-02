@@ -19,11 +19,9 @@ class OriginProtectionArgs {
   /// [originConverge] The IP convergence status.
   /// [siteId] Site Id
   OriginProtectionArgs({
-    pulumi.Output<String>? originConverge,
-    required pulumi.Output<String> siteId,
-  }) :
-      originConverge = pulumi.Input.asOptionalInput<String>(originConverge),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    this.originConverge,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class OriginProtectionArgs {
 
   factory OriginProtectionArgs.fromMap(Map<String, dynamic> map) {
     return OriginProtectionArgs(
-      originConverge: map['originConverge'] == null ? null : pulumi.Output.create<String>(map['originConverge'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      originConverge: map['originConverge'] == null ? null : (map['originConverge'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

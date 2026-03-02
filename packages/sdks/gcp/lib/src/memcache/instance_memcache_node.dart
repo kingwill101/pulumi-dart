@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceMemcacheNode {
   /// (Output)
   /// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// (Output)
   /// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
-  final String? nodeId;
+  final pulumi.Input<String>? nodeId;
   /// (Output)
   /// The port number of the Memcached server on this node.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// (Output)
   /// Current state of the Memcached node.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// (Output)
   /// Location (GCP Zone) for the Memcached node.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [InstanceMemcacheNode].
   /// [host] (Output)
@@ -44,11 +45,11 @@ class InstanceMemcacheNode {
 
   factory InstanceMemcacheNode.fromMap(Map<String, dynamic> map) {
     return InstanceMemcacheNode(
-      host: map['host'] == null ? null : map['host'] as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      state: map['state'] == null ? null : map['state'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

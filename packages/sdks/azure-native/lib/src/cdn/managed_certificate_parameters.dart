@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed Certificate used for https
 class ManagedCertificateParameters {
   /// The type of the secret resource.
   /// Expected value is 'ManagedCertificate'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedCertificateParameters].
   /// [type] The type of the secret resource.
@@ -21,7 +22,7 @@ class ManagedCertificateParameters {
 
   factory ManagedCertificateParameters.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateParameters(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

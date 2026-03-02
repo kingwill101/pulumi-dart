@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBackupSource {
   /// The name of the backup resource.
-  final String? backupName;
+  final pulumi.Input<String>? backupName;
 
   /// Creates a new [ClusterBackupSource].
   /// [backupName] The name of the backup resource.
@@ -19,7 +20,7 @@ class ClusterBackupSource {
 
   factory ClusterBackupSource.fromMap(Map<String, dynamic> map) {
     return ClusterBackupSource(
-      backupName: map['backupName'] == null ? null : map['backupName'] as String,
+      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
     );
   }
 }

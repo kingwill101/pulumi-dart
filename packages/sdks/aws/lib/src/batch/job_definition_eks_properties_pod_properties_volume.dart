@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_definition_eks_properties_pod_properties_volume_empty_dir.dart';
 import 'job_definition_eks_properties_pod_properties_volume_host_path.dart';
 import 'job_definition_eks_properties_pod_properties_volume_secret.dart';
 
 class JobDefinitionEksPropertiesPodPropertiesVolume {
-  final JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir? emptyDir;
-  final JobDefinitionEksPropertiesPodPropertiesVolumeHostPath? hostPath;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir>? emptyDir;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeHostPath>? hostPath;
   /// Name of the job definition.
-  final String? name;
-  final JobDefinitionEksPropertiesPodPropertiesVolumeSecret? secret;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeSecret>? secret;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesVolume].
   /// [emptyDir] Optional.
@@ -25,19 +26,19 @@ class JobDefinitionEksPropertiesPodPropertiesVolume {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'emptyDir': ?emptyDir == null ? null : emptyDir!.toMap(),
-      'hostPath': ?hostPath == null ? null : hostPath!.toMap(),
+      'emptyDir': ?pulumi.Input.mapOptionalInputValue<JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir, Map<String, dynamic>>(emptyDir, (value) => value.toMap()),
+      'hostPath': ?pulumi.Input.mapOptionalInputValue<JobDefinitionEksPropertiesPodPropertiesVolumeHostPath, Map<String, dynamic>>(hostPath, (value) => value.toMap()),
       'name': ?name,
-      'secret': ?secret == null ? null : secret!.toMap(),
+      'secret': ?pulumi.Input.mapOptionalInputValue<JobDefinitionEksPropertiesPodPropertiesVolumeSecret, Map<String, dynamic>>(secret, (value) => value.toMap()),
     };
   }
 
   factory JobDefinitionEksPropertiesPodPropertiesVolume.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesVolume(
-      emptyDir: map['emptyDir'] == null ? null : JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>()),
-      hostPath: map['hostPath'] == null ? null : JobDefinitionEksPropertiesPodPropertiesVolumeHostPath.fromMap((map['hostPath'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      secret: map['secret'] == null ? null : JobDefinitionEksPropertiesPodPropertiesVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>()),
+      emptyDir: map['emptyDir'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
+      hostPath: map['hostPath'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesVolumeHostPath.fromMap((map['hostPath'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secret: map['secret'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

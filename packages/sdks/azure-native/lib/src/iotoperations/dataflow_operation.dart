@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataflow_built_in_transformation_settings.dart';
 import 'dataflow_destination_operation_settings.dart';
 import 'dataflow_source_operation_settings.dart';
@@ -7,15 +8,15 @@ import 'dataflow_source_operation_settings.dart';
 /// Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
 class DataflowOperation {
   /// Built In Transformation configuration.
-  final DataflowBuiltInTransformationSettings? builtInTransformationSettings;
+  final pulumi.Input<DataflowBuiltInTransformationSettings>? builtInTransformationSettings;
   /// Destination configuration.
-  final DataflowDestinationOperationSettings? destinationSettings;
+  final pulumi.Input<DataflowDestinationOperationSettings>? destinationSettings;
   /// Optional user provided name of the transformation.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Type of operation.
-  final String operationType;
+  final pulumi.Input<String> operationType;
   /// Source configuration.
-  final DataflowSourceOperationSettings? sourceSettings;
+  final pulumi.Input<DataflowSourceOperationSettings>? sourceSettings;
 
   /// Creates a new [DataflowOperation].
   /// [builtInTransformationSettings] Built In Transformation configuration.
@@ -33,21 +34,21 @@ class DataflowOperation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'builtInTransformationSettings': ?builtInTransformationSettings == null ? null : builtInTransformationSettings!.toMap(),
-      'destinationSettings': ?destinationSettings == null ? null : destinationSettings!.toMap(),
+      'builtInTransformationSettings': ?pulumi.Input.mapOptionalInputValue<DataflowBuiltInTransformationSettings, Map<String, dynamic>>(builtInTransformationSettings, (value) => value.toMap()),
+      'destinationSettings': ?pulumi.Input.mapOptionalInputValue<DataflowDestinationOperationSettings, Map<String, dynamic>>(destinationSettings, (value) => value.toMap()),
       'name': ?name,
       'operationType': operationType,
-      'sourceSettings': ?sourceSettings == null ? null : sourceSettings!.toMap(),
+      'sourceSettings': ?pulumi.Input.mapOptionalInputValue<DataflowSourceOperationSettings, Map<String, dynamic>>(sourceSettings, (value) => value.toMap()),
     };
   }
 
   factory DataflowOperation.fromMap(Map<String, dynamic> map) {
     return DataflowOperation(
-      builtInTransformationSettings: map['builtInTransformationSettings'] == null ? null : DataflowBuiltInTransformationSettings.fromMap((map['builtInTransformationSettings'] as Map).cast<String, dynamic>()),
-      destinationSettings: map['destinationSettings'] == null ? null : DataflowDestinationOperationSettings.fromMap((map['destinationSettings'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      operationType: map['operationType'] as String,
-      sourceSettings: map['sourceSettings'] == null ? null : DataflowSourceOperationSettings.fromMap((map['sourceSettings'] as Map).cast<String, dynamic>()),
+      builtInTransformationSettings: map['builtInTransformationSettings'] == null ? null : (DataflowBuiltInTransformationSettings.fromMap((map['builtInTransformationSettings'] as Map).cast<String, dynamic>())).input(),
+      destinationSettings: map['destinationSettings'] == null ? null : (DataflowDestinationOperationSettings.fromMap((map['destinationSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operationType: (map['operationType'] as String).input(),
+      sourceSettings: map['sourceSettings'] == null ? null : (DataflowSourceOperationSettings.fromMap((map['sourceSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

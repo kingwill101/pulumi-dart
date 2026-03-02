@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_share_limits_response.dart';
 import 'file_share_provisioning_constants_response.dart';
 
 /// File share limits API result.
 class FileShareLimitsOutputResponse {
   /// The limits for the file share.
-  final FileShareLimitsResponse limits;
+  final pulumi.Input<FileShareLimitsResponse> limits;
   /// The provisioning constants for the file share.
-  final FileShareProvisioningConstantsResponse provisioningConstants;
+  final pulumi.Input<FileShareProvisioningConstantsResponse> provisioningConstants;
 
   /// Creates a new [FileShareLimitsOutputResponse].
   /// [limits] The limits for the file share.
@@ -20,15 +21,15 @@ class FileShareLimitsOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'limits': limits.toMap(),
-      'provisioningConstants': provisioningConstants.toMap(),
+      'limits': pulumi.Input.mapInputValue<FileShareLimitsResponse, Map<String, dynamic>>(limits, (value) => value.toMap()),
+      'provisioningConstants': pulumi.Input.mapInputValue<FileShareProvisioningConstantsResponse, Map<String, dynamic>>(provisioningConstants, (value) => value.toMap()),
     };
   }
 
   factory FileShareLimitsOutputResponse.fromMap(Map<String, dynamic> map) {
     return FileShareLimitsOutputResponse(
-      limits: FileShareLimitsResponse.fromMap((map['limits'] as Map).cast<String, dynamic>()),
-      provisioningConstants: FileShareProvisioningConstantsResponse.fromMap((map['provisioningConstants'] as Map).cast<String, dynamic>()),
+      limits: (FileShareLimitsResponse.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
+      provisioningConstants: (FileShareProvisioningConstantsResponse.fromMap((map['provisioningConstants'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

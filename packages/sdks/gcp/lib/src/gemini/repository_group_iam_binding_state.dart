@@ -47,23 +47,15 @@ class RepositoryGroupIamBindingState {
   /// [repositoryGroupId] Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
   RepositoryGroupIamBindingState({
-    pulumi.Output<String>? codeRepositoryIndex,
-    pulumi.Output<RepositoryGroupIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? repositoryGroupId,
-    pulumi.Output<String>? role,
-  }) :
-      codeRepositoryIndex = pulumi.Input.asOptionalInput<String>(codeRepositoryIndex),
-      condition = pulumi.Input.asOptionalInput<RepositoryGroupIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryGroupId = pulumi.Input.asOptionalInput<String>(repositoryGroupId),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.codeRepositoryIndex,
+    this.condition,
+    this.etag,
+    this.location,
+    this.members,
+    this.project,
+    this.repositoryGroupId,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,14 +72,14 @@ class RepositoryGroupIamBindingState {
 
   factory RepositoryGroupIamBindingState.fromMap(Map<String, dynamic> map) {
     return RepositoryGroupIamBindingState(
-      codeRepositoryIndex: map['codeRepositoryIndex'] == null ? null : pulumi.Output.create<String>(map['codeRepositoryIndex'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<RepositoryGroupIamBindingCondition>(RepositoryGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryGroupId: map['repositoryGroupId'] == null ? null : pulumi.Output.create<String>(map['repositoryGroupId'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      codeRepositoryIndex: map['codeRepositoryIndex'] == null ? null : (map['codeRepositoryIndex'] as String).input(),
+      condition: map['condition'] == null ? null : (RepositoryGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryGroupId: map['repositoryGroupId'] == null ? null : (map['repositoryGroupId'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

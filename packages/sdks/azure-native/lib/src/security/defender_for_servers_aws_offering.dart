@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'defender_for_servers_aws_offering_arc_auto_provisioning.dart';
 import 'defender_for_servers_aws_offering_defender_for_servers.dart';
 import 'defender_for_servers_aws_offering_mde_auto_provisioning.dart';
@@ -10,20 +11,20 @@ import 'defender_for_servers_aws_offering_vm_scanners.dart';
 /// The Defender for Servers AWS offering
 class DefenderForServersAwsOffering {
   /// The ARC autoprovisioning configuration
-  final DefenderForServersAwsOfferingArcAutoProvisioning? arcAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingArcAutoProvisioning>? arcAutoProvisioning;
   /// The Defender for servers connection configuration
-  final DefenderForServersAwsOfferingDefenderForServers? defenderForServers;
+  final pulumi.Input<DefenderForServersAwsOfferingDefenderForServers>? defenderForServers;
   /// The Microsoft Defender for Endpoint autoprovisioning configuration
-  final DefenderForServersAwsOfferingMdeAutoProvisioning? mdeAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingMdeAutoProvisioning>? mdeAutoProvisioning;
   /// The type of the security offering.
   /// Expected value is 'DefenderForServersAws'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
   /// configuration for the servers offering subPlan
-  final DefenderForServersAwsOfferingSubPlan? subPlan;
+  final pulumi.Input<DefenderForServersAwsOfferingSubPlan>? subPlan;
   /// The Vulnerability Assessment autoprovisioning configuration
-  final DefenderForServersAwsOfferingVaAutoProvisioning? vaAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioning>? vaAutoProvisioning;
   /// The Microsoft Defender for Server VM scanning configuration
-  final DefenderForServersAwsOfferingVmScanners? vmScanners;
+  final pulumi.Input<DefenderForServersAwsOfferingVmScanners>? vmScanners;
 
   /// Creates a new [DefenderForServersAwsOffering].
   /// [arcAutoProvisioning] The ARC autoprovisioning configuration
@@ -45,25 +46,25 @@ class DefenderForServersAwsOffering {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arcAutoProvisioning': ?arcAutoProvisioning == null ? null : arcAutoProvisioning!.toMap(),
-      'defenderForServers': ?defenderForServers == null ? null : defenderForServers!.toMap(),
-      'mdeAutoProvisioning': ?mdeAutoProvisioning == null ? null : mdeAutoProvisioning!.toMap(),
+      'arcAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingArcAutoProvisioning, Map<String, dynamic>>(arcAutoProvisioning, (value) => value.toMap()),
+      'defenderForServers': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingDefenderForServers, Map<String, dynamic>>(defenderForServers, (value) => value.toMap()),
+      'mdeAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingMdeAutoProvisioning, Map<String, dynamic>>(mdeAutoProvisioning, (value) => value.toMap()),
       'offeringType': offeringType,
-      'subPlan': ?subPlan == null ? null : subPlan!.toMap(),
-      'vaAutoProvisioning': ?vaAutoProvisioning == null ? null : vaAutoProvisioning!.toMap(),
-      'vmScanners': ?vmScanners == null ? null : vmScanners!.toMap(),
+      'subPlan': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingSubPlan, Map<String, dynamic>>(subPlan, (value) => value.toMap()),
+      'vaAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingVaAutoProvisioning, Map<String, dynamic>>(vaAutoProvisioning, (value) => value.toMap()),
+      'vmScanners': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingVmScanners, Map<String, dynamic>>(vmScanners, (value) => value.toMap()),
     };
   }
 
   factory DefenderForServersAwsOffering.fromMap(Map<String, dynamic> map) {
     return DefenderForServersAwsOffering(
-      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : DefenderForServersAwsOfferingArcAutoProvisioning.fromMap((map['arcAutoProvisioning'] as Map).cast<String, dynamic>()),
-      defenderForServers: map['defenderForServers'] == null ? null : DefenderForServersAwsOfferingDefenderForServers.fromMap((map['defenderForServers'] as Map).cast<String, dynamic>()),
-      mdeAutoProvisioning: map['mdeAutoProvisioning'] == null ? null : DefenderForServersAwsOfferingMdeAutoProvisioning.fromMap((map['mdeAutoProvisioning'] as Map).cast<String, dynamic>()),
-      offeringType: map['offeringType'] as String,
-      subPlan: map['subPlan'] == null ? null : DefenderForServersAwsOfferingSubPlan.fromMap((map['subPlan'] as Map).cast<String, dynamic>()),
-      vaAutoProvisioning: map['vaAutoProvisioning'] == null ? null : DefenderForServersAwsOfferingVaAutoProvisioning.fromMap((map['vaAutoProvisioning'] as Map).cast<String, dynamic>()),
-      vmScanners: map['vmScanners'] == null ? null : DefenderForServersAwsOfferingVmScanners.fromMap((map['vmScanners'] as Map).cast<String, dynamic>()),
+      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingArcAutoProvisioning.fromMap((map['arcAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
+      defenderForServers: map['defenderForServers'] == null ? null : (DefenderForServersAwsOfferingDefenderForServers.fromMap((map['defenderForServers'] as Map).cast<String, dynamic>())).input(),
+      mdeAutoProvisioning: map['mdeAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingMdeAutoProvisioning.fromMap((map['mdeAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
+      offeringType: (map['offeringType'] as String).input(),
+      subPlan: map['subPlan'] == null ? null : (DefenderForServersAwsOfferingSubPlan.fromMap((map['subPlan'] as Map).cast<String, dynamic>())).input(),
+      vaAutoProvisioning: map['vaAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingVaAutoProvisioning.fromMap((map['vaAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
+      vmScanners: map['vmScanners'] == null ? null : (DefenderForServersAwsOfferingVmScanners.fromMap((map['vmScanners'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,23 +43,15 @@ class DatabaseInstanceState {
   /// [state] The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
   /// [type] The database type.
   DatabaseInstanceState({
-    pulumi.Output<String>? databaseUrl,
-    pulumi.Output<String>? desiredState,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? type,
-  }) :
-      databaseUrl = pulumi.Input.asOptionalInput<String>(databaseUrl),
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.databaseUrl,
+    this.desiredState,
+    this.instanceId,
+    this.name,
+    this.project,
+    this.region,
+    this.state,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class DatabaseInstanceState {
 
   factory DatabaseInstanceState.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceState(
-      databaseUrl: map['databaseUrl'] == null ? null : pulumi.Output.create<String>(map['databaseUrl'] as String),
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      databaseUrl: map['databaseUrl'] == null ? null : (map['databaseUrl'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

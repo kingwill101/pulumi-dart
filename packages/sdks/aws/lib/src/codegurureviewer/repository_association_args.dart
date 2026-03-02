@@ -25,15 +25,11 @@ class RepositoryAssociationArgs {
   /// [repository] An object describing the repository to associate. Valid values: `bitbucket`, `codecommit`, `github_enterprise_server`, or `s3_bucket`. Block is documented below. Note: for repositories that leverage CodeStar connections (ex. `bitbucket`, `github_enterprise_server`) the connection must be in `Available` status prior to creating this resource.
   /// [tags] Optional.
   RepositoryAssociationArgs({
-    pulumi.Output<RepositoryAssociationKmsKeyDetails>? kmsKeyDetails,
-    pulumi.Output<String>? region,
-    required pulumi.Output<RepositoryAssociationRepository> repository,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      kmsKeyDetails = pulumi.Input.asOptionalInput<RepositoryAssociationKmsKeyDetails>(kmsKeyDetails),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repository = pulumi.Input.asInput<RepositoryAssociationRepository>(repository),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.kmsKeyDetails,
+    this.region,
+    required this.repository,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class RepositoryAssociationArgs {
 
   factory RepositoryAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationArgs(
-      kmsKeyDetails: map['kmsKeyDetails'] == null ? null : pulumi.Output.create<RepositoryAssociationKmsKeyDetails>(RepositoryAssociationKmsKeyDetails.fromMap((map['kmsKeyDetails'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repository: pulumi.Output.create<RepositoryAssociationRepository>(RepositoryAssociationRepository.fromMap((map['repository'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      kmsKeyDetails: map['kmsKeyDetails'] == null ? null : (RepositoryAssociationKmsKeyDetails.fromMap((map['kmsKeyDetails'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repository: (RepositoryAssociationRepository.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

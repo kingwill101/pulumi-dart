@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message contains the transport layer information to verify the proxy server.
 class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse {
   /// PEM encoded CA certificate associated with the proxy server certificate.
-  final String serverCaCertPem;
+  final pulumi.Input<String> serverCaCertPem;
   /// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
-  final String sslDecryptCaCertPem;
+  final pulumi.Input<String> sslDecryptCaCertPem;
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse].
   /// [serverCaCertPem] PEM encoded CA certificate associated with the proxy server certificate.
@@ -25,8 +26,8 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse {
 
   factory GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse(
-      serverCaCertPem: map['serverCaCertPem'] as String,
-      sslDecryptCaCertPem: map['sslDecryptCaCertPem'] as String,
+      serverCaCertPem: (map['serverCaCertPem'] as String).input(),
+      sslDecryptCaCertPem: (map['sslDecryptCaCertPem'] as String).input(),
     );
   }
 }

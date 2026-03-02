@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_controller_usb_master.dart';
 
 class DomainDevicesControllerUsb {
   /// Specifies the master configuration for the USB controller device.
-  final DomainDevicesControllerUsbMaster? master;
+  final pulumi.Input<DomainDevicesControllerUsbMaster>? master;
   /// Configures the number of ports available on the USB controller device.
-  final double? port;
+  final pulumi.Input<double>? port;
 
   /// Creates a new [DomainDevicesControllerUsb].
   /// [master] Specifies the master configuration for the USB controller device.
@@ -18,15 +19,15 @@ class DomainDevicesControllerUsb {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'master': ?master == null ? null : master!.toMap(),
+      'master': ?pulumi.Input.mapOptionalInputValue<DomainDevicesControllerUsbMaster, Map<String, dynamic>>(master, (value) => value.toMap()),
       'port': ?port,
     };
   }
 
   factory DomainDevicesControllerUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerUsb(
-      master: map['master'] == null ? null : DomainDevicesControllerUsbMaster.fromMap((map['master'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'] as double,
+      master: map['master'] == null ? null : (DomainDevicesControllerUsbMaster.fromMap((map['master'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
     );
   }
 }

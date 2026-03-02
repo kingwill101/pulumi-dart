@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResponsePlanActionSsmAutomationParameter {
   /// The name of parameter.
-  final String name;
+  final pulumi.Input<String> name;
   /// The values for the associated parameter name.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ResponsePlanActionSsmAutomationParameter].
   /// [name] The name of parameter.
@@ -24,8 +25,8 @@ class ResponsePlanActionSsmAutomationParameter {
 
   factory ResponsePlanActionSsmAutomationParameter.fromMap(Map<String, dynamic> map) {
     return ResponsePlanActionSsmAutomationParameter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

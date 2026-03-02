@@ -45,23 +45,15 @@ class ServerTlsPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serverCertificate] Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
   ServerTlsPolicyArgs({
-    pulumi.Output<bool>? allowOpen,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<ServerTlsPolicyMtlsPolicy>? mtlsPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ServerTlsPolicyServerCertificate>? serverCertificate,
-  }) :
-      allowOpen = pulumi.Input.asOptionalInput<bool>(allowOpen),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mtlsPolicy = pulumi.Input.asOptionalInput<ServerTlsPolicyMtlsPolicy>(mtlsPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serverCertificate = pulumi.Input.asOptionalInput<ServerTlsPolicyServerCertificate>(serverCertificate);
+    this.allowOpen,
+    this.description,
+    this.labels,
+    this.location,
+    this.mtlsPolicy,
+    this.name,
+    this.project,
+    this.serverCertificate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,14 +70,14 @@ class ServerTlsPolicyArgs {
 
   factory ServerTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerTlsPolicyArgs(
-      allowOpen: map['allowOpen'] == null ? null : pulumi.Output.create<bool>(map['allowOpen'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mtlsPolicy: map['mtlsPolicy'] == null ? null : pulumi.Output.create<ServerTlsPolicyMtlsPolicy>(ServerTlsPolicyMtlsPolicy.fromMap((map['mtlsPolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serverCertificate: map['serverCertificate'] == null ? null : pulumi.Output.create<ServerTlsPolicyServerCertificate>(ServerTlsPolicyServerCertificate.fromMap((map['serverCertificate'] as Map).cast<String, dynamic>())),
+      allowOpen: map['allowOpen'] == null ? null : (map['allowOpen'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mtlsPolicy: map['mtlsPolicy'] == null ? null : (ServerTlsPolicyMtlsPolicy.fromMap((map['mtlsPolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (ServerTlsPolicyServerCertificate.fromMap((map['serverCertificate'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

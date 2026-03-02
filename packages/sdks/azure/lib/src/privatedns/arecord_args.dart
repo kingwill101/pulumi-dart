@@ -28,19 +28,13 @@ class ARecordArgs {
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
   ARecordArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> records,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<int> ttl,
-    required pulumi.Output<String> zoneName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      records = pulumi.Input.asInput<List<String>>(records),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      ttl = pulumi.Input.asInput<int>(ttl),
-      zoneName = pulumi.Input.asInput<String>(zoneName);
+    this.name,
+    required this.records,
+    required this.resourceGroupName,
+    this.tags,
+    required this.ttl,
+    required this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ARecordArgs {
 
   factory ARecordArgs.fromMap(Map<String, dynamic> map) {
     return ARecordArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      records: pulumi.Output.create<List<String>>((map['records'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      ttl: pulumi.Output.create<int>(map['ttl'] as int),
-      zoneName: pulumi.Output.create<String>(map['zoneName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      records: ((map['records'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      ttl: (map['ttl'] as int).input(),
+      zoneName: (map['zoneName'] as String).input(),
     );
   }
 }

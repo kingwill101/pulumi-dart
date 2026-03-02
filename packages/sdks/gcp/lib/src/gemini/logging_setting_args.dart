@@ -31,19 +31,13 @@ class LoggingSettingArgs {
   /// [loggingSettingId] Id of the Logging Setting.
   /// [project] The ID of the project in which the resource belongs.
   LoggingSettingArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<bool>? logMetadata,
-    pulumi.Output<bool>? logPromptsAndResponses,
-    required pulumi.Output<String> loggingSettingId,
-    pulumi.Output<String>? project,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      logMetadata = pulumi.Input.asOptionalInput<bool>(logMetadata),
-      logPromptsAndResponses = pulumi.Input.asOptionalInput<bool>(logPromptsAndResponses),
-      loggingSettingId = pulumi.Input.asInput<String>(loggingSettingId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.labels,
+    required this.location,
+    this.logMetadata,
+    this.logPromptsAndResponses,
+    required this.loggingSettingId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class LoggingSettingArgs {
 
   factory LoggingSettingArgs.fromMap(Map<String, dynamic> map) {
     return LoggingSettingArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      logMetadata: map['logMetadata'] == null ? null : pulumi.Output.create<bool>(map['logMetadata'] as bool),
-      logPromptsAndResponses: map['logPromptsAndResponses'] == null ? null : pulumi.Output.create<bool>(map['logPromptsAndResponses'] as bool),
-      loggingSettingId: pulumi.Output.create<String>(map['loggingSettingId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      logMetadata: map['logMetadata'] == null ? null : (map['logMetadata'] as bool).input(),
+      logPromptsAndResponses: map['logPromptsAndResponses'] == null ? null : (map['logPromptsAndResponses'] as bool).input(),
+      loggingSettingId: (map['loggingSettingId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

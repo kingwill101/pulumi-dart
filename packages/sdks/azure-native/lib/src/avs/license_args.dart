@@ -23,15 +23,11 @@ class LicenseArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   LicenseArgs({
-    pulumi.Output<String>? licenseName,
-    required pulumi.Output<String> privateCloudName,
-    pulumi.Output<VmwareFirewallLicenseProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      licenseName = pulumi.Input.asOptionalInput<String>(licenseName),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      properties = pulumi.Input.asOptionalInput<VmwareFirewallLicenseProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.licenseName,
+    required this.privateCloudName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class LicenseArgs {
 
   factory LicenseArgs.fromMap(Map<String, dynamic> map) {
     return LicenseArgs(
-      licenseName: map['licenseName'] == null ? null : pulumi.Output.create<String>(map['licenseName'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<VmwareFirewallLicenseProperties>(VmwareFirewallLicenseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      licenseName: map['licenseName'] == null ? null : (map['licenseName'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      properties: map['properties'] == null ? null : (VmwareFirewallLicenseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

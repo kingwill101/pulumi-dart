@@ -48,33 +48,20 @@ class V2modelsBotState {
   /// [timeouts] Optional.
   /// [type] Type of a bot to create. Possible values are `"Bot"` and `"BotNetwork"`.
   V2modelsBotState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<V2modelsBotDataPrivacy>>? dataPrivacies,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? idleSessionTtlInSeconds,
-    pulumi.Output<List<V2modelsBotMember>>? members,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<Map<String, String>>? testBotAliasTags,
-    pulumi.Output<V2modelsBotTimeouts>? timeouts,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      dataPrivacies = pulumi.Input.asOptionalInput<List<V2modelsBotDataPrivacy>>(dataPrivacies),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      idleSessionTtlInSeconds = pulumi.Input.asOptionalInput<int>(idleSessionTtlInSeconds),
-      members = pulumi.Input.asOptionalInput<List<V2modelsBotMember>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      testBotAliasTags = pulumi.Input.asOptionalInput<Map<String, String>>(testBotAliasTags),
-      timeouts = pulumi.Input.asOptionalInput<V2modelsBotTimeouts>(timeouts),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.dataPrivacies,
+    this.description,
+    this.idleSessionTtlInSeconds,
+    this.members,
+    this.name,
+    this.region,
+    this.roleArn,
+    this.tags,
+    this.tagsAll,
+    this.testBotAliasTags,
+    this.timeouts,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class V2modelsBotState {
 
   factory V2modelsBotState.fromMap(Map<String, dynamic> map) {
     return V2modelsBotState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      dataPrivacies: map['dataPrivacies'] == null ? null : pulumi.Output.create<List<V2modelsBotDataPrivacy>>(pulumi.Input.decodeList<V2modelsBotDataPrivacy>(map['dataPrivacies'], (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      idleSessionTtlInSeconds: map['idleSessionTtlInSeconds'] == null ? null : pulumi.Output.create<int>(map['idleSessionTtlInSeconds'] as int),
-      members: map['members'] == null ? null : pulumi.Output.create<List<V2modelsBotMember>>(pulumi.Input.decodeList<V2modelsBotMember>(map['members'], (value) => V2modelsBotMember.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      testBotAliasTags: map['testBotAliasTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['testBotAliasTags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<V2modelsBotTimeouts>(V2modelsBotTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      dataPrivacies: map['dataPrivacies'] == null ? null : (pulumi.Input.decodeList<V2modelsBotDataPrivacy>(map['dataPrivacies'], (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      idleSessionTtlInSeconds: map['idleSessionTtlInSeconds'] == null ? null : (map['idleSessionTtlInSeconds'] as int).input(),
+      members: map['members'] == null ? null : (pulumi.Input.decodeList<V2modelsBotMember>(map['members'], (value) => V2modelsBotMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      testBotAliasTags: map['testBotAliasTags'] == null ? null : ((map['testBotAliasTags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (V2modelsBotTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -49,27 +49,17 @@ class DatabaseMysqlArgs {
   /// [type] The Linode Instance type used for the nodes of the  Managed Database instance.
   /// [updates] Configuration settings for automated patch update maintenance for the Managed Database.
   DatabaseMysqlArgs({
-    pulumi.Output<List<String>>? allowLists,
-    pulumi.Output<int>? clusterSize,
-    pulumi.Output<bool>? encrypted,
-    required pulumi.Output<String> engineId,
-    required pulumi.Output<String> label,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? replicationType,
-    pulumi.Output<bool>? sslConnection,
-    required pulumi.Output<String> type,
-    pulumi.Output<DatabaseMysqlUpdates>? updates,
-  }) :
-      allowLists = pulumi.Input.asOptionalInput<List<String>>(allowLists),
-      clusterSize = pulumi.Input.asOptionalInput<int>(clusterSize),
-      encrypted = pulumi.Input.asOptionalInput<bool>(encrypted),
-      engineId = pulumi.Input.asInput<String>(engineId),
-      label = pulumi.Input.asInput<String>(label),
-      region = pulumi.Input.asInput<String>(region),
-      replicationType = pulumi.Input.asOptionalInput<String>(replicationType),
-      sslConnection = pulumi.Input.asOptionalInput<bool>(sslConnection),
-      type = pulumi.Input.asInput<String>(type),
-      updates = pulumi.Input.asOptionalInput<DatabaseMysqlUpdates>(updates);
+    this.allowLists,
+    this.clusterSize,
+    this.encrypted,
+    required this.engineId,
+    required this.label,
+    required this.region,
+    this.replicationType,
+    this.sslConnection,
+    required this.type,
+    this.updates,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,16 +78,16 @@ class DatabaseMysqlArgs {
 
   factory DatabaseMysqlArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMysqlArgs(
-      allowLists: map['allowLists'] == null ? null : pulumi.Output.create<List<String>>((map['allowLists'] as List).cast<String>()),
-      clusterSize: map['clusterSize'] == null ? null : pulumi.Output.create<int>(map['clusterSize'] as int),
-      encrypted: map['encrypted'] == null ? null : pulumi.Output.create<bool>(map['encrypted'] as bool),
-      engineId: pulumi.Output.create<String>(map['engineId'] as String),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      replicationType: map['replicationType'] == null ? null : pulumi.Output.create<String>(map['replicationType'] as String),
-      sslConnection: map['sslConnection'] == null ? null : pulumi.Output.create<bool>(map['sslConnection'] as bool),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      updates: map['updates'] == null ? null : pulumi.Output.create<DatabaseMysqlUpdates>(DatabaseMysqlUpdates.fromMap((map['updates'] as Map).cast<String, dynamic>())),
+      allowLists: map['allowLists'] == null ? null : ((map['allowLists'] as List).cast<String>()).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      engineId: (map['engineId'] as String).input(),
+      label: (map['label'] as String).input(),
+      region: (map['region'] as String).input(),
+      replicationType: map['replicationType'] == null ? null : (map['replicationType'] as String).input(),
+      sslConnection: map['sslConnection'] == null ? null : (map['sslConnection'] as bool).input(),
+      type: (map['type'] as String).input(),
+      updates: map['updates'] == null ? null : (DatabaseMysqlUpdates.fromMap((map['updates'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

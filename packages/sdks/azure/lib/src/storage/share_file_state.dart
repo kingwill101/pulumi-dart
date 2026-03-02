@@ -43,29 +43,18 @@ class ShareFileState {
   /// [storageShareId] Optional.
   /// [storageShareUrl] The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
   ShareFileState({
-    pulumi.Output<String>? contentDisposition,
-    pulumi.Output<String>? contentEncoding,
-    pulumi.Output<int>? contentLength,
-    pulumi.Output<String>? contentMd5,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? storageShareId,
-    pulumi.Output<String>? storageShareUrl,
-  }) :
-      contentDisposition = pulumi.Input.asOptionalInput<String>(contentDisposition),
-      contentEncoding = pulumi.Input.asOptionalInput<String>(contentEncoding),
-      contentLength = pulumi.Input.asOptionalInput<int>(contentLength),
-      contentMd5 = pulumi.Input.asOptionalInput<String>(contentMd5),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      storageShareId = pulumi.Input.asOptionalInput<String>(storageShareId),
-      storageShareUrl = pulumi.Input.asOptionalInput<String>(storageShareUrl);
+    this.contentDisposition,
+    this.contentEncoding,
+    this.contentLength,
+    this.contentMd5,
+    this.contentType,
+    this.metadata,
+    this.name,
+    this.path,
+    this.source,
+    this.storageShareId,
+    this.storageShareUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class ShareFileState {
 
   factory ShareFileState.fromMap(Map<String, dynamic> map) {
     return ShareFileState(
-      contentDisposition: map['contentDisposition'] == null ? null : pulumi.Output.create<String>(map['contentDisposition'] as String),
-      contentEncoding: map['contentEncoding'] == null ? null : pulumi.Output.create<String>(map['contentEncoding'] as String),
-      contentLength: map['contentLength'] == null ? null : pulumi.Output.create<int>(map['contentLength'] as int),
-      contentMd5: map['contentMd5'] == null ? null : pulumi.Output.create<String>(map['contentMd5'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      storageShareId: map['storageShareId'] == null ? null : pulumi.Output.create<String>(map['storageShareId'] as String),
-      storageShareUrl: map['storageShareUrl'] == null ? null : pulumi.Output.create<String>(map['storageShareUrl'] as String),
+      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition'] as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      contentLength: map['contentLength'] == null ? null : (map['contentLength'] as int).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      storageShareId: map['storageShareId'] == null ? null : (map['storageShareId'] as String).input(),
+      storageShareUrl: map['storageShareUrl'] == null ? null : (map['storageShareUrl'] as String).input(),
     );
   }
 }

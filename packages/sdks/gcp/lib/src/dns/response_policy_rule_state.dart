@@ -29,19 +29,13 @@ class ResponsePolicyRuleState {
   /// [responsePolicy] Identifies the response policy addressed by this request.
   /// [ruleName] An identifier for this rule. Must be unique with the ResponsePolicy.
   ResponsePolicyRuleState({
-    pulumi.Output<String>? behavior,
-    pulumi.Output<String>? dnsName,
-    pulumi.Output<ResponsePolicyRuleLocalData>? localData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? responsePolicy,
-    pulumi.Output<String>? ruleName,
-  }) :
-      behavior = pulumi.Input.asOptionalInput<String>(behavior),
-      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
-      localData = pulumi.Input.asOptionalInput<ResponsePolicyRuleLocalData>(localData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      responsePolicy = pulumi.Input.asOptionalInput<String>(responsePolicy),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName);
+    this.behavior,
+    this.dnsName,
+    this.localData,
+    this.project,
+    this.responsePolicy,
+    this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ResponsePolicyRuleState {
 
   factory ResponsePolicyRuleState.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleState(
-      behavior: map['behavior'] == null ? null : pulumi.Output.create<String>(map['behavior'] as String),
-      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
-      localData: map['localData'] == null ? null : pulumi.Output.create<ResponsePolicyRuleLocalData>(ResponsePolicyRuleLocalData.fromMap((map['localData'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      responsePolicy: map['responsePolicy'] == null ? null : pulumi.Output.create<String>(map['responsePolicy'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      behavior: map['behavior'] == null ? null : (map['behavior'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      localData: map['localData'] == null ? null : (ResponsePolicyRuleLocalData.fromMap((map['localData'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      responsePolicy: map['responsePolicy'] == null ? null : (map['responsePolicy'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

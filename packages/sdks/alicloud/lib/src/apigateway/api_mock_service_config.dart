@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiMockServiceConfig {
   /// The name of aone.
-  final String? aoneName;
+  final pulumi.Input<String>? aoneName;
   /// The result of the mock service.
-  final String result;
+  final pulumi.Input<String> result;
 
   /// Creates a new [ApiMockServiceConfig].
   /// [aoneName] The name of aone.
@@ -24,8 +25,8 @@ class ApiMockServiceConfig {
 
   factory ApiMockServiceConfig.fromMap(Map<String, dynamic> map) {
     return ApiMockServiceConfig(
-      aoneName: map['aoneName'] == null ? null : map['aoneName'] as String,
-      result: map['result'] as String,
+      aoneName: map['aoneName'] == null ? null : (map['aoneName'] as String).input(),
+      result: (map['result'] as String).input(),
     );
   }
 }

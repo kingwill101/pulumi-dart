@@ -22,15 +22,11 @@ class ResourceTypeRegistrationArgs {
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [resourceType] The resource type.
   ResourceTypeRegistrationArgs({
-    pulumi.Output<String>? kind,
-    pulumi.Output<ResourceTypeRegistrationProperties>? properties,
-    required pulumi.Output<String> providerNamespace,
-    pulumi.Output<String>? resourceType,
-  }) :
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      properties = pulumi.Input.asOptionalInput<ResourceTypeRegistrationProperties>(properties),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.kind,
+    this.properties,
+    required this.providerNamespace,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ResourceTypeRegistrationArgs {
 
   factory ResourceTypeRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationArgs(
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ResourceTypeRegistrationProperties>(ResourceTypeRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      properties: map['properties'] == null ? null : (ResourceTypeRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

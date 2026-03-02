@@ -45,19 +45,13 @@ class RepositoryIamBindingArgs {
   /// [repositoryId] Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
   RepositoryIamBindingArgs({
-    pulumi.Output<RepositoryIamBindingCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<RepositoryIamBindingCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    this.location,
+    required this.members,
+    this.project,
+    required this.repositoryId,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class RepositoryIamBindingArgs {
 
   factory RepositoryIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<RepositoryIamBindingCondition>(RepositoryIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (RepositoryIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetWorkspaceSubscriptionArgs {
   /// [sid] Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   GetWorkspaceSubscriptionArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> sid,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      sid = pulumi.Input.asInput<String>(sid),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.sid,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWorkspaceSubscriptionArgs {
 
   factory GetWorkspaceSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceSubscriptionArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      sid: pulumi.Output.create<String>(map['sid'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      sid: (map['sid'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -35,25 +35,16 @@ class SpringCloudApiPortalState {
   /// [sso] A `sso` block as defined below.
   /// [url] TODO.
   SpringCloudApiPortalState({
-    pulumi.Output<bool>? apiTryOutEnabled,
-    pulumi.Output<List<String>>? gatewayIds,
-    pulumi.Output<bool>? httpsOnlyEnabled,
-    pulumi.Output<int>? instanceCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? springCloudServiceId,
-    pulumi.Output<SpringCloudApiPortalSso>? sso,
-    pulumi.Output<String>? url,
-  }) :
-      apiTryOutEnabled = pulumi.Input.asOptionalInput<bool>(apiTryOutEnabled),
-      gatewayIds = pulumi.Input.asOptionalInput<List<String>>(gatewayIds),
-      httpsOnlyEnabled = pulumi.Input.asOptionalInput<bool>(httpsOnlyEnabled),
-      instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      springCloudServiceId = pulumi.Input.asOptionalInput<String>(springCloudServiceId),
-      sso = pulumi.Input.asOptionalInput<SpringCloudApiPortalSso>(sso),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.apiTryOutEnabled,
+    this.gatewayIds,
+    this.httpsOnlyEnabled,
+    this.instanceCount,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.springCloudServiceId,
+    this.sso,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class SpringCloudApiPortalState {
 
   factory SpringCloudApiPortalState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApiPortalState(
-      apiTryOutEnabled: map['apiTryOutEnabled'] == null ? null : pulumi.Output.create<bool>(map['apiTryOutEnabled'] as bool),
-      gatewayIds: map['gatewayIds'] == null ? null : pulumi.Output.create<List<String>>((map['gatewayIds'] as List).cast<String>()),
-      httpsOnlyEnabled: map['httpsOnlyEnabled'] == null ? null : pulumi.Output.create<bool>(map['httpsOnlyEnabled'] as bool),
-      instanceCount: map['instanceCount'] == null ? null : pulumi.Output.create<int>(map['instanceCount'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : pulumi.Output.create<String>(map['springCloudServiceId'] as String),
-      sso: map['sso'] == null ? null : pulumi.Output.create<SpringCloudApiPortalSso>(SpringCloudApiPortalSso.fromMap((map['sso'] as Map).cast<String, dynamic>())),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      apiTryOutEnabled: map['apiTryOutEnabled'] == null ? null : (map['apiTryOutEnabled'] as bool).input(),
+      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds'] as List).cast<String>()).input(),
+      httpsOnlyEnabled: map['httpsOnlyEnabled'] == null ? null : (map['httpsOnlyEnabled'] as bool).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
+      sso: map['sso'] == null ? null : (SpringCloudApiPortalSso.fromMap((map['sso'] as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

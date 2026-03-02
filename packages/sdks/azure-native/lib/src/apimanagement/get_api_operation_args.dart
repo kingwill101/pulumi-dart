@@ -22,15 +22,11 @@ class GetApiOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetApiOperationArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> operationId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      operationId = pulumi.Input.asInput<String>(operationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.apiId,
+    required this.operationId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetApiOperationArgs {
 
   factory GetApiOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetApiOperationArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      operationId: pulumi.Output.create<String>(map['operationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apiId: (map['apiId'] as String).input(),
+      operationId: (map['operationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

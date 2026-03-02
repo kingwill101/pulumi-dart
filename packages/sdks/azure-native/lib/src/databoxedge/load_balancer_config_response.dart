@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Load balancer configuration
 class LoadBalancerConfigResponse {
   /// Load balancer type
-  final String type;
+  final pulumi.Input<String> type;
   /// Load balancer version
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [LoadBalancerConfigResponse].
   /// [type] Load balancer type
@@ -25,8 +26,8 @@ class LoadBalancerConfigResponse {
 
   factory LoadBalancerConfigResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerConfigResponse(
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (map['type'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

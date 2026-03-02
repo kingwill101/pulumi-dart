@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of the assignment resource
 class AssignmentStatusResponse {
   /// Reason for the status
-  final String? message;
+  final pulumi.Input<String>? message;
   /// State of the assignment resource
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [AssignmentStatusResponse].
   /// [message] Reason for the status
@@ -25,8 +26,8 @@ class AssignmentStatusResponse {
 
   factory AssignmentStatusResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentStatusResponse(
-      message: map['message'] == null ? null : map['message'] as String,
-      state: map['state'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

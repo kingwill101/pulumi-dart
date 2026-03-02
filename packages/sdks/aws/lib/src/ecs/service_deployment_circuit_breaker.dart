@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceDeploymentCircuitBreaker {
   /// Whether to enable the deployment circuit breaker logic for the service.
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// Whether to enable Amazon ECS to roll back the service if a service deployment fails. If rollback is enabled, when a service deployment fails, the service is rolled back to the last deployment that completed successfully.
-  final bool rollback;
+  final pulumi.Input<bool> rollback;
 
   /// Creates a new [ServiceDeploymentCircuitBreaker].
   /// [enable] Whether to enable the deployment circuit breaker logic for the service.
@@ -24,8 +25,8 @@ class ServiceDeploymentCircuitBreaker {
 
   factory ServiceDeploymentCircuitBreaker.fromMap(Map<String, dynamic> map) {
     return ServiceDeploymentCircuitBreaker(
-      enable: map['enable'] as bool,
-      rollback: map['rollback'] as bool,
+      enable: (map['enable'] as bool).input(),
+      rollback: (map['rollback'] as bool).input(),
     );
   }
 }

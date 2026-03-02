@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification for the BigQuery connection to a Cloud SQL instance.
 class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
   /// Database name.
-  final String database;
+  final pulumi.Input<String> database;
   /// Cloud SQL instance ID in the format of `project:location:instance`.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Type of the Cloud SQL database.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse].
   /// [database] Database name.
@@ -30,9 +31,9 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
 
   factory GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse(
-      database: map['database'] as String,
-      instanceId: map['instanceId'] as String,
-      type: map['type'] as String,
+      database: (map['database'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

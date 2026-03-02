@@ -6,20 +6,20 @@ import 'graph_apicompute_regional_service_resource_response.dart';
 /// Properties for GraphAPIComputeServiceResource.
 class GraphAPIComputeServiceResourcePropertiesResponse {
   /// Time of the last state change (ISO-8601 format).
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// GraphAPICompute endpoint for the service.
-  final String? graphApiComputeEndpoint;
+  final pulumi.Input<String>? graphApiComputeEndpoint;
   /// Instance count for the service.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// Instance type for the service.
-  final String? instanceSize;
+  final pulumi.Input<String>? instanceSize;
   /// An array that contains all of the locations for the service.
-  final List<GraphAPIComputeRegionalServiceResourceResponse> locations;
+  final pulumi.Input<List<GraphAPIComputeRegionalServiceResourceResponse>> locations;
   /// ServiceType for the service.
   /// Expected value is 'GraphAPICompute'.
-  final String serviceType;
+  final pulumi.Input<String> serviceType;
   /// Describes the status of a service.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GraphAPIComputeServiceResourcePropertiesResponse].
   /// [creationTime] Time of the last state change (ISO-8601 format).
@@ -45,7 +45,7 @@ class GraphAPIComputeServiceResourcePropertiesResponse {
       'graphApiComputeEndpoint': ?graphApiComputeEndpoint,
       'instanceCount': ?instanceCount,
       'instanceSize': ?instanceSize,
-      'locations': pulumi.Input.encodeList<GraphAPIComputeRegionalServiceResourceResponse, Map<String, dynamic>>(locations, (value) => value.toMap()),
+      'locations': pulumi.Input.mapInputValue<List<GraphAPIComputeRegionalServiceResourceResponse>, List<Map<String, dynamic>>>(locations, (value) => pulumi.Input.encodeList<GraphAPIComputeRegionalServiceResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceType': serviceType,
       'status': status,
     };
@@ -53,13 +53,13 @@ class GraphAPIComputeServiceResourcePropertiesResponse {
 
   factory GraphAPIComputeServiceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GraphAPIComputeServiceResourcePropertiesResponse(
-      creationTime: map['creationTime'] as String,
-      graphApiComputeEndpoint: map['graphApiComputeEndpoint'] == null ? null : map['graphApiComputeEndpoint'] as String,
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      instanceSize: map['instanceSize'] == null ? null : map['instanceSize'] as String,
-      locations: pulumi.Input.decodeList<GraphAPIComputeRegionalServiceResourceResponse>(map['locations'], (value) => GraphAPIComputeRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      serviceType: map['serviceType'] as String,
-      status: map['status'] as String,
+      creationTime: (map['creationTime'] as String).input(),
+      graphApiComputeEndpoint: map['graphApiComputeEndpoint'] == null ? null : (map['graphApiComputeEndpoint'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      locations: (pulumi.Input.decodeList<GraphAPIComputeRegionalServiceResourceResponse>(map['locations'], (value) => GraphAPIComputeRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceType: (map['serviceType'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

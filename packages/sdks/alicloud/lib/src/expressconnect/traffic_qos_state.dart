@@ -24,17 +24,12 @@ class TrafficQosState {
   /// [status] The status of the QoS policy.
   /// [tags] The tag of the resource.
   TrafficQosState({
-    pulumi.Output<String>? qosDescription,
-    pulumi.Output<String>? qosName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      qosDescription = pulumi.Input.asOptionalInput<String>(qosDescription),
-      qosName = pulumi.Input.asOptionalInput<String>(qosName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.qosDescription,
+    this.qosName,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class TrafficQosState {
 
   factory TrafficQosState.fromMap(Map<String, dynamic> map) {
     return TrafficQosState(
-      qosDescription: map['qosDescription'] == null ? null : pulumi.Output.create<String>(map['qosDescription'] as String),
-      qosName: map['qosName'] == null ? null : pulumi.Output.create<String>(map['qosName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      qosDescription: map['qosDescription'] == null ? null : (map['qosDescription'] as String).input(),
+      qosName: map['qosName'] == null ? null : (map['qosName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

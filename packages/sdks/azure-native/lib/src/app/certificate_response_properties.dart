@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_key_vault_properties_response.dart';
 
 /// Certificate resource specific properties
 class CertificateResponseProperties {
   /// Properties for a certificate stored in a Key Vault.
-  final CertificateKeyVaultPropertiesResponse? certificateKeyVaultProperties;
+  final pulumi.Input<CertificateKeyVaultPropertiesResponse>? certificateKeyVaultProperties;
   /// The type of the certificate. Allowed values are `ServerSSLCertificate` and `ImagePullTrustedCA`
-  final String? certificateType;
+  final pulumi.Input<String>? certificateType;
   /// Any errors that occurred during deployment or deployment validation
-  final String deploymentErrors;
+  final pulumi.Input<String> deploymentErrors;
   /// Certificate expiration date.
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// Certificate issue Date.
-  final String issueDate;
+  final pulumi.Input<String> issueDate;
   /// Certificate issuer.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// Provisioning state of the certificate.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Public key hash.
-  final String publicKeyHash;
+  final pulumi.Input<String> publicKeyHash;
   /// Subject alternative names the certificate applies to.
-  final List<String> subjectAlternativeNames;
+  final pulumi.Input<List<String>> subjectAlternativeNames;
   /// Subject name of the certificate.
-  final String subjectName;
+  final pulumi.Input<String> subjectName;
   /// Certificate thumbprint.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// Is the certificate valid?.
-  final bool valid;
+  final pulumi.Input<bool> valid;
 
   /// Creates a new [CertificateResponseProperties].
   /// [certificateKeyVaultProperties] Properties for a certificate stored in a Key Vault.
@@ -59,7 +60,7 @@ class CertificateResponseProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateKeyVaultProperties': ?certificateKeyVaultProperties == null ? null : certificateKeyVaultProperties!.toMap(),
+      'certificateKeyVaultProperties': ?pulumi.Input.mapOptionalInputValue<CertificateKeyVaultPropertiesResponse, Map<String, dynamic>>(certificateKeyVaultProperties, (value) => value.toMap()),
       'certificateType': ?certificateType,
       'deploymentErrors': deploymentErrors,
       'expirationDate': expirationDate,
@@ -76,18 +77,18 @@ class CertificateResponseProperties {
 
   factory CertificateResponseProperties.fromMap(Map<String, dynamic> map) {
     return CertificateResponseProperties(
-      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : CertificateKeyVaultPropertiesResponse.fromMap((map['certificateKeyVaultProperties'] as Map).cast<String, dynamic>()),
-      certificateType: map['certificateType'] == null ? null : map['certificateType'] as String,
-      deploymentErrors: map['deploymentErrors'] as String,
-      expirationDate: map['expirationDate'] as String,
-      issueDate: map['issueDate'] as String,
-      issuer: map['issuer'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publicKeyHash: map['publicKeyHash'] as String,
-      subjectAlternativeNames: (map['subjectAlternativeNames'] as List).cast<String>(),
-      subjectName: map['subjectName'] as String,
-      thumbprint: map['thumbprint'] as String,
-      valid: map['valid'] as bool,
+      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultPropertiesResponse.fromMap((map['certificateKeyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
+      deploymentErrors: (map['deploymentErrors'] as String).input(),
+      expirationDate: (map['expirationDate'] as String).input(),
+      issueDate: (map['issueDate'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicKeyHash: (map['publicKeyHash'] as String).input(),
+      subjectAlternativeNames: ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      subjectName: (map['subjectName'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      valid: (map['valid'] as bool).input(),
     );
   }
 }

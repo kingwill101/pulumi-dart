@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The extra claim mapping expression for JWTAuthenticator.
 class JWTAuthenticatorExtraClaimMappingExpressionResponse {
   /// The key of the extra attribute.
-  final String key;
+  final pulumi.Input<String> key;
   /// The CEL expression used to extract the value of the extra attribute.
-  final String valueExpression;
+  final pulumi.Input<String> valueExpression;
 
   /// Creates a new [JWTAuthenticatorExtraClaimMappingExpressionResponse].
   /// [key] The key of the extra attribute.
@@ -25,8 +26,8 @@ class JWTAuthenticatorExtraClaimMappingExpressionResponse {
 
   factory JWTAuthenticatorExtraClaimMappingExpressionResponse.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorExtraClaimMappingExpressionResponse(
-      key: map['key'] as String,
-      valueExpression: map['valueExpression'] as String,
+      key: (map['key'] as String).input(),
+      valueExpression: (map['valueExpression'] as String).input(),
     );
   }
 }

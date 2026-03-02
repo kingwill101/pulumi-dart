@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nsg_reference_response.dart';
 
 /// Defines the virtual network subnets resource settings.
 class SubnetResourceSettingsResponse {
   /// Gets or sets address prefix for the subnet.
-  final String? addressPrefix;
+  final pulumi.Input<String>? addressPrefix;
   /// Gets or sets the Subnet name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Defines reference to NSG.
-  final NsgReferenceResponse? networkSecurityGroup;
+  final pulumi.Input<NsgReferenceResponse>? networkSecurityGroup;
 
   /// Creates a new [SubnetResourceSettingsResponse].
   /// [addressPrefix] Gets or sets address prefix for the subnet.
@@ -25,15 +26,15 @@ class SubnetResourceSettingsResponse {
     return <String, dynamic>{
       'addressPrefix': ?addressPrefix,
       'name': ?name,
-      'networkSecurityGroup': ?networkSecurityGroup == null ? null : networkSecurityGroup!.toMap(),
+      'networkSecurityGroup': ?pulumi.Input.mapOptionalInputValue<NsgReferenceResponse, Map<String, dynamic>>(networkSecurityGroup, (value) => value.toMap()),
     };
   }
 
   factory SubnetResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResourceSettingsResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : map['addressPrefix'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : NsgReferenceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>()),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NsgReferenceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

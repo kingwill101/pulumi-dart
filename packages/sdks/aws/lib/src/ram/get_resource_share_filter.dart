@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceShareFilter {
   /// Name of the tag key to filter on.
-  final String name;
+  final pulumi.Input<String> name;
   /// Value of the tag key.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetResourceShareFilter].
   /// [name] Name of the tag key to filter on.
@@ -24,8 +25,8 @@ class GetResourceShareFilter {
 
   factory GetResourceShareFilter.fromMap(Map<String, dynamic> map) {
     return GetResourceShareFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

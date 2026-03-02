@@ -43,23 +43,15 @@ class ExchangeArgs {
   /// [virtualHostName] The name of the vhost to which the exchange that you want to create belongs.
   /// [xDelayedType] RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
   ExchangeArgs({
-    pulumi.Output<String>? alternateExchange,
-    required pulumi.Output<bool> autoDeleteState,
-    required pulumi.Output<String> exchangeName,
-    required pulumi.Output<String> exchangeType,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<bool> internal,
-    required pulumi.Output<String> virtualHostName,
-    pulumi.Output<String>? xDelayedType,
-  }) :
-      alternateExchange = pulumi.Input.asOptionalInput<String>(alternateExchange),
-      autoDeleteState = pulumi.Input.asInput<bool>(autoDeleteState),
-      exchangeName = pulumi.Input.asInput<String>(exchangeName),
-      exchangeType = pulumi.Input.asInput<String>(exchangeType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      internal = pulumi.Input.asInput<bool>(internal),
-      virtualHostName = pulumi.Input.asInput<String>(virtualHostName),
-      xDelayedType = pulumi.Input.asOptionalInput<String>(xDelayedType);
+    this.alternateExchange,
+    required this.autoDeleteState,
+    required this.exchangeName,
+    required this.exchangeType,
+    required this.instanceId,
+    required this.internal,
+    required this.virtualHostName,
+    this.xDelayedType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class ExchangeArgs {
 
   factory ExchangeArgs.fromMap(Map<String, dynamic> map) {
     return ExchangeArgs(
-      alternateExchange: map['alternateExchange'] == null ? null : pulumi.Output.create<String>(map['alternateExchange'] as String),
-      autoDeleteState: pulumi.Output.create<bool>(map['autoDeleteState'] as bool),
-      exchangeName: pulumi.Output.create<String>(map['exchangeName'] as String),
-      exchangeType: pulumi.Output.create<String>(map['exchangeType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      internal: pulumi.Output.create<bool>(map['internal'] as bool),
-      virtualHostName: pulumi.Output.create<String>(map['virtualHostName'] as String),
-      xDelayedType: map['xDelayedType'] == null ? null : pulumi.Output.create<String>(map['xDelayedType'] as String),
+      alternateExchange: map['alternateExchange'] == null ? null : (map['alternateExchange'] as String).input(),
+      autoDeleteState: (map['autoDeleteState'] as bool).input(),
+      exchangeName: (map['exchangeName'] as String).input(),
+      exchangeType: (map['exchangeType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      internal: (map['internal'] as bool).input(),
+      virtualHostName: (map['virtualHostName'] as String).input(),
+      xDelayedType: map['xDelayedType'] == null ? null : (map['xDelayedType'] as String).input(),
     );
   }
 }

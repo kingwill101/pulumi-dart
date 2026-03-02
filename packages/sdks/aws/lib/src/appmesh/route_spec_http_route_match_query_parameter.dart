@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_spec_http_route_match_query_parameter_match.dart';
 
 class RouteSpecHttpRouteMatchQueryParameter {
   /// The query parameter to match on.
-  final RouteSpecHttpRouteMatchQueryParameterMatch? match;
+  final pulumi.Input<RouteSpecHttpRouteMatchQueryParameterMatch>? match;
   /// Name for the query parameter that will be matched on.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [RouteSpecHttpRouteMatchQueryParameter].
   /// [match] The query parameter to match on.
@@ -18,15 +19,15 @@ class RouteSpecHttpRouteMatchQueryParameter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'match': ?match == null ? null : match!.toMap(),
+      'match': ?pulumi.Input.mapOptionalInputValue<RouteSpecHttpRouteMatchQueryParameterMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory RouteSpecHttpRouteMatchQueryParameter.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttpRouteMatchQueryParameter(
-      match: map['match'] == null ? null : RouteSpecHttpRouteMatchQueryParameterMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      match: map['match'] == null ? null : (RouteSpecHttpRouteMatchQueryParameterMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

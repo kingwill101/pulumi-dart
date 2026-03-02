@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleCloudwatchAlarm {
   /// The CloudWatch alarm name.
-  final String alarmName;
+  final pulumi.Input<String> alarmName;
   /// The IAM role ARN that allows access to the CloudWatch alarm.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The reason for the alarm change.
-  final String stateReason;
+  final pulumi.Input<String> stateReason;
   /// The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
-  final String stateValue;
+  final pulumi.Input<String> stateValue;
 
   /// Creates a new [TopicRuleCloudwatchAlarm].
   /// [alarmName] The CloudWatch alarm name.
@@ -34,10 +35,10 @@ class TopicRuleCloudwatchAlarm {
 
   factory TopicRuleCloudwatchAlarm.fromMap(Map<String, dynamic> map) {
     return TopicRuleCloudwatchAlarm(
-      alarmName: map['alarmName'] as String,
-      roleArn: map['roleArn'] as String,
-      stateReason: map['stateReason'] as String,
-      stateValue: map['stateValue'] as String,
+      alarmName: (map['alarmName'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      stateReason: (map['stateReason'] as String).input(),
+      stateValue: (map['stateValue'] as String).input(),
     );
   }
 }

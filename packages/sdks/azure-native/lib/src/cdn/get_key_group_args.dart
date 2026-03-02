@@ -19,13 +19,10 @@ class GetKeyGroupArgs {
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetKeyGroupArgs({
-    required pulumi.Output<String> keyGroupName,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      keyGroupName = pulumi.Input.asInput<String>(keyGroupName),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.keyGroupName,
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKeyGroupArgs {
 
   factory GetKeyGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyGroupArgs(
-      keyGroupName: pulumi.Output.create<String>(map['keyGroupName'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      keyGroupName: (map['keyGroupName'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

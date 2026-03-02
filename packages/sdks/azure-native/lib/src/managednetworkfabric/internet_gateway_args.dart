@@ -34,23 +34,15 @@ class InternetGatewayArgs {
   /// [tags] Resource tags.
   /// [type] Gateway Type of the resource.
   InternetGatewayArgs({
-    pulumi.Output<String>? annotation,
-    pulumi.Output<String>? internetGatewayName,
-    pulumi.Output<String>? internetGatewayRuleId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkFabricControllerId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      internetGatewayName = pulumi.Input.asOptionalInput<String>(internetGatewayName),
-      internetGatewayRuleId = pulumi.Input.asOptionalInput<String>(internetGatewayRuleId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkFabricControllerId = pulumi.Input.asInput<String>(networkFabricControllerId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    this.annotation,
+    this.internetGatewayName,
+    this.internetGatewayRuleId,
+    this.location,
+    required this.networkFabricControllerId,
+    required this.resourceGroupName,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class InternetGatewayArgs {
 
   factory InternetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return InternetGatewayArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      internetGatewayName: map['internetGatewayName'] == null ? null : pulumi.Output.create<String>(map['internetGatewayName'] as String),
-      internetGatewayRuleId: map['internetGatewayRuleId'] == null ? null : pulumi.Output.create<String>(map['internetGatewayRuleId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkFabricControllerId: pulumi.Output.create<String>(map['networkFabricControllerId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      internetGatewayName: map['internetGatewayName'] == null ? null : (map['internetGatewayName'] as String).input(),
+      internetGatewayRuleId: map['internetGatewayRuleId'] == null ? null : (map['internetGatewayRuleId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkFabricControllerId: (map['networkFabricControllerId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

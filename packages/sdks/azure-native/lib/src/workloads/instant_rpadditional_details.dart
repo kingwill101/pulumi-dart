@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Instant recovery point additional details.
 class InstantRPAdditionalDetails {
   /// Azure backup resource group name prefix.
-  final String? azureBackupRGNamePrefix;
+  final pulumi.Input<String>? azureBackupRGNamePrefix;
   /// Azure backup resource group name suffix.
-  final String? azureBackupRGNameSuffix;
+  final pulumi.Input<String>? azureBackupRGNameSuffix;
 
   /// Creates a new [InstantRPAdditionalDetails].
   /// [azureBackupRGNamePrefix] Azure backup resource group name prefix.
@@ -25,8 +26,8 @@ class InstantRPAdditionalDetails {
 
   factory InstantRPAdditionalDetails.fromMap(Map<String, dynamic> map) {
     return InstantRPAdditionalDetails(
-      azureBackupRGNamePrefix: map['azureBackupRGNamePrefix'] == null ? null : map['azureBackupRGNamePrefix'] as String,
-      azureBackupRGNameSuffix: map['azureBackupRGNameSuffix'] == null ? null : map['azureBackupRGNameSuffix'] as String,
+      azureBackupRGNamePrefix: map['azureBackupRGNamePrefix'] == null ? null : (map['azureBackupRGNamePrefix'] as String).input(),
+      azureBackupRGNameSuffix: map['azureBackupRGNameSuffix'] == null ? null : (map['azureBackupRGNameSuffix'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class SqlCollectorOperationArgs {
   /// [provisioningState] The status of the last operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   SqlCollectorOperationArgs({
-    pulumi.Output<CollectorAgentPropertiesBase>? agentProperties,
-    pulumi.Output<String>? collectorName,
-    pulumi.Output<String>? discoverySiteId,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      agentProperties = pulumi.Input.asOptionalInput<CollectorAgentPropertiesBase>(agentProperties),
-      collectorName = pulumi.Input.asOptionalInput<String>(collectorName),
-      discoverySiteId = pulumi.Input.asOptionalInput<String>(discoverySiteId),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.agentProperties,
+    this.collectorName,
+    this.discoverySiteId,
+    required this.projectName,
+    this.provisioningState,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class SqlCollectorOperationArgs {
 
   factory SqlCollectorOperationArgs.fromMap(Map<String, dynamic> map) {
     return SqlCollectorOperationArgs(
-      agentProperties: map['agentProperties'] == null ? null : pulumi.Output.create<CollectorAgentPropertiesBase>(CollectorAgentPropertiesBase.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())),
-      collectorName: map['collectorName'] == null ? null : pulumi.Output.create<String>(map['collectorName'] as String),
-      discoverySiteId: map['discoverySiteId'] == null ? null : pulumi.Output.create<String>(map['discoverySiteId'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesBase.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
+      collectorName: map['collectorName'] == null ? null : (map['collectorName'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

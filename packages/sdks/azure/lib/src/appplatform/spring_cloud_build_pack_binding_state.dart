@@ -20,15 +20,11 @@ class SpringCloudBuildPackBindingState {
   /// [name] The name which should be used for this Spring Cloud Build Pack Binding. Changing this forces a new Spring Cloud Build Pack Binding to be created.
   /// [springCloudBuilderId] The ID of the Spring Cloud Builder. Changing this forces a new Spring Cloud Build Pack Binding to be created.
   SpringCloudBuildPackBindingState({
-    pulumi.Output<String>? bindingType,
-    pulumi.Output<SpringCloudBuildPackBindingLaunch>? launch,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? springCloudBuilderId,
-  }) :
-      bindingType = pulumi.Input.asOptionalInput<String>(bindingType),
-      launch = pulumi.Input.asOptionalInput<SpringCloudBuildPackBindingLaunch>(launch),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudBuilderId = pulumi.Input.asOptionalInput<String>(springCloudBuilderId);
+    this.bindingType,
+    this.launch,
+    this.name,
+    this.springCloudBuilderId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class SpringCloudBuildPackBindingState {
 
   factory SpringCloudBuildPackBindingState.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuildPackBindingState(
-      bindingType: map['bindingType'] == null ? null : pulumi.Output.create<String>(map['bindingType'] as String),
-      launch: map['launch'] == null ? null : pulumi.Output.create<SpringCloudBuildPackBindingLaunch>(SpringCloudBuildPackBindingLaunch.fromMap((map['launch'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudBuilderId: map['springCloudBuilderId'] == null ? null : pulumi.Output.create<String>(map['springCloudBuilderId'] as String),
+      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
+      launch: map['launch'] == null ? null : (SpringCloudBuildPackBindingLaunch.fromMap((map['launch'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudBuilderId: map['springCloudBuilderId'] == null ? null : (map['springCloudBuilderId'] as String).input(),
     );
   }
 }

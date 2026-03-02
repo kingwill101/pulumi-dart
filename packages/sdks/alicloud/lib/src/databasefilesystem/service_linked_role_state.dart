@@ -13,11 +13,9 @@ class ServiceLinkedRoleState {
   /// [productName] The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
   /// [status] The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
   ServiceLinkedRoleState({
-    pulumi.Output<String>? productName,
-    pulumi.Output<bool>? status,
-  }) :
-      productName = pulumi.Input.asOptionalInput<String>(productName),
-      status = pulumi.Input.asOptionalInput<bool>(status);
+    this.productName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ServiceLinkedRoleState {
 
   factory ServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleState(
-      productName: map['productName'] == null ? null : pulumi.Output.create<String>(map['productName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<bool>(map['status'] as bool),
+      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as bool).input(),
     );
   }
 }

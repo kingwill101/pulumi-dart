@@ -5,9 +5,9 @@ import 'firehose_delivery_stream_extended_s3_configuration_processing_configurat
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Specifies the data processors as multiple blocks. See `processors` block below for details.
-  final List<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>? processors;
+  final pulumi.Input<List<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
@@ -20,14 +20,14 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'processors': ?processors == null ? null : pulumi.Input.encodeList<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor, Map<String, dynamic>>(processors!, (value) => value.toMap()),
+      'processors': ?pulumi.Input.mapOptionalInputValue<List<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>, List<Map<String, dynamic>>>(processors, (value) => pulumi.Input.encodeList<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      processors: map['processors'] == null ? null : pulumi.Input.decodeList<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>())),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      processors: map['processors'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

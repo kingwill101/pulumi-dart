@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
   /// The command run when this `auto_heal` action is triggered.
-  final String executable;
+  final pulumi.Input<String> executable;
   /// The parameters passed to the `executable`.
-  final String parameters;
+  final pulumi.Input<String> parameters;
 
   /// Creates a new [GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction].
   /// [executable] The command run when this `auto_heal` action is triggered.
@@ -24,8 +25,8 @@ class GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
 
   factory GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigAutoHealSettingActionCustomAction(
-      executable: map['executable'] as String,
-      parameters: map['parameters'] as String,
+      executable: (map['executable'] as String).input(),
+      parameters: (map['parameters'] as String).input(),
     );
   }
 }

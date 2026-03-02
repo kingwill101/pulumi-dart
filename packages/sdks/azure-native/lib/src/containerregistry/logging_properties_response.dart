@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The logging properties of the connected registry.
 class LoggingPropertiesResponse {
   /// Indicates whether audit logs are enabled on the connected registry.
-  final String? auditLogStatus;
+  final pulumi.Input<String>? auditLogStatus;
   /// The verbosity of logs persisted on the connected registry.
-  final String? logLevel;
+  final pulumi.Input<String>? logLevel;
 
   /// Creates a new [LoggingPropertiesResponse].
   /// [auditLogStatus] Indicates whether audit logs are enabled on the connected registry.
@@ -25,8 +26,8 @@ class LoggingPropertiesResponse {
 
   factory LoggingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LoggingPropertiesResponse(
-      auditLogStatus: map['auditLogStatus'] == null ? null : map['auditLogStatus'] as String,
-      logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
+      auditLogStatus: map['auditLogStatus'] == null ? null : (map['auditLogStatus'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
     );
   }
 }

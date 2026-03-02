@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'buildpack_binding_launch_properties.dart';
 
 /// Properties of a buildpack binding
 class BuildpackBindingProperties {
   /// Buildpack Binding Type
-  final String? bindingType;
+  final pulumi.Input<String>? bindingType;
   /// The object describes the buildpack binding launch properties
-  final BuildpackBindingLaunchProperties? launchProperties;
+  final pulumi.Input<BuildpackBindingLaunchProperties>? launchProperties;
 
   /// Creates a new [BuildpackBindingProperties].
   /// [bindingType] Buildpack Binding Type
@@ -20,14 +21,14 @@ class BuildpackBindingProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bindingType': ?bindingType,
-      'launchProperties': ?launchProperties == null ? null : launchProperties!.toMap(),
+      'launchProperties': ?pulumi.Input.mapOptionalInputValue<BuildpackBindingLaunchProperties, Map<String, dynamic>>(launchProperties, (value) => value.toMap()),
     };
   }
 
   factory BuildpackBindingProperties.fromMap(Map<String, dynamic> map) {
     return BuildpackBindingProperties(
-      bindingType: map['bindingType'] == null ? null : map['bindingType'] as String,
-      launchProperties: map['launchProperties'] == null ? null : BuildpackBindingLaunchProperties.fromMap((map['launchProperties'] as Map).cast<String, dynamic>()),
+      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
+      launchProperties: map['launchProperties'] == null ? null : (BuildpackBindingLaunchProperties.fromMap((map['launchProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

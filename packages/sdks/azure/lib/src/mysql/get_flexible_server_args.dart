@@ -16,11 +16,9 @@ class GetFlexibleServerArgs {
   /// [name] Specifies the name of the MySQL Flexible Server.
   /// [resourceGroupName] The name of the resource group for the MySQL Flexible Server.
   GetFlexibleServerArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFlexibleServerArgs {
 
   factory GetFlexibleServerArgs.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

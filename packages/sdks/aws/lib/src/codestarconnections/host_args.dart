@@ -26,17 +26,12 @@ class HostArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcConfiguration] The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
   HostArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> providerEndpoint,
-    required pulumi.Output<String> providerType,
-    pulumi.Output<String>? region,
-    pulumi.Output<HostVpcConfiguration>? vpcConfiguration,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerEndpoint = pulumi.Input.asInput<String>(providerEndpoint),
-      providerType = pulumi.Input.asInput<String>(providerType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcConfiguration = pulumi.Input.asOptionalInput<HostVpcConfiguration>(vpcConfiguration);
+    this.name,
+    required this.providerEndpoint,
+    required this.providerType,
+    this.region,
+    this.vpcConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class HostArgs {
 
   factory HostArgs.fromMap(Map<String, dynamic> map) {
     return HostArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerEndpoint: pulumi.Output.create<String>(map['providerEndpoint'] as String),
-      providerType: pulumi.Output.create<String>(map['providerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : pulumi.Output.create<HostVpcConfiguration>(HostVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerEndpoint: (map['providerEndpoint'] as String).input(),
+      providerType: (map['providerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : (HostVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

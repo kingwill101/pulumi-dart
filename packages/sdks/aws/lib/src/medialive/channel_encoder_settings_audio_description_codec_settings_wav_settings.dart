@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings {
-  final double? bitDepth;
-  final String? codingMode;
+  final pulumi.Input<double>? bitDepth;
+  final pulumi.Input<String>? codingMode;
   /// Sample rate in Hz.
-  final double? sampleRate;
+  final pulumi.Input<double>? sampleRate;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings].
   /// [bitDepth] Optional.
@@ -27,9 +28,9 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings(
-      bitDepth: map['bitDepth'] == null ? null : map['bitDepth'] as double,
-      codingMode: map['codingMode'] == null ? null : map['codingMode'] as String,
-      sampleRate: map['sampleRate'] == null ? null : map['sampleRate'] as double,
+      bitDepth: map['bitDepth'] == null ? null : (map['bitDepth'] as double).input(),
+      codingMode: map['codingMode'] == null ? null : (map['codingMode'] as String).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
     );
   }
 }

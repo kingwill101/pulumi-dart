@@ -30,17 +30,12 @@ class ApiKeyArgs {
   /// [restrictions] Key restrictions.
   /// [serviceAccountEmail] The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
   ApiKeyArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ApiKeyRestrictions>? restrictions,
-    pulumi.Output<String>? serviceAccountEmail,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      restrictions = pulumi.Input.asOptionalInput<ApiKeyRestrictions>(restrictions),
-      serviceAccountEmail = pulumi.Input.asOptionalInput<String>(serviceAccountEmail);
+    this.displayName,
+    this.name,
+    this.project,
+    this.restrictions,
+    this.serviceAccountEmail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class ApiKeyArgs {
 
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      restrictions: map['restrictions'] == null ? null : pulumi.Output.create<ApiKeyRestrictions>(ApiKeyRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : pulumi.Output.create<String>(map['serviceAccountEmail'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      restrictions: map['restrictions'] == null ? null : (ApiKeyRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
     );
   }
 }

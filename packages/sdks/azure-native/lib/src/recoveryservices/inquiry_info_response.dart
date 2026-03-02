@@ -7,13 +7,13 @@ import 'workload_inquiry_details_response.dart';
 /// Details about inquired protectable items under a given container.
 class InquiryInfoResponse {
   /// Error Details if the Status is non-success.
-  final ErrorDetailResponse? errorDetail;
+  final pulumi.Input<ErrorDetailResponse>? errorDetail;
   /// Inquiry Details which will have workload specific details.
   /// For e.g. - For SQL and oracle this will contain different details.
-  final List<WorkloadInquiryDetailsResponse>? inquiryDetails;
+  final pulumi.Input<List<WorkloadInquiryDetailsResponse>>? inquiryDetails;
   /// Inquiry Status for this container such as
   /// InProgress | Failed | Succeeded
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [InquiryInfoResponse].
   /// [errorDetail] Error Details if the Status is non-success.
@@ -27,17 +27,17 @@ class InquiryInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorDetail': ?errorDetail == null ? null : errorDetail!.toMap(),
-      'inquiryDetails': ?inquiryDetails == null ? null : pulumi.Input.encodeList<WorkloadInquiryDetailsResponse, Map<String, dynamic>>(inquiryDetails!, (value) => value.toMap()),
+      'errorDetail': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(errorDetail, (value) => value.toMap()),
+      'inquiryDetails': ?pulumi.Input.mapOptionalInputValue<List<WorkloadInquiryDetailsResponse>, List<Map<String, dynamic>>>(inquiryDetails, (value) => pulumi.Input.encodeList<WorkloadInquiryDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': ?status,
     };
   }
 
   factory InquiryInfoResponse.fromMap(Map<String, dynamic> map) {
     return InquiryInfoResponse(
-      errorDetail: map['errorDetail'] == null ? null : ErrorDetailResponse.fromMap((map['errorDetail'] as Map).cast<String, dynamic>()),
-      inquiryDetails: map['inquiryDetails'] == null ? null : pulumi.Input.decodeList<WorkloadInquiryDetailsResponse>(map['inquiryDetails'], (value) => WorkloadInquiryDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail'] as Map).cast<String, dynamic>())).input(),
+      inquiryDetails: map['inquiryDetails'] == null ? null : (pulumi.Input.decodeList<WorkloadInquiryDetailsResponse>(map['inquiryDetails'], (value) => WorkloadInquiryDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

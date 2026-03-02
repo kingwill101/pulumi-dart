@@ -19,13 +19,10 @@ class GetTimeSeriesDatabaseConnectionArgs {
   /// [resourceName] The name of the DigitalTwinsInstance.
   /// [timeSeriesDatabaseConnectionName] Name of time series database connection.
   GetTimeSeriesDatabaseConnectionArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> timeSeriesDatabaseConnectionName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      timeSeriesDatabaseConnectionName = pulumi.Input.asInput<String>(timeSeriesDatabaseConnectionName);
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.timeSeriesDatabaseConnectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTimeSeriesDatabaseConnectionArgs {
 
   factory GetTimeSeriesDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetTimeSeriesDatabaseConnectionArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      timeSeriesDatabaseConnectionName: pulumi.Output.create<String>(map['timeSeriesDatabaseConnectionName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      timeSeriesDatabaseConnectionName: (map['timeSeriesDatabaseConnectionName'] as String).input(),
     );
   }
 }

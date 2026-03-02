@@ -6,9 +6,9 @@ import 'data_disk_response.dart';
 /// The storage profile of the VMSS.
 class StorageProfileResponse {
   /// A list of empty data disks to attach.
-  final List<DataDiskResponse>? dataDisks;
+  final pulumi.Input<List<DataDiskResponse>>? dataDisks;
   /// The Azure SKU name of the machines in the pool.
-  final String? osDiskStorageAccountType;
+  final pulumi.Input<String>? osDiskStorageAccountType;
 
   /// Creates a new [StorageProfileResponse].
   /// [dataDisks] A list of empty data disks to attach.
@@ -20,15 +20,15 @@ class StorageProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDisks': ?dataDisks == null ? null : pulumi.Input.encodeList<DataDiskResponse, Map<String, dynamic>>(dataDisks!, (value) => value.toMap()),
+      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<DataDiskResponse>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<DataDiskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'osDiskStorageAccountType': ?osDiskStorageAccountType,
     };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      dataDisks: map['dataDisks'] == null ? null : pulumi.Input.decodeList<DataDiskResponse>(map['dataDisks'], (value) => DataDiskResponse.fromMap((value as Map).cast<String, dynamic>())),
-      osDiskStorageAccountType: map['osDiskStorageAccountType'] == null ? null : map['osDiskStorageAccountType'] as String,
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDiskResponse>(map['dataDisks'], (value) => DataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDiskStorageAccountType: map['osDiskStorageAccountType'] == null ? null : (map['osDiskStorageAccountType'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduled_query_error_report_configuration_s3_configuration.dart';
 
 class ScheduledQueryErrorReportConfiguration {
   /// Configuration block for the S3 configuration for the error reports. See below.
-  final ScheduledQueryErrorReportConfigurationS3Configuration s3Configuration;
+  final pulumi.Input<ScheduledQueryErrorReportConfigurationS3Configuration> s3Configuration;
 
   /// Creates a new [ScheduledQueryErrorReportConfiguration].
   /// [s3Configuration] Configuration block for the S3 configuration for the error reports. See below.
@@ -14,13 +15,13 @@ class ScheduledQueryErrorReportConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Configuration': s3Configuration.toMap(),
+      's3Configuration': pulumi.Input.mapInputValue<ScheduledQueryErrorReportConfigurationS3Configuration, Map<String, dynamic>>(s3Configuration, (value) => value.toMap()),
     };
   }
 
   factory ScheduledQueryErrorReportConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryErrorReportConfiguration(
-      s3Configuration: ScheduledQueryErrorReportConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
+      s3Configuration: (ScheduledQueryErrorReportConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

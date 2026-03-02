@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Elastic Backup properties
 class ElasticBackupPropertiesResponse {
   /// Type of backup Manual or Scheduled
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The completion date of the backup
-  final String completionDate;
+  final pulumi.Input<String> completionDate;
   /// The creation date of the backup
-  final String creationDate;
+  final pulumi.Input<String> creationDate;
   /// ResourceId used to identify the elastic backup policy
-  final String elasticBackupPolicyResourceId;
+  final pulumi.Input<String> elasticBackupPolicyResourceId;
   /// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
-  final String? elasticSnapshotResourceId;
+  final pulumi.Input<String>? elasticSnapshotResourceId;
   /// ResourceId used to identify the Elastic Volume
-  final String elasticVolumeResourceId;
+  final pulumi.Input<String> elasticVolumeResourceId;
   /// Failure reason
-  final String failureReason;
+  final pulumi.Input<String> failureReason;
   /// Label for backup
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Azure lifecycle management.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Size of backup in bytes
-  final double size;
+  final pulumi.Input<double> size;
   /// The snapshot creation date of the backup
-  final String snapshotCreationDate;
+  final pulumi.Input<String> snapshotCreationDate;
   /// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
-  final String? snapshotUsage;
+  final pulumi.Input<String>? snapshotUsage;
   /// Specifies if the backup is for a large volume.
-  final String volumeSize;
+  final pulumi.Input<String> volumeSize;
 
   /// Creates a new [ElasticBackupPropertiesResponse].
   /// [backupType] Type of backup Manual or Scheduled
@@ -80,19 +81,19 @@ class ElasticBackupPropertiesResponse {
 
   factory ElasticBackupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticBackupPropertiesResponse(
-      backupType: map['backupType'] as String,
-      completionDate: map['completionDate'] as String,
-      creationDate: map['creationDate'] as String,
-      elasticBackupPolicyResourceId: map['elasticBackupPolicyResourceId'] as String,
-      elasticSnapshotResourceId: map['elasticSnapshotResourceId'] == null ? null : map['elasticSnapshotResourceId'] as String,
-      elasticVolumeResourceId: map['elasticVolumeResourceId'] as String,
-      failureReason: map['failureReason'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      provisioningState: map['provisioningState'] as String,
-      size: map['size'] as double,
-      snapshotCreationDate: map['snapshotCreationDate'] as String,
-      snapshotUsage: map['snapshotUsage'] == null ? null : map['snapshotUsage'] as String,
-      volumeSize: map['volumeSize'] as String,
+      backupType: (map['backupType'] as String).input(),
+      completionDate: (map['completionDate'] as String).input(),
+      creationDate: (map['creationDate'] as String).input(),
+      elasticBackupPolicyResourceId: (map['elasticBackupPolicyResourceId'] as String).input(),
+      elasticSnapshotResourceId: map['elasticSnapshotResourceId'] == null ? null : (map['elasticSnapshotResourceId'] as String).input(),
+      elasticVolumeResourceId: (map['elasticVolumeResourceId'] as String).input(),
+      failureReason: (map['failureReason'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      size: (map['size'] as double).input(),
+      snapshotCreationDate: (map['snapshotCreationDate'] as String).input(),
+      snapshotUsage: map['snapshotUsage'] == null ? null : (map['snapshotUsage'] as String).input(),
+      volumeSize: (map['volumeSize'] as String).input(),
     );
   }
 }

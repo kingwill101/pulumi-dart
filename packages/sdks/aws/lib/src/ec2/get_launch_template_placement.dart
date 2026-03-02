@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplatePlacement {
-  final String affinity;
-  final String availabilityZone;
-  final String groupId;
-  final String groupName;
-  final String hostId;
-  final String hostResourceGroupArn;
-  final int partitionNumber;
-  final String spreadDomain;
-  final String tenancy;
+  final pulumi.Input<String> affinity;
+  final pulumi.Input<String> availabilityZone;
+  final pulumi.Input<String> groupId;
+  final pulumi.Input<String> groupName;
+  final pulumi.Input<String> hostId;
+  final pulumi.Input<String> hostResourceGroupArn;
+  final pulumi.Input<int> partitionNumber;
+  final pulumi.Input<String> spreadDomain;
+  final pulumi.Input<String> tenancy;
 
   /// Creates a new [GetLaunchTemplatePlacement].
   /// [affinity] Required.
@@ -50,15 +51,15 @@ class GetLaunchTemplatePlacement {
 
   factory GetLaunchTemplatePlacement.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplatePlacement(
-      affinity: map['affinity'] as String,
-      availabilityZone: map['availabilityZone'] as String,
-      groupId: map['groupId'] as String,
-      groupName: map['groupName'] as String,
-      hostId: map['hostId'] as String,
-      hostResourceGroupArn: map['hostResourceGroupArn'] as String,
-      partitionNumber: map['partitionNumber'] as int,
-      spreadDomain: map['spreadDomain'] as String,
-      tenancy: map['tenancy'] as String,
+      affinity: (map['affinity'] as String).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      hostId: (map['hostId'] as String).input(),
+      hostResourceGroupArn: (map['hostResourceGroupArn'] as String).input(),
+      partitionNumber: (map['partitionNumber'] as int).input(),
+      spreadDomain: (map['spreadDomain'] as String).input(),
+      tenancy: (map['tenancy'] as String).input(),
     );
   }
 }

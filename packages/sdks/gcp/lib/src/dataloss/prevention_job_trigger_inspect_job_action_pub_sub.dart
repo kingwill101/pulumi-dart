@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobActionPubSub {
   /// Cloud Pub/Sub topic to send notifications to.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionPubSub].
   /// [topic] Cloud Pub/Sub topic to send notifications to.
@@ -19,7 +20,7 @@ class PreventionJobTriggerInspectJobActionPubSub {
 
   factory PreventionJobTriggerInspectJobActionPubSub.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionPubSub(
-      topic: map['topic'] as String,
+      topic: (map['topic'] as String).input(),
     );
   }
 }

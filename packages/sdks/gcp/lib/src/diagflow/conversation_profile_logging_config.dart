@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileLoggingConfig {
   /// Whether to log conversation events
-  final bool? enableStackdriverLogging;
+  final pulumi.Input<bool>? enableStackdriverLogging;
 
   /// Creates a new [ConversationProfileLoggingConfig].
   /// [enableStackdriverLogging] Whether to log conversation events
@@ -19,7 +20,7 @@ class ConversationProfileLoggingConfig {
 
   factory ConversationProfileLoggingConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileLoggingConfig(
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : map['enableStackdriverLogging'] as bool,
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
     );
   }
 }

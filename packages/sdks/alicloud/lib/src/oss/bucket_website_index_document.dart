@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteIndexDocument {
   /// The default home page.
-  final String? suffix;
+  final pulumi.Input<String>? suffix;
   /// Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
-  final bool? supportSubDir;
+  final pulumi.Input<bool>? supportSubDir;
   /// After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [BucketWebsiteIndexDocument].
   /// [suffix] The default home page.
@@ -29,9 +30,9 @@ class BucketWebsiteIndexDocument {
 
   factory BucketWebsiteIndexDocument.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteIndexDocument(
-      suffix: map['suffix'] == null ? null : map['suffix'] as String,
-      supportSubDir: map['supportSubDir'] == null ? null : map['supportSubDir'] as bool,
-      type: map['type'] == null ? null : map['type'] as String,
+      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      supportSubDir: map['supportSubDir'] == null ? null : (map['supportSubDir'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

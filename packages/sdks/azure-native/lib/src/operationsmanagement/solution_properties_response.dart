@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Solution properties supported by the OperationsManagement resource provider.
 class SolutionPropertiesResponse {
   /// The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.
-  final List<String>? containedResources;
+  final pulumi.Input<List<String>>? containedResources;
   /// The provisioning state for the solution.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The resources that will be referenced from this solution. Deleting any of those solution out of band will break the solution.
-  final List<String>? referencedResources;
+  final pulumi.Input<List<String>>? referencedResources;
   /// The azure resourceId for the workspace where the solution will be deployed/enabled.
-  final String workspaceResourceId;
+  final pulumi.Input<String> workspaceResourceId;
 
   /// Creates a new [SolutionPropertiesResponse].
   /// [containedResources] The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.
@@ -35,10 +36,10 @@ class SolutionPropertiesResponse {
 
   factory SolutionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SolutionPropertiesResponse(
-      containedResources: map['containedResources'] == null ? null : (map['containedResources'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      referencedResources: map['referencedResources'] == null ? null : (map['referencedResources'] as List).cast<String>(),
-      workspaceResourceId: map['workspaceResourceId'] as String,
+      containedResources: map['containedResources'] == null ? null : ((map['containedResources'] as List).cast<String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      referencedResources: map['referencedResources'] == null ? null : ((map['referencedResources'] as List).cast<String>()).input(),
+      workspaceResourceId: (map['workspaceResourceId'] as String).input(),
     );
   }
 }

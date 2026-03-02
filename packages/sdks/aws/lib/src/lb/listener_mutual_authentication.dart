@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerMutualAuthentication {
   /// Valid values are `off` and `on`.
-  final String? advertiseTrustStoreCaNames;
+  final pulumi.Input<String>? advertiseTrustStoreCaNames;
   /// Whether client certificate expiry is ignored.
   /// Default is `false`.
-  final bool? ignoreClientCertificateExpiry;
+  final pulumi.Input<bool>? ignoreClientCertificateExpiry;
   /// Valid values are `off`, `passthrough`, and `verify`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// ARN of the elbv2 Trust Store.
-  final String? trustStoreArn;
+  final pulumi.Input<String>? trustStoreArn;
 
   /// Creates a new [ListenerMutualAuthentication].
   /// [advertiseTrustStoreCaNames] Valid values are `off` and `on`.
@@ -35,10 +36,10 @@ class ListenerMutualAuthentication {
 
   factory ListenerMutualAuthentication.fromMap(Map<String, dynamic> map) {
     return ListenerMutualAuthentication(
-      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : map['advertiseTrustStoreCaNames'] as String,
-      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] == null ? null : map['ignoreClientCertificateExpiry'] as bool,
-      mode: map['mode'] as String,
-      trustStoreArn: map['trustStoreArn'] == null ? null : map['trustStoreArn'] as String,
+      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : (map['advertiseTrustStoreCaNames'] as String).input(),
+      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] == null ? null : (map['ignoreClientCertificateExpiry'] as bool).input(),
+      mode: (map['mode'] as String).input(),
+      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn'] as String).input(),
     );
   }
 }

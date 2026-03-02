@@ -28,17 +28,12 @@ class RefreshScheduleArgs {
   /// [schedule] The [refresh schedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshSchedule.html). See schedule
   /// [scheduleId] The ID of the refresh schedule.
   RefreshScheduleArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<String> dataSetId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<RefreshScheduleSchedule> schedule,
-    required pulumi.Output<String> scheduleId,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      dataSetId = pulumi.Input.asInput<String>(dataSetId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedule = pulumi.Input.asInput<RefreshScheduleSchedule>(schedule),
-      scheduleId = pulumi.Input.asInput<String>(scheduleId);
+    this.awsAccountId,
+    required this.dataSetId,
+    this.region,
+    required this.schedule,
+    required this.scheduleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class RefreshScheduleArgs {
 
   factory RefreshScheduleArgs.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      dataSetId: pulumi.Output.create<String>(map['dataSetId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schedule: pulumi.Output.create<RefreshScheduleSchedule>(RefreshScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scheduleId: pulumi.Output.create<String>(map['scheduleId'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      dataSetId: (map['dataSetId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schedule: (RefreshScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scheduleId: (map['scheduleId'] as String).input(),
     );
   }
 }

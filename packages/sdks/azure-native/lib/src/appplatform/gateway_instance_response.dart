@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Collection of instances belong to the Spring Cloud Gateway
 class GatewayInstanceResponse {
   /// Name of the Spring Cloud Gateway instance
-  final String name;
+  final pulumi.Input<String> name;
   /// Status of the Spring Cloud Gateway instance
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GatewayInstanceResponse].
   /// [name] Name of the Spring Cloud Gateway instance
@@ -25,8 +26,8 @@ class GatewayInstanceResponse {
 
   factory GatewayInstanceResponse.fromMap(Map<String, dynamic> map) {
     return GatewayInstanceResponse(
-      name: map['name'] as String,
-      status: map['status'] as String,
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

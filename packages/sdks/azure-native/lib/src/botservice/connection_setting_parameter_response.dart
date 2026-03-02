@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Extra Parameter in a Connection Setting Properties to indicate service provider specific properties
 class ConnectionSettingParameterResponse {
   /// Key for the Connection Setting Parameter.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Value associated with the Connection Setting Parameter.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ConnectionSettingParameterResponse].
   /// [key] Key for the Connection Setting Parameter.
@@ -25,8 +26,8 @@ class ConnectionSettingParameterResponse {
 
   factory ConnectionSettingParameterResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionSettingParameterResponse(
-      key: map['key'] == null ? null : map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

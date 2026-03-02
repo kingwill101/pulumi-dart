@@ -71,33 +71,20 @@ class PluginInstanceState {
   /// [state] The current state of the plugin instance (e.g., enabled, disabled,
   /// [updateTime] Timestamp indicating when the plugin instance was last updated.
   PluginInstanceState({
-    pulumi.Output<List<PluginInstanceAction>>? actions,
-    pulumi.Output<PluginInstanceAuthConfig>? authConfig,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? disable,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? errorMessage,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? plugin,
-    pulumi.Output<String>? pluginInstanceId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<PluginInstanceAction>>(actions),
-      authConfig = pulumi.Input.asOptionalInput<PluginInstanceAuthConfig>(authConfig),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      disable = pulumi.Input.asOptionalInput<bool>(disable),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      errorMessage = pulumi.Input.asOptionalInput<String>(errorMessage),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plugin = pulumi.Input.asOptionalInput<String>(plugin),
-      pluginInstanceId = pulumi.Input.asOptionalInput<String>(pluginInstanceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.actions,
+    this.authConfig,
+    this.createTime,
+    this.disable,
+    this.displayName,
+    this.errorMessage,
+    this.location,
+    this.name,
+    this.plugin,
+    this.pluginInstanceId,
+    this.project,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -119,19 +106,19 @@ class PluginInstanceState {
 
   factory PluginInstanceState.fromMap(Map<String, dynamic> map) {
     return PluginInstanceState(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<PluginInstanceAction>>(pulumi.Input.decodeList<PluginInstanceAction>(map['actions'], (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>()))),
-      authConfig: map['authConfig'] == null ? null : pulumi.Output.create<PluginInstanceAuthConfig>(PluginInstanceAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      disable: map['disable'] == null ? null : pulumi.Output.create<bool>(map['disable'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      errorMessage: map['errorMessage'] == null ? null : pulumi.Output.create<String>(map['errorMessage'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plugin: map['plugin'] == null ? null : pulumi.Output.create<String>(map['plugin'] as String),
-      pluginInstanceId: map['pluginInstanceId'] == null ? null : pulumi.Output.create<String>(map['pluginInstanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceAction>(map['actions'], (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authConfig: map['authConfig'] == null ? null : (PluginInstanceAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plugin: map['plugin'] == null ? null : (map['plugin'] as String).input(),
+      pluginInstanceId: map['pluginInstanceId'] == null ? null : (map['pluginInstanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

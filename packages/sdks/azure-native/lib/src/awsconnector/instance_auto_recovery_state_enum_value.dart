@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InstanceAutoRecoveryStateEnumValue
 class InstanceAutoRecoveryStateEnumValue {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [InstanceAutoRecoveryStateEnumValue].
   /// [value] Property value
@@ -20,7 +21,7 @@ class InstanceAutoRecoveryStateEnumValue {
 
   factory InstanceAutoRecoveryStateEnumValue.fromMap(Map<String, dynamic> map) {
     return InstanceAutoRecoveryStateEnumValue(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

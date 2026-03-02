@@ -51,19 +51,13 @@ class V2FolderSccBigQueryExportArgs {
   /// [folder] The folder where Cloud Security Command Center Big Query Export
   /// [location] The BigQuery export configuration is stored in this location. If not provided, Use global as default.
   V2FolderSccBigQueryExportArgs({
-    required pulumi.Output<String> bigQueryExportId,
-    pulumi.Output<String>? dataset,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> folder,
-    pulumi.Output<String>? location,
-  }) :
-      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      folder = pulumi.Input.asInput<String>(folder),
-      location = pulumi.Input.asOptionalInput<String>(location);
+    required this.bigQueryExportId,
+    this.dataset,
+    this.description,
+    this.filter,
+    required this.folder,
+    this.location,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,12 +72,12 @@ class V2FolderSccBigQueryExportArgs {
 
   factory V2FolderSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderSccBigQueryExportArgs(
-      bigQueryExportId: pulumi.Output.create<String>(map['bigQueryExportId'] as String),
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      bigQueryExportId: (map['bigQueryExportId'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      folder: (map['folder'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
     );
   }
 }

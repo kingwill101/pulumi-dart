@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mcc cache node Bgp Cidr details.
 class BgpCidrsConfigurationResponse {
   /// Mcc cache node Bgp Cidr details.
-  final List<String> bgpCidrs;
+  final pulumi.Input<List<String>> bgpCidrs;
 
   /// Creates a new [BgpCidrsConfigurationResponse].
   /// [bgpCidrs] Mcc cache node Bgp Cidr details.
@@ -20,7 +21,7 @@ class BgpCidrsConfigurationResponse {
 
   factory BgpCidrsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BgpCidrsConfigurationResponse(
-      bgpCidrs: (map['bgpCidrs'] as List).cast<String>(),
+      bgpCidrs: ((map['bgpCidrs'] as List).cast<String>()).input(),
     );
   }
 }

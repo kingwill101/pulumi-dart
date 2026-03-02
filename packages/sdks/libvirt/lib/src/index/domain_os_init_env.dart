@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsInitEnv {
   /// Defines the name of an environment variable to set during domain initialization.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the value associated with an environment variable for the init process.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DomainOsInitEnv].
   /// [name] Defines the name of an environment variable to set during domain initialization.
@@ -24,8 +25,8 @@ class DomainOsInitEnv {
 
   factory DomainOsInitEnv.fromMap(Map<String, dynamic> map) {
     return DomainOsInitEnv(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

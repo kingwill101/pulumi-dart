@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityReservationSku {
   /// Specifies the number of instances to be reserved. It must be greater than or equal to `0` and not exceed the quota in the subscription.
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// Name of the sku, such as `Standard_F2`. Changing this forces a new resource to be created.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CapacityReservationSku].
   /// [capacity] Specifies the number of instances to be reserved. It must be greater than or equal to `0` and not exceed the quota in the subscription.
@@ -24,8 +25,8 @@ class CapacityReservationSku {
 
   factory CapacityReservationSku.fromMap(Map<String, dynamic> map) {
     return CapacityReservationSku(
-      capacity: map['capacity'] as int,
-      name: map['name'] as String,
+      capacity: (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

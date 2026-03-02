@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource health details
 class HealthResponse {
   /// Health state of the resource
-  final String healthState;
+  final pulumi.Input<String> healthState;
   /// Reasons impacting health state
-  final String impactingReasons;
+  final pulumi.Input<String> impactingReasons;
 
   /// Creates a new [HealthResponse].
   /// [healthState] Health state of the resource
@@ -25,8 +26,8 @@ class HealthResponse {
 
   factory HealthResponse.fromMap(Map<String, dynamic> map) {
     return HealthResponse(
-      healthState: map['healthState'] as String,
-      impactingReasons: map['impactingReasons'] as String,
+      healthState: (map['healthState'] as String).input(),
+      impactingReasons: (map['impactingReasons'] as String).input(),
     );
   }
 }

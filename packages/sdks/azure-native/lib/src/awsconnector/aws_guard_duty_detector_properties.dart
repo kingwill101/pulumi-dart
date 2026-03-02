@@ -8,17 +8,17 @@ import 'tag_item.dart';
 /// Definition of awsGuardDutyDetector
 class AwsGuardDutyDetectorProperties {
   /// Property dataSources
-  final CFNDataSourceConfigurations? dataSources;
+  final pulumi.Input<CFNDataSourceConfigurations>? dataSources;
   /// Property enable
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
   /// Property features
-  final List<CFNFeatureConfiguration>? features;
+  final pulumi.Input<List<CFNFeatureConfiguration>>? features;
   /// Property findingPublishingFrequency
-  final String? findingPublishingFrequency;
+  final pulumi.Input<String>? findingPublishingFrequency;
   /// Property id
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Property tags
-  final List<TagItem>? tags;
+  final pulumi.Input<List<TagItem>>? tags;
 
   /// Creates a new [AwsGuardDutyDetectorProperties].
   /// [dataSources] Property dataSources
@@ -38,23 +38,23 @@ class AwsGuardDutyDetectorProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSources': ?dataSources == null ? null : dataSources!.toMap(),
+      'dataSources': ?pulumi.Input.mapOptionalInputValue<CFNDataSourceConfigurations, Map<String, dynamic>>(dataSources, (value) => value.toMap()),
       'enable': ?enable,
-      'features': ?features == null ? null : pulumi.Input.encodeList<CFNFeatureConfiguration, Map<String, dynamic>>(features!, (value) => value.toMap()),
+      'features': ?pulumi.Input.mapOptionalInputValue<List<CFNFeatureConfiguration>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<CFNFeatureConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'findingPublishingFrequency': ?findingPublishingFrequency,
       'id': ?id,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagItem, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagItem>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagItem, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsGuardDutyDetectorProperties.fromMap(Map<String, dynamic> map) {
     return AwsGuardDutyDetectorProperties(
-      dataSources: map['dataSources'] == null ? null : CFNDataSourceConfigurations.fromMap((map['dataSources'] as Map).cast<String, dynamic>()),
-      enable: map['enable'] == null ? null : map['enable'] as bool,
-      features: map['features'] == null ? null : pulumi.Input.decodeList<CFNFeatureConfiguration>(map['features'], (value) => CFNFeatureConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : map['findingPublishingFrequency'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagItem>(map['tags'], (value) => TagItem.fromMap((value as Map).cast<String, dynamic>())),
+      dataSources: map['dataSources'] == null ? null : (CFNDataSourceConfigurations.fromMap((map['dataSources'] as Map).cast<String, dynamic>())).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<CFNFeatureConfiguration>(map['features'], (value) => CFNFeatureConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : (map['findingPublishingFrequency'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagItem>(map['tags'], (value) => TagItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

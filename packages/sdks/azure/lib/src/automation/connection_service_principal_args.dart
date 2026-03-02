@@ -34,23 +34,15 @@ class ConnectionServicePrincipalArgs {
   /// [subscriptionId] The subscription GUID.
   /// [tenantId] The ID of the Tenant the Service Principal is assigned in.
   ConnectionServicePrincipalArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> certificateThumbprint,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subscriptionId,
-    required pulumi.Output<String> tenantId,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      certificateThumbprint = pulumi.Input.asInput<String>(certificateThumbprint),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    required this.applicationId,
+    required this.automationAccountName,
+    required this.certificateThumbprint,
+    this.description,
+    this.name,
+    required this.resourceGroupName,
+    required this.subscriptionId,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ConnectionServicePrincipalArgs {
 
   factory ConnectionServicePrincipalArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionServicePrincipalArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      certificateThumbprint: pulumi.Output.create<String>(map['certificateThumbprint'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      certificateThumbprint: (map['certificateThumbprint'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

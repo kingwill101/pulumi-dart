@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Simplified google.rpc.Status type (omitting details).
 class SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
   /// The status code, which should be an enum value of google.rpc.Code.
-  final int code;
+  final pulumi.Input<int> code;
   /// A developer-facing error message, which should be in English.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [SecurityPolicyRuleRateLimitOptionsRpcStatusResponse].
   /// [code] The status code, which should be an enum value of google.rpc.Code.
@@ -25,8 +26,8 @@ class SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
 
   factory SecurityPolicyRuleRateLimitOptionsRpcStatusResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsRpcStatusResponse(
-      code: map['code'] as int,
-      message: map['message'] as String,
+      code: (map['code'] as int).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

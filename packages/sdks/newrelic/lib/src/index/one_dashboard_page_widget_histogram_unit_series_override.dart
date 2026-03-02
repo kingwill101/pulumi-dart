@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OneDashboardPageWidgetHistogramUnitSeriesOverride {
   /// Series name
-  final String? seriesName;
+  final pulumi.Input<String>? seriesName;
   /// (Optional) Choose a unit to customize the unit on your Y axis and in each of your series.
-  final String? unit;
+  final pulumi.Input<String>? unit;
 
   /// Creates a new [OneDashboardPageWidgetHistogramUnitSeriesOverride].
   /// [seriesName] Series name
@@ -24,8 +25,8 @@ class OneDashboardPageWidgetHistogramUnitSeriesOverride {
 
   factory OneDashboardPageWidgetHistogramUnitSeriesOverride.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetHistogramUnitSeriesOverride(
-      seriesName: map['seriesName'] == null ? null : map['seriesName'] as String,
-      unit: map['unit'] == null ? null : map['unit'] as String,
+      seriesName: map['seriesName'] == null ? null : (map['seriesName'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
     );
   }
 }

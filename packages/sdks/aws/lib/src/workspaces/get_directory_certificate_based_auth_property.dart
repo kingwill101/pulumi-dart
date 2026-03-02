@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectoryCertificateBasedAuthProperty {
-  final String certificateAuthorityArn;
-  final String status;
+  final pulumi.Input<String> certificateAuthorityArn;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetDirectoryCertificateBasedAuthProperty].
   /// [certificateAuthorityArn] Required.
@@ -22,8 +23,8 @@ class GetDirectoryCertificateBasedAuthProperty {
 
   factory GetDirectoryCertificateBasedAuthProperty.fromMap(Map<String, dynamic> map) {
     return GetDirectoryCertificateBasedAuthProperty(
-      certificateAuthorityArn: map['certificateAuthorityArn'] as String,
-      status: map['status'] as String,
+      certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ContainerStateTerminated is a terminated state of a container.
 class ContainerStateTerminated {
   /// Container's ID in the format '<type>://<container_id>'
-  final String? containerID;
+  final pulumi.Input<String>? containerID;
   /// Exit status from the last termination of the container
-  final int exitCode;
+  final pulumi.Input<int> exitCode;
   /// Time at which the container last terminated
-  final String? finishedAt;
+  final pulumi.Input<String>? finishedAt;
   /// Message regarding the last termination of the container
-  final String? message;
+  final pulumi.Input<String>? message;
   /// (brief) reason from the last termination of the container
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// Signal from the last termination of the container
-  final int? signal;
+  final pulumi.Input<int>? signal;
   /// Time at which previous execution of the container started
-  final String? startedAt;
+  final pulumi.Input<String>? startedAt;
 
   /// Creates a new [ContainerStateTerminated].
   /// [containerID] Container's ID in the format '<type>://<container_id>'
@@ -50,13 +51,13 @@ class ContainerStateTerminated {
 
   factory ContainerStateTerminated.fromMap(Map<String, dynamic> map) {
     return ContainerStateTerminated(
-      containerID: map['containerID'] == null ? null : map['containerID'] as String,
-      exitCode: map['exitCode'] as int,
-      finishedAt: map['finishedAt'] == null ? null : map['finishedAt'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      signal: map['signal'] == null ? null : map['signal'] as int,
-      startedAt: map['startedAt'] == null ? null : map['startedAt'] as String,
+      containerID: map['containerID'] == null ? null : (map['containerID'] as String).input(),
+      exitCode: (map['exitCode'] as int).input(),
+      finishedAt: map['finishedAt'] == null ? null : (map['finishedAt'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      signal: map['signal'] == null ? null : (map['signal'] as int).input(),
+      startedAt: map['startedAt'] == null ? null : (map['startedAt'] as String).input(),
     );
   }
 }

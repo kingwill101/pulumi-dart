@@ -22,15 +22,11 @@ class ManagedDiskSasTokenState {
   /// [managedDiskId] The ID of an existing Managed Disk which should be exported. Changing this forces a new resource to be created.
   /// [sasUrl] The computed Shared Access Signature (SAS) of the Managed Disk.
   ManagedDiskSasTokenState({
-    pulumi.Output<String>? accessLevel,
-    pulumi.Output<int>? durationInSeconds,
-    pulumi.Output<String>? managedDiskId,
-    pulumi.Output<String>? sasUrl,
-  }) :
-      accessLevel = pulumi.Input.asOptionalInput<String>(accessLevel),
-      durationInSeconds = pulumi.Input.asOptionalInput<int>(durationInSeconds),
-      managedDiskId = pulumi.Input.asOptionalInput<String>(managedDiskId),
-      sasUrl = pulumi.Input.asOptionalInput<String>(sasUrl);
+    this.accessLevel,
+    this.durationInSeconds,
+    this.managedDiskId,
+    this.sasUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ManagedDiskSasTokenState {
 
   factory ManagedDiskSasTokenState.fromMap(Map<String, dynamic> map) {
     return ManagedDiskSasTokenState(
-      accessLevel: map['accessLevel'] == null ? null : pulumi.Output.create<String>(map['accessLevel'] as String),
-      durationInSeconds: map['durationInSeconds'] == null ? null : pulumi.Output.create<int>(map['durationInSeconds'] as int),
-      managedDiskId: map['managedDiskId'] == null ? null : pulumi.Output.create<String>(map['managedDiskId'] as String),
-      sasUrl: map['sasUrl'] == null ? null : pulumi.Output.create<String>(map['sasUrl'] as String),
+      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel'] as String).input(),
+      durationInSeconds: map['durationInSeconds'] == null ? null : (map['durationInSeconds'] as int).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
+      sasUrl: map['sasUrl'] == null ? null : (map['sasUrl'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis {
   /// Partition key used for partitioning, which can be a default measure_name or a customer defined partition key.
-  final List<String>? partitionKeys;
+  final pulumi.Input<List<String>>? partitionKeys;
   /// ARN of the table which is queried with the largest time range.
-  final String? tableArn;
+  final pulumi.Input<String>? tableArn;
   /// Maximum duration in nanoseconds between the start and end of the query.
-  final double? value;
+  final pulumi.Input<double>? value;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis].
   /// [partitionKeys] Partition key used for partitioning, which can be a default measure_name or a customer defined partition key.
@@ -29,9 +30,9 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis
 
   factory ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis(
-      partitionKeys: map['partitionKeys'] == null ? null : (map['partitionKeys'] as List).cast<String>(),
-      tableArn: map['tableArn'] == null ? null : map['tableArn'] as String,
-      value: map['value'] == null ? null : map['value'] as double,
+      partitionKeys: map['partitionKeys'] == null ? null : ((map['partitionKeys'] as List).cast<String>()).input(),
+      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as double).input(),
     );
   }
 }

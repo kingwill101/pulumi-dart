@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustProviderSseSpecification {
-  final bool? customerManagedKeyEnabled;
-  final String? kmsKeyArn;
+  final pulumi.Input<bool>? customerManagedKeyEnabled;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Creates a new [TrustProviderSseSpecification].
   /// [customerManagedKeyEnabled] Optional.
@@ -22,8 +23,8 @@ class TrustProviderSseSpecification {
 
   factory TrustProviderSseSpecification.fromMap(Map<String, dynamic> map) {
     return TrustProviderSseSpecification(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : map['customerManagedKeyEnabled'] as bool,
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
+      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : (map['customerManagedKeyEnabled'] as bool).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
     );
   }
 }

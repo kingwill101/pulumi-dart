@@ -8,11 +8,11 @@ import 'gallery_osdisk_image.dart';
 /// This is the storage profile of a Gallery Image Version.
 class GalleryImageVersionStorageProfile {
   /// A list of data disk images.
-  final List<GalleryDataDiskImage>? dataDiskImages;
+  final pulumi.Input<List<GalleryDataDiskImage>>? dataDiskImages;
   /// This is the OS disk image.
-  final GalleryOSDiskImage? osDiskImage;
+  final pulumi.Input<GalleryOSDiskImage>? osDiskImage;
   /// The source of the gallery artifact version.
-  final GalleryArtifactVersionFullSource? source;
+  final pulumi.Input<GalleryArtifactVersionFullSource>? source;
 
   /// Creates a new [GalleryImageVersionStorageProfile].
   /// [dataDiskImages] A list of data disk images.
@@ -26,17 +26,17 @@ class GalleryImageVersionStorageProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDiskImages': ?dataDiskImages == null ? null : pulumi.Input.encodeList<GalleryDataDiskImage, Map<String, dynamic>>(dataDiskImages!, (value) => value.toMap()),
-      'osDiskImage': ?osDiskImage == null ? null : osDiskImage!.toMap(),
-      'source': ?source == null ? null : source!.toMap(),
+      'dataDiskImages': ?pulumi.Input.mapOptionalInputValue<List<GalleryDataDiskImage>, List<Map<String, dynamic>>>(dataDiskImages, (value) => pulumi.Input.encodeList<GalleryDataDiskImage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'osDiskImage': ?pulumi.Input.mapOptionalInputValue<GalleryOSDiskImage, Map<String, dynamic>>(osDiskImage, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<GalleryArtifactVersionFullSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory GalleryImageVersionStorageProfile.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionStorageProfile(
-      dataDiskImages: map['dataDiskImages'] == null ? null : pulumi.Input.decodeList<GalleryDataDiskImage>(map['dataDiskImages'], (value) => GalleryDataDiskImage.fromMap((value as Map).cast<String, dynamic>())),
-      osDiskImage: map['osDiskImage'] == null ? null : GalleryOSDiskImage.fromMap((map['osDiskImage'] as Map).cast<String, dynamic>()),
-      source: map['source'] == null ? null : GalleryArtifactVersionFullSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      dataDiskImages: map['dataDiskImages'] == null ? null : (pulumi.Input.decodeList<GalleryDataDiskImage>(map['dataDiskImages'], (value) => GalleryDataDiskImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDiskImage: map['osDiskImage'] == null ? null : (GalleryOSDiskImage.fromMap((map['osDiskImage'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (GalleryArtifactVersionFullSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

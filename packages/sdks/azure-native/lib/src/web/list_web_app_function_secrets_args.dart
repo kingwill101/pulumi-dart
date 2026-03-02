@@ -19,13 +19,10 @@ class ListWebAppFunctionSecretsArgs {
   /// [name] Site name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   ListWebAppFunctionSecretsArgs({
-    required pulumi.Output<String> functionName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.functionName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListWebAppFunctionSecretsArgs {
 
   factory ListWebAppFunctionSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListWebAppFunctionSecretsArgs(
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      functionName: (map['functionName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

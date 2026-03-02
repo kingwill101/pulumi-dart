@@ -6,7 +6,7 @@ import 'custom_sip_header.dart';
 /// Properties of Custom SIP Headers.
 class CustomSipHeadersProperties {
   /// The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
-  final List<CustomSipHeader>? headers;
+  final pulumi.Input<List<CustomSipHeader>>? headers;
 
   /// Creates a new [CustomSipHeadersProperties].
   /// [headers] The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
@@ -16,13 +16,13 @@ class CustomSipHeadersProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<CustomSipHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<CustomSipHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<CustomSipHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CustomSipHeadersProperties.fromMap(Map<String, dynamic> map) {
     return CustomSipHeadersProperties(
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<CustomSipHeader>(map['headers'], (value) => CustomSipHeader.fromMap((value as Map).cast<String, dynamic>())),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<CustomSipHeader>(map['headers'], (value) => CustomSipHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

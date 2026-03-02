@@ -8,19 +8,19 @@ import 'session_probe.dart';
 /// Container definitions for the sessions of the session pool.
 class SessionContainer {
   /// Container start command arguments.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// Container start command.
-  final List<String>? command;
+  final pulumi.Input<List<String>>? command;
   /// Container environment variables.
-  final List<EnvironmentVar>? env;
+  final pulumi.Input<List<EnvironmentVar>>? env;
   /// Container image tag.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// Custom container name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// List of probes for the container.
-  final List<SessionProbe>? probes;
+  final pulumi.Input<List<SessionProbe>>? probes;
   /// Container resource requirements.
-  final SessionContainerResources? resources;
+  final pulumi.Input<SessionContainerResources>? resources;
 
   /// Creates a new [SessionContainer].
   /// [args] Container start command arguments.
@@ -44,23 +44,23 @@ class SessionContainer {
     return <String, dynamic>{
       'args': ?args,
       'command': ?command,
-      'env': ?env == null ? null : pulumi.Input.encodeList<EnvironmentVar, Map<String, dynamic>>(env!, (value) => value.toMap()),
+      'env': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentVar>, List<Map<String, dynamic>>>(env, (value) => pulumi.Input.encodeList<EnvironmentVar, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': ?image,
       'name': ?name,
-      'probes': ?probes == null ? null : pulumi.Input.encodeList<SessionProbe, Map<String, dynamic>>(probes!, (value) => value.toMap()),
-      'resources': ?resources == null ? null : resources!.toMap(),
+      'probes': ?pulumi.Input.mapOptionalInputValue<List<SessionProbe>, List<Map<String, dynamic>>>(probes, (value) => pulumi.Input.encodeList<SessionProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources': ?pulumi.Input.mapOptionalInputValue<SessionContainerResources, Map<String, dynamic>>(resources, (value) => value.toMap()),
     };
   }
 
   factory SessionContainer.fromMap(Map<String, dynamic> map) {
     return SessionContainer(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      command: map['command'] == null ? null : (map['command'] as List).cast<String>(),
-      env: map['env'] == null ? null : pulumi.Input.decodeList<EnvironmentVar>(map['env'], (value) => EnvironmentVar.fromMap((value as Map).cast<String, dynamic>())),
-      image: map['image'] == null ? null : map['image'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      probes: map['probes'] == null ? null : pulumi.Input.decodeList<SessionProbe>(map['probes'], (value) => SessionProbe.fromMap((value as Map).cast<String, dynamic>())),
-      resources: map['resources'] == null ? null : SessionContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>()),
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<EnvironmentVar>(map['env'], (value) => EnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<SessionProbe>(map['probes'], (value) => SessionProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (SessionContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

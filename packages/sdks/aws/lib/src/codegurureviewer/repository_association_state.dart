@@ -51,35 +51,21 @@ class RepositoryAssociationState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   RepositoryAssociationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? associationId,
-    pulumi.Output<String>? connectionArn,
-    pulumi.Output<RepositoryAssociationKmsKeyDetails>? kmsKeyDetails,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? owner,
-    pulumi.Output<String>? providerType,
-    pulumi.Output<String>? region,
-    pulumi.Output<RepositoryAssociationRepository>? repository,
-    pulumi.Output<List<RepositoryAssociationS3RepositoryDetail>>? s3RepositoryDetails,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? stateReason,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      associationId = pulumi.Input.asOptionalInput<String>(associationId),
-      connectionArn = pulumi.Input.asOptionalInput<String>(connectionArn),
-      kmsKeyDetails = pulumi.Input.asOptionalInput<RepositoryAssociationKmsKeyDetails>(kmsKeyDetails),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      providerType = pulumi.Input.asOptionalInput<String>(providerType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repository = pulumi.Input.asOptionalInput<RepositoryAssociationRepository>(repository),
-      s3RepositoryDetails = pulumi.Input.asOptionalInput<List<RepositoryAssociationS3RepositoryDetail>>(s3RepositoryDetails),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      stateReason = pulumi.Input.asOptionalInput<String>(stateReason),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.associationId,
+    this.connectionArn,
+    this.kmsKeyDetails,
+    this.name,
+    this.owner,
+    this.providerType,
+    this.region,
+    this.repository,
+    this.s3RepositoryDetails,
+    this.state,
+    this.stateReason,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class RepositoryAssociationState {
 
   factory RepositoryAssociationState.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      associationId: map['associationId'] == null ? null : pulumi.Output.create<String>(map['associationId'] as String),
-      connectionArn: map['connectionArn'] == null ? null : pulumi.Output.create<String>(map['connectionArn'] as String),
-      kmsKeyDetails: map['kmsKeyDetails'] == null ? null : pulumi.Output.create<RepositoryAssociationKmsKeyDetails>(RepositoryAssociationKmsKeyDetails.fromMap((map['kmsKeyDetails'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      providerType: map['providerType'] == null ? null : pulumi.Output.create<String>(map['providerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repository: map['repository'] == null ? null : pulumi.Output.create<RepositoryAssociationRepository>(RepositoryAssociationRepository.fromMap((map['repository'] as Map).cast<String, dynamic>())),
-      s3RepositoryDetails: map['s3RepositoryDetails'] == null ? null : pulumi.Output.create<List<RepositoryAssociationS3RepositoryDetail>>(pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetail>(map['s3RepositoryDetails'], (value) => RepositoryAssociationS3RepositoryDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      stateReason: map['stateReason'] == null ? null : pulumi.Output.create<String>(map['stateReason'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      connectionArn: map['connectionArn'] == null ? null : (map['connectionArn'] as String).input(),
+      kmsKeyDetails: map['kmsKeyDetails'] == null ? null : (RepositoryAssociationKmsKeyDetails.fromMap((map['kmsKeyDetails'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repository: map['repository'] == null ? null : (RepositoryAssociationRepository.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
+      s3RepositoryDetails: map['s3RepositoryDetails'] == null ? null : (pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetail>(map['s3RepositoryDetails'], (value) => RepositoryAssociationS3RepositoryDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      stateReason: map['stateReason'] == null ? null : (map['stateReason'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

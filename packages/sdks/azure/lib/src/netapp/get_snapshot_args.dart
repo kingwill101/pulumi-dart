@@ -25,17 +25,12 @@ class GetSnapshotArgs {
   /// [resourceGroupName] The Name of the Resource Group where the NetApp Snapshot exists.
   /// [volumeName] The name of the NetApp Volume where the NetApp Snapshot exists.
   GetSnapshotArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> volumeName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      name = pulumi.Input.asInput<String>(name),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      volumeName = pulumi.Input.asInput<String>(volumeName);
+    required this.accountName,
+    required this.name,
+    required this.poolName,
+    required this.resourceGroupName,
+    required this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      name: (map['name'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

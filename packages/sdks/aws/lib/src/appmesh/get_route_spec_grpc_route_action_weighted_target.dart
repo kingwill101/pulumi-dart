@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteSpecGrpcRouteActionWeightedTarget {
-  final int port;
-  final String virtualNode;
-  final int weight;
+  final pulumi.Input<int> port;
+  final pulumi.Input<String> virtualNode;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetRouteSpecGrpcRouteActionWeightedTarget].
   /// [port] Required.
@@ -26,9 +27,9 @@ class GetRouteSpecGrpcRouteActionWeightedTarget {
 
   factory GetRouteSpecGrpcRouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteActionWeightedTarget(
-      port: map['port'] as int,
-      virtualNode: map['virtualNode'] as String,
-      weight: map['weight'] as int,
+      port: (map['port'] as int).input(),
+      virtualNode: (map['virtualNode'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

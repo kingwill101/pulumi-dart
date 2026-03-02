@@ -16,13 +16,10 @@ class GetDataTaxonomyArgs {
   /// [location] Required.
   /// [project] Optional.
   GetDataTaxonomyArgs({
-    required pulumi.Output<String> dataTaxonomyId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      dataTaxonomyId = pulumi.Input.asInput<String>(dataTaxonomyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataTaxonomyId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDataTaxonomyArgs {
 
   factory GetDataTaxonomyArgs.fromMap(Map<String, dynamic> map) {
     return GetDataTaxonomyArgs(
-      dataTaxonomyId: pulumi.Output.create<String>(map['dataTaxonomyId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataTaxonomyId: (map['dataTaxonomyId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

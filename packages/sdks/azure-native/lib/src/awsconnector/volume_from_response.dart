@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of VolumeFrom
 class VolumeFromResponse {
   /// If this value is ``true``, the container has read-only access to the volume. If this value is ``false``, then the container can write to the volume. The default value is ``false``.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// The name of another container within the same task definition to mount volumes from.
-  final String? sourceContainer;
+  final pulumi.Input<String>? sourceContainer;
 
   /// Creates a new [VolumeFromResponse].
   /// [readOnly] If this value is ``true``, the container has read-only access to the volume. If this value is ``false``, then the container can write to the volume. The default value is ``false``.
@@ -25,8 +26,8 @@ class VolumeFromResponse {
 
   factory VolumeFromResponse.fromMap(Map<String, dynamic> map) {
     return VolumeFromResponse(
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      sourceContainer: map['sourceContainer'] == null ? null : map['sourceContainer'] as String,
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      sourceContainer: map['sourceContainer'] == null ? null : (map['sourceContainer'] as String).input(),
     );
   }
 }

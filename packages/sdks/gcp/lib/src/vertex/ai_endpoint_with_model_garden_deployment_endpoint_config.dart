@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_endpoint_with_model_garden_deployment_endpoint_config_private_service_connect_config.dart';
 
 class AiEndpointWithModelGardenDeploymentEndpointConfig {
@@ -9,13 +10,13 @@ class AiEndpointWithModelGardenDeploymentEndpointConfig {
   /// performance and reliability. Note: Once you enabled dedicated endpoint,
   /// you won't be able to send request to the shared DNS
   /// {region}-aiplatform.googleapis.com. The limitations will be removed soon.
-  final bool? dedicatedEndpointEnabled;
+  final pulumi.Input<bool>? dedicatedEndpointEnabled;
   /// The user-specified display name of the endpoint. If not set, a
   /// default name will be used.
-  final String? endpointDisplayName;
+  final pulumi.Input<String>? endpointDisplayName;
   /// The configuration for Private Service Connect (PSC).
   /// Structure is documented below.
-  final AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig? privateServiceConnectConfig;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig>? privateServiceConnectConfig;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentEndpointConfig].
   /// [dedicatedEndpointEnabled] If true, the endpoint will be exposed through a dedicated
@@ -31,15 +32,15 @@ class AiEndpointWithModelGardenDeploymentEndpointConfig {
     return <String, dynamic>{
       'dedicatedEndpointEnabled': ?dedicatedEndpointEnabled,
       'endpointDisplayName': ?endpointDisplayName,
-      'privateServiceConnectConfig': ?privateServiceConnectConfig == null ? null : privateServiceConnectConfig!.toMap(),
+      'privateServiceConnectConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig, Map<String, dynamic>>(privateServiceConnectConfig, (value) => value.toMap()),
     };
   }
 
   factory AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentEndpointConfig(
-      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null ? null : map['dedicatedEndpointEnabled'] as bool,
-      endpointDisplayName: map['endpointDisplayName'] == null ? null : map['endpointDisplayName'] as String,
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>()),
+      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null ? null : (map['dedicatedEndpointEnabled'] as bool).input(),
+      endpointDisplayName: map['endpointDisplayName'] == null ? null : (map['endpointDisplayName'] as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

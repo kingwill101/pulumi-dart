@@ -51,35 +51,21 @@ class MountTargetState {
   /// [securityGroups] A list of up to 5 VPC security group IDs (that must
   /// [subnetId] The ID of the subnet to add the mount target in.
   MountTargetState({
-    pulumi.Output<String>? availabilityZoneId,
-    pulumi.Output<String>? availabilityZoneName,
-    pulumi.Output<String>? dnsName,
-    pulumi.Output<String>? fileSystemArn,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<String>? ipv6Address,
-    pulumi.Output<String>? mountTargetDnsName,
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroups,
-    pulumi.Output<String>? subnetId,
-  }) :
-      availabilityZoneId = pulumi.Input.asOptionalInput<String>(availabilityZoneId),
-      availabilityZoneName = pulumi.Input.asOptionalInput<String>(availabilityZoneName),
-      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
-      fileSystemArn = pulumi.Input.asOptionalInput<String>(fileSystemArn),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      ipv6Address = pulumi.Input.asOptionalInput<String>(ipv6Address),
-      mountTargetDnsName = pulumi.Input.asOptionalInput<String>(mountTargetDnsName),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroups = pulumi.Input.asOptionalInput<List<String>>(securityGroups),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.availabilityZoneId,
+    this.availabilityZoneName,
+    this.dnsName,
+    this.fileSystemArn,
+    this.fileSystemId,
+    this.ipAddress,
+    this.ipAddressType,
+    this.ipv6Address,
+    this.mountTargetDnsName,
+    this.networkInterfaceId,
+    this.ownerId,
+    this.region,
+    this.securityGroups,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class MountTargetState {
 
   factory MountTargetState.fromMap(Map<String, dynamic> map) {
     return MountTargetState(
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      availabilityZoneName: map['availabilityZoneName'] == null ? null : pulumi.Output.create<String>(map['availabilityZoneName'] as String),
-      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
-      fileSystemArn: map['fileSystemArn'] == null ? null : pulumi.Output.create<String>(map['fileSystemArn'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      ipv6Address: map['ipv6Address'] == null ? null : pulumi.Output.create<String>(map['ipv6Address'] as String),
-      mountTargetDnsName: map['mountTargetDnsName'] == null ? null : pulumi.Output.create<String>(map['mountTargetDnsName'] as String),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroups: map['securityGroups'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroups'] as List).cast<String>()),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      availabilityZoneName: map['availabilityZoneName'] == null ? null : (map['availabilityZoneName'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      fileSystemArn: map['fileSystemArn'] == null ? null : (map['fileSystemArn'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      mountTargetDnsName: map['mountTargetDnsName'] == null ? null : (map['mountTargetDnsName'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

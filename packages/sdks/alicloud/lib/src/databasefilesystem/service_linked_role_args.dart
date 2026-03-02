@@ -13,9 +13,8 @@ class ServiceLinkedRoleArgs {
   /// Creates a new [ServiceLinkedRoleArgs].
   /// [productName] The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
   ServiceLinkedRoleArgs({
-    required pulumi.Output<String> productName,
-  }) :
-      productName = pulumi.Input.asInput<String>(productName);
+    required this.productName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ServiceLinkedRoleArgs {
 
   factory ServiceLinkedRoleArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleArgs(
-      productName: pulumi.Output.create<String>(map['productName'] as String),
+      productName: (map['productName'] as String).input(),
     );
   }
 }

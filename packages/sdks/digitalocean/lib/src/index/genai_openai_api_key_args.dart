@@ -20,13 +20,10 @@ class GenaiOpenaiApiKeyArgs {
   /// [models] Models associated with the OpenAI API key
   /// [name] A name for the API key.
   GenaiOpenaiApiKeyArgs({
-    required pulumi.Output<String> apiKey,
-    pulumi.Output<List<GenaiOpenaiApiKeyModel>>? models,
-    pulumi.Output<String>? name,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      models = pulumi.Input.asOptionalInput<List<GenaiOpenaiApiKeyModel>>(models),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.apiKey,
+    this.models,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GenaiOpenaiApiKeyArgs {
 
   factory GenaiOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GenaiOpenaiApiKeyArgs(
-      apiKey: pulumi.Output.create<String>(map['apiKey'] as String),
-      models: map['models'] == null ? null : pulumi.Output.create<List<GenaiOpenaiApiKeyModel>>(pulumi.Input.decodeList<GenaiOpenaiApiKeyModel>(map['models'], (value) => GenaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      apiKey: (map['apiKey'] as String).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GenaiOpenaiApiKeyModel>(map['models'], (value) => GenaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

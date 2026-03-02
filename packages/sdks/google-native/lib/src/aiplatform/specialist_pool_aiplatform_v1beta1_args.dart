@@ -26,19 +26,13 @@ class SpecialistPoolAiplatformV1beta1Args {
   /// [specialistManagerEmails] The email addresses of the managers in the SpecialistPool.
   /// [specialistWorkerEmails] The email addresses of workers in the SpecialistPool.
   SpecialistPoolAiplatformV1beta1Args({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? specialistManagerEmails,
-    pulumi.Output<List<String>>? specialistWorkerEmails,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      specialistManagerEmails = pulumi.Input.asOptionalInput<List<String>>(specialistManagerEmails),
-      specialistWorkerEmails = pulumi.Input.asOptionalInput<List<String>>(specialistWorkerEmails);
+    required this.displayName,
+    this.location,
+    this.name,
+    this.project,
+    this.specialistManagerEmails,
+    this.specialistWorkerEmails,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class SpecialistPoolAiplatformV1beta1Args {
 
   factory SpecialistPoolAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return SpecialistPoolAiplatformV1beta1Args(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      specialistManagerEmails: map['specialistManagerEmails'] == null ? null : pulumi.Output.create<List<String>>((map['specialistManagerEmails'] as List).cast<String>()),
-      specialistWorkerEmails: map['specialistWorkerEmails'] == null ? null : pulumi.Output.create<List<String>>((map['specialistWorkerEmails'] as List).cast<String>()),
+      displayName: (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      specialistManagerEmails: map['specialistManagerEmails'] == null ? null : ((map['specialistManagerEmails'] as List).cast<String>()).input(),
+      specialistWorkerEmails: map['specialistWorkerEmails'] == null ? null : ((map['specialistWorkerEmails'] as List).cast<String>()).input(),
     );
   }
 }

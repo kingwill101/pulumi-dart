@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource representing the Android specific attributes of a Device.
 class AndroidAttributesResponse {
   /// Whether the device passes Android CTS compliance.
-  final bool ctsProfileMatch;
+  final pulumi.Input<bool> ctsProfileMatch;
   /// Whether applications from unknown sources can be installed on device.
-  final bool enabledUnknownSources;
+  final pulumi.Input<bool> enabledUnknownSources;
   /// Whether any potentially harmful apps were detected on the device.
-  final bool hasPotentiallyHarmfulApps;
+  final pulumi.Input<bool> hasPotentiallyHarmfulApps;
   /// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-  final bool ownerProfileAccount;
+  final pulumi.Input<bool> ownerProfileAccount;
   /// Ownership privileges on device.
-  final String ownershipPrivilege;
+  final pulumi.Input<String> ownershipPrivilege;
   /// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-  final bool supportsWorkProfile;
+  final pulumi.Input<bool> supportsWorkProfile;
   /// Whether Android verified boot status is GREEN.
-  final bool verifiedBoot;
+  final pulumi.Input<bool> verifiedBoot;
   /// Whether Google Play Protect Verify Apps is enabled.
-  final bool verifyAppsEnabled;
+  final pulumi.Input<bool> verifyAppsEnabled;
 
   /// Creates a new [AndroidAttributesResponse].
   /// [ctsProfileMatch] Whether the device passes Android CTS compliance.
@@ -55,14 +56,14 @@ class AndroidAttributesResponse {
 
   factory AndroidAttributesResponse.fromMap(Map<String, dynamic> map) {
     return AndroidAttributesResponse(
-      ctsProfileMatch: map['ctsProfileMatch'] as bool,
-      enabledUnknownSources: map['enabledUnknownSources'] as bool,
-      hasPotentiallyHarmfulApps: map['hasPotentiallyHarmfulApps'] as bool,
-      ownerProfileAccount: map['ownerProfileAccount'] as bool,
-      ownershipPrivilege: map['ownershipPrivilege'] as String,
-      supportsWorkProfile: map['supportsWorkProfile'] as bool,
-      verifiedBoot: map['verifiedBoot'] as bool,
-      verifyAppsEnabled: map['verifyAppsEnabled'] as bool,
+      ctsProfileMatch: (map['ctsProfileMatch'] as bool).input(),
+      enabledUnknownSources: (map['enabledUnknownSources'] as bool).input(),
+      hasPotentiallyHarmfulApps: (map['hasPotentiallyHarmfulApps'] as bool).input(),
+      ownerProfileAccount: (map['ownerProfileAccount'] as bool).input(),
+      ownershipPrivilege: (map['ownershipPrivilege'] as String).input(),
+      supportsWorkProfile: (map['supportsWorkProfile'] as bool).input(),
+      verifiedBoot: (map['verifiedBoot'] as bool).input(),
+      verifyAppsEnabled: (map['verifyAppsEnabled'] as bool).input(),
     );
   }
 }

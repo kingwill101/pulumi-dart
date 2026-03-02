@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Advanced API Ops add-on.
 class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
   /// Flag that specifies whether the Advanced API Ops add-on is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GoogleCloudApigeeV1AdvancedApiOpsConfigResponse].
   /// [enabled] Flag that specifies whether the Advanced API Ops add-on is enabled.
@@ -20,7 +21,7 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
 
   factory GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AdvancedApiOpsConfigResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

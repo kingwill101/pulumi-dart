@@ -42,27 +42,17 @@ class ChannelNamespaceState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ChannelNamespaceState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? channelNamespaceArn,
-    pulumi.Output<String>? codeHandlers,
-    pulumi.Output<ChannelNamespaceHandlerConfigs>? handlerConfigs,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ChannelNamespacePublishAuthMode>>? publishAuthModes,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<ChannelNamespaceSubscribeAuthMode>>? subscribeAuthModes,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      channelNamespaceArn = pulumi.Input.asOptionalInput<String>(channelNamespaceArn),
-      codeHandlers = pulumi.Input.asOptionalInput<String>(codeHandlers),
-      handlerConfigs = pulumi.Input.asOptionalInput<ChannelNamespaceHandlerConfigs>(handlerConfigs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publishAuthModes = pulumi.Input.asOptionalInput<List<ChannelNamespacePublishAuthMode>>(publishAuthModes),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subscribeAuthModes = pulumi.Input.asOptionalInput<List<ChannelNamespaceSubscribeAuthMode>>(subscribeAuthModes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.apiId,
+    this.channelNamespaceArn,
+    this.codeHandlers,
+    this.handlerConfigs,
+    this.name,
+    this.publishAuthModes,
+    this.region,
+    this.subscribeAuthModes,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class ChannelNamespaceState {
 
   factory ChannelNamespaceState.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      channelNamespaceArn: map['channelNamespaceArn'] == null ? null : pulumi.Output.create<String>(map['channelNamespaceArn'] as String),
-      codeHandlers: map['codeHandlers'] == null ? null : pulumi.Output.create<String>(map['codeHandlers'] as String),
-      handlerConfigs: map['handlerConfigs'] == null ? null : pulumi.Output.create<ChannelNamespaceHandlerConfigs>(ChannelNamespaceHandlerConfigs.fromMap((map['handlerConfigs'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publishAuthModes: map['publishAuthModes'] == null ? null : pulumi.Output.create<List<ChannelNamespacePublishAuthMode>>(pulumi.Input.decodeList<ChannelNamespacePublishAuthMode>(map['publishAuthModes'], (value) => ChannelNamespacePublishAuthMode.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subscribeAuthModes: map['subscribeAuthModes'] == null ? null : pulumi.Output.create<List<ChannelNamespaceSubscribeAuthMode>>(pulumi.Input.decodeList<ChannelNamespaceSubscribeAuthMode>(map['subscribeAuthModes'], (value) => ChannelNamespaceSubscribeAuthMode.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      channelNamespaceArn: map['channelNamespaceArn'] == null ? null : (map['channelNamespaceArn'] as String).input(),
+      codeHandlers: map['codeHandlers'] == null ? null : (map['codeHandlers'] as String).input(),
+      handlerConfigs: map['handlerConfigs'] == null ? null : (ChannelNamespaceHandlerConfigs.fromMap((map['handlerConfigs'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publishAuthModes: map['publishAuthModes'] == null ? null : (pulumi.Input.decodeList<ChannelNamespacePublishAuthMode>(map['publishAuthModes'], (value) => ChannelNamespacePublishAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subscribeAuthModes: map['subscribeAuthModes'] == null ? null : (pulumi.Input.decodeList<ChannelNamespaceSubscribeAuthMode>(map['subscribeAuthModes'], (value) => ChannelNamespaceSubscribeAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

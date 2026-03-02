@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceCreditSpecification {
-  final String cpuCredits;
+  final pulumi.Input<String> cpuCredits;
 
   /// Creates a new [GetInstanceCreditSpecification].
   /// [cpuCredits] Required.
@@ -18,7 +19,7 @@ class GetInstanceCreditSpecification {
 
   factory GetInstanceCreditSpecification.fromMap(Map<String, dynamic> map) {
     return GetInstanceCreditSpecification(
-      cpuCredits: map['cpuCredits'] as String,
+      cpuCredits: (map['cpuCredits'] as String).input(),
     );
   }
 }

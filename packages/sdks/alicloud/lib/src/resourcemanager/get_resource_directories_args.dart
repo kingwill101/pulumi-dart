@@ -13,9 +13,8 @@ class GetResourceDirectoriesArgs {
   /// Creates a new [GetResourceDirectoriesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetResourceDirectoriesArgs({
-    pulumi.Output<String>? outputFile,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetResourceDirectoriesArgs {
 
   factory GetResourceDirectoriesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceDirectoriesArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

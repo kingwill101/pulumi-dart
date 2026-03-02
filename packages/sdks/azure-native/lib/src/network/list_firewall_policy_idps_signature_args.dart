@@ -33,21 +33,14 @@ class ListFirewallPolicyIdpsSignatureArgs {
   /// [search] Search term in all columns
   /// [skip] The number of records matching the filter to skip
   ListFirewallPolicyIdpsSignatureArgs({
-    pulumi.Output<List<FilterItems>>? filters,
-    required pulumi.Output<String> firewallPolicyName,
-    pulumi.Output<OrderBy>? orderBy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? resultsPerPage,
-    pulumi.Output<String>? search,
-    pulumi.Output<int>? skip,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<FilterItems>>(filters),
-      firewallPolicyName = pulumi.Input.asInput<String>(firewallPolicyName),
-      orderBy = pulumi.Input.asOptionalInput<OrderBy>(orderBy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resultsPerPage = pulumi.Input.asOptionalInput<int>(resultsPerPage),
-      search = pulumi.Input.asOptionalInput<String>(search),
-      skip = pulumi.Input.asOptionalInput<int>(skip);
+    this.filters,
+    required this.firewallPolicyName,
+    this.orderBy,
+    required this.resourceGroupName,
+    this.resultsPerPage,
+    this.search,
+    this.skip,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ListFirewallPolicyIdpsSignatureArgs {
 
   factory ListFirewallPolicyIdpsSignatureArgs.fromMap(Map<String, dynamic> map) {
     return ListFirewallPolicyIdpsSignatureArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<FilterItems>>(pulumi.Input.decodeList<FilterItems>(map['filters'], (value) => FilterItems.fromMap((value as Map).cast<String, dynamic>()))),
-      firewallPolicyName: pulumi.Output.create<String>(map['firewallPolicyName'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<OrderBy>(OrderBy.fromMap((map['orderBy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resultsPerPage: map['resultsPerPage'] == null ? null : pulumi.Output.create<int>(map['resultsPerPage'] as int),
-      search: map['search'] == null ? null : pulumi.Output.create<String>(map['search'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<int>(map['skip'] as int),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<FilterItems>(map['filters'], (value) => FilterItems.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (OrderBy.fromMap((map['orderBy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resultsPerPage: map['resultsPerPage'] == null ? null : (map['resultsPerPage'] as int).input(),
+      search: map['search'] == null ? null : (map['search'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
     );
   }
 }

@@ -41,27 +41,17 @@ class FeedArgs {
   /// [v1Id] Required.
   /// [v1Id1] Required.
   FeedArgs({
-    pulumi.Output<List<String>>? assetNames,
-    pulumi.Output<List<String>>? assetTypes,
-    pulumi.Output<Expr>? condition,
-    pulumi.Output<FeedContentType>? contentType,
-    required pulumi.Output<String> feedId,
-    required pulumi.Output<FeedOutputConfig> feedOutputConfig,
-    required pulumi.Output<String> name,
-    pulumi.Output<List<String>>? relationshipTypes,
-    required pulumi.Output<String> v1Id,
-    required pulumi.Output<String> v1Id1,
-  }) :
-      assetNames = pulumi.Input.asOptionalInput<List<String>>(assetNames),
-      assetTypes = pulumi.Input.asOptionalInput<List<String>>(assetTypes),
-      condition = pulumi.Input.asOptionalInput<Expr>(condition),
-      contentType = pulumi.Input.asOptionalInput<FeedContentType>(contentType),
-      feedId = pulumi.Input.asInput<String>(feedId),
-      feedOutputConfig = pulumi.Input.asInput<FeedOutputConfig>(feedOutputConfig),
-      name = pulumi.Input.asInput<String>(name),
-      relationshipTypes = pulumi.Input.asOptionalInput<List<String>>(relationshipTypes),
-      v1Id = pulumi.Input.asInput<String>(v1Id),
-      v1Id1 = pulumi.Input.asInput<String>(v1Id1);
+    this.assetNames,
+    this.assetTypes,
+    this.condition,
+    this.contentType,
+    required this.feedId,
+    required this.feedOutputConfig,
+    required this.name,
+    this.relationshipTypes,
+    required this.v1Id,
+    required this.v1Id1,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class FeedArgs {
 
   factory FeedArgs.fromMap(Map<String, dynamic> map) {
     return FeedArgs(
-      assetNames: map['assetNames'] == null ? null : pulumi.Output.create<List<String>>((map['assetNames'] as List).cast<String>()),
-      assetTypes: map['assetTypes'] == null ? null : pulumi.Output.create<List<String>>((map['assetTypes'] as List).cast<String>()),
-      condition: map['condition'] == null ? null : pulumi.Output.create<Expr>(Expr.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<FeedContentType>(FeedContentType.fromValue(map['contentType'] as String)),
-      feedId: pulumi.Output.create<String>(map['feedId'] as String),
-      feedOutputConfig: pulumi.Output.create<FeedOutputConfig>(FeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      relationshipTypes: map['relationshipTypes'] == null ? null : pulumi.Output.create<List<String>>((map['relationshipTypes'] as List).cast<String>()),
-      v1Id: pulumi.Output.create<String>(map['v1Id'] as String),
-      v1Id1: pulumi.Output.create<String>(map['v1Id1'] as String),
+      assetNames: map['assetNames'] == null ? null : ((map['assetNames'] as List).cast<String>()).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
+      condition: map['condition'] == null ? null : (Expr.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (FeedContentType.fromValue(map['contentType'] as String)).input(),
+      feedId: (map['feedId'] as String).input(),
+      feedOutputConfig: (FeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      relationshipTypes: map['relationshipTypes'] == null ? null : ((map['relationshipTypes'] as List).cast<String>()).input(),
+      v1Id: (map['v1Id'] as String).input(),
+      v1Id1: (map['v1Id1'] as String).input(),
     );
   }
 }

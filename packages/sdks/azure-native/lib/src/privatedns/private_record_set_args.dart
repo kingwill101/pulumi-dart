@@ -60,35 +60,21 @@ class PrivateRecordSetArgs {
   /// [ttl] The TTL (time-to-live) of the records in the record set.
   /// [txtRecords] The list of TXT records in the record set.
   PrivateRecordSetArgs({
-    pulumi.Output<List<ARecord>>? aRecords,
-    pulumi.Output<List<AaaaRecord>>? aaaaRecords,
-    pulumi.Output<CnameRecord>? cnameRecord,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<List<MxRecord>>? mxRecords,
-    required pulumi.Output<String> privateZoneName,
-    pulumi.Output<List<PtrRecord>>? ptrRecords,
-    required pulumi.Output<String> recordType,
-    pulumi.Output<String>? relativeRecordSetName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SoaRecord>? soaRecord,
-    pulumi.Output<List<SrvRecord>>? srvRecords,
-    pulumi.Output<double>? ttl,
-    pulumi.Output<List<TxtRecord>>? txtRecords,
-  }) :
-      aRecords = pulumi.Input.asOptionalInput<List<ARecord>>(aRecords),
-      aaaaRecords = pulumi.Input.asOptionalInput<List<AaaaRecord>>(aaaaRecords),
-      cnameRecord = pulumi.Input.asOptionalInput<CnameRecord>(cnameRecord),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      mxRecords = pulumi.Input.asOptionalInput<List<MxRecord>>(mxRecords),
-      privateZoneName = pulumi.Input.asInput<String>(privateZoneName),
-      ptrRecords = pulumi.Input.asOptionalInput<List<PtrRecord>>(ptrRecords),
-      recordType = pulumi.Input.asInput<String>(recordType),
-      relativeRecordSetName = pulumi.Input.asOptionalInput<String>(relativeRecordSetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      soaRecord = pulumi.Input.asOptionalInput<SoaRecord>(soaRecord),
-      srvRecords = pulumi.Input.asOptionalInput<List<SrvRecord>>(srvRecords),
-      ttl = pulumi.Input.asOptionalInput<double>(ttl),
-      txtRecords = pulumi.Input.asOptionalInput<List<TxtRecord>>(txtRecords);
+    this.aRecords,
+    this.aaaaRecords,
+    this.cnameRecord,
+    this.metadata,
+    this.mxRecords,
+    required this.privateZoneName,
+    this.ptrRecords,
+    required this.recordType,
+    this.relativeRecordSetName,
+    required this.resourceGroupName,
+    this.soaRecord,
+    this.srvRecords,
+    this.ttl,
+    this.txtRecords,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,20 +97,20 @@ class PrivateRecordSetArgs {
 
   factory PrivateRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return PrivateRecordSetArgs(
-      aRecords: map['aRecords'] == null ? null : pulumi.Output.create<List<ARecord>>(pulumi.Input.decodeList<ARecord>(map['aRecords'], (value) => ARecord.fromMap((value as Map).cast<String, dynamic>()))),
-      aaaaRecords: map['aaaaRecords'] == null ? null : pulumi.Output.create<List<AaaaRecord>>(pulumi.Input.decodeList<AaaaRecord>(map['aaaaRecords'], (value) => AaaaRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      cnameRecord: map['cnameRecord'] == null ? null : pulumi.Output.create<CnameRecord>(CnameRecord.fromMap((map['cnameRecord'] as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      mxRecords: map['mxRecords'] == null ? null : pulumi.Output.create<List<MxRecord>>(pulumi.Input.decodeList<MxRecord>(map['mxRecords'], (value) => MxRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      privateZoneName: pulumi.Output.create<String>(map['privateZoneName'] as String),
-      ptrRecords: map['ptrRecords'] == null ? null : pulumi.Output.create<List<PtrRecord>>(pulumi.Input.decodeList<PtrRecord>(map['ptrRecords'], (value) => PtrRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      recordType: pulumi.Output.create<String>(map['recordType'] as String),
-      relativeRecordSetName: map['relativeRecordSetName'] == null ? null : pulumi.Output.create<String>(map['relativeRecordSetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      soaRecord: map['soaRecord'] == null ? null : pulumi.Output.create<SoaRecord>(SoaRecord.fromMap((map['soaRecord'] as Map).cast<String, dynamic>())),
-      srvRecords: map['srvRecords'] == null ? null : pulumi.Output.create<List<SrvRecord>>(pulumi.Input.decodeList<SrvRecord>(map['srvRecords'], (value) => SrvRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<double>(map['ttl'] as double),
-      txtRecords: map['txtRecords'] == null ? null : pulumi.Output.create<List<TxtRecord>>(pulumi.Input.decodeList<TxtRecord>(map['txtRecords'], (value) => TxtRecord.fromMap((value as Map).cast<String, dynamic>()))),
+      aRecords: map['aRecords'] == null ? null : (pulumi.Input.decodeList<ARecord>(map['aRecords'], (value) => ARecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aaaaRecords: map['aaaaRecords'] == null ? null : (pulumi.Input.decodeList<AaaaRecord>(map['aaaaRecords'], (value) => AaaaRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cnameRecord: map['cnameRecord'] == null ? null : (CnameRecord.fromMap((map['cnameRecord'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      mxRecords: map['mxRecords'] == null ? null : (pulumi.Input.decodeList<MxRecord>(map['mxRecords'], (value) => MxRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateZoneName: (map['privateZoneName'] as String).input(),
+      ptrRecords: map['ptrRecords'] == null ? null : (pulumi.Input.decodeList<PtrRecord>(map['ptrRecords'], (value) => PtrRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordType: (map['recordType'] as String).input(),
+      relativeRecordSetName: map['relativeRecordSetName'] == null ? null : (map['relativeRecordSetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      soaRecord: map['soaRecord'] == null ? null : (SoaRecord.fromMap((map['soaRecord'] as Map).cast<String, dynamic>())).input(),
+      srvRecords: map['srvRecords'] == null ? null : (pulumi.Input.decodeList<SrvRecord>(map['srvRecords'], (value) => SrvRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as double).input(),
+      txtRecords: map['txtRecords'] == null ? null : (pulumi.Input.decodeList<TxtRecord>(map['txtRecords'], (value) => TxtRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

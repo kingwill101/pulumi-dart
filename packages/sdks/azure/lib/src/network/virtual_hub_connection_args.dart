@@ -26,17 +26,12 @@ class VirtualHubConnectionArgs {
   /// [routing] A `routing` block as defined below.
   /// [virtualHubId] The ID of the Virtual Hub within which this connection should be created. Changing this forces a new resource to be created.
   VirtualHubConnectionArgs({
-    pulumi.Output<bool>? internetSecurityEnabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> remoteVirtualNetworkId,
-    pulumi.Output<VirtualHubConnectionRouting>? routing,
-    required pulumi.Output<String> virtualHubId,
-  }) :
-      internetSecurityEnabled = pulumi.Input.asOptionalInput<bool>(internetSecurityEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      remoteVirtualNetworkId = pulumi.Input.asInput<String>(remoteVirtualNetworkId),
-      routing = pulumi.Input.asOptionalInput<VirtualHubConnectionRouting>(routing),
-      virtualHubId = pulumi.Input.asInput<String>(virtualHubId);
+    this.internetSecurityEnabled,
+    this.name,
+    required this.remoteVirtualNetworkId,
+    this.routing,
+    required this.virtualHubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class VirtualHubConnectionArgs {
 
   factory VirtualHubConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubConnectionArgs(
-      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : pulumi.Output.create<bool>(map['internetSecurityEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      remoteVirtualNetworkId: pulumi.Output.create<String>(map['remoteVirtualNetworkId'] as String),
-      routing: map['routing'] == null ? null : pulumi.Output.create<VirtualHubConnectionRouting>(VirtualHubConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())),
-      virtualHubId: pulumi.Output.create<String>(map['virtualHubId'] as String),
+      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      remoteVirtualNetworkId: (map['remoteVirtualNetworkId'] as String).input(),
+      routing: map['routing'] == null ? null : (VirtualHubConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
+      virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }
 }

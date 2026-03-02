@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureGroupThroughputConfig {
-  final int? provisionedReadCapacityUnits;
-  final int? provisionedWriteCapacityUnits;
-  final String? throughputMode;
+  final pulumi.Input<int>? provisionedReadCapacityUnits;
+  final pulumi.Input<int>? provisionedWriteCapacityUnits;
+  final pulumi.Input<String>? throughputMode;
 
   /// Creates a new [FeatureGroupThroughputConfig].
   /// [provisionedReadCapacityUnits] Optional.
@@ -26,9 +27,9 @@ class FeatureGroupThroughputConfig {
 
   factory FeatureGroupThroughputConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupThroughputConfig(
-      provisionedReadCapacityUnits: map['provisionedReadCapacityUnits'] == null ? null : map['provisionedReadCapacityUnits'] as int,
-      provisionedWriteCapacityUnits: map['provisionedWriteCapacityUnits'] == null ? null : map['provisionedWriteCapacityUnits'] as int,
-      throughputMode: map['throughputMode'] == null ? null : map['throughputMode'] as String,
+      provisionedReadCapacityUnits: map['provisionedReadCapacityUnits'] == null ? null : (map['provisionedReadCapacityUnits'] as int).input(),
+      provisionedWriteCapacityUnits: map['provisionedWriteCapacityUnits'] == null ? null : (map['provisionedWriteCapacityUnits'] as int).input(),
+      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
     );
   }
 }

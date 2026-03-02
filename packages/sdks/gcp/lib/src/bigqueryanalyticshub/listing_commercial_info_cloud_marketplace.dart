@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListingCommercialInfoCloudMarketplace {
   /// (Output)
   /// Commercial state of the Marketplace Data Product.
   /// Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
-  final String? commercialState;
+  final pulumi.Input<String>? commercialState;
   /// (Output)
   /// Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
-  final String? service;
+  final pulumi.Input<String>? service;
 
   /// Creates a new [ListingCommercialInfoCloudMarketplace].
   /// [commercialState] (Output)
@@ -27,8 +28,8 @@ class ListingCommercialInfoCloudMarketplace {
 
   factory ListingCommercialInfoCloudMarketplace.fromMap(Map<String, dynamic> map) {
     return ListingCommercialInfoCloudMarketplace(
-      commercialState: map['commercialState'] == null ? null : map['commercialState'] as String,
-      service: map['service'] == null ? null : map['service'] as String,
+      commercialState: map['commercialState'] == null ? null : (map['commercialState'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

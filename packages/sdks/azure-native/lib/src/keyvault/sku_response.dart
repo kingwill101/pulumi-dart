@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU details
 class SkuResponse {
   /// SKU family name
-  final String family;
+  final pulumi.Input<String> family;
   /// SKU name to specify whether the key vault is a standard vault or a premium vault.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [SkuResponse].
   /// [family] SKU family name
@@ -25,8 +26,8 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      family: map['family'] as String,
-      name: map['name'] as String,
+      family: (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

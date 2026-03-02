@@ -5,13 +5,13 @@ import 'get_application_scaling_rules_rule_scaling_rule_timer_schedule.dart';
 
 class GetApplicationScalingRulesRuleScalingRuleTimer {
   /// The short-term start date of the timed elastic scaling strategy.
-  final String beginDate;
+  final pulumi.Input<String> beginDate;
   /// The short-term end date of the timed elastic scaling strategy.
-  final String endDate;
+  final pulumi.Input<String> endDate;
   /// The period in which a timed elastic scaling strategy is executed.
-  final String period;
+  final pulumi.Input<String> period;
   /// Trigger point in time within a single day.
-  final List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules;
+  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule>> schedules;
 
   /// Creates a new [GetApplicationScalingRulesRuleScalingRuleTimer].
   /// [beginDate] The short-term start date of the timed elastic scaling strategy.
@@ -30,16 +30,16 @@ class GetApplicationScalingRulesRuleScalingRuleTimer {
       'beginDate': beginDate,
       'endDate': endDate,
       'period': period,
-      'schedules': pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleTimerSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'schedules': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleTimerSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetApplicationScalingRulesRuleScalingRuleTimer.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRuleScalingRuleTimer(
-      beginDate: map['beginDate'] as String,
-      endDate: map['endDate'] as String,
-      period: map['period'] as String,
-      schedules: pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleTimerSchedule>(map['schedules'], (value) => GetApplicationScalingRulesRuleScalingRuleTimerSchedule.fromMap((value as Map).cast<String, dynamic>())),
+      beginDate: (map['beginDate'] as String).input(),
+      endDate: (map['endDate'] as String).input(),
+      period: (map['period'] as String).input(),
+      schedules: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleTimerSchedule>(map['schedules'], (value) => GetApplicationScalingRulesRuleScalingRuleTimerSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

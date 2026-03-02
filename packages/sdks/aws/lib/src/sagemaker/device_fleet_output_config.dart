@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeviceFleetOutputConfig {
   /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt data on the storage volume after compilation job. If you don't provide a KMS key ID, Amazon SageMaker AI uses the default KMS key for Amazon S3 for your role's account.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// The Amazon Simple Storage (S3) bucker URI.
-  final String s3OutputLocation;
+  final pulumi.Input<String> s3OutputLocation;
 
   /// Creates a new [DeviceFleetOutputConfig].
   /// [kmsKeyId] The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt data on the storage volume after compilation job. If you don't provide a KMS key ID, Amazon SageMaker AI uses the default KMS key for Amazon S3 for your role's account.
@@ -24,8 +25,8 @@ class DeviceFleetOutputConfig {
 
   factory DeviceFleetOutputConfig.fromMap(Map<String, dynamic> map) {
     return DeviceFleetOutputConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      s3OutputLocation: map['s3OutputLocation'] as String,
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      s3OutputLocation: (map['s3OutputLocation'] as String).input(),
     );
   }
 }

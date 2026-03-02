@@ -34,25 +34,16 @@ class AccessKeyState {
   /// [status] Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.
   /// [user] IAM user to associate with this access key.
   AccessKeyState({
-    pulumi.Output<String>? createDate,
-    pulumi.Output<String>? encryptedSecret,
-    pulumi.Output<String>? encryptedSesSmtpPasswordV4,
-    pulumi.Output<String>? keyFingerprint,
-    pulumi.Output<String>? pgpKey,
-    pulumi.Output<String>? secret,
-    pulumi.Output<String>? sesSmtpPasswordV4,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? user,
-  }) :
-      createDate = pulumi.Input.asOptionalInput<String>(createDate),
-      encryptedSecret = pulumi.Input.asOptionalInput<String>(encryptedSecret),
-      encryptedSesSmtpPasswordV4 = pulumi.Input.asOptionalInput<String>(encryptedSesSmtpPasswordV4),
-      keyFingerprint = pulumi.Input.asOptionalInput<String>(keyFingerprint),
-      pgpKey = pulumi.Input.asOptionalInput<String>(pgpKey),
-      secret = pulumi.Input.asOptionalInput<String>(secret),
-      sesSmtpPasswordV4 = pulumi.Input.asOptionalInput<String>(sesSmtpPasswordV4),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.createDate,
+    this.encryptedSecret,
+    this.encryptedSesSmtpPasswordV4,
+    this.keyFingerprint,
+    this.pgpKey,
+    this.secret,
+    this.sesSmtpPasswordV4,
+    this.status,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class AccessKeyState {
 
   factory AccessKeyState.fromMap(Map<String, dynamic> map) {
     return AccessKeyState(
-      createDate: map['createDate'] == null ? null : pulumi.Output.create<String>(map['createDate'] as String),
-      encryptedSecret: map['encryptedSecret'] == null ? null : pulumi.Output.create<String>(map['encryptedSecret'] as String),
-      encryptedSesSmtpPasswordV4: map['encryptedSesSmtpPasswordV4'] == null ? null : pulumi.Output.create<String>(map['encryptedSesSmtpPasswordV4'] as String),
-      keyFingerprint: map['keyFingerprint'] == null ? null : pulumi.Output.create<String>(map['keyFingerprint'] as String),
-      pgpKey: map['pgpKey'] == null ? null : pulumi.Output.create<String>(map['pgpKey'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
-      sesSmtpPasswordV4: map['sesSmtpPasswordV4'] == null ? null : pulumi.Output.create<String>(map['sesSmtpPasswordV4'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
+      encryptedSecret: map['encryptedSecret'] == null ? null : (map['encryptedSecret'] as String).input(),
+      encryptedSesSmtpPasswordV4: map['encryptedSesSmtpPasswordV4'] == null ? null : (map['encryptedSesSmtpPasswordV4'] as String).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      sesSmtpPasswordV4: map['sesSmtpPasswordV4'] == null ? null : (map['sesSmtpPasswordV4'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

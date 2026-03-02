@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MeshSpecServiceDiscovery {
   /// The IP version to use to control traffic within the mesh. Valid values are `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, and `IPv6_ONLY`.
-  final String? ipPreference;
+  final pulumi.Input<String>? ipPreference;
 
   /// Creates a new [MeshSpecServiceDiscovery].
   /// [ipPreference] The IP version to use to control traffic within the mesh. Valid values are `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, and `IPv6_ONLY`.
@@ -19,7 +20,7 @@ class MeshSpecServiceDiscovery {
 
   factory MeshSpecServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return MeshSpecServiceDiscovery(
-      ipPreference: map['ipPreference'] == null ? null : map['ipPreference'] as String,
+      ipPreference: map['ipPreference'] == null ? null : (map['ipPreference'] as String).input(),
     );
   }
 }

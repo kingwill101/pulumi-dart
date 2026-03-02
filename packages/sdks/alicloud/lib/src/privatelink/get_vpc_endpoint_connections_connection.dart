@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcEndpointConnectionsConnection {
   /// The Bandwidth.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The ID of the Vpc Endpoint.
-  final String endpointId;
+  final pulumi.Input<String> endpointId;
   /// The ID of the Vpc Endpoint Connection.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetVpcEndpointConnectionsConnection].
   /// [bandwidth] The Bandwidth.
@@ -34,10 +35,10 @@ class GetVpcEndpointConnectionsConnection {
 
   factory GetVpcEndpointConnectionsConnection.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointConnectionsConnection(
-      bandwidth: map['bandwidth'] as int,
-      endpointId: map['endpointId'] as String,
-      id: map['id'] as String,
-      status: map['status'] as String,
+      bandwidth: (map['bandwidth'] as int).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

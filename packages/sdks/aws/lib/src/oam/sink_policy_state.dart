@@ -22,17 +22,12 @@ class SinkPolicyState {
   /// [sinkId] ID string that AWS generated as part of the sink ARN.
   /// [sinkIdentifier] ARN of the sink to attach this policy to.
   SinkPolicyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sinkId,
-    pulumi.Output<String>? sinkIdentifier,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sinkId = pulumi.Input.asOptionalInput<String>(sinkId),
-      sinkIdentifier = pulumi.Input.asOptionalInput<String>(sinkIdentifier);
+    this.arn,
+    this.policy,
+    this.region,
+    this.sinkId,
+    this.sinkIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class SinkPolicyState {
 
   factory SinkPolicyState.fromMap(Map<String, dynamic> map) {
     return SinkPolicyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sinkId: map['sinkId'] == null ? null : pulumi.Output.create<String>(map['sinkId'] as String),
-      sinkIdentifier: map['sinkIdentifier'] == null ? null : pulumi.Output.create<String>(map['sinkIdentifier'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sinkId: map['sinkId'] == null ? null : (map['sinkId'] as String).input(),
+      sinkIdentifier: map['sinkIdentifier'] == null ? null : (map['sinkIdentifier'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
-  final double? autoDeployConfidenceThreshold;
-  final int? autoDeployExpirationSec;
-  final double? autoDeployImpactedBaselineThreshold;
-  final double? autoDeployLoadThreshold;
+  final pulumi.Input<double>? autoDeployConfidenceThreshold;
+  final pulumi.Input<int>? autoDeployExpirationSec;
+  final pulumi.Input<double>? autoDeployImpactedBaselineThreshold;
+  final pulumi.Input<double>? autoDeployLoadThreshold;
   /// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig].
   /// [autoDeployConfidenceThreshold] Optional.
@@ -35,11 +36,11 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
 
   factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig(
-      autoDeployConfidenceThreshold: map['autoDeployConfidenceThreshold'] == null ? null : map['autoDeployConfidenceThreshold'] as double,
-      autoDeployExpirationSec: map['autoDeployExpirationSec'] == null ? null : map['autoDeployExpirationSec'] as int,
-      autoDeployImpactedBaselineThreshold: map['autoDeployImpactedBaselineThreshold'] == null ? null : map['autoDeployImpactedBaselineThreshold'] as double,
-      autoDeployLoadThreshold: map['autoDeployLoadThreshold'] == null ? null : map['autoDeployLoadThreshold'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
+      autoDeployConfidenceThreshold: map['autoDeployConfidenceThreshold'] == null ? null : (map['autoDeployConfidenceThreshold'] as double).input(),
+      autoDeployExpirationSec: map['autoDeployExpirationSec'] == null ? null : (map['autoDeployExpirationSec'] as int).input(),
+      autoDeployImpactedBaselineThreshold: map['autoDeployImpactedBaselineThreshold'] == null ? null : (map['autoDeployImpactedBaselineThreshold'] as double).input(),
+      autoDeployLoadThreshold: map['autoDeployLoadThreshold'] == null ? null : (map['autoDeployLoadThreshold'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

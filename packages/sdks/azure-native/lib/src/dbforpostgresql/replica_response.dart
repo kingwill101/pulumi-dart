@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Replica properties of a server.
 class ReplicaResponse {
   /// Maximum number of read replicas allowed for a server.
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
-  final String replicationState;
+  final pulumi.Input<String> replicationState;
   /// Role of the server in a replication set.
-  final String? role;
+  final pulumi.Input<String>? role;
 
   /// Creates a new [ReplicaResponse].
   /// [capacity] Maximum number of read replicas allowed for a server.
@@ -30,9 +31,9 @@ class ReplicaResponse {
 
   factory ReplicaResponse.fromMap(Map<String, dynamic> map) {
     return ReplicaResponse(
-      capacity: map['capacity'] as int,
-      replicationState: map['replicationState'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
+      capacity: (map['capacity'] as int).input(),
+      replicationState: (map['replicationState'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

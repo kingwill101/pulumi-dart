@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSpringCloudServiceRequiredNetworkTrafficRule {
   /// The direction of required traffic. Possible values are `Inbound`, `Outbound`.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The FQDN list of required traffic.
-  final List<String> fqdns;
+  final pulumi.Input<List<String>> fqdns;
   /// The IP list of required traffic.
-  final List<String> ipAddresses;
+  final pulumi.Input<List<String>> ipAddresses;
   /// The port of required traffic.
-  final int port;
+  final pulumi.Input<int> port;
   /// The protocol of required traffic.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [GetSpringCloudServiceRequiredNetworkTrafficRule].
   /// [direction] The direction of required traffic. Possible values are `Inbound`, `Outbound`.
@@ -39,11 +40,11 @@ class GetSpringCloudServiceRequiredNetworkTrafficRule {
 
   factory GetSpringCloudServiceRequiredNetworkTrafficRule.fromMap(Map<String, dynamic> map) {
     return GetSpringCloudServiceRequiredNetworkTrafficRule(
-      direction: map['direction'] as String,
-      fqdns: (map['fqdns'] as List).cast<String>(),
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
+      direction: (map['direction'] as String).input(),
+      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

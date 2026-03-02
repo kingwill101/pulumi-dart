@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRoutersRouterBgpAdvertisedIpRange {
-  final String description;
-  final String range;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> range;
 
   /// Creates a new [GetRoutersRouterBgpAdvertisedIpRange].
   /// [description] Required.
@@ -22,8 +23,8 @@ class GetRoutersRouterBgpAdvertisedIpRange {
 
   factory GetRoutersRouterBgpAdvertisedIpRange.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterBgpAdvertisedIpRange(
-      description: map['description'] as String,
-      range: map['range'] as String,
+      description: (map['description'] as String).input(),
+      range: (map['range'] as String).input(),
     );
   }
 }

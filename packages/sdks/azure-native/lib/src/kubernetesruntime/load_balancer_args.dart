@@ -28,19 +28,13 @@ class LoadBalancerArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [serviceSelector] A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field.
   LoadBalancerArgs({
-    required pulumi.Output<List<String>> addresses,
-    required pulumi.Output<String> advertiseMode,
-    pulumi.Output<List<String>>? bgpPeers,
-    pulumi.Output<String>? loadBalancerName,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<Map<String, String>>? serviceSelector,
-  }) :
-      addresses = pulumi.Input.asInput<List<String>>(addresses),
-      advertiseMode = pulumi.Input.asInput<String>(advertiseMode),
-      bgpPeers = pulumi.Input.asOptionalInput<List<String>>(bgpPeers),
-      loadBalancerName = pulumi.Input.asOptionalInput<String>(loadBalancerName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      serviceSelector = pulumi.Input.asOptionalInput<Map<String, String>>(serviceSelector);
+    required this.addresses,
+    required this.advertiseMode,
+    this.bgpPeers,
+    this.loadBalancerName,
+    required this.resourceUri,
+    this.serviceSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      addresses: pulumi.Output.create<List<String>>((map['addresses'] as List).cast<String>()),
-      advertiseMode: pulumi.Output.create<String>(map['advertiseMode'] as String),
-      bgpPeers: map['bgpPeers'] == null ? null : pulumi.Output.create<List<String>>((map['bgpPeers'] as List).cast<String>()),
-      loadBalancerName: map['loadBalancerName'] == null ? null : pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      serviceSelector: map['serviceSelector'] == null ? null : pulumi.Output.create<Map<String, String>>((map['serviceSelector'] as Map).cast<String, String>()),
+      addresses: ((map['addresses'] as List).cast<String>()).input(),
+      advertiseMode: (map['advertiseMode'] as String).input(),
+      bgpPeers: map['bgpPeers'] == null ? null : ((map['bgpPeers'] as List).cast<String>()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      serviceSelector: map['serviceSelector'] == null ? null : ((map['serviceSelector'] as Map).cast<String, String>()).input(),
     );
   }
 }

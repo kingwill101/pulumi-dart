@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TagTag {
   /// Tag name.
-  final String key;
+  final pulumi.Input<String> key;
   /// Whether to propagate the tags to instances launched by the ASG.
-  final bool propagateAtLaunch;
+  final pulumi.Input<bool> propagateAtLaunch;
   /// Tag value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [TagTag].
   /// [key] Tag name.
@@ -29,9 +30,9 @@ class TagTag {
 
   factory TagTag.fromMap(Map<String, dynamic> map) {
     return TagTag(
-      key: map['key'] as String,
-      propagateAtLaunch: map['propagateAtLaunch'] as bool,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      propagateAtLaunch: (map['propagateAtLaunch'] as bool).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

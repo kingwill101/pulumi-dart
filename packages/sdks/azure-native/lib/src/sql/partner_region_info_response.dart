@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Partner region information for the failover group.
 class PartnerRegionInfoResponse {
   /// Geo location of the partner managed instances.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Replication role of the partner managed instances.
-  final String replicationRole;
+  final pulumi.Input<String> replicationRole;
 
   /// Creates a new [PartnerRegionInfoResponse].
   /// [location] Geo location of the partner managed instances.
@@ -25,8 +26,8 @@ class PartnerRegionInfoResponse {
 
   factory PartnerRegionInfoResponse.fromMap(Map<String, dynamic> map) {
     return PartnerRegionInfoResponse(
-      location: map['location'] == null ? null : map['location'] as String,
-      replicationRole: map['replicationRole'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      replicationRole: (map['replicationRole'] as String).input(),
     );
   }
 }

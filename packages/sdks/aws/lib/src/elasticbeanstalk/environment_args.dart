@@ -69,35 +69,21 @@ class EnvironmentArgs {
   /// [version] The name of the Elastic Beanstalk Application Version
   /// [waitForReadyTimeout] The maximum
   EnvironmentArgs({
-    required pulumi.Output<String> application,
-    pulumi.Output<String>? cnamePrefix,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? platformArn,
-    pulumi.Output<String>? pollInterval,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<EnvironmentSetting>>? settings,
-    pulumi.Output<String>? solutionStackName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? templateName,
-    pulumi.Output<String>? tier,
-    pulumi.Output<String>? version,
-    pulumi.Output<String>? waitForReadyTimeout,
-  }) :
-      application = pulumi.Input.asInput<String>(application),
-      cnamePrefix = pulumi.Input.asOptionalInput<String>(cnamePrefix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      platformArn = pulumi.Input.asOptionalInput<String>(platformArn),
-      pollInterval = pulumi.Input.asOptionalInput<String>(pollInterval),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      settings = pulumi.Input.asOptionalInput<List<EnvironmentSetting>>(settings),
-      solutionStackName = pulumi.Input.asOptionalInput<String>(solutionStackName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName),
-      tier = pulumi.Input.asOptionalInput<String>(tier),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      waitForReadyTimeout = pulumi.Input.asOptionalInput<String>(waitForReadyTimeout);
+    required this.application,
+    this.cnamePrefix,
+    this.description,
+    this.name,
+    this.platformArn,
+    this.pollInterval,
+    this.region,
+    this.settings,
+    this.solutionStackName,
+    this.tags,
+    this.templateName,
+    this.tier,
+    this.version,
+    this.waitForReadyTimeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -120,20 +106,20 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      application: pulumi.Output.create<String>(map['application'] as String),
-      cnamePrefix: map['cnamePrefix'] == null ? null : pulumi.Output.create<String>(map['cnamePrefix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      platformArn: map['platformArn'] == null ? null : pulumi.Output.create<String>(map['platformArn'] as String),
-      pollInterval: map['pollInterval'] == null ? null : pulumi.Output.create<String>(map['pollInterval'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<List<EnvironmentSetting>>(pulumi.Input.decodeList<EnvironmentSetting>(map['settings'], (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      solutionStackName: map['solutionStackName'] == null ? null : pulumi.Output.create<String>(map['solutionStackName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
-      tier: map['tier'] == null ? null : pulumi.Output.create<String>(map['tier'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      waitForReadyTimeout: map['waitForReadyTimeout'] == null ? null : pulumi.Output.create<String>(map['waitForReadyTimeout'] as String),
+      application: (map['application'] as String).input(),
+      cnamePrefix: map['cnamePrefix'] == null ? null : (map['cnamePrefix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      platformArn: map['platformArn'] == null ? null : (map['platformArn'] as String).input(),
+      pollInterval: map['pollInterval'] == null ? null : (map['pollInterval'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<EnvironmentSetting>(map['settings'], (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      waitForReadyTimeout: map['waitForReadyTimeout'] == null ? null : (map['waitForReadyTimeout'] as String).input(),
     );
   }
 }

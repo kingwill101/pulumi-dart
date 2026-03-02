@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SQL managed instance assessment settings V3.
 class SqlMiSettingsV3 {
   /// Gets or sets the azure PAAS SQL instance type.
-  final String? azureSqlInstanceType;
+  final pulumi.Input<String>? azureSqlInstanceType;
   /// Gets or sets the azure SQL service tier.
-  final String? azureSqlServiceTier;
+  final pulumi.Input<String>? azureSqlServiceTier;
 
   /// Creates a new [SqlMiSettingsV3].
   /// [azureSqlInstanceType] Gets or sets the azure PAAS SQL instance type.
@@ -25,8 +26,8 @@ class SqlMiSettingsV3 {
 
   factory SqlMiSettingsV3.fromMap(Map<String, dynamic> map) {
     return SqlMiSettingsV3(
-      azureSqlInstanceType: map['azureSqlInstanceType'] == null ? null : map['azureSqlInstanceType'] as String,
-      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : map['azureSqlServiceTier'] as String,
+      azureSqlInstanceType: map['azureSqlInstanceType'] == null ? null : (map['azureSqlInstanceType'] as String).input(),
+      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : (map['azureSqlServiceTier'] as String).input(),
     );
   }
 }

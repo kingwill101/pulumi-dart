@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IpsecServerIkeConfig {
   /// The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
-  final String? ikeAuthAlg;
+  final pulumi.Input<String>? ikeAuthAlg;
   /// The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
-  final String? ikeEncAlg;
+  final pulumi.Input<String>? ikeEncAlg;
   /// IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
-  final int? ikeLifetime;
+  final pulumi.Input<int>? ikeLifetime;
   /// The IKE negotiation mode. Default value: `main`.
-  final String? ikeMode;
+  final pulumi.Input<String>? ikeMode;
   /// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
-  final String? ikePfs;
+  final pulumi.Input<String>? ikePfs;
   /// The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
-  final String? ikeVersion;
+  final pulumi.Input<String>? ikeVersion;
   /// The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
-  final String? localId;
+  final pulumi.Input<String>? localId;
   /// The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
-  final String? remoteId;
+  final pulumi.Input<String>? remoteId;
 
   /// Creates a new [IpsecServerIkeConfig].
   /// [ikeAuthAlg] The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
@@ -54,14 +55,14 @@ class IpsecServerIkeConfig {
 
   factory IpsecServerIkeConfig.fromMap(Map<String, dynamic> map) {
     return IpsecServerIkeConfig(
-      ikeAuthAlg: map['ikeAuthAlg'] == null ? null : map['ikeAuthAlg'] as String,
-      ikeEncAlg: map['ikeEncAlg'] == null ? null : map['ikeEncAlg'] as String,
-      ikeLifetime: map['ikeLifetime'] == null ? null : map['ikeLifetime'] as int,
-      ikeMode: map['ikeMode'] == null ? null : map['ikeMode'] as String,
-      ikePfs: map['ikePfs'] == null ? null : map['ikePfs'] as String,
-      ikeVersion: map['ikeVersion'] == null ? null : map['ikeVersion'] as String,
-      localId: map['localId'] == null ? null : map['localId'] as String,
-      remoteId: map['remoteId'] == null ? null : map['remoteId'] as String,
+      ikeAuthAlg: map['ikeAuthAlg'] == null ? null : (map['ikeAuthAlg'] as String).input(),
+      ikeEncAlg: map['ikeEncAlg'] == null ? null : (map['ikeEncAlg'] as String).input(),
+      ikeLifetime: map['ikeLifetime'] == null ? null : (map['ikeLifetime'] as int).input(),
+      ikeMode: map['ikeMode'] == null ? null : (map['ikeMode'] as String).input(),
+      ikePfs: map['ikePfs'] == null ? null : (map['ikePfs'] as String).input(),
+      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion'] as String).input(),
+      localId: map['localId'] == null ? null : (map['localId'] as String).input(),
+      remoteId: map['remoteId'] == null ? null : (map['remoteId'] as String).input(),
     );
   }
 }

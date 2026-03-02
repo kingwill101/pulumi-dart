@@ -53,35 +53,21 @@ class DataCenterArgs {
   /// [vswitchId] The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
   /// [zoneId] The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
   DataCenterArgs({
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<int>? autoRenewPeriod,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? dataCenterName,
-    pulumi.Output<int>? diskSize,
-    pulumi.Output<String>? diskType,
-    pulumi.Output<bool>? enablePublic,
-    required pulumi.Output<String> instanceType,
-    required pulumi.Output<int> nodeCount,
-    required pulumi.Output<String> payType,
-    pulumi.Output<int>? period,
-    pulumi.Output<String>? periodUnit,
-    required pulumi.Output<String> vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      autoRenewPeriod = pulumi.Input.asOptionalInput<int>(autoRenewPeriod),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      dataCenterName = pulumi.Input.asOptionalInput<String>(dataCenterName),
-      diskSize = pulumi.Input.asOptionalInput<int>(diskSize),
-      diskType = pulumi.Input.asOptionalInput<String>(diskType),
-      enablePublic = pulumi.Input.asOptionalInput<bool>(enablePublic),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      nodeCount = pulumi.Input.asInput<int>(nodeCount),
-      payType = pulumi.Input.asInput<String>(payType),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      periodUnit = pulumi.Input.asOptionalInput<String>(periodUnit),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.autoRenew,
+    this.autoRenewPeriod,
+    required this.clusterId,
+    this.dataCenterName,
+    this.diskSize,
+    this.diskType,
+    this.enablePublic,
+    required this.instanceType,
+    required this.nodeCount,
+    required this.payType,
+    this.period,
+    this.periodUnit,
+    required this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class DataCenterArgs {
 
   factory DataCenterArgs.fromMap(Map<String, dynamic> map) {
     return DataCenterArgs(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : pulumi.Output.create<int>(map['autoRenewPeriod'] as int),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      dataCenterName: map['dataCenterName'] == null ? null : pulumi.Output.create<String>(map['dataCenterName'] as String),
-      diskSize: map['diskSize'] == null ? null : pulumi.Output.create<int>(map['diskSize'] as int),
-      diskType: map['diskType'] == null ? null : pulumi.Output.create<String>(map['diskType'] as String),
-      enablePublic: map['enablePublic'] == null ? null : pulumi.Output.create<bool>(map['enablePublic'] as bool),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      nodeCount: pulumi.Output.create<int>(map['nodeCount'] as int),
-      payType: pulumi.Output.create<String>(map['payType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      periodUnit: map['periodUnit'] == null ? null : pulumi.Output.create<String>(map['periodUnit'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod'] as int).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      dataCenterName: map['dataCenterName'] == null ? null : (map['dataCenterName'] as String).input(),
+      diskSize: map['diskSize'] == null ? null : (map['diskSize'] as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      enablePublic: map['enablePublic'] == null ? null : (map['enablePublic'] as bool).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      payType: (map['payType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

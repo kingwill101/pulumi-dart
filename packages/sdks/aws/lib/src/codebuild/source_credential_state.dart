@@ -30,19 +30,13 @@ class SourceCredentialState {
   /// [token] For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
   /// [userName] The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
   SourceCredentialState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? authType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serverType,
-    pulumi.Output<String>? token,
-    pulumi.Output<String>? userName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authType = pulumi.Input.asOptionalInput<String>(authType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverType = pulumi.Input.asOptionalInput<String>(serverType),
-      token = pulumi.Input.asOptionalInput<String>(token),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.arn,
+    this.authType,
+    this.region,
+    this.serverType,
+    this.token,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class SourceCredentialState {
 
   factory SourceCredentialState.fromMap(Map<String, dynamic> map) {
     return SourceCredentialState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authType: map['authType'] == null ? null : pulumi.Output.create<String>(map['authType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverType: map['serverType'] == null ? null : pulumi.Output.create<String>(map['serverType'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

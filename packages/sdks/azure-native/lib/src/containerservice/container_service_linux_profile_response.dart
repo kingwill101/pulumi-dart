@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_service_ssh_configuration_response.dart';
 
 /// Profile for Linux VMs in the container service cluster.
 class ContainerServiceLinuxProfileResponse {
   /// The administrator username to use for Linux VMs.
-  final String adminUsername;
+  final pulumi.Input<String> adminUsername;
   /// The SSH configuration for Linux-based VMs running on Azure.
-  final ContainerServiceSshConfigurationResponse ssh;
+  final pulumi.Input<ContainerServiceSshConfigurationResponse> ssh;
 
   /// Creates a new [ContainerServiceLinuxProfileResponse].
   /// [adminUsername] The administrator username to use for Linux VMs.
@@ -20,14 +21,14 @@ class ContainerServiceLinuxProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adminUsername': adminUsername,
-      'ssh': ssh.toMap(),
+      'ssh': pulumi.Input.mapInputValue<ContainerServiceSshConfigurationResponse, Map<String, dynamic>>(ssh, (value) => value.toMap()),
     };
   }
 
   factory ContainerServiceLinuxProfileResponse.fromMap(Map<String, dynamic> map) {
     return ContainerServiceLinuxProfileResponse(
-      adminUsername: map['adminUsername'] as String,
-      ssh: ContainerServiceSshConfigurationResponse.fromMap((map['ssh'] as Map).cast<String, dynamic>()),
+      adminUsername: (map['adminUsername'] as String).input(),
+      ssh: (ContainerServiceSshConfigurationResponse.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

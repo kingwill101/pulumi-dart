@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadWorkloadPropertyFunctionalType {
   /// (Output)
   /// Output only. The functional type of a service or workload.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [WorkloadWorkloadPropertyFunctionalType].
   /// [type] (Output)
@@ -20,7 +21,7 @@ class WorkloadWorkloadPropertyFunctionalType {
 
   factory WorkloadWorkloadPropertyFunctionalType.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadPropertyFunctionalType(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

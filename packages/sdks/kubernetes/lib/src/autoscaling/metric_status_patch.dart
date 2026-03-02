@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_resource_metric_status_patch.dart';
 import 'external_metric_status_patch.dart';
 import 'object_metric_status_patch.dart';
@@ -9,17 +10,17 @@ import 'resource_metric_status_patch.dart';
 /// MetricStatus describes the last-read state of a single metric.
 class MetricStatusPatch {
   /// container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
-  final ContainerResourceMetricStatusPatch? containerResource;
+  final pulumi.Input<ContainerResourceMetricStatusPatch>? containerResource;
   /// external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
-  final ExternalMetricStatusPatch? external;
+  final pulumi.Input<ExternalMetricStatusPatch>? external;
   /// object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
-  final ObjectMetricStatusPatch? object;
+  final pulumi.Input<ObjectMetricStatusPatch>? object;
   /// pods refers to a metric describing each pod in the current scale target (for example, transactions-processed-per-second).  The values will be averaged together before being compared to the target value.
-  final PodsMetricStatusPatch? pods;
+  final pulumi.Input<PodsMetricStatusPatch>? pods;
   /// resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
-  final ResourceMetricStatusPatch? resource;
+  final pulumi.Input<ResourceMetricStatusPatch>? resource;
   /// type is the type of metric source.  It will be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each corresponds to a matching field in the object.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [MetricStatusPatch].
   /// [containerResource] container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
@@ -39,23 +40,23 @@ class MetricStatusPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerResource': ?containerResource == null ? null : containerResource!.toMap(),
-      'external': ?external == null ? null : external!.toMap(),
-      'object': ?object == null ? null : object!.toMap(),
-      'pods': ?pods == null ? null : pods!.toMap(),
-      'resource': ?resource == null ? null : resource!.toMap(),
+      'containerResource': ?pulumi.Input.mapOptionalInputValue<ContainerResourceMetricStatusPatch, Map<String, dynamic>>(containerResource, (value) => value.toMap()),
+      'external': ?pulumi.Input.mapOptionalInputValue<ExternalMetricStatusPatch, Map<String, dynamic>>(external, (value) => value.toMap()),
+      'object': ?pulumi.Input.mapOptionalInputValue<ObjectMetricStatusPatch, Map<String, dynamic>>(object, (value) => value.toMap()),
+      'pods': ?pulumi.Input.mapOptionalInputValue<PodsMetricStatusPatch, Map<String, dynamic>>(pods, (value) => value.toMap()),
+      'resource': ?pulumi.Input.mapOptionalInputValue<ResourceMetricStatusPatch, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory MetricStatusPatch.fromMap(Map<String, dynamic> map) {
     return MetricStatusPatch(
-      containerResource: map['containerResource'] == null ? null : ContainerResourceMetricStatusPatch.fromMap((map['containerResource'] as Map).cast<String, dynamic>()),
-      external: map['external'] == null ? null : ExternalMetricStatusPatch.fromMap((map['external'] as Map).cast<String, dynamic>()),
-      object: map['object'] == null ? null : ObjectMetricStatusPatch.fromMap((map['object'] as Map).cast<String, dynamic>()),
-      pods: map['pods'] == null ? null : PodsMetricStatusPatch.fromMap((map['pods'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null ? null : ResourceMetricStatusPatch.fromMap((map['resource'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
+      containerResource: map['containerResource'] == null ? null : (ContainerResourceMetricStatusPatch.fromMap((map['containerResource'] as Map).cast<String, dynamic>())).input(),
+      external: map['external'] == null ? null : (ExternalMetricStatusPatch.fromMap((map['external'] as Map).cast<String, dynamic>())).input(),
+      object: map['object'] == null ? null : (ObjectMetricStatusPatch.fromMap((map['object'] as Map).cast<String, dynamic>())).input(),
+      pods: map['pods'] == null ? null : (PodsMetricStatusPatch.fromMap((map['pods'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (ResourceMetricStatusPatch.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

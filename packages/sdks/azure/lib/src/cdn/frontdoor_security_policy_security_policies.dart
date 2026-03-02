@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_security_policy_security_policies_firewall.dart';
 
 class FrontdoorSecurityPolicySecurityPolicies {
   /// An `firewall` block as defined below.
-  final FrontdoorSecurityPolicySecurityPoliciesFirewall firewall;
+  final pulumi.Input<FrontdoorSecurityPolicySecurityPoliciesFirewall> firewall;
 
   /// Creates a new [FrontdoorSecurityPolicySecurityPolicies].
   /// [firewall] An `firewall` block as defined below.
@@ -14,13 +15,13 @@ class FrontdoorSecurityPolicySecurityPolicies {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'firewall': firewall.toMap(),
+      'firewall': pulumi.Input.mapInputValue<FrontdoorSecurityPolicySecurityPoliciesFirewall, Map<String, dynamic>>(firewall, (value) => value.toMap()),
     };
   }
 
   factory FrontdoorSecurityPolicySecurityPolicies.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecurityPolicySecurityPolicies(
-      firewall: FrontdoorSecurityPolicySecurityPoliciesFirewall.fromMap((map['firewall'] as Map).cast<String, dynamic>()),
+      firewall: (FrontdoorSecurityPolicySecurityPoliciesFirewall.fromMap((map['firewall'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

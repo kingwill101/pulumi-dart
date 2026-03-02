@@ -19,13 +19,10 @@ class GetManagedDatabaseArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetManagedDatabaseArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.databaseName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedDatabaseArgs {
 
   factory GetManagedDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabaseArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

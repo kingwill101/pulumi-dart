@@ -50,31 +50,19 @@ class LabArgs {
   /// [support] The properties of any lab support message associated with this lab
   /// [tags] The tags of the resource.
   LabArgs({
-    pulumi.Output<LabAnnouncementProperties>? announcement,
-    pulumi.Output<String>? environmentPermission,
-    pulumi.Output<Map<String, String>>? extendedProperties,
-    pulumi.Output<String>? labStorageType,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? mandatoryArtifactsResourceIdsLinux,
-    pulumi.Output<List<String>>? mandatoryArtifactsResourceIdsWindows,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? premiumDataDisks,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<LabSupportProperties>? support,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      announcement = pulumi.Input.asOptionalInput<LabAnnouncementProperties>(announcement),
-      environmentPermission = pulumi.Input.asOptionalInput<String>(environmentPermission),
-      extendedProperties = pulumi.Input.asOptionalInput<Map<String, String>>(extendedProperties),
-      labStorageType = pulumi.Input.asOptionalInput<String>(labStorageType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mandatoryArtifactsResourceIdsLinux = pulumi.Input.asOptionalInput<List<String>>(mandatoryArtifactsResourceIdsLinux),
-      mandatoryArtifactsResourceIdsWindows = pulumi.Input.asOptionalInput<List<String>>(mandatoryArtifactsResourceIdsWindows),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      premiumDataDisks = pulumi.Input.asOptionalInput<String>(premiumDataDisks),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      support = pulumi.Input.asOptionalInput<LabSupportProperties>(support),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.announcement,
+    this.environmentPermission,
+    this.extendedProperties,
+    this.labStorageType,
+    this.location,
+    this.mandatoryArtifactsResourceIdsLinux,
+    this.mandatoryArtifactsResourceIdsWindows,
+    this.name,
+    this.premiumDataDisks,
+    required this.resourceGroupName,
+    this.support,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class LabArgs {
 
   factory LabArgs.fromMap(Map<String, dynamic> map) {
     return LabArgs(
-      announcement: map['announcement'] == null ? null : pulumi.Output.create<LabAnnouncementProperties>(LabAnnouncementProperties.fromMap((map['announcement'] as Map).cast<String, dynamic>())),
-      environmentPermission: map['environmentPermission'] == null ? null : pulumi.Output.create<String>(map['environmentPermission'] as String),
-      extendedProperties: map['extendedProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['extendedProperties'] as Map).cast<String, String>()),
-      labStorageType: map['labStorageType'] == null ? null : pulumi.Output.create<String>(map['labStorageType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mandatoryArtifactsResourceIdsLinux: map['mandatoryArtifactsResourceIdsLinux'] == null ? null : pulumi.Output.create<List<String>>((map['mandatoryArtifactsResourceIdsLinux'] as List).cast<String>()),
-      mandatoryArtifactsResourceIdsWindows: map['mandatoryArtifactsResourceIdsWindows'] == null ? null : pulumi.Output.create<List<String>>((map['mandatoryArtifactsResourceIdsWindows'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      premiumDataDisks: map['premiumDataDisks'] == null ? null : pulumi.Output.create<String>(map['premiumDataDisks'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      support: map['support'] == null ? null : pulumi.Output.create<LabSupportProperties>(LabSupportProperties.fromMap((map['support'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      announcement: map['announcement'] == null ? null : (LabAnnouncementProperties.fromMap((map['announcement'] as Map).cast<String, dynamic>())).input(),
+      environmentPermission: map['environmentPermission'] == null ? null : (map['environmentPermission'] as String).input(),
+      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties'] as Map).cast<String, String>()).input(),
+      labStorageType: map['labStorageType'] == null ? null : (map['labStorageType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mandatoryArtifactsResourceIdsLinux: map['mandatoryArtifactsResourceIdsLinux'] == null ? null : ((map['mandatoryArtifactsResourceIdsLinux'] as List).cast<String>()).input(),
+      mandatoryArtifactsResourceIdsWindows: map['mandatoryArtifactsResourceIdsWindows'] == null ? null : ((map['mandatoryArtifactsResourceIdsWindows'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      premiumDataDisks: map['premiumDataDisks'] == null ? null : (map['premiumDataDisks'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      support: map['support'] == null ? null : (LabSupportProperties.fromMap((map['support'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

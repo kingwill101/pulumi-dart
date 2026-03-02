@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkstationConfigContainer {
   /// Arguments passed to the entrypoint.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// If set, overrides the default ENTRYPOINT specified by the image.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// Environment variables passed to the container.
   /// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-  final Map<String, String>? env;
+  final pulumi.Input<Map<String, String>>? env;
   /// Docker image defining the container. This image must be accessible by the config's service account.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// If set, overrides the USER specified in the image with the given uid.
-  final int? runAsUser;
+  final pulumi.Input<int>? runAsUser;
   /// If set, overrides the default DIR specified by the image.
-  final String? workingDir;
+  final pulumi.Input<String>? workingDir;
 
   /// Creates a new [WorkstationConfigContainer].
   /// [args] Arguments passed to the entrypoint.
@@ -45,12 +46,12 @@ class WorkstationConfigContainer {
 
   factory WorkstationConfigContainer.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigContainer(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      env: map['env'] == null ? null : (map['env'] as Map).cast<String, String>(),
-      image: map['image'] == null ? null : map['image'] as String,
-      runAsUser: map['runAsUser'] == null ? null : map['runAsUser'] as int,
-      workingDir: map['workingDir'] == null ? null : map['workingDir'] as String,
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
     );
   }
 }

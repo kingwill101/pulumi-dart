@@ -16,11 +16,9 @@ class GetPartnerRegistrationArgs {
   /// [partnerRegistrationName] Name of the partner registration.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   GetPartnerRegistrationArgs({
-    required pulumi.Output<String> partnerRegistrationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      partnerRegistrationName = pulumi.Input.asInput<String>(partnerRegistrationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.partnerRegistrationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPartnerRegistrationArgs {
 
   factory GetPartnerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerRegistrationArgs(
-      partnerRegistrationName: pulumi.Output.create<String>(map['partnerRegistrationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      partnerRegistrationName: (map['partnerRegistrationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

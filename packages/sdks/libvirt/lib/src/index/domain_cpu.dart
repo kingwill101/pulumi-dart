@@ -9,33 +9,33 @@ import 'domain_cpu_topology.dart';
 
 class DomainCpu {
   /// Sets caching parameters for the domain's CPU, affecting performance characteristics.
-  final DomainCpuCache? cache;
+  final pulumi.Input<DomainCpuCache>? cache;
   /// Indicates whether to perform additional checks on the CPU model and features.
-  final String? check;
+  final pulumi.Input<String>? check;
   /// Lists deprecated CPU features that should not be used in the domain configuration.
-  final String? deprecatedFeatures;
+  final pulumi.Input<String>? deprecatedFeatures;
   /// Defines specific CPU features that can be enabled or disabled for the domain.
-  final List<DomainCpuFeature>? features;
+  final pulumi.Input<List<DomainCpuFeature>>? features;
   /// Configures CPU model matching options to optimize performance and compatibility.
-  final String? match;
+  final pulumi.Input<String>? match;
   /// Specifies the maximum physical address space size accessible to the domain.
-  final DomainCpuMaxPhysAddr? maxPhysAddr;
+  final pulumi.Input<DomainCpuMaxPhysAddr>? maxPhysAddr;
   /// Configures whether the CPU settings can be changed while the domain is running.
-  final bool? migratable;
+  final pulumi.Input<bool>? migratable;
   /// Defines the operational mode for the CPU configuration, affecting virtualization behavior.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Specifies the CPU model used by the domain, influencing its performance characteristics.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// Sets the CPU model fallback configurations in case the specified model is unavailable.
-  final String? modelFallback;
+  final pulumi.Input<String>? modelFallback;
   /// Determines the vendor ID for the CPU model, affecting compatibility.
-  final String? modelVendorId;
+  final pulumi.Input<String>? modelVendorId;
   /// Configures NUMA (Non-Uniform Memory Access) settings for balancing memory allocation.
-  final DomainCpuNuma? numa;
+  final pulumi.Input<DomainCpuNuma>? numa;
   /// Configures the CPU topology for the domain, specifying the physical arrangement of CPUs.
-  final DomainCpuTopology? topology;
+  final pulumi.Input<DomainCpuTopology>? topology;
   /// Specifies the vendor name of the CPU model being used for the domain.
-  final String? vendor;
+  final pulumi.Input<String>? vendor;
 
   /// Creates a new [DomainCpu].
   /// [cache] Sets caching parameters for the domain's CPU, affecting performance characteristics.
@@ -71,39 +71,39 @@ class DomainCpu {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cache': ?cache == null ? null : cache!.toMap(),
+      'cache': ?pulumi.Input.mapOptionalInputValue<DomainCpuCache, Map<String, dynamic>>(cache, (value) => value.toMap()),
       'check': ?check,
       'deprecatedFeatures': ?deprecatedFeatures,
-      'features': ?features == null ? null : pulumi.Input.encodeList<DomainCpuFeature, Map<String, dynamic>>(features!, (value) => value.toMap()),
+      'features': ?pulumi.Input.mapOptionalInputValue<List<DomainCpuFeature>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<DomainCpuFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
       'match': ?match,
-      'maxPhysAddr': ?maxPhysAddr == null ? null : maxPhysAddr!.toMap(),
+      'maxPhysAddr': ?pulumi.Input.mapOptionalInputValue<DomainCpuMaxPhysAddr, Map<String, dynamic>>(maxPhysAddr, (value) => value.toMap()),
       'migratable': ?migratable,
       'mode': ?mode,
       'model': ?model,
       'modelFallback': ?modelFallback,
       'modelVendorId': ?modelVendorId,
-      'numa': ?numa == null ? null : numa!.toMap(),
-      'topology': ?topology == null ? null : topology!.toMap(),
+      'numa': ?pulumi.Input.mapOptionalInputValue<DomainCpuNuma, Map<String, dynamic>>(numa, (value) => value.toMap()),
+      'topology': ?pulumi.Input.mapOptionalInputValue<DomainCpuTopology, Map<String, dynamic>>(topology, (value) => value.toMap()),
       'vendor': ?vendor,
     };
   }
 
   factory DomainCpu.fromMap(Map<String, dynamic> map) {
     return DomainCpu(
-      cache: map['cache'] == null ? null : DomainCpuCache.fromMap((map['cache'] as Map).cast<String, dynamic>()),
-      check: map['check'] == null ? null : map['check'] as String,
-      deprecatedFeatures: map['deprecatedFeatures'] == null ? null : map['deprecatedFeatures'] as String,
-      features: map['features'] == null ? null : pulumi.Input.decodeList<DomainCpuFeature>(map['features'], (value) => DomainCpuFeature.fromMap((value as Map).cast<String, dynamic>())),
-      match: map['match'] == null ? null : map['match'] as String,
-      maxPhysAddr: map['maxPhysAddr'] == null ? null : DomainCpuMaxPhysAddr.fromMap((map['maxPhysAddr'] as Map).cast<String, dynamic>()),
-      migratable: map['migratable'] == null ? null : map['migratable'] as bool,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      model: map['model'] == null ? null : map['model'] as String,
-      modelFallback: map['modelFallback'] == null ? null : map['modelFallback'] as String,
-      modelVendorId: map['modelVendorId'] == null ? null : map['modelVendorId'] as String,
-      numa: map['numa'] == null ? null : DomainCpuNuma.fromMap((map['numa'] as Map).cast<String, dynamic>()),
-      topology: map['topology'] == null ? null : DomainCpuTopology.fromMap((map['topology'] as Map).cast<String, dynamic>()),
-      vendor: map['vendor'] == null ? null : map['vendor'] as String,
+      cache: map['cache'] == null ? null : (DomainCpuCache.fromMap((map['cache'] as Map).cast<String, dynamic>())).input(),
+      check: map['check'] == null ? null : (map['check'] as String).input(),
+      deprecatedFeatures: map['deprecatedFeatures'] == null ? null : (map['deprecatedFeatures'] as String).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<DomainCpuFeature>(map['features'], (value) => DomainCpuFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      match: map['match'] == null ? null : (map['match'] as String).input(),
+      maxPhysAddr: map['maxPhysAddr'] == null ? null : (DomainCpuMaxPhysAddr.fromMap((map['maxPhysAddr'] as Map).cast<String, dynamic>())).input(),
+      migratable: map['migratable'] == null ? null : (map['migratable'] as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      modelFallback: map['modelFallback'] == null ? null : (map['modelFallback'] as String).input(),
+      modelVendorId: map['modelVendorId'] == null ? null : (map['modelVendorId'] as String).input(),
+      numa: map['numa'] == null ? null : (DomainCpuNuma.fromMap((map['numa'] as Map).cast<String, dynamic>())).input(),
+      topology: map['topology'] == null ? null : (DomainCpuTopology.fromMap((map['topology'] as Map).cast<String, dynamic>())).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
     );
   }
 }

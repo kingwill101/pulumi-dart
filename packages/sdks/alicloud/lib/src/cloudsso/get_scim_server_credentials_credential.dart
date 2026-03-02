@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetScimServerCredentialsCredential {
   /// The CreateTime of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The CredentialId of the resource.
-  final String credentialId;
+  final pulumi.Input<String> credentialId;
   /// The CredentialSecret of the resource.
-  final String credentialSecret;
+  final pulumi.Input<String> credentialSecret;
   /// The CredentialType of the resource.
-  final String credentialType;
+  final pulumi.Input<String> credentialType;
   /// The ID of the Directory.
-  final String directoryId;
+  final pulumi.Input<String> directoryId;
   /// The ExpireTime of the resource.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The ID of the SCIM Server Credential.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Status of the resource. Valid values: `Disabled`, `Enabled`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetScimServerCredentialsCredential].
   /// [createTime] The CreateTime of the resource.
@@ -54,14 +55,14 @@ class GetScimServerCredentialsCredential {
 
   factory GetScimServerCredentialsCredential.fromMap(Map<String, dynamic> map) {
     return GetScimServerCredentialsCredential(
-      createTime: map['createTime'] as String,
-      credentialId: map['credentialId'] as String,
-      credentialSecret: map['credentialSecret'] as String,
-      credentialType: map['credentialType'] as String,
-      directoryId: map['directoryId'] as String,
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      status: map['status'] as String,
+      createTime: (map['createTime'] as String).input(),
+      credentialId: (map['credentialId'] as String).input(),
+      credentialSecret: (map['credentialSecret'] as String).input(),
+      credentialType: (map['credentialType'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

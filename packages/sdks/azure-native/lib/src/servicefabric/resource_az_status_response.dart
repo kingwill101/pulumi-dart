@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes Az Resiliency status of Base resources
 class ResourceAzStatusResponse {
   /// Zone resiliency status details for the resource.
-  final String details;
+  final pulumi.Input<String> details;
   /// VM Size name.
-  final bool isZoneResilient;
+  final pulumi.Input<bool> isZoneResilient;
   /// VM Size properties.
-  final String resourceName;
+  final pulumi.Input<String> resourceName;
   /// VM Size id.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [ResourceAzStatusResponse].
   /// [details] Zone resiliency status details for the resource.
@@ -35,10 +36,10 @@ class ResourceAzStatusResponse {
 
   factory ResourceAzStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceAzStatusResponse(
-      details: map['details'] as String,
-      isZoneResilient: map['isZoneResilient'] as bool,
-      resourceName: map['resourceName'] as String,
-      resourceType: map['resourceType'] as String,
+      details: (map['details'] as String).input(),
+      isZoneResilient: (map['isZoneResilient'] as bool).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

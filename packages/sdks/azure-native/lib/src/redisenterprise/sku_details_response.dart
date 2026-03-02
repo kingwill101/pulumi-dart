@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of a Redis Enterprise cluster SKU.
 class SkuDetailsResponse {
   /// The name of the SKU.
-  final String name;
+  final pulumi.Input<String> name;
   /// The cache size in GB.
-  final double sizeInGB;
+  final pulumi.Input<double> sizeInGB;
 
   /// Creates a new [SkuDetailsResponse].
   /// [name] The name of the SKU.
@@ -25,8 +26,8 @@ class SkuDetailsResponse {
 
   factory SkuDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SkuDetailsResponse(
-      name: map['name'] as String,
-      sizeInGB: map['sizeInGB'] as double,
+      name: (map['name'] as String).input(),
+      sizeInGB: (map['sizeInGB'] as double).input(),
     );
   }
 }

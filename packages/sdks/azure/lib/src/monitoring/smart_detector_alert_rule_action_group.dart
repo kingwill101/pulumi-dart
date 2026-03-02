@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SmartDetectorAlertRuleActionGroup {
   /// Specifies a custom email subject if Email Receiver is specified in Monitor Action Group resource.
-  final String? emailSubject;
+  final pulumi.Input<String>? emailSubject;
   /// Specifies the action group ids.
-  final List<String> ids;
+  final pulumi.Input<List<String>> ids;
   /// A JSON String which Specifies the custom webhook payload if Webhook Receiver is specified in Monitor Action Group resource.
-  final String? webhookPayload;
+  final pulumi.Input<String>? webhookPayload;
 
   /// Creates a new [SmartDetectorAlertRuleActionGroup].
   /// [emailSubject] Specifies a custom email subject if Email Receiver is specified in Monitor Action Group resource.
@@ -29,9 +30,9 @@ class SmartDetectorAlertRuleActionGroup {
 
   factory SmartDetectorAlertRuleActionGroup.fromMap(Map<String, dynamic> map) {
     return SmartDetectorAlertRuleActionGroup(
-      emailSubject: map['emailSubject'] == null ? null : map['emailSubject'] as String,
-      ids: (map['ids'] as List).cast<String>(),
-      webhookPayload: map['webhookPayload'] == null ? null : map['webhookPayload'] as String,
+      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject'] as String).input(),
+      ids: ((map['ids'] as List).cast<String>()).input(),
+      webhookPayload: map['webhookPayload'] == null ? null : (map['webhookPayload'] as String).input(),
     );
   }
 }

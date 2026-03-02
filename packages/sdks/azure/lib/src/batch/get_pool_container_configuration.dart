@@ -5,11 +5,11 @@ import 'get_pool_container_configuration_container_registry.dart';
 
 class GetPoolContainerConfiguration {
   /// A list of container image names to use, as would be specified by `docker pull`.
-  final List<String> containerImageNames;
+  final pulumi.Input<List<String>> containerImageNames;
   /// Additional container registries from which container images can be pulled by the pool's VMs.
-  final List<GetPoolContainerConfigurationContainerRegistry> containerRegistries;
+  final pulumi.Input<List<GetPoolContainerConfigurationContainerRegistry>> containerRegistries;
   /// The type of container configuration.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetPoolContainerConfiguration].
   /// [containerImageNames] A list of container image names to use, as would be specified by `docker pull`.
@@ -24,16 +24,16 @@ class GetPoolContainerConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerImageNames': containerImageNames,
-      'containerRegistries': pulumi.Input.encodeList<GetPoolContainerConfigurationContainerRegistry, Map<String, dynamic>>(containerRegistries, (value) => value.toMap()),
+      'containerRegistries': pulumi.Input.mapInputValue<List<GetPoolContainerConfigurationContainerRegistry>, List<Map<String, dynamic>>>(containerRegistries, (value) => pulumi.Input.encodeList<GetPoolContainerConfigurationContainerRegistry, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory GetPoolContainerConfiguration.fromMap(Map<String, dynamic> map) {
     return GetPoolContainerConfiguration(
-      containerImageNames: (map['containerImageNames'] as List).cast<String>(),
-      containerRegistries: pulumi.Input.decodeList<GetPoolContainerConfigurationContainerRegistry>(map['containerRegistries'], (value) => GetPoolContainerConfigurationContainerRegistry.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      containerImageNames: ((map['containerImageNames'] as List).cast<String>()).input(),
+      containerRegistries: (pulumi.Input.decodeList<GetPoolContainerConfigurationContainerRegistry>(map['containerRegistries'], (value) => GetPoolContainerConfigurationContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStackScriptsStackscriptUserDefinedField {
   /// The default value. If not specified, this value will be used.
-  final String default_;
+  final pulumi.Input<String> default_;
   /// An example value for the field.
-  final String example;
+  final pulumi.Input<String> example;
   /// A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-  final String label;
+  final pulumi.Input<String> label;
   /// A list of acceptable values for the field in any quantity, combination or order.
-  final String manyOf;
+  final pulumi.Input<String> manyOf;
   /// The name of the field.
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of acceptable single values for the field.
-  final String oneOf;
+  final pulumi.Input<String> oneOf;
 
   /// Creates a new [GetStackScriptsStackscriptUserDefinedField].
   /// [default_] The default value. If not specified, this value will be used.
@@ -44,12 +45,12 @@ class GetStackScriptsStackscriptUserDefinedField {
 
   factory GetStackScriptsStackscriptUserDefinedField.fromMap(Map<String, dynamic> map) {
     return GetStackScriptsStackscriptUserDefinedField(
-      default_: map['default'] as String,
-      example: map['example'] as String,
-      label: map['label'] as String,
-      manyOf: map['manyOf'] as String,
-      name: map['name'] as String,
-      oneOf: map['oneOf'] as String,
+      default_: (map['default'] as String).input(),
+      example: (map['example'] as String).input(),
+      label: (map['label'] as String).input(),
+      manyOf: (map['manyOf'] as String).input(),
+      name: (map['name'] as String).input(),
+      oneOf: (map['oneOf'] as String).input(),
     );
   }
 }

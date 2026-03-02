@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Key Encryption Key (KEK) information.
 class KeyEncryptionKeyInfo {
   /// The key URL / identifier.
-  final String? keyIdentifier;
+  final pulumi.Input<String>? keyIdentifier;
   /// The KeyVault resource ARM Id for key.
-  final String? keyVaultResourceArmId;
+  final pulumi.Input<String>? keyVaultResourceArmId;
 
   /// Creates a new [KeyEncryptionKeyInfo].
   /// [keyIdentifier] The key URL / identifier.
@@ -25,8 +26,8 @@ class KeyEncryptionKeyInfo {
 
   factory KeyEncryptionKeyInfo.fromMap(Map<String, dynamic> map) {
     return KeyEncryptionKeyInfo(
-      keyIdentifier: map['keyIdentifier'] == null ? null : map['keyIdentifier'] as String,
-      keyVaultResourceArmId: map['keyVaultResourceArmId'] == null ? null : map['keyVaultResourceArmId'] as String,
+      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier'] as String).input(),
+      keyVaultResourceArmId: map['keyVaultResourceArmId'] == null ? null : (map['keyVaultResourceArmId'] as String).input(),
     );
   }
 }

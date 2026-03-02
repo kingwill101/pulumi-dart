@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupScheduleSpecCronSpec {
   /// Textual representation of the crontab. User can customize the
@@ -13,7 +14,7 @@ class BackupScheduleSpecCronSpec {
   /// 0 2 * * *    : once a day at 2 past midnight in UTC.
   /// 0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
   /// 0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
-  final String? text;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [BackupScheduleSpecCronSpec].
   /// [text] Textual representation of the crontab. User can customize the
@@ -29,7 +30,7 @@ class BackupScheduleSpecCronSpec {
 
   factory BackupScheduleSpecCronSpec.fromMap(Map<String, dynamic> map) {
     return BackupScheduleSpecCronSpec(
-      text: map['text'] == null ? null : map['text'] as String,
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

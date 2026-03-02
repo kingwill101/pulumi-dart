@@ -19,13 +19,10 @@ class FolderArgs {
   /// [parentFolderId] The ID of the parent folder.
   /// [tags] The tag of the resource.
   FolderArgs({
-    required pulumi.Output<String> folderName,
-    pulumi.Output<String>? parentFolderId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      folderName = pulumi.Input.asInput<String>(folderName),
-      parentFolderId = pulumi.Input.asOptionalInput<String>(parentFolderId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.folderName,
+    this.parentFolderId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class FolderArgs {
 
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
-      folderName: pulumi.Output.create<String>(map['folderName'] as String),
-      parentFolderId: map['parentFolderId'] == null ? null : pulumi.Output.create<String>(map['parentFolderId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      folderName: (map['folderName'] as String).input(),
+      parentFolderId: map['parentFolderId'] == null ? null : (map['parentFolderId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

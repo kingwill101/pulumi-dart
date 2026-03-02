@@ -13,9 +13,8 @@ class GetGuestAgentArgs {
   /// Creates a new [GetGuestAgentArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetGuestAgentArgs({
-    required pulumi.Output<String> resourceUri,
-  }) :
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetGuestAgentArgs {
 
   factory GetGuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestAgentArgs(
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

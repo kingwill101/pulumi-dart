@@ -36,23 +36,15 @@ class VbrHealthCheckArgs {
   /// [vbrInstanceOwnerId] The ID of the account to which the VBR belongs.
   /// [vbrInstanceRegionId] The ID of the region to which the VBR belongs.
   VbrHealthCheckArgs({
-    required pulumi.Output<String> cenId,
-    pulumi.Output<int>? healthCheckInterval,
-    pulumi.Output<String>? healthCheckSourceIp,
-    required pulumi.Output<String> healthCheckTargetIp,
-    pulumi.Output<int>? healthyThreshold,
-    required pulumi.Output<String> vbrInstanceId,
-    pulumi.Output<int>? vbrInstanceOwnerId,
-    required pulumi.Output<String> vbrInstanceRegionId,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      healthCheckInterval = pulumi.Input.asOptionalInput<int>(healthCheckInterval),
-      healthCheckSourceIp = pulumi.Input.asOptionalInput<String>(healthCheckSourceIp),
-      healthCheckTargetIp = pulumi.Input.asInput<String>(healthCheckTargetIp),
-      healthyThreshold = pulumi.Input.asOptionalInput<int>(healthyThreshold),
-      vbrInstanceId = pulumi.Input.asInput<String>(vbrInstanceId),
-      vbrInstanceOwnerId = pulumi.Input.asOptionalInput<int>(vbrInstanceOwnerId),
-      vbrInstanceRegionId = pulumi.Input.asInput<String>(vbrInstanceRegionId);
+    required this.cenId,
+    this.healthCheckInterval,
+    this.healthCheckSourceIp,
+    required this.healthCheckTargetIp,
+    this.healthyThreshold,
+    required this.vbrInstanceId,
+    this.vbrInstanceOwnerId,
+    required this.vbrInstanceRegionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class VbrHealthCheckArgs {
 
   factory VbrHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return VbrHealthCheckArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      healthCheckInterval: map['healthCheckInterval'] == null ? null : pulumi.Output.create<int>(map['healthCheckInterval'] as int),
-      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : pulumi.Output.create<String>(map['healthCheckSourceIp'] as String),
-      healthCheckTargetIp: pulumi.Output.create<String>(map['healthCheckTargetIp'] as String),
-      healthyThreshold: map['healthyThreshold'] == null ? null : pulumi.Output.create<int>(map['healthyThreshold'] as int),
-      vbrInstanceId: pulumi.Output.create<String>(map['vbrInstanceId'] as String),
-      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : pulumi.Output.create<int>(map['vbrInstanceOwnerId'] as int),
-      vbrInstanceRegionId: pulumi.Output.create<String>(map['vbrInstanceRegionId'] as String),
+      cenId: (map['cenId'] as String).input(),
+      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval'] as int).input(),
+      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp'] as String).input(),
+      healthCheckTargetIp: (map['healthCheckTargetIp'] as String).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
+      vbrInstanceId: (map['vbrInstanceId'] as String).input(),
+      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId'] as int).input(),
+      vbrInstanceRegionId: (map['vbrInstanceRegionId'] as String).input(),
     );
   }
 }

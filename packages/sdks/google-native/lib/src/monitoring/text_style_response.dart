@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties that determine how the title and content are styled
 class TextStyleResponse {
   /// The background color as a hex string. "#RRGGBB" or "#RGB"
-  final String backgroundColor;
+  final pulumi.Input<String> backgroundColor;
   /// Font sizes for both the title and content. The title will still be larger relative to the content.
-  final String fontSize;
+  final pulumi.Input<String> fontSize;
   /// The horizontal alignment of both the title and content
-  final String horizontalAlignment;
+  final pulumi.Input<String> horizontalAlignment;
   /// The amount of padding around the widget
-  final String padding;
+  final pulumi.Input<String> padding;
   /// The pointer location for this widget (also sometimes called a "tail")
-  final String pointerLocation;
+  final pulumi.Input<String> pointerLocation;
   /// The text color as a hex string. "#RRGGBB" or "#RGB"
-  final String textColor;
+  final pulumi.Input<String> textColor;
   /// The vertical alignment of both the title and content
-  final String verticalAlignment;
+  final pulumi.Input<String> verticalAlignment;
 
   /// Creates a new [TextStyleResponse].
   /// [backgroundColor] The background color as a hex string. "#RRGGBB" or "#RGB"
@@ -50,13 +51,13 @@ class TextStyleResponse {
 
   factory TextStyleResponse.fromMap(Map<String, dynamic> map) {
     return TextStyleResponse(
-      backgroundColor: map['backgroundColor'] as String,
-      fontSize: map['fontSize'] as String,
-      horizontalAlignment: map['horizontalAlignment'] as String,
-      padding: map['padding'] as String,
-      pointerLocation: map['pointerLocation'] as String,
-      textColor: map['textColor'] as String,
-      verticalAlignment: map['verticalAlignment'] as String,
+      backgroundColor: (map['backgroundColor'] as String).input(),
+      fontSize: (map['fontSize'] as String).input(),
+      horizontalAlignment: (map['horizontalAlignment'] as String).input(),
+      padding: (map['padding'] as String).input(),
+      pointerLocation: (map['pointerLocation'] as String).input(),
+      textColor: (map['textColor'] as String).input(),
+      verticalAlignment: (map['verticalAlignment'] as String).input(),
     );
   }
 }

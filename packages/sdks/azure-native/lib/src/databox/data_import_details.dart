@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_disk_details.dart';
 
 /// Details of the data to be used for importing data to azure.
 class DataImportDetails {
   /// Account details of the data to be transferred
-  final ManagedDiskDetails accountDetails;
+  final pulumi.Input<ManagedDiskDetails> accountDetails;
   /// Level of the logs to be collected.
-  final String? logCollectionLevel;
+  final pulumi.Input<String>? logCollectionLevel;
 
   /// Creates a new [DataImportDetails].
   /// [accountDetails] Account details of the data to be transferred
@@ -19,15 +20,15 @@ class DataImportDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountDetails': accountDetails.toMap(),
+      'accountDetails': pulumi.Input.mapInputValue<ManagedDiskDetails, Map<String, dynamic>>(accountDetails, (value) => value.toMap()),
       'logCollectionLevel': ?logCollectionLevel,
     };
   }
 
   factory DataImportDetails.fromMap(Map<String, dynamic> map) {
     return DataImportDetails(
-      accountDetails: ManagedDiskDetails.fromMap((map['accountDetails'] as Map).cast<String, dynamic>()),
-      logCollectionLevel: map['logCollectionLevel'] == null ? null : map['logCollectionLevel'] as String,
+      accountDetails: (ManagedDiskDetails.fromMap((map['accountDetails'] as Map).cast<String, dynamic>())).input(),
+      logCollectionLevel: map['logCollectionLevel'] == null ? null : (map['logCollectionLevel'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/label_selector.dart';
 
 /// ClusterTrustBundleProjection describes how to select a set of ClusterTrustBundle objects and project their contents into the pod filesystem.
 class ClusterTrustBundleProjection {
   /// Select all ClusterTrustBundles that match this label selector.  Only has effect if signerName is set.  Mutually-exclusive with name.  If unset, interpreted as "match nothing".  If set but empty, interpreted as "match everything".
-  final LabelSelector? labelSelector;
+  final pulumi.Input<LabelSelector>? labelSelector;
   /// Select a single ClusterTrustBundle by object name.  Mutually-exclusive with signerName and labelSelector.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// If true, don't block pod startup if the referenced ClusterTrustBundle(s) aren't available.  If using name, then the named ClusterTrustBundle is allowed not to exist.  If using signerName, then the combination of signerName and labelSelector is allowed to match zero ClusterTrustBundles.
-  final bool? optional;
+  final pulumi.Input<bool>? optional;
   /// Relative path from the volume root to write the bundle.
-  final String path;
+  final pulumi.Input<String> path;
   /// Select all ClusterTrustBundles that match this signer name. Mutually-exclusive with name.  The contents of all selected ClusterTrustBundles will be unified and deduplicated.
-  final String? signerName;
+  final pulumi.Input<String>? signerName;
 
   /// Creates a new [ClusterTrustBundleProjection].
   /// [labelSelector] Select all ClusterTrustBundles that match this label selector.  Only has effect if signerName is set.  Mutually-exclusive with name.  If unset, interpreted as "match nothing".  If set but empty, interpreted as "match everything".
@@ -31,7 +32,7 @@ class ClusterTrustBundleProjection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'labelSelector': ?labelSelector == null ? null : labelSelector!.toMap(),
+      'labelSelector': ?pulumi.Input.mapOptionalInputValue<LabelSelector, Map<String, dynamic>>(labelSelector, (value) => value.toMap()),
       'name': ?name,
       'optional': ?optional,
       'path': path,
@@ -41,11 +42,11 @@ class ClusterTrustBundleProjection {
 
   factory ClusterTrustBundleProjection.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundleProjection(
-      labelSelector: map['labelSelector'] == null ? null : LabelSelector.fromMap((map['labelSelector'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      optional: map['optional'] == null ? null : map['optional'] as bool,
-      path: map['path'] as String,
-      signerName: map['signerName'] == null ? null : map['signerName'] as String,
+      labelSelector: map['labelSelector'] == null ? null : (LabelSelector.fromMap((map['labelSelector'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      path: (map['path'] as String).input(),
+      signerName: map['signerName'] == null ? null : (map['signerName'] as String).input(),
     );
   }
 }

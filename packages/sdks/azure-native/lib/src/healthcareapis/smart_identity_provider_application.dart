@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Application configured in the Identity Provider used to access FHIR resources.
 class SmartIdentityProviderApplication {
   /// The actions that are permitted to be performed on FHIR resources for the application.
-  final List<String>? allowedDataActions;
+  final pulumi.Input<List<String>>? allowedDataActions;
   /// The audience that will be used to validate bearer tokens against the given authority.
-  final String? audience;
+  final pulumi.Input<String>? audience;
   /// The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
 
   /// Creates a new [SmartIdentityProviderApplication].
   /// [allowedDataActions] The actions that are permitted to be performed on FHIR resources for the application.
@@ -30,9 +31,9 @@ class SmartIdentityProviderApplication {
 
   factory SmartIdentityProviderApplication.fromMap(Map<String, dynamic> map) {
     return SmartIdentityProviderApplication(
-      allowedDataActions: map['allowedDataActions'] == null ? null : (map['allowedDataActions'] as List).cast<String>(),
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
+      allowedDataActions: map['allowedDataActions'] == null ? null : ((map['allowedDataActions'] as List).cast<String>()).input(),
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
     );
   }
 }

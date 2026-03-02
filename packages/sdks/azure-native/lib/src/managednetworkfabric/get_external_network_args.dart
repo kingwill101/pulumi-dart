@@ -19,13 +19,10 @@ class GetExternalNetworkArgs {
   /// [l3IsolationDomainName] Name of the L3 Isolation Domain.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetExternalNetworkArgs({
-    required pulumi.Output<String> externalNetworkName,
-    required pulumi.Output<String> l3IsolationDomainName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      externalNetworkName = pulumi.Input.asInput<String>(externalNetworkName),
-      l3IsolationDomainName = pulumi.Input.asInput<String>(l3IsolationDomainName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.externalNetworkName,
+    required this.l3IsolationDomainName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExternalNetworkArgs {
 
   factory GetExternalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalNetworkArgs(
-      externalNetworkName: pulumi.Output.create<String>(map['externalNetworkName'] as String),
-      l3IsolationDomainName: pulumi.Output.create<String>(map['l3IsolationDomainName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      externalNetworkName: (map['externalNetworkName'] as String).input(),
+      l3IsolationDomainName: (map['l3IsolationDomainName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

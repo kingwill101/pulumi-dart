@@ -32,19 +32,13 @@ class DefaultNetworkAclArgs {
   /// [subnetIds] List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DefaultNetworkAclArgs({
-    required pulumi.Output<String> defaultNetworkAclId,
-    pulumi.Output<List<DefaultNetworkAclEgress>>? egress,
-    pulumi.Output<List<DefaultNetworkAclIngress>>? ingress,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultNetworkAclId = pulumi.Input.asInput<String>(defaultNetworkAclId),
-      egress = pulumi.Input.asOptionalInput<List<DefaultNetworkAclEgress>>(egress),
-      ingress = pulumi.Input.asOptionalInput<List<DefaultNetworkAclIngress>>(ingress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.defaultNetworkAclId,
+    this.egress,
+    this.ingress,
+    this.region,
+    this.subnetIds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class DefaultNetworkAclArgs {
 
   factory DefaultNetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return DefaultNetworkAclArgs(
-      defaultNetworkAclId: pulumi.Output.create<String>(map['defaultNetworkAclId'] as String),
-      egress: map['egress'] == null ? null : pulumi.Output.create<List<DefaultNetworkAclEgress>>(pulumi.Input.decodeList<DefaultNetworkAclEgress>(map['egress'], (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))),
-      ingress: map['ingress'] == null ? null : pulumi.Output.create<List<DefaultNetworkAclIngress>>(pulumi.Input.decodeList<DefaultNetworkAclIngress>(map['ingress'], (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultNetworkAclId: (map['defaultNetworkAclId'] as String).input(),
+      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<DefaultNetworkAclEgress>(map['egress'], (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<DefaultNetworkAclIngress>(map['ingress'], (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

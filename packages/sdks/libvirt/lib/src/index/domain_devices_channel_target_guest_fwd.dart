@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesChannelTargetGuestFwd {
   /// This field specifies the address to which the guest forwarding will connect.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// This field sets the port number for the guest forwarding connection.
-  final String? port;
+  final pulumi.Input<String>? port;
 
   /// Creates a new [DomainDevicesChannelTargetGuestFwd].
   /// [address] This field specifies the address to which the guest forwarding will connect.
@@ -24,8 +25,8 @@ class DomainDevicesChannelTargetGuestFwd {
 
   factory DomainDevicesChannelTargetGuestFwd.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelTargetGuestFwd(
-      address: map['address'] == null ? null : map['address'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

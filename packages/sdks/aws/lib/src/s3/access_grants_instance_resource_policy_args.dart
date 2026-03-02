@@ -19,13 +19,10 @@ class AccessGrantsInstanceResourcePolicyArgs {
   /// [policy] The policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AccessGrantsInstanceResourcePolicyArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    required this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AccessGrantsInstanceResourcePolicyArgs {
 
   factory AccessGrantsInstanceResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantsInstanceResourcePolicyArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

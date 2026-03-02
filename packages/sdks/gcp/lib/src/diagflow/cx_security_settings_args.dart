@@ -68,31 +68,19 @@ class CxSecuritySettingsArgs {
   /// [retentionStrategy] Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
   /// [retentionWindowDays] Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
   CxSecuritySettingsArgs({
-    pulumi.Output<CxSecuritySettingsAudioExportSettings>? audioExportSettings,
-    pulumi.Output<String>? deidentifyTemplate,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<CxSecuritySettingsInsightsExportSettings>? insightsExportSettings,
-    pulumi.Output<String>? inspectTemplate,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? purgeDataTypes,
-    pulumi.Output<String>? redactionScope,
-    pulumi.Output<String>? redactionStrategy,
-    pulumi.Output<String>? retentionStrategy,
-    pulumi.Output<int>? retentionWindowDays,
-  }) :
-      audioExportSettings = pulumi.Input.asOptionalInput<CxSecuritySettingsAudioExportSettings>(audioExportSettings),
-      deidentifyTemplate = pulumi.Input.asOptionalInput<String>(deidentifyTemplate),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      insightsExportSettings = pulumi.Input.asOptionalInput<CxSecuritySettingsInsightsExportSettings>(insightsExportSettings),
-      inspectTemplate = pulumi.Input.asOptionalInput<String>(inspectTemplate),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      purgeDataTypes = pulumi.Input.asOptionalInput<List<String>>(purgeDataTypes),
-      redactionScope = pulumi.Input.asOptionalInput<String>(redactionScope),
-      redactionStrategy = pulumi.Input.asOptionalInput<String>(redactionStrategy),
-      retentionStrategy = pulumi.Input.asOptionalInput<String>(retentionStrategy),
-      retentionWindowDays = pulumi.Input.asOptionalInput<int>(retentionWindowDays);
+    this.audioExportSettings,
+    this.deidentifyTemplate,
+    required this.displayName,
+    this.insightsExportSettings,
+    this.inspectTemplate,
+    required this.location,
+    this.project,
+    this.purgeDataTypes,
+    this.redactionScope,
+    this.redactionStrategy,
+    this.retentionStrategy,
+    this.retentionWindowDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -113,18 +101,18 @@ class CxSecuritySettingsArgs {
 
   factory CxSecuritySettingsArgs.fromMap(Map<String, dynamic> map) {
     return CxSecuritySettingsArgs(
-      audioExportSettings: map['audioExportSettings'] == null ? null : pulumi.Output.create<CxSecuritySettingsAudioExportSettings>(CxSecuritySettingsAudioExportSettings.fromMap((map['audioExportSettings'] as Map).cast<String, dynamic>())),
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : pulumi.Output.create<String>(map['deidentifyTemplate'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      insightsExportSettings: map['insightsExportSettings'] == null ? null : pulumi.Output.create<CxSecuritySettingsInsightsExportSettings>(CxSecuritySettingsInsightsExportSettings.fromMap((map['insightsExportSettings'] as Map).cast<String, dynamic>())),
-      inspectTemplate: map['inspectTemplate'] == null ? null : pulumi.Output.create<String>(map['inspectTemplate'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      purgeDataTypes: map['purgeDataTypes'] == null ? null : pulumi.Output.create<List<String>>((map['purgeDataTypes'] as List).cast<String>()),
-      redactionScope: map['redactionScope'] == null ? null : pulumi.Output.create<String>(map['redactionScope'] as String),
-      redactionStrategy: map['redactionStrategy'] == null ? null : pulumi.Output.create<String>(map['redactionStrategy'] as String),
-      retentionStrategy: map['retentionStrategy'] == null ? null : pulumi.Output.create<String>(map['retentionStrategy'] as String),
-      retentionWindowDays: map['retentionWindowDays'] == null ? null : pulumi.Output.create<int>(map['retentionWindowDays'] as int),
+      audioExportSettings: map['audioExportSettings'] == null ? null : (CxSecuritySettingsAudioExportSettings.fromMap((map['audioExportSettings'] as Map).cast<String, dynamic>())).input(),
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      insightsExportSettings: map['insightsExportSettings'] == null ? null : (CxSecuritySettingsInsightsExportSettings.fromMap((map['insightsExportSettings'] as Map).cast<String, dynamic>())).input(),
+      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      purgeDataTypes: map['purgeDataTypes'] == null ? null : ((map['purgeDataTypes'] as List).cast<String>()).input(),
+      redactionScope: map['redactionScope'] == null ? null : (map['redactionScope'] as String).input(),
+      redactionStrategy: map['redactionStrategy'] == null ? null : (map['redactionStrategy'] as String).input(),
+      retentionStrategy: map['retentionStrategy'] == null ? null : (map['retentionStrategy'] as String).input(),
+      retentionWindowDays: map['retentionWindowDays'] == null ? null : (map['retentionWindowDays'] as int).input(),
     );
   }
 }

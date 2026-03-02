@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the Backup for GKE Agent.
 class GkeBackupAgentConfigResponse {
   /// Whether the Backup for GKE agent is enabled for this cluster.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GkeBackupAgentConfigResponse].
   /// [enabled] Whether the Backup for GKE agent is enabled for this cluster.
@@ -20,7 +21,7 @@ class GkeBackupAgentConfigResponse {
 
   factory GkeBackupAgentConfigResponse.fromMap(Map<String, dynamic> map) {
     return GkeBackupAgentConfigResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

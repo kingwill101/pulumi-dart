@@ -20,13 +20,10 @@ class BucketLifecycleConfigurationS3ControlArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] Configuration block(s) containing lifecycle rules for the bucket.
   BucketLifecycleConfigurationS3ControlArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<BucketLifecycleConfigurationRuleS3Control>> rules,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asInput<List<BucketLifecycleConfigurationRuleS3Control>>(rules);
+    required this.bucket,
+    this.region,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class BucketLifecycleConfigurationS3ControlArgs {
 
   factory BucketLifecycleConfigurationS3ControlArgs.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationS3ControlArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: pulumi.Output.create<List<BucketLifecycleConfigurationRuleS3Control>>(pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(map['rules'], (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>()))),
+      bucket: (map['bucket'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: (pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(map['rules'], (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

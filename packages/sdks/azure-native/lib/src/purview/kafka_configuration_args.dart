@@ -40,27 +40,17 @@ class KafkaConfigurationArgs {
   /// [kafkaConfigurationName] The kafka configuration name.
   /// [resourceGroupName] The resource group name.
   KafkaConfigurationArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? consumerGroup,
-    pulumi.Output<Credentials>? credentials,
-    pulumi.Output<String>? eventHubPartitionId,
-    pulumi.Output<String>? eventHubResourceId,
-    pulumi.Output<String>? eventHubType,
-    pulumi.Output<String>? eventStreamingState,
-    pulumi.Output<String>? eventStreamingType,
-    pulumi.Output<String>? kafkaConfigurationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      consumerGroup = pulumi.Input.asOptionalInput<String>(consumerGroup),
-      credentials = pulumi.Input.asOptionalInput<Credentials>(credentials),
-      eventHubPartitionId = pulumi.Input.asOptionalInput<String>(eventHubPartitionId),
-      eventHubResourceId = pulumi.Input.asOptionalInput<String>(eventHubResourceId),
-      eventHubType = pulumi.Input.asOptionalInput<String>(eventHubType),
-      eventStreamingState = pulumi.Input.asOptionalInput<String>(eventStreamingState),
-      eventStreamingType = pulumi.Input.asOptionalInput<String>(eventStreamingType),
-      kafkaConfigurationName = pulumi.Input.asOptionalInput<String>(kafkaConfigurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.consumerGroup,
+    this.credentials,
+    this.eventHubPartitionId,
+    this.eventHubResourceId,
+    this.eventHubType,
+    this.eventStreamingState,
+    this.eventStreamingType,
+    this.kafkaConfigurationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class KafkaConfigurationArgs {
 
   factory KafkaConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return KafkaConfigurationArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      consumerGroup: map['consumerGroup'] == null ? null : pulumi.Output.create<String>(map['consumerGroup'] as String),
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<Credentials>(Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      eventHubPartitionId: map['eventHubPartitionId'] == null ? null : pulumi.Output.create<String>(map['eventHubPartitionId'] as String),
-      eventHubResourceId: map['eventHubResourceId'] == null ? null : pulumi.Output.create<String>(map['eventHubResourceId'] as String),
-      eventHubType: map['eventHubType'] == null ? null : pulumi.Output.create<String>(map['eventHubType'] as String),
-      eventStreamingState: map['eventStreamingState'] == null ? null : pulumi.Output.create<String>(map['eventStreamingState'] as String),
-      eventStreamingType: map['eventStreamingType'] == null ? null : pulumi.Output.create<String>(map['eventStreamingType'] as String),
-      kafkaConfigurationName: map['kafkaConfigurationName'] == null ? null : pulumi.Output.create<String>(map['kafkaConfigurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
+      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      eventHubPartitionId: map['eventHubPartitionId'] == null ? null : (map['eventHubPartitionId'] as String).input(),
+      eventHubResourceId: map['eventHubResourceId'] == null ? null : (map['eventHubResourceId'] as String).input(),
+      eventHubType: map['eventHubType'] == null ? null : (map['eventHubType'] as String).input(),
+      eventStreamingState: map['eventStreamingState'] == null ? null : (map['eventStreamingState'] as String).input(),
+      eventStreamingType: map['eventStreamingType'] == null ? null : (map['eventStreamingType'] as String).input(),
+      kafkaConfigurationName: map['kafkaConfigurationName'] == null ? null : (map['kafkaConfigurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

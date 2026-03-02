@@ -31,23 +31,15 @@ class TransitionRouteGroupDialogflowV3beta1Args {
   /// [project] Optional.
   /// [transitionRoutes] Transition routes associated with the TransitionRouteGroup.
   TransitionRouteGroupDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> flowId,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>? transitionRoutes,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      flowId = pulumi.Input.asInput<String>(flowId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      transitionRoutes = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>(transitionRoutes);
+    required this.agentId,
+    required this.displayName,
+    required this.flowId,
+    this.languageCode,
+    this.location,
+    this.name,
+    this.project,
+    this.transitionRoutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class TransitionRouteGroupDialogflowV3beta1Args {
 
   factory TransitionRouteGroupDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return TransitionRouteGroupDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      flowId: pulumi.Output.create<String>(map['flowId'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      transitionRoutes: map['transitionRoutes'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRoute>(map['transitionRoutes'], (value) => GoogleCloudDialogflowCxV3beta1TransitionRoute.fromMap((value as Map).cast<String, dynamic>()))),
+      agentId: (map['agentId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      flowId: (map['flowId'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRoute>(map['transitionRoutes'], (value) => GoogleCloudDialogflowCxV3beta1TransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

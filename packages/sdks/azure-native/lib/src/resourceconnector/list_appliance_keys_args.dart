@@ -19,13 +19,10 @@ class ListApplianceKeysArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Appliances name.
   ListApplianceKeysArgs({
-    pulumi.Output<String>? artifactType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      artifactType = pulumi.Input.asOptionalInput<String>(artifactType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.artifactType,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListApplianceKeysArgs {
 
   factory ListApplianceKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListApplianceKeysArgs(
-      artifactType: map['artifactType'] == null ? null : pulumi.Output.create<String>(map['artifactType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      artifactType: map['artifactType'] == null ? null : (map['artifactType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

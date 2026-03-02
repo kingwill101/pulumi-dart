@@ -39,23 +39,15 @@ class DataProductArgs {
   /// [ownerEmails] Emails of the owners.
   /// [project] The ID of the project in which the resource belongs.
   DataProductArgs({
-    pulumi.Output<List<DataProductAccessGroup>>? accessGroups,
-    required pulumi.Output<String> dataProductId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<List<String>> ownerEmails,
-    pulumi.Output<String>? project,
-  }) :
-      accessGroups = pulumi.Input.asOptionalInput<List<DataProductAccessGroup>>(accessGroups),
-      dataProductId = pulumi.Input.asInput<String>(dataProductId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      ownerEmails = pulumi.Input.asInput<List<String>>(ownerEmails),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.accessGroups,
+    required this.dataProductId,
+    this.description,
+    required this.displayName,
+    this.labels,
+    required this.location,
+    required this.ownerEmails,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class DataProductArgs {
 
   factory DataProductArgs.fromMap(Map<String, dynamic> map) {
     return DataProductArgs(
-      accessGroups: map['accessGroups'] == null ? null : pulumi.Output.create<List<DataProductAccessGroup>>(pulumi.Input.decodeList<DataProductAccessGroup>(map['accessGroups'], (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>()))),
-      dataProductId: pulumi.Output.create<String>(map['dataProductId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      ownerEmails: pulumi.Output.create<List<String>>((map['ownerEmails'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      accessGroups: map['accessGroups'] == null ? null : (pulumi.Input.decodeList<DataProductAccessGroup>(map['accessGroups'], (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataProductId: (map['dataProductId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      ownerEmails: ((map['ownerEmails'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetPrimaryIpsArgs {
   /// Creates a new [GetPrimaryIpsArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   GetPrimaryIpsArgs({
-    pulumi.Output<String>? withSelector,
-  }) :
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPrimaryIpsArgs {
 
   factory GetPrimaryIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpsArgs(
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

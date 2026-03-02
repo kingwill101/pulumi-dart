@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'validation_report_response.dart';
 
 /// A resource that reports result of the import job execution.
 class ExecutionReportResponse {
   /// Validation errors encountered during the execution of the import job.
-  final ValidationReportResponse executionErrors;
+  final pulumi.Input<ValidationReportResponse> executionErrors;
   /// Total number of asset frames reported for the import job.
-  final int framesReported;
+  final pulumi.Input<int> framesReported;
   /// Total number of rows in the import job.
-  final int totalRowsCount;
+  final pulumi.Input<int> totalRowsCount;
 
   /// Creates a new [ExecutionReportResponse].
   /// [executionErrors] Validation errors encountered during the execution of the import job.
@@ -23,7 +24,7 @@ class ExecutionReportResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executionErrors': executionErrors.toMap(),
+      'executionErrors': pulumi.Input.mapInputValue<ValidationReportResponse, Map<String, dynamic>>(executionErrors, (value) => value.toMap()),
       'framesReported': framesReported,
       'totalRowsCount': totalRowsCount,
     };
@@ -31,9 +32,9 @@ class ExecutionReportResponse {
 
   factory ExecutionReportResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionReportResponse(
-      executionErrors: ValidationReportResponse.fromMap((map['executionErrors'] as Map).cast<String, dynamic>()),
-      framesReported: map['framesReported'] as int,
-      totalRowsCount: map['totalRowsCount'] as int,
+      executionErrors: (ValidationReportResponse.fromMap((map['executionErrors'] as Map).cast<String, dynamic>())).input(),
+      framesReported: (map['framesReported'] as int).input(),
+      totalRowsCount: (map['totalRowsCount'] as int).input(),
     );
   }
 }

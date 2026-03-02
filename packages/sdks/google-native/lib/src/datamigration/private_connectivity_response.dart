@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Private Connectivity.
 class PrivateConnectivityResponse {
   /// The resource name (URI) of the private connection.
-  final String privateConnection;
+  final pulumi.Input<String> privateConnection;
 
   /// Creates a new [PrivateConnectivityResponse].
   /// [privateConnection] The resource name (URI) of the private connection.
@@ -20,7 +21,7 @@ class PrivateConnectivityResponse {
 
   factory PrivateConnectivityResponse.fromMap(Map<String, dynamic> map) {
     return PrivateConnectivityResponse(
-      privateConnection: map['privateConnection'] as String,
+      privateConnection: (map['privateConnection'] as String).input(),
     );
   }
 }

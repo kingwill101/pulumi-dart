@@ -40,21 +40,14 @@ class BgpPeerV2Args {
   /// [remoteAs] The AS number of the BGP peer. Changing this
   /// [tenantId] The tenant/project ID. Required if admin privileges
   BgpPeerV2Args({
-    pulumi.Output<String>? authType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> peerIp,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> remoteAs,
-    pulumi.Output<String>? tenantId,
-  }) :
-      authType = pulumi.Input.asOptionalInput<String>(authType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      peerIp = pulumi.Input.asInput<String>(peerIp),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      remoteAs = pulumi.Input.asInput<int>(remoteAs),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.authType,
+    this.name,
+    this.password,
+    required this.peerIp,
+    this.region,
+    required this.remoteAs,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,13 +63,13 @@ class BgpPeerV2Args {
 
   factory BgpPeerV2Args.fromMap(Map<String, dynamic> map) {
     return BgpPeerV2Args(
-      authType: map['authType'] == null ? null : pulumi.Output.create<String>(map['authType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      peerIp: pulumi.Output.create<String>(map['peerIp'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      remoteAs: pulumi.Output.create<int>(map['remoteAs'] as int),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      peerIp: (map['peerIp'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      remoteAs: (map['remoteAs'] as int).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

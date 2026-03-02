@@ -22,15 +22,11 @@ class GetRestorePointArgs {
   /// [restorePointCollectionName] The name of the restore point collection.
   /// [restorePointName] The name of the restore point.
   GetRestorePointArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> restorePointCollectionName,
-    required pulumi.Output<String> restorePointName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      restorePointCollectionName = pulumi.Input.asInput<String>(restorePointCollectionName),
-      restorePointName = pulumi.Input.asInput<String>(restorePointName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.restorePointCollectionName,
+    required this.restorePointName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRestorePointArgs {
 
   factory GetRestorePointArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePointArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      restorePointCollectionName: pulumi.Output.create<String>(map['restorePointCollectionName'] as String),
-      restorePointName: pulumi.Output.create<String>(map['restorePointName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      restorePointCollectionName: (map['restorePointCollectionName'] as String).input(),
+      restorePointName: (map['restorePointName'] as String).input(),
     );
   }
 }

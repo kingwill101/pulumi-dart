@@ -18,13 +18,10 @@ class KeyAliasState {
   /// [keyArn] ARN of the key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   KeyAliasState({
-    pulumi.Output<String>? aliasName,
-    pulumi.Output<String>? keyArn,
-    pulumi.Output<String>? region,
-  }) :
-      aliasName = pulumi.Input.asOptionalInput<String>(aliasName),
-      keyArn = pulumi.Input.asOptionalInput<String>(keyArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.aliasName,
+    this.keyArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class KeyAliasState {
 
   factory KeyAliasState.fromMap(Map<String, dynamic> map) {
     return KeyAliasState(
-      aliasName: map['aliasName'] == null ? null : pulumi.Output.create<String>(map['aliasName'] as String),
-      keyArn: map['keyArn'] == null ? null : pulumi.Output.create<String>(map['keyArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
+      keyArn: map['keyArn'] == null ? null : (map['keyArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

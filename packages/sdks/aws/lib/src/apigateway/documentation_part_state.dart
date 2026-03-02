@@ -23,17 +23,12 @@ class DocumentationPartState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the associated Rest API
   DocumentationPartState({
-    pulumi.Output<String>? documentationPartId,
-    pulumi.Output<DocumentationPartLocation>? location,
-    pulumi.Output<String>? properties,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? restApiId,
-  }) :
-      documentationPartId = pulumi.Input.asOptionalInput<String>(documentationPartId),
-      location = pulumi.Input.asOptionalInput<DocumentationPartLocation>(location),
-      properties = pulumi.Input.asOptionalInput<String>(properties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asOptionalInput<String>(restApiId);
+    this.documentationPartId,
+    this.location,
+    this.properties,
+    this.region,
+    this.restApiId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class DocumentationPartState {
 
   factory DocumentationPartState.fromMap(Map<String, dynamic> map) {
     return DocumentationPartState(
-      documentationPartId: map['documentationPartId'] == null ? null : pulumi.Output.create<String>(map['documentationPartId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<DocumentationPartLocation>(DocumentationPartLocation.fromMap((map['location'] as Map).cast<String, dynamic>())),
-      properties: map['properties'] == null ? null : pulumi.Output.create<String>(map['properties'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: map['restApiId'] == null ? null : pulumi.Output.create<String>(map['restApiId'] as String),
+      documentationPartId: map['documentationPartId'] == null ? null : (map['documentationPartId'] as String).input(),
+      location: map['location'] == null ? null : (DocumentationPartLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (map['properties'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
     );
   }
 }

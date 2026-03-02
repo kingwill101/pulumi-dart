@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm disk input.
 class InMageRcmDisksDefaultInput {
   /// The DiskEncryptionSet ARM Id.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// The disk type.
-  final String diskType;
+  final pulumi.Input<String> diskType;
   /// The log storage account ARM Id.
-  final String logStorageAccountId;
+  final pulumi.Input<String> logStorageAccountId;
   /// The logical sector size (in bytes), 512 by default.
-  final int? sectorSizeInBytes;
+  final pulumi.Input<int>? sectorSizeInBytes;
 
   /// Creates a new [InMageRcmDisksDefaultInput].
   /// [diskEncryptionSetId] The DiskEncryptionSet ARM Id.
@@ -35,10 +36,10 @@ class InMageRcmDisksDefaultInput {
 
   factory InMageRcmDisksDefaultInput.fromMap(Map<String, dynamic> map) {
     return InMageRcmDisksDefaultInput(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      diskType: map['diskType'] as String,
-      logStorageAccountId: map['logStorageAccountId'] as String,
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : map['sectorSizeInBytes'] as int,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskType: (map['diskType'] as String).input(),
+      logStorageAccountId: (map['logStorageAccountId'] as String).input(),
+      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes'] as int).input(),
     );
   }
 }

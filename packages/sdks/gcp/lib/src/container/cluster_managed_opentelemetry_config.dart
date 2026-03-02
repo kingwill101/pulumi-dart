@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterManagedOpentelemetryConfig {
   /// The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [ClusterManagedOpentelemetryConfig].
   /// [scope] The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
@@ -19,7 +20,7 @@ class ClusterManagedOpentelemetryConfig {
 
   factory ClusterManagedOpentelemetryConfig.fromMap(Map<String, dynamic> map) {
     return ClusterManagedOpentelemetryConfig(
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

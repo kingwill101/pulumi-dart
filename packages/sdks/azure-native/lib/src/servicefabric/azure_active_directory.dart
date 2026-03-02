@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The settings to enable AAD authentication on the cluster.
 class AzureActiveDirectory {
   /// Azure active directory client application id.
-  final String? clientApplication;
+  final pulumi.Input<String>? clientApplication;
   /// Azure active directory cluster application id.
-  final String? clusterApplication;
+  final pulumi.Input<String>? clusterApplication;
   /// Azure active directory tenant id.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [AzureActiveDirectory].
   /// [clientApplication] Azure active directory client application id.
@@ -30,9 +31,9 @@ class AzureActiveDirectory {
 
   factory AzureActiveDirectory.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectory(
-      clientApplication: map['clientApplication'] == null ? null : map['clientApplication'] as String,
-      clusterApplication: map['clusterApplication'] == null ? null : map['clusterApplication'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      clientApplication: map['clientApplication'] == null ? null : (map['clientApplication'] as String).input(),
+      clusterApplication: map['clusterApplication'] == null ? null : (map['clusterApplication'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementClusterSelector {
   /// Required. The cluster labels. Cluster must have all labels to match.
-  final Map<String, String> clusterLabels;
+  final pulumi.Input<Map<String, String>> clusterLabels;
   /// The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
-  final String? zone;
+  final pulumi.Input<String>? zone;
 
   /// Creates a new [WorkflowTemplatePlacementClusterSelector].
   /// [clusterLabels] Required. The cluster labels. Cluster must have all labels to match.
@@ -24,8 +25,8 @@ class WorkflowTemplatePlacementClusterSelector {
 
   factory WorkflowTemplatePlacementClusterSelector.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementClusterSelector(
-      clusterLabels: (map['clusterLabels'] as Map).cast<String, String>(),
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      clusterLabels: ((map['clusterLabels'] as Map).cast<String, String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

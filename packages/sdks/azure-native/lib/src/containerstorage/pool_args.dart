@@ -40,25 +40,16 @@ class PoolArgs {
   /// [tags] Resource tags.
   /// [zones] List of availability zones that resources can be created in.
   PoolArgs({
-    pulumi.Output<List<Assignment>>? assignments,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? poolName,
-    required pulumi.Output<PoolType> poolType,
-    pulumi.Output<String>? reclaimPolicy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Resources>? resources,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      assignments = pulumi.Input.asOptionalInput<List<Assignment>>(assignments),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      poolName = pulumi.Input.asOptionalInput<String>(poolName),
-      poolType = pulumi.Input.asInput<PoolType>(poolType),
-      reclaimPolicy = pulumi.Input.asOptionalInput<String>(reclaimPolicy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resources = pulumi.Input.asOptionalInput<Resources>(resources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.assignments,
+    this.location,
+    this.poolName,
+    required this.poolType,
+    this.reclaimPolicy,
+    required this.resourceGroupName,
+    this.resources,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class PoolArgs {
 
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
-      assignments: map['assignments'] == null ? null : pulumi.Output.create<List<Assignment>>(pulumi.Input.decodeList<Assignment>(map['assignments'], (value) => Assignment.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      poolName: map['poolName'] == null ? null : pulumi.Output.create<String>(map['poolName'] as String),
-      poolType: pulumi.Output.create<PoolType>(PoolType.fromMap((map['poolType'] as Map).cast<String, dynamic>())),
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : pulumi.Output.create<String>(map['reclaimPolicy'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<Resources>(Resources.fromMap((map['resources'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      assignments: map['assignments'] == null ? null : (pulumi.Input.decodeList<Assignment>(map['assignments'], (value) => Assignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      poolType: (PoolType.fromMap((map['poolType'] as Map).cast<String, dynamic>())).input(),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resources: map['resources'] == null ? null : (Resources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

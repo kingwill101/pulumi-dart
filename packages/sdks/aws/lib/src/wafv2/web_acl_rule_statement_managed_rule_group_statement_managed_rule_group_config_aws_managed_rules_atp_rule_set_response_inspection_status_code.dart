@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode {
   /// Status codes in the response that indicate a failed login attempt.
-  final List<int> failureCodes;
+  final pulumi.Input<List<int>> failureCodes;
   /// Status codes in the response that indicate a successful login attempt.
-  final List<int> successCodes;
+  final pulumi.Input<List<int>> successCodes;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode].
   /// [failureCodes] Status codes in the response that indicate a failed login attempt.
@@ -24,8 +25,8 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionStatusCode(
-      failureCodes: (map['failureCodes'] as List).cast<int>(),
-      successCodes: (map['successCodes'] as List).cast<int>(),
+      failureCodes: ((map['failureCodes'] as List).cast<int>()).input(),
+      successCodes: ((map['successCodes'] as List).cast<int>()).input(),
     );
   }
 }

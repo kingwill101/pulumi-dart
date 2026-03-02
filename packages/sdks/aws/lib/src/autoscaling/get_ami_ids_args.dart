@@ -20,13 +20,10 @@ class GetAmiIdsArgs {
   /// [names] List of autoscaling group names
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetAmiIdsArgs({
-    pulumi.Output<List<GetAmiIdsFilter>>? filters,
-    pulumi.Output<List<String>>? names,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetAmiIdsFilter>>(filters),
-      names = pulumi.Input.asOptionalInput<List<String>>(names),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.names,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetAmiIdsArgs {
 
   factory GetAmiIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiIdsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetAmiIdsFilter>>(pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters'], (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      names: map['names'] == null ? null : pulumi.Output.create<List<String>>((map['names'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters'], (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

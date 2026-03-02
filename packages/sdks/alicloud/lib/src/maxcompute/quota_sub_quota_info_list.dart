@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'quota_sub_quota_info_list_parameter.dart';
 
 class QuotaSubQuotaInfoList {
   /// Secondary Quota nickname.
   ///
   /// > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
-  final String nickName;
+  final pulumi.Input<String> nickName;
   /// Parameter See `parameter` below.
-  final QuotaSubQuotaInfoListParameter? parameter;
+  final pulumi.Input<QuotaSubQuotaInfoListParameter>? parameter;
   /// The secondary Quota type. The default value is: FUXI_OFFLINE
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [QuotaSubQuotaInfoList].
   /// [nickName] Secondary Quota nickname.
@@ -25,16 +26,16 @@ class QuotaSubQuotaInfoList {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nickName': nickName,
-      'parameter': ?parameter == null ? null : parameter!.toMap(),
+      'parameter': ?pulumi.Input.mapOptionalInputValue<QuotaSubQuotaInfoListParameter, Map<String, dynamic>>(parameter, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory QuotaSubQuotaInfoList.fromMap(Map<String, dynamic> map) {
     return QuotaSubQuotaInfoList(
-      nickName: map['nickName'] as String,
-      parameter: map['parameter'] == null ? null : QuotaSubQuotaInfoListParameter.fromMap((map['parameter'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
+      nickName: (map['nickName'] as String).input(),
+      parameter: map['parameter'] == null ? null : (QuotaSubQuotaInfoListParameter.fromMap((map['parameter'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

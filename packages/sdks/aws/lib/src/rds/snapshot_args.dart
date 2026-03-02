@@ -25,17 +25,12 @@ class SnapshotArgs {
   /// [sharedAccounts] List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   SnapshotArgs({
-    required pulumi.Output<String> dbInstanceIdentifier,
-    required pulumi.Output<String> dbSnapshotIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? sharedAccounts,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dbInstanceIdentifier = pulumi.Input.asInput<String>(dbInstanceIdentifier),
-      dbSnapshotIdentifier = pulumi.Input.asInput<String>(dbSnapshotIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedAccounts = pulumi.Input.asOptionalInput<List<String>>(sharedAccounts),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.dbInstanceIdentifier,
+    required this.dbSnapshotIdentifier,
+    this.region,
+    this.sharedAccounts,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      dbInstanceIdentifier: pulumi.Output.create<String>(map['dbInstanceIdentifier'] as String),
-      dbSnapshotIdentifier: pulumi.Output.create<String>(map['dbSnapshotIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharedAccounts: map['sharedAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['sharedAccounts'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dbInstanceIdentifier: (map['dbInstanceIdentifier'] as String).input(),
+      dbSnapshotIdentifier: (map['dbSnapshotIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharedAccounts: map['sharedAccounts'] == null ? null : ((map['sharedAccounts'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

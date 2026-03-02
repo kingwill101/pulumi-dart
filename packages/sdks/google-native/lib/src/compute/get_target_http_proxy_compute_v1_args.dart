@@ -14,11 +14,9 @@ class GetTargetHttpProxyComputeV1Args {
   /// [project] Optional.
   /// [targetHttpProxy] Required.
   GetTargetHttpProxyComputeV1Args({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> targetHttpProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetHttpProxy = pulumi.Input.asInput<String>(targetHttpProxy);
+    this.project,
+    required this.targetHttpProxy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetTargetHttpProxyComputeV1Args {
 
   factory GetTargetHttpProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetTargetHttpProxyComputeV1Args(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      targetHttpProxy: pulumi.Output.create<String>(map['targetHttpProxy'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      targetHttpProxy: (map['targetHttpProxy'] as String).input(),
     );
   }
 }

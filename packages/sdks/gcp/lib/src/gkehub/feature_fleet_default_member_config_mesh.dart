@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureFleetDefaultMemberConfigMesh {
   /// Whether to automatically manage Service Mesh
   /// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
-  final String management;
+  final pulumi.Input<String> management;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigMesh].
   /// [management] Whether to automatically manage Service Mesh
@@ -20,7 +21,7 @@ class FeatureFleetDefaultMemberConfigMesh {
 
   factory FeatureFleetDefaultMemberConfigMesh.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigMesh(
-      management: map['management'] as String,
+      management: (map['management'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Temporary disk payload
 class TemporaryDiskResponse {
   /// Mount path of the temporary disk
-  final String? mountPath;
+  final pulumi.Input<String>? mountPath;
   /// Size of the temporary disk in GB
-  final int? sizeInGB;
+  final pulumi.Input<int>? sizeInGB;
 
   /// Creates a new [TemporaryDiskResponse].
   /// [mountPath] Mount path of the temporary disk
@@ -25,8 +26,8 @@ class TemporaryDiskResponse {
 
   factory TemporaryDiskResponse.fromMap(Map<String, dynamic> map) {
     return TemporaryDiskResponse(
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      sizeInGB: map['sizeInGB'] == null ? null : map['sizeInGB'] as int,
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      sizeInGB: map['sizeInGB'] == null ? null : (map['sizeInGB'] as int).input(),
     );
   }
 }

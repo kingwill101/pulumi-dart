@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_connection_info_response.dart';
 
 /// Input for the task that collects user tables for the given list of databases
 class GetUserTablesSqlTaskInputResponse {
   /// Connection information for SQL Server
-  final SqlConnectionInfoResponse connectionInfo;
+  final pulumi.Input<SqlConnectionInfoResponse> connectionInfo;
   /// encrypted key for secure fields
-  final String? encryptedKeyForSecureFields;
+  final pulumi.Input<String>? encryptedKeyForSecureFields;
   /// List of database names to collect tables for
-  final List<String> selectedDatabases;
+  final pulumi.Input<List<String>> selectedDatabases;
 
   /// Creates a new [GetUserTablesSqlTaskInputResponse].
   /// [connectionInfo] Connection information for SQL Server
@@ -23,7 +24,7 @@ class GetUserTablesSqlTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionInfo': connectionInfo.toMap(),
+      'connectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
       'encryptedKeyForSecureFields': ?encryptedKeyForSecureFields,
       'selectedDatabases': selectedDatabases,
     };
@@ -31,9 +32,9 @@ class GetUserTablesSqlTaskInputResponse {
 
   factory GetUserTablesSqlTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return GetUserTablesSqlTaskInputResponse(
-      connectionInfo: SqlConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>()),
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : map['encryptedKeyForSecureFields'] as String,
-      selectedDatabases: (map['selectedDatabases'] as List).cast<String>(),
+      connectionInfo: (SqlConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>())).input(),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
+      selectedDatabases: ((map['selectedDatabases'] as List).cast<String>()).input(),
     );
   }
 }

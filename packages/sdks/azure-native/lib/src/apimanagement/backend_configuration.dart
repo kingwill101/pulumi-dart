@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_subnet_configuration.dart';
 
 /// Information regarding how the gateway should integrate with backend systems.
 class BackendConfiguration {
   /// The default hostname of the data-plane gateway to which requests can be sent.
-  final BackendSubnetConfiguration? subnet;
+  final pulumi.Input<BackendSubnetConfiguration>? subnet;
 
   /// Creates a new [BackendConfiguration].
   /// [subnet] The default hostname of the data-plane gateway to which requests can be sent.
@@ -15,13 +16,13 @@ class BackendConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<BackendSubnetConfiguration, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory BackendConfiguration.fromMap(Map<String, dynamic> map) {
     return BackendConfiguration(
-      subnet: map['subnet'] == null ? null : BackendSubnetConfiguration.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      subnet: map['subnet'] == null ? null : (BackendSubnetConfiguration.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Disk encryption status for an instance.
 class DiskEncryptionStatusResponse {
   /// This is always `sql#diskEncryptionStatus`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// KMS key version used to encrypt the Cloud SQL instance resource
-  final String kmsKeyVersionName;
+  final pulumi.Input<String> kmsKeyVersionName;
 
   /// Creates a new [DiskEncryptionStatusResponse].
   /// [kind] This is always `sql#diskEncryptionStatus`.
@@ -25,8 +26,8 @@ class DiskEncryptionStatusResponse {
 
   factory DiskEncryptionStatusResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionStatusResponse(
-      kind: map['kind'] as String,
-      kmsKeyVersionName: map['kmsKeyVersionName'] as String,
+      kind: (map['kind'] as String).input(),
+      kmsKeyVersionName: (map['kmsKeyVersionName'] as String).input(),
     );
   }
 }

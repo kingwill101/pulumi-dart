@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RdsParameterGroupParamDetail {
   /// The name of a parameter.
-  final String paramName;
+  final pulumi.Input<String> paramName;
   /// The value of a parameter.
-  final String paramValue;
+  final pulumi.Input<String> paramValue;
 
   /// Creates a new [RdsParameterGroupParamDetail].
   /// [paramName] The name of a parameter.
@@ -24,8 +25,8 @@ class RdsParameterGroupParamDetail {
 
   factory RdsParameterGroupParamDetail.fromMap(Map<String, dynamic> map) {
     return RdsParameterGroupParamDetail(
-      paramName: map['paramName'] as String,
-      paramValue: map['paramValue'] as String,
+      paramName: (map['paramName'] as String).input(),
+      paramValue: (map['paramValue'] as String).input(),
     );
   }
 }

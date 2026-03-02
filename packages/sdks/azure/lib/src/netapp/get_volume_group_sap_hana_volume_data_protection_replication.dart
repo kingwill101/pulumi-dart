@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVolumeGroupSapHanaVolumeDataProtectionReplication {
   /// The endpoint type.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// Location of the primary volume.
-  final String remoteVolumeLocation;
+  final pulumi.Input<String> remoteVolumeLocation;
   /// Resource ID of the primary volume.
-  final String remoteVolumeResourceId;
+  final pulumi.Input<String> remoteVolumeResourceId;
   /// Replication frequency.
-  final String replicationFrequency;
+  final pulumi.Input<String> replicationFrequency;
 
   /// Creates a new [GetVolumeGroupSapHanaVolumeDataProtectionReplication].
   /// [endpointType] The endpoint type.
@@ -34,10 +35,10 @@ class GetVolumeGroupSapHanaVolumeDataProtectionReplication {
 
   factory GetVolumeGroupSapHanaVolumeDataProtectionReplication.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupSapHanaVolumeDataProtectionReplication(
-      endpointType: map['endpointType'] as String,
-      remoteVolumeLocation: map['remoteVolumeLocation'] as String,
-      remoteVolumeResourceId: map['remoteVolumeResourceId'] as String,
-      replicationFrequency: map['replicationFrequency'] as String,
+      endpointType: (map['endpointType'] as String).input(),
+      remoteVolumeLocation: (map['remoteVolumeLocation'] as String).input(),
+      remoteVolumeResourceId: (map['remoteVolumeResourceId'] as String).input(),
+      replicationFrequency: (map['replicationFrequency'] as String).input(),
     );
   }
 }

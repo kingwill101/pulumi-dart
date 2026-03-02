@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsSnapshotGroupsGroup {
   /// The description of the snapshot-consistent group.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Snapshot Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The ID of the resource group to which the snapshot consistency group belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The first ID of the resource.
-  final String snapshotGroupId;
+  final pulumi.Input<String> snapshotGroupId;
   /// The name of the snapshot-consistent group.
-  final String snapshotGroupName;
+  final pulumi.Input<String> snapshotGroupName;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// List of label key-value pairs.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetEcsSnapshotGroupsGroup].
   /// [description] The description of the snapshot-consistent group.
@@ -54,14 +55,14 @@ class GetEcsSnapshotGroupsGroup {
 
   factory GetEcsSnapshotGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetEcsSnapshotGroupsGroup(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      snapshotGroupId: map['snapshotGroupId'] as String,
-      snapshotGroupName: map['snapshotGroupName'] as String,
-      status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      snapshotGroupId: (map['snapshotGroupId'] as String).input(),
+      snapshotGroupName: (map['snapshotGroupName'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

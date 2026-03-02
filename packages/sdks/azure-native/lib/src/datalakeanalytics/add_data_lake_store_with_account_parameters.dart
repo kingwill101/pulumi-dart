@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters used to add a new Data Lake Store account while creating a new Data Lake Analytics account.
 class AddDataLakeStoreWithAccountParameters {
   /// The unique name of the Data Lake Store account to add.
-  final String name;
+  final pulumi.Input<String> name;
   /// The optional suffix for the Data Lake Store account.
-  final String? suffix;
+  final pulumi.Input<String>? suffix;
 
   /// Creates a new [AddDataLakeStoreWithAccountParameters].
   /// [name] The unique name of the Data Lake Store account to add.
@@ -25,8 +26,8 @@ class AddDataLakeStoreWithAccountParameters {
 
   factory AddDataLakeStoreWithAccountParameters.fromMap(Map<String, dynamic> map) {
     return AddDataLakeStoreWithAccountParameters(
-      name: map['name'] as String,
-      suffix: map['suffix'] == null ? null : map['suffix'] as String,
+      name: (map['name'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
     );
   }
 }

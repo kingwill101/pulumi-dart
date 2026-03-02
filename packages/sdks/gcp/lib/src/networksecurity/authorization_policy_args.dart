@@ -39,21 +39,14 @@ class AuthorizationPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
   AuthorizationPolicyArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<AuthorizationPolicyRule>>? rules,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asOptionalInput<List<AuthorizationPolicyRule>>(rules);
+    required this.action,
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class AuthorizationPolicyArgs {
 
   factory AuthorizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationPolicyArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<AuthorizationPolicyRule>>(pulumi.Input.decodeList<AuthorizationPolicyRule>(map['rules'], (value) => AuthorizationPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AuthorizationPolicyRule>(map['rules'], (value) => AuthorizationPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

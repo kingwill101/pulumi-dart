@@ -31,21 +31,14 @@ class StaticSiteLinkedBackendForBuildArgs {
   /// [region] The region of the backend linked to the static site
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   StaticSiteLinkedBackendForBuildArgs({
-    pulumi.Output<String>? backendResourceId,
-    required pulumi.Output<String> environmentName,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? linkedBackendName,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      backendResourceId = pulumi.Input.asOptionalInput<String>(backendResourceId),
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      linkedBackendName = pulumi.Input.asOptionalInput<String>(linkedBackendName),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.backendResourceId,
+    required this.environmentName,
+    this.kind,
+    this.linkedBackendName,
+    required this.name,
+    this.region,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class StaticSiteLinkedBackendForBuildArgs {
 
   factory StaticSiteLinkedBackendForBuildArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteLinkedBackendForBuildArgs(
-      backendResourceId: map['backendResourceId'] == null ? null : pulumi.Output.create<String>(map['backendResourceId'] as String),
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      linkedBackendName: map['linkedBackendName'] == null ? null : pulumi.Output.create<String>(map['linkedBackendName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId'] as String).input(),
+      environmentName: (map['environmentName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      linkedBackendName: map['linkedBackendName'] == null ? null : (map['linkedBackendName'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

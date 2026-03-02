@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'arm_resource_id.dart';
 
 class SystemCreatedStorageAccount {
   /// Public blob access allowed
-  final bool? allowBlobPublicAccess;
+  final pulumi.Input<bool>? allowBlobPublicAccess;
   /// This is populated once the storage account is created.
-  final ArmResourceId? armResourceId;
+  final pulumi.Input<ArmResourceId>? armResourceId;
   /// HNS enabled for storage account
-  final bool? storageAccountHnsEnabled;
+  final pulumi.Input<bool>? storageAccountHnsEnabled;
   /// Name of the storage account
-  final String? storageAccountName;
+  final pulumi.Input<String>? storageAccountName;
   /// Allowed values:
   /// "Standard_LRS",
   /// "Standard_GRS",
@@ -20,7 +21,7 @@ class SystemCreatedStorageAccount {
   /// "Standard_RAGZRS",
   /// "Premium_LRS",
   /// "Premium_ZRS"
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
 
   /// Creates a new [SystemCreatedStorageAccount].
   /// [allowBlobPublicAccess] Public blob access allowed
@@ -39,7 +40,7 @@ class SystemCreatedStorageAccount {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowBlobPublicAccess': ?allowBlobPublicAccess,
-      'armResourceId': ?armResourceId == null ? null : armResourceId!.toMap(),
+      'armResourceId': ?pulumi.Input.mapOptionalInputValue<ArmResourceId, Map<String, dynamic>>(armResourceId, (value) => value.toMap()),
       'storageAccountHnsEnabled': ?storageAccountHnsEnabled,
       'storageAccountName': ?storageAccountName,
       'storageAccountType': ?storageAccountType,
@@ -48,11 +49,11 @@ class SystemCreatedStorageAccount {
 
   factory SystemCreatedStorageAccount.fromMap(Map<String, dynamic> map) {
     return SystemCreatedStorageAccount(
-      allowBlobPublicAccess: map['allowBlobPublicAccess'] == null ? null : map['allowBlobPublicAccess'] as bool,
-      armResourceId: map['armResourceId'] == null ? null : ArmResourceId.fromMap((map['armResourceId'] as Map).cast<String, dynamic>()),
-      storageAccountHnsEnabled: map['storageAccountHnsEnabled'] == null ? null : map['storageAccountHnsEnabled'] as bool,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
+      allowBlobPublicAccess: map['allowBlobPublicAccess'] == null ? null : (map['allowBlobPublicAccess'] as bool).input(),
+      armResourceId: map['armResourceId'] == null ? null : (ArmResourceId.fromMap((map['armResourceId'] as Map).cast<String, dynamic>())).input(),
+      storageAccountHnsEnabled: map['storageAccountHnsEnabled'] == null ? null : (map['storageAccountHnsEnabled'] as bool).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
     );
   }
 }

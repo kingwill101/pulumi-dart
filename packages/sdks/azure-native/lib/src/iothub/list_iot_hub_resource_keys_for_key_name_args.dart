@@ -19,13 +19,10 @@ class ListIotHubResourceKeysForKeyNameArgs {
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
   ListIotHubResourceKeysForKeyNameArgs({
-    required pulumi.Output<String> keyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      keyName = pulumi.Input.asInput<String>(keyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.keyName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListIotHubResourceKeysForKeyNameArgs {
 
   factory ListIotHubResourceKeysForKeyNameArgs.fromMap(Map<String, dynamic> map) {
     return ListIotHubResourceKeysForKeyNameArgs(
-      keyName: pulumi.Output.create<String>(map['keyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      keyName: (map['keyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

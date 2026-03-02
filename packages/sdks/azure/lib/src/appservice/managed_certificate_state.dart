@@ -37,27 +37,17 @@ class ManagedCertificateState {
   /// [tags] A mapping of tags which should be assigned to the App Service Managed Certificate.
   /// [thumbprint] The Certificate Thumbprint.
   ManagedCertificateState({
-    pulumi.Output<String>? canonicalName,
-    pulumi.Output<String>? customHostnameBindingId,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<List<String>>? hostNames,
-    pulumi.Output<String>? issueDate,
-    pulumi.Output<String>? issuer,
-    pulumi.Output<String>? subjectName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      canonicalName = pulumi.Input.asOptionalInput<String>(canonicalName),
-      customHostnameBindingId = pulumi.Input.asOptionalInput<String>(customHostnameBindingId),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      hostNames = pulumi.Input.asOptionalInput<List<String>>(hostNames),
-      issueDate = pulumi.Input.asOptionalInput<String>(issueDate),
-      issuer = pulumi.Input.asOptionalInput<String>(issuer),
-      subjectName = pulumi.Input.asOptionalInput<String>(subjectName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.canonicalName,
+    this.customHostnameBindingId,
+    this.expirationDate,
+    this.friendlyName,
+    this.hostNames,
+    this.issueDate,
+    this.issuer,
+    this.subjectName,
+    this.tags,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class ManagedCertificateState {
 
   factory ManagedCertificateState.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateState(
-      canonicalName: map['canonicalName'] == null ? null : pulumi.Output.create<String>(map['canonicalName'] as String),
-      customHostnameBindingId: map['customHostnameBindingId'] == null ? null : pulumi.Output.create<String>(map['customHostnameBindingId'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      hostNames: map['hostNames'] == null ? null : pulumi.Output.create<List<String>>((map['hostNames'] as List).cast<String>()),
-      issueDate: map['issueDate'] == null ? null : pulumi.Output.create<String>(map['issueDate'] as String),
-      issuer: map['issuer'] == null ? null : pulumi.Output.create<String>(map['issuer'] as String),
-      subjectName: map['subjectName'] == null ? null : pulumi.Output.create<String>(map['subjectName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      canonicalName: map['canonicalName'] == null ? null : (map['canonicalName'] as String).input(),
+      customHostnameBindingId: map['customHostnameBindingId'] == null ? null : (map['customHostnameBindingId'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
+      issueDate: map['issueDate'] == null ? null : (map['issueDate'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

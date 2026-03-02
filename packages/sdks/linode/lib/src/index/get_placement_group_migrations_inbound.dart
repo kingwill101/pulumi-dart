@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlacementGroupMigrationsInbound {
   /// The ID of the Linode.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
 
   /// Creates a new [GetPlacementGroupMigrationsInbound].
   /// [linodeId] The ID of the Linode.
@@ -19,7 +20,7 @@ class GetPlacementGroupMigrationsInbound {
 
   factory GetPlacementGroupMigrationsInbound.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupMigrationsInbound(
-      linodeId: map['linodeId'] as int,
+      linodeId: (map['linodeId'] as int).input(),
     );
   }
 }

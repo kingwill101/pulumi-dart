@@ -39,27 +39,17 @@ class TrackerState {
   /// [trackerName] The name of the tracker resource.
   /// [updateTime] The timestamp for when the tracker resource was last updated in ISO 8601 format.
   TrackerState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? positionFiltering,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? trackerArn,
-    pulumi.Output<String>? trackerName,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      positionFiltering = pulumi.Input.asOptionalInput<String>(positionFiltering),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      trackerArn = pulumi.Input.asOptionalInput<String>(trackerArn),
-      trackerName = pulumi.Input.asOptionalInput<String>(trackerName),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.kmsKeyId,
+    this.positionFiltering,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.trackerArn,
+    this.trackerName,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class TrackerState {
 
   factory TrackerState.fromMap(Map<String, dynamic> map) {
     return TrackerState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      positionFiltering: map['positionFiltering'] == null ? null : pulumi.Output.create<String>(map['positionFiltering'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      trackerArn: map['trackerArn'] == null ? null : pulumi.Output.create<String>(map['trackerArn'] as String),
-      trackerName: map['trackerName'] == null ? null : pulumi.Output.create<String>(map['trackerName'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      positionFiltering: map['positionFiltering'] == null ? null : (map['positionFiltering'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      trackerArn: map['trackerArn'] == null ? null : (map['trackerArn'] as String).input(),
+      trackerName: map['trackerName'] == null ? null : (map['trackerName'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

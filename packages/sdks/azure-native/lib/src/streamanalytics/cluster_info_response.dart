@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties associated with a Stream Analytics cluster.
 class ClusterInfoResponse {
   /// The resource id of cluster.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ClusterInfoResponse].
   /// [id] The resource id of cluster.
@@ -20,7 +21,7 @@ class ClusterInfoResponse {
 
   factory ClusterInfoResponse.fromMap(Map<String, dynamic> map) {
     return ClusterInfoResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

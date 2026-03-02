@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorRegionsOfInterestPolygon {
   /// The value of the X coordinate for a point on a Polygon.
-  final double? x;
+  final pulumi.Input<double>? x;
   /// The value of the Y coordinate for a point on a Polygon.
-  final double? y;
+  final pulumi.Input<double>? y;
 
   /// Creates a new [StreamProcessorRegionsOfInterestPolygon].
   /// [x] The value of the X coordinate for a point on a Polygon.
@@ -24,8 +25,8 @@ class StreamProcessorRegionsOfInterestPolygon {
 
   factory StreamProcessorRegionsOfInterestPolygon.fromMap(Map<String, dynamic> map) {
     return StreamProcessorRegionsOfInterestPolygon(
-      x: map['x'] == null ? null : map['x'] as double,
-      y: map['y'] == null ? null : map['y'] as double,
+      x: map['x'] == null ? null : (map['x'] as double).input(),
+      y: map['y'] == null ? null : (map['y'] as double).input(),
     );
   }
 }

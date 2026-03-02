@@ -19,13 +19,10 @@ class GetDomainArgs {
   /// [emailServiceName] The name of the EmailService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDomainArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> emailServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      emailServiceName = pulumi.Input.asInput<String>(emailServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.domainName,
+    required this.emailServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDomainArgs {
 
   factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      emailServiceName: pulumi.Output.create<String>(map['emailServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      domainName: (map['domainName'] as String).input(),
+      emailServiceName: (map['emailServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -40,27 +40,17 @@ class PlaceIndexState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [updateTime] The timestamp for when the place index resource was last update in ISO 8601.
   PlaceIndexState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataSource,
-    pulumi.Output<PlaceIndexDataSourceConfiguration>? dataSourceConfiguration,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? indexArn,
-    pulumi.Output<String>? indexName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataSource = pulumi.Input.asOptionalInput<String>(dataSource),
-      dataSourceConfiguration = pulumi.Input.asOptionalInput<PlaceIndexDataSourceConfiguration>(dataSourceConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexArn = pulumi.Input.asOptionalInput<String>(indexArn),
-      indexName = pulumi.Input.asOptionalInput<String>(indexName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.dataSource,
+    this.dataSourceConfiguration,
+    this.description,
+    this.indexArn,
+    this.indexName,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class PlaceIndexState {
 
   factory PlaceIndexState.fromMap(Map<String, dynamic> map) {
     return PlaceIndexState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataSource: map['dataSource'] == null ? null : pulumi.Output.create<String>(map['dataSource'] as String),
-      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : pulumi.Output.create<PlaceIndexDataSourceConfiguration>(PlaceIndexDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexArn: map['indexArn'] == null ? null : pulumi.Output.create<String>(map['indexArn'] as String),
-      indexName: map['indexName'] == null ? null : pulumi.Output.create<String>(map['indexName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : (PlaceIndexDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexArn: map['indexArn'] == null ? null : (map['indexArn'] as String).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

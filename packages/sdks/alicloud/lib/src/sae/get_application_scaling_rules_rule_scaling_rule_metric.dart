@@ -8,17 +8,17 @@ import 'get_application_scaling_rules_rule_scaling_rule_metric_scale_up_rule.dar
 
 class GetApplicationScalingRulesRuleScalingRuleMetric {
   /// The maximum number of instances.
-  final int maxReplicas;
+  final pulumi.Input<int> maxReplicas;
   /// The auto scaling list of monitoring indicators.
-  final List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics;
+  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleMetricMetric>> metrics;
   /// Monitor indicator elasticity status.
-  final List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus> metricsStatuses;
+  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus>> metricsStatuses;
   /// The minimum number of instances.
-  final int minReplicas;
+  final pulumi.Input<int> minReplicas;
   /// The shrink rule.
-  final List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules;
+  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule>> scaleDownRules;
   /// The expansion rules.
-  final List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules;
+  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule>> scaleUpRules;
 
   /// Creates a new [GetApplicationScalingRulesRuleScalingRuleMetric].
   /// [maxReplicas] The maximum number of instances.
@@ -39,22 +39,22 @@ class GetApplicationScalingRulesRuleScalingRuleMetric {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maxReplicas': maxReplicas,
-      'metrics': pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetric, Map<String, dynamic>>(metrics, (value) => value.toMap()),
-      'metricsStatuses': pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus, Map<String, dynamic>>(metricsStatuses, (value) => value.toMap()),
+      'metrics': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleMetricMetric>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metricsStatuses': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus>, List<Map<String, dynamic>>>(metricsStatuses, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'minReplicas': minReplicas,
-      'scaleDownRules': pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule, Map<String, dynamic>>(scaleDownRules, (value) => value.toMap()),
-      'scaleUpRules': pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule, Map<String, dynamic>>(scaleUpRules, (value) => value.toMap()),
+      'scaleDownRules': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule>, List<Map<String, dynamic>>>(scaleDownRules, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scaleUpRules': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule>, List<Map<String, dynamic>>>(scaleUpRules, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetApplicationScalingRulesRuleScalingRuleMetric.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRuleScalingRuleMetric(
-      maxReplicas: map['maxReplicas'] as int,
-      metrics: pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetric>(map['metrics'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricMetric.fromMap((value as Map).cast<String, dynamic>())),
-      metricsStatuses: pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus>(map['metricsStatuses'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus.fromMap((value as Map).cast<String, dynamic>())),
-      minReplicas: map['minReplicas'] as int,
-      scaleDownRules: pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule>(map['scaleDownRules'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule.fromMap((value as Map).cast<String, dynamic>())),
-      scaleUpRules: pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule>(map['scaleUpRules'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule.fromMap((value as Map).cast<String, dynamic>())),
+      maxReplicas: (map['maxReplicas'] as int).input(),
+      metrics: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetric>(map['metrics'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricsStatuses: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus>(map['metricsStatuses'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minReplicas: (map['minReplicas'] as int).input(),
+      scaleDownRules: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule>(map['scaleDownRules'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scaleUpRules: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule>(map['scaleUpRules'], (value) => GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

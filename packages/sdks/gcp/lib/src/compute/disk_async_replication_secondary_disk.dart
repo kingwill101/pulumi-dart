@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiskAsyncReplicationSecondaryDisk {
   /// The secondary disk.
-  final String disk;
+  final pulumi.Input<String> disk;
   /// Output-only. Status of replication on the secondary disk.
   ///
   /// - - -
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DiskAsyncReplicationSecondaryDisk].
   /// [disk] The secondary disk.
@@ -26,8 +27,8 @@ class DiskAsyncReplicationSecondaryDisk {
 
   factory DiskAsyncReplicationSecondaryDisk.fromMap(Map<String, dynamic> map) {
     return DiskAsyncReplicationSecondaryDisk(
-      disk: map['disk'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      disk: (map['disk'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

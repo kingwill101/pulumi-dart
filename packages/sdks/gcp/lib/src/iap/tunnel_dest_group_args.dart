@@ -26,17 +26,12 @@ class TunnelDestGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the tunnel group. Must be the same as the network resources in the group.
   TunnelDestGroupArgs({
-    pulumi.Output<List<String>>? cidrs,
-    pulumi.Output<List<String>>? fqdns,
-    required pulumi.Output<String> groupName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      cidrs = pulumi.Input.asOptionalInput<List<String>>(cidrs),
-      fqdns = pulumi.Input.asOptionalInput<List<String>>(fqdns),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.cidrs,
+    this.fqdns,
+    required this.groupName,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class TunnelDestGroupArgs {
 
   factory TunnelDestGroupArgs.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupArgs(
-      cidrs: map['cidrs'] == null ? null : pulumi.Output.create<List<String>>((map['cidrs'] as List).cast<String>()),
-      fqdns: map['fqdns'] == null ? null : pulumi.Output.create<List<String>>((map['fqdns'] as List).cast<String>()),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      groupName: (map['groupName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

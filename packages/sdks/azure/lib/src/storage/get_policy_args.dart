@@ -13,9 +13,8 @@ class GetPolicyArgs {
   /// Creates a new [GetPolicyArgs].
   /// [storageAccountId] Specifies the id of the storage account to retrieve the management policy for.
   GetPolicyArgs({
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

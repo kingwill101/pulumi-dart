@@ -53,33 +53,20 @@ class ServiceState {
   /// [resourceGroupName] The name of the Resource Group in which to create the Service. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   ServiceState({
-    pulumi.Output<List<String>>? accessPolicyObjectIds,
-    pulumi.Output<ServiceAuthenticationConfiguration>? authenticationConfiguration,
-    pulumi.Output<String>? configurationExportStorageAccountName,
-    pulumi.Output<ServiceCorsConfiguration>? corsConfiguration,
-    pulumi.Output<String>? cosmosdbKeyVaultKeyVersionlessId,
-    pulumi.Output<int>? cosmosdbThroughput,
-    pulumi.Output<ServiceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessPolicyObjectIds = pulumi.Input.asOptionalInput<List<String>>(accessPolicyObjectIds),
-      authenticationConfiguration = pulumi.Input.asOptionalInput<ServiceAuthenticationConfiguration>(authenticationConfiguration),
-      configurationExportStorageAccountName = pulumi.Input.asOptionalInput<String>(configurationExportStorageAccountName),
-      corsConfiguration = pulumi.Input.asOptionalInput<ServiceCorsConfiguration>(corsConfiguration),
-      cosmosdbKeyVaultKeyVersionlessId = pulumi.Input.asOptionalInput<String>(cosmosdbKeyVaultKeyVersionlessId),
-      cosmosdbThroughput = pulumi.Input.asOptionalInput<int>(cosmosdbThroughput),
-      identity = pulumi.Input.asOptionalInput<ServiceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessPolicyObjectIds,
+    this.authenticationConfiguration,
+    this.configurationExportStorageAccountName,
+    this.corsConfiguration,
+    this.cosmosdbKeyVaultKeyVersionlessId,
+    this.cosmosdbThroughput,
+    this.identity,
+    this.kind,
+    this.location,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      accessPolicyObjectIds: map['accessPolicyObjectIds'] == null ? null : pulumi.Output.create<List<String>>((map['accessPolicyObjectIds'] as List).cast<String>()),
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : pulumi.Output.create<ServiceAuthenticationConfiguration>(ServiceAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())),
-      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] == null ? null : pulumi.Output.create<String>(map['configurationExportStorageAccountName'] as String),
-      corsConfiguration: map['corsConfiguration'] == null ? null : pulumi.Output.create<ServiceCorsConfiguration>(ServiceCorsConfiguration.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())),
-      cosmosdbKeyVaultKeyVersionlessId: map['cosmosdbKeyVaultKeyVersionlessId'] == null ? null : pulumi.Output.create<String>(map['cosmosdbKeyVaultKeyVersionlessId'] as String),
-      cosmosdbThroughput: map['cosmosdbThroughput'] == null ? null : pulumi.Output.create<int>(map['cosmosdbThroughput'] as int),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ServiceIdentity>(ServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessPolicyObjectIds: map['accessPolicyObjectIds'] == null ? null : ((map['accessPolicyObjectIds'] as List).cast<String>()).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (ServiceAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] == null ? null : (map['configurationExportStorageAccountName'] as String).input(),
+      corsConfiguration: map['corsConfiguration'] == null ? null : (ServiceCorsConfiguration.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cosmosdbKeyVaultKeyVersionlessId: map['cosmosdbKeyVaultKeyVersionlessId'] == null ? null : (map['cosmosdbKeyVaultKeyVersionlessId'] as String).input(),
+      cosmosdbThroughput: map['cosmosdbThroughput'] == null ? null : (map['cosmosdbThroughput'] as int).input(),
+      identity: map['identity'] == null ? null : (ServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed application notification endpoint.
 class ApplicationNotificationEndpointResponse {
   /// The managed application notification endpoint uri.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ApplicationNotificationEndpointResponse].
   /// [uri] The managed application notification endpoint uri.
@@ -20,7 +21,7 @@ class ApplicationNotificationEndpointResponse {
 
   factory ApplicationNotificationEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationNotificationEndpointResponse(
-      uri: map['uri'] as String,
+      uri: (map['uri'] as String).input(),
     );
   }
 }

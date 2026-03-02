@@ -28,19 +28,13 @@ class AutoScalingConfigurationVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AutoScalingConfigurationVersionArgs({
-    required pulumi.Output<String> autoScalingConfigurationName,
-    pulumi.Output<int>? maxConcurrency,
-    pulumi.Output<int>? maxSize,
-    pulumi.Output<int>? minSize,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoScalingConfigurationName = pulumi.Input.asInput<String>(autoScalingConfigurationName),
-      maxConcurrency = pulumi.Input.asOptionalInput<int>(maxConcurrency),
-      maxSize = pulumi.Input.asOptionalInput<int>(maxSize),
-      minSize = pulumi.Input.asOptionalInput<int>(minSize),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.autoScalingConfigurationName,
+    this.maxConcurrency,
+    this.maxSize,
+    this.minSize,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AutoScalingConfigurationVersionArgs {
 
   factory AutoScalingConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return AutoScalingConfigurationVersionArgs(
-      autoScalingConfigurationName: pulumi.Output.create<String>(map['autoScalingConfigurationName'] as String),
-      maxConcurrency: map['maxConcurrency'] == null ? null : pulumi.Output.create<int>(map['maxConcurrency'] as int),
-      maxSize: map['maxSize'] == null ? null : pulumi.Output.create<int>(map['maxSize'] as int),
-      minSize: map['minSize'] == null ? null : pulumi.Output.create<int>(map['minSize'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoScalingConfigurationName: (map['autoScalingConfigurationName'] as String).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as int).input(),
+      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
+      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

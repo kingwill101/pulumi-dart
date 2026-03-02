@@ -16,11 +16,9 @@ class GetGatewayArgs {
   /// [gatewayResourceName] The identity of the gateway.
   /// [resourceGroupName] Azure resource group name
   GetGatewayArgs({
-    required pulumi.Output<String> gatewayResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      gatewayResourceName = pulumi.Input.asInput<String>(gatewayResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.gatewayResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGatewayArgs {
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
-      gatewayResourceName: pulumi.Output.create<String>(map['gatewayResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      gatewayResourceName: (map['gatewayResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

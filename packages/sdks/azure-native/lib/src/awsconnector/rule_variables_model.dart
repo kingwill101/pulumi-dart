@@ -6,7 +6,7 @@ import 'ipset.dart';
 /// Definition of RuleVariables
 class RuleVariablesModel {
   /// Property ruleVariables
-  final Map<String, IPSet>? ruleVariables;
+  final pulumi.Input<Map<String, IPSet>>? ruleVariables;
 
   /// Creates a new [RuleVariablesModel].
   /// [ruleVariables] Property ruleVariables
@@ -16,13 +16,13 @@ class RuleVariablesModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ruleVariables': ?ruleVariables == null ? null : pulumi.Input.encodeMapValues<IPSet, Map<String, dynamic>>(ruleVariables!, (value) => value.toMap()),
+      'ruleVariables': ?pulumi.Input.mapOptionalInputValue<Map<String, IPSet>, Map<String, Map<String, dynamic>>>(ruleVariables, (value) => pulumi.Input.encodeMapValues<IPSet, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleVariablesModel.fromMap(Map<String, dynamic> map) {
     return RuleVariablesModel(
-      ruleVariables: map['ruleVariables'] == null ? null : pulumi.Input.decodeMapValues<IPSet>(map['ruleVariables'], (value) => IPSet.fromMap((value as Map).cast<String, dynamic>())),
+      ruleVariables: map['ruleVariables'] == null ? null : (pulumi.Input.decodeMapValues<IPSet>(map['ruleVariables'], (value) => IPSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

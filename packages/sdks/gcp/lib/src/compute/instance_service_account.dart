@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceServiceAccount {
   /// The service account e-mail address.
   /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-  final String? email;
+  final pulumi.Input<String>? email;
   /// A list of service scopes. Both OAuth2 URLs and gcloud
   /// short names are supported. To allow full access to all Cloud APIs, use the
   /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
   /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-  final List<String> scopes;
+  final pulumi.Input<List<String>> scopes;
 
   /// Creates a new [InstanceServiceAccount].
   /// [email] The service account e-mail address.
@@ -28,8 +29,8 @@ class InstanceServiceAccount {
 
   factory InstanceServiceAccount.fromMap(Map<String, dynamic> map) {
     return InstanceServiceAccount(
-      email: map['email'] == null ? null : map['email'] as String,
-      scopes: (map['scopes'] as List).cast<String>(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

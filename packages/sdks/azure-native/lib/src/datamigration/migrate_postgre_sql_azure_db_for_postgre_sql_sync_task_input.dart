@@ -7,13 +7,13 @@ import 'postgre_sql_connection_info.dart';
 /// Input for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput {
   /// encrypted key for secure fields
-  final String? encryptedKeyForSecureFields;
+  final pulumi.Input<String>? encryptedKeyForSecureFields;
   /// Databases to migrate
-  final List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput> selectedDatabases;
+  final pulumi.Input<List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput>> selectedDatabases;
   /// Connection information for source PostgreSQL
-  final PostgreSqlConnectionInfo sourceConnectionInfo;
+  final pulumi.Input<PostgreSqlConnectionInfo> sourceConnectionInfo;
   /// Connection information for target Azure Database for PostgreSQL
-  final PostgreSqlConnectionInfo targetConnectionInfo;
+  final pulumi.Input<PostgreSqlConnectionInfo> targetConnectionInfo;
 
   /// Creates a new [MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput].
   /// [encryptedKeyForSecureFields] encrypted key for secure fields
@@ -30,18 +30,18 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'encryptedKeyForSecureFields': ?encryptedKeyForSecureFields,
-      'selectedDatabases': pulumi.Input.encodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput, Map<String, dynamic>>(selectedDatabases, (value) => value.toMap()),
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput(
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : map['encryptedKeyForSecureFields'] as String,
-      selectedDatabases: pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput>(map['selectedDatabases'], (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput.fromMap((value as Map).cast<String, dynamic>())),
-      sourceConnectionInfo: PostgreSqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      targetConnectionInfo: PostgreSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
+      selectedDatabases: (pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput>(map['selectedDatabases'], (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceConnectionInfo: (PostgreSqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      targetConnectionInfo: (PostgreSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

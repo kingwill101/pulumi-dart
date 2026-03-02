@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sap_hana_partition_settings_response.dart';
 
 /// A copy activity source for SAP HANA source.
 class SapHanaSourceResponse {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// The packet size of data read from SAP HANA. Type: integer(or Expression with resultType integer).
-  final dynamic packetSize;
+  final pulumi.Input<dynamic>? packetSize;
   /// The partition mechanism that will be used for SAP HANA read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "SapHanaDynamicRange".
-  final dynamic partitionOption;
+  final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for SAP HANA source partitioning.
-  final SapHanaPartitionSettingsResponse? partitionSettings;
+  final pulumi.Input<SapHanaPartitionSettingsResponse>? partitionSettings;
   /// SAP HANA Sql query. Type: string (or Expression with resultType string).
-  final dynamic query;
+  final pulumi.Input<dynamic>? query;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic queryTimeout;
+  final pulumi.Input<dynamic>? queryTimeout;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'SapHanaSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SapHanaSourceResponse].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -61,7 +62,7 @@ class SapHanaSourceResponse {
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'packetSize': ?packetSize,
       'partitionOption': ?partitionOption,
-      'partitionSettings': ?partitionSettings == null ? null : partitionSettings!.toMap(),
+      'partitionSettings': ?pulumi.Input.mapOptionalInputValue<SapHanaPartitionSettingsResponse, Map<String, dynamic>>(partitionSettings, (value) => value.toMap()),
       'query': ?query,
       'queryTimeout': ?queryTimeout,
       'sourceRetryCount': ?sourceRetryCount,
@@ -72,17 +73,17 @@ class SapHanaSourceResponse {
 
   factory SapHanaSourceResponse.fromMap(Map<String, dynamic> map) {
     return SapHanaSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      packetSize: map['packetSize'] == null ? null : map['packetSize'],
-      partitionOption: map['partitionOption'] == null ? null : map['partitionOption'],
-      partitionSettings: map['partitionSettings'] == null ? null : SapHanaPartitionSettingsResponse.fromMap((map['partitionSettings'] as Map).cast<String, dynamic>()),
-      query: map['query'] == null ? null : map['query'],
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      packetSize: map['packetSize'] == null ? null : (map['packetSize']).input(),
+      partitionOption: map['partitionOption'] == null ? null : (map['partitionOption']).input(),
+      partitionSettings: map['partitionSettings'] == null ? null : (SapHanaPartitionSettingsResponse.fromMap((map['partitionSettings'] as Map).cast<String, dynamic>())).input(),
+      query: map['query'] == null ? null : (map['query']).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

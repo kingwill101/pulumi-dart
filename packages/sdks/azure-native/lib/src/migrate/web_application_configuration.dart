@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_store_details.dart';
 
 /// Class for web application configurations.
 class WebApplicationConfiguration {
   /// Gets or sets the configuration file path.
-  final String? filePath;
+  final pulumi.Input<String>? filePath;
   /// Gets or sets the identifier for the configuration.
-  final String? identifier;
+  final pulumi.Input<String>? identifier;
   /// Gets or sets a value indicating whether the configuration is edited or not by the user.
-  final bool? isDeploymentTimeEditable;
+  final pulumi.Input<bool>? isDeploymentTimeEditable;
   /// Gets or sets the configuration local file path.
-  final String? localFilePath;
+  final pulumi.Input<String>? localFilePath;
   /// Gets or sets the configuration name.
-  final String? name;
-  final SecretStoreDetails? secretStoreDetails;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<SecretStoreDetails>? secretStoreDetails;
   /// Gets or sets the configuration section in the file.
-  final String? section;
+  final pulumi.Input<String>? section;
   /// Gets or sets the configuration target file path.
-  final String? targetFilePath;
+  final pulumi.Input<String>? targetFilePath;
   /// Gets or sets the configuration type.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Gets or sets the configuration value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [WebApplicationConfiguration].
   /// [filePath] Gets or sets the configuration file path.
@@ -55,7 +56,7 @@ class WebApplicationConfiguration {
       'isDeploymentTimeEditable': ?isDeploymentTimeEditable,
       'localFilePath': ?localFilePath,
       'name': ?name,
-      'secretStoreDetails': ?secretStoreDetails == null ? null : secretStoreDetails!.toMap(),
+      'secretStoreDetails': ?pulumi.Input.mapOptionalInputValue<SecretStoreDetails, Map<String, dynamic>>(secretStoreDetails, (value) => value.toMap()),
       'section': ?section,
       'targetFilePath': ?targetFilePath,
       'type': ?type,
@@ -65,16 +66,16 @@ class WebApplicationConfiguration {
 
   factory WebApplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return WebApplicationConfiguration(
-      filePath: map['filePath'] == null ? null : map['filePath'] as String,
-      identifier: map['identifier'] == null ? null : map['identifier'] as String,
-      isDeploymentTimeEditable: map['isDeploymentTimeEditable'] == null ? null : map['isDeploymentTimeEditable'] as bool,
-      localFilePath: map['localFilePath'] == null ? null : map['localFilePath'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      secretStoreDetails: map['secretStoreDetails'] == null ? null : SecretStoreDetails.fromMap((map['secretStoreDetails'] as Map).cast<String, dynamic>()),
-      section: map['section'] == null ? null : map['section'] as String,
-      targetFilePath: map['targetFilePath'] == null ? null : map['targetFilePath'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      isDeploymentTimeEditable: map['isDeploymentTimeEditable'] == null ? null : (map['isDeploymentTimeEditable'] as bool).input(),
+      localFilePath: map['localFilePath'] == null ? null : (map['localFilePath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secretStoreDetails: map['secretStoreDetails'] == null ? null : (SecretStoreDetails.fromMap((map['secretStoreDetails'] as Map).cast<String, dynamic>())).input(),
+      section: map['section'] == null ? null : (map['section'] as String).input(),
+      targetFilePath: map['targetFilePath'] == null ? null : (map['targetFilePath'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

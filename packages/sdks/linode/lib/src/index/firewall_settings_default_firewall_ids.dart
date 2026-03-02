@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallSettingsDefaultFirewallIds {
   /// The Linode's default firewall.
-  final int? linode;
+  final pulumi.Input<int>? linode;
   /// The NodeBalancer's default firewall.
-  final int? nodebalancer;
+  final pulumi.Input<int>? nodebalancer;
   /// The public interface's default firewall.
-  final int? publicInterface;
+  final pulumi.Input<int>? publicInterface;
   /// The VPC interface's default firewall.
-  final int? vpcInterface;
+  final pulumi.Input<int>? vpcInterface;
 
   /// Creates a new [FirewallSettingsDefaultFirewallIds].
   /// [linode] The Linode's default firewall.
@@ -34,10 +35,10 @@ class FirewallSettingsDefaultFirewallIds {
 
   factory FirewallSettingsDefaultFirewallIds.fromMap(Map<String, dynamic> map) {
     return FirewallSettingsDefaultFirewallIds(
-      linode: map['linode'] == null ? null : map['linode'] as int,
-      nodebalancer: map['nodebalancer'] == null ? null : map['nodebalancer'] as int,
-      publicInterface: map['publicInterface'] == null ? null : map['publicInterface'] as int,
-      vpcInterface: map['vpcInterface'] == null ? null : map['vpcInterface'] as int,
+      linode: map['linode'] == null ? null : (map['linode'] as int).input(),
+      nodebalancer: map['nodebalancer'] == null ? null : (map['nodebalancer'] as int).input(),
+      publicInterface: map['publicInterface'] == null ? null : (map['publicInterface'] as int).input(),
+      vpcInterface: map['vpcInterface'] == null ? null : (map['vpcInterface'] as int).input(),
     );
   }
 }

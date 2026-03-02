@@ -45,29 +45,18 @@ class ClusterEndpointArgs {
   /// [sslAutoRotate] Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
   /// [sslEnabled] Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
   ClusterEndpointArgs({
-    pulumi.Output<String>? autoAddNewNodes,
-    pulumi.Output<String>? connectionPrefix,
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? dbEndpointDescription,
-    pulumi.Output<Map<String, String>>? endpointConfig,
-    pulumi.Output<String>? netType,
-    pulumi.Output<List<String>>? nodes,
-    pulumi.Output<String>? port,
-    pulumi.Output<String>? readWriteMode,
-    pulumi.Output<String>? sslAutoRotate,
-    pulumi.Output<String>? sslEnabled,
-  }) :
-      autoAddNewNodes = pulumi.Input.asOptionalInput<String>(autoAddNewNodes),
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      dbEndpointDescription = pulumi.Input.asOptionalInput<String>(dbEndpointDescription),
-      endpointConfig = pulumi.Input.asOptionalInput<Map<String, String>>(endpointConfig),
-      netType = pulumi.Input.asOptionalInput<String>(netType),
-      nodes = pulumi.Input.asOptionalInput<List<String>>(nodes),
-      port = pulumi.Input.asOptionalInput<String>(port),
-      readWriteMode = pulumi.Input.asOptionalInput<String>(readWriteMode),
-      sslAutoRotate = pulumi.Input.asOptionalInput<String>(sslAutoRotate),
-      sslEnabled = pulumi.Input.asOptionalInput<String>(sslEnabled);
+    this.autoAddNewNodes,
+    this.connectionPrefix,
+    required this.dbClusterId,
+    this.dbEndpointDescription,
+    this.endpointConfig,
+    this.netType,
+    this.nodes,
+    this.port,
+    this.readWriteMode,
+    this.sslAutoRotate,
+    this.sslEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class ClusterEndpointArgs {
 
   factory ClusterEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ClusterEndpointArgs(
-      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : pulumi.Output.create<String>(map['autoAddNewNodes'] as String),
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : pulumi.Output.create<String>(map['dbEndpointDescription'] as String),
-      endpointConfig: map['endpointConfig'] == null ? null : pulumi.Output.create<Map<String, String>>((map['endpointConfig'] as Map).cast<String, String>()),
-      netType: map['netType'] == null ? null : pulumi.Output.create<String>(map['netType'] as String),
-      nodes: map['nodes'] == null ? null : pulumi.Output.create<List<String>>((map['nodes'] as List).cast<String>()),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
-      readWriteMode: map['readWriteMode'] == null ? null : pulumi.Output.create<String>(map['readWriteMode'] as String),
-      sslAutoRotate: map['sslAutoRotate'] == null ? null : pulumi.Output.create<String>(map['sslAutoRotate'] as String),
-      sslEnabled: map['sslEnabled'] == null ? null : pulumi.Output.create<String>(map['sslEnabled'] as String),
+      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : (map['autoAddNewNodes'] as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription'] as String).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : ((map['endpointConfig'] as Map).cast<String, String>()).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      nodes: map['nodes'] == null ? null : ((map['nodes'] as List).cast<String>()).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      readWriteMode: map['readWriteMode'] == null ? null : (map['readWriteMode'] as String).input(),
+      sslAutoRotate: map['sslAutoRotate'] == null ? null : (map['sslAutoRotate'] as String).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as String).input(),
     );
   }
 }

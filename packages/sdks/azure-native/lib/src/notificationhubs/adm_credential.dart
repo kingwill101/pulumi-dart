@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of a NotificationHub AdmCredential.
 class AdmCredential {
   /// Gets or sets the URL of the authorization token.
-  final String authTokenUrl;
+  final pulumi.Input<String> authTokenUrl;
   /// Gets or sets the client identifier.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Gets or sets the credential secret access key.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
 
   /// Creates a new [AdmCredential].
   /// [authTokenUrl] Gets or sets the URL of the authorization token.
@@ -30,9 +31,9 @@ class AdmCredential {
 
   factory AdmCredential.fromMap(Map<String, dynamic> map) {
     return AdmCredential(
-      authTokenUrl: map['authTokenUrl'] as String,
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
+      authTokenUrl: (map['authTokenUrl'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
     );
   }
 }

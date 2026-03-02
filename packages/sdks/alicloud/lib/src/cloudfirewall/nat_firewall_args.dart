@@ -47,31 +47,19 @@ class NatFirewallArgs {
   /// [vswitchCidr] The network segment of the virtual switch. Required for Switch automatic mode.
   /// [vswitchId] The switch ID. Required for switch manual mode.
   NatFirewallArgs({
-    pulumi.Output<String>? firewallSwitch,
-    pulumi.Output<String>? lang,
-    required pulumi.Output<String> natGatewayId,
-    required pulumi.Output<List<NatFirewallNatRouteEntryList>> natRouteEntryLists,
-    required pulumi.Output<String> proxyName,
-    required pulumi.Output<String> regionNo,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? strictMode,
-    required pulumi.Output<String> vpcId,
-    pulumi.Output<String>? vswitchAuto,
-    pulumi.Output<String>? vswitchCidr,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      firewallSwitch = pulumi.Input.asOptionalInput<String>(firewallSwitch),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      natGatewayId = pulumi.Input.asInput<String>(natGatewayId),
-      natRouteEntryLists = pulumi.Input.asInput<List<NatFirewallNatRouteEntryList>>(natRouteEntryLists),
-      proxyName = pulumi.Input.asInput<String>(proxyName),
-      regionNo = pulumi.Input.asInput<String>(regionNo),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      strictMode = pulumi.Input.asOptionalInput<int>(strictMode),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchAuto = pulumi.Input.asOptionalInput<String>(vswitchAuto),
-      vswitchCidr = pulumi.Input.asOptionalInput<String>(vswitchCidr),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.firewallSwitch,
+    this.lang,
+    required this.natGatewayId,
+    required this.natRouteEntryLists,
+    required this.proxyName,
+    required this.regionNo,
+    this.status,
+    this.strictMode,
+    required this.vpcId,
+    this.vswitchAuto,
+    this.vswitchCidr,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class NatFirewallArgs {
 
   factory NatFirewallArgs.fromMap(Map<String, dynamic> map) {
     return NatFirewallArgs(
-      firewallSwitch: map['firewallSwitch'] == null ? null : pulumi.Output.create<String>(map['firewallSwitch'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      natGatewayId: pulumi.Output.create<String>(map['natGatewayId'] as String),
-      natRouteEntryLists: pulumi.Output.create<List<NatFirewallNatRouteEntryList>>(pulumi.Input.decodeList<NatFirewallNatRouteEntryList>(map['natRouteEntryLists'], (value) => NatFirewallNatRouteEntryList.fromMap((value as Map).cast<String, dynamic>()))),
-      proxyName: pulumi.Output.create<String>(map['proxyName'] as String),
-      regionNo: pulumi.Output.create<String>(map['regionNo'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      strictMode: map['strictMode'] == null ? null : pulumi.Output.create<int>(map['strictMode'] as int),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchAuto: map['vswitchAuto'] == null ? null : pulumi.Output.create<String>(map['vswitchAuto'] as String),
-      vswitchCidr: map['vswitchCidr'] == null ? null : pulumi.Output.create<String>(map['vswitchCidr'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      firewallSwitch: map['firewallSwitch'] == null ? null : (map['firewallSwitch'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      natRouteEntryLists: (pulumi.Input.decodeList<NatFirewallNatRouteEntryList>(map['natRouteEntryLists'], (value) => NatFirewallNatRouteEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      proxyName: (map['proxyName'] as String).input(),
+      regionNo: (map['regionNo'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      strictMode: map['strictMode'] == null ? null : (map['strictMode'] as int).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchAuto: map['vswitchAuto'] == null ? null : (map['vswitchAuto'] as String).input(),
+      vswitchCidr: map['vswitchCidr'] == null ? null : (map['vswitchCidr'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Available configurations to provision an Instance.
 class ConfigResponse {
   /// The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location.
-  final String cmekKeyName;
+  final pulumi.Input<String> cmekKeyName;
   /// The GCP location where the Instance resides.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [ConfigResponse].
   /// [cmekKeyName] The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location.
@@ -25,8 +26,8 @@ class ConfigResponse {
 
   factory ConfigResponse.fromMap(Map<String, dynamic> map) {
     return ConfigResponse(
-      cmekKeyName: map['cmekKeyName'] as String,
-      location: map['location'] as String,
+      cmekKeyName: (map['cmekKeyName'] as String).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

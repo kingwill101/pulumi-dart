@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Error definition for managed integration runtime.
 class ManagedIntegrationRuntimeErrorResponse {
   /// Error code.
-  final String code;
+  final pulumi.Input<String> code;
   /// Error message.
-  final String message;
+  final pulumi.Input<String> message;
   /// Managed integration runtime error parameters.
-  final List<String> parameters;
+  final pulumi.Input<List<String>> parameters;
   /// The time when the error occurred.
-  final String time;
+  final pulumi.Input<String> time;
 
   /// Creates a new [ManagedIntegrationRuntimeErrorResponse].
   /// [code] Error code.
@@ -35,10 +36,10 @@ class ManagedIntegrationRuntimeErrorResponse {
 
   factory ManagedIntegrationRuntimeErrorResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIntegrationRuntimeErrorResponse(
-      code: map['code'] as String,
-      message: map['message'] as String,
-      parameters: (map['parameters'] as List).cast<String>(),
-      time: map['time'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
+      parameters: ((map['parameters'] as List).cast<String>()).input(),
+      time: (map['time'] as String).input(),
     );
   }
 }

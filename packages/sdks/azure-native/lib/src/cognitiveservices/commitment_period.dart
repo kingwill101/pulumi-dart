@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cognitive Services account commitment period.
 class CommitmentPeriod {
   /// Commitment period commitment count.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Commitment period commitment tier.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [CommitmentPeriod].
   /// [count] Commitment period commitment count.
@@ -25,8 +26,8 @@ class CommitmentPeriod {
 
   factory CommitmentPeriod.fromMap(Map<String, dynamic> map) {
     return CommitmentPeriod(
-      count: map['count'] == null ? null : map['count'] as int,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

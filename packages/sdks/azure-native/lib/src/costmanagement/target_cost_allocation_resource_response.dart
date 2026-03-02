@@ -6,13 +6,13 @@ import 'cost_allocation_proportion_response.dart';
 /// Target resources for cost allocation.
 class TargetCostAllocationResourceResponse {
   /// If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-  final String name;
+  final pulumi.Input<String> name;
   /// Method of cost allocation for the rule
-  final String policyType;
+  final pulumi.Input<String> policyType;
   /// Type of resources contained in this cost allocation rule
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Target resources for cost allocation. This list cannot contain more than 25 values.
-  final List<CostAllocationProportionResponse> values;
+  final pulumi.Input<List<CostAllocationProportionResponse>> values;
 
   /// Creates a new [TargetCostAllocationResourceResponse].
   /// [name] If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
@@ -31,16 +31,16 @@ class TargetCostAllocationResourceResponse {
       'name': name,
       'policyType': policyType,
       'resourceType': resourceType,
-      'values': pulumi.Input.encodeList<CostAllocationProportionResponse, Map<String, dynamic>>(values, (value) => value.toMap()),
+      'values': pulumi.Input.mapInputValue<List<CostAllocationProportionResponse>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<CostAllocationProportionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TargetCostAllocationResourceResponse.fromMap(Map<String, dynamic> map) {
     return TargetCostAllocationResourceResponse(
-      name: map['name'] as String,
-      policyType: map['policyType'] as String,
-      resourceType: map['resourceType'] as String,
-      values: pulumi.Input.decodeList<CostAllocationProportionResponse>(map['values'], (value) => CostAllocationProportionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      values: (pulumi.Input.decodeList<CostAllocationProportionResponse>(map['values'], (value) => CostAllocationProportionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

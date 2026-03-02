@@ -22,15 +22,11 @@ class GetExtendedDatabaseBlobAuditingPolicyArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   GetExtendedDatabaseBlobAuditingPolicyArgs({
-    required pulumi.Output<String> blobAuditingPolicyName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      blobAuditingPolicyName = pulumi.Input.asInput<String>(blobAuditingPolicyName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.blobAuditingPolicyName,
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetExtendedDatabaseBlobAuditingPolicyArgs {
 
   factory GetExtendedDatabaseBlobAuditingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetExtendedDatabaseBlobAuditingPolicyArgs(
-      blobAuditingPolicyName: pulumi.Output.create<String>(map['blobAuditingPolicyName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      blobAuditingPolicyName: (map['blobAuditingPolicyName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

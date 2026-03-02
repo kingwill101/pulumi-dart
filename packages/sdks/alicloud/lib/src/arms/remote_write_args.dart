@@ -16,11 +16,9 @@ class RemoteWriteArgs {
   /// [clusterId] The ID of the Prometheus instance.
   /// [remoteWriteYaml] The details of the Remote Write configuration item. Specify the value in the YAML format.
   RemoteWriteArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> remoteWriteYaml,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      remoteWriteYaml = pulumi.Input.asInput<String>(remoteWriteYaml);
+    required this.clusterId,
+    required this.remoteWriteYaml,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class RemoteWriteArgs {
 
   factory RemoteWriteArgs.fromMap(Map<String, dynamic> map) {
     return RemoteWriteArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      remoteWriteYaml: pulumi.Output.create<String>(map['remoteWriteYaml'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      remoteWriteYaml: (map['remoteWriteYaml'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowletDataFlowSinkFlowlet {
   /// Specifies the reference data flow parameters from dataset.
-  final String? datasetParameters;
+  final pulumi.Input<String>? datasetParameters;
   /// The name for the Data Factory Flowlet.
-  final String name;
+  final pulumi.Input<String> name;
   /// A map of parameters to associate with the Data Factory Flowlet.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
 
   /// Creates a new [FlowletDataFlowSinkFlowlet].
   /// [datasetParameters] Specifies the reference data flow parameters from dataset.
@@ -29,9 +30,9 @@ class FlowletDataFlowSinkFlowlet {
 
   factory FlowletDataFlowSinkFlowlet.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowSinkFlowlet(
-      datasetParameters: map['datasetParameters'] == null ? null : map['datasetParameters'] as String,
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      datasetParameters: map['datasetParameters'] == null ? null : (map['datasetParameters'] as String).input(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

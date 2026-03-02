@@ -22,15 +22,11 @@ class EnterpriseProxyArgs {
   /// [tid] The ID of the tenant.
   /// [username] The username of the database account.
   EnterpriseProxyArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> password,
-    pulumi.Output<String>? tid,
-    required pulumi.Output<String> username,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      password = pulumi.Input.asInput<String>(password),
-      tid = pulumi.Input.asOptionalInput<String>(tid),
-      username = pulumi.Input.asInput<String>(username);
+    required this.instanceId,
+    required this.password,
+    this.tid,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EnterpriseProxyArgs {
 
   factory EnterpriseProxyArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseProxyArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      tid: map['tid'] == null ? null : pulumi.Output.create<String>(map['tid'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      password: (map['password'] as String).input(),
+      tid: map['tid'] == null ? null : (map['tid'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

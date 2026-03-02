@@ -34,25 +34,16 @@ class AnalyticsItemState {
   /// [type] The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
   /// [version] A string indicating the version of the query format
   AnalyticsItemState({
-    pulumi.Output<String>? applicationInsightsId,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? functionAlias,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? scope,
-    pulumi.Output<String>? timeCreated,
-    pulumi.Output<String>? timeModified,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? version,
-  }) :
-      applicationInsightsId = pulumi.Input.asOptionalInput<String>(applicationInsightsId),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      functionAlias = pulumi.Input.asOptionalInput<String>(functionAlias),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      timeCreated = pulumi.Input.asOptionalInput<String>(timeCreated),
-      timeModified = pulumi.Input.asOptionalInput<String>(timeModified),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.applicationInsightsId,
+    this.content,
+    this.functionAlias,
+    this.name,
+    this.scope,
+    this.timeCreated,
+    this.timeModified,
+    this.type,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class AnalyticsItemState {
 
   factory AnalyticsItemState.fromMap(Map<String, dynamic> map) {
     return AnalyticsItemState(
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : pulumi.Output.create<String>(map['applicationInsightsId'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      functionAlias: map['functionAlias'] == null ? null : pulumi.Output.create<String>(map['functionAlias'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      timeCreated: map['timeCreated'] == null ? null : pulumi.Output.create<String>(map['timeCreated'] as String),
-      timeModified: map['timeModified'] == null ? null : pulumi.Output.create<String>(map['timeModified'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
+      timeModified: map['timeModified'] == null ? null : (map['timeModified'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

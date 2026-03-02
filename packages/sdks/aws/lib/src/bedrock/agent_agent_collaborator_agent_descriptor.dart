@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentAgentCollaboratorAgentDescriptor {
   /// ARN of the Alias of an Agent to use as the collaborator.
-  final String aliasArn;
+  final pulumi.Input<String> aliasArn;
 
   /// Creates a new [AgentAgentCollaboratorAgentDescriptor].
   /// [aliasArn] ARN of the Alias of an Agent to use as the collaborator.
@@ -19,7 +20,7 @@ class AgentAgentCollaboratorAgentDescriptor {
 
   factory AgentAgentCollaboratorAgentDescriptor.fromMap(Map<String, dynamic> map) {
     return AgentAgentCollaboratorAgentDescriptor(
-      aliasArn: map['aliasArn'] as String,
+      aliasArn: (map['aliasArn'] as String).input(),
     );
   }
 }

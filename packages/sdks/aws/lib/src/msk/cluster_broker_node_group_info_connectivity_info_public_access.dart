@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
   /// Public access type. Valid values: `DISABLED`, `SERVICE_PROVIDED_EIPS`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess].
   /// [type] Public access type. Valid values: `DISABLED`, `SERVICE_PROVIDED_EIPS`.
@@ -19,7 +20,7 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
 
   factory ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

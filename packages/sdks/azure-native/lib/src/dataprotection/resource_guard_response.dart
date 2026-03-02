@@ -5,15 +5,15 @@ import 'resource_guard_operation_response.dart';
 
 class ResourceGuardResponse {
   /// This flag indicates whether auto approval is allowed or not.
-  final bool allowAutoApprovals;
+  final pulumi.Input<bool> allowAutoApprovals;
   /// Description about the pre-req steps to perform all the critical operations.
-  final String description;
+  final pulumi.Input<String> description;
   /// Provisioning state of the BackupVault resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// {readonly} List of operation details those are protected by the ResourceGuard resource
-  final List<ResourceGuardOperationResponse> resourceGuardOperations;
+  final pulumi.Input<List<ResourceGuardOperationResponse>> resourceGuardOperations;
   /// List of critical operations which are not protected by this resourceGuard
-  final List<String>? vaultCriticalOperationExclusionList;
+  final pulumi.Input<List<String>>? vaultCriticalOperationExclusionList;
 
   /// Creates a new [ResourceGuardResponse].
   /// [allowAutoApprovals] This flag indicates whether auto approval is allowed or not.
@@ -34,18 +34,18 @@ class ResourceGuardResponse {
       'allowAutoApprovals': allowAutoApprovals,
       'description': description,
       'provisioningState': provisioningState,
-      'resourceGuardOperations': pulumi.Input.encodeList<ResourceGuardOperationResponse, Map<String, dynamic>>(resourceGuardOperations, (value) => value.toMap()),
+      'resourceGuardOperations': pulumi.Input.mapInputValue<List<ResourceGuardOperationResponse>, List<Map<String, dynamic>>>(resourceGuardOperations, (value) => pulumi.Input.encodeList<ResourceGuardOperationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vaultCriticalOperationExclusionList': ?vaultCriticalOperationExclusionList,
     };
   }
 
   factory ResourceGuardResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGuardResponse(
-      allowAutoApprovals: map['allowAutoApprovals'] as bool,
-      description: map['description'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuardOperations: pulumi.Input.decodeList<ResourceGuardOperationResponse>(map['resourceGuardOperations'], (value) => ResourceGuardOperationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vaultCriticalOperationExclusionList: map['vaultCriticalOperationExclusionList'] == null ? null : (map['vaultCriticalOperationExclusionList'] as List).cast<String>(),
+      allowAutoApprovals: (map['allowAutoApprovals'] as bool).input(),
+      description: (map['description'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGuardOperations: (pulumi.Input.decodeList<ResourceGuardOperationResponse>(map['resourceGuardOperations'], (value) => ResourceGuardOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vaultCriticalOperationExclusionList: map['vaultCriticalOperationExclusionList'] == null ? null : ((map['vaultCriticalOperationExclusionList'] as List).cast<String>()).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class GradientaiOpenaiApiKeyArgs {
   /// [models] Models associated with the OpenAI API key
   /// [name] A name for the API key.
   GradientaiOpenaiApiKeyArgs({
-    required pulumi.Output<String> apiKey,
-    pulumi.Output<List<GradientaiOpenaiApiKeyModel>>? models,
-    pulumi.Output<String>? name,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      models = pulumi.Input.asOptionalInput<List<GradientaiOpenaiApiKeyModel>>(models),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.apiKey,
+    this.models,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GradientaiOpenaiApiKeyArgs {
 
   factory GradientaiOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiOpenaiApiKeyArgs(
-      apiKey: pulumi.Output.create<String>(map['apiKey'] as String),
-      models: map['models'] == null ? null : pulumi.Output.create<List<GradientaiOpenaiApiKeyModel>>(pulumi.Input.decodeList<GradientaiOpenaiApiKeyModel>(map['models'], (value) => GradientaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      apiKey: (map['apiKey'] as String).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GradientaiOpenaiApiKeyModel>(map['models'], (value) => GradientaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

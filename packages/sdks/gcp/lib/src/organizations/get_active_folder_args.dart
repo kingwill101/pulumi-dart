@@ -19,13 +19,10 @@ class GetActiveFolderArgs {
   /// [displayName] The folder's display name.
   /// [parent] The resource name of the parent Folder or Organization.
   GetActiveFolderArgs({
-    pulumi.Output<String>? apiMethod,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> parent,
-  }) :
-      apiMethod = pulumi.Input.asOptionalInput<String>(apiMethod),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      parent = pulumi.Input.asInput<String>(parent);
+    this.apiMethod,
+    required this.displayName,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetActiveFolderArgs {
 
   factory GetActiveFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetActiveFolderArgs(
-      apiMethod: map['apiMethod'] == null ? null : pulumi.Output.create<String>(map['apiMethod'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      apiMethod: map['apiMethod'] == null ? null : (map['apiMethod'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

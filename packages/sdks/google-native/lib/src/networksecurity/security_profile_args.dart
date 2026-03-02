@@ -34,23 +34,15 @@ class SecurityProfileArgs {
   /// [threatPreventionProfile] The threat prevention configuration for the SecurityProfile.
   /// [type] Immutable. The single ProfileType that the SecurityProfile resource configures.
   SecurityProfileArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> securityProfileId,
-    pulumi.Output<ThreatPreventionProfile>? threatPreventionProfile,
-    pulumi.Output<SecurityProfileType>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      securityProfileId = pulumi.Input.asInput<String>(securityProfileId),
-      threatPreventionProfile = pulumi.Input.asOptionalInput<ThreatPreventionProfile>(threatPreventionProfile),
-      type = pulumi.Input.asOptionalInput<SecurityProfileType>(type);
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    required this.organizationId,
+    required this.securityProfileId,
+    this.threatPreventionProfile,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SecurityProfileArgs {
 
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      securityProfileId: pulumi.Output.create<String>(map['securityProfileId'] as String),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : pulumi.Output.create<ThreatPreventionProfile>(ThreatPreventionProfile.fromMap((map['threatPreventionProfile'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<SecurityProfileType>(SecurityProfileType.fromValue(map['type'] as String)),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      securityProfileId: (map['securityProfileId'] as String).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (ThreatPreventionProfile.fromMap((map['threatPreventionProfile'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (SecurityProfileType.fromValue(map['type'] as String)).input(),
     );
   }
 }

@@ -43,29 +43,18 @@ class IndexEndpointArgs {
   /// [project] Optional.
   /// [publicEndpointEnabled] Optional. If true, the deployed index will be accessible through public endpoint.
   IndexEndpointArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enablePrivateServiceConnect,
-    pulumi.Output<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? network,
-    pulumi.Output<GoogleCloudAiplatformV1PrivateServiceConnectConfig>? privateServiceConnectConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? publicEndpointEnabled,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enablePrivateServiceConnect = pulumi.Input.asOptionalInput<bool>(enablePrivateServiceConnect),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(encryptionSpec),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      privateServiceConnectConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1PrivateServiceConnectConfig>(privateServiceConnectConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicEndpointEnabled = pulumi.Input.asOptionalInput<bool>(publicEndpointEnabled);
+    this.description,
+    required this.displayName,
+    this.enablePrivateServiceConnect,
+    this.encryptionSpec,
+    this.etag,
+    this.labels,
+    this.location,
+    this.network,
+    this.privateServiceConnectConfig,
+    this.project,
+    this.publicEndpointEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class IndexEndpointArgs {
 
   factory IndexEndpointArgs.fromMap(Map<String, dynamic> map) {
     return IndexEndpointArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] == null ? null : pulumi.Output.create<bool>(map['enablePrivateServiceConnect'] as bool),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1EncryptionSpec>(GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1PrivateServiceConnectConfig>(GoogleCloudAiplatformV1PrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicEndpointEnabled'] as bool),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] == null ? null : (map['enablePrivateServiceConnect'] as bool).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (GoogleCloudAiplatformV1PrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled'] as bool).input(),
     );
   }
 }

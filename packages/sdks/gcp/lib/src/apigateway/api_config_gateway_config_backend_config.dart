@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiConfigGatewayConfigBackendConfig {
   /// Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
   /// (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
-  final String googleServiceAccount;
+  final pulumi.Input<String> googleServiceAccount;
 
   /// Creates a new [ApiConfigGatewayConfigBackendConfig].
   /// [googleServiceAccount] Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
@@ -20,7 +21,7 @@ class ApiConfigGatewayConfigBackendConfig {
 
   factory ApiConfigGatewayConfigBackendConfig.fromMap(Map<String, dynamic> map) {
     return ApiConfigGatewayConfigBackendConfig(
-      googleServiceAccount: map['googleServiceAccount'] as String,
+      googleServiceAccount: (map['googleServiceAccount'] as String).input(),
     );
   }
 }

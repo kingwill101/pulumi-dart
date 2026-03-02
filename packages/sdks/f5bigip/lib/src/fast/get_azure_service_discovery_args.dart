@@ -42,29 +42,18 @@ class GetAzureServiceDiscoveryArgs {
   /// [undetectableAction] Action to take when node cannot be detected,default `remove`.
   /// [updateInterval] Update interval for service discovery.
   GetAzureServiceDiscoveryArgs({
-    pulumi.Output<String>? addressRealm,
-    pulumi.Output<bool>? credentialUpdate,
-    pulumi.Output<String>? minimumMonitors,
-    pulumi.Output<int>? port,
-    required pulumi.Output<String> resourceGroup,
-    required pulumi.Output<String> subscriptionId,
-    pulumi.Output<String>? tagKey,
-    pulumi.Output<String>? tagValue,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? undetectableAction,
-    pulumi.Output<String>? updateInterval,
-  }) :
-      addressRealm = pulumi.Input.asOptionalInput<String>(addressRealm),
-      credentialUpdate = pulumi.Input.asOptionalInput<bool>(credentialUpdate),
-      minimumMonitors = pulumi.Input.asOptionalInput<String>(minimumMonitors),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId),
-      tagKey = pulumi.Input.asOptionalInput<String>(tagKey),
-      tagValue = pulumi.Input.asOptionalInput<String>(tagValue),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      undetectableAction = pulumi.Input.asOptionalInput<String>(undetectableAction),
-      updateInterval = pulumi.Input.asOptionalInput<String>(updateInterval);
+    this.addressRealm,
+    this.credentialUpdate,
+    this.minimumMonitors,
+    this.port,
+    required this.resourceGroup,
+    required this.subscriptionId,
+    this.tagKey,
+    this.tagValue,
+    this.type,
+    this.undetectableAction,
+    this.updateInterval,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class GetAzureServiceDiscoveryArgs {
 
   factory GetAzureServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : pulumi.Output.create<String>(map['addressRealm'] as String),
-      credentialUpdate: map['credentialUpdate'] == null ? null : pulumi.Output.create<bool>(map['credentialUpdate'] as bool),
-      minimumMonitors: map['minimumMonitors'] == null ? null : pulumi.Output.create<String>(map['minimumMonitors'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
-      tagKey: map['tagKey'] == null ? null : pulumi.Output.create<String>(map['tagKey'] as String),
-      tagValue: map['tagValue'] == null ? null : pulumi.Output.create<String>(map['tagValue'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      undetectableAction: map['undetectableAction'] == null ? null : pulumi.Output.create<String>(map['undetectableAction'] as String),
-      updateInterval: map['updateInterval'] == null ? null : pulumi.Output.create<String>(map['updateInterval'] as String),
+      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm'] as String).input(),
+      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate'] as bool).input(),
+      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction'] as String).input(),
+      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval'] as String).input(),
     );
   }
 }

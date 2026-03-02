@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a gateway resource.
 class ManagedGatewayPropertiesResponse {
   /// ComputerName of the gateway to be monitored.
-  final String? computerName;
+  final pulumi.Input<String>? computerName;
   /// The connection status of the gateway resource.
-  final String connectionStatus;
+  final pulumi.Input<String> connectionStatus;
   /// The domain name associated with the gateway to be monitored.
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// The health status of the gateway resource.
-  final String healthStatus;
+  final pulumi.Input<String> healthStatus;
   /// Install type of gateway resource.
-  final String installType;
+  final pulumi.Input<String> installType;
   /// The management server endpoint to which the gateway is directed.
-  final String managementServerEndpoint;
-  final String provisioningState;
+  final pulumi.Input<String> managementServerEndpoint;
+  final pulumi.Input<String> provisioningState;
   /// ArmId of the gateway to be monitored.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Location of the gateway to be monitored.
-  final String? resourceLocation;
+  final pulumi.Input<String>? resourceLocation;
   /// The version of the gateway resource.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [ManagedGatewayPropertiesResponse].
   /// [computerName] ComputerName of the gateway to be monitored.
@@ -64,16 +65,16 @@ class ManagedGatewayPropertiesResponse {
 
   factory ManagedGatewayPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedGatewayPropertiesResponse(
-      computerName: map['computerName'] == null ? null : map['computerName'] as String,
-      connectionStatus: map['connectionStatus'] as String,
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      healthStatus: map['healthStatus'] as String,
-      installType: map['installType'] as String,
-      managementServerEndpoint: map['managementServerEndpoint'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceLocation: map['resourceLocation'] == null ? null : map['resourceLocation'] as String,
-      version: map['version'] as String,
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      connectionStatus: (map['connectionStatus'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      healthStatus: (map['healthStatus'] as String).input(),
+      installType: (map['installType'] as String).input(),
+      managementServerEndpoint: (map['managementServerEndpoint'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceLocation: map['resourceLocation'] == null ? null : (map['resourceLocation'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

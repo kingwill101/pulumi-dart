@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceNodeConfig {
   /// Number of CPUs per node.
-  final int cpuCount;
+  final pulumi.Input<int> cpuCount;
   /// Memory size in Mebibytes for each memcache node.
-  final int memorySizeMb;
+  final pulumi.Input<int> memorySizeMb;
 
   /// Creates a new [InstanceNodeConfig].
   /// [cpuCount] Number of CPUs per node.
@@ -24,8 +25,8 @@ class InstanceNodeConfig {
 
   factory InstanceNodeConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNodeConfig(
-      cpuCount: map['cpuCount'] as int,
-      memorySizeMb: map['memorySizeMb'] as int,
+      cpuCount: (map['cpuCount'] as int).input(),
+      memorySizeMb: (map['memorySizeMb'] as int).input(),
     );
   }
 }

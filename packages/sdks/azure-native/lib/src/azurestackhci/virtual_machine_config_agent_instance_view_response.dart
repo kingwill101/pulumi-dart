@@ -6,9 +6,9 @@ import 'instance_view_status_response.dart';
 /// The instance view of the VM Config Agent running on the virtual machine.
 class VirtualMachineConfigAgentInstanceViewResponse {
   /// The resource status information.
-  final List<InstanceViewStatusResponse>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
   /// The VM Config Agent full version.
-  final String? vmConfigAgentVersion;
+  final pulumi.Input<String>? vmConfigAgentVersion;
 
   /// Creates a new [VirtualMachineConfigAgentInstanceViewResponse].
   /// [statuses] The resource status information.
@@ -20,15 +20,15 @@ class VirtualMachineConfigAgentInstanceViewResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statuses': ?statuses == null ? null : pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(statuses!, (value) => value.toMap()),
+      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmConfigAgentVersion': ?vmConfigAgentVersion,
     };
   }
 
   factory VirtualMachineConfigAgentInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfigAgentInstanceViewResponse(
-      statuses: map['statuses'] == null ? null : pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmConfigAgentVersion: map['vmConfigAgentVersion'] == null ? null : map['vmConfigAgentVersion'] as String,
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmConfigAgentVersion: map['vmConfigAgentVersion'] == null ? null : (map['vmConfigAgentVersion'] as String).input(),
     );
   }
 }

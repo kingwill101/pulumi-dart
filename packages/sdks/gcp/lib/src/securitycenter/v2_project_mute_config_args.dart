@@ -33,19 +33,13 @@ class V2ProjectMuteConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of the mute config.
   V2ProjectMuteConfigArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> filter,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> muteConfigId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asInput<String>(filter),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      muteConfigId = pulumi.Input.asInput<String>(muteConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asInput<String>(type);
+    this.description,
+    required this.filter,
+    this.location,
+    required this.muteConfigId,
+    this.project,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class V2ProjectMuteConfigArgs {
 
   factory V2ProjectMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2ProjectMuteConfigArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      muteConfigId: pulumi.Output.create<String>(map['muteConfigId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: (map['filter'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      muteConfigId: (map['muteConfigId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

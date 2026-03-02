@@ -28,19 +28,13 @@ class SchemaState {
   /// [owner] The ROLE who owns the schema.
   /// [policies] Can be specified multiple times for each policy.  Each
   SchemaState({
-    pulumi.Output<String>? database,
-    pulumi.Output<bool>? dropCascade,
-    pulumi.Output<bool>? ifNotExists,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? owner,
-    pulumi.Output<List<SchemaPolicy>>? policies,
-  }) :
-      database = pulumi.Input.asOptionalInput<String>(database),
-      dropCascade = pulumi.Input.asOptionalInput<bool>(dropCascade),
-      ifNotExists = pulumi.Input.asOptionalInput<bool>(ifNotExists),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      policies = pulumi.Input.asOptionalInput<List<SchemaPolicy>>(policies);
+    this.database,
+    this.dropCascade,
+    this.ifNotExists,
+    this.name,
+    this.owner,
+    this.policies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      dropCascade: map['dropCascade'] == null ? null : pulumi.Output.create<bool>(map['dropCascade'] as bool),
-      ifNotExists: map['ifNotExists'] == null ? null : pulumi.Output.create<bool>(map['ifNotExists'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      policies: map['policies'] == null ? null : pulumi.Output.create<List<SchemaPolicy>>(pulumi.Input.decodeList<SchemaPolicy>(map['policies'], (value) => SchemaPolicy.fromMap((value as Map).cast<String, dynamic>()))),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
+      ifNotExists: map['ifNotExists'] == null ? null : (map['ifNotExists'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<SchemaPolicy>(map['policies'], (value) => SchemaPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

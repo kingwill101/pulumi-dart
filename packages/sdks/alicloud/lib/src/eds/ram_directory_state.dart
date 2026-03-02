@@ -25,19 +25,13 @@ class RamDirectoryState {
   /// [status] The status of directory.
   /// [vswitchIds] List of VSwitch IDs in the directory.
   RamDirectoryState({
-    pulumi.Output<String>? desktopAccessType,
-    pulumi.Output<bool>? enableAdminAccess,
-    pulumi.Output<bool>? enableInternetAccess,
-    pulumi.Output<String>? ramDirectoryName,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? vswitchIds,
-  }) :
-      desktopAccessType = pulumi.Input.asOptionalInput<String>(desktopAccessType),
-      enableAdminAccess = pulumi.Input.asOptionalInput<bool>(enableAdminAccess),
-      enableInternetAccess = pulumi.Input.asOptionalInput<bool>(enableInternetAccess),
-      ramDirectoryName = pulumi.Input.asOptionalInput<String>(ramDirectoryName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vswitchIds = pulumi.Input.asOptionalInput<List<String>>(vswitchIds);
+    this.desktopAccessType,
+    this.enableAdminAccess,
+    this.enableInternetAccess,
+    this.ramDirectoryName,
+    this.status,
+    this.vswitchIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class RamDirectoryState {
 
   factory RamDirectoryState.fromMap(Map<String, dynamic> map) {
     return RamDirectoryState(
-      desktopAccessType: map['desktopAccessType'] == null ? null : pulumi.Output.create<String>(map['desktopAccessType'] as String),
-      enableAdminAccess: map['enableAdminAccess'] == null ? null : pulumi.Output.create<bool>(map['enableAdminAccess'] as bool),
-      enableInternetAccess: map['enableInternetAccess'] == null ? null : pulumi.Output.create<bool>(map['enableInternetAccess'] as bool),
-      ramDirectoryName: map['ramDirectoryName'] == null ? null : pulumi.Output.create<String>(map['ramDirectoryName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vswitchIds: map['vswitchIds'] == null ? null : pulumi.Output.create<List<String>>((map['vswitchIds'] as List).cast<String>()),
+      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType'] as String).input(),
+      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess'] as bool).input(),
+      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess'] as bool).input(),
+      ramDirectoryName: map['ramDirectoryName'] == null ? null : (map['ramDirectoryName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventGridTopicInputMappingFields {
   /// Specifies the data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final String? dataVersion;
+  final pulumi.Input<String>? dataVersion;
   /// Specifies the event time of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final String? eventTime;
+  final pulumi.Input<String>? eventTime;
   /// Specifies the event type of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final String? eventType;
+  final pulumi.Input<String>? eventType;
   /// Specifies the id of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the subject of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final String? subject;
+  final pulumi.Input<String>? subject;
   /// Specifies the topic of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final String? topic;
+  final pulumi.Input<String>? topic;
 
   /// Creates a new [EventGridTopicInputMappingFields].
   /// [dataVersion] Specifies the data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
@@ -44,12 +45,12 @@ class EventGridTopicInputMappingFields {
 
   factory EventGridTopicInputMappingFields.fromMap(Map<String, dynamic> map) {
     return EventGridTopicInputMappingFields(
-      dataVersion: map['dataVersion'] == null ? null : map['dataVersion'] as String,
-      eventTime: map['eventTime'] == null ? null : map['eventTime'] as String,
-      eventType: map['eventType'] == null ? null : map['eventType'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      subject: map['subject'] == null ? null : map['subject'] as String,
-      topic: map['topic'] == null ? null : map['topic'] as String,
+      dataVersion: map['dataVersion'] == null ? null : (map['dataVersion'] as String).input(),
+      eventTime: map['eventTime'] == null ? null : (map['eventTime'] as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

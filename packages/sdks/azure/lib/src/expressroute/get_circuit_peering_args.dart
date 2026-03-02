@@ -19,13 +19,10 @@ class GetCircuitPeeringArgs {
   /// [peeringType] The type of the ExpressRoute Circuit Peering. Acceptable values include `AzurePrivatePeering`, `AzurePublicPeering` and `MicrosoftPeering`.
   /// [resourceGroupName] The name of the resource group in which to create the Express Route Circuit Peering. Changing this forces a new resource to be created.
   GetCircuitPeeringArgs({
-    required pulumi.Output<String> expressRouteCircuitName,
-    required pulumi.Output<String> peeringType,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expressRouteCircuitName = pulumi.Input.asInput<String>(expressRouteCircuitName),
-      peeringType = pulumi.Input.asInput<String>(peeringType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.expressRouteCircuitName,
+    required this.peeringType,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCircuitPeeringArgs {
 
   factory GetCircuitPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetCircuitPeeringArgs(
-      expressRouteCircuitName: pulumi.Output.create<String>(map['expressRouteCircuitName'] as String),
-      peeringType: pulumi.Output.create<String>(map['peeringType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expressRouteCircuitName: (map['expressRouteCircuitName'] as String).input(),
+      peeringType: (map['peeringType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

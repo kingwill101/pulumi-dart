@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceAccelerator {
   /// The type of an accelator for a CDF instance.
   /// Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
-  final String acceleratorType;
+  final pulumi.Input<String> acceleratorType;
   /// The type of an accelator for a CDF instance.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [InstanceAccelerator].
   /// [acceleratorType] The type of an accelator for a CDF instance.
@@ -26,8 +27,8 @@ class InstanceAccelerator {
 
   factory InstanceAccelerator.fromMap(Map<String, dynamic> map) {
     return InstanceAccelerator(
-      acceleratorType: map['acceleratorType'] as String,
-      state: map['state'] as String,
+      acceleratorType: (map['acceleratorType'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

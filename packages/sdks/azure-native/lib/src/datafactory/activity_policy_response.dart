@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Execution policy for an activity.
 class ActivityPolicyResponse {
   /// Maximum ordinary retry attempts. Default is 0. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic retry;
+  final pulumi.Input<dynamic>? retry;
   /// Interval between each retry attempt (in seconds). The default is 30 sec.
-  final int? retryIntervalInSeconds;
+  final pulumi.Input<int>? retryIntervalInSeconds;
   /// When set to true, Input from activity is considered as secure and will not be logged to monitoring.
-  final bool? secureInput;
+  final pulumi.Input<bool>? secureInput;
   /// When set to true, Output from activity is considered as secure and will not be logged to monitoring.
-  final bool? secureOutput;
+  final pulumi.Input<bool>? secureOutput;
   /// Specifies the timeout for the activity to run. The default timeout is 7 days. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic timeout;
+  final pulumi.Input<dynamic>? timeout;
 
   /// Creates a new [ActivityPolicyResponse].
   /// [retry] Maximum ordinary retry attempts. Default is 0. Type: integer (or Expression with resultType integer), minimum: 0.
@@ -40,11 +41,11 @@ class ActivityPolicyResponse {
 
   factory ActivityPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ActivityPolicyResponse(
-      retry: map['retry'] == null ? null : map['retry'],
-      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : map['retryIntervalInSeconds'] as int,
-      secureInput: map['secureInput'] == null ? null : map['secureInput'] as bool,
-      secureOutput: map['secureOutput'] == null ? null : map['secureOutput'] as bool,
-      timeout: map['timeout'] == null ? null : map['timeout'],
+      retry: map['retry'] == null ? null : (map['retry']).input(),
+      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds'] as int).input(),
+      secureInput: map['secureInput'] == null ? null : (map['secureInput'] as bool).input(),
+      secureOutput: map['secureOutput'] == null ? null : (map['secureOutput'] as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']).input(),
     );
   }
 }

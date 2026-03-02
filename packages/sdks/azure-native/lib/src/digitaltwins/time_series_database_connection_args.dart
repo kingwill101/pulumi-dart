@@ -23,15 +23,11 @@ class TimeSeriesDatabaseConnectionArgs {
   /// [resourceName] The name of the DigitalTwinsInstance.
   /// [timeSeriesDatabaseConnectionName] Name of time series database connection.
   TimeSeriesDatabaseConnectionArgs({
-    pulumi.Output<AzureDataExplorerConnectionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? timeSeriesDatabaseConnectionName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<AzureDataExplorerConnectionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      timeSeriesDatabaseConnectionName = pulumi.Input.asOptionalInput<String>(timeSeriesDatabaseConnectionName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.timeSeriesDatabaseConnectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TimeSeriesDatabaseConnectionArgs {
 
   factory TimeSeriesDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return TimeSeriesDatabaseConnectionArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<AzureDataExplorerConnectionProperties>(AzureDataExplorerConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      timeSeriesDatabaseConnectionName: map['timeSeriesDatabaseConnectionName'] == null ? null : pulumi.Output.create<String>(map['timeSeriesDatabaseConnectionName'] as String),
+      properties: map['properties'] == null ? null : (AzureDataExplorerConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      timeSeriesDatabaseConnectionName: map['timeSeriesDatabaseConnectionName'] == null ? null : (map['timeSeriesDatabaseConnectionName'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ListBuildServiceBuilderDeploymentsArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   ListBuildServiceBuilderDeploymentsArgs({
-    required pulumi.Output<String> buildServiceName,
-    required pulumi.Output<String> builderName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      buildServiceName = pulumi.Input.asInput<String>(buildServiceName),
-      builderName = pulumi.Input.asInput<String>(builderName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.buildServiceName,
+    required this.builderName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListBuildServiceBuilderDeploymentsArgs {
 
   factory ListBuildServiceBuilderDeploymentsArgs.fromMap(Map<String, dynamic> map) {
     return ListBuildServiceBuilderDeploymentsArgs(
-      buildServiceName: pulumi.Output.create<String>(map['buildServiceName'] as String),
-      builderName: pulumi.Output.create<String>(map['builderName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      buildServiceName: (map['buildServiceName'] as String).input(),
+      builderName: (map['builderName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetRoleArgs {
   /// [name] Friendly IAM role name to match.
   /// [tags] Tags attached to the role.
   GetRoleArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRoleArgs {
 
   factory GetRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

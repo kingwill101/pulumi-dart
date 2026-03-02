@@ -90,25 +90,16 @@ class BigIqAs3State {
   /// [ignoreMetadata] Set True if you want to ignore metadata changes during update. By default it is set to `true`
   /// [tenantList] Name of Tenant
   BigIqAs3State({
-    pulumi.Output<String>? as3Json,
-    pulumi.Output<String>? bigiqAddress,
-    pulumi.Output<String>? bigiqLoginRef,
-    pulumi.Output<String>? bigiqPassword,
-    pulumi.Output<String>? bigiqPort,
-    pulumi.Output<bool>? bigiqTokenAuth,
-    pulumi.Output<String>? bigiqUser,
-    pulumi.Output<bool>? ignoreMetadata,
-    pulumi.Output<String>? tenantList,
-  }) :
-      as3Json = pulumi.Input.asOptionalInput<String>(as3Json),
-      bigiqAddress = pulumi.Input.asOptionalInput<String>(bigiqAddress),
-      bigiqLoginRef = pulumi.Input.asOptionalInput<String>(bigiqLoginRef),
-      bigiqPassword = pulumi.Input.asOptionalInput<String>(bigiqPassword),
-      bigiqPort = pulumi.Input.asOptionalInput<String>(bigiqPort),
-      bigiqTokenAuth = pulumi.Input.asOptionalInput<bool>(bigiqTokenAuth),
-      bigiqUser = pulumi.Input.asOptionalInput<String>(bigiqUser),
-      ignoreMetadata = pulumi.Input.asOptionalInput<bool>(ignoreMetadata),
-      tenantList = pulumi.Input.asOptionalInput<String>(tenantList);
+    this.as3Json,
+    this.bigiqAddress,
+    this.bigiqLoginRef,
+    this.bigiqPassword,
+    this.bigiqPort,
+    this.bigiqTokenAuth,
+    this.bigiqUser,
+    this.ignoreMetadata,
+    this.tenantList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -126,15 +117,15 @@ class BigIqAs3State {
 
   factory BigIqAs3State.fromMap(Map<String, dynamic> map) {
     return BigIqAs3State(
-      as3Json: map['as3Json'] == null ? null : pulumi.Output.create<String>(map['as3Json'] as String),
-      bigiqAddress: map['bigiqAddress'] == null ? null : pulumi.Output.create<String>(map['bigiqAddress'] as String),
-      bigiqLoginRef: map['bigiqLoginRef'] == null ? null : pulumi.Output.create<String>(map['bigiqLoginRef'] as String),
-      bigiqPassword: map['bigiqPassword'] == null ? null : pulumi.Output.create<String>(map['bigiqPassword'] as String),
-      bigiqPort: map['bigiqPort'] == null ? null : pulumi.Output.create<String>(map['bigiqPort'] as String),
-      bigiqTokenAuth: map['bigiqTokenAuth'] == null ? null : pulumi.Output.create<bool>(map['bigiqTokenAuth'] as bool),
-      bigiqUser: map['bigiqUser'] == null ? null : pulumi.Output.create<String>(map['bigiqUser'] as String),
-      ignoreMetadata: map['ignoreMetadata'] == null ? null : pulumi.Output.create<bool>(map['ignoreMetadata'] as bool),
-      tenantList: map['tenantList'] == null ? null : pulumi.Output.create<String>(map['tenantList'] as String),
+      as3Json: map['as3Json'] == null ? null : (map['as3Json'] as String).input(),
+      bigiqAddress: map['bigiqAddress'] == null ? null : (map['bigiqAddress'] as String).input(),
+      bigiqLoginRef: map['bigiqLoginRef'] == null ? null : (map['bigiqLoginRef'] as String).input(),
+      bigiqPassword: map['bigiqPassword'] == null ? null : (map['bigiqPassword'] as String).input(),
+      bigiqPort: map['bigiqPort'] == null ? null : (map['bigiqPort'] as String).input(),
+      bigiqTokenAuth: map['bigiqTokenAuth'] == null ? null : (map['bigiqTokenAuth'] as bool).input(),
+      bigiqUser: map['bigiqUser'] == null ? null : (map['bigiqUser'] as String).input(),
+      ignoreMetadata: map['ignoreMetadata'] == null ? null : (map['ignoreMetadata'] as bool).input(),
+      tenantList: map['tenantList'] == null ? null : (map['tenantList'] as String).input(),
     );
   }
 }

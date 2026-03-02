@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// KeyVault secret object properties
 class KeyVaultSecretObject {
   /// KeyVault secret name.
-  final String name;
+  final pulumi.Input<String> name;
   /// KeyVault secret version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [KeyVaultSecretObject].
   /// [name] KeyVault secret name.
@@ -25,8 +26,8 @@ class KeyVaultSecretObject {
 
   factory KeyVaultSecretObject.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretObject(
-      name: map['name'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      name: (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

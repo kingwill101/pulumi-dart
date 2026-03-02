@@ -25,19 +25,13 @@ class SqlRoleAssignmentState {
   /// [roleDefinitionId] The resource ID of the Cosmos DB SQL Role Definition.
   /// [scope] The data plane resource path for which access is being granted through this Cosmos DB SQL Role Assignment. Changing this forces a new resource to be created.
   SqlRoleAssignmentState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<String>? scope,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.accountName,
+    this.name,
+    this.principalId,
+    this.resourceGroupName,
+    this.roleDefinitionId,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SqlRoleAssignmentState {
 
   factory SqlRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return SqlRoleAssignmentState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

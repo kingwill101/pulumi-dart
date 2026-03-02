@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AdapterPropertyOverrides of a cluster.
 class AdapterPropertyOverrides {
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final String? jumboPacket;
+  final pulumi.Input<String>? jumboPacket;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final String? networkDirect;
+  final pulumi.Input<String>? networkDirect;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
-  final String? networkDirectTechnology;
+  final pulumi.Input<String>? networkDirectTechnology;
 
   /// Creates a new [AdapterPropertyOverrides].
   /// [jumboPacket] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
@@ -30,9 +31,9 @@ class AdapterPropertyOverrides {
 
   factory AdapterPropertyOverrides.fromMap(Map<String, dynamic> map) {
     return AdapterPropertyOverrides(
-      jumboPacket: map['jumboPacket'] == null ? null : map['jumboPacket'] as String,
-      networkDirect: map['networkDirect'] == null ? null : map['networkDirect'] as String,
-      networkDirectTechnology: map['networkDirectTechnology'] == null ? null : map['networkDirectTechnology'] as String,
+      jumboPacket: map['jumboPacket'] == null ? null : (map['jumboPacket'] as String).input(),
+      networkDirect: map['networkDirect'] == null ? null : (map['networkDirect'] as String).input(),
+      networkDirectTechnology: map['networkDirectTechnology'] == null ? null : (map['networkDirectTechnology'] as String).input(),
     );
   }
 }

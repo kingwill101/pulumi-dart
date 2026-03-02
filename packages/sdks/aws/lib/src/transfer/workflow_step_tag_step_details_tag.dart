@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowStepTagStepDetailsTag {
-  final String key;
+  final pulumi.Input<String> key;
   /// The value that corresponds to the key.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [WorkflowStepTagStepDetailsTag].
   /// [key] Required.
@@ -23,8 +24,8 @@ class WorkflowStepTagStepDetailsTag {
 
   factory WorkflowStepTagStepDetailsTag.fromMap(Map<String, dynamic> map) {
     return WorkflowStepTagStepDetailsTag(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

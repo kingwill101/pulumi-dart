@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDesktopsDesktop {
   /// The number of CPUs.
-  final int cpu;
+  final pulumi.Input<int> cpu;
   /// The creation time of the Desktop.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The desktop id of the Desktop.
-  final String desktopId;
+  final pulumi.Input<String> desktopId;
   /// The desktop name of the Desktop.
-  final String desktopName;
+  final pulumi.Input<String> desktopName;
   /// The desktop type of the Desktop.
-  final String desktopType;
+  final pulumi.Input<String> desktopType;
   /// The directory id of the Desktop.
-  final String directoryId;
+  final pulumi.Input<String> directoryId;
   /// The desktop end user id of the Desktop.
-  final List<String> endUserIds;
+  final pulumi.Input<List<String>> endUserIds;
   /// The expired time of the Desktop.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The ID of the Desktop.
-  final String id;
+  final pulumi.Input<String> id;
   /// The image id of the Desktop.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// The memory of the Desktop.
-  final String memory;
+  final pulumi.Input<String> memory;
   /// The network interface id of the Desktop.
-  final String networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
   /// The payment type of the Desktop.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The policy group id of the Desktop.
-  final String policyGroupId;
+  final pulumi.Input<String> policyGroupId;
   /// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The system disk size of the Desktop.
-  final int systemDiskSize;
+  final pulumi.Input<int> systemDiskSize;
 
   /// Creates a new [GetDesktopsDesktop].
   /// [cpu] The number of CPUs.
@@ -94,22 +95,22 @@ class GetDesktopsDesktop {
 
   factory GetDesktopsDesktop.fromMap(Map<String, dynamic> map) {
     return GetDesktopsDesktop(
-      cpu: map['cpu'] as int,
-      createTime: map['createTime'] as String,
-      desktopId: map['desktopId'] as String,
-      desktopName: map['desktopName'] as String,
-      desktopType: map['desktopType'] as String,
-      directoryId: map['directoryId'] as String,
-      endUserIds: (map['endUserIds'] as List).cast<String>(),
-      expiredTime: map['expiredTime'] as String,
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      memory: map['memory'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      paymentType: map['paymentType'] as String,
-      policyGroupId: map['policyGroupId'] as String,
-      status: map['status'] as String,
-      systemDiskSize: map['systemDiskSize'] as int,
+      cpu: (map['cpu'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      desktopId: (map['desktopId'] as String).input(),
+      desktopName: (map['desktopName'] as String).input(),
+      desktopType: (map['desktopType'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      endUserIds: ((map['endUserIds'] as List).cast<String>()).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      memory: (map['memory'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      policyGroupId: (map['policyGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      systemDiskSize: (map['systemDiskSize'] as int).input(),
     );
   }
 }

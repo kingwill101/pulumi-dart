@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataFlowsFlow {
   /// The time when Fileset was created. Executing the ISO8601 standard means that the return format is: 'yyyy-MM-ddTHH:mm:ssZ'.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Data Flow.
-  final String dataFlowId;
+  final pulumi.Input<String> dataFlowId;
   /// The Description of data flow.
-  final String description;
+  final pulumi.Input<String> description;
   /// Error message.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The ID of the file system.
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
   /// The path of Fileset in the CPFS file system.
-  final String fileSystemPath;
+  final pulumi.Input<String> fileSystemPath;
   /// Description of automatic update.
-  final String fsetDescription;
+  final pulumi.Input<String> fsetDescription;
   /// The ID of the Fileset.
-  final String fsetId;
+  final pulumi.Input<String> fsetId;
   /// The resource ID of the data flow. The value formats as `<file_system_id>:<data_flow_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The security protection type of the source storage.
-  final String sourceSecurityType;
+  final pulumi.Input<String> sourceSecurityType;
   /// The access path of the source store. Format: `<storage type>://<path>`.
-  final String sourceStorage;
+  final pulumi.Input<String> sourceStorage;
   /// The status of the Data flow.
-  final String status;
+  final pulumi.Input<String> status;
   /// The maximum transmission bandwidth of data flow, unit: `MB/s`.
-  final int throughput;
+  final pulumi.Input<int> throughput;
 
   /// Creates a new [GetDataFlowsFlow].
   /// [createTime] The time when Fileset was created. Executing the ISO8601 standard means that the return format is: 'yyyy-MM-ddTHH:mm:ssZ'.
@@ -79,19 +80,19 @@ class GetDataFlowsFlow {
 
   factory GetDataFlowsFlow.fromMap(Map<String, dynamic> map) {
     return GetDataFlowsFlow(
-      createTime: map['createTime'] as String,
-      dataFlowId: map['dataFlowId'] as String,
-      description: map['description'] as String,
-      errorMessage: map['errorMessage'] as String,
-      fileSystemId: map['fileSystemId'] as String,
-      fileSystemPath: map['fileSystemPath'] as String,
-      fsetDescription: map['fsetDescription'] as String,
-      fsetId: map['fsetId'] as String,
-      id: map['id'] as String,
-      sourceSecurityType: map['sourceSecurityType'] as String,
-      sourceStorage: map['sourceStorage'] as String,
-      status: map['status'] as String,
-      throughput: map['throughput'] as int,
+      createTime: (map['createTime'] as String).input(),
+      dataFlowId: (map['dataFlowId'] as String).input(),
+      description: (map['description'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      fileSystemPath: (map['fileSystemPath'] as String).input(),
+      fsetDescription: (map['fsetDescription'] as String).input(),
+      fsetId: (map['fsetId'] as String).input(),
+      id: (map['id'] as String).input(),
+      sourceSecurityType: (map['sourceSecurityType'] as String).input(),
+      sourceStorage: (map['sourceStorage'] as String).input(),
+      status: (map['status'] as String).input(),
+      throughput: (map['throughput'] as int).input(),
     );
   }
 }

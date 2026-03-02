@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes related incident information for the bookmark
 class IncidentInfo {
   /// Incident Id
-  final String? incidentId;
+  final pulumi.Input<String>? incidentId;
   /// Relation Name
-  final String? relationName;
+  final pulumi.Input<String>? relationName;
   /// The severity of the incident
-  final String? severity;
+  final pulumi.Input<String>? severity;
   /// The title of the incident
-  final String? title;
+  final pulumi.Input<String>? title;
 
   /// Creates a new [IncidentInfo].
   /// [incidentId] Incident Id
@@ -35,10 +36,10 @@ class IncidentInfo {
 
   factory IncidentInfo.fromMap(Map<String, dynamic> map) {
     return IncidentInfo(
-      incidentId: map['incidentId'] == null ? null : map['incidentId'] as String,
-      relationName: map['relationName'] == null ? null : map['relationName'] as String,
-      severity: map['severity'] == null ? null : map['severity'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
+      incidentId: map['incidentId'] == null ? null : (map['incidentId'] as String).input(),
+      relationName: map['relationName'] == null ? null : (map['relationName'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

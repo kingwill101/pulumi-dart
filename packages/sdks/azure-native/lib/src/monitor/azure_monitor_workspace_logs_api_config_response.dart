@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schema_map_response.dart';
 
 /// Azure Monitor Workspace Logs Api configurations.
 class AzureMonitorWorkspaceLogsApiConfigResponse {
   /// Data collection endpoint ingestion url.
-  final String dataCollectionEndpointUrl;
+  final pulumi.Input<String> dataCollectionEndpointUrl;
   /// Data Collection Rule (DCR) immutable id.
-  final String dataCollectionRule;
+  final pulumi.Input<String> dataCollectionRule;
   /// The schema mapping for incoming data.
-  final SchemaMapResponse schema;
+  final pulumi.Input<SchemaMapResponse> schema;
   /// Stream name in destination. Azure Monitor stream is related to the destination table.
-  final String stream;
+  final pulumi.Input<String> stream;
 
   /// Creates a new [AzureMonitorWorkspaceLogsApiConfigResponse].
   /// [dataCollectionEndpointUrl] Data collection endpoint ingestion url.
@@ -29,17 +30,17 @@ class AzureMonitorWorkspaceLogsApiConfigResponse {
     return <String, dynamic>{
       'dataCollectionEndpointUrl': dataCollectionEndpointUrl,
       'dataCollectionRule': dataCollectionRule,
-      'schema': schema.toMap(),
+      'schema': pulumi.Input.mapInputValue<SchemaMapResponse, Map<String, dynamic>>(schema, (value) => value.toMap()),
       'stream': stream,
     };
   }
 
   factory AzureMonitorWorkspaceLogsApiConfigResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceLogsApiConfigResponse(
-      dataCollectionEndpointUrl: map['dataCollectionEndpointUrl'] as String,
-      dataCollectionRule: map['dataCollectionRule'] as String,
-      schema: SchemaMapResponse.fromMap((map['schema'] as Map).cast<String, dynamic>()),
-      stream: map['stream'] as String,
+      dataCollectionEndpointUrl: (map['dataCollectionEndpointUrl'] as String).input(),
+      dataCollectionRule: (map['dataCollectionRule'] as String).input(),
+      schema: (SchemaMapResponse.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      stream: (map['stream'] as String).input(),
     );
   }
 }

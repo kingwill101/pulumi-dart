@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterControlPlaneDatabaseEncryption {
   /// The ARN of the AWS KMS key used to encrypt cluster secrets.
-  final String kmsKeyArn;
+  final pulumi.Input<String> kmsKeyArn;
 
   /// Creates a new [AwsClusterControlPlaneDatabaseEncryption].
   /// [kmsKeyArn] The ARN of the AWS KMS key used to encrypt cluster secrets.
@@ -19,7 +20,7 @@ class AwsClusterControlPlaneDatabaseEncryption {
 
   factory AwsClusterControlPlaneDatabaseEncryption.fromMap(Map<String, dynamic> map) {
     return AwsClusterControlPlaneDatabaseEncryption(
-      kmsKeyArn: map['kmsKeyArn'] as String,
+      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
     );
   }
 }

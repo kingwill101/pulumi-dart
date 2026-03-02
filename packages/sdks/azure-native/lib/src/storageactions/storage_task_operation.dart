@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an operation to be performed on the object
 class StorageTaskOperation {
   /// The operation to be performed on the object.
-  final String name;
+  final pulumi.Input<String> name;
   /// Action to be taken when the operation fails for a object.
-  final String? onFailure;
+  final pulumi.Input<String>? onFailure;
   /// Action to be taken when the operation is successful for a object.
-  final String? onSuccess;
+  final pulumi.Input<String>? onSuccess;
   /// Key-value parameters for the operation.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
 
   /// Creates a new [StorageTaskOperation].
   /// [name] The operation to be performed on the object.
@@ -35,10 +36,10 @@ class StorageTaskOperation {
 
   factory StorageTaskOperation.fromMap(Map<String, dynamic> map) {
     return StorageTaskOperation(
-      name: map['name'] as String,
-      onFailure: map['onFailure'] == null ? null : map['onFailure'] as String,
-      onSuccess: map['onSuccess'] == null ? null : map['onSuccess'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      name: (map['name'] as String).input(),
+      onFailure: map['onFailure'] == null ? null : (map['onFailure'] as String).input(),
+      onSuccess: map['onSuccess'] == null ? null : (map['onSuccess'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -6,25 +6,25 @@ import 'backup_file_info_response.dart';
 /// Information of backup set
 class BackupSetInfoResponse {
   /// Date and time that the backup operation finished
-  final String? backupFinishedDate;
+  final pulumi.Input<String>? backupFinishedDate;
   /// Id for the set of backup files
-  final String? backupSetId;
+  final pulumi.Input<String>? backupSetId;
   /// Date and time that the backup operation began
-  final String? backupStartDate;
+  final pulumi.Input<String>? backupStartDate;
   /// Enum of the different backup types
-  final String? backupType;
+  final pulumi.Input<String>? backupType;
   /// Name of the database to which the backup set belongs
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
   /// First log sequence number of the backup file
-  final String? firstLsn;
+  final pulumi.Input<String>? firstLsn;
   /// Whether the backup set is restored or not
-  final bool? isBackupRestored;
+  final pulumi.Input<bool>? isBackupRestored;
   /// Last log sequence number of the backup file
-  final String? lastLsn;
+  final pulumi.Input<String>? lastLsn;
   /// Last modified time of the backup file in share location
-  final String? lastModifiedTime;
+  final pulumi.Input<String>? lastModifiedTime;
   /// List of files in the backup set
-  final List<BackupFileInfoResponse>? listOfBackupFiles;
+  final pulumi.Input<List<BackupFileInfoResponse>>? listOfBackupFiles;
 
   /// Creates a new [BackupSetInfoResponse].
   /// [backupFinishedDate] Date and time that the backup operation finished
@@ -61,22 +61,22 @@ class BackupSetInfoResponse {
       'isBackupRestored': ?isBackupRestored,
       'lastLsn': ?lastLsn,
       'lastModifiedTime': ?lastModifiedTime,
-      'listOfBackupFiles': ?listOfBackupFiles == null ? null : pulumi.Input.encodeList<BackupFileInfoResponse, Map<String, dynamic>>(listOfBackupFiles!, (value) => value.toMap()),
+      'listOfBackupFiles': ?pulumi.Input.mapOptionalInputValue<List<BackupFileInfoResponse>, List<Map<String, dynamic>>>(listOfBackupFiles, (value) => pulumi.Input.encodeList<BackupFileInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BackupSetInfoResponse.fromMap(Map<String, dynamic> map) {
     return BackupSetInfoResponse(
-      backupFinishedDate: map['backupFinishedDate'] == null ? null : map['backupFinishedDate'] as String,
-      backupSetId: map['backupSetId'] == null ? null : map['backupSetId'] as String,
-      backupStartDate: map['backupStartDate'] == null ? null : map['backupStartDate'] as String,
-      backupType: map['backupType'] == null ? null : map['backupType'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      firstLsn: map['firstLsn'] == null ? null : map['firstLsn'] as String,
-      isBackupRestored: map['isBackupRestored'] == null ? null : map['isBackupRestored'] as bool,
-      lastLsn: map['lastLsn'] == null ? null : map['lastLsn'] as String,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
-      listOfBackupFiles: map['listOfBackupFiles'] == null ? null : pulumi.Input.decodeList<BackupFileInfoResponse>(map['listOfBackupFiles'], (value) => BackupFileInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      backupFinishedDate: map['backupFinishedDate'] == null ? null : (map['backupFinishedDate'] as String).input(),
+      backupSetId: map['backupSetId'] == null ? null : (map['backupSetId'] as String).input(),
+      backupStartDate: map['backupStartDate'] == null ? null : (map['backupStartDate'] as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      firstLsn: map['firstLsn'] == null ? null : (map['firstLsn'] as String).input(),
+      isBackupRestored: map['isBackupRestored'] == null ? null : (map['isBackupRestored'] as bool).input(),
+      lastLsn: map['lastLsn'] == null ? null : (map['lastLsn'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      listOfBackupFiles: map['listOfBackupFiles'] == null ? null : (pulumi.Input.decodeList<BackupFileInfoResponse>(map['listOfBackupFiles'], (value) => BackupFileInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

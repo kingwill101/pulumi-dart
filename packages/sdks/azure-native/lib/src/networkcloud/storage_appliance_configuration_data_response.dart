@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'administrative_credentials_response.dart';
 
 class StorageApplianceConfigurationDataResponse {
   /// The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
-  final AdministrativeCredentialsResponse adminCredentials;
+  final pulumi.Input<AdministrativeCredentialsResponse> adminCredentials;
   /// The slot that storage appliance is in the rack based on the BOM configuration.
-  final double rackSlot;
+  final pulumi.Input<double> rackSlot;
   /// The serial number of the appliance.
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
   /// The user-provided name for the storage appliance that will be created from this specification.
-  final String? storageApplianceName;
+  final pulumi.Input<String>? storageApplianceName;
 
   /// Creates a new [StorageApplianceConfigurationDataResponse].
   /// [adminCredentials] The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
@@ -26,7 +27,7 @@ class StorageApplianceConfigurationDataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminCredentials': adminCredentials.toMap(),
+      'adminCredentials': pulumi.Input.mapInputValue<AdministrativeCredentialsResponse, Map<String, dynamic>>(adminCredentials, (value) => value.toMap()),
       'rackSlot': rackSlot,
       'serialNumber': serialNumber,
       'storageApplianceName': ?storageApplianceName,
@@ -35,10 +36,10 @@ class StorageApplianceConfigurationDataResponse {
 
   factory StorageApplianceConfigurationDataResponse.fromMap(Map<String, dynamic> map) {
     return StorageApplianceConfigurationDataResponse(
-      adminCredentials: AdministrativeCredentialsResponse.fromMap((map['adminCredentials'] as Map).cast<String, dynamic>()),
-      rackSlot: map['rackSlot'] as double,
-      serialNumber: map['serialNumber'] as String,
-      storageApplianceName: map['storageApplianceName'] == null ? null : map['storageApplianceName'] as String,
+      adminCredentials: (AdministrativeCredentialsResponse.fromMap((map['adminCredentials'] as Map).cast<String, dynamic>())).input(),
+      rackSlot: (map['rackSlot'] as double).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      storageApplianceName: map['storageApplianceName'] == null ? null : (map['storageApplianceName'] as String).input(),
     );
   }
 }

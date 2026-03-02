@@ -19,15 +19,11 @@ class AlarmContactGroupState {
   /// [describe] The description of the alert group.
   /// [enableSubscribed] Whether to open weekly subscription.
   AlarmContactGroupState({
-    pulumi.Output<String>? alarmContactGroupName,
-    pulumi.Output<List<String>>? contacts,
-    pulumi.Output<String>? describe,
-    pulumi.Output<bool>? enableSubscribed,
-  }) :
-      alarmContactGroupName = pulumi.Input.asOptionalInput<String>(alarmContactGroupName),
-      contacts = pulumi.Input.asOptionalInput<List<String>>(contacts),
-      describe = pulumi.Input.asOptionalInput<String>(describe),
-      enableSubscribed = pulumi.Input.asOptionalInput<bool>(enableSubscribed);
+    this.alarmContactGroupName,
+    this.contacts,
+    this.describe,
+    this.enableSubscribed,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AlarmContactGroupState {
 
   factory AlarmContactGroupState.fromMap(Map<String, dynamic> map) {
     return AlarmContactGroupState(
-      alarmContactGroupName: map['alarmContactGroupName'] == null ? null : pulumi.Output.create<String>(map['alarmContactGroupName'] as String),
-      contacts: map['contacts'] == null ? null : pulumi.Output.create<List<String>>((map['contacts'] as List).cast<String>()),
-      describe: map['describe'] == null ? null : pulumi.Output.create<String>(map['describe'] as String),
-      enableSubscribed: map['enableSubscribed'] == null ? null : pulumi.Output.create<bool>(map['enableSubscribed'] as bool),
+      alarmContactGroupName: map['alarmContactGroupName'] == null ? null : (map['alarmContactGroupName'] as String).input(),
+      contacts: map['contacts'] == null ? null : ((map['contacts'] as List).cast<String>()).input(),
+      describe: map['describe'] == null ? null : (map['describe'] as String).input(),
+      enableSubscribed: map['enableSubscribed'] == null ? null : (map['enableSubscribed'] as bool).input(),
     );
   }
 }

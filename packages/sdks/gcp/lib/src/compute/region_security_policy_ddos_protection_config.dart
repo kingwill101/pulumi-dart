@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionSecurityPolicyDdosProtectionConfig {
   /// Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
@@ -7,7 +8,7 @@ class RegionSecurityPolicyDdosProtectionConfig {
   /// - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
   /// - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
   /// Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
-  final String ddosProtection;
+  final pulumi.Input<String> ddosProtection;
 
   /// Creates a new [RegionSecurityPolicyDdosProtectionConfig].
   /// [ddosProtection] Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
@@ -23,7 +24,7 @@ class RegionSecurityPolicyDdosProtectionConfig {
 
   factory RegionSecurityPolicyDdosProtectionConfig.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyDdosProtectionConfig(
-      ddosProtection: map['ddosProtection'] as String,
+      ddosProtection: (map['ddosProtection'] as String).input(),
     );
   }
 }

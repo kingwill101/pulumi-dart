@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'int_comparison_filter_value_comparison.dart';
 
 /// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
 class IntComparisonFilter {
   /// Integer compare value to be used
-  final String value;
+  final pulumi.Input<String> value;
   /// Relation between source value and compare value
-  final IntComparisonFilterValueComparison valueComparison;
+  final pulumi.Input<IntComparisonFilterValueComparison> valueComparison;
 
   /// Creates a new [IntComparisonFilter].
   /// [value] Integer compare value to be used
@@ -20,14 +21,14 @@ class IntComparisonFilter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'value': value,
-      'valueComparison': valueComparison.value,
+      'valueComparison': pulumi.Input.mapInputValue<IntComparisonFilterValueComparison, String>(valueComparison, (value) => value.value),
     };
   }
 
   factory IntComparisonFilter.fromMap(Map<String, dynamic> map) {
     return IntComparisonFilter(
-      value: map['value'] as String,
-      valueComparison: IntComparisonFilterValueComparison.fromValue(map['valueComparison'] as String),
+      value: (map['value'] as String).input(),
+      valueComparison: (IntComparisonFilterValueComparison.fromValue(map['valueComparison'] as String)).input(),
     );
   }
 }

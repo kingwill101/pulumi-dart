@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionBackendServiceFailoverPolicy {
   /// On failover or failback, this field indicates whether connection drain
@@ -10,12 +11,12 @@ class GetRegionBackendServiceFailoverPolicy {
   /// of 10 min.
   /// This can be set to true only if the protocol is TCP.
   /// The default is false.
-  final bool disableConnectionDrainOnFailover;
+  final pulumi.Input<bool> disableConnectionDrainOnFailover;
   /// This option is used only when no healthy VMs are detected in the primary
   /// and backup instance groups. When set to true, traffic is dropped. When
   /// set to false, new connections are sent across all VMs in the primary group.
   /// The default is false.
-  final bool dropTrafficIfUnhealthy;
+  final pulumi.Input<bool> dropTrafficIfUnhealthy;
   /// The value of the field must be in [0, 1]. If the ratio of the healthy
   /// VMs in the primary backend is at or below this number, traffic arriving
   /// at the load-balanced IP will be directed to the failover backend.
@@ -24,7 +25,7 @@ class GetRegionBackendServiceFailoverPolicy {
   /// backend in the "force" mode, where traffic will be spread to the healthy
   /// VMs with the best effort, or to all VMs when no VM is healthy.
   /// This field is only used with l4 load balancing.
-  final double failoverRatio;
+  final pulumi.Input<double> failoverRatio;
 
   /// Creates a new [GetRegionBackendServiceFailoverPolicy].
   /// [disableConnectionDrainOnFailover] On failover or failback, this field indicates whether connection drain
@@ -46,9 +47,9 @@ class GetRegionBackendServiceFailoverPolicy {
 
   factory GetRegionBackendServiceFailoverPolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceFailoverPolicy(
-      disableConnectionDrainOnFailover: map['disableConnectionDrainOnFailover'] as bool,
-      dropTrafficIfUnhealthy: map['dropTrafficIfUnhealthy'] as bool,
-      failoverRatio: map['failoverRatio'] as double,
+      disableConnectionDrainOnFailover: (map['disableConnectionDrainOnFailover'] as bool).input(),
+      dropTrafficIfUnhealthy: (map['dropTrafficIfUnhealthy'] as bool).input(),
+      failoverRatio: (map['failoverRatio'] as double).input(),
     );
   }
 }

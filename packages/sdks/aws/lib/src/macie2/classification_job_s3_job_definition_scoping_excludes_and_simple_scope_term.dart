@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm {
   /// The operator to use in a condition. Valid values are: `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`
-  final String? comparator;
+  final pulumi.Input<String>? comparator;
   /// The object property to use in the condition.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// An array that lists the values to use in the condition.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm].
   /// [comparator] The operator to use in a condition. Valid values are: `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`
@@ -29,9 +30,9 @@ class ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm {
 
   factory ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm(
-      comparator: map['comparator'] == null ? null : map['comparator'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      comparator: map['comparator'] == null ? null : (map['comparator'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

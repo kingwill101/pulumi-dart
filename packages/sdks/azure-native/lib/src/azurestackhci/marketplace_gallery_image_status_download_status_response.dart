@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The download status of the gallery image
 class MarketplaceGalleryImageStatusDownloadStatusResponse {
   /// The downloaded sized of the image in MB
-  final double? downloadSizeInMB;
+  final pulumi.Input<double>? downloadSizeInMB;
 
   /// Creates a new [MarketplaceGalleryImageStatusDownloadStatusResponse].
   /// [downloadSizeInMB] The downloaded sized of the image in MB
@@ -20,7 +21,7 @@ class MarketplaceGalleryImageStatusDownloadStatusResponse {
 
   factory MarketplaceGalleryImageStatusDownloadStatusResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceGalleryImageStatusDownloadStatusResponse(
-      downloadSizeInMB: map['downloadSizeInMB'] == null ? null : map['downloadSizeInMB'] as double,
+      downloadSizeInMB: map['downloadSizeInMB'] == null ? null : (map['downloadSizeInMB'] as double).input(),
     );
   }
 }

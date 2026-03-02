@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The cloudwatch to kinesis connection configuration
 class DefenderForContainersAwsOfferingResponseCloudWatchToKinesis {
   /// The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
-  final String? cloudRoleArn;
+  final pulumi.Input<String>? cloudRoleArn;
 
   /// Creates a new [DefenderForContainersAwsOfferingResponseCloudWatchToKinesis].
   /// [cloudRoleArn] The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
@@ -20,7 +21,7 @@ class DefenderForContainersAwsOfferingResponseCloudWatchToKinesis {
 
   factory DefenderForContainersAwsOfferingResponseCloudWatchToKinesis.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersAwsOfferingResponseCloudWatchToKinesis(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
     );
   }
 }

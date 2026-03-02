@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'template_filter_config_sdp_settings_advanced_config.dart';
 import 'template_filter_config_sdp_settings_basic_config.dart';
 
 class TemplateFilterConfigSdpSettings {
   /// Sensitive Data Protection Advanced configuration.
   /// Structure is documented below.
-  final TemplateFilterConfigSdpSettingsAdvancedConfig? advancedConfig;
+  final pulumi.Input<TemplateFilterConfigSdpSettingsAdvancedConfig>? advancedConfig;
   /// Sensitive Data Protection basic configuration.
   /// Structure is documented below.
-  final TemplateFilterConfigSdpSettingsBasicConfig? basicConfig;
+  final pulumi.Input<TemplateFilterConfigSdpSettingsBasicConfig>? basicConfig;
 
   /// Creates a new [TemplateFilterConfigSdpSettings].
   /// [advancedConfig] Sensitive Data Protection Advanced configuration.
@@ -21,15 +22,15 @@ class TemplateFilterConfigSdpSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedConfig': ?advancedConfig == null ? null : advancedConfig!.toMap(),
-      'basicConfig': ?basicConfig == null ? null : basicConfig!.toMap(),
+      'advancedConfig': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigSdpSettingsAdvancedConfig, Map<String, dynamic>>(advancedConfig, (value) => value.toMap()),
+      'basicConfig': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigSdpSettingsBasicConfig, Map<String, dynamic>>(basicConfig, (value) => value.toMap()),
     };
   }
 
   factory TemplateFilterConfigSdpSettings.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigSdpSettings(
-      advancedConfig: map['advancedConfig'] == null ? null : TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig'] as Map).cast<String, dynamic>()),
-      basicConfig: map['basicConfig'] == null ? null : TemplateFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig'] as Map).cast<String, dynamic>()),
+      advancedConfig: map['advancedConfig'] == null ? null : (TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig'] as Map).cast<String, dynamic>())).input(),
+      basicConfig: map['basicConfig'] == null ? null : (TemplateFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

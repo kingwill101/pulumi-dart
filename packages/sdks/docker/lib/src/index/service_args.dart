@@ -45,25 +45,16 @@ class ServiceArgs {
   /// [taskSpec] User modifiable task configuration
   /// [updateConfig] Specification for the update strategy of the service
   ServiceArgs({
-    pulumi.Output<ServiceAuth>? auth,
-    pulumi.Output<ServiceConvergeConfig>? convergeConfig,
-    pulumi.Output<ServiceEndpointSpec>? endpointSpec,
-    pulumi.Output<List<ServiceLabel>>? labels,
-    pulumi.Output<ServiceMode>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<ServiceRollbackConfig>? rollbackConfig,
-    required pulumi.Output<ServiceTaskSpec> taskSpec,
-    pulumi.Output<ServiceUpdateConfig>? updateConfig,
-  }) :
-      auth = pulumi.Input.asOptionalInput<ServiceAuth>(auth),
-      convergeConfig = pulumi.Input.asOptionalInput<ServiceConvergeConfig>(convergeConfig),
-      endpointSpec = pulumi.Input.asOptionalInput<ServiceEndpointSpec>(endpointSpec),
-      labels = pulumi.Input.asOptionalInput<List<ServiceLabel>>(labels),
-      mode = pulumi.Input.asOptionalInput<ServiceMode>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rollbackConfig = pulumi.Input.asOptionalInput<ServiceRollbackConfig>(rollbackConfig),
-      taskSpec = pulumi.Input.asInput<ServiceTaskSpec>(taskSpec),
-      updateConfig = pulumi.Input.asOptionalInput<ServiceUpdateConfig>(updateConfig);
+    this.auth,
+    this.convergeConfig,
+    this.endpointSpec,
+    this.labels,
+    this.mode,
+    this.name,
+    this.rollbackConfig,
+    required this.taskSpec,
+    this.updateConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      auth: map['auth'] == null ? null : pulumi.Output.create<ServiceAuth>(ServiceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())),
-      convergeConfig: map['convergeConfig'] == null ? null : pulumi.Output.create<ServiceConvergeConfig>(ServiceConvergeConfig.fromMap((map['convergeConfig'] as Map).cast<String, dynamic>())),
-      endpointSpec: map['endpointSpec'] == null ? null : pulumi.Output.create<ServiceEndpointSpec>(ServiceEndpointSpec.fromMap((map['endpointSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<ServiceLabel>>(pulumi.Input.decodeList<ServiceLabel>(map['labels'], (value) => ServiceLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      mode: map['mode'] == null ? null : pulumi.Output.create<ServiceMode>(ServiceMode.fromMap((map['mode'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rollbackConfig: map['rollbackConfig'] == null ? null : pulumi.Output.create<ServiceRollbackConfig>(ServiceRollbackConfig.fromMap((map['rollbackConfig'] as Map).cast<String, dynamic>())),
-      taskSpec: pulumi.Output.create<ServiceTaskSpec>(ServiceTaskSpec.fromMap((map['taskSpec'] as Map).cast<String, dynamic>())),
-      updateConfig: map['updateConfig'] == null ? null : pulumi.Output.create<ServiceUpdateConfig>(ServiceUpdateConfig.fromMap((map['updateConfig'] as Map).cast<String, dynamic>())),
+      auth: map['auth'] == null ? null : (ServiceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
+      convergeConfig: map['convergeConfig'] == null ? null : (ServiceConvergeConfig.fromMap((map['convergeConfig'] as Map).cast<String, dynamic>())).input(),
+      endpointSpec: map['endpointSpec'] == null ? null : (ServiceEndpointSpec.fromMap((map['endpointSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ServiceLabel>(map['labels'], (value) => ServiceLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (ServiceMode.fromMap((map['mode'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rollbackConfig: map['rollbackConfig'] == null ? null : (ServiceRollbackConfig.fromMap((map['rollbackConfig'] as Map).cast<String, dynamic>())).input(),
+      taskSpec: (ServiceTaskSpec.fromMap((map['taskSpec'] as Map).cast<String, dynamic>())).input(),
+      updateConfig: map['updateConfig'] == null ? null : (ServiceUpdateConfig.fromMap((map['updateConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

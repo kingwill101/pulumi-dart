@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters for creating multiple virtual machines as a single action.
 class BulkCreationParametersResponse {
   /// The number of virtual machine instances to create.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
 
   /// Creates a new [BulkCreationParametersResponse].
   /// [instanceCount] The number of virtual machine instances to create.
@@ -20,7 +21,7 @@ class BulkCreationParametersResponse {
 
   factory BulkCreationParametersResponse.fromMap(Map<String, dynamic> map) {
     return BulkCreationParametersResponse(
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
     );
   }
 }

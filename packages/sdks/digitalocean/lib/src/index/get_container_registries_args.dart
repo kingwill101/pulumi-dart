@@ -12,9 +12,8 @@ class GetContainerRegistriesArgs {
   /// Creates a new [GetContainerRegistriesArgs].
   /// [name] Required.
   GetContainerRegistriesArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetContainerRegistriesArgs {
 
   factory GetContainerRegistriesArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerRegistriesArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

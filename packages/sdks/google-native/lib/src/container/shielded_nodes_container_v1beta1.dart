@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of Shielded Nodes feature.
 class ShieldedNodesContainerV1beta1 {
   /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ShieldedNodesContainerV1beta1].
   /// [enabled] Whether Shielded Nodes features are enabled on all nodes in this cluster.
@@ -20,7 +21,7 @@ class ShieldedNodesContainerV1beta1 {
 
   factory ShieldedNodesContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ShieldedNodesContainerV1beta1(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

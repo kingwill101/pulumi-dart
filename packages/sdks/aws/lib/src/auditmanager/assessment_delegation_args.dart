@@ -30,19 +30,13 @@ class AssessmentDelegationArgs {
   /// [roleArn] Amazon Resource Name (ARN) of the IAM role.
   /// [roleType] Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   AssessmentDelegationArgs({
-    required pulumi.Output<String> assessmentId,
-    pulumi.Output<String>? comment,
-    required pulumi.Output<String> controlSetId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<String> roleType,
-  }) :
-      assessmentId = pulumi.Input.asInput<String>(assessmentId),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      controlSetId = pulumi.Input.asInput<String>(controlSetId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      roleType = pulumi.Input.asInput<String>(roleType);
+    required this.assessmentId,
+    this.comment,
+    required this.controlSetId,
+    this.region,
+    required this.roleArn,
+    required this.roleType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class AssessmentDelegationArgs {
 
   factory AssessmentDelegationArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentDelegationArgs(
-      assessmentId: pulumi.Output.create<String>(map['assessmentId'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      controlSetId: pulumi.Output.create<String>(map['controlSetId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      roleType: pulumi.Output.create<String>(map['roleType'] as String),
+      assessmentId: (map['assessmentId'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      controlSetId: (map['controlSetId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      roleType: (map['roleType'] as String).input(),
     );
   }
 }

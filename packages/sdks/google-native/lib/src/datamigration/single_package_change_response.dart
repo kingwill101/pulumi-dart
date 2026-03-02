@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package
 class SinglePackageChangeResponse {
   /// Optional. Sql code for package body
-  final String packageBody;
+  final pulumi.Input<String> packageBody;
   /// Optional. Sql code for package description
-  final String packageDescription;
+  final pulumi.Input<String> packageDescription;
 
   /// Creates a new [SinglePackageChangeResponse].
   /// [packageBody] Optional. Sql code for package body
@@ -25,8 +26,8 @@ class SinglePackageChangeResponse {
 
   factory SinglePackageChangeResponse.fromMap(Map<String, dynamic> map) {
     return SinglePackageChangeResponse(
-      packageBody: map['packageBody'] as String,
-      packageDescription: map['packageDescription'] as String,
+      packageBody: (map['packageBody'] as String).input(),
+      packageDescription: (map['packageDescription'] as String).input(),
     );
   }
 }

@@ -30,21 +30,14 @@ class ByoipPrefixState {
   /// [status] The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
   /// [uuid] The UUID of the BYOIP prefix.
   ByoipPrefixState({
-    pulumi.Output<bool>? advertised,
-    pulumi.Output<String>? failureReason,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? signature,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? uuid,
-  }) :
-      advertised = pulumi.Input.asOptionalInput<bool>(advertised),
-      failureReason = pulumi.Input.asOptionalInput<String>(failureReason),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      signature = pulumi.Input.asOptionalInput<String>(signature),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.advertised,
+    this.failureReason,
+    this.prefix,
+    this.region,
+    this.signature,
+    this.status,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ByoipPrefixState {
 
   factory ByoipPrefixState.fromMap(Map<String, dynamic> map) {
     return ByoipPrefixState(
-      advertised: map['advertised'] == null ? null : pulumi.Output.create<bool>(map['advertised'] as bool),
-      failureReason: map['failureReason'] == null ? null : pulumi.Output.create<String>(map['failureReason'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      signature: map['signature'] == null ? null : pulumi.Output.create<String>(map['signature'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      advertised: map['advertised'] == null ? null : (map['advertised'] as bool).input(),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

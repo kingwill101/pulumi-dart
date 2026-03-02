@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_customized_accelerator_git_repository_basic_auth.dart';
 import 'spring_cloud_customized_accelerator_git_repository_ssh_auth.dart';
 
 class SpringCloudCustomizedAcceleratorGitRepository {
   /// A `basic_auth` block as defined below. Conflicts with `git_repository[0].ssh_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
-  final SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth? basicAuth;
+  final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth>? basicAuth;
   /// Specifies the Git repository branch to be used.
-  final String? branch;
+  final pulumi.Input<String>? branch;
   /// Specifies the ID of the CA Spring Cloud Certificate for https URL of Git repository.
-  final String? caCertificateId;
+  final pulumi.Input<String>? caCertificateId;
   /// Specifies the Git repository commit to be used.
-  final String? commit;
+  final pulumi.Input<String>? commit;
   /// Specifies the Git repository tag to be used.
-  final String? gitTag;
+  final pulumi.Input<String>? gitTag;
   /// Specifies the interval for checking for updates to Git or image repository. It should be greater than 10.
-  final int? intervalInSeconds;
+  final pulumi.Input<int>? intervalInSeconds;
   /// Specifies the path under the git repository to be treated as the root directory of the accelerator or the fragment (depending on `accelerator_type`).
-  final String? path;
+  final pulumi.Input<String>? path;
   /// A `ssh_auth` block as defined below. Conflicts with `git_repository[0].basic_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
-  final SpringCloudCustomizedAcceleratorGitRepositorySshAuth? sshAuth;
+  final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepositorySshAuth>? sshAuth;
   /// Specifies Git repository URL for the accelerator.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [SpringCloudCustomizedAcceleratorGitRepository].
   /// [basicAuth] A `basic_auth` block as defined below. Conflicts with `git_repository[0].ssh_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
@@ -47,29 +48,29 @@ class SpringCloudCustomizedAcceleratorGitRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicAuth': ?basicAuth == null ? null : basicAuth!.toMap(),
+      'basicAuth': ?pulumi.Input.mapOptionalInputValue<SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth, Map<String, dynamic>>(basicAuth, (value) => value.toMap()),
       'branch': ?branch,
       'caCertificateId': ?caCertificateId,
       'commit': ?commit,
       'gitTag': ?gitTag,
       'intervalInSeconds': ?intervalInSeconds,
       'path': ?path,
-      'sshAuth': ?sshAuth == null ? null : sshAuth!.toMap(),
+      'sshAuth': ?pulumi.Input.mapOptionalInputValue<SpringCloudCustomizedAcceleratorGitRepositorySshAuth, Map<String, dynamic>>(sshAuth, (value) => value.toMap()),
       'url': url,
     };
   }
 
   factory SpringCloudCustomizedAcceleratorGitRepository.fromMap(Map<String, dynamic> map) {
     return SpringCloudCustomizedAcceleratorGitRepository(
-      basicAuth: map['basicAuth'] == null ? null : SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth.fromMap((map['basicAuth'] as Map).cast<String, dynamic>()),
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      caCertificateId: map['caCertificateId'] == null ? null : map['caCertificateId'] as String,
-      commit: map['commit'] == null ? null : map['commit'] as String,
-      gitTag: map['gitTag'] == null ? null : map['gitTag'] as String,
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : map['intervalInSeconds'] as int,
-      path: map['path'] == null ? null : map['path'] as String,
-      sshAuth: map['sshAuth'] == null ? null : SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap((map['sshAuth'] as Map).cast<String, dynamic>()),
-      url: map['url'] as String,
+      basicAuth: map['basicAuth'] == null ? null : (SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      caCertificateId: map['caCertificateId'] == null ? null : (map['caCertificateId'] as String).input(),
+      commit: map['commit'] == null ? null : (map['commit'] as String).input(),
+      gitTag: map['gitTag'] == null ? null : (map['gitTag'] as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      sshAuth: map['sshAuth'] == null ? null : (SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap((map['sshAuth'] as Map).cast<String, dynamic>())).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

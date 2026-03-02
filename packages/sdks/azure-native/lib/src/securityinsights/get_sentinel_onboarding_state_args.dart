@@ -19,13 +19,10 @@ class GetSentinelOnboardingStateArgs {
   /// [sentinelOnboardingStateName] The Sentinel onboarding state name. Supports - default
   /// [workspaceName] The name of the workspace.
   GetSentinelOnboardingStateArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sentinelOnboardingStateName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sentinelOnboardingStateName = pulumi.Input.asInput<String>(sentinelOnboardingStateName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.sentinelOnboardingStateName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSentinelOnboardingStateArgs {
 
   factory GetSentinelOnboardingStateArgs.fromMap(Map<String, dynamic> map) {
     return GetSentinelOnboardingStateArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sentinelOnboardingStateName: pulumi.Output.create<String>(map['sentinelOnboardingStateName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sentinelOnboardingStateName: (map['sentinelOnboardingStateName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

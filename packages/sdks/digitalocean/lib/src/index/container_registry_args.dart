@@ -19,13 +19,10 @@ class ContainerRegistryArgs {
   /// [region] The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
   /// [subscriptionTierSlug] The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
   ContainerRegistryArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> subscriptionTierSlug,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subscriptionTierSlug = pulumi.Input.asInput<String>(subscriptionTierSlug);
+    this.name,
+    this.region,
+    required this.subscriptionTierSlug,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ContainerRegistryArgs {
 
   factory ContainerRegistryArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subscriptionTierSlug: pulumi.Output.create<String>(map['subscriptionTierSlug'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subscriptionTierSlug: (map['subscriptionTierSlug'] as String).input(),
     );
   }
 }

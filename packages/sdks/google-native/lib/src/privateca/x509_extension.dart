@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_id.dart';
 
 /// An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 class X509Extension {
   /// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-  final bool? critical;
+  final pulumi.Input<bool>? critical;
   /// The OID for this X.509 extension.
-  final ObjectId objectId;
+  final pulumi.Input<ObjectId> objectId;
   /// The value of this X.509 extension.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [X509Extension].
   /// [critical] Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
@@ -24,16 +25,16 @@ class X509Extension {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'critical': ?critical,
-      'objectId': objectId.toMap(),
+      'objectId': pulumi.Input.mapInputValue<ObjectId, Map<String, dynamic>>(objectId, (value) => value.toMap()),
       'value': value,
     };
   }
 
   factory X509Extension.fromMap(Map<String, dynamic> map) {
     return X509Extension(
-      critical: map['critical'] == null ? null : map['critical'] as bool,
-      objectId: ObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>()),
-      value: map['value'] as String,
+      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
+      objectId: (ObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>())).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

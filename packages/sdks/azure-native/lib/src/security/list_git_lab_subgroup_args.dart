@@ -19,13 +19,10 @@ class ListGitLabSubgroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
   ListGitLabSubgroupArgs({
-    required pulumi.Output<String> groupFQName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityConnectorName,
-  }) :
-      groupFQName = pulumi.Input.asInput<String>(groupFQName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityConnectorName = pulumi.Input.asInput<String>(securityConnectorName);
+    required this.groupFQName,
+    required this.resourceGroupName,
+    required this.securityConnectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListGitLabSubgroupArgs {
 
   factory ListGitLabSubgroupArgs.fromMap(Map<String, dynamic> map) {
     return ListGitLabSubgroupArgs(
-      groupFQName: pulumi.Output.create<String>(map['groupFQName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityConnectorName: pulumi.Output.create<String>(map['securityConnectorName'] as String),
+      groupFQName: (map['groupFQName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityConnectorName: (map['securityConnectorName'] as String).input(),
     );
   }
 }

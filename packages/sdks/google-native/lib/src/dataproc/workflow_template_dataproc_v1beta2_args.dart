@@ -38,25 +38,16 @@ class WorkflowTemplateDataprocV1beta2Args {
   /// [project] Optional.
   /// [version] Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
   WorkflowTemplateDataprocV1beta2Args({
-    pulumi.Output<String>? dagTimeout,
-    required pulumi.Output<String> id,
-    required pulumi.Output<List<OrderedJobDataprocV1beta2>> jobs,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<TemplateParameterDataprocV1beta2>>? parameters,
-    required pulumi.Output<WorkflowTemplatePlacementDataprocV1beta2> placement,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? version,
-  }) :
-      dagTimeout = pulumi.Input.asOptionalInput<String>(dagTimeout),
-      id = pulumi.Input.asInput<String>(id),
-      jobs = pulumi.Input.asInput<List<OrderedJobDataprocV1beta2>>(jobs),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parameters = pulumi.Input.asOptionalInput<List<TemplateParameterDataprocV1beta2>>(parameters),
-      placement = pulumi.Input.asInput<WorkflowTemplatePlacementDataprocV1beta2>(placement),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.dagTimeout,
+    required this.id,
+    required this.jobs,
+    this.labels,
+    this.location,
+    this.parameters,
+    required this.placement,
+    this.project,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class WorkflowTemplateDataprocV1beta2Args {
 
   factory WorkflowTemplateDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateDataprocV1beta2Args(
-      dagTimeout: map['dagTimeout'] == null ? null : pulumi.Output.create<String>(map['dagTimeout'] as String),
-      id: pulumi.Output.create<String>(map['id'] as String),
-      jobs: pulumi.Output.create<List<OrderedJobDataprocV1beta2>>(pulumi.Input.decodeList<OrderedJobDataprocV1beta2>(map['jobs'], (value) => OrderedJobDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<TemplateParameterDataprocV1beta2>>(pulumi.Input.decodeList<TemplateParameterDataprocV1beta2>(map['parameters'], (value) => TemplateParameterDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))),
-      placement: pulumi.Output.create<WorkflowTemplatePlacementDataprocV1beta2>(WorkflowTemplatePlacementDataprocV1beta2.fromMap((map['placement'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      dagTimeout: map['dagTimeout'] == null ? null : (map['dagTimeout'] as String).input(),
+      id: (map['id'] as String).input(),
+      jobs: (pulumi.Input.decodeList<OrderedJobDataprocV1beta2>(map['jobs'], (value) => OrderedJobDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<TemplateParameterDataprocV1beta2>(map['parameters'], (value) => TemplateParameterDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placement: (WorkflowTemplatePlacementDataprocV1beta2.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_datastore_admin_v1_indexed_property_direction.dart';
 
 /// A property of an index.
 class GoogleDatastoreAdminV1IndexedProperty {
   /// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-  final GoogleDatastoreAdminV1IndexedPropertyDirection direction;
+  final pulumi.Input<GoogleDatastoreAdminV1IndexedPropertyDirection> direction;
   /// The property name to index.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GoogleDatastoreAdminV1IndexedProperty].
   /// [direction] The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
@@ -19,15 +20,15 @@ class GoogleDatastoreAdminV1IndexedProperty {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'direction': direction.value,
+      'direction': pulumi.Input.mapInputValue<GoogleDatastoreAdminV1IndexedPropertyDirection, String>(direction, (value) => value.value),
       'name': name,
     };
   }
 
   factory GoogleDatastoreAdminV1IndexedProperty.fromMap(Map<String, dynamic> map) {
     return GoogleDatastoreAdminV1IndexedProperty(
-      direction: GoogleDatastoreAdminV1IndexedPropertyDirection.fromValue(map['direction'] as String),
-      name: map['name'] as String,
+      direction: (GoogleDatastoreAdminV1IndexedPropertyDirection.fromValue(map['direction'] as String)).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

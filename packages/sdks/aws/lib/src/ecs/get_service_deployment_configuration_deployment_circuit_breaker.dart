@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceDeploymentConfigurationDeploymentCircuitBreaker {
   /// Whether circuit breaker is enabled
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// Whether to rollback on failure
-  final bool rollback;
+  final pulumi.Input<bool> rollback;
 
   /// Creates a new [GetServiceDeploymentConfigurationDeploymentCircuitBreaker].
   /// [enable] Whether circuit breaker is enabled
@@ -24,8 +25,8 @@ class GetServiceDeploymentConfigurationDeploymentCircuitBreaker {
 
   factory GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationDeploymentCircuitBreaker(
-      enable: map['enable'] as bool,
-      rollback: map['rollback'] as bool,
+      enable: (map['enable'] as bool).input(),
+      rollback: (map['rollback'] as bool).input(),
     );
   }
 }

@@ -32,19 +32,13 @@ class ConfigurationSetArgs {
   /// [sendingEnabled] Whether email sending is enabled or disabled for the configuration set. The default value is `true`.
   /// [trackingOptions] Domain that is used to redirect email recipients to an Amazon SES-operated domain. See below. **NOTE:** This functionality is best effort.
   ConfigurationSetArgs({
-    pulumi.Output<ConfigurationSetDeliveryOptions>? deliveryOptions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? reputationMetricsEnabled,
-    pulumi.Output<bool>? sendingEnabled,
-    pulumi.Output<ConfigurationSetTrackingOptions>? trackingOptions,
-  }) :
-      deliveryOptions = pulumi.Input.asOptionalInput<ConfigurationSetDeliveryOptions>(deliveryOptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reputationMetricsEnabled = pulumi.Input.asOptionalInput<bool>(reputationMetricsEnabled),
-      sendingEnabled = pulumi.Input.asOptionalInput<bool>(sendingEnabled),
-      trackingOptions = pulumi.Input.asOptionalInput<ConfigurationSetTrackingOptions>(trackingOptions);
+    this.deliveryOptions,
+    this.name,
+    this.region,
+    this.reputationMetricsEnabled,
+    this.sendingEnabled,
+    this.trackingOptions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class ConfigurationSetArgs {
 
   factory ConfigurationSetArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetArgs(
-      deliveryOptions: map['deliveryOptions'] == null ? null : pulumi.Output.create<ConfigurationSetDeliveryOptions>(ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : pulumi.Output.create<bool>(map['reputationMetricsEnabled'] as bool),
-      sendingEnabled: map['sendingEnabled'] == null ? null : pulumi.Output.create<bool>(map['sendingEnabled'] as bool),
-      trackingOptions: map['trackingOptions'] == null ? null : pulumi.Output.create<ConfigurationSetTrackingOptions>(ConfigurationSetTrackingOptions.fromMap((map['trackingOptions'] as Map).cast<String, dynamic>())),
+      deliveryOptions: map['deliveryOptions'] == null ? null : (ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : (map['reputationMetricsEnabled'] as bool).input(),
+      sendingEnabled: map['sendingEnabled'] == null ? null : (map['sendingEnabled'] as bool).input(),
+      trackingOptions: map['trackingOptions'] == null ? null : (ConfigurationSetTrackingOptions.fromMap((map['trackingOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -9,40 +9,40 @@ import 'user_property_response.dart';
 /// HDInsight Hive activity type.
 class HDInsightHiveActivityResponse {
   /// User specified arguments to HDInsightActivity.
-  final List<dynamic>? arguments;
+  final pulumi.Input<List<dynamic>>? arguments;
   /// Allows user to specify defines for Hive job request.
-  final Map<String, dynamic>? defines;
+  final pulumi.Input<Map<String, dynamic>>? defines;
   /// Activity depends on condition.
-  final List<ActivityDependencyResponse>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Debug info option.
-  final String? getDebugInfo;
+  final pulumi.Input<String>? getDebugInfo;
   /// Linked service reference.
-  final LinkedServiceReferenceResponse? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Activity policy.
-  final ActivityPolicyResponse? policy;
+  final pulumi.Input<ActivityPolicyResponse>? policy;
   /// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
-  final int? queryTimeout;
+  final pulumi.Input<int>? queryTimeout;
   /// Script linked service reference.
-  final LinkedServiceReferenceResponse? scriptLinkedService;
+  final pulumi.Input<LinkedServiceReferenceResponse>? scriptLinkedService;
   /// Script path. Type: string (or Expression with resultType string).
-  final dynamic scriptPath;
+  final pulumi.Input<dynamic>? scriptPath;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Storage linked service references.
-  final List<LinkedServiceReferenceResponse>? storageLinkedServices;
+  final pulumi.Input<List<LinkedServiceReferenceResponse>>? storageLinkedServices;
   /// Type of activity.
   /// Expected value is 'HDInsightHive'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserPropertyResponse>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
   /// User specified arguments under hivevar namespace.
-  final Map<String, dynamic>? variables;
+  final pulumi.Input<Map<String, dynamic>>? variables;
 
   /// Creates a new [HDInsightHiveActivityResponse].
   /// [arguments] User specified arguments to HDInsightActivity.
@@ -86,43 +86,43 @@ class HDInsightHiveActivityResponse {
     return <String, dynamic>{
       'arguments': ?arguments,
       'defines': ?defines,
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'getDebugInfo': ?getDebugInfo,
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'queryTimeout': ?queryTimeout,
-      'scriptLinkedService': ?scriptLinkedService == null ? null : scriptLinkedService!.toMap(),
+      'scriptLinkedService': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(scriptLinkedService, (value) => value.toMap()),
       'scriptPath': ?scriptPath,
       'state': ?state,
-      'storageLinkedServices': ?storageLinkedServices == null ? null : pulumi.Input.encodeList<LinkedServiceReferenceResponse, Map<String, dynamic>>(storageLinkedServices!, (value) => value.toMap()),
+      'storageLinkedServices': ?pulumi.Input.mapOptionalInputValue<List<LinkedServiceReferenceResponse>, List<Map<String, dynamic>>>(storageLinkedServices, (value) => pulumi.Input.encodeList<LinkedServiceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserPropertyResponse>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'variables': ?variables,
     };
   }
 
   factory HDInsightHiveActivityResponse.fromMap(Map<String, dynamic> map) {
     return HDInsightHiveActivityResponse(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as List).cast<dynamic>(),
-      defines: map['defines'] == null ? null : (map['defines'] as Map).cast<String, dynamic>(),
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      getDebugInfo: map['getDebugInfo'] == null ? null : map['getDebugInfo'] as String,
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      policy: map['policy'] == null ? null : ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'] as int,
-      scriptLinkedService: map['scriptLinkedService'] == null ? null : LinkedServiceReferenceResponse.fromMap((map['scriptLinkedService'] as Map).cast<String, dynamic>()),
-      scriptPath: map['scriptPath'] == null ? null : map['scriptPath'],
-      state: map['state'] == null ? null : map['state'] as String,
-      storageLinkedServices: map['storageLinkedServices'] == null ? null : pulumi.Input.decodeList<LinkedServiceReferenceResponse>(map['storageLinkedServices'], (value) => LinkedServiceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      variables: map['variables'] == null ? null : (map['variables'] as Map).cast<String, dynamic>(),
+      arguments: map['arguments'] == null ? null : ((map['arguments'] as List).cast<dynamic>()).input(),
+      defines: map['defines'] == null ? null : ((map['defines'] as Map).cast<String, dynamic>()).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      getDebugInfo: map['getDebugInfo'] == null ? null : (map['getDebugInfo'] as String).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout'] as int).input(),
+      scriptLinkedService: map['scriptLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['scriptLinkedService'] as Map).cast<String, dynamic>())).input(),
+      scriptPath: map['scriptPath'] == null ? null : (map['scriptPath']).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      storageLinkedServices: map['storageLinkedServices'] == null ? null : (pulumi.Input.decodeList<LinkedServiceReferenceResponse>(map['storageLinkedServices'], (value) => LinkedServiceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

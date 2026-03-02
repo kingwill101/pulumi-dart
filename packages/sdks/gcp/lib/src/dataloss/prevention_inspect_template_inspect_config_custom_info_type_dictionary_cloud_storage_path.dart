@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
   /// A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath].
   /// [path] A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
@@ -19,7 +20,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorage
 
   factory PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath(
-      path: map['path'] as String,
+      path: (map['path'] as String).input(),
     );
   }
 }

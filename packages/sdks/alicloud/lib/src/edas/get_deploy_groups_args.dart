@@ -19,13 +19,10 @@ class GetDeployGroupsArgs {
   /// [nameRegex] A regex string to filter results by the deploy group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetDeployGroupsArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.appId,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDeployGroupsArgs {
 
   factory GetDeployGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDeployGroupsArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      appId: (map['appId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

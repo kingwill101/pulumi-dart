@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesAssignmentOsType {
   /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-  final String? osArchitecture;
+  final pulumi.Input<String>? osArchitecture;
   /// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
-  final String? osShortName;
+  final pulumi.Input<String>? osShortName;
   /// Targets VM instances with OS Inventory enabled and having the following following OS version.
-  final String? osVersion;
+  final pulumi.Input<String>? osVersion;
 
   /// Creates a new [GuestPoliciesAssignmentOsType].
   /// [osArchitecture] Targets VM instances with OS Inventory enabled and having the following OS architecture.
@@ -29,9 +30,9 @@ class GuestPoliciesAssignmentOsType {
 
   factory GuestPoliciesAssignmentOsType.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesAssignmentOsType(
-      osArchitecture: map['osArchitecture'] == null ? null : map['osArchitecture'] as String,
-      osShortName: map['osShortName'] == null ? null : map['osShortName'] as String,
-      osVersion: map['osVersion'] == null ? null : map['osVersion'] as String,
+      osArchitecture: map['osArchitecture'] == null ? null : (map['osArchitecture'] as String).input(),
+      osShortName: map['osShortName'] == null ? null : (map['osShortName'] as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
     );
   }
 }

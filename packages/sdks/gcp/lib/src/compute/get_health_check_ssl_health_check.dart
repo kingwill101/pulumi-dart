@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHealthCheckSslHealthCheck {
   /// The TCP port number for the SSL health check request.
   /// The default value is 443.
-  final int port;
+  final pulumi.Input<int> port;
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// port_name are defined, port takes precedence.
-  final String portName;
+  final pulumi.Input<String> portName;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   ///
@@ -22,19 +23,19 @@ class GetHealthCheckSslHealthCheck {
   ///
   /// If not specified, SSL health check follows behavior specified in 'port' and
   /// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
-  final String portSpecification;
+  final pulumi.Input<String> portSpecification;
   /// Specifies the type of proxy header to append before sending data to the
   /// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
-  final String proxyHeader;
+  final pulumi.Input<String> proxyHeader;
   /// The application data to send once the SSL connection has been
   /// established (default value is empty). If both request and response are
   /// empty, the connection establishment alone will indicate health. The request
   /// data can only be ASCII.
-  final String request;
+  final pulumi.Input<String> request;
   /// The bytes to match against the beginning of the response data. If left empty
   /// (the default value), any response will indicate health. The response data
   /// can only be ASCII.
-  final String response;
+  final pulumi.Input<String> response;
 
   /// Creates a new [GetHealthCheckSslHealthCheck].
   /// [port] The TCP port number for the SSL health check request.
@@ -65,12 +66,12 @@ class GetHealthCheckSslHealthCheck {
 
   factory GetHealthCheckSslHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckSslHealthCheck(
-      port: map['port'] as int,
-      portName: map['portName'] as String,
-      portSpecification: map['portSpecification'] as String,
-      proxyHeader: map['proxyHeader'] as String,
-      request: map['request'] as String,
-      response: map['response'] as String,
+      port: (map['port'] as int).input(),
+      portName: (map['portName'] as String).input(),
+      portSpecification: (map['portSpecification'] as String).input(),
+      proxyHeader: (map['proxyHeader'] as String).input(),
+      request: (map['request'] as String).input(),
+      response: (map['response'] as String).input(),
     );
   }
 }

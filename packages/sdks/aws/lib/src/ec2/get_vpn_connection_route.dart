@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpnConnectionRoute {
-  final String destinationCidrBlock;
-  final String source;
+  final pulumi.Input<String> destinationCidrBlock;
+  final pulumi.Input<String> source;
   /// Current state of the VPN connection.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetVpnConnectionRoute].
   /// [destinationCidrBlock] Required.
@@ -27,9 +28,9 @@ class GetVpnConnectionRoute {
 
   factory GetVpnConnectionRoute.fromMap(Map<String, dynamic> map) {
     return GetVpnConnectionRoute(
-      destinationCidrBlock: map['destinationCidrBlock'] as String,
-      source: map['source'] as String,
-      state: map['state'] as String,
+      destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
+      source: (map['source'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

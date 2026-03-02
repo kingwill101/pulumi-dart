@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings {
   /// This field is not currently supported and will not affect the output styling. Leave the default value.
-  final String styleControl;
+  final pulumi.Input<String> styleControl;
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings].
   /// [styleControl] This field is not currently supported and will not affect the output styling. Leave the default value.
@@ -19,7 +20,7 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestination
 
   factory ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings(
-      styleControl: map['styleControl'] as String,
+      styleControl: (map['styleControl'] as String).input(),
     );
   }
 }

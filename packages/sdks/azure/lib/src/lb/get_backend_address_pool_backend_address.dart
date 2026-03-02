@@ -5,13 +5,13 @@ import 'get_backend_address_pool_backend_address_inbound_nat_rule_port_mapping.d
 
 class GetBackendAddressPoolBackendAddress {
   /// A list of `inbound_nat_rule_port_mapping` block as defined below.
-  final List<GetBackendAddressPoolBackendAddressInboundNatRulePortMapping> inboundNatRulePortMappings;
+  final pulumi.Input<List<GetBackendAddressPoolBackendAddressInboundNatRulePortMapping>> inboundNatRulePortMappings;
   /// The Static IP address for this Load Balancer within the Virtual Network.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Specifies the name of the Backend Address Pool.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the Virtual Network where the Backend Address of the Load Balancer exists.
-  final String virtualNetworkId;
+  final pulumi.Input<String> virtualNetworkId;
 
   /// Creates a new [GetBackendAddressPoolBackendAddress].
   /// [inboundNatRulePortMappings] A list of `inbound_nat_rule_port_mapping` block as defined below.
@@ -27,7 +27,7 @@ class GetBackendAddressPoolBackendAddress {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inboundNatRulePortMappings': pulumi.Input.encodeList<GetBackendAddressPoolBackendAddressInboundNatRulePortMapping, Map<String, dynamic>>(inboundNatRulePortMappings, (value) => value.toMap()),
+      'inboundNatRulePortMappings': pulumi.Input.mapInputValue<List<GetBackendAddressPoolBackendAddressInboundNatRulePortMapping>, List<Map<String, dynamic>>>(inboundNatRulePortMappings, (value) => pulumi.Input.encodeList<GetBackendAddressPoolBackendAddressInboundNatRulePortMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipAddress': ipAddress,
       'name': name,
       'virtualNetworkId': virtualNetworkId,
@@ -36,10 +36,10 @@ class GetBackendAddressPoolBackendAddress {
 
   factory GetBackendAddressPoolBackendAddress.fromMap(Map<String, dynamic> map) {
     return GetBackendAddressPoolBackendAddress(
-      inboundNatRulePortMappings: pulumi.Input.decodeList<GetBackendAddressPoolBackendAddressInboundNatRulePortMapping>(map['inboundNatRulePortMappings'], (value) => GetBackendAddressPoolBackendAddressInboundNatRulePortMapping.fromMap((value as Map).cast<String, dynamic>())),
-      ipAddress: map['ipAddress'] as String,
-      name: map['name'] as String,
-      virtualNetworkId: map['virtualNetworkId'] as String,
+      inboundNatRulePortMappings: (pulumi.Input.decodeList<GetBackendAddressPoolBackendAddressInboundNatRulePortMapping>(map['inboundNatRulePortMappings'], (value) => GetBackendAddressPoolBackendAddressInboundNatRulePortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      name: (map['name'] as String).input(),
+      virtualNetworkId: (map['virtualNetworkId'] as String).input(),
     );
   }
 }

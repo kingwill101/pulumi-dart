@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes properties of a network resource.
 class NetworkResourceProperties {
   /// User readable description of the network.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The type of a Service Fabric container network.
   /// Expected value is 'NetworkResourceProperties'.
-  final String kind;
+  final pulumi.Input<String> kind;
 
   /// Creates a new [NetworkResourceProperties].
   /// [description] User readable description of the network.
@@ -26,8 +27,8 @@ class NetworkResourceProperties {
 
   factory NetworkResourceProperties.fromMap(Map<String, dynamic> map) {
     return NetworkResourceProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      kind: map['kind'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kind: (map['kind'] as String).input(),
     );
   }
 }

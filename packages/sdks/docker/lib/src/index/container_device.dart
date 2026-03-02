@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerDevice {
   /// The path in the container where the device will be bound.
-  final String? containerPath;
+  final pulumi.Input<String>? containerPath;
   /// The path on the host where the device is located.
-  final String hostPath;
+  final pulumi.Input<String> hostPath;
   /// The cgroup permissions given to the container to access the device. Defaults to `rwm`.
-  final String? permissions;
+  final pulumi.Input<String>? permissions;
 
   /// Creates a new [ContainerDevice].
   /// [containerPath] The path in the container where the device will be bound.
@@ -29,9 +30,9 @@ class ContainerDevice {
 
   factory ContainerDevice.fromMap(Map<String, dynamic> map) {
     return ContainerDevice(
-      containerPath: map['containerPath'] == null ? null : map['containerPath'] as String,
-      hostPath: map['hostPath'] as String,
-      permissions: map['permissions'] == null ? null : map['permissions'] as String,
+      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
+      hostPath: (map['hostPath'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
     );
   }
 }

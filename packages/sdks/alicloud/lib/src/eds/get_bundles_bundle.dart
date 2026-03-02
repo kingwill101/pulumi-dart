@@ -6,25 +6,25 @@ import 'get_bundles_bundle_disk.dart';
 
 class GetBundlesBundle {
   /// The bundle id of the bundle.
-  final String bundleId;
+  final pulumi.Input<String> bundleId;
   /// The name of the bundle.
-  final String bundleName;
+  final pulumi.Input<String> bundleName;
   /// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
-  final String bundleType;
+  final pulumi.Input<String> bundleType;
   /// The description of the bundle.
-  final String description;
+  final pulumi.Input<String> description;
   /// The desktop type of the bundle.
-  final String desktopType;
+  final pulumi.Input<String> desktopType;
   /// The desktop type attribute of the bundle.
-  final List<GetBundlesBundleDesktopTypeAttribute> desktopTypeAttributes;
+  final pulumi.Input<List<GetBundlesBundleDesktopTypeAttribute>> desktopTypeAttributes;
   /// The disks of the bundle.
-  final List<GetBundlesBundleDisk> disks;
+  final pulumi.Input<List<GetBundlesBundleDisk>> disks;
   /// The ID of the bundle.
-  final String id;
+  final pulumi.Input<String> id;
   /// The image id attribute of the bundle.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// The os type attribute of the bundle.
-  final String osType;
+  final pulumi.Input<String> osType;
 
   /// Creates a new [GetBundlesBundle].
   /// [bundleId] The bundle id of the bundle.
@@ -57,8 +57,8 @@ class GetBundlesBundle {
       'bundleType': bundleType,
       'description': description,
       'desktopType': desktopType,
-      'desktopTypeAttributes': pulumi.Input.encodeList<GetBundlesBundleDesktopTypeAttribute, Map<String, dynamic>>(desktopTypeAttributes, (value) => value.toMap()),
-      'disks': pulumi.Input.encodeList<GetBundlesBundleDisk, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'desktopTypeAttributes': pulumi.Input.mapInputValue<List<GetBundlesBundleDesktopTypeAttribute>, List<Map<String, dynamic>>>(desktopTypeAttributes, (value) => pulumi.Input.encodeList<GetBundlesBundleDesktopTypeAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'disks': pulumi.Input.mapInputValue<List<GetBundlesBundleDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<GetBundlesBundleDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'imageId': imageId,
       'osType': osType,
@@ -67,16 +67,16 @@ class GetBundlesBundle {
 
   factory GetBundlesBundle.fromMap(Map<String, dynamic> map) {
     return GetBundlesBundle(
-      bundleId: map['bundleId'] as String,
-      bundleName: map['bundleName'] as String,
-      bundleType: map['bundleType'] as String,
-      description: map['description'] as String,
-      desktopType: map['desktopType'] as String,
-      desktopTypeAttributes: pulumi.Input.decodeList<GetBundlesBundleDesktopTypeAttribute>(map['desktopTypeAttributes'], (value) => GetBundlesBundleDesktopTypeAttribute.fromMap((value as Map).cast<String, dynamic>())),
-      disks: pulumi.Input.decodeList<GetBundlesBundleDisk>(map['disks'], (value) => GetBundlesBundleDisk.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      osType: map['osType'] as String,
+      bundleId: (map['bundleId'] as String).input(),
+      bundleName: (map['bundleName'] as String).input(),
+      bundleType: (map['bundleType'] as String).input(),
+      description: (map['description'] as String).input(),
+      desktopType: (map['desktopType'] as String).input(),
+      desktopTypeAttributes: (pulumi.Input.decodeList<GetBundlesBundleDesktopTypeAttribute>(map['desktopTypeAttributes'], (value) => GetBundlesBundleDesktopTypeAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disks: (pulumi.Input.decodeList<GetBundlesBundleDisk>(map['disks'], (value) => GetBundlesBundleDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      osType: (map['osType'] as String).input(),
     );
   }
 }

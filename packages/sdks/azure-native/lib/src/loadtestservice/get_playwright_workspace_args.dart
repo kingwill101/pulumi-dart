@@ -16,11 +16,9 @@ class GetPlaywrightWorkspaceArgs {
   /// [playwrightWorkspaceName] The name of the PlaywrightWorkspace
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPlaywrightWorkspaceArgs({
-    required pulumi.Output<String> playwrightWorkspaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      playwrightWorkspaceName = pulumi.Input.asInput<String>(playwrightWorkspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.playwrightWorkspaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPlaywrightWorkspaceArgs {
 
   factory GetPlaywrightWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetPlaywrightWorkspaceArgs(
-      playwrightWorkspaceName: pulumi.Output.create<String>(map['playwrightWorkspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      playwrightWorkspaceName: (map['playwrightWorkspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

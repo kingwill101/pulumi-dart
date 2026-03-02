@@ -42,21 +42,14 @@ class GetInstanceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the Instance.
   GetInstanceArgs({
-    pulumi.Output<List<GetInstanceFilter>>? filters,
-    pulumi.Output<bool>? getPasswordData,
-    pulumi.Output<bool>? getUserData,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<Map<String, String>>? instanceTags,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetInstanceFilter>>(filters),
-      getPasswordData = pulumi.Input.asOptionalInput<bool>(getPasswordData),
-      getUserData = pulumi.Input.asOptionalInput<bool>(getUserData),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceTags = pulumi.Input.asOptionalInput<Map<String, String>>(instanceTags),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.getPasswordData,
+    this.getUserData,
+    this.instanceId,
+    this.instanceTags,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,13 +65,13 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetInstanceFilter>>(pulumi.Input.decodeList<GetInstanceFilter>(map['filters'], (value) => GetInstanceFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      getPasswordData: map['getPasswordData'] == null ? null : pulumi.Output.create<bool>(map['getPasswordData'] as bool),
-      getUserData: map['getUserData'] == null ? null : pulumi.Output.create<bool>(map['getUserData'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceTags: map['instanceTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['instanceTags'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetInstanceFilter>(map['filters'], (value) => GetInstanceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      getPasswordData: map['getPasswordData'] == null ? null : (map['getPasswordData'] as bool).input(),
+      getUserData: map['getUserData'] == null ? null : (map['getUserData'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceTags: map['instanceTags'] == null ? null : ((map['instanceTags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

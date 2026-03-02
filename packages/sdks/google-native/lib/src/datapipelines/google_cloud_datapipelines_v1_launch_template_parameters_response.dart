@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datapipelines_v1_runtime_environment_response.dart';
 
 /// Parameters to provide to the template being launched.
 class GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse {
   /// The runtime environment for the job.
-  final GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse environment;
+  final pulumi.Input<GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse> environment;
   /// The job name to use for the created job.
-  final String jobName;
+  final pulumi.Input<String> jobName;
   /// The runtime parameters to pass to the job.
-  final Map<String, String> parameters;
+  final pulumi.Input<Map<String, String>> parameters;
   /// Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
-  final Map<String, String> transformNameMapping;
+  final pulumi.Input<Map<String, String>> transformNameMapping;
   /// If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
-  final bool update;
+  final pulumi.Input<bool> update;
 
   /// Creates a new [GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse].
   /// [environment] The runtime environment for the job.
@@ -31,7 +32,7 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'environment': environment.toMap(),
+      'environment': pulumi.Input.mapInputValue<GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse, Map<String, dynamic>>(environment, (value) => value.toMap()),
       'jobName': jobName,
       'parameters': parameters,
       'transformNameMapping': transformNameMapping,
@@ -41,11 +42,11 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse {
 
   factory GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse(
-      environment: GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse.fromMap((map['environment'] as Map).cast<String, dynamic>()),
-      jobName: map['jobName'] as String,
-      parameters: (map['parameters'] as Map).cast<String, String>(),
-      transformNameMapping: (map['transformNameMapping'] as Map).cast<String, String>(),
-      update: map['update'] as bool,
+      environment: (GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      jobName: (map['jobName'] as String).input(),
+      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
+      transformNameMapping: ((map['transformNameMapping'] as Map).cast<String, String>()).input(),
+      update: (map['update'] as bool).input(),
     );
   }
 }

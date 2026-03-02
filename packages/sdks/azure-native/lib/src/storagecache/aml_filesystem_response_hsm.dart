@@ -7,9 +7,9 @@ import 'aml_filesystem_hsm_settings_response.dart';
 /// Hydration and archive settings and status
 class AmlFilesystemResponseHsm {
   /// Archive status
-  final List<AmlFilesystemArchiveResponse> archiveStatus;
+  final pulumi.Input<List<AmlFilesystemArchiveResponse>> archiveStatus;
   /// Specifies HSM settings of the AML file system.
-  final AmlFilesystemHsmSettingsResponse? settings;
+  final pulumi.Input<AmlFilesystemHsmSettingsResponse>? settings;
 
   /// Creates a new [AmlFilesystemResponseHsm].
   /// [archiveStatus] Archive status
@@ -21,15 +21,15 @@ class AmlFilesystemResponseHsm {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archiveStatus': pulumi.Input.encodeList<AmlFilesystemArchiveResponse, Map<String, dynamic>>(archiveStatus, (value) => value.toMap()),
-      'settings': ?settings == null ? null : settings!.toMap(),
+      'archiveStatus': pulumi.Input.mapInputValue<List<AmlFilesystemArchiveResponse>, List<Map<String, dynamic>>>(archiveStatus, (value) => pulumi.Input.encodeList<AmlFilesystemArchiveResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'settings': ?pulumi.Input.mapOptionalInputValue<AmlFilesystemHsmSettingsResponse, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory AmlFilesystemResponseHsm.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemResponseHsm(
-      archiveStatus: pulumi.Input.decodeList<AmlFilesystemArchiveResponse>(map['archiveStatus'], (value) => AmlFilesystemArchiveResponse.fromMap((value as Map).cast<String, dynamic>())),
-      settings: map['settings'] == null ? null : AmlFilesystemHsmSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      archiveStatus: (pulumi.Input.decodeList<AmlFilesystemArchiveResponse>(map['archiveStatus'], (value) => AmlFilesystemArchiveResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      settings: map['settings'] == null ? null : (AmlFilesystemHsmSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class ExtensionAzureMonitorStatusArgs {
   /// [selectedConfigurations] The selected configurations.
   /// [workspaceId] The Log Analytics workspace ID.
   ExtensionAzureMonitorStatusArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? primaryKey,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AzureMonitorSelectedConfigurations>? selectedConfigurations,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      selectedConfigurations = pulumi.Input.asOptionalInput<AzureMonitorSelectedConfigurations>(selectedConfigurations),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    required this.clusterName,
+    this.primaryKey,
+    required this.resourceGroupName,
+    this.selectedConfigurations,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ExtensionAzureMonitorStatusArgs {
 
   factory ExtensionAzureMonitorStatusArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionAzureMonitorStatusArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      selectedConfigurations: map['selectedConfigurations'] == null ? null : pulumi.Output.create<AzureMonitorSelectedConfigurations>(AzureMonitorSelectedConfigurations.fromMap((map['selectedConfigurations'] as Map).cast<String, dynamic>())),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      selectedConfigurations: map['selectedConfigurations'] == null ? null : (AzureMonitorSelectedConfigurations.fromMap((map['selectedConfigurations'] as Map).cast<String, dynamic>())).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

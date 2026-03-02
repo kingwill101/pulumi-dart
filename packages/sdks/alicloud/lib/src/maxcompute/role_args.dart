@@ -27,15 +27,11 @@ class RoleArgs {
   /// [roleName] Role Name
   /// [type] Role type Valid values: admin/resource
   RoleArgs({
-    pulumi.Output<String>? policy,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> roleName,
-    required pulumi.Output<String> type,
-  }) :
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      roleName = pulumi.Input.asInput<String>(roleName),
-      type = pulumi.Input.asInput<String>(type);
+    this.policy,
+    required this.projectName,
+    required this.roleName,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

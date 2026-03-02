@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetOnDemandOptionsCapacityReservationOptions {
   /// Indicates whether to use unused Capacity Reservations for fulfilling On-Demand capacity. Valid values: `use-capacity-reservations-first`.
-  final String? usageStrategy;
+  final pulumi.Input<String>? usageStrategy;
 
   /// Creates a new [FleetOnDemandOptionsCapacityReservationOptions].
   /// [usageStrategy] Indicates whether to use unused Capacity Reservations for fulfilling On-Demand capacity. Valid values: `use-capacity-reservations-first`.
@@ -19,7 +20,7 @@ class FleetOnDemandOptionsCapacityReservationOptions {
 
   factory FleetOnDemandOptionsCapacityReservationOptions.fromMap(Map<String, dynamic> map) {
     return FleetOnDemandOptionsCapacityReservationOptions(
-      usageStrategy: map['usageStrategy'] == null ? null : map['usageStrategy'] as String,
+      usageStrategy: map['usageStrategy'] == null ? null : (map['usageStrategy'] as String).input(),
     );
   }
 }

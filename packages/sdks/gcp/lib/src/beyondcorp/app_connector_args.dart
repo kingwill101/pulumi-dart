@@ -34,19 +34,13 @@ class AppConnectorArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the AppConnector.
   AppConnectorArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<AppConnectorPrincipalInfo> principalInfo,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principalInfo = pulumi.Input.asInput<AppConnectorPrincipalInfo>(principalInfo),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.displayName,
+    this.labels,
+    this.name,
+    required this.principalInfo,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class AppConnectorArgs {
 
   factory AppConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AppConnectorArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principalInfo: pulumi.Output.create<AppConnectorPrincipalInfo>(AppConnectorPrincipalInfo.fromMap((map['principalInfo'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principalInfo: (AppConnectorPrincipalInfo.fromMap((map['principalInfo'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

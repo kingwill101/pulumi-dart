@@ -27,17 +27,12 @@ class DiskArgs {
   /// [sizeInGb] Size of the disk in GB.
   /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DiskArgs({
-    required pulumi.Output<String> availabilityZone,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> sizeInGb,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sizeInGb = pulumi.Input.asInput<int>(sizeInGb),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.availabilityZone,
+    this.name,
+    this.region,
+    required this.sizeInGb,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class DiskArgs {
 
   factory DiskArgs.fromMap(Map<String, dynamic> map) {
     return DiskArgs(
-      availabilityZone: pulumi.Output.create<String>(map['availabilityZone'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sizeInGb: pulumi.Output.create<int>(map['sizeInGb'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sizeInGb: (map['sizeInGb'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

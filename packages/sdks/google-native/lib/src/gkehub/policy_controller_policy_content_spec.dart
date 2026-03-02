@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_controller_template_library_config.dart';
 
 /// PolicyContentSpec defines the user's desired content configuration on the cluster.
 class PolicyControllerPolicyContentSpec {
   /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-  final Map<String, String>? bundles;
+  final pulumi.Input<Map<String, String>>? bundles;
   /// Configures the installation of the Template Library.
-  final PolicyControllerTemplateLibraryConfig? templateLibrary;
+  final pulumi.Input<PolicyControllerTemplateLibraryConfig>? templateLibrary;
 
   /// Creates a new [PolicyControllerPolicyContentSpec].
   /// [bundles] map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
@@ -20,14 +21,14 @@ class PolicyControllerPolicyContentSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bundles': ?bundles,
-      'templateLibrary': ?templateLibrary == null ? null : templateLibrary!.toMap(),
+      'templateLibrary': ?pulumi.Input.mapOptionalInputValue<PolicyControllerTemplateLibraryConfig, Map<String, dynamic>>(templateLibrary, (value) => value.toMap()),
     };
   }
 
   factory PolicyControllerPolicyContentSpec.fromMap(Map<String, dynamic> map) {
     return PolicyControllerPolicyContentSpec(
-      bundles: map['bundles'] == null ? null : (map['bundles'] as Map).cast<String, String>(),
-      templateLibrary: map['templateLibrary'] == null ? null : PolicyControllerTemplateLibraryConfig.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>()),
+      bundles: map['bundles'] == null ? null : ((map['bundles'] as Map).cast<String, String>()).input(),
+      templateLibrary: map['templateLibrary'] == null ? null : (PolicyControllerTemplateLibraryConfig.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

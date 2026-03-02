@@ -22,15 +22,11 @@ class EventStreamArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
   EventStreamArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> destinationStreamArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      destinationStreamArn = pulumi.Input.asInput<String>(destinationStreamArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn);
+    required this.applicationId,
+    required this.destinationStreamArn,
+    this.region,
+    required this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EventStreamArgs {
 
   factory EventStreamArgs.fromMap(Map<String, dynamic> map) {
     return EventStreamArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      destinationStreamArn: pulumi.Output.create<String>(map['destinationStreamArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      destinationStreamArn: (map['destinationStreamArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

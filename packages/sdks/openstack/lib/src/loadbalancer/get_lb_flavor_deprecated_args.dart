@@ -20,13 +20,10 @@ class GetLbFlavorDeprecatedArgs {
   /// [name] The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
   /// [region] The region in which to obtain the V2 Load Balancer client.
   GetLbFlavorDeprecatedArgs({
-    pulumi.Output<String>? flavorId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      flavorId = pulumi.Input.asOptionalInput<String>(flavorId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.flavorId,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetLbFlavorDeprecatedArgs {
 
   factory GetLbFlavorDeprecatedArgs.fromMap(Map<String, dynamic> map) {
     return GetLbFlavorDeprecatedArgs(
-      flavorId: map['flavorId'] == null ? null : pulumi.Output.create<String>(map['flavorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

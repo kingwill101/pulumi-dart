@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetChartRepositoriesRepository {
   /// The first ID of the resource.
-  final String chartRepositoryId;
+  final pulumi.Input<String> chartRepositoryId;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Chart Repository.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Container Registry instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the repository.
-  final String repoName;
+  final pulumi.Input<String> repoName;
   /// The namespace to which the repository belongs.
-  final String repoNamespaceName;
+  final pulumi.Input<String> repoNamespaceName;
   /// The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
-  final String repoType;
+  final pulumi.Input<String> repoType;
   /// The summary about the repository.
-  final String summary;
+  final pulumi.Input<String> summary;
 
   /// Creates a new [GetChartRepositoriesRepository].
   /// [chartRepositoryId] The first ID of the resource.
@@ -54,14 +55,14 @@ class GetChartRepositoriesRepository {
 
   factory GetChartRepositoriesRepository.fromMap(Map<String, dynamic> map) {
     return GetChartRepositoriesRepository(
-      chartRepositoryId: map['chartRepositoryId'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      repoName: map['repoName'] as String,
-      repoNamespaceName: map['repoNamespaceName'] as String,
-      repoType: map['repoType'] as String,
-      summary: map['summary'] as String,
+      chartRepositoryId: (map['chartRepositoryId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      repoName: (map['repoName'] as String).input(),
+      repoNamespaceName: (map['repoNamespaceName'] as String).input(),
+      repoType: (map['repoType'] as String).input(),
+      summary: (map['summary'] as String).input(),
     );
   }
 }

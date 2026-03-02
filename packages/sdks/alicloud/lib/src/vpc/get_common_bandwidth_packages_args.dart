@@ -34,23 +34,15 @@ class GetCommonBandwidthPackagesArgs {
   /// [resourceGroupId] The Id of resource group which the common bandwidth package belongs.
   /// [status] The status of bandwidth package. Valid values: `Available` and `Pending`.
   GetCommonBandwidthPackagesArgs({
-    pulumi.Output<String>? bandwidthPackageName,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<bool>? includeReservationData,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidthPackageName = pulumi.Input.asOptionalInput<String>(bandwidthPackageName),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      includeReservationData = pulumi.Input.asOptionalInput<bool>(includeReservationData),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidthPackageName,
+    this.dryRun,
+    this.ids,
+    this.includeReservationData,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceGroupId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetCommonBandwidthPackagesArgs {
 
   factory GetCommonBandwidthPackagesArgs.fromMap(Map<String, dynamic> map) {
     return GetCommonBandwidthPackagesArgs(
-      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : pulumi.Output.create<String>(map['bandwidthPackageName'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      includeReservationData: map['includeReservationData'] == null ? null : pulumi.Output.create<bool>(map['includeReservationData'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : (map['bandwidthPackageName'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

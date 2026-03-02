@@ -6,24 +6,24 @@ import 'trigger_pipeline_reference_response.dart';
 /// Trigger that runs every time a custom event is received.
 class CustomEventsTriggerResponse {
   /// List of tags that can be used for describing the trigger.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Trigger description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The list of event types that cause this trigger to fire.
-  final List<dynamic> events;
+  final pulumi.Input<List<dynamic>> events;
   /// Pipelines that need to be started.
-  final List<TriggerPipelineReferenceResponse>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReferenceResponse>>? pipelines;
   /// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
-  final String runtimeState;
+  final pulumi.Input<String> runtimeState;
   /// The ARM resource ID of the Azure Event Grid Topic.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
-  final String? subjectBeginsWith;
+  final pulumi.Input<String>? subjectBeginsWith;
   /// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
-  final String? subjectEndsWith;
+  final pulumi.Input<String>? subjectEndsWith;
   /// Trigger type.
   /// Expected value is 'CustomEventsTrigger'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [CustomEventsTriggerResponse].
   /// [annotations] List of tags that can be used for describing the trigger.
@@ -52,7 +52,7 @@ class CustomEventsTriggerResponse {
       'annotations': ?annotations,
       'description': ?description,
       'events': events,
-      'pipelines': ?pipelines == null ? null : pulumi.Input.encodeList<TriggerPipelineReferenceResponse, Map<String, dynamic>>(pipelines!, (value) => value.toMap()),
+      'pipelines': ?pulumi.Input.mapOptionalInputValue<List<TriggerPipelineReferenceResponse>, List<Map<String, dynamic>>>(pipelines, (value) => pulumi.Input.encodeList<TriggerPipelineReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'runtimeState': runtimeState,
       'scope': scope,
       'subjectBeginsWith': ?subjectBeginsWith,
@@ -63,15 +63,15 @@ class CustomEventsTriggerResponse {
 
   factory CustomEventsTriggerResponse.fromMap(Map<String, dynamic> map) {
     return CustomEventsTriggerResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      events: (map['events'] as List).cast<dynamic>(),
-      pipelines: map['pipelines'] == null ? null : pulumi.Input.decodeList<TriggerPipelineReferenceResponse>(map['pipelines'], (value) => TriggerPipelineReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      runtimeState: map['runtimeState'] as String,
-      scope: map['scope'] as String,
-      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : map['subjectBeginsWith'] as String,
-      subjectEndsWith: map['subjectEndsWith'] == null ? null : map['subjectEndsWith'] as String,
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      events: ((map['events'] as List).cast<dynamic>()).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReferenceResponse>(map['pipelines'], (value) => TriggerPipelineReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runtimeState: (map['runtimeState'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith'] as String).input(),
+      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

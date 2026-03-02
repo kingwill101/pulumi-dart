@@ -41,27 +41,17 @@ class BackupPlanArgs {
   /// [project] Optional.
   /// [retentionPolicy] Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
   BackupPlanArgs({
-    pulumi.Output<BackupConfig>? backupConfig,
-    required pulumi.Output<String> backupPlanId,
-    pulumi.Output<Schedule>? backupSchedule,
-    required pulumi.Output<String> cluster,
-    pulumi.Output<bool>? deactivated,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<RetentionPolicy>? retentionPolicy,
-  }) :
-      backupConfig = pulumi.Input.asOptionalInput<BackupConfig>(backupConfig),
-      backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
-      backupSchedule = pulumi.Input.asOptionalInput<Schedule>(backupSchedule),
-      cluster = pulumi.Input.asInput<String>(cluster),
-      deactivated = pulumi.Input.asOptionalInput<bool>(deactivated),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retentionPolicy = pulumi.Input.asOptionalInput<RetentionPolicy>(retentionPolicy);
+    this.backupConfig,
+    required this.backupPlanId,
+    this.backupSchedule,
+    required this.cluster,
+    this.deactivated,
+    this.description,
+    this.labels,
+    this.location,
+    this.project,
+    this.retentionPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class BackupPlanArgs {
 
   factory BackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return BackupPlanArgs(
-      backupConfig: map['backupConfig'] == null ? null : pulumi.Output.create<BackupConfig>(BackupConfig.fromMap((map['backupConfig'] as Map).cast<String, dynamic>())),
-      backupPlanId: pulumi.Output.create<String>(map['backupPlanId'] as String),
-      backupSchedule: map['backupSchedule'] == null ? null : pulumi.Output.create<Schedule>(Schedule.fromMap((map['backupSchedule'] as Map).cast<String, dynamic>())),
-      cluster: pulumi.Output.create<String>(map['cluster'] as String),
-      deactivated: map['deactivated'] == null ? null : pulumi.Output.create<bool>(map['deactivated'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      retentionPolicy: map['retentionPolicy'] == null ? null : pulumi.Output.create<RetentionPolicy>(RetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())),
+      backupConfig: map['backupConfig'] == null ? null : (BackupConfig.fromMap((map['backupConfig'] as Map).cast<String, dynamic>())).input(),
+      backupPlanId: (map['backupPlanId'] as String).input(),
+      backupSchedule: map['backupSchedule'] == null ? null : (Schedule.fromMap((map['backupSchedule'] as Map).cast<String, dynamic>())).input(),
+      cluster: (map['cluster'] as String).input(),
+      deactivated: map['deactivated'] == null ? null : (map['deactivated'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

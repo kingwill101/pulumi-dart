@@ -47,29 +47,18 @@ class ServiceArgs {
   /// [tracingConfig] Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.). See `tracing_config` below.
   /// [vpcConfig] Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.). See `vpc_config` below.
   ServiceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? internetAccess,
-    pulumi.Output<ServiceLogConfig>? logConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<ServiceNasConfig>? nasConfig,
-    pulumi.Output<bool>? publish,
-    pulumi.Output<String>? role,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ServiceTracingConfig>? tracingConfig,
-    pulumi.Output<ServiceVpcConfig>? vpcConfig,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      internetAccess = pulumi.Input.asOptionalInput<bool>(internetAccess),
-      logConfig = pulumi.Input.asOptionalInput<ServiceLogConfig>(logConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      nasConfig = pulumi.Input.asOptionalInput<ServiceNasConfig>(nasConfig),
-      publish = pulumi.Input.asOptionalInput<bool>(publish),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tracingConfig = pulumi.Input.asOptionalInput<ServiceTracingConfig>(tracingConfig),
-      vpcConfig = pulumi.Input.asOptionalInput<ServiceVpcConfig>(vpcConfig);
+    this.description,
+    this.internetAccess,
+    this.logConfig,
+    this.name,
+    this.namePrefix,
+    this.nasConfig,
+    this.publish,
+    this.role,
+    this.tags,
+    this.tracingConfig,
+    this.vpcConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      internetAccess: map['internetAccess'] == null ? null : pulumi.Output.create<bool>(map['internetAccess'] as bool),
-      logConfig: map['logConfig'] == null ? null : pulumi.Output.create<ServiceLogConfig>(ServiceLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      nasConfig: map['nasConfig'] == null ? null : pulumi.Output.create<ServiceNasConfig>(ServiceNasConfig.fromMap((map['nasConfig'] as Map).cast<String, dynamic>())),
-      publish: map['publish'] == null ? null : pulumi.Output.create<bool>(map['publish'] as bool),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tracingConfig: map['tracingConfig'] == null ? null : pulumi.Output.create<ServiceTracingConfig>(ServiceTracingConfig.fromMap((map['tracingConfig'] as Map).cast<String, dynamic>())),
-      vpcConfig: map['vpcConfig'] == null ? null : pulumi.Output.create<ServiceVpcConfig>(ServiceVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      internetAccess: map['internetAccess'] == null ? null : (map['internetAccess'] as bool).input(),
+      logConfig: map['logConfig'] == null ? null : (ServiceLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      nasConfig: map['nasConfig'] == null ? null : (ServiceNasConfig.fromMap((map['nasConfig'] as Map).cast<String, dynamic>())).input(),
+      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tracingConfig: map['tracingConfig'] == null ? null : (ServiceTracingConfig.fromMap((map['tracingConfig'] as Map).cast<String, dynamic>())).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : (ServiceVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

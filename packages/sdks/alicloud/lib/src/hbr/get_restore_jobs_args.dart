@@ -37,25 +37,16 @@ class GetRestoreJobsArgs {
   /// [targetInstanceIds] The ID of target ECS instance.
   /// [vaultIds] The list of backup vault IDs.
   GetRestoreJobsArgs({
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<List<String>>? restoreIds,
-    required pulumi.Output<String> restoreType,
-    pulumi.Output<List<String>>? sourceTypes,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? targetBuckets,
-    pulumi.Output<List<String>>? targetFileSystemIds,
-    pulumi.Output<List<String>>? targetInstanceIds,
-    pulumi.Output<List<String>>? vaultIds,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      restoreIds = pulumi.Input.asOptionalInput<List<String>>(restoreIds),
-      restoreType = pulumi.Input.asInput<String>(restoreType),
-      sourceTypes = pulumi.Input.asOptionalInput<List<String>>(sourceTypes),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetBuckets = pulumi.Input.asOptionalInput<List<String>>(targetBuckets),
-      targetFileSystemIds = pulumi.Input.asOptionalInput<List<String>>(targetFileSystemIds),
-      targetInstanceIds = pulumi.Input.asOptionalInput<List<String>>(targetInstanceIds),
-      vaultIds = pulumi.Input.asOptionalInput<List<String>>(vaultIds);
+    this.outputFile,
+    this.restoreIds,
+    required this.restoreType,
+    this.sourceTypes,
+    this.status,
+    this.targetBuckets,
+    this.targetFileSystemIds,
+    this.targetInstanceIds,
+    this.vaultIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GetRestoreJobsArgs {
 
   factory GetRestoreJobsArgs.fromMap(Map<String, dynamic> map) {
     return GetRestoreJobsArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      restoreIds: map['restoreIds'] == null ? null : pulumi.Output.create<List<String>>((map['restoreIds'] as List).cast<String>()),
-      restoreType: pulumi.Output.create<String>(map['restoreType'] as String),
-      sourceTypes: map['sourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['sourceTypes'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetBuckets: map['targetBuckets'] == null ? null : pulumi.Output.create<List<String>>((map['targetBuckets'] as List).cast<String>()),
-      targetFileSystemIds: map['targetFileSystemIds'] == null ? null : pulumi.Output.create<List<String>>((map['targetFileSystemIds'] as List).cast<String>()),
-      targetInstanceIds: map['targetInstanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['targetInstanceIds'] as List).cast<String>()),
-      vaultIds: map['vaultIds'] == null ? null : pulumi.Output.create<List<String>>((map['vaultIds'] as List).cast<String>()),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      restoreIds: map['restoreIds'] == null ? null : ((map['restoreIds'] as List).cast<String>()).input(),
+      restoreType: (map['restoreType'] as String).input(),
+      sourceTypes: map['sourceTypes'] == null ? null : ((map['sourceTypes'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetBuckets: map['targetBuckets'] == null ? null : ((map['targetBuckets'] as List).cast<String>()).input(),
+      targetFileSystemIds: map['targetFileSystemIds'] == null ? null : ((map['targetFileSystemIds'] as List).cast<String>()).input(),
+      targetInstanceIds: map['targetInstanceIds'] == null ? null : ((map['targetInstanceIds'] as List).cast<String>()).input(),
+      vaultIds: map['vaultIds'] == null ? null : ((map['vaultIds'] as List).cast<String>()).input(),
     );
   }
 }

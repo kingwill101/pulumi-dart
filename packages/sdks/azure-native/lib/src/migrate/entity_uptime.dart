@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Entity Uptime.
 class EntityUptime {
   /// Gets the days per month.
-  final int? daysPerMonth;
+  final pulumi.Input<int>? daysPerMonth;
   /// Gets the hours per day.
-  final int? hoursPerDay;
+  final pulumi.Input<int>? hoursPerDay;
 
   /// Creates a new [EntityUptime].
   /// [daysPerMonth] Gets the days per month.
@@ -25,8 +26,8 @@ class EntityUptime {
 
   factory EntityUptime.fromMap(Map<String, dynamic> map) {
     return EntityUptime(
-      daysPerMonth: map['daysPerMonth'] == null ? null : map['daysPerMonth'] as int,
-      hoursPerDay: map['hoursPerDay'] == null ? null : map['hoursPerDay'] as int,
+      daysPerMonth: map['daysPerMonth'] == null ? null : (map['daysPerMonth'] as int).input(),
+      hoursPerDay: map['hoursPerDay'] == null ? null : (map['hoursPerDay'] as int).input(),
     );
   }
 }

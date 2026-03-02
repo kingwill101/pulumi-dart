@@ -25,17 +25,12 @@ class HybridRunbookWorkerArgs {
   /// [workerGroupName] The name of the HybridWorker Group. Changing this forces a new Automation to be created.
   /// [workerId] Specify the ID of this HybridWorker in UUID notation. Changing this forces a new Automation to be created.
   HybridRunbookWorkerArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmResourceId,
-    required pulumi.Output<String> workerGroupName,
-    required pulumi.Output<String> workerId,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmResourceId = pulumi.Input.asInput<String>(vmResourceId),
-      workerGroupName = pulumi.Input.asInput<String>(workerGroupName),
-      workerId = pulumi.Input.asInput<String>(workerId);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+    required this.vmResourceId,
+    required this.workerGroupName,
+    required this.workerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class HybridRunbookWorkerArgs {
 
   factory HybridRunbookWorkerArgs.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmResourceId: pulumi.Output.create<String>(map['vmResourceId'] as String),
-      workerGroupName: pulumi.Output.create<String>(map['workerGroupName'] as String),
-      workerId: pulumi.Output.create<String>(map['workerId'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmResourceId: (map['vmResourceId'] as String).input(),
+      workerGroupName: (map['workerGroupName'] as String).input(),
+      workerId: (map['workerId'] as String).input(),
     );
   }
 }

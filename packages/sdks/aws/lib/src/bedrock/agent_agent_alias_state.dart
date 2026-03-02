@@ -40,27 +40,17 @@ class AgentAgentAliasState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   AgentAgentAliasState({
-    pulumi.Output<String>? agentAliasArn,
-    pulumi.Output<String>? agentAliasId,
-    pulumi.Output<String>? agentAliasName,
-    pulumi.Output<String>? agentId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<AgentAgentAliasRoutingConfiguration>>? routingConfigurations,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<AgentAgentAliasTimeouts>? timeouts,
-  }) :
-      agentAliasArn = pulumi.Input.asOptionalInput<String>(agentAliasArn),
-      agentAliasId = pulumi.Input.asOptionalInput<String>(agentAliasId),
-      agentAliasName = pulumi.Input.asOptionalInput<String>(agentAliasName),
-      agentId = pulumi.Input.asOptionalInput<String>(agentId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingConfigurations = pulumi.Input.asOptionalInput<List<AgentAgentAliasRoutingConfiguration>>(routingConfigurations),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<AgentAgentAliasTimeouts>(timeouts);
+    this.agentAliasArn,
+    this.agentAliasId,
+    this.agentAliasName,
+    this.agentId,
+    this.description,
+    this.region,
+    this.routingConfigurations,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class AgentAgentAliasState {
 
   factory AgentAgentAliasState.fromMap(Map<String, dynamic> map) {
     return AgentAgentAliasState(
-      agentAliasArn: map['agentAliasArn'] == null ? null : pulumi.Output.create<String>(map['agentAliasArn'] as String),
-      agentAliasId: map['agentAliasId'] == null ? null : pulumi.Output.create<String>(map['agentAliasId'] as String),
-      agentAliasName: map['agentAliasName'] == null ? null : pulumi.Output.create<String>(map['agentAliasName'] as String),
-      agentId: map['agentId'] == null ? null : pulumi.Output.create<String>(map['agentId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingConfigurations: map['routingConfigurations'] == null ? null : pulumi.Output.create<List<AgentAgentAliasRoutingConfiguration>>(pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(map['routingConfigurations'], (value) => AgentAgentAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentAgentAliasTimeouts>(AgentAgentAliasTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      agentAliasArn: map['agentAliasArn'] == null ? null : (map['agentAliasArn'] as String).input(),
+      agentAliasId: map['agentAliasId'] == null ? null : (map['agentAliasId'] as String).input(),
+      agentAliasName: map['agentAliasName'] == null ? null : (map['agentAliasName'] as String).input(),
+      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingConfigurations: map['routingConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(map['routingConfigurations'], (value) => AgentAgentAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentAgentAliasTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

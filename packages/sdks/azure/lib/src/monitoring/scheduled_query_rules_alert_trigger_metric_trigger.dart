@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryRulesAlertTriggerMetricTrigger {
   /// Evaluation of metric on a particular column.
-  final String? metricColumn;
+  final pulumi.Input<String>? metricColumn;
   /// Metric Trigger Type - 'Consecutive' or 'Total'.
-  final String metricTriggerType;
+  final pulumi.Input<String> metricTriggerType;
   /// Evaluation operation for rule - 'Equal', 'GreaterThan', GreaterThanOrEqual', 'LessThan', or 'LessThanOrEqual'.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The threshold of the metric trigger. Values must be between 0 and 10000 inclusive.
-  final double threshold;
+  final pulumi.Input<double> threshold;
 
   /// Creates a new [ScheduledQueryRulesAlertTriggerMetricTrigger].
   /// [metricColumn] Evaluation of metric on a particular column.
@@ -34,10 +35,10 @@ class ScheduledQueryRulesAlertTriggerMetricTrigger {
 
   factory ScheduledQueryRulesAlertTriggerMetricTrigger.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertTriggerMetricTrigger(
-      metricColumn: map['metricColumn'] == null ? null : map['metricColumn'] as String,
-      metricTriggerType: map['metricTriggerType'] as String,
-      operator: map['operator'] as String,
-      threshold: map['threshold'] as double,
+      metricColumn: map['metricColumn'] == null ? null : (map['metricColumn'] as String).input(),
+      metricTriggerType: (map['metricTriggerType'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      threshold: (map['threshold'] as double).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource {
   /// Columns to construct entity_id / row keys. Start by supporting 1 only.
-  final List<String> entityIdColumns;
+  final pulumi.Input<List<String>> entityIdColumns;
   /// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource].
   /// [entityIdColumns] Columns to construct entity_id / row keys. Start by supporting 1 only.
@@ -24,8 +25,8 @@ class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource {
 
   factory GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource(
-      entityIdColumns: (map['entityIdColumns'] as List).cast<String>(),
-      uri: map['uri'] as String,
+      entityIdColumns: ((map['entityIdColumns'] as List).cast<String>()).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

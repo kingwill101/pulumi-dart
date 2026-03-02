@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_sku_response.dart';
 
 /// The supported disk size details for a disk type.
 class DiskDetailsResponse {
   /// The disk tier, e.g. P10, E10.
-  final String? diskTier;
+  final pulumi.Input<String>? diskTier;
   /// The disk Iops.
-  final double? iopsReadWrite;
+  final pulumi.Input<double>? iopsReadWrite;
   /// The maximum supported disk count.
-  final double? maximumSupportedDiskCount;
+  final pulumi.Input<double>? maximumSupportedDiskCount;
   /// The disk provisioned throughput in MBps.
-  final double? mbpsReadWrite;
+  final pulumi.Input<double>? mbpsReadWrite;
   /// The minimum supported disk count.
-  final double? minimumSupportedDiskCount;
+  final pulumi.Input<double>? minimumSupportedDiskCount;
   /// The disk size in GB.
-  final double? sizeGB;
+  final pulumi.Input<double>? sizeGB;
   /// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
-  final DiskSkuResponse? sku;
+  final pulumi.Input<DiskSkuResponse>? sku;
 
   /// Creates a new [DiskDetailsResponse].
   /// [diskTier] The disk tier, e.g. P10, E10.
@@ -45,19 +46,19 @@ class DiskDetailsResponse {
       'mbpsReadWrite': ?mbpsReadWrite,
       'minimumSupportedDiskCount': ?minimumSupportedDiskCount,
       'sizeGB': ?sizeGB,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?pulumi.Input.mapOptionalInputValue<DiskSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
     };
   }
 
   factory DiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DiskDetailsResponse(
-      diskTier: map['diskTier'] == null ? null : map['diskTier'] as String,
-      iopsReadWrite: map['iopsReadWrite'] == null ? null : map['iopsReadWrite'] as double,
-      maximumSupportedDiskCount: map['maximumSupportedDiskCount'] == null ? null : map['maximumSupportedDiskCount'] as double,
-      mbpsReadWrite: map['mbpsReadWrite'] == null ? null : map['mbpsReadWrite'] as double,
-      minimumSupportedDiskCount: map['minimumSupportedDiskCount'] == null ? null : map['minimumSupportedDiskCount'] as double,
-      sizeGB: map['sizeGB'] == null ? null : map['sizeGB'] as double,
-      sku: map['sku'] == null ? null : DiskSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      diskTier: map['diskTier'] == null ? null : (map['diskTier'] as String).input(),
+      iopsReadWrite: map['iopsReadWrite'] == null ? null : (map['iopsReadWrite'] as double).input(),
+      maximumSupportedDiskCount: map['maximumSupportedDiskCount'] == null ? null : (map['maximumSupportedDiskCount'] as double).input(),
+      mbpsReadWrite: map['mbpsReadWrite'] == null ? null : (map['mbpsReadWrite'] as double).input(),
+      minimumSupportedDiskCount: map['minimumSupportedDiskCount'] == null ? null : (map['minimumSupportedDiskCount'] as double).input(),
+      sizeGB: map['sizeGB'] == null ? null : (map['sizeGB'] as double).input(),
+      sku: map['sku'] == null ? null : (DiskSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

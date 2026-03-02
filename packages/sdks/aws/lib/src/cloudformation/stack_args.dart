@@ -57,35 +57,21 @@ class StackArgs {
   /// [templateUrl] Location of a file containing the template body (max size: 460,800 bytes).
   /// [timeoutInMinutes] The amount of time that can pass before the stack status becomes `CREATE_FAILED`.
   StackArgs({
-    pulumi.Output<List<String>>? capabilities,
-    pulumi.Output<bool>? disableRollback,
-    pulumi.Output<String>? iamRoleArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? notificationArns,
-    pulumi.Output<String>? onFailure,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? policyBody,
-    pulumi.Output<String>? policyUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? templateBody,
-    pulumi.Output<String>? templateUrl,
-    pulumi.Output<int>? timeoutInMinutes,
-  }) :
-      capabilities = pulumi.Input.asOptionalInput<List<String>>(capabilities),
-      disableRollback = pulumi.Input.asOptionalInput<bool>(disableRollback),
-      iamRoleArn = pulumi.Input.asOptionalInput<String>(iamRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationArns = pulumi.Input.asOptionalInput<List<String>>(notificationArns),
-      onFailure = pulumi.Input.asOptionalInput<String>(onFailure),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      policyBody = pulumi.Input.asOptionalInput<String>(policyBody),
-      policyUrl = pulumi.Input.asOptionalInput<String>(policyUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateBody = pulumi.Input.asOptionalInput<String>(templateBody),
-      templateUrl = pulumi.Input.asOptionalInput<String>(templateUrl),
-      timeoutInMinutes = pulumi.Input.asOptionalInput<int>(timeoutInMinutes);
+    this.capabilities,
+    this.disableRollback,
+    this.iamRoleArn,
+    this.name,
+    this.notificationArns,
+    this.onFailure,
+    this.parameters,
+    this.policyBody,
+    this.policyUrl,
+    this.region,
+    this.tags,
+    this.templateBody,
+    this.templateUrl,
+    this.timeoutInMinutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class StackArgs {
 
   factory StackArgs.fromMap(Map<String, dynamic> map) {
     return StackArgs(
-      capabilities: map['capabilities'] == null ? null : pulumi.Output.create<List<String>>((map['capabilities'] as List).cast<String>()),
-      disableRollback: map['disableRollback'] == null ? null : pulumi.Output.create<bool>(map['disableRollback'] as bool),
-      iamRoleArn: map['iamRoleArn'] == null ? null : pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationArns: map['notificationArns'] == null ? null : pulumi.Output.create<List<String>>((map['notificationArns'] as List).cast<String>()),
-      onFailure: map['onFailure'] == null ? null : pulumi.Output.create<String>(map['onFailure'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      policyBody: map['policyBody'] == null ? null : pulumi.Output.create<String>(map['policyBody'] as String),
-      policyUrl: map['policyUrl'] == null ? null : pulumi.Output.create<String>(map['policyUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateBody: map['templateBody'] == null ? null : pulumi.Output.create<String>(map['templateBody'] as String),
-      templateUrl: map['templateUrl'] == null ? null : pulumi.Output.create<String>(map['templateUrl'] as String),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : pulumi.Output.create<int>(map['timeoutInMinutes'] as int),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
+      disableRollback: map['disableRollback'] == null ? null : (map['disableRollback'] as bool).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationArns: map['notificationArns'] == null ? null : ((map['notificationArns'] as List).cast<String>()).input(),
+      onFailure: map['onFailure'] == null ? null : (map['onFailure'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      policyBody: map['policyBody'] == null ? null : (map['policyBody'] as String).input(),
+      policyUrl: map['policyUrl'] == null ? null : (map['policyUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
+      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as int).input(),
     );
   }
 }

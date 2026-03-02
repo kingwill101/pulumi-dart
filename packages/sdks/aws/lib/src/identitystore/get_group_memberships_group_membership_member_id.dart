@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupMembershipsGroupMembershipMemberId {
   /// User identifier of the group member.
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [GetGroupMembershipsGroupMembershipMemberId].
   /// [userId] User identifier of the group member.
@@ -19,7 +20,7 @@ class GetGroupMembershipsGroupMembershipMemberId {
 
   factory GetGroupMembershipsGroupMembershipMemberId.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsGroupMembershipMemberId(
-      userId: map['userId'] as String,
+      userId: (map['userId'] as String).input(),
     );
   }
 }

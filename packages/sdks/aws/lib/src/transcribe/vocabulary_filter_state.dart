@@ -35,25 +35,16 @@ class VocabularyFilterState {
   /// [vocabularyFilterName] The name of the VocabularyFilter.
   /// [words] A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
   VocabularyFilterState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? downloadUri,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vocabularyFilterFileUri,
-    pulumi.Output<String>? vocabularyFilterName,
-    pulumi.Output<List<String>>? words,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      downloadUri = pulumi.Input.asOptionalInput<String>(downloadUri),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vocabularyFilterFileUri = pulumi.Input.asOptionalInput<String>(vocabularyFilterFileUri),
-      vocabularyFilterName = pulumi.Input.asOptionalInput<String>(vocabularyFilterName),
-      words = pulumi.Input.asOptionalInput<List<String>>(words);
+    this.arn,
+    this.downloadUri,
+    this.languageCode,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.vocabularyFilterFileUri,
+    this.vocabularyFilterName,
+    this.words,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class VocabularyFilterState {
 
   factory VocabularyFilterState.fromMap(Map<String, dynamic> map) {
     return VocabularyFilterState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      downloadUri: map['downloadUri'] == null ? null : pulumi.Output.create<String>(map['downloadUri'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : pulumi.Output.create<String>(map['vocabularyFilterFileUri'] as String),
-      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : pulumi.Output.create<String>(map['vocabularyFilterName'] as String),
-      words: map['words'] == null ? null : pulumi.Output.create<List<String>>((map['words'] as List).cast<String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      downloadUri: map['downloadUri'] == null ? null : (map['downloadUri'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : (map['vocabularyFilterFileUri'] as String).input(),
+      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : (map['vocabularyFilterName'] as String).input(),
+      words: map['words'] == null ? null : ((map['words'] as List).cast<String>()).input(),
     );
   }
 }

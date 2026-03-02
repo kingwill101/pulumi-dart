@@ -5,56 +5,56 @@ import 'get_app_groups_group_quota.dart';
 
 class GetAppGroupsGroup {
   /// The ID of the App Group.
-  final String appGroupId;
+  final pulumi.Input<String> appGroupId;
   /// Application Group Name.
-  final String appGroupName;
+  final pulumi.Input<String> appGroupName;
   /// Billing model. Valid values:`compute_resource` and `qps`.
-  final int chargeWay;
+  final pulumi.Input<int> chargeWay;
   /// The commodity code.
-  final String commodityCode;
+  final pulumi.Input<String> commodityCode;
   /// The time of creation.
-  final int createTime;
+  final pulumi.Input<int> createTime;
   /// The version of Application Group Name.
-  final String currentVersion;
+  final pulumi.Input<String> currentVersion;
   /// The description of the resource.
-  final String description;
+  final pulumi.Input<String> description;
   /// Domain name.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// Expiration Time.
-  final String expireOn;
+  final pulumi.Input<String> expireOn;
   /// Coarse deployment ID.
-  final int firstRankAlgoDeploymentId;
+  final pulumi.Input<int> firstRankAlgoDeploymentId;
   /// Whether the quota status is under approval. Valid status:
-  final int hasPendingQuotaReviewTask;
-  final String id;
+  final pulumi.Input<int> hasPendingQuotaReviewTask;
+  final pulumi.Input<String> id;
   /// The Instance ID.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
-  final String lockMode;
+  final pulumi.Input<String> lockMode;
   /// Instance is automatically locked after expiration.
-  final int lockedByExpiration;
+  final pulumi.Input<int> lockedByExpiration;
   /// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// Refine deployment ID in deployment.
-  final int pendingSecondRankAlgoDeploymentId;
+  final pulumi.Input<int> pendingSecondRankAlgoDeploymentId;
   /// Unfinished order number.
-  final String processingOrderId;
+  final pulumi.Input<String> processingOrderId;
   /// Whether the production is completed. Valid values:
-  final int produced;
+  final pulumi.Input<int> produced;
   /// The Project ID.
-  final String projectId;
+  final pulumi.Input<String> projectId;
   /// Quota information.
-  final List<GetAppGroupsGroupQuota> quotas;
+  final pulumi.Input<List<GetAppGroupsGroupQuota>> quotas;
   /// The Resource Group ID.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Refine deployment ID.
-  final int secondRankAlgoDeploymentId;
+  final pulumi.Input<int> secondRankAlgoDeploymentId;
   /// The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The Switched time.
-  final int switchedTime;
+  final pulumi.Input<int> switchedTime;
   /// Application type. Valid Values: `standard`, `enhanced`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAppGroupsGroup].
   /// [appGroupId] The ID of the App Group.
@@ -134,7 +134,7 @@ class GetAppGroupsGroup {
       'processingOrderId': processingOrderId,
       'produced': produced,
       'projectId': projectId,
-      'quotas': pulumi.Input.encodeList<GetAppGroupsGroupQuota, Map<String, dynamic>>(quotas, (value) => value.toMap()),
+      'quotas': pulumi.Input.mapInputValue<List<GetAppGroupsGroupQuota>, List<Map<String, dynamic>>>(quotas, (value) => pulumi.Input.encodeList<GetAppGroupsGroupQuota, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupId': resourceGroupId,
       'secondRankAlgoDeploymentId': secondRankAlgoDeploymentId,
       'status': status,
@@ -145,32 +145,32 @@ class GetAppGroupsGroup {
 
   factory GetAppGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetAppGroupsGroup(
-      appGroupId: map['appGroupId'] as String,
-      appGroupName: map['appGroupName'] as String,
-      chargeWay: map['chargeWay'] as int,
-      commodityCode: map['commodityCode'] as String,
-      createTime: map['createTime'] as int,
-      currentVersion: map['currentVersion'] as String,
-      description: map['description'] as String,
-      domain: map['domain'] as String,
-      expireOn: map['expireOn'] as String,
-      firstRankAlgoDeploymentId: map['firstRankAlgoDeploymentId'] as int,
-      hasPendingQuotaReviewTask: map['hasPendingQuotaReviewTask'] as int,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      lockMode: map['lockMode'] as String,
-      lockedByExpiration: map['lockedByExpiration'] as int,
-      paymentType: map['paymentType'] as String,
-      pendingSecondRankAlgoDeploymentId: map['pendingSecondRankAlgoDeploymentId'] as int,
-      processingOrderId: map['processingOrderId'] as String,
-      produced: map['produced'] as int,
-      projectId: map['projectId'] as String,
-      quotas: pulumi.Input.decodeList<GetAppGroupsGroupQuota>(map['quotas'], (value) => GetAppGroupsGroupQuota.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] as String,
-      secondRankAlgoDeploymentId: map['secondRankAlgoDeploymentId'] as int,
-      status: map['status'] as String,
-      switchedTime: map['switchedTime'] as int,
-      type: map['type'] as String,
+      appGroupId: (map['appGroupId'] as String).input(),
+      appGroupName: (map['appGroupName'] as String).input(),
+      chargeWay: (map['chargeWay'] as int).input(),
+      commodityCode: (map['commodityCode'] as String).input(),
+      createTime: (map['createTime'] as int).input(),
+      currentVersion: (map['currentVersion'] as String).input(),
+      description: (map['description'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      expireOn: (map['expireOn'] as String).input(),
+      firstRankAlgoDeploymentId: (map['firstRankAlgoDeploymentId'] as int).input(),
+      hasPendingQuotaReviewTask: (map['hasPendingQuotaReviewTask'] as int).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      lockMode: (map['lockMode'] as String).input(),
+      lockedByExpiration: (map['lockedByExpiration'] as int).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      pendingSecondRankAlgoDeploymentId: (map['pendingSecondRankAlgoDeploymentId'] as int).input(),
+      processingOrderId: (map['processingOrderId'] as String).input(),
+      produced: (map['produced'] as int).input(),
+      projectId: (map['projectId'] as String).input(),
+      quotas: (pulumi.Input.decodeList<GetAppGroupsGroupQuota>(map['quotas'], (value) => GetAppGroupsGroupQuota.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      secondRankAlgoDeploymentId: (map['secondRankAlgoDeploymentId'] as int).input(),
+      status: (map['status'] as String).input(),
+      switchedTime: (map['switchedTime'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

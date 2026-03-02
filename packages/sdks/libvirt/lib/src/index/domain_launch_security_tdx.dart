@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_launch_security_tdx_quote_generation_service.dart';
 
 class DomainLaunchSecurityTdx {
   /// Sets the MR configuration identifier for TDX in the domain.
-  final String? mrConfigId;
+  final pulumi.Input<String>? mrConfigId;
   /// Configures the MR owner field for TDX security in the domain.
-  final String? mrOwner;
+  final pulumi.Input<String>? mrOwner;
   /// Sets the configuration for the MR owner in the TDX environment.
-  final String? mrOwnerConfig;
+  final pulumi.Input<String>? mrOwnerConfig;
   /// Configures the security policy for TDX operations within the domain.
-  final double? policy;
+  final pulumi.Input<double>? policy;
   /// Configures the quote generation service for TDX in the domain.
-  final DomainLaunchSecurityTdxQuoteGenerationService? quoteGenerationService;
+  final pulumi.Input<DomainLaunchSecurityTdxQuoteGenerationService>? quoteGenerationService;
 
   /// Creates a new [DomainLaunchSecurityTdx].
   /// [mrConfigId] Sets the MR configuration identifier for TDX in the domain.
@@ -34,17 +35,17 @@ class DomainLaunchSecurityTdx {
       'mrOwner': ?mrOwner,
       'mrOwnerConfig': ?mrOwnerConfig,
       'policy': ?policy,
-      'quoteGenerationService': ?quoteGenerationService == null ? null : quoteGenerationService!.toMap(),
+      'quoteGenerationService': ?pulumi.Input.mapOptionalInputValue<DomainLaunchSecurityTdxQuoteGenerationService, Map<String, dynamic>>(quoteGenerationService, (value) => value.toMap()),
     };
   }
 
   factory DomainLaunchSecurityTdx.fromMap(Map<String, dynamic> map) {
     return DomainLaunchSecurityTdx(
-      mrConfigId: map['mrConfigId'] == null ? null : map['mrConfigId'] as String,
-      mrOwner: map['mrOwner'] == null ? null : map['mrOwner'] as String,
-      mrOwnerConfig: map['mrOwnerConfig'] == null ? null : map['mrOwnerConfig'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as double,
-      quoteGenerationService: map['quoteGenerationService'] == null ? null : DomainLaunchSecurityTdxQuoteGenerationService.fromMap((map['quoteGenerationService'] as Map).cast<String, dynamic>()),
+      mrConfigId: map['mrConfigId'] == null ? null : (map['mrConfigId'] as String).input(),
+      mrOwner: map['mrOwner'] == null ? null : (map['mrOwner'] as String).input(),
+      mrOwnerConfig: map['mrOwnerConfig'] == null ? null : (map['mrOwnerConfig'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as double).input(),
+      quoteGenerationService: map['quoteGenerationService'] == null ? null : (DomainLaunchSecurityTdxQuoteGenerationService.fromMap((map['quoteGenerationService'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

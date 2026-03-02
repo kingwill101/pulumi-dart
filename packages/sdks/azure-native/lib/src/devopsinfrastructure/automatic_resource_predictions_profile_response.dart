@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The stand-by agent scheme is determined based on historical demand.
 class AutomaticResourcePredictionsProfileResponse {
   /// Determines how the stand-by scheme should be provided.
   /// Expected value is 'Automatic'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Determines the balance between cost and performance.
-  final String? predictionPreference;
+  final pulumi.Input<String>? predictionPreference;
 
   /// Creates a new [AutomaticResourcePredictionsProfileResponse].
   /// [kind] Determines how the stand-by scheme should be provided.
@@ -26,8 +27,8 @@ class AutomaticResourcePredictionsProfileResponse {
 
   factory AutomaticResourcePredictionsProfileResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticResourcePredictionsProfileResponse(
-      kind: map['kind'] as String,
-      predictionPreference: map['predictionPreference'] == null ? null : map['predictionPreference'] as String,
+      kind: (map['kind'] as String).input(),
+      predictionPreference: map['predictionPreference'] == null ? null : (map['predictionPreference'] as String).input(),
     );
   }
 }

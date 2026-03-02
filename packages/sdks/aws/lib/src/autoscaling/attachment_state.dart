@@ -19,15 +19,11 @@ class AttachmentState {
   /// [lbTargetGroupArn] ARN of a load balancer target group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AttachmentState({
-    pulumi.Output<String>? autoscalingGroupName,
-    pulumi.Output<String>? elb,
-    pulumi.Output<String>? lbTargetGroupArn,
-    pulumi.Output<String>? region,
-  }) :
-      autoscalingGroupName = pulumi.Input.asOptionalInput<String>(autoscalingGroupName),
-      elb = pulumi.Input.asOptionalInput<String>(elb),
-      lbTargetGroupArn = pulumi.Input.asOptionalInput<String>(lbTargetGroupArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.autoscalingGroupName,
+    this.elb,
+    this.lbTargetGroupArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AttachmentState {
 
   factory AttachmentState.fromMap(Map<String, dynamic> map) {
     return AttachmentState(
-      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : pulumi.Output.create<String>(map['autoscalingGroupName'] as String),
-      elb: map['elb'] == null ? null : pulumi.Output.create<String>(map['elb'] as String),
-      lbTargetGroupArn: map['lbTargetGroupArn'] == null ? null : pulumi.Output.create<String>(map['lbTargetGroupArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : (map['autoscalingGroupName'] as String).input(),
+      elb: map['elb'] == null ? null : (map['elb'] as String).input(),
+      lbTargetGroupArn: map['lbTargetGroupArn'] == null ? null : (map['lbTargetGroupArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

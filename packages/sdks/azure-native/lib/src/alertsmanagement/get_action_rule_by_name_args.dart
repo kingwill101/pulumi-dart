@@ -16,11 +16,9 @@ class GetActionRuleByNameArgs {
   /// [actionRuleName] The name of action rule that needs to be fetched
   /// [resourceGroupName] Resource group name where the resource is created.
   GetActionRuleByNameArgs({
-    required pulumi.Output<String> actionRuleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      actionRuleName = pulumi.Input.asInput<String>(actionRuleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.actionRuleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetActionRuleByNameArgs {
 
   factory GetActionRuleByNameArgs.fromMap(Map<String, dynamic> map) {
     return GetActionRuleByNameArgs(
-      actionRuleName: pulumi.Output.create<String>(map['actionRuleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      actionRuleName: (map['actionRuleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

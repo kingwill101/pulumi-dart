@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Access Connector Resource that is going to be associated with Databricks Workspace
 class WorkspacePropertiesAccessConnector {
   /// The resource ID of Azure Databricks Access Connector Resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// The identity type of the Access Connector Resource.
-  final String identityType;
+  final pulumi.Input<String> identityType;
   /// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
-  final String? userAssignedIdentityId;
+  final pulumi.Input<String>? userAssignedIdentityId;
 
   /// Creates a new [WorkspacePropertiesAccessConnector].
   /// [id] The resource ID of Azure Databricks Access Connector Resource.
@@ -30,9 +31,9 @@ class WorkspacePropertiesAccessConnector {
 
   factory WorkspacePropertiesAccessConnector.fromMap(Map<String, dynamic> map) {
     return WorkspacePropertiesAccessConnector(
-      id: map['id'] as String,
-      identityType: map['identityType'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : map['userAssignedIdentityId'] as String,
+      id: (map['id'] as String).input(),
+      identityType: (map['identityType'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

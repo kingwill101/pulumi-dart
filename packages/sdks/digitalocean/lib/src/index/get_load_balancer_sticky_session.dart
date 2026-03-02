@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerStickySession {
   /// the name of the cookie sent to the client
-  final String cookieName;
+  final pulumi.Input<String> cookieName;
   /// the number of seconds until the cookie set by the Load Balancer expires
-  final int cookieTtlSeconds;
+  final pulumi.Input<int> cookieTtlSeconds;
   /// how and if requests from a client will be persistently served by the same backend droplet
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetLoadBalancerStickySession].
   /// [cookieName] the name of the cookie sent to the client
@@ -29,9 +30,9 @@ class GetLoadBalancerStickySession {
 
   factory GetLoadBalancerStickySession.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerStickySession(
-      cookieName: map['cookieName'] as String,
-      cookieTtlSeconds: map['cookieTtlSeconds'] as int,
-      type: map['type'] as String,
+      cookieName: (map['cookieName'] as String).input(),
+      cookieTtlSeconds: (map['cookieTtlSeconds'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

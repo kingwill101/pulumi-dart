@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network Virtual Appliance NIC properties.
 class VirtualApplianceNicPropertiesResponse {
   /// Instance on which nic is attached.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// NIC name.
-  final String name;
+  final pulumi.Input<String> name;
   /// NIC type - PublicNic, PrivateNic, or AdditionalNic.
-  final String nicType;
+  final pulumi.Input<String> nicType;
   /// Private IP address.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// Public IP address.
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
 
   /// Creates a new [VirtualApplianceNicPropertiesResponse].
   /// [instanceName] Instance on which nic is attached.
@@ -40,11 +41,11 @@ class VirtualApplianceNicPropertiesResponse {
 
   factory VirtualApplianceNicPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceNicPropertiesResponse(
-      instanceName: map['instanceName'] as String,
-      name: map['name'] as String,
-      nicType: map['nicType'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
-      publicIpAddress: map['publicIpAddress'] as String,
+      instanceName: (map['instanceName'] as String).input(),
+      name: (map['name'] as String).input(),
+      nicType: (map['nicType'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
     );
   }
 }

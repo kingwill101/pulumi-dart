@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the linux configuration for update management.
 class OsProfileResponseLinuxConfiguration {
   /// Specifies the assessment mode.
-  final String? assessmentMode;
+  final pulumi.Input<String>? assessmentMode;
   /// Specifies the patch mode.
-  final String? patchMode;
+  final pulumi.Input<String>? patchMode;
 
   /// Creates a new [OsProfileResponseLinuxConfiguration].
   /// [assessmentMode] Specifies the assessment mode.
@@ -25,8 +26,8 @@ class OsProfileResponseLinuxConfiguration {
 
   factory OsProfileResponseLinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return OsProfileResponseLinuxConfiguration(
-      assessmentMode: map['assessmentMode'] == null ? null : map['assessmentMode'] as String,
-      patchMode: map['patchMode'] == null ? null : map['patchMode'] as String,
+      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode'] as String).input(),
+      patchMode: map['patchMode'] == null ? null : (map['patchMode'] as String).input(),
     );
   }
 }

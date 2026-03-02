@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Disk input details.
 class InMageAzureV2DiskInputDetails {
   /// The DiskEncryptionSet ARM ID.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// The DiskId.
-  final String? diskId;
+  final pulumi.Input<String>? diskId;
   /// The disk type.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// The LogStorageAccountId.
-  final String? logStorageAccountId;
+  final pulumi.Input<String>? logStorageAccountId;
 
   /// Creates a new [InMageAzureV2DiskInputDetails].
   /// [diskEncryptionSetId] The DiskEncryptionSet ARM ID.
@@ -35,10 +36,10 @@ class InMageAzureV2DiskInputDetails {
 
   factory InMageAzureV2DiskInputDetails.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2DiskInputDetails(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      logStorageAccountId: map['logStorageAccountId'] == null ? null : map['logStorageAccountId'] as String,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId'] as String).input(),
     );
   }
 }

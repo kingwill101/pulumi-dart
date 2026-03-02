@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkPortGroupVirtualPortParamsAny {
   /// Sets the instance ID for the virtual port parameter.
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// Defines the interface ID for the virtual port parameter.
-  final String? interfaceId;
+  final pulumi.Input<String>? interfaceId;
   /// Configures the manager ID associated with the virtual port parameter.
-  final double? managerId;
+  final pulumi.Input<double>? managerId;
   /// Specifies the profile ID for the virtual port parameter.
-  final String? profileId;
+  final pulumi.Input<String>? profileId;
   /// Sets the type ID for the virtual port parameter.
-  final double? typeId;
+  final pulumi.Input<double>? typeId;
   /// Indicates the version of the type ID for the virtual port parameter.
-  final double? typeIdVersion;
+  final pulumi.Input<double>? typeIdVersion;
 
   /// Creates a new [NetworkPortGroupVirtualPortParamsAny].
   /// [instanceId] Sets the instance ID for the virtual port parameter.
@@ -44,12 +45,12 @@ class NetworkPortGroupVirtualPortParamsAny {
 
   factory NetworkPortGroupVirtualPortParamsAny.fromMap(Map<String, dynamic> map) {
     return NetworkPortGroupVirtualPortParamsAny(
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      interfaceId: map['interfaceId'] == null ? null : map['interfaceId'] as String,
-      managerId: map['managerId'] == null ? null : map['managerId'] as double,
-      profileId: map['profileId'] == null ? null : map['profileId'] as String,
-      typeId: map['typeId'] == null ? null : map['typeId'] as double,
-      typeIdVersion: map['typeIdVersion'] == null ? null : map['typeIdVersion'] as double,
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId'] as String).input(),
+      managerId: map['managerId'] == null ? null : (map['managerId'] as double).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      typeId: map['typeId'] == null ? null : (map['typeId'] as double).input(),
+      typeIdVersion: map['typeIdVersion'] == null ? null : (map['typeIdVersion'] as double).input(),
     );
   }
 }

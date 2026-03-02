@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpv6InternetBandwidthsBandwidth {
   /// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The ID of the Ipv6 Internet Bandwidth.
-  final String id;
+  final pulumi.Input<String> id;
   /// The metering method of the Internet bandwidth resources of the IPv6 gateway.
-  final String internetChargeType;
+  final pulumi.Input<String> internetChargeType;
   /// The ID of the IPv6 address.
-  final String ipv6AddressId;
+  final pulumi.Input<String> ipv6AddressId;
   /// The ID of the IPv6 gateway.
-  final String ipv6GatewayId;
+  final pulumi.Input<String> ipv6GatewayId;
   /// The ID of the Ipv6 Internet Bandwidth.
-  final String ipv6InternetBandwidthId;
+  final pulumi.Input<String> ipv6InternetBandwidthId;
   /// The payment type of the resource.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetIpv6InternetBandwidthsBandwidth].
   /// [bandwidth] The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
@@ -54,14 +55,14 @@ class GetIpv6InternetBandwidthsBandwidth {
 
   factory GetIpv6InternetBandwidthsBandwidth.fromMap(Map<String, dynamic> map) {
     return GetIpv6InternetBandwidthsBandwidth(
-      bandwidth: map['bandwidth'] as int,
-      id: map['id'] as String,
-      internetChargeType: map['internetChargeType'] as String,
-      ipv6AddressId: map['ipv6AddressId'] as String,
-      ipv6GatewayId: map['ipv6GatewayId'] as String,
-      ipv6InternetBandwidthId: map['ipv6InternetBandwidthId'] as String,
-      paymentType: map['paymentType'] as String,
-      status: map['status'] as String,
+      bandwidth: (map['bandwidth'] as int).input(),
+      id: (map['id'] as String).input(),
+      internetChargeType: (map['internetChargeType'] as String).input(),
+      ipv6AddressId: (map['ipv6AddressId'] as String).input(),
+      ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
+      ipv6InternetBandwidthId: (map['ipv6InternetBandwidthId'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

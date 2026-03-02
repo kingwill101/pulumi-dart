@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed Certificate used for https
 class ManagedCertificateParametersResponse {
   /// Certificate expiration date.
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// Subject name in the certificate.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The type of the secret resource.
   /// Expected value is 'ManagedCertificate'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedCertificateParametersResponse].
   /// [expirationDate] Certificate expiration date.
@@ -31,9 +32,9 @@ class ManagedCertificateParametersResponse {
 
   factory ManagedCertificateParametersResponse.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateParametersResponse(
-      expirationDate: map['expirationDate'] as String,
-      subject: map['subject'] as String,
-      type: map['type'] as String,
+      expirationDate: (map['expirationDate'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

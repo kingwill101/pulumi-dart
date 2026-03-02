@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigParseWaf {
   /// Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [LogTransformerTransformerConfigParseWaf].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
@@ -19,7 +20,7 @@ class LogTransformerTransformerConfigParseWaf {
 
   factory LogTransformerTransformerConfigParseWaf.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseWaf(
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

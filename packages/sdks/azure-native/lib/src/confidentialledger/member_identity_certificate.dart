@@ -6,10 +6,10 @@ import 'certificate_tags.dart';
 /// Object representing MemberIdentityCertificate for Managed CCF.
 class MemberIdentityCertificate {
   /// Member Identity Certificate
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// Member Identity Certificate Encryption Key
-  final String? encryptionkey;
-  final List<CertificateTags>? tags;
+  final pulumi.Input<String>? encryptionkey;
+  final pulumi.Input<List<CertificateTags>>? tags;
 
   /// Creates a new [MemberIdentityCertificate].
   /// [certificate] Member Identity Certificate
@@ -25,15 +25,15 @@ class MemberIdentityCertificate {
     return <String, dynamic>{
       'certificate': ?certificate,
       'encryptionkey': ?encryptionkey,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<CertificateTags, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<CertificateTags>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<CertificateTags, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MemberIdentityCertificate.fromMap(Map<String, dynamic> map) {
     return MemberIdentityCertificate(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      encryptionkey: map['encryptionkey'] == null ? null : map['encryptionkey'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<CertificateTags>(map['tags'], (value) => CertificateTags.fromMap((value as Map).cast<String, dynamic>())),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      encryptionkey: map['encryptionkey'] == null ? null : (map['encryptionkey'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<CertificateTags>(map['tags'], (value) => CertificateTags.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

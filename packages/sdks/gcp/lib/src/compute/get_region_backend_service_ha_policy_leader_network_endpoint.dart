@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint {
   /// The name of the VM instance of the leader network endpoint. The instance must
   /// already be attached to the NEG specified in the haPolicy.leader.backendGroup.
-  final String instance;
+  final pulumi.Input<String> instance;
 
   /// Creates a new [GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint].
   /// [instance] The name of the VM instance of the leader network endpoint. The instance must
@@ -20,7 +21,7 @@ class GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint {
 
   factory GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint(
-      instance: map['instance'] as String,
+      instance: (map['instance'] as String).input(),
     );
   }
 }

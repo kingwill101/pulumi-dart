@@ -16,11 +16,9 @@ class ListWorkspaceCollectionAccessKeysArgs {
   /// [resourceGroupName] Azure resource group
   /// [workspaceCollectionName] Power BI Embedded Workspace Collection name
   ListWorkspaceCollectionAccessKeysArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceCollectionName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceCollectionName = pulumi.Input.asInput<String>(workspaceCollectionName);
+    required this.resourceGroupName,
+    required this.workspaceCollectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListWorkspaceCollectionAccessKeysArgs {
 
   factory ListWorkspaceCollectionAccessKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceCollectionAccessKeysArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceCollectionName: pulumi.Output.create<String>(map['workspaceCollectionName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceCollectionName: (map['workspaceCollectionName'] as String).input(),
     );
   }
 }

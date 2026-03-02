@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An array of destination IPv4 Addresses or IPv6 Addresses.
 class NeighborGroupDestinationResponse {
   /// Array of IPv4 Addresses.
-  final List<String>? ipv4Addresses;
+  final pulumi.Input<List<String>>? ipv4Addresses;
   /// Array of IPv6 Addresses.
-  final List<String>? ipv6Addresses;
+  final pulumi.Input<List<String>>? ipv6Addresses;
 
   /// Creates a new [NeighborGroupDestinationResponse].
   /// [ipv4Addresses] Array of IPv4 Addresses.
@@ -25,8 +26,8 @@ class NeighborGroupDestinationResponse {
 
   factory NeighborGroupDestinationResponse.fromMap(Map<String, dynamic> map) {
     return NeighborGroupDestinationResponse(
-      ipv4Addresses: map['ipv4Addresses'] == null ? null : (map['ipv4Addresses'] as List).cast<String>(),
-      ipv6Addresses: map['ipv6Addresses'] == null ? null : (map['ipv6Addresses'] as List).cast<String>(),
+      ipv4Addresses: map['ipv4Addresses'] == null ? null : ((map['ipv4Addresses'] as List).cast<String>()).input(),
+      ipv6Addresses: map['ipv6Addresses'] == null ? null : ((map['ipv6Addresses'] as List).cast<String>()).input(),
     );
   }
 }

@@ -24,17 +24,12 @@ class PeeringManagedidentitiesV1alpha1Args {
   /// [peeringId] Required. Peering Id, unique name to identify peering.
   /// [project] Optional.
   PeeringManagedidentitiesV1alpha1Args({
-    required pulumi.Output<String> authorizedNetwork,
-    required pulumi.Output<String> domainResource,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> peeringId,
-    pulumi.Output<String>? project,
-  }) :
-      authorizedNetwork = pulumi.Input.asInput<String>(authorizedNetwork),
-      domainResource = pulumi.Input.asInput<String>(domainResource),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      peeringId = pulumi.Input.asInput<String>(peeringId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.authorizedNetwork,
+    required this.domainResource,
+    this.labels,
+    required this.peeringId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class PeeringManagedidentitiesV1alpha1Args {
 
   factory PeeringManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return PeeringManagedidentitiesV1alpha1Args(
-      authorizedNetwork: pulumi.Output.create<String>(map['authorizedNetwork'] as String),
-      domainResource: pulumi.Output.create<String>(map['domainResource'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      peeringId: pulumi.Output.create<String>(map['peeringId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      authorizedNetwork: (map['authorizedNetwork'] as String).input(),
+      domainResource: (map['domainResource'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      peeringId: (map['peeringId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

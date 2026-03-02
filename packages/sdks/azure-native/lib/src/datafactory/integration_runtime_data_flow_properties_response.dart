@@ -6,15 +6,15 @@ import 'integration_runtime_data_flow_properties_response_custom_properties.dart
 /// Data flow properties for managed integration runtime.
 class IntegrationRuntimeDataFlowPropertiesResponse {
   /// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
-  final bool? cleanup;
+  final pulumi.Input<bool>? cleanup;
   /// Compute type of the cluster which will execute data flow job.
-  final String? computeType;
+  final pulumi.Input<String>? computeType;
   /// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
-  final int? coreCount;
+  final pulumi.Input<int>? coreCount;
   /// Custom properties are used to tune the data flow runtime performance.
-  final List<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties>? customProperties;
+  final pulumi.Input<List<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties>>? customProperties;
   /// Time to live (in minutes) setting of the cluster which will execute data flow job.
-  final int? timeToLive;
+  final pulumi.Input<int>? timeToLive;
 
   /// Creates a new [IntegrationRuntimeDataFlowPropertiesResponse].
   /// [cleanup] Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
@@ -35,18 +35,18 @@ class IntegrationRuntimeDataFlowPropertiesResponse {
       'cleanup': ?cleanup,
       'computeType': ?computeType,
       'coreCount': ?coreCount,
-      'customProperties': ?customProperties == null ? null : pulumi.Input.encodeList<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties, Map<String, dynamic>>(customProperties!, (value) => value.toMap()),
+      'customProperties': ?pulumi.Input.mapOptionalInputValue<List<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties>, List<Map<String, dynamic>>>(customProperties, (value) => pulumi.Input.encodeList<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeToLive': ?timeToLive,
     };
   }
 
   factory IntegrationRuntimeDataFlowPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeDataFlowPropertiesResponse(
-      cleanup: map['cleanup'] == null ? null : map['cleanup'] as bool,
-      computeType: map['computeType'] == null ? null : map['computeType'] as String,
-      coreCount: map['coreCount'] == null ? null : map['coreCount'] as int,
-      customProperties: map['customProperties'] == null ? null : pulumi.Input.decodeList<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties>(map['customProperties'], (value) => IntegrationRuntimeDataFlowPropertiesResponseCustomProperties.fromMap((value as Map).cast<String, dynamic>())),
-      timeToLive: map['timeToLive'] == null ? null : map['timeToLive'] as int,
+      cleanup: map['cleanup'] == null ? null : (map['cleanup'] as bool).input(),
+      computeType: map['computeType'] == null ? null : (map['computeType'] as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
+      customProperties: map['customProperties'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeDataFlowPropertiesResponseCustomProperties>(map['customProperties'], (value) => IntegrationRuntimeDataFlowPropertiesResponseCustomProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
     );
   }
 }

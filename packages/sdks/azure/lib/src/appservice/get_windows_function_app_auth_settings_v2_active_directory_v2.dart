@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2 {
   /// The list of allowed Applications for the Default Authorisation Policy.
-  final List<String> allowedApplications;
+  final pulumi.Input<List<String>> allowedApplications;
   /// The list of Allowed Audiences that are be requested as part of Microsoft Sign-In authentication.
-  final List<String> allowedAudiences;
+  final pulumi.Input<List<String>> allowedAudiences;
   /// The list of allowed Group Names for the Default Authorisation Policy.
-  final List<String> allowedGroups;
+  final pulumi.Input<List<String>> allowedGroups;
   /// The list of allowed Identities for the Default Authorisation Policy.
-  final List<String> allowedIdentities;
+  final pulumi.Input<List<String>> allowedIdentities;
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The thumbprint of the certificate used for signing purposes.
-  final String clientSecretCertificateThumbprint;
+  final pulumi.Input<String> clientSecretCertificateThumbprint;
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
-  final String clientSecretSettingName;
+  final pulumi.Input<String> clientSecretSettingName;
   /// The list of Allowed Client Applications in the JWT Claim.
-  final List<String> jwtAllowedClientApplications;
+  final pulumi.Input<List<String>> jwtAllowedClientApplications;
   /// The list of Allowed Groups in the JWT Claim.
-  final List<String> jwtAllowedGroups;
+  final pulumi.Input<List<String>> jwtAllowedGroups;
   /// A map of key-value pairs sent to the Authorisation Endpoint when a user logs in.
-  final Map<String, String> loginParameters;
+  final pulumi.Input<Map<String, String>> loginParameters;
   /// The Azure Tenant Endpoint for the Authenticating Tenant. e.g. `https://login.microsoftonline.com/{tenant-guid}/v2.0/`
-  final String tenantAuthEndpoint;
+  final pulumi.Input<String> tenantAuthEndpoint;
   /// Is the www-authenticate provider omitted from the request?
-  final bool wwwAuthenticationDisabled;
+  final pulumi.Input<bool> wwwAuthenticationDisabled;
 
   /// Creates a new [GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2].
   /// [allowedApplications] The list of allowed Applications for the Default Authorisation Policy.
@@ -74,18 +75,18 @@ class GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2 {
 
   factory GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppAuthSettingsV2ActiveDirectoryV2(
-      allowedApplications: (map['allowedApplications'] as List).cast<String>(),
-      allowedAudiences: (map['allowedAudiences'] as List).cast<String>(),
-      allowedGroups: (map['allowedGroups'] as List).cast<String>(),
-      allowedIdentities: (map['allowedIdentities'] as List).cast<String>(),
-      clientId: map['clientId'] as String,
-      clientSecretCertificateThumbprint: map['clientSecretCertificateThumbprint'] as String,
-      clientSecretSettingName: map['clientSecretSettingName'] as String,
-      jwtAllowedClientApplications: (map['jwtAllowedClientApplications'] as List).cast<String>(),
-      jwtAllowedGroups: (map['jwtAllowedGroups'] as List).cast<String>(),
-      loginParameters: (map['loginParameters'] as Map).cast<String, String>(),
-      tenantAuthEndpoint: map['tenantAuthEndpoint'] as String,
-      wwwAuthenticationDisabled: map['wwwAuthenticationDisabled'] as bool,
+      allowedApplications: ((map['allowedApplications'] as List).cast<String>()).input(),
+      allowedAudiences: ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedGroups: ((map['allowedGroups'] as List).cast<String>()).input(),
+      allowedIdentities: ((map['allowedIdentities'] as List).cast<String>()).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecretCertificateThumbprint: (map['clientSecretCertificateThumbprint'] as String).input(),
+      clientSecretSettingName: (map['clientSecretSettingName'] as String).input(),
+      jwtAllowedClientApplications: ((map['jwtAllowedClientApplications'] as List).cast<String>()).input(),
+      jwtAllowedGroups: ((map['jwtAllowedGroups'] as List).cast<String>()).input(),
+      loginParameters: ((map['loginParameters'] as Map).cast<String, String>()).input(),
+      tenantAuthEndpoint: (map['tenantAuthEndpoint'] as String).input(),
+      wwwAuthenticationDisabled: (map['wwwAuthenticationDisabled'] as bool).input(),
     );
   }
 }

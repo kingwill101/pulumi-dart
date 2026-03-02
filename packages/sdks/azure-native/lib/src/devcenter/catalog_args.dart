@@ -32,21 +32,14 @@ class CatalogArgs {
   /// [syncType] Indicates the type of sync that is configured for the catalog.
   /// [tags] Resource tags.
   CatalogArgs({
-    pulumi.Output<GitCatalog>? adoGit,
-    pulumi.Output<String>? catalogName,
-    required pulumi.Output<String> devCenterName,
-    pulumi.Output<GitCatalog>? gitHub,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? syncType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      adoGit = pulumi.Input.asOptionalInput<GitCatalog>(adoGit),
-      catalogName = pulumi.Input.asOptionalInput<String>(catalogName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      gitHub = pulumi.Input.asOptionalInput<GitCatalog>(gitHub),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      syncType = pulumi.Input.asOptionalInput<String>(syncType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.adoGit,
+    this.catalogName,
+    required this.devCenterName,
+    this.gitHub,
+    required this.resourceGroupName,
+    this.syncType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      adoGit: map['adoGit'] == null ? null : pulumi.Output.create<GitCatalog>(GitCatalog.fromMap((map['adoGit'] as Map).cast<String, dynamic>())),
-      catalogName: map['catalogName'] == null ? null : pulumi.Output.create<String>(map['catalogName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      gitHub: map['gitHub'] == null ? null : pulumi.Output.create<GitCatalog>(GitCatalog.fromMap((map['gitHub'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      syncType: map['syncType'] == null ? null : pulumi.Output.create<String>(map['syncType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      adoGit: map['adoGit'] == null ? null : (GitCatalog.fromMap((map['adoGit'] as Map).cast<String, dynamic>())).input(),
+      catalogName: map['catalogName'] == null ? null : (map['catalogName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      gitHub: map['gitHub'] == null ? null : (GitCatalog.fromMap((map['gitHub'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      syncType: map['syncType'] == null ? null : (map['syncType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

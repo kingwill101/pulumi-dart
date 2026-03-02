@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Username and password pair.
 class GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse {
   /// Password to be used
-  final String password;
+  final pulumi.Input<String> password;
   /// Username to be used
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse].
   /// [password] Password to be used
@@ -25,8 +26,8 @@ class GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse {
 
   factory GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse(
-      password: map['password'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

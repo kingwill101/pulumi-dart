@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountCustomerManagedKey {
   /// The client ID of the managed identity associated with the storage resource.
-  final String identityClientId;
+  final pulumi.Input<String> identityClientId;
   /// The ID of the Key Vault Key which is used to encrypt the data in this Cognitive Services Account.
-  final String keyVaultKeyId;
+  final pulumi.Input<String> keyVaultKeyId;
 
   /// Creates a new [GetAccountCustomerManagedKey].
   /// [identityClientId] The client ID of the managed identity associated with the storage resource.
@@ -24,8 +25,8 @@ class GetAccountCustomerManagedKey {
 
   factory GetAccountCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return GetAccountCustomerManagedKey(
-      identityClientId: map['identityClientId'] as String,
-      keyVaultKeyId: map['keyVaultKeyId'] as String,
+      identityClientId: (map['identityClientId'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }
 }

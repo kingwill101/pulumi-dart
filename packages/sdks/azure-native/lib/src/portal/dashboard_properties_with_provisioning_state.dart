@@ -6,9 +6,9 @@ import 'dashboard_lens.dart';
 /// Dashboard Properties with Provisioning state
 class DashboardPropertiesWithProvisioningState {
   /// The dashboard lenses.
-  final List<DashboardLens>? lenses;
+  final pulumi.Input<List<DashboardLens>>? lenses;
   /// The dashboard metadata.
-  final dynamic metadata;
+  final pulumi.Input<dynamic>? metadata;
 
   /// Creates a new [DashboardPropertiesWithProvisioningState].
   /// [lenses] The dashboard lenses.
@@ -20,15 +20,15 @@ class DashboardPropertiesWithProvisioningState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lenses': ?lenses == null ? null : pulumi.Input.encodeList<DashboardLens, Map<String, dynamic>>(lenses!, (value) => value.toMap()),
+      'lenses': ?pulumi.Input.mapOptionalInputValue<List<DashboardLens>, List<Map<String, dynamic>>>(lenses, (value) => pulumi.Input.encodeList<DashboardLens, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metadata': ?metadata,
     };
   }
 
   factory DashboardPropertiesWithProvisioningState.fromMap(Map<String, dynamic> map) {
     return DashboardPropertiesWithProvisioningState(
-      lenses: map['lenses'] == null ? null : pulumi.Input.decodeList<DashboardLens>(map['lenses'], (value) => DashboardLens.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : map['metadata'],
+      lenses: map['lenses'] == null ? null : (pulumi.Input.decodeList<DashboardLens>(map['lenses'], (value) => DashboardLens.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
     );
   }
 }

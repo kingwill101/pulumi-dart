@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'caching_types.dart';
 import 'diff_disk_settings.dart';
 import 'operating_system_types.dart';
@@ -9,27 +10,27 @@ import 'virtual_machine_scale_set_managed_disk_parameters.dart';
 /// Describes a virtual machine scale set operating system disk.
 class VirtualMachineScaleSetOSDisk {
   /// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-  final CachingTypes? caching;
+  final pulumi.Input<CachingTypes>? caching;
   /// Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
-  final String createOption;
+  final pulumi.Input<String> createOption;
   /// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
-  final String? deleteOption;
+  final pulumi.Input<String>? deleteOption;
   /// Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
-  final DiffDiskSettings? diffDiskSettings;
+  final pulumi.Input<DiffDiskSettings>? diffDiskSettings;
   /// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
-  final int? diskSizeGB;
+  final pulumi.Input<int>? diskSizeGB;
   /// Specifies information about the unmanaged user image to base the scale set on.
-  final VirtualHardDisk? image;
+  final pulumi.Input<VirtualHardDisk>? image;
   /// The managed disk parameters.
-  final VirtualMachineScaleSetManagedDiskParameters? managedDisk;
+  final pulumi.Input<VirtualMachineScaleSetManagedDiskParameters>? managedDisk;
   /// The disk name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
-  final OperatingSystemTypes? osType;
+  final pulumi.Input<OperatingSystemTypes>? osType;
   /// Specifies the container urls that are used to store operating system disks for the scale set.
-  final List<String>? vhdContainers;
+  final pulumi.Input<List<String>>? vhdContainers;
   /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  final bool? writeAcceleratorEnabled;
+  final pulumi.Input<bool>? writeAcceleratorEnabled;
 
   /// Creates a new [VirtualMachineScaleSetOSDisk].
   /// [caching] Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
@@ -59,15 +60,15 @@ class VirtualMachineScaleSetOSDisk {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caching': ?caching == null ? null : caching!.value,
+      'caching': ?pulumi.Input.mapOptionalInputValue<CachingTypes, String>(caching, (value) => value.value),
       'createOption': createOption,
       'deleteOption': ?deleteOption,
-      'diffDiskSettings': ?diffDiskSettings == null ? null : diffDiskSettings!.toMap(),
+      'diffDiskSettings': ?pulumi.Input.mapOptionalInputValue<DiffDiskSettings, Map<String, dynamic>>(diffDiskSettings, (value) => value.toMap()),
       'diskSizeGB': ?diskSizeGB,
-      'image': ?image == null ? null : image!.toMap(),
-      'managedDisk': ?managedDisk == null ? null : managedDisk!.toMap(),
+      'image': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetManagedDiskParameters, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
       'name': ?name,
-      'osType': ?osType == null ? null : osType!.value,
+      'osType': ?pulumi.Input.mapOptionalInputValue<OperatingSystemTypes, String>(osType, (value) => value.value),
       'vhdContainers': ?vhdContainers,
       'writeAcceleratorEnabled': ?writeAcceleratorEnabled,
     };
@@ -75,17 +76,17 @@ class VirtualMachineScaleSetOSDisk {
 
   factory VirtualMachineScaleSetOSDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetOSDisk(
-      caching: map['caching'] == null ? null : CachingTypes.fromValue(map['caching'] as String),
-      createOption: map['createOption'] as String,
-      deleteOption: map['deleteOption'] == null ? null : map['deleteOption'] as String,
-      diffDiskSettings: map['diffDiskSettings'] == null ? null : DiffDiskSettings.fromMap((map['diffDiskSettings'] as Map).cast<String, dynamic>()),
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
-      image: map['image'] == null ? null : VirtualHardDisk.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      managedDisk: map['managedDisk'] == null ? null : VirtualMachineScaleSetManagedDiskParameters.fromMap((map['managedDisk'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      osType: map['osType'] == null ? null : OperatingSystemTypes.fromValue(map['osType'] as String),
-      vhdContainers: map['vhdContainers'] == null ? null : (map['vhdContainers'] as List).cast<String>(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : map['writeAcceleratorEnabled'] as bool,
+      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching'] as String)).input(),
+      createOption: (map['createOption'] as String).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
+      diffDiskSettings: map['diffDiskSettings'] == null ? null : (DiffDiskSettings.fromMap((map['diffDiskSettings'] as Map).cast<String, dynamic>())).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      image: map['image'] == null ? null : (VirtualHardDisk.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      managedDisk: map['managedDisk'] == null ? null : (VirtualMachineScaleSetManagedDiskParameters.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osType: map['osType'] == null ? null : (OperatingSystemTypes.fromValue(map['osType'] as String)).input(),
+      vhdContainers: map['vhdContainers'] == null ? null : ((map['vhdContainers'] as List).cast<String>()).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
     );
   }
 }

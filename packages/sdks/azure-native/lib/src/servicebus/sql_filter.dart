@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a filter which is a composition of an expression and an action that is executed in the pub/sub pipeline.
 class SqlFilter {
   /// This property is reserved for future use. An integer value showing the compatibility level, currently hard-coded to 20.
-  final int? compatibilityLevel;
+  final pulumi.Input<int>? compatibilityLevel;
   /// Value that indicates whether the rule action requires preprocessing.
-  final bool? requiresPreprocessing;
+  final pulumi.Input<bool>? requiresPreprocessing;
   /// The SQL expression. e.g. MyProperty='ABC'
-  final String? sqlExpression;
+  final pulumi.Input<String>? sqlExpression;
 
   /// Creates a new [SqlFilter].
   /// [compatibilityLevel] This property is reserved for future use. An integer value showing the compatibility level, currently hard-coded to 20.
@@ -30,9 +31,9 @@ class SqlFilter {
 
   factory SqlFilter.fromMap(Map<String, dynamic> map) {
     return SqlFilter(
-      compatibilityLevel: map['compatibilityLevel'] == null ? null : map['compatibilityLevel'] as int,
-      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : map['requiresPreprocessing'] as bool,
-      sqlExpression: map['sqlExpression'] == null ? null : map['sqlExpression'] as String,
+      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel'] as int).input(),
+      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : (map['requiresPreprocessing'] as bool).input(),
+      sqlExpression: map['sqlExpression'] == null ? null : (map['sqlExpression'] as String).input(),
     );
   }
 }

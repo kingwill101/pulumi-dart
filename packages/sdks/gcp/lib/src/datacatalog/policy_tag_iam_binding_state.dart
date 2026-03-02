@@ -35,17 +35,12 @@ class PolicyTagIamBindingState {
   /// [policyTag] Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
   PolicyTagIamBindingState({
-    pulumi.Output<PolicyTagIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? policyTag,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<PolicyTagIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      policyTag = pulumi.Input.asOptionalInput<String>(policyTag),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.etag,
+    this.members,
+    this.policyTag,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,11 +54,11 @@ class PolicyTagIamBindingState {
 
   factory PolicyTagIamBindingState.fromMap(Map<String, dynamic> map) {
     return PolicyTagIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<PolicyTagIamBindingCondition>(PolicyTagIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      policyTag: map['policyTag'] == null ? null : pulumi.Output.create<String>(map['policyTag'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (PolicyTagIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      policyTag: map['policyTag'] == null ? null : (map['policyTag'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

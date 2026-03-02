@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_policies.dart';
 import 'resource_quota.dart';
 
 /// Properties of a namespace managed by ARM
 class NamespaceProperties {
   /// Action if Kubernetes namespace with same name already exists.
-  final String? adoptionPolicy;
+  final pulumi.Input<String>? adoptionPolicy;
   /// The annotations of managed namespace.
-  final Map<String, String>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
   /// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-  final NetworkPolicies? defaultNetworkPolicy;
+  final pulumi.Input<NetworkPolicies>? defaultNetworkPolicy;
   /// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-  final ResourceQuota? defaultResourceQuota;
+  final pulumi.Input<ResourceQuota>? defaultResourceQuota;
   /// Delete options of a namespace.
-  final String? deletePolicy;
+  final pulumi.Input<String>? deletePolicy;
   /// The labels of managed namespace.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Creates a new [NamespaceProperties].
   /// [adoptionPolicy] Action if Kubernetes namespace with same name already exists.
@@ -38,8 +39,8 @@ class NamespaceProperties {
     return <String, dynamic>{
       'adoptionPolicy': ?adoptionPolicy,
       'annotations': ?annotations,
-      'defaultNetworkPolicy': ?defaultNetworkPolicy == null ? null : defaultNetworkPolicy!.toMap(),
-      'defaultResourceQuota': ?defaultResourceQuota == null ? null : defaultResourceQuota!.toMap(),
+      'defaultNetworkPolicy': ?pulumi.Input.mapOptionalInputValue<NetworkPolicies, Map<String, dynamic>>(defaultNetworkPolicy, (value) => value.toMap()),
+      'defaultResourceQuota': ?pulumi.Input.mapOptionalInputValue<ResourceQuota, Map<String, dynamic>>(defaultResourceQuota, (value) => value.toMap()),
       'deletePolicy': ?deletePolicy,
       'labels': ?labels,
     };
@@ -47,12 +48,12 @@ class NamespaceProperties {
 
   factory NamespaceProperties.fromMap(Map<String, dynamic> map) {
     return NamespaceProperties(
-      adoptionPolicy: map['adoptionPolicy'] == null ? null : map['adoptionPolicy'] as String,
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
-      defaultNetworkPolicy: map['defaultNetworkPolicy'] == null ? null : NetworkPolicies.fromMap((map['defaultNetworkPolicy'] as Map).cast<String, dynamic>()),
-      defaultResourceQuota: map['defaultResourceQuota'] == null ? null : ResourceQuota.fromMap((map['defaultResourceQuota'] as Map).cast<String, dynamic>()),
-      deletePolicy: map['deletePolicy'] == null ? null : map['deletePolicy'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      adoptionPolicy: map['adoptionPolicy'] == null ? null : (map['adoptionPolicy'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      defaultNetworkPolicy: map['defaultNetworkPolicy'] == null ? null : (NetworkPolicies.fromMap((map['defaultNetworkPolicy'] as Map).cast<String, dynamic>())).input(),
+      defaultResourceQuota: map['defaultResourceQuota'] == null ? null : (ResourceQuota.fromMap((map['defaultResourceQuota'] as Map).cast<String, dynamic>())).input(),
+      deletePolicy: map['deletePolicy'] == null ? null : (map['deletePolicy'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
     );
   }
 }

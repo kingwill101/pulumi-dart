@@ -6,23 +6,23 @@ import 'get_custom_domains_domain_route_config.dart';
 
 class GetCustomDomainsDomain {
   /// The account id.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// The API version of the Function Compute service.
-  final String apiVersion;
+  final pulumi.Input<String> apiVersion;
   /// The configuration of HTTPS certificate.
-  final GetCustomDomainsDomainCertConfig certConfig;
+  final pulumi.Input<GetCustomDomainsDomainCertConfig> certConfig;
   /// The created time of the custom domain.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// The custom domain name.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The custom domain id, same as domain name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The last modified time of the custom domain.
-  final String lastModifiedTime;
+  final pulumi.Input<String> lastModifiedTime;
   /// The custom domain protocol.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The configuration of domain route, mapping the path and Function Compute function.
-  final List<GetCustomDomainsDomainRouteConfig> routeConfigs;
+  final pulumi.Input<List<GetCustomDomainsDomainRouteConfig>> routeConfigs;
 
   /// Creates a new [GetCustomDomainsDomain].
   /// [accountId] The account id.
@@ -50,27 +50,27 @@ class GetCustomDomainsDomain {
     return <String, dynamic>{
       'accountId': accountId,
       'apiVersion': apiVersion,
-      'certConfig': certConfig.toMap(),
+      'certConfig': pulumi.Input.mapInputValue<GetCustomDomainsDomainCertConfig, Map<String, dynamic>>(certConfig, (value) => value.toMap()),
       'createdTime': createdTime,
       'domainName': domainName,
       'id': id,
       'lastModifiedTime': lastModifiedTime,
       'protocol': protocol,
-      'routeConfigs': pulumi.Input.encodeList<GetCustomDomainsDomainRouteConfig, Map<String, dynamic>>(routeConfigs, (value) => value.toMap()),
+      'routeConfigs': pulumi.Input.mapInputValue<List<GetCustomDomainsDomainRouteConfig>, List<Map<String, dynamic>>>(routeConfigs, (value) => pulumi.Input.encodeList<GetCustomDomainsDomainRouteConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetCustomDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainsDomain(
-      accountId: map['accountId'] as String,
-      apiVersion: map['apiVersion'] as String,
-      certConfig: GetCustomDomainsDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>()),
-      createdTime: map['createdTime'] as String,
-      domainName: map['domainName'] as String,
-      id: map['id'] as String,
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      protocol: map['protocol'] as String,
-      routeConfigs: pulumi.Input.decodeList<GetCustomDomainsDomainRouteConfig>(map['routeConfigs'], (value) => GetCustomDomainsDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>())),
+      accountId: (map['accountId'] as String).input(),
+      apiVersion: (map['apiVersion'] as String).input(),
+      certConfig: (GetCustomDomainsDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      routeConfigs: (pulumi.Input.decodeList<GetCustomDomainsDomainRouteConfig>(map['routeConfigs'], (value) => GetCustomDomainsDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

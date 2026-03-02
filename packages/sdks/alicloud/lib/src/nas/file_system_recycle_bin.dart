@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileSystemRecycleBin {
   /// Recycle Bin open time
-  final String? enableTime;
+  final pulumi.Input<String>? enableTime;
   /// Retention time of files in the Recycle Bin. Unit: days.
-  final int? reservedDays;
+  final pulumi.Input<int>? reservedDays;
   /// Amount of low-frequency data stored in the recycle bin. Unit: Byte.
-  final int? secondarySize;
+  final pulumi.Input<int>? secondarySize;
   /// The amount of files stored in the Recycle Bin. Unit: Byte.
-  final int? size;
+  final pulumi.Input<int>? size;
   /// Recycle Bin Status
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [FileSystemRecycleBin].
   /// [enableTime] Recycle Bin open time
@@ -39,11 +40,11 @@ class FileSystemRecycleBin {
 
   factory FileSystemRecycleBin.fromMap(Map<String, dynamic> map) {
     return FileSystemRecycleBin(
-      enableTime: map['enableTime'] == null ? null : map['enableTime'] as String,
-      reservedDays: map['reservedDays'] == null ? null : map['reservedDays'] as int,
-      secondarySize: map['secondarySize'] == null ? null : map['secondarySize'] as int,
-      size: map['size'] == null ? null : map['size'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      enableTime: map['enableTime'] == null ? null : (map['enableTime'] as String).input(),
+      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays'] as int).input(),
+      secondarySize: map['secondarySize'] == null ? null : (map['secondarySize'] as int).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

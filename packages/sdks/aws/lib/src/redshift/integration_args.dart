@@ -45,25 +45,16 @@ class IntegrationArgs {
   /// [targetArn] ARN of the Redshift data warehouse to use as the target for replication.
   /// [timeouts] Optional.
   IntegrationArgs({
-    pulumi.Output<Map<String, String>>? additionalEncryptionContext,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> integrationName,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sourceArn,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetArn,
-    pulumi.Output<IntegrationTimeouts>? timeouts,
-  }) :
-      additionalEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(additionalEncryptionContext),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationName = pulumi.Input.asInput<String>(integrationName),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceArn = pulumi.Input.asInput<String>(sourceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetArn = pulumi.Input.asInput<String>(targetArn),
-      timeouts = pulumi.Input.asOptionalInput<IntegrationTimeouts>(timeouts);
+    this.additionalEncryptionContext,
+    this.description,
+    required this.integrationName,
+    this.kmsKeyId,
+    this.region,
+    required this.sourceArn,
+    this.tags,
+    required this.targetArn,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class IntegrationArgs {
 
   factory IntegrationArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalEncryptionContext'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationName: pulumi.Output.create<String>(map['integrationName'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceArn: pulumi.Output.create<String>(map['sourceArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetArn: pulumi.Output.create<String>(map['targetArn'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<IntegrationTimeouts>(IntegrationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationName: (map['integrationName'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceArn: (map['sourceArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetArn: (map['targetArn'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (IntegrationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

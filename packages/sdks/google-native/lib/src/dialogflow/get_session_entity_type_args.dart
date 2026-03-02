@@ -22,19 +22,13 @@ class GetSessionEntityTypeArgs {
   /// [sessionId] Required.
   /// [userId] Required.
   GetSessionEntityTypeArgs({
-    required pulumi.Output<String> entityTypeId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sessionId,
-    required pulumi.Output<String> userId,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.entityTypeId,
+    required this.environmentId,
+    required this.location,
+    this.project,
+    required this.sessionId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class GetSessionEntityTypeArgs {
 
   factory GetSessionEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionEntityTypeArgs(
-      entityTypeId: pulumi.Output.create<String>(map['entityTypeId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sessionId: pulumi.Output.create<String>(map['sessionId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      entityTypeId: (map['entityTypeId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sessionId: (map['sessionId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

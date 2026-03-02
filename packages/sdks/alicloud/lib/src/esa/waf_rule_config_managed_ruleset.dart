@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'waf_rule_config_managed_ruleset_managed_rule.dart';
 
 class WafRuleConfigManagedRuleset {
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The primary attack type targeted by this ruleset.
-  final int? attackType;
+  final pulumi.Input<int>? attackType;
   /// The individual managed rules included in this ruleset. See `managed_rules` below.
-  final List<WafRuleConfigManagedRulesetManagedRule>? managedRules;
+  final pulumi.Input<List<WafRuleConfigManagedRulesetManagedRule>>? managedRules;
   /// Number of rules currently enabled.
-  final int? numberEnabled;
+  final pulumi.Input<int>? numberEnabled;
   /// Total number of rules in this ruleset.
-  final int? numberTotal;
+  final pulumi.Input<int>? numberTotal;
   /// The protection strength level assigned to this ruleset.
-  final int? protectionLevel;
+  final pulumi.Input<int>? protectionLevel;
 
   /// Creates a new [WafRuleConfigManagedRuleset].
   /// [action] Optional.
@@ -36,7 +36,7 @@ class WafRuleConfigManagedRuleset {
     return <String, dynamic>{
       'action': ?action,
       'attackType': ?attackType,
-      'managedRules': ?managedRules == null ? null : pulumi.Input.encodeList<WafRuleConfigManagedRulesetManagedRule, Map<String, dynamic>>(managedRules!, (value) => value.toMap()),
+      'managedRules': ?pulumi.Input.mapOptionalInputValue<List<WafRuleConfigManagedRulesetManagedRule>, List<Map<String, dynamic>>>(managedRules, (value) => pulumi.Input.encodeList<WafRuleConfigManagedRulesetManagedRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'numberEnabled': ?numberEnabled,
       'numberTotal': ?numberTotal,
       'protectionLevel': ?protectionLevel,
@@ -45,12 +45,12 @@ class WafRuleConfigManagedRuleset {
 
   factory WafRuleConfigManagedRuleset.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigManagedRuleset(
-      action: map['action'] == null ? null : map['action'] as String,
-      attackType: map['attackType'] == null ? null : map['attackType'] as int,
-      managedRules: map['managedRules'] == null ? null : pulumi.Input.decodeList<WafRuleConfigManagedRulesetManagedRule>(map['managedRules'], (value) => WafRuleConfigManagedRulesetManagedRule.fromMap((value as Map).cast<String, dynamic>())),
-      numberEnabled: map['numberEnabled'] == null ? null : map['numberEnabled'] as int,
-      numberTotal: map['numberTotal'] == null ? null : map['numberTotal'] as int,
-      protectionLevel: map['protectionLevel'] == null ? null : map['protectionLevel'] as int,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      attackType: map['attackType'] == null ? null : (map['attackType'] as int).input(),
+      managedRules: map['managedRules'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigManagedRulesetManagedRule>(map['managedRules'], (value) => WafRuleConfigManagedRulesetManagedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      numberEnabled: map['numberEnabled'] == null ? null : (map['numberEnabled'] as int).input(),
+      numberTotal: map['numberTotal'] == null ? null : (map['numberTotal'] as int).input(),
+      protectionLevel: map['protectionLevel'] == null ? null : (map['protectionLevel'] as int).input(),
     );
   }
 }

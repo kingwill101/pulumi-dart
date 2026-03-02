@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableTtl {
   /// Valid values: `ENABLED`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [TableTtl].
   /// [status] Valid values: `ENABLED`.
@@ -19,7 +20,7 @@ class TableTtl {
 
   factory TableTtl.fromMap(Map<String, dynamic> map) {
     return TableTtl(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

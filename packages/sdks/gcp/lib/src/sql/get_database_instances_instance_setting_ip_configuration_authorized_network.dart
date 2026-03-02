@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
-  final String expirationTime;
-  final String name;
-  final String value;
+  final pulumi.Input<String> expirationTime;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork].
   /// [expirationTime] Required.
@@ -26,9 +27,9 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
 
   factory GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork(
-      expirationTime: map['expirationTime'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      expirationTime: (map['expirationTime'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

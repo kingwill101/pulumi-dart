@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedHostsHostInstance {
   /// The ID of the ECS instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The ID of the ECS instance owner.
-  final int instanceOwnerId;
+  final pulumi.Input<int> instanceOwnerId;
   /// The instance type of the ECS instance that was created on the dedicated host.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The ID of the socket to which the ECS instance belongs.
-  final String socketId;
+  final pulumi.Input<String> socketId;
 
   /// Creates a new [GetDedicatedHostsHostInstance].
   /// [instanceId] The ID of the ECS instance.
@@ -34,10 +35,10 @@ class GetDedicatedHostsHostInstance {
 
   factory GetDedicatedHostsHostInstance.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsHostInstance(
-      instanceId: map['instanceId'] as String,
-      instanceOwnerId: map['instanceOwnerId'] as int,
-      instanceType: map['instanceType'] as String,
-      socketId: map['socketId'] as String,
+      instanceId: (map['instanceId'] as String).input(),
+      instanceOwnerId: (map['instanceOwnerId'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      socketId: (map['socketId'] as String).input(),
     );
   }
 }

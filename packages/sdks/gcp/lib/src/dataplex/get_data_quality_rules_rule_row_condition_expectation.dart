@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataQualityRulesRuleRowConditionExpectation {
   /// The SQL expression.
-  final String sqlExpression;
+  final pulumi.Input<String> sqlExpression;
 
   /// Creates a new [GetDataQualityRulesRuleRowConditionExpectation].
   /// [sqlExpression] The SQL expression.
@@ -19,7 +20,7 @@ class GetDataQualityRulesRuleRowConditionExpectation {
 
   factory GetDataQualityRulesRuleRowConditionExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleRowConditionExpectation(
-      sqlExpression: map['sqlExpression'] as String,
+      sqlExpression: (map['sqlExpression'] as String).input(),
     );
   }
 }

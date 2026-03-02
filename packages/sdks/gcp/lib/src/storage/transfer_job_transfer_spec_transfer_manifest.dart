@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobTransferSpecTransferManifest {
   /// The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [TransferJobTransferSpecTransferManifest].
   /// [location] The **GCS URI** to the manifest file (CSV or line-delimited). Example: `gs://my-bucket/manifest.csv`
@@ -19,7 +20,7 @@ class TransferJobTransferSpecTransferManifest {
 
   factory TransferJobTransferSpecTransferManifest.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecTransferManifest(
-      location: map['location'] as String,
+      location: (map['location'] as String).input(),
     );
   }
 }

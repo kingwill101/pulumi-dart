@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkRoute {
   /// Sets the address for the static route in the network configuration.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Defines the address family (IPv4 or IPv6) to be used for the static route.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// Specifies the gateway address to use for the static route.
-  final String? gateway;
+  final pulumi.Input<String>? gateway;
   /// Sets the metric value for the static route, influencing route selection.
-  final String? metric;
+  final pulumi.Input<String>? metric;
   /// Configures the netmask for the static route address.
-  final String? netmask;
+  final pulumi.Input<String>? netmask;
   /// Defines the prefix length for the static route, particularly for IPv6 addresses.
-  final double? prefix;
+  final pulumi.Input<double>? prefix;
 
   /// Creates a new [NetworkRoute].
   /// [address] Sets the address for the static route in the network configuration.
@@ -44,12 +45,12 @@ class NetworkRoute {
 
   factory NetworkRoute.fromMap(Map<String, dynamic> map) {
     return NetworkRoute(
-      address: map['address'] == null ? null : map['address'] as String,
-      family: map['family'] == null ? null : map['family'] as String,
-      gateway: map['gateway'] == null ? null : map['gateway'] as String,
-      metric: map['metric'] == null ? null : map['metric'] as String,
-      netmask: map['netmask'] == null ? null : map['netmask'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as double,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
+      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
+      netmask: map['netmask'] == null ? null : (map['netmask'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
     );
   }
 }

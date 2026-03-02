@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of Databricks
 class DatabricksPropertiesResponse {
   /// Databricks access token
-  final String? databricksAccessToken;
+  final pulumi.Input<String>? databricksAccessToken;
   /// Workspace Url
-  final String? workspaceUrl;
+  final pulumi.Input<String>? workspaceUrl;
 
   /// Creates a new [DatabricksPropertiesResponse].
   /// [databricksAccessToken] Databricks access token
@@ -25,8 +26,8 @@ class DatabricksPropertiesResponse {
 
   factory DatabricksPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DatabricksPropertiesResponse(
-      databricksAccessToken: map['databricksAccessToken'] == null ? null : map['databricksAccessToken'] as String,
-      workspaceUrl: map['workspaceUrl'] == null ? null : map['workspaceUrl'] as String,
+      databricksAccessToken: map['databricksAccessToken'] == null ? null : (map['databricksAccessToken'] as String).input(),
+      workspaceUrl: map['workspaceUrl'] == null ? null : (map['workspaceUrl'] as String).input(),
     );
   }
 }

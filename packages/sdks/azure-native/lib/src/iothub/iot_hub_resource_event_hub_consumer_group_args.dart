@@ -26,17 +26,12 @@ class IotHubResourceEventHubConsumerGroupArgs {
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
   IotHubResourceEventHubConsumerGroupArgs({
-    required pulumi.Output<String> eventHubEndpointName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<EventHubConsumerGroupName> properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      eventHubEndpointName = pulumi.Input.asInput<String>(eventHubEndpointName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asInput<EventHubConsumerGroupName>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.eventHubEndpointName,
+    this.name,
+    required this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class IotHubResourceEventHubConsumerGroupArgs {
 
   factory IotHubResourceEventHubConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return IotHubResourceEventHubConsumerGroupArgs(
-      eventHubEndpointName: pulumi.Output.create<String>(map['eventHubEndpointName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: pulumi.Output.create<EventHubConsumerGroupName>(EventHubConsumerGroupName.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      eventHubEndpointName: (map['eventHubEndpointName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: (EventHubConsumerGroupName.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

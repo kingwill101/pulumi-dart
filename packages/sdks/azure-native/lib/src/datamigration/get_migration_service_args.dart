@@ -16,11 +16,9 @@ class GetMigrationServiceArgs {
   /// [migrationServiceName] Name of the Migration Service.
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetMigrationServiceArgs({
-    required pulumi.Output<String> migrationServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      migrationServiceName = pulumi.Input.asInput<String>(migrationServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.migrationServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMigrationServiceArgs {
 
   factory GetMigrationServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetMigrationServiceArgs(
-      migrationServiceName: pulumi.Output.create<String>(map['migrationServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      migrationServiceName: (map['migrationServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

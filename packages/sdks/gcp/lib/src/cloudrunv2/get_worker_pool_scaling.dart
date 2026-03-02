@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkerPoolScaling {
   /// The total number of instances in manual scaling mode.
-  final int manualInstanceCount;
+  final pulumi.Input<int> manualInstanceCount;
   /// The maximum count of instances distributed among revisions based on the specified instance split percentages.
-  final int maxInstanceCount;
+  final pulumi.Input<int> maxInstanceCount;
   /// The minimum count of instances distributed among revisions based on the specified instance split percentages.
-  final int minInstanceCount;
+  final pulumi.Input<int> minInstanceCount;
   /// The scaling mode for the worker pool. It defaults to MANUAL. Possible values: ["AUTOMATIC", "MANUAL"]
-  final String scalingMode;
+  final pulumi.Input<String> scalingMode;
 
   /// Creates a new [GetWorkerPoolScaling].
   /// [manualInstanceCount] The total number of instances in manual scaling mode.
@@ -34,10 +35,10 @@ class GetWorkerPoolScaling {
 
   factory GetWorkerPoolScaling.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolScaling(
-      manualInstanceCount: map['manualInstanceCount'] as int,
-      maxInstanceCount: map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] as int,
-      scalingMode: map['scalingMode'] as String,
+      manualInstanceCount: (map['manualInstanceCount'] as int).input(),
+      maxInstanceCount: (map['maxInstanceCount'] as int).input(),
+      minInstanceCount: (map['minInstanceCount'] as int).input(),
+      scalingMode: (map['scalingMode'] as String).input(),
     );
   }
 }

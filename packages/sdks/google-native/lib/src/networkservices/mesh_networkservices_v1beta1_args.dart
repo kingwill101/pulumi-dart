@@ -29,21 +29,14 @@ class MeshNetworkservicesV1beta1Args {
   /// [name] Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
   /// [project] Optional.
   MeshNetworkservicesV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? interceptionPort,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> meshId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      interceptionPort = pulumi.Input.asOptionalInput<int>(interceptionPort),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      meshId = pulumi.Input.asInput<String>(meshId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.interceptionPort,
+    this.labels,
+    this.location,
+    required this.meshId,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class MeshNetworkservicesV1beta1Args {
 
   factory MeshNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return MeshNetworkservicesV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      interceptionPort: map['interceptionPort'] == null ? null : pulumi.Output.create<int>(map['interceptionPort'] as int),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      meshId: pulumi.Output.create<String>(map['meshId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      interceptionPort: map['interceptionPort'] == null ? null : (map['interceptionPort'] as int).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      meshId: (map['meshId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

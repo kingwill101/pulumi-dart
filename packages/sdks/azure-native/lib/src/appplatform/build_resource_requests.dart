@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource request payload of Build Resource.
 class BuildResourceRequests {
   /// Optional Cpu allocated to the build resource. 1 core can be represented by 1 or 1000m.
   /// The default value is 1, this should not exceed build service agent pool cpu size.
-  final String? cpu;
+  final pulumi.Input<String>? cpu;
   /// Optional Memory allocated to the build resource. 1 GB can be represented by 1Gi or 1024Mi.
   /// The default value is 2Gi, this should not exceed build service agent pool memory size.
-  final String? memory;
+  final pulumi.Input<String>? memory;
 
   /// Creates a new [BuildResourceRequests].
   /// [cpu] Optional Cpu allocated to the build resource. 1 core can be represented by 1 or 1000m.
@@ -27,8 +28,8 @@ class BuildResourceRequests {
 
   factory BuildResourceRequests.fromMap(Map<String, dynamic> map) {
     return BuildResourceRequests(
-      cpu: map['cpu'] == null ? null : map['cpu'] as String,
-      memory: map['memory'] == null ? null : map['memory'] as String,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
     );
   }
 }

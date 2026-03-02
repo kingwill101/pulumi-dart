@@ -22,15 +22,11 @@ class TrustedIdProviderArgs {
   /// [resourceGroupName] The name of the Azure resource group.
   /// [trustedIdProviderName] The name of the trusted identity provider. This is used for differentiation of providers in the account.
   TrustedIdProviderArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> idProvider,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? trustedIdProviderName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      idProvider = pulumi.Input.asInput<String>(idProvider),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      trustedIdProviderName = pulumi.Input.asOptionalInput<String>(trustedIdProviderName);
+    required this.accountName,
+    required this.idProvider,
+    required this.resourceGroupName,
+    this.trustedIdProviderName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class TrustedIdProviderArgs {
 
   factory TrustedIdProviderArgs.fromMap(Map<String, dynamic> map) {
     return TrustedIdProviderArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      idProvider: pulumi.Output.create<String>(map['idProvider'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      trustedIdProviderName: map['trustedIdProviderName'] == null ? null : pulumi.Output.create<String>(map['trustedIdProviderName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      idProvider: (map['idProvider'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      trustedIdProviderName: map['trustedIdProviderName'] == null ? null : (map['trustedIdProviderName'] as String).input(),
     );
   }
 }

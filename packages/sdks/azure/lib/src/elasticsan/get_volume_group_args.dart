@@ -16,11 +16,9 @@ class GetVolumeGroupArgs {
   /// [elasticSanId] The Elastic SAN ID within which the Elastic SAN Volume Group exists.
   /// [name] The name of the Elastic SAN Volume Group.
   GetVolumeGroupArgs({
-    required pulumi.Output<String> elasticSanId,
-    required pulumi.Output<String> name,
-  }) :
-      elasticSanId = pulumi.Input.asInput<String>(elasticSanId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.elasticSanId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVolumeGroupArgs {
 
   factory GetVolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupArgs(
-      elasticSanId: pulumi.Output.create<String>(map['elasticSanId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      elasticSanId: (map['elasticSanId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

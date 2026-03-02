@@ -15,11 +15,9 @@ class ApplicationFallbackPublicClientState {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [enabled] Whether to enable the application as a fallback public client.
   ApplicationFallbackPublicClientState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<bool>? enabled,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled);
+    this.applicationId,
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class ApplicationFallbackPublicClientState {
 
   factory ApplicationFallbackPublicClientState.fromMap(Map<String, dynamic> map) {
     return ApplicationFallbackPublicClientState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

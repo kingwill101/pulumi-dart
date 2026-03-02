@@ -16,13 +16,10 @@ class FaceConfigState {
   /// [bizType] Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   /// [gmtModified] Last Modified Date.
   FaceConfigState({
-    pulumi.Output<String>? bizName,
-    pulumi.Output<String>? bizType,
-    pulumi.Output<String>? gmtModified,
-  }) :
-      bizName = pulumi.Input.asOptionalInput<String>(bizName),
-      bizType = pulumi.Input.asOptionalInput<String>(bizType),
-      gmtModified = pulumi.Input.asOptionalInput<String>(gmtModified);
+    this.bizName,
+    this.bizType,
+    this.gmtModified,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class FaceConfigState {
 
   factory FaceConfigState.fromMap(Map<String, dynamic> map) {
     return FaceConfigState(
-      bizName: map['bizName'] == null ? null : pulumi.Output.create<String>(map['bizName'] as String),
-      bizType: map['bizType'] == null ? null : pulumi.Output.create<String>(map['bizType'] as String),
-      gmtModified: map['gmtModified'] == null ? null : pulumi.Output.create<String>(map['gmtModified'] as String),
+      bizName: map['bizName'] == null ? null : (map['bizName'] as String).input(),
+      bizType: map['bizType'] == null ? null : (map['bizType'] as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
     );
   }
 }

@@ -39,19 +39,13 @@ class TenantDefaultSupportedIdpConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tenant] The name of the tenant where this DefaultSupportedIdpConfig resource exists
   TenantDefaultSupportedIdpConfigArgs({
-    required pulumi.Output<String> clientId,
-    required pulumi.Output<String> clientSecret,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> idpId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tenant,
-  }) :
-      clientId = pulumi.Input.asInput<String>(clientId),
-      clientSecret = pulumi.Input.asInput<String>(clientSecret),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      idpId = pulumi.Input.asInput<String>(idpId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenant = pulumi.Input.asInput<String>(tenant);
+    required this.clientId,
+    required this.clientSecret,
+    this.enabled,
+    required this.idpId,
+    this.project,
+    required this.tenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class TenantDefaultSupportedIdpConfigArgs {
 
   factory TenantDefaultSupportedIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return TenantDefaultSupportedIdpConfigArgs(
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: pulumi.Output.create<String>(map['clientSecret'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      idpId: pulumi.Output.create<String>(map['idpId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tenant: pulumi.Output.create<String>(map['tenant'] as String),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      idpId: (map['idpId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tenant: (map['tenant'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetSavedQueryArgs {
   /// [v1Id] Required.
   /// [v1Id1] Required.
   GetSavedQueryArgs({
-    required pulumi.Output<String> savedQueryId,
-    required pulumi.Output<String> v1Id,
-    required pulumi.Output<String> v1Id1,
-  }) :
-      savedQueryId = pulumi.Input.asInput<String>(savedQueryId),
-      v1Id = pulumi.Input.asInput<String>(v1Id),
-      v1Id1 = pulumi.Input.asInput<String>(v1Id1);
+    required this.savedQueryId,
+    required this.v1Id,
+    required this.v1Id1,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetSavedQueryArgs {
 
   factory GetSavedQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetSavedQueryArgs(
-      savedQueryId: pulumi.Output.create<String>(map['savedQueryId'] as String),
-      v1Id: pulumi.Output.create<String>(map['v1Id'] as String),
-      v1Id1: pulumi.Output.create<String>(map['v1Id1'] as String),
+      savedQueryId: (map['savedQueryId'] as String).input(),
+      v1Id: (map['v1Id'] as String).input(),
+      v1Id1: (map['v1Id1'] as String).input(),
     );
   }
 }

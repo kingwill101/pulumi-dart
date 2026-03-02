@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subnet of container group
 class SubnetResponse {
   /// Specifies ARM resource id of the subnet.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [SubnetResponse].
   /// [id] Specifies ARM resource id of the subnet.
@@ -20,7 +21,7 @@ class SubnetResponse {
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

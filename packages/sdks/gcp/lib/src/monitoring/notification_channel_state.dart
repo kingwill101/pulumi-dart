@@ -59,29 +59,18 @@ class NotificationChannelState {
   /// [userLabels] User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
   /// [verificationStatus] Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
   NotificationChannelState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<NotificationChannelSensitiveLabels>? sensitiveLabels,
-    pulumi.Output<String>? type,
-    pulumi.Output<Map<String, String>>? userLabels,
-    pulumi.Output<String>? verificationStatus,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sensitiveLabels = pulumi.Input.asOptionalInput<NotificationChannelSensitiveLabels>(sensitiveLabels),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels),
-      verificationStatus = pulumi.Input.asOptionalInput<String>(verificationStatus);
+    this.description,
+    this.displayName,
+    this.enabled,
+    this.forceDelete,
+    this.labels,
+    this.name,
+    this.project,
+    this.sensitiveLabels,
+    this.type,
+    this.userLabels,
+    this.verificationStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,17 +90,17 @@ class NotificationChannelState {
 
   factory NotificationChannelState.fromMap(Map<String, dynamic> map) {
     return NotificationChannelState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sensitiveLabels: map['sensitiveLabels'] == null ? null : pulumi.Output.create<NotificationChannelSensitiveLabels>(NotificationChannelSensitiveLabels.fromMap((map['sensitiveLabels'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
-      verificationStatus: map['verificationStatus'] == null ? null : pulumi.Output.create<String>(map['verificationStatus'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sensitiveLabels: map['sensitiveLabels'] == null ? null : (NotificationChannelSensitiveLabels.fromMap((map['sensitiveLabels'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      verificationStatus: map['verificationStatus'] == null ? null : (map['verificationStatus'] as String).input(),
     );
   }
 }

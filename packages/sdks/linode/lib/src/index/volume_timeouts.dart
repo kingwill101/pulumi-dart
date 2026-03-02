@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeTimeouts {
   /// Used when creating the volume (until the volume is reaches the initial `active` state)
-  final String? create;
+  final pulumi.Input<String>? create;
   /// Used when deleting the volume
-  final String? delete;
+  final pulumi.Input<String>? delete;
   /// Used when updating the volume when necessary during update - e.g. when resizing the volume
-  final String? update;
+  final pulumi.Input<String>? update;
 
   /// Creates a new [VolumeTimeouts].
   /// [create] Used when creating the volume (until the volume is reaches the initial `active` state)
@@ -29,9 +30,9 @@ class VolumeTimeouts {
 
   factory VolumeTimeouts.fromMap(Map<String, dynamic> map) {
     return VolumeTimeouts(
-      create: map['create'] == null ? null : map['create'] as String,
-      delete: map['delete'] == null ? null : map['delete'] as String,
-      update: map['update'] == null ? null : map['update'] as String,
+      create: map['create'] == null ? null : (map['create'] as String).input(),
+      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
+      update: map['update'] == null ? null : (map['update'] as String).input(),
     );
   }
 }

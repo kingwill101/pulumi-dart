@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterResourceResponseEndPoints {
   /// Ipv4 address of the endpoint
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// Port number
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ClusterResourceResponseEndPoints].
   /// [ipAddress] Ipv4 address of the endpoint
@@ -24,8 +25,8 @@ class ClusterResourceResponseEndPoints {
 
   factory ClusterResourceResponseEndPoints.fromMap(Map<String, dynamic> map) {
     return ClusterResourceResponseEndPoints(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

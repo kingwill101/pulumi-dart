@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Property bag from billing account
 class AccountResourceResponseProperties {
   /// Customer owned application ID
-  final String appId;
+  final pulumi.Input<String> appId;
   /// Billing Plan Id
-  final String billingPlanId;
+  final pulumi.Input<String> billingPlanId;
   /// Provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [AccountResourceResponseProperties].
   /// [appId] Customer owned application ID
@@ -30,9 +31,9 @@ class AccountResourceResponseProperties {
 
   factory AccountResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return AccountResourceResponseProperties(
-      appId: map['appId'] as String,
-      billingPlanId: map['billingPlanId'] as String,
-      provisioningState: map['provisioningState'] as String,
+      appId: (map['appId'] as String).input(),
+      billingPlanId: (map['billingPlanId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

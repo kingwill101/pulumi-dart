@@ -37,23 +37,15 @@ class AgentFlowArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   AgentFlowArgs({
-    pulumi.Output<String>? customerEncryptionKeyArn,
-    pulumi.Output<AgentFlowDefinition>? definition,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> executionRoleArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<AgentFlowTimeouts>? timeouts,
-  }) :
-      customerEncryptionKeyArn = pulumi.Input.asOptionalInput<String>(customerEncryptionKeyArn),
-      definition = pulumi.Input.asOptionalInput<AgentFlowDefinition>(definition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionRoleArn = pulumi.Input.asInput<String>(executionRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<AgentFlowTimeouts>(timeouts);
+    this.customerEncryptionKeyArn,
+    this.definition,
+    this.description,
+    required this.executionRoleArn,
+    this.name,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class AgentFlowArgs {
 
   factory AgentFlowArgs.fromMap(Map<String, dynamic> map) {
     return AgentFlowArgs(
-      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : pulumi.Output.create<String>(map['customerEncryptionKeyArn'] as String),
-      definition: map['definition'] == null ? null : pulumi.Output.create<AgentFlowDefinition>(AgentFlowDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionRoleArn: pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentFlowTimeouts>(AgentFlowTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : (map['customerEncryptionKeyArn'] as String).input(),
+      definition: map['definition'] == null ? null : (AgentFlowDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionRoleArn: (map['executionRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentFlowTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

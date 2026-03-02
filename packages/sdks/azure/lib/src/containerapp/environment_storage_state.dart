@@ -28,21 +28,14 @@ class EnvironmentStorageState {
   /// [nfsServerUrl] The NFS server to use for the Azure File Share, the format will be `yourstorageaccountname.file.core.windows.net`. Changing this forces a new resource to be created.
   /// [shareName] The name of the Azure Storage Share to use. Changing this forces a new resource to be created.
   EnvironmentStorageState({
-    pulumi.Output<String>? accessKey,
-    pulumi.Output<String>? accessMode,
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? containerAppEnvironmentId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nfsServerUrl,
-    pulumi.Output<String>? shareName,
-  }) :
-      accessKey = pulumi.Input.asOptionalInput<String>(accessKey),
-      accessMode = pulumi.Input.asOptionalInput<String>(accessMode),
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      containerAppEnvironmentId = pulumi.Input.asOptionalInput<String>(containerAppEnvironmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nfsServerUrl = pulumi.Input.asOptionalInput<String>(nfsServerUrl),
-      shareName = pulumi.Input.asOptionalInput<String>(shareName);
+    this.accessKey,
+    this.accessMode,
+    this.accountName,
+    this.containerAppEnvironmentId,
+    this.name,
+    this.nfsServerUrl,
+    this.shareName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class EnvironmentStorageState {
 
   factory EnvironmentStorageState.fromMap(Map<String, dynamic> map) {
     return EnvironmentStorageState(
-      accessKey: map['accessKey'] == null ? null : pulumi.Output.create<String>(map['accessKey'] as String),
-      accessMode: map['accessMode'] == null ? null : pulumi.Output.create<String>(map['accessMode'] as String),
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['containerAppEnvironmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nfsServerUrl: map['nfsServerUrl'] == null ? null : pulumi.Output.create<String>(map['nfsServerUrl'] as String),
-      shareName: map['shareName'] == null ? null : pulumi.Output.create<String>(map['shareName'] as String),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nfsServerUrl: map['nfsServerUrl'] == null ? null : (map['nfsServerUrl'] as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
     );
   }
 }

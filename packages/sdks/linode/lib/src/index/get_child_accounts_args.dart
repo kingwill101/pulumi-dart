@@ -13,9 +13,8 @@ class GetChildAccountsArgs {
   /// Creates a new [GetChildAccountsArgs].
   /// [filters] Optional.
   GetChildAccountsArgs({
-    pulumi.Output<List<GetChildAccountsFilter>>? filters,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetChildAccountsFilter>>(filters);
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetChildAccountsArgs {
 
   factory GetChildAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetChildAccountsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetChildAccountsFilter>>(pulumi.Input.decodeList<GetChildAccountsFilter>(map['filters'], (value) => GetChildAccountsFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetChildAccountsFilter>(map['filters'], (value) => GetChildAccountsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

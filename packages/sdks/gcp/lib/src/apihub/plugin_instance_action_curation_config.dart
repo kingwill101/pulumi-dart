@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plugin_instance_action_curation_config_custom_curation.dart';
 
 class PluginInstanceActionCurationConfig {
@@ -7,10 +8,10 @@ class PluginInstanceActionCurationConfig {
   /// CURATION_TYPE_UNSPECIFIED
   /// DEFAULT_CURATION_FOR_API_METADATA
   /// CUSTOM_CURATION_FOR_API_METADATA
-  final String? curationType;
+  final pulumi.Input<String>? curationType;
   /// Custom curation information for this plugin instance.
   /// Structure is documented below.
-  final PluginInstanceActionCurationConfigCustomCuration? customCuration;
+  final pulumi.Input<PluginInstanceActionCurationConfigCustomCuration>? customCuration;
 
   /// Creates a new [PluginInstanceActionCurationConfig].
   /// [curationType] Possible values:
@@ -23,14 +24,14 @@ class PluginInstanceActionCurationConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'curationType': ?curationType,
-      'customCuration': ?customCuration == null ? null : customCuration!.toMap(),
+      'customCuration': ?pulumi.Input.mapOptionalInputValue<PluginInstanceActionCurationConfigCustomCuration, Map<String, dynamic>>(customCuration, (value) => value.toMap()),
     };
   }
 
   factory PluginInstanceActionCurationConfig.fromMap(Map<String, dynamic> map) {
     return PluginInstanceActionCurationConfig(
-      curationType: map['curationType'] == null ? null : map['curationType'] as String,
-      customCuration: map['customCuration'] == null ? null : PluginInstanceActionCurationConfigCustomCuration.fromMap((map['customCuration'] as Map).cast<String, dynamic>()),
+      curationType: map['curationType'] == null ? null : (map['curationType'] as String).input(),
+      customCuration: map['customCuration'] == null ? null : (PluginInstanceActionCurationConfigCustomCuration.fromMap((map['customCuration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

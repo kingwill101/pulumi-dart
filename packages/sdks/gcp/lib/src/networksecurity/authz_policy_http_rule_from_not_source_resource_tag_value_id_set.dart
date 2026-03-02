@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet {
   /// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
   /// Limited to 5 matches.
-  final List<String>? ids;
+  final pulumi.Input<List<String>>? ids;
 
   /// Creates a new [AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet].
   /// [ids] A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
@@ -20,7 +21,7 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet {
 
   factory AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet(
-      ids: map['ids'] == null ? null : (map['ids'] as List).cast<String>(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
     );
   }
 }

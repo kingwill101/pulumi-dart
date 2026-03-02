@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The feature rules.
 class ResourceProviderEndpointFeaturesRule {
   /// The required feature policy.
-  final String requiredFeaturesPolicy;
+  final pulumi.Input<String> requiredFeaturesPolicy;
 
   /// Creates a new [ResourceProviderEndpointFeaturesRule].
   /// [requiredFeaturesPolicy] The required feature policy.
@@ -20,7 +21,7 @@ class ResourceProviderEndpointFeaturesRule {
 
   factory ResourceProviderEndpointFeaturesRule.fromMap(Map<String, dynamic> map) {
     return ResourceProviderEndpointFeaturesRule(
-      requiredFeaturesPolicy: map['requiredFeaturesPolicy'] as String,
+      requiredFeaturesPolicy: (map['requiredFeaturesPolicy'] as String).input(),
     );
   }
 }

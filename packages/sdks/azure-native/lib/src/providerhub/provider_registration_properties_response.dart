@@ -25,77 +25,77 @@ import 'token_auth_configuration_response.dart';
 
 class ProviderRegistrationPropertiesResponse {
   /// The capabilities.
-  final List<ResourceProviderCapabilitiesResponse>? capabilities;
+  final pulumi.Input<List<ResourceProviderCapabilitiesResponse>>? capabilities;
   /// The cross tenant token validation.
-  final String? crossTenantTokenValidation;
+  final pulumi.Input<String>? crossTenantTokenValidation;
   /// Custom manifest version.
-  final String? customManifestVersion;
+  final pulumi.Input<String>? customManifestVersion;
   /// The dsts configuration.
-  final ResourceProviderManifestPropertiesDstsConfigurationResponse? dstsConfiguration;
+  final pulumi.Input<ResourceProviderManifestPropertiesDstsConfigurationResponse>? dstsConfiguration;
   /// The enable tenant linked notification.
-  final bool? enableTenantLinkedNotification;
+  final pulumi.Input<bool>? enableTenantLinkedNotification;
   /// The features rule.
-  final ResourceProviderManifestPropertiesFeaturesRuleResponse? featuresRule;
+  final pulumi.Input<ResourceProviderManifestPropertiesFeaturesRuleResponse>? featuresRule;
   /// The global notification endpoints.
-  final List<ResourceProviderEndpointResponse>? globalNotificationEndpoints;
+  final pulumi.Input<List<ResourceProviderEndpointResponse>>? globalNotificationEndpoints;
   /// Legacy namespace.
-  final String? legacyNamespace;
+  final pulumi.Input<String>? legacyNamespace;
   /// Legacy registrations.
-  final List<String>? legacyRegistrations;
+  final pulumi.Input<List<String>>? legacyRegistrations;
   /// The linked notification rules.
-  final List<FanoutLinkedNotificationRuleResponse>? linkedNotificationRules;
+  final pulumi.Input<List<FanoutLinkedNotificationRuleResponse>>? linkedNotificationRules;
   /// The resource provider management.
-  final ResourceProviderManifestPropertiesManagementResponse? management;
+  final pulumi.Input<ResourceProviderManifestPropertiesManagementResponse>? management;
   /// Management groups global notification endpoints.
-  final List<ResourceProviderEndpointResponse>? managementGroupGlobalNotificationEndpoints;
+  final pulumi.Input<List<ResourceProviderEndpointResponse>>? managementGroupGlobalNotificationEndpoints;
   /// The metadata.
-  final dynamic metadata;
+  final pulumi.Input<dynamic>? metadata;
   /// The namespace.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// Notification options.
-  final String? notificationOptions;
+  final pulumi.Input<String>? notificationOptions;
   /// Notification settings.
-  final ResourceProviderManifestPropertiesNotificationSettingsResponse? notificationSettings;
+  final pulumi.Input<ResourceProviderManifestPropertiesNotificationSettingsResponse>? notificationSettings;
   /// The notifications.
-  final List<NotificationResponse>? notifications;
+  final pulumi.Input<List<NotificationResponse>>? notifications;
   /// Optional features.
-  final List<String>? optionalFeatures;
+  final pulumi.Input<List<String>>? optionalFeatures;
   /// The private resource provider configuration.
-  final ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse? privateResourceProviderConfiguration;
+  final pulumi.Input<ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse>? privateResourceProviderConfiguration;
   /// The provider authentication.
-  final ResourceProviderManifestPropertiesProviderAuthenticationResponse? providerAuthentication;
+  final pulumi.Input<ResourceProviderManifestPropertiesProviderAuthenticationResponse>? providerAuthentication;
   /// The provider authorizations.
-  final List<ResourceProviderAuthorizationResponse>? providerAuthorizations;
+  final pulumi.Input<List<ResourceProviderAuthorizationResponse>>? providerAuthorizations;
   /// The provider hub metadata.
-  final ProviderRegistrationPropertiesProviderHubMetadataResponse? providerHubMetadata;
+  final pulumi.Input<ProviderRegistrationPropertiesProviderHubMetadataResponse>? providerHubMetadata;
   /// The provider type.
-  final String? providerType;
+  final pulumi.Input<String>? providerType;
   /// The provider version.
-  final String? providerVersion;
+  final pulumi.Input<String>? providerVersion;
   /// The provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The request header options.
-  final ResourceProviderManifestPropertiesRequestHeaderOptionsResponse? requestHeaderOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesRequestHeaderOptionsResponse>? requestHeaderOptions;
   /// The required features.
-  final List<String>? requiredFeatures;
+  final pulumi.Input<List<String>>? requiredFeatures;
   /// Resource group lock option during move.
-  final ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse? resourceGroupLockOptionDuringMove;
+  final pulumi.Input<ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse>? resourceGroupLockOptionDuringMove;
   /// resource hydration accounts
-  final List<ResourceHydrationAccountResponse>? resourceHydrationAccounts;
+  final pulumi.Input<List<ResourceHydrationAccountResponse>>? resourceHydrationAccounts;
   /// The resource provider authorization rules.
-  final ResourceProviderAuthorizationRulesResponse? resourceProviderAuthorizationRules;
+  final pulumi.Input<ResourceProviderAuthorizationRulesResponse>? resourceProviderAuthorizationRules;
   /// Response options.
-  final ResourceProviderManifestPropertiesResponseOptionsResponse? responseOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesResponseOptionsResponse>? responseOptions;
   /// The service name.
-  final String? serviceName;
+  final pulumi.Input<String>? serviceName;
   /// The services.
-  final List<ResourceProviderServiceResponse>? services;
+  final pulumi.Input<List<ResourceProviderServiceResponse>>? services;
   /// The subscription lifecycle notification specifications.
-  final ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse? subscriptionLifecycleNotificationSpecifications;
+  final pulumi.Input<ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse>? subscriptionLifecycleNotificationSpecifications;
   /// The template deployment options.
-  final ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse? templateDeploymentOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse>? templateDeploymentOptions;
   /// The token auth configuration.
-  final TokenAuthConfigurationResponse? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfigurationResponse>? tokenAuthConfiguration;
 
   /// Creates a new [ProviderRegistrationPropertiesResponse].
   /// [capabilities] The capabilities.
@@ -175,83 +175,83 @@ class ProviderRegistrationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capabilities': ?capabilities == null ? null : pulumi.Input.encodeList<ResourceProviderCapabilitiesResponse, Map<String, dynamic>>(capabilities!, (value) => value.toMap()),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<List<ResourceProviderCapabilitiesResponse>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<ResourceProviderCapabilitiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'crossTenantTokenValidation': ?crossTenantTokenValidation,
       'customManifestVersion': ?customManifestVersion,
-      'dstsConfiguration': ?dstsConfiguration == null ? null : dstsConfiguration!.toMap(),
+      'dstsConfiguration': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesDstsConfigurationResponse, Map<String, dynamic>>(dstsConfiguration, (value) => value.toMap()),
       'enableTenantLinkedNotification': ?enableTenantLinkedNotification,
-      'featuresRule': ?featuresRule == null ? null : featuresRule!.toMap(),
-      'globalNotificationEndpoints': ?globalNotificationEndpoints == null ? null : pulumi.Input.encodeList<ResourceProviderEndpointResponse, Map<String, dynamic>>(globalNotificationEndpoints!, (value) => value.toMap()),
+      'featuresRule': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesFeaturesRuleResponse, Map<String, dynamic>>(featuresRule, (value) => value.toMap()),
+      'globalNotificationEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ResourceProviderEndpointResponse>, List<Map<String, dynamic>>>(globalNotificationEndpoints, (value) => pulumi.Input.encodeList<ResourceProviderEndpointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'legacyNamespace': ?legacyNamespace,
       'legacyRegistrations': ?legacyRegistrations,
-      'linkedNotificationRules': ?linkedNotificationRules == null ? null : pulumi.Input.encodeList<FanoutLinkedNotificationRuleResponse, Map<String, dynamic>>(linkedNotificationRules!, (value) => value.toMap()),
-      'management': ?management == null ? null : management!.toMap(),
-      'managementGroupGlobalNotificationEndpoints': ?managementGroupGlobalNotificationEndpoints == null ? null : pulumi.Input.encodeList<ResourceProviderEndpointResponse, Map<String, dynamic>>(managementGroupGlobalNotificationEndpoints!, (value) => value.toMap()),
+      'linkedNotificationRules': ?pulumi.Input.mapOptionalInputValue<List<FanoutLinkedNotificationRuleResponse>, List<Map<String, dynamic>>>(linkedNotificationRules, (value) => pulumi.Input.encodeList<FanoutLinkedNotificationRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'management': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesManagementResponse, Map<String, dynamic>>(management, (value) => value.toMap()),
+      'managementGroupGlobalNotificationEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ResourceProviderEndpointResponse>, List<Map<String, dynamic>>>(managementGroupGlobalNotificationEndpoints, (value) => pulumi.Input.encodeList<ResourceProviderEndpointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metadata': ?metadata,
       'namespace': ?namespace,
       'notificationOptions': ?notificationOptions,
-      'notificationSettings': ?notificationSettings == null ? null : notificationSettings!.toMap(),
-      'notifications': ?notifications == null ? null : pulumi.Input.encodeList<NotificationResponse, Map<String, dynamic>>(notifications!, (value) => value.toMap()),
+      'notificationSettings': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesNotificationSettingsResponse, Map<String, dynamic>>(notificationSettings, (value) => value.toMap()),
+      'notifications': ?pulumi.Input.mapOptionalInputValue<List<NotificationResponse>, List<Map<String, dynamic>>>(notifications, (value) => pulumi.Input.encodeList<NotificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'optionalFeatures': ?optionalFeatures,
-      'privateResourceProviderConfiguration': ?privateResourceProviderConfiguration == null ? null : privateResourceProviderConfiguration!.toMap(),
-      'providerAuthentication': ?providerAuthentication == null ? null : providerAuthentication!.toMap(),
-      'providerAuthorizations': ?providerAuthorizations == null ? null : pulumi.Input.encodeList<ResourceProviderAuthorizationResponse, Map<String, dynamic>>(providerAuthorizations!, (value) => value.toMap()),
-      'providerHubMetadata': ?providerHubMetadata == null ? null : providerHubMetadata!.toMap(),
+      'privateResourceProviderConfiguration': ?pulumi.Input.mapOptionalInputValue<ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse, Map<String, dynamic>>(privateResourceProviderConfiguration, (value) => value.toMap()),
+      'providerAuthentication': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesProviderAuthenticationResponse, Map<String, dynamic>>(providerAuthentication, (value) => value.toMap()),
+      'providerAuthorizations': ?pulumi.Input.mapOptionalInputValue<List<ResourceProviderAuthorizationResponse>, List<Map<String, dynamic>>>(providerAuthorizations, (value) => pulumi.Input.encodeList<ResourceProviderAuthorizationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'providerHubMetadata': ?pulumi.Input.mapOptionalInputValue<ProviderRegistrationPropertiesProviderHubMetadataResponse, Map<String, dynamic>>(providerHubMetadata, (value) => value.toMap()),
       'providerType': ?providerType,
       'providerVersion': ?providerVersion,
       'provisioningState': provisioningState,
-      'requestHeaderOptions': ?requestHeaderOptions == null ? null : requestHeaderOptions!.toMap(),
+      'requestHeaderOptions': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesRequestHeaderOptionsResponse, Map<String, dynamic>>(requestHeaderOptions, (value) => value.toMap()),
       'requiredFeatures': ?requiredFeatures,
-      'resourceGroupLockOptionDuringMove': ?resourceGroupLockOptionDuringMove == null ? null : resourceGroupLockOptionDuringMove!.toMap(),
-      'resourceHydrationAccounts': ?resourceHydrationAccounts == null ? null : pulumi.Input.encodeList<ResourceHydrationAccountResponse, Map<String, dynamic>>(resourceHydrationAccounts!, (value) => value.toMap()),
-      'resourceProviderAuthorizationRules': ?resourceProviderAuthorizationRules == null ? null : resourceProviderAuthorizationRules!.toMap(),
-      'responseOptions': ?responseOptions == null ? null : responseOptions!.toMap(),
+      'resourceGroupLockOptionDuringMove': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse, Map<String, dynamic>>(resourceGroupLockOptionDuringMove, (value) => value.toMap()),
+      'resourceHydrationAccounts': ?pulumi.Input.mapOptionalInputValue<List<ResourceHydrationAccountResponse>, List<Map<String, dynamic>>>(resourceHydrationAccounts, (value) => pulumi.Input.encodeList<ResourceHydrationAccountResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceProviderAuthorizationRules': ?pulumi.Input.mapOptionalInputValue<ResourceProviderAuthorizationRulesResponse, Map<String, dynamic>>(resourceProviderAuthorizationRules, (value) => value.toMap()),
+      'responseOptions': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesResponseOptionsResponse, Map<String, dynamic>>(responseOptions, (value) => value.toMap()),
       'serviceName': ?serviceName,
-      'services': ?services == null ? null : pulumi.Input.encodeList<ResourceProviderServiceResponse, Map<String, dynamic>>(services!, (value) => value.toMap()),
-      'subscriptionLifecycleNotificationSpecifications': ?subscriptionLifecycleNotificationSpecifications == null ? null : subscriptionLifecycleNotificationSpecifications!.toMap(),
-      'templateDeploymentOptions': ?templateDeploymentOptions == null ? null : templateDeploymentOptions!.toMap(),
-      'tokenAuthConfiguration': ?tokenAuthConfiguration == null ? null : tokenAuthConfiguration!.toMap(),
+      'services': ?pulumi.Input.mapOptionalInputValue<List<ResourceProviderServiceResponse>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<ResourceProviderServiceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subscriptionLifecycleNotificationSpecifications': ?pulumi.Input.mapOptionalInputValue<ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse, Map<String, dynamic>>(subscriptionLifecycleNotificationSpecifications, (value) => value.toMap()),
+      'templateDeploymentOptions': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse, Map<String, dynamic>>(templateDeploymentOptions, (value) => value.toMap()),
+      'tokenAuthConfiguration': ?pulumi.Input.mapOptionalInputValue<TokenAuthConfigurationResponse, Map<String, dynamic>>(tokenAuthConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ProviderRegistrationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationPropertiesResponse(
-      capabilities: map['capabilities'] == null ? null : pulumi.Input.decodeList<ResourceProviderCapabilitiesResponse>(map['capabilities'], (value) => ResourceProviderCapabilitiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      crossTenantTokenValidation: map['crossTenantTokenValidation'] == null ? null : map['crossTenantTokenValidation'] as String,
-      customManifestVersion: map['customManifestVersion'] == null ? null : map['customManifestVersion'] as String,
-      dstsConfiguration: map['dstsConfiguration'] == null ? null : ResourceProviderManifestPropertiesDstsConfigurationResponse.fromMap((map['dstsConfiguration'] as Map).cast<String, dynamic>()),
-      enableTenantLinkedNotification: map['enableTenantLinkedNotification'] == null ? null : map['enableTenantLinkedNotification'] as bool,
-      featuresRule: map['featuresRule'] == null ? null : ResourceProviderManifestPropertiesFeaturesRuleResponse.fromMap((map['featuresRule'] as Map).cast<String, dynamic>()),
-      globalNotificationEndpoints: map['globalNotificationEndpoints'] == null ? null : pulumi.Input.decodeList<ResourceProviderEndpointResponse>(map['globalNotificationEndpoints'], (value) => ResourceProviderEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      legacyNamespace: map['legacyNamespace'] == null ? null : map['legacyNamespace'] as String,
-      legacyRegistrations: map['legacyRegistrations'] == null ? null : (map['legacyRegistrations'] as List).cast<String>(),
-      linkedNotificationRules: map['linkedNotificationRules'] == null ? null : pulumi.Input.decodeList<FanoutLinkedNotificationRuleResponse>(map['linkedNotificationRules'], (value) => FanoutLinkedNotificationRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      management: map['management'] == null ? null : ResourceProviderManifestPropertiesManagementResponse.fromMap((map['management'] as Map).cast<String, dynamic>()),
-      managementGroupGlobalNotificationEndpoints: map['managementGroupGlobalNotificationEndpoints'] == null ? null : pulumi.Input.decodeList<ResourceProviderEndpointResponse>(map['managementGroupGlobalNotificationEndpoints'], (value) => ResourceProviderEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      notificationOptions: map['notificationOptions'] == null ? null : map['notificationOptions'] as String,
-      notificationSettings: map['notificationSettings'] == null ? null : ResourceProviderManifestPropertiesNotificationSettingsResponse.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>()),
-      notifications: map['notifications'] == null ? null : pulumi.Input.decodeList<NotificationResponse>(map['notifications'], (value) => NotificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      optionalFeatures: map['optionalFeatures'] == null ? null : (map['optionalFeatures'] as List).cast<String>(),
-      privateResourceProviderConfiguration: map['privateResourceProviderConfiguration'] == null ? null : ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse.fromMap((map['privateResourceProviderConfiguration'] as Map).cast<String, dynamic>()),
-      providerAuthentication: map['providerAuthentication'] == null ? null : ResourceProviderManifestPropertiesProviderAuthenticationResponse.fromMap((map['providerAuthentication'] as Map).cast<String, dynamic>()),
-      providerAuthorizations: map['providerAuthorizations'] == null ? null : pulumi.Input.decodeList<ResourceProviderAuthorizationResponse>(map['providerAuthorizations'], (value) => ResourceProviderAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      providerHubMetadata: map['providerHubMetadata'] == null ? null : ProviderRegistrationPropertiesProviderHubMetadataResponse.fromMap((map['providerHubMetadata'] as Map).cast<String, dynamic>()),
-      providerType: map['providerType'] == null ? null : map['providerType'] as String,
-      providerVersion: map['providerVersion'] == null ? null : map['providerVersion'] as String,
-      provisioningState: map['provisioningState'] as String,
-      requestHeaderOptions: map['requestHeaderOptions'] == null ? null : ResourceProviderManifestPropertiesRequestHeaderOptionsResponse.fromMap((map['requestHeaderOptions'] as Map).cast<String, dynamic>()),
-      requiredFeatures: map['requiredFeatures'] == null ? null : (map['requiredFeatures'] as List).cast<String>(),
-      resourceGroupLockOptionDuringMove: map['resourceGroupLockOptionDuringMove'] == null ? null : ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse.fromMap((map['resourceGroupLockOptionDuringMove'] as Map).cast<String, dynamic>()),
-      resourceHydrationAccounts: map['resourceHydrationAccounts'] == null ? null : pulumi.Input.decodeList<ResourceHydrationAccountResponse>(map['resourceHydrationAccounts'], (value) => ResourceHydrationAccountResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resourceProviderAuthorizationRules: map['resourceProviderAuthorizationRules'] == null ? null : ResourceProviderAuthorizationRulesResponse.fromMap((map['resourceProviderAuthorizationRules'] as Map).cast<String, dynamic>()),
-      responseOptions: map['responseOptions'] == null ? null : ResourceProviderManifestPropertiesResponseOptionsResponse.fromMap((map['responseOptions'] as Map).cast<String, dynamic>()),
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
-      services: map['services'] == null ? null : pulumi.Input.decodeList<ResourceProviderServiceResponse>(map['services'], (value) => ResourceProviderServiceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      subscriptionLifecycleNotificationSpecifications: map['subscriptionLifecycleNotificationSpecifications'] == null ? null : ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse.fromMap((map['subscriptionLifecycleNotificationSpecifications'] as Map).cast<String, dynamic>()),
-      templateDeploymentOptions: map['templateDeploymentOptions'] == null ? null : ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse.fromMap((map['templateDeploymentOptions'] as Map).cast<String, dynamic>()),
-      tokenAuthConfiguration: map['tokenAuthConfiguration'] == null ? null : TokenAuthConfigurationResponse.fromMap((map['tokenAuthConfiguration'] as Map).cast<String, dynamic>()),
+      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<ResourceProviderCapabilitiesResponse>(map['capabilities'], (value) => ResourceProviderCapabilitiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      crossTenantTokenValidation: map['crossTenantTokenValidation'] == null ? null : (map['crossTenantTokenValidation'] as String).input(),
+      customManifestVersion: map['customManifestVersion'] == null ? null : (map['customManifestVersion'] as String).input(),
+      dstsConfiguration: map['dstsConfiguration'] == null ? null : (ResourceProviderManifestPropertiesDstsConfigurationResponse.fromMap((map['dstsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enableTenantLinkedNotification: map['enableTenantLinkedNotification'] == null ? null : (map['enableTenantLinkedNotification'] as bool).input(),
+      featuresRule: map['featuresRule'] == null ? null : (ResourceProviderManifestPropertiesFeaturesRuleResponse.fromMap((map['featuresRule'] as Map).cast<String, dynamic>())).input(),
+      globalNotificationEndpoints: map['globalNotificationEndpoints'] == null ? null : (pulumi.Input.decodeList<ResourceProviderEndpointResponse>(map['globalNotificationEndpoints'], (value) => ResourceProviderEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      legacyNamespace: map['legacyNamespace'] == null ? null : (map['legacyNamespace'] as String).input(),
+      legacyRegistrations: map['legacyRegistrations'] == null ? null : ((map['legacyRegistrations'] as List).cast<String>()).input(),
+      linkedNotificationRules: map['linkedNotificationRules'] == null ? null : (pulumi.Input.decodeList<FanoutLinkedNotificationRuleResponse>(map['linkedNotificationRules'], (value) => FanoutLinkedNotificationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      management: map['management'] == null ? null : (ResourceProviderManifestPropertiesManagementResponse.fromMap((map['management'] as Map).cast<String, dynamic>())).input(),
+      managementGroupGlobalNotificationEndpoints: map['managementGroupGlobalNotificationEndpoints'] == null ? null : (pulumi.Input.decodeList<ResourceProviderEndpointResponse>(map['managementGroupGlobalNotificationEndpoints'], (value) => ResourceProviderEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      notificationOptions: map['notificationOptions'] == null ? null : (map['notificationOptions'] as String).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : (ResourceProviderManifestPropertiesNotificationSettingsResponse.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<NotificationResponse>(map['notifications'], (value) => NotificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      optionalFeatures: map['optionalFeatures'] == null ? null : ((map['optionalFeatures'] as List).cast<String>()).input(),
+      privateResourceProviderConfiguration: map['privateResourceProviderConfiguration'] == null ? null : (ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse.fromMap((map['privateResourceProviderConfiguration'] as Map).cast<String, dynamic>())).input(),
+      providerAuthentication: map['providerAuthentication'] == null ? null : (ResourceProviderManifestPropertiesProviderAuthenticationResponse.fromMap((map['providerAuthentication'] as Map).cast<String, dynamic>())).input(),
+      providerAuthorizations: map['providerAuthorizations'] == null ? null : (pulumi.Input.decodeList<ResourceProviderAuthorizationResponse>(map['providerAuthorizations'], (value) => ResourceProviderAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      providerHubMetadata: map['providerHubMetadata'] == null ? null : (ProviderRegistrationPropertiesProviderHubMetadataResponse.fromMap((map['providerHubMetadata'] as Map).cast<String, dynamic>())).input(),
+      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
+      providerVersion: map['providerVersion'] == null ? null : (map['providerVersion'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      requestHeaderOptions: map['requestHeaderOptions'] == null ? null : (ResourceProviderManifestPropertiesRequestHeaderOptionsResponse.fromMap((map['requestHeaderOptions'] as Map).cast<String, dynamic>())).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
+      resourceGroupLockOptionDuringMove: map['resourceGroupLockOptionDuringMove'] == null ? null : (ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse.fromMap((map['resourceGroupLockOptionDuringMove'] as Map).cast<String, dynamic>())).input(),
+      resourceHydrationAccounts: map['resourceHydrationAccounts'] == null ? null : (pulumi.Input.decodeList<ResourceHydrationAccountResponse>(map['resourceHydrationAccounts'], (value) => ResourceHydrationAccountResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceProviderAuthorizationRules: map['resourceProviderAuthorizationRules'] == null ? null : (ResourceProviderAuthorizationRulesResponse.fromMap((map['resourceProviderAuthorizationRules'] as Map).cast<String, dynamic>())).input(),
+      responseOptions: map['responseOptions'] == null ? null : (ResourceProviderManifestPropertiesResponseOptionsResponse.fromMap((map['responseOptions'] as Map).cast<String, dynamic>())).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<ResourceProviderServiceResponse>(map['services'], (value) => ResourceProviderServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriptionLifecycleNotificationSpecifications: map['subscriptionLifecycleNotificationSpecifications'] == null ? null : (ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse.fromMap((map['subscriptionLifecycleNotificationSpecifications'] as Map).cast<String, dynamic>())).input(),
+      templateDeploymentOptions: map['templateDeploymentOptions'] == null ? null : (ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse.fromMap((map['templateDeploymentOptions'] as Map).cast<String, dynamic>())).input(),
+      tokenAuthConfiguration: map['tokenAuthConfiguration'] == null ? null : (TokenAuthConfigurationResponse.fromMap((map['tokenAuthConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

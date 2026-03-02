@@ -19,13 +19,10 @@ class BlockPublicAccessConfigurationState {
   /// [permittedPublicSecurityGroupRuleRanges] Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BlockPublicAccessConfigurationState({
-    pulumi.Output<bool>? blockPublicSecurityGroupRules,
-    pulumi.Output<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>>? permittedPublicSecurityGroupRuleRanges,
-    pulumi.Output<String>? region,
-  }) :
-      blockPublicSecurityGroupRules = pulumi.Input.asOptionalInput<bool>(blockPublicSecurityGroupRules),
-      permittedPublicSecurityGroupRuleRanges = pulumi.Input.asOptionalInput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>>(permittedPublicSecurityGroupRuleRanges),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.blockPublicSecurityGroupRules,
+    this.permittedPublicSecurityGroupRuleRanges,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class BlockPublicAccessConfigurationState {
 
   factory BlockPublicAccessConfigurationState.fromMap(Map<String, dynamic> map) {
     return BlockPublicAccessConfigurationState(
-      blockPublicSecurityGroupRules: map['blockPublicSecurityGroupRules'] == null ? null : pulumi.Output.create<bool>(map['blockPublicSecurityGroupRules'] as bool),
-      permittedPublicSecurityGroupRuleRanges: map['permittedPublicSecurityGroupRuleRanges'] == null ? null : pulumi.Output.create<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>>(pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(map['permittedPublicSecurityGroupRuleRanges'], (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      blockPublicSecurityGroupRules: map['blockPublicSecurityGroupRules'] == null ? null : (map['blockPublicSecurityGroupRules'] as bool).input(),
+      permittedPublicSecurityGroupRuleRanges: map['permittedPublicSecurityGroupRuleRanges'] == null ? null : (pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(map['permittedPublicSecurityGroupRuleRanges'], (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

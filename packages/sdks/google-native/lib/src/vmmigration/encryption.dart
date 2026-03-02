@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Encryption message describes the details of the applied encryption.
 class Encryption {
   /// The name of the encryption key that is stored in Google Cloud KMS.
-  final String kmsKey;
+  final pulumi.Input<String> kmsKey;
 
   /// Creates a new [Encryption].
   /// [kmsKey] The name of the encryption key that is stored in Google Cloud KMS.
@@ -20,7 +21,7 @@ class Encryption {
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      kmsKey: map['kmsKey'] as String,
+      kmsKey: (map['kmsKey'] as String).input(),
     );
   }
 }

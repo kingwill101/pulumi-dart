@@ -22,15 +22,11 @@ class GetUserProvisioningEventsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userProvisioningId] The ID of the User Provisioning.
   GetUserProvisioningEventsArgs({
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? userProvisioningId,
-  }) :
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      userProvisioningId = pulumi.Input.asOptionalInput<String>(userProvisioningId);
+    required this.directoryId,
+    this.ids,
+    this.outputFile,
+    this.userProvisioningId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetUserProvisioningEventsArgs {
 
   factory GetUserProvisioningEventsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserProvisioningEventsArgs(
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      userProvisioningId: map['userProvisioningId'] == null ? null : pulumi.Output.create<String>(map['userProvisioningId'] as String),
+      directoryId: (map['directoryId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      userProvisioningId: map['userProvisioningId'] == null ? null : (map['userProvisioningId'] as String).input(),
     );
   }
 }

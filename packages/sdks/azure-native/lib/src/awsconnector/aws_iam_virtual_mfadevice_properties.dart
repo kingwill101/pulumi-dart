@@ -6,15 +6,15 @@ import 'tag.dart';
 /// Definition of awsIamVirtualMFADevice
 class AwsIamVirtualMFADeviceProperties {
   /// Property path
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Property serialNumber
-  final String? serialNumber;
+  final pulumi.Input<String>? serialNumber;
   /// Property tags
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// Property users
-  final List<String>? users;
+  final pulumi.Input<List<String>>? users;
   /// Property virtualMfaDeviceName
-  final String? virtualMfaDeviceName;
+  final pulumi.Input<String>? virtualMfaDeviceName;
 
   /// Creates a new [AwsIamVirtualMFADeviceProperties].
   /// [path] Property path
@@ -34,7 +34,7 @@ class AwsIamVirtualMFADeviceProperties {
     return <String, dynamic>{
       'path': ?path,
       'serialNumber': ?serialNumber,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'users': ?users,
       'virtualMfaDeviceName': ?virtualMfaDeviceName,
     };
@@ -42,11 +42,11 @@ class AwsIamVirtualMFADeviceProperties {
 
   factory AwsIamVirtualMFADeviceProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamVirtualMFADeviceProperties(
-      path: map['path'] == null ? null : map['path'] as String,
-      serialNumber: map['serialNumber'] == null ? null : map['serialNumber'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      users: map['users'] == null ? null : (map['users'] as List).cast<String>(),
-      virtualMfaDeviceName: map['virtualMfaDeviceName'] == null ? null : map['virtualMfaDeviceName'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      virtualMfaDeviceName: map['virtualMfaDeviceName'] == null ? null : (map['virtualMfaDeviceName'] as String).input(),
     );
   }
 }

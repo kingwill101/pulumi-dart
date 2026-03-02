@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_access_control_action_operation_type.dart';
 import 'google_iam_v1_policy.dart';
 
 /// Represents the action responsible for access control list management operations.
 class GoogleCloudContentwarehouseV1AccessControlAction {
   /// Identifies the type of operation.
-  final GoogleCloudContentwarehouseV1AccessControlActionOperationType? operationType;
+  final pulumi.Input<GoogleCloudContentwarehouseV1AccessControlActionOperationType>? operationType;
   /// Represents the new policy from which bindings are added, removed or replaced based on the type of the operation. the policy is limited to a few 10s of KB.
-  final GoogleIamV1Policy? policy;
+  final pulumi.Input<GoogleIamV1Policy>? policy;
 
   /// Creates a new [GoogleCloudContentwarehouseV1AccessControlAction].
   /// [operationType] Identifies the type of operation.
@@ -20,15 +21,15 @@ class GoogleCloudContentwarehouseV1AccessControlAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'operationType': ?operationType == null ? null : operationType!.value,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'operationType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1AccessControlActionOperationType, String>(operationType, (value) => value.value),
+      'policy': ?pulumi.Input.mapOptionalInputValue<GoogleIamV1Policy, Map<String, dynamic>>(policy, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudContentwarehouseV1AccessControlAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1AccessControlAction(
-      operationType: map['operationType'] == null ? null : GoogleCloudContentwarehouseV1AccessControlActionOperationType.fromValue(map['operationType'] as String),
-      policy: map['policy'] == null ? null : GoogleIamV1Policy.fromMap((map['policy'] as Map).cast<String, dynamic>()),
+      operationType: map['operationType'] == null ? null : (GoogleCloudContentwarehouseV1AccessControlActionOperationType.fromValue(map['operationType'] as String)).input(),
+      policy: map['policy'] == null ? null : (GoogleIamV1Policy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

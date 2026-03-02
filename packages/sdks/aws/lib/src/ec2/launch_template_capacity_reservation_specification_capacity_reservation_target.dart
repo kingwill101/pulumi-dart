@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget {
   /// The ID of the Capacity Reservation in which to run the instance.
-  final String? capacityReservationId;
+  final pulumi.Input<String>? capacityReservationId;
   /// The ARN of the Capacity Reservation resource group in which to run the instance.
-  final String? capacityReservationResourceGroupArn;
+  final pulumi.Input<String>? capacityReservationResourceGroupArn;
 
   /// Creates a new [LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget].
   /// [capacityReservationId] The ID of the Capacity Reservation in which to run the instance.
@@ -24,8 +25,8 @@ class LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget {
 
   factory LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget(
-      capacityReservationId: map['capacityReservationId'] == null ? null : map['capacityReservationId'] as String,
-      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] == null ? null : map['capacityReservationResourceGroupArn'] as String,
+      capacityReservationId: map['capacityReservationId'] == null ? null : (map['capacityReservationId'] as String).input(),
+      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] == null ? null : (map['capacityReservationResourceGroupArn'] as String).input(),
     );
   }
 }

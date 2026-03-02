@@ -64,27 +64,17 @@ class UnitKindArgs {
   /// [saas] A reference to the Saas that defines the product (managed service) that
   /// [unitKindId] The ID value for the new unit kind.
   UnitKindArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? defaultRelease,
-    pulumi.Output<List<UnitKindDependency>>? dependencies,
-    pulumi.Output<List<UnitKindInputVariableMapping>>? inputVariableMappings,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<List<UnitKindOutputVariableMapping>>? outputVariableMappings,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> saas,
-    required pulumi.Output<String> unitKindId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      defaultRelease = pulumi.Input.asOptionalInput<String>(defaultRelease),
-      dependencies = pulumi.Input.asOptionalInput<List<UnitKindDependency>>(dependencies),
-      inputVariableMappings = pulumi.Input.asOptionalInput<List<UnitKindInputVariableMapping>>(inputVariableMappings),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      outputVariableMappings = pulumi.Input.asOptionalInput<List<UnitKindOutputVariableMapping>>(outputVariableMappings),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      saas = pulumi.Input.asInput<String>(saas),
-      unitKindId = pulumi.Input.asInput<String>(unitKindId);
+    this.annotations,
+    this.defaultRelease,
+    this.dependencies,
+    this.inputVariableMappings,
+    this.labels,
+    required this.location,
+    this.outputVariableMappings,
+    this.project,
+    required this.saas,
+    required this.unitKindId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,16 +93,16 @@ class UnitKindArgs {
 
   factory UnitKindArgs.fromMap(Map<String, dynamic> map) {
     return UnitKindArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      defaultRelease: map['defaultRelease'] == null ? null : pulumi.Output.create<String>(map['defaultRelease'] as String),
-      dependencies: map['dependencies'] == null ? null : pulumi.Output.create<List<UnitKindDependency>>(pulumi.Input.decodeList<UnitKindDependency>(map['dependencies'], (value) => UnitKindDependency.fromMap((value as Map).cast<String, dynamic>()))),
-      inputVariableMappings: map['inputVariableMappings'] == null ? null : pulumi.Output.create<List<UnitKindInputVariableMapping>>(pulumi.Input.decodeList<UnitKindInputVariableMapping>(map['inputVariableMappings'], (value) => UnitKindInputVariableMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      outputVariableMappings: map['outputVariableMappings'] == null ? null : pulumi.Output.create<List<UnitKindOutputVariableMapping>>(pulumi.Input.decodeList<UnitKindOutputVariableMapping>(map['outputVariableMappings'], (value) => UnitKindOutputVariableMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      saas: pulumi.Output.create<String>(map['saas'] as String),
-      unitKindId: pulumi.Output.create<String>(map['unitKindId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      defaultRelease: map['defaultRelease'] == null ? null : (map['defaultRelease'] as String).input(),
+      dependencies: map['dependencies'] == null ? null : (pulumi.Input.decodeList<UnitKindDependency>(map['dependencies'], (value) => UnitKindDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputVariableMappings: map['inputVariableMappings'] == null ? null : (pulumi.Input.decodeList<UnitKindInputVariableMapping>(map['inputVariableMappings'], (value) => UnitKindInputVariableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      outputVariableMappings: map['outputVariableMappings'] == null ? null : (pulumi.Input.decodeList<UnitKindOutputVariableMapping>(map['outputVariableMappings'], (value) => UnitKindOutputVariableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      saas: (map['saas'] as String).input(),
+      unitKindId: (map['unitKindId'] as String).input(),
     );
   }
 }

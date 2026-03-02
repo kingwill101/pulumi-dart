@@ -7,25 +7,25 @@ import 'get_feature_fleet_default_member_config_policycontroller_policy_controll
 
 class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
   /// Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
-  final int auditIntervalSeconds;
+  final pulumi.Input<int> auditIntervalSeconds;
   /// The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
-  final int constraintViolationLimit;
+  final pulumi.Input<int> constraintViolationLimit;
   /// Map of deployment configs to deployments ("admission", "audit", "mutation").
-  final List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs;
+  final pulumi.Input<List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>> deploymentConfigs;
   /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
-  final List<String> exemptableNamespaces;
+  final pulumi.Input<List<String>> exemptableNamespaces;
   /// Configures the mode of the Policy Controller installation Possible values: ["INSTALL_SPEC_UNSPECIFIED", "INSTALL_SPEC_NOT_INSTALLED", "INSTALL_SPEC_ENABLED", "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
-  final String installSpec;
+  final pulumi.Input<String> installSpec;
   /// Logs all denies and dry run failures.
-  final bool logDeniesEnabled;
+  final pulumi.Input<bool> logDeniesEnabled;
   /// Monitoring specifies the configuration of monitoring Policy Controller.
-  final List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring> monitorings;
+  final pulumi.Input<List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring>> monitorings;
   /// Enables the ability to mutate resources using Policy Controller.
-  final bool mutationEnabled;
+  final pulumi.Input<bool> mutationEnabled;
   /// Specifies the desired policy content on the cluster.
-  final List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent> policyContents;
+  final pulumi.Input<List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent>> policyContents;
   /// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
-  final bool referentialRulesEnabled;
+  final pulumi.Input<bool> referentialRulesEnabled;
 
   /// Creates a new [GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig].
   /// [auditIntervalSeconds] Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
@@ -55,29 +55,29 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
     return <String, dynamic>{
       'auditIntervalSeconds': auditIntervalSeconds,
       'constraintViolationLimit': constraintViolationLimit,
-      'deploymentConfigs': pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig, Map<String, dynamic>>(deploymentConfigs, (value) => value.toMap()),
+      'deploymentConfigs': pulumi.Input.mapInputValue<List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>, List<Map<String, dynamic>>>(deploymentConfigs, (value) => pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'exemptableNamespaces': exemptableNamespaces,
       'installSpec': installSpec,
       'logDeniesEnabled': logDeniesEnabled,
-      'monitorings': pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring, Map<String, dynamic>>(monitorings, (value) => value.toMap()),
+      'monitorings': pulumi.Input.mapInputValue<List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring>, List<Map<String, dynamic>>>(monitorings, (value) => pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mutationEnabled': mutationEnabled,
-      'policyContents': pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent, Map<String, dynamic>>(policyContents, (value) => value.toMap()),
+      'policyContents': pulumi.Input.mapInputValue<List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent>, List<Map<String, dynamic>>>(policyContents, (value) => pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'referentialRulesEnabled': referentialRulesEnabled,
     };
   }
 
   factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig(
-      auditIntervalSeconds: map['auditIntervalSeconds'] as int,
-      constraintViolationLimit: map['constraintViolationLimit'] as int,
-      deploymentConfigs: pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(map['deploymentConfigs'], (value) => GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap((value as Map).cast<String, dynamic>())),
-      exemptableNamespaces: (map['exemptableNamespaces'] as List).cast<String>(),
-      installSpec: map['installSpec'] as String,
-      logDeniesEnabled: map['logDeniesEnabled'] as bool,
-      monitorings: pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring>(map['monitorings'], (value) => GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring.fromMap((value as Map).cast<String, dynamic>())),
-      mutationEnabled: map['mutationEnabled'] as bool,
-      policyContents: pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent>(map['policyContents'], (value) => GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent.fromMap((value as Map).cast<String, dynamic>())),
-      referentialRulesEnabled: map['referentialRulesEnabled'] as bool,
+      auditIntervalSeconds: (map['auditIntervalSeconds'] as int).input(),
+      constraintViolationLimit: (map['constraintViolationLimit'] as int).input(),
+      deploymentConfigs: (pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(map['deploymentConfigs'], (value) => GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exemptableNamespaces: ((map['exemptableNamespaces'] as List).cast<String>()).input(),
+      installSpec: (map['installSpec'] as String).input(),
+      logDeniesEnabled: (map['logDeniesEnabled'] as bool).input(),
+      monitorings: (pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring>(map['monitorings'], (value) => GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mutationEnabled: (map['mutationEnabled'] as bool).input(),
+      policyContents: (pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent>(map['policyContents'], (value) => GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      referentialRulesEnabled: (map['referentialRulesEnabled'] as bool).input(),
     );
   }
 }

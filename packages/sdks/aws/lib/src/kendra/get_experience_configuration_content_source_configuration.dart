@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExperienceConfigurationContentSourceConfiguration {
   /// Identifiers of the data sources you want to use for your Amazon Kendra Experience.
-  final List<String> dataSourceIds;
+  final pulumi.Input<List<String>> dataSourceIds;
   /// Whether to use documents you indexed directly using the `BatchPutDocument API`.
-  final bool directPutContent;
+  final pulumi.Input<bool> directPutContent;
   /// Identifier of the FAQs that you want to use for your Amazon Kendra Experience.
-  final List<String> faqIds;
+  final pulumi.Input<List<String>> faqIds;
 
   /// Creates a new [GetExperienceConfigurationContentSourceConfiguration].
   /// [dataSourceIds] Identifiers of the data sources you want to use for your Amazon Kendra Experience.
@@ -29,9 +30,9 @@ class GetExperienceConfigurationContentSourceConfiguration {
 
   factory GetExperienceConfigurationContentSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExperienceConfigurationContentSourceConfiguration(
-      dataSourceIds: (map['dataSourceIds'] as List).cast<String>(),
-      directPutContent: map['directPutContent'] as bool,
-      faqIds: (map['faqIds'] as List).cast<String>(),
+      dataSourceIds: ((map['dataSourceIds'] as List).cast<String>()).input(),
+      directPutContent: (map['directPutContent'] as bool).input(),
+      faqIds: ((map['faqIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_connection_auth_parameters_api_key.dart';
 import 'event_connection_auth_parameters_basic.dart';
 import 'event_connection_auth_parameters_invocation_http_parameters.dart';
@@ -7,13 +8,13 @@ import 'event_connection_auth_parameters_oauth.dart';
 
 class EventConnectionAuthParameters {
   /// Parameters used for API_KEY authorization. An API key to include in the header for each authentication request. A maximum of 1 are allowed. Conflicts with `basic` and `oauth`. Documented below.
-  final EventConnectionAuthParametersApiKey? apiKey;
+  final pulumi.Input<EventConnectionAuthParametersApiKey>? apiKey;
   /// Parameters used for BASIC authorization. A maximum of 1 are allowed. Conflicts with `api_key` and `oauth`. Documented below.
-  final EventConnectionAuthParametersBasic? basic;
+  final pulumi.Input<EventConnectionAuthParametersBasic>? basic;
   /// Invocation Http Parameters are additional credentials used to sign each Invocation of the ApiDestination created from this Connection. If the ApiDestination Rule Target has additional HttpParameters, the values will be merged together, with the Connection Invocation Http Parameters taking precedence. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
-  final EventConnectionAuthParametersInvocationHttpParameters? invocationHttpParameters;
+  final pulumi.Input<EventConnectionAuthParametersInvocationHttpParameters>? invocationHttpParameters;
   /// Parameters used for OAUTH_CLIENT_CREDENTIALS authorization. A maximum of 1 are allowed. Conflicts with `basic` and `api_key`. Documented below.
-  final EventConnectionAuthParametersOauth? oauth;
+  final pulumi.Input<EventConnectionAuthParametersOauth>? oauth;
 
   /// Creates a new [EventConnectionAuthParameters].
   /// [apiKey] Parameters used for API_KEY authorization. An API key to include in the header for each authentication request. A maximum of 1 are allowed. Conflicts with `basic` and `oauth`. Documented below.
@@ -29,19 +30,19 @@ class EventConnectionAuthParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiKey': ?apiKey == null ? null : apiKey!.toMap(),
-      'basic': ?basic == null ? null : basic!.toMap(),
-      'invocationHttpParameters': ?invocationHttpParameters == null ? null : invocationHttpParameters!.toMap(),
-      'oauth': ?oauth == null ? null : oauth!.toMap(),
+      'apiKey': ?pulumi.Input.mapOptionalInputValue<EventConnectionAuthParametersApiKey, Map<String, dynamic>>(apiKey, (value) => value.toMap()),
+      'basic': ?pulumi.Input.mapOptionalInputValue<EventConnectionAuthParametersBasic, Map<String, dynamic>>(basic, (value) => value.toMap()),
+      'invocationHttpParameters': ?pulumi.Input.mapOptionalInputValue<EventConnectionAuthParametersInvocationHttpParameters, Map<String, dynamic>>(invocationHttpParameters, (value) => value.toMap()),
+      'oauth': ?pulumi.Input.mapOptionalInputValue<EventConnectionAuthParametersOauth, Map<String, dynamic>>(oauth, (value) => value.toMap()),
     };
   }
 
   factory EventConnectionAuthParameters.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParameters(
-      apiKey: map['apiKey'] == null ? null : EventConnectionAuthParametersApiKey.fromMap((map['apiKey'] as Map).cast<String, dynamic>()),
-      basic: map['basic'] == null ? null : EventConnectionAuthParametersBasic.fromMap((map['basic'] as Map).cast<String, dynamic>()),
-      invocationHttpParameters: map['invocationHttpParameters'] == null ? null : EventConnectionAuthParametersInvocationHttpParameters.fromMap((map['invocationHttpParameters'] as Map).cast<String, dynamic>()),
-      oauth: map['oauth'] == null ? null : EventConnectionAuthParametersOauth.fromMap((map['oauth'] as Map).cast<String, dynamic>()),
+      apiKey: map['apiKey'] == null ? null : (EventConnectionAuthParametersApiKey.fromMap((map['apiKey'] as Map).cast<String, dynamic>())).input(),
+      basic: map['basic'] == null ? null : (EventConnectionAuthParametersBasic.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
+      invocationHttpParameters: map['invocationHttpParameters'] == null ? null : (EventConnectionAuthParametersInvocationHttpParameters.fromMap((map['invocationHttpParameters'] as Map).cast<String, dynamic>())).input(),
+      oauth: map['oauth'] == null ? null : (EventConnectionAuthParametersOauth.fromMap((map['oauth'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

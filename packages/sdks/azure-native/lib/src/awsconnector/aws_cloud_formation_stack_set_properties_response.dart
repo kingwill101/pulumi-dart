@@ -11,37 +11,37 @@ import 'tag_response.dart';
 /// Definition of awsCloudFormationStackSet
 class AwsCloudFormationStackSetPropertiesResponse {
   /// The Amazon Resource Number (ARN) of the IAM role to use to create this stack set. Specify an IAM role only if you are using customized administrator roles to control which users or groups can manage specific stack sets within the same administrator account.
-  final String? administrationRoleARN;
+  final pulumi.Input<String>? administrationRoleARN;
   /// Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to the target organization or organizational unit (OU). Specify only if PermissionModel is SERVICE_MANAGED.
-  final AutoDeploymentResponse? autoDeployment;
+  final pulumi.Input<AutoDeploymentResponse>? autoDeployment;
   /// Specifies the AWS account that you are acting from. By default, SELF is specified. For self-managed permissions, specify SELF; for service-managed permissions, if you are signed in to the organization's management account, specify SELF. If you are signed in to a delegated administrator account, specify DELEGATED_ADMIN.
-  final String? callAs;
+  final pulumi.Input<String>? callAs;
   /// In some cases, you must explicitly acknowledge that your stack set template contains certain capabilities in order for AWS CloudFormation to create the stack set and related stack instances.
-  final List<String>? capabilities;
+  final pulumi.Input<List<String>>? capabilities;
   /// A description of the stack set. You can use the description to identify the stack set's purpose or other important information.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name of the IAM execution role to use to create the stack set. If you do not specify an execution role, AWS CloudFormation uses the AWSCloudFormationStackSetExecutionRole role for the stack set operation.
-  final String? executionRoleName;
+  final pulumi.Input<String>? executionRoleName;
   /// Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting operations.
-  final ActiveModelResponse? managedExecution;
+  final pulumi.Input<ActiveModelResponse>? managedExecution;
   /// The user-specified preferences for how AWS CloudFormation performs a stack set operation.
-  final OperationPreferencesResponse? operationPreferences;
+  final pulumi.Input<OperationPreferencesResponse>? operationPreferences;
   /// The input parameters for the stack set template.
-  final List<ParameterResponse>? parameters;
+  final pulumi.Input<List<ParameterResponse>>? parameters;
   /// Describes how the IAM roles required for stack set operations are created. By default, SELF-MANAGED is specified.
-  final String? permissionModel;
+  final pulumi.Input<String>? permissionModel;
   /// A group of stack instances with parameters in some specific accounts and regions.
-  final List<StackInstancesResponse>? stackInstancesGroup;
+  final pulumi.Input<List<StackInstancesResponse>>? stackInstancesGroup;
   /// The ID of the stack set that you're creating.
-  final String? stackSetId;
+  final pulumi.Input<String>? stackSetId;
   /// The name to associate with the stack set. The name must be unique in the Region where you create your stack set.
-  final String? stackSetName;
+  final pulumi.Input<String>? stackSetName;
   /// The key-value pairs to associate with this stack set and the stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the stacks. A maximum number of 50 tags can be specified.
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
   /// The structure that contains the template body, with a minimum length of 1 byte and a maximum length of 51,200 bytes.
-  final String? templateBody;
+  final pulumi.Input<String>? templateBody;
   /// Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that is located in an Amazon S3 bucket.
-  final String? templateURL;
+  final pulumi.Input<String>? templateURL;
 
   /// Creates a new [AwsCloudFormationStackSetPropertiesResponse].
   /// [administrationRoleARN] The Amazon Resource Number (ARN) of the IAM role to use to create this stack set. Specify an IAM role only if you are using customized administrator roles to control which users or groups can manage specific stack sets within the same administrator account.
@@ -82,19 +82,19 @@ class AwsCloudFormationStackSetPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'administrationRoleARN': ?administrationRoleARN,
-      'autoDeployment': ?autoDeployment == null ? null : autoDeployment!.toMap(),
+      'autoDeployment': ?pulumi.Input.mapOptionalInputValue<AutoDeploymentResponse, Map<String, dynamic>>(autoDeployment, (value) => value.toMap()),
       'callAs': ?callAs,
       'capabilities': ?capabilities,
       'description': ?description,
       'executionRoleName': ?executionRoleName,
-      'managedExecution': ?managedExecution == null ? null : managedExecution!.toMap(),
-      'operationPreferences': ?operationPreferences == null ? null : operationPreferences!.toMap(),
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ParameterResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'managedExecution': ?pulumi.Input.mapOptionalInputValue<ActiveModelResponse, Map<String, dynamic>>(managedExecution, (value) => value.toMap()),
+      'operationPreferences': ?pulumi.Input.mapOptionalInputValue<OperationPreferencesResponse, Map<String, dynamic>>(operationPreferences, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'permissionModel': ?permissionModel,
-      'stackInstancesGroup': ?stackInstancesGroup == null ? null : pulumi.Input.encodeList<StackInstancesResponse, Map<String, dynamic>>(stackInstancesGroup!, (value) => value.toMap()),
+      'stackInstancesGroup': ?pulumi.Input.mapOptionalInputValue<List<StackInstancesResponse>, List<Map<String, dynamic>>>(stackInstancesGroup, (value) => pulumi.Input.encodeList<StackInstancesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'stackSetId': ?stackSetId,
       'stackSetName': ?stackSetName,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'templateBody': ?templateBody,
       'templateURL': ?templateURL,
     };
@@ -102,22 +102,22 @@ class AwsCloudFormationStackSetPropertiesResponse {
 
   factory AwsCloudFormationStackSetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsCloudFormationStackSetPropertiesResponse(
-      administrationRoleARN: map['administrationRoleARN'] == null ? null : map['administrationRoleARN'] as String,
-      autoDeployment: map['autoDeployment'] == null ? null : AutoDeploymentResponse.fromMap((map['autoDeployment'] as Map).cast<String, dynamic>()),
-      callAs: map['callAs'] == null ? null : map['callAs'] as String,
-      capabilities: map['capabilities'] == null ? null : (map['capabilities'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      executionRoleName: map['executionRoleName'] == null ? null : map['executionRoleName'] as String,
-      managedExecution: map['managedExecution'] == null ? null : ActiveModelResponse.fromMap((map['managedExecution'] as Map).cast<String, dynamic>()),
-      operationPreferences: map['operationPreferences'] == null ? null : OperationPreferencesResponse.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>()),
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ParameterResponse>(map['parameters'], (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      permissionModel: map['permissionModel'] == null ? null : map['permissionModel'] as String,
-      stackInstancesGroup: map['stackInstancesGroup'] == null ? null : pulumi.Input.decodeList<StackInstancesResponse>(map['stackInstancesGroup'], (value) => StackInstancesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      stackSetId: map['stackSetId'] == null ? null : map['stackSetId'] as String,
-      stackSetName: map['stackSetName'] == null ? null : map['stackSetName'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      templateBody: map['templateBody'] == null ? null : map['templateBody'] as String,
-      templateURL: map['templateURL'] == null ? null : map['templateURL'] as String,
+      administrationRoleARN: map['administrationRoleARN'] == null ? null : (map['administrationRoleARN'] as String).input(),
+      autoDeployment: map['autoDeployment'] == null ? null : (AutoDeploymentResponse.fromMap((map['autoDeployment'] as Map).cast<String, dynamic>())).input(),
+      callAs: map['callAs'] == null ? null : (map['callAs'] as String).input(),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionRoleName: map['executionRoleName'] == null ? null : (map['executionRoleName'] as String).input(),
+      managedExecution: map['managedExecution'] == null ? null : (ActiveModelResponse.fromMap((map['managedExecution'] as Map).cast<String, dynamic>())).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : (OperationPreferencesResponse.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterResponse>(map['parameters'], (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      permissionModel: map['permissionModel'] == null ? null : (map['permissionModel'] as String).input(),
+      stackInstancesGroup: map['stackInstancesGroup'] == null ? null : (pulumi.Input.decodeList<StackInstancesResponse>(map['stackInstancesGroup'], (value) => StackInstancesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stackSetId: map['stackSetId'] == null ? null : (map['stackSetId'] as String).input(),
+      stackSetName: map['stackSetName'] == null ? null : (map['stackSetName'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
+      templateURL: map['templateURL'] == null ? null : (map['templateURL'] as String).input(),
     );
   }
 }

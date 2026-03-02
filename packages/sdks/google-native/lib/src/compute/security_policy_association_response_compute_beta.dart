@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyAssociationResponseComputeBeta {
   /// The resource that the security policy is attached to.
-  final String attachmentId;
+  final pulumi.Input<String> attachmentId;
   /// The display name of the security policy of the association.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The name for an association.
-  final String name;
+  final pulumi.Input<String> name;
   /// The security policy ID of the association.
-  final String securityPolicyId;
+  final pulumi.Input<String> securityPolicyId;
 
   /// Creates a new [SecurityPolicyAssociationResponseComputeBeta].
   /// [attachmentId] The resource that the security policy is attached to.
@@ -34,10 +35,10 @@ class SecurityPolicyAssociationResponseComputeBeta {
 
   factory SecurityPolicyAssociationResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAssociationResponseComputeBeta(
-      attachmentId: map['attachmentId'] as String,
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
-      securityPolicyId: map['securityPolicyId'] as String,
+      attachmentId: (map['attachmentId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
+      securityPolicyId: (map['securityPolicyId'] as String).input(),
     );
   }
 }

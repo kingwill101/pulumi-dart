@@ -6,9 +6,9 @@ import 'job_job_monitor_info_monitor_config.dart';
 
 class JobJobMonitorInfo {
   /// Contact information. See `contact_info` below.
-  final List<JobJobMonitorInfoContactInfo>? contactInfos;
+  final pulumi.Input<List<JobJobMonitorInfoContactInfo>>? contactInfos;
   /// Alarm switch and threshold configuration. See `monitor_config` below.
-  final JobJobMonitorInfoMonitorConfig? monitorConfig;
+  final pulumi.Input<JobJobMonitorInfoMonitorConfig>? monitorConfig;
 
   /// Creates a new [JobJobMonitorInfo].
   /// [contactInfos] Contact information. See `contact_info` below.
@@ -20,15 +20,15 @@ class JobJobMonitorInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contactInfos': ?contactInfos == null ? null : pulumi.Input.encodeList<JobJobMonitorInfoContactInfo, Map<String, dynamic>>(contactInfos!, (value) => value.toMap()),
-      'monitorConfig': ?monitorConfig == null ? null : monitorConfig!.toMap(),
+      'contactInfos': ?pulumi.Input.mapOptionalInputValue<List<JobJobMonitorInfoContactInfo>, List<Map<String, dynamic>>>(contactInfos, (value) => pulumi.Input.encodeList<JobJobMonitorInfoContactInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'monitorConfig': ?pulumi.Input.mapOptionalInputValue<JobJobMonitorInfoMonitorConfig, Map<String, dynamic>>(monitorConfig, (value) => value.toMap()),
     };
   }
 
   factory JobJobMonitorInfo.fromMap(Map<String, dynamic> map) {
     return JobJobMonitorInfo(
-      contactInfos: map['contactInfos'] == null ? null : pulumi.Input.decodeList<JobJobMonitorInfoContactInfo>(map['contactInfos'], (value) => JobJobMonitorInfoContactInfo.fromMap((value as Map).cast<String, dynamic>())),
-      monitorConfig: map['monitorConfig'] == null ? null : JobJobMonitorInfoMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>()),
+      contactInfos: map['contactInfos'] == null ? null : (pulumi.Input.decodeList<JobJobMonitorInfoContactInfo>(map['contactInfos'], (value) => JobJobMonitorInfoContactInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monitorConfig: map['monitorConfig'] == null ? null : (JobJobMonitorInfoMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

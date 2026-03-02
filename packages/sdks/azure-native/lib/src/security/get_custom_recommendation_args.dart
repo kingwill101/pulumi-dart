@@ -16,11 +16,9 @@ class GetCustomRecommendationArgs {
   /// [customRecommendationName] Name of the Custom Recommendation.
   /// [scope] The scope of the custom recommendation. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   GetCustomRecommendationArgs({
-    required pulumi.Output<String> customRecommendationName,
-    required pulumi.Output<String> scope,
-  }) :
-      customRecommendationName = pulumi.Input.asInput<String>(customRecommendationName),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.customRecommendationName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCustomRecommendationArgs {
 
   factory GetCustomRecommendationArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomRecommendationArgs(
-      customRecommendationName: pulumi.Output.create<String>(map['customRecommendationName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      customRecommendationName: (map['customRecommendationName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

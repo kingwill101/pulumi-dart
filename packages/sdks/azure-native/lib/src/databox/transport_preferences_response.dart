@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Preferences related to the shipment logistics of the sku
 class TransportPreferencesResponse {
   /// Read only property which indicates whether transport preferences has been updated or not after device is prepared.
-  final bool isUpdated;
+  final pulumi.Input<bool> isUpdated;
   /// Indicates Shipment Logistics type that the customer preferred.
-  final String preferredShipmentType;
+  final pulumi.Input<String> preferredShipmentType;
 
   /// Creates a new [TransportPreferencesResponse].
   /// [isUpdated] Read only property which indicates whether transport preferences has been updated or not after device is prepared.
@@ -25,8 +26,8 @@ class TransportPreferencesResponse {
 
   factory TransportPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return TransportPreferencesResponse(
-      isUpdated: map['isUpdated'] as bool,
-      preferredShipmentType: map['preferredShipmentType'] as String,
+      isUpdated: (map['isUpdated'] as bool).input(),
+      preferredShipmentType: (map['preferredShipmentType'] as String).input(),
     );
   }
 }

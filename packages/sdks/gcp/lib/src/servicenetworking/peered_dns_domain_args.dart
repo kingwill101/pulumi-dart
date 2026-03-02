@@ -25,17 +25,12 @@ class PeeredDnsDomainArgs {
   /// [project] The producer project number. If not provided, the provider project is used.
   /// [service] Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
   PeeredDnsDomainArgs({
-    required pulumi.Output<String> dnsSuffix,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? service,
-  }) :
-      dnsSuffix = pulumi.Input.asInput<String>(dnsSuffix),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    required this.dnsSuffix,
+    this.name,
+    required this.network,
+    this.project,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PeeredDnsDomainArgs {
 
   factory PeeredDnsDomainArgs.fromMap(Map<String, dynamic> map) {
     return PeeredDnsDomainArgs(
-      dnsSuffix: pulumi.Output.create<String>(map['dnsSuffix'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      dnsSuffix: (map['dnsSuffix'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

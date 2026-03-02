@@ -16,11 +16,9 @@ class KvNamespaceArgs {
   /// [description] Namespace description information
   /// [namespace] Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
   KvNamespaceArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> namespace,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      namespace = pulumi.Input.asInput<String>(namespace);
+    required this.description,
+    required this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class KvNamespaceArgs {
 
   factory KvNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return KvNamespaceArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
+      description: (map['description'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

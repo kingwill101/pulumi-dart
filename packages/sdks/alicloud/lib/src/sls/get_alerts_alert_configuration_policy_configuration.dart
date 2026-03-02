@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertsAlertConfigurationPolicyConfiguration {
   /// The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
-  final String actionPolicyId;
+  final pulumi.Input<String> actionPolicyId;
   /// Alarm policy ID.If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system).For advanced mode, set it to the specified alarm policy ID.
-  final String alertPolicyId;
+  final pulumi.Input<String> alertPolicyId;
   /// Repeat the waiting time. For example, 5m, 1H, etc.
-  final String repeatInterval;
+  final pulumi.Input<String> repeatInterval;
 
   /// Creates a new [GetAlertsAlertConfigurationPolicyConfiguration].
   /// [actionPolicyId] The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
@@ -29,9 +30,9 @@ class GetAlertsAlertConfigurationPolicyConfiguration {
 
   factory GetAlertsAlertConfigurationPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAlertsAlertConfigurationPolicyConfiguration(
-      actionPolicyId: map['actionPolicyId'] as String,
-      alertPolicyId: map['alertPolicyId'] as String,
-      repeatInterval: map['repeatInterval'] as String,
+      actionPolicyId: (map['actionPolicyId'] as String).input(),
+      alertPolicyId: (map['alertPolicyId'] as String).input(),
+      repeatInterval: (map['repeatInterval'] as String).input(),
     );
   }
 }

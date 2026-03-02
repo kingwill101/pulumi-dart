@@ -19,13 +19,10 @@ class AccessPackageResourceCatalogAssociationArgs {
   /// [resourceOriginId] The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
   /// [resourceOriginSystem] The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
   AccessPackageResourceCatalogAssociationArgs({
-    required pulumi.Output<String> catalogId,
-    required pulumi.Output<String> resourceOriginId,
-    required pulumi.Output<String> resourceOriginSystem,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      resourceOriginId = pulumi.Input.asInput<String>(resourceOriginId),
-      resourceOriginSystem = pulumi.Input.asInput<String>(resourceOriginSystem);
+    required this.catalogId,
+    required this.resourceOriginId,
+    required this.resourceOriginSystem,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AccessPackageResourceCatalogAssociationArgs {
 
   factory AccessPackageResourceCatalogAssociationArgs.fromMap(Map<String, dynamic> map) {
     return AccessPackageResourceCatalogAssociationArgs(
-      catalogId: pulumi.Output.create<String>(map['catalogId'] as String),
-      resourceOriginId: pulumi.Output.create<String>(map['resourceOriginId'] as String),
-      resourceOriginSystem: pulumi.Output.create<String>(map['resourceOriginSystem'] as String),
+      catalogId: (map['catalogId'] as String).input(),
+      resourceOriginId: (map['resourceOriginId'] as String).input(),
+      resourceOriginSystem: (map['resourceOriginSystem'] as String).input(),
     );
   }
 }

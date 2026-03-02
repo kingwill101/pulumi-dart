@@ -18,11 +18,9 @@ class GetGroupArgs {
   /// [authenticationDomainId] The ID of the authentication domain the group to be searched for belongs to.
   /// [name] The name of the group to search for.
   GetGroupArgs({
-    required pulumi.Output<String> authenticationDomainId,
-    required pulumi.Output<String> name,
-  }) :
-      authenticationDomainId = pulumi.Input.asInput<String>(authenticationDomainId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.authenticationDomainId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      authenticationDomainId: pulumi.Output.create<String>(map['authenticationDomainId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      authenticationDomainId: (map['authenticationDomainId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

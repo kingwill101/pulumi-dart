@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreAgentRuntimeProtocolConfiguration {
   /// Server protocol for the agent runtime. Valid values: `HTTP`, `MCP`, `A2A`.
-  final String? serverProtocol;
+  final pulumi.Input<String>? serverProtocol;
 
   /// Creates a new [AgentcoreAgentRuntimeProtocolConfiguration].
   /// [serverProtocol] Server protocol for the agent runtime. Valid values: `HTTP`, `MCP`, `A2A`.
@@ -19,7 +20,7 @@ class AgentcoreAgentRuntimeProtocolConfiguration {
 
   factory AgentcoreAgentRuntimeProtocolConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeProtocolConfiguration(
-      serverProtocol: map['serverProtocol'] == null ? null : map['serverProtocol'] as String,
+      serverProtocol: map['serverProtocol'] == null ? null : (map['serverProtocol'] as String).input(),
     );
   }
 }

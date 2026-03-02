@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Returns link related to the product.
 class LinkResponse {
   /// Type of link.
-  final String linkType;
+  final pulumi.Input<String> linkType;
   /// Url of the link.
-  final String linkUrl;
+  final pulumi.Input<String> linkUrl;
 
   /// Creates a new [LinkResponse].
   /// [linkType] Type of link.
@@ -25,8 +26,8 @@ class LinkResponse {
 
   factory LinkResponse.fromMap(Map<String, dynamic> map) {
     return LinkResponse(
-      linkType: map['linkType'] as String,
-      linkUrl: map['linkUrl'] as String,
+      linkType: (map['linkType'] as String).input(),
+      linkUrl: (map['linkUrl'] as String).input(),
     );
   }
 }

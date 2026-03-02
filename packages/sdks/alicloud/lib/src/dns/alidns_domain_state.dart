@@ -39,27 +39,17 @@ class AlidnsDomainState {
   /// [resourceGroupId] The Id of resource group which the dns domain belongs.
   /// [tags] A mapping of tags to assign to the resource.
   AlidnsDomainState({
-    pulumi.Output<List<String>>? dnsServers,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? punyCode,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      punyCode = pulumi.Input.asOptionalInput<String>(punyCode),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dnsServers,
+    this.domainId,
+    this.domainName,
+    this.groupId,
+    this.groupName,
+    this.lang,
+    this.punyCode,
+    this.remark,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class AlidnsDomainState {
 
   factory AlidnsDomainState.fromMap(Map<String, dynamic> map) {
     return AlidnsDomainState(
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      punyCode: map['punyCode'] == null ? null : pulumi.Output.create<String>(map['punyCode'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      punyCode: map['punyCode'] == null ? null : (map['punyCode'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

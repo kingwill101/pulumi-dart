@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudGatewayCors {
   /// Allowed headers in cross-site requests. The special value `*` allows actual requests to send any header.
-  final List<String>? allowedHeaders;
+  final pulumi.Input<List<String>>? allowedHeaders;
   /// Allowed HTTP methods on cross-site requests. The special value `*` allows all methods. If not set, `GET` and `HEAD` are allowed by default. Possible values are `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS` and `PUT`.
-  final List<String>? allowedMethods;
+  final pulumi.Input<List<String>>? allowedMethods;
   /// Allowed origin patterns to make cross-site requests.
-  final List<String>? allowedOriginPatterns;
+  final pulumi.Input<List<String>>? allowedOriginPatterns;
   /// Allowed origins to make cross-site requests. The special value `*` allows all domains.
-  final List<String>? allowedOrigins;
+  final pulumi.Input<List<String>>? allowedOrigins;
   /// is user credentials are supported on cross-site requests?
-  final bool? credentialsAllowed;
+  final pulumi.Input<bool>? credentialsAllowed;
   /// HTTP response headers to expose for cross-site requests.
-  final List<String>? exposedHeaders;
+  final pulumi.Input<List<String>>? exposedHeaders;
   /// How long, in seconds, the response from a pre-flight request can be cached by clients.
-  final int? maxAgeSeconds;
+  final pulumi.Input<int>? maxAgeSeconds;
 
   /// Creates a new [SpringCloudGatewayCors].
   /// [allowedHeaders] Allowed headers in cross-site requests. The special value `*` allows actual requests to send any header.
@@ -49,13 +50,13 @@ class SpringCloudGatewayCors {
 
   factory SpringCloudGatewayCors.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayCors(
-      allowedHeaders: map['allowedHeaders'] == null ? null : (map['allowedHeaders'] as List).cast<String>(),
-      allowedMethods: map['allowedMethods'] == null ? null : (map['allowedMethods'] as List).cast<String>(),
-      allowedOriginPatterns: map['allowedOriginPatterns'] == null ? null : (map['allowedOriginPatterns'] as List).cast<String>(),
-      allowedOrigins: map['allowedOrigins'] == null ? null : (map['allowedOrigins'] as List).cast<String>(),
-      credentialsAllowed: map['credentialsAllowed'] == null ? null : map['credentialsAllowed'] as bool,
-      exposedHeaders: map['exposedHeaders'] == null ? null : (map['exposedHeaders'] as List).cast<String>(),
-      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : map['maxAgeSeconds'] as int,
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowedOriginPatterns: map['allowedOriginPatterns'] == null ? null : ((map['allowedOriginPatterns'] as List).cast<String>()).input(),
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
+      credentialsAllowed: map['credentialsAllowed'] == null ? null : (map['credentialsAllowed'] as bool).input(),
+      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders'] as List).cast<String>()).input(),
+      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds'] as int).input(),
     );
   }
 }

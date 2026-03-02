@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceRefreshCheckpoint {
   /// The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
-  final int? percentage;
+  final pulumi.Input<int>? percentage;
 
   /// Creates a new [InstanceRefreshCheckpoint].
   /// [percentage] The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
@@ -19,7 +20,7 @@ class InstanceRefreshCheckpoint {
 
   factory InstanceRefreshCheckpoint.fromMap(Map<String, dynamic> map) {
     return InstanceRefreshCheckpoint(
-      percentage: map['percentage'] == null ? null : map['percentage'] as int,
+      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
     );
   }
 }

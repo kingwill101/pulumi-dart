@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'url_file_extension_match_condition_parameters_response.dart';
 
 /// Defines the UrlFileExtension condition for the delivery rule.
 class DeliveryRuleUrlFileExtensionConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'UrlFileExtension'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final UrlFileExtensionMatchConditionParametersResponse parameters;
+  final pulumi.Input<UrlFileExtensionMatchConditionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleUrlFileExtensionConditionResponse].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleUrlFileExtensionConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<UrlFileExtensionMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleUrlFileExtensionConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleUrlFileExtensionConditionResponse(
-      name: map['name'] as String,
-      parameters: UrlFileExtensionMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (UrlFileExtensionMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

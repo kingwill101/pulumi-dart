@@ -44,27 +44,17 @@ class ConfigurationArgs {
   /// [visibility] The visibility of the Maintenance Configuration. The only allowable value is `Custom`. Defaults to `Custom`.
   /// [window] A `window` block as defined below.
   ConfigurationArgs({
-    pulumi.Output<String>? inGuestUserPatchMode,
-    pulumi.Output<ConfigurationInstallPatches>? installPatches,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scope,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? visibility,
-    pulumi.Output<ConfigurationWindow>? window,
-  }) :
-      inGuestUserPatchMode = pulumi.Input.asOptionalInput<String>(inGuestUserPatchMode),
-      installPatches = pulumi.Input.asOptionalInput<ConfigurationInstallPatches>(installPatches),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<Map<String, String>>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asInput<String>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      visibility = pulumi.Input.asOptionalInput<String>(visibility),
-      window = pulumi.Input.asOptionalInput<ConfigurationWindow>(window);
+    this.inGuestUserPatchMode,
+    this.installPatches,
+    this.location,
+    this.name,
+    this.properties,
+    required this.resourceGroupName,
+    required this.scope,
+    this.tags,
+    this.visibility,
+    this.window,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      inGuestUserPatchMode: map['inGuestUserPatchMode'] == null ? null : pulumi.Output.create<String>(map['inGuestUserPatchMode'] as String),
-      installPatches: map['installPatches'] == null ? null : pulumi.Output.create<ConfigurationInstallPatches>(ConfigurationInstallPatches.fromMap((map['installPatches'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['properties'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      visibility: map['visibility'] == null ? null : pulumi.Output.create<String>(map['visibility'] as String),
-      window: map['window'] == null ? null : pulumi.Output.create<ConfigurationWindow>(ConfigurationWindow.fromMap((map['window'] as Map).cast<String, dynamic>())),
+      inGuestUserPatchMode: map['inGuestUserPatchMode'] == null ? null : (map['inGuestUserPatchMode'] as String).input(),
+      installPatches: map['installPatches'] == null ? null : (ConfigurationInstallPatches.fromMap((map['installPatches'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      window: map['window'] == null ? null : (ConfigurationWindow.fromMap((map['window'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

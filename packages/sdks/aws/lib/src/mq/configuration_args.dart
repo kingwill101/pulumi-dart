@@ -36,23 +36,15 @@ class ConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ConfigurationArgs({
-    pulumi.Output<String>? authenticationStrategy,
-    required pulumi.Output<String> data,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> engineType,
-    required pulumi.Output<String> engineVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      authenticationStrategy = pulumi.Input.asOptionalInput<String>(authenticationStrategy),
-      data = pulumi.Input.asInput<String>(data),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      engineType = pulumi.Input.asInput<String>(engineType),
-      engineVersion = pulumi.Input.asInput<String>(engineVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.authenticationStrategy,
+    required this.data,
+    this.description,
+    required this.engineType,
+    required this.engineVersion,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      authenticationStrategy: map['authenticationStrategy'] == null ? null : pulumi.Output.create<String>(map['authenticationStrategy'] as String),
-      data: pulumi.Output.create<String>(map['data'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      engineType: pulumi.Output.create<String>(map['engineType'] as String),
-      engineVersion: pulumi.Output.create<String>(map['engineVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      authenticationStrategy: map['authenticationStrategy'] == null ? null : (map['authenticationStrategy'] as String).input(),
+      data: (map['data'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      engineType: (map['engineType'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

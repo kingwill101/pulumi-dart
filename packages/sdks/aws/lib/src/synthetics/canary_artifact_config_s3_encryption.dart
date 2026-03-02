@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CanaryArtifactConfigS3Encryption {
   /// The encryption method to use for artifacts created by this canary. Valid values are: `SSE_S3` and `SSE_KMS`.
-  final String? encryptionMode;
+  final pulumi.Input<String>? encryptionMode;
   /// The ARN of the customer-managed KMS key to use, if you specify `SSE_KMS` for `encryption_mode`.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Creates a new [CanaryArtifactConfigS3Encryption].
   /// [encryptionMode] The encryption method to use for artifacts created by this canary. Valid values are: `SSE_S3` and `SSE_KMS`.
@@ -24,8 +25,8 @@ class CanaryArtifactConfigS3Encryption {
 
   factory CanaryArtifactConfigS3Encryption.fromMap(Map<String, dynamic> map) {
     return CanaryArtifactConfigS3Encryption(
-      encryptionMode: map['encryptionMode'] == null ? null : map['encryptionMode'] as String,
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
+      encryptionMode: map['encryptionMode'] == null ? null : (map['encryptionMode'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
     );
   }
 }

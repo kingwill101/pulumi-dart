@@ -29,19 +29,13 @@ class TriggerHttpRequestState {
   /// [relativePath] Specifies the Relative Path used for this Request.
   /// [schema] A JSON Blob defining the Schema of the incoming request. This needs to be valid JSON.
   TriggerHttpRequestState({
-    pulumi.Output<String>? callbackUrl,
-    pulumi.Output<String>? logicAppId,
-    pulumi.Output<String>? method,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? relativePath,
-    pulumi.Output<String>? schema,
-  }) :
-      callbackUrl = pulumi.Input.asOptionalInput<String>(callbackUrl),
-      logicAppId = pulumi.Input.asOptionalInput<String>(logicAppId),
-      method = pulumi.Input.asOptionalInput<String>(method),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      relativePath = pulumi.Input.asOptionalInput<String>(relativePath),
-      schema = pulumi.Input.asOptionalInput<String>(schema);
+    this.callbackUrl,
+    this.logicAppId,
+    this.method,
+    this.name,
+    this.relativePath,
+    this.schema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class TriggerHttpRequestState {
 
   factory TriggerHttpRequestState.fromMap(Map<String, dynamic> map) {
     return TriggerHttpRequestState(
-      callbackUrl: map['callbackUrl'] == null ? null : pulumi.Output.create<String>(map['callbackUrl'] as String),
-      logicAppId: map['logicAppId'] == null ? null : pulumi.Output.create<String>(map['logicAppId'] as String),
-      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      relativePath: map['relativePath'] == null ? null : pulumi.Output.create<String>(map['relativePath'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
+      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
     );
   }
 }

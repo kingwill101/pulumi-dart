@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSqlRoleDefinitionPermission {
   /// A list of data actions that are allowed for the Cosmos DB SQL Role Definition.
-  final List<String> dataActions;
+  final pulumi.Input<List<String>> dataActions;
 
   /// Creates a new [GetSqlRoleDefinitionPermission].
   /// [dataActions] A list of data actions that are allowed for the Cosmos DB SQL Role Definition.
@@ -19,7 +20,7 @@ class GetSqlRoleDefinitionPermission {
 
   factory GetSqlRoleDefinitionPermission.fromMap(Map<String, dynamic> map) {
     return GetSqlRoleDefinitionPermission(
-      dataActions: (map['dataActions'] as List).cast<String>(),
+      dataActions: ((map['dataActions'] as List).cast<String>()).input(),
     );
   }
 }

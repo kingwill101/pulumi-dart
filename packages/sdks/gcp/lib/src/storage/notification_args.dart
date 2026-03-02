@@ -33,19 +33,13 @@ class NotificationArgs {
   /// [payloadFormat] The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
   /// [topic] The Cloud PubSub topic to which this subscription publishes. Expects either the
   NotificationArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<Map<String, String>>? customAttributes,
-    pulumi.Output<List<String>>? eventTypes,
-    pulumi.Output<String>? objectNamePrefix,
-    required pulumi.Output<String> payloadFormat,
-    required pulumi.Output<String> topic,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      customAttributes = pulumi.Input.asOptionalInput<Map<String, String>>(customAttributes),
-      eventTypes = pulumi.Input.asOptionalInput<List<String>>(eventTypes),
-      objectNamePrefix = pulumi.Input.asOptionalInput<String>(objectNamePrefix),
-      payloadFormat = pulumi.Input.asInput<String>(payloadFormat),
-      topic = pulumi.Input.asInput<String>(topic);
+    required this.bucket,
+    this.customAttributes,
+    this.eventTypes,
+    this.objectNamePrefix,
+    required this.payloadFormat,
+    required this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class NotificationArgs {
 
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      customAttributes: map['customAttributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['customAttributes'] as Map).cast<String, String>()),
-      eventTypes: map['eventTypes'] == null ? null : pulumi.Output.create<List<String>>((map['eventTypes'] as List).cast<String>()),
-      objectNamePrefix: map['objectNamePrefix'] == null ? null : pulumi.Output.create<String>(map['objectNamePrefix'] as String),
-      payloadFormat: pulumi.Output.create<String>(map['payloadFormat'] as String),
-      topic: pulumi.Output.create<String>(map['topic'] as String),
+      bucket: (map['bucket'] as String).input(),
+      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes'] as Map).cast<String, String>()).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
+      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix'] as String).input(),
+      payloadFormat: (map['payloadFormat'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

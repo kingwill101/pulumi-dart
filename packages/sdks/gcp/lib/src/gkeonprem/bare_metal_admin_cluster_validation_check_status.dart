@@ -7,7 +7,7 @@ class BareMetalAdminClusterValidationCheckStatus {
   /// (Output)
   /// Individual checks which failed as part of the Preflight check execution.
   /// Structure is documented below.
-  final List<BareMetalAdminClusterValidationCheckStatusResult>? results;
+  final pulumi.Input<List<BareMetalAdminClusterValidationCheckStatusResult>>? results;
 
   /// Creates a new [BareMetalAdminClusterValidationCheckStatus].
   /// [results] (Output)
@@ -17,13 +17,13 @@ class BareMetalAdminClusterValidationCheckStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results': ?results == null ? null : pulumi.Input.encodeList<BareMetalAdminClusterValidationCheckStatusResult, Map<String, dynamic>>(results!, (value) => value.toMap()),
+      'results': ?pulumi.Input.mapOptionalInputValue<List<BareMetalAdminClusterValidationCheckStatusResult>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<BareMetalAdminClusterValidationCheckStatusResult, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BareMetalAdminClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterValidationCheckStatus(
-      results: map['results'] == null ? null : pulumi.Input.decodeList<BareMetalAdminClusterValidationCheckStatusResult>(map['results'], (value) => BareMetalAdminClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>())),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterValidationCheckStatusResult>(map['results'], (value) => BareMetalAdminClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

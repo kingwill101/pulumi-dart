@@ -31,21 +31,14 @@ class GetEcsDedicatedHostClustersArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The zone ID of the dedicated host cluster.
   GetEcsDedicatedHostClustersArgs({
-    pulumi.Output<List<String>>? dedicatedHostClusterIds,
-    pulumi.Output<String>? dedicatedHostClusterName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? zoneId,
-  }) :
-      dedicatedHostClusterIds = pulumi.Input.asOptionalInput<List<String>>(dedicatedHostClusterIds),
-      dedicatedHostClusterName = pulumi.Input.asOptionalInput<String>(dedicatedHostClusterName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.dedicatedHostClusterIds,
+    this.dedicatedHostClusterName,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.tags,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetEcsDedicatedHostClustersArgs {
 
   factory GetEcsDedicatedHostClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsDedicatedHostClustersArgs(
-      dedicatedHostClusterIds: map['dedicatedHostClusterIds'] == null ? null : pulumi.Output.create<List<String>>((map['dedicatedHostClusterIds'] as List).cast<String>()),
-      dedicatedHostClusterName: map['dedicatedHostClusterName'] == null ? null : pulumi.Output.create<String>(map['dedicatedHostClusterName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      dedicatedHostClusterIds: map['dedicatedHostClusterIds'] == null ? null : ((map['dedicatedHostClusterIds'] as List).cast<String>()).input(),
+      dedicatedHostClusterName: map['dedicatedHostClusterName'] == null ? null : (map['dedicatedHostClusterName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

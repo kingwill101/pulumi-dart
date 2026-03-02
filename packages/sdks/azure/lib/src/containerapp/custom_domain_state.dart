@@ -28,17 +28,12 @@ class CustomDomainState {
   /// [containerAppId] The ID of the Container App to which this Custom Domain should be bound. Changing this forces a new resource to be created.
   /// [name] The fully qualified name of the Custom Domain. Must be the CN or a named SAN in the certificate specified by the `container_app_environment_certificate_id`. Changing this forces a new resource to be created.
   CustomDomainState({
-    pulumi.Output<String>? certificateBindingType,
-    pulumi.Output<String>? containerAppEnvironmentCertificateId,
-    pulumi.Output<String>? containerAppEnvironmentManagedCertificateId,
-    pulumi.Output<String>? containerAppId,
-    pulumi.Output<String>? name,
-  }) :
-      certificateBindingType = pulumi.Input.asOptionalInput<String>(certificateBindingType),
-      containerAppEnvironmentCertificateId = pulumi.Input.asOptionalInput<String>(containerAppEnvironmentCertificateId),
-      containerAppEnvironmentManagedCertificateId = pulumi.Input.asOptionalInput<String>(containerAppEnvironmentManagedCertificateId),
-      containerAppId = pulumi.Input.asOptionalInput<String>(containerAppId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.certificateBindingType,
+    this.containerAppEnvironmentCertificateId,
+    this.containerAppEnvironmentManagedCertificateId,
+    this.containerAppId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class CustomDomainState {
 
   factory CustomDomainState.fromMap(Map<String, dynamic> map) {
     return CustomDomainState(
-      certificateBindingType: map['certificateBindingType'] == null ? null : pulumi.Output.create<String>(map['certificateBindingType'] as String),
-      containerAppEnvironmentCertificateId: map['containerAppEnvironmentCertificateId'] == null ? null : pulumi.Output.create<String>(map['containerAppEnvironmentCertificateId'] as String),
-      containerAppEnvironmentManagedCertificateId: map['containerAppEnvironmentManagedCertificateId'] == null ? null : pulumi.Output.create<String>(map['containerAppEnvironmentManagedCertificateId'] as String),
-      containerAppId: map['containerAppId'] == null ? null : pulumi.Output.create<String>(map['containerAppId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      certificateBindingType: map['certificateBindingType'] == null ? null : (map['certificateBindingType'] as String).input(),
+      containerAppEnvironmentCertificateId: map['containerAppEnvironmentCertificateId'] == null ? null : (map['containerAppEnvironmentCertificateId'] as String).input(),
+      containerAppEnvironmentManagedCertificateId: map['containerAppEnvironmentManagedCertificateId'] == null ? null : (map['containerAppEnvironmentManagedCertificateId'] as String).input(),
+      containerAppId: map['containerAppId'] == null ? null : (map['containerAppId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

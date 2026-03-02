@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_network_peering_policy_properties_response.dart';
 
 /// The Managed Network Peering Policy resource
 class ManagedNetworkPeeringPolicyResponse {
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// The geo-location where the resource lives
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// Gets or sets the properties of a Managed Network Policy
-  final ManagedNetworkPeeringPolicyPropertiesResponse? properties;
+  final pulumi.Input<ManagedNetworkPeeringPolicyPropertiesResponse>? properties;
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedNetworkPeeringPolicyResponse].
   /// [id] Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -34,18 +35,18 @@ class ManagedNetworkPeeringPolicyResponse {
       'id': id,
       'location': ?location,
       'name': name,
-      'properties': ?properties == null ? null : properties!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ManagedNetworkPeeringPolicyPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ManagedNetworkPeeringPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkPeeringPolicyResponse(
-      id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : ManagedNetworkPeeringPolicyPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (ManagedNetworkPeeringPolicyPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

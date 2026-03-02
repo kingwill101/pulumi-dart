@@ -20,15 +20,11 @@ class VirtualHubRouteTableState {
   /// [routes] One or more `route` blocks as defined below.
   /// [virtualHubId] The ID of the Virtual Hub within which this route table should be created. Changing this forces a new resource to be created.
   VirtualHubRouteTableState({
-    pulumi.Output<List<String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<VirtualHubRouteTableRoute>>? routes,
-    pulumi.Output<String>? virtualHubId,
-  }) :
-      labels = pulumi.Input.asOptionalInput<List<String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      routes = pulumi.Input.asOptionalInput<List<VirtualHubRouteTableRoute>>(routes),
-      virtualHubId = pulumi.Input.asOptionalInput<String>(virtualHubId);
+    this.labels,
+    this.name,
+    this.routes,
+    this.virtualHubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class VirtualHubRouteTableState {
 
   factory VirtualHubRouteTableState.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableState(
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<String>>((map['labels'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<VirtualHubRouteTableRoute>>(pulumi.Input.decodeList<VirtualHubRouteTableRoute>(map['routes'], (value) => VirtualHubRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      virtualHubId: map['virtualHubId'] == null ? null : pulumi.Output.create<String>(map['virtualHubId'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRouteTableRoute>(map['routes'], (value) => VirtualHubRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
     );
   }
 }

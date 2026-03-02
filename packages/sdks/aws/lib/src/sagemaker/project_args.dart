@@ -26,17 +26,12 @@ class ProjectArgs {
   /// [serviceCatalogProvisioningDetails] The product ID and provisioning artifact ID to provision a service catalog. See Service Catalog Provisioning Details below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ProjectArgs({
-    pulumi.Output<String>? projectDescription,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<ProjectServiceCatalogProvisioningDetails> serviceCatalogProvisioningDetails,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      projectDescription = pulumi.Input.asOptionalInput<String>(projectDescription),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceCatalogProvisioningDetails = pulumi.Input.asInput<ProjectServiceCatalogProvisioningDetails>(serviceCatalogProvisioningDetails),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.projectDescription,
+    required this.projectName,
+    this.region,
+    required this.serviceCatalogProvisioningDetails,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      projectDescription: map['projectDescription'] == null ? null : pulumi.Output.create<String>(map['projectDescription'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceCatalogProvisioningDetails: pulumi.Output.create<ProjectServiceCatalogProvisioningDetails>(ProjectServiceCatalogProvisioningDetails.fromMap((map['serviceCatalogProvisioningDetails'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      projectDescription: map['projectDescription'] == null ? null : (map['projectDescription'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceCatalogProvisioningDetails: (ProjectServiceCatalogProvisioningDetails.fromMap((map['serviceCatalogProvisioningDetails'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

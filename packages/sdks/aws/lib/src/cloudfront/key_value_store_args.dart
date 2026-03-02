@@ -21,13 +21,10 @@ class KeyValueStoreArgs {
   /// [name] Unique name for your CloudFront KeyValueStore.
   /// [timeouts] Optional.
   KeyValueStoreArgs({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? name,
-    pulumi.Output<KeyValueStoreTimeouts>? timeouts,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      timeouts = pulumi.Input.asOptionalInput<KeyValueStoreTimeouts>(timeouts);
+    this.comment,
+    this.name,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class KeyValueStoreArgs {
 
   factory KeyValueStoreArgs.fromMap(Map<String, dynamic> map) {
     return KeyValueStoreArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<KeyValueStoreTimeouts>(KeyValueStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (KeyValueStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

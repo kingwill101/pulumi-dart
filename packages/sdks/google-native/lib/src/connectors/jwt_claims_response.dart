@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// JWT claims used for the jwt-bearer authorization grant.
 class JwtClaimsResponse {
   /// Value for the "aud" claim.
-  final String audience;
+  final pulumi.Input<String> audience;
   /// Value for the "iss" claim.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// Value for the "sub" claim.
-  final String subject;
+  final pulumi.Input<String> subject;
 
   /// Creates a new [JwtClaimsResponse].
   /// [audience] Value for the "aud" claim.
@@ -30,9 +31,9 @@ class JwtClaimsResponse {
 
   factory JwtClaimsResponse.fromMap(Map<String, dynamic> map) {
     return JwtClaimsResponse(
-      audience: map['audience'] as String,
-      issuer: map['issuer'] as String,
-      subject: map['subject'] as String,
+      audience: (map['audience'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      subject: (map['subject'] as String).input(),
     );
   }
 }

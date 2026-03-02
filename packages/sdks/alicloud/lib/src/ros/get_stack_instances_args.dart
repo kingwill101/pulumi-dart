@@ -36,21 +36,14 @@ class GetStackInstancesArgs {
   /// [stackInstanceRegionId] The region of the stack instance.
   /// [status] The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
   GetStackInstancesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> stackGroupName,
-    pulumi.Output<String>? stackInstanceAccountId,
-    pulumi.Output<String>? stackInstanceRegionId,
-    pulumi.Output<String>? status,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      stackGroupName = pulumi.Input.asInput<String>(stackGroupName),
-      stackInstanceAccountId = pulumi.Input.asOptionalInput<String>(stackInstanceAccountId),
-      stackInstanceRegionId = pulumi.Input.asOptionalInput<String>(stackInstanceRegionId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.enableDetails,
+    this.ids,
+    this.outputFile,
+    required this.stackGroupName,
+    this.stackInstanceAccountId,
+    this.stackInstanceRegionId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class GetStackInstancesArgs {
 
   factory GetStackInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetStackInstancesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      stackGroupName: pulumi.Output.create<String>(map['stackGroupName'] as String),
-      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : pulumi.Output.create<String>(map['stackInstanceAccountId'] as String),
-      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : pulumi.Output.create<String>(map['stackInstanceRegionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      stackGroupName: (map['stackGroupName'] as String).input(),
+      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : (map['stackInstanceAccountId'] as String).input(),
+      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : (map['stackInstanceRegionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

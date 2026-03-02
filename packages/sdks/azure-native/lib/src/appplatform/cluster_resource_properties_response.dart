@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'marketplace_resource_response.dart';
 import 'network_profile_response.dart';
 import 'service_vnet_addons_response.dart';
@@ -8,28 +9,28 @@ import 'weekly_maintenance_schedule_configuration_response.dart';
 /// Service properties payload
 class ClusterResourcePropertiesResponse {
   /// Fully qualified dns name of the service instance
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// The name of the resource group that contains the infrastructure resources
-  final String? infraResourceGroup;
+  final pulumi.Input<String>? infraResourceGroup;
   /// Additional Service settings for planned maintenance
-  final WeeklyMaintenanceScheduleConfigurationResponse? maintenanceScheduleConfiguration;
+  final pulumi.Input<WeeklyMaintenanceScheduleConfigurationResponse>? maintenanceScheduleConfiguration;
   /// The resource Id of the Managed Environment that the Spring Apps instance builds on
-  final String? managedEnvironmentId;
+  final pulumi.Input<String>? managedEnvironmentId;
   /// Purchasing 3rd party product of the Service resource.
-  final MarketplaceResourceResponse? marketplaceResource;
+  final pulumi.Input<MarketplaceResourceResponse>? marketplaceResource;
   /// Network profile of the Service
-  final NetworkProfileResponse? networkProfile;
+  final pulumi.Input<NetworkProfileResponse>? networkProfile;
   /// Power state of the Service
-  final String powerState;
+  final pulumi.Input<String> powerState;
   /// Provisioning state of the Service
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// ServiceInstanceEntity Id which uniquely identifies a created resource
-  final String serviceId;
+  final pulumi.Input<String> serviceId;
   /// Version of the Service
-  final int version;
+  final pulumi.Input<int> version;
   /// Additional Service settings in vnet injection instance
-  final ServiceVNetAddonsResponse? vnetAddons;
-  final bool? zoneRedundant;
+  final pulumi.Input<ServiceVNetAddonsResponse>? vnetAddons;
+  final pulumi.Input<bool>? zoneRedundant;
 
   /// Creates a new [ClusterResourcePropertiesResponse].
   /// [fqdn] Fully qualified dns name of the service instance
@@ -63,33 +64,33 @@ class ClusterResourcePropertiesResponse {
     return <String, dynamic>{
       'fqdn': fqdn,
       'infraResourceGroup': ?infraResourceGroup,
-      'maintenanceScheduleConfiguration': ?maintenanceScheduleConfiguration == null ? null : maintenanceScheduleConfiguration!.toMap(),
+      'maintenanceScheduleConfiguration': ?pulumi.Input.mapOptionalInputValue<WeeklyMaintenanceScheduleConfigurationResponse, Map<String, dynamic>>(maintenanceScheduleConfiguration, (value) => value.toMap()),
       'managedEnvironmentId': ?managedEnvironmentId,
-      'marketplaceResource': ?marketplaceResource == null ? null : marketplaceResource!.toMap(),
-      'networkProfile': ?networkProfile == null ? null : networkProfile!.toMap(),
+      'marketplaceResource': ?pulumi.Input.mapOptionalInputValue<MarketplaceResourceResponse, Map<String, dynamic>>(marketplaceResource, (value) => value.toMap()),
+      'networkProfile': ?pulumi.Input.mapOptionalInputValue<NetworkProfileResponse, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
       'powerState': powerState,
       'provisioningState': provisioningState,
       'serviceId': serviceId,
       'version': version,
-      'vnetAddons': ?vnetAddons == null ? null : vnetAddons!.toMap(),
+      'vnetAddons': ?pulumi.Input.mapOptionalInputValue<ServiceVNetAddonsResponse, Map<String, dynamic>>(vnetAddons, (value) => value.toMap()),
       'zoneRedundant': ?zoneRedundant,
     };
   }
 
   factory ClusterResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ClusterResourcePropertiesResponse(
-      fqdn: map['fqdn'] as String,
-      infraResourceGroup: map['infraResourceGroup'] == null ? null : map['infraResourceGroup'] as String,
-      maintenanceScheduleConfiguration: map['maintenanceScheduleConfiguration'] == null ? null : WeeklyMaintenanceScheduleConfigurationResponse.fromMap((map['maintenanceScheduleConfiguration'] as Map).cast<String, dynamic>()),
-      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : map['managedEnvironmentId'] as String,
-      marketplaceResource: map['marketplaceResource'] == null ? null : MarketplaceResourceResponse.fromMap((map['marketplaceResource'] as Map).cast<String, dynamic>()),
-      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      powerState: map['powerState'] as String,
-      provisioningState: map['provisioningState'] as String,
-      serviceId: map['serviceId'] as String,
-      version: map['version'] as int,
-      vnetAddons: map['vnetAddons'] == null ? null : ServiceVNetAddonsResponse.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>()),
-      zoneRedundant: map['zoneRedundant'] == null ? null : map['zoneRedundant'] as bool,
+      fqdn: (map['fqdn'] as String).input(),
+      infraResourceGroup: map['infraResourceGroup'] == null ? null : (map['infraResourceGroup'] as String).input(),
+      maintenanceScheduleConfiguration: map['maintenanceScheduleConfiguration'] == null ? null : (WeeklyMaintenanceScheduleConfigurationResponse.fromMap((map['maintenanceScheduleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId'] as String).input(),
+      marketplaceResource: map['marketplaceResource'] == null ? null : (MarketplaceResourceResponse.fromMap((map['marketplaceResource'] as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      powerState: (map['powerState'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      version: (map['version'] as int).input(),
+      vnetAddons: map['vnetAddons'] == null ? null : (ServiceVNetAddonsResponse.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>())).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
     );
   }
 }

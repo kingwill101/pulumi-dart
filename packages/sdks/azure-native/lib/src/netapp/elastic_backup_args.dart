@@ -26,17 +26,12 @@ class ElasticBackupArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ElasticBackupArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? backupName,
-    required pulumi.Output<String> backupVaultName,
-    pulumi.Output<ElasticBackupProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      backupName = pulumi.Input.asOptionalInput<String>(backupName),
-      backupVaultName = pulumi.Input.asInput<String>(backupVaultName),
-      properties = pulumi.Input.asOptionalInput<ElasticBackupProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.backupName,
+    required this.backupVaultName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ElasticBackupArgs {
 
   factory ElasticBackupArgs.fromMap(Map<String, dynamic> map) {
     return ElasticBackupArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      backupName: map['backupName'] == null ? null : pulumi.Output.create<String>(map['backupName'] as String),
-      backupVaultName: pulumi.Output.create<String>(map['backupVaultName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ElasticBackupProperties>(ElasticBackupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupVaultName: (map['backupVaultName'] as String).input(),
+      properties: map['properties'] == null ? null : (ElasticBackupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

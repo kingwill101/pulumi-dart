@@ -25,17 +25,12 @@ class PublicCertificateArgs {
   /// [certificateName] The name of the public certificate. Changing this forces a new App Service Public Certificate to be created.
   /// [resourceGroupName] The name of the Resource Group where the App Service Public Certificate should exist. Changing this forces a new App Service Public Certificate to be created.
   PublicCertificateArgs({
-    required pulumi.Output<String> appServiceName,
-    required pulumi.Output<String> blob,
-    required pulumi.Output<String> certificateLocation,
-    required pulumi.Output<String> certificateName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      appServiceName = pulumi.Input.asInput<String>(appServiceName),
-      blob = pulumi.Input.asInput<String>(blob),
-      certificateLocation = pulumi.Input.asInput<String>(certificateLocation),
-      certificateName = pulumi.Input.asInput<String>(certificateName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.appServiceName,
+    required this.blob,
+    required this.certificateLocation,
+    required this.certificateName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PublicCertificateArgs {
 
   factory PublicCertificateArgs.fromMap(Map<String, dynamic> map) {
     return PublicCertificateArgs(
-      appServiceName: pulumi.Output.create<String>(map['appServiceName'] as String),
-      blob: pulumi.Output.create<String>(map['blob'] as String),
-      certificateLocation: pulumi.Output.create<String>(map['certificateLocation'] as String),
-      certificateName: pulumi.Output.create<String>(map['certificateName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      appServiceName: (map['appServiceName'] as String).input(),
+      blob: (map['blob'] as String).input(),
+      certificateLocation: (map['certificateLocation'] as String).input(),
+      certificateName: (map['certificateName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

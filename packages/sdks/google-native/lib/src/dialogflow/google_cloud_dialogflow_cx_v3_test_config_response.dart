@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents configurations for a test case.
 class GoogleCloudDialogflowCxV3TestConfigResponse {
   /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
-  final String flow;
+  final pulumi.Input<String> flow;
   /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
-  final String page;
+  final pulumi.Input<String> page;
   /// Session parameters to be compared when calculating differences.
-  final List<String> trackingParameters;
+  final pulumi.Input<List<String>> trackingParameters;
 
   /// Creates a new [GoogleCloudDialogflowCxV3TestConfigResponse].
   /// [flow] Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
@@ -30,9 +31,9 @@ class GoogleCloudDialogflowCxV3TestConfigResponse {
 
   factory GoogleCloudDialogflowCxV3TestConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3TestConfigResponse(
-      flow: map['flow'] as String,
-      page: map['page'] as String,
-      trackingParameters: (map['trackingParameters'] as List).cast<String>(),
+      flow: (map['flow'] as String).input(),
+      page: (map['page'] as String).input(),
+      trackingParameters: ((map['trackingParameters'] as List).cast<String>()).input(),
     );
   }
 }

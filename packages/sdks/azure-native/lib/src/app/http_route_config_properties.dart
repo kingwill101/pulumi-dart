@@ -7,9 +7,9 @@ import 'http_route_rule.dart';
 /// Http Route Config properties
 class HttpRouteConfigProperties {
   /// Custom domain bindings for http Routes' hostnames.
-  final List<CustomDomain>? customDomains;
+  final pulumi.Input<List<CustomDomain>>? customDomains;
   /// Routing Rules for http route resource.
-  final List<HttpRouteRule>? rules;
+  final pulumi.Input<List<HttpRouteRule>>? rules;
 
   /// Creates a new [HttpRouteConfigProperties].
   /// [customDomains] Custom domain bindings for http Routes' hostnames.
@@ -21,15 +21,15 @@ class HttpRouteConfigProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customDomains': ?customDomains == null ? null : pulumi.Input.encodeList<CustomDomain, Map<String, dynamic>>(customDomains!, (value) => value.toMap()),
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<HttpRouteRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'customDomains': ?pulumi.Input.mapOptionalInputValue<List<CustomDomain>, List<Map<String, dynamic>>>(customDomains, (value) => pulumi.Input.encodeList<CustomDomain, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<HttpRouteRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<HttpRouteRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HttpRouteConfigProperties.fromMap(Map<String, dynamic> map) {
     return HttpRouteConfigProperties(
-      customDomains: map['customDomains'] == null ? null : pulumi.Input.decodeList<CustomDomain>(map['customDomains'], (value) => CustomDomain.fromMap((value as Map).cast<String, dynamic>())),
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<HttpRouteRule>(map['rules'], (value) => HttpRouteRule.fromMap((value as Map).cast<String, dynamic>())),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomain>(map['customDomains'], (value) => CustomDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRule>(map['rules'], (value) => HttpRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

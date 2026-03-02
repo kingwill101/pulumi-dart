@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Credential of the image registry
 class ImageRegistryCredential {
   /// The password of the image registry credential
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The username of the image registry credential
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ImageRegistryCredential].
   /// [password] The password of the image registry credential
@@ -25,8 +26,8 @@ class ImageRegistryCredential {
 
   factory ImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ImageRegistryCredential(
-      password: map['password'] == null ? null : map['password'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

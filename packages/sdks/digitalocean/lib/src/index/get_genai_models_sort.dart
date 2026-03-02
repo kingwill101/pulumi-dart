@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiModelsSort {
-  final String? direction;
-  final String key;
+  final pulumi.Input<String>? direction;
+  final pulumi.Input<String> key;
 
   /// Creates a new [GetGenaiModelsSort].
   /// [direction] Optional.
@@ -22,8 +23,8 @@ class GetGenaiModelsSort {
 
   factory GetGenaiModelsSort.fromMap(Map<String, dynamic> map) {
     return GetGenaiModelsSort(
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      key: map['key'] as String,
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

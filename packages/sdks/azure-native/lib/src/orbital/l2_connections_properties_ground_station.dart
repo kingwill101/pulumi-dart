@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
 class L2ConnectionsPropertiesGroundStation {
   /// Resource ID.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [L2ConnectionsPropertiesGroundStation].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class L2ConnectionsPropertiesGroundStation {
 
   factory L2ConnectionsPropertiesGroundStation.fromMap(Map<String, dynamic> map) {
     return L2ConnectionsPropertiesGroundStation(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

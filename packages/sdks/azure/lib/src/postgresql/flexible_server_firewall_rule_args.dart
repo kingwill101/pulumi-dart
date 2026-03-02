@@ -22,15 +22,11 @@ class FlexibleServerFirewallRuleArgs {
   /// [serverId] The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Firewall Rule. Changing this forces a new PostgreSQL Flexible Server Firewall Rule to be created.
   /// [startIpAddress] The IPv4 Address defining the start of the range of addresses associated with this PostgreSQL Flexible Server Firewall Rule.
   FlexibleServerFirewallRuleArgs({
-    required pulumi.Output<String> endIpAddress,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> serverId,
-    required pulumi.Output<String> startIpAddress,
-  }) :
-      endIpAddress = pulumi.Input.asInput<String>(endIpAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      startIpAddress = pulumi.Input.asInput<String>(startIpAddress);
+    required this.endIpAddress,
+    this.name,
+    required this.serverId,
+    required this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class FlexibleServerFirewallRuleArgs {
 
   factory FlexibleServerFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerFirewallRuleArgs(
-      endIpAddress: pulumi.Output.create<String>(map['endIpAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      startIpAddress: pulumi.Output.create<String>(map['startIpAddress'] as String),
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }
 }

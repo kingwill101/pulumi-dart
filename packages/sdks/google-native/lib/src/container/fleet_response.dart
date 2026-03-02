@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Fleet is the fleet configuration for the cluster.
 class FleetResponse {
   /// [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
-  final String membership;
+  final pulumi.Input<String> membership;
   /// [Output only] Whether the cluster has been registered through the fleet API.
-  final bool preRegistered;
+  final pulumi.Input<bool> preRegistered;
   /// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [FleetResponse].
   /// [membership] [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
@@ -30,9 +31,9 @@ class FleetResponse {
 
   factory FleetResponse.fromMap(Map<String, dynamic> map) {
     return FleetResponse(
-      membership: map['membership'] as String,
-      preRegistered: map['preRegistered'] as bool,
-      project: map['project'] as String,
+      membership: (map['membership'] as String).input(),
+      preRegistered: (map['preRegistered'] as bool).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

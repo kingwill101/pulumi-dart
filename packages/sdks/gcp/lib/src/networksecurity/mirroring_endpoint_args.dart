@@ -35,19 +35,13 @@ class MirroringEndpointArgs {
   /// [mirroringEndpointId] The ID to use for the new endpoint, which will become the final
   /// [project] The ID of the project in which the resource belongs.
   MirroringEndpointArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> mirroringEndpointGroup,
-    required pulumi.Output<String> mirroringEndpointId,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      mirroringEndpointGroup = pulumi.Input.asInput<String>(mirroringEndpointGroup),
-      mirroringEndpointId = pulumi.Input.asInput<String>(mirroringEndpointId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.labels,
+    required this.location,
+    required this.mirroringEndpointGroup,
+    required this.mirroringEndpointId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class MirroringEndpointArgs {
 
   factory MirroringEndpointArgs.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mirroringEndpointGroup: pulumi.Output.create<String>(map['mirroringEndpointGroup'] as String),
-      mirroringEndpointId: pulumi.Output.create<String>(map['mirroringEndpointId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      mirroringEndpointGroup: (map['mirroringEndpointGroup'] as String).input(),
+      mirroringEndpointId: (map['mirroringEndpointId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

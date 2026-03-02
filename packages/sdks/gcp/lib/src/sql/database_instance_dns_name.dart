@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceDnsName {
   /// The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
-  final String? connectionType;
+  final pulumi.Input<String>? connectionType;
   /// The scope that the DNS name applies to.
-  final String? dnsScope;
+  final pulumi.Input<String>? dnsScope;
   /// The name of the instance. If the name is left
   /// blank, the provider will randomly generate one when the instance is first
   /// created. This is done because after a name is used, it cannot be reused for
   /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DatabaseInstanceDnsName].
   /// [connectionType] The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
@@ -32,9 +33,9 @@ class DatabaseInstanceDnsName {
 
   factory DatabaseInstanceDnsName.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceDnsName(
-      connectionType: map['connectionType'] == null ? null : map['connectionType'] as String,
-      dnsScope: map['dnsScope'] == null ? null : map['dnsScope'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
+      dnsScope: map['dnsScope'] == null ? null : (map['dnsScope'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

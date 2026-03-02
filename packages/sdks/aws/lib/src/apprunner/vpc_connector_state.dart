@@ -34,25 +34,16 @@ class VpcConnectorState {
   /// [vpcConnectorName] Name for the VPC connector.
   /// [vpcConnectorRevision] The revision of VPC connector. It's unique among all the active connectors ("Status": "ACTIVE") that share the same Name.
   VpcConnectorState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroups,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? subnets,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcConnectorName,
-    pulumi.Output<int>? vpcConnectorRevision,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroups = pulumi.Input.asOptionalInput<List<String>>(securityGroups),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subnets = pulumi.Input.asOptionalInput<List<String>>(subnets),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcConnectorName = pulumi.Input.asOptionalInput<String>(vpcConnectorName),
-      vpcConnectorRevision = pulumi.Input.asOptionalInput<int>(vpcConnectorRevision);
+    this.arn,
+    this.region,
+    this.securityGroups,
+    this.status,
+    this.subnets,
+    this.tags,
+    this.tagsAll,
+    this.vpcConnectorName,
+    this.vpcConnectorRevision,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class VpcConnectorState {
 
   factory VpcConnectorState.fromMap(Map<String, dynamic> map) {
     return VpcConnectorState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroups: map['securityGroups'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroups'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subnets: map['subnets'] == null ? null : pulumi.Output.create<List<String>>((map['subnets'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcConnectorName: map['vpcConnectorName'] == null ? null : pulumi.Output.create<String>(map['vpcConnectorName'] as String),
-      vpcConnectorRevision: map['vpcConnectorRevision'] == null ? null : pulumi.Output.create<int>(map['vpcConnectorRevision'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subnets: map['subnets'] == null ? null : ((map['subnets'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcConnectorName: map['vpcConnectorName'] == null ? null : (map['vpcConnectorName'] as String).input(),
+      vpcConnectorRevision: map['vpcConnectorRevision'] == null ? null : (map['vpcConnectorRevision'] as int).input(),
     );
   }
 }

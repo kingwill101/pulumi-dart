@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseImport {
   /// Specifies the name of the SQL administrator.
-  final String administratorLogin;
+  final pulumi.Input<String> administratorLogin;
   /// Specifies the password of the SQL administrator.
-  final String administratorLoginPassword;
+  final pulumi.Input<String> administratorLoginPassword;
   /// Specifies the type of authentication used to access the server. Valid values are `SQL` or `ADPassword`.
-  final String authenticationType;
+  final pulumi.Input<String> authenticationType;
   /// The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for storage_uri parameter.
-  final String? storageAccountId;
+  final pulumi.Input<String>? storageAccountId;
   /// Specifies the access key for the storage account.
-  final String storageKey;
+  final pulumi.Input<String> storageKey;
   /// Specifies the type of access key for the storage account. Valid values are `StorageAccessKey` or `SharedAccessKey`.
-  final String storageKeyType;
+  final pulumi.Input<String> storageKeyType;
   /// Specifies the blob URI of the .bacpac file.
-  final String storageUri;
+  final pulumi.Input<String> storageUri;
 
   /// Creates a new [DatabaseImport].
   /// [administratorLogin] Specifies the name of the SQL administrator.
@@ -49,13 +50,13 @@ class DatabaseImport {
 
   factory DatabaseImport.fromMap(Map<String, dynamic> map) {
     return DatabaseImport(
-      administratorLogin: map['administratorLogin'] as String,
-      administratorLoginPassword: map['administratorLoginPassword'] as String,
-      authenticationType: map['authenticationType'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      storageKey: map['storageKey'] as String,
-      storageKeyType: map['storageKeyType'] as String,
-      storageUri: map['storageUri'] as String,
+      administratorLogin: (map['administratorLogin'] as String).input(),
+      administratorLoginPassword: (map['administratorLoginPassword'] as String).input(),
+      authenticationType: (map['authenticationType'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageKey: (map['storageKey'] as String).input(),
+      storageKeyType: (map['storageKeyType'] as String).input(),
+      storageUri: (map['storageUri'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The billing information of the resource.
 class ResourceSku {
@@ -11,15 +12,15 @@ class ResourceSku {
   /// Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
   /// Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
   /// Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// The name of the SKU. Required.
   ///
   /// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
-  final String name;
+  final pulumi.Input<String> name;
   /// Optional tier of this particular SKU. 'Standard' or 'Free'.
   ///
   /// `Basic` is deprecated, use `Standard` instead.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [ResourceSku].
   /// [capacity] Optional, integer. The unit count of the resource.
@@ -41,9 +42,9 @@ class ResourceSku {
 
   factory ResourceSku.fromMap(Map<String, dynamic> map) {
     return ResourceSku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

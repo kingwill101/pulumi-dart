@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for the version.
 class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
   /// Format: projects//locations//agents//flows//versions/.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GoogleCloudDialogflowCxV3EnvironmentVersionConfig].
   /// [version] Format: projects//locations//agents//flows//versions/.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
 
   factory GoogleCloudDialogflowCxV3EnvironmentVersionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3EnvironmentVersionConfig(
-      version: map['version'] as String,
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetConnectionsArgs {
   /// [ids] A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetConnectionsArgs({
-    required pulumi.Output<String> ids,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asInput<String>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.ids,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetConnectionsArgs {
 
   factory GetConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionsArgs(
-      ids: pulumi.Output.create<String>(map['ids'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: (map['ids'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

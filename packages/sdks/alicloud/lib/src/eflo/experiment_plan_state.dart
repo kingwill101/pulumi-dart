@@ -28,21 +28,14 @@ class ExperimentPlanState {
   /// [tags] The tag of the resource.
   /// [templateId] The ID of the template.
   ExperimentPlanState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? externalParams,
-    pulumi.Output<String>? planName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<int>? resourceId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? templateId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      externalParams = pulumi.Input.asOptionalInput<Map<String, String>>(externalParams),
-      planName = pulumi.Input.asOptionalInput<String>(planName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      resourceId = pulumi.Input.asOptionalInput<int>(resourceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateId = pulumi.Input.asOptionalInput<int>(templateId);
+    this.createTime,
+    this.externalParams,
+    this.planName,
+    this.resourceGroupId,
+    this.resourceId,
+    this.tags,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ExperimentPlanState {
 
   factory ExperimentPlanState.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      externalParams: map['externalParams'] == null ? null : pulumi.Output.create<Map<String, String>>((map['externalParams'] as Map).cast<String, String>()),
-      planName: map['planName'] == null ? null : pulumi.Output.create<String>(map['planName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<int>(map['resourceId'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<int>(map['templateId'] as int),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      externalParams: map['externalParams'] == null ? null : ((map['externalParams'] as Map).cast<String, String>()).input(),
+      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as int).input(),
     );
   }
 }

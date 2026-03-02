@@ -20,13 +20,10 @@ class ControlPolicyOrderArgs {
   /// [direction] The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
   /// [order] The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
   ControlPolicyOrderArgs({
-    required pulumi.Output<String> aclUuid,
-    required pulumi.Output<String> direction,
-    required pulumi.Output<int> order,
-  }) :
-      aclUuid = pulumi.Input.asInput<String>(aclUuid),
-      direction = pulumi.Input.asInput<String>(direction),
-      order = pulumi.Input.asInput<int>(order);
+    required this.aclUuid,
+    required this.direction,
+    required this.order,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ControlPolicyOrderArgs {
 
   factory ControlPolicyOrderArgs.fromMap(Map<String, dynamic> map) {
     return ControlPolicyOrderArgs(
-      aclUuid: pulumi.Output.create<String>(map['aclUuid'] as String),
-      direction: pulumi.Output.create<String>(map['direction'] as String),
-      order: pulumi.Output.create<int>(map['order'] as int),
+      aclUuid: (map['aclUuid'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      order: (map['order'] as int).input(),
     );
   }
 }

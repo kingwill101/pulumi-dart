@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aws_organizational_data_master.dart';
 
 /// The AWS connector environment data
 class AwsEnvironmentData {
   /// The type of the environment data.
   /// Expected value is 'AwsAccount'.
-  final String environmentType;
+  final pulumi.Input<String> environmentType;
   /// The AWS account's organizational data
-  final AwsOrganizationalDataMaster? organizationalData;
+  final pulumi.Input<AwsOrganizationalDataMaster>? organizationalData;
   /// list of regions to scan
-  final List<String>? regions;
+  final pulumi.Input<List<String>>? regions;
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
-  final double? scanInterval;
+  final pulumi.Input<double>? scanInterval;
 
   /// Creates a new [AwsEnvironmentData].
   /// [environmentType] The type of the environment data.
@@ -29,7 +30,7 @@ class AwsEnvironmentData {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'environmentType': environmentType,
-      'organizationalData': ?organizationalData == null ? null : organizationalData!.toMap(),
+      'organizationalData': ?pulumi.Input.mapOptionalInputValue<AwsOrganizationalDataMaster, Map<String, dynamic>>(organizationalData, (value) => value.toMap()),
       'regions': ?regions,
       'scanInterval': ?scanInterval,
     };
@@ -37,10 +38,10 @@ class AwsEnvironmentData {
 
   factory AwsEnvironmentData.fromMap(Map<String, dynamic> map) {
     return AwsEnvironmentData(
-      environmentType: map['environmentType'] as String,
-      organizationalData: map['organizationalData'] == null ? null : AwsOrganizationalDataMaster.fromMap((map['organizationalData'] as Map).cast<String, dynamic>()),
-      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
-      scanInterval: map['scanInterval'] == null ? null : map['scanInterval'] as double,
+      environmentType: (map['environmentType'] as String).input(),
+      organizationalData: map['organizationalData'] == null ? null : (AwsOrganizationalDataMaster.fromMap((map['organizationalData'] as Map).cast<String, dynamic>())).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval'] as double).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a hash object for use in Materials and Products.
 class ArtifactHashesResponse {
-  final String sha256;
+  final pulumi.Input<String> sha256;
 
   /// Creates a new [ArtifactHashesResponse].
   /// [sha256] Required.
@@ -19,7 +20,7 @@ class ArtifactHashesResponse {
 
   factory ArtifactHashesResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactHashesResponse(
-      sha256: map['sha256'] as String,
+      sha256: (map['sha256'] as String).input(),
     );
   }
 }

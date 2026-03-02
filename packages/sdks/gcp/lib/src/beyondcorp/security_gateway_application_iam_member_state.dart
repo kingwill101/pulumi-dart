@@ -44,21 +44,14 @@ class SecurityGatewayApplicationIamMemberState {
   /// [role] The role that should be applied. Only one
   /// [securityGatewayId] ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
   SecurityGatewayApplicationIamMemberState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<SecurityGatewayApplicationIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? securityGatewayId,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      condition = pulumi.Input.asOptionalInput<SecurityGatewayApplicationIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      securityGatewayId = pulumi.Input.asOptionalInput<String>(securityGatewayId);
+    this.applicationId,
+    this.condition,
+    this.etag,
+    this.member,
+    this.project,
+    this.role,
+    this.securityGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,13 +67,13 @@ class SecurityGatewayApplicationIamMemberState {
 
   factory SecurityGatewayApplicationIamMemberState.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationIamMemberState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<SecurityGatewayApplicationIamMemberCondition>(SecurityGatewayApplicationIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      securityGatewayId: map['securityGatewayId'] == null ? null : pulumi.Output.create<String>(map['securityGatewayId'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      condition: map['condition'] == null ? null : (SecurityGatewayApplicationIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      securityGatewayId: map['securityGatewayId'] == null ? null : (map['securityGatewayId'] as String).input(),
     );
   }
 }

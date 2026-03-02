@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AliasRoutingStrategy {
   /// ID of the GameLift Fleet to point the alias to.
-  final String? fleetId;
+  final pulumi.Input<String>? fleetId;
   /// Message text to be used with the `TERMINAL` routing strategy.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Type of routing strategyE.g., `SIMPLE` or `TERMINAL`
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AliasRoutingStrategy].
   /// [fleetId] ID of the GameLift Fleet to point the alias to.
@@ -29,9 +30,9 @@ class AliasRoutingStrategy {
 
   factory AliasRoutingStrategy.fromMap(Map<String, dynamic> map) {
     return AliasRoutingStrategy(
-      fleetId: map['fleetId'] == null ? null : map['fleetId'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      type: map['type'] as String,
+      fleetId: map['fleetId'] == null ? null : (map['fleetId'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

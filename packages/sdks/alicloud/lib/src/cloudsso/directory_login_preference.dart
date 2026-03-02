@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryLoginPreference {
   /// Whether the user can obtain the program access credential in the portal after logging in.
-  final bool? allowUserToGetCredentials;
+  final pulumi.Input<bool>? allowUserToGetCredentials;
   /// IP address whitelist
-  final String? loginNetworkMasks;
+  final pulumi.Input<String>? loginNetworkMasks;
 
   /// Creates a new [DirectoryLoginPreference].
   /// [allowUserToGetCredentials] Whether the user can obtain the program access credential in the portal after logging in.
@@ -24,8 +25,8 @@ class DirectoryLoginPreference {
 
   factory DirectoryLoginPreference.fromMap(Map<String, dynamic> map) {
     return DirectoryLoginPreference(
-      allowUserToGetCredentials: map['allowUserToGetCredentials'] == null ? null : map['allowUserToGetCredentials'] as bool,
-      loginNetworkMasks: map['loginNetworkMasks'] == null ? null : map['loginNetworkMasks'] as String,
+      allowUserToGetCredentials: map['allowUserToGetCredentials'] == null ? null : (map['allowUserToGetCredentials'] as bool).input(),
+      loginNetworkMasks: map['loginNetworkMasks'] == null ? null : (map['loginNetworkMasks'] as String).input(),
     );
   }
 }

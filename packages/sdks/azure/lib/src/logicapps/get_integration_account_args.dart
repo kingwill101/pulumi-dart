@@ -16,11 +16,9 @@ class GetIntegrationAccountArgs {
   /// [name] The name of this Logic App Integration Account.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account exists.
   GetIntegrationAccountArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIntegrationAccountArgs {
 
   factory GetIntegrationAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

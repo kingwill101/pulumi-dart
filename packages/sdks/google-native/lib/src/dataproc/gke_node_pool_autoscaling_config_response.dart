@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage.
 class GkeNodePoolAutoscalingConfigResponse {
   /// The maximum number of nodes in the node pool. Must be >= min_node_count, and must be > 0. Note: Quota must be sufficient to scale up the cluster.
-  final int maxNodeCount;
+  final pulumi.Input<int> maxNodeCount;
   /// The minimum number of nodes in the node pool. Must be >= 0 and <= max_node_count.
-  final int minNodeCount;
+  final pulumi.Input<int> minNodeCount;
 
   /// Creates a new [GkeNodePoolAutoscalingConfigResponse].
   /// [maxNodeCount] The maximum number of nodes in the node pool. Must be >= min_node_count, and must be > 0. Note: Quota must be sufficient to scale up the cluster.
@@ -25,8 +26,8 @@ class GkeNodePoolAutoscalingConfigResponse {
 
   factory GkeNodePoolAutoscalingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GkeNodePoolAutoscalingConfigResponse(
-      maxNodeCount: map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] as int,
+      maxNodeCount: (map['maxNodeCount'] as int).input(),
+      minNodeCount: (map['minNodeCount'] as int).input(),
     );
   }
 }

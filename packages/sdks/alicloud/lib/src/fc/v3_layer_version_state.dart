@@ -41,29 +41,18 @@ class V3LayerVersionState {
   /// [public] Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
   /// [version] The version of the layer
   V3LayerVersionState({
-    pulumi.Output<String>? acl,
-    pulumi.Output<V3LayerVersionCode>? code,
-    pulumi.Output<String>? codeSize,
-    pulumi.Output<List<String>>? compatibleRuntimes,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? layerName,
-    pulumi.Output<String>? layerVersionArn,
-    pulumi.Output<String>? license,
-    pulumi.Output<String>? public,
-    pulumi.Output<String>? version,
-  }) :
-      acl = pulumi.Input.asOptionalInput<String>(acl),
-      code = pulumi.Input.asOptionalInput<V3LayerVersionCode>(code),
-      codeSize = pulumi.Input.asOptionalInput<String>(codeSize),
-      compatibleRuntimes = pulumi.Input.asOptionalInput<List<String>>(compatibleRuntimes),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      layerName = pulumi.Input.asOptionalInput<String>(layerName),
-      layerVersionArn = pulumi.Input.asOptionalInput<String>(layerVersionArn),
-      license = pulumi.Input.asOptionalInput<String>(license),
-      public = pulumi.Input.asOptionalInput<String>(public),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.acl,
+    this.code,
+    this.codeSize,
+    this.compatibleRuntimes,
+    this.createTime,
+    this.description,
+    this.layerName,
+    this.layerVersionArn,
+    this.license,
+    this.public,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class V3LayerVersionState {
 
   factory V3LayerVersionState.fromMap(Map<String, dynamic> map) {
     return V3LayerVersionState(
-      acl: map['acl'] == null ? null : pulumi.Output.create<String>(map['acl'] as String),
-      code: map['code'] == null ? null : pulumi.Output.create<V3LayerVersionCode>(V3LayerVersionCode.fromMap((map['code'] as Map).cast<String, dynamic>())),
-      codeSize: map['codeSize'] == null ? null : pulumi.Output.create<String>(map['codeSize'] as String),
-      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : pulumi.Output.create<List<String>>((map['compatibleRuntimes'] as List).cast<String>()),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      layerName: map['layerName'] == null ? null : pulumi.Output.create<String>(map['layerName'] as String),
-      layerVersionArn: map['layerVersionArn'] == null ? null : pulumi.Output.create<String>(map['layerVersionArn'] as String),
-      license: map['license'] == null ? null : pulumi.Output.create<String>(map['license'] as String),
-      public: map['public'] == null ? null : pulumi.Output.create<String>(map['public'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      code: map['code'] == null ? null : (V3LayerVersionCode.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
+      codeSize: map['codeSize'] == null ? null : (map['codeSize'] as String).input(),
+      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : ((map['compatibleRuntimes'] as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      layerName: map['layerName'] == null ? null : (map['layerName'] as String).input(),
+      layerVersionArn: map['layerVersionArn'] == null ? null : (map['layerVersionArn'] as String).input(),
+      license: map['license'] == null ? null : (map['license'] as String).input(),
+      public: map['public'] == null ? null : (map['public'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

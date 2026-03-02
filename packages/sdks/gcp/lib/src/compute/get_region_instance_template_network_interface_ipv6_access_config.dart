@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
   /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
-  final String externalIpv6;
+  final pulumi.Input<String> externalIpv6;
   /// The prefix length of the external IPv6 range.
-  final String externalIpv6PrefixLength;
+  final pulumi.Input<String> externalIpv6PrefixLength;
   /// The name of the instance template. One of `name` or `filter` must be provided.
-  final String name;
+  final pulumi.Input<String> name;
   /// The [networking tier][network-tier] used for configuring
   /// this instance template. This field can take the following values: PREMIUM or
   /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-  final String networkTier;
+  final pulumi.Input<String> networkTier;
   /// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
-  final String publicPtrDomainName;
+  final pulumi.Input<String> publicPtrDomainName;
 
   /// Creates a new [GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig].
   /// [externalIpv6] The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
@@ -41,11 +42,11 @@ class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
 
   factory GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(
-      externalIpv6: map['externalIpv6'] as String,
-      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] as String,
-      name: map['name'] as String,
-      networkTier: map['networkTier'] as String,
-      publicPtrDomainName: map['publicPtrDomainName'] as String,
+      externalIpv6: (map['externalIpv6'] as String).input(),
+      externalIpv6PrefixLength: (map['externalIpv6PrefixLength'] as String).input(),
+      name: (map['name'] as String).input(),
+      networkTier: (map['networkTier'] as String).input(),
+      publicPtrDomainName: (map['publicPtrDomainName'] as String).input(),
     );
   }
 }

@@ -31,19 +31,13 @@ class PlaceIndexArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   PlaceIndexArgs({
-    required pulumi.Output<String> dataSource,
-    pulumi.Output<PlaceIndexDataSourceConfiguration>? dataSourceConfiguration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> indexName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dataSource = pulumi.Input.asInput<String>(dataSource),
-      dataSourceConfiguration = pulumi.Input.asOptionalInput<PlaceIndexDataSourceConfiguration>(dataSourceConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexName = pulumi.Input.asInput<String>(indexName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.dataSource,
+    this.dataSourceConfiguration,
+    this.description,
+    required this.indexName,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class PlaceIndexArgs {
 
   factory PlaceIndexArgs.fromMap(Map<String, dynamic> map) {
     return PlaceIndexArgs(
-      dataSource: pulumi.Output.create<String>(map['dataSource'] as String),
-      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : pulumi.Output.create<PlaceIndexDataSourceConfiguration>(PlaceIndexDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexName: pulumi.Output.create<String>(map['indexName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dataSource: (map['dataSource'] as String).input(),
+      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : (PlaceIndexDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexName: (map['indexName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

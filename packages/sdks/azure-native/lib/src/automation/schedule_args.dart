@@ -44,29 +44,18 @@ class ScheduleArgs {
   /// [startTime] Gets or sets the start time of the schedule.
   /// [timeZone] Gets or sets the time zone of the schedule.
   ScheduleArgs({
-    pulumi.Output<AdvancedSchedule>? advancedSchedule,
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expiryTime,
-    required pulumi.Output<String> frequency,
-    pulumi.Output<dynamic>? interval,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scheduleName,
-    required pulumi.Output<String> startTime,
-    pulumi.Output<String>? timeZone,
-  }) :
-      advancedSchedule = pulumi.Input.asOptionalInput<AdvancedSchedule>(advancedSchedule),
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expiryTime = pulumi.Input.asOptionalInput<String>(expiryTime),
-      frequency = pulumi.Input.asInput<String>(frequency),
-      interval = pulumi.Input.asOptionalInput<dynamic>(interval),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleName = pulumi.Input.asOptionalInput<String>(scheduleName),
-      startTime = pulumi.Input.asInput<String>(startTime),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.advancedSchedule,
+    required this.automationAccountName,
+    this.description,
+    this.expiryTime,
+    required this.frequency,
+    this.interval,
+    required this.name,
+    required this.resourceGroupName,
+    this.scheduleName,
+    required this.startTime,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      advancedSchedule: map['advancedSchedule'] == null ? null : pulumi.Output.create<AdvancedSchedule>(AdvancedSchedule.fromMap((map['advancedSchedule'] as Map).cast<String, dynamic>())),
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expiryTime: map['expiryTime'] == null ? null : pulumi.Output.create<String>(map['expiryTime'] as String),
-      frequency: pulumi.Output.create<String>(map['frequency'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<dynamic>(map['interval']),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleName: map['scheduleName'] == null ? null : pulumi.Output.create<String>(map['scheduleName'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      advancedSchedule: map['advancedSchedule'] == null ? null : (AdvancedSchedule.fromMap((map['advancedSchedule'] as Map).cast<String, dynamic>())).input(),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      frequency: (map['frequency'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

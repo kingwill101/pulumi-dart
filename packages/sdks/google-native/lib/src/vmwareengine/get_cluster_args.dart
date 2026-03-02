@@ -18,15 +18,11 @@ class GetClusterArgs {
   /// [privateCloudId] Required.
   /// [project] Optional.
   GetClusterArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> privateCloudId,
-    pulumi.Output<String>? project,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asInput<String>(location),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.clusterId,
+    required this.location,
+    required this.privateCloudId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      privateCloudId: pulumi.Output.create<String>(map['privateCloudId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      location: (map['location'] as String).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class FlexibleServerConfigurationArgs {
   /// [serverName] Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   /// [value] Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values.
   FlexibleServerConfigurationArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> value,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      value = pulumi.Input.asInput<String>(value);
+    this.name,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class FlexibleServerConfigurationArgs {
 
   factory FlexibleServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerConfigurationArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

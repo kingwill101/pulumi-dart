@@ -38,25 +38,16 @@ class JobState {
   /// [status] job status See `status` below.
   /// [stopStrategy] Optional.
   JobState({
-    pulumi.Output<String>? deploymentId,
-    pulumi.Output<String>? jobId,
-    pulumi.Output<List<JobLocalVariable>>? localVariables,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceQueueName,
-    pulumi.Output<JobRestoreStrategy>? restoreStrategy,
-    pulumi.Output<JobStatus>? status,
-    pulumi.Output<String>? stopStrategy,
-  }) :
-      deploymentId = pulumi.Input.asOptionalInput<String>(deploymentId),
-      jobId = pulumi.Input.asOptionalInput<String>(jobId),
-      localVariables = pulumi.Input.asOptionalInput<List<JobLocalVariable>>(localVariables),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceQueueName = pulumi.Input.asOptionalInput<String>(resourceQueueName),
-      restoreStrategy = pulumi.Input.asOptionalInput<JobRestoreStrategy>(restoreStrategy),
-      status = pulumi.Input.asOptionalInput<JobStatus>(status),
-      stopStrategy = pulumi.Input.asOptionalInput<String>(stopStrategy);
+    this.deploymentId,
+    this.jobId,
+    this.localVariables,
+    this.namespace,
+    this.resourceId,
+    this.resourceQueueName,
+    this.restoreStrategy,
+    this.status,
+    this.stopStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class JobState {
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
-      deploymentId: map['deploymentId'] == null ? null : pulumi.Output.create<String>(map['deploymentId'] as String),
-      jobId: map['jobId'] == null ? null : pulumi.Output.create<String>(map['jobId'] as String),
-      localVariables: map['localVariables'] == null ? null : pulumi.Output.create<List<JobLocalVariable>>(pulumi.Input.decodeList<JobLocalVariable>(map['localVariables'], (value) => JobLocalVariable.fromMap((value as Map).cast<String, dynamic>()))),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceQueueName: map['resourceQueueName'] == null ? null : pulumi.Output.create<String>(map['resourceQueueName'] as String),
-      restoreStrategy: map['restoreStrategy'] == null ? null : pulumi.Output.create<JobRestoreStrategy>(JobRestoreStrategy.fromMap((map['restoreStrategy'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<JobStatus>(JobStatus.fromMap((map['status'] as Map).cast<String, dynamic>())),
-      stopStrategy: map['stopStrategy'] == null ? null : pulumi.Output.create<String>(map['stopStrategy'] as String),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
+      localVariables: map['localVariables'] == null ? null : (pulumi.Input.decodeList<JobLocalVariable>(map['localVariables'], (value) => JobLocalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceQueueName: map['resourceQueueName'] == null ? null : (map['resourceQueueName'] as String).input(),
+      restoreStrategy: map['restoreStrategy'] == null ? null : (JobRestoreStrategy.fromMap((map['restoreStrategy'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (JobStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      stopStrategy: map['stopStrategy'] == null ? null : (map['stopStrategy'] as String).input(),
     );
   }
 }

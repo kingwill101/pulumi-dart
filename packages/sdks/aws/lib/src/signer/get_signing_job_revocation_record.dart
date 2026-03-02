@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSigningJobRevocationRecord {
-  final String reason;
-  final String revokedAt;
-  final String revokedBy;
+  final pulumi.Input<String> reason;
+  final pulumi.Input<String> revokedAt;
+  final pulumi.Input<String> revokedBy;
 
   /// Creates a new [GetSigningJobRevocationRecord].
   /// [reason] Required.
@@ -26,9 +27,9 @@ class GetSigningJobRevocationRecord {
 
   factory GetSigningJobRevocationRecord.fromMap(Map<String, dynamic> map) {
     return GetSigningJobRevocationRecord(
-      reason: map['reason'] as String,
-      revokedAt: map['revokedAt'] as String,
-      revokedBy: map['revokedBy'] as String,
+      reason: (map['reason'] as String).input(),
+      revokedAt: (map['revokedAt'] as String).input(),
+      revokedBy: (map['revokedBy'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OutboundRuleFrontendIpConfiguration {
   /// The ID of the Load Balancer Outbound Rule.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the Frontend IP Configuration.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OutboundRuleFrontendIpConfiguration].
   /// [id] The ID of the Load Balancer Outbound Rule.
@@ -24,8 +25,8 @@ class OutboundRuleFrontendIpConfiguration {
 
   factory OutboundRuleFrontendIpConfiguration.fromMap(Map<String, dynamic> map) {
     return OutboundRuleFrontendIpConfiguration(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

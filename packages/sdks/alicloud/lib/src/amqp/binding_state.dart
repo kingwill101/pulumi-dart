@@ -36,21 +36,14 @@ class BindingState {
   /// [sourceExchange] The name of the source exchange.
   /// [virtualHostName] The name of the vhost.
   BindingState({
-    pulumi.Output<String>? argument,
-    pulumi.Output<String>? bindingKey,
-    pulumi.Output<String>? bindingType,
-    pulumi.Output<String>? destinationName,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? sourceExchange,
-    pulumi.Output<String>? virtualHostName,
-  }) :
-      argument = pulumi.Input.asOptionalInput<String>(argument),
-      bindingKey = pulumi.Input.asOptionalInput<String>(bindingKey),
-      bindingType = pulumi.Input.asOptionalInput<String>(bindingType),
-      destinationName = pulumi.Input.asOptionalInput<String>(destinationName),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      sourceExchange = pulumi.Input.asOptionalInput<String>(sourceExchange),
-      virtualHostName = pulumi.Input.asOptionalInput<String>(virtualHostName);
+    this.argument,
+    this.bindingKey,
+    this.bindingType,
+    this.destinationName,
+    this.instanceId,
+    this.sourceExchange,
+    this.virtualHostName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class BindingState {
 
   factory BindingState.fromMap(Map<String, dynamic> map) {
     return BindingState(
-      argument: map['argument'] == null ? null : pulumi.Output.create<String>(map['argument'] as String),
-      bindingKey: map['bindingKey'] == null ? null : pulumi.Output.create<String>(map['bindingKey'] as String),
-      bindingType: map['bindingType'] == null ? null : pulumi.Output.create<String>(map['bindingType'] as String),
-      destinationName: map['destinationName'] == null ? null : pulumi.Output.create<String>(map['destinationName'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      sourceExchange: map['sourceExchange'] == null ? null : pulumi.Output.create<String>(map['sourceExchange'] as String),
-      virtualHostName: map['virtualHostName'] == null ? null : pulumi.Output.create<String>(map['virtualHostName'] as String),
+      argument: map['argument'] == null ? null : (map['argument'] as String).input(),
+      bindingKey: map['bindingKey'] == null ? null : (map['bindingKey'] as String).input(),
+      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
+      destinationName: map['destinationName'] == null ? null : (map['destinationName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      sourceExchange: map['sourceExchange'] == null ? null : (map['sourceExchange'] as String).input(),
+      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName'] as String).input(),
     );
   }
 }

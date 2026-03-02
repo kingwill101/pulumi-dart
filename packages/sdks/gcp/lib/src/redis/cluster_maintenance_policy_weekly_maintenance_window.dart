@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_maintenance_policy_weekly_maintenance_window_start_time.dart';
 
 class ClusterMaintenancePolicyWeeklyMaintenanceWindow {
@@ -13,16 +14,16 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindow {
   /// - SATURDAY: Saturday
   /// - SUNDAY: Sunday
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-  final String day;
+  final pulumi.Input<String> day;
   /// (Output)
   /// Output only. Duration of the maintenance window.
   /// The current window is fixed at 1 hour.
   /// A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s".
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
-  final ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime;
+  final pulumi.Input<ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTime;
 
   /// Creates a new [ClusterMaintenancePolicyWeeklyMaintenanceWindow].
   /// [day] Required. The day of week that maintenance updates occur.
@@ -38,15 +39,15 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindow {
     return <String, dynamic>{
       'day': day,
       'duration': ?duration,
-      'startTime': startTime.toMap(),
+      'startTime': pulumi.Input.mapInputValue<ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
   factory ClusterMaintenancePolicyWeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyWeeklyMaintenanceWindow(
-      day: map['day'] as String,
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      startTime: ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      day: (map['day'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      startTime: (ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

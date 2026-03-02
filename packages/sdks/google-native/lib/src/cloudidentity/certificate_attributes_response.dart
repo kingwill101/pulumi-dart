@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_template_response.dart';
 
 /// Stores information about a certificate.
 class CertificateAttributesResponse {
   /// The X.509 extension for CertificateTemplate.
-  final CertificateTemplateResponse certificateTemplate;
+  final pulumi.Input<CertificateTemplateResponse> certificateTemplate;
   /// The encoded certificate fingerprint.
-  final String fingerprint;
+  final pulumi.Input<String> fingerprint;
   /// The name of the issuer of this certificate.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// Serial number of the certificate, Example: "123456789".
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
   /// The subject name of this certificate.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The certificate thumbprint.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// Validation state of this certificate.
-  final String validationState;
+  final pulumi.Input<String> validationState;
   /// Certificate not valid at or after this timestamp.
-  final String validityExpirationTime;
+  final pulumi.Input<String> validityExpirationTime;
   /// Certificate not valid before this timestamp.
-  final String validityStartTime;
+  final pulumi.Input<String> validityStartTime;
 
   /// Creates a new [CertificateAttributesResponse].
   /// [certificateTemplate] The X.509 extension for CertificateTemplate.
@@ -47,7 +48,7 @@ class CertificateAttributesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateTemplate': certificateTemplate.toMap(),
+      'certificateTemplate': pulumi.Input.mapInputValue<CertificateTemplateResponse, Map<String, dynamic>>(certificateTemplate, (value) => value.toMap()),
       'fingerprint': fingerprint,
       'issuer': issuer,
       'serialNumber': serialNumber,
@@ -61,15 +62,15 @@ class CertificateAttributesResponse {
 
   factory CertificateAttributesResponse.fromMap(Map<String, dynamic> map) {
     return CertificateAttributesResponse(
-      certificateTemplate: CertificateTemplateResponse.fromMap((map['certificateTemplate'] as Map).cast<String, dynamic>()),
-      fingerprint: map['fingerprint'] as String,
-      issuer: map['issuer'] as String,
-      serialNumber: map['serialNumber'] as String,
-      subject: map['subject'] as String,
-      thumbprint: map['thumbprint'] as String,
-      validationState: map['validationState'] as String,
-      validityExpirationTime: map['validityExpirationTime'] as String,
-      validityStartTime: map['validityStartTime'] as String,
+      certificateTemplate: (CertificateTemplateResponse.fromMap((map['certificateTemplate'] as Map).cast<String, dynamic>())).input(),
+      fingerprint: (map['fingerprint'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      validationState: (map['validationState'] as String).input(),
+      validityExpirationTime: (map['validityExpirationTime'] as String).input(),
+      validityStartTime: (map['validityStartTime'] as String).input(),
     );
   }
 }

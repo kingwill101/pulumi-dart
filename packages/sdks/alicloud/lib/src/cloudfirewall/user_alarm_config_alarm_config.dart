@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserAlarmConfigAlarmConfig {
   /// The time of the day when the alarm is triggered. The range is `0 ~ 24`.
-  final String? alarmHour;
+  final pulumi.Input<String>? alarmHour;
   /// The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
-  final String? alarmNotify;
+  final pulumi.Input<String>? alarmNotify;
   /// The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
-  final String? alarmPeriod;
+  final pulumi.Input<String>? alarmPeriod;
   /// The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
-  final String? alarmType;
+  final pulumi.Input<String>? alarmType;
   /// The alarm notification message.
-  final String? alarmValue;
+  final pulumi.Input<String>? alarmValue;
   /// The day of the week when the alarm is triggered. The range is `1 ~ 7`.
-  final String? alarmWeekDay;
+  final pulumi.Input<String>? alarmWeekDay;
 
   /// Creates a new [UserAlarmConfigAlarmConfig].
   /// [alarmHour] The time of the day when the alarm is triggered. The range is `0 ~ 24`.
@@ -44,12 +45,12 @@ class UserAlarmConfigAlarmConfig {
 
   factory UserAlarmConfigAlarmConfig.fromMap(Map<String, dynamic> map) {
     return UserAlarmConfigAlarmConfig(
-      alarmHour: map['alarmHour'] == null ? null : map['alarmHour'] as String,
-      alarmNotify: map['alarmNotify'] == null ? null : map['alarmNotify'] as String,
-      alarmPeriod: map['alarmPeriod'] == null ? null : map['alarmPeriod'] as String,
-      alarmType: map['alarmType'] == null ? null : map['alarmType'] as String,
-      alarmValue: map['alarmValue'] == null ? null : map['alarmValue'] as String,
-      alarmWeekDay: map['alarmWeekDay'] == null ? null : map['alarmWeekDay'] as String,
+      alarmHour: map['alarmHour'] == null ? null : (map['alarmHour'] as String).input(),
+      alarmNotify: map['alarmNotify'] == null ? null : (map['alarmNotify'] as String).input(),
+      alarmPeriod: map['alarmPeriod'] == null ? null : (map['alarmPeriod'] as String).input(),
+      alarmType: map['alarmType'] == null ? null : (map['alarmType'] as String).input(),
+      alarmValue: map['alarmValue'] == null ? null : (map['alarmValue'] as String).input(),
+      alarmWeekDay: map['alarmWeekDay'] == null ? null : (map['alarmWeekDay'] as String).input(),
     );
   }
 }

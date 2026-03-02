@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubBrowserCredential {
   /// The subject name of web push.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// The Voluntary Application Server Identification (VAPID) private key.
-  final String vapidPrivateKey;
+  final pulumi.Input<String> vapidPrivateKey;
   /// The Voluntary Application Server Identification (VAPID) public key.
-  final String vapidPublicKey;
+  final pulumi.Input<String> vapidPublicKey;
 
   /// Creates a new [HubBrowserCredential].
   /// [subject] The subject name of web push.
@@ -29,9 +30,9 @@ class HubBrowserCredential {
 
   factory HubBrowserCredential.fromMap(Map<String, dynamic> map) {
     return HubBrowserCredential(
-      subject: map['subject'] as String,
-      vapidPrivateKey: map['vapidPrivateKey'] as String,
-      vapidPublicKey: map['vapidPublicKey'] as String,
+      subject: (map['subject'] as String).input(),
+      vapidPrivateKey: (map['vapidPrivateKey'] as String).input(),
+      vapidPublicKey: (map['vapidPublicKey'] as String).input(),
     );
   }
 }

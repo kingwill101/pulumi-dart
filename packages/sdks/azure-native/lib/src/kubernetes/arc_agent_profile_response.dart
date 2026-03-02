@@ -7,13 +7,13 @@ import 'system_component_response.dart';
 /// Defines the Arc Agent properties for the clusters.
 class ArcAgentProfileResponse {
   /// Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
-  final String? agentAutoUpgrade;
+  final pulumi.Input<String>? agentAutoUpgrade;
   /// List of system extensions can be installed on the cluster resource.
-  final List<AgentErrorResponse>? agentErrors;
+  final pulumi.Input<List<AgentErrorResponse>>? agentErrors;
   /// Version of the Arc agents to be installed on the cluster resource
-  final String? desiredAgentVersion;
+  final pulumi.Input<String>? desiredAgentVersion;
   /// List of system extensions can be installed on the cluster resource.
-  final List<SystemComponentResponse>? systemComponents;
+  final pulumi.Input<List<SystemComponentResponse>>? systemComponents;
 
   /// Creates a new [ArcAgentProfileResponse].
   /// [agentAutoUpgrade] Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
@@ -30,18 +30,18 @@ class ArcAgentProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentAutoUpgrade': ?agentAutoUpgrade,
-      'agentErrors': ?agentErrors == null ? null : pulumi.Input.encodeList<AgentErrorResponse, Map<String, dynamic>>(agentErrors!, (value) => value.toMap()),
+      'agentErrors': ?pulumi.Input.mapOptionalInputValue<List<AgentErrorResponse>, List<Map<String, dynamic>>>(agentErrors, (value) => pulumi.Input.encodeList<AgentErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'desiredAgentVersion': ?desiredAgentVersion,
-      'systemComponents': ?systemComponents == null ? null : pulumi.Input.encodeList<SystemComponentResponse, Map<String, dynamic>>(systemComponents!, (value) => value.toMap()),
+      'systemComponents': ?pulumi.Input.mapOptionalInputValue<List<SystemComponentResponse>, List<Map<String, dynamic>>>(systemComponents, (value) => pulumi.Input.encodeList<SystemComponentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ArcAgentProfileResponse.fromMap(Map<String, dynamic> map) {
     return ArcAgentProfileResponse(
-      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : map['agentAutoUpgrade'] as String,
-      agentErrors: map['agentErrors'] == null ? null : pulumi.Input.decodeList<AgentErrorResponse>(map['agentErrors'], (value) => AgentErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : map['desiredAgentVersion'] as String,
-      systemComponents: map['systemComponents'] == null ? null : pulumi.Input.decodeList<SystemComponentResponse>(map['systemComponents'], (value) => SystemComponentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : (map['agentAutoUpgrade'] as String).input(),
+      agentErrors: map['agentErrors'] == null ? null : (pulumi.Input.decodeList<AgentErrorResponse>(map['agentErrors'], (value) => AgentErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : (map['desiredAgentVersion'] as String).input(),
+      systemComponents: map['systemComponents'] == null ? null : (pulumi.Input.decodeList<SystemComponentResponse>(map['systemComponents'], (value) => SystemComponentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

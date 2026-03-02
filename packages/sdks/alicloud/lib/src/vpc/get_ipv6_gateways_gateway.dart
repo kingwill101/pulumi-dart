@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpv6GatewaysGateway {
   /// The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
-  final String businessStatus;
+  final pulumi.Input<String> businessStatus;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the IPv6 gateway.
-  final String description;
+  final pulumi.Input<String> description;
   /// The time when the IPv6 gateway expires.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The ID of the Ipv6 Gateway.
-  final String id;
+  final pulumi.Input<String> id;
   /// The metering method of the IPv6 gateway. Valid values: `PayAsYouGo`.
-  final String instanceChargeType;
+  final pulumi.Input<String> instanceChargeType;
   /// The first ID of the resource.
-  final String ipv6GatewayId;
+  final pulumi.Input<String> ipv6GatewayId;
   /// The name of the IPv6 gateway.
-  final String ipv6GatewayName;
+  final pulumi.Input<String> ipv6GatewayName;
   /// The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
-  final String spec;
+  final pulumi.Input<String> spec;
   /// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetIpv6GatewaysGateway].
   /// [businessStatus] The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
@@ -69,17 +70,17 @@ class GetIpv6GatewaysGateway {
 
   factory GetIpv6GatewaysGateway.fromMap(Map<String, dynamic> map) {
     return GetIpv6GatewaysGateway(
-      businessStatus: map['businessStatus'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      expiredTime: map['expiredTime'] as String,
-      id: map['id'] as String,
-      instanceChargeType: map['instanceChargeType'] as String,
-      ipv6GatewayId: map['ipv6GatewayId'] as String,
-      ipv6GatewayName: map['ipv6GatewayName'] as String,
-      spec: map['spec'] as String,
-      status: map['status'] as String,
-      vpcId: map['vpcId'] as String,
+      businessStatus: (map['businessStatus'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceChargeType: (map['instanceChargeType'] as String).input(),
+      ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
+      ipv6GatewayName: (map['ipv6GatewayName'] as String).input(),
+      spec: (map['spec'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

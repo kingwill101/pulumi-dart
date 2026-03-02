@@ -56,33 +56,20 @@ class FrameworkState {
   /// [supportedTargetResourceTypes] target resource types supported by the Framework.
   /// [type] The type of the framework. The default is TYPE_CUSTOM.
   FrameworkState({
-    pulumi.Output<List<String>>? categories,
-    pulumi.Output<List<FrameworkCloudControlDetail>>? cloudControlDetails,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? frameworkId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? majorRevisionId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? organization,
-    pulumi.Output<List<String>>? supportedCloudProviders,
-    pulumi.Output<List<String>>? supportedEnforcementModes,
-    pulumi.Output<List<String>>? supportedTargetResourceTypes,
-    pulumi.Output<String>? type,
-  }) :
-      categories = pulumi.Input.asOptionalInput<List<String>>(categories),
-      cloudControlDetails = pulumi.Input.asOptionalInput<List<FrameworkCloudControlDetail>>(cloudControlDetails),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      frameworkId = pulumi.Input.asOptionalInput<String>(frameworkId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      majorRevisionId = pulumi.Input.asOptionalInput<String>(majorRevisionId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organization = pulumi.Input.asOptionalInput<String>(organization),
-      supportedCloudProviders = pulumi.Input.asOptionalInput<List<String>>(supportedCloudProviders),
-      supportedEnforcementModes = pulumi.Input.asOptionalInput<List<String>>(supportedEnforcementModes),
-      supportedTargetResourceTypes = pulumi.Input.asOptionalInput<List<String>>(supportedTargetResourceTypes),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.categories,
+    this.cloudControlDetails,
+    this.description,
+    this.displayName,
+    this.frameworkId,
+    this.location,
+    this.majorRevisionId,
+    this.name,
+    this.organization,
+    this.supportedCloudProviders,
+    this.supportedEnforcementModes,
+    this.supportedTargetResourceTypes,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,19 +91,19 @@ class FrameworkState {
 
   factory FrameworkState.fromMap(Map<String, dynamic> map) {
     return FrameworkState(
-      categories: map['categories'] == null ? null : pulumi.Output.create<List<String>>((map['categories'] as List).cast<String>()),
-      cloudControlDetails: map['cloudControlDetails'] == null ? null : pulumi.Output.create<List<FrameworkCloudControlDetail>>(pulumi.Input.decodeList<FrameworkCloudControlDetail>(map['cloudControlDetails'], (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      frameworkId: map['frameworkId'] == null ? null : pulumi.Output.create<String>(map['frameworkId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      majorRevisionId: map['majorRevisionId'] == null ? null : pulumi.Output.create<String>(map['majorRevisionId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
-      supportedCloudProviders: map['supportedCloudProviders'] == null ? null : pulumi.Output.create<List<String>>((map['supportedCloudProviders'] as List).cast<String>()),
-      supportedEnforcementModes: map['supportedEnforcementModes'] == null ? null : pulumi.Output.create<List<String>>((map['supportedEnforcementModes'] as List).cast<String>()),
-      supportedTargetResourceTypes: map['supportedTargetResourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['supportedTargetResourceTypes'] as List).cast<String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
+      cloudControlDetails: map['cloudControlDetails'] == null ? null : (pulumi.Input.decodeList<FrameworkCloudControlDetail>(map['cloudControlDetails'], (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      frameworkId: map['frameworkId'] == null ? null : (map['frameworkId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      majorRevisionId: map['majorRevisionId'] == null ? null : (map['majorRevisionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      supportedCloudProviders: map['supportedCloudProviders'] == null ? null : ((map['supportedCloudProviders'] as List).cast<String>()).input(),
+      supportedEnforcementModes: map['supportedEnforcementModes'] == null ? null : ((map['supportedEnforcementModes'] as List).cast<String>()).input(),
+      supportedTargetResourceTypes: map['supportedTargetResourceTypes'] == null ? null : ((map['supportedTargetResourceTypes'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

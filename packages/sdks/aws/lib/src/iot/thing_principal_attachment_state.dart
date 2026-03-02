@@ -19,15 +19,11 @@ class ThingPrincipalAttachmentState {
   /// [thing] The name of the thing.
   /// [thingPrincipalType] The type of relationship to specify when attaching a principal to a thing. Valid values are `EXCLUSIVE_THING` (the thing will be the only one attached to the principal) or `NON_EXCLUSIVE_THING` (multiple things can be attached to the principal). Defaults to `NON_EXCLUSIVE_THING`.
   ThingPrincipalAttachmentState({
-    pulumi.Output<String>? principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? thing,
-    pulumi.Output<String>? thingPrincipalType,
-  }) :
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      thing = pulumi.Input.asOptionalInput<String>(thing),
-      thingPrincipalType = pulumi.Input.asOptionalInput<String>(thingPrincipalType);
+    this.principal,
+    this.region,
+    this.thing,
+    this.thingPrincipalType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ThingPrincipalAttachmentState {
 
   factory ThingPrincipalAttachmentState.fromMap(Map<String, dynamic> map) {
     return ThingPrincipalAttachmentState(
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      thing: map['thing'] == null ? null : pulumi.Output.create<String>(map['thing'] as String),
-      thingPrincipalType: map['thingPrincipalType'] == null ? null : pulumi.Output.create<String>(map['thingPrincipalType'] as String),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      thing: map['thing'] == null ? null : (map['thing'] as String).input(),
+      thingPrincipalType: map['thingPrincipalType'] == null ? null : (map['thingPrincipalType'] as String).input(),
     );
   }
 }

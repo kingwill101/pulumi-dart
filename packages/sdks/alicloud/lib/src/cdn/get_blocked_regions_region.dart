@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBlockedRegionsRegion {
   /// The region to which the country belongs.
-  final String continent;
+  final pulumi.Input<String> continent;
   /// National region abbreviation.
-  final String countriesAndRegions;
+  final pulumi.Input<String> countriesAndRegions;
   /// The name of the country and region.
-  final String countriesAndRegionsName;
+  final pulumi.Input<String> countriesAndRegionsName;
 
   /// Creates a new [GetBlockedRegionsRegion].
   /// [continent] The region to which the country belongs.
@@ -29,9 +30,9 @@ class GetBlockedRegionsRegion {
 
   factory GetBlockedRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetBlockedRegionsRegion(
-      continent: map['continent'] as String,
-      countriesAndRegions: map['countriesAndRegions'] as String,
-      countriesAndRegionsName: map['countriesAndRegionsName'] as String,
+      continent: (map['continent'] as String).input(),
+      countriesAndRegions: (map['countriesAndRegions'] as String).input(),
+      countriesAndRegionsName: (map['countriesAndRegionsName'] as String).input(),
     );
   }
 }

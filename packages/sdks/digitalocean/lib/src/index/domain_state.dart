@@ -20,15 +20,11 @@ class DomainState {
   /// [name] The name of the domain
   /// [ttl] The TTL value of the domain
   DomainState({
-    pulumi.Output<String>? domainUrn,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? ttl,
-  }) :
-      domainUrn = pulumi.Input.asOptionalInput<String>(domainUrn),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl);
+    this.domainUrn,
+    this.ipAddress,
+    this.name,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      domainUrn: map['domainUrn'] == null ? null : pulumi.Output.create<String>(map['domainUrn'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
+      domainUrn: map['domainUrn'] == null ? null : (map['domainUrn'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

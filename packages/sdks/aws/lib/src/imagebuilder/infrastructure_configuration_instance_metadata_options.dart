@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InfrastructureConfigurationInstanceMetadataOptions {
   /// The number of hops that an instance can traverse to reach its destonation.
-  final int? httpPutResponseHopLimit;
+  final pulumi.Input<int>? httpPutResponseHopLimit;
   /// Whether a signed token is required for instance metadata retrieval requests. Valid values: `required`, `optional`.
-  final String? httpTokens;
+  final pulumi.Input<String>? httpTokens;
 
   /// Creates a new [InfrastructureConfigurationInstanceMetadataOptions].
   /// [httpPutResponseHopLimit] The number of hops that an instance can traverse to reach its destonation.
@@ -24,8 +25,8 @@ class InfrastructureConfigurationInstanceMetadataOptions {
 
   factory InfrastructureConfigurationInstanceMetadataOptions.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationInstanceMetadataOptions(
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : map['httpPutResponseHopLimit'] as int,
-      httpTokens: map['httpTokens'] == null ? null : map['httpTokens'] as String,
+      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : (map['httpPutResponseHopLimit'] as int).input(),
+      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens'] as String).input(),
     );
   }
 }

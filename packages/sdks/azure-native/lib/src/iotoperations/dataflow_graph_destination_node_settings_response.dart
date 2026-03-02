@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataflow_graph_destination_schema_settings_response.dart';
 
 /// DataflowGraph destination node settings.
 class DataflowGraphDestinationNodeSettingsResponse {
   /// Data destination at the endpoint.
-  final String dataDestination;
+  final pulumi.Input<String> dataDestination;
   /// The name of the DataflowEndpoint resource .
-  final String endpointRef;
+  final pulumi.Input<String> endpointRef;
   /// Output schema settings.
-  final DataflowGraphDestinationSchemaSettingsResponse? outputSchemaSettings;
+  final pulumi.Input<DataflowGraphDestinationSchemaSettingsResponse>? outputSchemaSettings;
 
   /// Creates a new [DataflowGraphDestinationNodeSettingsResponse].
   /// [dataDestination] Data destination at the endpoint.
@@ -25,15 +26,15 @@ class DataflowGraphDestinationNodeSettingsResponse {
     return <String, dynamic>{
       'dataDestination': dataDestination,
       'endpointRef': endpointRef,
-      'outputSchemaSettings': ?outputSchemaSettings == null ? null : outputSchemaSettings!.toMap(),
+      'outputSchemaSettings': ?pulumi.Input.mapOptionalInputValue<DataflowGraphDestinationSchemaSettingsResponse, Map<String, dynamic>>(outputSchemaSettings, (value) => value.toMap()),
     };
   }
 
   factory DataflowGraphDestinationNodeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphDestinationNodeSettingsResponse(
-      dataDestination: map['dataDestination'] as String,
-      endpointRef: map['endpointRef'] as String,
-      outputSchemaSettings: map['outputSchemaSettings'] == null ? null : DataflowGraphDestinationSchemaSettingsResponse.fromMap((map['outputSchemaSettings'] as Map).cast<String, dynamic>()),
+      dataDestination: (map['dataDestination'] as String).input(),
+      endpointRef: (map['endpointRef'] as String).input(),
+      outputSchemaSettings: map['outputSchemaSettings'] == null ? null : (DataflowGraphDestinationSchemaSettingsResponse.fromMap((map['outputSchemaSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

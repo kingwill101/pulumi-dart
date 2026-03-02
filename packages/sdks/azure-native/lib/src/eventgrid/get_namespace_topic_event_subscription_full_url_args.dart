@@ -22,15 +22,11 @@ class GetNamespaceTopicEventSubscriptionFullUrlArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the namespace topic.
   GetNamespaceTopicEventSubscriptionFullUrlArgs({
-    required pulumi.Output<String> eventSubscriptionName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> topicName,
-  }) :
-      eventSubscriptionName = pulumi.Input.asInput<String>(eventSubscriptionName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    required this.eventSubscriptionName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetNamespaceTopicEventSubscriptionFullUrlArgs {
 
   factory GetNamespaceTopicEventSubscriptionFullUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceTopicEventSubscriptionFullUrlArgs(
-      eventSubscriptionName: pulumi.Output.create<String>(map['eventSubscriptionName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      eventSubscriptionName: (map['eventSubscriptionName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

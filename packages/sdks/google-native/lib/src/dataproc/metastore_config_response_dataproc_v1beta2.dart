@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies a Metastore configuration.
 class MetastoreConfigResponseDataprocV1beta2 {
   /// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
-  final String dataprocMetastoreService;
+  final pulumi.Input<String> dataprocMetastoreService;
 
   /// Creates a new [MetastoreConfigResponseDataprocV1beta2].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
@@ -20,7 +21,7 @@ class MetastoreConfigResponseDataprocV1beta2 {
 
   factory MetastoreConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return MetastoreConfigResponseDataprocV1beta2(
-      dataprocMetastoreService: map['dataprocMetastoreService'] as String,
+      dataprocMetastoreService: (map['dataprocMetastoreService'] as String).input(),
     );
   }
 }

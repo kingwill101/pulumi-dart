@@ -28,19 +28,13 @@ class GetBackupJobsArgs {
   /// [sourceType] The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
   /// [status] The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
   GetBackupJobsArgs({
-    pulumi.Output<List<GetBackupJobsFilter>>? filters,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? sortDirection,
-    required pulumi.Output<String> sourceType,
-    pulumi.Output<String>? status,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetBackupJobsFilter>>(filters),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      sortDirection = pulumi.Input.asOptionalInput<String>(sortDirection),
-      sourceType = pulumi.Input.asInput<String>(sourceType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.filters,
+    this.ids,
+    this.outputFile,
+    this.sortDirection,
+    required this.sourceType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetBackupJobsArgs {
 
   factory GetBackupJobsArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupJobsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetBackupJobsFilter>>(pulumi.Input.decodeList<GetBackupJobsFilter>(map['filters'], (value) => GetBackupJobsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      sortDirection: map['sortDirection'] == null ? null : pulumi.Output.create<String>(map['sortDirection'] as String),
-      sourceType: pulumi.Output.create<String>(map['sourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetBackupJobsFilter>(map['filters'], (value) => GetBackupJobsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      sortDirection: map['sortDirection'] == null ? null : (map['sortDirection'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

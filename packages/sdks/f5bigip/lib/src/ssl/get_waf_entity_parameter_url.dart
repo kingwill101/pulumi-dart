@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWafEntityParameterUrl {
-  final String method;
-  final String name;
-  final String protocol;
-  final String type;
+  final pulumi.Input<String> method;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> protocol;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetWafEntityParameterUrl].
   /// [method] Required.
@@ -30,10 +31,10 @@ class GetWafEntityParameterUrl {
 
   factory GetWafEntityParameterUrl.fromMap(Map<String, dynamic> map) {
     return GetWafEntityParameterUrl(
-      method: map['method'] as String,
-      name: map['name'] as String,
-      protocol: map['protocol'] as String,
-      type: map['type'] as String,
+      method: (map['method'] as String).input(),
+      name: (map['name'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

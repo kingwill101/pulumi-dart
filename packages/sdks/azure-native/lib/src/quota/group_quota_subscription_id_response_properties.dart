@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupQuotaSubscriptionIdResponseProperties {
   /// Status of this subscriptionId being associated with the GroupQuotasEntity.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// An Azure subscriptionId.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [GroupQuotaSubscriptionIdResponseProperties].
   /// [provisioningState] Status of this subscriptionId being associated with the GroupQuotasEntity.
@@ -24,8 +25,8 @@ class GroupQuotaSubscriptionIdResponseProperties {
 
   factory GroupQuotaSubscriptionIdResponseProperties.fromMap(Map<String, dynamic> map) {
     return GroupQuotaSubscriptionIdResponseProperties(
-      provisioningState: map['provisioningState'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

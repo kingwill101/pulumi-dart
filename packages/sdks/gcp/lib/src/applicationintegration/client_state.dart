@@ -28,17 +28,12 @@ class ClientState {
   /// [project] The ID of the project in which the resource belongs.
   /// [runAsServiceAccount] (Optional, Deprecated)
   ClientState({
-    pulumi.Output<ClientCloudKmsConfig>? cloudKmsConfig,
-    pulumi.Output<bool>? createSampleIntegrations,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? runAsServiceAccount,
-  }) :
-      cloudKmsConfig = pulumi.Input.asOptionalInput<ClientCloudKmsConfig>(cloudKmsConfig),
-      createSampleIntegrations = pulumi.Input.asOptionalInput<bool>(createSampleIntegrations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runAsServiceAccount = pulumi.Input.asOptionalInput<String>(runAsServiceAccount);
+    this.cloudKmsConfig,
+    this.createSampleIntegrations,
+    this.location,
+    this.project,
+    this.runAsServiceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ClientState {
 
   factory ClientState.fromMap(Map<String, dynamic> map) {
     return ClientState(
-      cloudKmsConfig: map['cloudKmsConfig'] == null ? null : pulumi.Output.create<ClientCloudKmsConfig>(ClientCloudKmsConfig.fromMap((map['cloudKmsConfig'] as Map).cast<String, dynamic>())),
-      createSampleIntegrations: map['createSampleIntegrations'] == null ? null : pulumi.Output.create<bool>(map['createSampleIntegrations'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runAsServiceAccount: map['runAsServiceAccount'] == null ? null : pulumi.Output.create<String>(map['runAsServiceAccount'] as String),
+      cloudKmsConfig: map['cloudKmsConfig'] == null ? null : (ClientCloudKmsConfig.fromMap((map['cloudKmsConfig'] as Map).cast<String, dynamic>())).input(),
+      createSampleIntegrations: map['createSampleIntegrations'] == null ? null : (map['createSampleIntegrations'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runAsServiceAccount: map['runAsServiceAccount'] == null ? null : (map['runAsServiceAccount'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceTemplateScaling {
   /// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
   /// a default value based on the project's available container instances quota in the region and specified instance size.
-  final int maxInstanceCount;
+  final pulumi.Input<int> maxInstanceCount;
   /// Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
-  final int minInstanceCount;
+  final pulumi.Input<int> minInstanceCount;
 
   /// Creates a new [GetServiceTemplateScaling].
   /// [maxInstanceCount] Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
@@ -25,8 +26,8 @@ class GetServiceTemplateScaling {
 
   factory GetServiceTemplateScaling.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateScaling(
-      maxInstanceCount: map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] as int,
+      maxInstanceCount: (map['maxInstanceCount'] as int).input(),
+      minInstanceCount: (map['minInstanceCount'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobQueryConnectionProperty {
   /// The key of the property to set. Currently supported connection properties:
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the property to set.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [JobQueryConnectionProperty].
   /// [key] The key of the property to set. Currently supported connection properties:
@@ -24,8 +25,8 @@ class JobQueryConnectionProperty {
 
   factory JobQueryConnectionProperty.fromMap(Map<String, dynamic> map) {
     return JobQueryConnectionProperty(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connected Partner Resource Properties
 class ConnectedPartnerResourcePropertiesResponse {
   /// The azure resource Id of the deployment.
-  final String? azureResourceId;
+  final pulumi.Input<String>? azureResourceId;
   /// The location of the deployment.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Elastic deployment name
-  final String? partnerDeploymentName;
+  final pulumi.Input<String>? partnerDeploymentName;
   /// Deployment URL of the elasticsearch in Elastic cloud deployment.
-  final String? partnerDeploymentUri;
+  final pulumi.Input<String>? partnerDeploymentUri;
 
   /// Creates a new [ConnectedPartnerResourcePropertiesResponse].
   /// [azureResourceId] The azure resource Id of the deployment.
@@ -35,10 +36,10 @@ class ConnectedPartnerResourcePropertiesResponse {
 
   factory ConnectedPartnerResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConnectedPartnerResourcePropertiesResponse(
-      azureResourceId: map['azureResourceId'] == null ? null : map['azureResourceId'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      partnerDeploymentName: map['partnerDeploymentName'] == null ? null : map['partnerDeploymentName'] as String,
-      partnerDeploymentUri: map['partnerDeploymentUri'] == null ? null : map['partnerDeploymentUri'] as String,
+      azureResourceId: map['azureResourceId'] == null ? null : (map['azureResourceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      partnerDeploymentName: map['partnerDeploymentName'] == null ? null : (map['partnerDeploymentName'] as String).input(),
+      partnerDeploymentUri: map['partnerDeploymentUri'] == null ? null : (map['partnerDeploymentUri'] as String).input(),
     );
   }
 }

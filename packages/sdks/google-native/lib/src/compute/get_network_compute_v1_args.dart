@@ -14,11 +14,9 @@ class GetNetworkComputeV1Args {
   /// [network] Required.
   /// [project] Optional.
   GetNetworkComputeV1Args({
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-  }) :
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.network,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetNetworkComputeV1Args {
 
   factory GetNetworkComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNetworkComputeV1Args(
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

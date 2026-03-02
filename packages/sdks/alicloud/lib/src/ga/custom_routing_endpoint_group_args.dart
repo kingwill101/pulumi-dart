@@ -25,17 +25,12 @@ class CustomRoutingEndpointGroupArgs {
   /// [endpointGroupRegion] The ID of the region in which to create the endpoint group.
   /// [listenerId] The ID of the custom routing listener.
   CustomRoutingEndpointGroupArgs({
-    required pulumi.Output<String> acceleratorId,
-    pulumi.Output<String>? customRoutingEndpointGroupName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> endpointGroupRegion,
-    required pulumi.Output<String> listenerId,
-  }) :
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      customRoutingEndpointGroupName = pulumi.Input.asOptionalInput<String>(customRoutingEndpointGroupName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointGroupRegion = pulumi.Input.asInput<String>(endpointGroupRegion),
-      listenerId = pulumi.Input.asInput<String>(listenerId);
+    required this.acceleratorId,
+    this.customRoutingEndpointGroupName,
+    this.description,
+    required this.endpointGroupRegion,
+    required this.listenerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CustomRoutingEndpointGroupArgs {
 
   factory CustomRoutingEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupArgs(
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : pulumi.Output.create<String>(map['customRoutingEndpointGroupName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointGroupRegion: pulumi.Output.create<String>(map['endpointGroupRegion'] as String),
-      listenerId: pulumi.Output.create<String>(map['listenerId'] as String),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : (map['customRoutingEndpointGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
     );
   }
 }

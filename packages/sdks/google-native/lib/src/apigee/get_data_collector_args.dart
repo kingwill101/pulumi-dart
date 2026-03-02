@@ -14,11 +14,9 @@ class GetDataCollectorArgs {
   /// [datacollectorId] Required.
   /// [organizationId] Required.
   GetDataCollectorArgs({
-    required pulumi.Output<String> datacollectorId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      datacollectorId = pulumi.Input.asInput<String>(datacollectorId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.datacollectorId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetDataCollectorArgs {
 
   factory GetDataCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCollectorArgs(
-      datacollectorId: pulumi.Output.create<String>(map['datacollectorId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      datacollectorId: (map['datacollectorId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

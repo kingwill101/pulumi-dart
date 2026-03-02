@@ -31,21 +31,14 @@ class ResolverFirewallRuleGroupAssociationArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The unique identifier of the VPC that you want to associate with the rule group.
   ResolverFirewallRuleGroupAssociationArgs({
-    required pulumi.Output<String> firewallRuleGroupId,
-    pulumi.Output<String>? mutationProtection,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      firewallRuleGroupId = pulumi.Input.asInput<String>(firewallRuleGroupId),
-      mutationProtection = pulumi.Input.asOptionalInput<String>(mutationProtection),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    required this.firewallRuleGroupId,
+    this.mutationProtection,
+    this.name,
+    required this.priority,
+    this.region,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ResolverFirewallRuleGroupAssociationArgs {
 
   factory ResolverFirewallRuleGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallRuleGroupAssociationArgs(
-      firewallRuleGroupId: pulumi.Output.create<String>(map['firewallRuleGroupId'] as String),
-      mutationProtection: map['mutationProtection'] == null ? null : pulumi.Output.create<String>(map['mutationProtection'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      firewallRuleGroupId: (map['firewallRuleGroupId'] as String).input(),
+      mutationProtection: map['mutationProtection'] == null ? null : (map['mutationProtection'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

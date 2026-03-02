@@ -55,29 +55,18 @@ class InstanceArgs {
   /// [name] The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
   /// [project] The ID of the project in which the resource belongs.
   InstanceArgs({
-    pulumi.Output<String>? desiredState,
-    pulumi.Output<bool>? disableProxyAccess,
-    pulumi.Output<bool>? enableManagedEuc,
-    pulumi.Output<bool>? enableThirdPartyIdentity,
-    pulumi.Output<InstanceGceSetup>? gceSetup,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<List<String>>? instanceOwners,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      disableProxyAccess = pulumi.Input.asOptionalInput<bool>(disableProxyAccess),
-      enableManagedEuc = pulumi.Input.asOptionalInput<bool>(enableManagedEuc),
-      enableThirdPartyIdentity = pulumi.Input.asOptionalInput<bool>(enableThirdPartyIdentity),
-      gceSetup = pulumi.Input.asOptionalInput<InstanceGceSetup>(gceSetup),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceOwners = pulumi.Input.asOptionalInput<List<String>>(instanceOwners),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.desiredState,
+    this.disableProxyAccess,
+    this.enableManagedEuc,
+    this.enableThirdPartyIdentity,
+    this.gceSetup,
+    this.instanceId,
+    this.instanceOwners,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,17 +86,17 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      disableProxyAccess: map['disableProxyAccess'] == null ? null : pulumi.Output.create<bool>(map['disableProxyAccess'] as bool),
-      enableManagedEuc: map['enableManagedEuc'] == null ? null : pulumi.Output.create<bool>(map['enableManagedEuc'] as bool),
-      enableThirdPartyIdentity: map['enableThirdPartyIdentity'] == null ? null : pulumi.Output.create<bool>(map['enableThirdPartyIdentity'] as bool),
-      gceSetup: map['gceSetup'] == null ? null : pulumi.Output.create<InstanceGceSetup>(InstanceGceSetup.fromMap((map['gceSetup'] as Map).cast<String, dynamic>())),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceOwners: map['instanceOwners'] == null ? null : pulumi.Output.create<List<String>>((map['instanceOwners'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      disableProxyAccess: map['disableProxyAccess'] == null ? null : (map['disableProxyAccess'] as bool).input(),
+      enableManagedEuc: map['enableManagedEuc'] == null ? null : (map['enableManagedEuc'] as bool).input(),
+      enableThirdPartyIdentity: map['enableThirdPartyIdentity'] == null ? null : (map['enableThirdPartyIdentity'] as bool).input(),
+      gceSetup: map['gceSetup'] == null ? null : (InstanceGceSetup.fromMap((map['gceSetup'] as Map).cast<String, dynamic>())).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceOwners: map['instanceOwners'] == null ? null : ((map['instanceOwners'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class StaticWebAppFunctionAppRegistrationState {
   /// [functionAppId] The ID of a Linux or Windows Function App to connect to the Static Web App as a Backend. Changing this forces a new resource to be created.
   /// [staticWebAppId] The ID of the Static Web App to register the Function App to as a backend. Changing this forces a new resource to be created.
   StaticWebAppFunctionAppRegistrationState({
-    pulumi.Output<String>? functionAppId,
-    pulumi.Output<String>? staticWebAppId,
-  }) :
-      functionAppId = pulumi.Input.asOptionalInput<String>(functionAppId),
-      staticWebAppId = pulumi.Input.asOptionalInput<String>(staticWebAppId);
+    this.functionAppId,
+    this.staticWebAppId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class StaticWebAppFunctionAppRegistrationState {
 
   factory StaticWebAppFunctionAppRegistrationState.fromMap(Map<String, dynamic> map) {
     return StaticWebAppFunctionAppRegistrationState(
-      functionAppId: map['functionAppId'] == null ? null : pulumi.Output.create<String>(map['functionAppId'] as String),
-      staticWebAppId: map['staticWebAppId'] == null ? null : pulumi.Output.create<String>(map['staticWebAppId'] as String),
+      functionAppId: map['functionAppId'] == null ? null : (map['functionAppId'] as String).input(),
+      staticWebAppId: map['staticWebAppId'] == null ? null : (map['staticWebAppId'] as String).input(),
     );
   }
 }

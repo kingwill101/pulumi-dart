@@ -22,15 +22,11 @@ class GetDiscoveryRuleArgs {
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiscoveryRuleArgs({
-    required pulumi.Output<String> azureMonitorWorkspaceName,
-    required pulumi.Output<String> discoveryRuleName,
-    required pulumi.Output<String> healthModelName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureMonitorWorkspaceName = pulumi.Input.asInput<String>(azureMonitorWorkspaceName),
-      discoveryRuleName = pulumi.Input.asInput<String>(discoveryRuleName),
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureMonitorWorkspaceName,
+    required this.discoveryRuleName,
+    required this.healthModelName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDiscoveryRuleArgs {
 
   factory GetDiscoveryRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveryRuleArgs(
-      azureMonitorWorkspaceName: pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      discoveryRuleName: pulumi.Output.create<String>(map['discoveryRuleName'] as String),
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
+      discoveryRuleName: (map['discoveryRuleName'] as String).input(),
+      healthModelName: (map['healthModelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

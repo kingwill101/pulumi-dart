@@ -19,13 +19,10 @@ class GetPowerShell72ModuleArgs {
   /// [moduleName] The name of module.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPowerShell72ModuleArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> moduleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      moduleName = pulumi.Input.asInput<String>(moduleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.moduleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPowerShell72ModuleArgs {
 
   factory GetPowerShell72ModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetPowerShell72ModuleArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      moduleName: pulumi.Output.create<String>(map['moduleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      moduleName: (map['moduleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

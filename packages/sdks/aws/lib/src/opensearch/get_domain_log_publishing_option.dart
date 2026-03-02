@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainLogPublishingOption {
   /// CloudWatch Log Group where the logs are published.
-  final String cloudwatchLogGroupArn;
+  final pulumi.Input<String> cloudwatchLogGroupArn;
   /// Enabled disabled toggle for off-peak update window
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Type of OpenSearch log being published.
-  final String logType;
+  final pulumi.Input<String> logType;
 
   /// Creates a new [GetDomainLogPublishingOption].
   /// [cloudwatchLogGroupArn] CloudWatch Log Group where the logs are published.
@@ -29,9 +30,9 @@ class GetDomainLogPublishingOption {
 
   factory GetDomainLogPublishingOption.fromMap(Map<String, dynamic> map) {
     return GetDomainLogPublishingOption(
-      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] as String,
-      enabled: map['enabled'] as bool,
-      logType: map['logType'] as String,
+      cloudwatchLogGroupArn: (map['cloudwatchLogGroupArn'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      logType: (map['logType'] as String).input(),
     );
   }
 }

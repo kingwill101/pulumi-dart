@@ -52,35 +52,21 @@ class IacProfileArgs {
   /// [tags] Resource tags.
   /// [templates] Optional.
   IacProfileArgs({
-    pulumi.Output<String>? branchName,
-    pulumi.Output<String>? iacProfileName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? repositoryMainBranch,
-    pulumi.Output<String>? repositoryName,
-    pulumi.Output<String>? repositoryOwner,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<StageProperties>>? stages,
-    pulumi.Output<String>? storageAccountName,
-    pulumi.Output<String>? storageAccountResourceGroup,
-    pulumi.Output<String>? storageAccountSubscription,
-    pulumi.Output<String>? storageContainerName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<IacTemplateProperties>>? templates,
-  }) :
-      branchName = pulumi.Input.asOptionalInput<String>(branchName),
-      iacProfileName = pulumi.Input.asOptionalInput<String>(iacProfileName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      repositoryMainBranch = pulumi.Input.asOptionalInput<String>(repositoryMainBranch),
-      repositoryName = pulumi.Input.asOptionalInput<String>(repositoryName),
-      repositoryOwner = pulumi.Input.asOptionalInput<String>(repositoryOwner),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      stages = pulumi.Input.asOptionalInput<List<StageProperties>>(stages),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName),
-      storageAccountResourceGroup = pulumi.Input.asOptionalInput<String>(storageAccountResourceGroup),
-      storageAccountSubscription = pulumi.Input.asOptionalInput<String>(storageAccountSubscription),
-      storageContainerName = pulumi.Input.asOptionalInput<String>(storageContainerName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templates = pulumi.Input.asOptionalInput<List<IacTemplateProperties>>(templates);
+    this.branchName,
+    this.iacProfileName,
+    this.location,
+    this.repositoryMainBranch,
+    this.repositoryName,
+    this.repositoryOwner,
+    required this.resourceGroupName,
+    this.stages,
+    this.storageAccountName,
+    this.storageAccountResourceGroup,
+    this.storageAccountSubscription,
+    this.storageContainerName,
+    this.tags,
+    this.templates,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class IacProfileArgs {
 
   factory IacProfileArgs.fromMap(Map<String, dynamic> map) {
     return IacProfileArgs(
-      branchName: map['branchName'] == null ? null : pulumi.Output.create<String>(map['branchName'] as String),
-      iacProfileName: map['iacProfileName'] == null ? null : pulumi.Output.create<String>(map['iacProfileName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      repositoryMainBranch: map['repositoryMainBranch'] == null ? null : pulumi.Output.create<String>(map['repositoryMainBranch'] as String),
-      repositoryName: map['repositoryName'] == null ? null : pulumi.Output.create<String>(map['repositoryName'] as String),
-      repositoryOwner: map['repositoryOwner'] == null ? null : pulumi.Output.create<String>(map['repositoryOwner'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      stages: map['stages'] == null ? null : pulumi.Output.create<List<StageProperties>>(pulumi.Input.decodeList<StageProperties>(map['stages'], (value) => StageProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
-      storageAccountResourceGroup: map['storageAccountResourceGroup'] == null ? null : pulumi.Output.create<String>(map['storageAccountResourceGroup'] as String),
-      storageAccountSubscription: map['storageAccountSubscription'] == null ? null : pulumi.Output.create<String>(map['storageAccountSubscription'] as String),
-      storageContainerName: map['storageContainerName'] == null ? null : pulumi.Output.create<String>(map['storageContainerName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templates: map['templates'] == null ? null : pulumi.Output.create<List<IacTemplateProperties>>(pulumi.Input.decodeList<IacTemplateProperties>(map['templates'], (value) => IacTemplateProperties.fromMap((value as Map).cast<String, dynamic>()))),
+      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
+      iacProfileName: map['iacProfileName'] == null ? null : (map['iacProfileName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      repositoryMainBranch: map['repositoryMainBranch'] == null ? null : (map['repositoryMainBranch'] as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
+      repositoryOwner: map['repositoryOwner'] == null ? null : (map['repositoryOwner'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<StageProperties>(map['stages'], (value) => StageProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      storageAccountResourceGroup: map['storageAccountResourceGroup'] == null ? null : (map['storageAccountResourceGroup'] as String).input(),
+      storageAccountSubscription: map['storageAccountSubscription'] == null ? null : (map['storageAccountSubscription'] as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templates: map['templates'] == null ? null : (pulumi.Input.decodeList<IacTemplateProperties>(map['templates'], (value) => IacTemplateProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

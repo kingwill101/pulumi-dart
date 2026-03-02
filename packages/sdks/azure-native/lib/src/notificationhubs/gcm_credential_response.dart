@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of a NotificationHub GcmCredential.
 class GcmCredentialResponse {
   /// Gets or sets the GCM endpoint.
-  final String? gcmEndpoint;
+  final pulumi.Input<String>? gcmEndpoint;
   /// Gets or sets the Google API key.
-  final String googleApiKey;
+  final pulumi.Input<String> googleApiKey;
 
   /// Creates a new [GcmCredentialResponse].
   /// [gcmEndpoint] Gets or sets the GCM endpoint.
@@ -25,8 +26,8 @@ class GcmCredentialResponse {
 
   factory GcmCredentialResponse.fromMap(Map<String, dynamic> map) {
     return GcmCredentialResponse(
-      gcmEndpoint: map['gcmEndpoint'] == null ? null : map['gcmEndpoint'] as String,
-      googleApiKey: map['googleApiKey'] as String,
+      gcmEndpoint: map['gcmEndpoint'] == null ? null : (map['gcmEndpoint'] as String).input(),
+      googleApiKey: (map['googleApiKey'] as String).input(),
     );
   }
 }

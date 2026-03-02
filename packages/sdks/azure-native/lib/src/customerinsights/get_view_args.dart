@@ -22,15 +22,11 @@ class GetViewArgs {
   /// [userId] The user ID. Use * to retrieve hub level view.
   /// [viewName] The name of the view.
   GetViewArgs({
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> userId,
-    required pulumi.Output<String> viewName,
-  }) :
-      hubName = pulumi.Input.asInput<String>(hubName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userId = pulumi.Input.asInput<String>(userId),
-      viewName = pulumi.Input.asInput<String>(viewName);
+    required this.hubName,
+    required this.resourceGroupName,
+    required this.userId,
+    required this.viewName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetViewArgs {
 
   factory GetViewArgs.fromMap(Map<String, dynamic> map) {
     return GetViewArgs(
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
-      viewName: pulumi.Output.create<String>(map['viewName'] as String),
+      hubName: (map['hubName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      viewName: (map['viewName'] as String).input(),
     );
   }
 }

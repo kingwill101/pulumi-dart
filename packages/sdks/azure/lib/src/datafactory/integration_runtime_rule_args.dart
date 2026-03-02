@@ -37,25 +37,16 @@ class IntegrationRuntimeRuleArgs {
   /// [timeToLiveMin] Time to live (in minutes) setting of the cluster which will execute data flow job. Defaults to `0`.
   /// [virtualNetworkEnabled] Is Integration Runtime compute provisioned within Managed Virtual Network? Changing this forces a new resource to be created.
   IntegrationRuntimeRuleArgs({
-    pulumi.Output<bool>? cleanupEnabled,
-    pulumi.Output<String>? computeType,
-    pulumi.Output<int>? coreCount,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? timeToLiveMin,
-    pulumi.Output<bool>? virtualNetworkEnabled,
-  }) :
-      cleanupEnabled = pulumi.Input.asOptionalInput<bool>(cleanupEnabled),
-      computeType = pulumi.Input.asOptionalInput<String>(computeType),
-      coreCount = pulumi.Input.asOptionalInput<int>(coreCount),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      timeToLiveMin = pulumi.Input.asOptionalInput<int>(timeToLiveMin),
-      virtualNetworkEnabled = pulumi.Input.asOptionalInput<bool>(virtualNetworkEnabled);
+    this.cleanupEnabled,
+    this.computeType,
+    this.coreCount,
+    required this.dataFactoryId,
+    this.description,
+    this.location,
+    this.name,
+    this.timeToLiveMin,
+    this.virtualNetworkEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class IntegrationRuntimeRuleArgs {
 
   factory IntegrationRuntimeRuleArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeRuleArgs(
-      cleanupEnabled: map['cleanupEnabled'] == null ? null : pulumi.Output.create<bool>(map['cleanupEnabled'] as bool),
-      computeType: map['computeType'] == null ? null : pulumi.Output.create<String>(map['computeType'] as String),
-      coreCount: map['coreCount'] == null ? null : pulumi.Output.create<int>(map['coreCount'] as int),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      timeToLiveMin: map['timeToLiveMin'] == null ? null : pulumi.Output.create<int>(map['timeToLiveMin'] as int),
-      virtualNetworkEnabled: map['virtualNetworkEnabled'] == null ? null : pulumi.Output.create<bool>(map['virtualNetworkEnabled'] as bool),
+      cleanupEnabled: map['cleanupEnabled'] == null ? null : (map['cleanupEnabled'] as bool).input(),
+      computeType: map['computeType'] == null ? null : (map['computeType'] as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      timeToLiveMin: map['timeToLiveMin'] == null ? null : (map['timeToLiveMin'] as int).input(),
+      virtualNetworkEnabled: map['virtualNetworkEnabled'] == null ? null : (map['virtualNetworkEnabled'] as bool).input(),
     );
   }
 }

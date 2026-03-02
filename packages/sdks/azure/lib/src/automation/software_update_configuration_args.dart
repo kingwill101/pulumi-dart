@@ -51,29 +51,18 @@ class SoftwareUpdateConfigurationArgs {
   /// [virtualMachineIds] Specifies a list of Azure Resource IDs of azure virtual machines.
   /// [windows] A `windows` block as defined below.
   SoftwareUpdateConfigurationArgs({
-    required pulumi.Output<String> automationAccountId,
-    pulumi.Output<String>? duration,
-    pulumi.Output<SoftwareUpdateConfigurationLinux>? linux,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? nonAzureComputerNames,
-    pulumi.Output<SoftwareUpdateConfigurationPostTask>? postTask,
-    pulumi.Output<SoftwareUpdateConfigurationPreTask>? preTask,
-    required pulumi.Output<SoftwareUpdateConfigurationSchedule> schedule,
-    pulumi.Output<SoftwareUpdateConfigurationTarget>? target,
-    pulumi.Output<List<String>>? virtualMachineIds,
-    pulumi.Output<SoftwareUpdateConfigurationWindows>? windows,
-  }) :
-      automationAccountId = pulumi.Input.asInput<String>(automationAccountId),
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      linux = pulumi.Input.asOptionalInput<SoftwareUpdateConfigurationLinux>(linux),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nonAzureComputerNames = pulumi.Input.asOptionalInput<List<String>>(nonAzureComputerNames),
-      postTask = pulumi.Input.asOptionalInput<SoftwareUpdateConfigurationPostTask>(postTask),
-      preTask = pulumi.Input.asOptionalInput<SoftwareUpdateConfigurationPreTask>(preTask),
-      schedule = pulumi.Input.asInput<SoftwareUpdateConfigurationSchedule>(schedule),
-      target = pulumi.Input.asOptionalInput<SoftwareUpdateConfigurationTarget>(target),
-      virtualMachineIds = pulumi.Input.asOptionalInput<List<String>>(virtualMachineIds),
-      windows = pulumi.Input.asOptionalInput<SoftwareUpdateConfigurationWindows>(windows);
+    required this.automationAccountId,
+    this.duration,
+    this.linux,
+    this.name,
+    this.nonAzureComputerNames,
+    this.postTask,
+    this.preTask,
+    required this.schedule,
+    this.target,
+    this.virtualMachineIds,
+    this.windows,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,17 +82,17 @@ class SoftwareUpdateConfigurationArgs {
 
   factory SoftwareUpdateConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationArgs(
-      automationAccountId: pulumi.Output.create<String>(map['automationAccountId'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      linux: map['linux'] == null ? null : pulumi.Output.create<SoftwareUpdateConfigurationLinux>(SoftwareUpdateConfigurationLinux.fromMap((map['linux'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nonAzureComputerNames: map['nonAzureComputerNames'] == null ? null : pulumi.Output.create<List<String>>((map['nonAzureComputerNames'] as List).cast<String>()),
-      postTask: map['postTask'] == null ? null : pulumi.Output.create<SoftwareUpdateConfigurationPostTask>(SoftwareUpdateConfigurationPostTask.fromMap((map['postTask'] as Map).cast<String, dynamic>())),
-      preTask: map['preTask'] == null ? null : pulumi.Output.create<SoftwareUpdateConfigurationPreTask>(SoftwareUpdateConfigurationPreTask.fromMap((map['preTask'] as Map).cast<String, dynamic>())),
-      schedule: pulumi.Output.create<SoftwareUpdateConfigurationSchedule>(SoftwareUpdateConfigurationSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      target: map['target'] == null ? null : pulumi.Output.create<SoftwareUpdateConfigurationTarget>(SoftwareUpdateConfigurationTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
-      virtualMachineIds: map['virtualMachineIds'] == null ? null : pulumi.Output.create<List<String>>((map['virtualMachineIds'] as List).cast<String>()),
-      windows: map['windows'] == null ? null : pulumi.Output.create<SoftwareUpdateConfigurationWindows>(SoftwareUpdateConfigurationWindows.fromMap((map['windows'] as Map).cast<String, dynamic>())),
+      automationAccountId: (map['automationAccountId'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      linux: map['linux'] == null ? null : (SoftwareUpdateConfigurationLinux.fromMap((map['linux'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nonAzureComputerNames: map['nonAzureComputerNames'] == null ? null : ((map['nonAzureComputerNames'] as List).cast<String>()).input(),
+      postTask: map['postTask'] == null ? null : (SoftwareUpdateConfigurationPostTask.fromMap((map['postTask'] as Map).cast<String, dynamic>())).input(),
+      preTask: map['preTask'] == null ? null : (SoftwareUpdateConfigurationPreTask.fromMap((map['preTask'] as Map).cast<String, dynamic>())).input(),
+      schedule: (SoftwareUpdateConfigurationSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (SoftwareUpdateConfigurationTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineIds: map['virtualMachineIds'] == null ? null : ((map['virtualMachineIds'] as List).cast<String>()).input(),
+      windows: map['windows'] == null ? null : (SoftwareUpdateConfigurationWindows.fromMap((map['windows'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

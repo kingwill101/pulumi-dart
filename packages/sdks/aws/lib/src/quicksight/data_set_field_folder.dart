@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetFieldFolder {
   /// An array of column names to add to the folder. A column can only be in one folder.
-  final List<String>? columns;
+  final pulumi.Input<List<String>>? columns;
   /// Field folder description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Key of the field folder map.
-  final String fieldFoldersId;
+  final pulumi.Input<String> fieldFoldersId;
 
   /// Creates a new [DataSetFieldFolder].
   /// [columns] An array of column names to add to the folder. A column can only be in one folder.
@@ -29,9 +30,9 @@ class DataSetFieldFolder {
 
   factory DataSetFieldFolder.fromMap(Map<String, dynamic> map) {
     return DataSetFieldFolder(
-      columns: map['columns'] == null ? null : (map['columns'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      fieldFoldersId: map['fieldFoldersId'] as String,
+      columns: map['columns'] == null ? null : ((map['columns'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fieldFoldersId: (map['fieldFoldersId'] as String).input(),
     );
   }
 }

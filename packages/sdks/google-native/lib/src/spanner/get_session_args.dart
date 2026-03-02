@@ -18,15 +18,11 @@ class GetSessionArgs {
   /// [project] Optional.
   /// [sessionId] Required.
   GetSessionArgs({
-    required pulumi.Output<String> databaseId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sessionId,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId);
+    required this.databaseId,
+    required this.instanceId,
+    this.project,
+    required this.sessionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetSessionArgs {
 
   factory GetSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionArgs(
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sessionId: pulumi.Output.create<String>(map['sessionId'] as String),
+      databaseId: (map['databaseId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sessionId: (map['sessionId'] as String).input(),
     );
   }
 }

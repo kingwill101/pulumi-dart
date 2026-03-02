@@ -54,33 +54,20 @@ class AgentcoreGatewayArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   AgentcoreGatewayArgs({
-    pulumi.Output<AgentcoreGatewayAuthorizerConfiguration>? authorizerConfiguration,
-    required pulumi.Output<String> authorizerType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? exceptionLevel,
-    pulumi.Output<List<AgentcoreGatewayInterceptorConfiguration>>? interceptorConfigurations,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<AgentcoreGatewayProtocolConfiguration>? protocolConfiguration,
-    required pulumi.Output<String> protocolType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<AgentcoreGatewayTimeouts>? timeouts,
-  }) :
-      authorizerConfiguration = pulumi.Input.asOptionalInput<AgentcoreGatewayAuthorizerConfiguration>(authorizerConfiguration),
-      authorizerType = pulumi.Input.asInput<String>(authorizerType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      exceptionLevel = pulumi.Input.asOptionalInput<String>(exceptionLevel),
-      interceptorConfigurations = pulumi.Input.asOptionalInput<List<AgentcoreGatewayInterceptorConfiguration>>(interceptorConfigurations),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protocolConfiguration = pulumi.Input.asOptionalInput<AgentcoreGatewayProtocolConfiguration>(protocolConfiguration),
-      protocolType = pulumi.Input.asInput<String>(protocolType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreGatewayTimeouts>(timeouts);
+    this.authorizerConfiguration,
+    required this.authorizerType,
+    this.description,
+    this.exceptionLevel,
+    this.interceptorConfigurations,
+    this.kmsKeyArn,
+    this.name,
+    this.protocolConfiguration,
+    required this.protocolType,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class AgentcoreGatewayArgs {
 
   factory AgentcoreGatewayArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayArgs(
-      authorizerConfiguration: map['authorizerConfiguration'] == null ? null : pulumi.Output.create<AgentcoreGatewayAuthorizerConfiguration>(AgentcoreGatewayAuthorizerConfiguration.fromMap((map['authorizerConfiguration'] as Map).cast<String, dynamic>())),
-      authorizerType: pulumi.Output.create<String>(map['authorizerType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      exceptionLevel: map['exceptionLevel'] == null ? null : pulumi.Output.create<String>(map['exceptionLevel'] as String),
-      interceptorConfigurations: map['interceptorConfigurations'] == null ? null : pulumi.Output.create<List<AgentcoreGatewayInterceptorConfiguration>>(pulumi.Input.decodeList<AgentcoreGatewayInterceptorConfiguration>(map['interceptorConfigurations'], (value) => AgentcoreGatewayInterceptorConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protocolConfiguration: map['protocolConfiguration'] == null ? null : pulumi.Output.create<AgentcoreGatewayProtocolConfiguration>(AgentcoreGatewayProtocolConfiguration.fromMap((map['protocolConfiguration'] as Map).cast<String, dynamic>())),
-      protocolType: pulumi.Output.create<String>(map['protocolType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreGatewayTimeouts>(AgentcoreGatewayTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      authorizerConfiguration: map['authorizerConfiguration'] == null ? null : (AgentcoreGatewayAuthorizerConfiguration.fromMap((map['authorizerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      authorizerType: (map['authorizerType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      exceptionLevel: map['exceptionLevel'] == null ? null : (map['exceptionLevel'] as String).input(),
+      interceptorConfigurations: map['interceptorConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentcoreGatewayInterceptorConfiguration>(map['interceptorConfigurations'], (value) => AgentcoreGatewayInterceptorConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocolConfiguration: map['protocolConfiguration'] == null ? null : (AgentcoreGatewayProtocolConfiguration.fromMap((map['protocolConfiguration'] as Map).cast<String, dynamic>())).input(),
+      protocolType: (map['protocolType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreGatewayTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

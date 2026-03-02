@@ -25,19 +25,13 @@ class InstanceMemberState {
   /// [modifyTime] The last modification time of the cloud firewall member account.> use second-level timestamp format.
   /// [status] The resource attribute field that represents the resource status.
   InstanceMemberState({
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? memberDesc,
-    pulumi.Output<String>? memberDisplayName,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<int>? modifyTime,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      memberDesc = pulumi.Input.asOptionalInput<String>(memberDesc),
-      memberDisplayName = pulumi.Input.asOptionalInput<String>(memberDisplayName),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      modifyTime = pulumi.Input.asOptionalInput<int>(modifyTime),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.memberDesc,
+    this.memberDisplayName,
+    this.memberUid,
+    this.modifyTime,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class InstanceMemberState {
 
   factory InstanceMemberState.fromMap(Map<String, dynamic> map) {
     return InstanceMemberState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      memberDesc: map['memberDesc'] == null ? null : pulumi.Output.create<String>(map['memberDesc'] as String),
-      memberDisplayName: map['memberDisplayName'] == null ? null : pulumi.Output.create<String>(map['memberDisplayName'] as String),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      modifyTime: map['modifyTime'] == null ? null : pulumi.Output.create<int>(map['modifyTime'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      memberDesc: map['memberDesc'] == null ? null : (map['memberDesc'] as String).input(),
+      memberDisplayName: map['memberDisplayName'] == null ? null : (map['memberDisplayName'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

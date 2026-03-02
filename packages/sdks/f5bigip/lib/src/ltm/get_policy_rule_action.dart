@@ -1,111 +1,112 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyRuleAction {
-  final String appService;
-  final String application;
-  final bool asm;
-  final bool avr;
-  final bool cache;
-  final bool carp;
-  final String category;
-  final bool classify;
-  final String clonePool;
-  final int code;
-  final bool compress;
-  final bool connection;
-  final String content;
-  final bool cookieHash;
-  final bool cookieInsert;
-  final bool cookiePassive;
-  final bool cookieRewrite;
-  final bool decompress;
-  final bool defer;
-  final bool destinationAddress;
-  final bool disable;
-  final String domain;
-  final bool enable;
-  final String expiry;
-  final int expirySecs;
-  final String expression;
-  final String extension;
-  final String facility;
-  final bool? forward;
-  final String fromProfile;
-  final bool hash;
-  final String host;
-  final bool http;
-  final bool httpBasicAuth;
-  final bool httpCookie;
-  final bool httpHeader;
-  final bool? httpHost;
-  final bool httpReferer;
-  final bool httpReply;
-  final bool httpSetCookie;
-  final bool httpUri;
-  final String ifile;
-  final bool insert;
-  final String internalVirtual;
-  final String ipAddress;
-  final String key;
-  final bool l7dos;
-  final int length;
-  final String location;
-  final bool log;
-  final bool ltmPolicy;
-  final String member;
-  final String message;
-  final String netmask;
-  final String nexthop;
-  final String node;
-  final int offset;
-  final String path;
-  final bool pem;
-  final bool persist;
-  final bool pin;
-  final String policy;
-  final String pool;
-  final int port;
-  final String priority;
-  final String profile;
-  final String protocol;
-  final String queryString;
-  final String rateclass;
-  final bool redirect;
-  final bool remove;
-  final bool replace;
-  final bool request;
-  final bool requestAdapt;
-  final bool reset;
-  final bool response;
-  final bool responseAdapt;
-  final String scheme;
-  final String script;
-  final bool select;
-  final bool serverSsl;
-  final bool setVariable;
-  final bool shutdown;
-  final String snat;
-  final String snatpool;
-  final bool sourceAddress;
-  final bool sslClientHello;
-  final bool sslServerHandshake;
-  final bool sslServerHello;
-  final bool sslSessionId;
-  final int status;
-  final bool tcl;
-  final bool tcpNagle;
-  final String text;
-  final int timeout;
-  final String tmName;
-  final bool uie;
-  final bool universal;
-  final String value;
-  final String virtual;
-  final String vlan;
-  final int vlanId;
-  final bool wam;
-  final bool write;
+  final pulumi.Input<String> appService;
+  final pulumi.Input<String> application;
+  final pulumi.Input<bool> asm;
+  final pulumi.Input<bool> avr;
+  final pulumi.Input<bool> cache;
+  final pulumi.Input<bool> carp;
+  final pulumi.Input<String> category;
+  final pulumi.Input<bool> classify;
+  final pulumi.Input<String> clonePool;
+  final pulumi.Input<int> code;
+  final pulumi.Input<bool> compress;
+  final pulumi.Input<bool> connection;
+  final pulumi.Input<String> content;
+  final pulumi.Input<bool> cookieHash;
+  final pulumi.Input<bool> cookieInsert;
+  final pulumi.Input<bool> cookiePassive;
+  final pulumi.Input<bool> cookieRewrite;
+  final pulumi.Input<bool> decompress;
+  final pulumi.Input<bool> defer;
+  final pulumi.Input<bool> destinationAddress;
+  final pulumi.Input<bool> disable;
+  final pulumi.Input<String> domain;
+  final pulumi.Input<bool> enable;
+  final pulumi.Input<String> expiry;
+  final pulumi.Input<int> expirySecs;
+  final pulumi.Input<String> expression;
+  final pulumi.Input<String> extension;
+  final pulumi.Input<String> facility;
+  final pulumi.Input<bool>? forward;
+  final pulumi.Input<String> fromProfile;
+  final pulumi.Input<bool> hash;
+  final pulumi.Input<String> host;
+  final pulumi.Input<bool> http;
+  final pulumi.Input<bool> httpBasicAuth;
+  final pulumi.Input<bool> httpCookie;
+  final pulumi.Input<bool> httpHeader;
+  final pulumi.Input<bool>? httpHost;
+  final pulumi.Input<bool> httpReferer;
+  final pulumi.Input<bool> httpReply;
+  final pulumi.Input<bool> httpSetCookie;
+  final pulumi.Input<bool> httpUri;
+  final pulumi.Input<String> ifile;
+  final pulumi.Input<bool> insert;
+  final pulumi.Input<String> internalVirtual;
+  final pulumi.Input<String> ipAddress;
+  final pulumi.Input<String> key;
+  final pulumi.Input<bool> l7dos;
+  final pulumi.Input<int> length;
+  final pulumi.Input<String> location;
+  final pulumi.Input<bool> log;
+  final pulumi.Input<bool> ltmPolicy;
+  final pulumi.Input<String> member;
+  final pulumi.Input<String> message;
+  final pulumi.Input<String> netmask;
+  final pulumi.Input<String> nexthop;
+  final pulumi.Input<String> node;
+  final pulumi.Input<int> offset;
+  final pulumi.Input<String> path;
+  final pulumi.Input<bool> pem;
+  final pulumi.Input<bool> persist;
+  final pulumi.Input<bool> pin;
+  final pulumi.Input<String> policy;
+  final pulumi.Input<String> pool;
+  final pulumi.Input<int> port;
+  final pulumi.Input<String> priority;
+  final pulumi.Input<String> profile;
+  final pulumi.Input<String> protocol;
+  final pulumi.Input<String> queryString;
+  final pulumi.Input<String> rateclass;
+  final pulumi.Input<bool> redirect;
+  final pulumi.Input<bool> remove;
+  final pulumi.Input<bool> replace;
+  final pulumi.Input<bool> request;
+  final pulumi.Input<bool> requestAdapt;
+  final pulumi.Input<bool> reset;
+  final pulumi.Input<bool> response;
+  final pulumi.Input<bool> responseAdapt;
+  final pulumi.Input<String> scheme;
+  final pulumi.Input<String> script;
+  final pulumi.Input<bool> select;
+  final pulumi.Input<bool> serverSsl;
+  final pulumi.Input<bool> setVariable;
+  final pulumi.Input<bool> shutdown;
+  final pulumi.Input<String> snat;
+  final pulumi.Input<String> snatpool;
+  final pulumi.Input<bool> sourceAddress;
+  final pulumi.Input<bool> sslClientHello;
+  final pulumi.Input<bool> sslServerHandshake;
+  final pulumi.Input<bool> sslServerHello;
+  final pulumi.Input<bool> sslSessionId;
+  final pulumi.Input<int> status;
+  final pulumi.Input<bool> tcl;
+  final pulumi.Input<bool> tcpNagle;
+  final pulumi.Input<String> text;
+  final pulumi.Input<int> timeout;
+  final pulumi.Input<String> tmName;
+  final pulumi.Input<bool> uie;
+  final pulumi.Input<bool> universal;
+  final pulumi.Input<String> value;
+  final pulumi.Input<String> virtual;
+  final pulumi.Input<String> vlan;
+  final pulumi.Input<int> vlanId;
+  final pulumi.Input<bool> wam;
+  final pulumi.Input<bool> write;
 
   /// Creates a new [GetPolicyRuleAction].
   /// [appService] Required.
@@ -430,110 +431,110 @@ class GetPolicyRuleAction {
 
   factory GetPolicyRuleAction.fromMap(Map<String, dynamic> map) {
     return GetPolicyRuleAction(
-      appService: map['appService'] as String,
-      application: map['application'] as String,
-      asm: map['asm'] as bool,
-      avr: map['avr'] as bool,
-      cache: map['cache'] as bool,
-      carp: map['carp'] as bool,
-      category: map['category'] as String,
-      classify: map['classify'] as bool,
-      clonePool: map['clonePool'] as String,
-      code: map['code'] as int,
-      compress: map['compress'] as bool,
-      connection: map['connection'] as bool,
-      content: map['content'] as String,
-      cookieHash: map['cookieHash'] as bool,
-      cookieInsert: map['cookieInsert'] as bool,
-      cookiePassive: map['cookiePassive'] as bool,
-      cookieRewrite: map['cookieRewrite'] as bool,
-      decompress: map['decompress'] as bool,
-      defer: map['defer'] as bool,
-      destinationAddress: map['destinationAddress'] as bool,
-      disable: map['disable'] as bool,
-      domain: map['domain'] as String,
-      enable: map['enable'] as bool,
-      expiry: map['expiry'] as String,
-      expirySecs: map['expirySecs'] as int,
-      expression: map['expression'] as String,
-      extension: map['extension'] as String,
-      facility: map['facility'] as String,
-      forward: map['forward'] == null ? null : map['forward'] as bool,
-      fromProfile: map['fromProfile'] as String,
-      hash: map['hash'] as bool,
-      host: map['host'] as String,
-      http: map['http'] as bool,
-      httpBasicAuth: map['httpBasicAuth'] as bool,
-      httpCookie: map['httpCookie'] as bool,
-      httpHeader: map['httpHeader'] as bool,
-      httpHost: map['httpHost'] == null ? null : map['httpHost'] as bool,
-      httpReferer: map['httpReferer'] as bool,
-      httpReply: map['httpReply'] as bool,
-      httpSetCookie: map['httpSetCookie'] as bool,
-      httpUri: map['httpUri'] as bool,
-      ifile: map['ifile'] as String,
-      insert: map['insert'] as bool,
-      internalVirtual: map['internalVirtual'] as String,
-      ipAddress: map['ipAddress'] as String,
-      key: map['key'] as String,
-      l7dos: map['l7dos'] as bool,
-      length: map['length'] as int,
-      location: map['location'] as String,
-      log: map['log'] as bool,
-      ltmPolicy: map['ltmPolicy'] as bool,
-      member: map['member'] as String,
-      message: map['message'] as String,
-      netmask: map['netmask'] as String,
-      nexthop: map['nexthop'] as String,
-      node: map['node'] as String,
-      offset: map['offset'] as int,
-      path: map['path'] as String,
-      pem: map['pem'] as bool,
-      persist: map['persist'] as bool,
-      pin: map['pin'] as bool,
-      policy: map['policy'] as String,
-      pool: map['pool'] as String,
-      port: map['port'] as int,
-      priority: map['priority'] as String,
-      profile: map['profile'] as String,
-      protocol: map['protocol'] as String,
-      queryString: map['queryString'] as String,
-      rateclass: map['rateclass'] as String,
-      redirect: map['redirect'] as bool,
-      remove: map['remove'] as bool,
-      replace: map['replace'] as bool,
-      request: map['request'] as bool,
-      requestAdapt: map['requestAdapt'] as bool,
-      reset: map['reset'] as bool,
-      response: map['response'] as bool,
-      responseAdapt: map['responseAdapt'] as bool,
-      scheme: map['scheme'] as String,
-      script: map['script'] as String,
-      select: map['select'] as bool,
-      serverSsl: map['serverSsl'] as bool,
-      setVariable: map['setVariable'] as bool,
-      shutdown: map['shutdown'] as bool,
-      snat: map['snat'] as String,
-      snatpool: map['snatpool'] as String,
-      sourceAddress: map['sourceAddress'] as bool,
-      sslClientHello: map['sslClientHello'] as bool,
-      sslServerHandshake: map['sslServerHandshake'] as bool,
-      sslServerHello: map['sslServerHello'] as bool,
-      sslSessionId: map['sslSessionId'] as bool,
-      status: map['status'] as int,
-      tcl: map['tcl'] as bool,
-      tcpNagle: map['tcpNagle'] as bool,
-      text: map['text'] as String,
-      timeout: map['timeout'] as int,
-      tmName: map['tmName'] as String,
-      uie: map['uie'] as bool,
-      universal: map['universal'] as bool,
-      value: map['value'] as String,
-      virtual: map['virtual'] as String,
-      vlan: map['vlan'] as String,
-      vlanId: map['vlanId'] as int,
-      wam: map['wam'] as bool,
-      write: map['write'] as bool,
+      appService: (map['appService'] as String).input(),
+      application: (map['application'] as String).input(),
+      asm: (map['asm'] as bool).input(),
+      avr: (map['avr'] as bool).input(),
+      cache: (map['cache'] as bool).input(),
+      carp: (map['carp'] as bool).input(),
+      category: (map['category'] as String).input(),
+      classify: (map['classify'] as bool).input(),
+      clonePool: (map['clonePool'] as String).input(),
+      code: (map['code'] as int).input(),
+      compress: (map['compress'] as bool).input(),
+      connection: (map['connection'] as bool).input(),
+      content: (map['content'] as String).input(),
+      cookieHash: (map['cookieHash'] as bool).input(),
+      cookieInsert: (map['cookieInsert'] as bool).input(),
+      cookiePassive: (map['cookiePassive'] as bool).input(),
+      cookieRewrite: (map['cookieRewrite'] as bool).input(),
+      decompress: (map['decompress'] as bool).input(),
+      defer: (map['defer'] as bool).input(),
+      destinationAddress: (map['destinationAddress'] as bool).input(),
+      disable: (map['disable'] as bool).input(),
+      domain: (map['domain'] as String).input(),
+      enable: (map['enable'] as bool).input(),
+      expiry: (map['expiry'] as String).input(),
+      expirySecs: (map['expirySecs'] as int).input(),
+      expression: (map['expression'] as String).input(),
+      extension: (map['extension'] as String).input(),
+      facility: (map['facility'] as String).input(),
+      forward: map['forward'] == null ? null : (map['forward'] as bool).input(),
+      fromProfile: (map['fromProfile'] as String).input(),
+      hash: (map['hash'] as bool).input(),
+      host: (map['host'] as String).input(),
+      http: (map['http'] as bool).input(),
+      httpBasicAuth: (map['httpBasicAuth'] as bool).input(),
+      httpCookie: (map['httpCookie'] as bool).input(),
+      httpHeader: (map['httpHeader'] as bool).input(),
+      httpHost: map['httpHost'] == null ? null : (map['httpHost'] as bool).input(),
+      httpReferer: (map['httpReferer'] as bool).input(),
+      httpReply: (map['httpReply'] as bool).input(),
+      httpSetCookie: (map['httpSetCookie'] as bool).input(),
+      httpUri: (map['httpUri'] as bool).input(),
+      ifile: (map['ifile'] as String).input(),
+      insert: (map['insert'] as bool).input(),
+      internalVirtual: (map['internalVirtual'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      key: (map['key'] as String).input(),
+      l7dos: (map['l7dos'] as bool).input(),
+      length: (map['length'] as int).input(),
+      location: (map['location'] as String).input(),
+      log: (map['log'] as bool).input(),
+      ltmPolicy: (map['ltmPolicy'] as bool).input(),
+      member: (map['member'] as String).input(),
+      message: (map['message'] as String).input(),
+      netmask: (map['netmask'] as String).input(),
+      nexthop: (map['nexthop'] as String).input(),
+      node: (map['node'] as String).input(),
+      offset: (map['offset'] as int).input(),
+      path: (map['path'] as String).input(),
+      pem: (map['pem'] as bool).input(),
+      persist: (map['persist'] as bool).input(),
+      pin: (map['pin'] as bool).input(),
+      policy: (map['policy'] as String).input(),
+      pool: (map['pool'] as String).input(),
+      port: (map['port'] as int).input(),
+      priority: (map['priority'] as String).input(),
+      profile: (map['profile'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      queryString: (map['queryString'] as String).input(),
+      rateclass: (map['rateclass'] as String).input(),
+      redirect: (map['redirect'] as bool).input(),
+      remove: (map['remove'] as bool).input(),
+      replace: (map['replace'] as bool).input(),
+      request: (map['request'] as bool).input(),
+      requestAdapt: (map['requestAdapt'] as bool).input(),
+      reset: (map['reset'] as bool).input(),
+      response: (map['response'] as bool).input(),
+      responseAdapt: (map['responseAdapt'] as bool).input(),
+      scheme: (map['scheme'] as String).input(),
+      script: (map['script'] as String).input(),
+      select: (map['select'] as bool).input(),
+      serverSsl: (map['serverSsl'] as bool).input(),
+      setVariable: (map['setVariable'] as bool).input(),
+      shutdown: (map['shutdown'] as bool).input(),
+      snat: (map['snat'] as String).input(),
+      snatpool: (map['snatpool'] as String).input(),
+      sourceAddress: (map['sourceAddress'] as bool).input(),
+      sslClientHello: (map['sslClientHello'] as bool).input(),
+      sslServerHandshake: (map['sslServerHandshake'] as bool).input(),
+      sslServerHello: (map['sslServerHello'] as bool).input(),
+      sslSessionId: (map['sslSessionId'] as bool).input(),
+      status: (map['status'] as int).input(),
+      tcl: (map['tcl'] as bool).input(),
+      tcpNagle: (map['tcpNagle'] as bool).input(),
+      text: (map['text'] as String).input(),
+      timeout: (map['timeout'] as int).input(),
+      tmName: (map['tmName'] as String).input(),
+      uie: (map['uie'] as bool).input(),
+      universal: (map['universal'] as bool).input(),
+      value: (map['value'] as String).input(),
+      virtual: (map['virtual'] as String).input(),
+      vlan: (map['vlan'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
+      wam: (map['wam'] as bool).input(),
+      write: (map['write'] as bool).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest {
   /// The encryption-at-rest mode for encrypting Data Catalog data.
-  final String catalogEncryptionMode;
+  final pulumi.Input<String> catalogEncryptionMode;
   /// The ARN of the AWS IAM role used for accessing encrypted Data Catalog data.
-  final String catalogEncryptionServiceRole;
+  final pulumi.Input<String> catalogEncryptionServiceRole;
   /// ARN of the AWS KMS key to use for encryption at rest.
-  final String sseAwsKmsKeyId;
+  final pulumi.Input<String> sseAwsKmsKeyId;
 
   /// Creates a new [GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest].
   /// [catalogEncryptionMode] The encryption-at-rest mode for encrypting Data Catalog data.
@@ -29,9 +30,9 @@ class GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRe
 
   factory GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest.fromMap(Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest(
-      catalogEncryptionMode: map['catalogEncryptionMode'] as String,
-      catalogEncryptionServiceRole: map['catalogEncryptionServiceRole'] as String,
-      sseAwsKmsKeyId: map['sseAwsKmsKeyId'] as String,
+      catalogEncryptionMode: (map['catalogEncryptionMode'] as String).input(),
+      catalogEncryptionServiceRole: (map['catalogEncryptionServiceRole'] as String).input(),
+      sseAwsKmsKeyId: (map['sseAwsKmsKeyId'] as String).input(),
     );
   }
 }

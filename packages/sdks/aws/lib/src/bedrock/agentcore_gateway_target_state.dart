@@ -35,23 +35,15 @@ class AgentcoreGatewayTargetState {
   /// [targetId] Unique identifier of the gateway target.
   /// [timeouts] Optional.
   AgentcoreGatewayTargetState({
-    pulumi.Output<AgentcoreGatewayTargetCredentialProviderConfiguration>? credentialProviderConfiguration,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? gatewayIdentifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<AgentcoreGatewayTargetTargetConfiguration>? targetConfiguration,
-    pulumi.Output<String>? targetId,
-    pulumi.Output<AgentcoreGatewayTargetTimeouts>? timeouts,
-  }) :
-      credentialProviderConfiguration = pulumi.Input.asOptionalInput<AgentcoreGatewayTargetCredentialProviderConfiguration>(credentialProviderConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gatewayIdentifier = pulumi.Input.asOptionalInput<String>(gatewayIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetConfiguration = pulumi.Input.asOptionalInput<AgentcoreGatewayTargetTargetConfiguration>(targetConfiguration),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreGatewayTargetTimeouts>(timeouts);
+    this.credentialProviderConfiguration,
+    this.description,
+    this.gatewayIdentifier,
+    this.name,
+    this.region,
+    this.targetConfiguration,
+    this.targetId,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class AgentcoreGatewayTargetState {
 
   factory AgentcoreGatewayTargetState.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetState(
-      credentialProviderConfiguration: map['credentialProviderConfiguration'] == null ? null : pulumi.Output.create<AgentcoreGatewayTargetCredentialProviderConfiguration>(AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((map['credentialProviderConfiguration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gatewayIdentifier: map['gatewayIdentifier'] == null ? null : pulumi.Output.create<String>(map['gatewayIdentifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetConfiguration: map['targetConfiguration'] == null ? null : pulumi.Output.create<AgentcoreGatewayTargetTargetConfiguration>(AgentcoreGatewayTargetTargetConfiguration.fromMap((map['targetConfiguration'] as Map).cast<String, dynamic>())),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreGatewayTargetTimeouts>(AgentcoreGatewayTargetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      credentialProviderConfiguration: map['credentialProviderConfiguration'] == null ? null : (AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((map['credentialProviderConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gatewayIdentifier: map['gatewayIdentifier'] == null ? null : (map['gatewayIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetConfiguration: map['targetConfiguration'] == null ? null : (AgentcoreGatewayTargetTargetConfiguration.fromMap((map['targetConfiguration'] as Map).cast<String, dynamic>())).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreGatewayTargetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

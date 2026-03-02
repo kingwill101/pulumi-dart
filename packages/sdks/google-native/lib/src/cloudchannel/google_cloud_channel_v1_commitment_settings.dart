@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_channel_v1_renewal_settings.dart';
 
 /// Commitment settings for commitment-based offers.
 class GoogleCloudChannelV1CommitmentSettings {
   /// Optional. Renewal settings applicable for a commitment-based Offer.
-  final GoogleCloudChannelV1RenewalSettings? renewalSettings;
+  final pulumi.Input<GoogleCloudChannelV1RenewalSettings>? renewalSettings;
 
   /// Creates a new [GoogleCloudChannelV1CommitmentSettings].
   /// [renewalSettings] Optional. Renewal settings applicable for a commitment-based Offer.
@@ -15,13 +16,13 @@ class GoogleCloudChannelV1CommitmentSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'renewalSettings': ?renewalSettings == null ? null : renewalSettings!.toMap(),
+      'renewalSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudChannelV1RenewalSettings, Map<String, dynamic>>(renewalSettings, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudChannelV1CommitmentSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1CommitmentSettings(
-      renewalSettings: map['renewalSettings'] == null ? null : GoogleCloudChannelV1RenewalSettings.fromMap((map['renewalSettings'] as Map).cast<String, dynamic>()),
+      renewalSettings: map['renewalSettings'] == null ? null : (GoogleCloudChannelV1RenewalSettings.fromMap((map['renewalSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

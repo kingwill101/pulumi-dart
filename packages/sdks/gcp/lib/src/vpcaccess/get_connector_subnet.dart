@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectorSubnet {
   /// Name of the resource.
   ///
   /// - - -
-  final String name;
+  final pulumi.Input<String> name;
   /// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [GetConnectorSubnet].
   /// [name] Name of the resource.
@@ -26,8 +27,8 @@ class GetConnectorSubnet {
 
   factory GetConnectorSubnet.fromMap(Map<String, dynamic> map) {
     return GetConnectorSubnet(
-      name: map['name'] as String,
-      projectId: map['projectId'] as String,
+      name: (map['name'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

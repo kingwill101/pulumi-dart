@@ -13,9 +13,8 @@ class GetReportScopingQuestionsArgs {
   /// Creates a new [GetReportScopingQuestionsArgs].
   /// [reportName] Report Name.
   GetReportScopingQuestionsArgs({
-    required pulumi.Output<String> reportName,
-  }) :
-      reportName = pulumi.Input.asInput<String>(reportName);
+    required this.reportName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetReportScopingQuestionsArgs {
 
   factory GetReportScopingQuestionsArgs.fromMap(Map<String, dynamic> map) {
     return GetReportScopingQuestionsArgs(
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
+      reportName: (map['reportName'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetCheckStructuresArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [taskSources] List of task sources.
   GetCheckStructuresArgs({
-    pulumi.Output<int>? currentPage,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<List<String>>? taskSources,
-  }) :
-      currentPage = pulumi.Input.asOptionalInput<int>(currentPage),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      taskSources = pulumi.Input.asOptionalInput<List<String>>(taskSources);
+    this.currentPage,
+    this.ids,
+    this.lang,
+    this.outputFile,
+    this.taskSources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetCheckStructuresArgs {
 
   factory GetCheckStructuresArgs.fromMap(Map<String, dynamic> map) {
     return GetCheckStructuresArgs(
-      currentPage: map['currentPage'] == null ? null : pulumi.Output.create<int>(map['currentPage'] as int),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      taskSources: map['taskSources'] == null ? null : pulumi.Output.create<List<String>>((map['taskSources'] as List).cast<String>()),
+      currentPage: map['currentPage'] == null ? null : (map['currentPage'] as int).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      taskSources: map['taskSources'] == null ? null : ((map['taskSources'] as List).cast<String>()).input(),
     );
   }
 }

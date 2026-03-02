@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineManagerVirtualMachineInstanceNetworkInterface {
   /// The IPv4 address type. Possible values are `Dynamic` and `Static`.
-  final String? ipv4AddressType;
+  final pulumi.Input<String>? ipv4AddressType;
   /// The IPv6 address type. Possible values are `Dynamic` and `Static`.
-  final String? ipv6AddressType;
+  final pulumi.Input<String>? ipv6AddressType;
   /// The MAC address type. Possible values are `Dynamic` and `Static`.
-  final String? macAddressType;
+  final pulumi.Input<String>? macAddressType;
   /// The name of the Virtual Network in System Center Virtual Machine Manager Server that the Network Interface is connected to.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of the System Center Virtual Machine Manager Virtual Network to connect the Network Interface.
-  final String? virtualNetworkId;
+  final pulumi.Input<String>? virtualNetworkId;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstanceNetworkInterface].
   /// [ipv4AddressType] The IPv4 address type. Possible values are `Dynamic` and `Static`.
@@ -39,11 +40,11 @@ class VirtualMachineManagerVirtualMachineInstanceNetworkInterface {
 
   factory VirtualMachineManagerVirtualMachineInstanceNetworkInterface.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceNetworkInterface(
-      ipv4AddressType: map['ipv4AddressType'] == null ? null : map['ipv4AddressType'] as String,
-      ipv6AddressType: map['ipv6AddressType'] == null ? null : map['ipv6AddressType'] as String,
-      macAddressType: map['macAddressType'] == null ? null : map['macAddressType'] as String,
-      name: map['name'] as String,
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : map['virtualNetworkId'] as String,
+      ipv4AddressType: map['ipv4AddressType'] == null ? null : (map['ipv4AddressType'] as String).input(),
+      ipv6AddressType: map['ipv6AddressType'] == null ? null : (map['ipv6AddressType'] as String).input(),
+      macAddressType: map['macAddressType'] == null ? null : (map['macAddressType'] as String).input(),
+      name: (map['name'] as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
     );
   }
 }

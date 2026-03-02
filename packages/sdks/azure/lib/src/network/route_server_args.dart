@@ -39,25 +39,16 @@ class RouteServerArgs {
   /// [subnetId] The ID of the Subnet that the Route Server will reside. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   RouteServerArgs({
-    pulumi.Output<bool>? branchToBranchTrafficEnabled,
-    pulumi.Output<String>? hubRoutingPreference,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> publicIpAddressId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sku,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      branchToBranchTrafficEnabled = pulumi.Input.asOptionalInput<bool>(branchToBranchTrafficEnabled),
-      hubRoutingPreference = pulumi.Input.asOptionalInput<String>(hubRoutingPreference),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicIpAddressId = pulumi.Input.asInput<String>(publicIpAddressId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<String>(sku),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.branchToBranchTrafficEnabled,
+    this.hubRoutingPreference,
+    this.location,
+    this.name,
+    required this.publicIpAddressId,
+    required this.resourceGroupName,
+    required this.sku,
+    required this.subnetId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class RouteServerArgs {
 
   factory RouteServerArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerArgs(
-      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : pulumi.Output.create<bool>(map['branchToBranchTrafficEnabled'] as bool),
-      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : pulumi.Output.create<String>(map['hubRoutingPreference'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicIpAddressId: pulumi.Output.create<String>(map['publicIpAddressId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : (map['branchToBranchTrafficEnabled'] as bool).input(),
+      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : (map['hubRoutingPreference'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicIpAddressId: (map['publicIpAddressId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (map['sku'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

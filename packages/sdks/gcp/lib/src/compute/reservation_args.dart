@@ -61,29 +61,18 @@ class ReservationArgs {
   /// [specificReservationRequired] When set to true, only VMs that target this reservation by name can
   /// [zone] The zone where the reservation is made.
   ReservationArgs({
-    pulumi.Output<ReservationDeleteAfterDuration>? deleteAfterDuration,
-    pulumi.Output<String>? deleteAtTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableEmergentMaintenance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ReservationReservationSharingPolicy>? reservationSharingPolicy,
-    pulumi.Output<ReservationShareSettings>? shareSettings,
-    required pulumi.Output<ReservationSpecificReservation> specificReservation,
-    pulumi.Output<bool>? specificReservationRequired,
-    required pulumi.Output<String> zone,
-  }) :
-      deleteAfterDuration = pulumi.Input.asOptionalInput<ReservationDeleteAfterDuration>(deleteAfterDuration),
-      deleteAtTime = pulumi.Input.asOptionalInput<String>(deleteAtTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableEmergentMaintenance = pulumi.Input.asOptionalInput<bool>(enableEmergentMaintenance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservationSharingPolicy = pulumi.Input.asOptionalInput<ReservationReservationSharingPolicy>(reservationSharingPolicy),
-      shareSettings = pulumi.Input.asOptionalInput<ReservationShareSettings>(shareSettings),
-      specificReservation = pulumi.Input.asInput<ReservationSpecificReservation>(specificReservation),
-      specificReservationRequired = pulumi.Input.asOptionalInput<bool>(specificReservationRequired),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.deleteAfterDuration,
+    this.deleteAtTime,
+    this.description,
+    this.enableEmergentMaintenance,
+    this.name,
+    this.project,
+    this.reservationSharingPolicy,
+    this.shareSettings,
+    required this.specificReservation,
+    this.specificReservationRequired,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,17 +92,17 @@ class ReservationArgs {
 
   factory ReservationArgs.fromMap(Map<String, dynamic> map) {
     return ReservationArgs(
-      deleteAfterDuration: map['deleteAfterDuration'] == null ? null : pulumi.Output.create<ReservationDeleteAfterDuration>(ReservationDeleteAfterDuration.fromMap((map['deleteAfterDuration'] as Map).cast<String, dynamic>())),
-      deleteAtTime: map['deleteAtTime'] == null ? null : pulumi.Output.create<String>(map['deleteAtTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableEmergentMaintenance: map['enableEmergentMaintenance'] == null ? null : pulumi.Output.create<bool>(map['enableEmergentMaintenance'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservationSharingPolicy: map['reservationSharingPolicy'] == null ? null : pulumi.Output.create<ReservationReservationSharingPolicy>(ReservationReservationSharingPolicy.fromMap((map['reservationSharingPolicy'] as Map).cast<String, dynamic>())),
-      shareSettings: map['shareSettings'] == null ? null : pulumi.Output.create<ReservationShareSettings>(ReservationShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())),
-      specificReservation: pulumi.Output.create<ReservationSpecificReservation>(ReservationSpecificReservation.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())),
-      specificReservationRequired: map['specificReservationRequired'] == null ? null : pulumi.Output.create<bool>(map['specificReservationRequired'] as bool),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      deleteAfterDuration: map['deleteAfterDuration'] == null ? null : (ReservationDeleteAfterDuration.fromMap((map['deleteAfterDuration'] as Map).cast<String, dynamic>())).input(),
+      deleteAtTime: map['deleteAtTime'] == null ? null : (map['deleteAtTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableEmergentMaintenance: map['enableEmergentMaintenance'] == null ? null : (map['enableEmergentMaintenance'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservationSharingPolicy: map['reservationSharingPolicy'] == null ? null : (ReservationReservationSharingPolicy.fromMap((map['reservationSharingPolicy'] as Map).cast<String, dynamic>())).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ReservationShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
+      specificReservation: (ReservationSpecificReservation.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
+      specificReservationRequired: map['specificReservationRequired'] == null ? null : (map['specificReservationRequired'] as bool).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

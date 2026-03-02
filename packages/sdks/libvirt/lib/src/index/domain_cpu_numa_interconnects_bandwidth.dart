@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuNumaInterconnectsBandwidth {
   /// Specifies the bandwidth allocation for cache-specific interconnects between NUMA nodes.
-  final double? cache;
+  final pulumi.Input<double>? cache;
   /// Defines the initiator's bandwidth constraints for interconnecting NUMA cells.
-  final double initiator;
+  final pulumi.Input<double> initiator;
   /// Configures the target's bandwidth limitations for interconnecting NUMA nodes.
-  final double target;
+  final pulumi.Input<double> target;
   /// Indicates the type of bandwidth established for interconnecting communication.
-  final String type;
+  final pulumi.Input<String> type;
   /// Sets the unit of measurement for the specified bandwidth in the NUMA interconnection.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// Establishes the actual bandwidth value for interconnects between NUMA nodes, defined by the unit.
-  final double value;
+  final pulumi.Input<double> value;
 
   /// Creates a new [DomainCpuNumaInterconnectsBandwidth].
   /// [cache] Specifies the bandwidth allocation for cache-specific interconnects between NUMA nodes.
@@ -44,12 +45,12 @@ class DomainCpuNumaInterconnectsBandwidth {
 
   factory DomainCpuNumaInterconnectsBandwidth.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaInterconnectsBandwidth(
-      cache: map['cache'] == null ? null : map['cache'] as double,
-      initiator: map['initiator'] as double,
-      target: map['target'] as double,
-      type: map['type'] as String,
-      unit: map['unit'] as String,
-      value: map['value'] as double,
+      cache: map['cache'] == null ? null : (map['cache'] as double).input(),
+      initiator: (map['initiator'] as double).input(),
+      target: (map['target'] as double).input(),
+      type: (map['type'] as String).input(),
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

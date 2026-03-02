@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SnapshotImportClientData {
   /// A user-defined comment about the disk upload.
-  final String? comment;
+  final pulumi.Input<String>? comment;
   /// The time that the disk upload ends.
-  final String? uploadEnd;
+  final pulumi.Input<String>? uploadEnd;
   /// The size of the uploaded disk image, in GiB.
-  final double? uploadSize;
+  final pulumi.Input<double>? uploadSize;
   /// The time that the disk upload starts.
-  final String? uploadStart;
+  final pulumi.Input<String>? uploadStart;
 
   /// Creates a new [SnapshotImportClientData].
   /// [comment] A user-defined comment about the disk upload.
@@ -34,10 +35,10 @@ class SnapshotImportClientData {
 
   factory SnapshotImportClientData.fromMap(Map<String, dynamic> map) {
     return SnapshotImportClientData(
-      comment: map['comment'] == null ? null : map['comment'] as String,
-      uploadEnd: map['uploadEnd'] == null ? null : map['uploadEnd'] as String,
-      uploadSize: map['uploadSize'] == null ? null : map['uploadSize'] as double,
-      uploadStart: map['uploadStart'] == null ? null : map['uploadStart'] as String,
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      uploadEnd: map['uploadEnd'] == null ? null : (map['uploadEnd'] as String).input(),
+      uploadSize: map['uploadSize'] == null ? null : (map['uploadSize'] as double).input(),
+      uploadStart: map['uploadStart'] == null ? null : (map['uploadStart'] as String).input(),
     );
   }
 }

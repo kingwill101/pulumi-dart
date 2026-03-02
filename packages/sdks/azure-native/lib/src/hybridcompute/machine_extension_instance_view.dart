@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'machine_extension_instance_view_status.dart';
 
 /// Describes the Machine Extension Instance View.
 class MachineExtensionInstanceView {
   /// The machine extension name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Instance view status.
-  final MachineExtensionInstanceViewStatus? status;
+  final pulumi.Input<MachineExtensionInstanceViewStatus>? status;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Specifies the version of the script handler.
-  final String? typeHandlerVersion;
+  final pulumi.Input<String>? typeHandlerVersion;
 
   /// Creates a new [MachineExtensionInstanceView].
   /// [name] The machine extension name.
@@ -28,7 +29,7 @@ class MachineExtensionInstanceView {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'status': ?status == null ? null : status!.toMap(),
+      'status': ?pulumi.Input.mapOptionalInputValue<MachineExtensionInstanceViewStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
       'type': ?type,
       'typeHandlerVersion': ?typeHandlerVersion,
     };
@@ -36,10 +37,10 @@ class MachineExtensionInstanceView {
 
   factory MachineExtensionInstanceView.fromMap(Map<String, dynamic> map) {
     return MachineExtensionInstanceView(
-      name: map['name'] == null ? null : map['name'] as String,
-      status: map['status'] == null ? null : MachineExtensionInstanceViewStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (MachineExtensionInstanceViewStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

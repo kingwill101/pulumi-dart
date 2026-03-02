@@ -25,19 +25,13 @@ class PolicyTagDatacatalogV1beta1Args {
   /// [project] Optional.
   /// [taxonomyId] Required.
   PolicyTagDatacatalogV1beta1Args({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? parentPolicyTag,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> taxonomyId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parentPolicyTag = pulumi.Input.asOptionalInput<String>(parentPolicyTag),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taxonomyId = pulumi.Input.asInput<String>(taxonomyId);
+    this.description,
+    required this.displayName,
+    this.location,
+    this.parentPolicyTag,
+    this.project,
+    required this.taxonomyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class PolicyTagDatacatalogV1beta1Args {
 
   factory PolicyTagDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return PolicyTagDatacatalogV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parentPolicyTag: map['parentPolicyTag'] == null ? null : pulumi.Output.create<String>(map['parentPolicyTag'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      taxonomyId: pulumi.Output.create<String>(map['taxonomyId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      taxonomyId: (map['taxonomyId'] as String).input(),
     );
   }
 }

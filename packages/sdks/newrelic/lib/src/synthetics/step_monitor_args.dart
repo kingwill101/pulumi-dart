@@ -63,35 +63,21 @@ class StepMonitorArgs {
   /// [tags] The tags that will be associated with the monitor. See Nested tag blocks below for details.
   /// [useUnsupportedLegacyRuntime] A boolean attribute to be set true by the customer, if they would like to use the unsupported legacy runtime of Synthetic Monitors by means of an exemption given until the October 22, 2024 Legacy Runtime EOL. Setting this attribute to true would allow skipping validation performed by the the New Relic Terraform Provider starting v3.43.0 to disallow using the legacy runtime with new monitors. This would, hence, allow creation of monitors in the legacy runtime until the October 22, 2024 Legacy Runtime EOL, if exempt by the API.
   StepMonitorArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<List<String>>? browsers,
-    pulumi.Output<List<String>>? devices,
-    pulumi.Output<bool>? enableScreenshotOnFailureAndScript,
-    pulumi.Output<List<StepMonitorLocationPrivate>>? locationPrivates,
-    pulumi.Output<List<String>>? locationsPublics,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> period,
-    pulumi.Output<String>? runtimeType_,
-    pulumi.Output<String>? runtimeTypeVersion,
-    required pulumi.Output<String> status,
-    required pulumi.Output<List<StepMonitorStep>> steps,
-    pulumi.Output<List<StepMonitorTag>>? tags,
-    pulumi.Output<bool>? useUnsupportedLegacyRuntime,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      browsers = pulumi.Input.asOptionalInput<List<String>>(browsers),
-      devices = pulumi.Input.asOptionalInput<List<String>>(devices),
-      enableScreenshotOnFailureAndScript = pulumi.Input.asOptionalInput<bool>(enableScreenshotOnFailureAndScript),
-      locationPrivates = pulumi.Input.asOptionalInput<List<StepMonitorLocationPrivate>>(locationPrivates),
-      locationsPublics = pulumi.Input.asOptionalInput<List<String>>(locationsPublics),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      period = pulumi.Input.asInput<String>(period),
-      runtimeType_ = pulumi.Input.asOptionalInput<String>(runtimeType_),
-      runtimeTypeVersion = pulumi.Input.asOptionalInput<String>(runtimeTypeVersion),
-      status = pulumi.Input.asInput<String>(status),
-      steps = pulumi.Input.asInput<List<StepMonitorStep>>(steps),
-      tags = pulumi.Input.asOptionalInput<List<StepMonitorTag>>(tags),
-      useUnsupportedLegacyRuntime = pulumi.Input.asOptionalInput<bool>(useUnsupportedLegacyRuntime);
+    this.accountId,
+    this.browsers,
+    this.devices,
+    this.enableScreenshotOnFailureAndScript,
+    this.locationPrivates,
+    this.locationsPublics,
+    this.name,
+    required this.period,
+    this.runtimeType_,
+    this.runtimeTypeVersion,
+    required this.status,
+    required this.steps,
+    this.tags,
+    this.useUnsupportedLegacyRuntime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -114,20 +100,20 @@ class StepMonitorArgs {
 
   factory StepMonitorArgs.fromMap(Map<String, dynamic> map) {
     return StepMonitorArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      browsers: map['browsers'] == null ? null : pulumi.Output.create<List<String>>((map['browsers'] as List).cast<String>()),
-      devices: map['devices'] == null ? null : pulumi.Output.create<List<String>>((map['devices'] as List).cast<String>()),
-      enableScreenshotOnFailureAndScript: map['enableScreenshotOnFailureAndScript'] == null ? null : pulumi.Output.create<bool>(map['enableScreenshotOnFailureAndScript'] as bool),
-      locationPrivates: map['locationPrivates'] == null ? null : pulumi.Output.create<List<StepMonitorLocationPrivate>>(pulumi.Input.decodeList<StepMonitorLocationPrivate>(map['locationPrivates'], (value) => StepMonitorLocationPrivate.fromMap((value as Map).cast<String, dynamic>()))),
-      locationsPublics: map['locationsPublics'] == null ? null : pulumi.Output.create<List<String>>((map['locationsPublics'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      period: pulumi.Output.create<String>(map['period'] as String),
-      runtimeType_: map['runtimeType'] == null ? null : pulumi.Output.create<String>(map['runtimeType'] as String),
-      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : pulumi.Output.create<String>(map['runtimeTypeVersion'] as String),
-      status: pulumi.Output.create<String>(map['status'] as String),
-      steps: pulumi.Output.create<List<StepMonitorStep>>(pulumi.Input.decodeList<StepMonitorStep>(map['steps'], (value) => StepMonitorStep.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<StepMonitorTag>>(pulumi.Input.decodeList<StepMonitorTag>(map['tags'], (value) => StepMonitorTag.fromMap((value as Map).cast<String, dynamic>()))),
-      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : pulumi.Output.create<bool>(map['useUnsupportedLegacyRuntime'] as bool),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      browsers: map['browsers'] == null ? null : ((map['browsers'] as List).cast<String>()).input(),
+      devices: map['devices'] == null ? null : ((map['devices'] as List).cast<String>()).input(),
+      enableScreenshotOnFailureAndScript: map['enableScreenshotOnFailureAndScript'] == null ? null : (map['enableScreenshotOnFailureAndScript'] as bool).input(),
+      locationPrivates: map['locationPrivates'] == null ? null : (pulumi.Input.decodeList<StepMonitorLocationPrivate>(map['locationPrivates'], (value) => StepMonitorLocationPrivate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locationsPublics: map['locationsPublics'] == null ? null : ((map['locationsPublics'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      period: (map['period'] as String).input(),
+      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType'] as String).input(),
+      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : (map['runtimeTypeVersion'] as String).input(),
+      status: (map['status'] as String).input(),
+      steps: (pulumi.Input.decodeList<StepMonitorStep>(map['steps'], (value) => StepMonitorStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<StepMonitorTag>(map['tags'], (value) => StepMonitorTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : (map['useUnsupportedLegacyRuntime'] as bool).input(),
     );
   }
 }

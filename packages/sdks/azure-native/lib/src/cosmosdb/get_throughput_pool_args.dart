@@ -16,11 +16,9 @@ class GetThroughputPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [throughputPoolName] Cosmos DB Throughput Pool name.
   GetThroughputPoolArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> throughputPoolName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      throughputPoolName = pulumi.Input.asInput<String>(throughputPoolName);
+    required this.resourceGroupName,
+    required this.throughputPoolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetThroughputPoolArgs {
 
   factory GetThroughputPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetThroughputPoolArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      throughputPoolName: pulumi.Output.create<String>(map['throughputPoolName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      throughputPoolName: (map['throughputPoolName'] as String).input(),
     );
   }
 }

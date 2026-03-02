@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataflow_graph_connection_input.dart';
 import 'dataflow_graph_connection_output.dart';
 
 /// DataflowGraph DataflowGraphNode Connection.
 class DataflowGraphNodeConnection {
   /// Information about the source node.
-  final DataflowGraphConnectionInput from;
+  final pulumi.Input<DataflowGraphConnectionInput> from;
   /// Information about the destination node.
-  final DataflowGraphConnectionOutput to;
+  final pulumi.Input<DataflowGraphConnectionOutput> to;
 
   /// Creates a new [DataflowGraphNodeConnection].
   /// [from] Information about the source node.
@@ -20,15 +21,15 @@ class DataflowGraphNodeConnection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'from': from.toMap(),
-      'to': to.toMap(),
+      'from': pulumi.Input.mapInputValue<DataflowGraphConnectionInput, Map<String, dynamic>>(from, (value) => value.toMap()),
+      'to': pulumi.Input.mapInputValue<DataflowGraphConnectionOutput, Map<String, dynamic>>(to, (value) => value.toMap()),
     };
   }
 
   factory DataflowGraphNodeConnection.fromMap(Map<String, dynamic> map) {
     return DataflowGraphNodeConnection(
-      from: DataflowGraphConnectionInput.fromMap((map['from'] as Map).cast<String, dynamic>()),
-      to: DataflowGraphConnectionOutput.fromMap((map['to'] as Map).cast<String, dynamic>()),
+      from: (DataflowGraphConnectionInput.fromMap((map['from'] as Map).cast<String, dynamic>())).input(),
+      to: (DataflowGraphConnectionOutput.fromMap((map['to'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

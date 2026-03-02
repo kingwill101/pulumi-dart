@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Workload identity settings for the security profile.
 class ManagedClusterSecurityProfileWorkloadIdentityResponse {
   /// Whether to enable workload identity.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ManagedClusterSecurityProfileWorkloadIdentityResponse].
   /// [enabled] Whether to enable workload identity.
@@ -20,7 +21,7 @@ class ManagedClusterSecurityProfileWorkloadIdentityResponse {
 
   factory ManagedClusterSecurityProfileWorkloadIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSecurityProfileWorkloadIdentityResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

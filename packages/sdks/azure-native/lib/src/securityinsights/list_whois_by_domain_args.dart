@@ -22,15 +22,11 @@ class ListWhoisByDomainArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   ListWhoisByDomainArgs({
-    pulumi.Output<String>? domain,
-    required pulumi.Output<String> enrichmentType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      enrichmentType = pulumi.Input.asInput<String>(enrichmentType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.domain,
+    required this.enrichmentType,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListWhoisByDomainArgs {
 
   factory ListWhoisByDomainArgs.fromMap(Map<String, dynamic> map) {
     return ListWhoisByDomainArgs(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      enrichmentType: pulumi.Output.create<String>(map['enrichmentType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      enrichmentType: (map['enrichmentType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

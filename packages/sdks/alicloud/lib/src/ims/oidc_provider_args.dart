@@ -29,19 +29,13 @@ class OidcProviderArgs {
   /// [issuerUrl] The issuer URL of the OIDC identity provider.
   /// [oidcProviderName] The name of the OIDC identity provider.
   OidcProviderArgs({
-    pulumi.Output<List<String>>? clientIds,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? fingerprints,
-    pulumi.Output<int>? issuanceLimitTime,
-    required pulumi.Output<String> issuerUrl,
-    required pulumi.Output<String> oidcProviderName,
-  }) :
-      clientIds = pulumi.Input.asOptionalInput<List<String>>(clientIds),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fingerprints = pulumi.Input.asOptionalInput<List<String>>(fingerprints),
-      issuanceLimitTime = pulumi.Input.asOptionalInput<int>(issuanceLimitTime),
-      issuerUrl = pulumi.Input.asInput<String>(issuerUrl),
-      oidcProviderName = pulumi.Input.asInput<String>(oidcProviderName);
+    this.clientIds,
+    this.description,
+    this.fingerprints,
+    this.issuanceLimitTime,
+    required this.issuerUrl,
+    required this.oidcProviderName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class OidcProviderArgs {
 
   factory OidcProviderArgs.fromMap(Map<String, dynamic> map) {
     return OidcProviderArgs(
-      clientIds: map['clientIds'] == null ? null : pulumi.Output.create<List<String>>((map['clientIds'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fingerprints: map['fingerprints'] == null ? null : pulumi.Output.create<List<String>>((map['fingerprints'] as List).cast<String>()),
-      issuanceLimitTime: map['issuanceLimitTime'] == null ? null : pulumi.Output.create<int>(map['issuanceLimitTime'] as int),
-      issuerUrl: pulumi.Output.create<String>(map['issuerUrl'] as String),
-      oidcProviderName: pulumi.Output.create<String>(map['oidcProviderName'] as String),
+      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fingerprints: map['fingerprints'] == null ? null : ((map['fingerprints'] as List).cast<String>()).input(),
+      issuanceLimitTime: map['issuanceLimitTime'] == null ? null : (map['issuanceLimitTime'] as int).input(),
+      issuerUrl: (map['issuerUrl'] as String).input(),
+      oidcProviderName: (map['oidcProviderName'] as String).input(),
     );
   }
 }

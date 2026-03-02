@@ -58,29 +58,18 @@ class AddonArgs {
   /// [serviceAccountRoleArn] The Amazon Resource Name (ARN) of an
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AddonArgs({
-    required pulumi.Output<String> addonName,
-    pulumi.Output<String>? addonVersion,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? configurationValues,
-    pulumi.Output<List<AddonPodIdentityAssociation>>? podIdentityAssociations,
-    pulumi.Output<bool>? preserve,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resolveConflictsOnCreate,
-    pulumi.Output<String>? resolveConflictsOnUpdate,
-    pulumi.Output<String>? serviceAccountRoleArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addonName = pulumi.Input.asInput<String>(addonName),
-      addonVersion = pulumi.Input.asOptionalInput<String>(addonVersion),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      configurationValues = pulumi.Input.asOptionalInput<String>(configurationValues),
-      podIdentityAssociations = pulumi.Input.asOptionalInput<List<AddonPodIdentityAssociation>>(podIdentityAssociations),
-      preserve = pulumi.Input.asOptionalInput<bool>(preserve),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolveConflictsOnCreate = pulumi.Input.asOptionalInput<String>(resolveConflictsOnCreate),
-      resolveConflictsOnUpdate = pulumi.Input.asOptionalInput<String>(resolveConflictsOnUpdate),
-      serviceAccountRoleArn = pulumi.Input.asOptionalInput<String>(serviceAccountRoleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.addonName,
+    this.addonVersion,
+    required this.clusterName,
+    this.configurationValues,
+    this.podIdentityAssociations,
+    this.preserve,
+    this.region,
+    this.resolveConflictsOnCreate,
+    this.resolveConflictsOnUpdate,
+    this.serviceAccountRoleArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,17 +89,17 @@ class AddonArgs {
 
   factory AddonArgs.fromMap(Map<String, dynamic> map) {
     return AddonArgs(
-      addonName: pulumi.Output.create<String>(map['addonName'] as String),
-      addonVersion: map['addonVersion'] == null ? null : pulumi.Output.create<String>(map['addonVersion'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      configurationValues: map['configurationValues'] == null ? null : pulumi.Output.create<String>(map['configurationValues'] as String),
-      podIdentityAssociations: map['podIdentityAssociations'] == null ? null : pulumi.Output.create<List<AddonPodIdentityAssociation>>(pulumi.Input.decodeList<AddonPodIdentityAssociation>(map['podIdentityAssociations'], (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>()))),
-      preserve: map['preserve'] == null ? null : pulumi.Output.create<bool>(map['preserve'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : pulumi.Output.create<String>(map['resolveConflictsOnCreate'] as String),
-      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : pulumi.Output.create<String>(map['resolveConflictsOnUpdate'] as String),
-      serviceAccountRoleArn: map['serviceAccountRoleArn'] == null ? null : pulumi.Output.create<String>(map['serviceAccountRoleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addonName: (map['addonName'] as String).input(),
+      addonVersion: map['addonVersion'] == null ? null : (map['addonVersion'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      configurationValues: map['configurationValues'] == null ? null : (map['configurationValues'] as String).input(),
+      podIdentityAssociations: map['podIdentityAssociations'] == null ? null : (pulumi.Input.decodeList<AddonPodIdentityAssociation>(map['podIdentityAssociations'], (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      preserve: map['preserve'] == null ? null : (map['preserve'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : (map['resolveConflictsOnCreate'] as String).input(),
+      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : (map['resolveConflictsOnUpdate'] as String).input(),
+      serviceAccountRoleArn: map['serviceAccountRoleArn'] == null ? null : (map['serviceAccountRoleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

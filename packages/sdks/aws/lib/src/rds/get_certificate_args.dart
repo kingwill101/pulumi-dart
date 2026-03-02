@@ -22,15 +22,11 @@ class GetCertificateArgs {
   /// [latestValidTill] When enabled, returns the certificate with the latest `ValidTill`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetCertificateArgs({
-    pulumi.Output<bool>? defaultForNewLaunches,
-    pulumi.Output<String>? id,
-    pulumi.Output<bool>? latestValidTill,
-    pulumi.Output<String>? region,
-  }) :
-      defaultForNewLaunches = pulumi.Input.asOptionalInput<bool>(defaultForNewLaunches),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      latestValidTill = pulumi.Input.asOptionalInput<bool>(latestValidTill),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.defaultForNewLaunches,
+    this.id,
+    this.latestValidTill,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      defaultForNewLaunches: map['defaultForNewLaunches'] == null ? null : pulumi.Output.create<bool>(map['defaultForNewLaunches'] as bool),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      latestValidTill: map['latestValidTill'] == null ? null : pulumi.Output.create<bool>(map['latestValidTill'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      defaultForNewLaunches: map['defaultForNewLaunches'] == null ? null : (map['defaultForNewLaunches'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      latestValidTill: map['latestValidTill'] == null ? null : (map['latestValidTill'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentFrontendPrivate {
   /// Specify the method for allocating the private IP. Possible values are `Static` and `Dynamic`.
-  final String allocationMethod;
+  final pulumi.Input<String> allocationMethod;
   /// Specify the private IP Address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Specify the Subnet Resource ID for this NGINX Deployment.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [DeploymentFrontendPrivate].
   /// [allocationMethod] Specify the method for allocating the private IP. Possible values are `Static` and `Dynamic`.
@@ -29,9 +30,9 @@ class DeploymentFrontendPrivate {
 
   factory DeploymentFrontendPrivate.fromMap(Map<String, dynamic> map) {
     return DeploymentFrontendPrivate(
-      allocationMethod: map['allocationMethod'] as String,
-      ipAddress: map['ipAddress'] as String,
-      subnetId: map['subnetId'] as String,
+      allocationMethod: (map['allocationMethod'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

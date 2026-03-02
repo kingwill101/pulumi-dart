@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebResourceSite {
   /// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
   /// set to INET_DOMAIN, the identifier is a domain name.
-  final String identifier;
+  final pulumi.Input<String> identifier;
   /// The type of resource to be verified.
   /// Possible values are: `INET_DOMAIN`, `SITE`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [WebResourceSite].
   /// [identifier] The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
@@ -26,8 +27,8 @@ class WebResourceSite {
 
   factory WebResourceSite.fromMap(Map<String, dynamic> map) {
     return WebResourceSite(
-      identifier: map['identifier'] as String,
-      type: map['type'] as String,
+      identifier: (map['identifier'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

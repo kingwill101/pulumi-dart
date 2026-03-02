@@ -20,15 +20,11 @@ class VoiceConnectorOriginationState {
   /// [routes] Set of call distribution properties defined for your SIP hosts. See route below for more details. Minimum of 1. Maximum of 20.
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
   VoiceConnectorOriginationState({
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<VoiceConnectorOriginationRoute>>? routes,
-    pulumi.Output<String>? voiceConnectorId,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routes = pulumi.Input.asOptionalInput<List<VoiceConnectorOriginationRoute>>(routes),
-      voiceConnectorId = pulumi.Input.asOptionalInput<String>(voiceConnectorId);
+    this.disabled,
+    this.region,
+    this.routes,
+    this.voiceConnectorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class VoiceConnectorOriginationState {
 
   factory VoiceConnectorOriginationState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorOriginationState(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<VoiceConnectorOriginationRoute>>(pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(map['routes'], (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      voiceConnectorId: map['voiceConnectorId'] == null ? null : pulumi.Output.create<String>(map['voiceConnectorId'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(map['routes'], (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      voiceConnectorId: map['voiceConnectorId'] == null ? null : (map['voiceConnectorId'] as String).input(),
     );
   }
 }

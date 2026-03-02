@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Labeling MLAssist configuration definition when MLAssist is enabled
 class MLAssistConfigurationEnabled {
   /// [Required] AML compute binding used in inferencing.
-  final String inferencingComputeBinding;
+  final pulumi.Input<String> inferencingComputeBinding;
   /// Expected value is 'Enabled'.
-  final String mlAssist;
+  final pulumi.Input<String> mlAssist;
   /// [Required] AML compute binding used in training.
-  final String trainingComputeBinding;
+  final pulumi.Input<String> trainingComputeBinding;
 
   /// Creates a new [MLAssistConfigurationEnabled].
   /// [inferencingComputeBinding] [Required] AML compute binding used in inferencing.
@@ -30,9 +31,9 @@ class MLAssistConfigurationEnabled {
 
   factory MLAssistConfigurationEnabled.fromMap(Map<String, dynamic> map) {
     return MLAssistConfigurationEnabled(
-      inferencingComputeBinding: map['inferencingComputeBinding'] as String,
-      mlAssist: map['mlAssist'] as String,
-      trainingComputeBinding: map['trainingComputeBinding'] as String,
+      inferencingComputeBinding: (map['inferencingComputeBinding'] as String).input(),
+      mlAssist: (map['mlAssist'] as String).input(),
+      trainingComputeBinding: (map['trainingComputeBinding'] as String).input(),
     );
   }
 }

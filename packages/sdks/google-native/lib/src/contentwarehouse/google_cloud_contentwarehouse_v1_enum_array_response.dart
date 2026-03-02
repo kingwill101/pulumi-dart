@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Enum values.
 class GoogleCloudContentwarehouseV1EnumArrayResponse {
   /// List of enum values.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GoogleCloudContentwarehouseV1EnumArrayResponse].
   /// [values] List of enum values.
@@ -20,7 +21,7 @@ class GoogleCloudContentwarehouseV1EnumArrayResponse {
 
   factory GoogleCloudContentwarehouseV1EnumArrayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1EnumArrayResponse(
-      values: (map['values'] as List).cast<String>(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

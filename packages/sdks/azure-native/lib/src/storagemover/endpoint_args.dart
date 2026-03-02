@@ -23,15 +23,11 @@ class EndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
   EndpointArgs({
-    pulumi.Output<String>? endpointName,
-    required pulumi.Output<AzureStorageBlobContainerEndpointProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageMoverName,
-  }) :
-      endpointName = pulumi.Input.asOptionalInput<String>(endpointName),
-      properties = pulumi.Input.asInput<AzureStorageBlobContainerEndpointProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageMoverName = pulumi.Input.asInput<String>(storageMoverName);
+    this.endpointName,
+    required this.properties,
+    required this.resourceGroupName,
+    required this.storageMoverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      endpointName: map['endpointName'] == null ? null : pulumi.Output.create<String>(map['endpointName'] as String),
-      properties: pulumi.Output.create<AzureStorageBlobContainerEndpointProperties>(AzureStorageBlobContainerEndpointProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageMoverName: pulumi.Output.create<String>(map['storageMoverName'] as String),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
+      properties: (AzureStorageBlobContainerEndpointProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageMoverName: (map['storageMoverName'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class ArchiveRuleArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleName] Rule name.
   ArchiveRuleArgs({
-    required pulumi.Output<String> analyzerName,
-    required pulumi.Output<List<ArchiveRuleFilter>> filters,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> ruleName,
-  }) :
-      analyzerName = pulumi.Input.asInput<String>(analyzerName),
-      filters = pulumi.Input.asInput<List<ArchiveRuleFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleName = pulumi.Input.asInput<String>(ruleName);
+    required this.analyzerName,
+    required this.filters,
+    this.region,
+    required this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ArchiveRuleArgs {
 
   factory ArchiveRuleArgs.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleArgs(
-      analyzerName: pulumi.Output.create<String>(map['analyzerName'] as String),
-      filters: pulumi.Output.create<List<ArchiveRuleFilter>>(pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters'], (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
+      analyzerName: (map['analyzerName'] as String).input(),
+      filters: (pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters'], (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

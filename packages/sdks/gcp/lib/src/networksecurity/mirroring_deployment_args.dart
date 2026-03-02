@@ -40,21 +40,14 @@ class MirroringDeploymentArgs {
   /// [mirroringDeploymentId] The ID to use for the new deployment, which will become the final
   /// [project] The ID of the project in which the resource belongs.
   MirroringDeploymentArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> forwardingRule,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> mirroringDeploymentGroup,
-    required pulumi.Output<String> mirroringDeploymentId,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forwardingRule = pulumi.Input.asInput<String>(forwardingRule),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      mirroringDeploymentGroup = pulumi.Input.asInput<String>(mirroringDeploymentGroup),
-      mirroringDeploymentId = pulumi.Input.asInput<String>(mirroringDeploymentId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.forwardingRule,
+    this.labels,
+    required this.location,
+    required this.mirroringDeploymentGroup,
+    required this.mirroringDeploymentId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,13 +63,13 @@ class MirroringDeploymentArgs {
 
   factory MirroringDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return MirroringDeploymentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forwardingRule: pulumi.Output.create<String>(map['forwardingRule'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mirroringDeploymentGroup: pulumi.Output.create<String>(map['mirroringDeploymentGroup'] as String),
-      mirroringDeploymentId: pulumi.Output.create<String>(map['mirroringDeploymentId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forwardingRule: (map['forwardingRule'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      mirroringDeploymentGroup: (map['mirroringDeploymentGroup'] as String).input(),
+      mirroringDeploymentId: (map['mirroringDeploymentId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

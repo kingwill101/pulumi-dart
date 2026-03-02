@@ -25,17 +25,12 @@ class LoadTestProfileMappingArgs {
   /// [sourceResourceId] Mapped source resource Id.
   /// [testProfileId] Mapped Azure Load Test resource test-profile-id.
   LoadTestProfileMappingArgs({
-    pulumi.Output<String>? azureLoadTestingResourceId,
-    pulumi.Output<String>? loadTestProfileMappingName,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? sourceResourceId,
-    pulumi.Output<String>? testProfileId,
-  }) :
-      azureLoadTestingResourceId = pulumi.Input.asOptionalInput<String>(azureLoadTestingResourceId),
-      loadTestProfileMappingName = pulumi.Input.asOptionalInput<String>(loadTestProfileMappingName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      sourceResourceId = pulumi.Input.asOptionalInput<String>(sourceResourceId),
-      testProfileId = pulumi.Input.asOptionalInput<String>(testProfileId);
+    this.azureLoadTestingResourceId,
+    this.loadTestProfileMappingName,
+    required this.resourceUri,
+    this.sourceResourceId,
+    this.testProfileId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LoadTestProfileMappingArgs {
 
   factory LoadTestProfileMappingArgs.fromMap(Map<String, dynamic> map) {
     return LoadTestProfileMappingArgs(
-      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : pulumi.Output.create<String>(map['azureLoadTestingResourceId'] as String),
-      loadTestProfileMappingName: map['loadTestProfileMappingName'] == null ? null : pulumi.Output.create<String>(map['loadTestProfileMappingName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      sourceResourceId: map['sourceResourceId'] == null ? null : pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      testProfileId: map['testProfileId'] == null ? null : pulumi.Output.create<String>(map['testProfileId'] as String),
+      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : (map['azureLoadTestingResourceId'] as String).input(),
+      loadTestProfileMappingName: map['loadTestProfileMappingName'] == null ? null : (map['loadTestProfileMappingName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      testProfileId: map['testProfileId'] == null ? null : (map['testProfileId'] as String).input(),
     );
   }
 }

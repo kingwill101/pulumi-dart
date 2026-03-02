@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile {
-  final String certificateChain;
+  final pulumi.Input<String> certificateChain;
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile].
   /// [certificateChain] Required.
@@ -18,7 +19,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile {
 
   factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile(
-      certificateChain: map['certificateChain'] as String,
+      certificateChain: (map['certificateChain'] as String).input(),
     );
   }
 }

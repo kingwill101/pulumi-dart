@@ -27,15 +27,11 @@ class SubnetworkIAMPolicyArgs {
   /// [region] The GCP region for this subnetwork.
   /// [subnetwork] Used to find the parent resource to bind the IAM policy to
   SubnetworkIAMPolicyArgs({
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> subnetwork,
-  }) :
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetwork = pulumi.Input.asInput<String>(subnetwork);
+    required this.policyData,
+    this.project,
+    this.region,
+    required this.subnetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class SubnetworkIAMPolicyArgs {
 
   factory SubnetworkIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SubnetworkIAMPolicyArgs(
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetwork: pulumi.Output.create<String>(map['subnetwork'] as String),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetwork: (map['subnetwork'] as String).input(),
     );
   }
 }

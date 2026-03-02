@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkConnectionMonitorTestConfigurationIcmpConfiguration {
   /// Should path evaluation with trace route be enabled? Defaults to `true`.
-  final bool? traceRouteEnabled;
+  final pulumi.Input<bool>? traceRouteEnabled;
 
   /// Creates a new [NetworkConnectionMonitorTestConfigurationIcmpConfiguration].
   /// [traceRouteEnabled] Should path evaluation with trace route be enabled? Defaults to `true`.
@@ -19,7 +20,7 @@ class NetworkConnectionMonitorTestConfigurationIcmpConfiguration {
 
   factory NetworkConnectionMonitorTestConfigurationIcmpConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationIcmpConfiguration(
-      traceRouteEnabled: map['traceRouteEnabled'] == null ? null : map['traceRouteEnabled'] as bool,
+      traceRouteEnabled: map['traceRouteEnabled'] == null ? null : (map['traceRouteEnabled'] as bool).input(),
     );
   }
 }

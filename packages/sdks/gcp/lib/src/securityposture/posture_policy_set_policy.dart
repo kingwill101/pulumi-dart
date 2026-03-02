@@ -7,14 +7,14 @@ import 'posture_policy_set_policy_constraint.dart';
 class PosturePolicySetPolicy {
   /// Mapping for policy to security standards and controls.
   /// Structure is documented below.
-  final List<PosturePolicySetPolicyComplianceStandard>? complianceStandards;
+  final pulumi.Input<List<PosturePolicySetPolicyComplianceStandard>>? complianceStandards;
   /// Policy constraint definition.It can have the definition of one of following constraints: orgPolicyConstraint orgPolicyConstraintCustom securityHealthAnalyticsModule securityHealthAnalyticsCustomModule
   /// Structure is documented below.
-  final PosturePolicySetPolicyConstraint constraint;
+  final pulumi.Input<PosturePolicySetPolicyConstraint> constraint;
   /// Description of the policy.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// ID of the policy.
-  final String policyId;
+  final pulumi.Input<String> policyId;
 
   /// Creates a new [PosturePolicySetPolicy].
   /// [complianceStandards] Mapping for policy to security standards and controls.
@@ -30,8 +30,8 @@ class PosturePolicySetPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'complianceStandards': ?complianceStandards == null ? null : pulumi.Input.encodeList<PosturePolicySetPolicyComplianceStandard, Map<String, dynamic>>(complianceStandards!, (value) => value.toMap()),
-      'constraint': constraint.toMap(),
+      'complianceStandards': ?pulumi.Input.mapOptionalInputValue<List<PosturePolicySetPolicyComplianceStandard>, List<Map<String, dynamic>>>(complianceStandards, (value) => pulumi.Input.encodeList<PosturePolicySetPolicyComplianceStandard, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'constraint': pulumi.Input.mapInputValue<PosturePolicySetPolicyConstraint, Map<String, dynamic>>(constraint, (value) => value.toMap()),
       'description': ?description,
       'policyId': policyId,
     };
@@ -39,10 +39,10 @@ class PosturePolicySetPolicy {
 
   factory PosturePolicySetPolicy.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicy(
-      complianceStandards: map['complianceStandards'] == null ? null : pulumi.Input.decodeList<PosturePolicySetPolicyComplianceStandard>(map['complianceStandards'], (value) => PosturePolicySetPolicyComplianceStandard.fromMap((value as Map).cast<String, dynamic>())),
-      constraint: PosturePolicySetPolicyConstraint.fromMap((map['constraint'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      policyId: map['policyId'] as String,
+      complianceStandards: map['complianceStandards'] == null ? null : (pulumi.Input.decodeList<PosturePolicySetPolicyComplianceStandard>(map['complianceStandards'], (value) => PosturePolicySetPolicyComplianceStandard.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      constraint: (PosturePolicySetPolicyConstraint.fromMap((map['constraint'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
     );
   }
 }

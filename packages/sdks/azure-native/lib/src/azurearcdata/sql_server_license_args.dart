@@ -26,17 +26,12 @@ class SqlServerLicenseArgs {
   /// [sqlServerLicenseName] Name of SQL Server License
   /// [tags] Resource tags.
   SqlServerLicenseArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<SqlServerLicenseProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sqlServerLicenseName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<SqlServerLicenseProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerLicenseName = pulumi.Input.asOptionalInput<String>(sqlServerLicenseName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.sqlServerLicenseName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SqlServerLicenseArgs {
 
   factory SqlServerLicenseArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerLicenseArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<SqlServerLicenseProperties>(SqlServerLicenseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerLicenseName: map['sqlServerLicenseName'] == null ? null : pulumi.Output.create<String>(map['sqlServerLicenseName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (SqlServerLicenseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerLicenseName: map['sqlServerLicenseName'] == null ? null : (map['sqlServerLicenseName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

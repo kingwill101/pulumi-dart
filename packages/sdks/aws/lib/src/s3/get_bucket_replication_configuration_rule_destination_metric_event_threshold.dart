@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold {
-  final int minutes;
+  final pulumi.Input<int> minutes;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold].
   /// [minutes] Required.
@@ -18,7 +19,7 @@ class GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold {
 
   factory GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold(
-      minutes: map['minutes'] as int,
+      minutes: (map['minutes'] as int).input(),
     );
   }
 }

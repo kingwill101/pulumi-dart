@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'position_response.dart';
 
 /// A single stack element (frame) where an error occurred.
 class StackTraceElementResponse {
   /// The source position information of the stack trace element.
-  final PositionResponse position;
+  final pulumi.Input<PositionResponse> position;
   /// The routine where the error occurred.
-  final String routine;
+  final pulumi.Input<String> routine;
   /// The step the error occurred at.
-  final String step;
+  final pulumi.Input<String> step;
 
   /// Creates a new [StackTraceElementResponse].
   /// [position] The source position information of the stack trace element.
@@ -23,7 +24,7 @@ class StackTraceElementResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'position': position.toMap(),
+      'position': pulumi.Input.mapInputValue<PositionResponse, Map<String, dynamic>>(position, (value) => value.toMap()),
       'routine': routine,
       'step': step,
     };
@@ -31,9 +32,9 @@ class StackTraceElementResponse {
 
   factory StackTraceElementResponse.fromMap(Map<String, dynamic> map) {
     return StackTraceElementResponse(
-      position: PositionResponse.fromMap((map['position'] as Map).cast<String, dynamic>()),
-      routine: map['routine'] as String,
-      step: map['step'] as String,
+      position: (PositionResponse.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
+      routine: (map['routine'] as String).input(),
+      step: (map['step'] as String).input(),
     );
   }
 }

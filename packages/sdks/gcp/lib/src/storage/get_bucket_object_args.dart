@@ -16,11 +16,9 @@ class GetBucketObjectArgs {
   /// [bucket] The name of the containing bucket.
   /// [name] The name of the object.
   GetBucketObjectArgs({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? name,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.bucket,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBucketObjectArgs {
 
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectArgs(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

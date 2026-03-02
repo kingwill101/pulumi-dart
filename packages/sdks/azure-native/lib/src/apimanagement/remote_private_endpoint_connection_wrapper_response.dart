@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'arm_id_wrapper_response.dart';
 import 'private_link_service_connection_state_response.dart';
 
 /// Remote Private Endpoint Connection resource.
 class RemotePrivateEndpointConnectionWrapperResponse {
   /// All the Group ids.
-  final List<String> groupIds;
+  final pulumi.Input<List<String>> groupIds;
   /// Private Endpoint connection resource id
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Private Endpoint Connection Name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The resource of private end point.
-  final ArmIdWrapperResponse? privateEndpoint;
+  final pulumi.Input<ArmIdWrapperResponse>? privateEndpoint;
   /// A collection of information about the state of the connection between service consumer and provider.
-  final PrivateLinkServiceConnectionStateResponse privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
   /// The provisioning state of the private endpoint connection resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Private Endpoint Connection Resource Type
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [RemotePrivateEndpointConnectionWrapperResponse].
   /// [groupIds] All the Group ids.
@@ -43,8 +44,8 @@ class RemotePrivateEndpointConnectionWrapperResponse {
       'groupIds': groupIds,
       'id': ?id,
       'name': ?name,
-      'privateEndpoint': ?privateEndpoint == null ? null : privateEndpoint!.toMap(),
-      'privateLinkServiceConnectionState': privateLinkServiceConnectionState.toMap(),
+      'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<ArmIdWrapperResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': pulumi.Input.mapInputValue<PrivateLinkServiceConnectionStateResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'type': ?type,
     };
@@ -52,13 +53,13 @@ class RemotePrivateEndpointConnectionWrapperResponse {
 
   factory RemotePrivateEndpointConnectionWrapperResponse.fromMap(Map<String, dynamic> map) {
     return RemotePrivateEndpointConnectionWrapperResponse(
-      groupIds: (map['groupIds'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : ArmIdWrapperResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      groupIds: ((map['groupIds'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (ArmIdWrapperResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

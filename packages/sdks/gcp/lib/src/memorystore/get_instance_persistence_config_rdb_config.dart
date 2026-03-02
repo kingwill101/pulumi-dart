@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancePersistenceConfigRdbConfig {
   /// Optional. Period between RDB snapshots.
@@ -8,11 +9,11 @@ class GetInstancePersistenceConfigRdbConfig {
   /// SIX_HOURS
   /// TWELVE_HOURS
   /// TWENTY_FOUR_HOURS
-  final String rdbSnapshotPeriod;
+  final pulumi.Input<String> rdbSnapshotPeriod;
   /// Optional. Time that the first snapshot was/will be attempted, and to which future
   /// snapshots will be aligned. If not provided, the current time will be
   /// used.
-  final String rdbSnapshotStartTime;
+  final pulumi.Input<String> rdbSnapshotStartTime;
 
   /// Creates a new [GetInstancePersistenceConfigRdbConfig].
   /// [rdbSnapshotPeriod] Optional. Period between RDB snapshots.
@@ -31,8 +32,8 @@ class GetInstancePersistenceConfigRdbConfig {
 
   factory GetInstancePersistenceConfigRdbConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePersistenceConfigRdbConfig(
-      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] as String,
-      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] as String,
+      rdbSnapshotPeriod: (map['rdbSnapshotPeriod'] as String).input(),
+      rdbSnapshotStartTime: (map['rdbSnapshotStartTime'] as String).input(),
     );
   }
 }

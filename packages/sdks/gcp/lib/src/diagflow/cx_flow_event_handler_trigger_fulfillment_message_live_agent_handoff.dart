@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
   /// Custom metadata. Dialogflow doesn't impose any structure on this.
-  final String? metadata;
+  final pulumi.Input<String>? metadata;
 
   /// Creates a new [CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
@@ -19,7 +20,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
 
   factory CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
     return CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(
-      metadata: map['metadata'] == null ? null : map['metadata'] as String,
+      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
     );
   }
 }

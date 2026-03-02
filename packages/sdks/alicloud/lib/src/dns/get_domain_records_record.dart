@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainRecordsRecord {
-  final String domainName;
-  final String hostRecord;
-  final String line;
-  final bool locked;
-  final int priority;
-  final String recordId;
-  final String status;
-  final double ttl;
-  final String type;
-  final String value;
+  final pulumi.Input<String> domainName;
+  final pulumi.Input<String> hostRecord;
+  final pulumi.Input<String> line;
+  final pulumi.Input<bool> locked;
+  final pulumi.Input<int> priority;
+  final pulumi.Input<String> recordId;
+  final pulumi.Input<String> status;
+  final pulumi.Input<double> ttl;
+  final pulumi.Input<String> type;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetDomainRecordsRecord].
   /// [domainName] Required.
@@ -54,16 +55,16 @@ class GetDomainRecordsRecord {
 
   factory GetDomainRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetDomainRecordsRecord(
-      domainName: map['domainName'] as String,
-      hostRecord: map['hostRecord'] as String,
-      line: map['line'] as String,
-      locked: map['locked'] as bool,
-      priority: map['priority'] as int,
-      recordId: map['recordId'] as String,
-      status: map['status'] as String,
-      ttl: map['ttl'] as double,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      domainName: (map['domainName'] as String).input(),
+      hostRecord: (map['hostRecord'] as String).input(),
+      line: (map['line'] as String).input(),
+      locked: (map['locked'] as bool).input(),
+      priority: (map['priority'] as int).input(),
+      recordId: (map['recordId'] as String).input(),
+      status: (map['status'] as String).input(),
+      ttl: (map['ttl'] as double).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

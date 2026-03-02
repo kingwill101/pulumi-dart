@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of GenerateSecretString
 class GenerateSecretStringResponse {
   /// A string of the characters that you don't want in the password.
-  final String? excludeCharacters;
+  final pulumi.Input<String>? excludeCharacters;
   /// Specifies whether to exclude lowercase letters from the password. If you don't include this switch, the password can contain lowercase letters.
-  final bool? excludeLowercase;
+  final pulumi.Input<bool>? excludeLowercase;
   /// Specifies whether to exclude numbers from the password. If you don't include this switch, the password can contain numbers.
-  final bool? excludeNumbers;
+  final pulumi.Input<bool>? excludeNumbers;
   /// Specifies whether to exclude the following punctuation characters from the password: ``! ' # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~``. If you don't include this switch, the password can contain punctuation.
-  final bool? excludePunctuation;
+  final pulumi.Input<bool>? excludePunctuation;
   /// Specifies whether to exclude uppercase letters from the password. If you don't include this switch, the password can contain uppercase letters.
-  final bool? excludeUppercase;
+  final pulumi.Input<bool>? excludeUppercase;
   /// The JSON key name for the key/value pair, where the value is the generated password. This pair is added to the JSON structure specified by the ``SecretStringTemplate`` parameter. If you specify this parameter, then you must also specify ``SecretStringTemplate``.
-  final String? generateStringKey;
+  final pulumi.Input<String>? generateStringKey;
   /// Specifies whether to include the space character. If you include this switch, the password can contain space characters.
-  final bool? includeSpace;
+  final pulumi.Input<bool>? includeSpace;
   /// The length of the password. If you don't include this parameter, the default length is 32 characters.
-  final int? passwordLength;
+  final pulumi.Input<int>? passwordLength;
   /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation. If you don't include this switch, the password contains at least one of every character type.
-  final bool? requireEachIncludedType;
+  final pulumi.Input<bool>? requireEachIncludedType;
   /// A template that the generated string must match. When you make a change to this property, a new secret version is created.
-  final String? secretStringTemplate;
+  final pulumi.Input<String>? secretStringTemplate;
 
   /// Creates a new [GenerateSecretStringResponse].
   /// [excludeCharacters] A string of the characters that you don't want in the password.
@@ -65,16 +66,16 @@ class GenerateSecretStringResponse {
 
   factory GenerateSecretStringResponse.fromMap(Map<String, dynamic> map) {
     return GenerateSecretStringResponse(
-      excludeCharacters: map['excludeCharacters'] == null ? null : map['excludeCharacters'] as String,
-      excludeLowercase: map['excludeLowercase'] == null ? null : map['excludeLowercase'] as bool,
-      excludeNumbers: map['excludeNumbers'] == null ? null : map['excludeNumbers'] as bool,
-      excludePunctuation: map['excludePunctuation'] == null ? null : map['excludePunctuation'] as bool,
-      excludeUppercase: map['excludeUppercase'] == null ? null : map['excludeUppercase'] as bool,
-      generateStringKey: map['generateStringKey'] == null ? null : map['generateStringKey'] as String,
-      includeSpace: map['includeSpace'] == null ? null : map['includeSpace'] as bool,
-      passwordLength: map['passwordLength'] == null ? null : map['passwordLength'] as int,
-      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : map['requireEachIncludedType'] as bool,
-      secretStringTemplate: map['secretStringTemplate'] == null ? null : map['secretStringTemplate'] as String,
+      excludeCharacters: map['excludeCharacters'] == null ? null : (map['excludeCharacters'] as String).input(),
+      excludeLowercase: map['excludeLowercase'] == null ? null : (map['excludeLowercase'] as bool).input(),
+      excludeNumbers: map['excludeNumbers'] == null ? null : (map['excludeNumbers'] as bool).input(),
+      excludePunctuation: map['excludePunctuation'] == null ? null : (map['excludePunctuation'] as bool).input(),
+      excludeUppercase: map['excludeUppercase'] == null ? null : (map['excludeUppercase'] as bool).input(),
+      generateStringKey: map['generateStringKey'] == null ? null : (map['generateStringKey'] as String).input(),
+      includeSpace: map['includeSpace'] == null ? null : (map['includeSpace'] as bool).input(),
+      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength'] as int).input(),
+      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : (map['requireEachIncludedType'] as bool).input(),
+      secretStringTemplate: map['secretStringTemplate'] == null ? null : (map['secretStringTemplate'] as String).input(),
     );
   }
 }

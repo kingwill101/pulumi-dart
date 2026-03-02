@@ -18,11 +18,9 @@ class GetContainerArgs {
   /// [name] The Container name.
   /// [region] The region in which to obtain the V1 KeyManager client.
   GetContainerArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetContainerArgs {
 
   factory GetContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

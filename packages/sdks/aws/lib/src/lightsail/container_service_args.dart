@@ -38,23 +38,15 @@ class ContainerServiceArgs {
   /// [scale] Scale specification for the container service. The scale specifies the allocated compute nodes of the container service.
   /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ContainerServiceArgs({
-    pulumi.Output<bool>? isDisabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> power,
-    pulumi.Output<ContainerServicePrivateRegistryAccess>? privateRegistryAccess,
-    pulumi.Output<ContainerServicePublicDomainNames>? publicDomainNames,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> scale,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      isDisabled = pulumi.Input.asOptionalInput<bool>(isDisabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      power = pulumi.Input.asInput<String>(power),
-      privateRegistryAccess = pulumi.Input.asOptionalInput<ContainerServicePrivateRegistryAccess>(privateRegistryAccess),
-      publicDomainNames = pulumi.Input.asOptionalInput<ContainerServicePublicDomainNames>(publicDomainNames),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scale = pulumi.Input.asInput<int>(scale),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.isDisabled,
+    this.name,
+    required this.power,
+    this.privateRegistryAccess,
+    this.publicDomainNames,
+    this.region,
+    required this.scale,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class ContainerServiceArgs {
 
   factory ContainerServiceArgs.fromMap(Map<String, dynamic> map) {
     return ContainerServiceArgs(
-      isDisabled: map['isDisabled'] == null ? null : pulumi.Output.create<bool>(map['isDisabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      power: pulumi.Output.create<String>(map['power'] as String),
-      privateRegistryAccess: map['privateRegistryAccess'] == null ? null : pulumi.Output.create<ContainerServicePrivateRegistryAccess>(ContainerServicePrivateRegistryAccess.fromMap((map['privateRegistryAccess'] as Map).cast<String, dynamic>())),
-      publicDomainNames: map['publicDomainNames'] == null ? null : pulumi.Output.create<ContainerServicePublicDomainNames>(ContainerServicePublicDomainNames.fromMap((map['publicDomainNames'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scale: pulumi.Output.create<int>(map['scale'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      isDisabled: map['isDisabled'] == null ? null : (map['isDisabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      power: (map['power'] as String).input(),
+      privateRegistryAccess: map['privateRegistryAccess'] == null ? null : (ContainerServicePrivateRegistryAccess.fromMap((map['privateRegistryAccess'] as Map).cast<String, dynamic>())).input(),
+      publicDomainNames: map['publicDomainNames'] == null ? null : (ContainerServicePublicDomainNames.fromMap((map['publicDomainNames'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scale: (map['scale'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

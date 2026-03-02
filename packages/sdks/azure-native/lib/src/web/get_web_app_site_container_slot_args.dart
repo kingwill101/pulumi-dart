@@ -22,15 +22,11 @@ class GetWebAppSiteContainerSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will get the Site Container for the production slot.
   GetWebAppSiteContainerSlotArgs({
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      containerName = pulumi.Input.asInput<String>(containerName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    required this.containerName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWebAppSiteContainerSlotArgs {
 
   factory GetWebAppSiteContainerSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppSiteContainerSlotArgs(
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      containerName: (map['containerName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

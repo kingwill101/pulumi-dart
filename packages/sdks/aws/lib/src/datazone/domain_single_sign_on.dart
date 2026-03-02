@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSingleSignOn {
-  final String? type;
-  final String? userAssignment;
+  final pulumi.Input<String>? type;
+  final pulumi.Input<String>? userAssignment;
 
   /// Creates a new [DomainSingleSignOn].
   /// [type] Optional.
@@ -22,8 +23,8 @@ class DomainSingleSignOn {
 
   factory DomainSingleSignOn.fromMap(Map<String, dynamic> map) {
     return DomainSingleSignOn(
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignment: map['userAssignment'] == null ? null : map['userAssignment'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignment: map['userAssignment'] == null ? null : (map['userAssignment'] as String).input(),
     );
   }
 }

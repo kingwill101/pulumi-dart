@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WasmPluginUsedBy {
   /// Identifier. Name of the WasmPlugin resource.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [WasmPluginUsedBy].
   /// [name] Identifier. Name of the WasmPlugin resource.
@@ -19,7 +20,7 @@ class WasmPluginUsedBy {
 
   factory WasmPluginUsedBy.fromMap(Map<String, dynamic> map) {
     return WasmPluginUsedBy(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

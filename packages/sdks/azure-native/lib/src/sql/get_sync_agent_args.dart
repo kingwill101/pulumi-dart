@@ -19,13 +19,10 @@ class GetSyncAgentArgs {
   /// [serverName] The name of the server on which the sync agent is hosted.
   /// [syncAgentName] The name of the sync agent.
   GetSyncAgentArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> syncAgentName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      syncAgentName = pulumi.Input.asInput<String>(syncAgentName);
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.syncAgentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSyncAgentArgs {
 
   factory GetSyncAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetSyncAgentArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      syncAgentName: pulumi.Output.create<String>(map['syncAgentName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      syncAgentName: (map['syncAgentName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of StatefulEngineOptions
 class StatefulEngineOptionsResponse {
   /// Property ruleOrder
-  final String? ruleOrder;
+  final pulumi.Input<String>? ruleOrder;
   /// Property streamExceptionPolicy
-  final String? streamExceptionPolicy;
+  final pulumi.Input<String>? streamExceptionPolicy;
 
   /// Creates a new [StatefulEngineOptionsResponse].
   /// [ruleOrder] Property ruleOrder
@@ -25,8 +26,8 @@ class StatefulEngineOptionsResponse {
 
   factory StatefulEngineOptionsResponse.fromMap(Map<String, dynamic> map) {
     return StatefulEngineOptionsResponse(
-      ruleOrder: map['ruleOrder'] == null ? null : map['ruleOrder'] as String,
-      streamExceptionPolicy: map['streamExceptionPolicy'] == null ? null : map['streamExceptionPolicy'] as String,
+      ruleOrder: map['ruleOrder'] == null ? null : (map['ruleOrder'] as String).input(),
+      streamExceptionPolicy: map['streamExceptionPolicy'] == null ? null : (map['streamExceptionPolicy'] as String).input(),
     );
   }
 }

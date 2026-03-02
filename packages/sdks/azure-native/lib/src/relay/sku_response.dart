@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU of the namespace.
 class SkuResponse {
   /// Name of this SKU.
-  final String name;
+  final pulumi.Input<String> name;
   /// The tier of this SKU.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [SkuResponse].
   /// [name] Name of this SKU.
@@ -25,8 +26,8 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      name: map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings {
   /// Post filter sharpening.
-  final String? postFilterSharpening;
+  final pulumi.Input<String>? postFilterSharpening;
   /// Filter strength.
-  final String? strength;
+  final pulumi.Input<String>? strength;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings].
   /// [postFilterSharpening] Post filter sharpening.
@@ -24,8 +25,8 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSetti
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings(
-      postFilterSharpening: map['postFilterSharpening'] == null ? null : map['postFilterSharpening'] as String,
-      strength: map['strength'] == null ? null : map['strength'] as String,
+      postFilterSharpening: map['postFilterSharpening'] == null ? null : (map['postFilterSharpening'] as String).input(),
+      strength: map['strength'] == null ? null : (map['strength'] as String).input(),
     );
   }
 }

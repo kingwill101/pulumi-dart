@@ -24,15 +24,11 @@ class GetNodebalancerVpcsArgs {
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
   GetNodebalancerVpcsArgs({
-    pulumi.Output<List<GetNodebalancerVpcsFilter>>? filters,
-    required pulumi.Output<int> nodebalancerId,
-    pulumi.Output<String>? order,
-    pulumi.Output<String>? orderBy,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNodebalancerVpcsFilter>>(filters),
-      nodebalancerId = pulumi.Input.asInput<int>(nodebalancerId),
-      order = pulumi.Input.asOptionalInput<String>(order),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy);
+    this.filters,
+    required this.nodebalancerId,
+    this.order,
+    this.orderBy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetNodebalancerVpcsArgs {
 
   factory GetNodebalancerVpcsArgs.fromMap(Map<String, dynamic> map) {
     return GetNodebalancerVpcsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNodebalancerVpcsFilter>>(pulumi.Input.decodeList<GetNodebalancerVpcsFilter>(map['filters'], (value) => GetNodebalancerVpcsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      nodebalancerId: pulumi.Output.create<int>(map['nodebalancerId'] as int),
-      order: map['order'] == null ? null : pulumi.Output.create<String>(map['order'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNodebalancerVpcsFilter>(map['filters'], (value) => GetNodebalancerVpcsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodebalancerId: (map['nodebalancerId'] as int).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
     );
   }
 }

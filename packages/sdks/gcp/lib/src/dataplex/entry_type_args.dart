@@ -46,27 +46,17 @@ class EntryTypeArgs {
   /// [system] The system that Entries of this type belongs to.
   /// [typeAliases] Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
   EntryTypeArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? entryTypeId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? platform,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<EntryTypeRequiredAspect>>? requiredAspects,
-    pulumi.Output<String>? system,
-    pulumi.Output<List<String>>? typeAliases,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      entryTypeId = pulumi.Input.asOptionalInput<String>(entryTypeId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      platform = pulumi.Input.asOptionalInput<String>(platform),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requiredAspects = pulumi.Input.asOptionalInput<List<EntryTypeRequiredAspect>>(requiredAspects),
-      system = pulumi.Input.asOptionalInput<String>(system),
-      typeAliases = pulumi.Input.asOptionalInput<List<String>>(typeAliases);
+    this.description,
+    this.displayName,
+    this.entryTypeId,
+    this.labels,
+    this.location,
+    this.platform,
+    this.project,
+    this.requiredAspects,
+    this.system,
+    this.typeAliases,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class EntryTypeArgs {
 
   factory EntryTypeArgs.fromMap(Map<String, dynamic> map) {
     return EntryTypeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      entryTypeId: map['entryTypeId'] == null ? null : pulumi.Output.create<String>(map['entryTypeId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requiredAspects: map['requiredAspects'] == null ? null : pulumi.Output.create<List<EntryTypeRequiredAspect>>(pulumi.Input.decodeList<EntryTypeRequiredAspect>(map['requiredAspects'], (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>()))),
-      system: map['system'] == null ? null : pulumi.Output.create<String>(map['system'] as String),
-      typeAliases: map['typeAliases'] == null ? null : pulumi.Output.create<List<String>>((map['typeAliases'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      entryTypeId: map['entryTypeId'] == null ? null : (map['entryTypeId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requiredAspects: map['requiredAspects'] == null ? null : (pulumi.Input.decodeList<EntryTypeRequiredAspect>(map['requiredAspects'], (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      system: map['system'] == null ? null : (map['system'] as String).input(),
+      typeAliases: map['typeAliases'] == null ? null : ((map['typeAliases'] as List).cast<String>()).input(),
     );
   }
 }

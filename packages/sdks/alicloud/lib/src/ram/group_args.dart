@@ -25,15 +25,11 @@ class GroupArgs {
   /// [groupName] The group name. You must specify at least one of the `group_name` and `name`.
   /// [name] . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
   GroupArgs({
-    pulumi.Output<String>? comments,
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? name,
-  }) :
-      comments = pulumi.Input.asOptionalInput<String>(comments),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.comments,
+    this.force,
+    this.groupName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      comments: map['comments'] == null ? null : pulumi.Output.create<String>(map['comments'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

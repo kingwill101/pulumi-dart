@@ -19,13 +19,10 @@ class RuleSetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleSetName] Name of the rule set under the profile which is unique globally.
   RuleSetArgs({
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleSetName,
-  }) :
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleSetName = pulumi.Input.asOptionalInput<String>(ruleSetName);
+    required this.profileName,
+    required this.resourceGroupName,
+    this.ruleSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RuleSetArgs {
 
   factory RuleSetArgs.fromMap(Map<String, dynamic> map) {
     return RuleSetArgs(
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleSetName: map['ruleSetName'] == null ? null : pulumi.Output.create<String>(map['ruleSetName'] as String),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleSetName: map['ruleSetName'] == null ? null : (map['ruleSetName'] as String).input(),
     );
   }
 }

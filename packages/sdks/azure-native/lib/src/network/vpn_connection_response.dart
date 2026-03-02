@@ -10,49 +10,49 @@ import 'vpn_site_link_connection_response.dart';
 /// VpnConnection Resource.
 class VpnConnectionResponse {
   /// Expected bandwidth in MBPS.
-  final int? connectionBandwidth;
+  final pulumi.Input<int>? connectionBandwidth;
   /// The connection status.
-  final String connectionStatus;
+  final pulumi.Input<String> connectionStatus;
   /// DPD timeout in seconds for vpn connection.
-  final int? dpdTimeoutSeconds;
+  final pulumi.Input<int>? dpdTimeoutSeconds;
   /// Egress bytes transferred.
-  final double egressBytesTransferred;
+  final pulumi.Input<double> egressBytesTransferred;
   /// EnableBgp flag.
-  final bool? enableBgp;
+  final pulumi.Input<bool>? enableBgp;
   /// Enable internet security.
-  final bool? enableInternetSecurity;
+  final pulumi.Input<bool>? enableInternetSecurity;
   /// EnableBgp flag.
-  final bool? enableRateLimiting;
+  final pulumi.Input<bool>? enableRateLimiting;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Ingress bytes transferred.
-  final double ingressBytesTransferred;
+  final pulumi.Input<double> ingressBytesTransferred;
   /// The IPSec Policies to be considered by this connection.
-  final List<IpsecPolicyResponse>? ipsecPolicies;
+  final pulumi.Input<List<IpsecPolicyResponse>>? ipsecPolicies;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the VPN connection resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Id of the connected vpn site.
-  final SubResourceResponse? remoteVpnSite;
+  final pulumi.Input<SubResourceResponse>? remoteVpnSite;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final RoutingConfigurationResponse? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationResponse>? routingConfiguration;
   /// Routing weight for vpn connection.
-  final int? routingWeight;
+  final pulumi.Input<int>? routingWeight;
   /// SharedKey for the vpn connection.
-  final String? sharedKey;
+  final pulumi.Input<String>? sharedKey;
   /// The Traffic Selector Policies to be considered by this connection.
-  final List<TrafficSelectorPolicyResponse>? trafficSelectorPolicies;
+  final pulumi.Input<List<TrafficSelectorPolicyResponse>>? trafficSelectorPolicies;
   /// Use local azure ip to initiate connection.
-  final bool? useLocalAzureIpAddress;
+  final pulumi.Input<bool>? useLocalAzureIpAddress;
   /// Enable policy-based traffic selectors.
-  final bool? usePolicyBasedTrafficSelectors;
+  final pulumi.Input<bool>? usePolicyBasedTrafficSelectors;
   /// Connection protocol used for this connection.
-  final String? vpnConnectionProtocolType;
+  final pulumi.Input<String>? vpnConnectionProtocolType;
   /// List of all vpn site link connections to the gateway.
-  final List<VpnSiteLinkConnectionResponse>? vpnLinkConnections;
+  final pulumi.Input<List<VpnSiteLinkConnectionResponse>>? vpnLinkConnections;
 
   /// Creates a new [VpnConnectionResponse].
   /// [connectionBandwidth] Expected bandwidth in MBPS.
@@ -114,45 +114,45 @@ class VpnConnectionResponse {
       'etag': etag,
       'id': ?id,
       'ingressBytesTransferred': ingressBytesTransferred,
-      'ipsecPolicies': ?ipsecPolicies == null ? null : pulumi.Input.encodeList<IpsecPolicyResponse, Map<String, dynamic>>(ipsecPolicies!, (value) => value.toMap()),
+      'ipsecPolicies': ?pulumi.Input.mapOptionalInputValue<List<IpsecPolicyResponse>, List<Map<String, dynamic>>>(ipsecPolicies, (value) => pulumi.Input.encodeList<IpsecPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'provisioningState': provisioningState,
-      'remoteVpnSite': ?remoteVpnSite == null ? null : remoteVpnSite!.toMap(),
-      'routingConfiguration': ?routingConfiguration == null ? null : routingConfiguration!.toMap(),
+      'remoteVpnSite': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(remoteVpnSite, (value) => value.toMap()),
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
       'routingWeight': ?routingWeight,
       'sharedKey': ?sharedKey,
-      'trafficSelectorPolicies': ?trafficSelectorPolicies == null ? null : pulumi.Input.encodeList<TrafficSelectorPolicyResponse, Map<String, dynamic>>(trafficSelectorPolicies!, (value) => value.toMap()),
+      'trafficSelectorPolicies': ?pulumi.Input.mapOptionalInputValue<List<TrafficSelectorPolicyResponse>, List<Map<String, dynamic>>>(trafficSelectorPolicies, (value) => pulumi.Input.encodeList<TrafficSelectorPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'useLocalAzureIpAddress': ?useLocalAzureIpAddress,
       'usePolicyBasedTrafficSelectors': ?usePolicyBasedTrafficSelectors,
       'vpnConnectionProtocolType': ?vpnConnectionProtocolType,
-      'vpnLinkConnections': ?vpnLinkConnections == null ? null : pulumi.Input.encodeList<VpnSiteLinkConnectionResponse, Map<String, dynamic>>(vpnLinkConnections!, (value) => value.toMap()),
+      'vpnLinkConnections': ?pulumi.Input.mapOptionalInputValue<List<VpnSiteLinkConnectionResponse>, List<Map<String, dynamic>>>(vpnLinkConnections, (value) => pulumi.Input.encodeList<VpnSiteLinkConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VpnConnectionResponse.fromMap(Map<String, dynamic> map) {
     return VpnConnectionResponse(
-      connectionBandwidth: map['connectionBandwidth'] == null ? null : map['connectionBandwidth'] as int,
-      connectionStatus: map['connectionStatus'] as String,
-      dpdTimeoutSeconds: map['dpdTimeoutSeconds'] == null ? null : map['dpdTimeoutSeconds'] as int,
-      egressBytesTransferred: map['egressBytesTransferred'] as double,
-      enableBgp: map['enableBgp'] == null ? null : map['enableBgp'] as bool,
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity'] as bool,
-      enableRateLimiting: map['enableRateLimiting'] == null ? null : map['enableRateLimiting'] as bool,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      ingressBytesTransferred: map['ingressBytesTransferred'] as double,
-      ipsecPolicies: map['ipsecPolicies'] == null ? null : pulumi.Input.decodeList<IpsecPolicyResponse>(map['ipsecPolicies'], (value) => IpsecPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      remoteVpnSite: map['remoteVpnSite'] == null ? null : SubResourceResponse.fromMap((map['remoteVpnSite'] as Map).cast<String, dynamic>()),
-      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>()),
-      routingWeight: map['routingWeight'] == null ? null : map['routingWeight'] as int,
-      sharedKey: map['sharedKey'] == null ? null : map['sharedKey'] as String,
-      trafficSelectorPolicies: map['trafficSelectorPolicies'] == null ? null : pulumi.Input.decodeList<TrafficSelectorPolicyResponse>(map['trafficSelectorPolicies'], (value) => TrafficSelectorPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      useLocalAzureIpAddress: map['useLocalAzureIpAddress'] == null ? null : map['useLocalAzureIpAddress'] as bool,
-      usePolicyBasedTrafficSelectors: map['usePolicyBasedTrafficSelectors'] == null ? null : map['usePolicyBasedTrafficSelectors'] as bool,
-      vpnConnectionProtocolType: map['vpnConnectionProtocolType'] == null ? null : map['vpnConnectionProtocolType'] as String,
-      vpnLinkConnections: map['vpnLinkConnections'] == null ? null : pulumi.Input.decodeList<VpnSiteLinkConnectionResponse>(map['vpnLinkConnections'], (value) => VpnSiteLinkConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      connectionBandwidth: map['connectionBandwidth'] == null ? null : (map['connectionBandwidth'] as int).input(),
+      connectionStatus: (map['connectionStatus'] as String).input(),
+      dpdTimeoutSeconds: map['dpdTimeoutSeconds'] == null ? null : (map['dpdTimeoutSeconds'] as int).input(),
+      egressBytesTransferred: (map['egressBytesTransferred'] as double).input(),
+      enableBgp: map['enableBgp'] == null ? null : (map['enableBgp'] as bool).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      enableRateLimiting: map['enableRateLimiting'] == null ? null : (map['enableRateLimiting'] as bool).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ingressBytesTransferred: (map['ingressBytesTransferred'] as double).input(),
+      ipsecPolicies: map['ipsecPolicies'] == null ? null : (pulumi.Input.decodeList<IpsecPolicyResponse>(map['ipsecPolicies'], (value) => IpsecPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      remoteVpnSite: map['remoteVpnSite'] == null ? null : (SubResourceResponse.fromMap((map['remoteVpnSite'] as Map).cast<String, dynamic>())).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight'] as int).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
+      trafficSelectorPolicies: map['trafficSelectorPolicies'] == null ? null : (pulumi.Input.decodeList<TrafficSelectorPolicyResponse>(map['trafficSelectorPolicies'], (value) => TrafficSelectorPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useLocalAzureIpAddress: map['useLocalAzureIpAddress'] == null ? null : (map['useLocalAzureIpAddress'] as bool).input(),
+      usePolicyBasedTrafficSelectors: map['usePolicyBasedTrafficSelectors'] == null ? null : (map['usePolicyBasedTrafficSelectors'] as bool).input(),
+      vpnConnectionProtocolType: map['vpnConnectionProtocolType'] == null ? null : (map['vpnConnectionProtocolType'] as String).input(),
+      vpnLinkConnections: map['vpnLinkConnections'] == null ? null : (pulumi.Input.decodeList<VpnSiteLinkConnectionResponse>(map['vpnLinkConnections'], (value) => VpnSiteLinkConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

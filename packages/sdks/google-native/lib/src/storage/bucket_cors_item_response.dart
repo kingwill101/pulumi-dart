@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketCorsItemResponse {
   /// The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
-  final int maxAgeSeconds;
+  final pulumi.Input<int> maxAgeSeconds;
   /// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
-  final List<String> method;
+  final pulumi.Input<List<String>> method;
   /// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
-  final List<String> origin;
+  final pulumi.Input<List<String>> origin;
   /// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
-  final List<String> responseHeader;
+  final pulumi.Input<List<String>> responseHeader;
 
   /// Creates a new [BucketCorsItemResponse].
   /// [maxAgeSeconds] The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
@@ -34,10 +35,10 @@ class BucketCorsItemResponse {
 
   factory BucketCorsItemResponse.fromMap(Map<String, dynamic> map) {
     return BucketCorsItemResponse(
-      maxAgeSeconds: map['maxAgeSeconds'] as int,
-      method: (map['method'] as List).cast<String>(),
-      origin: (map['origin'] as List).cast<String>(),
-      responseHeader: (map['responseHeader'] as List).cast<String>(),
+      maxAgeSeconds: (map['maxAgeSeconds'] as int).input(),
+      method: ((map['method'] as List).cast<String>()).input(),
+      origin: ((map['origin'] as List).cast<String>()).input(),
+      responseHeader: ((map['responseHeader'] as List).cast<String>()).input(),
     );
   }
 }

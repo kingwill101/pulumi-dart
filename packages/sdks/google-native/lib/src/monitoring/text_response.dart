@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'text_style_response.dart';
 
 /// A widget that displays textual content.
 class TextResponse {
   /// The text content to be displayed.
-  final String content;
+  final pulumi.Input<String> content;
   /// How the text content is formatted.
-  final String format;
+  final pulumi.Input<String> format;
   /// How the text is styled
-  final TextStyleResponse style;
+  final pulumi.Input<TextStyleResponse> style;
 
   /// Creates a new [TextResponse].
   /// [content] The text content to be displayed.
@@ -25,15 +26,15 @@ class TextResponse {
     return <String, dynamic>{
       'content': content,
       'format': format,
-      'style': style.toMap(),
+      'style': pulumi.Input.mapInputValue<TextStyleResponse, Map<String, dynamic>>(style, (value) => value.toMap()),
     };
   }
 
   factory TextResponse.fromMap(Map<String, dynamic> map) {
     return TextResponse(
-      content: map['content'] as String,
-      format: map['format'] as String,
-      style: TextStyleResponse.fromMap((map['style'] as Map).cast<String, dynamic>()),
+      content: (map['content'] as String).input(),
+      format: (map['format'] as String).input(),
+      style: (TextStyleResponse.fromMap((map['style'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

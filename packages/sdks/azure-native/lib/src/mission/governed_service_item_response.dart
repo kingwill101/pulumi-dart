@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GovernedServiceItem Properties
 class GovernedServiceItemResponse {
   /// Initiative enforcement (Enabled or Disabled).
-  final String? enforcement;
+  final pulumi.Input<String>? enforcement;
   /// Initiatives associated with this service.
-  final List<String> initiatives;
+  final pulumi.Input<List<String>> initiatives;
   /// Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable).
-  final String? option;
+  final pulumi.Input<String>? option;
   /// Enforcement mode for policy. AuditOnly, Enforce, or None.
-  final String? policyAction;
+  final pulumi.Input<String>? policyAction;
   /// Service ID
-  final String serviceId;
+  final pulumi.Input<String> serviceId;
   /// Service name.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [GovernedServiceItemResponse].
   /// [enforcement] Initiative enforcement (Enabled or Disabled).
@@ -45,12 +46,12 @@ class GovernedServiceItemResponse {
 
   factory GovernedServiceItemResponse.fromMap(Map<String, dynamic> map) {
     return GovernedServiceItemResponse(
-      enforcement: map['enforcement'] == null ? null : map['enforcement'] as String,
-      initiatives: (map['initiatives'] as List).cast<String>(),
-      option: map['option'] == null ? null : map['option'] as String,
-      policyAction: map['policyAction'] == null ? null : map['policyAction'] as String,
-      serviceId: map['serviceId'] as String,
-      serviceName: map['serviceName'] as String,
+      enforcement: map['enforcement'] == null ? null : (map['enforcement'] as String).input(),
+      initiatives: ((map['initiatives'] as List).cast<String>()).input(),
+      option: map['option'] == null ? null : (map['option'] as String).input(),
+      policyAction: map['policyAction'] == null ? null : (map['policyAction'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

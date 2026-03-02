@@ -22,15 +22,11 @@ class MigrationServiceArgs {
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [tags] Resource tags.
   MigrationServiceArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? migrationServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      migrationServiceName = pulumi.Input.asOptionalInput<String>(migrationServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.migrationServiceName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class MigrationServiceArgs {
 
   factory MigrationServiceArgs.fromMap(Map<String, dynamic> map) {
     return MigrationServiceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      migrationServiceName: map['migrationServiceName'] == null ? null : pulumi.Output.create<String>(map['migrationServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      migrationServiceName: map['migrationServiceName'] == null ? null : (map['migrationServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

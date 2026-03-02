@@ -68,33 +68,20 @@ class JobArgs {
   /// [startExecutionToken] A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
   /// [template] The template used to create executions for this Job.
   JobArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<JobBinaryAuthorization>? binaryAuthorization,
-    pulumi.Output<String>? client,
-    pulumi.Output<String>? clientVersion,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? launchStage,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? runExecutionToken,
-    pulumi.Output<String>? startExecutionToken,
-    required pulumi.Output<JobTemplate> template,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      binaryAuthorization = pulumi.Input.asOptionalInput<JobBinaryAuthorization>(binaryAuthorization),
-      client = pulumi.Input.asOptionalInput<String>(client),
-      clientVersion = pulumi.Input.asOptionalInput<String>(clientVersion),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      launchStage = pulumi.Input.asOptionalInput<String>(launchStage),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runExecutionToken = pulumi.Input.asOptionalInput<String>(runExecutionToken),
-      startExecutionToken = pulumi.Input.asOptionalInput<String>(startExecutionToken),
-      template = pulumi.Input.asInput<JobTemplate>(template);
+    this.annotations,
+    this.binaryAuthorization,
+    this.client,
+    this.clientVersion,
+    this.deletionProtection,
+    this.labels,
+    this.launchStage,
+    required this.location,
+    this.name,
+    this.project,
+    this.runExecutionToken,
+    this.startExecutionToken,
+    required this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,19 +103,19 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : pulumi.Output.create<JobBinaryAuthorization>(JobBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())),
-      client: map['client'] == null ? null : pulumi.Output.create<String>(map['client'] as String),
-      clientVersion: map['clientVersion'] == null ? null : pulumi.Output.create<String>(map['clientVersion'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      launchStage: map['launchStage'] == null ? null : pulumi.Output.create<String>(map['launchStage'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runExecutionToken: map['runExecutionToken'] == null ? null : pulumi.Output.create<String>(map['runExecutionToken'] as String),
-      startExecutionToken: map['startExecutionToken'] == null ? null : pulumi.Output.create<String>(map['startExecutionToken'] as String),
-      template: pulumi.Output.create<JobTemplate>(JobTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : (JobBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (map['client'] as String).input(),
+      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      launchStage: map['launchStage'] == null ? null : (map['launchStage'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runExecutionToken: map['runExecutionToken'] == null ? null : (map['runExecutionToken'] as String).input(),
+      startExecutionToken: map['startExecutionToken'] == null ? null : (map['startExecutionToken'] as String).input(),
+      template: (JobTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

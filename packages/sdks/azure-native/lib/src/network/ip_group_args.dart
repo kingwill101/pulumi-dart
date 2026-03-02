@@ -28,19 +28,13 @@ class IpGroupArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   IpGroupArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<List<String>>? ipAddresses,
-    pulumi.Output<String>? ipGroupsName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipAddresses = pulumi.Input.asOptionalInput<List<String>>(ipAddresses),
-      ipGroupsName = pulumi.Input.asOptionalInput<String>(ipGroupsName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.id,
+    this.ipAddresses,
+    this.ipGroupsName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class IpGroupArgs {
 
   factory IpGroupArgs.fromMap(Map<String, dynamic> map) {
     return IpGroupArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipAddresses: map['ipAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['ipAddresses'] as List).cast<String>()),
-      ipGroupsName: map['ipGroupsName'] == null ? null : pulumi.Output.create<String>(map['ipGroupsName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      ipGroupsName: map['ipGroupsName'] == null ? null : (map['ipGroupsName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

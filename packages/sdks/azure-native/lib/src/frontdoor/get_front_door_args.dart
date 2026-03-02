@@ -16,11 +16,9 @@ class GetFrontDoorArgs {
   /// [frontDoorName] Name of the Front Door which is globally unique.
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   GetFrontDoorArgs({
-    required pulumi.Output<String> frontDoorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      frontDoorName = pulumi.Input.asInput<String>(frontDoorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.frontDoorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFrontDoorArgs {
 
   factory GetFrontDoorArgs.fromMap(Map<String, dynamic> map) {
     return GetFrontDoorArgs(
-      frontDoorName: pulumi.Output.create<String>(map['frontDoorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      frontDoorName: (map['frontDoorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

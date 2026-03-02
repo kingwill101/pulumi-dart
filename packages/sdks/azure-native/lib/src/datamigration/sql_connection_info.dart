@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information for connecting to SQL database server
 class SqlConnectionInfo {
   /// Additional connection settings
-  final String? additionalSettings;
+  final pulumi.Input<String>? additionalSettings;
   /// Authentication type to use for connection
-  final String? authentication;
+  final pulumi.Input<String>? authentication;
   /// Data source in the format Protocol:MachineName\SQLServerInstanceName,PortNumber
-  final String dataSource;
+  final pulumi.Input<String> dataSource;
   /// Whether to encrypt the connection
-  final bool? encryptConnection;
+  final pulumi.Input<bool>? encryptConnection;
   /// Password credential.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Server platform type for connection
-  final String? platform;
+  final pulumi.Input<String>? platform;
   /// Port for Server
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Represents the ID of an HTTP resource represented by an Azure resource provider.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// server brand version
-  final String? serverBrandVersion;
+  final pulumi.Input<String>? serverBrandVersion;
   /// name of the server
-  final String? serverName;
+  final pulumi.Input<String>? serverName;
   /// server version
-  final String? serverVersion;
+  final pulumi.Input<String>? serverVersion;
   /// Whether to trust the server certificate
-  final bool? trustServerCertificate;
+  final pulumi.Input<bool>? trustServerCertificate;
   /// Type of connection info
   /// Expected value is 'SqlConnectionInfo'.
-  final String type;
+  final pulumi.Input<String> type;
   /// User name
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [SqlConnectionInfo].
   /// [additionalSettings] Additional connection settings
@@ -86,20 +87,20 @@ class SqlConnectionInfo {
 
   factory SqlConnectionInfo.fromMap(Map<String, dynamic> map) {
     return SqlConnectionInfo(
-      additionalSettings: map['additionalSettings'] == null ? null : map['additionalSettings'] as String,
-      authentication: map['authentication'] == null ? null : map['authentication'] as String,
-      dataSource: map['dataSource'] as String,
-      encryptConnection: map['encryptConnection'] == null ? null : map['encryptConnection'] as bool,
-      password: map['password'] == null ? null : map['password'] as String,
-      platform: map['platform'] == null ? null : map['platform'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      serverBrandVersion: map['serverBrandVersion'] == null ? null : map['serverBrandVersion'] as String,
-      serverName: map['serverName'] == null ? null : map['serverName'] as String,
-      serverVersion: map['serverVersion'] == null ? null : map['serverVersion'] as String,
-      trustServerCertificate: map['trustServerCertificate'] == null ? null : map['trustServerCertificate'] as bool,
-      type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      additionalSettings: map['additionalSettings'] == null ? null : (map['additionalSettings'] as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
+      dataSource: (map['dataSource'] as String).input(),
+      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection'] as bool).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      serverBrandVersion: map['serverBrandVersion'] == null ? null : (map['serverBrandVersion'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
+      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate'] as bool).input(),
+      type: (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

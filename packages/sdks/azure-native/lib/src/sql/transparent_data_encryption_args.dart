@@ -26,17 +26,12 @@ class TransparentDataEncryptionArgs {
   /// [state] Specifies the state of the transparent data encryption.
   /// [tdeName] The name of the transparent data encryption configuration.
   TransparentDataEncryptionArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<TransparentDataEncryptionState> state,
-    pulumi.Output<String>? tdeName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      state = pulumi.Input.asInput<TransparentDataEncryptionState>(state),
-      tdeName = pulumi.Input.asOptionalInput<String>(tdeName);
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.state,
+    this.tdeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class TransparentDataEncryptionArgs {
 
   factory TransparentDataEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return TransparentDataEncryptionArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      state: pulumi.Output.create<TransparentDataEncryptionState>(TransparentDataEncryptionState.fromValue(map['state'] as String)),
-      tdeName: map['tdeName'] == null ? null : pulumi.Output.create<String>(map['tdeName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      state: (TransparentDataEncryptionState.fromValue(map['state'] as String)).input(),
+      tdeName: map['tdeName'] == null ? null : (map['tdeName'] as String).input(),
     );
   }
 }

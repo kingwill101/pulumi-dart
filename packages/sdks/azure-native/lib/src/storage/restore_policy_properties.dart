@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The blob service properties for blob restore policy
 class RestorePolicyProperties {
   /// how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
-  final int? days;
+  final pulumi.Input<int>? days;
   /// Blob restore is enabled if set to true.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [RestorePolicyProperties].
   /// [days] how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
@@ -25,8 +26,8 @@ class RestorePolicyProperties {
 
   factory RestorePolicyProperties.fromMap(Map<String, dynamic> map) {
     return RestorePolicyProperties(
-      days: map['days'] == null ? null : map['days'] as int,
-      enabled: map['enabled'] as bool,
+      days: map['days'] == null ? null : (map['days'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

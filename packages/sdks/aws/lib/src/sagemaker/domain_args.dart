@@ -58,35 +58,21 @@ class DomainArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
   DomainArgs({
-    pulumi.Output<String>? appNetworkAccessType,
-    pulumi.Output<String>? appSecurityGroupManagement,
-    required pulumi.Output<String> authMode,
-    pulumi.Output<DomainDefaultSpaceSettings>? defaultSpaceSettings,
-    required pulumi.Output<DomainDefaultUserSettings> defaultUserSettings,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<DomainDomainSettings>? domainSettings,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? region,
-    pulumi.Output<DomainRetentionPolicy>? retentionPolicy,
-    required pulumi.Output<List<String>> subnetIds,
-    pulumi.Output<String>? tagPropagation,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      appNetworkAccessType = pulumi.Input.asOptionalInput<String>(appNetworkAccessType),
-      appSecurityGroupManagement = pulumi.Input.asOptionalInput<String>(appSecurityGroupManagement),
-      authMode = pulumi.Input.asInput<String>(authMode),
-      defaultSpaceSettings = pulumi.Input.asOptionalInput<DomainDefaultSpaceSettings>(defaultSpaceSettings),
-      defaultUserSettings = pulumi.Input.asInput<DomainDefaultUserSettings>(defaultUserSettings),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainSettings = pulumi.Input.asOptionalInput<DomainDomainSettings>(domainSettings),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionPolicy = pulumi.Input.asOptionalInput<DomainRetentionPolicy>(retentionPolicy),
-      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
-      tagPropagation = pulumi.Input.asOptionalInput<String>(tagPropagation),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.appNetworkAccessType,
+    this.appSecurityGroupManagement,
+    required this.authMode,
+    this.defaultSpaceSettings,
+    required this.defaultUserSettings,
+    required this.domainName,
+    this.domainSettings,
+    this.kmsKeyId,
+    this.region,
+    this.retentionPolicy,
+    required this.subnetIds,
+    this.tagPropagation,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      appNetworkAccessType: map['appNetworkAccessType'] == null ? null : pulumi.Output.create<String>(map['appNetworkAccessType'] as String),
-      appSecurityGroupManagement: map['appSecurityGroupManagement'] == null ? null : pulumi.Output.create<String>(map['appSecurityGroupManagement'] as String),
-      authMode: pulumi.Output.create<String>(map['authMode'] as String),
-      defaultSpaceSettings: map['defaultSpaceSettings'] == null ? null : pulumi.Output.create<DomainDefaultSpaceSettings>(DomainDefaultSpaceSettings.fromMap((map['defaultSpaceSettings'] as Map).cast<String, dynamic>())),
-      defaultUserSettings: pulumi.Output.create<DomainDefaultUserSettings>(DomainDefaultUserSettings.fromMap((map['defaultUserSettings'] as Map).cast<String, dynamic>())),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainSettings: map['domainSettings'] == null ? null : pulumi.Output.create<DomainDomainSettings>(DomainDomainSettings.fromMap((map['domainSettings'] as Map).cast<String, dynamic>())),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionPolicy: map['retentionPolicy'] == null ? null : pulumi.Output.create<DomainRetentionPolicy>(DomainRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())),
-      subnetIds: pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tagPropagation: map['tagPropagation'] == null ? null : pulumi.Output.create<String>(map['tagPropagation'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      appNetworkAccessType: map['appNetworkAccessType'] == null ? null : (map['appNetworkAccessType'] as String).input(),
+      appSecurityGroupManagement: map['appSecurityGroupManagement'] == null ? null : (map['appSecurityGroupManagement'] as String).input(),
+      authMode: (map['authMode'] as String).input(),
+      defaultSpaceSettings: map['defaultSpaceSettings'] == null ? null : (DomainDefaultSpaceSettings.fromMap((map['defaultSpaceSettings'] as Map).cast<String, dynamic>())).input(),
+      defaultUserSettings: (DomainDefaultUserSettings.fromMap((map['defaultUserSettings'] as Map).cast<String, dynamic>())).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainSettings: map['domainSettings'] == null ? null : (DomainDomainSettings.fromMap((map['domainSettings'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (DomainRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      tagPropagation: map['tagPropagation'] == null ? null : (map['tagPropagation'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

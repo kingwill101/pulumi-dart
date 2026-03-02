@@ -22,13 +22,10 @@ class ProjectMetadataItemArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [value] The value to set for the given metadata key.
   ProjectMetadataItemArgs({
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> value,
-  }) :
-      key = pulumi.Input.asInput<String>(key),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      value = pulumi.Input.asInput<String>(value);
+    required this.key,
+    this.project,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class ProjectMetadataItemArgs {
 
   factory ProjectMetadataItemArgs.fromMap(Map<String, dynamic> map) {
     return ProjectMetadataItemArgs(
-      key: pulumi.Output.create<String>(map['key'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      key: (map['key'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

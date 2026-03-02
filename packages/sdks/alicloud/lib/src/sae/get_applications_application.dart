@@ -6,109 +6,109 @@ import 'get_applications_application_oss_mount_detail.dart';
 
 class GetApplicationsApplication {
   /// The ARN of the RAM role required when pulling images across accounts.
-  final String acrAssumeRoleArn;
+  final pulumi.Input<String> acrAssumeRoleArn;
   /// The ID of the ACR EE instance.
-  final String acrInstanceId;
+  final pulumi.Input<String> acrInstanceId;
   /// Application description information. No more than 1024 characters.
-  final String appDescription;
+  final pulumi.Input<String> appDescription;
   /// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
-  final String appName;
+  final pulumi.Input<String> appName;
   /// The first ID of the resource.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-  final String command;
+  final pulumi.Input<String> command;
   /// Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
-  final String commandArgs;
+  final pulumi.Input<String> commandArgs;
   /// ConfigMap mount description.
-  final String configMapMountDesc;
+  final pulumi.Input<String> configMapMountDesc;
   /// The CPU required for each instance, in millicores, cannot be 0.
-  final int cpu;
+  final pulumi.Input<int> cpu;
   /// Indicates That the Application of the Creation Time.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Custom host mapping in the container. For example: [{"hostName":"samplehost","ip":"127.0.0.1"}].
-  final String customHostAlias;
+  final pulumi.Input<String> customHostAlias;
   /// The operating environment used by the Pandora application.
-  final String edasContainerVersion;
+  final pulumi.Input<String> edasContainerVersion;
   /// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
-  final String envs;
+  final pulumi.Input<String> envs;
   /// The ID of the Application.
-  final String id;
+  final pulumi.Input<String> id;
   /// Mirror address. Only Image type applications can configure the mirror address.
-  final String imageUrl;
+  final pulumi.Input<String> imageUrl;
   /// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
-  final String jarStartArgs;
+  final pulumi.Input<String> jarStartArgs;
   /// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
-  final String jarStartOptions;
+  final pulumi.Input<String> jarStartOptions;
   /// The JDK version that the deployment package depends on. Image type applications are not supported.
-  final String jdk;
+  final pulumi.Input<String> jdk;
   /// Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
-  final String liveness;
+  final pulumi.Input<String> liveness;
   /// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU.
-  final int memory;
+  final pulumi.Input<int> memory;
   /// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
-  final int minReadyInstances;
+  final pulumi.Input<int> minReadyInstances;
   /// Mount description information.
-  final List<GetApplicationsApplicationMountDesc> mountDescs;
+  final pulumi.Input<List<GetApplicationsApplicationMountDesc>> mountDescs;
   /// Mount point of NAS in application VPC.
-  final String mountHost;
+  final pulumi.Input<String> mountHost;
   /// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
-  final String namespaceId;
+  final pulumi.Input<String> namespaceId;
   /// ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
-  final String nasId;
+  final pulumi.Input<String> nasId;
   /// OSS AccessKey ID.
-  final String ossAkId;
+  final pulumi.Input<String> ossAkId;
   /// OSS  AccessKey Secret.
-  final String ossAkSecret;
+  final pulumi.Input<String> ossAkSecret;
   /// OSS mount description information.
-  final String ossMountDescs;
+  final pulumi.Input<String> ossMountDescs;
   /// The OSS mount detail.
-  final List<GetApplicationsApplicationOssMountDetail> ossMountDetails;
+  final pulumi.Input<List<GetApplicationsApplicationOssMountDetail>> ossMountDetails;
   /// Application package type. Support FatJar, War and Image.
-  final String packageType;
+  final pulumi.Input<String> packageType;
   /// Deployment package address. Only FatJar or War type applications can configure the deployment package address.
-  final String packageUrl;
+  final pulumi.Input<String> packageUrl;
   /// The version number of the deployment package. Required when the Package Type is War and FatJar.
-  final String packageVersion;
+  final pulumi.Input<String> packageVersion;
   /// The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
-  final String phpArmsConfigLocation;
+  final pulumi.Input<String> phpArmsConfigLocation;
   /// PHP configuration file content.
-  final String phpConfig;
+  final pulumi.Input<String> phpConfig;
   /// PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
-  final String phpConfigLocation;
+  final pulumi.Input<String> phpConfigLocation;
   /// Execute the script after startup, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
-  final String postStart;
+  final pulumi.Input<String> postStart;
   /// Execute the script before stopping, the format is like: {"exec":{"command":["cat","/etc/group"]}}.
-  final String preStop;
+  final pulumi.Input<String> preStop;
   /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds ":2}.
-  final String readiness;
-  final String regionId;
+  final pulumi.Input<String> readiness;
+  final pulumi.Input<String> regionId;
   /// Initial number of instances.
-  final int replicas;
-  final String repoName;
-  final String repoNamespace;
-  final String repoOriginType;
+  final pulumi.Input<int> replicas;
+  final pulumi.Input<String> repoName;
+  final pulumi.Input<String> repoNamespace;
+  final pulumi.Input<String> repoOriginType;
   /// Security group ID.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// SLS  configuration.
-  final String slsConfigs;
+  final pulumi.Input<String> slsConfigs;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
-  final int terminationGracePeriodSeconds;
+  final pulumi.Input<int> terminationGracePeriodSeconds;
   /// Time zone, the default value is Asia/Shanghai.
-  final String timezone;
+  final pulumi.Input<String> timezone;
   /// Tomcat file configuration, set to "" or "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL.
-  final String tomcatConfig;
+  final pulumi.Input<String> tomcatConfig;
   /// The VPC corresponding to the SAE namespace. In SAE, a namespace can only correspond to one VPC and cannot be modified. Creating a SAE application in the namespace for the first time will form a binding relationship. Multiple namespaces can correspond to a VPC. If you leave it blank, it will default to the VPC ID bound to the namespace.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
-  final String warStartOptions;
+  final pulumi.Input<String> warStartOptions;
   /// The version of tomcat that the deployment package depends on. Image type applications are not supported.
-  final String webContainer;
+  final pulumi.Input<String> webContainer;
 
   /// Creates a new [GetApplicationsApplication].
   /// [acrAssumeRoleArn] The ARN of the RAM role required when pulling images across accounts.
@@ -245,14 +245,14 @@ class GetApplicationsApplication {
       'liveness': liveness,
       'memory': memory,
       'minReadyInstances': minReadyInstances,
-      'mountDescs': pulumi.Input.encodeList<GetApplicationsApplicationMountDesc, Map<String, dynamic>>(mountDescs, (value) => value.toMap()),
+      'mountDescs': pulumi.Input.mapInputValue<List<GetApplicationsApplicationMountDesc>, List<Map<String, dynamic>>>(mountDescs, (value) => pulumi.Input.encodeList<GetApplicationsApplicationMountDesc, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mountHost': mountHost,
       'namespaceId': namespaceId,
       'nasId': nasId,
       'ossAkId': ossAkId,
       'ossAkSecret': ossAkSecret,
       'ossMountDescs': ossMountDescs,
-      'ossMountDetails': pulumi.Input.encodeList<GetApplicationsApplicationOssMountDetail, Map<String, dynamic>>(ossMountDetails, (value) => value.toMap()),
+      'ossMountDetails': pulumi.Input.mapInputValue<List<GetApplicationsApplicationOssMountDetail>, List<Map<String, dynamic>>>(ossMountDetails, (value) => pulumi.Input.encodeList<GetApplicationsApplicationOssMountDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'packageType': packageType,
       'packageUrl': packageUrl,
       'packageVersion': packageVersion,
@@ -283,60 +283,60 @@ class GetApplicationsApplication {
 
   factory GetApplicationsApplication.fromMap(Map<String, dynamic> map) {
     return GetApplicationsApplication(
-      acrAssumeRoleArn: map['acrAssumeRoleArn'] as String,
-      acrInstanceId: map['acrInstanceId'] as String,
-      appDescription: map['appDescription'] as String,
-      appName: map['appName'] as String,
-      applicationId: map['applicationId'] as String,
-      command: map['command'] as String,
-      commandArgs: map['commandArgs'] as String,
-      configMapMountDesc: map['configMapMountDesc'] as String,
-      cpu: map['cpu'] as int,
-      createTime: map['createTime'] as String,
-      customHostAlias: map['customHostAlias'] as String,
-      edasContainerVersion: map['edasContainerVersion'] as String,
-      envs: map['envs'] as String,
-      id: map['id'] as String,
-      imageUrl: map['imageUrl'] as String,
-      jarStartArgs: map['jarStartArgs'] as String,
-      jarStartOptions: map['jarStartOptions'] as String,
-      jdk: map['jdk'] as String,
-      liveness: map['liveness'] as String,
-      memory: map['memory'] as int,
-      minReadyInstances: map['minReadyInstances'] as int,
-      mountDescs: pulumi.Input.decodeList<GetApplicationsApplicationMountDesc>(map['mountDescs'], (value) => GetApplicationsApplicationMountDesc.fromMap((value as Map).cast<String, dynamic>())),
-      mountHost: map['mountHost'] as String,
-      namespaceId: map['namespaceId'] as String,
-      nasId: map['nasId'] as String,
-      ossAkId: map['ossAkId'] as String,
-      ossAkSecret: map['ossAkSecret'] as String,
-      ossMountDescs: map['ossMountDescs'] as String,
-      ossMountDetails: pulumi.Input.decodeList<GetApplicationsApplicationOssMountDetail>(map['ossMountDetails'], (value) => GetApplicationsApplicationOssMountDetail.fromMap((value as Map).cast<String, dynamic>())),
-      packageType: map['packageType'] as String,
-      packageUrl: map['packageUrl'] as String,
-      packageVersion: map['packageVersion'] as String,
-      phpArmsConfigLocation: map['phpArmsConfigLocation'] as String,
-      phpConfig: map['phpConfig'] as String,
-      phpConfigLocation: map['phpConfigLocation'] as String,
-      postStart: map['postStart'] as String,
-      preStop: map['preStop'] as String,
-      readiness: map['readiness'] as String,
-      regionId: map['regionId'] as String,
-      replicas: map['replicas'] as int,
-      repoName: map['repoName'] as String,
-      repoNamespace: map['repoNamespace'] as String,
-      repoOriginType: map['repoOriginType'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      slsConfigs: map['slsConfigs'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] as int,
-      timezone: map['timezone'] as String,
-      tomcatConfig: map['tomcatConfig'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      warStartOptions: map['warStartOptions'] as String,
-      webContainer: map['webContainer'] as String,
+      acrAssumeRoleArn: (map['acrAssumeRoleArn'] as String).input(),
+      acrInstanceId: (map['acrInstanceId'] as String).input(),
+      appDescription: (map['appDescription'] as String).input(),
+      appName: (map['appName'] as String).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      command: (map['command'] as String).input(),
+      commandArgs: (map['commandArgs'] as String).input(),
+      configMapMountDesc: (map['configMapMountDesc'] as String).input(),
+      cpu: (map['cpu'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      customHostAlias: (map['customHostAlias'] as String).input(),
+      edasContainerVersion: (map['edasContainerVersion'] as String).input(),
+      envs: (map['envs'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageUrl: (map['imageUrl'] as String).input(),
+      jarStartArgs: (map['jarStartArgs'] as String).input(),
+      jarStartOptions: (map['jarStartOptions'] as String).input(),
+      jdk: (map['jdk'] as String).input(),
+      liveness: (map['liveness'] as String).input(),
+      memory: (map['memory'] as int).input(),
+      minReadyInstances: (map['minReadyInstances'] as int).input(),
+      mountDescs: (pulumi.Input.decodeList<GetApplicationsApplicationMountDesc>(map['mountDescs'], (value) => GetApplicationsApplicationMountDesc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mountHost: (map['mountHost'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      nasId: (map['nasId'] as String).input(),
+      ossAkId: (map['ossAkId'] as String).input(),
+      ossAkSecret: (map['ossAkSecret'] as String).input(),
+      ossMountDescs: (map['ossMountDescs'] as String).input(),
+      ossMountDetails: (pulumi.Input.decodeList<GetApplicationsApplicationOssMountDetail>(map['ossMountDetails'], (value) => GetApplicationsApplicationOssMountDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageType: (map['packageType'] as String).input(),
+      packageUrl: (map['packageUrl'] as String).input(),
+      packageVersion: (map['packageVersion'] as String).input(),
+      phpArmsConfigLocation: (map['phpArmsConfigLocation'] as String).input(),
+      phpConfig: (map['phpConfig'] as String).input(),
+      phpConfigLocation: (map['phpConfigLocation'] as String).input(),
+      postStart: (map['postStart'] as String).input(),
+      preStop: (map['preStop'] as String).input(),
+      readiness: (map['readiness'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      replicas: (map['replicas'] as int).input(),
+      repoName: (map['repoName'] as String).input(),
+      repoNamespace: (map['repoNamespace'] as String).input(),
+      repoOriginType: (map['repoOriginType'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      slsConfigs: (map['slsConfigs'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      terminationGracePeriodSeconds: (map['terminationGracePeriodSeconds'] as int).input(),
+      timezone: (map['timezone'] as String).input(),
+      tomcatConfig: (map['tomcatConfig'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      warStartOptions: (map['warStartOptions'] as String).input(),
+      webContainer: (map['webContainer'] as String).input(),
     );
   }
 }

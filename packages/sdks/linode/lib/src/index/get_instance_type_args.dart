@@ -16,11 +16,9 @@ class GetInstanceTypeArgs {
   /// [id] Label used to identify instance type
   /// [label] The Linode Type's label is for display purposes only
   GetInstanceTypeArgs({
-    required pulumi.Output<String> id,
-    pulumi.Output<String>? label,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      label = pulumi.Input.asOptionalInput<String>(label);
+    required this.id,
+    this.label,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInstanceTypeArgs {
 
   factory GetInstanceTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
+      id: (map['id'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
     );
   }
 }

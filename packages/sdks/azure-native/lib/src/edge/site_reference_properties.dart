@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Site Reference Properties
 class SiteReferenceProperties {
   /// Azure Resource ID for Site
-  final String siteId;
+  final pulumi.Input<String> siteId;
 
   /// Creates a new [SiteReferenceProperties].
   /// [siteId] Azure Resource ID for Site
@@ -20,7 +21,7 @@ class SiteReferenceProperties {
 
   factory SiteReferenceProperties.fromMap(Map<String, dynamic> map) {
     return SiteReferenceProperties(
-      siteId: map['siteId'] as String,
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetAuthorizedOrgsDescArgs {
   /// [accessPolicyId] Required.
   /// [authorizedOrgsDescId] Required.
   GetAuthorizedOrgsDescArgs({
-    required pulumi.Output<String> accessPolicyId,
-    required pulumi.Output<String> authorizedOrgsDescId,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
-      authorizedOrgsDescId = pulumi.Input.asInput<String>(authorizedOrgsDescId);
+    required this.accessPolicyId,
+    required this.authorizedOrgsDescId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetAuthorizedOrgsDescArgs {
 
   factory GetAuthorizedOrgsDescArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizedOrgsDescArgs(
-      accessPolicyId: pulumi.Output.create<String>(map['accessPolicyId'] as String),
-      authorizedOrgsDescId: pulumi.Output.create<String>(map['authorizedOrgsDescId'] as String),
+      accessPolicyId: (map['accessPolicyId'] as String).input(),
+      authorizedOrgsDescId: (map['authorizedOrgsDescId'] as String).input(),
     );
   }
 }

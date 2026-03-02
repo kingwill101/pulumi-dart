@@ -19,13 +19,10 @@ class GetCloudLinkArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCloudLinkArgs({
-    required pulumi.Output<String> cloudLinkName,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cloudLinkName = pulumi.Input.asInput<String>(cloudLinkName),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cloudLinkName,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCloudLinkArgs {
 
   factory GetCloudLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudLinkArgs(
-      cloudLinkName: pulumi.Output.create<String>(map['cloudLinkName'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cloudLinkName: (map['cloudLinkName'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

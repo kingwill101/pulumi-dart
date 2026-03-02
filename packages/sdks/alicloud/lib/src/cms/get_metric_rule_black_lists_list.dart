@@ -5,32 +5,32 @@ import 'get_metric_rule_black_lists_list_metric.dart';
 
 class GetMetricRuleBlackListsList {
   /// Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
-  final String category;
+  final pulumi.Input<String> category;
   /// The timestamp for creating an alert blacklist policy.Unit: milliseconds.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The effective time range of the alert blacklist policy.
-  final String effectiveTime;
+  final pulumi.Input<String> effectiveTime;
   /// The start timestamp of the alert blacklist policy.Unit: milliseconds.
-  final String enableEndTime;
+  final pulumi.Input<String> enableEndTime;
   /// The end timestamp of the alert blacklist policy.Unit: milliseconds.
-  final String enableStartTime;
-  final String id;
+  final pulumi.Input<String> enableStartTime;
+  final pulumi.Input<String> id;
   /// The list of instances of cloud services specified in the alert blacklist policy.
-  final List<String> instances;
+  final pulumi.Input<List<String>> instances;
   /// The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
-  final bool isEnable;
+  final pulumi.Input<bool> isEnable;
   /// The first ID of the resource
-  final String metricRuleBlackListId;
+  final pulumi.Input<String> metricRuleBlackListId;
   /// The name of the alert blacklist policy.
-  final String metricRuleBlackListName;
+  final pulumi.Input<String> metricRuleBlackListName;
   /// Monitoring metrics in the instance.
-  final List<GetMetricRuleBlackListsListMetric> metrics;
+  final pulumi.Input<List<GetMetricRuleBlackListsListMetric>> metrics;
   /// The data namespace of the cloud service.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
-  final String scopeType;
+  final pulumi.Input<String> scopeType;
   /// Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
-  final List<String> scopeValues;
+  final pulumi.Input<List<String>> scopeValues;
 
   /// Creates a new [GetMetricRuleBlackListsList].
   /// [category] Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
@@ -76,7 +76,7 @@ class GetMetricRuleBlackListsList {
       'isEnable': isEnable,
       'metricRuleBlackListId': metricRuleBlackListId,
       'metricRuleBlackListName': metricRuleBlackListName,
-      'metrics': pulumi.Input.encodeList<GetMetricRuleBlackListsListMetric, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'metrics': pulumi.Input.mapInputValue<List<GetMetricRuleBlackListsListMetric>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<GetMetricRuleBlackListsListMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'namespace': namespace,
       'scopeType': scopeType,
       'scopeValues': scopeValues,
@@ -85,20 +85,20 @@ class GetMetricRuleBlackListsList {
 
   factory GetMetricRuleBlackListsList.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleBlackListsList(
-      category: map['category'] as String,
-      createTime: map['createTime'] as String,
-      effectiveTime: map['effectiveTime'] as String,
-      enableEndTime: map['enableEndTime'] as String,
-      enableStartTime: map['enableStartTime'] as String,
-      id: map['id'] as String,
-      instances: (map['instances'] as List).cast<String>(),
-      isEnable: map['isEnable'] as bool,
-      metricRuleBlackListId: map['metricRuleBlackListId'] as String,
-      metricRuleBlackListName: map['metricRuleBlackListName'] as String,
-      metrics: pulumi.Input.decodeList<GetMetricRuleBlackListsListMetric>(map['metrics'], (value) => GetMetricRuleBlackListsListMetric.fromMap((value as Map).cast<String, dynamic>())),
-      namespace: map['namespace'] as String,
-      scopeType: map['scopeType'] as String,
-      scopeValues: (map['scopeValues'] as List).cast<String>(),
+      category: (map['category'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      effectiveTime: (map['effectiveTime'] as String).input(),
+      enableEndTime: (map['enableEndTime'] as String).input(),
+      enableStartTime: (map['enableStartTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instances: ((map['instances'] as List).cast<String>()).input(),
+      isEnable: (map['isEnable'] as bool).input(),
+      metricRuleBlackListId: (map['metricRuleBlackListId'] as String).input(),
+      metricRuleBlackListName: (map['metricRuleBlackListName'] as String).input(),
+      metrics: (pulumi.Input.decodeList<GetMetricRuleBlackListsListMetric>(map['metrics'], (value) => GetMetricRuleBlackListsListMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: (map['namespace'] as String).input(),
+      scopeType: (map['scopeType'] as String).input(),
+      scopeValues: ((map['scopeValues'] as List).cast<String>()).input(),
     );
   }
 }

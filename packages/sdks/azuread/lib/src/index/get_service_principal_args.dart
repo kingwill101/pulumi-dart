@@ -21,13 +21,10 @@ class GetServicePrincipalArgs {
   /// [displayName] The display name of the application associated with this service principal.
   /// [objectId] The object ID of the service principal.
   GetServicePrincipalArgs({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? objectId,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId);
+    this.clientId,
+    this.displayName,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetServicePrincipalArgs {
 
   factory GetServicePrincipalArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalArgs(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class ReplicationProtectionClusterArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
   ReplicationProtectionClusterArgs({
-    required pulumi.Output<String> fabricName,
-    pulumi.Output<ReplicationProtectionClusterProperties>? properties,
-    required pulumi.Output<String> protectionContainerName,
-    pulumi.Output<String>? replicationProtectionClusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      properties = pulumi.Input.asOptionalInput<ReplicationProtectionClusterProperties>(properties),
-      protectionContainerName = pulumi.Input.asInput<String>(protectionContainerName),
-      replicationProtectionClusterName = pulumi.Input.asOptionalInput<String>(replicationProtectionClusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.fabricName,
+    this.properties,
+    required this.protectionContainerName,
+    this.replicationProtectionClusterName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ReplicationProtectionClusterArgs {
 
   factory ReplicationProtectionClusterArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationProtectionClusterArgs(
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ReplicationProtectionClusterProperties>(ReplicationProtectionClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      protectionContainerName: pulumi.Output.create<String>(map['protectionContainerName'] as String),
-      replicationProtectionClusterName: map['replicationProtectionClusterName'] == null ? null : pulumi.Output.create<String>(map['replicationProtectionClusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      fabricName: (map['fabricName'] as String).input(),
+      properties: map['properties'] == null ? null : (ReplicationProtectionClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      protectionContainerName: (map['protectionContainerName'] as String).input(),
+      replicationProtectionClusterName: map['replicationProtectionClusterName'] == null ? null : (map['replicationProtectionClusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

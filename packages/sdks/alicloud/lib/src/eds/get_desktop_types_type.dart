@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDesktopTypesType {
   /// The CPU cores.
-  final String cpuCount;
+  final pulumi.Input<String> cpuCount;
   /// The size of the data disk. Unit: GiB.
-  final String dataDiskSize;
+  final pulumi.Input<String> dataDiskSize;
   /// Specification ID.
-  final String desktopTypeId;
+  final pulumi.Input<String> desktopTypeId;
   /// The GPU cores.
-  final double gpuCount;
+  final pulumi.Input<double> gpuCount;
   /// The GPU video memory.
-  final String gpuSpec;
+  final pulumi.Input<String> gpuSpec;
   /// The ID of the Desktop Type.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Specification family.
-  final String instanceTypeFamily;
+  final pulumi.Input<String> instanceTypeFamily;
   /// The Memory size. Unit: MiB.
-  final String memorySize;
+  final pulumi.Input<String> memorySize;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The size of the system disk. Unit: GiB.
-  final String systemDiskSize;
+  final pulumi.Input<String> systemDiskSize;
 
   /// Creates a new [GetDesktopTypesType].
   /// [cpuCount] The CPU cores.
@@ -64,16 +65,16 @@ class GetDesktopTypesType {
 
   factory GetDesktopTypesType.fromMap(Map<String, dynamic> map) {
     return GetDesktopTypesType(
-      cpuCount: map['cpuCount'] as String,
-      dataDiskSize: map['dataDiskSize'] as String,
-      desktopTypeId: map['desktopTypeId'] as String,
-      gpuCount: map['gpuCount'] as double,
-      gpuSpec: map['gpuSpec'] as String,
-      id: map['id'] as String,
-      instanceTypeFamily: map['instanceTypeFamily'] as String,
-      memorySize: map['memorySize'] as String,
-      status: map['status'] as String,
-      systemDiskSize: map['systemDiskSize'] as String,
+      cpuCount: (map['cpuCount'] as String).input(),
+      dataDiskSize: (map['dataDiskSize'] as String).input(),
+      desktopTypeId: (map['desktopTypeId'] as String).input(),
+      gpuCount: (map['gpuCount'] as double).input(),
+      gpuSpec: (map['gpuSpec'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceTypeFamily: (map['instanceTypeFamily'] as String).input(),
+      memorySize: (map['memorySize'] as String).input(),
+      status: (map['status'] as String).input(),
+      systemDiskSize: (map['systemDiskSize'] as String).input(),
     );
   }
 }

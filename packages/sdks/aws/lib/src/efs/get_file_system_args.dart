@@ -22,15 +22,11 @@ class GetFileSystemArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Restricts the list to the file system with these tags.
   GetFileSystemArgs({
-    pulumi.Output<String>? creationToken,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      creationToken = pulumi.Input.asOptionalInput<String>(creationToken),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.creationToken,
+    this.fileSystemId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFileSystemArgs {
 
   factory GetFileSystemArgs.fromMap(Map<String, dynamic> map) {
     return GetFileSystemArgs(
-      creationToken: map['creationToken'] == null ? null : pulumi.Output.create<String>(map['creationToken'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      creationToken: map['creationToken'] == null ? null : (map['creationToken'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

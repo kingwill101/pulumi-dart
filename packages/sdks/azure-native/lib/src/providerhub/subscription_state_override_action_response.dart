@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionStateOverrideActionResponse {
   /// The action.
-  final String action;
+  final pulumi.Input<String> action;
   /// The state.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [SubscriptionStateOverrideActionResponse].
   /// [action] The action.
@@ -24,8 +25,8 @@ class SubscriptionStateOverrideActionResponse {
 
   factory SubscriptionStateOverrideActionResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionStateOverrideActionResponse(
-      action: map['action'] as String,
-      state: map['state'] as String,
+      action: (map['action'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_repository_credential_response.dart';
 
 /// IoT edge agent details is optional, this will be used for download system Agent module while bootstrapping IoT Role if specified.
 class IoTEdgeAgentInfoResponse {
   /// Name of the IoT edge agent image.
-  final String imageName;
+  final pulumi.Input<String> imageName;
   /// Image repository details.
-  final ImageRepositoryCredentialResponse? imageRepository;
+  final pulumi.Input<ImageRepositoryCredentialResponse>? imageRepository;
   /// Image Tag.
-  final String tag;
+  final pulumi.Input<String> tag;
 
   /// Creates a new [IoTEdgeAgentInfoResponse].
   /// [imageName] Name of the IoT edge agent image.
@@ -24,16 +25,16 @@ class IoTEdgeAgentInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'imageName': imageName,
-      'imageRepository': ?imageRepository == null ? null : imageRepository!.toMap(),
+      'imageRepository': ?pulumi.Input.mapOptionalInputValue<ImageRepositoryCredentialResponse, Map<String, dynamic>>(imageRepository, (value) => value.toMap()),
       'tag': tag,
     };
   }
 
   factory IoTEdgeAgentInfoResponse.fromMap(Map<String, dynamic> map) {
     return IoTEdgeAgentInfoResponse(
-      imageName: map['imageName'] as String,
-      imageRepository: map['imageRepository'] == null ? null : ImageRepositoryCredentialResponse.fromMap((map['imageRepository'] as Map).cast<String, dynamic>()),
-      tag: map['tag'] as String,
+      imageName: (map['imageName'] as String).input(),
+      imageRepository: map['imageRepository'] == null ? null : (ImageRepositoryCredentialResponse.fromMap((map['imageRepository'] as Map).cast<String, dynamic>())).input(),
+      tag: (map['tag'] as String).input(),
     );
   }
 }

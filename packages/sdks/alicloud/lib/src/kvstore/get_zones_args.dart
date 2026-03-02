@@ -25,17 +25,12 @@ class GetZonesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [productType] Optional.
   GetZonesArgs({
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? instanceChargeType,
-    pulumi.Output<bool>? multi,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? productType,
-  }) :
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      instanceChargeType = pulumi.Input.asOptionalInput<String>(instanceChargeType),
-      multi = pulumi.Input.asOptionalInput<bool>(multi),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      productType = pulumi.Input.asOptionalInput<String>(productType);
+    this.engine,
+    this.instanceChargeType,
+    this.multi,
+    this.outputFile,
+    this.productType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      instanceChargeType: map['instanceChargeType'] == null ? null : pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      multi: map['multi'] == null ? null : pulumi.Output.create<bool>(map['multi'] as bool),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      productType: map['productType'] == null ? null : pulumi.Output.create<String>(map['productType'] as String),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      multi: map['multi'] == null ? null : (map['multi'] as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
     );
   }
 }

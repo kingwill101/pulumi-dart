@@ -24,15 +24,11 @@ class GroupArgs {
   /// [parentManagementGroupId] The ID of the Parent Management Group.
   /// [subscriptionIds] A list of Subscription GUIDs which should be assigned to the Management Group.
   GroupArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentManagementGroupId,
-    pulumi.Output<List<String>>? subscriptionIds,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentManagementGroupId = pulumi.Input.asOptionalInput<String>(parentManagementGroupId),
-      subscriptionIds = pulumi.Input.asOptionalInput<List<String>>(subscriptionIds);
+    this.displayName,
+    this.name,
+    this.parentManagementGroupId,
+    this.subscriptionIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentManagementGroupId: map['parentManagementGroupId'] == null ? null : pulumi.Output.create<String>(map['parentManagementGroupId'] as String),
-      subscriptionIds: map['subscriptionIds'] == null ? null : pulumi.Output.create<List<String>>((map['subscriptionIds'] as List).cast<String>()),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentManagementGroupId: map['parentManagementGroupId'] == null ? null : (map['parentManagementGroupId'] as String).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedNotificationRuleResponse {
   /// The actions.
-  final List<String>? actions;
+  final pulumi.Input<List<String>>? actions;
   /// The actions on failed operation.
-  final List<String>? actionsOnFailedOperation;
+  final pulumi.Input<List<String>>? actionsOnFailedOperation;
   /// The fast path actions.
-  final List<String>? fastPathActions;
+  final pulumi.Input<List<String>>? fastPathActions;
   /// The fast path action on failed operation.
-  final List<String>? fastPathActionsOnFailedOperation;
+  final pulumi.Input<List<String>>? fastPathActionsOnFailedOperation;
   /// This is a TimeSpan property.
-  final String? linkedNotificationTimeout;
+  final pulumi.Input<String>? linkedNotificationTimeout;
 
   /// Creates a new [LinkedNotificationRuleResponse].
   /// [actions] The actions.
@@ -39,11 +40,11 @@ class LinkedNotificationRuleResponse {
 
   factory LinkedNotificationRuleResponse.fromMap(Map<String, dynamic> map) {
     return LinkedNotificationRuleResponse(
-      actions: map['actions'] == null ? null : (map['actions'] as List).cast<String>(),
-      actionsOnFailedOperation: map['actionsOnFailedOperation'] == null ? null : (map['actionsOnFailedOperation'] as List).cast<String>(),
-      fastPathActions: map['fastPathActions'] == null ? null : (map['fastPathActions'] as List).cast<String>(),
-      fastPathActionsOnFailedOperation: map['fastPathActionsOnFailedOperation'] == null ? null : (map['fastPathActionsOnFailedOperation'] as List).cast<String>(),
-      linkedNotificationTimeout: map['linkedNotificationTimeout'] == null ? null : map['linkedNotificationTimeout'] as String,
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      actionsOnFailedOperation: map['actionsOnFailedOperation'] == null ? null : ((map['actionsOnFailedOperation'] as List).cast<String>()).input(),
+      fastPathActions: map['fastPathActions'] == null ? null : ((map['fastPathActions'] as List).cast<String>()).input(),
+      fastPathActionsOnFailedOperation: map['fastPathActionsOnFailedOperation'] == null ? null : ((map['fastPathActionsOnFailedOperation'] as List).cast<String>()).input(),
+      linkedNotificationTimeout: map['linkedNotificationTimeout'] == null ? null : (map['linkedNotificationTimeout'] as String).input(),
     );
   }
 }

@@ -37,27 +37,17 @@ class TimeSeriesDatabaseConnectionState {
   /// [kustoTableName] Name of the Kusto Table. Defaults to `AdtPropertyEvents`. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Digital Twins Time Series Database Connection. Changing this forces a new resource to be created.
   TimeSeriesDatabaseConnectionState({
-    pulumi.Output<String>? digitalTwinsId,
-    pulumi.Output<String>? eventhubConsumerGroupName,
-    pulumi.Output<String>? eventhubName,
-    pulumi.Output<String>? eventhubNamespaceEndpointUri,
-    pulumi.Output<String>? eventhubNamespaceId,
-    pulumi.Output<String>? kustoClusterId,
-    pulumi.Output<String>? kustoClusterUri,
-    pulumi.Output<String>? kustoDatabaseName,
-    pulumi.Output<String>? kustoTableName,
-    pulumi.Output<String>? name,
-  }) :
-      digitalTwinsId = pulumi.Input.asOptionalInput<String>(digitalTwinsId),
-      eventhubConsumerGroupName = pulumi.Input.asOptionalInput<String>(eventhubConsumerGroupName),
-      eventhubName = pulumi.Input.asOptionalInput<String>(eventhubName),
-      eventhubNamespaceEndpointUri = pulumi.Input.asOptionalInput<String>(eventhubNamespaceEndpointUri),
-      eventhubNamespaceId = pulumi.Input.asOptionalInput<String>(eventhubNamespaceId),
-      kustoClusterId = pulumi.Input.asOptionalInput<String>(kustoClusterId),
-      kustoClusterUri = pulumi.Input.asOptionalInput<String>(kustoClusterUri),
-      kustoDatabaseName = pulumi.Input.asOptionalInput<String>(kustoDatabaseName),
-      kustoTableName = pulumi.Input.asOptionalInput<String>(kustoTableName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.digitalTwinsId,
+    this.eventhubConsumerGroupName,
+    this.eventhubName,
+    this.eventhubNamespaceEndpointUri,
+    this.eventhubNamespaceId,
+    this.kustoClusterId,
+    this.kustoClusterUri,
+    this.kustoDatabaseName,
+    this.kustoTableName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class TimeSeriesDatabaseConnectionState {
 
   factory TimeSeriesDatabaseConnectionState.fromMap(Map<String, dynamic> map) {
     return TimeSeriesDatabaseConnectionState(
-      digitalTwinsId: map['digitalTwinsId'] == null ? null : pulumi.Output.create<String>(map['digitalTwinsId'] as String),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : pulumi.Output.create<String>(map['eventhubConsumerGroupName'] as String),
-      eventhubName: map['eventhubName'] == null ? null : pulumi.Output.create<String>(map['eventhubName'] as String),
-      eventhubNamespaceEndpointUri: map['eventhubNamespaceEndpointUri'] == null ? null : pulumi.Output.create<String>(map['eventhubNamespaceEndpointUri'] as String),
-      eventhubNamespaceId: map['eventhubNamespaceId'] == null ? null : pulumi.Output.create<String>(map['eventhubNamespaceId'] as String),
-      kustoClusterId: map['kustoClusterId'] == null ? null : pulumi.Output.create<String>(map['kustoClusterId'] as String),
-      kustoClusterUri: map['kustoClusterUri'] == null ? null : pulumi.Output.create<String>(map['kustoClusterUri'] as String),
-      kustoDatabaseName: map['kustoDatabaseName'] == null ? null : pulumi.Output.create<String>(map['kustoDatabaseName'] as String),
-      kustoTableName: map['kustoTableName'] == null ? null : pulumi.Output.create<String>(map['kustoTableName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId'] as String).input(),
+      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName'] as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
+      eventhubNamespaceEndpointUri: map['eventhubNamespaceEndpointUri'] == null ? null : (map['eventhubNamespaceEndpointUri'] as String).input(),
+      eventhubNamespaceId: map['eventhubNamespaceId'] == null ? null : (map['eventhubNamespaceId'] as String).input(),
+      kustoClusterId: map['kustoClusterId'] == null ? null : (map['kustoClusterId'] as String).input(),
+      kustoClusterUri: map['kustoClusterUri'] == null ? null : (map['kustoClusterUri'] as String).input(),
+      kustoDatabaseName: map['kustoDatabaseName'] == null ? null : (map['kustoDatabaseName'] as String).input(),
+      kustoTableName: map['kustoTableName'] == null ? null : (map['kustoTableName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

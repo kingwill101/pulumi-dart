@@ -23,13 +23,10 @@ class HostingSiteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
   HostingSiteArgs({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? siteId,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId);
+    this.appId,
+    this.project,
+    this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class HostingSiteArgs {
 
   factory HostingSiteArgs.fromMap(Map<String, dynamic> map) {
     return HostingSiteArgs(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
     );
   }
 }

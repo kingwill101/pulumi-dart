@@ -29,17 +29,12 @@ class ReservedCacheNodeArgs {
   /// [tags] Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   ReservedCacheNodeArgs({
-    pulumi.Output<int>? cacheNodeCount,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> reservedCacheNodesOfferingId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ReservedCacheNodeTimeouts>? timeouts,
-  }) :
-      cacheNodeCount = pulumi.Input.asOptionalInput<int>(cacheNodeCount),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservedCacheNodesOfferingId = pulumi.Input.asInput<String>(reservedCacheNodesOfferingId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ReservedCacheNodeTimeouts>(timeouts);
+    this.cacheNodeCount,
+    this.region,
+    required this.reservedCacheNodesOfferingId,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class ReservedCacheNodeArgs {
 
   factory ReservedCacheNodeArgs.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeArgs(
-      cacheNodeCount: map['cacheNodeCount'] == null ? null : pulumi.Output.create<int>(map['cacheNodeCount'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservedCacheNodesOfferingId: pulumi.Output.create<String>(map['reservedCacheNodesOfferingId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ReservedCacheNodeTimeouts>(ReservedCacheNodeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      cacheNodeCount: map['cacheNodeCount'] == null ? null : (map['cacheNodeCount'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservedCacheNodesOfferingId: (map['reservedCacheNodesOfferingId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ReservedCacheNodeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

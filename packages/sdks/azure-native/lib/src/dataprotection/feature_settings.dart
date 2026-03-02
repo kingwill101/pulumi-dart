@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cross_region_restore_settings.dart';
 import 'cross_subscription_restore_settings.dart';
 
 /// Class containing feature settings of vault
 class FeatureSettings {
-  final CrossRegionRestoreSettings? crossRegionRestoreSettings;
+  final pulumi.Input<CrossRegionRestoreSettings>? crossRegionRestoreSettings;
   /// CrossSubscriptionRestore Settings
-  final CrossSubscriptionRestoreSettings? crossSubscriptionRestoreSettings;
+  final pulumi.Input<CrossSubscriptionRestoreSettings>? crossSubscriptionRestoreSettings;
 
   /// Creates a new [FeatureSettings].
   /// [crossRegionRestoreSettings] Optional.
@@ -19,15 +20,15 @@ class FeatureSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crossRegionRestoreSettings': ?crossRegionRestoreSettings == null ? null : crossRegionRestoreSettings!.toMap(),
-      'crossSubscriptionRestoreSettings': ?crossSubscriptionRestoreSettings == null ? null : crossSubscriptionRestoreSettings!.toMap(),
+      'crossRegionRestoreSettings': ?pulumi.Input.mapOptionalInputValue<CrossRegionRestoreSettings, Map<String, dynamic>>(crossRegionRestoreSettings, (value) => value.toMap()),
+      'crossSubscriptionRestoreSettings': ?pulumi.Input.mapOptionalInputValue<CrossSubscriptionRestoreSettings, Map<String, dynamic>>(crossSubscriptionRestoreSettings, (value) => value.toMap()),
     };
   }
 
   factory FeatureSettings.fromMap(Map<String, dynamic> map) {
     return FeatureSettings(
-      crossRegionRestoreSettings: map['crossRegionRestoreSettings'] == null ? null : CrossRegionRestoreSettings.fromMap((map['crossRegionRestoreSettings'] as Map).cast<String, dynamic>()),
-      crossSubscriptionRestoreSettings: map['crossSubscriptionRestoreSettings'] == null ? null : CrossSubscriptionRestoreSettings.fromMap((map['crossSubscriptionRestoreSettings'] as Map).cast<String, dynamic>()),
+      crossRegionRestoreSettings: map['crossRegionRestoreSettings'] == null ? null : (CrossRegionRestoreSettings.fromMap((map['crossRegionRestoreSettings'] as Map).cast<String, dynamic>())).input(),
+      crossSubscriptionRestoreSettings: map['crossSubscriptionRestoreSettings'] == null ? null : (CrossSubscriptionRestoreSettings.fromMap((map['crossSubscriptionRestoreSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

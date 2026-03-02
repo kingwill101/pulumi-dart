@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The resource move policy.
 class ResourceTypeRegistrationPropertiesResourceMovePolicyResponse {
   /// Whether cross resource group move is enabled.
-  final bool? crossResourceGroupMoveEnabled;
+  final pulumi.Input<bool>? crossResourceGroupMoveEnabled;
   /// Whether cross subscription move is enabled.
-  final bool? crossSubscriptionMoveEnabled;
+  final pulumi.Input<bool>? crossSubscriptionMoveEnabled;
   /// Whether validation is required.
-  final bool? validationRequired;
+  final pulumi.Input<bool>? validationRequired;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceMovePolicyResponse].
   /// [crossResourceGroupMoveEnabled] Whether cross resource group move is enabled.
@@ -30,9 +31,9 @@ class ResourceTypeRegistrationPropertiesResourceMovePolicyResponse {
 
   factory ResourceTypeRegistrationPropertiesResourceMovePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceMovePolicyResponse(
-      crossResourceGroupMoveEnabled: map['crossResourceGroupMoveEnabled'] == null ? null : map['crossResourceGroupMoveEnabled'] as bool,
-      crossSubscriptionMoveEnabled: map['crossSubscriptionMoveEnabled'] == null ? null : map['crossSubscriptionMoveEnabled'] as bool,
-      validationRequired: map['validationRequired'] == null ? null : map['validationRequired'] as bool,
+      crossResourceGroupMoveEnabled: map['crossResourceGroupMoveEnabled'] == null ? null : (map['crossResourceGroupMoveEnabled'] as bool).input(),
+      crossSubscriptionMoveEnabled: map['crossSubscriptionMoveEnabled'] == null ? null : (map['crossSubscriptionMoveEnabled'] as bool).input(),
+      validationRequired: map['validationRequired'] == null ? null : (map['validationRequired'] as bool).input(),
     );
   }
 }

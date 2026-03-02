@@ -2139,65 +2139,65 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// % pulumi import aws_lb_listener.front_end arn:aws:elasticloadbalancing:us-west-2:187416307283:listener/app/front-end-alb/8e4497da625e2d8a/9ab28ade35828f96
 class Listener {
   /// Name of the Application-Layer Protocol Negotiation (ALPN) policy. Can be set if `protocol` is `TLS`. Valid values are `HTTP1Only`, `HTTP2Only`, `HTTP2Optional`, `HTTP2Preferred`, and `None`.
-  final String? alpnPolicy;
+  final pulumi.Input<String>? alpnPolicy;
   /// ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
-  final String? certificateArn;
+  final pulumi.Input<String>? certificateArn;
   /// Configuration block for default actions. See below.
-  final List<pulumi_aws_lb.ListenerDefaultAction>? defaultActions;
+  final pulumi.Input<List<pulumi_aws_lb.ListenerDefaultAction>>? defaultActions;
   /// The mutual authentication configuration information. See below.
-  final pulumi_aws_lb.ListenerMutualAuthentication? mutualAuthentication;
+  final pulumi.Input<pulumi_aws_lb.ListenerMutualAuthentication>? mutualAuthentication;
   /// Port on which the load balancer is listening. Not valid for Gateway Load Balancers.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Protocol for connections from clients to the load balancer. For Application Load Balancers, valid values are `HTTP` and `HTTPS`, with a default of `HTTP`. For Network Load Balancers, valid values are `TCP`, `TLS`, `UDP`, and `TCP_UDP`. Not valid to use `UDP` or `TCP_UDP` if dual-stack mode is enabled. Not valid for Gateway Load Balancers.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// Enables you to modify the header name of the `X-Amzn-Mtls-Clientcert` HTTP request header. Can only be set if protocol is `HTTPS` for Application Load Balancers.
-  final String? routingHttpRequestXAmznMtlsClientcertHeaderName;
+  final pulumi.Input<String>? routingHttpRequestXAmznMtlsClientcertHeaderName;
   /// Enables you to modify the header name of the `X-Amzn-Mtls-Clientcert-Issuer` HTTP request header. Can only be set if protocol is `HTTPS` for Application Load Balancers.
-  final String? routingHttpRequestXAmznMtlsClientcertIssuerHeaderName;
+  final pulumi.Input<String>? routingHttpRequestXAmznMtlsClientcertIssuerHeaderName;
   /// Enables you to modify the header name of the `X-Amzn-Mtls-Clientcert-Leaf` HTTP request header. Can only be set if protocol is `HTTPS` for Application Load Balancers.
-  final String? routingHttpRequestXAmznMtlsClientcertLeafHeaderName;
+  final pulumi.Input<String>? routingHttpRequestXAmznMtlsClientcertLeafHeaderName;
   /// Enables you to modify the header name of the `X-Amzn-Mtls-Clientcert-Serial-Number` HTTP request header. Can only be set if protocol is `HTTPS` for Application Load Balancers.
-  final String? routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName;
+  final pulumi.Input<String>? routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName;
   /// Enables you to modify the header name of the `X-Amzn-Mtls-Clientcert-Subject` HTTP request header. Can only be set if protocol is `HTTPS` for Application Load Balancers.
-  final String? routingHttpRequestXAmznMtlsClientcertSubjectHeaderName;
+  final pulumi.Input<String>? routingHttpRequestXAmznMtlsClientcertSubjectHeaderName;
   /// Enables you to modify the header name of the `X-Amzn-Mtls-Clientcert-Validity` HTTP request header. Can only be set if protocol is `HTTPS` for Application Load Balancers.
-  final String? routingHttpRequestXAmznMtlsClientcertValidityHeaderName;
+  final pulumi.Input<String>? routingHttpRequestXAmznMtlsClientcertValidityHeaderName;
   /// Enables you to modify the header name of the `X-Amzn-Tls-Cipher-Suite` HTTP request header. Can only be set if protocol is `HTTPS` for Application Load Balancers.
-  final String? routingHttpRequestXAmznTlsCipherSuiteHeaderName;
+  final pulumi.Input<String>? routingHttpRequestXAmznTlsCipherSuiteHeaderName;
   /// Enables you to modify the header name of the `X-Amzn-Tls-Version` HTTP request header. Can only be set if protocol is `HTTPS` for Application Load Balancers.
-  final String? routingHttpRequestXAmznTlsVersionHeaderName;
+  final pulumi.Input<String>? routingHttpRequestXAmznTlsVersionHeaderName;
   /// Specifies which headers the browser can expose to the requesting client. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. The only valid value is `true`.
-  final String? routingHttpResponseAccessControlAllowCredentialsHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseAccessControlAllowCredentialsHeaderValue;
   /// Specifies which headers can be used during the request. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. Valid values are `*`, `Accept`, `Accept-Language`, `Cache-Control`, `Content-Language`, `Content-Length`, `Content-Type`, `Expires`, `Last-Modified`, `Pragma`. Dependent on your use-case other headers can be exposed and then set as a value consult the Access-Control-Allow-Headers documentation.
-  final String? routingHttpResponseAccessControlAllowHeadersHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseAccessControlAllowHeadersHeaderValue;
   /// Set which HTTP methods are allowed when accessing the server from a different origin. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. Valid values are `GET`, `HEAD`, `POST`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE` or `PATCH`.
-  final String? routingHttpResponseAccessControlAllowMethodsHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseAccessControlAllowMethodsHeaderValue;
   /// Specifies which origins are allowed to access the server. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. A valid value is a URI, eg: `https://example.com`.
-  final String? routingHttpResponseAccessControlAllowOriginHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseAccessControlAllowOriginHeaderValue;
   /// Specifies whether the browser should include credentials such as cookies or authentication when making requests. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. Valid values are `*`, `Cache-Control`, `Content-Language`, `Content-Length`, `Content-Type`, `Expires`, `Last-Modified`, or `Pragma`. Dependent on your use-case other headers can be exposed, consult the Access-Control-Expose-Headers documentation.
-  final String? routingHttpResponseAccessControlExposeHeadersHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseAccessControlExposeHeadersHeaderValue;
   /// Specifies how long the results of a preflight request can be cached, in seconds. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. Valid values are between `0` and `86400`. This value is browser specific, consult the Access-Control-Max-Age documentation.
-  final String? routingHttpResponseAccessControlMaxAgeHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseAccessControlMaxAgeHeaderValue;
   /// Specifies restrictions enforced by the browser to help minimize the risk of certain types of security threats. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. Values for this are extensive, and can be impactful when set, consult Content-Security-Policy documentation.
-  final String? routingHttpResponseContentSecurityPolicyHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseContentSecurityPolicyHeaderValue;
   /// Enables you to allow or remove the HTTP response server header. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. Valid values are `true` or `false`.
-  final bool? routingHttpResponseServerEnabled;
+  final pulumi.Input<bool>? routingHttpResponseServerEnabled;
   /// Informs browsers that the site should only be accessed using HTTPS, and that any future attempts to access it using HTTP should automatically be converted to HTTPS. Default values are `max-age=31536000; includeSubDomains; preload` consult the Strict-Transport-Security documentation for further details.
-  final String? routingHttpResponseStrictTransportSecurityHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseStrictTransportSecurityHeaderValue;
   /// Indicates whether the MIME types advertised in the Content-Type headers should be followed and not be changed. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. The only valid value is `nosniff`.
-  final String? routingHttpResponseXContentTypeOptionsHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseXContentTypeOptionsHeaderValue;
   /// Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object. Can only be set if protocol is `HTTP` or `HTTPS` for Application Load Balancers. Not supported for Network Load Balancer, or with a Gateway Load Balancer. The only valid values are `DENY`, `SAMEORIGIN`, or `ALLOW-FROM https://example.com`.
-  final String? routingHttpResponseXFrameOptionsHeaderValue;
+  final pulumi.Input<String>? routingHttpResponseXFrameOptionsHeaderValue;
   /// Name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`. Default is `ELBSecurityPolicy-2016-08`.
-  final String? sslPolicy;
+  final pulumi.Input<String>? sslPolicy;
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// > **Note::** When a `Name` key is specified in the map, the AWS Console maps the value to the `Name Tag` column value inside the `Listener Rules` table within a specific load balancer listener page. Otherwise, the value resolves to `Default`.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// TCP idle timeout value in seconds. Can only be set if protocol is `TCP` on Network Load Balancer, or with a Gateway Load Balancer. Not supported for Application Load Balancers. Valid values are between `60` and `6000` inclusive. Default: `350`.
-  final int? tcpIdleTimeoutSeconds;
+  final pulumi.Input<int>? tcpIdleTimeoutSeconds;
 
   /// Creates a new [Listener].
   /// [alpnPolicy] Name of the Application-Layer Protocol Negotiation (ALPN) policy. Can be set if `protocol` is `TLS`. Valid values are `HTTP1Only`, `HTTP2Only`, `HTTP2Optional`, `HTTP2Preferred`, and `None`.
@@ -2265,8 +2265,8 @@ class Listener {
     return <String, dynamic>{
       'alpnPolicy': ?alpnPolicy,
       'certificateArn': ?certificateArn,
-      'defaultActions': ?defaultActions == null ? null : pulumi.Input.encodeList<pulumi_aws_lb.ListenerDefaultAction, Map<String, dynamic>>(defaultActions!, (value) => value.toMap()),
-      'mutualAuthentication': ?mutualAuthentication == null ? null : mutualAuthentication!.toMap(),
+      'defaultActions': ?pulumi.Input.mapOptionalInputValue<List<pulumi_aws_lb.ListenerDefaultAction>, List<Map<String, dynamic>>>(defaultActions, (value) => pulumi.Input.encodeList<pulumi_aws_lb.ListenerDefaultAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mutualAuthentication': ?pulumi.Input.mapOptionalInputValue<pulumi_aws_lb.ListenerMutualAuthentication, Map<String, dynamic>>(mutualAuthentication, (value) => value.toMap()),
       'port': ?port,
       'protocol': ?protocol,
       'region': ?region,
@@ -2297,35 +2297,35 @@ class Listener {
 
   factory Listener.fromMap(Map<String, dynamic> map) {
     return Listener(
-      alpnPolicy: map['alpnPolicy'] == null ? null : map['alpnPolicy'] as String,
-      certificateArn: map['certificateArn'] == null ? null : map['certificateArn'] as String,
-      defaultActions: map['defaultActions'] == null ? null : pulumi.Input.decodeList<pulumi_aws_lb.ListenerDefaultAction>(map['defaultActions'], (value) => pulumi_aws_lb.ListenerDefaultAction.fromMap((value as Map).cast<String, dynamic>())),
-      mutualAuthentication: map['mutualAuthentication'] == null ? null : pulumi_aws_lb.ListenerMutualAuthentication.fromMap((map['mutualAuthentication'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      routingHttpRequestXAmznMtlsClientcertHeaderName: map['routingHttpRequestXAmznMtlsClientcertHeaderName'] == null ? null : map['routingHttpRequestXAmznMtlsClientcertHeaderName'] as String,
-      routingHttpRequestXAmznMtlsClientcertIssuerHeaderName: map['routingHttpRequestXAmznMtlsClientcertIssuerHeaderName'] == null ? null : map['routingHttpRequestXAmznMtlsClientcertIssuerHeaderName'] as String,
-      routingHttpRequestXAmznMtlsClientcertLeafHeaderName: map['routingHttpRequestXAmznMtlsClientcertLeafHeaderName'] == null ? null : map['routingHttpRequestXAmznMtlsClientcertLeafHeaderName'] as String,
-      routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName: map['routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName'] == null ? null : map['routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName'] as String,
-      routingHttpRequestXAmznMtlsClientcertSubjectHeaderName: map['routingHttpRequestXAmznMtlsClientcertSubjectHeaderName'] == null ? null : map['routingHttpRequestXAmznMtlsClientcertSubjectHeaderName'] as String,
-      routingHttpRequestXAmznMtlsClientcertValidityHeaderName: map['routingHttpRequestXAmznMtlsClientcertValidityHeaderName'] == null ? null : map['routingHttpRequestXAmznMtlsClientcertValidityHeaderName'] as String,
-      routingHttpRequestXAmznTlsCipherSuiteHeaderName: map['routingHttpRequestXAmznTlsCipherSuiteHeaderName'] == null ? null : map['routingHttpRequestXAmznTlsCipherSuiteHeaderName'] as String,
-      routingHttpRequestXAmznTlsVersionHeaderName: map['routingHttpRequestXAmznTlsVersionHeaderName'] == null ? null : map['routingHttpRequestXAmznTlsVersionHeaderName'] as String,
-      routingHttpResponseAccessControlAllowCredentialsHeaderValue: map['routingHttpResponseAccessControlAllowCredentialsHeaderValue'] == null ? null : map['routingHttpResponseAccessControlAllowCredentialsHeaderValue'] as String,
-      routingHttpResponseAccessControlAllowHeadersHeaderValue: map['routingHttpResponseAccessControlAllowHeadersHeaderValue'] == null ? null : map['routingHttpResponseAccessControlAllowHeadersHeaderValue'] as String,
-      routingHttpResponseAccessControlAllowMethodsHeaderValue: map['routingHttpResponseAccessControlAllowMethodsHeaderValue'] == null ? null : map['routingHttpResponseAccessControlAllowMethodsHeaderValue'] as String,
-      routingHttpResponseAccessControlAllowOriginHeaderValue: map['routingHttpResponseAccessControlAllowOriginHeaderValue'] == null ? null : map['routingHttpResponseAccessControlAllowOriginHeaderValue'] as String,
-      routingHttpResponseAccessControlExposeHeadersHeaderValue: map['routingHttpResponseAccessControlExposeHeadersHeaderValue'] == null ? null : map['routingHttpResponseAccessControlExposeHeadersHeaderValue'] as String,
-      routingHttpResponseAccessControlMaxAgeHeaderValue: map['routingHttpResponseAccessControlMaxAgeHeaderValue'] == null ? null : map['routingHttpResponseAccessControlMaxAgeHeaderValue'] as String,
-      routingHttpResponseContentSecurityPolicyHeaderValue: map['routingHttpResponseContentSecurityPolicyHeaderValue'] == null ? null : map['routingHttpResponseContentSecurityPolicyHeaderValue'] as String,
-      routingHttpResponseServerEnabled: map['routingHttpResponseServerEnabled'] == null ? null : map['routingHttpResponseServerEnabled'] as bool,
-      routingHttpResponseStrictTransportSecurityHeaderValue: map['routingHttpResponseStrictTransportSecurityHeaderValue'] == null ? null : map['routingHttpResponseStrictTransportSecurityHeaderValue'] as String,
-      routingHttpResponseXContentTypeOptionsHeaderValue: map['routingHttpResponseXContentTypeOptionsHeaderValue'] == null ? null : map['routingHttpResponseXContentTypeOptionsHeaderValue'] as String,
-      routingHttpResponseXFrameOptionsHeaderValue: map['routingHttpResponseXFrameOptionsHeaderValue'] == null ? null : map['routingHttpResponseXFrameOptionsHeaderValue'] as String,
-      sslPolicy: map['sslPolicy'] == null ? null : map['sslPolicy'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tcpIdleTimeoutSeconds: map['tcpIdleTimeoutSeconds'] == null ? null : map['tcpIdleTimeoutSeconds'] as int,
+      alpnPolicy: map['alpnPolicy'] == null ? null : (map['alpnPolicy'] as String).input(),
+      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
+      defaultActions: map['defaultActions'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_lb.ListenerDefaultAction>(map['defaultActions'], (value) => pulumi_aws_lb.ListenerDefaultAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mutualAuthentication: map['mutualAuthentication'] == null ? null : (pulumi_aws_lb.ListenerMutualAuthentication.fromMap((map['mutualAuthentication'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingHttpRequestXAmznMtlsClientcertHeaderName: map['routingHttpRequestXAmznMtlsClientcertHeaderName'] == null ? null : (map['routingHttpRequestXAmznMtlsClientcertHeaderName'] as String).input(),
+      routingHttpRequestXAmznMtlsClientcertIssuerHeaderName: map['routingHttpRequestXAmznMtlsClientcertIssuerHeaderName'] == null ? null : (map['routingHttpRequestXAmznMtlsClientcertIssuerHeaderName'] as String).input(),
+      routingHttpRequestXAmznMtlsClientcertLeafHeaderName: map['routingHttpRequestXAmznMtlsClientcertLeafHeaderName'] == null ? null : (map['routingHttpRequestXAmznMtlsClientcertLeafHeaderName'] as String).input(),
+      routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName: map['routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName'] == null ? null : (map['routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName'] as String).input(),
+      routingHttpRequestXAmznMtlsClientcertSubjectHeaderName: map['routingHttpRequestXAmznMtlsClientcertSubjectHeaderName'] == null ? null : (map['routingHttpRequestXAmznMtlsClientcertSubjectHeaderName'] as String).input(),
+      routingHttpRequestXAmznMtlsClientcertValidityHeaderName: map['routingHttpRequestXAmznMtlsClientcertValidityHeaderName'] == null ? null : (map['routingHttpRequestXAmznMtlsClientcertValidityHeaderName'] as String).input(),
+      routingHttpRequestXAmznTlsCipherSuiteHeaderName: map['routingHttpRequestXAmznTlsCipherSuiteHeaderName'] == null ? null : (map['routingHttpRequestXAmznTlsCipherSuiteHeaderName'] as String).input(),
+      routingHttpRequestXAmznTlsVersionHeaderName: map['routingHttpRequestXAmznTlsVersionHeaderName'] == null ? null : (map['routingHttpRequestXAmznTlsVersionHeaderName'] as String).input(),
+      routingHttpResponseAccessControlAllowCredentialsHeaderValue: map['routingHttpResponseAccessControlAllowCredentialsHeaderValue'] == null ? null : (map['routingHttpResponseAccessControlAllowCredentialsHeaderValue'] as String).input(),
+      routingHttpResponseAccessControlAllowHeadersHeaderValue: map['routingHttpResponseAccessControlAllowHeadersHeaderValue'] == null ? null : (map['routingHttpResponseAccessControlAllowHeadersHeaderValue'] as String).input(),
+      routingHttpResponseAccessControlAllowMethodsHeaderValue: map['routingHttpResponseAccessControlAllowMethodsHeaderValue'] == null ? null : (map['routingHttpResponseAccessControlAllowMethodsHeaderValue'] as String).input(),
+      routingHttpResponseAccessControlAllowOriginHeaderValue: map['routingHttpResponseAccessControlAllowOriginHeaderValue'] == null ? null : (map['routingHttpResponseAccessControlAllowOriginHeaderValue'] as String).input(),
+      routingHttpResponseAccessControlExposeHeadersHeaderValue: map['routingHttpResponseAccessControlExposeHeadersHeaderValue'] == null ? null : (map['routingHttpResponseAccessControlExposeHeadersHeaderValue'] as String).input(),
+      routingHttpResponseAccessControlMaxAgeHeaderValue: map['routingHttpResponseAccessControlMaxAgeHeaderValue'] == null ? null : (map['routingHttpResponseAccessControlMaxAgeHeaderValue'] as String).input(),
+      routingHttpResponseContentSecurityPolicyHeaderValue: map['routingHttpResponseContentSecurityPolicyHeaderValue'] == null ? null : (map['routingHttpResponseContentSecurityPolicyHeaderValue'] as String).input(),
+      routingHttpResponseServerEnabled: map['routingHttpResponseServerEnabled'] == null ? null : (map['routingHttpResponseServerEnabled'] as bool).input(),
+      routingHttpResponseStrictTransportSecurityHeaderValue: map['routingHttpResponseStrictTransportSecurityHeaderValue'] == null ? null : (map['routingHttpResponseStrictTransportSecurityHeaderValue'] as String).input(),
+      routingHttpResponseXContentTypeOptionsHeaderValue: map['routingHttpResponseXContentTypeOptionsHeaderValue'] == null ? null : (map['routingHttpResponseXContentTypeOptionsHeaderValue'] as String).input(),
+      routingHttpResponseXFrameOptionsHeaderValue: map['routingHttpResponseXFrameOptionsHeaderValue'] == null ? null : (map['routingHttpResponseXFrameOptionsHeaderValue'] as String).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tcpIdleTimeoutSeconds: map['tcpIdleTimeoutSeconds'] == null ? null : (map['tcpIdleTimeoutSeconds'] as int).input(),
     );
   }
 }

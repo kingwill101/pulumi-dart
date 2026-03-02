@@ -22,15 +22,11 @@ class GetBlobContainerImmutabilityPolicyArgs {
   /// [immutabilityPolicyName] The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetBlobContainerImmutabilityPolicyArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> immutabilityPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      immutabilityPolicyName = pulumi.Input.asInput<String>(immutabilityPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.containerName,
+    required this.immutabilityPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBlobContainerImmutabilityPolicyArgs {
 
   factory GetBlobContainerImmutabilityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBlobContainerImmutabilityPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      immutabilityPolicyName: pulumi.Output.create<String>(map['immutabilityPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      immutabilityPolicyName: (map['immutabilityPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

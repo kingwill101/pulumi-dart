@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateConfigX509ConfigPolicyId {
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  final List<int> objectIdPaths;
+  final pulumi.Input<List<int>> objectIdPaths;
 
   /// Creates a new [CertificateConfigX509ConfigPolicyId].
   /// [objectIdPaths] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
@@ -19,7 +20,7 @@ class CertificateConfigX509ConfigPolicyId {
 
   factory CertificateConfigX509ConfigPolicyId.fromMap(Map<String, dynamic> map) {
     return CertificateConfigX509ConfigPolicyId(
-      objectIdPaths: (map['objectIdPaths'] as List).cast<int>(),
+      objectIdPaths: ((map['objectIdPaths'] as List).cast<int>()).input(),
     );
   }
 }

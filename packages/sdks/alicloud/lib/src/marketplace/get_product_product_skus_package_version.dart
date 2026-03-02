@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProductProductSkusPackageVersion {
   /// The package name of this product sku package.
-  final String packageName;
+  final pulumi.Input<String> packageName;
   /// The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
-  final String packageVersion;
+  final pulumi.Input<String> packageVersion;
 
   /// Creates a new [GetProductProductSkusPackageVersion].
   /// [packageName] The package name of this product sku package.
@@ -24,8 +25,8 @@ class GetProductProductSkusPackageVersion {
 
   factory GetProductProductSkusPackageVersion.fromMap(Map<String, dynamic> map) {
     return GetProductProductSkusPackageVersion(
-      packageName: map['packageName'] as String,
-      packageVersion: map['packageVersion'] as String,
+      packageName: (map['packageName'] as String).input(),
+      packageVersion: (map['packageVersion'] as String).input(),
     );
   }
 }

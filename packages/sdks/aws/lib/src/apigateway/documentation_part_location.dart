@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentationPartLocation {
   /// HTTP verb of a method. The default value is `*` for any method.
-  final String? method;
+  final pulumi.Input<String>? method;
   /// Name of the targeted API entity.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// URL path of the target. The default value is `/` for the root resource.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// HTTP status code of a response. The default value is `*` for any status code.
-  final String? statusCode;
+  final pulumi.Input<String>? statusCode;
   /// Type of API entity to which the documentation content appliesE.g., `API`, `METHOD` or `REQUEST_BODY`
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DocumentationPartLocation].
   /// [method] HTTP verb of a method. The default value is `*` for any method.
@@ -39,11 +40,11 @@ class DocumentationPartLocation {
 
   factory DocumentationPartLocation.fromMap(Map<String, dynamic> map) {
     return DocumentationPartLocation(
-      method: map['method'] == null ? null : map['method'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
-      type: map['type'] as String,
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

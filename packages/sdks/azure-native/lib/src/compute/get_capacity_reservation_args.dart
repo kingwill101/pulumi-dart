@@ -22,15 +22,11 @@ class GetCapacityReservationArgs {
   /// [expand] The expand expression to apply on the operation. 'InstanceView' retrieves a snapshot of the runtime properties of the capacity reservation that is managed by the platform and can change outside of control plane operations.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCapacityReservationArgs({
-    required pulumi.Output<String> capacityReservationGroupName,
-    required pulumi.Output<String> capacityReservationName,
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      capacityReservationGroupName = pulumi.Input.asInput<String>(capacityReservationGroupName),
-      capacityReservationName = pulumi.Input.asInput<String>(capacityReservationName),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.capacityReservationGroupName,
+    required this.capacityReservationName,
+    this.expand,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCapacityReservationArgs {
 
   factory GetCapacityReservationArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityReservationArgs(
-      capacityReservationGroupName: pulumi.Output.create<String>(map['capacityReservationGroupName'] as String),
-      capacityReservationName: pulumi.Output.create<String>(map['capacityReservationName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      capacityReservationGroupName: (map['capacityReservationGroupName'] as String).input(),
+      capacityReservationName: (map['capacityReservationName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

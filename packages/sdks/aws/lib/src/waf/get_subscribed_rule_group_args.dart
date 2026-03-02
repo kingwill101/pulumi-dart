@@ -18,11 +18,9 @@ class GetSubscribedRuleGroupArgs {
   /// [metricName] Name of the WAF rule group.
   /// [name] Name of the WAF rule group.
   GetSubscribedRuleGroupArgs({
-    pulumi.Output<String>? metricName,
-    pulumi.Output<String>? name,
-  }) :
-      metricName = pulumi.Input.asOptionalInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.metricName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetSubscribedRuleGroupArgs {
 
   factory GetSubscribedRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscribedRuleGroupArgs(
-      metricName: map['metricName'] == null ? null : pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

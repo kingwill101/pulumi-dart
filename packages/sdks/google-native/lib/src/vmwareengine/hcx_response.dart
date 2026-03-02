@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details about a HCX Cloud Manager appliance.
 class HcxResponse {
   /// Fully qualified domain name of the appliance.
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// Internal IP address of the appliance.
-  final String internalIp;
+  final pulumi.Input<String> internalIp;
   /// The state of the appliance.
-  final String state;
+  final pulumi.Input<String> state;
   /// Version of the appliance.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [HcxResponse].
   /// [fqdn] Fully qualified domain name of the appliance.
@@ -35,10 +36,10 @@ class HcxResponse {
 
   factory HcxResponse.fromMap(Map<String, dynamic> map) {
     return HcxResponse(
-      fqdn: map['fqdn'] as String,
-      internalIp: map['internalIp'] as String,
-      state: map['state'] as String,
-      version: map['version'] as String,
+      fqdn: (map['fqdn'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
+      state: (map['state'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

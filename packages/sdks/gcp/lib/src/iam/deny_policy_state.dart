@@ -24,17 +24,12 @@ class DenyPolicyState {
   /// [parent] The attachment point is identified by its URL-encoded full resource name.
   /// [rules] Rules to be applied.
   DenyPolicyState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<List<DenyPolicyRule>>? rules,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      rules = pulumi.Input.asOptionalInput<List<DenyPolicyRule>>(rules);
+    this.displayName,
+    this.etag,
+    this.name,
+    this.parent,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class DenyPolicyState {
 
   factory DenyPolicyState.fromMap(Map<String, dynamic> map) {
     return DenyPolicyState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<DenyPolicyRule>>(pulumi.Input.decodeList<DenyPolicyRule>(map['rules'], (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DenyPolicyRule>(map['rules'], (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The JSON object that contains the properties to validate a domain.
 class DomainValidationPropertiesResponse {
   /// The date time that the token expires
-  final String expirationDate;
+  final pulumi.Input<String> expirationDate;
   /// Challenge used for DNS TXT record or file based validation
-  final String validationToken;
+  final pulumi.Input<String> validationToken;
 
   /// Creates a new [DomainValidationPropertiesResponse].
   /// [expirationDate] The date time that the token expires
@@ -25,8 +26,8 @@ class DomainValidationPropertiesResponse {
 
   factory DomainValidationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DomainValidationPropertiesResponse(
-      expirationDate: map['expirationDate'] as String,
-      validationToken: map['validationToken'] as String,
+      expirationDate: (map['expirationDate'] as String).input(),
+      validationToken: (map['validationToken'] as String).input(),
     );
   }
 }

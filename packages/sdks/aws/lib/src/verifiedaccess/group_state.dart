@@ -48,33 +48,20 @@ class GroupState {
   /// [verifiedaccessGroupId] ID of this verified access group.
   /// [verifiedaccessInstanceId] The id of the verified access instance this group is associated with.
   GroupState({
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? deletionTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lastUpdatedTime,
-    pulumi.Output<String>? owner,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? region,
-    pulumi.Output<GroupSseConfiguration>? sseConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? verifiedaccessGroupArn,
-    pulumi.Output<String>? verifiedaccessGroupId,
-    pulumi.Output<String>? verifiedaccessInstanceId,
-  }) :
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      deletionTime = pulumi.Input.asOptionalInput<String>(deletionTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lastUpdatedTime = pulumi.Input.asOptionalInput<String>(lastUpdatedTime),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sseConfiguration = pulumi.Input.asOptionalInput<GroupSseConfiguration>(sseConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      verifiedaccessGroupArn = pulumi.Input.asOptionalInput<String>(verifiedaccessGroupArn),
-      verifiedaccessGroupId = pulumi.Input.asOptionalInput<String>(verifiedaccessGroupId),
-      verifiedaccessInstanceId = pulumi.Input.asOptionalInput<String>(verifiedaccessInstanceId);
+    this.creationTime,
+    this.deletionTime,
+    this.description,
+    this.lastUpdatedTime,
+    this.owner,
+    this.policyDocument,
+    this.region,
+    this.sseConfiguration,
+    this.tags,
+    this.tagsAll,
+    this.verifiedaccessGroupArn,
+    this.verifiedaccessGroupId,
+    this.verifiedaccessInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      deletionTime: map['deletionTime'] == null ? null : pulumi.Output.create<String>(map['deletionTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : pulumi.Output.create<String>(map['lastUpdatedTime'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sseConfiguration: map['sseConfiguration'] == null ? null : pulumi.Output.create<GroupSseConfiguration>(GroupSseConfiguration.fromMap((map['sseConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      verifiedaccessGroupArn: map['verifiedaccessGroupArn'] == null ? null : pulumi.Output.create<String>(map['verifiedaccessGroupArn'] as String),
-      verifiedaccessGroupId: map['verifiedaccessGroupId'] == null ? null : pulumi.Output.create<String>(map['verifiedaccessGroupId'] as String),
-      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : pulumi.Output.create<String>(map['verifiedaccessInstanceId'] as String),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      deletionTime: map['deletionTime'] == null ? null : (map['deletionTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sseConfiguration: map['sseConfiguration'] == null ? null : (GroupSseConfiguration.fromMap((map['sseConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      verifiedaccessGroupArn: map['verifiedaccessGroupArn'] == null ? null : (map['verifiedaccessGroupArn'] as String).input(),
+      verifiedaccessGroupId: map['verifiedaccessGroupId'] == null ? null : (map['verifiedaccessGroupId'] as String).input(),
+      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : (map['verifiedaccessInstanceId'] as String).input(),
     );
   }
 }

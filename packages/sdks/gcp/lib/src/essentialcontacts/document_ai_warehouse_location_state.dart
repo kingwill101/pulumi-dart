@@ -32,19 +32,13 @@ class DocumentAiWarehouseLocationState {
   /// [location] The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
   /// [projectNumber] The unique identifier of the project.
   DocumentAiWarehouseLocationState({
-    pulumi.Output<String>? accessControlMode,
-    pulumi.Output<String>? databaseType,
-    pulumi.Output<String>? documentCreatorDefaultRole,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? projectNumber,
-  }) :
-      accessControlMode = pulumi.Input.asOptionalInput<String>(accessControlMode),
-      databaseType = pulumi.Input.asOptionalInput<String>(databaseType),
-      documentCreatorDefaultRole = pulumi.Input.asOptionalInput<String>(documentCreatorDefaultRole),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      projectNumber = pulumi.Input.asOptionalInput<String>(projectNumber);
+    this.accessControlMode,
+    this.databaseType,
+    this.documentCreatorDefaultRole,
+    this.kmsKey,
+    this.location,
+    this.projectNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class DocumentAiWarehouseLocationState {
 
   factory DocumentAiWarehouseLocationState.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseLocationState(
-      accessControlMode: map['accessControlMode'] == null ? null : pulumi.Output.create<String>(map['accessControlMode'] as String),
-      databaseType: map['databaseType'] == null ? null : pulumi.Output.create<String>(map['databaseType'] as String),
-      documentCreatorDefaultRole: map['documentCreatorDefaultRole'] == null ? null : pulumi.Output.create<String>(map['documentCreatorDefaultRole'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      projectNumber: map['projectNumber'] == null ? null : pulumi.Output.create<String>(map['projectNumber'] as String),
+      accessControlMode: map['accessControlMode'] == null ? null : (map['accessControlMode'] as String).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
+      documentCreatorDefaultRole: map['documentCreatorDefaultRole'] == null ? null : (map['documentCreatorDefaultRole'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
     );
   }
 }

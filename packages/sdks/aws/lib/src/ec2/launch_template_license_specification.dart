@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateLicenseSpecification {
   /// ARN of the license configuration.
-  final String licenseConfigurationArn;
+  final pulumi.Input<String> licenseConfigurationArn;
 
   /// Creates a new [LaunchTemplateLicenseSpecification].
   /// [licenseConfigurationArn] ARN of the license configuration.
@@ -19,7 +20,7 @@ class LaunchTemplateLicenseSpecification {
 
   factory LaunchTemplateLicenseSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateLicenseSpecification(
-      licenseConfigurationArn: map['licenseConfigurationArn'] as String,
+      licenseConfigurationArn: (map['licenseConfigurationArn'] as String).input(),
     );
   }
 }

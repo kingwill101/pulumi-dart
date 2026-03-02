@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountSASPermissions {
   /// Should Add permissions be enabled for this SAS?
-  final bool add;
+  final pulumi.Input<bool> add;
   /// Should Create permissions be enabled for this SAS?
-  final bool create;
+  final pulumi.Input<bool> create;
   /// Should Delete permissions be enabled for this SAS?
-  final bool delete;
+  final pulumi.Input<bool> delete;
   /// Should Filter by Index Tags permissions be enabled for this SAS?
   ///
   /// Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/storageservices/constructing-an-account-sas)
   /// for additional details on the fields above.
-  final bool filter;
+  final pulumi.Input<bool> filter;
   /// Should List permissions be enabled for this SAS?
-  final bool list;
+  final pulumi.Input<bool> list;
   /// Should Process permissions be enabled for this SAS?
-  final bool process;
+  final pulumi.Input<bool> process;
   /// Should Read permissions be enabled for this SAS?
-  final bool read;
+  final pulumi.Input<bool> read;
   /// Should Get / Set Index Tags permissions be enabled for this SAS?
-  final bool tag;
+  final pulumi.Input<bool> tag;
   /// Should Update permissions be enabled for this SAS?
-  final bool update;
+  final pulumi.Input<bool> update;
   /// Should Write permissions be enabled for this SAS?
-  final bool write;
+  final pulumi.Input<bool> write;
 
   /// Creates a new [GetAccountSASPermissions].
   /// [add] Should Add permissions be enabled for this SAS?
@@ -67,16 +68,16 @@ class GetAccountSASPermissions {
 
   factory GetAccountSASPermissions.fromMap(Map<String, dynamic> map) {
     return GetAccountSASPermissions(
-      add: map['add'] as bool,
-      create: map['create'] as bool,
-      delete: map['delete'] as bool,
-      filter: map['filter'] as bool,
-      list: map['list'] as bool,
-      process: map['process'] as bool,
-      read: map['read'] as bool,
-      tag: map['tag'] as bool,
-      update: map['update'] as bool,
-      write: map['write'] as bool,
+      add: (map['add'] as bool).input(),
+      create: (map['create'] as bool).input(),
+      delete: (map['delete'] as bool).input(),
+      filter: (map['filter'] as bool).input(),
+      list: (map['list'] as bool).input(),
+      process: (map['process'] as bool).input(),
+      read: (map['read'] as bool).input(),
+      tag: (map['tag'] as bool).input(),
+      update: (map['update'] as bool).input(),
+      write: (map['write'] as bool).input(),
     );
   }
 }

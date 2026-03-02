@@ -23,15 +23,11 @@ class AppCheckPlayIntegrityConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from Play Integrity artifacts will be valid.
   AppCheckPlayIntegrityConfigState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tokenTtl,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+    this.appId,
+    this.name,
+    this.project,
+    this.tokenTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AppCheckPlayIntegrityConfigState {
 
   factory AppCheckPlayIntegrityConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckPlayIntegrityConfigState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tokenTtl: map['tokenTtl'] == null ? null : pulumi.Output.create<String>(map['tokenTtl'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
     );
   }
 }

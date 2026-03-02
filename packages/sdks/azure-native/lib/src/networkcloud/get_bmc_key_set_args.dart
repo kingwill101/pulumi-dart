@@ -19,13 +19,10 @@ class GetBmcKeySetArgs {
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetBmcKeySetArgs({
-    required pulumi.Output<String> bmcKeySetName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      bmcKeySetName = pulumi.Input.asInput<String>(bmcKeySetName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.bmcKeySetName,
+    required this.clusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetBmcKeySetArgs {
 
   factory GetBmcKeySetArgs.fromMap(Map<String, dynamic> map) {
     return GetBmcKeySetArgs(
-      bmcKeySetName: pulumi.Output.create<String>(map['bmcKeySetName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      bmcKeySetName: (map['bmcKeySetName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

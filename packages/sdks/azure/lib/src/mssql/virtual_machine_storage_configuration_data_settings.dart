@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineStorageConfigurationDataSettings {
-  final String defaultFilePath;
-  final List<int> luns;
+  final pulumi.Input<String> defaultFilePath;
+  final pulumi.Input<List<int>> luns;
 
   /// Creates a new [VirtualMachineStorageConfigurationDataSettings].
   /// [defaultFilePath] Required.
@@ -22,8 +23,8 @@ class VirtualMachineStorageConfigurationDataSettings {
 
   factory VirtualMachineStorageConfigurationDataSettings.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageConfigurationDataSettings(
-      defaultFilePath: map['defaultFilePath'] as String,
-      luns: (map['luns'] as List).cast<int>(),
+      defaultFilePath: (map['defaultFilePath'] as String).input(),
+      luns: ((map['luns'] as List).cast<int>()).input(),
     );
   }
 }

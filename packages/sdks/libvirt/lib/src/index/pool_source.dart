@@ -14,27 +14,27 @@ import 'pool_source_vendor.dart';
 
 class PoolSource {
   /// Configures the details of the adapter used for connecting to the storage source.
-  final PoolSourceAdapter? adapter;
+  final pulumi.Input<PoolSourceAdapter>? adapter;
   /// Specifies the authentication method used when connecting to the storage source.
-  final PoolSourceAuth? auth;
+  final pulumi.Input<PoolSourceAuth>? auth;
   /// Specifies the device to be used as the source for the storage pool.
-  final List<PoolSourceDevice>? devices;
+  final pulumi.Input<List<PoolSourceDevice>>? devices;
   /// Indicates the directory used as a source for the storage pool.
-  final PoolSourceDir? dir;
+  final pulumi.Input<PoolSourceDir>? dir;
   /// Sets the format of the storage source being used, affecting how data is stored and accessed.
-  final PoolSourceFormat? format;
+  final pulumi.Input<PoolSourceFormat>? format;
   /// Specifies the host details for connecting to the storage source.
-  final List<PoolSourceHost>? hosts;
+  final pulumi.Input<List<PoolSourceHost>>? hosts;
   /// Defines the iSCSI initiator settings associated with the storage source.
-  final PoolSourceInitiator? initiator;
+  final pulumi.Input<PoolSourceInitiator>? initiator;
   /// Specifies the name of the source for the storage pool.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Identifies the product details associated with the storage source.
-  final PoolSourceProduct? product;
+  final pulumi.Input<PoolSourceProduct>? product;
   /// Sets the protocol used to connect to the storage source.
-  final PoolSourceProtocol? protocol;
+  final pulumi.Input<PoolSourceProtocol>? protocol;
   /// Specifies the vendor information for the storage source being used.
-  final PoolSourceVendor? vendor;
+  final pulumi.Input<PoolSourceVendor>? vendor;
 
   /// Creates a new [PoolSource].
   /// [adapter] Configures the details of the adapter used for connecting to the storage source.
@@ -64,33 +64,33 @@ class PoolSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adapter': ?adapter == null ? null : adapter!.toMap(),
-      'auth': ?auth == null ? null : auth!.toMap(),
-      'devices': ?devices == null ? null : pulumi.Input.encodeList<PoolSourceDevice, Map<String, dynamic>>(devices!, (value) => value.toMap()),
-      'dir': ?dir == null ? null : dir!.toMap(),
-      'format': ?format == null ? null : format!.toMap(),
-      'hosts': ?hosts == null ? null : pulumi.Input.encodeList<PoolSourceHost, Map<String, dynamic>>(hosts!, (value) => value.toMap()),
-      'initiator': ?initiator == null ? null : initiator!.toMap(),
+      'adapter': ?pulumi.Input.mapOptionalInputValue<PoolSourceAdapter, Map<String, dynamic>>(adapter, (value) => value.toMap()),
+      'auth': ?pulumi.Input.mapOptionalInputValue<PoolSourceAuth, Map<String, dynamic>>(auth, (value) => value.toMap()),
+      'devices': ?pulumi.Input.mapOptionalInputValue<List<PoolSourceDevice>, List<Map<String, dynamic>>>(devices, (value) => pulumi.Input.encodeList<PoolSourceDevice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dir': ?pulumi.Input.mapOptionalInputValue<PoolSourceDir, Map<String, dynamic>>(dir, (value) => value.toMap()),
+      'format': ?pulumi.Input.mapOptionalInputValue<PoolSourceFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
+      'hosts': ?pulumi.Input.mapOptionalInputValue<List<PoolSourceHost>, List<Map<String, dynamic>>>(hosts, (value) => pulumi.Input.encodeList<PoolSourceHost, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'initiator': ?pulumi.Input.mapOptionalInputValue<PoolSourceInitiator, Map<String, dynamic>>(initiator, (value) => value.toMap()),
       'name': ?name,
-      'product': ?product == null ? null : product!.toMap(),
-      'protocol': ?protocol == null ? null : protocol!.toMap(),
-      'vendor': ?vendor == null ? null : vendor!.toMap(),
+      'product': ?pulumi.Input.mapOptionalInputValue<PoolSourceProduct, Map<String, dynamic>>(product, (value) => value.toMap()),
+      'protocol': ?pulumi.Input.mapOptionalInputValue<PoolSourceProtocol, Map<String, dynamic>>(protocol, (value) => value.toMap()),
+      'vendor': ?pulumi.Input.mapOptionalInputValue<PoolSourceVendor, Map<String, dynamic>>(vendor, (value) => value.toMap()),
     };
   }
 
   factory PoolSource.fromMap(Map<String, dynamic> map) {
     return PoolSource(
-      adapter: map['adapter'] == null ? null : PoolSourceAdapter.fromMap((map['adapter'] as Map).cast<String, dynamic>()),
-      auth: map['auth'] == null ? null : PoolSourceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>()),
-      devices: map['devices'] == null ? null : pulumi.Input.decodeList<PoolSourceDevice>(map['devices'], (value) => PoolSourceDevice.fromMap((value as Map).cast<String, dynamic>())),
-      dir: map['dir'] == null ? null : PoolSourceDir.fromMap((map['dir'] as Map).cast<String, dynamic>()),
-      format: map['format'] == null ? null : PoolSourceFormat.fromMap((map['format'] as Map).cast<String, dynamic>()),
-      hosts: map['hosts'] == null ? null : pulumi.Input.decodeList<PoolSourceHost>(map['hosts'], (value) => PoolSourceHost.fromMap((value as Map).cast<String, dynamic>())),
-      initiator: map['initiator'] == null ? null : PoolSourceInitiator.fromMap((map['initiator'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      product: map['product'] == null ? null : PoolSourceProduct.fromMap((map['product'] as Map).cast<String, dynamic>()),
-      protocol: map['protocol'] == null ? null : PoolSourceProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>()),
-      vendor: map['vendor'] == null ? null : PoolSourceVendor.fromMap((map['vendor'] as Map).cast<String, dynamic>()),
+      adapter: map['adapter'] == null ? null : (PoolSourceAdapter.fromMap((map['adapter'] as Map).cast<String, dynamic>())).input(),
+      auth: map['auth'] == null ? null : (PoolSourceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<PoolSourceDevice>(map['devices'], (value) => PoolSourceDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dir: map['dir'] == null ? null : (PoolSourceDir.fromMap((map['dir'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (PoolSourceFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<PoolSourceHost>(map['hosts'], (value) => PoolSourceHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initiator: map['initiator'] == null ? null : (PoolSourceInitiator.fromMap((map['initiator'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      product: map['product'] == null ? null : (PoolSourceProduct.fromMap((map['product'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (PoolSourceProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
+      vendor: map['vendor'] == null ? null : (PoolSourceVendor.fromMap((map['vendor'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

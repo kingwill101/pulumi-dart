@@ -6,7 +6,7 @@ import 'stack_trace_element_response.dart';
 /// A collection of stack elements (frames) where an error occurred.
 class StackTraceResponse {
   /// An array of stack elements.
-  final List<StackTraceElementResponse> elements;
+  final pulumi.Input<List<StackTraceElementResponse>> elements;
 
   /// Creates a new [StackTraceResponse].
   /// [elements] An array of stack elements.
@@ -16,13 +16,13 @@ class StackTraceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elements': pulumi.Input.encodeList<StackTraceElementResponse, Map<String, dynamic>>(elements, (value) => value.toMap()),
+      'elements': pulumi.Input.mapInputValue<List<StackTraceElementResponse>, List<Map<String, dynamic>>>(elements, (value) => pulumi.Input.encodeList<StackTraceElementResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StackTraceResponse.fromMap(Map<String, dynamic> map) {
     return StackTraceResponse(
-      elements: pulumi.Input.decodeList<StackTraceElementResponse>(map['elements'], (value) => StackTraceElementResponse.fromMap((value as Map).cast<String, dynamic>())),
+      elements: (pulumi.Input.decodeList<StackTraceElementResponse>(map['elements'], (value) => StackTraceElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

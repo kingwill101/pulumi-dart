@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_response_sql_data_path.dart';
 
 /// Datastore and reference to location of data such as relativePath, Sql Query and etc.
 class DatasetResponseDataPath {
   /// Additional Properties.
-  final Map<String, dynamic>? additionalProperties;
+  final pulumi.Input<Map<String, dynamic>>? additionalProperties;
   /// Azure path for Azure Blob or File
-  final String azureFilePath;
+  final pulumi.Input<String> azureFilePath;
   /// Data store Name
-  final String datastoreName;
+  final pulumi.Input<String> datastoreName;
   /// HTTP URL.
-  final String httpUrl;
+  final pulumi.Input<String> httpUrl;
   /// Specify the partition format of path. Defaults to None.
-  final String partitionFormat;
+  final pulumi.Input<String> partitionFormat;
   /// Whether or not to ignore unmatched path.
-  final bool partitionFormatIgnoreError;
+  final pulumi.Input<bool> partitionFormatIgnoreError;
   /// List of files expanded from a file GLOB specified
-  final List<String> paths;
+  final pulumi.Input<List<String>> paths;
   /// Relative path in the data store
-  final String relativePath;
+  final pulumi.Input<String> relativePath;
   /// Sql Query/Table/Stored Procedure details.
-  final DatasetResponseSqlDataPath? sqlDataPath;
+  final pulumi.Input<DatasetResponseSqlDataPath>? sqlDataPath;
 
   /// Creates a new [DatasetResponseDataPath].
   /// [additionalProperties] Additional Properties.
@@ -55,21 +56,21 @@ class DatasetResponseDataPath {
       'partitionFormatIgnoreError': partitionFormatIgnoreError,
       'paths': paths,
       'relativePath': relativePath,
-      'sqlDataPath': ?sqlDataPath == null ? null : sqlDataPath!.toMap(),
+      'sqlDataPath': ?pulumi.Input.mapOptionalInputValue<DatasetResponseSqlDataPath, Map<String, dynamic>>(sqlDataPath, (value) => value.toMap()),
     };
   }
 
   factory DatasetResponseDataPath.fromMap(Map<String, dynamic> map) {
     return DatasetResponseDataPath(
-      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties'] as Map).cast<String, dynamic>(),
-      azureFilePath: map['azureFilePath'] as String,
-      datastoreName: map['datastoreName'] as String,
-      httpUrl: map['httpUrl'] as String,
-      partitionFormat: map['partitionFormat'] as String,
-      partitionFormatIgnoreError: map['partitionFormatIgnoreError'] as bool,
-      paths: (map['paths'] as List).cast<String>(),
-      relativePath: map['relativePath'] as String,
-      sqlDataPath: map['sqlDataPath'] == null ? null : DatasetResponseSqlDataPath.fromMap((map['sqlDataPath'] as Map).cast<String, dynamic>()),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, dynamic>()).input(),
+      azureFilePath: (map['azureFilePath'] as String).input(),
+      datastoreName: (map['datastoreName'] as String).input(),
+      httpUrl: (map['httpUrl'] as String).input(),
+      partitionFormat: (map['partitionFormat'] as String).input(),
+      partitionFormatIgnoreError: (map['partitionFormatIgnoreError'] as bool).input(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
+      relativePath: (map['relativePath'] as String).input(),
+      sqlDataPath: map['sqlDataPath'] == null ? null : (DatasetResponseSqlDataPath.fromMap((map['sqlDataPath'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

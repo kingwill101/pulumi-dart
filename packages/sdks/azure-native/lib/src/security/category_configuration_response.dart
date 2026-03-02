@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Severity level per category configuration for PR Annotations.
 class CategoryConfigurationResponse {
@@ -10,9 +11,9 @@ class CategoryConfigurationResponse {
   /// IaC results.
   /// Secrets scanning results.
   /// Container scanning results.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Gets or sets minimum severity level for a given category.
-  final String? minimumSeverityLevel;
+  final pulumi.Input<String>? minimumSeverityLevel;
 
   /// Creates a new [CategoryConfigurationResponse].
   /// [category] Rule categories.
@@ -31,8 +32,8 @@ class CategoryConfigurationResponse {
 
   factory CategoryConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CategoryConfigurationResponse(
-      category: map['category'] == null ? null : map['category'] as String,
-      minimumSeverityLevel: map['minimumSeverityLevel'] == null ? null : map['minimumSeverityLevel'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      minimumSeverityLevel: map['minimumSeverityLevel'] == null ? null : (map['minimumSeverityLevel'] as String).input(),
     );
   }
 }

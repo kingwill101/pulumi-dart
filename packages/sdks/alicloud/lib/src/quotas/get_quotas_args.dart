@@ -41,27 +41,17 @@ class GetQuotasArgs {
   /// [sortField] Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
   /// [sortOrder] Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
   GetQuotasArgs({
-    pulumi.Output<List<GetQuotasDimension>>? dimensions,
-    pulumi.Output<String>? groupCode,
-    pulumi.Output<String>? keyWord,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> productCode,
-    pulumi.Output<String>? quotaActionCode,
-    pulumi.Output<String>? quotaCategory,
-    pulumi.Output<String>? sortField,
-    pulumi.Output<String>? sortOrder,
-  }) :
-      dimensions = pulumi.Input.asOptionalInput<List<GetQuotasDimension>>(dimensions),
-      groupCode = pulumi.Input.asOptionalInput<String>(groupCode),
-      keyWord = pulumi.Input.asOptionalInput<String>(keyWord),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      productCode = pulumi.Input.asInput<String>(productCode),
-      quotaActionCode = pulumi.Input.asOptionalInput<String>(quotaActionCode),
-      quotaCategory = pulumi.Input.asOptionalInput<String>(quotaCategory),
-      sortField = pulumi.Input.asOptionalInput<String>(sortField),
-      sortOrder = pulumi.Input.asOptionalInput<String>(sortOrder);
+    this.dimensions,
+    this.groupCode,
+    this.keyWord,
+    this.nameRegex,
+    this.outputFile,
+    required this.productCode,
+    this.quotaActionCode,
+    this.quotaCategory,
+    this.sortField,
+    this.sortOrder,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class GetQuotasArgs {
 
   factory GetQuotasArgs.fromMap(Map<String, dynamic> map) {
     return GetQuotasArgs(
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<List<GetQuotasDimension>>(pulumi.Input.decodeList<GetQuotasDimension>(map['dimensions'], (value) => GetQuotasDimension.fromMap((value as Map).cast<String, dynamic>()))),
-      groupCode: map['groupCode'] == null ? null : pulumi.Output.create<String>(map['groupCode'] as String),
-      keyWord: map['keyWord'] == null ? null : pulumi.Output.create<String>(map['keyWord'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      productCode: pulumi.Output.create<String>(map['productCode'] as String),
-      quotaActionCode: map['quotaActionCode'] == null ? null : pulumi.Output.create<String>(map['quotaActionCode'] as String),
-      quotaCategory: map['quotaCategory'] == null ? null : pulumi.Output.create<String>(map['quotaCategory'] as String),
-      sortField: map['sortField'] == null ? null : pulumi.Output.create<String>(map['sortField'] as String),
-      sortOrder: map['sortOrder'] == null ? null : pulumi.Output.create<String>(map['sortOrder'] as String),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<GetQuotasDimension>(map['dimensions'], (value) => GetQuotasDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupCode: map['groupCode'] == null ? null : (map['groupCode'] as String).input(),
+      keyWord: map['keyWord'] == null ? null : (map['keyWord'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode'] as String).input(),
+      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory'] as String).input(),
+      sortField: map['sortField'] == null ? null : (map['sortField'] as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder'] as String).input(),
     );
   }
 }

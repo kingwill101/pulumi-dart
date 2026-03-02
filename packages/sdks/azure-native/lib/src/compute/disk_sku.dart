@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
 class DiskSku {
   /// The sku name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DiskSku].
   /// [name] The sku name.
@@ -20,7 +21,7 @@ class DiskSku {
 
   factory DiskSku.fromMap(Map<String, dynamic> map) {
     return DiskSku(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

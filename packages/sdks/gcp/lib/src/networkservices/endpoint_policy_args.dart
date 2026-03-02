@@ -48,27 +48,17 @@ class EndpointPolicyArgs {
   /// [trafficPortSelector] Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// [type] The type of endpoint policy. This is primarily used to validate the configuration.
   EndpointPolicyArgs({
-    pulumi.Output<String>? authorizationPolicy,
-    pulumi.Output<String>? clientTlsPolicy,
-    pulumi.Output<String>? description,
-    required pulumi.Output<EndpointPolicyEndpointMatcher> endpointMatcher,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serverTlsPolicy,
-    pulumi.Output<EndpointPolicyTrafficPortSelector>? trafficPortSelector,
-    required pulumi.Output<String> type,
-  }) :
-      authorizationPolicy = pulumi.Input.asOptionalInput<String>(authorizationPolicy),
-      clientTlsPolicy = pulumi.Input.asOptionalInput<String>(clientTlsPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointMatcher = pulumi.Input.asInput<EndpointPolicyEndpointMatcher>(endpointMatcher),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serverTlsPolicy = pulumi.Input.asOptionalInput<String>(serverTlsPolicy),
-      trafficPortSelector = pulumi.Input.asOptionalInput<EndpointPolicyTrafficPortSelector>(trafficPortSelector),
-      type = pulumi.Input.asInput<String>(type);
+    this.authorizationPolicy,
+    this.clientTlsPolicy,
+    this.description,
+    required this.endpointMatcher,
+    this.labels,
+    this.name,
+    this.project,
+    this.serverTlsPolicy,
+    this.trafficPortSelector,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,16 +77,16 @@ class EndpointPolicyArgs {
 
   factory EndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyArgs(
-      authorizationPolicy: map['authorizationPolicy'] == null ? null : pulumi.Output.create<String>(map['authorizationPolicy'] as String),
-      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : pulumi.Output.create<String>(map['clientTlsPolicy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointMatcher: pulumi.Output.create<EndpointPolicyEndpointMatcher>(EndpointPolicyEndpointMatcher.fromMap((map['endpointMatcher'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : pulumi.Output.create<String>(map['serverTlsPolicy'] as String),
-      trafficPortSelector: map['trafficPortSelector'] == null ? null : pulumi.Output.create<EndpointPolicyTrafficPortSelector>(EndpointPolicyTrafficPortSelector.fromMap((map['trafficPortSelector'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy'] as String).input(),
+      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointMatcher: (EndpointPolicyEndpointMatcher.fromMap((map['endpointMatcher'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
+      trafficPortSelector: map['trafficPortSelector'] == null ? null : (EndpointPolicyTrafficPortSelector.fromMap((map['trafficPortSelector'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

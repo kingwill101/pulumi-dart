@@ -7,53 +7,53 @@ import 'get_access_strategies_strategy_line.dart';
 
 class GetAccessStrategiesStrategy {
   /// The primary/secondary switchover policy for address pool groups.
-  final String accessMode;
+  final pulumi.Input<String> accessMode;
   /// The first ID of the resource.
-  final String accessStrategyId;
+  final pulumi.Input<String> accessStrategyId;
   /// The time when the access policy was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The timestamp that indicates when the access policy was created.
-  final String createTimestamp;
+  final pulumi.Input<String> createTimestamp;
   /// The type of the primary address pool.
-  final String defaultAddrPoolType;
+  final pulumi.Input<String> defaultAddrPoolType;
   /// The address pools in the primary address pool group.
-  final List<GetAccessStrategiesStrategyDefaultAddrPool> defaultAddrPools;
+  final pulumi.Input<List<GetAccessStrategiesStrategyDefaultAddrPool>> defaultAddrPools;
   /// The number of addresses currently available in the primary address pool.
-  final int defaultAvailableAddrNum;
+  final pulumi.Input<int> defaultAvailableAddrNum;
   /// Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group.
-  final String defaultLatencyOptimization;
+  final pulumi.Input<String> defaultLatencyOptimization;
   /// The load balancing policy of the primary address pool group.
-  final String defaultLbaStrategy;
+  final pulumi.Input<String> defaultLbaStrategy;
   /// The maximum number of addresses returned by the primary address pool set.
-  final int defaultMaxReturnAddrNum;
+  final pulumi.Input<int> defaultMaxReturnAddrNum;
   /// The minimum number of available addresses for the primary address pool set.
-  final int defaultMinAvailableAddrNum;
+  final pulumi.Input<int> defaultMinAvailableAddrNum;
   /// The type of the active address pool group.
-  final String effectiveAddrPoolGroupType;
+  final pulumi.Input<String> effectiveAddrPoolGroupType;
   /// The type of the secondary address pool.
-  final String failoverAddrPoolType;
+  final pulumi.Input<String> failoverAddrPoolType;
   /// The address pools in the secondary address pool group.
-  final List<GetAccessStrategiesStrategyFailoverAddrPool> failoverAddrPools;
+  final pulumi.Input<List<GetAccessStrategiesStrategyFailoverAddrPool>> failoverAddrPools;
   /// The number of available addresses in the standby address pool.
-  final int failoverAvailableAddrNum;
+  final pulumi.Input<int> failoverAvailableAddrNum;
   /// Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group.
-  final String failoverLatencyOptimization;
+  final pulumi.Input<String> failoverLatencyOptimization;
   /// The load balancing policy of the secondary address pool group.
-  final String failoverLbaStrategy;
+  final pulumi.Input<String> failoverLbaStrategy;
   /// The maximum number of returned addresses in the standby address pool.
-  final int failoverMaxReturnAddrNum;
+  final pulumi.Input<int> failoverMaxReturnAddrNum;
   /// The minimum number of available addresses in the standby address pool.
-  final int failoverMinAvailableAddrNum;
+  final pulumi.Input<int> failoverMinAvailableAddrNum;
   /// The ID of the Access Strategy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Id of the associated instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// List of source regions.
-  final List<GetAccessStrategiesStrategyLine> lines;
+  final pulumi.Input<List<GetAccessStrategiesStrategyLine>> lines;
   /// The type of the access policy.
-  final String strategyMode;
+  final pulumi.Input<String> strategyMode;
   /// The name of the access policy.
-  final String strategyName;
+  final pulumi.Input<String> strategyName;
 
   /// Creates a new [GetAccessStrategiesStrategy].
   /// [accessMode] The primary/secondary switchover policy for address pool groups.
@@ -114,7 +114,7 @@ class GetAccessStrategiesStrategy {
       'createTime': createTime,
       'createTimestamp': createTimestamp,
       'defaultAddrPoolType': defaultAddrPoolType,
-      'defaultAddrPools': pulumi.Input.encodeList<GetAccessStrategiesStrategyDefaultAddrPool, Map<String, dynamic>>(defaultAddrPools, (value) => value.toMap()),
+      'defaultAddrPools': pulumi.Input.mapInputValue<List<GetAccessStrategiesStrategyDefaultAddrPool>, List<Map<String, dynamic>>>(defaultAddrPools, (value) => pulumi.Input.encodeList<GetAccessStrategiesStrategyDefaultAddrPool, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defaultAvailableAddrNum': defaultAvailableAddrNum,
       'defaultLatencyOptimization': defaultLatencyOptimization,
       'defaultLbaStrategy': defaultLbaStrategy,
@@ -122,7 +122,7 @@ class GetAccessStrategiesStrategy {
       'defaultMinAvailableAddrNum': defaultMinAvailableAddrNum,
       'effectiveAddrPoolGroupType': effectiveAddrPoolGroupType,
       'failoverAddrPoolType': failoverAddrPoolType,
-      'failoverAddrPools': pulumi.Input.encodeList<GetAccessStrategiesStrategyFailoverAddrPool, Map<String, dynamic>>(failoverAddrPools, (value) => value.toMap()),
+      'failoverAddrPools': pulumi.Input.mapInputValue<List<GetAccessStrategiesStrategyFailoverAddrPool>, List<Map<String, dynamic>>>(failoverAddrPools, (value) => pulumi.Input.encodeList<GetAccessStrategiesStrategyFailoverAddrPool, Map<String, dynamic>>(value, (value) => value.toMap())),
       'failoverAvailableAddrNum': failoverAvailableAddrNum,
       'failoverLatencyOptimization': failoverLatencyOptimization,
       'failoverLbaStrategy': failoverLbaStrategy,
@@ -130,7 +130,7 @@ class GetAccessStrategiesStrategy {
       'failoverMinAvailableAddrNum': failoverMinAvailableAddrNum,
       'id': id,
       'instanceId': instanceId,
-      'lines': pulumi.Input.encodeList<GetAccessStrategiesStrategyLine, Map<String, dynamic>>(lines, (value) => value.toMap()),
+      'lines': pulumi.Input.mapInputValue<List<GetAccessStrategiesStrategyLine>, List<Map<String, dynamic>>>(lines, (value) => pulumi.Input.encodeList<GetAccessStrategiesStrategyLine, Map<String, dynamic>>(value, (value) => value.toMap())),
       'strategyMode': strategyMode,
       'strategyName': strategyName,
     };
@@ -138,30 +138,30 @@ class GetAccessStrategiesStrategy {
 
   factory GetAccessStrategiesStrategy.fromMap(Map<String, dynamic> map) {
     return GetAccessStrategiesStrategy(
-      accessMode: map['accessMode'] as String,
-      accessStrategyId: map['accessStrategyId'] as String,
-      createTime: map['createTime'] as String,
-      createTimestamp: map['createTimestamp'] as String,
-      defaultAddrPoolType: map['defaultAddrPoolType'] as String,
-      defaultAddrPools: pulumi.Input.decodeList<GetAccessStrategiesStrategyDefaultAddrPool>(map['defaultAddrPools'], (value) => GetAccessStrategiesStrategyDefaultAddrPool.fromMap((value as Map).cast<String, dynamic>())),
-      defaultAvailableAddrNum: map['defaultAvailableAddrNum'] as int,
-      defaultLatencyOptimization: map['defaultLatencyOptimization'] as String,
-      defaultLbaStrategy: map['defaultLbaStrategy'] as String,
-      defaultMaxReturnAddrNum: map['defaultMaxReturnAddrNum'] as int,
-      defaultMinAvailableAddrNum: map['defaultMinAvailableAddrNum'] as int,
-      effectiveAddrPoolGroupType: map['effectiveAddrPoolGroupType'] as String,
-      failoverAddrPoolType: map['failoverAddrPoolType'] as String,
-      failoverAddrPools: pulumi.Input.decodeList<GetAccessStrategiesStrategyFailoverAddrPool>(map['failoverAddrPools'], (value) => GetAccessStrategiesStrategyFailoverAddrPool.fromMap((value as Map).cast<String, dynamic>())),
-      failoverAvailableAddrNum: map['failoverAvailableAddrNum'] as int,
-      failoverLatencyOptimization: map['failoverLatencyOptimization'] as String,
-      failoverLbaStrategy: map['failoverLbaStrategy'] as String,
-      failoverMaxReturnAddrNum: map['failoverMaxReturnAddrNum'] as int,
-      failoverMinAvailableAddrNum: map['failoverMinAvailableAddrNum'] as int,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      lines: pulumi.Input.decodeList<GetAccessStrategiesStrategyLine>(map['lines'], (value) => GetAccessStrategiesStrategyLine.fromMap((value as Map).cast<String, dynamic>())),
-      strategyMode: map['strategyMode'] as String,
-      strategyName: map['strategyName'] as String,
+      accessMode: (map['accessMode'] as String).input(),
+      accessStrategyId: (map['accessStrategyId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      createTimestamp: (map['createTimestamp'] as String).input(),
+      defaultAddrPoolType: (map['defaultAddrPoolType'] as String).input(),
+      defaultAddrPools: (pulumi.Input.decodeList<GetAccessStrategiesStrategyDefaultAddrPool>(map['defaultAddrPools'], (value) => GetAccessStrategiesStrategyDefaultAddrPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultAvailableAddrNum: (map['defaultAvailableAddrNum'] as int).input(),
+      defaultLatencyOptimization: (map['defaultLatencyOptimization'] as String).input(),
+      defaultLbaStrategy: (map['defaultLbaStrategy'] as String).input(),
+      defaultMaxReturnAddrNum: (map['defaultMaxReturnAddrNum'] as int).input(),
+      defaultMinAvailableAddrNum: (map['defaultMinAvailableAddrNum'] as int).input(),
+      effectiveAddrPoolGroupType: (map['effectiveAddrPoolGroupType'] as String).input(),
+      failoverAddrPoolType: (map['failoverAddrPoolType'] as String).input(),
+      failoverAddrPools: (pulumi.Input.decodeList<GetAccessStrategiesStrategyFailoverAddrPool>(map['failoverAddrPools'], (value) => GetAccessStrategiesStrategyFailoverAddrPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failoverAvailableAddrNum: (map['failoverAvailableAddrNum'] as int).input(),
+      failoverLatencyOptimization: (map['failoverLatencyOptimization'] as String).input(),
+      failoverLbaStrategy: (map['failoverLbaStrategy'] as String).input(),
+      failoverMaxReturnAddrNum: (map['failoverMaxReturnAddrNum'] as int).input(),
+      failoverMinAvailableAddrNum: (map['failoverMinAvailableAddrNum'] as int).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      lines: (pulumi.Input.decodeList<GetAccessStrategiesStrategyLine>(map['lines'], (value) => GetAccessStrategiesStrategyLine.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      strategyMode: (map['strategyMode'] as String).input(),
+      strategyName: (map['strategyName'] as String).input(),
     );
   }
 }

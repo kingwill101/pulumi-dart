@@ -26,15 +26,11 @@ class GetRouterNatArgs {
   /// [region] Region where the router and NAT reside.
   /// [router] The name of the Cloud Router in which this NAT will be configured.
   GetRouterNatArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> router,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      router = pulumi.Input.asInput<String>(router);
+    required this.name,
+    this.project,
+    this.region,
+    required this.router,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class GetRouterNatArgs {
 
   factory GetRouterNatArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterNatArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      router: pulumi.Output.create<String>(map['router'] as String),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      router: (map['router'] as String).input(),
     );
   }
 }

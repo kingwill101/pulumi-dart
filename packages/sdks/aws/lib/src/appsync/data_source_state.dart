@@ -56,35 +56,21 @@ class DataSourceState {
   /// [serviceRoleArn] IAM service role ARN for the data source. Required if `type` is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
   /// [type] Type of the Data Source. Valid values: `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `HTTP`, `NONE`, `RELATIONAL_DATABASE`, `AMAZON_EVENTBRIDGE`, `AMAZON_OPENSEARCH_SERVICE`.
   DataSourceState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<DataSourceDynamodbConfig>? dynamodbConfig,
-    pulumi.Output<DataSourceElasticsearchConfig>? elasticsearchConfig,
-    pulumi.Output<DataSourceEventBridgeConfig>? eventBridgeConfig,
-    pulumi.Output<DataSourceHttpConfig>? httpConfig,
-    pulumi.Output<DataSourceLambdaConfig>? lambdaConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<DataSourceOpensearchserviceConfig>? opensearchserviceConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<DataSourceRelationalDatabaseConfig>? relationalDatabaseConfig,
-    pulumi.Output<String>? serviceRoleArn,
-    pulumi.Output<String>? type,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dynamodbConfig = pulumi.Input.asOptionalInput<DataSourceDynamodbConfig>(dynamodbConfig),
-      elasticsearchConfig = pulumi.Input.asOptionalInput<DataSourceElasticsearchConfig>(elasticsearchConfig),
-      eventBridgeConfig = pulumi.Input.asOptionalInput<DataSourceEventBridgeConfig>(eventBridgeConfig),
-      httpConfig = pulumi.Input.asOptionalInput<DataSourceHttpConfig>(httpConfig),
-      lambdaConfig = pulumi.Input.asOptionalInput<DataSourceLambdaConfig>(lambdaConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      opensearchserviceConfig = pulumi.Input.asOptionalInput<DataSourceOpensearchserviceConfig>(opensearchserviceConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      relationalDatabaseConfig = pulumi.Input.asOptionalInput<DataSourceRelationalDatabaseConfig>(relationalDatabaseConfig),
-      serviceRoleArn = pulumi.Input.asOptionalInput<String>(serviceRoleArn),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.apiId,
+    this.arn,
+    this.description,
+    this.dynamodbConfig,
+    this.elasticsearchConfig,
+    this.eventBridgeConfig,
+    this.httpConfig,
+    this.lambdaConfig,
+    this.name,
+    this.opensearchserviceConfig,
+    this.region,
+    this.relationalDatabaseConfig,
+    this.serviceRoleArn,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class DataSourceState {
 
   factory DataSourceState.fromMap(Map<String, dynamic> map) {
     return DataSourceState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dynamodbConfig: map['dynamodbConfig'] == null ? null : pulumi.Output.create<DataSourceDynamodbConfig>(DataSourceDynamodbConfig.fromMap((map['dynamodbConfig'] as Map).cast<String, dynamic>())),
-      elasticsearchConfig: map['elasticsearchConfig'] == null ? null : pulumi.Output.create<DataSourceElasticsearchConfig>(DataSourceElasticsearchConfig.fromMap((map['elasticsearchConfig'] as Map).cast<String, dynamic>())),
-      eventBridgeConfig: map['eventBridgeConfig'] == null ? null : pulumi.Output.create<DataSourceEventBridgeConfig>(DataSourceEventBridgeConfig.fromMap((map['eventBridgeConfig'] as Map).cast<String, dynamic>())),
-      httpConfig: map['httpConfig'] == null ? null : pulumi.Output.create<DataSourceHttpConfig>(DataSourceHttpConfig.fromMap((map['httpConfig'] as Map).cast<String, dynamic>())),
-      lambdaConfig: map['lambdaConfig'] == null ? null : pulumi.Output.create<DataSourceLambdaConfig>(DataSourceLambdaConfig.fromMap((map['lambdaConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      opensearchserviceConfig: map['opensearchserviceConfig'] == null ? null : pulumi.Output.create<DataSourceOpensearchserviceConfig>(DataSourceOpensearchserviceConfig.fromMap((map['opensearchserviceConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      relationalDatabaseConfig: map['relationalDatabaseConfig'] == null ? null : pulumi.Output.create<DataSourceRelationalDatabaseConfig>(DataSourceRelationalDatabaseConfig.fromMap((map['relationalDatabaseConfig'] as Map).cast<String, dynamic>())),
-      serviceRoleArn: map['serviceRoleArn'] == null ? null : pulumi.Output.create<String>(map['serviceRoleArn'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dynamodbConfig: map['dynamodbConfig'] == null ? null : (DataSourceDynamodbConfig.fromMap((map['dynamodbConfig'] as Map).cast<String, dynamic>())).input(),
+      elasticsearchConfig: map['elasticsearchConfig'] == null ? null : (DataSourceElasticsearchConfig.fromMap((map['elasticsearchConfig'] as Map).cast<String, dynamic>())).input(),
+      eventBridgeConfig: map['eventBridgeConfig'] == null ? null : (DataSourceEventBridgeConfig.fromMap((map['eventBridgeConfig'] as Map).cast<String, dynamic>())).input(),
+      httpConfig: map['httpConfig'] == null ? null : (DataSourceHttpConfig.fromMap((map['httpConfig'] as Map).cast<String, dynamic>())).input(),
+      lambdaConfig: map['lambdaConfig'] == null ? null : (DataSourceLambdaConfig.fromMap((map['lambdaConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      opensearchserviceConfig: map['opensearchserviceConfig'] == null ? null : (DataSourceOpensearchserviceConfig.fromMap((map['opensearchserviceConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      relationalDatabaseConfig: map['relationalDatabaseConfig'] == null ? null : (DataSourceRelationalDatabaseConfig.fromMap((map['relationalDatabaseConfig'] as Map).cast<String, dynamic>())).input(),
+      serviceRoleArn: map['serviceRoleArn'] == null ? null : (map['serviceRoleArn'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

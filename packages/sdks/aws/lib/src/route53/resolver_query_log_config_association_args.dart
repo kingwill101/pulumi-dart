@@ -19,13 +19,10 @@ class ResolverQueryLogConfigAssociationArgs {
   /// [resolverQueryLogConfigId] The ID of the Route 53 Resolver query logging configuration that you want to associate a VPC with.
   /// [resourceId] The ID of a VPC that you want this query logging configuration to log queries for.
   ResolverQueryLogConfigAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resolverQueryLogConfigId,
-    required pulumi.Output<String> resourceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverQueryLogConfigId = pulumi.Input.asInput<String>(resolverQueryLogConfigId),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    this.region,
+    required this.resolverQueryLogConfigId,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ResolverQueryLogConfigAssociationArgs {
 
   factory ResolverQueryLogConfigAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResolverQueryLogConfigAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resolverQueryLogConfigId: pulumi.Output.create<String>(map['resolverQueryLogConfigId'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resolverQueryLogConfigId: (map['resolverQueryLogConfigId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

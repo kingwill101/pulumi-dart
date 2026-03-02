@@ -26,17 +26,12 @@ class LoadBalancerCookieStickinessPolicyState {
   /// [name] The name of the stickiness policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LoadBalancerCookieStickinessPolicyState({
-    pulumi.Output<int>? cookieExpirationPeriod,
-    pulumi.Output<int>? lbPort,
-    pulumi.Output<String>? loadBalancer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      cookieExpirationPeriod = pulumi.Input.asOptionalInput<int>(cookieExpirationPeriod),
-      lbPort = pulumi.Input.asOptionalInput<int>(lbPort),
-      loadBalancer = pulumi.Input.asOptionalInput<String>(loadBalancer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.cookieExpirationPeriod,
+    this.lbPort,
+    this.loadBalancer,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class LoadBalancerCookieStickinessPolicyState {
 
   factory LoadBalancerCookieStickinessPolicyState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerCookieStickinessPolicyState(
-      cookieExpirationPeriod: map['cookieExpirationPeriod'] == null ? null : pulumi.Output.create<int>(map['cookieExpirationPeriod'] as int),
-      lbPort: map['lbPort'] == null ? null : pulumi.Output.create<int>(map['lbPort'] as int),
-      loadBalancer: map['loadBalancer'] == null ? null : pulumi.Output.create<String>(map['loadBalancer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cookieExpirationPeriod: map['cookieExpirationPeriod'] == null ? null : (map['cookieExpirationPeriod'] as int).input(),
+      lbPort: map['lbPort'] == null ? null : (map['lbPort'] as int).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (map['loadBalancer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

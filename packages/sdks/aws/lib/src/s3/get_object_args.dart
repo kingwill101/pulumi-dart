@@ -33,23 +33,15 @@ class GetObjectArgs {
   /// [tags] Map of tags assigned to the object.
   /// [versionId] Specific version ID of the object returned (defaults to latest version)
   GetObjectArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? checksumMode,
-    pulumi.Output<String>? downloadBody,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? range,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? versionId,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      checksumMode = pulumi.Input.asOptionalInput<String>(checksumMode),
-      downloadBody = pulumi.Input.asOptionalInput<String>(downloadBody),
-      key = pulumi.Input.asInput<String>(key),
-      range = pulumi.Input.asOptionalInput<String>(range),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    required this.bucket,
+    this.checksumMode,
+    this.downloadBody,
+    required this.key,
+    this.range,
+    this.region,
+    this.tags,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class GetObjectArgs {
 
   factory GetObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      checksumMode: map['checksumMode'] == null ? null : pulumi.Output.create<String>(map['checksumMode'] as String),
-      downloadBody: map['downloadBody'] == null ? null : pulumi.Output.create<String>(map['downloadBody'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      range: map['range'] == null ? null : pulumi.Output.create<String>(map['range'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      bucket: (map['bucket'] as String).input(),
+      checksumMode: map['checksumMode'] == null ? null : (map['checksumMode'] as String).input(),
+      downloadBody: map['downloadBody'] == null ? null : (map['downloadBody'] as String).input(),
+      key: (map['key'] as String).input(),
+      range: map['range'] == null ? null : (map['range'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

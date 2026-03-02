@@ -6,15 +6,15 @@ import 'virtual_network_gateway_policy_group_member.dart';
 /// Parameters for VirtualNetworkGatewayPolicyGroup.
 class VirtualNetworkGatewayPolicyGroup {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Shows if this is a Default VirtualNetworkGatewayPolicyGroup or not.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
-  final List<VirtualNetworkGatewayPolicyGroupMember> policyMembers;
+  final pulumi.Input<List<VirtualNetworkGatewayPolicyGroupMember>> policyMembers;
   /// Priority for VirtualNetworkGatewayPolicyGroup.
-  final int priority;
+  final pulumi.Input<int> priority;
 
   /// Creates a new [VirtualNetworkGatewayPolicyGroup].
   /// [id] Resource ID.
@@ -35,18 +35,18 @@ class VirtualNetworkGatewayPolicyGroup {
       'id': ?id,
       'isDefault': isDefault,
       'name': ?name,
-      'policyMembers': pulumi.Input.encodeList<VirtualNetworkGatewayPolicyGroupMember, Map<String, dynamic>>(policyMembers, (value) => value.toMap()),
+      'policyMembers': pulumi.Input.mapInputValue<List<VirtualNetworkGatewayPolicyGroupMember>, List<Map<String, dynamic>>>(policyMembers, (value) => pulumi.Input.encodeList<VirtualNetworkGatewayPolicyGroupMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'priority': priority,
     };
   }
 
   factory VirtualNetworkGatewayPolicyGroup.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayPolicyGroup(
-      id: map['id'] == null ? null : map['id'] as String,
-      isDefault: map['isDefault'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      policyMembers: pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupMember>(map['policyMembers'], (value) => VirtualNetworkGatewayPolicyGroupMember.fromMap((value as Map).cast<String, dynamic>())),
-      priority: map['priority'] as int,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyMembers: (pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupMember>(map['policyMembers'], (value) => VirtualNetworkGatewayPolicyGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: (map['priority'] as int).input(),
     );
   }
 }

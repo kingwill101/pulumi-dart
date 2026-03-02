@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNetworkAllowedSubnet {
   /// Indicates if this subnet allows public IP addresses. Possible values are `Allow`, `Default` and `Deny`.
-  final String allowPublicIp;
+  final pulumi.Input<String> allowPublicIp;
   /// The name of the subnet.
-  final String labSubnetName;
+  final pulumi.Input<String> labSubnetName;
   /// The resource identifier for the subnet.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [GetVirtualNetworkAllowedSubnet].
   /// [allowPublicIp] Indicates if this subnet allows public IP addresses. Possible values are `Allow`, `Default` and `Deny`.
@@ -29,9 +30,9 @@ class GetVirtualNetworkAllowedSubnet {
 
   factory GetVirtualNetworkAllowedSubnet.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkAllowedSubnet(
-      allowPublicIp: map['allowPublicIp'] as String,
-      labSubnetName: map['labSubnetName'] as String,
-      resourceId: map['resourceId'] as String,
+      allowPublicIp: (map['allowPublicIp'] as String).input(),
+      labSubnetName: (map['labSubnetName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

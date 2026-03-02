@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Range of numerical values within min and max.
 class GoogleMonitoringV3RangeResponse {
   /// Range maximum.
-  final double max;
+  final pulumi.Input<double> max;
   /// Range minimum.
-  final double min;
+  final pulumi.Input<double> min;
 
   /// Creates a new [GoogleMonitoringV3RangeResponse].
   /// [max] Range maximum.
@@ -25,8 +26,8 @@ class GoogleMonitoringV3RangeResponse {
 
   factory GoogleMonitoringV3RangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleMonitoringV3RangeResponse(
-      max: map['max'] as double,
-      min: map['min'] as double,
+      max: (map['max'] as double).input(),
+      min: (map['min'] as double).input(),
     );
   }
 }

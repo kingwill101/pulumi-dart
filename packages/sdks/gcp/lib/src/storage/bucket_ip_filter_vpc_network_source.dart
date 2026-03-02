@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketIpFilterVpcNetworkSource {
   /// The list of public or private IPv4 and IPv6 CIDR ranges that can access the bucket.
-  final List<String> allowedIpCidrRanges;
+  final pulumi.Input<List<String>> allowedIpCidrRanges;
   /// Name of the network. Format: `projects/PROJECT_ID/global/networks/NETWORK_NAME`
-  final String network;
+  final pulumi.Input<String> network;
 
   /// Creates a new [BucketIpFilterVpcNetworkSource].
   /// [allowedIpCidrRanges] The list of public or private IPv4 and IPv6 CIDR ranges that can access the bucket.
@@ -24,8 +25,8 @@ class BucketIpFilterVpcNetworkSource {
 
   factory BucketIpFilterVpcNetworkSource.fromMap(Map<String, dynamic> map) {
     return BucketIpFilterVpcNetworkSource(
-      allowedIpCidrRanges: (map['allowedIpCidrRanges'] as List).cast<String>(),
-      network: map['network'] as String,
+      allowedIpCidrRanges: ((map['allowedIpCidrRanges'] as List).cast<String>()).input(),
+      network: (map['network'] as String).input(),
     );
   }
 }

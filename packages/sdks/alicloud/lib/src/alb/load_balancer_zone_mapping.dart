@@ -5,21 +5,21 @@ import 'load_balancer_zone_mapping_load_balancer_address.dart';
 
 class LoadBalancerZoneMapping {
   /// An IP address of the IPv4 type.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The ID of the EIP instance.
-  final String? allocationId;
+  final pulumi.Input<String>? allocationId;
   /// The type of the EIP instance.
-  final String? eipType;
+  final pulumi.Input<String>? eipType;
   /// IPv4 private network address.
-  final String? intranetAddress;
+  final pulumi.Input<String>? intranetAddress;
   /// An IP address of the IPv6 type.
-  final String? ipv6Address;
+  final pulumi.Input<String>? ipv6Address;
   /// The instance address.
-  final List<LoadBalancerZoneMappingLoadBalancerAddress>? loadBalancerAddresses;
+  final pulumi.Input<List<LoadBalancerZoneMappingLoadBalancerAddress>>? loadBalancerAddresses;
   /// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The ID of the zone to which the SLB instance belongs.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [LoadBalancerZoneMapping].
   /// [address] An IP address of the IPv4 type.
@@ -48,7 +48,7 @@ class LoadBalancerZoneMapping {
       'eipType': ?eipType,
       'intranetAddress': ?intranetAddress,
       'ipv6Address': ?ipv6Address,
-      'loadBalancerAddresses': ?loadBalancerAddresses == null ? null : pulumi.Input.encodeList<LoadBalancerZoneMappingLoadBalancerAddress, Map<String, dynamic>>(loadBalancerAddresses!, (value) => value.toMap()),
+      'loadBalancerAddresses': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerZoneMappingLoadBalancerAddress>, List<Map<String, dynamic>>>(loadBalancerAddresses, (value) => pulumi.Input.encodeList<LoadBalancerZoneMappingLoadBalancerAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vswitchId': vswitchId,
       'zoneId': zoneId,
     };
@@ -56,14 +56,14 @@ class LoadBalancerZoneMapping {
 
   factory LoadBalancerZoneMapping.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneMapping(
-      address: map['address'] == null ? null : map['address'] as String,
-      allocationId: map['allocationId'] == null ? null : map['allocationId'] as String,
-      eipType: map['eipType'] == null ? null : map['eipType'] as String,
-      intranetAddress: map['intranetAddress'] == null ? null : map['intranetAddress'] as String,
-      ipv6Address: map['ipv6Address'] == null ? null : map['ipv6Address'] as String,
-      loadBalancerAddresses: map['loadBalancerAddresses'] == null ? null : pulumi.Input.decodeList<LoadBalancerZoneMappingLoadBalancerAddress>(map['loadBalancerAddresses'], (value) => LoadBalancerZoneMappingLoadBalancerAddress.fromMap((value as Map).cast<String, dynamic>())),
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      eipType: map['eipType'] == null ? null : (map['eipType'] as String).input(),
+      intranetAddress: map['intranetAddress'] == null ? null : (map['intranetAddress'] as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      loadBalancerAddresses: map['loadBalancerAddresses'] == null ? null : (pulumi.Input.decodeList<LoadBalancerZoneMappingLoadBalancerAddress>(map['loadBalancerAddresses'], (value) => LoadBalancerZoneMappingLoadBalancerAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

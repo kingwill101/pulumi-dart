@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pav2_meter_details_response.dart';
 import 'term_type_details_response.dart';
 
 /// Holds billing meter details for each type of billing.
 class BillingMeterDetailsResponse {
   /// Frequency of recurrence.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// Represents MeterDetails.
-  final Pav2MeterDetailsResponse meterDetails;
+  final pulumi.Input<Pav2MeterDetailsResponse> meterDetails;
   /// Represents Metering type (eg one-time or recurrent).
-  final String meteringType;
+  final pulumi.Input<String> meteringType;
   /// Represents Billing type name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Represent Term Type details.
-  final TermTypeDetailsResponse termTypeDetails;
+  final pulumi.Input<TermTypeDetailsResponse> termTypeDetails;
 
   /// Creates a new [BillingMeterDetailsResponse].
   /// [frequency] Frequency of recurrence.
@@ -33,20 +34,20 @@ class BillingMeterDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'frequency': frequency,
-      'meterDetails': meterDetails.toMap(),
+      'meterDetails': pulumi.Input.mapInputValue<Pav2MeterDetailsResponse, Map<String, dynamic>>(meterDetails, (value) => value.toMap()),
       'meteringType': meteringType,
       'name': name,
-      'termTypeDetails': termTypeDetails.toMap(),
+      'termTypeDetails': pulumi.Input.mapInputValue<TermTypeDetailsResponse, Map<String, dynamic>>(termTypeDetails, (value) => value.toMap()),
     };
   }
 
   factory BillingMeterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return BillingMeterDetailsResponse(
-      frequency: map['frequency'] as String,
-      meterDetails: Pav2MeterDetailsResponse.fromMap((map['meterDetails'] as Map).cast<String, dynamic>()),
-      meteringType: map['meteringType'] as String,
-      name: map['name'] as String,
-      termTypeDetails: TermTypeDetailsResponse.fromMap((map['termTypeDetails'] as Map).cast<String, dynamic>()),
+      frequency: (map['frequency'] as String).input(),
+      meterDetails: (Pav2MeterDetailsResponse.fromMap((map['meterDetails'] as Map).cast<String, dynamic>())).input(),
+      meteringType: (map['meteringType'] as String).input(),
+      name: (map['name'] as String).input(),
+      termTypeDetails: (TermTypeDetailsResponse.fromMap((map['termTypeDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

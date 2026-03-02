@@ -35,19 +35,13 @@ class NetworkEndpointArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Zone where the containing network endpoint group is located.
   NetworkEndpointArgs({
-    pulumi.Output<String>? instance,
-    required pulumi.Output<String> ipAddress,
-    required pulumi.Output<String> networkEndpointGroup,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      ipAddress = pulumi.Input.asInput<String>(ipAddress),
-      networkEndpointGroup = pulumi.Input.asInput<String>(networkEndpointGroup),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.instance,
+    required this.ipAddress,
+    required this.networkEndpointGroup,
+    this.port,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class NetworkEndpointArgs {
 
   factory NetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointArgs(
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      ipAddress: pulumi.Output.create<String>(map['ipAddress'] as String),
-      networkEndpointGroup: pulumi.Output.create<String>(map['networkEndpointGroup'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

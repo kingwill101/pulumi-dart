@@ -19,13 +19,10 @@ class GetContainerDefinitionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [taskDefinition] ARN of the task definition which contains the container
   GetContainerDefinitionArgs({
-    required pulumi.Output<String> containerName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> taskDefinition,
-  }) :
-      containerName = pulumi.Input.asInput<String>(containerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      taskDefinition = pulumi.Input.asInput<String>(taskDefinition);
+    required this.containerName,
+    this.region,
+    required this.taskDefinition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetContainerDefinitionArgs {
 
   factory GetContainerDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerDefinitionArgs(
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      taskDefinition: pulumi.Output.create<String>(map['taskDefinition'] as String),
+      containerName: (map['containerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      taskDefinition: (map['taskDefinition'] as String).input(),
     );
   }
 }

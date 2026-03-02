@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistrationYearlyPrice {
   /// The three-letter currency code defined in ISO 4217.
-  final String? currencyCode;
+  final pulumi.Input<String>? currencyCode;
   /// The whole units of the amount. For example if currencyCode is "USD", then 1 unit is one US dollar.
-  final String? units;
+  final pulumi.Input<String>? units;
 
   /// Creates a new [RegistrationYearlyPrice].
   /// [currencyCode] The three-letter currency code defined in ISO 4217.
@@ -24,8 +25,8 @@ class RegistrationYearlyPrice {
 
   factory RegistrationYearlyPrice.fromMap(Map<String, dynamic> map) {
     return RegistrationYearlyPrice(
-      currencyCode: map['currencyCode'] == null ? null : map['currencyCode'] as String,
-      units: map['units'] == null ? null : map['units'] as String,
+      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode'] as String).input(),
+      units: map['units'] == null ? null : (map['units'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorEnvironmentPropertyEnvironmentInfo {
   /// The ID of the Dynatrace environment to be created.
-  final String environmentId;
+  final pulumi.Input<String> environmentId;
 
   /// Creates a new [MonitorEnvironmentPropertyEnvironmentInfo].
   /// [environmentId] The ID of the Dynatrace environment to be created.
@@ -19,7 +20,7 @@ class MonitorEnvironmentPropertyEnvironmentInfo {
 
   factory MonitorEnvironmentPropertyEnvironmentInfo.fromMap(Map<String, dynamic> map) {
     return MonitorEnvironmentPropertyEnvironmentInfo(
-      environmentId: map['environmentId'] as String,
+      environmentId: (map['environmentId'] as String).input(),
     );
   }
 }

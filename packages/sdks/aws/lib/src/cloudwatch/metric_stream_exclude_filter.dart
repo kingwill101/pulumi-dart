@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricStreamExcludeFilter {
   /// An array that defines the metrics you want to exclude for this metric namespace
-  final List<String>? metricNames;
+  final pulumi.Input<List<String>>? metricNames;
   /// Name of the metric namespace in the filter.
-  final String namespace;
+  final pulumi.Input<String> namespace;
 
   /// Creates a new [MetricStreamExcludeFilter].
   /// [metricNames] An array that defines the metrics you want to exclude for this metric namespace
@@ -24,8 +25,8 @@ class MetricStreamExcludeFilter {
 
   factory MetricStreamExcludeFilter.fromMap(Map<String, dynamic> map) {
     return MetricStreamExcludeFilter(
-      metricNames: map['metricNames'] == null ? null : (map['metricNames'] as List).cast<String>(),
-      namespace: map['namespace'] as String,
+      metricNames: map['metricNames'] == null ? null : ((map['metricNames'] as List).cast<String>()).input(),
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

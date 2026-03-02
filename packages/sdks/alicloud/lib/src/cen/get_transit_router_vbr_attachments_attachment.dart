@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterVbrAttachmentsAttachment {
   /// ID of the region where the conflicted VBR is located.
-  final bool autoPublishRouteEnabled;
-  final String id;
+  final pulumi.Input<bool> autoPublishRouteEnabled;
+  final pulumi.Input<String> id;
   /// Type of the resource.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
-  final String status;
-  final String transitRouterAttachmentDescription;
+  final pulumi.Input<String> status;
+  final pulumi.Input<String> transitRouterAttachmentDescription;
   /// ID of the transit router VBR attachment.
-  final String transitRouterAttachmentId;
+  final pulumi.Input<String> transitRouterAttachmentId;
   /// Name of the transit router attachment.
-  final String transitRouterAttachmentName;
+  final pulumi.Input<String> transitRouterAttachmentName;
   /// ID of the VBR.
-  final String vbrId;
+  final pulumi.Input<String> vbrId;
   /// The Owner ID of the VBR.
-  final String vbrOwnerId;
+  final pulumi.Input<String> vbrOwnerId;
 
   /// Creates a new [GetTransitRouterVbrAttachmentsAttachment].
   /// [autoPublishRouteEnabled] ID of the region where the conflicted VBR is located.
@@ -57,15 +58,15 @@ class GetTransitRouterVbrAttachmentsAttachment {
 
   factory GetTransitRouterVbrAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterVbrAttachmentsAttachment(
-      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] as bool,
-      id: map['id'] as String,
-      resourceType: map['resourceType'] as String,
-      status: map['status'] as String,
-      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
-      transitRouterAttachmentName: map['transitRouterAttachmentName'] as String,
-      vbrId: map['vbrId'] as String,
-      vbrOwnerId: map['vbrOwnerId'] as String,
+      autoPublishRouteEnabled: (map['autoPublishRouteEnabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterAttachmentDescription: (map['transitRouterAttachmentDescription'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterAttachmentName: (map['transitRouterAttachmentName'] as String).input(),
+      vbrId: (map['vbrId'] as String).input(),
+      vbrOwnerId: (map['vbrOwnerId'] as String).input(),
     );
   }
 }

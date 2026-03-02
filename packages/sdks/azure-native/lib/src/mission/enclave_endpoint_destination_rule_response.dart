@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Enclave Endpoint Rule Properties
 class EnclaveEndpointDestinationRuleResponse {
   /// Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.
-  final String? destination;
+  final pulumi.Input<String>? destination;
   /// Endpoint Rule Name.
-  final String? endpointRuleName;
+  final pulumi.Input<String>? endpointRuleName;
   /// Port. Can include multiple ports separated by commas or a range indicated by a hyphen.
-  final String? ports;
+  final pulumi.Input<String>? ports;
   /// Protocols. Options specified by Endpoint Protocol Enum.
-  final List<String>? protocols;
+  final pulumi.Input<List<String>>? protocols;
 
   /// Creates a new [EnclaveEndpointDestinationRuleResponse].
   /// [destination] Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.
@@ -35,10 +36,10 @@ class EnclaveEndpointDestinationRuleResponse {
 
   factory EnclaveEndpointDestinationRuleResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveEndpointDestinationRuleResponse(
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      endpointRuleName: map['endpointRuleName'] == null ? null : map['endpointRuleName'] as String,
-      ports: map['ports'] == null ? null : map['ports'] as String,
-      protocols: map['protocols'] == null ? null : (map['protocols'] as List).cast<String>(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      endpointRuleName: map['endpointRuleName'] == null ? null : (map['endpointRuleName'] as String).input(),
+      ports: map['ports'] == null ? null : (map['ports'] as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
     );
   }
 }

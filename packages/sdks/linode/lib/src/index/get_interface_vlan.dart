@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterfaceVlan {
   /// The IPAM (IP Address Management) address of the VLAN interface.
-  final String ipamAddress;
+  final pulumi.Input<String> ipamAddress;
   /// The label of the VLAN.
-  final String vlanLabel;
+  final pulumi.Input<String> vlanLabel;
 
   /// Creates a new [GetInterfaceVlan].
   /// [ipamAddress] The IPAM (IP Address Management) address of the VLAN interface.
@@ -24,8 +25,8 @@ class GetInterfaceVlan {
 
   factory GetInterfaceVlan.fromMap(Map<String, dynamic> map) {
     return GetInterfaceVlan(
-      ipamAddress: map['ipamAddress'] as String,
-      vlanLabel: map['vlanLabel'] as String,
+      ipamAddress: (map['ipamAddress'] as String).input(),
+      vlanLabel: (map['vlanLabel'] as String).input(),
     );
   }
 }

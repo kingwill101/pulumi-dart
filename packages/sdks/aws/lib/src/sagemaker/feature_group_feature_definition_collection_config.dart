@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_group_feature_definition_collection_config_vector_config.dart';
 
 class FeatureGroupFeatureDefinitionCollectionConfig {
-  final FeatureGroupFeatureDefinitionCollectionConfigVectorConfig? vectorConfig;
+  final pulumi.Input<FeatureGroupFeatureDefinitionCollectionConfigVectorConfig>? vectorConfig;
 
   /// Creates a new [FeatureGroupFeatureDefinitionCollectionConfig].
   /// [vectorConfig] Optional.
@@ -13,13 +14,13 @@ class FeatureGroupFeatureDefinitionCollectionConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vectorConfig': ?vectorConfig == null ? null : vectorConfig!.toMap(),
+      'vectorConfig': ?pulumi.Input.mapOptionalInputValue<FeatureGroupFeatureDefinitionCollectionConfigVectorConfig, Map<String, dynamic>>(vectorConfig, (value) => value.toMap()),
     };
   }
 
   factory FeatureGroupFeatureDefinitionCollectionConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinitionCollectionConfig(
-      vectorConfig: map['vectorConfig'] == null ? null : FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>()),
+      vectorConfig: map['vectorConfig'] == null ? null : (FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

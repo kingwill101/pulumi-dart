@@ -32,21 +32,14 @@ class SapDiscoverySiteArgs {
   /// [sapDiscoverySiteName] The name of the discovery site resource for SAP Migration.
   /// [tags] Resource tags.
   SapDiscoverySiteArgs({
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? masterSiteId,
-    pulumi.Output<String>? migrateProjectId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sapDiscoverySiteName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      masterSiteId = pulumi.Input.asOptionalInput<String>(masterSiteId),
-      migrateProjectId = pulumi.Input.asOptionalInput<String>(migrateProjectId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sapDiscoverySiteName = pulumi.Input.asOptionalInput<String>(sapDiscoverySiteName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extendedLocation,
+    this.location,
+    this.masterSiteId,
+    this.migrateProjectId,
+    required this.resourceGroupName,
+    this.sapDiscoverySiteName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SapDiscoverySiteArgs {
 
   factory SapDiscoverySiteArgs.fromMap(Map<String, dynamic> map) {
     return SapDiscoverySiteArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      masterSiteId: map['masterSiteId'] == null ? null : pulumi.Output.create<String>(map['masterSiteId'] as String),
-      migrateProjectId: map['migrateProjectId'] == null ? null : pulumi.Output.create<String>(map['migrateProjectId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapDiscoverySiteName: map['sapDiscoverySiteName'] == null ? null : pulumi.Output.create<String>(map['sapDiscoverySiteName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      masterSiteId: map['masterSiteId'] == null ? null : (map['masterSiteId'] as String).input(),
+      migrateProjectId: map['migrateProjectId'] == null ? null : (map['migrateProjectId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sapDiscoverySiteName: map['sapDiscoverySiteName'] == null ? null : (map['sapDiscoverySiteName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

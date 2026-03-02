@@ -29,21 +29,14 @@ class AnalyticsSolutionState {
   /// [workspaceName] The full name of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
   /// [workspaceResourceId] The full resource ID of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
   AnalyticsSolutionState({
-    pulumi.Output<String>? location,
-    pulumi.Output<AnalyticsSolutionPlan>? plan,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? solutionName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceName,
-    pulumi.Output<String>? workspaceResourceId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      plan = pulumi.Input.asOptionalInput<AnalyticsSolutionPlan>(plan),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asOptionalInput<String>(solutionName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName),
-      workspaceResourceId = pulumi.Input.asOptionalInput<String>(workspaceResourceId);
+    this.location,
+    this.plan,
+    this.resourceGroupName,
+    this.solutionName,
+    this.tags,
+    this.workspaceName,
+    this.workspaceResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class AnalyticsSolutionState {
 
   factory AnalyticsSolutionState.fromMap(Map<String, dynamic> map) {
     return AnalyticsSolutionState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<AnalyticsSolutionPlan>(AnalyticsSolutionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: map['solutionName'] == null ? null : pulumi.Output.create<String>(map['solutionName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : pulumi.Output.create<String>(map['workspaceResourceId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      plan: map['plan'] == null ? null : (AnalyticsSolutionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      solutionName: map['solutionName'] == null ? null : (map['solutionName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
     );
   }
 }

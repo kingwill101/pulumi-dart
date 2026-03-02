@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notification_receiver_value_response.dart';
 
 /// A notification event receivers.
 class NotificationEventReceiverResponse {
   /// The type of the notification event receiver.
-  final String? receiverType;
+  final pulumi.Input<String>? receiverType;
   /// The notification event receiver value.
-  final NotificationReceiverValueResponse? receiverValue;
+  final pulumi.Input<NotificationReceiverValueResponse>? receiverValue;
 
   /// Creates a new [NotificationEventReceiverResponse].
   /// [receiverType] The type of the notification event receiver.
@@ -20,14 +21,14 @@ class NotificationEventReceiverResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'receiverType': ?receiverType,
-      'receiverValue': ?receiverValue == null ? null : receiverValue!.toMap(),
+      'receiverValue': ?pulumi.Input.mapOptionalInputValue<NotificationReceiverValueResponse, Map<String, dynamic>>(receiverValue, (value) => value.toMap()),
     };
   }
 
   factory NotificationEventReceiverResponse.fromMap(Map<String, dynamic> map) {
     return NotificationEventReceiverResponse(
-      receiverType: map['receiverType'] == null ? null : map['receiverType'] as String,
-      receiverValue: map['receiverValue'] == null ? null : NotificationReceiverValueResponse.fromMap((map['receiverValue'] as Map).cast<String, dynamic>()),
+      receiverType: map['receiverType'] == null ? null : (map['receiverType'] as String).input(),
+      receiverValue: map['receiverValue'] == null ? null : (NotificationReceiverValueResponse.fromMap((map['receiverValue'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,13 +21,10 @@ class UserAccessLoggingSettingsAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userAccessLoggingSettingsArn] ARN of the user access logging settings to associate with the portal. Forces replacement if changed.
   UserAccessLoggingSettingsAssociationArgs({
-    required pulumi.Output<String> portalArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> userAccessLoggingSettingsArn,
-  }) :
-      portalArn = pulumi.Input.asInput<String>(portalArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userAccessLoggingSettingsArn = pulumi.Input.asInput<String>(userAccessLoggingSettingsArn);
+    required this.portalArn,
+    this.region,
+    required this.userAccessLoggingSettingsArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class UserAccessLoggingSettingsAssociationArgs {
 
   factory UserAccessLoggingSettingsAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserAccessLoggingSettingsAssociationArgs(
-      portalArn: pulumi.Output.create<String>(map['portalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userAccessLoggingSettingsArn: pulumi.Output.create<String>(map['userAccessLoggingSettingsArn'] as String),
+      portalArn: (map['portalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userAccessLoggingSettingsArn: (map['userAccessLoggingSettingsArn'] as String).input(),
     );
   }
 }

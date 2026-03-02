@@ -25,15 +25,11 @@ class GetBackupRunArgs {
   /// [mostRecent] Toggles use of the most recent backup run if multiple backups exist for a
   /// [project] The project to list instances for. If it
   GetBackupRunArgs({
-    pulumi.Output<int>? backupId,
-    required pulumi.Output<String> instance,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? project,
-  }) :
-      backupId = pulumi.Input.asOptionalInput<int>(backupId),
-      instance = pulumi.Input.asInput<String>(instance),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.backupId,
+    required this.instance,
+    this.mostRecent,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetBackupRunArgs {
 
   factory GetBackupRunArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupRunArgs(
-      backupId: map['backupId'] == null ? null : pulumi.Output.create<int>(map['backupId'] as int),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupId: map['backupId'] == null ? null : (map['backupId'] as int).input(),
+      instance: (map['instance'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

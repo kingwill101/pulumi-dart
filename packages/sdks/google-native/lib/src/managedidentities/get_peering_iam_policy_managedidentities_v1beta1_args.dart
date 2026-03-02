@@ -16,13 +16,10 @@ class GetPeeringIamPolicyManagedidentitiesV1beta1Args {
   /// [peeringId] Required.
   /// [project] Optional.
   GetPeeringIamPolicyManagedidentitiesV1beta1Args({
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    required pulumi.Output<String> peeringId,
-    pulumi.Output<String>? project,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      peeringId = pulumi.Input.asInput<String>(peeringId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.optionsRequestedPolicyVersion,
+    required this.peeringId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetPeeringIamPolicyManagedidentitiesV1beta1Args {
 
   factory GetPeeringIamPolicyManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetPeeringIamPolicyManagedidentitiesV1beta1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      peeringId: pulumi.Output.create<String>(map['peeringId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      peeringId: (map['peeringId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

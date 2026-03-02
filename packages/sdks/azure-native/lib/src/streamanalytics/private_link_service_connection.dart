@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A grouping of information about the connection to the remote resource.
 class PrivateLinkServiceConnection {
   /// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
-  final List<String>? groupIds;
+  final pulumi.Input<List<String>>? groupIds;
   /// The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
-  final String? privateLinkServiceId;
+  final pulumi.Input<String>? privateLinkServiceId;
 
   /// Creates a new [PrivateLinkServiceConnection].
   /// [groupIds] The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
@@ -25,8 +26,8 @@ class PrivateLinkServiceConnection {
 
   factory PrivateLinkServiceConnection.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnection(
-      groupIds: map['groupIds'] == null ? null : (map['groupIds'] as List).cast<String>(),
-      privateLinkServiceId: map['privateLinkServiceId'] == null ? null : map['privateLinkServiceId'] as String,
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      privateLinkServiceId: map['privateLinkServiceId'] == null ? null : (map['privateLinkServiceId'] as String).input(),
     );
   }
 }

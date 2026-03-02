@@ -25,17 +25,12 @@ class GetRepositoryEndpointArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] Name of the repository.
   GetRepositoryEndpointArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? domainOwner,
-    required pulumi.Output<String> format,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> repository,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      domainOwner = pulumi.Input.asOptionalInput<String>(domainOwner),
-      format = pulumi.Input.asInput<String>(format),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repository = pulumi.Input.asInput<String>(repository);
+    required this.domain,
+    this.domainOwner,
+    required this.format,
+    this.region,
+    required this.repository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetRepositoryEndpointArgs {
 
   factory GetRepositoryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryEndpointArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      domainOwner: map['domainOwner'] == null ? null : pulumi.Output.create<String>(map['domainOwner'] as String),
-      format: pulumi.Output.create<String>(map['format'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repository: pulumi.Output.create<String>(map['repository'] as String),
+      domain: (map['domain'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
+      format: (map['format'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repository: (map['repository'] as String).input(),
     );
   }
 }

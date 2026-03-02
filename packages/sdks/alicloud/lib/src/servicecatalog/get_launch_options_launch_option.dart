@@ -5,13 +5,13 @@ import 'get_launch_options_launch_option_constraint_summary.dart';
 
 class GetLaunchOptionsLaunchOption {
   /// List of constraints.
-  final List<GetLaunchOptionsLaunchOptionConstraintSummary> constraintSummaries;
+  final pulumi.Input<List<GetLaunchOptionsLaunchOptionConstraintSummary>> constraintSummaries;
   /// ID of Service Catalog Launch Option.
-  final String id;
+  final pulumi.Input<String> id;
   /// Product mix ID.
-  final String portfolioId;
+  final pulumi.Input<String> portfolioId;
   /// Product portfolio name.
-  final String portfolioName;
+  final pulumi.Input<String> portfolioName;
 
   /// Creates a new [GetLaunchOptionsLaunchOption].
   /// [constraintSummaries] List of constraints.
@@ -27,7 +27,7 @@ class GetLaunchOptionsLaunchOption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'constraintSummaries': pulumi.Input.encodeList<GetLaunchOptionsLaunchOptionConstraintSummary, Map<String, dynamic>>(constraintSummaries, (value) => value.toMap()),
+      'constraintSummaries': pulumi.Input.mapInputValue<List<GetLaunchOptionsLaunchOptionConstraintSummary>, List<Map<String, dynamic>>>(constraintSummaries, (value) => pulumi.Input.encodeList<GetLaunchOptionsLaunchOptionConstraintSummary, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'portfolioId': portfolioId,
       'portfolioName': portfolioName,
@@ -36,10 +36,10 @@ class GetLaunchOptionsLaunchOption {
 
   factory GetLaunchOptionsLaunchOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchOptionsLaunchOption(
-      constraintSummaries: pulumi.Input.decodeList<GetLaunchOptionsLaunchOptionConstraintSummary>(map['constraintSummaries'], (value) => GetLaunchOptionsLaunchOptionConstraintSummary.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      portfolioId: map['portfolioId'] as String,
-      portfolioName: map['portfolioName'] as String,
+      constraintSummaries: (pulumi.Input.decodeList<GetLaunchOptionsLaunchOptionConstraintSummary>(map['constraintSummaries'], (value) => GetLaunchOptionsLaunchOptionConstraintSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      portfolioId: (map['portfolioId'] as String).input(),
+      portfolioName: (map['portfolioName'] as String).input(),
     );
   }
 }

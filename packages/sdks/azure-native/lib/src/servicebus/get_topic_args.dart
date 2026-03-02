@@ -19,13 +19,10 @@ class GetTopicArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topicName] The topic name.
   GetTopicArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> topicName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTopicArgs {
 
   factory GetTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

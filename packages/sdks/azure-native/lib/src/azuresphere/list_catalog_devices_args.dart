@@ -28,19 +28,13 @@ class ListCatalogDevicesArgs {
   /// [skip] The number of result items to skip.
   /// [top] The number of result items to return.
   ListCatalogDevicesArgs({
-    required pulumi.Output<String> catalogName,
-    pulumi.Output<String>? filter,
-    pulumi.Output<int>? maxpagesize,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? skip,
-    pulumi.Output<int>? top,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      maxpagesize = pulumi.Input.asOptionalInput<int>(maxpagesize),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skip = pulumi.Input.asOptionalInput<int>(skip),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    required this.catalogName,
+    this.filter,
+    this.maxpagesize,
+    required this.resourceGroupName,
+    this.skip,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ListCatalogDevicesArgs {
 
   factory ListCatalogDevicesArgs.fromMap(Map<String, dynamic> map) {
     return ListCatalogDevicesArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      maxpagesize: map['maxpagesize'] == null ? null : pulumi.Output.create<int>(map['maxpagesize'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<int>(map['skip'] as int),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      catalogName: (map['catalogName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      maxpagesize: map['maxpagesize'] == null ? null : (map['maxpagesize'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

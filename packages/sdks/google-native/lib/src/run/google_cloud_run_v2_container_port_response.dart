@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ContainerPort represents a network port in a single container.
 class GoogleCloudRunV2ContainerPortResponse {
   /// Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536.
-  final int containerPort;
+  final pulumi.Input<int> containerPort;
   /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GoogleCloudRunV2ContainerPortResponse].
   /// [containerPort] Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536.
@@ -25,8 +26,8 @@ class GoogleCloudRunV2ContainerPortResponse {
 
   factory GoogleCloudRunV2ContainerPortResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ContainerPortResponse(
-      containerPort: map['containerPort'] as int,
-      name: map['name'] as String,
+      containerPort: (map['containerPort'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

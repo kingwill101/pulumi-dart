@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretStorePropertiesResponse {
-  final String inputType;
-  final String? secretStoreId;
+  final pulumi.Input<String> inputType;
+  final pulumi.Input<String>? secretStoreId;
 
   /// Creates a new [SecretStorePropertiesResponse].
   /// [inputType] Required.
@@ -22,8 +23,8 @@ class SecretStorePropertiesResponse {
 
   factory SecretStorePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SecretStorePropertiesResponse(
-      inputType: map['inputType'] as String,
-      secretStoreId: map['secretStoreId'] == null ? null : map['secretStoreId'] as String,
+      inputType: (map['inputType'] as String).input(),
+      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId'] as String).input(),
     );
   }
 }

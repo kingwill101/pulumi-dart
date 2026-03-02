@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_binding_managed_identity_profile.dart';
 
 /// IdentityBinding properties.
 class IdentityBindingProperties {
   /// Managed identity profile for the identity binding.
-  final IdentityBindingManagedIdentityProfile managedIdentity;
+  final pulumi.Input<IdentityBindingManagedIdentityProfile> managedIdentity;
 
   /// Creates a new [IdentityBindingProperties].
   /// [managedIdentity] Managed identity profile for the identity binding.
@@ -15,13 +16,13 @@ class IdentityBindingProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedIdentity': managedIdentity.toMap(),
+      'managedIdentity': pulumi.Input.mapInputValue<IdentityBindingManagedIdentityProfile, Map<String, dynamic>>(managedIdentity, (value) => value.toMap()),
     };
   }
 
   factory IdentityBindingProperties.fromMap(Map<String, dynamic> map) {
     return IdentityBindingProperties(
-      managedIdentity: IdentityBindingManagedIdentityProfile.fromMap((map['managedIdentity'] as Map).cast<String, dynamic>()),
+      managedIdentity: (IdentityBindingManagedIdentityProfile.fromMap((map['managedIdentity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

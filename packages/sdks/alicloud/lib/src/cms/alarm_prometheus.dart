@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlarmPrometheus {
   /// The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
-  final Map<String, String>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
   /// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-  final String? level;
+  final pulumi.Input<String>? level;
   /// The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
-  final String? promQl;
+  final pulumi.Input<String>? promQl;
   /// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
-  final int? times;
+  final pulumi.Input<int>? times;
 
   /// Creates a new [AlarmPrometheus].
   /// [annotations] The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
@@ -34,10 +35,10 @@ class AlarmPrometheus {
 
   factory AlarmPrometheus.fromMap(Map<String, dynamic> map) {
     return AlarmPrometheus(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
-      level: map['level'] == null ? null : map['level'] as String,
-      promQl: map['promQl'] == null ? null : map['promQl'] as String,
-      times: map['times'] == null ? null : map['times'] as int,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      promQl: map['promQl'] == null ? null : (map['promQl'] as String).input(),
+      times: map['times'] == null ? null : (map['times'] as int).input(),
     );
   }
 }

@@ -8,11 +8,11 @@ import 'sql_connection_info.dart';
 /// Input for the task that gets TDE certificates in Base64 encoded format.
 class GetTdeCertificatesSqlTaskInput {
   /// Backup file share information for file share to be used for temporarily storing files.
-  final FileShare backupFileShare;
+  final pulumi.Input<FileShare> backupFileShare;
   /// Connection information for SQL Server
-  final SqlConnectionInfo connectionInfo;
+  final pulumi.Input<SqlConnectionInfo> connectionInfo;
   /// List containing certificate names and corresponding password to use for encrypting the exported certificate.
-  final List<SelectedCertificateInput> selectedCertificates;
+  final pulumi.Input<List<SelectedCertificateInput>> selectedCertificates;
 
   /// Creates a new [GetTdeCertificatesSqlTaskInput].
   /// [backupFileShare] Backup file share information for file share to be used for temporarily storing files.
@@ -26,17 +26,17 @@ class GetTdeCertificatesSqlTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupFileShare': backupFileShare.toMap(),
-      'connectionInfo': connectionInfo.toMap(),
-      'selectedCertificates': pulumi.Input.encodeList<SelectedCertificateInput, Map<String, dynamic>>(selectedCertificates, (value) => value.toMap()),
+      'backupFileShare': pulumi.Input.mapInputValue<FileShare, Map<String, dynamic>>(backupFileShare, (value) => value.toMap()),
+      'connectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
+      'selectedCertificates': pulumi.Input.mapInputValue<List<SelectedCertificateInput>, List<Map<String, dynamic>>>(selectedCertificates, (value) => pulumi.Input.encodeList<SelectedCertificateInput, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetTdeCertificatesSqlTaskInput.fromMap(Map<String, dynamic> map) {
     return GetTdeCertificatesSqlTaskInput(
-      backupFileShare: FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>()),
-      connectionInfo: SqlConnectionInfo.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>()),
-      selectedCertificates: pulumi.Input.decodeList<SelectedCertificateInput>(map['selectedCertificates'], (value) => SelectedCertificateInput.fromMap((value as Map).cast<String, dynamic>())),
+      backupFileShare: (FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
+      connectionInfo: (SqlConnectionInfo.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>())).input(),
+      selectedCertificates: (pulumi.Input.decodeList<SelectedCertificateInput>(map['selectedCertificates'], (value) => SelectedCertificateInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_system_timestamps_response.dart';
 
 /// Specification of a single file in Cloud Storage.
 class GoogleCloudDatacatalogV1GcsFileSpecResponse {
   /// Full file path. Example: `gs://bucket_name/a/b.txt`.
-  final String filePath;
+  final pulumi.Input<String> filePath;
   /// Creation, modification, and expiration timestamps of a Cloud Storage file.
-  final GoogleCloudDatacatalogV1SystemTimestampsResponse gcsTimestamps;
+  final pulumi.Input<GoogleCloudDatacatalogV1SystemTimestampsResponse> gcsTimestamps;
   /// File size in bytes.
-  final String sizeBytes;
+  final pulumi.Input<String> sizeBytes;
 
   /// Creates a new [GoogleCloudDatacatalogV1GcsFileSpecResponse].
   /// [filePath] Full file path. Example: `gs://bucket_name/a/b.txt`.
@@ -24,16 +25,16 @@ class GoogleCloudDatacatalogV1GcsFileSpecResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filePath': filePath,
-      'gcsTimestamps': gcsTimestamps.toMap(),
+      'gcsTimestamps': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1SystemTimestampsResponse, Map<String, dynamic>>(gcsTimestamps, (value) => value.toMap()),
       'sizeBytes': sizeBytes,
     };
   }
 
   factory GoogleCloudDatacatalogV1GcsFileSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1GcsFileSpecResponse(
-      filePath: map['filePath'] as String,
-      gcsTimestamps: GoogleCloudDatacatalogV1SystemTimestampsResponse.fromMap((map['gcsTimestamps'] as Map).cast<String, dynamic>()),
-      sizeBytes: map['sizeBytes'] as String,
+      filePath: (map['filePath'] as String).input(),
+      gcsTimestamps: (GoogleCloudDatacatalogV1SystemTimestampsResponse.fromMap((map['gcsTimestamps'] as Map).cast<String, dynamic>())).input(),
+      sizeBytes: (map['sizeBytes'] as String).input(),
     );
   }
 }

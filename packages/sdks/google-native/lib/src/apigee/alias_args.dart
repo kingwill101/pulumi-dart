@@ -43,31 +43,19 @@ class AliasArgs {
   /// [organizationId] Required.
   /// [password] DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
   AliasArgs({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? data,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<List<Map<String, String>>>? extensions,
-    pulumi.Output<dynamic>? file,
-    required pulumi.Output<String> format,
-    pulumi.Output<bool>? ignoreExpiryValidation,
-    pulumi.Output<bool>? ignoreNewlineValidation,
-    required pulumi.Output<String> keystoreId,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? password,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      extensions = pulumi.Input.asOptionalInput<List<Map<String, String>>>(extensions),
-      file = pulumi.Input.asOptionalInput<dynamic>(file),
-      format = pulumi.Input.asInput<String>(format),
-      ignoreExpiryValidation = pulumi.Input.asOptionalInput<bool>(ignoreExpiryValidation),
-      ignoreNewlineValidation = pulumi.Input.asOptionalInput<bool>(ignoreNewlineValidation),
-      keystoreId = pulumi.Input.asInput<String>(keystoreId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      password = pulumi.Input.asOptionalInput<String>(password);
+    this.alias,
+    this.contentType,
+    this.data,
+    required this.environmentId,
+    this.extensions,
+    this.file,
+    required this.format,
+    this.ignoreExpiryValidation,
+    this.ignoreNewlineValidation,
+    required this.keystoreId,
+    required this.organizationId,
+    this.password,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      extensions: map['extensions'] == null ? null : pulumi.Output.create<List<Map<String, String>>>((map['extensions'] as List).cast<Map<String, String>>()),
-      file: map['file'] == null ? null : pulumi.Output.create<dynamic>(map['file']),
-      format: pulumi.Output.create<String>(map['format'] as String),
-      ignoreExpiryValidation: map['ignoreExpiryValidation'] == null ? null : pulumi.Output.create<bool>(map['ignoreExpiryValidation'] as bool),
-      ignoreNewlineValidation: map['ignoreNewlineValidation'] == null ? null : pulumi.Output.create<bool>(map['ignoreNewlineValidation'] as bool),
-      keystoreId: pulumi.Output.create<String>(map['keystoreId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<Map<String, String>>()).input(),
+      file: map['file'] == null ? null : (map['file']).input(),
+      format: (map['format'] as String).input(),
+      ignoreExpiryValidation: map['ignoreExpiryValidation'] == null ? null : (map['ignoreExpiryValidation'] as bool).input(),
+      ignoreNewlineValidation: map['ignoreNewlineValidation'] == null ? null : (map['ignoreNewlineValidation'] as bool).input(),
+      keystoreId: (map['keystoreId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
     );
   }
 }

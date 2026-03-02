@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap {
-  final String? database;
-  final List<String>? schemas;
+  final pulumi.Input<String>? database;
+  final pulumi.Input<List<String>>? schemas;
 
   /// Creates a new [ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap].
   /// [database] Optional.
@@ -22,8 +23,8 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSch
 
   factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap(
-      database: map['database'] == null ? null : map['database'] as String,
-      schemas: map['schemas'] == null ? null : (map['schemas'] as List).cast<String>(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      schemas: map['schemas'] == null ? null : ((map['schemas'] as List).cast<String>()).input(),
     );
   }
 }

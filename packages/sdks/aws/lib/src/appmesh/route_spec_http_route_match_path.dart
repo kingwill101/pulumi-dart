@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecHttpRouteMatchPath {
   /// The exact path to match on.
-  final String? exact;
+  final pulumi.Input<String>? exact;
   /// The regex used to match the path.
-  final String? regex;
+  final pulumi.Input<String>? regex;
 
   /// Creates a new [RouteSpecHttpRouteMatchPath].
   /// [exact] The exact path to match on.
@@ -24,8 +25,8 @@ class RouteSpecHttpRouteMatchPath {
 
   factory RouteSpecHttpRouteMatchPath.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttpRouteMatchPath(
-      exact: map['exact'] == null ? null : map['exact'] as String,
-      regex: map['regex'] == null ? null : map['regex'] as String,
+      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
+      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
     );
   }
 }

@@ -48,29 +48,18 @@ class LabelingJobArgs {
   /// [stoppingConditions] Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LabelingJobArgs({
-    required pulumi.Output<LabelingJobHumanTaskConfig> humanTaskConfig,
-    required pulumi.Output<LabelingJobInputConfig> inputConfig,
-    required pulumi.Output<String> labelAttributeName,
-    pulumi.Output<String>? labelCategoryConfigS3Uri,
-    pulumi.Output<LabelingJobLabelingJobAlgorithmsConfig>? labelingJobAlgorithmsConfig,
-    required pulumi.Output<String> labelingJobName,
-    required pulumi.Output<LabelingJobOutputConfig> outputConfig,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<List<LabelingJobStoppingCondition>>? stoppingConditions,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      humanTaskConfig = pulumi.Input.asInput<LabelingJobHumanTaskConfig>(humanTaskConfig),
-      inputConfig = pulumi.Input.asInput<LabelingJobInputConfig>(inputConfig),
-      labelAttributeName = pulumi.Input.asInput<String>(labelAttributeName),
-      labelCategoryConfigS3Uri = pulumi.Input.asOptionalInput<String>(labelCategoryConfigS3Uri),
-      labelingJobAlgorithmsConfig = pulumi.Input.asOptionalInput<LabelingJobLabelingJobAlgorithmsConfig>(labelingJobAlgorithmsConfig),
-      labelingJobName = pulumi.Input.asInput<String>(labelingJobName),
-      outputConfig = pulumi.Input.asInput<LabelingJobOutputConfig>(outputConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      stoppingConditions = pulumi.Input.asOptionalInput<List<LabelingJobStoppingCondition>>(stoppingConditions),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.humanTaskConfig,
+    required this.inputConfig,
+    required this.labelAttributeName,
+    this.labelCategoryConfigS3Uri,
+    this.labelingJobAlgorithmsConfig,
+    required this.labelingJobName,
+    required this.outputConfig,
+    this.region,
+    required this.roleArn,
+    this.stoppingConditions,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class LabelingJobArgs {
 
   factory LabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return LabelingJobArgs(
-      humanTaskConfig: pulumi.Output.create<LabelingJobHumanTaskConfig>(LabelingJobHumanTaskConfig.fromMap((map['humanTaskConfig'] as Map).cast<String, dynamic>())),
-      inputConfig: pulumi.Output.create<LabelingJobInputConfig>(LabelingJobInputConfig.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())),
-      labelAttributeName: pulumi.Output.create<String>(map['labelAttributeName'] as String),
-      labelCategoryConfigS3Uri: map['labelCategoryConfigS3Uri'] == null ? null : pulumi.Output.create<String>(map['labelCategoryConfigS3Uri'] as String),
-      labelingJobAlgorithmsConfig: map['labelingJobAlgorithmsConfig'] == null ? null : pulumi.Output.create<LabelingJobLabelingJobAlgorithmsConfig>(LabelingJobLabelingJobAlgorithmsConfig.fromMap((map['labelingJobAlgorithmsConfig'] as Map).cast<String, dynamic>())),
-      labelingJobName: pulumi.Output.create<String>(map['labelingJobName'] as String),
-      outputConfig: pulumi.Output.create<LabelingJobOutputConfig>(LabelingJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      stoppingConditions: map['stoppingConditions'] == null ? null : pulumi.Output.create<List<LabelingJobStoppingCondition>>(pulumi.Input.decodeList<LabelingJobStoppingCondition>(map['stoppingConditions'], (value) => LabelingJobStoppingCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      humanTaskConfig: (LabelingJobHumanTaskConfig.fromMap((map['humanTaskConfig'] as Map).cast<String, dynamic>())).input(),
+      inputConfig: (LabelingJobInputConfig.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())).input(),
+      labelAttributeName: (map['labelAttributeName'] as String).input(),
+      labelCategoryConfigS3Uri: map['labelCategoryConfigS3Uri'] == null ? null : (map['labelCategoryConfigS3Uri'] as String).input(),
+      labelingJobAlgorithmsConfig: map['labelingJobAlgorithmsConfig'] == null ? null : (LabelingJobLabelingJobAlgorithmsConfig.fromMap((map['labelingJobAlgorithmsConfig'] as Map).cast<String, dynamic>())).input(),
+      labelingJobName: (map['labelingJobName'] as String).input(),
+      outputConfig: (LabelingJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      stoppingConditions: map['stoppingConditions'] == null ? null : (pulumi.Input.decodeList<LabelingJobStoppingCondition>(map['stoppingConditions'], (value) => LabelingJobStoppingCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for Binauthz
 class ConfigManagementBinauthzConfigResponse {
   /// Whether binauthz is enabled in this cluster.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ConfigManagementBinauthzConfigResponse].
   /// [enabled] Whether binauthz is enabled in this cluster.
@@ -20,7 +21,7 @@ class ConfigManagementBinauthzConfigResponse {
 
   factory ConfigManagementBinauthzConfigResponse.fromMap(Map<String, dynamic> map) {
     return ConfigManagementBinauthzConfigResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

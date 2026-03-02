@@ -25,17 +25,12 @@ class AnomalyMonitorArgs {
   /// [name] The name of the monitor.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AnomalyMonitorArgs({
-    pulumi.Output<String>? monitorDimension,
-    pulumi.Output<String>? monitorSpecification,
-    required pulumi.Output<String> monitorType,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      monitorDimension = pulumi.Input.asOptionalInput<String>(monitorDimension),
-      monitorSpecification = pulumi.Input.asOptionalInput<String>(monitorSpecification),
-      monitorType = pulumi.Input.asInput<String>(monitorType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.monitorDimension,
+    this.monitorSpecification,
+    required this.monitorType,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AnomalyMonitorArgs {
 
   factory AnomalyMonitorArgs.fromMap(Map<String, dynamic> map) {
     return AnomalyMonitorArgs(
-      monitorDimension: map['monitorDimension'] == null ? null : pulumi.Output.create<String>(map['monitorDimension'] as String),
-      monitorSpecification: map['monitorSpecification'] == null ? null : pulumi.Output.create<String>(map['monitorSpecification'] as String),
-      monitorType: pulumi.Output.create<String>(map['monitorType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      monitorDimension: map['monitorDimension'] == null ? null : (map['monitorDimension'] as String).input(),
+      monitorSpecification: map['monitorSpecification'] == null ? null : (map['monitorSpecification'] as String).input(),
+      monitorType: (map['monitorType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

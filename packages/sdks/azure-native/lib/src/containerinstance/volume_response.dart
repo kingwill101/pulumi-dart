@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_file_volume_response.dart';
 import 'git_repo_volume_response.dart';
 
 /// The properties of the volume.
 class VolumeResponse {
   /// The Azure File volume.
-  final AzureFileVolumeResponse? azureFile;
+  final pulumi.Input<AzureFileVolumeResponse>? azureFile;
   /// The empty directory volume.
-  final dynamic emptyDir;
+  final pulumi.Input<dynamic>? emptyDir;
   /// The git repo volume.
-  final GitRepoVolumeResponse? gitRepo;
+  final pulumi.Input<GitRepoVolumeResponse>? gitRepo;
   /// The name of the volume.
-  final String name;
+  final pulumi.Input<String> name;
   /// The secret volume.
-  final Map<String, String>? secret;
+  final pulumi.Input<Map<String, String>>? secret;
   /// The secret reference volume.
-  final Map<String, String>? secretReference;
+  final pulumi.Input<Map<String, String>>? secretReference;
 
   /// Creates a new [VolumeResponse].
   /// [azureFile] The Azure File volume.
@@ -36,9 +37,9 @@ class VolumeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureFile': ?azureFile == null ? null : azureFile!.toMap(),
+      'azureFile': ?pulumi.Input.mapOptionalInputValue<AzureFileVolumeResponse, Map<String, dynamic>>(azureFile, (value) => value.toMap()),
       'emptyDir': ?emptyDir,
-      'gitRepo': ?gitRepo == null ? null : gitRepo!.toMap(),
+      'gitRepo': ?pulumi.Input.mapOptionalInputValue<GitRepoVolumeResponse, Map<String, dynamic>>(gitRepo, (value) => value.toMap()),
       'name': name,
       'secret': ?secret,
       'secretReference': ?secretReference,
@@ -47,12 +48,12 @@ class VolumeResponse {
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeResponse(
-      azureFile: map['azureFile'] == null ? null : AzureFileVolumeResponse.fromMap((map['azureFile'] as Map).cast<String, dynamic>()),
-      emptyDir: map['emptyDir'] == null ? null : map['emptyDir'],
-      gitRepo: map['gitRepo'] == null ? null : GitRepoVolumeResponse.fromMap((map['gitRepo'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      secret: map['secret'] == null ? null : (map['secret'] as Map).cast<String, String>(),
-      secretReference: map['secretReference'] == null ? null : (map['secretReference'] as Map).cast<String, String>(),
+      azureFile: map['azureFile'] == null ? null : (AzureFileVolumeResponse.fromMap((map['azureFile'] as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (map['emptyDir']).input(),
+      gitRepo: map['gitRepo'] == null ? null : (GitRepoVolumeResponse.fromMap((map['gitRepo'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      secret: map['secret'] == null ? null : ((map['secret'] as Map).cast<String, String>()).input(),
+      secretReference: map['secretReference'] == null ? null : ((map['secretReference'] as Map).cast<String, String>()).input(),
     );
   }
 }

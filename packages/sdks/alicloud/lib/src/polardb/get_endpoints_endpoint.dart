@@ -5,19 +5,19 @@ import 'get_endpoints_endpoint_address_item.dart';
 
 class GetEndpointsEndpoint {
   /// A list of endpoint addresses. Each element contains the following attributes.
-  final List<GetEndpointsEndpointAddressItem> addressItems;
+  final pulumi.Input<List<GetEndpointsEndpointAddressItem>> addressItems;
   /// Whether the new node is automatically added to the default cluster address.Options are `Enable` and `Disable`.
-  final String autoAddNewNodes;
+  final pulumi.Input<String> autoAddNewNodes;
   /// endpoint of the cluster.
-  final String dbEndpointId;
+  final pulumi.Input<String> dbEndpointId;
   /// The Endpoint configuration. `ConsistLevel`: session consistency level, value:`0`: final consistency,`1`: session consistency;`LoadBalanceStrategy`: load balancing strategy. Based on the automatic scheduling of load, the value is: `load`.
-  final String endpointConfig;
+  final pulumi.Input<String> endpointConfig;
   /// Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// A list of nodes that connect to the address configuration.
-  final String nodes;
+  final pulumi.Input<String> nodes;
   /// Read-write mode:`ReadWrite`: readable and writable (automatic read-write separation).`ReadOnly`: ReadOnly.
-  final String readWriteMode;
+  final pulumi.Input<String> readWriteMode;
 
   /// Creates a new [GetEndpointsEndpoint].
   /// [addressItems] A list of endpoint addresses. Each element contains the following attributes.
@@ -39,7 +39,7 @@ class GetEndpointsEndpoint {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addressItems': pulumi.Input.encodeList<GetEndpointsEndpointAddressItem, Map<String, dynamic>>(addressItems, (value) => value.toMap()),
+      'addressItems': pulumi.Input.mapInputValue<List<GetEndpointsEndpointAddressItem>, List<Map<String, dynamic>>>(addressItems, (value) => pulumi.Input.encodeList<GetEndpointsEndpointAddressItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'autoAddNewNodes': autoAddNewNodes,
       'dbEndpointId': dbEndpointId,
       'endpointConfig': endpointConfig,
@@ -51,13 +51,13 @@ class GetEndpointsEndpoint {
 
   factory GetEndpointsEndpoint.fromMap(Map<String, dynamic> map) {
     return GetEndpointsEndpoint(
-      addressItems: pulumi.Input.decodeList<GetEndpointsEndpointAddressItem>(map['addressItems'], (value) => GetEndpointsEndpointAddressItem.fromMap((value as Map).cast<String, dynamic>())),
-      autoAddNewNodes: map['autoAddNewNodes'] as String,
-      dbEndpointId: map['dbEndpointId'] as String,
-      endpointConfig: map['endpointConfig'] as String,
-      endpointType: map['endpointType'] as String,
-      nodes: map['nodes'] as String,
-      readWriteMode: map['readWriteMode'] as String,
+      addressItems: (pulumi.Input.decodeList<GetEndpointsEndpointAddressItem>(map['addressItems'], (value) => GetEndpointsEndpointAddressItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoAddNewNodes: (map['autoAddNewNodes'] as String).input(),
+      dbEndpointId: (map['dbEndpointId'] as String).input(),
+      endpointConfig: (map['endpointConfig'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      nodes: (map['nodes'] as String).input(),
+      readWriteMode: (map['readWriteMode'] as String).input(),
     );
   }
 }

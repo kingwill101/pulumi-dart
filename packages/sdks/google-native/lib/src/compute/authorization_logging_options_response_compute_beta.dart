@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This is deprecated and has no effect. Do not use.
 class AuthorizationLoggingOptionsResponseComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final String permissionType;
+  final pulumi.Input<String> permissionType;
 
   /// Creates a new [AuthorizationLoggingOptionsResponseComputeBeta].
   /// [permissionType] This is deprecated and has no effect. Do not use.
@@ -20,7 +21,7 @@ class AuthorizationLoggingOptionsResponseComputeBeta {
 
   factory AuthorizationLoggingOptionsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptionsResponseComputeBeta(
-      permissionType: map['permissionType'] as String,
+      permissionType: (map['permissionType'] as String).input(),
     );
   }
 }

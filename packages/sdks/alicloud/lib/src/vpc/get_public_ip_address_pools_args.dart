@@ -31,21 +31,14 @@ class GetPublicIpAddressPoolsArgs {
   /// [publicIpAddressPoolName] The name of the VPC Public IP address pool.
   /// [status] The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
   GetPublicIpAddressPoolsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? isp,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<List<String>>? publicIpAddressPoolIds,
-    pulumi.Output<String>? publicIpAddressPoolName,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      isp = pulumi.Input.asOptionalInput<String>(isp),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      publicIpAddressPoolIds = pulumi.Input.asOptionalInput<List<String>>(publicIpAddressPoolIds),
-      publicIpAddressPoolName = pulumi.Input.asOptionalInput<String>(publicIpAddressPoolName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.isp,
+    this.nameRegex,
+    this.outputFile,
+    this.publicIpAddressPoolIds,
+    this.publicIpAddressPoolName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetPublicIpAddressPoolsArgs {
 
   factory GetPublicIpAddressPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIpAddressPoolsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      isp: map['isp'] == null ? null : pulumi.Output.create<String>(map['isp'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      publicIpAddressPoolIds: map['publicIpAddressPoolIds'] == null ? null : pulumi.Output.create<List<String>>((map['publicIpAddressPoolIds'] as List).cast<String>()),
-      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : pulumi.Output.create<String>(map['publicIpAddressPoolName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      publicIpAddressPoolIds: map['publicIpAddressPoolIds'] == null ? null : ((map['publicIpAddressPoolIds'] as List).cast<String>()).input(),
+      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : (map['publicIpAddressPoolName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

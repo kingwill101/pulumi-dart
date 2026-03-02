@@ -8,11 +8,11 @@ class InterconnectGroupPhysicalStructureMetroFacility {
   /// The ID of this facility, as a numeric string like
   /// "5467". This is the third component of the location of Interconnects
   /// in this facility.
-  final String? facility;
+  final pulumi.Input<String>? facility;
   /// (Output)
   /// Zones used to explain this blocker in more detail.
   /// Zone names are "zone1" and/or "zone2".
-  final List<InterconnectGroupPhysicalStructureMetroFacilityZone>? zones;
+  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetroFacilityZone>>? zones;
 
   /// Creates a new [InterconnectGroupPhysicalStructureMetroFacility].
   /// [facility] (Output)
@@ -25,14 +25,14 @@ class InterconnectGroupPhysicalStructureMetroFacility {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'facility': ?facility,
-      'zones': ?zones == null ? null : pulumi.Input.encodeList<InterconnectGroupPhysicalStructureMetroFacilityZone, Map<String, dynamic>>(zones!, (value) => value.toMap()),
+      'zones': ?pulumi.Input.mapOptionalInputValue<List<InterconnectGroupPhysicalStructureMetroFacilityZone>, List<Map<String, dynamic>>>(zones, (value) => pulumi.Input.encodeList<InterconnectGroupPhysicalStructureMetroFacilityZone, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory InterconnectGroupPhysicalStructureMetroFacility.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupPhysicalStructureMetroFacility(
-      facility: map['facility'] == null ? null : map['facility'] as String,
-      zones: map['zones'] == null ? null : pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetroFacilityZone>(map['zones'], (value) => InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap((value as Map).cast<String, dynamic>())),
+      facility: map['facility'] == null ? null : (map['facility'] as String).input(),
+      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetroFacilityZone>(map['zones'], (value) => InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

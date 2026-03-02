@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretsSecretTopic {
   /// The resource name of the Pub/Sub topic that will be published to.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetSecretsSecretTopic].
   /// [name] The resource name of the Pub/Sub topic that will be published to.
@@ -19,7 +20,7 @@ class GetSecretsSecretTopic {
 
   factory GetSecretsSecretTopic.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecretTopic(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

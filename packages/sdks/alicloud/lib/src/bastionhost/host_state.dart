@@ -43,29 +43,18 @@ class HostState {
   /// [source] Specify the new create a host of source. Valid values:
   /// [sourceInstanceId] Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
   HostState({
-    pulumi.Output<String>? activeAddressType,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? hostId,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<String>? hostPrivateAddress,
-    pulumi.Output<String>? hostPublicAddress,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceRegionId,
-    pulumi.Output<String>? osType,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? sourceInstanceId,
-  }) :
-      activeAddressType = pulumi.Input.asOptionalInput<String>(activeAddressType),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      hostId = pulumi.Input.asOptionalInput<String>(hostId),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      hostPrivateAddress = pulumi.Input.asOptionalInput<String>(hostPrivateAddress),
-      hostPublicAddress = pulumi.Input.asOptionalInput<String>(hostPublicAddress),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceRegionId = pulumi.Input.asOptionalInput<String>(instanceRegionId),
-      osType = pulumi.Input.asOptionalInput<String>(osType),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      sourceInstanceId = pulumi.Input.asOptionalInput<String>(sourceInstanceId);
+    this.activeAddressType,
+    this.comment,
+    this.hostId,
+    this.hostName,
+    this.hostPrivateAddress,
+    this.hostPublicAddress,
+    this.instanceId,
+    this.instanceRegionId,
+    this.osType,
+    this.source,
+    this.sourceInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class HostState {
 
   factory HostState.fromMap(Map<String, dynamic> map) {
     return HostState(
-      activeAddressType: map['activeAddressType'] == null ? null : pulumi.Output.create<String>(map['activeAddressType'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      hostId: map['hostId'] == null ? null : pulumi.Output.create<String>(map['hostId'] as String),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      hostPrivateAddress: map['hostPrivateAddress'] == null ? null : pulumi.Output.create<String>(map['hostPrivateAddress'] as String),
-      hostPublicAddress: map['hostPublicAddress'] == null ? null : pulumi.Output.create<String>(map['hostPublicAddress'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceRegionId: map['instanceRegionId'] == null ? null : pulumi.Output.create<String>(map['instanceRegionId'] as String),
-      osType: map['osType'] == null ? null : pulumi.Output.create<String>(map['osType'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      sourceInstanceId: map['sourceInstanceId'] == null ? null : pulumi.Output.create<String>(map['sourceInstanceId'] as String),
+      activeAddressType: map['activeAddressType'] == null ? null : (map['activeAddressType'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      hostPrivateAddress: map['hostPrivateAddress'] == null ? null : (map['hostPrivateAddress'] as String).input(),
+      hostPublicAddress: map['hostPublicAddress'] == null ? null : (map['hostPublicAddress'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceRegionId: map['instanceRegionId'] == null ? null : (map['instanceRegionId'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      sourceInstanceId: map['sourceInstanceId'] == null ? null : (map['sourceInstanceId'] as String).input(),
     );
   }
 }

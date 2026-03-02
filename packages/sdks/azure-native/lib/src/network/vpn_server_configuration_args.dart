@@ -32,21 +32,14 @@ class VpnServerConfigurationArgs {
   /// [tags] Resource tags.
   /// [vpnServerConfigurationName] The name of the VpnServerConfiguration being created or updated.
   VpnServerConfigurationArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<VpnServerConfigurationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpnServerConfigurationName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<VpnServerConfigurationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpnServerConfigurationName = pulumi.Input.asOptionalInput<String>(vpnServerConfigurationName);
+    this.id,
+    this.location,
+    this.name,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    this.vpnServerConfigurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VpnServerConfigurationArgs {
 
   factory VpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<VpnServerConfigurationProperties>(VpnServerConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpnServerConfigurationName: map['vpnServerConfigurationName'] == null ? null : pulumi.Output.create<String>(map['vpnServerConfigurationName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (VpnServerConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpnServerConfigurationName: map['vpnServerConfigurationName'] == null ? null : (map['vpnServerConfigurationName'] as String).input(),
     );
   }
 }

@@ -45,29 +45,18 @@ class SnapshotImportArgs {
   /// [tags] A map of tags to assign to the snapshot.
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   SnapshotImportArgs({
-    pulumi.Output<SnapshotImportClientData>? clientData,
-    pulumi.Output<String>? description,
-    required pulumi.Output<SnapshotImportDiskContainer> diskContainer,
-    pulumi.Output<bool>? encrypted,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<bool>? permanentRestore,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<String>? storageTier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? temporaryRestoreDays,
-  }) :
-      clientData = pulumi.Input.asOptionalInput<SnapshotImportClientData>(clientData),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskContainer = pulumi.Input.asInput<SnapshotImportDiskContainer>(diskContainer),
-      encrypted = pulumi.Input.asOptionalInput<bool>(encrypted),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      permanentRestore = pulumi.Input.asOptionalInput<bool>(permanentRestore),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      storageTier = pulumi.Input.asOptionalInput<String>(storageTier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      temporaryRestoreDays = pulumi.Input.asOptionalInput<int>(temporaryRestoreDays);
+    this.clientData,
+    this.description,
+    required this.diskContainer,
+    this.encrypted,
+    this.kmsKeyId,
+    this.permanentRestore,
+    this.region,
+    this.roleName,
+    this.storageTier,
+    this.tags,
+    this.temporaryRestoreDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class SnapshotImportArgs {
 
   factory SnapshotImportArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotImportArgs(
-      clientData: map['clientData'] == null ? null : pulumi.Output.create<SnapshotImportClientData>(SnapshotImportClientData.fromMap((map['clientData'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskContainer: pulumi.Output.create<SnapshotImportDiskContainer>(SnapshotImportDiskContainer.fromMap((map['diskContainer'] as Map).cast<String, dynamic>())),
-      encrypted: map['encrypted'] == null ? null : pulumi.Output.create<bool>(map['encrypted'] as bool),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      permanentRestore: map['permanentRestore'] == null ? null : pulumi.Output.create<bool>(map['permanentRestore'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      storageTier: map['storageTier'] == null ? null : pulumi.Output.create<String>(map['storageTier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : pulumi.Output.create<int>(map['temporaryRestoreDays'] as int),
+      clientData: map['clientData'] == null ? null : (SnapshotImportClientData.fromMap((map['clientData'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskContainer: (SnapshotImportDiskContainer.fromMap((map['diskContainer'] as Map).cast<String, dynamic>())).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      permanentRestore: map['permanentRestore'] == null ? null : (map['permanentRestore'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      storageTier: map['storageTier'] == null ? null : (map['storageTier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : (map['temporaryRestoreDays'] as int).input(),
     );
   }
 }

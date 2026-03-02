@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageVersionsImageVersion {
   /// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
-  final String imageVersionId;
+  final pulumi.Input<String> imageVersionId;
   /// Supported python versions for this image version
-  final List<String> supportedPythonVersions;
+  final pulumi.Input<List<String>> supportedPythonVersions;
 
   /// Creates a new [GetImageVersionsImageVersion].
   /// [imageVersionId] The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
@@ -24,8 +25,8 @@ class GetImageVersionsImageVersion {
 
   factory GetImageVersionsImageVersion.fromMap(Map<String, dynamic> map) {
     return GetImageVersionsImageVersion(
-      imageVersionId: map['imageVersionId'] as String,
-      supportedPythonVersions: (map['supportedPythonVersions'] as List).cast<String>(),
+      imageVersionId: (map['imageVersionId'] as String).input(),
+      supportedPythonVersions: ((map['supportedPythonVersions'] as List).cast<String>()).input(),
     );
   }
 }

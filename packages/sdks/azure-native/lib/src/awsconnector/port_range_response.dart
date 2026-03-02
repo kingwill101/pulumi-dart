@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of PortRange
 class PortRangeResponse {
   /// Property fromPort
-  final int? fromPort;
+  final pulumi.Input<int>? fromPort;
   /// Property toPort
-  final int? toPort;
+  final pulumi.Input<int>? toPort;
 
   /// Creates a new [PortRangeResponse].
   /// [fromPort] Property fromPort
@@ -25,8 +26,8 @@ class PortRangeResponse {
 
   factory PortRangeResponse.fromMap(Map<String, dynamic> map) {
     return PortRangeResponse(
-      fromPort: map['fromPort'] == null ? null : map['fromPort'] as int,
-      toPort: map['toPort'] == null ? null : map['toPort'] as int,
+      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
     );
   }
 }

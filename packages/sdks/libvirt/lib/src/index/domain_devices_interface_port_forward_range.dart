@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfacePortForwardRange {
   /// Specifies the ending port number in the forwarded range.
-  final double? end;
+  final pulumi.Input<double>? end;
   /// Identifies any excluded ports from the forwarding range.
-  final String? exclude;
+  final pulumi.Input<String>? exclude;
   /// Sets the starting port number for the forwarding range.
-  final double start;
+  final pulumi.Input<double> start;
   /// Specifies the target port to which traffic is forwarded.
-  final double? to;
+  final pulumi.Input<double>? to;
 
   /// Creates a new [DomainDevicesInterfacePortForwardRange].
   /// [end] Specifies the ending port number in the forwarded range.
@@ -34,10 +35,10 @@ class DomainDevicesInterfacePortForwardRange {
 
   factory DomainDevicesInterfacePortForwardRange.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfacePortForwardRange(
-      end: map['end'] == null ? null : map['end'] as double,
-      exclude: map['exclude'] == null ? null : map['exclude'] as String,
-      start: map['start'] as double,
-      to: map['to'] == null ? null : map['to'] as double,
+      end: map['end'] == null ? null : (map['end'] as double).input(),
+      exclude: map['exclude'] == null ? null : (map['exclude'] as String).input(),
+      start: (map['start'] as double).input(),
+      to: map['to'] == null ? null : (map['to'] as double).input(),
     );
   }
 }

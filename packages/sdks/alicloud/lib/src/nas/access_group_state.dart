@@ -38,23 +38,15 @@ class AccessGroupState {
   /// [regionId] (Available since v1.256.0) The region ID.
   /// [type] Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
   AccessGroupState({
-    pulumi.Output<String>? accessGroupName,
-    pulumi.Output<String>? accessGroupType,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? fileSystemType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? type,
-  }) :
-      accessGroupName = pulumi.Input.asOptionalInput<String>(accessGroupName),
-      accessGroupType = pulumi.Input.asOptionalInput<String>(accessGroupType),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemType = pulumi.Input.asOptionalInput<String>(fileSystemType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.accessGroupName,
+    this.accessGroupType,
+    this.createTime,
+    this.description,
+    this.fileSystemType,
+    this.name,
+    this.regionId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class AccessGroupState {
 
   factory AccessGroupState.fromMap(Map<String, dynamic> map) {
     return AccessGroupState(
-      accessGroupName: map['accessGroupName'] == null ? null : pulumi.Output.create<String>(map['accessGroupName'] as String),
-      accessGroupType: map['accessGroupType'] == null ? null : pulumi.Output.create<String>(map['accessGroupType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemType: map['fileSystemType'] == null ? null : pulumi.Output.create<String>(map['fileSystemType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
+      accessGroupType: map['accessGroupType'] == null ? null : (map['accessGroupType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetKeyValueArgs {
   /// [keyValueName] Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   GetKeyValueArgs({
-    required pulumi.Output<String> configStoreName,
-    required pulumi.Output<String> keyValueName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configStoreName = pulumi.Input.asInput<String>(configStoreName),
-      keyValueName = pulumi.Input.asInput<String>(keyValueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configStoreName,
+    required this.keyValueName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKeyValueArgs {
 
   factory GetKeyValueArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyValueArgs(
-      configStoreName: pulumi.Output.create<String>(map['configStoreName'] as String),
-      keyValueName: pulumi.Output.create<String>(map['keyValueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configStoreName: (map['configStoreName'] as String).input(),
+      keyValueName: (map['keyValueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

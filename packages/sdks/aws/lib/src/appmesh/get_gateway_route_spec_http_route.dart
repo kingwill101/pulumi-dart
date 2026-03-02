@@ -5,8 +5,8 @@ import 'get_gateway_route_spec_http_route_action.dart';
 import 'get_gateway_route_spec_http_route_match.dart';
 
 class GetGatewayRouteSpecHttpRoute {
-  final List<GetGatewayRouteSpecHttpRouteAction> actions;
-  final List<GetGatewayRouteSpecHttpRouteMatch> matches;
+  final pulumi.Input<List<GetGatewayRouteSpecHttpRouteAction>> actions;
+  final pulumi.Input<List<GetGatewayRouteSpecHttpRouteMatch>> matches;
 
   /// Creates a new [GetGatewayRouteSpecHttpRoute].
   /// [actions] Required.
@@ -18,15 +18,15 @@ class GetGatewayRouteSpecHttpRoute {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<GetGatewayRouteSpecHttpRouteAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
-      'matches': pulumi.Input.encodeList<GetGatewayRouteSpecHttpRouteMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'actions': pulumi.Input.mapInputValue<List<GetGatewayRouteSpecHttpRouteAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<GetGatewayRouteSpecHttpRouteAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'matches': pulumi.Input.mapInputValue<List<GetGatewayRouteSpecHttpRouteMatch>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<GetGatewayRouteSpecHttpRouteMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetGatewayRouteSpecHttpRoute.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRoute(
-      actions: pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteAction>(map['actions'], (value) => GetGatewayRouteSpecHttpRouteAction.fromMap((value as Map).cast<String, dynamic>())),
-      matches: pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatch>(map['matches'], (value) => GetGatewayRouteSpecHttpRouteMatch.fromMap((value as Map).cast<String, dynamic>())),
+      actions: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteAction>(map['actions'], (value) => GetGatewayRouteSpecHttpRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatch>(map['matches'], (value) => GetGatewayRouteSpecHttpRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

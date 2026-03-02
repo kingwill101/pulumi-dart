@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workforce_pool_provider_extra_attributes_oauth2_client_client_secret.dart';
 import 'workforce_pool_provider_extra_attributes_oauth2_client_query_parameters.dart';
 
@@ -17,15 +18,15 @@ class WorkforcePoolProviderExtraAttributesOauth2Client {
   /// group IDs obtained from Azure AD are present in 'assertion.groups' for
   /// OIDC providers and 'assertion.attributes.groups' for SAML providers for
   /// attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
-  final String attributesType;
+  final pulumi.Input<String> attributesType;
   /// The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
-  final WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret clientSecret;
+  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret> clientSecret;
   /// The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
-  final String issuerUri;
+  final pulumi.Input<String> issuerUri;
   /// Represents the parameters to control which claims are fetched from an IdP.
-  final WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters? queryParameters;
+  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters>? queryParameters;
 
   /// Creates a new [WorkforcePoolProviderExtraAttributesOauth2Client].
   /// [attributesType] Represents the IdP and type of claims that should be fetched.
@@ -45,19 +46,19 @@ class WorkforcePoolProviderExtraAttributesOauth2Client {
     return <String, dynamic>{
       'attributesType': attributesType,
       'clientId': clientId,
-      'clientSecret': clientSecret.toMap(),
+      'clientSecret': pulumi.Input.mapInputValue<WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
       'issuerUri': issuerUri,
-      'queryParameters': ?queryParameters == null ? null : queryParameters!.toMap(),
+      'queryParameters': ?pulumi.Input.mapOptionalInputValue<WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters, Map<String, dynamic>>(queryParameters, (value) => value.toMap()),
     };
   }
 
   factory WorkforcePoolProviderExtraAttributesOauth2Client.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderExtraAttributesOauth2Client(
-      attributesType: map['attributesType'] as String,
-      clientId: map['clientId'] as String,
-      clientSecret: WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
-      issuerUri: map['issuerUri'] as String,
-      queryParameters: map['queryParameters'] == null ? null : WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters.fromMap((map['queryParameters'] as Map).cast<String, dynamic>()),
+      attributesType: (map['attributesType'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      issuerUri: (map['issuerUri'] as String).input(),
+      queryParameters: map['queryParameters'] == null ? null : (WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters.fromMap((map['queryParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

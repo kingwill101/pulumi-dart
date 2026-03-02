@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for the private GKE cluster in a Cloud Composer environment.
 class PrivateClusterConfigComposerV1beta1 {
   /// Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
-  final bool? enablePrivateEndpoint;
+  final pulumi.Input<bool>? enablePrivateEndpoint;
   /// Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used.
-  final String? masterIpv4CidrBlock;
+  final pulumi.Input<String>? masterIpv4CidrBlock;
 
   /// Creates a new [PrivateClusterConfigComposerV1beta1].
   /// [enablePrivateEndpoint] Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
@@ -25,8 +26,8 @@ class PrivateClusterConfigComposerV1beta1 {
 
   factory PrivateClusterConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return PrivateClusterConfigComposerV1beta1(
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : map['enablePrivateEndpoint'] as bool,
-      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : map['masterIpv4CidrBlock'] as String,
+      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint'] as bool).input(),
+      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock'] as String).input(),
     );
   }
 }

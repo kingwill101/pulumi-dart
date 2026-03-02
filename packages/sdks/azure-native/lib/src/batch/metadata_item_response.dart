@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Batch service does not assign any meaning to this metadata; it is solely for the use of user code.
 class MetadataItemResponse {
   /// The name of the metadata item.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the metadata item.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [MetadataItemResponse].
   /// [name] The name of the metadata item.
@@ -25,8 +26,8 @@ class MetadataItemResponse {
 
   factory MetadataItemResponse.fromMap(Map<String, dynamic> map) {
     return MetadataItemResponse(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

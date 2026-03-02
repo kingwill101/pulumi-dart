@@ -22,15 +22,11 @@ class GetNodeTypeFaultSimulationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [simulationId] unique identifier for the fault simulation.
   GetNodeTypeFaultSimulationArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> nodeTypeName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> simulationId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      nodeTypeName = pulumi.Input.asInput<String>(nodeTypeName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      simulationId = pulumi.Input.asInput<String>(simulationId);
+    required this.clusterName,
+    required this.nodeTypeName,
+    required this.resourceGroupName,
+    required this.simulationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetNodeTypeFaultSimulationArgs {
 
   factory GetNodeTypeFaultSimulationArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeTypeFaultSimulationArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      nodeTypeName: pulumi.Output.create<String>(map['nodeTypeName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      simulationId: pulumi.Output.create<String>(map['simulationId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      nodeTypeName: (map['nodeTypeName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      simulationId: (map['simulationId'] as String).input(),
     );
   }
 }

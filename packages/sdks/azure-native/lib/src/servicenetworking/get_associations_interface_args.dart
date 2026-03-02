@@ -19,13 +19,10 @@ class GetAssociationsInterfaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trafficControllerName] traffic controller name for path
   GetAssociationsInterfaceArgs({
-    required pulumi.Output<String> associationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> trafficControllerName,
-  }) :
-      associationName = pulumi.Input.asInput<String>(associationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      trafficControllerName = pulumi.Input.asInput<String>(trafficControllerName);
+    required this.associationName,
+    required this.resourceGroupName,
+    required this.trafficControllerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAssociationsInterfaceArgs {
 
   factory GetAssociationsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetAssociationsInterfaceArgs(
-      associationName: pulumi.Output.create<String>(map['associationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      trafficControllerName: pulumi.Output.create<String>(map['trafficControllerName'] as String),
+      associationName: (map['associationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      trafficControllerName: (map['trafficControllerName'] as String).input(),
     );
   }
 }

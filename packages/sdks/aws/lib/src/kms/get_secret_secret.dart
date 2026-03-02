@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretSecret {
-  final Map<String, String>? context;
-  final List<String>? grantTokens;
-  final String name;
-  final String payload;
+  final pulumi.Input<Map<String, String>>? context;
+  final pulumi.Input<List<String>>? grantTokens;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> payload;
 
   /// Creates a new [GetSecretSecret].
   /// [context] Optional.
@@ -30,10 +31,10 @@ class GetSecretSecret {
 
   factory GetSecretSecret.fromMap(Map<String, dynamic> map) {
     return GetSecretSecret(
-      context: map['context'] == null ? null : (map['context'] as Map).cast<String, String>(),
-      grantTokens: map['grantTokens'] == null ? null : (map['grantTokens'] as List).cast<String>(),
-      name: map['name'] as String,
-      payload: map['payload'] as String,
+      context: map['context'] == null ? null : ((map['context'] as Map).cast<String, String>()).input(),
+      grantTokens: map['grantTokens'] == null ? null : ((map['grantTokens'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      payload: (map['payload'] as String).input(),
     );
   }
 }

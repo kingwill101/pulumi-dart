@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbClustersClusterScaleOutStatus {
   /// Process.
-  final String progress;
+  final pulumi.Input<String> progress;
   /// Efficiency.
-  final String ratio;
+  final pulumi.Input<String> ratio;
 
   /// Creates a new [GetDbClustersClusterScaleOutStatus].
   /// [progress] Process.
@@ -24,8 +25,8 @@ class GetDbClustersClusterScaleOutStatus {
 
   factory GetDbClustersClusterScaleOutStatus.fromMap(Map<String, dynamic> map) {
     return GetDbClustersClusterScaleOutStatus(
-      progress: map['progress'] as String,
-      ratio: map['ratio'] as String,
+      progress: (map['progress'] as String).input(),
+      ratio: (map['ratio'] as String).input(),
     );
   }
 }

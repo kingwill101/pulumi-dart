@@ -43,27 +43,17 @@ class SecurityFeedbackState {
   /// [reason] The reason for the feedback.
   /// [updateTime] The time when this specific feedback id was updated.
   SecurityFeedbackState({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<SecurityFeedbackFeedbackContext>>? feedbackContexts,
-    pulumi.Output<String>? feedbackId,
-    pulumi.Output<String>? feedbackType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? reason,
-    pulumi.Output<String>? updateTime,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      feedbackContexts = pulumi.Input.asOptionalInput<List<SecurityFeedbackFeedbackContext>>(feedbackContexts),
-      feedbackId = pulumi.Input.asOptionalInput<String>(feedbackId),
-      feedbackType = pulumi.Input.asOptionalInput<String>(feedbackType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      reason = pulumi.Input.asOptionalInput<String>(reason),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.comment,
+    this.createTime,
+    this.displayName,
+    this.feedbackContexts,
+    this.feedbackId,
+    this.feedbackType,
+    this.name,
+    this.orgId,
+    this.reason,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class SecurityFeedbackState {
 
   factory SecurityFeedbackState.fromMap(Map<String, dynamic> map) {
     return SecurityFeedbackState(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      feedbackContexts: map['feedbackContexts'] == null ? null : pulumi.Output.create<List<SecurityFeedbackFeedbackContext>>(pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(map['feedbackContexts'], (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>()))),
-      feedbackId: map['feedbackId'] == null ? null : pulumi.Output.create<String>(map['feedbackId'] as String),
-      feedbackType: map['feedbackType'] == null ? null : pulumi.Output.create<String>(map['feedbackType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      reason: map['reason'] == null ? null : pulumi.Output.create<String>(map['reason'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      feedbackContexts: map['feedbackContexts'] == null ? null : (pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(map['feedbackContexts'], (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      feedbackId: map['feedbackId'] == null ? null : (map['feedbackId'] as String).input(),
+      feedbackType: map['feedbackType'] == null ? null : (map['feedbackType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

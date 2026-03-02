@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the spec to match categorical values from parent parameter.
 class GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse {
   /// Matches values of the parent parameter of 'CATEGORICAL' type. All values must exist in `categorical_value_spec` of parent parameter.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse].
   /// [values] Matches values of the parent parameter of 'CATEGORICAL' type. All values must exist in `categorical_value_spec` of parent parameter.
@@ -20,7 +21,7 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCateg
 
   factory GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse(
-      values: (map['values'] as List).cast<String>(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

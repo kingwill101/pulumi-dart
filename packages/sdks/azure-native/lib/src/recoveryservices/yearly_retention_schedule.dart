@@ -9,17 +9,17 @@ import 'weekly_retention_format.dart';
 /// Yearly retention schedule.
 class YearlyRetentionSchedule {
   /// List of months of year of yearly retention policy.
-  final List<MonthOfYear>? monthsOfYear;
+  final pulumi.Input<List<MonthOfYear>>? monthsOfYear;
   /// Retention duration of retention Policy.
-  final RetentionDuration? retentionDuration;
+  final pulumi.Input<RetentionDuration>? retentionDuration;
   /// Daily retention format for yearly retention policy.
-  final DailyRetentionFormat? retentionScheduleDaily;
+  final pulumi.Input<DailyRetentionFormat>? retentionScheduleDaily;
   /// Retention schedule format for yearly retention policy.
-  final String? retentionScheduleFormatType;
+  final pulumi.Input<String>? retentionScheduleFormatType;
   /// Weekly retention format for yearly retention policy.
-  final WeeklyRetentionFormat? retentionScheduleWeekly;
+  final pulumi.Input<WeeklyRetentionFormat>? retentionScheduleWeekly;
   /// Retention times of retention policy.
-  final List<String>? retentionTimes;
+  final pulumi.Input<List<String>>? retentionTimes;
 
   /// Creates a new [YearlyRetentionSchedule].
   /// [monthsOfYear] List of months of year of yearly retention policy.
@@ -39,23 +39,23 @@ class YearlyRetentionSchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'monthsOfYear': ?monthsOfYear == null ? null : pulumi.Input.encodeList<MonthOfYear, String>(monthsOfYear!, (value) => value.value),
-      'retentionDuration': ?retentionDuration == null ? null : retentionDuration!.toMap(),
-      'retentionScheduleDaily': ?retentionScheduleDaily == null ? null : retentionScheduleDaily!.toMap(),
+      'monthsOfYear': ?pulumi.Input.mapOptionalInputValue<List<MonthOfYear>, List<String>>(monthsOfYear, (value) => pulumi.Input.encodeList<MonthOfYear, String>(value, (value) => value.value)),
+      'retentionDuration': ?pulumi.Input.mapOptionalInputValue<RetentionDuration, Map<String, dynamic>>(retentionDuration, (value) => value.toMap()),
+      'retentionScheduleDaily': ?pulumi.Input.mapOptionalInputValue<DailyRetentionFormat, Map<String, dynamic>>(retentionScheduleDaily, (value) => value.toMap()),
       'retentionScheduleFormatType': ?retentionScheduleFormatType,
-      'retentionScheduleWeekly': ?retentionScheduleWeekly == null ? null : retentionScheduleWeekly!.toMap(),
+      'retentionScheduleWeekly': ?pulumi.Input.mapOptionalInputValue<WeeklyRetentionFormat, Map<String, dynamic>>(retentionScheduleWeekly, (value) => value.toMap()),
       'retentionTimes': ?retentionTimes,
     };
   }
 
   factory YearlyRetentionSchedule.fromMap(Map<String, dynamic> map) {
     return YearlyRetentionSchedule(
-      monthsOfYear: map['monthsOfYear'] == null ? null : pulumi.Input.decodeList<MonthOfYear>(map['monthsOfYear'], (value) => MonthOfYear.fromValue(value as String)),
-      retentionDuration: map['retentionDuration'] == null ? null : RetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>()),
-      retentionScheduleDaily: map['retentionScheduleDaily'] == null ? null : DailyRetentionFormat.fromMap((map['retentionScheduleDaily'] as Map).cast<String, dynamic>()),
-      retentionScheduleFormatType: map['retentionScheduleFormatType'] == null ? null : map['retentionScheduleFormatType'] as String,
-      retentionScheduleWeekly: map['retentionScheduleWeekly'] == null ? null : WeeklyRetentionFormat.fromMap((map['retentionScheduleWeekly'] as Map).cast<String, dynamic>()),
-      retentionTimes: map['retentionTimes'] == null ? null : (map['retentionTimes'] as List).cast<String>(),
+      monthsOfYear: map['monthsOfYear'] == null ? null : (pulumi.Input.decodeList<MonthOfYear>(map['monthsOfYear'], (value) => MonthOfYear.fromValue(value as String))).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>())).input(),
+      retentionScheduleDaily: map['retentionScheduleDaily'] == null ? null : (DailyRetentionFormat.fromMap((map['retentionScheduleDaily'] as Map).cast<String, dynamic>())).input(),
+      retentionScheduleFormatType: map['retentionScheduleFormatType'] == null ? null : (map['retentionScheduleFormatType'] as String).input(),
+      retentionScheduleWeekly: map['retentionScheduleWeekly'] == null ? null : (WeeklyRetentionFormat.fromMap((map['retentionScheduleWeekly'] as Map).cast<String, dynamic>())).input(),
+      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes'] as List).cast<String>()).input(),
     );
   }
 }

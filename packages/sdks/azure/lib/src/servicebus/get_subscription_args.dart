@@ -22,17 +22,12 @@ class GetSubscriptionArgs {
   /// [topicId] The ID of the ServiceBus Topic where the Service Bus Subscription exists.
   /// [topicName] Optional.
   GetSubscriptionArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? topicId,
-    pulumi.Output<String>? topicName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      topicId = pulumi.Input.asOptionalInput<String>(topicId),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    required this.name,
+    this.namespaceName,
+    this.resourceGroupName,
+    this.topicId,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class GetSubscriptionArgs {
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicId: map['topicId'] == null ? null : pulumi.Output.create<String>(map['topicId'] as String),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      name: (map['name'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

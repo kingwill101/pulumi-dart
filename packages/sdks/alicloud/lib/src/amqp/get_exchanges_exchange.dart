@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExchangesExchange {
   /// The attributes.
-  final Map<String, String> attributes;
+  final pulumi.Input<Map<String, String>> attributes;
   /// Indicates whether the Auto Delete attribute is configured.
-  final bool autoDeleteState;
+  final pulumi.Input<bool> autoDeleteState;
   /// The creation time.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The name of the exchange.
-  final String exchangeName;
+  final pulumi.Input<String> exchangeName;
   /// The type of the exchange.
-  final String exchangeType;
+  final pulumi.Input<String> exchangeType;
   /// The ID of the Exchange. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of virtual host where an exchange resides.
-  final String virtualHostName;
+  final pulumi.Input<String> virtualHostName;
 
   /// Creates a new [GetExchangesExchange].
   /// [attributes] The attributes.
@@ -54,14 +55,14 @@ class GetExchangesExchange {
 
   factory GetExchangesExchange.fromMap(Map<String, dynamic> map) {
     return GetExchangesExchange(
-      attributes: (map['attributes'] as Map).cast<String, String>(),
-      autoDeleteState: map['autoDeleteState'] as bool,
-      createTime: map['createTime'] as String,
-      exchangeName: map['exchangeName'] as String,
-      exchangeType: map['exchangeType'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      virtualHostName: map['virtualHostName'] as String,
+      attributes: ((map['attributes'] as Map).cast<String, String>()).input(),
+      autoDeleteState: (map['autoDeleteState'] as bool).input(),
+      createTime: (map['createTime'] as String).input(),
+      exchangeName: (map['exchangeName'] as String).input(),
+      exchangeType: (map['exchangeType'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      virtualHostName: (map['virtualHostName'] as String).input(),
     );
   }
 }

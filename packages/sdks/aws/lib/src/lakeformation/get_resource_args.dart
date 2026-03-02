@@ -16,11 +16,9 @@ class GetResourceArgs {
   /// [arn] ARN of the resource, an S3 path.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetResourceArgs({
-    required pulumi.Output<String> arn,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asInput<String>(arn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.arn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResourceArgs {
 
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceArgs(
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: (map['arn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// Instance Description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID Of The Image.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// InstanceId.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Instance Name.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// Instance Type.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The Key Name.
-  final String keyPairName;
+  final pulumi.Input<String> keyPairName;
   /// The payment type.Valid values: `PayAsYouGo`,`Subscription`
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// Resolution.
-  final String resolution;
+  final pulumi.Input<String> resolution;
   /// Security Group ID.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// Instance Status.
-  final String status;
+  final pulumi.Input<String> status;
   /// VNC login address.
-  final String vncUrl;
+  final pulumi.Input<String> vncUrl;
   /// The vswitch id.
-  final String vswitchId;
-  final String zoneId;
+  final pulumi.Input<String> vswitchId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstancesInstance].
   /// [description] Instance Description.
@@ -83,20 +84,20 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      instanceType: map['instanceType'] as String,
-      keyPairName: map['keyPairName'] as String,
-      paymentType: map['paymentType'] as String,
-      resolution: map['resolution'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      status: map['status'] as String,
-      vncUrl: map['vncUrl'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      keyPairName: (map['keyPairName'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      resolution: (map['resolution'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vncUrl: (map['vncUrl'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

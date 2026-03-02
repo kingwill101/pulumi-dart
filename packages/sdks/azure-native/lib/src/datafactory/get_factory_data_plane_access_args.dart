@@ -31,21 +31,14 @@ class GetFactoryDataPlaneAccessArgs {
   /// [resourceGroupName] The resource group name.
   /// [startTime] Start time for the token. If not specified the current time will be used.
   GetFactoryDataPlaneAccessArgs({
-    pulumi.Output<String>? accessResourcePath,
-    pulumi.Output<String>? expireTime,
-    required pulumi.Output<String> factoryName,
-    pulumi.Output<String>? permissions,
-    pulumi.Output<String>? profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? startTime,
-  }) :
-      accessResourcePath = pulumi.Input.asOptionalInput<String>(accessResourcePath),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      permissions = pulumi.Input.asOptionalInput<String>(permissions),
-      profileName = pulumi.Input.asOptionalInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime);
+    this.accessResourcePath,
+    this.expireTime,
+    required this.factoryName,
+    this.permissions,
+    this.profileName,
+    required this.resourceGroupName,
+    this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetFactoryDataPlaneAccessArgs {
 
   factory GetFactoryDataPlaneAccessArgs.fromMap(Map<String, dynamic> map) {
     return GetFactoryDataPlaneAccessArgs(
-      accessResourcePath: map['accessResourcePath'] == null ? null : pulumi.Output.create<String>(map['accessResourcePath'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<String>(map['permissions'] as String),
-      profileName: map['profileName'] == null ? null : pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
+      accessResourcePath: map['accessResourcePath'] == null ? null : (map['accessResourcePath'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      factoryName: (map['factoryName'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container App to be a dev service
 class Service {
   /// Dev ContainerApp service type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [Service].
   /// [type] Dev ContainerApp service type
@@ -20,7 +21,7 @@ class Service {
 
   factory Service.fromMap(Map<String, dynamic> map) {
     return Service(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

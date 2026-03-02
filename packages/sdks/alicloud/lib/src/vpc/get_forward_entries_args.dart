@@ -43,29 +43,18 @@ class GetForwardEntriesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
   GetForwardEntriesArgs({
-    pulumi.Output<String>? externalIp,
-    pulumi.Output<String>? externalPort,
-    pulumi.Output<String>? forwardEntryName,
-    required pulumi.Output<String> forwardTableId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? internalIp,
-    pulumi.Output<String>? internalPort,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      externalIp = pulumi.Input.asOptionalInput<String>(externalIp),
-      externalPort = pulumi.Input.asOptionalInput<String>(externalPort),
-      forwardEntryName = pulumi.Input.asOptionalInput<String>(forwardEntryName),
-      forwardTableId = pulumi.Input.asInput<String>(forwardTableId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      internalIp = pulumi.Input.asOptionalInput<String>(internalIp),
-      internalPort = pulumi.Input.asOptionalInput<String>(internalPort),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.externalIp,
+    this.externalPort,
+    this.forwardEntryName,
+    required this.forwardTableId,
+    this.ids,
+    this.internalIp,
+    this.internalPort,
+    this.ipProtocol,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GetForwardEntriesArgs {
 
   factory GetForwardEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetForwardEntriesArgs(
-      externalIp: map['externalIp'] == null ? null : pulumi.Output.create<String>(map['externalIp'] as String),
-      externalPort: map['externalPort'] == null ? null : pulumi.Output.create<String>(map['externalPort'] as String),
-      forwardEntryName: map['forwardEntryName'] == null ? null : pulumi.Output.create<String>(map['forwardEntryName'] as String),
-      forwardTableId: pulumi.Output.create<String>(map['forwardTableId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      internalIp: map['internalIp'] == null ? null : pulumi.Output.create<String>(map['internalIp'] as String),
-      internalPort: map['internalPort'] == null ? null : pulumi.Output.create<String>(map['internalPort'] as String),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as String).input(),
+      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName'] as String).input(),
+      forwardTableId: (map['forwardTableId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

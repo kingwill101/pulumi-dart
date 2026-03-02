@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRdsBackupsBackup {
   /// The backup download url.
-  final String backupDownloadUrl;
+  final pulumi.Input<String> backupDownloadUrl;
   /// BackupEndTime.
-  final String backupEndTime;
+  final pulumi.Input<String> backupEndTime;
   /// BackupId.
-  final String backupId;
+  final pulumi.Input<String> backupId;
   /// The initiator of the backup task. Value:
   /// * **System**: automatically initiated by the System
   /// * **User**: manually initiated by the User.
-  final String backupInitiator;
+  final pulumi.Input<String> backupInitiator;
   /// The backup intranet download url.
-  final String backupIntranetDownloadUrl;
+  final pulumi.Input<String> backupIntranetDownloadUrl;
   /// BackupMethod.
-  final String backupMethod;
+  final pulumi.Input<String> backupMethod;
   /// BackupMode.
-  final String backupMode;
+  final pulumi.Input<String> backupMode;
   /// BackupSize.
-  final String backupSize;
+  final pulumi.Input<String> backupSize;
   /// BackupStartTime.
-  final String backupStartTime;
+  final pulumi.Input<String> backupStartTime;
   /// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
   /// * **NoStart**: Not started
   /// * **Checking**: check the backup
@@ -30,38 +31,38 @@ class GetRdsBackupsBackup {
   /// * **Uploading**: Upload backup
   /// * **Finished**: Complete backup
   /// * **Failed**: backup Failed
-  final String backupStatus;
+  final pulumi.Input<String> backupStatus;
   /// BackupType.
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
-  final String consistentTime;
+  final pulumi.Input<String> consistentTime;
   /// The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
   /// * **0**: General Backup Mode
   /// * **1**: Copy only mode
-  final String copyOnlyBackup;
+  final pulumi.Input<String> copyOnlyBackup;
   /// The db instance id.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// The encrypted information of the backup set.
-  final String encryption;
+  final pulumi.Input<String> encryption;
   /// HostInstanceID.
-  final String hostInstanceId;
+  final pulumi.Input<String> hostInstanceId;
   /// The ID of the Backup.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether the backup set is available, the value is:
   /// * **0**: Not available
   /// * **1**: Available.
-  final int isAvail;
+  final pulumi.Input<int> isAvail;
   /// The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
   /// * **OK**: normal.
   /// * **LARGE**: There are too many tables that cannot be used for database and table recovery.
   /// * **EMPTY**: The backup set that failed to be backed up.
-  final String metaStatus;
+  final pulumi.Input<String> metaStatus;
   /// The storage medium for the backup set. Valid values:
   /// * **0**: Regular storage
   /// * **1**: Archive storage.
-  final String storageClass;
+  final pulumi.Input<String> storageClass;
   /// StoreStatus.
-  final String storeStatus;
+  final pulumi.Input<String> storeStatus;
 
   /// Creates a new [GetRdsBackupsBackup].
   /// [backupDownloadUrl] The backup download url.
@@ -137,27 +138,27 @@ class GetRdsBackupsBackup {
 
   factory GetRdsBackupsBackup.fromMap(Map<String, dynamic> map) {
     return GetRdsBackupsBackup(
-      backupDownloadUrl: map['backupDownloadUrl'] as String,
-      backupEndTime: map['backupEndTime'] as String,
-      backupId: map['backupId'] as String,
-      backupInitiator: map['backupInitiator'] as String,
-      backupIntranetDownloadUrl: map['backupIntranetDownloadUrl'] as String,
-      backupMethod: map['backupMethod'] as String,
-      backupMode: map['backupMode'] as String,
-      backupSize: map['backupSize'] as String,
-      backupStartTime: map['backupStartTime'] as String,
-      backupStatus: map['backupStatus'] as String,
-      backupType: map['backupType'] as String,
-      consistentTime: map['consistentTime'] as String,
-      copyOnlyBackup: map['copyOnlyBackup'] as String,
-      dbInstanceId: map['dbInstanceId'] as String,
-      encryption: map['encryption'] as String,
-      hostInstanceId: map['hostInstanceId'] as String,
-      id: map['id'] as String,
-      isAvail: map['isAvail'] as int,
-      metaStatus: map['metaStatus'] as String,
-      storageClass: map['storageClass'] as String,
-      storeStatus: map['storeStatus'] as String,
+      backupDownloadUrl: (map['backupDownloadUrl'] as String).input(),
+      backupEndTime: (map['backupEndTime'] as String).input(),
+      backupId: (map['backupId'] as String).input(),
+      backupInitiator: (map['backupInitiator'] as String).input(),
+      backupIntranetDownloadUrl: (map['backupIntranetDownloadUrl'] as String).input(),
+      backupMethod: (map['backupMethod'] as String).input(),
+      backupMode: (map['backupMode'] as String).input(),
+      backupSize: (map['backupSize'] as String).input(),
+      backupStartTime: (map['backupStartTime'] as String).input(),
+      backupStatus: (map['backupStatus'] as String).input(),
+      backupType: (map['backupType'] as String).input(),
+      consistentTime: (map['consistentTime'] as String).input(),
+      copyOnlyBackup: (map['copyOnlyBackup'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      encryption: (map['encryption'] as String).input(),
+      hostInstanceId: (map['hostInstanceId'] as String).input(),
+      id: (map['id'] as String).input(),
+      isAvail: (map['isAvail'] as int).input(),
+      metaStatus: (map['metaStatus'] as String).input(),
+      storageClass: (map['storageClass'] as String).input(),
+      storeStatus: (map['storeStatus'] as String).input(),
     );
   }
 }

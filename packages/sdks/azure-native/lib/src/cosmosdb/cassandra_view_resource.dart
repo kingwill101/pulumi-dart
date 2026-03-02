@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cosmos DB Cassandra view resource object
 class CassandraViewResource {
   /// Name of the Cosmos DB Cassandra view
-  final String id;
+  final pulumi.Input<String> id;
   /// View Definition of the Cosmos DB Cassandra view
-  final String viewDefinition;
+  final pulumi.Input<String> viewDefinition;
 
   /// Creates a new [CassandraViewResource].
   /// [id] Name of the Cosmos DB Cassandra view
@@ -25,8 +26,8 @@ class CassandraViewResource {
 
   factory CassandraViewResource.fromMap(Map<String, dynamic> map) {
     return CassandraViewResource(
-      id: map['id'] as String,
-      viewDefinition: map['viewDefinition'] as String,
+      id: (map['id'] as String).input(),
+      viewDefinition: (map['viewDefinition'] as String).input(),
     );
   }
 }

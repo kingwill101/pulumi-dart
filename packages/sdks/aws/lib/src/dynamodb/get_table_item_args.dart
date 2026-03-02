@@ -28,17 +28,12 @@ class GetTableItemArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] The name or ARN of the table containing the requested item.
   GetTableItemArgs({
-    pulumi.Output<Map<String, String>>? expressionAttributeNames,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? projectionExpression,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tableName,
-  }) :
-      expressionAttributeNames = pulumi.Input.asOptionalInput<Map<String, String>>(expressionAttributeNames),
-      key = pulumi.Input.asInput<String>(key),
-      projectionExpression = pulumi.Input.asOptionalInput<String>(projectionExpression),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    this.expressionAttributeNames,
+    required this.key,
+    this.projectionExpression,
+    this.region,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class GetTableItemArgs {
 
   factory GetTableItemArgs.fromMap(Map<String, dynamic> map) {
     return GetTableItemArgs(
-      expressionAttributeNames: map['expressionAttributeNames'] == null ? null : pulumi.Output.create<Map<String, String>>((map['expressionAttributeNames'] as Map).cast<String, String>()),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      projectionExpression: map['projectionExpression'] == null ? null : pulumi.Output.create<String>(map['projectionExpression'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      expressionAttributeNames: map['expressionAttributeNames'] == null ? null : ((map['expressionAttributeNames'] as Map).cast<String, String>()).input(),
+      key: (map['key'] as String).input(),
+      projectionExpression: map['projectionExpression'] == null ? null : (map['projectionExpression'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Will contain the filter name and values to operate on
 class FilterItems {
   /// The name of the field we would like to filter
-  final String? field;
+  final pulumi.Input<String>? field;
   /// List of values to filter the current field by
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [FilterItems].
   /// [field] The name of the field we would like to filter
@@ -25,8 +26,8 @@ class FilterItems {
 
   factory FilterItems.fromMap(Map<String, dynamic> map) {
     return FilterItems(
-      field: map['field'] == null ? null : map['field'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      field: map['field'] == null ? null : (map['field'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

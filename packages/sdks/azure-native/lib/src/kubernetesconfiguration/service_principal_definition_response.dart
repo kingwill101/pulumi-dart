@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters to authenticate using Service Principal.
 class ServicePrincipalDefinitionResponse {
   /// Base64-encoded certificate used to authenticate a Service Principal
-  final String? clientCertificate;
+  final pulumi.Input<String>? clientCertificate;
   /// The password for the certificate used to authenticate a Service Principal
-  final String? clientCertificatePassword;
+  final pulumi.Input<String>? clientCertificatePassword;
   /// Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate
-  final bool? clientCertificateSendChain;
+  final pulumi.Input<bool>? clientCertificateSendChain;
   /// The client Id for authenticating a Service Principal.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The client secret for authenticating a Service Principal
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// The tenant Id for authenticating a Service Principal
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ServicePrincipalDefinitionResponse].
   /// [clientCertificate] Base64-encoded certificate used to authenticate a Service Principal
@@ -45,12 +46,12 @@ class ServicePrincipalDefinitionResponse {
 
   factory ServicePrincipalDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalDefinitionResponse(
-      clientCertificate: map['clientCertificate'] == null ? null : map['clientCertificate'] as String,
-      clientCertificatePassword: map['clientCertificatePassword'] == null ? null : map['clientCertificatePassword'] as String,
-      clientCertificateSendChain: map['clientCertificateSendChain'] == null ? null : map['clientCertificateSendChain'] as bool,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
+      clientCertificatePassword: map['clientCertificatePassword'] == null ? null : (map['clientCertificatePassword'] as String).input(),
+      clientCertificateSendChain: map['clientCertificateSendChain'] == null ? null : (map['clientCertificateSendChain'] as bool).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

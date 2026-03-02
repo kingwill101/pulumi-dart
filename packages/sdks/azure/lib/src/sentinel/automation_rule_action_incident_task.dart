@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleActionIncidentTask {
   /// The description of the incident task.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The execution order of this action.
-  final int order;
+  final pulumi.Input<int> order;
   /// The title of the incident task.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [AutomationRuleActionIncidentTask].
   /// [description] The description of the incident task.
@@ -29,9 +30,9 @@ class AutomationRuleActionIncidentTask {
 
   factory AutomationRuleActionIncidentTask.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionIncidentTask(
-      description: map['description'] == null ? null : map['description'] as String,
-      order: map['order'] as int,
-      title: map['title'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      order: (map['order'] as int).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

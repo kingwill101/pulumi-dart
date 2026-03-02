@@ -20,15 +20,11 @@ class GlobalTableState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicas] Underlying DynamoDB Table. At least 1 replica must be defined. See below.
   GlobalTableState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<GlobalTableReplica>>? replicas,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicas = pulumi.Input.asOptionalInput<List<GlobalTableReplica>>(replicas);
+    this.arn,
+    this.name,
+    this.region,
+    this.replicas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class GlobalTableState {
 
   factory GlobalTableState.fromMap(Map<String, dynamic> map) {
     return GlobalTableState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicas: map['replicas'] == null ? null : pulumi.Output.create<List<GlobalTableReplica>>(pulumi.Input.decodeList<GlobalTableReplica>(map['replicas'], (value) => GlobalTableReplica.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<GlobalTableReplica>(map['replicas'], (value) => GlobalTableReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

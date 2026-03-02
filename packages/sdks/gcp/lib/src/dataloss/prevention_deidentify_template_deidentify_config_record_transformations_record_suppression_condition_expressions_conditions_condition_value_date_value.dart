@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
   /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-  final int? day;
+  final pulumi.Input<int>? day;
   /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-  final int? month;
+  final pulumi.Input<int>? month;
   /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-  final int? year;
+  final pulumi.Input<int>? year;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue].
   /// [day] Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -29,9 +30,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue(
-      day: map['day'] == null ? null : map['day'] as int,
-      month: map['month'] == null ? null : map['month'] as int,
-      year: map['year'] == null ? null : map['year'] as int,
+      day: map['day'] == null ? null : (map['day'] as int).input(),
+      month: map['month'] == null ? null : (map['month'] as int).input(),
+      year: map['year'] == null ? null : (map['year'] as int).input(),
     );
   }
 }

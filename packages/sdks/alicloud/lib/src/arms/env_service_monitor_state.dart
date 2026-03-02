@@ -25,19 +25,13 @@ class EnvServiceMonitorState {
   /// [namespace] The namespace where the resource is located.
   /// [status] Status: run, stop.
   EnvServiceMonitorState({
-    pulumi.Output<String>? aliyunLang,
-    pulumi.Output<String>? configYaml,
-    pulumi.Output<String>? envServiceMonitorName,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? status,
-  }) :
-      aliyunLang = pulumi.Input.asOptionalInput<String>(aliyunLang),
-      configYaml = pulumi.Input.asOptionalInput<String>(configYaml),
-      envServiceMonitorName = pulumi.Input.asOptionalInput<String>(envServiceMonitorName),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aliyunLang,
+    this.configYaml,
+    this.envServiceMonitorName,
+    this.environmentId,
+    this.namespace,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class EnvServiceMonitorState {
 
   factory EnvServiceMonitorState.fromMap(Map<String, dynamic> map) {
     return EnvServiceMonitorState(
-      aliyunLang: map['aliyunLang'] == null ? null : pulumi.Output.create<String>(map['aliyunLang'] as String),
-      configYaml: map['configYaml'] == null ? null : pulumi.Output.create<String>(map['configYaml'] as String),
-      envServiceMonitorName: map['envServiceMonitorName'] == null ? null : pulumi.Output.create<String>(map['envServiceMonitorName'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      configYaml: map['configYaml'] == null ? null : (map['configYaml'] as String).input(),
+      envServiceMonitorName: map['envServiceMonitorName'] == null ? null : (map['envServiceMonitorName'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

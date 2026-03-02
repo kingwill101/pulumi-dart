@@ -30,19 +30,13 @@ class LocalRulestackCertificateArgs {
   /// [rulestackId] The ID of the TODO. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   /// [selfSigned] Should a Self Signed Certificate be used. Defaults to `false`. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   LocalRulestackCertificateArgs({
-    pulumi.Output<String>? auditComment,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? keyVaultCertificateId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> rulestackId,
-    pulumi.Output<bool>? selfSigned,
-  }) :
-      auditComment = pulumi.Input.asOptionalInput<String>(auditComment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      keyVaultCertificateId = pulumi.Input.asOptionalInput<String>(keyVaultCertificateId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rulestackId = pulumi.Input.asInput<String>(rulestackId),
-      selfSigned = pulumi.Input.asOptionalInput<bool>(selfSigned);
+    this.auditComment,
+    this.description,
+    this.keyVaultCertificateId,
+    this.name,
+    required this.rulestackId,
+    this.selfSigned,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class LocalRulestackCertificateArgs {
 
   factory LocalRulestackCertificateArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackCertificateArgs(
-      auditComment: map['auditComment'] == null ? null : pulumi.Output.create<String>(map['auditComment'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : pulumi.Output.create<String>(map['keyVaultCertificateId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rulestackId: pulumi.Output.create<String>(map['rulestackId'] as String),
-      selfSigned: map['selfSigned'] == null ? null : pulumi.Output.create<bool>(map['selfSigned'] as bool),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rulestackId: (map['rulestackId'] as String).input(),
+      selfSigned: map['selfSigned'] == null ? null : (map['selfSigned'] as bool).input(),
     );
   }
 }

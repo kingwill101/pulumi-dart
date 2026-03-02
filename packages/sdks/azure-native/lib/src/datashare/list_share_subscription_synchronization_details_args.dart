@@ -31,21 +31,14 @@ class ListShareSubscriptionSynchronizationDetailsArgs {
   /// [skipToken] Continuation token
   /// [synchronizationId] Synchronization id
   ListShareSubscriptionSynchronizationDetailsArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? orderby,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareSubscriptionName,
-    pulumi.Output<String>? skipToken,
-    required pulumi.Output<String> synchronizationId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      orderby = pulumi.Input.asOptionalInput<String>(orderby),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken),
-      synchronizationId = pulumi.Input.asInput<String>(synchronizationId);
+    required this.accountName,
+    this.filter,
+    this.orderby,
+    required this.resourceGroupName,
+    required this.shareSubscriptionName,
+    this.skipToken,
+    required this.synchronizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ListShareSubscriptionSynchronizationDetailsArgs {
 
   factory ListShareSubscriptionSynchronizationDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ListShareSubscriptionSynchronizationDetailsArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      orderby: map['orderby'] == null ? null : pulumi.Output.create<String>(map['orderby'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
-      synchronizationId: pulumi.Output.create<String>(map['synchronizationId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      orderby: map['orderby'] == null ? null : (map['orderby'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      synchronizationId: (map['synchronizationId'] as String).input(),
     );
   }
 }

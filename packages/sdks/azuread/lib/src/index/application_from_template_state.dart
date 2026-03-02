@@ -25,19 +25,13 @@ class ApplicationFromTemplateState {
   /// [servicePrincipalObjectId] The object ID for the service principal.
   /// [templateId] Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
   ApplicationFromTemplateState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? applicationObjectId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? servicePrincipalId,
-    pulumi.Output<String>? servicePrincipalObjectId,
-    pulumi.Output<String>? templateId,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      applicationObjectId = pulumi.Input.asOptionalInput<String>(applicationObjectId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      servicePrincipalId = pulumi.Input.asOptionalInput<String>(servicePrincipalId),
-      servicePrincipalObjectId = pulumi.Input.asOptionalInput<String>(servicePrincipalObjectId),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.applicationId,
+    this.applicationObjectId,
+    this.displayName,
+    this.servicePrincipalId,
+    this.servicePrincipalObjectId,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ApplicationFromTemplateState {
 
   factory ApplicationFromTemplateState.fromMap(Map<String, dynamic> map) {
     return ApplicationFromTemplateState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      applicationObjectId: map['applicationObjectId'] == null ? null : pulumi.Output.create<String>(map['applicationObjectId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalObjectId'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      applicationObjectId: map['applicationObjectId'] == null ? null : (map['applicationObjectId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
+      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

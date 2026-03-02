@@ -19,13 +19,10 @@ class GetGalleryArgs {
   /// [galleryName] The name of the gallery.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGalleryArgs({
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.devCenterName,
+    required this.galleryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGalleryArgs {
 
   factory GetGalleryArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryArgs(
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      devCenterName: (map['devCenterName'] as String).input(),
+      galleryName: (map['galleryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

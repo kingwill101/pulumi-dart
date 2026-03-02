@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines all connectivity endpoints and properties for an ComputeInstance.
 class ComputeInstanceConnectivityEndpointsResponse {
   /// Private IP Address of this ComputeInstance (local to the VNET in which the compute instance is deployed).
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// Public IP Address of this ComputeInstance.
-  final String publicIpAddress;
+  final pulumi.Input<String> publicIpAddress;
 
   /// Creates a new [ComputeInstanceConnectivityEndpointsResponse].
   /// [privateIpAddress] Private IP Address of this ComputeInstance (local to the VNET in which the compute instance is deployed).
@@ -25,8 +26,8 @@ class ComputeInstanceConnectivityEndpointsResponse {
 
   factory ComputeInstanceConnectivityEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceConnectivityEndpointsResponse(
-      privateIpAddress: map['privateIpAddress'] as String,
-      publicIpAddress: map['publicIpAddress'] as String,
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      publicIpAddress: (map['publicIpAddress'] as String).input(),
     );
   }
 }

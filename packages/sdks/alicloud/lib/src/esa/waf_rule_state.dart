@@ -28,21 +28,14 @@ class WafRuleState {
   /// [siteVersion] Optional.
   /// [wafRuleId] The unique identifier of the WAF rule.
   WafRuleState({
-    pulumi.Output<WafRuleConfig>? config,
-    pulumi.Output<String>? phase,
-    pulumi.Output<int>? rulesetId,
-    pulumi.Output<WafRuleShared>? shared,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<int>? siteVersion,
-    pulumi.Output<int>? wafRuleId,
-  }) :
-      config = pulumi.Input.asOptionalInput<WafRuleConfig>(config),
-      phase = pulumi.Input.asOptionalInput<String>(phase),
-      rulesetId = pulumi.Input.asOptionalInput<int>(rulesetId),
-      shared = pulumi.Input.asOptionalInput<WafRuleShared>(shared),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion),
-      wafRuleId = pulumi.Input.asOptionalInput<int>(wafRuleId);
+    this.config,
+    this.phase,
+    this.rulesetId,
+    this.shared,
+    this.siteId,
+    this.siteVersion,
+    this.wafRuleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class WafRuleState {
 
   factory WafRuleState.fromMap(Map<String, dynamic> map) {
     return WafRuleState(
-      config: map['config'] == null ? null : pulumi.Output.create<WafRuleConfig>(WafRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      phase: map['phase'] == null ? null : pulumi.Output.create<String>(map['phase'] as String),
-      rulesetId: map['rulesetId'] == null ? null : pulumi.Output.create<int>(map['rulesetId'] as int),
-      shared: map['shared'] == null ? null : pulumi.Output.create<WafRuleShared>(WafRuleShared.fromMap((map['shared'] as Map).cast<String, dynamic>())),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
-      wafRuleId: map['wafRuleId'] == null ? null : pulumi.Output.create<int>(map['wafRuleId'] as int),
+      config: map['config'] == null ? null : (WafRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
+      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId'] as int).input(),
+      shared: map['shared'] == null ? null : (WafRuleShared.fromMap((map['shared'] as Map).cast<String, dynamic>())).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      wafRuleId: map['wafRuleId'] == null ? null : (map['wafRuleId'] as int).input(),
     );
   }
 }

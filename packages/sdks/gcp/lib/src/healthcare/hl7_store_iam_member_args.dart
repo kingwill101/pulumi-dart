@@ -34,15 +34,11 @@ class Hl7StoreIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   Hl7StoreIamMemberArgs({
-    pulumi.Output<Hl7StoreIamMemberCondition>? condition,
-    required pulumi.Output<String> hl7V2StoreId,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<Hl7StoreIamMemberCondition>(condition),
-      hl7V2StoreId = pulumi.Input.asInput<String>(hl7V2StoreId),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.hl7V2StoreId,
+    required this.member,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,10 +51,10 @@ class Hl7StoreIamMemberArgs {
 
   factory Hl7StoreIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return Hl7StoreIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<Hl7StoreIamMemberCondition>(Hl7StoreIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      hl7V2StoreId: pulumi.Output.create<String>(map['hl7V2StoreId'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (Hl7StoreIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

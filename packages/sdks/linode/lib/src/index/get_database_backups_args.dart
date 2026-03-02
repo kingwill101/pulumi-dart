@@ -30,19 +30,13 @@ class GetDatabaseBackupsArgs {
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. (`created`)
   GetDatabaseBackupsArgs({
-    required pulumi.Output<int> databaseId,
-    required pulumi.Output<String> databaseType,
-    pulumi.Output<List<GetDatabaseBackupsFilter>>? filters,
-    pulumi.Output<bool>? latest,
-    pulumi.Output<String>? order,
-    pulumi.Output<String>? orderBy,
-  }) :
-      databaseId = pulumi.Input.asInput<int>(databaseId),
-      databaseType = pulumi.Input.asInput<String>(databaseType),
-      filters = pulumi.Input.asOptionalInput<List<GetDatabaseBackupsFilter>>(filters),
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      order = pulumi.Input.asOptionalInput<String>(order),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy);
+    required this.databaseId,
+    required this.databaseType,
+    this.filters,
+    this.latest,
+    this.order,
+    this.orderBy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class GetDatabaseBackupsArgs {
 
   factory GetDatabaseBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseBackupsArgs(
-      databaseId: pulumi.Output.create<int>(map['databaseId'] as int),
-      databaseType: pulumi.Output.create<String>(map['databaseType'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetDatabaseBackupsFilter>>(pulumi.Input.decodeList<GetDatabaseBackupsFilter>(map['filters'], (value) => GetDatabaseBackupsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      latest: map['latest'] == null ? null : pulumi.Output.create<bool>(map['latest'] as bool),
-      order: map['order'] == null ? null : pulumi.Output.create<String>(map['order'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
+      databaseId: (map['databaseId'] as int).input(),
+      databaseType: (map['databaseType'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabaseBackupsFilter>(map['filters'], (value) => GetDatabaseBackupsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
     );
   }
 }

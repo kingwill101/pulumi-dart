@@ -37,25 +37,16 @@ class BackupPolicyArgs {
   /// [tags] Resource tags.
   /// [weeklyBackupsToKeep] Weekly backups count to keep
   BackupPolicyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? backupPolicyName,
-    pulumi.Output<int>? dailyBackupsToKeep,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? monthlyBackupsToKeep,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? weeklyBackupsToKeep,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      backupPolicyName = pulumi.Input.asOptionalInput<String>(backupPolicyName),
-      dailyBackupsToKeep = pulumi.Input.asOptionalInput<int>(dailyBackupsToKeep),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      monthlyBackupsToKeep = pulumi.Input.asOptionalInput<int>(monthlyBackupsToKeep),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      weeklyBackupsToKeep = pulumi.Input.asOptionalInput<int>(weeklyBackupsToKeep);
+    required this.accountName,
+    this.backupPolicyName,
+    this.dailyBackupsToKeep,
+    this.enabled,
+    this.location,
+    this.monthlyBackupsToKeep,
+    required this.resourceGroupName,
+    this.tags,
+    this.weeklyBackupsToKeep,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      backupPolicyName: map['backupPolicyName'] == null ? null : pulumi.Output.create<String>(map['backupPolicyName'] as String),
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : pulumi.Output.create<int>(map['dailyBackupsToKeep'] as int),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : pulumi.Output.create<int>(map['monthlyBackupsToKeep'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : pulumi.Output.create<int>(map['weeklyBackupsToKeep'] as int),
+      accountName: (map['accountName'] as String).input(),
+      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName'] as String).input(),
+      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetFailoverGroupArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server containing the failover group.
   GetFailoverGroupArgs({
-    required pulumi.Output<String> failoverGroupName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      failoverGroupName = pulumi.Input.asInput<String>(failoverGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.failoverGroupName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFailoverGroupArgs {
 
   factory GetFailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetFailoverGroupArgs(
-      failoverGroupName: pulumi.Output.create<String>(map['failoverGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      failoverGroupName: (map['failoverGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

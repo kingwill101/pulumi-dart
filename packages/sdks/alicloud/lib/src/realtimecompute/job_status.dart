@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_status_failure.dart';
 import 'job_status_running.dart';
 
 class JobStatus {
   /// Job current status
-  final String? currentJobStatus;
+  final pulumi.Input<String>? currentJobStatus;
   /// Job failure information
-  final JobStatusFailure? failure;
+  final pulumi.Input<JobStatusFailure>? failure;
   /// Job Run Health Score
-  final int? healthScore;
+  final pulumi.Input<int>? healthScore;
   /// Risk level, which indicates the risk level of the operation status of the job.
-  final String? riskLevel;
+  final pulumi.Input<String>? riskLevel;
   /// job running status, which has value when the job is Running.
-  final JobStatusRunning? running;
+  final pulumi.Input<JobStatusRunning>? running;
 
   /// Creates a new [JobStatus].
   /// [currentJobStatus] Job current status
@@ -32,20 +33,20 @@ class JobStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'currentJobStatus': ?currentJobStatus,
-      'failure': ?failure == null ? null : failure!.toMap(),
+      'failure': ?pulumi.Input.mapOptionalInputValue<JobStatusFailure, Map<String, dynamic>>(failure, (value) => value.toMap()),
       'healthScore': ?healthScore,
       'riskLevel': ?riskLevel,
-      'running': ?running == null ? null : running!.toMap(),
+      'running': ?pulumi.Input.mapOptionalInputValue<JobStatusRunning, Map<String, dynamic>>(running, (value) => value.toMap()),
     };
   }
 
   factory JobStatus.fromMap(Map<String, dynamic> map) {
     return JobStatus(
-      currentJobStatus: map['currentJobStatus'] == null ? null : map['currentJobStatus'] as String,
-      failure: map['failure'] == null ? null : JobStatusFailure.fromMap((map['failure'] as Map).cast<String, dynamic>()),
-      healthScore: map['healthScore'] == null ? null : map['healthScore'] as int,
-      riskLevel: map['riskLevel'] == null ? null : map['riskLevel'] as String,
-      running: map['running'] == null ? null : JobStatusRunning.fromMap((map['running'] as Map).cast<String, dynamic>()),
+      currentJobStatus: map['currentJobStatus'] == null ? null : (map['currentJobStatus'] as String).input(),
+      failure: map['failure'] == null ? null : (JobStatusFailure.fromMap((map['failure'] as Map).cast<String, dynamic>())).input(),
+      healthScore: map['healthScore'] == null ? null : (map['healthScore'] as int).input(),
+      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel'] as String).input(),
+      running: map['running'] == null ? null : (JobStatusRunning.fromMap((map['running'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

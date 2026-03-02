@@ -8,23 +8,23 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// resource groups within the policy are applicable for a VM. Set this value
   /// to `true` if the policy needs to be reported as compliant even if the
   /// policy has nothing to validate or enforce.
-  final bool? allowNoResourceGroupMatch;
+  final pulumi.Input<bool>? allowNoResourceGroupMatch;
   /// Policy description.
   /// Length of the description is limited to 1024 characters.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Required. The id of the OS policy with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the assignment.
-  final String id;
+  final pulumi.Input<String> id;
   /// Required. Policy mode
   /// Possible values:
   /// MODE_UNSPECIFIED
   /// VALIDATION
   /// ENFORCEMENT
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Required. List of resource groups for the policy.
   /// For a particular VM, resource groups are evaluated in the order specified
   /// and the first resource group that is applicable is selected and the rest
@@ -33,7 +33,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// considered to be non-compliant w.r.t this policy. This behavior can be
   /// toggled by the flag `allow_no_resource_group_match`
   /// Structure is documented below.
-  final List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup> resourceGroups;
+  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup>> resourceGroups;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy].
   /// [allowNoResourceGroupMatch] This flag determines the OS policy compliance status when none of the
@@ -55,17 +55,17 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
       'description': ?description,
       'id': id,
       'mode': mode,
-      'resourceGroups': pulumi.Input.encodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup, Map<String, dynamic>>(resourceGroups, (value) => value.toMap()),
+      'resourceGroups': pulumi.Input.mapInputValue<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup>, List<Map<String, dynamic>>>(resourceGroups, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy(
-      allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] == null ? null : map['allowNoResourceGroupMatch'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
-      id: map['id'] as String,
-      mode: map['mode'] as String,
-      resourceGroups: pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup>(map['resourceGroups'], (value) => V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup.fromMap((value as Map).cast<String, dynamic>())),
+      allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] == null ? null : (map['allowNoResourceGroupMatch'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      resourceGroups: (pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup>(map['resourceGroups'], (value) => V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

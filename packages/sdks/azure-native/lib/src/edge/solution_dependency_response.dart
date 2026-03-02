@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Solution Dependency Context
 class SolutionDependencyResponse {
   /// Solution dependencies
-  final List<SolutionDependencyResponse>? dependencies;
+  final pulumi.Input<List<SolutionDependencyResponse>>? dependencies;
   /// Solution Instance Name
-  final String? solutionInstanceName;
+  final pulumi.Input<String>? solutionInstanceName;
   /// Solution Template Version Id
-  final String solutionTemplateVersionId;
+  final pulumi.Input<String> solutionTemplateVersionId;
   /// Solution Version Id
-  final String solutionVersionId;
+  final pulumi.Input<String> solutionVersionId;
   /// Target Id
-  final String targetId;
+  final pulumi.Input<String> targetId;
 
   /// Creates a new [SolutionDependencyResponse].
   /// [dependencies] Solution dependencies
@@ -31,7 +31,7 @@ class SolutionDependencyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dependencies': ?dependencies == null ? null : pulumi.Input.encodeList<SolutionDependencyResponse, Map<String, dynamic>>(dependencies!, (value) => value.toMap()),
+      'dependencies': ?pulumi.Input.mapOptionalInputValue<List<SolutionDependencyResponse>, List<Map<String, dynamic>>>(dependencies, (value) => pulumi.Input.encodeList<SolutionDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'solutionInstanceName': ?solutionInstanceName,
       'solutionTemplateVersionId': solutionTemplateVersionId,
       'solutionVersionId': solutionVersionId,
@@ -41,11 +41,11 @@ class SolutionDependencyResponse {
 
   factory SolutionDependencyResponse.fromMap(Map<String, dynamic> map) {
     return SolutionDependencyResponse(
-      dependencies: map['dependencies'] == null ? null : pulumi.Input.decodeList<SolutionDependencyResponse>(map['dependencies'], (value) => SolutionDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      solutionInstanceName: map['solutionInstanceName'] == null ? null : map['solutionInstanceName'] as String,
-      solutionTemplateVersionId: map['solutionTemplateVersionId'] as String,
-      solutionVersionId: map['solutionVersionId'] as String,
-      targetId: map['targetId'] as String,
+      dependencies: map['dependencies'] == null ? null : (pulumi.Input.decodeList<SolutionDependencyResponse>(map['dependencies'], (value) => SolutionDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      solutionInstanceName: map['solutionInstanceName'] == null ? null : (map['solutionInstanceName'] as String).input(),
+      solutionTemplateVersionId: (map['solutionTemplateVersionId'] as String).input(),
+      solutionVersionId: (map['solutionVersionId'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
     );
   }
 }

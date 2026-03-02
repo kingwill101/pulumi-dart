@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneAuthoritativeNameservers {
   /// Authoritative Hetzner nameservers assigned to the Zone.
-  final List<String>? assigneds;
+  final pulumi.Input<List<String>>? assigneds;
 
   /// Creates a new [ZoneAuthoritativeNameservers].
   /// [assigneds] Authoritative Hetzner nameservers assigned to the Zone.
@@ -19,7 +20,7 @@ class ZoneAuthoritativeNameservers {
 
   factory ZoneAuthoritativeNameservers.fromMap(Map<String, dynamic> map) {
     return ZoneAuthoritativeNameservers(
-      assigneds: map['assigneds'] == null ? null : (map['assigneds'] as List).cast<String>(),
+      assigneds: map['assigneds'] == null ? null : ((map['assigneds'] as List).cast<String>()).input(),
     );
   }
 }

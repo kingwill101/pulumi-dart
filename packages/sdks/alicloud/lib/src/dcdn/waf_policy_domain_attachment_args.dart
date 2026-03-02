@@ -16,11 +16,9 @@ class WafPolicyDomainAttachmentArgs {
   /// [domainName] Access the accelerated domain name of the specified protection policy.
   /// [policyId] The protection policy ID. Only one input is supported.
   WafPolicyDomainAttachmentArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> policyId,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      policyId = pulumi.Input.asInput<String>(policyId);
+    required this.domainName,
+    required this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class WafPolicyDomainAttachmentArgs {
 
   factory WafPolicyDomainAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return WafPolicyDomainAttachmentArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
+      domainName: (map['domainName'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
     );
   }
 }

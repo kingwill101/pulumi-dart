@@ -19,13 +19,10 @@ class GetApiGatewayConfigConnectionArgs {
   /// [gatewayName] The name of the API Management gateway.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetApiGatewayConfigConnectionArgs({
-    required pulumi.Output<String> configConnectionName,
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configConnectionName = pulumi.Input.asInput<String>(configConnectionName),
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configConnectionName,
+    required this.gatewayName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetApiGatewayConfigConnectionArgs {
 
   factory GetApiGatewayConfigConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayConfigConnectionArgs(
-      configConnectionName: pulumi.Output.create<String>(map['configConnectionName'] as String),
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configConnectionName: (map['configConnectionName'] as String).input(),
+      gatewayName: (map['gatewayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

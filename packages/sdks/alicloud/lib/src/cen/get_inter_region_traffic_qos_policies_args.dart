@@ -37,25 +37,16 @@ class GetInterRegionTrafficQosPoliciesArgs {
   /// [transitRouterAttachmentId] The ID of the inter-region connection.
   /// [transitRouterId] The ID of the transit router.
   GetInterRegionTrafficQosPoliciesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? trafficQosPolicyDescription,
-    pulumi.Output<String>? trafficQosPolicyId,
-    pulumi.Output<String>? trafficQosPolicyName,
-    required pulumi.Output<String> transitRouterAttachmentId,
-    required pulumi.Output<String> transitRouterId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      trafficQosPolicyDescription = pulumi.Input.asOptionalInput<String>(trafficQosPolicyDescription),
-      trafficQosPolicyId = pulumi.Input.asOptionalInput<String>(trafficQosPolicyId),
-      trafficQosPolicyName = pulumi.Input.asOptionalInput<String>(trafficQosPolicyName),
-      transitRouterAttachmentId = pulumi.Input.asInput<String>(transitRouterAttachmentId),
-      transitRouterId = pulumi.Input.asInput<String>(transitRouterId);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.trafficQosPolicyDescription,
+    this.trafficQosPolicyId,
+    this.trafficQosPolicyName,
+    required this.transitRouterAttachmentId,
+    required this.transitRouterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GetInterRegionTrafficQosPoliciesArgs {
 
   factory GetInterRegionTrafficQosPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetInterRegionTrafficQosPoliciesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      trafficQosPolicyDescription: map['trafficQosPolicyDescription'] == null ? null : pulumi.Output.create<String>(map['trafficQosPolicyDescription'] as String),
-      trafficQosPolicyId: map['trafficQosPolicyId'] == null ? null : pulumi.Output.create<String>(map['trafficQosPolicyId'] as String),
-      trafficQosPolicyName: map['trafficQosPolicyName'] == null ? null : pulumi.Output.create<String>(map['trafficQosPolicyName'] as String),
-      transitRouterAttachmentId: pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterId: pulumi.Output.create<String>(map['transitRouterId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      trafficQosPolicyDescription: map['trafficQosPolicyDescription'] == null ? null : (map['trafficQosPolicyDescription'] as String).input(),
+      trafficQosPolicyId: map['trafficQosPolicyId'] == null ? null : (map['trafficQosPolicyId'] as String).input(),
+      trafficQosPolicyName: map['trafficQosPolicyName'] == null ? null : (map['trafficQosPolicyName'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

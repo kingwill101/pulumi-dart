@@ -19,13 +19,10 @@ class GetSecurityRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityRuleName] Name of the security rule.
   GetSecurityRuleArgs({
-    required pulumi.Output<String> networkSecurityGroupName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityRuleName,
-  }) :
-      networkSecurityGroupName = pulumi.Input.asInput<String>(networkSecurityGroupName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityRuleName = pulumi.Input.asInput<String>(securityRuleName);
+    required this.networkSecurityGroupName,
+    required this.resourceGroupName,
+    required this.securityRuleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSecurityRuleArgs {
 
   factory GetSecurityRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityRuleArgs(
-      networkSecurityGroupName: pulumi.Output.create<String>(map['networkSecurityGroupName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityRuleName: pulumi.Output.create<String>(map['securityRuleName'] as String),
+      networkSecurityGroupName: (map['networkSecurityGroupName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityRuleName: (map['securityRuleName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodeTypeConfig {
   /// Customized number of cores available to each node of the type.
   /// This number must always be one of 'nodeType.availableCustomCoreCounts'.
   /// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
   /// Once the customer is created then corecount cannot be changed.
-  final int customCoreCount;
+  final pulumi.Input<int> customCoreCount;
   /// The number of nodes of this type in the cluster.
-  final int nodeCount;
-  final String nodeTypeId;
+  final pulumi.Input<int> nodeCount;
+  final pulumi.Input<String> nodeTypeId;
 
   /// Creates a new [GetClusterNodeTypeConfig].
   /// [customCoreCount] Customized number of cores available to each node of the type.
@@ -31,9 +32,9 @@ class GetClusterNodeTypeConfig {
 
   factory GetClusterNodeTypeConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeTypeConfig(
-      customCoreCount: map['customCoreCount'] as int,
-      nodeCount: map['nodeCount'] as int,
-      nodeTypeId: map['nodeTypeId'] as String,
+      customCoreCount: (map['customCoreCount'] as int).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      nodeTypeId: (map['nodeTypeId'] as String).input(),
     );
   }
 }

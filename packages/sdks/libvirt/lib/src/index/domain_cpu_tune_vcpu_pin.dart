@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneVcpuPin {
   /// Specifies the CPU set for pinning virtual CPUs, controlling their execution placement on physical processors.
-  final String cpuSet;
+  final pulumi.Input<String> cpuSet;
   /// Identifies which virtual CPU is configured for pinning, allowing precise resource allocation and scheduling.
-  final double vcpu;
+  final pulumi.Input<double> vcpu;
 
   /// Creates a new [DomainCpuTuneVcpuPin].
   /// [cpuSet] Specifies the CPU set for pinning virtual CPUs, controlling their execution placement on physical processors.
@@ -24,8 +25,8 @@ class DomainCpuTuneVcpuPin {
 
   factory DomainCpuTuneVcpuPin.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneVcpuPin(
-      cpuSet: map['cpuSet'] as String,
-      vcpu: map['vcpu'] as double,
+      cpuSet: (map['cpuSet'] as String).input(),
+      vcpu: (map['vcpu'] as double).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class ManagedLoginBrandingState {
   /// [useCognitoProvidedValues] When `true`, applies the default branding style options.
   /// [userPoolId] User pool the client belongs to.
   ManagedLoginBrandingState({
-    pulumi.Output<List<ManagedLoginBrandingAsset>>? assets,
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? managedLoginBrandingId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? settings,
-    pulumi.Output<String>? settingsAll,
-    pulumi.Output<bool>? useCognitoProvidedValues,
-    pulumi.Output<String>? userPoolId,
-  }) :
-      assets = pulumi.Input.asOptionalInput<List<ManagedLoginBrandingAsset>>(assets),
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      managedLoginBrandingId = pulumi.Input.asOptionalInput<String>(managedLoginBrandingId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      settings = pulumi.Input.asOptionalInput<String>(settings),
-      settingsAll = pulumi.Input.asOptionalInput<String>(settingsAll),
-      useCognitoProvidedValues = pulumi.Input.asOptionalInput<bool>(useCognitoProvidedValues),
-      userPoolId = pulumi.Input.asOptionalInput<String>(userPoolId);
+    this.assets,
+    this.clientId,
+    this.managedLoginBrandingId,
+    this.region,
+    this.settings,
+    this.settingsAll,
+    this.useCognitoProvidedValues,
+    this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ManagedLoginBrandingState {
 
   factory ManagedLoginBrandingState.fromMap(Map<String, dynamic> map) {
     return ManagedLoginBrandingState(
-      assets: map['assets'] == null ? null : pulumi.Output.create<List<ManagedLoginBrandingAsset>>(pulumi.Input.decodeList<ManagedLoginBrandingAsset>(map['assets'], (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>()))),
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      managedLoginBrandingId: map['managedLoginBrandingId'] == null ? null : pulumi.Output.create<String>(map['managedLoginBrandingId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<String>(map['settings'] as String),
-      settingsAll: map['settingsAll'] == null ? null : pulumi.Output.create<String>(map['settingsAll'] as String),
-      useCognitoProvidedValues: map['useCognitoProvidedValues'] == null ? null : pulumi.Output.create<bool>(map['useCognitoProvidedValues'] as bool),
-      userPoolId: map['userPoolId'] == null ? null : pulumi.Output.create<String>(map['userPoolId'] as String),
+      assets: map['assets'] == null ? null : (pulumi.Input.decodeList<ManagedLoginBrandingAsset>(map['assets'], (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      managedLoginBrandingId: map['managedLoginBrandingId'] == null ? null : (map['managedLoginBrandingId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
+      settingsAll: map['settingsAll'] == null ? null : (map['settingsAll'] as String).input(),
+      useCognitoProvidedValues: map['useCognitoProvidedValues'] == null ? null : (map['useCognitoProvidedValues'] as bool).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The authentication client credentials of the custom Open ID Connect provider.
 class OpenIdConnectClientCredentialResponse {
   /// The app setting that contains the client secret for the custom Open ID Connect provider.
-  final String? clientSecretSettingName;
+  final pulumi.Input<String>? clientSecretSettingName;
   /// The method that should be used to authenticate the user.
-  final String? method;
+  final pulumi.Input<String>? method;
 
   /// Creates a new [OpenIdConnectClientCredentialResponse].
   /// [clientSecretSettingName] The app setting that contains the client secret for the custom Open ID Connect provider.
@@ -25,8 +26,8 @@ class OpenIdConnectClientCredentialResponse {
 
   factory OpenIdConnectClientCredentialResponse.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectClientCredentialResponse(
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : map['clientSecretSettingName'] as String,
-      method: map['method'] == null ? null : map['method'] as String,
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
     );
   }
 }

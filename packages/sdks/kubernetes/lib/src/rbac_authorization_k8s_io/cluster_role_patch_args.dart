@@ -28,17 +28,12 @@ class ClusterRolePatchArgs {
   /// [metadata] Standard object's metadata.
   /// [rules] Rules holds all the PolicyRules for this ClusterRole
   ClusterRolePatchArgs({
-    pulumi.Output<AggregationRulePatch>? aggregationRule,
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<List<PolicyRulePatch>>? rules,
-  }) :
-      aggregationRule = pulumi.Input.asOptionalInput<AggregationRulePatch>(aggregationRule),
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      rules = pulumi.Input.asOptionalInput<List<PolicyRulePatch>>(rules);
+    this.aggregationRule,
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ClusterRolePatchArgs {
 
   factory ClusterRolePatchArgs.fromMap(Map<String, dynamic> map) {
     return ClusterRolePatchArgs(
-      aggregationRule: map['aggregationRule'] == null ? null : pulumi.Output.create<AggregationRulePatch>(AggregationRulePatch.fromMap((map['aggregationRule'] as Map).cast<String, dynamic>())),
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<PolicyRulePatch>>(pulumi.Input.decodeList<PolicyRulePatch>(map['rules'], (value) => PolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))),
+      aggregationRule: map['aggregationRule'] == null ? null : (AggregationRulePatch.fromMap((map['aggregationRule'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRulePatch>(map['rules'], (value) => PolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

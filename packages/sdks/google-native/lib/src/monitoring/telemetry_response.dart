@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for how to query telemetry on a Service.
 class TelemetryResponse {
   /// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
-  final String resourceName;
+  final pulumi.Input<String> resourceName;
 
   /// Creates a new [TelemetryResponse].
   /// [resourceName] The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
@@ -20,7 +21,7 @@ class TelemetryResponse {
 
   factory TelemetryResponse.fromMap(Map<String, dynamic> map) {
     return TelemetryResponse(
-      resourceName: map['resourceName'] as String,
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

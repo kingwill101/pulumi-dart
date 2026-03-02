@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentFrontendPublic {
   /// Specifies a list of Public IP Resource ID to this NGINX Deployment.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
 
   /// Creates a new [DeploymentFrontendPublic].
   /// [ipAddresses] Specifies a list of Public IP Resource ID to this NGINX Deployment.
@@ -19,7 +20,7 @@ class DeploymentFrontendPublic {
 
   factory DeploymentFrontendPublic.fromMap(Map<String, dynamic> map) {
     return DeploymentFrontendPublic(
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetVWanConfigArgs {
   /// [azureVwanResourcegroup] Name of the Azure vWAN resource group
   /// [azureVwanVpnsite] Name of the Azure vWAN VPN site from which configuration to be download
   GetVWanConfigArgs({
-    required pulumi.Output<String> azureVwanName,
-    required pulumi.Output<String> azureVwanResourcegroup,
-    required pulumi.Output<String> azureVwanVpnsite,
-  }) :
-      azureVwanName = pulumi.Input.asInput<String>(azureVwanName),
-      azureVwanResourcegroup = pulumi.Input.asInput<String>(azureVwanResourcegroup),
-      azureVwanVpnsite = pulumi.Input.asInput<String>(azureVwanVpnsite);
+    required this.azureVwanName,
+    required this.azureVwanResourcegroup,
+    required this.azureVwanVpnsite,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVWanConfigArgs {
 
   factory GetVWanConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetVWanConfigArgs(
-      azureVwanName: pulumi.Output.create<String>(map['azureVwanName'] as String),
-      azureVwanResourcegroup: pulumi.Output.create<String>(map['azureVwanResourcegroup'] as String),
-      azureVwanVpnsite: pulumi.Output.create<String>(map['azureVwanVpnsite'] as String),
+      azureVwanName: (map['azureVwanName'] as String).input(),
+      azureVwanResourcegroup: (map['azureVwanResourcegroup'] as String).input(),
+      azureVwanVpnsite: (map['azureVwanVpnsite'] as String).input(),
     );
   }
 }

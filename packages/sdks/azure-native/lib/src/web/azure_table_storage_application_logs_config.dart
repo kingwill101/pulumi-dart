@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_level.dart';
 
 /// Application logs to Azure table storage configuration.
 class AzureTableStorageApplicationLogsConfig {
   /// Log level.
-  final LogLevel? level;
+  final pulumi.Input<LogLevel>? level;
   /// SAS URL to an Azure table with add/query/delete permissions.
-  final String sasUrl;
+  final pulumi.Input<String> sasUrl;
 
   /// Creates a new [AzureTableStorageApplicationLogsConfig].
   /// [level] Log level.
@@ -19,15 +20,15 @@ class AzureTableStorageApplicationLogsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'level': ?level == null ? null : level!.value,
+      'level': ?pulumi.Input.mapOptionalInputValue<LogLevel, String>(level, (value) => value.value),
       'sasUrl': sasUrl,
     };
   }
 
   factory AzureTableStorageApplicationLogsConfig.fromMap(Map<String, dynamic> map) {
     return AzureTableStorageApplicationLogsConfig(
-      level: map['level'] == null ? null : LogLevel.fromValue(map['level'] as String),
-      sasUrl: map['sasUrl'] as String,
+      level: map['level'] == null ? null : (LogLevel.fromValue(map['level'] as String)).input(),
+      sasUrl: (map['sasUrl'] as String).input(),
     );
   }
 }

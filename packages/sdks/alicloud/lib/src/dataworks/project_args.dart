@@ -37,25 +37,16 @@ class ProjectArgs {
   /// [status] Workspace Status
   /// [tags] Aliyun Resource Tag
   ProjectArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? devEnvironmentEnabled,
-    pulumi.Output<bool>? devRoleDisabled,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<bool> paiTaskEnabled,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      devEnvironmentEnabled = pulumi.Input.asOptionalInput<bool>(devEnvironmentEnabled),
-      devRoleDisabled = pulumi.Input.asOptionalInput<bool>(devRoleDisabled),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      paiTaskEnabled = pulumi.Input.asInput<bool>(paiTaskEnabled),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.devEnvironmentEnabled,
+    this.devRoleDisabled,
+    required this.displayName,
+    required this.paiTaskEnabled,
+    required this.projectName,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      devEnvironmentEnabled: map['devEnvironmentEnabled'] == null ? null : pulumi.Output.create<bool>(map['devEnvironmentEnabled'] as bool),
-      devRoleDisabled: map['devRoleDisabled'] == null ? null : pulumi.Output.create<bool>(map['devRoleDisabled'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      paiTaskEnabled: pulumi.Output.create<bool>(map['paiTaskEnabled'] as bool),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      devEnvironmentEnabled: map['devEnvironmentEnabled'] == null ? null : (map['devEnvironmentEnabled'] as bool).input(),
+      devRoleDisabled: map['devRoleDisabled'] == null ? null : (map['devRoleDisabled'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      paiTaskEnabled: (map['paiTaskEnabled'] as bool).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

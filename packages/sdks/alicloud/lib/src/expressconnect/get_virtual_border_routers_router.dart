@@ -1,71 +1,72 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualBorderRoutersRouter {
   /// The physical leased line access point ID.
-  final String accessPointId;
+  final pulumi.Input<String> accessPointId;
   /// The first activation time of VBR.
-  final String activationTime;
+  final pulumi.Input<String> activationTime;
   /// Operators for physical connection circuit provided coding.
-  final String circuitCode;
+  final pulumi.Input<String> circuitCode;
   /// Box Instance Id.
-  final String cloudBoxInstanceId;
+  final pulumi.Input<String> cloudBoxInstanceId;
   /// The representative of the creation time resources attribute field.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
-  final String description;
+  final pulumi.Input<String> description;
   /// Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
-  final int detectMultiplier;
+  final pulumi.Input<int> detectMultiplier;
   /// High Speed Migration Service Instance Id.
-  final String eccId;
+  final pulumi.Input<String> eccId;
   /// Whether to Enable IPv6.
-  final bool enableIpv6;
+  final pulumi.Input<bool> enableIpv6;
   /// The ID of the Virtual Border Router.
-  final String id;
+  final pulumi.Input<String> id;
   /// Alibaba Cloud-Connected IPv4 address.
-  final String localGatewayIp;
+  final pulumi.Input<String> localGatewayIp;
   /// Alibaba Cloud-Connected IPv6 Address.
-  final String localIpv6GatewayIp;
+  final pulumi.Input<String> localIpv6GatewayIp;
   /// Configure BFD packet reception interval of values include: 200~1000, unit: ms.
-  final int minRxInterval;
+  final pulumi.Input<int> minRxInterval;
   /// Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
-  final int minTxInterval;
+  final pulumi.Input<int> minTxInterval;
   /// The Billing of the Extended Time.
-  final String paymentVbrExpireTime;
+  final pulumi.Input<String> paymentVbrExpireTime;
   /// The Client-Side Interconnection IPv4 Address.
-  final String peerGatewayIp;
+  final pulumi.Input<String> peerGatewayIp;
   /// The Client-Side Interconnection IPv6 Address.
-  final String peerIpv6GatewayIp;
+  final pulumi.Input<String> peerIpv6GatewayIp;
   /// Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
-  final String peeringIpv6SubnetMask;
+  final pulumi.Input<String> peeringIpv6SubnetMask;
   /// Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
-  final String peeringSubnetMask;
+  final pulumi.Input<String> peeringSubnetMask;
   /// Physical Private Line Service Status Value Normal: Normal, financiallocked: If You Lock.
-  final String physicalConnectionBusinessStatus;
+  final pulumi.Input<String> physicalConnectionBusinessStatus;
   /// The ID of the Physical Connection to Which the ID.
-  final String physicalConnectionId;
+  final pulumi.Input<String> physicalConnectionId;
   /// Physical Private Line Where the Account ID.
-  final String physicalConnectionOwnerUid;
+  final pulumi.Input<String> physicalConnectionOwnerUid;
   /// Physical Private Line State.
-  final String physicalConnectionStatus;
+  final pulumi.Input<String> physicalConnectionStatus;
   /// The Last from a Terminated State to the Active State of the Time.
-  final String recoveryTime;
+  final pulumi.Input<String> recoveryTime;
   /// Route Table ID.
-  final String routeTableId;
+  final pulumi.Input<String> routeTableId;
   /// The VBR state.
-  final String status;
+  final pulumi.Input<String> status;
   /// The Most Recent Was Aborted by the Time.
-  final String terminationTime;
+  final pulumi.Input<String> terminationTime;
   /// VBR Type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The VBR ID.
-  final String virtualBorderRouterId;
+  final pulumi.Input<String> virtualBorderRouterId;
   /// The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
-  final String virtualBorderRouterName;
+  final pulumi.Input<String> virtualBorderRouterName;
   /// The VLAN ID of the VBR. Value range: 0~2999.
-  final int vlanId;
+  final pulumi.Input<int> vlanId;
   /// The ID of the Router Interface.
-  final String vlanInterfaceId;
+  final pulumi.Input<String> vlanInterfaceId;
 
   /// Creates a new [GetVirtualBorderRoutersRouter].
   /// [accessPointId] The physical leased line access point ID.
@@ -174,38 +175,38 @@ class GetVirtualBorderRoutersRouter {
 
   factory GetVirtualBorderRoutersRouter.fromMap(Map<String, dynamic> map) {
     return GetVirtualBorderRoutersRouter(
-      accessPointId: map['accessPointId'] as String,
-      activationTime: map['activationTime'] as String,
-      circuitCode: map['circuitCode'] as String,
-      cloudBoxInstanceId: map['cloudBoxInstanceId'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      detectMultiplier: map['detectMultiplier'] as int,
-      eccId: map['eccId'] as String,
-      enableIpv6: map['enableIpv6'] as bool,
-      id: map['id'] as String,
-      localGatewayIp: map['localGatewayIp'] as String,
-      localIpv6GatewayIp: map['localIpv6GatewayIp'] as String,
-      minRxInterval: map['minRxInterval'] as int,
-      minTxInterval: map['minTxInterval'] as int,
-      paymentVbrExpireTime: map['paymentVbrExpireTime'] as String,
-      peerGatewayIp: map['peerGatewayIp'] as String,
-      peerIpv6GatewayIp: map['peerIpv6GatewayIp'] as String,
-      peeringIpv6SubnetMask: map['peeringIpv6SubnetMask'] as String,
-      peeringSubnetMask: map['peeringSubnetMask'] as String,
-      physicalConnectionBusinessStatus: map['physicalConnectionBusinessStatus'] as String,
-      physicalConnectionId: map['physicalConnectionId'] as String,
-      physicalConnectionOwnerUid: map['physicalConnectionOwnerUid'] as String,
-      physicalConnectionStatus: map['physicalConnectionStatus'] as String,
-      recoveryTime: map['recoveryTime'] as String,
-      routeTableId: map['routeTableId'] as String,
-      status: map['status'] as String,
-      terminationTime: map['terminationTime'] as String,
-      type: map['type'] as String,
-      virtualBorderRouterId: map['virtualBorderRouterId'] as String,
-      virtualBorderRouterName: map['virtualBorderRouterName'] as String,
-      vlanId: map['vlanId'] as int,
-      vlanInterfaceId: map['vlanInterfaceId'] as String,
+      accessPointId: (map['accessPointId'] as String).input(),
+      activationTime: (map['activationTime'] as String).input(),
+      circuitCode: (map['circuitCode'] as String).input(),
+      cloudBoxInstanceId: (map['cloudBoxInstanceId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      detectMultiplier: (map['detectMultiplier'] as int).input(),
+      eccId: (map['eccId'] as String).input(),
+      enableIpv6: (map['enableIpv6'] as bool).input(),
+      id: (map['id'] as String).input(),
+      localGatewayIp: (map['localGatewayIp'] as String).input(),
+      localIpv6GatewayIp: (map['localIpv6GatewayIp'] as String).input(),
+      minRxInterval: (map['minRxInterval'] as int).input(),
+      minTxInterval: (map['minTxInterval'] as int).input(),
+      paymentVbrExpireTime: (map['paymentVbrExpireTime'] as String).input(),
+      peerGatewayIp: (map['peerGatewayIp'] as String).input(),
+      peerIpv6GatewayIp: (map['peerIpv6GatewayIp'] as String).input(),
+      peeringIpv6SubnetMask: (map['peeringIpv6SubnetMask'] as String).input(),
+      peeringSubnetMask: (map['peeringSubnetMask'] as String).input(),
+      physicalConnectionBusinessStatus: (map['physicalConnectionBusinessStatus'] as String).input(),
+      physicalConnectionId: (map['physicalConnectionId'] as String).input(),
+      physicalConnectionOwnerUid: (map['physicalConnectionOwnerUid'] as String).input(),
+      physicalConnectionStatus: (map['physicalConnectionStatus'] as String).input(),
+      recoveryTime: (map['recoveryTime'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      status: (map['status'] as String).input(),
+      terminationTime: (map['terminationTime'] as String).input(),
+      type: (map['type'] as String).input(),
+      virtualBorderRouterId: (map['virtualBorderRouterId'] as String).input(),
+      virtualBorderRouterName: (map['virtualBorderRouterName'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
+      vlanInterfaceId: (map['vlanInterfaceId'] as String).input(),
     );
   }
 }

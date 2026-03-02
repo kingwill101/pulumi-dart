@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'time_of_day_response.dart';
 
 /// Time window specified for weekly operations.
 class WeeklyMaintenanceWindowResponse {
   /// Allows to define schedule that runs specified day of the week.
-  final String day;
+  final pulumi.Input<String> day;
   /// Duration of the time window.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Start time of the window in UTC.
-  final TimeOfDayResponse startTime;
+  final pulumi.Input<TimeOfDayResponse> startTime;
 
   /// Creates a new [WeeklyMaintenanceWindowResponse].
   /// [day] Allows to define schedule that runs specified day of the week.
@@ -25,15 +26,15 @@ class WeeklyMaintenanceWindowResponse {
     return <String, dynamic>{
       'day': day,
       'duration': duration,
-      'startTime': startTime.toMap(),
+      'startTime': pulumi.Input.mapInputValue<TimeOfDayResponse, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
   factory WeeklyMaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyMaintenanceWindowResponse(
-      day: map['day'] as String,
-      duration: map['duration'] as String,
-      startTime: TimeOfDayResponse.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      day: (map['day'] as String).input(),
+      duration: (map['duration'] as String).input(),
+      startTime: (TimeOfDayResponse.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -42,29 +42,18 @@ class ServiceConnectionPolicyArgs {
   /// [serviceClass] The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass. It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
   /// [serviceConnectionPolicyId] Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/serviceConnectionPolicies/foo') See https://google.aip.dev/122#resource-id-segments Unique per location.
   ServiceConnectionPolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<PscConfig>? pscConfig,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? serviceClass,
-    pulumi.Output<String>? serviceConnectionPolicyId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pscConfig = pulumi.Input.asOptionalInput<PscConfig>(pscConfig),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      serviceClass = pulumi.Input.asOptionalInput<String>(serviceClass),
-      serviceConnectionPolicyId = pulumi.Input.asOptionalInput<String>(serviceConnectionPolicyId);
+    this.description,
+    this.etag,
+    this.labels,
+    this.location,
+    this.name,
+    this.network,
+    this.project,
+    this.pscConfig,
+    this.requestId,
+    this.serviceClass,
+    this.serviceConnectionPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ServiceConnectionPolicyArgs {
 
   factory ServiceConnectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pscConfig: map['pscConfig'] == null ? null : pulumi.Output.create<PscConfig>(PscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      serviceClass: map['serviceClass'] == null ? null : pulumi.Output.create<String>(map['serviceClass'] as String),
-      serviceConnectionPolicyId: map['serviceConnectionPolicyId'] == null ? null : pulumi.Output.create<String>(map['serviceConnectionPolicyId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pscConfig: map['pscConfig'] == null ? null : (PscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      serviceClass: map['serviceClass'] == null ? null : (map['serviceClass'] as String).input(),
+      serviceConnectionPolicyId: map['serviceConnectionPolicyId'] == null ? null : (map['serviceConnectionPolicyId'] as String).input(),
     );
   }
 }

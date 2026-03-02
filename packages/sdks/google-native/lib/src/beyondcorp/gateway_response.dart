@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gateway represents a user facing component that serves as an entrance to enable connectivity.
 class GatewayResponse {
   /// The type of hosting used by the gateway.
-  final String type;
+  final pulumi.Input<String> type;
   /// Server-defined URI for this resource.
-  final String uri;
+  final pulumi.Input<String> uri;
   /// User port reserved on the gateways for this connection, if not specified or zero, the default port is 19443.
-  final int userPort;
+  final pulumi.Input<int> userPort;
 
   /// Creates a new [GatewayResponse].
   /// [type] The type of hosting used by the gateway.
@@ -30,9 +31,9 @@ class GatewayResponse {
 
   factory GatewayResponse.fromMap(Map<String, dynamic> map) {
     return GatewayResponse(
-      type: map['type'] as String,
-      uri: map['uri'] as String,
-      userPort: map['userPort'] as int,
+      type: (map['type'] as String).input(),
+      uri: (map['uri'] as String).input(),
+      userPort: (map['userPort'] as int).input(),
     );
   }
 }

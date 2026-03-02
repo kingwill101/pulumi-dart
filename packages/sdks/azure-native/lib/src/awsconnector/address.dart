@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Address
 class Address {
   /// Property addressDefinition
-  final String? addressDefinition;
+  final pulumi.Input<String>? addressDefinition;
 
   /// Creates a new [Address].
   /// [addressDefinition] Property addressDefinition
@@ -20,7 +21,7 @@ class Address {
 
   factory Address.fromMap(Map<String, dynamic> map) {
     return Address(
-      addressDefinition: map['addressDefinition'] == null ? null : map['addressDefinition'] as String,
+      addressDefinition: map['addressDefinition'] == null ? null : (map['addressDefinition'] as String).input(),
     );
   }
 }

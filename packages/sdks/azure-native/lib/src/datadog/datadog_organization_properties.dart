@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
 class DatadogOrganizationProperties {
   /// Api key associated to the Datadog organization.
-  final String? apiKey;
+  final pulumi.Input<String>? apiKey;
   /// Application key associated to the Datadog organization.
-  final String? applicationKey;
+  final pulumi.Input<String>? applicationKey;
   /// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-  final bool? cspm;
+  final pulumi.Input<bool>? cspm;
   /// The Id of the Enterprise App used for Single sign on.
-  final String? enterpriseAppId;
+  final pulumi.Input<String>? enterpriseAppId;
   /// Id of the Datadog organization.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The auth code used to linking to an existing Datadog organization.
-  final String? linkingAuthCode;
+  final pulumi.Input<String>? linkingAuthCode;
   /// The client_id from an existing in exchange for an auth token to link organization.
-  final String? linkingClientId;
+  final pulumi.Input<String>? linkingClientId;
   /// Name of the Datadog organization.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The redirect URI for linking.
-  final String? redirectUri;
+  final pulumi.Input<String>? redirectUri;
 
   /// Creates a new [DatadogOrganizationProperties].
   /// [apiKey] Api key associated to the Datadog organization.
@@ -60,15 +61,15 @@ class DatadogOrganizationProperties {
 
   factory DatadogOrganizationProperties.fromMap(Map<String, dynamic> map) {
     return DatadogOrganizationProperties(
-      apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
-      applicationKey: map['applicationKey'] == null ? null : map['applicationKey'] as String,
-      cspm: map['cspm'] == null ? null : map['cspm'] as bool,
-      enterpriseAppId: map['enterpriseAppId'] == null ? null : map['enterpriseAppId'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      linkingAuthCode: map['linkingAuthCode'] == null ? null : map['linkingAuthCode'] as String,
-      linkingClientId: map['linkingClientId'] == null ? null : map['linkingClientId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      redirectUri: map['redirectUri'] == null ? null : map['redirectUri'] as String,
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      applicationKey: map['applicationKey'] == null ? null : (map['applicationKey'] as String).input(),
+      cspm: map['cspm'] == null ? null : (map['cspm'] as bool).input(),
+      enterpriseAppId: map['enterpriseAppId'] == null ? null : (map['enterpriseAppId'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      linkingAuthCode: map['linkingAuthCode'] == null ? null : (map['linkingAuthCode'] as String).input(),
+      linkingClientId: map['linkingClientId'] == null ? null : (map['linkingClientId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
     );
   }
 }

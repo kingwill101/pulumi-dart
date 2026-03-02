@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceScratchDisk {
   /// Name with which the attached disk is accessible under /dev/disk/by-id/
-  final String? deviceName;
+  final pulumi.Input<String>? deviceName;
   /// The disk interface to use for attaching this disk; either SCSI or NVME.
-  final String interface;
+  final pulumi.Input<String> interface;
   /// The size of the disk in gigabytes. One of 375 or 3000.
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [InstanceScratchDisk].
   /// [deviceName] Name with which the attached disk is accessible under /dev/disk/by-id/
@@ -29,9 +30,9 @@ class InstanceScratchDisk {
 
   factory InstanceScratchDisk.fromMap(Map<String, dynamic> map) {
     return InstanceScratchDisk(
-      deviceName: map['deviceName'] == null ? null : map['deviceName'] as String,
-      interface: map['interface'] as String,
-      size: map['size'] == null ? null : map['size'] as int,
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      interface: (map['interface'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

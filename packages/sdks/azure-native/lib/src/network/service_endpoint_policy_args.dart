@@ -36,23 +36,15 @@ class ServiceEndpointPolicyArgs {
   /// [serviceEndpointPolicyName] The name of the service endpoint policy.
   /// [tags] Resource tags.
   ServiceEndpointPolicyArgs({
-    pulumi.Output<List<String>>? contextualServiceEndpointPolicies,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serviceAlias,
-    pulumi.Output<List<ServiceEndpointPolicyDefinitionNetwork>>? serviceEndpointPolicyDefinitions,
-    pulumi.Output<String>? serviceEndpointPolicyName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      contextualServiceEndpointPolicies = pulumi.Input.asOptionalInput<List<String>>(contextualServiceEndpointPolicies),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceAlias = pulumi.Input.asOptionalInput<String>(serviceAlias),
-      serviceEndpointPolicyDefinitions = pulumi.Input.asOptionalInput<List<ServiceEndpointPolicyDefinitionNetwork>>(serviceEndpointPolicyDefinitions),
-      serviceEndpointPolicyName = pulumi.Input.asOptionalInput<String>(serviceEndpointPolicyName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.contextualServiceEndpointPolicies,
+    this.id,
+    this.location,
+    required this.resourceGroupName,
+    this.serviceAlias,
+    this.serviceEndpointPolicyDefinitions,
+    this.serviceEndpointPolicyName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class ServiceEndpointPolicyArgs {
 
   factory ServiceEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPolicyArgs(
-      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : pulumi.Output.create<List<String>>((map['contextualServiceEndpointPolicies'] as List).cast<String>()),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceAlias: map['serviceAlias'] == null ? null : pulumi.Output.create<String>(map['serviceAlias'] as String),
-      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : pulumi.Output.create<List<ServiceEndpointPolicyDefinitionNetwork>>((map['serviceEndpointPolicyDefinitions'] as List).cast<ServiceEndpointPolicyDefinitionNetwork>()),
-      serviceEndpointPolicyName: map['serviceEndpointPolicyName'] == null ? null : pulumi.Output.create<String>(map['serviceEndpointPolicyName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : ((map['contextualServiceEndpointPolicies'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceAlias: map['serviceAlias'] == null ? null : (map['serviceAlias'] as String).input(),
+      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : ((map['serviceEndpointPolicyDefinitions'] as List).cast<ServiceEndpointPolicyDefinitionNetwork>()).input(),
+      serviceEndpointPolicyName: map['serviceEndpointPolicyName'] == null ? null : (map['serviceEndpointPolicyName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ClusterTrustBundleSpec contains the signer and trust anchors.
 class ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1 {
@@ -12,13 +13,13 @@ class ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1 {
   /// If signerName is empty, then the ClusterTrustBundle object's name must not have such a prefix.
   ///
   /// List/watch requests for ClusterTrustBundles can filter on this field using a `spec.signerName=NAME` field selector.
-  final String? signerName;
+  final pulumi.Input<String>? signerName;
   /// trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
   ///
   /// The data must consist only of PEM certificate blocks that parse as valid X.509 certificates.  Each certificate must include a basic constraints extension with the CA bit set.  The API server will reject objects that contain duplicate certificates, or that use PEM block headers.
   ///
   /// Users of ClusterTrustBundles, including Kubelet, are free to reorder and deduplicate certificate blocks in this file according to their own logic, as well as to drop PEM block headers and inter-block data.
-  final String? trustBundle;
+  final pulumi.Input<String>? trustBundle;
 
   /// Creates a new [ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1].
   /// [signerName] signerName indicates the associated signer, if any.
@@ -37,8 +38,8 @@ class ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1 {
 
   factory ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1(
-      signerName: map['signerName'] == null ? null : map['signerName'] as String,
-      trustBundle: map['trustBundle'] == null ? null : map['trustBundle'] as String,
+      signerName: map['signerName'] == null ? null : (map['signerName'] as String).input(),
+      trustBundle: map['trustBundle'] == null ? null : (map['trustBundle'] as String).input(),
     );
   }
 }

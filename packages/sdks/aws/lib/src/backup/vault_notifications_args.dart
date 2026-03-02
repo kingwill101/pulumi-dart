@@ -22,15 +22,11 @@ class VaultNotificationsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snsTopicArn] The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
   VaultNotificationsArgs({
-    required pulumi.Output<List<String>> backupVaultEvents,
-    required pulumi.Output<String> backupVaultName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> snsTopicArn,
-  }) :
-      backupVaultEvents = pulumi.Input.asInput<List<String>>(backupVaultEvents),
-      backupVaultName = pulumi.Input.asInput<String>(backupVaultName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snsTopicArn = pulumi.Input.asInput<String>(snsTopicArn);
+    required this.backupVaultEvents,
+    required this.backupVaultName,
+    this.region,
+    required this.snsTopicArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VaultNotificationsArgs {
 
   factory VaultNotificationsArgs.fromMap(Map<String, dynamic> map) {
     return VaultNotificationsArgs(
-      backupVaultEvents: pulumi.Output.create<List<String>>((map['backupVaultEvents'] as List).cast<String>()),
-      backupVaultName: pulumi.Output.create<String>(map['backupVaultName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snsTopicArn: pulumi.Output.create<String>(map['snsTopicArn'] as String),
+      backupVaultEvents: ((map['backupVaultEvents'] as List).cast<String>()).input(),
+      backupVaultName: (map['backupVaultName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snsTopicArn: (map['snsTopicArn'] as String).input(),
     );
   }
 }

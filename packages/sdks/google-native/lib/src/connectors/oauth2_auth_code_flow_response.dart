@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_response.dart';
 
 /// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
 class Oauth2AuthCodeFlowResponse {
   /// Authorization code to be exchanged for access and refresh tokens.
-  final String authCode;
+  final pulumi.Input<String> authCode;
   /// Auth URL for Authorization Code Flow
-  final String authUri;
+  final pulumi.Input<String> authUri;
   /// Client ID for user-provided OAuth app.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Client secret for user-provided OAuth app.
-  final SecretResponse clientSecret;
+  final pulumi.Input<SecretResponse> clientSecret;
   /// Whether to enable PKCE when the user performs the auth code flow.
-  final bool enablePkce;
+  final pulumi.Input<bool> enablePkce;
   /// PKCE verifier to be used during the auth code exchange.
-  final String pkceVerifier;
+  final pulumi.Input<String> pkceVerifier;
   /// Redirect URI to be provided during the auth code exchange.
-  final String redirectUri;
+  final pulumi.Input<String> redirectUri;
   /// Scopes the connection will request when the user performs the auth code flow.
-  final List<String> scopes;
+  final pulumi.Input<List<String>> scopes;
 
   /// Creates a new [Oauth2AuthCodeFlowResponse].
   /// [authCode] Authorization code to be exchanged for access and refresh tokens.
@@ -46,7 +47,7 @@ class Oauth2AuthCodeFlowResponse {
       'authCode': authCode,
       'authUri': authUri,
       'clientId': clientId,
-      'clientSecret': clientSecret.toMap(),
+      'clientSecret': pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
       'enablePkce': enablePkce,
       'pkceVerifier': pkceVerifier,
       'redirectUri': redirectUri,
@@ -56,14 +57,14 @@ class Oauth2AuthCodeFlowResponse {
 
   factory Oauth2AuthCodeFlowResponse.fromMap(Map<String, dynamic> map) {
     return Oauth2AuthCodeFlowResponse(
-      authCode: map['authCode'] as String,
-      authUri: map['authUri'] as String,
-      clientId: map['clientId'] as String,
-      clientSecret: SecretResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
-      enablePkce: map['enablePkce'] as bool,
-      pkceVerifier: map['pkceVerifier'] as String,
-      redirectUri: map['redirectUri'] as String,
-      scopes: (map['scopes'] as List).cast<String>(),
+      authCode: (map['authCode'] as String).input(),
+      authUri: (map['authUri'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (SecretResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      enablePkce: (map['enablePkce'] as bool).input(),
+      pkceVerifier: (map['pkceVerifier'] as String).input(),
+      redirectUri: (map['redirectUri'] as String).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

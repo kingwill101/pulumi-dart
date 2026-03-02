@@ -17,13 +17,10 @@ class ProjectState {
   /// [project] The ID of the project in which the resource belongs.
   /// [projectNumber] The number of the Google Project that Firebase is enabled on.
   ProjectState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? projectNumber,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectNumber = pulumi.Input.asOptionalInput<String>(projectNumber);
+    this.displayName,
+    this.project,
+    this.projectNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      projectNumber: map['projectNumber'] == null ? null : pulumi.Output.create<String>(map['projectNumber'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
     );
   }
 }

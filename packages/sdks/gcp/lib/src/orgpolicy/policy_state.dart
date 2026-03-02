@@ -26,17 +26,12 @@ class PolicyState {
   /// [parent] The parent of the resource.
   /// [spec] Basic information about the Organization Policy.
   PolicyState({
-    pulumi.Output<PolicyDryRunSpec>? dryRunSpec,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<PolicySpec>? spec,
-  }) :
-      dryRunSpec = pulumi.Input.asOptionalInput<PolicyDryRunSpec>(dryRunSpec),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      spec = pulumi.Input.asOptionalInput<PolicySpec>(spec);
+    this.dryRunSpec,
+    this.etag,
+    this.name,
+    this.parent,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      dryRunSpec: map['dryRunSpec'] == null ? null : pulumi.Output.create<PolicyDryRunSpec>(PolicyDryRunSpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<PolicySpec>(PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      dryRunSpec: map['dryRunSpec'] == null ? null : (PolicyDryRunSpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      spec: map['spec'] == null ? null : (PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a file input data source that contains reference data.
 class FileReferenceInputDataSource {
   /// The path of the file.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'File'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FileReferenceInputDataSource].
   /// [path] The path of the file.
@@ -26,8 +27,8 @@ class FileReferenceInputDataSource {
 
   factory FileReferenceInputDataSource.fromMap(Map<String, dynamic> map) {
     return FileReferenceInputDataSource(
-      path: map['path'] == null ? null : map['path'] as String,
-      type: map['type'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

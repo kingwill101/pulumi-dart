@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Type representing an identity assignment
 class AssignedIdentityResponse {
   /// The client ID of the identity.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Specifies the kind of Entra identity described by this object.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The principal ID of the identity.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// Represents the provisioning state of an identity resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The subject of this identity assignment.
-  final String? subject;
+  final pulumi.Input<String>? subject;
   /// The tenant ID of the identity.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// Enumeration of identity types, from the perspective of management.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AssignedIdentityResponse].
   /// [clientId] The client ID of the identity.
@@ -50,13 +51,13 @@ class AssignedIdentityResponse {
 
   factory AssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return AssignedIdentityResponse(
-      clientId: map['clientId'] as String,
-      kind: map['kind'] as String,
-      principalId: map['principalId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      subject: map['subject'] == null ? null : map['subject'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      clientId: (map['clientId'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of Open Telemetry traces
 class TracesConfigurationResponse {
   /// Open telemetry traces destinations
-  final List<String>? destinations;
+  final pulumi.Input<List<String>>? destinations;
   /// Boolean indicating if including dapr traces
-  final bool? includeDapr;
+  final pulumi.Input<bool>? includeDapr;
 
   /// Creates a new [TracesConfigurationResponse].
   /// [destinations] Open telemetry traces destinations
@@ -25,8 +26,8 @@ class TracesConfigurationResponse {
 
   factory TracesConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TracesConfigurationResponse(
-      destinations: map['destinations'] == null ? null : (map['destinations'] as List).cast<String>(),
-      includeDapr: map['includeDapr'] == null ? null : map['includeDapr'] as bool,
+      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
+      includeDapr: map['includeDapr'] == null ? null : (map['includeDapr'] as bool).input(),
     );
   }
 }

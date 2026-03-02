@@ -24,15 +24,11 @@ class RouteServerVpcAssociationArgs {
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC to associate with the route server.
   RouteServerVpcAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routeServerId,
-    pulumi.Output<RouteServerVpcAssociationTimeouts>? timeouts,
-    required pulumi.Output<String> vpcId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeServerId = pulumi.Input.asInput<String>(routeServerId),
-      timeouts = pulumi.Input.asOptionalInput<RouteServerVpcAssociationTimeouts>(timeouts),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.region,
+    required this.routeServerId,
+    this.timeouts,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class RouteServerVpcAssociationArgs {
 
   factory RouteServerVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerVpcAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeServerId: pulumi.Output.create<String>(map['routeServerId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RouteServerVpcAssociationTimeouts>(RouteServerVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeServerId: (map['routeServerId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (RouteServerVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

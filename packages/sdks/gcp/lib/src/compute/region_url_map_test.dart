@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionUrlMapTest {
   /// Description of this test case.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Host portion of the URL.
-  final String host;
+  final pulumi.Input<String> host;
   /// Path portion of the URL.
-  final String path;
+  final pulumi.Input<String> path;
   /// A reference to expected RegionBackendService resource the given URL should be mapped to.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [RegionUrlMapTest].
   /// [description] Description of this test case.
@@ -34,10 +35,10 @@ class RegionUrlMapTest {
 
   factory RegionUrlMapTest.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapTest(
-      description: map['description'] == null ? null : map['description'] as String,
-      host: map['host'] as String,
-      path: map['path'] as String,
-      service: map['service'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      host: (map['host'] as String).input(),
+      path: (map['path'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReplicationRecoveryPlanAzureToAzureSetting {
-  final String primaryEdgeZone;
-  final String primaryZone;
-  final String recoveryEdgeZone;
-  final String recoveryZone;
+  final pulumi.Input<String> primaryEdgeZone;
+  final pulumi.Input<String> primaryZone;
+  final pulumi.Input<String> recoveryEdgeZone;
+  final pulumi.Input<String> recoveryZone;
 
   /// Creates a new [GetReplicationRecoveryPlanAzureToAzureSetting].
   /// [primaryEdgeZone] Required.
@@ -30,10 +31,10 @@ class GetReplicationRecoveryPlanAzureToAzureSetting {
 
   factory GetReplicationRecoveryPlanAzureToAzureSetting.fromMap(Map<String, dynamic> map) {
     return GetReplicationRecoveryPlanAzureToAzureSetting(
-      primaryEdgeZone: map['primaryEdgeZone'] as String,
-      primaryZone: map['primaryZone'] as String,
-      recoveryEdgeZone: map['recoveryEdgeZone'] as String,
-      recoveryZone: map['recoveryZone'] as String,
+      primaryEdgeZone: (map['primaryEdgeZone'] as String).input(),
+      primaryZone: (map['primaryZone'] as String).input(),
+      recoveryEdgeZone: (map['recoveryEdgeZone'] as String).input(),
+      recoveryZone: (map['recoveryZone'] as String).input(),
     );
   }
 }

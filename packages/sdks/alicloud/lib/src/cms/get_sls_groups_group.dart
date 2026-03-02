@@ -5,15 +5,15 @@ import 'get_sls_groups_group_sls_group_config.dart';
 
 class GetSlsGroupsGroup {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Sls Group. Its value is same as Queue Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Config of the Sls Group.
-  final List<GetSlsGroupsGroupSlsGroupConfig> slsGroupConfigs;
+  final pulumi.Input<List<GetSlsGroupsGroupSlsGroupConfig>> slsGroupConfigs;
   /// The Description of the Sls Group.
-  final String slsGroupDescription;
+  final pulumi.Input<String> slsGroupDescription;
   /// The name of the resource.
-  final String slsGroupName;
+  final pulumi.Input<String> slsGroupName;
 
   /// Creates a new [GetSlsGroupsGroup].
   /// [createTime] The creation time of the resource.
@@ -33,7 +33,7 @@ class GetSlsGroupsGroup {
     return <String, dynamic>{
       'createTime': createTime,
       'id': id,
-      'slsGroupConfigs': pulumi.Input.encodeList<GetSlsGroupsGroupSlsGroupConfig, Map<String, dynamic>>(slsGroupConfigs, (value) => value.toMap()),
+      'slsGroupConfigs': pulumi.Input.mapInputValue<List<GetSlsGroupsGroupSlsGroupConfig>, List<Map<String, dynamic>>>(slsGroupConfigs, (value) => pulumi.Input.encodeList<GetSlsGroupsGroupSlsGroupConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'slsGroupDescription': slsGroupDescription,
       'slsGroupName': slsGroupName,
     };
@@ -41,11 +41,11 @@ class GetSlsGroupsGroup {
 
   factory GetSlsGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetSlsGroupsGroup(
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      slsGroupConfigs: pulumi.Input.decodeList<GetSlsGroupsGroupSlsGroupConfig>(map['slsGroupConfigs'], (value) => GetSlsGroupsGroupSlsGroupConfig.fromMap((value as Map).cast<String, dynamic>())),
-      slsGroupDescription: map['slsGroupDescription'] as String,
-      slsGroupName: map['slsGroupName'] as String,
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      slsGroupConfigs: (pulumi.Input.decodeList<GetSlsGroupsGroupSlsGroupConfig>(map['slsGroupConfigs'], (value) => GetSlsGroupsGroupSlsGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slsGroupDescription: (map['slsGroupDescription'] as String).input(),
+      slsGroupName: (map['slsGroupName'] as String).input(),
     );
   }
 }

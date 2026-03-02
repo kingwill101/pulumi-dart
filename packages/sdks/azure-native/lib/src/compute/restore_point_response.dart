@@ -9,27 +9,27 @@ import 'system_data_response.dart';
 /// Restore Point details.
 class RestorePointResponse {
   /// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
-  final String? consistencyMode;
+  final pulumi.Input<String>? consistencyMode;
   /// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
-  final List<ApiEntityReferenceResponse>? excludeDisks;
+  final pulumi.Input<List<ApiEntityReferenceResponse>>? excludeDisks;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// The restore point instance view.
-  final RestorePointInstanceViewResponse instanceView;
+  final pulumi.Input<RestorePointInstanceViewResponse> instanceView;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// Gets the provisioning state of the restore point.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Gets the details of the VM captured at the time of the restore point creation.
-  final RestorePointSourceMetadataResponse? sourceMetadata;
+  final pulumi.Input<RestorePointSourceMetadataResponse>? sourceMetadata;
   /// Resource Id of the source restore point from which a copy needs to be created.
-  final ApiEntityReferenceResponse? sourceRestorePoint;
+  final pulumi.Input<ApiEntityReferenceResponse>? sourceRestorePoint;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// Gets the creation time of the restore point.
-  final String? timeCreated;
+  final pulumi.Input<String>? timeCreated;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RestorePointResponse].
   /// [consistencyMode] ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
@@ -60,14 +60,14 @@ class RestorePointResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'consistencyMode': ?consistencyMode,
-      'excludeDisks': ?excludeDisks == null ? null : pulumi.Input.encodeList<ApiEntityReferenceResponse, Map<String, dynamic>>(excludeDisks!, (value) => value.toMap()),
+      'excludeDisks': ?pulumi.Input.mapOptionalInputValue<List<ApiEntityReferenceResponse>, List<Map<String, dynamic>>>(excludeDisks, (value) => pulumi.Input.encodeList<ApiEntityReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
-      'instanceView': instanceView.toMap(),
+      'instanceView': pulumi.Input.mapInputValue<RestorePointInstanceViewResponse, Map<String, dynamic>>(instanceView, (value) => value.toMap()),
       'name': name,
       'provisioningState': provisioningState,
-      'sourceMetadata': ?sourceMetadata == null ? null : sourceMetadata!.toMap(),
-      'sourceRestorePoint': ?sourceRestorePoint == null ? null : sourceRestorePoint!.toMap(),
-      'systemData': systemData.toMap(),
+      'sourceMetadata': ?pulumi.Input.mapOptionalInputValue<RestorePointSourceMetadataResponse, Map<String, dynamic>>(sourceMetadata, (value) => value.toMap()),
+      'sourceRestorePoint': ?pulumi.Input.mapOptionalInputValue<ApiEntityReferenceResponse, Map<String, dynamic>>(sourceRestorePoint, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'timeCreated': ?timeCreated,
       'type': type,
     };
@@ -75,17 +75,17 @@ class RestorePointResponse {
 
   factory RestorePointResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointResponse(
-      consistencyMode: map['consistencyMode'] == null ? null : map['consistencyMode'] as String,
-      excludeDisks: map['excludeDisks'] == null ? null : pulumi.Input.decodeList<ApiEntityReferenceResponse>(map['excludeDisks'], (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      instanceView: RestorePointInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sourceMetadata: map['sourceMetadata'] == null ? null : RestorePointSourceMetadataResponse.fromMap((map['sourceMetadata'] as Map).cast<String, dynamic>()),
-      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : ApiEntityReferenceResponse.fromMap((map['sourceRestorePoint'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      timeCreated: map['timeCreated'] == null ? null : map['timeCreated'] as String,
-      type: map['type'] as String,
+      consistencyMode: map['consistencyMode'] == null ? null : (map['consistencyMode'] as String).input(),
+      excludeDisks: map['excludeDisks'] == null ? null : (pulumi.Input.decodeList<ApiEntityReferenceResponse>(map['excludeDisks'], (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      instanceView: (RestorePointInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      sourceMetadata: map['sourceMetadata'] == null ? null : (RestorePointSourceMetadataResponse.fromMap((map['sourceMetadata'] as Map).cast<String, dynamic>())).input(),
+      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['sourceRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

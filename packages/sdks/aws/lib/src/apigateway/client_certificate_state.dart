@@ -31,23 +31,15 @@ class ClientCertificateState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ClientCertificateState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<String>? pemEncodedCertificate,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      pemEncodedCertificate = pulumi.Input.asOptionalInput<String>(pemEncodedCertificate),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdDate,
+    this.description,
+    this.expirationDate,
+    this.pemEncodedCertificate,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class ClientCertificateState {
 
   factory ClientCertificateState.fromMap(Map<String, dynamic> map) {
     return ClientCertificateState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      pemEncodedCertificate: map['pemEncodedCertificate'] == null ? null : pulumi.Output.create<String>(map['pemEncodedCertificate'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      pemEncodedCertificate: map['pemEncodedCertificate'] == null ? null : (map['pemEncodedCertificate'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

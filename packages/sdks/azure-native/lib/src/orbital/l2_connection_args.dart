@@ -40,25 +40,16 @@ class L2ConnectionArgs {
   /// [tags] Resource tags.
   /// [vlanId] The VLAN ID for the L2 connection.
   L2ConnectionArgs({
-    required pulumi.Output<L2ConnectionsPropertiesEdgeSite> edgeSite,
-    required pulumi.Output<L2ConnectionsPropertiesGroundStation> groundStation,
-    required pulumi.Output<L2ConnectionsPropertiesGroundStationPartnerRouter> groundStationPartnerRouter,
-    pulumi.Output<String>? l2ConnectionName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<int> vlanId,
-  }) :
-      edgeSite = pulumi.Input.asInput<L2ConnectionsPropertiesEdgeSite>(edgeSite),
-      groundStation = pulumi.Input.asInput<L2ConnectionsPropertiesGroundStation>(groundStation),
-      groundStationPartnerRouter = pulumi.Input.asInput<L2ConnectionsPropertiesGroundStationPartnerRouter>(groundStationPartnerRouter),
-      l2ConnectionName = pulumi.Input.asOptionalInput<String>(l2ConnectionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vlanId = pulumi.Input.asInput<int>(vlanId);
+    required this.edgeSite,
+    required this.groundStation,
+    required this.groundStationPartnerRouter,
+    this.l2ConnectionName,
+    this.location,
+    required this.name,
+    required this.resourceGroupName,
+    this.tags,
+    required this.vlanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class L2ConnectionArgs {
 
   factory L2ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return L2ConnectionArgs(
-      edgeSite: pulumi.Output.create<L2ConnectionsPropertiesEdgeSite>(L2ConnectionsPropertiesEdgeSite.fromMap((map['edgeSite'] as Map).cast<String, dynamic>())),
-      groundStation: pulumi.Output.create<L2ConnectionsPropertiesGroundStation>(L2ConnectionsPropertiesGroundStation.fromMap((map['groundStation'] as Map).cast<String, dynamic>())),
-      groundStationPartnerRouter: pulumi.Output.create<L2ConnectionsPropertiesGroundStationPartnerRouter>(L2ConnectionsPropertiesGroundStationPartnerRouter.fromMap((map['groundStationPartnerRouter'] as Map).cast<String, dynamic>())),
-      l2ConnectionName: map['l2ConnectionName'] == null ? null : pulumi.Output.create<String>(map['l2ConnectionName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vlanId: pulumi.Output.create<int>(map['vlanId'] as int),
+      edgeSite: (L2ConnectionsPropertiesEdgeSite.fromMap((map['edgeSite'] as Map).cast<String, dynamic>())).input(),
+      groundStation: (L2ConnectionsPropertiesGroundStation.fromMap((map['groundStation'] as Map).cast<String, dynamic>())).input(),
+      groundStationPartnerRouter: (L2ConnectionsPropertiesGroundStationPartnerRouter.fromMap((map['groundStationPartnerRouter'] as Map).cast<String, dynamic>())).input(),
+      l2ConnectionName: map['l2ConnectionName'] == null ? null : (map['l2ConnectionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vlanId: (map['vlanId'] as int).input(),
     );
   }
 }

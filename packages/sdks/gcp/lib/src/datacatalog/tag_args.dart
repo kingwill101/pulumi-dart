@@ -31,15 +31,11 @@ class TagArgs {
   /// [parent] The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
   /// [template] The resource name of the tag template that this tag uses. Example:
   TagArgs({
-    pulumi.Output<String>? column,
-    required pulumi.Output<List<TagField>> fields,
-    pulumi.Output<String>? parent,
-    required pulumi.Output<String> template,
-  }) :
-      column = pulumi.Input.asOptionalInput<String>(column),
-      fields = pulumi.Input.asInput<List<TagField>>(fields),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      template = pulumi.Input.asInput<String>(template);
+    this.column,
+    required this.fields,
+    this.parent,
+    required this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,10 +48,10 @@ class TagArgs {
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      column: map['column'] == null ? null : pulumi.Output.create<String>(map['column'] as String),
-      fields: pulumi.Output.create<List<TagField>>(pulumi.Input.decodeList<TagField>(map['fields'], (value) => TagField.fromMap((value as Map).cast<String, dynamic>()))),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      template: pulumi.Output.create<String>(map['template'] as String),
+      column: map['column'] == null ? null : (map['column'] as String).input(),
+      fields: (pulumi.Input.decodeList<TagField>(map['fields'], (value) => TagField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      template: (map['template'] as String).input(),
     );
   }
 }

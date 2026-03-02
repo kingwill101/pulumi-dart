@@ -39,25 +39,16 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
   /// [type] Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
   /// [updateTime] The time at which the custom module was last updated.
   ManagementOrganizationEventThreatDetectionCustomModuleState({
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? enablementState,
-    pulumi.Output<String>? lastEditor,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? organization,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updateTime,
-  }) :
-      config = pulumi.Input.asOptionalInput<String>(config),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<String>(enablementState),
-      lastEditor = pulumi.Input.asOptionalInput<String>(lastEditor),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organization = pulumi.Input.asOptionalInput<String>(organization),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.config,
+    this.displayName,
+    this.enablementState,
+    this.lastEditor,
+    this.location,
+    this.name,
+    this.organization,
+    this.type,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
 
   factory ManagementOrganizationEventThreatDetectionCustomModuleState.fromMap(Map<String, dynamic> map) {
     return ManagementOrganizationEventThreatDetectionCustomModuleState(
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: map['enablementState'] == null ? null : pulumi.Output.create<String>(map['enablementState'] as String),
-      lastEditor: map['lastEditor'] == null ? null : pulumi.Output.create<String>(map['lastEditor'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
+      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

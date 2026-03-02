@@ -30,19 +30,13 @@ class StackScriptArgs {
   /// [revNote] This field allows you to add notes for the set of revisions made to this StackScript.
   /// [script] The script to execute when provisioning a new Linode with this StackScript.
   StackScriptArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<List<String>> images,
-    pulumi.Output<bool>? isPublic,
-    required pulumi.Output<String> label,
-    pulumi.Output<String>? revNote,
-    required pulumi.Output<String> script,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      images = pulumi.Input.asInput<List<String>>(images),
-      isPublic = pulumi.Input.asOptionalInput<bool>(isPublic),
-      label = pulumi.Input.asInput<String>(label),
-      revNote = pulumi.Input.asOptionalInput<String>(revNote),
-      script = pulumi.Input.asInput<String>(script);
+    required this.description,
+    required this.images,
+    this.isPublic,
+    required this.label,
+    this.revNote,
+    required this.script,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class StackScriptArgs {
 
   factory StackScriptArgs.fromMap(Map<String, dynamic> map) {
     return StackScriptArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      images: pulumi.Output.create<List<String>>((map['images'] as List).cast<String>()),
-      isPublic: map['isPublic'] == null ? null : pulumi.Output.create<bool>(map['isPublic'] as bool),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      revNote: map['revNote'] == null ? null : pulumi.Output.create<String>(map['revNote'] as String),
-      script: pulumi.Output.create<String>(map['script'] as String),
+      description: (map['description'] as String).input(),
+      images: ((map['images'] as List).cast<String>()).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      label: (map['label'] as String).input(),
+      revNote: map['revNote'] == null ? null : (map['revNote'] as String).input(),
+      script: (map['script'] as String).input(),
     );
   }
 }

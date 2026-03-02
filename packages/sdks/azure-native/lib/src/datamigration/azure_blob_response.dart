@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_service_identity_response.dart';
 
 /// Azure Blob Details
 class AzureBlobResponse {
   /// Storage Account Key.
-  final String? accountKey;
+  final pulumi.Input<String>? accountKey;
   /// Authentication type used for accessing Azure Blob Storage.
-  final String? authType;
+  final pulumi.Input<String>? authType;
   /// Blob container name where backups are stored.
-  final String? blobContainerName;
+  final pulumi.Input<String>? blobContainerName;
   /// Identity details for authentication using a Managed Identity.
-  final ManagedServiceIdentityResponse? identity;
+  final pulumi.Input<ManagedServiceIdentityResponse>? identity;
   /// Resource Id of the storage account where backups are stored.
-  final String? storageAccountResourceId;
+  final pulumi.Input<String>? storageAccountResourceId;
 
   /// Creates a new [AzureBlobResponse].
   /// [accountKey] Storage Account Key.
@@ -34,18 +35,18 @@ class AzureBlobResponse {
       'accountKey': ?accountKey,
       'authType': ?authType,
       'blobContainerName': ?blobContainerName,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'storageAccountResourceId': ?storageAccountResourceId,
     };
   }
 
   factory AzureBlobResponse.fromMap(Map<String, dynamic> map) {
     return AzureBlobResponse(
-      accountKey: map['accountKey'] == null ? null : map['accountKey'] as String,
-      authType: map['authType'] == null ? null : map['authType'] as String,
-      blobContainerName: map['blobContainerName'] == null ? null : map['blobContainerName'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : map['storageAccountResourceId'] as String,
+      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
     );
   }
 }

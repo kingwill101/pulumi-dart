@@ -46,31 +46,19 @@ class ProjectState {
   /// [skipDeletionCheck] Optional flag to delete all child entities within the project.
   /// [timeouts] Optional.
   ProjectState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainIdentifier,
-    pulumi.Output<List<ProjectFailureReason>>? failureReasons,
-    pulumi.Output<List<String>>? glossaryTerms,
-    pulumi.Output<String>? lastUpdatedAt,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectStatus,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDeletionCheck,
-    pulumi.Output<ProjectTimeouts>? timeouts,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asOptionalInput<String>(domainIdentifier),
-      failureReasons = pulumi.Input.asOptionalInput<List<ProjectFailureReason>>(failureReasons),
-      glossaryTerms = pulumi.Input.asOptionalInput<List<String>>(glossaryTerms),
-      lastUpdatedAt = pulumi.Input.asOptionalInput<String>(lastUpdatedAt),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectStatus = pulumi.Input.asOptionalInput<String>(projectStatus),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDeletionCheck = pulumi.Input.asOptionalInput<bool>(skipDeletionCheck),
-      timeouts = pulumi.Input.asOptionalInput<ProjectTimeouts>(timeouts);
+    this.createdAt,
+    this.createdBy,
+    this.description,
+    this.domainIdentifier,
+    this.failureReasons,
+    this.glossaryTerms,
+    this.lastUpdatedAt,
+    this.name,
+    this.projectStatus,
+    this.region,
+    this.skipDeletionCheck,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: map['domainIdentifier'] == null ? null : pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      failureReasons: map['failureReasons'] == null ? null : pulumi.Output.create<List<ProjectFailureReason>>(pulumi.Input.decodeList<ProjectFailureReason>(map['failureReasons'], (value) => ProjectFailureReason.fromMap((value as Map).cast<String, dynamic>()))),
-      glossaryTerms: map['glossaryTerms'] == null ? null : pulumi.Output.create<List<String>>((map['glossaryTerms'] as List).cast<String>()),
-      lastUpdatedAt: map['lastUpdatedAt'] == null ? null : pulumi.Output.create<String>(map['lastUpdatedAt'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectStatus: map['projectStatus'] == null ? null : pulumi.Output.create<String>(map['projectStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : pulumi.Output.create<bool>(map['skipDeletionCheck'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ProjectTimeouts>(ProjectTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
+      failureReasons: map['failureReasons'] == null ? null : (pulumi.Input.decodeList<ProjectFailureReason>(map['failureReasons'], (value) => ProjectFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      glossaryTerms: map['glossaryTerms'] == null ? null : ((map['glossaryTerms'] as List).cast<String>()).input(),
+      lastUpdatedAt: map['lastUpdatedAt'] == null ? null : (map['lastUpdatedAt'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : (map['skipDeletionCheck'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (ProjectTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

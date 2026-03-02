@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionVolumeFrom {
-  final bool? readOnly;
-  final String? sourceContainer;
+  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<String>? sourceContainer;
 
   /// Creates a new [TaskDefinitionVolumeFrom].
   /// [readOnly] Optional.
@@ -22,8 +23,8 @@ class TaskDefinitionVolumeFrom {
 
   factory TaskDefinitionVolumeFrom.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionVolumeFrom(
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      sourceContainer: map['sourceContainer'] == null ? null : map['sourceContainer'] as String,
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      sourceContainer: map['sourceContainer'] == null ? null : (map['sourceContainer'] as String).input(),
     );
   }
 }

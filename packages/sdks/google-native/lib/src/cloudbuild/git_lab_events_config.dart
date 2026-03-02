@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pull_request_filter.dart';
 import 'push_filter.dart';
 
 /// GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
 class GitLabEventsConfig {
   /// The GitLab config resource that this trigger config maps to.
-  final String? gitlabConfigResource;
+  final pulumi.Input<String>? gitlabConfigResource;
   /// Namespace of the GitLab project.
-  final String? projectNamespace;
+  final pulumi.Input<String>? projectNamespace;
   /// Filter to match changes in pull requests.
-  final PullRequestFilter? pullRequest;
+  final pulumi.Input<PullRequestFilter>? pullRequest;
   /// Filter to match changes in refs like branches, tags.
-  final PushFilter? push;
+  final pulumi.Input<PushFilter>? push;
 
   /// Creates a new [GitLabEventsConfig].
   /// [gitlabConfigResource] The GitLab config resource that this trigger config maps to.
@@ -30,17 +31,17 @@ class GitLabEventsConfig {
     return <String, dynamic>{
       'gitlabConfigResource': ?gitlabConfigResource,
       'projectNamespace': ?projectNamespace,
-      'pullRequest': ?pullRequest == null ? null : pullRequest!.toMap(),
-      'push': ?push == null ? null : push!.toMap(),
+      'pullRequest': ?pulumi.Input.mapOptionalInputValue<PullRequestFilter, Map<String, dynamic>>(pullRequest, (value) => value.toMap()),
+      'push': ?pulumi.Input.mapOptionalInputValue<PushFilter, Map<String, dynamic>>(push, (value) => value.toMap()),
     };
   }
 
   factory GitLabEventsConfig.fromMap(Map<String, dynamic> map) {
     return GitLabEventsConfig(
-      gitlabConfigResource: map['gitlabConfigResource'] == null ? null : map['gitlabConfigResource'] as String,
-      projectNamespace: map['projectNamespace'] == null ? null : map['projectNamespace'] as String,
-      pullRequest: map['pullRequest'] == null ? null : PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: map['push'] == null ? null : PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>()),
+      gitlabConfigResource: map['gitlabConfigResource'] == null ? null : (map['gitlabConfigResource'] as String).input(),
+      projectNamespace: map['projectNamespace'] == null ? null : (map['projectNamespace'] as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

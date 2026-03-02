@@ -27,17 +27,12 @@ class NamespaceAuthorizationRuleArgs {
   /// [namespaceId] Specifies the ID of the ServiceBus Namespace. Changing this forces a new resource to be created.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
   NamespaceAuthorizationRuleArgs({
-    pulumi.Output<bool>? listen,
-    pulumi.Output<bool>? manage,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<bool>? send,
-  }) :
-      listen = pulumi.Input.asOptionalInput<bool>(listen),
-      manage = pulumi.Input.asOptionalInput<bool>(manage),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      send = pulumi.Input.asOptionalInput<bool>(send);
+    this.listen,
+    this.manage,
+    this.name,
+    required this.namespaceId,
+    this.send,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class NamespaceAuthorizationRuleArgs {
 
   factory NamespaceAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceAuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : pulumi.Output.create<bool>(map['listen'] as bool),
-      manage: map['manage'] == null ? null : pulumi.Output.create<bool>(map['manage'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      send: map['send'] == null ? null : pulumi.Output.create<bool>(map['send'] as bool),
+      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      send: map['send'] == null ? null : (map['send'] as bool).input(),
     );
   }
 }

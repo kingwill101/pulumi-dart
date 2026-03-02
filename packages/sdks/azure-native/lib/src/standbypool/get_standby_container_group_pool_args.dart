@@ -16,11 +16,9 @@ class GetStandbyContainerGroupPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [standbyContainerGroupPoolName] Name of the standby container group pool
   GetStandbyContainerGroupPoolArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> standbyContainerGroupPoolName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      standbyContainerGroupPoolName = pulumi.Input.asInput<String>(standbyContainerGroupPoolName);
+    required this.resourceGroupName,
+    required this.standbyContainerGroupPoolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStandbyContainerGroupPoolArgs {
 
   factory GetStandbyContainerGroupPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetStandbyContainerGroupPoolArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      standbyContainerGroupPoolName: pulumi.Output.create<String>(map['standbyContainerGroupPoolName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      standbyContainerGroupPoolName: (map['standbyContainerGroupPoolName'] as String).input(),
     );
   }
 }

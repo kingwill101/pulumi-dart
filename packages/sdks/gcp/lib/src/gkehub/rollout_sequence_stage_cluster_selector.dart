@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RolloutSequenceStageClusterSelector {
   /// The label selector must be a valid CEL (Common Expression Language) expression which
   /// evaluates resource.labels.
-  final String labelSelector;
+  final pulumi.Input<String> labelSelector;
 
   /// Creates a new [RolloutSequenceStageClusterSelector].
   /// [labelSelector] The label selector must be a valid CEL (Common Expression Language) expression which
@@ -20,7 +21,7 @@ class RolloutSequenceStageClusterSelector {
 
   factory RolloutSequenceStageClusterSelector.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceStageClusterSelector(
-      labelSelector: map['labelSelector'] as String,
+      labelSelector: (map['labelSelector'] as String).input(),
     );
   }
 }

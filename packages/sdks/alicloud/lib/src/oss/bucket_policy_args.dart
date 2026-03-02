@@ -16,11 +16,9 @@ class BucketPolicyArgs {
   /// [bucket] The name of the Bucket.
   /// [policy] Json-formatted authorization policies for buckets.
   BucketPolicyArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> policy,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      policy = pulumi.Input.asInput<String>(policy);
+    required this.bucket,
+    required this.policy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BucketPolicyArgs {
 
   factory BucketPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BucketPolicyArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
+      bucket: (map['bucket'] as String).input(),
+      policy: (map['policy'] as String).input(),
     );
   }
 }

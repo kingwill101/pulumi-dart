@@ -20,13 +20,10 @@ class GetRegistryImageManifestsArgs {
   /// [insecureSkipVerify] If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   /// [name] The name of the Docker image, including any tags. e.g. `alpine:latest`
   GetRegistryImageManifestsArgs({
-    pulumi.Output<GetRegistryImageManifestsAuthConfig>? authConfig,
-    pulumi.Output<bool>? insecureSkipVerify,
-    required pulumi.Output<String> name,
-  }) :
-      authConfig = pulumi.Input.asOptionalInput<GetRegistryImageManifestsAuthConfig>(authConfig),
-      insecureSkipVerify = pulumi.Input.asOptionalInput<bool>(insecureSkipVerify),
-      name = pulumi.Input.asInput<String>(name);
+    this.authConfig,
+    this.insecureSkipVerify,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetRegistryImageManifestsArgs {
 
   factory GetRegistryImageManifestsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageManifestsArgs(
-      authConfig: map['authConfig'] == null ? null : pulumi.Output.create<GetRegistryImageManifestsAuthConfig>(GetRegistryImageManifestsAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())),
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : pulumi.Output.create<bool>(map['insecureSkipVerify'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      authConfig: map['authConfig'] == null ? null : (GetRegistryImageManifestsAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

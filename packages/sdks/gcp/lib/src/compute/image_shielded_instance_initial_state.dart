@@ -9,16 +9,16 @@ import 'image_shielded_instance_initial_state_pk.dart';
 class ImageShieldedInstanceInitialState {
   /// The Key Database (db).
   /// Structure is documented below.
-  final List<ImageShieldedInstanceInitialStateDb>? dbs;
+  final pulumi.Input<List<ImageShieldedInstanceInitialStateDb>>? dbs;
   /// The forbidden key database (dbx).
   /// Structure is documented below.
-  final List<ImageShieldedInstanceInitialStateDbx>? dbxs;
+  final pulumi.Input<List<ImageShieldedInstanceInitialStateDbx>>? dbxs;
   /// The Key Exchange Key (KEK).
   /// Structure is documented below.
-  final List<ImageShieldedInstanceInitialStateKek>? keks;
+  final pulumi.Input<List<ImageShieldedInstanceInitialStateKek>>? keks;
   /// The Platform Key (PK).
   /// Structure is documented below.
-  final ImageShieldedInstanceInitialStatePk? pk;
+  final pulumi.Input<ImageShieldedInstanceInitialStatePk>? pk;
 
   /// Creates a new [ImageShieldedInstanceInitialState].
   /// [dbs] The Key Database (db).
@@ -34,19 +34,19 @@ class ImageShieldedInstanceInitialState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbs': ?dbs == null ? null : pulumi.Input.encodeList<ImageShieldedInstanceInitialStateDb, Map<String, dynamic>>(dbs!, (value) => value.toMap()),
-      'dbxs': ?dbxs == null ? null : pulumi.Input.encodeList<ImageShieldedInstanceInitialStateDbx, Map<String, dynamic>>(dbxs!, (value) => value.toMap()),
-      'keks': ?keks == null ? null : pulumi.Input.encodeList<ImageShieldedInstanceInitialStateKek, Map<String, dynamic>>(keks!, (value) => value.toMap()),
-      'pk': ?pk == null ? null : pk!.toMap(),
+      'dbs': ?pulumi.Input.mapOptionalInputValue<List<ImageShieldedInstanceInitialStateDb>, List<Map<String, dynamic>>>(dbs, (value) => pulumi.Input.encodeList<ImageShieldedInstanceInitialStateDb, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dbxs': ?pulumi.Input.mapOptionalInputValue<List<ImageShieldedInstanceInitialStateDbx>, List<Map<String, dynamic>>>(dbxs, (value) => pulumi.Input.encodeList<ImageShieldedInstanceInitialStateDbx, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'keks': ?pulumi.Input.mapOptionalInputValue<List<ImageShieldedInstanceInitialStateKek>, List<Map<String, dynamic>>>(keks, (value) => pulumi.Input.encodeList<ImageShieldedInstanceInitialStateKek, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pk': ?pulumi.Input.mapOptionalInputValue<ImageShieldedInstanceInitialStatePk, Map<String, dynamic>>(pk, (value) => value.toMap()),
     };
   }
 
   factory ImageShieldedInstanceInitialState.fromMap(Map<String, dynamic> map) {
     return ImageShieldedInstanceInitialState(
-      dbs: map['dbs'] == null ? null : pulumi.Input.decodeList<ImageShieldedInstanceInitialStateDb>(map['dbs'], (value) => ImageShieldedInstanceInitialStateDb.fromMap((value as Map).cast<String, dynamic>())),
-      dbxs: map['dbxs'] == null ? null : pulumi.Input.decodeList<ImageShieldedInstanceInitialStateDbx>(map['dbxs'], (value) => ImageShieldedInstanceInitialStateDbx.fromMap((value as Map).cast<String, dynamic>())),
-      keks: map['keks'] == null ? null : pulumi.Input.decodeList<ImageShieldedInstanceInitialStateKek>(map['keks'], (value) => ImageShieldedInstanceInitialStateKek.fromMap((value as Map).cast<String, dynamic>())),
-      pk: map['pk'] == null ? null : ImageShieldedInstanceInitialStatePk.fromMap((map['pk'] as Map).cast<String, dynamic>()),
+      dbs: map['dbs'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateDb>(map['dbs'], (value) => ImageShieldedInstanceInitialStateDb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbxs: map['dbxs'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateDbx>(map['dbxs'], (value) => ImageShieldedInstanceInitialStateDbx.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keks: map['keks'] == null ? null : (pulumi.Input.decodeList<ImageShieldedInstanceInitialStateKek>(map['keks'], (value) => ImageShieldedInstanceInitialStateKek.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pk: map['pk'] == null ? null : (ImageShieldedInstanceInitialStatePk.fromMap((map['pk'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

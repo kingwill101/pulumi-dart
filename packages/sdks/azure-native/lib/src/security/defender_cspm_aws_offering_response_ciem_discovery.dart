@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defender CSPM Permissions Management discovery configuration
 class DefenderCspmAwsOfferingResponseCiemDiscovery {
   /// The cloud role ARN in AWS for Permissions Management discovery
-  final String? cloudRoleArn;
+  final pulumi.Input<String>? cloudRoleArn;
 
   /// Creates a new [DefenderCspmAwsOfferingResponseCiemDiscovery].
   /// [cloudRoleArn] The cloud role ARN in AWS for Permissions Management discovery
@@ -20,7 +21,7 @@ class DefenderCspmAwsOfferingResponseCiemDiscovery {
 
   factory DefenderCspmAwsOfferingResponseCiemDiscovery.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingResponseCiemDiscovery(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
     );
   }
 }

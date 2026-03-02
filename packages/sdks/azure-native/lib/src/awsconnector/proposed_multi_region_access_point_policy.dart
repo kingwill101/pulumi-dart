@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ProposedMultiRegionAccessPointPolicy
 class ProposedMultiRegionAccessPointPolicy {
   /// <p>The details of the proposed policy.</p>
-  final String? policy;
+  final pulumi.Input<String>? policy;
 
   /// Creates a new [ProposedMultiRegionAccessPointPolicy].
   /// [policy] <p>The details of the proposed policy.</p>
@@ -20,7 +21,7 @@ class ProposedMultiRegionAccessPointPolicy {
 
   factory ProposedMultiRegionAccessPointPolicy.fromMap(Map<String, dynamic> map) {
     return ProposedMultiRegionAccessPointPolicy(
-      policy: map['policy'] == null ? null : map['policy'] as String,
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
     );
   }
 }

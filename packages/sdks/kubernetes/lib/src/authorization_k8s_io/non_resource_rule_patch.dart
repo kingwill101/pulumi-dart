@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NonResourceRule holds information that describes a rule for the non-resource
 class NonResourceRulePatch {
   /// NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.
-  final List<String>? nonResourceURLs;
+  final pulumi.Input<List<String>>? nonResourceURLs;
   /// Verb is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  "*" means all.
-  final List<String>? verbs;
+  final pulumi.Input<List<String>>? verbs;
 
   /// Creates a new [NonResourceRulePatch].
   /// [nonResourceURLs] NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.
@@ -25,8 +26,8 @@ class NonResourceRulePatch {
 
   factory NonResourceRulePatch.fromMap(Map<String, dynamic> map) {
     return NonResourceRulePatch(
-      nonResourceURLs: map['nonResourceURLs'] == null ? null : (map['nonResourceURLs'] as List).cast<String>(),
-      verbs: map['verbs'] == null ? null : (map['verbs'] as List).cast<String>(),
+      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs'] as List).cast<String>()).input(),
+      verbs: map['verbs'] == null ? null : ((map['verbs'] as List).cast<String>()).input(),
     );
   }
 }

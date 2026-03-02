@@ -29,19 +29,13 @@ class ManagedPrefixListArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ManagedPrefixListArgs({
-    required pulumi.Output<String> addressFamily,
-    pulumi.Output<List<ManagedPrefixListEntry>>? entries,
-    required pulumi.Output<int> maxEntries,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addressFamily = pulumi.Input.asInput<String>(addressFamily),
-      entries = pulumi.Input.asOptionalInput<List<ManagedPrefixListEntry>>(entries),
-      maxEntries = pulumi.Input.asInput<int>(maxEntries),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.addressFamily,
+    this.entries,
+    required this.maxEntries,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ManagedPrefixListArgs {
 
   factory ManagedPrefixListArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrefixListArgs(
-      addressFamily: pulumi.Output.create<String>(map['addressFamily'] as String),
-      entries: map['entries'] == null ? null : pulumi.Output.create<List<ManagedPrefixListEntry>>(pulumi.Input.decodeList<ManagedPrefixListEntry>(map['entries'], (value) => ManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      maxEntries: pulumi.Output.create<int>(map['maxEntries'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addressFamily: (map['addressFamily'] as String).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<ManagedPrefixListEntry>(map['entries'], (value) => ManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxEntries: (map['maxEntries'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class Powershell72ModuleArgs {
   /// [name] Specifies the name of the Module. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   Powershell72ModuleArgs({
-    required pulumi.Output<String> automationAccountId,
-    required pulumi.Output<Powershell72ModuleModuleLink> moduleLink,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountId = pulumi.Input.asInput<String>(automationAccountId),
-      moduleLink = pulumi.Input.asInput<Powershell72ModuleModuleLink>(moduleLink),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.automationAccountId,
+    required this.moduleLink,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class Powershell72ModuleArgs {
 
   factory Powershell72ModuleArgs.fromMap(Map<String, dynamic> map) {
     return Powershell72ModuleArgs(
-      automationAccountId: pulumi.Output.create<String>(map['automationAccountId'] as String),
-      moduleLink: pulumi.Output.create<Powershell72ModuleModuleLink>(Powershell72ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountId: (map['automationAccountId'] as String).input(),
+      moduleLink: (Powershell72ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteSpecGrpcRouteTimeoutIdle {
-  final String unit;
-  final int value;
+  final pulumi.Input<String> unit;
+  final pulumi.Input<int> value;
 
   /// Creates a new [GetRouteSpecGrpcRouteTimeoutIdle].
   /// [unit] Required.
@@ -22,8 +23,8 @@ class GetRouteSpecGrpcRouteTimeoutIdle {
 
   factory GetRouteSpecGrpcRouteTimeoutIdle.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteTimeoutIdle(
-      unit: map['unit'] as String,
-      value: map['value'] as int,
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

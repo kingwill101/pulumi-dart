@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for resources used by Airflow web server.
 class WebServerResourceComposerV1beta1 {
   /// Optional. CPU request and limit for Airflow web server.
-  final double? cpu;
+  final pulumi.Input<double>? cpu;
   /// Optional. Memory (GB) request and limit for Airflow web server.
-  final double? memoryGb;
+  final pulumi.Input<double>? memoryGb;
   /// Optional. Storage (GB) request and limit for Airflow web server.
-  final double? storageGb;
+  final pulumi.Input<double>? storageGb;
 
   /// Creates a new [WebServerResourceComposerV1beta1].
   /// [cpu] Optional. CPU request and limit for Airflow web server.
@@ -30,9 +31,9 @@ class WebServerResourceComposerV1beta1 {
 
   factory WebServerResourceComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WebServerResourceComposerV1beta1(
-      cpu: map['cpu'] == null ? null : map['cpu'] as double,
-      memoryGb: map['memoryGb'] == null ? null : map['memoryGb'] as double,
-      storageGb: map['storageGb'] == null ? null : map['storageGb'] as double,
+      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
+      storageGb: map['storageGb'] == null ? null : (map['storageGb'] as double).input(),
     );
   }
 }

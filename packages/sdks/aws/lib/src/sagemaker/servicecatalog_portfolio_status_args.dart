@@ -16,11 +16,9 @@ class ServicecatalogPortfolioStatusArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
   ServicecatalogPortfolioStatusArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> status,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asInput<String>(status);
+    this.region,
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ServicecatalogPortfolioStatusArgs {
 
   factory ServicecatalogPortfolioStatusArgs.fromMap(Map<String, dynamic> map) {
     return ServicecatalogPortfolioStatusArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: pulumi.Output.create<String>(map['status'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

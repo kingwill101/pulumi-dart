@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorOutputS3Destination {
   /// Name of the Amazon S3 bucket you want to associate with the streaming video project.
-  final String? bucket;
+  final pulumi.Input<String>? bucket;
   /// The prefix value of the location within the bucket that you want the information to be published to.
-  final String? keyPrefix;
+  final pulumi.Input<String>? keyPrefix;
 
   /// Creates a new [StreamProcessorOutputS3Destination].
   /// [bucket] Name of the Amazon S3 bucket you want to associate with the streaming video project.
@@ -24,8 +25,8 @@ class StreamProcessorOutputS3Destination {
 
   factory StreamProcessorOutputS3Destination.fromMap(Map<String, dynamic> map) {
     return StreamProcessorOutputS3Destination(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      keyPrefix: map['keyPrefix'] == null ? null : map['keyPrefix'] as String,
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
     );
   }
 }

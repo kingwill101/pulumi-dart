@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentConfigWorkloadsConfigDagProcessor {
   /// Number of DAG processors.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// CPU request and limit for DAG processor.
-  final double? cpu;
+  final pulumi.Input<double>? cpu;
   /// Memory (GB) request and limit for DAG processor.
-  final double? memoryGb;
+  final pulumi.Input<double>? memoryGb;
   /// Storage (GB) request and limit for DAG processor.
-  final double? storageGb;
+  final pulumi.Input<double>? storageGb;
 
   /// Creates a new [EnvironmentConfigWorkloadsConfigDagProcessor].
   /// [count] Number of DAG processors.
@@ -34,10 +35,10 @@ class EnvironmentConfigWorkloadsConfigDagProcessor {
 
   factory EnvironmentConfigWorkloadsConfigDagProcessor.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfigDagProcessor(
-      count: map['count'] == null ? null : map['count'] as int,
-      cpu: map['cpu'] == null ? null : map['cpu'] as double,
-      memoryGb: map['memoryGb'] == null ? null : map['memoryGb'] as double,
-      storageGb: map['storageGb'] == null ? null : map['storageGb'] as double,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
+      storageGb: map['storageGb'] == null ? null : (map['storageGb'] as double).input(),
     );
   }
 }

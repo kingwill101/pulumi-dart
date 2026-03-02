@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCostCategoryRuleRuleAndTag {
   /// Key for the tag.
-  final String key;
+  final pulumi.Input<String> key;
   /// Match options that you can use to filter your results. MatchOptions is only applicable for actions related to cost category. The default values for MatchOptions is `EQUALS` and `CASE_SENSITIVE`. Valid values are: `EQUALS`,  `ABSENT`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`.
-  final List<String> matchOptions;
+  final pulumi.Input<List<String>> matchOptions;
   /// Parameter values.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetCostCategoryRuleRuleAndTag].
   /// [key] Key for the tag.
@@ -29,9 +30,9 @@ class GetCostCategoryRuleRuleAndTag {
 
   factory GetCostCategoryRuleRuleAndTag.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryRuleRuleAndTag(
-      key: map['key'] as String,
-      matchOptions: (map['matchOptions'] as List).cast<String>(),
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      matchOptions: ((map['matchOptions'] as List).cast<String>()).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

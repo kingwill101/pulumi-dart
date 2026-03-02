@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BitbucketServerConfigConnectedRepository {
   /// Identifier for the project storing the repository.
-  final String projectKey;
+  final pulumi.Input<String> projectKey;
   /// Identifier for the repository.
-  final String repoSlug;
+  final pulumi.Input<String> repoSlug;
 
   /// Creates a new [BitbucketServerConfigConnectedRepository].
   /// [projectKey] Identifier for the project storing the repository.
@@ -24,8 +25,8 @@ class BitbucketServerConfigConnectedRepository {
 
   factory BitbucketServerConfigConnectedRepository.fromMap(Map<String, dynamic> map) {
     return BitbucketServerConfigConnectedRepository(
-      projectKey: map['projectKey'] as String,
-      repoSlug: map['repoSlug'] as String,
+      projectKey: (map['projectKey'] as String).input(),
+      repoSlug: (map['repoSlug'] as String).input(),
     );
   }
 }

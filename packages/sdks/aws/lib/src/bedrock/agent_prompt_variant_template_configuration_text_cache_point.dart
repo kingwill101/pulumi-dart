@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantTemplateConfigurationTextCachePoint {
   /// Indicates that the CachePointBlock is of the default type. Valid values: `default`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationTextCachePoint].
   /// [type] Indicates that the CachePointBlock is of the default type. Valid values: `default`.
@@ -19,7 +20,7 @@ class AgentPromptVariantTemplateConfigurationTextCachePoint {
 
   factory AgentPromptVariantTemplateConfigurationTextCachePoint.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationTextCachePoint(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

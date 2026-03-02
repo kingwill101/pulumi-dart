@@ -19,13 +19,10 @@ class GetZoneVirtualNetworkLinkArgs {
   /// [privateDnsZoneName] The name of the Private DNS zone (without a terminating dot).
   /// [resourceGroupName] Specifies the resource group where the Private DNS Zone exists.
   GetZoneVirtualNetworkLinkArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> privateDnsZoneName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      privateDnsZoneName = pulumi.Input.asInput<String>(privateDnsZoneName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.privateDnsZoneName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetZoneVirtualNetworkLinkArgs {
 
   factory GetZoneVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneVirtualNetworkLinkArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      privateDnsZoneName: pulumi.Output.create<String>(map['privateDnsZoneName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      privateDnsZoneName: (map['privateDnsZoneName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

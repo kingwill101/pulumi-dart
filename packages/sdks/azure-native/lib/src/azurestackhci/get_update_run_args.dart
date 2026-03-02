@@ -22,15 +22,11 @@ class GetUpdateRunArgs {
   /// [updateName] The name of the Update
   /// [updateRunName] The name of the Update Run
   GetUpdateRunArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> updateName,
-    required pulumi.Output<String> updateRunName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      updateName = pulumi.Input.asInput<String>(updateName),
-      updateRunName = pulumi.Input.asInput<String>(updateRunName);
+    required this.clusterName,
+    required this.resourceGroupName,
+    required this.updateName,
+    required this.updateRunName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetUpdateRunArgs {
 
   factory GetUpdateRunArgs.fromMap(Map<String, dynamic> map) {
     return GetUpdateRunArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      updateName: pulumi.Output.create<String>(map['updateName'] as String),
-      updateRunName: pulumi.Output.create<String>(map['updateRunName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      updateName: (map['updateName'] as String).input(),
+      updateRunName: (map['updateRunName'] as String).input(),
     );
   }
 }

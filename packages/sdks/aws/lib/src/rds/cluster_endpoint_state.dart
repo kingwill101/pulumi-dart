@@ -40,27 +40,17 @@ class ClusterEndpointState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ClusterEndpointState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? clusterEndpointIdentifier,
-    pulumi.Output<String>? clusterIdentifier,
-    pulumi.Output<String>? customEndpointType,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<List<String>>? excludedMembers,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? staticMembers,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clusterEndpointIdentifier = pulumi.Input.asOptionalInput<String>(clusterEndpointIdentifier),
-      clusterIdentifier = pulumi.Input.asOptionalInput<String>(clusterIdentifier),
-      customEndpointType = pulumi.Input.asOptionalInput<String>(customEndpointType),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      excludedMembers = pulumi.Input.asOptionalInput<List<String>>(excludedMembers),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      staticMembers = pulumi.Input.asOptionalInput<List<String>>(staticMembers),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.clusterEndpointIdentifier,
+    this.clusterIdentifier,
+    this.customEndpointType,
+    this.endpoint,
+    this.excludedMembers,
+    this.region,
+    this.staticMembers,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ClusterEndpointState {
 
   factory ClusterEndpointState.fromMap(Map<String, dynamic> map) {
     return ClusterEndpointState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clusterEndpointIdentifier: map['clusterEndpointIdentifier'] == null ? null : pulumi.Output.create<String>(map['clusterEndpointIdentifier'] as String),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      customEndpointType: map['customEndpointType'] == null ? null : pulumi.Output.create<String>(map['customEndpointType'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      excludedMembers: map['excludedMembers'] == null ? null : pulumi.Output.create<List<String>>((map['excludedMembers'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      staticMembers: map['staticMembers'] == null ? null : pulumi.Output.create<List<String>>((map['staticMembers'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clusterEndpointIdentifier: map['clusterEndpointIdentifier'] == null ? null : (map['clusterEndpointIdentifier'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      customEndpointType: map['customEndpointType'] == null ? null : (map['customEndpointType'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      excludedMembers: map['excludedMembers'] == null ? null : ((map['excludedMembers'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      staticMembers: map['staticMembers'] == null ? null : ((map['staticMembers'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

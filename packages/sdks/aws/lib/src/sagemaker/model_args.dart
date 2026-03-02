@@ -41,25 +41,16 @@ class ModelArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfig] Specifies the VPC that you want your model to connect to. This configuration is used in hosting services and in batch transform. See VPC Config.
   ModelArgs({
-    pulumi.Output<List<ModelContainer>>? containers,
-    pulumi.Output<bool>? enableNetworkIsolation,
-    required pulumi.Output<String> executionRoleArn,
-    pulumi.Output<ModelInferenceExecutionConfig>? inferenceExecutionConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<ModelPrimaryContainer>? primaryContainer,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ModelVpcConfig>? vpcConfig,
-  }) :
-      containers = pulumi.Input.asOptionalInput<List<ModelContainer>>(containers),
-      enableNetworkIsolation = pulumi.Input.asOptionalInput<bool>(enableNetworkIsolation),
-      executionRoleArn = pulumi.Input.asInput<String>(executionRoleArn),
-      inferenceExecutionConfig = pulumi.Input.asOptionalInput<ModelInferenceExecutionConfig>(inferenceExecutionConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryContainer = pulumi.Input.asOptionalInput<ModelPrimaryContainer>(primaryContainer),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcConfig = pulumi.Input.asOptionalInput<ModelVpcConfig>(vpcConfig);
+    this.containers,
+    this.enableNetworkIsolation,
+    required this.executionRoleArn,
+    this.inferenceExecutionConfig,
+    this.name,
+    this.primaryContainer,
+    this.region,
+    this.tags,
+    this.vpcConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      containers: map['containers'] == null ? null : pulumi.Output.create<List<ModelContainer>>(pulumi.Input.decodeList<ModelContainer>(map['containers'], (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>()))),
-      enableNetworkIsolation: map['enableNetworkIsolation'] == null ? null : pulumi.Output.create<bool>(map['enableNetworkIsolation'] as bool),
-      executionRoleArn: pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      inferenceExecutionConfig: map['inferenceExecutionConfig'] == null ? null : pulumi.Output.create<ModelInferenceExecutionConfig>(ModelInferenceExecutionConfig.fromMap((map['inferenceExecutionConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryContainer: map['primaryContainer'] == null ? null : pulumi.Output.create<ModelPrimaryContainer>(ModelPrimaryContainer.fromMap((map['primaryContainer'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcConfig: map['vpcConfig'] == null ? null : pulumi.Output.create<ModelVpcConfig>(ModelVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ModelContainer>(map['containers'], (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableNetworkIsolation: map['enableNetworkIsolation'] == null ? null : (map['enableNetworkIsolation'] as bool).input(),
+      executionRoleArn: (map['executionRoleArn'] as String).input(),
+      inferenceExecutionConfig: map['inferenceExecutionConfig'] == null ? null : (ModelInferenceExecutionConfig.fromMap((map['inferenceExecutionConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryContainer: map['primaryContainer'] == null ? null : (ModelPrimaryContainer.fromMap((map['primaryContainer'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : (ModelVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

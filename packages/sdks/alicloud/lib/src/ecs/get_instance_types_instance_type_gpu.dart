@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypesInstanceTypeGpu {
   /// The number of local storage devices that an instance has been attached to.
-  final String amount;
+  final pulumi.Input<String> amount;
   /// The category of local storage that an instance has been attached to.
-  final String category;
+  final pulumi.Input<String> category;
 
   /// Creates a new [GetInstanceTypesInstanceTypeGpu].
   /// [amount] The number of local storage devices that an instance has been attached to.
@@ -24,8 +25,8 @@ class GetInstanceTypesInstanceTypeGpu {
 
   factory GetInstanceTypesInstanceTypeGpu.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesInstanceTypeGpu(
-      amount: map['amount'] as String,
-      category: map['category'] as String,
+      amount: (map['amount'] as String).input(),
+      category: (map['category'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class RdsServiceLinkedRoleArgs {
   /// Creates a new [RdsServiceLinkedRoleArgs].
   /// [serviceName] The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
   RdsServiceLinkedRoleArgs({
-    required pulumi.Output<String> serviceName,
-  }) :
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class RdsServiceLinkedRoleArgs {
 
   factory RdsServiceLinkedRoleArgs.fromMap(Map<String, dynamic> map) {
     return RdsServiceLinkedRoleArgs(
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

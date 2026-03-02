@@ -31,21 +31,14 @@ class IdentityProviderArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool id
   IdentityProviderArgs({
-    pulumi.Output<Map<String, String>>? attributeMapping,
-    pulumi.Output<List<String>>? idpIdentifiers,
-    required pulumi.Output<Map<String, String>> providerDetails,
-    required pulumi.Output<String> providerName,
-    required pulumi.Output<String> providerType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> userPoolId,
-  }) :
-      attributeMapping = pulumi.Input.asOptionalInput<Map<String, String>>(attributeMapping),
-      idpIdentifiers = pulumi.Input.asOptionalInput<List<String>>(idpIdentifiers),
-      providerDetails = pulumi.Input.asInput<Map<String, String>>(providerDetails),
-      providerName = pulumi.Input.asInput<String>(providerName),
-      providerType = pulumi.Input.asInput<String>(providerType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userPoolId = pulumi.Input.asInput<String>(userPoolId);
+    this.attributeMapping,
+    this.idpIdentifiers,
+    required this.providerDetails,
+    required this.providerName,
+    required this.providerType,
+    this.region,
+    required this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class IdentityProviderArgs {
 
   factory IdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderArgs(
-      attributeMapping: map['attributeMapping'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributeMapping'] as Map).cast<String, String>()),
-      idpIdentifiers: map['idpIdentifiers'] == null ? null : pulumi.Output.create<List<String>>((map['idpIdentifiers'] as List).cast<String>()),
-      providerDetails: pulumi.Output.create<Map<String, String>>((map['providerDetails'] as Map).cast<String, String>()),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
-      providerType: pulumi.Output.create<String>(map['providerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userPoolId: pulumi.Output.create<String>(map['userPoolId'] as String),
+      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping'] as Map).cast<String, String>()).input(),
+      idpIdentifiers: map['idpIdentifiers'] == null ? null : ((map['idpIdentifiers'] as List).cast<String>()).input(),
+      providerDetails: ((map['providerDetails'] as Map).cast<String, String>()).input(),
+      providerName: (map['providerName'] as String).input(),
+      providerType: (map['providerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
     );
   }
 }

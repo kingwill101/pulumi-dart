@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateSecondaryInterface {
-  final bool deleteOnTermination;
-  final int deviceIndex;
-  final String interfaceType;
-  final int networkCardIndex;
-  final int privateIpAddressCount;
-  final List<String> privateIpAddresses;
-  final String secondarySubnetId;
+  final pulumi.Input<bool> deleteOnTermination;
+  final pulumi.Input<int> deviceIndex;
+  final pulumi.Input<String> interfaceType;
+  final pulumi.Input<int> networkCardIndex;
+  final pulumi.Input<int> privateIpAddressCount;
+  final pulumi.Input<List<String>> privateIpAddresses;
+  final pulumi.Input<String> secondarySubnetId;
 
   /// Creates a new [GetLaunchTemplateSecondaryInterface].
   /// [deleteOnTermination] Required.
@@ -42,13 +43,13 @@ class GetLaunchTemplateSecondaryInterface {
 
   factory GetLaunchTemplateSecondaryInterface.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateSecondaryInterface(
-      deleteOnTermination: map['deleteOnTermination'] as bool,
-      deviceIndex: map['deviceIndex'] as int,
-      interfaceType: map['interfaceType'] as String,
-      networkCardIndex: map['networkCardIndex'] as int,
-      privateIpAddressCount: map['privateIpAddressCount'] as int,
-      privateIpAddresses: (map['privateIpAddresses'] as List).cast<String>(),
-      secondarySubnetId: map['secondarySubnetId'] as String,
+      deleteOnTermination: (map['deleteOnTermination'] as bool).input(),
+      deviceIndex: (map['deviceIndex'] as int).input(),
+      interfaceType: (map['interfaceType'] as String).input(),
+      networkCardIndex: (map['networkCardIndex'] as int).input(),
+      privateIpAddressCount: (map['privateIpAddressCount'] as int).input(),
+      privateIpAddresses: ((map['privateIpAddresses'] as List).cast<String>()).input(),
+      secondarySubnetId: (map['secondarySubnetId'] as String).input(),
     );
   }
 }

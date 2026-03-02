@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceDeployment {
   /// Time when task set was created (RFC3339 format)
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Desired number of tasks
-  final int desiredCount;
+  final pulumi.Input<int> desiredCount;
   /// Task set ID
-  final String id;
+  final pulumi.Input<String> id;
   /// Number of pending tasks
-  final int pendingCount;
+  final pulumi.Input<int> pendingCount;
   /// Number of running tasks
-  final int runningCount;
+  final pulumi.Input<int> runningCount;
   /// Task set status
-  final String status;
+  final pulumi.Input<String> status;
   /// Task definition ARN
-  final String taskDefinition;
+  final pulumi.Input<String> taskDefinition;
   /// Time when task set was last updated (RFC3339 format)
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
 
   /// Creates a new [GetServiceDeployment].
   /// [createdAt] Time when task set was created (RFC3339 format)
@@ -54,14 +55,14 @@ class GetServiceDeployment {
 
   factory GetServiceDeployment.fromMap(Map<String, dynamic> map) {
     return GetServiceDeployment(
-      createdAt: map['createdAt'] as String,
-      desiredCount: map['desiredCount'] as int,
-      id: map['id'] as String,
-      pendingCount: map['pendingCount'] as int,
-      runningCount: map['runningCount'] as int,
-      status: map['status'] as String,
-      taskDefinition: map['taskDefinition'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      desiredCount: (map['desiredCount'] as int).input(),
+      id: (map['id'] as String).input(),
+      pendingCount: (map['pendingCount'] as int).input(),
+      runningCount: (map['runningCount'] as int).input(),
+      status: (map['status'] as String).input(),
+      taskDefinition: (map['taskDefinition'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
     );
   }
 }

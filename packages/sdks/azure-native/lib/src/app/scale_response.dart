@@ -6,15 +6,15 @@ import 'scale_rule_response.dart';
 /// Container App scaling configurations.
 class ScaleResponse {
   /// Optional. KEDA Cooldown Period. Defaults to 300 seconds if not set.
-  final int? cooldownPeriod;
+  final pulumi.Input<int>? cooldownPeriod;
   /// Optional. Maximum number of container replicas. Defaults to 10 if not set.
-  final int? maxReplicas;
+  final pulumi.Input<int>? maxReplicas;
   /// Optional. Minimum number of container replicas.
-  final int? minReplicas;
+  final pulumi.Input<int>? minReplicas;
   /// Optional. KEDA Polling Interval. Defaults to 30 seconds if not set.
-  final int? pollingInterval;
+  final pulumi.Input<int>? pollingInterval;
   /// Scaling rules.
-  final List<ScaleRuleResponse>? rules;
+  final pulumi.Input<List<ScaleRuleResponse>>? rules;
 
   /// Creates a new [ScaleResponse].
   /// [cooldownPeriod] Optional. KEDA Cooldown Period. Defaults to 300 seconds if not set.
@@ -36,17 +36,17 @@ class ScaleResponse {
       'maxReplicas': ?maxReplicas,
       'minReplicas': ?minReplicas,
       'pollingInterval': ?pollingInterval,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<ScaleRuleResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ScaleRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ScaleRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScaleResponse.fromMap(Map<String, dynamic> map) {
     return ScaleResponse(
-      cooldownPeriod: map['cooldownPeriod'] == null ? null : map['cooldownPeriod'] as int,
-      maxReplicas: map['maxReplicas'] == null ? null : map['maxReplicas'] as int,
-      minReplicas: map['minReplicas'] == null ? null : map['minReplicas'] as int,
-      pollingInterval: map['pollingInterval'] == null ? null : map['pollingInterval'] as int,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<ScaleRuleResponse>(map['rules'], (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod'] as int).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
+      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval'] as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ScaleRuleResponse>(map['rules'], (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

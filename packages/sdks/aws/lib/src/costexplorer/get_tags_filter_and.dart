@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_tags_filter_and_cost_category.dart';
 import 'get_tags_filter_and_dimension.dart';
 import 'get_tags_filter_and_tags.dart';
 
 class GetTagsFilterAnd {
   /// Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
-  final GetTagsFilterAndCostCategory? costCategory;
+  final pulumi.Input<GetTagsFilterAndCostCategory>? costCategory;
   /// Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
-  final GetTagsFilterAndDimension? dimension;
+  final pulumi.Input<GetTagsFilterAndDimension>? dimension;
   /// Tags that match your request.
-  final GetTagsFilterAndTags? tags;
+  final pulumi.Input<GetTagsFilterAndTags>? tags;
 
   /// Creates a new [GetTagsFilterAnd].
   /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
@@ -24,17 +25,17 @@ class GetTagsFilterAnd {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costCategory': ?costCategory == null ? null : costCategory!.toMap(),
-      'dimension': ?dimension == null ? null : dimension!.toMap(),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'costCategory': ?pulumi.Input.mapOptionalInputValue<GetTagsFilterAndCostCategory, Map<String, dynamic>>(costCategory, (value) => value.toMap()),
+      'dimension': ?pulumi.Input.mapOptionalInputValue<GetTagsFilterAndDimension, Map<String, dynamic>>(dimension, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<GetTagsFilterAndTags, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory GetTagsFilterAnd.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterAnd(
-      costCategory: map['costCategory'] == null ? null : GetTagsFilterAndCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>()),
-      dimension: map['dimension'] == null ? null : GetTagsFilterAndDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : GetTagsFilterAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      costCategory: map['costCategory'] == null ? null : (GetTagsFilterAndCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
+      dimension: map['dimension'] == null ? null : (GetTagsFilterAndDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (GetTagsFilterAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

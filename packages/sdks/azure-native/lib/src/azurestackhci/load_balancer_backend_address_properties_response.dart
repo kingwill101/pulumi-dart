@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ipconfiguration_arm_reference_response.dart';
 import 'logical_network_arm_reference_response.dart';
 import 'virtual_network_arm_reference_response.dart';
@@ -8,17 +9,17 @@ import 'virtual_network_subnet_arm_reference_response.dart';
 /// LoadBalancer Backend Address properties
 class LoadBalancerBackendAddressPropertiesResponse {
   /// admin state - if set to false, the address is removed from the pool
-  final String? adminState;
+  final pulumi.Input<String>? adminState;
   /// IP address of the backend target. Populated automatically from the referenced IP configuration.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Reference to the logical network containing this backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with subnet and virtualNetwork.
-  final LogicalNetworkArmReferenceResponse logicalNetwork;
+  final pulumi.Input<LogicalNetworkArmReferenceResponse> logicalNetwork;
   /// Nic Based backend-ip association
-  final IPConfigurationArmReferenceResponse? networkInterfaceIPConfiguration;
+  final pulumi.Input<IPConfigurationArmReferenceResponse>? networkInterfaceIPConfiguration;
   /// Reference to the subnet containing the backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with logicalNetwork.
-  final VirtualNetworkSubnetArmReferenceResponse subnet;
+  final pulumi.Input<VirtualNetworkSubnetArmReferenceResponse> subnet;
   /// Reference to the virtual network containing the backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with logicalNetwork.
-  final VirtualNetworkArmReferenceResponse virtualNetwork;
+  final pulumi.Input<VirtualNetworkArmReferenceResponse> virtualNetwork;
 
   /// Creates a new [LoadBalancerBackendAddressPropertiesResponse].
   /// [adminState] admin state - if set to false, the address is removed from the pool
@@ -40,21 +41,21 @@ class LoadBalancerBackendAddressPropertiesResponse {
     return <String, dynamic>{
       'adminState': ?adminState,
       'ipAddress': ipAddress,
-      'logicalNetwork': logicalNetwork.toMap(),
-      'networkInterfaceIPConfiguration': ?networkInterfaceIPConfiguration == null ? null : networkInterfaceIPConfiguration!.toMap(),
-      'subnet': subnet.toMap(),
-      'virtualNetwork': virtualNetwork.toMap(),
+      'logicalNetwork': pulumi.Input.mapInputValue<LogicalNetworkArmReferenceResponse, Map<String, dynamic>>(logicalNetwork, (value) => value.toMap()),
+      'networkInterfaceIPConfiguration': ?pulumi.Input.mapOptionalInputValue<IPConfigurationArmReferenceResponse, Map<String, dynamic>>(networkInterfaceIPConfiguration, (value) => value.toMap()),
+      'subnet': pulumi.Input.mapInputValue<VirtualNetworkSubnetArmReferenceResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'virtualNetwork': pulumi.Input.mapInputValue<VirtualNetworkArmReferenceResponse, Map<String, dynamic>>(virtualNetwork, (value) => value.toMap()),
     };
   }
 
   factory LoadBalancerBackendAddressPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPropertiesResponse(
-      adminState: map['adminState'] == null ? null : map['adminState'] as String,
-      ipAddress: map['ipAddress'] as String,
-      logicalNetwork: LogicalNetworkArmReferenceResponse.fromMap((map['logicalNetwork'] as Map).cast<String, dynamic>()),
-      networkInterfaceIPConfiguration: map['networkInterfaceIPConfiguration'] == null ? null : IPConfigurationArmReferenceResponse.fromMap((map['networkInterfaceIPConfiguration'] as Map).cast<String, dynamic>()),
-      subnet: VirtualNetworkSubnetArmReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      virtualNetwork: VirtualNetworkArmReferenceResponse.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>()),
+      adminState: map['adminState'] == null ? null : (map['adminState'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      logicalNetwork: (LogicalNetworkArmReferenceResponse.fromMap((map['logicalNetwork'] as Map).cast<String, dynamic>())).input(),
+      networkInterfaceIPConfiguration: map['networkInterfaceIPConfiguration'] == null ? null : (IPConfigurationArmReferenceResponse.fromMap((map['networkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      subnet: (VirtualNetworkSubnetArmReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      virtualNetwork: (VirtualNetworkArmReferenceResponse.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

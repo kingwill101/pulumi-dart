@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Labeling MLAssist configuration definition when MLAssist is disabled
 class MLAssistConfigurationDisabledResponse {
   /// Expected value is 'Disabled'.
-  final String mlAssist;
+  final pulumi.Input<String> mlAssist;
 
   /// Creates a new [MLAssistConfigurationDisabledResponse].
   /// [mlAssist] Expected value is 'Disabled'.
@@ -20,7 +21,7 @@ class MLAssistConfigurationDisabledResponse {
 
   factory MLAssistConfigurationDisabledResponse.fromMap(Map<String, dynamic> map) {
     return MLAssistConfigurationDisabledResponse(
-      mlAssist: map['mlAssist'] as String,
+      mlAssist: (map['mlAssist'] as String).input(),
     );
   }
 }

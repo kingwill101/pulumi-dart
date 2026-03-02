@@ -36,17 +36,12 @@ class GenericServiceArgs {
   /// [serviceId] An optional service ID to use. If not given, the server will generate a
   /// [userLabels] Labels which have been used to annotate the service. Label keys must start
   GenericServiceArgs({
-    pulumi.Output<GenericServiceBasicService>? basicService,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-    pulumi.Output<Map<String, String>>? userLabels,
-  }) :
-      basicService = pulumi.Input.asOptionalInput<GenericServiceBasicService>(basicService),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
+    this.basicService,
+    this.displayName,
+    this.project,
+    required this.serviceId,
+    this.userLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,11 +55,11 @@ class GenericServiceArgs {
 
   factory GenericServiceArgs.fromMap(Map<String, dynamic> map) {
     return GenericServiceArgs(
-      basicService: map['basicService'] == null ? null : pulumi.Output.create<GenericServiceBasicService>(GenericServiceBasicService.fromMap((map['basicService'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
+      basicService: map['basicService'] == null ? null : (GenericServiceBasicService.fromMap((map['basicService'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

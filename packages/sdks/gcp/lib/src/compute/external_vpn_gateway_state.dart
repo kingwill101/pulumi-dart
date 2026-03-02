@@ -51,27 +51,17 @@ class ExternalVpnGatewayState {
   /// [redundancyType] Indicates the redundancy type of this external VPN gateway
   /// [selfLink] The URI of the created resource.
   ExternalVpnGatewayState({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<List<ExternalVpnGatewayInterface>>? interfaces,
-    pulumi.Output<String>? labelFingerprint,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? redundancyType,
-    pulumi.Output<String>? selfLink,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      interfaces = pulumi.Input.asOptionalInput<List<ExternalVpnGatewayInterface>>(interfaces),
-      labelFingerprint = pulumi.Input.asOptionalInput<String>(labelFingerprint),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      redundancyType = pulumi.Input.asOptionalInput<String>(redundancyType),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.description,
+    this.effectiveLabels,
+    this.interfaces,
+    this.labelFingerprint,
+    this.labels,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.redundancyType,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,16 +80,16 @@ class ExternalVpnGatewayState {
 
   factory ExternalVpnGatewayState.fromMap(Map<String, dynamic> map) {
     return ExternalVpnGatewayState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      interfaces: map['interfaces'] == null ? null : pulumi.Output.create<List<ExternalVpnGatewayInterface>>(pulumi.Input.decodeList<ExternalVpnGatewayInterface>(map['interfaces'], (value) => ExternalVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>()))),
-      labelFingerprint: map['labelFingerprint'] == null ? null : pulumi.Output.create<String>(map['labelFingerprint'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      redundancyType: map['redundancyType'] == null ? null : pulumi.Output.create<String>(map['redundancyType'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<ExternalVpnGatewayInterface>(map['interfaces'], (value) => ExternalVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labelFingerprint: map['labelFingerprint'] == null ? null : (map['labelFingerprint'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      redundancyType: map['redundancyType'] == null ? null : (map['redundancyType'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

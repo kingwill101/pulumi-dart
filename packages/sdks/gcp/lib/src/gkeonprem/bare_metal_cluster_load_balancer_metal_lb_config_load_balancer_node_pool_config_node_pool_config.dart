@@ -15,15 +15,15 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
   /// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
   /// An object containing a list of "key": value pairs.
   /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// The list of machine addresses in the Bare Metal Node Pool.
   /// Structure is documented below.
-  final List<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>? nodeConfigs;
+  final pulumi.Input<List<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>>? nodeConfigs;
   /// Specifies the nodes operating system (default: LINUX).
-  final String? operatingSystem;
+  final pulumi.Input<String>? operatingSystem;
   /// The initial taints assigned to nodes of this node pool.
   /// Structure is documented below.
-  final List<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>? taints;
+  final pulumi.Input<List<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>>? taints;
 
   /// Creates a new [BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig].
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to
@@ -40,18 +40,18 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'labels': ?labels,
-      'nodeConfigs': ?nodeConfigs == null ? null : pulumi.Input.encodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig, Map<String, dynamic>>(nodeConfigs!, (value) => value.toMap()),
+      'nodeConfigs': ?pulumi.Input.mapOptionalInputValue<List<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>, List<Map<String, dynamic>>>(nodeConfigs, (value) => pulumi.Input.encodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'operatingSystem': ?operatingSystem,
-      'taints': ?taints == null ? null : pulumi.Input.encodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint, Map<String, dynamic>>(taints!, (value) => value.toMap()),
+      'taints': ?pulumi.Input.mapOptionalInputValue<List<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig(
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      nodeConfigs: map['nodeConfigs'] == null ? null : pulumi.Input.decodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs'], (value) => BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      operatingSystem: map['operatingSystem'] == null ? null : map['operatingSystem'] as String,
-      taints: map['taints'] == null ? null : pulumi.Input.decodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>(map['taints'], (value) => BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>())),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs'], (value) => BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>(map['taints'], (value) => BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

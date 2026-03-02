@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MongoCollectionSystemIndex {
   /// The list of system keys which are not settable for each Cosmos DB Mongo Collection.
-  final List<String>? keys;
+  final pulumi.Input<List<String>>? keys;
   /// Identifies whether the table contains no duplicate values.
-  final bool? unique;
+  final pulumi.Input<bool>? unique;
 
   /// Creates a new [MongoCollectionSystemIndex].
   /// [keys] The list of system keys which are not settable for each Cosmos DB Mongo Collection.
@@ -24,8 +25,8 @@ class MongoCollectionSystemIndex {
 
   factory MongoCollectionSystemIndex.fromMap(Map<String, dynamic> map) {
     return MongoCollectionSystemIndex(
-      keys: map['keys'] == null ? null : (map['keys'] as List).cast<String>(),
-      unique: map['unique'] == null ? null : map['unique'] as bool,
+      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      unique: map['unique'] == null ? null : (map['unique'] as bool).input(),
     );
   }
 }

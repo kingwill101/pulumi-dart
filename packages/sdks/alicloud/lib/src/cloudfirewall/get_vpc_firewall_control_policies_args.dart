@@ -54,35 +54,21 @@ class GetVpcFirewallControlPoliciesArgs {
   /// [source] Access control over VPC firewalls strategy in the source address.
   /// [vpcFirewallId] The ID of the VPC firewall instance. Value:
   GetVpcFirewallControlPoliciesArgs({
-    pulumi.Output<String>? aclAction,
-    pulumi.Output<String>? aclUuid,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destination,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? proto,
-    pulumi.Output<bool>? release,
-    pulumi.Output<String>? source,
-    required pulumi.Output<String> vpcFirewallId,
-  }) :
-      aclAction = pulumi.Input.asOptionalInput<String>(aclAction),
-      aclUuid = pulumi.Input.asOptionalInput<String>(aclUuid),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      proto = pulumi.Input.asOptionalInput<String>(proto),
-      release = pulumi.Input.asOptionalInput<bool>(release),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      vpcFirewallId = pulumi.Input.asInput<String>(vpcFirewallId);
+    this.aclAction,
+    this.aclUuid,
+    this.description,
+    this.destination,
+    this.ids,
+    this.lang,
+    this.memberUid,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.proto,
+    this.release,
+    this.source,
+    required this.vpcFirewallId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class GetVpcFirewallControlPoliciesArgs {
 
   factory GetVpcFirewallControlPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallControlPoliciesArgs(
-      aclAction: map['aclAction'] == null ? null : pulumi.Output.create<String>(map['aclAction'] as String),
-      aclUuid: map['aclUuid'] == null ? null : pulumi.Output.create<String>(map['aclUuid'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      proto: map['proto'] == null ? null : pulumi.Output.create<String>(map['proto'] as String),
-      release: map['release'] == null ? null : pulumi.Output.create<bool>(map['release'] as bool),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      vpcFirewallId: pulumi.Output.create<String>(map['vpcFirewallId'] as String),
+      aclAction: map['aclAction'] == null ? null : (map['aclAction'] as String).input(),
+      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      proto: map['proto'] == null ? null : (map['proto'] as String).input(),
+      release: map['release'] == null ? null : (map['release'] as bool).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      vpcFirewallId: (map['vpcFirewallId'] as String).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'bucket_object_contexts_custom.dart';
 
 class BucketObjectContexts {
   /// A list of custom context key-value pairs.
-  final List<BucketObjectContextsCustom> customs;
+  final pulumi.Input<List<BucketObjectContextsCustom>> customs;
 
   /// Creates a new [BucketObjectContexts].
   /// [customs] A list of custom context key-value pairs.
@@ -15,13 +15,13 @@ class BucketObjectContexts {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customs': pulumi.Input.encodeList<BucketObjectContextsCustom, Map<String, dynamic>>(customs, (value) => value.toMap()),
+      'customs': pulumi.Input.mapInputValue<List<BucketObjectContextsCustom>, List<Map<String, dynamic>>>(customs, (value) => pulumi.Input.encodeList<BucketObjectContextsCustom, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BucketObjectContexts.fromMap(Map<String, dynamic> map) {
     return BucketObjectContexts(
-      customs: pulumi.Input.decodeList<BucketObjectContextsCustom>(map['customs'], (value) => BucketObjectContextsCustom.fromMap((value as Map).cast<String, dynamic>())),
+      customs: (pulumi.Input.decodeList<BucketObjectContextsCustom>(map['customs'], (value) => BucketObjectContextsCustom.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

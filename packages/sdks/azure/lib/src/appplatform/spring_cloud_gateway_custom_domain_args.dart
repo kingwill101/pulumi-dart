@@ -19,13 +19,10 @@ class SpringCloudGatewayCustomDomainArgs {
   /// [springCloudGatewayId] The ID of the Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway Custom Domain to be created.
   /// [thumbprint] Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Gateway Custom Domain.
   SpringCloudGatewayCustomDomainArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> springCloudGatewayId,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudGatewayId = pulumi.Input.asInput<String>(springCloudGatewayId),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.name,
+    required this.springCloudGatewayId,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SpringCloudGatewayCustomDomainArgs {
 
   factory SpringCloudGatewayCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayCustomDomainArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudGatewayId: pulumi.Output.create<String>(map['springCloudGatewayId'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudGatewayId: (map['springCloudGatewayId'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

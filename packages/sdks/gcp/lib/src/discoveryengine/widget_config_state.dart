@@ -50,27 +50,17 @@ class WidgetConfigState {
   /// [uiSettings] Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
   /// [widgetConfigId] The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
   WidgetConfigState({
-    pulumi.Output<WidgetConfigAccessSettings>? accessSettings,
-    pulumi.Output<String>? collectionId,
-    pulumi.Output<String>? engineId,
-    pulumi.Output<WidgetConfigHomepageSetting>? homepageSetting,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<WidgetConfigUiBranding>? uiBranding,
-    pulumi.Output<WidgetConfigUiSettings>? uiSettings,
-    pulumi.Output<String>? widgetConfigId,
-  }) :
-      accessSettings = pulumi.Input.asOptionalInput<WidgetConfigAccessSettings>(accessSettings),
-      collectionId = pulumi.Input.asOptionalInput<String>(collectionId),
-      engineId = pulumi.Input.asOptionalInput<String>(engineId),
-      homepageSetting = pulumi.Input.asOptionalInput<WidgetConfigHomepageSetting>(homepageSetting),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      uiBranding = pulumi.Input.asOptionalInput<WidgetConfigUiBranding>(uiBranding),
-      uiSettings = pulumi.Input.asOptionalInput<WidgetConfigUiSettings>(uiSettings),
-      widgetConfigId = pulumi.Input.asOptionalInput<String>(widgetConfigId);
+    this.accessSettings,
+    this.collectionId,
+    this.engineId,
+    this.homepageSetting,
+    this.location,
+    this.name,
+    this.project,
+    this.uiBranding,
+    this.uiSettings,
+    this.widgetConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,16 +79,16 @@ class WidgetConfigState {
 
   factory WidgetConfigState.fromMap(Map<String, dynamic> map) {
     return WidgetConfigState(
-      accessSettings: map['accessSettings'] == null ? null : pulumi.Output.create<WidgetConfigAccessSettings>(WidgetConfigAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())),
-      collectionId: map['collectionId'] == null ? null : pulumi.Output.create<String>(map['collectionId'] as String),
-      engineId: map['engineId'] == null ? null : pulumi.Output.create<String>(map['engineId'] as String),
-      homepageSetting: map['homepageSetting'] == null ? null : pulumi.Output.create<WidgetConfigHomepageSetting>(WidgetConfigHomepageSetting.fromMap((map['homepageSetting'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      uiBranding: map['uiBranding'] == null ? null : pulumi.Output.create<WidgetConfigUiBranding>(WidgetConfigUiBranding.fromMap((map['uiBranding'] as Map).cast<String, dynamic>())),
-      uiSettings: map['uiSettings'] == null ? null : pulumi.Output.create<WidgetConfigUiSettings>(WidgetConfigUiSettings.fromMap((map['uiSettings'] as Map).cast<String, dynamic>())),
-      widgetConfigId: map['widgetConfigId'] == null ? null : pulumi.Output.create<String>(map['widgetConfigId'] as String),
+      accessSettings: map['accessSettings'] == null ? null : (WidgetConfigAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
+      homepageSetting: map['homepageSetting'] == null ? null : (WidgetConfigHomepageSetting.fromMap((map['homepageSetting'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      uiBranding: map['uiBranding'] == null ? null : (WidgetConfigUiBranding.fromMap((map['uiBranding'] as Map).cast<String, dynamic>())).input(),
+      uiSettings: map['uiSettings'] == null ? null : (WidgetConfigUiSettings.fromMap((map['uiSettings'] as Map).cast<String, dynamic>())).input(),
+      widgetConfigId: map['widgetConfigId'] == null ? null : (map['widgetConfigId'] as String).input(),
     );
   }
 }

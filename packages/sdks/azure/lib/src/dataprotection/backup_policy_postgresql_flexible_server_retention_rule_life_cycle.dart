@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupPolicyPostgresqlFlexibleServerRetentionRuleLifeCycle {
   /// The type of data store. The only possible value is `VaultStore`. Changing this forces a new resource to be created.
-  final String dataStoreType;
+  final pulumi.Input<String> dataStoreType;
   /// The retention duration up to which the backups are to be retained in the data stores. It should follow `ISO 8601` duration format. Changing this forces a new resource to be created.
-  final String duration;
+  final pulumi.Input<String> duration;
 
   /// Creates a new [BackupPolicyPostgresqlFlexibleServerRetentionRuleLifeCycle].
   /// [dataStoreType] The type of data store. The only possible value is `VaultStore`. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class BackupPolicyPostgresqlFlexibleServerRetentionRuleLifeCycle {
 
   factory BackupPolicyPostgresqlFlexibleServerRetentionRuleLifeCycle.fromMap(Map<String, dynamic> map) {
     return BackupPolicyPostgresqlFlexibleServerRetentionRuleLifeCycle(
-      dataStoreType: map['dataStoreType'] as String,
-      duration: map['duration'] as String,
+      dataStoreType: (map['dataStoreType'] as String).input(),
+      duration: (map['duration'] as String).input(),
     );
   }
 }

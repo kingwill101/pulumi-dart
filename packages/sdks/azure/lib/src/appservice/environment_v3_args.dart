@@ -49,27 +49,17 @@ class EnvironmentV3Args {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundant] Set to `true` to deploy the ASEv3 with availability zones supported. Zonal ASEs can be deployed in some regions, you can refer to [Availability Zone support for App Service Environments](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy). You can only set either `dedicated_host_count` or `zone_redundant` but not both. Changing this forces a new resource to be created.
   EnvironmentV3Args({
-    pulumi.Output<bool>? allowNewPrivateEndpointConnections,
-    pulumi.Output<List<EnvironmentV3ClusterSetting>>? clusterSettings,
-    pulumi.Output<int>? dedicatedHostCount,
-    pulumi.Output<String>? internalLoadBalancingMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? remoteDebuggingEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? zoneRedundant,
-  }) :
-      allowNewPrivateEndpointConnections = pulumi.Input.asOptionalInput<bool>(allowNewPrivateEndpointConnections),
-      clusterSettings = pulumi.Input.asOptionalInput<List<EnvironmentV3ClusterSetting>>(clusterSettings),
-      dedicatedHostCount = pulumi.Input.asOptionalInput<int>(dedicatedHostCount),
-      internalLoadBalancingMode = pulumi.Input.asOptionalInput<String>(internalLoadBalancingMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      remoteDebuggingEnabled = pulumi.Input.asOptionalInput<bool>(remoteDebuggingEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundant = pulumi.Input.asOptionalInput<bool>(zoneRedundant);
+    this.allowNewPrivateEndpointConnections,
+    this.clusterSettings,
+    this.dedicatedHostCount,
+    this.internalLoadBalancingMode,
+    this.name,
+    this.remoteDebuggingEnabled,
+    required this.resourceGroupName,
+    required this.subnetId,
+    this.tags,
+    this.zoneRedundant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,16 +78,16 @@ class EnvironmentV3Args {
 
   factory EnvironmentV3Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentV3Args(
-      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : pulumi.Output.create<bool>(map['allowNewPrivateEndpointConnections'] as bool),
-      clusterSettings: map['clusterSettings'] == null ? null : pulumi.Output.create<List<EnvironmentV3ClusterSetting>>(pulumi.Input.decodeList<EnvironmentV3ClusterSetting>(map['clusterSettings'], (value) => EnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      dedicatedHostCount: map['dedicatedHostCount'] == null ? null : pulumi.Output.create<int>(map['dedicatedHostCount'] as int),
-      internalLoadBalancingMode: map['internalLoadBalancingMode'] == null ? null : pulumi.Output.create<String>(map['internalLoadBalancingMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      remoteDebuggingEnabled: map['remoteDebuggingEnabled'] == null ? null : pulumi.Output.create<bool>(map['remoteDebuggingEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundant: map['zoneRedundant'] == null ? null : pulumi.Output.create<bool>(map['zoneRedundant'] as bool),
+      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections'] as bool).input(),
+      clusterSettings: map['clusterSettings'] == null ? null : (pulumi.Input.decodeList<EnvironmentV3ClusterSetting>(map['clusterSettings'], (value) => EnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dedicatedHostCount: map['dedicatedHostCount'] == null ? null : (map['dedicatedHostCount'] as int).input(),
+      internalLoadBalancingMode: map['internalLoadBalancingMode'] == null ? null : (map['internalLoadBalancingMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      remoteDebuggingEnabled: map['remoteDebuggingEnabled'] == null ? null : (map['remoteDebuggingEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed resource group configuration
 class ManagedResourceGroupConfiguration {
   /// Managed resource group name
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ManagedResourceGroupConfiguration].
   /// [name] Managed resource group name
@@ -20,7 +21,7 @@ class ManagedResourceGroupConfiguration {
 
   factory ManagedResourceGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return ManagedResourceGroupConfiguration(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

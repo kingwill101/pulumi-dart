@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Open Container Initiative (OCI) artifact.
 class ServiceOciArtifactEntry {
   /// The artifact digest.
-  final String? digest;
+  final pulumi.Input<String>? digest;
   /// The artifact name.
-  final String? imageName;
+  final pulumi.Input<String>? imageName;
   /// The Azure Container Registry login server.
-  final String? loginServer;
+  final pulumi.Input<String>? loginServer;
 
   /// Creates a new [ServiceOciArtifactEntry].
   /// [digest] The artifact digest.
@@ -30,9 +31,9 @@ class ServiceOciArtifactEntry {
 
   factory ServiceOciArtifactEntry.fromMap(Map<String, dynamic> map) {
     return ServiceOciArtifactEntry(
-      digest: map['digest'] == null ? null : map['digest'] as String,
-      imageName: map['imageName'] == null ? null : map['imageName'] as String,
-      loginServer: map['loginServer'] == null ? null : map['loginServer'] as String,
+      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      loginServer: map['loginServer'] == null ? null : (map['loginServer'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'helm_install_options.dart';
 import 'helm_upgrade_options.dart';
 
 /// The helm deployment options
 class HelmMappingRuleProfileOptions {
   /// The helm deployment install options
-  final HelmInstallOptions? installOptions;
+  final pulumi.Input<HelmInstallOptions>? installOptions;
   /// The helm deployment upgrade options
-  final HelmUpgradeOptions? upgradeOptions;
+  final pulumi.Input<HelmUpgradeOptions>? upgradeOptions;
 
   /// Creates a new [HelmMappingRuleProfileOptions].
   /// [installOptions] The helm deployment install options
@@ -20,15 +21,15 @@ class HelmMappingRuleProfileOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'installOptions': ?installOptions == null ? null : installOptions!.toMap(),
-      'upgradeOptions': ?upgradeOptions == null ? null : upgradeOptions!.toMap(),
+      'installOptions': ?pulumi.Input.mapOptionalInputValue<HelmInstallOptions, Map<String, dynamic>>(installOptions, (value) => value.toMap()),
+      'upgradeOptions': ?pulumi.Input.mapOptionalInputValue<HelmUpgradeOptions, Map<String, dynamic>>(upgradeOptions, (value) => value.toMap()),
     };
   }
 
   factory HelmMappingRuleProfileOptions.fromMap(Map<String, dynamic> map) {
     return HelmMappingRuleProfileOptions(
-      installOptions: map['installOptions'] == null ? null : HelmInstallOptions.fromMap((map['installOptions'] as Map).cast<String, dynamic>()),
-      upgradeOptions: map['upgradeOptions'] == null ? null : HelmUpgradeOptions.fromMap((map['upgradeOptions'] as Map).cast<String, dynamic>()),
+      installOptions: map['installOptions'] == null ? null : (HelmInstallOptions.fromMap((map['installOptions'] as Map).cast<String, dynamic>())).input(),
+      upgradeOptions: map['upgradeOptions'] == null ? null : (HelmUpgradeOptions.fromMap((map['upgradeOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

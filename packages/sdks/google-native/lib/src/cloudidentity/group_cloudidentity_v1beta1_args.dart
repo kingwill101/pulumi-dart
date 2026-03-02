@@ -37,23 +37,15 @@ class GroupCloudidentityV1beta1Args {
   /// [parent] Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793)
   /// [posixGroups] Optional. The POSIX groups associated with the `Group`.
   GroupCloudidentityV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<DynamicGroupMetadataCloudidentityV1beta1>? dynamicGroupMetadata,
-    required pulumi.Output<EntityKeyCloudidentityV1beta1> groupKey,
-    required pulumi.Output<String> initialGroupConfig,
-    required pulumi.Output<Map<String, String>> labels,
-    required pulumi.Output<String> parent,
-    pulumi.Output<List<PosixGroup>>? posixGroups,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      dynamicGroupMetadata = pulumi.Input.asOptionalInput<DynamicGroupMetadataCloudidentityV1beta1>(dynamicGroupMetadata),
-      groupKey = pulumi.Input.asInput<EntityKeyCloudidentityV1beta1>(groupKey),
-      initialGroupConfig = pulumi.Input.asInput<String>(initialGroupConfig),
-      labels = pulumi.Input.asInput<Map<String, String>>(labels),
-      parent = pulumi.Input.asInput<String>(parent),
-      posixGroups = pulumi.Input.asOptionalInput<List<PosixGroup>>(posixGroups);
+    this.description,
+    this.displayName,
+    this.dynamicGroupMetadata,
+    required this.groupKey,
+    required this.initialGroupConfig,
+    required this.labels,
+    required this.parent,
+    this.posixGroups,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class GroupCloudidentityV1beta1Args {
 
   factory GroupCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GroupCloudidentityV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      dynamicGroupMetadata: map['dynamicGroupMetadata'] == null ? null : pulumi.Output.create<DynamicGroupMetadataCloudidentityV1beta1>(DynamicGroupMetadataCloudidentityV1beta1.fromMap((map['dynamicGroupMetadata'] as Map).cast<String, dynamic>())),
-      groupKey: pulumi.Output.create<EntityKeyCloudidentityV1beta1>(EntityKeyCloudidentityV1beta1.fromMap((map['groupKey'] as Map).cast<String, dynamic>())),
-      initialGroupConfig: pulumi.Output.create<String>(map['initialGroupConfig'] as String),
-      labels: pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      posixGroups: map['posixGroups'] == null ? null : pulumi.Output.create<List<PosixGroup>>(pulumi.Input.decodeList<PosixGroup>(map['posixGroups'], (value) => PosixGroup.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      dynamicGroupMetadata: map['dynamicGroupMetadata'] == null ? null : (DynamicGroupMetadataCloudidentityV1beta1.fromMap((map['dynamicGroupMetadata'] as Map).cast<String, dynamic>())).input(),
+      groupKey: (EntityKeyCloudidentityV1beta1.fromMap((map['groupKey'] as Map).cast<String, dynamic>())).input(),
+      initialGroupConfig: (map['initialGroupConfig'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      parent: (map['parent'] as String).input(),
+      posixGroups: map['posixGroups'] == null ? null : (pulumi.Input.decodeList<PosixGroup>(map['posixGroups'], (value) => PosixGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

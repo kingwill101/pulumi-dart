@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Account key object for connection credential.
 class ConnectionAccountKey {
-  final String? key;
+  final pulumi.Input<String>? key;
 
   /// Creates a new [ConnectionAccountKey].
   /// [key] Optional.
@@ -19,7 +20,7 @@ class ConnectionAccountKey {
 
   factory ConnectionAccountKey.fromMap(Map<String, dynamic> map) {
     return ConnectionAccountKey(
-      key: map['key'] == null ? null : map['key'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
     );
   }
 }

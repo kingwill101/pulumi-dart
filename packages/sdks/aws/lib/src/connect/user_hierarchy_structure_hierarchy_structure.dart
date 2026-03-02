@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_hierarchy_structure_hierarchy_structure_level_five.dart';
 import 'user_hierarchy_structure_hierarchy_structure_level_four.dart';
 import 'user_hierarchy_structure_hierarchy_structure_level_one.dart';
@@ -10,15 +11,15 @@ class UserHierarchyStructureHierarchyStructure {
   /// A block that defines the details of level five. The level block is documented below.
   ///
   /// Each level block supports the following arguments:
-  final UserHierarchyStructureHierarchyStructureLevelFive? levelFive;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelFive>? levelFive;
   /// A block that defines the details of level four. The level block is documented below.
-  final UserHierarchyStructureHierarchyStructureLevelFour? levelFour;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelFour>? levelFour;
   /// A block that defines the details of level one. The level block is documented below.
-  final UserHierarchyStructureHierarchyStructureLevelOne? levelOne;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelOne>? levelOne;
   /// A block that defines the details of level three. The level block is documented below.
-  final UserHierarchyStructureHierarchyStructureLevelThree? levelThree;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelThree>? levelThree;
   /// A block that defines the details of level two. The level block is documented below.
-  final UserHierarchyStructureHierarchyStructureLevelTwo? levelTwo;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelTwo>? levelTwo;
 
   /// Creates a new [UserHierarchyStructureHierarchyStructure].
   /// [levelFive] A block that defines the details of level five. The level block is documented below.
@@ -36,21 +37,21 @@ class UserHierarchyStructureHierarchyStructure {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'levelFive': ?levelFive == null ? null : levelFive!.toMap(),
-      'levelFour': ?levelFour == null ? null : levelFour!.toMap(),
-      'levelOne': ?levelOne == null ? null : levelOne!.toMap(),
-      'levelThree': ?levelThree == null ? null : levelThree!.toMap(),
-      'levelTwo': ?levelTwo == null ? null : levelTwo!.toMap(),
+      'levelFive': ?pulumi.Input.mapOptionalInputValue<UserHierarchyStructureHierarchyStructureLevelFive, Map<String, dynamic>>(levelFive, (value) => value.toMap()),
+      'levelFour': ?pulumi.Input.mapOptionalInputValue<UserHierarchyStructureHierarchyStructureLevelFour, Map<String, dynamic>>(levelFour, (value) => value.toMap()),
+      'levelOne': ?pulumi.Input.mapOptionalInputValue<UserHierarchyStructureHierarchyStructureLevelOne, Map<String, dynamic>>(levelOne, (value) => value.toMap()),
+      'levelThree': ?pulumi.Input.mapOptionalInputValue<UserHierarchyStructureHierarchyStructureLevelThree, Map<String, dynamic>>(levelThree, (value) => value.toMap()),
+      'levelTwo': ?pulumi.Input.mapOptionalInputValue<UserHierarchyStructureHierarchyStructureLevelTwo, Map<String, dynamic>>(levelTwo, (value) => value.toMap()),
     };
   }
 
   factory UserHierarchyStructureHierarchyStructure.fromMap(Map<String, dynamic> map) {
     return UserHierarchyStructureHierarchyStructure(
-      levelFive: map['levelFive'] == null ? null : UserHierarchyStructureHierarchyStructureLevelFive.fromMap((map['levelFive'] as Map).cast<String, dynamic>()),
-      levelFour: map['levelFour'] == null ? null : UserHierarchyStructureHierarchyStructureLevelFour.fromMap((map['levelFour'] as Map).cast<String, dynamic>()),
-      levelOne: map['levelOne'] == null ? null : UserHierarchyStructureHierarchyStructureLevelOne.fromMap((map['levelOne'] as Map).cast<String, dynamic>()),
-      levelThree: map['levelThree'] == null ? null : UserHierarchyStructureHierarchyStructureLevelThree.fromMap((map['levelThree'] as Map).cast<String, dynamic>()),
-      levelTwo: map['levelTwo'] == null ? null : UserHierarchyStructureHierarchyStructureLevelTwo.fromMap((map['levelTwo'] as Map).cast<String, dynamic>()),
+      levelFive: map['levelFive'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelFive.fromMap((map['levelFive'] as Map).cast<String, dynamic>())).input(),
+      levelFour: map['levelFour'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelFour.fromMap((map['levelFour'] as Map).cast<String, dynamic>())).input(),
+      levelOne: map['levelOne'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelOne.fromMap((map['levelOne'] as Map).cast<String, dynamic>())).input(),
+      levelThree: map['levelThree'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelThree.fromMap((map['levelThree'] as Map).cast<String, dynamic>())).input(),
+      levelTwo: map['levelTwo'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelTwo.fromMap((map['levelTwo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

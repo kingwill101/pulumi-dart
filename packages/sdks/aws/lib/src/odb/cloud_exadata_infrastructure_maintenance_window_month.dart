@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudExadataInfrastructureMaintenanceWindowMonth {
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CloudExadataInfrastructureMaintenanceWindowMonth].
   /// [name] Required.
@@ -18,7 +19,7 @@ class CloudExadataInfrastructureMaintenanceWindowMonth {
 
   factory CloudExadataInfrastructureMaintenanceWindowMonth.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureMaintenanceWindowMonth(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

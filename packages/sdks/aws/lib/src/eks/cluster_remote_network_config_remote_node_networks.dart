@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRemoteNetworkConfigRemoteNodeNetworks {
   /// List of network CIDRs that can contain hybrid nodes.
-  final List<String>? cidrs;
+  final pulumi.Input<List<String>>? cidrs;
 
   /// Creates a new [ClusterRemoteNetworkConfigRemoteNodeNetworks].
   /// [cidrs] List of network CIDRs that can contain hybrid nodes.
@@ -19,7 +20,7 @@ class ClusterRemoteNetworkConfigRemoteNodeNetworks {
 
   factory ClusterRemoteNetworkConfigRemoteNodeNetworks.fromMap(Map<String, dynamic> map) {
     return ClusterRemoteNetworkConfigRemoteNodeNetworks(
-      cidrs: map['cidrs'] == null ? null : (map['cidrs'] as List).cast<String>(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
     );
   }
 }

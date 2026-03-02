@@ -25,17 +25,12 @@ class Smsvoicev2ConfigurationSetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   Smsvoicev2ConfigurationSetArgs({
-    pulumi.Output<String>? defaultMessageType,
-    pulumi.Output<String>? defaultSenderId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultMessageType = pulumi.Input.asOptionalInput<String>(defaultMessageType),
-      defaultSenderId = pulumi.Input.asOptionalInput<String>(defaultSenderId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.defaultMessageType,
+    this.defaultSenderId,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class Smsvoicev2ConfigurationSetArgs {
 
   factory Smsvoicev2ConfigurationSetArgs.fromMap(Map<String, dynamic> map) {
     return Smsvoicev2ConfigurationSetArgs(
-      defaultMessageType: map['defaultMessageType'] == null ? null : pulumi.Output.create<String>(map['defaultMessageType'] as String),
-      defaultSenderId: map['defaultSenderId'] == null ? null : pulumi.Output.create<String>(map['defaultSenderId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultMessageType: map['defaultMessageType'] == null ? null : (map['defaultMessageType'] as String).input(),
+      defaultSenderId: map['defaultSenderId'] == null ? null : (map['defaultSenderId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

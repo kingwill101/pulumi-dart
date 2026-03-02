@@ -26,17 +26,12 @@ class VlanArgs {
   /// [name] Name of the vlan
   /// [tag] Specifies a number that the system adds into the header of any frame passing through the VLAN.
   VlanArgs({
-    pulumi.Output<String>? cmpHash,
-    pulumi.Output<List<VlanInterface>>? interfaces,
-    pulumi.Output<int>? mtu,
-    required pulumi.Output<String> name,
-    pulumi.Output<int>? tag,
-  }) :
-      cmpHash = pulumi.Input.asOptionalInput<String>(cmpHash),
-      interfaces = pulumi.Input.asOptionalInput<List<VlanInterface>>(interfaces),
-      mtu = pulumi.Input.asOptionalInput<int>(mtu),
-      name = pulumi.Input.asInput<String>(name),
-      tag = pulumi.Input.asOptionalInput<int>(tag);
+    this.cmpHash,
+    this.interfaces,
+    this.mtu,
+    required this.name,
+    this.tag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class VlanArgs {
 
   factory VlanArgs.fromMap(Map<String, dynamic> map) {
     return VlanArgs(
-      cmpHash: map['cmpHash'] == null ? null : pulumi.Output.create<String>(map['cmpHash'] as String),
-      interfaces: map['interfaces'] == null ? null : pulumi.Output.create<List<VlanInterface>>(pulumi.Input.decodeList<VlanInterface>(map['interfaces'], (value) => VlanInterface.fromMap((value as Map).cast<String, dynamic>()))),
-      mtu: map['mtu'] == null ? null : pulumi.Output.create<int>(map['mtu'] as int),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<int>(map['tag'] as int),
+      cmpHash: map['cmpHash'] == null ? null : (map['cmpHash'] as String).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<VlanInterface>(map['interfaces'], (value) => VlanInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      name: (map['name'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as int).input(),
     );
   }
 }

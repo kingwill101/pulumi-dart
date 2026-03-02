@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
   /// Required. The header field name
-  final int port;
+  final pulumi.Input<int> port;
   /// Optional. The header field value
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader].
   /// [port] Required. The header field name
@@ -24,8 +25,8 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
 
   factory GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader(
-      port: map['port'] as int,
-      value: map['value'] as String,
+      port: (map['port'] as int).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

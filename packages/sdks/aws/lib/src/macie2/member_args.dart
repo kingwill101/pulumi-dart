@@ -34,23 +34,15 @@ class MemberArgs {
   /// [status] Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   MemberArgs({
-    required pulumi.Output<String> accountId,
-    required pulumi.Output<String> email,
-    pulumi.Output<bool>? invitationDisableEmailNotification,
-    pulumi.Output<String>? invitationMessage,
-    pulumi.Output<bool>? invite,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      email = pulumi.Input.asInput<String>(email),
-      invitationDisableEmailNotification = pulumi.Input.asOptionalInput<bool>(invitationDisableEmailNotification),
-      invitationMessage = pulumi.Input.asOptionalInput<String>(invitationMessage),
-      invite = pulumi.Input.asOptionalInput<bool>(invite),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountId,
+    required this.email,
+    this.invitationDisableEmailNotification,
+    this.invitationMessage,
+    this.invite,
+    this.region,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class MemberArgs {
 
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      invitationDisableEmailNotification: map['invitationDisableEmailNotification'] == null ? null : pulumi.Output.create<bool>(map['invitationDisableEmailNotification'] as bool),
-      invitationMessage: map['invitationMessage'] == null ? null : pulumi.Output.create<String>(map['invitationMessage'] as String),
-      invite: map['invite'] == null ? null : pulumi.Output.create<bool>(map['invite'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: (map['accountId'] as String).input(),
+      email: (map['email'] as String).input(),
+      invitationDisableEmailNotification: map['invitationDisableEmailNotification'] == null ? null : (map['invitationDisableEmailNotification'] as bool).input(),
+      invitationMessage: map['invitationMessage'] == null ? null : (map['invitationMessage'] as String).input(),
+      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

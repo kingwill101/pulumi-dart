@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata of the enrolled Intune app.
 class EnrolledIntuneAppResponse {
   /// Intune app id.
-  final String appId;
+  final pulumi.Input<String> appId;
   /// Intune app name.
-  final String appName;
+  final pulumi.Input<String> appName;
   /// Intune app expected installation path.
-  final String expectedInstallationPath;
+  final pulumi.Input<String> expectedInstallationPath;
 
   /// Creates a new [EnrolledIntuneAppResponse].
   /// [appId] Intune app id.
@@ -30,9 +31,9 @@ class EnrolledIntuneAppResponse {
 
   factory EnrolledIntuneAppResponse.fromMap(Map<String, dynamic> map) {
     return EnrolledIntuneAppResponse(
-      appId: map['appId'] as String,
-      appName: map['appName'] as String,
-      expectedInstallationPath: map['expectedInstallationPath'] as String,
+      appId: (map['appId'] as String).input(),
+      appName: (map['appName'] as String).input(),
+      expectedInstallationPath: (map['expectedInstallationPath'] as String).input(),
     );
   }
 }

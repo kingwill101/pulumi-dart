@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IntentConfirmationPromptMessage {
   /// The text of the message. Must be less than or equal to 1000 characters in length.
-  final String content;
+  final pulumi.Input<String> content;
   /// The content type of the message string.
-  final String contentType;
+  final pulumi.Input<String> contentType;
   /// Identifies the message group that the message belongs to. When a group
   /// is assigned to a message, Amazon Lex returns one message from each group in the response. Must be a number between 1 and 5 (inclusive).
-  final int? groupNumber;
+  final pulumi.Input<int>? groupNumber;
 
   /// Creates a new [IntentConfirmationPromptMessage].
   /// [content] The text of the message. Must be less than or equal to 1000 characters in length.
@@ -30,9 +31,9 @@ class IntentConfirmationPromptMessage {
 
   factory IntentConfirmationPromptMessage.fromMap(Map<String, dynamic> map) {
     return IntentConfirmationPromptMessage(
-      content: map['content'] as String,
-      contentType: map['contentType'] as String,
-      groupNumber: map['groupNumber'] == null ? null : map['groupNumber'] as int,
+      content: (map['content'] as String).input(),
+      contentType: (map['contentType'] as String).input(),
+      groupNumber: map['groupNumber'] == null ? null : (map['groupNumber'] as int).input(),
     );
   }
 }

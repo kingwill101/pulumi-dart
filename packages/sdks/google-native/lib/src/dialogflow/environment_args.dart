@@ -31,21 +31,14 @@ class EnvironmentArgs {
   /// [project] Optional.
   /// [textToSpeechSettings] Optional. Text to speech settings for this environment.
   EnvironmentArgs({
-    pulumi.Output<String>? agentVersion,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<GoogleCloudDialogflowV2Fulfillment>? fulfillment,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDialogflowV2TextToSpeechSettings>? textToSpeechSettings,
-  }) :
-      agentVersion = pulumi.Input.asOptionalInput<String>(agentVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      fulfillment = pulumi.Input.asOptionalInput<GoogleCloudDialogflowV2Fulfillment>(fulfillment),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      textToSpeechSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowV2TextToSpeechSettings>(textToSpeechSettings);
+    this.agentVersion,
+    this.description,
+    required this.environmentId,
+    this.fulfillment,
+    this.location,
+    this.project,
+    this.textToSpeechSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      agentVersion: map['agentVersion'] == null ? null : pulumi.Output.create<String>(map['agentVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      fulfillment: map['fulfillment'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowV2Fulfillment>(GoogleCloudDialogflowV2Fulfillment.fromMap((map['fulfillment'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      textToSpeechSettings: map['textToSpeechSettings'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowV2TextToSpeechSettings>(GoogleCloudDialogflowV2TextToSpeechSettings.fromMap((map['textToSpeechSettings'] as Map).cast<String, dynamic>())),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      fulfillment: map['fulfillment'] == null ? null : (GoogleCloudDialogflowV2Fulfillment.fromMap((map['fulfillment'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      textToSpeechSettings: map['textToSpeechSettings'] == null ? null : (GoogleCloudDialogflowV2TextToSpeechSettings.fromMap((map['textToSpeechSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

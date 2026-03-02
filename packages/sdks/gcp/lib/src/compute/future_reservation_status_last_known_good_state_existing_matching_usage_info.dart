@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo {
   /// Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).
-  final String? count;
+  final pulumi.Input<String>? count;
   /// Timestamp when the matching usage was calculated.
-  final String? timeStamp;
+  final pulumi.Input<String>? timeStamp;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo].
   /// [count] Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).
@@ -24,8 +25,8 @@ class FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo {
 
   factory FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo(
-      count: map['count'] == null ? null : map['count'] as String,
-      timeStamp: map['timeStamp'] == null ? null : map['timeStamp'] as String,
+      count: map['count'] == null ? null : (map['count'] as String).input(),
+      timeStamp: map['timeStamp'] == null ? null : (map['timeStamp'] as String).input(),
     );
   }
 }

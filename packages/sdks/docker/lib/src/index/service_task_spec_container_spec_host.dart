@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecHost {
   /// The name of the host
-  final String host;
+  final pulumi.Input<String> host;
   /// The ip of the host
-  final String ip;
+  final pulumi.Input<String> ip;
 
   /// Creates a new [ServiceTaskSpecContainerSpecHost].
   /// [host] The name of the host
@@ -24,8 +25,8 @@ class ServiceTaskSpecContainerSpecHost {
 
   factory ServiceTaskSpecContainerSpecHost.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecHost(
-      host: map['host'] as String,
-      ip: map['ip'] as String,
+      host: (map['host'] as String).input(),
+      ip: (map['ip'] as String).input(),
     );
   }
 }

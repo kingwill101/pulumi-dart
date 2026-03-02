@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_examples_example_gcs_source_response.dart';
 import 'google_cloud_aiplatform_v1beta1_gcs_source_response.dart';
 import 'google_cloud_aiplatform_v1beta1_presets_response.dart';
@@ -7,15 +8,15 @@ import 'google_cloud_aiplatform_v1beta1_presets_response.dart';
 /// Example-based explainability that returns the nearest neighbors from the provided dataset.
 class GoogleCloudAiplatformV1beta1ExamplesResponse {
   /// The Cloud Storage input instances.
-  final GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse exampleGcsSource;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse> exampleGcsSource;
   /// The Cloud Storage locations that contain the instances to be indexed for approximate nearest neighbor search.
-  final GoogleCloudAiplatformV1beta1GcsSourceResponse gcsSource;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1GcsSourceResponse> gcsSource;
   /// The full configuration for the generated index, the semantics are the same as metadata and should match [NearestNeighborSearchConfig](https://cloud.google.com/vertex-ai/docs/explainable-ai/configuring-explanations-example-based#nearest-neighbor-search-config).
-  final dynamic nearestNeighborSearchConfig;
+  final pulumi.Input<dynamic> nearestNeighborSearchConfig;
   /// The number of neighbors to return when querying for examples.
-  final int neighborCount;
+  final pulumi.Input<int> neighborCount;
   /// Simplified preset configuration, which automatically sets configuration values based on the desired query speed-precision trade-off and modality.
-  final GoogleCloudAiplatformV1beta1PresetsResponse presets;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1PresetsResponse> presets;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ExamplesResponse].
   /// [exampleGcsSource] The Cloud Storage input instances.
@@ -33,21 +34,21 @@ class GoogleCloudAiplatformV1beta1ExamplesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exampleGcsSource': exampleGcsSource.toMap(),
-      'gcsSource': gcsSource.toMap(),
+      'exampleGcsSource': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse, Map<String, dynamic>>(exampleGcsSource, (value) => value.toMap()),
+      'gcsSource': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1GcsSourceResponse, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
       'nearestNeighborSearchConfig': nearestNeighborSearchConfig,
       'neighborCount': neighborCount,
-      'presets': presets.toMap(),
+      'presets': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1PresetsResponse, Map<String, dynamic>>(presets, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudAiplatformV1beta1ExamplesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ExamplesResponse(
-      exampleGcsSource: GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse.fromMap((map['exampleGcsSource'] as Map).cast<String, dynamic>()),
-      gcsSource: GoogleCloudAiplatformV1beta1GcsSourceResponse.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
-      nearestNeighborSearchConfig: map['nearestNeighborSearchConfig'],
-      neighborCount: map['neighborCount'] as int,
-      presets: GoogleCloudAiplatformV1beta1PresetsResponse.fromMap((map['presets'] as Map).cast<String, dynamic>()),
+      exampleGcsSource: (GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse.fromMap((map['exampleGcsSource'] as Map).cast<String, dynamic>())).input(),
+      gcsSource: (GoogleCloudAiplatformV1beta1GcsSourceResponse.fromMap((map['gcsSource'] as Map).cast<String, dynamic>())).input(),
+      nearestNeighborSearchConfig: (map['nearestNeighborSearchConfig']).input(),
+      neighborCount: (map['neighborCount'] as int).input(),
+      presets: (GoogleCloudAiplatformV1beta1PresetsResponse.fromMap((map['presets'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

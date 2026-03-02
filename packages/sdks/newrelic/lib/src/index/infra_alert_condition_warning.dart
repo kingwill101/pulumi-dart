@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InfraAlertConditionWarning {
-  final int duration;
-  final String? timeFunction;
-  final double? value;
+  final pulumi.Input<int> duration;
+  final pulumi.Input<String>? timeFunction;
+  final pulumi.Input<double>? value;
 
   /// Creates a new [InfraAlertConditionWarning].
   /// [duration] Required.
@@ -26,9 +27,9 @@ class InfraAlertConditionWarning {
 
   factory InfraAlertConditionWarning.fromMap(Map<String, dynamic> map) {
     return InfraAlertConditionWarning(
-      duration: map['duration'] as int,
-      timeFunction: map['timeFunction'] == null ? null : map['timeFunction'] as String,
-      value: map['value'] == null ? null : map['value'] as double,
+      duration: (map['duration'] as int).input(),
+      timeFunction: map['timeFunction'] == null ? null : (map['timeFunction'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as double).input(),
     );
   }
 }

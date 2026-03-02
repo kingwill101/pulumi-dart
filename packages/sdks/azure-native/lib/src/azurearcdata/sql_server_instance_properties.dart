@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authentication.dart';
 import 'backup_policy.dart';
 import 'client_connection.dart';
@@ -9,29 +10,29 @@ import 'monitoring.dart';
 /// Properties of SqlServerInstance.
 class SqlServerInstanceProperties {
   /// Authentication related configuration for the SQL Server Instance.
-  final Authentication? authentication;
+  final pulumi.Input<Authentication>? authentication;
   /// The backup profile for the SQL server.
-  final BackupPolicy? backupPolicy;
+  final pulumi.Input<BackupPolicy>? backupPolicy;
   /// Client connection related configuration.
-  final ClientConnection? clientConnection;
+  final pulumi.Input<ClientConnection>? clientConnection;
   /// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
-  final String? cores;
+  final pulumi.Input<String>? cores;
   /// SQL Server edition.
-  final String? edition;
+  final pulumi.Input<String>? edition;
   /// Type of host for Azure Arc SQL Server
-  final String? hostType;
+  final pulumi.Input<String>? hostType;
   /// SQL Server instance name.
-  final String? instanceName;
+  final pulumi.Input<String>? instanceName;
   /// Migration related configuration.
-  final Migration? migration;
+  final pulumi.Input<Migration>? migration;
   /// The monitoring configuration.
-  final Monitoring? monitoring;
+  final pulumi.Input<Monitoring>? monitoring;
   /// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
-  final String? serviceType;
+  final pulumi.Input<String>? serviceType;
   /// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
-  final String? upgradeLockedUntil;
+  final pulumi.Input<String>? upgradeLockedUntil;
   /// SQL Server version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [SqlServerInstanceProperties].
   /// [authentication] Authentication related configuration for the SQL Server Instance.
@@ -63,15 +64,15 @@ class SqlServerInstanceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?authentication == null ? null : authentication!.toMap(),
-      'backupPolicy': ?backupPolicy == null ? null : backupPolicy!.toMap(),
-      'clientConnection': ?clientConnection == null ? null : clientConnection!.toMap(),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<Authentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'backupPolicy': ?pulumi.Input.mapOptionalInputValue<BackupPolicy, Map<String, dynamic>>(backupPolicy, (value) => value.toMap()),
+      'clientConnection': ?pulumi.Input.mapOptionalInputValue<ClientConnection, Map<String, dynamic>>(clientConnection, (value) => value.toMap()),
       'cores': ?cores,
       'edition': ?edition,
       'hostType': ?hostType,
       'instanceName': ?instanceName,
-      'migration': ?migration == null ? null : migration!.toMap(),
-      'monitoring': ?monitoring == null ? null : monitoring!.toMap(),
+      'migration': ?pulumi.Input.mapOptionalInputValue<Migration, Map<String, dynamic>>(migration, (value) => value.toMap()),
+      'monitoring': ?pulumi.Input.mapOptionalInputValue<Monitoring, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
       'serviceType': ?serviceType,
       'upgradeLockedUntil': ?upgradeLockedUntil,
       'version': ?version,
@@ -80,18 +81,18 @@ class SqlServerInstanceProperties {
 
   factory SqlServerInstanceProperties.fromMap(Map<String, dynamic> map) {
     return SqlServerInstanceProperties(
-      authentication: map['authentication'] == null ? null : Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      backupPolicy: map['backupPolicy'] == null ? null : BackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>()),
-      clientConnection: map['clientConnection'] == null ? null : ClientConnection.fromMap((map['clientConnection'] as Map).cast<String, dynamic>()),
-      cores: map['cores'] == null ? null : map['cores'] as String,
-      edition: map['edition'] == null ? null : map['edition'] as String,
-      hostType: map['hostType'] == null ? null : map['hostType'] as String,
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
-      migration: map['migration'] == null ? null : Migration.fromMap((map['migration'] as Map).cast<String, dynamic>()),
-      monitoring: map['monitoring'] == null ? null : Monitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>()),
-      serviceType: map['serviceType'] == null ? null : map['serviceType'] as String,
-      upgradeLockedUntil: map['upgradeLockedUntil'] == null ? null : map['upgradeLockedUntil'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
+      clientConnection: map['clientConnection'] == null ? null : (ClientConnection.fromMap((map['clientConnection'] as Map).cast<String, dynamic>())).input(),
+      cores: map['cores'] == null ? null : (map['cores'] as String).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      migration: map['migration'] == null ? null : (Migration.fromMap((map['migration'] as Map).cast<String, dynamic>())).input(),
+      monitoring: map['monitoring'] == null ? null : (Monitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      upgradeLockedUntil: map['upgradeLockedUntil'] == null ? null : (map['upgradeLockedUntil'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

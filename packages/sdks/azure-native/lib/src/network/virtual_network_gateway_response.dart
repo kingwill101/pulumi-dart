@@ -16,73 +16,73 @@ import 'vpn_client_configuration_response.dart';
 /// A common class for general resource information.
 class VirtualNetworkGatewayResponse {
   /// ActiveActive flag.
-  final bool? activeActive;
+  final pulumi.Input<bool>? activeActive;
   /// Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet
-  final String? adminState;
+  final pulumi.Input<String>? adminState;
   /// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
-  final bool? allowRemoteVnetTraffic;
+  final pulumi.Input<bool>? allowRemoteVnetTraffic;
   /// Configures this gateway to accept traffic from remote Virtual WAN networks.
-  final bool? allowVirtualWanTraffic;
+  final pulumi.Input<bool>? allowVirtualWanTraffic;
   /// Autoscale configuration for virutal network gateway
-  final VirtualNetworkGatewayAutoScaleConfigurationResponse? autoScaleConfiguration;
+  final pulumi.Input<VirtualNetworkGatewayAutoScaleConfigurationResponse>? autoScaleConfiguration;
   /// Virtual network gateway's BGP speaker settings.
-  final BgpSettingsResponse? bgpSettings;
+  final pulumi.Input<BgpSettingsResponse>? bgpSettings;
   /// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
-  final AddressSpaceResponse? customRoutes;
+  final pulumi.Input<AddressSpaceResponse>? customRoutes;
   /// disableIPSecReplayProtection flag.
-  final bool? disableIPSecReplayProtection;
+  final pulumi.Input<bool>? disableIPSecReplayProtection;
   /// Whether BGP is enabled for this virtual network gateway or not.
-  final bool? enableBgp;
+  final pulumi.Input<bool>? enableBgp;
   /// EnableBgpRouteTranslationForNat flag.
-  final bool? enableBgpRouteTranslationForNat;
+  final pulumi.Input<bool>? enableBgpRouteTranslationForNat;
   /// Whether dns forwarding is enabled or not.
-  final bool? enableDnsForwarding;
+  final pulumi.Input<bool>? enableDnsForwarding;
   /// Whether private IP needs to be enabled on this gateway for connections or not.
-  final bool? enablePrivateIpAddress;
+  final pulumi.Input<bool>? enablePrivateIpAddress;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The extended location of type local virtual network gateway.
-  final ExtendedLocationResponse? extendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
   /// The reference to the LocalNetworkGateway resource which represents local network site having default routes. Assign Null value in case of removing existing default site setting.
-  final SubResourceResponse? gatewayDefaultSite;
+  final pulumi.Input<SubResourceResponse>? gatewayDefaultSite;
   /// The type of this virtual network gateway.
-  final String? gatewayType;
+  final pulumi.Input<String>? gatewayType;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The identity of the virtual network gateway, if configured.
-  final ManagedServiceIdentityResponse? identity;
+  final pulumi.Input<ManagedServiceIdentityResponse>? identity;
   /// The IP address allocated by the gateway to which dns requests can be sent.
-  final String inboundDnsForwardingEndpoint;
+  final pulumi.Input<String> inboundDnsForwardingEndpoint;
   /// IP configurations for virtual network gateway.
-  final List<VirtualNetworkGatewayIPConfigurationResponse>? ipConfigurations;
+  final pulumi.Input<List<VirtualNetworkGatewayIPConfigurationResponse>>? ipConfigurations;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// NatRules for virtual network gateway.
-  final List<VirtualNetworkGatewayNatRuleResponse>? natRules;
+  final pulumi.Input<List<VirtualNetworkGatewayNatRuleResponse>>? natRules;
   /// The provisioning state of the virtual network gateway resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
-  final String? resiliencyModel;
+  final pulumi.Input<String>? resiliencyModel;
   /// The resource GUID property of the virtual network gateway resource.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
   /// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
-  final VirtualNetworkGatewaySkuResponse? sku;
+  final pulumi.Input<VirtualNetworkGatewaySkuResponse>? sku;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
-  final String? vNetExtendedLocationResourceId;
+  final pulumi.Input<String>? vNetExtendedLocationResourceId;
   /// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
-  final List<VirtualNetworkGatewayPolicyGroupResponse>? virtualNetworkGatewayPolicyGroups;
+  final pulumi.Input<List<VirtualNetworkGatewayPolicyGroupResponse>>? virtualNetworkGatewayPolicyGroups;
   /// The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
-  final VpnClientConfigurationResponse? vpnClientConfiguration;
+  final pulumi.Input<VpnClientConfigurationResponse>? vpnClientConfiguration;
   /// The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
-  final String? vpnGatewayGeneration;
+  final pulumi.Input<String>? vpnGatewayGeneration;
   /// The type of this virtual network gateway.
-  final String? vpnType;
+  final pulumi.Input<String>? vpnType;
 
   /// Creates a new [VirtualNetworkGatewayResponse].
   /// [activeActive] ActiveActive flag.
@@ -162,34 +162,34 @@ class VirtualNetworkGatewayResponse {
       'adminState': ?adminState,
       'allowRemoteVnetTraffic': ?allowRemoteVnetTraffic,
       'allowVirtualWanTraffic': ?allowVirtualWanTraffic,
-      'autoScaleConfiguration': ?autoScaleConfiguration == null ? null : autoScaleConfiguration!.toMap(),
-      'bgpSettings': ?bgpSettings == null ? null : bgpSettings!.toMap(),
-      'customRoutes': ?customRoutes == null ? null : customRoutes!.toMap(),
+      'autoScaleConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkGatewayAutoScaleConfigurationResponse, Map<String, dynamic>>(autoScaleConfiguration, (value) => value.toMap()),
+      'bgpSettings': ?pulumi.Input.mapOptionalInputValue<BgpSettingsResponse, Map<String, dynamic>>(bgpSettings, (value) => value.toMap()),
+      'customRoutes': ?pulumi.Input.mapOptionalInputValue<AddressSpaceResponse, Map<String, dynamic>>(customRoutes, (value) => value.toMap()),
       'disableIPSecReplayProtection': ?disableIPSecReplayProtection,
       'enableBgp': ?enableBgp,
       'enableBgpRouteTranslationForNat': ?enableBgpRouteTranslationForNat,
       'enableDnsForwarding': ?enableDnsForwarding,
       'enablePrivateIpAddress': ?enablePrivateIpAddress,
       'etag': etag,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
-      'gatewayDefaultSite': ?gatewayDefaultSite == null ? null : gatewayDefaultSite!.toMap(),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'gatewayDefaultSite': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(gatewayDefaultSite, (value) => value.toMap()),
       'gatewayType': ?gatewayType,
       'id': ?id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'inboundDnsForwardingEndpoint': inboundDnsForwardingEndpoint,
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<VirtualNetworkGatewayIPConfigurationResponse, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
+      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkGatewayIPConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<VirtualNetworkGatewayIPConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'name': name,
-      'natRules': ?natRules == null ? null : pulumi.Input.encodeList<VirtualNetworkGatewayNatRuleResponse, Map<String, dynamic>>(natRules!, (value) => value.toMap()),
+      'natRules': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkGatewayNatRuleResponse>, List<Map<String, dynamic>>>(natRules, (value) => pulumi.Input.encodeList<VirtualNetworkGatewayNatRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'resiliencyModel': ?resiliencyModel,
       'resourceGuid': resourceGuid,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkGatewaySkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
       'type': type,
       'vNetExtendedLocationResourceId': ?vNetExtendedLocationResourceId,
-      'virtualNetworkGatewayPolicyGroups': ?virtualNetworkGatewayPolicyGroups == null ? null : pulumi.Input.encodeList<VirtualNetworkGatewayPolicyGroupResponse, Map<String, dynamic>>(virtualNetworkGatewayPolicyGroups!, (value) => value.toMap()),
-      'vpnClientConfiguration': ?vpnClientConfiguration == null ? null : vpnClientConfiguration!.toMap(),
+      'virtualNetworkGatewayPolicyGroups': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkGatewayPolicyGroupResponse>, List<Map<String, dynamic>>>(virtualNetworkGatewayPolicyGroups, (value) => pulumi.Input.encodeList<VirtualNetworkGatewayPolicyGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpnClientConfiguration': ?pulumi.Input.mapOptionalInputValue<VpnClientConfigurationResponse, Map<String, dynamic>>(vpnClientConfiguration, (value) => value.toMap()),
       'vpnGatewayGeneration': ?vpnGatewayGeneration,
       'vpnType': ?vpnType,
     };
@@ -197,40 +197,40 @@ class VirtualNetworkGatewayResponse {
 
   factory VirtualNetworkGatewayResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayResponse(
-      activeActive: map['activeActive'] == null ? null : map['activeActive'] as bool,
-      adminState: map['adminState'] == null ? null : map['adminState'] as String,
-      allowRemoteVnetTraffic: map['allowRemoteVnetTraffic'] == null ? null : map['allowRemoteVnetTraffic'] as bool,
-      allowVirtualWanTraffic: map['allowVirtualWanTraffic'] == null ? null : map['allowVirtualWanTraffic'] as bool,
-      autoScaleConfiguration: map['autoScaleConfiguration'] == null ? null : VirtualNetworkGatewayAutoScaleConfigurationResponse.fromMap((map['autoScaleConfiguration'] as Map).cast<String, dynamic>()),
-      bgpSettings: map['bgpSettings'] == null ? null : BgpSettingsResponse.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>()),
-      customRoutes: map['customRoutes'] == null ? null : AddressSpaceResponse.fromMap((map['customRoutes'] as Map).cast<String, dynamic>()),
-      disableIPSecReplayProtection: map['disableIPSecReplayProtection'] == null ? null : map['disableIPSecReplayProtection'] as bool,
-      enableBgp: map['enableBgp'] == null ? null : map['enableBgp'] as bool,
-      enableBgpRouteTranslationForNat: map['enableBgpRouteTranslationForNat'] == null ? null : map['enableBgpRouteTranslationForNat'] as bool,
-      enableDnsForwarding: map['enableDnsForwarding'] == null ? null : map['enableDnsForwarding'] as bool,
-      enablePrivateIpAddress: map['enablePrivateIpAddress'] == null ? null : map['enablePrivateIpAddress'] as bool,
-      etag: map['etag'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      gatewayDefaultSite: map['gatewayDefaultSite'] == null ? null : SubResourceResponse.fromMap((map['gatewayDefaultSite'] as Map).cast<String, dynamic>()),
-      gatewayType: map['gatewayType'] == null ? null : map['gatewayType'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      inboundDnsForwardingEndpoint: map['inboundDnsForwardingEndpoint'] as String,
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<VirtualNetworkGatewayIPConfigurationResponse>(map['ipConfigurations'], (value) => VirtualNetworkGatewayIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      natRules: map['natRules'] == null ? null : pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleResponse>(map['natRules'], (value) => VirtualNetworkGatewayNatRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      resiliencyModel: map['resiliencyModel'] == null ? null : map['resiliencyModel'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      sku: map['sku'] == null ? null : VirtualNetworkGatewaySkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      vNetExtendedLocationResourceId: map['vNetExtendedLocationResourceId'] == null ? null : map['vNetExtendedLocationResourceId'] as String,
-      virtualNetworkGatewayPolicyGroups: map['virtualNetworkGatewayPolicyGroups'] == null ? null : pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupResponse>(map['virtualNetworkGatewayPolicyGroups'], (value) => VirtualNetworkGatewayPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vpnClientConfiguration: map['vpnClientConfiguration'] == null ? null : VpnClientConfigurationResponse.fromMap((map['vpnClientConfiguration'] as Map).cast<String, dynamic>()),
-      vpnGatewayGeneration: map['vpnGatewayGeneration'] == null ? null : map['vpnGatewayGeneration'] as String,
-      vpnType: map['vpnType'] == null ? null : map['vpnType'] as String,
+      activeActive: map['activeActive'] == null ? null : (map['activeActive'] as bool).input(),
+      adminState: map['adminState'] == null ? null : (map['adminState'] as String).input(),
+      allowRemoteVnetTraffic: map['allowRemoteVnetTraffic'] == null ? null : (map['allowRemoteVnetTraffic'] as bool).input(),
+      allowVirtualWanTraffic: map['allowVirtualWanTraffic'] == null ? null : (map['allowVirtualWanTraffic'] as bool).input(),
+      autoScaleConfiguration: map['autoScaleConfiguration'] == null ? null : (VirtualNetworkGatewayAutoScaleConfigurationResponse.fromMap((map['autoScaleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bgpSettings: map['bgpSettings'] == null ? null : (BgpSettingsResponse.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>())).input(),
+      customRoutes: map['customRoutes'] == null ? null : (AddressSpaceResponse.fromMap((map['customRoutes'] as Map).cast<String, dynamic>())).input(),
+      disableIPSecReplayProtection: map['disableIPSecReplayProtection'] == null ? null : (map['disableIPSecReplayProtection'] as bool).input(),
+      enableBgp: map['enableBgp'] == null ? null : (map['enableBgp'] as bool).input(),
+      enableBgpRouteTranslationForNat: map['enableBgpRouteTranslationForNat'] == null ? null : (map['enableBgpRouteTranslationForNat'] as bool).input(),
+      enableDnsForwarding: map['enableDnsForwarding'] == null ? null : (map['enableDnsForwarding'] as bool).input(),
+      enablePrivateIpAddress: map['enablePrivateIpAddress'] == null ? null : (map['enablePrivateIpAddress'] as bool).input(),
+      etag: (map['etag'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      gatewayDefaultSite: map['gatewayDefaultSite'] == null ? null : (SubResourceResponse.fromMap((map['gatewayDefaultSite'] as Map).cast<String, dynamic>())).input(),
+      gatewayType: map['gatewayType'] == null ? null : (map['gatewayType'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      inboundDnsForwardingEndpoint: (map['inboundDnsForwardingEndpoint'] as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayIPConfigurationResponse>(map['ipConfigurations'], (value) => VirtualNetworkGatewayIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      natRules: map['natRules'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleResponse>(map['natRules'], (value) => VirtualNetworkGatewayNatRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resiliencyModel: map['resiliencyModel'] == null ? null : (map['resiliencyModel'] as String).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
+      sku: map['sku'] == null ? null : (VirtualNetworkGatewaySkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      vNetExtendedLocationResourceId: map['vNetExtendedLocationResourceId'] == null ? null : (map['vNetExtendedLocationResourceId'] as String).input(),
+      virtualNetworkGatewayPolicyGroups: map['virtualNetworkGatewayPolicyGroups'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupResponse>(map['virtualNetworkGatewayPolicyGroups'], (value) => VirtualNetworkGatewayPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnClientConfiguration: map['vpnClientConfiguration'] == null ? null : (VpnClientConfigurationResponse.fromMap((map['vpnClientConfiguration'] as Map).cast<String, dynamic>())).input(),
+      vpnGatewayGeneration: map['vpnGatewayGeneration'] == null ? null : (map['vpnGatewayGeneration'] as String).input(),
+      vpnType: map['vpnType'] == null ? null : (map['vpnType'] as String).input(),
     );
   }
 }

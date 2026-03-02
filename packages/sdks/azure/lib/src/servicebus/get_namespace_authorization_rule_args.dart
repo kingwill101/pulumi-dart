@@ -20,15 +20,11 @@ class GetNamespaceAuthorizationRuleArgs {
   /// [namespaceName] Optional.
   /// [resourceGroupName] Optional.
   GetNamespaceAuthorizationRuleArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    required this.name,
+    this.namespaceId,
+    this.namespaceName,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class GetNamespaceAuthorizationRuleArgs {
 
   factory GetNamespaceAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceAuthorizationRuleArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

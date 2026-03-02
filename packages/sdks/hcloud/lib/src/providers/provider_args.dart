@@ -25,17 +25,12 @@ class ProviderArgs {
   /// [pollInterval] The interval at which actions are polled by the client. Default `500ms`. Increase this interval if you run into rate limiting errors.
   /// [token] The Hetzner Cloud API token, can also be specified with the HCLOUD_TOKEN environment variable.
   ProviderArgs({
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<String>? endpointHetzner,
-    pulumi.Output<String>? pollFunction,
-    pulumi.Output<String>? pollInterval,
-    pulumi.Output<String>? token,
-  }) :
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      endpointHetzner = pulumi.Input.asOptionalInput<String>(endpointHetzner),
-      pollFunction = pulumi.Input.asOptionalInput<String>(pollFunction),
-      pollInterval = pulumi.Input.asOptionalInput<String>(pollInterval),
-      token = pulumi.Input.asOptionalInput<String>(token);
+    this.endpoint,
+    this.endpointHetzner,
+    this.pollFunction,
+    this.pollInterval,
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      endpointHetzner: map['endpointHetzner'] == null ? null : pulumi.Output.create<String>(map['endpointHetzner'] as String),
-      pollFunction: map['pollFunction'] == null ? null : pulumi.Output.create<String>(map['pollFunction'] as String),
-      pollInterval: map['pollInterval'] == null ? null : pulumi.Output.create<String>(map['pollInterval'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpointHetzner: map['endpointHetzner'] == null ? null : (map['endpointHetzner'] as String).input(),
+      pollFunction: map['pollFunction'] == null ? null : (map['pollFunction'] as String).input(),
+      pollInterval: map['pollInterval'] == null ? null : (map['pollInterval'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

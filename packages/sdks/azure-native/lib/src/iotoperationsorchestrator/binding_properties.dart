@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a component binding for a provider.
 class BindingProperties {
   /// Configuration values for the binding.
-  final dynamic config;
+  final pulumi.Input<dynamic> config;
   /// Name of the provider.
-  final String provider;
+  final pulumi.Input<String> provider;
   /// Role that the provider binds to with the component.
-  final String role;
+  final pulumi.Input<String> role;
 
   /// Creates a new [BindingProperties].
   /// [config] Configuration values for the binding.
@@ -30,9 +31,9 @@ class BindingProperties {
 
   factory BindingProperties.fromMap(Map<String, dynamic> map) {
     return BindingProperties(
-      config: map['config'],
-      provider: map['provider'] as String,
-      role: map['role'] as String,
+      config: (map['config']).input(),
+      provider: (map['provider'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

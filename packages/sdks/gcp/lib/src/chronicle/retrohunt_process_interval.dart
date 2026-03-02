@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RetrohuntProcessInterval {
   /// Exclusive end of the interval.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Inclusive start of the interval.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [RetrohuntProcessInterval].
   /// [endTime] Exclusive end of the interval.
@@ -24,8 +25,8 @@ class RetrohuntProcessInterval {
 
   factory RetrohuntProcessInterval.fromMap(Map<String, dynamic> map) {
     return RetrohuntProcessInterval(
-      endTime: map['endTime'] as String,
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

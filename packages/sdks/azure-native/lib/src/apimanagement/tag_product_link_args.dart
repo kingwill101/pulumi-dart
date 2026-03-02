@@ -25,17 +25,12 @@ class TagProductLinkArgs {
   /// [serviceName] The name of the API Management service.
   /// [tagId] Tag identifier. Must be unique in the current API Management service instance.
   TagProductLinkArgs({
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? productLinkId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> tagId,
-  }) :
-      productId = pulumi.Input.asInput<String>(productId),
-      productLinkId = pulumi.Input.asOptionalInput<String>(productLinkId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tagId = pulumi.Input.asInput<String>(tagId);
+    required this.productId,
+    this.productLinkId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.tagId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TagProductLinkArgs {
 
   factory TagProductLinkArgs.fromMap(Map<String, dynamic> map) {
     return TagProductLinkArgs(
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      productLinkId: map['productLinkId'] == null ? null : pulumi.Output.create<String>(map['productLinkId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tagId: pulumi.Output.create<String>(map['tagId'] as String),
+      productId: (map['productId'] as String).input(),
+      productLinkId: map['productLinkId'] == null ? null : (map['productLinkId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tagId: (map['tagId'] as String).input(),
     );
   }
 }

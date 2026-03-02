@@ -36,25 +36,16 @@ class LinkedCustomServiceState {
   /// [type] The type of data stores that will be connected to Data Factory. For full list of supported data stores, please refer to [Azure Data Factory connector](https://docs.microsoft.com/azure/data-factory/connector-overview). Please refer to Microsoft.DataFactory factories/linkedservices for the type values syntax. Changing this forces a new resource to be created.
   /// [typePropertiesJson] A JSON object that contains the properties of the Data Factory Linked Service. Refer to
   LinkedCustomServiceState({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<LinkedCustomServiceIntegrationRuntime>? integrationRuntime,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? typePropertiesJson,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntime = pulumi.Input.asOptionalInput<LinkedCustomServiceIntegrationRuntime>(integrationRuntime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      typePropertiesJson = pulumi.Input.asOptionalInput<String>(typePropertiesJson);
+    this.additionalProperties,
+    this.annotations,
+    this.dataFactoryId,
+    this.description,
+    this.integrationRuntime,
+    this.name,
+    this.parameters,
+    this.type,
+    this.typePropertiesJson,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class LinkedCustomServiceState {
 
   factory LinkedCustomServiceState.fromMap(Map<String, dynamic> map) {
     return LinkedCustomServiceState(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntime: map['integrationRuntime'] == null ? null : pulumi.Output.create<LinkedCustomServiceIntegrationRuntime>(LinkedCustomServiceIntegrationRuntime.fromMap((map['integrationRuntime'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      typePropertiesJson: map['typePropertiesJson'] == null ? null : pulumi.Output.create<String>(map['typePropertiesJson'] as String),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntime: map['integrationRuntime'] == null ? null : (LinkedCustomServiceIntegrationRuntime.fromMap((map['integrationRuntime'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typePropertiesJson: map['typePropertiesJson'] == null ? null : (map['typePropertiesJson'] as String).input(),
     );
   }
 }

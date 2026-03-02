@@ -40,23 +40,15 @@ class PortForwardingV2State {
   /// [protocol] The IP protocol used in the port forwarding. Changing this updates the `protocol`
   /// [region] The region in which to obtain the V2 networking client.
   PortForwardingV2State({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? externalPort,
-    pulumi.Output<String>? floatingipId,
-    pulumi.Output<String>? internalIpAddress,
-    pulumi.Output<int>? internalPort,
-    pulumi.Output<String>? internalPortId,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      externalPort = pulumi.Input.asOptionalInput<int>(externalPort),
-      floatingipId = pulumi.Input.asOptionalInput<String>(floatingipId),
-      internalIpAddress = pulumi.Input.asOptionalInput<String>(internalIpAddress),
-      internalPort = pulumi.Input.asOptionalInput<int>(internalPort),
-      internalPortId = pulumi.Input.asOptionalInput<String>(internalPortId),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.description,
+    this.externalPort,
+    this.floatingipId,
+    this.internalIpAddress,
+    this.internalPort,
+    this.internalPortId,
+    this.protocol,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class PortForwardingV2State {
 
   factory PortForwardingV2State.fromMap(Map<String, dynamic> map) {
     return PortForwardingV2State(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      externalPort: map['externalPort'] == null ? null : pulumi.Output.create<int>(map['externalPort'] as int),
-      floatingipId: map['floatingipId'] == null ? null : pulumi.Output.create<String>(map['floatingipId'] as String),
-      internalIpAddress: map['internalIpAddress'] == null ? null : pulumi.Output.create<String>(map['internalIpAddress'] as String),
-      internalPort: map['internalPort'] == null ? null : pulumi.Output.create<int>(map['internalPort'] as int),
-      internalPortId: map['internalPortId'] == null ? null : pulumi.Output.create<String>(map['internalPortId'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as int).input(),
+      floatingipId: map['floatingipId'] == null ? null : (map['floatingipId'] as String).input(),
+      internalIpAddress: map['internalIpAddress'] == null ? null : (map['internalIpAddress'] as String).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as int).input(),
+      internalPortId: map['internalPortId'] == null ? null : (map['internalPortId'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

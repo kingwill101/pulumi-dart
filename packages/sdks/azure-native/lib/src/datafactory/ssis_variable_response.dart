@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Ssis variable.
 class SsisVariableResponse {
   /// Variable type.
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// Variable description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Variable id.
-  final double? id;
+  final pulumi.Input<double>? id;
   /// Variable name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Whether variable is sensitive.
-  final bool? sensitive;
+  final pulumi.Input<bool>? sensitive;
   /// Variable sensitive value.
-  final String? sensitiveValue;
+  final pulumi.Input<String>? sensitiveValue;
   /// Variable value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [SsisVariableResponse].
   /// [dataType] Variable type.
@@ -50,13 +51,13 @@ class SsisVariableResponse {
 
   factory SsisVariableResponse.fromMap(Map<String, dynamic> map) {
     return SsisVariableResponse(
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      id: map['id'] == null ? null : map['id'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      sensitive: map['sensitive'] == null ? null : map['sensitive'] as bool,
-      sensitiveValue: map['sensitiveValue'] == null ? null : map['sensitiveValue'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sensitive: map['sensitive'] == null ? null : (map['sensitive'] as bool).input(),
+      sensitiveValue: map['sensitiveValue'] == null ? null : (map['sensitiveValue'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

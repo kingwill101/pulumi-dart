@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentOutputContext {
   /// Name of the output context.
-  final String name;
+  final pulumi.Input<String> name;
   /// Amount of time, in seconds, that the output context should remain active. The time is figured from the first time the context is sent to the user.
-  final int timeToLiveInSeconds;
+  final pulumi.Input<int> timeToLiveInSeconds;
   /// Number of conversation turns that the output context should remain active. The number of turns is counted from the first time that the context is sent to the user.
-  final int turnsToLive;
+  final pulumi.Input<int> turnsToLive;
 
   /// Creates a new [V2modelsIntentOutputContext].
   /// [name] Name of the output context.
@@ -29,9 +30,9 @@ class V2modelsIntentOutputContext {
 
   factory V2modelsIntentOutputContext.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentOutputContext(
-      name: map['name'] as String,
-      timeToLiveInSeconds: map['timeToLiveInSeconds'] as int,
-      turnsToLive: map['turnsToLive'] as int,
+      name: (map['name'] as String).input(),
+      timeToLiveInSeconds: (map['timeToLiveInSeconds'] as int).input(),
+      turnsToLive: (map['turnsToLive'] as int).input(),
     );
   }
 }

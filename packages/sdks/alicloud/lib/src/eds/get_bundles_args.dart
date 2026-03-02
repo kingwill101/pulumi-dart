@@ -24,17 +24,12 @@ class GetBundlesArgs {
   /// [nameRegex] A regex string to filter results by Bundle name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetBundlesArgs({
-    pulumi.Output<List<String>>? bundleIds,
-    pulumi.Output<String>? bundleType,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      bundleIds = pulumi.Input.asOptionalInput<List<String>>(bundleIds),
-      bundleType = pulumi.Input.asOptionalInput<String>(bundleType),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.bundleIds,
+    this.bundleType,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GetBundlesArgs {
 
   factory GetBundlesArgs.fromMap(Map<String, dynamic> map) {
     return GetBundlesArgs(
-      bundleIds: map['bundleIds'] == null ? null : pulumi.Output.create<List<String>>((map['bundleIds'] as List).cast<String>()),
-      bundleType: map['bundleType'] == null ? null : pulumi.Output.create<String>(map['bundleType'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      bundleIds: map['bundleIds'] == null ? null : ((map['bundleIds'] as List).cast<String>()).input(),
+      bundleType: map['bundleType'] == null ? null : (map['bundleType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

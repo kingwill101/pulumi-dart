@@ -33,17 +33,12 @@ class DatabaseInstanceArgs {
   /// [region] A reference to the region where the Firebase Realtime database resides.
   /// [type] The database type.
   DatabaseInstanceArgs({
-    pulumi.Output<String>? desiredState,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? type,
-  }) :
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.desiredState,
+    required this.instanceId,
+    this.project,
+    required this.region,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +52,11 @@ class DatabaseInstanceArgs {
 
   factory DatabaseInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceArgs(
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

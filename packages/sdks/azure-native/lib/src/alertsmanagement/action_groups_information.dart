@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Action Groups information, used by the alert rule.
 class ActionGroupsInformation {
   /// An optional custom email subject to use in email notifications.
-  final String? customEmailSubject;
+  final pulumi.Input<String>? customEmailSubject;
   /// An optional custom web-hook payload to use in web-hook notifications.
-  final String? customWebhookPayload;
+  final pulumi.Input<String>? customWebhookPayload;
   /// The Action Group resource IDs.
-  final List<String> groupIds;
+  final pulumi.Input<List<String>> groupIds;
 
   /// Creates a new [ActionGroupsInformation].
   /// [customEmailSubject] An optional custom email subject to use in email notifications.
@@ -30,9 +31,9 @@ class ActionGroupsInformation {
 
   factory ActionGroupsInformation.fromMap(Map<String, dynamic> map) {
     return ActionGroupsInformation(
-      customEmailSubject: map['customEmailSubject'] == null ? null : map['customEmailSubject'] as String,
-      customWebhookPayload: map['customWebhookPayload'] == null ? null : map['customWebhookPayload'] as String,
-      groupIds: (map['groupIds'] as List).cast<String>(),
+      customEmailSubject: map['customEmailSubject'] == null ? null : (map['customEmailSubject'] as String).input(),
+      customWebhookPayload: map['customWebhookPayload'] == null ? null : (map['customWebhookPayload'] as String).input(),
+      groupIds: ((map['groupIds'] as List).cast<String>()).input(),
     );
   }
 }

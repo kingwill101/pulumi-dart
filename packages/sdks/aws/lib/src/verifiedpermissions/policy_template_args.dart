@@ -24,15 +24,11 @@ class PolicyTemplateArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [statement] Defines the content of the statement, written in Cedar policy language.
   PolicyTemplateArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> policyStoreId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> statement,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      policyStoreId = pulumi.Input.asInput<String>(policyStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      statement = pulumi.Input.asInput<String>(statement);
+    this.description,
+    required this.policyStoreId,
+    this.region,
+    required this.statement,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class PolicyTemplateArgs {
 
   factory PolicyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTemplateArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      policyStoreId: pulumi.Output.create<String>(map['policyStoreId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      statement: pulumi.Output.create<String>(map['statement'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policyStoreId: (map['policyStoreId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      statement: (map['statement'] as String).input(),
     );
   }
 }

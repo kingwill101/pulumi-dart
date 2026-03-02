@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineStorageOsDisk {
   /// Specifies the caching requirements for the OS Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.
-  final String? caching;
+  final pulumi.Input<String>? caching;
   /// Specifies how the OS Disk should be created. Possible values are `Attach` (managed disks only) and `FromImage`.
-  final String createOption;
+  final pulumi.Input<String> createOption;
   /// Specifies the size of the OS Disk in gigabytes.
-  final int? diskSizeGb;
+  final pulumi.Input<int>? diskSizeGb;
   /// Specifies the Image URI in the format `publisherName:offer:skus:version`. This field can also specify the [VHD URI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) of a custom VM image to clone. When cloning a Custom (Unmanaged) Disk Image the `os_type` field must be set.
-  final String? imageUri;
+  final pulumi.Input<String>? imageUri;
   /// Specifies the ID of an existing Managed Disk which should be attached as the OS Disk of this Virtual Machine. If this is set then the `create_option` must be set to `Attach`. Changing this forces a new resource to be created.
-  final String? managedDiskId;
+  final pulumi.Input<String>? managedDiskId;
   /// Specifies the type of Managed Disk which should be created. Possible values are `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`.
   ///
   /// The following properties apply when using Unmanaged Disks:
-  final String? managedDiskType;
+  final pulumi.Input<String>? managedDiskType;
   /// Specifies the name of the OS Disk.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the Operating System on the OS Disk. Possible values are `Linux` and `Windows`.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// Specifies the URI of the VHD file backing this Unmanaged OS Disk. Changing this forces a new resource to be created.
-  final String? vhdUri;
+  final pulumi.Input<String>? vhdUri;
   /// Specifies if Write Accelerator is enabled on the disk. This can only be enabled on `Premium_LRS` managed disks with no caching and [M-Series VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator). Defaults to `false`.
   ///
   /// The following properties apply when using Managed Disks:
-  final bool? writeAcceleratorEnabled;
+  final pulumi.Input<bool>? writeAcceleratorEnabled;
 
   /// Creates a new [VirtualMachineStorageOsDisk].
   /// [caching] Specifies the caching requirements for the OS Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.
@@ -68,16 +69,16 @@ class VirtualMachineStorageOsDisk {
 
   factory VirtualMachineStorageOsDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageOsDisk(
-      caching: map['caching'] == null ? null : map['caching'] as String,
-      createOption: map['createOption'] as String,
-      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as int,
-      imageUri: map['imageUri'] == null ? null : map['imageUri'] as String,
-      managedDiskId: map['managedDiskId'] == null ? null : map['managedDiskId'] as String,
-      managedDiskType: map['managedDiskType'] == null ? null : map['managedDiskType'] as String,
-      name: map['name'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      vhdUri: map['vhdUri'] == null ? null : map['vhdUri'] as String,
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : map['writeAcceleratorEnabled'] as bool,
+      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      createOption: (map['createOption'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
+      managedDiskType: map['managedDiskType'] == null ? null : (map['managedDiskType'] as String).input(),
+      name: (map['name'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      vhdUri: map['vhdUri'] == null ? null : (map['vhdUri'] as String).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
     );
   }
 }

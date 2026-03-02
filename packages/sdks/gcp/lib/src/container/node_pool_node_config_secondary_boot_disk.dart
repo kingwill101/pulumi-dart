@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigSecondaryBootDisk {
   /// Disk image to create the secondary boot disk from
-  final String diskImage;
+  final pulumi.Input<String> diskImage;
   /// Mode for how the secondary boot disk is used.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [NodePoolNodeConfigSecondaryBootDisk].
   /// [diskImage] Disk image to create the secondary boot disk from
@@ -24,8 +25,8 @@ class NodePoolNodeConfigSecondaryBootDisk {
 
   factory NodePoolNodeConfigSecondaryBootDisk.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigSecondaryBootDisk(
-      diskImage: map['diskImage'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      diskImage: (map['diskImage'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

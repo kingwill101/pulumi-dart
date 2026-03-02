@@ -13,9 +13,8 @@ class PublicNetworkAddressArgs {
   /// Creates a new [PublicNetworkAddressArgs].
   /// [dbInstanceId] The instance ID.
   PublicNetworkAddressArgs({
-    required pulumi.Output<String> dbInstanceId,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId);
+    required this.dbInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class PublicNetworkAddressArgs {
 
   factory PublicNetworkAddressArgs.fromMap(Map<String, dynamic> map) {
     return PublicNetworkAddressArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
     );
   }
 }

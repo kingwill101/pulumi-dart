@@ -7,15 +7,15 @@ import 'logging_filter_model_properties_response.dart';
 /// Definition of awsWafv2LoggingConfiguration
 class AwsWafv2LoggingConfigurationPropertiesResponse {
   /// The Amazon Resource Names (ARNs) of the logging destinations that you want to associate with the web ACL.
-  final List<String>? logDestinationConfigs;
+  final pulumi.Input<List<String>>? logDestinationConfigs;
   /// Filtering that specifies which web requests are kept in the logs and which are dropped. You can filter on the rule action and on the web request labels that were applied by matching rules during web ACL evaluation.
-  final LoggingFilterModelPropertiesResponse? loggingFilter;
+  final pulumi.Input<LoggingFilterModelPropertiesResponse>? loggingFilter;
   /// Indicates whether the logging configuration was created by AWS Firewall Manager, as part of an AWS WAF policy configuration. If true, only Firewall Manager can modify or delete the configuration.
-  final bool? managedByFirewallManager;
+  final pulumi.Input<bool>? managedByFirewallManager;
   /// The parts of the request that you want to keep out of the logs. For example, if you redact the HEADER field, the HEADER field in the firehose will be xxx.
-  final List<FieldToMatchResponse>? redactedFields;
+  final pulumi.Input<List<FieldToMatchResponse>>? redactedFields;
   /// The Amazon Resource Name (ARN) of the web ACL that you want to associate with LogDestinationConfigs.
-  final String? resourceArn;
+  final pulumi.Input<String>? resourceArn;
 
   /// Creates a new [AwsWafv2LoggingConfigurationPropertiesResponse].
   /// [logDestinationConfigs] The Amazon Resource Names (ARNs) of the logging destinations that you want to associate with the web ACL.
@@ -34,20 +34,20 @@ class AwsWafv2LoggingConfigurationPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'logDestinationConfigs': ?logDestinationConfigs,
-      'loggingFilter': ?loggingFilter == null ? null : loggingFilter!.toMap(),
+      'loggingFilter': ?pulumi.Input.mapOptionalInputValue<LoggingFilterModelPropertiesResponse, Map<String, dynamic>>(loggingFilter, (value) => value.toMap()),
       'managedByFirewallManager': ?managedByFirewallManager,
-      'redactedFields': ?redactedFields == null ? null : pulumi.Input.encodeList<FieldToMatchResponse, Map<String, dynamic>>(redactedFields!, (value) => value.toMap()),
+      'redactedFields': ?pulumi.Input.mapOptionalInputValue<List<FieldToMatchResponse>, List<Map<String, dynamic>>>(redactedFields, (value) => pulumi.Input.encodeList<FieldToMatchResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceArn': ?resourceArn,
     };
   }
 
   factory AwsWafv2LoggingConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsWafv2LoggingConfigurationPropertiesResponse(
-      logDestinationConfigs: map['logDestinationConfigs'] == null ? null : (map['logDestinationConfigs'] as List).cast<String>(),
-      loggingFilter: map['loggingFilter'] == null ? null : LoggingFilterModelPropertiesResponse.fromMap((map['loggingFilter'] as Map).cast<String, dynamic>()),
-      managedByFirewallManager: map['managedByFirewallManager'] == null ? null : map['managedByFirewallManager'] as bool,
-      redactedFields: map['redactedFields'] == null ? null : pulumi.Input.decodeList<FieldToMatchResponse>(map['redactedFields'], (value) => FieldToMatchResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
+      logDestinationConfigs: map['logDestinationConfigs'] == null ? null : ((map['logDestinationConfigs'] as List).cast<String>()).input(),
+      loggingFilter: map['loggingFilter'] == null ? null : (LoggingFilterModelPropertiesResponse.fromMap((map['loggingFilter'] as Map).cast<String, dynamic>())).input(),
+      managedByFirewallManager: map['managedByFirewallManager'] == null ? null : (map['managedByFirewallManager'] as bool).input(),
+      redactedFields: map['redactedFields'] == null ? null : (pulumi.Input.decodeList<FieldToMatchResponse>(map['redactedFields'], (value) => FieldToMatchResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

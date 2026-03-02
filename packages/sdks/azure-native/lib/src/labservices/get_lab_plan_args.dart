@@ -16,11 +16,9 @@ class GetLabPlanArgs {
   /// [labPlanName] The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLabPlanArgs({
-    required pulumi.Output<String> labPlanName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      labPlanName = pulumi.Input.asInput<String>(labPlanName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.labPlanName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLabPlanArgs {
 
   factory GetLabPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetLabPlanArgs(
-      labPlanName: pulumi.Output.create<String>(map['labPlanName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      labPlanName: (map['labPlanName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

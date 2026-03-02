@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_ready_condition_response.dart';
 import 'targets_present_condition_response.dart';
 import 'targets_type_condition_response.dart';
@@ -7,11 +8,11 @@ import 'targets_type_condition_response.dart';
 /// PipelineCondition contains all conditions relevant to a Delivery Pipeline.
 class PipelineConditionResponse {
   /// Details around the Pipeline's overall status.
-  final PipelineReadyConditionResponse pipelineReadyCondition;
+  final pulumi.Input<PipelineReadyConditionResponse> pipelineReadyCondition;
   /// Details around targets enumerated in the pipeline.
-  final TargetsPresentConditionResponse targetsPresentCondition;
+  final pulumi.Input<TargetsPresentConditionResponse> targetsPresentCondition;
   /// Details on the whether the targets enumerated in the pipeline are of the same type.
-  final TargetsTypeConditionResponse targetsTypeCondition;
+  final pulumi.Input<TargetsTypeConditionResponse> targetsTypeCondition;
 
   /// Creates a new [PipelineConditionResponse].
   /// [pipelineReadyCondition] Details around the Pipeline's overall status.
@@ -25,17 +26,17 @@ class PipelineConditionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pipelineReadyCondition': pipelineReadyCondition.toMap(),
-      'targetsPresentCondition': targetsPresentCondition.toMap(),
-      'targetsTypeCondition': targetsTypeCondition.toMap(),
+      'pipelineReadyCondition': pulumi.Input.mapInputValue<PipelineReadyConditionResponse, Map<String, dynamic>>(pipelineReadyCondition, (value) => value.toMap()),
+      'targetsPresentCondition': pulumi.Input.mapInputValue<TargetsPresentConditionResponse, Map<String, dynamic>>(targetsPresentCondition, (value) => value.toMap()),
+      'targetsTypeCondition': pulumi.Input.mapInputValue<TargetsTypeConditionResponse, Map<String, dynamic>>(targetsTypeCondition, (value) => value.toMap()),
     };
   }
 
   factory PipelineConditionResponse.fromMap(Map<String, dynamic> map) {
     return PipelineConditionResponse(
-      pipelineReadyCondition: PipelineReadyConditionResponse.fromMap((map['pipelineReadyCondition'] as Map).cast<String, dynamic>()),
-      targetsPresentCondition: TargetsPresentConditionResponse.fromMap((map['targetsPresentCondition'] as Map).cast<String, dynamic>()),
-      targetsTypeCondition: TargetsTypeConditionResponse.fromMap((map['targetsTypeCondition'] as Map).cast<String, dynamic>()),
+      pipelineReadyCondition: (PipelineReadyConditionResponse.fromMap((map['pipelineReadyCondition'] as Map).cast<String, dynamic>())).input(),
+      targetsPresentCondition: (TargetsPresentConditionResponse.fromMap((map['targetsPresentCondition'] as Map).cast<String, dynamic>())).input(),
+      targetsTypeCondition: (TargetsTypeConditionResponse.fromMap((map['targetsTypeCondition'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

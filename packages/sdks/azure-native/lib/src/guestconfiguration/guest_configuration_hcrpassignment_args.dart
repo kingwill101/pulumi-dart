@@ -29,19 +29,13 @@ class GuestConfigurationHCRPAssignmentArgs {
   /// [properties] Properties of the Guest configuration assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GuestConfigurationHCRPAssignmentArgs({
-    pulumi.Output<String>? guestConfigurationAssignmentName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> machineName,
-    required pulumi.Output<String> name,
-    pulumi.Output<GuestConfigurationAssignmentProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      guestConfigurationAssignmentName = pulumi.Input.asOptionalInput<String>(guestConfigurationAssignmentName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      machineName = pulumi.Input.asInput<String>(machineName),
-      name = pulumi.Input.asInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<GuestConfigurationAssignmentProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.guestConfigurationAssignmentName,
+    this.location,
+    required this.machineName,
+    required this.name,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GuestConfigurationHCRPAssignmentArgs {
 
   factory GuestConfigurationHCRPAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationHCRPAssignmentArgs(
-      guestConfigurationAssignmentName: map['guestConfigurationAssignmentName'] == null ? null : pulumi.Output.create<String>(map['guestConfigurationAssignmentName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<GuestConfigurationAssignmentProperties>(GuestConfigurationAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      guestConfigurationAssignmentName: map['guestConfigurationAssignmentName'] == null ? null : (map['guestConfigurationAssignmentName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (GuestConfigurationAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

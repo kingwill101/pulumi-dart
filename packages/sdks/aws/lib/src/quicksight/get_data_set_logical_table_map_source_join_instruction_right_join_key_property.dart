@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty {
-  final bool uniqueKey;
+  final pulumi.Input<bool> uniqueKey;
 
   /// Creates a new [GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty].
   /// [uniqueKey] Required.
@@ -18,7 +19,7 @@ class GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty {
 
   factory GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty(
-      uniqueKey: map['uniqueKey'] as bool,
+      uniqueKey: (map['uniqueKey'] as bool).input(),
     );
   }
 }

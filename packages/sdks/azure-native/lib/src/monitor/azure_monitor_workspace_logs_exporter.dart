@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_monitor_workspace_logs_api_config.dart';
 import 'cache_configuration.dart';
 import 'concurrency_configuration.dart';
@@ -7,11 +8,11 @@ import 'concurrency_configuration.dart';
 /// Azure Monitor Workspace Logs specific configurations.
 class AzureMonitorWorkspaceLogsExporter {
   /// API configurations for Azure Monitor workspace exporter.
-  final AzureMonitorWorkspaceLogsApiConfig api;
+  final pulumi.Input<AzureMonitorWorkspaceLogsApiConfig> api;
   /// Cache configurations.
-  final CacheConfiguration? cache;
+  final pulumi.Input<CacheConfiguration>? cache;
   /// Concurrency configuration for the exporter.
-  final ConcurrencyConfiguration? concurrency;
+  final pulumi.Input<ConcurrencyConfiguration>? concurrency;
 
   /// Creates a new [AzureMonitorWorkspaceLogsExporter].
   /// [api] API configurations for Azure Monitor workspace exporter.
@@ -25,17 +26,17 @@ class AzureMonitorWorkspaceLogsExporter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'api': api.toMap(),
-      'cache': ?cache == null ? null : cache!.toMap(),
-      'concurrency': ?concurrency == null ? null : concurrency!.toMap(),
+      'api': pulumi.Input.mapInputValue<AzureMonitorWorkspaceLogsApiConfig, Map<String, dynamic>>(api, (value) => value.toMap()),
+      'cache': ?pulumi.Input.mapOptionalInputValue<CacheConfiguration, Map<String, dynamic>>(cache, (value) => value.toMap()),
+      'concurrency': ?pulumi.Input.mapOptionalInputValue<ConcurrencyConfiguration, Map<String, dynamic>>(concurrency, (value) => value.toMap()),
     };
   }
 
   factory AzureMonitorWorkspaceLogsExporter.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceLogsExporter(
-      api: AzureMonitorWorkspaceLogsApiConfig.fromMap((map['api'] as Map).cast<String, dynamic>()),
-      cache: map['cache'] == null ? null : CacheConfiguration.fromMap((map['cache'] as Map).cast<String, dynamic>()),
-      concurrency: map['concurrency'] == null ? null : ConcurrencyConfiguration.fromMap((map['concurrency'] as Map).cast<String, dynamic>()),
+      api: (AzureMonitorWorkspaceLogsApiConfig.fromMap((map['api'] as Map).cast<String, dynamic>())).input(),
+      cache: map['cache'] == null ? null : (CacheConfiguration.fromMap((map['cache'] as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (ConcurrencyConfiguration.fromMap((map['concurrency'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -8,47 +8,47 @@ import 'distribution_ordered_cache_behavior_lambda_function_association.dart';
 
 class DistributionOrderedCacheBehavior {
   /// Controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin.
-  final List<String> allowedMethods;
+  final pulumi.Input<List<String>> allowedMethods;
   /// Unique identifier of the cache policy that is attached to the cache behavior. If configuring the `default_cache_behavior` either `cache_policy_id` or `forwarded_values` must be set.
-  final String? cachePolicyId;
+  final pulumi.Input<String>? cachePolicyId;
   /// Controls whether CloudFront caches the response to requests using the specified HTTP methods.
-  final List<String> cachedMethods;
+  final pulumi.Input<List<String>> cachedMethods;
   /// Whether you want CloudFront to automatically compress content for web requests that include `Accept-Encoding: gzip` in the request header (default: `false`).
-  final bool? compress;
+  final pulumi.Input<bool>? compress;
   /// Default amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request in the absence of an `Cache-Control max-age` or `Expires` header. The TTL defined in Cache Policy overrides this configuration.
-  final int? defaultTtl;
+  final pulumi.Input<int>? defaultTtl;
   /// Field level encryption configuration ID.
-  final String? fieldLevelEncryptionId;
+  final pulumi.Input<String>? fieldLevelEncryptionId;
   /// The forwarded values configuration that specifies how CloudFront handles query strings, cookies and headers (maximum one).
-  final DistributionOrderedCacheBehaviorForwardedValues? forwardedValues;
+  final pulumi.Input<DistributionOrderedCacheBehaviorForwardedValues>? forwardedValues;
   /// A config block that triggers a cloudfront function with specific actions (maximum 2).
-  final List<DistributionOrderedCacheBehaviorFunctionAssociation>? functionAssociations;
+  final pulumi.Input<List<DistributionOrderedCacheBehaviorFunctionAssociation>>? functionAssociations;
   /// A config block that sets the grpc config.
-  final DistributionOrderedCacheBehaviorGrpcConfig? grpcConfig;
+  final pulumi.Input<DistributionOrderedCacheBehaviorGrpcConfig>? grpcConfig;
   /// A config block that triggers a lambda function with specific actions (maximum 4).
-  final List<DistributionOrderedCacheBehaviorLambdaFunctionAssociation>? lambdaFunctionAssociations;
+  final pulumi.Input<List<DistributionOrderedCacheBehaviorLambdaFunctionAssociation>>? lambdaFunctionAssociations;
   /// Maximum amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request to your origin to determine whether the object has been updated. Only effective in the presence of `Cache-Control max-age`, `Cache-Control s-maxage`, and `Expires` headers. The TTL defined in Cache Policy overrides this configuration.
-  final int? maxTtl;
+  final pulumi.Input<int>? maxTtl;
   /// Minimum amount of time that you want objects to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated. Defaults to 0 seconds. The TTL defined in Cache Policy overrides this configuration.
-  final int? minTtl;
+  final pulumi.Input<int>? minTtl;
   /// Unique identifier of the origin request policy that is attached to the behavior.
-  final String? originRequestPolicyId;
+  final pulumi.Input<String>? originRequestPolicyId;
   /// Pattern (for example, `images/*.jpg`) that specifies which requests you want this cache behavior to apply to.
-  final String pathPattern;
+  final pulumi.Input<String> pathPattern;
   /// ARN of the real-time log configuration that is attached to this cache behavior.
-  final String? realtimeLogConfigArn;
+  final pulumi.Input<String>? realtimeLogConfigArn;
   /// Identifier for a response headers policy.
-  final String? responseHeadersPolicyId;
+  final pulumi.Input<String>? responseHeadersPolicyId;
   /// Indicates whether you want to distribute media files in Microsoft Smooth Streaming format using the origin that is associated with this cache behavior.
-  final bool? smoothStreaming;
+  final pulumi.Input<bool>? smoothStreaming;
   /// Value of ID for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.
-  final String targetOriginId;
+  final pulumi.Input<String> targetOriginId;
   /// List of nested attributes for active trusted key groups, if the distribution is set up to serve private content with signed URLs.
-  final List<String>? trustedKeyGroups;
+  final pulumi.Input<List<String>>? trustedKeyGroups;
   /// List of nested attributes for active trusted signers, if the distribution is set up to serve private content with signed URLs.
-  final List<String>? trustedSigners;
+  final pulumi.Input<List<String>>? trustedSigners;
   /// Use this element to specify the protocol that users can use to access the files in the origin specified by TargetOriginId when a request matches the path pattern in PathPattern. One of `allow-all`, `https-only`, or `redirect-to-https`.
-  final String viewerProtocolPolicy;
+  final pulumi.Input<String> viewerProtocolPolicy;
 
   /// Creates a new [DistributionOrderedCacheBehavior].
   /// [allowedMethods] Controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin.
@@ -104,10 +104,10 @@ class DistributionOrderedCacheBehavior {
       'compress': ?compress,
       'defaultTtl': ?defaultTtl,
       'fieldLevelEncryptionId': ?fieldLevelEncryptionId,
-      'forwardedValues': ?forwardedValues == null ? null : forwardedValues!.toMap(),
-      'functionAssociations': ?functionAssociations == null ? null : pulumi.Input.encodeList<DistributionOrderedCacheBehaviorFunctionAssociation, Map<String, dynamic>>(functionAssociations!, (value) => value.toMap()),
-      'grpcConfig': ?grpcConfig == null ? null : grpcConfig!.toMap(),
-      'lambdaFunctionAssociations': ?lambdaFunctionAssociations == null ? null : pulumi.Input.encodeList<DistributionOrderedCacheBehaviorLambdaFunctionAssociation, Map<String, dynamic>>(lambdaFunctionAssociations!, (value) => value.toMap()),
+      'forwardedValues': ?pulumi.Input.mapOptionalInputValue<DistributionOrderedCacheBehaviorForwardedValues, Map<String, dynamic>>(forwardedValues, (value) => value.toMap()),
+      'functionAssociations': ?pulumi.Input.mapOptionalInputValue<List<DistributionOrderedCacheBehaviorFunctionAssociation>, List<Map<String, dynamic>>>(functionAssociations, (value) => pulumi.Input.encodeList<DistributionOrderedCacheBehaviorFunctionAssociation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'grpcConfig': ?pulumi.Input.mapOptionalInputValue<DistributionOrderedCacheBehaviorGrpcConfig, Map<String, dynamic>>(grpcConfig, (value) => value.toMap()),
+      'lambdaFunctionAssociations': ?pulumi.Input.mapOptionalInputValue<List<DistributionOrderedCacheBehaviorLambdaFunctionAssociation>, List<Map<String, dynamic>>>(lambdaFunctionAssociations, (value) => pulumi.Input.encodeList<DistributionOrderedCacheBehaviorLambdaFunctionAssociation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maxTtl': ?maxTtl,
       'minTtl': ?minTtl,
       'originRequestPolicyId': ?originRequestPolicyId,
@@ -124,27 +124,27 @@ class DistributionOrderedCacheBehavior {
 
   factory DistributionOrderedCacheBehavior.fromMap(Map<String, dynamic> map) {
     return DistributionOrderedCacheBehavior(
-      allowedMethods: (map['allowedMethods'] as List).cast<String>(),
-      cachePolicyId: map['cachePolicyId'] == null ? null : map['cachePolicyId'] as String,
-      cachedMethods: (map['cachedMethods'] as List).cast<String>(),
-      compress: map['compress'] == null ? null : map['compress'] as bool,
-      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl'] as int,
-      fieldLevelEncryptionId: map['fieldLevelEncryptionId'] == null ? null : map['fieldLevelEncryptionId'] as String,
-      forwardedValues: map['forwardedValues'] == null ? null : DistributionOrderedCacheBehaviorForwardedValues.fromMap((map['forwardedValues'] as Map).cast<String, dynamic>()),
-      functionAssociations: map['functionAssociations'] == null ? null : pulumi.Input.decodeList<DistributionOrderedCacheBehaviorFunctionAssociation>(map['functionAssociations'], (value) => DistributionOrderedCacheBehaviorFunctionAssociation.fromMap((value as Map).cast<String, dynamic>())),
-      grpcConfig: map['grpcConfig'] == null ? null : DistributionOrderedCacheBehaviorGrpcConfig.fromMap((map['grpcConfig'] as Map).cast<String, dynamic>()),
-      lambdaFunctionAssociations: map['lambdaFunctionAssociations'] == null ? null : pulumi.Input.decodeList<DistributionOrderedCacheBehaviorLambdaFunctionAssociation>(map['lambdaFunctionAssociations'], (value) => DistributionOrderedCacheBehaviorLambdaFunctionAssociation.fromMap((value as Map).cast<String, dynamic>())),
-      maxTtl: map['maxTtl'] == null ? null : map['maxTtl'] as int,
-      minTtl: map['minTtl'] == null ? null : map['minTtl'] as int,
-      originRequestPolicyId: map['originRequestPolicyId'] == null ? null : map['originRequestPolicyId'] as String,
-      pathPattern: map['pathPattern'] as String,
-      realtimeLogConfigArn: map['realtimeLogConfigArn'] == null ? null : map['realtimeLogConfigArn'] as String,
-      responseHeadersPolicyId: map['responseHeadersPolicyId'] == null ? null : map['responseHeadersPolicyId'] as String,
-      smoothStreaming: map['smoothStreaming'] == null ? null : map['smoothStreaming'] as bool,
-      targetOriginId: map['targetOriginId'] as String,
-      trustedKeyGroups: map['trustedKeyGroups'] == null ? null : (map['trustedKeyGroups'] as List).cast<String>(),
-      trustedSigners: map['trustedSigners'] == null ? null : (map['trustedSigners'] as List).cast<String>(),
-      viewerProtocolPolicy: map['viewerProtocolPolicy'] as String,
+      allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
+      cachePolicyId: map['cachePolicyId'] == null ? null : (map['cachePolicyId'] as String).input(),
+      cachedMethods: ((map['cachedMethods'] as List).cast<String>()).input(),
+      compress: map['compress'] == null ? null : (map['compress'] as bool).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      fieldLevelEncryptionId: map['fieldLevelEncryptionId'] == null ? null : (map['fieldLevelEncryptionId'] as String).input(),
+      forwardedValues: map['forwardedValues'] == null ? null : (DistributionOrderedCacheBehaviorForwardedValues.fromMap((map['forwardedValues'] as Map).cast<String, dynamic>())).input(),
+      functionAssociations: map['functionAssociations'] == null ? null : (pulumi.Input.decodeList<DistributionOrderedCacheBehaviorFunctionAssociation>(map['functionAssociations'], (value) => DistributionOrderedCacheBehaviorFunctionAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpcConfig: map['grpcConfig'] == null ? null : (DistributionOrderedCacheBehaviorGrpcConfig.fromMap((map['grpcConfig'] as Map).cast<String, dynamic>())).input(),
+      lambdaFunctionAssociations: map['lambdaFunctionAssociations'] == null ? null : (pulumi.Input.decodeList<DistributionOrderedCacheBehaviorLambdaFunctionAssociation>(map['lambdaFunctionAssociations'], (value) => DistributionOrderedCacheBehaviorLambdaFunctionAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl'] as int).input(),
+      minTtl: map['minTtl'] == null ? null : (map['minTtl'] as int).input(),
+      originRequestPolicyId: map['originRequestPolicyId'] == null ? null : (map['originRequestPolicyId'] as String).input(),
+      pathPattern: (map['pathPattern'] as String).input(),
+      realtimeLogConfigArn: map['realtimeLogConfigArn'] == null ? null : (map['realtimeLogConfigArn'] as String).input(),
+      responseHeadersPolicyId: map['responseHeadersPolicyId'] == null ? null : (map['responseHeadersPolicyId'] as String).input(),
+      smoothStreaming: map['smoothStreaming'] == null ? null : (map['smoothStreaming'] as bool).input(),
+      targetOriginId: (map['targetOriginId'] as String).input(),
+      trustedKeyGroups: map['trustedKeyGroups'] == null ? null : ((map['trustedKeyGroups'] as List).cast<String>()).input(),
+      trustedSigners: map['trustedSigners'] == null ? null : ((map['trustedSigners'] as List).cast<String>()).input(),
+      viewerProtocolPolicy: (map['viewerProtocolPolicy'] as String).input(),
     );
   }
 }

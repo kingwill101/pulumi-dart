@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the user's elastic account.
 class ElasticCloudUserResponse {
   /// Elastic cloud default dashboard sso URL of the Elastic user account.
-  final String elasticCloudSsoDefaultUrl;
+  final pulumi.Input<String> elasticCloudSsoDefaultUrl;
   /// Email of the Elastic User Account.
-  final String emailAddress;
+  final pulumi.Input<String> emailAddress;
   /// User Id of the elastic account of the User.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [ElasticCloudUserResponse].
   /// [elasticCloudSsoDefaultUrl] Elastic cloud default dashboard sso URL of the Elastic user account.
@@ -30,9 +31,9 @@ class ElasticCloudUserResponse {
 
   factory ElasticCloudUserResponse.fromMap(Map<String, dynamic> map) {
     return ElasticCloudUserResponse(
-      elasticCloudSsoDefaultUrl: map['elasticCloudSsoDefaultUrl'] as String,
-      emailAddress: map['emailAddress'] as String,
-      id: map['id'] as String,
+      elasticCloudSsoDefaultUrl: (map['elasticCloudSsoDefaultUrl'] as String).input(),
+      emailAddress: (map['emailAddress'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

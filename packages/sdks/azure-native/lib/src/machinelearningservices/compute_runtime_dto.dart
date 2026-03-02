@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Compute runtime config for feature store type workspace.
 class ComputeRuntimeDto {
-  final String? sparkRuntimeVersion;
+  final pulumi.Input<String>? sparkRuntimeVersion;
 
   /// Creates a new [ComputeRuntimeDto].
   /// [sparkRuntimeVersion] Optional.
@@ -19,7 +20,7 @@ class ComputeRuntimeDto {
 
   factory ComputeRuntimeDto.fromMap(Map<String, dynamic> map) {
     return ComputeRuntimeDto(
-      sparkRuntimeVersion: map['sparkRuntimeVersion'] == null ? null : map['sparkRuntimeVersion'] as String,
+      sparkRuntimeVersion: map['sparkRuntimeVersion'] == null ? null : (map['sparkRuntimeVersion'] as String).input(),
     );
   }
 }

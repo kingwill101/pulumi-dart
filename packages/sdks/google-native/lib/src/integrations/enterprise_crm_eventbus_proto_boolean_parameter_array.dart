@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmEventbusProtoBooleanParameterArray {
-  final List<bool>? booleanValues;
+  final pulumi.Input<List<bool>>? booleanValues;
 
   /// Creates a new [EnterpriseCrmEventbusProtoBooleanParameterArray].
   /// [booleanValues] Optional.
@@ -18,7 +19,7 @@ class EnterpriseCrmEventbusProtoBooleanParameterArray {
 
   factory EnterpriseCrmEventbusProtoBooleanParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBooleanParameterArray(
-      booleanValues: map['booleanValues'] == null ? null : (map['booleanValues'] as List).cast<bool>(),
+      booleanValues: map['booleanValues'] == null ? null : ((map['booleanValues'] as List).cast<bool>()).input(),
     );
   }
 }

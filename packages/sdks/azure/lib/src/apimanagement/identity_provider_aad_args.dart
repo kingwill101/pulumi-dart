@@ -31,21 +31,14 @@ class IdentityProviderAadArgs {
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   /// [signinTenant] The AAD Tenant to use instead of Common when logging into Active Directory.
   IdentityProviderAadArgs({
-    required pulumi.Output<List<String>> allowedTenants,
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> clientId,
-    pulumi.Output<String>? clientLibrary,
-    required pulumi.Output<String> clientSecret,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? signinTenant,
-  }) :
-      allowedTenants = pulumi.Input.asInput<List<String>>(allowedTenants),
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      clientId = pulumi.Input.asInput<String>(clientId),
-      clientLibrary = pulumi.Input.asOptionalInput<String>(clientLibrary),
-      clientSecret = pulumi.Input.asInput<String>(clientSecret),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      signinTenant = pulumi.Input.asOptionalInput<String>(signinTenant);
+    required this.allowedTenants,
+    required this.apiManagementName,
+    required this.clientId,
+    this.clientLibrary,
+    required this.clientSecret,
+    required this.resourceGroupName,
+    this.signinTenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class IdentityProviderAadArgs {
 
   factory IdentityProviderAadArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderAadArgs(
-      allowedTenants: pulumi.Output.create<List<String>>((map['allowedTenants'] as List).cast<String>()),
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      clientLibrary: map['clientLibrary'] == null ? null : pulumi.Output.create<String>(map['clientLibrary'] as String),
-      clientSecret: pulumi.Output.create<String>(map['clientSecret'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      signinTenant: map['signinTenant'] == null ? null : pulumi.Output.create<String>(map['signinTenant'] as String),
+      allowedTenants: ((map['allowedTenants'] as List).cast<String>()).input(),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageReplication {
   /// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
-  final String region;
+  final pulumi.Input<String> region;
   /// The status of an image replica.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ImageReplication].
   /// [region] The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
@@ -24,8 +25,8 @@ class ImageReplication {
 
   factory ImageReplication.fromMap(Map<String, dynamic> map) {
     return ImageReplication(
-      region: map['region'] as String,
-      status: map['status'] as String,
+      region: (map['region'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

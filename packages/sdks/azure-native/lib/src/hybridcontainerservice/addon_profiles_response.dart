@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Addon configurations
 class AddonProfilesResponse {
   /// Config - Key-value pairs for configuring an add-on.
-  final Map<String, String>? config;
+  final pulumi.Input<Map<String, String>>? config;
   /// Enabled - Whether the add-on is enabled or not.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [AddonProfilesResponse].
   /// [config] Config - Key-value pairs for configuring an add-on.
@@ -25,8 +26,8 @@ class AddonProfilesResponse {
 
   factory AddonProfilesResponse.fromMap(Map<String, dynamic> map) {
     return AddonProfilesResponse(
-      config: map['config'] == null ? null : (map['config'] as Map).cast<String, String>(),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      config: map['config'] == null ? null : ((map['config'] as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

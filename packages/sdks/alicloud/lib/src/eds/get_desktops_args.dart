@@ -33,23 +33,15 @@ class GetDesktopsArgs {
   /// [policyGroupId] The policy group id of the Desktop.
   /// [status] The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
   GetDesktopsArgs({
-    pulumi.Output<String>? desktopName,
-    pulumi.Output<List<String>>? endUserIds,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? officeSiteId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? policyGroupId,
-    pulumi.Output<String>? status,
-  }) :
-      desktopName = pulumi.Input.asOptionalInput<String>(desktopName),
-      endUserIds = pulumi.Input.asOptionalInput<List<String>>(endUserIds),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      officeSiteId = pulumi.Input.asOptionalInput<String>(officeSiteId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      policyGroupId = pulumi.Input.asOptionalInput<String>(policyGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.desktopName,
+    this.endUserIds,
+    this.ids,
+    this.nameRegex,
+    this.officeSiteId,
+    this.outputFile,
+    this.policyGroupId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class GetDesktopsArgs {
 
   factory GetDesktopsArgs.fromMap(Map<String, dynamic> map) {
     return GetDesktopsArgs(
-      desktopName: map['desktopName'] == null ? null : pulumi.Output.create<String>(map['desktopName'] as String),
-      endUserIds: map['endUserIds'] == null ? null : pulumi.Output.create<List<String>>((map['endUserIds'] as List).cast<String>()),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      officeSiteId: map['officeSiteId'] == null ? null : pulumi.Output.create<String>(map['officeSiteId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      policyGroupId: map['policyGroupId'] == null ? null : pulumi.Output.create<String>(map['policyGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      desktopName: map['desktopName'] == null ? null : (map['desktopName'] as String).input(),
+      endUserIds: map['endUserIds'] == null ? null : ((map['endUserIds'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      policyGroupId: map['policyGroupId'] == null ? null : (map['policyGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

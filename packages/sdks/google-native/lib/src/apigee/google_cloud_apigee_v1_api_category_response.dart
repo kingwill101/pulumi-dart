@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// `ApiCategory` represents an API category. [Catalog items](/apigee/docs/reference/apis/apigee/rest/v1/organizations.sites.apidocs) can be tagged with API categories; users viewing the API catalog in the portal will have the option to browse the catalog by category.
 class GoogleCloudApigeeV1ApiCategoryResponse {
   /// Name of the category.
-  final String name;
+  final pulumi.Input<String> name;
   /// Name of the portal.
-  final String siteId;
+  final pulumi.Input<String> siteId;
   /// Time the category was last modified in milliseconds since epoch.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GoogleCloudApigeeV1ApiCategoryResponse].
   /// [name] Name of the category.
@@ -30,9 +31,9 @@ class GoogleCloudApigeeV1ApiCategoryResponse {
 
   factory GoogleCloudApigeeV1ApiCategoryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ApiCategoryResponse(
-      name: map['name'] as String,
-      siteId: map['siteId'] as String,
-      updateTime: map['updateTime'] as String,
+      name: (map['name'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

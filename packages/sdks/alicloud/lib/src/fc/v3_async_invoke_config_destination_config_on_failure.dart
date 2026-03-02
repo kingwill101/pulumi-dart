@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3AsyncInvokeConfigDestinationConfigOnFailure {
   /// Asynchronous call target Resource Descriptor
-  final String? destination;
+  final pulumi.Input<String>? destination;
 
   /// Creates a new [V3AsyncInvokeConfigDestinationConfigOnFailure].
   /// [destination] Asynchronous call target Resource Descriptor
@@ -19,7 +20,7 @@ class V3AsyncInvokeConfigDestinationConfigOnFailure {
 
   factory V3AsyncInvokeConfigDestinationConfigOnFailure.fromMap(Map<String, dynamic> map) {
     return V3AsyncInvokeConfigDestinationConfigOnFailure(
-      destination: map['destination'] == null ? null : map['destination'] as String,
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
     );
   }
 }

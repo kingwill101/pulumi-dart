@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
   /// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
-  final String instance;
+  final pulumi.Input<String> instance;
   /// The unique id of the primary instance.
-  final String uid;
+  final pulumi.Input<String> uid;
 
   /// Creates a new [GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance].
   /// [instance] The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
@@ -24,8 +25,8 @@ class GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
 
   factory GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance.fromMap(Map<String, dynamic> map) {
     return GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance(
-      instance: map['instance'] as String,
-      uid: map['uid'] as String,
+      instance: (map['instance'] as String).input(),
+      uid: (map['uid'] as String).input(),
     );
   }
 }

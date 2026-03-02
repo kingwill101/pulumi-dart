@@ -6,15 +6,15 @@ import 'instance_view_status_response.dart';
 /// The instance view of a virtual machine extension.
 class VirtualMachineExtensionInstanceViewResponse {
   /// The virtual machine extension name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The resource status information.
-  final List<InstanceViewStatusResponse>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
   /// The resource status information.
-  final List<InstanceViewStatusResponse>? substatuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>>? substatuses;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Specifies the version of the script handler.
-  final String? typeHandlerVersion;
+  final pulumi.Input<String>? typeHandlerVersion;
 
   /// Creates a new [VirtualMachineExtensionInstanceViewResponse].
   /// [name] The virtual machine extension name.
@@ -33,8 +33,8 @@ class VirtualMachineExtensionInstanceViewResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'statuses': ?statuses == null ? null : pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(statuses!, (value) => value.toMap()),
-      'substatuses': ?substatuses == null ? null : pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(substatuses!, (value) => value.toMap()),
+      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'substatuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(substatuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
       'typeHandlerVersion': ?typeHandlerVersion,
     };
@@ -42,11 +42,11 @@ class VirtualMachineExtensionInstanceViewResponse {
 
   factory VirtualMachineExtensionInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineExtensionInstanceViewResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      statuses: map['statuses'] == null ? null : pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      substatuses: map['substatuses'] == null ? null : pulumi.Input.decodeList<InstanceViewStatusResponse>(map['substatuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      substatuses: map['substatuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['substatuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

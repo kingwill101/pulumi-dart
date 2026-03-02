@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainMatchingAutoMergingConflictResolution {
   /// How the auto-merging process should resolve conflicts between different profiles. Valid values are `RECENCY` and `SOURCE`
-  final String conflictResolvingModel;
+  final pulumi.Input<String> conflictResolvingModel;
   /// The `ObjectType` name that is used to resolve profile merging conflicts when choosing `SOURCE` as the `ConflictResolvingModel`.
-  final String? sourceName;
+  final pulumi.Input<String>? sourceName;
 
   /// Creates a new [DomainMatchingAutoMergingConflictResolution].
   /// [conflictResolvingModel] How the auto-merging process should resolve conflicts between different profiles. Valid values are `RECENCY` and `SOURCE`
@@ -24,8 +25,8 @@ class DomainMatchingAutoMergingConflictResolution {
 
   factory DomainMatchingAutoMergingConflictResolution.fromMap(Map<String, dynamic> map) {
     return DomainMatchingAutoMergingConflictResolution(
-      conflictResolvingModel: map['conflictResolvingModel'] as String,
-      sourceName: map['sourceName'] == null ? null : map['sourceName'] as String,
+      conflictResolvingModel: (map['conflictResolvingModel'] as String).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
     );
   }
 }

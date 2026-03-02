@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BlockchainNodesEthereumDetailsAdditionalEndpoint {
   /// The assigned URL for the node's Beacon API endpoint.
-  final String? beaconApiEndpoint;
+  final pulumi.Input<String>? beaconApiEndpoint;
   /// The assigned URL for the node's Beacon Prometheus metrics endpoint.
-  final String? beaconPrometheusMetricsApiEndpoint;
+  final pulumi.Input<String>? beaconPrometheusMetricsApiEndpoint;
   /// The assigned URL for the node's execution client's Prometheus metrics endpoint.
-  final String? executionClientPrometheusMetricsApiEndpoint;
+  final pulumi.Input<String>? executionClientPrometheusMetricsApiEndpoint;
 
   /// Creates a new [BlockchainNodesEthereumDetailsAdditionalEndpoint].
   /// [beaconApiEndpoint] The assigned URL for the node's Beacon API endpoint.
@@ -29,9 +30,9 @@ class BlockchainNodesEthereumDetailsAdditionalEndpoint {
 
   factory BlockchainNodesEthereumDetailsAdditionalEndpoint.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesEthereumDetailsAdditionalEndpoint(
-      beaconApiEndpoint: map['beaconApiEndpoint'] == null ? null : map['beaconApiEndpoint'] as String,
-      beaconPrometheusMetricsApiEndpoint: map['beaconPrometheusMetricsApiEndpoint'] == null ? null : map['beaconPrometheusMetricsApiEndpoint'] as String,
-      executionClientPrometheusMetricsApiEndpoint: map['executionClientPrometheusMetricsApiEndpoint'] == null ? null : map['executionClientPrometheusMetricsApiEndpoint'] as String,
+      beaconApiEndpoint: map['beaconApiEndpoint'] == null ? null : (map['beaconApiEndpoint'] as String).input(),
+      beaconPrometheusMetricsApiEndpoint: map['beaconPrometheusMetricsApiEndpoint'] == null ? null : (map['beaconPrometheusMetricsApiEndpoint'] as String).input(),
+      executionClientPrometheusMetricsApiEndpoint: map['executionClientPrometheusMetricsApiEndpoint'] == null ? null : (map['executionClientPrometheusMetricsApiEndpoint'] as String).input(),
     );
   }
 }

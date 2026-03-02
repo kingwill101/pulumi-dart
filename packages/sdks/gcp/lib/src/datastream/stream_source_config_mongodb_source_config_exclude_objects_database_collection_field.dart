@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField {
   /// Field name.
-  final String? field;
+  final pulumi.Input<String>? field;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField].
   /// [field] Field name.
@@ -19,7 +20,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField
 
   factory StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField(
-      field: map['field'] == null ? null : map['field'] as String,
+      field: map['field'] == null ? null : (map['field'] as String).input(),
     );
   }
 }

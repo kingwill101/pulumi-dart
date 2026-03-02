@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField {
   /// Name describing the field excluded from scanning.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField].
   /// [name] Name describing the field excluded from scanning.
@@ -19,7 +20,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField {
 
   factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

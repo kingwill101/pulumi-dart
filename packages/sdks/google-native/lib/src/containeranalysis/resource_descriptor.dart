@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceDescriptor {
-  final Map<String, String>? annotations;
-  final String? content;
-  final Map<String, String>? digest;
-  final String? downloadLocation;
-  final String? mediaType;
-  final String? name;
-  final String? uri;
+  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<String>? content;
+  final pulumi.Input<Map<String, String>>? digest;
+  final pulumi.Input<String>? downloadLocation;
+  final pulumi.Input<String>? mediaType;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ResourceDescriptor].
   /// [annotations] Optional.
@@ -42,13 +43,13 @@ class ResourceDescriptor {
 
   factory ResourceDescriptor.fromMap(Map<String, dynamic> map) {
     return ResourceDescriptor(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
-      content: map['content'] == null ? null : map['content'] as String,
-      digest: map['digest'] == null ? null : (map['digest'] as Map).cast<String, String>(),
-      downloadLocation: map['downloadLocation'] == null ? null : map['downloadLocation'] as String,
-      mediaType: map['mediaType'] == null ? null : map['mediaType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      digest: map['digest'] == null ? null : ((map['digest'] as Map).cast<String, String>()).input(),
+      downloadLocation: map['downloadLocation'] == null ? null : (map['downloadLocation'] as String).input(),
+      mediaType: map['mediaType'] == null ? null : (map['mediaType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

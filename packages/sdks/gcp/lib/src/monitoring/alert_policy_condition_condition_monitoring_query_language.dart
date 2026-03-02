@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_policy_condition_condition_monitoring_query_language_trigger.dart';
 
 class AlertPolicyConditionConditionMonitoringQueryLanguage {
@@ -18,14 +19,14 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
   /// generate spurious alerts, but short enough
   /// that unhealthy states are detected and
   /// alerted on quickly.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// A condition control that determines how
   /// metric-threshold conditions are evaluated when
   /// data stops arriving.
   /// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
-  final String? evaluationMissingData;
+  final pulumi.Input<String>? evaluationMissingData;
   /// Monitoring Query Language query that outputs a boolean stream.
-  final String query;
+  final pulumi.Input<String> query;
   /// The number/percent of time series for which
   /// the comparison must hold in order for the
   /// condition to trigger. If unspecified, then
@@ -35,7 +36,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
   /// or by the ratio, if denominator_filter and
   /// denominator_aggregations are specified.
   /// Structure is documented below.
-  final AlertPolicyConditionConditionMonitoringQueryLanguageTrigger? trigger;
+  final pulumi.Input<AlertPolicyConditionConditionMonitoringQueryLanguageTrigger>? trigger;
 
   /// Creates a new [AlertPolicyConditionConditionMonitoringQueryLanguage].
   /// [duration] The amount of time that a time series must
@@ -54,16 +55,16 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
       'duration': duration,
       'evaluationMissingData': ?evaluationMissingData,
       'query': query,
-      'trigger': ?trigger == null ? null : trigger!.toMap(),
+      'trigger': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionMonitoringQueryLanguageTrigger, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
   factory AlertPolicyConditionConditionMonitoringQueryLanguage.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionMonitoringQueryLanguage(
-      duration: map['duration'] as String,
-      evaluationMissingData: map['evaluationMissingData'] == null ? null : map['evaluationMissingData'] as String,
-      query: map['query'] as String,
-      trigger: map['trigger'] == null ? null : AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>()),
+      duration: (map['duration'] as String).input(),
+      evaluationMissingData: map['evaluationMissingData'] == null ? null : (map['evaluationMissingData'] as String).input(),
+      query: (map['query'] as String).input(),
+      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetJobDefinitionArgs {
   /// [revision] The revision of the job definition.
   /// [status] The status of the job definition.
   GetJobDefinitionArgs({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? revision,
-    pulumi.Output<String>? status,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revision = pulumi.Input.asOptionalInput<int>(revision),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.arn,
+    this.name,
+    this.region,
+    this.revision,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetJobDefinitionArgs {
 
   factory GetJobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionArgs(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revision: map['revision'] == null ? null : pulumi.Output.create<int>(map['revision'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

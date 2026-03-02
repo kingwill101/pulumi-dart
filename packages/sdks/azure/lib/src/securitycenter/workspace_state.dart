@@ -13,11 +13,9 @@ class WorkspaceState {
   /// [scope] The scope of VMs to send their security data to the desired workspace, unless overridden by a setting with more specific scope.
   /// [workspaceId] The ID of the Log Analytics Workspace to save the data in.
   WorkspaceState({
-    pulumi.Output<String>? scope,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.scope,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

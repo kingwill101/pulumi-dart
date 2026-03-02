@@ -19,13 +19,10 @@ class PortfolioArgs {
   /// [portfolioName] The name of the portfolio
   /// [providerName] The provider name of the portfolio
   PortfolioArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> portfolioName,
-    required pulumi.Output<String> providerName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      portfolioName = pulumi.Input.asInput<String>(portfolioName),
-      providerName = pulumi.Input.asInput<String>(providerName);
+    this.description,
+    required this.portfolioName,
+    required this.providerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PortfolioArgs {
 
   factory PortfolioArgs.fromMap(Map<String, dynamic> map) {
     return PortfolioArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      portfolioName: pulumi.Output.create<String>(map['portfolioName'] as String),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      portfolioName: (map['portfolioName'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
     );
   }
 }

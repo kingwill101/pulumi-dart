@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolKubeletConfigurationTracing {
   /// The endpoint of the collector.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// Number of samples to be collected per million span.
-  final String? samplingRatePerMillion;
+  final pulumi.Input<String>? samplingRatePerMillion;
 
   /// Creates a new [NodePoolKubeletConfigurationTracing].
   /// [endpoint] The endpoint of the collector.
@@ -24,8 +25,8 @@ class NodePoolKubeletConfigurationTracing {
 
   factory NodePoolKubeletConfigurationTracing.fromMap(Map<String, dynamic> map) {
     return NodePoolKubeletConfigurationTracing(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      samplingRatePerMillion: map['samplingRatePerMillion'] == null ? null : map['samplingRatePerMillion'] as String,
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      samplingRatePerMillion: map['samplingRatePerMillion'] == null ? null : (map['samplingRatePerMillion'] as String).input(),
     );
   }
 }

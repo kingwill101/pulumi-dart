@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnvironmentConfigWorkloadsConfigScheduler {
   /// The number of schedulers.
-  final int count;
+  final pulumi.Input<int> count;
   /// CPU request and limit for a single Airflow scheduler replica
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// Memory (GB) request and limit for a single Airflow scheduler replica.
-  final double memoryGb;
+  final pulumi.Input<double> memoryGb;
   /// Storage (GB) request and limit for a single Airflow scheduler replica.
-  final double storageGb;
+  final pulumi.Input<double> storageGb;
 
   /// Creates a new [GetEnvironmentConfigWorkloadsConfigScheduler].
   /// [count] The number of schedulers.
@@ -34,10 +35,10 @@ class GetEnvironmentConfigWorkloadsConfigScheduler {
 
   factory GetEnvironmentConfigWorkloadsConfigScheduler.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigScheduler(
-      count: map['count'] as int,
-      cpu: map['cpu'] as double,
-      memoryGb: map['memoryGb'] as double,
-      storageGb: map['storageGb'] as double,
+      count: (map['count'] as int).input(),
+      cpu: (map['cpu'] as double).input(),
+      memoryGb: (map['memoryGb'] as double).input(),
+      storageGb: (map['storageGb'] as double).input(),
     );
   }
 }

@@ -20,15 +20,11 @@ class SchemaState {
   /// [policyStoreId] The ID of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   SchemaState({
-    pulumi.Output<SchemaDefinition>? definition,
-    pulumi.Output<List<String>>? namespaces,
-    pulumi.Output<String>? policyStoreId,
-    pulumi.Output<String>? region,
-  }) :
-      definition = pulumi.Input.asOptionalInput<SchemaDefinition>(definition),
-      namespaces = pulumi.Input.asOptionalInput<List<String>>(namespaces),
-      policyStoreId = pulumi.Input.asOptionalInput<String>(policyStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.definition,
+    this.namespaces,
+    this.policyStoreId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      definition: map['definition'] == null ? null : pulumi.Output.create<SchemaDefinition>(SchemaDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())),
-      namespaces: map['namespaces'] == null ? null : pulumi.Output.create<List<String>>((map['namespaces'] as List).cast<String>()),
-      policyStoreId: map['policyStoreId'] == null ? null : pulumi.Output.create<String>(map['policyStoreId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      definition: map['definition'] == null ? null : (SchemaDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

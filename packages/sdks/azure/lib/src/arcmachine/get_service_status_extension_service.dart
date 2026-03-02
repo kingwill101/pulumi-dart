@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceStatusExtensionService {
   /// The behavior of the service when the Arc-enabled machine starts up.
-  final String startupType;
+  final pulumi.Input<String> startupType;
   /// The current status of the service.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetServiceStatusExtensionService].
   /// [startupType] The behavior of the service when the Arc-enabled machine starts up.
@@ -24,8 +25,8 @@ class GetServiceStatusExtensionService {
 
   factory GetServiceStatusExtensionService.fromMap(Map<String, dynamic> map) {
     return GetServiceStatusExtensionService(
-      startupType: map['startupType'] as String,
-      status: map['status'] as String,
+      startupType: (map['startupType'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

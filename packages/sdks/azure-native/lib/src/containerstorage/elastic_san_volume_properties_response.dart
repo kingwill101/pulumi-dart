@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the ElasticSAN iSCSI target
 class ElasticSanVolumePropertiesResponse {
   /// iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server"
-  final String targetIqn;
+  final pulumi.Input<String> targetIqn;
   /// iSCSI Target Portal Host Name
-  final String targetPortalHostname;
+  final pulumi.Input<String> targetPortalHostname;
   /// iSCSI Target Portal Port
-  final int targetPortalPort;
+  final pulumi.Input<int> targetPortalPort;
 
   /// Creates a new [ElasticSanVolumePropertiesResponse].
   /// [targetIqn] iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server"
@@ -30,9 +31,9 @@ class ElasticSanVolumePropertiesResponse {
 
   factory ElasticSanVolumePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSanVolumePropertiesResponse(
-      targetIqn: map['targetIqn'] as String,
-      targetPortalHostname: map['targetPortalHostname'] as String,
-      targetPortalPort: map['targetPortalPort'] as int,
+      targetIqn: (map['targetIqn'] as String).input(),
+      targetPortalHostname: (map['targetPortalHostname'] as String).input(),
+      targetPortalPort: (map['targetPortalPort'] as int).input(),
     );
   }
 }

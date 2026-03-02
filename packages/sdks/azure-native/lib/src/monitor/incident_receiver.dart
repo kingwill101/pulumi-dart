@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'incident_service_connection.dart';
 
 /// An Incident receiver.
 class IncidentReceiver {
   /// The incident service connection
-  final IncidentServiceConnection connection;
+  final pulumi.Input<IncidentServiceConnection> connection;
   /// The incident management service type
-  final String incidentManagementService;
+  final pulumi.Input<String> incidentManagementService;
   /// Field mappings for the incident service
-  final Map<String, String> mappings;
+  final pulumi.Input<Map<String, String>> mappings;
   /// The name of the Incident receiver. Names must be unique across all receivers within an action group.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [IncidentReceiver].
   /// [connection] The incident service connection
@@ -27,7 +28,7 @@ class IncidentReceiver {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connection': connection.toMap(),
+      'connection': pulumi.Input.mapInputValue<IncidentServiceConnection, Map<String, dynamic>>(connection, (value) => value.toMap()),
       'incidentManagementService': incidentManagementService,
       'mappings': mappings,
       'name': name,
@@ -36,10 +37,10 @@ class IncidentReceiver {
 
   factory IncidentReceiver.fromMap(Map<String, dynamic> map) {
     return IncidentReceiver(
-      connection: IncidentServiceConnection.fromMap((map['connection'] as Map).cast<String, dynamic>()),
-      incidentManagementService: map['incidentManagementService'] as String,
-      mappings: (map['mappings'] as Map).cast<String, String>(),
-      name: map['name'] as String,
+      connection: (IncidentServiceConnection.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
+      incidentManagementService: (map['incidentManagementService'] as String).input(),
+      mappings: ((map['mappings'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

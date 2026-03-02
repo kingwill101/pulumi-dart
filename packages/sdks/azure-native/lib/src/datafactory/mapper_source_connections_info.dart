@@ -7,9 +7,9 @@ import 'mapper_table.dart';
 /// A object which contains list of tables and connection details for a source connection.
 class MapperSourceConnectionsInfo {
   /// Source connection details.
-  final MapperConnection? connection;
+  final pulumi.Input<MapperConnection>? connection;
   /// List of source tables for a source connection.
-  final List<MapperTable>? sourceEntities;
+  final pulumi.Input<List<MapperTable>>? sourceEntities;
 
   /// Creates a new [MapperSourceConnectionsInfo].
   /// [connection] Source connection details.
@@ -21,15 +21,15 @@ class MapperSourceConnectionsInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connection': ?connection == null ? null : connection!.toMap(),
-      'sourceEntities': ?sourceEntities == null ? null : pulumi.Input.encodeList<MapperTable, Map<String, dynamic>>(sourceEntities!, (value) => value.toMap()),
+      'connection': ?pulumi.Input.mapOptionalInputValue<MapperConnection, Map<String, dynamic>>(connection, (value) => value.toMap()),
+      'sourceEntities': ?pulumi.Input.mapOptionalInputValue<List<MapperTable>, List<Map<String, dynamic>>>(sourceEntities, (value) => pulumi.Input.encodeList<MapperTable, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MapperSourceConnectionsInfo.fromMap(Map<String, dynamic> map) {
     return MapperSourceConnectionsInfo(
-      connection: map['connection'] == null ? null : MapperConnection.fromMap((map['connection'] as Map).cast<String, dynamic>()),
-      sourceEntities: map['sourceEntities'] == null ? null : pulumi.Input.decodeList<MapperTable>(map['sourceEntities'], (value) => MapperTable.fromMap((value as Map).cast<String, dynamic>())),
+      connection: map['connection'] == null ? null : (MapperConnection.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
+      sourceEntities: map['sourceEntities'] == null ? null : (pulumi.Input.decodeList<MapperTable>(map['sourceEntities'], (value) => MapperTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -55,27 +55,17 @@ class InstanceArgs {
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [peeringCidrRange] The size of the CIDR block range that will be reserved by the instance. For valid values,
   InstanceArgs({
-    pulumi.Output<InstanceAccessLoggingConfig>? accessLoggingConfig,
-    pulumi.Output<List<String>>? consumerAcceptLists,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? diskEncryptionKeyName,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? ipRange,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> orgId,
-    pulumi.Output<String>? peeringCidrRange,
-  }) :
-      accessLoggingConfig = pulumi.Input.asOptionalInput<InstanceAccessLoggingConfig>(accessLoggingConfig),
-      consumerAcceptLists = pulumi.Input.asOptionalInput<List<String>>(consumerAcceptLists),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskEncryptionKeyName = pulumi.Input.asOptionalInput<String>(diskEncryptionKeyName),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      peeringCidrRange = pulumi.Input.asOptionalInput<String>(peeringCidrRange);
+    this.accessLoggingConfig,
+    this.consumerAcceptLists,
+    this.description,
+    this.diskEncryptionKeyName,
+    this.displayName,
+    this.ipRange,
+    required this.location,
+    this.name,
+    required this.orgId,
+    this.peeringCidrRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,16 +84,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      accessLoggingConfig: map['accessLoggingConfig'] == null ? null : pulumi.Output.create<InstanceAccessLoggingConfig>(InstanceAccessLoggingConfig.fromMap((map['accessLoggingConfig'] as Map).cast<String, dynamic>())),
-      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : pulumi.Output.create<List<String>>((map['consumerAcceptLists'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : pulumi.Output.create<String>(map['diskEncryptionKeyName'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      peeringCidrRange: map['peeringCidrRange'] == null ? null : pulumi.Output.create<String>(map['peeringCidrRange'] as String),
+      accessLoggingConfig: map['accessLoggingConfig'] == null ? null : (InstanceAccessLoggingConfig.fromMap((map['accessLoggingConfig'] as Map).cast<String, dynamic>())).input(),
+      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : ((map['consumerAcceptLists'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : (map['diskEncryptionKeyName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      peeringCidrRange: map['peeringCidrRange'] == null ? null : (map['peeringCidrRange'] as String).input(),
     );
   }
 }

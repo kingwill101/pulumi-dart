@@ -17,13 +17,10 @@ class BgpPolicyState {
   /// [policyName] The name of the resource
   /// [type] Type
   BgpPolicyState({
-    pulumi.Output<BgpPolicyContent>? content,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? type,
-  }) :
-      content = pulumi.Input.asOptionalInput<BgpPolicyContent>(content),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.content,
+    this.policyName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class BgpPolicyState {
 
   factory BgpPolicyState.fromMap(Map<String, dynamic> map) {
     return BgpPolicyState(
-      content: map['content'] == null ? null : pulumi.Output.create<BgpPolicyContent>(BgpPolicyContent.fromMap((map['content'] as Map).cast<String, dynamic>())),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      content: map['content'] == null ? null : (BgpPolicyContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

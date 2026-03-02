@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Deprecated] All fields defined in a principal are ANDed.
 class PrincipalResponse {
   /// An expression to specify custom condition.
-  final String condition;
+  final pulumi.Input<String> condition;
   /// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
-  final List<String> groups;
+  final pulumi.Input<List<String>> groups;
   /// IPv4 or IPv6 address or range (In CIDR format)
-  final List<String> ips;
+  final pulumi.Input<List<String>> ips;
   /// The namespaces. Exact match, prefix match, and suffix match are supported.
-  final List<String> namespaces;
+  final pulumi.Input<List<String>> namespaces;
   /// Negate of groups. Specifies exclusions.
-  final List<String> notGroups;
+  final pulumi.Input<List<String>> notGroups;
   /// Negate of IPs. Specifies exclusions.
-  final List<String> notIps;
+  final pulumi.Input<List<String>> notIps;
   /// Negate of namespaces. Specifies exclusions.
-  final List<String> notNamespaces;
+  final pulumi.Input<List<String>> notNamespaces;
   /// Negate of users. Specifies exclusions.
-  final List<String> notUsers;
+  final pulumi.Input<List<String>> notUsers;
   /// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
-  final Map<String, String> properties;
+  final pulumi.Input<Map<String, String>> properties;
   /// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
-  final List<String> users;
+  final pulumi.Input<List<String>> users;
 
   /// Creates a new [PrincipalResponse].
   /// [condition] An expression to specify custom condition.
@@ -65,16 +66,16 @@ class PrincipalResponse {
 
   factory PrincipalResponse.fromMap(Map<String, dynamic> map) {
     return PrincipalResponse(
-      condition: map['condition'] as String,
-      groups: (map['groups'] as List).cast<String>(),
-      ips: (map['ips'] as List).cast<String>(),
-      namespaces: (map['namespaces'] as List).cast<String>(),
-      notGroups: (map['notGroups'] as List).cast<String>(),
-      notIps: (map['notIps'] as List).cast<String>(),
-      notNamespaces: (map['notNamespaces'] as List).cast<String>(),
-      notUsers: (map['notUsers'] as List).cast<String>(),
-      properties: (map['properties'] as Map).cast<String, String>(),
-      users: (map['users'] as List).cast<String>(),
+      condition: (map['condition'] as String).input(),
+      groups: ((map['groups'] as List).cast<String>()).input(),
+      ips: ((map['ips'] as List).cast<String>()).input(),
+      namespaces: ((map['namespaces'] as List).cast<String>()).input(),
+      notGroups: ((map['notGroups'] as List).cast<String>()).input(),
+      notIps: ((map['notIps'] as List).cast<String>()).input(),
+      notNamespaces: ((map['notNamespaces'] as List).cast<String>()).input(),
+      notUsers: ((map['notUsers'] as List).cast<String>()).input(),
+      properties: ((map['properties'] as Map).cast<String, String>()).input(),
+      users: ((map['users'] as List).cast<String>()).input(),
     );
   }
 }

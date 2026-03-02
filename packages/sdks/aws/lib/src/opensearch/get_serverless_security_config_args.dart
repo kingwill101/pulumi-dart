@@ -20,13 +20,10 @@ class GetServerlessSecurityConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [samlOptions] SAML options for the security configuration.
   GetServerlessSecurityConfigArgs({
-    required pulumi.Output<String> id,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<GetServerlessSecurityConfigSamlOption>>? samlOptions,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      samlOptions = pulumi.Input.asOptionalInput<List<GetServerlessSecurityConfigSamlOption>>(samlOptions);
+    required this.id,
+    this.region,
+    this.samlOptions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetServerlessSecurityConfigArgs {
 
   factory GetServerlessSecurityConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessSecurityConfigArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      samlOptions: map['samlOptions'] == null ? null : pulumi.Output.create<List<GetServerlessSecurityConfigSamlOption>>(pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(map['samlOptions'], (value) => GetServerlessSecurityConfigSamlOption.fromMap((value as Map).cast<String, dynamic>()))),
+      id: (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      samlOptions: map['samlOptions'] == null ? null : (pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(map['samlOptions'], (value) => GetServerlessSecurityConfigSamlOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

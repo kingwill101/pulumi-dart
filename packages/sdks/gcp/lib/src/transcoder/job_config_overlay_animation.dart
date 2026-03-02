@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_config_overlay_animation_animation_fade.dart';
 
 class JobConfigOverlayAnimation {
   /// Display overlay object with fade animation.
   /// Structure is documented below.
-  final JobConfigOverlayAnimationAnimationFade? animationFade;
+  final pulumi.Input<JobConfigOverlayAnimationAnimationFade>? animationFade;
 
   /// Creates a new [JobConfigOverlayAnimation].
   /// [animationFade] Display overlay object with fade animation.
@@ -15,13 +16,13 @@ class JobConfigOverlayAnimation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'animationFade': ?animationFade == null ? null : animationFade!.toMap(),
+      'animationFade': ?pulumi.Input.mapOptionalInputValue<JobConfigOverlayAnimationAnimationFade, Map<String, dynamic>>(animationFade, (value) => value.toMap()),
     };
   }
 
   factory JobConfigOverlayAnimation.fromMap(Map<String, dynamic> map) {
     return JobConfigOverlayAnimation(
-      animationFade: map['animationFade'] == null ? null : JobConfigOverlayAnimationAnimationFade.fromMap((map['animationFade'] as Map).cast<String, dynamic>()),
+      animationFade: map['animationFade'] == null ? null : (JobConfigOverlayAnimationAnimationFade.fromMap((map['animationFade'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

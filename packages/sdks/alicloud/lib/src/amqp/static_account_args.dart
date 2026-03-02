@@ -19,13 +19,10 @@ class StaticAccountArgs {
   /// [instanceId] Amqp instance ID.
   /// [secretKey] Secret key.
   StaticAccountArgs({
-    required pulumi.Output<String> accessKey,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> secretKey,
-  }) :
-      accessKey = pulumi.Input.asInput<String>(accessKey),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      secretKey = pulumi.Input.asInput<String>(secretKey);
+    required this.accessKey,
+    required this.instanceId,
+    required this.secretKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class StaticAccountArgs {
 
   factory StaticAccountArgs.fromMap(Map<String, dynamic> map) {
     return StaticAccountArgs(
-      accessKey: pulumi.Output.create<String>(map['accessKey'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      secretKey: pulumi.Output.create<String>(map['secretKey'] as String),
+      accessKey: (map['accessKey'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      secretKey: (map['secretKey'] as String).input(),
     );
   }
 }

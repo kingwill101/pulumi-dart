@@ -22,15 +22,11 @@ class GetIncidentCommentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetIncidentCommentArgs({
-    required pulumi.Output<String> incidentCommentId,
-    required pulumi.Output<String> incidentId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      incidentCommentId = pulumi.Input.asInput<String>(incidentCommentId),
-      incidentId = pulumi.Input.asInput<String>(incidentId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.incidentCommentId,
+    required this.incidentId,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetIncidentCommentArgs {
 
   factory GetIncidentCommentArgs.fromMap(Map<String, dynamic> map) {
     return GetIncidentCommentArgs(
-      incidentCommentId: pulumi.Output.create<String>(map['incidentCommentId'] as String),
-      incidentId: pulumi.Output.create<String>(map['incidentId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      incidentCommentId: (map['incidentCommentId'] as String).input(),
+      incidentId: (map['incidentId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

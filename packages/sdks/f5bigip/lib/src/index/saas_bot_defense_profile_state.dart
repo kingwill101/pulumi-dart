@@ -35,25 +35,16 @@ class SaasBotDefenseProfileState {
   /// [sslProfile] Specifies a server-side SSL profile that is different from what the application pool uses
   /// [tenantId] Specifies the tenant ID, enter the value provided by F5 Support
   SaasBotDefenseProfileState({
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SaasBotDefenseProfileProtectedEndpoint>>? protectedEndpoints,
-    pulumi.Output<String>? shapeProtectionPool,
-    pulumi.Output<String>? sslProfile,
-    pulumi.Output<String>? tenantId,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectedEndpoints = pulumi.Input.asOptionalInput<List<SaasBotDefenseProfileProtectedEndpoint>>(protectedEndpoints),
-      shapeProtectionPool = pulumi.Input.asOptionalInput<String>(shapeProtectionPool),
-      sslProfile = pulumi.Input.asOptionalInput<String>(sslProfile),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.apiKey,
+    this.applicationId,
+    this.defaultsFrom,
+    this.description,
+    this.name,
+    this.protectedEndpoints,
+    this.shapeProtectionPool,
+    this.sslProfile,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class SaasBotDefenseProfileState {
 
   factory SaasBotDefenseProfileState.fromMap(Map<String, dynamic> map) {
     return SaasBotDefenseProfileState(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectedEndpoints: map['protectedEndpoints'] == null ? null : pulumi.Output.create<List<SaasBotDefenseProfileProtectedEndpoint>>(pulumi.Input.decodeList<SaasBotDefenseProfileProtectedEndpoint>(map['protectedEndpoints'], (value) => SaasBotDefenseProfileProtectedEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      shapeProtectionPool: map['shapeProtectionPool'] == null ? null : pulumi.Output.create<String>(map['shapeProtectionPool'] as String),
-      sslProfile: map['sslProfile'] == null ? null : pulumi.Output.create<String>(map['sslProfile'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectedEndpoints: map['protectedEndpoints'] == null ? null : (pulumi.Input.decodeList<SaasBotDefenseProfileProtectedEndpoint>(map['protectedEndpoints'], (value) => SaasBotDefenseProfileProtectedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shapeProtectionPool: map['shapeProtectionPool'] == null ? null : (map['shapeProtectionPool'] as String).input(),
+      sslProfile: map['sslProfile'] == null ? null : (map['sslProfile'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

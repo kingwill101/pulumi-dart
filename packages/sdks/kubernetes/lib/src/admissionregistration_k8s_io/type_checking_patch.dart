@@ -6,7 +6,7 @@ import 'expression_warning_patch.dart';
 /// TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy
 class TypeCheckingPatch {
   /// The type checking warnings for each expression.
-  final List<ExpressionWarningPatch>? expressionWarnings;
+  final pulumi.Input<List<ExpressionWarningPatch>>? expressionWarnings;
 
   /// Creates a new [TypeCheckingPatch].
   /// [expressionWarnings] The type checking warnings for each expression.
@@ -16,13 +16,13 @@ class TypeCheckingPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressionWarnings': ?expressionWarnings == null ? null : pulumi.Input.encodeList<ExpressionWarningPatch, Map<String, dynamic>>(expressionWarnings!, (value) => value.toMap()),
+      'expressionWarnings': ?pulumi.Input.mapOptionalInputValue<List<ExpressionWarningPatch>, List<Map<String, dynamic>>>(expressionWarnings, (value) => pulumi.Input.encodeList<ExpressionWarningPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TypeCheckingPatch.fromMap(Map<String, dynamic> map) {
     return TypeCheckingPatch(
-      expressionWarnings: map['expressionWarnings'] == null ? null : pulumi.Input.decodeList<ExpressionWarningPatch>(map['expressionWarnings'], (value) => ExpressionWarningPatch.fromMap((value as Map).cast<String, dynamic>())),
+      expressionWarnings: map['expressionWarnings'] == null ? null : (pulumi.Input.decodeList<ExpressionWarningPatch>(map['expressionWarnings'], (value) => ExpressionWarningPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

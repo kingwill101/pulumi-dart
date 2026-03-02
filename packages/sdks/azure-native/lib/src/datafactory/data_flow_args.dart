@@ -23,15 +23,11 @@ class DataFlowArgs {
   /// [properties] Data flow properties.
   /// [resourceGroupName] The resource group name.
   DataFlowArgs({
-    pulumi.Output<String>? dataFlowName,
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<Flowlet> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataFlowName = pulumi.Input.asOptionalInput<String>(dataFlowName),
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      properties = pulumi.Input.asInput<Flowlet>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.dataFlowName,
+    required this.factoryName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DataFlowArgs {
 
   factory DataFlowArgs.fromMap(Map<String, dynamic> map) {
     return DataFlowArgs(
-      dataFlowName: map['dataFlowName'] == null ? null : pulumi.Output.create<String>(map['dataFlowName'] as String),
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      properties: pulumi.Output.create<Flowlet>(Flowlet.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataFlowName: map['dataFlowName'] == null ? null : (map['dataFlowName'] as String).input(),
+      factoryName: (map['factoryName'] as String).input(),
+      properties: (Flowlet.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

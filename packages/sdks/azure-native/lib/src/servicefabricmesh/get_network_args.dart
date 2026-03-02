@@ -16,11 +16,9 @@ class GetNetworkArgs {
   /// [networkResourceName] The identity of the network.
   /// [resourceGroupName] Azure resource group name
   GetNetworkArgs({
-    required pulumi.Output<String> networkResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkResourceName = pulumi.Input.asInput<String>(networkResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkArgs {
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      networkResourceName: pulumi.Output.create<String>(map['networkResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkResourceName: (map['networkResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

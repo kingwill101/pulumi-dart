@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AADProperties {
-  final String? audience;
-  final String? authority;
-  final String? servicePrincipalClientId;
-  final String? servicePrincipalObjectId;
-  final String? tenantId;
+  final pulumi.Input<String>? audience;
+  final pulumi.Input<String>? authority;
+  final pulumi.Input<String>? servicePrincipalClientId;
+  final pulumi.Input<String>? servicePrincipalObjectId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [AADProperties].
   /// [audience] Optional.
@@ -34,11 +35,11 @@ class AADProperties {
 
   factory AADProperties.fromMap(Map<String, dynamic> map) {
     return AADProperties(
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      authority: map['authority'] == null ? null : map['authority'] as String,
-      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : map['servicePrincipalClientId'] as String,
-      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : map['servicePrincipalObjectId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
+      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : (map['servicePrincipalClientId'] as String).input(),
+      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

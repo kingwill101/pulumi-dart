@@ -46,29 +46,18 @@ class StateMachineArgs {
   /// [tracingConfiguration] Selects whether AWS X-Ray tracing is enabled.
   /// [type] Determines whether a Standard or Express state machine is created. The default is `STANDARD`. You cannot update the type of a state machine once it has been created. Valid values: `STANDARD`, `EXPRESS`.
   StateMachineArgs({
-    required pulumi.Output<String> definition,
-    pulumi.Output<StateMachineEncryptionConfiguration>? encryptionConfiguration,
-    pulumi.Output<StateMachineLoggingConfiguration>? loggingConfiguration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<bool>? publish,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<StateMachineTracingConfiguration>? tracingConfiguration,
-    pulumi.Output<String>? type,
-  }) :
-      definition = pulumi.Input.asInput<String>(definition),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<StateMachineEncryptionConfiguration>(encryptionConfiguration),
-      loggingConfiguration = pulumi.Input.asOptionalInput<StateMachineLoggingConfiguration>(loggingConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      publish = pulumi.Input.asOptionalInput<bool>(publish),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tracingConfiguration = pulumi.Input.asOptionalInput<StateMachineTracingConfiguration>(tracingConfiguration),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.definition,
+    this.encryptionConfiguration,
+    this.loggingConfiguration,
+    this.name,
+    this.namePrefix,
+    this.publish,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    this.tracingConfiguration,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class StateMachineArgs {
 
   factory StateMachineArgs.fromMap(Map<String, dynamic> map) {
     return StateMachineArgs(
-      definition: pulumi.Output.create<String>(map['definition'] as String),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<StateMachineEncryptionConfiguration>(StateMachineEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : pulumi.Output.create<StateMachineLoggingConfiguration>(StateMachineLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      publish: map['publish'] == null ? null : pulumi.Output.create<bool>(map['publish'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tracingConfiguration: map['tracingConfiguration'] == null ? null : pulumi.Output.create<StateMachineTracingConfiguration>(StateMachineTracingConfiguration.fromMap((map['tracingConfiguration'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      definition: (map['definition'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (StateMachineEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : (StateMachineLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tracingConfiguration: map['tracingConfiguration'] == null ? null : (StateMachineTracingConfiguration.fromMap((map['tracingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

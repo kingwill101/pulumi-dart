@@ -41,25 +41,16 @@ class GroupMembershipState {
   /// [type] The type of the membership.
   /// [updateTime] The time when the Membership was last updated.
   GroupMembershipState({
-    pulumi.Output<bool>? createIgnoreAlreadyExists,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? group,
-    pulumi.Output<GroupMembershipMemberKey>? memberKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<GroupMembershipPreferredMemberKey>? preferredMemberKey,
-    pulumi.Output<List<GroupMembershipRole>>? roles,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createIgnoreAlreadyExists = pulumi.Input.asOptionalInput<bool>(createIgnoreAlreadyExists),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      memberKey = pulumi.Input.asOptionalInput<GroupMembershipMemberKey>(memberKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      preferredMemberKey = pulumi.Input.asOptionalInput<GroupMembershipPreferredMemberKey>(preferredMemberKey),
-      roles = pulumi.Input.asOptionalInput<List<GroupMembershipRole>>(roles),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createIgnoreAlreadyExists,
+    this.createTime,
+    this.group,
+    this.memberKey,
+    this.name,
+    this.preferredMemberKey,
+    this.roles,
+    this.type,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class GroupMembershipState {
 
   factory GroupMembershipState.fromMap(Map<String, dynamic> map) {
     return GroupMembershipState(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : pulumi.Output.create<bool>(map['createIgnoreAlreadyExists'] as bool),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      memberKey: map['memberKey'] == null ? null : pulumi.Output.create<GroupMembershipMemberKey>(GroupMembershipMemberKey.fromMap((map['memberKey'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      preferredMemberKey: map['preferredMemberKey'] == null ? null : pulumi.Output.create<GroupMembershipPreferredMemberKey>(GroupMembershipPreferredMemberKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<GroupMembershipRole>>(pulumi.Input.decodeList<GroupMembershipRole>(map['roles'], (value) => GroupMembershipRole.fromMap((value as Map).cast<String, dynamic>()))),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      memberKey: map['memberKey'] == null ? null : (GroupMembershipMemberKey.fromMap((map['memberKey'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      preferredMemberKey: map['preferredMemberKey'] == null ? null : (GroupMembershipPreferredMemberKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<GroupMembershipRole>(map['roles'], (value) => GroupMembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

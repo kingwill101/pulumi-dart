@@ -9,21 +9,21 @@ import 'domain_devices_smartcard_protocol.dart';
 
 class DomainDevicesSmartcard {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final DomainDevicesSmartcardAcpi? acpi;
+  final pulumi.Input<DomainDevicesSmartcardAcpi>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final Map<String, dynamic>? address;
+  final pulumi.Input<Map<String, dynamic>>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final DomainDevicesSmartcardAlias? alias;
+  final pulumi.Input<DomainDevicesSmartcardAlias>? alias;
   /// Specifies the file path to the database to be used by the smartcard.
-  final String? database;
+  final pulumi.Input<String>? database;
   /// Configures the host reference for the smartcard device.
-  final bool? host;
+  final pulumi.Input<bool>? host;
   /// Defines the path to the host certificates used for the smartcard.
-  final List<DomainDevicesSmartcardHostCert>? hostCerts;
+  final pulumi.Input<List<DomainDevicesSmartcardHostCert>>? hostCerts;
   /// Defines the source settings for the EGD backend.
-  final DomainDevicesSmartcardPassthrough? passthrough;
+  final pulumi.Input<DomainDevicesSmartcardPassthrough>? passthrough;
   /// Sets the protocol type for the EGD backend.
-  final DomainDevicesSmartcardProtocol? protocol;
+  final pulumi.Input<DomainDevicesSmartcardProtocol>? protocol;
 
   /// Creates a new [DomainDevicesSmartcard].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
@@ -47,27 +47,27 @@ class DomainDevicesSmartcard {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acpi': ?acpi == null ? null : acpi!.toMap(),
+      'acpi': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardAcpi, Map<String, dynamic>>(acpi, (value) => value.toMap()),
       'address': ?address,
-      'alias': ?alias == null ? null : alias!.toMap(),
+      'alias': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardAlias, Map<String, dynamic>>(alias, (value) => value.toMap()),
       'database': ?database,
       'host': ?host,
-      'hostCerts': ?hostCerts == null ? null : pulumi.Input.encodeList<DomainDevicesSmartcardHostCert, Map<String, dynamic>>(hostCerts!, (value) => value.toMap()),
-      'passthrough': ?passthrough == null ? null : passthrough!.toMap(),
-      'protocol': ?protocol == null ? null : protocol!.toMap(),
+      'hostCerts': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesSmartcardHostCert>, List<Map<String, dynamic>>>(hostCerts, (value) => pulumi.Input.encodeList<DomainDevicesSmartcardHostCert, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'passthrough': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardPassthrough, Map<String, dynamic>>(passthrough, (value) => value.toMap()),
+      'protocol': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSmartcardProtocol, Map<String, dynamic>>(protocol, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesSmartcard.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcard(
-      acpi: map['acpi'] == null ? null : DomainDevicesSmartcardAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>()),
-      address: map['address'] == null ? null : (map['address'] as Map).cast<String, dynamic>(),
-      alias: map['alias'] == null ? null : DomainDevicesSmartcardAlias.fromMap((map['alias'] as Map).cast<String, dynamic>()),
-      database: map['database'] == null ? null : map['database'] as String,
-      host: map['host'] == null ? null : map['host'] as bool,
-      hostCerts: map['hostCerts'] == null ? null : pulumi.Input.decodeList<DomainDevicesSmartcardHostCert>(map['hostCerts'], (value) => DomainDevicesSmartcardHostCert.fromMap((value as Map).cast<String, dynamic>())),
-      passthrough: map['passthrough'] == null ? null : DomainDevicesSmartcardPassthrough.fromMap((map['passthrough'] as Map).cast<String, dynamic>()),
-      protocol: map['protocol'] == null ? null : DomainDevicesSmartcardProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>()),
+      acpi: map['acpi'] == null ? null : (DomainDevicesSmartcardAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesSmartcardAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as bool).input(),
+      hostCerts: map['hostCerts'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardHostCert>(map['hostCerts'], (value) => DomainDevicesSmartcardHostCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passthrough: map['passthrough'] == null ? null : (DomainDevicesSmartcardPassthrough.fromMap((map['passthrough'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (DomainDevicesSmartcardProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'platform_attribute_response.dart';
 
 /// This is the validations profile of a Gallery Image Version.
 class ValidationsProfileResponse {
-  final List<ExecutedValidationResponse>? executedValidations;
+  final pulumi.Input<List<ExecutedValidationResponse>>? executedValidations;
   /// This specifies the pub, offer, sku and version of the image version metadata
-  final List<PlatformAttributeResponse>? platformAttributes;
+  final pulumi.Input<List<PlatformAttributeResponse>>? platformAttributes;
   /// The published time of the image version
-  final String? validationEtag;
+  final pulumi.Input<String>? validationEtag;
 
   /// Creates a new [ValidationsProfileResponse].
   /// [executedValidations] Optional.
@@ -24,17 +24,17 @@ class ValidationsProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executedValidations': ?executedValidations == null ? null : pulumi.Input.encodeList<ExecutedValidationResponse, Map<String, dynamic>>(executedValidations!, (value) => value.toMap()),
-      'platformAttributes': ?platformAttributes == null ? null : pulumi.Input.encodeList<PlatformAttributeResponse, Map<String, dynamic>>(platformAttributes!, (value) => value.toMap()),
+      'executedValidations': ?pulumi.Input.mapOptionalInputValue<List<ExecutedValidationResponse>, List<Map<String, dynamic>>>(executedValidations, (value) => pulumi.Input.encodeList<ExecutedValidationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'platformAttributes': ?pulumi.Input.mapOptionalInputValue<List<PlatformAttributeResponse>, List<Map<String, dynamic>>>(platformAttributes, (value) => pulumi.Input.encodeList<PlatformAttributeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'validationEtag': ?validationEtag,
     };
   }
 
   factory ValidationsProfileResponse.fromMap(Map<String, dynamic> map) {
     return ValidationsProfileResponse(
-      executedValidations: map['executedValidations'] == null ? null : pulumi.Input.decodeList<ExecutedValidationResponse>(map['executedValidations'], (value) => ExecutedValidationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      platformAttributes: map['platformAttributes'] == null ? null : pulumi.Input.decodeList<PlatformAttributeResponse>(map['platformAttributes'], (value) => PlatformAttributeResponse.fromMap((value as Map).cast<String, dynamic>())),
-      validationEtag: map['validationEtag'] == null ? null : map['validationEtag'] as String,
+      executedValidations: map['executedValidations'] == null ? null : (pulumi.Input.decodeList<ExecutedValidationResponse>(map['executedValidations'], (value) => ExecutedValidationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformAttributes: map['platformAttributes'] == null ? null : (pulumi.Input.decodeList<PlatformAttributeResponse>(map['platformAttributes'], (value) => PlatformAttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationEtag: map['validationEtag'] == null ? null : (map['validationEtag'] as String).input(),
     );
   }
 }

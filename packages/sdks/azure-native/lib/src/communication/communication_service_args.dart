@@ -32,21 +32,14 @@ class CommunicationServiceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   CommunicationServiceArgs({
-    pulumi.Output<String>? communicationServiceName,
-    required pulumi.Output<String> dataLocation,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<List<String>>? linkedDomains,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      communicationServiceName = pulumi.Input.asOptionalInput<String>(communicationServiceName),
-      dataLocation = pulumi.Input.asInput<String>(dataLocation),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      linkedDomains = pulumi.Input.asOptionalInput<List<String>>(linkedDomains),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.communicationServiceName,
+    required this.dataLocation,
+    this.identity,
+    this.linkedDomains,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class CommunicationServiceArgs {
 
   factory CommunicationServiceArgs.fromMap(Map<String, dynamic> map) {
     return CommunicationServiceArgs(
-      communicationServiceName: map['communicationServiceName'] == null ? null : pulumi.Output.create<String>(map['communicationServiceName'] as String),
-      dataLocation: pulumi.Output.create<String>(map['dataLocation'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      linkedDomains: map['linkedDomains'] == null ? null : pulumi.Output.create<List<String>>((map['linkedDomains'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      communicationServiceName: map['communicationServiceName'] == null ? null : (map['communicationServiceName'] as String).input(),
+      dataLocation: (map['dataLocation'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      linkedDomains: map['linkedDomains'] == null ? null : ((map['linkedDomains'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

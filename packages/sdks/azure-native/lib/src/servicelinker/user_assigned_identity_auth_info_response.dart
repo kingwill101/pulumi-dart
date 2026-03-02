@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The authentication info when authType is userAssignedIdentity
 class UserAssignedIdentityAuthInfoResponse {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final String? authMode;
+  final pulumi.Input<String>? authMode;
   /// The authentication type.
   /// Expected value is 'userAssignedIdentity'.
-  final String authType;
+  final pulumi.Input<String> authType;
   /// Client Id for userAssignedIdentity.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final String? deleteOrUpdateBehavior;
+  final pulumi.Input<String>? deleteOrUpdateBehavior;
   /// Optional, this value specifies the Azure role to be assigned
-  final List<String>? roles;
+  final pulumi.Input<List<String>>? roles;
   /// Subscription id for userAssignedIdentity.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Username created in the database which is mapped to a user in AAD.
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [UserAssignedIdentityAuthInfoResponse].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
@@ -51,13 +52,13 @@ class UserAssignedIdentityAuthInfoResponse {
 
   factory UserAssignedIdentityAuthInfoResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityAuthInfoResponse(
-      authMode: map['authMode'] == null ? null : map['authMode'] as String,
-      authType: map['authType'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : map['deleteOrUpdateBehavior'] as String,
-      roles: map['roles'] == null ? null : (map['roles'] as List).cast<String>(),
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authType: (map['authType'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

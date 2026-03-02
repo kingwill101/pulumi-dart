@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data disk image.
 class DataDiskImageResponse {
   /// The LUN.
-  final int lun;
+  final pulumi.Input<int> lun;
   /// SAS key for source blob.
-  final String sourceBlobSasUri;
+  final pulumi.Input<String> sourceBlobSasUri;
 
   /// Creates a new [DataDiskImageResponse].
   /// [lun] The LUN.
@@ -25,8 +26,8 @@ class DataDiskImageResponse {
 
   factory DataDiskImageResponse.fromMap(Map<String, dynamic> map) {
     return DataDiskImageResponse(
-      lun: map['lun'] as int,
-      sourceBlobSasUri: map['sourceBlobSasUri'] as String,
+      lun: (map['lun'] as int).input(),
+      sourceBlobSasUri: (map['sourceBlobSasUri'] as String).input(),
     );
   }
 }

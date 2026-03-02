@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppHostingTrafficRolloutPolicy {
   /// Specifies a branch that triggers a new build to be started with this
   /// policy. If not set, no automatic rollouts will happen.
-  final String? codebaseBranch;
+  final pulumi.Input<String>? codebaseBranch;
   /// A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// (Output)
   /// If disabled is set, the time at which the rollouts were disabled.
-  final String? disabledTime;
+  final pulumi.Input<String>? disabledTime;
 
   /// Creates a new [AppHostingTrafficRolloutPolicy].
   /// [codebaseBranch] Specifies a branch that triggers a new build to be started with this
@@ -31,9 +32,9 @@ class AppHostingTrafficRolloutPolicy {
 
   factory AppHostingTrafficRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficRolloutPolicy(
-      codebaseBranch: map['codebaseBranch'] == null ? null : map['codebaseBranch'] as String,
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      disabledTime: map['disabledTime'] == null ? null : map['disabledTime'] as String,
+      codebaseBranch: map['codebaseBranch'] == null ? null : (map['codebaseBranch'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabledTime: map['disabledTime'] == null ? null : (map['disabledTime'] as String).input(),
     );
   }
 }

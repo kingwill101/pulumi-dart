@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVbrHealthChecksCheck {
   /// The ID of the Cloud Enterprise Network (CEN) instance.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// The time interval at which probe packets are sent during the health check.
-  final int healthCheckInterval;
+  final pulumi.Input<int> healthCheckInterval;
   /// The source IP address of the health check.
-  final String healthCheckSourceIp;
+  final pulumi.Input<String> healthCheckSourceIp;
   /// The destination IP address of the health check.
-  final String healthCheckTargetIp;
+  final pulumi.Input<String> healthCheckTargetIp;
   /// The number of probe packets that are sent during the health check.
-  final int healthyThreshold;
+  final pulumi.Input<int> healthyThreshold;
   /// The ID of the CEN VBR Heath Check.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the VBR instance.
-  final String vbrInstanceId;
+  final pulumi.Input<String> vbrInstanceId;
   /// The ID of the region where the VBR instance is deployed.
-  final String vbrInstanceRegionId;
+  final pulumi.Input<String> vbrInstanceRegionId;
 
   /// Creates a new [GetVbrHealthChecksCheck].
   /// [cenId] The ID of the Cloud Enterprise Network (CEN) instance.
@@ -54,14 +55,14 @@ class GetVbrHealthChecksCheck {
 
   factory GetVbrHealthChecksCheck.fromMap(Map<String, dynamic> map) {
     return GetVbrHealthChecksCheck(
-      cenId: map['cenId'] as String,
-      healthCheckInterval: map['healthCheckInterval'] as int,
-      healthCheckSourceIp: map['healthCheckSourceIp'] as String,
-      healthCheckTargetIp: map['healthCheckTargetIp'] as String,
-      healthyThreshold: map['healthyThreshold'] as int,
-      id: map['id'] as String,
-      vbrInstanceId: map['vbrInstanceId'] as String,
-      vbrInstanceRegionId: map['vbrInstanceRegionId'] as String,
+      cenId: (map['cenId'] as String).input(),
+      healthCheckInterval: (map['healthCheckInterval'] as int).input(),
+      healthCheckSourceIp: (map['healthCheckSourceIp'] as String).input(),
+      healthCheckTargetIp: (map['healthCheckTargetIp'] as String).input(),
+      healthyThreshold: (map['healthyThreshold'] as int).input(),
+      id: (map['id'] as String).input(),
+      vbrInstanceId: (map['vbrInstanceId'] as String).input(),
+      vbrInstanceRegionId: (map['vbrInstanceRegionId'] as String).input(),
     );
   }
 }

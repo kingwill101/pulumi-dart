@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnGatewayConnectionVpnLinkIpsecPolicy {
   /// The DH Group used in IKE Phase 1 for initial SA. Possible values are `None`, `DHGroup1`, `DHGroup2`, `DHGroup14`, `DHGroup24`, `DHGroup2048`, `ECP256`, `ECP384`.
-  final String dhGroup;
+  final pulumi.Input<String> dhGroup;
   /// The IPSec encryption algorithm (IKE phase 1). Possible values are `AES128`, `AES192`, `AES256`, `DES`, `DES3`, `GCMAES128`, `GCMAES192`, `GCMAES256`, `None`.
-  final String encryptionAlgorithm;
+  final pulumi.Input<String> encryptionAlgorithm;
   /// The IKE encryption algorithm (IKE phase 2). Possible values are `DES`, `DES3`, `AES128`, `AES192`, `AES256`, `GCMAES128`, `GCMAES256`.
-  final String ikeEncryptionAlgorithm;
+  final pulumi.Input<String> ikeEncryptionAlgorithm;
   /// The IKE integrity algorithm (IKE phase 2). Possible values are `MD5`, `SHA1`, `SHA256`, `SHA384`, `GCMAES128`, `GCMAES256`.
-  final String ikeIntegrityAlgorithm;
+  final pulumi.Input<String> ikeIntegrityAlgorithm;
   /// The IPSec integrity algorithm (IKE phase 1). Possible values are `MD5`, `SHA1`, `SHA256`, `GCMAES128`, `GCMAES192`, `GCMAES256`.
-  final String integrityAlgorithm;
+  final pulumi.Input<String> integrityAlgorithm;
   /// The Pfs Group used in IKE Phase 2 for the new child SA. Possible values are `None`, `PFS1`, `PFS2`, `PFS14`, `PFS24`, `PFS2048`, `PFSMM`, `ECP256`, `ECP384`.
-  final String pfsGroup;
+  final pulumi.Input<String> pfsGroup;
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for the site to site VPN tunnel.
-  final int saDataSizeKb;
+  final pulumi.Input<int> saDataSizeKb;
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for the site to site VPN tunnel.
-  final int saLifetimeSec;
+  final pulumi.Input<int> saLifetimeSec;
 
   /// Creates a new [VpnGatewayConnectionVpnLinkIpsecPolicy].
   /// [dhGroup] The DH Group used in IKE Phase 1 for initial SA. Possible values are `None`, `DHGroup1`, `DHGroup2`, `DHGroup14`, `DHGroup24`, `DHGroup2048`, `ECP256`, `ECP384`.
@@ -54,14 +55,14 @@ class VpnGatewayConnectionVpnLinkIpsecPolicy {
 
   factory VpnGatewayConnectionVpnLinkIpsecPolicy.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionVpnLinkIpsecPolicy(
-      dhGroup: map['dhGroup'] as String,
-      encryptionAlgorithm: map['encryptionAlgorithm'] as String,
-      ikeEncryptionAlgorithm: map['ikeEncryptionAlgorithm'] as String,
-      ikeIntegrityAlgorithm: map['ikeIntegrityAlgorithm'] as String,
-      integrityAlgorithm: map['integrityAlgorithm'] as String,
-      pfsGroup: map['pfsGroup'] as String,
-      saDataSizeKb: map['saDataSizeKb'] as int,
-      saLifetimeSec: map['saLifetimeSec'] as int,
+      dhGroup: (map['dhGroup'] as String).input(),
+      encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
+      ikeEncryptionAlgorithm: (map['ikeEncryptionAlgorithm'] as String).input(),
+      ikeIntegrityAlgorithm: (map['ikeIntegrityAlgorithm'] as String).input(),
+      integrityAlgorithm: (map['integrityAlgorithm'] as String).input(),
+      pfsGroup: (map['pfsGroup'] as String).input(),
+      saDataSizeKb: (map['saDataSizeKb'] as int).input(),
+      saLifetimeSec: (map['saLifetimeSec'] as int).input(),
     );
   }
 }

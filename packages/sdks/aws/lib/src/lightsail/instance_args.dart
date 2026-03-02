@@ -43,27 +43,17 @@ class InstanceArgs {
   /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userData] Single lined launch script as a string to configure server with additional user data.
   InstanceArgs({
-    pulumi.Output<InstanceAddOn>? addOn,
-    required pulumi.Output<String> availabilityZone,
-    required pulumi.Output<String> blueprintId,
-    required pulumi.Output<String> bundleId,
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<String>? keyPairName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? userData,
-  }) :
-      addOn = pulumi.Input.asOptionalInput<InstanceAddOn>(addOn),
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      blueprintId = pulumi.Input.asInput<String>(blueprintId),
-      bundleId = pulumi.Input.asInput<String>(bundleId),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      keyPairName = pulumi.Input.asOptionalInput<String>(keyPairName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userData = pulumi.Input.asOptionalInput<String>(userData);
+    this.addOn,
+    required this.availabilityZone,
+    required this.blueprintId,
+    required this.bundleId,
+    this.ipAddressType,
+    this.keyPairName,
+    this.name,
+    this.region,
+    this.tags,
+    this.userData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      addOn: map['addOn'] == null ? null : pulumi.Output.create<InstanceAddOn>(InstanceAddOn.fromMap((map['addOn'] as Map).cast<String, dynamic>())),
-      availabilityZone: pulumi.Output.create<String>(map['availabilityZone'] as String),
-      blueprintId: pulumi.Output.create<String>(map['blueprintId'] as String),
-      bundleId: pulumi.Output.create<String>(map['bundleId'] as String),
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      keyPairName: map['keyPairName'] == null ? null : pulumi.Output.create<String>(map['keyPairName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userData: map['userData'] == null ? null : pulumi.Output.create<String>(map['userData'] as String),
+      addOn: map['addOn'] == null ? null : (InstanceAddOn.fromMap((map['addOn'] as Map).cast<String, dynamic>())).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      blueprintId: (map['blueprintId'] as String).input(),
+      bundleId: (map['bundleId'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'labeling_job_labeling_job_algorithms_config_labeling_job_resource_config.dart';
 
 class LabelingJobLabelingJobAlgorithmsConfig {
   /// ARN of the final model used for auto-labeling.
-  final String? initialActiveLearningModelArn;
+  final pulumi.Input<String>? initialActiveLearningModelArn;
   /// ARN of the algorithm used for auto-labeling.
-  final String labelingJobAlgorithmSpecificationArn;
+  final pulumi.Input<String> labelingJobAlgorithmSpecificationArn;
   /// Configuration information for the labeling job. Fields are documented below.
-  final LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig? labelingJobResourceConfig;
+  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig>? labelingJobResourceConfig;
 
   /// Creates a new [LabelingJobLabelingJobAlgorithmsConfig].
   /// [initialActiveLearningModelArn] ARN of the final model used for auto-labeling.
@@ -24,15 +25,15 @@ class LabelingJobLabelingJobAlgorithmsConfig {
     return <String, dynamic>{
       'initialActiveLearningModelArn': ?initialActiveLearningModelArn,
       'labelingJobAlgorithmSpecificationArn': labelingJobAlgorithmSpecificationArn,
-      'labelingJobResourceConfig': ?labelingJobResourceConfig == null ? null : labelingJobResourceConfig!.toMap(),
+      'labelingJobResourceConfig': ?pulumi.Input.mapOptionalInputValue<LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig, Map<String, dynamic>>(labelingJobResourceConfig, (value) => value.toMap()),
     };
   }
 
   factory LabelingJobLabelingJobAlgorithmsConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobLabelingJobAlgorithmsConfig(
-      initialActiveLearningModelArn: map['initialActiveLearningModelArn'] == null ? null : map['initialActiveLearningModelArn'] as String,
-      labelingJobAlgorithmSpecificationArn: map['labelingJobAlgorithmSpecificationArn'] as String,
-      labelingJobResourceConfig: map['labelingJobResourceConfig'] == null ? null : LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig.fromMap((map['labelingJobResourceConfig'] as Map).cast<String, dynamic>()),
+      initialActiveLearningModelArn: map['initialActiveLearningModelArn'] == null ? null : (map['initialActiveLearningModelArn'] as String).input(),
+      labelingJobAlgorithmSpecificationArn: (map['labelingJobAlgorithmSpecificationArn'] as String).input(),
+      labelingJobResourceConfig: map['labelingJobResourceConfig'] == null ? null : (LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig.fromMap((map['labelingJobResourceConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

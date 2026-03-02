@@ -43,29 +43,18 @@ class GetDataBackupsArgs {
   /// [startTime] The query start time. Format: yyyy-MM-ddTHH:mmZ(UTC time).
   /// [status] Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
   GetDataBackupsArgs({
-    pulumi.Output<String>? backupMode,
-    pulumi.Output<String>? dataBackupId,
-    pulumi.Output<String>? dataType,
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? status,
-  }) :
-      backupMode = pulumi.Input.asOptionalInput<String>(backupMode),
-      dataBackupId = pulumi.Input.asOptionalInput<String>(dataBackupId),
-      dataType = pulumi.Input.asOptionalInput<String>(dataType),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.backupMode,
+    this.dataBackupId,
+    this.dataType,
+    required this.dbInstanceId,
+    this.endTime,
+    this.ids,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.startTime,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GetDataBackupsArgs {
 
   factory GetDataBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataBackupsArgs(
-      backupMode: map['backupMode'] == null ? null : pulumi.Output.create<String>(map['backupMode'] as String),
-      dataBackupId: map['dataBackupId'] == null ? null : pulumi.Output.create<String>(map['dataBackupId'] as String),
-      dataType: map['dataType'] == null ? null : pulumi.Output.create<String>(map['dataType'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      backupMode: map['backupMode'] == null ? null : (map['backupMode'] as String).input(),
+      dataBackupId: map['dataBackupId'] == null ? null : (map['dataBackupId'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

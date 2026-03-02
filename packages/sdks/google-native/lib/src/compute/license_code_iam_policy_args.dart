@@ -32,21 +32,14 @@ class LicenseCodeIamPolicyArgs {
   /// [rules] This is deprecated and has no effect. Do not use.
   /// [version] Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   LicenseCodeIamPolicyArgs({
-    pulumi.Output<List<AuditConfig>>? auditConfigs,
-    pulumi.Output<List<Binding>>? bindings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> resource,
-    pulumi.Output<List<Rule>>? rules,
-    pulumi.Output<int>? version,
-  }) :
-      auditConfigs = pulumi.Input.asOptionalInput<List<AuditConfig>>(auditConfigs),
-      bindings = pulumi.Input.asOptionalInput<List<Binding>>(bindings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asInput<String>(resource),
-      rules = pulumi.Input.asOptionalInput<List<Rule>>(rules),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.project,
+    required this.resource,
+    this.rules,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class LicenseCodeIamPolicyArgs {
 
   factory LicenseCodeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LicenseCodeIamPolicyArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Output.create<List<AuditConfig>>(pulumi.Input.decodeList<AuditConfig>(map['auditConfigs'], (value) => AuditConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<Binding>>(pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resource: pulumi.Output.create<String>(map['resource'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<Rule>>(pulumi.Input.decodeList<Rule>(map['rules'], (value) => Rule.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfig>(map['auditConfigs'], (value) => AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resource: (map['resource'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<Rule>(map['rules'], (value) => Rule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

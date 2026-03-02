@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAuthConfig {
-  final String? authType;
-  final String? masterKey;
-  final String? slaveKey;
-  final int? timeout;
+  final pulumi.Input<String>? authType;
+  final pulumi.Input<String>? masterKey;
+  final pulumi.Input<String>? slaveKey;
+  final pulumi.Input<int>? timeout;
 
   /// Creates a new [DomainAuthConfig].
   /// [authType] Optional.
@@ -30,10 +31,10 @@ class DomainAuthConfig {
 
   factory DomainAuthConfig.fromMap(Map<String, dynamic> map) {
     return DomainAuthConfig(
-      authType: map['authType'] == null ? null : map['authType'] as String,
-      masterKey: map['masterKey'] == null ? null : map['masterKey'] as String,
-      slaveKey: map['slaveKey'] == null ? null : map['slaveKey'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as int,
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      masterKey: map['masterKey'] == null ? null : (map['masterKey'] as String).input(),
+      slaveKey: map['slaveKey'] == null ? null : (map['slaveKey'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
     );
   }
 }

@@ -34,25 +34,16 @@ class EnterpriseUserState {
   /// [uid] The Alibaba Cloud unique ID (UID) of the user to add.
   /// [userName] The nickname of the user.
   EnterpriseUserState({
-    pulumi.Output<int>? maxExecuteCount,
-    pulumi.Output<int>? maxResultCount,
-    pulumi.Output<String>? mobile,
-    pulumi.Output<String>? nickName,
-    pulumi.Output<List<String>>? roleNames,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? tid,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? userName,
-  }) :
-      maxExecuteCount = pulumi.Input.asOptionalInput<int>(maxExecuteCount),
-      maxResultCount = pulumi.Input.asOptionalInput<int>(maxResultCount),
-      mobile = pulumi.Input.asOptionalInput<String>(mobile),
-      nickName = pulumi.Input.asOptionalInput<String>(nickName),
-      roleNames = pulumi.Input.asOptionalInput<List<String>>(roleNames),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tid = pulumi.Input.asOptionalInput<int>(tid),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.maxExecuteCount,
+    this.maxResultCount,
+    this.mobile,
+    this.nickName,
+    this.roleNames,
+    this.status,
+    this.tid,
+    this.uid,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class EnterpriseUserState {
 
   factory EnterpriseUserState.fromMap(Map<String, dynamic> map) {
     return EnterpriseUserState(
-      maxExecuteCount: map['maxExecuteCount'] == null ? null : pulumi.Output.create<int>(map['maxExecuteCount'] as int),
-      maxResultCount: map['maxResultCount'] == null ? null : pulumi.Output.create<int>(map['maxResultCount'] as int),
-      mobile: map['mobile'] == null ? null : pulumi.Output.create<String>(map['mobile'] as String),
-      nickName: map['nickName'] == null ? null : pulumi.Output.create<String>(map['nickName'] as String),
-      roleNames: map['roleNames'] == null ? null : pulumi.Output.create<List<String>>((map['roleNames'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tid: map['tid'] == null ? null : pulumi.Output.create<int>(map['tid'] as int),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      maxExecuteCount: map['maxExecuteCount'] == null ? null : (map['maxExecuteCount'] as int).input(),
+      maxResultCount: map['maxResultCount'] == null ? null : (map['maxResultCount'] as int).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
+      nickName: map['nickName'] == null ? null : (map['nickName'] as String).input(),
+      roleNames: map['roleNames'] == null ? null : ((map['roleNames'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tid: map['tid'] == null ? null : (map['tid'] as int).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

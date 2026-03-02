@@ -22,15 +22,11 @@ class TunnelArgs {
   /// [tunnelName] The name of the OTS tunnel. If changed, a new tunnel would be created.
   /// [tunnelType] The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
   TunnelArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> tableName,
-    required pulumi.Output<String> tunnelName,
-    required pulumi.Output<String> tunnelType,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      tableName = pulumi.Input.asInput<String>(tableName),
-      tunnelName = pulumi.Input.asInput<String>(tunnelName),
-      tunnelType = pulumi.Input.asInput<String>(tunnelType);
+    required this.instanceName,
+    required this.tableName,
+    required this.tunnelName,
+    required this.tunnelType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class TunnelArgs {
 
   factory TunnelArgs.fromMap(Map<String, dynamic> map) {
     return TunnelArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
-      tunnelName: pulumi.Output.create<String>(map['tunnelName'] as String),
-      tunnelType: pulumi.Output.create<String>(map['tunnelType'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      tunnelName: (map['tunnelName'] as String).input(),
+      tunnelType: (map['tunnelType'] as String).input(),
     );
   }
 }

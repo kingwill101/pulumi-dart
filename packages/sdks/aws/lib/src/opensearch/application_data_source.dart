@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationDataSource {
   /// The Amazon Resource Name (ARN) of the OpenSearch domain or collection. Must be between 20 and 2048 characters.
-  final String? dataSourceArn;
+  final pulumi.Input<String>? dataSourceArn;
   /// A detailed description of the data source. Must be at most 1000 characters and contain only alphanumeric characters, underscores, spaces, and the following special characters: `@#%*+=:?./!-`.
-  final String? dataSourceDescription;
+  final pulumi.Input<String>? dataSourceDescription;
 
   /// Creates a new [ApplicationDataSource].
   /// [dataSourceArn] The Amazon Resource Name (ARN) of the OpenSearch domain or collection. Must be between 20 and 2048 characters.
@@ -24,8 +25,8 @@ class ApplicationDataSource {
 
   factory ApplicationDataSource.fromMap(Map<String, dynamic> map) {
     return ApplicationDataSource(
-      dataSourceArn: map['dataSourceArn'] == null ? null : map['dataSourceArn'] as String,
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : map['dataSourceDescription'] as String,
+      dataSourceArn: map['dataSourceArn'] == null ? null : (map['dataSourceArn'] as String).input(),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
     );
   }
 }

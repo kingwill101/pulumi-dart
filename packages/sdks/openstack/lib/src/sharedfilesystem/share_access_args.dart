@@ -30,17 +30,12 @@ class ShareAccessArgs {
   /// [region] The region in which to obtain the V2 Shared File System
   /// [shareId] The UUID of the share to which you are granted access.
   ShareAccessArgs({
-    required pulumi.Output<String> accessLevel,
-    required pulumi.Output<String> accessTo,
-    required pulumi.Output<String> accessType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> shareId,
-  }) :
-      accessLevel = pulumi.Input.asInput<String>(accessLevel),
-      accessTo = pulumi.Input.asInput<String>(accessTo),
-      accessType = pulumi.Input.asInput<String>(accessType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shareId = pulumi.Input.asInput<String>(shareId);
+    required this.accessLevel,
+    required this.accessTo,
+    required this.accessType,
+    this.region,
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class ShareAccessArgs {
 
   factory ShareAccessArgs.fromMap(Map<String, dynamic> map) {
     return ShareAccessArgs(
-      accessLevel: pulumi.Output.create<String>(map['accessLevel'] as String),
-      accessTo: pulumi.Output.create<String>(map['accessTo'] as String),
-      accessType: pulumi.Output.create<String>(map['accessType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shareId: pulumi.Output.create<String>(map['shareId'] as String),
+      accessLevel: (map['accessLevel'] as String).input(),
+      accessTo: (map['accessTo'] as String).input(),
+      accessType: (map['accessType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

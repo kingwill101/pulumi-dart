@@ -8,30 +8,30 @@ import 'parameter_specification.dart';
 /// Linked service for Salesforce.
 class SalesforceLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The Salesforce API version used in ADF. Type: string (or Expression with resultType string).
-  final dynamic apiVersion;
+  final pulumi.Input<dynamic>? apiVersion;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The URL of Salesforce instance. Default is 'https://login.salesforce.com'. To copy data from sandbox, specify 'https://test.salesforce.com'. To copy data from custom domain, specify, for example, 'https://[domain].my.salesforce.com'. Type: string (or Expression with resultType string).
-  final dynamic environmentUrl;
+  final pulumi.Input<dynamic>? environmentUrl;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The password for Basic authentication of the Salesforce instance.
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// The security token is optional to remotely access Salesforce instance.
-  final AzureKeyVaultSecretReference? securityToken;
+  final pulumi.Input<AzureKeyVaultSecretReference>? securityToken;
   /// Type of linked service.
   /// Expected value is 'Salesforce'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [SalesforceLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -65,13 +65,13 @@ class SalesforceLinkedService {
     return <String, dynamic>{
       'annotations': ?annotations,
       'apiVersion': ?apiVersion,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'environmentUrl': ?environmentUrl,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
-      'securityToken': ?securityToken == null ? null : securityToken!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'securityToken': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(securityToken, (value) => value.toMap()),
       'type': type,
       'username': ?username,
       'version': ?version,
@@ -80,18 +80,18 @@ class SalesforceLinkedService {
 
   factory SalesforceLinkedService.fromMap(Map<String, dynamic> map) {
     return SalesforceLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      environmentUrl: map['environmentUrl'] == null ? null : map['environmentUrl'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      securityToken: map['securityToken'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['securityToken'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      username: map['username'] == null ? null : map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      environmentUrl: map['environmentUrl'] == null ? null : (map['environmentUrl']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      securityToken: map['securityToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['securityToken'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

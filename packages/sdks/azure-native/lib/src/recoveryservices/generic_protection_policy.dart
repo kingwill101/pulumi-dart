@@ -7,17 +7,17 @@ import 'sub_protection_policy.dart';
 class GenericProtectionPolicy {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'GenericProtectionPolicy'.
-  final String backupManagementType;
+  final pulumi.Input<String> backupManagementType;
   /// Name of this policy's fabric.
-  final String? fabricName;
+  final pulumi.Input<String>? fabricName;
   /// Number of items associated with this policy.
-  final int? protectedItemsCount;
+  final pulumi.Input<int>? protectedItemsCount;
   /// ResourceGuard Operation Requests
-  final List<String>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
   /// List of sub-protection policies which includes schedule and retention
-  final List<SubProtectionPolicy>? subProtectionPolicy;
+  final pulumi.Input<List<SubProtectionPolicy>>? subProtectionPolicy;
   /// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [GenericProtectionPolicy].
   /// [backupManagementType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
@@ -41,19 +41,19 @@ class GenericProtectionPolicy {
       'fabricName': ?fabricName,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'subProtectionPolicy': ?subProtectionPolicy == null ? null : pulumi.Input.encodeList<SubProtectionPolicy, Map<String, dynamic>>(subProtectionPolicy!, (value) => value.toMap()),
+      'subProtectionPolicy': ?pulumi.Input.mapOptionalInputValue<List<SubProtectionPolicy>, List<Map<String, dynamic>>>(subProtectionPolicy, (value) => pulumi.Input.encodeList<SubProtectionPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeZone': ?timeZone,
     };
   }
 
   factory GenericProtectionPolicy.fromMap(Map<String, dynamic> map) {
     return GenericProtectionPolicy(
-      backupManagementType: map['backupManagementType'] as String,
-      fabricName: map['fabricName'] == null ? null : map['fabricName'] as String,
-      protectedItemsCount: map['protectedItemsCount'] == null ? null : map['protectedItemsCount'] as int,
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : (map['resourceGuardOperationRequests'] as List).cast<String>(),
-      subProtectionPolicy: map['subProtectionPolicy'] == null ? null : pulumi.Input.decodeList<SubProtectionPolicy>(map['subProtectionPolicy'], (value) => SubProtectionPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      backupManagementType: (map['backupManagementType'] as String).input(),
+      fabricName: map['fabricName'] == null ? null : (map['fabricName'] as String).input(),
+      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount'] as int).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
+      subProtectionPolicy: map['subProtectionPolicy'] == null ? null : (pulumi.Input.decodeList<SubProtectionPolicy>(map['subProtectionPolicy'], (value) => SubProtectionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyAssociation {
   /// The target that the firewall policy is attached to.
-  final String? attachmentTarget;
+  final pulumi.Input<String>? attachmentTarget;
   /// The name for an association.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
-  final int? priority;
+  final pulumi.Input<int>? priority;
 
   /// Creates a new [FirewallPolicyAssociation].
   /// [attachmentTarget] The target that the firewall policy is attached to.
@@ -29,9 +30,9 @@ class FirewallPolicyAssociation {
 
   factory FirewallPolicyAssociation.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyAssociation(
-      attachmentTarget: map['attachmentTarget'] == null ? null : map['attachmentTarget'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
+      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
     );
   }
 }

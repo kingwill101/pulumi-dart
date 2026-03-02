@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for ConfigurationReference Resource
 class ConfigurationReferencePropertiesResponse {
   /// ArmId of Configuration resource
-  final String? configurationResourceId;
+  final pulumi.Input<String>? configurationResourceId;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ConfigurationReferencePropertiesResponse].
   /// [configurationResourceId] ArmId of Configuration resource
@@ -25,8 +26,8 @@ class ConfigurationReferencePropertiesResponse {
 
   factory ConfigurationReferencePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationReferencePropertiesResponse(
-      configurationResourceId: map['configurationResourceId'] == null ? null : map['configurationResourceId'] as String,
-      provisioningState: map['provisioningState'] as String,
+      configurationResourceId: map['configurationResourceId'] == null ? null : (map['configurationResourceId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

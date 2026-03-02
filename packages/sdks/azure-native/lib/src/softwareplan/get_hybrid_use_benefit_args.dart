@@ -16,11 +16,9 @@ class GetHybridUseBenefitArgs {
   /// [planId] This is a unique identifier for a plan. Should be a guid.
   /// [scope] The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
   GetHybridUseBenefitArgs({
-    required pulumi.Output<String> planId,
-    required pulumi.Output<String> scope,
-  }) :
-      planId = pulumi.Input.asInput<String>(planId),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.planId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHybridUseBenefitArgs {
 
   factory GetHybridUseBenefitArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridUseBenefitArgs(
-      planId: pulumi.Output.create<String>(map['planId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      planId: (map['planId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

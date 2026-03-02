@@ -46,31 +46,19 @@ class CapacityReservationArgs {
   /// [tags] The tag of the resource.
   /// [zoneIds] The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
   CapacityReservationArgs({
-    pulumi.Output<String>? capacityReservationName,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? endTimeType,
-    required pulumi.Output<int> instanceAmount,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? matchCriteria,
-    pulumi.Output<String>? platform,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<String>> zoneIds,
-  }) :
-      capacityReservationName = pulumi.Input.asOptionalInput<String>(capacityReservationName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      endTimeType = pulumi.Input.asOptionalInput<String>(endTimeType),
-      instanceAmount = pulumi.Input.asInput<int>(instanceAmount),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      matchCriteria = pulumi.Input.asOptionalInput<String>(matchCriteria),
-      platform = pulumi.Input.asOptionalInput<String>(platform),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneIds = pulumi.Input.asInput<List<String>>(zoneIds);
+    this.capacityReservationName,
+    this.description,
+    this.dryRun,
+    this.endTime,
+    this.endTimeType,
+    required this.instanceAmount,
+    required this.instanceType,
+    this.matchCriteria,
+    this.platform,
+    this.resourceGroupId,
+    this.tags,
+    required this.zoneIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class CapacityReservationArgs {
 
   factory CapacityReservationArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationArgs(
-      capacityReservationName: map['capacityReservationName'] == null ? null : pulumi.Output.create<String>(map['capacityReservationName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      endTimeType: map['endTimeType'] == null ? null : pulumi.Output.create<String>(map['endTimeType'] as String),
-      instanceAmount: pulumi.Output.create<int>(map['instanceAmount'] as int),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      matchCriteria: map['matchCriteria'] == null ? null : pulumi.Output.create<String>(map['matchCriteria'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneIds: pulumi.Output.create<List<String>>((map['zoneIds'] as List).cast<String>()),
+      capacityReservationName: map['capacityReservationName'] == null ? null : (map['capacityReservationName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTimeType: map['endTimeType'] == null ? null : (map['endTimeType'] as String).input(),
+      instanceAmount: (map['instanceAmount'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      matchCriteria: map['matchCriteria'] == null ? null : (map['matchCriteria'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneIds: ((map['zoneIds'] as List).cast<String>()).input(),
     );
   }
 }

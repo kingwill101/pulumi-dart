@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigContainerdConfigRegistryHostHostHeader {
   /// Configures the header key.
-  final String key;
+  final pulumi.Input<String> key;
   /// Configures the header value.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ClusterNodeConfigContainerdConfigRegistryHostHostHeader].
   /// [key] Configures the header key.
@@ -24,8 +25,8 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostHeader {
 
   factory ClusterNodeConfigContainerdConfigRegistryHostHostHeader.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigContainerdConfigRegistryHostHostHeader(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
   /// Enable entity extraction in conversation messages on agent assist stage.
-  final bool? enableEntityExtraction;
+  final pulumi.Input<bool>? enableEntityExtraction;
   /// Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
-  final bool? enableSentimentAnalysis;
+  final pulumi.Input<bool>? enableSentimentAnalysis;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig].
   /// [enableEntityExtraction] Enable entity extraction in conversation messages on agent assist stage.
@@ -24,8 +25,8 @@ class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
 
   factory ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig(
-      enableEntityExtraction: map['enableEntityExtraction'] == null ? null : map['enableEntityExtraction'] as bool,
-      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : map['enableSentimentAnalysis'] as bool,
+      enableEntityExtraction: map['enableEntityExtraction'] == null ? null : (map['enableEntityExtraction'] as bool).input(),
+      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis'] as bool).input(),
     );
   }
 }

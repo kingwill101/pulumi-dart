@@ -9,24 +9,24 @@ import 'zone_mapping_response.dart';
 /// Resource type managed by the resource provider.
 class ProviderResourceTypeResponse {
   /// The aliases that are supported by this resource type.
-  final List<AliasResponse>? aliases;
+  final pulumi.Input<List<AliasResponse>>? aliases;
   /// The API profiles for the resource provider.
-  final List<ApiProfileResponse> apiProfiles;
+  final pulumi.Input<List<ApiProfileResponse>> apiProfiles;
   /// The API version.
-  final List<String>? apiVersions;
+  final pulumi.Input<List<String>>? apiVersions;
   /// The additional capabilities offered by this resource type.
-  final String? capabilities;
+  final pulumi.Input<String>? capabilities;
   /// The default API version.
-  final String defaultApiVersion;
+  final pulumi.Input<String> defaultApiVersion;
   /// The location mappings that are supported by this resource type.
-  final List<ProviderExtendedLocationResponse>? locationMappings;
+  final pulumi.Input<List<ProviderExtendedLocationResponse>>? locationMappings;
   /// The collection of locations where this resource type can be created.
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// The properties.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// The resource type.
-  final String? resourceType;
-  final List<ZoneMappingResponse>? zoneMappings;
+  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<List<ZoneMappingResponse>>? zoneMappings;
 
   /// Creates a new [ProviderResourceTypeResponse].
   /// [aliases] The aliases that are supported by this resource type.
@@ -54,31 +54,31 @@ class ProviderResourceTypeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliases': ?aliases == null ? null : pulumi.Input.encodeList<AliasResponse, Map<String, dynamic>>(aliases!, (value) => value.toMap()),
-      'apiProfiles': pulumi.Input.encodeList<ApiProfileResponse, Map<String, dynamic>>(apiProfiles, (value) => value.toMap()),
+      'aliases': ?pulumi.Input.mapOptionalInputValue<List<AliasResponse>, List<Map<String, dynamic>>>(aliases, (value) => pulumi.Input.encodeList<AliasResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'apiProfiles': pulumi.Input.mapInputValue<List<ApiProfileResponse>, List<Map<String, dynamic>>>(apiProfiles, (value) => pulumi.Input.encodeList<ApiProfileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'apiVersions': ?apiVersions,
       'capabilities': ?capabilities,
       'defaultApiVersion': defaultApiVersion,
-      'locationMappings': ?locationMappings == null ? null : pulumi.Input.encodeList<ProviderExtendedLocationResponse, Map<String, dynamic>>(locationMappings!, (value) => value.toMap()),
+      'locationMappings': ?pulumi.Input.mapOptionalInputValue<List<ProviderExtendedLocationResponse>, List<Map<String, dynamic>>>(locationMappings, (value) => pulumi.Input.encodeList<ProviderExtendedLocationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'locations': ?locations,
       'properties': ?properties,
       'resourceType': ?resourceType,
-      'zoneMappings': ?zoneMappings == null ? null : pulumi.Input.encodeList<ZoneMappingResponse, Map<String, dynamic>>(zoneMappings!, (value) => value.toMap()),
+      'zoneMappings': ?pulumi.Input.mapOptionalInputValue<List<ZoneMappingResponse>, List<Map<String, dynamic>>>(zoneMappings, (value) => pulumi.Input.encodeList<ZoneMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ProviderResourceTypeResponse.fromMap(Map<String, dynamic> map) {
     return ProviderResourceTypeResponse(
-      aliases: map['aliases'] == null ? null : pulumi.Input.decodeList<AliasResponse>(map['aliases'], (value) => AliasResponse.fromMap((value as Map).cast<String, dynamic>())),
-      apiProfiles: pulumi.Input.decodeList<ApiProfileResponse>(map['apiProfiles'], (value) => ApiProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
-      apiVersions: map['apiVersions'] == null ? null : (map['apiVersions'] as List).cast<String>(),
-      capabilities: map['capabilities'] == null ? null : map['capabilities'] as String,
-      defaultApiVersion: map['defaultApiVersion'] as String,
-      locationMappings: map['locationMappings'] == null ? null : pulumi.Input.decodeList<ProviderExtendedLocationResponse>(map['locationMappings'], (value) => ProviderExtendedLocationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      zoneMappings: map['zoneMappings'] == null ? null : pulumi.Input.decodeList<ZoneMappingResponse>(map['zoneMappings'], (value) => ZoneMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      aliases: map['aliases'] == null ? null : (pulumi.Input.decodeList<AliasResponse>(map['aliases'], (value) => AliasResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiProfiles: (pulumi.Input.decodeList<ApiProfileResponse>(map['apiProfiles'], (value) => ApiProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions'] as List).cast<String>()).input(),
+      capabilities: map['capabilities'] == null ? null : (map['capabilities'] as String).input(),
+      defaultApiVersion: (map['defaultApiVersion'] as String).input(),
+      locationMappings: map['locationMappings'] == null ? null : (pulumi.Input.decodeList<ProviderExtendedLocationResponse>(map['locationMappings'], (value) => ProviderExtendedLocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      zoneMappings: map['zoneMappings'] == null ? null : (pulumi.Input.decodeList<ZoneMappingResponse>(map['zoneMappings'], (value) => ZoneMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

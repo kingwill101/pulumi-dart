@@ -16,11 +16,9 @@ class GetVpnServerConfigurationArgs {
   /// [resourceGroupName] The resource group name of the VpnServerConfiguration.
   /// [vpnServerConfigurationName] The name of the VpnServerConfiguration being retrieved.
   GetVpnServerConfigurationArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vpnServerConfigurationName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vpnServerConfigurationName = pulumi.Input.asInput<String>(vpnServerConfigurationName);
+    required this.resourceGroupName,
+    required this.vpnServerConfigurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVpnServerConfigurationArgs {
 
   factory GetVpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnServerConfigurationArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vpnServerConfigurationName: pulumi.Output.create<String>(map['vpnServerConfigurationName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vpnServerConfigurationName: (map['vpnServerConfigurationName'] as String).input(),
     );
   }
 }

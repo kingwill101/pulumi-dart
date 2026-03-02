@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetEventDestinationEventDestinationPinpointDestination {
-  final String applicationArn;
+  final pulumi.Input<String> applicationArn;
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationPinpointDestination].
   /// [applicationArn] Required.
@@ -18,7 +19,7 @@ class ConfigurationSetEventDestinationEventDestinationPinpointDestination {
 
   factory ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationEventDestinationPinpointDestination(
-      applicationArn: map['applicationArn'] as String,
+      applicationArn: (map['applicationArn'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Auto pause properties
 class AutoPausePropertiesResponse {
-  final int? delayInMinutes;
-  final bool? enabled;
+  final pulumi.Input<int>? delayInMinutes;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [AutoPausePropertiesResponse].
   /// [delayInMinutes] Optional.
@@ -23,8 +24,8 @@ class AutoPausePropertiesResponse {
 
   factory AutoPausePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AutoPausePropertiesResponse(
-      delayInMinutes: map['delayInMinutes'] == null ? null : map['delayInMinutes'] as int,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      delayInMinutes: map['delayInMinutes'] == null ? null : (map['delayInMinutes'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

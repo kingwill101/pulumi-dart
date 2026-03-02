@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Set the scoring configuration. This allows modifying the ranking of results for a source.
 class SourceScoringConfigResponse {
   /// Importance of the source.
-  final String sourceImportance;
+  final pulumi.Input<String> sourceImportance;
 
   /// Creates a new [SourceScoringConfigResponse].
   /// [sourceImportance] Importance of the source.
@@ -20,7 +21,7 @@ class SourceScoringConfigResponse {
 
   factory SourceScoringConfigResponse.fromMap(Map<String, dynamic> map) {
     return SourceScoringConfigResponse(
-      sourceImportance: map['sourceImportance'] as String,
+      sourceImportance: (map['sourceImportance'] as String).input(),
     );
   }
 }

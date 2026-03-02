@@ -32,23 +32,15 @@ class ScriptState {
   /// [version] Version that is associated with this script.
   /// [zipFile] A data object containing your Realtime scripts and dependencies as a zip  file. The zip file can have one or multiple files. Maximum size of a zip file is 5 MB.
   ScriptState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<ScriptStorageLocation>? storageLocation,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? version,
-    pulumi.Output<String>? zipFile,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageLocation = pulumi.Input.asOptionalInput<ScriptStorageLocation>(storageLocation),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      version = pulumi.Input.asOptionalInput<String>(version),
-      zipFile = pulumi.Input.asOptionalInput<String>(zipFile);
+    this.arn,
+    this.name,
+    this.region,
+    this.storageLocation,
+    this.tags,
+    this.tagsAll,
+    this.version,
+    this.zipFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class ScriptState {
 
   factory ScriptState.fromMap(Map<String, dynamic> map) {
     return ScriptState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageLocation: map['storageLocation'] == null ? null : pulumi.Output.create<ScriptStorageLocation>(ScriptStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
-      zipFile: map['zipFile'] == null ? null : pulumi.Output.create<String>(map['zipFile'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (ScriptStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
     );
   }
 }

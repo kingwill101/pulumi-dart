@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines sources for the suggest/search APIs.
 class SourceResponse {
   /// Source name for content indexed by the Indexing API.
-  final String name;
+  final pulumi.Input<String> name;
   /// Predefined content source for Google Apps.
-  final String predefinedSource;
+  final pulumi.Input<String> predefinedSource;
 
   /// Creates a new [SourceResponse].
   /// [name] Source name for content indexed by the Indexing API.
@@ -25,8 +26,8 @@ class SourceResponse {
 
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
     return SourceResponse(
-      name: map['name'] as String,
-      predefinedSource: map['predefinedSource'] as String,
+      name: (map['name'] as String).input(),
+      predefinedSource: (map['predefinedSource'] as String).input(),
     );
   }
 }

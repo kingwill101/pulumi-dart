@@ -5,9 +5,9 @@ import 'one_dashboard_page_widget_bar_color_series_override.dart';
 
 class OneDashboardPageWidgetBarColor {
   /// (Optional) Choose a color to customize the color of your charts per series in area, bar, line, pie, and stacked bar charts. Accepted values are RGB, HEX, or HSL code.
-  final String? color;
+  final pulumi.Input<String>? color;
   /// (Optional) A Nested block which will take two string attributes `color` and `series_name`. This nested block is used to customize colors of individual.
-  final List<OneDashboardPageWidgetBarColorSeriesOverride>? seriesOverrides;
+  final pulumi.Input<List<OneDashboardPageWidgetBarColorSeriesOverride>>? seriesOverrides;
 
   /// Creates a new [OneDashboardPageWidgetBarColor].
   /// [color] (Optional) Choose a color to customize the color of your charts per series in area, bar, line, pie, and stacked bar charts. Accepted values are RGB, HEX, or HSL code.
@@ -20,14 +20,14 @@ class OneDashboardPageWidgetBarColor {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'color': ?color,
-      'seriesOverrides': ?seriesOverrides == null ? null : pulumi.Input.encodeList<OneDashboardPageWidgetBarColorSeriesOverride, Map<String, dynamic>>(seriesOverrides!, (value) => value.toMap()),
+      'seriesOverrides': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetBarColorSeriesOverride>, List<Map<String, dynamic>>>(seriesOverrides, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetBarColorSeriesOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OneDashboardPageWidgetBarColor.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBarColor(
-      color: map['color'] == null ? null : map['color'] as String,
-      seriesOverrides: map['seriesOverrides'] == null ? null : pulumi.Input.decodeList<OneDashboardPageWidgetBarColorSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetBarColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>())),
+      color: map['color'] == null ? null : (map['color'] as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetBarColorSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetBarColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

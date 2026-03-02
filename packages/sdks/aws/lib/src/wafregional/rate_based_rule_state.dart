@@ -35,25 +35,16 @@ class RateBasedRuleState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   RateBasedRuleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? metricName,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<RateBasedRulePredicate>>? predicates,
-    pulumi.Output<String>? rateKey,
-    pulumi.Output<int>? rateLimit,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      metricName = pulumi.Input.asOptionalInput<String>(metricName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      predicates = pulumi.Input.asOptionalInput<List<RateBasedRulePredicate>>(predicates),
-      rateKey = pulumi.Input.asOptionalInput<String>(rateKey),
-      rateLimit = pulumi.Input.asOptionalInput<int>(rateLimit),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.metricName,
+    this.name,
+    this.predicates,
+    this.rateKey,
+    this.rateLimit,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class RateBasedRuleState {
 
   factory RateBasedRuleState.fromMap(Map<String, dynamic> map) {
     return RateBasedRuleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      metricName: map['metricName'] == null ? null : pulumi.Output.create<String>(map['metricName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      predicates: map['predicates'] == null ? null : pulumi.Output.create<List<RateBasedRulePredicate>>(pulumi.Input.decodeList<RateBasedRulePredicate>(map['predicates'], (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>()))),
-      rateKey: map['rateKey'] == null ? null : pulumi.Output.create<String>(map['rateKey'] as String),
-      rateLimit: map['rateLimit'] == null ? null : pulumi.Output.create<int>(map['rateLimit'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      predicates: map['predicates'] == null ? null : (pulumi.Input.decodeList<RateBasedRulePredicate>(map['predicates'], (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rateKey: map['rateKey'] == null ? null : (map['rateKey'] as String).input(),
+      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

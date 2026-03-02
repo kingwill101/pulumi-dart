@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'call_credentials_response.dart';
 import 'channel_credentials_response.dart';
 
 /// [Deprecated] gRPC config to access the SDS server. gRPC config to access the SDS server.
 class GrpcServiceConfigResponse {
   /// The call credentials to access the SDS server.
-  final CallCredentialsResponse callCredentials;
+  final pulumi.Input<CallCredentialsResponse> callCredentials;
   /// The channel credentials to access the SDS server.
-  final ChannelCredentialsResponse channelCredentials;
+  final pulumi.Input<ChannelCredentialsResponse> channelCredentials;
   /// The target URI of the SDS server.
-  final String targetUri;
+  final pulumi.Input<String> targetUri;
 
   /// Creates a new [GrpcServiceConfigResponse].
   /// [callCredentials] The call credentials to access the SDS server.
@@ -24,17 +25,17 @@ class GrpcServiceConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'callCredentials': callCredentials.toMap(),
-      'channelCredentials': channelCredentials.toMap(),
+      'callCredentials': pulumi.Input.mapInputValue<CallCredentialsResponse, Map<String, dynamic>>(callCredentials, (value) => value.toMap()),
+      'channelCredentials': pulumi.Input.mapInputValue<ChannelCredentialsResponse, Map<String, dynamic>>(channelCredentials, (value) => value.toMap()),
       'targetUri': targetUri,
     };
   }
 
   factory GrpcServiceConfigResponse.fromMap(Map<String, dynamic> map) {
     return GrpcServiceConfigResponse(
-      callCredentials: CallCredentialsResponse.fromMap((map['callCredentials'] as Map).cast<String, dynamic>()),
-      channelCredentials: ChannelCredentialsResponse.fromMap((map['channelCredentials'] as Map).cast<String, dynamic>()),
-      targetUri: map['targetUri'] as String,
+      callCredentials: (CallCredentialsResponse.fromMap((map['callCredentials'] as Map).cast<String, dynamic>())).input(),
+      channelCredentials: (ChannelCredentialsResponse.fromMap((map['channelCredentials'] as Map).cast<String, dynamic>())).input(),
+      targetUri: (map['targetUri'] as String).input(),
     );
   }
 }

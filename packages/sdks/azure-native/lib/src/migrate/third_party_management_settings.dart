@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Third Party Management settings.
 class ThirdPartyManagementSettings {
   /// License Cost.
-  final double licenseCost;
+  final pulumi.Input<double> licenseCost;
   /// Support Cost.
-  final double supportCost;
+  final pulumi.Input<double> supportCost;
 
   /// Creates a new [ThirdPartyManagementSettings].
   /// [licenseCost] License Cost.
@@ -25,8 +26,8 @@ class ThirdPartyManagementSettings {
 
   factory ThirdPartyManagementSettings.fromMap(Map<String, dynamic> map) {
     return ThirdPartyManagementSettings(
-      licenseCost: map['licenseCost'] as double,
-      supportCost: map['supportCost'] as double,
+      licenseCost: (map['licenseCost'] as double).input(),
+      supportCost: (map['supportCost'] as double).input(),
     );
   }
 }

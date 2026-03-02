@@ -19,13 +19,10 @@ class ListNodeTypeFaultSimulationArgs {
   /// [nodeTypeName] The name of the node type.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListNodeTypeFaultSimulationArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> nodeTypeName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      nodeTypeName = pulumi.Input.asInput<String>(nodeTypeName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.nodeTypeName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListNodeTypeFaultSimulationArgs {
 
   factory ListNodeTypeFaultSimulationArgs.fromMap(Map<String, dynamic> map) {
     return ListNodeTypeFaultSimulationArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      nodeTypeName: pulumi.Output.create<String>(map['nodeTypeName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      nodeTypeName: (map['nodeTypeName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

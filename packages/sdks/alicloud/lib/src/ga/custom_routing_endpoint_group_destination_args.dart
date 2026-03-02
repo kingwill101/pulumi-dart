@@ -22,15 +22,11 @@ class CustomRoutingEndpointGroupDestinationArgs {
   /// [protocols] The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
   /// [toPort] The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
   CustomRoutingEndpointGroupDestinationArgs({
-    required pulumi.Output<String> endpointGroupId,
-    required pulumi.Output<int> fromPort,
-    required pulumi.Output<List<String>> protocols,
-    required pulumi.Output<int> toPort,
-  }) :
-      endpointGroupId = pulumi.Input.asInput<String>(endpointGroupId),
-      fromPort = pulumi.Input.asInput<int>(fromPort),
-      protocols = pulumi.Input.asInput<List<String>>(protocols),
-      toPort = pulumi.Input.asInput<int>(toPort);
+    required this.endpointGroupId,
+    required this.fromPort,
+    required this.protocols,
+    required this.toPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class CustomRoutingEndpointGroupDestinationArgs {
 
   factory CustomRoutingEndpointGroupDestinationArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupDestinationArgs(
-      endpointGroupId: pulumi.Output.create<String>(map['endpointGroupId'] as String),
-      fromPort: pulumi.Output.create<int>(map['fromPort'] as int),
-      protocols: pulumi.Output.create<List<String>>((map['protocols'] as List).cast<String>()),
-      toPort: pulumi.Output.create<int>(map['toPort'] as int),
+      endpointGroupId: (map['endpointGroupId'] as String).input(),
+      fromPort: (map['fromPort'] as int).input(),
+      protocols: ((map['protocols'] as List).cast<String>()).input(),
+      toPort: (map['toPort'] as int).input(),
     );
   }
 }

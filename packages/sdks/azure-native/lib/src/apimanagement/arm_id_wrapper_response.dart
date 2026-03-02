@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A wrapper for an ARM resource id
 class ArmIdWrapperResponse {
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [ArmIdWrapperResponse].
   /// [id] Required.
@@ -19,7 +20,7 @@ class ArmIdWrapperResponse {
 
   factory ArmIdWrapperResponse.fromMap(Map<String, dynamic> map) {
     return ArmIdWrapperResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

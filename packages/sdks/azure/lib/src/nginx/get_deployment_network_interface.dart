@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDeploymentNetworkInterface {
   /// The subnet resource ID of the NGINX Deployment.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetDeploymentNetworkInterface].
   /// [subnetId] The subnet resource ID of the NGINX Deployment.
@@ -19,7 +20,7 @@ class GetDeploymentNetworkInterface {
 
   factory GetDeploymentNetworkInterface.fromMap(Map<String, dynamic> map) {
     return GetDeploymentNetworkInterface(
-      subnetId: map['subnetId'] as String,
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

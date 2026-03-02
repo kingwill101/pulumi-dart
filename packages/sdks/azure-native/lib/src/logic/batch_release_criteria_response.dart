@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workflow_trigger_recurrence_response.dart';
 
 /// The batch release criteria.
 class BatchReleaseCriteriaResponse {
   /// The batch size in bytes.
-  final int? batchSize;
+  final pulumi.Input<int>? batchSize;
   /// The message count.
-  final int? messageCount;
+  final pulumi.Input<int>? messageCount;
   /// The recurrence.
-  final WorkflowTriggerRecurrenceResponse? recurrence;
+  final pulumi.Input<WorkflowTriggerRecurrenceResponse>? recurrence;
 
   /// Creates a new [BatchReleaseCriteriaResponse].
   /// [batchSize] The batch size in bytes.
@@ -25,15 +26,15 @@ class BatchReleaseCriteriaResponse {
     return <String, dynamic>{
       'batchSize': ?batchSize,
       'messageCount': ?messageCount,
-      'recurrence': ?recurrence == null ? null : recurrence!.toMap(),
+      'recurrence': ?pulumi.Input.mapOptionalInputValue<WorkflowTriggerRecurrenceResponse, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
     };
   }
 
   factory BatchReleaseCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return BatchReleaseCriteriaResponse(
-      batchSize: map['batchSize'] == null ? null : map['batchSize'] as int,
-      messageCount: map['messageCount'] == null ? null : map['messageCount'] as int,
-      recurrence: map['recurrence'] == null ? null : WorkflowTriggerRecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>()),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
+      messageCount: map['messageCount'] == null ? null : (map['messageCount'] as int).input(),
+      recurrence: map['recurrence'] == null ? null : (WorkflowTriggerRecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

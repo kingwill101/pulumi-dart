@@ -43,29 +43,18 @@ class GetEngineVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of the DB engine. For example, `1.0.1.0`, `1.0.2.2`, and `1.0.3.0`. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
   GetEngineVersionArgs({
-    pulumi.Output<bool>? defaultOnly,
-    pulumi.Output<String>? engine,
-    pulumi.Output<bool>? hasMajorTarget,
-    pulumi.Output<bool>? hasMinorTarget,
-    pulumi.Output<bool>? latest,
-    pulumi.Output<String>? parameterGroupFamily,
-    pulumi.Output<List<String>>? preferredMajorTargets,
-    pulumi.Output<List<String>>? preferredUpgradeTargets,
-    pulumi.Output<List<String>>? preferredVersions,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? version,
-  }) :
-      defaultOnly = pulumi.Input.asOptionalInput<bool>(defaultOnly),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      hasMajorTarget = pulumi.Input.asOptionalInput<bool>(hasMajorTarget),
-      hasMinorTarget = pulumi.Input.asOptionalInput<bool>(hasMinorTarget),
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      parameterGroupFamily = pulumi.Input.asOptionalInput<String>(parameterGroupFamily),
-      preferredMajorTargets = pulumi.Input.asOptionalInput<List<String>>(preferredMajorTargets),
-      preferredUpgradeTargets = pulumi.Input.asOptionalInput<List<String>>(preferredUpgradeTargets),
-      preferredVersions = pulumi.Input.asOptionalInput<List<String>>(preferredVersions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.defaultOnly,
+    this.engine,
+    this.hasMajorTarget,
+    this.hasMinorTarget,
+    this.latest,
+    this.parameterGroupFamily,
+    this.preferredMajorTargets,
+    this.preferredUpgradeTargets,
+    this.preferredVersions,
+    this.region,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GetEngineVersionArgs {
 
   factory GetEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionArgs(
-      defaultOnly: map['defaultOnly'] == null ? null : pulumi.Output.create<bool>(map['defaultOnly'] as bool),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      hasMajorTarget: map['hasMajorTarget'] == null ? null : pulumi.Output.create<bool>(map['hasMajorTarget'] as bool),
-      hasMinorTarget: map['hasMinorTarget'] == null ? null : pulumi.Output.create<bool>(map['hasMinorTarget'] as bool),
-      latest: map['latest'] == null ? null : pulumi.Output.create<bool>(map['latest'] as bool),
-      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : pulumi.Output.create<String>(map['parameterGroupFamily'] as String),
-      preferredMajorTargets: map['preferredMajorTargets'] == null ? null : pulumi.Output.create<List<String>>((map['preferredMajorTargets'] as List).cast<String>()),
-      preferredUpgradeTargets: map['preferredUpgradeTargets'] == null ? null : pulumi.Output.create<List<String>>((map['preferredUpgradeTargets'] as List).cast<String>()),
-      preferredVersions: map['preferredVersions'] == null ? null : pulumi.Output.create<List<String>>((map['preferredVersions'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      defaultOnly: map['defaultOnly'] == null ? null : (map['defaultOnly'] as bool).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      hasMajorTarget: map['hasMajorTarget'] == null ? null : (map['hasMajorTarget'] as bool).input(),
+      hasMinorTarget: map['hasMinorTarget'] == null ? null : (map['hasMinorTarget'] as bool).input(),
+      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : (map['parameterGroupFamily'] as String).input(),
+      preferredMajorTargets: map['preferredMajorTargets'] == null ? null : ((map['preferredMajorTargets'] as List).cast<String>()).input(),
+      preferredUpgradeTargets: map['preferredUpgradeTargets'] == null ? null : ((map['preferredUpgradeTargets'] as List).cast<String>()).input(),
+      preferredVersions: map['preferredVersions'] == null ? null : ((map['preferredVersions'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

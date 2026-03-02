@@ -17,13 +17,10 @@ class ResourceDataSyncState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3Destination] Amazon S3 configuration details for the sync.
   ResourceDataSyncState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<ResourceDataSyncS3Destination>? s3Destination,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3Destination = pulumi.Input.asOptionalInput<ResourceDataSyncS3Destination>(s3Destination);
+    this.name,
+    this.region,
+    this.s3Destination,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ResourceDataSyncState {
 
   factory ResourceDataSyncState.fromMap(Map<String, dynamic> map) {
     return ResourceDataSyncState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3Destination: map['s3Destination'] == null ? null : pulumi.Output.create<ResourceDataSyncS3Destination>(ResourceDataSyncS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3Destination: map['s3Destination'] == null ? null : (ResourceDataSyncS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

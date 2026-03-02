@@ -25,17 +25,12 @@ class ClientApplicationProductLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   ClientApplicationProductLinkArgs({
-    required pulumi.Output<String> clientApplicationId,
-    pulumi.Output<String>? clientApplicationProductLinkId,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      clientApplicationId = pulumi.Input.asInput<String>(clientApplicationId),
-      clientApplicationProductLinkId = pulumi.Input.asOptionalInput<String>(clientApplicationProductLinkId),
-      productId = pulumi.Input.asInput<String>(productId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.clientApplicationId,
+    this.clientApplicationProductLinkId,
+    required this.productId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ClientApplicationProductLinkArgs {
 
   factory ClientApplicationProductLinkArgs.fromMap(Map<String, dynamic> map) {
     return ClientApplicationProductLinkArgs(
-      clientApplicationId: pulumi.Output.create<String>(map['clientApplicationId'] as String),
-      clientApplicationProductLinkId: map['clientApplicationProductLinkId'] == null ? null : pulumi.Output.create<String>(map['clientApplicationProductLinkId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      clientApplicationId: (map['clientApplicationId'] as String).input(),
+      clientApplicationProductLinkId: map['clientApplicationProductLinkId'] == null ? null : (map['clientApplicationProductLinkId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

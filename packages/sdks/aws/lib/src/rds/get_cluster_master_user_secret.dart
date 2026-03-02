@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterMasterUserSecret {
-  final String kmsKeyId;
-  final String secretArn;
-  final String secretStatus;
+  final pulumi.Input<String> kmsKeyId;
+  final pulumi.Input<String> secretArn;
+  final pulumi.Input<String> secretStatus;
 
   /// Creates a new [GetClusterMasterUserSecret].
   /// [kmsKeyId] Required.
@@ -26,9 +27,9 @@ class GetClusterMasterUserSecret {
 
   factory GetClusterMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return GetClusterMasterUserSecret(
-      kmsKeyId: map['kmsKeyId'] as String,
-      secretArn: map['secretArn'] as String,
-      secretStatus: map['secretStatus'] as String,
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
+      secretArn: (map['secretArn'] as String).input(),
+      secretStatus: (map['secretStatus'] as String).input(),
     );
   }
 }

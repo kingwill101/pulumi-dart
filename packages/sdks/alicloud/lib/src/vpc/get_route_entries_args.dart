@@ -25,17 +25,12 @@ class GetRouteEntriesArgs {
   /// [routeTableId] The ID of the router table to which the route entry belongs.
   /// [type] The type of the route entry.
   GetRouteEntriesArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> routeTableId,
-    pulumi.Output<String>? type,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.cidrBlock,
+    this.instanceId,
+    this.outputFile,
+    required this.routeTableId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetRouteEntriesArgs {
 
   factory GetRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

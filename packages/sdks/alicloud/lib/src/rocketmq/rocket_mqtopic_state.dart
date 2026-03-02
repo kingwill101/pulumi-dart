@@ -31,23 +31,15 @@ class RocketMQTopicState {
   /// [status] The status of the resource.
   /// [topicName] Topic name and identification.
   RocketMQTopicState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? maxSendTps,
-    pulumi.Output<String>? messageType,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? topicName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      maxSendTps = pulumi.Input.asOptionalInput<int>(maxSendTps),
-      messageType = pulumi.Input.asOptionalInput<String>(messageType),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    this.createTime,
+    this.instanceId,
+    this.maxSendTps,
+    this.messageType,
+    this.regionId,
+    this.remark,
+    this.status,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class RocketMQTopicState {
 
   factory RocketMQTopicState.fromMap(Map<String, dynamic> map) {
     return RocketMQTopicState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      maxSendTps: map['maxSendTps'] == null ? null : pulumi.Output.create<int>(map['maxSendTps'] as int),
-      messageType: map['messageType'] == null ? null : pulumi.Output.create<String>(map['messageType'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      maxSendTps: map['maxSendTps'] == null ? null : (map['maxSendTps'] as int).input(),
+      messageType: map['messageType'] == null ? null : (map['messageType'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerConnectionLog {
-  final String bucket;
-  final bool enabled;
-  final String prefix;
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<bool> enabled;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [GetLoadBalancerConnectionLog].
   /// [bucket] Required.
@@ -26,9 +27,9 @@ class GetLoadBalancerConnectionLog {
 
   factory GetLoadBalancerConnectionLog.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerConnectionLog(
-      bucket: map['bucket'] as String,
-      enabled: map['enabled'] as bool,
-      prefix: map['prefix'] as String,
+      bucket: (map['bucket'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

@@ -20,15 +20,11 @@ class ArchiveRuleState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleName] Rule name.
   ArchiveRuleState({
-    pulumi.Output<String>? analyzerName,
-    pulumi.Output<List<ArchiveRuleFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? ruleName,
-  }) :
-      analyzerName = pulumi.Input.asOptionalInput<String>(analyzerName),
-      filters = pulumi.Input.asOptionalInput<List<ArchiveRuleFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName);
+    this.analyzerName,
+    this.filters,
+    this.region,
+    this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class ArchiveRuleState {
 
   factory ArchiveRuleState.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleState(
-      analyzerName: map['analyzerName'] == null ? null : pulumi.Output.create<String>(map['analyzerName'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<ArchiveRuleFilter>>(pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters'], (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      analyzerName: map['analyzerName'] == null ? null : (map['analyzerName'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters'], (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

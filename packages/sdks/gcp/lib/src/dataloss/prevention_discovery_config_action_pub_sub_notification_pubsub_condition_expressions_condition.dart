@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition {
   /// The minimum data risk score that triggers the condition.
   /// Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
-  final String? minimumRiskScore;
+  final pulumi.Input<String>? minimumRiskScore;
   /// The minimum sensitivity level that triggers the condition.
   /// Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
-  final String? minimumSensitivityScore;
+  final pulumi.Input<String>? minimumSensitivityScore;
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition].
   /// [minimumRiskScore] The minimum data risk score that triggers the condition.
@@ -26,8 +27,8 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
 
   factory PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition(
-      minimumRiskScore: map['minimumRiskScore'] == null ? null : map['minimumRiskScore'] as String,
-      minimumSensitivityScore: map['minimumSensitivityScore'] == null ? null : map['minimumSensitivityScore'] as String,
+      minimumRiskScore: map['minimumRiskScore'] == null ? null : (map['minimumRiskScore'] as String).input(),
+      minimumSensitivityScore: map['minimumSensitivityScore'] == null ? null : (map['minimumSensitivityScore'] as String).input(),
     );
   }
 }

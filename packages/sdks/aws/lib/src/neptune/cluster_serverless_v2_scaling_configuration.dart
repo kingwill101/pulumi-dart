@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterServerlessV2ScalingConfiguration {
   /// Maximum Neptune Capacity Units (NCUs) for this cluster. Must be lower or equal than **128**. See [AWS Documentation](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-capacity-scaling.html) for more details.
-  final double? maxCapacity;
+  final pulumi.Input<double>? maxCapacity;
   /// Minimum Neptune Capacity Units (NCUs) for this cluster. Must be greater or equal than **1**. See [AWS Documentation](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-capacity-scaling.html) for more details.
-  final double? minCapacity;
+  final pulumi.Input<double>? minCapacity;
 
   /// Creates a new [ClusterServerlessV2ScalingConfiguration].
   /// [maxCapacity] Maximum Neptune Capacity Units (NCUs) for this cluster. Must be lower or equal than **128**. See [AWS Documentation](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-capacity-scaling.html) for more details.
@@ -24,8 +25,8 @@ class ClusterServerlessV2ScalingConfiguration {
 
   factory ClusterServerlessV2ScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterServerlessV2ScalingConfiguration(
-      maxCapacity: map['maxCapacity'] == null ? null : map['maxCapacity'] as double,
-      minCapacity: map['minCapacity'] == null ? null : map['minCapacity'] as double,
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as double).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as double).input(),
     );
   }
 }

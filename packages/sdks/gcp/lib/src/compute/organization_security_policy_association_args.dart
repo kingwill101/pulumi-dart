@@ -19,13 +19,10 @@ class OrganizationSecurityPolicyAssociationArgs {
   /// [name] The name for an association.
   /// [policyId] The security policy ID of the association.
   OrganizationSecurityPolicyAssociationArgs({
-    required pulumi.Output<String> attachmentId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyId,
-  }) :
-      attachmentId = pulumi.Input.asInput<String>(attachmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asInput<String>(policyId);
+    required this.attachmentId,
+    this.name,
+    required this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class OrganizationSecurityPolicyAssociationArgs {
 
   factory OrganizationSecurityPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyAssociationArgs(
-      attachmentId: pulumi.Output.create<String>(map['attachmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
+      attachmentId: (map['attachmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
     );
   }
 }

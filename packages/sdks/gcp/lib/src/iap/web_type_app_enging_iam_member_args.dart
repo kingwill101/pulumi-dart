@@ -41,17 +41,12 @@ class WebTypeAppEngingIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   WebTypeAppEngingIamMemberArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<WebTypeAppEngingIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      condition = pulumi.Input.asOptionalInput<WebTypeAppEngingIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    required this.appId,
+    this.condition,
+    required this.member,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,11 +60,11 @@ class WebTypeAppEngingIamMemberArgs {
 
   factory WebTypeAppEngingIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return WebTypeAppEngingIamMemberArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<WebTypeAppEngingIamMemberCondition>(WebTypeAppEngingIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      appId: (map['appId'] as String).input(),
+      condition: map['condition'] == null ? null : (WebTypeAppEngingIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

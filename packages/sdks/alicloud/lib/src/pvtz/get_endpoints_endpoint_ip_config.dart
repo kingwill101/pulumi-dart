@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointsEndpointIpConfig {
   /// The Subnet mask.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// The Vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The Zone ID.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetEndpointsEndpointIpConfig].
   /// [cidrBlock] The Subnet mask.
@@ -34,10 +35,10 @@ class GetEndpointsEndpointIpConfig {
 
   factory GetEndpointsEndpointIpConfig.fromMap(Map<String, dynamic> map) {
     return GetEndpointsEndpointIpConfig(
-      cidrBlock: map['cidrBlock'] as String,
-      ip: map['ip'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      ip: (map['ip'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

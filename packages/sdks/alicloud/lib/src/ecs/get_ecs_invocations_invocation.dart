@@ -5,35 +5,35 @@ import 'get_ecs_invocations_invocation_invoke_instance.dart';
 
 class GetEcsInvocationsInvocation {
   /// The Base64-encoded command content.
-  final String commandContent;
+  final pulumi.Input<String> commandContent;
   /// The ID of the command.
-  final String commandId;
+  final pulumi.Input<String> commandId;
   /// The name of the command.
-  final String commandName;
+  final pulumi.Input<String> commandName;
   /// The type of the command.
-  final String commandType;
+  final pulumi.Input<String> commandType;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The schedule on which the recurring execution of the command takes place. For information about the value specifications, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// The ID of the Invocation.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Invocation.
-  final String invocationId;
+  final pulumi.Input<String> invocationId;
   /// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
-  final String invocationStatus;
+  final pulumi.Input<String> invocationStatus;
   /// Execute target instance set type.
-  final List<GetEcsInvocationsInvocationInvokeInstance> invokeInstances;
+  final pulumi.Input<List<GetEcsInvocationsInvocationInvokeInstance>> invokeInstances;
   /// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
-  final String invokeStatus;
+  final pulumi.Input<String> invokeStatus;
   /// The custom parameters in the command.
-  final String parameters;
+  final pulumi.Input<String> parameters;
   /// Indicates the execution mode of the command.
-  final String repeatMode;
+  final pulumi.Input<String> repeatMode;
   /// Indicates whether the commands are to be automatically run.
-  final bool timed;
+  final pulumi.Input<bool> timed;
   /// The username that was used to run the command on the instance.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetEcsInvocationsInvocation].
   /// [commandContent] The Base64-encoded command content.
@@ -80,7 +80,7 @@ class GetEcsInvocationsInvocation {
       'id': id,
       'invocationId': invocationId,
       'invocationStatus': invocationStatus,
-      'invokeInstances': pulumi.Input.encodeList<GetEcsInvocationsInvocationInvokeInstance, Map<String, dynamic>>(invokeInstances, (value) => value.toMap()),
+      'invokeInstances': pulumi.Input.mapInputValue<List<GetEcsInvocationsInvocationInvokeInstance>, List<Map<String, dynamic>>>(invokeInstances, (value) => pulumi.Input.encodeList<GetEcsInvocationsInvocationInvokeInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'invokeStatus': invokeStatus,
       'parameters': parameters,
       'repeatMode': repeatMode,
@@ -91,21 +91,21 @@ class GetEcsInvocationsInvocation {
 
   factory GetEcsInvocationsInvocation.fromMap(Map<String, dynamic> map) {
     return GetEcsInvocationsInvocation(
-      commandContent: map['commandContent'] as String,
-      commandId: map['commandId'] as String,
-      commandName: map['commandName'] as String,
-      commandType: map['commandType'] as String,
-      createTime: map['createTime'] as String,
-      frequency: map['frequency'] as String,
-      id: map['id'] as String,
-      invocationId: map['invocationId'] as String,
-      invocationStatus: map['invocationStatus'] as String,
-      invokeInstances: pulumi.Input.decodeList<GetEcsInvocationsInvocationInvokeInstance>(map['invokeInstances'], (value) => GetEcsInvocationsInvocationInvokeInstance.fromMap((value as Map).cast<String, dynamic>())),
-      invokeStatus: map['invokeStatus'] as String,
-      parameters: map['parameters'] as String,
-      repeatMode: map['repeatMode'] as String,
-      timed: map['timed'] as bool,
-      username: map['username'] as String,
+      commandContent: (map['commandContent'] as String).input(),
+      commandId: (map['commandId'] as String).input(),
+      commandName: (map['commandName'] as String).input(),
+      commandType: (map['commandType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      frequency: (map['frequency'] as String).input(),
+      id: (map['id'] as String).input(),
+      invocationId: (map['invocationId'] as String).input(),
+      invocationStatus: (map['invocationStatus'] as String).input(),
+      invokeInstances: (pulumi.Input.decodeList<GetEcsInvocationsInvocationInvokeInstance>(map['invokeInstances'], (value) => GetEcsInvocationsInvocationInvokeInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      invokeStatus: (map['invokeStatus'] as String).input(),
+      parameters: (map['parameters'] as String).input(),
+      repeatMode: (map['repeatMode'] as String).input(),
+      timed: (map['timed'] as bool).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

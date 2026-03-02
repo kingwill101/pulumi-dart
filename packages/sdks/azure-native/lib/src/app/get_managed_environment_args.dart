@@ -16,11 +16,9 @@ class GetManagedEnvironmentArgs {
   /// [environmentName] Name of the Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetManagedEnvironmentArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagedEnvironmentArgs {
 
   factory GetManagedEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedEnvironmentArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

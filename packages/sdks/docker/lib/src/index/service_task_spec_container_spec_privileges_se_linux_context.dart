@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext {
   /// Disable SELinux
-  final bool? disable;
+  final pulumi.Input<bool>? disable;
   /// SELinux level label
-  final String? level;
+  final pulumi.Input<String>? level;
   /// SELinux role label
-  final String? role;
+  final pulumi.Input<String>? role;
   /// SELinux type label
-  final String? type;
+  final pulumi.Input<String>? type;
   /// SELinux user label
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext].
   /// [disable] Disable SELinux
@@ -39,11 +40,11 @@ class ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext {
 
   factory ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext(
-      disable: map['disable'] == null ? null : map['disable'] as bool,
-      level: map['level'] == null ? null : map['level'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      user: map['user'] == null ? null : map['user'] as String,
+      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

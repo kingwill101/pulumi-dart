@@ -22,15 +22,11 @@ class QueueArgs {
   /// [queueName] A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   QueueArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? queueName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      queueName = pulumi.Input.asOptionalInput<String>(queueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.metadata,
+    this.queueName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      queueName: map['queueName'] == null ? null : pulumi.Output.create<String>(map['queueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

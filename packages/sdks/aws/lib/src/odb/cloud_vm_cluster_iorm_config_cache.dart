@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_vm_cluster_iorm_config_cache_db_plan.dart';
 
 class CloudVmClusterIormConfigCache {
-  final List<CloudVmClusterIormConfigCacheDbPlan> dbPlans;
-  final String lifecycleDetails;
-  final String lifecycleState;
-  final String objective;
+  final pulumi.Input<List<CloudVmClusterIormConfigCacheDbPlan>> dbPlans;
+  final pulumi.Input<String> lifecycleDetails;
+  final pulumi.Input<String> lifecycleState;
+  final pulumi.Input<String> objective;
 
   /// Creates a new [CloudVmClusterIormConfigCache].
   /// [dbPlans] Required.
@@ -23,7 +23,7 @@ class CloudVmClusterIormConfigCache {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbPlans': pulumi.Input.encodeList<CloudVmClusterIormConfigCacheDbPlan, Map<String, dynamic>>(dbPlans, (value) => value.toMap()),
+      'dbPlans': pulumi.Input.mapInputValue<List<CloudVmClusterIormConfigCacheDbPlan>, List<Map<String, dynamic>>>(dbPlans, (value) => pulumi.Input.encodeList<CloudVmClusterIormConfigCacheDbPlan, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lifecycleDetails': lifecycleDetails,
       'lifecycleState': lifecycleState,
       'objective': objective,
@@ -32,10 +32,10 @@ class CloudVmClusterIormConfigCache {
 
   factory CloudVmClusterIormConfigCache.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterIormConfigCache(
-      dbPlans: pulumi.Input.decodeList<CloudVmClusterIormConfigCacheDbPlan>(map['dbPlans'], (value) => CloudVmClusterIormConfigCacheDbPlan.fromMap((value as Map).cast<String, dynamic>())),
-      lifecycleDetails: map['lifecycleDetails'] as String,
-      lifecycleState: map['lifecycleState'] as String,
-      objective: map['objective'] as String,
+      dbPlans: (pulumi.Input.decodeList<CloudVmClusterIormConfigCacheDbPlan>(map['dbPlans'], (value) => CloudVmClusterIormConfigCacheDbPlan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleDetails: (map['lifecycleDetails'] as String).input(),
+      lifecycleState: (map['lifecycleState'] as String).input(),
+      objective: (map['objective'] as String).input(),
     );
   }
 }

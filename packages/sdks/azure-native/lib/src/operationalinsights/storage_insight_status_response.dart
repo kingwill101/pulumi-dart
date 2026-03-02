@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The status of the storage insight.
 class StorageInsightStatusResponse {
   /// Description of the state of the storage insight.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The state of the storage insight connection to the workspace
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [StorageInsightStatusResponse].
   /// [description] Description of the state of the storage insight.
@@ -25,8 +26,8 @@ class StorageInsightStatusResponse {
 
   factory StorageInsightStatusResponse.fromMap(Map<String, dynamic> map) {
     return StorageInsightStatusResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      state: map['state'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

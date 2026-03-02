@@ -37,27 +37,17 @@ class RegexPatternSetState {
   /// [tags] An array of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   RegexPatternSetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lockToken,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<RegexPatternSetRegularExpression>>? regularExpressions,
-    pulumi.Output<String>? scope,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lockToken = pulumi.Input.asOptionalInput<String>(lockToken),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regularExpressions = pulumi.Input.asOptionalInput<List<RegexPatternSetRegularExpression>>(regularExpressions),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.lockToken,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.regularExpressions,
+    this.scope,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class RegexPatternSetState {
 
   factory RegexPatternSetState.fromMap(Map<String, dynamic> map) {
     return RegexPatternSetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lockToken: map['lockToken'] == null ? null : pulumi.Output.create<String>(map['lockToken'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      regularExpressions: map['regularExpressions'] == null ? null : pulumi.Output.create<List<RegexPatternSetRegularExpression>>(pulumi.Input.decodeList<RegexPatternSetRegularExpression>(map['regularExpressions'], (value) => RegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>()))),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lockToken: map['lockToken'] == null ? null : (map['lockToken'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      regularExpressions: map['regularExpressions'] == null ? null : (pulumi.Input.decodeList<RegexPatternSetRegularExpression>(map['regularExpressions'], (value) => RegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

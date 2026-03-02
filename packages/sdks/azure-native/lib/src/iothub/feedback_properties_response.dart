@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the feedback queue for cloud-to-device messages.
 class FeedbackPropertiesResponse {
   /// The lock duration for the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final String? lockDurationAsIso8601;
+  final pulumi.Input<String>? lockDurationAsIso8601;
   /// The number of times the IoT hub attempts to deliver a message on the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final int? maxDeliveryCount;
+  final pulumi.Input<int>? maxDeliveryCount;
   /// The period of time for which a message is available to consume before it is expired by the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final String? ttlAsIso8601;
+  final pulumi.Input<String>? ttlAsIso8601;
 
   /// Creates a new [FeedbackPropertiesResponse].
   /// [lockDurationAsIso8601] The lock duration for the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
@@ -30,9 +31,9 @@ class FeedbackPropertiesResponse {
 
   factory FeedbackPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FeedbackPropertiesResponse(
-      lockDurationAsIso8601: map['lockDurationAsIso8601'] == null ? null : map['lockDurationAsIso8601'] as String,
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : map['maxDeliveryCount'] as int,
-      ttlAsIso8601: map['ttlAsIso8601'] == null ? null : map['ttlAsIso8601'] as String,
+      lockDurationAsIso8601: map['lockDurationAsIso8601'] == null ? null : (map['lockDurationAsIso8601'] as String).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
+      ttlAsIso8601: map['ttlAsIso8601'] == null ? null : (map['ttlAsIso8601'] as String).input(),
     );
   }
 }

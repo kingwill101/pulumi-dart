@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetFleetInstanceSet {
   /// The IDs of the instances.
-  final List<String>? instanceIds;
+  final pulumi.Input<List<String>>? instanceIds;
   /// The instance type.
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// Indicates if the instance that was launched is a Spot Instance or On-Demand Instance.
-  final String? lifecycle;
+  final pulumi.Input<String>? lifecycle;
   /// The value is `Windows` for Windows instances. Otherwise, the value is blank.
-  final String? platform;
+  final pulumi.Input<String>? platform;
 
   /// Creates a new [FleetFleetInstanceSet].
   /// [instanceIds] The IDs of the instances.
@@ -34,10 +35,10 @@ class FleetFleetInstanceSet {
 
   factory FleetFleetInstanceSet.fromMap(Map<String, dynamic> map) {
     return FleetFleetInstanceSet(
-      instanceIds: map['instanceIds'] == null ? null : (map['instanceIds'] as List).cast<String>(),
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      lifecycle: map['lifecycle'] == null ? null : map['lifecycle'] as String,
-      platform: map['platform'] == null ? null : map['platform'] as String,
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      lifecycle: map['lifecycle'] == null ? null : (map['lifecycle'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
     );
   }
 }

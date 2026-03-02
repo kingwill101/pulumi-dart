@@ -5,7 +5,7 @@ import 'get_response_plan_integration_pagerduty.dart';
 
 class GetResponsePlanIntegration {
   /// Details about the PagerDuty configuration for a response plan. The following values are supported:
-  final List<GetResponsePlanIntegrationPagerduty> pagerduties;
+  final pulumi.Input<List<GetResponsePlanIntegrationPagerduty>> pagerduties;
 
   /// Creates a new [GetResponsePlanIntegration].
   /// [pagerduties] Details about the PagerDuty configuration for a response plan. The following values are supported:
@@ -15,13 +15,13 @@ class GetResponsePlanIntegration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pagerduties': pulumi.Input.encodeList<GetResponsePlanIntegrationPagerduty, Map<String, dynamic>>(pagerduties, (value) => value.toMap()),
+      'pagerduties': pulumi.Input.mapInputValue<List<GetResponsePlanIntegrationPagerduty>, List<Map<String, dynamic>>>(pagerduties, (value) => pulumi.Input.encodeList<GetResponsePlanIntegrationPagerduty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetResponsePlanIntegration.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanIntegration(
-      pagerduties: pulumi.Input.decodeList<GetResponsePlanIntegrationPagerduty>(map['pagerduties'], (value) => GetResponsePlanIntegrationPagerduty.fromMap((value as Map).cast<String, dynamic>())),
+      pagerduties: (pulumi.Input.decodeList<GetResponsePlanIntegrationPagerduty>(map['pagerduties'], (value) => GetResponsePlanIntegrationPagerduty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

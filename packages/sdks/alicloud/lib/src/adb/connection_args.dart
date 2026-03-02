@@ -16,11 +16,9 @@ class ConnectionArgs {
   /// [connectionPrefix] Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
   /// [dbClusterId] The Id of cluster that can run database.
   ConnectionArgs({
-    pulumi.Output<String>? connectionPrefix,
-    required pulumi.Output<String> dbClusterId,
-  }) :
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId);
+    this.connectionPrefix,
+    required this.dbClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
     );
   }
 }

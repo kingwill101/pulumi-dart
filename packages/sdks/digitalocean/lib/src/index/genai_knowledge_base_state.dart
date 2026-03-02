@@ -43,31 +43,19 @@ class GenaiKnowledgeBaseState {
   /// [tags] Optional.
   /// [vpcUuid] The unique identifier of the VPC to which the knowledge base belongs.
   GenaiKnowledgeBaseState({
-    pulumi.Output<String>? addedToAgentAt,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? databaseId,
-    pulumi.Output<List<GradientaiKnowledgeBaseDataSource>>? datasources,
-    pulumi.Output<String>? embeddingModelUuid,
-    pulumi.Output<bool>? isPublic,
-    pulumi.Output<List<GenaiKnowledgeBaseLastIndexingJob>>? lastIndexingJobs,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? vpcUuid,
-  }) :
-      addedToAgentAt = pulumi.Input.asOptionalInput<String>(addedToAgentAt),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      databaseId = pulumi.Input.asOptionalInput<String>(databaseId),
-      datasources = pulumi.Input.asOptionalInput<List<GradientaiKnowledgeBaseDataSource>>(datasources),
-      embeddingModelUuid = pulumi.Input.asOptionalInput<String>(embeddingModelUuid),
-      isPublic = pulumi.Input.asOptionalInput<bool>(isPublic),
-      lastIndexingJobs = pulumi.Input.asOptionalInput<List<GenaiKnowledgeBaseLastIndexingJob>>(lastIndexingJobs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      vpcUuid = pulumi.Input.asOptionalInput<String>(vpcUuid);
+    this.addedToAgentAt,
+    this.createdAt,
+    this.databaseId,
+    this.datasources,
+    this.embeddingModelUuid,
+    this.isPublic,
+    this.lastIndexingJobs,
+    this.name,
+    this.projectId,
+    this.region,
+    this.tags,
+    this.vpcUuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class GenaiKnowledgeBaseState {
 
   factory GenaiKnowledgeBaseState.fromMap(Map<String, dynamic> map) {
     return GenaiKnowledgeBaseState(
-      addedToAgentAt: map['addedToAgentAt'] == null ? null : pulumi.Output.create<String>(map['addedToAgentAt'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      databaseId: map['databaseId'] == null ? null : pulumi.Output.create<String>(map['databaseId'] as String),
-      datasources: map['datasources'] == null ? null : pulumi.Output.create<List<GradientaiKnowledgeBaseDataSource>>(pulumi.Input.decodeList<GradientaiKnowledgeBaseDataSource>(map['datasources'], (value) => GradientaiKnowledgeBaseDataSource.fromMap((value as Map).cast<String, dynamic>()))),
-      embeddingModelUuid: map['embeddingModelUuid'] == null ? null : pulumi.Output.create<String>(map['embeddingModelUuid'] as String),
-      isPublic: map['isPublic'] == null ? null : pulumi.Output.create<bool>(map['isPublic'] as bool),
-      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : pulumi.Output.create<List<GenaiKnowledgeBaseLastIndexingJob>>(pulumi.Input.decodeList<GenaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs'], (value) => GenaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      vpcUuid: map['vpcUuid'] == null ? null : pulumi.Output.create<String>(map['vpcUuid'] as String),
+      addedToAgentAt: map['addedToAgentAt'] == null ? null : (map['addedToAgentAt'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
+      datasources: map['datasources'] == null ? null : (pulumi.Input.decodeList<GradientaiKnowledgeBaseDataSource>(map['datasources'], (value) => GradientaiKnowledgeBaseDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      embeddingModelUuid: map['embeddingModelUuid'] == null ? null : (map['embeddingModelUuid'] as String).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      lastIndexingJobs: map['lastIndexingJobs'] == null ? null : (pulumi.Input.decodeList<GenaiKnowledgeBaseLastIndexingJob>(map['lastIndexingJobs'], (value) => GenaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      vpcUuid: map['vpcUuid'] == null ? null : (map['vpcUuid'] as String).input(),
     );
   }
 }

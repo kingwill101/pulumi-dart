@@ -34,25 +34,16 @@ class UserPoolUICustomizationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool ID for the user pool.
   UserPoolUICustomizationState({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? creationDate,
-    pulumi.Output<String>? css,
-    pulumi.Output<String>? cssVersion,
-    pulumi.Output<String>? imageFile,
-    pulumi.Output<String>? imageUrl,
-    pulumi.Output<String>? lastModifiedDate,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userPoolId,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      creationDate = pulumi.Input.asOptionalInput<String>(creationDate),
-      css = pulumi.Input.asOptionalInput<String>(css),
-      cssVersion = pulumi.Input.asOptionalInput<String>(cssVersion),
-      imageFile = pulumi.Input.asOptionalInput<String>(imageFile),
-      imageUrl = pulumi.Input.asOptionalInput<String>(imageUrl),
-      lastModifiedDate = pulumi.Input.asOptionalInput<String>(lastModifiedDate),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userPoolId = pulumi.Input.asOptionalInput<String>(userPoolId);
+    this.clientId,
+    this.creationDate,
+    this.css,
+    this.cssVersion,
+    this.imageFile,
+    this.imageUrl,
+    this.lastModifiedDate,
+    this.region,
+    this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class UserPoolUICustomizationState {
 
   factory UserPoolUICustomizationState.fromMap(Map<String, dynamic> map) {
     return UserPoolUICustomizationState(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      creationDate: map['creationDate'] == null ? null : pulumi.Output.create<String>(map['creationDate'] as String),
-      css: map['css'] == null ? null : pulumi.Output.create<String>(map['css'] as String),
-      cssVersion: map['cssVersion'] == null ? null : pulumi.Output.create<String>(map['cssVersion'] as String),
-      imageFile: map['imageFile'] == null ? null : pulumi.Output.create<String>(map['imageFile'] as String),
-      imageUrl: map['imageUrl'] == null ? null : pulumi.Output.create<String>(map['imageUrl'] as String),
-      lastModifiedDate: map['lastModifiedDate'] == null ? null : pulumi.Output.create<String>(map['lastModifiedDate'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userPoolId: map['userPoolId'] == null ? null : pulumi.Output.create<String>(map['userPoolId'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
+      css: map['css'] == null ? null : (map['css'] as String).input(),
+      cssVersion: map['cssVersion'] == null ? null : (map['cssVersion'] as String).input(),
+      imageFile: map['imageFile'] == null ? null : (map['imageFile'] as String).input(),
+      imageUrl: map['imageUrl'] == null ? null : (map['imageUrl'] as String).input(),
+      lastModifiedDate: map['lastModifiedDate'] == null ? null : (map['lastModifiedDate'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
     );
   }
 }

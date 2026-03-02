@@ -28,17 +28,12 @@ class RoleBindingPatchRbacAuthorizationK8sIoV1alpha1Args {
   /// [roleRef] RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
   /// [subjects] Subjects holds references to the objects the role applies to.
   RoleBindingPatchRbacAuthorizationK8sIoV1alpha1Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<RoleRefPatchRbacAuthorizationK8sIoV1alpha1>? roleRef,
-    pulumi.Output<List<SubjectPatchRbacAuthorizationK8sIoV1alpha1>>? subjects,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      roleRef = pulumi.Input.asOptionalInput<RoleRefPatchRbacAuthorizationK8sIoV1alpha1>(roleRef),
-      subjects = pulumi.Input.asOptionalInput<List<SubjectPatchRbacAuthorizationK8sIoV1alpha1>>(subjects);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.roleRef,
+    this.subjects,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class RoleBindingPatchRbacAuthorizationK8sIoV1alpha1Args {
 
   factory RoleBindingPatchRbacAuthorizationK8sIoV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return RoleBindingPatchRbacAuthorizationK8sIoV1alpha1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      roleRef: map['roleRef'] == null ? null : pulumi.Output.create<RoleRefPatchRbacAuthorizationK8sIoV1alpha1>(RoleRefPatchRbacAuthorizationK8sIoV1alpha1.fromMap((map['roleRef'] as Map).cast<String, dynamic>())),
-      subjects: map['subjects'] == null ? null : pulumi.Output.create<List<SubjectPatchRbacAuthorizationK8sIoV1alpha1>>(pulumi.Input.decodeList<SubjectPatchRbacAuthorizationK8sIoV1alpha1>(map['subjects'], (value) => SubjectPatchRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      roleRef: map['roleRef'] == null ? null : (RoleRefPatchRbacAuthorizationK8sIoV1alpha1.fromMap((map['roleRef'] as Map).cast<String, dynamic>())).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatchRbacAuthorizationK8sIoV1alpha1>(map['subjects'], (value) => SubjectPatchRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

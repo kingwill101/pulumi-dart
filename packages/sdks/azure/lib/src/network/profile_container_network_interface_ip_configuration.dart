@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProfileContainerNetworkInterfaceIpConfiguration {
   /// Specifies the name of the IP Configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// Reference to the subnet associated with the IP Configuration.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [ProfileContainerNetworkInterfaceIpConfiguration].
   /// [name] Specifies the name of the IP Configuration.
@@ -24,8 +25,8 @@ class ProfileContainerNetworkInterfaceIpConfiguration {
 
   factory ProfileContainerNetworkInterfaceIpConfiguration.fromMap(Map<String, dynamic> map) {
     return ProfileContainerNetworkInterfaceIpConfiguration(
-      name: map['name'] as String,
-      subnetId: map['subnetId'] as String,
+      name: (map['name'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

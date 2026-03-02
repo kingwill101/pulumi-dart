@@ -19,13 +19,10 @@ class ApplicationPreAuthorizedArgs {
   /// [authorizedClientId] The client ID of the application being authorized. Changing this field forces a new resource to be created.
   /// [permissionIds] A set of permission scope IDs required by the authorized application.
   ApplicationPreAuthorizedArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> authorizedClientId,
-    required pulumi.Output<List<String>> permissionIds,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      authorizedClientId = pulumi.Input.asInput<String>(authorizedClientId),
-      permissionIds = pulumi.Input.asInput<List<String>>(permissionIds);
+    required this.applicationId,
+    required this.authorizedClientId,
+    required this.permissionIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApplicationPreAuthorizedArgs {
 
   factory ApplicationPreAuthorizedArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationPreAuthorizedArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      authorizedClientId: pulumi.Output.create<String>(map['authorizedClientId'] as String),
-      permissionIds: pulumi.Output.create<List<String>>((map['permissionIds'] as List).cast<String>()),
+      applicationId: (map['applicationId'] as String).input(),
+      authorizedClientId: (map['authorizedClientId'] as String).input(),
+      permissionIds: ((map['permissionIds'] as List).cast<String>()).input(),
     );
   }
 }

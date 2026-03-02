@@ -6,13 +6,13 @@ import 'get_group_transitive_memberships_membership_role.dart';
 
 class GetGroupTransitiveMembershipsMembership {
   /// EntityKey of the member.  This value will be either a userKey in the format `users/000000000000000000000` with a numerical id or a groupKey in the format `groups/000ab0000ab0000` with a hexadecimal id.
-  final String member;
+  final pulumi.Input<String> member;
   /// EntityKey of the member.  Structure is documented below.
-  final List<GetGroupTransitiveMembershipsMembershipPreferredMemberKey> preferredMemberKeys;
+  final pulumi.Input<List<GetGroupTransitiveMembershipsMembershipPreferredMemberKey>> preferredMemberKeys;
   /// The relation between the group and the transitive member. The value can be DIRECT, INDIRECT, or DIRECT_AND_INDIRECT.
-  final String relationType;
+  final pulumi.Input<String> relationType;
   /// The TransitiveMembershipRoles that apply to the Membership. Structure is documented below.
-  final List<GetGroupTransitiveMembershipsMembershipRole> roles;
+  final pulumi.Input<List<GetGroupTransitiveMembershipsMembershipRole>> roles;
 
   /// Creates a new [GetGroupTransitiveMembershipsMembership].
   /// [member] EntityKey of the member.  This value will be either a userKey in the format `users/000000000000000000000` with a numerical id or a groupKey in the format `groups/000ab0000ab0000` with a hexadecimal id.
@@ -29,18 +29,18 @@ class GetGroupTransitiveMembershipsMembership {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'member': member,
-      'preferredMemberKeys': pulumi.Input.encodeList<GetGroupTransitiveMembershipsMembershipPreferredMemberKey, Map<String, dynamic>>(preferredMemberKeys, (value) => value.toMap()),
+      'preferredMemberKeys': pulumi.Input.mapInputValue<List<GetGroupTransitiveMembershipsMembershipPreferredMemberKey>, List<Map<String, dynamic>>>(preferredMemberKeys, (value) => pulumi.Input.encodeList<GetGroupTransitiveMembershipsMembershipPreferredMemberKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'relationType': relationType,
-      'roles': pulumi.Input.encodeList<GetGroupTransitiveMembershipsMembershipRole, Map<String, dynamic>>(roles, (value) => value.toMap()),
+      'roles': pulumi.Input.mapInputValue<List<GetGroupTransitiveMembershipsMembershipRole>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<GetGroupTransitiveMembershipsMembershipRole, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetGroupTransitiveMembershipsMembership.fromMap(Map<String, dynamic> map) {
     return GetGroupTransitiveMembershipsMembership(
-      member: map['member'] as String,
-      preferredMemberKeys: pulumi.Input.decodeList<GetGroupTransitiveMembershipsMembershipPreferredMemberKey>(map['preferredMemberKeys'], (value) => GetGroupTransitiveMembershipsMembershipPreferredMemberKey.fromMap((value as Map).cast<String, dynamic>())),
-      relationType: map['relationType'] as String,
-      roles: pulumi.Input.decodeList<GetGroupTransitiveMembershipsMembershipRole>(map['roles'], (value) => GetGroupTransitiveMembershipsMembershipRole.fromMap((value as Map).cast<String, dynamic>())),
+      member: (map['member'] as String).input(),
+      preferredMemberKeys: (pulumi.Input.decodeList<GetGroupTransitiveMembershipsMembershipPreferredMemberKey>(map['preferredMemberKeys'], (value) => GetGroupTransitiveMembershipsMembershipPreferredMemberKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relationType: (map['relationType'] as String).input(),
+      roles: (pulumi.Input.decodeList<GetGroupTransitiveMembershipsMembershipRole>(map['roles'], (value) => GetGroupTransitiveMembershipsMembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

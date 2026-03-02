@@ -19,13 +19,10 @@ class GetIdentityProviderArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetIdentityProviderArgs({
-    required pulumi.Output<String> identityProviderName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      identityProviderName = pulumi.Input.asInput<String>(identityProviderName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.identityProviderName,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIdentityProviderArgs {
 
   factory GetIdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetIdentityProviderArgs(
-      identityProviderName: pulumi.Output.create<String>(map['identityProviderName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      identityProviderName: (map['identityProviderName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

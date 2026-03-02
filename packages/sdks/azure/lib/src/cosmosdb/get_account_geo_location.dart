@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountGeoLocation {
-  final int failoverPriority;
+  final pulumi.Input<int> failoverPriority;
   /// The ID of the virtual network subnet.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the Azure region hosting replicated data.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [GetAccountGeoLocation].
   /// [failoverPriority] Required.
@@ -28,9 +29,9 @@ class GetAccountGeoLocation {
 
   factory GetAccountGeoLocation.fromMap(Map<String, dynamic> map) {
     return GetAccountGeoLocation(
-      failoverPriority: map['failoverPriority'] as int,
-      id: map['id'] as String,
-      location: map['location'] as String,
+      failoverPriority: (map['failoverPriority'] as int).input(),
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

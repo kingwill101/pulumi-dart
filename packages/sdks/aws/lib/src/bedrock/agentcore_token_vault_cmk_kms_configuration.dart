@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreTokenVaultCmkKmsConfiguration {
   /// Type of KMS key. Valid values: `CustomerManagedKey`, `ServiceManagedKey`.
-  final String keyType;
+  final pulumi.Input<String> keyType;
   /// ARN of the KMS key.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Creates a new [AgentcoreTokenVaultCmkKmsConfiguration].
   /// [keyType] Type of KMS key. Valid values: `CustomerManagedKey`, `ServiceManagedKey`.
@@ -24,8 +25,8 @@ class AgentcoreTokenVaultCmkKmsConfiguration {
 
   factory AgentcoreTokenVaultCmkKmsConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreTokenVaultCmkKmsConfiguration(
-      keyType: map['keyType'] as String,
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
+      keyType: (map['keyType'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
     );
   }
 }

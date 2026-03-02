@@ -32,21 +32,14 @@ class BackupInstanceKubernetesClusterArgs {
   /// [snapshotResourceGroupName] The name of the Resource Group where snapshots are stored. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   BackupInstanceKubernetesClusterArgs({
-    pulumi.Output<BackupInstanceKubernetesClusterBackupDatasourceParameters>? backupDatasourceParameters,
-    required pulumi.Output<String> backupPolicyId,
-    required pulumi.Output<String> kubernetesClusterId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> snapshotResourceGroupName,
-    required pulumi.Output<String> vaultId,
-  }) :
-      backupDatasourceParameters = pulumi.Input.asOptionalInput<BackupInstanceKubernetesClusterBackupDatasourceParameters>(backupDatasourceParameters),
-      backupPolicyId = pulumi.Input.asInput<String>(backupPolicyId),
-      kubernetesClusterId = pulumi.Input.asInput<String>(kubernetesClusterId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      snapshotResourceGroupName = pulumi.Input.asInput<String>(snapshotResourceGroupName),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    this.backupDatasourceParameters,
+    required this.backupPolicyId,
+    required this.kubernetesClusterId,
+    this.location,
+    this.name,
+    required this.snapshotResourceGroupName,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class BackupInstanceKubernetesClusterArgs {
 
   factory BackupInstanceKubernetesClusterArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceKubernetesClusterArgs(
-      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : pulumi.Output.create<BackupInstanceKubernetesClusterBackupDatasourceParameters>(BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters'] as Map).cast<String, dynamic>())),
-      backupPolicyId: pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      kubernetesClusterId: pulumi.Output.create<String>(map['kubernetesClusterId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      snapshotResourceGroupName: pulumi.Output.create<String>(map['snapshotResourceGroupName'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : (BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters'] as Map).cast<String, dynamic>())).input(),
+      backupPolicyId: (map['backupPolicyId'] as String).input(),
+      kubernetesClusterId: (map['kubernetesClusterId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      snapshotResourceGroupName: (map['snapshotResourceGroupName'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

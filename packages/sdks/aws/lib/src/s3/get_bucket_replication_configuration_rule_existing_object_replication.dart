@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleExistingObjectReplication {
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleExistingObjectReplication].
   /// [status] Required.
@@ -18,7 +19,7 @@ class GetBucketReplicationConfigurationRuleExistingObjectReplication {
 
   factory GetBucketReplicationConfigurationRuleExistingObjectReplication.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleExistingObjectReplication(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

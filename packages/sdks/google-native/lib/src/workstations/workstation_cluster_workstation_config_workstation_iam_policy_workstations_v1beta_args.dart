@@ -37,27 +37,17 @@ class WorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaA
   /// [workstationConfigId] Required.
   /// [workstationId] Required.
   WorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs({
-    pulumi.Output<List<AuditConfigWorkstationsV1beta>>? auditConfigs,
-    pulumi.Output<List<BindingWorkstationsV1beta>>? bindings,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateMask,
-    pulumi.Output<int>? version,
-    required pulumi.Output<String> workstationClusterId,
-    required pulumi.Output<String> workstationConfigId,
-    required pulumi.Output<String> workstationId,
-  }) :
-      auditConfigs = pulumi.Input.asOptionalInput<List<AuditConfigWorkstationsV1beta>>(auditConfigs),
-      bindings = pulumi.Input.asOptionalInput<List<BindingWorkstationsV1beta>>(bindings),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateMask = pulumi.Input.asOptionalInput<String>(updateMask),
-      version = pulumi.Input.asOptionalInput<int>(version),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-      workstationId = pulumi.Input.asInput<String>(workstationId);
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.location,
+    this.project,
+    this.updateMask,
+    this.version,
+    required this.workstationClusterId,
+    required this.workstationConfigId,
+    required this.workstationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class WorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaA
 
   factory WorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : pulumi.Output.create<List<AuditConfigWorkstationsV1beta>>(pulumi.Input.decodeList<AuditConfigWorkstationsV1beta>(map['auditConfigs'], (value) => AuditConfigWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>()))),
-      bindings: map['bindings'] == null ? null : pulumi.Output.create<List<BindingWorkstationsV1beta>>(pulumi.Input.decodeList<BindingWorkstationsV1beta>(map['bindings'], (value) => BindingWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateMask: map['updateMask'] == null ? null : pulumi.Output.create<String>(map['updateMask'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
-      workstationClusterId: pulumi.Output.create<String>(map['workstationClusterId'] as String),
-      workstationConfigId: pulumi.Output.create<String>(map['workstationConfigId'] as String),
-      workstationId: pulumi.Output.create<String>(map['workstationId'] as String),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigWorkstationsV1beta>(map['auditConfigs'], (value) => AuditConfigWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingWorkstationsV1beta>(map['bindings'], (value) => BindingWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
+      workstationClusterId: (map['workstationClusterId'] as String).input(),
+      workstationConfigId: (map['workstationConfigId'] as String).input(),
+      workstationId: (map['workstationId'] as String).input(),
     );
   }
 }

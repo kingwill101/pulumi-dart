@@ -22,17 +22,12 @@ class ServiceSettingState {
   /// [settingValue] Value of the service setting.
   /// [status] Status of the service setting. Value can be `Default`, `Customized` or `PendingUpdate`.
   ServiceSettingState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? settingId,
-    pulumi.Output<String>? settingValue,
-    pulumi.Output<String>? status,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      settingId = pulumi.Input.asOptionalInput<String>(settingId),
-      settingValue = pulumi.Input.asOptionalInput<String>(settingValue),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.arn,
+    this.region,
+    this.settingId,
+    this.settingValue,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ServiceSettingState {
 
   factory ServiceSettingState.fromMap(Map<String, dynamic> map) {
     return ServiceSettingState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      settingId: map['settingId'] == null ? null : pulumi.Output.create<String>(map['settingId'] as String),
-      settingValue: map['settingValue'] == null ? null : pulumi.Output.create<String>(map['settingValue'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      settingId: map['settingId'] == null ? null : (map['settingId'] as String).input(),
+      settingValue: map['settingValue'] == null ? null : (map['settingValue'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

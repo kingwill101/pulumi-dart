@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceInitialReplicaSet {
   /// A list of subnet IP addresses for the domain controllers in the initial replica set, typically two.
-  final List<String>? domainControllerIpAddresses;
+  final pulumi.Input<List<String>>? domainControllerIpAddresses;
   /// The publicly routable IP address for the domain controllers in the initial replica set.
-  final String? externalAccessIpAddress;
+  final pulumi.Input<String>? externalAccessIpAddress;
   /// A unique ID for the replica set.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The Azure location where the Domain Service exists. Changing this forces a new resource to be created.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The current service status for the initial replica set.
-  final String? serviceStatus;
+  final pulumi.Input<String>? serviceStatus;
   /// The ID of the subnet in which to place the initial replica set. Changing this forces a new resource to be created.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [ServiceInitialReplicaSet].
   /// [domainControllerIpAddresses] A list of subnet IP addresses for the domain controllers in the initial replica set, typically two.
@@ -44,12 +45,12 @@ class ServiceInitialReplicaSet {
 
   factory ServiceInitialReplicaSet.fromMap(Map<String, dynamic> map) {
     return ServiceInitialReplicaSet(
-      domainControllerIpAddresses: map['domainControllerIpAddresses'] == null ? null : (map['domainControllerIpAddresses'] as List).cast<String>(),
-      externalAccessIpAddress: map['externalAccessIpAddress'] == null ? null : map['externalAccessIpAddress'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      serviceStatus: map['serviceStatus'] == null ? null : map['serviceStatus'] as String,
-      subnetId: map['subnetId'] as String,
+      domainControllerIpAddresses: map['domainControllerIpAddresses'] == null ? null : ((map['domainControllerIpAddresses'] as List).cast<String>()).input(),
+      externalAccessIpAddress: map['externalAccessIpAddress'] == null ? null : (map['externalAccessIpAddress'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

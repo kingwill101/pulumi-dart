@@ -19,13 +19,10 @@ class AttachmentArgs {
   /// [instance] Instance ID to place in the ELB pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AttachmentArgs({
-    required pulumi.Output<String> elb,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? region,
-  }) :
-      elb = pulumi.Input.asInput<String>(elb),
-      instance = pulumi.Input.asInput<String>(instance),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.elb,
+    required this.instance,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AttachmentArgs {
 
   factory AttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentArgs(
-      elb: pulumi.Output.create<String>(map['elb'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      elb: (map['elb'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

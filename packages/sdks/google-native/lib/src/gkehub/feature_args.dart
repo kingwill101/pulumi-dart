@@ -37,25 +37,16 @@ class FeatureArgs {
   /// [scopeSpecs] Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
   /// [spec] Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   FeatureArgs({
-    pulumi.Output<String>? featureId,
-    pulumi.Output<CommonFleetDefaultMemberConfigSpec>? fleetDefaultMemberConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? membershipSpecs,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<Map<String, String>>? scopeSpecs,
-    pulumi.Output<CommonFeatureSpec>? spec,
-  }) :
-      featureId = pulumi.Input.asOptionalInput<String>(featureId),
-      fleetDefaultMemberConfig = pulumi.Input.asOptionalInput<CommonFleetDefaultMemberConfigSpec>(fleetDefaultMemberConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(membershipSpecs),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      scopeSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(scopeSpecs),
-      spec = pulumi.Input.asOptionalInput<CommonFeatureSpec>(spec);
+    this.featureId,
+    this.fleetDefaultMemberConfig,
+    this.labels,
+    this.location,
+    this.membershipSpecs,
+    this.project,
+    this.requestId,
+    this.scopeSpecs,
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class FeatureArgs {
 
   factory FeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureArgs(
-      featureId: map['featureId'] == null ? null : pulumi.Output.create<String>(map['featureId'] as String),
-      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : pulumi.Output.create<CommonFleetDefaultMemberConfigSpec>(CommonFleetDefaultMemberConfigSpec.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membershipSpecs: map['membershipSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['membershipSpecs'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      scopeSpecs: map['scopeSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['scopeSpecs'] as Map).cast<String, String>()),
-      spec: map['spec'] == null ? null : pulumi.Output.create<CommonFeatureSpec>(CommonFeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
+      featureId: map['featureId'] == null ? null : (map['featureId'] as String).input(),
+      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (CommonFleetDefaultMemberConfigSpec.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membershipSpecs: map['membershipSpecs'] == null ? null : ((map['membershipSpecs'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      scopeSpecs: map['scopeSpecs'] == null ? null : ((map['scopeSpecs'] as Map).cast<String, String>()).input(),
+      spec: map['spec'] == null ? null : (CommonFeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

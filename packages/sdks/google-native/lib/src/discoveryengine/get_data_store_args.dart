@@ -18,15 +18,11 @@ class GetDataStoreArgs {
   /// [location] Required.
   /// [project] Optional.
   GetDataStoreArgs({
-    required pulumi.Output<String> collectionId,
-    required pulumi.Output<String> dataStoreId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.collectionId,
+    required this.dataStoreId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetDataStoreArgs {
 
   factory GetDataStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetDataStoreArgs(
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      dataStoreId: pulumi.Output.create<String>(map['dataStoreId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      collectionId: (map['collectionId'] as String).input(),
+      dataStoreId: (map['dataStoreId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

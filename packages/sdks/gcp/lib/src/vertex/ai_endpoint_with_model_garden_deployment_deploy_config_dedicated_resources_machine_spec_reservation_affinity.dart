@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity {
   /// Corresponds to the label key of a reservation resource. To target a
   /// SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
   /// as the key and specify the name of your reservation as its value.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Specifies the reservation affinity type.
   /// Possible values:
   /// TYPE_UNSPECIFIED
   /// NO_RESERVATION
   /// ANY_RESERVATION
   /// SPECIFIC_RESERVATION
-  final String reservationAffinityType;
+  final pulumi.Input<String> reservationAffinityType;
   /// Corresponds to the label values of a reservation resource. This must be the
   /// full resource name of the reservation or reservation block.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity].
   /// [key] Corresponds to the label key of a reservation resource. To target a
@@ -37,9 +38,9 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
 
   factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity(
-      key: map['key'] == null ? null : map['key'] as String,
-      reservationAffinityType: map['reservationAffinityType'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      reservationAffinityType: (map['reservationAffinityType'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

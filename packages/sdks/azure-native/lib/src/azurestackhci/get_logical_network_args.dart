@@ -16,11 +16,9 @@ class GetLogicalNetworkArgs {
   /// [logicalNetworkName] Name of the logical network
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLogicalNetworkArgs({
-    required pulumi.Output<String> logicalNetworkName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      logicalNetworkName = pulumi.Input.asInput<String>(logicalNetworkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.logicalNetworkName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLogicalNetworkArgs {
 
   factory GetLogicalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetLogicalNetworkArgs(
-      logicalNetworkName: pulumi.Output.create<String>(map['logicalNetworkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      logicalNetworkName: (map['logicalNetworkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

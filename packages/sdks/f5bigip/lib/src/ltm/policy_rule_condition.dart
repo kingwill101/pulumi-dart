@@ -1,100 +1,101 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyRuleCondition {
-  final bool? address;
-  final bool? all;
-  final String? appService;
-  final bool? browserType;
-  final bool? browserVersion;
-  final bool? caseInsensitive;
-  final bool? caseSensitive;
-  final bool? cipher;
-  final bool? cipherBits;
-  final bool? clientAccepted;
-  final bool? clientSsl;
-  final bool? code;
-  final bool? commonName;
-  final bool? contains;
-  final bool? continent;
-  final bool? countryCode;
-  final bool? countryName;
-  final bool? cpuUsage;
-  final String? datagroup;
-  final bool? deviceMake;
-  final bool? deviceModel;
-  final bool? domain;
-  final bool? endsWith;
-  final bool? equals;
-  final bool? exists;
-  final bool? expiry;
-  final bool? extension;
-  final bool? external;
-  final bool? geoip;
-  final bool? greater;
-  final bool? greaterOrEqual;
-  final bool? host;
-  final bool? httpBasicAuth;
-  final bool? httpCookie;
-  final bool? httpHeader;
-  final bool? httpHost;
-  final bool? httpMethod;
-  final bool? httpReferer;
-  final bool? httpSetCookie;
-  final bool? httpStatus;
-  final bool? httpUri;
-  final bool? httpUserAgent;
-  final bool? httpVersion;
-  final int? index;
-  final bool? internal;
-  final bool? isp;
-  final bool? last15secs;
-  final bool? last1min;
-  final bool? last5mins;
-  final bool? less;
-  final bool? lessOrEqual;
-  final bool? local;
-  final bool? major;
-  final bool? matches;
-  final bool? minor;
-  final bool? missing;
-  final bool? mss;
-  final bool? not;
-  final bool? org;
-  final bool? password;
-  final bool? path;
-  final bool? pathSegment;
-  final bool? port;
-  final bool? present;
-  final bool? protocol;
-  final bool? queryParameter;
-  final bool? queryString;
-  final bool? regionCode;
-  final bool? regionName;
-  final bool? remote;
-  final bool? request;
-  final bool? response;
-  final bool? routeDomain;
-  final bool? rtt;
-  final bool? scheme;
-  final bool? serverName;
-  final bool? sslCert;
-  final bool? sslClientHello;
-  final bool? sslExtension;
-  final bool? sslServerHandshake;
-  final bool? sslServerHello;
-  final bool? startsWith;
-  final bool? tcp;
-  final bool? text;
-  final String? tmName;
-  final bool? unnamedQueryParameter;
-  final bool? userAgentToken;
-  final bool? username;
-  final bool? value;
-  final List<String>? values;
-  final bool? version;
-  final bool? vlan;
-  final bool? vlanId;
+  final pulumi.Input<bool>? address;
+  final pulumi.Input<bool>? all;
+  final pulumi.Input<String>? appService;
+  final pulumi.Input<bool>? browserType;
+  final pulumi.Input<bool>? browserVersion;
+  final pulumi.Input<bool>? caseInsensitive;
+  final pulumi.Input<bool>? caseSensitive;
+  final pulumi.Input<bool>? cipher;
+  final pulumi.Input<bool>? cipherBits;
+  final pulumi.Input<bool>? clientAccepted;
+  final pulumi.Input<bool>? clientSsl;
+  final pulumi.Input<bool>? code;
+  final pulumi.Input<bool>? commonName;
+  final pulumi.Input<bool>? contains;
+  final pulumi.Input<bool>? continent;
+  final pulumi.Input<bool>? countryCode;
+  final pulumi.Input<bool>? countryName;
+  final pulumi.Input<bool>? cpuUsage;
+  final pulumi.Input<String>? datagroup;
+  final pulumi.Input<bool>? deviceMake;
+  final pulumi.Input<bool>? deviceModel;
+  final pulumi.Input<bool>? domain;
+  final pulumi.Input<bool>? endsWith;
+  final pulumi.Input<bool>? equals;
+  final pulumi.Input<bool>? exists;
+  final pulumi.Input<bool>? expiry;
+  final pulumi.Input<bool>? extension;
+  final pulumi.Input<bool>? external;
+  final pulumi.Input<bool>? geoip;
+  final pulumi.Input<bool>? greater;
+  final pulumi.Input<bool>? greaterOrEqual;
+  final pulumi.Input<bool>? host;
+  final pulumi.Input<bool>? httpBasicAuth;
+  final pulumi.Input<bool>? httpCookie;
+  final pulumi.Input<bool>? httpHeader;
+  final pulumi.Input<bool>? httpHost;
+  final pulumi.Input<bool>? httpMethod;
+  final pulumi.Input<bool>? httpReferer;
+  final pulumi.Input<bool>? httpSetCookie;
+  final pulumi.Input<bool>? httpStatus;
+  final pulumi.Input<bool>? httpUri;
+  final pulumi.Input<bool>? httpUserAgent;
+  final pulumi.Input<bool>? httpVersion;
+  final pulumi.Input<int>? index;
+  final pulumi.Input<bool>? internal;
+  final pulumi.Input<bool>? isp;
+  final pulumi.Input<bool>? last15secs;
+  final pulumi.Input<bool>? last1min;
+  final pulumi.Input<bool>? last5mins;
+  final pulumi.Input<bool>? less;
+  final pulumi.Input<bool>? lessOrEqual;
+  final pulumi.Input<bool>? local;
+  final pulumi.Input<bool>? major;
+  final pulumi.Input<bool>? matches;
+  final pulumi.Input<bool>? minor;
+  final pulumi.Input<bool>? missing;
+  final pulumi.Input<bool>? mss;
+  final pulumi.Input<bool>? not;
+  final pulumi.Input<bool>? org;
+  final pulumi.Input<bool>? password;
+  final pulumi.Input<bool>? path;
+  final pulumi.Input<bool>? pathSegment;
+  final pulumi.Input<bool>? port;
+  final pulumi.Input<bool>? present;
+  final pulumi.Input<bool>? protocol;
+  final pulumi.Input<bool>? queryParameter;
+  final pulumi.Input<bool>? queryString;
+  final pulumi.Input<bool>? regionCode;
+  final pulumi.Input<bool>? regionName;
+  final pulumi.Input<bool>? remote;
+  final pulumi.Input<bool>? request;
+  final pulumi.Input<bool>? response;
+  final pulumi.Input<bool>? routeDomain;
+  final pulumi.Input<bool>? rtt;
+  final pulumi.Input<bool>? scheme;
+  final pulumi.Input<bool>? serverName;
+  final pulumi.Input<bool>? sslCert;
+  final pulumi.Input<bool>? sslClientHello;
+  final pulumi.Input<bool>? sslExtension;
+  final pulumi.Input<bool>? sslServerHandshake;
+  final pulumi.Input<bool>? sslServerHello;
+  final pulumi.Input<bool>? startsWith;
+  final pulumi.Input<bool>? tcp;
+  final pulumi.Input<bool>? text;
+  final pulumi.Input<String>? tmName;
+  final pulumi.Input<bool>? unnamedQueryParameter;
+  final pulumi.Input<bool>? userAgentToken;
+  final pulumi.Input<bool>? username;
+  final pulumi.Input<bool>? value;
+  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<bool>? version;
+  final pulumi.Input<bool>? vlan;
+  final pulumi.Input<bool>? vlanId;
 
   /// Creates a new [PolicyRuleCondition].
   /// [address] Optional.
@@ -386,99 +387,99 @@ class PolicyRuleCondition {
 
   factory PolicyRuleCondition.fromMap(Map<String, dynamic> map) {
     return PolicyRuleCondition(
-      address: map['address'] == null ? null : map['address'] as bool,
-      all: map['all'] == null ? null : map['all'] as bool,
-      appService: map['appService'] == null ? null : map['appService'] as String,
-      browserType: map['browserType'] == null ? null : map['browserType'] as bool,
-      browserVersion: map['browserVersion'] == null ? null : map['browserVersion'] as bool,
-      caseInsensitive: map['caseInsensitive'] == null ? null : map['caseInsensitive'] as bool,
-      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
-      cipher: map['cipher'] == null ? null : map['cipher'] as bool,
-      cipherBits: map['cipherBits'] == null ? null : map['cipherBits'] as bool,
-      clientAccepted: map['clientAccepted'] == null ? null : map['clientAccepted'] as bool,
-      clientSsl: map['clientSsl'] == null ? null : map['clientSsl'] as bool,
-      code: map['code'] == null ? null : map['code'] as bool,
-      commonName: map['commonName'] == null ? null : map['commonName'] as bool,
-      contains: map['contains'] == null ? null : map['contains'] as bool,
-      continent: map['continent'] == null ? null : map['continent'] as bool,
-      countryCode: map['countryCode'] == null ? null : map['countryCode'] as bool,
-      countryName: map['countryName'] == null ? null : map['countryName'] as bool,
-      cpuUsage: map['cpuUsage'] == null ? null : map['cpuUsage'] as bool,
-      datagroup: map['datagroup'] == null ? null : map['datagroup'] as String,
-      deviceMake: map['deviceMake'] == null ? null : map['deviceMake'] as bool,
-      deviceModel: map['deviceModel'] == null ? null : map['deviceModel'] as bool,
-      domain: map['domain'] == null ? null : map['domain'] as bool,
-      endsWith: map['endsWith'] == null ? null : map['endsWith'] as bool,
-      equals: map['equals'] == null ? null : map['equals'] as bool,
-      exists: map['exists'] == null ? null : map['exists'] as bool,
-      expiry: map['expiry'] == null ? null : map['expiry'] as bool,
-      extension: map['extension'] == null ? null : map['extension'] as bool,
-      external: map['external'] == null ? null : map['external'] as bool,
-      geoip: map['geoip'] == null ? null : map['geoip'] as bool,
-      greater: map['greater'] == null ? null : map['greater'] as bool,
-      greaterOrEqual: map['greaterOrEqual'] == null ? null : map['greaterOrEqual'] as bool,
-      host: map['host'] == null ? null : map['host'] as bool,
-      httpBasicAuth: map['httpBasicAuth'] == null ? null : map['httpBasicAuth'] as bool,
-      httpCookie: map['httpCookie'] == null ? null : map['httpCookie'] as bool,
-      httpHeader: map['httpHeader'] == null ? null : map['httpHeader'] as bool,
-      httpHost: map['httpHost'] == null ? null : map['httpHost'] as bool,
-      httpMethod: map['httpMethod'] == null ? null : map['httpMethod'] as bool,
-      httpReferer: map['httpReferer'] == null ? null : map['httpReferer'] as bool,
-      httpSetCookie: map['httpSetCookie'] == null ? null : map['httpSetCookie'] as bool,
-      httpStatus: map['httpStatus'] == null ? null : map['httpStatus'] as bool,
-      httpUri: map['httpUri'] == null ? null : map['httpUri'] as bool,
-      httpUserAgent: map['httpUserAgent'] == null ? null : map['httpUserAgent'] as bool,
-      httpVersion: map['httpVersion'] == null ? null : map['httpVersion'] as bool,
-      index: map['index'] == null ? null : map['index'] as int,
-      internal: map['internal'] == null ? null : map['internal'] as bool,
-      isp: map['isp'] == null ? null : map['isp'] as bool,
-      last15secs: map['last15secs'] == null ? null : map['last15secs'] as bool,
-      last1min: map['last1min'] == null ? null : map['last1min'] as bool,
-      last5mins: map['last5mins'] == null ? null : map['last5mins'] as bool,
-      less: map['less'] == null ? null : map['less'] as bool,
-      lessOrEqual: map['lessOrEqual'] == null ? null : map['lessOrEqual'] as bool,
-      local: map['local'] == null ? null : map['local'] as bool,
-      major: map['major'] == null ? null : map['major'] as bool,
-      matches: map['matches'] == null ? null : map['matches'] as bool,
-      minor: map['minor'] == null ? null : map['minor'] as bool,
-      missing: map['missing'] == null ? null : map['missing'] as bool,
-      mss: map['mss'] == null ? null : map['mss'] as bool,
-      not: map['not'] == null ? null : map['not'] as bool,
-      org: map['org'] == null ? null : map['org'] as bool,
-      password: map['password'] == null ? null : map['password'] as bool,
-      path: map['path'] == null ? null : map['path'] as bool,
-      pathSegment: map['pathSegment'] == null ? null : map['pathSegment'] as bool,
-      port: map['port'] == null ? null : map['port'] as bool,
-      present: map['present'] == null ? null : map['present'] as bool,
-      protocol: map['protocol'] == null ? null : map['protocol'] as bool,
-      queryParameter: map['queryParameter'] == null ? null : map['queryParameter'] as bool,
-      queryString: map['queryString'] == null ? null : map['queryString'] as bool,
-      regionCode: map['regionCode'] == null ? null : map['regionCode'] as bool,
-      regionName: map['regionName'] == null ? null : map['regionName'] as bool,
-      remote: map['remote'] == null ? null : map['remote'] as bool,
-      request: map['request'] == null ? null : map['request'] as bool,
-      response: map['response'] == null ? null : map['response'] as bool,
-      routeDomain: map['routeDomain'] == null ? null : map['routeDomain'] as bool,
-      rtt: map['rtt'] == null ? null : map['rtt'] as bool,
-      scheme: map['scheme'] == null ? null : map['scheme'] as bool,
-      serverName: map['serverName'] == null ? null : map['serverName'] as bool,
-      sslCert: map['sslCert'] == null ? null : map['sslCert'] as bool,
-      sslClientHello: map['sslClientHello'] == null ? null : map['sslClientHello'] as bool,
-      sslExtension: map['sslExtension'] == null ? null : map['sslExtension'] as bool,
-      sslServerHandshake: map['sslServerHandshake'] == null ? null : map['sslServerHandshake'] as bool,
-      sslServerHello: map['sslServerHello'] == null ? null : map['sslServerHello'] as bool,
-      startsWith: map['startsWith'] == null ? null : map['startsWith'] as bool,
-      tcp: map['tcp'] == null ? null : map['tcp'] as bool,
-      text: map['text'] == null ? null : map['text'] as bool,
-      tmName: map['tmName'] == null ? null : map['tmName'] as String,
-      unnamedQueryParameter: map['unnamedQueryParameter'] == null ? null : map['unnamedQueryParameter'] as bool,
-      userAgentToken: map['userAgentToken'] == null ? null : map['userAgentToken'] as bool,
-      username: map['username'] == null ? null : map['username'] as bool,
-      value: map['value'] == null ? null : map['value'] as bool,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
-      version: map['version'] == null ? null : map['version'] as bool,
-      vlan: map['vlan'] == null ? null : map['vlan'] as bool,
-      vlanId: map['vlanId'] == null ? null : map['vlanId'] as bool,
+      address: map['address'] == null ? null : (map['address'] as bool).input(),
+      all: map['all'] == null ? null : (map['all'] as bool).input(),
+      appService: map['appService'] == null ? null : (map['appService'] as String).input(),
+      browserType: map['browserType'] == null ? null : (map['browserType'] as bool).input(),
+      browserVersion: map['browserVersion'] == null ? null : (map['browserVersion'] as bool).input(),
+      caseInsensitive: map['caseInsensitive'] == null ? null : (map['caseInsensitive'] as bool).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      cipher: map['cipher'] == null ? null : (map['cipher'] as bool).input(),
+      cipherBits: map['cipherBits'] == null ? null : (map['cipherBits'] as bool).input(),
+      clientAccepted: map['clientAccepted'] == null ? null : (map['clientAccepted'] as bool).input(),
+      clientSsl: map['clientSsl'] == null ? null : (map['clientSsl'] as bool).input(),
+      code: map['code'] == null ? null : (map['code'] as bool).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName'] as bool).input(),
+      contains: map['contains'] == null ? null : (map['contains'] as bool).input(),
+      continent: map['continent'] == null ? null : (map['continent'] as bool).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as bool).input(),
+      countryName: map['countryName'] == null ? null : (map['countryName'] as bool).input(),
+      cpuUsage: map['cpuUsage'] == null ? null : (map['cpuUsage'] as bool).input(),
+      datagroup: map['datagroup'] == null ? null : (map['datagroup'] as String).input(),
+      deviceMake: map['deviceMake'] == null ? null : (map['deviceMake'] as bool).input(),
+      deviceModel: map['deviceModel'] == null ? null : (map['deviceModel'] as bool).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as bool).input(),
+      endsWith: map['endsWith'] == null ? null : (map['endsWith'] as bool).input(),
+      equals: map['equals'] == null ? null : (map['equals'] as bool).input(),
+      exists: map['exists'] == null ? null : (map['exists'] as bool).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as bool).input(),
+      extension: map['extension'] == null ? null : (map['extension'] as bool).input(),
+      external: map['external'] == null ? null : (map['external'] as bool).input(),
+      geoip: map['geoip'] == null ? null : (map['geoip'] as bool).input(),
+      greater: map['greater'] == null ? null : (map['greater'] as bool).input(),
+      greaterOrEqual: map['greaterOrEqual'] == null ? null : (map['greaterOrEqual'] as bool).input(),
+      host: map['host'] == null ? null : (map['host'] as bool).input(),
+      httpBasicAuth: map['httpBasicAuth'] == null ? null : (map['httpBasicAuth'] as bool).input(),
+      httpCookie: map['httpCookie'] == null ? null : (map['httpCookie'] as bool).input(),
+      httpHeader: map['httpHeader'] == null ? null : (map['httpHeader'] as bool).input(),
+      httpHost: map['httpHost'] == null ? null : (map['httpHost'] as bool).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as bool).input(),
+      httpReferer: map['httpReferer'] == null ? null : (map['httpReferer'] as bool).input(),
+      httpSetCookie: map['httpSetCookie'] == null ? null : (map['httpSetCookie'] as bool).input(),
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as bool).input(),
+      httpUri: map['httpUri'] == null ? null : (map['httpUri'] as bool).input(),
+      httpUserAgent: map['httpUserAgent'] == null ? null : (map['httpUserAgent'] as bool).input(),
+      httpVersion: map['httpVersion'] == null ? null : (map['httpVersion'] as bool).input(),
+      index: map['index'] == null ? null : (map['index'] as int).input(),
+      internal: map['internal'] == null ? null : (map['internal'] as bool).input(),
+      isp: map['isp'] == null ? null : (map['isp'] as bool).input(),
+      last15secs: map['last15secs'] == null ? null : (map['last15secs'] as bool).input(),
+      last1min: map['last1min'] == null ? null : (map['last1min'] as bool).input(),
+      last5mins: map['last5mins'] == null ? null : (map['last5mins'] as bool).input(),
+      less: map['less'] == null ? null : (map['less'] as bool).input(),
+      lessOrEqual: map['lessOrEqual'] == null ? null : (map['lessOrEqual'] as bool).input(),
+      local: map['local'] == null ? null : (map['local'] as bool).input(),
+      major: map['major'] == null ? null : (map['major'] as bool).input(),
+      matches: map['matches'] == null ? null : (map['matches'] as bool).input(),
+      minor: map['minor'] == null ? null : (map['minor'] as bool).input(),
+      missing: map['missing'] == null ? null : (map['missing'] as bool).input(),
+      mss: map['mss'] == null ? null : (map['mss'] as bool).input(),
+      not: map['not'] == null ? null : (map['not'] as bool).input(),
+      org: map['org'] == null ? null : (map['org'] as bool).input(),
+      password: map['password'] == null ? null : (map['password'] as bool).input(),
+      path: map['path'] == null ? null : (map['path'] as bool).input(),
+      pathSegment: map['pathSegment'] == null ? null : (map['pathSegment'] as bool).input(),
+      port: map['port'] == null ? null : (map['port'] as bool).input(),
+      present: map['present'] == null ? null : (map['present'] as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as bool).input(),
+      queryParameter: map['queryParameter'] == null ? null : (map['queryParameter'] as bool).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString'] as bool).input(),
+      regionCode: map['regionCode'] == null ? null : (map['regionCode'] as bool).input(),
+      regionName: map['regionName'] == null ? null : (map['regionName'] as bool).input(),
+      remote: map['remote'] == null ? null : (map['remote'] as bool).input(),
+      request: map['request'] == null ? null : (map['request'] as bool).input(),
+      response: map['response'] == null ? null : (map['response'] as bool).input(),
+      routeDomain: map['routeDomain'] == null ? null : (map['routeDomain'] as bool).input(),
+      rtt: map['rtt'] == null ? null : (map['rtt'] as bool).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme'] as bool).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as bool).input(),
+      sslCert: map['sslCert'] == null ? null : (map['sslCert'] as bool).input(),
+      sslClientHello: map['sslClientHello'] == null ? null : (map['sslClientHello'] as bool).input(),
+      sslExtension: map['sslExtension'] == null ? null : (map['sslExtension'] as bool).input(),
+      sslServerHandshake: map['sslServerHandshake'] == null ? null : (map['sslServerHandshake'] as bool).input(),
+      sslServerHello: map['sslServerHello'] == null ? null : (map['sslServerHello'] as bool).input(),
+      startsWith: map['startsWith'] == null ? null : (map['startsWith'] as bool).input(),
+      tcp: map['tcp'] == null ? null : (map['tcp'] as bool).input(),
+      text: map['text'] == null ? null : (map['text'] as bool).input(),
+      tmName: map['tmName'] == null ? null : (map['tmName'] as String).input(),
+      unnamedQueryParameter: map['unnamedQueryParameter'] == null ? null : (map['unnamedQueryParameter'] as bool).input(),
+      userAgentToken: map['userAgentToken'] == null ? null : (map['userAgentToken'] as bool).input(),
+      username: map['username'] == null ? null : (map['username'] as bool).input(),
+      value: map['value'] == null ? null : (map['value'] as bool).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as bool).input(),
+      vlan: map['vlan'] == null ? null : (map['vlan'] as bool).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as bool).input(),
     );
   }
 }

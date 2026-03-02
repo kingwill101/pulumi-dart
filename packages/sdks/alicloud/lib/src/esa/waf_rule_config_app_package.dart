@@ -5,7 +5,7 @@ import 'waf_rule_config_app_package_package_sign.dart';
 
 class WafRuleConfigAppPackage {
   /// Security mechanism to prevent apps from being repackaged. See `package_signs` below.
-  final List<WafRuleConfigAppPackagePackageSign>? packageSigns;
+  final pulumi.Input<List<WafRuleConfigAppPackagePackageSign>>? packageSigns;
 
   /// Creates a new [WafRuleConfigAppPackage].
   /// [packageSigns] Security mechanism to prevent apps from being repackaged. See `package_signs` below.
@@ -15,13 +15,13 @@ class WafRuleConfigAppPackage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'packageSigns': ?packageSigns == null ? null : pulumi.Input.encodeList<WafRuleConfigAppPackagePackageSign, Map<String, dynamic>>(packageSigns!, (value) => value.toMap()),
+      'packageSigns': ?pulumi.Input.mapOptionalInputValue<List<WafRuleConfigAppPackagePackageSign>, List<Map<String, dynamic>>>(packageSigns, (value) => pulumi.Input.encodeList<WafRuleConfigAppPackagePackageSign, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WafRuleConfigAppPackage.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigAppPackage(
-      packageSigns: map['packageSigns'] == null ? null : pulumi.Input.decodeList<WafRuleConfigAppPackagePackageSign>(map['packageSigns'], (value) => WafRuleConfigAppPackagePackageSign.fromMap((value as Map).cast<String, dynamic>())),
+      packageSigns: map['packageSigns'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigAppPackagePackageSign>(map['packageSigns'], (value) => WafRuleConfigAppPackagePackageSign.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

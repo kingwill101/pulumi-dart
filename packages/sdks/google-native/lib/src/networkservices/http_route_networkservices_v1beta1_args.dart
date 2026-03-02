@@ -39,27 +39,17 @@ class HttpRouteNetworkservicesV1beta1Args {
   /// [project] Optional.
   /// [rules] Rules that define how traffic is routed and handled. Rules will be matched sequentially based on the RouteMatch specified for the rule.
   HttpRouteNetworkservicesV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? gateways,
-    required pulumi.Output<List<String>> hostnames,
-    required pulumi.Output<String> httpRouteId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? meshes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<HttpRouteRouteRuleNetworkservicesV1beta1>> rules,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gateways = pulumi.Input.asOptionalInput<List<String>>(gateways),
-      hostnames = pulumi.Input.asInput<List<String>>(hostnames),
-      httpRouteId = pulumi.Input.asInput<String>(httpRouteId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      meshes = pulumi.Input.asOptionalInput<List<String>>(meshes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rules = pulumi.Input.asInput<List<HttpRouteRouteRuleNetworkservicesV1beta1>>(rules);
+    this.description,
+    this.gateways,
+    required this.hostnames,
+    required this.httpRouteId,
+    this.labels,
+    this.location,
+    this.meshes,
+    this.name,
+    this.project,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class HttpRouteNetworkservicesV1beta1Args {
 
   factory HttpRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return HttpRouteNetworkservicesV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gateways: map['gateways'] == null ? null : pulumi.Output.create<List<String>>((map['gateways'] as List).cast<String>()),
-      hostnames: pulumi.Output.create<List<String>>((map['hostnames'] as List).cast<String>()),
-      httpRouteId: pulumi.Output.create<String>(map['httpRouteId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      meshes: map['meshes'] == null ? null : pulumi.Output.create<List<String>>((map['meshes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rules: pulumi.Output.create<List<HttpRouteRouteRuleNetworkservicesV1beta1>>(pulumi.Input.decodeList<HttpRouteRouteRuleNetworkservicesV1beta1>(map['rules'], (value) => HttpRouteRouteRuleNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
+      hostnames: ((map['hostnames'] as List).cast<String>()).input(),
+      httpRouteId: (map['httpRouteId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rules: (pulumi.Input.decodeList<HttpRouteRouteRuleNetworkservicesV1beta1>(map['rules'], (value) => HttpRouteRouteRuleNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

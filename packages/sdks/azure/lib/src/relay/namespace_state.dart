@@ -37,27 +37,17 @@ class NamespaceState {
   /// [skuName] The name of the SKU to use. At this time the only supported value is `Standard`.
   /// [tags] A mapping of tags to assign to the resource.
   NamespaceState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? metricId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryConnectionString,
-    pulumi.Output<String>? primaryKey,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? secondaryConnectionString,
-    pulumi.Output<String>? secondaryKey,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metricId = pulumi.Input.asOptionalInput<String>(metricId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryConnectionString = pulumi.Input.asOptionalInput<String>(primaryConnectionString),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secondaryConnectionString = pulumi.Input.asOptionalInput<String>(secondaryConnectionString),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.metricId,
+    this.name,
+    this.primaryConnectionString,
+    this.primaryKey,
+    this.resourceGroupName,
+    this.secondaryConnectionString,
+    this.secondaryKey,
+    this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metricId: map['metricId'] == null ? null : pulumi.Output.create<String>(map['metricId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['primaryConnectionString'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['secondaryConnectionString'] as String),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metricId: map['metricId'] == null ? null : (map['metricId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

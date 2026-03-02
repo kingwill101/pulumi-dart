@@ -19,13 +19,10 @@ class GetReferenceDataSetArgs {
   /// [referenceDataSetName] The name of the Time Series Insights reference data set associated with the specified environment.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetReferenceDataSetArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> referenceDataSetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      referenceDataSetName = pulumi.Input.asInput<String>(referenceDataSetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    required this.referenceDataSetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetReferenceDataSetArgs {
 
   factory GetReferenceDataSetArgs.fromMap(Map<String, dynamic> map) {
     return GetReferenceDataSetArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      referenceDataSetName: pulumi.Output.create<String>(map['referenceDataSetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      referenceDataSetName: (map['referenceDataSetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

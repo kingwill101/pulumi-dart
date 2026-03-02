@@ -41,25 +41,16 @@ class StackInstancesArgs {
   /// [retainStacks] Whether to remove the stack instances from the stack set, but not delete the stacks. You can't reassociate a retained stack or add an existing, saved stack to a new stack set. To retain the stack, ensure `retain_stacks = true` has been successfully applied _before_ an apply that would destroy the resource. Defaults to `false`.
   /// [stackSetName] Name of the stack set.
   StackInstancesArgs({
-    pulumi.Output<List<String>>? accounts,
-    pulumi.Output<String>? callAs,
-    pulumi.Output<StackInstancesDeploymentTargets>? deploymentTargets,
-    pulumi.Output<StackInstancesOperationPreferences>? operationPreferences,
-    pulumi.Output<Map<String, String>>? parameterOverrides,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? regions,
-    pulumi.Output<bool>? retainStacks,
-    required pulumi.Output<String> stackSetName,
-  }) :
-      accounts = pulumi.Input.asOptionalInput<List<String>>(accounts),
-      callAs = pulumi.Input.asOptionalInput<String>(callAs),
-      deploymentTargets = pulumi.Input.asOptionalInput<StackInstancesDeploymentTargets>(deploymentTargets),
-      operationPreferences = pulumi.Input.asOptionalInput<StackInstancesOperationPreferences>(operationPreferences),
-      parameterOverrides = pulumi.Input.asOptionalInput<Map<String, String>>(parameterOverrides),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      retainStacks = pulumi.Input.asOptionalInput<bool>(retainStacks),
-      stackSetName = pulumi.Input.asInput<String>(stackSetName);
+    this.accounts,
+    this.callAs,
+    this.deploymentTargets,
+    this.operationPreferences,
+    this.parameterOverrides,
+    this.region,
+    this.regions,
+    this.retainStacks,
+    required this.stackSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class StackInstancesArgs {
 
   factory StackInstancesArgs.fromMap(Map<String, dynamic> map) {
     return StackInstancesArgs(
-      accounts: map['accounts'] == null ? null : pulumi.Output.create<List<String>>((map['accounts'] as List).cast<String>()),
-      callAs: map['callAs'] == null ? null : pulumi.Output.create<String>(map['callAs'] as String),
-      deploymentTargets: map['deploymentTargets'] == null ? null : pulumi.Output.create<StackInstancesDeploymentTargets>(StackInstancesDeploymentTargets.fromMap((map['deploymentTargets'] as Map).cast<String, dynamic>())),
-      operationPreferences: map['operationPreferences'] == null ? null : pulumi.Output.create<StackInstancesOperationPreferences>(StackInstancesOperationPreferences.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>())),
-      parameterOverrides: map['parameterOverrides'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameterOverrides'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      retainStacks: map['retainStacks'] == null ? null : pulumi.Output.create<bool>(map['retainStacks'] as bool),
-      stackSetName: pulumi.Output.create<String>(map['stackSetName'] as String),
+      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
+      callAs: map['callAs'] == null ? null : (map['callAs'] as String).input(),
+      deploymentTargets: map['deploymentTargets'] == null ? null : (StackInstancesDeploymentTargets.fromMap((map['deploymentTargets'] as Map).cast<String, dynamic>())).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : (StackInstancesOperationPreferences.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>())).input(),
+      parameterOverrides: map['parameterOverrides'] == null ? null : ((map['parameterOverrides'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      retainStacks: map['retainStacks'] == null ? null : (map['retainStacks'] as bool).input(),
+      stackSetName: (map['stackSetName'] as String).input(),
     );
   }
 }

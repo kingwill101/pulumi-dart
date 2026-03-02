@@ -16,13 +16,10 @@ class GetResponsePolicyArgs {
   /// [project] Optional.
   /// [responsePolicy] Required.
   GetResponsePolicyArgs({
-    pulumi.Output<String>? clientOperationId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> responsePolicy,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      responsePolicy = pulumi.Input.asInput<String>(responsePolicy);
+    this.clientOperationId,
+    this.project,
+    required this.responsePolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetResponsePolicyArgs {
 
   factory GetResponsePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetResponsePolicyArgs(
-      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      responsePolicy: pulumi.Output.create<String>(map['responsePolicy'] as String),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      responsePolicy: (map['responsePolicy'] as String).input(),
     );
   }
 }

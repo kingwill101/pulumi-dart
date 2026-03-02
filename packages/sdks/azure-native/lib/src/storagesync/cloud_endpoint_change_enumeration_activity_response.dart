@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cloud endpoint change enumeration activity object
 class CloudEndpointChangeEnumerationActivityResponse {
   /// Progress percentage for processing deletes. This is done separately from the rest of the enumeration run
-  final int deletesProgressPercent;
+  final pulumi.Input<int> deletesProgressPercent;
   /// Last updated timestamp
-  final String lastUpdatedTimestamp;
+  final pulumi.Input<String> lastUpdatedTimestamp;
   /// Estimate of time remaining for the enumeration run
-  final int minutesRemaining;
+  final pulumi.Input<int> minutesRemaining;
   /// Change enumeration operation state
-  final String operationState;
+  final pulumi.Input<String> operationState;
   /// Count of directories processed
-  final double processedDirectoriesCount;
+  final pulumi.Input<double> processedDirectoriesCount;
   /// Count of files processed
-  final double processedFilesCount;
+  final pulumi.Input<double> processedFilesCount;
   /// Progress percentage for change enumeration run, excluding processing of deletes
-  final int progressPercent;
+  final pulumi.Input<int> progressPercent;
   /// Timestamp when change enumeration started
-  final String startedTimestamp;
+  final pulumi.Input<String> startedTimestamp;
   /// When non-zero, indicates an issue that is delaying change enumeration
-  final int statusCode;
+  final pulumi.Input<int> statusCode;
   /// Change enumeration total counts state
-  final String totalCountsState;
+  final pulumi.Input<String> totalCountsState;
   /// Total count of directories enumerated
-  final double totalDirectoriesCount;
+  final pulumi.Input<double> totalDirectoriesCount;
   /// Total count of files enumerated
-  final double totalFilesCount;
+  final pulumi.Input<double> totalFilesCount;
   /// Total enumerated size in bytes
-  final double totalSizeBytes;
+  final pulumi.Input<double> totalSizeBytes;
 
   /// Creates a new [CloudEndpointChangeEnumerationActivityResponse].
   /// [deletesProgressPercent] Progress percentage for processing deletes. This is done separately from the rest of the enumeration run
@@ -80,19 +81,19 @@ class CloudEndpointChangeEnumerationActivityResponse {
 
   factory CloudEndpointChangeEnumerationActivityResponse.fromMap(Map<String, dynamic> map) {
     return CloudEndpointChangeEnumerationActivityResponse(
-      deletesProgressPercent: map['deletesProgressPercent'] as int,
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] as String,
-      minutesRemaining: map['minutesRemaining'] as int,
-      operationState: map['operationState'] as String,
-      processedDirectoriesCount: map['processedDirectoriesCount'] as double,
-      processedFilesCount: map['processedFilesCount'] as double,
-      progressPercent: map['progressPercent'] as int,
-      startedTimestamp: map['startedTimestamp'] as String,
-      statusCode: map['statusCode'] as int,
-      totalCountsState: map['totalCountsState'] as String,
-      totalDirectoriesCount: map['totalDirectoriesCount'] as double,
-      totalFilesCount: map['totalFilesCount'] as double,
-      totalSizeBytes: map['totalSizeBytes'] as double,
+      deletesProgressPercent: (map['deletesProgressPercent'] as int).input(),
+      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
+      minutesRemaining: (map['minutesRemaining'] as int).input(),
+      operationState: (map['operationState'] as String).input(),
+      processedDirectoriesCount: (map['processedDirectoriesCount'] as double).input(),
+      processedFilesCount: (map['processedFilesCount'] as double).input(),
+      progressPercent: (map['progressPercent'] as int).input(),
+      startedTimestamp: (map['startedTimestamp'] as String).input(),
+      statusCode: (map['statusCode'] as int).input(),
+      totalCountsState: (map['totalCountsState'] as String).input(),
+      totalDirectoriesCount: (map['totalDirectoriesCount'] as double).input(),
+      totalFilesCount: (map['totalFilesCount'] as double).input(),
+      totalSizeBytes: (map['totalSizeBytes'] as double).input(),
     );
   }
 }

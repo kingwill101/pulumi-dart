@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewaySlbList {
   /// The associate id.
-  final String? associateId;
+  final pulumi.Input<String>? associateId;
   /// The Mode of the gateway slb.
-  final String? gatewaySlbMode;
+  final pulumi.Input<String>? gatewaySlbMode;
   /// The Status of the gateway slb.
-  final String? gatewaySlbStatus;
+  final pulumi.Input<String>? gatewaySlbStatus;
   /// The creation time of the gateway slb.
-  final String? gmtCreate;
+  final pulumi.Input<String>? gmtCreate;
   /// The ID of the gateway slb.
-  final String? slbId;
+  final pulumi.Input<String>? slbId;
   /// The ip of the gateway slb.
-  final String? slbIp;
+  final pulumi.Input<String>? slbIp;
   /// The port of the gateway slb.
-  final String? slbPort;
+  final pulumi.Input<String>? slbPort;
   /// The type of the gateway slb.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [GatewaySlbList].
   /// [associateId] The associate id.
@@ -54,14 +55,14 @@ class GatewaySlbList {
 
   factory GatewaySlbList.fromMap(Map<String, dynamic> map) {
     return GatewaySlbList(
-      associateId: map['associateId'] == null ? null : map['associateId'] as String,
-      gatewaySlbMode: map['gatewaySlbMode'] == null ? null : map['gatewaySlbMode'] as String,
-      gatewaySlbStatus: map['gatewaySlbStatus'] == null ? null : map['gatewaySlbStatus'] as String,
-      gmtCreate: map['gmtCreate'] == null ? null : map['gmtCreate'] as String,
-      slbId: map['slbId'] == null ? null : map['slbId'] as String,
-      slbIp: map['slbIp'] == null ? null : map['slbIp'] as String,
-      slbPort: map['slbPort'] == null ? null : map['slbPort'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      associateId: map['associateId'] == null ? null : (map['associateId'] as String).input(),
+      gatewaySlbMode: map['gatewaySlbMode'] == null ? null : (map['gatewaySlbMode'] as String).input(),
+      gatewaySlbStatus: map['gatewaySlbStatus'] == null ? null : (map['gatewaySlbStatus'] as String).input(),
+      gmtCreate: map['gmtCreate'] == null ? null : (map['gmtCreate'] as String).input(),
+      slbId: map['slbId'] == null ? null : (map['slbId'] as String).input(),
+      slbIp: map['slbIp'] == null ? null : (map['slbIp'] as String).input(),
+      slbPort: map['slbPort'] == null ? null : (map['slbPort'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

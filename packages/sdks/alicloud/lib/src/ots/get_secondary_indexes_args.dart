@@ -25,17 +25,12 @@ class GetSecondaryIndexesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tableName] The name of OTS table.
   GetSecondaryIndexesArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> tableName,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    this.ids,
+    required this.instanceName,
+    this.nameRegex,
+    this.outputFile,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSecondaryIndexesArgs {
 
   factory GetSecondaryIndexesArgs.fromMap(Map<String, dynamic> map) {
     return GetSecondaryIndexesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

@@ -1,68 +1,69 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the billing role assignment.
 class BillingRoleAssignmentPropertiesResponse {
   /// The name of the billing account.
-  final String billingAccountDisplayName;
+  final pulumi.Input<String> billingAccountDisplayName;
   /// The fully qualified ID that uniquely identifies a billing account.
-  final String billingAccountId;
+  final pulumi.Input<String> billingAccountId;
   /// The name of the billing profile.
-  final String billingProfileDisplayName;
+  final pulumi.Input<String> billingProfileDisplayName;
   /// The fully qualified ID that uniquely identifies a billing profile.
-  final String billingProfileId;
+  final pulumi.Input<String> billingProfileId;
   /// The ID of the billing request that was created for the role assignment. This is only applicable to cross tenant role assignments or role assignments created through the billing request.
-  final String billingRequestId;
+  final pulumi.Input<String> billingRequestId;
   /// The object ID of the user who created the role assignment.
-  final String createdByPrincipalId;
+  final pulumi.Input<String> createdByPrincipalId;
   /// The principal PUID of the user who created the role assignment.
-  final String createdByPrincipalPuid;
+  final pulumi.Input<String> createdByPrincipalPuid;
   /// The tenant Id of the user who created the role assignment.
-  final String createdByPrincipalTenantId;
+  final pulumi.Input<String> createdByPrincipalTenantId;
   /// The email address of the user who created the role assignment. This is supported only for billing accounts with agreement type Enterprise Agreement.
-  final String createdByUserEmailAddress;
+  final pulumi.Input<String> createdByUserEmailAddress;
   /// The date the role assignment was created.
-  final String createdOn;
+  final pulumi.Input<String> createdOn;
   /// The name of the customer.
-  final String customerDisplayName;
+  final pulumi.Input<String> customerDisplayName;
   /// The fully qualified ID that uniquely identifies a customer.
-  final String customerId;
+  final pulumi.Input<String> customerId;
   /// The name of the invoice section.
-  final String invoiceSectionDisplayName;
+  final pulumi.Input<String> invoiceSectionDisplayName;
   /// The fully qualified ID that uniquely identifies an invoice section.
-  final String invoiceSectionId;
+  final pulumi.Input<String> invoiceSectionId;
   /// The principal PUID of the user who modified the role assignment.
-  final String modifiedByPrincipalId;
+  final pulumi.Input<String> modifiedByPrincipalId;
   /// The principal PUID of the user who modified the role assignment.
-  final String modifiedByPrincipalPuid;
+  final pulumi.Input<String> modifiedByPrincipalPuid;
   /// The tenant Id of the user who modified the role assignment.
-  final String modifiedByPrincipalTenantId;
+  final pulumi.Input<String> modifiedByPrincipalTenantId;
   /// The email address of the user who modified the role assignment. This is supported only for billing accounts with agreement type Enterprise Agreement.
-  final String modifiedByUserEmailAddress;
+  final pulumi.Input<String> modifiedByUserEmailAddress;
   /// The date the role assignment was modified.
-  final String modifiedOn;
+  final pulumi.Input<String> modifiedOn;
   /// The display name of the principal to whom the role was assigned.
-  final String principalDisplayName;
+  final pulumi.Input<String> principalDisplayName;
   /// The object id of the user to whom the role was assigned.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// The principal PUID of the user to whom the role was assigned.
-  final String? principalPuid;
+  final pulumi.Input<String>? principalPuid;
   /// The principal tenant id of the user to whom the role was assigned.
-  final String? principalTenantId;
+  final pulumi.Input<String>? principalTenantId;
   /// The friendly name of the tenant of the user to whom the role was assigned. This will be 'Primary Tenant' for the primary tenant of the billing account.
-  final String principalTenantName;
+  final pulumi.Input<String> principalTenantName;
   /// The type of a role Assignment.
-  final String principalType;
+  final pulumi.Input<String> principalType;
   /// The provisioning state of the resource during a long-running operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The ID of the role definition.
-  final String roleDefinitionId;
+  final pulumi.Input<String> roleDefinitionId;
   /// The scope at which the role was assigned.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-  final String? userAuthenticationType;
+  final pulumi.Input<String>? userAuthenticationType;
   /// The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-  final String? userEmailAddress;
+  final pulumi.Input<String>? userEmailAddress;
 
   /// Creates a new [BillingRoleAssignmentPropertiesResponse].
   /// [billingAccountDisplayName] The name of the billing account.
@@ -165,36 +166,36 @@ class BillingRoleAssignmentPropertiesResponse {
 
   factory BillingRoleAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BillingRoleAssignmentPropertiesResponse(
-      billingAccountDisplayName: map['billingAccountDisplayName'] as String,
-      billingAccountId: map['billingAccountId'] as String,
-      billingProfileDisplayName: map['billingProfileDisplayName'] as String,
-      billingProfileId: map['billingProfileId'] as String,
-      billingRequestId: map['billingRequestId'] as String,
-      createdByPrincipalId: map['createdByPrincipalId'] as String,
-      createdByPrincipalPuid: map['createdByPrincipalPuid'] as String,
-      createdByPrincipalTenantId: map['createdByPrincipalTenantId'] as String,
-      createdByUserEmailAddress: map['createdByUserEmailAddress'] as String,
-      createdOn: map['createdOn'] as String,
-      customerDisplayName: map['customerDisplayName'] as String,
-      customerId: map['customerId'] as String,
-      invoiceSectionDisplayName: map['invoiceSectionDisplayName'] as String,
-      invoiceSectionId: map['invoiceSectionId'] as String,
-      modifiedByPrincipalId: map['modifiedByPrincipalId'] as String,
-      modifiedByPrincipalPuid: map['modifiedByPrincipalPuid'] as String,
-      modifiedByPrincipalTenantId: map['modifiedByPrincipalTenantId'] as String,
-      modifiedByUserEmailAddress: map['modifiedByUserEmailAddress'] as String,
-      modifiedOn: map['modifiedOn'] as String,
-      principalDisplayName: map['principalDisplayName'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      principalPuid: map['principalPuid'] == null ? null : map['principalPuid'] as String,
-      principalTenantId: map['principalTenantId'] == null ? null : map['principalTenantId'] as String,
-      principalTenantName: map['principalTenantName'] as String,
-      principalType: map['principalType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      roleDefinitionId: map['roleDefinitionId'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      userAuthenticationType: map['userAuthenticationType'] == null ? null : map['userAuthenticationType'] as String,
-      userEmailAddress: map['userEmailAddress'] == null ? null : map['userEmailAddress'] as String,
+      billingAccountDisplayName: (map['billingAccountDisplayName'] as String).input(),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      billingProfileDisplayName: (map['billingProfileDisplayName'] as String).input(),
+      billingProfileId: (map['billingProfileId'] as String).input(),
+      billingRequestId: (map['billingRequestId'] as String).input(),
+      createdByPrincipalId: (map['createdByPrincipalId'] as String).input(),
+      createdByPrincipalPuid: (map['createdByPrincipalPuid'] as String).input(),
+      createdByPrincipalTenantId: (map['createdByPrincipalTenantId'] as String).input(),
+      createdByUserEmailAddress: (map['createdByUserEmailAddress'] as String).input(),
+      createdOn: (map['createdOn'] as String).input(),
+      customerDisplayName: (map['customerDisplayName'] as String).input(),
+      customerId: (map['customerId'] as String).input(),
+      invoiceSectionDisplayName: (map['invoiceSectionDisplayName'] as String).input(),
+      invoiceSectionId: (map['invoiceSectionId'] as String).input(),
+      modifiedByPrincipalId: (map['modifiedByPrincipalId'] as String).input(),
+      modifiedByPrincipalPuid: (map['modifiedByPrincipalPuid'] as String).input(),
+      modifiedByPrincipalTenantId: (map['modifiedByPrincipalTenantId'] as String).input(),
+      modifiedByUserEmailAddress: (map['modifiedByUserEmailAddress'] as String).input(),
+      modifiedOn: (map['modifiedOn'] as String).input(),
+      principalDisplayName: (map['principalDisplayName'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalPuid: map['principalPuid'] == null ? null : (map['principalPuid'] as String).input(),
+      principalTenantId: map['principalTenantId'] == null ? null : (map['principalTenantId'] as String).input(),
+      principalTenantName: (map['principalTenantName'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      userAuthenticationType: map['userAuthenticationType'] == null ? null : (map['userAuthenticationType'] as String).input(),
+      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress'] as String).input(),
     );
   }
 }

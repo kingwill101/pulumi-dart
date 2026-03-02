@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'post_build_definition.dart';
 
 /// The Kustomization defining how to reconcile the artifact pulled by the source type on the cluster.
 class KustomizationDefinition {
   /// Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation.
-  final List<String>? dependsOn;
+  final pulumi.Input<List<String>>? dependsOn;
   /// Enable/disable re-creating Kubernetes resources on the cluster when patching fails due to an immutable field change.
-  final bool? force;
+  final pulumi.Input<bool>? force;
   /// The path in the source reference to reconcile on the cluster.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Used for variable substitution for this Kustomization after kustomize build.
-  final PostBuildDefinition? postBuild;
+  final pulumi.Input<PostBuildDefinition>? postBuild;
   /// Enable/disable garbage collections of Kubernetes objects created by this Kustomization.
-  final bool? prune;
+  final pulumi.Input<bool>? prune;
   /// The interval at which to re-reconcile the Kustomization on the cluster in the event of failure on reconciliation.
-  final double? retryIntervalInSeconds;
+  final pulumi.Input<double>? retryIntervalInSeconds;
   /// The interval at which to re-reconcile the Kustomization on the cluster.
-  final double? syncIntervalInSeconds;
+  final pulumi.Input<double>? syncIntervalInSeconds;
   /// The maximum time to attempt to reconcile the Kustomization on the cluster.
-  final double? timeoutInSeconds;
+  final pulumi.Input<double>? timeoutInSeconds;
   /// Enable/disable health check for all Kubernetes objects created by this Kustomization.
-  final bool? wait;
+  final pulumi.Input<bool>? wait;
 
   /// Creates a new [KustomizationDefinition].
   /// [dependsOn] Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation.
@@ -50,7 +51,7 @@ class KustomizationDefinition {
       'dependsOn': ?dependsOn,
       'force': ?force,
       'path': ?path,
-      'postBuild': ?postBuild == null ? null : postBuild!.toMap(),
+      'postBuild': ?pulumi.Input.mapOptionalInputValue<PostBuildDefinition, Map<String, dynamic>>(postBuild, (value) => value.toMap()),
       'prune': ?prune,
       'retryIntervalInSeconds': ?retryIntervalInSeconds,
       'syncIntervalInSeconds': ?syncIntervalInSeconds,
@@ -61,15 +62,15 @@ class KustomizationDefinition {
 
   factory KustomizationDefinition.fromMap(Map<String, dynamic> map) {
     return KustomizationDefinition(
-      dependsOn: map['dependsOn'] == null ? null : (map['dependsOn'] as List).cast<String>(),
-      force: map['force'] == null ? null : map['force'] as bool,
-      path: map['path'] == null ? null : map['path'] as String,
-      postBuild: map['postBuild'] == null ? null : PostBuildDefinition.fromMap((map['postBuild'] as Map).cast<String, dynamic>()),
-      prune: map['prune'] == null ? null : map['prune'] as bool,
-      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : map['retryIntervalInSeconds'] as double,
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : map['syncIntervalInSeconds'] as double,
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : map['timeoutInSeconds'] as double,
-      wait: map['wait'] == null ? null : map['wait'] as bool,
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      postBuild: map['postBuild'] == null ? null : (PostBuildDefinition.fromMap((map['postBuild'] as Map).cast<String, dynamic>())).input(),
+      prune: map['prune'] == null ? null : (map['prune'] as bool).input(),
+      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds'] as double).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as double).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as double).input(),
+      wait: map['wait'] == null ? null : (map['wait'] as bool).input(),
     );
   }
 }

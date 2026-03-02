@@ -33,19 +33,13 @@ class FrameworkArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [organization] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   FrameworkArgs({
-    pulumi.Output<List<FrameworkCloudControlDetail>>? cloudControlDetails,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> frameworkId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organization,
-  }) :
-      cloudControlDetails = pulumi.Input.asOptionalInput<List<FrameworkCloudControlDetail>>(cloudControlDetails),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      frameworkId = pulumi.Input.asInput<String>(frameworkId),
-      location = pulumi.Input.asInput<String>(location),
-      organization = pulumi.Input.asInput<String>(organization);
+    this.cloudControlDetails,
+    this.description,
+    this.displayName,
+    required this.frameworkId,
+    required this.location,
+    required this.organization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class FrameworkArgs {
 
   factory FrameworkArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkArgs(
-      cloudControlDetails: map['cloudControlDetails'] == null ? null : pulumi.Output.create<List<FrameworkCloudControlDetail>>(pulumi.Input.decodeList<FrameworkCloudControlDetail>(map['cloudControlDetails'], (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      frameworkId: pulumi.Output.create<String>(map['frameworkId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
+      cloudControlDetails: map['cloudControlDetails'] == null ? null : (pulumi.Input.decodeList<FrameworkCloudControlDetail>(map['cloudControlDetails'], (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      frameworkId: (map['frameworkId'] as String).input(),
+      location: (map['location'] as String).input(),
+      organization: (map['organization'] as String).input(),
     );
   }
 }

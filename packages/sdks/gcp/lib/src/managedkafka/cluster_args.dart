@@ -50,25 +50,16 @@ class ClusterArgs {
   /// [rebalanceConfig] Defines rebalancing behavior of a Kafka cluster.
   /// [tlsConfig] TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
   ClusterArgs({
-    pulumi.Output<ClusterBrokerCapacityConfig>? brokerCapacityConfig,
-    required pulumi.Output<ClusterCapacityConfig> capacityConfig,
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<ClusterGcpConfig> gcpConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<ClusterRebalanceConfig>? rebalanceConfig,
-    pulumi.Output<ClusterTlsConfig>? tlsConfig,
-  }) :
-      brokerCapacityConfig = pulumi.Input.asOptionalInput<ClusterBrokerCapacityConfig>(brokerCapacityConfig),
-      capacityConfig = pulumi.Input.asInput<ClusterCapacityConfig>(capacityConfig),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      gcpConfig = pulumi.Input.asInput<ClusterGcpConfig>(gcpConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rebalanceConfig = pulumi.Input.asOptionalInput<ClusterRebalanceConfig>(rebalanceConfig),
-      tlsConfig = pulumi.Input.asOptionalInput<ClusterTlsConfig>(tlsConfig);
+    this.brokerCapacityConfig,
+    required this.capacityConfig,
+    required this.clusterId,
+    required this.gcpConfig,
+    this.labels,
+    required this.location,
+    this.project,
+    this.rebalanceConfig,
+    this.tlsConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,15 +77,15 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      brokerCapacityConfig: map['brokerCapacityConfig'] == null ? null : pulumi.Output.create<ClusterBrokerCapacityConfig>(ClusterBrokerCapacityConfig.fromMap((map['brokerCapacityConfig'] as Map).cast<String, dynamic>())),
-      capacityConfig: pulumi.Output.create<ClusterCapacityConfig>(ClusterCapacityConfig.fromMap((map['capacityConfig'] as Map).cast<String, dynamic>())),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      gcpConfig: pulumi.Output.create<ClusterGcpConfig>(ClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rebalanceConfig: map['rebalanceConfig'] == null ? null : pulumi.Output.create<ClusterRebalanceConfig>(ClusterRebalanceConfig.fromMap((map['rebalanceConfig'] as Map).cast<String, dynamic>())),
-      tlsConfig: map['tlsConfig'] == null ? null : pulumi.Output.create<ClusterTlsConfig>(ClusterTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())),
+      brokerCapacityConfig: map['brokerCapacityConfig'] == null ? null : (ClusterBrokerCapacityConfig.fromMap((map['brokerCapacityConfig'] as Map).cast<String, dynamic>())).input(),
+      capacityConfig: (ClusterCapacityConfig.fromMap((map['capacityConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      gcpConfig: (ClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rebalanceConfig: map['rebalanceConfig'] == null ? null : (ClusterRebalanceConfig.fromMap((map['rebalanceConfig'] as Map).cast<String, dynamic>())).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (ClusterTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildMetadataResponseContaineranalysisV1beta1 {
-  final String finishedOn;
-  final String invocationId;
-  final String startedOn;
+  final pulumi.Input<String> finishedOn;
+  final pulumi.Input<String> invocationId;
+  final pulumi.Input<String> startedOn;
 
   /// Creates a new [BuildMetadataResponseContaineranalysisV1beta1].
   /// [finishedOn] Required.
@@ -26,9 +27,9 @@ class BuildMetadataResponseContaineranalysisV1beta1 {
 
   factory BuildMetadataResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return BuildMetadataResponseContaineranalysisV1beta1(
-      finishedOn: map['finishedOn'] as String,
-      invocationId: map['invocationId'] as String,
-      startedOn: map['startedOn'] as String,
+      finishedOn: (map['finishedOn'] as String).input(),
+      invocationId: (map['invocationId'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
     );
   }
 }

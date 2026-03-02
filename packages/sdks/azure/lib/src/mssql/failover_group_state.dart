@@ -30,21 +30,14 @@ class FailoverGroupState {
   /// [serverId] The ID of the primary SQL Server on which to create the failover group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   FailoverGroupState({
-    pulumi.Output<List<String>>? databases,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<FailoverGroupPartnerServer>>? partnerServers,
-    pulumi.Output<FailoverGroupReadWriteEndpointFailoverPolicy>? readWriteEndpointFailoverPolicy,
-    pulumi.Output<bool>? readonlyEndpointFailoverPolicyEnabled,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      databases = pulumi.Input.asOptionalInput<List<String>>(databases),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partnerServers = pulumi.Input.asOptionalInput<List<FailoverGroupPartnerServer>>(partnerServers),
-      readWriteEndpointFailoverPolicy = pulumi.Input.asOptionalInput<FailoverGroupReadWriteEndpointFailoverPolicy>(readWriteEndpointFailoverPolicy),
-      readonlyEndpointFailoverPolicyEnabled = pulumi.Input.asOptionalInput<bool>(readonlyEndpointFailoverPolicyEnabled),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.databases,
+    this.name,
+    this.partnerServers,
+    this.readWriteEndpointFailoverPolicy,
+    this.readonlyEndpointFailoverPolicyEnabled,
+    this.serverId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class FailoverGroupState {
 
   factory FailoverGroupState.fromMap(Map<String, dynamic> map) {
     return FailoverGroupState(
-      databases: map['databases'] == null ? null : pulumi.Output.create<List<String>>((map['databases'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partnerServers: map['partnerServers'] == null ? null : pulumi.Output.create<List<FailoverGroupPartnerServer>>(pulumi.Input.decodeList<FailoverGroupPartnerServer>(map['partnerServers'], (value) => FailoverGroupPartnerServer.fromMap((value as Map).cast<String, dynamic>()))),
-      readWriteEndpointFailoverPolicy: map['readWriteEndpointFailoverPolicy'] == null ? null : pulumi.Output.create<FailoverGroupReadWriteEndpointFailoverPolicy>(FailoverGroupReadWriteEndpointFailoverPolicy.fromMap((map['readWriteEndpointFailoverPolicy'] as Map).cast<String, dynamic>())),
-      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : pulumi.Output.create<bool>(map['readonlyEndpointFailoverPolicyEnabled'] as bool),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      databases: map['databases'] == null ? null : ((map['databases'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partnerServers: map['partnerServers'] == null ? null : (pulumi.Input.decodeList<FailoverGroupPartnerServer>(map['partnerServers'], (value) => FailoverGroupPartnerServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readWriteEndpointFailoverPolicy: map['readWriteEndpointFailoverPolicy'] == null ? null : (FailoverGroupReadWriteEndpointFailoverPolicy.fromMap((map['readWriteEndpointFailoverPolicy'] as Map).cast<String, dynamic>())).input(),
+      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : (map['readonlyEndpointFailoverPolicyEnabled'] as bool).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

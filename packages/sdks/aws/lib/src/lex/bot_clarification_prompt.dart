@@ -5,9 +5,9 @@ import 'bot_clarification_prompt_message.dart';
 
 class BotClarificationPrompt {
   /// The number of times to prompt the user for information.
-  final int maxAttempts;
-  final List<BotClarificationPromptMessage> messages;
-  final String? responseCard;
+  final pulumi.Input<int> maxAttempts;
+  final pulumi.Input<List<BotClarificationPromptMessage>> messages;
+  final pulumi.Input<String>? responseCard;
 
   /// Creates a new [BotClarificationPrompt].
   /// [maxAttempts] The number of times to prompt the user for information.
@@ -22,16 +22,16 @@ class BotClarificationPrompt {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maxAttempts': maxAttempts,
-      'messages': pulumi.Input.encodeList<BotClarificationPromptMessage, Map<String, dynamic>>(messages, (value) => value.toMap()),
+      'messages': pulumi.Input.mapInputValue<List<BotClarificationPromptMessage>, List<Map<String, dynamic>>>(messages, (value) => pulumi.Input.encodeList<BotClarificationPromptMessage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'responseCard': ?responseCard,
     };
   }
 
   factory BotClarificationPrompt.fromMap(Map<String, dynamic> map) {
     return BotClarificationPrompt(
-      maxAttempts: map['maxAttempts'] as int,
-      messages: pulumi.Input.decodeList<BotClarificationPromptMessage>(map['messages'], (value) => BotClarificationPromptMessage.fromMap((value as Map).cast<String, dynamic>())),
-      responseCard: map['responseCard'] == null ? null : map['responseCard'] as String,
+      maxAttempts: (map['maxAttempts'] as int).input(),
+      messages: (pulumi.Input.decodeList<BotClarificationPromptMessage>(map['messages'], (value) => BotClarificationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
     );
   }
 }

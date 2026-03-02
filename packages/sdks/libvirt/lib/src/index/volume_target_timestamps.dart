@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeTargetTimestamps {
   /// Sets the last access time timestamp for the storage volume target.
-  final String atime;
+  final pulumi.Input<String> atime;
   /// Specifies the last status change time for the storage volume target.
-  final String ctime;
+  final pulumi.Input<String> ctime;
   /// Sets the last modification time for the storage volume target.
-  final String mtime;
+  final pulumi.Input<String> mtime;
 
   /// Creates a new [VolumeTargetTimestamps].
   /// [atime] Sets the last access time timestamp for the storage volume target.
@@ -29,9 +30,9 @@ class VolumeTargetTimestamps {
 
   factory VolumeTargetTimestamps.fromMap(Map<String, dynamic> map) {
     return VolumeTargetTimestamps(
-      atime: map['atime'] as String,
-      ctime: map['ctime'] as String,
-      mtime: map['mtime'] as String,
+      atime: (map['atime'] as String).input(),
+      ctime: (map['ctime'] as String).input(),
+      mtime: (map['mtime'] as String).input(),
     );
   }
 }

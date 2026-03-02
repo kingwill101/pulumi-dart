@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeBalancerFirewallOutbound {
   /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-  final String action;
+  final pulumi.Input<String> action;
   /// A list of IPv4 addresses or networks. Must be in IP/mask format.
-  final List<String> ipv4s;
+  final pulumi.Input<List<String>> ipv4s;
   /// A list of IPv6 addresses or networks. Must be in IP/mask format.
-  final List<String> ipv6s;
+  final pulumi.Input<List<String>> ipv6s;
   /// Used to identify this rule. For display purposes only.
-  final String label;
+  final pulumi.Input<String> label;
   /// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-  final String ports;
+  final pulumi.Input<String> ports;
   /// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [GetNodeBalancerFirewallOutbound].
   /// [action] Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
@@ -44,12 +45,12 @@ class GetNodeBalancerFirewallOutbound {
 
   factory GetNodeBalancerFirewallOutbound.fromMap(Map<String, dynamic> map) {
     return GetNodeBalancerFirewallOutbound(
-      action: map['action'] as String,
-      ipv4s: (map['ipv4s'] as List).cast<String>(),
-      ipv6s: (map['ipv6s'] as List).cast<String>(),
-      label: map['label'] as String,
-      ports: map['ports'] as String,
-      protocol: map['protocol'] as String,
+      action: (map['action'] as String).input(),
+      ipv4s: ((map['ipv4s'] as List).cast<String>()).input(),
+      ipv6s: ((map['ipv6s'] as List).cast<String>()).input(),
+      label: (map['label'] as String).input(),
+      ports: (map['ports'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

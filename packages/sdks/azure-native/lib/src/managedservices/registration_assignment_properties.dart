@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the registration assignment.
 class RegistrationAssignmentProperties {
   /// The fully qualified path of the registration definition.
-  final String registrationDefinitionId;
+  final pulumi.Input<String> registrationDefinitionId;
 
   /// Creates a new [RegistrationAssignmentProperties].
   /// [registrationDefinitionId] The fully qualified path of the registration definition.
@@ -20,7 +21,7 @@ class RegistrationAssignmentProperties {
 
   factory RegistrationAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return RegistrationAssignmentProperties(
-      registrationDefinitionId: map['registrationDefinitionId'] as String,
+      registrationDefinitionId: (map['registrationDefinitionId'] as String).input(),
     );
   }
 }

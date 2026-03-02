@@ -22,15 +22,11 @@ class GetPrivateRecordSetArgs {
   /// [relativeRecordSetName] The name of the record set, relative to the name of the zone.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPrivateRecordSetArgs({
-    required pulumi.Output<String> privateZoneName,
-    required pulumi.Output<String> recordType,
-    required pulumi.Output<String> relativeRecordSetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      privateZoneName = pulumi.Input.asInput<String>(privateZoneName),
-      recordType = pulumi.Input.asInput<String>(recordType),
-      relativeRecordSetName = pulumi.Input.asInput<String>(relativeRecordSetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.privateZoneName,
+    required this.recordType,
+    required this.relativeRecordSetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPrivateRecordSetArgs {
 
   factory GetPrivateRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateRecordSetArgs(
-      privateZoneName: pulumi.Output.create<String>(map['privateZoneName'] as String),
-      recordType: pulumi.Output.create<String>(map['recordType'] as String),
-      relativeRecordSetName: pulumi.Output.create<String>(map['relativeRecordSetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      privateZoneName: (map['privateZoneName'] as String).input(),
+      recordType: (map['recordType'] as String).input(),
+      relativeRecordSetName: (map['relativeRecordSetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

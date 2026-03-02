@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Manual TLS server certificate management through a defined secret
 class ManualCertMethodResponse {
   /// secret containing TLS cert.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// namespace of secret; omit to use default namespace.
-  final String? secretNamespace;
+  final pulumi.Input<String>? secretNamespace;
 
   /// Creates a new [ManualCertMethodResponse].
   /// [secretName] secret containing TLS cert.
@@ -25,8 +26,8 @@ class ManualCertMethodResponse {
 
   factory ManualCertMethodResponse.fromMap(Map<String, dynamic> map) {
     return ManualCertMethodResponse(
-      secretName: map['secretName'] as String,
-      secretNamespace: map['secretNamespace'] == null ? null : map['secretNamespace'] as String,
+      secretName: (map['secretName'] as String).input(),
+      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace'] as String).input(),
     );
   }
 }

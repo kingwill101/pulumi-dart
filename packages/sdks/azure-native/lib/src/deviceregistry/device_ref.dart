@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines which device and endpoint to use for this asset
 class DeviceRef {
   /// Name of the device resource
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// The name of endpoint to use
-  final String endpointName;
+  final pulumi.Input<String> endpointName;
 
   /// Creates a new [DeviceRef].
   /// [deviceName] Name of the device resource
@@ -25,8 +26,8 @@ class DeviceRef {
 
   factory DeviceRef.fromMap(Map<String, dynamic> map) {
     return DeviceRef(
-      deviceName: map['deviceName'] as String,
-      endpointName: map['endpointName'] as String,
+      deviceName: (map['deviceName'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
     );
   }
 }

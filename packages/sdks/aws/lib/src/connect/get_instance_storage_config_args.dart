@@ -22,15 +22,11 @@ class GetInstanceStorageConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceType] A valid resource type. Valid Values: `AGENT_EVENTS` | `ATTACHMENTS` | `CALL_RECORDINGS` | `CHAT_TRANSCRIPTS` | `CONTACT_EVALUATIONS` | `CONTACT_TRACE_RECORDS` | `MEDIA_STREAMS` | `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS` | `SCHEDULED_REPORTS` |  `SCREEN_RECORDINGS`.
   GetInstanceStorageConfigArgs({
-    required pulumi.Output<String> associationId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceType,
-  }) :
-      associationId = pulumi.Input.asInput<String>(associationId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    required this.associationId,
+    required this.instanceId,
+    this.region,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetInstanceStorageConfigArgs {
 
   factory GetInstanceStorageConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceStorageConfigArgs(
-      associationId: pulumi.Output.create<String>(map['associationId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      associationId: (map['associationId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ArmUserIdentityResponse {
-  final String clientId;
-  final String principalId;
+  final pulumi.Input<String> clientId;
+  final pulumi.Input<String> principalId;
 
   /// Creates a new [ArmUserIdentityResponse].
   /// [clientId] Required.
@@ -22,8 +23,8 @@ class ArmUserIdentityResponse {
 
   factory ArmUserIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ArmUserIdentityResponse(
-      clientId: map['clientId'] as String,
-      principalId: map['principalId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
     );
   }
 }

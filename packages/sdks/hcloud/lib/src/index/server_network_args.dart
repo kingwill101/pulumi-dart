@@ -25,17 +25,12 @@ class ServerNetworkArgs {
   /// [serverId] ID of the Server.
   /// [subnetId] ID of the Subnet to attach the Server to. Required if `network_id` is not set.
   ServerNetworkArgs({
-    pulumi.Output<List<String>>? aliasIps,
-    pulumi.Output<String>? ip,
-    pulumi.Output<int>? networkId,
-    required pulumi.Output<int> serverId,
-    pulumi.Output<String>? subnetId,
-  }) :
-      aliasIps = pulumi.Input.asOptionalInput<List<String>>(aliasIps),
-      ip = pulumi.Input.asOptionalInput<String>(ip),
-      networkId = pulumi.Input.asOptionalInput<int>(networkId),
-      serverId = pulumi.Input.asInput<int>(serverId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.aliasIps,
+    this.ip,
+    this.networkId,
+    required this.serverId,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ServerNetworkArgs {
 
   factory ServerNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ServerNetworkArgs(
-      aliasIps: map['aliasIps'] == null ? null : pulumi.Output.create<List<String>>((map['aliasIps'] as List).cast<String>()),
-      ip: map['ip'] == null ? null : pulumi.Output.create<String>(map['ip'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<int>(map['networkId'] as int),
-      serverId: pulumi.Output.create<int>(map['serverId'] as int),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      aliasIps: map['aliasIps'] == null ? null : ((map['aliasIps'] as List).cast<String>()).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as int).input(),
+      serverId: (map['serverId'] as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

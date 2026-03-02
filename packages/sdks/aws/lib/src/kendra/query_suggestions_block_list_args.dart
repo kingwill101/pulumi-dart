@@ -30,21 +30,14 @@ class QuerySuggestionsBlockListArgs {
   /// [sourceS3Path] S3 path where your block list text file is located. See details below.
   /// [tags] Optional.
   QuerySuggestionsBlockListArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<QuerySuggestionsBlockListSourceS3Path> sourceS3Path,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      sourceS3Path = pulumi.Input.asInput<QuerySuggestionsBlockListSourceS3Path>(sourceS3Path),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.indexId,
+    this.name,
+    this.region,
+    required this.roleArn,
+    required this.sourceS3Path,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class QuerySuggestionsBlockListArgs {
 
   factory QuerySuggestionsBlockListArgs.fromMap(Map<String, dynamic> map) {
     return QuerySuggestionsBlockListArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      sourceS3Path: pulumi.Output.create<QuerySuggestionsBlockListSourceS3Path>(QuerySuggestionsBlockListSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      sourceS3Path: (QuerySuggestionsBlockListSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

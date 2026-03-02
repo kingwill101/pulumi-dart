@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The definition of a network interface resource attached to a VM.
 class NetworkInterfaceResponse {
   /// Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
-  final String network;
+  final pulumi.Input<String> network;
   /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-  final String nicType;
+  final pulumi.Input<String> nicType;
   /// Optional. The name of the subnet that this VM instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
-  final String subnet;
+  final pulumi.Input<String> subnet;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [network] Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
@@ -30,9 +31,9 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      network: map['network'] as String,
-      nicType: map['nicType'] as String,
-      subnet: map['subnet'] as String,
+      network: (map['network'] as String).input(),
+      nicType: (map['nicType'] as String).input(),
+      subnet: (map['subnet'] as String).input(),
     );
   }
 }

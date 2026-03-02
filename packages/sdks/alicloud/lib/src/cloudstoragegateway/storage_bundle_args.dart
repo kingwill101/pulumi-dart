@@ -16,11 +16,9 @@ class StorageBundleArgs {
   /// [description] The description of storage bundle.
   /// [storageBundleName] The name of storage bundle.
   StorageBundleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> storageBundleName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      storageBundleName = pulumi.Input.asInput<String>(storageBundleName);
+    this.description,
+    required this.storageBundleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class StorageBundleArgs {
 
   factory StorageBundleArgs.fromMap(Map<String, dynamic> map) {
     return StorageBundleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      storageBundleName: pulumi.Output.create<String>(map['storageBundleName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      storageBundleName: (map['storageBundleName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerDefaultActionForwardStickiness {
-  final int duration;
-  final bool enabled;
+  final pulumi.Input<int> duration;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetListenerDefaultActionForwardStickiness].
   /// [duration] Required.
@@ -22,8 +23,8 @@ class GetListenerDefaultActionForwardStickiness {
 
   factory GetListenerDefaultActionForwardStickiness.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionForwardStickiness(
-      duration: map['duration'] as int,
-      enabled: map['enabled'] as bool,
+      duration: (map['duration'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

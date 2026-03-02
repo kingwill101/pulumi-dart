@@ -22,15 +22,11 @@ class OrganizationArgs {
   /// [organizationId] The ID of the organization. Changing this forces a new resource to be created.
   /// [parentOrganizationId] The `organization_id` of the parent organization. Changing this forces a new resource to be created.
   OrganizationArgs({
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> iotcentralApplicationId,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? parentOrganizationId,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      iotcentralApplicationId = pulumi.Input.asInput<String>(iotcentralApplicationId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      parentOrganizationId = pulumi.Input.asOptionalInput<String>(parentOrganizationId);
+    required this.displayName,
+    required this.iotcentralApplicationId,
+    required this.organizationId,
+    this.parentOrganizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      iotcentralApplicationId: pulumi.Output.create<String>(map['iotcentralApplicationId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      parentOrganizationId: map['parentOrganizationId'] == null ? null : pulumi.Output.create<String>(map['parentOrganizationId'] as String),
+      displayName: (map['displayName'] as String).input(),
+      iotcentralApplicationId: (map['iotcentralApplicationId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      parentOrganizationId: map['parentOrganizationId'] == null ? null : (map['parentOrganizationId'] as String).input(),
     );
   }
 }

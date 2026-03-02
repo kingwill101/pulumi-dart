@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Batching configuration
 class BatchingConfigurationResponse {
   /// Batching latency in seconds.
-  final int? latencySeconds;
+  final pulumi.Input<int>? latencySeconds;
   /// Maximum number of messages in a batch.
-  final int? maxMessages;
+  final pulumi.Input<int>? maxMessages;
 
   /// Creates a new [BatchingConfigurationResponse].
   /// [latencySeconds] Batching latency in seconds.
@@ -25,8 +26,8 @@ class BatchingConfigurationResponse {
 
   factory BatchingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BatchingConfigurationResponse(
-      latencySeconds: map['latencySeconds'] == null ? null : map['latencySeconds'] as int,
-      maxMessages: map['maxMessages'] == null ? null : map['maxMessages'] as int,
+      latencySeconds: map['latencySeconds'] == null ? null : (map['latencySeconds'] as int).input(),
+      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages'] as int).input(),
     );
   }
 }

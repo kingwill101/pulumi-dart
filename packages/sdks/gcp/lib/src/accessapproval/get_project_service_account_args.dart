@@ -13,9 +13,8 @@ class GetProjectServiceAccountArgs {
   /// Creates a new [GetProjectServiceAccountArgs].
   /// [projectId] The project ID the service account was created for.
   GetProjectServiceAccountArgs({
-    required pulumi.Output<String> projectId,
-  }) :
-      projectId = pulumi.Input.asInput<String>(projectId);
+    required this.projectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetProjectServiceAccountArgs {
 
   factory GetProjectServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectServiceAccountArgs(
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

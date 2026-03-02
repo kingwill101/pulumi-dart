@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_share.dart';
 
 /// Database specific information for SQL to Azure SQL DB Managed Instance migration task inputs
 class MigrateSqlServerSqlMIDatabaseInput {
   /// The list of backup files to be used in case of existing backups.
-  final List<String>? backupFilePaths;
+  final pulumi.Input<List<String>>? backupFilePaths;
   /// Backup file share information for backing up this database.
-  final FileShare? backupFileShare;
+  final pulumi.Input<FileShare>? backupFileShare;
   /// id of the database
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the database
-  final String name;
+  final pulumi.Input<String> name;
   /// Name of the database at destination
-  final String restoreDatabaseName;
+  final pulumi.Input<String> restoreDatabaseName;
 
   /// Creates a new [MigrateSqlServerSqlMIDatabaseInput].
   /// [backupFilePaths] The list of backup files to be used in case of existing backups.
@@ -32,7 +33,7 @@ class MigrateSqlServerSqlMIDatabaseInput {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupFilePaths': ?backupFilePaths,
-      'backupFileShare': ?backupFileShare == null ? null : backupFileShare!.toMap(),
+      'backupFileShare': ?pulumi.Input.mapOptionalInputValue<FileShare, Map<String, dynamic>>(backupFileShare, (value) => value.toMap()),
       'id': ?id,
       'name': name,
       'restoreDatabaseName': restoreDatabaseName,
@@ -41,11 +42,11 @@ class MigrateSqlServerSqlMIDatabaseInput {
 
   factory MigrateSqlServerSqlMIDatabaseInput.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMIDatabaseInput(
-      backupFilePaths: map['backupFilePaths'] == null ? null : (map['backupFilePaths'] as List).cast<String>(),
-      backupFileShare: map['backupFileShare'] == null ? null : FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
-      restoreDatabaseName: map['restoreDatabaseName'] as String,
+      backupFilePaths: map['backupFilePaths'] == null ? null : ((map['backupFilePaths'] as List).cast<String>()).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      restoreDatabaseName: (map['restoreDatabaseName'] as String).input(),
     );
   }
 }

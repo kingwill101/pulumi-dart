@@ -32,21 +32,14 @@ class UserProfileArgs {
   /// [userProfileName] The name for the User Profile.
   /// [userSettings] The user settings. See User Settings below.
   UserProfileArgs({
-    required pulumi.Output<String> domainId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? singleSignOnUserIdentifier,
-    pulumi.Output<String>? singleSignOnUserValue,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userProfileName,
-    pulumi.Output<UserProfileUserSettings>? userSettings,
-  }) :
-      domainId = pulumi.Input.asInput<String>(domainId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      singleSignOnUserIdentifier = pulumi.Input.asOptionalInput<String>(singleSignOnUserIdentifier),
-      singleSignOnUserValue = pulumi.Input.asOptionalInput<String>(singleSignOnUserValue),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userProfileName = pulumi.Input.asInput<String>(userProfileName),
-      userSettings = pulumi.Input.asOptionalInput<UserProfileUserSettings>(userSettings);
+    required this.domainId,
+    this.region,
+    this.singleSignOnUserIdentifier,
+    this.singleSignOnUserValue,
+    this.tags,
+    required this.userProfileName,
+    this.userSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class UserProfileArgs {
 
   factory UserProfileArgs.fromMap(Map<String, dynamic> map) {
     return UserProfileArgs(
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      singleSignOnUserIdentifier: map['singleSignOnUserIdentifier'] == null ? null : pulumi.Output.create<String>(map['singleSignOnUserIdentifier'] as String),
-      singleSignOnUserValue: map['singleSignOnUserValue'] == null ? null : pulumi.Output.create<String>(map['singleSignOnUserValue'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userProfileName: pulumi.Output.create<String>(map['userProfileName'] as String),
-      userSettings: map['userSettings'] == null ? null : pulumi.Output.create<UserProfileUserSettings>(UserProfileUserSettings.fromMap((map['userSettings'] as Map).cast<String, dynamic>())),
+      domainId: (map['domainId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      singleSignOnUserIdentifier: map['singleSignOnUserIdentifier'] == null ? null : (map['singleSignOnUserIdentifier'] as String).input(),
+      singleSignOnUserValue: map['singleSignOnUserValue'] == null ? null : (map['singleSignOnUserValue'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userProfileName: (map['userProfileName'] as String).input(),
+      userSettings: map['userSettings'] == null ? null : (UserProfileUserSettings.fromMap((map['userSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

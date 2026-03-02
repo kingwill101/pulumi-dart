@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProducerImageShareGroupsImageShareGroup {
   /// The date and time the Image Share Group was created.
-  final String created;
+  final pulumi.Input<String> created;
   /// The description of the Image Share Group.
-  final String description;
+  final pulumi.Input<String> description;
   /// The date and time the Image Share Group will expire.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// The ID of the Image Share Group.
-  final int id;
+  final pulumi.Input<int> id;
   /// The number of images in the Image Share Group.
-  final int imagesCount;
+  final pulumi.Input<int> imagesCount;
   /// Whether the Image Share Group is suspended.
-  final bool isSuspended;
+  final pulumi.Input<bool> isSuspended;
   /// The label of the Image Share Group.
-  final String label;
+  final pulumi.Input<String> label;
   /// The number of members in the Image Share Group.
-  final int membersCount;
+  final pulumi.Input<int> membersCount;
   /// The date and time the Image Share Group was last updated.
-  final String updated;
+  final pulumi.Input<String> updated;
   /// The UUID of the Image Share Group.
-  final String uuid;
+  final pulumi.Input<String> uuid;
 
   /// Creates a new [GetProducerImageShareGroupsImageShareGroup].
   /// [created] The date and time the Image Share Group was created.
@@ -64,16 +65,16 @@ class GetProducerImageShareGroupsImageShareGroup {
 
   factory GetProducerImageShareGroupsImageShareGroup.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupsImageShareGroup(
-      created: map['created'] as String,
-      description: map['description'] as String,
-      expiry: map['expiry'] as String,
-      id: map['id'] as int,
-      imagesCount: map['imagesCount'] as int,
-      isSuspended: map['isSuspended'] as bool,
-      label: map['label'] as String,
-      membersCount: map['membersCount'] as int,
-      updated: map['updated'] as String,
-      uuid: map['uuid'] as String,
+      created: (map['created'] as String).input(),
+      description: (map['description'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
+      id: (map['id'] as int).input(),
+      imagesCount: (map['imagesCount'] as int).input(),
+      isSuspended: (map['isSuspended'] as bool).input(),
+      label: (map['label'] as String).input(),
+      membersCount: (map['membersCount'] as int).input(),
+      updated: (map['updated'] as String).input(),
+      uuid: (map['uuid'] as String).input(),
     );
   }
 }

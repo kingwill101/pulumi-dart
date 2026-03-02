@@ -6,7 +6,7 @@ import 'file.dart';
 /// `Source` is one or more `File` messages comprising a logical set of rules.
 class Source {
   /// `File` set constituting the `Source` bundle.
-  final List<File> files;
+  final pulumi.Input<List<File>> files;
 
   /// Creates a new [Source].
   /// [files] `File` set constituting the `Source` bundle.
@@ -16,13 +16,13 @@ class Source {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'files': pulumi.Input.encodeList<File, Map<String, dynamic>>(files, (value) => value.toMap()),
+      'files': pulumi.Input.mapInputValue<List<File>, List<Map<String, dynamic>>>(files, (value) => pulumi.Input.encodeList<File, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Source.fromMap(Map<String, dynamic> map) {
     return Source(
-      files: pulumi.Input.decodeList<File>(map['files'], (value) => File.fromMap((value as Map).cast<String, dynamic>())),
+      files: (pulumi.Input.decodeList<File>(map['files'], (value) => File.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

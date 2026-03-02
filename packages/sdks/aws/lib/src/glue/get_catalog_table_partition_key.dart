@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCatalogTablePartitionKey {
   /// Free-form text comment.
-  final String comment;
+  final pulumi.Input<String> comment;
   /// Name of the table.
-  final String name;
+  final pulumi.Input<String> name;
   /// Map of initialization parameters for the SerDe, in key-value form.
-  final Map<String, String> parameters;
+  final pulumi.Input<Map<String, String>> parameters;
   /// Datatype of data in the Column.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetCatalogTablePartitionKey].
   /// [comment] Free-form text comment.
@@ -34,10 +35,10 @@ class GetCatalogTablePartitionKey {
 
   factory GetCatalogTablePartitionKey.fromMap(Map<String, dynamic> map) {
     return GetCatalogTablePartitionKey(
-      comment: map['comment'] as String,
-      name: map['name'] as String,
-      parameters: (map['parameters'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      comment: (map['comment'] as String).input(),
+      name: (map['name'] as String).input(),
+      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class TrustStoreRevocationArgs {
   /// [revocationsS3ObjectVersion] Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   /// [trustStoreArn] Trust Store ARN.
   TrustStoreRevocationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> revocationsS3Bucket,
-    required pulumi.Output<String> revocationsS3Key,
-    pulumi.Output<String>? revocationsS3ObjectVersion,
-    required pulumi.Output<String> trustStoreArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revocationsS3Bucket = pulumi.Input.asInput<String>(revocationsS3Bucket),
-      revocationsS3Key = pulumi.Input.asInput<String>(revocationsS3Key),
-      revocationsS3ObjectVersion = pulumi.Input.asOptionalInput<String>(revocationsS3ObjectVersion),
-      trustStoreArn = pulumi.Input.asInput<String>(trustStoreArn);
+    this.region,
+    required this.revocationsS3Bucket,
+    required this.revocationsS3Key,
+    this.revocationsS3ObjectVersion,
+    required this.trustStoreArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TrustStoreRevocationArgs {
 
   factory TrustStoreRevocationArgs.fromMap(Map<String, dynamic> map) {
     return TrustStoreRevocationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revocationsS3Bucket: pulumi.Output.create<String>(map['revocationsS3Bucket'] as String),
-      revocationsS3Key: pulumi.Output.create<String>(map['revocationsS3Key'] as String),
-      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : pulumi.Output.create<String>(map['revocationsS3ObjectVersion'] as String),
-      trustStoreArn: pulumi.Output.create<String>(map['trustStoreArn'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revocationsS3Bucket: (map['revocationsS3Bucket'] as String).input(),
+      revocationsS3Key: (map['revocationsS3Key'] as String).input(),
+      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : (map['revocationsS3ObjectVersion'] as String).input(),
+      trustStoreArn: (map['trustStoreArn'] as String).input(),
     );
   }
 }

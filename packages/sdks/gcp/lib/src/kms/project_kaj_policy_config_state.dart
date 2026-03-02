@@ -18,11 +18,9 @@ class ProjectKajPolicyConfigState {
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is
   /// [project] The ID of the project in which the resource belongs.
   ProjectKajPolicyConfigState({
-    pulumi.Output<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy,
-    pulumi.Output<String>? project,
-  }) :
-      defaultKeyAccessJustificationPolicy = pulumi.Input.asOptionalInput<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>(defaultKeyAccessJustificationPolicy),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.defaultKeyAccessJustificationPolicy,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class ProjectKajPolicyConfigState {
 
   factory ProjectKajPolicyConfigState.fromMap(Map<String, dynamic> map) {
     return ProjectKajPolicyConfigState(
-      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : pulumi.Output.create<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>(ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetTargetSslProxyComputeBetaArgs {
   /// [project] Optional.
   /// [targetSslProxy] Required.
   GetTargetSslProxyComputeBetaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> targetSslProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetSslProxy = pulumi.Input.asInput<String>(targetSslProxy);
+    this.project,
+    required this.targetSslProxy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetTargetSslProxyComputeBetaArgs {
 
   factory GetTargetSslProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetSslProxyComputeBetaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      targetSslProxy: pulumi.Output.create<String>(map['targetSslProxy'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      targetSslProxy: (map['targetSslProxy'] as String).input(),
     );
   }
 }

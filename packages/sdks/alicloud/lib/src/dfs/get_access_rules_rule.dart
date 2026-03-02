@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessRulesRule {
   /// The resource ID of the Access Group.
-  final String accessGroupId;
+  final pulumi.Input<String> accessGroupId;
   /// The ID of the Access Rule.
-  final String accessRuleId;
+  final pulumi.Input<String> accessRuleId;
   /// The created time of the Access Rule.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the Access Rule.
-  final String description;
+  final pulumi.Input<String> description;
   /// The resource ID of Access Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The NetworkSegment of the Access Rule.
-  final String networkSegment;
+  final pulumi.Input<String> networkSegment;
   /// The priority of the Access Rule.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
-  final String rwAccessType;
+  final pulumi.Input<String> rwAccessType;
 
   /// Creates a new [GetAccessRulesRule].
   /// [accessGroupId] The resource ID of the Access Group.
@@ -54,14 +55,14 @@ class GetAccessRulesRule {
 
   factory GetAccessRulesRule.fromMap(Map<String, dynamic> map) {
     return GetAccessRulesRule(
-      accessGroupId: map['accessGroupId'] as String,
-      accessRuleId: map['accessRuleId'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      networkSegment: map['networkSegment'] as String,
-      priority: map['priority'] as int,
-      rwAccessType: map['rwAccessType'] as String,
+      accessGroupId: (map['accessGroupId'] as String).input(),
+      accessRuleId: (map['accessRuleId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      networkSegment: (map['networkSegment'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      rwAccessType: (map['rwAccessType'] as String).input(),
     );
   }
 }

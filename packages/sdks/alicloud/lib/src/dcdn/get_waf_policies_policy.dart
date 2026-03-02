@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWafPoliciesPolicy {
   /// The first ID of the resource.
-  final String dcdnWafPolicyId;
+  final pulumi.Input<String> dcdnWafPolicyId;
   /// The type of protection policy.
-  final String defenseScene;
+  final pulumi.Input<String> defenseScene;
   /// The number of domain names that use this protection policy.
-  final int domainCount;
+  final pulumi.Input<int> domainCount;
   /// The time when the protection policy was modified.
-  final String gmtModified;
+  final pulumi.Input<String> gmtModified;
   /// The ID of the Waf Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the protection policy.
-  final String policyName;
+  final pulumi.Input<String> policyName;
   /// The type of the protection policy.
-  final String policyType;
+  final pulumi.Input<String> policyType;
   /// The number of protection rules in this protection policy.
-  final String ruleCount;
+  final pulumi.Input<String> ruleCount;
   /// The status of the resource. Valid values: `on`, `off`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetWafPoliciesPolicy].
   /// [dcdnWafPolicyId] The first ID of the resource.
@@ -59,15 +60,15 @@ class GetWafPoliciesPolicy {
 
   factory GetWafPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetWafPoliciesPolicy(
-      dcdnWafPolicyId: map['dcdnWafPolicyId'] as String,
-      defenseScene: map['defenseScene'] as String,
-      domainCount: map['domainCount'] as int,
-      gmtModified: map['gmtModified'] as String,
-      id: map['id'] as String,
-      policyName: map['policyName'] as String,
-      policyType: map['policyType'] as String,
-      ruleCount: map['ruleCount'] as String,
-      status: map['status'] as String,
+      dcdnWafPolicyId: (map['dcdnWafPolicyId'] as String).input(),
+      defenseScene: (map['defenseScene'] as String).input(),
+      domainCount: (map['domainCount'] as int).input(),
+      gmtModified: (map['gmtModified'] as String).input(),
+      id: (map['id'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
+      ruleCount: (map['ruleCount'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

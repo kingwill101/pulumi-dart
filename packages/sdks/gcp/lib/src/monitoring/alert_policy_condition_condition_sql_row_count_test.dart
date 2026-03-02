@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertPolicyConditionConditionSqlRowCountTest {
   /// The comparison to apply between the time
@@ -11,9 +12,9 @@ class AlertPolicyConditionConditionSqlRowCountTest {
   /// right-hand side. Only COMPARISON_LT and
   /// COMPARISON_GT are supported currently.
   /// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
-  final String comparison;
+  final pulumi.Input<String> comparison;
   /// The value against which to compare the row count.
-  final int threshold;
+  final pulumi.Input<int> threshold;
 
   /// Creates a new [AlertPolicyConditionConditionSqlRowCountTest].
   /// [comparison] The comparison to apply between the time
@@ -32,8 +33,8 @@ class AlertPolicyConditionConditionSqlRowCountTest {
 
   factory AlertPolicyConditionConditionSqlRowCountTest.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlRowCountTest(
-      comparison: map['comparison'] as String,
-      threshold: map['threshold'] as int,
+      comparison: (map['comparison'] as String).input(),
+      threshold: (map['threshold'] as int).input(),
     );
   }
 }

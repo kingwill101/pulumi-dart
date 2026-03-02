@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container for data asset versions.
 class DataContainerResponse {
   /// [Required] Specifies the type of data.
-  final String dataType;
+  final pulumi.Input<String> dataType;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// The latest version inside this container.
-  final String latestVersion;
+  final pulumi.Input<String> latestVersion;
   /// The next auto incremental version
-  final String nextVersion;
+  final pulumi.Input<String> nextVersion;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [DataContainerResponse].
   /// [dataType] [Required] Specifies the type of data.
@@ -50,13 +51,13 @@ class DataContainerResponse {
 
   factory DataContainerResponse.fromMap(Map<String, dynamic> map) {
     return DataContainerResponse(
-      dataType: map['dataType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      latestVersion: map['latestVersion'] as String,
-      nextVersion: map['nextVersion'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      dataType: (map['dataType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      latestVersion: (map['latestVersion'] as String).input(),
+      nextVersion: (map['nextVersion'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

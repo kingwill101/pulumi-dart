@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Import source related properties.
 class ImportSourcePropertiesResponse {
   /// Relative path of data directory in storage.
-  final String? dataDirPath;
+  final pulumi.Input<String>? dataDirPath;
   /// Storage type of import source.
-  final String? storageType;
+  final pulumi.Input<String>? storageType;
   /// Uri of the import source storage.
-  final String? storageUrl;
+  final pulumi.Input<String>? storageUrl;
 
   /// Creates a new [ImportSourcePropertiesResponse].
   /// [dataDirPath] Relative path of data directory in storage.
@@ -30,9 +31,9 @@ class ImportSourcePropertiesResponse {
 
   factory ImportSourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportSourcePropertiesResponse(
-      dataDirPath: map['dataDirPath'] == null ? null : map['dataDirPath'] as String,
-      storageType: map['storageType'] == null ? null : map['storageType'] as String,
-      storageUrl: map['storageUrl'] == null ? null : map['storageUrl'] as String,
+      dataDirPath: map['dataDirPath'] == null ? null : (map['dataDirPath'] as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      storageUrl: map['storageUrl'] == null ? null : (map['storageUrl'] as String).input(),
     );
   }
 }

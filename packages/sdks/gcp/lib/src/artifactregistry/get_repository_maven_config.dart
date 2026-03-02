@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRepositoryMavenConfig {
   /// The repository with this flag will allow publishing the same
   /// snapshot versions.
-  final bool allowSnapshotOverwrites;
+  final pulumi.Input<bool> allowSnapshotOverwrites;
   /// Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
-  final String versionPolicy;
+  final pulumi.Input<String> versionPolicy;
 
   /// Creates a new [GetRepositoryMavenConfig].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same
@@ -25,8 +26,8 @@ class GetRepositoryMavenConfig {
 
   factory GetRepositoryMavenConfig.fromMap(Map<String, dynamic> map) {
     return GetRepositoryMavenConfig(
-      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] as bool,
-      versionPolicy: map['versionPolicy'] as String,
+      allowSnapshotOverwrites: (map['allowSnapshotOverwrites'] as bool).input(),
+      versionPolicy: (map['versionPolicy'] as String).input(),
     );
   }
 }

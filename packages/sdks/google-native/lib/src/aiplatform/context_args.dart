@@ -43,31 +43,19 @@ class ContextArgs {
   /// [schemaTitle] The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
   /// [schemaVersion] The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
   ContextArgs({
-    pulumi.Output<String>? contextId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> metadataStoreId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? schemaTitle,
-    pulumi.Output<String>? schemaVersion,
-  }) :
-      contextId = pulumi.Input.asOptionalInput<String>(contextId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaTitle = pulumi.Input.asOptionalInput<String>(schemaTitle),
-      schemaVersion = pulumi.Input.asOptionalInput<String>(schemaVersion);
+    this.contextId,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.location,
+    this.metadata,
+    required this.metadataStoreId,
+    this.name,
+    this.project,
+    this.schemaTitle,
+    this.schemaVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class ContextArgs {
 
   factory ContextArgs.fromMap(Map<String, dynamic> map) {
     return ContextArgs(
-      contextId: map['contextId'] == null ? null : pulumi.Output.create<String>(map['contextId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      metadataStoreId: pulumi.Output.create<String>(map['metadataStoreId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaTitle: map['schemaTitle'] == null ? null : pulumi.Output.create<String>(map['schemaTitle'] as String),
-      schemaVersion: map['schemaVersion'] == null ? null : pulumi.Output.create<String>(map['schemaVersion'] as String),
+      contextId: map['contextId'] == null ? null : (map['contextId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadataStoreId: (map['metadataStoreId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaTitle: map['schemaTitle'] == null ? null : (map['schemaTitle'] as String).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
     );
   }
 }

@@ -6,17 +6,17 @@ import 'os_constraint_response.dart';
 /// `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
 class DevicePolicyResponse {
   /// Allowed device management levels, an empty list allows all management levels.
-  final List<String> allowedDeviceManagementLevels;
+  final pulumi.Input<List<String>> allowedDeviceManagementLevels;
   /// Allowed encryptions statuses, an empty list allows all statuses.
-  final List<String> allowedEncryptionStatuses;
+  final pulumi.Input<List<String>> allowedEncryptionStatuses;
   /// Allowed OS versions, an empty list allows all types and all versions.
-  final List<OsConstraintResponse> osConstraints;
+  final pulumi.Input<List<OsConstraintResponse>> osConstraints;
   /// Whether the device needs to be approved by the customer admin.
-  final bool requireAdminApproval;
+  final pulumi.Input<bool> requireAdminApproval;
   /// Whether the device needs to be corp owned.
-  final bool requireCorpOwned;
+  final pulumi.Input<bool> requireCorpOwned;
   /// Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`.
-  final bool requireScreenlock;
+  final pulumi.Input<bool> requireScreenlock;
 
   /// Creates a new [DevicePolicyResponse].
   /// [allowedDeviceManagementLevels] Allowed device management levels, an empty list allows all management levels.
@@ -38,7 +38,7 @@ class DevicePolicyResponse {
     return <String, dynamic>{
       'allowedDeviceManagementLevels': allowedDeviceManagementLevels,
       'allowedEncryptionStatuses': allowedEncryptionStatuses,
-      'osConstraints': pulumi.Input.encodeList<OsConstraintResponse, Map<String, dynamic>>(osConstraints, (value) => value.toMap()),
+      'osConstraints': pulumi.Input.mapInputValue<List<OsConstraintResponse>, List<Map<String, dynamic>>>(osConstraints, (value) => pulumi.Input.encodeList<OsConstraintResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requireAdminApproval': requireAdminApproval,
       'requireCorpOwned': requireCorpOwned,
       'requireScreenlock': requireScreenlock,
@@ -47,12 +47,12 @@ class DevicePolicyResponse {
 
   factory DevicePolicyResponse.fromMap(Map<String, dynamic> map) {
     return DevicePolicyResponse(
-      allowedDeviceManagementLevels: (map['allowedDeviceManagementLevels'] as List).cast<String>(),
-      allowedEncryptionStatuses: (map['allowedEncryptionStatuses'] as List).cast<String>(),
-      osConstraints: pulumi.Input.decodeList<OsConstraintResponse>(map['osConstraints'], (value) => OsConstraintResponse.fromMap((value as Map).cast<String, dynamic>())),
-      requireAdminApproval: map['requireAdminApproval'] as bool,
-      requireCorpOwned: map['requireCorpOwned'] as bool,
-      requireScreenlock: map['requireScreenlock'] as bool,
+      allowedDeviceManagementLevels: ((map['allowedDeviceManagementLevels'] as List).cast<String>()).input(),
+      allowedEncryptionStatuses: ((map['allowedEncryptionStatuses'] as List).cast<String>()).input(),
+      osConstraints: (pulumi.Input.decodeList<OsConstraintResponse>(map['osConstraints'], (value) => OsConstraintResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requireAdminApproval: (map['requireAdminApproval'] as bool).input(),
+      requireCorpOwned: (map['requireCorpOwned'] as bool).input(),
+      requireScreenlock: (map['requireScreenlock'] as bool).input(),
     );
   }
 }

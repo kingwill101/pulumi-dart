@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FutureReservationAutoCreatedReservationsDuration {
   /// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
-  final int? nanos;
+  final pulumi.Input<int>? nanos;
   /// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-  final String? seconds;
+  final pulumi.Input<String>? seconds;
 
   /// Creates a new [FutureReservationAutoCreatedReservationsDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
@@ -24,8 +25,8 @@ class FutureReservationAutoCreatedReservationsDuration {
 
   factory FutureReservationAutoCreatedReservationsDuration.fromMap(Map<String, dynamic> map) {
     return FutureReservationAutoCreatedReservationsDuration(
-      nanos: map['nanos'] == null ? null : map['nanos'] as int,
-      seconds: map['seconds'] == null ? null : map['seconds'] as String,
+      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds'] as String).input(),
     );
   }
 }

@@ -45,27 +45,17 @@ class SubnetArgs {
   /// [vlanId] VLAN ID for this subnetwork. If not specified, one is assigned automatically.
   /// [zone] The name of the target Distributed Cloud Edge zone.
   SubnetArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? ipv4Cidrs,
-    pulumi.Output<List<String>>? ipv6Cidrs,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<int>? vlanId,
-    required pulumi.Output<String> zone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipv4Cidrs = pulumi.Input.asOptionalInput<List<String>>(ipv4Cidrs),
-      ipv6Cidrs = pulumi.Input.asOptionalInput<List<String>>(ipv6Cidrs),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      vlanId = pulumi.Input.asOptionalInput<int>(vlanId),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.description,
+    this.ipv4Cidrs,
+    this.ipv6Cidrs,
+    this.labels,
+    required this.location,
+    required this.network,
+    this.project,
+    required this.subnetId,
+    this.vlanId,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class SubnetArgs {
 
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
     return SubnetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipv4Cidrs: map['ipv4Cidrs'] == null ? null : pulumi.Output.create<List<String>>((map['ipv4Cidrs'] as List).cast<String>()),
-      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : pulumi.Output.create<List<String>>((map['ipv6Cidrs'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      vlanId: map['vlanId'] == null ? null : pulumi.Output.create<int>(map['vlanId'] as int),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipv4Cidrs: map['ipv4Cidrs'] == null ? null : ((map['ipv4Cidrs'] as List).cast<String>()).input(),
+      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as int).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

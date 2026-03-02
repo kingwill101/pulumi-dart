@@ -24,15 +24,11 @@ class RegionDiskResourcePolicyAttachmentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A reference to the region where the disk resides.
   RegionDiskResourcePolicyAttachmentArgs({
-    required pulumi.Output<String> disk,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      disk = pulumi.Input.asInput<String>(disk),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.disk,
+    this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class RegionDiskResourcePolicyAttachmentArgs {
 
   factory RegionDiskResourcePolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RegionDiskResourcePolicyAttachmentArgs(
-      disk: pulumi.Output.create<String>(map['disk'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      disk: (map['disk'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

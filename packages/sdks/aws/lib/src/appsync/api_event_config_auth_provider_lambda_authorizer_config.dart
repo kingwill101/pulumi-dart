@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiEventConfigAuthProviderLambdaAuthorizerConfig {
   /// TTL in seconds for the authorization result cache.
-  final int? authorizerResultTtlInSeconds;
+  final pulumi.Input<int>? authorizerResultTtlInSeconds;
   /// URI of the Lambda function for authorization.
-  final String authorizerUri;
+  final pulumi.Input<String> authorizerUri;
   /// Regular expression for identity validation.
-  final String? identityValidationExpression;
+  final pulumi.Input<String>? identityValidationExpression;
 
   /// Creates a new [ApiEventConfigAuthProviderLambdaAuthorizerConfig].
   /// [authorizerResultTtlInSeconds] TTL in seconds for the authorization result cache.
@@ -29,9 +30,9 @@ class ApiEventConfigAuthProviderLambdaAuthorizerConfig {
 
   factory ApiEventConfigAuthProviderLambdaAuthorizerConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderLambdaAuthorizerConfig(
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : map['authorizerResultTtlInSeconds'] as int,
-      authorizerUri: map['authorizerUri'] as String,
-      identityValidationExpression: map['identityValidationExpression'] == null ? null : map['identityValidationExpression'] as String,
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds'] as int).input(),
+      authorizerUri: (map['authorizerUri'] as String).input(),
+      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression'] as String).input(),
     );
   }
 }

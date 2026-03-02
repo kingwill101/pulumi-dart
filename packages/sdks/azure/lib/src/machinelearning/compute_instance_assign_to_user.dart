@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ComputeInstanceAssignToUser {
   /// User’s AAD Object Id.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// User’s AAD Tenant Id.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ComputeInstanceAssignToUser].
   /// [objectId] User’s AAD Object Id.
@@ -24,8 +25,8 @@ class ComputeInstanceAssignToUser {
 
   factory ComputeInstanceAssignToUser.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceAssignToUser(
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

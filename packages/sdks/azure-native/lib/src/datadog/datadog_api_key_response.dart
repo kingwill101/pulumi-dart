@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatadogApiKeyResponse {
   /// The time of creation of the API key.
-  final String? created;
+  final pulumi.Input<String>? created;
   /// The user that created the API key.
-  final String? createdBy;
+  final pulumi.Input<String>? createdBy;
   /// The value of the API key.
-  final String key;
+  final pulumi.Input<String> key;
   /// The name of the API key.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DatadogApiKeyResponse].
   /// [created] The time of creation of the API key.
@@ -34,10 +35,10 @@ class DatadogApiKeyResponse {
 
   factory DatadogApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return DatadogApiKeyResponse(
-      created: map['created'] == null ? null : map['created'] as String,
-      createdBy: map['createdBy'] == null ? null : map['createdBy'] as String,
-      key: map['key'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      key: (map['key'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

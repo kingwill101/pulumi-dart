@@ -19,13 +19,10 @@ class TransitRouterRouteTableAssociationArgs {
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
   /// [transitRouterRouteTableId] TransitRouterRouteTableId
   TransitRouterRouteTableAssociationArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> transitRouterAttachmentId,
-    required pulumi.Output<String> transitRouterRouteTableId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      transitRouterAttachmentId = pulumi.Input.asInput<String>(transitRouterAttachmentId),
-      transitRouterRouteTableId = pulumi.Input.asInput<String>(transitRouterRouteTableId);
+    this.dryRun,
+    required this.transitRouterAttachmentId,
+    required this.transitRouterRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TransitRouterRouteTableAssociationArgs {
 
   factory TransitRouterRouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTableAssociationArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      transitRouterAttachmentId: pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterRouteTableId: pulumi.Output.create<String>(map['transitRouterRouteTableId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterRouteTableId: (map['transitRouterRouteTableId'] as String).input(),
     );
   }
 }

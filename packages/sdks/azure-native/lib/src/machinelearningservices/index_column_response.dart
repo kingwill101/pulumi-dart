@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DTO object representing index column
 class IndexColumnResponse {
   /// Specifies the column name
-  final String? columnName;
+  final pulumi.Input<String>? columnName;
   /// Specifies the data type
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
 
   /// Creates a new [IndexColumnResponse].
   /// [columnName] Specifies the column name
@@ -25,8 +26,8 @@ class IndexColumnResponse {
 
   factory IndexColumnResponse.fromMap(Map<String, dynamic> map) {
     return IndexColumnResponse(
-      columnName: map['columnName'] == null ? null : map['columnName'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
+      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
     );
   }
 }

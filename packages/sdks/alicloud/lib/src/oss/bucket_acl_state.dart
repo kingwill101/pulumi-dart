@@ -13,11 +13,9 @@ class BucketAclState {
   /// [acl] Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
   /// [bucket] The name of the bucket to which the current ACL configuration belongs.
   BucketAclState({
-    pulumi.Output<String>? acl,
-    pulumi.Output<String>? bucket,
-  }) :
-      acl = pulumi.Input.asOptionalInput<String>(acl),
-      bucket = pulumi.Input.asOptionalInput<String>(bucket);
+    this.acl,
+    this.bucket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class BucketAclState {
 
   factory BucketAclState.fromMap(Map<String, dynamic> map) {
     return BucketAclState(
-      acl: map['acl'] == null ? null : pulumi.Output.create<String>(map['acl'] as String),
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
+      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
     );
   }
 }

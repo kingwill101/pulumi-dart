@@ -26,17 +26,12 @@ class PipelineRunArgs {
   /// [request] The request parameters for a pipeline run.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   PipelineRunArgs({
-    pulumi.Output<String>? forceUpdateTag,
-    pulumi.Output<String>? pipelineRunName,
-    required pulumi.Output<String> registryName,
-    pulumi.Output<PipelineRunRequest>? request,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      forceUpdateTag = pulumi.Input.asOptionalInput<String>(forceUpdateTag),
-      pipelineRunName = pulumi.Input.asOptionalInput<String>(pipelineRunName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      request = pulumi.Input.asOptionalInput<PipelineRunRequest>(request),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.forceUpdateTag,
+    this.pipelineRunName,
+    required this.registryName,
+    this.request,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PipelineRunArgs {
 
   factory PipelineRunArgs.fromMap(Map<String, dynamic> map) {
     return PipelineRunArgs(
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : pulumi.Output.create<String>(map['forceUpdateTag'] as String),
-      pipelineRunName: map['pipelineRunName'] == null ? null : pulumi.Output.create<String>(map['pipelineRunName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      request: map['request'] == null ? null : pulumi.Output.create<PipelineRunRequest>(PipelineRunRequest.fromMap((map['request'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      pipelineRunName: map['pipelineRunName'] == null ? null : (map['pipelineRunName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      request: map['request'] == null ? null : (PipelineRunRequest.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

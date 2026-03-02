@@ -27,19 +27,13 @@ class RouterGrantAssociationState {
   /// [instanceType] The type of the network instance. Value:
   /// [status] The status of the resource
   RouterGrantAssociationState({
-    pulumi.Output<String>? ecrId,
-    pulumi.Output<int>? ecrOwnerAliUid,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceRegionId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? status,
-  }) :
-      ecrId = pulumi.Input.asOptionalInput<String>(ecrId),
-      ecrOwnerAliUid = pulumi.Input.asOptionalInput<int>(ecrOwnerAliUid),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceRegionId = pulumi.Input.asOptionalInput<String>(instanceRegionId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ecrId,
+    this.ecrOwnerAliUid,
+    this.instanceId,
+    this.instanceRegionId,
+    this.instanceType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class RouterGrantAssociationState {
 
   factory RouterGrantAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterGrantAssociationState(
-      ecrId: map['ecrId'] == null ? null : pulumi.Output.create<String>(map['ecrId'] as String),
-      ecrOwnerAliUid: map['ecrOwnerAliUid'] == null ? null : pulumi.Output.create<int>(map['ecrOwnerAliUid'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceRegionId: map['instanceRegionId'] == null ? null : pulumi.Output.create<String>(map['instanceRegionId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ecrId: map['ecrId'] == null ? null : (map['ecrId'] as String).input(),
+      ecrOwnerAliUid: map['ecrOwnerAliUid'] == null ? null : (map['ecrOwnerAliUid'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceRegionId: map['instanceRegionId'] == null ? null : (map['instanceRegionId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

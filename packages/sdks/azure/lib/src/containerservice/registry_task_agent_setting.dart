@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskAgentSetting {
   /// The number of cores required for the Container Registry Task. Possible value is `2`.
-  final int cpu;
+  final pulumi.Input<int> cpu;
 
   /// Creates a new [RegistryTaskAgentSetting].
   /// [cpu] The number of cores required for the Container Registry Task. Possible value is `2`.
@@ -19,7 +20,7 @@ class RegistryTaskAgentSetting {
 
   factory RegistryTaskAgentSetting.fromMap(Map<String, dynamic> map) {
     return RegistryTaskAgentSetting(
-      cpu: map['cpu'] as int,
+      cpu: (map['cpu'] as int).input(),
     );
   }
 }

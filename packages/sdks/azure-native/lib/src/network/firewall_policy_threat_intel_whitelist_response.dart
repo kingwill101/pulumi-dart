@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ThreatIntel Whitelist for Firewall Policy.
 class FirewallPolicyThreatIntelWhitelistResponse {
   /// List of FQDNs for the ThreatIntel Whitelist.
-  final List<String>? fqdns;
+  final pulumi.Input<List<String>>? fqdns;
   /// List of IP addresses for the ThreatIntel Whitelist.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
 
   /// Creates a new [FirewallPolicyThreatIntelWhitelistResponse].
   /// [fqdns] List of FQDNs for the ThreatIntel Whitelist.
@@ -25,8 +26,8 @@ class FirewallPolicyThreatIntelWhitelistResponse {
 
   factory FirewallPolicyThreatIntelWhitelistResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyThreatIntelWhitelistResponse(
-      fqdns: map['fqdns'] == null ? null : (map['fqdns'] as List).cast<String>(),
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
     );
   }
 }

@@ -47,31 +47,19 @@ class MultiRegionClusterArgs {
   /// [tlsEnabled] A flag to enable in-transit encryption on the cluster.
   /// [updateStrategy] Optional.
   MultiRegionClusterArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    required pulumi.Output<String> multiRegionClusterNameSuffix,
-    pulumi.Output<String>? multiRegionParameterGroupName,
-    required pulumi.Output<String> nodeType,
-    pulumi.Output<int>? numShards,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<MultiRegionClusterTimeouts>? timeouts,
-    pulumi.Output<bool>? tlsEnabled,
-    pulumi.Output<String>? updateStrategy,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      multiRegionClusterNameSuffix = pulumi.Input.asInput<String>(multiRegionClusterNameSuffix),
-      multiRegionParameterGroupName = pulumi.Input.asOptionalInput<String>(multiRegionParameterGroupName),
-      nodeType = pulumi.Input.asInput<String>(nodeType),
-      numShards = pulumi.Input.asOptionalInput<int>(numShards),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<MultiRegionClusterTimeouts>(timeouts),
-      tlsEnabled = pulumi.Input.asOptionalInput<bool>(tlsEnabled),
-      updateStrategy = pulumi.Input.asOptionalInput<String>(updateStrategy);
+    this.description,
+    this.engine,
+    this.engineVersion,
+    required this.multiRegionClusterNameSuffix,
+    this.multiRegionParameterGroupName,
+    required this.nodeType,
+    this.numShards,
+    this.region,
+    this.tags,
+    this.timeouts,
+    this.tlsEnabled,
+    this.updateStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class MultiRegionClusterArgs {
 
   factory MultiRegionClusterArgs.fromMap(Map<String, dynamic> map) {
     return MultiRegionClusterArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      multiRegionClusterNameSuffix: pulumi.Output.create<String>(map['multiRegionClusterNameSuffix'] as String),
-      multiRegionParameterGroupName: map['multiRegionParameterGroupName'] == null ? null : pulumi.Output.create<String>(map['multiRegionParameterGroupName'] as String),
-      nodeType: pulumi.Output.create<String>(map['nodeType'] as String),
-      numShards: map['numShards'] == null ? null : pulumi.Output.create<int>(map['numShards'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<MultiRegionClusterTimeouts>(MultiRegionClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      tlsEnabled: map['tlsEnabled'] == null ? null : pulumi.Output.create<bool>(map['tlsEnabled'] as bool),
-      updateStrategy: map['updateStrategy'] == null ? null : pulumi.Output.create<String>(map['updateStrategy'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      multiRegionClusterNameSuffix: (map['multiRegionClusterNameSuffix'] as String).input(),
+      multiRegionParameterGroupName: map['multiRegionParameterGroupName'] == null ? null : (map['multiRegionParameterGroupName'] as String).input(),
+      nodeType: (map['nodeType'] as String).input(),
+      numShards: map['numShards'] == null ? null : (map['numShards'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (MultiRegionClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled'] as bool).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy'] as String).input(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'user_assigned_identity_response.dart';
 /// Managed service identity (user assigned identities)
 class UserAssignedServiceIdentityResponse {
   /// Type of manage identity
-  final String type;
+  final pulumi.Input<String> type;
   /// User assigned identities dictionary
-  final Map<String, UserAssignedIdentityResponse>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
 
   /// Creates a new [UserAssignedServiceIdentityResponse].
   /// [type] Type of manage identity
@@ -21,14 +21,14 @@ class UserAssignedServiceIdentityResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'type': type,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<UserAssignedIdentityResponse, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserAssignedIdentityResponse>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserAssignedIdentityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UserAssignedServiceIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedServiceIdentityResponse(
-      type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(map['userAssignedIdentities'], (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(map['userAssignedIdentities'], (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

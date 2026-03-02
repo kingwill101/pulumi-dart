@@ -48,31 +48,19 @@ class LoadBalancerState {
   /// [subnetId] The ID of the Subnet which is associated with the IP Configuration.
   /// [tags] A mapping of tags to assign to the resource.
   LoadBalancerState({
-    pulumi.Output<String>? edgeZone,
-    pulumi.Output<List<LoadBalancerFrontendIpConfiguration>>? frontendIpConfigurations,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateIpAddress,
-    pulumi.Output<List<String>>? privateIpAddresses,
-    pulumi.Output<String>? publicIpAddressId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sku,
-    pulumi.Output<String>? skuTier,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      edgeZone = pulumi.Input.asOptionalInput<String>(edgeZone),
-      frontendIpConfigurations = pulumi.Input.asOptionalInput<List<LoadBalancerFrontendIpConfiguration>>(frontendIpConfigurations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateIpAddress = pulumi.Input.asOptionalInput<String>(privateIpAddress),
-      privateIpAddresses = pulumi.Input.asOptionalInput<List<String>>(privateIpAddresses),
-      publicIpAddressId = pulumi.Input.asOptionalInput<String>(publicIpAddressId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      skuTier = pulumi.Input.asOptionalInput<String>(skuTier),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.edgeZone,
+    this.frontendIpConfigurations,
+    this.location,
+    this.name,
+    this.privateIpAddress,
+    this.privateIpAddresses,
+    this.publicIpAddressId,
+    this.resourceGroupName,
+    this.sku,
+    this.skuTier,
+    this.subnetId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class LoadBalancerState {
 
   factory LoadBalancerState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerState(
-      edgeZone: map['edgeZone'] == null ? null : pulumi.Output.create<String>(map['edgeZone'] as String),
-      frontendIpConfigurations: map['frontendIpConfigurations'] == null ? null : pulumi.Output.create<List<LoadBalancerFrontendIpConfiguration>>(pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(map['frontendIpConfigurations'], (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateIpAddress: map['privateIpAddress'] == null ? null : pulumi.Output.create<String>(map['privateIpAddress'] as String),
-      privateIpAddresses: map['privateIpAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['privateIpAddresses'] as List).cast<String>()),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : pulumi.Output.create<String>(map['publicIpAddressId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      skuTier: map['skuTier'] == null ? null : pulumi.Output.create<String>(map['skuTier'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone'] as String).input(),
+      frontendIpConfigurations: map['frontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(map['frontendIpConfigurations'], (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAddresses: map['privateIpAddresses'] == null ? null : ((map['privateIpAddresses'] as List).cast<String>()).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      skuTier: map['skuTier'] == null ? null : (map['skuTier'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

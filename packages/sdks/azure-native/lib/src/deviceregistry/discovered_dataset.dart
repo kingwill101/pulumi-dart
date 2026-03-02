@@ -7,13 +7,13 @@ import 'topic.dart';
 /// Defines the dataset properties.
 class DiscoveredDataset {
   /// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
-  final List<DiscoveredDataPoint>? dataPoints;
+  final pulumi.Input<List<DiscoveredDataPoint>>? dataPoints;
   /// Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
-  final String? datasetConfiguration;
+  final pulumi.Input<String>? datasetConfiguration;
   /// Name of the dataset.
-  final String name;
+  final pulumi.Input<String> name;
   /// Object that describes the topic information for the specific dataset.
-  final Topic? topic;
+  final pulumi.Input<Topic>? topic;
 
   /// Creates a new [DiscoveredDataset].
   /// [dataPoints] Array of data points that are part of the dataset. Each data point can have per-data point configuration.
@@ -29,19 +29,19 @@ class DiscoveredDataset {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataPoints': ?dataPoints == null ? null : pulumi.Input.encodeList<DiscoveredDataPoint, Map<String, dynamic>>(dataPoints!, (value) => value.toMap()),
+      'dataPoints': ?pulumi.Input.mapOptionalInputValue<List<DiscoveredDataPoint>, List<Map<String, dynamic>>>(dataPoints, (value) => pulumi.Input.encodeList<DiscoveredDataPoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'datasetConfiguration': ?datasetConfiguration,
       'name': name,
-      'topic': ?topic == null ? null : topic!.toMap(),
+      'topic': ?pulumi.Input.mapOptionalInputValue<Topic, Map<String, dynamic>>(topic, (value) => value.toMap()),
     };
   }
 
   factory DiscoveredDataset.fromMap(Map<String, dynamic> map) {
     return DiscoveredDataset(
-      dataPoints: map['dataPoints'] == null ? null : pulumi.Input.decodeList<DiscoveredDataPoint>(map['dataPoints'], (value) => DiscoveredDataPoint.fromMap((value as Map).cast<String, dynamic>())),
-      datasetConfiguration: map['datasetConfiguration'] == null ? null : map['datasetConfiguration'] as String,
-      name: map['name'] as String,
-      topic: map['topic'] == null ? null : Topic.fromMap((map['topic'] as Map).cast<String, dynamic>()),
+      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<DiscoveredDataPoint>(map['dataPoints'], (value) => DiscoveredDataPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration'] as String).input(),
+      name: (map['name'] as String).input(),
+      topic: map['topic'] == null ? null : (Topic.fromMap((map['topic'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

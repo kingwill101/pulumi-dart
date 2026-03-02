@@ -11,59 +11,59 @@ import 'schedule_creation_parameter.dart';
 /// Properties for creating a virtual machine.
 class LabVirtualMachineCreationParameter {
   /// Indicates whether another user can take ownership of the virtual machine
-  final bool? allowClaim;
+  final pulumi.Input<bool>? allowClaim;
   /// The artifacts to be installed on the virtual machine.
-  final List<ArtifactInstallProperties>? artifacts;
+  final pulumi.Input<List<ArtifactInstallProperties>>? artifacts;
   /// The number of virtual machine instances to create.
-  final BulkCreationParameters? bulkCreationParameters;
+  final pulumi.Input<BulkCreationParameters>? bulkCreationParameters;
   /// The creation date of the virtual machine.
-  final String? createdDate;
+  final pulumi.Input<String>? createdDate;
   /// The custom image identifier of the virtual machine.
-  final String? customImageId;
+  final pulumi.Input<String>? customImageId;
   /// New or existing data disks to attach to the virtual machine after creation
-  final List<DataDiskProperties>? dataDiskParameters;
+  final pulumi.Input<List<DataDiskProperties>>? dataDiskParameters;
   /// Indicates whether the virtual machine is to be created without a public IP address.
-  final bool? disallowPublicIpAddress;
+  final pulumi.Input<bool>? disallowPublicIpAddress;
   /// The resource ID of the environment that contains this virtual machine, if any.
-  final String? environmentId;
+  final pulumi.Input<String>? environmentId;
   /// The expiration date for VM.
-  final String? expirationDate;
+  final pulumi.Input<String>? expirationDate;
   /// The Microsoft Azure Marketplace image reference of the virtual machine.
-  final GalleryImageReference? galleryImageReference;
+  final pulumi.Input<GalleryImageReference>? galleryImageReference;
   /// Indicates whether this virtual machine uses an SSH key for authentication.
-  final bool? isAuthenticationWithSshKey;
+  final pulumi.Input<bool>? isAuthenticationWithSshKey;
   /// The lab subnet name of the virtual machine.
-  final String? labSubnetName;
+  final pulumi.Input<String>? labSubnetName;
   /// The lab virtual network identifier of the virtual machine.
-  final String? labVirtualNetworkId;
+  final pulumi.Input<String>? labVirtualNetworkId;
   /// The location of the new virtual machine or environment
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The name of the virtual machine or environment
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The network interface properties.
-  final NetworkInterfaceProperties? networkInterface;
+  final pulumi.Input<NetworkInterfaceProperties>? networkInterface;
   /// The notes of the virtual machine.
-  final String? notes;
+  final pulumi.Input<String>? notes;
   /// The object identifier of the owner of the virtual machine.
-  final String? ownerObjectId;
+  final pulumi.Input<String>? ownerObjectId;
   /// The user principal name of the virtual machine owner.
-  final String? ownerUserPrincipalName;
+  final pulumi.Input<String>? ownerUserPrincipalName;
   /// The password of the virtual machine administrator.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The id of the plan associated with the virtual machine image
-  final String? planId;
+  final pulumi.Input<String>? planId;
   /// Virtual Machine schedules to be created
-  final List<ScheduleCreationParameter>? scheduleParameters;
+  final pulumi.Input<List<ScheduleCreationParameter>>? scheduleParameters;
   /// The size of the virtual machine.
-  final String? size;
+  final pulumi.Input<String>? size;
   /// The SSH key of the virtual machine administrator.
-  final String? sshKey;
+  final pulumi.Input<String>? sshKey;
   /// Storage type to use for virtual machine (i.e. Standard, Premium).
-  final String? storageType;
+  final pulumi.Input<String>? storageType;
   /// The tags of the resource.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The user name of the virtual machine.
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [LabVirtualMachineCreationParameter].
   /// [allowClaim] Indicates whether another user can take ownership of the virtual machine
@@ -126,27 +126,27 @@ class LabVirtualMachineCreationParameter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowClaim': ?allowClaim,
-      'artifacts': ?artifacts == null ? null : pulumi.Input.encodeList<ArtifactInstallProperties, Map<String, dynamic>>(artifacts!, (value) => value.toMap()),
-      'bulkCreationParameters': ?bulkCreationParameters == null ? null : bulkCreationParameters!.toMap(),
+      'artifacts': ?pulumi.Input.mapOptionalInputValue<List<ArtifactInstallProperties>, List<Map<String, dynamic>>>(artifacts, (value) => pulumi.Input.encodeList<ArtifactInstallProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bulkCreationParameters': ?pulumi.Input.mapOptionalInputValue<BulkCreationParameters, Map<String, dynamic>>(bulkCreationParameters, (value) => value.toMap()),
       'createdDate': ?createdDate,
       'customImageId': ?customImageId,
-      'dataDiskParameters': ?dataDiskParameters == null ? null : pulumi.Input.encodeList<DataDiskProperties, Map<String, dynamic>>(dataDiskParameters!, (value) => value.toMap()),
+      'dataDiskParameters': ?pulumi.Input.mapOptionalInputValue<List<DataDiskProperties>, List<Map<String, dynamic>>>(dataDiskParameters, (value) => pulumi.Input.encodeList<DataDiskProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
       'disallowPublicIpAddress': ?disallowPublicIpAddress,
       'environmentId': ?environmentId,
       'expirationDate': ?expirationDate,
-      'galleryImageReference': ?galleryImageReference == null ? null : galleryImageReference!.toMap(),
+      'galleryImageReference': ?pulumi.Input.mapOptionalInputValue<GalleryImageReference, Map<String, dynamic>>(galleryImageReference, (value) => value.toMap()),
       'isAuthenticationWithSshKey': ?isAuthenticationWithSshKey,
       'labSubnetName': ?labSubnetName,
       'labVirtualNetworkId': ?labVirtualNetworkId,
       'location': ?location,
       'name': ?name,
-      'networkInterface': ?networkInterface == null ? null : networkInterface!.toMap(),
+      'networkInterface': ?pulumi.Input.mapOptionalInputValue<NetworkInterfaceProperties, Map<String, dynamic>>(networkInterface, (value) => value.toMap()),
       'notes': ?notes,
       'ownerObjectId': ?ownerObjectId,
       'ownerUserPrincipalName': ?ownerUserPrincipalName,
       'password': ?password,
       'planId': ?planId,
-      'scheduleParameters': ?scheduleParameters == null ? null : pulumi.Input.encodeList<ScheduleCreationParameter, Map<String, dynamic>>(scheduleParameters!, (value) => value.toMap()),
+      'scheduleParameters': ?pulumi.Input.mapOptionalInputValue<List<ScheduleCreationParameter>, List<Map<String, dynamic>>>(scheduleParameters, (value) => pulumi.Input.encodeList<ScheduleCreationParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'size': ?size,
       'sshKey': ?sshKey,
       'storageType': ?storageType,
@@ -157,33 +157,33 @@ class LabVirtualMachineCreationParameter {
 
   factory LabVirtualMachineCreationParameter.fromMap(Map<String, dynamic> map) {
     return LabVirtualMachineCreationParameter(
-      allowClaim: map['allowClaim'] == null ? null : map['allowClaim'] as bool,
-      artifacts: map['artifacts'] == null ? null : pulumi.Input.decodeList<ArtifactInstallProperties>(map['artifacts'], (value) => ArtifactInstallProperties.fromMap((value as Map).cast<String, dynamic>())),
-      bulkCreationParameters: map['bulkCreationParameters'] == null ? null : BulkCreationParameters.fromMap((map['bulkCreationParameters'] as Map).cast<String, dynamic>()),
-      createdDate: map['createdDate'] == null ? null : map['createdDate'] as String,
-      customImageId: map['customImageId'] == null ? null : map['customImageId'] as String,
-      dataDiskParameters: map['dataDiskParameters'] == null ? null : pulumi.Input.decodeList<DataDiskProperties>(map['dataDiskParameters'], (value) => DataDiskProperties.fromMap((value as Map).cast<String, dynamic>())),
-      disallowPublicIpAddress: map['disallowPublicIpAddress'] == null ? null : map['disallowPublicIpAddress'] as bool,
-      environmentId: map['environmentId'] == null ? null : map['environmentId'] as String,
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate'] as String,
-      galleryImageReference: map['galleryImageReference'] == null ? null : GalleryImageReference.fromMap((map['galleryImageReference'] as Map).cast<String, dynamic>()),
-      isAuthenticationWithSshKey: map['isAuthenticationWithSshKey'] == null ? null : map['isAuthenticationWithSshKey'] as bool,
-      labSubnetName: map['labSubnetName'] == null ? null : map['labSubnetName'] as String,
-      labVirtualNetworkId: map['labVirtualNetworkId'] == null ? null : map['labVirtualNetworkId'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      networkInterface: map['networkInterface'] == null ? null : NetworkInterfaceProperties.fromMap((map['networkInterface'] as Map).cast<String, dynamic>()),
-      notes: map['notes'] == null ? null : map['notes'] as String,
-      ownerObjectId: map['ownerObjectId'] == null ? null : map['ownerObjectId'] as String,
-      ownerUserPrincipalName: map['ownerUserPrincipalName'] == null ? null : map['ownerUserPrincipalName'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      planId: map['planId'] == null ? null : map['planId'] as String,
-      scheduleParameters: map['scheduleParameters'] == null ? null : pulumi.Input.decodeList<ScheduleCreationParameter>(map['scheduleParameters'], (value) => ScheduleCreationParameter.fromMap((value as Map).cast<String, dynamic>())),
-      size: map['size'] == null ? null : map['size'] as String,
-      sshKey: map['sshKey'] == null ? null : map['sshKey'] as String,
-      storageType: map['storageType'] == null ? null : map['storageType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      allowClaim: map['allowClaim'] == null ? null : (map['allowClaim'] as bool).input(),
+      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<ArtifactInstallProperties>(map['artifacts'], (value) => ArtifactInstallProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bulkCreationParameters: map['bulkCreationParameters'] == null ? null : (BulkCreationParameters.fromMap((map['bulkCreationParameters'] as Map).cast<String, dynamic>())).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      customImageId: map['customImageId'] == null ? null : (map['customImageId'] as String).input(),
+      dataDiskParameters: map['dataDiskParameters'] == null ? null : (pulumi.Input.decodeList<DataDiskProperties>(map['dataDiskParameters'], (value) => DataDiskProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disallowPublicIpAddress: map['disallowPublicIpAddress'] == null ? null : (map['disallowPublicIpAddress'] as bool).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      galleryImageReference: map['galleryImageReference'] == null ? null : (GalleryImageReference.fromMap((map['galleryImageReference'] as Map).cast<String, dynamic>())).input(),
+      isAuthenticationWithSshKey: map['isAuthenticationWithSshKey'] == null ? null : (map['isAuthenticationWithSshKey'] as bool).input(),
+      labSubnetName: map['labSubnetName'] == null ? null : (map['labSubnetName'] as String).input(),
+      labVirtualNetworkId: map['labVirtualNetworkId'] == null ? null : (map['labVirtualNetworkId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkInterface: map['networkInterface'] == null ? null : (NetworkInterfaceProperties.fromMap((map['networkInterface'] as Map).cast<String, dynamic>())).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      ownerObjectId: map['ownerObjectId'] == null ? null : (map['ownerObjectId'] as String).input(),
+      ownerUserPrincipalName: map['ownerUserPrincipalName'] == null ? null : (map['ownerUserPrincipalName'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      scheduleParameters: map['scheduleParameters'] == null ? null : (pulumi.Input.decodeList<ScheduleCreationParameter>(map['scheduleParameters'], (value) => ScheduleCreationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      sshKey: map['sshKey'] == null ? null : (map['sshKey'] as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

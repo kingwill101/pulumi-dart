@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocalUserSshAuthorizedKey {
   /// The description of this SSH authorized key.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The public key value of this SSH authorized key.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [LocalUserSshAuthorizedKey].
   /// [description] The description of this SSH authorized key.
@@ -24,8 +25,8 @@ class LocalUserSshAuthorizedKey {
 
   factory LocalUserSshAuthorizedKey.fromMap(Map<String, dynamic> map) {
     return LocalUserSshAuthorizedKey(
-      description: map['description'] == null ? null : map['description'] as String,
-      key: map['key'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

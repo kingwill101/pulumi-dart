@@ -49,35 +49,21 @@ class ProfileWebAccelerationState {
   /// [defaultsFrom] Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   /// [name] Specifies the name of the web acceleration profile service ,name of Profile should be full path. Full path is the combination of the `partition + web acceleration profile name`,For example `/Common/sample-resource`.
   ProfileWebAccelerationState({
-    pulumi.Output<int>? cacheAgingRate,
-    pulumi.Output<String>? cacheClientCacheControlMode,
-    pulumi.Output<String>? cacheInsertAgeHeader,
-    pulumi.Output<int>? cacheMaxAge,
-    pulumi.Output<int>? cacheMaxEntries,
-    pulumi.Output<int>? cacheObjectMaxSize,
-    pulumi.Output<int>? cacheObjectMinSize,
-    pulumi.Output<int>? cacheSize,
-    pulumi.Output<List<String>>? cacheUriExcludes,
-    pulumi.Output<List<String>>? cacheUriIncludeOverrides,
-    pulumi.Output<List<String>>? cacheUriIncludes,
-    pulumi.Output<List<String>>? cacheUriPinneds,
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<String>? name,
-  }) :
-      cacheAgingRate = pulumi.Input.asOptionalInput<int>(cacheAgingRate),
-      cacheClientCacheControlMode = pulumi.Input.asOptionalInput<String>(cacheClientCacheControlMode),
-      cacheInsertAgeHeader = pulumi.Input.asOptionalInput<String>(cacheInsertAgeHeader),
-      cacheMaxAge = pulumi.Input.asOptionalInput<int>(cacheMaxAge),
-      cacheMaxEntries = pulumi.Input.asOptionalInput<int>(cacheMaxEntries),
-      cacheObjectMaxSize = pulumi.Input.asOptionalInput<int>(cacheObjectMaxSize),
-      cacheObjectMinSize = pulumi.Input.asOptionalInput<int>(cacheObjectMinSize),
-      cacheSize = pulumi.Input.asOptionalInput<int>(cacheSize),
-      cacheUriExcludes = pulumi.Input.asOptionalInput<List<String>>(cacheUriExcludes),
-      cacheUriIncludeOverrides = pulumi.Input.asOptionalInput<List<String>>(cacheUriIncludeOverrides),
-      cacheUriIncludes = pulumi.Input.asOptionalInput<List<String>>(cacheUriIncludes),
-      cacheUriPinneds = pulumi.Input.asOptionalInput<List<String>>(cacheUriPinneds),
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.cacheAgingRate,
+    this.cacheClientCacheControlMode,
+    this.cacheInsertAgeHeader,
+    this.cacheMaxAge,
+    this.cacheMaxEntries,
+    this.cacheObjectMaxSize,
+    this.cacheObjectMinSize,
+    this.cacheSize,
+    this.cacheUriExcludes,
+    this.cacheUriIncludeOverrides,
+    this.cacheUriIncludes,
+    this.cacheUriPinneds,
+    this.defaultsFrom,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,20 +86,20 @@ class ProfileWebAccelerationState {
 
   factory ProfileWebAccelerationState.fromMap(Map<String, dynamic> map) {
     return ProfileWebAccelerationState(
-      cacheAgingRate: map['cacheAgingRate'] == null ? null : pulumi.Output.create<int>(map['cacheAgingRate'] as int),
-      cacheClientCacheControlMode: map['cacheClientCacheControlMode'] == null ? null : pulumi.Output.create<String>(map['cacheClientCacheControlMode'] as String),
-      cacheInsertAgeHeader: map['cacheInsertAgeHeader'] == null ? null : pulumi.Output.create<String>(map['cacheInsertAgeHeader'] as String),
-      cacheMaxAge: map['cacheMaxAge'] == null ? null : pulumi.Output.create<int>(map['cacheMaxAge'] as int),
-      cacheMaxEntries: map['cacheMaxEntries'] == null ? null : pulumi.Output.create<int>(map['cacheMaxEntries'] as int),
-      cacheObjectMaxSize: map['cacheObjectMaxSize'] == null ? null : pulumi.Output.create<int>(map['cacheObjectMaxSize'] as int),
-      cacheObjectMinSize: map['cacheObjectMinSize'] == null ? null : pulumi.Output.create<int>(map['cacheObjectMinSize'] as int),
-      cacheSize: map['cacheSize'] == null ? null : pulumi.Output.create<int>(map['cacheSize'] as int),
-      cacheUriExcludes: map['cacheUriExcludes'] == null ? null : pulumi.Output.create<List<String>>((map['cacheUriExcludes'] as List).cast<String>()),
-      cacheUriIncludeOverrides: map['cacheUriIncludeOverrides'] == null ? null : pulumi.Output.create<List<String>>((map['cacheUriIncludeOverrides'] as List).cast<String>()),
-      cacheUriIncludes: map['cacheUriIncludes'] == null ? null : pulumi.Output.create<List<String>>((map['cacheUriIncludes'] as List).cast<String>()),
-      cacheUriPinneds: map['cacheUriPinneds'] == null ? null : pulumi.Output.create<List<String>>((map['cacheUriPinneds'] as List).cast<String>()),
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      cacheAgingRate: map['cacheAgingRate'] == null ? null : (map['cacheAgingRate'] as int).input(),
+      cacheClientCacheControlMode: map['cacheClientCacheControlMode'] == null ? null : (map['cacheClientCacheControlMode'] as String).input(),
+      cacheInsertAgeHeader: map['cacheInsertAgeHeader'] == null ? null : (map['cacheInsertAgeHeader'] as String).input(),
+      cacheMaxAge: map['cacheMaxAge'] == null ? null : (map['cacheMaxAge'] as int).input(),
+      cacheMaxEntries: map['cacheMaxEntries'] == null ? null : (map['cacheMaxEntries'] as int).input(),
+      cacheObjectMaxSize: map['cacheObjectMaxSize'] == null ? null : (map['cacheObjectMaxSize'] as int).input(),
+      cacheObjectMinSize: map['cacheObjectMinSize'] == null ? null : (map['cacheObjectMinSize'] as int).input(),
+      cacheSize: map['cacheSize'] == null ? null : (map['cacheSize'] as int).input(),
+      cacheUriExcludes: map['cacheUriExcludes'] == null ? null : ((map['cacheUriExcludes'] as List).cast<String>()).input(),
+      cacheUriIncludeOverrides: map['cacheUriIncludeOverrides'] == null ? null : ((map['cacheUriIncludeOverrides'] as List).cast<String>()).input(),
+      cacheUriIncludes: map['cacheUriIncludes'] == null ? null : ((map['cacheUriIncludes'] as List).cast<String>()).input(),
+      cacheUriPinneds: map['cacheUriPinneds'] == null ? null : ((map['cacheUriPinneds'] as List).cast<String>()).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

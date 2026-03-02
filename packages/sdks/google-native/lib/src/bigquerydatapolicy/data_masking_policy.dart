@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_masking_policy_predefined_expression.dart';
 
 /// The data masking policy that is used to specify data masking rule.
 class DataMaskingPolicy {
   /// A predefined masking expression.
-  final DataMaskingPolicyPredefinedExpression? predefinedExpression;
+  final pulumi.Input<DataMaskingPolicyPredefinedExpression>? predefinedExpression;
   /// The name of the BigQuery routine that contains the custom masking routine, in the format of `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
-  final String? routine;
+  final pulumi.Input<String>? routine;
 
   /// Creates a new [DataMaskingPolicy].
   /// [predefinedExpression] A predefined masking expression.
@@ -19,15 +20,15 @@ class DataMaskingPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'predefinedExpression': ?predefinedExpression == null ? null : predefinedExpression!.value,
+      'predefinedExpression': ?pulumi.Input.mapOptionalInputValue<DataMaskingPolicyPredefinedExpression, String>(predefinedExpression, (value) => value.value),
       'routine': ?routine,
     };
   }
 
   factory DataMaskingPolicy.fromMap(Map<String, dynamic> map) {
     return DataMaskingPolicy(
-      predefinedExpression: map['predefinedExpression'] == null ? null : DataMaskingPolicyPredefinedExpression.fromValue(map['predefinedExpression'] as String),
-      routine: map['routine'] == null ? null : map['routine'] as String,
+      predefinedExpression: map['predefinedExpression'] == null ? null : (DataMaskingPolicyPredefinedExpression.fromValue(map['predefinedExpression'] as String)).input(),
+      routine: map['routine'] == null ? null : (map['routine'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings {
-  final String? ocrLanguage;
-  final int? pid;
+  final pulumi.Input<String>? ocrLanguage;
+  final pulumi.Input<int>? pid;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings].
   /// [ocrLanguage] Optional.
@@ -22,8 +23,8 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27So
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings(
-      ocrLanguage: map['ocrLanguage'] == null ? null : map['ocrLanguage'] as String,
-      pid: map['pid'] == null ? null : map['pid'] as int,
+      ocrLanguage: map['ocrLanguage'] == null ? null : (map['ocrLanguage'] as String).input(),
+      pid: map['pid'] == null ? null : (map['pid'] as int).input(),
     );
   }
 }

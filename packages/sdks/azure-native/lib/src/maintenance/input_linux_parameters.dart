@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties for patching a Linux machine.
 class InputLinuxParameters {
   /// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
-  final List<String>? classificationsToInclude;
+  final pulumi.Input<List<String>>? classificationsToInclude;
   /// Package names to be excluded for patching.
-  final List<String>? packageNameMasksToExclude;
+  final pulumi.Input<List<String>>? packageNameMasksToExclude;
   /// Package names to be included for patching.
-  final List<String>? packageNameMasksToInclude;
+  final pulumi.Input<List<String>>? packageNameMasksToInclude;
 
   /// Creates a new [InputLinuxParameters].
   /// [classificationsToInclude] Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
@@ -30,9 +31,9 @@ class InputLinuxParameters {
 
   factory InputLinuxParameters.fromMap(Map<String, dynamic> map) {
     return InputLinuxParameters(
-      classificationsToInclude: map['classificationsToInclude'] == null ? null : (map['classificationsToInclude'] as List).cast<String>(),
-      packageNameMasksToExclude: map['packageNameMasksToExclude'] == null ? null : (map['packageNameMasksToExclude'] as List).cast<String>(),
-      packageNameMasksToInclude: map['packageNameMasksToInclude'] == null ? null : (map['packageNameMasksToInclude'] as List).cast<String>(),
+      classificationsToInclude: map['classificationsToInclude'] == null ? null : ((map['classificationsToInclude'] as List).cast<String>()).input(),
+      packageNameMasksToExclude: map['packageNameMasksToExclude'] == null ? null : ((map['packageNameMasksToExclude'] as List).cast<String>()).input(),
+      packageNameMasksToInclude: map['packageNameMasksToInclude'] == null ? null : ((map['packageNameMasksToInclude'] as List).cast<String>()).input(),
     );
   }
 }

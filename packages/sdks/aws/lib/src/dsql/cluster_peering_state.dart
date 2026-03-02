@@ -22,17 +22,12 @@ class ClusterPeeringState {
   /// [timeouts] Optional.
   /// [witnessRegion] Witness region for a multi-region cluster.
   ClusterPeeringState({
-    pulumi.Output<List<String>>? clusters,
-    pulumi.Output<String>? identifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<ClusterPeeringTimeouts>? timeouts,
-    pulumi.Output<String>? witnessRegion,
-  }) :
-      clusters = pulumi.Input.asOptionalInput<List<String>>(clusters),
-      identifier = pulumi.Input.asOptionalInput<String>(identifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<ClusterPeeringTimeouts>(timeouts),
-      witnessRegion = pulumi.Input.asOptionalInput<String>(witnessRegion);
+    this.clusters,
+    this.identifier,
+    this.region,
+    this.timeouts,
+    this.witnessRegion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ClusterPeeringState {
 
   factory ClusterPeeringState.fromMap(Map<String, dynamic> map) {
     return ClusterPeeringState(
-      clusters: map['clusters'] == null ? null : pulumi.Output.create<List<String>>((map['clusters'] as List).cast<String>()),
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<String>(map['identifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ClusterPeeringTimeouts>(ClusterPeeringTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      witnessRegion: map['witnessRegion'] == null ? null : pulumi.Output.create<String>(map['witnessRegion'] as String),
+      clusters: map['clusters'] == null ? null : ((map['clusters'] as List).cast<String>()).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ClusterPeeringTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      witnessRegion: map['witnessRegion'] == null ? null : (map['witnessRegion'] as String).input(),
     );
   }
 }

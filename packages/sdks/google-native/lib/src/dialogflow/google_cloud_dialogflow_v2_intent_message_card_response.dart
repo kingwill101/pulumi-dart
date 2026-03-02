@@ -6,13 +6,13 @@ import 'google_cloud_dialogflow_v2_intent_message_card_button_response.dart';
 /// The card response message.
 class GoogleCloudDialogflowV2IntentMessageCardResponse {
   /// Optional. The collection of card buttons.
-  final List<GoogleCloudDialogflowV2IntentMessageCardButtonResponse> buttons;
+  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageCardButtonResponse>> buttons;
   /// Optional. The public URI to an image file for the card.
-  final String imageUri;
+  final pulumi.Input<String> imageUri;
   /// Optional. The subtitle of the card.
-  final String subtitle;
+  final pulumi.Input<String> subtitle;
   /// Optional. The title of the card.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageCardResponse].
   /// [buttons] Optional. The collection of card buttons.
@@ -28,7 +28,7 @@ class GoogleCloudDialogflowV2IntentMessageCardResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buttons': pulumi.Input.encodeList<GoogleCloudDialogflowV2IntentMessageCardButtonResponse, Map<String, dynamic>>(buttons, (value) => value.toMap()),
+      'buttons': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2IntentMessageCardButtonResponse>, List<Map<String, dynamic>>>(buttons, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2IntentMessageCardButtonResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'imageUri': imageUri,
       'subtitle': subtitle,
       'title': title,
@@ -37,10 +37,10 @@ class GoogleCloudDialogflowV2IntentMessageCardResponse {
 
   factory GoogleCloudDialogflowV2IntentMessageCardResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageCardResponse(
-      buttons: pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageCardButtonResponse>(map['buttons'], (value) => GoogleCloudDialogflowV2IntentMessageCardButtonResponse.fromMap((value as Map).cast<String, dynamic>())),
-      imageUri: map['imageUri'] as String,
-      subtitle: map['subtitle'] as String,
-      title: map['title'] as String,
+      buttons: (pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageCardButtonResponse>(map['buttons'], (value) => GoogleCloudDialogflowV2IntentMessageCardButtonResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageUri: (map['imageUri'] as String).input(),
+      subtitle: (map['subtitle'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

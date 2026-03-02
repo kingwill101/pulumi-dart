@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
 class DefenderCspmGcpOfferingResponseCiemDiscovery {
   /// the azure active directory app name used of authenticating against GCP workload identity federation
-  final String? azureActiveDirectoryAppName;
+  final pulumi.Input<String>? azureActiveDirectoryAppName;
   /// The service account email address in GCP for Permissions Management offering
-  final String? serviceAccountEmailAddress;
+  final pulumi.Input<String>? serviceAccountEmailAddress;
   /// The GCP workload identity provider id for Permissions Management offering
-  final String? workloadIdentityProviderId;
+  final pulumi.Input<String>? workloadIdentityProviderId;
 
   /// Creates a new [DefenderCspmGcpOfferingResponseCiemDiscovery].
   /// [azureActiveDirectoryAppName] the azure active directory app name used of authenticating against GCP workload identity federation
@@ -30,9 +31,9 @@ class DefenderCspmGcpOfferingResponseCiemDiscovery {
 
   factory DefenderCspmGcpOfferingResponseCiemDiscovery.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOfferingResponseCiemDiscovery(
-      azureActiveDirectoryAppName: map['azureActiveDirectoryAppName'] == null ? null : map['azureActiveDirectoryAppName'] as String,
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : map['serviceAccountEmailAddress'] as String,
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : map['workloadIdentityProviderId'] as String,
+      azureActiveDirectoryAppName: map['azureActiveDirectoryAppName'] == null ? null : (map['azureActiveDirectoryAppName'] as String).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
     );
   }
 }

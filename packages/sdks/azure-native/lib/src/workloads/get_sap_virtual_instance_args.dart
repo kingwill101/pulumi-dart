@@ -16,11 +16,9 @@ class GetSapVirtualInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
   GetSapVirtualInstanceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sapVirtualInstanceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sapVirtualInstanceName = pulumi.Input.asInput<String>(sapVirtualInstanceName);
+    required this.resourceGroupName,
+    required this.sapVirtualInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSapVirtualInstanceArgs {
 
   factory GetSapVirtualInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapVirtualInstanceName: pulumi.Output.create<String>(map['sapVirtualInstanceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sapVirtualInstanceName: (map['sapVirtualInstanceName'] as String).input(),
     );
   }
 }

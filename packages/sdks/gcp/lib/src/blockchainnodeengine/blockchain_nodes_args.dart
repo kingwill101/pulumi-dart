@@ -35,19 +35,13 @@ class BlockchainNodesArgs {
   /// [location] Location of Blockchain Node being created.
   /// [project] The ID of the project in which the resource belongs.
   BlockchainNodesArgs({
-    required pulumi.Output<String> blockchainNodeId,
-    pulumi.Output<String>? blockchainType,
-    pulumi.Output<BlockchainNodesEthereumDetails>? ethereumDetails,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      blockchainNodeId = pulumi.Input.asInput<String>(blockchainNodeId),
-      blockchainType = pulumi.Input.asOptionalInput<String>(blockchainType),
-      ethereumDetails = pulumi.Input.asOptionalInput<BlockchainNodesEthereumDetails>(ethereumDetails),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.blockchainNodeId,
+    this.blockchainType,
+    this.ethereumDetails,
+    this.labels,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class BlockchainNodesArgs {
 
   factory BlockchainNodesArgs.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesArgs(
-      blockchainNodeId: pulumi.Output.create<String>(map['blockchainNodeId'] as String),
-      blockchainType: map['blockchainType'] == null ? null : pulumi.Output.create<String>(map['blockchainType'] as String),
-      ethereumDetails: map['ethereumDetails'] == null ? null : pulumi.Output.create<BlockchainNodesEthereumDetails>(BlockchainNodesEthereumDetails.fromMap((map['ethereumDetails'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      blockchainNodeId: (map['blockchainNodeId'] as String).input(),
+      blockchainType: map['blockchainType'] == null ? null : (map['blockchainType'] as String).input(),
+      ethereumDetails: map['ethereumDetails'] == null ? null : (BlockchainNodesEthereumDetails.fromMap((map['ethereumDetails'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

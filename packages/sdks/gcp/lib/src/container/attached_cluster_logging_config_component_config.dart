@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AttachedClusterLoggingConfigComponentConfig {
   /// The components to be enabled.
   /// Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
-  final List<String>? enableComponents;
+  final pulumi.Input<List<String>>? enableComponents;
 
   /// Creates a new [AttachedClusterLoggingConfigComponentConfig].
   /// [enableComponents] The components to be enabled.
@@ -20,7 +21,7 @@ class AttachedClusterLoggingConfigComponentConfig {
 
   factory AttachedClusterLoggingConfigComponentConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterLoggingConfigComponentConfig(
-      enableComponents: map['enableComponents'] == null ? null : (map['enableComponents'] as List).cast<String>(),
+      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents'] as List).cast<String>()).input(),
     );
   }
 }

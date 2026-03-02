@@ -19,13 +19,10 @@ class GetCustomApiArgs {
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
   GetCustomApiArgs({
-    required pulumi.Output<String> apiName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      apiName = pulumi.Input.asInput<String>(apiName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    required this.apiName,
+    required this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCustomApiArgs {
 
   factory GetCustomApiArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomApiArgs(
-      apiName: pulumi.Output.create<String>(map['apiName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      apiName: (map['apiName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

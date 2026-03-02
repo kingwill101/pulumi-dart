@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPointPublicAccessBlockConfiguration {
   /// Block public access enabled for access point
-  final bool? blockPublicAccess;
+  final pulumi.Input<bool>? blockPublicAccess;
 
   /// Creates a new [AccessPointPublicAccessBlockConfiguration].
   /// [blockPublicAccess] Block public access enabled for access point
@@ -19,7 +20,7 @@ class AccessPointPublicAccessBlockConfiguration {
 
   factory AccessPointPublicAccessBlockConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessPointPublicAccessBlockConfiguration(
-      blockPublicAccess: map['blockPublicAccess'] == null ? null : map['blockPublicAccess'] as bool,
+      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess'] as bool).input(),
     );
   }
 }

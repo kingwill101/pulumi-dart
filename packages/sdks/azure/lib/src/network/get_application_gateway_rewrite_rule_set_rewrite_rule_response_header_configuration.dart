@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration {
   /// Header name of the header configuration.
-  final String headerName;
+  final pulumi.Input<String> headerName;
   /// Header value of the header configuration.
-  final String headerValue;
+  final pulumi.Input<String> headerValue;
 
   /// Creates a new [GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration].
   /// [headerName] Header name of the header configuration.
@@ -24,8 +25,8 @@ class GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration 
 
   factory GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration(
-      headerName: map['headerName'] as String,
-      headerValue: map['headerValue'] as String,
+      headerName: (map['headerName'] as String).input(),
+      headerValue: (map['headerValue'] as String).input(),
     );
   }
 }

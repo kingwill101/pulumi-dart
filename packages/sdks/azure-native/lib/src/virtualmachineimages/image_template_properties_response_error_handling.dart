@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Error handling options upon a build failure
 class ImageTemplatePropertiesResponseErrorHandling {
   /// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
-  final String? onCustomizerError;
+  final pulumi.Input<String>? onCustomizerError;
   /// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
-  final String? onValidationError;
+  final pulumi.Input<String>? onValidationError;
 
   /// Creates a new [ImageTemplatePropertiesResponseErrorHandling].
   /// [onCustomizerError] If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
@@ -25,8 +26,8 @@ class ImageTemplatePropertiesResponseErrorHandling {
 
   factory ImageTemplatePropertiesResponseErrorHandling.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesResponseErrorHandling(
-      onCustomizerError: map['onCustomizerError'] == null ? null : map['onCustomizerError'] as String,
-      onValidationError: map['onValidationError'] == null ? null : map['onValidationError'] as String,
+      onCustomizerError: map['onCustomizerError'] == null ? null : (map['onCustomizerError'] as String).input(),
+      onValidationError: map['onValidationError'] == null ? null : (map['onValidationError'] as String).input(),
     );
   }
 }

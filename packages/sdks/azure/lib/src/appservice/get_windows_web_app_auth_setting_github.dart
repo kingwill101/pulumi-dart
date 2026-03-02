@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppAuthSettingGithub {
   /// The OAuth 2.0 client ID used by the app for authentication.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The OAuth 2.0 client secret used by the app for authentication.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
   /// The app setting name containing the OAuth 2.0 client secret used by the app for authentication.
-  final String clientSecretSettingName;
+  final pulumi.Input<String> clientSecretSettingName;
   /// A list of OAuth 2.0 scopes requested as part of Microsoft Account authentication.
-  final List<String> oauthScopes;
+  final pulumi.Input<List<String>> oauthScopes;
 
   /// Creates a new [GetWindowsWebAppAuthSettingGithub].
   /// [clientId] The OAuth 2.0 client ID used by the app for authentication.
@@ -34,10 +35,10 @@ class GetWindowsWebAppAuthSettingGithub {
 
   factory GetWindowsWebAppAuthSettingGithub.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppAuthSettingGithub(
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
-      clientSecretSettingName: map['clientSecretSettingName'] as String,
-      oauthScopes: (map['oauthScopes'] as List).cast<String>(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      clientSecretSettingName: (map['clientSecretSettingName'] as String).input(),
+      oauthScopes: ((map['oauthScopes'] as List).cast<String>()).input(),
     );
   }
 }

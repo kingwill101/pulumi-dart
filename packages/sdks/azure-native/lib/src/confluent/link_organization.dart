@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Link an existing Confluent organization
 class LinkOrganization {
   /// User auth token
-  final String token;
+  final pulumi.Input<String> token;
 
   /// Creates a new [LinkOrganization].
   /// [token] User auth token
@@ -20,7 +21,7 @@ class LinkOrganization {
 
   factory LinkOrganization.fromMap(Map<String, dynamic> map) {
     return LinkOrganization(
-      token: map['token'] as String,
+      token: (map['token'] as String).input(),
     );
   }
 }

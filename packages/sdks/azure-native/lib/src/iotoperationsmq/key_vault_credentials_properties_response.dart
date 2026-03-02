@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// KeyVault credentials properties. NOTE - Future this will be ENUM.
 class KeyVaultCredentialsPropertiesResponse {
   /// KeyVault service principal local secret name.
-  final String servicePrincipalLocalSecretName;
+  final pulumi.Input<String> servicePrincipalLocalSecretName;
 
   /// Creates a new [KeyVaultCredentialsPropertiesResponse].
   /// [servicePrincipalLocalSecretName] KeyVault service principal local secret name.
@@ -20,7 +21,7 @@ class KeyVaultCredentialsPropertiesResponse {
 
   factory KeyVaultCredentialsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultCredentialsPropertiesResponse(
-      servicePrincipalLocalSecretName: map['servicePrincipalLocalSecretName'] as String,
+      servicePrincipalLocalSecretName: (map['servicePrincipalLocalSecretName'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class NetworkTapArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   NetworkTapArgs({
-    pulumi.Output<String>? annotation,
-    required pulumi.Output<List<NetworkTapPropertiesDestinations>> destinations,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkPacketBrokerId,
-    pulumi.Output<String>? networkTapName,
-    pulumi.Output<String>? pollingType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      destinations = pulumi.Input.asInput<List<NetworkTapPropertiesDestinations>>(destinations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkPacketBrokerId = pulumi.Input.asInput<String>(networkPacketBrokerId),
-      networkTapName = pulumi.Input.asOptionalInput<String>(networkTapName),
-      pollingType = pulumi.Input.asOptionalInput<String>(pollingType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.annotation,
+    required this.destinations,
+    this.location,
+    required this.networkPacketBrokerId,
+    this.networkTapName,
+    this.pollingType,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class NetworkTapArgs {
 
   factory NetworkTapArgs.fromMap(Map<String, dynamic> map) {
     return NetworkTapArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      destinations: pulumi.Output.create<List<NetworkTapPropertiesDestinations>>(pulumi.Input.decodeList<NetworkTapPropertiesDestinations>(map['destinations'], (value) => NetworkTapPropertiesDestinations.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkPacketBrokerId: pulumi.Output.create<String>(map['networkPacketBrokerId'] as String),
-      networkTapName: map['networkTapName'] == null ? null : pulumi.Output.create<String>(map['networkTapName'] as String),
-      pollingType: map['pollingType'] == null ? null : pulumi.Output.create<String>(map['pollingType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      destinations: (pulumi.Input.decodeList<NetworkTapPropertiesDestinations>(map['destinations'], (value) => NetworkTapPropertiesDestinations.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkPacketBrokerId: (map['networkPacketBrokerId'] as String).input(),
+      networkTapName: map['networkTapName'] == null ? null : (map['networkTapName'] as String).input(),
+      pollingType: map['pollingType'] == null ? null : (map['pollingType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

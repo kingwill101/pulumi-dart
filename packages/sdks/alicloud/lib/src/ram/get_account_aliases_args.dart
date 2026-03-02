@@ -12,9 +12,8 @@ class GetAccountAliasesArgs {
   /// Creates a new [GetAccountAliasesArgs].
   /// [outputFile] Optional.
   GetAccountAliasesArgs({
-    pulumi.Output<String>? outputFile,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetAccountAliasesArgs {
 
   factory GetAccountAliasesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAliasesArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

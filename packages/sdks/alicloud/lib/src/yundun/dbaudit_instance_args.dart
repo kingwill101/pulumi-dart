@@ -29,19 +29,13 @@ class DBAuditInstanceArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] vSwtich ID configured to audit
   DBAuditInstanceArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<int> period,
-    required pulumi.Output<String> planCode,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      period = pulumi.Input.asInput<int>(period),
-      planCode = pulumi.Input.asInput<String>(planCode),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.description,
+    required this.period,
+    required this.planCode,
+    this.resourceGroupId,
+    this.tags,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DBAuditInstanceArgs {
 
   factory DBAuditInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DBAuditInstanceArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      period: pulumi.Output.create<int>(map['period'] as int),
-      planCode: pulumi.Output.create<String>(map['planCode'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      description: (map['description'] as String).input(),
+      period: (map['period'] as int).input(),
+      planCode: (map['planCode'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

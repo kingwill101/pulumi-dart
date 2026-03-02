@@ -52,29 +52,18 @@ class DiskEncryptionSetState {
   /// [resourceGroupName] Specifies the name of the Resource Group where the Disk Encryption Set should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Disk Encryption Set.
   DiskEncryptionSetState({
-    pulumi.Output<bool>? autoKeyRotationEnabled,
-    pulumi.Output<String>? encryptionType,
-    pulumi.Output<String>? federatedClientId,
-    pulumi.Output<DiskEncryptionSetIdentity>? identity,
-    pulumi.Output<String>? keyVaultKeyId,
-    pulumi.Output<String>? keyVaultKeyUrl,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedHsmKeyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoKeyRotationEnabled = pulumi.Input.asOptionalInput<bool>(autoKeyRotationEnabled),
-      encryptionType = pulumi.Input.asOptionalInput<String>(encryptionType),
-      federatedClientId = pulumi.Input.asOptionalInput<String>(federatedClientId),
-      identity = pulumi.Input.asOptionalInput<DiskEncryptionSetIdentity>(identity),
-      keyVaultKeyId = pulumi.Input.asOptionalInput<String>(keyVaultKeyId),
-      keyVaultKeyUrl = pulumi.Input.asOptionalInput<String>(keyVaultKeyUrl),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedHsmKeyId = pulumi.Input.asOptionalInput<String>(managedHsmKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoKeyRotationEnabled,
+    this.encryptionType,
+    this.federatedClientId,
+    this.identity,
+    this.keyVaultKeyId,
+    this.keyVaultKeyUrl,
+    this.location,
+    this.managedHsmKeyId,
+    this.name,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,17 +83,17 @@ class DiskEncryptionSetState {
 
   factory DiskEncryptionSetState.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetState(
-      autoKeyRotationEnabled: map['autoKeyRotationEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoKeyRotationEnabled'] as bool),
-      encryptionType: map['encryptionType'] == null ? null : pulumi.Output.create<String>(map['encryptionType'] as String),
-      federatedClientId: map['federatedClientId'] == null ? null : pulumi.Output.create<String>(map['federatedClientId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<DiskEncryptionSetIdentity>(DiskEncryptionSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      keyVaultKeyUrl: map['keyVaultKeyUrl'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyUrl'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : pulumi.Output.create<String>(map['managedHsmKeyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoKeyRotationEnabled: map['autoKeyRotationEnabled'] == null ? null : (map['autoKeyRotationEnabled'] as bool).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
+      identity: map['identity'] == null ? null : (DiskEncryptionSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      keyVaultKeyUrl: map['keyVaultKeyUrl'] == null ? null : (map['keyVaultKeyUrl'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

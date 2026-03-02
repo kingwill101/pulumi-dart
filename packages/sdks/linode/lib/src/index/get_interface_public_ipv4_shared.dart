@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterfacePublicIpv4Shared {
   /// The shared IPv4 address.
-  final String address;
+  final pulumi.Input<String> address;
   /// The ID of the Linode that this shared address belongs to.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
 
   /// Creates a new [GetInterfacePublicIpv4Shared].
   /// [address] The shared IPv4 address.
@@ -24,8 +25,8 @@ class GetInterfacePublicIpv4Shared {
 
   factory GetInterfacePublicIpv4Shared.fromMap(Map<String, dynamic> map) {
     return GetInterfacePublicIpv4Shared(
-      address: map['address'] as String,
-      linodeId: map['linodeId'] as int,
+      address: (map['address'] as String).input(),
+      linodeId: (map['linodeId'] as int).input(),
     );
   }
 }

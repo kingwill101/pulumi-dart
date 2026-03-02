@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StandardAppVersionEntrypoint {
   /// The format should be a shell command that can be fed to bash -c.
-  final String shell;
+  final pulumi.Input<String> shell;
 
   /// Creates a new [StandardAppVersionEntrypoint].
   /// [shell] The format should be a shell command that can be fed to bash -c.
@@ -19,7 +20,7 @@ class StandardAppVersionEntrypoint {
 
   factory StandardAppVersionEntrypoint.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionEntrypoint(
-      shell: map['shell'] as String,
+      shell: (map['shell'] as String).input(),
     );
   }
 }

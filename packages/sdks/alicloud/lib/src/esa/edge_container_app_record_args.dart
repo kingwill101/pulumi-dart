@@ -19,13 +19,10 @@ class EdgeContainerAppRecordArgs {
   /// [recordName] The associated domain name.
   /// [siteId] The website ID.
   EdgeContainerAppRecordArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> recordName,
-    pulumi.Output<String>? siteId,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      recordName = pulumi.Input.asInput<String>(recordName),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId);
+    required this.appId,
+    required this.recordName,
+    this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EdgeContainerAppRecordArgs {
 
   factory EdgeContainerAppRecordArgs.fromMap(Map<String, dynamic> map) {
     return EdgeContainerAppRecordArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      recordName: pulumi.Output.create<String>(map['recordName'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      appId: (map['appId'] as String).input(),
+      recordName: (map['recordName'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
     );
   }
 }

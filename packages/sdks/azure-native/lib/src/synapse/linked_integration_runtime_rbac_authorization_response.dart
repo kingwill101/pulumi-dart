@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The role based access control (RBAC) authorization type integration runtime.
 class LinkedIntegrationRuntimeRbacAuthorizationResponse {
   /// The authorization type for integration runtime sharing.
   /// Expected value is 'RBAC'.
-  final String authorizationType;
+  final pulumi.Input<String> authorizationType;
   /// The resource identifier of the integration runtime to be shared.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [LinkedIntegrationRuntimeRbacAuthorizationResponse].
   /// [authorizationType] The authorization type for integration runtime sharing.
@@ -26,8 +27,8 @@ class LinkedIntegrationRuntimeRbacAuthorizationResponse {
 
   factory LinkedIntegrationRuntimeRbacAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return LinkedIntegrationRuntimeRbacAuthorizationResponse(
-      authorizationType: map['authorizationType'] as String,
-      resourceId: map['resourceId'] as String,
+      authorizationType: (map['authorizationType'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

@@ -6,17 +6,17 @@ import 'third_party_extension.dart';
 
 class ResourceProviderAuthorization {
   /// The allowed third party extensions.
-  final List<ThirdPartyExtension>? allowedThirdPartyExtensions;
+  final pulumi.Input<List<ThirdPartyExtension>>? allowedThirdPartyExtensions;
   /// The application id.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// The grouping tag.
-  final String? groupingTag;
+  final pulumi.Input<String>? groupingTag;
   /// Managed by authorization.
-  final ResourceProviderAuthorizationManagedByAuthorization? managedByAuthorization;
+  final pulumi.Input<ResourceProviderAuthorizationManagedByAuthorization>? managedByAuthorization;
   /// The managed by role definition id.
-  final String? managedByRoleDefinitionId;
+  final pulumi.Input<String>? managedByRoleDefinitionId;
   /// The role definition id.
-  final String? roleDefinitionId;
+  final pulumi.Input<String>? roleDefinitionId;
 
   /// Creates a new [ResourceProviderAuthorization].
   /// [allowedThirdPartyExtensions] The allowed third party extensions.
@@ -36,10 +36,10 @@ class ResourceProviderAuthorization {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedThirdPartyExtensions': ?allowedThirdPartyExtensions == null ? null : pulumi.Input.encodeList<ThirdPartyExtension, Map<String, dynamic>>(allowedThirdPartyExtensions!, (value) => value.toMap()),
+      'allowedThirdPartyExtensions': ?pulumi.Input.mapOptionalInputValue<List<ThirdPartyExtension>, List<Map<String, dynamic>>>(allowedThirdPartyExtensions, (value) => pulumi.Input.encodeList<ThirdPartyExtension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'applicationId': ?applicationId,
       'groupingTag': ?groupingTag,
-      'managedByAuthorization': ?managedByAuthorization == null ? null : managedByAuthorization!.toMap(),
+      'managedByAuthorization': ?pulumi.Input.mapOptionalInputValue<ResourceProviderAuthorizationManagedByAuthorization, Map<String, dynamic>>(managedByAuthorization, (value) => value.toMap()),
       'managedByRoleDefinitionId': ?managedByRoleDefinitionId,
       'roleDefinitionId': ?roleDefinitionId,
     };
@@ -47,12 +47,12 @@ class ResourceProviderAuthorization {
 
   factory ResourceProviderAuthorization.fromMap(Map<String, dynamic> map) {
     return ResourceProviderAuthorization(
-      allowedThirdPartyExtensions: map['allowedThirdPartyExtensions'] == null ? null : pulumi.Input.decodeList<ThirdPartyExtension>(map['allowedThirdPartyExtensions'], (value) => ThirdPartyExtension.fromMap((value as Map).cast<String, dynamic>())),
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      groupingTag: map['groupingTag'] == null ? null : map['groupingTag'] as String,
-      managedByAuthorization: map['managedByAuthorization'] == null ? null : ResourceProviderAuthorizationManagedByAuthorization.fromMap((map['managedByAuthorization'] as Map).cast<String, dynamic>()),
-      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : map['managedByRoleDefinitionId'] as String,
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : map['roleDefinitionId'] as String,
+      allowedThirdPartyExtensions: map['allowedThirdPartyExtensions'] == null ? null : (pulumi.Input.decodeList<ThirdPartyExtension>(map['allowedThirdPartyExtensions'], (value) => ThirdPartyExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      groupingTag: map['groupingTag'] == null ? null : (map['groupingTag'] as String).input(),
+      managedByAuthorization: map['managedByAuthorization'] == null ? null : (ResourceProviderAuthorizationManagedByAuthorization.fromMap((map['managedByAuthorization'] as Map).cast<String, dynamic>())).input(),
+      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : (map['managedByRoleDefinitionId'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
     );
   }
 }

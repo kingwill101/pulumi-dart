@@ -33,21 +33,14 @@ class AlertArgs {
   /// [schedule] Check the frequency-dependent configuration. See `schedule` below.
   /// [status] Resource attribute field representing alarm status.
   AlertArgs({
-    required pulumi.Output<String> alertName,
-    required pulumi.Output<AlertConfiguration> configuration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<AlertSchedule> schedule,
-    pulumi.Output<String>? status,
-  }) :
-      alertName = pulumi.Input.asInput<String>(alertName),
-      configuration = pulumi.Input.asInput<AlertConfiguration>(configuration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      schedule = pulumi.Input.asInput<AlertSchedule>(schedule),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.alertName,
+    required this.configuration,
+    this.description,
+    required this.displayName,
+    required this.projectName,
+    required this.schedule,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AlertArgs {
 
   factory AlertArgs.fromMap(Map<String, dynamic> map) {
     return AlertArgs(
-      alertName: pulumi.Output.create<String>(map['alertName'] as String),
-      configuration: pulumi.Output.create<AlertConfiguration>(AlertConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      schedule: pulumi.Output.create<AlertSchedule>(AlertSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      alertName: (map['alertName'] as String).input(),
+      configuration: (AlertConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      schedule: (AlertSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

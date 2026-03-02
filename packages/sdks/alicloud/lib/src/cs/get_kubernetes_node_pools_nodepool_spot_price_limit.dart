@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesNodePoolsNodepoolSpotPriceLimit {
   /// The type of the preemptible instance.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The maximum price of a single instance.
-  final String priceLimit;
+  final pulumi.Input<String> priceLimit;
 
   /// Creates a new [GetKubernetesNodePoolsNodepoolSpotPriceLimit].
   /// [instanceType] The type of the preemptible instance.
@@ -24,8 +25,8 @@ class GetKubernetesNodePoolsNodepoolSpotPriceLimit {
 
   factory GetKubernetesNodePoolsNodepoolSpotPriceLimit.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsNodepoolSpotPriceLimit(
-      instanceType: map['instanceType'] as String,
-      priceLimit: map['priceLimit'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      priceLimit: (map['priceLimit'] as String).input(),
     );
   }
 }

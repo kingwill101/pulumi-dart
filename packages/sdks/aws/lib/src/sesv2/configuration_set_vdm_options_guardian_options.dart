@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetVdmOptionsGuardianOptions {
   /// Specifies the status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
-  final String? optimizedSharedDelivery;
+  final pulumi.Input<String>? optimizedSharedDelivery;
 
   /// Creates a new [ConfigurationSetVdmOptionsGuardianOptions].
   /// [optimizedSharedDelivery] Specifies the status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
@@ -19,7 +20,7 @@ class ConfigurationSetVdmOptionsGuardianOptions {
 
   factory ConfigurationSetVdmOptionsGuardianOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetVdmOptionsGuardianOptions(
-      optimizedSharedDelivery: map['optimizedSharedDelivery'] == null ? null : map['optimizedSharedDelivery'] as String,
+      optimizedSharedDelivery: map['optimizedSharedDelivery'] == null ? null : (map['optimizedSharedDelivery'] as String).input(),
     );
   }
 }

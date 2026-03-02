@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Task Properties class.
 class TaskPropertiesResponse {
   /// Task completion Date
-  final String completionDate;
+  final pulumi.Input<String> completionDate;
   /// Task Description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Task Dislay Name
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Indicates whether the task is editable.
-  final bool isEditable;
+  final pulumi.Input<bool> isEditable;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Task Scope
-  final String scope;
+  final pulumi.Input<String> scope;
   /// associated Wave Id
-  final String scopeId;
+  final pulumi.Input<String> scopeId;
   /// Task Stage
-  final String? stage;
+  final pulumi.Input<String>? stage;
   /// Task Status
-  final String status;
+  final pulumi.Input<String> status;
   /// Task Type
-  final String taskType;
+  final pulumi.Input<String> taskType;
 
   /// Creates a new [TaskPropertiesResponse].
   /// [completionDate] Task completion Date
@@ -65,16 +66,16 @@ class TaskPropertiesResponse {
 
   factory TaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TaskPropertiesResponse(
-      completionDate: map['completionDate'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] as String,
-      isEditable: map['isEditable'] as bool,
-      provisioningState: map['provisioningState'] as String,
-      scope: map['scope'] as String,
-      scopeId: map['scopeId'] as String,
-      stage: map['stage'] == null ? null : map['stage'] as String,
-      status: map['status'] as String,
-      taskType: map['taskType'] as String,
+      completionDate: (map['completionDate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      isEditable: (map['isEditable'] as bool).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      scopeId: (map['scopeId'] as String).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      status: (map['status'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

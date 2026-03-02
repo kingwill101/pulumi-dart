@@ -22,15 +22,11 @@ class QueryLoggingConfigurationState {
   /// [timeouts] Optional.
   /// [workspaceId] The ID of the AMP workspace for which to configure query logging.
   QueryLoggingConfigurationState({
-    pulumi.Output<List<QueryLoggingConfigurationDestination>>? destinations,
-    pulumi.Output<String>? region,
-    pulumi.Output<QueryLoggingConfigurationTimeouts>? timeouts,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      destinations = pulumi.Input.asOptionalInput<List<QueryLoggingConfigurationDestination>>(destinations),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<QueryLoggingConfigurationTimeouts>(timeouts),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.destinations,
+    this.region,
+    this.timeouts,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class QueryLoggingConfigurationState {
 
   factory QueryLoggingConfigurationState.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigurationState(
-      destinations: map['destinations'] == null ? null : pulumi.Output.create<List<QueryLoggingConfigurationDestination>>(pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(map['destinations'], (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<QueryLoggingConfigurationTimeouts>(QueryLoggingConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(map['destinations'], (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (QueryLoggingConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

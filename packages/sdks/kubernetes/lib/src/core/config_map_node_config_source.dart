@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node. This API is deprecated since 1.22: https://git.k8s.io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration
 class ConfigMapNodeConfigSource {
   /// KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.
-  final String kubeletConfigKey;
+  final pulumi.Input<String> kubeletConfigKey;
   /// Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.
-  final String name;
+  final pulumi.Input<String> name;
   /// Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
-  final String? resourceVersion;
+  final pulumi.Input<String>? resourceVersion;
   /// UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
-  final String? uid;
+  final pulumi.Input<String>? uid;
 
   /// Creates a new [ConfigMapNodeConfigSource].
   /// [kubeletConfigKey] KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.
@@ -40,11 +41,11 @@ class ConfigMapNodeConfigSource {
 
   factory ConfigMapNodeConfigSource.fromMap(Map<String, dynamic> map) {
     return ConfigMapNodeConfigSource(
-      kubeletConfigKey: map['kubeletConfigKey'] as String,
-      name: map['name'] as String,
-      namespace: map['namespace'] as String,
-      resourceVersion: map['resourceVersion'] == null ? null : map['resourceVersion'] as String,
-      uid: map['uid'] == null ? null : map['uid'] as String,
+      kubeletConfigKey: (map['kubeletConfigKey'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

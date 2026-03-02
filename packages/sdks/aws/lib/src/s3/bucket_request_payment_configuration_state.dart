@@ -19,15 +19,11 @@ class BucketRequestPaymentConfigurationState {
   /// [payer] Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BucketRequestPaymentConfigurationState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? payer,
-    pulumi.Output<String>? region,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      payer = pulumi.Input.asOptionalInput<String>(payer),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bucket,
+    this.expectedBucketOwner,
+    this.payer,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BucketRequestPaymentConfigurationState {
 
   factory BucketRequestPaymentConfigurationState.fromMap(Map<String, dynamic> map) {
     return BucketRequestPaymentConfigurationState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      payer: map['payer'] == null ? null : pulumi.Output.create<String>(map['payer'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      payer: map['payer'] == null ? null : (map['payer'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

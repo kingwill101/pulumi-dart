@@ -29,19 +29,13 @@ class GcpUserAccessBindingState {
   /// [scopedAccessSettings] Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
   /// [sessionSettings] Optional. The Google Cloud session length (GCSL) policy for the group key.
   GcpUserAccessBindingState({
-    pulumi.Output<String>? accessLevels,
-    pulumi.Output<String>? groupKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? organizationId,
-    pulumi.Output<List<GcpUserAccessBindingScopedAccessSetting>>? scopedAccessSettings,
-    pulumi.Output<GcpUserAccessBindingSessionSettings>? sessionSettings,
-  }) :
-      accessLevels = pulumi.Input.asOptionalInput<String>(accessLevels),
-      groupKey = pulumi.Input.asOptionalInput<String>(groupKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asOptionalInput<String>(organizationId),
-      scopedAccessSettings = pulumi.Input.asOptionalInput<List<GcpUserAccessBindingScopedAccessSetting>>(scopedAccessSettings),
-      sessionSettings = pulumi.Input.asOptionalInput<GcpUserAccessBindingSessionSettings>(sessionSettings);
+    this.accessLevels,
+    this.groupKey,
+    this.name,
+    this.organizationId,
+    this.scopedAccessSettings,
+    this.sessionSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GcpUserAccessBindingState {
 
   factory GcpUserAccessBindingState.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingState(
-      accessLevels: map['accessLevels'] == null ? null : pulumi.Output.create<String>(map['accessLevels'] as String),
-      groupKey: map['groupKey'] == null ? null : pulumi.Output.create<String>(map['groupKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: map['organizationId'] == null ? null : pulumi.Output.create<String>(map['organizationId'] as String),
-      scopedAccessSettings: map['scopedAccessSettings'] == null ? null : pulumi.Output.create<List<GcpUserAccessBindingScopedAccessSetting>>(pulumi.Input.decodeList<GcpUserAccessBindingScopedAccessSetting>(map['scopedAccessSettings'], (value) => GcpUserAccessBindingScopedAccessSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      sessionSettings: map['sessionSettings'] == null ? null : pulumi.Output.create<GcpUserAccessBindingSessionSettings>(GcpUserAccessBindingSessionSettings.fromMap((map['sessionSettings'] as Map).cast<String, dynamic>())),
+      accessLevels: map['accessLevels'] == null ? null : (map['accessLevels'] as String).input(),
+      groupKey: map['groupKey'] == null ? null : (map['groupKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
+      scopedAccessSettings: map['scopedAccessSettings'] == null ? null : (pulumi.Input.decodeList<GcpUserAccessBindingScopedAccessSetting>(map['scopedAccessSettings'], (value) => GcpUserAccessBindingScopedAccessSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sessionSettings: map['sessionSettings'] == null ? null : (GcpUserAccessBindingSessionSettings.fromMap((map['sessionSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

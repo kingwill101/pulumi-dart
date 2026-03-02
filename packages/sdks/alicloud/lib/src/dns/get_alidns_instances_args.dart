@@ -25,17 +25,12 @@ class GetAlidnsInstancesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userClientIp] The IP address of the client.
   GetAlidnsInstancesArgs({
-    pulumi.Output<String>? domainType,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? userClientIp,
-  }) :
-      domainType = pulumi.Input.asOptionalInput<String>(domainType),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      userClientIp = pulumi.Input.asOptionalInput<String>(userClientIp);
+    this.domainType,
+    this.ids,
+    this.lang,
+    this.outputFile,
+    this.userClientIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetAlidnsInstancesArgs {
 
   factory GetAlidnsInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetAlidnsInstancesArgs(
-      domainType: map['domainType'] == null ? null : pulumi.Output.create<String>(map['domainType'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      userClientIp: map['userClientIp'] == null ? null : pulumi.Output.create<String>(map['userClientIp'] as String),
+      domainType: map['domainType'] == null ? null : (map['domainType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
     );
   }
 }

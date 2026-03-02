@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureSubset {
   /// [Required] The list of features to include.
-  final List<String> features;
+  final pulumi.Input<List<String>> features;
   /// Expected value is 'FeatureSubset'.
-  final String filterType;
+  final pulumi.Input<String> filterType;
 
   /// Creates a new [FeatureSubset].
   /// [features] [Required] The list of features to include.
@@ -24,8 +25,8 @@ class FeatureSubset {
 
   factory FeatureSubset.fromMap(Map<String, dynamic> map) {
     return FeatureSubset(
-      features: (map['features'] as List).cast<String>(),
-      filterType: map['filterType'] as String,
+      features: ((map['features'] as List).cast<String>()).input(),
+      filterType: (map['filterType'] as String).input(),
     );
   }
 }

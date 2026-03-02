@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountActiveDirectory {
   /// If enabled, AES encryption will be enabled for SMB communication. Defaults to `false`.
-  final bool? aesEncryptionEnabled;
+  final pulumi.Input<bool>? aesEncryptionEnabled;
   /// A list of DNS server IP addresses for the Active Directory domain. Only allows `IPv4` address.
-  final List<String> dnsServers;
+  final pulumi.Input<List<String>> dnsServers;
   /// The name of the Active Directory domain.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// Name of the active directory machine.
-  final String? kerberosAdName;
+  final pulumi.Input<String>? kerberosAdName;
   /// kdc server IP addresses for the active directory machine.
   ///
   /// > **Note:** If you plan on using **Kerberos** volumes, both `ad_name` and `kdc_ip` are required in order to create the volume.
-  final String? kerberosKdcIp;
+  final pulumi.Input<String>? kerberosKdcIp;
   /// Specifies whether or not the LDAP traffic needs to be secured via TLS. Defaults to `false`.
-  final bool? ldapOverTlsEnabled;
+  final pulumi.Input<bool>? ldapOverTlsEnabled;
   /// Specifies whether or not the LDAP traffic needs to be signed. Defaults to `false`.
-  final bool? ldapSigningEnabled;
+  final pulumi.Input<bool>? ldapSigningEnabled;
   /// If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes. Defaults to `false`.
-  final bool? localNfsUsersWithLdapAllowed;
+  final pulumi.Input<bool>? localNfsUsersWithLdapAllowed;
   /// The Organizational Unit (OU) within Active Directory where machines will be created. If blank, defaults to `CN=Computers`.
-  final String? organizationalUnit;
+  final pulumi.Input<String>? organizationalUnit;
   /// The password associated with the `username`.
-  final String password;
+  final pulumi.Input<String> password;
   /// When LDAP over SSL/TLS is enabled, the LDAP client is required to have a *base64 encoded Active Directory Certificate Service's self-signed root CA certificate*, this optional parameter is used only for dual protocol with LDAP user-mapping volumes. Required if `ldap_over_tls_enabled` is set to `true`.
-  final String? serverRootCaCertificate;
+  final pulumi.Input<String>? serverRootCaCertificate;
   /// The Active Directory site the service will limit Domain Controller discovery to. If blank, defaults to `Default-First-Site-Name`.
-  final String? siteName;
+  final pulumi.Input<String>? siteName;
   /// The NetBIOS name which should be used for the NetApp SMB Server, which will be registered as a computer account in the AD and used to mount volumes.
-  final String smbServerName;
+  final pulumi.Input<String> smbServerName;
   /// The Username of Active Directory Domain Administrator.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [AccountActiveDirectory].
   /// [aesEncryptionEnabled] If enabled, AES encryption will be enabled for SMB communication. Defaults to `false`.
@@ -86,20 +87,20 @@ class AccountActiveDirectory {
 
   factory AccountActiveDirectory.fromMap(Map<String, dynamic> map) {
     return AccountActiveDirectory(
-      aesEncryptionEnabled: map['aesEncryptionEnabled'] == null ? null : map['aesEncryptionEnabled'] as bool,
-      dnsServers: (map['dnsServers'] as List).cast<String>(),
-      domain: map['domain'] as String,
-      kerberosAdName: map['kerberosAdName'] == null ? null : map['kerberosAdName'] as String,
-      kerberosKdcIp: map['kerberosKdcIp'] == null ? null : map['kerberosKdcIp'] as String,
-      ldapOverTlsEnabled: map['ldapOverTlsEnabled'] == null ? null : map['ldapOverTlsEnabled'] as bool,
-      ldapSigningEnabled: map['ldapSigningEnabled'] == null ? null : map['ldapSigningEnabled'] as bool,
-      localNfsUsersWithLdapAllowed: map['localNfsUsersWithLdapAllowed'] == null ? null : map['localNfsUsersWithLdapAllowed'] as bool,
-      organizationalUnit: map['organizationalUnit'] == null ? null : map['organizationalUnit'] as String,
-      password: map['password'] as String,
-      serverRootCaCertificate: map['serverRootCaCertificate'] == null ? null : map['serverRootCaCertificate'] as String,
-      siteName: map['siteName'] == null ? null : map['siteName'] as String,
-      smbServerName: map['smbServerName'] as String,
-      username: map['username'] as String,
+      aesEncryptionEnabled: map['aesEncryptionEnabled'] == null ? null : (map['aesEncryptionEnabled'] as bool).input(),
+      dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
+      domain: (map['domain'] as String).input(),
+      kerberosAdName: map['kerberosAdName'] == null ? null : (map['kerberosAdName'] as String).input(),
+      kerberosKdcIp: map['kerberosKdcIp'] == null ? null : (map['kerberosKdcIp'] as String).input(),
+      ldapOverTlsEnabled: map['ldapOverTlsEnabled'] == null ? null : (map['ldapOverTlsEnabled'] as bool).input(),
+      ldapSigningEnabled: map['ldapSigningEnabled'] == null ? null : (map['ldapSigningEnabled'] as bool).input(),
+      localNfsUsersWithLdapAllowed: map['localNfsUsersWithLdapAllowed'] == null ? null : (map['localNfsUsersWithLdapAllowed'] as bool).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
+      password: (map['password'] as String).input(),
+      serverRootCaCertificate: map['serverRootCaCertificate'] == null ? null : (map['serverRootCaCertificate'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      smbServerName: (map['smbServerName'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

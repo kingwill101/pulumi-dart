@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAddonsConfigDnsCacheConfig {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterAddonsConfigDnsCacheConfig].
   /// [enabled] Required.
@@ -18,7 +19,7 @@ class ClusterAddonsConfigDnsCacheConfig {
 
   factory ClusterAddonsConfigDnsCacheConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigDnsCacheConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

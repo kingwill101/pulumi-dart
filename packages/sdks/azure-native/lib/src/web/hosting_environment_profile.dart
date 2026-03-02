@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification for an App Service Environment to use for this resource.
 class HostingEnvironmentProfile {
   /// Resource ID of the App Service Environment.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [HostingEnvironmentProfile].
   /// [id] Resource ID of the App Service Environment.
@@ -20,7 +21,7 @@ class HostingEnvironmentProfile {
 
   factory HostingEnvironmentProfile.fromMap(Map<String, dynamic> map) {
     return HostingEnvironmentProfile(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetFactoryArgs {
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
   GetFactoryArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFactoryArgs {
 
   factory GetFactoryArgs.fromMap(Map<String, dynamic> map) {
     return GetFactoryArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class DiskAttachmentArgs {
   /// [instanceName] Name of the Lightsail instance to attach to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DiskAttachmentArgs({
-    required pulumi.Output<String> diskName,
-    required pulumi.Output<String> diskPath,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<String>? region,
-  }) :
-      diskName = pulumi.Input.asInput<String>(diskName),
-      diskPath = pulumi.Input.asInput<String>(diskPath),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.diskName,
+    required this.diskPath,
+    required this.instanceName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DiskAttachmentArgs {
 
   factory DiskAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DiskAttachmentArgs(
-      diskName: pulumi.Output.create<String>(map['diskName'] as String),
-      diskPath: pulumi.Output.create<String>(map['diskPath'] as String),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      diskName: (map['diskName'] as String).input(),
+      diskPath: (map['diskPath'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

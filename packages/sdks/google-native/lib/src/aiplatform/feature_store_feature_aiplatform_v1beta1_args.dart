@@ -47,33 +47,20 @@ class FeatureStoreFeatureAiplatformV1beta1Args {
   /// [valueType] Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
   /// [versionColumnName] Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
   FeatureStoreFeatureAiplatformV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableMonitoring,
-    required pulumi.Output<String> entityTypeId,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> featureId,
-    required pulumi.Output<String> featurestoreId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig>? monitoringConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<FeatureStoreFeatureValueTypeAiplatformV1beta1>? valueType,
-    pulumi.Output<String>? versionColumnName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableMonitoring = pulumi.Input.asOptionalInput<bool>(disableMonitoring),
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureId = pulumi.Input.asInput<String>(featureId),
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      monitoringConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig>(monitoringConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      valueType = pulumi.Input.asOptionalInput<FeatureStoreFeatureValueTypeAiplatformV1beta1>(valueType),
-      versionColumnName = pulumi.Input.asOptionalInput<String>(versionColumnName);
+    this.description,
+    this.disableMonitoring,
+    required this.entityTypeId,
+    this.etag,
+    required this.featureId,
+    required this.featurestoreId,
+    this.labels,
+    this.location,
+    this.monitoringConfig,
+    this.name,
+    this.project,
+    this.valueType,
+    this.versionColumnName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class FeatureStoreFeatureAiplatformV1beta1Args {
 
   factory FeatureStoreFeatureAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return FeatureStoreFeatureAiplatformV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableMonitoring: map['disableMonitoring'] == null ? null : pulumi.Output.create<bool>(map['disableMonitoring'] as bool),
-      entityTypeId: pulumi.Output.create<String>(map['entityTypeId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureId: pulumi.Output.create<String>(map['featureId'] as String),
-      featurestoreId: pulumi.Output.create<String>(map['featurestoreId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      monitoringConfig: map['monitoringConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig>(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      valueType: map['valueType'] == null ? null : pulumi.Output.create<FeatureStoreFeatureValueTypeAiplatformV1beta1>(FeatureStoreFeatureValueTypeAiplatformV1beta1.fromValue(map['valueType'] as String)),
-      versionColumnName: map['versionColumnName'] == null ? null : pulumi.Output.create<String>(map['versionColumnName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableMonitoring: map['disableMonitoring'] == null ? null : (map['disableMonitoring'] as bool).input(),
+      entityTypeId: (map['entityTypeId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureId: (map['featureId'] as String).input(),
+      featurestoreId: (map['featurestoreId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      valueType: map['valueType'] == null ? null : (FeatureStoreFeatureValueTypeAiplatformV1beta1.fromValue(map['valueType'] as String)).input(),
+      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName'] as String).input(),
     );
   }
 }

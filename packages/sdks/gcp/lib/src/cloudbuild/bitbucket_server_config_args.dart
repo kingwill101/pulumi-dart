@@ -50,27 +50,17 @@ class BitbucketServerConfigArgs {
   /// [sslCa] SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
   /// [username] Username of the account Cloud Build will use on Bitbucket Server.
   BitbucketServerConfigArgs({
-    required pulumi.Output<String> apiKey,
-    required pulumi.Output<String> configId,
-    pulumi.Output<List<BitbucketServerConfigConnectedRepository>>? connectedRepositories,
-    required pulumi.Output<String> hostUri,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? peeredNetwork,
-    pulumi.Output<String>? project,
-    required pulumi.Output<BitbucketServerConfigSecrets> secrets,
-    pulumi.Output<String>? sslCa,
-    required pulumi.Output<String> username,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      configId = pulumi.Input.asInput<String>(configId),
-      connectedRepositories = pulumi.Input.asOptionalInput<List<BitbucketServerConfigConnectedRepository>>(connectedRepositories),
-      hostUri = pulumi.Input.asInput<String>(hostUri),
-      location = pulumi.Input.asInput<String>(location),
-      peeredNetwork = pulumi.Input.asOptionalInput<String>(peeredNetwork),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secrets = pulumi.Input.asInput<BitbucketServerConfigSecrets>(secrets),
-      sslCa = pulumi.Input.asOptionalInput<String>(sslCa),
-      username = pulumi.Input.asInput<String>(username);
+    required this.apiKey,
+    required this.configId,
+    this.connectedRepositories,
+    required this.hostUri,
+    required this.location,
+    this.peeredNetwork,
+    this.project,
+    required this.secrets,
+    this.sslCa,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,16 +79,16 @@ class BitbucketServerConfigArgs {
 
   factory BitbucketServerConfigArgs.fromMap(Map<String, dynamic> map) {
     return BitbucketServerConfigArgs(
-      apiKey: pulumi.Output.create<String>(map['apiKey'] as String),
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      connectedRepositories: map['connectedRepositories'] == null ? null : pulumi.Output.create<List<BitbucketServerConfigConnectedRepository>>(pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(map['connectedRepositories'], (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))),
-      hostUri: pulumi.Output.create<String>(map['hostUri'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      peeredNetwork: map['peeredNetwork'] == null ? null : pulumi.Output.create<String>(map['peeredNetwork'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      secrets: pulumi.Output.create<BitbucketServerConfigSecrets>(BitbucketServerConfigSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())),
-      sslCa: map['sslCa'] == null ? null : pulumi.Output.create<String>(map['sslCa'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      apiKey: (map['apiKey'] as String).input(),
+      configId: (map['configId'] as String).input(),
+      connectedRepositories: map['connectedRepositories'] == null ? null : (pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(map['connectedRepositories'], (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostUri: (map['hostUri'] as String).input(),
+      location: (map['location'] as String).input(),
+      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      secrets: (BitbucketServerConfigSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class AttachmentState {
   /// [serverType] Type of the instances. Valid value ecs, eni. Default to ecs.
   /// [weight] Weight of the instances. Valid value range: [0-100]. Default to 100.
   AttachmentState({
-    pulumi.Output<String>? backendServers,
-    pulumi.Output<bool>? deleteProtectionValidation,
-    pulumi.Output<List<String>>? instanceIds,
-    pulumi.Output<String>? loadBalancerId,
-    pulumi.Output<String>? serverType,
-    pulumi.Output<int>? weight,
-  }) :
-      backendServers = pulumi.Input.asOptionalInput<String>(backendServers),
-      deleteProtectionValidation = pulumi.Input.asOptionalInput<bool>(deleteProtectionValidation),
-      instanceIds = pulumi.Input.asOptionalInput<List<String>>(instanceIds),
-      loadBalancerId = pulumi.Input.asOptionalInput<String>(loadBalancerId),
-      serverType = pulumi.Input.asOptionalInput<String>(serverType),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.backendServers,
+    this.deleteProtectionValidation,
+    this.instanceIds,
+    this.loadBalancerId,
+    this.serverType,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class AttachmentState {
 
   factory AttachmentState.fromMap(Map<String, dynamic> map) {
     return AttachmentState(
-      backendServers: map['backendServers'] == null ? null : pulumi.Output.create<String>(map['backendServers'] as String),
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : pulumi.Output.create<bool>(map['deleteProtectionValidation'] as bool),
-      instanceIds: map['instanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      serverType: map['serverType'] == null ? null : pulumi.Output.create<String>(map['serverType'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      backendServers: map['backendServers'] == null ? null : (map['backendServers'] as String).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

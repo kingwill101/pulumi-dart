@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The persistent settings for a table's columns.
 class ColumnSettingsResponse {
   /// The id of the column.
-  final String column;
+  final pulumi.Input<String> column;
   /// Whether the column should be visible on page load.
-  final bool visible;
+  final pulumi.Input<bool> visible;
 
   /// Creates a new [ColumnSettingsResponse].
   /// [column] The id of the column.
@@ -25,8 +26,8 @@ class ColumnSettingsResponse {
 
   factory ColumnSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ColumnSettingsResponse(
-      column: map['column'] as String,
-      visible: map['visible'] as bool,
+      column: (map['column'] as String).input(),
+      visible: (map['visible'] as bool).input(),
     );
   }
 }

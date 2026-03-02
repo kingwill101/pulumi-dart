@@ -25,17 +25,12 @@ class GetInstanceEnginesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
   /// [zoneId] The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   GetInstanceEnginesArgs({
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<String>? instanceChargeType,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> zoneId,
-  }) :
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      instanceChargeType = pulumi.Input.asOptionalInput<String>(instanceChargeType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.engine,
+    this.engineVersion,
+    this.instanceChargeType,
+    this.outputFile,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetInstanceEnginesArgs {
 
   factory GetInstanceEnginesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceEnginesArgs(
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      instanceChargeType: map['instanceChargeType'] == null ? null : pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

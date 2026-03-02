@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize {
   /// Specifies the unit for the maximum size of the metadata cache in the data store format.
-  final String? unit;
+  final pulumi.Input<String>? unit;
   /// Sets the value for the maximum size of the metadata cache in the data store format configuration.
-  final double value;
+  final pulumi.Input<double> value;
 
   /// Creates a new [DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize].
   /// [unit] Specifies the unit for the maximum size of the metadata cache in the data store format.
@@ -24,8 +25,8 @@ class DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize {
 
   factory DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize(
-      unit: map['unit'] == null ? null : map['unit'] as String,
-      value: map['value'] as double,
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      value: (map['value'] as double).input(),
     );
   }
 }

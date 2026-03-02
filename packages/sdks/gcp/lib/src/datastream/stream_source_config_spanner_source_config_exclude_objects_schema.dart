@@ -5,10 +5,10 @@ import 'stream_source_config_spanner_source_config_exclude_objects_schema_table.
 
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema {
   /// Schema name.
-  final String schema;
+  final pulumi.Input<String> schema;
   /// Tables in the schema.
   /// Structure is documented below.
-  final List<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable>? tables;
+  final pulumi.Input<List<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable>>? tables;
 
   /// Creates a new [StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema].
   /// [schema] Schema name.
@@ -21,14 +21,14 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'schema': schema,
-      'tables': ?tables == null ? null : pulumi.Input.encodeList<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable, Map<String, dynamic>>(tables!, (value) => value.toMap()),
+      'tables': ?pulumi.Input.mapOptionalInputValue<List<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable>, List<Map<String, dynamic>>>(tables, (value) => pulumi.Input.encodeList<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema(
-      schema: map['schema'] as String,
-      tables: map['tables'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable>(map['tables'], (value) => StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>())),
+      schema: (map['schema'] as String).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable>(map['tables'], (value) => StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

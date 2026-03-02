@@ -16,11 +16,9 @@ class GetWorkflowArgs {
   /// [name] The name of the Logic App Workflow.
   /// [resourceGroupName] The name of the Resource Group in which the Logic App Workflow exists.
   GetWorkflowArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWorkflowArgs {
 
   factory GetWorkflowArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

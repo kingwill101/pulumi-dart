@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMwareToAzStackHCI NIC properties.
 class VMwareToAzStackHCIProtectedNicPropertiesResponse {
   /// Gets or sets a value indicating whether this is the primary NIC.
-  final bool? isPrimaryNic;
+  final pulumi.Input<bool>? isPrimaryNic;
   /// Gets or sets the NIC label.
-  final String label;
+  final pulumi.Input<String> label;
   /// Gets or sets the NIC mac address.
-  final String macAddress;
+  final pulumi.Input<String> macAddress;
   /// Gets or sets the network name.
-  final String networkName;
+  final pulumi.Input<String> networkName;
   /// Gets or sets the NIC Id.
-  final String nicId;
+  final pulumi.Input<String> nicId;
   /// Gets or sets the selection type of the NIC.
-  final String selectionTypeForFailover;
+  final pulumi.Input<String> selectionTypeForFailover;
   /// Gets or sets the target network Id within AzStackHCI Cluster.
-  final String targetNetworkId;
+  final pulumi.Input<String> targetNetworkId;
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
-  final String testNetworkId;
+  final pulumi.Input<String> testNetworkId;
 
   /// Creates a new [VMwareToAzStackHCIProtectedNicPropertiesResponse].
   /// [isPrimaryNic] Gets or sets a value indicating whether this is the primary NIC.
@@ -55,14 +56,14 @@ class VMwareToAzStackHCIProtectedNicPropertiesResponse {
 
   factory VMwareToAzStackHCIProtectedNicPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCIProtectedNicPropertiesResponse(
-      isPrimaryNic: map['isPrimaryNic'] == null ? null : map['isPrimaryNic'] as bool,
-      label: map['label'] as String,
-      macAddress: map['macAddress'] as String,
-      networkName: map['networkName'] as String,
-      nicId: map['nicId'] as String,
-      selectionTypeForFailover: map['selectionTypeForFailover'] as String,
-      targetNetworkId: map['targetNetworkId'] as String,
-      testNetworkId: map['testNetworkId'] as String,
+      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic'] as bool).input(),
+      label: (map['label'] as String).input(),
+      macAddress: (map['macAddress'] as String).input(),
+      networkName: (map['networkName'] as String).input(),
+      nicId: (map['nicId'] as String).input(),
+      selectionTypeForFailover: (map['selectionTypeForFailover'] as String).input(),
+      targetNetworkId: (map['targetNetworkId'] as String).input(),
+      testNetworkId: (map['testNetworkId'] as String).input(),
     );
   }
 }

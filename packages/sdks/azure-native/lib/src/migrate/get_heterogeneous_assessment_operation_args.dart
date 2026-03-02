@@ -19,13 +19,10 @@ class GetHeterogeneousAssessmentOperationArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetHeterogeneousAssessmentOperationArgs({
-    required pulumi.Output<String> assessmentName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assessmentName = pulumi.Input.asInput<String>(assessmentName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.assessmentName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHeterogeneousAssessmentOperationArgs {
 
   factory GetHeterogeneousAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetHeterogeneousAssessmentOperationArgs(
-      assessmentName: pulumi.Output.create<String>(map['assessmentName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assessmentName: (map['assessmentName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

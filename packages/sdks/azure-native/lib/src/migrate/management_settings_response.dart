@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hyperv_virtualization_management_settings_response.dart';
 import 'other_management_costs_settings_response.dart';
 import 'third_party_management_settings_response.dart';
@@ -7,11 +8,11 @@ import 'third_party_management_settings_response.dart';
 /// Management settings.
 class ManagementSettingsResponse {
   /// HyperV Virtualization Management Settings.
-  final HypervVirtualizationManagementSettingsResponse hypervVirtualizationManagementSettings;
+  final pulumi.Input<HypervVirtualizationManagementSettingsResponse> hypervVirtualizationManagementSettings;
   /// Other Management Costs Settings.
-  final OtherManagementCostsSettingsResponse otherManagementCostsSettings;
+  final pulumi.Input<OtherManagementCostsSettingsResponse> otherManagementCostsSettings;
   /// Third Party Management Settings.
-  final ThirdPartyManagementSettingsResponse thirdPartyManagementSettings;
+  final pulumi.Input<ThirdPartyManagementSettingsResponse> thirdPartyManagementSettings;
 
   /// Creates a new [ManagementSettingsResponse].
   /// [hypervVirtualizationManagementSettings] HyperV Virtualization Management Settings.
@@ -25,17 +26,17 @@ class ManagementSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hypervVirtualizationManagementSettings': hypervVirtualizationManagementSettings.toMap(),
-      'otherManagementCostsSettings': otherManagementCostsSettings.toMap(),
-      'thirdPartyManagementSettings': thirdPartyManagementSettings.toMap(),
+      'hypervVirtualizationManagementSettings': pulumi.Input.mapInputValue<HypervVirtualizationManagementSettingsResponse, Map<String, dynamic>>(hypervVirtualizationManagementSettings, (value) => value.toMap()),
+      'otherManagementCostsSettings': pulumi.Input.mapInputValue<OtherManagementCostsSettingsResponse, Map<String, dynamic>>(otherManagementCostsSettings, (value) => value.toMap()),
+      'thirdPartyManagementSettings': pulumi.Input.mapInputValue<ThirdPartyManagementSettingsResponse, Map<String, dynamic>>(thirdPartyManagementSettings, (value) => value.toMap()),
     };
   }
 
   factory ManagementSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ManagementSettingsResponse(
-      hypervVirtualizationManagementSettings: HypervVirtualizationManagementSettingsResponse.fromMap((map['hypervVirtualizationManagementSettings'] as Map).cast<String, dynamic>()),
-      otherManagementCostsSettings: OtherManagementCostsSettingsResponse.fromMap((map['otherManagementCostsSettings'] as Map).cast<String, dynamic>()),
-      thirdPartyManagementSettings: ThirdPartyManagementSettingsResponse.fromMap((map['thirdPartyManagementSettings'] as Map).cast<String, dynamic>()),
+      hypervVirtualizationManagementSettings: (HypervVirtualizationManagementSettingsResponse.fromMap((map['hypervVirtualizationManagementSettings'] as Map).cast<String, dynamic>())).input(),
+      otherManagementCostsSettings: (OtherManagementCostsSettingsResponse.fromMap((map['otherManagementCostsSettings'] as Map).cast<String, dynamic>())).input(),
+      thirdPartyManagementSettings: (ThirdPartyManagementSettingsResponse.fromMap((map['thirdPartyManagementSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

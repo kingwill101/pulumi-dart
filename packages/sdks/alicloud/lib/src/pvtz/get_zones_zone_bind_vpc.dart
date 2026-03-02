@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZonesZoneBindVpc {
   /// The region ID of the VPC.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The name of the region where the VPC resides.
-  final String regionName;
+  final pulumi.Input<String> regionName;
   /// The ID of the VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The Name of the VPC.
-  final String vpcName;
+  final pulumi.Input<String> vpcName;
 
   /// Creates a new [GetZonesZoneBindVpc].
   /// [regionId] The region ID of the VPC.
@@ -34,10 +35,10 @@ class GetZonesZoneBindVpc {
 
   factory GetZonesZoneBindVpc.fromMap(Map<String, dynamic> map) {
     return GetZonesZoneBindVpc(
-      regionId: map['regionId'] as String,
-      regionName: map['regionName'] as String,
-      vpcId: map['vpcId'] as String,
-      vpcName: map['vpcName'] as String,
+      regionId: (map['regionId'] as String).input(),
+      regionName: (map['regionName'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcName: (map['vpcName'] as String).input(),
     );
   }
 }

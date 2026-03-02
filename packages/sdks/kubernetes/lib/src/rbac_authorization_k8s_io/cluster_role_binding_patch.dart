@@ -8,15 +8,15 @@ import 'subject_patch.dart';
 /// ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.
 class ClusterRoleBindingPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object's metadata.
-  final ObjectMetaPatch? metadata;
+  final pulumi.Input<ObjectMetaPatch>? metadata;
   /// RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
-  final RoleRefPatch? roleRef;
+  final pulumi.Input<RoleRefPatch>? roleRef;
   /// Subjects holds references to the objects the role applies to.
-  final List<SubjectPatch>? subjects;
+  final pulumi.Input<List<SubjectPatch>>? subjects;
 
   /// Creates a new [ClusterRoleBindingPatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -36,19 +36,19 @@ class ClusterRoleBindingPatch {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'roleRef': ?roleRef == null ? null : roleRef!.toMap(),
-      'subjects': ?subjects == null ? null : pulumi.Input.encodeList<SubjectPatch, Map<String, dynamic>>(subjects!, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'roleRef': ?pulumi.Input.mapOptionalInputValue<RoleRefPatch, Map<String, dynamic>>(roleRef, (value) => value.toMap()),
+      'subjects': ?pulumi.Input.mapOptionalInputValue<List<SubjectPatch>, List<Map<String, dynamic>>>(subjects, (value) => pulumi.Input.encodeList<SubjectPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ClusterRoleBindingPatch.fromMap(Map<String, dynamic> map) {
     return ClusterRoleBindingPatch(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      roleRef: map['roleRef'] == null ? null : RoleRefPatch.fromMap((map['roleRef'] as Map).cast<String, dynamic>()),
-      subjects: map['subjects'] == null ? null : pulumi.Input.decodeList<SubjectPatch>(map['subjects'], (value) => SubjectPatch.fromMap((value as Map).cast<String, dynamic>())),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      roleRef: map['roleRef'] == null ? null : (RoleRefPatch.fromMap((map['roleRef'] as Map).cast<String, dynamic>())).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatch>(map['subjects'], (value) => SubjectPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

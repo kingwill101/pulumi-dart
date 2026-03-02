@@ -19,13 +19,10 @@ class GetDynamicSchemaArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
   GetDynamicSchemaArgs({
-    required pulumi.Output<String> dynamicSchemaName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-  }) :
-      dynamicSchemaName = pulumi.Input.asInput<String>(dynamicSchemaName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName);
+    required this.dynamicSchemaName,
+    required this.resourceGroupName,
+    required this.schemaName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDynamicSchemaArgs {
 
   factory GetDynamicSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetDynamicSchemaArgs(
-      dynamicSchemaName: pulumi.Output.create<String>(map['dynamicSchemaName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
+      dynamicSchemaName: (map['dynamicSchemaName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
     );
   }
 }

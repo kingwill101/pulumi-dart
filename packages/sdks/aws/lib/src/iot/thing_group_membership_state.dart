@@ -19,15 +19,11 @@ class ThingGroupMembershipState {
   /// [thingGroupName] The name of the group to which you are adding a thing.
   /// [thingName] The name of the thing to add to a group.
   ThingGroupMembershipState({
-    pulumi.Output<bool>? overrideDynamicGroup,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? thingGroupName,
-    pulumi.Output<String>? thingName,
-  }) :
-      overrideDynamicGroup = pulumi.Input.asOptionalInput<bool>(overrideDynamicGroup),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      thingGroupName = pulumi.Input.asOptionalInput<String>(thingGroupName),
-      thingName = pulumi.Input.asOptionalInput<String>(thingName);
+    this.overrideDynamicGroup,
+    this.region,
+    this.thingGroupName,
+    this.thingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ThingGroupMembershipState {
 
   factory ThingGroupMembershipState.fromMap(Map<String, dynamic> map) {
     return ThingGroupMembershipState(
-      overrideDynamicGroup: map['overrideDynamicGroup'] == null ? null : pulumi.Output.create<bool>(map['overrideDynamicGroup'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      thingGroupName: map['thingGroupName'] == null ? null : pulumi.Output.create<String>(map['thingGroupName'] as String),
-      thingName: map['thingName'] == null ? null : pulumi.Output.create<String>(map['thingName'] as String),
+      overrideDynamicGroup: map['overrideDynamicGroup'] == null ? null : (map['overrideDynamicGroup'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      thingGroupName: map['thingGroupName'] == null ? null : (map['thingGroupName'] as String).input(),
+      thingName: map['thingName'] == null ? null : (map['thingName'] as String).input(),
     );
   }
 }

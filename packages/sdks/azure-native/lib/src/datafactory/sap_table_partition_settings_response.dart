@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The settings that will be leveraged for SAP table source partitioning.
 class SapTablePartitionSettingsResponse {
   /// The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
-  final dynamic maxPartitionsNumber;
+  final pulumi.Input<dynamic>? maxPartitionsNumber;
   /// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  final dynamic partitionColumnName;
+  final pulumi.Input<dynamic>? partitionColumnName;
   /// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  final dynamic partitionLowerBound;
+  final pulumi.Input<dynamic>? partitionLowerBound;
   /// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  final dynamic partitionUpperBound;
+  final pulumi.Input<dynamic>? partitionUpperBound;
 
   /// Creates a new [SapTablePartitionSettingsResponse].
   /// [maxPartitionsNumber] The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
@@ -35,10 +36,10 @@ class SapTablePartitionSettingsResponse {
 
   factory SapTablePartitionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SapTablePartitionSettingsResponse(
-      maxPartitionsNumber: map['maxPartitionsNumber'] == null ? null : map['maxPartitionsNumber'],
-      partitionColumnName: map['partitionColumnName'] == null ? null : map['partitionColumnName'],
-      partitionLowerBound: map['partitionLowerBound'] == null ? null : map['partitionLowerBound'],
-      partitionUpperBound: map['partitionUpperBound'] == null ? null : map['partitionUpperBound'],
+      maxPartitionsNumber: map['maxPartitionsNumber'] == null ? null : (map['maxPartitionsNumber']).input(),
+      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']).input(),
+      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']).input(),
+      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']).input(),
     );
   }
 }

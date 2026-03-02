@@ -13,9 +13,8 @@ class GetVMInstanceGuestAgentArgs {
   /// Creates a new [GetVMInstanceGuestAgentArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
   GetVMInstanceGuestAgentArgs({
-    required pulumi.Output<String> resourceUri,
-  }) :
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetVMInstanceGuestAgentArgs {
 
   factory GetVMInstanceGuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetVMInstanceGuestAgentArgs(
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

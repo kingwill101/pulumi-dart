@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match.
 class GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
   /// The human-readable name of the phrase matcher.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The unique identifier (the resource name) of the phrase matcher.
-  final String phraseMatcher;
+  final pulumi.Input<String> phraseMatcher;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse].
   /// [displayName] The human-readable name of the phrase matcher.
@@ -25,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
 
   factory GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse(
-      displayName: map['displayName'] as String,
-      phraseMatcher: map['phraseMatcher'] as String,
+      displayName: (map['displayName'] as String).input(),
+      phraseMatcher: (map['phraseMatcher'] as String).input(),
     );
   }
 }

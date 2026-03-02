@@ -13,9 +13,8 @@ class GetMscSubSubscriptionsArgs {
   /// Creates a new [GetMscSubSubscriptionsArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetMscSubSubscriptionsArgs({
-    pulumi.Output<String>? outputFile,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetMscSubSubscriptionsArgs {
 
   factory GetMscSubSubscriptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetMscSubSubscriptionsArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -36,23 +36,15 @@ class WebhookArgs {
   /// [targetAction] The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
   /// [targetPipeline] The name of the pipeline.
   WebhookArgs({
-    required pulumi.Output<String> authentication,
-    pulumi.Output<WebhookAuthenticationConfiguration>? authenticationConfiguration,
-    required pulumi.Output<List<WebhookFilter>> filters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetAction,
-    required pulumi.Output<String> targetPipeline,
-  }) :
-      authentication = pulumi.Input.asInput<String>(authentication),
-      authenticationConfiguration = pulumi.Input.asOptionalInput<WebhookAuthenticationConfiguration>(authenticationConfiguration),
-      filters = pulumi.Input.asInput<List<WebhookFilter>>(filters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetAction = pulumi.Input.asInput<String>(targetAction),
-      targetPipeline = pulumi.Input.asInput<String>(targetPipeline);
+    required this.authentication,
+    this.authenticationConfiguration,
+    required this.filters,
+    this.name,
+    this.region,
+    this.tags,
+    required this.targetAction,
+    required this.targetPipeline,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      authentication: pulumi.Output.create<String>(map['authentication'] as String),
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : pulumi.Output.create<WebhookAuthenticationConfiguration>(WebhookAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())),
-      filters: pulumi.Output.create<List<WebhookFilter>>(pulumi.Input.decodeList<WebhookFilter>(map['filters'], (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetAction: pulumi.Output.create<String>(map['targetAction'] as String),
-      targetPipeline: pulumi.Output.create<String>(map['targetPipeline'] as String),
+      authentication: (map['authentication'] as String).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (WebhookAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      filters: (pulumi.Input.decodeList<WebhookFilter>(map['filters'], (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetAction: (map['targetAction'] as String).input(),
+      targetPipeline: (map['targetPipeline'] as String).input(),
     );
   }
 }

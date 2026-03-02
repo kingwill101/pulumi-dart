@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Backend address of an application gateway.
 class ApplicationGatewayBackendAddressResponse {
   /// Fully qualified domain name (FQDN).
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// IP address.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
 
   /// Creates a new [ApplicationGatewayBackendAddressResponse].
   /// [fqdn] Fully qualified domain name (FQDN).
@@ -25,8 +26,8 @@ class ApplicationGatewayBackendAddressResponse {
 
   factory ApplicationGatewayBackendAddressResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendAddressResponse(
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
     );
   }
 }

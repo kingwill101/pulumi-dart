@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateTargetResourceTag {
   /// Tag key.
-  final String key;
+  final pulumi.Input<String> key;
   /// Tag value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ExperimentTemplateTargetResourceTag].
   /// [key] Tag key.
@@ -24,8 +25,8 @@ class ExperimentTemplateTargetResourceTag {
 
   factory ExperimentTemplateTargetResourceTag.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateTargetResourceTag(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

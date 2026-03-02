@@ -43,31 +43,19 @@ class LocationAzureBlobState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uri] Optional.
   LocationAzureBlobState({
-    pulumi.Output<String>? accessTier,
-    pulumi.Output<List<String>>? agentArns,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? authenticationType,
-    pulumi.Output<String>? blobType,
-    pulumi.Output<String>? containerUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<LocationAzureBlobSasConfiguration>? sasConfiguration,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uri,
-  }) :
-      accessTier = pulumi.Input.asOptionalInput<String>(accessTier),
-      agentArns = pulumi.Input.asOptionalInput<List<String>>(agentArns),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authenticationType = pulumi.Input.asOptionalInput<String>(authenticationType),
-      blobType = pulumi.Input.asOptionalInput<String>(blobType),
-      containerUrl = pulumi.Input.asOptionalInput<String>(containerUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sasConfiguration = pulumi.Input.asOptionalInput<LocationAzureBlobSasConfiguration>(sasConfiguration),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.accessTier,
+    this.agentArns,
+    this.arn,
+    this.authenticationType,
+    this.blobType,
+    this.containerUrl,
+    this.region,
+    this.sasConfiguration,
+    this.subdirectory,
+    this.tags,
+    this.tagsAll,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class LocationAzureBlobState {
 
   factory LocationAzureBlobState.fromMap(Map<String, dynamic> map) {
     return LocationAzureBlobState(
-      accessTier: map['accessTier'] == null ? null : pulumi.Output.create<String>(map['accessTier'] as String),
-      agentArns: map['agentArns'] == null ? null : pulumi.Output.create<List<String>>((map['agentArns'] as List).cast<String>()),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authenticationType: map['authenticationType'] == null ? null : pulumi.Output.create<String>(map['authenticationType'] as String),
-      blobType: map['blobType'] == null ? null : pulumi.Output.create<String>(map['blobType'] as String),
-      containerUrl: map['containerUrl'] == null ? null : pulumi.Output.create<String>(map['containerUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sasConfiguration: map['sasConfiguration'] == null ? null : pulumi.Output.create<LocationAzureBlobSasConfiguration>(LocationAzureBlobSasConfiguration.fromMap((map['sasConfiguration'] as Map).cast<String, dynamic>())),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
+      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      blobType: map['blobType'] == null ? null : (map['blobType'] as String).input(),
+      containerUrl: map['containerUrl'] == null ? null : (map['containerUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sasConfiguration: map['sasConfiguration'] == null ? null : (LocationAzureBlobSasConfiguration.fromMap((map['sasConfiguration'] as Map).cast<String, dynamic>())).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCodeSigningConfigPolicy {
   /// Code signing configuration policy for deployment validation failure. Valid values: `Warn`, `Enforce`.
-  final String untrustedArtifactOnDeployment;
+  final pulumi.Input<String> untrustedArtifactOnDeployment;
 
   /// Creates a new [GetCodeSigningConfigPolicy].
   /// [untrustedArtifactOnDeployment] Code signing configuration policy for deployment validation failure. Valid values: `Warn`, `Enforce`.
@@ -19,7 +20,7 @@ class GetCodeSigningConfigPolicy {
 
   factory GetCodeSigningConfigPolicy.fromMap(Map<String, dynamic> map) {
     return GetCodeSigningConfigPolicy(
-      untrustedArtifactOnDeployment: map['untrustedArtifactOnDeployment'] as String,
+      untrustedArtifactOnDeployment: (map['untrustedArtifactOnDeployment'] as String).input(),
     );
   }
 }

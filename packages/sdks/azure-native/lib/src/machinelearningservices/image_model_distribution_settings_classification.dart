@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Distribution expressions to sweep over values of model settings.
 /// <example>
@@ -15,79 +16,79 @@
 /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
 class ImageModelDistributionSettingsClassification {
   /// Enable AMSGrad when optimizer is 'adam' or 'adamw'.
-  final String? amsGradient;
+  final pulumi.Input<String>? amsGradient;
   /// Settings for using Augmentations.
-  final String? augmentations;
+  final pulumi.Input<String>? augmentations;
   /// Value of 'beta1' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
-  final String? beta1;
+  final pulumi.Input<String>? beta1;
   /// Value of 'beta2' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
-  final String? beta2;
+  final pulumi.Input<String>? beta2;
   /// Whether to use distributer training.
-  final String? distributed;
+  final pulumi.Input<String>? distributed;
   /// Enable early stopping logic during training.
-  final String? earlyStopping;
+  final pulumi.Input<String>? earlyStopping;
   /// Minimum number of epochs or validation evaluations to wait before primary metric improvement
   /// is tracked for early stopping. Must be a positive integer.
-  final String? earlyStoppingDelay;
+  final pulumi.Input<String>? earlyStoppingDelay;
   /// Minimum number of epochs or validation evaluations with no primary metric improvement before
   /// the run is stopped. Must be a positive integer.
-  final String? earlyStoppingPatience;
+  final pulumi.Input<String>? earlyStoppingPatience;
   /// Enable normalization when exporting ONNX model.
-  final String? enableOnnxNormalization;
+  final pulumi.Input<String>? enableOnnxNormalization;
   /// Frequency to evaluate validation dataset to get metric scores. Must be a positive integer.
-  final String? evaluationFrequency;
+  final pulumi.Input<String>? evaluationFrequency;
   /// Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
   /// updating the model weights while accumulating the gradients of those steps, and then using
   /// the accumulated gradients to compute the weight updates. Must be a positive integer.
-  final String? gradientAccumulationStep;
+  final pulumi.Input<String>? gradientAccumulationStep;
   /// Number of layers to freeze for the model. Must be a positive integer.
   /// For instance, passing 2 as value for 'seresnext' means
   /// freezing layer0 and layer1. For a full list of models supported and details on layer freeze, please
   /// see: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
-  final String? layersToFreeze;
+  final pulumi.Input<String>? layersToFreeze;
   /// Initial learning rate. Must be a float in the range [0, 1].
-  final String? learningRate;
+  final pulumi.Input<String>? learningRate;
   /// Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
-  final String? learningRateScheduler;
+  final pulumi.Input<String>? learningRateScheduler;
   /// Name of the model to use for training.
   /// For more information on the available models please visit the official documentation:
   /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
-  final String? modelName;
+  final pulumi.Input<String>? modelName;
   /// Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
-  final String? momentum;
+  final pulumi.Input<String>? momentum;
   /// Enable nesterov when optimizer is 'sgd'.
-  final String? nesterov;
+  final pulumi.Input<String>? nesterov;
   /// Number of training epochs. Must be a positive integer.
-  final String? numberOfEpochs;
+  final pulumi.Input<String>? numberOfEpochs;
   /// Number of data loader workers. Must be a non-negative integer.
-  final String? numberOfWorkers;
+  final pulumi.Input<String>? numberOfWorkers;
   /// Type of optimizer. Must be either 'sgd', 'adam', or 'adamw'.
-  final String? optimizer;
+  final pulumi.Input<String>? optimizer;
   /// Random seed to be used when using deterministic training.
-  final String? randomSeed;
+  final pulumi.Input<String>? randomSeed;
   /// Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
-  final String? stepLRGamma;
+  final pulumi.Input<String>? stepLRGamma;
   /// Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
-  final String? stepLRStepSize;
+  final pulumi.Input<String>? stepLRStepSize;
   /// Training batch size. Must be a positive integer.
-  final String? trainingBatchSize;
+  final pulumi.Input<String>? trainingBatchSize;
   /// Image crop size that is input to the neural network for the training dataset. Must be a positive integer.
-  final String? trainingCropSize;
+  final pulumi.Input<String>? trainingCropSize;
   /// Validation batch size. Must be a positive integer.
-  final String? validationBatchSize;
+  final pulumi.Input<String>? validationBatchSize;
   /// Image crop size that is input to the neural network for the validation dataset. Must be a positive integer.
-  final String? validationCropSize;
+  final pulumi.Input<String>? validationCropSize;
   /// Image size to which to resize before cropping for validation dataset. Must be a positive integer.
-  final String? validationResizeSize;
+  final pulumi.Input<String>? validationResizeSize;
   /// Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
-  final String? warmupCosineLRCycles;
+  final pulumi.Input<String>? warmupCosineLRCycles;
   /// Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
-  final String? warmupCosineLRWarmupEpochs;
+  final pulumi.Input<String>? warmupCosineLRWarmupEpochs;
   /// Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
-  final String? weightDecay;
+  final pulumi.Input<String>? weightDecay;
   /// Weighted loss. The accepted values are 0 for no weighted loss.
   /// 1 for weighted loss with sqrt.(class_weights). 2 for weighted loss with class_weights. Must be 0 or 1 or 2.
-  final String? weightedLoss;
+  final pulumi.Input<String>? weightedLoss;
 
   /// Creates a new [ImageModelDistributionSettingsClassification].
   /// [amsGradient] Enable AMSGrad when optimizer is 'adam' or 'adamw'.
@@ -196,38 +197,38 @@ class ImageModelDistributionSettingsClassification {
 
   factory ImageModelDistributionSettingsClassification.fromMap(Map<String, dynamic> map) {
     return ImageModelDistributionSettingsClassification(
-      amsGradient: map['amsGradient'] == null ? null : map['amsGradient'] as String,
-      augmentations: map['augmentations'] == null ? null : map['augmentations'] as String,
-      beta1: map['beta1'] == null ? null : map['beta1'] as String,
-      beta2: map['beta2'] == null ? null : map['beta2'] as String,
-      distributed: map['distributed'] == null ? null : map['distributed'] as String,
-      earlyStopping: map['earlyStopping'] == null ? null : map['earlyStopping'] as String,
-      earlyStoppingDelay: map['earlyStoppingDelay'] == null ? null : map['earlyStoppingDelay'] as String,
-      earlyStoppingPatience: map['earlyStoppingPatience'] == null ? null : map['earlyStoppingPatience'] as String,
-      enableOnnxNormalization: map['enableOnnxNormalization'] == null ? null : map['enableOnnxNormalization'] as String,
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : map['evaluationFrequency'] as String,
-      gradientAccumulationStep: map['gradientAccumulationStep'] == null ? null : map['gradientAccumulationStep'] as String,
-      layersToFreeze: map['layersToFreeze'] == null ? null : map['layersToFreeze'] as String,
-      learningRate: map['learningRate'] == null ? null : map['learningRate'] as String,
-      learningRateScheduler: map['learningRateScheduler'] == null ? null : map['learningRateScheduler'] as String,
-      modelName: map['modelName'] == null ? null : map['modelName'] as String,
-      momentum: map['momentum'] == null ? null : map['momentum'] as String,
-      nesterov: map['nesterov'] == null ? null : map['nesterov'] as String,
-      numberOfEpochs: map['numberOfEpochs'] == null ? null : map['numberOfEpochs'] as String,
-      numberOfWorkers: map['numberOfWorkers'] == null ? null : map['numberOfWorkers'] as String,
-      optimizer: map['optimizer'] == null ? null : map['optimizer'] as String,
-      randomSeed: map['randomSeed'] == null ? null : map['randomSeed'] as String,
-      stepLRGamma: map['stepLRGamma'] == null ? null : map['stepLRGamma'] as String,
-      stepLRStepSize: map['stepLRStepSize'] == null ? null : map['stepLRStepSize'] as String,
-      trainingBatchSize: map['trainingBatchSize'] == null ? null : map['trainingBatchSize'] as String,
-      trainingCropSize: map['trainingCropSize'] == null ? null : map['trainingCropSize'] as String,
-      validationBatchSize: map['validationBatchSize'] == null ? null : map['validationBatchSize'] as String,
-      validationCropSize: map['validationCropSize'] == null ? null : map['validationCropSize'] as String,
-      validationResizeSize: map['validationResizeSize'] == null ? null : map['validationResizeSize'] as String,
-      warmupCosineLRCycles: map['warmupCosineLRCycles'] == null ? null : map['warmupCosineLRCycles'] as String,
-      warmupCosineLRWarmupEpochs: map['warmupCosineLRWarmupEpochs'] == null ? null : map['warmupCosineLRWarmupEpochs'] as String,
-      weightDecay: map['weightDecay'] == null ? null : map['weightDecay'] as String,
-      weightedLoss: map['weightedLoss'] == null ? null : map['weightedLoss'] as String,
+      amsGradient: map['amsGradient'] == null ? null : (map['amsGradient'] as String).input(),
+      augmentations: map['augmentations'] == null ? null : (map['augmentations'] as String).input(),
+      beta1: map['beta1'] == null ? null : (map['beta1'] as String).input(),
+      beta2: map['beta2'] == null ? null : (map['beta2'] as String).input(),
+      distributed: map['distributed'] == null ? null : (map['distributed'] as String).input(),
+      earlyStopping: map['earlyStopping'] == null ? null : (map['earlyStopping'] as String).input(),
+      earlyStoppingDelay: map['earlyStoppingDelay'] == null ? null : (map['earlyStoppingDelay'] as String).input(),
+      earlyStoppingPatience: map['earlyStoppingPatience'] == null ? null : (map['earlyStoppingPatience'] as String).input(),
+      enableOnnxNormalization: map['enableOnnxNormalization'] == null ? null : (map['enableOnnxNormalization'] as String).input(),
+      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency'] as String).input(),
+      gradientAccumulationStep: map['gradientAccumulationStep'] == null ? null : (map['gradientAccumulationStep'] as String).input(),
+      layersToFreeze: map['layersToFreeze'] == null ? null : (map['layersToFreeze'] as String).input(),
+      learningRate: map['learningRate'] == null ? null : (map['learningRate'] as String).input(),
+      learningRateScheduler: map['learningRateScheduler'] == null ? null : (map['learningRateScheduler'] as String).input(),
+      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
+      momentum: map['momentum'] == null ? null : (map['momentum'] as String).input(),
+      nesterov: map['nesterov'] == null ? null : (map['nesterov'] as String).input(),
+      numberOfEpochs: map['numberOfEpochs'] == null ? null : (map['numberOfEpochs'] as String).input(),
+      numberOfWorkers: map['numberOfWorkers'] == null ? null : (map['numberOfWorkers'] as String).input(),
+      optimizer: map['optimizer'] == null ? null : (map['optimizer'] as String).input(),
+      randomSeed: map['randomSeed'] == null ? null : (map['randomSeed'] as String).input(),
+      stepLRGamma: map['stepLRGamma'] == null ? null : (map['stepLRGamma'] as String).input(),
+      stepLRStepSize: map['stepLRStepSize'] == null ? null : (map['stepLRStepSize'] as String).input(),
+      trainingBatchSize: map['trainingBatchSize'] == null ? null : (map['trainingBatchSize'] as String).input(),
+      trainingCropSize: map['trainingCropSize'] == null ? null : (map['trainingCropSize'] as String).input(),
+      validationBatchSize: map['validationBatchSize'] == null ? null : (map['validationBatchSize'] as String).input(),
+      validationCropSize: map['validationCropSize'] == null ? null : (map['validationCropSize'] as String).input(),
+      validationResizeSize: map['validationResizeSize'] == null ? null : (map['validationResizeSize'] as String).input(),
+      warmupCosineLRCycles: map['warmupCosineLRCycles'] == null ? null : (map['warmupCosineLRCycles'] as String).input(),
+      warmupCosineLRWarmupEpochs: map['warmupCosineLRWarmupEpochs'] == null ? null : (map['warmupCosineLRWarmupEpochs'] as String).input(),
+      weightDecay: map['weightDecay'] == null ? null : (map['weightDecay'] as String).input(),
+      weightedLoss: map['weightedLoss'] == null ? null : (map['weightedLoss'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class EndpointServicebusArgs {
   /// [servicebusPrimaryConnectionString] The primary connection string of the Service Bus Topic Authorization Rule with a minimum of `send` permission. .
   /// [servicebusSecondaryConnectionString] The secondary connection string of the Service Bus Topic Authorization Rule with a minimum of `send` permission.
   EndpointServicebusArgs({
-    pulumi.Output<String>? deadLetterStorageSecret,
-    required pulumi.Output<String> digitalTwinsId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> servicebusPrimaryConnectionString,
-    required pulumi.Output<String> servicebusSecondaryConnectionString,
-  }) :
-      deadLetterStorageSecret = pulumi.Input.asOptionalInput<String>(deadLetterStorageSecret),
-      digitalTwinsId = pulumi.Input.asInput<String>(digitalTwinsId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      servicebusPrimaryConnectionString = pulumi.Input.asInput<String>(servicebusPrimaryConnectionString),
-      servicebusSecondaryConnectionString = pulumi.Input.asInput<String>(servicebusSecondaryConnectionString);
+    this.deadLetterStorageSecret,
+    required this.digitalTwinsId,
+    this.name,
+    required this.servicebusPrimaryConnectionString,
+    required this.servicebusSecondaryConnectionString,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EndpointServicebusArgs {
 
   factory EndpointServicebusArgs.fromMap(Map<String, dynamic> map) {
     return EndpointServicebusArgs(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : pulumi.Output.create<String>(map['deadLetterStorageSecret'] as String),
-      digitalTwinsId: pulumi.Output.create<String>(map['digitalTwinsId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      servicebusPrimaryConnectionString: pulumi.Output.create<String>(map['servicebusPrimaryConnectionString'] as String),
-      servicebusSecondaryConnectionString: pulumi.Output.create<String>(map['servicebusSecondaryConnectionString'] as String),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
+      digitalTwinsId: (map['digitalTwinsId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      servicebusPrimaryConnectionString: (map['servicebusPrimaryConnectionString'] as String).input(),
+      servicebusSecondaryConnectionString: (map['servicebusSecondaryConnectionString'] as String).input(),
     );
   }
 }

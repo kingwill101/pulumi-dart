@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSecret {
   /// Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
-  final String identity;
+  final pulumi.Input<String> identity;
   /// The ID of a Key Vault secret.
-  final String keyVaultSecretId;
+  final pulumi.Input<String> keyVaultSecretId;
   /// The name of the Container App.
-  final String name;
+  final pulumi.Input<String> name;
   /// The HTTP Header value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetAppSecret].
   /// [identity] Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
@@ -34,10 +35,10 @@ class GetAppSecret {
 
   factory GetAppSecret.fromMap(Map<String, dynamic> map) {
     return GetAppSecret(
-      identity: map['identity'] as String,
-      keyVaultSecretId: map['keyVaultSecretId'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      identity: (map['identity'] as String).input(),
+      keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

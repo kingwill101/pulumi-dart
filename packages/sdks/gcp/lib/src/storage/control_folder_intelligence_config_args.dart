@@ -21,13 +21,10 @@ class ControlFolderIntelligenceConfigArgs {
   /// [filter] Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// [name] Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
   ControlFolderIntelligenceConfigArgs({
-    pulumi.Output<String>? editionConfig,
-    pulumi.Output<ControlFolderIntelligenceConfigFilter>? filter,
-    pulumi.Output<String>? name,
-  }) :
-      editionConfig = pulumi.Input.asOptionalInput<String>(editionConfig),
-      filter = pulumi.Input.asOptionalInput<ControlFolderIntelligenceConfigFilter>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.editionConfig,
+    this.filter,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ControlFolderIntelligenceConfigArgs {
 
   factory ControlFolderIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigArgs(
-      editionConfig: map['editionConfig'] == null ? null : pulumi.Output.create<String>(map['editionConfig'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<ControlFolderIntelligenceConfigFilter>(ControlFolderIntelligenceConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      editionConfig: map['editionConfig'] == null ? null : (map['editionConfig'] as String).input(),
+      filter: map['filter'] == null ? null : (ControlFolderIntelligenceConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationProgress {
   /// The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
-  final String? historicalObject;
+  final pulumi.Input<String>? historicalObject;
   /// The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
-  final String? newObject;
+  final pulumi.Input<String>? newObject;
 
   /// Creates a new [BucketReplicationProgress].
   /// [historicalObject] The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
@@ -24,8 +25,8 @@ class BucketReplicationProgress {
 
   factory BucketReplicationProgress.fromMap(Map<String, dynamic> map) {
     return BucketReplicationProgress(
-      historicalObject: map['historicalObject'] == null ? null : map['historicalObject'] as String,
-      newObject: map['newObject'] == null ? null : map['newObject'] as String,
+      historicalObject: map['historicalObject'] == null ? null : (map['historicalObject'] as String).input(),
+      newObject: map['newObject'] == null ? null : (map['newObject'] as String).input(),
     );
   }
 }

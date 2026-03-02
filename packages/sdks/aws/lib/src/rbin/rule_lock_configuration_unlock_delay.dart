@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleLockConfigurationUnlockDelay {
   /// Unit of time in which to measure the unlock delay. Currently, the unlock delay can be measure only in days.
-  final String unlockDelayUnit;
+  final pulumi.Input<String> unlockDelayUnit;
   /// Unlock delay period, measured in the unit specified for UnlockDelayUnit.
-  final int unlockDelayValue;
+  final pulumi.Input<int> unlockDelayValue;
 
   /// Creates a new [RuleLockConfigurationUnlockDelay].
   /// [unlockDelayUnit] Unit of time in which to measure the unlock delay. Currently, the unlock delay can be measure only in days.
@@ -24,8 +25,8 @@ class RuleLockConfigurationUnlockDelay {
 
   factory RuleLockConfigurationUnlockDelay.fromMap(Map<String, dynamic> map) {
     return RuleLockConfigurationUnlockDelay(
-      unlockDelayUnit: map['unlockDelayUnit'] as String,
-      unlockDelayValue: map['unlockDelayValue'] as int,
+      unlockDelayUnit: (map['unlockDelayUnit'] as String).input(),
+      unlockDelayValue: (map['unlockDelayValue'] as int).input(),
     );
   }
 }

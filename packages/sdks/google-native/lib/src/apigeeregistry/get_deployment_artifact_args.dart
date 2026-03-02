@@ -20,17 +20,12 @@ class GetDeploymentArtifactArgs {
   /// [location] Required.
   /// [project] Optional.
   GetDeploymentArtifactArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> artifactId,
-    required pulumi.Output<String> deploymentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      artifactId = pulumi.Input.asInput<String>(artifactId),
-      deploymentId = pulumi.Input.asInput<String>(deploymentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.apiId,
+    required this.artifactId,
+    required this.deploymentId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetDeploymentArtifactArgs {
 
   factory GetDeploymentArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentArtifactArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      artifactId: pulumi.Output.create<String>(map['artifactId'] as String),
-      deploymentId: pulumi.Output.create<String>(map['deploymentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      apiId: (map['apiId'] as String).input(),
+      artifactId: (map['artifactId'] as String).input(),
+      deploymentId: (map['deploymentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

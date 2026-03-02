@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigContainerdConfigWritableCgroups {
   /// Whether writable cgroups are enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterNodeConfigContainerdConfigWritableCgroups].
   /// [enabled] Whether writable cgroups are enabled.
@@ -19,7 +20,7 @@ class ClusterNodeConfigContainerdConfigWritableCgroups {
 
   factory ClusterNodeConfigContainerdConfigWritableCgroups.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigContainerdConfigWritableCgroups(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

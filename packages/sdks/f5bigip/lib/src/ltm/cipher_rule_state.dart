@@ -22,17 +22,12 @@ class CipherRuleState {
   /// [name] Name of the Cipher Rule. Name should be in pattern `partition` + `cipher_rule_name`
   /// [signatureAlgorithms] Specifies the Signature Algorithms, separated by colons (:).
   CipherRuleState({
-    pulumi.Output<String>? cipher,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? dhGroups,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? signatureAlgorithms,
-  }) :
-      cipher = pulumi.Input.asOptionalInput<String>(cipher),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dhGroups = pulumi.Input.asOptionalInput<String>(dhGroups),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      signatureAlgorithms = pulumi.Input.asOptionalInput<String>(signatureAlgorithms);
+    this.cipher,
+    this.description,
+    this.dhGroups,
+    this.name,
+    this.signatureAlgorithms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class CipherRuleState {
 
   factory CipherRuleState.fromMap(Map<String, dynamic> map) {
     return CipherRuleState(
-      cipher: map['cipher'] == null ? null : pulumi.Output.create<String>(map['cipher'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dhGroups: map['dhGroups'] == null ? null : pulumi.Output.create<String>(map['dhGroups'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : pulumi.Output.create<String>(map['signatureAlgorithms'] as String),
+      cipher: map['cipher'] == null ? null : (map['cipher'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dhGroups: map['dhGroups'] == null ? null : (map['dhGroups'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : (map['signatureAlgorithms'] as String).input(),
     );
   }
 }

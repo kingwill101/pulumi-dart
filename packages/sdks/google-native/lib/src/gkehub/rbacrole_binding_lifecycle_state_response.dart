@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.
 class RBACRoleBindingLifecycleStateResponse {
   /// The current state of the rbacrolebinding resource.
-  final String code;
+  final pulumi.Input<String> code;
 
   /// Creates a new [RBACRoleBindingLifecycleStateResponse].
   /// [code] The current state of the rbacrolebinding resource.
@@ -20,7 +21,7 @@ class RBACRoleBindingLifecycleStateResponse {
 
   factory RBACRoleBindingLifecycleStateResponse.fromMap(Map<String, dynamic> map) {
     return RBACRoleBindingLifecycleStateResponse(
-      code: map['code'] as String,
+      code: (map['code'] as String).input(),
     );
   }
 }

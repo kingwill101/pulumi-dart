@@ -6,7 +6,7 @@ import 'postgresql_schema.dart';
 /// PostgreSQL database structure.
 class PostgresqlRdbms {
   /// PostgreSQL schemas in the database server.
-  final List<PostgresqlSchema>? postgresqlSchemas;
+  final pulumi.Input<List<PostgresqlSchema>>? postgresqlSchemas;
 
   /// Creates a new [PostgresqlRdbms].
   /// [postgresqlSchemas] PostgreSQL schemas in the database server.
@@ -16,13 +16,13 @@ class PostgresqlRdbms {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlSchemas': ?postgresqlSchemas == null ? null : pulumi.Input.encodeList<PostgresqlSchema, Map<String, dynamic>>(postgresqlSchemas!, (value) => value.toMap()),
+      'postgresqlSchemas': ?pulumi.Input.mapOptionalInputValue<List<PostgresqlSchema>, List<Map<String, dynamic>>>(postgresqlSchemas, (value) => pulumi.Input.encodeList<PostgresqlSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PostgresqlRdbms.fromMap(Map<String, dynamic> map) {
     return PostgresqlRdbms(
-      postgresqlSchemas: map['postgresqlSchemas'] == null ? null : pulumi.Input.decodeList<PostgresqlSchema>(map['postgresqlSchemas'], (value) => PostgresqlSchema.fromMap((value as Map).cast<String, dynamic>())),
+      postgresqlSchemas: map['postgresqlSchemas'] == null ? null : (pulumi.Input.decodeList<PostgresqlSchema>(map['postgresqlSchemas'], (value) => PostgresqlSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

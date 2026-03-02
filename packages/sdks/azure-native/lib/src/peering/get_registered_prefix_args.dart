@@ -19,13 +19,10 @@ class GetRegisteredPrefixArgs {
   /// [registeredPrefixName] The name of the registered prefix.
   /// [resourceGroupName] The name of the resource group.
   GetRegisteredPrefixArgs({
-    required pulumi.Output<String> peeringName,
-    required pulumi.Output<String> registeredPrefixName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      peeringName = pulumi.Input.asInput<String>(peeringName),
-      registeredPrefixName = pulumi.Input.asInput<String>(registeredPrefixName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.peeringName,
+    required this.registeredPrefixName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegisteredPrefixArgs {
 
   factory GetRegisteredPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetRegisteredPrefixArgs(
-      peeringName: pulumi.Output.create<String>(map['peeringName'] as String),
-      registeredPrefixName: pulumi.Output.create<String>(map['registeredPrefixName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      peeringName: (map['peeringName'] as String).input(),
+      registeredPrefixName: (map['registeredPrefixName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

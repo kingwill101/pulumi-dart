@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponsePlanActionSsmAutomationParameter {
   /// The name of the PagerDuty configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// The values for the associated parameter name.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetResponsePlanActionSsmAutomationParameter].
   /// [name] The name of the PagerDuty configuration.
@@ -24,8 +25,8 @@ class GetResponsePlanActionSsmAutomationParameter {
 
   factory GetResponsePlanActionSsmAutomationParameter.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanActionSsmAutomationParameter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserAssignedIdentityProperties {
   /// ARM ID of user Identity selected for encryption
-  final String? userAssignedIdentity;
+  final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [UserAssignedIdentityProperties].
   /// [userAssignedIdentity] ARM ID of user Identity selected for encryption
@@ -19,7 +20,7 @@ class UserAssignedIdentityProperties {
 
   factory UserAssignedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityProperties(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : map['userAssignedIdentity'] as String,
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
     );
   }
 }

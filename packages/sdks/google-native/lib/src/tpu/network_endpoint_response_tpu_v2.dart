@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_config_response.dart';
 
 /// A network endpoint over which a TPU worker can be reached.
 class NetworkEndpointResponseTpuV2 {
   /// The access config for the TPU worker.
-  final AccessConfigResponse accessConfig;
+  final pulumi.Input<AccessConfigResponse> accessConfig;
   /// The internal IP address of this network endpoint.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The port of this network endpoint.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [NetworkEndpointResponseTpuV2].
   /// [accessConfig] The access config for the TPU worker.
@@ -23,7 +24,7 @@ class NetworkEndpointResponseTpuV2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfig': accessConfig.toMap(),
+      'accessConfig': pulumi.Input.mapInputValue<AccessConfigResponse, Map<String, dynamic>>(accessConfig, (value) => value.toMap()),
       'ipAddress': ipAddress,
       'port': port,
     };
@@ -31,9 +32,9 @@ class NetworkEndpointResponseTpuV2 {
 
   factory NetworkEndpointResponseTpuV2.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointResponseTpuV2(
-      accessConfig: AccessConfigResponse.fromMap((map['accessConfig'] as Map).cast<String, dynamic>()),
-      ipAddress: map['ipAddress'] as String,
-      port: map['port'] as int,
+      accessConfig: (AccessConfigResponse.fromMap((map['accessConfig'] as Map).cast<String, dynamic>())).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

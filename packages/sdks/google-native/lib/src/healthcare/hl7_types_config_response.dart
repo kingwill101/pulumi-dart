@@ -7,9 +7,9 @@ import 'version_source_response.dart';
 /// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
 class Hl7TypesConfigResponse {
   /// The HL7v2 type definitions.
-  final List<TypeResponse> type;
+  final pulumi.Input<List<TypeResponse>> type;
   /// The version selectors that this config applies to. A message must match ALL version sources to apply.
-  final List<VersionSourceResponse> version;
+  final pulumi.Input<List<VersionSourceResponse>> version;
 
   /// Creates a new [Hl7TypesConfigResponse].
   /// [type] The HL7v2 type definitions.
@@ -21,15 +21,15 @@ class Hl7TypesConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': pulumi.Input.encodeList<TypeResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
-      'version': pulumi.Input.encodeList<VersionSourceResponse, Map<String, dynamic>>(version, (value) => value.toMap()),
+      'type': pulumi.Input.mapInputValue<List<TypeResponse>, List<Map<String, dynamic>>>(type, (value) => pulumi.Input.encodeList<TypeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'version': pulumi.Input.mapInputValue<List<VersionSourceResponse>, List<Map<String, dynamic>>>(version, (value) => pulumi.Input.encodeList<VersionSourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Hl7TypesConfigResponse.fromMap(Map<String, dynamic> map) {
     return Hl7TypesConfigResponse(
-      type: pulumi.Input.decodeList<TypeResponse>(map['type'], (value) => TypeResponse.fromMap((value as Map).cast<String, dynamic>())),
-      version: pulumi.Input.decodeList<VersionSourceResponse>(map['version'], (value) => VersionSourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      type: (pulumi.Input.decodeList<TypeResponse>(map['type'], (value) => TypeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: (pulumi.Input.decodeList<VersionSourceResponse>(map['version'], (value) => VersionSourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

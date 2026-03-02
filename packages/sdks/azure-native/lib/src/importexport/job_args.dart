@@ -26,17 +26,12 @@ class JobArgs {
   /// [resourceGroupName] The resource group name uniquely identifies the resource group within the user subscription.
   /// [tags] Specifies the tags that will be assigned to the job.
   JobArgs({
-    pulumi.Output<String>? jobName,
-    pulumi.Output<String>? location,
-    pulumi.Output<JobDetails>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<dynamic>? tags,
-  }) :
-      jobName = pulumi.Input.asOptionalInput<String>(jobName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<JobDetails>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<dynamic>(tags);
+    this.jobName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      jobName: map['jobName'] == null ? null : pulumi.Output.create<String>(map['jobName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<JobDetails>(JobDetails.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<dynamic>(map['tags']),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (JobDetails.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : (map['tags']).input(),
     );
   }
 }

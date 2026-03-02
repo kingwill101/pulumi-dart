@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Article details of the insight like title, description etc
 class Content {
   /// Description of the insight
-  final String description;
+  final pulumi.Input<String> description;
   /// Title of the insight
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [Content].
   /// [description] Description of the insight
@@ -25,8 +26,8 @@ class Content {
 
   factory Content.fromMap(Map<String, dynamic> map) {
     return Content(
-      description: map['description'] as String,
-      title: map['title'] as String,
+      description: (map['description'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesTpmBackendEmulatorEncryption {
   /// Sets the secret used for the encryption configuration for the emulator TPM backend.
-  final String secret;
+  final pulumi.Input<String> secret;
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorEncryption].
   /// [secret] Sets the secret used for the encryption configuration for the emulator TPM backend.
@@ -19,7 +20,7 @@ class DomainDevicesTpmBackendEmulatorEncryption {
 
   factory DomainDevicesTpmBackendEmulatorEncryption.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulatorEncryption(
-      secret: map['secret'] as String,
+      secret: (map['secret'] as String).input(),
     );
   }
 }

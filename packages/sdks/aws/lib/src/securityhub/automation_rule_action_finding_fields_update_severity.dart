@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleActionFindingFieldsUpdateSeverity {
   /// The severity value of the finding. The allowed values are the following `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH` and `CRITICAL`.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// The native severity as defined by the AWS service or integrated partner product that generated the finding.
-  final double? product;
+  final pulumi.Input<double>? product;
 
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateSeverity].
   /// [label] The severity value of the finding. The allowed values are the following `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH` and `CRITICAL`.
@@ -24,8 +25,8 @@ class AutomationRuleActionFindingFieldsUpdateSeverity {
 
   factory AutomationRuleActionFindingFieldsUpdateSeverity.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdateSeverity(
-      label: map['label'] == null ? null : map['label'] as String,
-      product: map['product'] == null ? null : map['product'] as double,
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as double).input(),
     );
   }
 }

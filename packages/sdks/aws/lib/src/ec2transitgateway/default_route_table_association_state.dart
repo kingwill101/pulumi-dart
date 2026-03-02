@@ -21,17 +21,12 @@ class DefaultRouteTableAssociationState {
   /// [transitGatewayId] ID of the Transit Gateway to change the default association route table on.
   /// [transitGatewayRouteTableId] ID of the Transit Gateway Route Table to be made the default association route table.
   DefaultRouteTableAssociationState({
-    pulumi.Output<String>? originalDefaultRouteTableId,
-    pulumi.Output<String>? region,
-    pulumi.Output<DefaultRouteTableAssociationTimeouts>? timeouts,
-    pulumi.Output<String>? transitGatewayId,
-    pulumi.Output<String>? transitGatewayRouteTableId,
-  }) :
-      originalDefaultRouteTableId = pulumi.Input.asOptionalInput<String>(originalDefaultRouteTableId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<DefaultRouteTableAssociationTimeouts>(timeouts),
-      transitGatewayId = pulumi.Input.asOptionalInput<String>(transitGatewayId),
-      transitGatewayRouteTableId = pulumi.Input.asOptionalInput<String>(transitGatewayRouteTableId);
+    this.originalDefaultRouteTableId,
+    this.region,
+    this.timeouts,
+    this.transitGatewayId,
+    this.transitGatewayRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +40,11 @@ class DefaultRouteTableAssociationState {
 
   factory DefaultRouteTableAssociationState.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTableAssociationState(
-      originalDefaultRouteTableId: map['originalDefaultRouteTableId'] == null ? null : pulumi.Output.create<String>(map['originalDefaultRouteTableId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DefaultRouteTableAssociationTimeouts>(DefaultRouteTableAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      transitGatewayId: map['transitGatewayId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayId'] as String),
-      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayRouteTableId'] as String),
+      originalDefaultRouteTableId: map['originalDefaultRouteTableId'] == null ? null : (map['originalDefaultRouteTableId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (DefaultRouteTableAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
+      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : (map['transitGatewayRouteTableId'] as String).input(),
     );
   }
 }

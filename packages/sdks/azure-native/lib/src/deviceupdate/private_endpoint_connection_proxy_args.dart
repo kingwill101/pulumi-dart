@@ -26,17 +26,12 @@ class PrivateEndpointConnectionProxyArgs {
   /// [resourceGroupName] The resource group name.
   /// [status] Operation status.
   PrivateEndpointConnectionProxyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? privateEndpointConnectionProxyId,
-    pulumi.Output<RemotePrivateEndpoint>? remotePrivateEndpoint,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? status,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      privateEndpointConnectionProxyId = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionProxyId),
-      remotePrivateEndpoint = pulumi.Input.asOptionalInput<RemotePrivateEndpoint>(remotePrivateEndpoint),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.accountName,
+    this.privateEndpointConnectionProxyId,
+    this.remotePrivateEndpoint,
+    required this.resourceGroupName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PrivateEndpointConnectionProxyArgs {
 
   factory PrivateEndpointConnectionProxyArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProxyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      privateEndpointConnectionProxyId: map['privateEndpointConnectionProxyId'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionProxyId'] as String),
-      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : pulumi.Output.create<RemotePrivateEndpoint>(RemotePrivateEndpoint.fromMap((map['remotePrivateEndpoint'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accountName: (map['accountName'] as String).input(),
+      privateEndpointConnectionProxyId: map['privateEndpointConnectionProxyId'] == null ? null : (map['privateEndpointConnectionProxyId'] as String).input(),
+      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : (RemotePrivateEndpoint.fromMap((map['remotePrivateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

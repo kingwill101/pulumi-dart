@@ -59,27 +59,17 @@ class EntryArgs {
   /// [userSpecifiedSystem] This field indicates the entry's source system that Data Catalog does not integrate with.
   /// [userSpecifiedType] Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
   EntryArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> entryGroup,
-    required pulumi.Output<String> entryId,
-    pulumi.Output<EntryGcsFilesetSpec>? gcsFilesetSpec,
-    pulumi.Output<String>? linkedResource,
-    pulumi.Output<String>? schema,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? userSpecifiedSystem,
-    pulumi.Output<String>? userSpecifiedType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      entryGroup = pulumi.Input.asInput<String>(entryGroup),
-      entryId = pulumi.Input.asInput<String>(entryId),
-      gcsFilesetSpec = pulumi.Input.asOptionalInput<EntryGcsFilesetSpec>(gcsFilesetSpec),
-      linkedResource = pulumi.Input.asOptionalInput<String>(linkedResource),
-      schema = pulumi.Input.asOptionalInput<String>(schema),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      userSpecifiedSystem = pulumi.Input.asOptionalInput<String>(userSpecifiedSystem),
-      userSpecifiedType = pulumi.Input.asOptionalInput<String>(userSpecifiedType);
+    this.description,
+    this.displayName,
+    required this.entryGroup,
+    required this.entryId,
+    this.gcsFilesetSpec,
+    this.linkedResource,
+    this.schema,
+    this.type,
+    this.userSpecifiedSystem,
+    this.userSpecifiedType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,16 +88,16 @@ class EntryArgs {
 
   factory EntryArgs.fromMap(Map<String, dynamic> map) {
     return EntryArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      entryGroup: pulumi.Output.create<String>(map['entryGroup'] as String),
-      entryId: pulumi.Output.create<String>(map['entryId'] as String),
-      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : pulumi.Output.create<EntryGcsFilesetSpec>(EntryGcsFilesetSpec.fromMap((map['gcsFilesetSpec'] as Map).cast<String, dynamic>())),
-      linkedResource: map['linkedResource'] == null ? null : pulumi.Output.create<String>(map['linkedResource'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : pulumi.Output.create<String>(map['userSpecifiedSystem'] as String),
-      userSpecifiedType: map['userSpecifiedType'] == null ? null : pulumi.Output.create<String>(map['userSpecifiedType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      entryGroup: (map['entryGroup'] as String).input(),
+      entryId: (map['entryId'] as String).input(),
+      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : (EntryGcsFilesetSpec.fromMap((map['gcsFilesetSpec'] as Map).cast<String, dynamic>())).input(),
+      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : (map['userSpecifiedSystem'] as String).input(),
+      userSpecifiedType: map['userSpecifiedType'] == null ? null : (map['userSpecifiedType'] as String).input(),
     );
   }
 }

@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_rpc_error_info_response.dart';
 import 'google_rpc_status_response.dart';
 
 /// PSC connection details on consumer side.
 class ConsumerPscConnectionResponse {
   /// The most recent error during operating this connection.
-  final GoogleRpcStatusResponse error;
+  final pulumi.Input<GoogleRpcStatusResponse> error;
   /// The error info for the latest error during operating this connection.
-  final GoogleRpcErrorInfoResponse errorInfo;
+  final pulumi.Input<GoogleRpcErrorInfoResponse> errorInfo;
   /// The error type indicates whether the error is consumer facing, producer facing or system internal.
-  final String errorType;
+  final pulumi.Input<String> errorType;
   /// The URI of the consumer forwarding rule created. Example: projects/{projectNumOrId}/regions/us-east1/networks/{resourceId}.
-  final String forwardingRule;
+  final pulumi.Input<String> forwardingRule;
   /// The last Compute Engine operation to setup PSC connection.
-  final String gceOperation;
+  final pulumi.Input<String> gceOperation;
   /// The IP literal allocated on the consumer network for the PSC forwarding rule that is created to connect to the producer service attachment in this service connection map.
-  final String ip;
+  final pulumi.Input<String> ip;
   /// The consumer network whose PSC forwarding rule is connected to the service attachments in this service connection map. Note that the network could be on a different project (shared VPC).
-  final String network;
+  final pulumi.Input<String> network;
   /// The consumer project whose PSC forwarding rule is connected to the service attachments in this service connection map.
-  final String project;
+  final pulumi.Input<String> project;
   /// The PSC connection id of the PSC forwarding rule connected to the service attachments in this service connection map.
-  final String pscConnectionId;
+  final pulumi.Input<String> pscConnectionId;
   /// The URI of a service attachment which is the target of the PSC connection.
-  final String serviceAttachmentUri;
+  final pulumi.Input<String> serviceAttachmentUri;
   /// The state of the PSC connection.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [ConsumerPscConnectionResponse].
   /// [error] The most recent error during operating this connection.
@@ -56,8 +57,8 @@ class ConsumerPscConnectionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': error.toMap(),
-      'errorInfo': errorInfo.toMap(),
+      'error': pulumi.Input.mapInputValue<GoogleRpcStatusResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'errorInfo': pulumi.Input.mapInputValue<GoogleRpcErrorInfoResponse, Map<String, dynamic>>(errorInfo, (value) => value.toMap()),
       'errorType': errorType,
       'forwardingRule': forwardingRule,
       'gceOperation': gceOperation,
@@ -72,17 +73,17 @@ class ConsumerPscConnectionResponse {
 
   factory ConsumerPscConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ConsumerPscConnectionResponse(
-      error: GoogleRpcStatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      errorInfo: GoogleRpcErrorInfoResponse.fromMap((map['errorInfo'] as Map).cast<String, dynamic>()),
-      errorType: map['errorType'] as String,
-      forwardingRule: map['forwardingRule'] as String,
-      gceOperation: map['gceOperation'] as String,
-      ip: map['ip'] as String,
-      network: map['network'] as String,
-      project: map['project'] as String,
-      pscConnectionId: map['pscConnectionId'] as String,
-      serviceAttachmentUri: map['serviceAttachmentUri'] as String,
-      state: map['state'] as String,
+      error: (GoogleRpcStatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      errorInfo: (GoogleRpcErrorInfoResponse.fromMap((map['errorInfo'] as Map).cast<String, dynamic>())).input(),
+      errorType: (map['errorType'] as String).input(),
+      forwardingRule: (map['forwardingRule'] as String).input(),
+      gceOperation: (map['gceOperation'] as String).input(),
+      ip: (map['ip'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: (map['project'] as String).input(),
+      pscConnectionId: (map['pscConnectionId'] as String).input(),
+      serviceAttachmentUri: (map['serviceAttachmentUri'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

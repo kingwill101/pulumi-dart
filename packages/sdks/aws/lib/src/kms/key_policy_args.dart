@@ -26,15 +26,11 @@ class KeyPolicyArgs {
   /// [policy] A valid policy JSON document. Although this is a key policy, not an IAM policy, an `aws.iam.getPolicyDocument`, in the form that designates a principal, can be used. For more information about building policy documents, see the AWS IAM Policy Document Guide.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   KeyPolicyArgs({
-    pulumi.Output<bool>? bypassPolicyLockoutSafetyCheck,
-    required pulumi.Output<String> keyId,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-  }) :
-      bypassPolicyLockoutSafetyCheck = pulumi.Input.asOptionalInput<bool>(bypassPolicyLockoutSafetyCheck),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bypassPolicyLockoutSafetyCheck,
+    required this.keyId,
+    required this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class KeyPolicyArgs {
 
   factory KeyPolicyArgs.fromMap(Map<String, dynamic> map) {
     return KeyPolicyArgs(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : pulumi.Output.create<bool>(map['bypassPolicyLockoutSafetyCheck'] as bool),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
+      keyId: (map['keyId'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Provides information about the relationship properties.
 class RelationshipMetadataResponse {
   /// The type of the relationship source resource.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// The type of the relationship target resource.
-  final String targetType;
+  final pulumi.Input<String> targetType;
 
   /// Creates a new [RelationshipMetadataResponse].
   /// [sourceType] The type of the relationship source resource.
@@ -25,8 +26,8 @@ class RelationshipMetadataResponse {
 
   factory RelationshipMetadataResponse.fromMap(Map<String, dynamic> map) {
     return RelationshipMetadataResponse(
-      sourceType: map['sourceType'] as String,
-      targetType: map['targetType'] as String,
+      sourceType: (map['sourceType'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

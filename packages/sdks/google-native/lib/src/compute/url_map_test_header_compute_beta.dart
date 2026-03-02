@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// HTTP headers used in UrlMapTests.
 class UrlMapTestHeaderComputeBeta {
   /// Header name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Header value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [UrlMapTestHeaderComputeBeta].
   /// [name] Header name.
@@ -25,8 +26,8 @@ class UrlMapTestHeaderComputeBeta {
 
   factory UrlMapTestHeaderComputeBeta.fromMap(Map<String, dynamic> map) {
     return UrlMapTestHeaderComputeBeta(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

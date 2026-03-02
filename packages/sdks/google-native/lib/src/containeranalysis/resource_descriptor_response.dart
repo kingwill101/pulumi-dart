@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceDescriptorResponse {
-  final Map<String, String> annotations;
-  final String content;
-  final Map<String, String> digest;
-  final String downloadLocation;
-  final String mediaType;
-  final String name;
-  final String uri;
+  final pulumi.Input<Map<String, String>> annotations;
+  final pulumi.Input<String> content;
+  final pulumi.Input<Map<String, String>> digest;
+  final pulumi.Input<String> downloadLocation;
+  final pulumi.Input<String> mediaType;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ResourceDescriptorResponse].
   /// [annotations] Required.
@@ -42,13 +43,13 @@ class ResourceDescriptorResponse {
 
   factory ResourceDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return ResourceDescriptorResponse(
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      content: map['content'] as String,
-      digest: (map['digest'] as Map).cast<String, String>(),
-      downloadLocation: map['downloadLocation'] as String,
-      mediaType: map['mediaType'] as String,
-      name: map['name'] as String,
-      uri: map['uri'] as String,
+      annotations: ((map['annotations'] as Map).cast<String, String>()).input(),
+      content: (map['content'] as String).input(),
+      digest: ((map['digest'] as Map).cast<String, String>()).input(),
+      downloadLocation: (map['downloadLocation'] as String).input(),
+      mediaType: (map['mediaType'] as String).input(),
+      name: (map['name'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

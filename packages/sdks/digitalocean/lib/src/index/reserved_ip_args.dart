@@ -19,13 +19,10 @@ class ReservedIpArgs {
   /// [ipAddress] The IP Address of the resource
   /// [region] The region that the reserved IP is reserved to.
   ReservedIpArgs({
-    pulumi.Output<int>? dropletId,
-    pulumi.Output<String>? ipAddress,
-    required pulumi.Output<String> region,
-  }) :
-      dropletId = pulumi.Input.asOptionalInput<int>(dropletId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      region = pulumi.Input.asInput<String>(region);
+    this.dropletId,
+    this.ipAddress,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ReservedIpArgs {
 
   factory ReservedIpArgs.fromMap(Map<String, dynamic> map) {
     return ReservedIpArgs(
-      dropletId: map['dropletId'] == null ? null : pulumi.Output.create<int>(map['dropletId'] as int),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

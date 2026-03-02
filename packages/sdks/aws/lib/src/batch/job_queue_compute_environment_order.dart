@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobQueueComputeEnvironmentOrder {
   /// The Amazon Resource Name (ARN) of the compute environment.
-  final String computeEnvironment;
+  final pulumi.Input<String> computeEnvironment;
   /// The order of the compute environment. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.
-  final int order;
+  final pulumi.Input<int> order;
 
   /// Creates a new [JobQueueComputeEnvironmentOrder].
   /// [computeEnvironment] The Amazon Resource Name (ARN) of the compute environment.
@@ -24,8 +25,8 @@ class JobQueueComputeEnvironmentOrder {
 
   factory JobQueueComputeEnvironmentOrder.fromMap(Map<String, dynamic> map) {
     return JobQueueComputeEnvironmentOrder(
-      computeEnvironment: map['computeEnvironment'] as String,
-      order: map['order'] as int,
+      computeEnvironment: (map['computeEnvironment'] as String).input(),
+      order: (map['order'] as int).input(),
     );
   }
 }

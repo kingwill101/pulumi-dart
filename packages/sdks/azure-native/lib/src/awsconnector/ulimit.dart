@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Ulimit
 class Ulimit {
   /// The hard limit for the ``ulimit`` type.
-  final int? hardLimit;
+  final pulumi.Input<int>? hardLimit;
   /// The ``type`` of the ``ulimit``.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The soft limit for the ``ulimit`` type.
-  final int? softLimit;
+  final pulumi.Input<int>? softLimit;
 
   /// Creates a new [Ulimit].
   /// [hardLimit] The hard limit for the ``ulimit`` type.
@@ -30,9 +31,9 @@ class Ulimit {
 
   factory Ulimit.fromMap(Map<String, dynamic> map) {
     return Ulimit(
-      hardLimit: map['hardLimit'] == null ? null : map['hardLimit'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      softLimit: map['softLimit'] == null ? null : map['softLimit'] as int,
+      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      softLimit: map['softLimit'] == null ? null : (map['softLimit'] as int).input(),
     );
   }
 }

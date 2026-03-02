@@ -18,15 +18,11 @@ class GetSfdcInstanceArgs {
   /// [project] Optional.
   /// [sfdcInstanceId] Required.
   GetSfdcInstanceArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sfdcInstanceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sfdcInstanceId = pulumi.Input.asInput<String>(sfdcInstanceId);
+    required this.location,
+    required this.productId,
+    this.project,
+    required this.sfdcInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetSfdcInstanceArgs {
 
   factory GetSfdcInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetSfdcInstanceArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sfdcInstanceId: pulumi.Output.create<String>(map['sfdcInstanceId'] as String),
+      location: (map['location'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sfdcInstanceId: (map['sfdcInstanceId'] as String).input(),
     );
   }
 }

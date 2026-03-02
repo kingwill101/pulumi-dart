@@ -17,11 +17,9 @@ class CaExternalAccountKeyArgs {
   /// [location] Location for the externalAccountKey. Currently only `global` is supported.
   /// [project] The ID of the project in which the resource belongs.
   CaExternalAccountKeyArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class CaExternalAccountKeyArgs {
 
   factory CaExternalAccountKeyArgs.fromMap(Map<String, dynamic> map) {
     return CaExternalAccountKeyArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

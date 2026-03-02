@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'transfer_job_transfer_spec_transfer_options_metadata_options.dart';
 
 class TransferJobTransferSpecTransferOptions {
   /// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
-  final bool? deleteObjectsFromSourceAfterTransfer;
+  final pulumi.Input<bool>? deleteObjectsFromSourceAfterTransfer;
   /// Whether objects that exist only in the sink should be deleted. Note that this option and
   /// `delete_objects_from_source_after_transfer` are mutually exclusive.
-  final bool? deleteObjectsUniqueInSink;
+  final pulumi.Input<bool>? deleteObjectsUniqueInSink;
   /// Specifies the metadata options for running a transfer. Structure documented below.
-  final TransferJobTransferSpecTransferOptionsMetadataOptions? metadataOptions;
+  final pulumi.Input<TransferJobTransferSpecTransferOptionsMetadataOptions>? metadataOptions;
   /// Whether overwriting objects that already exist in the sink is allowed.
-  final bool? overwriteObjectsAlreadyExistingInSink;
+  final pulumi.Input<bool>? overwriteObjectsAlreadyExistingInSink;
   /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
-  final String? overwriteWhen;
+  final pulumi.Input<String>? overwriteWhen;
 
   /// Creates a new [TransferJobTransferSpecTransferOptions].
   /// [deleteObjectsFromSourceAfterTransfer] Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
@@ -33,7 +34,7 @@ class TransferJobTransferSpecTransferOptions {
     return <String, dynamic>{
       'deleteObjectsFromSourceAfterTransfer': ?deleteObjectsFromSourceAfterTransfer,
       'deleteObjectsUniqueInSink': ?deleteObjectsUniqueInSink,
-      'metadataOptions': ?metadataOptions == null ? null : metadataOptions!.toMap(),
+      'metadataOptions': ?pulumi.Input.mapOptionalInputValue<TransferJobTransferSpecTransferOptionsMetadataOptions, Map<String, dynamic>>(metadataOptions, (value) => value.toMap()),
       'overwriteObjectsAlreadyExistingInSink': ?overwriteObjectsAlreadyExistingInSink,
       'overwriteWhen': ?overwriteWhen,
     };
@@ -41,11 +42,11 @@ class TransferJobTransferSpecTransferOptions {
 
   factory TransferJobTransferSpecTransferOptions.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecTransferOptions(
-      deleteObjectsFromSourceAfterTransfer: map['deleteObjectsFromSourceAfterTransfer'] == null ? null : map['deleteObjectsFromSourceAfterTransfer'] as bool,
-      deleteObjectsUniqueInSink: map['deleteObjectsUniqueInSink'] == null ? null : map['deleteObjectsUniqueInSink'] as bool,
-      metadataOptions: map['metadataOptions'] == null ? null : TransferJobTransferSpecTransferOptionsMetadataOptions.fromMap((map['metadataOptions'] as Map).cast<String, dynamic>()),
-      overwriteObjectsAlreadyExistingInSink: map['overwriteObjectsAlreadyExistingInSink'] == null ? null : map['overwriteObjectsAlreadyExistingInSink'] as bool,
-      overwriteWhen: map['overwriteWhen'] == null ? null : map['overwriteWhen'] as String,
+      deleteObjectsFromSourceAfterTransfer: map['deleteObjectsFromSourceAfterTransfer'] == null ? null : (map['deleteObjectsFromSourceAfterTransfer'] as bool).input(),
+      deleteObjectsUniqueInSink: map['deleteObjectsUniqueInSink'] == null ? null : (map['deleteObjectsUniqueInSink'] as bool).input(),
+      metadataOptions: map['metadataOptions'] == null ? null : (TransferJobTransferSpecTransferOptionsMetadataOptions.fromMap((map['metadataOptions'] as Map).cast<String, dynamic>())).input(),
+      overwriteObjectsAlreadyExistingInSink: map['overwriteObjectsAlreadyExistingInSink'] == null ? null : (map['overwriteObjectsAlreadyExistingInSink'] as bool).input(),
+      overwriteWhen: map['overwriteWhen'] == null ? null : (map['overwriteWhen'] as String).input(),
     );
   }
 }

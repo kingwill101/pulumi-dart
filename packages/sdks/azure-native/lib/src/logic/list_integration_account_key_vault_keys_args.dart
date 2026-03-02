@@ -23,15 +23,11 @@ class ListIntegrationAccountKeyVaultKeysArgs {
   /// [resourceGroupName] The resource group name.
   /// [skipToken] The skip token.
   ListIntegrationAccountKeyVaultKeysArgs({
-    required pulumi.Output<String> integrationAccountName,
-    required pulumi.Output<KeyVaultReference> keyVault,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-  }) :
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      keyVault = pulumi.Input.asInput<KeyVaultReference>(keyVault),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken);
+    required this.integrationAccountName,
+    required this.keyVault,
+    required this.resourceGroupName,
+    this.skipToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ListIntegrationAccountKeyVaultKeysArgs {
 
   factory ListIntegrationAccountKeyVaultKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListIntegrationAccountKeyVaultKeysArgs(
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      keyVault: pulumi.Output.create<KeyVaultReference>(KeyVaultReference.fromMap((map['keyVault'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      keyVault: (KeyVaultReference.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
     );
   }
 }

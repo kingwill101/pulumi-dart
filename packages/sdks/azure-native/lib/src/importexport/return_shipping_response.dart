@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the return carrier and customer's account with the carrier.
 class ReturnShippingResponse {
   /// The customer's account number with the carrier.
-  final String carrierAccountNumber;
+  final pulumi.Input<String> carrierAccountNumber;
   /// The carrier's name.
-  final String carrierName;
+  final pulumi.Input<String> carrierName;
 
   /// Creates a new [ReturnShippingResponse].
   /// [carrierAccountNumber] The customer's account number with the carrier.
@@ -25,8 +26,8 @@ class ReturnShippingResponse {
 
   factory ReturnShippingResponse.fromMap(Map<String, dynamic> map) {
     return ReturnShippingResponse(
-      carrierAccountNumber: map['carrierAccountNumber'] as String,
-      carrierName: map['carrierName'] as String,
+      carrierAccountNumber: (map['carrierAccountNumber'] as String).input(),
+      carrierName: (map['carrierName'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProjectsProject {
   /// The billing type. **Note:** This parameter is deprecated from 2021-04-01.
-  final String billingType;
+  final pulumi.Input<String> billingType;
   /// The maximum number of requests that can be processed per second. **Note:** This parameter is deprecated from 2021-04-01.
-  final int computeUnit;
+  final pulumi.Input<int> computeUnit;
   /// The creation time of project.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The service address of project.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The ID of project.
-  final String id;
+  final pulumi.Input<String> id;
   /// The modification time of project.
-  final String modifyTime;
+  final pulumi.Input<String> modifyTime;
   /// The name of project.
-  final String project;
+  final pulumi.Input<String> project;
   /// The service role authorized to the Intelligent Media Management service to access other cloud resources.
-  final String serviceRole;
+  final pulumi.Input<String> serviceRole;
   /// The type of project.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetProjectsProject].
   /// [billingType] The billing type. **Note:** This parameter is deprecated from 2021-04-01.
@@ -59,15 +60,15 @@ class GetProjectsProject {
 
   factory GetProjectsProject.fromMap(Map<String, dynamic> map) {
     return GetProjectsProject(
-      billingType: map['billingType'] as String,
-      computeUnit: map['computeUnit'] as int,
-      createTime: map['createTime'] as String,
-      endpoint: map['endpoint'] as String,
-      id: map['id'] as String,
-      modifyTime: map['modifyTime'] as String,
-      project: map['project'] as String,
-      serviceRole: map['serviceRole'] as String,
-      type: map['type'] as String,
+      billingType: (map['billingType'] as String).input(),
+      computeUnit: (map['computeUnit'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      id: (map['id'] as String).input(),
+      modifyTime: (map['modifyTime'] as String).input(),
+      project: (map['project'] as String).input(),
+      serviceRole: (map['serviceRole'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

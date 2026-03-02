@@ -19,13 +19,10 @@ class ReplicationSlotArgs {
   /// [name] The name of the replication slot.
   /// [plugin] Sets the output plugin.
   ReplicationSlotArgs({
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> plugin,
-  }) :
-      database = pulumi.Input.asOptionalInput<String>(database),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plugin = pulumi.Input.asInput<String>(plugin);
+    this.database,
+    this.name,
+    required this.plugin,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ReplicationSlotArgs {
 
   factory ReplicationSlotArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSlotArgs(
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plugin: pulumi.Output.create<String>(map['plugin'] as String),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plugin: (map['plugin'] as String).input(),
     );
   }
 }

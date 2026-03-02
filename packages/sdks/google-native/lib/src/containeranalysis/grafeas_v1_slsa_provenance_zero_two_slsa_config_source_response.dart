@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse {
-  final Map<String, String> digest;
-  final String entryPoint;
-  final String uri;
+  final pulumi.Input<Map<String, String>> digest;
+  final pulumi.Input<String> entryPoint;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse].
   /// [digest] Required.
@@ -27,9 +28,9 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse(
-      digest: (map['digest'] as Map).cast<String, String>(),
-      entryPoint: map['entryPoint'] as String,
-      uri: map['uri'] as String,
+      digest: ((map['digest'] as Map).cast<String, String>()).input(),
+      entryPoint: (map['entryPoint'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

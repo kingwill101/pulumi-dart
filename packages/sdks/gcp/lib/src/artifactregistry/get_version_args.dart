@@ -28,19 +28,13 @@ class GetVersionArgs {
   /// [versionName] The name of the version.
   /// [view] The view, which determines what version information is returned in a response. Possible values are `"BASIC"` and `"FULL"`. Defaults to `"BASIC"`.
   GetVersionArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> packageName,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    required pulumi.Output<String> versionName,
-    pulumi.Output<String>? view,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      packageName = pulumi.Input.asInput<String>(packageName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      versionName = pulumi.Input.asInput<String>(versionName),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.location,
+    required this.packageName,
+    this.project,
+    required this.repositoryId,
+    required this.versionName,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetVersionArgs {
 
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      packageName: pulumi.Output.create<String>(map['packageName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      versionName: pulumi.Output.create<String>(map['versionName'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      location: (map['location'] as String).input(),
+      packageName: (map['packageName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

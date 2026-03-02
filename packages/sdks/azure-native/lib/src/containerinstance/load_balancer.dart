@@ -6,7 +6,7 @@ import 'load_balancer_backend_address_pool.dart';
 /// LoadBalancer the CG profile will use to interact with CGs in a backend pool
 class LoadBalancer {
   /// List of Load Balancer Backend Address Pools.
-  final List<LoadBalancerBackendAddressPool>? backendAddressPools;
+  final pulumi.Input<List<LoadBalancerBackendAddressPool>>? backendAddressPools;
 
   /// Creates a new [LoadBalancer].
   /// [backendAddressPools] List of Load Balancer Backend Address Pools.
@@ -16,13 +16,13 @@ class LoadBalancer {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPools': ?backendAddressPools == null ? null : pulumi.Input.encodeList<LoadBalancerBackendAddressPool, Map<String, dynamic>>(backendAddressPools!, (value) => value.toMap()),
+      'backendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerBackendAddressPool>, List<Map<String, dynamic>>>(backendAddressPools, (value) => pulumi.Input.encodeList<LoadBalancerBackendAddressPool, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LoadBalancer.fromMap(Map<String, dynamic> map) {
     return LoadBalancer(
-      backendAddressPools: map['backendAddressPools'] == null ? null : pulumi.Input.decodeList<LoadBalancerBackendAddressPool>(map['backendAddressPools'], (value) => LoadBalancerBackendAddressPool.fromMap((value as Map).cast<String, dynamic>())),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddressPool>(map['backendAddressPools'], (value) => LoadBalancerBackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

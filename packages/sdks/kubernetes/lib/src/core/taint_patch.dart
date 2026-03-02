@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The node this Taint is attached to has the "effect" on any pod that does not tolerate the Taint.
 class TaintPatch {
   /// Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
-  final String? effect;
+  final pulumi.Input<String>? effect;
   /// Required. The taint key to be applied to a node.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// TimeAdded represents the time at which the taint was added.
-  final String? timeAdded;
+  final pulumi.Input<String>? timeAdded;
   /// The taint value corresponding to the taint key.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [TaintPatch].
   /// [effect] Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
@@ -35,10 +36,10 @@ class TaintPatch {
 
   factory TaintPatch.fromMap(Map<String, dynamic> map) {
     return TaintPatch(
-      effect: map['effect'] == null ? null : map['effect'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      timeAdded: map['timeAdded'] == null ? null : map['timeAdded'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      timeAdded: map['timeAdded'] == null ? null : (map['timeAdded'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

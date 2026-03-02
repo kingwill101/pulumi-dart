@@ -23,15 +23,11 @@ class SecretArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [secretName] Name of the Secret under the profile.
   SecretArgs({
-    pulumi.Output<AzureFirstPartyManagedCertificateParameters>? parameters,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? secretName,
-  }) :
-      parameters = pulumi.Input.asOptionalInput<AzureFirstPartyManagedCertificateParameters>(parameters),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretName = pulumi.Input.asOptionalInput<String>(secretName);
+    this.parameters,
+    required this.profileName,
+    required this.resourceGroupName,
+    this.secretName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<AzureFirstPartyManagedCertificateParameters>(AzureFirstPartyManagedCertificateParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretName: map['secretName'] == null ? null : pulumi.Output.create<String>(map['secretName'] as String),
+      parameters: map['parameters'] == null ? null : (AzureFirstPartyManagedCertificateParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
     );
   }
 }

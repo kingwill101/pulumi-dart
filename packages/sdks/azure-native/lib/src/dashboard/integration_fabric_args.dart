@@ -28,19 +28,13 @@ class IntegrationFabricArgs {
   /// [tags] Resource tags.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
   IntegrationFabricArgs({
-    pulumi.Output<String>? integrationFabricName,
-    pulumi.Output<String>? location,
-    pulumi.Output<IntegrationFabricProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      integrationFabricName = pulumi.Input.asOptionalInput<String>(integrationFabricName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<IntegrationFabricProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.integrationFabricName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class IntegrationFabricArgs {
 
   factory IntegrationFabricArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationFabricArgs(
-      integrationFabricName: map['integrationFabricName'] == null ? null : pulumi.Output.create<String>(map['integrationFabricName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<IntegrationFabricProperties>(IntegrationFabricProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      integrationFabricName: map['integrationFabricName'] == null ? null : (map['integrationFabricName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (IntegrationFabricProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

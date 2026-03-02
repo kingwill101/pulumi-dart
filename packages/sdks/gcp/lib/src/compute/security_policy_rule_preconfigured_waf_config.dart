@@ -6,7 +6,7 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion.dart';
 class SecurityPolicyRulePreconfiguredWafConfig {
   /// An exclusion to apply during preconfigured WAF evaluation.
   /// Structure is documented below.
-  final List<SecurityPolicyRulePreconfiguredWafConfigExclusion>? exclusions;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusion>>? exclusions;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfig].
   /// [exclusions] An exclusion to apply during preconfigured WAF evaluation.
@@ -16,13 +16,13 @@ class SecurityPolicyRulePreconfiguredWafConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusions': ?exclusions == null ? null : pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion, Map<String, dynamic>>(exclusions!, (value) => value.toMap()),
+      'exclusions': ?pulumi.Input.mapOptionalInputValue<List<SecurityPolicyRulePreconfiguredWafConfigExclusion>, List<Map<String, dynamic>>>(exclusions, (value) => pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SecurityPolicyRulePreconfiguredWafConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfig(
-      exclusions: map['exclusions'] == null ? null : pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion>(map['exclusions'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap((value as Map).cast<String, dynamic>())),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion>(map['exclusions'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

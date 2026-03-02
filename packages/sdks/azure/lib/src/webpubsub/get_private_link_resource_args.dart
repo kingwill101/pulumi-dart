@@ -13,9 +13,8 @@ class GetPrivateLinkResourceArgs {
   /// Creates a new [GetPrivateLinkResourceArgs].
   /// [webPubsubId] The ID of an existing Web Pubsub Resource which Private Link Resource should be retrieved for.
   GetPrivateLinkResourceArgs({
-    required pulumi.Output<String> webPubsubId,
-  }) :
-      webPubsubId = pulumi.Input.asInput<String>(webPubsubId);
+    required this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPrivateLinkResourceArgs {
 
   factory GetPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkResourceArgs(
-      webPubsubId: pulumi.Output.create<String>(map['webPubsubId'] as String),
+      webPubsubId: (map['webPubsubId'] as String).input(),
     );
   }
 }

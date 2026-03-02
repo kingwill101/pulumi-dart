@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This is the platform attribute of the image version.
 class PlatformAttributeResponse {
   /// This property specifies the name of the platformAttribute. It is read-only.
-  final String name;
+  final pulumi.Input<String> name;
   /// This property specifies the value of the corresponding name property. It is read-only.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [PlatformAttributeResponse].
   /// [name] This property specifies the name of the platformAttribute. It is read-only.
@@ -25,8 +26,8 @@ class PlatformAttributeResponse {
 
   factory PlatformAttributeResponse.fromMap(Map<String, dynamic> map) {
     return PlatformAttributeResponse(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

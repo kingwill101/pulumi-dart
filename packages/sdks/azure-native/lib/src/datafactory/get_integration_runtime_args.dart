@@ -19,13 +19,10 @@ class GetIntegrationRuntimeArgs {
   /// [integrationRuntimeName] The integration runtime name.
   /// [resourceGroupName] The resource group name.
   GetIntegrationRuntimeArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> integrationRuntimeName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      integrationRuntimeName = pulumi.Input.asInput<String>(integrationRuntimeName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    required this.integrationRuntimeName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIntegrationRuntimeArgs {
 
   factory GetIntegrationRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      integrationRuntimeName: pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      integrationRuntimeName: (map['integrationRuntimeName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

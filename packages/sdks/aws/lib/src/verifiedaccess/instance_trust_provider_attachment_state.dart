@@ -16,13 +16,10 @@ class InstanceTrustProviderAttachmentState {
   /// [verifiedaccessInstanceId] The ID of the Verified Access instance to attach the Trust Provider to.
   /// [verifiedaccessTrustProviderId] The ID of the Verified Access trust provider.
   InstanceTrustProviderAttachmentState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? verifiedaccessInstanceId,
-    pulumi.Output<String>? verifiedaccessTrustProviderId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      verifiedaccessInstanceId = pulumi.Input.asOptionalInput<String>(verifiedaccessInstanceId),
-      verifiedaccessTrustProviderId = pulumi.Input.asOptionalInput<String>(verifiedaccessTrustProviderId);
+    this.region,
+    this.verifiedaccessInstanceId,
+    this.verifiedaccessTrustProviderId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class InstanceTrustProviderAttachmentState {
 
   factory InstanceTrustProviderAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceTrustProviderAttachmentState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : pulumi.Output.create<String>(map['verifiedaccessInstanceId'] as String),
-      verifiedaccessTrustProviderId: map['verifiedaccessTrustProviderId'] == null ? null : pulumi.Output.create<String>(map['verifiedaccessTrustProviderId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : (map['verifiedaccessInstanceId'] as String).input(),
+      verifiedaccessTrustProviderId: map['verifiedaccessTrustProviderId'] == null ? null : (map['verifiedaccessTrustProviderId'] as String).input(),
     );
   }
 }

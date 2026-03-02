@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
   /// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
-  final bool? allowExternalTraffic;
+  final pulumi.Input<bool>? allowExternalTraffic;
   /// Controls whether the k8s certs auth is allowed via Dns.
-  final bool? enableK8sCertsViaDns;
+  final pulumi.Input<bool>? enableK8sCertsViaDns;
   /// Controls whether the k8s token auth is allowed via Dns.
-  final bool? enableK8sTokensViaDns;
+  final pulumi.Input<bool>? enableK8sTokensViaDns;
   /// The cluster's DNS endpoint.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
 
   /// Creates a new [ClusterControlPlaneEndpointsConfigDnsEndpointConfig].
   /// [allowExternalTraffic] Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
@@ -34,10 +35,10 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
 
   factory ClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEndpointsConfigDnsEndpointConfig(
-      allowExternalTraffic: map['allowExternalTraffic'] == null ? null : map['allowExternalTraffic'] as bool,
-      enableK8sCertsViaDns: map['enableK8sCertsViaDns'] == null ? null : map['enableK8sCertsViaDns'] as bool,
-      enableK8sTokensViaDns: map['enableK8sTokensViaDns'] == null ? null : map['enableK8sTokensViaDns'] as bool,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
+      allowExternalTraffic: map['allowExternalTraffic'] == null ? null : (map['allowExternalTraffic'] as bool).input(),
+      enableK8sCertsViaDns: map['enableK8sCertsViaDns'] == null ? null : (map['enableK8sCertsViaDns'] as bool).input(),
+      enableK8sTokensViaDns: map['enableK8sTokensViaDns'] == null ? null : (map['enableK8sTokensViaDns'] as bool).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
     );
   }
 }

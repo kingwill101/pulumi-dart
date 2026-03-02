@@ -19,13 +19,10 @@ class GetClusterPrincipalAssignmentArgs {
   /// [principalAssignmentName] The name of the Kusto principalAssignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetClusterPrincipalAssignmentArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> principalAssignmentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      principalAssignmentName = pulumi.Input.asInput<String>(principalAssignmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.principalAssignmentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetClusterPrincipalAssignmentArgs {
 
   factory GetClusterPrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterPrincipalAssignmentArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      principalAssignmentName: pulumi.Output.create<String>(map['principalAssignmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      principalAssignmentName: (map['principalAssignmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

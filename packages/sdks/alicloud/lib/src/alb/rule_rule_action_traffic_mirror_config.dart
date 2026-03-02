@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_rule_action_traffic_mirror_config_mirror_group_config.dart';
 
 class RuleRuleActionTrafficMirrorConfig {
   /// The Traffic is mirrored to the server group. See `mirror_group_config` below.
-  final RuleRuleActionTrafficMirrorConfigMirrorGroupConfig? mirrorGroupConfig;
+  final pulumi.Input<RuleRuleActionTrafficMirrorConfigMirrorGroupConfig>? mirrorGroupConfig;
   /// The Mirror target type.
-  final String? targetType;
+  final pulumi.Input<String>? targetType;
 
   /// Creates a new [RuleRuleActionTrafficMirrorConfig].
   /// [mirrorGroupConfig] The Traffic is mirrored to the server group. See `mirror_group_config` below.
@@ -18,15 +19,15 @@ class RuleRuleActionTrafficMirrorConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mirrorGroupConfig': ?mirrorGroupConfig == null ? null : mirrorGroupConfig!.toMap(),
+      'mirrorGroupConfig': ?pulumi.Input.mapOptionalInputValue<RuleRuleActionTrafficMirrorConfigMirrorGroupConfig, Map<String, dynamic>>(mirrorGroupConfig, (value) => value.toMap()),
       'targetType': ?targetType,
     };
   }
 
   factory RuleRuleActionTrafficMirrorConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionTrafficMirrorConfig(
-      mirrorGroupConfig: map['mirrorGroupConfig'] == null ? null : RuleRuleActionTrafficMirrorConfigMirrorGroupConfig.fromMap((map['mirrorGroupConfig'] as Map).cast<String, dynamic>()),
-      targetType: map['targetType'] == null ? null : map['targetType'] as String,
+      mirrorGroupConfig: map['mirrorGroupConfig'] == null ? null : (RuleRuleActionTrafficMirrorConfigMirrorGroupConfig.fromMap((map['mirrorGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

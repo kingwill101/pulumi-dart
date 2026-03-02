@@ -7,13 +7,13 @@ import 'component_condition.dart';
 /// ComponentStatus (and ComponentStatusList) holds the cluster validation info. Deprecated: This API is deprecated in v1.19+
 class ComponentStatus {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// List of component conditions observed
-  final List<ComponentCondition>? conditions;
+  final pulumi.Input<List<ComponentCondition>>? conditions;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final ObjectMeta? metadata;
+  final pulumi.Input<ObjectMeta>? metadata;
 
   /// Creates a new [ComponentStatus].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -30,18 +30,18 @@ class ComponentStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ComponentCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ComponentCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ComponentCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
   }
 
   factory ComponentStatus.fromMap(Map<String, dynamic> map) {
     return ComponentStatus(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ComponentCondition>(map['conditions'], (value) => ComponentCondition.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ComponentCondition>(map['conditions'], (value) => ComponentCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scope.dart';
 import 'sql_assessment_settings.dart';
 
 /// SQL assessment properties class.
 class SqlAssessmentV3Properties {
   /// Gets or sets the machine assessment ARM ID for VM fallback.
-  final String? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
   /// Gets or sets the scope of assessment.
-  final Scope? scope;
+  final pulumi.Input<Scope>? scope;
   /// Gets or sets the settings for the assessment.
-  final SqlAssessmentSettings? settings;
+  final pulumi.Input<SqlAssessmentSettings>? settings;
 
   /// Creates a new [SqlAssessmentV3Properties].
   /// [fallbackMachineAssessmentArmId] Gets or sets the machine assessment ARM ID for VM fallback.
@@ -25,16 +26,16 @@ class SqlAssessmentV3Properties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fallbackMachineAssessmentArmId': ?fallbackMachineAssessmentArmId,
-      'scope': ?scope == null ? null : scope!.toMap(),
-      'settings': ?settings == null ? null : settings!.toMap(),
+      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(scope, (value) => value.toMap()),
+      'settings': ?pulumi.Input.mapOptionalInputValue<SqlAssessmentSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory SqlAssessmentV3Properties.fromMap(Map<String, dynamic> map) {
     return SqlAssessmentV3Properties(
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : map['fallbackMachineAssessmentArmId'] as String,
-      scope: map['scope'] == null ? null : Scope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
-      settings: map['settings'] == null ? null : SqlAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId'] as String).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (SqlAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

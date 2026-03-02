@@ -19,13 +19,10 @@ class GetNetworkInterfaceArgs {
   /// [networkInterfaceName] The name of the network interface.
   /// [resourceGroupName] The name of the resource group.
   GetNetworkInterfaceArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> networkInterfaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      networkInterfaceName = pulumi.Input.asInput<String>(networkInterfaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.networkInterfaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNetworkInterfaceArgs {
 
   factory GetNetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      networkInterfaceName: pulumi.Output.create<String>(map['networkInterfaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      networkInterfaceName: (map['networkInterfaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

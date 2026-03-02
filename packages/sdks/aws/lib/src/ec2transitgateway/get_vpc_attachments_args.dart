@@ -17,11 +17,9 @@ class GetVpcAttachmentsArgs {
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetVpcAttachmentsArgs({
-    pulumi.Output<List<GetVpcAttachmentsFilter>>? filters,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetVpcAttachmentsFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetVpcAttachmentsArgs {
 
   factory GetVpcAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcAttachmentsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcAttachmentsFilter>>(pulumi.Input.decodeList<GetVpcAttachmentsFilter>(map['filters'], (value) => GetVpcAttachmentsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcAttachmentsFilter>(map['filters'], (value) => GetVpcAttachmentsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

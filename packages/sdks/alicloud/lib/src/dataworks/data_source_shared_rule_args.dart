@@ -22,15 +22,11 @@ class DataSourceSharedRuleArgs {
   /// [sharedUser] The target user of the data source permission policy, which is null to share to the project.
   /// [targetProjectId] The ID of the project to which the data source is shared.
   DataSourceSharedRuleArgs({
-    required pulumi.Output<int> dataSourceId,
-    required pulumi.Output<String> envType,
-    pulumi.Output<String>? sharedUser,
-    required pulumi.Output<int> targetProjectId,
-  }) :
-      dataSourceId = pulumi.Input.asInput<int>(dataSourceId),
-      envType = pulumi.Input.asInput<String>(envType),
-      sharedUser = pulumi.Input.asOptionalInput<String>(sharedUser),
-      targetProjectId = pulumi.Input.asInput<int>(targetProjectId);
+    required this.dataSourceId,
+    required this.envType,
+    this.sharedUser,
+    required this.targetProjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DataSourceSharedRuleArgs {
 
   factory DataSourceSharedRuleArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceSharedRuleArgs(
-      dataSourceId: pulumi.Output.create<int>(map['dataSourceId'] as int),
-      envType: pulumi.Output.create<String>(map['envType'] as String),
-      sharedUser: map['sharedUser'] == null ? null : pulumi.Output.create<String>(map['sharedUser'] as String),
-      targetProjectId: pulumi.Output.create<int>(map['targetProjectId'] as int),
+      dataSourceId: (map['dataSourceId'] as int).input(),
+      envType: (map['envType'] as String).input(),
+      sharedUser: map['sharedUser'] == null ? null : (map['sharedUser'] as String).input(),
+      targetProjectId: (map['targetProjectId'] as int).input(),
     );
   }
 }

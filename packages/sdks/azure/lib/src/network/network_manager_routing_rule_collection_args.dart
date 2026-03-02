@@ -25,17 +25,12 @@ class NetworkManagerRoutingRuleCollectionArgs {
   /// [networkGroupIds] A list of Network Group IDs which this Network Manager Routing Rule Collection applies to.
   /// [routingConfigurationId] The ID of the Network Manager Routing Configuration. Changing this forces a new Network Manager Routing Rule Collection to be created.
   NetworkManagerRoutingRuleCollectionArgs({
-    pulumi.Output<bool>? bgpRoutePropagationEnabled,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> networkGroupIds,
-    required pulumi.Output<String> routingConfigurationId,
-  }) :
-      bgpRoutePropagationEnabled = pulumi.Input.asOptionalInput<bool>(bgpRoutePropagationEnabled),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkGroupIds = pulumi.Input.asInput<List<String>>(networkGroupIds),
-      routingConfigurationId = pulumi.Input.asInput<String>(routingConfigurationId);
+    this.bgpRoutePropagationEnabled,
+    this.description,
+    this.name,
+    required this.networkGroupIds,
+    required this.routingConfigurationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkManagerRoutingRuleCollectionArgs {
 
   factory NetworkManagerRoutingRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleCollectionArgs(
-      bgpRoutePropagationEnabled: map['bgpRoutePropagationEnabled'] == null ? null : pulumi.Output.create<bool>(map['bgpRoutePropagationEnabled'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkGroupIds: pulumi.Output.create<List<String>>((map['networkGroupIds'] as List).cast<String>()),
-      routingConfigurationId: pulumi.Output.create<String>(map['routingConfigurationId'] as String),
+      bgpRoutePropagationEnabled: map['bgpRoutePropagationEnabled'] == null ? null : (map['bgpRoutePropagationEnabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkGroupIds: ((map['networkGroupIds'] as List).cast<String>()).input(),
+      routingConfigurationId: (map['routingConfigurationId'] as String).input(),
     );
   }
 }

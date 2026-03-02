@@ -29,15 +29,11 @@ class FolderCustomModuleArgs {
   /// [enablementState] The enablement state of the custom module.
   /// [folder] Numerical ID of the parent folder.
   FolderCustomModuleArgs({
-    required pulumi.Output<FolderCustomModuleCustomConfig> customConfig,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> enablementState,
-    required pulumi.Output<String> folder,
-  }) :
-      customConfig = pulumi.Input.asInput<FolderCustomModuleCustomConfig>(customConfig),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enablementState = pulumi.Input.asInput<String>(enablementState),
-      folder = pulumi.Input.asInput<String>(folder);
+    required this.customConfig,
+    required this.displayName,
+    required this.enablementState,
+    required this.folder,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,10 +46,10 @@ class FolderCustomModuleArgs {
 
   factory FolderCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return FolderCustomModuleArgs(
-      customConfig: pulumi.Output.create<FolderCustomModuleCustomConfig>(FolderCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: pulumi.Output.create<String>(map['enablementState'] as String),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
+      customConfig: (FolderCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      enablementState: (map['enablementState'] as String).input(),
+      folder: (map['folder'] as String).input(),
     );
   }
 }

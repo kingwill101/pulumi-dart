@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MeshSpecEgressFilter {
   /// Egress filter type. By default, the type is `DROP_ALL`. Valid values are `ALLOW_ALL` and `DROP_ALL`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [MeshSpecEgressFilter].
   /// [type] Egress filter type. By default, the type is `DROP_ALL`. Valid values are `ALLOW_ALL` and `DROP_ALL`.
@@ -19,7 +20,7 @@ class MeshSpecEgressFilter {
 
   factory MeshSpecEgressFilter.fromMap(Map<String, dynamic> map) {
     return MeshSpecEgressFilter(
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

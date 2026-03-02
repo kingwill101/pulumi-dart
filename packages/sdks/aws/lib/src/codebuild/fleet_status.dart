@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetStatus {
   /// Additional information about a compute fleet.
-  final String? context;
+  final pulumi.Input<String>? context;
   /// Message associated with the status of a compute fleet.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Status code of the compute fleet.
-  final String? statusCode;
+  final pulumi.Input<String>? statusCode;
 
   /// Creates a new [FleetStatus].
   /// [context] Additional information about a compute fleet.
@@ -29,9 +30,9 @@ class FleetStatus {
 
   factory FleetStatus.fromMap(Map<String, dynamic> map) {
     return FleetStatus(
-      context: map['context'] == null ? null : map['context'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
+      context: map['context'] == null ? null : (map['context'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
     );
   }
 }

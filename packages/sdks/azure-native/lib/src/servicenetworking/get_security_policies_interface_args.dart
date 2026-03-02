@@ -19,13 +19,10 @@ class GetSecurityPoliciesInterfaceArgs {
   /// [securityPolicyName] SecurityPolicy
   /// [trafficControllerName] traffic controller name for path
   GetSecurityPoliciesInterfaceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityPolicyName,
-    required pulumi.Output<String> trafficControllerName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityPolicyName = pulumi.Input.asInput<String>(securityPolicyName),
-      trafficControllerName = pulumi.Input.asInput<String>(trafficControllerName);
+    required this.resourceGroupName,
+    required this.securityPolicyName,
+    required this.trafficControllerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSecurityPoliciesInterfaceArgs {
 
   factory GetSecurityPoliciesInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPoliciesInterfaceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityPolicyName: pulumi.Output.create<String>(map['securityPolicyName'] as String),
-      trafficControllerName: pulumi.Output.create<String>(map['trafficControllerName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityPolicyName: (map['securityPolicyName'] as String).input(),
+      trafficControllerName: (map['trafficControllerName'] as String).input(),
     );
   }
 }

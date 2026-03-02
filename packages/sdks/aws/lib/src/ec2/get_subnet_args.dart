@@ -44,29 +44,18 @@ class GetSubnetArgs {
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired subnet.
   /// [vpcId] ID of the VPC that the desired subnet belongs to.
   GetSubnetArgs({
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? availabilityZoneId,
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<bool>? defaultForAz,
-    pulumi.Output<List<GetSubnetFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? ipv6CidrBlock,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      availabilityZoneId = pulumi.Input.asOptionalInput<String>(availabilityZoneId),
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      defaultForAz = pulumi.Input.asOptionalInput<bool>(defaultForAz),
-      filters = pulumi.Input.asOptionalInput<List<GetSubnetFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.availabilityZone,
+    this.availabilityZoneId,
+    this.cidrBlock,
+    this.defaultForAz,
+    this.filters,
+    this.id,
+    this.ipv6CidrBlock,
+    this.region,
+    this.state,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class GetSubnetArgs {
 
   factory GetSubnetArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      defaultForAz: map['defaultForAz'] == null ? null : pulumi.Output.create<bool>(map['defaultForAz'] as bool),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSubnetFilter>>(pulumi.Input.decodeList<GetSubnetFilter>(map['filters'], (value) => GetSubnetFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrBlock'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      defaultForAz: map['defaultForAz'] == null ? null : (map['defaultForAz'] as bool).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSubnetFilter>(map['filters'], (value) => GetSubnetFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

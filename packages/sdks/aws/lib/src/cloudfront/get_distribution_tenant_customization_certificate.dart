@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDistributionTenantCustomizationCertificate {
   /// ARN (Amazon Resource Name) for the distribution tenant.
-  final String arn;
+  final pulumi.Input<String> arn;
 
   /// Creates a new [GetDistributionTenantCustomizationCertificate].
   /// [arn] ARN (Amazon Resource Name) for the distribution tenant.
@@ -19,7 +20,7 @@ class GetDistributionTenantCustomizationCertificate {
 
   factory GetDistributionTenantCustomizationCertificate.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantCustomizationCertificate(
-      arn: map['arn'] as String,
+      arn: (map['arn'] as String).input(),
     );
   }
 }

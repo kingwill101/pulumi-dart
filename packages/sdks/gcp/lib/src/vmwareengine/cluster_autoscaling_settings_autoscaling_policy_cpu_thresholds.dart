@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
   /// The utilization triggering the scale-in operation in percent.
-  final int scaleIn;
+  final pulumi.Input<int> scaleIn;
   /// The utilization triggering the scale-out operation in percent.
-  final int scaleOut;
+  final pulumi.Input<int> scaleOut;
 
   /// Creates a new [ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds].
   /// [scaleIn] The utilization triggering the scale-in operation in percent.
@@ -24,8 +25,8 @@ class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
 
   factory ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds(
-      scaleIn: map['scaleIn'] as int,
-      scaleOut: map['scaleOut'] as int,
+      scaleIn: (map['scaleIn'] as int).input(),
+      scaleOut: (map['scaleOut'] as int).input(),
     );
   }
 }

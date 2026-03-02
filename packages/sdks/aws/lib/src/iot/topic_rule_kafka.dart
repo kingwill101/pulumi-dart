@@ -5,17 +5,17 @@ import 'topic_rule_kafka_header.dart';
 
 class TopicRuleKafka {
   /// Properties of the Apache Kafka producer client. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/apache-kafka-rule-action.html).
-  final Map<String, String> clientProperties;
+  final pulumi.Input<Map<String, String>> clientProperties;
   /// The ARN of Kafka action's VPC `aws.iot.TopicRuleDestination`.
-  final String destinationArn;
+  final pulumi.Input<String> destinationArn;
   /// The list of Kafka headers that you specify. Nested arguments below.
-  final List<TopicRuleKafkaHeader>? headers;
+  final pulumi.Input<List<TopicRuleKafkaHeader>>? headers;
   /// The Kafka message key.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The Kafka message partition.
-  final String? partition;
+  final pulumi.Input<String>? partition;
   /// The Kafka topic for messages to be sent to the Kafka broker.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [TopicRuleKafka].
   /// [clientProperties] Properties of the Apache Kafka producer client. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/apache-kafka-rule-action.html).
@@ -37,7 +37,7 @@ class TopicRuleKafka {
     return <String, dynamic>{
       'clientProperties': clientProperties,
       'destinationArn': destinationArn,
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<TopicRuleKafkaHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<TopicRuleKafkaHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<TopicRuleKafkaHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'key': ?key,
       'partition': ?partition,
       'topic': topic,
@@ -46,12 +46,12 @@ class TopicRuleKafka {
 
   factory TopicRuleKafka.fromMap(Map<String, dynamic> map) {
     return TopicRuleKafka(
-      clientProperties: (map['clientProperties'] as Map).cast<String, String>(),
-      destinationArn: map['destinationArn'] as String,
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<TopicRuleKafkaHeader>(map['headers'], (value) => TopicRuleKafkaHeader.fromMap((value as Map).cast<String, dynamic>())),
-      key: map['key'] == null ? null : map['key'] as String,
-      partition: map['partition'] == null ? null : map['partition'] as String,
-      topic: map['topic'] as String,
+      clientProperties: ((map['clientProperties'] as Map).cast<String, String>()).input(),
+      destinationArn: (map['destinationArn'] as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<TopicRuleKafkaHeader>(map['headers'], (value) => TopicRuleKafkaHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class RegistryComponentVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
   RegistryComponentVersionArgs({
-    required pulumi.Output<String> componentName,
-    required pulumi.Output<ComponentVersionMachinelearningservices> componentVersionProperties,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? version,
-  }) :
-      componentName = pulumi.Input.asInput<String>(componentName),
-      componentVersionProperties = pulumi.Input.asInput<ComponentVersionMachinelearningservices>(componentVersionProperties),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.componentName,
+    required this.componentVersionProperties,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RegistryComponentVersionArgs {
 
   factory RegistryComponentVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegistryComponentVersionArgs(
-      componentName: pulumi.Output.create<String>(map['componentName'] as String),
-      componentVersionProperties: pulumi.Output.create<ComponentVersionMachinelearningservices>(map['componentVersionProperties'] as ComponentVersionMachinelearningservices),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      componentName: (map['componentName'] as String).input(),
+      componentVersionProperties: (map['componentVersionProperties'] as ComponentVersionMachinelearningservices).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

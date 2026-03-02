@@ -5,8 +5,8 @@ import 'get_honeypot_probes_probe_honeypot_bind_list_bind_port_list.dart';
 
 class GetHoneypotProbesProbeHoneypotBindList {
   /// List of listening ports. Available when `enable_details` is on.
-  final List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists;
-  final String honeypotId;
+  final pulumi.Input<List<GetHoneypotProbesProbeHoneypotBindListBindPortList>> bindPortLists;
+  final pulumi.Input<String> honeypotId;
 
   /// Creates a new [GetHoneypotProbesProbeHoneypotBindList].
   /// [bindPortLists] List of listening ports. Available when `enable_details` is on.
@@ -18,15 +18,15 @@ class GetHoneypotProbesProbeHoneypotBindList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bindPortLists': pulumi.Input.encodeList<GetHoneypotProbesProbeHoneypotBindListBindPortList, Map<String, dynamic>>(bindPortLists, (value) => value.toMap()),
+      'bindPortLists': pulumi.Input.mapInputValue<List<GetHoneypotProbesProbeHoneypotBindListBindPortList>, List<Map<String, dynamic>>>(bindPortLists, (value) => pulumi.Input.encodeList<GetHoneypotProbesProbeHoneypotBindListBindPortList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'honeypotId': honeypotId,
     };
   }
 
   factory GetHoneypotProbesProbeHoneypotBindList.fromMap(Map<String, dynamic> map) {
     return GetHoneypotProbesProbeHoneypotBindList(
-      bindPortLists: pulumi.Input.decodeList<GetHoneypotProbesProbeHoneypotBindListBindPortList>(map['bindPortLists'], (value) => GetHoneypotProbesProbeHoneypotBindListBindPortList.fromMap((value as Map).cast<String, dynamic>())),
-      honeypotId: map['honeypotId'] as String,
+      bindPortLists: (pulumi.Input.decodeList<GetHoneypotProbesProbeHoneypotBindListBindPortList>(map['bindPortLists'], (value) => GetHoneypotProbesProbeHoneypotBindListBindPortList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      honeypotId: (map['honeypotId'] as String).input(),
     );
   }
 }

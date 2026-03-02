@@ -22,15 +22,11 @@ class SecretSecretmanagerV1beta1Args {
   /// [replication] Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
   /// [secretId] Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
   SecretSecretmanagerV1beta1Args({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<ReplicationSecretmanagerV1beta1> replication,
-    required pulumi.Output<String> secretId,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replication = pulumi.Input.asInput<ReplicationSecretmanagerV1beta1>(replication),
-      secretId = pulumi.Input.asInput<String>(secretId);
+    this.labels,
+    this.project,
+    required this.replication,
+    required this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SecretSecretmanagerV1beta1Args {
 
   factory SecretSecretmanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return SecretSecretmanagerV1beta1Args(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replication: pulumi.Output.create<ReplicationSecretmanagerV1beta1>(ReplicationSecretmanagerV1beta1.fromMap((map['replication'] as Map).cast<String, dynamic>())),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replication: (ReplicationSecretmanagerV1beta1.fromMap((map['replication'] as Map).cast<String, dynamic>())).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

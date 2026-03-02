@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOrganizationRootPolicyType {
   /// Status of the policy type as it relates to the associated root.
-  final String status;
-  final String type;
+  final pulumi.Input<String> status;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetOrganizationRootPolicyType].
   /// [status] Status of the policy type as it relates to the associated root.
@@ -23,8 +24,8 @@ class GetOrganizationRootPolicyType {
 
   factory GetOrganizationRootPolicyType.fromMap(Map<String, dynamic> map) {
     return GetOrganizationRootPolicyType(
-      status: map['status'] as String,
-      type: map['type'] as String,
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

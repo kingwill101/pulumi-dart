@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the properties of a secret object value.
 class SecretObject {
   /// The type of the secret object which determines how the value of the secret object has to be
   /// interpreted.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The value of the secret. The format of this value will be determined
   /// based on the type of the secret object. If the type is Opaque, the value will be
   /// used as is without any modification.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [SecretObject].
   /// [type] The type of the secret object which determines how the value of the secret object has to be
@@ -28,8 +29,8 @@ class SecretObject {
 
   factory SecretObject.fromMap(Map<String, dynamic> map) {
     return SecretObject(
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

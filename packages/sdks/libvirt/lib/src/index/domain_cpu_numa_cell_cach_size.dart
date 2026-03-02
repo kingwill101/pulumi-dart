@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuNumaCellCachSize {
   /// Indicates the unit of measurement for the cache size, such as bytes or megabytes.
-  final String unit;
+  final pulumi.Input<String> unit;
   /// Sets the actual value for the cache size as defined by the size unit.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DomainCpuNumaCellCachSize].
   /// [unit] Indicates the unit of measurement for the cache size, such as bytes or megabytes.
@@ -24,8 +25,8 @@ class DomainCpuNumaCellCachSize {
 
   factory DomainCpuNumaCellCachSize.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaCellCachSize(
-      unit: map['unit'] as String,
-      value: map['value'] as String,
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

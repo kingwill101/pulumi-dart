@@ -20,17 +20,12 @@ class GetTagArtifactregistryV1beta1Args {
   /// [repositoryId] Required.
   /// [tagId] Required.
   GetTagArtifactregistryV1beta1Args({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> packageId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    required pulumi.Output<String> tagId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      packageId = pulumi.Input.asInput<String>(packageId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      tagId = pulumi.Input.asInput<String>(tagId);
+    required this.location,
+    required this.packageId,
+    this.project,
+    required this.repositoryId,
+    required this.tagId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetTagArtifactregistryV1beta1Args {
 
   factory GetTagArtifactregistryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTagArtifactregistryV1beta1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      packageId: pulumi.Output.create<String>(map['packageId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      tagId: pulumi.Output.create<String>(map['tagId'] as String),
+      location: (map['location'] as String).input(),
+      packageId: (map['packageId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      tagId: (map['tagId'] as String).input(),
     );
   }
 }

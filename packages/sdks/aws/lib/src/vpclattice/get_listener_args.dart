@@ -22,15 +22,11 @@ class GetListenerArgs {
   /// [serviceIdentifier] ID or Amazon Resource Name (ARN) of the service network
   /// [tags] List of tags associated with the listener.
   GetListenerArgs({
-    required pulumi.Output<String> listenerIdentifier,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      listenerIdentifier = pulumi.Input.asInput<String>(listenerIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceIdentifier = pulumi.Input.asInput<String>(serviceIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.listenerIdentifier,
+    this.region,
+    required this.serviceIdentifier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetListenerArgs {
 
   factory GetListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetListenerArgs(
-      listenerIdentifier: pulumi.Output.create<String>(map['listenerIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceIdentifier: pulumi.Output.create<String>(map['serviceIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      listenerIdentifier: (map['listenerIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceIdentifier: (map['serviceIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

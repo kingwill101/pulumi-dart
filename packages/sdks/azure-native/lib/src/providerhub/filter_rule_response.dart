@@ -5,9 +5,9 @@ import 'endpoint_information_response.dart';
 
 class FilterRuleResponse {
   /// The endpoint information.
-  final List<EndpointInformationResponse>? endpointInformation;
+  final pulumi.Input<List<EndpointInformationResponse>>? endpointInformation;
   /// The filter query.
-  final String? filterQuery;
+  final pulumi.Input<String>? filterQuery;
 
   /// Creates a new [FilterRuleResponse].
   /// [endpointInformation] The endpoint information.
@@ -19,15 +19,15 @@ class FilterRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpointInformation': ?endpointInformation == null ? null : pulumi.Input.encodeList<EndpointInformationResponse, Map<String, dynamic>>(endpointInformation!, (value) => value.toMap()),
+      'endpointInformation': ?pulumi.Input.mapOptionalInputValue<List<EndpointInformationResponse>, List<Map<String, dynamic>>>(endpointInformation, (value) => pulumi.Input.encodeList<EndpointInformationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'filterQuery': ?filterQuery,
     };
   }
 
   factory FilterRuleResponse.fromMap(Map<String, dynamic> map) {
     return FilterRuleResponse(
-      endpointInformation: map['endpointInformation'] == null ? null : pulumi.Input.decodeList<EndpointInformationResponse>(map['endpointInformation'], (value) => EndpointInformationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      filterQuery: map['filterQuery'] == null ? null : map['filterQuery'] as String,
+      endpointInformation: map['endpointInformation'] == null ? null : (pulumi.Input.decodeList<EndpointInformationResponse>(map['endpointInformation'], (value) => EndpointInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filterQuery: map['filterQuery'] == null ? null : (map['filterQuery'] as String).input(),
     );
   }
 }

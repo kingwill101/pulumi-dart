@@ -62,35 +62,21 @@ class PreventionDiscoveryConfigState {
   /// [targets] Target to match against for determining what to scan and how frequently
   /// [updateTime] Output only. The last update timestamp of a DiscoveryConfig.
   PreventionDiscoveryConfigState({
-    pulumi.Output<List<PreventionDiscoveryConfigAction>>? actions,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<PreventionDiscoveryConfigError>>? errors,
-    pulumi.Output<List<String>>? inspectTemplates,
-    pulumi.Output<String>? lastRunTime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<PreventionDiscoveryConfigOrgConfig>? orgConfig,
-    pulumi.Output<PreventionDiscoveryConfigOtherCloudStartingLocation>? otherCloudStartingLocation,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<PreventionDiscoveryConfigTarget>>? targets,
-    pulumi.Output<String>? updateTime,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<PreventionDiscoveryConfigAction>>(actions),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      errors = pulumi.Input.asOptionalInput<List<PreventionDiscoveryConfigError>>(errors),
-      inspectTemplates = pulumi.Input.asOptionalInput<List<String>>(inspectTemplates),
-      lastRunTime = pulumi.Input.asOptionalInput<String>(lastRunTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgConfig = pulumi.Input.asOptionalInput<PreventionDiscoveryConfigOrgConfig>(orgConfig),
-      otherCloudStartingLocation = pulumi.Input.asOptionalInput<PreventionDiscoveryConfigOtherCloudStartingLocation>(otherCloudStartingLocation),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targets = pulumi.Input.asOptionalInput<List<PreventionDiscoveryConfigTarget>>(targets),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.actions,
+    this.createTime,
+    this.displayName,
+    this.errors,
+    this.inspectTemplates,
+    this.lastRunTime,
+    this.location,
+    this.name,
+    this.orgConfig,
+    this.otherCloudStartingLocation,
+    this.parent,
+    this.status,
+    this.targets,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -113,20 +99,20 @@ class PreventionDiscoveryConfigState {
 
   factory PreventionDiscoveryConfigState.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigState(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<PreventionDiscoveryConfigAction>>(pulumi.Input.decodeList<PreventionDiscoveryConfigAction>(map['actions'], (value) => PreventionDiscoveryConfigAction.fromMap((value as Map).cast<String, dynamic>()))),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      errors: map['errors'] == null ? null : pulumi.Output.create<List<PreventionDiscoveryConfigError>>(pulumi.Input.decodeList<PreventionDiscoveryConfigError>(map['errors'], (value) => PreventionDiscoveryConfigError.fromMap((value as Map).cast<String, dynamic>()))),
-      inspectTemplates: map['inspectTemplates'] == null ? null : pulumi.Output.create<List<String>>((map['inspectTemplates'] as List).cast<String>()),
-      lastRunTime: map['lastRunTime'] == null ? null : pulumi.Output.create<String>(map['lastRunTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgConfig: map['orgConfig'] == null ? null : pulumi.Output.create<PreventionDiscoveryConfigOrgConfig>(PreventionDiscoveryConfigOrgConfig.fromMap((map['orgConfig'] as Map).cast<String, dynamic>())),
-      otherCloudStartingLocation: map['otherCloudStartingLocation'] == null ? null : pulumi.Output.create<PreventionDiscoveryConfigOtherCloudStartingLocation>(PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap((map['otherCloudStartingLocation'] as Map).cast<String, dynamic>())),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targets: map['targets'] == null ? null : pulumi.Output.create<List<PreventionDiscoveryConfigTarget>>(pulumi.Input.decodeList<PreventionDiscoveryConfigTarget>(map['targets'], (value) => PreventionDiscoveryConfigTarget.fromMap((value as Map).cast<String, dynamic>()))),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigAction>(map['actions'], (value) => PreventionDiscoveryConfigAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigError>(map['errors'], (value) => PreventionDiscoveryConfigError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inspectTemplates: map['inspectTemplates'] == null ? null : ((map['inspectTemplates'] as List).cast<String>()).input(),
+      lastRunTime: map['lastRunTime'] == null ? null : (map['lastRunTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgConfig: map['orgConfig'] == null ? null : (PreventionDiscoveryConfigOrgConfig.fromMap((map['orgConfig'] as Map).cast<String, dynamic>())).input(),
+      otherCloudStartingLocation: map['otherCloudStartingLocation'] == null ? null : (PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap((map['otherCloudStartingLocation'] as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigTarget>(map['targets'], (value) => PreventionDiscoveryConfigTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

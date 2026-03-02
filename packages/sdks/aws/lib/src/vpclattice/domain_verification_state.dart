@@ -39,27 +39,17 @@ class DomainVerificationState {
   /// [txtRecordName] The name of the TXT record that must be created for domain verification.
   /// [txtRecordValue] The value that must be added to the TXT record for domain verification.
   DomainVerificationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? lastVerifiedTime,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? txtRecordName,
-    pulumi.Output<String>? txtRecordValue,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      lastVerifiedTime = pulumi.Input.asOptionalInput<String>(lastVerifiedTime),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      txtRecordName = pulumi.Input.asOptionalInput<String>(txtRecordName),
-      txtRecordValue = pulumi.Input.asOptionalInput<String>(txtRecordValue);
+    this.arn,
+    this.createdAt,
+    this.domainName,
+    this.lastVerifiedTime,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.txtRecordName,
+    this.txtRecordValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class DomainVerificationState {
 
   factory DomainVerificationState.fromMap(Map<String, dynamic> map) {
     return DomainVerificationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      lastVerifiedTime: map['lastVerifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastVerifiedTime'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      txtRecordName: map['txtRecordName'] == null ? null : pulumi.Output.create<String>(map['txtRecordName'] as String),
-      txtRecordValue: map['txtRecordValue'] == null ? null : pulumi.Output.create<String>(map['txtRecordValue'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      lastVerifiedTime: map['lastVerifiedTime'] == null ? null : (map['lastVerifiedTime'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      txtRecordName: map['txtRecordName'] == null ? null : (map['txtRecordName'] as String).input(),
+      txtRecordValue: map['txtRecordValue'] == null ? null : (map['txtRecordValue'] as String).input(),
     );
   }
 }

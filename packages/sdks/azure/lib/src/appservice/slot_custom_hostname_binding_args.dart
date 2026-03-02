@@ -26,15 +26,11 @@ class SlotCustomHostnameBindingArgs {
   /// [sslState] The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
   /// [thumbprint] The SSL certificate thumbprint. Changing this forces a new resource to be created.
   SlotCustomHostnameBindingArgs({
-    required pulumi.Output<String> appServiceSlotId,
-    required pulumi.Output<String> hostname,
-    pulumi.Output<String>? sslState,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      appServiceSlotId = pulumi.Input.asInput<String>(appServiceSlotId),
-      hostname = pulumi.Input.asInput<String>(hostname),
-      sslState = pulumi.Input.asOptionalInput<String>(sslState),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    required this.appServiceSlotId,
+    required this.hostname,
+    this.sslState,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class SlotCustomHostnameBindingArgs {
 
   factory SlotCustomHostnameBindingArgs.fromMap(Map<String, dynamic> map) {
     return SlotCustomHostnameBindingArgs(
-      appServiceSlotId: pulumi.Output.create<String>(map['appServiceSlotId'] as String),
-      hostname: pulumi.Output.create<String>(map['hostname'] as String),
-      sslState: map['sslState'] == null ? null : pulumi.Output.create<String>(map['sslState'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      appServiceSlotId: (map['appServiceSlotId'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

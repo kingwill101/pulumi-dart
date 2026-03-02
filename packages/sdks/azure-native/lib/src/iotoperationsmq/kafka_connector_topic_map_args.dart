@@ -55,35 +55,21 @@ class KafkaConnectorTopicMapArgs {
   /// [tags] Resource tags.
   /// [topicMapName] Name of MQ kafka/topicMap resource
   KafkaConnectorTopicMapArgs({
-    pulumi.Output<KafkaTopicMapBatching>? batching,
-    pulumi.Output<String>? compression,
-    pulumi.Output<String>? copyMqttProperties,
-    required pulumi.Output<ExtendedLocationProperty> extendedLocation,
-    required pulumi.Output<String> kafkaConnectorName,
-    required pulumi.Output<String> kafkaConnectorRef,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> mqName,
-    pulumi.Output<String>? partitionKeyProperty,
-    pulumi.Output<String>? partitionStrategy,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<KafkaRoutes>> routes,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? topicMapName,
-  }) :
-      batching = pulumi.Input.asOptionalInput<KafkaTopicMapBatching>(batching),
-      compression = pulumi.Input.asOptionalInput<String>(compression),
-      copyMqttProperties = pulumi.Input.asOptionalInput<String>(copyMqttProperties),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocationProperty>(extendedLocation),
-      kafkaConnectorName = pulumi.Input.asInput<String>(kafkaConnectorName),
-      kafkaConnectorRef = pulumi.Input.asInput<String>(kafkaConnectorRef),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mqName = pulumi.Input.asInput<String>(mqName),
-      partitionKeyProperty = pulumi.Input.asOptionalInput<String>(partitionKeyProperty),
-      partitionStrategy = pulumi.Input.asOptionalInput<String>(partitionStrategy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routes = pulumi.Input.asInput<List<KafkaRoutes>>(routes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topicMapName = pulumi.Input.asOptionalInput<String>(topicMapName);
+    this.batching,
+    this.compression,
+    this.copyMqttProperties,
+    required this.extendedLocation,
+    required this.kafkaConnectorName,
+    required this.kafkaConnectorRef,
+    this.location,
+    required this.mqName,
+    this.partitionKeyProperty,
+    this.partitionStrategy,
+    required this.resourceGroupName,
+    required this.routes,
+    this.tags,
+    this.topicMapName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class KafkaConnectorTopicMapArgs {
 
   factory KafkaConnectorTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return KafkaConnectorTopicMapArgs(
-      batching: map['batching'] == null ? null : pulumi.Output.create<KafkaTopicMapBatching>(KafkaTopicMapBatching.fromMap((map['batching'] as Map).cast<String, dynamic>())),
-      compression: map['compression'] == null ? null : pulumi.Output.create<String>(map['compression'] as String),
-      copyMqttProperties: map['copyMqttProperties'] == null ? null : pulumi.Output.create<String>(map['copyMqttProperties'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocationProperty>(ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      kafkaConnectorName: pulumi.Output.create<String>(map['kafkaConnectorName'] as String),
-      kafkaConnectorRef: pulumi.Output.create<String>(map['kafkaConnectorRef'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mqName: pulumi.Output.create<String>(map['mqName'] as String),
-      partitionKeyProperty: map['partitionKeyProperty'] == null ? null : pulumi.Output.create<String>(map['partitionKeyProperty'] as String),
-      partitionStrategy: map['partitionStrategy'] == null ? null : pulumi.Output.create<String>(map['partitionStrategy'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routes: pulumi.Output.create<List<KafkaRoutes>>(pulumi.Input.decodeList<KafkaRoutes>(map['routes'], (value) => KafkaRoutes.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topicMapName: map['topicMapName'] == null ? null : pulumi.Output.create<String>(map['topicMapName'] as String),
+      batching: map['batching'] == null ? null : (KafkaTopicMapBatching.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
+      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
+      copyMqttProperties: map['copyMqttProperties'] == null ? null : (map['copyMqttProperties'] as String).input(),
+      extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      kafkaConnectorName: (map['kafkaConnectorName'] as String).input(),
+      kafkaConnectorRef: (map['kafkaConnectorRef'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mqName: (map['mqName'] as String).input(),
+      partitionKeyProperty: map['partitionKeyProperty'] == null ? null : (map['partitionKeyProperty'] as String).input(),
+      partitionStrategy: map['partitionStrategy'] == null ? null : (map['partitionStrategy'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routes: (pulumi.Input.decodeList<KafkaRoutes>(map['routes'], (value) => KafkaRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topicMapName: map['topicMapName'] == null ? null : (map['topicMapName'] as String).input(),
     );
   }
 }

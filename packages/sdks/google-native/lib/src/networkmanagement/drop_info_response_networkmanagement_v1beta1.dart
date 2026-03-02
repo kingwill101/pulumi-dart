@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the final state "drop" and associated resource.
 class DropInfoResponseNetworkmanagementV1beta1 {
   /// Cause that the packet is dropped.
-  final String cause;
+  final pulumi.Input<String> cause;
   /// URI of the resource that caused the drop.
-  final String resourceUri;
+  final pulumi.Input<String> resourceUri;
 
   /// Creates a new [DropInfoResponseNetworkmanagementV1beta1].
   /// [cause] Cause that the packet is dropped.
@@ -25,8 +26,8 @@ class DropInfoResponseNetworkmanagementV1beta1 {
 
   factory DropInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return DropInfoResponseNetworkmanagementV1beta1(
-      cause: map['cause'] as String,
-      resourceUri: map['resourceUri'] as String,
+      cause: (map['cause'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

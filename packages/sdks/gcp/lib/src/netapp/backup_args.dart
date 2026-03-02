@@ -40,23 +40,15 @@ class BackupArgs {
   /// [sourceVolume] ID of volumes this backup belongs to. Format: `projects/{{projects_id}}/locations/{{location}}/volumes/{{name}}``
   /// [vaultName] Name of the backup vault to store the backup in.
   BackupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? sourceSnapshot,
-    pulumi.Output<String>? sourceVolume,
-    required pulumi.Output<String> vaultName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceSnapshot = pulumi.Input.asOptionalInput<String>(sourceSnapshot),
-      sourceVolume = pulumi.Input.asOptionalInput<String>(sourceVolume),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.sourceSnapshot,
+    this.sourceVolume,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceSnapshot: map['sourceSnapshot'] == null ? null : pulumi.Output.create<String>(map['sourceSnapshot'] as String),
-      sourceVolume: map['sourceVolume'] == null ? null : pulumi.Output.create<String>(map['sourceVolume'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot'] as String).input(),
+      sourceVolume: map['sourceVolume'] == null ? null : (map['sourceVolume'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

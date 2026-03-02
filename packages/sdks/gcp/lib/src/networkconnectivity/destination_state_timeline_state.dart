@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DestinationStateTimelineState {
   /// (Output)
@@ -8,10 +9,10 @@ class DestinationStateTimelineState {
   /// transient state of the resource will be effective. For instance, if the
   /// state is `ADDING`, this field shows the time when the resource state
   /// transitions to `ACTIVE`.
-  final String? effectiveTime;
+  final pulumi.Input<String>? effectiveTime;
   /// (Output)
   /// The state of the resource.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DestinationStateTimelineState].
   /// [effectiveTime] (Output)
@@ -30,8 +31,8 @@ class DestinationStateTimelineState {
 
   factory DestinationStateTimelineState.fromMap(Map<String, dynamic> map) {
     return DestinationStateTimelineState(
-      effectiveTime: map['effectiveTime'] == null ? null : map['effectiveTime'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

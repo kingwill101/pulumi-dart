@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'llmmessage_diagnostic_settings.dart';
 
 /// Diagnostic settings for Large Language Models
 class LLMDiagnosticSettings {
   /// Specifies whether default diagnostic should be enabled for Large Language Models or not.
-  final String? logs;
+  final pulumi.Input<String>? logs;
   /// Diagnostic settings for Large Language Models requests.
-  final LLMMessageDiagnosticSettings? requests;
+  final pulumi.Input<LLMMessageDiagnosticSettings>? requests;
   /// Diagnostic settings for Large Language Models responses.
-  final LLMMessageDiagnosticSettings? responses;
+  final pulumi.Input<LLMMessageDiagnosticSettings>? responses;
 
   /// Creates a new [LLMDiagnosticSettings].
   /// [logs] Specifies whether default diagnostic should be enabled for Large Language Models or not.
@@ -24,16 +25,16 @@ class LLMDiagnosticSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'logs': ?logs,
-      'requests': ?requests == null ? null : requests!.toMap(),
-      'responses': ?responses == null ? null : responses!.toMap(),
+      'requests': ?pulumi.Input.mapOptionalInputValue<LLMMessageDiagnosticSettings, Map<String, dynamic>>(requests, (value) => value.toMap()),
+      'responses': ?pulumi.Input.mapOptionalInputValue<LLMMessageDiagnosticSettings, Map<String, dynamic>>(responses, (value) => value.toMap()),
     };
   }
 
   factory LLMDiagnosticSettings.fromMap(Map<String, dynamic> map) {
     return LLMDiagnosticSettings(
-      logs: map['logs'] == null ? null : map['logs'] as String,
-      requests: map['requests'] == null ? null : LLMMessageDiagnosticSettings.fromMap((map['requests'] as Map).cast<String, dynamic>()),
-      responses: map['responses'] == null ? null : LLMMessageDiagnosticSettings.fromMap((map['responses'] as Map).cast<String, dynamic>()),
+      logs: map['logs'] == null ? null : (map['logs'] as String).input(),
+      requests: map['requests'] == null ? null : (LLMMessageDiagnosticSettings.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
+      responses: map['responses'] == null ? null : (LLMMessageDiagnosticSettings.fromMap((map['responses'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

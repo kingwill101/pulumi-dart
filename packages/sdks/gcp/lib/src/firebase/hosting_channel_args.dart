@@ -35,19 +35,13 @@ class HostingChannelArgs {
   /// [siteId] Required. The ID of the site in which to create this channel.
   /// [ttl] Input only. A time-to-live for this channel. Sets `expire_time` to the provided
   HostingChannelArgs({
-    required pulumi.Output<String> channelId,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<int>? retainedReleaseCount,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<String>? ttl,
-  }) :
-      channelId = pulumi.Input.asInput<String>(channelId),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      retainedReleaseCount = pulumi.Input.asOptionalInput<int>(retainedReleaseCount),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    required this.channelId,
+    this.expireTime,
+    this.labels,
+    this.retainedReleaseCount,
+    required this.siteId,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class HostingChannelArgs {
 
   factory HostingChannelArgs.fromMap(Map<String, dynamic> map) {
     return HostingChannelArgs(
-      channelId: pulumi.Output.create<String>(map['channelId'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : pulumi.Output.create<int>(map['retainedReleaseCount'] as int),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      channelId: (map['channelId'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : (map['retainedReleaseCount'] as int).input(),
+      siteId: (map['siteId'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

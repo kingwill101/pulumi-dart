@@ -50,31 +50,19 @@ class PartnerTopicArgs {
   /// [source] Source associated with this partner topic. This represents a unique partner resource.
   /// [tags] Tags of the resource.
   PartnerTopicArgs({
-    pulumi.Output<String>? activationState,
-    pulumi.Output<EventTypeInfo>? eventTypeInfo,
-    pulumi.Output<String>? expirationTimeIfNotActivatedUtc,
-    pulumi.Output<IdentityInfo>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? messageForActivation,
-    pulumi.Output<String>? partnerRegistrationImmutableId,
-    pulumi.Output<String>? partnerTopicFriendlyDescription,
-    pulumi.Output<String>? partnerTopicName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? source,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      activationState = pulumi.Input.asOptionalInput<String>(activationState),
-      eventTypeInfo = pulumi.Input.asOptionalInput<EventTypeInfo>(eventTypeInfo),
-      expirationTimeIfNotActivatedUtc = pulumi.Input.asOptionalInput<String>(expirationTimeIfNotActivatedUtc),
-      identity = pulumi.Input.asOptionalInput<IdentityInfo>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      messageForActivation = pulumi.Input.asOptionalInput<String>(messageForActivation),
-      partnerRegistrationImmutableId = pulumi.Input.asOptionalInput<String>(partnerRegistrationImmutableId),
-      partnerTopicFriendlyDescription = pulumi.Input.asOptionalInput<String>(partnerTopicFriendlyDescription),
-      partnerTopicName = pulumi.Input.asOptionalInput<String>(partnerTopicName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.activationState,
+    this.eventTypeInfo,
+    this.expirationTimeIfNotActivatedUtc,
+    this.identity,
+    this.location,
+    this.messageForActivation,
+    this.partnerRegistrationImmutableId,
+    this.partnerTopicFriendlyDescription,
+    this.partnerTopicName,
+    required this.resourceGroupName,
+    this.source,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class PartnerTopicArgs {
 
   factory PartnerTopicArgs.fromMap(Map<String, dynamic> map) {
     return PartnerTopicArgs(
-      activationState: map['activationState'] == null ? null : pulumi.Output.create<String>(map['activationState'] as String),
-      eventTypeInfo: map['eventTypeInfo'] == null ? null : pulumi.Output.create<EventTypeInfo>(EventTypeInfo.fromMap((map['eventTypeInfo'] as Map).cast<String, dynamic>())),
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : pulumi.Output.create<String>(map['expirationTimeIfNotActivatedUtc'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<IdentityInfo>(IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      messageForActivation: map['messageForActivation'] == null ? null : pulumi.Output.create<String>(map['messageForActivation'] as String),
-      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : pulumi.Output.create<String>(map['partnerRegistrationImmutableId'] as String),
-      partnerTopicFriendlyDescription: map['partnerTopicFriendlyDescription'] == null ? null : pulumi.Output.create<String>(map['partnerTopicFriendlyDescription'] as String),
-      partnerTopicName: map['partnerTopicName'] == null ? null : pulumi.Output.create<String>(map['partnerTopicName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      activationState: map['activationState'] == null ? null : (map['activationState'] as String).input(),
+      eventTypeInfo: map['eventTypeInfo'] == null ? null : (EventTypeInfo.fromMap((map['eventTypeInfo'] as Map).cast<String, dynamic>())).input(),
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc'] as String).input(),
+      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation'] as String).input(),
+      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId'] as String).input(),
+      partnerTopicFriendlyDescription: map['partnerTopicFriendlyDescription'] == null ? null : (map['partnerTopicFriendlyDescription'] as String).input(),
+      partnerTopicName: map['partnerTopicName'] == null ? null : (map['partnerTopicName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

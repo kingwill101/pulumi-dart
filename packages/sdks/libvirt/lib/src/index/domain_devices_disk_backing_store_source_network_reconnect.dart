@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskBackingStoreSourceNetworkReconnect {
   /// Sets the delay duration before attempting to reconnect to a network storage source after a failure.
-  final String delay;
+  final pulumi.Input<String> delay;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceNetworkReconnect].
   /// [delay] Sets the delay duration before attempting to reconnect to a network storage source after a failure.
@@ -19,7 +20,7 @@ class DomainDevicesDiskBackingStoreSourceNetworkReconnect {
 
   factory DomainDevicesDiskBackingStoreSourceNetworkReconnect.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceNetworkReconnect(
-      delay: map['delay'] as String,
+      delay: (map['delay'] as String).input(),
     );
   }
 }

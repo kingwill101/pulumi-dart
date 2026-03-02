@@ -6,9 +6,9 @@ import 'version_source.dart';
 /// Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
 class Hl7SchemaConfig {
   /// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-  final Map<String, String>? messageSchemaConfigs;
+  final pulumi.Input<Map<String, String>>? messageSchemaConfigs;
   /// Each VersionSource is tested and only if they all match is the schema used for the message.
-  final List<VersionSource>? version;
+  final pulumi.Input<List<VersionSource>>? version;
 
   /// Creates a new [Hl7SchemaConfig].
   /// [messageSchemaConfigs] Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
@@ -21,14 +21,14 @@ class Hl7SchemaConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'messageSchemaConfigs': ?messageSchemaConfigs,
-      'version': ?version == null ? null : pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(version!, (value) => value.toMap()),
+      'version': ?pulumi.Input.mapOptionalInputValue<List<VersionSource>, List<Map<String, dynamic>>>(version, (value) => pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Hl7SchemaConfig.fromMap(Map<String, dynamic> map) {
     return Hl7SchemaConfig(
-      messageSchemaConfigs: map['messageSchemaConfigs'] == null ? null : (map['messageSchemaConfigs'] as Map).cast<String, String>(),
-      version: map['version'] == null ? null : pulumi.Input.decodeList<VersionSource>(map['version'], (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>())),
+      messageSchemaConfigs: map['messageSchemaConfigs'] == null ? null : ((map['messageSchemaConfigs'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (pulumi.Input.decodeList<VersionSource>(map['version'], (value) => VersionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

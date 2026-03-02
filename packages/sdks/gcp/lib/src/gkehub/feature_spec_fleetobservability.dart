@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_spec_fleetobservability_logging_config.dart';
 
 class FeatureSpecFleetobservability {
   /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
   /// Structure is documented below.
-  final FeatureSpecFleetobservabilityLoggingConfig? loggingConfig;
+  final pulumi.Input<FeatureSpecFleetobservabilityLoggingConfig>? loggingConfig;
 
   /// Creates a new [FeatureSpecFleetobservability].
   /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
@@ -15,13 +16,13 @@ class FeatureSpecFleetobservability {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loggingConfig': ?loggingConfig == null ? null : loggingConfig!.toMap(),
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<FeatureSpecFleetobservabilityLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
     };
   }
 
   factory FeatureSpecFleetobservability.fromMap(Map<String, dynamic> map) {
     return FeatureSpecFleetobservability(
-      loggingConfig: map['loggingConfig'] == null ? null : FeatureSpecFleetobservabilityLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: map['loggingConfig'] == null ? null : (FeatureSpecFleetobservabilityLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

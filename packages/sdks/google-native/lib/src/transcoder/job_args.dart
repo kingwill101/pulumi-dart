@@ -47,31 +47,19 @@ class JobArgs {
   /// [templateId] Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
   /// [ttlAfterCompletionDays] Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
   JobArgs({
-    pulumi.Output<int>? batchModePriority,
-    pulumi.Output<JobConfig>? config,
-    pulumi.Output<String>? inputUri,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<JobMode>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<JobOptimization>? optimization,
-    pulumi.Output<String>? outputUri,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? templateId,
-    pulumi.Output<int>? ttlAfterCompletionDays,
-  }) :
-      batchModePriority = pulumi.Input.asOptionalInput<int>(batchModePriority),
-      config = pulumi.Input.asOptionalInput<JobConfig>(config),
-      inputUri = pulumi.Input.asOptionalInput<String>(inputUri),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mode = pulumi.Input.asOptionalInput<JobMode>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      optimization = pulumi.Input.asOptionalInput<JobOptimization>(optimization),
-      outputUri = pulumi.Input.asOptionalInput<String>(outputUri),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId),
-      ttlAfterCompletionDays = pulumi.Input.asOptionalInput<int>(ttlAfterCompletionDays);
+    this.batchModePriority,
+    this.config,
+    this.inputUri,
+    this.labels,
+    this.location,
+    this.mode,
+    this.name,
+    this.optimization,
+    this.outputUri,
+    this.project,
+    this.templateId,
+    this.ttlAfterCompletionDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      batchModePriority: map['batchModePriority'] == null ? null : pulumi.Output.create<int>(map['batchModePriority'] as int),
-      config: map['config'] == null ? null : pulumi.Output.create<JobConfig>(JobConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      inputUri: map['inputUri'] == null ? null : pulumi.Output.create<String>(map['inputUri'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<JobMode>(JobMode.fromValue(map['mode'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      optimization: map['optimization'] == null ? null : pulumi.Output.create<JobOptimization>(JobOptimization.fromValue(map['optimization'] as String)),
-      outputUri: map['outputUri'] == null ? null : pulumi.Output.create<String>(map['outputUri'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
-      ttlAfterCompletionDays: map['ttlAfterCompletionDays'] == null ? null : pulumi.Output.create<int>(map['ttlAfterCompletionDays'] as int),
+      batchModePriority: map['batchModePriority'] == null ? null : (map['batchModePriority'] as int).input(),
+      config: map['config'] == null ? null : (JobConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      inputUri: map['inputUri'] == null ? null : (map['inputUri'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mode: map['mode'] == null ? null : (JobMode.fromValue(map['mode'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      optimization: map['optimization'] == null ? null : (JobOptimization.fromValue(map['optimization'] as String)).input(),
+      outputUri: map['outputUri'] == null ? null : (map['outputUri'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      ttlAfterCompletionDays: map['ttlAfterCompletionDays'] == null ? null : (map['ttlAfterCompletionDays'] as int).input(),
     );
   }
 }

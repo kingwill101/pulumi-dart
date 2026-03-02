@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An Itsm receiver.
 class ItsmReceiverResponse {
   /// Unique identification of ITSM connection among multiple defined in above workspace.
-  final String connectionId;
+  final pulumi.Input<String> connectionId;
   /// The name of the Itsm receiver. Names must be unique across all receivers within an action group.
-  final String name;
+  final pulumi.Input<String> name;
   /// Region in which workspace resides. Supported values:'centralindia','japaneast','southeastasia','australiasoutheast','uksouth','westcentralus','canadacentral','eastus','westeurope'
-  final String region;
+  final pulumi.Input<String> region;
   /// JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
-  final String ticketConfiguration;
+  final pulumi.Input<String> ticketConfiguration;
   /// OMS LA instance identifier.
-  final String workspaceId;
+  final pulumi.Input<String> workspaceId;
 
   /// Creates a new [ItsmReceiverResponse].
   /// [connectionId] Unique identification of ITSM connection among multiple defined in above workspace.
@@ -40,11 +41,11 @@ class ItsmReceiverResponse {
 
   factory ItsmReceiverResponse.fromMap(Map<String, dynamic> map) {
     return ItsmReceiverResponse(
-      connectionId: map['connectionId'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      ticketConfiguration: map['ticketConfiguration'] as String,
-      workspaceId: map['workspaceId'] as String,
+      connectionId: (map['connectionId'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
+      ticketConfiguration: (map['ticketConfiguration'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

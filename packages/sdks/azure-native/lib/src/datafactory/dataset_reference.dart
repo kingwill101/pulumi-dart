@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dataset reference type.
 class DatasetReference {
   /// Arguments for dataset.
-  final Map<String, dynamic>? parameters;
+  final pulumi.Input<Map<String, dynamic>>? parameters;
   /// Reference dataset name.
-  final String referenceName;
+  final pulumi.Input<String> referenceName;
   /// Dataset reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DatasetReference].
   /// [parameters] Arguments for dataset.
@@ -30,9 +31,9 @@ class DatasetReference {
 
   factory DatasetReference.fromMap(Map<String, dynamic> map) {
     return DatasetReference(
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, dynamic>(),
-      referenceName: map['referenceName'] as String,
-      type: map['type'] as String,
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      referenceName: (map['referenceName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

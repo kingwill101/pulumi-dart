@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableView {
   /// A query that BigQuery executes when the view is referenced.
-  final String query;
+  final pulumi.Input<String> query;
   /// Specifies whether to use BigQuery's legacy SQL for this view. If set to false, the view will use BigQuery's standard SQL
-  final bool useLegacySql;
+  final pulumi.Input<bool> useLegacySql;
 
   /// Creates a new [GetTableView].
   /// [query] A query that BigQuery executes when the view is referenced.
@@ -24,8 +25,8 @@ class GetTableView {
 
   factory GetTableView.fromMap(Map<String, dynamic> map) {
     return GetTableView(
-      query: map['query'] as String,
-      useLegacySql: map['useLegacySql'] as bool,
+      query: (map['query'] as String).input(),
+      useLegacySql: (map['useLegacySql'] as bool).input(),
     );
   }
 }

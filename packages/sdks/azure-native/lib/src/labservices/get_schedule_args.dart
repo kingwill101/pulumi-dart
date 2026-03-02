@@ -19,13 +19,10 @@ class GetScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduleName] The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
   GetScheduleArgs({
-    required pulumi.Output<String> labName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scheduleName,
-  }) :
-      labName = pulumi.Input.asInput<String>(labName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleName = pulumi.Input.asInput<String>(scheduleName);
+    required this.labName,
+    required this.resourceGroupName,
+    required this.scheduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetScheduleArgs {
 
   factory GetScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduleArgs(
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleName: pulumi.Output.create<String>(map['scheduleName'] as String),
+      labName: (map['labName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleName: (map['scheduleName'] as String).input(),
     );
   }
 }

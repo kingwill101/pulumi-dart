@@ -22,17 +22,12 @@ class EnvCustomJobState {
   /// [environmentId] Environment id.
   /// [status] Status: run, stop.
   EnvCustomJobState({
-    pulumi.Output<String>? aliyunLang,
-    pulumi.Output<String>? configYaml,
-    pulumi.Output<String>? envCustomJobName,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<String>? status,
-  }) :
-      aliyunLang = pulumi.Input.asOptionalInput<String>(aliyunLang),
-      configYaml = pulumi.Input.asOptionalInput<String>(configYaml),
-      envCustomJobName = pulumi.Input.asOptionalInput<String>(envCustomJobName),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aliyunLang,
+    this.configYaml,
+    this.envCustomJobName,
+    this.environmentId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EnvCustomJobState {
 
   factory EnvCustomJobState.fromMap(Map<String, dynamic> map) {
     return EnvCustomJobState(
-      aliyunLang: map['aliyunLang'] == null ? null : pulumi.Output.create<String>(map['aliyunLang'] as String),
-      configYaml: map['configYaml'] == null ? null : pulumi.Output.create<String>(map['configYaml'] as String),
-      envCustomJobName: map['envCustomJobName'] == null ? null : pulumi.Output.create<String>(map['envCustomJobName'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      configYaml: map['configYaml'] == null ? null : (map['configYaml'] as String).input(),
+      envCustomJobName: map['envCustomJobName'] == null ? null : (map['envCustomJobName'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

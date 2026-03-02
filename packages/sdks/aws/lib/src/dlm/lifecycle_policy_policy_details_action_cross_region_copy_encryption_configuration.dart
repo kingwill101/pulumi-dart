@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration {
-  final String? cmkArn;
-  final bool? encrypted;
+  final pulumi.Input<String>? cmkArn;
+  final pulumi.Input<bool>? encrypted;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration].
   /// [cmkArn] Optional.
@@ -22,8 +23,8 @@ class LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration {
 
   factory LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration(
-      cmkArn: map['cmkArn'] == null ? null : map['cmkArn'] as String,
-      encrypted: map['encrypted'] == null ? null : map['encrypted'] as bool,
+      cmkArn: map['cmkArn'] == null ? null : (map['cmkArn'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
     );
   }
 }

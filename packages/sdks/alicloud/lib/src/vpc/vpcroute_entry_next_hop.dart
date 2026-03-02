@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpcroute_entry_next_hop_next_hop_related_info.dart';
 
 class VPCRouteEntryNextHop {
   /// Whether the route is available.
-  final int? enabled;
+  final pulumi.Input<int>? enabled;
   /// The region of the next instance.
-  final String? nextHopRegionId;
+  final pulumi.Input<String>? nextHopRegionId;
   /// Next hop information.
-  final VPCRouteEntryNextHopNextHopRelatedInfo? nextHopRelatedInfo;
+  final pulumi.Input<VPCRouteEntryNextHopNextHopRelatedInfo>? nextHopRelatedInfo;
   /// ID of next hop
-  final String? nexthopId;
+  final pulumi.Input<String>? nexthopId;
   /// type of next hop
-  final String? nexthopType;
+  final pulumi.Input<String>? nexthopType;
   /// The weight of the route entry.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [VPCRouteEntryNextHop].
   /// [enabled] Whether the route is available.
@@ -36,7 +37,7 @@ class VPCRouteEntryNextHop {
     return <String, dynamic>{
       'enabled': ?enabled,
       'nextHopRegionId': ?nextHopRegionId,
-      'nextHopRelatedInfo': ?nextHopRelatedInfo == null ? null : nextHopRelatedInfo!.toMap(),
+      'nextHopRelatedInfo': ?pulumi.Input.mapOptionalInputValue<VPCRouteEntryNextHopNextHopRelatedInfo, Map<String, dynamic>>(nextHopRelatedInfo, (value) => value.toMap()),
       'nexthopId': ?nexthopId,
       'nexthopType': ?nexthopType,
       'weight': ?weight,
@@ -45,12 +46,12 @@ class VPCRouteEntryNextHop {
 
   factory VPCRouteEntryNextHop.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryNextHop(
-      enabled: map['enabled'] == null ? null : map['enabled'] as int,
-      nextHopRegionId: map['nextHopRegionId'] == null ? null : map['nextHopRegionId'] as String,
-      nextHopRelatedInfo: map['nextHopRelatedInfo'] == null ? null : VPCRouteEntryNextHopNextHopRelatedInfo.fromMap((map['nextHopRelatedInfo'] as Map).cast<String, dynamic>()),
-      nexthopId: map['nexthopId'] == null ? null : map['nexthopId'] as String,
-      nexthopType: map['nexthopType'] == null ? null : map['nexthopType'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as int).input(),
+      nextHopRegionId: map['nextHopRegionId'] == null ? null : (map['nextHopRegionId'] as String).input(),
+      nextHopRelatedInfo: map['nextHopRelatedInfo'] == null ? null : (VPCRouteEntryNextHopNextHopRelatedInfo.fromMap((map['nextHopRelatedInfo'] as Map).cast<String, dynamic>())).input(),
+      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId'] as String).input(),
+      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

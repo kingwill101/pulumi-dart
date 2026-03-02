@@ -7,7 +7,7 @@ class RegionResizeRequestStatusLastAttempt {
   /// (Output)
   /// Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
   /// Structure is documented below.
-  final List<RegionResizeRequestStatusLastAttemptError>? errors;
+  final pulumi.Input<List<RegionResizeRequestStatusLastAttemptError>>? errors;
 
   /// Creates a new [RegionResizeRequestStatusLastAttempt].
   /// [errors] (Output)
@@ -17,13 +17,13 @@ class RegionResizeRequestStatusLastAttempt {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?errors == null ? null : pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptError, Map<String, dynamic>>(errors!, (value) => value.toMap()),
+      'errors': ?pulumi.Input.mapOptionalInputValue<List<RegionResizeRequestStatusLastAttemptError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptError, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RegionResizeRequestStatusLastAttempt.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusLastAttempt(
-      errors: map['errors'] == null ? null : pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptError>(map['errors'], (value) => RegionResizeRequestStatusLastAttemptError.fromMap((value as Map).cast<String, dynamic>())),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptError>(map['errors'], (value) => RegionResizeRequestStatusLastAttemptError.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

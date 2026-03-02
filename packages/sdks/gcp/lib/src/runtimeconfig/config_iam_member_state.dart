@@ -39,19 +39,13 @@ class ConfigIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   ConfigIamMemberState({
-    pulumi.Output<ConfigIamMemberCondition>? condition,
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ConfigIamMemberCondition>(condition),
-      config = pulumi.Input.asOptionalInput<String>(config),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.config,
+    this.etag,
+    this.member,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class ConfigIamMemberState {
 
   factory ConfigIamMemberState.fromMap(Map<String, dynamic> map) {
     return ConfigIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ConfigIamMemberCondition>(ConfigIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (ConfigIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

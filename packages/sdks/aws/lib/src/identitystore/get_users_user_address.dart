@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUsersUserAddress {
   /// Country that this address is in.
-  final String country;
+  final pulumi.Input<String> country;
   /// Name that is typically displayed when the name is shown for display.
-  final String formatted;
+  final pulumi.Input<String> formatted;
   /// Address locality.
-  final String locality;
+  final pulumi.Input<String> locality;
   /// Postal code of the address.
-  final String postalCode;
+  final pulumi.Input<String> postalCode;
   /// When `true`, this is the primary phone number associated with the user.
-  final bool primary;
+  final pulumi.Input<bool> primary;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final String region;
+  final pulumi.Input<String> region;
   /// Street of the address.
-  final String streetAddress;
+  final pulumi.Input<String> streetAddress;
   /// Type of phone number.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetUsersUserAddress].
   /// [country] Country that this address is in.
@@ -54,14 +55,14 @@ class GetUsersUserAddress {
 
   factory GetUsersUserAddress.fromMap(Map<String, dynamic> map) {
     return GetUsersUserAddress(
-      country: map['country'] as String,
-      formatted: map['formatted'] as String,
-      locality: map['locality'] as String,
-      postalCode: map['postalCode'] as String,
-      primary: map['primary'] as bool,
-      region: map['region'] as String,
-      streetAddress: map['streetAddress'] as String,
-      type: map['type'] as String,
+      country: (map['country'] as String).input(),
+      formatted: (map['formatted'] as String).input(),
+      locality: (map['locality'] as String).input(),
+      postalCode: (map['postalCode'] as String).input(),
+      primary: (map['primary'] as bool).input(),
+      region: (map['region'] as String).input(),
+      streetAddress: (map['streetAddress'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

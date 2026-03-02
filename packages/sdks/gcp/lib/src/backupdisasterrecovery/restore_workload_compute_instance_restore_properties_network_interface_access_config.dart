@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig {
   /// (Optional)
-  final String? externalIp;
+  final pulumi.Input<String>? externalIp;
   /// (Optional)
-  final String? externalIpv6;
+  final pulumi.Input<String>? externalIpv6;
   /// (Optional)
-  final int? externalIpv6PrefixLength;
+  final pulumi.Input<int>? externalIpv6PrefixLength;
   /// Optional. The name of this access configuration.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Possible values are: `NETWORK_TIER_UNSPECIFIED`, `PREMIUM`, `STANDARD`.
-  final String? networkTier;
+  final pulumi.Input<String>? networkTier;
   /// (Optional)
-  final String? publicPtrDomainName;
+  final pulumi.Input<String>? publicPtrDomainName;
   /// (Optional)
-  final bool? setPublicPtr;
+  final pulumi.Input<bool>? setPublicPtr;
   /// Optional. The type of configuration.
   /// Possible values are: `ACCESS_TYPE_UNSPECIFIED`, `ONE_TO_ONE_NAT`, `DIRECT_IPV6`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig].
   /// [externalIp] (Optional)
@@ -55,14 +56,14 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfi
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig(
-      externalIp: map['externalIp'] == null ? null : map['externalIp'] as String,
-      externalIpv6: map['externalIpv6'] == null ? null : map['externalIpv6'] as String,
-      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] == null ? null : map['externalIpv6PrefixLength'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      networkTier: map['networkTier'] == null ? null : map['networkTier'] as String,
-      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : map['publicPtrDomainName'] as String,
-      setPublicPtr: map['setPublicPtr'] == null ? null : map['setPublicPtr'] as bool,
-      type: map['type'] == null ? null : map['type'] as String,
+      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
+      externalIpv6: map['externalIpv6'] == null ? null : (map['externalIpv6'] as String).input(),
+      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] == null ? null : (map['externalIpv6PrefixLength'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkTier: map['networkTier'] == null ? null : (map['networkTier'] as String).input(),
+      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : (map['publicPtrDomainName'] as String).input(),
+      setPublicPtr: map['setPublicPtr'] == null ? null : (map['setPublicPtr'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

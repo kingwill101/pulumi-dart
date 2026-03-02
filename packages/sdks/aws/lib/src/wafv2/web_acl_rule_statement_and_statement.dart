@@ -5,7 +5,7 @@ import 'web_acl_rule_statement.dart';
 
 class WebAclRuleStatementAndStatement {
   /// The statements to combine.
-  final List<WebAclRuleStatement> statements;
+  final pulumi.Input<List<WebAclRuleStatement>> statements;
 
   /// Creates a new [WebAclRuleStatementAndStatement].
   /// [statements] The statements to combine.
@@ -15,13 +15,13 @@ class WebAclRuleStatementAndStatement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements': pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(statements, (value) => value.toMap()),
+      'statements': pulumi.Input.mapInputValue<List<WebAclRuleStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebAclRuleStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementAndStatement(
-      statements: pulumi.Input.decodeList<WebAclRuleStatement>(map['statements'], (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>())),
+      statements: (pulumi.Input.decodeList<WebAclRuleStatement>(map['statements'], (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,13 +36,10 @@ class GetRouterConfigurationArgs {
   /// [routerTypeIdentifier] ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   /// [virtualInterfaceId] ID of the Direct Connect Virtual Interface
   GetRouterConfigurationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routerTypeIdentifier,
-    required pulumi.Output<String> virtualInterfaceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routerTypeIdentifier = pulumi.Input.asInput<String>(routerTypeIdentifier),
-      virtualInterfaceId = pulumi.Input.asInput<String>(virtualInterfaceId);
+    this.region,
+    required this.routerTypeIdentifier,
+    required this.virtualInterfaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,9 +51,9 @@ class GetRouterConfigurationArgs {
 
   factory GetRouterConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterConfigurationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routerTypeIdentifier: pulumi.Output.create<String>(map['routerTypeIdentifier'] as String),
-      virtualInterfaceId: pulumi.Output.create<String>(map['virtualInterfaceId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routerTypeIdentifier: (map['routerTypeIdentifier'] as String).input(),
+      virtualInterfaceId: (map['virtualInterfaceId'] as String).input(),
     );
   }
 }

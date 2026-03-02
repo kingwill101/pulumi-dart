@@ -23,15 +23,11 @@ class FastApplicationState {
   /// [template] Name of installed FAST template used to create FAST application. This parameter is required when creating new resource.
   /// [tenant] A FAST tenant name on which you want to manage application.
   FastApplicationState({
-    pulumi.Output<String>? application,
-    pulumi.Output<String>? fastJson,
-    pulumi.Output<String>? template,
-    pulumi.Output<String>? tenant,
-  }) :
-      application = pulumi.Input.asOptionalInput<String>(application),
-      fastJson = pulumi.Input.asOptionalInput<String>(fastJson),
-      template = pulumi.Input.asOptionalInput<String>(template),
-      tenant = pulumi.Input.asOptionalInput<String>(tenant);
+    this.application,
+    this.fastJson,
+    this.template,
+    this.tenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FastApplicationState {
 
   factory FastApplicationState.fromMap(Map<String, dynamic> map) {
     return FastApplicationState(
-      application: map['application'] == null ? null : pulumi.Output.create<String>(map['application'] as String),
-      fastJson: map['fastJson'] == null ? null : pulumi.Output.create<String>(map['fastJson'] as String),
-      template: map['template'] == null ? null : pulumi.Output.create<String>(map['template'] as String),
-      tenant: map['tenant'] == null ? null : pulumi.Output.create<String>(map['tenant'] as String),
+      application: map['application'] == null ? null : (map['application'] as String).input(),
+      fastJson: map['fastJson'] == null ? null : (map['fastJson'] as String).input(),
+      template: map['template'] == null ? null : (map['template'] as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
     );
   }
 }

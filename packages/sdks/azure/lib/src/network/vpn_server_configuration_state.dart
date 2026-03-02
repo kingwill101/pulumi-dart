@@ -41,29 +41,18 @@ class VpnServerConfigurationState {
   /// [vpnAuthenticationTypes] A list of Authentication Types applicable for this VPN Server Configuration. Possible values are `AAD` (Azure Active Directory), `Certificate` and `Radius`.
   /// [vpnProtocols] A list of VPN Protocols to use for this Server Configuration. Possible values are `IkeV2` and `OpenVPN`.
   VpnServerConfigurationState({
-    pulumi.Output<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>>? azureActiveDirectoryAuthentications,
-    pulumi.Output<List<VpnServerConfigurationClientRevokedCertificate>>? clientRevokedCertificates,
-    pulumi.Output<List<VpnServerConfigurationClientRootCertificate>>? clientRootCertificates,
-    pulumi.Output<VpnServerConfigurationIpsecPolicy>? ipsecPolicy,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<VpnServerConfigurationRadius>? radius,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? vpnAuthenticationTypes,
-    pulumi.Output<List<String>>? vpnProtocols,
-  }) :
-      azureActiveDirectoryAuthentications = pulumi.Input.asOptionalInput<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>>(azureActiveDirectoryAuthentications),
-      clientRevokedCertificates = pulumi.Input.asOptionalInput<List<VpnServerConfigurationClientRevokedCertificate>>(clientRevokedCertificates),
-      clientRootCertificates = pulumi.Input.asOptionalInput<List<VpnServerConfigurationClientRootCertificate>>(clientRootCertificates),
-      ipsecPolicy = pulumi.Input.asOptionalInput<VpnServerConfigurationIpsecPolicy>(ipsecPolicy),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      radius = pulumi.Input.asOptionalInput<VpnServerConfigurationRadius>(radius),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpnAuthenticationTypes = pulumi.Input.asOptionalInput<List<String>>(vpnAuthenticationTypes),
-      vpnProtocols = pulumi.Input.asOptionalInput<List<String>>(vpnProtocols);
+    this.azureActiveDirectoryAuthentications,
+    this.clientRevokedCertificates,
+    this.clientRootCertificates,
+    this.ipsecPolicy,
+    this.location,
+    this.name,
+    this.radius,
+    this.resourceGroupName,
+    this.tags,
+    this.vpnAuthenticationTypes,
+    this.vpnProtocols,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class VpnServerConfigurationState {
 
   factory VpnServerConfigurationState.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationState(
-      azureActiveDirectoryAuthentications: map['azureActiveDirectoryAuthentications'] == null ? null : pulumi.Output.create<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>>(pulumi.Input.decodeList<VpnServerConfigurationAzureActiveDirectoryAuthentication>(map['azureActiveDirectoryAuthentications'], (value) => VpnServerConfigurationAzureActiveDirectoryAuthentication.fromMap((value as Map).cast<String, dynamic>()))),
-      clientRevokedCertificates: map['clientRevokedCertificates'] == null ? null : pulumi.Output.create<List<VpnServerConfigurationClientRevokedCertificate>>(pulumi.Input.decodeList<VpnServerConfigurationClientRevokedCertificate>(map['clientRevokedCertificates'], (value) => VpnServerConfigurationClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>()))),
-      clientRootCertificates: map['clientRootCertificates'] == null ? null : pulumi.Output.create<List<VpnServerConfigurationClientRootCertificate>>(pulumi.Input.decodeList<VpnServerConfigurationClientRootCertificate>(map['clientRootCertificates'], (value) => VpnServerConfigurationClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))),
-      ipsecPolicy: map['ipsecPolicy'] == null ? null : pulumi.Output.create<VpnServerConfigurationIpsecPolicy>(VpnServerConfigurationIpsecPolicy.fromMap((map['ipsecPolicy'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      radius: map['radius'] == null ? null : pulumi.Output.create<VpnServerConfigurationRadius>(VpnServerConfigurationRadius.fromMap((map['radius'] as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpnAuthenticationTypes: map['vpnAuthenticationTypes'] == null ? null : pulumi.Output.create<List<String>>((map['vpnAuthenticationTypes'] as List).cast<String>()),
-      vpnProtocols: map['vpnProtocols'] == null ? null : pulumi.Output.create<List<String>>((map['vpnProtocols'] as List).cast<String>()),
+      azureActiveDirectoryAuthentications: map['azureActiveDirectoryAuthentications'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationAzureActiveDirectoryAuthentication>(map['azureActiveDirectoryAuthentications'], (value) => VpnServerConfigurationAzureActiveDirectoryAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientRevokedCertificates: map['clientRevokedCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationClientRevokedCertificate>(map['clientRevokedCertificates'], (value) => VpnServerConfigurationClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientRootCertificates: map['clientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationClientRootCertificate>(map['clientRootCertificates'], (value) => VpnServerConfigurationClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipsecPolicy: map['ipsecPolicy'] == null ? null : (VpnServerConfigurationIpsecPolicy.fromMap((map['ipsecPolicy'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      radius: map['radius'] == null ? null : (VpnServerConfigurationRadius.fromMap((map['radius'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpnAuthenticationTypes: map['vpnAuthenticationTypes'] == null ? null : ((map['vpnAuthenticationTypes'] as List).cast<String>()).input(),
+      vpnProtocols: map['vpnProtocols'] == null ? null : ((map['vpnProtocols'] as List).cast<String>()).input(),
     );
   }
 }

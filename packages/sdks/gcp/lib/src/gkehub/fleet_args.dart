@@ -23,13 +23,10 @@ class FleetArgs {
   /// [displayName] A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// [project] The ID of the project in which the resource belongs.
   FleetArgs({
-    pulumi.Output<FleetDefaultClusterConfig>? defaultClusterConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? project,
-  }) :
-      defaultClusterConfig = pulumi.Input.asOptionalInput<FleetDefaultClusterConfig>(defaultClusterConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.defaultClusterConfig,
+    this.displayName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      defaultClusterConfig: map['defaultClusterConfig'] == null ? null : pulumi.Output.create<FleetDefaultClusterConfig>(FleetDefaultClusterConfig.fromMap((map['defaultClusterConfig'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      defaultClusterConfig: map['defaultClusterConfig'] == null ? null : (FleetDefaultClusterConfig.fromMap((map['defaultClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

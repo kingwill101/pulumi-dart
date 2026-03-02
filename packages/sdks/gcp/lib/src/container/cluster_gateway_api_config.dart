@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterGatewayApiConfig {
   /// Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
-  final String channel;
+  final pulumi.Input<String> channel;
 
   /// Creates a new [ClusterGatewayApiConfig].
   /// [channel] Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
@@ -19,7 +20,7 @@ class ClusterGatewayApiConfig {
 
   factory ClusterGatewayApiConfig.fromMap(Map<String, dynamic> map) {
     return ClusterGatewayApiConfig(
-      channel: map['channel'] as String,
+      channel: (map['channel'] as String).input(),
     );
   }
 }

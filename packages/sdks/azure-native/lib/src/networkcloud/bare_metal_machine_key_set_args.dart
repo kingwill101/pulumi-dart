@@ -48,31 +48,19 @@ class BareMetalMachineKeySetArgs {
   /// [tags] Resource tags.
   /// [userList] The unique list of permitted users.
   BareMetalMachineKeySetArgs({
-    required pulumi.Output<String> azureGroupId,
-    pulumi.Output<String>? bareMetalMachineKeySetName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> expiration,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    required pulumi.Output<List<String>> jumpHostsAllowed,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? osGroupName,
-    required pulumi.Output<String> privilegeLevel,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<KeySetUser>> userList,
-  }) :
-      azureGroupId = pulumi.Input.asInput<String>(azureGroupId),
-      bareMetalMachineKeySetName = pulumi.Input.asOptionalInput<String>(bareMetalMachineKeySetName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      expiration = pulumi.Input.asInput<String>(expiration),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      jumpHostsAllowed = pulumi.Input.asInput<List<String>>(jumpHostsAllowed),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      osGroupName = pulumi.Input.asOptionalInput<String>(osGroupName),
-      privilegeLevel = pulumi.Input.asInput<String>(privilegeLevel),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userList = pulumi.Input.asInput<List<KeySetUser>>(userList);
+    required this.azureGroupId,
+    this.bareMetalMachineKeySetName,
+    required this.clusterName,
+    required this.expiration,
+    required this.extendedLocation,
+    required this.jumpHostsAllowed,
+    this.location,
+    this.osGroupName,
+    required this.privilegeLevel,
+    required this.resourceGroupName,
+    this.tags,
+    required this.userList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class BareMetalMachineKeySetArgs {
 
   factory BareMetalMachineKeySetArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalMachineKeySetArgs(
-      azureGroupId: pulumi.Output.create<String>(map['azureGroupId'] as String),
-      bareMetalMachineKeySetName: map['bareMetalMachineKeySetName'] == null ? null : pulumi.Output.create<String>(map['bareMetalMachineKeySetName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      expiration: pulumi.Output.create<String>(map['expiration'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      jumpHostsAllowed: pulumi.Output.create<List<String>>((map['jumpHostsAllowed'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      osGroupName: map['osGroupName'] == null ? null : pulumi.Output.create<String>(map['osGroupName'] as String),
-      privilegeLevel: pulumi.Output.create<String>(map['privilegeLevel'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userList: pulumi.Output.create<List<KeySetUser>>(pulumi.Input.decodeList<KeySetUser>(map['userList'], (value) => KeySetUser.fromMap((value as Map).cast<String, dynamic>()))),
+      azureGroupId: (map['azureGroupId'] as String).input(),
+      bareMetalMachineKeySetName: map['bareMetalMachineKeySetName'] == null ? null : (map['bareMetalMachineKeySetName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      expiration: (map['expiration'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      jumpHostsAllowed: ((map['jumpHostsAllowed'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      osGroupName: map['osGroupName'] == null ? null : (map['osGroupName'] as String).input(),
+      privilegeLevel: (map['privilegeLevel'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userList: (pulumi.Input.decodeList<KeySetUser>(map['userList'], (value) => KeySetUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

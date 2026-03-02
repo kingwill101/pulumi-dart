@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GPU settings for the Agent Pool.
 class GPUProfileResponse {
   /// Whether to install GPU drivers. When it's not specified, default is Install.
-  final String? driver;
+  final pulumi.Input<String>? driver;
 
   /// Creates a new [GPUProfileResponse].
   /// [driver] Whether to install GPU drivers. When it's not specified, default is Install.
@@ -20,7 +21,7 @@ class GPUProfileResponse {
 
   factory GPUProfileResponse.fromMap(Map<String, dynamic> map) {
     return GPUProfileResponse(
-      driver: map['driver'] == null ? null : map['driver'] as String,
+      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
     );
   }
 }

@@ -41,27 +41,17 @@ class CompositeAlarmArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to associate with the alarm. Up to 50 tags are allowed. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CompositeAlarmArgs({
-    pulumi.Output<bool>? actionsEnabled,
-    pulumi.Output<CompositeAlarmActionsSuppressor>? actionsSuppressor,
-    pulumi.Output<List<String>>? alarmActions,
-    pulumi.Output<String>? alarmDescription,
-    required pulumi.Output<String> alarmName,
-    required pulumi.Output<String> alarmRule,
-    pulumi.Output<List<String>>? insufficientDataActions,
-    pulumi.Output<List<String>>? okActions,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      actionsEnabled = pulumi.Input.asOptionalInput<bool>(actionsEnabled),
-      actionsSuppressor = pulumi.Input.asOptionalInput<CompositeAlarmActionsSuppressor>(actionsSuppressor),
-      alarmActions = pulumi.Input.asOptionalInput<List<String>>(alarmActions),
-      alarmDescription = pulumi.Input.asOptionalInput<String>(alarmDescription),
-      alarmName = pulumi.Input.asInput<String>(alarmName),
-      alarmRule = pulumi.Input.asInput<String>(alarmRule),
-      insufficientDataActions = pulumi.Input.asOptionalInput<List<String>>(insufficientDataActions),
-      okActions = pulumi.Input.asOptionalInput<List<String>>(okActions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.actionsEnabled,
+    this.actionsSuppressor,
+    this.alarmActions,
+    this.alarmDescription,
+    required this.alarmName,
+    required this.alarmRule,
+    this.insufficientDataActions,
+    this.okActions,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class CompositeAlarmArgs {
 
   factory CompositeAlarmArgs.fromMap(Map<String, dynamic> map) {
     return CompositeAlarmArgs(
-      actionsEnabled: map['actionsEnabled'] == null ? null : pulumi.Output.create<bool>(map['actionsEnabled'] as bool),
-      actionsSuppressor: map['actionsSuppressor'] == null ? null : pulumi.Output.create<CompositeAlarmActionsSuppressor>(CompositeAlarmActionsSuppressor.fromMap((map['actionsSuppressor'] as Map).cast<String, dynamic>())),
-      alarmActions: map['alarmActions'] == null ? null : pulumi.Output.create<List<String>>((map['alarmActions'] as List).cast<String>()),
-      alarmDescription: map['alarmDescription'] == null ? null : pulumi.Output.create<String>(map['alarmDescription'] as String),
-      alarmName: pulumi.Output.create<String>(map['alarmName'] as String),
-      alarmRule: pulumi.Output.create<String>(map['alarmRule'] as String),
-      insufficientDataActions: map['insufficientDataActions'] == null ? null : pulumi.Output.create<List<String>>((map['insufficientDataActions'] as List).cast<String>()),
-      okActions: map['okActions'] == null ? null : pulumi.Output.create<List<String>>((map['okActions'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      actionsEnabled: map['actionsEnabled'] == null ? null : (map['actionsEnabled'] as bool).input(),
+      actionsSuppressor: map['actionsSuppressor'] == null ? null : (CompositeAlarmActionsSuppressor.fromMap((map['actionsSuppressor'] as Map).cast<String, dynamic>())).input(),
+      alarmActions: map['alarmActions'] == null ? null : ((map['alarmActions'] as List).cast<String>()).input(),
+      alarmDescription: map['alarmDescription'] == null ? null : (map['alarmDescription'] as String).input(),
+      alarmName: (map['alarmName'] as String).input(),
+      alarmRule: (map['alarmRule'] as String).input(),
+      insufficientDataActions: map['insufficientDataActions'] == null ? null : ((map['insufficientDataActions'] as List).cast<String>()).input(),
+      okActions: map['okActions'] == null ? null : ((map['okActions'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -5,8 +5,8 @@ import 'rrset_routing_policy_wrr_policy_wrr_policy_item_response_dns_v1beta2.dar
 
 /// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
 class RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2 {
-  final List<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2> items;
-  final String kind;
+  final pulumi.Input<List<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2>> items;
+  final pulumi.Input<String> kind;
 
   /// Creates a new [RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2].
   /// [items] Required.
@@ -18,15 +18,15 @@ class RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': pulumi.Input.encodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items': pulumi.Input.mapInputValue<List<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': kind,
     };
   }
 
   factory RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2(
-      items: pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2>(map['items'], (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] as String,
+      items: (pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2>(map['items'], (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: (map['kind'] as String).input(),
     );
   }
 }

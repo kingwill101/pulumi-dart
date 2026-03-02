@@ -12,9 +12,8 @@ class GetOrganizationSecurityPolicyComputeBetaArgs {
   /// Creates a new [GetOrganizationSecurityPolicyComputeBetaArgs].
   /// [securityPolicy] Required.
   GetOrganizationSecurityPolicyComputeBetaArgs({
-    required pulumi.Output<String> securityPolicy,
-  }) :
-      securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
+    required this.securityPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetOrganizationSecurityPolicyComputeBetaArgs {
 
   factory GetOrganizationSecurityPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSecurityPolicyComputeBetaArgs(
-      securityPolicy: pulumi.Output.create<String>(map['securityPolicy'] as String),
+      securityPolicy: (map['securityPolicy'] as String).input(),
     );
   }
 }

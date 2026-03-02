@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetThemeConfigurationUiColorPalette {
   /// Color (hexadecimal) that applies to selected states and buttons.
-  final String accent;
+  final pulumi.Input<String> accent;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the accent color.
-  final String accentForeground;
+  final pulumi.Input<String> accentForeground;
   /// Color (hexadecimal) that applies to error messages.
-  final String danger;
+  final pulumi.Input<String> danger;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the error color.
-  final String dangerForeground;
+  final pulumi.Input<String> dangerForeground;
   /// Color (hexadecimal) that applies to the names of fields that are identified as dimensions.
-  final String dimension;
+  final pulumi.Input<String> dimension;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the dimension color.
-  final String dimensionForeground;
+  final pulumi.Input<String> dimensionForeground;
   /// Color (hexadecimal) that applies to the names of fields that are identified as measures.
-  final String measure;
+  final pulumi.Input<String> measure;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the measure color.
-  final String measureForeground;
+  final pulumi.Input<String> measureForeground;
   /// Color (hexadecimal) that applies to visuals and other high emphasis UI.
-  final String primaryBackground;
+  final pulumi.Input<String> primaryBackground;
   /// Color (hexadecimal) of text and other foreground elements that appear over the primary background regions, such as grid lines, borders, table banding, icons, and so on.
-  final String primaryForeground;
+  final pulumi.Input<String> primaryForeground;
   /// Color (hexadecimal) that applies to the sheet background and sheet controls.
-  final String secondaryBackground;
+  final pulumi.Input<String> secondaryBackground;
   /// Color (hexadecimal) that applies to any sheet title, sheet control text, or UI that appears over the secondary background.
-  final String secondaryForeground;
+  final pulumi.Input<String> secondaryForeground;
   /// Color (hexadecimal) that applies to success messages, for example the check mark for a successful download.
-  final String success;
+  final pulumi.Input<String> success;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the success color.
-  final String successForeground;
+  final pulumi.Input<String> successForeground;
   /// Color (hexadecimal) that applies to warning and informational messages.
-  final String warning;
+  final pulumi.Input<String> warning;
   /// Color (hexadecimal) that applies to any text or other elements that appear over the warning color.
-  final String warningForeground;
+  final pulumi.Input<String> warningForeground;
 
   /// Creates a new [GetThemeConfigurationUiColorPalette].
   /// [accent] Color (hexadecimal) that applies to selected states and buttons.
@@ -94,22 +95,22 @@ class GetThemeConfigurationUiColorPalette {
 
   factory GetThemeConfigurationUiColorPalette.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationUiColorPalette(
-      accent: map['accent'] as String,
-      accentForeground: map['accentForeground'] as String,
-      danger: map['danger'] as String,
-      dangerForeground: map['dangerForeground'] as String,
-      dimension: map['dimension'] as String,
-      dimensionForeground: map['dimensionForeground'] as String,
-      measure: map['measure'] as String,
-      measureForeground: map['measureForeground'] as String,
-      primaryBackground: map['primaryBackground'] as String,
-      primaryForeground: map['primaryForeground'] as String,
-      secondaryBackground: map['secondaryBackground'] as String,
-      secondaryForeground: map['secondaryForeground'] as String,
-      success: map['success'] as String,
-      successForeground: map['successForeground'] as String,
-      warning: map['warning'] as String,
-      warningForeground: map['warningForeground'] as String,
+      accent: (map['accent'] as String).input(),
+      accentForeground: (map['accentForeground'] as String).input(),
+      danger: (map['danger'] as String).input(),
+      dangerForeground: (map['dangerForeground'] as String).input(),
+      dimension: (map['dimension'] as String).input(),
+      dimensionForeground: (map['dimensionForeground'] as String).input(),
+      measure: (map['measure'] as String).input(),
+      measureForeground: (map['measureForeground'] as String).input(),
+      primaryBackground: (map['primaryBackground'] as String).input(),
+      primaryForeground: (map['primaryForeground'] as String).input(),
+      secondaryBackground: (map['secondaryBackground'] as String).input(),
+      secondaryForeground: (map['secondaryForeground'] as String).input(),
+      success: (map['success'] as String).input(),
+      successForeground: (map['successForeground'] as String).input(),
+      warning: (map['warning'] as String).input(),
+      warningForeground: (map['warningForeground'] as String).input(),
     );
   }
 }

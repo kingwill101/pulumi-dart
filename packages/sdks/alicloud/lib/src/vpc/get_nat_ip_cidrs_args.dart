@@ -31,21 +31,14 @@ class GetNatIpCidrsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the NAT IP address. Valid values:`Available`.
   GetNatIpCidrsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    required pulumi.Output<String> natGatewayId,
-    pulumi.Output<List<String>>? natIpCidrNames,
-    pulumi.Output<List<String>>? natIpCidrs,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      natGatewayId = pulumi.Input.asInput<String>(natGatewayId),
-      natIpCidrNames = pulumi.Input.asOptionalInput<List<String>>(natIpCidrNames),
-      natIpCidrs = pulumi.Input.asOptionalInput<List<String>>(natIpCidrs),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.nameRegex,
+    required this.natGatewayId,
+    this.natIpCidrNames,
+    this.natIpCidrs,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetNatIpCidrsArgs {
 
   factory GetNatIpCidrsArgs.fromMap(Map<String, dynamic> map) {
     return GetNatIpCidrsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      natGatewayId: pulumi.Output.create<String>(map['natGatewayId'] as String),
-      natIpCidrNames: map['natIpCidrNames'] == null ? null : pulumi.Output.create<List<String>>((map['natIpCidrNames'] as List).cast<String>()),
-      natIpCidrs: map['natIpCidrs'] == null ? null : pulumi.Output.create<List<String>>((map['natIpCidrs'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      natIpCidrNames: map['natIpCidrNames'] == null ? null : ((map['natIpCidrNames'] as List).cast<String>()).input(),
+      natIpCidrs: map['natIpCidrs'] == null ? null : ((map['natIpCidrs'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

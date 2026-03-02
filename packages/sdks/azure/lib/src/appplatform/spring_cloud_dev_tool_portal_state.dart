@@ -26,19 +26,13 @@ class SpringCloudDevToolPortalState {
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Dev Tool Portal to be created.
   /// [sso] A `sso` block as defined below.
   SpringCloudDevToolPortalState({
-    pulumi.Output<bool>? applicationAcceleratorEnabled,
-    pulumi.Output<bool>? applicationLiveViewEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? springCloudServiceId,
-    pulumi.Output<SpringCloudDevToolPortalSso>? sso,
-  }) :
-      applicationAcceleratorEnabled = pulumi.Input.asOptionalInput<bool>(applicationAcceleratorEnabled),
-      applicationLiveViewEnabled = pulumi.Input.asOptionalInput<bool>(applicationLiveViewEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      springCloudServiceId = pulumi.Input.asOptionalInput<String>(springCloudServiceId),
-      sso = pulumi.Input.asOptionalInput<SpringCloudDevToolPortalSso>(sso);
+    this.applicationAcceleratorEnabled,
+    this.applicationLiveViewEnabled,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.springCloudServiceId,
+    this.sso,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class SpringCloudDevToolPortalState {
 
   factory SpringCloudDevToolPortalState.fromMap(Map<String, dynamic> map) {
     return SpringCloudDevToolPortalState(
-      applicationAcceleratorEnabled: map['applicationAcceleratorEnabled'] == null ? null : pulumi.Output.create<bool>(map['applicationAcceleratorEnabled'] as bool),
-      applicationLiveViewEnabled: map['applicationLiveViewEnabled'] == null ? null : pulumi.Output.create<bool>(map['applicationLiveViewEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : pulumi.Output.create<String>(map['springCloudServiceId'] as String),
-      sso: map['sso'] == null ? null : pulumi.Output.create<SpringCloudDevToolPortalSso>(SpringCloudDevToolPortalSso.fromMap((map['sso'] as Map).cast<String, dynamic>())),
+      applicationAcceleratorEnabled: map['applicationAcceleratorEnabled'] == null ? null : (map['applicationAcceleratorEnabled'] as bool).input(),
+      applicationLiveViewEnabled: map['applicationLiveViewEnabled'] == null ? null : (map['applicationLiveViewEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
+      sso: map['sso'] == null ? null : (SpringCloudDevToolPortalSso.fromMap((map['sso'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

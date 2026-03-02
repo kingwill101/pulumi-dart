@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleErrorActionElasticsearch {
   /// The endpoint of your Elasticsearch domain.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The unique identifier for the document you are storing.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Elasticsearch index where you want to store your data.
-  final String index;
+  final pulumi.Input<String> index;
   /// The IAM role ARN that has access to Elasticsearch.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The type of document you are storing.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TopicRuleErrorActionElasticsearch].
   /// [endpoint] The endpoint of your Elasticsearch domain.
@@ -39,11 +40,11 @@ class TopicRuleErrorActionElasticsearch {
 
   factory TopicRuleErrorActionElasticsearch.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionElasticsearch(
-      endpoint: map['endpoint'] as String,
-      id: map['id'] as String,
-      index: map['index'] as String,
-      roleArn: map['roleArn'] as String,
-      type: map['type'] as String,
+      endpoint: (map['endpoint'] as String).input(),
+      id: (map['id'] as String).input(),
+      index: (map['index'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

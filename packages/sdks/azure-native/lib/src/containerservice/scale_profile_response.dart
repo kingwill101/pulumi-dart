@@ -6,7 +6,7 @@ import 'manual_scale_profile_response.dart';
 /// Specifications on how to scale a VirtualMachines agent pool.
 class ScaleProfileResponse {
   /// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
-  final List<ManualScaleProfileResponse>? manual;
+  final pulumi.Input<List<ManualScaleProfileResponse>>? manual;
 
   /// Creates a new [ScaleProfileResponse].
   /// [manual] Specifications on how to scale the VirtualMachines agent pool to a fixed size.
@@ -16,13 +16,13 @@ class ScaleProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manual': ?manual == null ? null : pulumi.Input.encodeList<ManualScaleProfileResponse, Map<String, dynamic>>(manual!, (value) => value.toMap()),
+      'manual': ?pulumi.Input.mapOptionalInputValue<List<ManualScaleProfileResponse>, List<Map<String, dynamic>>>(manual, (value) => pulumi.Input.encodeList<ManualScaleProfileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScaleProfileResponse.fromMap(Map<String, dynamic> map) {
     return ScaleProfileResponse(
-      manual: map['manual'] == null ? null : pulumi.Input.decodeList<ManualScaleProfileResponse>(map['manual'], (value) => ManualScaleProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      manual: map['manual'] == null ? null : (pulumi.Input.decodeList<ManualScaleProfileResponse>(map['manual'], (value) => ManualScaleProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

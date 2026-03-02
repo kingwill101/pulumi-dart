@@ -41,19 +41,13 @@ class WorkloadIdentityPoolIamBindingState {
   /// [role] The role that should be applied. Only one
   /// [workloadIdentityPoolId] Used to find the parent resource to bind the IAM policy to
   WorkloadIdentityPoolIamBindingState({
-    pulumi.Output<WorkloadIdentityPoolIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? workloadIdentityPoolId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WorkloadIdentityPoolIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      workloadIdentityPoolId = pulumi.Input.asOptionalInput<String>(workloadIdentityPoolId);
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.role,
+    this.workloadIdentityPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +62,12 @@ class WorkloadIdentityPoolIamBindingState {
 
   factory WorkloadIdentityPoolIamBindingState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WorkloadIdentityPoolIamBindingCondition>(WorkloadIdentityPoolIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
+      condition: map['condition'] == null ? null : (WorkloadIdentityPoolIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId'] as String).input(),
     );
   }
 }

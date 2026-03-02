@@ -46,33 +46,20 @@ class LinkAggregationGroupState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   LinkAggregationGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<String>? connectionsBandwidth,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? hasLogicalRedundancy,
-    pulumi.Output<bool>? jumboFrameCapable,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerAccountId,
-    pulumi.Output<String>? providerName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      connectionsBandwidth = pulumi.Input.asOptionalInput<String>(connectionsBandwidth),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      hasLogicalRedundancy = pulumi.Input.asOptionalInput<String>(hasLogicalRedundancy),
-      jumboFrameCapable = pulumi.Input.asOptionalInput<bool>(jumboFrameCapable),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerAccountId = pulumi.Input.asOptionalInput<String>(ownerAccountId),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.connectionId,
+    this.connectionsBandwidth,
+    this.forceDestroy,
+    this.hasLogicalRedundancy,
+    this.jumboFrameCapable,
+    this.location,
+    this.name,
+    this.ownerAccountId,
+    this.providerName,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,19 +81,19 @@ class LinkAggregationGroupState {
 
   factory LinkAggregationGroupState.fromMap(Map<String, dynamic> map) {
     return LinkAggregationGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      connectionsBandwidth: map['connectionsBandwidth'] == null ? null : pulumi.Output.create<String>(map['connectionsBandwidth'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      hasLogicalRedundancy: map['hasLogicalRedundancy'] == null ? null : pulumi.Output.create<String>(map['hasLogicalRedundancy'] as String),
-      jumboFrameCapable: map['jumboFrameCapable'] == null ? null : pulumi.Output.create<bool>(map['jumboFrameCapable'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerAccountId: map['ownerAccountId'] == null ? null : pulumi.Output.create<String>(map['ownerAccountId'] as String),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      connectionsBandwidth: map['connectionsBandwidth'] == null ? null : (map['connectionsBandwidth'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      hasLogicalRedundancy: map['hasLogicalRedundancy'] == null ? null : (map['hasLogicalRedundancy'] as String).input(),
+      jumboFrameCapable: map['jumboFrameCapable'] == null ? null : (map['jumboFrameCapable'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

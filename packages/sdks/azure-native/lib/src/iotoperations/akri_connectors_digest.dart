@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorsDigest properties.
 class AkriConnectorsDigest {
   /// The digest of the image.
-  final String digest;
+  final pulumi.Input<String> digest;
   /// AkriConnectorsTagDigestType values.
   /// Expected value is 'Digest'.
-  final String tagDigestType;
+  final pulumi.Input<String> tagDigestType;
 
   /// Creates a new [AkriConnectorsDigest].
   /// [digest] The digest of the image.
@@ -26,8 +27,8 @@ class AkriConnectorsDigest {
 
   factory AkriConnectorsDigest.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsDigest(
-      digest: map['digest'] as String,
-      tagDigestType: map['tagDigestType'] as String,
+      digest: (map['digest'] as String).input(),
+      tagDigestType: (map['tagDigestType'] as String).input(),
     );
   }
 }

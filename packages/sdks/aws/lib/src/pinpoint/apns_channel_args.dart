@@ -49,27 +49,17 @@ class ApnsChannelArgs {
   /// [tokenKey] The `.p8` file that you download from your Apple developer account when you create an authentication key.
   /// [tokenKeyId] The ID assigned to your signing key. To find this value, choose Certificates, IDs & Profiles, and choose your key in the Keys section.
   ApnsChannelArgs({
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<String>? bundleId,
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? defaultAuthenticationMethod,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? teamId,
-    pulumi.Output<String>? tokenKey,
-    pulumi.Output<String>? tokenKeyId,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      defaultAuthenticationMethod = pulumi.Input.asOptionalInput<String>(defaultAuthenticationMethod),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      teamId = pulumi.Input.asOptionalInput<String>(teamId),
-      tokenKey = pulumi.Input.asOptionalInput<String>(tokenKey),
-      tokenKeyId = pulumi.Input.asOptionalInput<String>(tokenKeyId);
+    required this.applicationId,
+    this.bundleId,
+    this.certificate,
+    this.defaultAuthenticationMethod,
+    this.enabled,
+    this.privateKey,
+    this.region,
+    this.teamId,
+    this.tokenKey,
+    this.tokenKeyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,16 +78,16 @@ class ApnsChannelArgs {
 
   factory ApnsChannelArgs.fromMap(Map<String, dynamic> map) {
     return ApnsChannelArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      bundleId: map['bundleId'] == null ? null : pulumi.Output.create<String>(map['bundleId'] as String),
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      defaultAuthenticationMethod: map['defaultAuthenticationMethod'] == null ? null : pulumi.Output.create<String>(map['defaultAuthenticationMethod'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      teamId: map['teamId'] == null ? null : pulumi.Output.create<String>(map['teamId'] as String),
-      tokenKey: map['tokenKey'] == null ? null : pulumi.Output.create<String>(map['tokenKey'] as String),
-      tokenKeyId: map['tokenKeyId'] == null ? null : pulumi.Output.create<String>(map['tokenKeyId'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      defaultAuthenticationMethod: map['defaultAuthenticationMethod'] == null ? null : (map['defaultAuthenticationMethod'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
+      tokenKey: map['tokenKey'] == null ? null : (map['tokenKey'] as String).input(),
+      tokenKeyId: map['tokenKeyId'] == null ? null : (map['tokenKeyId'] as String).input(),
     );
   }
 }

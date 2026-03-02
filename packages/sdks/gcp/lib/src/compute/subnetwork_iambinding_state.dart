@@ -47,21 +47,14 @@ class SubnetworkIAMBindingState {
   /// [role] The role that should be applied. Only one
   /// [subnetwork] Used to find the parent resource to bind the IAM policy to
   SubnetworkIAMBindingState({
-    pulumi.Output<SubnetworkIAMBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? subnetwork,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SubnetworkIAMBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork);
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.region,
+    this.role,
+    this.subnetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,13 +70,13 @@ class SubnetworkIAMBindingState {
 
   factory SubnetworkIAMBindingState.fromMap(Map<String, dynamic> map) {
     return SubnetworkIAMBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SubnetworkIAMBindingCondition>(SubnetworkIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      subnetwork: map['subnetwork'] == null ? null : pulumi.Output.create<String>(map['subnetwork'] as String),
+      condition: map['condition'] == null ? null : (SubnetworkIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
     );
   }
 }

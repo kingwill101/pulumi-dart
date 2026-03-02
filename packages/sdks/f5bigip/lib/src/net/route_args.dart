@@ -25,17 +25,12 @@ class RouteArgs {
   /// [reject] reject route
   /// [tunnelRef] tunnel_ref to route traffic
   RouteArgs({
-    pulumi.Output<String>? gw,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> network,
-    pulumi.Output<bool>? reject,
-    pulumi.Output<String>? tunnelRef,
-  }) :
-      gw = pulumi.Input.asOptionalInput<String>(gw),
-      name = pulumi.Input.asInput<String>(name),
-      network = pulumi.Input.asInput<String>(network),
-      reject = pulumi.Input.asOptionalInput<bool>(reject),
-      tunnelRef = pulumi.Input.asOptionalInput<String>(tunnelRef);
+    this.gw,
+    required this.name,
+    required this.network,
+    this.reject,
+    this.tunnelRef,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      gw: map['gw'] == null ? null : pulumi.Output.create<String>(map['gw'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      reject: map['reject'] == null ? null : pulumi.Output.create<bool>(map['reject'] as bool),
-      tunnelRef: map['tunnelRef'] == null ? null : pulumi.Output.create<String>(map['tunnelRef'] as String),
+      gw: map['gw'] == null ? null : (map['gw'] as String).input(),
+      name: (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      reject: map['reject'] == null ? null : (map['reject'] as bool).input(),
+      tunnelRef: map['tunnelRef'] == null ? null : (map['tunnelRef'] as String).input(),
     );
   }
 }

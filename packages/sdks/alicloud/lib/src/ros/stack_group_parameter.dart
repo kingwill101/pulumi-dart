@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackGroupParameter {
   /// The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
-  final String parameterKey;
+  final pulumi.Input<String> parameterKey;
   /// The value of parameter N.
-  final String parameterValue;
+  final pulumi.Input<String> parameterValue;
 
   /// Creates a new [StackGroupParameter].
   /// [parameterKey] The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
@@ -24,8 +25,8 @@ class StackGroupParameter {
 
   factory StackGroupParameter.fromMap(Map<String, dynamic> map) {
     return StackGroupParameter(
-      parameterKey: map['parameterKey'] as String,
-      parameterValue: map['parameterValue'] as String,
+      parameterKey: (map['parameterKey'] as String).input(),
+      parameterValue: (map['parameterValue'] as String).input(),
     );
   }
 }

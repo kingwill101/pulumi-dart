@@ -23,15 +23,11 @@ class VariableValueAtManagementGroupArgs {
   /// [variableName] The name of the variable to operate on.
   /// [variableValueName] The name of the variable value to operate on.
   VariableValueAtManagementGroupArgs({
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<List<PolicyVariableValueColumnValue>> values,
-    required pulumi.Output<String> variableName,
-    pulumi.Output<String>? variableValueName,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      values = pulumi.Input.asInput<List<PolicyVariableValueColumnValue>>(values),
-      variableName = pulumi.Input.asInput<String>(variableName),
-      variableValueName = pulumi.Input.asOptionalInput<String>(variableValueName);
+    required this.managementGroupId,
+    required this.values,
+    required this.variableName,
+    this.variableValueName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class VariableValueAtManagementGroupArgs {
 
   factory VariableValueAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return VariableValueAtManagementGroupArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      values: pulumi.Output.create<List<PolicyVariableValueColumnValue>>(pulumi.Input.decodeList<PolicyVariableValueColumnValue>(map['values'], (value) => PolicyVariableValueColumnValue.fromMap((value as Map).cast<String, dynamic>()))),
-      variableName: pulumi.Output.create<String>(map['variableName'] as String),
-      variableValueName: map['variableValueName'] == null ? null : pulumi.Output.create<String>(map['variableValueName'] as String),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      values: (pulumi.Input.decodeList<PolicyVariableValueColumnValue>(map['values'], (value) => PolicyVariableValueColumnValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variableName: (map['variableName'] as String).input(),
+      variableValueName: map['variableValueName'] == null ? null : (map['variableValueName'] as String).input(),
     );
   }
 }

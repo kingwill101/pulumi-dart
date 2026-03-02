@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsPrefixListsListEntry {
-  final String cidr;
+  final pulumi.Input<String> cidr;
   /// The description of the prefix list.
-  final String description;
+  final pulumi.Input<String> description;
 
   /// Creates a new [GetEcsPrefixListsListEntry].
   /// [cidr] Required.
@@ -23,8 +24,8 @@ class GetEcsPrefixListsListEntry {
 
   factory GetEcsPrefixListsListEntry.fromMap(Map<String, dynamic> map) {
     return GetEcsPrefixListsListEntry(
-      cidr: map['cidr'] as String,
-      description: map['description'] as String,
+      cidr: (map['cidr'] as String).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

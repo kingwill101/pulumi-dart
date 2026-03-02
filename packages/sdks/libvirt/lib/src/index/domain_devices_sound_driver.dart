@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesSoundDriver {
   /// This field determines whether the ATS feature is enabled for the sound device driver in the domain.
-  final String? ats;
+  final pulumi.Input<String>? ats;
   /// This field configures the IOMMU settings for the sound device driver in the guest domain.
-  final String? iommu;
+  final pulumi.Input<String>? iommu;
   /// This field enables or disables packed mode for the sound device driver configuration in the domain.
-  final String? packed;
+  final pulumi.Input<String>? packed;
   /// This field sets the page per virtual queue attribute for the sound device driver in the domain.
-  final String? pagePerVq;
+  final pulumi.Input<String>? pagePerVq;
 
   /// Creates a new [DomainDevicesSoundDriver].
   /// [ats] This field determines whether the ATS feature is enabled for the sound device driver in the domain.
@@ -34,10 +35,10 @@ class DomainDevicesSoundDriver {
 
   factory DomainDevicesSoundDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSoundDriver(
-      ats: map['ats'] == null ? null : map['ats'] as String,
-      iommu: map['iommu'] == null ? null : map['iommu'] as String,
-      packed: map['packed'] == null ? null : map['packed'] as String,
-      pagePerVq: map['pagePerVq'] == null ? null : map['pagePerVq'] as String,
+      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
+      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
     );
   }
 }

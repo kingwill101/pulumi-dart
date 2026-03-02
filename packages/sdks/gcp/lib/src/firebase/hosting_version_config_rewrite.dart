@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosting_version_config_rewrite_run.dart';
 
 class HostingVersionConfigRewrite {
   /// The function to proxy requests to. Must match the exported function name exactly.
-  final String? function;
+  final pulumi.Input<String>? function;
   /// The user-supplied glob to match against the request URL path.
-  final String? glob;
+  final pulumi.Input<String>? glob;
   /// The URL path to rewrite the request to.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// The user-supplied RE2 regular expression to match against the request URL path.
-  final String? regex;
+  final pulumi.Input<String>? regex;
   /// The request will be forwarded to Cloud Run.
   /// Structure is documented below.
-  final HostingVersionConfigRewriteRun? run;
+  final pulumi.Input<HostingVersionConfigRewriteRun>? run;
 
   /// Creates a new [HostingVersionConfigRewrite].
   /// [function] The function to proxy requests to. Must match the exported function name exactly.
@@ -35,17 +36,17 @@ class HostingVersionConfigRewrite {
       'glob': ?glob,
       'path': ?path,
       'regex': ?regex,
-      'run': ?run == null ? null : run!.toMap(),
+      'run': ?pulumi.Input.mapOptionalInputValue<HostingVersionConfigRewriteRun, Map<String, dynamic>>(run, (value) => value.toMap()),
     };
   }
 
   factory HostingVersionConfigRewrite.fromMap(Map<String, dynamic> map) {
     return HostingVersionConfigRewrite(
-      function: map['function'] == null ? null : map['function'] as String,
-      glob: map['glob'] == null ? null : map['glob'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      regex: map['regex'] == null ? null : map['regex'] as String,
-      run: map['run'] == null ? null : HostingVersionConfigRewriteRun.fromMap((map['run'] as Map).cast<String, dynamic>()),
+      function: map['function'] == null ? null : (map['function'] as String).input(),
+      glob: map['glob'] == null ? null : (map['glob'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      run: map['run'] == null ? null : (HostingVersionConfigRewriteRun.fromMap((map['run'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

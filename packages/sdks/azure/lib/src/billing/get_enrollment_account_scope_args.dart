@@ -16,11 +16,9 @@ class GetEnrollmentAccountScopeArgs {
   /// [billingAccountName] The Billing Account Name of the Enterprise Account.
   /// [enrollmentAccountName] The Enrollment Account Name in the above Enterprise Account.
   GetEnrollmentAccountScopeArgs({
-    required pulumi.Output<String> billingAccountName,
-    required pulumi.Output<String> enrollmentAccountName,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      enrollmentAccountName = pulumi.Input.asInput<String>(enrollmentAccountName);
+    required this.billingAccountName,
+    required this.enrollmentAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEnrollmentAccountScopeArgs {
 
   factory GetEnrollmentAccountScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetEnrollmentAccountScopeArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      enrollmentAccountName: pulumi.Output.create<String>(map['enrollmentAccountName'] as String),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      enrollmentAccountName: (map['enrollmentAccountName'] as String).input(),
     );
   }
 }

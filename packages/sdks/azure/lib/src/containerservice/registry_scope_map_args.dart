@@ -25,17 +25,12 @@ class RegistryScopeMapArgs {
   /// [name] Specifies the name of the scope map. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
   RegistryScopeMapArgs({
-    required pulumi.Output<List<String>> actions,
-    required pulumi.Output<String> containerRegistryName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      actions = pulumi.Input.asInput<List<String>>(actions),
-      containerRegistryName = pulumi.Input.asInput<String>(containerRegistryName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.actions,
+    required this.containerRegistryName,
+    this.description,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RegistryScopeMapArgs {
 
   factory RegistryScopeMapArgs.fromMap(Map<String, dynamic> map) {
     return RegistryScopeMapArgs(
-      actions: pulumi.Output.create<List<String>>((map['actions'] as List).cast<String>()),
-      containerRegistryName: pulumi.Output.create<String>(map['containerRegistryName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      containerRegistryName: (map['containerRegistryName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

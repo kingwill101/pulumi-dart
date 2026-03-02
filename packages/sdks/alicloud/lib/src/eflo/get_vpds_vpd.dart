@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpdsVpd {
   /// CIDR network segment
-  final String cidr;
+  final pulumi.Input<String> cidr;
   /// The creation time of the resource
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Modification time
-  final String gmtModified;
+  final pulumi.Input<String> gmtModified;
   /// The id of the vpd.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Resource group id
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
-  final String status;
+  final pulumi.Input<String> status;
   /// The id of the vpd.
-  final String vpdId;
+  final pulumi.Input<String> vpdId;
   /// The Name of the VPD.
-  final String vpdName;
+  final pulumi.Input<String> vpdName;
 
   /// Creates a new [GetVpdsVpd].
   /// [cidr] CIDR network segment
@@ -54,14 +55,14 @@ class GetVpdsVpd {
 
   factory GetVpdsVpd.fromMap(Map<String, dynamic> map) {
     return GetVpdsVpd(
-      cidr: map['cidr'] as String,
-      createTime: map['createTime'] as String,
-      gmtModified: map['gmtModified'] as String,
-      id: map['id'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      status: map['status'] as String,
-      vpdId: map['vpdId'] as String,
-      vpdName: map['vpdName'] as String,
+      cidr: (map['cidr'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      gmtModified: (map['gmtModified'] as String).input(),
+      id: (map['id'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpdId: (map['vpdId'] as String).input(),
+      vpdName: (map['vpdName'] as String).input(),
     );
   }
 }

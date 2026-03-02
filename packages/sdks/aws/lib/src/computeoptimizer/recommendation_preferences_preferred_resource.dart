@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecommendationPreferencesPreferredResource {
   /// The preferred resource type values to exclude from the recommendation candidates. If this isn’t specified, all supported resources are included by default.
-  final List<String>? excludeLists;
+  final pulumi.Input<List<String>>? excludeLists;
   /// The preferred resource type values to include in the recommendation candidates. You can specify the exact resource type value, such as `"m5.large"`, or use wild card expressions, such as `"m5"`. If this isn’t specified, all supported resources are included by default.
-  final List<String>? includeLists;
-  final String name;
+  final pulumi.Input<List<String>>? includeLists;
+  final pulumi.Input<String> name;
 
   /// Creates a new [RecommendationPreferencesPreferredResource].
   /// [excludeLists] The preferred resource type values to exclude from the recommendation candidates. If this isn’t specified, all supported resources are included by default.
@@ -28,9 +29,9 @@ class RecommendationPreferencesPreferredResource {
 
   factory RecommendationPreferencesPreferredResource.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesPreferredResource(
-      excludeLists: map['excludeLists'] == null ? null : (map['excludeLists'] as List).cast<String>(),
-      includeLists: map['includeLists'] == null ? null : (map['includeLists'] as List).cast<String>(),
-      name: map['name'] as String,
+      excludeLists: map['excludeLists'] == null ? null : ((map['excludeLists'] as List).cast<String>()).input(),
+      includeLists: map['includeLists'] == null ? null : ((map['includeLists'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

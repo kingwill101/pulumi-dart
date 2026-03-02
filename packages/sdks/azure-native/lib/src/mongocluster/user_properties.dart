@@ -7,9 +7,9 @@ import 'entra_identity_provider.dart';
 /// Definition of Mongo user resource on a cluster.
 class UserProperties {
   /// The user's identity provider definition.
-  final EntraIdentityProvider? identityProvider;
+  final pulumi.Input<EntraIdentityProvider>? identityProvider;
   /// Database roles that are assigned to the user.
-  final List<DatabaseRole>? roles;
+  final pulumi.Input<List<DatabaseRole>>? roles;
 
   /// Creates a new [UserProperties].
   /// [identityProvider] The user's identity provider definition.
@@ -21,15 +21,15 @@ class UserProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityProvider': ?identityProvider == null ? null : identityProvider!.toMap(),
-      'roles': ?roles == null ? null : pulumi.Input.encodeList<DatabaseRole, Map<String, dynamic>>(roles!, (value) => value.toMap()),
+      'identityProvider': ?pulumi.Input.mapOptionalInputValue<EntraIdentityProvider, Map<String, dynamic>>(identityProvider, (value) => value.toMap()),
+      'roles': ?pulumi.Input.mapOptionalInputValue<List<DatabaseRole>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<DatabaseRole, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UserProperties.fromMap(Map<String, dynamic> map) {
     return UserProperties(
-      identityProvider: map['identityProvider'] == null ? null : EntraIdentityProvider.fromMap((map['identityProvider'] as Map).cast<String, dynamic>()),
-      roles: map['roles'] == null ? null : pulumi.Input.decodeList<DatabaseRole>(map['roles'], (value) => DatabaseRole.fromMap((value as Map).cast<String, dynamic>())),
+      identityProvider: map['identityProvider'] == null ? null : (EntraIdentityProvider.fromMap((map['identityProvider'] as Map).cast<String, dynamic>())).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<DatabaseRole>(map['roles'], (value) => DatabaseRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

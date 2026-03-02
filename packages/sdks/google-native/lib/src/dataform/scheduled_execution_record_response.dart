@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_response.dart';
 
 /// A record of an attempt to create a workflow invocation for this workflow config.
 class ScheduledExecutionRecordResponse {
   /// The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
-  final StatusResponse errorStatus;
+  final pulumi.Input<StatusResponse> errorStatus;
   /// The timestamp of this execution attempt.
-  final String executionTime;
+  final pulumi.Input<String> executionTime;
   /// The name of the created workflow invocation, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/workflowInvocations/*`.
-  final String workflowInvocation;
+  final pulumi.Input<String> workflowInvocation;
 
   /// Creates a new [ScheduledExecutionRecordResponse].
   /// [errorStatus] The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
@@ -23,7 +24,7 @@ class ScheduledExecutionRecordResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorStatus': errorStatus.toMap(),
+      'errorStatus': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(errorStatus, (value) => value.toMap()),
       'executionTime': executionTime,
       'workflowInvocation': workflowInvocation,
     };
@@ -31,9 +32,9 @@ class ScheduledExecutionRecordResponse {
 
   factory ScheduledExecutionRecordResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledExecutionRecordResponse(
-      errorStatus: StatusResponse.fromMap((map['errorStatus'] as Map).cast<String, dynamic>()),
-      executionTime: map['executionTime'] as String,
-      workflowInvocation: map['workflowInvocation'] as String,
+      errorStatus: (StatusResponse.fromMap((map['errorStatus'] as Map).cast<String, dynamic>())).input(),
+      executionTime: (map['executionTime'] as String).input(),
+      workflowInvocation: (map['workflowInvocation'] as String).input(),
     );
   }
 }

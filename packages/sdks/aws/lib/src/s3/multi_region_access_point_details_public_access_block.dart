@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultiRegionAccessPointDetailsPublicAccessBlock {
-  final bool? blockPublicAcls;
-  final bool? blockPublicPolicy;
-  final bool? ignorePublicAcls;
-  final bool? restrictPublicBuckets;
+  final pulumi.Input<bool>? blockPublicAcls;
+  final pulumi.Input<bool>? blockPublicPolicy;
+  final pulumi.Input<bool>? ignorePublicAcls;
+  final pulumi.Input<bool>? restrictPublicBuckets;
 
   /// Creates a new [MultiRegionAccessPointDetailsPublicAccessBlock].
   /// [blockPublicAcls] Optional.
@@ -30,10 +31,10 @@ class MultiRegionAccessPointDetailsPublicAccessBlock {
 
   factory MultiRegionAccessPointDetailsPublicAccessBlock.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointDetailsPublicAccessBlock(
-      blockPublicAcls: map['blockPublicAcls'] == null ? null : map['blockPublicAcls'] as bool,
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : map['blockPublicPolicy'] as bool,
-      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : map['ignorePublicAcls'] as bool,
-      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : map['restrictPublicBuckets'] as bool,
+      blockPublicAcls: map['blockPublicAcls'] == null ? null : (map['blockPublicAcls'] as bool).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
+      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : (map['ignorePublicAcls'] as bool).input(),
+      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : (map['restrictPublicBuckets'] as bool).input(),
     );
   }
 }

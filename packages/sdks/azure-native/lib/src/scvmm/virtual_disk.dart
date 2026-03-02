@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_qo_spolicy_details.dart';
 
 /// Virtual disk model
 class VirtualDisk {
   /// Gets or sets the disk bus.
-  final int? bus;
+  final pulumi.Input<int>? bus;
   /// Gets or sets the disk bus type.
-  final String? busType;
+  final pulumi.Input<String>? busType;
   /// Gets or sets a value indicating diff disk.
-  final String? createDiffDisk;
+  final pulumi.Input<String>? createDiffDisk;
   /// Gets or sets the disk id.
-  final String? diskId;
+  final pulumi.Input<String>? diskId;
   /// Gets or sets the disk total size.
-  final int? diskSizeGB;
+  final pulumi.Input<int>? diskSizeGB;
   /// Gets or sets the disk lun.
-  final int? lun;
+  final pulumi.Input<int>? lun;
   /// Gets or sets the name of the disk.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The QoS policy for the disk.
-  final StorageQoSPolicyDetails? storageQoSPolicy;
+  final pulumi.Input<StorageQoSPolicyDetails>? storageQoSPolicy;
   /// Gets or sets the disk id in the template.
-  final String? templateDiskId;
+  final pulumi.Input<String>? templateDiskId;
   /// Gets or sets the disk vhd type.
-  final String? vhdType;
+  final pulumi.Input<String>? vhdType;
 
   /// Creates a new [VirtualDisk].
   /// [bus] Gets or sets the disk bus.
@@ -58,7 +59,7 @@ class VirtualDisk {
       'diskSizeGB': ?diskSizeGB,
       'lun': ?lun,
       'name': ?name,
-      'storageQoSPolicy': ?storageQoSPolicy == null ? null : storageQoSPolicy!.toMap(),
+      'storageQoSPolicy': ?pulumi.Input.mapOptionalInputValue<StorageQoSPolicyDetails, Map<String, dynamic>>(storageQoSPolicy, (value) => value.toMap()),
       'templateDiskId': ?templateDiskId,
       'vhdType': ?vhdType,
     };
@@ -66,16 +67,16 @@ class VirtualDisk {
 
   factory VirtualDisk.fromMap(Map<String, dynamic> map) {
     return VirtualDisk(
-      bus: map['bus'] == null ? null : map['bus'] as int,
-      busType: map['busType'] == null ? null : map['busType'] as String,
-      createDiffDisk: map['createDiffDisk'] == null ? null : map['createDiffDisk'] as String,
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
-      lun: map['lun'] == null ? null : map['lun'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      storageQoSPolicy: map['storageQoSPolicy'] == null ? null : StorageQoSPolicyDetails.fromMap((map['storageQoSPolicy'] as Map).cast<String, dynamic>()),
-      templateDiskId: map['templateDiskId'] == null ? null : map['templateDiskId'] as String,
-      vhdType: map['vhdType'] == null ? null : map['vhdType'] as String,
+      bus: map['bus'] == null ? null : (map['bus'] as int).input(),
+      busType: map['busType'] == null ? null : (map['busType'] as String).input(),
+      createDiffDisk: map['createDiffDisk'] == null ? null : (map['createDiffDisk'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageQoSPolicy: map['storageQoSPolicy'] == null ? null : (StorageQoSPolicyDetails.fromMap((map['storageQoSPolicy'] as Map).cast<String, dynamic>())).input(),
+      templateDiskId: map['templateDiskId'] == null ? null : (map['templateDiskId'] as String).input(),
+      vhdType: map['vhdType'] == null ? null : (map['vhdType'] as String).input(),
     );
   }
 }

@@ -32,19 +32,13 @@ class RdsBackupArgs {
   /// [dbName] The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
   /// [removeFromState] Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
   RdsBackupArgs({
-    pulumi.Output<String>? backupMethod,
-    pulumi.Output<String>? backupStrategy,
-    pulumi.Output<String>? backupType,
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? dbName,
-    pulumi.Output<bool>? removeFromState,
-  }) :
-      backupMethod = pulumi.Input.asOptionalInput<String>(backupMethod),
-      backupStrategy = pulumi.Input.asOptionalInput<String>(backupStrategy),
-      backupType = pulumi.Input.asOptionalInput<String>(backupType),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      dbName = pulumi.Input.asOptionalInput<String>(dbName),
-      removeFromState = pulumi.Input.asOptionalInput<bool>(removeFromState);
+    this.backupMethod,
+    this.backupStrategy,
+    this.backupType,
+    required this.dbInstanceId,
+    this.dbName,
+    this.removeFromState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class RdsBackupArgs {
 
   factory RdsBackupArgs.fromMap(Map<String, dynamic> map) {
     return RdsBackupArgs(
-      backupMethod: map['backupMethod'] == null ? null : pulumi.Output.create<String>(map['backupMethod'] as String),
-      backupStrategy: map['backupStrategy'] == null ? null : pulumi.Output.create<String>(map['backupStrategy'] as String),
-      backupType: map['backupType'] == null ? null : pulumi.Output.create<String>(map['backupType'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      dbName: map['dbName'] == null ? null : pulumi.Output.create<String>(map['dbName'] as String),
-      removeFromState: map['removeFromState'] == null ? null : pulumi.Output.create<bool>(map['removeFromState'] as bool),
+      backupMethod: map['backupMethod'] == null ? null : (map['backupMethod'] as String).input(),
+      backupStrategy: map['backupStrategy'] == null ? null : (map['backupStrategy'] as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
+      removeFromState: map['removeFromState'] == null ? null : (map['removeFromState'] as bool).input(),
     );
   }
 }

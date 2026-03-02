@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mcc cache node resource Tls certificate details.
 class MccCacheNodeTlsCertificateResponse {
   /// Mcc cache node Tls certificate status.
-  final String actionRequired;
+  final pulumi.Input<String> actionRequired;
   /// Mcc cache node Tls certificate file name.
-  final String certificateFileName;
+  final pulumi.Input<String> certificateFileName;
   /// Mcc cache node Tls certificate expiry date.
-  final String expiryDate;
+  final pulumi.Input<String> expiryDate;
   /// Mcc cache node Tls certificate not before date.
-  final String notBeforeDate;
+  final pulumi.Input<String> notBeforeDate;
   /// Mcc cache node Tls certificate subject name.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// Mcc cache node Tls certificate subject alternate name.
-  final String subjectAltName;
+  final pulumi.Input<String> subjectAltName;
   /// Mcc cache node Tls certificate thumbprint.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
 
   /// Creates a new [MccCacheNodeTlsCertificateResponse].
   /// [actionRequired] Mcc cache node Tls certificate status.
@@ -50,13 +51,13 @@ class MccCacheNodeTlsCertificateResponse {
 
   factory MccCacheNodeTlsCertificateResponse.fromMap(Map<String, dynamic> map) {
     return MccCacheNodeTlsCertificateResponse(
-      actionRequired: map['actionRequired'] as String,
-      certificateFileName: map['certificateFileName'] as String,
-      expiryDate: map['expiryDate'] as String,
-      notBeforeDate: map['notBeforeDate'] as String,
-      subject: map['subject'] as String,
-      subjectAltName: map['subjectAltName'] as String,
-      thumbprint: map['thumbprint'] as String,
+      actionRequired: (map['actionRequired'] as String).input(),
+      certificateFileName: (map['certificateFileName'] as String).input(),
+      expiryDate: (map['expiryDate'] as String).input(),
+      notBeforeDate: (map['notBeforeDate'] as String).input(),
+      subject: (map['subject'] as String).input(),
+      subjectAltName: (map['subjectAltName'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
     );
   }
 }

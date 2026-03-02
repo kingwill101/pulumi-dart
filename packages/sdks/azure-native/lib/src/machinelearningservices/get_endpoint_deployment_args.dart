@@ -22,15 +22,11 @@ class GetEndpointDeploymentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
   GetEndpointDeploymentArgs({
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.deploymentName,
+    required this.endpointName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetEndpointDeploymentArgs {
 
   factory GetEndpointDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointDeploymentArgs(
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      deploymentName: (map['deploymentName'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

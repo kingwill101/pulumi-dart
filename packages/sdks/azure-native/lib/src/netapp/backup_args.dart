@@ -34,23 +34,15 @@ class BackupArgs {
   /// [useExistingSnapshot] Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   /// [volumeResourceId] ResourceId used to identify the Volume
   BackupArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? backupName,
-    required pulumi.Output<String> backupVaultName,
-    pulumi.Output<String>? label,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? snapshotName,
-    pulumi.Output<bool>? useExistingSnapshot,
-    required pulumi.Output<String> volumeResourceId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      backupName = pulumi.Input.asOptionalInput<String>(backupName),
-      backupVaultName = pulumi.Input.asInput<String>(backupVaultName),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName),
-      useExistingSnapshot = pulumi.Input.asOptionalInput<bool>(useExistingSnapshot),
-      volumeResourceId = pulumi.Input.asInput<String>(volumeResourceId);
+    required this.accountName,
+    this.backupName,
+    required this.backupVaultName,
+    this.label,
+    required this.resourceGroupName,
+    this.snapshotName,
+    this.useExistingSnapshot,
+    required this.volumeResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      backupName: map['backupName'] == null ? null : pulumi.Output.create<String>(map['backupName'] as String),
-      backupVaultName: pulumi.Output.create<String>(map['backupVaultName'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
-      useExistingSnapshot: map['useExistingSnapshot'] == null ? null : pulumi.Output.create<bool>(map['useExistingSnapshot'] as bool),
-      volumeResourceId: pulumi.Output.create<String>(map['volumeResourceId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupVaultName: (map['backupVaultName'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      useExistingSnapshot: map['useExistingSnapshot'] == null ? null : (map['useExistingSnapshot'] as bool).input(),
+      volumeResourceId: (map['volumeResourceId'] as String).input(),
     );
   }
 }

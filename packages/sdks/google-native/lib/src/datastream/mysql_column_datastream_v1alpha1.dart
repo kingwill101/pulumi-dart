@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MySQL Column.
 class MysqlColumnDatastreamV1alpha1 {
   /// Column collation.
-  final String? collation;
+  final pulumi.Input<String>? collation;
   /// Column name.
-  final String? columnName;
+  final pulumi.Input<String>? columnName;
   /// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// Column length.
-  final int? length;
+  final pulumi.Input<int>? length;
   /// Whether or not the column can accept a null value.
-  final bool? nullable;
+  final pulumi.Input<bool>? nullable;
   /// The ordinal position of the column in the table.
-  final int? ordinalPosition;
+  final pulumi.Input<int>? ordinalPosition;
   /// Whether or not the column represents a primary key.
-  final bool? primaryKey;
+  final pulumi.Input<bool>? primaryKey;
 
   /// Creates a new [MysqlColumnDatastreamV1alpha1].
   /// [collation] Column collation.
@@ -50,13 +51,13 @@ class MysqlColumnDatastreamV1alpha1 {
 
   factory MysqlColumnDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlColumnDatastreamV1alpha1(
-      collation: map['collation'] == null ? null : map['collation'] as String,
-      columnName: map['columnName'] == null ? null : map['columnName'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      length: map['length'] == null ? null : map['length'] as int,
-      nullable: map['nullable'] == null ? null : map['nullable'] as bool,
-      ordinalPosition: map['ordinalPosition'] == null ? null : map['ordinalPosition'] as int,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as bool,
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      length: map['length'] == null ? null : (map['length'] as int).input(),
+      nullable: map['nullable'] == null ? null : (map['nullable'] as bool).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as bool).input(),
     );
   }
 }

@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSearchIndexesIndex {
   /// The creation time of the index.
-  final int createTime;
+  final pulumi.Input<int> createTime;
   /// Timestamp for sync phase.
-  final int currentSyncTimestamp;
+  final pulumi.Input<int> currentSyncTimestamp;
   /// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The index name of the OTS Table which could not be changed.
-  final String indexName;
+  final pulumi.Input<String> indexName;
   /// The name of OTS instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// Last update time for metering data..
-  final int meteringLastUpdateTime;
+  final pulumi.Input<int> meteringLastUpdateTime;
   /// Reserve related resources for the index.
-  final int reservedReadCu;
+  final pulumi.Input<int> reservedReadCu;
   /// The number of rows of data for index.
-  final int rowCount;
+  final pulumi.Input<int> rowCount;
   /// JSON representation of the schema of index.
-  final String schema;
+  final pulumi.Input<String> schema;
   /// Storage space occupied by index.
-  final int storageSize;
+  final pulumi.Input<int> storageSize;
   /// The synchronization state of the index.
-  final String syncPhase;
+  final pulumi.Input<String> syncPhase;
   /// The name of OTS table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// TTL of index.
-  final int timeToLive;
+  final pulumi.Input<int> timeToLive;
 
   /// Creates a new [GetSearchIndexesIndex].
   /// [createTime] The creation time of the index.
@@ -79,19 +80,19 @@ class GetSearchIndexesIndex {
 
   factory GetSearchIndexesIndex.fromMap(Map<String, dynamic> map) {
     return GetSearchIndexesIndex(
-      createTime: map['createTime'] as int,
-      currentSyncTimestamp: map['currentSyncTimestamp'] as int,
-      id: map['id'] as String,
-      indexName: map['indexName'] as String,
-      instanceName: map['instanceName'] as String,
-      meteringLastUpdateTime: map['meteringLastUpdateTime'] as int,
-      reservedReadCu: map['reservedReadCu'] as int,
-      rowCount: map['rowCount'] as int,
-      schema: map['schema'] as String,
-      storageSize: map['storageSize'] as int,
-      syncPhase: map['syncPhase'] as String,
-      tableName: map['tableName'] as String,
-      timeToLive: map['timeToLive'] as int,
+      createTime: (map['createTime'] as int).input(),
+      currentSyncTimestamp: (map['currentSyncTimestamp'] as int).input(),
+      id: (map['id'] as String).input(),
+      indexName: (map['indexName'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      meteringLastUpdateTime: (map['meteringLastUpdateTime'] as int).input(),
+      reservedReadCu: (map['reservedReadCu'] as int).input(),
+      rowCount: (map['rowCount'] as int).input(),
+      schema: (map['schema'] as String).input(),
+      storageSize: (map['storageSize'] as int).input(),
+      syncPhase: (map['syncPhase'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      timeToLive: (map['timeToLive'] as int).input(),
     );
   }
 }

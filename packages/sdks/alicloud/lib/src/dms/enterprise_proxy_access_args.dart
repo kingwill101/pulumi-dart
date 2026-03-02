@@ -25,17 +25,12 @@ class EnterpriseProxyAccessArgs {
   /// [proxyId] The ID of the security agent.
   /// [userId] The user ID.
   EnterpriseProxyAccessArgs({
-    pulumi.Output<String>? indepAccount,
-    pulumi.Output<String>? indepPassword,
-    pulumi.Output<String>? proxyAccessId,
-    required pulumi.Output<String> proxyId,
-    required pulumi.Output<String> userId,
-  }) :
-      indepAccount = pulumi.Input.asOptionalInput<String>(indepAccount),
-      indepPassword = pulumi.Input.asOptionalInput<String>(indepPassword),
-      proxyAccessId = pulumi.Input.asOptionalInput<String>(proxyAccessId),
-      proxyId = pulumi.Input.asInput<String>(proxyId),
-      userId = pulumi.Input.asInput<String>(userId);
+    this.indepAccount,
+    this.indepPassword,
+    this.proxyAccessId,
+    required this.proxyId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EnterpriseProxyAccessArgs {
 
   factory EnterpriseProxyAccessArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseProxyAccessArgs(
-      indepAccount: map['indepAccount'] == null ? null : pulumi.Output.create<String>(map['indepAccount'] as String),
-      indepPassword: map['indepPassword'] == null ? null : pulumi.Output.create<String>(map['indepPassword'] as String),
-      proxyAccessId: map['proxyAccessId'] == null ? null : pulumi.Output.create<String>(map['proxyAccessId'] as String),
-      proxyId: pulumi.Output.create<String>(map['proxyId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      indepAccount: map['indepAccount'] == null ? null : (map['indepAccount'] as String).input(),
+      indepPassword: map['indepPassword'] == null ? null : (map['indepPassword'] as String).input(),
+      proxyAccessId: map['proxyAccessId'] == null ? null : (map['proxyAccessId'] as String).input(),
+      proxyId: (map['proxyId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

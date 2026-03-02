@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanRuleScanAction {
   /// Malware scanner to use for the scan action. Currently only `GUARDDUTY` is supported.
-  final String malwareScanner;
+  final pulumi.Input<String> malwareScanner;
   /// Scanning mode to use for the scan action. Valid values are `FULL_SCAN` and `INCREMENTAL_SCAN`.
-  final String scanMode;
+  final pulumi.Input<String> scanMode;
 
   /// Creates a new [PlanRuleScanAction].
   /// [malwareScanner] Malware scanner to use for the scan action. Currently only `GUARDDUTY` is supported.
@@ -24,8 +25,8 @@ class PlanRuleScanAction {
 
   factory PlanRuleScanAction.fromMap(Map<String, dynamic> map) {
     return PlanRuleScanAction(
-      malwareScanner: map['malwareScanner'] as String,
-      scanMode: map['scanMode'] as String,
+      malwareScanner: (map['malwareScanner'] as String).input(),
+      scanMode: (map['scanMode'] as String).input(),
     );
   }
 }

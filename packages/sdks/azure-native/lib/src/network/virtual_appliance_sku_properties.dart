@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network Virtual Appliance Sku Properties.
 class VirtualApplianceSkuProperties {
   /// Virtual Appliance Scale Unit.
-  final String? bundledScaleUnit;
+  final pulumi.Input<String>? bundledScaleUnit;
   /// Virtual Appliance Version.
-  final String? marketPlaceVersion;
+  final pulumi.Input<String>? marketPlaceVersion;
   /// Virtual Appliance Vendor.
-  final String? vendor;
+  final pulumi.Input<String>? vendor;
 
   /// Creates a new [VirtualApplianceSkuProperties].
   /// [bundledScaleUnit] Virtual Appliance Scale Unit.
@@ -30,9 +31,9 @@ class VirtualApplianceSkuProperties {
 
   factory VirtualApplianceSkuProperties.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceSkuProperties(
-      bundledScaleUnit: map['bundledScaleUnit'] == null ? null : map['bundledScaleUnit'] as String,
-      marketPlaceVersion: map['marketPlaceVersion'] == null ? null : map['marketPlaceVersion'] as String,
-      vendor: map['vendor'] == null ? null : map['vendor'] as String,
+      bundledScaleUnit: map['bundledScaleUnit'] == null ? null : (map['bundledScaleUnit'] as String).input(),
+      marketPlaceVersion: map['marketPlaceVersion'] == null ? null : (map['marketPlaceVersion'] as String).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
     );
   }
 }

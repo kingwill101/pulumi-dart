@@ -27,19 +27,13 @@ class TrafficPolicyState {
   /// [type] DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.
   /// [version] Version number of the traffic policy. This value is automatically incremented by AWS after each update of this resource.
   TrafficPolicyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? document,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? type,
-    pulumi.Output<int>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      document = pulumi.Input.asOptionalInput<String>(document),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.arn,
+    this.comment,
+    this.document,
+    this.name,
+    this.type,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class TrafficPolicyState {
 
   factory TrafficPolicyState.fromMap(Map<String, dynamic> map) {
     return TrafficPolicyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      document: map['document'] == null ? null : pulumi.Output.create<String>(map['document'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      document: map['document'] == null ? null : (map['document'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

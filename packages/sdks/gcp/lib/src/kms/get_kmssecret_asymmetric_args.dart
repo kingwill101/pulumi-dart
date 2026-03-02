@@ -21,13 +21,10 @@ class GetKMSSecretAsymmetricArgs {
   /// [crc32] The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
   /// [cryptoKeyVersion] The id of the CryptoKey version that will be used to
   GetKMSSecretAsymmetricArgs({
-    required pulumi.Output<String> ciphertext,
-    pulumi.Output<String>? crc32,
-    required pulumi.Output<String> cryptoKeyVersion,
-  }) :
-      ciphertext = pulumi.Input.asInput<String>(ciphertext),
-      crc32 = pulumi.Input.asOptionalInput<String>(crc32),
-      cryptoKeyVersion = pulumi.Input.asInput<String>(cryptoKeyVersion);
+    required this.ciphertext,
+    this.crc32,
+    required this.cryptoKeyVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetKMSSecretAsymmetricArgs {
 
   factory GetKMSSecretAsymmetricArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretAsymmetricArgs(
-      ciphertext: pulumi.Output.create<String>(map['ciphertext'] as String),
-      crc32: map['crc32'] == null ? null : pulumi.Output.create<String>(map['crc32'] as String),
-      cryptoKeyVersion: pulumi.Output.create<String>(map['cryptoKeyVersion'] as String),
+      ciphertext: (map['ciphertext'] as String).input(),
+      crc32: map['crc32'] == null ? null : (map['crc32'] as String).input(),
+      cryptoKeyVersion: (map['cryptoKeyVersion'] as String).input(),
     );
   }
 }

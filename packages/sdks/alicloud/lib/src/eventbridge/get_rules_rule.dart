@@ -5,19 +5,19 @@ import 'get_rules_rule_target.dart';
 
 class GetRulesRule {
   /// The description of rule.
-  final String description;
+  final pulumi.Input<String> description;
   /// The name of event bus.
-  final String eventBusName;
+  final pulumi.Input<String> eventBusName;
   /// The pattern to match interested events.
-  final String filterPattern;
+  final pulumi.Input<String> filterPattern;
   /// The ID of the Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of rule.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
   /// Rule status, either Enable or Disable.
-  final String status;
+  final pulumi.Input<String> status;
   /// The target for rule.
-  final List<GetRulesRuleTarget> targets;
+  final pulumi.Input<List<GetRulesRuleTarget>> targets;
 
   /// Creates a new [GetRulesRule].
   /// [description] The description of rule.
@@ -45,19 +45,19 @@ class GetRulesRule {
       'id': id,
       'ruleName': ruleName,
       'status': status,
-      'targets': pulumi.Input.encodeList<GetRulesRuleTarget, Map<String, dynamic>>(targets, (value) => value.toMap()),
+      'targets': pulumi.Input.mapInputValue<List<GetRulesRuleTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<GetRulesRuleTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRulesRule.fromMap(Map<String, dynamic> map) {
     return GetRulesRule(
-      description: map['description'] as String,
-      eventBusName: map['eventBusName'] as String,
-      filterPattern: map['filterPattern'] as String,
-      id: map['id'] as String,
-      ruleName: map['ruleName'] as String,
-      status: map['status'] as String,
-      targets: pulumi.Input.decodeList<GetRulesRuleTarget>(map['targets'], (value) => GetRulesRuleTarget.fromMap((value as Map).cast<String, dynamic>())),
+      description: (map['description'] as String).input(),
+      eventBusName: (map['eventBusName'] as String).input(),
+      filterPattern: (map['filterPattern'] as String).input(),
+      id: (map['id'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      status: (map['status'] as String).input(),
+      targets: (pulumi.Input.decodeList<GetRulesRuleTarget>(map['targets'], (value) => GetRulesRuleTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

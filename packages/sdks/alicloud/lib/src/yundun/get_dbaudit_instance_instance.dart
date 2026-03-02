@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDBAuditInstanceInstance {
-  final String description;
-  final String id;
-  final String instanceStatus;
-  final String licenseCode;
-  final String privateDomain;
-  final String publicDomain;
-  final bool publicNetworkAccess;
-  final Map<String, String>? tags;
-  final String userVswitchId;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> instanceStatus;
+  final pulumi.Input<String> licenseCode;
+  final pulumi.Input<String> privateDomain;
+  final pulumi.Input<String> publicDomain;
+  final pulumi.Input<bool> publicNetworkAccess;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String> userVswitchId;
 
   /// Creates a new [GetDBAuditInstanceInstance].
   /// [description] Required.
@@ -50,15 +51,15 @@ class GetDBAuditInstanceInstance {
 
   factory GetDBAuditInstanceInstance.fromMap(Map<String, dynamic> map) {
     return GetDBAuditInstanceInstance(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceStatus: map['instanceStatus'] as String,
-      licenseCode: map['licenseCode'] as String,
-      privateDomain: map['privateDomain'] as String,
-      publicDomain: map['publicDomain'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      userVswitchId: map['userVswitchId'] as String,
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceStatus: (map['instanceStatus'] as String).input(),
+      licenseCode: (map['licenseCode'] as String).input(),
+      privateDomain: (map['privateDomain'] as String).input(),
+      publicDomain: (map['publicDomain'] as String).input(),
+      publicNetworkAccess: (map['publicNetworkAccess'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userVswitchId: (map['userVswitchId'] as String).input(),
     );
   }
 }

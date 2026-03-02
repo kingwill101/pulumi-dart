@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessPointPosixUser {
   /// Group ID
-  final int gid;
+  final pulumi.Input<int> gid;
   /// Secondary group IDs
-  final List<int> secondaryGids;
+  final pulumi.Input<List<int>> secondaryGids;
   /// User Id
-  final int uid;
+  final pulumi.Input<int> uid;
 
   /// Creates a new [GetAccessPointPosixUser].
   /// [gid] Group ID
@@ -29,9 +30,9 @@ class GetAccessPointPosixUser {
 
   factory GetAccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return GetAccessPointPosixUser(
-      gid: map['gid'] as int,
-      secondaryGids: (map['secondaryGids'] as List).cast<int>(),
-      uid: map['uid'] as int,
+      gid: (map['gid'] as int).input(),
+      secondaryGids: ((map['secondaryGids'] as List).cast<int>()).input(),
+      uid: (map['uid'] as int).input(),
     );
   }
 }

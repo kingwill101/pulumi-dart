@@ -16,11 +16,9 @@ class GetVolumeArgs {
   /// [resourceGroupName] Azure resource group name
   /// [volumeResourceName] The identity of the volume.
   GetVolumeArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> volumeResourceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      volumeResourceName = pulumi.Input.asInput<String>(volumeResourceName);
+    required this.resourceGroupName,
+    required this.volumeResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumeResourceName: pulumi.Output.create<String>(map['volumeResourceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      volumeResourceName: (map['volumeResourceName'] as String).input(),
     );
   }
 }

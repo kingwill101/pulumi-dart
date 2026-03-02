@@ -14,11 +14,9 @@ class GetSinkArgs {
   /// [project] Optional.
   /// [sinkId] Required.
   GetSinkArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sinkId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sinkId = pulumi.Input.asInput<String>(sinkId);
+    this.project,
+    required this.sinkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetSinkArgs {
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetSinkArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sinkId: pulumi.Output.create<String>(map['sinkId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sinkId: (map['sinkId'] as String).input(),
     );
   }
 }

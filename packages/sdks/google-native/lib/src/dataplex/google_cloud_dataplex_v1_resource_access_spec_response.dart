@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.
 class GoogleCloudDataplexV1ResourceAccessSpecResponse {
   /// Optional. The set of principals to be granted owner role on the resource.
-  final List<String> owners;
+  final pulumi.Input<List<String>> owners;
   /// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
-  final List<String> readers;
+  final pulumi.Input<List<String>> readers;
   /// Optional. The set of principals to be granted writer role on the resource.
-  final List<String> writers;
+  final pulumi.Input<List<String>> writers;
 
   /// Creates a new [GoogleCloudDataplexV1ResourceAccessSpecResponse].
   /// [owners] Optional. The set of principals to be granted owner role on the resource.
@@ -30,9 +31,9 @@ class GoogleCloudDataplexV1ResourceAccessSpecResponse {
 
   factory GoogleCloudDataplexV1ResourceAccessSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ResourceAccessSpecResponse(
-      owners: (map['owners'] as List).cast<String>(),
-      readers: (map['readers'] as List).cast<String>(),
-      writers: (map['writers'] as List).cast<String>(),
+      owners: ((map['owners'] as List).cast<String>()).input(),
+      readers: ((map['readers'] as List).cast<String>()).input(),
+      writers: ((map['writers'] as List).cast<String>()).input(),
     );
   }
 }

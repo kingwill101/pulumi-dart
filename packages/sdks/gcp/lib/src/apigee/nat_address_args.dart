@@ -20,13 +20,10 @@ class NatAddressArgs {
   /// [instanceId] The Apigee instance associated with the Apigee environment,
   /// [name] Resource ID of the NAT address.
   NatAddressArgs({
-    pulumi.Output<bool>? activate,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-  }) :
-      activate = pulumi.Input.asOptionalInput<bool>(activate),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.activate,
+    required this.instanceId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class NatAddressArgs {
 
   factory NatAddressArgs.fromMap(Map<String, dynamic> map) {
     return NatAddressArgs(
-      activate: map['activate'] == null ? null : pulumi.Output.create<bool>(map['activate'] as bool),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      activate: map['activate'] == null ? null : (map['activate'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

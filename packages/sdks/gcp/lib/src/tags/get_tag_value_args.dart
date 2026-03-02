@@ -16,11 +16,9 @@ class GetTagValueArgs {
   /// [parent] The resource name of the parent tagKey in format `tagKey/{name}`.
   /// [shortName] The tag value's short_name.
   GetTagValueArgs({
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> shortName,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      shortName = pulumi.Input.asInput<String>(shortName);
+    required this.parent,
+    required this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTagValueArgs {
 
   factory GetTagValueArgs.fromMap(Map<String, dynamic> map) {
     return GetTagValueArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      shortName: pulumi.Output.create<String>(map['shortName'] as String),
+      parent: (map['parent'] as String).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

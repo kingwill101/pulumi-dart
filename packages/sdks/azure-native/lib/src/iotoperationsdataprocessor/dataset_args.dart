@@ -45,29 +45,18 @@ class DatasetArgs {
   /// [timestamp] Path to an RFC3339 timestamp in the message. If no path is provided, the ingestion time of the record is used for time-based joins.
   /// [ttl] Time to live for individual records.
   DatasetArgs({
-    pulumi.Output<String>? datasetName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<Map<String, DatasetPropertyKey>>? keys,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? payload,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? timestamp,
-    pulumi.Output<String>? ttl,
-  }) :
-      datasetName = pulumi.Input.asOptionalInput<String>(datasetName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      keys = pulumi.Input.asOptionalInput<Map<String, DatasetPropertyKey>>(keys),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      payload = pulumi.Input.asOptionalInput<String>(payload),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timestamp = pulumi.Input.asOptionalInput<String>(timestamp),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    this.datasetName,
+    this.description,
+    required this.extendedLocation,
+    required this.instanceName,
+    this.keys,
+    this.location,
+    this.payload,
+    required this.resourceGroupName,
+    this.tags,
+    this.timestamp,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      datasetName: map['datasetName'] == null ? null : pulumi.Output.create<String>(map['datasetName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      keys: map['keys'] == null ? null : pulumi.Output.create<Map<String, DatasetPropertyKey>>(pulumi.Input.decodeMapValues<DatasetPropertyKey>(map['keys'], (value) => DatasetPropertyKey.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      payload: map['payload'] == null ? null : pulumi.Output.create<String>(map['payload'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timestamp: map['timestamp'] == null ? null : pulumi.Output.create<String>(map['timestamp'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      keys: map['keys'] == null ? null : (pulumi.Input.decodeMapValues<DatasetPropertyKey>(map['keys'], (value) => DatasetPropertyKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

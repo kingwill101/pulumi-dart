@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTemplateScratchesScratchPreferenceParameter {
   /// Priority parameter key.
-  final String parameterKey;
+  final pulumi.Input<String> parameterKey;
   /// Priority parameter value.
-  final String parameterValue;
+  final pulumi.Input<String> parameterValue;
 
   /// Creates a new [GetTemplateScratchesScratchPreferenceParameter].
   /// [parameterKey] Priority parameter key.
@@ -24,8 +25,8 @@ class GetTemplateScratchesScratchPreferenceParameter {
 
   factory GetTemplateScratchesScratchPreferenceParameter.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesScratchPreferenceParameter(
-      parameterKey: map['parameterKey'] as String,
-      parameterValue: map['parameterValue'] as String,
+      parameterKey: (map['parameterKey'] as String).input(),
+      parameterValue: (map['parameterValue'] as String).input(),
     );
   }
 }

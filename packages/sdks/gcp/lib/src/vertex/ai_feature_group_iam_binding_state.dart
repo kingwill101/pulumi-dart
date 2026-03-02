@@ -44,21 +44,14 @@ class AiFeatureGroupIamBindingState {
   /// [region] The region of feature group. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
   AiFeatureGroupIamBindingState({
-    pulumi.Output<AiFeatureGroupIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? featureGroup,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AiFeatureGroupIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureGroup = pulumi.Input.asOptionalInput<String>(featureGroup),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.etag,
+    this.featureGroup,
+    this.members,
+    this.project,
+    this.region,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,13 +67,13 @@ class AiFeatureGroupIamBindingState {
 
   factory AiFeatureGroupIamBindingState.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AiFeatureGroupIamBindingCondition>(AiFeatureGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureGroup: map['featureGroup'] == null ? null : pulumi.Output.create<String>(map['featureGroup'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AiFeatureGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureGroup: map['featureGroup'] == null ? null : (map['featureGroup'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class OrganizationArgs {
   /// [featureSet] Specify `ALL` (default) or `CONSOLIDATED_BILLING`.
   /// [returnOrganizationOnly] Return (as attributes) only the results of the [`DescribeOrganization`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html) API to avoid [API limits](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#throttling-limits). When configured to `true` only the `arn`, `feature_set`, `master_account_arn`, `master_account_email` and `master_account_id` attributes will be returned. All others will be empty. Default: `false`.
   OrganizationArgs({
-    pulumi.Output<List<String>>? awsServiceAccessPrincipals,
-    pulumi.Output<List<String>>? enabledPolicyTypes,
-    pulumi.Output<String>? featureSet,
-    pulumi.Output<bool>? returnOrganizationOnly,
-  }) :
-      awsServiceAccessPrincipals = pulumi.Input.asOptionalInput<List<String>>(awsServiceAccessPrincipals),
-      enabledPolicyTypes = pulumi.Input.asOptionalInput<List<String>>(enabledPolicyTypes),
-      featureSet = pulumi.Input.asOptionalInput<String>(featureSet),
-      returnOrganizationOnly = pulumi.Input.asOptionalInput<bool>(returnOrganizationOnly);
+    this.awsServiceAccessPrincipals,
+    this.enabledPolicyTypes,
+    this.featureSet,
+    this.returnOrganizationOnly,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      awsServiceAccessPrincipals: map['awsServiceAccessPrincipals'] == null ? null : pulumi.Output.create<List<String>>((map['awsServiceAccessPrincipals'] as List).cast<String>()),
-      enabledPolicyTypes: map['enabledPolicyTypes'] == null ? null : pulumi.Output.create<List<String>>((map['enabledPolicyTypes'] as List).cast<String>()),
-      featureSet: map['featureSet'] == null ? null : pulumi.Output.create<String>(map['featureSet'] as String),
-      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : pulumi.Output.create<bool>(map['returnOrganizationOnly'] as bool),
+      awsServiceAccessPrincipals: map['awsServiceAccessPrincipals'] == null ? null : ((map['awsServiceAccessPrincipals'] as List).cast<String>()).input(),
+      enabledPolicyTypes: map['enabledPolicyTypes'] == null ? null : ((map['enabledPolicyTypes'] as List).cast<String>()).input(),
+      featureSet: map['featureSet'] == null ? null : (map['featureSet'] as String).input(),
+      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : (map['returnOrganizationOnly'] as bool).input(),
     );
   }
 }

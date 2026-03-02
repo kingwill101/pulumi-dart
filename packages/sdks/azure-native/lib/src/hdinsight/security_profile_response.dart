@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The security profile which contains Ssh public key for the HDInsight cluster.
 class SecurityProfileResponse {
   /// The resource ID of the user's Azure Active Directory Domain Service.
-  final String? aaddsResourceId;
+  final pulumi.Input<String>? aaddsResourceId;
   /// Optional. The Distinguished Names for cluster user groups
-  final List<String>? clusterUsersGroupDNs;
+  final pulumi.Input<List<String>>? clusterUsersGroupDNs;
   /// The directory type.
-  final String? directoryType;
+  final pulumi.Input<String>? directoryType;
   /// The organization's active directory domain.
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// The domain admin password.
-  final String? domainUserPassword;
+  final pulumi.Input<String>? domainUserPassword;
   /// The domain user account that will have admin privileges on the cluster.
-  final String? domainUsername;
+  final pulumi.Input<String>? domainUsername;
   /// The LDAPS protocol URLs to communicate with the Active Directory.
-  final List<String>? ldapsUrls;
+  final pulumi.Input<List<String>>? ldapsUrls;
   /// User assigned identity that has permissions to read and create cluster-related artifacts in the user's AADDS.
-  final String? msiResourceId;
+  final pulumi.Input<String>? msiResourceId;
   /// The organizational unit within the Active Directory to place the cluster and service accounts.
-  final String? organizationalUnitDN;
+  final pulumi.Input<String>? organizationalUnitDN;
 
   /// Creates a new [SecurityProfileResponse].
   /// [aaddsResourceId] The resource ID of the user's Azure Active Directory Domain Service.
@@ -60,15 +61,15 @@ class SecurityProfileResponse {
 
   factory SecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return SecurityProfileResponse(
-      aaddsResourceId: map['aaddsResourceId'] == null ? null : map['aaddsResourceId'] as String,
-      clusterUsersGroupDNs: map['clusterUsersGroupDNs'] == null ? null : (map['clusterUsersGroupDNs'] as List).cast<String>(),
-      directoryType: map['directoryType'] == null ? null : map['directoryType'] as String,
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      domainUserPassword: map['domainUserPassword'] == null ? null : map['domainUserPassword'] as String,
-      domainUsername: map['domainUsername'] == null ? null : map['domainUsername'] as String,
-      ldapsUrls: map['ldapsUrls'] == null ? null : (map['ldapsUrls'] as List).cast<String>(),
-      msiResourceId: map['msiResourceId'] == null ? null : map['msiResourceId'] as String,
-      organizationalUnitDN: map['organizationalUnitDN'] == null ? null : map['organizationalUnitDN'] as String,
+      aaddsResourceId: map['aaddsResourceId'] == null ? null : (map['aaddsResourceId'] as String).input(),
+      clusterUsersGroupDNs: map['clusterUsersGroupDNs'] == null ? null : ((map['clusterUsersGroupDNs'] as List).cast<String>()).input(),
+      directoryType: map['directoryType'] == null ? null : (map['directoryType'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domainUserPassword: map['domainUserPassword'] == null ? null : (map['domainUserPassword'] as String).input(),
+      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername'] as String).input(),
+      ldapsUrls: map['ldapsUrls'] == null ? null : ((map['ldapsUrls'] as List).cast<String>()).input(),
+      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId'] as String).input(),
+      organizationalUnitDN: map['organizationalUnitDN'] == null ? null : (map['organizationalUnitDN'] as String).input(),
     );
   }
 }

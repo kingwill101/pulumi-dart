@@ -59,29 +59,18 @@ class NetworkEndpointGroupState {
   /// [subnetwork] Optional subnetwork to which all network endpoints in the NEG belong.
   /// [zone] Zone where the network endpoint group is located.
   NetworkEndpointGroupState({
-    pulumi.Output<int>? defaultPort,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? generatedId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? networkEndpointType,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? subnetwork,
-    pulumi.Output<String>? zone,
-  }) :
-      defaultPort = pulumi.Input.asOptionalInput<int>(defaultPort),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      generatedId = pulumi.Input.asOptionalInput<int>(generatedId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      networkEndpointType = pulumi.Input.asOptionalInput<String>(networkEndpointType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.defaultPort,
+    this.description,
+    this.generatedId,
+    this.name,
+    this.network,
+    this.networkEndpointType,
+    this.project,
+    this.selfLink,
+    this.size,
+    this.subnetwork,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,17 +90,17 @@ class NetworkEndpointGroupState {
 
   factory NetworkEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupState(
-      defaultPort: map['defaultPort'] == null ? null : pulumi.Output.create<int>(map['defaultPort'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      generatedId: map['generatedId'] == null ? null : pulumi.Output.create<int>(map['generatedId'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      networkEndpointType: map['networkEndpointType'] == null ? null : pulumi.Output.create<String>(map['networkEndpointType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      subnetwork: map['subnetwork'] == null ? null : pulumi.Output.create<String>(map['subnetwork'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      generatedId: map['generatedId'] == null ? null : (map['generatedId'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      networkEndpointType: map['networkEndpointType'] == null ? null : (map['networkEndpointType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

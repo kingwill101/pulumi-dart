@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectBuildBatchConfigRestrictions {
   /// An array of strings that specify the compute types that are allowed for the batch
   /// build.
   /// See [Build environment compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
   /// in the AWS CodeBuild User Guide for these values.
-  final List<String>? computeTypesAlloweds;
+  final pulumi.Input<List<String>>? computeTypesAlloweds;
   /// Specifies the maximum number of builds allowed.
-  final int? maximumBuildsAllowed;
+  final pulumi.Input<int>? maximumBuildsAllowed;
 
   /// Creates a new [ProjectBuildBatchConfigRestrictions].
   /// [computeTypesAlloweds] An array of strings that specify the compute types that are allowed for the batch
@@ -27,8 +28,8 @@ class ProjectBuildBatchConfigRestrictions {
 
   factory ProjectBuildBatchConfigRestrictions.fromMap(Map<String, dynamic> map) {
     return ProjectBuildBatchConfigRestrictions(
-      computeTypesAlloweds: map['computeTypesAlloweds'] == null ? null : (map['computeTypesAlloweds'] as List).cast<String>(),
-      maximumBuildsAllowed: map['maximumBuildsAllowed'] == null ? null : map['maximumBuildsAllowed'] as int,
+      computeTypesAlloweds: map['computeTypesAlloweds'] == null ? null : ((map['computeTypesAlloweds'] as List).cast<String>()).input(),
+      maximumBuildsAllowed: map['maximumBuildsAllowed'] == null ? null : (map['maximumBuildsAllowed'] as int).input(),
     );
   }
 }

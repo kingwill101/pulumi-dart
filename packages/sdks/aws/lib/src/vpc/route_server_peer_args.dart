@@ -31,19 +31,13 @@ class RouteServerPeerArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   RouteServerPeerArgs({
-    required pulumi.Output<RouteServerPeerBgpOptions> bgpOptions,
-    required pulumi.Output<String> peerAddress,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routeServerEndpointId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<RouteServerPeerTimeouts>? timeouts,
-  }) :
-      bgpOptions = pulumi.Input.asInput<RouteServerPeerBgpOptions>(bgpOptions),
-      peerAddress = pulumi.Input.asInput<String>(peerAddress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeServerEndpointId = pulumi.Input.asInput<String>(routeServerEndpointId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<RouteServerPeerTimeouts>(timeouts);
+    required this.bgpOptions,
+    required this.peerAddress,
+    this.region,
+    required this.routeServerEndpointId,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class RouteServerPeerArgs {
 
   factory RouteServerPeerArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerPeerArgs(
-      bgpOptions: pulumi.Output.create<RouteServerPeerBgpOptions>(RouteServerPeerBgpOptions.fromMap((map['bgpOptions'] as Map).cast<String, dynamic>())),
-      peerAddress: pulumi.Output.create<String>(map['peerAddress'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeServerEndpointId: pulumi.Output.create<String>(map['routeServerEndpointId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RouteServerPeerTimeouts>(RouteServerPeerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      bgpOptions: (RouteServerPeerBgpOptions.fromMap((map['bgpOptions'] as Map).cast<String, dynamic>())).input(),
+      peerAddress: (map['peerAddress'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeServerEndpointId: (map['routeServerEndpointId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (RouteServerPeerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

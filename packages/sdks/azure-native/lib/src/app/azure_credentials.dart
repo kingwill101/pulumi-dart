@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container App credentials.
 class AzureCredentials {
   /// Client Id.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Client Secret.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// Kind of auth github does for deploying the template
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Subscription Id.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Tenant Id.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [AzureCredentials].
   /// [clientId] Client Id.
@@ -40,11 +41,11 @@ class AzureCredentials {
 
   factory AzureCredentials.fromMap(Map<String, dynamic> map) {
     return AzureCredentials(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

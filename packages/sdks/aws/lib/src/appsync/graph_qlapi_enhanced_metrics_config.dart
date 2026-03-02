@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GraphQLApiEnhancedMetricsConfig {
   /// How data source metrics will be emitted to CloudWatch. Valid values: `FULL_REQUEST_DATA_SOURCE_METRICS`, `PER_DATA_SOURCE_METRICS`
-  final String dataSourceLevelMetricsBehavior;
+  final pulumi.Input<String> dataSourceLevelMetricsBehavior;
   /// How operation metrics will be emitted to CloudWatch. Valid values: `ENABLED`, `DISABLED`
-  final String operationLevelMetricsConfig;
+  final pulumi.Input<String> operationLevelMetricsConfig;
   /// How resolver metrics will be emitted to CloudWatch. Valid values: `FULL_REQUEST_RESOLVER_METRICS`, `PER_RESOLVER_METRICS`
-  final String resolverLevelMetricsBehavior;
+  final pulumi.Input<String> resolverLevelMetricsBehavior;
 
   /// Creates a new [GraphQLApiEnhancedMetricsConfig].
   /// [dataSourceLevelMetricsBehavior] How data source metrics will be emitted to CloudWatch. Valid values: `FULL_REQUEST_DATA_SOURCE_METRICS`, `PER_DATA_SOURCE_METRICS`
@@ -29,9 +30,9 @@ class GraphQLApiEnhancedMetricsConfig {
 
   factory GraphQLApiEnhancedMetricsConfig.fromMap(Map<String, dynamic> map) {
     return GraphQLApiEnhancedMetricsConfig(
-      dataSourceLevelMetricsBehavior: map['dataSourceLevelMetricsBehavior'] as String,
-      operationLevelMetricsConfig: map['operationLevelMetricsConfig'] as String,
-      resolverLevelMetricsBehavior: map['resolverLevelMetricsBehavior'] as String,
+      dataSourceLevelMetricsBehavior: (map['dataSourceLevelMetricsBehavior'] as String).input(),
+      operationLevelMetricsConfig: (map['operationLevelMetricsConfig'] as String).input(),
+      resolverLevelMetricsBehavior: (map['resolverLevelMetricsBehavior'] as String).input(),
     );
   }
 }

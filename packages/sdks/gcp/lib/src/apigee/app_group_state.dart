@@ -44,29 +44,18 @@ class AppGroupState {
   /// [organization] App group name displayed in the UI
   /// [status] Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
   AppGroupState({
-    pulumi.Output<String>? appGroupId,
-    pulumi.Output<List<AppGroupAttribute>>? attributes,
-    pulumi.Output<String>? channelId,
-    pulumi.Output<String>? channelUri,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? lastModifiedAt,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? organization,
-    pulumi.Output<String>? status,
-  }) :
-      appGroupId = pulumi.Input.asOptionalInput<String>(appGroupId),
-      attributes = pulumi.Input.asOptionalInput<List<AppGroupAttribute>>(attributes),
-      channelId = pulumi.Input.asOptionalInput<String>(channelId),
-      channelUri = pulumi.Input.asOptionalInput<String>(channelUri),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      lastModifiedAt = pulumi.Input.asOptionalInput<String>(lastModifiedAt),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      organization = pulumi.Input.asOptionalInput<String>(organization),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.appGroupId,
+    this.attributes,
+    this.channelId,
+    this.channelUri,
+    this.createdAt,
+    this.displayName,
+    this.lastModifiedAt,
+    this.name,
+    this.orgId,
+    this.organization,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class AppGroupState {
 
   factory AppGroupState.fromMap(Map<String, dynamic> map) {
     return AppGroupState(
-      appGroupId: map['appGroupId'] == null ? null : pulumi.Output.create<String>(map['appGroupId'] as String),
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<AppGroupAttribute>>(pulumi.Input.decodeList<AppGroupAttribute>(map['attributes'], (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      channelId: map['channelId'] == null ? null : pulumi.Output.create<String>(map['channelId'] as String),
-      channelUri: map['channelUri'] == null ? null : pulumi.Output.create<String>(map['channelUri'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : pulumi.Output.create<String>(map['lastModifiedAt'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      appGroupId: map['appGroupId'] == null ? null : (map['appGroupId'] as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<AppGroupAttribute>(map['attributes'], (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
+      channelUri: map['channelUri'] == null ? null : (map['channelUri'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

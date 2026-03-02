@@ -26,17 +26,12 @@ class PrivateLinkScopeArgs {
   /// [scopeName] The name of the Azure Arc PrivateLinkScope resource.
   /// [tags] Resource tags.
   PrivateLinkScopeArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<KubernetesConfigurationPrivateLinkScopeProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scopeName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<KubernetesConfigurationPrivateLinkScopeProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeName = pulumi.Input.asOptionalInput<String>(scopeName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.scopeName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PrivateLinkScopeArgs {
 
   factory PrivateLinkScopeArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopeArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<KubernetesConfigurationPrivateLinkScopeProperties>(KubernetesConfigurationPrivateLinkScopeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeName: map['scopeName'] == null ? null : pulumi.Output.create<String>(map['scopeName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (KubernetesConfigurationPrivateLinkScopeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeName: map['scopeName'] == null ? null : (map['scopeName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

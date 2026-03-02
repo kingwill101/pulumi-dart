@@ -12,34 +12,34 @@ class HttpDataset {
   /// The headers for the HTTP Request. e.g. request-header-name-1:request-header-value-1
   /// ...
   /// request-header-name-n:request-header-value-n Type: string (or Expression with resultType string).
-  final dynamic additionalHeaders;
+  final pulumi.Input<dynamic>? additionalHeaders;
   /// List of tags that can be used for describing the Dataset.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The data compression method used on files.
-  final DatasetCompression? compression;
+  final pulumi.Input<DatasetCompression>? compression;
   /// Dataset description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final DatasetFolder? folder;
+  final pulumi.Input<DatasetFolder>? folder;
   /// The format of files.
-  final AvroFormat? format;
+  final pulumi.Input<AvroFormat>? format;
   /// Linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// Parameters for dataset.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The relative URL based on the URL in the HttpLinkedService refers to an HTTP file Type: string (or Expression with resultType string).
-  final dynamic relativeUrl;
+  final pulumi.Input<dynamic>? relativeUrl;
   /// The body for the HTTP request. Type: string (or Expression with resultType string).
-  final dynamic requestBody;
+  final pulumi.Input<dynamic>? requestBody;
   /// The HTTP method for the HTTP request. Type: string (or Expression with resultType string).
-  final dynamic requestMethod;
+  final pulumi.Input<dynamic>? requestMethod;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-  final dynamic structure;
+  final pulumi.Input<dynamic>? structure;
   /// Type of dataset.
   /// Expected value is 'HttpFile'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [HttpDataset].
   /// [additionalHeaders] The headers for the HTTP Request. e.g. request-header-name-1:request-header-value-1
@@ -77,12 +77,12 @@ class HttpDataset {
     return <String, dynamic>{
       'additionalHeaders': ?additionalHeaders,
       'annotations': ?annotations,
-      'compression': ?compression == null ? null : compression!.toMap(),
+      'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompression, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
-      'folder': ?folder == null ? null : folder!.toMap(),
-      'format': ?format == null ? null : format!.toMap(),
-      'linkedServiceName': linkedServiceName.toMap(),
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'format': ?pulumi.Input.mapOptionalInputValue<AvroFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'relativeUrl': ?relativeUrl,
       'requestBody': ?requestBody,
       'requestMethod': ?requestMethod,
@@ -94,20 +94,20 @@ class HttpDataset {
 
   factory HttpDataset.fromMap(Map<String, dynamic> map) {
     return HttpDataset(
-      additionalHeaders: map['additionalHeaders'] == null ? null : map['additionalHeaders'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      compression: map['compression'] == null ? null : DatasetCompression.fromMap((map['compression'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      folder: map['folder'] == null ? null : DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
-      format: map['format'] == null ? null : AvroFormat.fromMap((map['format'] as Map).cast<String, dynamic>()),
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      relativeUrl: map['relativeUrl'] == null ? null : map['relativeUrl'],
-      requestBody: map['requestBody'] == null ? null : map['requestBody'],
-      requestMethod: map['requestMethod'] == null ? null : map['requestMethod'],
-      schema: map['schema'] == null ? null : map['schema'],
-      structure: map['structure'] == null ? null : map['structure'],
-      type: map['type'] as String,
+      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      compression: map['compression'] == null ? null : (DatasetCompression.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (AvroFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      structure: map['structure'] == null ? null : (map['structure']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

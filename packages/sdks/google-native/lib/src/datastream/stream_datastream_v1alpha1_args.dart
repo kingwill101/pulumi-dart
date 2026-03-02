@@ -51,33 +51,20 @@ class StreamDatastreamV1alpha1Args {
   /// [state] The state of the stream.
   /// [streamId] Required. The stream identifier.
   StreamDatastreamV1alpha1Args({
-    pulumi.Output<BackfillAllStrategyDatastreamV1alpha1>? backfillAll,
-    pulumi.Output<Map<String, dynamic>>? backfillNone,
-    pulumi.Output<String>? customerManagedEncryptionKey,
-    required pulumi.Output<DestinationConfigDatastreamV1alpha1> destinationConfig,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? force,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<SourceConfigDatastreamV1alpha1> sourceConfig,
-    pulumi.Output<StreamStateDatastreamV1alpha1>? state,
-    required pulumi.Output<String> streamId,
-  }) :
-      backfillAll = pulumi.Input.asOptionalInput<BackfillAllStrategyDatastreamV1alpha1>(backfillAll),
-      backfillNone = pulumi.Input.asOptionalInput<Map<String, dynamic>>(backfillNone),
-      customerManagedEncryptionKey = pulumi.Input.asOptionalInput<String>(customerManagedEncryptionKey),
-      destinationConfig = pulumi.Input.asInput<DestinationConfigDatastreamV1alpha1>(destinationConfig),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceConfig = pulumi.Input.asInput<SourceConfigDatastreamV1alpha1>(sourceConfig),
-      state = pulumi.Input.asOptionalInput<StreamStateDatastreamV1alpha1>(state),
-      streamId = pulumi.Input.asInput<String>(streamId);
+    this.backfillAll,
+    this.backfillNone,
+    this.customerManagedEncryptionKey,
+    required this.destinationConfig,
+    required this.displayName,
+    this.force,
+    this.labels,
+    this.location,
+    this.project,
+    this.requestId,
+    required this.sourceConfig,
+    this.state,
+    required this.streamId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class StreamDatastreamV1alpha1Args {
 
   factory StreamDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return StreamDatastreamV1alpha1Args(
-      backfillAll: map['backfillAll'] == null ? null : pulumi.Output.create<BackfillAllStrategyDatastreamV1alpha1>(BackfillAllStrategyDatastreamV1alpha1.fromMap((map['backfillAll'] as Map).cast<String, dynamic>())),
-      backfillNone: map['backfillNone'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['backfillNone'] as Map).cast<String, dynamic>()),
-      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] == null ? null : pulumi.Output.create<String>(map['customerManagedEncryptionKey'] as String),
-      destinationConfig: pulumi.Output.create<DestinationConfigDatastreamV1alpha1>(DestinationConfigDatastreamV1alpha1.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceConfig: pulumi.Output.create<SourceConfigDatastreamV1alpha1>(SourceConfigDatastreamV1alpha1.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : pulumi.Output.create<StreamStateDatastreamV1alpha1>(StreamStateDatastreamV1alpha1.fromValue(map['state'] as String)),
-      streamId: pulumi.Output.create<String>(map['streamId'] as String),
+      backfillAll: map['backfillAll'] == null ? null : (BackfillAllStrategyDatastreamV1alpha1.fromMap((map['backfillAll'] as Map).cast<String, dynamic>())).input(),
+      backfillNone: map['backfillNone'] == null ? null : ((map['backfillNone'] as Map).cast<String, dynamic>()).input(),
+      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] == null ? null : (map['customerManagedEncryptionKey'] as String).input(),
+      destinationConfig: (DestinationConfigDatastreamV1alpha1.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceConfig: (SourceConfigDatastreamV1alpha1.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (StreamStateDatastreamV1alpha1.fromValue(map['state'] as String)).input(),
+      streamId: (map['streamId'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetInstanceConfigArgs {
   /// [instanceConfigId] Required.
   /// [project] Optional.
   GetInstanceConfigArgs({
-    required pulumi.Output<String> instanceConfigId,
-    pulumi.Output<String>? project,
-  }) :
-      instanceConfigId = pulumi.Input.asInput<String>(instanceConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.instanceConfigId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetInstanceConfigArgs {
 
   factory GetInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceConfigArgs(
-      instanceConfigId: pulumi.Output.create<String>(map['instanceConfigId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      instanceConfigId: (map['instanceConfigId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

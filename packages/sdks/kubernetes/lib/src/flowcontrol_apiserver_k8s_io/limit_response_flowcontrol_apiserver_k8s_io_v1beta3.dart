@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'queuing_configuration_flowcontrol_apiserver_k8s_io_v1beta3.dart';
 
 /// LimitResponse defines how to handle requests that can not be executed right now.
 class LimitResponseFlowcontrolApiserverK8sIoV1beta3 {
   /// `queuing` holds the configuration parameters for queuing. This field may be non-empty only if `type` is `"Queue"`.
-  final QueuingConfigurationFlowcontrolApiserverK8sIoV1beta3? queuing;
+  final pulumi.Input<QueuingConfigurationFlowcontrolApiserverK8sIoV1beta3>? queuing;
   /// `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that requests that can not be executed upon arrival are rejected. Required.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [LimitResponseFlowcontrolApiserverK8sIoV1beta3].
   /// [queuing] `queuing` holds the configuration parameters for queuing. This field may be non-empty only if `type` is `"Queue"`.
@@ -19,15 +20,15 @@ class LimitResponseFlowcontrolApiserverK8sIoV1beta3 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'queuing': ?queuing == null ? null : queuing!.toMap(),
+      'queuing': ?pulumi.Input.mapOptionalInputValue<QueuingConfigurationFlowcontrolApiserverK8sIoV1beta3, Map<String, dynamic>>(queuing, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory LimitResponseFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return LimitResponseFlowcontrolApiserverK8sIoV1beta3(
-      queuing: map['queuing'] == null ? null : QueuingConfigurationFlowcontrolApiserverK8sIoV1beta3.fromMap((map['queuing'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      queuing: map['queuing'] == null ? null : (QueuingConfigurationFlowcontrolApiserverK8sIoV1beta3.fromMap((map['queuing'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

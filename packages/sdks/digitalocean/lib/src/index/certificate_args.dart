@@ -35,19 +35,13 @@ class CertificateArgs {
   /// [privateKey] The contents of a PEM-formatted private-key
   /// [type] The type of certificate to provision. Can be either
   CertificateArgs({
-    pulumi.Output<String>? certificateChain,
-    pulumi.Output<List<String>>? domains,
-    pulumi.Output<String>? leafCertificate,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? type,
-  }) :
-      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
-      domains = pulumi.Input.asOptionalInput<List<String>>(domains),
-      leafCertificate = pulumi.Input.asOptionalInput<String>(leafCertificate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.certificateChain,
+    this.domains,
+    this.leafCertificate,
+    this.name,
+    this.privateKey,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateChain: map['certificateChain'] == null ? null : pulumi.Output.create<String>(map['certificateChain'] as String),
-      domains: map['domains'] == null ? null : pulumi.Output.create<List<String>>((map['domains'] as List).cast<String>()),
-      leafCertificate: map['leafCertificate'] == null ? null : pulumi.Output.create<String>(map['leafCertificate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
+      leafCertificate: map['leafCertificate'] == null ? null : (map['leafCertificate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

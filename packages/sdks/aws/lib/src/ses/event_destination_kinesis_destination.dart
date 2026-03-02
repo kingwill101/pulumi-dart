@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventDestinationKinesisDestination {
   /// The ARN of the role that has permissions to access the Kinesis Stream
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The ARN of the Kinesis Stream
-  final String streamArn;
+  final pulumi.Input<String> streamArn;
 
   /// Creates a new [EventDestinationKinesisDestination].
   /// [roleArn] The ARN of the role that has permissions to access the Kinesis Stream
@@ -24,8 +25,8 @@ class EventDestinationKinesisDestination {
 
   factory EventDestinationKinesisDestination.fromMap(Map<String, dynamic> map) {
     return EventDestinationKinesisDestination(
-      roleArn: map['roleArn'] as String,
-      streamArn: map['streamArn'] as String,
+      roleArn: (map['roleArn'] as String).input(),
+      streamArn: (map['streamArn'] as String).input(),
     );
   }
 }

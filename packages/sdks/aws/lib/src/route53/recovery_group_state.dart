@@ -24,17 +24,12 @@ class RecoveryGroupState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   RecoveryGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<String>>? cells,
-    pulumi.Output<String>? recoveryGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      cells = pulumi.Input.asOptionalInput<List<String>>(cells),
-      recoveryGroupName = pulumi.Input.asOptionalInput<String>(recoveryGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.cells,
+    this.recoveryGroupName,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class RecoveryGroupState {
 
   factory RecoveryGroupState.fromMap(Map<String, dynamic> map) {
     return RecoveryGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      cells: map['cells'] == null ? null : pulumi.Output.create<List<String>>((map['cells'] as List).cast<String>()),
-      recoveryGroupName: map['recoveryGroupName'] == null ? null : pulumi.Output.create<String>(map['recoveryGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      cells: map['cells'] == null ? null : ((map['cells'] as List).cast<String>()).input(),
+      recoveryGroupName: map['recoveryGroupName'] == null ? null : (map['recoveryGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

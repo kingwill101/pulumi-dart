@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AssignmentPrincipal
 class AssignmentPrincipalResponse {
   /// The principal id being assigned to.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// Other metadata for the principal.
-  final Map<String, String>? principalMetadata;
+  final pulumi.Input<Map<String, String>>? principalMetadata;
   /// The Type of the principal ID.
-  final String principalType;
+  final pulumi.Input<String> principalType;
 
   /// Creates a new [AssignmentPrincipalResponse].
   /// [principalId] The principal id being assigned to.
@@ -30,9 +31,9 @@ class AssignmentPrincipalResponse {
 
   factory AssignmentPrincipalResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentPrincipalResponse(
-      principalId: map['principalId'] as String,
-      principalMetadata: map['principalMetadata'] == null ? null : (map['principalMetadata'] as Map).cast<String, String>(),
-      principalType: map['principalType'] as String,
+      principalId: (map['principalId'] as String).input(),
+      principalMetadata: map['principalMetadata'] == null ? null : ((map['principalMetadata'] as Map).cast<String, String>()).input(),
+      principalType: (map['principalType'] as String).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class GetAccessPackageCatalogRoleArgs {
   /// [displayName] Specifies the display name of the role.
   /// [objectId] Specifies the object ID of the role.
   GetAccessPackageCatalogRoleArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? objectId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId);
+    this.displayName,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetAccessPackageCatalogRoleArgs {
 
   factory GetAccessPackageCatalogRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPackageCatalogRoleArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UnitCondition {
   /// Last time the condition transited from one status to another.
-  final String lastTransitionTime;
+  final pulumi.Input<String> lastTransitionTime;
   /// Human readable message indicating details about the last transition.
-  final String message;
+  final pulumi.Input<String> message;
   /// Brief reason for the condition's last transition.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// Status of the condition.
   /// Possible values:
   /// STATUS_UNKNOWN
   /// STATUS_TRUE
   /// STATUS_FALSE
-  final String status;
+  final pulumi.Input<String> status;
   /// Name of a supported variable type. Supported types are string, int, bool.
   /// Possible values:
   /// STRING
   /// INT
   /// BOOL
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [UnitCondition].
   /// [lastTransitionTime] Last time the condition transited from one status to another.
@@ -47,11 +48,11 @@ class UnitCondition {
 
   factory UnitCondition.fromMap(Map<String, dynamic> map) {
     return UnitCondition(
-      lastTransitionTime: map['lastTransitionTime'] as String,
-      message: map['message'] as String,
-      reason: map['reason'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      lastTransitionTime: (map['lastTransitionTime'] as String).input(),
+      message: (map['message'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

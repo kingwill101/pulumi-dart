@@ -28,19 +28,13 @@ class SchemaArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Json-encoded string for non json-based schema.
   SchemaArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? schemaId,
-    required pulumi.Output<String> schemaType,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? value,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaId = pulumi.Input.asOptionalInput<String>(schemaId),
-      schemaType = pulumi.Input.asInput<String>(schemaType),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.description,
+    required this.resourceGroupName,
+    this.schemaId,
+    required this.schemaType,
+    required this.serviceName,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaId: map['schemaId'] == null ? null : pulumi.Output.create<String>(map['schemaId'] as String),
-      schemaType: pulumi.Output.create<String>(map['schemaType'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      schemaType: (map['schemaType'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

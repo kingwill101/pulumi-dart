@@ -12,61 +12,61 @@ import 'domain_os_sm_bios.dart';
 
 class DomainOs {
   /// Enables or disables the ACPI (Advanced Configuration and Power Interface) support for the domain.
-  final DomainOsAcpi? acpi;
+  final pulumi.Input<DomainOsAcpi>? acpi;
   /// Configures BIOS settings for the domain, influencing its boot process and environment settings.
-  final DomainOsBios? bios;
+  final pulumi.Input<DomainOsBios>? bios;
   /// Sets the boot devices that the domain uses during the boot process.
-  final List<DomainOsBootDevice>? bootDevices;
+  final pulumi.Input<List<DomainOsBootDevice>>? bootDevices;
   /// Configures the settings of the boot menu presented during startup.
-  final DomainOsBootMenu? bootMenu;
+  final pulumi.Input<DomainOsBootMenu>? bootMenu;
   /// Provides additional command line arguments to pass to the guest OS kernel at boot.
-  final String? cmdline;
+  final pulumi.Input<String>? cmdline;
   /// Specifies the device tree blob file to use for initializing the guest's device tree.
-  final String? dtb;
+  final pulumi.Input<String>? dtb;
   /// Defines the firmware configuration for the domain, such as BIOS or UEFI.
-  final String? firmware;
+  final pulumi.Input<String>? firmware;
   /// Contains information about the specific features of the firmware being used.
-  final DomainOsFirmwareInfo? firmwareInfo;
+  final pulumi.Input<DomainOsFirmwareInfo>? firmwareInfo;
   /// Specifies the init binary to execute when booting the domain in container mode.
-  final String? init;
+  final pulumi.Input<String>? init;
   /// Configures additional arguments to be passed to the init binary during boot.
-  final List<String>? initArgs;
+  final pulumi.Input<List<String>>? initArgs;
   /// Sets the directory where the init binary resides.
-  final String? initDir;
+  final pulumi.Input<String>? initDir;
   /// Configures environment variables to pass to the init process of the domain.
-  final List<DomainOsInitEnv>? initEnvs;
+  final pulumi.Input<List<DomainOsInitEnv>>? initEnvs;
   /// Sets the group that the init process should run under.
-  final String? initGroup;
+  final pulumi.Input<String>? initGroup;
   /// Configures the user that the init process will run as within the domain.
-  final String? initUser;
+  final pulumi.Input<String>? initUser;
   /// Specifies the initial ramdisk image to be used at boot for the domain.
-  final String? initrd;
+  final pulumi.Input<String>? initrd;
   /// Sets the kernel image to boot into the domain.
-  final String? kernel;
+  final pulumi.Input<String>? kernel;
   /// Specifies the path to the bootloader or firmware loader for the domain.
-  final String? loader;
+  final pulumi.Input<String>? loader;
   /// Indicates the format type of the loader (e.g., 'rom', 'elf').
-  final String? loaderFormat;
+  final pulumi.Input<String>? loaderFormat;
   /// Configures whether the loader is mounted readonly or not.
-  final String? loaderReadonly;
+  final pulumi.Input<String>? loaderReadonly;
   /// Sets whether the loader operates in secure mode.
-  final String? loaderSecure;
+  final pulumi.Input<String>? loaderSecure;
   /// Configures the loader to operate in stateless mode.
-  final String? loaderStateless;
+  final pulumi.Input<String>? loaderStateless;
   /// Specifies the type of the loader (e.g., BIOS, UEFI).
-  final String? loaderType;
+  final pulumi.Input<String>? loaderType;
   /// Defines configurations for the non-volatile RAM (NVRAM) settings for the domain.
-  final DomainOsNvRam? nvRam;
+  final pulumi.Input<DomainOsNvRam>? nvRam;
   /// Configures the shim for the operating system in the domain.
-  final String? shim;
+  final pulumi.Input<String>? shim;
   /// Configures the SMBIOS settings for the domain's operating system.
-  final DomainOsSmBios? smBios;
+  final pulumi.Input<DomainOsSmBios>? smBios;
   /// Specifies the type of operating system to be used by the domain.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Sets the architecture type for the operating system.
-  final String? typeArch;
+  final pulumi.Input<String>? typeArch;
   /// Defines the machine type associated with the operating system.
-  final String? typeMachine;
+  final pulumi.Input<String>? typeMachine;
 
   /// Creates a new [DomainOs].
   /// [acpi] Enables or disables the ACPI (Advanced Configuration and Power Interface) support for the domain.
@@ -130,18 +130,18 @@ class DomainOs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acpi': ?acpi == null ? null : acpi!.toMap(),
-      'bios': ?bios == null ? null : bios!.toMap(),
-      'bootDevices': ?bootDevices == null ? null : pulumi.Input.encodeList<DomainOsBootDevice, Map<String, dynamic>>(bootDevices!, (value) => value.toMap()),
-      'bootMenu': ?bootMenu == null ? null : bootMenu!.toMap(),
+      'acpi': ?pulumi.Input.mapOptionalInputValue<DomainOsAcpi, Map<String, dynamic>>(acpi, (value) => value.toMap()),
+      'bios': ?pulumi.Input.mapOptionalInputValue<DomainOsBios, Map<String, dynamic>>(bios, (value) => value.toMap()),
+      'bootDevices': ?pulumi.Input.mapOptionalInputValue<List<DomainOsBootDevice>, List<Map<String, dynamic>>>(bootDevices, (value) => pulumi.Input.encodeList<DomainOsBootDevice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bootMenu': ?pulumi.Input.mapOptionalInputValue<DomainOsBootMenu, Map<String, dynamic>>(bootMenu, (value) => value.toMap()),
       'cmdline': ?cmdline,
       'dtb': ?dtb,
       'firmware': ?firmware,
-      'firmwareInfo': ?firmwareInfo == null ? null : firmwareInfo!.toMap(),
+      'firmwareInfo': ?pulumi.Input.mapOptionalInputValue<DomainOsFirmwareInfo, Map<String, dynamic>>(firmwareInfo, (value) => value.toMap()),
       'init': ?init,
       'initArgs': ?initArgs,
       'initDir': ?initDir,
-      'initEnvs': ?initEnvs == null ? null : pulumi.Input.encodeList<DomainOsInitEnv, Map<String, dynamic>>(initEnvs!, (value) => value.toMap()),
+      'initEnvs': ?pulumi.Input.mapOptionalInputValue<List<DomainOsInitEnv>, List<Map<String, dynamic>>>(initEnvs, (value) => pulumi.Input.encodeList<DomainOsInitEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
       'initGroup': ?initGroup,
       'initUser': ?initUser,
       'initrd': ?initrd,
@@ -152,9 +152,9 @@ class DomainOs {
       'loaderSecure': ?loaderSecure,
       'loaderStateless': ?loaderStateless,
       'loaderType': ?loaderType,
-      'nvRam': ?nvRam == null ? null : nvRam!.toMap(),
+      'nvRam': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRam, Map<String, dynamic>>(nvRam, (value) => value.toMap()),
       'shim': ?shim,
-      'smBios': ?smBios == null ? null : smBios!.toMap(),
+      'smBios': ?pulumi.Input.mapOptionalInputValue<DomainOsSmBios, Map<String, dynamic>>(smBios, (value) => value.toMap()),
       'type': ?type,
       'typeArch': ?typeArch,
       'typeMachine': ?typeMachine,
@@ -163,34 +163,34 @@ class DomainOs {
 
   factory DomainOs.fromMap(Map<String, dynamic> map) {
     return DomainOs(
-      acpi: map['acpi'] == null ? null : DomainOsAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>()),
-      bios: map['bios'] == null ? null : DomainOsBios.fromMap((map['bios'] as Map).cast<String, dynamic>()),
-      bootDevices: map['bootDevices'] == null ? null : pulumi.Input.decodeList<DomainOsBootDevice>(map['bootDevices'], (value) => DomainOsBootDevice.fromMap((value as Map).cast<String, dynamic>())),
-      bootMenu: map['bootMenu'] == null ? null : DomainOsBootMenu.fromMap((map['bootMenu'] as Map).cast<String, dynamic>()),
-      cmdline: map['cmdline'] == null ? null : map['cmdline'] as String,
-      dtb: map['dtb'] == null ? null : map['dtb'] as String,
-      firmware: map['firmware'] == null ? null : map['firmware'] as String,
-      firmwareInfo: map['firmwareInfo'] == null ? null : DomainOsFirmwareInfo.fromMap((map['firmwareInfo'] as Map).cast<String, dynamic>()),
-      init: map['init'] == null ? null : map['init'] as String,
-      initArgs: map['initArgs'] == null ? null : (map['initArgs'] as List).cast<String>(),
-      initDir: map['initDir'] == null ? null : map['initDir'] as String,
-      initEnvs: map['initEnvs'] == null ? null : pulumi.Input.decodeList<DomainOsInitEnv>(map['initEnvs'], (value) => DomainOsInitEnv.fromMap((value as Map).cast<String, dynamic>())),
-      initGroup: map['initGroup'] == null ? null : map['initGroup'] as String,
-      initUser: map['initUser'] == null ? null : map['initUser'] as String,
-      initrd: map['initrd'] == null ? null : map['initrd'] as String,
-      kernel: map['kernel'] == null ? null : map['kernel'] as String,
-      loader: map['loader'] == null ? null : map['loader'] as String,
-      loaderFormat: map['loaderFormat'] == null ? null : map['loaderFormat'] as String,
-      loaderReadonly: map['loaderReadonly'] == null ? null : map['loaderReadonly'] as String,
-      loaderSecure: map['loaderSecure'] == null ? null : map['loaderSecure'] as String,
-      loaderStateless: map['loaderStateless'] == null ? null : map['loaderStateless'] as String,
-      loaderType: map['loaderType'] == null ? null : map['loaderType'] as String,
-      nvRam: map['nvRam'] == null ? null : DomainOsNvRam.fromMap((map['nvRam'] as Map).cast<String, dynamic>()),
-      shim: map['shim'] == null ? null : map['shim'] as String,
-      smBios: map['smBios'] == null ? null : DomainOsSmBios.fromMap((map['smBios'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
-      typeArch: map['typeArch'] == null ? null : map['typeArch'] as String,
-      typeMachine: map['typeMachine'] == null ? null : map['typeMachine'] as String,
+      acpi: map['acpi'] == null ? null : (DomainOsAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
+      bios: map['bios'] == null ? null : (DomainOsBios.fromMap((map['bios'] as Map).cast<String, dynamic>())).input(),
+      bootDevices: map['bootDevices'] == null ? null : (pulumi.Input.decodeList<DomainOsBootDevice>(map['bootDevices'], (value) => DomainOsBootDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootMenu: map['bootMenu'] == null ? null : (DomainOsBootMenu.fromMap((map['bootMenu'] as Map).cast<String, dynamic>())).input(),
+      cmdline: map['cmdline'] == null ? null : (map['cmdline'] as String).input(),
+      dtb: map['dtb'] == null ? null : (map['dtb'] as String).input(),
+      firmware: map['firmware'] == null ? null : (map['firmware'] as String).input(),
+      firmwareInfo: map['firmwareInfo'] == null ? null : (DomainOsFirmwareInfo.fromMap((map['firmwareInfo'] as Map).cast<String, dynamic>())).input(),
+      init: map['init'] == null ? null : (map['init'] as String).input(),
+      initArgs: map['initArgs'] == null ? null : ((map['initArgs'] as List).cast<String>()).input(),
+      initDir: map['initDir'] == null ? null : (map['initDir'] as String).input(),
+      initEnvs: map['initEnvs'] == null ? null : (pulumi.Input.decodeList<DomainOsInitEnv>(map['initEnvs'], (value) => DomainOsInitEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initGroup: map['initGroup'] == null ? null : (map['initGroup'] as String).input(),
+      initUser: map['initUser'] == null ? null : (map['initUser'] as String).input(),
+      initrd: map['initrd'] == null ? null : (map['initrd'] as String).input(),
+      kernel: map['kernel'] == null ? null : (map['kernel'] as String).input(),
+      loader: map['loader'] == null ? null : (map['loader'] as String).input(),
+      loaderFormat: map['loaderFormat'] == null ? null : (map['loaderFormat'] as String).input(),
+      loaderReadonly: map['loaderReadonly'] == null ? null : (map['loaderReadonly'] as String).input(),
+      loaderSecure: map['loaderSecure'] == null ? null : (map['loaderSecure'] as String).input(),
+      loaderStateless: map['loaderStateless'] == null ? null : (map['loaderStateless'] as String).input(),
+      loaderType: map['loaderType'] == null ? null : (map['loaderType'] as String).input(),
+      nvRam: map['nvRam'] == null ? null : (DomainOsNvRam.fromMap((map['nvRam'] as Map).cast<String, dynamic>())).input(),
+      shim: map['shim'] == null ? null : (map['shim'] as String).input(),
+      smBios: map['smBios'] == null ? null : (DomainOsSmBios.fromMap((map['smBios'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeArch: map['typeArch'] == null ? null : (map['typeArch'] as String).input(),
+      typeMachine: map['typeMachine'] == null ? null : (map['typeMachine'] as String).input(),
     );
   }
 }

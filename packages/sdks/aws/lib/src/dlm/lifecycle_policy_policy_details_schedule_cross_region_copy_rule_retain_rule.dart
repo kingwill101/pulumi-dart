@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule {
-  final int interval;
-  final String intervalUnit;
+  final pulumi.Input<int> interval;
+  final pulumi.Input<String> intervalUnit;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule].
   /// [interval] Required.
@@ -22,8 +23,8 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule {
 
   factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule(
-      interval: map['interval'] as int,
-      intervalUnit: map['intervalUnit'] as String,
+      interval: (map['interval'] as int).input(),
+      intervalUnit: (map['intervalUnit'] as String).input(),
     );
   }
 }

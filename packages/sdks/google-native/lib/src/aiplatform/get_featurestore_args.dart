@@ -16,13 +16,10 @@ class GetFeaturestoreArgs {
   /// [location] Required.
   /// [project] Optional.
   GetFeaturestoreArgs({
-    required pulumi.Output<String> featurestoreId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.featurestoreId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetFeaturestoreArgs {
 
   factory GetFeaturestoreArgs.fromMap(Map<String, dynamic> map) {
     return GetFeaturestoreArgs(
-      featurestoreId: pulumi.Output.create<String>(map['featurestoreId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      featurestoreId: (map['featurestoreId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

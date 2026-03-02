@@ -5,13 +5,13 @@ import 'domain_devices_disk_mirror_source_volume_sec_label.dart';
 
 class DomainDevicesDiskMirrorSourceVolume {
   /// Sets the mode for the volume source in the backing store configuration.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Specifies the pool from which the volume source is derived in the backing store.
-  final String? pool;
+  final pulumi.Input<String>? pool;
   /// Configures the security label settings for the volume in the backing store.
-  final List<DomainDevicesDiskMirrorSourceVolumeSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorSourceVolumeSecLabel>>? secLabels;
   /// Provides the volume definition used as the backing store source.
-  final String? volume;
+  final pulumi.Input<String>? volume;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceVolume].
   /// [mode] Sets the mode for the volume source in the backing store configuration.
@@ -29,17 +29,17 @@ class DomainDevicesDiskMirrorSourceVolume {
     return <String, dynamic>{
       'mode': ?mode,
       'pool': ?pool,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskMirrorSourceVolumeSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskMirrorSourceVolumeSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskMirrorSourceVolumeSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'volume': ?volume,
     };
   }
 
   factory DomainDevicesDiskMirrorSourceVolume.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceVolume(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      pool: map['pool'] == null ? null : map['pool'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceVolumeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorSourceVolumeSecLabel.fromMap((value as Map).cast<String, dynamic>())),
-      volume: map['volume'] == null ? null : map['volume'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceVolumeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorSourceVolumeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volume: map['volume'] == null ? null : (map['volume'] as String).input(),
     );
   }
 }

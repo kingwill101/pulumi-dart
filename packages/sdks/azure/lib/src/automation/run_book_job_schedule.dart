@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RunBookJobSchedule {
   /// The UUID of automation runbook job schedule ID.
-  final String? jobScheduleId;
+  final pulumi.Input<String>? jobScheduleId;
   /// A map of key/value pairs corresponding to the arguments that can be passed to the Runbook.
   ///
   /// > **Note:** The parameter keys/names must strictly be in lowercase, even if this is not the case in the runbook. This is due to a limitation in Azure Automation where the parameter names are normalized. The values specified don't have this limitation.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// Name of a Hybrid Worker Group the Runbook will be executed on.
-  final String? runOn;
+  final pulumi.Input<String>? runOn;
   /// The name of the Schedule.
-  final String scheduleName;
+  final pulumi.Input<String> scheduleName;
 
   /// Creates a new [RunBookJobSchedule].
   /// [jobScheduleId] The UUID of automation runbook job schedule ID.
@@ -36,10 +37,10 @@ class RunBookJobSchedule {
 
   factory RunBookJobSchedule.fromMap(Map<String, dynamic> map) {
     return RunBookJobSchedule(
-      jobScheduleId: map['jobScheduleId'] == null ? null : map['jobScheduleId'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      runOn: map['runOn'] == null ? null : map['runOn'] as String,
-      scheduleName: map['scheduleName'] as String,
+      jobScheduleId: map['jobScheduleId'] == null ? null : (map['jobScheduleId'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      runOn: map['runOn'] == null ? null : (map['runOn'] as String).input(),
+      scheduleName: (map['scheduleName'] as String).input(),
     );
   }
 }

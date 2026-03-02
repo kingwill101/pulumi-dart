@@ -22,15 +22,11 @@ class TableEntityArgs {
   /// [rowKey] The key for the row where the entity will be inserted/merged. Changing this forces a new resource to be created.
   /// [storageTableId] The Storage Share ID in which this file will be placed into.
   TableEntityArgs({
-    required pulumi.Output<Map<String, String>> entity,
-    required pulumi.Output<String> partitionKey,
-    required pulumi.Output<String> rowKey,
-    required pulumi.Output<String> storageTableId,
-  }) :
-      entity = pulumi.Input.asInput<Map<String, String>>(entity),
-      partitionKey = pulumi.Input.asInput<String>(partitionKey),
-      rowKey = pulumi.Input.asInput<String>(rowKey),
-      storageTableId = pulumi.Input.asInput<String>(storageTableId);
+    required this.entity,
+    required this.partitionKey,
+    required this.rowKey,
+    required this.storageTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class TableEntityArgs {
 
   factory TableEntityArgs.fromMap(Map<String, dynamic> map) {
     return TableEntityArgs(
-      entity: pulumi.Output.create<Map<String, String>>((map['entity'] as Map).cast<String, String>()),
-      partitionKey: pulumi.Output.create<String>(map['partitionKey'] as String),
-      rowKey: pulumi.Output.create<String>(map['rowKey'] as String),
-      storageTableId: pulumi.Output.create<String>(map['storageTableId'] as String),
+      entity: ((map['entity'] as Map).cast<String, String>()).input(),
+      partitionKey: (map['partitionKey'] as String).input(),
+      rowKey: (map['rowKey'] as String).input(),
+      storageTableId: (map['storageTableId'] as String).input(),
     );
   }
 }

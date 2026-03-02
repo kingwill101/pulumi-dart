@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_image_defaults_response.dart';
 import 'encryption_response.dart';
 
 /// BootDiskDefaults hold information about the boot disk of a VM.
 class BootDiskDefaultsResponse {
   /// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// Optional. The name of the disk.
-  final String diskName;
+  final pulumi.Input<String> diskName;
   /// Optional. The type of disk provisioning to use for the VM.
-  final String diskType;
+  final pulumi.Input<String> diskType;
   /// Optional. The encryption to apply to the boot disk.
-  final EncryptionResponse encryption;
+  final pulumi.Input<EncryptionResponse> encryption;
   /// The image to use when creating the disk.
-  final DiskImageDefaultsResponse image;
+  final pulumi.Input<DiskImageDefaultsResponse> image;
 
   /// Creates a new [BootDiskDefaultsResponse].
   /// [deviceName] Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
@@ -35,18 +36,18 @@ class BootDiskDefaultsResponse {
       'deviceName': deviceName,
       'diskName': diskName,
       'diskType': diskType,
-      'encryption': encryption.toMap(),
-      'image': image.toMap(),
+      'encryption': pulumi.Input.mapInputValue<EncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'image': pulumi.Input.mapInputValue<DiskImageDefaultsResponse, Map<String, dynamic>>(image, (value) => value.toMap()),
     };
   }
 
   factory BootDiskDefaultsResponse.fromMap(Map<String, dynamic> map) {
     return BootDiskDefaultsResponse(
-      deviceName: map['deviceName'] as String,
-      diskName: map['diskName'] as String,
-      diskType: map['diskType'] as String,
-      encryption: EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      image: DiskImageDefaultsResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      deviceName: (map['deviceName'] as String).input(),
+      diskName: (map['diskName'] as String).input(),
+      diskType: (map['diskType'] as String).input(),
+      encryption: (EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      image: (DiskImageDefaultsResponse.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

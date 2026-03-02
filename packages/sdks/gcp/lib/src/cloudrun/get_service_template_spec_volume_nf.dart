@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceTemplateSpecVolumeNf {
   /// Path exported by the NFS server
-  final String path;
+  final pulumi.Input<String> path;
   /// If true, mount the NFS volume as read only in all mounts. Defaults to false.
-  final bool readOnly;
+  final pulumi.Input<bool> readOnly;
   /// IP address or hostname of the NFS server
-  final String server;
+  final pulumi.Input<String> server;
 
   /// Creates a new [GetServiceTemplateSpecVolumeNf].
   /// [path] Path exported by the NFS server
@@ -29,9 +30,9 @@ class GetServiceTemplateSpecVolumeNf {
 
   factory GetServiceTemplateSpecVolumeNf.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecVolumeNf(
-      path: map['path'] as String,
-      readOnly: map['readOnly'] as bool,
-      server: map['server'] as String,
+      path: (map['path'] as String).input(),
+      readOnly: (map['readOnly'] as bool).input(),
+      server: (map['server'] as String).input(),
     );
   }
 }

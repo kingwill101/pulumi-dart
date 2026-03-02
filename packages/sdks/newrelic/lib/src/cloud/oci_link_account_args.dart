@@ -52,35 +52,21 @@ class OciLinkAccountArgs {
   /// [tenantId] OCI tenancy OCID (root tenancy). Changing forces a new linked account.
   /// [userVaultOcid] Vault secret OCID containing a user or auxiliary secret.
   OciLinkAccountArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> compartmentOcid,
-    pulumi.Output<String>? ingestVaultOcid,
-    pulumi.Output<String>? instrumentationType,
-    pulumi.Output<String>? loggingStackOcid,
-    pulumi.Output<String>? metricStackOcid,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> ociClientId,
-    required pulumi.Output<String> ociClientSecret,
-    required pulumi.Output<String> ociDomainUrl,
-    required pulumi.Output<String> ociHomeRegion,
-    pulumi.Output<String>? ociRegion,
-    required pulumi.Output<String> tenantId,
-    pulumi.Output<String>? userVaultOcid,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      compartmentOcid = pulumi.Input.asInput<String>(compartmentOcid),
-      ingestVaultOcid = pulumi.Input.asOptionalInput<String>(ingestVaultOcid),
-      instrumentationType = pulumi.Input.asOptionalInput<String>(instrumentationType),
-      loggingStackOcid = pulumi.Input.asOptionalInput<String>(loggingStackOcid),
-      metricStackOcid = pulumi.Input.asOptionalInput<String>(metricStackOcid),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ociClientId = pulumi.Input.asInput<String>(ociClientId),
-      ociClientSecret = pulumi.Input.asInput<String>(ociClientSecret),
-      ociDomainUrl = pulumi.Input.asInput<String>(ociDomainUrl),
-      ociHomeRegion = pulumi.Input.asInput<String>(ociHomeRegion),
-      ociRegion = pulumi.Input.asOptionalInput<String>(ociRegion),
-      tenantId = pulumi.Input.asInput<String>(tenantId),
-      userVaultOcid = pulumi.Input.asOptionalInput<String>(userVaultOcid);
+    this.accountId,
+    required this.compartmentOcid,
+    this.ingestVaultOcid,
+    this.instrumentationType,
+    this.loggingStackOcid,
+    this.metricStackOcid,
+    this.name,
+    required this.ociClientId,
+    required this.ociClientSecret,
+    required this.ociDomainUrl,
+    required this.ociHomeRegion,
+    this.ociRegion,
+    required this.tenantId,
+    this.userVaultOcid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class OciLinkAccountArgs {
 
   factory OciLinkAccountArgs.fromMap(Map<String, dynamic> map) {
     return OciLinkAccountArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      compartmentOcid: pulumi.Output.create<String>(map['compartmentOcid'] as String),
-      ingestVaultOcid: map['ingestVaultOcid'] == null ? null : pulumi.Output.create<String>(map['ingestVaultOcid'] as String),
-      instrumentationType: map['instrumentationType'] == null ? null : pulumi.Output.create<String>(map['instrumentationType'] as String),
-      loggingStackOcid: map['loggingStackOcid'] == null ? null : pulumi.Output.create<String>(map['loggingStackOcid'] as String),
-      metricStackOcid: map['metricStackOcid'] == null ? null : pulumi.Output.create<String>(map['metricStackOcid'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ociClientId: pulumi.Output.create<String>(map['ociClientId'] as String),
-      ociClientSecret: pulumi.Output.create<String>(map['ociClientSecret'] as String),
-      ociDomainUrl: pulumi.Output.create<String>(map['ociDomainUrl'] as String),
-      ociHomeRegion: pulumi.Output.create<String>(map['ociHomeRegion'] as String),
-      ociRegion: map['ociRegion'] == null ? null : pulumi.Output.create<String>(map['ociRegion'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
-      userVaultOcid: map['userVaultOcid'] == null ? null : pulumi.Output.create<String>(map['userVaultOcid'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      compartmentOcid: (map['compartmentOcid'] as String).input(),
+      ingestVaultOcid: map['ingestVaultOcid'] == null ? null : (map['ingestVaultOcid'] as String).input(),
+      instrumentationType: map['instrumentationType'] == null ? null : (map['instrumentationType'] as String).input(),
+      loggingStackOcid: map['loggingStackOcid'] == null ? null : (map['loggingStackOcid'] as String).input(),
+      metricStackOcid: map['metricStackOcid'] == null ? null : (map['metricStackOcid'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ociClientId: (map['ociClientId'] as String).input(),
+      ociClientSecret: (map['ociClientSecret'] as String).input(),
+      ociDomainUrl: (map['ociDomainUrl'] as String).input(),
+      ociHomeRegion: (map['ociHomeRegion'] as String).input(),
+      ociRegion: map['ociRegion'] == null ? null : (map['ociRegion'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      userVaultOcid: map['userVaultOcid'] == null ? null : (map['userVaultOcid'] as String).input(),
     );
   }
 }

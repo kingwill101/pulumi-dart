@@ -6,9 +6,9 @@ import 'mongo_db_shard_key_field_response.dart';
 /// Describes a MongoDB shard key
 class MongoDbShardKeySettingResponse {
   /// The fields within the shard key
-  final List<MongoDbShardKeyFieldResponse> fields;
+  final pulumi.Input<List<MongoDbShardKeyFieldResponse>> fields;
   /// Whether the shard key is unique
-  final bool? isUnique;
+  final pulumi.Input<bool>? isUnique;
 
   /// Creates a new [MongoDbShardKeySettingResponse].
   /// [fields] The fields within the shard key
@@ -20,15 +20,15 @@ class MongoDbShardKeySettingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': pulumi.Input.encodeList<MongoDbShardKeyFieldResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+      'fields': pulumi.Input.mapInputValue<List<MongoDbShardKeyFieldResponse>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<MongoDbShardKeyFieldResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isUnique': ?isUnique,
     };
   }
 
   factory MongoDbShardKeySettingResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbShardKeySettingResponse(
-      fields: pulumi.Input.decodeList<MongoDbShardKeyFieldResponse>(map['fields'], (value) => MongoDbShardKeyFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
-      isUnique: map['isUnique'] == null ? null : map['isUnique'] as bool,
+      fields: (pulumi.Input.decodeList<MongoDbShardKeyFieldResponse>(map['fields'], (value) => MongoDbShardKeyFieldResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isUnique: map['isUnique'] == null ? null : (map['isUnique'] as bool).input(),
     );
   }
 }

@@ -28,17 +28,12 @@ class AccountArgs {
   /// [characterType] The account Comment Information type. Value:
   /// [instanceId] Instance Id
   AccountArgs({
-    pulumi.Output<String>? accountDescription,
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> accountPassword,
-    pulumi.Output<String>? characterType,
-    required pulumi.Output<String> instanceId,
-  }) :
-      accountDescription = pulumi.Input.asOptionalInput<String>(accountDescription),
-      accountName = pulumi.Input.asInput<String>(accountName),
-      accountPassword = pulumi.Input.asInput<String>(accountPassword),
-      characterType = pulumi.Input.asOptionalInput<String>(characterType),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    this.accountDescription,
+    required this.accountName,
+    required this.accountPassword,
+    this.characterType,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountDescription: map['accountDescription'] == null ? null : pulumi.Output.create<String>(map['accountDescription'] as String),
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      accountPassword: pulumi.Output.create<String>(map['accountPassword'] as String),
-      characterType: map['characterType'] == null ? null : pulumi.Output.create<String>(map['characterType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      accountPassword: (map['accountPassword'] as String).input(),
+      characterType: map['characterType'] == null ? null : (map['characterType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

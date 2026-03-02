@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kubernetes cluster configuration
 class KubernetesClusterInfo {
   /// Kubernetes cluster version
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [KubernetesClusterInfo].
   /// [version] Kubernetes cluster version
@@ -20,7 +21,7 @@ class KubernetesClusterInfo {
 
   factory KubernetesClusterInfo.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterInfo(
-      version: map['version'] as String,
+      version: (map['version'] as String).input(),
     );
   }
 }

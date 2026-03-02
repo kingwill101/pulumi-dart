@@ -11,120 +11,120 @@ import 'vmnic_details_response.dart';
 /// A2A provider specific settings.
 class A2AReplicationDetailsResponse {
   /// Agent certificate expiry date.
-  final String agentCertificateExpiryDate;
+  final pulumi.Input<String> agentCertificateExpiryDate;
   /// Agent expiry date.
-  final String? agentExpiryDate;
+  final pulumi.Input<String>? agentExpiryDate;
   /// The agent version.
-  final String? agentVersion;
+  final pulumi.Input<String>? agentVersion;
   /// A value indicating whether the auto protection is enabled.
-  final String? autoProtectionOfDataDisk;
+  final pulumi.Input<String>? autoProtectionOfDataDisk;
   /// A value indicating the churn option selected by user.
-  final String churnOptionSelected;
+  final pulumi.Input<String> churnOptionSelected;
   /// The fabric specific object Id of the virtual machine.
-  final String? fabricObjectId;
+  final pulumi.Input<String>? fabricObjectId;
   /// The initial primary extended location.
-  final ExtendedLocationResponse? initialPrimaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? initialPrimaryExtendedLocation;
   /// The initial primary fabric location.
-  final String initialPrimaryFabricLocation;
+  final pulumi.Input<String> initialPrimaryFabricLocation;
   /// The initial primary availability zone.
-  final String initialPrimaryZone;
+  final pulumi.Input<String> initialPrimaryZone;
   /// The initial recovery extended location.
-  final ExtendedLocationResponse? initialRecoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? initialRecoveryExtendedLocation;
   /// The initial recovery fabric location.
-  final String initialRecoveryFabricLocation;
+  final pulumi.Input<String> initialRecoveryFabricLocation;
   /// The initial recovery availability zone.
-  final String initialRecoveryZone;
+  final pulumi.Input<String> initialRecoveryZone;
   /// Gets the Instance type.
   /// Expected value is 'A2A'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// A value indicating if the cluster infra is ready or not.
-  final bool? isClusterInfraReady;
+  final pulumi.Input<bool>? isClusterInfraReady;
   /// A value indicating whether agent certificate update is required.
-  final bool? isReplicationAgentCertificateUpdateRequired;
+  final pulumi.Input<bool>? isReplicationAgentCertificateUpdateRequired;
   /// A value indicating whether replication agent update is required.
-  final bool? isReplicationAgentUpdateRequired;
+  final pulumi.Input<bool>? isReplicationAgentUpdateRequired;
   /// The last heartbeat received from the source server.
-  final String? lastHeartbeat;
+  final pulumi.Input<String>? lastHeartbeat;
   /// The time (in UTC) when the last RPO value was calculated by Protection Service.
-  final String? lastRpoCalculatedTime;
+  final pulumi.Input<String>? lastRpoCalculatedTime;
   /// An id associated with the PE that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected item even though other internal Ids/ARM Id might be changing.
-  final String? lifecycleId;
+  final pulumi.Input<String>? lifecycleId;
   /// The management Id.
-  final String? managementId;
+  final pulumi.Input<String>? managementId;
   /// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
-  final String? monitoringJobType;
+  final pulumi.Input<String>? monitoringJobType;
   /// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
-  final int? monitoringPercentageCompletion;
+  final pulumi.Input<int>? monitoringPercentageCompletion;
   /// Whether Multi VM group is auto created or specified by user.
-  final String? multiVmGroupCreateOption;
+  final pulumi.Input<String>? multiVmGroupCreateOption;
   /// The multi vm group Id.
-  final String? multiVmGroupId;
+  final pulumi.Input<String>? multiVmGroupId;
   /// The multi vm group name.
-  final String? multiVmGroupName;
+  final pulumi.Input<String>? multiVmGroupName;
   /// The type of operating system.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// The primary availability zone.
-  final String? primaryAvailabilityZone;
+  final pulumi.Input<String>? primaryAvailabilityZone;
   /// The primary Extended Location.
-  final ExtendedLocationResponse? primaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
   /// Primary fabric location.
-  final String? primaryFabricLocation;
+  final pulumi.Input<String>? primaryFabricLocation;
   /// The list of protected disks.
-  final List<A2AProtectedDiskDetailsResponse>? protectedDisks;
+  final pulumi.Input<List<A2AProtectedDiskDetailsResponse>>? protectedDisks;
   /// The list of protected managed disks.
-  final List<A2AProtectedManagedDiskDetailsResponse>? protectedManagedDisks;
+  final pulumi.Input<List<A2AProtectedManagedDiskDetailsResponse>>? protectedManagedDisks;
   /// The replication protection cluster Id.
-  final String? protectionClusterId;
+  final pulumi.Input<String>? protectionClusterId;
   /// The recovery availability set.
-  final String? recoveryAvailabilitySet;
+  final pulumi.Input<String>? recoveryAvailabilitySet;
   /// The recovery availability zone.
-  final String? recoveryAvailabilityZone;
+  final pulumi.Input<String>? recoveryAvailabilityZone;
   /// The recovery azure generation.
-  final String recoveryAzureGeneration;
+  final pulumi.Input<String> recoveryAzureGeneration;
   /// The recovery resource group.
-  final String? recoveryAzureResourceGroupId;
+  final pulumi.Input<String>? recoveryAzureResourceGroupId;
   /// The name of recovery virtual machine.
-  final String? recoveryAzureVMName;
+  final pulumi.Input<String>? recoveryAzureVMName;
   /// The size of recovery virtual machine.
-  final String? recoveryAzureVMSize;
+  final pulumi.Input<String>? recoveryAzureVMSize;
   /// The recovery boot diagnostic storage account Arm Id.
-  final String? recoveryBootDiagStorageAccountId;
+  final pulumi.Input<String>? recoveryBootDiagStorageAccountId;
   /// The recovery capacity reservation group Id.
-  final String? recoveryCapacityReservationGroupId;
+  final pulumi.Input<String>? recoveryCapacityReservationGroupId;
   /// The recovery cloud service.
-  final String? recoveryCloudService;
+  final pulumi.Input<String>? recoveryCloudService;
   /// The recovery Extended Location.
-  final ExtendedLocationResponse? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
   /// The recovery fabric location.
-  final String? recoveryFabricLocation;
+  final pulumi.Input<String>? recoveryFabricLocation;
   /// The recovery fabric object Id.
-  final String? recoveryFabricObjectId;
+  final pulumi.Input<String>? recoveryFabricObjectId;
   /// The recovery proximity placement group Id.
-  final String? recoveryProximityPlacementGroupId;
+  final pulumi.Input<String>? recoveryProximityPlacementGroupId;
   /// The recovery virtual machine scale set id.
-  final String? recoveryVirtualMachineScaleSetId;
+  final pulumi.Input<String>? recoveryVirtualMachineScaleSetId;
   /// The last RPO value in seconds.
-  final double? rpoInSeconds;
+  final pulumi.Input<double>? rpoInSeconds;
   /// The recovery virtual network.
-  final String? selectedRecoveryAzureNetworkId;
+  final pulumi.Input<String>? selectedRecoveryAzureNetworkId;
   /// The test failover virtual network.
-  final String? selectedTfoAzureNetworkId;
+  final pulumi.Input<String>? selectedTfoAzureNetworkId;
   /// The test failover fabric object Id.
-  final String? testFailoverRecoveryFabricObjectId;
+  final pulumi.Input<String>? testFailoverRecoveryFabricObjectId;
   /// The test failover vm name.
-  final String? tfoAzureVMName;
+  final pulumi.Input<String>? tfoAzureVMName;
   /// The list of unprotected disks.
-  final List<A2AUnprotectedDiskDetailsResponse>? unprotectedDisks;
+  final pulumi.Input<List<A2AUnprotectedDiskDetailsResponse>>? unprotectedDisks;
   /// The encryption type of the VM.
-  final String vmEncryptionType;
+  final pulumi.Input<String> vmEncryptionType;
   /// The virtual machine nic details.
-  final List<VMNicDetailsResponse>? vmNics;
+  final pulumi.Input<List<VMNicDetailsResponse>>? vmNics;
   /// The protection state for the vm.
-  final String? vmProtectionState;
+  final pulumi.Input<String>? vmProtectionState;
   /// The protection state description for the vm.
-  final String? vmProtectionStateDescription;
+  final pulumi.Input<String>? vmProtectionStateDescription;
   /// The synced configuration details.
-  final AzureToAzureVmSyncedConfigDetailsResponse? vmSyncedConfigDetails;
+  final pulumi.Input<AzureToAzureVmSyncedConfigDetailsResponse>? vmSyncedConfigDetails;
 
   /// Creates a new [A2AReplicationDetailsResponse].
   /// [agentCertificateExpiryDate] Agent certificate expiry date.
@@ -252,10 +252,10 @@ class A2AReplicationDetailsResponse {
       'autoProtectionOfDataDisk': ?autoProtectionOfDataDisk,
       'churnOptionSelected': churnOptionSelected,
       'fabricObjectId': ?fabricObjectId,
-      'initialPrimaryExtendedLocation': ?initialPrimaryExtendedLocation == null ? null : initialPrimaryExtendedLocation!.toMap(),
+      'initialPrimaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(initialPrimaryExtendedLocation, (value) => value.toMap()),
       'initialPrimaryFabricLocation': initialPrimaryFabricLocation,
       'initialPrimaryZone': initialPrimaryZone,
-      'initialRecoveryExtendedLocation': ?initialRecoveryExtendedLocation == null ? null : initialRecoveryExtendedLocation!.toMap(),
+      'initialRecoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(initialRecoveryExtendedLocation, (value) => value.toMap()),
       'initialRecoveryFabricLocation': initialRecoveryFabricLocation,
       'initialRecoveryZone': initialRecoveryZone,
       'instanceType': instanceType,
@@ -273,10 +273,10 @@ class A2AReplicationDetailsResponse {
       'multiVmGroupName': ?multiVmGroupName,
       'osType': ?osType,
       'primaryAvailabilityZone': ?primaryAvailabilityZone,
-      'primaryExtendedLocation': ?primaryExtendedLocation == null ? null : primaryExtendedLocation!.toMap(),
+      'primaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(primaryExtendedLocation, (value) => value.toMap()),
       'primaryFabricLocation': ?primaryFabricLocation,
-      'protectedDisks': ?protectedDisks == null ? null : pulumi.Input.encodeList<A2AProtectedDiskDetailsResponse, Map<String, dynamic>>(protectedDisks!, (value) => value.toMap()),
-      'protectedManagedDisks': ?protectedManagedDisks == null ? null : pulumi.Input.encodeList<A2AProtectedManagedDiskDetailsResponse, Map<String, dynamic>>(protectedManagedDisks!, (value) => value.toMap()),
+      'protectedDisks': ?pulumi.Input.mapOptionalInputValue<List<A2AProtectedDiskDetailsResponse>, List<Map<String, dynamic>>>(protectedDisks, (value) => pulumi.Input.encodeList<A2AProtectedDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'protectedManagedDisks': ?pulumi.Input.mapOptionalInputValue<List<A2AProtectedManagedDiskDetailsResponse>, List<Map<String, dynamic>>>(protectedManagedDisks, (value) => pulumi.Input.encodeList<A2AProtectedManagedDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protectionClusterId': ?protectionClusterId,
       'recoveryAvailabilitySet': ?recoveryAvailabilitySet,
       'recoveryAvailabilityZone': ?recoveryAvailabilityZone,
@@ -287,7 +287,7 @@ class A2AReplicationDetailsResponse {
       'recoveryBootDiagStorageAccountId': ?recoveryBootDiagStorageAccountId,
       'recoveryCapacityReservationGroupId': ?recoveryCapacityReservationGroupId,
       'recoveryCloudService': ?recoveryCloudService,
-      'recoveryExtendedLocation': ?recoveryExtendedLocation == null ? null : recoveryExtendedLocation!.toMap(),
+      'recoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(recoveryExtendedLocation, (value) => value.toMap()),
       'recoveryFabricLocation': ?recoveryFabricLocation,
       'recoveryFabricObjectId': ?recoveryFabricObjectId,
       'recoveryProximityPlacementGroupId': ?recoveryProximityPlacementGroupId,
@@ -297,74 +297,74 @@ class A2AReplicationDetailsResponse {
       'selectedTfoAzureNetworkId': ?selectedTfoAzureNetworkId,
       'testFailoverRecoveryFabricObjectId': ?testFailoverRecoveryFabricObjectId,
       'tfoAzureVMName': ?tfoAzureVMName,
-      'unprotectedDisks': ?unprotectedDisks == null ? null : pulumi.Input.encodeList<A2AUnprotectedDiskDetailsResponse, Map<String, dynamic>>(unprotectedDisks!, (value) => value.toMap()),
+      'unprotectedDisks': ?pulumi.Input.mapOptionalInputValue<List<A2AUnprotectedDiskDetailsResponse>, List<Map<String, dynamic>>>(unprotectedDisks, (value) => pulumi.Input.encodeList<A2AUnprotectedDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmEncryptionType': vmEncryptionType,
-      'vmNics': ?vmNics == null ? null : pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(vmNics!, (value) => value.toMap()),
+      'vmNics': ?pulumi.Input.mapOptionalInputValue<List<VMNicDetailsResponse>, List<Map<String, dynamic>>>(vmNics, (value) => pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmProtectionState': ?vmProtectionState,
       'vmProtectionStateDescription': ?vmProtectionStateDescription,
-      'vmSyncedConfigDetails': ?vmSyncedConfigDetails == null ? null : vmSyncedConfigDetails!.toMap(),
+      'vmSyncedConfigDetails': ?pulumi.Input.mapOptionalInputValue<AzureToAzureVmSyncedConfigDetailsResponse, Map<String, dynamic>>(vmSyncedConfigDetails, (value) => value.toMap()),
     };
   }
 
   factory A2AReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AReplicationDetailsResponse(
-      agentCertificateExpiryDate: map['agentCertificateExpiryDate'] as String,
-      agentExpiryDate: map['agentExpiryDate'] == null ? null : map['agentExpiryDate'] as String,
-      agentVersion: map['agentVersion'] == null ? null : map['agentVersion'] as String,
-      autoProtectionOfDataDisk: map['autoProtectionOfDataDisk'] == null ? null : map['autoProtectionOfDataDisk'] as String,
-      churnOptionSelected: map['churnOptionSelected'] as String,
-      fabricObjectId: map['fabricObjectId'] == null ? null : map['fabricObjectId'] as String,
-      initialPrimaryExtendedLocation: map['initialPrimaryExtendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['initialPrimaryExtendedLocation'] as Map).cast<String, dynamic>()),
-      initialPrimaryFabricLocation: map['initialPrimaryFabricLocation'] as String,
-      initialPrimaryZone: map['initialPrimaryZone'] as String,
-      initialRecoveryExtendedLocation: map['initialRecoveryExtendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['initialRecoveryExtendedLocation'] as Map).cast<String, dynamic>()),
-      initialRecoveryFabricLocation: map['initialRecoveryFabricLocation'] as String,
-      initialRecoveryZone: map['initialRecoveryZone'] as String,
-      instanceType: map['instanceType'] as String,
-      isClusterInfraReady: map['isClusterInfraReady'] == null ? null : map['isClusterInfraReady'] as bool,
-      isReplicationAgentCertificateUpdateRequired: map['isReplicationAgentCertificateUpdateRequired'] == null ? null : map['isReplicationAgentCertificateUpdateRequired'] as bool,
-      isReplicationAgentUpdateRequired: map['isReplicationAgentUpdateRequired'] == null ? null : map['isReplicationAgentUpdateRequired'] as bool,
-      lastHeartbeat: map['lastHeartbeat'] == null ? null : map['lastHeartbeat'] as String,
-      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : map['lastRpoCalculatedTime'] as String,
-      lifecycleId: map['lifecycleId'] == null ? null : map['lifecycleId'] as String,
-      managementId: map['managementId'] == null ? null : map['managementId'] as String,
-      monitoringJobType: map['monitoringJobType'] == null ? null : map['monitoringJobType'] as String,
-      monitoringPercentageCompletion: map['monitoringPercentageCompletion'] == null ? null : map['monitoringPercentageCompletion'] as int,
-      multiVmGroupCreateOption: map['multiVmGroupCreateOption'] == null ? null : map['multiVmGroupCreateOption'] as String,
-      multiVmGroupId: map['multiVmGroupId'] == null ? null : map['multiVmGroupId'] as String,
-      multiVmGroupName: map['multiVmGroupName'] == null ? null : map['multiVmGroupName'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      primaryAvailabilityZone: map['primaryAvailabilityZone'] == null ? null : map['primaryAvailabilityZone'] as String,
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['primaryExtendedLocation'] as Map).cast<String, dynamic>()),
-      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : map['primaryFabricLocation'] as String,
-      protectedDisks: map['protectedDisks'] == null ? null : pulumi.Input.decodeList<A2AProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => A2AProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      protectedManagedDisks: map['protectedManagedDisks'] == null ? null : pulumi.Input.decodeList<A2AProtectedManagedDiskDetailsResponse>(map['protectedManagedDisks'], (value) => A2AProtectedManagedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      protectionClusterId: map['protectionClusterId'] == null ? null : map['protectionClusterId'] as String,
-      recoveryAvailabilitySet: map['recoveryAvailabilitySet'] == null ? null : map['recoveryAvailabilitySet'] as String,
-      recoveryAvailabilityZone: map['recoveryAvailabilityZone'] == null ? null : map['recoveryAvailabilityZone'] as String,
-      recoveryAzureGeneration: map['recoveryAzureGeneration'] as String,
-      recoveryAzureResourceGroupId: map['recoveryAzureResourceGroupId'] == null ? null : map['recoveryAzureResourceGroupId'] as String,
-      recoveryAzureVMName: map['recoveryAzureVMName'] == null ? null : map['recoveryAzureVMName'] as String,
-      recoveryAzureVMSize: map['recoveryAzureVMSize'] == null ? null : map['recoveryAzureVMSize'] as String,
-      recoveryBootDiagStorageAccountId: map['recoveryBootDiagStorageAccountId'] == null ? null : map['recoveryBootDiagStorageAccountId'] as String,
-      recoveryCapacityReservationGroupId: map['recoveryCapacityReservationGroupId'] == null ? null : map['recoveryCapacityReservationGroupId'] as String,
-      recoveryCloudService: map['recoveryCloudService'] == null ? null : map['recoveryCloudService'] as String,
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>()),
-      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : map['recoveryFabricLocation'] as String,
-      recoveryFabricObjectId: map['recoveryFabricObjectId'] == null ? null : map['recoveryFabricObjectId'] as String,
-      recoveryProximityPlacementGroupId: map['recoveryProximityPlacementGroupId'] == null ? null : map['recoveryProximityPlacementGroupId'] as String,
-      recoveryVirtualMachineScaleSetId: map['recoveryVirtualMachineScaleSetId'] == null ? null : map['recoveryVirtualMachineScaleSetId'] as String,
-      rpoInSeconds: map['rpoInSeconds'] == null ? null : map['rpoInSeconds'] as double,
-      selectedRecoveryAzureNetworkId: map['selectedRecoveryAzureNetworkId'] == null ? null : map['selectedRecoveryAzureNetworkId'] as String,
-      selectedTfoAzureNetworkId: map['selectedTfoAzureNetworkId'] == null ? null : map['selectedTfoAzureNetworkId'] as String,
-      testFailoverRecoveryFabricObjectId: map['testFailoverRecoveryFabricObjectId'] == null ? null : map['testFailoverRecoveryFabricObjectId'] as String,
-      tfoAzureVMName: map['tfoAzureVMName'] == null ? null : map['tfoAzureVMName'] as String,
-      unprotectedDisks: map['unprotectedDisks'] == null ? null : pulumi.Input.decodeList<A2AUnprotectedDiskDetailsResponse>(map['unprotectedDisks'], (value) => A2AUnprotectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmEncryptionType: map['vmEncryptionType'] as String,
-      vmNics: map['vmNics'] == null ? null : pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmProtectionState: map['vmProtectionState'] == null ? null : map['vmProtectionState'] as String,
-      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : map['vmProtectionStateDescription'] as String,
-      vmSyncedConfigDetails: map['vmSyncedConfigDetails'] == null ? null : AzureToAzureVmSyncedConfigDetailsResponse.fromMap((map['vmSyncedConfigDetails'] as Map).cast<String, dynamic>()),
+      agentCertificateExpiryDate: (map['agentCertificateExpiryDate'] as String).input(),
+      agentExpiryDate: map['agentExpiryDate'] == null ? null : (map['agentExpiryDate'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      autoProtectionOfDataDisk: map['autoProtectionOfDataDisk'] == null ? null : (map['autoProtectionOfDataDisk'] as String).input(),
+      churnOptionSelected: (map['churnOptionSelected'] as String).input(),
+      fabricObjectId: map['fabricObjectId'] == null ? null : (map['fabricObjectId'] as String).input(),
+      initialPrimaryExtendedLocation: map['initialPrimaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialPrimaryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
+      initialPrimaryFabricLocation: (map['initialPrimaryFabricLocation'] as String).input(),
+      initialPrimaryZone: (map['initialPrimaryZone'] as String).input(),
+      initialRecoveryExtendedLocation: map['initialRecoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialRecoveryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
+      initialRecoveryFabricLocation: (map['initialRecoveryFabricLocation'] as String).input(),
+      initialRecoveryZone: (map['initialRecoveryZone'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      isClusterInfraReady: map['isClusterInfraReady'] == null ? null : (map['isClusterInfraReady'] as bool).input(),
+      isReplicationAgentCertificateUpdateRequired: map['isReplicationAgentCertificateUpdateRequired'] == null ? null : (map['isReplicationAgentCertificateUpdateRequired'] as bool).input(),
+      isReplicationAgentUpdateRequired: map['isReplicationAgentUpdateRequired'] == null ? null : (map['isReplicationAgentUpdateRequired'] as bool).input(),
+      lastHeartbeat: map['lastHeartbeat'] == null ? null : (map['lastHeartbeat'] as String).input(),
+      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : (map['lastRpoCalculatedTime'] as String).input(),
+      lifecycleId: map['lifecycleId'] == null ? null : (map['lifecycleId'] as String).input(),
+      managementId: map['managementId'] == null ? null : (map['managementId'] as String).input(),
+      monitoringJobType: map['monitoringJobType'] == null ? null : (map['monitoringJobType'] as String).input(),
+      monitoringPercentageCompletion: map['monitoringPercentageCompletion'] == null ? null : (map['monitoringPercentageCompletion'] as int).input(),
+      multiVmGroupCreateOption: map['multiVmGroupCreateOption'] == null ? null : (map['multiVmGroupCreateOption'] as String).input(),
+      multiVmGroupId: map['multiVmGroupId'] == null ? null : (map['multiVmGroupId'] as String).input(),
+      multiVmGroupName: map['multiVmGroupName'] == null ? null : (map['multiVmGroupName'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      primaryAvailabilityZone: map['primaryAvailabilityZone'] == null ? null : (map['primaryAvailabilityZone'] as String).input(),
+      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
+      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation'] as String).input(),
+      protectedDisks: map['protectedDisks'] == null ? null : (pulumi.Input.decodeList<A2AProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => A2AProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectedManagedDisks: map['protectedManagedDisks'] == null ? null : (pulumi.Input.decodeList<A2AProtectedManagedDiskDetailsResponse>(map['protectedManagedDisks'], (value) => A2AProtectedManagedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectionClusterId: map['protectionClusterId'] == null ? null : (map['protectionClusterId'] as String).input(),
+      recoveryAvailabilitySet: map['recoveryAvailabilitySet'] == null ? null : (map['recoveryAvailabilitySet'] as String).input(),
+      recoveryAvailabilityZone: map['recoveryAvailabilityZone'] == null ? null : (map['recoveryAvailabilityZone'] as String).input(),
+      recoveryAzureGeneration: (map['recoveryAzureGeneration'] as String).input(),
+      recoveryAzureResourceGroupId: map['recoveryAzureResourceGroupId'] == null ? null : (map['recoveryAzureResourceGroupId'] as String).input(),
+      recoveryAzureVMName: map['recoveryAzureVMName'] == null ? null : (map['recoveryAzureVMName'] as String).input(),
+      recoveryAzureVMSize: map['recoveryAzureVMSize'] == null ? null : (map['recoveryAzureVMSize'] as String).input(),
+      recoveryBootDiagStorageAccountId: map['recoveryBootDiagStorageAccountId'] == null ? null : (map['recoveryBootDiagStorageAccountId'] as String).input(),
+      recoveryCapacityReservationGroupId: map['recoveryCapacityReservationGroupId'] == null ? null : (map['recoveryCapacityReservationGroupId'] as String).input(),
+      recoveryCloudService: map['recoveryCloudService'] == null ? null : (map['recoveryCloudService'] as String).input(),
+      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
+      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation'] as String).input(),
+      recoveryFabricObjectId: map['recoveryFabricObjectId'] == null ? null : (map['recoveryFabricObjectId'] as String).input(),
+      recoveryProximityPlacementGroupId: map['recoveryProximityPlacementGroupId'] == null ? null : (map['recoveryProximityPlacementGroupId'] as String).input(),
+      recoveryVirtualMachineScaleSetId: map['recoveryVirtualMachineScaleSetId'] == null ? null : (map['recoveryVirtualMachineScaleSetId'] as String).input(),
+      rpoInSeconds: map['rpoInSeconds'] == null ? null : (map['rpoInSeconds'] as double).input(),
+      selectedRecoveryAzureNetworkId: map['selectedRecoveryAzureNetworkId'] == null ? null : (map['selectedRecoveryAzureNetworkId'] as String).input(),
+      selectedTfoAzureNetworkId: map['selectedTfoAzureNetworkId'] == null ? null : (map['selectedTfoAzureNetworkId'] as String).input(),
+      testFailoverRecoveryFabricObjectId: map['testFailoverRecoveryFabricObjectId'] == null ? null : (map['testFailoverRecoveryFabricObjectId'] as String).input(),
+      tfoAzureVMName: map['tfoAzureVMName'] == null ? null : (map['tfoAzureVMName'] as String).input(),
+      unprotectedDisks: map['unprotectedDisks'] == null ? null : (pulumi.Input.decodeList<A2AUnprotectedDiskDetailsResponse>(map['unprotectedDisks'], (value) => A2AUnprotectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmEncryptionType: (map['vmEncryptionType'] as String).input(),
+      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmProtectionState: map['vmProtectionState'] == null ? null : (map['vmProtectionState'] as String).input(),
+      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : (map['vmProtectionStateDescription'] as String).input(),
+      vmSyncedConfigDetails: map['vmSyncedConfigDetails'] == null ? null : (AzureToAzureVmSyncedConfigDetailsResponse.fromMap((map['vmSyncedConfigDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

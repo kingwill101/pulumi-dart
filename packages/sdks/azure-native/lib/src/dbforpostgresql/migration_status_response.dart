@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migration_substate_details_response.dart';
 
 /// State of migration.
 class MigrationStatusResponse {
   /// Current migration sub state details.
-  final MigrationSubstateDetailsResponse currentSubStateDetails;
+  final pulumi.Input<MigrationSubstateDetailsResponse> currentSubStateDetails;
   /// Error message, if any, for the migration state.
-  final String error;
+  final pulumi.Input<String> error;
   /// State of migration.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [MigrationStatusResponse].
   /// [currentSubStateDetails] Current migration sub state details.
@@ -23,7 +24,7 @@ class MigrationStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'currentSubStateDetails': currentSubStateDetails.toMap(),
+      'currentSubStateDetails': pulumi.Input.mapInputValue<MigrationSubstateDetailsResponse, Map<String, dynamic>>(currentSubStateDetails, (value) => value.toMap()),
       'error': error,
       'state': state,
     };
@@ -31,9 +32,9 @@ class MigrationStatusResponse {
 
   factory MigrationStatusResponse.fromMap(Map<String, dynamic> map) {
     return MigrationStatusResponse(
-      currentSubStateDetails: MigrationSubstateDetailsResponse.fromMap((map['currentSubStateDetails'] as Map).cast<String, dynamic>()),
-      error: map['error'] as String,
-      state: map['state'] as String,
+      currentSubStateDetails: (MigrationSubstateDetailsResponse.fromMap((map['currentSubStateDetails'] as Map).cast<String, dynamic>())).input(),
+      error: (map['error'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

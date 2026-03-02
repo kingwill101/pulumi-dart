@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskMirrorSourceTimeout {
   /// Specifies the duration in seconds for the timeout configuration in disk mirroring.
-  final String seconds;
+  final pulumi.Input<String> seconds;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceTimeout].
   /// [seconds] Specifies the duration in seconds for the timeout configuration in disk mirroring.
@@ -19,7 +20,7 @@ class DomainDevicesDiskMirrorSourceTimeout {
 
   factory DomainDevicesDiskMirrorSourceTimeout.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceTimeout(
-      seconds: map['seconds'] as String,
+      seconds: (map['seconds'] as String).input(),
     );
   }
 }

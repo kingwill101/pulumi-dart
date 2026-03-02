@@ -20,17 +20,12 @@ class GetFeatureStoreFeatureArgs {
   /// [location] Required.
   /// [project] Optional.
   GetFeatureStoreFeatureArgs({
-    required pulumi.Output<String> entityTypeId,
-    required pulumi.Output<String> featureId,
-    required pulumi.Output<String> featurestoreId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      featureId = pulumi.Input.asInput<String>(featureId),
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.entityTypeId,
+    required this.featureId,
+    required this.featurestoreId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetFeatureStoreFeatureArgs {
 
   factory GetFeatureStoreFeatureArgs.fromMap(Map<String, dynamic> map) {
     return GetFeatureStoreFeatureArgs(
-      entityTypeId: pulumi.Output.create<String>(map['entityTypeId'] as String),
-      featureId: pulumi.Output.create<String>(map['featureId'] as String),
-      featurestoreId: pulumi.Output.create<String>(map['featurestoreId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      entityTypeId: (map['entityTypeId'] as String).input(),
+      featureId: (map['featureId'] as String).input(),
+      featurestoreId: (map['featurestoreId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

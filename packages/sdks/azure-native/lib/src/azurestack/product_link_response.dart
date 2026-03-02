@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Link with additional information about a product.
 class ProductLinkResponse {
   /// The description of the link.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The URI corresponding to the link.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ProductLinkResponse].
   /// [displayName] The description of the link.
@@ -25,8 +26,8 @@ class ProductLinkResponse {
 
   factory ProductLinkResponse.fromMap(Map<String, dynamic> map) {
     return ProductLinkResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

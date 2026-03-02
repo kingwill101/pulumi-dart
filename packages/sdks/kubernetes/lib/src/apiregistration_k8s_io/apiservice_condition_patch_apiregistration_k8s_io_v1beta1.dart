@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// APIServiceCondition describes the state of an APIService at a particular point
 class APIServiceConditionPatchApiregistrationK8sIoV1beta1 {
   /// Last time the condition transitioned from one status to another.
-  final String? lastTransitionTime;
+  final pulumi.Input<String>? lastTransitionTime;
   /// Human-readable message indicating details about last transition.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Unique, one-word, CamelCase reason for the condition's last transition.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// Status is the status of the condition. Can be True, False, Unknown.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Type is the type of the condition.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [APIServiceConditionPatchApiregistrationK8sIoV1beta1].
   /// [lastTransitionTime] Last time the condition transitioned from one status to another.
@@ -40,11 +41,11 @@ class APIServiceConditionPatchApiregistrationK8sIoV1beta1 {
 
   factory APIServiceConditionPatchApiregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return APIServiceConditionPatchApiregistrationK8sIoV1beta1(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

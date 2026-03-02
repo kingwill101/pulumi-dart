@@ -22,15 +22,11 @@ class WorkspaceManagerConfigurationArgs {
   /// [workspaceManagerConfigurationName] The name of the workspace manager configuration
   /// [workspaceName] The name of the workspace.
   WorkspaceManagerConfigurationArgs({
-    required pulumi.Output<String> mode,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? workspaceManagerConfigurationName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      mode = pulumi.Input.asInput<String>(mode),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceManagerConfigurationName = pulumi.Input.asOptionalInput<String>(workspaceManagerConfigurationName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.mode,
+    required this.resourceGroupName,
+    this.workspaceManagerConfigurationName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class WorkspaceManagerConfigurationArgs {
 
   factory WorkspaceManagerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagerConfigurationArgs(
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceManagerConfigurationName: map['workspaceManagerConfigurationName'] == null ? null : pulumi.Output.create<String>(map['workspaceManagerConfigurationName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      mode: (map['mode'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceManagerConfigurationName: map['workspaceManagerConfigurationName'] == null ? null : (map['workspaceManagerConfigurationName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

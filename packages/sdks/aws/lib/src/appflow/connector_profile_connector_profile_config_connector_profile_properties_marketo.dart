@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo {
-  final String instanceUrl;
+  final pulumi.Input<String> instanceUrl;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo].
   /// [instanceUrl] Required.
@@ -18,7 +19,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo {
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo(
-      instanceUrl: map['instanceUrl'] as String,
+      instanceUrl: (map['instanceUrl'] as String).input(),
     );
   }
 }

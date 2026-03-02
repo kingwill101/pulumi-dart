@@ -25,17 +25,12 @@ class GetRulesArgs {
   /// [nameRegex] A regex string to filter results by rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetRulesArgs({
-    required pulumi.Output<int> frontendPort,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> loadBalancerId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      frontendPort = pulumi.Input.asInput<int>(frontendPort),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.frontendPort,
+    this.ids,
+    required this.loadBalancerId,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      frontendPort: pulumi.Output.create<int>(map['frontendPort'] as int),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      frontendPort: (map['frontendPort'] as int).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -8,11 +8,11 @@ import 'key_to_path.dart';
 /// The contents of the target Secret's Data field will be presented in a projected volume as files using the keys in the Data field as the file names. Note that this is identical to a secret volume source without the default mode.
 class SecretProjection {
   /// items if unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
-  final List<KeyToPath>? items;
+  final pulumi.Input<List<KeyToPath>>? items;
   /// Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-  final String? name;
+  final pulumi.Input<String>? name;
   /// optional field specify whether the Secret or its key must be defined
-  final bool? optional;
+  final pulumi.Input<bool>? optional;
 
   /// Creates a new [SecretProjection].
   /// [items] items if unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
@@ -26,7 +26,7 @@ class SecretProjection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?items == null ? null : pulumi.Input.encodeList<KeyToPath, Map<String, dynamic>>(items!, (value) => value.toMap()),
+      'items': ?pulumi.Input.mapOptionalInputValue<List<KeyToPath>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<KeyToPath, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'optional': ?optional,
     };
@@ -34,9 +34,9 @@ class SecretProjection {
 
   factory SecretProjection.fromMap(Map<String, dynamic> map) {
     return SecretProjection(
-      items: map['items'] == null ? null : pulumi.Input.decodeList<KeyToPath>(map['items'], (value) => KeyToPath.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      optional: map['optional'] == null ? null : map['optional'] as bool,
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<KeyToPath>(map['items'], (value) => KeyToPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
     );
   }
 }

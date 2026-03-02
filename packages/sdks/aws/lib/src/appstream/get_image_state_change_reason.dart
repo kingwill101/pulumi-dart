@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageStateChangeReason {
-  final String code;
-  final String message;
+  final pulumi.Input<String> code;
+  final pulumi.Input<String> message;
 
   /// Creates a new [GetImageStateChangeReason].
   /// [code] Required.
@@ -22,8 +23,8 @@ class GetImageStateChangeReason {
 
   factory GetImageStateChangeReason.fromMap(Map<String, dynamic> map) {
     return GetImageStateChangeReason(
-      code: map['code'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

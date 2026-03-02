@@ -6,11 +6,11 @@ import 'envelope_signature_response_containeranalysis_v1alpha1.dart';
 /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
 class EnvelopeResponseContaineranalysisV1alpha1 {
   /// The bytes being signed
-  final String payload;
+  final pulumi.Input<String> payload;
   /// The type of payload being signed
-  final String payloadType;
+  final pulumi.Input<String> payloadType;
   /// The signatures over the payload
-  final List<EnvelopeSignatureResponseContaineranalysisV1alpha1> signatures;
+  final pulumi.Input<List<EnvelopeSignatureResponseContaineranalysisV1alpha1>> signatures;
 
   /// Creates a new [EnvelopeResponseContaineranalysisV1alpha1].
   /// [payload] The bytes being signed
@@ -26,15 +26,15 @@ class EnvelopeResponseContaineranalysisV1alpha1 {
     return <String, dynamic>{
       'payload': payload,
       'payloadType': payloadType,
-      'signatures': pulumi.Input.encodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+      'signatures': pulumi.Input.mapInputValue<List<EnvelopeSignatureResponseContaineranalysisV1alpha1>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EnvelopeResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return EnvelopeResponseContaineranalysisV1alpha1(
-      payload: map['payload'] as String,
-      payloadType: map['payloadType'] as String,
-      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1>(map['signatures'], (value) => EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      payload: (map['payload'] as String).input(),
+      payloadType: (map['payloadType'] as String).input(),
+      signatures: (pulumi.Input.decodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1>(map['signatures'], (value) => EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

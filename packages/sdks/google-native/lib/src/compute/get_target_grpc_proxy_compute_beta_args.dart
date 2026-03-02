@@ -14,11 +14,9 @@ class GetTargetGrpcProxyComputeBetaArgs {
   /// [project] Optional.
   /// [targetGrpcProxy] Required.
   GetTargetGrpcProxyComputeBetaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> targetGrpcProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetGrpcProxy = pulumi.Input.asInput<String>(targetGrpcProxy);
+    this.project,
+    required this.targetGrpcProxy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetTargetGrpcProxyComputeBetaArgs {
 
   factory GetTargetGrpcProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetGrpcProxyComputeBetaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      targetGrpcProxy: pulumi.Output.create<String>(map['targetGrpcProxy'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      targetGrpcProxy: (map['targetGrpcProxy'] as String).input(),
     );
   }
 }

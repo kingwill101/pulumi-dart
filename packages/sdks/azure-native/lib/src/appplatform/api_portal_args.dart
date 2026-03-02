@@ -27,17 +27,12 @@ class ApiPortalArgs {
   /// [serviceName] The name of the Service resource.
   /// [sku] Sku of the API portal resource
   ApiPortalArgs({
-    pulumi.Output<String>? apiPortalName,
-    pulumi.Output<ApiPortalProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<Sku>? sku,
-  }) :
-      apiPortalName = pulumi.Input.asOptionalInput<String>(apiPortalName),
-      properties = pulumi.Input.asOptionalInput<ApiPortalProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku);
+    this.apiPortalName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.sku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ApiPortalArgs {
 
   factory ApiPortalArgs.fromMap(Map<String, dynamic> map) {
     return ApiPortalArgs(
-      apiPortalName: map['apiPortalName'] == null ? null : pulumi.Output.create<String>(map['apiPortalName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ApiPortalProperties>(ApiPortalProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
+      apiPortalName: map['apiPortalName'] == null ? null : (map['apiPortalName'] as String).input(),
+      properties: map['properties'] == null ? null : (ApiPortalProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

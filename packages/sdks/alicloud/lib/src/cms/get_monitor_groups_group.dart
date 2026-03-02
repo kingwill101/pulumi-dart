@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMonitorGroupsGroup {
   /// The URL of the Kubernetes cluster from which the application group is synchronized.
-  final String bindUrl;
+  final pulumi.Input<String> bindUrl;
   /// The list of  alert groups that receive alert notifications for the application group.
-  final List<String> contactGroups;
+  final pulumi.Input<List<String>> contactGroups;
   /// The ID of the tag rule.
-  final String dynamicTagRuleId;
+  final pulumi.Input<String> dynamicTagRuleId;
   /// The time when the application group was created.
-  final int gmtCreate;
+  final pulumi.Input<int> gmtCreate;
   /// The time when the application group was modified.
-  final int gmtModified;
+  final pulumi.Input<int> gmtModified;
   /// The ID of the application group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The ID of the Monitor Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the application group.
-  final String monitorGroupName;
+  final pulumi.Input<String> monitorGroupName;
   /// The ID of the Alibaba Cloud service.
-  final String serviceId;
+  final pulumi.Input<String> serviceId;
   /// A map of tags assigned to the Cms Monitor Group.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The alert templates applied to the application group.
-  final List<String> templateIds;
+  final pulumi.Input<List<String>> templateIds;
   /// The type of the application group.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetMonitorGroupsGroup].
   /// [bindUrl] The URL of the Kubernetes cluster from which the application group is synchronized.
@@ -74,18 +75,18 @@ class GetMonitorGroupsGroup {
 
   factory GetMonitorGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupsGroup(
-      bindUrl: map['bindUrl'] as String,
-      contactGroups: (map['contactGroups'] as List).cast<String>(),
-      dynamicTagRuleId: map['dynamicTagRuleId'] as String,
-      gmtCreate: map['gmtCreate'] as int,
-      gmtModified: map['gmtModified'] as int,
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      monitorGroupName: map['monitorGroupName'] as String,
-      serviceId: map['serviceId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      templateIds: (map['templateIds'] as List).cast<String>(),
-      type: map['type'] as String,
+      bindUrl: (map['bindUrl'] as String).input(),
+      contactGroups: ((map['contactGroups'] as List).cast<String>()).input(),
+      dynamicTagRuleId: (map['dynamicTagRuleId'] as String).input(),
+      gmtCreate: (map['gmtCreate'] as int).input(),
+      gmtModified: (map['gmtModified'] as int).input(),
+      groupId: (map['groupId'] as String).input(),
+      id: (map['id'] as String).input(),
+      monitorGroupName: (map['monitorGroupName'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      templateIds: ((map['templateIds'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

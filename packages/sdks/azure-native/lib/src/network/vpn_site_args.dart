@@ -58,35 +58,21 @@ class VpnSiteArgs {
   /// [vpnSiteLinks] List of all vpn site links.
   /// [vpnSiteName] The name of the VpnSite being created or updated.
   VpnSiteArgs({
-    pulumi.Output<AddressSpace>? addressSpace,
-    pulumi.Output<BgpSettings>? bgpProperties,
-    pulumi.Output<DeviceProperties>? deviceProperties,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<bool>? isSecuritySite,
-    pulumi.Output<String>? location,
-    pulumi.Output<O365PolicyProperties>? o365Policy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? siteKey,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SubResource>? virtualWan,
-    pulumi.Output<List<VpnSiteLink>>? vpnSiteLinks,
-    pulumi.Output<String>? vpnSiteName,
-  }) :
-      addressSpace = pulumi.Input.asOptionalInput<AddressSpace>(addressSpace),
-      bgpProperties = pulumi.Input.asOptionalInput<BgpSettings>(bgpProperties),
-      deviceProperties = pulumi.Input.asOptionalInput<DeviceProperties>(deviceProperties),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      isSecuritySite = pulumi.Input.asOptionalInput<bool>(isSecuritySite),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      o365Policy = pulumi.Input.asOptionalInput<O365PolicyProperties>(o365Policy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteKey = pulumi.Input.asOptionalInput<String>(siteKey),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualWan = pulumi.Input.asOptionalInput<SubResource>(virtualWan),
-      vpnSiteLinks = pulumi.Input.asOptionalInput<List<VpnSiteLink>>(vpnSiteLinks),
-      vpnSiteName = pulumi.Input.asOptionalInput<String>(vpnSiteName);
+    this.addressSpace,
+    this.bgpProperties,
+    this.deviceProperties,
+    this.id,
+    this.ipAddress,
+    this.isSecuritySite,
+    this.location,
+    this.o365Policy,
+    required this.resourceGroupName,
+    this.siteKey,
+    this.tags,
+    this.virtualWan,
+    this.vpnSiteLinks,
+    this.vpnSiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class VpnSiteArgs {
 
   factory VpnSiteArgs.fromMap(Map<String, dynamic> map) {
     return VpnSiteArgs(
-      addressSpace: map['addressSpace'] == null ? null : pulumi.Output.create<AddressSpace>(AddressSpace.fromMap((map['addressSpace'] as Map).cast<String, dynamic>())),
-      bgpProperties: map['bgpProperties'] == null ? null : pulumi.Output.create<BgpSettings>(BgpSettings.fromMap((map['bgpProperties'] as Map).cast<String, dynamic>())),
-      deviceProperties: map['deviceProperties'] == null ? null : pulumi.Output.create<DeviceProperties>(DeviceProperties.fromMap((map['deviceProperties'] as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      isSecuritySite: map['isSecuritySite'] == null ? null : pulumi.Output.create<bool>(map['isSecuritySite'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      o365Policy: map['o365Policy'] == null ? null : pulumi.Output.create<O365PolicyProperties>(O365PolicyProperties.fromMap((map['o365Policy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteKey: map['siteKey'] == null ? null : pulumi.Output.create<String>(map['siteKey'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualWan: map['virtualWan'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['virtualWan'] as Map).cast<String, dynamic>())),
-      vpnSiteLinks: map['vpnSiteLinks'] == null ? null : pulumi.Output.create<List<VpnSiteLink>>(pulumi.Input.decodeList<VpnSiteLink>(map['vpnSiteLinks'], (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>()))),
-      vpnSiteName: map['vpnSiteName'] == null ? null : pulumi.Output.create<String>(map['vpnSiteName'] as String),
+      addressSpace: map['addressSpace'] == null ? null : (AddressSpace.fromMap((map['addressSpace'] as Map).cast<String, dynamic>())).input(),
+      bgpProperties: map['bgpProperties'] == null ? null : (BgpSettings.fromMap((map['bgpProperties'] as Map).cast<String, dynamic>())).input(),
+      deviceProperties: map['deviceProperties'] == null ? null : (DeviceProperties.fromMap((map['deviceProperties'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      isSecuritySite: map['isSecuritySite'] == null ? null : (map['isSecuritySite'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      o365Policy: map['o365Policy'] == null ? null : (O365PolicyProperties.fromMap((map['o365Policy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteKey: map['siteKey'] == null ? null : (map['siteKey'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualWan: map['virtualWan'] == null ? null : (SubResource.fromMap((map['virtualWan'] as Map).cast<String, dynamic>())).input(),
+      vpnSiteLinks: map['vpnSiteLinks'] == null ? null : (pulumi.Input.decodeList<VpnSiteLink>(map['vpnSiteLinks'], (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnSiteName: map['vpnSiteName'] == null ? null : (map['vpnSiteName'] as String).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class GetKMSSecretCiphertextArgs {
   /// [cryptoKey] The id of the CryptoKey that will be used to
   /// [plaintext] The plaintext to be encrypted
   GetKMSSecretCiphertextArgs({
-    required pulumi.Output<String> cryptoKey,
-    required pulumi.Output<String> plaintext,
-  }) :
-      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
-      plaintext = pulumi.Input.asInput<String>(plaintext);
+    required this.cryptoKey,
+    required this.plaintext,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetKMSSecretCiphertextArgs {
 
   factory GetKMSSecretCiphertextArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretCiphertextArgs(
-      cryptoKey: pulumi.Output.create<String>(map['cryptoKey'] as String),
-      plaintext: pulumi.Output.create<String>(map['plaintext'] as String),
+      cryptoKey: (map['cryptoKey'] as String).input(),
+      plaintext: (map['plaintext'] as String).input(),
     );
   }
 }

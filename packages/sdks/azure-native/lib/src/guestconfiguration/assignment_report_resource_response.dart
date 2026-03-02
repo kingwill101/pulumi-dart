@@ -6,13 +6,13 @@ import 'assignment_report_resource_compliance_reason_response.dart';
 /// The guest configuration assignment resource.
 class AssignmentReportResourceResponse {
   /// A value indicating compliance status of the machine for the assigned guest configuration.
-  final String complianceStatus;
+  final pulumi.Input<String> complianceStatus;
   /// Properties of a guest configuration assignment resource.
-  final dynamic properties;
+  final pulumi.Input<dynamic> properties;
   /// Compliance reason and reason code for a resource.
-  final List<AssignmentReportResourceComplianceReasonResponse>? reasons;
+  final pulumi.Input<List<AssignmentReportResourceComplianceReasonResponse>>? reasons;
   /// Name of the guest configuration assignment resource setting.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [AssignmentReportResourceResponse].
   /// [complianceStatus] A value indicating compliance status of the machine for the assigned guest configuration.
@@ -30,17 +30,17 @@ class AssignmentReportResourceResponse {
     return <String, dynamic>{
       'complianceStatus': complianceStatus,
       'properties': properties,
-      'reasons': ?reasons == null ? null : pulumi.Input.encodeList<AssignmentReportResourceComplianceReasonResponse, Map<String, dynamic>>(reasons!, (value) => value.toMap()),
+      'reasons': ?pulumi.Input.mapOptionalInputValue<List<AssignmentReportResourceComplianceReasonResponse>, List<Map<String, dynamic>>>(reasons, (value) => pulumi.Input.encodeList<AssignmentReportResourceComplianceReasonResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceId': resourceId,
     };
   }
 
   factory AssignmentReportResourceResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentReportResourceResponse(
-      complianceStatus: map['complianceStatus'] as String,
-      properties: map['properties'],
-      reasons: map['reasons'] == null ? null : pulumi.Input.decodeList<AssignmentReportResourceComplianceReasonResponse>(map['reasons'], (value) => AssignmentReportResourceComplianceReasonResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resourceId: map['resourceId'] as String,
+      complianceStatus: (map['complianceStatus'] as String).input(),
+      properties: (map['properties']).input(),
+      reasons: map['reasons'] == null ? null : (pulumi.Input.decodeList<AssignmentReportResourceComplianceReasonResponse>(map['reasons'], (value) => AssignmentReportResourceComplianceReasonResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

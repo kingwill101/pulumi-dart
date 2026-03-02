@@ -18,11 +18,9 @@ class HostingVersionArgs {
   /// [config] The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// [siteId] Required. The ID of the site in which to create this Version.
   HostingVersionArgs({
-    pulumi.Output<HostingVersionConfig>? config,
-    required pulumi.Output<String> siteId,
-  }) :
-      config = pulumi.Input.asOptionalInput<HostingVersionConfig>(config),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    this.config,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class HostingVersionArgs {
 
   factory HostingVersionArgs.fromMap(Map<String, dynamic> map) {
     return HostingVersionArgs(
-      config: map['config'] == null ? null : pulumi.Output.create<HostingVersionConfig>(HostingVersionConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      config: map['config'] == null ? null : (HostingVersionConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

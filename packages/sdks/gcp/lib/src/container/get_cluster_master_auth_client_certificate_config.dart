@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterMasterAuthClientCertificateConfig {
   /// Whether client certificate authorization is enabled for this cluster.
-  final bool issueClientCertificate;
+  final pulumi.Input<bool> issueClientCertificate;
 
   /// Creates a new [GetClusterMasterAuthClientCertificateConfig].
   /// [issueClientCertificate] Whether client certificate authorization is enabled for this cluster.
@@ -19,7 +20,7 @@ class GetClusterMasterAuthClientCertificateConfig {
 
   factory GetClusterMasterAuthClientCertificateConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterMasterAuthClientCertificateConfig(
-      issueClientCertificate: map['issueClientCertificate'] as bool,
+      issueClientCertificate: (map['issueClientCertificate'] as bool).input(),
     );
   }
 }

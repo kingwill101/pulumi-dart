@@ -16,13 +16,10 @@ class FlexibleServerBackupState {
   /// [name] Specifies the name of this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   /// [serverId] The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   FlexibleServerBackupState({
-    pulumi.Output<String>? completedTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serverId,
-  }) :
-      completedTime = pulumi.Input.asOptionalInput<String>(completedTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId);
+    this.completedTime,
+    this.name,
+    this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class FlexibleServerBackupState {
 
   factory FlexibleServerBackupState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerBackupState(
-      completedTime: map['completedTime'] == null ? null : pulumi.Output.create<String>(map['completedTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
+      completedTime: map['completedTime'] == null ? null : (map['completedTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
     );
   }
 }

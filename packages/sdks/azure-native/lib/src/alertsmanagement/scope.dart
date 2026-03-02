@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Target scope for a given action rule. By default scope will be the subscription. User can also provide list of resource groups or list of resources from the scope subscription as well.
 class Scope {
   /// type of target scope
-  final String? scopeType;
+  final pulumi.Input<String>? scopeType;
   /// list of ARM IDs of the given scope type which will be the target of the given action rule.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [Scope].
   /// [scopeType] type of target scope
@@ -25,8 +26,8 @@ class Scope {
 
   factory Scope.fromMap(Map<String, dynamic> map) {
     return Scope(
-      scopeType: map['scopeType'] == null ? null : map['scopeType'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      scopeType: map['scopeType'] == null ? null : (map['scopeType'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

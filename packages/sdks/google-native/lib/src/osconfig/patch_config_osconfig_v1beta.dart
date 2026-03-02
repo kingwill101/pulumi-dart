@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apt_settings_osconfig_v1beta.dart';
 import 'exec_step_osconfig_v1beta.dart';
 import 'patch_config_reboot_config_osconfig_v1beta.dart';
@@ -10,23 +11,23 @@ import 'zypper_settings_osconfig_v1beta.dart';
 /// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
 class PatchConfigOsconfigV1beta {
   /// Apt update settings. Use this setting to override the default `apt` patch rules.
-  final AptSettingsOsconfigV1beta? apt;
+  final pulumi.Input<AptSettingsOsconfigV1beta>? apt;
   /// Goo update settings. Use this setting to override the default `goo` patch rules.
-  final Map<String, dynamic>? goo;
+  final pulumi.Input<Map<String, dynamic>>? goo;
   /// Allows the patch job to run on Managed instance groups (MIGs).
-  final bool? migInstancesAllowed;
+  final pulumi.Input<bool>? migInstancesAllowed;
   /// The `ExecStep` to run after the patch update.
-  final ExecStepOsconfigV1beta? postStep;
+  final pulumi.Input<ExecStepOsconfigV1beta>? postStep;
   /// The `ExecStep` to run before the patch update.
-  final ExecStepOsconfigV1beta? preStep;
+  final pulumi.Input<ExecStepOsconfigV1beta>? preStep;
   /// Post-patch reboot settings.
-  final PatchConfigRebootConfigOsconfigV1beta? rebootConfig;
+  final pulumi.Input<PatchConfigRebootConfigOsconfigV1beta>? rebootConfig;
   /// Windows update settings. Use this override the default windows patch rules.
-  final WindowsUpdateSettingsOsconfigV1beta? windowsUpdate;
+  final pulumi.Input<WindowsUpdateSettingsOsconfigV1beta>? windowsUpdate;
   /// Yum update settings. Use this setting to override the default `yum` patch rules.
-  final YumSettingsOsconfigV1beta? yum;
+  final pulumi.Input<YumSettingsOsconfigV1beta>? yum;
   /// Zypper update settings. Use this setting to override the default `zypper` patch rules.
-  final ZypperSettingsOsconfigV1beta? zypper;
+  final pulumi.Input<ZypperSettingsOsconfigV1beta>? zypper;
 
   /// Creates a new [PatchConfigOsconfigV1beta].
   /// [apt] Apt update settings. Use this setting to override the default `apt` patch rules.
@@ -52,29 +53,29 @@ class PatchConfigOsconfigV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apt': ?apt == null ? null : apt!.toMap(),
+      'apt': ?pulumi.Input.mapOptionalInputValue<AptSettingsOsconfigV1beta, Map<String, dynamic>>(apt, (value) => value.toMap()),
       'goo': ?goo,
       'migInstancesAllowed': ?migInstancesAllowed,
-      'postStep': ?postStep == null ? null : postStep!.toMap(),
-      'preStep': ?preStep == null ? null : preStep!.toMap(),
-      'rebootConfig': ?rebootConfig == null ? null : rebootConfig!.value,
-      'windowsUpdate': ?windowsUpdate == null ? null : windowsUpdate!.toMap(),
-      'yum': ?yum == null ? null : yum!.toMap(),
-      'zypper': ?zypper == null ? null : zypper!.toMap(),
+      'postStep': ?pulumi.Input.mapOptionalInputValue<ExecStepOsconfigV1beta, Map<String, dynamic>>(postStep, (value) => value.toMap()),
+      'preStep': ?pulumi.Input.mapOptionalInputValue<ExecStepOsconfigV1beta, Map<String, dynamic>>(preStep, (value) => value.toMap()),
+      'rebootConfig': ?pulumi.Input.mapOptionalInputValue<PatchConfigRebootConfigOsconfigV1beta, String>(rebootConfig, (value) => value.value),
+      'windowsUpdate': ?pulumi.Input.mapOptionalInputValue<WindowsUpdateSettingsOsconfigV1beta, Map<String, dynamic>>(windowsUpdate, (value) => value.toMap()),
+      'yum': ?pulumi.Input.mapOptionalInputValue<YumSettingsOsconfigV1beta, Map<String, dynamic>>(yum, (value) => value.toMap()),
+      'zypper': ?pulumi.Input.mapOptionalInputValue<ZypperSettingsOsconfigV1beta, Map<String, dynamic>>(zypper, (value) => value.toMap()),
     };
   }
 
   factory PatchConfigOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return PatchConfigOsconfigV1beta(
-      apt: map['apt'] == null ? null : AptSettingsOsconfigV1beta.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      goo: map['goo'] == null ? null : (map['goo'] as Map).cast<String, dynamic>(),
-      migInstancesAllowed: map['migInstancesAllowed'] == null ? null : map['migInstancesAllowed'] as bool,
-      postStep: map['postStep'] == null ? null : ExecStepOsconfigV1beta.fromMap((map['postStep'] as Map).cast<String, dynamic>()),
-      preStep: map['preStep'] == null ? null : ExecStepOsconfigV1beta.fromMap((map['preStep'] as Map).cast<String, dynamic>()),
-      rebootConfig: map['rebootConfig'] == null ? null : PatchConfigRebootConfigOsconfigV1beta.fromValue(map['rebootConfig'] as String),
-      windowsUpdate: map['windowsUpdate'] == null ? null : WindowsUpdateSettingsOsconfigV1beta.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>()),
-      yum: map['yum'] == null ? null : YumSettingsOsconfigV1beta.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: map['zypper'] == null ? null : ZypperSettingsOsconfigV1beta.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      apt: map['apt'] == null ? null : (AptSettingsOsconfigV1beta.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : ((map['goo'] as Map).cast<String, dynamic>()).input(),
+      migInstancesAllowed: map['migInstancesAllowed'] == null ? null : (map['migInstancesAllowed'] as bool).input(),
+      postStep: map['postStep'] == null ? null : (ExecStepOsconfigV1beta.fromMap((map['postStep'] as Map).cast<String, dynamic>())).input(),
+      preStep: map['preStep'] == null ? null : (ExecStepOsconfigV1beta.fromMap((map['preStep'] as Map).cast<String, dynamic>())).input(),
+      rebootConfig: map['rebootConfig'] == null ? null : (PatchConfigRebootConfigOsconfigV1beta.fromValue(map['rebootConfig'] as String)).input(),
+      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdateSettingsOsconfigV1beta.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (YumSettingsOsconfigV1beta.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (ZypperSettingsOsconfigV1beta.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

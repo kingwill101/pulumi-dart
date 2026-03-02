@@ -20,13 +20,10 @@ class GetBastionShareableLinkArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [vms] List of VM references.
   GetBastionShareableLinkArgs({
-    required pulumi.Output<String> bastionHostName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<BastionShareableLink>>? vms,
-  }) :
-      bastionHostName = pulumi.Input.asInput<String>(bastionHostName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vms = pulumi.Input.asOptionalInput<List<BastionShareableLink>>(vms);
+    required this.bastionHostName,
+    required this.resourceGroupName,
+    this.vms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetBastionShareableLinkArgs {
 
   factory GetBastionShareableLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetBastionShareableLinkArgs(
-      bastionHostName: pulumi.Output.create<String>(map['bastionHostName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vms: map['vms'] == null ? null : pulumi.Output.create<List<BastionShareableLink>>(pulumi.Input.decodeList<BastionShareableLink>(map['vms'], (value) => BastionShareableLink.fromMap((value as Map).cast<String, dynamic>()))),
+      bastionHostName: (map['bastionHostName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vms: map['vms'] == null ? null : (pulumi.Input.decodeList<BastionShareableLink>(map['vms'], (value) => BastionShareableLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

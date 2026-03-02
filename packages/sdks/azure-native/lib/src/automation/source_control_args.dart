@@ -44,29 +44,18 @@ class SourceControlArgs {
   /// [sourceControlName] The source control name.
   /// [sourceType] The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
   SourceControlArgs({
-    pulumi.Output<bool>? autoSync,
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? branch,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folderPath,
-    pulumi.Output<bool>? publishRunbook,
-    pulumi.Output<String>? repoUrl,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SourceControlSecurityTokenProperties>? securityToken,
-    pulumi.Output<String>? sourceControlName,
-    pulumi.Output<String>? sourceType,
-  }) :
-      autoSync = pulumi.Input.asOptionalInput<bool>(autoSync),
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      branch = pulumi.Input.asOptionalInput<String>(branch),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folderPath = pulumi.Input.asOptionalInput<String>(folderPath),
-      publishRunbook = pulumi.Input.asOptionalInput<bool>(publishRunbook),
-      repoUrl = pulumi.Input.asOptionalInput<String>(repoUrl),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityToken = pulumi.Input.asOptionalInput<SourceControlSecurityTokenProperties>(securityToken),
-      sourceControlName = pulumi.Input.asOptionalInput<String>(sourceControlName),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType);
+    this.autoSync,
+    required this.automationAccountName,
+    this.branch,
+    this.description,
+    this.folderPath,
+    this.publishRunbook,
+    this.repoUrl,
+    required this.resourceGroupName,
+    this.securityToken,
+    this.sourceControlName,
+    this.sourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class SourceControlArgs {
 
   factory SourceControlArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlArgs(
-      autoSync: map['autoSync'] == null ? null : pulumi.Output.create<bool>(map['autoSync'] as bool),
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      branch: map['branch'] == null ? null : pulumi.Output.create<String>(map['branch'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folderPath: map['folderPath'] == null ? null : pulumi.Output.create<String>(map['folderPath'] as String),
-      publishRunbook: map['publishRunbook'] == null ? null : pulumi.Output.create<bool>(map['publishRunbook'] as bool),
-      repoUrl: map['repoUrl'] == null ? null : pulumi.Output.create<String>(map['repoUrl'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityToken: map['securityToken'] == null ? null : pulumi.Output.create<SourceControlSecurityTokenProperties>(SourceControlSecurityTokenProperties.fromMap((map['securityToken'] as Map).cast<String, dynamic>())),
-      sourceControlName: map['sourceControlName'] == null ? null : pulumi.Output.create<String>(map['sourceControlName'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
+      autoSync: map['autoSync'] == null ? null : (map['autoSync'] as bool).input(),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      publishRunbook: map['publishRunbook'] == null ? null : (map['publishRunbook'] as bool).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityToken: map['securityToken'] == null ? null : (SourceControlSecurityTokenProperties.fromMap((map['securityToken'] as Map).cast<String, dynamic>())).input(),
+      sourceControlName: map['sourceControlName'] == null ? null : (map['sourceControlName'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
     );
   }
 }

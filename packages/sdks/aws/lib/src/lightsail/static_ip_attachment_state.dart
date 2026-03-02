@@ -21,15 +21,11 @@ class StaticIpAttachmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [staticIpName] Name of the allocated static IP.
   StaticIpAttachmentState({
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? staticIpName,
-  }) :
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      staticIpName = pulumi.Input.asOptionalInput<String>(staticIpName);
+    this.instanceName,
+    this.ipAddress,
+    this.region,
+    this.staticIpName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class StaticIpAttachmentState {
 
   factory StaticIpAttachmentState.fromMap(Map<String, dynamic> map) {
     return StaticIpAttachmentState(
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      staticIpName: map['staticIpName'] == null ? null : pulumi.Output.create<String>(map['staticIpName'] as String),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      staticIpName: map['staticIpName'] == null ? null : (map['staticIpName'] as String).input(),
     );
   }
 }

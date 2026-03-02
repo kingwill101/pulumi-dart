@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_bgp_lb_config_response.dart';
 import 'bare_metal_manual_lb_config_response.dart';
 import 'bare_metal_metal_lb_config_response.dart';
@@ -9,15 +10,15 @@ import 'bare_metal_vip_config_response.dart';
 /// Specifies the load balancer configuration.
 class BareMetalLoadBalancerConfigResponse {
   /// Configuration for BGP typed load balancers. When set network_config.advanced_networking is automatically set to true.
-  final BareMetalBgpLbConfigResponse bgpLbConfig;
+  final pulumi.Input<BareMetalBgpLbConfigResponse> bgpLbConfig;
   /// Manually configured load balancers.
-  final BareMetalManualLbConfigResponse manualLbConfig;
+  final pulumi.Input<BareMetalManualLbConfigResponse> manualLbConfig;
   /// Configuration for MetalLB load balancers.
-  final BareMetalMetalLbConfigResponse metalLbConfig;
+  final pulumi.Input<BareMetalMetalLbConfigResponse> metalLbConfig;
   /// Configures the ports that the load balancer will listen on.
-  final BareMetalPortConfigResponse portConfig;
+  final pulumi.Input<BareMetalPortConfigResponse> portConfig;
   /// The VIPs used by the load balancer.
-  final BareMetalVipConfigResponse vipConfig;
+  final pulumi.Input<BareMetalVipConfigResponse> vipConfig;
 
   /// Creates a new [BareMetalLoadBalancerConfigResponse].
   /// [bgpLbConfig] Configuration for BGP typed load balancers. When set network_config.advanced_networking is automatically set to true.
@@ -35,21 +36,21 @@ class BareMetalLoadBalancerConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpLbConfig': bgpLbConfig.toMap(),
-      'manualLbConfig': manualLbConfig.toMap(),
-      'metalLbConfig': metalLbConfig.toMap(),
-      'portConfig': portConfig.toMap(),
-      'vipConfig': vipConfig.toMap(),
+      'bgpLbConfig': pulumi.Input.mapInputValue<BareMetalBgpLbConfigResponse, Map<String, dynamic>>(bgpLbConfig, (value) => value.toMap()),
+      'manualLbConfig': pulumi.Input.mapInputValue<BareMetalManualLbConfigResponse, Map<String, dynamic>>(manualLbConfig, (value) => value.toMap()),
+      'metalLbConfig': pulumi.Input.mapInputValue<BareMetalMetalLbConfigResponse, Map<String, dynamic>>(metalLbConfig, (value) => value.toMap()),
+      'portConfig': pulumi.Input.mapInputValue<BareMetalPortConfigResponse, Map<String, dynamic>>(portConfig, (value) => value.toMap()),
+      'vipConfig': pulumi.Input.mapInputValue<BareMetalVipConfigResponse, Map<String, dynamic>>(vipConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalLoadBalancerConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalLoadBalancerConfigResponse(
-      bgpLbConfig: BareMetalBgpLbConfigResponse.fromMap((map['bgpLbConfig'] as Map).cast<String, dynamic>()),
-      manualLbConfig: BareMetalManualLbConfigResponse.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>()),
-      metalLbConfig: BareMetalMetalLbConfigResponse.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>()),
-      portConfig: BareMetalPortConfigResponse.fromMap((map['portConfig'] as Map).cast<String, dynamic>()),
-      vipConfig: BareMetalVipConfigResponse.fromMap((map['vipConfig'] as Map).cast<String, dynamic>()),
+      bgpLbConfig: (BareMetalBgpLbConfigResponse.fromMap((map['bgpLbConfig'] as Map).cast<String, dynamic>())).input(),
+      manualLbConfig: (BareMetalManualLbConfigResponse.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>())).input(),
+      metalLbConfig: (BareMetalMetalLbConfigResponse.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>())).input(),
+      portConfig: (BareMetalPortConfigResponse.fromMap((map['portConfig'] as Map).cast<String, dynamic>())).input(),
+      vipConfig: (BareMetalVipConfigResponse.fromMap((map['vipConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

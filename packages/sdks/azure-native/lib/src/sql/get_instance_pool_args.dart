@@ -16,11 +16,9 @@ class GetInstancePoolArgs {
   /// [instancePoolName] The name of the instance pool to be retrieved.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetInstancePoolArgs({
-    required pulumi.Output<String> instancePoolName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      instancePoolName = pulumi.Input.asInput<String>(instancePoolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.instancePoolName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInstancePoolArgs {
 
   factory GetInstancePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancePoolArgs(
-      instancePoolName: pulumi.Output.create<String>(map['instancePoolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      instancePoolName: (map['instancePoolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

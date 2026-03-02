@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The provider extended location.
 class ProviderExtendedLocationResponse {
   /// The extended locations for the azure location.
-  final List<String>? extendedLocations;
+  final pulumi.Input<List<String>>? extendedLocations;
   /// The azure location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The extended location type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ProviderExtendedLocationResponse].
   /// [extendedLocations] The extended locations for the azure location.
@@ -30,9 +31,9 @@ class ProviderExtendedLocationResponse {
 
   factory ProviderExtendedLocationResponse.fromMap(Map<String, dynamic> map) {
     return ProviderExtendedLocationResponse(
-      extendedLocations: map['extendedLocations'] == null ? null : (map['extendedLocations'] as List).cast<String>(),
-      location: map['location'] == null ? null : map['location'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      extendedLocations: map['extendedLocations'] == null ? null : ((map['extendedLocations'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

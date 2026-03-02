@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSigningProfileSignatureValidityPeriod {
-  final String type;
-  final int value;
+  final pulumi.Input<String> type;
+  final pulumi.Input<int> value;
 
   /// Creates a new [GetSigningProfileSignatureValidityPeriod].
   /// [type] Required.
@@ -22,8 +23,8 @@ class GetSigningProfileSignatureValidityPeriod {
 
   factory GetSigningProfileSignatureValidityPeriod.fromMap(Map<String, dynamic> map) {
     return GetSigningProfileSignatureValidityPeriod(
-      type: map['type'] as String,
-      value: map['value'] as int,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

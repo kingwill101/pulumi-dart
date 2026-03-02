@@ -44,19 +44,13 @@ class InterconnectAttachmentGroupArgs {
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be
   /// [project] The ID of the project in which the resource belongs.
   InterconnectAttachmentGroupArgs({
-    pulumi.Output<List<InterconnectAttachmentGroupAttachment>>? attachments,
-    pulumi.Output<String>? description,
-    required pulumi.Output<InterconnectAttachmentGroupIntent> intent,
-    pulumi.Output<String>? interconnectGroup,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      attachments = pulumi.Input.asOptionalInput<List<InterconnectAttachmentGroupAttachment>>(attachments),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      intent = pulumi.Input.asInput<InterconnectAttachmentGroupIntent>(intent),
-      interconnectGroup = pulumi.Input.asOptionalInput<String>(interconnectGroup),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.attachments,
+    this.description,
+    required this.intent,
+    this.interconnectGroup,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,12 +65,12 @@ class InterconnectAttachmentGroupArgs {
 
   factory InterconnectAttachmentGroupArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupArgs(
-      attachments: map['attachments'] == null ? null : pulumi.Output.create<List<InterconnectAttachmentGroupAttachment>>(pulumi.Input.decodeList<InterconnectAttachmentGroupAttachment>(map['attachments'], (value) => InterconnectAttachmentGroupAttachment.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      intent: pulumi.Output.create<InterconnectAttachmentGroupIntent>(InterconnectAttachmentGroupIntent.fromMap((map['intent'] as Map).cast<String, dynamic>())),
-      interconnectGroup: map['interconnectGroup'] == null ? null : pulumi.Output.create<String>(map['interconnectGroup'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      attachments: map['attachments'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupAttachment>(map['attachments'], (value) => InterconnectAttachmentGroupAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      intent: (InterconnectAttachmentGroupIntent.fromMap((map['intent'] as Map).cast<String, dynamic>())).input(),
+      interconnectGroup: map['interconnectGroup'] == null ? null : (map['interconnectGroup'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

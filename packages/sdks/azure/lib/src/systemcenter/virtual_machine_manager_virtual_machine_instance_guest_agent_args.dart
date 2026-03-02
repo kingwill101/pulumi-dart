@@ -22,15 +22,11 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs {
   /// [scopedResourceId] The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance Guest Agent is stored. Changing this forces a new resource to be created.
   /// [username] The username that is used to connect to the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Changing this forces a new resource to be created.
   VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs({
-    required pulumi.Output<String> password,
-    pulumi.Output<String>? provisioningAction,
-    required pulumi.Output<String> scopedResourceId,
-    required pulumi.Output<String> username,
-  }) :
-      password = pulumi.Input.asInput<String>(password),
-      provisioningAction = pulumi.Input.asOptionalInput<String>(provisioningAction),
-      scopedResourceId = pulumi.Input.asInput<String>(scopedResourceId),
-      username = pulumi.Input.asInput<String>(username);
+    required this.password,
+    this.provisioningAction,
+    required this.scopedResourceId,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs {
 
   factory VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs(
-      password: pulumi.Output.create<String>(map['password'] as String),
-      provisioningAction: map['provisioningAction'] == null ? null : pulumi.Output.create<String>(map['provisioningAction'] as String),
-      scopedResourceId: pulumi.Output.create<String>(map['scopedResourceId'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      password: (map['password'] as String).input(),
+      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction'] as String).input(),
+      scopedResourceId: (map['scopedResourceId'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -70,33 +70,20 @@ class PublicDelegatedPrefixState {
   /// [region] A region where the prefix will reside.
   /// [selfLink] The URI of the created resource.
   PublicDelegatedPrefixState({
-    pulumi.Output<int>? allocatablePrefixLength,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableEnhancedIpv4Allocation,
-    pulumi.Output<String>? ipCidrRange,
-    pulumi.Output<String>? ipv6AccessType,
-    pulumi.Output<bool>? isLiveMigration,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentPrefix,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>? publicDelegatedSubPrefixs,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-  }) :
-      allocatablePrefixLength = pulumi.Input.asOptionalInput<int>(allocatablePrefixLength),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableEnhancedIpv4Allocation = pulumi.Input.asOptionalInput<bool>(enableEnhancedIpv4Allocation),
-      ipCidrRange = pulumi.Input.asOptionalInput<String>(ipCidrRange),
-      ipv6AccessType = pulumi.Input.asOptionalInput<String>(ipv6AccessType),
-      isLiveMigration = pulumi.Input.asOptionalInput<bool>(isLiveMigration),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentPrefix = pulumi.Input.asOptionalInput<String>(parentPrefix),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicDelegatedSubPrefixs = pulumi.Input.asOptionalInput<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>(publicDelegatedSubPrefixs),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.allocatablePrefixLength,
+    this.description,
+    this.enableEnhancedIpv4Allocation,
+    this.ipCidrRange,
+    this.ipv6AccessType,
+    this.isLiveMigration,
+    this.mode,
+    this.name,
+    this.parentPrefix,
+    this.project,
+    this.publicDelegatedSubPrefixs,
+    this.region,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -118,19 +105,19 @@ class PublicDelegatedPrefixState {
 
   factory PublicDelegatedPrefixState.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixState(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : pulumi.Output.create<int>(map['allocatablePrefixLength'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableEnhancedIpv4Allocation: map['enableEnhancedIpv4Allocation'] == null ? null : pulumi.Output.create<bool>(map['enableEnhancedIpv4Allocation'] as bool),
-      ipCidrRange: map['ipCidrRange'] == null ? null : pulumi.Output.create<String>(map['ipCidrRange'] as String),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : pulumi.Output.create<String>(map['ipv6AccessType'] as String),
-      isLiveMigration: map['isLiveMigration'] == null ? null : pulumi.Output.create<bool>(map['isLiveMigration'] as bool),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentPrefix: map['parentPrefix'] == null ? null : pulumi.Output.create<String>(map['parentPrefix'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : pulumi.Output.create<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>(pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableEnhancedIpv4Allocation: map['enableEnhancedIpv4Allocation'] == null ? null : (map['enableEnhancedIpv4Allocation'] as bool).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType'] as String).input(),
+      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration'] as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

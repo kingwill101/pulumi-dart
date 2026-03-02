@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The feedback that the customer has about a certain answer in the conversation.
 class GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse {
   /// Indicates whether an answer or item was clicked by the human agent.
-  final bool clicked;
+  final pulumi.Input<bool> clicked;
   /// The correctness level of an answer.
-  final String correctnessLevel;
+  final pulumi.Input<String> correctnessLevel;
   /// Indicates whether an answer or item was displayed to the human agent in the agent desktop UI.
-  final bool displayed;
+  final pulumi.Input<bool> displayed;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse].
   /// [clicked] Indicates whether an answer or item was clicked by the human agent.
@@ -30,9 +31,9 @@ class GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse {
 
   factory GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse(
-      clicked: map['clicked'] as bool,
-      correctnessLevel: map['correctnessLevel'] as String,
-      displayed: map['displayed'] as bool,
+      clicked: (map['clicked'] as bool).input(),
+      correctnessLevel: (map['correctnessLevel'] as String).input(),
+      displayed: (map['displayed'] as bool).input(),
     );
   }
 }

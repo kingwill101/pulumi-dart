@@ -31,21 +31,14 @@ class ScopeState {
   /// [targets] The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   /// [timeouts] Optional.
   ScopeState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? scopeArn,
-    pulumi.Output<String>? scopeId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<List<ScopeTarget>>? targets,
-    pulumi.Output<ScopeTimeouts>? timeouts,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scopeArn = pulumi.Input.asOptionalInput<String>(scopeArn),
-      scopeId = pulumi.Input.asOptionalInput<String>(scopeId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targets = pulumi.Input.asOptionalInput<List<ScopeTarget>>(targets),
-      timeouts = pulumi.Input.asOptionalInput<ScopeTimeouts>(timeouts);
+    this.region,
+    this.scopeArn,
+    this.scopeId,
+    this.tags,
+    this.tagsAll,
+    this.targets,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ScopeState {
 
   factory ScopeState.fromMap(Map<String, dynamic> map) {
     return ScopeState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scopeArn: map['scopeArn'] == null ? null : pulumi.Output.create<String>(map['scopeArn'] as String),
-      scopeId: map['scopeId'] == null ? null : pulumi.Output.create<String>(map['scopeId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targets: map['targets'] == null ? null : pulumi.Output.create<List<ScopeTarget>>(pulumi.Input.decodeList<ScopeTarget>(map['targets'], (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ScopeTimeouts>(ScopeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scopeArn: map['scopeArn'] == null ? null : (map['scopeArn'] as String).input(),
+      scopeId: map['scopeId'] == null ? null : (map['scopeId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<ScopeTarget>(map['targets'], (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: map['timeouts'] == null ? null : (ScopeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

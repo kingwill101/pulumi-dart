@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagePipelineSchedule {
   /// Condition when the pipeline should trigger a new image build.
-  final String pipelineExecutionStartCondition;
+  final pulumi.Input<String> pipelineExecutionStartCondition;
   /// Cron expression of how often the pipeline start condition is evaluated.
-  final String scheduleExpression;
+  final pulumi.Input<String> scheduleExpression;
 
   /// Creates a new [GetImagePipelineSchedule].
   /// [pipelineExecutionStartCondition] Condition when the pipeline should trigger a new image build.
@@ -24,8 +25,8 @@ class GetImagePipelineSchedule {
 
   factory GetImagePipelineSchedule.fromMap(Map<String, dynamic> map) {
     return GetImagePipelineSchedule(
-      pipelineExecutionStartCondition: map['pipelineExecutionStartCondition'] as String,
-      scheduleExpression: map['scheduleExpression'] as String,
+      pipelineExecutionStartCondition: (map['pipelineExecutionStartCondition'] as String).input(),
+      scheduleExpression: (map['scheduleExpression'] as String).input(),
     );
   }
 }

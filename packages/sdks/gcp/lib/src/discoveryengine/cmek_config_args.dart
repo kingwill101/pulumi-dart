@@ -34,19 +34,13 @@ class CmekConfigArgs {
   /// [setDefault] Set the following CmekConfig as the default to be used for child resources
   /// [singleRegionKeys] Single-regional CMEKs that are required for some VAIS features.
   CmekConfigArgs({
-    required pulumi.Output<String> cmekConfigId,
-    required pulumi.Output<String> kmsKey,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? setDefault,
-    pulumi.Output<List<CmekConfigSingleRegionKey>>? singleRegionKeys,
-  }) :
-      cmekConfigId = pulumi.Input.asInput<String>(cmekConfigId),
-      kmsKey = pulumi.Input.asInput<String>(kmsKey),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      setDefault = pulumi.Input.asOptionalInput<bool>(setDefault),
-      singleRegionKeys = pulumi.Input.asOptionalInput<List<CmekConfigSingleRegionKey>>(singleRegionKeys);
+    required this.cmekConfigId,
+    required this.kmsKey,
+    required this.location,
+    this.project,
+    this.setDefault,
+    this.singleRegionKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class CmekConfigArgs {
 
   factory CmekConfigArgs.fromMap(Map<String, dynamic> map) {
     return CmekConfigArgs(
-      cmekConfigId: pulumi.Output.create<String>(map['cmekConfigId'] as String),
-      kmsKey: pulumi.Output.create<String>(map['kmsKey'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      setDefault: map['setDefault'] == null ? null : pulumi.Output.create<bool>(map['setDefault'] as bool),
-      singleRegionKeys: map['singleRegionKeys'] == null ? null : pulumi.Output.create<List<CmekConfigSingleRegionKey>>(pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys'], (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>()))),
+      cmekConfigId: (map['cmekConfigId'] as String).input(),
+      kmsKey: (map['kmsKey'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      setDefault: map['setDefault'] == null ? null : (map['setDefault'] as bool).input(),
+      singleRegionKeys: map['singleRegionKeys'] == null ? null : (pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys'], (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

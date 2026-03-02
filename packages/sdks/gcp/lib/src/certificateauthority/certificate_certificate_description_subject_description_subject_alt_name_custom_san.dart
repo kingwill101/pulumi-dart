@@ -6,13 +6,13 @@ import 'certificate_certificate_description_subject_description_subject_alt_name
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
   /// (Output)
   /// Indicates whether or not the name constraints are marked critical.
-  final bool? critical;
+  final pulumi.Input<bool>? critical;
   /// (Output)
   /// Describes how some of the technical fields in a certificate should be populated.
   /// Structure is documented below.
-  final List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>? obectIds;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>>? obectIds;
   /// The value of this X.509 extension. A base64-encoded string.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan].
   /// [critical] (Output)
@@ -27,16 +27,16 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'critical': ?critical,
-      'obectIds': ?obectIds == null ? null : pulumi.Input.encodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId, Map<String, dynamic>>(obectIds!, (value) => value.toMap()),
+      'obectIds': ?pulumi.Input.mapOptionalInputValue<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>, List<Map<String, dynamic>>>(obectIds, (value) => pulumi.Input.encodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId, Map<String, dynamic>>(value, (value) => value.toMap())),
       'value': ?value,
     };
   }
 
   factory CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan(
-      critical: map['critical'] == null ? null : map['critical'] as bool,
-      obectIds: map['obectIds'] == null ? null : pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>(map['obectIds'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.fromMap((value as Map).cast<String, dynamic>())),
-      value: map['value'] == null ? null : map['value'] as String,
+      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
+      obectIds: map['obectIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>(map['obectIds'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

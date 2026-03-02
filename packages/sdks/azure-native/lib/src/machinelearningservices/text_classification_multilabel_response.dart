@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mltable_job_input_response.dart';
 import 'nlp_vertical_featurization_settings_response.dart';
 import 'nlp_vertical_limit_settings_response.dart';
@@ -8,24 +9,24 @@ import 'nlp_vertical_limit_settings_response.dart';
 /// NLP - Natural Language Processing.
 class TextClassificationMultilabelResponse {
   /// Featurization inputs needed for AutoML job.
-  final NlpVerticalFeaturizationSettingsResponse? featurizationSettings;
+  final pulumi.Input<NlpVerticalFeaturizationSettingsResponse>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
-  final NlpVerticalLimitSettingsResponse? limitSettings;
+  final pulumi.Input<NlpVerticalLimitSettingsResponse>? limitSettings;
   /// Log verbosity for the job.
-  final String? logVerbosity;
+  final pulumi.Input<String>? logVerbosity;
   /// Primary metric for Text-Classification-Multilabel task.
   /// Currently only Accuracy is supported as primary metric, hence user need not set it explicitly.
-  final String primaryMetric;
+  final pulumi.Input<String> primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
-  final String? targetColumnName;
+  final pulumi.Input<String>? targetColumnName;
   /// AutoMLJob Task type.
   /// Expected value is 'TextClassificationMultilabel'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
   /// [Required] Training data input.
-  final MLTableJobInputResponse trainingData;
+  final pulumi.Input<MLTableJobInputResponse> trainingData;
   /// Validation data inputs.
-  final MLTableJobInputResponse? validationData;
+  final pulumi.Input<MLTableJobInputResponse>? validationData;
 
   /// Creates a new [TextClassificationMultilabelResponse].
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
@@ -49,27 +50,27 @@ class TextClassificationMultilabelResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'featurizationSettings': ?featurizationSettings == null ? null : featurizationSettings!.toMap(),
-      'limitSettings': ?limitSettings == null ? null : limitSettings!.toMap(),
+      'featurizationSettings': ?pulumi.Input.mapOptionalInputValue<NlpVerticalFeaturizationSettingsResponse, Map<String, dynamic>>(featurizationSettings, (value) => value.toMap()),
+      'limitSettings': ?pulumi.Input.mapOptionalInputValue<NlpVerticalLimitSettingsResponse, Map<String, dynamic>>(limitSettings, (value) => value.toMap()),
       'logVerbosity': ?logVerbosity,
       'primaryMetric': primaryMetric,
       'targetColumnName': ?targetColumnName,
       'taskType': taskType,
-      'trainingData': trainingData.toMap(),
-      'validationData': ?validationData == null ? null : validationData!.toMap(),
+      'trainingData': pulumi.Input.mapInputValue<MLTableJobInputResponse, Map<String, dynamic>>(trainingData, (value) => value.toMap()),
+      'validationData': ?pulumi.Input.mapOptionalInputValue<MLTableJobInputResponse, Map<String, dynamic>>(validationData, (value) => value.toMap()),
     };
   }
 
   factory TextClassificationMultilabelResponse.fromMap(Map<String, dynamic> map) {
     return TextClassificationMultilabelResponse(
-      featurizationSettings: map['featurizationSettings'] == null ? null : NlpVerticalFeaturizationSettingsResponse.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>()),
-      limitSettings: map['limitSettings'] == null ? null : NlpVerticalLimitSettingsResponse.fromMap((map['limitSettings'] as Map).cast<String, dynamic>()),
-      logVerbosity: map['logVerbosity'] == null ? null : map['logVerbosity'] as String,
-      primaryMetric: map['primaryMetric'] as String,
-      targetColumnName: map['targetColumnName'] == null ? null : map['targetColumnName'] as String,
-      taskType: map['taskType'] as String,
-      trainingData: MLTableJobInputResponse.fromMap((map['trainingData'] as Map).cast<String, dynamic>()),
-      validationData: map['validationData'] == null ? null : MLTableJobInputResponse.fromMap((map['validationData'] as Map).cast<String, dynamic>()),
+      featurizationSettings: map['featurizationSettings'] == null ? null : (NlpVerticalFeaturizationSettingsResponse.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>())).input(),
+      limitSettings: map['limitSettings'] == null ? null : (NlpVerticalLimitSettingsResponse.fromMap((map['limitSettings'] as Map).cast<String, dynamic>())).input(),
+      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity'] as String).input(),
+      primaryMetric: (map['primaryMetric'] as String).input(),
+      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
+      trainingData: (MLTableJobInputResponse.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
+      validationData: map['validationData'] == null ? null : (MLTableJobInputResponse.fromMap((map['validationData'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

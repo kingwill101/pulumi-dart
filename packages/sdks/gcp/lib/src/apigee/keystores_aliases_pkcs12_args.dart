@@ -33,21 +33,14 @@ class KeystoresAliasesPkcs12Args {
   /// [orgId] Organization ID associated with the alias, without organization/ prefix
   /// [password] Password for the PKCS12 file if it's encrypted
   KeystoresAliasesPkcs12Args({
-    required pulumi.Output<String> alias,
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> file,
-    required pulumi.Output<String> filehash,
-    required pulumi.Output<String> keystore,
-    required pulumi.Output<String> orgId,
-    pulumi.Output<String>? password,
-  }) :
-      alias = pulumi.Input.asInput<String>(alias),
-      environment = pulumi.Input.asInput<String>(environment),
-      file = pulumi.Input.asInput<String>(file),
-      filehash = pulumi.Input.asInput<String>(filehash),
-      keystore = pulumi.Input.asInput<String>(keystore),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      password = pulumi.Input.asOptionalInput<String>(password);
+    required this.alias,
+    required this.environment,
+    required this.file,
+    required this.filehash,
+    required this.keystore,
+    required this.orgId,
+    this.password,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class KeystoresAliasesPkcs12Args {
 
   factory KeystoresAliasesPkcs12Args.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesPkcs12Args(
-      alias: pulumi.Output.create<String>(map['alias'] as String),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      file: pulumi.Output.create<String>(map['file'] as String),
-      filehash: pulumi.Output.create<String>(map['filehash'] as String),
-      keystore: pulumi.Output.create<String>(map['keystore'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
+      alias: (map['alias'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      file: (map['file'] as String).input(),
+      filehash: (map['filehash'] as String).input(),
+      keystore: (map['keystore'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
     );
   }
 }

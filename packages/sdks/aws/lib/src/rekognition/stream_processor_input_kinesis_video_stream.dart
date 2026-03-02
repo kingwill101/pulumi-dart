@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorInputKinesisVideoStream {
   /// ARN of the Kinesis video stream stream that streams the source video.
-  final String arn;
+  final pulumi.Input<String> arn;
 
   /// Creates a new [StreamProcessorInputKinesisVideoStream].
   /// [arn] ARN of the Kinesis video stream stream that streams the source video.
@@ -19,7 +20,7 @@ class StreamProcessorInputKinesisVideoStream {
 
   factory StreamProcessorInputKinesisVideoStream.fromMap(Map<String, dynamic> map) {
     return StreamProcessorInputKinesisVideoStream(
-      arn: map['arn'] as String,
+      arn: (map['arn'] as String).input(),
     );
   }
 }

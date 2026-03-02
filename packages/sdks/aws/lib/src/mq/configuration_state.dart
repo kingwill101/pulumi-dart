@@ -42,29 +42,18 @@ class ConfigurationState {
   /// [tags] Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ConfigurationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? authenticationStrategy,
-    pulumi.Output<String>? data,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? engineType,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<int>? latestRevision,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authenticationStrategy = pulumi.Input.asOptionalInput<String>(authenticationStrategy),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      engineType = pulumi.Input.asOptionalInput<String>(engineType),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      latestRevision = pulumi.Input.asOptionalInput<int>(latestRevision),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.authenticationStrategy,
+    this.data,
+    this.description,
+    this.engineType,
+    this.engineVersion,
+    this.latestRevision,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ConfigurationState {
 
   factory ConfigurationState.fromMap(Map<String, dynamic> map) {
     return ConfigurationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authenticationStrategy: map['authenticationStrategy'] == null ? null : pulumi.Output.create<String>(map['authenticationStrategy'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      engineType: map['engineType'] == null ? null : pulumi.Output.create<String>(map['engineType'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      latestRevision: map['latestRevision'] == null ? null : pulumi.Output.create<int>(map['latestRevision'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authenticationStrategy: map['authenticationStrategy'] == null ? null : (map['authenticationStrategy'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

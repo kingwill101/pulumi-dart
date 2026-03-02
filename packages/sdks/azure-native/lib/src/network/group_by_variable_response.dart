@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Define user session group by clause variables.
 class GroupByVariableResponse {
   /// User Session clause variable.
-  final String variableName;
+  final pulumi.Input<String> variableName;
 
   /// Creates a new [GroupByVariableResponse].
   /// [variableName] User Session clause variable.
@@ -20,7 +21,7 @@ class GroupByVariableResponse {
 
   factory GroupByVariableResponse.fromMap(Map<String, dynamic> map) {
     return GroupByVariableResponse(
-      variableName: map['variableName'] as String,
+      variableName: (map['variableName'] as String).input(),
     );
   }
 }

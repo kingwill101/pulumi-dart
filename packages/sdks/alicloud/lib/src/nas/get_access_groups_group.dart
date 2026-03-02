@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessGroupsGroup {
   /// The name of access group.
-  final String accessGroupName;
+  final pulumi.Input<String> accessGroupName;
   /// Filter results by a specific AccessGroupType.
-  final String accessGroupType;
+  final pulumi.Input<String> accessGroupType;
   /// Filter results by a specific Description.
-  final String description;
+  final pulumi.Input<String> description;
   /// This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `access_group_name`.
-  final String id;
+  final pulumi.Input<String> id;
   /// MountTargetCount block of the AccessGroup
-  final int mountTargetCount;
+  final pulumi.Input<int> mountTargetCount;
   /// RuleCount of the AccessGroup.
-  final int ruleCount;
+  final pulumi.Input<int> ruleCount;
   /// Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAccessGroupsGroup].
   /// [accessGroupName] The name of access group.
@@ -49,13 +50,13 @@ class GetAccessGroupsGroup {
 
   factory GetAccessGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetAccessGroupsGroup(
-      accessGroupName: map['accessGroupName'] as String,
-      accessGroupType: map['accessGroupType'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      mountTargetCount: map['mountTargetCount'] as int,
-      ruleCount: map['ruleCount'] as int,
-      type: map['type'] as String,
+      accessGroupName: (map['accessGroupName'] as String).input(),
+      accessGroupType: (map['accessGroupType'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      mountTargetCount: (map['mountTargetCount'] as int).input(),
+      ruleCount: (map['ruleCount'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

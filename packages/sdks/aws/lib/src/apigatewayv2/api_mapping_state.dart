@@ -22,17 +22,12 @@ class ApiMappingState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stage] API stage. Use the `aws.apigatewayv2.Stage` resource to configure an API stage.
   ApiMappingState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? apiMappingKey,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? stage,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      apiMappingKey = pulumi.Input.asOptionalInput<String>(apiMappingKey),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      stage = pulumi.Input.asOptionalInput<String>(stage);
+    this.apiId,
+    this.apiMappingKey,
+    this.domainName,
+    this.region,
+    this.stage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ApiMappingState {
 
   factory ApiMappingState.fromMap(Map<String, dynamic> map) {
     return ApiMappingState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      apiMappingKey: map['apiMappingKey'] == null ? null : pulumi.Output.create<String>(map['apiMappingKey'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      stage: map['stage'] == null ? null : pulumi.Output.create<String>(map['stage'] as String),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      apiMappingKey: map['apiMappingKey'] == null ? null : (map['apiMappingKey'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
     );
   }
 }

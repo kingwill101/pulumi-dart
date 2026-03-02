@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkConnectionMonitorTestConfigurationTcpConfiguration {
   /// The destination port behavior for the TCP connection. Possible values are `None` and `ListenIfAvailable`.
-  final String? destinationPortBehavior;
+  final pulumi.Input<String>? destinationPortBehavior;
   /// The port for the TCP connection.
-  final int port;
+  final pulumi.Input<int> port;
   /// Should path evaluation with trace route be enabled? Defaults to `true`.
-  final bool? traceRouteEnabled;
+  final pulumi.Input<bool>? traceRouteEnabled;
 
   /// Creates a new [NetworkConnectionMonitorTestConfigurationTcpConfiguration].
   /// [destinationPortBehavior] The destination port behavior for the TCP connection. Possible values are `None` and `ListenIfAvailable`.
@@ -29,9 +30,9 @@ class NetworkConnectionMonitorTestConfigurationTcpConfiguration {
 
   factory NetworkConnectionMonitorTestConfigurationTcpConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationTcpConfiguration(
-      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : map['destinationPortBehavior'] as String,
-      port: map['port'] as int,
-      traceRouteEnabled: map['traceRouteEnabled'] == null ? null : map['traceRouteEnabled'] as bool,
+      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : (map['destinationPortBehavior'] as String).input(),
+      port: (map['port'] as int).input(),
+      traceRouteEnabled: map['traceRouteEnabled'] == null ? null : (map['traceRouteEnabled'] as bool).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetUserAssignedIdentityArgs {
   /// [resourceGroupName] The name of the Resource Group to which the identity belongs.
   /// [resourceName] The name of the identity resource.
   GetUserAssignedIdentityArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetUserAssignedIdentityArgs {
 
   factory GetUserAssignedIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetUserAssignedIdentityArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

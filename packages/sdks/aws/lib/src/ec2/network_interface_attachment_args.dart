@@ -25,17 +25,12 @@ class NetworkInterfaceAttachmentArgs {
   /// [networkInterfaceId] ENI ID to attach.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   NetworkInterfaceAttachmentArgs({
-    required pulumi.Output<int> deviceIndex,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<int>? networkCardIndex,
-    required pulumi.Output<String> networkInterfaceId,
-    pulumi.Output<String>? region,
-  }) :
-      deviceIndex = pulumi.Input.asInput<int>(deviceIndex),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      networkCardIndex = pulumi.Input.asOptionalInput<int>(networkCardIndex),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.deviceIndex,
+    required this.instanceId,
+    this.networkCardIndex,
+    required this.networkInterfaceId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkInterfaceAttachmentArgs {
 
   factory NetworkInterfaceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachmentArgs(
-      deviceIndex: pulumi.Output.create<int>(map['deviceIndex'] as int),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      networkCardIndex: map['networkCardIndex'] == null ? null : pulumi.Output.create<int>(map['networkCardIndex'] as int),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      deviceIndex: (map['deviceIndex'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

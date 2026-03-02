@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionLoggingConfig {
   /// Detail level of application logs. Valid values: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`.
-  final String? applicationLogLevel;
+  final pulumi.Input<String>? applicationLogLevel;
   /// Log format. Valid values: `Text`, `JSON`.
-  final String logFormat;
+  final pulumi.Input<String> logFormat;
   /// CloudWatch log group where logs are sent.
-  final String? logGroup;
+  final pulumi.Input<String>? logGroup;
   /// Detail level of Lambda platform logs. Valid values: `DEBUG`, `INFO`, `WARN`.
-  final String? systemLogLevel;
+  final pulumi.Input<String>? systemLogLevel;
 
   /// Creates a new [FunctionLoggingConfig].
   /// [applicationLogLevel] Detail level of application logs. Valid values: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`.
@@ -34,10 +35,10 @@ class FunctionLoggingConfig {
 
   factory FunctionLoggingConfig.fromMap(Map<String, dynamic> map) {
     return FunctionLoggingConfig(
-      applicationLogLevel: map['applicationLogLevel'] == null ? null : map['applicationLogLevel'] as String,
-      logFormat: map['logFormat'] as String,
-      logGroup: map['logGroup'] == null ? null : map['logGroup'] as String,
-      systemLogLevel: map['systemLogLevel'] == null ? null : map['systemLogLevel'] as String,
+      applicationLogLevel: map['applicationLogLevel'] == null ? null : (map['applicationLogLevel'] as String).input(),
+      logFormat: (map['logFormat'] as String).input(),
+      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
+      systemLogLevel: map['systemLogLevel'] == null ? null : (map['systemLogLevel'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class InboundEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   InboundEndpointArgs({
-    required pulumi.Output<String> dnsResolverName,
-    pulumi.Output<String>? inboundEndpointName,
-    required pulumi.Output<List<IpConfiguration>> ipConfigurations,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dnsResolverName = pulumi.Input.asInput<String>(dnsResolverName),
-      inboundEndpointName = pulumi.Input.asOptionalInput<String>(inboundEndpointName),
-      ipConfigurations = pulumi.Input.asInput<List<IpConfiguration>>(ipConfigurations),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.dnsResolverName,
+    this.inboundEndpointName,
+    required this.ipConfigurations,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class InboundEndpointArgs {
 
   factory InboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return InboundEndpointArgs(
-      dnsResolverName: pulumi.Output.create<String>(map['dnsResolverName'] as String),
-      inboundEndpointName: map['inboundEndpointName'] == null ? null : pulumi.Output.create<String>(map['inboundEndpointName'] as String),
-      ipConfigurations: pulumi.Output.create<List<IpConfiguration>>(pulumi.Input.decodeList<IpConfiguration>(map['ipConfigurations'], (value) => IpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dnsResolverName: (map['dnsResolverName'] as String).input(),
+      inboundEndpointName: map['inboundEndpointName'] == null ? null : (map['inboundEndpointName'] as String).input(),
+      ipConfigurations: (pulumi.Input.decodeList<IpConfiguration>(map['ipConfigurations'], (value) => IpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -6,17 +6,17 @@ import 'header_match.dart';
 /// Policy that defines http request retry conditions
 class HttpRetryPolicy {
   /// Errors that can trigger a retry
-  final List<String>? errors;
+  final pulumi.Input<List<String>>? errors;
   /// Headers that must be present for a request to be retried
-  final List<HeaderMatch>? headers;
+  final pulumi.Input<List<HeaderMatch>>? headers;
   /// Additional http status codes that can trigger a retry
-  final List<int>? httpStatusCodes;
+  final pulumi.Input<List<int>>? httpStatusCodes;
   /// Initial delay, in milliseconds, before retrying a request
-  final double? initialDelayInMilliseconds;
+  final pulumi.Input<double>? initialDelayInMilliseconds;
   /// Maximum interval, in milliseconds, between retries
-  final double? maxIntervalInMilliseconds;
+  final pulumi.Input<double>? maxIntervalInMilliseconds;
   /// Maximum number of times a request will retry
-  final int? maxRetries;
+  final pulumi.Input<int>? maxRetries;
 
   /// Creates a new [HttpRetryPolicy].
   /// [errors] Errors that can trigger a retry
@@ -37,7 +37,7 @@ class HttpRetryPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'errors': ?errors,
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<HeaderMatch, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<HeaderMatch>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<HeaderMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'httpStatusCodes': ?httpStatusCodes,
       'initialDelayInMilliseconds': ?initialDelayInMilliseconds,
       'maxIntervalInMilliseconds': ?maxIntervalInMilliseconds,
@@ -47,12 +47,12 @@ class HttpRetryPolicy {
 
   factory HttpRetryPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRetryPolicy(
-      errors: map['errors'] == null ? null : (map['errors'] as List).cast<String>(),
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<HeaderMatch>(map['headers'], (value) => HeaderMatch.fromMap((value as Map).cast<String, dynamic>())),
-      httpStatusCodes: map['httpStatusCodes'] == null ? null : (map['httpStatusCodes'] as List).cast<int>(),
-      initialDelayInMilliseconds: map['initialDelayInMilliseconds'] == null ? null : map['initialDelayInMilliseconds'] as double,
-      maxIntervalInMilliseconds: map['maxIntervalInMilliseconds'] == null ? null : map['maxIntervalInMilliseconds'] as double,
-      maxRetries: map['maxRetries'] == null ? null : map['maxRetries'] as int,
+      errors: map['errors'] == null ? null : ((map['errors'] as List).cast<String>()).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HeaderMatch>(map['headers'], (value) => HeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpStatusCodes: map['httpStatusCodes'] == null ? null : ((map['httpStatusCodes'] as List).cast<int>()).input(),
+      initialDelayInMilliseconds: map['initialDelayInMilliseconds'] == null ? null : (map['initialDelayInMilliseconds'] as double).input(),
+      maxIntervalInMilliseconds: map['maxIntervalInMilliseconds'] == null ? null : (map['maxIntervalInMilliseconds'] as double).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
     );
   }
 }

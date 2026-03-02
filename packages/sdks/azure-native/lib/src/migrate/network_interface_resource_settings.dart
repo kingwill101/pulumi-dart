@@ -6,18 +6,18 @@ import 'nic_ip_configuration_resource_settings.dart';
 /// Defines the network interface resource settings.
 class NetworkInterfaceResourceSettings {
   /// Gets or sets a value indicating whether accelerated networking is enabled.
-  final bool? enableAcceleratedNetworking;
+  final pulumi.Input<bool>? enableAcceleratedNetworking;
   /// Gets or sets the IP configurations of the NIC.
-  final List<NicIpConfigurationResourceSettings>? ipConfigurations;
+  final pulumi.Input<List<NicIpConfigurationResourceSettings>>? ipConfigurations;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/networkInterfaces'.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Gets or sets the Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Gets or sets the target resource group name.
-  final String? targetResourceGroupName;
+  final pulumi.Input<String>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final String? targetResourceName;
+  final pulumi.Input<String>? targetResourceName;
 
   /// Creates a new [NetworkInterfaceResourceSettings].
   /// [enableAcceleratedNetworking] Gets or sets a value indicating whether accelerated networking is enabled.
@@ -38,7 +38,7 @@ class NetworkInterfaceResourceSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableAcceleratedNetworking': ?enableAcceleratedNetworking,
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<NicIpConfigurationResourceSettings, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
+      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<NicIpConfigurationResourceSettings>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<NicIpConfigurationResourceSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceType': resourceType,
       'tags': ?tags,
       'targetResourceGroupName': ?targetResourceGroupName,
@@ -48,12 +48,12 @@ class NetworkInterfaceResourceSettings {
 
   factory NetworkInterfaceResourceSettings.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResourceSettings(
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : map['enableAcceleratedNetworking'] as bool,
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<NicIpConfigurationResourceSettings>(map['ipConfigurations'], (value) => NicIpConfigurationResourceSettings.fromMap((value as Map).cast<String, dynamic>())),
-      resourceType: map['resourceType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : map['targetResourceGroupName'] as String,
-      targetResourceName: map['targetResourceName'] == null ? null : map['targetResourceName'] as String,
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<NicIpConfigurationResourceSettings>(map['ipConfigurations'], (value) => NicIpConfigurationResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
     );
   }
 }

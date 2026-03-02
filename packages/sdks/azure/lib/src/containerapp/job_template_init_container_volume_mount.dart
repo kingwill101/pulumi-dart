@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateInitContainerVolumeMount {
   /// The name of the volume to mount. This must match the name of a volume defined in the `volume` block.
-  final String name;
+  final pulumi.Input<String> name;
   /// The path within the container at which the volume should be mounted. Must not contain `:`.
-  final String path;
+  final pulumi.Input<String> path;
   /// The sub path of the volume to be mounted in the container.
-  final String? subPath;
+  final pulumi.Input<String>? subPath;
 
   /// Creates a new [JobTemplateInitContainerVolumeMount].
   /// [name] The name of the volume to mount. This must match the name of a volume defined in the `volume` block.
@@ -29,9 +30,9 @@ class JobTemplateInitContainerVolumeMount {
 
   factory JobTemplateInitContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return JobTemplateInitContainerVolumeMount(
-      name: map['name'] as String,
-      path: map['path'] as String,
-      subPath: map['subPath'] == null ? null : map['subPath'] as String,
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
     );
   }
 }

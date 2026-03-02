@@ -31,21 +31,14 @@ class GraphQLApiResolverArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GraphQLApiResolverArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? resolverId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      resolverId = pulumi.Input.asOptionalInput<String>(resolverId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.apiId,
+    this.description,
+    this.displayName,
+    this.path,
+    this.resolverId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GraphQLApiResolverArgs {
 
   factory GraphQLApiResolverArgs.fromMap(Map<String, dynamic> map) {
     return GraphQLApiResolverArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      resolverId: map['resolverId'] == null ? null : pulumi.Output.create<String>(map['resolverId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apiId: (map['apiId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      resolverId: map['resolverId'] == null ? null : (map['resolverId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

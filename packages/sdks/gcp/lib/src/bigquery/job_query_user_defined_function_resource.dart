@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobQueryUserDefinedFunctionResource {
   /// An inline resource that contains code for a user-defined function (UDF).
   /// Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
-  final String? inlineCode;
+  final pulumi.Input<String>? inlineCode;
   /// A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
-  final String? resourceUri;
+  final pulumi.Input<String>? resourceUri;
 
   /// Creates a new [JobQueryUserDefinedFunctionResource].
   /// [inlineCode] An inline resource that contains code for a user-defined function (UDF).
@@ -25,8 +26,8 @@ class JobQueryUserDefinedFunctionResource {
 
   factory JobQueryUserDefinedFunctionResource.fromMap(Map<String, dynamic> map) {
     return JobQueryUserDefinedFunctionResource(
-      inlineCode: map['inlineCode'] == null ? null : map['inlineCode'] as String,
-      resourceUri: map['resourceUri'] == null ? null : map['resourceUri'] as String,
+      inlineCode: map['inlineCode'] == null ? null : (map['inlineCode'] as String).input(),
+      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as String).input(),
     );
   }
 }

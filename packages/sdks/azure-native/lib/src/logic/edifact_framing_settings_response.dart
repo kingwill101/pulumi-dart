@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact agreement framing settings.
 class EdifactFramingSettingsResponse {
   /// The character encoding.
-  final String? characterEncoding;
+  final pulumi.Input<String>? characterEncoding;
   /// The EDIFACT frame setting characterSet.
-  final String characterSet;
+  final pulumi.Input<String> characterSet;
   /// The component separator.
-  final int componentSeparator;
+  final pulumi.Input<int> componentSeparator;
   /// The data element separator.
-  final int dataElementSeparator;
+  final pulumi.Input<int> dataElementSeparator;
   /// The EDIFACT frame setting decimal indicator.
-  final String decimalPointIndicator;
+  final pulumi.Input<String> decimalPointIndicator;
   /// The protocol version.
-  final int protocolVersion;
+  final pulumi.Input<int> protocolVersion;
   /// The release indicator.
-  final int releaseIndicator;
+  final pulumi.Input<int> releaseIndicator;
   /// The repetition separator.
-  final int repetitionSeparator;
+  final pulumi.Input<int> repetitionSeparator;
   /// The segment terminator.
-  final int segmentTerminator;
+  final pulumi.Input<int> segmentTerminator;
   /// The EDIFACT frame setting segment terminator suffix.
-  final String segmentTerminatorSuffix;
+  final pulumi.Input<String> segmentTerminatorSuffix;
   /// The service code list directory version.
-  final String? serviceCodeListDirectoryVersion;
+  final pulumi.Input<String>? serviceCodeListDirectoryVersion;
 
   /// Creates a new [EdifactFramingSettingsResponse].
   /// [characterEncoding] The character encoding.
@@ -70,17 +71,17 @@ class EdifactFramingSettingsResponse {
 
   factory EdifactFramingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EdifactFramingSettingsResponse(
-      characterEncoding: map['characterEncoding'] == null ? null : map['characterEncoding'] as String,
-      characterSet: map['characterSet'] as String,
-      componentSeparator: map['componentSeparator'] as int,
-      dataElementSeparator: map['dataElementSeparator'] as int,
-      decimalPointIndicator: map['decimalPointIndicator'] as String,
-      protocolVersion: map['protocolVersion'] as int,
-      releaseIndicator: map['releaseIndicator'] as int,
-      repetitionSeparator: map['repetitionSeparator'] as int,
-      segmentTerminator: map['segmentTerminator'] as int,
-      segmentTerminatorSuffix: map['segmentTerminatorSuffix'] as String,
-      serviceCodeListDirectoryVersion: map['serviceCodeListDirectoryVersion'] == null ? null : map['serviceCodeListDirectoryVersion'] as String,
+      characterEncoding: map['characterEncoding'] == null ? null : (map['characterEncoding'] as String).input(),
+      characterSet: (map['characterSet'] as String).input(),
+      componentSeparator: (map['componentSeparator'] as int).input(),
+      dataElementSeparator: (map['dataElementSeparator'] as int).input(),
+      decimalPointIndicator: (map['decimalPointIndicator'] as String).input(),
+      protocolVersion: (map['protocolVersion'] as int).input(),
+      releaseIndicator: (map['releaseIndicator'] as int).input(),
+      repetitionSeparator: (map['repetitionSeparator'] as int).input(),
+      segmentTerminator: (map['segmentTerminator'] as int).input(),
+      segmentTerminatorSuffix: (map['segmentTerminatorSuffix'] as String).input(),
+      serviceCodeListDirectoryVersion: map['serviceCodeListDirectoryVersion'] == null ? null : (map['serviceCodeListDirectoryVersion'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedIdentityProperties {
-  final String? clientId;
-  final String? managedIdentityName;
-  final String? principalId;
-  final String? resourceGroup;
-  final String? subscriptionId;
-  final String? tenantId;
+  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String>? managedIdentityName;
+  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ManagedIdentityProperties].
   /// [clientId] Optional.
@@ -38,12 +39,12 @@ class ManagedIdentityProperties {
 
   factory ManagedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityProperties(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      managedIdentityName: map['managedIdentityName'] == null ? null : map['managedIdentityName'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      managedIdentityName: map['managedIdentityName'] == null ? null : (map['managedIdentityName'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

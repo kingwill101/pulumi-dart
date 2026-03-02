@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
 class ExecutionReferenceResponse {
   /// Optional. Completion timestamp of the execution.
-  final String completionTimestamp;
+  final pulumi.Input<String> completionTimestamp;
   /// Optional. Creation timestamp of the execution.
-  final String creationTimestamp;
+  final pulumi.Input<String> creationTimestamp;
   /// Optional. Name of the execution.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ExecutionReferenceResponse].
   /// [completionTimestamp] Optional. Completion timestamp of the execution.
@@ -30,9 +31,9 @@ class ExecutionReferenceResponse {
 
   factory ExecutionReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionReferenceResponse(
-      completionTimestamp: map['completionTimestamp'] as String,
-      creationTimestamp: map['creationTimestamp'] as String,
-      name: map['name'] as String,
+      completionTimestamp: (map['completionTimestamp'] as String).input(),
+      creationTimestamp: (map['creationTimestamp'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

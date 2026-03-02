@@ -22,15 +22,11 @@ class ListArgs {
   /// [kind] The type of the custom list.
   /// [name] The name of the custom list.
   ListArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? items,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      items = pulumi.Input.asOptionalInput<List<String>>(items),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.description,
+    this.items,
+    this.kind,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListArgs {
 
   factory ListArgs.fromMap(Map<String, dynamic> map) {
     return ListArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      items: map['items'] == null ? null : pulumi.Output.create<List<String>>((map['items'] as List).cast<String>()),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

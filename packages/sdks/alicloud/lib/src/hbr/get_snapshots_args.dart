@@ -47,33 +47,20 @@ class GetSnapshotsArgs {
   /// [status] The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
   /// [vaultId] The ID of Vault.
   GetSnapshotsArgs({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? completeTime,
-    pulumi.Output<String>? completeTimeChecker,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? limit,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? query,
-    required pulumi.Output<String> sourceType,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> vaultId,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      completeTime = pulumi.Input.asOptionalInput<String>(completeTime),
-      completeTimeChecker = pulumi.Input.asOptionalInput<String>(completeTimeChecker),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      limit = pulumi.Input.asOptionalInput<int>(limit),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      query = pulumi.Input.asOptionalInput<String>(query),
-      sourceType = pulumi.Input.asInput<String>(sourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    this.bucket,
+    this.completeTime,
+    this.completeTimeChecker,
+    this.createTime,
+    this.fileSystemId,
+    this.ids,
+    this.instanceId,
+    this.limit,
+    this.outputFile,
+    this.query,
+    required this.sourceType,
+    this.status,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class GetSnapshotsArgs {
 
   factory GetSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsArgs(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      completeTime: map['completeTime'] == null ? null : pulumi.Output.create<String>(map['completeTime'] as String),
-      completeTimeChecker: map['completeTimeChecker'] == null ? null : pulumi.Output.create<String>(map['completeTimeChecker'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      limit: map['limit'] == null ? null : pulumi.Output.create<int>(map['limit'] as int),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      query: map['query'] == null ? null : pulumi.Output.create<String>(map['query'] as String),
-      sourceType: pulumi.Output.create<String>(map['sourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      completeTime: map['completeTime'] == null ? null : (map['completeTime'] as String).input(),
+      completeTimeChecker: map['completeTimeChecker'] == null ? null : (map['completeTimeChecker'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

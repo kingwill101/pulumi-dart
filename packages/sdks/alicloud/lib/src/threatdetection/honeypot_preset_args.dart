@@ -23,15 +23,11 @@ class HoneypotPresetArgs {
   /// [nodeId] Unique id of management node
   /// [presetName] Honeypot template custom name
   HoneypotPresetArgs({
-    required pulumi.Output<String> honeypotImageName,
-    required pulumi.Output<HoneypotPresetMeta> meta,
-    required pulumi.Output<String> nodeId,
-    required pulumi.Output<String> presetName,
-  }) :
-      honeypotImageName = pulumi.Input.asInput<String>(honeypotImageName),
-      meta = pulumi.Input.asInput<HoneypotPresetMeta>(meta),
-      nodeId = pulumi.Input.asInput<String>(nodeId),
-      presetName = pulumi.Input.asInput<String>(presetName);
+    required this.honeypotImageName,
+    required this.meta,
+    required this.nodeId,
+    required this.presetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class HoneypotPresetArgs {
 
   factory HoneypotPresetArgs.fromMap(Map<String, dynamic> map) {
     return HoneypotPresetArgs(
-      honeypotImageName: pulumi.Output.create<String>(map['honeypotImageName'] as String),
-      meta: pulumi.Output.create<HoneypotPresetMeta>(HoneypotPresetMeta.fromMap((map['meta'] as Map).cast<String, dynamic>())),
-      nodeId: pulumi.Output.create<String>(map['nodeId'] as String),
-      presetName: pulumi.Output.create<String>(map['presetName'] as String),
+      honeypotImageName: (map['honeypotImageName'] as String).input(),
+      meta: (HoneypotPresetMeta.fromMap((map['meta'] as Map).cast<String, dynamic>())).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      presetName: (map['presetName'] as String).input(),
     );
   }
 }

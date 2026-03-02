@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbServersDbServerProperty {
   /// Output only
-  final List<String> dbNodeIds;
+  final pulumi.Input<List<String>> dbNodeIds;
   /// Output only
-  final int dbNodeStorageSizeGb;
+  final pulumi.Input<int> dbNodeStorageSizeGb;
   /// Output only
-  final int maxDbNodeStorageSizeGb;
+  final pulumi.Input<int> maxDbNodeStorageSizeGb;
   /// Output only
-  final int maxMemorySizeGb;
+  final pulumi.Input<int> maxMemorySizeGb;
   /// Output only
-  final int maxOcpuCount;
+  final pulumi.Input<int> maxOcpuCount;
   /// Output only
-  final int memorySizeGb;
+  final pulumi.Input<int> memorySizeGb;
   /// Output only
-  final String ocid;
+  final pulumi.Input<String> ocid;
   /// Output only
-  final int ocpuCount;
+  final pulumi.Input<int> ocpuCount;
   /// Output only
-  final String state;
+  final pulumi.Input<String> state;
   /// Output only
-  final int vmCount;
+  final pulumi.Input<int> vmCount;
 
   /// Creates a new [GetDbServersDbServerProperty].
   /// [dbNodeIds] Output only
@@ -64,16 +65,16 @@ class GetDbServersDbServerProperty {
 
   factory GetDbServersDbServerProperty.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServerProperty(
-      dbNodeIds: (map['dbNodeIds'] as List).cast<String>(),
-      dbNodeStorageSizeGb: map['dbNodeStorageSizeGb'] as int,
-      maxDbNodeStorageSizeGb: map['maxDbNodeStorageSizeGb'] as int,
-      maxMemorySizeGb: map['maxMemorySizeGb'] as int,
-      maxOcpuCount: map['maxOcpuCount'] as int,
-      memorySizeGb: map['memorySizeGb'] as int,
-      ocid: map['ocid'] as String,
-      ocpuCount: map['ocpuCount'] as int,
-      state: map['state'] as String,
-      vmCount: map['vmCount'] as int,
+      dbNodeIds: ((map['dbNodeIds'] as List).cast<String>()).input(),
+      dbNodeStorageSizeGb: (map['dbNodeStorageSizeGb'] as int).input(),
+      maxDbNodeStorageSizeGb: (map['maxDbNodeStorageSizeGb'] as int).input(),
+      maxMemorySizeGb: (map['maxMemorySizeGb'] as int).input(),
+      maxOcpuCount: (map['maxOcpuCount'] as int).input(),
+      memorySizeGb: (map['memorySizeGb'] as int).input(),
+      ocid: (map['ocid'] as String).input(),
+      ocpuCount: (map['ocpuCount'] as int).input(),
+      state: (map['state'] as String).input(),
+      vmCount: (map['vmCount'] as int).input(),
     );
   }
 }

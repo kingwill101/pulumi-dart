@@ -23,17 +23,12 @@ class AnalysisArgs {
   /// [name] Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
   /// [project] Optional.
   AnalysisArgs({
-    pulumi.Output<GoogleCloudContactcenterinsightsV1AnnotatorSelector>? annotatorSelector,
-    required pulumi.Output<String> conversationId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      annotatorSelector = pulumi.Input.asOptionalInput<GoogleCloudContactcenterinsightsV1AnnotatorSelector>(annotatorSelector),
-      conversationId = pulumi.Input.asInput<String>(conversationId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotatorSelector,
+    required this.conversationId,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class AnalysisArgs {
 
   factory AnalysisArgs.fromMap(Map<String, dynamic> map) {
     return AnalysisArgs(
-      annotatorSelector: map['annotatorSelector'] == null ? null : pulumi.Output.create<GoogleCloudContactcenterinsightsV1AnnotatorSelector>(GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())),
-      conversationId: pulumi.Output.create<String>(map['conversationId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotatorSelector: map['annotatorSelector'] == null ? null : (GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())).input(),
+      conversationId: (map['conversationId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

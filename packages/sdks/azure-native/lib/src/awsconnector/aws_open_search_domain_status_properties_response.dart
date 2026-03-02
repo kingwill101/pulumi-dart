@@ -23,67 +23,67 @@ import 'vpcderived_info_response.dart';
 /// Definition of awsOpenSearchDomainStatus
 class AwsOpenSearchDomainStatusPropertiesResponse {
   /// <p>Identity and Access Management (IAM) policy document specifying the access policies for the domain.</p>
-  final String? accessPolicies;
+  final pulumi.Input<String>? accessPolicies;
   /// <p>Key-value pairs that specify advanced configuration options.</p>
-  final Map<String, String>? advancedOptions;
+  final pulumi.Input<Map<String, String>>? advancedOptions;
   /// <p>Settings for fine-grained access control.</p>
-  final AdvancedSecurityOptionsResponse? advancedSecurityOptions;
+  final pulumi.Input<AdvancedSecurityOptionsResponse>? advancedSecurityOptions;
   /// <p>The Amazon Resource Name (ARN) of the domain. For more information, see <a href='https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html'>IAM identifiers </a> in the <i>AWS Identity and Access Management User Guide</i>.</p>
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// <p>Auto-Tune settings for the domain.</p>
-  final AutoTuneOptionsOutputResponse? autoTuneOptions;
+  final pulumi.Input<AutoTuneOptionsOutputResponse>? autoTuneOptions;
   /// <p>Information about a configuration change happening on the domain.</p>
-  final ChangeProgressDetailsResponse? changeProgressDetails;
+  final pulumi.Input<ChangeProgressDetailsResponse>? changeProgressDetails;
   /// <p>Container for the cluster configuration of the domain.</p>
-  final ClusterConfigResponse? clusterConfig;
+  final pulumi.Input<ClusterConfigResponse>? clusterConfig;
   /// <p>Key-value pairs to configure Amazon Cognito authentication for OpenSearch Dashboards.</p>
-  final CognitoOptionsResponse? cognitoOptions;
+  final pulumi.Input<CognitoOptionsResponse>? cognitoOptions;
   /// <p>Creation status of an OpenSearch Service domain. True if domain creation is complete. False if domain creation is still in progress.</p>
-  final bool? created;
+  final pulumi.Input<bool>? created;
   /// <p>Deletion status of an OpenSearch Service domain. True if domain deletion is complete. False if domain deletion is still in progress. Once deletion is complete, the status of the domain is no longer returned.</p>
-  final bool? deleted;
+  final pulumi.Input<bool>? deleted;
   /// <p>Additional options for the domain endpoint, such as whether to require HTTPS for all traffic.</p>
-  final DomainEndpointOptionsResponse? domainEndpointOptions;
+  final pulumi.Input<DomainEndpointOptionsResponse>? domainEndpointOptions;
   /// <p>Unique identifier for the domain.</p>
-  final String? domainId;
+  final pulumi.Input<String>? domainId;
   /// <p>Name of the domain. Domain names are unique across all domains owned by the same account within an Amazon Web Services Region.</p>
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// <p>The status of any changes that are currently in progress for the domain.</p>
-  final DomainProcessingStatusTypeEnumValueResponse? domainProcessingStatus;
+  final pulumi.Input<DomainProcessingStatusTypeEnumValueResponse>? domainProcessingStatus;
   /// <p>Container for EBS-based storage settings for the domain.</p>
-  final EBSOptionsResponse? ebsOptions;
+  final pulumi.Input<EBSOptionsResponse>? ebsOptions;
   /// <p>Encryption at rest settings for the domain.</p>
-  final EncryptionAtRestOptionsResponse? encryptionAtRestOptions;
+  final pulumi.Input<EncryptionAtRestOptionsResponse>? encryptionAtRestOptions;
   /// <p>Domain-specific endpoint used to submit index, search, and data upload requests to the domain.</p>
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// <p>If <code>IPAddressType</code> to set to <code>dualstack</code>, a version 2 domain endpoint is provisioned. This endpoint functions like a normal endpoint, except that it works with both IPv4 and IPv6 IP addresses. Normal endpoints work only with IPv4 IP addresses. </p>
-  final String? endpointV2;
+  final pulumi.Input<String>? endpointV2;
   /// <p>The key-value pair that exists if the OpenSearch Service domain uses VPC endpoints. Example <code>key, value</code>: <code>'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'</code>.</p>
-  final Map<String, String>? endpoints;
+  final pulumi.Input<Map<String, String>>? endpoints;
   /// <p>Version of OpenSearch or Elasticsearch that the domain is running, in the format <code>Elasticsearch_X.Y</code> or <code>OpenSearch_X.Y</code>.</p>
-  final String? engineVersion;
+  final pulumi.Input<String>? engineVersion;
   /// <p>The type of IP addresses supported by the endpoint for the domain.</p>
-  final IPAddressTypeEnumValueResponse? ipAddressType;
+  final pulumi.Input<IPAddressTypeEnumValueResponse>? ipAddressType;
   /// <p>Log publishing options for the domain.</p>
-  final Map<String, LogPublishingOptionResponse>? logPublishingOptions;
+  final pulumi.Input<Map<String, LogPublishingOptionResponse>>? logPublishingOptions;
   /// <p>Information about the domain properties that are currently being modified.</p>
-  final List<ModifyingPropertiesResponse>? modifyingProperties;
+  final pulumi.Input<List<ModifyingPropertiesResponse>>? modifyingProperties;
   /// <p>Whether node-to-node encryption is enabled or disabled.</p>
-  final NodeToNodeEncryptionOptionsResponse? nodeToNodeEncryptionOptions;
+  final pulumi.Input<NodeToNodeEncryptionOptionsResponse>? nodeToNodeEncryptionOptions;
   /// <p>Options that specify a custom 10-hour window during which OpenSearch Service can perform configuration changes on the domain.</p>
-  final OffPeakWindowOptionsResponse? offPeakWindowOptions;
+  final pulumi.Input<OffPeakWindowOptionsResponse>? offPeakWindowOptions;
   /// <p>The status of the domain configuration. True if OpenSearch Service is processing configuration changes. False if the configuration is active.</p>
-  final bool? processing;
+  final pulumi.Input<bool>? processing;
   /// <p>The current status of the domain's service software.</p>
-  final ServiceSoftwareOptionsResponse? serviceSoftwareOptions;
+  final pulumi.Input<ServiceSoftwareOptionsResponse>? serviceSoftwareOptions;
   /// <p>DEPRECATED. Container for parameters required to configure automated snapshots of domain indexes.</p>
-  final SnapshotOptionsResponse? snapshotOptions;
+  final pulumi.Input<SnapshotOptionsResponse>? snapshotOptions;
   /// <p>Service software update options for the domain.</p>
-  final SoftwareUpdateOptionsResponse? softwareUpdateOptions;
+  final pulumi.Input<SoftwareUpdateOptionsResponse>? softwareUpdateOptions;
   /// <p>The status of a domain version upgrade to a new version of OpenSearch or Elasticsearch. True if OpenSearch Service is in the process of a version upgrade. False if the configuration is active.</p>
-  final bool? upgradeProcessing;
+  final pulumi.Input<bool>? upgradeProcessing;
   /// <p>The VPC configuration for the domain.</p>
-  final VPCDerivedInfoResponse? vpcOptions;
+  final pulumi.Input<VPCDerivedInfoResponse>? vpcOptions;
 
   /// Creates a new [AwsOpenSearchDomainStatusPropertiesResponse].
   /// [accessPolicies] <p>Identity and Access Management (IAM) policy document specifying the access policies for the domain.</p>
@@ -155,71 +155,71 @@ class AwsOpenSearchDomainStatusPropertiesResponse {
     return <String, dynamic>{
       'accessPolicies': ?accessPolicies,
       'advancedOptions': ?advancedOptions,
-      'advancedSecurityOptions': ?advancedSecurityOptions == null ? null : advancedSecurityOptions!.toMap(),
+      'advancedSecurityOptions': ?pulumi.Input.mapOptionalInputValue<AdvancedSecurityOptionsResponse, Map<String, dynamic>>(advancedSecurityOptions, (value) => value.toMap()),
       'arn': ?arn,
-      'autoTuneOptions': ?autoTuneOptions == null ? null : autoTuneOptions!.toMap(),
-      'changeProgressDetails': ?changeProgressDetails == null ? null : changeProgressDetails!.toMap(),
-      'clusterConfig': ?clusterConfig == null ? null : clusterConfig!.toMap(),
-      'cognitoOptions': ?cognitoOptions == null ? null : cognitoOptions!.toMap(),
+      'autoTuneOptions': ?pulumi.Input.mapOptionalInputValue<AutoTuneOptionsOutputResponse, Map<String, dynamic>>(autoTuneOptions, (value) => value.toMap()),
+      'changeProgressDetails': ?pulumi.Input.mapOptionalInputValue<ChangeProgressDetailsResponse, Map<String, dynamic>>(changeProgressDetails, (value) => value.toMap()),
+      'clusterConfig': ?pulumi.Input.mapOptionalInputValue<ClusterConfigResponse, Map<String, dynamic>>(clusterConfig, (value) => value.toMap()),
+      'cognitoOptions': ?pulumi.Input.mapOptionalInputValue<CognitoOptionsResponse, Map<String, dynamic>>(cognitoOptions, (value) => value.toMap()),
       'created': ?created,
       'deleted': ?deleted,
-      'domainEndpointOptions': ?domainEndpointOptions == null ? null : domainEndpointOptions!.toMap(),
+      'domainEndpointOptions': ?pulumi.Input.mapOptionalInputValue<DomainEndpointOptionsResponse, Map<String, dynamic>>(domainEndpointOptions, (value) => value.toMap()),
       'domainId': ?domainId,
       'domainName': ?domainName,
-      'domainProcessingStatus': ?domainProcessingStatus == null ? null : domainProcessingStatus!.toMap(),
-      'ebsOptions': ?ebsOptions == null ? null : ebsOptions!.toMap(),
-      'encryptionAtRestOptions': ?encryptionAtRestOptions == null ? null : encryptionAtRestOptions!.toMap(),
+      'domainProcessingStatus': ?pulumi.Input.mapOptionalInputValue<DomainProcessingStatusTypeEnumValueResponse, Map<String, dynamic>>(domainProcessingStatus, (value) => value.toMap()),
+      'ebsOptions': ?pulumi.Input.mapOptionalInputValue<EBSOptionsResponse, Map<String, dynamic>>(ebsOptions, (value) => value.toMap()),
+      'encryptionAtRestOptions': ?pulumi.Input.mapOptionalInputValue<EncryptionAtRestOptionsResponse, Map<String, dynamic>>(encryptionAtRestOptions, (value) => value.toMap()),
       'endpoint': ?endpoint,
       'endpointV2': ?endpointV2,
       'endpoints': ?endpoints,
       'engineVersion': ?engineVersion,
-      'ipAddressType': ?ipAddressType == null ? null : ipAddressType!.toMap(),
-      'logPublishingOptions': ?logPublishingOptions == null ? null : pulumi.Input.encodeMapValues<LogPublishingOptionResponse, Map<String, dynamic>>(logPublishingOptions!, (value) => value.toMap()),
-      'modifyingProperties': ?modifyingProperties == null ? null : pulumi.Input.encodeList<ModifyingPropertiesResponse, Map<String, dynamic>>(modifyingProperties!, (value) => value.toMap()),
-      'nodeToNodeEncryptionOptions': ?nodeToNodeEncryptionOptions == null ? null : nodeToNodeEncryptionOptions!.toMap(),
-      'offPeakWindowOptions': ?offPeakWindowOptions == null ? null : offPeakWindowOptions!.toMap(),
+      'ipAddressType': ?pulumi.Input.mapOptionalInputValue<IPAddressTypeEnumValueResponse, Map<String, dynamic>>(ipAddressType, (value) => value.toMap()),
+      'logPublishingOptions': ?pulumi.Input.mapOptionalInputValue<Map<String, LogPublishingOptionResponse>, Map<String, Map<String, dynamic>>>(logPublishingOptions, (value) => pulumi.Input.encodeMapValues<LogPublishingOptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'modifyingProperties': ?pulumi.Input.mapOptionalInputValue<List<ModifyingPropertiesResponse>, List<Map<String, dynamic>>>(modifyingProperties, (value) => pulumi.Input.encodeList<ModifyingPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeToNodeEncryptionOptions': ?pulumi.Input.mapOptionalInputValue<NodeToNodeEncryptionOptionsResponse, Map<String, dynamic>>(nodeToNodeEncryptionOptions, (value) => value.toMap()),
+      'offPeakWindowOptions': ?pulumi.Input.mapOptionalInputValue<OffPeakWindowOptionsResponse, Map<String, dynamic>>(offPeakWindowOptions, (value) => value.toMap()),
       'processing': ?processing,
-      'serviceSoftwareOptions': ?serviceSoftwareOptions == null ? null : serviceSoftwareOptions!.toMap(),
-      'snapshotOptions': ?snapshotOptions == null ? null : snapshotOptions!.toMap(),
-      'softwareUpdateOptions': ?softwareUpdateOptions == null ? null : softwareUpdateOptions!.toMap(),
+      'serviceSoftwareOptions': ?pulumi.Input.mapOptionalInputValue<ServiceSoftwareOptionsResponse, Map<String, dynamic>>(serviceSoftwareOptions, (value) => value.toMap()),
+      'snapshotOptions': ?pulumi.Input.mapOptionalInputValue<SnapshotOptionsResponse, Map<String, dynamic>>(snapshotOptions, (value) => value.toMap()),
+      'softwareUpdateOptions': ?pulumi.Input.mapOptionalInputValue<SoftwareUpdateOptionsResponse, Map<String, dynamic>>(softwareUpdateOptions, (value) => value.toMap()),
       'upgradeProcessing': ?upgradeProcessing,
-      'vpcOptions': ?vpcOptions == null ? null : vpcOptions!.toMap(),
+      'vpcOptions': ?pulumi.Input.mapOptionalInputValue<VPCDerivedInfoResponse, Map<String, dynamic>>(vpcOptions, (value) => value.toMap()),
     };
   }
 
   factory AwsOpenSearchDomainStatusPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsOpenSearchDomainStatusPropertiesResponse(
-      accessPolicies: map['accessPolicies'] == null ? null : map['accessPolicies'] as String,
-      advancedOptions: map['advancedOptions'] == null ? null : (map['advancedOptions'] as Map).cast<String, String>(),
-      advancedSecurityOptions: map['advancedSecurityOptions'] == null ? null : AdvancedSecurityOptionsResponse.fromMap((map['advancedSecurityOptions'] as Map).cast<String, dynamic>()),
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      autoTuneOptions: map['autoTuneOptions'] == null ? null : AutoTuneOptionsOutputResponse.fromMap((map['autoTuneOptions'] as Map).cast<String, dynamic>()),
-      changeProgressDetails: map['changeProgressDetails'] == null ? null : ChangeProgressDetailsResponse.fromMap((map['changeProgressDetails'] as Map).cast<String, dynamic>()),
-      clusterConfig: map['clusterConfig'] == null ? null : ClusterConfigResponse.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>()),
-      cognitoOptions: map['cognitoOptions'] == null ? null : CognitoOptionsResponse.fromMap((map['cognitoOptions'] as Map).cast<String, dynamic>()),
-      created: map['created'] == null ? null : map['created'] as bool,
-      deleted: map['deleted'] == null ? null : map['deleted'] as bool,
-      domainEndpointOptions: map['domainEndpointOptions'] == null ? null : DomainEndpointOptionsResponse.fromMap((map['domainEndpointOptions'] as Map).cast<String, dynamic>()),
-      domainId: map['domainId'] == null ? null : map['domainId'] as String,
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      domainProcessingStatus: map['domainProcessingStatus'] == null ? null : DomainProcessingStatusTypeEnumValueResponse.fromMap((map['domainProcessingStatus'] as Map).cast<String, dynamic>()),
-      ebsOptions: map['ebsOptions'] == null ? null : EBSOptionsResponse.fromMap((map['ebsOptions'] as Map).cast<String, dynamic>()),
-      encryptionAtRestOptions: map['encryptionAtRestOptions'] == null ? null : EncryptionAtRestOptionsResponse.fromMap((map['encryptionAtRestOptions'] as Map).cast<String, dynamic>()),
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      endpointV2: map['endpointV2'] == null ? null : map['endpointV2'] as String,
-      endpoints: map['endpoints'] == null ? null : (map['endpoints'] as Map).cast<String, String>(),
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
-      ipAddressType: map['ipAddressType'] == null ? null : IPAddressTypeEnumValueResponse.fromMap((map['ipAddressType'] as Map).cast<String, dynamic>()),
-      logPublishingOptions: map['logPublishingOptions'] == null ? null : pulumi.Input.decodeMapValues<LogPublishingOptionResponse>(map['logPublishingOptions'], (value) => LogPublishingOptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      modifyingProperties: map['modifyingProperties'] == null ? null : pulumi.Input.decodeList<ModifyingPropertiesResponse>(map['modifyingProperties'], (value) => ModifyingPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      nodeToNodeEncryptionOptions: map['nodeToNodeEncryptionOptions'] == null ? null : NodeToNodeEncryptionOptionsResponse.fromMap((map['nodeToNodeEncryptionOptions'] as Map).cast<String, dynamic>()),
-      offPeakWindowOptions: map['offPeakWindowOptions'] == null ? null : OffPeakWindowOptionsResponse.fromMap((map['offPeakWindowOptions'] as Map).cast<String, dynamic>()),
-      processing: map['processing'] == null ? null : map['processing'] as bool,
-      serviceSoftwareOptions: map['serviceSoftwareOptions'] == null ? null : ServiceSoftwareOptionsResponse.fromMap((map['serviceSoftwareOptions'] as Map).cast<String, dynamic>()),
-      snapshotOptions: map['snapshotOptions'] == null ? null : SnapshotOptionsResponse.fromMap((map['snapshotOptions'] as Map).cast<String, dynamic>()),
-      softwareUpdateOptions: map['softwareUpdateOptions'] == null ? null : SoftwareUpdateOptionsResponse.fromMap((map['softwareUpdateOptions'] as Map).cast<String, dynamic>()),
-      upgradeProcessing: map['upgradeProcessing'] == null ? null : map['upgradeProcessing'] as bool,
-      vpcOptions: map['vpcOptions'] == null ? null : VPCDerivedInfoResponse.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>()),
+      accessPolicies: map['accessPolicies'] == null ? null : (map['accessPolicies'] as String).input(),
+      advancedOptions: map['advancedOptions'] == null ? null : ((map['advancedOptions'] as Map).cast<String, String>()).input(),
+      advancedSecurityOptions: map['advancedSecurityOptions'] == null ? null : (AdvancedSecurityOptionsResponse.fromMap((map['advancedSecurityOptions'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      autoTuneOptions: map['autoTuneOptions'] == null ? null : (AutoTuneOptionsOutputResponse.fromMap((map['autoTuneOptions'] as Map).cast<String, dynamic>())).input(),
+      changeProgressDetails: map['changeProgressDetails'] == null ? null : (ChangeProgressDetailsResponse.fromMap((map['changeProgressDetails'] as Map).cast<String, dynamic>())).input(),
+      clusterConfig: map['clusterConfig'] == null ? null : (ClusterConfigResponse.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())).input(),
+      cognitoOptions: map['cognitoOptions'] == null ? null : (CognitoOptionsResponse.fromMap((map['cognitoOptions'] as Map).cast<String, dynamic>())).input(),
+      created: map['created'] == null ? null : (map['created'] as bool).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
+      domainEndpointOptions: map['domainEndpointOptions'] == null ? null : (DomainEndpointOptionsResponse.fromMap((map['domainEndpointOptions'] as Map).cast<String, dynamic>())).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainProcessingStatus: map['domainProcessingStatus'] == null ? null : (DomainProcessingStatusTypeEnumValueResponse.fromMap((map['domainProcessingStatus'] as Map).cast<String, dynamic>())).input(),
+      ebsOptions: map['ebsOptions'] == null ? null : (EBSOptionsResponse.fromMap((map['ebsOptions'] as Map).cast<String, dynamic>())).input(),
+      encryptionAtRestOptions: map['encryptionAtRestOptions'] == null ? null : (EncryptionAtRestOptionsResponse.fromMap((map['encryptionAtRestOptions'] as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpointV2: map['endpointV2'] == null ? null : (map['endpointV2'] as String).input(),
+      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as Map).cast<String, String>()).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (IPAddressTypeEnumValueResponse.fromMap((map['ipAddressType'] as Map).cast<String, dynamic>())).input(),
+      logPublishingOptions: map['logPublishingOptions'] == null ? null : (pulumi.Input.decodeMapValues<LogPublishingOptionResponse>(map['logPublishingOptions'], (value) => LogPublishingOptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modifyingProperties: map['modifyingProperties'] == null ? null : (pulumi.Input.decodeList<ModifyingPropertiesResponse>(map['modifyingProperties'], (value) => ModifyingPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeToNodeEncryptionOptions: map['nodeToNodeEncryptionOptions'] == null ? null : (NodeToNodeEncryptionOptionsResponse.fromMap((map['nodeToNodeEncryptionOptions'] as Map).cast<String, dynamic>())).input(),
+      offPeakWindowOptions: map['offPeakWindowOptions'] == null ? null : (OffPeakWindowOptionsResponse.fromMap((map['offPeakWindowOptions'] as Map).cast<String, dynamic>())).input(),
+      processing: map['processing'] == null ? null : (map['processing'] as bool).input(),
+      serviceSoftwareOptions: map['serviceSoftwareOptions'] == null ? null : (ServiceSoftwareOptionsResponse.fromMap((map['serviceSoftwareOptions'] as Map).cast<String, dynamic>())).input(),
+      snapshotOptions: map['snapshotOptions'] == null ? null : (SnapshotOptionsResponse.fromMap((map['snapshotOptions'] as Map).cast<String, dynamic>())).input(),
+      softwareUpdateOptions: map['softwareUpdateOptions'] == null ? null : (SoftwareUpdateOptionsResponse.fromMap((map['softwareUpdateOptions'] as Map).cast<String, dynamic>())).input(),
+      upgradeProcessing: map['upgradeProcessing'] == null ? null : (map['upgradeProcessing'] as bool).input(),
+      vpcOptions: map['vpcOptions'] == null ? null : (VPCDerivedInfoResponse.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetFirewallTemplateArgs {
   /// Creates a new [GetFirewallTemplateArgs].
   /// [slug] The slug of the firewall template.
   GetFirewallTemplateArgs({
-    required pulumi.Output<String> slug,
-  }) :
-      slug = pulumi.Input.asInput<String>(slug);
+    required this.slug,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetFirewallTemplateArgs {
 
   factory GetFirewallTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallTemplateArgs(
-      slug: pulumi.Output.create<String>(map['slug'] as String),
+      slug: (map['slug'] as String).input(),
     );
   }
 }

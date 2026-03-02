@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_interface_driver_guest.dart';
 import 'domain_devices_interface_driver_host.dart';
 
 class DomainDevicesInterfaceDriver {
   /// Enables or disables Address Translation Services (ATS) for the interface driver, affecting how the interface processes addresses.
-  final String? ats;
+  final pulumi.Input<String>? ats;
   /// Controls the event index for the interface driver, which can influence how events are processed and reported.
-  final String? eventIdx;
+  final pulumi.Input<String>? eventIdx;
   /// Sets parameters specific to the guest OS for interface driver configuration, allowing for optimizations tailored to the guest environment.
-  final DomainDevicesInterfaceDriverGuest? guest;
+  final pulumi.Input<DomainDevicesInterfaceDriverGuest>? guest;
   /// Configures parameters specific to the host for interface driver settings, influencing how the host interacts with the interface.
-  final DomainDevicesInterfaceDriverHost? host;
+  final pulumi.Input<DomainDevicesInterfaceDriverHost>? host;
   /// Configures the use of I/O event file descriptors for the interface driver, impacting how I/O operations are managed.
-  final String? ioEventFd;
+  final pulumi.Input<String>? ioEventFd;
   /// Enables or disables Input/Output Memory Management Unit (IOMMU) support for the interface driver, which affects memory management for I/O operations.
-  final String? iommu;
+  final pulumi.Input<String>? iommu;
   /// Specifies the name of the driver associated with the interface, allowing for custom driver configurations.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Configures whether packed ring support is enabled or disabled for the driver, impacting how packet data is managed.
-  final String? packed;
+  final pulumi.Input<String>? packed;
   /// Enables or disables the page per virtual queue feature for the driver, influencing memory management for packet queues.
-  final String? pagePerVq;
+  final pulumi.Input<String>? pagePerVq;
   /// Sets the number of queues for the driver, which can enhance performance by distributing traffic across multiple processing paths.
-  final double? queues;
+  final pulumi.Input<double>? queues;
   /// Enables or disables Receive Side Scaling (RSS) for the driver, allowing for better distribution of incoming traffic across CPUs.
-  final String? rss;
+  final pulumi.Input<String>? rss;
   /// Controls whether RSS hash reporting is enabled for the driver, influencing how hash values for packet routing are handled.
-  final String? rssHashReport;
+  final pulumi.Input<String>? rssHashReport;
   /// Configures the size of the receive queue for the driver, impacting how packets are buffered during reception.
-  final double? rxQueueSize;
+  final pulumi.Input<double>? rxQueueSize;
   /// Configures the transmission mode for the network interface driver.
-  final String? txMode;
+  final pulumi.Input<String>? txMode;
   /// Sets the size of the transmit queue for the network interface driver.
-  final double? txQueueSize;
+  final pulumi.Input<double>? txQueueSize;
 
   /// Creates a new [DomainDevicesInterfaceDriver].
   /// [ats] Enables or disables Address Translation Services (ATS) for the interface driver, affecting how the interface processes addresses.
@@ -73,8 +74,8 @@ class DomainDevicesInterfaceDriver {
     return <String, dynamic>{
       'ats': ?ats,
       'eventIdx': ?eventIdx,
-      'guest': ?guest == null ? null : guest!.toMap(),
-      'host': ?host == null ? null : host!.toMap(),
+      'guest': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceDriverGuest, Map<String, dynamic>>(guest, (value) => value.toMap()),
+      'host': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceDriverHost, Map<String, dynamic>>(host, (value) => value.toMap()),
       'ioEventFd': ?ioEventFd,
       'iommu': ?iommu,
       'name': ?name,
@@ -91,21 +92,21 @@ class DomainDevicesInterfaceDriver {
 
   factory DomainDevicesInterfaceDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceDriver(
-      ats: map['ats'] == null ? null : map['ats'] as String,
-      eventIdx: map['eventIdx'] == null ? null : map['eventIdx'] as String,
-      guest: map['guest'] == null ? null : DomainDevicesInterfaceDriverGuest.fromMap((map['guest'] as Map).cast<String, dynamic>()),
-      host: map['host'] == null ? null : DomainDevicesInterfaceDriverHost.fromMap((map['host'] as Map).cast<String, dynamic>()),
-      ioEventFd: map['ioEventFd'] == null ? null : map['ioEventFd'] as String,
-      iommu: map['iommu'] == null ? null : map['iommu'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      packed: map['packed'] == null ? null : map['packed'] as String,
-      pagePerVq: map['pagePerVq'] == null ? null : map['pagePerVq'] as String,
-      queues: map['queues'] == null ? null : map['queues'] as double,
-      rss: map['rss'] == null ? null : map['rss'] as String,
-      rssHashReport: map['rssHashReport'] == null ? null : map['rssHashReport'] as String,
-      rxQueueSize: map['rxQueueSize'] == null ? null : map['rxQueueSize'] as double,
-      txMode: map['txMode'] == null ? null : map['txMode'] as String,
-      txQueueSize: map['txQueueSize'] == null ? null : map['txQueueSize'] as double,
+      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
+      eventIdx: map['eventIdx'] == null ? null : (map['eventIdx'] as String).input(),
+      guest: map['guest'] == null ? null : (DomainDevicesInterfaceDriverGuest.fromMap((map['guest'] as Map).cast<String, dynamic>())).input(),
+      host: map['host'] == null ? null : (DomainDevicesInterfaceDriverHost.fromMap((map['host'] as Map).cast<String, dynamic>())).input(),
+      ioEventFd: map['ioEventFd'] == null ? null : (map['ioEventFd'] as String).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
+      queues: map['queues'] == null ? null : (map['queues'] as double).input(),
+      rss: map['rss'] == null ? null : (map['rss'] as String).input(),
+      rssHashReport: map['rssHashReport'] == null ? null : (map['rssHashReport'] as String).input(),
+      rxQueueSize: map['rxQueueSize'] == null ? null : (map['rxQueueSize'] as double).input(),
+      txMode: map['txMode'] == null ? null : (map['txMode'] as String).input(),
+      txQueueSize: map['txQueueSize'] == null ? null : (map['txQueueSize'] as double).input(),
     );
   }
 }

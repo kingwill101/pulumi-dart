@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The share mount point.
 class MountPointMapResponse {
   /// Mount point for the share.
-  final String mountPoint;
+  final pulumi.Input<String> mountPoint;
   /// Mounting type.
-  final String mountType;
+  final pulumi.Input<String> mountType;
   /// ID of the role to which share is mounted.
-  final String roleId;
+  final pulumi.Input<String> roleId;
   /// Role type.
-  final String roleType;
+  final pulumi.Input<String> roleType;
   /// ID of the share mounted to the role VM.
-  final String shareId;
+  final pulumi.Input<String> shareId;
 
   /// Creates a new [MountPointMapResponse].
   /// [mountPoint] Mount point for the share.
@@ -40,11 +41,11 @@ class MountPointMapResponse {
 
   factory MountPointMapResponse.fromMap(Map<String, dynamic> map) {
     return MountPointMapResponse(
-      mountPoint: map['mountPoint'] as String,
-      mountType: map['mountType'] as String,
-      roleId: map['roleId'] as String,
-      roleType: map['roleType'] as String,
-      shareId: map['shareId'] as String,
+      mountPoint: (map['mountPoint'] as String).input(),
+      mountType: (map['mountType'] as String).input(),
+      roleId: (map['roleId'] as String).input(),
+      roleType: (map['roleType'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

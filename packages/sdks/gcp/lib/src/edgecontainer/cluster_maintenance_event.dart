@@ -1,41 +1,42 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMaintenanceEvent {
   /// (Output)
   /// The time when the maintenance event request was created.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// (Output)
   /// The time when the maintenance event ended, either successfully or not. If
   /// the maintenance event is split into multiple maintenance windows,
   /// end_time is only updated when the whole flow ends.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// (Output)
   /// The operation for running the maintenance event. Specified in the format
   /// projects/*/locations/*/operations/*. If the maintenance event is split
   /// into multiple operations (e.g. due to maintenance windows), the latest
   /// one is recorded.
-  final String? operation;
+  final pulumi.Input<String>? operation;
   /// (Output)
   /// The schedule of the maintenance event.
-  final String? schedule;
+  final pulumi.Input<String>? schedule;
   /// (Output)
   /// The time when the maintenance event started.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// (Output)
   /// Indicates the maintenance event state.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The target cluster version. For example: "1.5.0".
-  final String? targetVersion;
+  final pulumi.Input<String>? targetVersion;
   /// (Output)
   /// Indicates the maintenance event type.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// (Output)
   /// The time when the maintenance event message was updated.
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
   /// (Output)
   /// UUID of the maintenance event.
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [ClusterMaintenanceEvent].
   /// [createTime] (Output)
@@ -78,16 +79,16 @@ class ClusterMaintenanceEvent {
 
   factory ClusterMaintenanceEvent.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceEvent(
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      operation: map['operation'] == null ? null : map['operation'] as String,
-      schedule: map['schedule'] == null ? null : map['schedule'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      targetVersion: map['targetVersion'] == null ? null : map['targetVersion'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      operation: map['operation'] == null ? null : (map['operation'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

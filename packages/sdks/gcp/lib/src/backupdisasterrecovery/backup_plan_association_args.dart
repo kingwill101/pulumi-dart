@@ -33,19 +33,13 @@ class BackupPlanAssociationArgs {
   /// [resource] The resource for which BPA needs to be created
   /// [resourceType] The resource type of workload on which backupplan is applied.
   BackupPlanAssociationArgs({
-    required pulumi.Output<String> backupPlan,
-    required pulumi.Output<String> backupPlanAssociationId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> resource,
-    required pulumi.Output<String> resourceType,
-  }) :
-      backupPlan = pulumi.Input.asInput<String>(backupPlan),
-      backupPlanAssociationId = pulumi.Input.asInput<String>(backupPlanAssociationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asInput<String>(resource),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    required this.backupPlan,
+    required this.backupPlanAssociationId,
+    required this.location,
+    this.project,
+    required this.resource,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class BackupPlanAssociationArgs {
 
   factory BackupPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationArgs(
-      backupPlan: pulumi.Output.create<String>(map['backupPlan'] as String),
-      backupPlanAssociationId: pulumi.Output.create<String>(map['backupPlanAssociationId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resource: pulumi.Output.create<String>(map['resource'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      backupPlan: (map['backupPlan'] as String).input(),
+      backupPlanAssociationId: (map['backupPlanAssociationId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resource: (map['resource'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

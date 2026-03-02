@@ -16,11 +16,9 @@ class InstanceSharedIpsArgs {
   /// [addresses] The set of IPs to share with the Linode.
   /// [linodeId] The ID of the Linode to share the IPs to.
   InstanceSharedIpsArgs({
-    required pulumi.Output<List<String>> addresses,
-    required pulumi.Output<int> linodeId,
-  }) :
-      addresses = pulumi.Input.asInput<List<String>>(addresses),
-      linodeId = pulumi.Input.asInput<int>(linodeId);
+    required this.addresses,
+    required this.linodeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class InstanceSharedIpsArgs {
 
   factory InstanceSharedIpsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceSharedIpsArgs(
-      addresses: pulumi.Output.create<List<String>>((map['addresses'] as List).cast<String>()),
-      linodeId: pulumi.Output.create<int>(map['linodeId'] as int),
+      addresses: ((map['addresses'] as List).cast<String>()).input(),
+      linodeId: (map['linodeId'] as int).input(),
     );
   }
 }

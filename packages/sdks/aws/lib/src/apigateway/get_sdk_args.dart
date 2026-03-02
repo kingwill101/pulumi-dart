@@ -25,17 +25,12 @@ class GetSdkArgs {
   /// [sdkType] Language for the generated SDK. Currently `java`, `javascript`, `android`, `objectivec` (for iOS), `swift` (for iOS), and `ruby` are supported.
   /// [stageName] Name of the Stage that will be exported.
   GetSdkArgs({
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApiId,
-    required pulumi.Output<String> sdkType,
-    required pulumi.Output<String> stageName,
-  }) :
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asInput<String>(restApiId),
-      sdkType = pulumi.Input.asInput<String>(sdkType),
-      stageName = pulumi.Input.asInput<String>(stageName);
+    this.parameters,
+    this.region,
+    required this.restApiId,
+    required this.sdkType,
+    required this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSdkArgs {
 
   factory GetSdkArgs.fromMap(Map<String, dynamic> map) {
     return GetSdkArgs(
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: pulumi.Output.create<String>(map['restApiId'] as String),
-      sdkType: pulumi.Output.create<String>(map['sdkType'] as String),
-      stageName: pulumi.Output.create<String>(map['stageName'] as String),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: (map['restApiId'] as String).input(),
+      sdkType: (map['sdkType'] as String).input(),
+      stageName: (map['stageName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model that represents a reference to a Target in the selector.
 class TargetReferenceResponse {
   /// String of the resource ID of a Target resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// Enum of the Target reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TargetReferenceResponse].
   /// [id] String of the resource ID of a Target resource.
@@ -25,8 +26,8 @@ class TargetReferenceResponse {
 
   factory TargetReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TargetReferenceResponse(
-      id: map['id'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

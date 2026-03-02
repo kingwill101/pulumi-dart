@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageRawDisk {
   /// The format used to encode and transmit the block device, which
@@ -8,14 +9,14 @@ class ImageRawDisk {
   /// image is created.
   /// Default value is `TAR`.
   /// Possible values are: `TAR`.
-  final String? containerType;
+  final pulumi.Input<String>? containerType;
   /// An optional SHA1 checksum of the disk image before unpackaging.
   /// This is provided by the client when the disk image is created.
-  final String? sha1;
+  final pulumi.Input<String>? sha1;
   /// The full Google Cloud Storage URL where disk storage is stored
   /// You must provide either this property or the sourceDisk property
   /// but not both.
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [ImageRawDisk].
   /// [containerType] The format used to encode and transmit the block device, which
@@ -37,9 +38,9 @@ class ImageRawDisk {
 
   factory ImageRawDisk.fromMap(Map<String, dynamic> map) {
     return ImageRawDisk(
-      containerType: map['containerType'] == null ? null : map['containerType'] as String,
-      sha1: map['sha1'] == null ? null : map['sha1'] as String,
-      source: map['source'] as String,
+      containerType: map['containerType'] == null ? null : (map['containerType'] as String).input(),
+      sha1: map['sha1'] == null ? null : (map['sha1'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

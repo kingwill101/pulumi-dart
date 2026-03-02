@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SQL VM Troubleshoot UnhealthyReplica scenario information.
 class UnhealthyReplicaInfoResponse {
   /// The name of the availability group
-  final String? availabilityGroupName;
+  final pulumi.Input<String>? availabilityGroupName;
 
   /// Creates a new [UnhealthyReplicaInfoResponse].
   /// [availabilityGroupName] The name of the availability group
@@ -20,7 +21,7 @@ class UnhealthyReplicaInfoResponse {
 
   factory UnhealthyReplicaInfoResponse.fromMap(Map<String, dynamic> map) {
     return UnhealthyReplicaInfoResponse(
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : map['availabilityGroupName'] as String,
+      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName'] as String).input(),
     );
   }
 }

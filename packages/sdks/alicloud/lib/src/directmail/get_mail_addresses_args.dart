@@ -25,17 +25,12 @@ class GetMailAddressesArgs {
   /// [sendtype] Account type. Valid values: `batch`, `trigger`.
   /// [status] Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
   GetMailAddressesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyWord,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? sendtype,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyWord = pulumi.Input.asOptionalInput<String>(keyWord),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      sendtype = pulumi.Input.asOptionalInput<String>(sendtype),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.keyWord,
+    this.outputFile,
+    this.sendtype,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetMailAddressesArgs {
 
   factory GetMailAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetMailAddressesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyWord: map['keyWord'] == null ? null : pulumi.Output.create<String>(map['keyWord'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      sendtype: map['sendtype'] == null ? null : pulumi.Output.create<String>(map['sendtype'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyWord: map['keyWord'] == null ? null : (map['keyWord'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      sendtype: map['sendtype'] == null ? null : (map['sendtype'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

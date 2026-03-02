@@ -6,11 +6,11 @@ import 'prevention_job_trigger_inspect_job_inspect_config_limits_max_findings_pe
 class PreventionJobTriggerInspectJobInspectConfigLimits {
   /// Configuration of findings limit given for specified infoTypes.
   /// Structure is documented below.
-  final List<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType>? maxFindingsPerInfoTypes;
+  final pulumi.Input<List<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType>>? maxFindingsPerInfoTypes;
   /// Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
-  final int? maxFindingsPerItem;
+  final pulumi.Input<int>? maxFindingsPerItem;
   /// Max number of findings that will be returned per request/job. The maximum returned is 2000.
-  final int? maxFindingsPerRequest;
+  final pulumi.Input<int>? maxFindingsPerRequest;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigLimits].
   /// [maxFindingsPerInfoTypes] Configuration of findings limit given for specified infoTypes.
@@ -24,7 +24,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimits {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxFindingsPerInfoTypes': ?maxFindingsPerInfoTypes == null ? null : pulumi.Input.encodeList<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType, Map<String, dynamic>>(maxFindingsPerInfoTypes!, (value) => value.toMap()),
+      'maxFindingsPerInfoTypes': ?pulumi.Input.mapOptionalInputValue<List<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType>, List<Map<String, dynamic>>>(maxFindingsPerInfoTypes, (value) => pulumi.Input.encodeList<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maxFindingsPerItem': ?maxFindingsPerItem,
       'maxFindingsPerRequest': ?maxFindingsPerRequest,
     };
@@ -32,9 +32,9 @@ class PreventionJobTriggerInspectJobInspectConfigLimits {
 
   factory PreventionJobTriggerInspectJobInspectConfigLimits.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigLimits(
-      maxFindingsPerInfoTypes: map['maxFindingsPerInfoTypes'] == null ? null : pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType>(map['maxFindingsPerInfoTypes'], (value) => PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap((value as Map).cast<String, dynamic>())),
-      maxFindingsPerItem: map['maxFindingsPerItem'] == null ? null : map['maxFindingsPerItem'] as int,
-      maxFindingsPerRequest: map['maxFindingsPerRequest'] == null ? null : map['maxFindingsPerRequest'] as int,
+      maxFindingsPerInfoTypes: map['maxFindingsPerInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType>(map['maxFindingsPerInfoTypes'], (value) => PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxFindingsPerItem: map['maxFindingsPerItem'] == null ? null : (map['maxFindingsPerItem'] as int).input(),
+      maxFindingsPerRequest: map['maxFindingsPerRequest'] == null ? null : (map['maxFindingsPerRequest'] as int).input(),
     );
   }
 }

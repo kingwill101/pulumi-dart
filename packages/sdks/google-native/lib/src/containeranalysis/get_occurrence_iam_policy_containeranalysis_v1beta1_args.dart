@@ -14,11 +14,9 @@ class GetOccurrenceIamPolicyContaineranalysisV1beta1Args {
   /// [occurrenceId] Required.
   /// [project] Optional.
   GetOccurrenceIamPolicyContaineranalysisV1beta1Args({
-    required pulumi.Output<String> occurrenceId,
-    pulumi.Output<String>? project,
-  }) :
-      occurrenceId = pulumi.Input.asInput<String>(occurrenceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.occurrenceId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetOccurrenceIamPolicyContaineranalysisV1beta1Args {
 
   factory GetOccurrenceIamPolicyContaineranalysisV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceIamPolicyContaineranalysisV1beta1Args(
-      occurrenceId: pulumi.Output.create<String>(map['occurrenceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      occurrenceId: (map['occurrenceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

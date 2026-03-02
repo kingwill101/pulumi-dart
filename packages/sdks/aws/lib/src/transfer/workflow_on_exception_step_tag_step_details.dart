@@ -5,11 +5,11 @@ import 'workflow_on_exception_step_tag_step_details_tag.dart';
 
 class WorkflowOnExceptionStepTagStepDetails {
   /// The name of the step, used as an identifier.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter ${previous.file} to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter ${original.file} to use the originally-uploaded file location as input for this step.
-  final String? sourceFileLocation;
+  final pulumi.Input<String>? sourceFileLocation;
   /// Array that contains from 1 to 10 key/value pairs. See S3 Tags below.
-  final List<WorkflowOnExceptionStepTagStepDetailsTag>? tags;
+  final pulumi.Input<List<WorkflowOnExceptionStepTagStepDetailsTag>>? tags;
 
   /// Creates a new [WorkflowOnExceptionStepTagStepDetails].
   /// [name] The name of the step, used as an identifier.
@@ -25,15 +25,15 @@ class WorkflowOnExceptionStepTagStepDetails {
     return <String, dynamic>{
       'name': ?name,
       'sourceFileLocation': ?sourceFileLocation,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<WorkflowOnExceptionStepTagStepDetailsTag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<WorkflowOnExceptionStepTagStepDetailsTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<WorkflowOnExceptionStepTagStepDetailsTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WorkflowOnExceptionStepTagStepDetails.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepTagStepDetails(
-      name: map['name'] == null ? null : map['name'] as String,
-      sourceFileLocation: map['sourceFileLocation'] == null ? null : map['sourceFileLocation'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<WorkflowOnExceptionStepTagStepDetailsTag>(map['tags'], (value) => WorkflowOnExceptionStepTagStepDetailsTag.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceFileLocation: map['sourceFileLocation'] == null ? null : (map['sourceFileLocation'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<WorkflowOnExceptionStepTagStepDetailsTag>(map['tags'], (value) => WorkflowOnExceptionStepTagStepDetailsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

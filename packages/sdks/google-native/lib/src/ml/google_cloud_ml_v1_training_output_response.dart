@@ -7,21 +7,21 @@ import 'google_cloud_ml_v1_hyperparameter_output_response.dart';
 /// Represents results of a training job. Output only.
 class GoogleCloudMlV1TrainingOutputResponse {
   /// Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
-  final GoogleCloudMlV1BuiltInAlgorithmOutputResponse builtInAlgorithmOutput;
+  final pulumi.Input<GoogleCloudMlV1BuiltInAlgorithmOutputResponse> builtInAlgorithmOutput;
   /// The number of hyperparameter tuning trials that completed successfully. Only set for hyperparameter tuning jobs.
-  final String completedTrialCount;
+  final pulumi.Input<String> completedTrialCount;
   /// The amount of ML units consumed by the job.
-  final double consumedMLUnits;
+  final pulumi.Input<double> consumedMLUnits;
   /// The TensorFlow summary tag name used for optimizing hyperparameter tuning trials. See [`HyperparameterSpec.hyperparameterMetricTag`](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag) for more information. Only set for hyperparameter tuning jobs.
-  final String hyperparameterMetricTag;
+  final pulumi.Input<String> hyperparameterMetricTag;
   /// Whether this job is a built-in Algorithm job.
-  final bool isBuiltInAlgorithmJob;
+  final pulumi.Input<bool> isBuiltInAlgorithmJob;
   /// Whether this job is a hyperparameter tuning job.
-  final bool isHyperparameterTuningJob;
+  final pulumi.Input<bool> isHyperparameterTuningJob;
   /// Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
-  final List<GoogleCloudMlV1HyperparameterOutputResponse> trials;
+  final pulumi.Input<List<GoogleCloudMlV1HyperparameterOutputResponse>> trials;
   /// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
-  final Map<String, String> webAccessUris;
+  final pulumi.Input<Map<String, String>> webAccessUris;
 
   /// Creates a new [GoogleCloudMlV1TrainingOutputResponse].
   /// [builtInAlgorithmOutput] Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
@@ -45,27 +45,27 @@ class GoogleCloudMlV1TrainingOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'builtInAlgorithmOutput': builtInAlgorithmOutput.toMap(),
+      'builtInAlgorithmOutput': pulumi.Input.mapInputValue<GoogleCloudMlV1BuiltInAlgorithmOutputResponse, Map<String, dynamic>>(builtInAlgorithmOutput, (value) => value.toMap()),
       'completedTrialCount': completedTrialCount,
       'consumedMLUnits': consumedMLUnits,
       'hyperparameterMetricTag': hyperparameterMetricTag,
       'isBuiltInAlgorithmJob': isBuiltInAlgorithmJob,
       'isHyperparameterTuningJob': isHyperparameterTuningJob,
-      'trials': pulumi.Input.encodeList<GoogleCloudMlV1HyperparameterOutputResponse, Map<String, dynamic>>(trials, (value) => value.toMap()),
+      'trials': pulumi.Input.mapInputValue<List<GoogleCloudMlV1HyperparameterOutputResponse>, List<Map<String, dynamic>>>(trials, (value) => pulumi.Input.encodeList<GoogleCloudMlV1HyperparameterOutputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'webAccessUris': webAccessUris,
     };
   }
 
   factory GoogleCloudMlV1TrainingOutputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1TrainingOutputResponse(
-      builtInAlgorithmOutput: GoogleCloudMlV1BuiltInAlgorithmOutputResponse.fromMap((map['builtInAlgorithmOutput'] as Map).cast<String, dynamic>()),
-      completedTrialCount: map['completedTrialCount'] as String,
-      consumedMLUnits: map['consumedMLUnits'] as double,
-      hyperparameterMetricTag: map['hyperparameterMetricTag'] as String,
-      isBuiltInAlgorithmJob: map['isBuiltInAlgorithmJob'] as bool,
-      isHyperparameterTuningJob: map['isHyperparameterTuningJob'] as bool,
-      trials: pulumi.Input.decodeList<GoogleCloudMlV1HyperparameterOutputResponse>(map['trials'], (value) => GoogleCloudMlV1HyperparameterOutputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      webAccessUris: (map['webAccessUris'] as Map).cast<String, String>(),
+      builtInAlgorithmOutput: (GoogleCloudMlV1BuiltInAlgorithmOutputResponse.fromMap((map['builtInAlgorithmOutput'] as Map).cast<String, dynamic>())).input(),
+      completedTrialCount: (map['completedTrialCount'] as String).input(),
+      consumedMLUnits: (map['consumedMLUnits'] as double).input(),
+      hyperparameterMetricTag: (map['hyperparameterMetricTag'] as String).input(),
+      isBuiltInAlgorithmJob: (map['isBuiltInAlgorithmJob'] as bool).input(),
+      isHyperparameterTuningJob: (map['isHyperparameterTuningJob'] as bool).input(),
+      trials: (pulumi.Input.decodeList<GoogleCloudMlV1HyperparameterOutputResponse>(map['trials'], (value) => GoogleCloudMlV1HyperparameterOutputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webAccessUris: ((map['webAccessUris'] as Map).cast<String, String>()).input(),
     );
   }
 }

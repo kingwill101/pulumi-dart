@@ -8,79 +8,79 @@ import 'get_kubernetes_clusters_cluster_worker_node.dart';
 
 class GetKubernetesClustersCluster {
   /// The ID of availability zone.
-  final String availabilityZone;
+  final pulumi.Input<String> availabilityZone;
   /// The cluster network type.
-  final String clusterNetworkType;
+  final pulumi.Input<String> clusterNetworkType;
   /// Map of kubernetes cluster connection information.
-  final GetKubernetesClustersClusterConnections connections;
+  final pulumi.Input<GetKubernetesClustersClusterConnections> connections;
   /// ID of the node.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of node image.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// The keypair of ssh login cluster node, you have to create it first.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// A list of one element containing information about the associated log store. It contains the following attributes:
-  final List<GetKubernetesClustersClusterLogConfig> logConfigs;
+  final pulumi.Input<List<GetKubernetesClustersClusterLogConfig>> logConfigs;
   /// Whether to enable master payment auto-renew
-  final bool masterAutoRenew;
+  final pulumi.Input<bool> masterAutoRenew;
   /// Master payment auto-renew period.
-  final int masterAutoRenewPeriod;
+  final pulumi.Input<int> masterAutoRenewPeriod;
   /// The system disk category of master node.
-  final String masterDiskCategory;
+  final pulumi.Input<String> masterDiskCategory;
   /// The system disk size of master node.
-  final int masterDiskSize;
+  final pulumi.Input<int> masterDiskSize;
   /// Master payment type.
-  final String masterInstanceChargeType;
+  final pulumi.Input<String> masterInstanceChargeType;
   /// The instance type of master node.
-  final List<String> masterInstanceTypes;
+  final pulumi.Input<List<String>> masterInstanceTypes;
   /// List of cluster master nodes. It contains several attributes to `Block Nodes`.
-  final List<GetKubernetesClustersClusterMasterNode> masterNodes;
+  final pulumi.Input<List<GetKubernetesClustersClusterMasterNode>> masterNodes;
   /// Master payment period.
-  final int masterPeriod;
+  final pulumi.Input<int> masterPeriod;
   /// Master payment period unit.
-  final String masterPeriodUnit;
+  final pulumi.Input<String> masterPeriodUnit;
   /// Node name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID of nat gateway used to launch kubernetes cluster.
-  final String natGatewayId;
+  final pulumi.Input<String> natGatewayId;
   /// The network mask used on pods for each node.
-  final int nodeCidrMask;
+  final pulumi.Input<int> nodeCidrMask;
   /// The CIDR block for the pod network.
-  final String podCidr;
+  final pulumi.Input<String> podCidr;
   /// The ID of security group where the current cluster worker node is located.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The CIDR block for the service network.
-  final String serviceCidr;
+  final pulumi.Input<String> serviceCidr;
   /// Whether internet load balancer for API Server is created
-  final bool slbInternetEnabled;
+  final pulumi.Input<bool> slbInternetEnabled;
   /// The ID of VPC where the current cluster is located.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of VSwitches where the current cluster is located.
-  final List<String> vswitchIds;
+  final pulumi.Input<List<String>> vswitchIds;
   /// Whether to enable worker payment auto-renew.
-  final bool workerAutoRenew;
+  final pulumi.Input<bool> workerAutoRenew;
   /// Worker payment auto-renew period
-  final int workerAutoRenewPeriod;
+  final pulumi.Input<int> workerAutoRenewPeriod;
   /// The data disk size of worker node.
-  final String workerDataDiskCategory;
+  final pulumi.Input<String> workerDataDiskCategory;
   /// The data disk category of worker node.
-  final int workerDataDiskSize;
+  final pulumi.Input<int> workerDataDiskSize;
   /// The system disk category of worker node.
-  final String workerDiskCategory;
+  final pulumi.Input<String> workerDiskCategory;
   /// The system disk size of worker node.
-  final int workerDiskSize;
+  final pulumi.Input<int> workerDiskSize;
   /// Worker payment type
-  final String workerInstanceChargeType;
+  final pulumi.Input<String> workerInstanceChargeType;
   /// The instance type of worker node.
-  final List<String> workerInstanceTypes;
+  final pulumi.Input<List<String>> workerInstanceTypes;
   /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-  final List<GetKubernetesClustersClusterWorkerNode> workerNodes;
+  final pulumi.Input<List<GetKubernetesClustersClusterWorkerNode>> workerNodes;
   /// The ECS instance node number in the current container cluster.
-  final List<int> workerNumbers;
+  final pulumi.Input<List<int>> workerNumbers;
   /// Worker payment period.
-  final int workerPeriod;
+  final pulumi.Input<int> workerPeriod;
   /// Worker payment period unit.
-  final String workerPeriodUnit;
+  final pulumi.Input<String> workerPeriodUnit;
 
   /// Creates a new [GetKubernetesClustersCluster].
   /// [availabilityZone] The ID of availability zone.
@@ -164,18 +164,18 @@ class GetKubernetesClustersCluster {
     return <String, dynamic>{
       'availabilityZone': availabilityZone,
       'clusterNetworkType': clusterNetworkType,
-      'connections': connections.toMap(),
+      'connections': pulumi.Input.mapInputValue<GetKubernetesClustersClusterConnections, Map<String, dynamic>>(connections, (value) => value.toMap()),
       'id': id,
       'imageId': imageId,
       'keyName': keyName,
-      'logConfigs': pulumi.Input.encodeList<GetKubernetesClustersClusterLogConfig, Map<String, dynamic>>(logConfigs, (value) => value.toMap()),
+      'logConfigs': pulumi.Input.mapInputValue<List<GetKubernetesClustersClusterLogConfig>, List<Map<String, dynamic>>>(logConfigs, (value) => pulumi.Input.encodeList<GetKubernetesClustersClusterLogConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'masterAutoRenew': masterAutoRenew,
       'masterAutoRenewPeriod': masterAutoRenewPeriod,
       'masterDiskCategory': masterDiskCategory,
       'masterDiskSize': masterDiskSize,
       'masterInstanceChargeType': masterInstanceChargeType,
       'masterInstanceTypes': masterInstanceTypes,
-      'masterNodes': pulumi.Input.encodeList<GetKubernetesClustersClusterMasterNode, Map<String, dynamic>>(masterNodes, (value) => value.toMap()),
+      'masterNodes': pulumi.Input.mapInputValue<List<GetKubernetesClustersClusterMasterNode>, List<Map<String, dynamic>>>(masterNodes, (value) => pulumi.Input.encodeList<GetKubernetesClustersClusterMasterNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'masterPeriod': masterPeriod,
       'masterPeriodUnit': masterPeriodUnit,
       'name': name,
@@ -195,7 +195,7 @@ class GetKubernetesClustersCluster {
       'workerDiskSize': workerDiskSize,
       'workerInstanceChargeType': workerInstanceChargeType,
       'workerInstanceTypes': workerInstanceTypes,
-      'workerNodes': pulumi.Input.encodeList<GetKubernetesClustersClusterWorkerNode, Map<String, dynamic>>(workerNodes, (value) => value.toMap()),
+      'workerNodes': pulumi.Input.mapInputValue<List<GetKubernetesClustersClusterWorkerNode>, List<Map<String, dynamic>>>(workerNodes, (value) => pulumi.Input.encodeList<GetKubernetesClustersClusterWorkerNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workerNumbers': workerNumbers,
       'workerPeriod': workerPeriod,
       'workerPeriodUnit': workerPeriodUnit,
@@ -204,43 +204,43 @@ class GetKubernetesClustersCluster {
 
   factory GetKubernetesClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClustersCluster(
-      availabilityZone: map['availabilityZone'] as String,
-      clusterNetworkType: map['clusterNetworkType'] as String,
-      connections: GetKubernetesClustersClusterConnections.fromMap((map['connections'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      keyName: map['keyName'] as String,
-      logConfigs: pulumi.Input.decodeList<GetKubernetesClustersClusterLogConfig>(map['logConfigs'], (value) => GetKubernetesClustersClusterLogConfig.fromMap((value as Map).cast<String, dynamic>())),
-      masterAutoRenew: map['masterAutoRenew'] as bool,
-      masterAutoRenewPeriod: map['masterAutoRenewPeriod'] as int,
-      masterDiskCategory: map['masterDiskCategory'] as String,
-      masterDiskSize: map['masterDiskSize'] as int,
-      masterInstanceChargeType: map['masterInstanceChargeType'] as String,
-      masterInstanceTypes: (map['masterInstanceTypes'] as List).cast<String>(),
-      masterNodes: pulumi.Input.decodeList<GetKubernetesClustersClusterMasterNode>(map['masterNodes'], (value) => GetKubernetesClustersClusterMasterNode.fromMap((value as Map).cast<String, dynamic>())),
-      masterPeriod: map['masterPeriod'] as int,
-      masterPeriodUnit: map['masterPeriodUnit'] as String,
-      name: map['name'] as String,
-      natGatewayId: map['natGatewayId'] as String,
-      nodeCidrMask: map['nodeCidrMask'] as int,
-      podCidr: map['podCidr'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      serviceCidr: map['serviceCidr'] as String,
-      slbInternetEnabled: map['slbInternetEnabled'] as bool,
-      vpcId: map['vpcId'] as String,
-      vswitchIds: (map['vswitchIds'] as List).cast<String>(),
-      workerAutoRenew: map['workerAutoRenew'] as bool,
-      workerAutoRenewPeriod: map['workerAutoRenewPeriod'] as int,
-      workerDataDiskCategory: map['workerDataDiskCategory'] as String,
-      workerDataDiskSize: map['workerDataDiskSize'] as int,
-      workerDiskCategory: map['workerDiskCategory'] as String,
-      workerDiskSize: map['workerDiskSize'] as int,
-      workerInstanceChargeType: map['workerInstanceChargeType'] as String,
-      workerInstanceTypes: (map['workerInstanceTypes'] as List).cast<String>(),
-      workerNodes: pulumi.Input.decodeList<GetKubernetesClustersClusterWorkerNode>(map['workerNodes'], (value) => GetKubernetesClustersClusterWorkerNode.fromMap((value as Map).cast<String, dynamic>())),
-      workerNumbers: (map['workerNumbers'] as List).cast<int>(),
-      workerPeriod: map['workerPeriod'] as int,
-      workerPeriodUnit: map['workerPeriodUnit'] as String,
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      clusterNetworkType: (map['clusterNetworkType'] as String).input(),
+      connections: (GetKubernetesClustersClusterConnections.fromMap((map['connections'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      keyName: (map['keyName'] as String).input(),
+      logConfigs: (pulumi.Input.decodeList<GetKubernetesClustersClusterLogConfig>(map['logConfigs'], (value) => GetKubernetesClustersClusterLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      masterAutoRenew: (map['masterAutoRenew'] as bool).input(),
+      masterAutoRenewPeriod: (map['masterAutoRenewPeriod'] as int).input(),
+      masterDiskCategory: (map['masterDiskCategory'] as String).input(),
+      masterDiskSize: (map['masterDiskSize'] as int).input(),
+      masterInstanceChargeType: (map['masterInstanceChargeType'] as String).input(),
+      masterInstanceTypes: ((map['masterInstanceTypes'] as List).cast<String>()).input(),
+      masterNodes: (pulumi.Input.decodeList<GetKubernetesClustersClusterMasterNode>(map['masterNodes'], (value) => GetKubernetesClustersClusterMasterNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      masterPeriod: (map['masterPeriod'] as int).input(),
+      masterPeriodUnit: (map['masterPeriodUnit'] as String).input(),
+      name: (map['name'] as String).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      nodeCidrMask: (map['nodeCidrMask'] as int).input(),
+      podCidr: (map['podCidr'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      serviceCidr: (map['serviceCidr'] as String).input(),
+      slbInternetEnabled: (map['slbInternetEnabled'] as bool).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
+      workerAutoRenew: (map['workerAutoRenew'] as bool).input(),
+      workerAutoRenewPeriod: (map['workerAutoRenewPeriod'] as int).input(),
+      workerDataDiskCategory: (map['workerDataDiskCategory'] as String).input(),
+      workerDataDiskSize: (map['workerDataDiskSize'] as int).input(),
+      workerDiskCategory: (map['workerDiskCategory'] as String).input(),
+      workerDiskSize: (map['workerDiskSize'] as int).input(),
+      workerInstanceChargeType: (map['workerInstanceChargeType'] as String).input(),
+      workerInstanceTypes: ((map['workerInstanceTypes'] as List).cast<String>()).input(),
+      workerNodes: (pulumi.Input.decodeList<GetKubernetesClustersClusterWorkerNode>(map['workerNodes'], (value) => GetKubernetesClustersClusterWorkerNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workerNumbers: ((map['workerNumbers'] as List).cast<int>()).input(),
+      workerPeriod: (map['workerPeriod'] as int).input(),
+      workerPeriodUnit: (map['workerPeriodUnit'] as String).input(),
     );
   }
 }

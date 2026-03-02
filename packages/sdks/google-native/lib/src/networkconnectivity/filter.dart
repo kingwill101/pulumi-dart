@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'filter_protocol_version.dart';
 
 /// Filter matches L4 traffic.
 class Filter {
   /// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-  final String? destRange;
+  final pulumi.Input<String>? destRange;
   /// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
-  final String? ipProtocol;
+  final pulumi.Input<String>? ipProtocol;
   /// Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
-  final FilterProtocolVersion protocolVersion;
+  final pulumi.Input<FilterProtocolVersion> protocolVersion;
   /// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-  final String? srcRange;
+  final pulumi.Input<String>? srcRange;
 
   /// Creates a new [Filter].
   /// [destRange] Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
@@ -29,17 +30,17 @@ class Filter {
     return <String, dynamic>{
       'destRange': ?destRange,
       'ipProtocol': ?ipProtocol,
-      'protocolVersion': protocolVersion.value,
+      'protocolVersion': pulumi.Input.mapInputValue<FilterProtocolVersion, String>(protocolVersion, (value) => value.value),
       'srcRange': ?srcRange,
     };
   }
 
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
-      destRange: map['destRange'] == null ? null : map['destRange'] as String,
-      ipProtocol: map['ipProtocol'] == null ? null : map['ipProtocol'] as String,
-      protocolVersion: FilterProtocolVersion.fromValue(map['protocolVersion'] as String),
-      srcRange: map['srcRange'] == null ? null : map['srcRange'] as String,
+      destRange: map['destRange'] == null ? null : (map['destRange'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      protocolVersion: (FilterProtocolVersion.fromValue(map['protocolVersion'] as String)).input(),
+      srcRange: map['srcRange'] == null ? null : (map['srcRange'] as String).input(),
     );
   }
 }

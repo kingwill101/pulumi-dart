@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Group of the gallery sharing profile
 class SharingProfileGroupResponse {
   /// A list of subscription/tenant ids the gallery is aimed to be shared to.
-  final List<String>? ids;
+  final pulumi.Input<List<String>>? ids;
   /// This property allows you to specify the type of sharing group. Possible values are: **Subscriptions,** **AADTenants.**
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [SharingProfileGroupResponse].
   /// [ids] A list of subscription/tenant ids the gallery is aimed to be shared to.
@@ -25,8 +26,8 @@ class SharingProfileGroupResponse {
 
   factory SharingProfileGroupResponse.fromMap(Map<String, dynamic> map) {
     return SharingProfileGroupResponse(
-      ids: map['ids'] == null ? null : (map['ids'] as List).cast<String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

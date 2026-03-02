@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionFileSystemConfig {
   /// ARN of the Amazon EFS Access Point.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Path where the function can access the file system. Must start with `/mnt/`.
-  final String localMountPath;
+  final pulumi.Input<String> localMountPath;
 
   /// Creates a new [FunctionFileSystemConfig].
   /// [arn] ARN of the Amazon EFS Access Point.
@@ -24,8 +25,8 @@ class FunctionFileSystemConfig {
 
   factory FunctionFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return FunctionFileSystemConfig(
-      arn: map['arn'] as String,
-      localMountPath: map['localMountPath'] as String,
+      arn: (map['arn'] as String).input(),
+      localMountPath: (map['localMountPath'] as String).input(),
     );
   }
 }

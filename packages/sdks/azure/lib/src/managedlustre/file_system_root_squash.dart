@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileSystemRootSquash {
   /// Squash mode of the AML file system. Possible values are `RootOnly`, and `All`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// NID IP Address list(s) to be added to the TrustedSystems, separated by semicolons.
-  final String noSquashNids;
+  final pulumi.Input<String> noSquashNids;
   /// The GID to be used for the root squash. Defaults to `0`.
-  final int? squashGid;
+  final pulumi.Input<int>? squashGid;
   /// The UID to be used for the root squash. Defaults to `0`.
-  final int? squashUid;
+  final pulumi.Input<int>? squashUid;
 
   /// Creates a new [FileSystemRootSquash].
   /// [mode] Squash mode of the AML file system. Possible values are `RootOnly`, and `All`.
@@ -34,10 +35,10 @@ class FileSystemRootSquash {
 
   factory FileSystemRootSquash.fromMap(Map<String, dynamic> map) {
     return FileSystemRootSquash(
-      mode: map['mode'] as String,
-      noSquashNids: map['noSquashNids'] as String,
-      squashGid: map['squashGid'] == null ? null : map['squashGid'] as int,
-      squashUid: map['squashUid'] == null ? null : map['squashUid'] as int,
+      mode: (map['mode'] as String).input(),
+      noSquashNids: (map['noSquashNids'] as String).input(),
+      squashGid: map['squashGid'] == null ? null : (map['squashGid'] as int).input(),
+      squashUid: map['squashUid'] == null ? null : (map['squashUid'] as int).input(),
     );
   }
 }

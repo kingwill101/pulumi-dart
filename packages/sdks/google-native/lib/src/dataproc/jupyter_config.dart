@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'jupyter_config_kernel.dart';
 
 /// Jupyter configuration for an interactive session.
 class JupyterConfig {
   /// Optional. Display name, shown in the Jupyter kernelspec card.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Optional. Kernel
-  final JupyterConfigKernel? kernel;
+  final pulumi.Input<JupyterConfigKernel>? kernel;
 
   /// Creates a new [JupyterConfig].
   /// [displayName] Optional. Display name, shown in the Jupyter kernelspec card.
@@ -20,14 +21,14 @@ class JupyterConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': ?displayName,
-      'kernel': ?kernel == null ? null : kernel!.value,
+      'kernel': ?pulumi.Input.mapOptionalInputValue<JupyterConfigKernel, String>(kernel, (value) => value.value),
     };
   }
 
   factory JupyterConfig.fromMap(Map<String, dynamic> map) {
     return JupyterConfig(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      kernel: map['kernel'] == null ? null : JupyterConfigKernel.fromValue(map['kernel'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kernel: map['kernel'] == null ? null : (JupyterConfigKernel.fromValue(map['kernel'] as String)).input(),
     );
   }
 }

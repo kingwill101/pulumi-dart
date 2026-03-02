@@ -25,17 +25,12 @@ class StackTagArgs {
   /// [stack] Stack name.
   /// [value] Value of the tag. The 'value' part of the key=value pair
   StackTagArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> project,
-    required pulumi.Output<String> stack,
-    required pulumi.Output<String> value,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      organization = pulumi.Input.asInput<String>(organization),
-      project = pulumi.Input.asInput<String>(project),
-      stack = pulumi.Input.asInput<String>(stack),
-      value = pulumi.Input.asInput<String>(value);
+    required this.name,
+    required this.organization,
+    required this.project,
+    required this.stack,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class StackTagArgs {
 
   factory StackTagArgs.fromMap(Map<String, dynamic> map) {
     return StackTagArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      stack: pulumi.Output.create<String>(map['stack'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      name: (map['name'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      project: (map['project'] as String).input(),
+      stack: (map['stack'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

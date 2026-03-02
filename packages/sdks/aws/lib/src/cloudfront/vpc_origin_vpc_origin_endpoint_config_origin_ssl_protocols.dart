@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcOriginVpcOriginEndpointConfigOriginSslProtocols {
-  final List<String> items;
-  final int quantity;
+  final pulumi.Input<List<String>> items;
+  final pulumi.Input<int> quantity;
 
   /// Creates a new [VpcOriginVpcOriginEndpointConfigOriginSslProtocols].
   /// [items] Required.
@@ -22,8 +23,8 @@ class VpcOriginVpcOriginEndpointConfigOriginSslProtocols {
 
   factory VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap(Map<String, dynamic> map) {
     return VpcOriginVpcOriginEndpointConfigOriginSslProtocols(
-      items: (map['items'] as List).cast<String>(),
-      quantity: map['quantity'] as int,
+      items: ((map['items'] as List).cast<String>()).input(),
+      quantity: (map['quantity'] as int).input(),
     );
   }
 }

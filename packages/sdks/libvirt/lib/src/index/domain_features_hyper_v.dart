@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_features_hyper_vavic.dart';
 import 'domain_features_hyper_vemsr_bitmap.dart';
 import 'domain_features_hyper_vevmcs.dart';
@@ -20,41 +21,41 @@ import 'domain_features_hyper_vxmm_input.dart';
 
 class DomainFeaturesHyperV {
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVAvic? avic;
+  final pulumi.Input<DomainFeaturesHyperVAvic>? avic;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVEmsrBitmap? emsrBitmap;
+  final pulumi.Input<DomainFeaturesHyperVEmsrBitmap>? emsrBitmap;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVEvmcs? evmcs;
+  final pulumi.Input<DomainFeaturesHyperVEvmcs>? evmcs;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVFrequencies? frequencies;
+  final pulumi.Input<DomainFeaturesHyperVFrequencies>? frequencies;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVIpi? ipi;
+  final pulumi.Input<DomainFeaturesHyperVIpi>? ipi;
   /// Sets the mode of operation for Hyper-V features in the domain.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVReEnlightenment? reEnlightenment;
+  final pulumi.Input<DomainFeaturesHyperVReEnlightenment>? reEnlightenment;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVRelaxed? relaxed;
+  final pulumi.Input<DomainFeaturesHyperVRelaxed>? relaxed;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVReset? reset;
+  final pulumi.Input<DomainFeaturesHyperVReset>? reset;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVRuntime? runtime;
+  final pulumi.Input<DomainFeaturesHyperVRuntime>? runtime;
   /// Controls the spinlock feature settings for Hyper-V.
-  final DomainFeaturesHyperVSpinlocks? spinlocks;
+  final pulumi.Input<DomainFeaturesHyperVSpinlocks>? spinlocks;
   /// Configures synthetic timer functionality for Hyper-V.
-  final DomainFeaturesHyperVStimer? stimer;
+  final pulumi.Input<DomainFeaturesHyperVStimer>? stimer;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVSynic? synic;
+  final pulumi.Input<DomainFeaturesHyperVSynic>? synic;
   /// Controls the Translation Lookaside Buffer (TLB) flush functionality for Hyper-V.
-  final DomainFeaturesHyperVTlbFlush? tlbFlush;
+  final pulumi.Input<DomainFeaturesHyperVTlbFlush>? tlbFlush;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVVapic? vapic;
+  final pulumi.Input<DomainFeaturesHyperVVapic>? vapic;
   /// Configures the vendor ID presented to the guest operating system by Hyper-V.
-  final DomainFeaturesHyperVVendorId? vendorId;
+  final pulumi.Input<DomainFeaturesHyperVVendorId>? vendorId;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVVpIndex? vpIndex;
+  final pulumi.Input<DomainFeaturesHyperVVpIndex>? vpIndex;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHyperVXmmInput? xmmInput;
+  final pulumi.Input<DomainFeaturesHyperVXmmInput>? xmmInput;
 
   /// Creates a new [DomainFeaturesHyperV].
   /// [avic] Enables or disables support for PS/2 devices in the virtual machine.
@@ -98,47 +99,47 @@ class DomainFeaturesHyperV {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'avic': ?avic == null ? null : avic!.toMap(),
-      'emsrBitmap': ?emsrBitmap == null ? null : emsrBitmap!.toMap(),
-      'evmcs': ?evmcs == null ? null : evmcs!.toMap(),
-      'frequencies': ?frequencies == null ? null : frequencies!.toMap(),
-      'ipi': ?ipi == null ? null : ipi!.toMap(),
+      'avic': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVAvic, Map<String, dynamic>>(avic, (value) => value.toMap()),
+      'emsrBitmap': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVEmsrBitmap, Map<String, dynamic>>(emsrBitmap, (value) => value.toMap()),
+      'evmcs': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVEvmcs, Map<String, dynamic>>(evmcs, (value) => value.toMap()),
+      'frequencies': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVFrequencies, Map<String, dynamic>>(frequencies, (value) => value.toMap()),
+      'ipi': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVIpi, Map<String, dynamic>>(ipi, (value) => value.toMap()),
       'mode': ?mode,
-      'reEnlightenment': ?reEnlightenment == null ? null : reEnlightenment!.toMap(),
-      'relaxed': ?relaxed == null ? null : relaxed!.toMap(),
-      'reset': ?reset == null ? null : reset!.toMap(),
-      'runtime': ?runtime == null ? null : runtime!.toMap(),
-      'spinlocks': ?spinlocks == null ? null : spinlocks!.toMap(),
-      'stimer': ?stimer == null ? null : stimer!.toMap(),
-      'synic': ?synic == null ? null : synic!.toMap(),
-      'tlbFlush': ?tlbFlush == null ? null : tlbFlush!.toMap(),
-      'vapic': ?vapic == null ? null : vapic!.toMap(),
-      'vendorId': ?vendorId == null ? null : vendorId!.toMap(),
-      'vpIndex': ?vpIndex == null ? null : vpIndex!.toMap(),
-      'xmmInput': ?xmmInput == null ? null : xmmInput!.toMap(),
+      'reEnlightenment': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVReEnlightenment, Map<String, dynamic>>(reEnlightenment, (value) => value.toMap()),
+      'relaxed': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVRelaxed, Map<String, dynamic>>(relaxed, (value) => value.toMap()),
+      'reset': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVReset, Map<String, dynamic>>(reset, (value) => value.toMap()),
+      'runtime': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVRuntime, Map<String, dynamic>>(runtime, (value) => value.toMap()),
+      'spinlocks': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVSpinlocks, Map<String, dynamic>>(spinlocks, (value) => value.toMap()),
+      'stimer': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVStimer, Map<String, dynamic>>(stimer, (value) => value.toMap()),
+      'synic': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVSynic, Map<String, dynamic>>(synic, (value) => value.toMap()),
+      'tlbFlush': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVTlbFlush, Map<String, dynamic>>(tlbFlush, (value) => value.toMap()),
+      'vapic': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVVapic, Map<String, dynamic>>(vapic, (value) => value.toMap()),
+      'vendorId': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVVendorId, Map<String, dynamic>>(vendorId, (value) => value.toMap()),
+      'vpIndex': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVVpIndex, Map<String, dynamic>>(vpIndex, (value) => value.toMap()),
+      'xmmInput': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperVXmmInput, Map<String, dynamic>>(xmmInput, (value) => value.toMap()),
     };
   }
 
   factory DomainFeaturesHyperV.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperV(
-      avic: map['avic'] == null ? null : DomainFeaturesHyperVAvic.fromMap((map['avic'] as Map).cast<String, dynamic>()),
-      emsrBitmap: map['emsrBitmap'] == null ? null : DomainFeaturesHyperVEmsrBitmap.fromMap((map['emsrBitmap'] as Map).cast<String, dynamic>()),
-      evmcs: map['evmcs'] == null ? null : DomainFeaturesHyperVEvmcs.fromMap((map['evmcs'] as Map).cast<String, dynamic>()),
-      frequencies: map['frequencies'] == null ? null : DomainFeaturesHyperVFrequencies.fromMap((map['frequencies'] as Map).cast<String, dynamic>()),
-      ipi: map['ipi'] == null ? null : DomainFeaturesHyperVIpi.fromMap((map['ipi'] as Map).cast<String, dynamic>()),
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      reEnlightenment: map['reEnlightenment'] == null ? null : DomainFeaturesHyperVReEnlightenment.fromMap((map['reEnlightenment'] as Map).cast<String, dynamic>()),
-      relaxed: map['relaxed'] == null ? null : DomainFeaturesHyperVRelaxed.fromMap((map['relaxed'] as Map).cast<String, dynamic>()),
-      reset: map['reset'] == null ? null : DomainFeaturesHyperVReset.fromMap((map['reset'] as Map).cast<String, dynamic>()),
-      runtime: map['runtime'] == null ? null : DomainFeaturesHyperVRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>()),
-      spinlocks: map['spinlocks'] == null ? null : DomainFeaturesHyperVSpinlocks.fromMap((map['spinlocks'] as Map).cast<String, dynamic>()),
-      stimer: map['stimer'] == null ? null : DomainFeaturesHyperVStimer.fromMap((map['stimer'] as Map).cast<String, dynamic>()),
-      synic: map['synic'] == null ? null : DomainFeaturesHyperVSynic.fromMap((map['synic'] as Map).cast<String, dynamic>()),
-      tlbFlush: map['tlbFlush'] == null ? null : DomainFeaturesHyperVTlbFlush.fromMap((map['tlbFlush'] as Map).cast<String, dynamic>()),
-      vapic: map['vapic'] == null ? null : DomainFeaturesHyperVVapic.fromMap((map['vapic'] as Map).cast<String, dynamic>()),
-      vendorId: map['vendorId'] == null ? null : DomainFeaturesHyperVVendorId.fromMap((map['vendorId'] as Map).cast<String, dynamic>()),
-      vpIndex: map['vpIndex'] == null ? null : DomainFeaturesHyperVVpIndex.fromMap((map['vpIndex'] as Map).cast<String, dynamic>()),
-      xmmInput: map['xmmInput'] == null ? null : DomainFeaturesHyperVXmmInput.fromMap((map['xmmInput'] as Map).cast<String, dynamic>()),
+      avic: map['avic'] == null ? null : (DomainFeaturesHyperVAvic.fromMap((map['avic'] as Map).cast<String, dynamic>())).input(),
+      emsrBitmap: map['emsrBitmap'] == null ? null : (DomainFeaturesHyperVEmsrBitmap.fromMap((map['emsrBitmap'] as Map).cast<String, dynamic>())).input(),
+      evmcs: map['evmcs'] == null ? null : (DomainFeaturesHyperVEvmcs.fromMap((map['evmcs'] as Map).cast<String, dynamic>())).input(),
+      frequencies: map['frequencies'] == null ? null : (DomainFeaturesHyperVFrequencies.fromMap((map['frequencies'] as Map).cast<String, dynamic>())).input(),
+      ipi: map['ipi'] == null ? null : (DomainFeaturesHyperVIpi.fromMap((map['ipi'] as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      reEnlightenment: map['reEnlightenment'] == null ? null : (DomainFeaturesHyperVReEnlightenment.fromMap((map['reEnlightenment'] as Map).cast<String, dynamic>())).input(),
+      relaxed: map['relaxed'] == null ? null : (DomainFeaturesHyperVRelaxed.fromMap((map['relaxed'] as Map).cast<String, dynamic>())).input(),
+      reset: map['reset'] == null ? null : (DomainFeaturesHyperVReset.fromMap((map['reset'] as Map).cast<String, dynamic>())).input(),
+      runtime: map['runtime'] == null ? null : (DomainFeaturesHyperVRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>())).input(),
+      spinlocks: map['spinlocks'] == null ? null : (DomainFeaturesHyperVSpinlocks.fromMap((map['spinlocks'] as Map).cast<String, dynamic>())).input(),
+      stimer: map['stimer'] == null ? null : (DomainFeaturesHyperVStimer.fromMap((map['stimer'] as Map).cast<String, dynamic>())).input(),
+      synic: map['synic'] == null ? null : (DomainFeaturesHyperVSynic.fromMap((map['synic'] as Map).cast<String, dynamic>())).input(),
+      tlbFlush: map['tlbFlush'] == null ? null : (DomainFeaturesHyperVTlbFlush.fromMap((map['tlbFlush'] as Map).cast<String, dynamic>())).input(),
+      vapic: map['vapic'] == null ? null : (DomainFeaturesHyperVVapic.fromMap((map['vapic'] as Map).cast<String, dynamic>())).input(),
+      vendorId: map['vendorId'] == null ? null : (DomainFeaturesHyperVVendorId.fromMap((map['vendorId'] as Map).cast<String, dynamic>())).input(),
+      vpIndex: map['vpIndex'] == null ? null : (DomainFeaturesHyperVVpIndex.fromMap((map['vpIndex'] as Map).cast<String, dynamic>())).input(),
+      xmmInput: map['xmmInput'] == null ? null : (DomainFeaturesHyperVXmmInput.fromMap((map['xmmInput'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

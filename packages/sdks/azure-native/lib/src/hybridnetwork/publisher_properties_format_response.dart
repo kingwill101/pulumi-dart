@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// publisher properties.
 class PublisherPropertiesFormatResponse {
   /// The provisioning state of the publisher resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The publisher scope.
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [PublisherPropertiesFormatResponse].
   /// [provisioningState] The provisioning state of the publisher resource.
@@ -25,8 +26,8 @@ class PublisherPropertiesFormatResponse {
 
   factory PublisherPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return PublisherPropertiesFormatResponse(
-      provisioningState: map['provisioningState'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

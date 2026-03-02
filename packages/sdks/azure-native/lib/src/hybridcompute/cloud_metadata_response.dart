@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
 class CloudMetadataResponse {
   /// Specifies the cloud provider (Azure/AWS/GCP...).
-  final String provider;
+  final pulumi.Input<String> provider;
 
   /// Creates a new [CloudMetadataResponse].
   /// [provider] Specifies the cloud provider (Azure/AWS/GCP...).
@@ -20,7 +21,7 @@ class CloudMetadataResponse {
 
   factory CloudMetadataResponse.fromMap(Map<String, dynamic> map) {
     return CloudMetadataResponse(
-      provider: map['provider'] as String,
+      provider: (map['provider'] as String).input(),
     );
   }
 }

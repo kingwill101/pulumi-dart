@@ -41,25 +41,16 @@ class ThemeArgs {
   /// [themeId] Identifier of the theme.
   /// [versionDescription] A description of the current theme version being created/updated.
   ThemeArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<String> baseThemeId,
-    pulumi.Output<ThemeConfiguration>? configuration,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ThemePermission>>? permissions,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> themeId,
-    pulumi.Output<String>? versionDescription,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      baseThemeId = pulumi.Input.asInput<String>(baseThemeId),
-      configuration = pulumi.Input.asOptionalInput<ThemeConfiguration>(configuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissions = pulumi.Input.asOptionalInput<List<ThemePermission>>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      themeId = pulumi.Input.asInput<String>(themeId),
-      versionDescription = pulumi.Input.asOptionalInput<String>(versionDescription);
+    this.awsAccountId,
+    required this.baseThemeId,
+    this.configuration,
+    this.name,
+    this.permissions,
+    this.region,
+    this.tags,
+    required this.themeId,
+    this.versionDescription,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class ThemeArgs {
 
   factory ThemeArgs.fromMap(Map<String, dynamic> map) {
     return ThemeArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      baseThemeId: pulumi.Output.create<String>(map['baseThemeId'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<ThemeConfiguration>(ThemeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<ThemePermission>>(pulumi.Input.decodeList<ThemePermission>(map['permissions'], (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      themeId: pulumi.Output.create<String>(map['themeId'] as String),
-      versionDescription: map['versionDescription'] == null ? null : pulumi.Output.create<String>(map['versionDescription'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      baseThemeId: (map['baseThemeId'] as String).input(),
+      configuration: map['configuration'] == null ? null : (ThemeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ThemePermission>(map['permissions'], (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      themeId: (map['themeId'] as String).input(),
+      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription'] as String).input(),
     );
   }
 }

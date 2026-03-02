@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_to_azure_create_network_mapping_input.dart';
 
 /// Common input details for network mapping operation.
 class CreateNetworkMappingInputProperties {
   /// Fabric specific input properties.
-  final AzureToAzureCreateNetworkMappingInput? fabricSpecificDetails;
+  final pulumi.Input<AzureToAzureCreateNetworkMappingInput>? fabricSpecificDetails;
   /// Recovery fabric Name.
-  final String? recoveryFabricName;
+  final pulumi.Input<String>? recoveryFabricName;
   /// Recovery network Id.
-  final String recoveryNetworkId;
+  final pulumi.Input<String> recoveryNetworkId;
 
   /// Creates a new [CreateNetworkMappingInputProperties].
   /// [fabricSpecificDetails] Fabric specific input properties.
@@ -23,7 +24,7 @@ class CreateNetworkMappingInputProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fabricSpecificDetails': ?fabricSpecificDetails == null ? null : fabricSpecificDetails!.toMap(),
+      'fabricSpecificDetails': ?pulumi.Input.mapOptionalInputValue<AzureToAzureCreateNetworkMappingInput, Map<String, dynamic>>(fabricSpecificDetails, (value) => value.toMap()),
       'recoveryFabricName': ?recoveryFabricName,
       'recoveryNetworkId': recoveryNetworkId,
     };
@@ -31,9 +32,9 @@ class CreateNetworkMappingInputProperties {
 
   factory CreateNetworkMappingInputProperties.fromMap(Map<String, dynamic> map) {
     return CreateNetworkMappingInputProperties(
-      fabricSpecificDetails: map['fabricSpecificDetails'] == null ? null : AzureToAzureCreateNetworkMappingInput.fromMap((map['fabricSpecificDetails'] as Map).cast<String, dynamic>()),
-      recoveryFabricName: map['recoveryFabricName'] == null ? null : map['recoveryFabricName'] as String,
-      recoveryNetworkId: map['recoveryNetworkId'] as String,
+      fabricSpecificDetails: map['fabricSpecificDetails'] == null ? null : (AzureToAzureCreateNetworkMappingInput.fromMap((map['fabricSpecificDetails'] as Map).cast<String, dynamic>())).input(),
+      recoveryFabricName: map['recoveryFabricName'] == null ? null : (map['recoveryFabricName'] as String).input(),
+      recoveryNetworkId: (map['recoveryNetworkId'] as String).input(),
     );
   }
 }

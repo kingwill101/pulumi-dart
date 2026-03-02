@@ -39,27 +39,17 @@ class GetMonitorGroupsArgs {
   /// [tags] Optional.
   /// [type] The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
   GetMonitorGroupsArgs({
-    pulumi.Output<String>? dynamicTagRuleId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<bool>? includeTemplateHistory,
-    pulumi.Output<String>? keyword,
-    pulumi.Output<String>? monitorGroupName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<bool>? selectContactGroups,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      dynamicTagRuleId = pulumi.Input.asOptionalInput<String>(dynamicTagRuleId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      includeTemplateHistory = pulumi.Input.asOptionalInput<bool>(includeTemplateHistory),
-      keyword = pulumi.Input.asOptionalInput<String>(keyword),
-      monitorGroupName = pulumi.Input.asOptionalInput<String>(monitorGroupName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      selectContactGroups = pulumi.Input.asOptionalInput<bool>(selectContactGroups),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.dynamicTagRuleId,
+    this.ids,
+    this.includeTemplateHistory,
+    this.keyword,
+    this.monitorGroupName,
+    this.nameRegex,
+    this.outputFile,
+    this.selectContactGroups,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class GetMonitorGroupsArgs {
 
   factory GetMonitorGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupsArgs(
-      dynamicTagRuleId: map['dynamicTagRuleId'] == null ? null : pulumi.Output.create<String>(map['dynamicTagRuleId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      includeTemplateHistory: map['includeTemplateHistory'] == null ? null : pulumi.Output.create<bool>(map['includeTemplateHistory'] as bool),
-      keyword: map['keyword'] == null ? null : pulumi.Output.create<String>(map['keyword'] as String),
-      monitorGroupName: map['monitorGroupName'] == null ? null : pulumi.Output.create<String>(map['monitorGroupName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      selectContactGroups: map['selectContactGroups'] == null ? null : pulumi.Output.create<bool>(map['selectContactGroups'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      dynamicTagRuleId: map['dynamicTagRuleId'] == null ? null : (map['dynamicTagRuleId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      includeTemplateHistory: map['includeTemplateHistory'] == null ? null : (map['includeTemplateHistory'] as bool).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      monitorGroupName: map['monitorGroupName'] == null ? null : (map['monitorGroupName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      selectContactGroups: map['selectContactGroups'] == null ? null : (map['selectContactGroups'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

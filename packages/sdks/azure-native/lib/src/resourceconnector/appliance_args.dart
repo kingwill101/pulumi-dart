@@ -39,25 +39,16 @@ class ApplianceArgs {
   /// [tags] Resource tags.
   /// [version] Version of the Appliance
   ApplianceArgs({
-    pulumi.Output<String>? distro,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<AppliancePropertiesInfrastructureConfig>? infrastructureConfig,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicKey,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      distro = pulumi.Input.asOptionalInput<String>(distro),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      infrastructureConfig = pulumi.Input.asOptionalInput<AppliancePropertiesInfrastructureConfig>(infrastructureConfig),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.distro,
+    this.identity,
+    this.infrastructureConfig,
+    this.location,
+    this.publicKey,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ApplianceArgs {
 
   factory ApplianceArgs.fromMap(Map<String, dynamic> map) {
     return ApplianceArgs(
-      distro: map['distro'] == null ? null : pulumi.Output.create<String>(map['distro'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      infrastructureConfig: map['infrastructureConfig'] == null ? null : pulumi.Output.create<AppliancePropertiesInfrastructureConfig>(AppliancePropertiesInfrastructureConfig.fromMap((map['infrastructureConfig'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      distro: map['distro'] == null ? null : (map['distro'] as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      infrastructureConfig: map['infrastructureConfig'] == null ? null : (AppliancePropertiesInfrastructureConfig.fromMap((map['infrastructureConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

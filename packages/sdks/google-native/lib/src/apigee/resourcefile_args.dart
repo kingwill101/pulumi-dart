@@ -32,23 +32,15 @@ class ResourcefileArgs {
   /// [organizationId] Required.
   /// [type] Required. Resource file type. {{ resource_file_type }}
   ResourcefileArgs({
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? data,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<List<Map<String, String>>>? extensions,
-    pulumi.Output<dynamic>? file,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> type,
-  }) :
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      extensions = pulumi.Input.asOptionalInput<List<Map<String, String>>>(extensions),
-      file = pulumi.Input.asOptionalInput<dynamic>(file),
-      name = pulumi.Input.asInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      type = pulumi.Input.asInput<String>(type);
+    this.contentType,
+    this.data,
+    required this.environmentId,
+    this.extensions,
+    this.file,
+    required this.name,
+    required this.organizationId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class ResourcefileArgs {
 
   factory ResourcefileArgs.fromMap(Map<String, dynamic> map) {
     return ResourcefileArgs(
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      extensions: map['extensions'] == null ? null : pulumi.Output.create<List<Map<String, String>>>((map['extensions'] as List).cast<Map<String, String>>()),
-      file: map['file'] == null ? null : pulumi.Output.create<dynamic>(map['file']),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<Map<String, String>>()).input(),
+      file: map['file'] == null ? null : (map['file']).input(),
+      name: (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

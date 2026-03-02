@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the Azure plan.
 class AzurePlan {
   /// The ID that uniquely identifies a product.
-  final String? productId;
+  final pulumi.Input<String>? productId;
   /// The sku description.
-  final String? skuDescription;
+  final pulumi.Input<String>? skuDescription;
   /// The ID that uniquely identifies a sku.
-  final String? skuId;
+  final pulumi.Input<String>? skuId;
 
   /// Creates a new [AzurePlan].
   /// [productId] The ID that uniquely identifies a product.
@@ -30,9 +31,9 @@ class AzurePlan {
 
   factory AzurePlan.fromMap(Map<String, dynamic> map) {
     return AzurePlan(
-      productId: map['productId'] == null ? null : map['productId'] as String,
-      skuDescription: map['skuDescription'] == null ? null : map['skuDescription'] as String,
-      skuId: map['skuId'] == null ? null : map['skuId'] as String,
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      skuDescription: map['skuDescription'] == null ? null : (map['skuDescription'] as String).input(),
+      skuId: map['skuId'] == null ? null : (map['skuId'] as String).input(),
     );
   }
 }

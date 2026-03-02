@@ -49,23 +49,15 @@ class WorkstationConfigIamMemberState {
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] Used to find the parent resource to bind the IAM policy to
   WorkstationConfigIamMemberState({
-    pulumi.Output<WorkstationConfigIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? workstationClusterId,
-    pulumi.Output<String>? workstationConfigId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WorkstationConfigIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      workstationClusterId = pulumi.Input.asOptionalInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asOptionalInput<String>(workstationConfigId);
+    this.condition,
+    this.etag,
+    this.location,
+    this.member,
+    this.project,
+    this.role,
+    this.workstationClusterId,
+    this.workstationConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,14 +74,14 @@ class WorkstationConfigIamMemberState {
 
   factory WorkstationConfigIamMemberState.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WorkstationConfigIamMemberCondition>(WorkstationConfigIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      workstationClusterId: map['workstationClusterId'] == null ? null : pulumi.Output.create<String>(map['workstationClusterId'] as String),
-      workstationConfigId: map['workstationConfigId'] == null ? null : pulumi.Output.create<String>(map['workstationConfigId'] as String),
+      condition: map['condition'] == null ? null : (WorkstationConfigIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      workstationClusterId: map['workstationClusterId'] == null ? null : (map['workstationClusterId'] as String).input(),
+      workstationConfigId: map['workstationConfigId'] == null ? null : (map['workstationConfigId'] as String).input(),
     );
   }
 }

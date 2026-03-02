@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration {
   /// Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `log_level` or `metrics_level` attribute values to be effective.
-  final String configurationType;
+  final pulumi.Input<String> configurationType;
   /// Describes the verbosity of the CloudWatch Logs for an application. Valid values: `DEBUG`, `ERROR`, `INFO`, `WARN`.
-  final String? logLevel;
+  final pulumi.Input<String>? logLevel;
   /// Describes the granularity of the CloudWatch Logs for an application. Valid values: `APPLICATION`, `OPERATOR`, `PARALLELISM`, `TASK`.
-  final String? metricsLevel;
+  final pulumi.Input<String>? metricsLevel;
 
   /// Creates a new [ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration].
   /// [configurationType] Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `log_level` or `metrics_level` attribute values to be effective.
@@ -29,9 +30,9 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoring
 
   factory ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration(
-      configurationType: map['configurationType'] as String,
-      logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
-      metricsLevel: map['metricsLevel'] == null ? null : map['metricsLevel'] as String,
+      configurationType: (map['configurationType'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      metricsLevel: map['metricsLevel'] == null ? null : (map['metricsLevel'] as String).input(),
     );
   }
 }

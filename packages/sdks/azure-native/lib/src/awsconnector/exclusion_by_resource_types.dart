@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ExclusionByResourceTypes
 class ExclusionByResourceTypes {
   /// <p>A comma-separated list of resource types to exclude from recording by the configuration recorder.</p>
-  final List<String>? resourceTypes;
+  final pulumi.Input<List<String>>? resourceTypes;
 
   /// Creates a new [ExclusionByResourceTypes].
   /// [resourceTypes] <p>A comma-separated list of resource types to exclude from recording by the configuration recorder.</p>
@@ -20,7 +21,7 @@ class ExclusionByResourceTypes {
 
   factory ExclusionByResourceTypes.fromMap(Map<String, dynamic> map) {
     return ExclusionByResourceTypes(
-      resourceTypes: map['resourceTypes'] == null ? null : (map['resourceTypes'] as List).cast<String>(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }
 }

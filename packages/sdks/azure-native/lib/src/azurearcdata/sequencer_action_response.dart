@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The sequencer action details.
 class SequencerActionResponse {
   /// The unique identifier of the sequencer action.
-  final String? actionId;
+  final pulumi.Input<String>? actionId;
   /// The result of the sequencer action.
-  final String? result;
+  final pulumi.Input<String>? result;
   /// The state of the sequencer action.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [SequencerActionResponse].
   /// [actionId] The unique identifier of the sequencer action.
@@ -30,9 +31,9 @@ class SequencerActionResponse {
 
   factory SequencerActionResponse.fromMap(Map<String, dynamic> map) {
     return SequencerActionResponse(
-      actionId: map['actionId'] == null ? null : map['actionId'] as String,
-      result: map['result'] == null ? null : map['result'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      actionId: map['actionId'] == null ? null : (map['actionId'] as String).input(),
+      result: map['result'] == null ? null : (map['result'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

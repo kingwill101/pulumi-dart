@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransportLayerApplicationRule {
   /// Client IP pass-through protocol, supporting:
-  final String clientIpPassThroughMode;
+  final pulumi.Input<String> clientIpPassThroughMode;
   /// Comment information for the rule (optional).
-  final String? comment;
+  final pulumi.Input<String>? comment;
   /// Edge port. Supports:
   /// - A single port, such as 80.
   /// - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
   /// - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
   ///
   /// Edge ports within a single rule and between multiple rules must not overlap.
-  final String edgePort;
+  final pulumi.Input<String> edgePort;
   /// Forwarding rule protocol, with values:
   /// - `TCP`: TCP protocol.
   /// - `UDP`: UDP protocol.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// Rule ID
-  final int? ruleId;
+  final pulumi.Input<int>? ruleId;
   /// Specific value of the origin, which needs to match the origin type.
-  final String source;
+  final pulumi.Input<String> source;
   /// Source Port
-  final String sourcePort;
+  final pulumi.Input<String> sourcePort;
   /// Origin type, supporting:
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
 
   /// Creates a new [TransportLayerApplicationRule].
   /// [clientIpPassThroughMode] Client IP pass-through protocol, supporting:
@@ -61,14 +62,14 @@ class TransportLayerApplicationRule {
 
   factory TransportLayerApplicationRule.fromMap(Map<String, dynamic> map) {
     return TransportLayerApplicationRule(
-      clientIpPassThroughMode: map['clientIpPassThroughMode'] as String,
-      comment: map['comment'] == null ? null : map['comment'] as String,
-      edgePort: map['edgePort'] as String,
-      protocol: map['protocol'] as String,
-      ruleId: map['ruleId'] == null ? null : map['ruleId'] as int,
-      source: map['source'] as String,
-      sourcePort: map['sourcePort'] as String,
-      sourceType: map['sourceType'] as String,
+      clientIpPassThroughMode: (map['clientIpPassThroughMode'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      edgePort: (map['edgePort'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as int).input(),
+      source: (map['source'] as String).input(),
+      sourcePort: (map['sourcePort'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
     );
   }
 }

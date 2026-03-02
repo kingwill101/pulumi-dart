@@ -38,25 +38,16 @@ class QueryArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Tags associated with the query.
   QueryArgs({
-    required pulumi.Output<String> body,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? id,
-    pulumi.Output<dynamic>? properties,
-    required pulumi.Output<String> queryPackName,
-    pulumi.Output<LogAnalyticsQueryPackQueryPropertiesRelated>? related,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, List<String>>>? tags,
-  }) :
-      body = pulumi.Input.asInput<String>(body),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      properties = pulumi.Input.asOptionalInput<dynamic>(properties),
-      queryPackName = pulumi.Input.asInput<String>(queryPackName),
-      related = pulumi.Input.asOptionalInput<LogAnalyticsQueryPackQueryPropertiesRelated>(related),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, List<String>>>(tags);
+    required this.body,
+    this.description,
+    required this.displayName,
+    this.id,
+    this.properties,
+    required this.queryPackName,
+    this.related,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class QueryArgs {
 
   factory QueryArgs.fromMap(Map<String, dynamic> map) {
     return QueryArgs(
-      body: pulumi.Output.create<String>(map['body'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<dynamic>(map['properties']),
-      queryPackName: pulumi.Output.create<String>(map['queryPackName'] as String),
-      related: map['related'] == null ? null : pulumi.Output.create<LogAnalyticsQueryPackQueryPropertiesRelated>(LogAnalyticsQueryPackQueryPropertiesRelated.fromMap((map['related'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, List<String>>>((map['tags'] as Map).cast<String, List<String>>()),
+      body: (map['body'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']).input(),
+      queryPackName: (map['queryPackName'] as String).input(),
+      related: map['related'] == null ? null : (LogAnalyticsQueryPackQueryPropertiesRelated.fromMap((map['related'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, List<String>>()).input(),
     );
   }
 }

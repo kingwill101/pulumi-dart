@@ -44,27 +44,17 @@ class JobArgs {
   /// [template] Container Apps job definition.
   /// [workloadProfileName] Workload profile name to pin for container apps job execution.
   JobArgs({
-    pulumi.Output<JobConfiguration>? configuration,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? jobName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<JobTemplate>? template,
-    pulumi.Output<String>? workloadProfileName,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<JobConfiguration>(configuration),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      jobName = pulumi.Input.asOptionalInput<String>(jobName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      template = pulumi.Input.asOptionalInput<JobTemplate>(template),
-      workloadProfileName = pulumi.Input.asOptionalInput<String>(workloadProfileName);
+    this.configuration,
+    this.environmentId,
+    this.extendedLocation,
+    this.identity,
+    this.jobName,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.template,
+    this.workloadProfileName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<JobConfiguration>(JobConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      jobName: map['jobName'] == null ? null : pulumi.Output.create<String>(map['jobName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      template: map['template'] == null ? null : pulumi.Output.create<JobTemplate>(JobTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())),
-      workloadProfileName: map['workloadProfileName'] == null ? null : pulumi.Output.create<String>(map['workloadProfileName'] as String),
+      configuration: map['configuration'] == null ? null : (JobConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (JobTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
     );
   }
 }

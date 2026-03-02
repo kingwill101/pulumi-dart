@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents one segment of audio.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse {
   /// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
-  final bool allowPlaybackInterruption;
+  final pulumi.Input<bool> allowPlaybackInterruption;
   /// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
-  final String audio;
+  final pulumi.Input<String> audio;
   /// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse].
   /// [allowPlaybackInterruption] Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
@@ -30,9 +31,9 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse {
 
   factory GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] as bool,
-      audio: map['audio'] as String,
-      uri: map['uri'] as String,
+      allowPlaybackInterruption: (map['allowPlaybackInterruption'] as bool).input(),
+      audio: (map['audio'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

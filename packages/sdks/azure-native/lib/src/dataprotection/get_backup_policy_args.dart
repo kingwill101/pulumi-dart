@@ -18,13 +18,10 @@ class GetBackupPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The name of the backup vault.
   GetBackupPolicyArgs({
-    required pulumi.Output<String> backupPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      backupPolicyName = pulumi.Input.asInput<String>(backupPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.backupPolicyName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetBackupPolicyArgs {
 
   factory GetBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPolicyArgs(
-      backupPolicyName: pulumi.Output.create<String>(map['backupPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      backupPolicyName: (map['backupPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

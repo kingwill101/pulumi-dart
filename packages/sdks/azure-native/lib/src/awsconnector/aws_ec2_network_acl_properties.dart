@@ -6,11 +6,11 @@ import 'tag.dart';
 /// Definition of awsEc2NetworkAcl
 class AwsEc2NetworkAclProperties {
   /// Property id
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The tags for the network ACL.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// The ID of the VPC for the network ACL.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   /// Creates a new [AwsEc2NetworkAclProperties].
   /// [id] Property id
@@ -25,16 +25,16 @@ class AwsEc2NetworkAclProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': ?vpcId,
     };
   }
 
   factory AwsEc2NetworkAclProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2NetworkAclProperties(
-      id: map['id'] == null ? null : map['id'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

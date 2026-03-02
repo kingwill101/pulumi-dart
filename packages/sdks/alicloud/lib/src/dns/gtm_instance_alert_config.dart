@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GtmInstanceAlertConfig {
   /// Whether to configure DingTalk notifications. Valid values: `true`, `false`.
-  final bool? dingtalkNotice;
+  final pulumi.Input<bool>? dingtalkNotice;
   /// Whether to configure mail notification. Valid values: `true`, `false`.
-  final bool? emailNotice;
+  final pulumi.Input<bool>? emailNotice;
   /// The Alarm Event Type.
   /// - `ADDR_ALERT`: Address not available.
   /// - `ADDR_RESUME`: Address Recovery available.
@@ -13,9 +14,9 @@ class GtmInstanceAlertConfig {
   /// - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
   /// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
   /// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
-  final String? noticeType;
+  final pulumi.Input<String>? noticeType;
   /// Whether to configure SMS notification. Valid values: `true`, `false`.
-  final bool? smsNotice;
+  final pulumi.Input<bool>? smsNotice;
 
   /// Creates a new [GtmInstanceAlertConfig].
   /// [dingtalkNotice] Whether to configure DingTalk notifications. Valid values: `true`, `false`.
@@ -40,10 +41,10 @@ class GtmInstanceAlertConfig {
 
   factory GtmInstanceAlertConfig.fromMap(Map<String, dynamic> map) {
     return GtmInstanceAlertConfig(
-      dingtalkNotice: map['dingtalkNotice'] == null ? null : map['dingtalkNotice'] as bool,
-      emailNotice: map['emailNotice'] == null ? null : map['emailNotice'] as bool,
-      noticeType: map['noticeType'] == null ? null : map['noticeType'] as String,
-      smsNotice: map['smsNotice'] == null ? null : map['smsNotice'] as bool,
+      dingtalkNotice: map['dingtalkNotice'] == null ? null : (map['dingtalkNotice'] as bool).input(),
+      emailNotice: map['emailNotice'] == null ? null : (map['emailNotice'] as bool).input(),
+      noticeType: map['noticeType'] == null ? null : (map['noticeType'] as String).input(),
+      smsNotice: map['smsNotice'] == null ? null : (map['smsNotice'] as bool).input(),
     );
   }
 }

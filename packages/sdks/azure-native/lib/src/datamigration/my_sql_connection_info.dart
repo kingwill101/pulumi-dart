@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information for connecting to MySQL server
 class MySqlConnectionInfo {
   /// Additional connection settings
-  final String? additionalSettings;
+  final pulumi.Input<String>? additionalSettings;
   /// Authentication type to use for connection
-  final String? authentication;
+  final pulumi.Input<String>? authentication;
   /// Data source
-  final String? dataSource;
+  final pulumi.Input<String>? dataSource;
   /// Whether to encrypt the connection
-  final bool? encryptConnection;
+  final pulumi.Input<bool>? encryptConnection;
   /// Password credential.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Port for Server
-  final int port;
+  final pulumi.Input<int> port;
   /// Name of the server
-  final String serverName;
+  final pulumi.Input<String> serverName;
   /// Type of connection info
   /// Expected value is 'MySqlConnectionInfo'.
-  final String type;
+  final pulumi.Input<String> type;
   /// User name
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [MySqlConnectionInfo].
   /// [additionalSettings] Additional connection settings
@@ -61,15 +62,15 @@ class MySqlConnectionInfo {
 
   factory MySqlConnectionInfo.fromMap(Map<String, dynamic> map) {
     return MySqlConnectionInfo(
-      additionalSettings: map['additionalSettings'] == null ? null : map['additionalSettings'] as String,
-      authentication: map['authentication'] == null ? null : map['authentication'] as String,
-      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
-      encryptConnection: map['encryptConnection'] == null ? null : map['encryptConnection'] as bool,
-      password: map['password'] == null ? null : map['password'] as String,
-      port: map['port'] as int,
-      serverName: map['serverName'] as String,
-      type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      additionalSettings: map['additionalSettings'] == null ? null : (map['additionalSettings'] as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection'] as bool).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: (map['port'] as int).input(),
+      serverName: (map['serverName'] as String).input(),
+      type: (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

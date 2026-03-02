@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentMonitor {
   /// ARN of the Amazon CloudWatch alarm.
-  final String alarmArn;
+  final pulumi.Input<String> alarmArn;
   /// ARN of an IAM role for AWS AppConfig to monitor `alarm_arn`.
-  final String? alarmRoleArn;
+  final pulumi.Input<String>? alarmRoleArn;
 
   /// Creates a new [EnvironmentMonitor].
   /// [alarmArn] ARN of the Amazon CloudWatch alarm.
@@ -24,8 +25,8 @@ class EnvironmentMonitor {
 
   factory EnvironmentMonitor.fromMap(Map<String, dynamic> map) {
     return EnvironmentMonitor(
-      alarmArn: map['alarmArn'] as String,
-      alarmRoleArn: map['alarmRoleArn'] == null ? null : map['alarmRoleArn'] as String,
+      alarmArn: (map['alarmArn'] as String).input(),
+      alarmRoleArn: map['alarmRoleArn'] == null ? null : (map['alarmRoleArn'] as String).input(),
     );
   }
 }

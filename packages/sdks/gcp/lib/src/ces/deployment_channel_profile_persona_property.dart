@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentChannelProfilePersonaProperty {
   /// The persona of the channel.
@@ -7,7 +8,7 @@ class DeploymentChannelProfilePersonaProperty {
   /// UNKNOWN
   /// CONCISE
   /// CHATTY
-  final String? persona;
+  final pulumi.Input<String>? persona;
 
   /// Creates a new [DeploymentChannelProfilePersonaProperty].
   /// [persona] The persona of the channel.
@@ -23,7 +24,7 @@ class DeploymentChannelProfilePersonaProperty {
 
   factory DeploymentChannelProfilePersonaProperty.fromMap(Map<String, dynamic> map) {
     return DeploymentChannelProfilePersonaProperty(
-      persona: map['persona'] == null ? null : map['persona'] as String,
+      persona: map['persona'] == null ? null : (map['persona'] as String).input(),
     );
   }
 }

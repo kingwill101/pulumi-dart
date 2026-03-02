@@ -16,11 +16,9 @@ class FlexibleServerBackupArgs {
   /// [name] Specifies the name of this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   /// [serverId] The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   FlexibleServerBackupArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> serverId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asInput<String>(serverId);
+    this.name,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class FlexibleServerBackupArgs {
 
   factory FlexibleServerBackupArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerBackupArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
     );
   }
 }

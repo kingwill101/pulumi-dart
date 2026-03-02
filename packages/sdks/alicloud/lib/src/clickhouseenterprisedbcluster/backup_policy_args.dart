@@ -22,15 +22,11 @@ class BackupPolicyArgs {
   /// [preferredBackupPeriod] Backup period.
   /// [preferredBackupTime] Backup time.
   BackupPolicyArgs({
-    required pulumi.Output<int> backupRetentionPeriod,
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> preferredBackupPeriod,
-    required pulumi.Output<String> preferredBackupTime,
-  }) :
-      backupRetentionPeriod = pulumi.Input.asInput<int>(backupRetentionPeriod),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      preferredBackupPeriod = pulumi.Input.asInput<String>(preferredBackupPeriod),
-      preferredBackupTime = pulumi.Input.asInput<String>(preferredBackupTime);
+    required this.backupRetentionPeriod,
+    required this.dbInstanceId,
+    required this.preferredBackupPeriod,
+    required this.preferredBackupTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupRetentionPeriod: pulumi.Output.create<int>(map['backupRetentionPeriod'] as int),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      preferredBackupPeriod: pulumi.Output.create<String>(map['preferredBackupPeriod'] as String),
-      preferredBackupTime: pulumi.Output.create<String>(map['preferredBackupTime'] as String),
+      backupRetentionPeriod: (map['backupRetentionPeriod'] as int).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      preferredBackupPeriod: (map['preferredBackupPeriod'] as String).input(),
+      preferredBackupTime: (map['preferredBackupTime'] as String).input(),
     );
   }
 }

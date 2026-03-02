@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PacketMirroringFilter {
   /// IP CIDR ranges that apply as a filter on the source (ingress) or
   /// destination (egress) IP in the IP header. Only IPv4 is supported.
-  final List<String>? cidrRanges;
+  final pulumi.Input<List<String>>? cidrRanges;
   /// Direction of traffic to mirror.
   /// Default value is `BOTH`.
   /// Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
-  final String? direction;
+  final pulumi.Input<String>? direction;
   /// Possible IP protocols including tcp, udp, icmp and esp
-  final List<String>? ipProtocols;
+  final pulumi.Input<List<String>>? ipProtocols;
 
   /// Creates a new [PacketMirroringFilter].
   /// [cidrRanges] IP CIDR ranges that apply as a filter on the source (ingress) or
@@ -32,9 +33,9 @@ class PacketMirroringFilter {
 
   factory PacketMirroringFilter.fromMap(Map<String, dynamic> map) {
     return PacketMirroringFilter(
-      cidrRanges: map['cidrRanges'] == null ? null : (map['cidrRanges'] as List).cast<String>(),
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      ipProtocols: map['ipProtocols'] == null ? null : (map['ipProtocols'] as List).cast<String>(),
+      cidrRanges: map['cidrRanges'] == null ? null : ((map['cidrRanges'] as List).cast<String>()).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      ipProtocols: map['ipProtocols'] == null ? null : ((map['ipProtocols'] as List).cast<String>()).input(),
     );
   }
 }

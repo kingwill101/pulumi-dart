@@ -23,15 +23,11 @@ class ApplicationNetworkRuleSetArgs {
   /// [iotcentralApplicationId] The ID of the IoT Central Application. Changing this forces a new resource to be created.
   /// [ipRules] One or more `ip_rule` blocks as defined below.
   ApplicationNetworkRuleSetArgs({
-    pulumi.Output<bool>? applyToDevice,
-    pulumi.Output<String>? defaultAction,
-    required pulumi.Output<String> iotcentralApplicationId,
-    pulumi.Output<List<ApplicationNetworkRuleSetIpRule>>? ipRules,
-  }) :
-      applyToDevice = pulumi.Input.asOptionalInput<bool>(applyToDevice),
-      defaultAction = pulumi.Input.asOptionalInput<String>(defaultAction),
-      iotcentralApplicationId = pulumi.Input.asInput<String>(iotcentralApplicationId),
-      ipRules = pulumi.Input.asOptionalInput<List<ApplicationNetworkRuleSetIpRule>>(ipRules);
+    this.applyToDevice,
+    this.defaultAction,
+    required this.iotcentralApplicationId,
+    this.ipRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ApplicationNetworkRuleSetArgs {
 
   factory ApplicationNetworkRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationNetworkRuleSetArgs(
-      applyToDevice: map['applyToDevice'] == null ? null : pulumi.Output.create<bool>(map['applyToDevice'] as bool),
-      defaultAction: map['defaultAction'] == null ? null : pulumi.Output.create<String>(map['defaultAction'] as String),
-      iotcentralApplicationId: pulumi.Output.create<String>(map['iotcentralApplicationId'] as String),
-      ipRules: map['ipRules'] == null ? null : pulumi.Output.create<List<ApplicationNetworkRuleSetIpRule>>(pulumi.Input.decodeList<ApplicationNetworkRuleSetIpRule>(map['ipRules'], (value) => ApplicationNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))),
+      applyToDevice: map['applyToDevice'] == null ? null : (map['applyToDevice'] as bool).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
+      iotcentralApplicationId: (map['iotcentralApplicationId'] as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<ApplicationNetworkRuleSetIpRule>(map['ipRules'], (value) => ApplicationNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

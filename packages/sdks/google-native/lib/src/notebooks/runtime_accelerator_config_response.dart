@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
 class RuntimeAcceleratorConfigResponse {
   /// Count of cores of this accelerator.
-  final String coreCount;
+  final pulumi.Input<String> coreCount;
   /// Accelerator model.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RuntimeAcceleratorConfigResponse].
   /// [coreCount] Count of cores of this accelerator.
@@ -25,8 +26,8 @@ class RuntimeAcceleratorConfigResponse {
 
   factory RuntimeAcceleratorConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeAcceleratorConfigResponse(
-      coreCount: map['coreCount'] as String,
-      type: map['type'] as String,
+      coreCount: (map['coreCount'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

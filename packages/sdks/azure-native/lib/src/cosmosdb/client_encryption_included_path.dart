@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// .
 class ClientEncryptionIncludedPath {
   /// The identifier of the Client Encryption Key to be used to encrypt the path.
-  final String clientEncryptionKeyId;
+  final pulumi.Input<String> clientEncryptionKeyId;
   /// The encryption algorithm which will be used. Eg - AEAD_AES_256_CBC_HMAC_SHA256.
-  final String encryptionAlgorithm;
+  final pulumi.Input<String> encryptionAlgorithm;
   /// The type of encryption to be performed. Eg - Deterministic, Randomized.
-  final String encryptionType;
+  final pulumi.Input<String> encryptionType;
   /// Path that needs to be encrypted.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [ClientEncryptionIncludedPath].
   /// [clientEncryptionKeyId] The identifier of the Client Encryption Key to be used to encrypt the path.
@@ -35,10 +36,10 @@ class ClientEncryptionIncludedPath {
 
   factory ClientEncryptionIncludedPath.fromMap(Map<String, dynamic> map) {
     return ClientEncryptionIncludedPath(
-      clientEncryptionKeyId: map['clientEncryptionKeyId'] as String,
-      encryptionAlgorithm: map['encryptionAlgorithm'] as String,
-      encryptionType: map['encryptionType'] as String,
-      path: map['path'] as String,
+      clientEncryptionKeyId: (map['clientEncryptionKeyId'] as String).input(),
+      encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
+      encryptionType: (map['encryptionType'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

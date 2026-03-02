@@ -16,11 +16,9 @@ class GetLBRuleArgs {
   /// [loadbalancerId] The ID of the Load Balancer Rule.
   /// [name] The name of this Load Balancer Rule.
   GetLBRuleArgs({
-    required pulumi.Output<String> loadbalancerId,
-    required pulumi.Output<String> name,
-  }) :
-      loadbalancerId = pulumi.Input.asInput<String>(loadbalancerId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.loadbalancerId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLBRuleArgs {
 
   factory GetLBRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetLBRuleArgs(
-      loadbalancerId: pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      loadbalancerId: (map['loadbalancerId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

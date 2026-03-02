@@ -29,19 +29,13 @@ class CertificateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   CertificateArgs({
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? data,
-    pulumi.Output<KeyVaultContractCreateProperties>? keyVault,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      data = pulumi.Input.asOptionalInput<String>(data),
-      keyVault = pulumi.Input.asOptionalInput<KeyVaultContractCreateProperties>(keyVault),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.certificateId,
+    this.data,
+    this.keyVault,
+    this.password,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      keyVault: map['keyVault'] == null ? null : pulumi.Output.create<KeyVaultContractCreateProperties>(KeyVaultContractCreateProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (KeyVaultContractCreateProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

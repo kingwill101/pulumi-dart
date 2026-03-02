@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_intent_message_basic_card.dart';
 import 'google_cloud_dialogflow_v2_intent_message_browse_carousel_card.dart';
 import 'google_cloud_dialogflow_v2_intent_message_card.dart';
@@ -18,35 +19,35 @@ import 'google_cloud_dialogflow_v2_intent_message_text.dart';
 /// A rich response message. Corresponds to the intent `Response` field in the Dialogflow console. For more information, see [Rich response messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
 class GoogleCloudDialogflowV2IntentMessage {
   /// The basic card response for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageBasicCard? basicCard;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBasicCard>? basicCard;
   /// Browse carousel card for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard? browseCarouselCard;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard>? browseCarouselCard;
   /// The card response.
-  final GoogleCloudDialogflowV2IntentMessageCard? card;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCard>? card;
   /// The carousel card response for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageCarouselSelect? carouselSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCarouselSelect>? carouselSelect;
   /// The image response.
-  final GoogleCloudDialogflowV2IntentMessageImage? image;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? image;
   /// The link out suggestion chip for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion? linkOutSuggestion;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion>? linkOutSuggestion;
   /// The list card response for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageListSelect? listSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageListSelect>? listSelect;
   /// The media content card for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageMediaContent? mediaContent;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageMediaContent>? mediaContent;
   /// A custom platform-specific response.
-  final Map<String, String>? payload;
+  final pulumi.Input<Map<String, String>>? payload;
   /// Optional. The platform that this message is intended for.
-  final GoogleCloudDialogflowV2IntentMessagePlatform? platform;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessagePlatform>? platform;
   /// The quick replies response.
-  final GoogleCloudDialogflowV2IntentMessageQuickReplies? quickReplies;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageQuickReplies>? quickReplies;
   /// The voice and text-only responses for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageSimpleResponses? simpleResponses;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSimpleResponses>? simpleResponses;
   /// The suggestion chips for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageSuggestions? suggestions;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSuggestions>? suggestions;
   /// Table card for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageTableCard? tableCard;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageTableCard>? tableCard;
   /// The text response.
-  final GoogleCloudDialogflowV2IntentMessageText? text;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageText>? text;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessage].
   /// [basicCard] The basic card response for Actions on Google.
@@ -84,41 +85,41 @@ class GoogleCloudDialogflowV2IntentMessage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicCard': ?basicCard == null ? null : basicCard!.toMap(),
-      'browseCarouselCard': ?browseCarouselCard == null ? null : browseCarouselCard!.toMap(),
-      'card': ?card == null ? null : card!.toMap(),
-      'carouselSelect': ?carouselSelect == null ? null : carouselSelect!.toMap(),
-      'image': ?image == null ? null : image!.toMap(),
-      'linkOutSuggestion': ?linkOutSuggestion == null ? null : linkOutSuggestion!.toMap(),
-      'listSelect': ?listSelect == null ? null : listSelect!.toMap(),
-      'mediaContent': ?mediaContent == null ? null : mediaContent!.toMap(),
+      'basicCard': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageBasicCard, Map<String, dynamic>>(basicCard, (value) => value.toMap()),
+      'browseCarouselCard': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard, Map<String, dynamic>>(browseCarouselCard, (value) => value.toMap()),
+      'card': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageCard, Map<String, dynamic>>(card, (value) => value.toMap()),
+      'carouselSelect': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageCarouselSelect, Map<String, dynamic>>(carouselSelect, (value) => value.toMap()),
+      'image': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageImage, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'linkOutSuggestion': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion, Map<String, dynamic>>(linkOutSuggestion, (value) => value.toMap()),
+      'listSelect': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageListSelect, Map<String, dynamic>>(listSelect, (value) => value.toMap()),
+      'mediaContent': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageMediaContent, Map<String, dynamic>>(mediaContent, (value) => value.toMap()),
       'payload': ?payload,
-      'platform': ?platform == null ? null : platform!.value,
-      'quickReplies': ?quickReplies == null ? null : quickReplies!.toMap(),
-      'simpleResponses': ?simpleResponses == null ? null : simpleResponses!.toMap(),
-      'suggestions': ?suggestions == null ? null : suggestions!.toMap(),
-      'tableCard': ?tableCard == null ? null : tableCard!.toMap(),
-      'text': ?text == null ? null : text!.toMap(),
+      'platform': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessagePlatform, String>(platform, (value) => value.value),
+      'quickReplies': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageQuickReplies, Map<String, dynamic>>(quickReplies, (value) => value.toMap()),
+      'simpleResponses': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageSimpleResponses, Map<String, dynamic>>(simpleResponses, (value) => value.toMap()),
+      'suggestions': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageSuggestions, Map<String, dynamic>>(suggestions, (value) => value.toMap()),
+      'tableCard': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageTableCard, Map<String, dynamic>>(tableCard, (value) => value.toMap()),
+      'text': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageText, Map<String, dynamic>>(text, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDialogflowV2IntentMessage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessage(
-      basicCard: map['basicCard'] == null ? null : GoogleCloudDialogflowV2IntentMessageBasicCard.fromMap((map['basicCard'] as Map).cast<String, dynamic>()),
-      browseCarouselCard: map['browseCarouselCard'] == null ? null : GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromMap((map['browseCarouselCard'] as Map).cast<String, dynamic>()),
-      card: map['card'] == null ? null : GoogleCloudDialogflowV2IntentMessageCard.fromMap((map['card'] as Map).cast<String, dynamic>()),
-      carouselSelect: map['carouselSelect'] == null ? null : GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromMap((map['carouselSelect'] as Map).cast<String, dynamic>()),
-      image: map['image'] == null ? null : GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      linkOutSuggestion: map['linkOutSuggestion'] == null ? null : GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromMap((map['linkOutSuggestion'] as Map).cast<String, dynamic>()),
-      listSelect: map['listSelect'] == null ? null : GoogleCloudDialogflowV2IntentMessageListSelect.fromMap((map['listSelect'] as Map).cast<String, dynamic>()),
-      mediaContent: map['mediaContent'] == null ? null : GoogleCloudDialogflowV2IntentMessageMediaContent.fromMap((map['mediaContent'] as Map).cast<String, dynamic>()),
-      payload: map['payload'] == null ? null : (map['payload'] as Map).cast<String, String>(),
-      platform: map['platform'] == null ? null : GoogleCloudDialogflowV2IntentMessagePlatform.fromValue(map['platform'] as String),
-      quickReplies: map['quickReplies'] == null ? null : GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap((map['quickReplies'] as Map).cast<String, dynamic>()),
-      simpleResponses: map['simpleResponses'] == null ? null : GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromMap((map['simpleResponses'] as Map).cast<String, dynamic>()),
-      suggestions: map['suggestions'] == null ? null : GoogleCloudDialogflowV2IntentMessageSuggestions.fromMap((map['suggestions'] as Map).cast<String, dynamic>()),
-      tableCard: map['tableCard'] == null ? null : GoogleCloudDialogflowV2IntentMessageTableCard.fromMap((map['tableCard'] as Map).cast<String, dynamic>()),
-      text: map['text'] == null ? null : GoogleCloudDialogflowV2IntentMessageText.fromMap((map['text'] as Map).cast<String, dynamic>()),
+      basicCard: map['basicCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBasicCard.fromMap((map['basicCard'] as Map).cast<String, dynamic>())).input(),
+      browseCarouselCard: map['browseCarouselCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromMap((map['browseCarouselCard'] as Map).cast<String, dynamic>())).input(),
+      card: map['card'] == null ? null : (GoogleCloudDialogflowV2IntentMessageCard.fromMap((map['card'] as Map).cast<String, dynamic>())).input(),
+      carouselSelect: map['carouselSelect'] == null ? null : (GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromMap((map['carouselSelect'] as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      linkOutSuggestion: map['linkOutSuggestion'] == null ? null : (GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromMap((map['linkOutSuggestion'] as Map).cast<String, dynamic>())).input(),
+      listSelect: map['listSelect'] == null ? null : (GoogleCloudDialogflowV2IntentMessageListSelect.fromMap((map['listSelect'] as Map).cast<String, dynamic>())).input(),
+      mediaContent: map['mediaContent'] == null ? null : (GoogleCloudDialogflowV2IntentMessageMediaContent.fromMap((map['mediaContent'] as Map).cast<String, dynamic>())).input(),
+      payload: map['payload'] == null ? null : ((map['payload'] as Map).cast<String, String>()).input(),
+      platform: map['platform'] == null ? null : (GoogleCloudDialogflowV2IntentMessagePlatform.fromValue(map['platform'] as String)).input(),
+      quickReplies: map['quickReplies'] == null ? null : (GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap((map['quickReplies'] as Map).cast<String, dynamic>())).input(),
+      simpleResponses: map['simpleResponses'] == null ? null : (GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromMap((map['simpleResponses'] as Map).cast<String, dynamic>())).input(),
+      suggestions: map['suggestions'] == null ? null : (GoogleCloudDialogflowV2IntentMessageSuggestions.fromMap((map['suggestions'] as Map).cast<String, dynamic>())).input(),
+      tableCard: map['tableCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageTableCard.fromMap((map['tableCard'] as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (GoogleCloudDialogflowV2IntentMessageText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

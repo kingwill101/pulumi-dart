@@ -30,19 +30,13 @@ class InstanceArgs {
   /// [solutionName] Name of the solution
   /// [targetName] Name of the target
   InstanceArgs({
-    pulumi.Output<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<InstanceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> solutionName,
-    required pulumi.Output<String> targetName,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<AzureResourceManagerCommonTypesExtendedLocation>(extendedLocation),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      properties = pulumi.Input.asOptionalInput<InstanceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asInput<String>(solutionName),
-      targetName = pulumi.Input.asInput<String>(targetName);
+    this.extendedLocation,
+    this.instanceName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.solutionName,
+    required this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<AzureResourceManagerCommonTypesExtendedLocation>(AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<InstanceProperties>(InstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: pulumi.Output.create<String>(map['solutionName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      properties: map['properties'] == null ? null : (InstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: (map['solutionName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
     );
   }
 }

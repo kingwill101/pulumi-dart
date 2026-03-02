@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessOffer {
   /// [Required] The name of the Serverless Offer
-  final String offerName;
+  final pulumi.Input<String> offerName;
   /// [Required] Publisher name of the Serverless Offer
-  final String publisher;
+  final pulumi.Input<String> publisher;
 
   /// Creates a new [ServerlessOffer].
   /// [offerName] [Required] The name of the Serverless Offer
@@ -24,8 +25,8 @@ class ServerlessOffer {
 
   factory ServerlessOffer.fromMap(Map<String, dynamic> map) {
     return ServerlessOffer(
-      offerName: map['offerName'] as String,
-      publisher: map['publisher'] as String,
+      offerName: (map['offerName'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
     );
   }
 }

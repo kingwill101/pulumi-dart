@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InteractiveQueryClusterGateway {
   /// The password used for the Ambari Portal.
   ///
   /// > **Note:** This password must be different from the one used for the `head_node`, `worker_node` and `zookeeper_node` roles.
-  final String password;
+  final pulumi.Input<String> password;
   /// The username used for the Ambari Portal. Changing this forces a new resource to be created.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [InteractiveQueryClusterGateway].
   /// [password] The password used for the Ambari Portal.
@@ -26,8 +27,8 @@ class InteractiveQueryClusterGateway {
 
   factory InteractiveQueryClusterGateway.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterGateway(
-      password: map['password'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

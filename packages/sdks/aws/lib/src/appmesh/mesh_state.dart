@@ -38,27 +38,17 @@ class MeshState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   MeshState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<String>? lastUpdatedDate,
-    pulumi.Output<String>? meshOwner,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceOwner,
-    pulumi.Output<MeshSpec>? spec,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      lastUpdatedDate = pulumi.Input.asOptionalInput<String>(lastUpdatedDate),
-      meshOwner = pulumi.Input.asOptionalInput<String>(meshOwner),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceOwner = pulumi.Input.asOptionalInput<String>(resourceOwner),
-      spec = pulumi.Input.asOptionalInput<MeshSpec>(spec),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdDate,
+    this.lastUpdatedDate,
+    this.meshOwner,
+    this.name,
+    this.region,
+    this.resourceOwner,
+    this.spec,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class MeshState {
 
   factory MeshState.fromMap(Map<String, dynamic> map) {
     return MeshState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : pulumi.Output.create<String>(map['lastUpdatedDate'] as String),
-      meshOwner: map['meshOwner'] == null ? null : pulumi.Output.create<String>(map['meshOwner'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceOwner: map['resourceOwner'] == null ? null : pulumi.Output.create<String>(map['resourceOwner'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<MeshSpec>(MeshSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : (map['lastUpdatedDate'] as String).input(),
+      meshOwner: map['meshOwner'] == null ? null : (map['meshOwner'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceOwner: map['resourceOwner'] == null ? null : (map['resourceOwner'] as String).input(),
+      spec: map['spec'] == null ? null : (MeshSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

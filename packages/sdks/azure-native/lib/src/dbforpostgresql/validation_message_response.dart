@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Validation message object.
 class ValidationMessageResponse {
   /// Validation message string.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Severity of validation message.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [ValidationMessageResponse].
   /// [message] Validation message string.
@@ -25,8 +26,8 @@ class ValidationMessageResponse {
 
   factory ValidationMessageResponse.fromMap(Map<String, dynamic> map) {
     return ValidationMessageResponse(
-      message: map['message'] == null ? null : map['message'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

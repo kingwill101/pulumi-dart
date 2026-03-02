@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_channel_source_dbus.dart';
 import 'domain_devices_channel_source_dev.dart';
 import 'domain_devices_channel_source_file.dart';
@@ -14,35 +15,35 @@ import 'domain_devices_channel_source_unix.dart';
 
 class DomainDevicesChannelSource {
   /// Configures the DBus source for the EGD backend.
-  final DomainDevicesChannelSourceDbus? dbus;
+  final pulumi.Input<DomainDevicesChannelSourceDbus>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final DomainDevicesChannelSourceDev? dev;
+  final pulumi.Input<DomainDevicesChannelSourceDev>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final DomainDevicesChannelSourceFile? file;
+  final pulumi.Input<DomainDevicesChannelSourceFile>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final DomainDevicesChannelSourceNmdm? nmdm;
+  final pulumi.Input<DomainDevicesChannelSourceNmdm>? nmdm;
   /// Configures a null source for the EGD backend.
-  final bool? null_;
+  final pulumi.Input<bool>? null_;
   /// Defines a pipe source for the EGD backend.
-  final DomainDevicesChannelSourcePipe? pipe;
+  final pulumi.Input<DomainDevicesChannelSourcePipe>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final DomainDevicesChannelSourcePty? pty;
+  final pulumi.Input<DomainDevicesChannelSourcePty>? pty;
   /// Configures the QEMU guest agent for the random number generator backend.
-  final DomainDevicesChannelSourceQemuvdAgent? qemuvdAgent;
+  final pulumi.Input<DomainDevicesChannelSourceQemuvdAgent>? qemuvdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final DomainDevicesChannelSourceSpicePort? spicePort;
+  final pulumi.Input<DomainDevicesChannelSourceSpicePort>? spicePort;
   /// Configures the SPICE VMC settings for the random number generator backend.
-  final bool? spiceVmc;
+  final pulumi.Input<bool>? spiceVmc;
   /// Configures standard input/output settings for the random number generator backend.
-  final bool? stdIo;
+  final pulumi.Input<bool>? stdIo;
   /// Configures TCP settings for the random number generator backend.
-  final DomainDevicesChannelSourceTcp? tcp;
+  final pulumi.Input<DomainDevicesChannelSourceTcp>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final DomainDevicesChannelSourceUdp? udp;
+  final pulumi.Input<DomainDevicesChannelSourceUdp>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final DomainDevicesChannelSourceUnix? unix;
+  final pulumi.Input<DomainDevicesChannelSourceUnix>? unix;
   /// Configures settings for the virtual console connection in the random number generator backend.
-  final bool? vc;
+  final pulumi.Input<bool>? vc;
 
   /// Creates a new [DomainDevicesChannelSource].
   /// [dbus] Configures the DBus source for the EGD backend.
@@ -80,41 +81,41 @@ class DomainDevicesChannelSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbus': ?dbus == null ? null : dbus!.toMap(),
-      'dev': ?dev == null ? null : dev!.toMap(),
-      'file': ?file == null ? null : file!.toMap(),
-      'nmdm': ?nmdm == null ? null : nmdm!.toMap(),
+      'dbus': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceDbus, Map<String, dynamic>>(dbus, (value) => value.toMap()),
+      'dev': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceDev, Map<String, dynamic>>(dev, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'nmdm': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceNmdm, Map<String, dynamic>>(nmdm, (value) => value.toMap()),
       'null': ?null_,
-      'pipe': ?pipe == null ? null : pipe!.toMap(),
-      'pty': ?pty == null ? null : pty!.toMap(),
-      'qemuvdAgent': ?qemuvdAgent == null ? null : qemuvdAgent!.toMap(),
-      'spicePort': ?spicePort == null ? null : spicePort!.toMap(),
+      'pipe': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourcePipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
+      'pty': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourcePty, Map<String, dynamic>>(pty, (value) => value.toMap()),
+      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
+      'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
-      'tcp': ?tcp == null ? null : tcp!.toMap(),
-      'udp': ?udp == null ? null : udp!.toMap(),
-      'unix': ?unix == null ? null : unix!.toMap(),
+      'tcp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceTcp, Map<String, dynamic>>(tcp, (value) => value.toMap()),
+      'udp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceUdp, Map<String, dynamic>>(udp, (value) => value.toMap()),
+      'unix': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceUnix, Map<String, dynamic>>(unix, (value) => value.toMap()),
       'vc': ?vc,
     };
   }
 
   factory DomainDevicesChannelSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelSource(
-      dbus: map['dbus'] == null ? null : DomainDevicesChannelSourceDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>()),
-      dev: map['dev'] == null ? null : DomainDevicesChannelSourceDev.fromMap((map['dev'] as Map).cast<String, dynamic>()),
-      file: map['file'] == null ? null : DomainDevicesChannelSourceFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      nmdm: map['nmdm'] == null ? null : DomainDevicesChannelSourceNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>()),
-      null_: map['null'] == null ? null : map['null'] as bool,
-      pipe: map['pipe'] == null ? null : DomainDevicesChannelSourcePipe.fromMap((map['pipe'] as Map).cast<String, dynamic>()),
-      pty: map['pty'] == null ? null : DomainDevicesChannelSourcePty.fromMap((map['pty'] as Map).cast<String, dynamic>()),
-      qemuvdAgent: map['qemuvdAgent'] == null ? null : DomainDevicesChannelSourceQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>()),
-      spicePort: map['spicePort'] == null ? null : DomainDevicesChannelSourceSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>()),
-      spiceVmc: map['spiceVmc'] == null ? null : map['spiceVmc'] as bool,
-      stdIo: map['stdIo'] == null ? null : map['stdIo'] as bool,
-      tcp: map['tcp'] == null ? null : DomainDevicesChannelSourceTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>()),
-      udp: map['udp'] == null ? null : DomainDevicesChannelSourceUdp.fromMap((map['udp'] as Map).cast<String, dynamic>()),
-      unix: map['unix'] == null ? null : DomainDevicesChannelSourceUnix.fromMap((map['unix'] as Map).cast<String, dynamic>()),
-      vc: map['vc'] == null ? null : map['vc'] as bool,
+      dbus: map['dbus'] == null ? null : (DomainDevicesChannelSourceDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>())).input(),
+      dev: map['dev'] == null ? null : (DomainDevicesChannelSourceDev.fromMap((map['dev'] as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainDevicesChannelSourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      nmdm: map['nmdm'] == null ? null : (DomainDevicesChannelSourceNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>())).input(),
+      null_: map['null'] == null ? null : (map['null'] as bool).input(),
+      pipe: map['pipe'] == null ? null : (DomainDevicesChannelSourcePipe.fromMap((map['pipe'] as Map).cast<String, dynamic>())).input(),
+      pty: map['pty'] == null ? null : (DomainDevicesChannelSourcePty.fromMap((map['pty'] as Map).cast<String, dynamic>())).input(),
+      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainDevicesChannelSourceQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>())).input(),
+      spicePort: map['spicePort'] == null ? null : (DomainDevicesChannelSourceSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>())).input(),
+      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc'] as bool).input(),
+      stdIo: map['stdIo'] == null ? null : (map['stdIo'] as bool).input(),
+      tcp: map['tcp'] == null ? null : (DomainDevicesChannelSourceTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (DomainDevicesChannelSourceUdp.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
+      unix: map['unix'] == null ? null : (DomainDevicesChannelSourceUnix.fromMap((map['unix'] as Map).cast<String, dynamic>())).input(),
+      vc: map['vc'] == null ? null : (map['vc'] as bool).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_build_config_source_repo_source.dart';
 import 'function_build_config_source_storage_source.dart';
 
 class FunctionBuildConfigSource {
   /// If provided, get the source from this location in a Cloud Source Repository.
   /// Structure is documented below.
-  final FunctionBuildConfigSourceRepoSource? repoSource;
+  final pulumi.Input<FunctionBuildConfigSourceRepoSource>? repoSource;
   /// If provided, get the source from this location in Google Cloud Storage.
   /// Structure is documented below.
-  final FunctionBuildConfigSourceStorageSource? storageSource;
+  final pulumi.Input<FunctionBuildConfigSourceStorageSource>? storageSource;
 
   /// Creates a new [FunctionBuildConfigSource].
   /// [repoSource] If provided, get the source from this location in a Cloud Source Repository.
@@ -21,15 +22,15 @@ class FunctionBuildConfigSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'repoSource': ?repoSource == null ? null : repoSource!.toMap(),
-      'storageSource': ?storageSource == null ? null : storageSource!.toMap(),
+      'repoSource': ?pulumi.Input.mapOptionalInputValue<FunctionBuildConfigSourceRepoSource, Map<String, dynamic>>(repoSource, (value) => value.toMap()),
+      'storageSource': ?pulumi.Input.mapOptionalInputValue<FunctionBuildConfigSourceStorageSource, Map<String, dynamic>>(storageSource, (value) => value.toMap()),
     };
   }
 
   factory FunctionBuildConfigSource.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfigSource(
-      repoSource: map['repoSource'] == null ? null : FunctionBuildConfigSourceRepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>()),
-      storageSource: map['storageSource'] == null ? null : FunctionBuildConfigSourceStorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>()),
+      repoSource: map['repoSource'] == null ? null : (FunctionBuildConfigSourceRepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
+      storageSource: map['storageSource'] == null ? null : (FunctionBuildConfigSourceStorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

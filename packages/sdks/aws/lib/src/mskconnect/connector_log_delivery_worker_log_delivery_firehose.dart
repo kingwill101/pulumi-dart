@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorLogDeliveryWorkerLogDeliveryFirehose {
   /// The name of the Kinesis Data Firehose delivery stream that is the destination for log delivery.
-  final String? deliveryStream;
+  final pulumi.Input<String>? deliveryStream;
   /// Specifies whether connector logs get delivered to Amazon Kinesis Data Firehose.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ConnectorLogDeliveryWorkerLogDeliveryFirehose].
   /// [deliveryStream] The name of the Kinesis Data Firehose delivery stream that is the destination for log delivery.
@@ -24,8 +25,8 @@ class ConnectorLogDeliveryWorkerLogDeliveryFirehose {
 
   factory ConnectorLogDeliveryWorkerLogDeliveryFirehose.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDeliveryFirehose(
-      deliveryStream: map['deliveryStream'] == null ? null : map['deliveryStream'] as String,
-      enabled: map['enabled'] as bool,
+      deliveryStream: map['deliveryStream'] == null ? null : (map['deliveryStream'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class AppArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AppArgs({
-    pulumi.Output<AppCampaignHook>? campaignHook,
-    pulumi.Output<AppLimits>? limits,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<AppQuietTime>? quietTime,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      campaignHook = pulumi.Input.asOptionalInput<AppCampaignHook>(campaignHook),
-      limits = pulumi.Input.asOptionalInput<AppLimits>(limits),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      quietTime = pulumi.Input.asOptionalInput<AppQuietTime>(quietTime),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.campaignHook,
+    this.limits,
+    this.name,
+    this.namePrefix,
+    this.quietTime,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      campaignHook: map['campaignHook'] == null ? null : pulumi.Output.create<AppCampaignHook>(AppCampaignHook.fromMap((map['campaignHook'] as Map).cast<String, dynamic>())),
-      limits: map['limits'] == null ? null : pulumi.Output.create<AppLimits>(AppLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      quietTime: map['quietTime'] == null ? null : pulumi.Output.create<AppQuietTime>(AppQuietTime.fromMap((map['quietTime'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      campaignHook: map['campaignHook'] == null ? null : (AppCampaignHook.fromMap((map['campaignHook'] as Map).cast<String, dynamic>())).input(),
+      limits: map['limits'] == null ? null : (AppLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      quietTime: map['quietTime'] == null ? null : (AppQuietTime.fromMap((map['quietTime'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

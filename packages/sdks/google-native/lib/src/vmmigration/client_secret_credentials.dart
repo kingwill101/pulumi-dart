@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message describing Azure Credentials using tenant ID, client ID and secret.
 class ClientSecretCredentials {
   /// Azure client ID.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Input only. Azure client secret.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// Azure tenant ID.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ClientSecretCredentials].
   /// [clientId] Azure client ID.
@@ -30,9 +31,9 @@ class ClientSecretCredentials {
 
   factory ClientSecretCredentials.fromMap(Map<String, dynamic> map) {
     return ClientSecretCredentials(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class FlowhookArgs {
   /// [orgId] The Apigee Organization associated with the environment
   /// [sharedflow] Id of the Sharedflow attaching to a flowhook point.
   FlowhookArgs({
-    pulumi.Output<bool>? continueOnError,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> flowHookPoint,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> sharedflow,
-  }) :
-      continueOnError = pulumi.Input.asOptionalInput<bool>(continueOnError),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environment = pulumi.Input.asInput<String>(environment),
-      flowHookPoint = pulumi.Input.asInput<String>(flowHookPoint),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      sharedflow = pulumi.Input.asInput<String>(sharedflow);
+    this.continueOnError,
+    this.description,
+    required this.environment,
+    required this.flowHookPoint,
+    required this.orgId,
+    required this.sharedflow,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class FlowhookArgs {
 
   factory FlowhookArgs.fromMap(Map<String, dynamic> map) {
     return FlowhookArgs(
-      continueOnError: map['continueOnError'] == null ? null : pulumi.Output.create<bool>(map['continueOnError'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      flowHookPoint: pulumi.Output.create<String>(map['flowHookPoint'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      sharedflow: pulumi.Output.create<String>(map['sharedflow'] as String),
+      continueOnError: map['continueOnError'] == null ? null : (map['continueOnError'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      flowHookPoint: (map['flowHookPoint'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      sharedflow: (map['sharedflow'] as String).input(),
     );
   }
 }

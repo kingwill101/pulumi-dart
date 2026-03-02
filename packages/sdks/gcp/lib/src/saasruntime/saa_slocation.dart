@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SaaSLocation {
   /// Name of location.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [SaaSLocation].
   /// [name] Name of location.
@@ -19,7 +20,7 @@ class SaaSLocation {
 
   factory SaaSLocation.fromMap(Map<String, dynamic> map) {
     return SaaSLocation(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

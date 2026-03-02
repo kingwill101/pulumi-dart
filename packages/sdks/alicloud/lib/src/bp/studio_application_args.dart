@@ -32,21 +32,14 @@ class StudioApplicationArgs {
   /// [templateId] The id of the template.
   /// [variables] The variables of the application.
   StudioApplicationArgs({
-    required pulumi.Output<String> applicationName,
-    pulumi.Output<String>? areaId,
-    pulumi.Output<Map<String, String>>? configuration,
-    pulumi.Output<List<StudioApplicationInstance>>? instances,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<String> templateId,
-    pulumi.Output<Map<String, String>>? variables,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      areaId = pulumi.Input.asOptionalInput<String>(areaId),
-      configuration = pulumi.Input.asOptionalInput<Map<String, String>>(configuration),
-      instances = pulumi.Input.asOptionalInput<List<StudioApplicationInstance>>(instances),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      templateId = pulumi.Input.asInput<String>(templateId),
-      variables = pulumi.Input.asOptionalInput<Map<String, String>>(variables);
+    required this.applicationName,
+    this.areaId,
+    this.configuration,
+    this.instances,
+    this.resourceGroupId,
+    required this.templateId,
+    this.variables,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class StudioApplicationArgs {
 
   factory StudioApplicationArgs.fromMap(Map<String, dynamic> map) {
     return StudioApplicationArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      areaId: map['areaId'] == null ? null : pulumi.Output.create<String>(map['areaId'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<Map<String, String>>((map['configuration'] as Map).cast<String, String>()),
-      instances: map['instances'] == null ? null : pulumi.Output.create<List<StudioApplicationInstance>>(pulumi.Input.decodeList<StudioApplicationInstance>(map['instances'], (value) => StudioApplicationInstance.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
-      variables: map['variables'] == null ? null : pulumi.Output.create<Map<String, String>>((map['variables'] as Map).cast<String, String>()),
+      applicationName: (map['applicationName'] as String).input(),
+      areaId: map['areaId'] == null ? null : (map['areaId'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((map['configuration'] as Map).cast<String, String>()).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<StudioApplicationInstance>(map['instances'], (value) => StudioApplicationInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
     );
   }
 }

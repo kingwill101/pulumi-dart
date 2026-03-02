@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkDdosProtectionPlan {
   /// Enable/disable DDoS Protection Plan on Virtual Network.
-  final bool enable;
+  final pulumi.Input<bool> enable;
   /// The ID of DDoS Protection Plan.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [VirtualNetworkDdosProtectionPlan].
   /// [enable] Enable/disable DDoS Protection Plan on Virtual Network.
@@ -24,8 +25,8 @@ class VirtualNetworkDdosProtectionPlan {
 
   factory VirtualNetworkDdosProtectionPlan.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkDdosProtectionPlan(
-      enable: map['enable'] as bool,
-      id: map['id'] as String,
+      enable: (map['enable'] as bool).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

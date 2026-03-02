@@ -28,19 +28,13 @@ class ImageDefinitionArgs {
   /// [securityType] Custom image security type.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   ImageDefinitionArgs({
-    required pulumi.Output<String> architecture,
-    pulumi.Output<String>? imageDefinitionName,
-    required pulumi.Output<String> osState,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityType,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      architecture = pulumi.Input.asInput<String>(architecture),
-      imageDefinitionName = pulumi.Input.asOptionalInput<String>(imageDefinitionName),
-      osState = pulumi.Input.asInput<String>(osState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityType = pulumi.Input.asInput<String>(securityType),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    required this.architecture,
+    this.imageDefinitionName,
+    required this.osState,
+    required this.resourceGroupName,
+    required this.securityType,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ImageDefinitionArgs {
 
   factory ImageDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ImageDefinitionArgs(
-      architecture: pulumi.Output.create<String>(map['architecture'] as String),
-      imageDefinitionName: map['imageDefinitionName'] == null ? null : pulumi.Output.create<String>(map['imageDefinitionName'] as String),
-      osState: pulumi.Output.create<String>(map['osState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityType: pulumi.Output.create<String>(map['securityType'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      architecture: (map['architecture'] as String).input(),
+      imageDefinitionName: map['imageDefinitionName'] == null ? null : (map['imageDefinitionName'] as String).input(),
+      osState: (map['osState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityType: (map['securityType'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

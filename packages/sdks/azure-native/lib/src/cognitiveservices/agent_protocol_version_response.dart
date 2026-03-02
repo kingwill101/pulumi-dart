@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Type modeling the protocol and version used by an agent/exposed by a deployment.
 class AgentProtocolVersionResponse {
   /// The protocol used by the agent/exposed by a deployment.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// The version of the protocol.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AgentProtocolVersionResponse].
   /// [protocol] The protocol used by the agent/exposed by a deployment.
@@ -25,8 +26,8 @@ class AgentProtocolVersionResponse {
 
   factory AgentProtocolVersionResponse.fromMap(Map<String, dynamic> map) {
     return AgentProtocolVersionResponse(
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

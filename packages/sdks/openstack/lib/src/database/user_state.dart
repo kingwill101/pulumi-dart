@@ -25,19 +25,13 @@ class UserState {
   /// [password] User's password.
   /// [region] The region in which to create the db user. Changing
   UserState({
-    pulumi.Output<List<String>>? databases,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? region,
-  }) :
-      databases = pulumi.Input.asOptionalInput<List<String>>(databases),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.databases,
+    this.host,
+    this.instanceId,
+    this.name,
+    this.password,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      databases: map['databases'] == null ? null : pulumi.Output.create<List<String>>((map['databases'] as List).cast<String>()),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      databases: map['databases'] == null ? null : ((map['databases'] as List).cast<String>()).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

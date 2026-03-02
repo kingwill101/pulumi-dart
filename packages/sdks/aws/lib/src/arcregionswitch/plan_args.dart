@@ -54,33 +54,20 @@ class PlanArgs {
   /// [triggers] Set of triggers that can initiate the plan execution. See Triggers below.
   /// [workflows] List of workflows that define the steps to execute. See Workflow below.
   PlanArgs({
-    pulumi.Output<List<PlanAssociatedAlarm>>? associatedAlarms,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> executionRole,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryRegion,
-    required pulumi.Output<String> recoveryApproach,
-    pulumi.Output<int>? recoveryTimeObjectiveMinutes,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> regions,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<PlanTimeouts>? timeouts,
-    pulumi.Output<List<PlanTrigger>>? triggers,
-    pulumi.Output<List<PlanWorkflow>>? workflows,
-  }) :
-      associatedAlarms = pulumi.Input.asOptionalInput<List<PlanAssociatedAlarm>>(associatedAlarms),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionRole = pulumi.Input.asInput<String>(executionRole),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryRegion = pulumi.Input.asOptionalInput<String>(primaryRegion),
-      recoveryApproach = pulumi.Input.asInput<String>(recoveryApproach),
-      recoveryTimeObjectiveMinutes = pulumi.Input.asOptionalInput<int>(recoveryTimeObjectiveMinutes),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regions = pulumi.Input.asInput<List<String>>(regions),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<PlanTimeouts>(timeouts),
-      triggers = pulumi.Input.asOptionalInput<List<PlanTrigger>>(triggers),
-      workflows = pulumi.Input.asOptionalInput<List<PlanWorkflow>>(workflows);
+    this.associatedAlarms,
+    this.description,
+    required this.executionRole,
+    this.name,
+    this.primaryRegion,
+    required this.recoveryApproach,
+    this.recoveryTimeObjectiveMinutes,
+    this.region,
+    required this.regions,
+    this.tags,
+    this.timeouts,
+    this.triggers,
+    this.workflows,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class PlanArgs {
 
   factory PlanArgs.fromMap(Map<String, dynamic> map) {
     return PlanArgs(
-      associatedAlarms: map['associatedAlarms'] == null ? null : pulumi.Output.create<List<PlanAssociatedAlarm>>(pulumi.Input.decodeList<PlanAssociatedAlarm>(map['associatedAlarms'], (value) => PlanAssociatedAlarm.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionRole: pulumi.Output.create<String>(map['executionRole'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryRegion: map['primaryRegion'] == null ? null : pulumi.Output.create<String>(map['primaryRegion'] as String),
-      recoveryApproach: pulumi.Output.create<String>(map['recoveryApproach'] as String),
-      recoveryTimeObjectiveMinutes: map['recoveryTimeObjectiveMinutes'] == null ? null : pulumi.Output.create<int>(map['recoveryTimeObjectiveMinutes'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      regions: pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<PlanTimeouts>(PlanTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<List<PlanTrigger>>(pulumi.Input.decodeList<PlanTrigger>(map['triggers'], (value) => PlanTrigger.fromMap((value as Map).cast<String, dynamic>()))),
-      workflows: map['workflows'] == null ? null : pulumi.Output.create<List<PlanWorkflow>>(pulumi.Input.decodeList<PlanWorkflow>(map['workflows'], (value) => PlanWorkflow.fromMap((value as Map).cast<String, dynamic>()))),
+      associatedAlarms: map['associatedAlarms'] == null ? null : (pulumi.Input.decodeList<PlanAssociatedAlarm>(map['associatedAlarms'], (value) => PlanAssociatedAlarm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionRole: (map['executionRole'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryRegion: map['primaryRegion'] == null ? null : (map['primaryRegion'] as String).input(),
+      recoveryApproach: (map['recoveryApproach'] as String).input(),
+      recoveryTimeObjectiveMinutes: map['recoveryTimeObjectiveMinutes'] == null ? null : (map['recoveryTimeObjectiveMinutes'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      regions: ((map['regions'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (PlanTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<PlanTrigger>(map['triggers'], (value) => PlanTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workflows: map['workflows'] == null ? null : (pulumi.Input.decodeList<PlanWorkflow>(map['workflows'], (value) => PlanWorkflow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

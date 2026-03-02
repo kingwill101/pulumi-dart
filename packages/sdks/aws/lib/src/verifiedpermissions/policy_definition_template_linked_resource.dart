@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyDefinitionTemplateLinkedResource {
   /// The entity ID of the resource.
-  final String entityId;
+  final pulumi.Input<String> entityId;
   /// The entity type of the resource.
-  final String entityType;
+  final pulumi.Input<String> entityType;
 
   /// Creates a new [PolicyDefinitionTemplateLinkedResource].
   /// [entityId] The entity ID of the resource.
@@ -24,8 +25,8 @@ class PolicyDefinitionTemplateLinkedResource {
 
   factory PolicyDefinitionTemplateLinkedResource.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionTemplateLinkedResource(
-      entityId: map['entityId'] as String,
-      entityType: map['entityType'] as String,
+      entityId: (map['entityId'] as String).input(),
+      entityType: (map['entityType'] as String).input(),
     );
   }
 }

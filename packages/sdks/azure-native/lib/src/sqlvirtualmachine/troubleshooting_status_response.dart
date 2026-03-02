@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'troubleshooting_additional_properties_response.dart';
 
 /// Status of last troubleshooting operation on this SQL VM
 class TroubleshootingStatusResponse {
   /// End time in UTC timezone.
-  final String endTimeUtc;
+  final pulumi.Input<String> endTimeUtc;
   /// Last troubleshooting trigger time in UTC timezone
-  final String lastTriggerTimeUtc;
+  final pulumi.Input<String> lastTriggerTimeUtc;
   /// Troubleshooting properties
-  final TroubleshootingAdditionalPropertiesResponse properties;
+  final pulumi.Input<TroubleshootingAdditionalPropertiesResponse> properties;
   /// Root cause of the issue
-  final String rootCause;
+  final pulumi.Input<String> rootCause;
   /// Start time in UTC timezone.
-  final String startTimeUtc;
+  final pulumi.Input<String> startTimeUtc;
   /// SQL VM troubleshooting scenario.
-  final String troubleshootingScenario;
+  final pulumi.Input<String> troubleshootingScenario;
 
   /// Creates a new [TroubleshootingStatusResponse].
   /// [endTimeUtc] End time in UTC timezone.
@@ -37,7 +38,7 @@ class TroubleshootingStatusResponse {
     return <String, dynamic>{
       'endTimeUtc': endTimeUtc,
       'lastTriggerTimeUtc': lastTriggerTimeUtc,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<TroubleshootingAdditionalPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'rootCause': rootCause,
       'startTimeUtc': startTimeUtc,
       'troubleshootingScenario': troubleshootingScenario,
@@ -46,12 +47,12 @@ class TroubleshootingStatusResponse {
 
   factory TroubleshootingStatusResponse.fromMap(Map<String, dynamic> map) {
     return TroubleshootingStatusResponse(
-      endTimeUtc: map['endTimeUtc'] as String,
-      lastTriggerTimeUtc: map['lastTriggerTimeUtc'] as String,
-      properties: TroubleshootingAdditionalPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      rootCause: map['rootCause'] as String,
-      startTimeUtc: map['startTimeUtc'] as String,
-      troubleshootingScenario: map['troubleshootingScenario'] as String,
+      endTimeUtc: (map['endTimeUtc'] as String).input(),
+      lastTriggerTimeUtc: (map['lastTriggerTimeUtc'] as String).input(),
+      properties: (TroubleshootingAdditionalPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      rootCause: (map['rootCause'] as String).input(),
+      startTimeUtc: (map['startTimeUtc'] as String).input(),
+      troubleshootingScenario: (map['troubleshootingScenario'] as String).input(),
     );
   }
 }

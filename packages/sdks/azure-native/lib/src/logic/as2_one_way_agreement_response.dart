@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'as2_protocol_settings_response.dart';
 import 'business_identity_response.dart';
 
 /// The integration account AS2 one-way agreement.
 class AS2OneWayAgreementResponse {
   /// The AS2 protocol settings.
-  final AS2ProtocolSettingsResponse protocolSettings;
+  final pulumi.Input<AS2ProtocolSettingsResponse> protocolSettings;
   /// The receiver business identity
-  final BusinessIdentityResponse receiverBusinessIdentity;
+  final pulumi.Input<BusinessIdentityResponse> receiverBusinessIdentity;
   /// The sender business identity
-  final BusinessIdentityResponse senderBusinessIdentity;
+  final pulumi.Input<BusinessIdentityResponse> senderBusinessIdentity;
 
   /// Creates a new [AS2OneWayAgreementResponse].
   /// [protocolSettings] The AS2 protocol settings.
@@ -24,17 +25,17 @@ class AS2OneWayAgreementResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'protocolSettings': protocolSettings.toMap(),
-      'receiverBusinessIdentity': receiverBusinessIdentity.toMap(),
-      'senderBusinessIdentity': senderBusinessIdentity.toMap(),
+      'protocolSettings': pulumi.Input.mapInputValue<AS2ProtocolSettingsResponse, Map<String, dynamic>>(protocolSettings, (value) => value.toMap()),
+      'receiverBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(receiverBusinessIdentity, (value) => value.toMap()),
+      'senderBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(senderBusinessIdentity, (value) => value.toMap()),
     };
   }
 
   factory AS2OneWayAgreementResponse.fromMap(Map<String, dynamic> map) {
     return AS2OneWayAgreementResponse(
-      protocolSettings: AS2ProtocolSettingsResponse.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>()),
-      receiverBusinessIdentity: BusinessIdentityResponse.fromMap((map['receiverBusinessIdentity'] as Map).cast<String, dynamic>()),
-      senderBusinessIdentity: BusinessIdentityResponse.fromMap((map['senderBusinessIdentity'] as Map).cast<String, dynamic>()),
+      protocolSettings: (AS2ProtocolSettingsResponse.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>())).input(),
+      receiverBusinessIdentity: (BusinessIdentityResponse.fromMap((map['receiverBusinessIdentity'] as Map).cast<String, dynamic>())).input(),
+      senderBusinessIdentity: (BusinessIdentityResponse.fromMap((map['senderBusinessIdentity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

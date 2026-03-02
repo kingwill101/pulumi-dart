@@ -8,13 +8,13 @@ import 'get_region_security_policy_rule_rate_limit_option_rate_limit_threshold.d
 class GetRegionSecurityPolicyRuleRateLimitOption {
   /// Can only be specified if the action for the rule is "rate_based_ban".
   /// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-  final int banDurationSec;
+  final pulumi.Input<int> banDurationSec;
   /// Can only be specified if the action for the rule is "rate_based_ban".
   /// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
-  final List<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold> banThresholds;
+  final pulumi.Input<List<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>> banThresholds;
   /// Action to take for requests that are under the configured rate limit threshold.
   /// Valid option is "allow" only.
-  final String conformAction;
+  final pulumi.Input<String> conformAction;
   /// Determines the key to enforce the rateLimitThreshold on. Possible values are:
   /// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
   /// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
@@ -27,20 +27,20 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
   /// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
   /// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
   /// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
-  final String enforceOnKey;
+  final pulumi.Input<String> enforceOnKey;
   /// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
   /// You can specify up to 3 enforceOnKeyConfigs.
   /// If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
-  final List<GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig> enforceOnKeyConfigs;
+  final pulumi.Input<List<GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig>> enforceOnKeyConfigs;
   /// Rate limit key name applicable only for the following key types:
   /// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
   /// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-  final String enforceOnKeyName;
+  final pulumi.Input<String> enforceOnKeyName;
   /// Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
   /// Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
-  final String exceedAction;
+  final pulumi.Input<String> exceedAction;
   /// Threshold at which to begin ratelimiting.
-  final List<GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold> rateLimitThresholds;
+  final pulumi.Input<List<GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold>> rateLimitThresholds;
 
   /// Creates a new [GetRegionSecurityPolicyRuleRateLimitOption].
   /// [banDurationSec] Can only be specified if the action for the rule is "rate_based_ban".
@@ -65,26 +65,26 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'banDurationSec': banDurationSec,
-      'banThresholds': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold, Map<String, dynamic>>(banThresholds, (value) => value.toMap()),
+      'banThresholds': pulumi.Input.mapInputValue<List<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>, List<Map<String, dynamic>>>(banThresholds, (value) => pulumi.Input.encodeList<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
       'conformAction': conformAction,
       'enforceOnKey': enforceOnKey,
-      'enforceOnKeyConfigs': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig, Map<String, dynamic>>(enforceOnKeyConfigs, (value) => value.toMap()),
+      'enforceOnKeyConfigs': pulumi.Input.mapInputValue<List<GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig>, List<Map<String, dynamic>>>(enforceOnKeyConfigs, (value) => pulumi.Input.encodeList<GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enforceOnKeyName': enforceOnKeyName,
       'exceedAction': exceedAction,
-      'rateLimitThresholds': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold, Map<String, dynamic>>(rateLimitThresholds, (value) => value.toMap()),
+      'rateLimitThresholds': pulumi.Input.mapInputValue<List<GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold>, List<Map<String, dynamic>>>(rateLimitThresholds, (value) => pulumi.Input.encodeList<GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRegionSecurityPolicyRuleRateLimitOption.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleRateLimitOption(
-      banDurationSec: map['banDurationSec'] as int,
-      banThresholds: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>(map['banThresholds'], (value) => GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap((value as Map).cast<String, dynamic>())),
-      conformAction: map['conformAction'] as String,
-      enforceOnKey: map['enforceOnKey'] as String,
-      enforceOnKeyConfigs: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig>(map['enforceOnKeyConfigs'], (value) => GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap((value as Map).cast<String, dynamic>())),
-      enforceOnKeyName: map['enforceOnKeyName'] as String,
-      exceedAction: map['exceedAction'] as String,
-      rateLimitThresholds: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold>(map['rateLimitThresholds'], (value) => GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold.fromMap((value as Map).cast<String, dynamic>())),
+      banDurationSec: (map['banDurationSec'] as int).input(),
+      banThresholds: (pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>(map['banThresholds'], (value) => GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conformAction: (map['conformAction'] as String).input(),
+      enforceOnKey: (map['enforceOnKey'] as String).input(),
+      enforceOnKeyConfigs: (pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig>(map['enforceOnKeyConfigs'], (value) => GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enforceOnKeyName: (map['enforceOnKeyName'] as String).input(),
+      exceedAction: (map['exceedAction'] as String).input(),
+      rateLimitThresholds: (pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold>(map['rateLimitThresholds'], (value) => GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'liftr_base_offer_details_response.dart';
 
 /// Marketplace details for an organization
 class LiftrBaseMarketplaceDetailsResponse {
   /// Offer details for the marketplace that is selected by the user
-  final LiftrBaseOfferDetailsResponse offerDetails;
+  final pulumi.Input<LiftrBaseOfferDetailsResponse> offerDetails;
   /// Azure subscription id for the the marketplace offer is purchased from
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Marketplace subscription status
-  final String subscriptionStatus;
+  final pulumi.Input<String> subscriptionStatus;
 
   /// Creates a new [LiftrBaseMarketplaceDetailsResponse].
   /// [offerDetails] Offer details for the marketplace that is selected by the user
@@ -23,7 +24,7 @@ class LiftrBaseMarketplaceDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'offerDetails': offerDetails.toMap(),
+      'offerDetails': pulumi.Input.mapInputValue<LiftrBaseOfferDetailsResponse, Map<String, dynamic>>(offerDetails, (value) => value.toMap()),
       'subscriptionId': ?subscriptionId,
       'subscriptionStatus': subscriptionStatus,
     };
@@ -31,9 +32,9 @@ class LiftrBaseMarketplaceDetailsResponse {
 
   factory LiftrBaseMarketplaceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return LiftrBaseMarketplaceDetailsResponse(
-      offerDetails: LiftrBaseOfferDetailsResponse.fromMap((map['offerDetails'] as Map).cast<String, dynamic>()),
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      subscriptionStatus: map['subscriptionStatus'] as String,
+      offerDetails: (LiftrBaseOfferDetailsResponse.fromMap((map['offerDetails'] as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionStatus: (map['subscriptionStatus'] as String).input(),
     );
   }
 }

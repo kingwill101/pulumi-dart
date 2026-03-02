@@ -36,23 +36,15 @@ class ApplicationArgs {
   /// [services] Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
   /// [tags] Resource tags.
   ApplicationArgs({
-    pulumi.Output<String>? applicationResourceName,
-    pulumi.Output<String>? debugParams,
-    pulumi.Output<String>? description,
-    pulumi.Output<DiagnosticsDescription>? diagnostics,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<ServiceResourceDescription>>? services,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationResourceName = pulumi.Input.asOptionalInput<String>(applicationResourceName),
-      debugParams = pulumi.Input.asOptionalInput<String>(debugParams),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diagnostics = pulumi.Input.asOptionalInput<DiagnosticsDescription>(diagnostics),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      services = pulumi.Input.asOptionalInput<List<ServiceResourceDescription>>(services),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationResourceName,
+    this.debugParams,
+    this.description,
+    this.diagnostics,
+    this.location,
+    required this.resourceGroupName,
+    this.services,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationResourceName: map['applicationResourceName'] == null ? null : pulumi.Output.create<String>(map['applicationResourceName'] as String),
-      debugParams: map['debugParams'] == null ? null : pulumi.Output.create<String>(map['debugParams'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diagnostics: map['diagnostics'] == null ? null : pulumi.Output.create<DiagnosticsDescription>(DiagnosticsDescription.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      services: map['services'] == null ? null : pulumi.Output.create<List<ServiceResourceDescription>>(pulumi.Input.decodeList<ServiceResourceDescription>(map['services'], (value) => ServiceResourceDescription.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationResourceName: map['applicationResourceName'] == null ? null : (map['applicationResourceName'] as String).input(),
+      debugParams: map['debugParams'] == null ? null : (map['debugParams'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsDescription.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<ServiceResourceDescription>(map['services'], (value) => ServiceResourceDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

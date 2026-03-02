@@ -34,25 +34,16 @@ class GroupPolicyExemptionState {
   /// [policyAssignmentId] The ID of the Policy Assignment to be exempted at the specified Scope.
   /// [policyDefinitionReferenceIds] The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
   GroupPolicyExemptionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? exemptionCategory,
-    pulumi.Output<String>? expiresOn,
-    pulumi.Output<String>? managementGroupId,
-    pulumi.Output<String>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyAssignmentId,
-    pulumi.Output<List<String>>? policyDefinitionReferenceIds,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      exemptionCategory = pulumi.Input.asOptionalInput<String>(exemptionCategory),
-      expiresOn = pulumi.Input.asOptionalInput<String>(expiresOn),
-      managementGroupId = pulumi.Input.asOptionalInput<String>(managementGroupId),
-      metadata = pulumi.Input.asOptionalInput<String>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyAssignmentId = pulumi.Input.asOptionalInput<String>(policyAssignmentId),
-      policyDefinitionReferenceIds = pulumi.Input.asOptionalInput<List<String>>(policyDefinitionReferenceIds);
+    this.description,
+    this.displayName,
+    this.exemptionCategory,
+    this.expiresOn,
+    this.managementGroupId,
+    this.metadata,
+    this.name,
+    this.policyAssignmentId,
+    this.policyDefinitionReferenceIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class GroupPolicyExemptionState {
 
   factory GroupPolicyExemptionState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyExemptionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      exemptionCategory: map['exemptionCategory'] == null ? null : pulumi.Output.create<String>(map['exemptionCategory'] as String),
-      expiresOn: map['expiresOn'] == null ? null : pulumi.Output.create<String>(map['expiresOn'] as String),
-      managementGroupId: map['managementGroupId'] == null ? null : pulumi.Output.create<String>(map['managementGroupId'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<String>(map['metadata'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyAssignmentId: map['policyAssignmentId'] == null ? null : pulumi.Output.create<String>(map['policyAssignmentId'] as String),
-      policyDefinitionReferenceIds: map['policyDefinitionReferenceIds'] == null ? null : pulumi.Output.create<List<String>>((map['policyDefinitionReferenceIds'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      exemptionCategory: map['exemptionCategory'] == null ? null : (map['exemptionCategory'] as String).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyAssignmentId: map['policyAssignmentId'] == null ? null : (map['policyAssignmentId'] as String).input(),
+      policyDefinitionReferenceIds: map['policyDefinitionReferenceIds'] == null ? null : ((map['policyDefinitionReferenceIds'] as List).cast<String>()).input(),
     );
   }
 }

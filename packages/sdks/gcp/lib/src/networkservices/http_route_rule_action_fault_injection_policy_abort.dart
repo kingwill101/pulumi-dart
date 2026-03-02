@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HttpRouteRuleActionFaultInjectionPolicyAbort {
   /// The HTTP status code used to abort the request.
-  final int? httpStatus;
+  final pulumi.Input<int>? httpStatus;
   /// The percentage of traffic which will be aborted.
-  final int? percentage;
+  final pulumi.Input<int>? percentage;
 
   /// Creates a new [HttpRouteRuleActionFaultInjectionPolicyAbort].
   /// [httpStatus] The HTTP status code used to abort the request.
@@ -24,8 +25,8 @@ class HttpRouteRuleActionFaultInjectionPolicyAbort {
 
   factory HttpRouteRuleActionFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleActionFaultInjectionPolicyAbort(
-      httpStatus: map['httpStatus'] == null ? null : map['httpStatus'] as int,
-      percentage: map['percentage'] == null ? null : map['percentage'] as int,
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
     );
   }
 }

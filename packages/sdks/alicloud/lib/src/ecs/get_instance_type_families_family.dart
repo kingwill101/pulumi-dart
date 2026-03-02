@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypeFamiliesFamily {
   /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
-  final String generation;
+  final pulumi.Input<String> generation;
   /// ID of the instance type family.
-  final String id;
+  final pulumi.Input<String> id;
   /// A list of Zone to launch the instance.
-  final List<String> zoneIds;
+  final pulumi.Input<List<String>> zoneIds;
 
   /// Creates a new [GetInstanceTypeFamiliesFamily].
   /// [generation] The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
@@ -29,9 +30,9 @@ class GetInstanceTypeFamiliesFamily {
 
   factory GetInstanceTypeFamiliesFamily.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeFamiliesFamily(
-      generation: map['generation'] as String,
-      id: map['id'] as String,
-      zoneIds: (map['zoneIds'] as List).cast<String>(),
+      generation: (map['generation'] as String).input(),
+      id: (map['id'] as String).input(),
+      zoneIds: ((map['zoneIds'] as List).cast<String>()).input(),
     );
   }
 }

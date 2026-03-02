@@ -6,19 +6,19 @@ import 'get_user_pool_schema_attribute_string_attribute_constraint.dart';
 
 class GetUserPoolSchemaAttribute {
   /// - Data type of the attribute (e.g., string, number).
-  final String attributeDataType;
+  final pulumi.Input<String> attributeDataType;
   /// - Whether the attribute is for developer use only.
-  final bool developerOnlyAttribute;
+  final pulumi.Input<bool> developerOnlyAttribute;
   /// - Whether the attribute can be changed after user creation.
-  final bool mutable;
+  final pulumi.Input<bool> mutable;
   /// - Name of the attribute.
-  final String name;
-  final List<GetUserPoolSchemaAttributeNumberAttributeConstraint> numberAttributeConstraints;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<GetUserPoolSchemaAttributeNumberAttributeConstraint>> numberAttributeConstraints;
   /// - Whether the attribute is required during user registration.
   /// * number_attribute_constraints - Constraints for numeric attributes.
   /// * string_attribute_constraints - Constraints for string attributes.
-  final bool required;
-  final List<GetUserPoolSchemaAttributeStringAttributeConstraint> stringAttributeConstraints;
+  final pulumi.Input<bool> required;
+  final pulumi.Input<List<GetUserPoolSchemaAttributeStringAttributeConstraint>> stringAttributeConstraints;
 
   /// Creates a new [GetUserPoolSchemaAttribute].
   /// [attributeDataType] - Data type of the attribute (e.g., string, number).
@@ -44,21 +44,21 @@ class GetUserPoolSchemaAttribute {
       'developerOnlyAttribute': developerOnlyAttribute,
       'mutable': mutable,
       'name': name,
-      'numberAttributeConstraints': pulumi.Input.encodeList<GetUserPoolSchemaAttributeNumberAttributeConstraint, Map<String, dynamic>>(numberAttributeConstraints, (value) => value.toMap()),
+      'numberAttributeConstraints': pulumi.Input.mapInputValue<List<GetUserPoolSchemaAttributeNumberAttributeConstraint>, List<Map<String, dynamic>>>(numberAttributeConstraints, (value) => pulumi.Input.encodeList<GetUserPoolSchemaAttributeNumberAttributeConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'required': required,
-      'stringAttributeConstraints': pulumi.Input.encodeList<GetUserPoolSchemaAttributeStringAttributeConstraint, Map<String, dynamic>>(stringAttributeConstraints, (value) => value.toMap()),
+      'stringAttributeConstraints': pulumi.Input.mapInputValue<List<GetUserPoolSchemaAttributeStringAttributeConstraint>, List<Map<String, dynamic>>>(stringAttributeConstraints, (value) => pulumi.Input.encodeList<GetUserPoolSchemaAttributeStringAttributeConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetUserPoolSchemaAttribute.fromMap(Map<String, dynamic> map) {
     return GetUserPoolSchemaAttribute(
-      attributeDataType: map['attributeDataType'] as String,
-      developerOnlyAttribute: map['developerOnlyAttribute'] as bool,
-      mutable: map['mutable'] as bool,
-      name: map['name'] as String,
-      numberAttributeConstraints: pulumi.Input.decodeList<GetUserPoolSchemaAttributeNumberAttributeConstraint>(map['numberAttributeConstraints'], (value) => GetUserPoolSchemaAttributeNumberAttributeConstraint.fromMap((value as Map).cast<String, dynamic>())),
-      required: map['required'] as bool,
-      stringAttributeConstraints: pulumi.Input.decodeList<GetUserPoolSchemaAttributeStringAttributeConstraint>(map['stringAttributeConstraints'], (value) => GetUserPoolSchemaAttributeStringAttributeConstraint.fromMap((value as Map).cast<String, dynamic>())),
+      attributeDataType: (map['attributeDataType'] as String).input(),
+      developerOnlyAttribute: (map['developerOnlyAttribute'] as bool).input(),
+      mutable: (map['mutable'] as bool).input(),
+      name: (map['name'] as String).input(),
+      numberAttributeConstraints: (pulumi.Input.decodeList<GetUserPoolSchemaAttributeNumberAttributeConstraint>(map['numberAttributeConstraints'], (value) => GetUserPoolSchemaAttributeNumberAttributeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      required: (map['required'] as bool).input(),
+      stringAttributeConstraints: (pulumi.Input.decodeList<GetUserPoolSchemaAttributeStringAttributeConstraint>(map['stringAttributeConstraints'], (value) => GetUserPoolSchemaAttributeStringAttributeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetIntegrationServiceEnvironmentArgs {
   /// [integrationServiceEnvironmentName] The integration service environment name.
   /// [resourceGroup] The resource group.
   GetIntegrationServiceEnvironmentArgs({
-    required pulumi.Output<String> integrationServiceEnvironmentName,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      integrationServiceEnvironmentName = pulumi.Input.asInput<String>(integrationServiceEnvironmentName),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.integrationServiceEnvironmentName,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIntegrationServiceEnvironmentArgs {
 
   factory GetIntegrationServiceEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationServiceEnvironmentArgs(
-      integrationServiceEnvironmentName: pulumi.Output.create<String>(map['integrationServiceEnvironmentName'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      integrationServiceEnvironmentName: (map['integrationServiceEnvironmentName'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

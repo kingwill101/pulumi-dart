@@ -78,31 +78,19 @@ class DatasetAccessArgs {
   /// [userByEmail] An email address of a user to grant access to. For example:
   /// [view] A view from a different dataset to grant access to. Queries
   DatasetAccessArgs({
-    pulumi.Output<DatasetAccessAuthorizedDataset>? authorizedDataset,
-    pulumi.Output<DatasetAccessCondition>? condition,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? groupByEmail,
-    pulumi.Output<String>? iamMember,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<DatasetAccessRoutine>? routine,
-    pulumi.Output<String>? specialGroup,
-    pulumi.Output<String>? userByEmail,
-    pulumi.Output<DatasetAccessView>? view,
-  }) :
-      authorizedDataset = pulumi.Input.asOptionalInput<DatasetAccessAuthorizedDataset>(authorizedDataset),
-      condition = pulumi.Input.asOptionalInput<DatasetAccessCondition>(condition),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      groupByEmail = pulumi.Input.asOptionalInput<String>(groupByEmail),
-      iamMember = pulumi.Input.asOptionalInput<String>(iamMember),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      routine = pulumi.Input.asOptionalInput<DatasetAccessRoutine>(routine),
-      specialGroup = pulumi.Input.asOptionalInput<String>(specialGroup),
-      userByEmail = pulumi.Input.asOptionalInput<String>(userByEmail),
-      view = pulumi.Input.asOptionalInput<DatasetAccessView>(view);
+    this.authorizedDataset,
+    this.condition,
+    required this.datasetId,
+    this.domain,
+    this.groupByEmail,
+    this.iamMember,
+    this.project,
+    this.role,
+    this.routine,
+    this.specialGroup,
+    this.userByEmail,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -123,18 +111,18 @@ class DatasetAccessArgs {
 
   factory DatasetAccessArgs.fromMap(Map<String, dynamic> map) {
     return DatasetAccessArgs(
-      authorizedDataset: map['authorizedDataset'] == null ? null : pulumi.Output.create<DatasetAccessAuthorizedDataset>(DatasetAccessAuthorizedDataset.fromMap((map['authorizedDataset'] as Map).cast<String, dynamic>())),
-      condition: map['condition'] == null ? null : pulumi.Output.create<DatasetAccessCondition>(DatasetAccessCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      groupByEmail: map['groupByEmail'] == null ? null : pulumi.Output.create<String>(map['groupByEmail'] as String),
-      iamMember: map['iamMember'] == null ? null : pulumi.Output.create<String>(map['iamMember'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      routine: map['routine'] == null ? null : pulumi.Output.create<DatasetAccessRoutine>(DatasetAccessRoutine.fromMap((map['routine'] as Map).cast<String, dynamic>())),
-      specialGroup: map['specialGroup'] == null ? null : pulumi.Output.create<String>(map['specialGroup'] as String),
-      userByEmail: map['userByEmail'] == null ? null : pulumi.Output.create<String>(map['userByEmail'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<DatasetAccessView>(DatasetAccessView.fromMap((map['view'] as Map).cast<String, dynamic>())),
+      authorizedDataset: map['authorizedDataset'] == null ? null : (DatasetAccessAuthorizedDataset.fromMap((map['authorizedDataset'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (DatasetAccessCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      groupByEmail: map['groupByEmail'] == null ? null : (map['groupByEmail'] as String).input(),
+      iamMember: map['iamMember'] == null ? null : (map['iamMember'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      routine: map['routine'] == null ? null : (DatasetAccessRoutine.fromMap((map['routine'] as Map).cast<String, dynamic>())).input(),
+      specialGroup: map['specialGroup'] == null ? null : (map['specialGroup'] as String).input(),
+      userByEmail: map['userByEmail'] == null ? null : (map['userByEmail'] as String).input(),
+      view: map['view'] == null ? null : (DatasetAccessView.fromMap((map['view'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_restore_point_attributes_response.dart';
 import 'managed_disk_parameters_response.dart';
 
 /// Describes a data disk.
 class RestorePointSourceVMDataDiskResponse {
   /// Gets the caching type.
-  final String caching;
+  final pulumi.Input<String> caching;
   /// Contains Disk Restore Point properties.
-  final DiskRestorePointAttributesResponse? diskRestorePoint;
+  final pulumi.Input<DiskRestorePointAttributesResponse>? diskRestorePoint;
   /// Gets the initial disk size in GB for blank data disks, and the new desired size for existing OS and Data disks.
-  final int diskSizeGB;
+  final pulumi.Input<int> diskSizeGB;
   /// Gets the logical unit number.
-  final int lun;
+  final pulumi.Input<int> lun;
   /// Contains the managed disk details.
-  final ManagedDiskParametersResponse? managedDisk;
+  final pulumi.Input<ManagedDiskParametersResponse>? managedDisk;
   /// Gets the disk name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Shows true if the disk is write-accelerator enabled.
-  final bool writeAcceleratorEnabled;
+  final pulumi.Input<bool> writeAcceleratorEnabled;
 
   /// Creates a new [RestorePointSourceVMDataDiskResponse].
   /// [caching] Gets the caching type.
@@ -41,10 +42,10 @@ class RestorePointSourceVMDataDiskResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caching': caching,
-      'diskRestorePoint': ?diskRestorePoint == null ? null : diskRestorePoint!.toMap(),
+      'diskRestorePoint': ?pulumi.Input.mapOptionalInputValue<DiskRestorePointAttributesResponse, Map<String, dynamic>>(diskRestorePoint, (value) => value.toMap()),
       'diskSizeGB': diskSizeGB,
       'lun': lun,
-      'managedDisk': ?managedDisk == null ? null : managedDisk!.toMap(),
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<ManagedDiskParametersResponse, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
       'name': name,
       'writeAcceleratorEnabled': writeAcceleratorEnabled,
     };
@@ -52,13 +53,13 @@ class RestorePointSourceVMDataDiskResponse {
 
   factory RestorePointSourceVMDataDiskResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceVMDataDiskResponse(
-      caching: map['caching'] as String,
-      diskRestorePoint: map['diskRestorePoint'] == null ? null : DiskRestorePointAttributesResponse.fromMap((map['diskRestorePoint'] as Map).cast<String, dynamic>()),
-      diskSizeGB: map['diskSizeGB'] as int,
-      lun: map['lun'] as int,
-      managedDisk: map['managedDisk'] == null ? null : ManagedDiskParametersResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] as bool,
+      caching: (map['caching'] as String).input(),
+      diskRestorePoint: map['diskRestorePoint'] == null ? null : (DiskRestorePointAttributesResponse.fromMap((map['diskRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      diskSizeGB: (map['diskSizeGB'] as int).input(),
+      lun: (map['lun'] as int).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParametersResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      writeAcceleratorEnabled: (map['writeAcceleratorEnabled'] as bool).input(),
     );
   }
 }

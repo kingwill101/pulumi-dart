@@ -54,35 +54,21 @@ class GlobalNetworkEndpointGroupComputeV1Args {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [subnetwork] Optional URL of the subnetwork to which all network endpoints in the NEG belong.
   GlobalNetworkEndpointGroupComputeV1Args({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<NetworkEndpointGroupAppEngineComputeV1>? appEngine,
-    pulumi.Output<NetworkEndpointGroupCloudFunctionComputeV1>? cloudFunction,
-    pulumi.Output<NetworkEndpointGroupCloudRunComputeV1>? cloudRun,
-    pulumi.Output<int>? defaultPort,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1>? networkEndpointType,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, dynamic>>? pscData,
-    pulumi.Output<String>? pscTargetService,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? subnetwork,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      appEngine = pulumi.Input.asOptionalInput<NetworkEndpointGroupAppEngineComputeV1>(appEngine),
-      cloudFunction = pulumi.Input.asOptionalInput<NetworkEndpointGroupCloudFunctionComputeV1>(cloudFunction),
-      cloudRun = pulumi.Input.asOptionalInput<NetworkEndpointGroupCloudRunComputeV1>(cloudRun),
-      defaultPort = pulumi.Input.asOptionalInput<int>(defaultPort),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      networkEndpointType = pulumi.Input.asOptionalInput<GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1>(networkEndpointType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pscData = pulumi.Input.asOptionalInput<Map<String, dynamic>>(pscData),
-      pscTargetService = pulumi.Input.asOptionalInput<String>(pscTargetService),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork);
+    this.annotations,
+    this.appEngine,
+    this.cloudFunction,
+    this.cloudRun,
+    this.defaultPort,
+    this.description,
+    this.name,
+    this.network,
+    this.networkEndpointType,
+    this.project,
+    this.pscData,
+    this.pscTargetService,
+    this.requestId,
+    this.subnetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class GlobalNetworkEndpointGroupComputeV1Args {
 
   factory GlobalNetworkEndpointGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointGroupComputeV1Args(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      appEngine: map['appEngine'] == null ? null : pulumi.Output.create<NetworkEndpointGroupAppEngineComputeV1>(NetworkEndpointGroupAppEngineComputeV1.fromMap((map['appEngine'] as Map).cast<String, dynamic>())),
-      cloudFunction: map['cloudFunction'] == null ? null : pulumi.Output.create<NetworkEndpointGroupCloudFunctionComputeV1>(NetworkEndpointGroupCloudFunctionComputeV1.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())),
-      cloudRun: map['cloudRun'] == null ? null : pulumi.Output.create<NetworkEndpointGroupCloudRunComputeV1>(NetworkEndpointGroupCloudRunComputeV1.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())),
-      defaultPort: map['defaultPort'] == null ? null : pulumi.Output.create<int>(map['defaultPort'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      networkEndpointType: map['networkEndpointType'] == null ? null : pulumi.Output.create<GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1>(GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1.fromValue(map['networkEndpointType'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pscData: map['pscData'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['pscData'] as Map).cast<String, dynamic>()),
-      pscTargetService: map['pscTargetService'] == null ? null : pulumi.Output.create<String>(map['pscTargetService'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      subnetwork: map['subnetwork'] == null ? null : pulumi.Output.create<String>(map['subnetwork'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      appEngine: map['appEngine'] == null ? null : (NetworkEndpointGroupAppEngineComputeV1.fromMap((map['appEngine'] as Map).cast<String, dynamic>())).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (NetworkEndpointGroupCloudFunctionComputeV1.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())).input(),
+      cloudRun: map['cloudRun'] == null ? null : (NetworkEndpointGroupCloudRunComputeV1.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
+      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      networkEndpointType: map['networkEndpointType'] == null ? null : (GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1.fromValue(map['networkEndpointType'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pscData: map['pscData'] == null ? null : ((map['pscData'] as Map).cast<String, dynamic>()).input(),
+      pscTargetService: map['pscTargetService'] == null ? null : (map['pscTargetService'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
     );
   }
 }

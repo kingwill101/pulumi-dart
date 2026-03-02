@@ -1,67 +1,68 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRestoreJobsJob {
   /// The actual size of Snapshot.
-  final String actualBytes;
+  final pulumi.Input<String> actualBytes;
   /// The actual number of files.
-  final String actualItems;
+  final pulumi.Input<String> actualItems;
   /// The size of restore job recovered.
-  final String bytesDone;
+  final pulumi.Input<String> bytesDone;
   /// The total size of restore job recovered.
-  final String bytesTotal;
+  final pulumi.Input<String> bytesTotal;
   /// The completion time of restore Job.
-  final String completeTime;
+  final pulumi.Input<String> completeTime;
   /// The creation time of restore job.
-  final String createTime;
-  final String errorFile;
+  final pulumi.Input<String> createTime;
+  final pulumi.Input<String> errorFile;
   /// The error message of recovery task execution.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The expiration time of restore job. Unix Time in seconds.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// The ID of the restore job.
-  final String id;
+  final pulumi.Input<String> id;
   /// The number of items restore job recovered.
-  final String itemsDone;
+  final pulumi.Input<String> itemsDone;
   /// The total number of items restore job recovered.
-  final String itemsTotal;
+  final pulumi.Input<String> itemsTotal;
   /// Recovery Options.
-  final String options;
-  final String parentId;
+  final pulumi.Input<String> options;
+  final pulumi.Input<String> parentId;
   /// The recovery progress.
-  final int progress;
+  final pulumi.Input<int> progress;
   /// The ID of restore job.
-  final String restoreJobId;
+  final pulumi.Input<String> restoreJobId;
   /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
-  final String restoreType;
+  final pulumi.Input<String> restoreType;
   /// The hashcode of Snapshot.
-  final String snapshotHash;
+  final pulumi.Input<String> snapshotHash;
   /// The ID of Snapshot.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// The start time of restore job. Unix Time in Seconds.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The status of restore job.
-  final String status;
+  final pulumi.Input<String> status;
   /// The name of target ofo OSS bucket.
-  final String targetBucket;
-  final String targetClientId;
+  final pulumi.Input<String> targetBucket;
+  final pulumi.Input<String> targetClientId;
   /// The creation time of destination file system.
-  final String targetCreateTime;
-  final String targetDataSourceId;
+  final pulumi.Input<String> targetCreateTime;
+  final pulumi.Input<String> targetDataSourceId;
   /// The ID of destination file system.
-  final String targetFileSystemId;
+  final pulumi.Input<String> targetFileSystemId;
   /// The ID of target ECS instance.
-  final String targetInstanceId;
+  final pulumi.Input<String> targetInstanceId;
   /// The target file path of ECS instance.
-  final String targetPath;
+  final pulumi.Input<String> targetPath;
   /// The file prefix of target OSS object.
-  final String targetPrefix;
+  final pulumi.Input<String> targetPrefix;
   /// The update Time of restore job. Unix Time in Seconds.
-  final String updatedTime;
+  final pulumi.Input<String> updatedTime;
   /// The ID of backup vault.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
 
   /// Creates a new [GetRestoreJobsJob].
   /// [actualBytes] The actual size of Snapshot.
@@ -170,38 +171,38 @@ class GetRestoreJobsJob {
 
   factory GetRestoreJobsJob.fromMap(Map<String, dynamic> map) {
     return GetRestoreJobsJob(
-      actualBytes: map['actualBytes'] as String,
-      actualItems: map['actualItems'] as String,
-      bytesDone: map['bytesDone'] as String,
-      bytesTotal: map['bytesTotal'] as String,
-      completeTime: map['completeTime'] as String,
-      createTime: map['createTime'] as String,
-      errorFile: map['errorFile'] as String,
-      errorMessage: map['errorMessage'] as String,
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      itemsDone: map['itemsDone'] as String,
-      itemsTotal: map['itemsTotal'] as String,
-      options: map['options'] as String,
-      parentId: map['parentId'] as String,
-      progress: map['progress'] as int,
-      restoreJobId: map['restoreJobId'] as String,
-      restoreType: map['restoreType'] as String,
-      snapshotHash: map['snapshotHash'] as String,
-      snapshotId: map['snapshotId'] as String,
-      sourceType: map['sourceType'] as String,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      targetBucket: map['targetBucket'] as String,
-      targetClientId: map['targetClientId'] as String,
-      targetCreateTime: map['targetCreateTime'] as String,
-      targetDataSourceId: map['targetDataSourceId'] as String,
-      targetFileSystemId: map['targetFileSystemId'] as String,
-      targetInstanceId: map['targetInstanceId'] as String,
-      targetPath: map['targetPath'] as String,
-      targetPrefix: map['targetPrefix'] as String,
-      updatedTime: map['updatedTime'] as String,
-      vaultId: map['vaultId'] as String,
+      actualBytes: (map['actualBytes'] as String).input(),
+      actualItems: (map['actualItems'] as String).input(),
+      bytesDone: (map['bytesDone'] as String).input(),
+      bytesTotal: (map['bytesTotal'] as String).input(),
+      completeTime: (map['completeTime'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      errorFile: (map['errorFile'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      itemsDone: (map['itemsDone'] as String).input(),
+      itemsTotal: (map['itemsTotal'] as String).input(),
+      options: (map['options'] as String).input(),
+      parentId: (map['parentId'] as String).input(),
+      progress: (map['progress'] as int).input(),
+      restoreJobId: (map['restoreJobId'] as String).input(),
+      restoreType: (map['restoreType'] as String).input(),
+      snapshotHash: (map['snapshotHash'] as String).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      targetBucket: (map['targetBucket'] as String).input(),
+      targetClientId: (map['targetClientId'] as String).input(),
+      targetCreateTime: (map['targetCreateTime'] as String).input(),
+      targetDataSourceId: (map['targetDataSourceId'] as String).input(),
+      targetFileSystemId: (map['targetFileSystemId'] as String).input(),
+      targetInstanceId: (map['targetInstanceId'] as String).input(),
+      targetPath: (map['targetPath'] as String).input(),
+      targetPrefix: (map['targetPrefix'] as String).input(),
+      updatedTime: (map['updatedTime'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

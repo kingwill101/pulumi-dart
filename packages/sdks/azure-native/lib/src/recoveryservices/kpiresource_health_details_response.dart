@@ -6,9 +6,9 @@ import 'resource_health_details_response.dart';
 /// KPI Resource Health Details
 class KPIResourceHealthDetailsResponse {
   /// Resource Health Status
-  final List<ResourceHealthDetailsResponse>? resourceHealthDetails;
+  final pulumi.Input<List<ResourceHealthDetailsResponse>>? resourceHealthDetails;
   /// Resource Health Status
-  final String? resourceHealthStatus;
+  final pulumi.Input<String>? resourceHealthStatus;
 
   /// Creates a new [KPIResourceHealthDetailsResponse].
   /// [resourceHealthDetails] Resource Health Status
@@ -20,15 +20,15 @@ class KPIResourceHealthDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resourceHealthDetails': ?resourceHealthDetails == null ? null : pulumi.Input.encodeList<ResourceHealthDetailsResponse, Map<String, dynamic>>(resourceHealthDetails!, (value) => value.toMap()),
+      'resourceHealthDetails': ?pulumi.Input.mapOptionalInputValue<List<ResourceHealthDetailsResponse>, List<Map<String, dynamic>>>(resourceHealthDetails, (value) => pulumi.Input.encodeList<ResourceHealthDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceHealthStatus': ?resourceHealthStatus,
     };
   }
 
   factory KPIResourceHealthDetailsResponse.fromMap(Map<String, dynamic> map) {
     return KPIResourceHealthDetailsResponse(
-      resourceHealthDetails: map['resourceHealthDetails'] == null ? null : pulumi.Input.decodeList<ResourceHealthDetailsResponse>(map['resourceHealthDetails'], (value) => ResourceHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resourceHealthStatus: map['resourceHealthStatus'] == null ? null : map['resourceHealthStatus'] as String,
+      resourceHealthDetails: map['resourceHealthDetails'] == null ? null : (pulumi.Input.decodeList<ResourceHealthDetailsResponse>(map['resourceHealthDetails'], (value) => ResourceHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceHealthStatus: map['resourceHealthStatus'] == null ? null : (map['resourceHealthStatus'] as String).input(),
     );
   }
 }

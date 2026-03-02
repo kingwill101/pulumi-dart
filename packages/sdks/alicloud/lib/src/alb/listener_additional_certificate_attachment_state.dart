@@ -19,15 +19,11 @@ class ListenerAdditionalCertificateAttachmentState {
   /// [listenerId] The ID of the ALB listener.
   /// [status] The status of the certificate.
   ListenerAdditionalCertificateAttachmentState({
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? certificateType,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? status,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      certificateType = pulumi.Input.asOptionalInput<String>(certificateType),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.certificateId,
+    this.certificateType,
+    this.listenerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ListenerAdditionalCertificateAttachmentState {
 
   factory ListenerAdditionalCertificateAttachmentState.fromMap(Map<String, dynamic> map) {
     return ListenerAdditionalCertificateAttachmentState(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      certificateType: map['certificateType'] == null ? null : pulumi.Output.create<String>(map['certificateType'] as String),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

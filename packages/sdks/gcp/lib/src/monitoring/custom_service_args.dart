@@ -34,17 +34,12 @@ class CustomServiceArgs {
   /// [telemetry] Configuration for how to query telemetry on a Service.
   /// [userLabels] Labels which have been used to annotate the service. Label keys must start
   CustomServiceArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceId,
-    pulumi.Output<CustomServiceTelemetry>? telemetry,
-    pulumi.Output<Map<String, String>>? userLabels,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId),
-      telemetry = pulumi.Input.asOptionalInput<CustomServiceTelemetry>(telemetry),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
+    this.displayName,
+    this.project,
+    this.serviceId,
+    this.telemetry,
+    this.userLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class CustomServiceArgs {
 
   factory CustomServiceArgs.fromMap(Map<String, dynamic> map) {
     return CustomServiceArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
-      telemetry: map['telemetry'] == null ? null : pulumi.Output.create<CustomServiceTelemetry>(CustomServiceTelemetry.fromMap((map['telemetry'] as Map).cast<String, dynamic>())),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      telemetry: map['telemetry'] == null ? null : (CustomServiceTelemetry.fromMap((map['telemetry'] as Map).cast<String, dynamic>())).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

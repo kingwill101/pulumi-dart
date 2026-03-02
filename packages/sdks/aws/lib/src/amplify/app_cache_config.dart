@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppCacheConfig {
   /// Type of cache configuration to use for an Amplify app. Valid values: `AMPLIFY_MANAGED`, `AMPLIFY_MANAGED_NO_COOKIES`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AppCacheConfig].
   /// [type] Type of cache configuration to use for an Amplify app. Valid values: `AMPLIFY_MANAGED`, `AMPLIFY_MANAGED_NO_COOKIES`.
@@ -19,7 +20,7 @@ class AppCacheConfig {
 
   factory AppCacheConfig.fromMap(Map<String, dynamic> map) {
     return AppCacheConfig(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

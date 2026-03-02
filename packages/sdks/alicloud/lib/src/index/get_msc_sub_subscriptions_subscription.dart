@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMscSubSubscriptionsSubscription {
   /// The channel the Subscription.
-  final String channel;
+  final pulumi.Input<String> channel;
   /// The ids of subscribed contacts.
-  final List<int> contactIds;
+  final pulumi.Input<List<int>> contactIds;
   /// The description of the Subscription.
-  final String description;
+  final pulumi.Input<String> description;
   /// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-  final int emailStatus;
+  final pulumi.Input<int> emailStatus;
   /// The ID of the Subscription.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Subscription.
-  final String itemId;
+  final pulumi.Input<String> itemId;
   /// The name of the Subscription.
-  final String itemName;
+  final pulumi.Input<String> itemName;
   /// The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-  final int pmsgStatus;
+  final pulumi.Input<int> pmsgStatus;
   /// The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-  final int smsStatus;
+  final pulumi.Input<int> smsStatus;
   /// The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-  final int ttsStatus;
+  final pulumi.Input<int> ttsStatus;
   /// The ids of subscribed webhooks.
-  final List<int> webhookIds;
+  final pulumi.Input<List<int>> webhookIds;
   /// The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-  final int webhookStatus;
+  final pulumi.Input<int> webhookStatus;
 
   /// Creates a new [GetMscSubSubscriptionsSubscription].
   /// [channel] The channel the Subscription.
@@ -74,18 +75,18 @@ class GetMscSubSubscriptionsSubscription {
 
   factory GetMscSubSubscriptionsSubscription.fromMap(Map<String, dynamic> map) {
     return GetMscSubSubscriptionsSubscription(
-      channel: map['channel'] as String,
-      contactIds: (map['contactIds'] as List).cast<int>(),
-      description: map['description'] as String,
-      emailStatus: map['emailStatus'] as int,
-      id: map['id'] as String,
-      itemId: map['itemId'] as String,
-      itemName: map['itemName'] as String,
-      pmsgStatus: map['pmsgStatus'] as int,
-      smsStatus: map['smsStatus'] as int,
-      ttsStatus: map['ttsStatus'] as int,
-      webhookIds: (map['webhookIds'] as List).cast<int>(),
-      webhookStatus: map['webhookStatus'] as int,
+      channel: (map['channel'] as String).input(),
+      contactIds: ((map['contactIds'] as List).cast<int>()).input(),
+      description: (map['description'] as String).input(),
+      emailStatus: (map['emailStatus'] as int).input(),
+      id: (map['id'] as String).input(),
+      itemId: (map['itemId'] as String).input(),
+      itemName: (map['itemName'] as String).input(),
+      pmsgStatus: (map['pmsgStatus'] as int).input(),
+      smsStatus: (map['smsStatus'] as int).input(),
+      ttsStatus: (map['ttsStatus'] as int).input(),
+      webhookIds: ((map['webhookIds'] as List).cast<int>()).input(),
+      webhookStatus: (map['webhookStatus'] as int).input(),
     );
   }
 }

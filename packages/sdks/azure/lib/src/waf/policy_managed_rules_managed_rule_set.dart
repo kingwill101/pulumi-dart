@@ -5,11 +5,11 @@ import 'policy_managed_rules_managed_rule_set_rule_group_override.dart';
 
 class PolicyManagedRulesManagedRuleSet {
   /// One or more `rule_group_override` block defined below.
-  final List<PolicyManagedRulesManagedRuleSetRuleGroupOverride>? ruleGroupOverrides;
+  final pulumi.Input<List<PolicyManagedRulesManagedRuleSetRuleGroupOverride>>? ruleGroupOverrides;
   /// The rule set type. Possible values: `Microsoft_BotManagerRuleSet`, `Microsoft_DefaultRuleSet` and `OWASP`. Defaults to `OWASP`.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The rule set version. Possible values: `0.1`, `1.0`, `1.1`, `2.1`, `2.2`, `2.2.9`, `3.0`, `3.1` and `3.2`.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [PolicyManagedRulesManagedRuleSet].
   /// [ruleGroupOverrides] One or more `rule_group_override` block defined below.
@@ -23,7 +23,7 @@ class PolicyManagedRulesManagedRuleSet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ruleGroupOverrides': ?ruleGroupOverrides == null ? null : pulumi.Input.encodeList<PolicyManagedRulesManagedRuleSetRuleGroupOverride, Map<String, dynamic>>(ruleGroupOverrides!, (value) => value.toMap()),
+      'ruleGroupOverrides': ?pulumi.Input.mapOptionalInputValue<List<PolicyManagedRulesManagedRuleSetRuleGroupOverride>, List<Map<String, dynamic>>>(ruleGroupOverrides, (value) => pulumi.Input.encodeList<PolicyManagedRulesManagedRuleSetRuleGroupOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
       'version': version,
     };
@@ -31,9 +31,9 @@ class PolicyManagedRulesManagedRuleSet {
 
   factory PolicyManagedRulesManagedRuleSet.fromMap(Map<String, dynamic> map) {
     return PolicyManagedRulesManagedRuleSet(
-      ruleGroupOverrides: map['ruleGroupOverrides'] == null ? null : pulumi.Input.decodeList<PolicyManagedRulesManagedRuleSetRuleGroupOverride>(map['ruleGroupOverrides'], (value) => PolicyManagedRulesManagedRuleSetRuleGroupOverride.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
-      version: map['version'] as String,
+      ruleGroupOverrides: map['ruleGroupOverrides'] == null ? null : (pulumi.Input.decodeList<PolicyManagedRulesManagedRuleSetRuleGroupOverride>(map['ruleGroupOverrides'], (value) => PolicyManagedRulesManagedRuleSetRuleGroupOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

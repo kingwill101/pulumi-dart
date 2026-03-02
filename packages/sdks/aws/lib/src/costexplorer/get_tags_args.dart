@@ -28,17 +28,12 @@ class GetTagsArgs {
   /// [tagKey] Key of the tag that you want to return values for.
   /// [timePeriod] Configuration block for the start and end dates for retrieving the dimension values. See `time_period` block below for details.
   GetTagsArgs({
-    pulumi.Output<GetTagsFilter>? filter,
-    pulumi.Output<String>? searchString,
-    pulumi.Output<List<GetTagsSortBy>>? sortBies,
-    pulumi.Output<String>? tagKey,
-    required pulumi.Output<GetTagsTimePeriod> timePeriod,
-  }) :
-      filter = pulumi.Input.asOptionalInput<GetTagsFilter>(filter),
-      searchString = pulumi.Input.asOptionalInput<String>(searchString),
-      sortBies = pulumi.Input.asOptionalInput<List<GetTagsSortBy>>(sortBies),
-      tagKey = pulumi.Input.asOptionalInput<String>(tagKey),
-      timePeriod = pulumi.Input.asInput<GetTagsTimePeriod>(timePeriod);
+    this.filter,
+    this.searchString,
+    this.sortBies,
+    this.tagKey,
+    required this.timePeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class GetTagsArgs {
 
   factory GetTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetTagsArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<GetTagsFilter>(GetTagsFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      searchString: map['searchString'] == null ? null : pulumi.Output.create<String>(map['searchString'] as String),
-      sortBies: map['sortBies'] == null ? null : pulumi.Output.create<List<GetTagsSortBy>>(pulumi.Input.decodeList<GetTagsSortBy>(map['sortBies'], (value) => GetTagsSortBy.fromMap((value as Map).cast<String, dynamic>()))),
-      tagKey: map['tagKey'] == null ? null : pulumi.Output.create<String>(map['tagKey'] as String),
-      timePeriod: pulumi.Output.create<GetTagsTimePeriod>(GetTagsTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())),
+      filter: map['filter'] == null ? null : (GetTagsFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      searchString: map['searchString'] == null ? null : (map['searchString'] as String).input(),
+      sortBies: map['sortBies'] == null ? null : (pulumi.Input.decodeList<GetTagsSortBy>(map['sortBies'], (value) => GetTagsSortBy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      timePeriod: (GetTagsTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

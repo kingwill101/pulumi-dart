@@ -19,13 +19,10 @@ class GetUserSshKeyArgs {
   /// [sshPublicKeyId] Unique identifier for the SSH public key.
   /// [username] Name of the IAM user associated with the SSH public key.
   GetUserSshKeyArgs({
-    required pulumi.Output<String> encoding,
-    required pulumi.Output<String> sshPublicKeyId,
-    required pulumi.Output<String> username,
-  }) :
-      encoding = pulumi.Input.asInput<String>(encoding),
-      sshPublicKeyId = pulumi.Input.asInput<String>(sshPublicKeyId),
-      username = pulumi.Input.asInput<String>(username);
+    required this.encoding,
+    required this.sshPublicKeyId,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetUserSshKeyArgs {
 
   factory GetUserSshKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetUserSshKeyArgs(
-      encoding: pulumi.Output.create<String>(map['encoding'] as String),
-      sshPublicKeyId: pulumi.Output.create<String>(map['sshPublicKeyId'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      encoding: (map['encoding'] as String).input(),
+      sshPublicKeyId: (map['sshPublicKeyId'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

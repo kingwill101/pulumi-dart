@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the fallback route. IoT Hub uses these properties when it routes messages to the fallback endpoint.
 class FallbackRoutePropertiesResponse {
   /// The condition which is evaluated in order to apply the fallback route. If the condition is not provided it will evaluate to true by default. For grammar, See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
-  final String? condition;
+  final pulumi.Input<String>? condition;
   /// The list of endpoints to which the messages that satisfy the condition are routed to. Currently only 1 endpoint is allowed.
-  final List<String> endpointNames;
+  final pulumi.Input<List<String>> endpointNames;
   /// Used to specify whether the fallback route is enabled.
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// The name of the route. The name can only include alphanumeric characters, periods, underscores, hyphens, has a maximum length of 64 characters, and must be unique.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The source to which the routing rule is to be applied to. For example, DeviceMessages
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [FallbackRoutePropertiesResponse].
   /// [condition] The condition which is evaluated in order to apply the fallback route. If the condition is not provided it will evaluate to true by default. For grammar, See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
@@ -40,11 +41,11 @@ class FallbackRoutePropertiesResponse {
 
   factory FallbackRoutePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FallbackRoutePropertiesResponse(
-      condition: map['condition'] == null ? null : map['condition'] as String,
-      endpointNames: (map['endpointNames'] as List).cast<String>(),
-      isEnabled: map['isEnabled'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      source: map['source'] as String,
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

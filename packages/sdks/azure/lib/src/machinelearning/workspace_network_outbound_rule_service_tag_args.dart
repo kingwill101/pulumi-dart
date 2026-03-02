@@ -25,17 +25,12 @@ class WorkspaceNetworkOutboundRuleServiceTagArgs {
   /// [serviceTag] Specifies the fully qualified domain name to allow for outbound traffic. Possible values are `AppConfiguration`,`AppService`,`AzureActiveDirectory`,`AzureAdvancedThreatProtection`,`AzureArcInfrastructure`,`AzureAttestation`,`AzureBackup`,`AzureBotService`,`AzureContainerRegistry`,`AzureCosmosDB`,`AzureDataLake`,`AzureDevSpaces`,`AzureInformationProtection`,`AzureIoTHub`,`AzureKeyVault`,`AzureManagedGrafana`,`AzureMonitor`,`AzureOpenDatasets`,`AzurePlatformDNS`,`AzurePlatformIMDS`,`AzurePlatformLKM`,`AzureResourceManager`,`AzureSignalR`,`AzureSiteRecovery`,`AzureSpringCloud`,`AzureStack`,`AzureUpdateDelivery`,`DataFactoryManagement`,`EventHub`,`GuestAndHybridManagement`,`M365ManagementActivityApi`,`M365ManagementActivityApi`,`MicrosoftAzureFluidRelay`,`MicrosoftCloudAppSecurity`,`MicrosoftContainerRegistry`,`PowerPlatformInfra`,`ServiceBus`,`Sql`,`Storage`,`WindowsAdminCenter`,`AppServiceManagement`,`AutonomousDevelopmentPlatform`,`AzureActiveDirectoryDomainServices`,`AzureCloud`,`AzureConnectors`,`AzureContainerAppsService`,`AzureDatabricks`,`AzureDeviceUpdate`,`AzureEventGrid`,`AzureFrontDoor.Frontend`,`AzureFrontDoor.Backend`,`AzureFrontDoor.FirstParty`,`AzureHealthcareAPIs`,`AzureLoadBalancer`,`AzureMachineLearning`,`AzureSphere`,`AzureWebPubSub`,`BatchNodeManagement`,`ChaosStudio`,`CognitiveServicesFrontend`,`CognitiveServicesManagement`,`DataFactory`,`Dynamics365ForMarketingEmail`,`Dynamics365BusinessCentral`,`EOPExternalPublishedIPs`,`Internet`,`LogicApps`,`Marketplace`,`MicrosoftDefenderForEndpoint`,`PowerBI`,`PowerQueryOnline`,`ServiceFabric`,`SqlManagement`,`StorageSyncService`,`WindowsVirtualDesktop` and `VirtualNetwork`.
   /// [workspaceId] Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
   WorkspaceNetworkOutboundRuleServiceTagArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> portRanges,
-    required pulumi.Output<String> protocol,
-    required pulumi.Output<String> serviceTag,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portRanges = pulumi.Input.asInput<String>(portRanges),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      serviceTag = pulumi.Input.asInput<String>(serviceTag),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.name,
+    required this.portRanges,
+    required this.protocol,
+    required this.serviceTag,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WorkspaceNetworkOutboundRuleServiceTagArgs {
 
   factory WorkspaceNetworkOutboundRuleServiceTagArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRuleServiceTagArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portRanges: pulumi.Output.create<String>(map['portRanges'] as String),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      serviceTag: pulumi.Output.create<String>(map['serviceTag'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portRanges: (map['portRanges'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      serviceTag: (map['serviceTag'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

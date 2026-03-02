@@ -5,21 +5,21 @@ import 'profile_monitor_config_custom_header.dart';
 
 class ProfileMonitorConfig {
   /// One or more `custom_header` blocks as defined below.
-  final List<ProfileMonitorConfigCustomHeader>? customHeaders;
+  final pulumi.Input<List<ProfileMonitorConfigCustomHeader>>? customHeaders;
   /// A list of status code ranges in the format of `100-101`.
-  final List<String>? expectedStatusCodeRanges;
+  final pulumi.Input<List<String>>? expectedStatusCodeRanges;
   /// The interval used to check the endpoint health from a Traffic Manager probing agent. You can specify two values here: `30` (normal probing) and `10` (fast probing). The default value is `30`.
-  final int? intervalInSeconds;
+  final pulumi.Input<int>? intervalInSeconds;
   /// The path used by the monitoring checks. Required when `protocol` is set to `HTTP` or `HTTPS` - cannot be set when `protocol` is set to `TCP`.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// The port number used by the monitoring checks.
-  final int port;
+  final pulumi.Input<int> port;
   /// The protocol used by the monitoring checks, supported values are `HTTP`, `HTTPS` and `TCP`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The amount of time the Traffic Manager probing agent should wait before considering that check a failure when a health check probe is sent to the endpoint. If `interval_in_seconds` is set to `30`, then `timeout_in_seconds` can be between `5` and `10`. The default value is `10`. If `interval_in_seconds` is set to `10`, then valid values are between `5` and `9` and `timeout_in_seconds` is required.
-  final int? timeoutInSeconds;
+  final pulumi.Input<int>? timeoutInSeconds;
   /// The number of failures a Traffic Manager probing agent tolerates before marking that endpoint as unhealthy. Valid values are between `0` and `9`. The default value is `3`
-  final int? toleratedNumberOfFailures;
+  final pulumi.Input<int>? toleratedNumberOfFailures;
 
   /// Creates a new [ProfileMonitorConfig].
   /// [customHeaders] One or more `custom_header` blocks as defined below.
@@ -43,7 +43,7 @@ class ProfileMonitorConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customHeaders': ?customHeaders == null ? null : pulumi.Input.encodeList<ProfileMonitorConfigCustomHeader, Map<String, dynamic>>(customHeaders!, (value) => value.toMap()),
+      'customHeaders': ?pulumi.Input.mapOptionalInputValue<List<ProfileMonitorConfigCustomHeader>, List<Map<String, dynamic>>>(customHeaders, (value) => pulumi.Input.encodeList<ProfileMonitorConfigCustomHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'expectedStatusCodeRanges': ?expectedStatusCodeRanges,
       'intervalInSeconds': ?intervalInSeconds,
       'path': ?path,
@@ -56,14 +56,14 @@ class ProfileMonitorConfig {
 
   factory ProfileMonitorConfig.fromMap(Map<String, dynamic> map) {
     return ProfileMonitorConfig(
-      customHeaders: map['customHeaders'] == null ? null : pulumi.Input.decodeList<ProfileMonitorConfigCustomHeader>(map['customHeaders'], (value) => ProfileMonitorConfigCustomHeader.fromMap((value as Map).cast<String, dynamic>())),
-      expectedStatusCodeRanges: map['expectedStatusCodeRanges'] == null ? null : (map['expectedStatusCodeRanges'] as List).cast<String>(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : map['intervalInSeconds'] as int,
-      path: map['path'] == null ? null : map['path'] as String,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : map['timeoutInSeconds'] as int,
-      toleratedNumberOfFailures: map['toleratedNumberOfFailures'] == null ? null : map['toleratedNumberOfFailures'] as int,
+      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<ProfileMonitorConfigCustomHeader>(map['customHeaders'], (value) => ProfileMonitorConfigCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedStatusCodeRanges: map['expectedStatusCodeRanges'] == null ? null : ((map['expectedStatusCodeRanges'] as List).cast<String>()).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      toleratedNumberOfFailures: map['toleratedNumberOfFailures'] == null ? null : (map['toleratedNumberOfFailures'] as int).input(),
     );
   }
 }

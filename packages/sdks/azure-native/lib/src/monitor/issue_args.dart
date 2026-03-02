@@ -29,19 +29,13 @@ class IssueArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startInvestigation] Whether to automatically start an investigation once the issue is created (default: false)
   IssueArgs({
-    required pulumi.Output<String> azureMonitorWorkspaceName,
-    pulumi.Output<String>? issueName,
-    pulumi.Output<IssueProperties>? properties,
-    pulumi.Output<String>? related,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? startInvestigation,
-  }) :
-      azureMonitorWorkspaceName = pulumi.Input.asInput<String>(azureMonitorWorkspaceName),
-      issueName = pulumi.Input.asOptionalInput<String>(issueName),
-      properties = pulumi.Input.asOptionalInput<IssueProperties>(properties),
-      related = pulumi.Input.asOptionalInput<String>(related),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startInvestigation = pulumi.Input.asOptionalInput<bool>(startInvestigation);
+    required this.azureMonitorWorkspaceName,
+    this.issueName,
+    this.properties,
+    this.related,
+    required this.resourceGroupName,
+    this.startInvestigation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class IssueArgs {
 
   factory IssueArgs.fromMap(Map<String, dynamic> map) {
     return IssueArgs(
-      azureMonitorWorkspaceName: pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      issueName: map['issueName'] == null ? null : pulumi.Output.create<String>(map['issueName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<IssueProperties>(IssueProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      related: map['related'] == null ? null : pulumi.Output.create<String>(map['related'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startInvestigation: map['startInvestigation'] == null ? null : pulumi.Output.create<bool>(map['startInvestigation'] as bool),
+      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
+      issueName: map['issueName'] == null ? null : (map['issueName'] as String).input(),
+      properties: map['properties'] == null ? null : (IssueProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      related: map['related'] == null ? null : (map['related'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startInvestigation: map['startInvestigation'] == null ? null : (map['startInvestigation'] as bool).input(),
     );
   }
 }

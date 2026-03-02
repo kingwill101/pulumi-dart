@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerlessCacheCacheUsageLimitsDataStorage {
   /// The maximum number of ECPUs the cache can consume per second.
-  final int maximum;
+  final pulumi.Input<int> maximum;
   /// The minimum number of ECPUs the cache can consume per second.
-  final int minimum;
+  final pulumi.Input<int> minimum;
   /// The unit that the storage is measured in.
-  final String unit;
+  final pulumi.Input<String> unit;
 
   /// Creates a new [GetServerlessCacheCacheUsageLimitsDataStorage].
   /// [maximum] The maximum number of ECPUs the cache can consume per second.
@@ -29,9 +30,9 @@ class GetServerlessCacheCacheUsageLimitsDataStorage {
 
   factory GetServerlessCacheCacheUsageLimitsDataStorage.fromMap(Map<String, dynamic> map) {
     return GetServerlessCacheCacheUsageLimitsDataStorage(
-      maximum: map['maximum'] as int,
-      minimum: map['minimum'] as int,
-      unit: map['unit'] as String,
+      maximum: (map['maximum'] as int).input(),
+      minimum: (map['minimum'] as int).input(),
+      unit: (map['unit'] as String).input(),
     );
   }
 }

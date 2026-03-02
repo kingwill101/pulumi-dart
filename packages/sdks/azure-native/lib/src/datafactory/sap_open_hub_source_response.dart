@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A copy activity source for SAP Business Warehouse Open Hub Destination source.
 class SapOpenHubSourceResponse {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-  final dynamic baseRequestId;
+  final pulumi.Input<dynamic>? baseRequestId;
   /// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
-  final dynamic customRfcReadTableFunctionModule;
+  final pulumi.Input<dynamic>? customRfcReadTableFunctionModule;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-  final dynamic excludeLastRequest;
+  final pulumi.Input<dynamic>? excludeLastRequest;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic queryTimeout;
+  final pulumi.Input<dynamic>? queryTimeout;
   /// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
-  final dynamic sapDataColumnDelimiter;
+  final pulumi.Input<dynamic>? sapDataColumnDelimiter;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'SapOpenHubSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SapOpenHubSourceResponse].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -71,17 +72,17 @@ class SapOpenHubSourceResponse {
 
   factory SapOpenHubSourceResponse.fromMap(Map<String, dynamic> map) {
     return SapOpenHubSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      baseRequestId: map['baseRequestId'] == null ? null : map['baseRequestId'],
-      customRfcReadTableFunctionModule: map['customRfcReadTableFunctionModule'] == null ? null : map['customRfcReadTableFunctionModule'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      excludeLastRequest: map['excludeLastRequest'] == null ? null : map['excludeLastRequest'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
-      sapDataColumnDelimiter: map['sapDataColumnDelimiter'] == null ? null : map['sapDataColumnDelimiter'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      baseRequestId: map['baseRequestId'] == null ? null : (map['baseRequestId']).input(),
+      customRfcReadTableFunctionModule: map['customRfcReadTableFunctionModule'] == null ? null : (map['customRfcReadTableFunctionModule']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      excludeLastRequest: map['excludeLastRequest'] == null ? null : (map['excludeLastRequest']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
+      sapDataColumnDelimiter: map['sapDataColumnDelimiter'] == null ? null : (map['sapDataColumnDelimiter']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

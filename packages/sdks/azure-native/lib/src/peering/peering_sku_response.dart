@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU that defines the tier and kind of the peering.
 class PeeringSkuResponse {
   /// The family of the peering SKU.
-  final String family;
+  final pulumi.Input<String> family;
   /// The name of the peering SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The size of the peering SKU.
-  final String size;
+  final pulumi.Input<String> size;
   /// The tier of the peering SKU.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [PeeringSkuResponse].
   /// [family] The family of the peering SKU.
@@ -35,10 +36,10 @@ class PeeringSkuResponse {
 
   factory PeeringSkuResponse.fromMap(Map<String, dynamic> map) {
     return PeeringSkuResponse(
-      family: map['family'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      size: map['size'] as String,
-      tier: map['tier'] as String,
+      family: (map['family'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      size: (map['size'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

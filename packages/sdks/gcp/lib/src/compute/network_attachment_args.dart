@@ -36,23 +36,15 @@ class NetworkAttachmentArgs {
   /// [region] URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   /// [subnetworks] An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
   NetworkAttachmentArgs({
-    required pulumi.Output<String> connectionPreference,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? producerAcceptLists,
-    pulumi.Output<List<String>>? producerRejectLists,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> subnetworks,
-  }) :
-      connectionPreference = pulumi.Input.asInput<String>(connectionPreference),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      producerAcceptLists = pulumi.Input.asOptionalInput<List<String>>(producerAcceptLists),
-      producerRejectLists = pulumi.Input.asOptionalInput<List<String>>(producerRejectLists),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetworks = pulumi.Input.asInput<List<String>>(subnetworks);
+    required this.connectionPreference,
+    this.description,
+    this.name,
+    this.producerAcceptLists,
+    this.producerRejectLists,
+    this.project,
+    this.region,
+    required this.subnetworks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class NetworkAttachmentArgs {
 
   factory NetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentArgs(
-      connectionPreference: pulumi.Output.create<String>(map['connectionPreference'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      producerAcceptLists: map['producerAcceptLists'] == null ? null : pulumi.Output.create<List<String>>((map['producerAcceptLists'] as List).cast<String>()),
-      producerRejectLists: map['producerRejectLists'] == null ? null : pulumi.Output.create<List<String>>((map['producerRejectLists'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetworks: pulumi.Output.create<List<String>>((map['subnetworks'] as List).cast<String>()),
+      connectionPreference: (map['connectionPreference'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists'] as List).cast<String>()).input(),
+      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetworks: ((map['subnetworks'] as List).cast<String>()).input(),
     );
   }
 }

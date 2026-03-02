@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Timestamps associated with this resource in a particular system.
 class GoogleCloudDatacatalogV1SystemTimestamps {
   /// Creation timestamp of the resource within the given system.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on the source system, not every modification updates this timestamp. For example, BigQuery timestamps every metadata modification but not data or permission changes.
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
 
   /// Creates a new [GoogleCloudDatacatalogV1SystemTimestamps].
   /// [createTime] Creation timestamp of the resource within the given system.
@@ -25,8 +26,8 @@ class GoogleCloudDatacatalogV1SystemTimestamps {
 
   factory GoogleCloudDatacatalogV1SystemTimestamps.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1SystemTimestamps(
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

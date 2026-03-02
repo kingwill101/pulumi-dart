@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'character_mask_config_response_healthcare_v1beta1.dart';
 import 'crypto_hash_config_response_healthcare_v1beta1.dart';
 import 'date_shift_config_response_healthcare_v1beta1.dart';
@@ -7,15 +8,15 @@ import 'date_shift_config_response_healthcare_v1beta1.dart';
 /// Specifies additional options to apply to the base ProfileType.
 class GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse {
   /// Character mask config for CharacterMaskField.
-  final CharacterMaskConfigResponseHealthcareV1beta1 characterMaskConfig;
+  final pulumi.Input<CharacterMaskConfigResponseHealthcareV1beta1> characterMaskConfig;
   /// Configure contextual de-id.
-  final Map<String, dynamic> contextualDeid;
+  final pulumi.Input<Map<String, dynamic>> contextualDeid;
   /// Crypto hash config for CharacterMaskField.
-  final CryptoHashConfigResponseHealthcareV1beta1 cryptoHashConfig;
+  final pulumi.Input<CryptoHashConfigResponseHealthcareV1beta1> cryptoHashConfig;
   /// Date shifting config for CharacterMaskField.
-  final DateShiftConfigResponseHealthcareV1beta1 dateShiftConfig;
+  final pulumi.Input<DateShiftConfigResponseHealthcareV1beta1> dateShiftConfig;
   /// Configure keeping extensions by default.
-  final Map<String, dynamic> keepExtensions;
+  final pulumi.Input<Map<String, dynamic>> keepExtensions;
 
   /// Creates a new [GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse].
   /// [characterMaskConfig] Character mask config for CharacterMaskField.
@@ -33,21 +34,21 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'characterMaskConfig': characterMaskConfig.toMap(),
+      'characterMaskConfig': pulumi.Input.mapInputValue<CharacterMaskConfigResponseHealthcareV1beta1, Map<String, dynamic>>(characterMaskConfig, (value) => value.toMap()),
       'contextualDeid': contextualDeid,
-      'cryptoHashConfig': cryptoHashConfig.toMap(),
-      'dateShiftConfig': dateShiftConfig.toMap(),
+      'cryptoHashConfig': pulumi.Input.mapInputValue<CryptoHashConfigResponseHealthcareV1beta1, Map<String, dynamic>>(cryptoHashConfig, (value) => value.toMap()),
+      'dateShiftConfig': pulumi.Input.mapInputValue<DateShiftConfigResponseHealthcareV1beta1, Map<String, dynamic>>(dateShiftConfig, (value) => value.toMap()),
       'keepExtensions': keepExtensions,
     };
   }
 
   factory GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse(
-      characterMaskConfig: CharacterMaskConfigResponseHealthcareV1beta1.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>()),
-      contextualDeid: (map['contextualDeid'] as Map).cast<String, dynamic>(),
-      cryptoHashConfig: CryptoHashConfigResponseHealthcareV1beta1.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
-      dateShiftConfig: DateShiftConfigResponseHealthcareV1beta1.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>()),
-      keepExtensions: (map['keepExtensions'] as Map).cast<String, dynamic>(),
+      characterMaskConfig: (CharacterMaskConfigResponseHealthcareV1beta1.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>())).input(),
+      contextualDeid: ((map['contextualDeid'] as Map).cast<String, dynamic>()).input(),
+      cryptoHashConfig: (CryptoHashConfigResponseHealthcareV1beta1.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>())).input(),
+      dateShiftConfig: (DateShiftConfigResponseHealthcareV1beta1.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>())).input(),
+      keepExtensions: ((map['keepExtensions'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

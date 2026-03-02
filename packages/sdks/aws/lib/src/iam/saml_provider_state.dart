@@ -28,21 +28,14 @@ class SamlProviderState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [validUntil] The expiration date and time for the SAML provider in RFC1123 format, e.g., `Mon, 02 Jan 2006 15:04:05 MST`.
   SamlProviderState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? samlMetadataDocument,
-    pulumi.Output<String>? samlProviderUuid,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? validUntil,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      samlMetadataDocument = pulumi.Input.asOptionalInput<String>(samlMetadataDocument),
-      samlProviderUuid = pulumi.Input.asOptionalInput<String>(samlProviderUuid),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      validUntil = pulumi.Input.asOptionalInput<String>(validUntil);
+    this.arn,
+    this.name,
+    this.samlMetadataDocument,
+    this.samlProviderUuid,
+    this.tags,
+    this.tagsAll,
+    this.validUntil,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class SamlProviderState {
 
   factory SamlProviderState.fromMap(Map<String, dynamic> map) {
     return SamlProviderState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      samlMetadataDocument: map['samlMetadataDocument'] == null ? null : pulumi.Output.create<String>(map['samlMetadataDocument'] as String),
-      samlProviderUuid: map['samlProviderUuid'] == null ? null : pulumi.Output.create<String>(map['samlProviderUuid'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      validUntil: map['validUntil'] == null ? null : pulumi.Output.create<String>(map['validUntil'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      samlMetadataDocument: map['samlMetadataDocument'] == null ? null : (map['samlMetadataDocument'] as String).input(),
+      samlProviderUuid: map['samlProviderUuid'] == null ? null : (map['samlProviderUuid'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      validUntil: map['validUntil'] == null ? null : (map['validUntil'] as String).input(),
     );
   }
 }

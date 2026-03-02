@@ -23,15 +23,11 @@ class CustomLineArgs {
   /// [ipSegmentLists] The IP segment list. See `ip_segment_list` below for details.
   /// [lang] The lang.
   CustomLineArgs({
-    required pulumi.Output<String> customLineName,
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<List<CustomLineIpSegmentList>> ipSegmentLists,
-    pulumi.Output<String>? lang,
-  }) :
-      customLineName = pulumi.Input.asInput<String>(customLineName),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      ipSegmentLists = pulumi.Input.asInput<List<CustomLineIpSegmentList>>(ipSegmentLists),
-      lang = pulumi.Input.asOptionalInput<String>(lang);
+    required this.customLineName,
+    required this.domainName,
+    required this.ipSegmentLists,
+    this.lang,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CustomLineArgs {
 
   factory CustomLineArgs.fromMap(Map<String, dynamic> map) {
     return CustomLineArgs(
-      customLineName: pulumi.Output.create<String>(map['customLineName'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      ipSegmentLists: pulumi.Output.create<List<CustomLineIpSegmentList>>(pulumi.Input.decodeList<CustomLineIpSegmentList>(map['ipSegmentLists'], (value) => CustomLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>()))),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
+      customLineName: (map['customLineName'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      ipSegmentLists: (pulumi.Input.decodeList<CustomLineIpSegmentList>(map['ipSegmentLists'], (value) => CustomLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
     );
   }
 }

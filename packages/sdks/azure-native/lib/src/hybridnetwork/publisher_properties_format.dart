@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// publisher properties.
 class PublisherPropertiesFormat {
   /// The publisher scope.
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [PublisherPropertiesFormat].
   /// [scope] The publisher scope.
@@ -20,7 +21,7 @@ class PublisherPropertiesFormat {
 
   factory PublisherPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return PublisherPropertiesFormat(
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

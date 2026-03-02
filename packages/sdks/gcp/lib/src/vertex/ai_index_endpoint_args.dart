@@ -47,25 +47,16 @@ class AiIndexEndpointArgs {
   /// [publicEndpointEnabled] If true, the deployed index will be accessible through public endpoint.
   /// [region] The region of the index endpoint. eg us-central1
   AiIndexEndpointArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<AiIndexEndpointEncryptionSpec>? encryptionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? network,
-    pulumi.Output<AiIndexEndpointPrivateServiceConnectConfig>? privateServiceConnectConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? publicEndpointEnabled,
-    pulumi.Output<String>? region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<AiIndexEndpointEncryptionSpec>(encryptionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      privateServiceConnectConfig = pulumi.Input.asOptionalInput<AiIndexEndpointPrivateServiceConnectConfig>(privateServiceConnectConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicEndpointEnabled = pulumi.Input.asOptionalInput<bool>(publicEndpointEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.description,
+    required this.displayName,
+    this.encryptionSpec,
+    this.labels,
+    this.network,
+    this.privateServiceConnectConfig,
+    this.project,
+    this.publicEndpointEnabled,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class AiIndexEndpointArgs {
 
   factory AiIndexEndpointArgs.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiIndexEndpointEncryptionSpec>(AiIndexEndpointEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : pulumi.Output.create<AiIndexEndpointPrivateServiceConnectConfig>(AiIndexEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicEndpointEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiIndexEndpointEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiIndexEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

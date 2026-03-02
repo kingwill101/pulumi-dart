@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_virtual_cluster_config_auxiliary_services_config.dart';
 import 'cluster_virtual_cluster_config_kubernetes_cluster_config.dart';
 
 class ClusterVirtualClusterConfig {
   /// Configuration of auxiliary services used by this cluster.
   /// Structure defined below.
-  final ClusterVirtualClusterConfigAuxiliaryServicesConfig? auxiliaryServicesConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfig>? auxiliaryServicesConfig;
   /// The configuration for running the Dataproc cluster on Kubernetes.
   /// Structure defined below.
   /// - - -
-  final ClusterVirtualClusterConfigKubernetesClusterConfig? kubernetesClusterConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfig>? kubernetesClusterConfig;
   /// The Cloud Storage staging bucket used to stage files,
   /// such as Hadoop jars, between client machines and the cluster.
   /// Note: If you don't explicitly specify a `staging_bucket`
@@ -18,7 +19,7 @@ class ClusterVirtualClusterConfig {
   /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
   /// with other clusters in the same region/zone also choosing to use the auto generation
   /// option.
-  final String? stagingBucket;
+  final pulumi.Input<String>? stagingBucket;
 
   /// Creates a new [ClusterVirtualClusterConfig].
   /// [auxiliaryServicesConfig] Configuration of auxiliary services used by this cluster.
@@ -32,17 +33,17 @@ class ClusterVirtualClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auxiliaryServicesConfig': ?auxiliaryServicesConfig == null ? null : auxiliaryServicesConfig!.toMap(),
-      'kubernetesClusterConfig': ?kubernetesClusterConfig == null ? null : kubernetesClusterConfig!.toMap(),
+      'auxiliaryServicesConfig': ?pulumi.Input.mapOptionalInputValue<ClusterVirtualClusterConfigAuxiliaryServicesConfig, Map<String, dynamic>>(auxiliaryServicesConfig, (value) => value.toMap()),
+      'kubernetesClusterConfig': ?pulumi.Input.mapOptionalInputValue<ClusterVirtualClusterConfigKubernetesClusterConfig, Map<String, dynamic>>(kubernetesClusterConfig, (value) => value.toMap()),
       'stagingBucket': ?stagingBucket,
     };
   }
 
   factory ClusterVirtualClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfig(
-      auxiliaryServicesConfig: map['auxiliaryServicesConfig'] == null ? null : ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap((map['auxiliaryServicesConfig'] as Map).cast<String, dynamic>()),
-      kubernetesClusterConfig: map['kubernetesClusterConfig'] == null ? null : ClusterVirtualClusterConfigKubernetesClusterConfig.fromMap((map['kubernetesClusterConfig'] as Map).cast<String, dynamic>()),
-      stagingBucket: map['stagingBucket'] == null ? null : map['stagingBucket'] as String,
+      auxiliaryServicesConfig: map['auxiliaryServicesConfig'] == null ? null : (ClusterVirtualClusterConfigAuxiliaryServicesConfig.fromMap((map['auxiliaryServicesConfig'] as Map).cast<String, dynamic>())).input(),
+      kubernetesClusterConfig: map['kubernetesClusterConfig'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfig.fromMap((map['kubernetesClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      stagingBucket: map['stagingBucket'] == null ? null : (map['stagingBucket'] as String).input(),
     );
   }
 }

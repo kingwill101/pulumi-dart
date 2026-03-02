@@ -38,21 +38,14 @@ class ConnectClusterArgs {
   /// [location] ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   /// [project] The ID of the project in which the resource belongs.
   ConnectClusterArgs({
-    required pulumi.Output<ConnectClusterCapacityConfig> capacityConfig,
-    required pulumi.Output<String> connectClusterId,
-    required pulumi.Output<ConnectClusterGcpConfig> gcpConfig,
-    required pulumi.Output<String> kafkaCluster,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      capacityConfig = pulumi.Input.asInput<ConnectClusterCapacityConfig>(capacityConfig),
-      connectClusterId = pulumi.Input.asInput<String>(connectClusterId),
-      gcpConfig = pulumi.Input.asInput<ConnectClusterGcpConfig>(gcpConfig),
-      kafkaCluster = pulumi.Input.asInput<String>(kafkaCluster),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.capacityConfig,
+    required this.connectClusterId,
+    required this.gcpConfig,
+    required this.kafkaCluster,
+    this.labels,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class ConnectClusterArgs {
 
   factory ConnectClusterArgs.fromMap(Map<String, dynamic> map) {
     return ConnectClusterArgs(
-      capacityConfig: pulumi.Output.create<ConnectClusterCapacityConfig>(ConnectClusterCapacityConfig.fromMap((map['capacityConfig'] as Map).cast<String, dynamic>())),
-      connectClusterId: pulumi.Output.create<String>(map['connectClusterId'] as String),
-      gcpConfig: pulumi.Output.create<ConnectClusterGcpConfig>(ConnectClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())),
-      kafkaCluster: pulumi.Output.create<String>(map['kafkaCluster'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      capacityConfig: (ConnectClusterCapacityConfig.fromMap((map['capacityConfig'] as Map).cast<String, dynamic>())).input(),
+      connectClusterId: (map['connectClusterId'] as String).input(),
+      gcpConfig: (ConnectClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())).input(),
+      kafkaCluster: (map['kafkaCluster'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

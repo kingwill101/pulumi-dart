@@ -16,11 +16,9 @@ class SharedLimitArgs {
   /// [location] The name of the Azure region.
   /// [name] The name of the SharedLimit
   SharedLimitArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.location,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class SharedLimitArgs {
 
   factory SharedLimitArgs.fromMap(Map<String, dynamic> map) {
     return SharedLimitArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

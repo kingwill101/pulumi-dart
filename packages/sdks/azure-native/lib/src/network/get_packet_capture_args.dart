@@ -19,13 +19,10 @@ class GetPacketCaptureArgs {
   /// [packetCaptureName] The name of the packet capture session.
   /// [resourceGroupName] The name of the resource group.
   GetPacketCaptureArgs({
-    required pulumi.Output<String> networkWatcherName,
-    required pulumi.Output<String> packetCaptureName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkWatcherName = pulumi.Input.asInput<String>(networkWatcherName),
-      packetCaptureName = pulumi.Input.asInput<String>(packetCaptureName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkWatcherName,
+    required this.packetCaptureName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPacketCaptureArgs {
 
   factory GetPacketCaptureArgs.fromMap(Map<String, dynamic> map) {
     return GetPacketCaptureArgs(
-      networkWatcherName: pulumi.Output.create<String>(map['networkWatcherName'] as String),
-      packetCaptureName: pulumi.Output.create<String>(map['packetCaptureName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkWatcherName: (map['networkWatcherName'] as String).input(),
+      packetCaptureName: (map['packetCaptureName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

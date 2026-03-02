@@ -22,13 +22,10 @@ class InputSecurityGroupArgs {
   /// [tags] A map of tags to assign to the InputSecurityGroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [whitelistRules] Whitelist rules. See Whitelist Rules for more details.
   InputSecurityGroupArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<List<InputSecurityGroupWhitelistRule>> whitelistRules,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      whitelistRules = pulumi.Input.asInput<List<InputSecurityGroupWhitelistRule>>(whitelistRules);
+    this.region,
+    this.tags,
+    required this.whitelistRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class InputSecurityGroupArgs {
 
   factory InputSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return InputSecurityGroupArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      whitelistRules: pulumi.Output.create<List<InputSecurityGroupWhitelistRule>>(pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(map['whitelistRules'], (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>()))),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      whitelistRules: (pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(map['whitelistRules'], (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

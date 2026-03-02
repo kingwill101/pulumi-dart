@@ -58,35 +58,21 @@ class PolicyBindingState {
   /// [sourceType] Data source type, value range:
   /// [speedLimit] This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
   PolicyBindingState({
-    pulumi.Output<PolicyBindingAdvancedOptions>? advancedOptions,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? crossAccountRoleName,
-    pulumi.Output<String>? crossAccountType,
-    pulumi.Output<int>? crossAccountUserId,
-    pulumi.Output<String>? dataSourceId,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? exclude,
-    pulumi.Output<String>? include,
-    pulumi.Output<String>? policyBindingDescription,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? sourceType,
-    pulumi.Output<String>? speedLimit,
-  }) :
-      advancedOptions = pulumi.Input.asOptionalInput<PolicyBindingAdvancedOptions>(advancedOptions),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      crossAccountRoleName = pulumi.Input.asOptionalInput<String>(crossAccountRoleName),
-      crossAccountType = pulumi.Input.asOptionalInput<String>(crossAccountType),
-      crossAccountUserId = pulumi.Input.asOptionalInput<int>(crossAccountUserId),
-      dataSourceId = pulumi.Input.asOptionalInput<String>(dataSourceId),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      exclude = pulumi.Input.asOptionalInput<String>(exclude),
-      include = pulumi.Input.asOptionalInput<String>(include),
-      policyBindingDescription = pulumi.Input.asOptionalInput<String>(policyBindingDescription),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      speedLimit = pulumi.Input.asOptionalInput<String>(speedLimit);
+    this.advancedOptions,
+    this.createTime,
+    this.crossAccountRoleName,
+    this.crossAccountType,
+    this.crossAccountUserId,
+    this.dataSourceId,
+    this.disabled,
+    this.exclude,
+    this.include,
+    this.policyBindingDescription,
+    this.policyId,
+    this.source,
+    this.sourceType,
+    this.speedLimit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class PolicyBindingState {
 
   factory PolicyBindingState.fromMap(Map<String, dynamic> map) {
     return PolicyBindingState(
-      advancedOptions: map['advancedOptions'] == null ? null : pulumi.Output.create<PolicyBindingAdvancedOptions>(PolicyBindingAdvancedOptions.fromMap((map['advancedOptions'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : pulumi.Output.create<String>(map['crossAccountRoleName'] as String),
-      crossAccountType: map['crossAccountType'] == null ? null : pulumi.Output.create<String>(map['crossAccountType'] as String),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : pulumi.Output.create<int>(map['crossAccountUserId'] as int),
-      dataSourceId: map['dataSourceId'] == null ? null : pulumi.Output.create<String>(map['dataSourceId'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      exclude: map['exclude'] == null ? null : pulumi.Output.create<String>(map['exclude'] as String),
-      include: map['include'] == null ? null : pulumi.Output.create<String>(map['include'] as String),
-      policyBindingDescription: map['policyBindingDescription'] == null ? null : pulumi.Output.create<String>(map['policyBindingDescription'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      speedLimit: map['speedLimit'] == null ? null : pulumi.Output.create<String>(map['speedLimit'] as String),
+      advancedOptions: map['advancedOptions'] == null ? null : (PolicyBindingAdvancedOptions.fromMap((map['advancedOptions'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      exclude: map['exclude'] == null ? null : (map['exclude'] as String).input(),
+      include: map['include'] == null ? null : (map['include'] as String).input(),
+      policyBindingDescription: map['policyBindingDescription'] == null ? null : (map['policyBindingDescription'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      speedLimit: map['speedLimit'] == null ? null : (map['speedLimit'] as String).input(),
     );
   }
 }

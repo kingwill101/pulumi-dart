@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomRoutingEndpointGroupsGroup {
   /// The ID of the GA instance.
-  final String acceleratorId;
+  final pulumi.Input<String> acceleratorId;
   /// The name of the endpoint group.
-  final String customRoutingEndpointGroupName;
+  final pulumi.Input<String> customRoutingEndpointGroupName;
   /// The description of the endpoint group.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the endpoint group.
-  final String endpointGroupId;
+  final pulumi.Input<String> endpointGroupId;
   /// The list of endpoint group IP addresses.
-  final List<String> endpointGroupIpLists;
+  final pulumi.Input<List<String>> endpointGroupIpLists;
   /// The ID of the region where the endpoint group is created.
-  final String endpointGroupRegion;
+  final pulumi.Input<String> endpointGroupRegion;
   /// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
-  final List<String> endpointGroupUnconfirmedIpLists;
+  final pulumi.Input<List<String>> endpointGroupUnconfirmedIpLists;
   /// The id of the Custom Routing Endpoint Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the custom routing listener.
-  final String listenerId;
+  final pulumi.Input<String> listenerId;
   /// The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetCustomRoutingEndpointGroupsGroup].
   /// [acceleratorId] The ID of the GA instance.
@@ -64,16 +65,16 @@ class GetCustomRoutingEndpointGroupsGroup {
 
   factory GetCustomRoutingEndpointGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingEndpointGroupsGroup(
-      acceleratorId: map['acceleratorId'] as String,
-      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] as String,
-      description: map['description'] as String,
-      endpointGroupId: map['endpointGroupId'] as String,
-      endpointGroupIpLists: (map['endpointGroupIpLists'] as List).cast<String>(),
-      endpointGroupRegion: map['endpointGroupRegion'] as String,
-      endpointGroupUnconfirmedIpLists: (map['endpointGroupUnconfirmedIpLists'] as List).cast<String>(),
-      id: map['id'] as String,
-      listenerId: map['listenerId'] as String,
-      status: map['status'] as String,
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      customRoutingEndpointGroupName: (map['customRoutingEndpointGroupName'] as String).input(),
+      description: (map['description'] as String).input(),
+      endpointGroupId: (map['endpointGroupId'] as String).input(),
+      endpointGroupIpLists: ((map['endpointGroupIpLists'] as List).cast<String>()).input(),
+      endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
+      endpointGroupUnconfirmedIpLists: ((map['endpointGroupUnconfirmedIpLists'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

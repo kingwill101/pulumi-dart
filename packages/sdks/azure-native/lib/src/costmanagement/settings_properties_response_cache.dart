@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsPropertiesResponseCache {
   /// Indicates the account type. Allowed values include: EA, PAYG, Modern, Internal, Unknown.
-  final String channel;
+  final pulumi.Input<String> channel;
   /// Resource ID used by Resource Manager to uniquely identify the scope.
-  final String id;
+  final pulumi.Input<String> id;
   /// Display name for the scope.
-  final String name;
+  final pulumi.Input<String> name;
   /// Resource ID of the parent scope. For instance, subscription's resource ID for a resource group or a management group resource ID for a subscription.
-  final String? parent;
+  final pulumi.Input<String>? parent;
   /// Indicates the status of the scope. Status only applies to subscriptions and billing accounts.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Indicates the type of modern account. Allowed values include: Individual, Enterprise, Partner, Indirect, NotApplicable
-  final String subchannel;
+  final pulumi.Input<String> subchannel;
 
   /// Creates a new [SettingsPropertiesResponseCache].
   /// [channel] Indicates the account type. Allowed values include: EA, PAYG, Modern, Internal, Unknown.
@@ -44,12 +45,12 @@ class SettingsPropertiesResponseCache {
 
   factory SettingsPropertiesResponseCache.fromMap(Map<String, dynamic> map) {
     return SettingsPropertiesResponseCache(
-      channel: map['channel'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      parent: map['parent'] == null ? null : map['parent'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      subchannel: map['subchannel'] as String,
+      channel: (map['channel'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subchannel: (map['subchannel'] as String).input(),
     );
   }
 }

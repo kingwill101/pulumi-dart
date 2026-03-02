@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyVersionsVersion {
   /// The ID of the resource, the value is `<policy_name>`:`<version_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates whether the policy version is the default version.
-  final bool isDefaultVersion;
+  final pulumi.Input<bool> isDefaultVersion;
   /// (Available in v1.114.0+) The policy document of the policy version.
-  final String policyDocument;
+  final pulumi.Input<String> policyDocument;
   /// The ID of the policy version.
-  final String versionId;
+  final pulumi.Input<String> versionId;
 
   /// Creates a new [GetPolicyVersionsVersion].
   /// [id] The ID of the resource, the value is `<policy_name>`:`<version_id>`.
@@ -34,10 +35,10 @@ class GetPolicyVersionsVersion {
 
   factory GetPolicyVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetPolicyVersionsVersion(
-      id: map['id'] as String,
-      isDefaultVersion: map['isDefaultVersion'] as bool,
-      policyDocument: map['policyDocument'] as String,
-      versionId: map['versionId'] as String,
+      id: (map['id'] as String).input(),
+      isDefaultVersion: (map['isDefaultVersion'] as bool).input(),
+      policyDocument: (map['policyDocument'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

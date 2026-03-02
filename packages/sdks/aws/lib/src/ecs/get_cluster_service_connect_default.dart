@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterServiceConnectDefault {
-  final String namespace;
+  final pulumi.Input<String> namespace;
 
   /// Creates a new [GetClusterServiceConnectDefault].
   /// [namespace] Required.
@@ -18,7 +19,7 @@ class GetClusterServiceConnectDefault {
 
   factory GetClusterServiceConnectDefault.fromMap(Map<String, dynamic> map) {
     return GetClusterServiceConnectDefault(
-      namespace: map['namespace'] as String,
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

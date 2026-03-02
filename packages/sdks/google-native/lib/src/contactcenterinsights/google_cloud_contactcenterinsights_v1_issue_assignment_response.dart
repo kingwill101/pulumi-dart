@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the issue.
 class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
   /// Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Resource name of the assigned issue.
-  final String issue;
+  final pulumi.Input<String> issue;
   /// Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
-  final double score;
+  final pulumi.Input<double> score;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueAssignmentResponse].
   /// [displayName] Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
@@ -30,9 +31,9 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
 
   factory GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1IssueAssignmentResponse(
-      displayName: map['displayName'] as String,
-      issue: map['issue'] as String,
-      score: map['score'] as double,
+      displayName: (map['displayName'] as String).input(),
+      issue: (map['issue'] as String).input(),
+      score: (map['score'] as double).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains information about the package being shipped by the customer to the Microsoft data center.
 class PackageInformationResponse {
   /// The name of the carrier that is used to ship the import or export drives.
-  final String carrierName;
+  final pulumi.Input<String> carrierName;
   /// The number of drives included in the package.
-  final double driveCount;
+  final pulumi.Input<double> driveCount;
   /// The date when the package is shipped.
-  final String shipDate;
+  final pulumi.Input<String> shipDate;
   /// The tracking number of the package.
-  final String trackingNumber;
+  final pulumi.Input<String> trackingNumber;
 
   /// Creates a new [PackageInformationResponse].
   /// [carrierName] The name of the carrier that is used to ship the import or export drives.
@@ -35,10 +36,10 @@ class PackageInformationResponse {
 
   factory PackageInformationResponse.fromMap(Map<String, dynamic> map) {
     return PackageInformationResponse(
-      carrierName: map['carrierName'] as String,
-      driveCount: map['driveCount'] as double,
-      shipDate: map['shipDate'] as String,
-      trackingNumber: map['trackingNumber'] as String,
+      carrierName: (map['carrierName'] as String).input(),
+      driveCount: (map['driveCount'] as double).input(),
+      shipDate: (map['shipDate'] as String).input(),
+      trackingNumber: (map['trackingNumber'] as String).input(),
     );
   }
 }

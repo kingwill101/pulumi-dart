@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig {
   /// Specifies agreement to the model end-user license agreement (EULA). The value must be set to `true` in order to accept the EULA that this model requires. You are responsible for reviewing and complying with any applicable license terms and making sure they are acceptable for your use case before downloading or using a model.
-  final bool acceptEula;
+  final pulumi.Input<bool> acceptEula;
 
   /// Creates a new [ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig].
   /// [acceptEula] Specifies agreement to the model end-user license agreement (EULA). The value must be set to `true` in order to accept the EULA that this model requires. You are responsible for reviewing and complying with any applicable license terms and making sure they are acceptable for your use case before downloading or using a model.
@@ -19,7 +20,7 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfi
 
   factory ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap(Map<String, dynamic> map) {
     return ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig(
-      acceptEula: map['acceptEula'] as bool,
+      acceptEula: (map['acceptEula'] as bool).input(),
     );
   }
 }

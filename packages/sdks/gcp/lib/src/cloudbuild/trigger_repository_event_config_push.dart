@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerRepositoryEventConfigPush {
   /// Regex of branches to match.
-  final String? branch;
+  final pulumi.Input<String>? branch;
   /// If true, only trigger a build if the revision regex does NOT match the git_ref regex.
-  final bool? invertRegex;
+  final pulumi.Input<bool>? invertRegex;
   /// Regex of tags to match.
-  final String? tag;
+  final pulumi.Input<String>? tag;
 
   /// Creates a new [TriggerRepositoryEventConfigPush].
   /// [branch] Regex of branches to match.
@@ -29,9 +30,9 @@ class TriggerRepositoryEventConfigPush {
 
   factory TriggerRepositoryEventConfigPush.fromMap(Map<String, dynamic> map) {
     return TriggerRepositoryEventConfigPush(
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      invertRegex: map['invertRegex'] == null ? null : map['invertRegex'] as bool,
-      tag: map['tag'] == null ? null : map['tag'] as String,
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex'] as bool).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Managed Identity details for storage account.
 class ManagedIdentityConfigurationResponse {
   /// The objectId of the Managed Identity that is linked to the Managed Storage account.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant Id where the Managed Identity is created.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of Identity created. It can be either SystemAssigned or UserAssigned.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedIdentityConfigurationResponse].
   /// [principalId] The objectId of the Managed Identity that is linked to the Managed Storage account.
@@ -30,9 +31,9 @@ class ManagedIdentityConfigurationResponse {
 
   factory ManagedIdentityConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityConfigurationResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

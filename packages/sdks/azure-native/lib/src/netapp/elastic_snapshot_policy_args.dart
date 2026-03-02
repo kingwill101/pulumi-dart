@@ -29,19 +29,13 @@ class ElasticSnapshotPolicyArgs {
   /// [snapshotPolicyName] The name of the ElasticSnapshotPolicy
   /// [tags] Resource tags.
   ElasticSnapshotPolicyArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? location,
-    pulumi.Output<ElasticSnapshotPolicyProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? snapshotPolicyName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ElasticSnapshotPolicyProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      snapshotPolicyName = pulumi.Input.asOptionalInput<String>(snapshotPolicyName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.snapshotPolicyName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ElasticSnapshotPolicyArgs {
 
   factory ElasticSnapshotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ElasticSnapshotPolicyProperties>(ElasticSnapshotPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      snapshotPolicyName: map['snapshotPolicyName'] == null ? null : pulumi.Output.create<String>(map['snapshotPolicyName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ElasticSnapshotPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      snapshotPolicyName: map['snapshotPolicyName'] == null ? null : (map['snapshotPolicyName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

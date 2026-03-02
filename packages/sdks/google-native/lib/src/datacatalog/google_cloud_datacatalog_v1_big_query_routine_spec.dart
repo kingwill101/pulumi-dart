@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Fields specific for BigQuery routines.
 class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
   /// Paths of the imported libraries.
-  final List<String>? importedLibraries;
+  final pulumi.Input<List<String>>? importedLibraries;
 
   /// Creates a new [GoogleCloudDatacatalogV1BigQueryRoutineSpec].
   /// [importedLibraries] Paths of the imported libraries.
@@ -20,7 +21,7 @@ class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
 
   factory GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1BigQueryRoutineSpec(
-      importedLibraries: map['importedLibraries'] == null ? null : (map['importedLibraries'] as List).cast<String>(),
+      importedLibraries: map['importedLibraries'] == null ? null : ((map['importedLibraries'] as List).cast<String>()).input(),
     );
   }
 }

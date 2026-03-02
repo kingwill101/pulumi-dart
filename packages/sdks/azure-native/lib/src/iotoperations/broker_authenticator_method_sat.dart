@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Service Account Token for BrokerAuthentication
 class BrokerAuthenticatorMethodSat {
   /// List of allowed audience.
-  final List<String> audiences;
+  final pulumi.Input<List<String>> audiences;
 
   /// Creates a new [BrokerAuthenticatorMethodSat].
   /// [audiences] List of allowed audience.
@@ -20,7 +21,7 @@ class BrokerAuthenticatorMethodSat {
 
   factory BrokerAuthenticatorMethodSat.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodSat(
-      audiences: (map['audiences'] as List).cast<String>(),
+      audiences: ((map['audiences'] as List).cast<String>()).input(),
     );
   }
 }

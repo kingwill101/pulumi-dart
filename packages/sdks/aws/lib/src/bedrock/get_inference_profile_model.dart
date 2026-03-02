@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInferenceProfileModel {
   /// The Amazon Resource Name (ARN) of the model.
-  final String modelArn;
+  final pulumi.Input<String> modelArn;
 
   /// Creates a new [GetInferenceProfileModel].
   /// [modelArn] The Amazon Resource Name (ARN) of the model.
@@ -19,7 +20,7 @@ class GetInferenceProfileModel {
 
   factory GetInferenceProfileModel.fromMap(Map<String, dynamic> map) {
     return GetInferenceProfileModel(
-      modelArn: map['modelArn'] as String,
+      modelArn: (map['modelArn'] as String).input(),
     );
   }
 }

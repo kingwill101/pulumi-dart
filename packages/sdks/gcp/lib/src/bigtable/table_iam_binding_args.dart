@@ -42,19 +42,13 @@ class TableIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [table] The name or relative resource id of the table to manage IAM policies for.
   TableIamBindingArgs({
-    pulumi.Output<TableIamBindingCondition>? condition,
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> table,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TableIamBindingCondition>(condition),
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      table = pulumi.Input.asInput<String>(table);
+    this.condition,
+    required this.instanceName,
+    required this.members,
+    this.project,
+    required this.role,
+    required this.table,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,12 +63,12 @@ class TableIamBindingArgs {
 
   factory TableIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return TableIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TableIamBindingCondition>(TableIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      table: pulumi.Output.create<String>(map['table'] as String),
+      condition: map['condition'] == null ? null : (TableIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

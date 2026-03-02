@@ -37,19 +37,13 @@ class TemplateArgs {
   /// [templateId] Id of the requesting object
   /// [templateMetadata] Message describing TemplateMetadata
   TemplateArgs({
-    required pulumi.Output<TemplateFilterConfig> filterConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> templateId,
-    pulumi.Output<TemplateTemplateMetadata>? templateMetadata,
-  }) :
-      filterConfig = pulumi.Input.asInput<TemplateFilterConfig>(filterConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      templateId = pulumi.Input.asInput<String>(templateId),
-      templateMetadata = pulumi.Input.asOptionalInput<TemplateTemplateMetadata>(templateMetadata);
+    required this.filterConfig,
+    this.labels,
+    required this.location,
+    this.project,
+    required this.templateId,
+    this.templateMetadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,12 +58,12 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      filterConfig: pulumi.Output.create<TemplateFilterConfig>(TemplateFilterConfig.fromMap((map['filterConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
-      templateMetadata: map['templateMetadata'] == null ? null : pulumi.Output.create<TemplateTemplateMetadata>(TemplateTemplateMetadata.fromMap((map['templateMetadata'] as Map).cast<String, dynamic>())),
+      filterConfig: (TemplateFilterConfig.fromMap((map['filterConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      templateMetadata: map['templateMetadata'] == null ? null : (TemplateTemplateMetadata.fromMap((map['templateMetadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

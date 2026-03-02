@@ -25,17 +25,12 @@ class MachineGroupArgs {
   /// [project] The project name to the machine group belongs.
   /// [topic] The topic of a machine group.
   MachineGroupArgs({
-    required pulumi.Output<List<String>> identifyLists,
-    pulumi.Output<String>? identifyType,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> project,
-    pulumi.Output<String>? topic,
-  }) :
-      identifyLists = pulumi.Input.asInput<List<String>>(identifyLists),
-      identifyType = pulumi.Input.asOptionalInput<String>(identifyType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asInput<String>(project),
-      topic = pulumi.Input.asOptionalInput<String>(topic);
+    required this.identifyLists,
+    this.identifyType,
+    this.name,
+    required this.project,
+    this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class MachineGroupArgs {
 
   factory MachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return MachineGroupArgs(
-      identifyLists: pulumi.Output.create<List<String>>((map['identifyLists'] as List).cast<String>()),
-      identifyType: map['identifyType'] == null ? null : pulumi.Output.create<String>(map['identifyType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
+      identifyLists: ((map['identifyLists'] as List).cast<String>()).input(),
+      identifyType: map['identifyType'] == null ? null : (map['identifyType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: (map['project'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

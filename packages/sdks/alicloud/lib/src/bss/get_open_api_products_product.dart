@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOpenApiProductsProduct {
   /// The ID of the product. The value is formulated as `<product_code>:<product_type>:<subscription_type>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Product code.
-  final String productCode;
+  final pulumi.Input<String> productCode;
   /// Product name.
-  final String productName;
+  final pulumi.Input<String> productName;
   /// Type of product.
-  final String productType;
+  final pulumi.Input<String> productType;
   /// Subscription type. Value:
   /// * Subscription: Prepaid.
   /// * PayAsYouGo: postpaid.
-  final String subscriptionType;
+  final pulumi.Input<String> subscriptionType;
 
   /// Creates a new [GetOpenApiProductsProduct].
   /// [id] The ID of the product. The value is formulated as `<product_code>:<product_type>:<subscription_type>`.
@@ -41,11 +42,11 @@ class GetOpenApiProductsProduct {
 
   factory GetOpenApiProductsProduct.fromMap(Map<String, dynamic> map) {
     return GetOpenApiProductsProduct(
-      id: map['id'] as String,
-      productCode: map['productCode'] as String,
-      productName: map['productName'] as String,
-      productType: map['productType'] as String,
-      subscriptionType: map['subscriptionType'] as String,
+      id: (map['id'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      productName: (map['productName'] as String).input(),
+      productType: (map['productType'] as String).input(),
+      subscriptionType: (map['subscriptionType'] as String).input(),
     );
   }
 }

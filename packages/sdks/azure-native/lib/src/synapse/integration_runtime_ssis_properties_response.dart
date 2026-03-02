@@ -9,17 +9,17 @@ import 'integration_runtime_ssis_catalog_info_response.dart';
 /// SSIS properties for managed integration runtime.
 class IntegrationRuntimeSsisPropertiesResponse {
   /// Catalog information for managed dedicated integration runtime.
-  final IntegrationRuntimeSsisCatalogInfoResponse? catalogInfo;
+  final pulumi.Input<IntegrationRuntimeSsisCatalogInfoResponse>? catalogInfo;
   /// Custom setup script properties for a managed dedicated integration runtime.
-  final IntegrationRuntimeCustomSetupScriptPropertiesResponse? customSetupScriptProperties;
+  final pulumi.Input<IntegrationRuntimeCustomSetupScriptPropertiesResponse>? customSetupScriptProperties;
   /// Data proxy properties for a managed dedicated integration runtime.
-  final IntegrationRuntimeDataProxyPropertiesResponse? dataProxyProperties;
+  final pulumi.Input<IntegrationRuntimeDataProxyPropertiesResponse>? dataProxyProperties;
   /// The edition for the SSIS Integration Runtime
-  final String? edition;
+  final pulumi.Input<String>? edition;
   /// Custom setup without script properties for a SSIS integration runtime.
-  final List<CmdkeySetupResponse>? expressCustomSetupProperties;
+  final pulumi.Input<List<CmdkeySetupResponse>>? expressCustomSetupProperties;
   /// License type for bringing your own license scenario.
-  final String? licenseType;
+  final pulumi.Input<String>? licenseType;
 
   /// Creates a new [IntegrationRuntimeSsisPropertiesResponse].
   /// [catalogInfo] Catalog information for managed dedicated integration runtime.
@@ -39,23 +39,23 @@ class IntegrationRuntimeSsisPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'catalogInfo': ?catalogInfo == null ? null : catalogInfo!.toMap(),
-      'customSetupScriptProperties': ?customSetupScriptProperties == null ? null : customSetupScriptProperties!.toMap(),
-      'dataProxyProperties': ?dataProxyProperties == null ? null : dataProxyProperties!.toMap(),
+      'catalogInfo': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeSsisCatalogInfoResponse, Map<String, dynamic>>(catalogInfo, (value) => value.toMap()),
+      'customSetupScriptProperties': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeCustomSetupScriptPropertiesResponse, Map<String, dynamic>>(customSetupScriptProperties, (value) => value.toMap()),
+      'dataProxyProperties': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeDataProxyPropertiesResponse, Map<String, dynamic>>(dataProxyProperties, (value) => value.toMap()),
       'edition': ?edition,
-      'expressCustomSetupProperties': ?expressCustomSetupProperties == null ? null : pulumi.Input.encodeList<CmdkeySetupResponse, Map<String, dynamic>>(expressCustomSetupProperties!, (value) => value.toMap()),
+      'expressCustomSetupProperties': ?pulumi.Input.mapOptionalInputValue<List<CmdkeySetupResponse>, List<Map<String, dynamic>>>(expressCustomSetupProperties, (value) => pulumi.Input.encodeList<CmdkeySetupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'licenseType': ?licenseType,
     };
   }
 
   factory IntegrationRuntimeSsisPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisPropertiesResponse(
-      catalogInfo: map['catalogInfo'] == null ? null : IntegrationRuntimeSsisCatalogInfoResponse.fromMap((map['catalogInfo'] as Map).cast<String, dynamic>()),
-      customSetupScriptProperties: map['customSetupScriptProperties'] == null ? null : IntegrationRuntimeCustomSetupScriptPropertiesResponse.fromMap((map['customSetupScriptProperties'] as Map).cast<String, dynamic>()),
-      dataProxyProperties: map['dataProxyProperties'] == null ? null : IntegrationRuntimeDataProxyPropertiesResponse.fromMap((map['dataProxyProperties'] as Map).cast<String, dynamic>()),
-      edition: map['edition'] == null ? null : map['edition'] as String,
-      expressCustomSetupProperties: map['expressCustomSetupProperties'] == null ? null : pulumi.Input.decodeList<CmdkeySetupResponse>(map['expressCustomSetupProperties'], (value) => CmdkeySetupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
+      catalogInfo: map['catalogInfo'] == null ? null : (IntegrationRuntimeSsisCatalogInfoResponse.fromMap((map['catalogInfo'] as Map).cast<String, dynamic>())).input(),
+      customSetupScriptProperties: map['customSetupScriptProperties'] == null ? null : (IntegrationRuntimeCustomSetupScriptPropertiesResponse.fromMap((map['customSetupScriptProperties'] as Map).cast<String, dynamic>())).input(),
+      dataProxyProperties: map['dataProxyProperties'] == null ? null : (IntegrationRuntimeDataProxyPropertiesResponse.fromMap((map['dataProxyProperties'] as Map).cast<String, dynamic>())).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      expressCustomSetupProperties: map['expressCustomSetupProperties'] == null ? null : (pulumi.Input.decodeList<CmdkeySetupResponse>(map['expressCustomSetupProperties'], (value) => CmdkeySetupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
     );
   }
 }

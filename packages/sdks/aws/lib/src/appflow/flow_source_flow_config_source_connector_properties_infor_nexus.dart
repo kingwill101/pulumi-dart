@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesInforNexus {
-  final String object;
+  final pulumi.Input<String> object;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesInforNexus].
   /// [object] Required.
@@ -18,7 +19,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesInforNexus {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesInforNexus(
-      object: map['object'] as String,
+      object: (map['object'] as String).input(),
     );
   }
 }

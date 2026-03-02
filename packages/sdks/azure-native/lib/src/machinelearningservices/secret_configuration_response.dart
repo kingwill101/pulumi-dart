@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Secret Configuration definition.
 class SecretConfigurationResponse {
   /// Secret Uri.
   /// Sample Uri : https://myvault.vault.azure.net/secrets/mysecretname/secretversion
-  final String? uri;
+  final pulumi.Input<String>? uri;
   /// Name of secret in workspace key vault.
-  final String? workspaceSecretName;
+  final pulumi.Input<String>? workspaceSecretName;
 
   /// Creates a new [SecretConfigurationResponse].
   /// [uri] Secret Uri.
@@ -26,8 +27,8 @@ class SecretConfigurationResponse {
 
   factory SecretConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SecretConfigurationResponse(
-      uri: map['uri'] == null ? null : map['uri'] as String,
-      workspaceSecretName: map['workspaceSecretName'] == null ? null : map['workspaceSecretName'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      workspaceSecretName: map['workspaceSecretName'] == null ? null : (map['workspaceSecretName'] as String).input(),
     );
   }
 }

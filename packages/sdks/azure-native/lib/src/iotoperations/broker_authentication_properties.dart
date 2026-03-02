@@ -6,7 +6,7 @@ import 'broker_authenticator_methods.dart';
 /// BrokerAuthentication Resource properties
 class BrokerAuthenticationProperties {
   /// Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported.
-  final List<BrokerAuthenticatorMethods> authenticationMethods;
+  final pulumi.Input<List<BrokerAuthenticatorMethods>> authenticationMethods;
 
   /// Creates a new [BrokerAuthenticationProperties].
   /// [authenticationMethods] Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported.
@@ -16,13 +16,13 @@ class BrokerAuthenticationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationMethods': pulumi.Input.encodeList<BrokerAuthenticatorMethods, Map<String, dynamic>>(authenticationMethods, (value) => value.toMap()),
+      'authenticationMethods': pulumi.Input.mapInputValue<List<BrokerAuthenticatorMethods>, List<Map<String, dynamic>>>(authenticationMethods, (value) => pulumi.Input.encodeList<BrokerAuthenticatorMethods, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BrokerAuthenticationProperties.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticationProperties(
-      authenticationMethods: pulumi.Input.decodeList<BrokerAuthenticatorMethods>(map['authenticationMethods'], (value) => BrokerAuthenticatorMethods.fromMap((value as Map).cast<String, dynamic>())),
+      authenticationMethods: (pulumi.Input.decodeList<BrokerAuthenticatorMethods>(map['authenticationMethods'], (value) => BrokerAuthenticatorMethods.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class GetAggregateConfigRulesArgs {
   /// [riskLevel] The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
   /// [status] The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
   GetAggregateConfigRulesArgs({
-    pulumi.Output<String>? aggregateConfigRuleName,
-    required pulumi.Output<String> aggregatorId,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? riskLevel,
-    pulumi.Output<String>? status,
-  }) :
-      aggregateConfigRuleName = pulumi.Input.asOptionalInput<String>(aggregateConfigRuleName),
-      aggregatorId = pulumi.Input.asInput<String>(aggregatorId),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      riskLevel = pulumi.Input.asOptionalInput<int>(riskLevel),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.aggregateConfigRuleName,
+    required this.aggregatorId,
+    this.enableDetails,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.riskLevel,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetAggregateConfigRulesArgs {
 
   factory GetAggregateConfigRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetAggregateConfigRulesArgs(
-      aggregateConfigRuleName: map['aggregateConfigRuleName'] == null ? null : pulumi.Output.create<String>(map['aggregateConfigRuleName'] as String),
-      aggregatorId: pulumi.Output.create<String>(map['aggregatorId'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      riskLevel: map['riskLevel'] == null ? null : pulumi.Output.create<int>(map['riskLevel'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      aggregateConfigRuleName: map['aggregateConfigRuleName'] == null ? null : (map['aggregateConfigRuleName'] as String).input(),
+      aggregatorId: (map['aggregatorId'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

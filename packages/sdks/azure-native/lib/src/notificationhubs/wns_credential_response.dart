@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of a NotificationHub WnsCredential.
 class WnsCredentialResponse {
   /// Ges or sets the WNS Certificate Key.
-  final String? certificateKey;
+  final pulumi.Input<String>? certificateKey;
   /// Gets or sets the package ID for this credential.
-  final String? packageSid;
+  final pulumi.Input<String>? packageSid;
   /// Gets or sets the secret key.
-  final String? secretKey;
+  final pulumi.Input<String>? secretKey;
   /// Gets or sets the Windows Live endpoint.
-  final String? windowsLiveEndpoint;
+  final pulumi.Input<String>? windowsLiveEndpoint;
   /// Gets or sets the WNS Certificate.
-  final String? wnsCertificate;
+  final pulumi.Input<String>? wnsCertificate;
 
   /// Creates a new [WnsCredentialResponse].
   /// [certificateKey] Ges or sets the WNS Certificate Key.
@@ -40,11 +41,11 @@ class WnsCredentialResponse {
 
   factory WnsCredentialResponse.fromMap(Map<String, dynamic> map) {
     return WnsCredentialResponse(
-      certificateKey: map['certificateKey'] == null ? null : map['certificateKey'] as String,
-      packageSid: map['packageSid'] == null ? null : map['packageSid'] as String,
-      secretKey: map['secretKey'] == null ? null : map['secretKey'] as String,
-      windowsLiveEndpoint: map['windowsLiveEndpoint'] == null ? null : map['windowsLiveEndpoint'] as String,
-      wnsCertificate: map['wnsCertificate'] == null ? null : map['wnsCertificate'] as String,
+      certificateKey: map['certificateKey'] == null ? null : (map['certificateKey'] as String).input(),
+      packageSid: map['packageSid'] == null ? null : (map['packageSid'] as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      windowsLiveEndpoint: map['windowsLiveEndpoint'] == null ? null : (map['windowsLiveEndpoint'] as String).input(),
+      wnsCertificate: map['wnsCertificate'] == null ? null : (map['wnsCertificate'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_group_autoscaling_policy_mode_compute_v1.dart';
 
 class NodeGroupAutoscalingPolicyComputeV1 {
   /// The maximum number of nodes that the group should have. Must be set if autoscaling is enabled. Maximum value allowed is 100.
-  final int? maxNodes;
+  final pulumi.Input<int>? maxNodes;
   /// The minimum number of nodes that the group should have.
-  final int? minNodes;
+  final pulumi.Input<int>? minNodes;
   /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
-  final NodeGroupAutoscalingPolicyModeComputeV1? mode;
+  final pulumi.Input<NodeGroupAutoscalingPolicyModeComputeV1>? mode;
 
   /// Creates a new [NodeGroupAutoscalingPolicyComputeV1].
   /// [maxNodes] The maximum number of nodes that the group should have. Must be set if autoscaling is enabled. Maximum value allowed is 100.
@@ -24,15 +25,15 @@ class NodeGroupAutoscalingPolicyComputeV1 {
     return <String, dynamic>{
       'maxNodes': ?maxNodes,
       'minNodes': ?minNodes,
-      'mode': ?mode == null ? null : mode!.value,
+      'mode': ?pulumi.Input.mapOptionalInputValue<NodeGroupAutoscalingPolicyModeComputeV1, String>(mode, (value) => value.value),
     };
   }
 
   factory NodeGroupAutoscalingPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return NodeGroupAutoscalingPolicyComputeV1(
-      maxNodes: map['maxNodes'] == null ? null : map['maxNodes'] as int,
-      minNodes: map['minNodes'] == null ? null : map['minNodes'] as int,
-      mode: map['mode'] == null ? null : NodeGroupAutoscalingPolicyModeComputeV1.fromValue(map['mode'] as String),
+      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes'] as int).input(),
+      minNodes: map['minNodes'] == null ? null : (map['minNodes'] as int).input(),
+      mode: map['mode'] == null ? null : (NodeGroupAutoscalingPolicyModeComputeV1.fromValue(map['mode'] as String)).input(),
     );
   }
 }

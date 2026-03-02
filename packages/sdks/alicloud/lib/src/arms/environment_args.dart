@@ -43,25 +43,16 @@ class EnvironmentArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
   EnvironmentArgs({
-    pulumi.Output<String>? aliyunLang,
-    pulumi.Output<String>? bindResourceId,
-    pulumi.Output<String>? dropMetrics,
-    pulumi.Output<String>? environmentName,
-    required pulumi.Output<String> environmentSubType,
-    required pulumi.Output<String> environmentType,
-    pulumi.Output<String>? managedType,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      aliyunLang = pulumi.Input.asOptionalInput<String>(aliyunLang),
-      bindResourceId = pulumi.Input.asOptionalInput<String>(bindResourceId),
-      dropMetrics = pulumi.Input.asOptionalInput<String>(dropMetrics),
-      environmentName = pulumi.Input.asOptionalInput<String>(environmentName),
-      environmentSubType = pulumi.Input.asInput<String>(environmentSubType),
-      environmentType = pulumi.Input.asInput<String>(environmentType),
-      managedType = pulumi.Input.asOptionalInput<String>(managedType),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.aliyunLang,
+    this.bindResourceId,
+    this.dropMetrics,
+    this.environmentName,
+    required this.environmentSubType,
+    required this.environmentType,
+    this.managedType,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      aliyunLang: map['aliyunLang'] == null ? null : pulumi.Output.create<String>(map['aliyunLang'] as String),
-      bindResourceId: map['bindResourceId'] == null ? null : pulumi.Output.create<String>(map['bindResourceId'] as String),
-      dropMetrics: map['dropMetrics'] == null ? null : pulumi.Output.create<String>(map['dropMetrics'] as String),
-      environmentName: map['environmentName'] == null ? null : pulumi.Output.create<String>(map['environmentName'] as String),
-      environmentSubType: pulumi.Output.create<String>(map['environmentSubType'] as String),
-      environmentType: pulumi.Output.create<String>(map['environmentType'] as String),
-      managedType: map['managedType'] == null ? null : pulumi.Output.create<String>(map['managedType'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      bindResourceId: map['bindResourceId'] == null ? null : (map['bindResourceId'] as String).input(),
+      dropMetrics: map['dropMetrics'] == null ? null : (map['dropMetrics'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      environmentSubType: (map['environmentSubType'] as String).input(),
+      environmentType: (map['environmentType'] as String).input(),
+      managedType: map['managedType'] == null ? null : (map['managedType'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

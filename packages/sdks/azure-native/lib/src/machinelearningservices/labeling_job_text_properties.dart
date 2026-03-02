@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a labeling job for text data
 class LabelingJobTextProperties {
   /// Annotation type of text labeling job.
-  final String? annotationType;
+  final pulumi.Input<String>? annotationType;
   /// Media type of data asset.
   /// Expected value is 'Text'.
-  final String mediaType;
+  final pulumi.Input<String> mediaType;
 
   /// Creates a new [LabelingJobTextProperties].
   /// [annotationType] Annotation type of text labeling job.
@@ -26,8 +27,8 @@ class LabelingJobTextProperties {
 
   factory LabelingJobTextProperties.fromMap(Map<String, dynamic> map) {
     return LabelingJobTextProperties(
-      annotationType: map['annotationType'] == null ? null : map['annotationType'] as String,
-      mediaType: map['mediaType'] as String,
+      annotationType: map['annotationType'] == null ? null : (map['annotationType'] as String).input(),
+      mediaType: (map['mediaType'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetApicategoryArgs {
   /// [organizationId] Required.
   /// [siteId] Required.
   GetApicategoryArgs({
-    required pulumi.Output<String> apicategoryId,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> siteId,
-  }) :
-      apicategoryId = pulumi.Input.asInput<String>(apicategoryId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    required this.apicategoryId,
+    required this.organizationId,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetApicategoryArgs {
 
   factory GetApicategoryArgs.fromMap(Map<String, dynamic> map) {
     return GetApicategoryArgs(
-      apicategoryId: pulumi.Output.create<String>(map['apicategoryId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      apicategoryId: (map['apicategoryId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

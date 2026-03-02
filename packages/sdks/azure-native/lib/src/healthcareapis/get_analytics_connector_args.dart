@@ -19,13 +19,10 @@ class GetAnalyticsConnectorArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
   GetAnalyticsConnectorArgs({
-    required pulumi.Output<String> analyticsConnectorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      analyticsConnectorName = pulumi.Input.asInput<String>(analyticsConnectorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.analyticsConnectorName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAnalyticsConnectorArgs {
 
   factory GetAnalyticsConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAnalyticsConnectorArgs(
-      analyticsConnectorName: pulumi.Output.create<String>(map['analyticsConnectorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      analyticsConnectorName: (map['analyticsConnectorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

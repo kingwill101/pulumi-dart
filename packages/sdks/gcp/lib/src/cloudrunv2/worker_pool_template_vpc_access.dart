@@ -5,13 +5,13 @@ import 'worker_pool_template_vpc_access_network_interface.dart';
 
 class WorkerPoolTemplateVpcAccess {
   /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
-  final String? connector;
+  final pulumi.Input<String>? connector;
   /// Traffic VPC egress settings.
   /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-  final String? egress;
+  final pulumi.Input<String>? egress;
   /// Direct VPC egress settings. Currently only single network interface is supported.
   /// Structure is documented below.
-  final List<WorkerPoolTemplateVpcAccessNetworkInterface>? networkInterfaces;
+  final pulumi.Input<List<WorkerPoolTemplateVpcAccessNetworkInterface>>? networkInterfaces;
 
   /// Creates a new [WorkerPoolTemplateVpcAccess].
   /// [connector] VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
@@ -27,15 +27,15 @@ class WorkerPoolTemplateVpcAccess {
     return <String, dynamic>{
       'connector': ?connector,
       'egress': ?egress,
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<WorkerPoolTemplateVpcAccessNetworkInterface, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<WorkerPoolTemplateVpcAccessNetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<WorkerPoolTemplateVpcAccessNetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WorkerPoolTemplateVpcAccess.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateVpcAccess(
-      connector: map['connector'] == null ? null : map['connector'] as String,
-      egress: map['egress'] == null ? null : map['egress'] as String,
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<WorkerPoolTemplateVpcAccessNetworkInterface>(map['networkInterfaces'], (value) => WorkerPoolTemplateVpcAccessNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      connector: map['connector'] == null ? null : (map['connector'] as String).input(),
+      egress: map['egress'] == null ? null : (map['egress'] as String).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateVpcAccessNetworkInterface>(map['networkInterfaces'], (value) => WorkerPoolTemplateVpcAccessNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

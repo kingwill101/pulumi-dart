@@ -15,48 +15,48 @@ import 'user_property_response.dart';
 /// Execute SSIS package activity.
 class ExecuteSSISPackageActivityResponse {
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse> connectVia;
   /// Activity depends on condition.
-  final List<ActivityDependencyResponse>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The environment path to execute the SSIS package. Type: string (or Expression with resultType string).
-  final dynamic environmentPath;
+  final pulumi.Input<dynamic>? environmentPath;
   /// The package execution credential.
-  final SSISExecutionCredentialResponse? executionCredential;
+  final pulumi.Input<SSISExecutionCredentialResponse>? executionCredential;
   /// Linked service reference.
-  final LinkedServiceReferenceResponse? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
   /// SSIS package execution log location.
-  final SSISLogLocationResponse? logLocation;
+  final pulumi.Input<SSISLogLocationResponse>? logLocation;
   /// The logging level of SSIS package execution. Type: string (or Expression with resultType string).
-  final dynamic loggingLevel;
+  final pulumi.Input<dynamic>? loggingLevel;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// The package level connection managers to execute the SSIS package.
-  final Map<String, Map<String, SSISExecutionParameterResponse>>? packageConnectionManagers;
+  final pulumi.Input<Map<String, Map<String, SSISExecutionParameterResponse>>>? packageConnectionManagers;
   /// SSIS package location.
-  final SSISPackageLocationResponse packageLocation;
+  final pulumi.Input<SSISPackageLocationResponse> packageLocation;
   /// The package level parameters to execute the SSIS package.
-  final Map<String, SSISExecutionParameterResponse>? packageParameters;
+  final pulumi.Input<Map<String, SSISExecutionParameterResponse>>? packageParameters;
   /// Activity policy.
-  final ActivityPolicyResponse? policy;
+  final pulumi.Input<ActivityPolicyResponse>? policy;
   /// The project level connection managers to execute the SSIS package.
-  final Map<String, Map<String, SSISExecutionParameterResponse>>? projectConnectionManagers;
+  final pulumi.Input<Map<String, Map<String, SSISExecutionParameterResponse>>>? projectConnectionManagers;
   /// The project level parameters to execute the SSIS package.
-  final Map<String, SSISExecutionParameterResponse>? projectParameters;
+  final pulumi.Input<Map<String, SSISExecutionParameterResponse>>? projectParameters;
   /// The property overrides to execute the SSIS package.
-  final Map<String, SSISPropertyOverrideResponse>? propertyOverrides;
+  final pulumi.Input<Map<String, SSISPropertyOverrideResponse>>? propertyOverrides;
   /// Specifies the runtime to execute SSIS package. The value should be "x86" or "x64". Type: string (or Expression with resultType string).
-  final dynamic runtime;
+  final pulumi.Input<dynamic>? runtime;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Type of activity.
   /// Expected value is 'ExecuteSSISPackage'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserPropertyResponse>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
 
   /// Creates a new [ExecuteSSISPackageActivityResponse].
   /// [connectVia] The integration runtime reference.
@@ -106,53 +106,53 @@ class ExecuteSSISPackageActivityResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectVia': connectVia.toMap(),
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'connectVia': pulumi.Input.mapInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'environmentPath': ?environmentPath,
-      'executionCredential': ?executionCredential == null ? null : executionCredential!.toMap(),
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
-      'logLocation': ?logLocation == null ? null : logLocation!.toMap(),
+      'executionCredential': ?pulumi.Input.mapOptionalInputValue<SSISExecutionCredentialResponse, Map<String, dynamic>>(executionCredential, (value) => value.toMap()),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'logLocation': ?pulumi.Input.mapOptionalInputValue<SSISLogLocationResponse, Map<String, dynamic>>(logLocation, (value) => value.toMap()),
       'loggingLevel': ?loggingLevel,
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'packageConnectionManagers': ?packageConnectionManagers == null ? null : pulumi.Input.encodeMapValues<Map<String, SSISExecutionParameterResponse>, Map<String, Map<String, dynamic>>>(packageConnectionManagers!, (value) => pulumi.Input.encodeMapValues<SSISExecutionParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'packageLocation': packageLocation.toMap(),
-      'packageParameters': ?packageParameters == null ? null : pulumi.Input.encodeMapValues<SSISExecutionParameterResponse, Map<String, dynamic>>(packageParameters!, (value) => value.toMap()),
-      'policy': ?policy == null ? null : policy!.toMap(),
-      'projectConnectionManagers': ?projectConnectionManagers == null ? null : pulumi.Input.encodeMapValues<Map<String, SSISExecutionParameterResponse>, Map<String, Map<String, dynamic>>>(projectConnectionManagers!, (value) => pulumi.Input.encodeMapValues<SSISExecutionParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'projectParameters': ?projectParameters == null ? null : pulumi.Input.encodeMapValues<SSISExecutionParameterResponse, Map<String, dynamic>>(projectParameters!, (value) => value.toMap()),
-      'propertyOverrides': ?propertyOverrides == null ? null : pulumi.Input.encodeMapValues<SSISPropertyOverrideResponse, Map<String, dynamic>>(propertyOverrides!, (value) => value.toMap()),
+      'packageConnectionManagers': ?pulumi.Input.mapOptionalInputValue<Map<String, Map<String, SSISExecutionParameterResponse>>, Map<String, Map<String, Map<String, dynamic>>>>(packageConnectionManagers, (value) => pulumi.Input.encodeMapValues<Map<String, SSISExecutionParameterResponse>, Map<String, Map<String, dynamic>>>(value, (value) => pulumi.Input.encodeMapValues<SSISExecutionParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap()))),
+      'packageLocation': pulumi.Input.mapInputValue<SSISPackageLocationResponse, Map<String, dynamic>>(packageLocation, (value) => value.toMap()),
+      'packageParameters': ?pulumi.Input.mapOptionalInputValue<Map<String, SSISExecutionParameterResponse>, Map<String, Map<String, dynamic>>>(packageParameters, (value) => pulumi.Input.encodeMapValues<SSISExecutionParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'projectConnectionManagers': ?pulumi.Input.mapOptionalInputValue<Map<String, Map<String, SSISExecutionParameterResponse>>, Map<String, Map<String, Map<String, dynamic>>>>(projectConnectionManagers, (value) => pulumi.Input.encodeMapValues<Map<String, SSISExecutionParameterResponse>, Map<String, Map<String, dynamic>>>(value, (value) => pulumi.Input.encodeMapValues<SSISExecutionParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap()))),
+      'projectParameters': ?pulumi.Input.mapOptionalInputValue<Map<String, SSISExecutionParameterResponse>, Map<String, Map<String, dynamic>>>(projectParameters, (value) => pulumi.Input.encodeMapValues<SSISExecutionParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'propertyOverrides': ?pulumi.Input.mapOptionalInputValue<Map<String, SSISPropertyOverrideResponse>, Map<String, Map<String, dynamic>>>(propertyOverrides, (value) => pulumi.Input.encodeMapValues<SSISPropertyOverrideResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'runtime': ?runtime,
       'state': ?state,
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserPropertyResponse>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExecuteSSISPackageActivityResponse.fromMap(Map<String, dynamic> map) {
     return ExecuteSSISPackageActivityResponse(
-      connectVia: IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      environmentPath: map['environmentPath'] == null ? null : map['environmentPath'],
-      executionCredential: map['executionCredential'] == null ? null : SSISExecutionCredentialResponse.fromMap((map['executionCredential'] as Map).cast<String, dynamic>()),
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      logLocation: map['logLocation'] == null ? null : SSISLogLocationResponse.fromMap((map['logLocation'] as Map).cast<String, dynamic>()),
-      loggingLevel: map['loggingLevel'] == null ? null : map['loggingLevel'],
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      packageConnectionManagers: map['packageConnectionManagers'] == null ? null : pulumi.Input.decodeMapValues<Map<String, SSISExecutionParameterResponse>>(map['packageConnectionManagers'], (value) => pulumi.Input.decodeMapValues<SSISExecutionParameterResponse>(value, (value) => SSISExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      packageLocation: SSISPackageLocationResponse.fromMap((map['packageLocation'] as Map).cast<String, dynamic>()),
-      packageParameters: map['packageParameters'] == null ? null : pulumi.Input.decodeMapValues<SSISExecutionParameterResponse>(map['packageParameters'], (value) => SSISExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      policy: map['policy'] == null ? null : ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      projectConnectionManagers: map['projectConnectionManagers'] == null ? null : pulumi.Input.decodeMapValues<Map<String, SSISExecutionParameterResponse>>(map['projectConnectionManagers'], (value) => pulumi.Input.decodeMapValues<SSISExecutionParameterResponse>(value, (value) => SSISExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      projectParameters: map['projectParameters'] == null ? null : pulumi.Input.decodeMapValues<SSISExecutionParameterResponse>(map['projectParameters'], (value) => SSISExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      propertyOverrides: map['propertyOverrides'] == null ? null : pulumi.Input.decodeMapValues<SSISPropertyOverrideResponse>(map['propertyOverrides'], (value) => SSISPropertyOverrideResponse.fromMap((value as Map).cast<String, dynamic>())),
-      runtime: map['runtime'] == null ? null : map['runtime'],
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      connectVia: (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentPath: map['environmentPath'] == null ? null : (map['environmentPath']).input(),
+      executionCredential: map['executionCredential'] == null ? null : (SSISExecutionCredentialResponse.fromMap((map['executionCredential'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      logLocation: map['logLocation'] == null ? null : (SSISLogLocationResponse.fromMap((map['logLocation'] as Map).cast<String, dynamic>())).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel']).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      packageConnectionManagers: map['packageConnectionManagers'] == null ? null : (pulumi.Input.decodeMapValues<Map<String, SSISExecutionParameterResponse>>(map['packageConnectionManagers'], (value) => pulumi.Input.decodeMapValues<SSISExecutionParameterResponse>(value, (value) => SSISExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      packageLocation: (SSISPackageLocationResponse.fromMap((map['packageLocation'] as Map).cast<String, dynamic>())).input(),
+      packageParameters: map['packageParameters'] == null ? null : (pulumi.Input.decodeMapValues<SSISExecutionParameterResponse>(map['packageParameters'], (value) => SSISExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      projectConnectionManagers: map['projectConnectionManagers'] == null ? null : (pulumi.Input.decodeMapValues<Map<String, SSISExecutionParameterResponse>>(map['projectConnectionManagers'], (value) => pulumi.Input.decodeMapValues<SSISExecutionParameterResponse>(value, (value) => SSISExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      projectParameters: map['projectParameters'] == null ? null : (pulumi.Input.decodeMapValues<SSISExecutionParameterResponse>(map['projectParameters'], (value) => SSISExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      propertyOverrides: map['propertyOverrides'] == null ? null : (pulumi.Input.decodeMapValues<SSISPropertyOverrideResponse>(map['propertyOverrides'], (value) => SSISPropertyOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime']).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

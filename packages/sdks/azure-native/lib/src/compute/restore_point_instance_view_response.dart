@@ -7,9 +7,9 @@ import 'instance_view_status_response.dart';
 /// The instance view of a restore point.
 class RestorePointInstanceViewResponse {
   /// The disk restore points information.
-  final List<DiskRestorePointInstanceViewResponse>? diskRestorePoints;
+  final pulumi.Input<List<DiskRestorePointInstanceViewResponse>>? diskRestorePoints;
   /// The resource status information.
-  final List<InstanceViewStatusResponse>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
 
   /// Creates a new [RestorePointInstanceViewResponse].
   /// [diskRestorePoints] The disk restore points information.
@@ -21,15 +21,15 @@ class RestorePointInstanceViewResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskRestorePoints': ?diskRestorePoints == null ? null : pulumi.Input.encodeList<DiskRestorePointInstanceViewResponse, Map<String, dynamic>>(diskRestorePoints!, (value) => value.toMap()),
-      'statuses': ?statuses == null ? null : pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(statuses!, (value) => value.toMap()),
+      'diskRestorePoints': ?pulumi.Input.mapOptionalInputValue<List<DiskRestorePointInstanceViewResponse>, List<Map<String, dynamic>>>(diskRestorePoints, (value) => pulumi.Input.encodeList<DiskRestorePointInstanceViewResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RestorePointInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointInstanceViewResponse(
-      diskRestorePoints: map['diskRestorePoints'] == null ? null : pulumi.Input.decodeList<DiskRestorePointInstanceViewResponse>(map['diskRestorePoints'], (value) => DiskRestorePointInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>())),
-      statuses: map['statuses'] == null ? null : pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      diskRestorePoints: map['diskRestorePoints'] == null ? null : (pulumi.Input.decodeList<DiskRestorePointInstanceViewResponse>(map['diskRestorePoints'], (value) => DiskRestorePointInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

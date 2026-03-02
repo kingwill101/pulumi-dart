@@ -25,17 +25,12 @@ class GetPublicIpAddressPoolCidrBlocksArgs {
   /// [publicIpAddressPoolId] The ID of the Vpc Public IP address pool.
   /// [status] The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
   GetPublicIpAddressPoolCidrBlocksArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> publicIpAddressPoolId,
-    pulumi.Output<String>? status,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      publicIpAddressPoolId = pulumi.Input.asInput<String>(publicIpAddressPoolId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.cidrBlock,
+    this.ids,
+    this.outputFile,
+    required this.publicIpAddressPoolId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetPublicIpAddressPoolCidrBlocksArgs {
 
   factory GetPublicIpAddressPoolCidrBlocksArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIpAddressPoolCidrBlocksArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      publicIpAddressPoolId: pulumi.Output.create<String>(map['publicIpAddressPoolId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      publicIpAddressPoolId: (map['publicIpAddressPoolId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

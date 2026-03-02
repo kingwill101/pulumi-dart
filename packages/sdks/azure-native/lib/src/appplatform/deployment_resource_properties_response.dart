@@ -8,17 +8,17 @@ import 'deployment_settings_response.dart';
 /// Deployment resource properties payload
 class DeploymentResourcePropertiesResponse {
   /// Indicates whether the Deployment is active
-  final bool? active;
+  final pulumi.Input<bool>? active;
   /// Deployment settings of the Deployment
-  final DeploymentSettingsResponse? deploymentSettings;
+  final pulumi.Input<DeploymentSettingsResponse>? deploymentSettings;
   /// Collection of instances belong to the Deployment
-  final List<DeploymentInstanceResponse> instances;
+  final pulumi.Input<List<DeploymentInstanceResponse>> instances;
   /// Provisioning state of the Deployment
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Uploaded source information of the deployment.
-  final BuildResultUserSourceInfoResponse? source;
+  final pulumi.Input<BuildResultUserSourceInfoResponse>? source;
   /// Status of the Deployment
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [DeploymentResourcePropertiesResponse].
   /// [active] Indicates whether the Deployment is active
@@ -39,22 +39,22 @@ class DeploymentResourcePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'active': ?active,
-      'deploymentSettings': ?deploymentSettings == null ? null : deploymentSettings!.toMap(),
-      'instances': pulumi.Input.encodeList<DeploymentInstanceResponse, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'deploymentSettings': ?pulumi.Input.mapOptionalInputValue<DeploymentSettingsResponse, Map<String, dynamic>>(deploymentSettings, (value) => value.toMap()),
+      'instances': pulumi.Input.mapInputValue<List<DeploymentInstanceResponse>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<DeploymentInstanceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
-      'source': ?source == null ? null : source!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<BuildResultUserSourceInfoResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
       'status': status,
     };
   }
 
   factory DeploymentResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentResourcePropertiesResponse(
-      active: map['active'] == null ? null : map['active'] as bool,
-      deploymentSettings: map['deploymentSettings'] == null ? null : DeploymentSettingsResponse.fromMap((map['deploymentSettings'] as Map).cast<String, dynamic>()),
-      instances: pulumi.Input.decodeList<DeploymentInstanceResponse>(map['instances'], (value) => DeploymentInstanceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      source: map['source'] == null ? null : BuildResultUserSourceInfoResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      deploymentSettings: map['deploymentSettings'] == null ? null : (DeploymentSettingsResponse.fromMap((map['deploymentSettings'] as Map).cast<String, dynamic>())).input(),
+      instances: (pulumi.Input.decodeList<DeploymentInstanceResponse>(map['instances'], (value) => DeploymentInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      source: map['source'] == null ? null : (BuildResultUserSourceInfoResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

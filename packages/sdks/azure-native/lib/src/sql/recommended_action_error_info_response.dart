@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains error information for an Azure SQL Database, Server or Elastic Pool Recommended Action.
 class RecommendedActionErrorInfoResponse {
   /// Gets the reason why the recommended action was put to error state. e.g., DatabaseHasQdsOff, IndexAlreadyExists
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// Gets whether the error could be ignored and recommended action could be retried. Possible values are: Yes/No
-  final String isRetryable;
+  final pulumi.Input<String> isRetryable;
 
   /// Creates a new [RecommendedActionErrorInfoResponse].
   /// [errorCode] Gets the reason why the recommended action was put to error state. e.g., DatabaseHasQdsOff, IndexAlreadyExists
@@ -25,8 +26,8 @@ class RecommendedActionErrorInfoResponse {
 
   factory RecommendedActionErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return RecommendedActionErrorInfoResponse(
-      errorCode: map['errorCode'] as String,
-      isRetryable: map['isRetryable'] as String,
+      errorCode: (map['errorCode'] as String).input(),
+      isRetryable: (map['isRetryable'] as String).input(),
     );
   }
 }

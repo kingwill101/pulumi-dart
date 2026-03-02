@@ -14,11 +14,9 @@ class GetExternalVpnGatewayComputeV1Args {
   /// [externalVpnGateway] Required.
   /// [project] Optional.
   GetExternalVpnGatewayComputeV1Args({
-    required pulumi.Output<String> externalVpnGateway,
-    pulumi.Output<String>? project,
-  }) :
-      externalVpnGateway = pulumi.Input.asInput<String>(externalVpnGateway),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.externalVpnGateway,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetExternalVpnGatewayComputeV1Args {
 
   factory GetExternalVpnGatewayComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetExternalVpnGatewayComputeV1Args(
-      externalVpnGateway: pulumi.Output.create<String>(map['externalVpnGateway'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      externalVpnGateway: (map['externalVpnGateway'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

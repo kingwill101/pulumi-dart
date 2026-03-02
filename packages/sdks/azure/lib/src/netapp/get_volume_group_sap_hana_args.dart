@@ -19,13 +19,10 @@ class GetVolumeGroupSapHanaArgs {
   /// [name] The name of this Application Volume Group for SAP HANA application.
   /// [resourceGroupName] The name of the Resource Group where the Application Volume Group exists.
   GetVolumeGroupSapHanaArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVolumeGroupSapHanaArgs {
 
   factory GetVolumeGroupSapHanaArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupSapHanaArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

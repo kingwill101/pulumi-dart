@@ -28,19 +28,13 @@ class IntegrationAccountSchemaArgs {
   /// [name] The name which should be used for this Logic App Integration Account Schema. Changing this forces a new Logic App Integration Account Schema to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Schema should exist. Changing this forces a new Logic App Integration Account Schema to be created.
   IntegrationAccountSchemaArgs({
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? fileName,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? metadata,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      content = pulumi.Input.asInput<String>(content),
-      fileName = pulumi.Input.asOptionalInput<String>(fileName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      metadata = pulumi.Input.asOptionalInput<String>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.content,
+    this.fileName,
+    required this.integrationAccountName,
+    this.metadata,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class IntegrationAccountSchemaArgs {
 
   factory IntegrationAccountSchemaArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSchemaArgs(
-      content: pulumi.Output.create<String>(map['content'] as String),
-      fileName: map['fileName'] == null ? null : pulumi.Output.create<String>(map['fileName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<String>(map['metadata'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      content: (map['content'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

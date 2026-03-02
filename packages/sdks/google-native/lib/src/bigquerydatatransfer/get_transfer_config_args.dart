@@ -16,13 +16,10 @@ class GetTransferConfigArgs {
   /// [project] Optional.
   /// [transferConfigId] Required.
   GetTransferConfigArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> transferConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      transferConfigId = pulumi.Input.asInput<String>(transferConfigId);
+    required this.location,
+    this.project,
+    required this.transferConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTransferConfigArgs {
 
   factory GetTransferConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetTransferConfigArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      transferConfigId: pulumi.Output.create<String>(map['transferConfigId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      transferConfigId: (map['transferConfigId'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetTenantIamPolicyArgs {
   /// [project] Optional.
   /// [tenantId] Required.
   GetTenantIamPolicyArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tenantId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    this.project,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetTenantIamPolicyArgs {
 
   factory GetTenantIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTenantIamPolicyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

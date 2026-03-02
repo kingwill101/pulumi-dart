@@ -19,13 +19,10 @@ class GetTableServicePropertiesArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [tableServiceName] The name of the Table Service within the specified storage account. Table Service Name must be 'default'
   GetTableServicePropertiesArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tableServiceName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableServiceName = pulumi.Input.asInput<String>(tableServiceName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.tableServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTableServicePropertiesArgs {
 
   factory GetTableServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return GetTableServicePropertiesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableServiceName: pulumi.Output.create<String>(map['tableServiceName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableServiceName: (map['tableServiceName'] as String).input(),
     );
   }
 }

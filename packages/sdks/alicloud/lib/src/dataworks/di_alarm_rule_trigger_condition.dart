@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiAlarmRuleTriggerCondition {
   /// It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
-  final List<String>? ddlReportTags;
+  final pulumi.Input<List<String>>? ddlReportTags;
   /// Alarm calculation time interval, unit minute
-  final int? duration;
+  final pulumi.Input<int>? duration;
   /// Severity, optional enumeration value:
   ///
   /// Warning
   ///
   /// Critical
-  final String? severity;
+  final pulumi.Input<String>? severity;
   /// Alarm threshold.
   ///
   /// Task status alarm: no need to fill in the threshold.
@@ -19,7 +20,7 @@ class DiAlarmRuleTriggerCondition {
   /// failover alarm: The threshold is the number of failover alarms.
   ///
   /// Task Delay Alarm: The threshold is the delay duration, in seconds.
-  final int? threshold;
+  final pulumi.Input<int>? threshold;
 
   /// Creates a new [DiAlarmRuleTriggerCondition].
   /// [ddlReportTags] It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
@@ -44,10 +45,10 @@ class DiAlarmRuleTriggerCondition {
 
   factory DiAlarmRuleTriggerCondition.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleTriggerCondition(
-      ddlReportTags: map['ddlReportTags'] == null ? null : (map['ddlReportTags'] as List).cast<String>(),
-      duration: map['duration'] == null ? null : map['duration'] as int,
-      severity: map['severity'] == null ? null : map['severity'] as String,
-      threshold: map['threshold'] == null ? null : map['threshold'] as int,
+      ddlReportTags: map['ddlReportTags'] == null ? null : ((map['ddlReportTags'] as List).cast<String>()).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
     );
   }
 }

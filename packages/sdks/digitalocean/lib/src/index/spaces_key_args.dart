@@ -17,11 +17,9 @@ class SpacesKeyArgs {
   /// [grants] A grant for the key (documented below).
   /// [name] The name of the key
   SpacesKeyArgs({
-    pulumi.Output<List<SpacesKeyGrant>>? grants,
-    pulumi.Output<String>? name,
-  }) :
-      grants = pulumi.Input.asOptionalInput<List<SpacesKeyGrant>>(grants),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.grants,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class SpacesKeyArgs {
 
   factory SpacesKeyArgs.fromMap(Map<String, dynamic> map) {
     return SpacesKeyArgs(
-      grants: map['grants'] == null ? null : pulumi.Output.create<List<SpacesKeyGrant>>(pulumi.Input.decodeList<SpacesKeyGrant>(map['grants'], (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<SpacesKeyGrant>(map['grants'], (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

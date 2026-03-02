@@ -19,13 +19,10 @@ class GetCommitmentPlanAssociationArgs {
   /// [commitmentPlanName] The name of the commitmentPlan associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCommitmentPlanAssociationArgs({
-    required pulumi.Output<String> commitmentPlanAssociationName,
-    required pulumi.Output<String> commitmentPlanName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      commitmentPlanAssociationName = pulumi.Input.asInput<String>(commitmentPlanAssociationName),
-      commitmentPlanName = pulumi.Input.asInput<String>(commitmentPlanName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.commitmentPlanAssociationName,
+    required this.commitmentPlanName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCommitmentPlanAssociationArgs {
 
   factory GetCommitmentPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetCommitmentPlanAssociationArgs(
-      commitmentPlanAssociationName: pulumi.Output.create<String>(map['commitmentPlanAssociationName'] as String),
-      commitmentPlanName: pulumi.Output.create<String>(map['commitmentPlanName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      commitmentPlanAssociationName: (map['commitmentPlanAssociationName'] as String).input(),
+      commitmentPlanName: (map['commitmentPlanName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

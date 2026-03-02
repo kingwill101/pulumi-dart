@@ -38,23 +38,15 @@ class InstanceFailoverGroupArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [secondaryType] Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
   InstanceFailoverGroupArgs({
-    pulumi.Output<String>? failoverGroupName,
-    required pulumi.Output<String> locationName,
-    required pulumi.Output<List<ManagedInstancePairInfo>> managedInstancePairs,
-    required pulumi.Output<List<PartnerRegionInfo>> partnerRegions,
-    pulumi.Output<InstanceFailoverGroupReadOnlyEndpoint>? readOnlyEndpoint,
-    required pulumi.Output<InstanceFailoverGroupReadWriteEndpoint> readWriteEndpoint,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? secondaryType,
-  }) :
-      failoverGroupName = pulumi.Input.asOptionalInput<String>(failoverGroupName),
-      locationName = pulumi.Input.asInput<String>(locationName),
-      managedInstancePairs = pulumi.Input.asInput<List<ManagedInstancePairInfo>>(managedInstancePairs),
-      partnerRegions = pulumi.Input.asInput<List<PartnerRegionInfo>>(partnerRegions),
-      readOnlyEndpoint = pulumi.Input.asOptionalInput<InstanceFailoverGroupReadOnlyEndpoint>(readOnlyEndpoint),
-      readWriteEndpoint = pulumi.Input.asInput<InstanceFailoverGroupReadWriteEndpoint>(readWriteEndpoint),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secondaryType = pulumi.Input.asOptionalInput<String>(secondaryType);
+    this.failoverGroupName,
+    required this.locationName,
+    required this.managedInstancePairs,
+    required this.partnerRegions,
+    this.readOnlyEndpoint,
+    required this.readWriteEndpoint,
+    required this.resourceGroupName,
+    this.secondaryType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class InstanceFailoverGroupArgs {
 
   factory InstanceFailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return InstanceFailoverGroupArgs(
-      failoverGroupName: map['failoverGroupName'] == null ? null : pulumi.Output.create<String>(map['failoverGroupName'] as String),
-      locationName: pulumi.Output.create<String>(map['locationName'] as String),
-      managedInstancePairs: pulumi.Output.create<List<ManagedInstancePairInfo>>(pulumi.Input.decodeList<ManagedInstancePairInfo>(map['managedInstancePairs'], (value) => ManagedInstancePairInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      partnerRegions: pulumi.Output.create<List<PartnerRegionInfo>>(pulumi.Input.decodeList<PartnerRegionInfo>(map['partnerRegions'], (value) => PartnerRegionInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : pulumi.Output.create<InstanceFailoverGroupReadOnlyEndpoint>(InstanceFailoverGroupReadOnlyEndpoint.fromMap((map['readOnlyEndpoint'] as Map).cast<String, dynamic>())),
-      readWriteEndpoint: pulumi.Output.create<InstanceFailoverGroupReadWriteEndpoint>(InstanceFailoverGroupReadWriteEndpoint.fromMap((map['readWriteEndpoint'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryType: map['secondaryType'] == null ? null : pulumi.Output.create<String>(map['secondaryType'] as String),
+      failoverGroupName: map['failoverGroupName'] == null ? null : (map['failoverGroupName'] as String).input(),
+      locationName: (map['locationName'] as String).input(),
+      managedInstancePairs: (pulumi.Input.decodeList<ManagedInstancePairInfo>(map['managedInstancePairs'], (value) => ManagedInstancePairInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partnerRegions: (pulumi.Input.decodeList<PartnerRegionInfo>(map['partnerRegions'], (value) => PartnerRegionInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : (InstanceFailoverGroupReadOnlyEndpoint.fromMap((map['readOnlyEndpoint'] as Map).cast<String, dynamic>())).input(),
+      readWriteEndpoint: (InstanceFailoverGroupReadWriteEndpoint.fromMap((map['readWriteEndpoint'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secondaryType: map['secondaryType'] == null ? null : (map['secondaryType'] as String).input(),
     );
   }
 }

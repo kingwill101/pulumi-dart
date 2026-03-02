@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PluginConfigTemplateAdditionalConfigTemplateEnumOption {
   /// Description of the option.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Display name of the option.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Id of the option.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [PluginConfigTemplateAdditionalConfigTemplateEnumOption].
   /// [description] Description of the option.
@@ -29,9 +30,9 @@ class PluginConfigTemplateAdditionalConfigTemplateEnumOption {
 
   factory PluginConfigTemplateAdditionalConfigTemplateEnumOption.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplateAdditionalConfigTemplateEnumOption(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

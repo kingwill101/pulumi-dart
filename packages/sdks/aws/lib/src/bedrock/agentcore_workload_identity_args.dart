@@ -21,13 +21,10 @@ class AgentcoreWorkloadIdentityArgs {
   /// [name] Name of the workload identity. Must be 3-255 characters and contain only alphanumeric characters, hyphens, periods, and underscores.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AgentcoreWorkloadIdentityArgs({
-    pulumi.Output<List<String>>? allowedResourceOauth2ReturnUrls,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      allowedResourceOauth2ReturnUrls = pulumi.Input.asOptionalInput<List<String>>(allowedResourceOauth2ReturnUrls),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.allowedResourceOauth2ReturnUrls,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class AgentcoreWorkloadIdentityArgs {
 
   factory AgentcoreWorkloadIdentityArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreWorkloadIdentityArgs(
-      allowedResourceOauth2ReturnUrls: map['allowedResourceOauth2ReturnUrls'] == null ? null : pulumi.Output.create<List<String>>((map['allowedResourceOauth2ReturnUrls'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      allowedResourceOauth2ReturnUrls: map['allowedResourceOauth2ReturnUrls'] == null ? null : ((map['allowedResourceOauth2ReturnUrls'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

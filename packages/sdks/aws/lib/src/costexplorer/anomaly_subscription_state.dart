@@ -36,25 +36,16 @@ class AnomalySubscriptionState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [thresholdExpression] An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
   AnomalySubscriptionState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? frequency,
-    pulumi.Output<List<String>>? monitorArnLists,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<AnomalySubscriptionSubscriber>>? subscribers,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<AnomalySubscriptionThresholdExpression>? thresholdExpression,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      frequency = pulumi.Input.asOptionalInput<String>(frequency),
-      monitorArnLists = pulumi.Input.asOptionalInput<List<String>>(monitorArnLists),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      subscribers = pulumi.Input.asOptionalInput<List<AnomalySubscriptionSubscriber>>(subscribers),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      thresholdExpression = pulumi.Input.asOptionalInput<AnomalySubscriptionThresholdExpression>(thresholdExpression);
+    this.accountId,
+    this.arn,
+    this.frequency,
+    this.monitorArnLists,
+    this.name,
+    this.subscribers,
+    this.tags,
+    this.tagsAll,
+    this.thresholdExpression,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class AnomalySubscriptionState {
 
   factory AnomalySubscriptionState.fromMap(Map<String, dynamic> map) {
     return AnomalySubscriptionState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      frequency: map['frequency'] == null ? null : pulumi.Output.create<String>(map['frequency'] as String),
-      monitorArnLists: map['monitorArnLists'] == null ? null : pulumi.Output.create<List<String>>((map['monitorArnLists'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      subscribers: map['subscribers'] == null ? null : pulumi.Output.create<List<AnomalySubscriptionSubscriber>>(pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(map['subscribers'], (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      thresholdExpression: map['thresholdExpression'] == null ? null : pulumi.Output.create<AnomalySubscriptionThresholdExpression>(AnomalySubscriptionThresholdExpression.fromMap((map['thresholdExpression'] as Map).cast<String, dynamic>())),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      monitorArnLists: map['monitorArnLists'] == null ? null : ((map['monitorArnLists'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(map['subscribers'], (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      thresholdExpression: map['thresholdExpression'] == null ? null : (AnomalySubscriptionThresholdExpression.fromMap((map['thresholdExpression'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

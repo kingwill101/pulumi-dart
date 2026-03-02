@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDelegatedServicesDelegatedService {
   /// The date that the account became a delegated administrator for this service.
-  final String delegationEnabledDate;
+  final pulumi.Input<String> delegationEnabledDate;
   /// The name of an AWS service that can request an operation for the specified service.
-  final String servicePrincipal;
+  final pulumi.Input<String> servicePrincipal;
 
   /// Creates a new [GetDelegatedServicesDelegatedService].
   /// [delegationEnabledDate] The date that the account became a delegated administrator for this service.
@@ -24,8 +25,8 @@ class GetDelegatedServicesDelegatedService {
 
   factory GetDelegatedServicesDelegatedService.fromMap(Map<String, dynamic> map) {
     return GetDelegatedServicesDelegatedService(
-      delegationEnabledDate: map['delegationEnabledDate'] as String,
-      servicePrincipal: map['servicePrincipal'] as String,
+      delegationEnabledDate: (map['delegationEnabledDate'] as String).input(),
+      servicePrincipal: (map['servicePrincipal'] as String).input(),
     );
   }
 }

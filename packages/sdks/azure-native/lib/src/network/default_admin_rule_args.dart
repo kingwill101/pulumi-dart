@@ -32,21 +32,14 @@ class DefaultAdminRuleArgs {
   /// [ruleCollectionName] The name of the network manager security Configuration rule collection.
   /// [ruleName] The name of the rule.
   DefaultAdminRuleArgs({
-    required pulumi.Output<String> configurationName,
-    pulumi.Output<String>? flag,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleCollectionName,
-    pulumi.Output<String>? ruleName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      flag = pulumi.Input.asOptionalInput<String>(flag),
-      kind = pulumi.Input.asInput<String>(kind),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollectionName = pulumi.Input.asInput<String>(ruleCollectionName),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName);
+    required this.configurationName,
+    this.flag,
+    required this.kind,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    required this.ruleCollectionName,
+    this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DefaultAdminRuleArgs {
 
   factory DefaultAdminRuleArgs.fromMap(Map<String, dynamic> map) {
     return DefaultAdminRuleArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      flag: map['flag'] == null ? null : pulumi.Output.create<String>(map['flag'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollectionName: pulumi.Output.create<String>(map['ruleCollectionName'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      flag: map['flag'] == null ? null : (map['flag'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollectionName: (map['ruleCollectionName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

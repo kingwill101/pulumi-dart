@@ -7,11 +7,11 @@ import 'storage_account_details_response.dart';
 /// Details for each region the registry is in
 class RegistryRegionArmDetailsResponse {
   /// List of ACR accounts
-  final List<AcrDetailsResponse>? acrDetails;
+  final pulumi.Input<List<AcrDetailsResponse>>? acrDetails;
   /// The location where the registry exists
-  final String? location;
+  final pulumi.Input<String>? location;
   /// List of storage accounts
-  final List<StorageAccountDetailsResponse>? storageAccountDetails;
+  final pulumi.Input<List<StorageAccountDetailsResponse>>? storageAccountDetails;
 
   /// Creates a new [RegistryRegionArmDetailsResponse].
   /// [acrDetails] List of ACR accounts
@@ -25,17 +25,17 @@ class RegistryRegionArmDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acrDetails': ?acrDetails == null ? null : pulumi.Input.encodeList<AcrDetailsResponse, Map<String, dynamic>>(acrDetails!, (value) => value.toMap()),
+      'acrDetails': ?pulumi.Input.mapOptionalInputValue<List<AcrDetailsResponse>, List<Map<String, dynamic>>>(acrDetails, (value) => pulumi.Input.encodeList<AcrDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
-      'storageAccountDetails': ?storageAccountDetails == null ? null : pulumi.Input.encodeList<StorageAccountDetailsResponse, Map<String, dynamic>>(storageAccountDetails!, (value) => value.toMap()),
+      'storageAccountDetails': ?pulumi.Input.mapOptionalInputValue<List<StorageAccountDetailsResponse>, List<Map<String, dynamic>>>(storageAccountDetails, (value) => pulumi.Input.encodeList<StorageAccountDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RegistryRegionArmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RegistryRegionArmDetailsResponse(
-      acrDetails: map['acrDetails'] == null ? null : pulumi.Input.decodeList<AcrDetailsResponse>(map['acrDetails'], (value) => AcrDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      storageAccountDetails: map['storageAccountDetails'] == null ? null : pulumi.Input.decodeList<StorageAccountDetailsResponse>(map['storageAccountDetails'], (value) => StorageAccountDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      acrDetails: map['acrDetails'] == null ? null : (pulumi.Input.decodeList<AcrDetailsResponse>(map['acrDetails'], (value) => AcrDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      storageAccountDetails: map['storageAccountDetails'] == null ? null : (pulumi.Input.decodeList<StorageAccountDetailsResponse>(map['storageAccountDetails'], (value) => StorageAccountDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

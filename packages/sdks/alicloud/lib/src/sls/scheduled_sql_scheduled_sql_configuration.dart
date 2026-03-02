@@ -1,41 +1,42 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledSqlScheduledSqlConfiguration {
   /// Write mode.
-  final String? dataFormat;
+  final pulumi.Input<String>? dataFormat;
   /// The destination endpoint.
-  final String? destEndpoint;
+  final pulumi.Input<String>? destEndpoint;
   /// The destination Logstore.
-  final String? destLogstore;
+  final pulumi.Input<String>? destLogstore;
   /// The destination project.
-  final String? destProject;
+  final pulumi.Input<String>? destProject;
   /// Destination write role ARN.
-  final String? destRoleArn;
+  final pulumi.Input<String>? destRoleArn;
   /// The start time of the schedule.
-  final int? fromTime;
+  final pulumi.Input<int>? fromTime;
   /// SQL time window - start.
-  final String? fromTimeExpr;
+  final pulumi.Input<String>? fromTimeExpr;
   /// Maximum number of retries.
-  final int? maxRetries;
+  final pulumi.Input<int>? maxRetries;
   /// SQL timeout.
-  final int? maxRunTimeInSeconds;
+  final pulumi.Input<int>? maxRunTimeInSeconds;
   /// Parameter configuration.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// Resource pool.
-  final String? resourcePool;
+  final pulumi.Input<String>? resourcePool;
   /// Source read role ARN.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
   /// SQL statement.
-  final String? script;
+  final pulumi.Input<String>? script;
   /// The source Logstore.
-  final String? sourceLogstore;
+  final pulumi.Input<String>? sourceLogstore;
   /// SQL type.
-  final String? sqlType;
+  final pulumi.Input<String>? sqlType;
   /// Scheduled end time.
-  final int? toTime;
+  final pulumi.Input<int>? toTime;
   /// End of the SQL time window.
-  final String? toTimeExpr;
+  final pulumi.Input<String>? toTimeExpr;
 
   /// Creates a new [ScheduledSqlScheduledSqlConfiguration].
   /// [dataFormat] Write mode.
@@ -99,23 +100,23 @@ class ScheduledSqlScheduledSqlConfiguration {
 
   factory ScheduledSqlScheduledSqlConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledSqlScheduledSqlConfiguration(
-      dataFormat: map['dataFormat'] == null ? null : map['dataFormat'] as String,
-      destEndpoint: map['destEndpoint'] == null ? null : map['destEndpoint'] as String,
-      destLogstore: map['destLogstore'] == null ? null : map['destLogstore'] as String,
-      destProject: map['destProject'] == null ? null : map['destProject'] as String,
-      destRoleArn: map['destRoleArn'] == null ? null : map['destRoleArn'] as String,
-      fromTime: map['fromTime'] == null ? null : map['fromTime'] as int,
-      fromTimeExpr: map['fromTimeExpr'] == null ? null : map['fromTimeExpr'] as String,
-      maxRetries: map['maxRetries'] == null ? null : map['maxRetries'] as int,
-      maxRunTimeInSeconds: map['maxRunTimeInSeconds'] == null ? null : map['maxRunTimeInSeconds'] as int,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      resourcePool: map['resourcePool'] == null ? null : map['resourcePool'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      script: map['script'] == null ? null : map['script'] as String,
-      sourceLogstore: map['sourceLogstore'] == null ? null : map['sourceLogstore'] as String,
-      sqlType: map['sqlType'] == null ? null : map['sqlType'] as String,
-      toTime: map['toTime'] == null ? null : map['toTime'] as int,
-      toTimeExpr: map['toTimeExpr'] == null ? null : map['toTimeExpr'] as String,
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
+      destEndpoint: map['destEndpoint'] == null ? null : (map['destEndpoint'] as String).input(),
+      destLogstore: map['destLogstore'] == null ? null : (map['destLogstore'] as String).input(),
+      destProject: map['destProject'] == null ? null : (map['destProject'] as String).input(),
+      destRoleArn: map['destRoleArn'] == null ? null : (map['destRoleArn'] as String).input(),
+      fromTime: map['fromTime'] == null ? null : (map['fromTime'] as int).input(),
+      fromTimeExpr: map['fromTimeExpr'] == null ? null : (map['fromTimeExpr'] as String).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
+      maxRunTimeInSeconds: map['maxRunTimeInSeconds'] == null ? null : (map['maxRunTimeInSeconds'] as int).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      resourcePool: map['resourcePool'] == null ? null : (map['resourcePool'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      script: map['script'] == null ? null : (map['script'] as String).input(),
+      sourceLogstore: map['sourceLogstore'] == null ? null : (map['sourceLogstore'] as String).input(),
+      sqlType: map['sqlType'] == null ? null : (map['sqlType'] as String).input(),
+      toTime: map['toTime'] == null ? null : (map['toTime'] as int).input(),
+      toTimeExpr: map['toTimeExpr'] == null ? null : (map['toTimeExpr'] as String).input(),
     );
   }
 }

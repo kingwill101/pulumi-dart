@@ -6,17 +6,17 @@ import 'delegation_signer_info_response.dart';
 /// Represents the signing key.
 class SigningKeyResponse {
   /// The delegation signer information.
-  final List<DelegationSignerInfoResponse> delegationSignerInfo;
+  final pulumi.Input<List<DelegationSignerInfoResponse>> delegationSignerInfo;
   /// The flags specifies how the key is used.
-  final int flags;
+  final pulumi.Input<int> flags;
   /// The key tag value of the DNSKEY Resource Record.
-  final int keyTag;
+  final pulumi.Input<int> keyTag;
   /// The protocol value. The value is always 3.
-  final int protocol;
+  final pulumi.Input<int> protocol;
   /// The public key, represented as a Base64 encoding.
-  final String publicKey;
+  final pulumi.Input<String> publicKey;
   /// The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
-  final int securityAlgorithmType;
+  final pulumi.Input<int> securityAlgorithmType;
 
   /// Creates a new [SigningKeyResponse].
   /// [delegationSignerInfo] The delegation signer information.
@@ -36,7 +36,7 @@ class SigningKeyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'delegationSignerInfo': pulumi.Input.encodeList<DelegationSignerInfoResponse, Map<String, dynamic>>(delegationSignerInfo, (value) => value.toMap()),
+      'delegationSignerInfo': pulumi.Input.mapInputValue<List<DelegationSignerInfoResponse>, List<Map<String, dynamic>>>(delegationSignerInfo, (value) => pulumi.Input.encodeList<DelegationSignerInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'flags': flags,
       'keyTag': keyTag,
       'protocol': protocol,
@@ -47,12 +47,12 @@ class SigningKeyResponse {
 
   factory SigningKeyResponse.fromMap(Map<String, dynamic> map) {
     return SigningKeyResponse(
-      delegationSignerInfo: pulumi.Input.decodeList<DelegationSignerInfoResponse>(map['delegationSignerInfo'], (value) => DelegationSignerInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      flags: map['flags'] as int,
-      keyTag: map['keyTag'] as int,
-      protocol: map['protocol'] as int,
-      publicKey: map['publicKey'] as String,
-      securityAlgorithmType: map['securityAlgorithmType'] as int,
+      delegationSignerInfo: (pulumi.Input.decodeList<DelegationSignerInfoResponse>(map['delegationSignerInfo'], (value) => DelegationSignerInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      flags: (map['flags'] as int).input(),
+      keyTag: (map['keyTag'] as int).input(),
+      protocol: (map['protocol'] as int).input(),
+      publicKey: (map['publicKey'] as String).input(),
+      securityAlgorithmType: (map['securityAlgorithmType'] as int).input(),
     );
   }
 }

@@ -13,11 +13,9 @@ class SuspendProcessState {
   /// [process] Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   /// [scalingGroupId] ID of the scaling group.
   SuspendProcessState({
-    pulumi.Output<String>? process,
-    pulumi.Output<String>? scalingGroupId,
-  }) :
-      process = pulumi.Input.asOptionalInput<String>(process),
-      scalingGroupId = pulumi.Input.asOptionalInput<String>(scalingGroupId);
+    this.process,
+    this.scalingGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class SuspendProcessState {
 
   factory SuspendProcessState.fromMap(Map<String, dynamic> map) {
     return SuspendProcessState(
-      process: map['process'] == null ? null : pulumi.Output.create<String>(map['process'] as String),
-      scalingGroupId: map['scalingGroupId'] == null ? null : pulumi.Output.create<String>(map['scalingGroupId'] as String),
+      process: map['process'] == null ? null : (map['process'] as String).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
     );
   }
 }

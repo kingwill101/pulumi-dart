@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxVirtualMachineScaleSetGalleryApplication {
   /// Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided. Changing this forces a new resource to be created.
-  final String? configurationBlobUri;
+  final pulumi.Input<String>? configurationBlobUri;
   /// Specifies the order in which the packages have to be installed. Possible values are between `0` and `2147483647`. Defaults to `0`. Changing this forces a new resource to be created.
-  final int? order;
+  final pulumi.Input<int>? order;
   /// Specifies a passthrough value for more generic context. This field can be any valid `string` value. Changing this forces a new resource to be created.
-  final String? tag;
+  final pulumi.Input<String>? tag;
   /// Specifies the Gallery Application Version resource ID. Changing this forces a new resource to be created.
-  final String versionId;
+  final pulumi.Input<String> versionId;
 
   /// Creates a new [LinuxVirtualMachineScaleSetGalleryApplication].
   /// [configurationBlobUri] Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided. Changing this forces a new resource to be created.
@@ -34,10 +35,10 @@ class LinuxVirtualMachineScaleSetGalleryApplication {
 
   factory LinuxVirtualMachineScaleSetGalleryApplication.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetGalleryApplication(
-      configurationBlobUri: map['configurationBlobUri'] == null ? null : map['configurationBlobUri'] as String,
-      order: map['order'] == null ? null : map['order'] as int,
-      tag: map['tag'] == null ? null : map['tag'] as String,
-      versionId: map['versionId'] as String,
+      configurationBlobUri: map['configurationBlobUri'] == null ? null : (map['configurationBlobUri'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

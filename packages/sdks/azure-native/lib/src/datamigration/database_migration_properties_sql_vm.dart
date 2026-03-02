@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_configuration.dart';
 import 'offline_configuration.dart';
 import 'sql_connection_information.dart';
@@ -7,25 +8,25 @@ import 'sql_connection_information.dart';
 /// Database Migration Resource properties for SQL Virtual Machine.
 class DatabaseMigrationPropertiesSqlVm {
   /// Backup configuration info.
-  final BackupConfiguration? backupConfiguration;
+  final pulumi.Input<BackupConfiguration>? backupConfiguration;
   /// Expected value is 'SqlVm'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// ID for current migration operation.
-  final String? migrationOperationId;
+  final pulumi.Input<String>? migrationOperationId;
   /// Resource Id of the Migration Service.
-  final String? migrationService;
+  final pulumi.Input<String>? migrationService;
   /// Offline configuration.
-  final OfflineConfiguration? offlineConfiguration;
+  final pulumi.Input<OfflineConfiguration>? offlineConfiguration;
   /// Error message for migration provisioning failure, if any.
-  final String? provisioningError;
+  final pulumi.Input<String>? provisioningError;
   /// Resource Id of the target resource.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// Name of the source database.
-  final String? sourceDatabaseName;
+  final pulumi.Input<String>? sourceDatabaseName;
   /// Source SQL Server connection details.
-  final SqlConnectionInformation? sourceSqlConnection;
+  final pulumi.Input<SqlConnectionInformation>? sourceSqlConnection;
   /// Database collation to be used for the target database.
-  final String? targetDatabaseCollation;
+  final pulumi.Input<String>? targetDatabaseCollation;
 
   /// Creates a new [DatabaseMigrationPropertiesSqlVm].
   /// [backupConfiguration] Backup configuration info.
@@ -53,31 +54,31 @@ class DatabaseMigrationPropertiesSqlVm {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupConfiguration': ?backupConfiguration == null ? null : backupConfiguration!.toMap(),
+      'backupConfiguration': ?pulumi.Input.mapOptionalInputValue<BackupConfiguration, Map<String, dynamic>>(backupConfiguration, (value) => value.toMap()),
       'kind': kind,
       'migrationOperationId': ?migrationOperationId,
       'migrationService': ?migrationService,
-      'offlineConfiguration': ?offlineConfiguration == null ? null : offlineConfiguration!.toMap(),
+      'offlineConfiguration': ?pulumi.Input.mapOptionalInputValue<OfflineConfiguration, Map<String, dynamic>>(offlineConfiguration, (value) => value.toMap()),
       'provisioningError': ?provisioningError,
       'scope': ?scope,
       'sourceDatabaseName': ?sourceDatabaseName,
-      'sourceSqlConnection': ?sourceSqlConnection == null ? null : sourceSqlConnection!.toMap(),
+      'sourceSqlConnection': ?pulumi.Input.mapOptionalInputValue<SqlConnectionInformation, Map<String, dynamic>>(sourceSqlConnection, (value) => value.toMap()),
       'targetDatabaseCollation': ?targetDatabaseCollation,
     };
   }
 
   factory DatabaseMigrationPropertiesSqlVm.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationPropertiesSqlVm(
-      backupConfiguration: map['backupConfiguration'] == null ? null : BackupConfiguration.fromMap((map['backupConfiguration'] as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      migrationOperationId: map['migrationOperationId'] == null ? null : map['migrationOperationId'] as String,
-      migrationService: map['migrationService'] == null ? null : map['migrationService'] as String,
-      offlineConfiguration: map['offlineConfiguration'] == null ? null : OfflineConfiguration.fromMap((map['offlineConfiguration'] as Map).cast<String, dynamic>()),
-      provisioningError: map['provisioningError'] == null ? null : map['provisioningError'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : map['sourceDatabaseName'] as String,
-      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : SqlConnectionInformation.fromMap((map['sourceSqlConnection'] as Map).cast<String, dynamic>()),
-      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : map['targetDatabaseCollation'] as String,
+      backupConfiguration: map['backupConfiguration'] == null ? null : (BackupConfiguration.fromMap((map['backupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
+      migrationService: map['migrationService'] == null ? null : (map['migrationService'] as String).input(),
+      offlineConfiguration: map['offlineConfiguration'] == null ? null : (OfflineConfiguration.fromMap((map['offlineConfiguration'] as Map).cast<String, dynamic>())).input(),
+      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName'] as String).input(),
+      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : (SqlConnectionInformation.fromMap((map['sourceSqlConnection'] as Map).cast<String, dynamic>())).input(),
+      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : (map['targetDatabaseCollation'] as String).input(),
     );
   }
 }

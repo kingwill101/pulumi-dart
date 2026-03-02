@@ -29,19 +29,13 @@ class BotAliasArgs {
   /// [name] The name of the alias. The name is not case sensitive. Must be less than or equal to 100 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BotAliasArgs({
-    required pulumi.Output<String> botName,
-    required pulumi.Output<String> botVersion,
-    pulumi.Output<BotAliasConversationLogs>? conversationLogs,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      botName = pulumi.Input.asInput<String>(botName),
-      botVersion = pulumi.Input.asInput<String>(botVersion),
-      conversationLogs = pulumi.Input.asOptionalInput<BotAliasConversationLogs>(conversationLogs),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.botName,
+    required this.botVersion,
+    this.conversationLogs,
+    this.description,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class BotAliasArgs {
 
   factory BotAliasArgs.fromMap(Map<String, dynamic> map) {
     return BotAliasArgs(
-      botName: pulumi.Output.create<String>(map['botName'] as String),
-      botVersion: pulumi.Output.create<String>(map['botVersion'] as String),
-      conversationLogs: map['conversationLogs'] == null ? null : pulumi.Output.create<BotAliasConversationLogs>(BotAliasConversationLogs.fromMap((map['conversationLogs'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      botName: (map['botName'] as String).input(),
+      botVersion: (map['botVersion'] as String).input(),
+      conversationLogs: map['conversationLogs'] == null ? null : (BotAliasConversationLogs.fromMap((map['conversationLogs'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

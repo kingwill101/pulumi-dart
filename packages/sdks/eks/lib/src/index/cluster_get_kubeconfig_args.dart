@@ -20,11 +20,9 @@ class ClusterGetKubeconfigArgs {
   /// [profileName] AWS credential profile name to always use instead of the default AWS credential provider chain.
   /// [roleArn] Role ARN to assume instead of the default AWS credential provider chain.
   ClusterGetKubeconfigArgs({
-    pulumi.Output<String>? profileName,
-    pulumi.Output<String>? roleArn,
-  }) :
-      profileName = pulumi.Input.asOptionalInput<String>(profileName),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn);
+    this.profileName,
+    this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,8 +33,8 @@ class ClusterGetKubeconfigArgs {
 
   factory ClusterGetKubeconfigArgs.fromMap(Map<String, dynamic> map) {
     return ClusterGetKubeconfigArgs(
-      profileName: map['profileName'] == null ? null : pulumi.Output.create<String>(map['profileName'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
+      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

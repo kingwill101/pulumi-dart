@@ -16,13 +16,10 @@ class GetExecutionArgs {
   /// [historyId] Required.
   /// [project] Optional.
   GetExecutionArgs({
-    required pulumi.Output<String> executionId,
-    required pulumi.Output<String> historyId,
-    pulumi.Output<String>? project,
-  }) :
-      executionId = pulumi.Input.asInput<String>(executionId),
-      historyId = pulumi.Input.asInput<String>(historyId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.executionId,
+    required this.historyId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetExecutionArgs {
 
   factory GetExecutionArgs.fromMap(Map<String, dynamic> map) {
     return GetExecutionArgs(
-      executionId: pulumi.Output.create<String>(map['executionId'] as String),
-      historyId: pulumi.Output.create<String>(map['historyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      executionId: (map['executionId'] as String).input(),
+      historyId: (map['historyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

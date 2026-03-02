@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrafficMirrorFiltersFilter {
   /// The ID of the Traffic Mirror Filter.
-  final String id;
+  final pulumi.Input<String> id;
   /// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
-  final String status;
+  final pulumi.Input<String> status;
   /// The description of the filter.
-  final String trafficMirrorFilterDescription;
+  final pulumi.Input<String> trafficMirrorFilterDescription;
   /// The ID of the filter.
-  final String trafficMirrorFilterId;
+  final pulumi.Input<String> trafficMirrorFilterId;
   /// The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-  final String trafficMirrorFilterName;
+  final pulumi.Input<String> trafficMirrorFilterName;
 
   /// Creates a new [GetTrafficMirrorFiltersFilter].
   /// [id] The ID of the Traffic Mirror Filter.
@@ -39,11 +40,11 @@ class GetTrafficMirrorFiltersFilter {
 
   factory GetTrafficMirrorFiltersFilter.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorFiltersFilter(
-      id: map['id'] as String,
-      status: map['status'] as String,
-      trafficMirrorFilterDescription: map['trafficMirrorFilterDescription'] as String,
-      trafficMirrorFilterId: map['trafficMirrorFilterId'] as String,
-      trafficMirrorFilterName: map['trafficMirrorFilterName'] as String,
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
+      trafficMirrorFilterDescription: (map['trafficMirrorFilterDescription'] as String).input(),
+      trafficMirrorFilterId: (map['trafficMirrorFilterId'] as String).input(),
+      trafficMirrorFilterName: (map['trafficMirrorFilterName'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_features_aia.dart';
 import 'domain_features_apic.dart';
 import 'domain_features_async_teardown.dart';
@@ -29,65 +30,65 @@ import 'domain_features_xen.dart';
 
 class DomainFeatures {
   /// Controls ACPI support for the domain, allowing for power management and sleep states within the guest OS.
-  final bool? acpi;
+  final pulumi.Input<bool>? acpi;
   /// Enables or disables AIA (Advanced Interrupt Affinity) support for the domain, which optimizes interrupt handling.
-  final DomainFeaturesAia? aia;
+  final pulumi.Input<DomainFeaturesAia>? aia;
   /// Configures APIC (Advanced Programmable Interrupt Controller) support for the domain, which is essential for handling interrupts.
-  final DomainFeaturesApic? apic;
+  final pulumi.Input<DomainFeaturesApic>? apic;
   /// Configures asynchronous teardown behavior for the domain, enhancing performance during shutdown processes.
-  final DomainFeaturesAsyncTeardown? asyncTeardown;
+  final pulumi.Input<DomainFeaturesAsyncTeardown>? asyncTeardown;
   /// Defines the set of capabilities that can be enabled for the domain, influencing its operational features and constraints.
-  final DomainFeaturesCapabilities? capabilities;
+  final pulumi.Input<DomainFeaturesCapabilities>? capabilities;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesCcfAssist? ccfAssist;
+  final pulumi.Input<DomainFeaturesCcfAssist>? ccfAssist;
   /// Configures whether the domain supports CFPC features.
-  final DomainFeaturesCfpc? cfpc;
+  final pulumi.Input<DomainFeaturesCfpc>? cfpc;
   /// Configures whether the domain supports GIC (Generic Interrupt Controller) features.
-  final DomainFeaturesGic? gic;
+  final pulumi.Input<DomainFeaturesGic>? gic;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHap? hap;
+  final pulumi.Input<DomainFeaturesHap>? hap;
   /// Configures whether the domain supports Hardware Paging Translation (HPT).
-  final DomainFeaturesHpt? hpt;
+  final pulumi.Input<DomainFeaturesHpt>? hpt;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesHtm? htm;
+  final pulumi.Input<DomainFeaturesHtm>? htm;
   /// Configures the availability of Hyper-V specific features for the domain.
-  final DomainFeaturesHyperV? hyperV;
+  final pulumi.Input<DomainFeaturesHyperV>? hyperV;
   /// Configures the Instruction Based Sampling feature for the domain.
-  final DomainFeaturesIbs? ibs;
+  final pulumi.Input<DomainFeaturesIbs>? ibs;
   /// Controls the configuration of the I/O APIC feature in the domain.
-  final DomainFeaturesIoapic? ioapic;
+  final pulumi.Input<DomainFeaturesIoapic>? ioapic;
   /// Configures the availability of KVM specific features for the domain.
-  final DomainFeaturesKvm? kvm;
+  final pulumi.Input<DomainFeaturesKvm>? kvm;
   /// Controls the management of Model Specific Registers (MSRs) for the guest, allowing for low-level CPU features.
-  final DomainFeaturesMsrs? msrs;
+  final pulumi.Input<DomainFeaturesMsrs>? msrs;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesNestedHv? nestedHv;
+  final pulumi.Input<DomainFeaturesNestedHv>? nestedHv;
   /// Enables PAE (Physical Address Extension) feature, allowing the guest to support more than 4GB of RAM.
-  final bool? pae;
+  final pulumi.Input<bool>? pae;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesPmu? pmu;
+  final pulumi.Input<DomainFeaturesPmu>? pmu;
   /// Configures the private network feature, allowing for isolated network configurations within the guest.
-  final bool? privNet;
+  final pulumi.Input<bool>? privNet;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesPs2? ps2;
+  final pulumi.Input<DomainFeaturesPs2>? ps2;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesPvSpinlock? pvSpinlock;
+  final pulumi.Input<DomainFeaturesPvSpinlock>? pvSpinlock;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesRas? ras;
+  final pulumi.Input<DomainFeaturesRas>? ras;
   /// Configures Shared Bandwidth Bridge Capability (SBBC) to optimize bandwidth sharing among VMs.
-  final DomainFeaturesSbbc? sbbc;
+  final pulumi.Input<DomainFeaturesSbbc>? sbbc;
   /// Enables Secure Memory Management (SMM), providing additional security features for the guest.
-  final DomainFeaturesSmm? smm;
+  final pulumi.Input<DomainFeaturesSmm>? smm;
   /// Enables Trusted Computing Group (TCG) features for secure computing environments.
-  final DomainFeaturesTcg? tcg;
+  final pulumi.Input<DomainFeaturesTcg>? tcg;
   /// Enables Viridian features for enhanced virtualization capabilities on Windows guests.
-  final bool? viridian;
+  final pulumi.Input<bool>? viridian;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesVmCoreInfo? vmCoreInfo;
+  final pulumi.Input<DomainFeaturesVmCoreInfo>? vmCoreInfo;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final DomainFeaturesVmPort? vmPort;
+  final pulumi.Input<DomainFeaturesVmPort>? vmPort;
   /// Enables or disables features specific to Xen virtualization, controlling various aspects of guest management.
-  final DomainFeaturesXen? xen;
+  final pulumi.Input<DomainFeaturesXen>? xen;
 
   /// Creates a new [DomainFeatures].
   /// [acpi] Controls ACPI support for the domain, allowing for power management and sleep states within the guest OS.
@@ -156,70 +157,70 @@ class DomainFeatures {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acpi': ?acpi,
-      'aia': ?aia == null ? null : aia!.toMap(),
-      'apic': ?apic == null ? null : apic!.toMap(),
-      'asyncTeardown': ?asyncTeardown == null ? null : asyncTeardown!.toMap(),
-      'capabilities': ?capabilities == null ? null : capabilities!.toMap(),
-      'ccfAssist': ?ccfAssist == null ? null : ccfAssist!.toMap(),
-      'cfpc': ?cfpc == null ? null : cfpc!.toMap(),
-      'gic': ?gic == null ? null : gic!.toMap(),
-      'hap': ?hap == null ? null : hap!.toMap(),
-      'hpt': ?hpt == null ? null : hpt!.toMap(),
-      'htm': ?htm == null ? null : htm!.toMap(),
-      'hyperV': ?hyperV == null ? null : hyperV!.toMap(),
-      'ibs': ?ibs == null ? null : ibs!.toMap(),
-      'ioapic': ?ioapic == null ? null : ioapic!.toMap(),
-      'kvm': ?kvm == null ? null : kvm!.toMap(),
-      'msrs': ?msrs == null ? null : msrs!.toMap(),
-      'nestedHv': ?nestedHv == null ? null : nestedHv!.toMap(),
+      'aia': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesAia, Map<String, dynamic>>(aia, (value) => value.toMap()),
+      'apic': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesApic, Map<String, dynamic>>(apic, (value) => value.toMap()),
+      'asyncTeardown': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesAsyncTeardown, Map<String, dynamic>>(asyncTeardown, (value) => value.toMap()),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCapabilities, Map<String, dynamic>>(capabilities, (value) => value.toMap()),
+      'ccfAssist': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCcfAssist, Map<String, dynamic>>(ccfAssist, (value) => value.toMap()),
+      'cfpc': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesCfpc, Map<String, dynamic>>(cfpc, (value) => value.toMap()),
+      'gic': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesGic, Map<String, dynamic>>(gic, (value) => value.toMap()),
+      'hap': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHap, Map<String, dynamic>>(hap, (value) => value.toMap()),
+      'hpt': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHpt, Map<String, dynamic>>(hpt, (value) => value.toMap()),
+      'htm': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHtm, Map<String, dynamic>>(htm, (value) => value.toMap()),
+      'hyperV': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesHyperV, Map<String, dynamic>>(hyperV, (value) => value.toMap()),
+      'ibs': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesIbs, Map<String, dynamic>>(ibs, (value) => value.toMap()),
+      'ioapic': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesIoapic, Map<String, dynamic>>(ioapic, (value) => value.toMap()),
+      'kvm': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesKvm, Map<String, dynamic>>(kvm, (value) => value.toMap()),
+      'msrs': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesMsrs, Map<String, dynamic>>(msrs, (value) => value.toMap()),
+      'nestedHv': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesNestedHv, Map<String, dynamic>>(nestedHv, (value) => value.toMap()),
       'pae': ?pae,
-      'pmu': ?pmu == null ? null : pmu!.toMap(),
+      'pmu': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesPmu, Map<String, dynamic>>(pmu, (value) => value.toMap()),
       'privNet': ?privNet,
-      'ps2': ?ps2 == null ? null : ps2!.toMap(),
-      'pvSpinlock': ?pvSpinlock == null ? null : pvSpinlock!.toMap(),
-      'ras': ?ras == null ? null : ras!.toMap(),
-      'sbbc': ?sbbc == null ? null : sbbc!.toMap(),
-      'smm': ?smm == null ? null : smm!.toMap(),
-      'tcg': ?tcg == null ? null : tcg!.toMap(),
+      'ps2': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesPs2, Map<String, dynamic>>(ps2, (value) => value.toMap()),
+      'pvSpinlock': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesPvSpinlock, Map<String, dynamic>>(pvSpinlock, (value) => value.toMap()),
+      'ras': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesRas, Map<String, dynamic>>(ras, (value) => value.toMap()),
+      'sbbc': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesSbbc, Map<String, dynamic>>(sbbc, (value) => value.toMap()),
+      'smm': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesSmm, Map<String, dynamic>>(smm, (value) => value.toMap()),
+      'tcg': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesTcg, Map<String, dynamic>>(tcg, (value) => value.toMap()),
       'viridian': ?viridian,
-      'vmCoreInfo': ?vmCoreInfo == null ? null : vmCoreInfo!.toMap(),
-      'vmPort': ?vmPort == null ? null : vmPort!.toMap(),
-      'xen': ?xen == null ? null : xen!.toMap(),
+      'vmCoreInfo': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesVmCoreInfo, Map<String, dynamic>>(vmCoreInfo, (value) => value.toMap()),
+      'vmPort': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesVmPort, Map<String, dynamic>>(vmPort, (value) => value.toMap()),
+      'xen': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesXen, Map<String, dynamic>>(xen, (value) => value.toMap()),
     };
   }
 
   factory DomainFeatures.fromMap(Map<String, dynamic> map) {
     return DomainFeatures(
-      acpi: map['acpi'] == null ? null : map['acpi'] as bool,
-      aia: map['aia'] == null ? null : DomainFeaturesAia.fromMap((map['aia'] as Map).cast<String, dynamic>()),
-      apic: map['apic'] == null ? null : DomainFeaturesApic.fromMap((map['apic'] as Map).cast<String, dynamic>()),
-      asyncTeardown: map['asyncTeardown'] == null ? null : DomainFeaturesAsyncTeardown.fromMap((map['asyncTeardown'] as Map).cast<String, dynamic>()),
-      capabilities: map['capabilities'] == null ? null : DomainFeaturesCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>()),
-      ccfAssist: map['ccfAssist'] == null ? null : DomainFeaturesCcfAssist.fromMap((map['ccfAssist'] as Map).cast<String, dynamic>()),
-      cfpc: map['cfpc'] == null ? null : DomainFeaturesCfpc.fromMap((map['cfpc'] as Map).cast<String, dynamic>()),
-      gic: map['gic'] == null ? null : DomainFeaturesGic.fromMap((map['gic'] as Map).cast<String, dynamic>()),
-      hap: map['hap'] == null ? null : DomainFeaturesHap.fromMap((map['hap'] as Map).cast<String, dynamic>()),
-      hpt: map['hpt'] == null ? null : DomainFeaturesHpt.fromMap((map['hpt'] as Map).cast<String, dynamic>()),
-      htm: map['htm'] == null ? null : DomainFeaturesHtm.fromMap((map['htm'] as Map).cast<String, dynamic>()),
-      hyperV: map['hyperV'] == null ? null : DomainFeaturesHyperV.fromMap((map['hyperV'] as Map).cast<String, dynamic>()),
-      ibs: map['ibs'] == null ? null : DomainFeaturesIbs.fromMap((map['ibs'] as Map).cast<String, dynamic>()),
-      ioapic: map['ioapic'] == null ? null : DomainFeaturesIoapic.fromMap((map['ioapic'] as Map).cast<String, dynamic>()),
-      kvm: map['kvm'] == null ? null : DomainFeaturesKvm.fromMap((map['kvm'] as Map).cast<String, dynamic>()),
-      msrs: map['msrs'] == null ? null : DomainFeaturesMsrs.fromMap((map['msrs'] as Map).cast<String, dynamic>()),
-      nestedHv: map['nestedHv'] == null ? null : DomainFeaturesNestedHv.fromMap((map['nestedHv'] as Map).cast<String, dynamic>()),
-      pae: map['pae'] == null ? null : map['pae'] as bool,
-      pmu: map['pmu'] == null ? null : DomainFeaturesPmu.fromMap((map['pmu'] as Map).cast<String, dynamic>()),
-      privNet: map['privNet'] == null ? null : map['privNet'] as bool,
-      ps2: map['ps2'] == null ? null : DomainFeaturesPs2.fromMap((map['ps2'] as Map).cast<String, dynamic>()),
-      pvSpinlock: map['pvSpinlock'] == null ? null : DomainFeaturesPvSpinlock.fromMap((map['pvSpinlock'] as Map).cast<String, dynamic>()),
-      ras: map['ras'] == null ? null : DomainFeaturesRas.fromMap((map['ras'] as Map).cast<String, dynamic>()),
-      sbbc: map['sbbc'] == null ? null : DomainFeaturesSbbc.fromMap((map['sbbc'] as Map).cast<String, dynamic>()),
-      smm: map['smm'] == null ? null : DomainFeaturesSmm.fromMap((map['smm'] as Map).cast<String, dynamic>()),
-      tcg: map['tcg'] == null ? null : DomainFeaturesTcg.fromMap((map['tcg'] as Map).cast<String, dynamic>()),
-      viridian: map['viridian'] == null ? null : map['viridian'] as bool,
-      vmCoreInfo: map['vmCoreInfo'] == null ? null : DomainFeaturesVmCoreInfo.fromMap((map['vmCoreInfo'] as Map).cast<String, dynamic>()),
-      vmPort: map['vmPort'] == null ? null : DomainFeaturesVmPort.fromMap((map['vmPort'] as Map).cast<String, dynamic>()),
-      xen: map['xen'] == null ? null : DomainFeaturesXen.fromMap((map['xen'] as Map).cast<String, dynamic>()),
+      acpi: map['acpi'] == null ? null : (map['acpi'] as bool).input(),
+      aia: map['aia'] == null ? null : (DomainFeaturesAia.fromMap((map['aia'] as Map).cast<String, dynamic>())).input(),
+      apic: map['apic'] == null ? null : (DomainFeaturesApic.fromMap((map['apic'] as Map).cast<String, dynamic>())).input(),
+      asyncTeardown: map['asyncTeardown'] == null ? null : (DomainFeaturesAsyncTeardown.fromMap((map['asyncTeardown'] as Map).cast<String, dynamic>())).input(),
+      capabilities: map['capabilities'] == null ? null : (DomainFeaturesCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
+      ccfAssist: map['ccfAssist'] == null ? null : (DomainFeaturesCcfAssist.fromMap((map['ccfAssist'] as Map).cast<String, dynamic>())).input(),
+      cfpc: map['cfpc'] == null ? null : (DomainFeaturesCfpc.fromMap((map['cfpc'] as Map).cast<String, dynamic>())).input(),
+      gic: map['gic'] == null ? null : (DomainFeaturesGic.fromMap((map['gic'] as Map).cast<String, dynamic>())).input(),
+      hap: map['hap'] == null ? null : (DomainFeaturesHap.fromMap((map['hap'] as Map).cast<String, dynamic>())).input(),
+      hpt: map['hpt'] == null ? null : (DomainFeaturesHpt.fromMap((map['hpt'] as Map).cast<String, dynamic>())).input(),
+      htm: map['htm'] == null ? null : (DomainFeaturesHtm.fromMap((map['htm'] as Map).cast<String, dynamic>())).input(),
+      hyperV: map['hyperV'] == null ? null : (DomainFeaturesHyperV.fromMap((map['hyperV'] as Map).cast<String, dynamic>())).input(),
+      ibs: map['ibs'] == null ? null : (DomainFeaturesIbs.fromMap((map['ibs'] as Map).cast<String, dynamic>())).input(),
+      ioapic: map['ioapic'] == null ? null : (DomainFeaturesIoapic.fromMap((map['ioapic'] as Map).cast<String, dynamic>())).input(),
+      kvm: map['kvm'] == null ? null : (DomainFeaturesKvm.fromMap((map['kvm'] as Map).cast<String, dynamic>())).input(),
+      msrs: map['msrs'] == null ? null : (DomainFeaturesMsrs.fromMap((map['msrs'] as Map).cast<String, dynamic>())).input(),
+      nestedHv: map['nestedHv'] == null ? null : (DomainFeaturesNestedHv.fromMap((map['nestedHv'] as Map).cast<String, dynamic>())).input(),
+      pae: map['pae'] == null ? null : (map['pae'] as bool).input(),
+      pmu: map['pmu'] == null ? null : (DomainFeaturesPmu.fromMap((map['pmu'] as Map).cast<String, dynamic>())).input(),
+      privNet: map['privNet'] == null ? null : (map['privNet'] as bool).input(),
+      ps2: map['ps2'] == null ? null : (DomainFeaturesPs2.fromMap((map['ps2'] as Map).cast<String, dynamic>())).input(),
+      pvSpinlock: map['pvSpinlock'] == null ? null : (DomainFeaturesPvSpinlock.fromMap((map['pvSpinlock'] as Map).cast<String, dynamic>())).input(),
+      ras: map['ras'] == null ? null : (DomainFeaturesRas.fromMap((map['ras'] as Map).cast<String, dynamic>())).input(),
+      sbbc: map['sbbc'] == null ? null : (DomainFeaturesSbbc.fromMap((map['sbbc'] as Map).cast<String, dynamic>())).input(),
+      smm: map['smm'] == null ? null : (DomainFeaturesSmm.fromMap((map['smm'] as Map).cast<String, dynamic>())).input(),
+      tcg: map['tcg'] == null ? null : (DomainFeaturesTcg.fromMap((map['tcg'] as Map).cast<String, dynamic>())).input(),
+      viridian: map['viridian'] == null ? null : (map['viridian'] as bool).input(),
+      vmCoreInfo: map['vmCoreInfo'] == null ? null : (DomainFeaturesVmCoreInfo.fromMap((map['vmCoreInfo'] as Map).cast<String, dynamic>())).input(),
+      vmPort: map['vmPort'] == null ? null : (DomainFeaturesVmPort.fromMap((map['vmPort'] as Map).cast<String, dynamic>())).input(),
+      xen: map['xen'] == null ? null : (DomainFeaturesXen.fromMap((map['xen'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

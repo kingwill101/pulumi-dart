@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mesh membership properties of a managed cluster.
 class MeshMembershipProperties {
   /// The ARM resource id for the managed mesh member. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/applinks/{appLinkName}/appLinkMembers/{appLinkMemberName}'. Visit https://aka.ms/applink for more information.
-  final String managedMeshID;
+  final pulumi.Input<String> managedMeshID;
 
   /// Creates a new [MeshMembershipProperties].
   /// [managedMeshID] The ARM resource id for the managed mesh member. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/applinks/{appLinkName}/appLinkMembers/{appLinkMemberName}'. Visit https://aka.ms/applink for more information.
@@ -20,7 +21,7 @@ class MeshMembershipProperties {
 
   factory MeshMembershipProperties.fromMap(Map<String, dynamic> map) {
     return MeshMembershipProperties(
-      managedMeshID: map['managedMeshID'] as String,
+      managedMeshID: (map['managedMeshID'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetPhysicalTableMapS3SourceUploadSettings {
   /// Whether the file has a header row, or the files each have a header row.
-  final bool? containsHeader;
+  final pulumi.Input<bool>? containsHeader;
   /// Delimiter between values in the file.
-  final String? delimiter;
+  final pulumi.Input<String>? delimiter;
   /// File format. Valid values are `CSV`, `TSV`, `CLF`, `ELF`, `XLSX`, and `JSON`.
-  final String? format;
+  final pulumi.Input<String>? format;
   /// A row number to start reading data from.
-  final int? startFromRow;
+  final pulumi.Input<int>? startFromRow;
   /// Text qualifier. Valid values are `DOUBLE_QUOTE` and `SINGLE_QUOTE`.
-  final String? textQualifier;
+  final pulumi.Input<String>? textQualifier;
 
   /// Creates a new [DataSetPhysicalTableMapS3SourceUploadSettings].
   /// [containsHeader] Whether the file has a header row, or the files each have a header row.
@@ -39,11 +40,11 @@ class DataSetPhysicalTableMapS3SourceUploadSettings {
 
   factory DataSetPhysicalTableMapS3SourceUploadSettings.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMapS3SourceUploadSettings(
-      containsHeader: map['containsHeader'] == null ? null : map['containsHeader'] as bool,
-      delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
-      format: map['format'] == null ? null : map['format'] as String,
-      startFromRow: map['startFromRow'] == null ? null : map['startFromRow'] as int,
-      textQualifier: map['textQualifier'] == null ? null : map['textQualifier'] as String,
+      containsHeader: map['containsHeader'] == null ? null : (map['containsHeader'] as bool).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      startFromRow: map['startFromRow'] == null ? null : (map['startFromRow'] as int).input(),
+      textQualifier: map['textQualifier'] == null ? null : (map['textQualifier'] as String).input(),
     );
   }
 }

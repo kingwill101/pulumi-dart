@@ -46,19 +46,13 @@ class MetastoreServiceIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   MetastoreServiceIamBindingArgs({
-    pulumi.Output<MetastoreServiceIamBindingCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serviceId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<MetastoreServiceIamBindingCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.condition,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class MetastoreServiceIamBindingArgs {
 
   factory MetastoreServiceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<MetastoreServiceIamBindingCondition>(MetastoreServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      condition: map['condition'] == null ? null : (MetastoreServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

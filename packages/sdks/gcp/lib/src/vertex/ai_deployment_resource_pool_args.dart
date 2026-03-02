@@ -25,15 +25,11 @@ class AiDeploymentResourcePoolArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of deployment resource pool. eg us-central1
   AiDeploymentResourcePoolArgs({
-    pulumi.Output<AiDeploymentResourcePoolDedicatedResources>? dedicatedResources,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      dedicatedResources = pulumi.Input.asOptionalInput<AiDeploymentResourcePoolDedicatedResources>(dedicatedResources),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.dedicatedResources,
+    this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class AiDeploymentResourcePoolArgs {
 
   factory AiDeploymentResourcePoolArgs.fromMap(Map<String, dynamic> map) {
     return AiDeploymentResourcePoolArgs(
-      dedicatedResources: map['dedicatedResources'] == null ? null : pulumi.Output.create<AiDeploymentResourcePoolDedicatedResources>(AiDeploymentResourcePoolDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dedicatedResources: map['dedicatedResources'] == null ? null : (AiDeploymentResourcePoolDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

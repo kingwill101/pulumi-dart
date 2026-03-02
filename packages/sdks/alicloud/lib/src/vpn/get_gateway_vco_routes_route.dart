@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayVcoRoutesRoute {
   /// List of autonomous system numbers through which BGP routing entries pass.
-  final String asPath;
+  final pulumi.Input<String> asPath;
   /// The creation time of the VPN destination route.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Vpn Gateway Vco Routes.
-  final String id;
+  final pulumi.Input<String> id;
   /// The next hop of the destination route.
-  final String nextHop;
+  final pulumi.Input<String> nextHop;
   /// The destination network segment of the destination route.
-  final String routeDest;
+  final pulumi.Input<String> routeDest;
   /// The source CIDR block of the destination route.
-  final String source;
+  final pulumi.Input<String> source;
   /// The status of the vpn route entry. Valid values: `normal`, `published`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The id of the vpn connection.
-  final String vpnConnectionId;
+  final pulumi.Input<String> vpnConnectionId;
   /// The weight value of the destination route.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetGatewayVcoRoutesRoute].
   /// [asPath] List of autonomous system numbers through which BGP routing entries pass.
@@ -59,15 +60,15 @@ class GetGatewayVcoRoutesRoute {
 
   factory GetGatewayVcoRoutesRoute.fromMap(Map<String, dynamic> map) {
     return GetGatewayVcoRoutesRoute(
-      asPath: map['asPath'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      nextHop: map['nextHop'] as String,
-      routeDest: map['routeDest'] as String,
-      source: map['source'] as String,
-      status: map['status'] as String,
-      vpnConnectionId: map['vpnConnectionId'] as String,
-      weight: map['weight'] as int,
+      asPath: (map['asPath'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
+      routeDest: (map['routeDest'] as String).input(),
+      source: (map['source'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpnConnectionId: (map['vpnConnectionId'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

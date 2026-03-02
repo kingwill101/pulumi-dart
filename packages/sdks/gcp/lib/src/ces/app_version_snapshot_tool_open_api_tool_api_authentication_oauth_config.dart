@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
   /// (Output)
   /// The client ID from the OAuth provider.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// (Output)
   /// The name of the SecretManager secret version resource storing the
   /// client secret.
@@ -12,18 +13,18 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
   /// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-  final String? clientSecretVersion;
+  final pulumi.Input<String>? clientSecretVersion;
   /// (Output)
   /// OAuth grant types.
   /// Possible values:
   /// CLIENT_CREDENTIAL
-  final String? oauthGrantType;
+  final pulumi.Input<String>? oauthGrantType;
   /// (Output)
   /// The OAuth scopes to grant.
-  final List<String>? scopes;
+  final pulumi.Input<List<String>>? scopes;
   /// (Output)
   /// The token endpoint in the OAuth provider to exchange for an access token.
-  final String? tokenEndpoint;
+  final pulumi.Input<String>? tokenEndpoint;
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig].
   /// [clientId] (Output)
@@ -51,11 +52,11 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
 
   factory AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecretVersion: map['clientSecretVersion'] == null ? null : map['clientSecretVersion'] as String,
-      oauthGrantType: map['oauthGrantType'] == null ? null : map['oauthGrantType'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecretVersion: map['clientSecretVersion'] == null ? null : (map['clientSecretVersion'] as String).input(),
+      oauthGrantType: map['oauthGrantType'] == null ? null : (map['oauthGrantType'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
     );
   }
 }

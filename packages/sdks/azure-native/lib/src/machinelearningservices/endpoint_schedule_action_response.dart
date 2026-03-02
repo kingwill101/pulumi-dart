@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointScheduleActionResponse {
   /// Expected value is 'InvokeBatchEndpoint'.
-  final String actionType;
+  final pulumi.Input<String> actionType;
   /// [Required] Defines Schedule action definition details.
   /// <see href="TBD" />
-  final dynamic endpointInvocationDefinition;
+  final pulumi.Input<dynamic> endpointInvocationDefinition;
 
   /// Creates a new [EndpointScheduleActionResponse].
   /// [actionType] Expected value is 'InvokeBatchEndpoint'.
@@ -25,8 +26,8 @@ class EndpointScheduleActionResponse {
 
   factory EndpointScheduleActionResponse.fromMap(Map<String, dynamic> map) {
     return EndpointScheduleActionResponse(
-      actionType: map['actionType'] as String,
-      endpointInvocationDefinition: map['endpointInvocationDefinition'],
+      actionType: (map['actionType'] as String).input(),
+      endpointInvocationDefinition: (map['endpointInvocationDefinition']).input(),
     );
   }
 }

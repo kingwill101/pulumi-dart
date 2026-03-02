@@ -22,15 +22,11 @@ class GetNspAccessRuleArgs {
   /// [profileName] The name of the NSP profile.
   /// [resourceGroupName] The name of the resource group.
   GetNspAccessRuleArgs({
-    required pulumi.Output<String> accessRuleName,
-    required pulumi.Output<String> networkSecurityPerimeterName,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accessRuleName = pulumi.Input.asInput<String>(accessRuleName),
-      networkSecurityPerimeterName = pulumi.Input.asInput<String>(networkSecurityPerimeterName),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accessRuleName,
+    required this.networkSecurityPerimeterName,
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetNspAccessRuleArgs {
 
   factory GetNspAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNspAccessRuleArgs(
-      accessRuleName: pulumi.Output.create<String>(map['accessRuleName'] as String),
-      networkSecurityPerimeterName: pulumi.Output.create<String>(map['networkSecurityPerimeterName'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accessRuleName: (map['accessRuleName'] as String).input(),
+      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

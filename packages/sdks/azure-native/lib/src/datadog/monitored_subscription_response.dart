@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitoring_tag_rules_properties_response.dart';
 
 /// The list of subscriptions and it's monitoring status by current Datadog monitor.
 class MonitoredSubscriptionResponse {
   /// The reason of not monitoring the subscription.
-  final String? error;
+  final pulumi.Input<String>? error;
   /// The state of monitoring.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The subscriptionId to be monitored.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Definition of the properties for a TagRules resource.
-  final MonitoringTagRulesPropertiesResponse? tagRules;
+  final pulumi.Input<MonitoringTagRulesPropertiesResponse>? tagRules;
 
   /// Creates a new [MonitoredSubscriptionResponse].
   /// [error] The reason of not monitoring the subscription.
@@ -30,16 +31,16 @@ class MonitoredSubscriptionResponse {
       'error': ?error,
       'status': ?status,
       'subscriptionId': ?subscriptionId,
-      'tagRules': ?tagRules == null ? null : tagRules!.toMap(),
+      'tagRules': ?pulumi.Input.mapOptionalInputValue<MonitoringTagRulesPropertiesResponse, Map<String, dynamic>>(tagRules, (value) => value.toMap()),
     };
   }
 
   factory MonitoredSubscriptionResponse.fromMap(Map<String, dynamic> map) {
     return MonitoredSubscriptionResponse(
-      error: map['error'] == null ? null : map['error'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tagRules: map['tagRules'] == null ? null : MonitoringTagRulesPropertiesResponse.fromMap((map['tagRules'] as Map).cast<String, dynamic>()),
+      error: map['error'] == null ? null : (map['error'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tagRules: map['tagRules'] == null ? null : (MonitoringTagRulesPropertiesResponse.fromMap((map['tagRules'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

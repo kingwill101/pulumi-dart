@@ -34,21 +34,14 @@ class TriggerRecurrenceArgs {
   /// [startTime] Specifies the start date and time for this trigger in RFC3339 format: `2000-01-02T03:04:05Z`.
   /// [timeZone] Specifies the time zone for this trigger. Supported time zone options are listed [here](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)
   TriggerRecurrenceArgs({
-    required pulumi.Output<String> frequency,
-    required pulumi.Output<int> interval,
-    required pulumi.Output<String> logicAppId,
-    pulumi.Output<String>? name,
-    pulumi.Output<TriggerRecurrenceSchedule>? schedule,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? timeZone,
-  }) :
-      frequency = pulumi.Input.asInput<String>(frequency),
-      interval = pulumi.Input.asInput<int>(interval),
-      logicAppId = pulumi.Input.asInput<String>(logicAppId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      schedule = pulumi.Input.asOptionalInput<TriggerRecurrenceSchedule>(schedule),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    required this.frequency,
+    required this.interval,
+    required this.logicAppId,
+    this.name,
+    this.schedule,
+    this.startTime,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class TriggerRecurrenceArgs {
 
   factory TriggerRecurrenceArgs.fromMap(Map<String, dynamic> map) {
     return TriggerRecurrenceArgs(
-      frequency: pulumi.Output.create<String>(map['frequency'] as String),
-      interval: pulumi.Output.create<int>(map['interval'] as int),
-      logicAppId: pulumi.Output.create<String>(map['logicAppId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<TriggerRecurrenceSchedule>(TriggerRecurrenceSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      frequency: (map['frequency'] as String).input(),
+      interval: (map['interval'] as int).input(),
+      logicAppId: (map['logicAppId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      schedule: map['schedule'] == null ? null : (TriggerRecurrenceSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

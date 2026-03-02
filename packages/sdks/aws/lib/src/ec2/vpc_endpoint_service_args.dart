@@ -37,25 +37,16 @@ class VpcEndpointServiceArgs {
   /// [supportedRegions] The set of regions from which service consumers can access the service.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   VpcEndpointServiceArgs({
-    required pulumi.Output<bool> acceptanceRequired,
-    pulumi.Output<List<String>>? allowedPrincipals,
-    pulumi.Output<List<String>>? gatewayLoadBalancerArns,
-    pulumi.Output<List<String>>? networkLoadBalancerArns,
-    pulumi.Output<String>? privateDnsName,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? supportedIpAddressTypes,
-    pulumi.Output<List<String>>? supportedRegions,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      acceptanceRequired = pulumi.Input.asInput<bool>(acceptanceRequired),
-      allowedPrincipals = pulumi.Input.asOptionalInput<List<String>>(allowedPrincipals),
-      gatewayLoadBalancerArns = pulumi.Input.asOptionalInput<List<String>>(gatewayLoadBalancerArns),
-      networkLoadBalancerArns = pulumi.Input.asOptionalInput<List<String>>(networkLoadBalancerArns),
-      privateDnsName = pulumi.Input.asOptionalInput<String>(privateDnsName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      supportedIpAddressTypes = pulumi.Input.asOptionalInput<List<String>>(supportedIpAddressTypes),
-      supportedRegions = pulumi.Input.asOptionalInput<List<String>>(supportedRegions),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.acceptanceRequired,
+    this.allowedPrincipals,
+    this.gatewayLoadBalancerArns,
+    this.networkLoadBalancerArns,
+    this.privateDnsName,
+    this.region,
+    this.supportedIpAddressTypes,
+    this.supportedRegions,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class VpcEndpointServiceArgs {
 
   factory VpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceArgs(
-      acceptanceRequired: pulumi.Output.create<bool>(map['acceptanceRequired'] as bool),
-      allowedPrincipals: map['allowedPrincipals'] == null ? null : pulumi.Output.create<List<String>>((map['allowedPrincipals'] as List).cast<String>()),
-      gatewayLoadBalancerArns: map['gatewayLoadBalancerArns'] == null ? null : pulumi.Output.create<List<String>>((map['gatewayLoadBalancerArns'] as List).cast<String>()),
-      networkLoadBalancerArns: map['networkLoadBalancerArns'] == null ? null : pulumi.Output.create<List<String>>((map['networkLoadBalancerArns'] as List).cast<String>()),
-      privateDnsName: map['privateDnsName'] == null ? null : pulumi.Output.create<String>(map['privateDnsName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      supportedIpAddressTypes: map['supportedIpAddressTypes'] == null ? null : pulumi.Output.create<List<String>>((map['supportedIpAddressTypes'] as List).cast<String>()),
-      supportedRegions: map['supportedRegions'] == null ? null : pulumi.Output.create<List<String>>((map['supportedRegions'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      acceptanceRequired: (map['acceptanceRequired'] as bool).input(),
+      allowedPrincipals: map['allowedPrincipals'] == null ? null : ((map['allowedPrincipals'] as List).cast<String>()).input(),
+      gatewayLoadBalancerArns: map['gatewayLoadBalancerArns'] == null ? null : ((map['gatewayLoadBalancerArns'] as List).cast<String>()).input(),
+      networkLoadBalancerArns: map['networkLoadBalancerArns'] == null ? null : ((map['networkLoadBalancerArns'] as List).cast<String>()).input(),
+      privateDnsName: map['privateDnsName'] == null ? null : (map['privateDnsName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      supportedIpAddressTypes: map['supportedIpAddressTypes'] == null ? null : ((map['supportedIpAddressTypes'] as List).cast<String>()).input(),
+      supportedRegions: map['supportedRegions'] == null ? null : ((map['supportedRegions'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

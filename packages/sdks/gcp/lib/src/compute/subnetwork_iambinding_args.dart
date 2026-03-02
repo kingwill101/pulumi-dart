@@ -47,19 +47,13 @@ class SubnetworkIAMBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [subnetwork] Used to find the parent resource to bind the IAM policy to
   SubnetworkIAMBindingArgs({
-    pulumi.Output<SubnetworkIAMBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> subnetwork,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SubnetworkIAMBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role),
-      subnetwork = pulumi.Input.asInput<String>(subnetwork);
+    this.condition,
+    required this.members,
+    this.project,
+    this.region,
+    required this.role,
+    required this.subnetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,12 +68,12 @@ class SubnetworkIAMBindingArgs {
 
   factory SubnetworkIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return SubnetworkIAMBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SubnetworkIAMBindingCondition>(SubnetworkIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      subnetwork: pulumi.Output.create<String>(map['subnetwork'] as String),
+      condition: map['condition'] == null ? null : (SubnetworkIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
+      subnetwork: (map['subnetwork'] as String).input(),
     );
   }
 }

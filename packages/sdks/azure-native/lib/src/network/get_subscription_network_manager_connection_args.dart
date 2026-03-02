@@ -13,9 +13,8 @@ class GetSubscriptionNetworkManagerConnectionArgs {
   /// Creates a new [GetSubscriptionNetworkManagerConnectionArgs].
   /// [networkManagerConnectionName] Name for the network manager connection.
   GetSubscriptionNetworkManagerConnectionArgs({
-    required pulumi.Output<String> networkManagerConnectionName,
-  }) :
-      networkManagerConnectionName = pulumi.Input.asInput<String>(networkManagerConnectionName);
+    required this.networkManagerConnectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetSubscriptionNetworkManagerConnectionArgs {
 
   factory GetSubscriptionNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionNetworkManagerConnectionArgs(
-      networkManagerConnectionName: pulumi.Output.create<String>(map['networkManagerConnectionName'] as String),
+      networkManagerConnectionName: (map['networkManagerConnectionName'] as String).input(),
     );
   }
 }

@@ -44,29 +44,18 @@ class TriggerState {
   /// [triggerId] The Function Compute trigger ID.
   /// [type] The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
   TriggerState({
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? configMns,
-    pulumi.Output<String>? function,
-    pulumi.Output<String>? lastModified,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? service,
-    pulumi.Output<String>? sourceArn,
-    pulumi.Output<String>? triggerId,
-    pulumi.Output<String>? type,
-  }) :
-      config = pulumi.Input.asOptionalInput<String>(config),
-      configMns = pulumi.Input.asOptionalInput<String>(configMns),
-      function = pulumi.Input.asOptionalInput<String>(function),
-      lastModified = pulumi.Input.asOptionalInput<String>(lastModified),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      service = pulumi.Input.asOptionalInput<String>(service),
-      sourceArn = pulumi.Input.asOptionalInput<String>(sourceArn),
-      triggerId = pulumi.Input.asOptionalInput<String>(triggerId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.config,
+    this.configMns,
+    this.function,
+    this.lastModified,
+    this.name,
+    this.namePrefix,
+    this.role,
+    this.service,
+    this.sourceArn,
+    this.triggerId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class TriggerState {
 
   factory TriggerState.fromMap(Map<String, dynamic> map) {
     return TriggerState(
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      configMns: map['configMns'] == null ? null : pulumi.Output.create<String>(map['configMns'] as String),
-      function: map['function'] == null ? null : pulumi.Output.create<String>(map['function'] as String),
-      lastModified: map['lastModified'] == null ? null : pulumi.Output.create<String>(map['lastModified'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
-      sourceArn: map['sourceArn'] == null ? null : pulumi.Output.create<String>(map['sourceArn'] as String),
-      triggerId: map['triggerId'] == null ? null : pulumi.Output.create<String>(map['triggerId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      configMns: map['configMns'] == null ? null : (map['configMns'] as String).input(),
+      function: map['function'] == null ? null : (map['function'] as String).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

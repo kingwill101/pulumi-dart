@@ -6,9 +6,9 @@ import 'router_appliance_instance.dart';
 /// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
 class LinkedRouterApplianceInstances {
   /// The list of router appliance instances.
-  final List<RouterApplianceInstance>? instances;
+  final pulumi.Input<List<RouterApplianceInstance>>? instances;
   /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
-  final bool? siteToSiteDataTransfer;
+  final pulumi.Input<bool>? siteToSiteDataTransfer;
 
   /// Creates a new [LinkedRouterApplianceInstances].
   /// [instances] The list of router appliance instances.
@@ -20,15 +20,15 @@ class LinkedRouterApplianceInstances {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instances': ?instances == null ? null : pulumi.Input.encodeList<RouterApplianceInstance, Map<String, dynamic>>(instances!, (value) => value.toMap()),
+      'instances': ?pulumi.Input.mapOptionalInputValue<List<RouterApplianceInstance>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<RouterApplianceInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'siteToSiteDataTransfer': ?siteToSiteDataTransfer,
     };
   }
 
   factory LinkedRouterApplianceInstances.fromMap(Map<String, dynamic> map) {
     return LinkedRouterApplianceInstances(
-      instances: map['instances'] == null ? null : pulumi.Input.decodeList<RouterApplianceInstance>(map['instances'], (value) => RouterApplianceInstance.fromMap((value as Map).cast<String, dynamic>())),
-      siteToSiteDataTransfer: map['siteToSiteDataTransfer'] == null ? null : map['siteToSiteDataTransfer'] as bool,
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<RouterApplianceInstance>(map['instances'], (value) => RouterApplianceInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteToSiteDataTransfer: map['siteToSiteDataTransfer'] == null ? null : (map['siteToSiteDataTransfer'] as bool).input(),
     );
   }
 }

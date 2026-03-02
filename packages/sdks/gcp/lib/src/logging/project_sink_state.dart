@@ -59,29 +59,18 @@ class ProjectSinkState {
   /// [uniqueWriterIdentity] Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the
   ProjectSinkState({
-    pulumi.Output<ProjectSinkBigqueryOptions>? bigqueryOptions,
-    pulumi.Output<String>? customWriterIdentity,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destination,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<List<ProjectSinkExclusion>>? exclusions,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? uniqueWriterIdentity,
-    pulumi.Output<String>? writerIdentity,
-  }) :
-      bigqueryOptions = pulumi.Input.asOptionalInput<ProjectSinkBigqueryOptions>(bigqueryOptions),
-      customWriterIdentity = pulumi.Input.asOptionalInput<String>(customWriterIdentity),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      exclusions = pulumi.Input.asOptionalInput<List<ProjectSinkExclusion>>(exclusions),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      uniqueWriterIdentity = pulumi.Input.asOptionalInput<bool>(uniqueWriterIdentity),
-      writerIdentity = pulumi.Input.asOptionalInput<String>(writerIdentity);
+    this.bigqueryOptions,
+    this.customWriterIdentity,
+    this.description,
+    this.destination,
+    this.disabled,
+    this.exclusions,
+    this.filter,
+    this.name,
+    this.project,
+    this.uniqueWriterIdentity,
+    this.writerIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,17 +90,17 @@ class ProjectSinkState {
 
   factory ProjectSinkState.fromMap(Map<String, dynamic> map) {
     return ProjectSinkState(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : pulumi.Output.create<ProjectSinkBigqueryOptions>(ProjectSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())),
-      customWriterIdentity: map['customWriterIdentity'] == null ? null : pulumi.Output.create<String>(map['customWriterIdentity'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      exclusions: map['exclusions'] == null ? null : pulumi.Output.create<List<ProjectSinkExclusion>>(pulumi.Input.decodeList<ProjectSinkExclusion>(map['exclusions'], (value) => ProjectSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : pulumi.Output.create<bool>(map['uniqueWriterIdentity'] as bool),
-      writerIdentity: map['writerIdentity'] == null ? null : pulumi.Output.create<String>(map['writerIdentity'] as String),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (ProjectSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
+      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ProjectSinkExclusion>(map['exclusions'], (value) => ProjectSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity'] as bool).input(),
+      writerIdentity: map['writerIdentity'] == null ? null : (map['writerIdentity'] as String).input(),
     );
   }
 }

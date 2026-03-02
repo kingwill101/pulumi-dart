@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareNodePoolConfigTaint {
   /// Available taint effects.
   /// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-  final String? effect;
+  final pulumi.Input<String>? effect;
   /// Key associated with the effect.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value associated with the effect.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [VMwareNodePoolConfigTaint].
   /// [effect] Available taint effects.
@@ -30,9 +31,9 @@ class VMwareNodePoolConfigTaint {
 
   factory VMwareNodePoolConfigTaint.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolConfigTaint(
-      effect: map['effect'] == null ? null : map['effect'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

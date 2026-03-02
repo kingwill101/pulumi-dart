@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
   /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -10,21 +11,21 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
   /// good + bad = total is assumed)
   /// Must have ValueType = DOUBLE or ValueType = INT64 and
   /// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-  final String? badServiceFilter;
+  final pulumi.Input<String>? badServiceFilter;
   /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// quantifying good service provided. Exactly two of
   /// good, bad, or total service filter must be defined (where
   /// good + bad = total is assumed)
   /// Must have ValueType = DOUBLE or ValueType = INT64 and
   /// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-  final String? goodServiceFilter;
+  final pulumi.Input<String>? goodServiceFilter;
   /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// quantifying total demanded service. Exactly two of
   /// good, bad, or total service filter must be defined (where
   /// good + bad = total is assumed)
   /// Must have ValueType = DOUBLE or ValueType = INT64 and
   /// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-  final String? totalServiceFilter;
+  final pulumi.Input<String>? totalServiceFilter;
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio].
   /// [badServiceFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -46,9 +47,9 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
 
   factory SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(
-      badServiceFilter: map['badServiceFilter'] == null ? null : map['badServiceFilter'] as String,
-      goodServiceFilter: map['goodServiceFilter'] == null ? null : map['goodServiceFilter'] as String,
-      totalServiceFilter: map['totalServiceFilter'] == null ? null : map['totalServiceFilter'] as String,
+      badServiceFilter: map['badServiceFilter'] == null ? null : (map['badServiceFilter'] as String).input(),
+      goodServiceFilter: map['goodServiceFilter'] == null ? null : (map['goodServiceFilter'] as String).input(),
+      totalServiceFilter: map['totalServiceFilter'] == null ? null : (map['totalServiceFilter'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Monitor Metrics destination.
 class DestinationsSpecResponseAzureMonitorMetrics {
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DestinationsSpecResponseAzureMonitorMetrics].
   /// [name] A friendly name for the destination.
@@ -21,7 +22,7 @@ class DestinationsSpecResponseAzureMonitorMetrics {
 
   factory DestinationsSpecResponseAzureMonitorMetrics.fromMap(Map<String, dynamic> map) {
     return DestinationsSpecResponseAzureMonitorMetrics(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

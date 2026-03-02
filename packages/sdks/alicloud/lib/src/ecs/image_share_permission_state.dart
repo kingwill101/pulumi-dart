@@ -13,11 +13,9 @@ class ImageSharePermissionState {
   /// [accountId] Alibaba Cloud Account ID. It is used to share images.
   /// [imageId] The source image ID.
   ImageSharePermissionState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? imageId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId);
+    this.accountId,
+    this.imageId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ImageSharePermissionState {
 
   factory ImageSharePermissionState.fromMap(Map<String, dynamic> map) {
     return ImageSharePermissionState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
     );
   }
 }

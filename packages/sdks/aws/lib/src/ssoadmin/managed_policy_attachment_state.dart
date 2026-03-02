@@ -22,17 +22,12 @@ class ManagedPolicyAttachmentState {
   /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ManagedPolicyAttachmentState({
-    pulumi.Output<String>? instanceArn,
-    pulumi.Output<String>? managedPolicyArn,
-    pulumi.Output<String>? managedPolicyName,
-    pulumi.Output<String>? permissionSetArn,
-    pulumi.Output<String>? region,
-  }) :
-      instanceArn = pulumi.Input.asOptionalInput<String>(instanceArn),
-      managedPolicyArn = pulumi.Input.asOptionalInput<String>(managedPolicyArn),
-      managedPolicyName = pulumi.Input.asOptionalInput<String>(managedPolicyName),
-      permissionSetArn = pulumi.Input.asOptionalInput<String>(permissionSetArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.instanceArn,
+    this.managedPolicyArn,
+    this.managedPolicyName,
+    this.permissionSetArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ManagedPolicyAttachmentState {
 
   factory ManagedPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return ManagedPolicyAttachmentState(
-      instanceArn: map['instanceArn'] == null ? null : pulumi.Output.create<String>(map['instanceArn'] as String),
-      managedPolicyArn: map['managedPolicyArn'] == null ? null : pulumi.Output.create<String>(map['managedPolicyArn'] as String),
-      managedPolicyName: map['managedPolicyName'] == null ? null : pulumi.Output.create<String>(map['managedPolicyName'] as String),
-      permissionSetArn: map['permissionSetArn'] == null ? null : pulumi.Output.create<String>(map['permissionSetArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      managedPolicyArn: map['managedPolicyArn'] == null ? null : (map['managedPolicyArn'] as String).input(),
+      managedPolicyName: map['managedPolicyName'] == null ? null : (map['managedPolicyName'] as String).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

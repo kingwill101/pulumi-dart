@@ -23,13 +23,10 @@ class EventActionArgs {
   /// [event] Describes the event that triggers the `action`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EventActionArgs({
-    required pulumi.Output<EventActionAction> action,
-    required pulumi.Output<EventActionEvent> event,
-    pulumi.Output<String>? region,
-  }) :
-      action = pulumi.Input.asInput<EventActionAction>(action),
-      event = pulumi.Input.asInput<EventActionEvent>(event),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.action,
+    required this.event,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class EventActionArgs {
 
   factory EventActionArgs.fromMap(Map<String, dynamic> map) {
     return EventActionArgs(
-      action: pulumi.Output.create<EventActionAction>(EventActionAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      event: pulumi.Output.create<EventActionEvent>(EventActionEvent.fromMap((map['event'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      action: (EventActionAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      event: (EventActionEvent.fromMap((map['event'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

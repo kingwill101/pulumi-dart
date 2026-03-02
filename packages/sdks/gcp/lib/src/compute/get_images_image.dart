@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImage {
   /// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
-  final int archiveSizeBytes;
+  final pulumi.Input<int> archiveSizeBytes;
   /// The creation timestamp in RFC3339 text format.
-  final String creationTimestamp;
+  final pulumi.Input<String> creationTimestamp;
   /// An optional description of this image.
-  final String description;
+  final pulumi.Input<String> description;
   /// The size of the image when restored onto a persistent disk in gigabytes.
-  final int diskSizeGb;
+  final pulumi.Input<int> diskSizeGb;
   /// The family name of the image.
-  final String family;
-  final int imageId;
+  final pulumi.Input<String> family;
+  final pulumi.Input<int> imageId;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The name of the image.
-  final String name;
+  final pulumi.Input<String> name;
   /// The URI of the image.
-  final String selfLink;
+  final pulumi.Input<String> selfLink;
   /// The URL of the source disk used to create this image.
-  final String sourceDisk;
+  final pulumi.Input<String> sourceDisk;
   /// The ID value of the disk used to create this image.
-  final String sourceDiskId;
+  final pulumi.Input<String> sourceDiskId;
   /// The ID value of the image used to create this image.
-  final String sourceImageId;
+  final pulumi.Input<String> sourceImageId;
 
   /// Creates a new [GetImagesImage].
   /// [archiveSizeBytes] The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
@@ -73,18 +74,18 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      archiveSizeBytes: map['archiveSizeBytes'] as int,
-      creationTimestamp: map['creationTimestamp'] as String,
-      description: map['description'] as String,
-      diskSizeGb: map['diskSizeGb'] as int,
-      family: map['family'] as String,
-      imageId: map['imageId'] as int,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      selfLink: map['selfLink'] as String,
-      sourceDisk: map['sourceDisk'] as String,
-      sourceDiskId: map['sourceDiskId'] as String,
-      sourceImageId: map['sourceImageId'] as String,
+      archiveSizeBytes: (map['archiveSizeBytes'] as int).input(),
+      creationTimestamp: (map['creationTimestamp'] as String).input(),
+      description: (map['description'] as String).input(),
+      diskSizeGb: (map['diskSizeGb'] as int).input(),
+      family: (map['family'] as String).input(),
+      imageId: (map['imageId'] as int).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      selfLink: (map['selfLink'] as String).input(),
+      sourceDisk: (map['sourceDisk'] as String).input(),
+      sourceDiskId: (map['sourceDiskId'] as String).input(),
+      sourceImageId: (map['sourceImageId'] as String).input(),
     );
   }
 }

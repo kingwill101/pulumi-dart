@@ -43,27 +43,17 @@ class KubernetesNodePoolArgs {
   /// [tags] A list of tag names to be applied to the Kubernetes cluster.
   /// [taints] A list of taints applied to all nodes in the pool.
   KubernetesNodePoolArgs({
-    pulumi.Output<bool>? autoScale,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<int>? maxNodes,
-    pulumi.Output<int>? minNodes,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? nodeCount,
-    required pulumi.Output<String> size,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<List<KubernetesNodePoolTaint>>? taints,
-  }) :
-      autoScale = pulumi.Input.asOptionalInput<bool>(autoScale),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      maxNodes = pulumi.Input.asOptionalInput<int>(maxNodes),
-      minNodes = pulumi.Input.asOptionalInput<int>(minNodes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeCount = pulumi.Input.asOptionalInput<int>(nodeCount),
-      size = pulumi.Input.asInput<String>(size),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      taints = pulumi.Input.asOptionalInput<List<KubernetesNodePoolTaint>>(taints);
+    this.autoScale,
+    required this.clusterId,
+    this.labels,
+    this.maxNodes,
+    this.minNodes,
+    this.name,
+    this.nodeCount,
+    required this.size,
+    this.tags,
+    this.taints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class KubernetesNodePoolArgs {
 
   factory KubernetesNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesNodePoolArgs(
-      autoScale: map['autoScale'] == null ? null : pulumi.Output.create<bool>(map['autoScale'] as bool),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      maxNodes: map['maxNodes'] == null ? null : pulumi.Output.create<int>(map['maxNodes'] as int),
-      minNodes: map['minNodes'] == null ? null : pulumi.Output.create<int>(map['minNodes'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeCount: map['nodeCount'] == null ? null : pulumi.Output.create<int>(map['nodeCount'] as int),
-      size: pulumi.Output.create<String>(map['size'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      taints: map['taints'] == null ? null : pulumi.Output.create<List<KubernetesNodePoolTaint>>(pulumi.Input.decodeList<KubernetesNodePoolTaint>(map['taints'], (value) => KubernetesNodePoolTaint.fromMap((value as Map).cast<String, dynamic>()))),
+      autoScale: map['autoScale'] == null ? null : (map['autoScale'] as bool).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes'] as int).input(),
+      minNodes: map['minNodes'] == null ? null : (map['minNodes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      size: (map['size'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<KubernetesNodePoolTaint>(map['taints'], (value) => KubernetesNodePoolTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

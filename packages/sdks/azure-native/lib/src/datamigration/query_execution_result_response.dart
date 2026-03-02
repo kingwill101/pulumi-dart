@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'execution_statistics_response.dart';
 
 /// Describes query analysis results for execution in source and target
 class QueryExecutionResultResponse {
   /// Query text retrieved from the source server
-  final String? queryText;
+  final pulumi.Input<String>? queryText;
   /// Query analysis result from the source
-  final ExecutionStatisticsResponse? sourceResult;
+  final pulumi.Input<ExecutionStatisticsResponse>? sourceResult;
   /// Total no. of statements in the batch
-  final double? statementsInBatch;
+  final pulumi.Input<double>? statementsInBatch;
   /// Query analysis result from the target
-  final ExecutionStatisticsResponse? targetResult;
+  final pulumi.Input<ExecutionStatisticsResponse>? targetResult;
 
   /// Creates a new [QueryExecutionResultResponse].
   /// [queryText] Query text retrieved from the source server
@@ -28,18 +29,18 @@ class QueryExecutionResultResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'queryText': ?queryText,
-      'sourceResult': ?sourceResult == null ? null : sourceResult!.toMap(),
+      'sourceResult': ?pulumi.Input.mapOptionalInputValue<ExecutionStatisticsResponse, Map<String, dynamic>>(sourceResult, (value) => value.toMap()),
       'statementsInBatch': ?statementsInBatch,
-      'targetResult': ?targetResult == null ? null : targetResult!.toMap(),
+      'targetResult': ?pulumi.Input.mapOptionalInputValue<ExecutionStatisticsResponse, Map<String, dynamic>>(targetResult, (value) => value.toMap()),
     };
   }
 
   factory QueryExecutionResultResponse.fromMap(Map<String, dynamic> map) {
     return QueryExecutionResultResponse(
-      queryText: map['queryText'] == null ? null : map['queryText'] as String,
-      sourceResult: map['sourceResult'] == null ? null : ExecutionStatisticsResponse.fromMap((map['sourceResult'] as Map).cast<String, dynamic>()),
-      statementsInBatch: map['statementsInBatch'] == null ? null : map['statementsInBatch'] as double,
-      targetResult: map['targetResult'] == null ? null : ExecutionStatisticsResponse.fromMap((map['targetResult'] as Map).cast<String, dynamic>()),
+      queryText: map['queryText'] == null ? null : (map['queryText'] as String).input(),
+      sourceResult: map['sourceResult'] == null ? null : (ExecutionStatisticsResponse.fromMap((map['sourceResult'] as Map).cast<String, dynamic>())).input(),
+      statementsInBatch: map['statementsInBatch'] == null ? null : (map['statementsInBatch'] as double).input(),
+      targetResult: map['targetResult'] == null ? null : (ExecutionStatisticsResponse.fromMap((map['targetResult'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

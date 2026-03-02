@@ -30,17 +30,12 @@ class AppCheckDeviceCheckConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
   AppCheckDeviceCheckConfigArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> keyId,
-    required pulumi.Output<String> privateKey,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tokenTtl,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      privateKey = pulumi.Input.asInput<String>(privateKey),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+    required this.appId,
+    required this.keyId,
+    required this.privateKey,
+    this.project,
+    this.tokenTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class AppCheckDeviceCheckConfigArgs {
 
   factory AppCheckDeviceCheckConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckDeviceCheckConfigArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      privateKey: pulumi.Output.create<String>(map['privateKey'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tokenTtl: map['tokenTtl'] == null ? null : pulumi.Output.create<String>(map['tokenTtl'] as String),
+      appId: (map['appId'] as String).input(),
+      keyId: (map['keyId'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
     );
   }
 }

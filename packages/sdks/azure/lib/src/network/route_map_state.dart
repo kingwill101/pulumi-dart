@@ -17,13 +17,10 @@ class RouteMapState {
   /// [rules] A `rule` block as defined below.
   /// [virtualHubId] The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   RouteMapState({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<RouteMapRule>>? rules,
-    pulumi.Output<String>? virtualHubId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rules = pulumi.Input.asOptionalInput<List<RouteMapRule>>(rules),
-      virtualHubId = pulumi.Input.asOptionalInput<String>(virtualHubId);
+    this.name,
+    this.rules,
+    this.virtualHubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class RouteMapState {
 
   factory RouteMapState.fromMap(Map<String, dynamic> map) {
     return RouteMapState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<RouteMapRule>>(pulumi.Input.decodeList<RouteMapRule>(map['rules'], (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>()))),
-      virtualHubId: map['virtualHubId'] == null ? null : pulumi.Output.create<String>(map['virtualHubId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RouteMapRule>(map['rules'], (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
     );
   }
 }

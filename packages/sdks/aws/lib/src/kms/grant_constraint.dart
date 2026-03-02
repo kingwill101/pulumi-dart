@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GrantConstraint {
   /// A list of key-value pairs that must match the encryption context in subsequent cryptographic operation requests. The grant allows the operation only when the encryption context in the request is the same as the encryption context specified in this constraint. Conflicts with `encryption_context_subset`.
-  final Map<String, String>? encryptionContextEquals;
+  final pulumi.Input<Map<String, String>>? encryptionContextEquals;
   /// A list of key-value pairs that must be included in the encryption context of subsequent cryptographic operation requests. The grant allows the cryptographic operation only when the encryption context in the request includes the key-value pairs specified in this constraint, although it can include additional key-value pairs. Conflicts with `encryption_context_equals`.
-  final Map<String, String>? encryptionContextSubset;
+  final pulumi.Input<Map<String, String>>? encryptionContextSubset;
 
   /// Creates a new [GrantConstraint].
   /// [encryptionContextEquals] A list of key-value pairs that must match the encryption context in subsequent cryptographic operation requests. The grant allows the operation only when the encryption context in the request is the same as the encryption context specified in this constraint. Conflicts with `encryption_context_subset`.
@@ -24,8 +25,8 @@ class GrantConstraint {
 
   factory GrantConstraint.fromMap(Map<String, dynamic> map) {
     return GrantConstraint(
-      encryptionContextEquals: map['encryptionContextEquals'] == null ? null : (map['encryptionContextEquals'] as Map).cast<String, String>(),
-      encryptionContextSubset: map['encryptionContextSubset'] == null ? null : (map['encryptionContextSubset'] as Map).cast<String, String>(),
+      encryptionContextEquals: map['encryptionContextEquals'] == null ? null : ((map['encryptionContextEquals'] as Map).cast<String, String>()).input(),
+      encryptionContextSubset: map['encryptionContextSubset'] == null ? null : ((map['encryptionContextSubset'] as Map).cast<String, String>()).input(),
     );
   }
 }

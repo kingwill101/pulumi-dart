@@ -21,13 +21,10 @@ class VpcscConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [vpcscPolicy] The VPC SC policy for project and location.
   VpcscConfigArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? vpcscPolicy,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vpcscPolicy = pulumi.Input.asOptionalInput<String>(vpcscPolicy);
+    this.location,
+    this.project,
+    this.vpcscPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class VpcscConfigArgs {
 
   factory VpcscConfigArgs.fromMap(Map<String, dynamic> map) {
     return VpcscConfigArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      vpcscPolicy: map['vpcscPolicy'] == null ? null : pulumi.Output.create<String>(map['vpcscPolicy'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      vpcscPolicy: map['vpcscPolicy'] == null ? null : (map['vpcscPolicy'] as String).input(),
     );
   }
 }

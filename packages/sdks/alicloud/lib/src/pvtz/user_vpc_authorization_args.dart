@@ -19,13 +19,10 @@ class UserVpcAuthorizationArgs {
   /// [authType] The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
   /// [authorizedUserId] The primary account ID of the user who authorizes the resource.
   UserVpcAuthorizationArgs({
-    pulumi.Output<String>? authChannel,
-    pulumi.Output<String>? authType,
-    required pulumi.Output<String> authorizedUserId,
-  }) :
-      authChannel = pulumi.Input.asOptionalInput<String>(authChannel),
-      authType = pulumi.Input.asOptionalInput<String>(authType),
-      authorizedUserId = pulumi.Input.asInput<String>(authorizedUserId);
+    this.authChannel,
+    this.authType,
+    required this.authorizedUserId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class UserVpcAuthorizationArgs {
 
   factory UserVpcAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return UserVpcAuthorizationArgs(
-      authChannel: map['authChannel'] == null ? null : pulumi.Output.create<String>(map['authChannel'] as String),
-      authType: map['authType'] == null ? null : pulumi.Output.create<String>(map['authType'] as String),
-      authorizedUserId: pulumi.Output.create<String>(map['authorizedUserId'] as String),
+      authChannel: map['authChannel'] == null ? null : (map['authChannel'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      authorizedUserId: (map['authorizedUserId'] as String).input(),
     );
   }
 }

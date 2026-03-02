@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange {
   /// (Optional)
-  final String? ipCidrRange;
+  final pulumi.Input<String>? ipCidrRange;
   /// (Optional)
-  final String? subnetworkRangeName;
+  final pulumi.Input<String>? subnetworkRangeName;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange].
   /// [ipCidrRange] (Optional)
@@ -24,8 +25,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRang
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange(
-      ipCidrRange: map['ipCidrRange'] == null ? null : map['ipCidrRange'] as String,
-      subnetworkRangeName: map['subnetworkRangeName'] == null ? null : map['subnetworkRangeName'] as String,
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
+      subnetworkRangeName: map['subnetworkRangeName'] == null ? null : (map['subnetworkRangeName'] as String).input(),
     );
   }
 }

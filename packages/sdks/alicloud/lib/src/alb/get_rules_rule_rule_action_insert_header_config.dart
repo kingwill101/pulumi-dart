@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesRuleRuleActionInsertHeaderConfig {
   /// The key of the query string.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the query string.
-  final String value;
+  final pulumi.Input<String> value;
   /// The value type of the inserted header field.
-  final String valueType;
+  final pulumi.Input<String> valueType;
 
   /// Creates a new [GetRulesRuleRuleActionInsertHeaderConfig].
   /// [key] The key of the query string.
@@ -29,9 +30,9 @@ class GetRulesRuleRuleActionInsertHeaderConfig {
 
   factory GetRulesRuleRuleActionInsertHeaderConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleActionInsertHeaderConfig(
-      key: map['key'] as String,
-      value: map['value'] as String,
-      valueType: map['valueType'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
+      valueType: (map['valueType'] as String).input(),
     );
   }
 }

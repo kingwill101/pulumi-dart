@@ -23,17 +23,12 @@ class DatasetHealthcareV1beta1Args {
   /// [project] Optional.
   /// [timeZone] The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
   DatasetHealthcareV1beta1Args({
-    pulumi.Output<String>? datasetId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? timeZone,
-  }) :
-      datasetId = pulumi.Input.asOptionalInput<String>(datasetId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.datasetId,
+    this.location,
+    this.name,
+    this.project,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class DatasetHealthcareV1beta1Args {
 
   factory DatasetHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DatasetHealthcareV1beta1Args(
-      datasetId: map['datasetId'] == null ? null : pulumi.Output.create<String>(map['datasetId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

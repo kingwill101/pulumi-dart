@@ -25,17 +25,12 @@ class GetRuleArgs {
   /// [subscriptionName] The subscription name.
   /// [topicName] The topic name.
   GetRuleArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleName,
-    required pulumi.Output<String> subscriptionName,
-    required pulumi.Output<String> topicName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      subscriptionName = pulumi.Input.asInput<String>(subscriptionName),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.ruleName,
+    required this.subscriptionName,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetRuleArgs {
 
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRuleArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      subscriptionName: pulumi.Output.create<String>(map['subscriptionName'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      subscriptionName: (map['subscriptionName'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

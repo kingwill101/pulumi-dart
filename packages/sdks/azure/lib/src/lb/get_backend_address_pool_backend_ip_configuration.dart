@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackendAddressPoolBackendIpConfiguration {
   /// The ID of the Backend Address Pool.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetBackendAddressPoolBackendIpConfiguration].
   /// [id] The ID of the Backend Address Pool.
@@ -19,7 +20,7 @@ class GetBackendAddressPoolBackendIpConfiguration {
 
   factory GetBackendAddressPoolBackendIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBackendAddressPoolBackendIpConfiguration(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

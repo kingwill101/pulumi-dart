@@ -28,19 +28,13 @@ class LanguageModelArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
   LanguageModelArgs({
-    required pulumi.Output<String> baseModelName,
-    required pulumi.Output<LanguageModelInputDataConfig> inputDataConfig,
-    required pulumi.Output<String> languageCode,
-    required pulumi.Output<String> modelName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      baseModelName = pulumi.Input.asInput<String>(baseModelName),
-      inputDataConfig = pulumi.Input.asInput<LanguageModelInputDataConfig>(inputDataConfig),
-      languageCode = pulumi.Input.asInput<String>(languageCode),
-      modelName = pulumi.Input.asInput<String>(modelName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.baseModelName,
+    required this.inputDataConfig,
+    required this.languageCode,
+    required this.modelName,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class LanguageModelArgs {
 
   factory LanguageModelArgs.fromMap(Map<String, dynamic> map) {
     return LanguageModelArgs(
-      baseModelName: pulumi.Output.create<String>(map['baseModelName'] as String),
-      inputDataConfig: pulumi.Output.create<LanguageModelInputDataConfig>(LanguageModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())),
-      languageCode: pulumi.Output.create<String>(map['languageCode'] as String),
-      modelName: pulumi.Output.create<String>(map['modelName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      baseModelName: (map['baseModelName'] as String).input(),
+      inputDataConfig: (LanguageModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      languageCode: (map['languageCode'] as String).input(),
+      modelName: (map['modelName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

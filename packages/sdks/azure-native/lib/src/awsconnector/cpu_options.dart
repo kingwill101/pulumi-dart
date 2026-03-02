@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'amd_sev_snp_specification_enum_value.dart';
 
 /// Definition of CpuOptions
 class CpuOptions {
   /// <p>Indicates whether the instance is enabled for AMD SEV-SNP. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html'>AMD SEV-SNP</a>.</p>
-  final AmdSevSnpSpecificationEnumValue? amdSevSnp;
+  final pulumi.Input<AmdSevSnpSpecificationEnumValue>? amdSevSnp;
   /// <p>The number of CPU cores for the instance.</p>
-  final int? coreCount;
+  final pulumi.Input<int>? coreCount;
   /// <p>The number of threads per CPU core.</p>
-  final int? threadsPerCore;
+  final pulumi.Input<int>? threadsPerCore;
 
   /// Creates a new [CpuOptions].
   /// [amdSevSnp] <p>Indicates whether the instance is enabled for AMD SEV-SNP. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html'>AMD SEV-SNP</a>.</p>
@@ -23,7 +24,7 @@ class CpuOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amdSevSnp': ?amdSevSnp == null ? null : amdSevSnp!.toMap(),
+      'amdSevSnp': ?pulumi.Input.mapOptionalInputValue<AmdSevSnpSpecificationEnumValue, Map<String, dynamic>>(amdSevSnp, (value) => value.toMap()),
       'coreCount': ?coreCount,
       'threadsPerCore': ?threadsPerCore,
     };
@@ -31,9 +32,9 @@ class CpuOptions {
 
   factory CpuOptions.fromMap(Map<String, dynamic> map) {
     return CpuOptions(
-      amdSevSnp: map['amdSevSnp'] == null ? null : AmdSevSnpSpecificationEnumValue.fromMap((map['amdSevSnp'] as Map).cast<String, dynamic>()),
-      coreCount: map['coreCount'] == null ? null : map['coreCount'] as int,
-      threadsPerCore: map['threadsPerCore'] == null ? null : map['threadsPerCore'] as int,
+      amdSevSnp: map['amdSevSnp'] == null ? null : (AmdSevSnpSpecificationEnumValue.fromMap((map['amdSevSnp'] as Map).cast<String, dynamic>())).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
     );
   }
 }

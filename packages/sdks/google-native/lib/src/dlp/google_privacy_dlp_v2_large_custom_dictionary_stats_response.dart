@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Summary statistics of a custom dictionary.
 class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
   /// Approximate number of distinct phrases in the dictionary.
-  final String approxNumPhrases;
+  final pulumi.Input<String> approxNumPhrases;
 
   /// Creates a new [GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse].
   /// [approxNumPhrases] Approximate number of distinct phrases in the dictionary.
@@ -20,7 +21,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
 
   factory GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse(
-      approxNumPhrases: map['approxNumPhrases'] as String,
+      approxNumPhrases: (map['approxNumPhrases'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFrameworkControlSetControl {
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetFrameworkControlSetControl].
   /// [id] Required.
@@ -18,7 +19,7 @@ class GetFrameworkControlSetControl {
 
   factory GetFrameworkControlSetControl.fromMap(Map<String, dynamic> map) {
     return GetFrameworkControlSetControl(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

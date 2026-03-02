@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Trusted Root certificates of an application gateway.
 class ApplicationGatewayTrustedRootCertificateResponse {
   /// Certificate public data.
-  final String? data;
+  final pulumi.Input<String>? data;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
-  final String? keyVaultSecretId;
+  final pulumi.Input<String>? keyVaultSecretId;
   /// Name of the trusted root certificate that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the trusted root certificate resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApplicationGatewayTrustedRootCertificateResponse].
   /// [data] Certificate public data.
@@ -50,13 +51,13 @@ class ApplicationGatewayTrustedRootCertificateResponse {
 
   factory ApplicationGatewayTrustedRootCertificateResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayTrustedRootCertificateResponse(
-      data: map['data'] == null ? null : map['data'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : map['keyVaultSecretId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

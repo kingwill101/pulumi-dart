@@ -40,27 +40,17 @@ class ListListSchemaArgs {
   /// [schemaUri] Uri containing SAS token for the zipped schema
   /// [status] Status of the schema
   ListListSchemaArgs({
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? direction,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> pipelineName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? schemaType,
-    pulumi.Output<String>? schemaUri,
-    pulumi.Output<String>? status,
-  }) :
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pipelineName = pulumi.Input.asInput<String>(pipelineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaType = pulumi.Input.asOptionalInput<String>(schemaType),
-      schemaUri = pulumi.Input.asOptionalInput<String>(schemaUri),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.connectionId,
+    this.content,
+    this.direction,
+    this.id,
+    this.name,
+    required this.pipelineName,
+    required this.resourceGroupName,
+    this.schemaType,
+    this.schemaUri,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ListListSchemaArgs {
 
   factory ListListSchemaArgs.fromMap(Map<String, dynamic> map) {
     return ListListSchemaArgs(
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pipelineName: pulumi.Output.create<String>(map['pipelineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaType: map['schemaType'] == null ? null : pulumi.Output.create<String>(map['schemaType'] as String),
-      schemaUri: map['schemaUri'] == null ? null : pulumi.Output.create<String>(map['schemaUri'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pipelineName: (map['pipelineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
+      schemaUri: map['schemaUri'] == null ? null : (map['schemaUri'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

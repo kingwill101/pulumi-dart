@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents configuration for private service connect.
 class GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse {
   /// If true, expose the IndexEndpoint via private service connect.
-  final bool enablePrivateServiceConnect;
+  final pulumi.Input<bool> enablePrivateServiceConnect;
   /// A list of Projects from which the forwarding rule will target the service attachment.
-  final List<String> projectAllowlist;
+  final pulumi.Input<List<String>> projectAllowlist;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse].
   /// [enablePrivateServiceConnect] If true, expose the IndexEndpoint via private service connect.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse {
 
   factory GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse(
-      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] as bool,
-      projectAllowlist: (map['projectAllowlist'] as List).cast<String>(),
+      enablePrivateServiceConnect: (map['enablePrivateServiceConnect'] as bool).input(),
+      projectAllowlist: ((map['projectAllowlist'] as List).cast<String>()).input(),
     );
   }
 }

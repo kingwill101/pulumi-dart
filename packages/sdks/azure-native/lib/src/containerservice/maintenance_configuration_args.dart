@@ -31,19 +31,13 @@ class MaintenanceConfigurationArgs {
   /// [resourceName] The name of the managed cluster resource.
   /// [timeInWeek] Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
   MaintenanceConfigurationArgs({
-    pulumi.Output<String>? configName,
-    pulumi.Output<MaintenanceWindow>? maintenanceWindow,
-    pulumi.Output<List<TimeSpan>>? notAllowedTime,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<List<TimeInWeek>>? timeInWeek,
-  }) :
-      configName = pulumi.Input.asOptionalInput<String>(configName),
-      maintenanceWindow = pulumi.Input.asOptionalInput<MaintenanceWindow>(maintenanceWindow),
-      notAllowedTime = pulumi.Input.asOptionalInput<List<TimeSpan>>(notAllowedTime),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      timeInWeek = pulumi.Input.asOptionalInput<List<TimeInWeek>>(timeInWeek);
+    this.configName,
+    this.maintenanceWindow,
+    this.notAllowedTime,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.timeInWeek,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class MaintenanceConfigurationArgs {
 
   factory MaintenanceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceConfigurationArgs(
-      configName: map['configName'] == null ? null : pulumi.Output.create<String>(map['configName'] as String),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : pulumi.Output.create<MaintenanceWindow>(MaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())),
-      notAllowedTime: map['notAllowedTime'] == null ? null : pulumi.Output.create<List<TimeSpan>>(pulumi.Input.decodeList<TimeSpan>(map['notAllowedTime'], (value) => TimeSpan.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      timeInWeek: map['timeInWeek'] == null ? null : pulumi.Output.create<List<TimeInWeek>>(pulumi.Input.decodeList<TimeInWeek>(map['timeInWeek'], (value) => TimeInWeek.fromMap((value as Map).cast<String, dynamic>()))),
+      configName: map['configName'] == null ? null : (map['configName'] as String).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      notAllowedTime: map['notAllowedTime'] == null ? null : (pulumi.Input.decodeList<TimeSpan>(map['notAllowedTime'], (value) => TimeSpan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      timeInWeek: map['timeInWeek'] == null ? null : (pulumi.Input.decodeList<TimeInWeek>(map['timeInWeek'], (value) => TimeInWeek.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_token_authentication_response.dart';
 
 /// The Docker Hub connector environment data
 class DockerHubEnvironmentDataResponse {
   /// The Docker Hub organization authentication details
-  final AccessTokenAuthenticationResponse? authentication;
+  final pulumi.Input<AccessTokenAuthenticationResponse>? authentication;
   /// The type of the environment data.
   /// Expected value is 'DockerHubOrganization'.
-  final String environmentType;
+  final pulumi.Input<String> environmentType;
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
-  final double? scanInterval;
+  final pulumi.Input<double>? scanInterval;
 
   /// Creates a new [DockerHubEnvironmentDataResponse].
   /// [authentication] The Docker Hub organization authentication details
@@ -24,7 +25,7 @@ class DockerHubEnvironmentDataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': ?authentication == null ? null : authentication!.toMap(),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<AccessTokenAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'environmentType': environmentType,
       'scanInterval': ?scanInterval,
     };
@@ -32,9 +33,9 @@ class DockerHubEnvironmentDataResponse {
 
   factory DockerHubEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
     return DockerHubEnvironmentDataResponse(
-      authentication: map['authentication'] == null ? null : AccessTokenAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      environmentType: map['environmentType'] as String,
-      scanInterval: map['scanInterval'] == null ? null : map['scanInterval'] as double,
+      authentication: map['authentication'] == null ? null : (AccessTokenAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      environmentType: (map['environmentType'] as String).input(),
+      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval'] as double).input(),
     );
   }
 }

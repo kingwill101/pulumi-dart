@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dynamic delivery attribute mapping details.
 class DynamicDeliveryAttributeMappingResponse {
   /// Name of the delivery attribute or header.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// JSON path in the event which contains attribute value.
-  final String? sourceField;
+  final pulumi.Input<String>? sourceField;
   /// Type of the delivery attribute or header name.
   /// Expected value is 'Dynamic'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DynamicDeliveryAttributeMappingResponse].
   /// [name] Name of the delivery attribute or header.
@@ -31,9 +32,9 @@ class DynamicDeliveryAttributeMappingResponse {
 
   factory DynamicDeliveryAttributeMappingResponse.fromMap(Map<String, dynamic> map) {
     return DynamicDeliveryAttributeMappingResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      sourceField: map['sourceField'] == null ? null : map['sourceField'] as String,
-      type: map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceField: map['sourceField'] == null ? null : (map['sourceField'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

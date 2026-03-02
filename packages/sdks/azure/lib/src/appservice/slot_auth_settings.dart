@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slot_auth_settings_active_directory.dart';
 import 'slot_auth_settings_facebook.dart';
 import 'slot_auth_settings_google.dart';
@@ -8,35 +9,35 @@ import 'slot_auth_settings_twitter.dart';
 
 class SlotAuthSettings {
   /// A `active_directory` block as defined below.
-  final SlotAuthSettingsActiveDirectory? activeDirectory;
+  final pulumi.Input<SlotAuthSettingsActiveDirectory>? activeDirectory;
   /// Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value".
-  final Map<String, String>? additionalLoginParams;
+  final pulumi.Input<Map<String, String>>? additionalLoginParams;
   /// External URLs that can be redirected to as part of logging in or logging out of the app.
-  final List<String>? allowedExternalRedirectUrls;
+  final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
   /// The default provider to use when multiple providers have been set up. Possible values are `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount` and `Twitter`.
   ///
   /// > **NOTE:** When using multiple providers, the default provider must be set for settings like `unauthenticated_client_action` to work.
-  final String? defaultProvider;
+  final pulumi.Input<String>? defaultProvider;
   /// Is Authentication enabled?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A `facebook` block as defined below.
-  final SlotAuthSettingsFacebook? facebook;
+  final pulumi.Input<SlotAuthSettingsFacebook>? facebook;
   /// A `google` block as defined below.
-  final SlotAuthSettingsGoogle? google;
+  final pulumi.Input<SlotAuthSettingsGoogle>? google;
   /// Issuer URI. When using Azure Active Directory, this value is the URI of the directory tenant, e.g. <https://sts.windows.net/{tenant-guid}/>.
-  final String? issuer;
+  final pulumi.Input<String>? issuer;
   /// A `microsoft` block as defined below.
-  final SlotAuthSettingsMicrosoft? microsoft;
+  final pulumi.Input<SlotAuthSettingsMicrosoft>? microsoft;
   /// The runtime version of the Authentication/Authorization module.
-  final String? runtimeVersion;
+  final pulumi.Input<String>? runtimeVersion;
   /// The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72`.
-  final double? tokenRefreshExtensionHours;
+  final pulumi.Input<double>? tokenRefreshExtensionHours;
   /// If enabled the module will durably store platform-specific security tokens that are obtained during login flows. Defaults to `false`.
-  final bool? tokenStoreEnabled;
+  final pulumi.Input<bool>? tokenStoreEnabled;
   /// A `twitter` block as defined below.
-  final SlotAuthSettingsTwitter? twitter;
+  final pulumi.Input<SlotAuthSettingsTwitter>? twitter;
   /// The action to take when an unauthenticated client attempts to access the app. Possible values are `AllowAnonymous` and `RedirectToLoginPage`.
-  final String? unauthenticatedClientAction;
+  final pulumi.Input<String>? unauthenticatedClientAction;
 
   /// Creates a new [SlotAuthSettings].
   /// [activeDirectory] A `active_directory` block as defined below.
@@ -72,39 +73,39 @@ class SlotAuthSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectory': ?activeDirectory == null ? null : activeDirectory!.toMap(),
+      'activeDirectory': ?pulumi.Input.mapOptionalInputValue<SlotAuthSettingsActiveDirectory, Map<String, dynamic>>(activeDirectory, (value) => value.toMap()),
       'additionalLoginParams': ?additionalLoginParams,
       'allowedExternalRedirectUrls': ?allowedExternalRedirectUrls,
       'defaultProvider': ?defaultProvider,
       'enabled': enabled,
-      'facebook': ?facebook == null ? null : facebook!.toMap(),
-      'google': ?google == null ? null : google!.toMap(),
+      'facebook': ?pulumi.Input.mapOptionalInputValue<SlotAuthSettingsFacebook, Map<String, dynamic>>(facebook, (value) => value.toMap()),
+      'google': ?pulumi.Input.mapOptionalInputValue<SlotAuthSettingsGoogle, Map<String, dynamic>>(google, (value) => value.toMap()),
       'issuer': ?issuer,
-      'microsoft': ?microsoft == null ? null : microsoft!.toMap(),
+      'microsoft': ?pulumi.Input.mapOptionalInputValue<SlotAuthSettingsMicrosoft, Map<String, dynamic>>(microsoft, (value) => value.toMap()),
       'runtimeVersion': ?runtimeVersion,
       'tokenRefreshExtensionHours': ?tokenRefreshExtensionHours,
       'tokenStoreEnabled': ?tokenStoreEnabled,
-      'twitter': ?twitter == null ? null : twitter!.toMap(),
+      'twitter': ?pulumi.Input.mapOptionalInputValue<SlotAuthSettingsTwitter, Map<String, dynamic>>(twitter, (value) => value.toMap()),
       'unauthenticatedClientAction': ?unauthenticatedClientAction,
     };
   }
 
   factory SlotAuthSettings.fromMap(Map<String, dynamic> map) {
     return SlotAuthSettings(
-      activeDirectory: map['activeDirectory'] == null ? null : SlotAuthSettingsActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>()),
-      additionalLoginParams: map['additionalLoginParams'] == null ? null : (map['additionalLoginParams'] as Map).cast<String, String>(),
-      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : (map['allowedExternalRedirectUrls'] as List).cast<String>(),
-      defaultProvider: map['defaultProvider'] == null ? null : map['defaultProvider'] as String,
-      enabled: map['enabled'] as bool,
-      facebook: map['facebook'] == null ? null : SlotAuthSettingsFacebook.fromMap((map['facebook'] as Map).cast<String, dynamic>()),
-      google: map['google'] == null ? null : SlotAuthSettingsGoogle.fromMap((map['google'] as Map).cast<String, dynamic>()),
-      issuer: map['issuer'] == null ? null : map['issuer'] as String,
-      microsoft: map['microsoft'] == null ? null : SlotAuthSettingsMicrosoft.fromMap((map['microsoft'] as Map).cast<String, dynamic>()),
-      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
-      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : map['tokenRefreshExtensionHours'] as double,
-      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : map['tokenStoreEnabled'] as bool,
-      twitter: map['twitter'] == null ? null : SlotAuthSettingsTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>()),
-      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : map['unauthenticatedClientAction'] as String,
+      activeDirectory: map['activeDirectory'] == null ? null : (SlotAuthSettingsActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
+      additionalLoginParams: map['additionalLoginParams'] == null ? null : ((map['additionalLoginParams'] as Map).cast<String, String>()).input(),
+      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls'] as List).cast<String>()).input(),
+      defaultProvider: map['defaultProvider'] == null ? null : (map['defaultProvider'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      facebook: map['facebook'] == null ? null : (SlotAuthSettingsFacebook.fromMap((map['facebook'] as Map).cast<String, dynamic>())).input(),
+      google: map['google'] == null ? null : (SlotAuthSettingsGoogle.fromMap((map['google'] as Map).cast<String, dynamic>())).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      microsoft: map['microsoft'] == null ? null : (SlotAuthSettingsMicrosoft.fromMap((map['microsoft'] as Map).cast<String, dynamic>())).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : (map['tokenRefreshExtensionHours'] as double).input(),
+      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled'] as bool).input(),
+      twitter: map['twitter'] == null ? null : (SlotAuthSettingsTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>())).input(),
+      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : (map['unauthenticatedClientAction'] as String).input(),
     );
   }
 }

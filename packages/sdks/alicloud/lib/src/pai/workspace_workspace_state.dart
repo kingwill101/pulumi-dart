@@ -30,19 +30,13 @@ class WorkspaceWorkspaceState {
   /// [status] Workspace state, possible values:
   /// [workspaceName] The workspace name. The format is as follows:
   WorkspaceWorkspaceState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<String>>? envTypes,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      envTypes = pulumi.Input.asOptionalInput<List<String>>(envTypes),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.envTypes,
+    this.status,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class WorkspaceWorkspaceState {
 
   factory WorkspaceWorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceWorkspaceState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      envTypes: map['envTypes'] == null ? null : pulumi.Output.create<List<String>>((map['envTypes'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      envTypes: map['envTypes'] == null ? null : ((map['envTypes'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

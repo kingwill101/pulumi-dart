@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The auto provisioning configuration.
 class CustomRolloutSpecificationAutoProvisionConfigResponse {
-  final bool? resourceGraph;
-  final bool? storage;
+  final pulumi.Input<bool>? resourceGraph;
+  final pulumi.Input<bool>? storage;
 
   /// Creates a new [CustomRolloutSpecificationAutoProvisionConfigResponse].
   /// [resourceGraph] Optional.
@@ -23,8 +24,8 @@ class CustomRolloutSpecificationAutoProvisionConfigResponse {
 
   factory CustomRolloutSpecificationAutoProvisionConfigResponse.fromMap(Map<String, dynamic> map) {
     return CustomRolloutSpecificationAutoProvisionConfigResponse(
-      resourceGraph: map['resourceGraph'] == null ? null : map['resourceGraph'] as bool,
-      storage: map['storage'] == null ? null : map['storage'] as bool,
+      resourceGraph: map['resourceGraph'] == null ? null : (map['resourceGraph'] as bool).input(),
+      storage: map['storage'] == null ? null : (map['storage'] as bool).input(),
     );
   }
 }

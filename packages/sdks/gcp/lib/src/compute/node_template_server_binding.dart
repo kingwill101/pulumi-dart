@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeTemplateServerBinding {
   /// Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
@@ -14,7 +15,7 @@ class NodeTemplateServerBinding {
   /// additional licenses when maintenance occurs. However, VMs on such
   /// nodes will experience outages while maintenance is applied.
   /// Possible values are: `RESTART_NODE_ON_ANY_SERVER`, `RESTART_NODE_ON_MINIMAL_SERVERS`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [NodeTemplateServerBinding].
   /// [type] Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
@@ -30,7 +31,7 @@ class NodeTemplateServerBinding {
 
   factory NodeTemplateServerBinding.fromMap(Map<String, dynamic> map) {
     return NodeTemplateServerBinding(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

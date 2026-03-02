@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobDestinationDataSourceSetting {
   /// Destination data source name
-  final String? dataSourceName;
+  final pulumi.Input<String>? dataSourceName;
 
   /// Creates a new [DiJobDestinationDataSourceSetting].
   /// [dataSourceName] Destination data source name
@@ -19,7 +20,7 @@ class DiJobDestinationDataSourceSetting {
 
   factory DiJobDestinationDataSourceSetting.fromMap(Map<String, dynamic> map) {
     return DiJobDestinationDataSourceSetting(
-      dataSourceName: map['dataSourceName'] == null ? null : map['dataSourceName'] as String,
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
     );
   }
 }

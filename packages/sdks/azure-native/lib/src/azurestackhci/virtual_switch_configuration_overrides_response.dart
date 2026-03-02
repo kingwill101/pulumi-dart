@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The VirtualSwitchConfigurationOverrides of a cluster.
 class VirtualSwitchConfigurationOverridesResponse {
   /// Enable IoV for Virtual Switch
-  final String enableIov;
+  final pulumi.Input<String> enableIov;
   /// Load Balancing Algorithm for Virtual Switch
-  final String loadBalancingAlgorithm;
+  final pulumi.Input<String> loadBalancingAlgorithm;
 
   /// Creates a new [VirtualSwitchConfigurationOverridesResponse].
   /// [enableIov] Enable IoV for Virtual Switch
@@ -25,8 +26,8 @@ class VirtualSwitchConfigurationOverridesResponse {
 
   factory VirtualSwitchConfigurationOverridesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualSwitchConfigurationOverridesResponse(
-      enableIov: map['enableIov'] as String,
-      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] as String,
+      enableIov: (map['enableIov'] as String).input(),
+      loadBalancingAlgorithm: (map['loadBalancingAlgorithm'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskTaskReportConfigReportOverrides {
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to delete in your destination location. This only applies if you configure your task to delete data in the destination that isn't in the source. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
-  final String? deletedOverride;
+  final pulumi.Input<String>? deletedOverride;
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to skip during your transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
-  final String? skippedOverride;
+  final pulumi.Input<String>? skippedOverride;
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
-  final String? transferredOverride;
+  final pulumi.Input<String>? transferredOverride;
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to verify at the end of your transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
   ///
   /// > **NOTE:** If any `report_overrides` are set to the same value as `task_report_config.report_level`, they will always be flagged as changed. Only set overrides to a value that differs from `task_report_config.report_level`.
-  final String? verifiedOverride;
+  final pulumi.Input<String>? verifiedOverride;
 
   /// Creates a new [TaskTaskReportConfigReportOverrides].
   /// [deletedOverride] Specifies the level of reporting for the files, objects, and directories that DataSync attempted to delete in your destination location. This only applies if you configure your task to delete data in the destination that isn't in the source. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
@@ -36,10 +37,10 @@ class TaskTaskReportConfigReportOverrides {
 
   factory TaskTaskReportConfigReportOverrides.fromMap(Map<String, dynamic> map) {
     return TaskTaskReportConfigReportOverrides(
-      deletedOverride: map['deletedOverride'] == null ? null : map['deletedOverride'] as String,
-      skippedOverride: map['skippedOverride'] == null ? null : map['skippedOverride'] as String,
-      transferredOverride: map['transferredOverride'] == null ? null : map['transferredOverride'] as String,
-      verifiedOverride: map['verifiedOverride'] == null ? null : map['verifiedOverride'] as String,
+      deletedOverride: map['deletedOverride'] == null ? null : (map['deletedOverride'] as String).input(),
+      skippedOverride: map['skippedOverride'] == null ? null : (map['skippedOverride'] as String).input(),
+      transferredOverride: map['transferredOverride'] == null ? null : (map['transferredOverride'] as String).input(),
+      verifiedOverride: map['verifiedOverride'] == null ? null : (map['verifiedOverride'] as String).input(),
     );
   }
 }

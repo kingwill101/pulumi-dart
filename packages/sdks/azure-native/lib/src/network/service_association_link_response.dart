@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ServiceAssociationLink resource.
 class ServiceAssociationLinkResponse {
   /// If true, the resource can be deleted.
-  final bool? allowDelete;
+  final pulumi.Input<bool>? allowDelete;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Link to the external resource.
-  final String? link;
+  final pulumi.Input<String>? link;
   /// Resource type of the linked resource.
-  final String? linkedResourceType;
+  final pulumi.Input<String>? linkedResourceType;
   /// A list of locations.
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the service association link resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServiceAssociationLinkResponse].
   /// [allowDelete] If true, the resource can be deleted.
@@ -60,15 +61,15 @@ class ServiceAssociationLinkResponse {
 
   factory ServiceAssociationLinkResponse.fromMap(Map<String, dynamic> map) {
     return ServiceAssociationLinkResponse(
-      allowDelete: map['allowDelete'] == null ? null : map['allowDelete'] as bool,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      link: map['link'] == null ? null : map['link'] as String,
-      linkedResourceType: map['linkedResourceType'] == null ? null : map['linkedResourceType'] as String,
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      allowDelete: map['allowDelete'] == null ? null : (map['allowDelete'] as bool).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      link: map['link'] == null ? null : (map['link'] as String).input(),
+      linkedResourceType: map['linkedResourceType'] == null ? null : (map['linkedResourceType'] as String).input(),
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

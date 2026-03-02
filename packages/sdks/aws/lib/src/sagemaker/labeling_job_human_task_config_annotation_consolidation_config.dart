@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LabelingJobHumanTaskConfigAnnotationConsolidationConfig {
   /// ARN of a Lambda function that implements the logic for annotation consolidation and to process output data.
-  final String annotationConsolidationLambdaArn;
+  final pulumi.Input<String> annotationConsolidationLambdaArn;
 
   /// Creates a new [LabelingJobHumanTaskConfigAnnotationConsolidationConfig].
   /// [annotationConsolidationLambdaArn] ARN of a Lambda function that implements the logic for annotation consolidation and to process output data.
@@ -19,7 +20,7 @@ class LabelingJobHumanTaskConfigAnnotationConsolidationConfig {
 
   factory LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfigAnnotationConsolidationConfig(
-      annotationConsolidationLambdaArn: map['annotationConsolidationLambdaArn'] as String,
+      annotationConsolidationLambdaArn: (map['annotationConsolidationLambdaArn'] as String).input(),
     );
   }
 }

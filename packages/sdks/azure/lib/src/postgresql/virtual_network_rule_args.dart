@@ -31,17 +31,12 @@ class VirtualNetworkRuleArgs {
   /// [serverName] The name of the SQL Server to which this PostgreSQL virtual network rule will be applied to. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet that the PostgreSQL server will be connected to.
   VirtualNetworkRuleArgs({
-    pulumi.Output<bool>? ignoreMissingVnetServiceEndpoint,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> subnetId,
-  }) :
-      ignoreMissingVnetServiceEndpoint = pulumi.Input.asOptionalInput<bool>(ignoreMissingVnetServiceEndpoint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    this.ignoreMissingVnetServiceEndpoint,
+    this.name,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class VirtualNetworkRuleArgs {
 
   factory VirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleArgs(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : pulumi.Output.create<bool>(map['ignoreMissingVnetServiceEndpoint'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

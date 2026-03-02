@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CORS details.
 class CorsRule {
   /// The request headers that the origin domain may specify on the CORS request.
-  final List<String>? allowedHeaders;
+  final pulumi.Input<List<String>>? allowedHeaders;
   /// The methods (HTTP request verbs) that the origin domain may use for a CORS request.
-  final List<String>? allowedMethods;
+  final pulumi.Input<List<String>>? allowedMethods;
   /// The origin domains that are permitted to make a request against the service via CORS.
-  final List<String> allowedOrigins;
+  final pulumi.Input<List<String>> allowedOrigins;
   /// The response headers to expose to CORS clients.
-  final List<String>? exposedHeaders;
+  final pulumi.Input<List<String>>? exposedHeaders;
   /// The number of seconds that the client/browser should cache a preflight response.
-  final int? maxAgeInSeconds;
+  final pulumi.Input<int>? maxAgeInSeconds;
 
   /// Creates a new [CorsRule].
   /// [allowedHeaders] The request headers that the origin domain may specify on the CORS request.
@@ -40,11 +41,11 @@ class CorsRule {
 
   factory CorsRule.fromMap(Map<String, dynamic> map) {
     return CorsRule(
-      allowedHeaders: map['allowedHeaders'] == null ? null : (map['allowedHeaders'] as List).cast<String>(),
-      allowedMethods: map['allowedMethods'] == null ? null : (map['allowedMethods'] as List).cast<String>(),
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
-      exposedHeaders: map['exposedHeaders'] == null ? null : (map['exposedHeaders'] as List).cast<String>(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : map['maxAgeInSeconds'] as int,
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
+      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders'] as List).cast<String>()).input(),
+      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds'] as int).input(),
     );
   }
 }

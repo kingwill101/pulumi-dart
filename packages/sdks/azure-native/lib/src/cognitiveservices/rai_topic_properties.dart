@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RAI Custom Topic properties.
 class RaiTopicProperties {
   /// Creation time of the custom topic.
-  final String? createdAt;
+  final pulumi.Input<String>? createdAt;
   /// Description of the custom topic.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Failed reason if the status is Failed.
-  final String? failedReason;
+  final pulumi.Input<String>? failedReason;
   /// Last modified time of the custom topic.
-  final String? lastModifiedAt;
+  final pulumi.Input<String>? lastModifiedAt;
   /// Sample blob url for the custom topic.
-  final String? sampleBlobUrl;
+  final pulumi.Input<String>? sampleBlobUrl;
   /// Status of the custom topic.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The unique identifier of the custom topic.
-  final String? topicId;
+  final pulumi.Input<String>? topicId;
   /// The name of the custom topic.
-  final String? topicName;
+  final pulumi.Input<String>? topicName;
 
   /// Creates a new [RaiTopicProperties].
   /// [createdAt] Creation time of the custom topic.
@@ -55,14 +56,14 @@ class RaiTopicProperties {
 
   factory RaiTopicProperties.fromMap(Map<String, dynamic> map) {
     return RaiTopicProperties(
-      createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      failedReason: map['failedReason'] == null ? null : map['failedReason'] as String,
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : map['lastModifiedAt'] as String,
-      sampleBlobUrl: map['sampleBlobUrl'] == null ? null : map['sampleBlobUrl'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      topicId: map['topicId'] == null ? null : map['topicId'] as String,
-      topicName: map['topicName'] == null ? null : map['topicName'] as String,
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      failedReason: map['failedReason'] == null ? null : (map['failedReason'] as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
+      sampleBlobUrl: map['sampleBlobUrl'] == null ? null : (map['sampleBlobUrl'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The activation properties of the connected registry.
 class ActivationPropertiesResponse {
   /// The activation status of the connected registry.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ActivationPropertiesResponse].
   /// [status] The activation status of the connected registry.
@@ -20,7 +21,7 @@ class ActivationPropertiesResponse {
 
   factory ActivationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ActivationPropertiesResponse(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

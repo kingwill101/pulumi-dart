@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
-  final Map<String, String>? digest;
-  final String? uri;
+  final pulumi.Input<Map<String, String>>? digest;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial].
   /// [digest] Optional.
@@ -23,8 +24,8 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(
-      digest: map['digest'] == null ? null : (map['digest'] as Map).cast<String, String>(),
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      digest: map['digest'] == null ? null : ((map['digest'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

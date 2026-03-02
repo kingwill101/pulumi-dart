@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BgpSpeakerV2AdvertisedRoute {
-  final String? destination;
-  final String? nextHop;
+  final pulumi.Input<String>? destination;
+  final pulumi.Input<String>? nextHop;
 
   /// Creates a new [BgpSpeakerV2AdvertisedRoute].
   /// [destination] Optional.
@@ -22,8 +23,8 @@ class BgpSpeakerV2AdvertisedRoute {
 
   factory BgpSpeakerV2AdvertisedRoute.fromMap(Map<String, dynamic> map) {
     return BgpSpeakerV2AdvertisedRoute(
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      nextHop: map['nextHop'] == null ? null : map['nextHop'] as String,
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PermissionsLfTag {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final String? catalogId;
+  final pulumi.Input<String>? catalogId;
   /// The key-name for the tag.
-  final String key;
+  final pulumi.Input<String> key;
   /// A list of possible values an attribute can take.
   ///
   /// The following argument is optional:
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [PermissionsLfTag].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -31,9 +32,9 @@ class PermissionsLfTag {
 
   factory PermissionsLfTag.fromMap(Map<String, dynamic> map) {
     return PermissionsLfTag(
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleDailyRecurrence {
   /// The time each day when the schedule takes effect.
-  final String time;
+  final pulumi.Input<String> time;
 
   /// Creates a new [ScheduleDailyRecurrence].
   /// [time] The time each day when the schedule takes effect.
@@ -19,7 +20,7 @@ class ScheduleDailyRecurrence {
 
   factory ScheduleDailyRecurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleDailyRecurrence(
-      time: map['time'] as String,
+      time: (map['time'] as String).input(),
     );
   }
 }

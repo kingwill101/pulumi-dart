@@ -33,23 +33,15 @@ class DatabaseUserState {
   /// [role] Role for the database user. The value will be either "primary" or "normal".
   /// [settings] Contains optional settings for the user.
   DatabaseUserState({
-    pulumi.Output<String>? accessCert,
-    pulumi.Output<String>? accessKey,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? mysqlAuthPlugin,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? role,
-    pulumi.Output<List<DatabaseUserSetting>>? settings,
-  }) :
-      accessCert = pulumi.Input.asOptionalInput<String>(accessCert),
-      accessKey = pulumi.Input.asOptionalInput<String>(accessKey),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      mysqlAuthPlugin = pulumi.Input.asOptionalInput<String>(mysqlAuthPlugin),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      settings = pulumi.Input.asOptionalInput<List<DatabaseUserSetting>>(settings);
+    this.accessCert,
+    this.accessKey,
+    this.clusterId,
+    this.mysqlAuthPlugin,
+    this.name,
+    this.password,
+    this.role,
+    this.settings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class DatabaseUserState {
 
   factory DatabaseUserState.fromMap(Map<String, dynamic> map) {
     return DatabaseUserState(
-      accessCert: map['accessCert'] == null ? null : pulumi.Output.create<String>(map['accessCert'] as String),
-      accessKey: map['accessKey'] == null ? null : pulumi.Output.create<String>(map['accessKey'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : pulumi.Output.create<String>(map['mysqlAuthPlugin'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<List<DatabaseUserSetting>>(pulumi.Input.decodeList<DatabaseUserSetting>(map['settings'], (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))),
+      accessCert: map['accessCert'] == null ? null : (map['accessCert'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : (map['mysqlAuthPlugin'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSetting>(map['settings'], (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

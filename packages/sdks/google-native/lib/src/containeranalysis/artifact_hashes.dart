@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a hash object for use in Materials and Products.
 class ArtifactHashes {
-  final String? sha256;
+  final pulumi.Input<String>? sha256;
 
   /// Creates a new [ArtifactHashes].
   /// [sha256] Optional.
@@ -19,7 +20,7 @@ class ArtifactHashes {
 
   factory ArtifactHashes.fromMap(Map<String, dynamic> map) {
     return ArtifactHashes(
-      sha256: map['sha256'] == null ? null : map['sha256'] as String,
+      sha256: map['sha256'] == null ? null : (map['sha256'] as String).input(),
     );
   }
 }

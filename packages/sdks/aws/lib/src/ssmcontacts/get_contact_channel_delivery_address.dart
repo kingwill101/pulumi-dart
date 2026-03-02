@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetContactChannelDeliveryAddress {
-  final String simpleAddress;
+  final pulumi.Input<String> simpleAddress;
 
   /// Creates a new [GetContactChannelDeliveryAddress].
   /// [simpleAddress] Required.
@@ -18,7 +19,7 @@ class GetContactChannelDeliveryAddress {
 
   factory GetContactChannelDeliveryAddress.fromMap(Map<String, dynamic> map) {
     return GetContactChannelDeliveryAddress(
-      simpleAddress: map['simpleAddress'] as String,
+      simpleAddress: (map['simpleAddress'] as String).input(),
     );
   }
 }

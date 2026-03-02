@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
   /// Hours of day in 24 hour format. Should be from 0 to 23.
-  final int hours;
+  final pulumi.Input<int> hours;
   /// Minutes of hour of day. Currently, only the value 0 is supported.
-  final int? minutes;
+  final pulumi.Input<int>? minutes;
   /// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
-  final int? nanos;
+  final pulumi.Input<int>? nanos;
   /// Seconds of minutes of the time. Currently, only the value 0 is supported.
-  final int? seconds;
+  final pulumi.Input<int>? seconds;
 
   /// Creates a new [ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime].
   /// [hours] Hours of day in 24 hour format. Should be from 0 to 23.
@@ -34,10 +35,10 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
 
   factory ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime(
-      hours: map['hours'] as int,
-      minutes: map['minutes'] == null ? null : map['minutes'] as int,
-      nanos: map['nanos'] == null ? null : map['nanos'] as int,
-      seconds: map['seconds'] == null ? null : map['seconds'] as int,
+      hours: (map['hours'] as int).input(),
+      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds'] as int).input(),
     );
   }
 }

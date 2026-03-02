@@ -34,25 +34,16 @@ class CloudFormationStackState {
   /// [tags] A list of tags to associate with this stack. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   CloudFormationStackState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<List<String>>? capabilities,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? outputs,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? semanticVersion,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      capabilities = pulumi.Input.asOptionalInput<List<String>>(capabilities),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputs = pulumi.Input.asOptionalInput<Map<String, String>>(outputs),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      semanticVersion = pulumi.Input.asOptionalInput<String>(semanticVersion),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.applicationId,
+    this.capabilities,
+    this.name,
+    this.outputs,
+    this.parameters,
+    this.region,
+    this.semanticVersion,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class CloudFormationStackState {
 
   factory CloudFormationStackState.fromMap(Map<String, dynamic> map) {
     return CloudFormationStackState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      capabilities: map['capabilities'] == null ? null : pulumi.Output.create<List<String>>((map['capabilities'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputs: map['outputs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['outputs'] as Map).cast<String, String>()),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      semanticVersion: map['semanticVersion'] == null ? null : pulumi.Output.create<String>(map['semanticVersion'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputs: map['outputs'] == null ? null : ((map['outputs'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      semanticVersion: map['semanticVersion'] == null ? null : (map['semanticVersion'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -31,23 +31,15 @@ class AlidnsInstanceState {
   /// [versionCode] Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
   /// [versionName] Paid package version name.
   AlidnsInstanceState({
-    pulumi.Output<String>? dnsSecurity,
-    pulumi.Output<String>? domainNumbers,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<int>? period,
-    pulumi.Output<int>? renewPeriod,
-    pulumi.Output<String>? renewalStatus,
-    pulumi.Output<String>? versionCode,
-    pulumi.Output<String>? versionName,
-  }) :
-      dnsSecurity = pulumi.Input.asOptionalInput<String>(dnsSecurity),
-      domainNumbers = pulumi.Input.asOptionalInput<String>(domainNumbers),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      renewPeriod = pulumi.Input.asOptionalInput<int>(renewPeriod),
-      renewalStatus = pulumi.Input.asOptionalInput<String>(renewalStatus),
-      versionCode = pulumi.Input.asOptionalInput<String>(versionCode),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+    this.dnsSecurity,
+    this.domainNumbers,
+    this.paymentType,
+    this.period,
+    this.renewPeriod,
+    this.renewalStatus,
+    this.versionCode,
+    this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class AlidnsInstanceState {
 
   factory AlidnsInstanceState.fromMap(Map<String, dynamic> map) {
     return AlidnsInstanceState(
-      dnsSecurity: map['dnsSecurity'] == null ? null : pulumi.Output.create<String>(map['dnsSecurity'] as String),
-      domainNumbers: map['domainNumbers'] == null ? null : pulumi.Output.create<String>(map['domainNumbers'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      renewPeriod: map['renewPeriod'] == null ? null : pulumi.Output.create<int>(map['renewPeriod'] as int),
-      renewalStatus: map['renewalStatus'] == null ? null : pulumi.Output.create<String>(map['renewalStatus'] as String),
-      versionCode: map['versionCode'] == null ? null : pulumi.Output.create<String>(map['versionCode'] as String),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+      dnsSecurity: map['dnsSecurity'] == null ? null : (map['dnsSecurity'] as String).input(),
+      domainNumbers: map['domainNumbers'] == null ? null : (map['domainNumbers'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod'] as int).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
+      versionCode: map['versionCode'] == null ? null : (map['versionCode'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

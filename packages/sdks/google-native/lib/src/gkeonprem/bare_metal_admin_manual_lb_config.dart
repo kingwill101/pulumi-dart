@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BareMetalAdminManualLbConfig represents configuration parameters for a manual load balancer.
 class BareMetalAdminManualLbConfig {
   /// Whether manual load balancing is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [BareMetalAdminManualLbConfig].
   /// [enabled] Whether manual load balancing is enabled.
@@ -20,7 +21,7 @@ class BareMetalAdminManualLbConfig {
 
   factory BareMetalAdminManualLbConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminManualLbConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class RegistryPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryId] The registry ID where the registry was created.
   RegistryPolicyState({
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-  }) :
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId);
+    this.policy,
+    this.region,
+    this.registryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class RegistryPolicyState {
 
   factory RegistryPolicyState.fromMap(Map<String, dynamic> map) {
     return RegistryPolicyState(
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
     );
   }
 }

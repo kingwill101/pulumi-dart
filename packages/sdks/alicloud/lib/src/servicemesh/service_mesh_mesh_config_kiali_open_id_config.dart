@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceMeshMeshConfigKialiOpenIdConfig {
   /// The client id provided by the OIDC application
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The client secret provided by the OIDC application
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// OIDC应用的Issuer URI
-  final String? issuerUri;
+  final pulumi.Input<String>? issuerUri;
   /// The scope of the mesh topology request to the OIDC application
-  final List<String>? scopes;
+  final pulumi.Input<List<String>>? scopes;
 
   /// Creates a new [ServiceMeshMeshConfigKialiOpenIdConfig].
   /// [clientId] The client id provided by the OIDC application
@@ -34,10 +35,10 @@ class ServiceMeshMeshConfigKialiOpenIdConfig {
 
   factory ServiceMeshMeshConfigKialiOpenIdConfig.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigKialiOpenIdConfig(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      issuerUri: map['issuerUri'] == null ? null : map['issuerUri'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

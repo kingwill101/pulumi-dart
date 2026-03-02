@@ -70,35 +70,21 @@ class CloudVmClusterArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] Various properties and settings associated with Exadata VM cluster.
   CloudVmClusterArgs({
-    pulumi.Output<String>? backupOdbSubnet,
-    pulumi.Output<String>? backupSubnetCidr,
-    pulumi.Output<String>? cidr,
-    required pulumi.Output<String> cloudVmClusterId,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> exadataInfrastructure,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? odbNetwork,
-    pulumi.Output<String>? odbSubnet,
-    pulumi.Output<String>? project,
-    pulumi.Output<CloudVmClusterProperties>? properties,
-  }) :
-      backupOdbSubnet = pulumi.Input.asOptionalInput<String>(backupOdbSubnet),
-      backupSubnetCidr = pulumi.Input.asOptionalInput<String>(backupSubnetCidr),
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      cloudVmClusterId = pulumi.Input.asInput<String>(cloudVmClusterId),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      exadataInfrastructure = pulumi.Input.asInput<String>(exadataInfrastructure),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      odbNetwork = pulumi.Input.asOptionalInput<String>(odbNetwork),
-      odbSubnet = pulumi.Input.asOptionalInput<String>(odbSubnet),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      properties = pulumi.Input.asOptionalInput<CloudVmClusterProperties>(properties);
+    this.backupOdbSubnet,
+    this.backupSubnetCidr,
+    this.cidr,
+    required this.cloudVmClusterId,
+    this.deletionProtection,
+    this.displayName,
+    required this.exadataInfrastructure,
+    this.labels,
+    required this.location,
+    this.network,
+    this.odbNetwork,
+    this.odbSubnet,
+    this.project,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -121,20 +107,20 @@ class CloudVmClusterArgs {
 
   factory CloudVmClusterArgs.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterArgs(
-      backupOdbSubnet: map['backupOdbSubnet'] == null ? null : pulumi.Output.create<String>(map['backupOdbSubnet'] as String),
-      backupSubnetCidr: map['backupSubnetCidr'] == null ? null : pulumi.Output.create<String>(map['backupSubnetCidr'] as String),
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      cloudVmClusterId: pulumi.Output.create<String>(map['cloudVmClusterId'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      exadataInfrastructure: pulumi.Output.create<String>(map['exadataInfrastructure'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      odbNetwork: map['odbNetwork'] == null ? null : pulumi.Output.create<String>(map['odbNetwork'] as String),
-      odbSubnet: map['odbSubnet'] == null ? null : pulumi.Output.create<String>(map['odbSubnet'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CloudVmClusterProperties>(CloudVmClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      backupOdbSubnet: map['backupOdbSubnet'] == null ? null : (map['backupOdbSubnet'] as String).input(),
+      backupSubnetCidr: map['backupSubnetCidr'] == null ? null : (map['backupSubnetCidr'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      cloudVmClusterId: (map['cloudVmClusterId'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      exadataInfrastructure: (map['exadataInfrastructure'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      odbNetwork: map['odbNetwork'] == null ? null : (map['odbNetwork'] as String).input(),
+      odbSubnet: map['odbSubnet'] == null ? null : (map['odbSubnet'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      properties: map['properties'] == null ? null : (CloudVmClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

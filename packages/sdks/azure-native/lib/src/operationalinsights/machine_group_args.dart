@@ -36,23 +36,15 @@ class MachineGroupArgs {
   /// [resourceGroupName] Resource group name within the specified subscriptionId.
   /// [workspaceName] OMS workspace containing the resources of interest.
   MachineGroupArgs({
-    pulumi.Output<int>? count,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? groupType,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? machineGroupName,
-    pulumi.Output<List<MachineReferenceWithHints>>? machines,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      count = pulumi.Input.asOptionalInput<int>(count),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      groupType = pulumi.Input.asOptionalInput<String>(groupType),
-      kind = pulumi.Input.asInput<String>(kind),
-      machineGroupName = pulumi.Input.asOptionalInput<String>(machineGroupName),
-      machines = pulumi.Input.asOptionalInput<List<MachineReferenceWithHints>>(machines),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.count,
+    required this.displayName,
+    this.groupType,
+    required this.kind,
+    this.machineGroupName,
+    this.machines,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class MachineGroupArgs {
 
   factory MachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return MachineGroupArgs(
-      count: map['count'] == null ? null : pulumi.Output.create<int>(map['count'] as int),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      groupType: map['groupType'] == null ? null : pulumi.Output.create<String>(map['groupType'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      machineGroupName: map['machineGroupName'] == null ? null : pulumi.Output.create<String>(map['machineGroupName'] as String),
-      machines: map['machines'] == null ? null : pulumi.Output.create<List<MachineReferenceWithHints>>(pulumi.Input.decodeList<MachineReferenceWithHints>(map['machines'], (value) => MachineReferenceWithHints.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      displayName: (map['displayName'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      machineGroupName: map['machineGroupName'] == null ? null : (map['machineGroupName'] as String).input(),
+      machines: map['machines'] == null ? null : (pulumi.Input.decodeList<MachineReferenceWithHints>(map['machines'], (value) => MachineReferenceWithHints.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

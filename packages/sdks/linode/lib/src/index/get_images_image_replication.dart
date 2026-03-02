@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImageReplication {
   /// The region of an image replica.
-  final String region;
+  final pulumi.Input<String> region;
   /// The status of an image replica.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetImagesImageReplication].
   /// [region] The region of an image replica.
@@ -24,8 +25,8 @@ class GetImagesImageReplication {
 
   factory GetImagesImageReplication.fromMap(Map<String, dynamic> map) {
     return GetImagesImageReplication(
-      region: map['region'] as String,
-      status: map['status'] as String,
+      region: (map['region'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

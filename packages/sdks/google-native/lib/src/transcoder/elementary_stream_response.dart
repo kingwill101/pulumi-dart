@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'audio_stream_response.dart';
 import 'text_stream_response.dart';
 import 'video_stream_response.dart';
@@ -7,13 +8,13 @@ import 'video_stream_response.dart';
 /// Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
 class ElementaryStreamResponse {
   /// Encoding of an audio stream.
-  final AudioStreamResponse audioStream;
+  final pulumi.Input<AudioStreamResponse> audioStream;
   /// A unique key for this elementary stream.
-  final String key;
+  final pulumi.Input<String> key;
   /// Encoding of a text stream. For example, closed captions or subtitles.
-  final TextStreamResponse textStream;
+  final pulumi.Input<TextStreamResponse> textStream;
   /// Encoding of a video stream.
-  final VideoStreamResponse videoStream;
+  final pulumi.Input<VideoStreamResponse> videoStream;
 
   /// Creates a new [ElementaryStreamResponse].
   /// [audioStream] Encoding of an audio stream.
@@ -29,19 +30,19 @@ class ElementaryStreamResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioStream': audioStream.toMap(),
+      'audioStream': pulumi.Input.mapInputValue<AudioStreamResponse, Map<String, dynamic>>(audioStream, (value) => value.toMap()),
       'key': key,
-      'textStream': textStream.toMap(),
-      'videoStream': videoStream.toMap(),
+      'textStream': pulumi.Input.mapInputValue<TextStreamResponse, Map<String, dynamic>>(textStream, (value) => value.toMap()),
+      'videoStream': pulumi.Input.mapInputValue<VideoStreamResponse, Map<String, dynamic>>(videoStream, (value) => value.toMap()),
     };
   }
 
   factory ElementaryStreamResponse.fromMap(Map<String, dynamic> map) {
     return ElementaryStreamResponse(
-      audioStream: AudioStreamResponse.fromMap((map['audioStream'] as Map).cast<String, dynamic>()),
-      key: map['key'] as String,
-      textStream: TextStreamResponse.fromMap((map['textStream'] as Map).cast<String, dynamic>()),
-      videoStream: VideoStreamResponse.fromMap((map['videoStream'] as Map).cast<String, dynamic>()),
+      audioStream: (AudioStreamResponse.fromMap((map['audioStream'] as Map).cast<String, dynamic>())).input(),
+      key: (map['key'] as String).input(),
+      textStream: (TextStreamResponse.fromMap((map['textStream'] as Map).cast<String, dynamic>())).input(),
+      videoStream: (VideoStreamResponse.fromMap((map['videoStream'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

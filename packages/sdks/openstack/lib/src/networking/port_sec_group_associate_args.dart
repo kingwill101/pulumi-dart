@@ -28,15 +28,11 @@ class PortSecGroupAssociateArgs {
   /// [region] The region in which to obtain the V2 networking client.
   /// [securityGroupIds] A list of security group IDs to apply to
   PortSecGroupAssociateArgs({
-    pulumi.Output<bool>? enforce,
-    required pulumi.Output<String> portId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> securityGroupIds,
-  }) :
-      enforce = pulumi.Input.asOptionalInput<bool>(enforce),
-      portId = pulumi.Input.asInput<String>(portId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asInput<List<String>>(securityGroupIds);
+    this.enforce,
+    required this.portId,
+    this.region,
+    required this.securityGroupIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class PortSecGroupAssociateArgs {
 
   factory PortSecGroupAssociateArgs.fromMap(Map<String, dynamic> map) {
     return PortSecGroupAssociateArgs(
-      enforce: map['enforce'] == null ? null : pulumi.Output.create<bool>(map['enforce'] as bool),
-      portId: pulumi.Output.create<String>(map['portId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
+      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
+      portId: (map['portId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
     );
   }
 }

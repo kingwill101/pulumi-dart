@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectGroupInterconnect {
   /// The URL of an Interconnect in this group. All Interconnects in the group are unique.
-  final String? interconnect;
+  final pulumi.Input<String>? interconnect;
   /// The identifier for this object. Format specified above.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [InterconnectGroupInterconnect].
   /// [interconnect] The URL of an Interconnect in this group. All Interconnects in the group are unique.
@@ -24,8 +25,8 @@ class InterconnectGroupInterconnect {
 
   factory InterconnectGroupInterconnect.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupInterconnect(
-      interconnect: map['interconnect'] == null ? null : map['interconnect'] as String,
-      name: map['name'] as String,
+      interconnect: map['interconnect'] == null ? null : (map['interconnect'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Offer details for the marketplace that is selected by the user
 class LiftrBaseOfferDetailsResponse {
   /// Offer Id for the marketplace offer
-  final String offerId;
+  final pulumi.Input<String> offerId;
   /// Plan Id for the marketplace offer
-  final String planId;
+  final pulumi.Input<String> planId;
   /// Plan Name for the marketplace offer
-  final String? planName;
+  final pulumi.Input<String>? planName;
   /// Publisher Id for the marketplace offer
-  final String publisherId;
+  final pulumi.Input<String> publisherId;
   /// Plan Display Name for the marketplace offer
-  final String? termId;
+  final pulumi.Input<String>? termId;
   /// Plan Display Name for the marketplace offer
-  final String? termUnit;
+  final pulumi.Input<String>? termUnit;
 
   /// Creates a new [LiftrBaseOfferDetailsResponse].
   /// [offerId] Offer Id for the marketplace offer
@@ -45,12 +46,12 @@ class LiftrBaseOfferDetailsResponse {
 
   factory LiftrBaseOfferDetailsResponse.fromMap(Map<String, dynamic> map) {
     return LiftrBaseOfferDetailsResponse(
-      offerId: map['offerId'] as String,
-      planId: map['planId'] as String,
-      planName: map['planName'] == null ? null : map['planName'] as String,
-      publisherId: map['publisherId'] as String,
-      termId: map['termId'] == null ? null : map['termId'] as String,
-      termUnit: map['termUnit'] == null ? null : map['termUnit'] as String,
+      offerId: (map['offerId'] as String).input(),
+      planId: (map['planId'] as String).input(),
+      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
+      publisherId: (map['publisherId'] as String).input(),
+      termId: map['termId'] == null ? null : (map['termId'] as String).input(),
+      termUnit: map['termUnit'] == null ? null : (map['termUnit'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class ApplicationCertificateState {
   /// [type] The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
   /// [value] The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
   ApplicationCertificateState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? encoding,
-    pulumi.Output<String>? endDate,
-    pulumi.Output<String>? endDateRelative,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? startDate,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? value,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      encoding = pulumi.Input.asOptionalInput<String>(encoding),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      endDateRelative = pulumi.Input.asOptionalInput<String>(endDateRelative),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      startDate = pulumi.Input.asOptionalInput<String>(startDate),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.applicationId,
+    this.encoding,
+    this.endDate,
+    this.endDateRelative,
+    this.keyId,
+    this.startDate,
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ApplicationCertificateState {
 
   factory ApplicationCertificateState.fromMap(Map<String, dynamic> map) {
     return ApplicationCertificateState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      encoding: map['encoding'] == null ? null : pulumi.Output.create<String>(map['encoding'] as String),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<String>(map['endDate'] as String),
-      endDateRelative: map['endDateRelative'] == null ? null : pulumi.Output.create<String>(map['endDateRelative'] as String),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      startDate: map['startDate'] == null ? null : pulumi.Output.create<String>(map['startDate'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

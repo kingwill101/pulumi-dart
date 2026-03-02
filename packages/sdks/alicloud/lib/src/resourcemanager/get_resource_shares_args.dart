@@ -28,19 +28,13 @@ class GetResourceSharesArgs {
   /// [resourceShareOwner] The owner of resource share, Valid values: `Self` and `OtherAccounts`.
   /// [status] The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
   GetResourceSharesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceShareName,
-    required pulumi.Output<String> resourceShareOwner,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceShareName = pulumi.Input.asOptionalInput<String>(resourceShareName),
-      resourceShareOwner = pulumi.Input.asInput<String>(resourceShareOwner),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceShareName,
+    required this.resourceShareOwner,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetResourceSharesArgs {
 
   factory GetResourceSharesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceSharesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceShareName: map['resourceShareName'] == null ? null : pulumi.Output.create<String>(map['resourceShareName'] as String),
-      resourceShareOwner: pulumi.Output.create<String>(map['resourceShareOwner'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceShareName: map['resourceShareName'] == null ? null : (map['resourceShareName'] as String).input(),
+      resourceShareOwner: (map['resourceShareOwner'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

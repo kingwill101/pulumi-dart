@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBrokerNodesNodeInfoList {
   /// Attached elastic network interface of the broker
-  final String attachedEniId;
+  final pulumi.Input<String> attachedEniId;
   /// ID of the broker
-  final double brokerId;
+  final pulumi.Input<double> brokerId;
   /// Client subnet to which this broker node belongs
-  final String clientSubnet;
+  final pulumi.Input<String> clientSubnet;
   /// The client virtual private cloud (VPC) IP address
-  final String clientVpcIpAddress;
+  final pulumi.Input<String> clientVpcIpAddress;
   /// Set of endpoints for accessing the broker. This does not include ports
-  final List<String> endpoints;
+  final pulumi.Input<List<String>> endpoints;
   /// ARN of the node
-  final String nodeArn;
+  final pulumi.Input<String> nodeArn;
 
   /// Creates a new [GetBrokerNodesNodeInfoList].
   /// [attachedEniId] Attached elastic network interface of the broker
@@ -44,12 +45,12 @@ class GetBrokerNodesNodeInfoList {
 
   factory GetBrokerNodesNodeInfoList.fromMap(Map<String, dynamic> map) {
     return GetBrokerNodesNodeInfoList(
-      attachedEniId: map['attachedEniId'] as String,
-      brokerId: map['brokerId'] as double,
-      clientSubnet: map['clientSubnet'] as String,
-      clientVpcIpAddress: map['clientVpcIpAddress'] as String,
-      endpoints: (map['endpoints'] as List).cast<String>(),
-      nodeArn: map['nodeArn'] as String,
+      attachedEniId: (map['attachedEniId'] as String).input(),
+      brokerId: (map['brokerId'] as double).input(),
+      clientSubnet: (map['clientSubnet'] as String).input(),
+      clientVpcIpAddress: (map['clientVpcIpAddress'] as String).input(),
+      endpoints: ((map['endpoints'] as List).cast<String>()).input(),
+      nodeArn: (map['nodeArn'] as String).input(),
     );
   }
 }

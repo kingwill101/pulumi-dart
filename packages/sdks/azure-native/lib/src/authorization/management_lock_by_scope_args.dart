@@ -26,17 +26,12 @@ class ManagementLockByScopeArgs {
   /// [owners] The owners of the lock.
   /// [scope] The scope for the lock. When providing a scope for the assignment, use '/subscriptions/{subscriptionId}' for subscriptions, '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}' for resource groups, and '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePathIfPresent}/{resourceType}/{resourceName}' for resources.
   ManagementLockByScopeArgs({
-    required pulumi.Output<String> level,
-    pulumi.Output<String>? lockName,
-    pulumi.Output<String>? notes,
-    pulumi.Output<List<ManagementLockOwner>>? owners,
-    required pulumi.Output<String> scope,
-  }) :
-      level = pulumi.Input.asInput<String>(level),
-      lockName = pulumi.Input.asOptionalInput<String>(lockName),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      owners = pulumi.Input.asOptionalInput<List<ManagementLockOwner>>(owners),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.level,
+    this.lockName,
+    this.notes,
+    this.owners,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ManagementLockByScopeArgs {
 
   factory ManagementLockByScopeArgs.fromMap(Map<String, dynamic> map) {
     return ManagementLockByScopeArgs(
-      level: pulumi.Output.create<String>(map['level'] as String),
-      lockName: map['lockName'] == null ? null : pulumi.Output.create<String>(map['lockName'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      owners: map['owners'] == null ? null : pulumi.Output.create<List<ManagementLockOwner>>(pulumi.Input.decodeList<ManagementLockOwner>(map['owners'], (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      level: (map['level'] as String).input(),
+      lockName: map['lockName'] == null ? null : (map['lockName'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      owners: map['owners'] == null ? null : (pulumi.Input.decodeList<ManagementLockOwner>(map['owners'], (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'get_listener_rule_transform_url_rewrite_config_rewrite.dart';
 
 class GetListenerRuleTransformUrlRewriteConfig {
   /// Block for URL rewrite configuration. Detailed below.
-  final List<GetListenerRuleTransformUrlRewriteConfigRewrite>? rewrites;
+  final pulumi.Input<List<GetListenerRuleTransformUrlRewriteConfigRewrite>>? rewrites;
 
   /// Creates a new [GetListenerRuleTransformUrlRewriteConfig].
   /// [rewrites] Block for URL rewrite configuration. Detailed below.
@@ -15,13 +15,13 @@ class GetListenerRuleTransformUrlRewriteConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rewrites': ?rewrites == null ? null : pulumi.Input.encodeList<GetListenerRuleTransformUrlRewriteConfigRewrite, Map<String, dynamic>>(rewrites!, (value) => value.toMap()),
+      'rewrites': ?pulumi.Input.mapOptionalInputValue<List<GetListenerRuleTransformUrlRewriteConfigRewrite>, List<Map<String, dynamic>>>(rewrites, (value) => pulumi.Input.encodeList<GetListenerRuleTransformUrlRewriteConfigRewrite, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetListenerRuleTransformUrlRewriteConfig.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleTransformUrlRewriteConfig(
-      rewrites: map['rewrites'] == null ? null : pulumi.Input.decodeList<GetListenerRuleTransformUrlRewriteConfigRewrite>(map['rewrites'], (value) => GetListenerRuleTransformUrlRewriteConfigRewrite.fromMap((value as Map).cast<String, dynamic>())),
+      rewrites: map['rewrites'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleTransformUrlRewriteConfigRewrite>(map['rewrites'], (value) => GetListenerRuleTransformUrlRewriteConfigRewrite.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

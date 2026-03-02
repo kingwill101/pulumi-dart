@@ -21,15 +21,11 @@ class MongoUserDefinitionState {
   /// [password] The password for the Mongo User Definition.
   /// [username] The username for the Mongo User Definition. Changing this forces a new resource to be created.
   MongoUserDefinitionState({
-    pulumi.Output<String>? cosmosMongoDatabaseId,
-    pulumi.Output<List<String>>? inheritedRoleNames,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? username,
-  }) :
-      cosmosMongoDatabaseId = pulumi.Input.asOptionalInput<String>(cosmosMongoDatabaseId),
-      inheritedRoleNames = pulumi.Input.asOptionalInput<List<String>>(inheritedRoleNames),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.cosmosMongoDatabaseId,
+    this.inheritedRoleNames,
+    this.password,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class MongoUserDefinitionState {
 
   factory MongoUserDefinitionState.fromMap(Map<String, dynamic> map) {
     return MongoUserDefinitionState(
-      cosmosMongoDatabaseId: map['cosmosMongoDatabaseId'] == null ? null : pulumi.Output.create<String>(map['cosmosMongoDatabaseId'] as String),
-      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : pulumi.Output.create<List<String>>((map['inheritedRoleNames'] as List).cast<String>()),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      cosmosMongoDatabaseId: map['cosmosMongoDatabaseId'] == null ? null : (map['cosmosMongoDatabaseId'] as String).input(),
+      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames'] as List).cast<String>()).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

@@ -46,29 +46,18 @@ class DirectoryState {
   /// [scimSynchronizationStatus] SCIM Synchronization Status
   /// [userProvisioningConfiguration] User Provisioning configuration See `user_provisioning_configuration` below.
   DirectoryState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? directoryGlobalAccessStatus,
-    pulumi.Output<String>? directoryName,
-    pulumi.Output<DirectoryLoginPreference>? loginPreference,
-    pulumi.Output<DirectoryMfaAuthenticationSettingInfo>? mfaAuthenticationSettingInfo,
-    pulumi.Output<String>? mfaAuthenticationStatus,
-    pulumi.Output<DirectoryPasswordPolicy>? passwordPolicy,
-    pulumi.Output<DirectorySamlIdentityProviderConfiguration>? samlIdentityProviderConfiguration,
-    pulumi.Output<DirectorySamlServiceProvider>? samlServiceProvider,
-    pulumi.Output<String>? scimSynchronizationStatus,
-    pulumi.Output<DirectoryUserProvisioningConfiguration>? userProvisioningConfiguration,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      directoryGlobalAccessStatus = pulumi.Input.asOptionalInput<String>(directoryGlobalAccessStatus),
-      directoryName = pulumi.Input.asOptionalInput<String>(directoryName),
-      loginPreference = pulumi.Input.asOptionalInput<DirectoryLoginPreference>(loginPreference),
-      mfaAuthenticationSettingInfo = pulumi.Input.asOptionalInput<DirectoryMfaAuthenticationSettingInfo>(mfaAuthenticationSettingInfo),
-      mfaAuthenticationStatus = pulumi.Input.asOptionalInput<String>(mfaAuthenticationStatus),
-      passwordPolicy = pulumi.Input.asOptionalInput<DirectoryPasswordPolicy>(passwordPolicy),
-      samlIdentityProviderConfiguration = pulumi.Input.asOptionalInput<DirectorySamlIdentityProviderConfiguration>(samlIdentityProviderConfiguration),
-      samlServiceProvider = pulumi.Input.asOptionalInput<DirectorySamlServiceProvider>(samlServiceProvider),
-      scimSynchronizationStatus = pulumi.Input.asOptionalInput<String>(scimSynchronizationStatus),
-      userProvisioningConfiguration = pulumi.Input.asOptionalInput<DirectoryUserProvisioningConfiguration>(userProvisioningConfiguration);
+    this.createTime,
+    this.directoryGlobalAccessStatus,
+    this.directoryName,
+    this.loginPreference,
+    this.mfaAuthenticationSettingInfo,
+    this.mfaAuthenticationStatus,
+    this.passwordPolicy,
+    this.samlIdentityProviderConfiguration,
+    this.samlServiceProvider,
+    this.scimSynchronizationStatus,
+    this.userProvisioningConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class DirectoryState {
 
   factory DirectoryState.fromMap(Map<String, dynamic> map) {
     return DirectoryState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      directoryGlobalAccessStatus: map['directoryGlobalAccessStatus'] == null ? null : pulumi.Output.create<String>(map['directoryGlobalAccessStatus'] as String),
-      directoryName: map['directoryName'] == null ? null : pulumi.Output.create<String>(map['directoryName'] as String),
-      loginPreference: map['loginPreference'] == null ? null : pulumi.Output.create<DirectoryLoginPreference>(DirectoryLoginPreference.fromMap((map['loginPreference'] as Map).cast<String, dynamic>())),
-      mfaAuthenticationSettingInfo: map['mfaAuthenticationSettingInfo'] == null ? null : pulumi.Output.create<DirectoryMfaAuthenticationSettingInfo>(DirectoryMfaAuthenticationSettingInfo.fromMap((map['mfaAuthenticationSettingInfo'] as Map).cast<String, dynamic>())),
-      mfaAuthenticationStatus: map['mfaAuthenticationStatus'] == null ? null : pulumi.Output.create<String>(map['mfaAuthenticationStatus'] as String),
-      passwordPolicy: map['passwordPolicy'] == null ? null : pulumi.Output.create<DirectoryPasswordPolicy>(DirectoryPasswordPolicy.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())),
-      samlIdentityProviderConfiguration: map['samlIdentityProviderConfiguration'] == null ? null : pulumi.Output.create<DirectorySamlIdentityProviderConfiguration>(DirectorySamlIdentityProviderConfiguration.fromMap((map['samlIdentityProviderConfiguration'] as Map).cast<String, dynamic>())),
-      samlServiceProvider: map['samlServiceProvider'] == null ? null : pulumi.Output.create<DirectorySamlServiceProvider>(DirectorySamlServiceProvider.fromMap((map['samlServiceProvider'] as Map).cast<String, dynamic>())),
-      scimSynchronizationStatus: map['scimSynchronizationStatus'] == null ? null : pulumi.Output.create<String>(map['scimSynchronizationStatus'] as String),
-      userProvisioningConfiguration: map['userProvisioningConfiguration'] == null ? null : pulumi.Output.create<DirectoryUserProvisioningConfiguration>(DirectoryUserProvisioningConfiguration.fromMap((map['userProvisioningConfiguration'] as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      directoryGlobalAccessStatus: map['directoryGlobalAccessStatus'] == null ? null : (map['directoryGlobalAccessStatus'] as String).input(),
+      directoryName: map['directoryName'] == null ? null : (map['directoryName'] as String).input(),
+      loginPreference: map['loginPreference'] == null ? null : (DirectoryLoginPreference.fromMap((map['loginPreference'] as Map).cast<String, dynamic>())).input(),
+      mfaAuthenticationSettingInfo: map['mfaAuthenticationSettingInfo'] == null ? null : (DirectoryMfaAuthenticationSettingInfo.fromMap((map['mfaAuthenticationSettingInfo'] as Map).cast<String, dynamic>())).input(),
+      mfaAuthenticationStatus: map['mfaAuthenticationStatus'] == null ? null : (map['mfaAuthenticationStatus'] as String).input(),
+      passwordPolicy: map['passwordPolicy'] == null ? null : (DirectoryPasswordPolicy.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())).input(),
+      samlIdentityProviderConfiguration: map['samlIdentityProviderConfiguration'] == null ? null : (DirectorySamlIdentityProviderConfiguration.fromMap((map['samlIdentityProviderConfiguration'] as Map).cast<String, dynamic>())).input(),
+      samlServiceProvider: map['samlServiceProvider'] == null ? null : (DirectorySamlServiceProvider.fromMap((map['samlServiceProvider'] as Map).cast<String, dynamic>())).input(),
+      scimSynchronizationStatus: map['scimSynchronizationStatus'] == null ? null : (map['scimSynchronizationStatus'] as String).input(),
+      userProvisioningConfiguration: map['userProvisioningConfiguration'] == null ? null : (DirectoryUserProvisioningConfiguration.fromMap((map['userProvisioningConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

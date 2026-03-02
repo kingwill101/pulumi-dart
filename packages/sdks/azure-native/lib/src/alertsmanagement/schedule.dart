@@ -6,13 +6,13 @@ import 'daily_recurrence.dart';
 /// Scheduling configuration for a given alert processing rule.
 class Schedule {
   /// Scheduling effective from time. Date-Time in ISO-8601 format without timezone suffix.
-  final String? effectiveFrom;
+  final pulumi.Input<String>? effectiveFrom;
   /// Scheduling effective until time. Date-Time in ISO-8601 format without timezone suffix.
-  final String? effectiveUntil;
+  final pulumi.Input<String>? effectiveUntil;
   /// List of recurrences.
-  final List<DailyRecurrence>? recurrences;
+  final pulumi.Input<List<DailyRecurrence>>? recurrences;
   /// Scheduling time zone.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [Schedule].
   /// [effectiveFrom] Scheduling effective from time. Date-Time in ISO-8601 format without timezone suffix.
@@ -30,17 +30,17 @@ class Schedule {
     return <String, dynamic>{
       'effectiveFrom': ?effectiveFrom,
       'effectiveUntil': ?effectiveUntil,
-      'recurrences': ?recurrences == null ? null : pulumi.Input.encodeList<DailyRecurrence, Map<String, dynamic>>(recurrences!, (value) => value.toMap()),
+      'recurrences': ?pulumi.Input.mapOptionalInputValue<List<DailyRecurrence>, List<Map<String, dynamic>>>(recurrences, (value) => pulumi.Input.encodeList<DailyRecurrence, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeZone': ?timeZone,
     };
   }
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      effectiveFrom: map['effectiveFrom'] == null ? null : map['effectiveFrom'] as String,
-      effectiveUntil: map['effectiveUntil'] == null ? null : map['effectiveUntil'] as String,
-      recurrences: map['recurrences'] == null ? null : pulumi.Input.decodeList<DailyRecurrence>(map['recurrences'], (value) => DailyRecurrence.fromMap((value as Map).cast<String, dynamic>())),
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      effectiveFrom: map['effectiveFrom'] == null ? null : (map['effectiveFrom'] as String).input(),
+      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil'] as String).input(),
+      recurrences: map['recurrences'] == null ? null : (pulumi.Input.decodeList<DailyRecurrence>(map['recurrences'], (value) => DailyRecurrence.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

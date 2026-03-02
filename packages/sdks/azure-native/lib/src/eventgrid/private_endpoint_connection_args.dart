@@ -36,23 +36,15 @@ class PrivateEndpointConnectionArgs {
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   PrivateEndpointConnectionArgs({
-    pulumi.Output<List<String>>? groupIds,
-    required pulumi.Output<String> parentName,
-    required pulumi.Output<String> parentType,
-    pulumi.Output<PrivateEndpoint>? privateEndpoint,
-    pulumi.Output<String>? privateEndpointConnectionName,
-    pulumi.Output<ConnectionState>? privateLinkServiceConnectionState,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      groupIds = pulumi.Input.asOptionalInput<List<String>>(groupIds),
-      parentName = pulumi.Input.asInput<String>(parentName),
-      parentType = pulumi.Input.asInput<String>(parentType),
-      privateEndpoint = pulumi.Input.asOptionalInput<PrivateEndpoint>(privateEndpoint),
-      privateEndpointConnectionName = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionName),
-      privateLinkServiceConnectionState = pulumi.Input.asOptionalInput<ConnectionState>(privateLinkServiceConnectionState),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.groupIds,
+    required this.parentName,
+    required this.parentType,
+    this.privateEndpoint,
+    this.privateEndpointConnectionName,
+    this.privateLinkServiceConnectionState,
+    this.provisioningState,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class PrivateEndpointConnectionArgs {
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      groupIds: map['groupIds'] == null ? null : pulumi.Output.create<List<String>>((map['groupIds'] as List).cast<String>()),
-      parentName: pulumi.Output.create<String>(map['parentName'] as String),
-      parentType: pulumi.Output.create<String>(map['parentType'] as String),
-      privateEndpoint: map['privateEndpoint'] == null ? null : pulumi.Output.create<PrivateEndpoint>(PrivateEndpoint.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : pulumi.Output.create<ConnectionState>(ConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      parentName: (map['parentName'] as String).input(),
+      parentType: (map['parentType'] as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpoint.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (ConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

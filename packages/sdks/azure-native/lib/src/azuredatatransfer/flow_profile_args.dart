@@ -33,21 +33,14 @@ class FlowProfileArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   FlowProfileArgs({
-    pulumi.Output<String>? flowProfileName,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> pipelineName,
-    pulumi.Output<FlowProfileProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      flowProfileName = pulumi.Input.asOptionalInput<String>(flowProfileName),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      pipelineName = pulumi.Input.asInput<String>(pipelineName),
-      properties = pulumi.Input.asOptionalInput<FlowProfileProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.flowProfileName,
+    this.identity,
+    this.location,
+    required this.pipelineName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class FlowProfileArgs {
 
   factory FlowProfileArgs.fromMap(Map<String, dynamic> map) {
     return FlowProfileArgs(
-      flowProfileName: map['flowProfileName'] == null ? null : pulumi.Output.create<String>(map['flowProfileName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      pipelineName: pulumi.Output.create<String>(map['pipelineName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<FlowProfileProperties>(FlowProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      flowProfileName: map['flowProfileName'] == null ? null : (map['flowProfileName'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      pipelineName: (map['pipelineName'] as String).input(),
+      properties: map['properties'] == null ? null : (FlowProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

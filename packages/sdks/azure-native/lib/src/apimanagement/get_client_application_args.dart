@@ -19,13 +19,10 @@ class GetClientApplicationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetClientApplicationArgs({
-    required pulumi.Output<String> clientApplicationId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      clientApplicationId = pulumi.Input.asInput<String>(clientApplicationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.clientApplicationId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetClientApplicationArgs {
 
   factory GetClientApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetClientApplicationArgs(
-      clientApplicationId: pulumi.Output.create<String>(map['clientApplicationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      clientApplicationId: (map['clientApplicationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

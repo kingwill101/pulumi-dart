@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
   /// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
-  final String nodeGroup;
+  final pulumi.Input<String> nodeGroup;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity].
   /// [nodeGroup] Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
@@ -19,7 +20,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
 
   factory WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity(
-      nodeGroup: map['nodeGroup'] as String,
+      nodeGroup: (map['nodeGroup'] as String).input(),
     );
   }
 }

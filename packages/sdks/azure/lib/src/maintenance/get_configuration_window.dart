@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationWindow {
   /// The duration of the maintenance window.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Effective expiration date of the maintenance window.
-  final String expirationDateTime;
+  final pulumi.Input<String> expirationDateTime;
   /// The rate at which a maintenance window is expected to recur.
-  final String recurEvery;
+  final pulumi.Input<String> recurEvery;
   /// Effective start date of the maintenance window.
-  final String startDateTime;
+  final pulumi.Input<String> startDateTime;
   /// The time zone for the maintenance window.
-  final String timeZone;
+  final pulumi.Input<String> timeZone;
 
   /// Creates a new [GetConfigurationWindow].
   /// [duration] The duration of the maintenance window.
@@ -39,11 +40,11 @@ class GetConfigurationWindow {
 
   factory GetConfigurationWindow.fromMap(Map<String, dynamic> map) {
     return GetConfigurationWindow(
-      duration: map['duration'] as String,
-      expirationDateTime: map['expirationDateTime'] as String,
-      recurEvery: map['recurEvery'] as String,
-      startDateTime: map['startDateTime'] as String,
-      timeZone: map['timeZone'] as String,
+      duration: (map['duration'] as String).input(),
+      expirationDateTime: (map['expirationDateTime'] as String).input(),
+      recurEvery: (map['recurEvery'] as String).input(),
+      startDateTime: (map['startDateTime'] as String).input(),
+      timeZone: (map['timeZone'] as String).input(),
     );
   }
 }

@@ -17,13 +17,10 @@ class EnvGroupAttachmentState {
   /// [environment] The resource ID of the environment.
   /// [name] The name of the newly created  attachment (output parameter).
   EnvGroupAttachmentState({
-    pulumi.Output<String>? envgroupId,
-    pulumi.Output<String>? environment,
-    pulumi.Output<String>? name,
-  }) :
-      envgroupId = pulumi.Input.asOptionalInput<String>(envgroupId),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.envgroupId,
+    this.environment,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class EnvGroupAttachmentState {
 
   factory EnvGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return EnvGroupAttachmentState(
-      envgroupId: map['envgroupId'] == null ? null : pulumi.Output.create<String>(map['envgroupId'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      envgroupId: map['envgroupId'] == null ? null : (map['envgroupId'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

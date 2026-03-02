@@ -22,17 +22,12 @@ class EncryptionScopeState {
   /// [source] The source of the Storage Encryption Scope. Possible values are `Microsoft.KeyVault` and `Microsoft.Storage`.
   /// [storageAccountId] The ID of the Storage Account where this Storage Encryption Scope is created. Changing this forces a new Storage Encryption Scope to be created.
   EncryptionScopeState({
-    pulumi.Output<bool>? infrastructureEncryptionRequired,
-    pulumi.Output<String>? keyVaultKeyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? storageAccountId,
-  }) :
-      infrastructureEncryptionRequired = pulumi.Input.asOptionalInput<bool>(infrastructureEncryptionRequired),
-      keyVaultKeyId = pulumi.Input.asOptionalInput<String>(keyVaultKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId);
+    this.infrastructureEncryptionRequired,
+    this.keyVaultKeyId,
+    this.name,
+    this.source,
+    this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EncryptionScopeState {
 
   factory EncryptionScopeState.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeState(
-      infrastructureEncryptionRequired: map['infrastructureEncryptionRequired'] == null ? null : pulumi.Output.create<bool>(map['infrastructureEncryptionRequired'] as bool),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
+      infrastructureEncryptionRequired: map['infrastructureEncryptionRequired'] == null ? null : (map['infrastructureEncryptionRequired'] as bool).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
     );
   }
 }

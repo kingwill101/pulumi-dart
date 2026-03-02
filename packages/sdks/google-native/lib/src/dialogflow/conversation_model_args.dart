@@ -35,23 +35,15 @@ class ConversationModelArgs {
   /// [project] Optional.
   /// [smartReplyModelMetadata] Metadata for smart reply models.
   ConversationModelArgs({
-    pulumi.Output<GoogleCloudDialogflowV2ArticleSuggestionModelMetadata>? articleSuggestionModelMetadata,
-    required pulumi.Output<List<GoogleCloudDialogflowV2InputDataset>> datasets,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDialogflowV2SmartReplyModelMetadata>? smartReplyModelMetadata,
-  }) :
-      articleSuggestionModelMetadata = pulumi.Input.asOptionalInput<GoogleCloudDialogflowV2ArticleSuggestionModelMetadata>(articleSuggestionModelMetadata),
-      datasets = pulumi.Input.asInput<List<GoogleCloudDialogflowV2InputDataset>>(datasets),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      smartReplyModelMetadata = pulumi.Input.asOptionalInput<GoogleCloudDialogflowV2SmartReplyModelMetadata>(smartReplyModelMetadata);
+    this.articleSuggestionModelMetadata,
+    required this.datasets,
+    required this.displayName,
+    this.languageCode,
+    this.location,
+    this.name,
+    this.project,
+    this.smartReplyModelMetadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ConversationModelArgs {
 
   factory ConversationModelArgs.fromMap(Map<String, dynamic> map) {
     return ConversationModelArgs(
-      articleSuggestionModelMetadata: map['articleSuggestionModelMetadata'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowV2ArticleSuggestionModelMetadata>(GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromMap((map['articleSuggestionModelMetadata'] as Map).cast<String, dynamic>())),
-      datasets: pulumi.Output.create<List<GoogleCloudDialogflowV2InputDataset>>(pulumi.Input.decodeList<GoogleCloudDialogflowV2InputDataset>(map['datasets'], (value) => GoogleCloudDialogflowV2InputDataset.fromMap((value as Map).cast<String, dynamic>()))),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      smartReplyModelMetadata: map['smartReplyModelMetadata'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowV2SmartReplyModelMetadata>(GoogleCloudDialogflowV2SmartReplyModelMetadata.fromMap((map['smartReplyModelMetadata'] as Map).cast<String, dynamic>())),
+      articleSuggestionModelMetadata: map['articleSuggestionModelMetadata'] == null ? null : (GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromMap((map['articleSuggestionModelMetadata'] as Map).cast<String, dynamic>())).input(),
+      datasets: (pulumi.Input.decodeList<GoogleCloudDialogflowV2InputDataset>(map['datasets'], (value) => GoogleCloudDialogflowV2InputDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: (map['displayName'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      smartReplyModelMetadata: map['smartReplyModelMetadata'] == null ? null : (GoogleCloudDialogflowV2SmartReplyModelMetadata.fromMap((map['smartReplyModelMetadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

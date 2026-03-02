@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCollationTimeZonesCollationTimeZone {
   /// The code of the instance type.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
-  final String? standardTimeOffset;
+  final pulumi.Input<String>? standardTimeOffset;
   /// The time zone that is available for use in ApsaraDB RDS.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [GetCollationTimeZonesCollationTimeZone].
   /// [description] The code of the instance type.
@@ -29,9 +30,9 @@ class GetCollationTimeZonesCollationTimeZone {
 
   factory GetCollationTimeZonesCollationTimeZone.fromMap(Map<String, dynamic> map) {
     return GetCollationTimeZonesCollationTimeZone(
-      description: map['description'] == null ? null : map['description'] as String,
-      standardTimeOffset: map['standardTimeOffset'] == null ? null : map['standardTimeOffset'] as String,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      standardTimeOffset: map['standardTimeOffset'] == null ? null : (map['standardTimeOffset'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

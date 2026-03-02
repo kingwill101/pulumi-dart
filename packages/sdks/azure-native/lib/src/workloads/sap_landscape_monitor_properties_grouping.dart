@@ -6,9 +6,9 @@ import 'sap_landscape_monitor_sid_mapping.dart';
 /// Gets or sets the SID groupings by landscape and Environment.
 class SapLandscapeMonitorPropertiesGrouping {
   /// Gets or sets the list of landscape to SID mappings.
-  final List<SapLandscapeMonitorSidMapping>? landscape;
+  final pulumi.Input<List<SapLandscapeMonitorSidMapping>>? landscape;
   /// Gets or sets the list of Sap Applications to SID mappings.
-  final List<SapLandscapeMonitorSidMapping>? sapApplication;
+  final pulumi.Input<List<SapLandscapeMonitorSidMapping>>? sapApplication;
 
   /// Creates a new [SapLandscapeMonitorPropertiesGrouping].
   /// [landscape] Gets or sets the list of landscape to SID mappings.
@@ -20,15 +20,15 @@ class SapLandscapeMonitorPropertiesGrouping {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'landscape': ?landscape == null ? null : pulumi.Input.encodeList<SapLandscapeMonitorSidMapping, Map<String, dynamic>>(landscape!, (value) => value.toMap()),
-      'sapApplication': ?sapApplication == null ? null : pulumi.Input.encodeList<SapLandscapeMonitorSidMapping, Map<String, dynamic>>(sapApplication!, (value) => value.toMap()),
+      'landscape': ?pulumi.Input.mapOptionalInputValue<List<SapLandscapeMonitorSidMapping>, List<Map<String, dynamic>>>(landscape, (value) => pulumi.Input.encodeList<SapLandscapeMonitorSidMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sapApplication': ?pulumi.Input.mapOptionalInputValue<List<SapLandscapeMonitorSidMapping>, List<Map<String, dynamic>>>(sapApplication, (value) => pulumi.Input.encodeList<SapLandscapeMonitorSidMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SapLandscapeMonitorPropertiesGrouping.fromMap(Map<String, dynamic> map) {
     return SapLandscapeMonitorPropertiesGrouping(
-      landscape: map['landscape'] == null ? null : pulumi.Input.decodeList<SapLandscapeMonitorSidMapping>(map['landscape'], (value) => SapLandscapeMonitorSidMapping.fromMap((value as Map).cast<String, dynamic>())),
-      sapApplication: map['sapApplication'] == null ? null : pulumi.Input.decodeList<SapLandscapeMonitorSidMapping>(map['sapApplication'], (value) => SapLandscapeMonitorSidMapping.fromMap((value as Map).cast<String, dynamic>())),
+      landscape: map['landscape'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorSidMapping>(map['landscape'], (value) => SapLandscapeMonitorSidMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sapApplication: map['sapApplication'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorSidMapping>(map['sapApplication'], (value) => SapLandscapeMonitorSidMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

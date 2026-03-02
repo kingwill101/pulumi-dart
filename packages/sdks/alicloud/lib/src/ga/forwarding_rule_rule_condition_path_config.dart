@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ForwardingRuleRuleConditionPathConfig {
   /// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ForwardingRuleRuleConditionPathConfig].
   /// [values] The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
@@ -19,7 +20,7 @@ class ForwardingRuleRuleConditionPathConfig {
 
   factory ForwardingRuleRuleConditionPathConfig.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleRuleConditionPathConfig(
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

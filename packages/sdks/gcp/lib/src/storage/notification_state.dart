@@ -36,23 +36,15 @@ class NotificationState {
   /// [selfLink] The URI of the created resource.
   /// [topic] The Cloud PubSub topic to which this subscription publishes. Expects either the
   NotificationState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<Map<String, String>>? customAttributes,
-    pulumi.Output<List<String>>? eventTypes,
-    pulumi.Output<String>? notificationId,
-    pulumi.Output<String>? objectNamePrefix,
-    pulumi.Output<String>? payloadFormat,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? topic,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      customAttributes = pulumi.Input.asOptionalInput<Map<String, String>>(customAttributes),
-      eventTypes = pulumi.Input.asOptionalInput<List<String>>(eventTypes),
-      notificationId = pulumi.Input.asOptionalInput<String>(notificationId),
-      objectNamePrefix = pulumi.Input.asOptionalInput<String>(objectNamePrefix),
-      payloadFormat = pulumi.Input.asOptionalInput<String>(payloadFormat),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      topic = pulumi.Input.asOptionalInput<String>(topic);
+    this.bucket,
+    this.customAttributes,
+    this.eventTypes,
+    this.notificationId,
+    this.objectNamePrefix,
+    this.payloadFormat,
+    this.selfLink,
+    this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class NotificationState {
 
   factory NotificationState.fromMap(Map<String, dynamic> map) {
     return NotificationState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      customAttributes: map['customAttributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['customAttributes'] as Map).cast<String, String>()),
-      eventTypes: map['eventTypes'] == null ? null : pulumi.Output.create<List<String>>((map['eventTypes'] as List).cast<String>()),
-      notificationId: map['notificationId'] == null ? null : pulumi.Output.create<String>(map['notificationId'] as String),
-      objectNamePrefix: map['objectNamePrefix'] == null ? null : pulumi.Output.create<String>(map['objectNamePrefix'] as String),
-      payloadFormat: map['payloadFormat'] == null ? null : pulumi.Output.create<String>(map['payloadFormat'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes'] as Map).cast<String, String>()).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
+      notificationId: map['notificationId'] == null ? null : (map['notificationId'] as String).input(),
+      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix'] as String).input(),
+      payloadFormat: map['payloadFormat'] == null ? null : (map['payloadFormat'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

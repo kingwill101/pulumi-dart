@@ -6,7 +6,7 @@ import 'scoped_resource_selector_requirement.dart';
 /// A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.
 class ScopeSelector {
   /// A list of scope selector requirements by scope of the resources.
-  final List<ScopedResourceSelectorRequirement>? matchExpressions;
+  final pulumi.Input<List<ScopedResourceSelectorRequirement>>? matchExpressions;
 
   /// Creates a new [ScopeSelector].
   /// [matchExpressions] A list of scope selector requirements by scope of the resources.
@@ -16,13 +16,13 @@ class ScopeSelector {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchExpressions': ?matchExpressions == null ? null : pulumi.Input.encodeList<ScopedResourceSelectorRequirement, Map<String, dynamic>>(matchExpressions!, (value) => value.toMap()),
+      'matchExpressions': ?pulumi.Input.mapOptionalInputValue<List<ScopedResourceSelectorRequirement>, List<Map<String, dynamic>>>(matchExpressions, (value) => pulumi.Input.encodeList<ScopedResourceSelectorRequirement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScopeSelector.fromMap(Map<String, dynamic> map) {
     return ScopeSelector(
-      matchExpressions: map['matchExpressions'] == null ? null : pulumi.Input.decodeList<ScopedResourceSelectorRequirement>(map['matchExpressions'], (value) => ScopedResourceSelectorRequirement.fromMap((value as Map).cast<String, dynamic>())),
+      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<ScopedResourceSelectorRequirement>(map['matchExpressions'], (value) => ScopedResourceSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

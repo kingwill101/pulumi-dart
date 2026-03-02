@@ -5,23 +5,23 @@ import 'get_inference_profiles_inference_profile_summary_model.dart';
 
 class GetInferenceProfilesInferenceProfileSummary {
   /// Time at which the inference profile was created.
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Description of the inference profile.
-  final String description;
+  final pulumi.Input<String> description;
   /// Amazon Resource Name (ARN) of the inference profile.
-  final String inferenceProfileArn;
+  final pulumi.Input<String> inferenceProfileArn;
   /// Unique identifier of the inference profile.
-  final String inferenceProfileId;
+  final pulumi.Input<String> inferenceProfileId;
   /// Name of the inference profile.
-  final String inferenceProfileName;
+  final pulumi.Input<String> inferenceProfileName;
   /// List of information about each model in the inference profile. See `models` Block.
-  final List<GetInferenceProfilesInferenceProfileSummaryModel> models;
+  final pulumi.Input<List<GetInferenceProfilesInferenceProfileSummaryModel>> models;
   /// Status of the inference profile. `ACTIVE` means that the inference profile is available to use.
-  final String status;
+  final pulumi.Input<String> status;
   /// Filters for inference profiles that match the type you specify. Valid values are: `SYSTEM_DEFINED`, `APPLICATION`.
-  final String type;
+  final pulumi.Input<String> type;
   /// Time at which the inference profile was last updated.
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
 
   /// Creates a new [GetInferenceProfilesInferenceProfileSummary].
   /// [createdAt] Time at which the inference profile was created.
@@ -52,7 +52,7 @@ class GetInferenceProfilesInferenceProfileSummary {
       'inferenceProfileArn': inferenceProfileArn,
       'inferenceProfileId': inferenceProfileId,
       'inferenceProfileName': inferenceProfileName,
-      'models': pulumi.Input.encodeList<GetInferenceProfilesInferenceProfileSummaryModel, Map<String, dynamic>>(models, (value) => value.toMap()),
+      'models': pulumi.Input.mapInputValue<List<GetInferenceProfilesInferenceProfileSummaryModel>, List<Map<String, dynamic>>>(models, (value) => pulumi.Input.encodeList<GetInferenceProfilesInferenceProfileSummaryModel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
       'type': type,
       'updatedAt': updatedAt,
@@ -61,15 +61,15 @@ class GetInferenceProfilesInferenceProfileSummary {
 
   factory GetInferenceProfilesInferenceProfileSummary.fromMap(Map<String, dynamic> map) {
     return GetInferenceProfilesInferenceProfileSummary(
-      createdAt: map['createdAt'] as String,
-      description: map['description'] as String,
-      inferenceProfileArn: map['inferenceProfileArn'] as String,
-      inferenceProfileId: map['inferenceProfileId'] as String,
-      inferenceProfileName: map['inferenceProfileName'] as String,
-      models: pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummaryModel>(map['models'], (value) => GetInferenceProfilesInferenceProfileSummaryModel.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      type: map['type'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      description: (map['description'] as String).input(),
+      inferenceProfileArn: (map['inferenceProfileArn'] as String).input(),
+      inferenceProfileId: (map['inferenceProfileId'] as String).input(),
+      inferenceProfileName: (map['inferenceProfileName'] as String).input(),
+      models: (pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummaryModel>(map['models'], (value) => GetInferenceProfilesInferenceProfileSummaryModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
     );
   }
 }

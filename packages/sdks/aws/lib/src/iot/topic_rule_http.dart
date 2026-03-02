@@ -5,11 +5,11 @@ import 'topic_rule_http_http_header.dart';
 
 class TopicRuleHttp {
   /// The HTTPS URL used to verify ownership of `url`.
-  final String? confirmationUrl;
+  final pulumi.Input<String>? confirmationUrl;
   /// Custom HTTP header IoT Core should send. It is possible to define more than one custom header.
-  final List<TopicRuleHttpHttpHeader>? httpHeaders;
+  final pulumi.Input<List<TopicRuleHttpHttpHeader>>? httpHeaders;
   /// The HTTPS URL.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [TopicRuleHttp].
   /// [confirmationUrl] The HTTPS URL used to verify ownership of `url`.
@@ -24,16 +24,16 @@ class TopicRuleHttp {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'confirmationUrl': ?confirmationUrl,
-      'httpHeaders': ?httpHeaders == null ? null : pulumi.Input.encodeList<TopicRuleHttpHttpHeader, Map<String, dynamic>>(httpHeaders!, (value) => value.toMap()),
+      'httpHeaders': ?pulumi.Input.mapOptionalInputValue<List<TopicRuleHttpHttpHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<TopicRuleHttpHttpHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'url': url,
     };
   }
 
   factory TopicRuleHttp.fromMap(Map<String, dynamic> map) {
     return TopicRuleHttp(
-      confirmationUrl: map['confirmationUrl'] == null ? null : map['confirmationUrl'] as String,
-      httpHeaders: map['httpHeaders'] == null ? null : pulumi.Input.decodeList<TopicRuleHttpHttpHeader>(map['httpHeaders'], (value) => TopicRuleHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>())),
-      url: map['url'] as String,
+      confirmationUrl: map['confirmationUrl'] == null ? null : (map['confirmationUrl'] as String).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<TopicRuleHttpHttpHeader>(map['httpHeaders'], (value) => TopicRuleHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

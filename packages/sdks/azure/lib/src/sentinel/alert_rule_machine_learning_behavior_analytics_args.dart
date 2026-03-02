@@ -22,15 +22,11 @@ class AlertRuleMachineLearningBehaviorAnalyticsArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace this SentinelMachine Learning Behavior Analytics Alert Rule belongs to. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   /// [name] The name which should be used for this SentinelMachine Learning Behavior Analytics Alert Rule. Changing this forces a new Sentinel Machine Learning Behavior Analytics Alert Rule to be created.
   AlertRuleMachineLearningBehaviorAnalyticsArgs({
-    required pulumi.Output<String> alertRuleTemplateGuid,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-  }) :
-      alertRuleTemplateGuid = pulumi.Input.asInput<String>(alertRuleTemplateGuid),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.alertRuleTemplateGuid,
+    this.enabled,
+    required this.logAnalyticsWorkspaceId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AlertRuleMachineLearningBehaviorAnalyticsArgs {
 
   factory AlertRuleMachineLearningBehaviorAnalyticsArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleMachineLearningBehaviorAnalyticsArgs(
-      alertRuleTemplateGuid: pulumi.Output.create<String>(map['alertRuleTemplateGuid'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      alertRuleTemplateGuid: (map['alertRuleTemplateGuid'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

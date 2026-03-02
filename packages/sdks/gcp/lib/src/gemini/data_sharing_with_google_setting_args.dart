@@ -31,19 +31,13 @@ class DataSharingWithGoogleSettingArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   DataSharingWithGoogleSettingArgs({
-    required pulumi.Output<String> dataSharingWithGoogleSettingId,
-    pulumi.Output<bool>? enableDataSharing,
-    pulumi.Output<bool>? enablePreviewDataSharing,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      dataSharingWithGoogleSettingId = pulumi.Input.asInput<String>(dataSharingWithGoogleSettingId),
-      enableDataSharing = pulumi.Input.asOptionalInput<bool>(enableDataSharing),
-      enablePreviewDataSharing = pulumi.Input.asOptionalInput<bool>(enablePreviewDataSharing),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataSharingWithGoogleSettingId,
+    this.enableDataSharing,
+    this.enablePreviewDataSharing,
+    this.labels,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class DataSharingWithGoogleSettingArgs {
 
   factory DataSharingWithGoogleSettingArgs.fromMap(Map<String, dynamic> map) {
     return DataSharingWithGoogleSettingArgs(
-      dataSharingWithGoogleSettingId: pulumi.Output.create<String>(map['dataSharingWithGoogleSettingId'] as String),
-      enableDataSharing: map['enableDataSharing'] == null ? null : pulumi.Output.create<bool>(map['enableDataSharing'] as bool),
-      enablePreviewDataSharing: map['enablePreviewDataSharing'] == null ? null : pulumi.Output.create<bool>(map['enablePreviewDataSharing'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataSharingWithGoogleSettingId: (map['dataSharingWithGoogleSettingId'] as String).input(),
+      enableDataSharing: map['enableDataSharing'] == null ? null : (map['enableDataSharing'] as bool).input(),
+      enablePreviewDataSharing: map['enablePreviewDataSharing'] == null ? null : (map['enablePreviewDataSharing'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

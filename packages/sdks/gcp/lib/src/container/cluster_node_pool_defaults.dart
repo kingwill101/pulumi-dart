@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_node_pool_defaults_node_config_defaults.dart';
 
 class ClusterNodePoolDefaults {
   /// Subset of NodeConfig message that has defaults.
-  final ClusterNodePoolDefaultsNodeConfigDefaults? nodeConfigDefaults;
+  final pulumi.Input<ClusterNodePoolDefaultsNodeConfigDefaults>? nodeConfigDefaults;
 
   /// Creates a new [ClusterNodePoolDefaults].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
@@ -14,13 +15,13 @@ class ClusterNodePoolDefaults {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeConfigDefaults': ?nodeConfigDefaults == null ? null : nodeConfigDefaults!.toMap(),
+      'nodeConfigDefaults': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolDefaultsNodeConfigDefaults, Map<String, dynamic>>(nodeConfigDefaults, (value) => value.toMap()),
     };
   }
 
   factory ClusterNodePoolDefaults.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaults(
-      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : ClusterNodePoolDefaultsNodeConfigDefaults.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
+      nodeConfigDefaults: map['nodeConfigDefaults'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaults.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

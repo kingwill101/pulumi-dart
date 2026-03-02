@@ -20,13 +20,10 @@ class ScopingConfigurationArgs {
   /// [reportName] Report Name.
   /// [scopingConfigurationName] The scoping configuration of the specific report.
   ScopingConfigurationArgs({
-    pulumi.Output<List<ScopingAnswer>>? answers,
-    required pulumi.Output<String> reportName,
-    pulumi.Output<String>? scopingConfigurationName,
-  }) :
-      answers = pulumi.Input.asOptionalInput<List<ScopingAnswer>>(answers),
-      reportName = pulumi.Input.asInput<String>(reportName),
-      scopingConfigurationName = pulumi.Input.asOptionalInput<String>(scopingConfigurationName);
+    this.answers,
+    required this.reportName,
+    this.scopingConfigurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class ScopingConfigurationArgs {
 
   factory ScopingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ScopingConfigurationArgs(
-      answers: map['answers'] == null ? null : pulumi.Output.create<List<ScopingAnswer>>(pulumi.Input.decodeList<ScopingAnswer>(map['answers'], (value) => ScopingAnswer.fromMap((value as Map).cast<String, dynamic>()))),
-      reportName: pulumi.Output.create<String>(map['reportName'] as String),
-      scopingConfigurationName: map['scopingConfigurationName'] == null ? null : pulumi.Output.create<String>(map['scopingConfigurationName'] as String),
+      answers: map['answers'] == null ? null : (pulumi.Input.decodeList<ScopingAnswer>(map['answers'], (value) => ScopingAnswer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reportName: (map['reportName'] as String).input(),
+      scopingConfigurationName: map['scopingConfigurationName'] == null ? null : (map['scopingConfigurationName'] as String).input(),
     );
   }
 }

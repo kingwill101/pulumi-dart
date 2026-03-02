@@ -19,13 +19,10 @@ class GroupAssociationArgs {
   /// [groupName] Name of the group that the canary will be associated with.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GroupAssociationArgs({
-    required pulumi.Output<String> canaryArn,
-    required pulumi.Output<String> groupName,
-    pulumi.Output<String>? region,
-  }) :
-      canaryArn = pulumi.Input.asInput<String>(canaryArn),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.canaryArn,
+    required this.groupName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GroupAssociationArgs {
 
   factory GroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GroupAssociationArgs(
-      canaryArn: pulumi.Output.create<String>(map['canaryArn'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      canaryArn: (map['canaryArn'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -6,23 +6,23 @@ import 'node_balancer_firewall_outbound.dart';
 
 class NodeBalancerFirewall {
   /// When this firewall was created.
-  final String created;
+  final pulumi.Input<String> created;
   /// (Required) The Firewall's ID.
-  final int id;
+  final pulumi.Input<int> id;
   /// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
-  final String inboundPolicy;
-  final List<NodeBalancerFirewallInbound> inbounds;
+  final pulumi.Input<String> inboundPolicy;
+  final pulumi.Input<List<NodeBalancerFirewallInbound>> inbounds;
   /// The label of the Linode NodeBalancer
-  final String label;
+  final pulumi.Input<String> label;
   /// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
-  final String outboundPolicy;
-  final List<NodeBalancerFirewallOutbound> outbounds;
+  final pulumi.Input<String> outboundPolicy;
+  final pulumi.Input<List<NodeBalancerFirewallOutbound>> outbounds;
   /// The status of the firewall. (`enabled`, `disabled`, `deleted`)
-  final String status;
+  final pulumi.Input<String> status;
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
   /// When this firewall was last updated.
-  final String updated;
+  final pulumi.Input<String> updated;
 
   /// Creates a new [NodeBalancerFirewall].
   /// [created] When this firewall was created.
@@ -53,10 +53,10 @@ class NodeBalancerFirewall {
       'created': created,
       'id': id,
       'inboundPolicy': inboundPolicy,
-      'inbounds': pulumi.Input.encodeList<NodeBalancerFirewallInbound, Map<String, dynamic>>(inbounds, (value) => value.toMap()),
+      'inbounds': pulumi.Input.mapInputValue<List<NodeBalancerFirewallInbound>, List<Map<String, dynamic>>>(inbounds, (value) => pulumi.Input.encodeList<NodeBalancerFirewallInbound, Map<String, dynamic>>(value, (value) => value.toMap())),
       'label': label,
       'outboundPolicy': outboundPolicy,
-      'outbounds': pulumi.Input.encodeList<NodeBalancerFirewallOutbound, Map<String, dynamic>>(outbounds, (value) => value.toMap()),
+      'outbounds': pulumi.Input.mapInputValue<List<NodeBalancerFirewallOutbound>, List<Map<String, dynamic>>>(outbounds, (value) => pulumi.Input.encodeList<NodeBalancerFirewallOutbound, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
       'tags': tags,
       'updated': updated,
@@ -65,16 +65,16 @@ class NodeBalancerFirewall {
 
   factory NodeBalancerFirewall.fromMap(Map<String, dynamic> map) {
     return NodeBalancerFirewall(
-      created: map['created'] as String,
-      id: map['id'] as int,
-      inboundPolicy: map['inboundPolicy'] as String,
-      inbounds: pulumi.Input.decodeList<NodeBalancerFirewallInbound>(map['inbounds'], (value) => NodeBalancerFirewallInbound.fromMap((value as Map).cast<String, dynamic>())),
-      label: map['label'] as String,
-      outboundPolicy: map['outboundPolicy'] as String,
-      outbounds: pulumi.Input.decodeList<NodeBalancerFirewallOutbound>(map['outbounds'], (value) => NodeBalancerFirewallOutbound.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      updated: map['updated'] as String,
+      created: (map['created'] as String).input(),
+      id: (map['id'] as int).input(),
+      inboundPolicy: (map['inboundPolicy'] as String).input(),
+      inbounds: (pulumi.Input.decodeList<NodeBalancerFirewallInbound>(map['inbounds'], (value) => NodeBalancerFirewallInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: (map['label'] as String).input(),
+      outboundPolicy: (map['outboundPolicy'] as String).input(),
+      outbounds: (pulumi.Input.decodeList<NodeBalancerFirewallOutbound>(map['outbounds'], (value) => NodeBalancerFirewallOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      updated: (map['updated'] as String).input(),
     );
   }
 }

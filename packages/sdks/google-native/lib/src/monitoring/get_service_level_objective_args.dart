@@ -20,17 +20,12 @@ class GetServiceLevelObjectiveArgs {
   /// [v3Id1] Required.
   /// [view] Optional.
   GetServiceLevelObjectiveArgs({
-    required pulumi.Output<String> serviceId,
-    required pulumi.Output<String> serviceLevelObjectiveId,
-    required pulumi.Output<String> v3Id,
-    required pulumi.Output<String> v3Id1,
-    pulumi.Output<String>? view,
-  }) :
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      serviceLevelObjectiveId = pulumi.Input.asInput<String>(serviceLevelObjectiveId),
-      v3Id = pulumi.Input.asInput<String>(v3Id),
-      v3Id1 = pulumi.Input.asInput<String>(v3Id1),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.serviceId,
+    required this.serviceLevelObjectiveId,
+    required this.v3Id,
+    required this.v3Id1,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetServiceLevelObjectiveArgs {
 
   factory GetServiceLevelObjectiveArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceLevelObjectiveArgs(
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      serviceLevelObjectiveId: pulumi.Output.create<String>(map['serviceLevelObjectiveId'] as String),
-      v3Id: pulumi.Output.create<String>(map['v3Id'] as String),
-      v3Id1: pulumi.Output.create<String>(map['v3Id1'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      serviceId: (map['serviceId'] as String).input(),
+      serviceLevelObjectiveId: (map['serviceLevelObjectiveId'] as String).input(),
+      v3Id: (map['v3Id'] as String).input(),
+      v3Id1: (map['v3Id1'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class BasicThresholdArgs {
   /// [internetIp] The IP address of the public IP address asset.
   /// [pps] The current message number cleaning threshold. Unit: pps.
   BasicThresholdArgs({
-    required pulumi.Output<int> bps,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> instanceType,
-    required pulumi.Output<String> internetIp,
-    required pulumi.Output<int> pps,
-  }) :
-      bps = pulumi.Input.asInput<int>(bps),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      internetIp = pulumi.Input.asInput<String>(internetIp),
-      pps = pulumi.Input.asInput<int>(pps);
+    required this.bps,
+    required this.instanceId,
+    required this.instanceType,
+    required this.internetIp,
+    required this.pps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BasicThresholdArgs {
 
   factory BasicThresholdArgs.fromMap(Map<String, dynamic> map) {
     return BasicThresholdArgs(
-      bps: pulumi.Output.create<int>(map['bps'] as int),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      internetIp: pulumi.Output.create<String>(map['internetIp'] as String),
-      pps: pulumi.Output.create<int>(map['pps'] as int),
+      bps: (map['bps'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      internetIp: (map['internetIp'] as String).input(),
+      pps: (map['pps'] as int).input(),
     );
   }
 }

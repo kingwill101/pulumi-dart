@@ -30,17 +30,12 @@ class BackupScheduleArgs {
   /// [retention] At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// [weeklyRecurrence] For a schedule that runs weekly on a specific day.
   BackupScheduleArgs({
-    pulumi.Output<Map<String, dynamic>>? dailyRecurrence,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> retention,
-    pulumi.Output<BackupScheduleWeeklyRecurrence>? weeklyRecurrence,
-  }) :
-      dailyRecurrence = pulumi.Input.asOptionalInput<Map<String, dynamic>>(dailyRecurrence),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retention = pulumi.Input.asInput<String>(retention),
-      weeklyRecurrence = pulumi.Input.asOptionalInput<BackupScheduleWeeklyRecurrence>(weeklyRecurrence);
+    this.dailyRecurrence,
+    this.database,
+    this.project,
+    required this.retention,
+    this.weeklyRecurrence,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class BackupScheduleArgs {
 
   factory BackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BackupScheduleArgs(
-      dailyRecurrence: map['dailyRecurrence'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['dailyRecurrence'] as Map).cast<String, dynamic>()),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      retention: pulumi.Output.create<String>(map['retention'] as String),
-      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : pulumi.Output.create<BackupScheduleWeeklyRecurrence>(BackupScheduleWeeklyRecurrence.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>())),
+      dailyRecurrence: map['dailyRecurrence'] == null ? null : ((map['dailyRecurrence'] as Map).cast<String, dynamic>()).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      retention: (map['retention'] as String).input(),
+      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (BackupScheduleWeeklyRecurrence.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

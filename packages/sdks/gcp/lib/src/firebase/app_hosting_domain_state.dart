@@ -56,33 +56,20 @@ class AppHostingDomainState {
   /// [uid] System-assigned, unique identifier.
   /// [updateTime] Time at which the domain was last updated.
   AppHostingDomainState({
-    pulumi.Output<String>? backend,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<List<AppHostingDomainCustomDomainStatus>>? customDomainStatuses,
-    pulumi.Output<String>? deleteTime,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? purgeTime,
-    pulumi.Output<AppHostingDomainServe>? serve,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      backend = pulumi.Input.asOptionalInput<String>(backend),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      customDomainStatuses = pulumi.Input.asOptionalInput<List<AppHostingDomainCustomDomainStatus>>(customDomainStatuses),
-      deleteTime = pulumi.Input.asOptionalInput<String>(deleteTime),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      purgeTime = pulumi.Input.asOptionalInput<String>(purgeTime),
-      serve = pulumi.Input.asOptionalInput<AppHostingDomainServe>(serve),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.backend,
+    this.createTime,
+    this.customDomainStatuses,
+    this.deleteTime,
+    this.domainId,
+    this.etag,
+    this.location,
+    this.name,
+    this.project,
+    this.purgeTime,
+    this.serve,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,19 +91,19 @@ class AppHostingDomainState {
 
   factory AppHostingDomainState.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainState(
-      backend: map['backend'] == null ? null : pulumi.Output.create<String>(map['backend'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      customDomainStatuses: map['customDomainStatuses'] == null ? null : pulumi.Output.create<List<AppHostingDomainCustomDomainStatus>>(pulumi.Input.decodeList<AppHostingDomainCustomDomainStatus>(map['customDomainStatuses'], (value) => AppHostingDomainCustomDomainStatus.fromMap((value as Map).cast<String, dynamic>()))),
-      deleteTime: map['deleteTime'] == null ? null : pulumi.Output.create<String>(map['deleteTime'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      purgeTime: map['purgeTime'] == null ? null : pulumi.Output.create<String>(map['purgeTime'] as String),
-      serve: map['serve'] == null ? null : pulumi.Output.create<AppHostingDomainServe>(AppHostingDomainServe.fromMap((map['serve'] as Map).cast<String, dynamic>())),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      backend: map['backend'] == null ? null : (map['backend'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      customDomainStatuses: map['customDomainStatuses'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatus>(map['customDomainStatuses'], (value) => AppHostingDomainCustomDomainStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      purgeTime: map['purgeTime'] == null ? null : (map['purgeTime'] as String).input(),
+      serve: map['serve'] == null ? null : (AppHostingDomainServe.fromMap((map['serve'] as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class NtpState {
   /// [servers] Specifies the time servers that the system uses to update the system time.
   /// [timezone] Specifies the time zone that you want to use for the system time.
   NtpState({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? servers,
-    pulumi.Output<String>? timezone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      servers = pulumi.Input.asOptionalInput<List<String>>(servers),
-      timezone = pulumi.Input.asOptionalInput<String>(timezone);
+    this.description,
+    this.servers,
+    this.timezone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class NtpState {
 
   factory NtpState.fromMap(Map<String, dynamic> map) {
     return NtpState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      servers: map['servers'] == null ? null : pulumi.Output.create<List<String>>((map['servers'] as List).cast<String>()),
-      timezone: map['timezone'] == null ? null : pulumi.Output.create<String>(map['timezone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      servers: map['servers'] == null ? null : ((map['servers'] as List).cast<String>()).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
     );
   }
 }

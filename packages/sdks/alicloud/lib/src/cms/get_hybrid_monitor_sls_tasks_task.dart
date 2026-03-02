@@ -7,58 +7,58 @@ import 'get_hybrid_monitor_sls_tasks_task_sls_process_config.dart';
 
 class GetHybridMonitorSlsTasksTask {
   /// The tags of the metric import task.
-  final List<GetHybridMonitorSlsTasksTaskAttachLabel> attachLabels;
+  final pulumi.Input<List<GetHybridMonitorSlsTasksTaskAttachLabel>> attachLabels;
   /// The interval between the cloud monitoring plug-in collecting host monitoring data.
-  final int collectInterval;
+  final pulumi.Input<int> collectInterval;
   /// The address where the cloudmonitor Plug-In collects the monitoring data of the host.
-  final String collectTargetEndpoint;
+  final pulumi.Input<String> collectTargetEndpoint;
   /// When the cloud monitor Agent collects, the relative path of the collection.
-  final String collectTargetPath;
+  final pulumi.Input<String> collectTargetPath;
   /// The type of the monitoring data. Valid values: Spring, Tomcat, Nginx, Tengine, JVM, Redis, MySQL, and AWS.
-  final String collectTargetType;
+  final pulumi.Input<String> collectTargetType;
   /// The timeout period for the cloudmonitor plug-in to collect host monitoring data.
-  final int collectTimout;
+  final pulumi.Input<int> collectTimout;
   /// Create the timestamp of the monitoring task. Unit: milliseconds.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Monitoring task description.
-  final String description;
+  final pulumi.Input<String> description;
   /// Additional information for the instance.
-  final String extraInfo;
+  final pulumi.Input<String> extraInfo;
   /// The ID of the application Group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The ID of the monitoring task.
-  final String hybridMonitorSlsTaskId;
+  final pulumi.Input<String> hybridMonitorSlsTaskId;
   /// The ID of the Hybrid Monitor Sls Task.
-  final String id;
+  final pulumi.Input<String> id;
   /// A list of instances where monitoring data is collected in batches.
-  final List<String> instances;
+  final pulumi.Input<List<String>> instances;
   /// The path where on-premises log data is stored. On-premises log data is stored in the specified path of the host where CloudMonitor is deployed.
-  final String logFilePath;
+  final pulumi.Input<String> logFilePath;
   /// Local Log Monitoring and calculation method.
-  final String logProcess;
+  final pulumi.Input<String> logProcess;
   /// The sample on-premises log.
-  final String logSample;
+  final pulumi.Input<String> logSample;
   /// The local log data is divided according to different matching patterns.
-  final String logSplit;
+  final pulumi.Input<String> logSplit;
   /// The filter condition of the instance of the monitoring task.
-  final String matchExpressRelation;
+  final pulumi.Input<String> matchExpressRelation;
   /// The matching condition of the instance in the application Group.
-  final List<GetHybridMonitorSlsTasksTaskMatchExpress> matchExpresses;
+  final pulumi.Input<List<GetHybridMonitorSlsTasksTaskMatchExpress>> matchExpresses;
   /// The namespace to which the host belongs.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// The network type of the host.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The configurations of the logs that are imported from Log Service.
-  final String slsProcess;
+  final pulumi.Input<String> slsProcess;
   /// The configurations of the logs that are imported from Log Service.
-  final List<GetHybridMonitorSlsTasksTaskSlsProcessConfig> slsProcessConfigs;
+  final pulumi.Input<List<GetHybridMonitorSlsTasksTaskSlsProcessConfig>> slsProcessConfigs;
   /// The name of the metric import task.
-  final String taskName;
+  final pulumi.Input<String> taskName;
   /// Monitoring Task type.
-  final String taskType;
+  final pulumi.Input<String> taskType;
   /// The region where the host resides.
-  final String uploadRegion;
-  final String yarmConfig;
+  final pulumi.Input<String> uploadRegion;
+  final pulumi.Input<String> yarmConfig;
 
   /// Creates a new [GetHybridMonitorSlsTasksTask].
   /// [attachLabels] The tags of the metric import task.
@@ -120,7 +120,7 @@ class GetHybridMonitorSlsTasksTask {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachLabels': pulumi.Input.encodeList<GetHybridMonitorSlsTasksTaskAttachLabel, Map<String, dynamic>>(attachLabels, (value) => value.toMap()),
+      'attachLabels': pulumi.Input.mapInputValue<List<GetHybridMonitorSlsTasksTaskAttachLabel>, List<Map<String, dynamic>>>(attachLabels, (value) => pulumi.Input.encodeList<GetHybridMonitorSlsTasksTaskAttachLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'collectInterval': collectInterval,
       'collectTargetEndpoint': collectTargetEndpoint,
       'collectTargetPath': collectTargetPath,
@@ -138,11 +138,11 @@ class GetHybridMonitorSlsTasksTask {
       'logSample': logSample,
       'logSplit': logSplit,
       'matchExpressRelation': matchExpressRelation,
-      'matchExpresses': pulumi.Input.encodeList<GetHybridMonitorSlsTasksTaskMatchExpress, Map<String, dynamic>>(matchExpresses, (value) => value.toMap()),
+      'matchExpresses': pulumi.Input.mapInputValue<List<GetHybridMonitorSlsTasksTaskMatchExpress>, List<Map<String, dynamic>>>(matchExpresses, (value) => pulumi.Input.encodeList<GetHybridMonitorSlsTasksTaskMatchExpress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'namespace': namespace,
       'networkType': networkType,
       'slsProcess': slsProcess,
-      'slsProcessConfigs': pulumi.Input.encodeList<GetHybridMonitorSlsTasksTaskSlsProcessConfig, Map<String, dynamic>>(slsProcessConfigs, (value) => value.toMap()),
+      'slsProcessConfigs': pulumi.Input.mapInputValue<List<GetHybridMonitorSlsTasksTaskSlsProcessConfig>, List<Map<String, dynamic>>>(slsProcessConfigs, (value) => pulumi.Input.encodeList<GetHybridMonitorSlsTasksTaskSlsProcessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'taskName': taskName,
       'taskType': taskType,
       'uploadRegion': uploadRegion,
@@ -152,33 +152,33 @@ class GetHybridMonitorSlsTasksTask {
 
   factory GetHybridMonitorSlsTasksTask.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorSlsTasksTask(
-      attachLabels: pulumi.Input.decodeList<GetHybridMonitorSlsTasksTaskAttachLabel>(map['attachLabels'], (value) => GetHybridMonitorSlsTasksTaskAttachLabel.fromMap((value as Map).cast<String, dynamic>())),
-      collectInterval: map['collectInterval'] as int,
-      collectTargetEndpoint: map['collectTargetEndpoint'] as String,
-      collectTargetPath: map['collectTargetPath'] as String,
-      collectTargetType: map['collectTargetType'] as String,
-      collectTimout: map['collectTimout'] as int,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      extraInfo: map['extraInfo'] as String,
-      groupId: map['groupId'] as String,
-      hybridMonitorSlsTaskId: map['hybridMonitorSlsTaskId'] as String,
-      id: map['id'] as String,
-      instances: (map['instances'] as List).cast<String>(),
-      logFilePath: map['logFilePath'] as String,
-      logProcess: map['logProcess'] as String,
-      logSample: map['logSample'] as String,
-      logSplit: map['logSplit'] as String,
-      matchExpressRelation: map['matchExpressRelation'] as String,
-      matchExpresses: pulumi.Input.decodeList<GetHybridMonitorSlsTasksTaskMatchExpress>(map['matchExpresses'], (value) => GetHybridMonitorSlsTasksTaskMatchExpress.fromMap((value as Map).cast<String, dynamic>())),
-      namespace: map['namespace'] as String,
-      networkType: map['networkType'] as String,
-      slsProcess: map['slsProcess'] as String,
-      slsProcessConfigs: pulumi.Input.decodeList<GetHybridMonitorSlsTasksTaskSlsProcessConfig>(map['slsProcessConfigs'], (value) => GetHybridMonitorSlsTasksTaskSlsProcessConfig.fromMap((value as Map).cast<String, dynamic>())),
-      taskName: map['taskName'] as String,
-      taskType: map['taskType'] as String,
-      uploadRegion: map['uploadRegion'] as String,
-      yarmConfig: map['yarmConfig'] as String,
+      attachLabels: (pulumi.Input.decodeList<GetHybridMonitorSlsTasksTaskAttachLabel>(map['attachLabels'], (value) => GetHybridMonitorSlsTasksTaskAttachLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      collectInterval: (map['collectInterval'] as int).input(),
+      collectTargetEndpoint: (map['collectTargetEndpoint'] as String).input(),
+      collectTargetPath: (map['collectTargetPath'] as String).input(),
+      collectTargetType: (map['collectTargetType'] as String).input(),
+      collectTimout: (map['collectTimout'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      extraInfo: (map['extraInfo'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      hybridMonitorSlsTaskId: (map['hybridMonitorSlsTaskId'] as String).input(),
+      id: (map['id'] as String).input(),
+      instances: ((map['instances'] as List).cast<String>()).input(),
+      logFilePath: (map['logFilePath'] as String).input(),
+      logProcess: (map['logProcess'] as String).input(),
+      logSample: (map['logSample'] as String).input(),
+      logSplit: (map['logSplit'] as String).input(),
+      matchExpressRelation: (map['matchExpressRelation'] as String).input(),
+      matchExpresses: (pulumi.Input.decodeList<GetHybridMonitorSlsTasksTaskMatchExpress>(map['matchExpresses'], (value) => GetHybridMonitorSlsTasksTaskMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: (map['namespace'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      slsProcess: (map['slsProcess'] as String).input(),
+      slsProcessConfigs: (pulumi.Input.decodeList<GetHybridMonitorSlsTasksTaskSlsProcessConfig>(map['slsProcessConfigs'], (value) => GetHybridMonitorSlsTasksTaskSlsProcessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taskName: (map['taskName'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
+      uploadRegion: (map['uploadRegion'] as String).input(),
+      yarmConfig: (map['yarmConfig'] as String).input(),
     );
   }
 }

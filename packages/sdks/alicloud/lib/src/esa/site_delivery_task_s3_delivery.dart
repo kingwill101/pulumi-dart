@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SiteDeliveryTaskS3Delivery {
-  final String? accessKey;
-  final String? bucketPath;
-  final String? endpoint;
-  final String? prefixPath;
-  final String? region;
-  final bool? s3Cmpt;
-  final String? secretKey;
+  final pulumi.Input<String>? accessKey;
+  final pulumi.Input<String>? bucketPath;
+  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String>? prefixPath;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<bool>? s3Cmpt;
+  final pulumi.Input<String>? secretKey;
   /// Server-side encryption
-  final bool? serverSideEncryption;
+  final pulumi.Input<bool>? serverSideEncryption;
   /// Authentication Type
-  final String? vertifyType;
+  final pulumi.Input<String>? vertifyType;
 
   /// Creates a new [SiteDeliveryTaskS3Delivery].
   /// [accessKey] Optional.
@@ -52,15 +53,15 @@ class SiteDeliveryTaskS3Delivery {
 
   factory SiteDeliveryTaskS3Delivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskS3Delivery(
-      accessKey: map['accessKey'] == null ? null : map['accessKey'] as String,
-      bucketPath: map['bucketPath'] == null ? null : map['bucketPath'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      prefixPath: map['prefixPath'] == null ? null : map['prefixPath'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      s3Cmpt: map['s3Cmpt'] == null ? null : map['s3Cmpt'] as bool,
-      secretKey: map['secretKey'] == null ? null : map['secretKey'] as String,
-      serverSideEncryption: map['serverSideEncryption'] == null ? null : map['serverSideEncryption'] as bool,
-      vertifyType: map['vertifyType'] == null ? null : map['vertifyType'] as String,
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      bucketPath: map['bucketPath'] == null ? null : (map['bucketPath'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      prefixPath: map['prefixPath'] == null ? null : (map['prefixPath'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3Cmpt: map['s3Cmpt'] == null ? null : (map['s3Cmpt'] as bool).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      serverSideEncryption: map['serverSideEncryption'] == null ? null : (map['serverSideEncryption'] as bool).input(),
+      vertifyType: map['vertifyType'] == null ? null : (map['vertifyType'] as String).input(),
     );
   }
 }

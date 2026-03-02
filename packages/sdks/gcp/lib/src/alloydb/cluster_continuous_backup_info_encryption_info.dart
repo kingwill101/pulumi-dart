@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterContinuousBackupInfoEncryptionInfo {
   /// (Output)
   /// Output only. Type of encryption.
-  final String? encryptionType;
+  final pulumi.Input<String>? encryptionType;
   /// (Output)
   /// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
-  final List<String>? kmsKeyVersions;
+  final pulumi.Input<List<String>>? kmsKeyVersions;
 
   /// Creates a new [ClusterContinuousBackupInfoEncryptionInfo].
   /// [encryptionType] (Output)
@@ -26,8 +27,8 @@ class ClusterContinuousBackupInfoEncryptionInfo {
 
   factory ClusterContinuousBackupInfoEncryptionInfo.fromMap(Map<String, dynamic> map) {
     return ClusterContinuousBackupInfoEncryptionInfo(
-      encryptionType: map['encryptionType'] == null ? null : map['encryptionType'] as String,
-      kmsKeyVersions: map['kmsKeyVersions'] == null ? null : (map['kmsKeyVersions'] as List).cast<String>(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      kmsKeyVersions: map['kmsKeyVersions'] == null ? null : ((map['kmsKeyVersions'] as List).cast<String>()).input(),
     );
   }
 }

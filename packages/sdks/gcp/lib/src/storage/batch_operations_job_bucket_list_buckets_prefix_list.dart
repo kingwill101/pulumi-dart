@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BatchOperationsJobBucketListBucketsPrefixList {
   /// (Optional)
-  final List<String>? includedObjectPrefixes;
+  final pulumi.Input<List<String>>? includedObjectPrefixes;
 
   /// Creates a new [BatchOperationsJobBucketListBucketsPrefixList].
   /// [includedObjectPrefixes] (Optional)
@@ -19,7 +20,7 @@ class BatchOperationsJobBucketListBucketsPrefixList {
 
   factory BatchOperationsJobBucketListBucketsPrefixList.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobBucketListBucketsPrefixList(
-      includedObjectPrefixes: map['includedObjectPrefixes'] == null ? null : (map['includedObjectPrefixes'] as List).cast<String>(),
+      includedObjectPrefixes: map['includedObjectPrefixes'] == null ? null : ((map['includedObjectPrefixes'] as List).cast<String>()).input(),
     );
   }
 }

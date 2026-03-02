@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxWebAppSiteConfigCors {
   /// Specifies a list of origins that should be allowed to make cross-origin calls.
-  final List<String>? allowedOrigins;
+  final pulumi.Input<List<String>>? allowedOrigins;
   /// Whether CORS requests with credentials are allowed. Defaults to `false`
-  final bool? supportCredentials;
+  final pulumi.Input<bool>? supportCredentials;
 
   /// Creates a new [LinuxWebAppSiteConfigCors].
   /// [allowedOrigins] Specifies a list of origins that should be allowed to make cross-origin calls.
@@ -24,8 +25,8 @@ class LinuxWebAppSiteConfigCors {
 
   factory LinuxWebAppSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteConfigCors(
-      allowedOrigins: map['allowedOrigins'] == null ? null : (map['allowedOrigins'] as List).cast<String>(),
-      supportCredentials: map['supportCredentials'] == null ? null : map['supportCredentials'] as bool,
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
+      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials'] as bool).input(),
     );
   }
 }

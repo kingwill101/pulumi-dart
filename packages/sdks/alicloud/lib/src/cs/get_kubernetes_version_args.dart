@@ -19,13 +19,10 @@ class GetKubernetesVersionArgs {
   /// [kubernetesVersion] The ACK released kubernetes version.
   /// [profile] The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
   GetKubernetesVersionArgs({
-    required pulumi.Output<String> clusterType,
-    pulumi.Output<String>? kubernetesVersion,
-    pulumi.Output<String>? profile,
-  }) :
-      clusterType = pulumi.Input.asInput<String>(clusterType),
-      kubernetesVersion = pulumi.Input.asOptionalInput<String>(kubernetesVersion),
-      profile = pulumi.Input.asOptionalInput<String>(profile);
+    required this.clusterType,
+    this.kubernetesVersion,
+    this.profile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKubernetesVersionArgs {
 
   factory GetKubernetesVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesVersionArgs(
-      clusterType: pulumi.Output.create<String>(map['clusterType'] as String),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : pulumi.Output.create<String>(map['kubernetesVersion'] as String),
-      profile: map['profile'] == null ? null : pulumi.Output.create<String>(map['profile'] as String),
+      clusterType: (map['clusterType'] as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
     );
   }
 }

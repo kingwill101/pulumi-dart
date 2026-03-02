@@ -35,29 +35,18 @@ class CustomKeyStoreState {
   /// [xksProxyUriPath] Optional.
   /// [xksProxyVpcEndpointServiceName] Optional.
   CustomKeyStoreState({
-    pulumi.Output<String>? cloudHsmClusterId,
-    pulumi.Output<String>? customKeyStoreName,
-    pulumi.Output<String>? customKeyStoreType,
-    pulumi.Output<String>? keyStorePassword,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? trustAnchorCertificate,
-    pulumi.Output<CustomKeyStoreXksProxyAuthenticationCredential>? xksProxyAuthenticationCredential,
-    pulumi.Output<String>? xksProxyConnectivity,
-    pulumi.Output<String>? xksProxyUriEndpoint,
-    pulumi.Output<String>? xksProxyUriPath,
-    pulumi.Output<String>? xksProxyVpcEndpointServiceName,
-  }) :
-      cloudHsmClusterId = pulumi.Input.asOptionalInput<String>(cloudHsmClusterId),
-      customKeyStoreName = pulumi.Input.asOptionalInput<String>(customKeyStoreName),
-      customKeyStoreType = pulumi.Input.asOptionalInput<String>(customKeyStoreType),
-      keyStorePassword = pulumi.Input.asOptionalInput<String>(keyStorePassword),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      trustAnchorCertificate = pulumi.Input.asOptionalInput<String>(trustAnchorCertificate),
-      xksProxyAuthenticationCredential = pulumi.Input.asOptionalInput<CustomKeyStoreXksProxyAuthenticationCredential>(xksProxyAuthenticationCredential),
-      xksProxyConnectivity = pulumi.Input.asOptionalInput<String>(xksProxyConnectivity),
-      xksProxyUriEndpoint = pulumi.Input.asOptionalInput<String>(xksProxyUriEndpoint),
-      xksProxyUriPath = pulumi.Input.asOptionalInput<String>(xksProxyUriPath),
-      xksProxyVpcEndpointServiceName = pulumi.Input.asOptionalInput<String>(xksProxyVpcEndpointServiceName);
+    this.cloudHsmClusterId,
+    this.customKeyStoreName,
+    this.customKeyStoreType,
+    this.keyStorePassword,
+    this.region,
+    this.trustAnchorCertificate,
+    this.xksProxyAuthenticationCredential,
+    this.xksProxyConnectivity,
+    this.xksProxyUriEndpoint,
+    this.xksProxyUriPath,
+    this.xksProxyVpcEndpointServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,17 +66,17 @@ class CustomKeyStoreState {
 
   factory CustomKeyStoreState.fromMap(Map<String, dynamic> map) {
     return CustomKeyStoreState(
-      cloudHsmClusterId: map['cloudHsmClusterId'] == null ? null : pulumi.Output.create<String>(map['cloudHsmClusterId'] as String),
-      customKeyStoreName: map['customKeyStoreName'] == null ? null : pulumi.Output.create<String>(map['customKeyStoreName'] as String),
-      customKeyStoreType: map['customKeyStoreType'] == null ? null : pulumi.Output.create<String>(map['customKeyStoreType'] as String),
-      keyStorePassword: map['keyStorePassword'] == null ? null : pulumi.Output.create<String>(map['keyStorePassword'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      trustAnchorCertificate: map['trustAnchorCertificate'] == null ? null : pulumi.Output.create<String>(map['trustAnchorCertificate'] as String),
-      xksProxyAuthenticationCredential: map['xksProxyAuthenticationCredential'] == null ? null : pulumi.Output.create<CustomKeyStoreXksProxyAuthenticationCredential>(CustomKeyStoreXksProxyAuthenticationCredential.fromMap((map['xksProxyAuthenticationCredential'] as Map).cast<String, dynamic>())),
-      xksProxyConnectivity: map['xksProxyConnectivity'] == null ? null : pulumi.Output.create<String>(map['xksProxyConnectivity'] as String),
-      xksProxyUriEndpoint: map['xksProxyUriEndpoint'] == null ? null : pulumi.Output.create<String>(map['xksProxyUriEndpoint'] as String),
-      xksProxyUriPath: map['xksProxyUriPath'] == null ? null : pulumi.Output.create<String>(map['xksProxyUriPath'] as String),
-      xksProxyVpcEndpointServiceName: map['xksProxyVpcEndpointServiceName'] == null ? null : pulumi.Output.create<String>(map['xksProxyVpcEndpointServiceName'] as String),
+      cloudHsmClusterId: map['cloudHsmClusterId'] == null ? null : (map['cloudHsmClusterId'] as String).input(),
+      customKeyStoreName: map['customKeyStoreName'] == null ? null : (map['customKeyStoreName'] as String).input(),
+      customKeyStoreType: map['customKeyStoreType'] == null ? null : (map['customKeyStoreType'] as String).input(),
+      keyStorePassword: map['keyStorePassword'] == null ? null : (map['keyStorePassword'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      trustAnchorCertificate: map['trustAnchorCertificate'] == null ? null : (map['trustAnchorCertificate'] as String).input(),
+      xksProxyAuthenticationCredential: map['xksProxyAuthenticationCredential'] == null ? null : (CustomKeyStoreXksProxyAuthenticationCredential.fromMap((map['xksProxyAuthenticationCredential'] as Map).cast<String, dynamic>())).input(),
+      xksProxyConnectivity: map['xksProxyConnectivity'] == null ? null : (map['xksProxyConnectivity'] as String).input(),
+      xksProxyUriEndpoint: map['xksProxyUriEndpoint'] == null ? null : (map['xksProxyUriEndpoint'] as String).input(),
+      xksProxyUriPath: map['xksProxyUriPath'] == null ? null : (map['xksProxyUriPath'] as String).input(),
+      xksProxyVpcEndpointServiceName: map['xksProxyVpcEndpointServiceName'] == null ? null : (map['xksProxyVpcEndpointServiceName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Active Directory identity configuration for a resource.
 class DatabaseUserIdentityResponse {
   /// The Azure Active Directory client id.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The Azure Active Directory principal id.
-  final String principalId;
+  final pulumi.Input<String> principalId;
 
   /// Creates a new [DatabaseUserIdentityResponse].
   /// [clientId] The Azure Active Directory client id.
@@ -25,8 +26,8 @@ class DatabaseUserIdentityResponse {
 
   factory DatabaseUserIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseUserIdentityResponse(
-      clientId: map['clientId'] as String,
-      principalId: map['principalId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
     );
   }
 }

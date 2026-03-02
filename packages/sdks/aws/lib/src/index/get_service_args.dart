@@ -27,19 +27,13 @@ class GetServiceArgs {
   /// [reverseDnsPrefix] Prefix of the service (_e.g.,_ `com.amazonaws` in AWS Commercial, `cn.com.amazonaws` in AWS China).
   /// [serviceId] Service endpoint ID (_e.g.,_ `s3`, `rds`, `ec2`). One of `dns_name`, `reverse_dns_name`, or `service_id` is required. A service's endpoint ID can be found in the [_AWS General Reference_](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html).
   GetServiceArgs({
-    pulumi.Output<String>? dnsName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? reverseDnsName,
-    pulumi.Output<String>? reverseDnsPrefix,
-    pulumi.Output<String>? serviceId,
-  }) :
-      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reverseDnsName = pulumi.Input.asOptionalInput<String>(reverseDnsName),
-      reverseDnsPrefix = pulumi.Input.asOptionalInput<String>(reverseDnsPrefix),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId);
+    this.dnsName,
+    this.id,
+    this.region,
+    this.reverseDnsName,
+    this.reverseDnsPrefix,
+    this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reverseDnsName: map['reverseDnsName'] == null ? null : pulumi.Output.create<String>(map['reverseDnsName'] as String),
-      reverseDnsPrefix: map['reverseDnsPrefix'] == null ? null : pulumi.Output.create<String>(map['reverseDnsPrefix'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reverseDnsName: map['reverseDnsName'] == null ? null : (map['reverseDnsName'] as String).input(),
+      reverseDnsPrefix: map['reverseDnsPrefix'] == null ? null : (map['reverseDnsPrefix'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
     );
   }
 }

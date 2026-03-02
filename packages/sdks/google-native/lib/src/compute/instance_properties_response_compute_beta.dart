@@ -18,53 +18,53 @@ import 'tags_response_compute_beta.dart';
 
 class InstancePropertiesResponseComputeBeta {
   /// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
-  final AdvancedMachineFeaturesResponseComputeBeta advancedMachineFeatures;
+  final pulumi.Input<AdvancedMachineFeaturesResponseComputeBeta> advancedMachineFeatures;
   /// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
-  final bool canIpForward;
+  final pulumi.Input<bool> canIpForward;
   /// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
-  final ConfidentialInstanceConfigResponseComputeBeta confidentialInstanceConfig;
+  final pulumi.Input<ConfidentialInstanceConfigResponseComputeBeta> confidentialInstanceConfig;
   /// An optional text description for the instances that are created from these properties.
-  final String description;
+  final pulumi.Input<String> description;
   /// An array of disks that are associated with the instances that are created from these properties.
-  final List<AttachedDiskResponseComputeBeta> disks;
+  final pulumi.Input<List<AttachedDiskResponseComputeBeta>> disks;
   /// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
-  final DisplayDeviceResponseComputeBeta displayDevice;
+  final pulumi.Input<DisplayDeviceResponseComputeBeta> displayDevice;
   /// A list of guest accelerator cards' type and count to use for instances created from these properties.
-  final List<AcceleratorConfigResponseComputeBeta> guestAccelerators;
+  final pulumi.Input<List<AcceleratorConfigResponseComputeBeta>> guestAccelerators;
   /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-  final String keyRevocationActionType;
+  final pulumi.Input<String> keyRevocationActionType;
   /// Labels to apply to instances that are created from these properties.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The machine type to use for instances that are created from these properties.
-  final String machineType;
+  final pulumi.Input<String> machineType;
   /// The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
-  final MetadataResponseComputeBeta metadata;
+  final pulumi.Input<MetadataResponseComputeBeta> metadata;
   /// Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
-  final String minCpuPlatform;
+  final pulumi.Input<String> minCpuPlatform;
   /// An array of network access configurations for this interface.
-  final List<NetworkInterfaceResponseComputeBeta> networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceResponseComputeBeta>> networkInterfaces;
   /// Note that for MachineImage, this is not supported yet.
-  final NetworkPerformanceConfigResponseComputeBeta networkPerformanceConfig;
+  final pulumi.Input<NetworkPerformanceConfigResponseComputeBeta> networkPerformanceConfig;
   /// PostKeyRevocationActionType of the instance.
-  final String postKeyRevocationActionType;
+  final pulumi.Input<String> postKeyRevocationActionType;
   /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
-  final String privateIpv6GoogleAccess;
+  final pulumi.Input<String> privateIpv6GoogleAccess;
   /// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
-  final ReservationAffinityResponseComputeBeta reservationAffinity;
+  final pulumi.Input<ReservationAffinityResponseComputeBeta> reservationAffinity;
   /// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
-  final Map<String, String> resourceManagerTags;
+  final pulumi.Input<Map<String, String>> resourceManagerTags;
   /// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
-  final List<String> resourcePolicies;
+  final pulumi.Input<List<String>> resourcePolicies;
   /// Specifies the scheduling options for the instances that are created from these properties.
-  final SchedulingResponseComputeBeta scheduling;
+  final pulumi.Input<SchedulingResponseComputeBeta> scheduling;
   /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-  final List<ServiceAccountResponseComputeBeta> serviceAccounts;
+  final pulumi.Input<List<ServiceAccountResponseComputeBeta>> serviceAccounts;
   /// Note that for MachineImage, this is not supported yet.
-  final ShieldedInstanceConfigResponseComputeBeta shieldedInstanceConfig;
+  final pulumi.Input<ShieldedInstanceConfigResponseComputeBeta> shieldedInstanceConfig;
   /// Specifies the Shielded VM options for the instances that are created from these properties.
-  final ShieldedVmConfigResponseComputeBeta shieldedVmConfig;
+  final pulumi.Input<ShieldedVmConfigResponseComputeBeta> shieldedVmConfig;
   /// A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
-  final TagsResponseComputeBeta tags;
+  final pulumi.Input<TagsResponseComputeBeta> tags;
 
   /// Creates a new [InstancePropertiesResponseComputeBeta].
   /// [advancedMachineFeatures] Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
@@ -120,59 +120,59 @@ class InstancePropertiesResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedMachineFeatures': advancedMachineFeatures.toMap(),
+      'advancedMachineFeatures': pulumi.Input.mapInputValue<AdvancedMachineFeaturesResponseComputeBeta, Map<String, dynamic>>(advancedMachineFeatures, (value) => value.toMap()),
       'canIpForward': canIpForward,
-      'confidentialInstanceConfig': confidentialInstanceConfig.toMap(),
+      'confidentialInstanceConfig': pulumi.Input.mapInputValue<ConfidentialInstanceConfigResponseComputeBeta, Map<String, dynamic>>(confidentialInstanceConfig, (value) => value.toMap()),
       'description': description,
-      'disks': pulumi.Input.encodeList<AttachedDiskResponseComputeBeta, Map<String, dynamic>>(disks, (value) => value.toMap()),
-      'displayDevice': displayDevice.toMap(),
-      'guestAccelerators': pulumi.Input.encodeList<AcceleratorConfigResponseComputeBeta, Map<String, dynamic>>(guestAccelerators, (value) => value.toMap()),
+      'disks': pulumi.Input.mapInputValue<List<AttachedDiskResponseComputeBeta>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<AttachedDiskResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'displayDevice': pulumi.Input.mapInputValue<DisplayDeviceResponseComputeBeta, Map<String, dynamic>>(displayDevice, (value) => value.toMap()),
+      'guestAccelerators': pulumi.Input.mapInputValue<List<AcceleratorConfigResponseComputeBeta>, List<Map<String, dynamic>>>(guestAccelerators, (value) => pulumi.Input.encodeList<AcceleratorConfigResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'keyRevocationActionType': keyRevocationActionType,
       'labels': labels,
       'machineType': machineType,
-      'metadata': metadata.toMap(),
+      'metadata': pulumi.Input.mapInputValue<MetadataResponseComputeBeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'minCpuPlatform': minCpuPlatform,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponseComputeBeta, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
-      'networkPerformanceConfig': networkPerformanceConfig.toMap(),
+      'networkInterfaces': pulumi.Input.mapInputValue<List<NetworkInterfaceResponseComputeBeta>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkPerformanceConfig': pulumi.Input.mapInputValue<NetworkPerformanceConfigResponseComputeBeta, Map<String, dynamic>>(networkPerformanceConfig, (value) => value.toMap()),
       'postKeyRevocationActionType': postKeyRevocationActionType,
       'privateIpv6GoogleAccess': privateIpv6GoogleAccess,
-      'reservationAffinity': reservationAffinity.toMap(),
+      'reservationAffinity': pulumi.Input.mapInputValue<ReservationAffinityResponseComputeBeta, Map<String, dynamic>>(reservationAffinity, (value) => value.toMap()),
       'resourceManagerTags': resourceManagerTags,
       'resourcePolicies': resourcePolicies,
-      'scheduling': scheduling.toMap(),
-      'serviceAccounts': pulumi.Input.encodeList<ServiceAccountResponseComputeBeta, Map<String, dynamic>>(serviceAccounts, (value) => value.toMap()),
-      'shieldedInstanceConfig': shieldedInstanceConfig.toMap(),
-      'shieldedVmConfig': shieldedVmConfig.toMap(),
-      'tags': tags.toMap(),
+      'scheduling': pulumi.Input.mapInputValue<SchedulingResponseComputeBeta, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
+      'serviceAccounts': pulumi.Input.mapInputValue<List<ServiceAccountResponseComputeBeta>, List<Map<String, dynamic>>>(serviceAccounts, (value) => pulumi.Input.encodeList<ServiceAccountResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'shieldedInstanceConfig': pulumi.Input.mapInputValue<ShieldedInstanceConfigResponseComputeBeta, Map<String, dynamic>>(shieldedInstanceConfig, (value) => value.toMap()),
+      'shieldedVmConfig': pulumi.Input.mapInputValue<ShieldedVmConfigResponseComputeBeta, Map<String, dynamic>>(shieldedVmConfig, (value) => value.toMap()),
+      'tags': pulumi.Input.mapInputValue<TagsResponseComputeBeta, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory InstancePropertiesResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesResponseComputeBeta(
-      advancedMachineFeatures: AdvancedMachineFeaturesResponseComputeBeta.fromMap((map['advancedMachineFeatures'] as Map).cast<String, dynamic>()),
-      canIpForward: map['canIpForward'] as bool,
-      confidentialInstanceConfig: ConfidentialInstanceConfigResponseComputeBeta.fromMap((map['confidentialInstanceConfig'] as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      disks: pulumi.Input.decodeList<AttachedDiskResponseComputeBeta>(map['disks'], (value) => AttachedDiskResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      displayDevice: DisplayDeviceResponseComputeBeta.fromMap((map['displayDevice'] as Map).cast<String, dynamic>()),
-      guestAccelerators: pulumi.Input.decodeList<AcceleratorConfigResponseComputeBeta>(map['guestAccelerators'], (value) => AcceleratorConfigResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      keyRevocationActionType: map['keyRevocationActionType'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      machineType: map['machineType'] as String,
-      metadata: MetadataResponseComputeBeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      minCpuPlatform: map['minCpuPlatform'] as String,
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponseComputeBeta>(map['networkInterfaces'], (value) => NetworkInterfaceResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      networkPerformanceConfig: NetworkPerformanceConfigResponseComputeBeta.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
-      postKeyRevocationActionType: map['postKeyRevocationActionType'] as String,
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] as String,
-      reservationAffinity: ReservationAffinityResponseComputeBeta.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>()),
-      resourceManagerTags: (map['resourceManagerTags'] as Map).cast<String, String>(),
-      resourcePolicies: (map['resourcePolicies'] as List).cast<String>(),
-      scheduling: SchedulingResponseComputeBeta.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
-      serviceAccounts: pulumi.Input.decodeList<ServiceAccountResponseComputeBeta>(map['serviceAccounts'], (value) => ServiceAccountResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      shieldedInstanceConfig: ShieldedInstanceConfigResponseComputeBeta.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
-      shieldedVmConfig: ShieldedVmConfigResponseComputeBeta.fromMap((map['shieldedVmConfig'] as Map).cast<String, dynamic>()),
-      tags: TagsResponseComputeBeta.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      advancedMachineFeatures: (AdvancedMachineFeaturesResponseComputeBeta.fromMap((map['advancedMachineFeatures'] as Map).cast<String, dynamic>())).input(),
+      canIpForward: (map['canIpForward'] as bool).input(),
+      confidentialInstanceConfig: (ConfidentialInstanceConfigResponseComputeBeta.fromMap((map['confidentialInstanceConfig'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      disks: (pulumi.Input.decodeList<AttachedDiskResponseComputeBeta>(map['disks'], (value) => AttachedDiskResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayDevice: (DisplayDeviceResponseComputeBeta.fromMap((map['displayDevice'] as Map).cast<String, dynamic>())).input(),
+      guestAccelerators: (pulumi.Input.decodeList<AcceleratorConfigResponseComputeBeta>(map['guestAccelerators'], (value) => AcceleratorConfigResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyRevocationActionType: (map['keyRevocationActionType'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      machineType: (map['machineType'] as String).input(),
+      metadata: (MetadataResponseComputeBeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      minCpuPlatform: (map['minCpuPlatform'] as String).input(),
+      networkInterfaces: (pulumi.Input.decodeList<NetworkInterfaceResponseComputeBeta>(map['networkInterfaces'], (value) => NetworkInterfaceResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkPerformanceConfig: (NetworkPerformanceConfigResponseComputeBeta.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>())).input(),
+      postKeyRevocationActionType: (map['postKeyRevocationActionType'] as String).input(),
+      privateIpv6GoogleAccess: (map['privateIpv6GoogleAccess'] as String).input(),
+      reservationAffinity: (ReservationAffinityResponseComputeBeta.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>())).input(),
+      resourceManagerTags: ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourcePolicies: ((map['resourcePolicies'] as List).cast<String>()).input(),
+      scheduling: (SchedulingResponseComputeBeta.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
+      serviceAccounts: (pulumi.Input.decodeList<ServiceAccountResponseComputeBeta>(map['serviceAccounts'], (value) => ServiceAccountResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shieldedInstanceConfig: (ShieldedInstanceConfigResponseComputeBeta.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
+      shieldedVmConfig: (ShieldedVmConfigResponseComputeBeta.fromMap((map['shieldedVmConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: (TagsResponseComputeBeta.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

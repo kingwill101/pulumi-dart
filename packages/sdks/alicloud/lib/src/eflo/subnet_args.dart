@@ -28,17 +28,12 @@ class SubnetArgs {
   /// [vpdId] The Eflo VPD ID.
   /// [zoneId] The zone ID  of the resource.
   SubnetArgs({
-    required pulumi.Output<String> cidr,
-    required pulumi.Output<String> subnetName,
-    pulumi.Output<String>? type,
-    required pulumi.Output<String> vpdId,
-    required pulumi.Output<String> zoneId,
-  }) :
-      cidr = pulumi.Input.asInput<String>(cidr),
-      subnetName = pulumi.Input.asInput<String>(subnetName),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vpdId = pulumi.Input.asInput<String>(vpdId),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    required this.cidr,
+    required this.subnetName,
+    this.type,
+    required this.vpdId,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class SubnetArgs {
 
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
     return SubnetArgs(
-      cidr: pulumi.Output.create<String>(map['cidr'] as String),
-      subnetName: pulumi.Output.create<String>(map['subnetName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vpdId: pulumi.Output.create<String>(map['vpdId'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      cidr: (map['cidr'] as String).input(),
+      subnetName: (map['subnetName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vpdId: (map['vpdId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

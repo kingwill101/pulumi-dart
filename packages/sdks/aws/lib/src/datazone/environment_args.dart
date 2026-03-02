@@ -51,31 +51,19 @@ class EnvironmentArgs {
   /// [timeouts] Optional.
   /// [userParameters] The user parameters that are used in the environment.
   EnvironmentArgs({
-    pulumi.Output<String>? accountIdentifier,
-    pulumi.Output<String>? accountRegion,
-    pulumi.Output<String>? blueprintIdentifier,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainIdentifier,
-    pulumi.Output<List<String>>? glossaryTerms,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> profileIdentifier,
-    required pulumi.Output<String> projectIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<EnvironmentTimeouts>? timeouts,
-    pulumi.Output<List<EnvironmentUserParameter>>? userParameters,
-  }) :
-      accountIdentifier = pulumi.Input.asOptionalInput<String>(accountIdentifier),
-      accountRegion = pulumi.Input.asOptionalInput<String>(accountRegion),
-      blueprintIdentifier = pulumi.Input.asOptionalInput<String>(blueprintIdentifier),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
-      glossaryTerms = pulumi.Input.asOptionalInput<List<String>>(glossaryTerms),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profileIdentifier = pulumi.Input.asInput<String>(profileIdentifier),
-      projectIdentifier = pulumi.Input.asInput<String>(projectIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<EnvironmentTimeouts>(timeouts),
-      userParameters = pulumi.Input.asOptionalInput<List<EnvironmentUserParameter>>(userParameters);
+    this.accountIdentifier,
+    this.accountRegion,
+    this.blueprintIdentifier,
+    this.description,
+    required this.domainIdentifier,
+    this.glossaryTerms,
+    this.name,
+    required this.profileIdentifier,
+    required this.projectIdentifier,
+    this.region,
+    this.timeouts,
+    this.userParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      accountIdentifier: map['accountIdentifier'] == null ? null : pulumi.Output.create<String>(map['accountIdentifier'] as String),
-      accountRegion: map['accountRegion'] == null ? null : pulumi.Output.create<String>(map['accountRegion'] as String),
-      blueprintIdentifier: map['blueprintIdentifier'] == null ? null : pulumi.Output.create<String>(map['blueprintIdentifier'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      glossaryTerms: map['glossaryTerms'] == null ? null : pulumi.Output.create<List<String>>((map['glossaryTerms'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profileIdentifier: pulumi.Output.create<String>(map['profileIdentifier'] as String),
-      projectIdentifier: pulumi.Output.create<String>(map['projectIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<EnvironmentTimeouts>(EnvironmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      userParameters: map['userParameters'] == null ? null : pulumi.Output.create<List<EnvironmentUserParameter>>(pulumi.Input.decodeList<EnvironmentUserParameter>(map['userParameters'], (value) => EnvironmentUserParameter.fromMap((value as Map).cast<String, dynamic>()))),
+      accountIdentifier: map['accountIdentifier'] == null ? null : (map['accountIdentifier'] as String).input(),
+      accountRegion: map['accountRegion'] == null ? null : (map['accountRegion'] as String).input(),
+      blueprintIdentifier: map['blueprintIdentifier'] == null ? null : (map['blueprintIdentifier'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: (map['domainIdentifier'] as String).input(),
+      glossaryTerms: map['glossaryTerms'] == null ? null : ((map['glossaryTerms'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profileIdentifier: (map['profileIdentifier'] as String).input(),
+      projectIdentifier: (map['projectIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (EnvironmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      userParameters: map['userParameters'] == null ? null : (pulumi.Input.decodeList<EnvironmentUserParameter>(map['userParameters'], (value) => EnvironmentUserParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesApplicationInsights {
-  final bool? disableGeneratedRule;
+  final pulumi.Input<bool>? disableGeneratedRule;
 
   /// Creates a new [FeaturesApplicationInsights].
   /// [disableGeneratedRule] Optional.
@@ -18,7 +19,7 @@ class FeaturesApplicationInsights {
 
   factory FeaturesApplicationInsights.fromMap(Map<String, dynamic> map) {
     return FeaturesApplicationInsights(
-      disableGeneratedRule: map['disableGeneratedRule'] == null ? null : map['disableGeneratedRule'] as bool,
+      disableGeneratedRule: map['disableGeneratedRule'] == null ? null : (map['disableGeneratedRule'] as bool).input(),
     );
   }
 }

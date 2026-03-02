@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerDomain {
   /// certificate ID for TLS handshaking
-  final String certificateId;
+  final pulumi.Input<String> certificateId;
   /// name of certificate required for TLS handshaking
-  final String certificateName;
+  final pulumi.Input<String> certificateName;
   /// flag indicating if domain is managed by DigitalOcean
-  final bool isManaged;
+  final pulumi.Input<bool> isManaged;
   /// The name of load balancer.
-  final String name;
+  final pulumi.Input<String> name;
   /// list of domain SSL validation errors
-  final List<String> sslValidationErrorReasons;
+  final pulumi.Input<List<String>> sslValidationErrorReasons;
   /// list of domain verification errors
-  final List<String> verificationErrorReasons;
+  final pulumi.Input<List<String>> verificationErrorReasons;
 
   /// Creates a new [GetLoadBalancerDomain].
   /// [certificateId] certificate ID for TLS handshaking
@@ -44,12 +45,12 @@ class GetLoadBalancerDomain {
 
   factory GetLoadBalancerDomain.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerDomain(
-      certificateId: map['certificateId'] as String,
-      certificateName: map['certificateName'] as String,
-      isManaged: map['isManaged'] as bool,
-      name: map['name'] as String,
-      sslValidationErrorReasons: (map['sslValidationErrorReasons'] as List).cast<String>(),
-      verificationErrorReasons: (map['verificationErrorReasons'] as List).cast<String>(),
+      certificateId: (map['certificateId'] as String).input(),
+      certificateName: (map['certificateName'] as String).input(),
+      isManaged: (map['isManaged'] as bool).input(),
+      name: (map['name'] as String).input(),
+      sslValidationErrorReasons: ((map['sslValidationErrorReasons'] as List).cast<String>()).input(),
+      verificationErrorReasons: ((map['verificationErrorReasons'] as List).cast<String>()).input(),
     );
   }
 }

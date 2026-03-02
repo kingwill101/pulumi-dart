@@ -19,13 +19,10 @@ class GetResourceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] REST API id that owns the resource. If no REST API is found, an error will be returned.
   GetResourceArgs({
-    required pulumi.Output<String> path,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApiId,
-  }) :
-      path = pulumi.Input.asInput<String>(path),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asInput<String>(restApiId);
+    required this.path,
+    this.region,
+    required this.restApiId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetResourceArgs {
 
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceArgs(
-      path: pulumi.Output.create<String>(map['path'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: pulumi.Output.create<String>(map['restApiId'] as String),
+      path: (map['path'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: (map['restApiId'] as String).input(),
     );
   }
 }

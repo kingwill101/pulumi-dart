@@ -31,21 +31,14 @@ class VariableArgs {
   /// [value] Gets or sets the value of the variable.
   /// [variableName] The variable name.
   VariableArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? isEncrypted,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? value,
-    pulumi.Output<String>? variableName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isEncrypted = pulumi.Input.asOptionalInput<bool>(isEncrypted),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      value = pulumi.Input.asOptionalInput<String>(value),
-      variableName = pulumi.Input.asOptionalInput<String>(variableName);
+    required this.automationAccountName,
+    this.description,
+    this.isEncrypted,
+    required this.name,
+    required this.resourceGroupName,
+    this.value,
+    this.variableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class VariableArgs {
 
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
     return VariableArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isEncrypted: map['isEncrypted'] == null ? null : pulumi.Output.create<bool>(map['isEncrypted'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
-      variableName: map['variableName'] == null ? null : pulumi.Output.create<String>(map['variableName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted'] as bool).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      variableName: map['variableName'] == null ? null : (map['variableName'] as String).input(),
     );
   }
 }

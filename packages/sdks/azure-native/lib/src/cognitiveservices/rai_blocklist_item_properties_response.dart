@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RAI Custom Blocklist Item properties.
 class RaiBlocklistItemPropertiesResponse {
   /// If the pattern is a regex pattern.
-  final bool? isRegex;
+  final pulumi.Input<bool>? isRegex;
   /// Pattern to match against.
-  final String? pattern;
+  final pulumi.Input<String>? pattern;
 
   /// Creates a new [RaiBlocklistItemPropertiesResponse].
   /// [isRegex] If the pattern is a regex pattern.
@@ -25,8 +26,8 @@ class RaiBlocklistItemPropertiesResponse {
 
   factory RaiBlocklistItemPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistItemPropertiesResponse(
-      isRegex: map['isRegex'] == null ? null : map['isRegex'] as bool,
-      pattern: map['pattern'] == null ? null : map['pattern'] as String,
+      isRegex: map['isRegex'] == null ? null : (map['isRegex'] as bool).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
     );
   }
 }

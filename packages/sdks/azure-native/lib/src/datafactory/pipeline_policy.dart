@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_elapsed_time_metric_policy.dart';
 
 /// Pipeline Policy.
 class PipelinePolicy {
   /// Pipeline ElapsedTime Metric Policy.
-  final PipelineElapsedTimeMetricPolicy? elapsedTimeMetric;
+  final pulumi.Input<PipelineElapsedTimeMetricPolicy>? elapsedTimeMetric;
 
   /// Creates a new [PipelinePolicy].
   /// [elapsedTimeMetric] Pipeline ElapsedTime Metric Policy.
@@ -15,13 +16,13 @@ class PipelinePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elapsedTimeMetric': ?elapsedTimeMetric == null ? null : elapsedTimeMetric!.toMap(),
+      'elapsedTimeMetric': ?pulumi.Input.mapOptionalInputValue<PipelineElapsedTimeMetricPolicy, Map<String, dynamic>>(elapsedTimeMetric, (value) => value.toMap()),
     };
   }
 
   factory PipelinePolicy.fromMap(Map<String, dynamic> map) {
     return PipelinePolicy(
-      elapsedTimeMetric: map['elapsedTimeMetric'] == null ? null : PipelineElapsedTimeMetricPolicy.fromMap((map['elapsedTimeMetric'] as Map).cast<String, dynamic>()),
+      elapsedTimeMetric: map['elapsedTimeMetric'] == null ? null : (PipelineElapsedTimeMetricPolicy.fromMap((map['elapsedTimeMetric'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

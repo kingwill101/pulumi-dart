@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
 import 'persistent_volume_claim_spec.dart';
 
 /// PersistentVolumeClaimTemplate is used to produce PersistentVolumeClaim objects as part of an EphemeralVolumeSource.
 class PersistentVolumeClaimTemplate {
   /// May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
-  final ObjectMeta? metadata;
+  final pulumi.Input<ObjectMeta>? metadata;
   /// The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.
-  final PersistentVolumeClaimSpec spec;
+  final pulumi.Input<PersistentVolumeClaimSpec> spec;
 
   /// Creates a new [PersistentVolumeClaimTemplate].
   /// [metadata] May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
@@ -20,15 +21,15 @@ class PersistentVolumeClaimTemplate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': spec.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<PersistentVolumeClaimSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory PersistentVolumeClaimTemplate.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeClaimTemplate(
-      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: PersistentVolumeClaimSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: (PersistentVolumeClaimSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

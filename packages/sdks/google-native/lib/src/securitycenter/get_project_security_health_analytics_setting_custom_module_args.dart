@@ -14,11 +14,9 @@ class GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// [customModuleId] Required.
   /// [project] Optional.
   GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs({
-    required pulumi.Output<String> customModuleId,
-    pulumi.Output<String>? project,
-  }) :
-      customModuleId = pulumi.Input.asInput<String>(customModuleId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.customModuleId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
 
   factory GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customModuleId: pulumi.Output.create<String>(map['customModuleId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      customModuleId: (map['customModuleId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

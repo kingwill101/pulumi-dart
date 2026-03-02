@@ -63,35 +63,21 @@ class LoadBalancerArgs {
   /// [sku] The load balancer SKU.
   /// [tags] Resource tags.
   LoadBalancerArgs({
-    pulumi.Output<List<BackendAddressPool>>? backendAddressPools,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<List<FrontendIPConfiguration>>? frontendIPConfigurations,
-    pulumi.Output<String>? id,
-    pulumi.Output<List<InboundNatPool>>? inboundNatPools,
-    pulumi.Output<List<InboundNatRuleNetwork>>? inboundNatRules,
-    pulumi.Output<String>? loadBalancerName,
-    pulumi.Output<List<LoadBalancingRule>>? loadBalancingRules,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<OutboundRule>>? outboundRules,
-    pulumi.Output<List<Probe>>? probes,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<LoadBalancerSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      backendAddressPools = pulumi.Input.asOptionalInput<List<BackendAddressPool>>(backendAddressPools),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      frontendIPConfigurations = pulumi.Input.asOptionalInput<List<FrontendIPConfiguration>>(frontendIPConfigurations),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      inboundNatPools = pulumi.Input.asOptionalInput<List<InboundNatPool>>(inboundNatPools),
-      inboundNatRules = pulumi.Input.asOptionalInput<List<InboundNatRuleNetwork>>(inboundNatRules),
-      loadBalancerName = pulumi.Input.asOptionalInput<String>(loadBalancerName),
-      loadBalancingRules = pulumi.Input.asOptionalInput<List<LoadBalancingRule>>(loadBalancingRules),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      outboundRules = pulumi.Input.asOptionalInput<List<OutboundRule>>(outboundRules),
-      probes = pulumi.Input.asOptionalInput<List<Probe>>(probes),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<LoadBalancerSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.backendAddressPools,
+    this.extendedLocation,
+    this.frontendIPConfigurations,
+    this.id,
+    this.inboundNatPools,
+    this.inboundNatRules,
+    this.loadBalancerName,
+    this.loadBalancingRules,
+    this.location,
+    this.outboundRules,
+    this.probes,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -114,20 +100,20 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      backendAddressPools: map['backendAddressPools'] == null ? null : pulumi.Output.create<List<BackendAddressPool>>(pulumi.Input.decodeList<BackendAddressPool>(map['backendAddressPools'], (value) => BackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      frontendIPConfigurations: map['frontendIPConfigurations'] == null ? null : pulumi.Output.create<List<FrontendIPConfiguration>>(pulumi.Input.decodeList<FrontendIPConfiguration>(map['frontendIPConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      inboundNatPools: map['inboundNatPools'] == null ? null : pulumi.Output.create<List<InboundNatPool>>(pulumi.Input.decodeList<InboundNatPool>(map['inboundNatPools'], (value) => InboundNatPool.fromMap((value as Map).cast<String, dynamic>()))),
-      inboundNatRules: map['inboundNatRules'] == null ? null : pulumi.Output.create<List<InboundNatRuleNetwork>>((map['inboundNatRules'] as List).cast<InboundNatRuleNetwork>()),
-      loadBalancerName: map['loadBalancerName'] == null ? null : pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      loadBalancingRules: map['loadBalancingRules'] == null ? null : pulumi.Output.create<List<LoadBalancingRule>>(pulumi.Input.decodeList<LoadBalancingRule>(map['loadBalancingRules'], (value) => LoadBalancingRule.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      outboundRules: map['outboundRules'] == null ? null : pulumi.Output.create<List<OutboundRule>>(pulumi.Input.decodeList<OutboundRule>(map['outboundRules'], (value) => OutboundRule.fromMap((value as Map).cast<String, dynamic>()))),
-      probes: map['probes'] == null ? null : pulumi.Output.create<List<Probe>>(pulumi.Input.decodeList<Probe>(map['probes'], (value) => Probe.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<LoadBalancerSku>(LoadBalancerSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPool>(map['backendAddressPools'], (value) => BackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      frontendIPConfigurations: map['frontendIPConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfiguration>(map['frontendIPConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      inboundNatPools: map['inboundNatPools'] == null ? null : (pulumi.Input.decodeList<InboundNatPool>(map['inboundNatPools'], (value) => InboundNatPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inboundNatRules: map['inboundNatRules'] == null ? null : ((map['inboundNatRules'] as List).cast<InboundNatRuleNetwork>()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      loadBalancingRules: map['loadBalancingRules'] == null ? null : (pulumi.Input.decodeList<LoadBalancingRule>(map['loadBalancingRules'], (value) => LoadBalancingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeList<OutboundRule>(map['outboundRules'], (value) => OutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<Probe>(map['probes'], (value) => Probe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (LoadBalancerSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

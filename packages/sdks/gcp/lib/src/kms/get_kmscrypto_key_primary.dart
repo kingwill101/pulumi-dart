@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKMSCryptoKeyPrimary {
   /// The CryptoKey's name.
   /// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-  final String name;
+  final pulumi.Input<String> name;
   /// The current state of the CryptoKeyVersion.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetKMSCryptoKeyPrimary].
   /// [name] The CryptoKey's name.
@@ -25,8 +26,8 @@ class GetKMSCryptoKeyPrimary {
 
   factory GetKMSCryptoKeyPrimary.fromMap(Map<String, dynamic> map) {
     return GetKMSCryptoKeyPrimary(
-      name: map['name'] as String,
-      state: map['state'] as String,
+      name: (map['name'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

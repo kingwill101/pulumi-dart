@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Execution Properties
 class ExecutionProperties {
   /// Execution specification
-  final dynamic specification;
+  final pulumi.Input<dynamic>? specification;
   /// Workflow version of execution
-  final String workflowVersionId;
+  final pulumi.Input<String> workflowVersionId;
 
   /// Creates a new [ExecutionProperties].
   /// [specification] Execution specification
@@ -25,8 +26,8 @@ class ExecutionProperties {
 
   factory ExecutionProperties.fromMap(Map<String, dynamic> map) {
     return ExecutionProperties(
-      specification: map['specification'] == null ? null : map['specification'],
-      workflowVersionId: map['workflowVersionId'] as String,
+      specification: map['specification'] == null ? null : (map['specification']).input(),
+      workflowVersionId: (map['workflowVersionId'] as String).input(),
     );
   }
 }

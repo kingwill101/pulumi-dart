@@ -22,15 +22,11 @@ class GetSyncGroupArgs {
   /// [serverName] The name of the server.
   /// [syncGroupName] The name of the sync group.
   GetSyncGroupArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> syncGroupName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      syncGroupName = pulumi.Input.asInput<String>(syncGroupName);
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.syncGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSyncGroupArgs {
 
   factory GetSyncGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSyncGroupArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      syncGroupName: pulumi.Output.create<String>(map['syncGroupName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      syncGroupName: (map['syncGroupName'] as String).input(),
     );
   }
 }

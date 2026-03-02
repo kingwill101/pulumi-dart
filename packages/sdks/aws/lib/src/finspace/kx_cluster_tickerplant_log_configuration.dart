@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterTickerplantLogConfiguration {
-  final List<String> tickerplantLogVolumes;
+  final pulumi.Input<List<String>> tickerplantLogVolumes;
 
   /// Creates a new [KxClusterTickerplantLogConfiguration].
   /// [tickerplantLogVolumes] Required.
@@ -18,7 +19,7 @@ class KxClusterTickerplantLogConfiguration {
 
   factory KxClusterTickerplantLogConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterTickerplantLogConfiguration(
-      tickerplantLogVolumes: (map['tickerplantLogVolumes'] as List).cast<String>(),
+      tickerplantLogVolumes: ((map['tickerplantLogVolumes'] as List).cast<String>()).input(),
     );
   }
 }

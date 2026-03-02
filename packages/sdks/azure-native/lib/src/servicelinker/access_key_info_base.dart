@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
 class AccessKeyInfoBase {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final String? authMode;
+  final pulumi.Input<String>? authMode;
   /// The authentication type.
   /// Expected value is 'accessKey'.
-  final String authType;
+  final pulumi.Input<String> authType;
   /// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
-  final List<String>? permissions;
+  final pulumi.Input<List<String>>? permissions;
 
   /// Creates a new [AccessKeyInfoBase].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
@@ -31,9 +32,9 @@ class AccessKeyInfoBase {
 
   factory AccessKeyInfoBase.fromMap(Map<String, dynamic> map) {
     return AccessKeyInfoBase(
-      authMode: map['authMode'] == null ? null : map['authMode'] as String,
-      authType: map['authType'] as String,
-      permissions: map['permissions'] == null ? null : (map['permissions'] as List).cast<String>(),
+      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authType: (map['authType'] as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
     );
   }
 }

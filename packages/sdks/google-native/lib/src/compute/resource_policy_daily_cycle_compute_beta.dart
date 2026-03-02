@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Time window specified for daily operations.
 class ResourcePolicyDailyCycleComputeBeta {
   /// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
-  final int? daysInCycle;
+  final pulumi.Input<int>? daysInCycle;
   /// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [ResourcePolicyDailyCycleComputeBeta].
   /// [daysInCycle] Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
@@ -25,8 +26,8 @@ class ResourcePolicyDailyCycleComputeBeta {
 
   factory ResourcePolicyDailyCycleComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyDailyCycleComputeBeta(
-      daysInCycle: map['daysInCycle'] == null ? null : map['daysInCycle'] as int,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      daysInCycle: map['daysInCycle'] == null ? null : (map['daysInCycle'] as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

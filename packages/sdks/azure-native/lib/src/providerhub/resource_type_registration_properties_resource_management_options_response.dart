@@ -8,11 +8,11 @@ import 'resource_type_registration_properties_resource_management_options_nested
 /// Resource management options.
 class ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse {
   /// Batch provisioning support.
-  final ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse? batchProvisioningSupport;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse>? batchProvisioningSupport;
   /// Delete dependencies.
-  final List<DeleteDependencyResponse>? deleteDependencies;
+  final pulumi.Input<List<DeleteDependencyResponse>>? deleteDependencies;
   /// Nested provisioning support.
-  final ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse? nestedProvisioningSupport;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse>? nestedProvisioningSupport;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse].
   /// [batchProvisioningSupport] Batch provisioning support.
@@ -26,17 +26,17 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'batchProvisioningSupport': ?batchProvisioningSupport == null ? null : batchProvisioningSupport!.toMap(),
-      'deleteDependencies': ?deleteDependencies == null ? null : pulumi.Input.encodeList<DeleteDependencyResponse, Map<String, dynamic>>(deleteDependencies!, (value) => value.toMap()),
-      'nestedProvisioningSupport': ?nestedProvisioningSupport == null ? null : nestedProvisioningSupport!.toMap(),
+      'batchProvisioningSupport': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse, Map<String, dynamic>>(batchProvisioningSupport, (value) => value.toMap()),
+      'deleteDependencies': ?pulumi.Input.mapOptionalInputValue<List<DeleteDependencyResponse>, List<Map<String, dynamic>>>(deleteDependencies, (value) => pulumi.Input.encodeList<DeleteDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nestedProvisioningSupport': ?pulumi.Input.mapOptionalInputValue<ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse, Map<String, dynamic>>(nestedProvisioningSupport, (value) => value.toMap()),
     };
   }
 
   factory ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse(
-      batchProvisioningSupport: map['batchProvisioningSupport'] == null ? null : ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse.fromMap((map['batchProvisioningSupport'] as Map).cast<String, dynamic>()),
-      deleteDependencies: map['deleteDependencies'] == null ? null : pulumi.Input.decodeList<DeleteDependencyResponse>(map['deleteDependencies'], (value) => DeleteDependencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      nestedProvisioningSupport: map['nestedProvisioningSupport'] == null ? null : ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse.fromMap((map['nestedProvisioningSupport'] as Map).cast<String, dynamic>()),
+      batchProvisioningSupport: map['batchProvisioningSupport'] == null ? null : (ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse.fromMap((map['batchProvisioningSupport'] as Map).cast<String, dynamic>())).input(),
+      deleteDependencies: map['deleteDependencies'] == null ? null : (pulumi.Input.decodeList<DeleteDependencyResponse>(map['deleteDependencies'], (value) => DeleteDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nestedProvisioningSupport: map['nestedProvisioningSupport'] == null ? null : (ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse.fromMap((map['nestedProvisioningSupport'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

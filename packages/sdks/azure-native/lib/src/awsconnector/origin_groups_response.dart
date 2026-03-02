@@ -6,9 +6,9 @@ import 'origin_group_response.dart';
 /// Definition of OriginGroups
 class OriginGroupsResponse {
   /// The items (origin groups) in a distribution.
-  final List<OriginGroupResponse>? items;
+  final pulumi.Input<List<OriginGroupResponse>>? items;
   /// The number of origin groups.
-  final int? quantity;
+  final pulumi.Input<int>? quantity;
 
   /// Creates a new [OriginGroupsResponse].
   /// [items] The items (origin groups) in a distribution.
@@ -20,15 +20,15 @@ class OriginGroupsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?items == null ? null : pulumi.Input.encodeList<OriginGroupResponse, Map<String, dynamic>>(items!, (value) => value.toMap()),
+      'items': ?pulumi.Input.mapOptionalInputValue<List<OriginGroupResponse>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<OriginGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'quantity': ?quantity,
     };
   }
 
   factory OriginGroupsResponse.fromMap(Map<String, dynamic> map) {
     return OriginGroupsResponse(
-      items: map['items'] == null ? null : pulumi.Input.decodeList<OriginGroupResponse>(map['items'], (value) => OriginGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      quantity: map['quantity'] == null ? null : map['quantity'] as int,
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<OriginGroupResponse>(map['items'], (value) => OriginGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class GetNodeArgs {
   /// [name] Name of the node.
   /// [partition] partition of the node.
   GetNodeArgs({
-    pulumi.Output<String>? address,
-    pulumi.Output<String>? description,
-    pulumi.Output<GetNodeFqdn>? fqdn,
-    pulumi.Output<String>? fullPath,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> partition,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fqdn = pulumi.Input.asOptionalInput<GetNodeFqdn>(fqdn),
-      fullPath = pulumi.Input.asOptionalInput<String>(fullPath),
-      name = pulumi.Input.asInput<String>(name),
-      partition = pulumi.Input.asInput<String>(partition);
+    this.address,
+    this.description,
+    this.fqdn,
+    this.fullPath,
+    required this.name,
+    required this.partition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetNodeArgs {
 
   factory GetNodeArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeArgs(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<GetNodeFqdn>(GetNodeFqdn.fromMap((map['fqdn'] as Map).cast<String, dynamic>())),
-      fullPath: map['fullPath'] == null ? null : pulumi.Output.create<String>(map['fullPath'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      partition: pulumi.Output.create<String>(map['partition'] as String),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (GetNodeFqdn.fromMap((map['fqdn'] as Map).cast<String, dynamic>())).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
+      name: (map['name'] as String).input(),
+      partition: (map['partition'] as String).input(),
     );
   }
 }

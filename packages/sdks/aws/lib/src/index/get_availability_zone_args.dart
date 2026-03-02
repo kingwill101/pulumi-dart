@@ -33,19 +33,13 @@ class GetAvailabilityZoneArgs {
   /// [state] Specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
   /// [zoneId] Zone ID of the availability zone to select.
   GetAvailabilityZoneArgs({
-    pulumi.Output<bool>? allAvailabilityZones,
-    pulumi.Output<List<GetAvailabilityZoneFilter>>? filters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? zoneId,
-  }) :
-      allAvailabilityZones = pulumi.Input.asOptionalInput<bool>(allAvailabilityZones),
-      filters = pulumi.Input.asOptionalInput<List<GetAvailabilityZoneFilter>>(filters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.allAvailabilityZones,
+    this.filters,
+    this.name,
+    this.region,
+    this.state,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class GetAvailabilityZoneArgs {
 
   factory GetAvailabilityZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZoneArgs(
-      allAvailabilityZones: map['allAvailabilityZones'] == null ? null : pulumi.Output.create<bool>(map['allAvailabilityZones'] as bool),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetAvailabilityZoneFilter>>(pulumi.Input.decodeList<GetAvailabilityZoneFilter>(map['filters'], (value) => GetAvailabilityZoneFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      allAvailabilityZones: map['allAvailabilityZones'] == null ? null : (map['allAvailabilityZones'] as bool).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAvailabilityZoneFilter>(map['filters'], (value) => GetAvailabilityZoneFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

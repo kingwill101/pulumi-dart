@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// settings for compression.
 class CompressionSettings {
   /// List of content types on which compression applies. The value should be a valid MIME type.
-  final List<String>? contentTypesToCompress;
+  final pulumi.Input<List<String>>? contentTypesToCompress;
   /// Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
-  final bool? isCompressionEnabled;
+  final pulumi.Input<bool>? isCompressionEnabled;
 
   /// Creates a new [CompressionSettings].
   /// [contentTypesToCompress] List of content types on which compression applies. The value should be a valid MIME type.
@@ -25,8 +26,8 @@ class CompressionSettings {
 
   factory CompressionSettings.fromMap(Map<String, dynamic> map) {
     return CompressionSettings(
-      contentTypesToCompress: map['contentTypesToCompress'] == null ? null : (map['contentTypesToCompress'] as List).cast<String>(),
-      isCompressionEnabled: map['isCompressionEnabled'] == null ? null : map['isCompressionEnabled'] as bool,
+      contentTypesToCompress: map['contentTypesToCompress'] == null ? null : ((map['contentTypesToCompress'] as List).cast<String>()).input(),
+      isCompressionEnabled: map['isCompressionEnabled'] == null ? null : (map['isCompressionEnabled'] as bool).input(),
     );
   }
 }

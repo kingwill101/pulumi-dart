@@ -29,17 +29,12 @@ class TraceScopeArgs {
   /// [resourceNames] Names of the projects that are included in this trace scope.
   /// [traceScopeId] A client-assigned identifier for the trace scope.
   TraceScopeArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<List<String>> resourceNames,
-    required pulumi.Output<String> traceScopeId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceNames = pulumi.Input.asInput<List<String>>(resourceNames),
-      traceScopeId = pulumi.Input.asInput<String>(traceScopeId);
+    this.description,
+    required this.location,
+    this.project,
+    required this.resourceNames,
+    required this.traceScopeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class TraceScopeArgs {
 
   factory TraceScopeArgs.fromMap(Map<String, dynamic> map) {
     return TraceScopeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceNames: pulumi.Output.create<List<String>>((map['resourceNames'] as List).cast<String>()),
-      traceScopeId: pulumi.Output.create<String>(map['traceScopeId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceNames: ((map['resourceNames'] as List).cast<String>()).input(),
+      traceScopeId: (map['traceScopeId'] as String).input(),
     );
   }
 }

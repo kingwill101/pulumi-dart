@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slo_request_based_sli_distribution_cut.dart';
 import 'slo_request_based_sli_good_total_ratio.dart';
 
@@ -11,7 +12,7 @@ class SloRequestBasedSli {
   /// measuring good service and total service.
   /// Exactly one of `distribution_cut` or `good_total_ratio` can be set.
   /// Structure is documented below.
-  final SloRequestBasedSliDistributionCut? distributionCut;
+  final pulumi.Input<SloRequestBasedSliDistributionCut>? distributionCut;
   /// A means to compute a ratio of `good_service` to `total_service`.
   /// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
   /// Must specify exactly two of good, bad, and total service filters.
@@ -19,7 +20,7 @@ class SloRequestBasedSli {
   /// will be assumed.
   /// Exactly one of `distribution_cut` or `good_total_ratio` can be set.
   /// Structure is documented below.
-  final SloRequestBasedSliGoodTotalRatio? goodTotalRatio;
+  final pulumi.Input<SloRequestBasedSliGoodTotalRatio>? goodTotalRatio;
 
   /// Creates a new [SloRequestBasedSli].
   /// [distributionCut] Used when good_service is defined by a count of values aggregated in a
@@ -31,15 +32,15 @@ class SloRequestBasedSli {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distributionCut': ?distributionCut == null ? null : distributionCut!.toMap(),
-      'goodTotalRatio': ?goodTotalRatio == null ? null : goodTotalRatio!.toMap(),
+      'distributionCut': ?pulumi.Input.mapOptionalInputValue<SloRequestBasedSliDistributionCut, Map<String, dynamic>>(distributionCut, (value) => value.toMap()),
+      'goodTotalRatio': ?pulumi.Input.mapOptionalInputValue<SloRequestBasedSliGoodTotalRatio, Map<String, dynamic>>(goodTotalRatio, (value) => value.toMap()),
     };
   }
 
   factory SloRequestBasedSli.fromMap(Map<String, dynamic> map) {
     return SloRequestBasedSli(
-      distributionCut: map['distributionCut'] == null ? null : SloRequestBasedSliDistributionCut.fromMap((map['distributionCut'] as Map).cast<String, dynamic>()),
-      goodTotalRatio: map['goodTotalRatio'] == null ? null : SloRequestBasedSliGoodTotalRatio.fromMap((map['goodTotalRatio'] as Map).cast<String, dynamic>()),
+      distributionCut: map['distributionCut'] == null ? null : (SloRequestBasedSliDistributionCut.fromMap((map['distributionCut'] as Map).cast<String, dynamic>())).input(),
+      goodTotalRatio: map['goodTotalRatio'] == null ? null : (SloRequestBasedSliGoodTotalRatio.fromMap((map['goodTotalRatio'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

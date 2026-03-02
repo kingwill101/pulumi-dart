@@ -27,17 +27,12 @@ class ListenerArgs {
   /// [serverGroupId] The server group ID.
   /// [tags] The tags. You can specify at most 20 tags in each call.
   ListenerArgs({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? listenerDescription,
-    required pulumi.Output<String> loadBalancerId,
-    required pulumi.Output<String> serverGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      listenerDescription = pulumi.Input.asOptionalInput<String>(listenerDescription),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      serverGroupId = pulumi.Input.asInput<String>(serverGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dryRun,
+    this.listenerDescription,
+    required this.loadBalancerId,
+    required this.serverGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ListenerArgs {
 
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      listenerDescription: map['listenerDescription'] == null ? null : pulumi.Output.create<String>(map['listenerDescription'] as String),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      serverGroupId: pulumi.Output.create<String>(map['serverGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      listenerDescription: map['listenerDescription'] == null ? null : (map['listenerDescription'] as String).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      serverGroupId: (map['serverGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetRegistryScopeMapArgs {
   /// [name] The name of the Container Registry token.
   /// [resourceGroupName] The Name of the Resource Group where this Container Registry token exists.
   GetRegistryScopeMapArgs({
-    required pulumi.Output<String> containerRegistryName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      containerRegistryName = pulumi.Input.asInput<String>(containerRegistryName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.containerRegistryName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegistryScopeMapArgs {
 
   factory GetRegistryScopeMapArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryScopeMapArgs(
-      containerRegistryName: pulumi.Output.create<String>(map['containerRegistryName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      containerRegistryName: (map['containerRegistryName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

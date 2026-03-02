@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ValidationCheckResult defines the details about the validation check.
 class ValidationCheckResultResponse {
   /// The category of the validation.
-  final String category;
+  final pulumi.Input<String> category;
   /// The description of the validation check.
-  final String description;
+  final pulumi.Input<String> description;
   /// Detailed failure information, which might be unformatted.
-  final String details;
+  final pulumi.Input<String> details;
   /// A human-readable message of the check failure.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// The validation check state.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [ValidationCheckResultResponse].
   /// [category] The category of the validation.
@@ -40,11 +41,11 @@ class ValidationCheckResultResponse {
 
   factory ValidationCheckResultResponse.fromMap(Map<String, dynamic> map) {
     return ValidationCheckResultResponse(
-      category: map['category'] as String,
-      description: map['description'] as String,
-      details: map['details'] as String,
-      reason: map['reason'] as String,
-      state: map['state'] as String,
+      category: (map['category'] as String).input(),
+      description: (map['description'] as String).input(),
+      details: (map['details'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

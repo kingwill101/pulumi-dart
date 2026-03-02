@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceServicePropertyIdentity {
   /// (Output)
   /// The principal of the identity.
-  final String? principal;
+  final pulumi.Input<String>? principal;
 
   /// Creates a new [ServiceServicePropertyIdentity].
   /// [principal] (Output)
@@ -20,7 +21,7 @@ class ServiceServicePropertyIdentity {
 
   factory ServiceServicePropertyIdentity.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyIdentity(
-      principal: map['principal'] == null ? null : map['principal'] as String,
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Source with uploaded location
 class UploadedUserSourceInfoResponse {
   /// Relative path of the storage which stores the source
-  final String? relativePath;
+  final pulumi.Input<String>? relativePath;
   /// Type of the source uploaded
   /// Expected value is 'UploadedUserSourceInfo'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the source
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [UploadedUserSourceInfoResponse].
   /// [relativePath] Relative path of the storage which stores the source
@@ -31,9 +32,9 @@ class UploadedUserSourceInfoResponse {
 
   factory UploadedUserSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return UploadedUserSourceInfoResponse(
-      relativePath: map['relativePath'] == null ? null : map['relativePath'] as String,
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

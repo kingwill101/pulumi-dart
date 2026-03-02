@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChatEngineChatEngineMetadata {
   /// (Output)
   /// The resource name of a Dialogflow agent, that this Chat Engine refers to.
-  final String? dialogflowAgent;
+  final pulumi.Input<String>? dialogflowAgent;
 
   /// Creates a new [ChatEngineChatEngineMetadata].
   /// [dialogflowAgent] (Output)
@@ -20,7 +21,7 @@ class ChatEngineChatEngineMetadata {
 
   factory ChatEngineChatEngineMetadata.fromMap(Map<String, dynamic> map) {
     return ChatEngineChatEngineMetadata(
-      dialogflowAgent: map['dialogflowAgent'] == null ? null : map['dialogflowAgent'] as String,
+      dialogflowAgent: map['dialogflowAgent'] == null ? null : (map['dialogflowAgent'] as String).input(),
     );
   }
 }

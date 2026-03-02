@@ -16,11 +16,9 @@ class ListCommunicationServiceKeysArgs {
   /// [communicationServiceName] The name of the CommunicationService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListCommunicationServiceKeysArgs({
-    required pulumi.Output<String> communicationServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      communicationServiceName = pulumi.Input.asInput<String>(communicationServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.communicationServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListCommunicationServiceKeysArgs {
 
   factory ListCommunicationServiceKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListCommunicationServiceKeysArgs(
-      communicationServiceName: pulumi.Output.create<String>(map['communicationServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      communicationServiceName: (map['communicationServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

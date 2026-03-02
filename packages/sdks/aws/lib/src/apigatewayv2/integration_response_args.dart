@@ -31,21 +31,14 @@ class IntegrationResponseArgs {
   /// [responseTemplates] Map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
   /// [templateSelectionExpression] The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
   IntegrationResponseArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? contentHandlingStrategy,
-    required pulumi.Output<String> integrationId,
-    required pulumi.Output<String> integrationResponseKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? responseTemplates,
-    pulumi.Output<String>? templateSelectionExpression,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      contentHandlingStrategy = pulumi.Input.asOptionalInput<String>(contentHandlingStrategy),
-      integrationId = pulumi.Input.asInput<String>(integrationId),
-      integrationResponseKey = pulumi.Input.asInput<String>(integrationResponseKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      responseTemplates = pulumi.Input.asOptionalInput<Map<String, String>>(responseTemplates),
-      templateSelectionExpression = pulumi.Input.asOptionalInput<String>(templateSelectionExpression);
+    required this.apiId,
+    this.contentHandlingStrategy,
+    required this.integrationId,
+    required this.integrationResponseKey,
+    this.region,
+    this.responseTemplates,
+    this.templateSelectionExpression,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class IntegrationResponseArgs {
 
   factory IntegrationResponseArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationResponseArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      contentHandlingStrategy: map['contentHandlingStrategy'] == null ? null : pulumi.Output.create<String>(map['contentHandlingStrategy'] as String),
-      integrationId: pulumi.Output.create<String>(map['integrationId'] as String),
-      integrationResponseKey: pulumi.Output.create<String>(map['integrationResponseKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      responseTemplates: map['responseTemplates'] == null ? null : pulumi.Output.create<Map<String, String>>((map['responseTemplates'] as Map).cast<String, String>()),
-      templateSelectionExpression: map['templateSelectionExpression'] == null ? null : pulumi.Output.create<String>(map['templateSelectionExpression'] as String),
+      apiId: (map['apiId'] as String).input(),
+      contentHandlingStrategy: map['contentHandlingStrategy'] == null ? null : (map['contentHandlingStrategy'] as String).input(),
+      integrationId: (map['integrationId'] as String).input(),
+      integrationResponseKey: (map['integrationResponseKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
+      templateSelectionExpression: map['templateSelectionExpression'] == null ? null : (map['templateSelectionExpression'] as String).input(),
     );
   }
 }

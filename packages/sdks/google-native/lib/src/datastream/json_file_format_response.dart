@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// JSON file format configuration.
 class JsonFileFormatResponse {
   /// Compression of the loaded JSON file.
-  final String compression;
+  final pulumi.Input<String> compression;
   /// The schema file format along JSON data files.
-  final String schemaFileFormat;
+  final pulumi.Input<String> schemaFileFormat;
 
   /// Creates a new [JsonFileFormatResponse].
   /// [compression] Compression of the loaded JSON file.
@@ -25,8 +26,8 @@ class JsonFileFormatResponse {
 
   factory JsonFileFormatResponse.fromMap(Map<String, dynamic> map) {
     return JsonFileFormatResponse(
-      compression: map['compression'] as String,
-      schemaFileFormat: map['schemaFileFormat'] as String,
+      compression: (map['compression'] as String).input(),
+      schemaFileFormat: (map['schemaFileFormat'] as String).input(),
     );
   }
 }

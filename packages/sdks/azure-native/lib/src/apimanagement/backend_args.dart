@@ -54,33 +54,20 @@ class BackendArgs {
   /// [tls] Backend TLS Properties
   /// [url] Runtime Url of the Backend.
   BackendArgs({
-    pulumi.Output<String>? backendId,
-    pulumi.Output<BackendCircuitBreaker>? circuitBreaker,
-    pulumi.Output<BackendCredentialsContract>? credentials,
-    pulumi.Output<String>? description,
-    pulumi.Output<BackendProperties>? properties,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<BackendProxyContract>? proxy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceId,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? title,
-    pulumi.Output<BackendTlsProperties>? tls,
-    required pulumi.Output<String> url,
-  }) :
-      backendId = pulumi.Input.asOptionalInput<String>(backendId),
-      circuitBreaker = pulumi.Input.asOptionalInput<BackendCircuitBreaker>(circuitBreaker),
-      credentials = pulumi.Input.asOptionalInput<BackendCredentialsContract>(credentials),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      properties = pulumi.Input.asOptionalInput<BackendProperties>(properties),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      proxy = pulumi.Input.asOptionalInput<BackendProxyContract>(proxy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      title = pulumi.Input.asOptionalInput<String>(title),
-      tls = pulumi.Input.asOptionalInput<BackendTlsProperties>(tls),
-      url = pulumi.Input.asInput<String>(url);
+    this.backendId,
+    this.circuitBreaker,
+    this.credentials,
+    this.description,
+    this.properties,
+    required this.protocol,
+    this.proxy,
+    required this.resourceGroupName,
+    this.resourceId,
+    required this.serviceName,
+    this.title,
+    this.tls,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class BackendArgs {
 
   factory BackendArgs.fromMap(Map<String, dynamic> map) {
     return BackendArgs(
-      backendId: map['backendId'] == null ? null : pulumi.Output.create<String>(map['backendId'] as String),
-      circuitBreaker: map['circuitBreaker'] == null ? null : pulumi.Output.create<BackendCircuitBreaker>(BackendCircuitBreaker.fromMap((map['circuitBreaker'] as Map).cast<String, dynamic>())),
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<BackendCredentialsContract>(BackendCredentialsContract.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BackendProperties>(BackendProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      proxy: map['proxy'] == null ? null : pulumi.Output.create<BackendProxyContract>(BackendProxyContract.fromMap((map['proxy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
-      tls: map['tls'] == null ? null : pulumi.Output.create<BackendTlsProperties>(BackendTlsProperties.fromMap((map['tls'] as Map).cast<String, dynamic>())),
-      url: pulumi.Output.create<String>(map['url'] as String),
+      backendId: map['backendId'] == null ? null : (map['backendId'] as String).input(),
+      circuitBreaker: map['circuitBreaker'] == null ? null : (BackendCircuitBreaker.fromMap((map['circuitBreaker'] as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (BackendCredentialsContract.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      properties: map['properties'] == null ? null : (BackendProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      protocol: (map['protocol'] as String).input(),
+      proxy: map['proxy'] == null ? null : (BackendProxyContract.fromMap((map['proxy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      tls: map['tls'] == null ? null : (BackendTlsProperties.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

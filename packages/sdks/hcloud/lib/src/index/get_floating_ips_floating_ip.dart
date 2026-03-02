@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFloatingIpsFloatingIp {
-  final bool deleteProtection;
-  final String description;
-  final String homeLocation;
-  final int id;
-  final String ipAddress;
-  final String ipNetwork;
-  final Map<String, String> labels;
-  final String? name;
-  final int serverId;
-  final String type;
+  final pulumi.Input<bool> deleteProtection;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> homeLocation;
+  final pulumi.Input<int> id;
+  final pulumi.Input<String> ipAddress;
+  final pulumi.Input<String> ipNetwork;
+  final pulumi.Input<Map<String, String>> labels;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<int> serverId;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetFloatingIpsFloatingIp].
   /// [deleteProtection] Required.
@@ -54,16 +55,16 @@ class GetFloatingIpsFloatingIp {
 
   factory GetFloatingIpsFloatingIp.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpsFloatingIp(
-      deleteProtection: map['deleteProtection'] as bool,
-      description: map['description'] as String,
-      homeLocation: map['homeLocation'] as String,
-      id: map['id'] as int,
-      ipAddress: map['ipAddress'] as String,
-      ipNetwork: map['ipNetwork'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      serverId: map['serverId'] as int,
-      type: map['type'] as String,
+      deleteProtection: (map['deleteProtection'] as bool).input(),
+      description: (map['description'] as String).input(),
+      homeLocation: (map['homeLocation'] as String).input(),
+      id: (map['id'] as int).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      ipNetwork: (map['ipNetwork'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: (map['serverId'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

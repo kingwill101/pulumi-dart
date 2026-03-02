@@ -20,15 +20,11 @@ class ChannelLineState {
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the Line Channel should be created. Changing this forces a new resource to be created.
   ChannelLineState({
-    pulumi.Output<String>? botName,
-    pulumi.Output<List<ChannelLineLineChannel>>? lineChannels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      botName = pulumi.Input.asOptionalInput<String>(botName),
-      lineChannels = pulumi.Input.asOptionalInput<List<ChannelLineLineChannel>>(lineChannels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.botName,
+    this.lineChannels,
+    this.location,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class ChannelLineState {
 
   factory ChannelLineState.fromMap(Map<String, dynamic> map) {
     return ChannelLineState(
-      botName: map['botName'] == null ? null : pulumi.Output.create<String>(map['botName'] as String),
-      lineChannels: map['lineChannels'] == null ? null : pulumi.Output.create<List<ChannelLineLineChannel>>(pulumi.Input.decodeList<ChannelLineLineChannel>(map['lineChannels'], (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
+      lineChannels: map['lineChannels'] == null ? null : (pulumi.Input.decodeList<ChannelLineLineChannel>(map['lineChannels'], (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

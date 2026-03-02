@@ -29,19 +29,13 @@ class SynapseWorkspaceSqlPoolTableDataSetArgs {
   /// [shareName] The name of the share to add the data set to.
   /// [synapseWorkspaceSqlPoolTableResourceId] Resource id of the Synapse Workspace SQL Pool Table
   SynapseWorkspaceSqlPoolTableDataSetArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? dataSetName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareName,
-    required pulumi.Output<String> synapseWorkspaceSqlPoolTableResourceId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dataSetName = pulumi.Input.asOptionalInput<String>(dataSetName),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareName = pulumi.Input.asInput<String>(shareName),
-      synapseWorkspaceSqlPoolTableResourceId = pulumi.Input.asInput<String>(synapseWorkspaceSqlPoolTableResourceId);
+    required this.accountName,
+    this.dataSetName,
+    required this.kind,
+    required this.resourceGroupName,
+    required this.shareName,
+    required this.synapseWorkspaceSqlPoolTableResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class SynapseWorkspaceSqlPoolTableDataSetArgs {
 
   factory SynapseWorkspaceSqlPoolTableDataSetArgs.fromMap(Map<String, dynamic> map) {
     return SynapseWorkspaceSqlPoolTableDataSetArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dataSetName: map['dataSetName'] == null ? null : pulumi.Output.create<String>(map['dataSetName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
-      synapseWorkspaceSqlPoolTableResourceId: pulumi.Output.create<String>(map['synapseWorkspaceSqlPoolTableResourceId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
+      synapseWorkspaceSqlPoolTableResourceId: (map['synapseWorkspaceSqlPoolTableResourceId'] as String).input(),
     );
   }
 }

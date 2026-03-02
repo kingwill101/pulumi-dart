@@ -31,21 +31,14 @@ class AnomalyAlertArgs {
   /// [notificationEmail] The email address of the point of contact that should get the unsubscribe requests and notification emails.
   /// [subscriptionId] The ID of the Subscription this Cost Anomaly Alert is scoped to. Changing this forces a new resource to be created. When not supplied this defaults to the subscription configured in the provider.
   AnomalyAlertArgs({
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<List<String>> emailAddresses,
-    required pulumi.Output<String> emailSubject,
-    pulumi.Output<String>? message,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notificationEmail,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      emailAddresses = pulumi.Input.asInput<List<String>>(emailAddresses),
-      emailSubject = pulumi.Input.asInput<String>(emailSubject),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationEmail = pulumi.Input.asOptionalInput<String>(notificationEmail),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    required this.displayName,
+    required this.emailAddresses,
+    required this.emailSubject,
+    this.message,
+    this.name,
+    this.notificationEmail,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class AnomalyAlertArgs {
 
   factory AnomalyAlertArgs.fromMap(Map<String, dynamic> map) {
     return AnomalyAlertArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      emailAddresses: pulumi.Output.create<List<String>>((map['emailAddresses'] as List).cast<String>()),
-      emailSubject: pulumi.Output.create<String>(map['emailSubject'] as String),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationEmail: map['notificationEmail'] == null ? null : pulumi.Output.create<String>(map['notificationEmail'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      displayName: (map['displayName'] as String).input(),
+      emailAddresses: ((map['emailAddresses'] as List).cast<String>()).input(),
+      emailSubject: (map['emailSubject'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

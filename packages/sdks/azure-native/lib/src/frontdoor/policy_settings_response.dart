@@ -6,23 +6,23 @@ import 'web_application_firewall_scrubbing_rules_response.dart';
 /// Defines top-level WebApplicationFirewallPolicy configuration settings.
 class PolicySettingsResponse {
   /// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-  final String? customBlockResponseBody;
+  final pulumi.Input<String>? customBlockResponseBody;
   /// If the action type is block, customer can override the response status code.
-  final int? customBlockResponseStatusCode;
+  final pulumi.Input<int>? customBlockResponseStatusCode;
   /// Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
-  final String? enabledState;
+  final pulumi.Input<String>? enabledState;
   /// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
-  final int? javascriptChallengeExpirationInMinutes;
+  final pulumi.Input<int>? javascriptChallengeExpirationInMinutes;
   /// Describes if it is in detection mode or prevention mode at policy level.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// If action type is redirect, this field represents redirect URL for the client.
-  final String? redirectUrl;
+  final pulumi.Input<String>? redirectUrl;
   /// Describes if policy managed rules will inspect the request body content.
-  final String? requestBodyCheck;
+  final pulumi.Input<String>? requestBodyCheck;
   /// List of log scrubbing rules applied to the Web Application Firewall logs.
-  final List<WebApplicationFirewallScrubbingRulesResponse>? scrubbingRules;
+  final pulumi.Input<List<WebApplicationFirewallScrubbingRulesResponse>>? scrubbingRules;
   /// State of the log scrubbing config. Default value is Enabled.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [PolicySettingsResponse].
   /// [customBlockResponseBody] If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
@@ -55,22 +55,22 @@ class PolicySettingsResponse {
       'mode': ?mode,
       'redirectUrl': ?redirectUrl,
       'requestBodyCheck': ?requestBodyCheck,
-      'scrubbingRules': ?scrubbingRules == null ? null : pulumi.Input.encodeList<WebApplicationFirewallScrubbingRulesResponse, Map<String, dynamic>>(scrubbingRules!, (value) => value.toMap()),
+      'scrubbingRules': ?pulumi.Input.mapOptionalInputValue<List<WebApplicationFirewallScrubbingRulesResponse>, List<Map<String, dynamic>>>(scrubbingRules, (value) => pulumi.Input.encodeList<WebApplicationFirewallScrubbingRulesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': ?state,
     };
   }
 
   factory PolicySettingsResponse.fromMap(Map<String, dynamic> map) {
     return PolicySettingsResponse(
-      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : map['customBlockResponseBody'] as String,
-      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : map['customBlockResponseStatusCode'] as int,
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      javascriptChallengeExpirationInMinutes: map['javascriptChallengeExpirationInMinutes'] == null ? null : map['javascriptChallengeExpirationInMinutes'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      redirectUrl: map['redirectUrl'] == null ? null : map['redirectUrl'] as String,
-      requestBodyCheck: map['requestBodyCheck'] == null ? null : map['requestBodyCheck'] as String,
-      scrubbingRules: map['scrubbingRules'] == null ? null : pulumi.Input.decodeList<WebApplicationFirewallScrubbingRulesResponse>(map['scrubbingRules'], (value) => WebApplicationFirewallScrubbingRulesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : map['state'] as String,
+      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : (map['customBlockResponseBody'] as String).input(),
+      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : (map['customBlockResponseStatusCode'] as int).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      javascriptChallengeExpirationInMinutes: map['javascriptChallengeExpirationInMinutes'] == null ? null : (map['javascriptChallengeExpirationInMinutes'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck'] as String).input(),
+      scrubbingRules: map['scrubbingRules'] == null ? null : (pulumi.Input.decodeList<WebApplicationFirewallScrubbingRulesResponse>(map['scrubbingRules'], (value) => WebApplicationFirewallScrubbingRulesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

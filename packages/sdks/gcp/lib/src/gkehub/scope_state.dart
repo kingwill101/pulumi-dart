@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScopeState {
   /// (Output)
   /// Code describes the state of a Scope resource.
-  final String? code;
+  final pulumi.Input<String>? code;
 
   /// Creates a new [ScopeState].
   /// [code] (Output)
@@ -20,7 +21,7 @@ class ScopeState {
 
   factory ScopeState.fromMap(Map<String, dynamic> map) {
     return ScopeState(
-      code: map['code'] == null ? null : map['code'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
     );
   }
 }

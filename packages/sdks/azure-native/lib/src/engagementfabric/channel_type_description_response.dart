@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// EngagementFabric channel description
 class ChannelTypeDescriptionResponse {
   /// Text description for the channel
-  final String? channelDescription;
+  final pulumi.Input<String>? channelDescription;
   /// All the available functions for the channel
-  final List<String>? channelFunctions;
+  final pulumi.Input<List<String>>? channelFunctions;
   /// Channel type
-  final String? channelType;
+  final pulumi.Input<String>? channelType;
 
   /// Creates a new [ChannelTypeDescriptionResponse].
   /// [channelDescription] Text description for the channel
@@ -30,9 +31,9 @@ class ChannelTypeDescriptionResponse {
 
   factory ChannelTypeDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return ChannelTypeDescriptionResponse(
-      channelDescription: map['channelDescription'] == null ? null : map['channelDescription'] as String,
-      channelFunctions: map['channelFunctions'] == null ? null : (map['channelFunctions'] as List).cast<String>(),
-      channelType: map['channelType'] == null ? null : map['channelType'] as String,
+      channelDescription: map['channelDescription'] == null ? null : (map['channelDescription'] as String).input(),
+      channelFunctions: map['channelFunctions'] == null ? null : ((map['channelFunctions'] as List).cast<String>()).input(),
+      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
     );
   }
 }

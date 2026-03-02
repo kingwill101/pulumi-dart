@@ -52,31 +52,19 @@ class AppProfileState {
   /// [singleClusterRouting] Use a single-cluster routing policy.
   /// [standardIsolation] The standard options used for isolating this app profile's traffic from other use cases.
   AppProfileState({
-    pulumi.Output<String>? appProfileId,
-    pulumi.Output<AppProfileDataBoostIsolationReadOnly>? dataBoostIsolationReadOnly,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? ignoreWarnings,
-    pulumi.Output<String>? instance,
-    pulumi.Output<List<String>>? multiClusterRoutingClusterIds,
-    pulumi.Output<bool>? multiClusterRoutingUseAny,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? rowAffinity,
-    pulumi.Output<AppProfileSingleClusterRouting>? singleClusterRouting,
-    pulumi.Output<AppProfileStandardIsolation>? standardIsolation,
-  }) :
-      appProfileId = pulumi.Input.asOptionalInput<String>(appProfileId),
-      dataBoostIsolationReadOnly = pulumi.Input.asOptionalInput<AppProfileDataBoostIsolationReadOnly>(dataBoostIsolationReadOnly),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ignoreWarnings = pulumi.Input.asOptionalInput<bool>(ignoreWarnings),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      multiClusterRoutingClusterIds = pulumi.Input.asOptionalInput<List<String>>(multiClusterRoutingClusterIds),
-      multiClusterRoutingUseAny = pulumi.Input.asOptionalInput<bool>(multiClusterRoutingUseAny),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rowAffinity = pulumi.Input.asOptionalInput<bool>(rowAffinity),
-      singleClusterRouting = pulumi.Input.asOptionalInput<AppProfileSingleClusterRouting>(singleClusterRouting),
-      standardIsolation = pulumi.Input.asOptionalInput<AppProfileStandardIsolation>(standardIsolation);
+    this.appProfileId,
+    this.dataBoostIsolationReadOnly,
+    this.description,
+    this.ignoreWarnings,
+    this.instance,
+    this.multiClusterRoutingClusterIds,
+    this.multiClusterRoutingUseAny,
+    this.name,
+    this.project,
+    this.rowAffinity,
+    this.singleClusterRouting,
+    this.standardIsolation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class AppProfileState {
 
   factory AppProfileState.fromMap(Map<String, dynamic> map) {
     return AppProfileState(
-      appProfileId: map['appProfileId'] == null ? null : pulumi.Output.create<String>(map['appProfileId'] as String),
-      dataBoostIsolationReadOnly: map['dataBoostIsolationReadOnly'] == null ? null : pulumi.Output.create<AppProfileDataBoostIsolationReadOnly>(AppProfileDataBoostIsolationReadOnly.fromMap((map['dataBoostIsolationReadOnly'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : pulumi.Output.create<bool>(map['ignoreWarnings'] as bool),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      multiClusterRoutingClusterIds: map['multiClusterRoutingClusterIds'] == null ? null : pulumi.Output.create<List<String>>((map['multiClusterRoutingClusterIds'] as List).cast<String>()),
-      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : pulumi.Output.create<bool>(map['multiClusterRoutingUseAny'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rowAffinity: map['rowAffinity'] == null ? null : pulumi.Output.create<bool>(map['rowAffinity'] as bool),
-      singleClusterRouting: map['singleClusterRouting'] == null ? null : pulumi.Output.create<AppProfileSingleClusterRouting>(AppProfileSingleClusterRouting.fromMap((map['singleClusterRouting'] as Map).cast<String, dynamic>())),
-      standardIsolation: map['standardIsolation'] == null ? null : pulumi.Output.create<AppProfileStandardIsolation>(AppProfileStandardIsolation.fromMap((map['standardIsolation'] as Map).cast<String, dynamic>())),
+      appProfileId: map['appProfileId'] == null ? null : (map['appProfileId'] as String).input(),
+      dataBoostIsolationReadOnly: map['dataBoostIsolationReadOnly'] == null ? null : (AppProfileDataBoostIsolationReadOnly.fromMap((map['dataBoostIsolationReadOnly'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings'] as bool).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      multiClusterRoutingClusterIds: map['multiClusterRoutingClusterIds'] == null ? null : ((map['multiClusterRoutingClusterIds'] as List).cast<String>()).input(),
+      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : (map['multiClusterRoutingUseAny'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rowAffinity: map['rowAffinity'] == null ? null : (map['rowAffinity'] as bool).input(),
+      singleClusterRouting: map['singleClusterRouting'] == null ? null : (AppProfileSingleClusterRouting.fromMap((map['singleClusterRouting'] as Map).cast<String, dynamic>())).input(),
+      standardIsolation: map['standardIsolation'] == null ? null : (AppProfileStandardIsolation.fromMap((map['standardIsolation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

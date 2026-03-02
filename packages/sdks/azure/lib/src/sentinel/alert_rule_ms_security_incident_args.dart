@@ -42,27 +42,17 @@ class AlertRuleMsSecurityIncidentArgs {
   /// [productFilter] The Microsoft Security Service from where the alert will be generated. Possible values are `Azure Active Directory Identity Protection`, `Azure Advanced Threat Protection`, `Azure Security Center`, `Azure Security Center for IoT`, `Microsoft Cloud App Security`, `Microsoft Defender Advanced Threat Protection` and `Office 365 Advanced Threat Protection`.
   /// [severityFilters] Only create incidents from alerts when alert severity level is contained in this list. Possible values are `High`, `Medium`, `Low` and `Informational`.
   AlertRuleMsSecurityIncidentArgs({
-    pulumi.Output<String>? alertRuleTemplateGuid,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<String>>? displayNameExcludeFilters,
-    pulumi.Output<List<String>>? displayNameFilters,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> productFilter,
-    required pulumi.Output<List<String>> severityFilters,
-  }) :
-      alertRuleTemplateGuid = pulumi.Input.asOptionalInput<String>(alertRuleTemplateGuid),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      displayNameExcludeFilters = pulumi.Input.asOptionalInput<List<String>>(displayNameExcludeFilters),
-      displayNameFilters = pulumi.Input.asOptionalInput<List<String>>(displayNameFilters),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      logAnalyticsWorkspaceId = pulumi.Input.asInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productFilter = pulumi.Input.asInput<String>(productFilter),
-      severityFilters = pulumi.Input.asInput<List<String>>(severityFilters);
+    this.alertRuleTemplateGuid,
+    this.description,
+    required this.displayName,
+    this.displayNameExcludeFilters,
+    this.displayNameFilters,
+    this.enabled,
+    required this.logAnalyticsWorkspaceId,
+    this.name,
+    required this.productFilter,
+    required this.severityFilters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class AlertRuleMsSecurityIncidentArgs {
 
   factory AlertRuleMsSecurityIncidentArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleMsSecurityIncidentArgs(
-      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : pulumi.Output.create<String>(map['alertRuleTemplateGuid'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      displayNameExcludeFilters: map['displayNameExcludeFilters'] == null ? null : pulumi.Output.create<List<String>>((map['displayNameExcludeFilters'] as List).cast<String>()),
-      displayNameFilters: map['displayNameFilters'] == null ? null : pulumi.Output.create<List<String>>((map['displayNameFilters'] as List).cast<String>()),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      logAnalyticsWorkspaceId: pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      productFilter: pulumi.Output.create<String>(map['productFilter'] as String),
-      severityFilters: pulumi.Output.create<List<String>>((map['severityFilters'] as List).cast<String>()),
+      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      displayNameExcludeFilters: map['displayNameExcludeFilters'] == null ? null : ((map['displayNameExcludeFilters'] as List).cast<String>()).input(),
+      displayNameFilters: map['displayNameFilters'] == null ? null : ((map['displayNameFilters'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      productFilter: (map['productFilter'] as String).input(),
+      severityFilters: ((map['severityFilters'] as List).cast<String>()).input(),
     );
   }
 }

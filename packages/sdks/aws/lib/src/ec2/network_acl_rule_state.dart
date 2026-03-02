@@ -49,31 +49,19 @@ class NetworkAclRuleState {
   /// [ruleNumber] The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
   /// [toPort] The to port to match.
   NetworkAclRuleState({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<bool>? egress,
-    pulumi.Output<int>? fromPort,
-    pulumi.Output<int>? icmpCode,
-    pulumi.Output<int>? icmpType,
-    pulumi.Output<String>? ipv6CidrBlock,
-    pulumi.Output<String>? networkAclId,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? ruleAction,
-    pulumi.Output<int>? ruleNumber,
-    pulumi.Output<int>? toPort,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      egress = pulumi.Input.asOptionalInput<bool>(egress),
-      fromPort = pulumi.Input.asOptionalInput<int>(fromPort),
-      icmpCode = pulumi.Input.asOptionalInput<int>(icmpCode),
-      icmpType = pulumi.Input.asOptionalInput<int>(icmpType),
-      ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
-      networkAclId = pulumi.Input.asOptionalInput<String>(networkAclId),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleAction = pulumi.Input.asOptionalInput<String>(ruleAction),
-      ruleNumber = pulumi.Input.asOptionalInput<int>(ruleNumber),
-      toPort = pulumi.Input.asOptionalInput<int>(toPort);
+    this.cidrBlock,
+    this.egress,
+    this.fromPort,
+    this.icmpCode,
+    this.icmpType,
+    this.ipv6CidrBlock,
+    this.networkAclId,
+    this.protocol,
+    this.region,
+    this.ruleAction,
+    this.ruleNumber,
+    this.toPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class NetworkAclRuleState {
 
   factory NetworkAclRuleState.fromMap(Map<String, dynamic> map) {
     return NetworkAclRuleState(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      egress: map['egress'] == null ? null : pulumi.Output.create<bool>(map['egress'] as bool),
-      fromPort: map['fromPort'] == null ? null : pulumi.Output.create<int>(map['fromPort'] as int),
-      icmpCode: map['icmpCode'] == null ? null : pulumi.Output.create<int>(map['icmpCode'] as int),
-      icmpType: map['icmpType'] == null ? null : pulumi.Output.create<int>(map['icmpType'] as int),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrBlock'] as String),
-      networkAclId: map['networkAclId'] == null ? null : pulumi.Output.create<String>(map['networkAclId'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleAction: map['ruleAction'] == null ? null : pulumi.Output.create<String>(map['ruleAction'] as String),
-      ruleNumber: map['ruleNumber'] == null ? null : pulumi.Output.create<int>(map['ruleNumber'] as int),
-      toPort: map['toPort'] == null ? null : pulumi.Output.create<int>(map['toPort'] as int),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      egress: map['egress'] == null ? null : (map['egress'] as bool).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
+      icmpCode: map['icmpCode'] == null ? null : (map['icmpCode'] as int).input(),
+      icmpType: map['icmpType'] == null ? null : (map['icmpType'] as int).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
+      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber'] as int).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'transit_option_params.dart';
 
 /// TransitOption Properties
 class TransitOption {
   /// Transit Option Params
-  final TransitOptionParams? params;
+  final pulumi.Input<TransitOptionParams>? params;
   /// Transit Option Type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [TransitOption].
   /// [params] Transit Option Params
@@ -19,15 +20,15 @@ class TransitOption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'params': ?params == null ? null : params!.toMap(),
+      'params': ?pulumi.Input.mapOptionalInputValue<TransitOptionParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory TransitOption.fromMap(Map<String, dynamic> map) {
     return TransitOption(
-      params: map['params'] == null ? null : TransitOptionParams.fromMap((map['params'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
+      params: map['params'] == null ? null : (TransitOptionParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

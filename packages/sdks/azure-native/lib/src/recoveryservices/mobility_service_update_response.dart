@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Mobility Service update details.
 class MobilityServiceUpdateResponse {
   /// The OS type.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// The reboot status of the update - whether it is required or not.
-  final String? rebootStatus;
+  final pulumi.Input<String>? rebootStatus;
   /// The version of the latest update.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MobilityServiceUpdateResponse].
   /// [osType] The OS type.
@@ -30,9 +31,9 @@ class MobilityServiceUpdateResponse {
 
   factory MobilityServiceUpdateResponse.fromMap(Map<String, dynamic> map) {
     return MobilityServiceUpdateResponse(
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      rebootStatus: map['rebootStatus'] == null ? null : map['rebootStatus'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      rebootStatus: map['rebootStatus'] == null ? null : (map['rebootStatus'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

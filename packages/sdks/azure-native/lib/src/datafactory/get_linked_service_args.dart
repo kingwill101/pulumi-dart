@@ -19,13 +19,10 @@ class GetLinkedServiceArgs {
   /// [linkedServiceName] The linked service name.
   /// [resourceGroupName] The resource group name.
   GetLinkedServiceArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> linkedServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      linkedServiceName = pulumi.Input.asInput<String>(linkedServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.factoryName,
+    required this.linkedServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLinkedServiceArgs {
 
   factory GetLinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkedServiceArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      linkedServiceName: pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

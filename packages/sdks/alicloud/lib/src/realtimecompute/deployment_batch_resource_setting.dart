@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_batch_resource_setting_basic_resource_setting.dart';
 
 class DeploymentBatchResourceSetting {
   /// Resource settings for basic mode See `basic_resource_setting` below.
-  final DeploymentBatchResourceSettingBasicResourceSetting? basicResourceSetting;
+  final pulumi.Input<DeploymentBatchResourceSettingBasicResourceSetting>? basicResourceSetting;
   /// Maximum number of slots
-  final int? maxSlot;
+  final pulumi.Input<int>? maxSlot;
 
   /// Creates a new [DeploymentBatchResourceSetting].
   /// [basicResourceSetting] Resource settings for basic mode See `basic_resource_setting` below.
@@ -18,15 +19,15 @@ class DeploymentBatchResourceSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicResourceSetting': ?basicResourceSetting == null ? null : basicResourceSetting!.toMap(),
+      'basicResourceSetting': ?pulumi.Input.mapOptionalInputValue<DeploymentBatchResourceSettingBasicResourceSetting, Map<String, dynamic>>(basicResourceSetting, (value) => value.toMap()),
       'maxSlot': ?maxSlot,
     };
   }
 
   factory DeploymentBatchResourceSetting.fromMap(Map<String, dynamic> map) {
     return DeploymentBatchResourceSetting(
-      basicResourceSetting: map['basicResourceSetting'] == null ? null : DeploymentBatchResourceSettingBasicResourceSetting.fromMap((map['basicResourceSetting'] as Map).cast<String, dynamic>()),
-      maxSlot: map['maxSlot'] == null ? null : map['maxSlot'] as int,
+      basicResourceSetting: map['basicResourceSetting'] == null ? null : (DeploymentBatchResourceSettingBasicResourceSetting.fromMap((map['basicResourceSetting'] as Map).cast<String, dynamic>())).input(),
+      maxSlot: map['maxSlot'] == null ? null : (map['maxSlot'] as int).input(),
     );
   }
 }

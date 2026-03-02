@@ -6,7 +6,7 @@ import 'linux_profile_properties_public_keys.dart';
 /// SSH - SSH configuration for Linux-based VMs running on Azure.
 class LinuxProfilePropertiesSsh {
   /// PublicKeys - The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
-  final List<LinuxProfilePropertiesPublicKeys>? publicKeys;
+  final pulumi.Input<List<LinuxProfilePropertiesPublicKeys>>? publicKeys;
 
   /// Creates a new [LinuxProfilePropertiesSsh].
   /// [publicKeys] PublicKeys - The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
@@ -16,13 +16,13 @@ class LinuxProfilePropertiesSsh {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKeys': ?publicKeys == null ? null : pulumi.Input.encodeList<LinuxProfilePropertiesPublicKeys, Map<String, dynamic>>(publicKeys!, (value) => value.toMap()),
+      'publicKeys': ?pulumi.Input.mapOptionalInputValue<List<LinuxProfilePropertiesPublicKeys>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<LinuxProfilePropertiesPublicKeys, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LinuxProfilePropertiesSsh.fromMap(Map<String, dynamic> map) {
     return LinuxProfilePropertiesSsh(
-      publicKeys: map['publicKeys'] == null ? null : pulumi.Input.decodeList<LinuxProfilePropertiesPublicKeys>(map['publicKeys'], (value) => LinuxProfilePropertiesPublicKeys.fromMap((value as Map).cast<String, dynamic>())),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<LinuxProfilePropertiesPublicKeys>(map['publicKeys'], (value) => LinuxProfilePropertiesPublicKeys.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

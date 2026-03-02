@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_web_implicit_grant.dart';
 
 class ApplicationWeb {
   /// Home page or landing page of the application.
-  final String? homepageUrl;
+  final pulumi.Input<String>? homepageUrl;
   /// An `implicit_grant` block as documented above.
-  final ApplicationWebImplicitGrant? implicitGrant;
+  final pulumi.Input<ApplicationWebImplicitGrant>? implicitGrant;
   /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
-  final String? logoutUrl;
+  final pulumi.Input<String>? logoutUrl;
   /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
-  final List<String>? redirectUris;
+  final pulumi.Input<List<String>>? redirectUris;
 
   /// Creates a new [ApplicationWeb].
   /// [homepageUrl] Home page or landing page of the application.
@@ -27,7 +28,7 @@ class ApplicationWeb {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'homepageUrl': ?homepageUrl,
-      'implicitGrant': ?implicitGrant == null ? null : implicitGrant!.toMap(),
+      'implicitGrant': ?pulumi.Input.mapOptionalInputValue<ApplicationWebImplicitGrant, Map<String, dynamic>>(implicitGrant, (value) => value.toMap()),
       'logoutUrl': ?logoutUrl,
       'redirectUris': ?redirectUris,
     };
@@ -35,10 +36,10 @@ class ApplicationWeb {
 
   factory ApplicationWeb.fromMap(Map<String, dynamic> map) {
     return ApplicationWeb(
-      homepageUrl: map['homepageUrl'] == null ? null : map['homepageUrl'] as String,
-      implicitGrant: map['implicitGrant'] == null ? null : ApplicationWebImplicitGrant.fromMap((map['implicitGrant'] as Map).cast<String, dynamic>()),
-      logoutUrl: map['logoutUrl'] == null ? null : map['logoutUrl'] as String,
-      redirectUris: map['redirectUris'] == null ? null : (map['redirectUris'] as List).cast<String>(),
+      homepageUrl: map['homepageUrl'] == null ? null : (map['homepageUrl'] as String).input(),
+      implicitGrant: map['implicitGrant'] == null ? null : (ApplicationWebImplicitGrant.fromMap((map['implicitGrant'] as Map).cast<String, dynamic>())).input(),
+      logoutUrl: map['logoutUrl'] == null ? null : (map['logoutUrl'] as String).input(),
+      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris'] as List).cast<String>()).input(),
     );
   }
 }

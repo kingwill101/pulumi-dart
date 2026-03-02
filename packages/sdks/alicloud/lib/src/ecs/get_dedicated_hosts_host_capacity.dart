@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedHostsHostCapacity {
   /// The remaining local disk capacity. Unit: GiB.
-  final int availableLocalStorage;
+  final pulumi.Input<int> availableLocalStorage;
   /// The remaining memory capacity, unit: GiB.
-  final double availableMemory;
+  final pulumi.Input<double> availableMemory;
   /// The number of remaining vCPU cores.
-  final int availableVcpus;
+  final pulumi.Input<int> availableVcpus;
   /// The number of available virtual GPUs.
-  final int availableVgpus;
+  final pulumi.Input<int> availableVgpus;
   /// Local disk type.
-  final String localStorageCategory;
+  final pulumi.Input<String> localStorageCategory;
   /// The total capacity of the local disk, in GiB.
-  final int totalLocalStorage;
+  final pulumi.Input<int> totalLocalStorage;
   /// The total memory capacity, unit: GiB.
-  final double totalMemory;
+  final pulumi.Input<double> totalMemory;
   /// The total number of vCPU cores.
-  final int totalVcpus;
+  final pulumi.Input<int> totalVcpus;
   /// The total number of virtual GPUs.
-  final int totalVgpus;
+  final pulumi.Input<int> totalVgpus;
 
   /// Creates a new [GetDedicatedHostsHostCapacity].
   /// [availableLocalStorage] The remaining local disk capacity. Unit: GiB.
@@ -59,15 +60,15 @@ class GetDedicatedHostsHostCapacity {
 
   factory GetDedicatedHostsHostCapacity.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsHostCapacity(
-      availableLocalStorage: map['availableLocalStorage'] as int,
-      availableMemory: map['availableMemory'] as double,
-      availableVcpus: map['availableVcpus'] as int,
-      availableVgpus: map['availableVgpus'] as int,
-      localStorageCategory: map['localStorageCategory'] as String,
-      totalLocalStorage: map['totalLocalStorage'] as int,
-      totalMemory: map['totalMemory'] as double,
-      totalVcpus: map['totalVcpus'] as int,
-      totalVgpus: map['totalVgpus'] as int,
+      availableLocalStorage: (map['availableLocalStorage'] as int).input(),
+      availableMemory: (map['availableMemory'] as double).input(),
+      availableVcpus: (map['availableVcpus'] as int).input(),
+      availableVgpus: (map['availableVgpus'] as int).input(),
+      localStorageCategory: (map['localStorageCategory'] as String).input(),
+      totalLocalStorage: (map['totalLocalStorage'] as int).input(),
+      totalMemory: (map['totalMemory'] as double).input(),
+      totalVcpus: (map['totalVcpus'] as int).input(),
+      totalVgpus: (map['totalVgpus'] as int).input(),
     );
   }
 }

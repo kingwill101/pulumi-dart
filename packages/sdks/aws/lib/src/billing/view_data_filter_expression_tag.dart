@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ViewDataFilterExpressionTag {
   /// Key of the tag.
-  final String key;
+  final pulumi.Input<String> key;
   /// List of values for the tag.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ViewDataFilterExpressionTag].
   /// [key] Key of the tag.
@@ -24,8 +25,8 @@ class ViewDataFilterExpressionTag {
 
   factory ViewDataFilterExpressionTag.fromMap(Map<String, dynamic> map) {
     return ViewDataFilterExpressionTag(
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cookies_match_condition_parameters_response.dart';
 
 /// Defines the Cookies condition for the delivery rule.
 class DeliveryRuleCookiesConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'Cookies'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final CookiesMatchConditionParametersResponse parameters;
+  final pulumi.Input<CookiesMatchConditionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleCookiesConditionResponse].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleCookiesConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<CookiesMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleCookiesConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleCookiesConditionResponse(
-      name: map['name'] as String,
-      parameters: CookiesMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (CookiesMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetEnclaveConnectionArgs {
   /// [enclaveConnectionName] The name of the Enclave Connection Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEnclaveConnectionArgs({
-    required pulumi.Output<String> enclaveConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      enclaveConnectionName = pulumi.Input.asInput<String>(enclaveConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.enclaveConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEnclaveConnectionArgs {
 
   factory GetEnclaveConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetEnclaveConnectionArgs(
-      enclaveConnectionName: pulumi.Output.create<String>(map['enclaveConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      enclaveConnectionName: (map['enclaveConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

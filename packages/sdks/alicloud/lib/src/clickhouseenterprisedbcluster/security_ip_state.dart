@@ -16,13 +16,10 @@ class SecurityIpState {
   /// [groupName] The whitelist name.
   /// [securityIpList] The IP address list under the whitelist group.
   SecurityIpState({
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? securityIpList,
-  }) :
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      securityIpList = pulumi.Input.asOptionalInput<String>(securityIpList);
+    this.dbInstanceId,
+    this.groupName,
+    this.securityIpList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class SecurityIpState {
 
   factory SecurityIpState.fromMap(Map<String, dynamic> map) {
     return SecurityIpState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      securityIpList: map['securityIpList'] == null ? null : pulumi.Output.create<String>(map['securityIpList'] as String),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList'] as String).input(),
     );
   }
 }

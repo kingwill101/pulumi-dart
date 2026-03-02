@@ -25,19 +25,13 @@ class NatGatewayState {
   /// [networkId] The network ID.
   /// [vswitchId] The vSwitch ID.
   NatGatewayState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? ensRegionId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? natName,
-    pulumi.Output<String>? networkId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      ensRegionId = pulumi.Input.asOptionalInput<String>(ensRegionId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      natName = pulumi.Input.asOptionalInput<String>(natName),
-      networkId = pulumi.Input.asOptionalInput<String>(networkId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.createTime,
+    this.ensRegionId,
+    this.instanceType,
+    this.natName,
+    this.networkId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class NatGatewayState {
 
   factory NatGatewayState.fromMap(Map<String, dynamic> map) {
     return NatGatewayState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      ensRegionId: map['ensRegionId'] == null ? null : pulumi.Output.create<String>(map['ensRegionId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      natName: map['natName'] == null ? null : pulumi.Output.create<String>(map['natName'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<String>(map['networkId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      natName: map['natName'] == null ? null : (map['natName'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetSpringbootserverArgs {
   /// [siteName] The springbootsites name.
   /// [springbootserversName] The springbootservers name.
   GetSpringbootserverArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-    required pulumi.Output<String> springbootserversName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      springbootserversName = pulumi.Input.asInput<String>(springbootserversName);
+    required this.resourceGroupName,
+    required this.siteName,
+    required this.springbootserversName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSpringbootserverArgs {
 
   factory GetSpringbootserverArgs.fromMap(Map<String, dynamic> map) {
     return GetSpringbootserverArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      springbootserversName: pulumi.Output.create<String>(map['springbootserversName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      springbootserversName: (map['springbootserversName'] as String).input(),
     );
   }
 }

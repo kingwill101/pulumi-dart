@@ -6,15 +6,15 @@ import 'storage_adapter_ipinfo_response.dart';
 /// The StorageNetworks of a cluster.
 class StorageNetworksResponse {
   /// Name of the storage network.
-  final String name;
+  final pulumi.Input<String> name;
   /// Name of the storage network adapter.
-  final String networkAdapterName;
+  final pulumi.Input<String> networkAdapterName;
   /// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
-  final List<StorageAdapterIPInfoResponse> storageAdapterIPInfo;
+  final pulumi.Input<List<StorageAdapterIPInfoResponse>> storageAdapterIPInfo;
   /// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
-  final String storageVlanId;
+  final pulumi.Input<String> storageVlanId;
   /// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
-  final String? vlanId;
+  final pulumi.Input<String>? vlanId;
 
   /// Creates a new [StorageNetworksResponse].
   /// [name] Name of the storage network.
@@ -34,7 +34,7 @@ class StorageNetworksResponse {
     return <String, dynamic>{
       'name': name,
       'networkAdapterName': networkAdapterName,
-      'storageAdapterIPInfo': pulumi.Input.encodeList<StorageAdapterIPInfoResponse, Map<String, dynamic>>(storageAdapterIPInfo, (value) => value.toMap()),
+      'storageAdapterIPInfo': pulumi.Input.mapInputValue<List<StorageAdapterIPInfoResponse>, List<Map<String, dynamic>>>(storageAdapterIPInfo, (value) => pulumi.Input.encodeList<StorageAdapterIPInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageVlanId': storageVlanId,
       'vlanId': ?vlanId,
     };
@@ -42,11 +42,11 @@ class StorageNetworksResponse {
 
   factory StorageNetworksResponse.fromMap(Map<String, dynamic> map) {
     return StorageNetworksResponse(
-      name: map['name'] as String,
-      networkAdapterName: map['networkAdapterName'] as String,
-      storageAdapterIPInfo: pulumi.Input.decodeList<StorageAdapterIPInfoResponse>(map['storageAdapterIPInfo'], (value) => StorageAdapterIPInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      storageVlanId: map['storageVlanId'] as String,
-      vlanId: map['vlanId'] == null ? null : map['vlanId'] as String,
+      name: (map['name'] as String).input(),
+      networkAdapterName: (map['networkAdapterName'] as String).input(),
+      storageAdapterIPInfo: (pulumi.Input.decodeList<StorageAdapterIPInfoResponse>(map['storageAdapterIPInfo'], (value) => StorageAdapterIPInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageVlanId: (map['storageVlanId'] as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as String).input(),
     );
   }
 }

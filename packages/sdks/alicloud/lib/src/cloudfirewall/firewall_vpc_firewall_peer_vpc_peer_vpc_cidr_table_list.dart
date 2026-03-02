@@ -5,9 +5,9 @@ import 'firewall_vpc_firewall_peer_vpc_peer_vpc_cidr_table_list_peer_route_entry
 
 class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
   /// Peer VPC route entry list information. See `peer_route_entry_list` below.
-  final List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists;
+  final pulumi.Input<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList>> peerRouteEntryLists;
   /// The ID of the route table of the peer VPC.
-  final String peerRouteTableId;
+  final pulumi.Input<String> peerRouteTableId;
 
   /// Creates a new [FirewallVpcFirewallPeerVpcPeerVpcCidrTableList].
   /// [peerRouteEntryLists] Peer VPC route entry list information. See `peer_route_entry_list` below.
@@ -19,15 +19,15 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'peerRouteEntryLists': pulumi.Input.encodeList<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList, Map<String, dynamic>>(peerRouteEntryLists, (value) => value.toMap()),
+      'peerRouteEntryLists': pulumi.Input.mapInputValue<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList>, List<Map<String, dynamic>>>(peerRouteEntryLists, (value) => pulumi.Input.encodeList<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'peerRouteTableId': peerRouteTableId,
     };
   }
 
   factory FirewallVpcFirewallPeerVpcPeerVpcCidrTableList.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(
-      peerRouteEntryLists: pulumi.Input.decodeList<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList>(map['peerRouteEntryLists'], (value) => FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList.fromMap((value as Map).cast<String, dynamic>())),
-      peerRouteTableId: map['peerRouteTableId'] as String,
+      peerRouteEntryLists: (pulumi.Input.decodeList<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList>(map['peerRouteEntryLists'], (value) => FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      peerRouteTableId: (map['peerRouteTableId'] as String).input(),
     );
   }
 }

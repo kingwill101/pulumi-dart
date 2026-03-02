@@ -22,17 +22,12 @@ class PreparedStatementState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] The name of the workgroup to which the prepared statement belongs.
   PreparedStatementState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? queryStatement,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? workgroup,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryStatement = pulumi.Input.asOptionalInput<String>(queryStatement),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroup = pulumi.Input.asOptionalInput<String>(workgroup);
+    this.description,
+    this.name,
+    this.queryStatement,
+    this.region,
+    this.workgroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class PreparedStatementState {
 
   factory PreparedStatementState.fromMap(Map<String, dynamic> map) {
     return PreparedStatementState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryStatement: map['queryStatement'] == null ? null : pulumi.Output.create<String>(map['queryStatement'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroup: map['workgroup'] == null ? null : pulumi.Output.create<String>(map['workgroup'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryStatement: map['queryStatement'] == null ? null : (map['queryStatement'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroup: map['workgroup'] == null ? null : (map['workgroup'] as String).input(),
     );
   }
 }

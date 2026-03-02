@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertRobotsRobot {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Specifies whether the alert robot receives daily notifications.
-  final String dailyNoc;
+  final pulumi.Input<String> dailyNoc;
   /// The time of the daily notification.
-  final String dailyNocTime;
+  final pulumi.Input<String> dailyNocTime;
   /// The ID of the Alert Robot.
-  final String id;
+  final pulumi.Input<String> id;
   /// The webhook url of the robot.
-  final String robotAddr;
+  final pulumi.Input<String> robotAddr;
   /// The id of the robot.
-  final String robotId;
+  final pulumi.Input<String> robotId;
   /// The name of the robot.
-  final String robotName;
+  final pulumi.Input<String> robotName;
   /// The robot type.
-  final String robotType;
+  final pulumi.Input<String> robotType;
 
   /// Creates a new [GetAlertRobotsRobot].
   /// [createTime] The creation time of the resource.
@@ -54,14 +55,14 @@ class GetAlertRobotsRobot {
 
   factory GetAlertRobotsRobot.fromMap(Map<String, dynamic> map) {
     return GetAlertRobotsRobot(
-      createTime: map['createTime'] as String,
-      dailyNoc: map['dailyNoc'] as String,
-      dailyNocTime: map['dailyNocTime'] as String,
-      id: map['id'] as String,
-      robotAddr: map['robotAddr'] as String,
-      robotId: map['robotId'] as String,
-      robotName: map['robotName'] as String,
-      robotType: map['robotType'] as String,
+      createTime: (map['createTime'] as String).input(),
+      dailyNoc: (map['dailyNoc'] as String).input(),
+      dailyNocTime: (map['dailyNocTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      robotAddr: (map['robotAddr'] as String).input(),
+      robotId: (map['robotId'] as String).input(),
+      robotName: (map['robotName'] as String).input(),
+      robotType: (map['robotType'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicationConfigurationReplicationConfigurationRuleDestination {
   /// A Region to replicate to.
-  final String region;
+  final pulumi.Input<String> region;
   /// The account ID of the destination registry to replicate to.
-  final String registryId;
+  final pulumi.Input<String> registryId;
 
   /// Creates a new [ReplicationConfigurationReplicationConfigurationRuleDestination].
   /// [region] A Region to replicate to.
@@ -24,8 +25,8 @@ class ReplicationConfigurationReplicationConfigurationRuleDestination {
 
   factory ReplicationConfigurationReplicationConfigurationRuleDestination.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfigurationRuleDestination(
-      region: map['region'] as String,
-      registryId: map['registryId'] as String,
+      region: (map['region'] as String).input(),
+      registryId: (map['registryId'] as String).input(),
     );
   }
 }

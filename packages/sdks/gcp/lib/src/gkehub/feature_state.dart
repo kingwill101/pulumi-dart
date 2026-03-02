@@ -7,7 +7,7 @@ class FeatureState {
   /// (Output)
   /// Output only. The "running state" of the Feature in this Hub.
   /// Structure is documented below.
-  final List<FeatureStateState>? states;
+  final pulumi.Input<List<FeatureStateState>>? states;
 
   /// Creates a new [FeatureState].
   /// [states] (Output)
@@ -17,13 +17,13 @@ class FeatureState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'states': ?states == null ? null : pulumi.Input.encodeList<FeatureStateState, Map<String, dynamic>>(states!, (value) => value.toMap()),
+      'states': ?pulumi.Input.mapOptionalInputValue<List<FeatureStateState>, List<Map<String, dynamic>>>(states, (value) => pulumi.Input.encodeList<FeatureStateState, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FeatureState.fromMap(Map<String, dynamic> map) {
     return FeatureState(
-      states: map['states'] == null ? null : pulumi.Input.decodeList<FeatureStateState>(map['states'], (value) => FeatureStateState.fromMap((value as Map).cast<String, dynamic>())),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<FeatureStateState>(map['states'], (value) => FeatureStateState.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

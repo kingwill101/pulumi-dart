@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayWorkloadIdentityDetail {
   /// ARN of the workload identity.
-  final String workloadIdentityArn;
+  final pulumi.Input<String> workloadIdentityArn;
 
   /// Creates a new [AgentcoreGatewayWorkloadIdentityDetail].
   /// [workloadIdentityArn] ARN of the workload identity.
@@ -19,7 +20,7 @@ class AgentcoreGatewayWorkloadIdentityDetail {
 
   factory AgentcoreGatewayWorkloadIdentityDetail.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayWorkloadIdentityDetail(
-      workloadIdentityArn: map['workloadIdentityArn'] as String,
+      workloadIdentityArn: (map['workloadIdentityArn'] as String).input(),
     );
   }
 }

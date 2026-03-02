@@ -45,21 +45,14 @@ class TagTemplateIamBindingState {
   /// [role] The role that should be applied. Only one
   /// [tagTemplate] Used to find the parent resource to bind the IAM policy to
   TagTemplateIamBindingState({
-    pulumi.Output<TagTemplateIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? tagTemplate,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TagTemplateIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      tagTemplate = pulumi.Input.asOptionalInput<String>(tagTemplate);
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.region,
+    this.role,
+    this.tagTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,13 +68,13 @@ class TagTemplateIamBindingState {
 
   factory TagTemplateIamBindingState.fromMap(Map<String, dynamic> map) {
     return TagTemplateIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TagTemplateIamBindingCondition>(TagTemplateIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      tagTemplate: map['tagTemplate'] == null ? null : pulumi.Output.create<String>(map['tagTemplate'] as String),
+      condition: map['condition'] == null ? null : (TagTemplateIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      tagTemplate: map['tagTemplate'] == null ? null : (map['tagTemplate'] as String).input(),
     );
   }
 }

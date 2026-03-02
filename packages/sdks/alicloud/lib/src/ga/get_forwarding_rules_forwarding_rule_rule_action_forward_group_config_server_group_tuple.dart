@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
   /// Terminal node group ID.
-  final String endpointGroupId;
+  final pulumi.Input<String> endpointGroupId;
 
   /// Creates a new [GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple].
   /// [endpointGroupId] Terminal node group ID.
@@ -19,7 +20,7 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTup
 
   factory GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(
-      endpointGroupId: map['endpointGroupId'] as String,
+      endpointGroupId: (map['endpointGroupId'] as String).input(),
     );
   }
 }

@@ -32,19 +32,13 @@ class EntryLinkArgs {
   /// [location] The location for the entry.
   /// [project] The ID of the project in which the resource belongs.
   EntryLinkArgs({
-    required pulumi.Output<String> entryGroupId,
-    required pulumi.Output<String> entryLinkId,
-    required pulumi.Output<String> entryLinkType,
-    required pulumi.Output<List<EntryLinkEntryReference>> entryReferences,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-      entryLinkId = pulumi.Input.asInput<String>(entryLinkId),
-      entryLinkType = pulumi.Input.asInput<String>(entryLinkType),
-      entryReferences = pulumi.Input.asInput<List<EntryLinkEntryReference>>(entryReferences),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.entryGroupId,
+    required this.entryLinkId,
+    required this.entryLinkType,
+    required this.entryReferences,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class EntryLinkArgs {
 
   factory EntryLinkArgs.fromMap(Map<String, dynamic> map) {
     return EntryLinkArgs(
-      entryGroupId: pulumi.Output.create<String>(map['entryGroupId'] as String),
-      entryLinkId: pulumi.Output.create<String>(map['entryLinkId'] as String),
-      entryLinkType: pulumi.Output.create<String>(map['entryLinkType'] as String),
-      entryReferences: pulumi.Output.create<List<EntryLinkEntryReference>>(pulumi.Input.decodeList<EntryLinkEntryReference>(map['entryReferences'], (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>()))),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      entryGroupId: (map['entryGroupId'] as String).input(),
+      entryLinkId: (map['entryLinkId'] as String).input(),
+      entryLinkType: (map['entryLinkType'] as String).input(),
+      entryReferences: (pulumi.Input.decodeList<EntryLinkEntryReference>(map['entryReferences'], (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

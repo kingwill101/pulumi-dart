@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_config_response.dart';
 
 /// Runtime using Virtual Machine for computing.
 class VirtualMachineResponse {
   /// The unique identifier of the Managed Compute Engine instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The user-friendly name of the Managed Compute Engine instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// Virtual Machine configuration settings.
-  final VirtualMachineConfigResponse virtualMachineConfig;
+  final pulumi.Input<VirtualMachineConfigResponse> virtualMachineConfig;
 
   /// Creates a new [VirtualMachineResponse].
   /// [instanceId] The unique identifier of the Managed Compute Engine instance.
@@ -25,15 +26,15 @@ class VirtualMachineResponse {
     return <String, dynamic>{
       'instanceId': instanceId,
       'instanceName': instanceName,
-      'virtualMachineConfig': virtualMachineConfig.toMap(),
+      'virtualMachineConfig': pulumi.Input.mapInputValue<VirtualMachineConfigResponse, Map<String, dynamic>>(virtualMachineConfig, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineResponse(
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      virtualMachineConfig: VirtualMachineConfigResponse.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>()),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      virtualMachineConfig: (VirtualMachineConfigResponse.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'waf_rule_shared_match_criteria.dart';
 
 class WafRuleSharedMatch {
-  final List<WafRuleSharedMatchCriteria>? criterias;
-  final String? logic;
-  final String? matchType;
+  final pulumi.Input<List<WafRuleSharedMatchCriteria>>? criterias;
+  final pulumi.Input<String>? logic;
+  final pulumi.Input<String>? matchType;
 
   /// Creates a new [WafRuleSharedMatch].
   /// [criterias] Optional.
@@ -20,7 +20,7 @@ class WafRuleSharedMatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criterias': ?criterias == null ? null : pulumi.Input.encodeList<WafRuleSharedMatchCriteria, Map<String, dynamic>>(criterias!, (value) => value.toMap()),
+      'criterias': ?pulumi.Input.mapOptionalInputValue<List<WafRuleSharedMatchCriteria>, List<Map<String, dynamic>>>(criterias, (value) => pulumi.Input.encodeList<WafRuleSharedMatchCriteria, Map<String, dynamic>>(value, (value) => value.toMap())),
       'logic': ?logic,
       'matchType': ?matchType,
     };
@@ -28,9 +28,9 @@ class WafRuleSharedMatch {
 
   factory WafRuleSharedMatch.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedMatch(
-      criterias: map['criterias'] == null ? null : pulumi.Input.decodeList<WafRuleSharedMatchCriteria>(map['criterias'], (value) => WafRuleSharedMatchCriteria.fromMap((value as Map).cast<String, dynamic>())),
-      logic: map['logic'] == null ? null : map['logic'] as String,
-      matchType: map['matchType'] == null ? null : map['matchType'] as String,
+      criterias: map['criterias'] == null ? null : (pulumi.Input.decodeList<WafRuleSharedMatchCriteria>(map['criterias'], (value) => WafRuleSharedMatchCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logic: map['logic'] == null ? null : (map['logic'] as String).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
     );
   }
 }

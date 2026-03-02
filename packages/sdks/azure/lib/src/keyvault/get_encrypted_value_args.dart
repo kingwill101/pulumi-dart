@@ -24,15 +24,11 @@ class GetEncryptedValueArgs {
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Decrypt/Encrypt this Value.
   /// [plainTextValue] The plain-text value which should be Encrypted into `encrypted_data`.
   GetEncryptedValueArgs({
-    required pulumi.Output<String> algorithm,
-    pulumi.Output<String>? encryptedData,
-    required pulumi.Output<String> keyVaultKeyId,
-    pulumi.Output<String>? plainTextValue,
-  }) :
-      algorithm = pulumi.Input.asInput<String>(algorithm),
-      encryptedData = pulumi.Input.asOptionalInput<String>(encryptedData),
-      keyVaultKeyId = pulumi.Input.asInput<String>(keyVaultKeyId),
-      plainTextValue = pulumi.Input.asOptionalInput<String>(plainTextValue);
+    required this.algorithm,
+    this.encryptedData,
+    required this.keyVaultKeyId,
+    this.plainTextValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetEncryptedValueArgs {
 
   factory GetEncryptedValueArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptedValueArgs(
-      algorithm: pulumi.Output.create<String>(map['algorithm'] as String),
-      encryptedData: map['encryptedData'] == null ? null : pulumi.Output.create<String>(map['encryptedData'] as String),
-      keyVaultKeyId: pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      plainTextValue: map['plainTextValue'] == null ? null : pulumi.Output.create<String>(map['plainTextValue'] as String),
+      algorithm: (map['algorithm'] as String).input(),
+      encryptedData: map['encryptedData'] == null ? null : (map['encryptedData'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      plainTextValue: map['plainTextValue'] == null ? null : (map['plainTextValue'] as String).input(),
     );
   }
 }

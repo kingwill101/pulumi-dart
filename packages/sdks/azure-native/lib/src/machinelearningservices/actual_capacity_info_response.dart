@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActualCapacityInfoResponse {
   /// Gets or sets the number of instances (scale units) which have Failed provisioning state and have target group payload.
-  final int? failed;
+  final pulumi.Input<int>? failed;
   /// Gets or sets the number of instances (scale units) which have Failed provisioning state but do not have target group payload.
-  final int? outdatedFailed;
+  final pulumi.Input<int>? outdatedFailed;
   /// Gets or sets the number of instances (scale units) which have Succeeded provisioning state but do not have target group payload.
-  final int? outdatedSucceeded;
+  final pulumi.Input<int>? outdatedSucceeded;
   /// Gets or sets the number of instances (scale units) which have Succeeded provisioning state and target group payload.
-  final int? succeeded;
+  final pulumi.Input<int>? succeeded;
   /// Gets or sets the total number of instances (scale units) regardless of provisioning state or whether current group payload version matches the target group payload.
-  final int? total;
+  final pulumi.Input<int>? total;
 
   /// Creates a new [ActualCapacityInfoResponse].
   /// [failed] Gets or sets the number of instances (scale units) which have Failed provisioning state and have target group payload.
@@ -39,11 +40,11 @@ class ActualCapacityInfoResponse {
 
   factory ActualCapacityInfoResponse.fromMap(Map<String, dynamic> map) {
     return ActualCapacityInfoResponse(
-      failed: map['failed'] == null ? null : map['failed'] as int,
-      outdatedFailed: map['outdatedFailed'] == null ? null : map['outdatedFailed'] as int,
-      outdatedSucceeded: map['outdatedSucceeded'] == null ? null : map['outdatedSucceeded'] as int,
-      succeeded: map['succeeded'] == null ? null : map['succeeded'] as int,
-      total: map['total'] == null ? null : map['total'] as int,
+      failed: map['failed'] == null ? null : (map['failed'] as int).input(),
+      outdatedFailed: map['outdatedFailed'] == null ? null : (map['outdatedFailed'] as int).input(),
+      outdatedSucceeded: map['outdatedSucceeded'] == null ? null : (map['outdatedSucceeded'] as int).input(),
+      succeeded: map['succeeded'] == null ? null : (map['succeeded'] as int).input(),
+      total: map['total'] == null ? null : (map['total'] as int).input(),
     );
   }
 }

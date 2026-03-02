@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
   /// The name of the feature you want to know the status of.
-  final String name;
+  final pulumi.Input<String> name;
   /// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade].
   /// [name] The name of the feature you want to know the status of.
@@ -24,8 +25,8 @@ class GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
 
   factory GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade(
-      name: map['name'] as String,
-      version: map['version'] as String,
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

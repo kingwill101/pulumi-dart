@@ -22,15 +22,11 @@ class NamespaceDisasterRecoveryConfigArgs {
   /// [partnerNamespaceId] The ID of the Service Bus Namespace to replicate to.
   /// [primaryNamespaceId] The ID of the primary Service Bus Namespace to replicate. Changing this forces a new resource to be created.
   NamespaceDisasterRecoveryConfigArgs({
-    pulumi.Output<String>? aliasAuthorizationRuleId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> partnerNamespaceId,
-    required pulumi.Output<String> primaryNamespaceId,
-  }) :
-      aliasAuthorizationRuleId = pulumi.Input.asOptionalInput<String>(aliasAuthorizationRuleId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partnerNamespaceId = pulumi.Input.asInput<String>(partnerNamespaceId),
-      primaryNamespaceId = pulumi.Input.asInput<String>(primaryNamespaceId);
+    this.aliasAuthorizationRuleId,
+    this.name,
+    required this.partnerNamespaceId,
+    required this.primaryNamespaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NamespaceDisasterRecoveryConfigArgs {
 
   factory NamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceDisasterRecoveryConfigArgs(
-      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : pulumi.Output.create<String>(map['aliasAuthorizationRuleId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partnerNamespaceId: pulumi.Output.create<String>(map['partnerNamespaceId'] as String),
-      primaryNamespaceId: pulumi.Output.create<String>(map['primaryNamespaceId'] as String),
+      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partnerNamespaceId: (map['partnerNamespaceId'] as String).input(),
+      primaryNamespaceId: (map['primaryNamespaceId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetServiceEndpointPolicyArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [serviceEndpointPolicyName] The name of the service endpoint policy.
   GetServiceEndpointPolicyArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceEndpointPolicyName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceEndpointPolicyName = pulumi.Input.asInput<String>(serviceEndpointPolicyName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.serviceEndpointPolicyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServiceEndpointPolicyArgs {
 
   factory GetServiceEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointPolicyArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceEndpointPolicyName: pulumi.Output.create<String>(map['serviceEndpointPolicyName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceEndpointPolicyName: (map['serviceEndpointPolicyName'] as String).input(),
     );
   }
 }

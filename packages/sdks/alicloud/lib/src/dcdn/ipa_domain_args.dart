@@ -26,17 +26,12 @@ class IpaDomainArgs {
   /// [sources] Sources. See `sources` below.
   /// [status] The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
   IpaDomainArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? scope,
-    required pulumi.Output<List<IpaDomainSource>> sources,
-    pulumi.Output<String>? status,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      sources = pulumi.Input.asInput<List<IpaDomainSource>>(sources),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.domainName,
+    this.resourceGroupId,
+    this.scope,
+    required this.sources,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class IpaDomainArgs {
 
   factory IpaDomainArgs.fromMap(Map<String, dynamic> map) {
     return IpaDomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      sources: pulumi.Output.create<List<IpaDomainSource>>(pulumi.Input.decodeList<IpaDomainSource>(map['sources'], (value) => IpaDomainSource.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      domainName: (map['domainName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      sources: (pulumi.Input.decodeList<IpaDomainSource>(map['sources'], (value) => IpaDomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -13,29 +13,29 @@ import 'volume_mount_response.dart';
 /// A container instance.
 class ContainerResponse {
   /// The commands to execute within the container instance in exec form.
-  final List<String>? command;
+  final pulumi.Input<List<String>>? command;
   /// The config map.
-  final ConfigMapResponse? configMap;
+  final pulumi.Input<ConfigMapResponse>? configMap;
   /// The environment variables to set in the container instance.
-  final List<EnvironmentVariableResponse>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariableResponse>>? environmentVariables;
   /// The name of the image used to create the container instance.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// The instance view of the container instance. Only valid in response.
-  final ContainerPropertiesResponseInstanceView instanceView;
+  final pulumi.Input<ContainerPropertiesResponseInstanceView> instanceView;
   /// The liveness probe.
-  final ContainerProbeResponse? livenessProbe;
+  final pulumi.Input<ContainerProbeResponse>? livenessProbe;
   /// The user-provided name of the container instance.
-  final String name;
+  final pulumi.Input<String> name;
   /// The exposed ports on the container instance.
-  final List<ContainerPortResponse>? ports;
+  final pulumi.Input<List<ContainerPortResponse>>? ports;
   /// The readiness probe.
-  final ContainerProbeResponse? readinessProbe;
+  final pulumi.Input<ContainerProbeResponse>? readinessProbe;
   /// The resource requirements of the container instance.
-  final ResourceRequirementsResponse? resources;
+  final pulumi.Input<ResourceRequirementsResponse>? resources;
   /// The container security properties.
-  final SecurityContextDefinitionResponse? securityContext;
+  final pulumi.Input<SecurityContextDefinitionResponse>? securityContext;
   /// The volume mounts available to the container instance.
-  final List<VolumeMountResponse>? volumeMounts;
+  final pulumi.Input<List<VolumeMountResponse>>? volumeMounts;
 
   /// Creates a new [ContainerResponse].
   /// [command] The commands to execute within the container instance in exec form.
@@ -68,34 +68,34 @@ class ContainerResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'command': ?command,
-      'configMap': ?configMap == null ? null : configMap!.toMap(),
-      'environmentVariables': ?environmentVariables == null ? null : pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(environmentVariables!, (value) => value.toMap()),
+      'configMap': ?pulumi.Input.mapOptionalInputValue<ConfigMapResponse, Map<String, dynamic>>(configMap, (value) => value.toMap()),
+      'environmentVariables': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentVariableResponse>, List<Map<String, dynamic>>>(environmentVariables, (value) => pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': ?image,
-      'instanceView': instanceView.toMap(),
-      'livenessProbe': ?livenessProbe == null ? null : livenessProbe!.toMap(),
+      'instanceView': pulumi.Input.mapInputValue<ContainerPropertiesResponseInstanceView, Map<String, dynamic>>(instanceView, (value) => value.toMap()),
+      'livenessProbe': ?pulumi.Input.mapOptionalInputValue<ContainerProbeResponse, Map<String, dynamic>>(livenessProbe, (value) => value.toMap()),
       'name': name,
-      'ports': ?ports == null ? null : pulumi.Input.encodeList<ContainerPortResponse, Map<String, dynamic>>(ports!, (value) => value.toMap()),
-      'readinessProbe': ?readinessProbe == null ? null : readinessProbe!.toMap(),
-      'resources': ?resources == null ? null : resources!.toMap(),
-      'securityContext': ?securityContext == null ? null : securityContext!.toMap(),
-      'volumeMounts': ?volumeMounts == null ? null : pulumi.Input.encodeList<VolumeMountResponse, Map<String, dynamic>>(volumeMounts!, (value) => value.toMap()),
+      'ports': ?pulumi.Input.mapOptionalInputValue<List<ContainerPortResponse>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<ContainerPortResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'readinessProbe': ?pulumi.Input.mapOptionalInputValue<ContainerProbeResponse, Map<String, dynamic>>(readinessProbe, (value) => value.toMap()),
+      'resources': ?pulumi.Input.mapOptionalInputValue<ResourceRequirementsResponse, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'securityContext': ?pulumi.Input.mapOptionalInputValue<SecurityContextDefinitionResponse, Map<String, dynamic>>(securityContext, (value) => value.toMap()),
+      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<VolumeMountResponse>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<VolumeMountResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ContainerResponse.fromMap(Map<String, dynamic> map) {
     return ContainerResponse(
-      command: map['command'] == null ? null : (map['command'] as List).cast<String>(),
-      configMap: map['configMap'] == null ? null : ConfigMapResponse.fromMap((map['configMap'] as Map).cast<String, dynamic>()),
-      environmentVariables: map['environmentVariables'] == null ? null : pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
-      image: map['image'] == null ? null : map['image'] as String,
-      instanceView: ContainerPropertiesResponseInstanceView.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
-      livenessProbe: map['livenessProbe'] == null ? null : ContainerProbeResponse.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      ports: map['ports'] == null ? null : pulumi.Input.decodeList<ContainerPortResponse>(map['ports'], (value) => ContainerPortResponse.fromMap((value as Map).cast<String, dynamic>())),
-      readinessProbe: map['readinessProbe'] == null ? null : ContainerProbeResponse.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>()),
-      resources: map['resources'] == null ? null : ResourceRequirementsResponse.fromMap((map['resources'] as Map).cast<String, dynamic>()),
-      securityContext: map['securityContext'] == null ? null : SecurityContextDefinitionResponse.fromMap((map['securityContext'] as Map).cast<String, dynamic>()),
-      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<VolumeMountResponse>(map['volumeMounts'], (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>())),
+      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      configMap: map['configMap'] == null ? null : (ConfigMapResponse.fromMap((map['configMap'] as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      instanceView: (ContainerPropertiesResponseInstanceView.fromMap((map['instanceView'] as Map).cast<String, dynamic>())).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (ContainerProbeResponse.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ContainerPortResponse>(map['ports'], (value) => ContainerPortResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readinessProbe: map['readinessProbe'] == null ? null : (ContainerProbeResponse.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>())).input(),
+      resources: map['resources'] == null ? null : (ResourceRequirementsResponse.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      securityContext: map['securityContext'] == null ? null : (SecurityContextDefinitionResponse.fromMap((map['securityContext'] as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountResponse>(map['volumeMounts'], (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

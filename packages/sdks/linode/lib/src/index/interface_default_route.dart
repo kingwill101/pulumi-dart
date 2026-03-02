@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterfaceDefaultRoute {
   /// If set to true, the interface is used for the IPv4 default route.
-  final bool? ipv4;
+  final pulumi.Input<bool>? ipv4;
   /// If set to true, the interface is used for the IPv6 default route.
-  final bool? ipv6;
+  final pulumi.Input<bool>? ipv6;
 
   /// Creates a new [InterfaceDefaultRoute].
   /// [ipv4] If set to true, the interface is used for the IPv4 default route.
@@ -24,8 +25,8 @@ class InterfaceDefaultRoute {
 
   factory InterfaceDefaultRoute.fromMap(Map<String, dynamic> map) {
     return InterfaceDefaultRoute(
-      ipv4: map['ipv4'] == null ? null : map['ipv4'] as bool,
-      ipv6: map['ipv6'] == null ? null : map['ipv6'] as bool,
+      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as bool).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as bool).input(),
     );
   }
 }

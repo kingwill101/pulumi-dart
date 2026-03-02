@@ -10,37 +10,37 @@ import 'transition_response.dart';
 /// Definition of Rule
 class RuleResponse {
   /// Specifies a lifecycle rule that stops incomplete multipart uploads to an Amazon S3 bucket. Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will wait before permanently removing all parts of the upload. For more information, see [Stopping Incomplete Multipart Uploads Using a Bucket Lifecycle Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config) in the *Amazon S3 User Guide*.
-  final AbortIncompleteMultipartUploadResponse? abortIncompleteMultipartUpload;
+  final pulumi.Input<AbortIncompleteMultipartUploadResponse>? abortIncompleteMultipartUpload;
   /// Indicates when objects are deleted from Amazon S3 and Amazon S3 Glacier. The date value must be in ISO 8601 format. The time is always midnight UTC. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time. The date value in ISO 8601 format. The timezone is always UTC. (YYYY-MM-DDThh:mm:ssZ)
-  final String? expirationDate;
+  final pulumi.Input<String>? expirationDate;
   /// Indicates the number of days after creation when objects are deleted from Amazon S3 and Amazon S3 Glacier. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time.
-  final int? expirationInDays;
+  final pulumi.Input<int>? expirationInDays;
   /// Indicates whether Amazon S3 will remove a delete marker without any noncurrent versions. If set to true, the delete marker will be removed if there are no noncurrent versions. This cannot be specified with ``ExpirationInDays``, ``ExpirationDate``, or ``TagFilters``.
-  final bool? expiredObjectDeleteMarker;
+  final pulumi.Input<bool>? expiredObjectDeleteMarker;
   /// Unique identifier for the rule. The value can't be longer than 255 characters.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies when noncurrent object versions expire. Upon expiration, S3 permanently deletes the noncurrent object versions. You set this lifecycle configuration action on a bucket that has versioning enabled (or suspended) to request that S3 delete noncurrent object versions at a specific period in the object's lifetime. Specifies when noncurrent object versions expire. Upon expiration, S3 permanently deletes the noncurrent object versions. You set this lifecycle configuration action on a bucket that has versioning enabled (or suspended) to request that S3 delete noncurrent object versions at a specific period in the object's lifetime. For more information about setting a lifecycle rule configuration, see [AWS::S3::Bucket Rule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lifecycleconfig-rule.html).
-  final NoncurrentVersionExpirationResponse? noncurrentVersionExpiration;
+  final pulumi.Input<NoncurrentVersionExpirationResponse>? noncurrentVersionExpiration;
   /// (Deprecated.) For buckets with versioning enabled (or suspended), specifies the time, in days, between when a new version of the object is uploaded to the bucket and when old versions of the object expire. When object versions expire, Amazon S3 permanently deletes them. If you specify a transition and expiration time, the expiration time must be later than the transition time.
-  final int? noncurrentVersionExpirationInDays;
+  final pulumi.Input<int>? noncurrentVersionExpirationInDays;
   /// (Deprecated.) For buckets with versioning enabled (or suspended), specifies when non-current objects transition to a specified storage class. If you specify a transition and expiration time, the expiration time must be later than the transition time. If you specify this property, don't specify the ``NoncurrentVersionTransitions`` property. Container for the transition rule that describes when noncurrent objects transition to the ``STANDARD_IA``, ``ONEZONE_IA``, ``INTELLIGENT_TIERING``, ``GLACIER_IR``, ``GLACIER``, or ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is suspended), you can set this action to request that Amazon S3 transition noncurrent object versions to the ``STANDARD_IA``, ``ONEZONE_IA``, ``INTELLIGENT_TIERING``, ``GLACIER_IR``, ``GLACIER``, or ``DEEP_ARCHIVE`` storage class at a specific period in the object's lifetime. If you specify this property, don't specify the ``NoncurrentVersionTransitions`` property.
-  final NoncurrentVersionTransitionResponse? noncurrentVersionTransition;
+  final pulumi.Input<NoncurrentVersionTransitionResponse>? noncurrentVersionTransition;
   /// For buckets with versioning enabled (or suspended), one or more transition rules that specify when non-current objects transition to a specified storage class. If you specify a transition and expiration time, the expiration time must be later than the transition time. If you specify this property, don't specify the ``NoncurrentVersionTransition`` property.
-  final List<NoncurrentVersionTransitionResponse>? noncurrentVersionTransitions;
+  final pulumi.Input<List<NoncurrentVersionTransitionResponse>>? noncurrentVersionTransitions;
   /// Specifies the minimum object size in bytes for this rule to apply to. Objects must be larger than this value in bytes. For more information about size based rules, see [Lifecycle configuration using size-based rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html#lc-size-rules) in the *Amazon S3 User Guide*.
-  final String? objectSizeGreaterThan;
+  final pulumi.Input<String>? objectSizeGreaterThan;
   /// Specifies the maximum object size in bytes for this rule to apply to. Objects must be smaller than this value in bytes. For more information about sized based rules, see [Lifecycle configuration using size-based rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html#lc-size-rules) in the *Amazon S3 User Guide*.
-  final String? objectSizeLessThan;
+  final pulumi.Input<String>? objectSizeLessThan;
   /// Object key prefix that identifies one or more objects to which this rule applies.  Replacement must be made for object keys containing special characters (such as carriage returns) when using XML requests. For more information, see [XML related object key constraints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// If ``Enabled``, the rule is currently being applied. If ``Disabled``, the rule is not currently being applied.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Tags to use to identify a subset of objects to which the lifecycle rule applies.
-  final List<TagFilterResponse>? tagFilters;
+  final pulumi.Input<List<TagFilterResponse>>? tagFilters;
   /// (Deprecated.) Specifies when an object transitions to a specified storage class. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time. If you specify this property, don't specify the ``Transitions`` property. Specifies when an object transitions to a specified storage class. For more information about Amazon S3 lifecycle configuration rules, see [Transitioning Objects Using Amazon S3 Lifecycle](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html) in the *Amazon S3 User Guide*.
-  final TransitionResponse? transition;
+  final pulumi.Input<TransitionResponse>? transition;
   /// One or more transition rules that specify when an object transitions to a specified storage class. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time. If you specify this property, don't specify the ``Transition`` property.
-  final List<TransitionResponse>? transitions;
+  final pulumi.Input<List<TransitionResponse>>? transitions;
 
   /// Creates a new [RuleResponse].
   /// [abortIncompleteMultipartUpload] Specifies a lifecycle rule that stops incomplete multipart uploads to an Amazon S3 bucket. Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will wait before permanently removing all parts of the upload. For more information, see [Stopping Incomplete Multipart Uploads Using a Bucket Lifecycle Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config) in the *Amazon S3 User Guide*.
@@ -80,43 +80,43 @@ class RuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abortIncompleteMultipartUpload': ?abortIncompleteMultipartUpload == null ? null : abortIncompleteMultipartUpload!.toMap(),
+      'abortIncompleteMultipartUpload': ?pulumi.Input.mapOptionalInputValue<AbortIncompleteMultipartUploadResponse, Map<String, dynamic>>(abortIncompleteMultipartUpload, (value) => value.toMap()),
       'expirationDate': ?expirationDate,
       'expirationInDays': ?expirationInDays,
       'expiredObjectDeleteMarker': ?expiredObjectDeleteMarker,
       'id': ?id,
-      'noncurrentVersionExpiration': ?noncurrentVersionExpiration == null ? null : noncurrentVersionExpiration!.toMap(),
+      'noncurrentVersionExpiration': ?pulumi.Input.mapOptionalInputValue<NoncurrentVersionExpirationResponse, Map<String, dynamic>>(noncurrentVersionExpiration, (value) => value.toMap()),
       'noncurrentVersionExpirationInDays': ?noncurrentVersionExpirationInDays,
-      'noncurrentVersionTransition': ?noncurrentVersionTransition == null ? null : noncurrentVersionTransition!.toMap(),
-      'noncurrentVersionTransitions': ?noncurrentVersionTransitions == null ? null : pulumi.Input.encodeList<NoncurrentVersionTransitionResponse, Map<String, dynamic>>(noncurrentVersionTransitions!, (value) => value.toMap()),
+      'noncurrentVersionTransition': ?pulumi.Input.mapOptionalInputValue<NoncurrentVersionTransitionResponse, Map<String, dynamic>>(noncurrentVersionTransition, (value) => value.toMap()),
+      'noncurrentVersionTransitions': ?pulumi.Input.mapOptionalInputValue<List<NoncurrentVersionTransitionResponse>, List<Map<String, dynamic>>>(noncurrentVersionTransitions, (value) => pulumi.Input.encodeList<NoncurrentVersionTransitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'objectSizeGreaterThan': ?objectSizeGreaterThan,
       'objectSizeLessThan': ?objectSizeLessThan,
       'prefix': ?prefix,
       'status': ?status,
-      'tagFilters': ?tagFilters == null ? null : pulumi.Input.encodeList<TagFilterResponse, Map<String, dynamic>>(tagFilters!, (value) => value.toMap()),
-      'transition': ?transition == null ? null : transition!.toMap(),
-      'transitions': ?transitions == null ? null : pulumi.Input.encodeList<TransitionResponse, Map<String, dynamic>>(transitions!, (value) => value.toMap()),
+      'tagFilters': ?pulumi.Input.mapOptionalInputValue<List<TagFilterResponse>, List<Map<String, dynamic>>>(tagFilters, (value) => pulumi.Input.encodeList<TagFilterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transition': ?pulumi.Input.mapOptionalInputValue<TransitionResponse, Map<String, dynamic>>(transition, (value) => value.toMap()),
+      'transitions': ?pulumi.Input.mapOptionalInputValue<List<TransitionResponse>, List<Map<String, dynamic>>>(transitions, (value) => pulumi.Input.encodeList<TransitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleResponse.fromMap(Map<String, dynamic> map) {
     return RuleResponse(
-      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : AbortIncompleteMultipartUploadResponse.fromMap((map['abortIncompleteMultipartUpload'] as Map).cast<String, dynamic>()),
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate'] as String,
-      expirationInDays: map['expirationInDays'] == null ? null : map['expirationInDays'] as int,
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : map['expiredObjectDeleteMarker'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
-      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : NoncurrentVersionExpirationResponse.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>()),
-      noncurrentVersionExpirationInDays: map['noncurrentVersionExpirationInDays'] == null ? null : map['noncurrentVersionExpirationInDays'] as int,
-      noncurrentVersionTransition: map['noncurrentVersionTransition'] == null ? null : NoncurrentVersionTransitionResponse.fromMap((map['noncurrentVersionTransition'] as Map).cast<String, dynamic>()),
-      noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null ? null : pulumi.Input.decodeList<NoncurrentVersionTransitionResponse>(map['noncurrentVersionTransitions'], (value) => NoncurrentVersionTransitionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : map['objectSizeGreaterThan'] as String,
-      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : map['objectSizeLessThan'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tagFilters: map['tagFilters'] == null ? null : pulumi.Input.decodeList<TagFilterResponse>(map['tagFilters'], (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      transition: map['transition'] == null ? null : TransitionResponse.fromMap((map['transition'] as Map).cast<String, dynamic>()),
-      transitions: map['transitions'] == null ? null : pulumi.Input.decodeList<TransitionResponse>(map['transitions'], (value) => TransitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : (AbortIncompleteMultipartUploadResponse.fromMap((map['abortIncompleteMultipartUpload'] as Map).cast<String, dynamic>())).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      expirationInDays: map['expirationInDays'] == null ? null : (map['expirationInDays'] as int).input(),
+      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : (map['expiredObjectDeleteMarker'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (NoncurrentVersionExpirationResponse.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>())).input(),
+      noncurrentVersionExpirationInDays: map['noncurrentVersionExpirationInDays'] == null ? null : (map['noncurrentVersionExpirationInDays'] as int).input(),
+      noncurrentVersionTransition: map['noncurrentVersionTransition'] == null ? null : (NoncurrentVersionTransitionResponse.fromMap((map['noncurrentVersionTransition'] as Map).cast<String, dynamic>())).input(),
+      noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null ? null : (pulumi.Input.decodeList<NoncurrentVersionTransitionResponse>(map['noncurrentVersionTransitions'], (value) => NoncurrentVersionTransitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : (map['objectSizeGreaterThan'] as String).input(),
+      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : (map['objectSizeLessThan'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilterResponse>(map['tagFilters'], (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transition: map['transition'] == null ? null : (TransitionResponse.fromMap((map['transition'] as Map).cast<String, dynamic>())).input(),
+      transitions: map['transitions'] == null ? null : (pulumi.Input.decodeList<TransitionResponse>(map['transitions'], (value) => TransitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

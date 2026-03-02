@@ -37,27 +37,17 @@ class LabState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [uniqueIdentifier] The unique immutable identifier of the Dev Test Lab.
   LabState({
-    pulumi.Output<String>? artifactsStorageAccountId,
-    pulumi.Output<String>? defaultPremiumStorageAccountId,
-    pulumi.Output<String>? defaultStorageAccountId,
-    pulumi.Output<String>? keyVaultId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? premiumDataDiskStorageAccountId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? uniqueIdentifier,
-  }) :
-      artifactsStorageAccountId = pulumi.Input.asOptionalInput<String>(artifactsStorageAccountId),
-      defaultPremiumStorageAccountId = pulumi.Input.asOptionalInput<String>(defaultPremiumStorageAccountId),
-      defaultStorageAccountId = pulumi.Input.asOptionalInput<String>(defaultStorageAccountId),
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      premiumDataDiskStorageAccountId = pulumi.Input.asOptionalInput<String>(premiumDataDiskStorageAccountId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      uniqueIdentifier = pulumi.Input.asOptionalInput<String>(uniqueIdentifier);
+    this.artifactsStorageAccountId,
+    this.defaultPremiumStorageAccountId,
+    this.defaultStorageAccountId,
+    this.keyVaultId,
+    this.location,
+    this.name,
+    this.premiumDataDiskStorageAccountId,
+    this.resourceGroupName,
+    this.tags,
+    this.uniqueIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class LabState {
 
   factory LabState.fromMap(Map<String, dynamic> map) {
     return LabState(
-      artifactsStorageAccountId: map['artifactsStorageAccountId'] == null ? null : pulumi.Output.create<String>(map['artifactsStorageAccountId'] as String),
-      defaultPremiumStorageAccountId: map['defaultPremiumStorageAccountId'] == null ? null : pulumi.Output.create<String>(map['defaultPremiumStorageAccountId'] as String),
-      defaultStorageAccountId: map['defaultStorageAccountId'] == null ? null : pulumi.Output.create<String>(map['defaultStorageAccountId'] as String),
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      premiumDataDiskStorageAccountId: map['premiumDataDiskStorageAccountId'] == null ? null : pulumi.Output.create<String>(map['premiumDataDiskStorageAccountId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      uniqueIdentifier: map['uniqueIdentifier'] == null ? null : pulumi.Output.create<String>(map['uniqueIdentifier'] as String),
+      artifactsStorageAccountId: map['artifactsStorageAccountId'] == null ? null : (map['artifactsStorageAccountId'] as String).input(),
+      defaultPremiumStorageAccountId: map['defaultPremiumStorageAccountId'] == null ? null : (map['defaultPremiumStorageAccountId'] as String).input(),
+      defaultStorageAccountId: map['defaultStorageAccountId'] == null ? null : (map['defaultStorageAccountId'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      premiumDataDiskStorageAccountId: map['premiumDataDiskStorageAccountId'] == null ? null : (map['premiumDataDiskStorageAccountId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      uniqueIdentifier: map['uniqueIdentifier'] == null ? null : (map['uniqueIdentifier'] as String).input(),
     );
   }
 }

@@ -54,29 +54,18 @@ class TargetPoolState {
   /// [selfLink] The URI of the created resource.
   /// [sessionAffinity] How to distribute load. Options are "NONE" (no
   TargetPoolState({
-    pulumi.Output<String>? backupPool,
-    pulumi.Output<String>? description,
-    pulumi.Output<double>? failoverRatio,
-    pulumi.Output<String>? healthChecks,
-    pulumi.Output<List<String>>? instances,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityPolicy,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? sessionAffinity,
-  }) :
-      backupPool = pulumi.Input.asOptionalInput<String>(backupPool),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      failoverRatio = pulumi.Input.asOptionalInput<double>(failoverRatio),
-      healthChecks = pulumi.Input.asOptionalInput<String>(healthChecks),
-      instances = pulumi.Input.asOptionalInput<List<String>>(instances),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityPolicy = pulumi.Input.asOptionalInput<String>(securityPolicy),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      sessionAffinity = pulumi.Input.asOptionalInput<String>(sessionAffinity);
+    this.backupPool,
+    this.description,
+    this.failoverRatio,
+    this.healthChecks,
+    this.instances,
+    this.name,
+    this.project,
+    this.region,
+    this.securityPolicy,
+    this.selfLink,
+    this.sessionAffinity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,17 +85,17 @@ class TargetPoolState {
 
   factory TargetPoolState.fromMap(Map<String, dynamic> map) {
     return TargetPoolState(
-      backupPool: map['backupPool'] == null ? null : pulumi.Output.create<String>(map['backupPool'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      failoverRatio: map['failoverRatio'] == null ? null : pulumi.Output.create<double>(map['failoverRatio'] as double),
-      healthChecks: map['healthChecks'] == null ? null : pulumi.Output.create<String>(map['healthChecks'] as String),
-      instances: map['instances'] == null ? null : pulumi.Output.create<List<String>>((map['instances'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityPolicy: map['securityPolicy'] == null ? null : pulumi.Output.create<String>(map['securityPolicy'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      sessionAffinity: map['sessionAffinity'] == null ? null : pulumi.Output.create<String>(map['sessionAffinity'] as String),
+      backupPool: map['backupPool'] == null ? null : (map['backupPool'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      failoverRatio: map['failoverRatio'] == null ? null : (map['failoverRatio'] as double).input(),
+      healthChecks: map['healthChecks'] == null ? null : (map['healthChecks'] as String).input(),
+      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as String).input(),
     );
   }
 }

@@ -23,17 +23,12 @@ class ListenerState {
   /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   /// [protocol] The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
   ListenerState({
-    pulumi.Output<String>? acceleratorArn,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? clientAffinity,
-    pulumi.Output<List<ListenerPortRange>>? portRanges,
-    pulumi.Output<String>? protocol,
-  }) :
-      acceleratorArn = pulumi.Input.asOptionalInput<String>(acceleratorArn),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clientAffinity = pulumi.Input.asOptionalInput<String>(clientAffinity),
-      portRanges = pulumi.Input.asOptionalInput<List<ListenerPortRange>>(portRanges),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol);
+    this.acceleratorArn,
+    this.arn,
+    this.clientAffinity,
+    this.portRanges,
+    this.protocol,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ListenerState {
 
   factory ListenerState.fromMap(Map<String, dynamic> map) {
     return ListenerState(
-      acceleratorArn: map['acceleratorArn'] == null ? null : pulumi.Output.create<String>(map['acceleratorArn'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clientAffinity: map['clientAffinity'] == null ? null : pulumi.Output.create<String>(map['clientAffinity'] as String),
-      portRanges: map['portRanges'] == null ? null : pulumi.Output.create<List<ListenerPortRange>>(pulumi.Input.decodeList<ListenerPortRange>(map['portRanges'], (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
+      acceleratorArn: map['acceleratorArn'] == null ? null : (map['acceleratorArn'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clientAffinity: map['clientAffinity'] == null ? null : (map['clientAffinity'] as String).input(),
+      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<ListenerPortRange>(map['portRanges'], (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

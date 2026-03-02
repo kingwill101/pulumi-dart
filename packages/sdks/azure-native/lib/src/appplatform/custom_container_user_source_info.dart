@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_container.dart';
 
 /// Custom container user source info
 class CustomContainerUserSourceInfo {
   /// Custom container payload
-  final CustomContainer? customContainer;
+  final pulumi.Input<CustomContainer>? customContainer;
   /// Type of the source uploaded
   /// Expected value is 'Container'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of the source
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [CustomContainerUserSourceInfo].
   /// [customContainer] Custom container payload
@@ -24,7 +25,7 @@ class CustomContainerUserSourceInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customContainer': ?customContainer == null ? null : customContainer!.toMap(),
+      'customContainer': ?pulumi.Input.mapOptionalInputValue<CustomContainer, Map<String, dynamic>>(customContainer, (value) => value.toMap()),
       'type': type,
       'version': ?version,
     };
@@ -32,9 +33,9 @@ class CustomContainerUserSourceInfo {
 
   factory CustomContainerUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return CustomContainerUserSourceInfo(
-      customContainer: map['customContainer'] == null ? null : CustomContainer.fromMap((map['customContainer'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      customContainer: map['customContainer'] == null ? null : (CustomContainer.fromMap((map['customContainer'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

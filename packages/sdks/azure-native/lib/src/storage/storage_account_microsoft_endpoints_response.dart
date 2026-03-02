@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object via a microsoft routing endpoint.
 class StorageAccountMicrosoftEndpointsResponse {
   /// Gets the blob endpoint.
-  final String blob;
+  final pulumi.Input<String> blob;
   /// Gets the dfs endpoint.
-  final String dfs;
+  final pulumi.Input<String> dfs;
   /// Gets the file endpoint.
-  final String file;
+  final pulumi.Input<String> file;
   /// Gets the queue endpoint.
-  final String queue;
+  final pulumi.Input<String> queue;
   /// Gets the table endpoint.
-  final String table;
+  final pulumi.Input<String> table;
   /// Gets the web endpoint.
-  final String web;
+  final pulumi.Input<String> web;
 
   /// Creates a new [StorageAccountMicrosoftEndpointsResponse].
   /// [blob] Gets the blob endpoint.
@@ -45,12 +46,12 @@ class StorageAccountMicrosoftEndpointsResponse {
 
   factory StorageAccountMicrosoftEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountMicrosoftEndpointsResponse(
-      blob: map['blob'] as String,
-      dfs: map['dfs'] as String,
-      file: map['file'] as String,
-      queue: map['queue'] as String,
-      table: map['table'] as String,
-      web: map['web'] as String,
+      blob: (map['blob'] as String).input(),
+      dfs: (map['dfs'] as String).input(),
+      file: (map['file'] as String).input(),
+      queue: (map['queue'] as String).input(),
+      table: (map['table'] as String).input(),
+      web: (map['web'] as String).input(),
     );
   }
 }

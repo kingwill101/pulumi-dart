@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_human_agent_assistant_config_conversation_model_config_response.dart';
 import 'google_cloud_dialogflow_v2_human_agent_assistant_config_conversation_process_config_response.dart';
 import 'google_cloud_dialogflow_v2_human_agent_assistant_config_suggestion_query_config_response.dart';
@@ -9,19 +10,19 @@ import 'google_cloud_dialogflow_v2_suggestion_feature_response.dart';
 /// Config for suggestion features.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse {
   /// Configs of custom conversation model.
-  final GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse conversationModelConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse> conversationModelConfig;
   /// Configs for processing conversation.
-  final GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse conversationProcessConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse> conversationProcessConfig;
   /// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
-  final bool disableAgentQueryLogging;
+  final pulumi.Input<bool> disableAgentQueryLogging;
   /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
-  final bool enableEventBasedSuggestion;
+  final pulumi.Input<bool> enableEventBasedSuggestion;
   /// Configs of query.
-  final GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse queryConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse> queryConfig;
   /// The suggestion feature.
-  final GoogleCloudDialogflowV2SuggestionFeatureResponse suggestionFeature;
+  final pulumi.Input<GoogleCloudDialogflowV2SuggestionFeatureResponse> suggestionFeature;
   /// Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION and FAQ will use this field.
-  final GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse suggestionTriggerSettings;
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse> suggestionTriggerSettings;
 
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse].
   /// [conversationModelConfig] Configs of custom conversation model.
@@ -43,25 +44,25 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigRes
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conversationModelConfig': conversationModelConfig.toMap(),
-      'conversationProcessConfig': conversationProcessConfig.toMap(),
+      'conversationModelConfig': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse, Map<String, dynamic>>(conversationModelConfig, (value) => value.toMap()),
+      'conversationProcessConfig': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse, Map<String, dynamic>>(conversationProcessConfig, (value) => value.toMap()),
       'disableAgentQueryLogging': disableAgentQueryLogging,
       'enableEventBasedSuggestion': enableEventBasedSuggestion,
-      'queryConfig': queryConfig.toMap(),
-      'suggestionFeature': suggestionFeature.toMap(),
-      'suggestionTriggerSettings': suggestionTriggerSettings.toMap(),
+      'queryConfig': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse, Map<String, dynamic>>(queryConfig, (value) => value.toMap()),
+      'suggestionFeature': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2SuggestionFeatureResponse, Map<String, dynamic>>(suggestionFeature, (value) => value.toMap()),
+      'suggestionTriggerSettings': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse, Map<String, dynamic>>(suggestionTriggerSettings, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse(
-      conversationModelConfig: GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse.fromMap((map['conversationModelConfig'] as Map).cast<String, dynamic>()),
-      conversationProcessConfig: GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse.fromMap((map['conversationProcessConfig'] as Map).cast<String, dynamic>()),
-      disableAgentQueryLogging: map['disableAgentQueryLogging'] as bool,
-      enableEventBasedSuggestion: map['enableEventBasedSuggestion'] as bool,
-      queryConfig: GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse.fromMap((map['queryConfig'] as Map).cast<String, dynamic>()),
-      suggestionFeature: GoogleCloudDialogflowV2SuggestionFeatureResponse.fromMap((map['suggestionFeature'] as Map).cast<String, dynamic>()),
-      suggestionTriggerSettings: GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse.fromMap((map['suggestionTriggerSettings'] as Map).cast<String, dynamic>()),
+      conversationModelConfig: (GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse.fromMap((map['conversationModelConfig'] as Map).cast<String, dynamic>())).input(),
+      conversationProcessConfig: (GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse.fromMap((map['conversationProcessConfig'] as Map).cast<String, dynamic>())).input(),
+      disableAgentQueryLogging: (map['disableAgentQueryLogging'] as bool).input(),
+      enableEventBasedSuggestion: (map['enableEventBasedSuggestion'] as bool).input(),
+      queryConfig: (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse.fromMap((map['queryConfig'] as Map).cast<String, dynamic>())).input(),
+      suggestionFeature: (GoogleCloudDialogflowV2SuggestionFeatureResponse.fromMap((map['suggestionFeature'] as Map).cast<String, dynamic>())).input(),
+      suggestionTriggerSettings: (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse.fromMap((map['suggestionTriggerSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class StaticSiteCustomDomainState {
   /// [validationToken] Token to be used with `dns-txt-token` validation.
   /// [validationType] One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   StaticSiteCustomDomainState({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? staticSiteId,
-    pulumi.Output<String>? validationToken,
-    pulumi.Output<String>? validationType,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      staticSiteId = pulumi.Input.asOptionalInput<String>(staticSiteId),
-      validationToken = pulumi.Input.asOptionalInput<String>(validationToken),
-      validationType = pulumi.Input.asOptionalInput<String>(validationType);
+    this.domainName,
+    this.staticSiteId,
+    this.validationToken,
+    this.validationType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class StaticSiteCustomDomainState {
 
   factory StaticSiteCustomDomainState.fromMap(Map<String, dynamic> map) {
     return StaticSiteCustomDomainState(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      staticSiteId: map['staticSiteId'] == null ? null : pulumi.Output.create<String>(map['staticSiteId'] as String),
-      validationToken: map['validationToken'] == null ? null : pulumi.Output.create<String>(map['validationToken'] as String),
-      validationType: map['validationType'] == null ? null : pulumi.Output.create<String>(map['validationType'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      staticSiteId: map['staticSiteId'] == null ? null : (map['staticSiteId'] as String).input(),
+      validationToken: map['validationToken'] == null ? null : (map['validationToken'] as String).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
     );
   }
 }

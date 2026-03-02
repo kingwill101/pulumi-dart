@@ -19,15 +19,11 @@ class LoadBalancerAccessLogConfigAttachmentState {
   /// [logProject] The log items shipped by the access log.
   /// [logStore] Logstore for log delivery.
   LoadBalancerAccessLogConfigAttachmentState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? loadBalancerId,
-    pulumi.Output<String>? logProject,
-    pulumi.Output<String>? logStore,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      loadBalancerId = pulumi.Input.asOptionalInput<String>(loadBalancerId),
-      logProject = pulumi.Input.asOptionalInput<String>(logProject),
-      logStore = pulumi.Input.asOptionalInput<String>(logStore);
+    this.createTime,
+    this.loadBalancerId,
+    this.logProject,
+    this.logStore,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class LoadBalancerAccessLogConfigAttachmentState {
 
   factory LoadBalancerAccessLogConfigAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogConfigAttachmentState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      logProject: map['logProject'] == null ? null : pulumi.Output.create<String>(map['logProject'] as String),
-      logStore: map['logStore'] == null ? null : pulumi.Output.create<String>(map['logStore'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      logProject: map['logProject'] == null ? null : (map['logProject'] as String).input(),
+      logStore: map['logStore'] == null ? null : (map['logStore'] as String).input(),
     );
   }
 }

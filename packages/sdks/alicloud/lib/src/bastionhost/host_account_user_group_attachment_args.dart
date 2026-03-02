@@ -22,15 +22,11 @@ class HostAccountUserGroupAttachmentArgs {
   /// [instanceId] The ID of the Bastionhost instance where you want to authorize the user group to manage the specified hosts and host accounts.
   /// [userGroupId] The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
   HostAccountUserGroupAttachmentArgs({
-    required pulumi.Output<List<String>> hostAccountIds,
-    required pulumi.Output<String> hostId,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> userGroupId,
-  }) :
-      hostAccountIds = pulumi.Input.asInput<List<String>>(hostAccountIds),
-      hostId = pulumi.Input.asInput<String>(hostId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      userGroupId = pulumi.Input.asInput<String>(userGroupId);
+    required this.hostAccountIds,
+    required this.hostId,
+    required this.instanceId,
+    required this.userGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class HostAccountUserGroupAttachmentArgs {
 
   factory HostAccountUserGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return HostAccountUserGroupAttachmentArgs(
-      hostAccountIds: pulumi.Output.create<List<String>>((map['hostAccountIds'] as List).cast<String>()),
-      hostId: pulumi.Output.create<String>(map['hostId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      userGroupId: pulumi.Output.create<String>(map['userGroupId'] as String),
+      hostAccountIds: ((map['hostAccountIds'] as List).cast<String>()).input(),
+      hostId: (map['hostId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      userGroupId: (map['userGroupId'] as String).input(),
     );
   }
 }

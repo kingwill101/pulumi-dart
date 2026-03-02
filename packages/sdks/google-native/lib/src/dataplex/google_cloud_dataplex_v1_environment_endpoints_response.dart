@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// URI Endpoints to access sessions associated with the Environment.
 class GoogleCloudDataplexV1EnvironmentEndpointsResponse {
   /// URI to serve notebook APIs
-  final String notebooks;
+  final pulumi.Input<String> notebooks;
   /// URI to serve SQL APIs
-  final String sql;
+  final pulumi.Input<String> sql;
 
   /// Creates a new [GoogleCloudDataplexV1EnvironmentEndpointsResponse].
   /// [notebooks] URI to serve notebook APIs
@@ -25,8 +26,8 @@ class GoogleCloudDataplexV1EnvironmentEndpointsResponse {
 
   factory GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentEndpointsResponse(
-      notebooks: map['notebooks'] as String,
-      sql: map['sql'] as String,
+      notebooks: (map['notebooks'] as String).input(),
+      sql: (map['sql'] as String).input(),
     );
   }
 }

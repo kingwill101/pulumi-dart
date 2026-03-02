@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTlsCipherPoliciesPolicyRelateListener {
   /// The ID of SLB instance.
-  final String loadBalancerId;
+  final pulumi.Input<String> loadBalancerId;
   /// Listening port. Valid value: 1 to 65535.
-  final int port;
+  final pulumi.Input<int> port;
   /// Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [GetTlsCipherPoliciesPolicyRelateListener].
   /// [loadBalancerId] The ID of SLB instance.
@@ -29,9 +30,9 @@ class GetTlsCipherPoliciesPolicyRelateListener {
 
   factory GetTlsCipherPoliciesPolicyRelateListener.fromMap(Map<String, dynamic> map) {
     return GetTlsCipherPoliciesPolicyRelateListener(
-      loadBalancerId: map['loadBalancerId'] as String,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

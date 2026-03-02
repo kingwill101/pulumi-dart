@@ -5,61 +5,61 @@ import 'get_ecs_network_interfaces_interface_associated_public_ip.dart';
 
 class GetEcsNetworkInterfacesInterface {
   /// The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
-  final List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps;
+  final pulumi.Input<List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp>> associatedPublicIps;
   /// The creation time.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// The description of the ENI.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Network Interface.
-  final String id;
+  final pulumi.Input<String> id;
   /// The instance id.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
-  final List<String> ipv6Sets;
+  final pulumi.Input<List<String>> ipv6Sets;
   /// The MAC address of the ENI.
-  final String mac;
+  final pulumi.Input<String> mac;
   /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
-  final String name;
+  final pulumi.Input<String> name;
   /// The network interface id.
-  final String networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
   /// The network interface name.
-  final String networkInterfaceName;
+  final pulumi.Input<String> networkInterfaceName;
   /// The communication mode of the elastic network card.
-  final String networkInterfaceTrafficMode;
+  final pulumi.Input<String> networkInterfaceTrafficMode;
   /// The ID of the account to which the ENIC belongs.
-  final String ownerId;
+  final pulumi.Input<String> ownerId;
   /// The primary private IP address of the ENI.
-  final String primaryIpAddress;
+  final pulumi.Input<String> primaryIpAddress;
   /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
-  final String privateIp;
+  final pulumi.Input<String> privateIp;
   /// A list of secondary private IP address that is assigned to the ENI.
-  final List<String> privateIpAddresses;
+  final pulumi.Input<List<String>> privateIpAddresses;
   /// A list of secondary private IP address that is assigned to the ENI.
-  final List<String> privateIps;
+  final pulumi.Input<List<String>> privateIps;
   /// Number of network card queues.
-  final int queueNumber;
+  final pulumi.Input<int> queueNumber;
   /// The resource group id.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The security group ids.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// The security groups.
-  final List<String> securityGroups;
+  final pulumi.Input<List<String>> securityGroups;
   /// The service id.
-  final int serviceId;
+  final pulumi.Input<int> serviceId;
   /// Whether the user of the elastic network card is a cloud product or a virtual vendor.
-  final bool serviceManaged;
+  final pulumi.Input<bool> serviceManaged;
   /// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A map of tags assigned to ENIs.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The type of ENI. Valid Values: `Primary`, `Secondary`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The vpc id.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The zone id.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetEcsNetworkInterfacesInterface].
   /// [associatedPublicIps] The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
@@ -123,7 +123,7 @@ class GetEcsNetworkInterfacesInterface {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'associatedPublicIps': pulumi.Input.encodeList<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp, Map<String, dynamic>>(associatedPublicIps, (value) => value.toMap()),
+      'associatedPublicIps': pulumi.Input.mapInputValue<List<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp>, List<Map<String, dynamic>>>(associatedPublicIps, (value) => pulumi.Input.encodeList<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationTime': creationTime,
       'description': description,
       'id': id,
@@ -156,34 +156,34 @@ class GetEcsNetworkInterfacesInterface {
 
   factory GetEcsNetworkInterfacesInterface.fromMap(Map<String, dynamic> map) {
     return GetEcsNetworkInterfacesInterface(
-      associatedPublicIps: pulumi.Input.decodeList<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp>(map['associatedPublicIps'], (value) => GetEcsNetworkInterfacesInterfaceAssociatedPublicIp.fromMap((value as Map).cast<String, dynamic>())),
-      creationTime: map['creationTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      ipv6Sets: (map['ipv6Sets'] as List).cast<String>(),
-      mac: map['mac'] as String,
-      name: map['name'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      networkInterfaceName: map['networkInterfaceName'] as String,
-      networkInterfaceTrafficMode: map['networkInterfaceTrafficMode'] as String,
-      ownerId: map['ownerId'] as String,
-      primaryIpAddress: map['primaryIpAddress'] as String,
-      privateIp: map['privateIp'] as String,
-      privateIpAddresses: (map['privateIpAddresses'] as List).cast<String>(),
-      privateIps: (map['privateIps'] as List).cast<String>(),
-      queueNumber: map['queueNumber'] as int,
-      resourceGroupId: map['resourceGroupId'] as String,
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      securityGroups: (map['securityGroups'] as List).cast<String>(),
-      serviceId: map['serviceId'] as int,
-      serviceManaged: map['serviceManaged'] as bool,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      associatedPublicIps: (pulumi.Input.decodeList<GetEcsNetworkInterfacesInterfaceAssociatedPublicIp>(map['associatedPublicIps'], (value) => GetEcsNetworkInterfacesInterfaceAssociatedPublicIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      ipv6Sets: ((map['ipv6Sets'] as List).cast<String>()).input(),
+      mac: (map['mac'] as String).input(),
+      name: (map['name'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      networkInterfaceName: (map['networkInterfaceName'] as String).input(),
+      networkInterfaceTrafficMode: (map['networkInterfaceTrafficMode'] as String).input(),
+      ownerId: (map['ownerId'] as String).input(),
+      primaryIpAddress: (map['primaryIpAddress'] as String).input(),
+      privateIp: (map['privateIp'] as String).input(),
+      privateIpAddresses: ((map['privateIpAddresses'] as List).cast<String>()).input(),
+      privateIps: ((map['privateIps'] as List).cast<String>()).input(),
+      queueNumber: (map['queueNumber'] as int).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
+      serviceId: (map['serviceId'] as int).input(),
+      serviceManaged: (map['serviceManaged'] as bool).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

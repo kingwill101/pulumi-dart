@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZonesZoneOption {
   /// The protocol type. Valid values: `HDFS`.
-  final String protocolType;
+  final pulumi.Input<String> protocolType;
   /// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-  final String storageType;
+  final pulumi.Input<String> storageType;
 
   /// Creates a new [GetZonesZoneOption].
   /// [protocolType] The protocol type. Valid values: `HDFS`.
@@ -24,8 +25,8 @@ class GetZonesZoneOption {
 
   factory GetZonesZoneOption.fromMap(Map<String, dynamic> map) {
     return GetZonesZoneOption(
-      protocolType: map['protocolType'] as String,
-      storageType: map['storageType'] as String,
+      protocolType: (map['protocolType'] as String).input(),
+      storageType: (map['storageType'] as String).input(),
     );
   }
 }

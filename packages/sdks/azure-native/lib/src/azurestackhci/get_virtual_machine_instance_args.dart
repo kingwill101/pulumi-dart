@@ -13,9 +13,8 @@ class GetVirtualMachineInstanceArgs {
   /// Creates a new [GetVirtualMachineInstanceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetVirtualMachineInstanceArgs({
-    required pulumi.Output<String> resourceUri,
-  }) :
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetVirtualMachineInstanceArgs {
 
   factory GetVirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineInstanceArgs(
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

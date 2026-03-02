@@ -20,13 +20,10 @@ class CustomHttpsConfigurationArgs {
   /// [customHttpsProvisioningEnabled] Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   /// [frontendEndpointId] The ID of the Front Door Frontend Endpoint which this configuration refers to. Changing this forces a new resource to be created.
   CustomHttpsConfigurationArgs({
-    pulumi.Output<CustomHttpsConfigurationCustomHttpsConfiguration>? customHttpsConfiguration,
-    required pulumi.Output<bool> customHttpsProvisioningEnabled,
-    required pulumi.Output<String> frontendEndpointId,
-  }) :
-      customHttpsConfiguration = pulumi.Input.asOptionalInput<CustomHttpsConfigurationCustomHttpsConfiguration>(customHttpsConfiguration),
-      customHttpsProvisioningEnabled = pulumi.Input.asInput<bool>(customHttpsProvisioningEnabled),
-      frontendEndpointId = pulumi.Input.asInput<String>(frontendEndpointId);
+    this.customHttpsConfiguration,
+    required this.customHttpsProvisioningEnabled,
+    required this.frontendEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class CustomHttpsConfigurationArgs {
 
   factory CustomHttpsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return CustomHttpsConfigurationArgs(
-      customHttpsConfiguration: map['customHttpsConfiguration'] == null ? null : pulumi.Output.create<CustomHttpsConfigurationCustomHttpsConfiguration>(CustomHttpsConfigurationCustomHttpsConfiguration.fromMap((map['customHttpsConfiguration'] as Map).cast<String, dynamic>())),
-      customHttpsProvisioningEnabled: pulumi.Output.create<bool>(map['customHttpsProvisioningEnabled'] as bool),
-      frontendEndpointId: pulumi.Output.create<String>(map['frontendEndpointId'] as String),
+      customHttpsConfiguration: map['customHttpsConfiguration'] == null ? null : (CustomHttpsConfigurationCustomHttpsConfiguration.fromMap((map['customHttpsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      customHttpsProvisioningEnabled: (map['customHttpsProvisioningEnabled'] as bool).input(),
+      frontendEndpointId: (map['frontendEndpointId'] as String).input(),
     );
   }
 }

@@ -50,31 +50,19 @@ class GetFlavorArgs {
   /// [swap] The amount of swap (in gigabytes).
   /// [vcpus] The amount of VCPUs.
   GetFlavorArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? disk,
-    pulumi.Output<String>? flavorId,
-    pulumi.Output<bool>? isPublic,
-    pulumi.Output<int>? minDisk,
-    pulumi.Output<int>? minRam,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? ram,
-    pulumi.Output<String>? region,
-    pulumi.Output<double>? rxTxFactor,
-    pulumi.Output<int>? swap,
-    pulumi.Output<int>? vcpus,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disk = pulumi.Input.asOptionalInput<int>(disk),
-      flavorId = pulumi.Input.asOptionalInput<String>(flavorId),
-      isPublic = pulumi.Input.asOptionalInput<bool>(isPublic),
-      minDisk = pulumi.Input.asOptionalInput<int>(minDisk),
-      minRam = pulumi.Input.asOptionalInput<int>(minRam),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ram = pulumi.Input.asOptionalInput<int>(ram),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rxTxFactor = pulumi.Input.asOptionalInput<double>(rxTxFactor),
-      swap = pulumi.Input.asOptionalInput<int>(swap),
-      vcpus = pulumi.Input.asOptionalInput<int>(vcpus);
+    this.description,
+    this.disk,
+    this.flavorId,
+    this.isPublic,
+    this.minDisk,
+    this.minRam,
+    this.name,
+    this.ram,
+    this.region,
+    this.rxTxFactor,
+    this.swap,
+    this.vcpus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class GetFlavorArgs {
 
   factory GetFlavorArgs.fromMap(Map<String, dynamic> map) {
     return GetFlavorArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disk: map['disk'] == null ? null : pulumi.Output.create<int>(map['disk'] as int),
-      flavorId: map['flavorId'] == null ? null : pulumi.Output.create<String>(map['flavorId'] as String),
-      isPublic: map['isPublic'] == null ? null : pulumi.Output.create<bool>(map['isPublic'] as bool),
-      minDisk: map['minDisk'] == null ? null : pulumi.Output.create<int>(map['minDisk'] as int),
-      minRam: map['minRam'] == null ? null : pulumi.Output.create<int>(map['minRam'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ram: map['ram'] == null ? null : pulumi.Output.create<int>(map['ram'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rxTxFactor: map['rxTxFactor'] == null ? null : pulumi.Output.create<double>(map['rxTxFactor'] as double),
-      swap: map['swap'] == null ? null : pulumi.Output.create<int>(map['swap'] as int),
-      vcpus: map['vcpus'] == null ? null : pulumi.Output.create<int>(map['vcpus'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      minDisk: map['minDisk'] == null ? null : (map['minDisk'] as int).input(),
+      minRam: map['minRam'] == null ? null : (map['minRam'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ram: map['ram'] == null ? null : (map['ram'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rxTxFactor: map['rxTxFactor'] == null ? null : (map['rxTxFactor'] as double).input(),
+      swap: map['swap'] == null ? null : (map['swap'] as int).input(),
+      vcpus: map['vcpus'] == null ? null : (map['vcpus'] as int).input(),
     );
   }
 }

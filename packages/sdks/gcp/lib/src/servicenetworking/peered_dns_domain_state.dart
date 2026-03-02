@@ -25,19 +25,13 @@ class PeeredDnsDomainState {
   /// [project] The producer project number. If not provided, the provider project is used.
   /// [service] Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
   PeeredDnsDomainState({
-    pulumi.Output<String>? dnsSuffix,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? service,
-  }) :
-      dnsSuffix = pulumi.Input.asOptionalInput<String>(dnsSuffix),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.dnsSuffix,
+    this.name,
+    this.network,
+    this.parent,
+    this.project,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class PeeredDnsDomainState {
 
   factory PeeredDnsDomainState.fromMap(Map<String, dynamic> map) {
     return PeeredDnsDomainState(
-      dnsSuffix: map['dnsSuffix'] == null ? null : pulumi.Output.create<String>(map['dnsSuffix'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

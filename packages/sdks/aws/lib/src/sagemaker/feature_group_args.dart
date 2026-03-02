@@ -46,29 +46,18 @@ class FeatureGroupArgs {
   /// [tags] Map of resource tags for the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [throughputConfig] Optional.
   FeatureGroupArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> eventTimeFeatureName,
-    required pulumi.Output<List<FeatureGroupFeatureDefinition>> featureDefinitions,
-    required pulumi.Output<String> featureGroupName,
-    pulumi.Output<FeatureGroupOfflineStoreConfig>? offlineStoreConfig,
-    pulumi.Output<FeatureGroupOnlineStoreConfig>? onlineStoreConfig,
-    required pulumi.Output<String> recordIdentifierFeatureName,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<FeatureGroupThroughputConfig>? throughputConfig,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventTimeFeatureName = pulumi.Input.asInput<String>(eventTimeFeatureName),
-      featureDefinitions = pulumi.Input.asInput<List<FeatureGroupFeatureDefinition>>(featureDefinitions),
-      featureGroupName = pulumi.Input.asInput<String>(featureGroupName),
-      offlineStoreConfig = pulumi.Input.asOptionalInput<FeatureGroupOfflineStoreConfig>(offlineStoreConfig),
-      onlineStoreConfig = pulumi.Input.asOptionalInput<FeatureGroupOnlineStoreConfig>(onlineStoreConfig),
-      recordIdentifierFeatureName = pulumi.Input.asInput<String>(recordIdentifierFeatureName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      throughputConfig = pulumi.Input.asOptionalInput<FeatureGroupThroughputConfig>(throughputConfig);
+    this.description,
+    required this.eventTimeFeatureName,
+    required this.featureDefinitions,
+    required this.featureGroupName,
+    this.offlineStoreConfig,
+    this.onlineStoreConfig,
+    required this.recordIdentifierFeatureName,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    this.throughputConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class FeatureGroupArgs {
 
   factory FeatureGroupArgs.fromMap(Map<String, dynamic> map) {
     return FeatureGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventTimeFeatureName: pulumi.Output.create<String>(map['eventTimeFeatureName'] as String),
-      featureDefinitions: pulumi.Output.create<List<FeatureGroupFeatureDefinition>>(pulumi.Input.decodeList<FeatureGroupFeatureDefinition>(map['featureDefinitions'], (value) => FeatureGroupFeatureDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      featureGroupName: pulumi.Output.create<String>(map['featureGroupName'] as String),
-      offlineStoreConfig: map['offlineStoreConfig'] == null ? null : pulumi.Output.create<FeatureGroupOfflineStoreConfig>(FeatureGroupOfflineStoreConfig.fromMap((map['offlineStoreConfig'] as Map).cast<String, dynamic>())),
-      onlineStoreConfig: map['onlineStoreConfig'] == null ? null : pulumi.Output.create<FeatureGroupOnlineStoreConfig>(FeatureGroupOnlineStoreConfig.fromMap((map['onlineStoreConfig'] as Map).cast<String, dynamic>())),
-      recordIdentifierFeatureName: pulumi.Output.create<String>(map['recordIdentifierFeatureName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      throughputConfig: map['throughputConfig'] == null ? null : pulumi.Output.create<FeatureGroupThroughputConfig>(FeatureGroupThroughputConfig.fromMap((map['throughputConfig'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventTimeFeatureName: (map['eventTimeFeatureName'] as String).input(),
+      featureDefinitions: (pulumi.Input.decodeList<FeatureGroupFeatureDefinition>(map['featureDefinitions'], (value) => FeatureGroupFeatureDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      featureGroupName: (map['featureGroupName'] as String).input(),
+      offlineStoreConfig: map['offlineStoreConfig'] == null ? null : (FeatureGroupOfflineStoreConfig.fromMap((map['offlineStoreConfig'] as Map).cast<String, dynamic>())).input(),
+      onlineStoreConfig: map['onlineStoreConfig'] == null ? null : (FeatureGroupOnlineStoreConfig.fromMap((map['onlineStoreConfig'] as Map).cast<String, dynamic>())).input(),
+      recordIdentifierFeatureName: (map['recordIdentifierFeatureName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      throughputConfig: map['throughputConfig'] == null ? null : (FeatureGroupThroughputConfig.fromMap((map['throughputConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

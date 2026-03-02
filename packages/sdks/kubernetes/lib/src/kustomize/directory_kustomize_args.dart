@@ -22,13 +22,10 @@ class DirectoryKustomizeArgs {
   /// [resourcePrefix] An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [transformations] A set of transformations to apply to Kubernetes resource definitions before registering with engine.
   DirectoryKustomizeArgs({
-    required pulumi.Output<String> directory,
-    pulumi.Output<String>? resourcePrefix,
-    pulumi.Output<List<dynamic>>? transformations,
-  }) :
-      directory = pulumi.Input.asInput<String>(directory),
-      resourcePrefix = pulumi.Input.asOptionalInput<String>(resourcePrefix),
-      transformations = pulumi.Input.asOptionalInput<List<dynamic>>(transformations);
+    required this.directory,
+    this.resourcePrefix,
+    this.transformations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class DirectoryKustomizeArgs {
 
   factory DirectoryKustomizeArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryKustomizeArgs(
-      directory: pulumi.Output.create<String>(map['directory'] as String),
-      resourcePrefix: map['resourcePrefix'] == null ? null : pulumi.Output.create<String>(map['resourcePrefix'] as String),
-      transformations: map['transformations'] == null ? null : pulumi.Output.create<List<dynamic>>((map['transformations'] as List).cast<dynamic>()),
+      directory: (map['directory'] as String).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
+      transformations: map['transformations'] == null ? null : ((map['transformations'] as List).cast<dynamic>()).input(),
     );
   }
 }

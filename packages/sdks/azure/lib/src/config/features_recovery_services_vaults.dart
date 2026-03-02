@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesRecoveryServicesVaults {
-  final bool? recoverSoftDeletedBackupProtectedVm;
+  final pulumi.Input<bool>? recoverSoftDeletedBackupProtectedVm;
 
   /// Creates a new [FeaturesRecoveryServicesVaults].
   /// [recoverSoftDeletedBackupProtectedVm] Optional.
@@ -18,7 +19,7 @@ class FeaturesRecoveryServicesVaults {
 
   factory FeaturesRecoveryServicesVaults.fromMap(Map<String, dynamic> map) {
     return FeaturesRecoveryServicesVaults(
-      recoverSoftDeletedBackupProtectedVm: map['recoverSoftDeletedBackupProtectedVm'] == null ? null : map['recoverSoftDeletedBackupProtectedVm'] as bool,
+      recoverSoftDeletedBackupProtectedVm: map['recoverSoftDeletedBackupProtectedVm'] == null ? null : (map['recoverSoftDeletedBackupProtectedVm'] as bool).input(),
     );
   }
 }

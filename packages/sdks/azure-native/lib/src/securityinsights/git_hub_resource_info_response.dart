@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resources created in GitHub repository.
 class GitHubResourceInfoResponse {
   /// GitHub application installation id.
-  final String? appInstallationId;
+  final pulumi.Input<String>? appInstallationId;
 
   /// Creates a new [GitHubResourceInfoResponse].
   /// [appInstallationId] GitHub application installation id.
@@ -20,7 +21,7 @@ class GitHubResourceInfoResponse {
 
   factory GitHubResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return GitHubResourceInfoResponse(
-      appInstallationId: map['appInstallationId'] == null ? null : map['appInstallationId'] as String,
+      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId'] as String).input(),
     );
   }
 }

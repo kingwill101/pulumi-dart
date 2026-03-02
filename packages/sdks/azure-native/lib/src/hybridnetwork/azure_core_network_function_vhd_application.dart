@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_core_vhd_image_artifact_profile.dart';
 import 'azure_core_vhd_image_deploy_mapping_rule_profile.dart';
 import 'depends_on_profile.dart';
@@ -7,16 +8,16 @@ import 'depends_on_profile.dart';
 /// Azure core network function vhd application definition.
 class AzureCoreNetworkFunctionVhdApplication {
   /// Azure vhd image artifact profile.
-  final AzureCoreVhdImageArtifactProfile? artifactProfile;
+  final pulumi.Input<AzureCoreVhdImageArtifactProfile>? artifactProfile;
   /// The artifact type.
   /// Expected value is 'VhdImageFile'.
-  final String artifactType;
+  final pulumi.Input<String> artifactType;
   /// Depends on profile definition.
-  final DependsOnProfile? dependsOnProfile;
+  final pulumi.Input<DependsOnProfile>? dependsOnProfile;
   /// Deploy mapping rule profile.
-  final AzureCoreVhdImageDeployMappingRuleProfile? deployParametersMappingRuleProfile;
+  final pulumi.Input<AzureCoreVhdImageDeployMappingRuleProfile>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AzureCoreNetworkFunctionVhdApplication].
   /// [artifactProfile] Azure vhd image artifact profile.
@@ -34,21 +35,21 @@ class AzureCoreNetworkFunctionVhdApplication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactProfile': ?artifactProfile == null ? null : artifactProfile!.toMap(),
+      'artifactProfile': ?pulumi.Input.mapOptionalInputValue<AzureCoreVhdImageArtifactProfile, Map<String, dynamic>>(artifactProfile, (value) => value.toMap()),
       'artifactType': artifactType,
-      'dependsOnProfile': ?dependsOnProfile == null ? null : dependsOnProfile!.toMap(),
-      'deployParametersMappingRuleProfile': ?deployParametersMappingRuleProfile == null ? null : deployParametersMappingRuleProfile!.toMap(),
+      'dependsOnProfile': ?pulumi.Input.mapOptionalInputValue<DependsOnProfile, Map<String, dynamic>>(dependsOnProfile, (value) => value.toMap()),
+      'deployParametersMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<AzureCoreVhdImageDeployMappingRuleProfile, Map<String, dynamic>>(deployParametersMappingRuleProfile, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
   factory AzureCoreNetworkFunctionVhdApplication.fromMap(Map<String, dynamic> map) {
     return AzureCoreNetworkFunctionVhdApplication(
-      artifactProfile: map['artifactProfile'] == null ? null : AzureCoreVhdImageArtifactProfile.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>()),
-      artifactType: map['artifactType'] as String,
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : DependsOnProfile.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>()),
-      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : AzureCoreVhdImageDeployMappingRuleProfile.fromMap((map['deployParametersMappingRuleProfile'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
+      artifactProfile: map['artifactProfile'] == null ? null : (AzureCoreVhdImageArtifactProfile.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactType: (map['artifactType'] as String).input(),
+      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>())).input(),
+      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : (AzureCoreVhdImageDeployMappingRuleProfile.fromMap((map['deployParametersMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

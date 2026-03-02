@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a tool results history resource.
 class ToolResultsHistory {
   /// A tool results history ID.
-  final String historyId;
+  final pulumi.Input<String> historyId;
   /// The cloud project that owns the tool results history.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [ToolResultsHistory].
   /// [historyId] A tool results history ID.
@@ -25,8 +26,8 @@ class ToolResultsHistory {
 
   factory ToolResultsHistory.fromMap(Map<String, dynamic> map) {
     return ToolResultsHistory(
-      historyId: map['historyId'] as String,
-      project: map['project'] as String,
+      historyId: (map['historyId'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

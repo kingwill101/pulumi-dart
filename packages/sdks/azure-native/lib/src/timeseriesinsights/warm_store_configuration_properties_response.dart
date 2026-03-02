@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
 class WarmStoreConfigurationPropertiesResponse {
   /// ISO8601 timespan specifying the number of days the environment's events will be available for query from the warm store.
-  final String dataRetention;
+  final pulumi.Input<String> dataRetention;
 
   /// Creates a new [WarmStoreConfigurationPropertiesResponse].
   /// [dataRetention] ISO8601 timespan specifying the number of days the environment's events will be available for query from the warm store.
@@ -20,7 +21,7 @@ class WarmStoreConfigurationPropertiesResponse {
 
   factory WarmStoreConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WarmStoreConfigurationPropertiesResponse(
-      dataRetention: map['dataRetention'] as String,
+      dataRetention: (map['dataRetention'] as String).input(),
     );
   }
 }

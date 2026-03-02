@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details for an outcome with a SKIPPED outcome summary.
 class SkippedDetailResponse {
   /// If the App doesn't support the specific API level.
-  final bool incompatibleAppVersion;
+  final pulumi.Input<bool> incompatibleAppVersion;
   /// If the App doesn't run on the specific architecture, for example, x86.
-  final bool incompatibleArchitecture;
+  final pulumi.Input<bool> incompatibleArchitecture;
   /// If the requested OS version doesn't run on the specific device model.
-  final bool incompatibleDevice;
+  final pulumi.Input<bool> incompatibleDevice;
 
   /// Creates a new [SkippedDetailResponse].
   /// [incompatibleAppVersion] If the App doesn't support the specific API level.
@@ -30,9 +31,9 @@ class SkippedDetailResponse {
 
   factory SkippedDetailResponse.fromMap(Map<String, dynamic> map) {
     return SkippedDetailResponse(
-      incompatibleAppVersion: map['incompatibleAppVersion'] as bool,
-      incompatibleArchitecture: map['incompatibleArchitecture'] as bool,
-      incompatibleDevice: map['incompatibleDevice'] as bool,
+      incompatibleAppVersion: (map['incompatibleAppVersion'] as bool).input(),
+      incompatibleArchitecture: (map['incompatibleArchitecture'] as bool).input(),
+      incompatibleDevice: (map['incompatibleDevice'] as bool).input(),
     );
   }
 }

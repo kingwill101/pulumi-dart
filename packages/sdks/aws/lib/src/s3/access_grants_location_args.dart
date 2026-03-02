@@ -26,17 +26,12 @@ class AccessGrantsLocationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AccessGrantsLocationArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> iamRoleArn,
-    required pulumi.Output<String> locationScope,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      iamRoleArn = pulumi.Input.asInput<String>(iamRoleArn),
-      locationScope = pulumi.Input.asInput<String>(locationScope),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountId,
+    required this.iamRoleArn,
+    required this.locationScope,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AccessGrantsLocationArgs {
 
   factory AccessGrantsLocationArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantsLocationArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      iamRoleArn: pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      locationScope: pulumi.Output.create<String>(map['locationScope'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      iamRoleArn: (map['iamRoleArn'] as String).input(),
+      locationScope: (map['locationScope'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

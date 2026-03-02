@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// General identifier of a data field in a storage service.
 class GooglePrivacyDlpV2FieldIdResponse {
   /// Name describing the field.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GooglePrivacyDlpV2FieldIdResponse].
   /// [name] Name describing the field.
@@ -20,7 +21,7 @@ class GooglePrivacyDlpV2FieldIdResponse {
 
   factory GooglePrivacyDlpV2FieldIdResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FieldIdResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

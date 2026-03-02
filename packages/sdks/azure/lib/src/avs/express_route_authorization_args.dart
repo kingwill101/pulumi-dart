@@ -16,11 +16,9 @@ class ExpressRouteAuthorizationArgs {
   /// [name] The name which should be used for this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   /// [privateCloudId] The ID of the Azure VMware Solution Private Cloud in which to create this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   ExpressRouteAuthorizationArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> privateCloudId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId);
+    this.name,
+    required this.privateCloudId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ExpressRouteAuthorizationArgs {
 
   factory ExpressRouteAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteAuthorizationArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateCloudId: pulumi.Output.create<String>(map['privateCloudId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
     );
   }
 }

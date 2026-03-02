@@ -41,29 +41,18 @@ class DocumentArgs {
   /// [project] Optional.
   /// [rawContent] The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
   DocumentArgs({
-    pulumi.Output<String>? contentUri,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableAutoReload,
-    required pulumi.Output<String> knowledgeBaseId,
-    required pulumi.Output<List<DocumentKnowledgeTypesItem>> knowledgeTypes,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> mimeType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? rawContent,
-  }) :
-      contentUri = pulumi.Input.asOptionalInput<String>(contentUri),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableAutoReload = pulumi.Input.asOptionalInput<bool>(enableAutoReload),
-      knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
-      knowledgeTypes = pulumi.Input.asInput<List<DocumentKnowledgeTypesItem>>(knowledgeTypes),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      mimeType = pulumi.Input.asInput<String>(mimeType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rawContent = pulumi.Input.asOptionalInput<String>(rawContent);
+    this.contentUri,
+    required this.displayName,
+    this.enableAutoReload,
+    required this.knowledgeBaseId,
+    required this.knowledgeTypes,
+    this.location,
+    this.metadata,
+    required this.mimeType,
+    this.name,
+    this.project,
+    this.rawContent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class DocumentArgs {
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      contentUri: map['contentUri'] == null ? null : pulumi.Output.create<String>(map['contentUri'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableAutoReload: map['enableAutoReload'] == null ? null : pulumi.Output.create<bool>(map['enableAutoReload'] as bool),
-      knowledgeBaseId: pulumi.Output.create<String>(map['knowledgeBaseId'] as String),
-      knowledgeTypes: pulumi.Output.create<List<DocumentKnowledgeTypesItem>>(pulumi.Input.decodeList<DocumentKnowledgeTypesItem>(map['knowledgeTypes'], (value) => DocumentKnowledgeTypesItem.fromValue(value as String))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      mimeType: pulumi.Output.create<String>(map['mimeType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rawContent: map['rawContent'] == null ? null : pulumi.Output.create<String>(map['rawContent'] as String),
+      contentUri: map['contentUri'] == null ? null : (map['contentUri'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enableAutoReload: map['enableAutoReload'] == null ? null : (map['enableAutoReload'] as bool).input(),
+      knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
+      knowledgeTypes: (pulumi.Input.decodeList<DocumentKnowledgeTypesItem>(map['knowledgeTypes'], (value) => DocumentKnowledgeTypesItem.fromValue(value as String))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      mimeType: (map['mimeType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rawContent: map['rawContent'] == null ? null : (map['rawContent'] as String).input(),
     );
   }
 }

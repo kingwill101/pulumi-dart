@@ -16,11 +16,9 @@ class GetAttestationAtResourceGroupArgs {
   /// [attestationName] The name of the attestation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAttestationAtResourceGroupArgs({
-    required pulumi.Output<String> attestationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      attestationName = pulumi.Input.asInput<String>(attestationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.attestationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAttestationAtResourceGroupArgs {
 
   factory GetAttestationAtResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestationAtResourceGroupArgs(
-      attestationName: pulumi.Output.create<String>(map['attestationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      attestationName: (map['attestationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

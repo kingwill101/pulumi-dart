@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Build properties for the static site.
 class StaticSiteBuildProperties {
   /// A custom command to run during deployment of the Azure Functions API application.
-  final String? apiBuildCommand;
+  final pulumi.Input<String>? apiBuildCommand;
   /// The path to the api code within the repository.
-  final String? apiLocation;
+  final pulumi.Input<String>? apiLocation;
   /// Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
-  final String? appArtifactLocation;
+  final pulumi.Input<String>? appArtifactLocation;
   /// A custom command to run during deployment of the static content application.
-  final String? appBuildCommand;
+  final pulumi.Input<String>? appBuildCommand;
   /// The path to the app code within the repository.
-  final String? appLocation;
+  final pulumi.Input<String>? appLocation;
   /// Github Action secret name override.
-  final String? githubActionSecretNameOverride;
+  final pulumi.Input<String>? githubActionSecretNameOverride;
   /// The output path of the app after building.
-  final String? outputLocation;
+  final pulumi.Input<String>? outputLocation;
   /// Skip Github Action workflow generation.
-  final bool? skipGithubActionWorkflowGeneration;
+  final pulumi.Input<bool>? skipGithubActionWorkflowGeneration;
 
   /// Creates a new [StaticSiteBuildProperties].
   /// [apiBuildCommand] A custom command to run during deployment of the Azure Functions API application.
@@ -55,14 +56,14 @@ class StaticSiteBuildProperties {
 
   factory StaticSiteBuildProperties.fromMap(Map<String, dynamic> map) {
     return StaticSiteBuildProperties(
-      apiBuildCommand: map['apiBuildCommand'] == null ? null : map['apiBuildCommand'] as String,
-      apiLocation: map['apiLocation'] == null ? null : map['apiLocation'] as String,
-      appArtifactLocation: map['appArtifactLocation'] == null ? null : map['appArtifactLocation'] as String,
-      appBuildCommand: map['appBuildCommand'] == null ? null : map['appBuildCommand'] as String,
-      appLocation: map['appLocation'] == null ? null : map['appLocation'] as String,
-      githubActionSecretNameOverride: map['githubActionSecretNameOverride'] == null ? null : map['githubActionSecretNameOverride'] as String,
-      outputLocation: map['outputLocation'] == null ? null : map['outputLocation'] as String,
-      skipGithubActionWorkflowGeneration: map['skipGithubActionWorkflowGeneration'] == null ? null : map['skipGithubActionWorkflowGeneration'] as bool,
+      apiBuildCommand: map['apiBuildCommand'] == null ? null : (map['apiBuildCommand'] as String).input(),
+      apiLocation: map['apiLocation'] == null ? null : (map['apiLocation'] as String).input(),
+      appArtifactLocation: map['appArtifactLocation'] == null ? null : (map['appArtifactLocation'] as String).input(),
+      appBuildCommand: map['appBuildCommand'] == null ? null : (map['appBuildCommand'] as String).input(),
+      appLocation: map['appLocation'] == null ? null : (map['appLocation'] as String).input(),
+      githubActionSecretNameOverride: map['githubActionSecretNameOverride'] == null ? null : (map['githubActionSecretNameOverride'] as String).input(),
+      outputLocation: map['outputLocation'] == null ? null : (map['outputLocation'] as String).input(),
+      skipGithubActionWorkflowGeneration: map['skipGithubActionWorkflowGeneration'] == null ? null : (map['skipGithubActionWorkflowGeneration'] as bool).input(),
     );
   }
 }

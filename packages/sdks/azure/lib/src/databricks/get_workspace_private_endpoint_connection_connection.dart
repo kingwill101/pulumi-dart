@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkspacePrivateEndpointConnectionConnection {
   /// Actions required for a private endpoint connection.
-  final String actionRequired;
+  final pulumi.Input<String> actionRequired;
   /// The description for the current state of a private endpoint connection.
-  final String description;
+  final pulumi.Input<String> description;
   /// The name of the Databricks Workspace.
-  final String name;
+  final pulumi.Input<String> name;
   /// The status of a private endpoint connection. Possible values are `Pending`, `Approved`, `Rejected` or `Disconnected`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The Databricks Workspace resource ID for the private link endpoint.
-  final String workspacePrivateEndpointId;
+  final pulumi.Input<String> workspacePrivateEndpointId;
 
   /// Creates a new [GetWorkspacePrivateEndpointConnectionConnection].
   /// [actionRequired] Actions required for a private endpoint connection.
@@ -39,11 +40,11 @@ class GetWorkspacePrivateEndpointConnectionConnection {
 
   factory GetWorkspacePrivateEndpointConnectionConnection.fromMap(Map<String, dynamic> map) {
     return GetWorkspacePrivateEndpointConnectionConnection(
-      actionRequired: map['actionRequired'] as String,
-      description: map['description'] as String,
-      name: map['name'] as String,
-      status: map['status'] as String,
-      workspacePrivateEndpointId: map['workspacePrivateEndpointId'] as String,
+      actionRequired: (map['actionRequired'] as String).input(),
+      description: (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
+      workspacePrivateEndpointId: (map['workspacePrivateEndpointId'] as String).input(),
     );
   }
 }

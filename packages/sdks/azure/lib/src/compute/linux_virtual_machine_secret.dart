@@ -5,9 +5,9 @@ import 'linux_virtual_machine_secret_certificate.dart';
 
 class LinuxVirtualMachineSecret {
   /// One or more `certificate` blocks as defined above.
-  final List<LinuxVirtualMachineSecretCertificate> certificates;
+  final pulumi.Input<List<LinuxVirtualMachineSecretCertificate>> certificates;
   /// The ID of the Key Vault from which all Secrets should be sourced.
-  final String keyVaultId;
+  final pulumi.Input<String> keyVaultId;
 
   /// Creates a new [LinuxVirtualMachineSecret].
   /// [certificates] One or more `certificate` blocks as defined above.
@@ -19,15 +19,15 @@ class LinuxVirtualMachineSecret {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates': pulumi.Input.encodeList<LinuxVirtualMachineSecretCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'certificates': pulumi.Input.mapInputValue<List<LinuxVirtualMachineSecretCertificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<LinuxVirtualMachineSecretCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'keyVaultId': keyVaultId,
     };
   }
 
   factory LinuxVirtualMachineSecret.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineSecret(
-      certificates: pulumi.Input.decodeList<LinuxVirtualMachineSecretCertificate>(map['certificates'], (value) => LinuxVirtualMachineSecretCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      keyVaultId: map['keyVaultId'] as String,
+      certificates: (pulumi.Input.decodeList<LinuxVirtualMachineSecretCertificate>(map['certificates'], (value) => LinuxVirtualMachineSecretCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
     );
   }
 }

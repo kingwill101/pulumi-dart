@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The platform properties against which the run has to happen.
 class PlatformPropertiesResponse {
   /// The OS architecture.
-  final String? architecture;
+  final pulumi.Input<String>? architecture;
   /// The operating system type required for the run.
-  final String os;
+  final pulumi.Input<String> os;
   /// Variant of the CPU.
-  final String? variant;
+  final pulumi.Input<String>? variant;
 
   /// Creates a new [PlatformPropertiesResponse].
   /// [architecture] The OS architecture.
@@ -30,9 +31,9 @@ class PlatformPropertiesResponse {
 
   factory PlatformPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PlatformPropertiesResponse(
-      architecture: map['architecture'] == null ? null : map['architecture'] as String,
-      os: map['os'] as String,
-      variant: map['variant'] == null ? null : map['variant'] as String,
+      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
+      os: (map['os'] as String).input(),
+      variant: map['variant'] == null ? null : (map['variant'] as String).input(),
     );
   }
 }

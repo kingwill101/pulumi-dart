@@ -26,17 +26,12 @@ class WorkerPoolCloudbuildV1alpha2Args {
   /// [workerConfig] Worker configuration for the `WorkerPool`.
   /// [workerPoolId] Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
   WorkerPoolCloudbuildV1alpha2Args({
-    pulumi.Output<NetworkConfigCloudbuildV1alpha2>? networkConfig,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<WorkerConfigCloudbuildV1alpha2>? workerConfig,
-    required pulumi.Output<String> workerPoolId,
-  }) :
-      networkConfig = pulumi.Input.asOptionalInput<NetworkConfigCloudbuildV1alpha2>(networkConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      workerConfig = pulumi.Input.asOptionalInput<WorkerConfigCloudbuildV1alpha2>(workerConfig),
-      workerPoolId = pulumi.Input.asInput<String>(workerPoolId);
+    this.networkConfig,
+    this.project,
+    required this.region,
+    this.workerConfig,
+    required this.workerPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class WorkerPoolCloudbuildV1alpha2Args {
 
   factory WorkerPoolCloudbuildV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return WorkerPoolCloudbuildV1alpha2Args(
-      networkConfig: map['networkConfig'] == null ? null : pulumi.Output.create<NetworkConfigCloudbuildV1alpha2>(NetworkConfigCloudbuildV1alpha2.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      workerConfig: map['workerConfig'] == null ? null : pulumi.Output.create<WorkerConfigCloudbuildV1alpha2>(WorkerConfigCloudbuildV1alpha2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())),
-      workerPoolId: pulumi.Output.create<String>(map['workerPoolId'] as String),
+      networkConfig: map['networkConfig'] == null ? null : (NetworkConfigCloudbuildV1alpha2.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkerConfigCloudbuildV1alpha2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      workerPoolId: (map['workerPoolId'] as String).input(),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'managed_outbound_ips_response.dart';
 /// LoadBalancerProfile represents the profile of the cluster public load balancer.
 class LoadBalancerProfileResponse {
   /// The list of effective outbound IP addresses of the public load balancer.
-  final List<EffectiveOutboundIPResponse> effectiveOutboundIps;
+  final pulumi.Input<List<EffectiveOutboundIPResponse>> effectiveOutboundIps;
   /// The desired managed outbound IPs for the cluster public load balancer.
-  final ManagedOutboundIPsResponse? managedOutboundIps;
+  final pulumi.Input<ManagedOutboundIPsResponse>? managedOutboundIps;
 
   /// Creates a new [LoadBalancerProfileResponse].
   /// [effectiveOutboundIps] The list of effective outbound IP addresses of the public load balancer.
@@ -21,15 +21,15 @@ class LoadBalancerProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'effectiveOutboundIps': pulumi.Input.encodeList<EffectiveOutboundIPResponse, Map<String, dynamic>>(effectiveOutboundIps, (value) => value.toMap()),
-      'managedOutboundIps': ?managedOutboundIps == null ? null : managedOutboundIps!.toMap(),
+      'effectiveOutboundIps': pulumi.Input.mapInputValue<List<EffectiveOutboundIPResponse>, List<Map<String, dynamic>>>(effectiveOutboundIps, (value) => pulumi.Input.encodeList<EffectiveOutboundIPResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managedOutboundIps': ?pulumi.Input.mapOptionalInputValue<ManagedOutboundIPsResponse, Map<String, dynamic>>(managedOutboundIps, (value) => value.toMap()),
     };
   }
 
   factory LoadBalancerProfileResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerProfileResponse(
-      effectiveOutboundIps: pulumi.Input.decodeList<EffectiveOutboundIPResponse>(map['effectiveOutboundIps'], (value) => EffectiveOutboundIPResponse.fromMap((value as Map).cast<String, dynamic>())),
-      managedOutboundIps: map['managedOutboundIps'] == null ? null : ManagedOutboundIPsResponse.fromMap((map['managedOutboundIps'] as Map).cast<String, dynamic>()),
+      effectiveOutboundIps: (pulumi.Input.decodeList<EffectiveOutboundIPResponse>(map['effectiveOutboundIps'], (value) => EffectiveOutboundIPResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedOutboundIps: map['managedOutboundIps'] == null ? null : (ManagedOutboundIPsResponse.fromMap((map['managedOutboundIps'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

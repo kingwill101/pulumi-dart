@@ -12,9 +12,8 @@ class GetAccessPolicyIamPolicyArgs {
   /// Creates a new [GetAccessPolicyIamPolicyArgs].
   /// [accessPolicyId] Required.
   GetAccessPolicyIamPolicyArgs({
-    required pulumi.Output<String> accessPolicyId,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId);
+    required this.accessPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetAccessPolicyIamPolicyArgs {
 
   factory GetAccessPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyIamPolicyArgs(
-      accessPolicyId: pulumi.Output.create<String>(map['accessPolicyId'] as String),
+      accessPolicyId: (map['accessPolicyId'] as String).input(),
     );
   }
 }

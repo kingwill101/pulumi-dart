@@ -22,15 +22,11 @@ class GetKeyPairsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [version] The version number.
   GetKeyPairsArgs({
-    pulumi.Output<String>? keyPairName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> version,
-  }) :
-      keyPairName = pulumi.Input.asOptionalInput<String>(keyPairName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      version = pulumi.Input.asInput<String>(version);
+    this.keyPairName,
+    this.nameRegex,
+    this.outputFile,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetKeyPairsArgs {
 
   factory GetKeyPairsArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyPairsArgs(
-      keyPairName: map['keyPairName'] == null ? null : pulumi.Output.create<String>(map['keyPairName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

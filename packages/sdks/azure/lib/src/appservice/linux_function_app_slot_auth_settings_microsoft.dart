@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxFunctionAppSlotAuthSettingsMicrosoft {
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `client_secret_setting_name`.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `client_secret`.
-  final String? clientSecretSettingName;
+  final pulumi.Input<String>? clientSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. If not specified, `wl.basic` is used as the default scope.
-  final List<String>? oauthScopes;
+  final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [LinuxFunctionAppSlotAuthSettingsMicrosoft].
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.
@@ -34,10 +35,10 @@ class LinuxFunctionAppSlotAuthSettingsMicrosoft {
 
   factory LinuxFunctionAppSlotAuthSettingsMicrosoft.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppSlotAuthSettingsMicrosoft(
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : map['clientSecretSettingName'] as String,
-      oauthScopes: map['oauthScopes'] == null ? null : (map['oauthScopes'] as List).cast<String>(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
     );
   }
 }

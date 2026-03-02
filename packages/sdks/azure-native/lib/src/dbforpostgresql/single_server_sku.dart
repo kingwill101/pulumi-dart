@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Billing information related properties of a server.
 class SingleServerSku {
   /// The scale up/out capacity, representing server's compute units.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// The family of hardware.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  final String name;
+  final pulumi.Input<String> name;
   /// The size code, to be interpreted by resource as appropriate.
-  final String? size;
+  final pulumi.Input<String>? size;
   /// The tier of the particular SKU, e.g. Basic.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [SingleServerSku].
   /// [capacity] The scale up/out capacity, representing server's compute units.
@@ -40,11 +41,11 @@ class SingleServerSku {
 
   factory SingleServerSku.fromMap(Map<String, dynamic> map) {
     return SingleServerSku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      family: map['family'] == null ? null : map['family'] as String,
-      name: map['name'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

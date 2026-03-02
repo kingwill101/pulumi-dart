@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of Verifier Workspace resource.
 class VerifierWorkspacePropertiesResponse {
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Provisioning states of a resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [VerifierWorkspacePropertiesResponse].
   /// [description] Optional.
@@ -24,8 +25,8 @@ class VerifierWorkspacePropertiesResponse {
 
   factory VerifierWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VerifierWorkspacePropertiesResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      provisioningState: map['provisioningState'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GatewayEndpointRouteTableAttachmentArgs {
   /// [gatewayEndpointId] The ID of the gateway endpoint instance to which you want to associate the route table.
   /// [routeTableId] Routing table ID.
   GatewayEndpointRouteTableAttachmentArgs({
-    required pulumi.Output<String> gatewayEndpointId,
-    required pulumi.Output<String> routeTableId,
-  }) :
-      gatewayEndpointId = pulumi.Input.asInput<String>(gatewayEndpointId),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId);
+    required this.gatewayEndpointId,
+    required this.routeTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GatewayEndpointRouteTableAttachmentArgs {
 
   factory GatewayEndpointRouteTableAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointRouteTableAttachmentArgs(
-      gatewayEndpointId: pulumi.Output.create<String>(map['gatewayEndpointId'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
+      gatewayEndpointId: (map['gatewayEndpointId'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
     );
   }
 }

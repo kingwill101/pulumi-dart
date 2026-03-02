@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Name value pair.
 class NameValuePairResponse {
   /// Pair name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Pair value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [NameValuePairResponse].
   /// [name] Pair name.
@@ -25,8 +26,8 @@ class NameValuePairResponse {
 
   factory NameValuePairResponse.fromMap(Map<String, dynamic> map) {
     return NameValuePairResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

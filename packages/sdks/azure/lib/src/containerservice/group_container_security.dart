@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupContainerSecurity {
   /// Whether the container's permission is elevated to privileged? Changing this forces a new resource to be created.
   ///
   /// > **Note:** Currently, this only applies when the `os_type` is `Linux` and the `sku` is `Confidential`.
-  final bool privilegeEnabled;
+  final pulumi.Input<bool> privilegeEnabled;
 
   /// Creates a new [GroupContainerSecurity].
   /// [privilegeEnabled] Whether the container's permission is elevated to privileged? Changing this forces a new resource to be created.
@@ -21,7 +22,7 @@ class GroupContainerSecurity {
 
   factory GroupContainerSecurity.fromMap(Map<String, dynamic> map) {
     return GroupContainerSecurity(
-      privilegeEnabled: map['privilegeEnabled'] as bool,
+      privilegeEnabled: (map['privilegeEnabled'] as bool).input(),
     );
   }
 }

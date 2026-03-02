@@ -16,11 +16,9 @@ class GetConnectionGroupArgs {
   /// [id] Identifier for the connection group. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `routing_endpoint` must be specified.
   /// [routingEndpoint] Routing endpoint for the connection group. For example: `d111111abcdef8.cloudfront.net`. Exactly one of `id` or `routing_endpoint` must be specified.
   GetConnectionGroupArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? routingEndpoint,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      routingEndpoint = pulumi.Input.asOptionalInput<String>(routingEndpoint);
+    this.id,
+    this.routingEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetConnectionGroupArgs {
 
   factory GetConnectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionGroupArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      routingEndpoint: map['routingEndpoint'] == null ? null : pulumi.Output.create<String>(map['routingEndpoint'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      routingEndpoint: map['routingEndpoint'] == null ? null : (map['routingEndpoint'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocation_specific_skuallocation_allocated_instance_properties_reserved_disk_interface_compute_v1.dart';
 
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1 {
   /// Specifies the size of the disk in base-2 GB.
-  final String? diskSizeGb;
+  final pulumi.Input<String>? diskSizeGb;
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-  final AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeV1? interface;
+  final pulumi.Input<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeV1>? interface;
 
   /// Creates a new [AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1].
   /// [diskSizeGb] Specifies the size of the disk in base-2 GB.
@@ -19,14 +20,14 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComp
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'diskSizeGb': ?diskSizeGb,
-      'interface': ?interface == null ? null : interface!.value,
+      'interface': ?pulumi.Input.mapOptionalInputValue<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeV1, String>(interface, (value) => value.value),
     };
   }
 
   factory AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1(
-      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as String,
-      interface: map['interface'] == null ? null : AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeV1.fromValue(map['interface'] as String),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
+      interface: map['interface'] == null ? null : (AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeV1.fromValue(map['interface'] as String)).input(),
     );
   }
 }

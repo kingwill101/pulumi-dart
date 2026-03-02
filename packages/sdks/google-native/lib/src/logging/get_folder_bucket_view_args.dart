@@ -18,15 +18,11 @@ class GetFolderBucketViewArgs {
   /// [location] Required.
   /// [viewId] Required.
   GetFolderBucketViewArgs({
-    required pulumi.Output<String> bucketId,
-    required pulumi.Output<String> folderId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> viewId,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      location = pulumi.Input.asInput<String>(location),
-      viewId = pulumi.Input.asInput<String>(viewId);
+    required this.bucketId,
+    required this.folderId,
+    required this.location,
+    required this.viewId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetFolderBucketViewArgs {
 
   factory GetFolderBucketViewArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderBucketViewArgs(
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      viewId: pulumi.Output.create<String>(map['viewId'] as String),
+      bucketId: (map['bucketId'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      location: (map['location'] as String).input(),
+      viewId: (map['viewId'] as String).input(),
     );
   }
 }

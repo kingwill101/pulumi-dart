@@ -40,27 +40,17 @@ class ProfileOneConnectArgs {
   /// [sharePools] Specify if you want to share the pool, default value is `disabled`.
   /// [sourceMask] Specifies a source IP mask. The default value is `0.0.0.0`. The system applies the value of this option to the source address to determine its eligibility for reuse. A mask of 0.0.0.0 causes the system to share reused connections across all clients. A host mask (all 1's in binary), causes the system to share only those reused connections originating from the same client IP address.
   ProfileOneConnectArgs({
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<String>? idleTimeoutOverride,
-    pulumi.Output<String>? limitType,
-    pulumi.Output<int>? maxAge,
-    pulumi.Output<int>? maxReuse,
-    pulumi.Output<int>? maxSize,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? partition,
-    pulumi.Output<String>? sharePools,
-    pulumi.Output<String>? sourceMask,
-  }) :
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      idleTimeoutOverride = pulumi.Input.asOptionalInput<String>(idleTimeoutOverride),
-      limitType = pulumi.Input.asOptionalInput<String>(limitType),
-      maxAge = pulumi.Input.asOptionalInput<int>(maxAge),
-      maxReuse = pulumi.Input.asOptionalInput<int>(maxReuse),
-      maxSize = pulumi.Input.asOptionalInput<int>(maxSize),
-      name = pulumi.Input.asInput<String>(name),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      sharePools = pulumi.Input.asOptionalInput<String>(sharePools),
-      sourceMask = pulumi.Input.asOptionalInput<String>(sourceMask);
+    this.defaultsFrom,
+    this.idleTimeoutOverride,
+    this.limitType,
+    this.maxAge,
+    this.maxReuse,
+    this.maxSize,
+    required this.name,
+    this.partition,
+    this.sharePools,
+    this.sourceMask,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ProfileOneConnectArgs {
 
   factory ProfileOneConnectArgs.fromMap(Map<String, dynamic> map) {
     return ProfileOneConnectArgs(
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      idleTimeoutOverride: map['idleTimeoutOverride'] == null ? null : pulumi.Output.create<String>(map['idleTimeoutOverride'] as String),
-      limitType: map['limitType'] == null ? null : pulumi.Output.create<String>(map['limitType'] as String),
-      maxAge: map['maxAge'] == null ? null : pulumi.Output.create<int>(map['maxAge'] as int),
-      maxReuse: map['maxReuse'] == null ? null : pulumi.Output.create<int>(map['maxReuse'] as int),
-      maxSize: map['maxSize'] == null ? null : pulumi.Output.create<int>(map['maxSize'] as int),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      sharePools: map['sharePools'] == null ? null : pulumi.Output.create<String>(map['sharePools'] as String),
-      sourceMask: map['sourceMask'] == null ? null : pulumi.Output.create<String>(map['sourceMask'] as String),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      idleTimeoutOverride: map['idleTimeoutOverride'] == null ? null : (map['idleTimeoutOverride'] as String).input(),
+      limitType: map['limitType'] == null ? null : (map['limitType'] as String).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as int).input(),
+      maxReuse: map['maxReuse'] == null ? null : (map['maxReuse'] as int).input(),
+      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
+      name: (map['name'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      sharePools: map['sharePools'] == null ? null : (map['sharePools'] as String).input(),
+      sourceMask: map['sourceMask'] == null ? null : (map['sourceMask'] as String).input(),
     );
   }
 }

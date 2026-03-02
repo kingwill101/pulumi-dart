@@ -16,11 +16,9 @@ class GetStandardArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [standardId] The Security Standard key - unique key for the standard type
   GetStandardArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> standardId,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      standardId = pulumi.Input.asInput<String>(standardId);
+    required this.resourceGroupName,
+    required this.standardId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStandardArgs {
 
   factory GetStandardArgs.fromMap(Map<String, dynamic> map) {
     return GetStandardArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      standardId: pulumi.Output.create<String>(map['standardId'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      standardId: (map['standardId'] as String).input(),
     );
   }
 }

@@ -36,25 +36,16 @@ class ContentitemArgs {
   /// [project] Optional.
   /// [sqlScript] Sql Script related configurations.
   ContentitemArgs({
-    required pulumi.Output<String> dataText,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> lakeId,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudDataplexV1ContentNotebook>? notebook,
-    required pulumi.Output<String> path,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDataplexV1ContentSqlScript>? sqlScript,
-  }) :
-      dataText = pulumi.Input.asInput<String>(dataText),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      notebook = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1ContentNotebook>(notebook),
-      path = pulumi.Input.asInput<String>(path),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sqlScript = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1ContentSqlScript>(sqlScript);
+    required this.dataText,
+    this.description,
+    this.labels,
+    required this.lakeId,
+    this.location,
+    this.notebook,
+    required this.path,
+    this.project,
+    this.sqlScript,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class ContentitemArgs {
 
   factory ContentitemArgs.fromMap(Map<String, dynamic> map) {
     return ContentitemArgs(
-      dataText: pulumi.Output.create<String>(map['dataText'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lakeId: pulumi.Output.create<String>(map['lakeId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      notebook: map['notebook'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1ContentNotebook>(GoogleCloudDataplexV1ContentNotebook.fromMap((map['notebook'] as Map).cast<String, dynamic>())),
-      path: pulumi.Output.create<String>(map['path'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sqlScript: map['sqlScript'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1ContentSqlScript>(GoogleCloudDataplexV1ContentSqlScript.fromMap((map['sqlScript'] as Map).cast<String, dynamic>())),
+      dataText: (map['dataText'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lakeId: (map['lakeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      notebook: map['notebook'] == null ? null : (GoogleCloudDataplexV1ContentNotebook.fromMap((map['notebook'] as Map).cast<String, dynamic>())).input(),
+      path: (map['path'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sqlScript: map['sqlScript'] == null ? null : (GoogleCloudDataplexV1ContentSqlScript.fromMap((map['sqlScript'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

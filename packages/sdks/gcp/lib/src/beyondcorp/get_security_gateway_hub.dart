@@ -5,8 +5,8 @@ import 'get_security_gateway_hub_internet_gateway.dart';
 
 class GetSecurityGatewayHub {
   /// Internet Gateway configuration.
-  final List<GetSecurityGatewayHubInternetGateway> internetGateways;
-  final String region;
+  final pulumi.Input<List<GetSecurityGatewayHubInternetGateway>> internetGateways;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetSecurityGatewayHub].
   /// [internetGateways] Internet Gateway configuration.
@@ -18,15 +18,15 @@ class GetSecurityGatewayHub {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'internetGateways': pulumi.Input.encodeList<GetSecurityGatewayHubInternetGateway, Map<String, dynamic>>(internetGateways, (value) => value.toMap()),
+      'internetGateways': pulumi.Input.mapInputValue<List<GetSecurityGatewayHubInternetGateway>, List<Map<String, dynamic>>>(internetGateways, (value) => pulumi.Input.encodeList<GetSecurityGatewayHubInternetGateway, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': region,
     };
   }
 
   factory GetSecurityGatewayHub.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayHub(
-      internetGateways: pulumi.Input.decodeList<GetSecurityGatewayHubInternetGateway>(map['internetGateways'], (value) => GetSecurityGatewayHubInternetGateway.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      internetGateways: (pulumi.Input.decodeList<GetSecurityGatewayHubInternetGateway>(map['internetGateways'], (value) => GetSecurityGatewayHubInternetGateway.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

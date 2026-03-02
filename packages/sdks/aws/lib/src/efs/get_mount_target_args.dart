@@ -22,15 +22,11 @@ class GetMountTargetArgs {
   /// [mountTargetId] ID or ARN of the mount target that you want to find. It must be included in your request if an `access_point_id` and `file_system_id` are not included.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetMountTargetArgs({
-    pulumi.Output<String>? accessPointId,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? mountTargetId,
-    pulumi.Output<String>? region,
-  }) :
-      accessPointId = pulumi.Input.asOptionalInput<String>(accessPointId),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      mountTargetId = pulumi.Input.asOptionalInput<String>(mountTargetId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accessPointId,
+    this.fileSystemId,
+    this.mountTargetId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetMountTargetArgs {
 
   factory GetMountTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetMountTargetArgs(
-      accessPointId: map['accessPointId'] == null ? null : pulumi.Output.create<String>(map['accessPointId'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      mountTargetId: map['mountTargetId'] == null ? null : pulumi.Output.create<String>(map['mountTargetId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accessPointId: map['accessPointId'] == null ? null : (map['accessPointId'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      mountTargetId: map['mountTargetId'] == null ? null : (map['mountTargetId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

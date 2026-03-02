@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters to provide for the Alexa channel.
 class AlexaChannelPropertiesResponse {
   /// The Alexa skill Id
-  final String alexaSkillId;
+  final pulumi.Input<String> alexaSkillId;
   /// Whether this channel is enabled for the bot
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// Full Uri used to configured the skill in Alexa
-  final String serviceEndpointUri;
+  final pulumi.Input<String> serviceEndpointUri;
   /// Url fragment used in part of the Uri configured in Alexa
-  final String urlFragment;
+  final pulumi.Input<String> urlFragment;
 
   /// Creates a new [AlexaChannelPropertiesResponse].
   /// [alexaSkillId] The Alexa skill Id
@@ -35,10 +36,10 @@ class AlexaChannelPropertiesResponse {
 
   factory AlexaChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AlexaChannelPropertiesResponse(
-      alexaSkillId: map['alexaSkillId'] as String,
-      isEnabled: map['isEnabled'] as bool,
-      serviceEndpointUri: map['serviceEndpointUri'] as String,
-      urlFragment: map['urlFragment'] as String,
+      alexaSkillId: (map['alexaSkillId'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      serviceEndpointUri: (map['serviceEndpointUri'] as String).input(),
+      urlFragment: (map['urlFragment'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class SecondaryNetworkArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   SecondaryNetworkArgs({
-    required pulumi.Output<String> ipv4CidrBlock,
-    required pulumi.Output<String> networkType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SecondaryNetworkTimeouts>? timeouts,
-  }) :
-      ipv4CidrBlock = pulumi.Input.asInput<String>(ipv4CidrBlock),
-      networkType = pulumi.Input.asInput<String>(networkType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<SecondaryNetworkTimeouts>(timeouts);
+    required this.ipv4CidrBlock,
+    required this.networkType,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SecondaryNetworkArgs {
 
   factory SecondaryNetworkArgs.fromMap(Map<String, dynamic> map) {
     return SecondaryNetworkArgs(
-      ipv4CidrBlock: pulumi.Output.create<String>(map['ipv4CidrBlock'] as String),
-      networkType: pulumi.Output.create<String>(map['networkType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<SecondaryNetworkTimeouts>(SecondaryNetworkTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      ipv4CidrBlock: (map['ipv4CidrBlock'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (SecondaryNetworkTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

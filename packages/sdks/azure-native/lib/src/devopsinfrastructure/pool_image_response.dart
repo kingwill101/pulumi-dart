@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The VM image of the machines in the pool.
 class PoolImageResponse {
   /// List of aliases to reference the image by.
-  final List<String>? aliases;
+  final pulumi.Input<List<String>>? aliases;
   /// The percentage of the buffer to be allocated to this image.
-  final String? buffer;
+  final pulumi.Input<String>? buffer;
   /// The ephemeral type of the image.
-  final String? ephemeralType;
+  final pulumi.Input<String>? ephemeralType;
   /// The resource id of the image.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// The image to use from a well-known set of images made available to customers.
-  final String? wellKnownImageName;
+  final pulumi.Input<String>? wellKnownImageName;
 
   /// Creates a new [PoolImageResponse].
   /// [aliases] List of aliases to reference the image by.
@@ -40,11 +41,11 @@ class PoolImageResponse {
 
   factory PoolImageResponse.fromMap(Map<String, dynamic> map) {
     return PoolImageResponse(
-      aliases: map['aliases'] == null ? null : (map['aliases'] as List).cast<String>(),
-      buffer: map['buffer'] == null ? null : map['buffer'] as String,
-      ephemeralType: map['ephemeralType'] == null ? null : map['ephemeralType'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      wellKnownImageName: map['wellKnownImageName'] == null ? null : map['wellKnownImageName'] as String,
+      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
+      buffer: map['buffer'] == null ? null : (map['buffer'] as String).input(),
+      ephemeralType: map['ephemeralType'] == null ? null : (map['ephemeralType'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      wellKnownImageName: map['wellKnownImageName'] == null ? null : (map['wellKnownImageName'] as String).input(),
     );
   }
 }

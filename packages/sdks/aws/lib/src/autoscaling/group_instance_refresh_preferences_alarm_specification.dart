@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupInstanceRefreshPreferencesAlarmSpecification {
   /// List of Cloudwatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
-  final List<String>? alarms;
+  final pulumi.Input<List<String>>? alarms;
 
   /// Creates a new [GroupInstanceRefreshPreferencesAlarmSpecification].
   /// [alarms] List of Cloudwatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
@@ -19,7 +20,7 @@ class GroupInstanceRefreshPreferencesAlarmSpecification {
 
   factory GroupInstanceRefreshPreferencesAlarmSpecification.fromMap(Map<String, dynamic> map) {
     return GroupInstanceRefreshPreferencesAlarmSpecification(
-      alarms: map['alarms'] == null ? null : (map['alarms'] as List).cast<String>(),
+      alarms: map['alarms'] == null ? null : ((map['alarms'] as List).cast<String>()).input(),
     );
   }
 }

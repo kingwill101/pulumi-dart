@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'crypto_key_version_template_algorithm.dart';
 import 'crypto_key_version_template_protection_level.dart';
 
 /// A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 class CryptoKeyVersionTemplate {
   /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-  final CryptoKeyVersionTemplateAlgorithm algorithm;
+  final pulumi.Input<CryptoKeyVersionTemplateAlgorithm> algorithm;
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-  final CryptoKeyVersionTemplateProtectionLevel? protectionLevel;
+  final pulumi.Input<CryptoKeyVersionTemplateProtectionLevel>? protectionLevel;
 
   /// Creates a new [CryptoKeyVersionTemplate].
   /// [algorithm] Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
@@ -20,15 +21,15 @@ class CryptoKeyVersionTemplate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'algorithm': algorithm.value,
-      'protectionLevel': ?protectionLevel == null ? null : protectionLevel!.value,
+      'algorithm': pulumi.Input.mapInputValue<CryptoKeyVersionTemplateAlgorithm, String>(algorithm, (value) => value.value),
+      'protectionLevel': ?pulumi.Input.mapOptionalInputValue<CryptoKeyVersionTemplateProtectionLevel, String>(protectionLevel, (value) => value.value),
     };
   }
 
   factory CryptoKeyVersionTemplate.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionTemplate(
-      algorithm: CryptoKeyVersionTemplateAlgorithm.fromValue(map['algorithm'] as String),
-      protectionLevel: map['protectionLevel'] == null ? null : CryptoKeyVersionTemplateProtectionLevel.fromValue(map['protectionLevel'] as String),
+      algorithm: (CryptoKeyVersionTemplateAlgorithm.fromValue(map['algorithm'] as String)).input(),
+      protectionLevel: map['protectionLevel'] == null ? null : (CryptoKeyVersionTemplateProtectionLevel.fromValue(map['protectionLevel'] as String)).input(),
     );
   }
 }

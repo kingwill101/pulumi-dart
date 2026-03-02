@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationAggregatorOrganizationAggregationSource {
   /// If true, aggregate existing AWS Config regions and future regions.
-  final bool? allRegions;
+  final pulumi.Input<bool>? allRegions;
   /// List of source regions being aggregated.
-  final List<String>? regions;
+  final pulumi.Input<List<String>>? regions;
   /// ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
   ///
   /// Either `regions` or `all_regions` (as true) must be specified.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [ConfigurationAggregatorOrganizationAggregationSource].
   /// [allRegions] If true, aggregate existing AWS Config regions and future regions.
@@ -31,9 +32,9 @@ class ConfigurationAggregatorOrganizationAggregationSource {
 
   factory ConfigurationAggregatorOrganizationAggregationSource.fromMap(Map<String, dynamic> map) {
     return ConfigurationAggregatorOrganizationAggregationSource(
-      allRegions: map['allRegions'] == null ? null : map['allRegions'] as bool,
-      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
-      roleArn: map['roleArn'] as String,
+      allRegions: map['allRegions'] == null ? null : (map['allRegions'] as bool).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

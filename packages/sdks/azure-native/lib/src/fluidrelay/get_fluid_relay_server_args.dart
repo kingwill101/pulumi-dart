@@ -16,11 +16,9 @@ class GetFluidRelayServerArgs {
   /// [fluidRelayServerName] The Fluid Relay server resource name.
   /// [resourceGroup] The resource group containing the resource.
   GetFluidRelayServerArgs({
-    required pulumi.Output<String> fluidRelayServerName,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      fluidRelayServerName = pulumi.Input.asInput<String>(fluidRelayServerName),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.fluidRelayServerName,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFluidRelayServerArgs {
 
   factory GetFluidRelayServerArgs.fromMap(Map<String, dynamic> map) {
     return GetFluidRelayServerArgs(
-      fluidRelayServerName: pulumi.Output.create<String>(map['fluidRelayServerName'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      fluidRelayServerName: (map['fluidRelayServerName'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

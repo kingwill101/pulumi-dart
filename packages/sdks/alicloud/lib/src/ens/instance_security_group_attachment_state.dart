@@ -13,11 +13,9 @@ class InstanceSecurityGroupAttachmentState {
   /// [instanceId] Instance ID.
   /// [securityGroupId] Security group ID.
   InstanceSecurityGroupAttachmentState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? securityGroupId,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId);
+    this.instanceId,
+    this.securityGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class InstanceSecurityGroupAttachmentState {
 
   factory InstanceSecurityGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceSecurityGroupAttachmentState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
     );
   }
 }

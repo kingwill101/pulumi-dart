@@ -35,23 +35,15 @@ class MetricsConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   MetricsConfigurationArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<double> collectionInterval,
-    pulumi.Output<List<String>>? enabledMetrics,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? metricsConfigurationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      collectionInterval = pulumi.Input.asInput<double>(collectionInterval),
-      enabledMetrics = pulumi.Input.asOptionalInput<List<String>>(enabledMetrics),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metricsConfigurationName = pulumi.Input.asOptionalInput<String>(metricsConfigurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.clusterName,
+    required this.collectionInterval,
+    this.enabledMetrics,
+    required this.extendedLocation,
+    this.location,
+    this.metricsConfigurationName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class MetricsConfigurationArgs {
 
   factory MetricsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MetricsConfigurationArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      collectionInterval: pulumi.Output.create<double>(map['collectionInterval'] as double),
-      enabledMetrics: map['enabledMetrics'] == null ? null : pulumi.Output.create<List<String>>((map['enabledMetrics'] as List).cast<String>()),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metricsConfigurationName: map['metricsConfigurationName'] == null ? null : pulumi.Output.create<String>(map['metricsConfigurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterName: (map['clusterName'] as String).input(),
+      collectionInterval: (map['collectionInterval'] as double).input(),
+      enabledMetrics: map['enabledMetrics'] == null ? null : ((map['enabledMetrics'] as List).cast<String>()).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metricsConfigurationName: map['metricsConfigurationName'] == null ? null : (map['metricsConfigurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

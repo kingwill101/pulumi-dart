@@ -43,31 +43,19 @@ class FileSystemState {
   /// [tags] A mapping of tags which should be assigned to the File System.
   /// [zone] The Availability Zone in which the Azure Native Qumulo Scalable File system is located. Changing this forces a new resource to be created.
   FileSystemState({
-    pulumi.Output<String>? adminPassword,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? offerId,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? publisherId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? storageSku,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? zone,
-  }) :
-      adminPassword = pulumi.Input.asOptionalInput<String>(adminPassword),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      offerId = pulumi.Input.asOptionalInput<String>(offerId),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      publisherId = pulumi.Input.asOptionalInput<String>(publisherId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      storageSku = pulumi.Input.asOptionalInput<String>(storageSku),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.adminPassword,
+    this.email,
+    this.location,
+    this.name,
+    this.offerId,
+    this.planId,
+    this.publisherId,
+    this.resourceGroupName,
+    this.storageSku,
+    this.subnetId,
+    this.tags,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class FileSystemState {
 
   factory FileSystemState.fromMap(Map<String, dynamic> map) {
     return FileSystemState(
-      adminPassword: map['adminPassword'] == null ? null : pulumi.Output.create<String>(map['adminPassword'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      offerId: map['offerId'] == null ? null : pulumi.Output.create<String>(map['offerId'] as String),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      publisherId: map['publisherId'] == null ? null : pulumi.Output.create<String>(map['publisherId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageSku: map['storageSku'] == null ? null : pulumi.Output.create<String>(map['storageSku'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      publisherId: map['publisherId'] == null ? null : (map['publisherId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      storageSku: map['storageSku'] == null ? null : (map['storageSku'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

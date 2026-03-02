@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Health Monitor Description
 class HealthMonitorResponse {
   /// Health Monitor Details
-  final String details;
+  final pulumi.Input<String> details;
   /// Health Monitor Id
-  final String id;
+  final pulumi.Input<String> id;
   /// Health Monitor Name
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [HealthMonitorResponse].
   /// [details] Health Monitor Details
@@ -30,9 +31,9 @@ class HealthMonitorResponse {
 
   factory HealthMonitorResponse.fromMap(Map<String, dynamic> map) {
     return HealthMonitorResponse(
-      details: map['details'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      details: (map['details'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

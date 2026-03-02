@@ -40,25 +40,16 @@ class EcsInvocationState {
   /// [username] The username that is used to run the command on the ECS instance.
   /// [windowsPasswordName] The name of the password used to run the command on a Windows instance.
   EcsInvocationState({
-    pulumi.Output<String>? commandId,
-    pulumi.Output<String>? frequency,
-    pulumi.Output<List<String>>? instanceIds,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? repeatMode,
-    pulumi.Output<String>? status,
-    pulumi.Output<bool>? timed,
-    pulumi.Output<String>? username,
-    pulumi.Output<String>? windowsPasswordName,
-  }) :
-      commandId = pulumi.Input.asOptionalInput<String>(commandId),
-      frequency = pulumi.Input.asOptionalInput<String>(frequency),
-      instanceIds = pulumi.Input.asOptionalInput<List<String>>(instanceIds),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      repeatMode = pulumi.Input.asOptionalInput<String>(repeatMode),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      timed = pulumi.Input.asOptionalInput<bool>(timed),
-      username = pulumi.Input.asOptionalInput<String>(username),
-      windowsPasswordName = pulumi.Input.asOptionalInput<String>(windowsPasswordName);
+    this.commandId,
+    this.frequency,
+    this.instanceIds,
+    this.parameters,
+    this.repeatMode,
+    this.status,
+    this.timed,
+    this.username,
+    this.windowsPasswordName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class EcsInvocationState {
 
   factory EcsInvocationState.fromMap(Map<String, dynamic> map) {
     return EcsInvocationState(
-      commandId: map['commandId'] == null ? null : pulumi.Output.create<String>(map['commandId'] as String),
-      frequency: map['frequency'] == null ? null : pulumi.Output.create<String>(map['frequency'] as String),
-      instanceIds: map['instanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      repeatMode: map['repeatMode'] == null ? null : pulumi.Output.create<String>(map['repeatMode'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      timed: map['timed'] == null ? null : pulumi.Output.create<bool>(map['timed'] as bool),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
-      windowsPasswordName: map['windowsPasswordName'] == null ? null : pulumi.Output.create<String>(map['windowsPasswordName'] as String),
+      commandId: map['commandId'] == null ? null : (map['commandId'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      repeatMode: map['repeatMode'] == null ? null : (map['repeatMode'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      timed: map['timed'] == null ? null : (map['timed'] as bool).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
+      windowsPasswordName: map['windowsPasswordName'] == null ? null : (map['windowsPasswordName'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// App Dapr configuration.
 class DaprConfigResponse {
   /// Dapr application identifier
-  final String? appId;
+  final pulumi.Input<String>? appId;
   /// Tells Dapr which port your application is listening on
-  final int? appPort;
+  final pulumi.Input<int>? appPort;
   /// Enables API logging for the Dapr sidecar
-  final bool? enableApiLogging;
+  final pulumi.Input<bool>? enableApiLogging;
   /// Boolean indicating if the Dapr side car is enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
-  final int? httpMaxRequestSize;
+  final pulumi.Input<int>? httpMaxRequestSize;
   /// Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
-  final int? httpReadBufferSize;
+  final pulumi.Input<int>? httpReadBufferSize;
   /// Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
-  final String? logLevel;
+  final pulumi.Input<String>? logLevel;
 
   /// Creates a new [DaprConfigResponse].
   /// [appId] Dapr application identifier
@@ -50,13 +51,13 @@ class DaprConfigResponse {
 
   factory DaprConfigResponse.fromMap(Map<String, dynamic> map) {
     return DaprConfigResponse(
-      appId: map['appId'] == null ? null : map['appId'] as String,
-      appPort: map['appPort'] == null ? null : map['appPort'] as int,
-      enableApiLogging: map['enableApiLogging'] == null ? null : map['enableApiLogging'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      httpMaxRequestSize: map['httpMaxRequestSize'] == null ? null : map['httpMaxRequestSize'] as int,
-      httpReadBufferSize: map['httpReadBufferSize'] == null ? null : map['httpReadBufferSize'] as int,
-      logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      appPort: map['appPort'] == null ? null : (map['appPort'] as int).input(),
+      enableApiLogging: map['enableApiLogging'] == null ? null : (map['enableApiLogging'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      httpMaxRequestSize: map['httpMaxRequestSize'] == null ? null : (map['httpMaxRequestSize'] as int).input(),
+      httpReadBufferSize: map['httpReadBufferSize'] == null ? null : (map['httpReadBufferSize'] as int).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
     );
   }
 }

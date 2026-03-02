@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadAttributesDeveloperOwner {
   /// Contact's name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Email address of the contacts.
-  final String email;
+  final pulumi.Input<String> email;
 
   /// Creates a new [WorkloadAttributesDeveloperOwner].
   /// [displayName] Contact's name.
@@ -24,8 +25,8 @@ class WorkloadAttributesDeveloperOwner {
 
   factory WorkloadAttributesDeveloperOwner.fromMap(Map<String, dynamic> map) {
     return WorkloadAttributesDeveloperOwner(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      email: map['email'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      email: (map['email'] as String).input(),
     );
   }
 }

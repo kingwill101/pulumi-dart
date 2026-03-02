@@ -25,19 +25,13 @@ class PermissionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceAccount] ID of the calling account
   PermissionState({
-    pulumi.Output<List<String>>? actions,
-    pulumi.Output<String>? certificateAuthorityArn,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceAccount,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<String>>(actions),
-      certificateAuthorityArn = pulumi.Input.asOptionalInput<String>(certificateAuthorityArn),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceAccount = pulumi.Input.asOptionalInput<String>(sourceAccount);
+    this.actions,
+    this.certificateAuthorityArn,
+    this.policy,
+    this.principal,
+    this.region,
+    this.sourceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class PermissionState {
 
   factory PermissionState.fromMap(Map<String, dynamic> map) {
     return PermissionState(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<String>>((map['actions'] as List).cast<String>()),
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : pulumi.Output.create<String>(map['certificateAuthorityArn'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceAccount: map['sourceAccount'] == null ? null : pulumi.Output.create<String>(map['sourceAccount'] as String),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : (map['certificateAuthorityArn'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount'] as String).input(),
     );
   }
 }

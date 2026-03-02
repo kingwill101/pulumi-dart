@@ -16,11 +16,9 @@ class ServiceArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [serviceName] The name of the the service
   ServiceArgs({
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? serviceName,
-  }) :
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
+    required this.resourceUri,
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
+      resourceUri: (map['resourceUri'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

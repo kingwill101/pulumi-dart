@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBastionHostInstancesInstance {
-  final String bandwidth;
-  final String description;
-  final String id;
-  final String instanceStatus;
-  final String licenseCode;
-  final String privateDomain;
-  final String publicDomain;
-  final bool publicNetworkAccess;
-  final List<String> securityGroupIds;
-  final String storage;
-  final Map<String, String> tags;
-  final String userVswitchId;
+  final pulumi.Input<String> bandwidth;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> instanceStatus;
+  final pulumi.Input<String> licenseCode;
+  final pulumi.Input<String> privateDomain;
+  final pulumi.Input<String> publicDomain;
+  final pulumi.Input<bool> publicNetworkAccess;
+  final pulumi.Input<List<String>> securityGroupIds;
+  final pulumi.Input<String> storage;
+  final pulumi.Input<Map<String, String>> tags;
+  final pulumi.Input<String> userVswitchId;
 
   /// Creates a new [GetBastionHostInstancesInstance].
   /// [bandwidth] Required.
@@ -62,18 +63,18 @@ class GetBastionHostInstancesInstance {
 
   factory GetBastionHostInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetBastionHostInstancesInstance(
-      bandwidth: map['bandwidth'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceStatus: map['instanceStatus'] as String,
-      licenseCode: map['licenseCode'] as String,
-      privateDomain: map['privateDomain'] as String,
-      publicDomain: map['publicDomain'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] as bool,
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      storage: map['storage'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      userVswitchId: map['userVswitchId'] as String,
+      bandwidth: (map['bandwidth'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceStatus: (map['instanceStatus'] as String).input(),
+      licenseCode: (map['licenseCode'] as String).input(),
+      privateDomain: (map['privateDomain'] as String).input(),
+      publicDomain: (map['publicDomain'] as String).input(),
+      publicNetworkAccess: (map['publicNetworkAccess'] as bool).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      storage: (map['storage'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      userVswitchId: (map['userVswitchId'] as String).input(),
     );
   }
 }

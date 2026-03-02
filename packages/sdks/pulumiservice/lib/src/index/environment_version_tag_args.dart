@@ -25,17 +25,12 @@ class EnvironmentVersionTagArgs {
   /// [revision] Revision number.
   /// [tagName] Tag name.
   EnvironmentVersionTagArgs({
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> organization,
-    pulumi.Output<String>? project,
-    required pulumi.Output<int> revision,
-    required pulumi.Output<String> tagName,
-  }) :
-      environment = pulumi.Input.asInput<String>(environment),
-      organization = pulumi.Input.asInput<String>(organization),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      revision = pulumi.Input.asInput<int>(revision),
-      tagName = pulumi.Input.asInput<String>(tagName);
+    required this.environment,
+    required this.organization,
+    this.project,
+    required this.revision,
+    required this.tagName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EnvironmentVersionTagArgs {
 
   factory EnvironmentVersionTagArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentVersionTagArgs(
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      revision: pulumi.Output.create<int>(map['revision'] as int),
-      tagName: pulumi.Output.create<String>(map['tagName'] as String),
+      environment: (map['environment'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      revision: (map['revision'] as int).input(),
+      tagName: (map['tagName'] as String).input(),
     );
   }
 }

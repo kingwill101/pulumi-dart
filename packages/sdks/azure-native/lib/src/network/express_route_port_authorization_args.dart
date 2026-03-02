@@ -25,17 +25,12 @@ class ExpressRoutePortAuthorizationArgs {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [resourceGroupName] The name of the resource group.
   ExpressRoutePortAuthorizationArgs({
-    pulumi.Output<String>? authorizationName,
-    required pulumi.Output<String> expressRoutePortName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorizationName = pulumi.Input.asOptionalInput<String>(authorizationName),
-      expressRoutePortName = pulumi.Input.asInput<String>(expressRoutePortName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.authorizationName,
+    required this.expressRoutePortName,
+    this.id,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ExpressRoutePortAuthorizationArgs {
 
   factory ExpressRoutePortAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortAuthorizationArgs(
-      authorizationName: map['authorizationName'] == null ? null : pulumi.Output.create<String>(map['authorizationName'] as String),
-      expressRoutePortName: pulumi.Output.create<String>(map['expressRoutePortName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName'] as String).input(),
+      expressRoutePortName: (map['expressRoutePortName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class MethodSettingsArgs {
   /// [settings] Settings block, see below.
   /// [stageName] Name of the stage
   MethodSettingsArgs({
-    required pulumi.Output<String> methodPath,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApi,
-    required pulumi.Output<MethodSettingsSettings> settings,
-    required pulumi.Output<String> stageName,
-  }) :
-      methodPath = pulumi.Input.asInput<String>(methodPath),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asInput<String>(restApi),
-      settings = pulumi.Input.asInput<MethodSettingsSettings>(settings),
-      stageName = pulumi.Input.asInput<String>(stageName);
+    required this.methodPath,
+    this.region,
+    required this.restApi,
+    required this.settings,
+    required this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class MethodSettingsArgs {
 
   factory MethodSettingsArgs.fromMap(Map<String, dynamic> map) {
     return MethodSettingsArgs(
-      methodPath: pulumi.Output.create<String>(map['methodPath'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApi: pulumi.Output.create<String>(map['restApi'] as String),
-      settings: pulumi.Output.create<MethodSettingsSettings>(MethodSettingsSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
-      stageName: pulumi.Output.create<String>(map['stageName'] as String),
+      methodPath: (map['methodPath'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApi: (map['restApi'] as String).input(),
+      settings: (MethodSettingsSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      stageName: (map['stageName'] as String).input(),
     );
   }
 }

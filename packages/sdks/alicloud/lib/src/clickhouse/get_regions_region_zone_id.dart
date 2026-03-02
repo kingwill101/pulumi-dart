@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionsRegionZoneId {
   /// Whether to support vpc network.
-  final bool vpcEnabled;
+  final pulumi.Input<bool> vpcEnabled;
   /// The zone ID.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetRegionsRegionZoneId].
   /// [vpcEnabled] Whether to support vpc network.
@@ -24,8 +25,8 @@ class GetRegionsRegionZoneId {
 
   factory GetRegionsRegionZoneId.fromMap(Map<String, dynamic> map) {
     return GetRegionsRegionZoneId(
-      vpcEnabled: map['vpcEnabled'] as bool,
-      zoneId: map['zoneId'] as String,
+      vpcEnabled: (map['vpcEnabled'] as bool).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

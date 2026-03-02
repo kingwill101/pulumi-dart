@@ -19,13 +19,10 @@ class GetConnectionMonitorArgs {
   /// [networkWatcherName] The name of the Network Watcher resource.
   /// [resourceGroupName] The name of the resource group containing Network Watcher.
   GetConnectionMonitorArgs({
-    required pulumi.Output<String> connectionMonitorName,
-    required pulumi.Output<String> networkWatcherName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectionMonitorName = pulumi.Input.asInput<String>(connectionMonitorName),
-      networkWatcherName = pulumi.Input.asInput<String>(networkWatcherName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.connectionMonitorName,
+    required this.networkWatcherName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConnectionMonitorArgs {
 
   factory GetConnectionMonitorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionMonitorArgs(
-      connectionMonitorName: pulumi.Output.create<String>(map['connectionMonitorName'] as String),
-      networkWatcherName: pulumi.Output.create<String>(map['networkWatcherName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectionMonitorName: (map['connectionMonitorName'] as String).input(),
+      networkWatcherName: (map['networkWatcherName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

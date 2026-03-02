@@ -17,11 +17,9 @@ class GetSecretsArgs {
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetSecretsArgs({
-    pulumi.Output<List<GetSecretsFilter>>? filters,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetSecretsFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetSecretsArgs {
 
   factory GetSecretsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSecretsFilter>>(pulumi.Input.decodeList<GetSecretsFilter>(map['filters'], (value) => GetSecretsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSecretsFilter>(map['filters'], (value) => GetSecretsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

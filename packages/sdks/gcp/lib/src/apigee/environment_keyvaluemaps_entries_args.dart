@@ -20,13 +20,10 @@ class EnvironmentKeyvaluemapsEntriesArgs {
   /// [name] Required. Resource URI that can be used to identify the scope of the key value map entries.
   /// [value] Required. Data or payload that is being retrieved and associated with the unique key.
   EnvironmentKeyvaluemapsEntriesArgs({
-    required pulumi.Output<String> envKeyvaluemapId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> value,
-  }) :
-      envKeyvaluemapId = pulumi.Input.asInput<String>(envKeyvaluemapId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      value = pulumi.Input.asInput<String>(value);
+    required this.envKeyvaluemapId,
+    this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class EnvironmentKeyvaluemapsEntriesArgs {
 
   factory EnvironmentKeyvaluemapsEntriesArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentKeyvaluemapsEntriesArgs(
-      envKeyvaluemapId: pulumi.Output.create<String>(map['envKeyvaluemapId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      envKeyvaluemapId: (map['envKeyvaluemapId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

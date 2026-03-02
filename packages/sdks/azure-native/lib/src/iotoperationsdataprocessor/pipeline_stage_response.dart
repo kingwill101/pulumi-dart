@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Stage configurations for all Pipeline processing and output stages.
 class PipelineStageResponse {
   /// Description for stage.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Next stage in the pipeline. Not required if output stage.
-  final List<String>? next;
+  final pulumi.Input<List<String>>? next;
   /// ARM resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PipelineStageResponse].
   /// [description] Description for stage.
@@ -30,9 +31,9 @@ class PipelineStageResponse {
 
   factory PipelineStageResponse.fromMap(Map<String, dynamic> map) {
     return PipelineStageResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      next: map['next'] == null ? null : (map['next'] as List).cast<String>(),
-      type: map['type'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      next: map['next'] == null ? null : ((map['next'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

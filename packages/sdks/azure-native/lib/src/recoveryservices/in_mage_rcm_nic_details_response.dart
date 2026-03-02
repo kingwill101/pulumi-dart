@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm NIC details.
 class InMageRcmNicDetailsResponse {
   /// A value indicating whether this is the primary NIC.
-  final String? isPrimaryNic;
+  final pulumi.Input<String>? isPrimaryNic;
   /// A value indicating whether this NIC is selected for failover.
-  final String? isSelectedForFailover;
+  final pulumi.Input<String>? isSelectedForFailover;
   /// The NIC Id.
-  final String nicId;
+  final pulumi.Input<String> nicId;
   /// The source IP address.
-  final String sourceIPAddress;
+  final pulumi.Input<String> sourceIPAddress;
   /// The source IP address type.
-  final String sourceIPAddressType;
+  final pulumi.Input<String> sourceIPAddressType;
   /// Source network Id.
-  final String sourceNetworkId;
+  final pulumi.Input<String> sourceNetworkId;
   /// Source subnet name.
-  final String sourceSubnetName;
+  final pulumi.Input<String> sourceSubnetName;
   /// The target IP address.
-  final String? targetIPAddress;
+  final pulumi.Input<String>? targetIPAddress;
   /// The target IP address type.
-  final String? targetIPAddressType;
+  final pulumi.Input<String>? targetIPAddressType;
   /// The target NIC name.
-  final String? targetNicName;
+  final pulumi.Input<String>? targetNicName;
   /// Target subnet name.
-  final String? targetSubnetName;
+  final pulumi.Input<String>? targetSubnetName;
   /// The test IP address.
-  final String? testIPAddress;
+  final pulumi.Input<String>? testIPAddress;
   /// The test IP address type.
-  final String? testIPAddressType;
+  final pulumi.Input<String>? testIPAddressType;
   /// Test subnet name.
-  final String? testSubnetName;
+  final pulumi.Input<String>? testSubnetName;
 
   /// Creates a new [InMageRcmNicDetailsResponse].
   /// [isPrimaryNic] A value indicating whether this is the primary NIC.
@@ -85,20 +86,20 @@ class InMageRcmNicDetailsResponse {
 
   factory InMageRcmNicDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmNicDetailsResponse(
-      isPrimaryNic: map['isPrimaryNic'] == null ? null : map['isPrimaryNic'] as String,
-      isSelectedForFailover: map['isSelectedForFailover'] == null ? null : map['isSelectedForFailover'] as String,
-      nicId: map['nicId'] as String,
-      sourceIPAddress: map['sourceIPAddress'] as String,
-      sourceIPAddressType: map['sourceIPAddressType'] as String,
-      sourceNetworkId: map['sourceNetworkId'] as String,
-      sourceSubnetName: map['sourceSubnetName'] as String,
-      targetIPAddress: map['targetIPAddress'] == null ? null : map['targetIPAddress'] as String,
-      targetIPAddressType: map['targetIPAddressType'] == null ? null : map['targetIPAddressType'] as String,
-      targetNicName: map['targetNicName'] == null ? null : map['targetNicName'] as String,
-      targetSubnetName: map['targetSubnetName'] == null ? null : map['targetSubnetName'] as String,
-      testIPAddress: map['testIPAddress'] == null ? null : map['testIPAddress'] as String,
-      testIPAddressType: map['testIPAddressType'] == null ? null : map['testIPAddressType'] as String,
-      testSubnetName: map['testSubnetName'] == null ? null : map['testSubnetName'] as String,
+      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic'] as String).input(),
+      isSelectedForFailover: map['isSelectedForFailover'] == null ? null : (map['isSelectedForFailover'] as String).input(),
+      nicId: (map['nicId'] as String).input(),
+      sourceIPAddress: (map['sourceIPAddress'] as String).input(),
+      sourceIPAddressType: (map['sourceIPAddressType'] as String).input(),
+      sourceNetworkId: (map['sourceNetworkId'] as String).input(),
+      sourceSubnetName: (map['sourceSubnetName'] as String).input(),
+      targetIPAddress: map['targetIPAddress'] == null ? null : (map['targetIPAddress'] as String).input(),
+      targetIPAddressType: map['targetIPAddressType'] == null ? null : (map['targetIPAddressType'] as String).input(),
+      targetNicName: map['targetNicName'] == null ? null : (map['targetNicName'] as String).input(),
+      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName'] as String).input(),
+      testIPAddress: map['testIPAddress'] == null ? null : (map['testIPAddress'] as String).input(),
+      testIPAddressType: map['testIPAddressType'] == null ? null : (map['testIPAddressType'] as String).input(),
+      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName'] as String).input(),
     );
   }
 }

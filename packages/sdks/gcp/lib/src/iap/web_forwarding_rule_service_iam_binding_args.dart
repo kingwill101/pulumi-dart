@@ -41,17 +41,12 @@ class WebForwardingRuleServiceIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   WebForwardingRuleServiceIamBindingArgs({
-    pulumi.Output<WebForwardingRuleServiceIamBindingCondition>? condition,
-    required pulumi.Output<String> forwardingRuleServiceName,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WebForwardingRuleServiceIamBindingCondition>(condition),
-      forwardingRuleServiceName = pulumi.Input.asInput<String>(forwardingRuleServiceName),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.forwardingRuleServiceName,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,11 +60,11 @@ class WebForwardingRuleServiceIamBindingArgs {
 
   factory WebForwardingRuleServiceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return WebForwardingRuleServiceIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WebForwardingRuleServiceIamBindingCondition>(WebForwardingRuleServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      forwardingRuleServiceName: pulumi.Output.create<String>(map['forwardingRuleServiceName'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (WebForwardingRuleServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      forwardingRuleServiceName: (map['forwardingRuleServiceName'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_profile_alloydb_settings_initial_user.dart';
 import 'connection_profile_alloydb_settings_primary_instance_settings.dart';
 
 class ConnectionProfileAlloydbSettings {
   /// Required. Input only. Initial user to setup during cluster creation.
   /// Structure is documented below.
-  final ConnectionProfileAlloydbSettingsInitialUser initialUser;
+  final pulumi.Input<ConnectionProfileAlloydbSettingsInitialUser> initialUser;
   /// Labels for the AlloyDB cluster created by DMS.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// Settings for the cluster's primary instance
   /// Structure is documented below.
-  final ConnectionProfileAlloydbSettingsPrimaryInstanceSettings? primaryInstanceSettings;
+  final pulumi.Input<ConnectionProfileAlloydbSettingsPrimaryInstanceSettings>? primaryInstanceSettings;
   /// Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
   /// It is specified in the form: 'projects/{project_number}/global/networks/{network_id}'. This is required to create a cluster.
-  final String vpcNetwork;
+  final pulumi.Input<String> vpcNetwork;
 
   /// Creates a new [ConnectionProfileAlloydbSettings].
   /// [initialUser] Required. Input only. Initial user to setup during cluster creation.
@@ -30,19 +31,19 @@ class ConnectionProfileAlloydbSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'initialUser': initialUser.toMap(),
+      'initialUser': pulumi.Input.mapInputValue<ConnectionProfileAlloydbSettingsInitialUser, Map<String, dynamic>>(initialUser, (value) => value.toMap()),
       'labels': ?labels,
-      'primaryInstanceSettings': ?primaryInstanceSettings == null ? null : primaryInstanceSettings!.toMap(),
+      'primaryInstanceSettings': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileAlloydbSettingsPrimaryInstanceSettings, Map<String, dynamic>>(primaryInstanceSettings, (value) => value.toMap()),
       'vpcNetwork': vpcNetwork,
     };
   }
 
   factory ConnectionProfileAlloydbSettings.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettings(
-      initialUser: ConnectionProfileAlloydbSettingsInitialUser.fromMap((map['initialUser'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      primaryInstanceSettings: map['primaryInstanceSettings'] == null ? null : ConnectionProfileAlloydbSettingsPrimaryInstanceSettings.fromMap((map['primaryInstanceSettings'] as Map).cast<String, dynamic>()),
-      vpcNetwork: map['vpcNetwork'] as String,
+      initialUser: (ConnectionProfileAlloydbSettingsInitialUser.fromMap((map['initialUser'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      primaryInstanceSettings: map['primaryInstanceSettings'] == null ? null : (ConnectionProfileAlloydbSettingsPrimaryInstanceSettings.fromMap((map['primaryInstanceSettings'] as Map).cast<String, dynamic>())).input(),
+      vpcNetwork: (map['vpcNetwork'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ServiceArgs {
   /// [producerProjectId] ID of the project that produces and owns this service.
   /// [serviceName] The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
   ServiceArgs({
-    pulumi.Output<String>? producerProjectId,
-    pulumi.Output<String>? serviceName,
-  }) :
-      producerProjectId = pulumi.Input.asOptionalInput<String>(producerProjectId),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
+    this.producerProjectId,
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      producerProjectId: map['producerProjectId'] == null ? null : pulumi.Output.create<String>(map['producerProjectId'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
+      producerProjectId: map['producerProjectId'] == null ? null : (map['producerProjectId'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetModuleArgs {
   /// [moduleName] The module name.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetModuleArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> moduleName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      moduleName = pulumi.Input.asInput<String>(moduleName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.moduleName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetModuleArgs {
 
   factory GetModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetModuleArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      moduleName: pulumi.Output.create<String>(map['moduleName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      moduleName: (map['moduleName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

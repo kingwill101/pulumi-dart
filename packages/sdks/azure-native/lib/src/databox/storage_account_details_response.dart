@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details for the storage account.
 class StorageAccountDetailsResponse {
   /// Account Type of the data to be transferred.
   /// Expected value is 'StorageAccount'.
-  final String dataAccountType;
+  final pulumi.Input<String> dataAccountType;
   /// Storage Account Resource Id.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [StorageAccountDetailsResponse].
   /// [dataAccountType] Account Type of the data to be transferred.
@@ -26,8 +27,8 @@ class StorageAccountDetailsResponse {
 
   factory StorageAccountDetailsResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountDetailsResponse(
-      dataAccountType: map['dataAccountType'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      dataAccountType: (map['dataAccountType'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

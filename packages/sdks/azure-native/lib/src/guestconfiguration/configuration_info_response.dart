@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the configuration.
 class ConfigurationInfoResponse {
   /// Name of the configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// Version of the configuration.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [ConfigurationInfoResponse].
   /// [name] Name of the configuration.
@@ -25,8 +26,8 @@ class ConfigurationInfoResponse {
 
   factory ConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationInfoResponse(
-      name: map['name'] as String,
-      version: map['version'] as String,
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

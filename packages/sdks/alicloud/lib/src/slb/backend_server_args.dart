@@ -20,13 +20,10 @@ class BackendServerArgs {
   /// [deleteProtectionValidation] Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   /// [loadBalancerId] ID of the load balancer.
   BackendServerArgs({
-    pulumi.Output<List<BackendServerBackendServer>>? backendServers,
-    pulumi.Output<bool>? deleteProtectionValidation,
-    required pulumi.Output<String> loadBalancerId,
-  }) :
-      backendServers = pulumi.Input.asOptionalInput<List<BackendServerBackendServer>>(backendServers),
-      deleteProtectionValidation = pulumi.Input.asOptionalInput<bool>(deleteProtectionValidation),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId);
+    this.backendServers,
+    this.deleteProtectionValidation,
+    required this.loadBalancerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class BackendServerArgs {
 
   factory BackendServerArgs.fromMap(Map<String, dynamic> map) {
     return BackendServerArgs(
-      backendServers: map['backendServers'] == null ? null : pulumi.Output.create<List<BackendServerBackendServer>>(pulumi.Input.decodeList<BackendServerBackendServer>(map['backendServers'], (value) => BackendServerBackendServer.fromMap((value as Map).cast<String, dynamic>()))),
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : pulumi.Output.create<bool>(map['deleteProtectionValidation'] as bool),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
+      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<BackendServerBackendServer>(map['backendServers'], (value) => BackendServerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
     );
   }
 }

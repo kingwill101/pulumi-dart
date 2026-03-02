@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Ingestion Storage Account Info
 class IngestionStorageResponse {
   /// Gets or sets the Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Gets or sets the primary endpoint.
-  final String primaryEndpoint;
+  final pulumi.Input<String> primaryEndpoint;
   /// Gets or sets the public network access setting
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
 
   /// Creates a new [IngestionStorageResponse].
   /// [id] Gets or sets the Id.
@@ -30,9 +31,9 @@ class IngestionStorageResponse {
 
   factory IngestionStorageResponse.fromMap(Map<String, dynamic> map) {
     return IngestionStorageResponse(
-      id: map['id'] as String,
-      primaryEndpoint: map['primaryEndpoint'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      id: (map['id'] as String).input(),
+      primaryEndpoint: (map['primaryEndpoint'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
     );
   }
 }

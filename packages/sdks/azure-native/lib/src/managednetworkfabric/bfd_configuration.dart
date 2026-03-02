@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BFD configuration properties
 class BfdConfiguration {
   /// Interval in milliseconds. Example: 300.
-  final int? intervalInMilliSeconds;
+  final pulumi.Input<int>? intervalInMilliSeconds;
   /// Multiplier for the Bfd Configuration. Example: 5.
-  final int? multiplier;
+  final pulumi.Input<int>? multiplier;
 
   /// Creates a new [BfdConfiguration].
   /// [intervalInMilliSeconds] Interval in milliseconds. Example: 300.
@@ -25,8 +26,8 @@ class BfdConfiguration {
 
   factory BfdConfiguration.fromMap(Map<String, dynamic> map) {
     return BfdConfiguration(
-      intervalInMilliSeconds: map['intervalInMilliSeconds'] == null ? null : map['intervalInMilliSeconds'] as int,
-      multiplier: map['multiplier'] == null ? null : map['multiplier'] as int,
+      intervalInMilliSeconds: map['intervalInMilliSeconds'] == null ? null : (map['intervalInMilliSeconds'] as int).input(),
+      multiplier: map['multiplier'] == null ? null : (map['multiplier'] as int).input(),
     );
   }
 }

@@ -77,31 +77,19 @@ class PipelineArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [retryPolicy] The retry policy configuration for the Pipeline. The pipeline
   PipelineArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? cryptoKeyName,
-    required pulumi.Output<List<PipelineDestination>> destinations,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<PipelineInputPayloadFormat>? inputPayloadFormat,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<PipelineLoggingConfig>? loggingConfig,
-    pulumi.Output<List<PipelineMediation>>? mediations,
-    required pulumi.Output<String> pipelineId,
-    pulumi.Output<String>? project,
-    pulumi.Output<PipelineRetryPolicy>? retryPolicy,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      cryptoKeyName = pulumi.Input.asOptionalInput<String>(cryptoKeyName),
-      destinations = pulumi.Input.asInput<List<PipelineDestination>>(destinations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inputPayloadFormat = pulumi.Input.asOptionalInput<PipelineInputPayloadFormat>(inputPayloadFormat),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      loggingConfig = pulumi.Input.asOptionalInput<PipelineLoggingConfig>(loggingConfig),
-      mediations = pulumi.Input.asOptionalInput<List<PipelineMediation>>(mediations),
-      pipelineId = pulumi.Input.asInput<String>(pipelineId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retryPolicy = pulumi.Input.asOptionalInput<PipelineRetryPolicy>(retryPolicy);
+    this.annotations,
+    this.cryptoKeyName,
+    required this.destinations,
+    this.displayName,
+    this.inputPayloadFormat,
+    this.labels,
+    required this.location,
+    this.loggingConfig,
+    this.mediations,
+    required this.pipelineId,
+    this.project,
+    this.retryPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -122,18 +110,18 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyName'] as String),
-      destinations: pulumi.Output.create<List<PipelineDestination>>(pulumi.Input.decodeList<PipelineDestination>(map['destinations'], (value) => PipelineDestination.fromMap((value as Map).cast<String, dynamic>()))),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inputPayloadFormat: map['inputPayloadFormat'] == null ? null : pulumi.Output.create<PipelineInputPayloadFormat>(PipelineInputPayloadFormat.fromMap((map['inputPayloadFormat'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<PipelineLoggingConfig>(PipelineLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      mediations: map['mediations'] == null ? null : pulumi.Output.create<List<PipelineMediation>>(pulumi.Input.decodeList<PipelineMediation>(map['mediations'], (value) => PipelineMediation.fromMap((value as Map).cast<String, dynamic>()))),
-      pipelineId: pulumi.Output.create<String>(map['pipelineId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      retryPolicy: map['retryPolicy'] == null ? null : pulumi.Output.create<PipelineRetryPolicy>(PipelineRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
+      destinations: (pulumi.Input.decodeList<PipelineDestination>(map['destinations'], (value) => PipelineDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inputPayloadFormat: map['inputPayloadFormat'] == null ? null : (PipelineInputPayloadFormat.fromMap((map['inputPayloadFormat'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (PipelineLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      mediations: map['mediations'] == null ? null : (pulumi.Input.decodeList<PipelineMediation>(map['mediations'], (value) => PipelineMediation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineId: (map['pipelineId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (PipelineRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

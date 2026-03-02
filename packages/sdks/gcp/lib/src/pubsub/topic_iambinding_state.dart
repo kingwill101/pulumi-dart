@@ -39,19 +39,13 @@ class TopicIAMBindingState {
   /// [role] The role that should be applied. Only one
   /// [topic] Used to find the parent resource to bind the IAM policy to
   TopicIAMBindingState({
-    pulumi.Output<TopicIAMBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? topic,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TopicIAMBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      topic = pulumi.Input.asOptionalInput<String>(topic);
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.role,
+    this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class TopicIAMBindingState {
 
   factory TopicIAMBindingState.fromMap(Map<String, dynamic> map) {
     return TopicIAMBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TopicIAMBindingCondition>(TopicIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
+      condition: map['condition'] == null ? null : (TopicIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreAgentRuntimeLifecycleConfiguration {
   /// Timeout in seconds for idle runtime sessions.
-  final int idleRuntimeSessionTimeout;
+  final pulumi.Input<int> idleRuntimeSessionTimeout;
   /// Maximum lifetime for the instance in seconds.
-  final int maxLifetime;
+  final pulumi.Input<int> maxLifetime;
 
   /// Creates a new [AgentcoreAgentRuntimeLifecycleConfiguration].
   /// [idleRuntimeSessionTimeout] Timeout in seconds for idle runtime sessions.
@@ -24,8 +25,8 @@ class AgentcoreAgentRuntimeLifecycleConfiguration {
 
   factory AgentcoreAgentRuntimeLifecycleConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeLifecycleConfiguration(
-      idleRuntimeSessionTimeout: map['idleRuntimeSessionTimeout'] as int,
-      maxLifetime: map['maxLifetime'] as int,
+      idleRuntimeSessionTimeout: (map['idleRuntimeSessionTimeout'] as int).input(),
+      maxLifetime: (map['maxLifetime'] as int).input(),
     );
   }
 }

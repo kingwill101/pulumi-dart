@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Uses client ID and Principal ID
 class UserAssignedIdentityResponse {
   /// Gets or Sets Client ID
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Gets or Sets Principal ID
-  final String principalId;
+  final pulumi.Input<String> principalId;
 
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] Gets or Sets Client ID
@@ -25,8 +26,8 @@ class UserAssignedIdentityResponse {
 
   factory UserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityResponse(
-      clientId: map['clientId'] as String,
-      principalId: map['principalId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
     );
   }
 }

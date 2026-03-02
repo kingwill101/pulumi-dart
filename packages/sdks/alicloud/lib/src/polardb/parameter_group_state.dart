@@ -41,21 +41,14 @@ class ParameterGroupState {
   /// [parameterGroupName] The name of the parameter template. The name must meet the following requirements:
   /// [parameters] Details about the parameters. See `parameters` below.
   ParameterGroupState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dbType,
-    pulumi.Output<String>? dbVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parameterGroupName,
-    pulumi.Output<List<ParameterGroupParameter>>? parameters,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dbType = pulumi.Input.asOptionalInput<String>(dbType),
-      dbVersion = pulumi.Input.asOptionalInput<String>(dbVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameterGroupName = pulumi.Input.asOptionalInput<String>(parameterGroupName),
-      parameters = pulumi.Input.asOptionalInput<List<ParameterGroupParameter>>(parameters);
+    this.createTime,
+    this.dbType,
+    this.dbVersion,
+    this.description,
+    this.name,
+    this.parameterGroupName,
+    this.parameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +64,13 @@ class ParameterGroupState {
 
   factory ParameterGroupState.fromMap(Map<String, dynamic> map) {
     return ParameterGroupState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dbType: map['dbType'] == null ? null : pulumi.Output.create<String>(map['dbType'] as String),
-      dbVersion: map['dbVersion'] == null ? null : pulumi.Output.create<String>(map['dbVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameterGroupName: map['parameterGroupName'] == null ? null : pulumi.Output.create<String>(map['parameterGroupName'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<ParameterGroupParameter>>(pulumi.Input.decodeList<ParameterGroupParameter>(map['parameters'], (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dbType: map['dbType'] == null ? null : (map['dbType'] as String).input(),
+      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterGroupParameter>(map['parameters'], (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

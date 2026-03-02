@@ -22,15 +22,11 @@ class SnapshotArgs {
   /// [ensRegionId] The node ID of ENS.
   /// [snapshotName] Name of the snapshot instance.
   SnapshotArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> diskId,
-    required pulumi.Output<String> ensRegionId,
-    pulumi.Output<String>? snapshotName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskId = pulumi.Input.asInput<String>(diskId),
-      ensRegionId = pulumi.Input.asInput<String>(ensRegionId),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName);
+    this.description,
+    required this.diskId,
+    required this.ensRegionId,
+    this.snapshotName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskId: pulumi.Output.create<String>(map['diskId'] as String),
-      ensRegionId: pulumi.Output.create<String>(map['ensRegionId'] as String),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      ensRegionId: (map['ensRegionId'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
     );
   }
 }

@@ -6,15 +6,15 @@ import 'import_file_response.dart';
 /// Files that make up the template contents of a template type.
 class TemplateContentsResponse {
   /// Import files referenced by the main template.
-  final List<ImportFileResponse> imports;
+  final pulumi.Input<List<ImportFileResponse>> imports;
   /// Which interpreter (python or jinja) should be used during expansion.
-  final String interpreter;
+  final pulumi.Input<String> interpreter;
   /// The filename of the mainTemplate
-  final String mainTemplate;
+  final pulumi.Input<String> mainTemplate;
   /// The contents of the template schema.
-  final String schema;
+  final pulumi.Input<String> schema;
   /// The contents of the main template file.
-  final String template;
+  final pulumi.Input<String> template;
 
   /// Creates a new [TemplateContentsResponse].
   /// [imports] Import files referenced by the main template.
@@ -32,7 +32,7 @@ class TemplateContentsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imports': pulumi.Input.encodeList<ImportFileResponse, Map<String, dynamic>>(imports, (value) => value.toMap()),
+      'imports': pulumi.Input.mapInputValue<List<ImportFileResponse>, List<Map<String, dynamic>>>(imports, (value) => pulumi.Input.encodeList<ImportFileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'interpreter': interpreter,
       'mainTemplate': mainTemplate,
       'schema': schema,
@@ -42,11 +42,11 @@ class TemplateContentsResponse {
 
   factory TemplateContentsResponse.fromMap(Map<String, dynamic> map) {
     return TemplateContentsResponse(
-      imports: pulumi.Input.decodeList<ImportFileResponse>(map['imports'], (value) => ImportFileResponse.fromMap((value as Map).cast<String, dynamic>())),
-      interpreter: map['interpreter'] as String,
-      mainTemplate: map['mainTemplate'] as String,
-      schema: map['schema'] as String,
-      template: map['template'] as String,
+      imports: (pulumi.Input.decodeList<ImportFileResponse>(map['imports'], (value) => ImportFileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interpreter: (map['interpreter'] as String).input(),
+      mainTemplate: (map['mainTemplate'] as String).input(),
+      schema: (map['schema'] as String).input(),
+      template: (map['template'] as String).input(),
     );
   }
 }

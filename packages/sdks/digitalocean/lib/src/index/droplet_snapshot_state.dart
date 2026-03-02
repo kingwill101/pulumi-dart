@@ -25,19 +25,13 @@ class DropletSnapshotState {
   /// [regions] A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
   /// [size] The billable size of the Droplet snapshot in gigabytes.
   DropletSnapshotState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? dropletId,
-    pulumi.Output<int>? minDiskSize,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? regions,
-    pulumi.Output<double>? size,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      dropletId = pulumi.Input.asOptionalInput<String>(dropletId),
-      minDiskSize = pulumi.Input.asOptionalInput<int>(minDiskSize),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      size = pulumi.Input.asOptionalInput<double>(size);
+    this.createdAt,
+    this.dropletId,
+    this.minDiskSize,
+    this.name,
+    this.regions,
+    this.size,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class DropletSnapshotState {
 
   factory DropletSnapshotState.fromMap(Map<String, dynamic> map) {
     return DropletSnapshotState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      dropletId: map['dropletId'] == null ? null : pulumi.Output.create<String>(map['dropletId'] as String),
-      minDiskSize: map['minDiskSize'] == null ? null : pulumi.Output.create<int>(map['minDiskSize'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      size: map['size'] == null ? null : pulumi.Output.create<double>(map['size'] as double),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as String).input(),
+      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      size: map['size'] == null ? null : (map['size'] as double).input(),
     );
   }
 }

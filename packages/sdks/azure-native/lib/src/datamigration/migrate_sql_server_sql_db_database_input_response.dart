@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database specific information for SQL to Azure SQL DB migration task inputs
 class MigrateSqlServerSqlDbDatabaseInputResponse {
   /// id of the database
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Whether to set database read only before migration
-  final bool? makeSourceDbReadOnly;
+  final pulumi.Input<bool>? makeSourceDbReadOnly;
   /// Name of the database
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Settings selected for DB schema migration.
-  final dynamic schemaSetting;
+  final pulumi.Input<dynamic>? schemaSetting;
   /// Mapping of source to target tables
-  final Map<String, String>? tableMap;
+  final pulumi.Input<Map<String, String>>? tableMap;
   /// Name of target database. Note: Target database will be truncated before starting migration.
-  final String? targetDatabaseName;
+  final pulumi.Input<String>? targetDatabaseName;
 
   /// Creates a new [MigrateSqlServerSqlDbDatabaseInputResponse].
   /// [id] id of the database
@@ -45,12 +46,12 @@ class MigrateSqlServerSqlDbDatabaseInputResponse {
 
   factory MigrateSqlServerSqlDbDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbDatabaseInputResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      makeSourceDbReadOnly: map['makeSourceDbReadOnly'] == null ? null : map['makeSourceDbReadOnly'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      schemaSetting: map['schemaSetting'] == null ? null : map['schemaSetting'],
-      tableMap: map['tableMap'] == null ? null : (map['tableMap'] as Map).cast<String, String>(),
-      targetDatabaseName: map['targetDatabaseName'] == null ? null : map['targetDatabaseName'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      makeSourceDbReadOnly: map['makeSourceDbReadOnly'] == null ? null : (map['makeSourceDbReadOnly'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      schemaSetting: map['schemaSetting'] == null ? null : (map['schemaSetting']).input(),
+      tableMap: map['tableMap'] == null ? null : ((map['tableMap'] as Map).cast<String, String>()).input(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName'] as String).input(),
     );
   }
 }

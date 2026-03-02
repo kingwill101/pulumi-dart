@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHostShareKeysKey {
   /// The first ID of the resource.
-  final String hostShareKeyId;
+  final pulumi.Input<String> hostShareKeyId;
   /// The name of the host shared key.
-  final String hostShareKeyName;
+  final pulumi.Input<String> hostShareKeyName;
   /// The ID of the Host Share Key.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Bastion instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The fingerprint of the private key.
-  final String privateKeyFingerPrint;
+  final pulumi.Input<String> privateKeyFingerPrint;
 
   /// Creates a new [GetHostShareKeysKey].
   /// [hostShareKeyId] The first ID of the resource.
@@ -39,11 +40,11 @@ class GetHostShareKeysKey {
 
   factory GetHostShareKeysKey.fromMap(Map<String, dynamic> map) {
     return GetHostShareKeysKey(
-      hostShareKeyId: map['hostShareKeyId'] as String,
-      hostShareKeyName: map['hostShareKeyName'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      privateKeyFingerPrint: map['privateKeyFingerPrint'] as String,
+      hostShareKeyId: (map['hostShareKeyId'] as String).input(),
+      hostShareKeyName: (map['hostShareKeyName'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      privateKeyFingerPrint: (map['privateKeyFingerPrint'] as String).input(),
     );
   }
 }

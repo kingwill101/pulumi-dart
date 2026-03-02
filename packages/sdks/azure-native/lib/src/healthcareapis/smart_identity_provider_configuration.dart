@@ -6,9 +6,9 @@ import 'smart_identity_provider_application.dart';
 /// An object to configure an identity provider for use with SMART on FHIR authentication.
 class SmartIdentityProviderConfiguration {
   /// The array of identity provider applications for SMART on FHIR authentication.
-  final List<SmartIdentityProviderApplication>? applications;
+  final pulumi.Input<List<SmartIdentityProviderApplication>>? applications;
   /// The identity provider token authority also known as the token issuing authority.
-  final String? authority;
+  final pulumi.Input<String>? authority;
 
   /// Creates a new [SmartIdentityProviderConfiguration].
   /// [applications] The array of identity provider applications for SMART on FHIR authentication.
@@ -20,15 +20,15 @@ class SmartIdentityProviderConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applications': ?applications == null ? null : pulumi.Input.encodeList<SmartIdentityProviderApplication, Map<String, dynamic>>(applications!, (value) => value.toMap()),
+      'applications': ?pulumi.Input.mapOptionalInputValue<List<SmartIdentityProviderApplication>, List<Map<String, dynamic>>>(applications, (value) => pulumi.Input.encodeList<SmartIdentityProviderApplication, Map<String, dynamic>>(value, (value) => value.toMap())),
       'authority': ?authority,
     };
   }
 
   factory SmartIdentityProviderConfiguration.fromMap(Map<String, dynamic> map) {
     return SmartIdentityProviderConfiguration(
-      applications: map['applications'] == null ? null : pulumi.Input.decodeList<SmartIdentityProviderApplication>(map['applications'], (value) => SmartIdentityProviderApplication.fromMap((value as Map).cast<String, dynamic>())),
-      authority: map['authority'] == null ? null : map['authority'] as String,
+      applications: map['applications'] == null ? null : (pulumi.Input.decodeList<SmartIdentityProviderApplication>(map['applications'], (value) => SmartIdentityProviderApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
     );
   }
 }

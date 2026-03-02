@@ -22,15 +22,11 @@ class StoredInfoTypeArgs {
   /// [project] Optional.
   /// [storedInfoTypeId] The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
   StoredInfoTypeArgs({
-    required pulumi.Output<GooglePrivacyDlpV2StoredInfoTypeConfig> config,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? storedInfoTypeId,
-  }) :
-      config = pulumi.Input.asInput<GooglePrivacyDlpV2StoredInfoTypeConfig>(config),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      storedInfoTypeId = pulumi.Input.asOptionalInput<String>(storedInfoTypeId);
+    required this.config,
+    this.location,
+    this.project,
+    this.storedInfoTypeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class StoredInfoTypeArgs {
 
   factory StoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return StoredInfoTypeArgs(
-      config: pulumi.Output.create<GooglePrivacyDlpV2StoredInfoTypeConfig>(GooglePrivacyDlpV2StoredInfoTypeConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      storedInfoTypeId: map['storedInfoTypeId'] == null ? null : pulumi.Output.create<String>(map['storedInfoTypeId'] as String),
+      config: (GooglePrivacyDlpV2StoredInfoTypeConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      storedInfoTypeId: map['storedInfoTypeId'] == null ? null : (map['storedInfoTypeId'] as String).input(),
     );
   }
 }

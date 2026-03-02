@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderVpcConfig {
   /// List of security group IDs for the VPC.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// List of subnet IDs for the VPC.
-  final List<String> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
 
   /// Creates a new [CapacityProviderVpcConfig].
   /// [securityGroupIds] List of security group IDs for the VPC.
@@ -24,8 +25,8 @@ class CapacityProviderVpcConfig {
 
   factory CapacityProviderVpcConfig.fromMap(Map<String, dynamic> map) {
     return CapacityProviderVpcConfig(
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }
 }

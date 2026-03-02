@@ -25,17 +25,12 @@ class ConsumerGroupArgs {
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   /// [userMetadata] User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
   ConsumerGroupArgs({
-    pulumi.Output<String>? consumerGroupName,
-    required pulumi.Output<String> eventHubName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? userMetadata,
-  }) :
-      consumerGroupName = pulumi.Input.asOptionalInput<String>(consumerGroupName),
-      eventHubName = pulumi.Input.asInput<String>(eventHubName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userMetadata = pulumi.Input.asOptionalInput<String>(userMetadata);
+    this.consumerGroupName,
+    required this.eventHubName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.userMetadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ConsumerGroupArgs {
 
   factory ConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupArgs(
-      consumerGroupName: map['consumerGroupName'] == null ? null : pulumi.Output.create<String>(map['consumerGroupName'] as String),
-      eventHubName: pulumi.Output.create<String>(map['eventHubName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userMetadata: map['userMetadata'] == null ? null : pulumi.Output.create<String>(map['userMetadata'] as String),
+      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName'] as String).input(),
+      eventHubName: (map['eventHubName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
     );
   }
 }

@@ -41,27 +41,17 @@ class DefenseTemplateArgs {
   /// [templateOrigin] The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
   /// [templateType] The type of the protection rule template. Valid values:
   DefenseTemplateArgs({
-    required pulumi.Output<String> defenseScene,
-    required pulumi.Output<String> defenseTemplateName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<List<String>>? resourceGroups,
-    pulumi.Output<String>? resourceManagerResourceGroupId,
-    pulumi.Output<List<String>>? resources,
-    required pulumi.Output<String> status,
-    required pulumi.Output<String> templateOrigin,
-    required pulumi.Output<String> templateType,
-  }) :
-      defenseScene = pulumi.Input.asInput<String>(defenseScene),
-      defenseTemplateName = pulumi.Input.asInput<String>(defenseTemplateName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      resourceGroups = pulumi.Input.asOptionalInput<List<String>>(resourceGroups),
-      resourceManagerResourceGroupId = pulumi.Input.asOptionalInput<String>(resourceManagerResourceGroupId),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources),
-      status = pulumi.Input.asInput<String>(status),
-      templateOrigin = pulumi.Input.asInput<String>(templateOrigin),
-      templateType = pulumi.Input.asInput<String>(templateType);
+    required this.defenseScene,
+    required this.defenseTemplateName,
+    this.description,
+    required this.instanceId,
+    this.resourceGroups,
+    this.resourceManagerResourceGroupId,
+    this.resources,
+    required this.status,
+    required this.templateOrigin,
+    required this.templateType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class DefenseTemplateArgs {
 
   factory DefenseTemplateArgs.fromMap(Map<String, dynamic> map) {
     return DefenseTemplateArgs(
-      defenseScene: pulumi.Output.create<String>(map['defenseScene'] as String),
-      defenseTemplateName: pulumi.Output.create<String>(map['defenseTemplateName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      resourceGroups: map['resourceGroups'] == null ? null : pulumi.Output.create<List<String>>((map['resourceGroups'] as List).cast<String>()),
-      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceManagerResourceGroupId'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
-      status: pulumi.Output.create<String>(map['status'] as String),
-      templateOrigin: pulumi.Output.create<String>(map['templateOrigin'] as String),
-      templateType: pulumi.Output.create<String>(map['templateType'] as String),
+      defenseScene: (map['defenseScene'] as String).input(),
+      defenseTemplateName: (map['defenseTemplateName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
+      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
+      templateOrigin: (map['templateOrigin'] as String).input(),
+      templateType: (map['templateType'] as String).input(),
     );
   }
 }

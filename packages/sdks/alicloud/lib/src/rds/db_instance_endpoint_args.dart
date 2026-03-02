@@ -32,21 +32,14 @@ class DbInstanceEndpointArgs {
   /// [vpcId] The virtual private cloud (VPC) ID of the internal endpoint.
   /// [vswitchId] The vSwitch ID of the internal endpoint.
   DbInstanceEndpointArgs({
-    required pulumi.Output<String> connectionStringPrefix,
-    pulumi.Output<String>? dbInstanceEndpointDescription,
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<List<DbInstanceEndpointNodeItem>> nodeItems,
-    required pulumi.Output<String> port,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      connectionStringPrefix = pulumi.Input.asInput<String>(connectionStringPrefix),
-      dbInstanceEndpointDescription = pulumi.Input.asOptionalInput<String>(dbInstanceEndpointDescription),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      nodeItems = pulumi.Input.asInput<List<DbInstanceEndpointNodeItem>>(nodeItems),
-      port = pulumi.Input.asInput<String>(port),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.connectionStringPrefix,
+    this.dbInstanceEndpointDescription,
+    required this.dbInstanceId,
+    required this.nodeItems,
+    required this.port,
+    required this.vpcId,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DbInstanceEndpointArgs {
 
   factory DbInstanceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceEndpointArgs(
-      connectionStringPrefix: pulumi.Output.create<String>(map['connectionStringPrefix'] as String),
-      dbInstanceEndpointDescription: map['dbInstanceEndpointDescription'] == null ? null : pulumi.Output.create<String>(map['dbInstanceEndpointDescription'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      nodeItems: pulumi.Output.create<List<DbInstanceEndpointNodeItem>>(pulumi.Input.decodeList<DbInstanceEndpointNodeItem>(map['nodeItems'], (value) => DbInstanceEndpointNodeItem.fromMap((value as Map).cast<String, dynamic>()))),
-      port: pulumi.Output.create<String>(map['port'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      connectionStringPrefix: (map['connectionStringPrefix'] as String).input(),
+      dbInstanceEndpointDescription: map['dbInstanceEndpointDescription'] == null ? null : (map['dbInstanceEndpointDescription'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      nodeItems: (pulumi.Input.decodeList<DbInstanceEndpointNodeItem>(map['nodeItems'], (value) => DbInstanceEndpointNodeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      port: (map['port'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

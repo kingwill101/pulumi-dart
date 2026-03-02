@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowRunResponse {
   /// The timestamp of the last workflow run.
-  final String lastRunAt;
+  final pulumi.Input<String> lastRunAt;
   /// Describes if the workflow run succeeded.
-  final bool succeeded;
+  final pulumi.Input<bool> succeeded;
   /// Describes the status of the workflow run
-  final String? workflowRunStatus;
+  final pulumi.Input<String>? workflowRunStatus;
   /// URL to the run of the workflow.
-  final String workflowRunURL;
+  final pulumi.Input<String> workflowRunURL;
 
   /// Creates a new [WorkflowRunResponse].
   /// [lastRunAt] The timestamp of the last workflow run.
@@ -34,10 +35,10 @@ class WorkflowRunResponse {
 
   factory WorkflowRunResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowRunResponse(
-      lastRunAt: map['lastRunAt'] as String,
-      succeeded: map['succeeded'] as bool,
-      workflowRunStatus: map['workflowRunStatus'] == null ? null : map['workflowRunStatus'] as String,
-      workflowRunURL: map['workflowRunURL'] as String,
+      lastRunAt: (map['lastRunAt'] as String).input(),
+      succeeded: (map['succeeded'] as bool).input(),
+      workflowRunStatus: map['workflowRunStatus'] == null ? null : (map['workflowRunStatus'] as String).input(),
+      workflowRunURL: (map['workflowRunURL'] as String).input(),
     );
   }
 }

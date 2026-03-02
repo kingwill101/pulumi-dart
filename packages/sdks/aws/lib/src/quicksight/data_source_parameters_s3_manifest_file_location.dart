@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersS3ManifestFileLocation {
   /// The name of the bucket that contains the manifest file.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The key of the manifest file within the bucket.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [DataSourceParametersS3ManifestFileLocation].
   /// [bucket] The name of the bucket that contains the manifest file.
@@ -24,8 +25,8 @@ class DataSourceParametersS3ManifestFileLocation {
 
   factory DataSourceParametersS3ManifestFileLocation.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersS3ManifestFileLocation(
-      bucket: map['bucket'] as String,
-      key: map['key'] as String,
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProfilingGroupAgentOrchestrationConfig {
   /// (Required) Boolean that specifies whether the profiling agent collects profiling data or
-  final bool profilingEnabled;
+  final pulumi.Input<bool> profilingEnabled;
 
   /// Creates a new [ProfilingGroupAgentOrchestrationConfig].
   /// [profilingEnabled] (Required) Boolean that specifies whether the profiling agent collects profiling data or
@@ -19,7 +20,7 @@ class ProfilingGroupAgentOrchestrationConfig {
 
   factory ProfilingGroupAgentOrchestrationConfig.fromMap(Map<String, dynamic> map) {
     return ProfilingGroupAgentOrchestrationConfig(
-      profilingEnabled: map['profilingEnabled'] as bool,
+      profilingEnabled: (map['profilingEnabled'] as bool).input(),
     );
   }
 }

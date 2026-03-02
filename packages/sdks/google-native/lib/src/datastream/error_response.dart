@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represent a user-facing Error.
 class ErrorResponse {
   /// Additional information about the error.
-  final Map<String, String> details;
+  final pulumi.Input<Map<String, String>> details;
   /// The time when the error occurred.
-  final String errorTime;
+  final pulumi.Input<String> errorTime;
   /// A unique identifier for this specific error, allowing it to be traced throughout the system in logs and API responses.
-  final String errorUuid;
+  final pulumi.Input<String> errorUuid;
   /// A message containing more information about the error that occurred.
-  final String message;
+  final pulumi.Input<String> message;
   /// A title that explains the reason for the error.
-  final String reason;
+  final pulumi.Input<String> reason;
 
   /// Creates a new [ErrorResponse].
   /// [details] Additional information about the error.
@@ -40,11 +41,11 @@ class ErrorResponse {
 
   factory ErrorResponse.fromMap(Map<String, dynamic> map) {
     return ErrorResponse(
-      details: (map['details'] as Map).cast<String, String>(),
-      errorTime: map['errorTime'] as String,
-      errorUuid: map['errorUuid'] as String,
-      message: map['message'] as String,
-      reason: map['reason'] as String,
+      details: ((map['details'] as Map).cast<String, String>()).input(),
+      errorTime: (map['errorTime'] as String).input(),
+      errorUuid: (map['errorUuid'] as String).input(),
+      message: (map['message'] as String).input(),
+      reason: (map['reason'] as String).input(),
     );
   }
 }

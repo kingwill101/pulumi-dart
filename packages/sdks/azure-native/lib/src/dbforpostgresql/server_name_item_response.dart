@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The name object for a server.
 class ServerNameItemResponse {
   /// The fully qualified domain name of a server.
-  final String fullyQualifiedDomainName;
+  final pulumi.Input<String> fullyQualifiedDomainName;
   /// The name of a server.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ServerNameItemResponse].
   /// [fullyQualifiedDomainName] The fully qualified domain name of a server.
@@ -25,8 +26,8 @@ class ServerNameItemResponse {
 
   factory ServerNameItemResponse.fromMap(Map<String, dynamic> map) {
     return ServerNameItemResponse(
-      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      fullyQualifiedDomainName: (map['fullyQualifiedDomainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

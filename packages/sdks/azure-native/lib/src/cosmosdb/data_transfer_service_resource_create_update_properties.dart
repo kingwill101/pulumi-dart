@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for Create or Update request for DataTransferServiceResource
 class DataTransferServiceResourceCreateUpdateProperties {
   /// Instance count for the service.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// Instance type for the service.
-  final String? instanceSize;
+  final pulumi.Input<String>? instanceSize;
   /// ServiceType for the service.
   /// Expected value is 'DataTransfer'.
-  final String serviceType;
+  final pulumi.Input<String> serviceType;
 
   /// Creates a new [DataTransferServiceResourceCreateUpdateProperties].
   /// [instanceCount] Instance count for the service.
@@ -31,9 +32,9 @@ class DataTransferServiceResourceCreateUpdateProperties {
 
   factory DataTransferServiceResourceCreateUpdateProperties.fromMap(Map<String, dynamic> map) {
     return DataTransferServiceResourceCreateUpdateProperties(
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      instanceSize: map['instanceSize'] == null ? null : map['instanceSize'] as String,
-      serviceType: map['serviceType'] as String,
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      serviceType: (map['serviceType'] as String).input(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'asset_endpoint_profile_status_error_response.dart';
 /// Defines the asset endpoint profile status properties.
 class AssetEndpointProfileStatusResponse {
   /// Array object to transfer and persist errors that originate from the Edge.
-  final List<AssetEndpointProfileStatusErrorResponse> errors;
+  final pulumi.Input<List<AssetEndpointProfileStatusErrorResponse>> errors;
 
   /// Creates a new [AssetEndpointProfileStatusResponse].
   /// [errors] Array object to transfer and persist errors that originate from the Edge.
@@ -16,13 +16,13 @@ class AssetEndpointProfileStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.encodeList<AssetEndpointProfileStatusErrorResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors': pulumi.Input.mapInputValue<List<AssetEndpointProfileStatusErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<AssetEndpointProfileStatusErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AssetEndpointProfileStatusResponse.fromMap(Map<String, dynamic> map) {
     return AssetEndpointProfileStatusResponse(
-      errors: pulumi.Input.decodeList<AssetEndpointProfileStatusErrorResponse>(map['errors'], (value) => AssetEndpointProfileStatusErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
+      errors: (pulumi.Input.decodeList<AssetEndpointProfileStatusErrorResponse>(map['errors'], (value) => AssetEndpointProfileStatusErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

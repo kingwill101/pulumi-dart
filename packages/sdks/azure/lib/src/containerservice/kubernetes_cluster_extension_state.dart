@@ -45,31 +45,19 @@ class KubernetesClusterExtensionState {
   /// [targetNamespace] Namespace where the extension will be created for a namespace scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Kubernetes Cluster Extension to be created.
   /// [version] User-specified version that the extension should pin to. If it is not set, Azure will use the latest version and auto upgrade it. Changing this forces a new Kubernetes Cluster Extension to be created.
   KubernetesClusterExtensionState({
-    pulumi.Output<List<KubernetesClusterExtensionAksAssignedIdentity>>? aksAssignedIdentities,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<Map<String, String>>? configurationProtectedSettings,
-    pulumi.Output<Map<String, String>>? configurationSettings,
-    pulumi.Output<String>? currentVersion,
-    pulumi.Output<String>? extensionType,
-    pulumi.Output<String>? name,
-    pulumi.Output<KubernetesClusterExtensionPlan>? plan,
-    pulumi.Output<String>? releaseNamespace,
-    pulumi.Output<String>? releaseTrain,
-    pulumi.Output<String>? targetNamespace,
-    pulumi.Output<String>? version,
-  }) :
-      aksAssignedIdentities = pulumi.Input.asOptionalInput<List<KubernetesClusterExtensionAksAssignedIdentity>>(aksAssignedIdentities),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      configurationProtectedSettings = pulumi.Input.asOptionalInput<Map<String, String>>(configurationProtectedSettings),
-      configurationSettings = pulumi.Input.asOptionalInput<Map<String, String>>(configurationSettings),
-      currentVersion = pulumi.Input.asOptionalInput<String>(currentVersion),
-      extensionType = pulumi.Input.asOptionalInput<String>(extensionType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plan = pulumi.Input.asOptionalInput<KubernetesClusterExtensionPlan>(plan),
-      releaseNamespace = pulumi.Input.asOptionalInput<String>(releaseNamespace),
-      releaseTrain = pulumi.Input.asOptionalInput<String>(releaseTrain),
-      targetNamespace = pulumi.Input.asOptionalInput<String>(targetNamespace),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.aksAssignedIdentities,
+    this.clusterId,
+    this.configurationProtectedSettings,
+    this.configurationSettings,
+    this.currentVersion,
+    this.extensionType,
+    this.name,
+    this.plan,
+    this.releaseNamespace,
+    this.releaseTrain,
+    this.targetNamespace,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class KubernetesClusterExtensionState {
 
   factory KubernetesClusterExtensionState.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterExtensionState(
-      aksAssignedIdentities: map['aksAssignedIdentities'] == null ? null : pulumi.Output.create<List<KubernetesClusterExtensionAksAssignedIdentity>>(pulumi.Input.decodeList<KubernetesClusterExtensionAksAssignedIdentity>(map['aksAssignedIdentities'], (value) => KubernetesClusterExtensionAksAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : pulumi.Output.create<Map<String, String>>((map['configurationProtectedSettings'] as Map).cast<String, String>()),
-      configurationSettings: map['configurationSettings'] == null ? null : pulumi.Output.create<Map<String, String>>((map['configurationSettings'] as Map).cast<String, String>()),
-      currentVersion: map['currentVersion'] == null ? null : pulumi.Output.create<String>(map['currentVersion'] as String),
-      extensionType: map['extensionType'] == null ? null : pulumi.Output.create<String>(map['extensionType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<KubernetesClusterExtensionPlan>(KubernetesClusterExtensionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())),
-      releaseNamespace: map['releaseNamespace'] == null ? null : pulumi.Output.create<String>(map['releaseNamespace'] as String),
-      releaseTrain: map['releaseTrain'] == null ? null : pulumi.Output.create<String>(map['releaseTrain'] as String),
-      targetNamespace: map['targetNamespace'] == null ? null : pulumi.Output.create<String>(map['targetNamespace'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      aksAssignedIdentities: map['aksAssignedIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterExtensionAksAssignedIdentity>(map['aksAssignedIdentities'], (value) => KubernetesClusterExtensionAksAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings'] as Map).cast<String, String>()).input(),
+      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings'] as Map).cast<String, String>()).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
+      extensionType: map['extensionType'] == null ? null : (map['extensionType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plan: map['plan'] == null ? null : (KubernetesClusterExtensionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace'] as String).input(),
+      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain'] as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

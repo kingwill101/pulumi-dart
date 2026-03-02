@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ParentReference describes a reference to a parent object.
 class ParentReferencePatchNetworkingK8sIoV1alpha1 {
   /// Group is the group of the object being referenced.
-  final String? group;
+  final pulumi.Input<String>? group;
   /// Name is the name of the object being referenced.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Namespace is the namespace of the object being referenced.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// Resource is the resource of the object being referenced.
-  final String? resource;
+  final pulumi.Input<String>? resource;
   /// UID is the uid of the object being referenced.
-  final String? uid;
+  final pulumi.Input<String>? uid;
 
   /// Creates a new [ParentReferencePatchNetworkingK8sIoV1alpha1].
   /// [group] Group is the group of the object being referenced.
@@ -40,11 +41,11 @@ class ParentReferencePatchNetworkingK8sIoV1alpha1 {
 
   factory ParentReferencePatchNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ParentReferencePatchNetworkingK8sIoV1alpha1(
-      group: map['group'] == null ? null : map['group'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      resource: map['resource'] == null ? null : map['resource'] as String,
-      uid: map['uid'] == null ? null : map['uid'] as String,
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

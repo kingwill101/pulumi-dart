@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Matcher
 class MatcherResponse {
   /// You can specify values between 0 and 99. You can specify multiple values, or a range of values. The default value is 12.
-  final String? grpcCode;
+  final pulumi.Input<String>? grpcCode;
   /// For Application Load Balancers, you can specify values between 200 and 499, and the default value is 200. You can specify multiple values or a range of values.
-  final String? httpCode;
+  final pulumi.Input<String>? httpCode;
 
   /// Creates a new [MatcherResponse].
   /// [grpcCode] You can specify values between 0 and 99. You can specify multiple values, or a range of values. The default value is 12.
@@ -25,8 +26,8 @@ class MatcherResponse {
 
   factory MatcherResponse.fromMap(Map<String, dynamic> map) {
     return MatcherResponse(
-      grpcCode: map['grpcCode'] == null ? null : map['grpcCode'] as String,
-      httpCode: map['httpCode'] == null ? null : map['httpCode'] as String,
+      grpcCode: map['grpcCode'] == null ? null : (map['grpcCode'] as String).input(),
+      httpCode: map['httpCode'] == null ? null : (map['httpCode'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPropertiesErrorDetailsResponse {
   /// Error code reported by Agent
-  final String? code;
+  final pulumi.Input<String>? code;
   /// Expanded description of reported error code
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [AgentPropertiesErrorDetailsResponse].
   /// [code] Error code reported by Agent
@@ -24,8 +25,8 @@ class AgentPropertiesErrorDetailsResponse {
 
   factory AgentPropertiesErrorDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AgentPropertiesErrorDetailsResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

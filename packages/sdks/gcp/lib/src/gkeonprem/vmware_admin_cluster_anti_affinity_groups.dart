@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterAntiAffinityGroups {
   /// Spread nodes across at least three physical hosts (requires at least three
   /// hosts).
   /// Enabled by default.
-  final bool aagConfigDisabled;
+  final pulumi.Input<bool> aagConfigDisabled;
 
   /// Creates a new [VmwareAdminClusterAntiAffinityGroups].
   /// [aagConfigDisabled] Spread nodes across at least three physical hosts (requires at least three
@@ -21,7 +22,7 @@ class VmwareAdminClusterAntiAffinityGroups {
 
   factory VmwareAdminClusterAntiAffinityGroups.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterAntiAffinityGroups(
-      aagConfigDisabled: map['aagConfigDisabled'] as bool,
+      aagConfigDisabled: (map['aagConfigDisabled'] as bool).input(),
     );
   }
 }

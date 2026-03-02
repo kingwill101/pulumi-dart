@@ -16,13 +16,10 @@ class GetPacketMirroringComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   GetPacketMirroringComputeBetaArgs({
-    required pulumi.Output<String> packetMirroring,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      packetMirroring = pulumi.Input.asInput<String>(packetMirroring),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    required this.packetMirroring,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetPacketMirroringComputeBetaArgs {
 
   factory GetPacketMirroringComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetPacketMirroringComputeBetaArgs(
-      packetMirroring: pulumi.Output.create<String>(map['packetMirroring'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      packetMirroring: (map['packetMirroring'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

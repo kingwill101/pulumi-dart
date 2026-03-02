@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableEntitiesItem {
   /// Partition Key of the Entity.
-  final String partitionKey;
+  final pulumi.Input<String> partitionKey;
   /// A map of any additional properties in key-value format.
-  final Map<String, String> properties;
+  final pulumi.Input<Map<String, String>> properties;
   /// Row Key of the Entity.
-  final String rowKey;
+  final pulumi.Input<String> rowKey;
 
   /// Creates a new [GetTableEntitiesItem].
   /// [partitionKey] Partition Key of the Entity.
@@ -29,9 +30,9 @@ class GetTableEntitiesItem {
 
   factory GetTableEntitiesItem.fromMap(Map<String, dynamic> map) {
     return GetTableEntitiesItem(
-      partitionKey: map['partitionKey'] as String,
-      properties: (map['properties'] as Map).cast<String, String>(),
-      rowKey: map['rowKey'] as String,
+      partitionKey: (map['partitionKey'] as String).input(),
+      properties: ((map['properties'] as Map).cast<String, String>()).input(),
+      rowKey: (map['rowKey'] as String).input(),
     );
   }
 }

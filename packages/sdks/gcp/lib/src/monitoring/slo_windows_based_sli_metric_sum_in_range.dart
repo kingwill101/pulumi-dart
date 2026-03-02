@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slo_windows_based_sli_metric_sum_in_range_range.dart';
 
 class SloWindowsBasedSliMetricSumInRange {
@@ -10,7 +11,7 @@ class SloWindowsBasedSliMetricSumInRange {
   /// just one of min or max. Summed value `X` should satisfy
   /// `range.min <= X <= range.max` for a good window.
   /// Structure is documented below.
-  final SloWindowsBasedSliMetricSumInRangeRange range;
+  final pulumi.Input<SloWindowsBasedSliMetricSumInRangeRange> range;
   /// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying the TimeSeries to use for evaluating window
   /// quality. The provided TimeSeries must have
@@ -18,7 +19,7 @@ class SloWindowsBasedSliMetricSumInRange {
   /// MetricKind = GAUGE.
   /// Summed value `X` should satisfy
   /// `range.min <= X <= range.max` for a good window.
-  final String timeSeries;
+  final pulumi.Input<String> timeSeries;
 
   /// Creates a new [SloWindowsBasedSliMetricSumInRange].
   /// [range] Range of numerical values. The computed good_service
@@ -30,15 +31,15 @@ class SloWindowsBasedSliMetricSumInRange {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'range': range.toMap(),
+      'range': pulumi.Input.mapInputValue<SloWindowsBasedSliMetricSumInRangeRange, Map<String, dynamic>>(range, (value) => value.toMap()),
       'timeSeries': timeSeries,
     };
   }
 
   factory SloWindowsBasedSliMetricSumInRange.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliMetricSumInRange(
-      range: SloWindowsBasedSliMetricSumInRangeRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
-      timeSeries: map['timeSeries'] as String,
+      range: (SloWindowsBasedSliMetricSumInRangeRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
+      timeSeries: (map['timeSeries'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanDataDiscoverySpecStorageConfigCsvOptions {
   /// The delimiter that is used to separate values. The default is `,` (comma).
-  final String? delimiter;
+  final pulumi.Input<String>? delimiter;
   /// The character encoding of the data. The default is UTF-8.
-  final String? encoding;
+  final pulumi.Input<String>? encoding;
   /// The number of rows to interpret as header rows that should be skipped when reading data rows.
-  final int? headerRows;
+  final pulumi.Input<int>? headerRows;
   /// The character used to quote column values. Accepts `"` (double quotation mark) or `'` (single quotation mark). If unspecified, defaults to `"` (double quotation mark).
-  final String? quote;
+  final pulumi.Input<String>? quote;
   /// Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.
-  final bool? typeInferenceDisabled;
+  final pulumi.Input<bool>? typeInferenceDisabled;
 
   /// Creates a new [DatascanDataDiscoverySpecStorageConfigCsvOptions].
   /// [delimiter] The delimiter that is used to separate values. The default is `,` (comma).
@@ -39,11 +40,11 @@ class DatascanDataDiscoverySpecStorageConfigCsvOptions {
 
   factory DatascanDataDiscoverySpecStorageConfigCsvOptions.fromMap(Map<String, dynamic> map) {
     return DatascanDataDiscoverySpecStorageConfigCsvOptions(
-      delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
-      encoding: map['encoding'] == null ? null : map['encoding'] as String,
-      headerRows: map['headerRows'] == null ? null : map['headerRows'] as int,
-      quote: map['quote'] == null ? null : map['quote'] as String,
-      typeInferenceDisabled: map['typeInferenceDisabled'] == null ? null : map['typeInferenceDisabled'] as bool,
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      headerRows: map['headerRows'] == null ? null : (map['headerRows'] as int).input(),
+      quote: map['quote'] == null ? null : (map['quote'] as String).input(),
+      typeInferenceDisabled: map['typeInferenceDisabled'] == null ? null : (map['typeInferenceDisabled'] as bool).input(),
     );
   }
 }

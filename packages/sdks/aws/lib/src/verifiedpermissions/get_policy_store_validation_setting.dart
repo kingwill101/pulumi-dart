@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyStoreValidationSetting {
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [GetPolicyStoreValidationSetting].
   /// [mode] Required.
@@ -18,7 +19,7 @@ class GetPolicyStoreValidationSetting {
 
   factory GetPolicyStoreValidationSetting.fromMap(Map<String, dynamic> map) {
     return GetPolicyStoreValidationSetting(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

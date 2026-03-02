@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDistributionTenantCustomizationWebAcl {
-  final String action;
+  final pulumi.Input<String> action;
   /// ARN (Amazon Resource Name) for the distribution tenant.
-  final String arn;
+  final pulumi.Input<String> arn;
 
   /// Creates a new [GetDistributionTenantCustomizationWebAcl].
   /// [action] Required.
@@ -23,8 +24,8 @@ class GetDistributionTenantCustomizationWebAcl {
 
   factory GetDistributionTenantCustomizationWebAcl.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantCustomizationWebAcl(
-      action: map['action'] as String,
-      arn: map['arn'] as String,
+      action: (map['action'] as String).input(),
+      arn: (map['arn'] as String).input(),
     );
   }
 }

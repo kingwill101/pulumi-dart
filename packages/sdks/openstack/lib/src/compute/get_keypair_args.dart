@@ -22,13 +22,10 @@ class GetKeypairArgs {
   /// [region] The region in which to obtain the V2 Compute client.
   /// [userId] The user id of the owner of the key pair.
   GetKeypairArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    required this.name,
+    this.region,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetKeypairArgs {
 
   factory GetKeypairArgs.fromMap(Map<String, dynamic> map) {
     return GetKeypairArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

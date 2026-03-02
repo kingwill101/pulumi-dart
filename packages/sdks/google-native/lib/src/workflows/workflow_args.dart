@@ -42,29 +42,18 @@ class WorkflowArgs {
   /// [userEnvVars] Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
   /// [workflowId] Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
   WorkflowArgs({
-    pulumi.Output<WorkflowCallLogLevel>? callLogLevel,
-    pulumi.Output<String>? cryptoKeyName,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<String>? sourceContents,
-    pulumi.Output<Map<String, String>>? userEnvVars,
-    required pulumi.Output<String> workflowId,
-  }) :
-      callLogLevel = pulumi.Input.asOptionalInput<WorkflowCallLogLevel>(callLogLevel),
-      cryptoKeyName = pulumi.Input.asOptionalInput<String>(cryptoKeyName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      sourceContents = pulumi.Input.asOptionalInput<String>(sourceContents),
-      userEnvVars = pulumi.Input.asOptionalInput<Map<String, String>>(userEnvVars),
-      workflowId = pulumi.Input.asInput<String>(workflowId);
+    this.callLogLevel,
+    this.cryptoKeyName,
+    this.description,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.serviceAccount,
+    this.sourceContents,
+    this.userEnvVars,
+    required this.workflowId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      callLogLevel: map['callLogLevel'] == null ? null : pulumi.Output.create<WorkflowCallLogLevel>(WorkflowCallLogLevel.fromValue(map['callLogLevel'] as String)),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      sourceContents: map['sourceContents'] == null ? null : pulumi.Output.create<String>(map['sourceContents'] as String),
-      userEnvVars: map['userEnvVars'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userEnvVars'] as Map).cast<String, String>()),
-      workflowId: pulumi.Output.create<String>(map['workflowId'] as String),
+      callLogLevel: map['callLogLevel'] == null ? null : (WorkflowCallLogLevel.fromValue(map['callLogLevel'] as String)).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents'] as String).input(),
+      userEnvVars: map['userEnvVars'] == null ? null : ((map['userEnvVars'] as Map).cast<String, String>()).input(),
+      workflowId: (map['workflowId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_measurement_response.dart';
 
 /// Represents a uCAIP NasJob trial.
 class GoogleCloudAiplatformV1beta1NasTrialResponse {
   /// Time when the NasTrial's status changed to `SUCCEEDED` or `INFEASIBLE`.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The final measurement containing the objective value.
-  final GoogleCloudAiplatformV1beta1MeasurementResponse finalMeasurement;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1MeasurementResponse> finalMeasurement;
   /// Time when the NasTrial was started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The detailed state of the NasTrial.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1NasTrialResponse].
   /// [endTime] Time when the NasTrial's status changed to `SUCCEEDED` or `INFEASIBLE`.
@@ -28,7 +29,7 @@ class GoogleCloudAiplatformV1beta1NasTrialResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': endTime,
-      'finalMeasurement': finalMeasurement.toMap(),
+      'finalMeasurement': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1MeasurementResponse, Map<String, dynamic>>(finalMeasurement, (value) => value.toMap()),
       'startTime': startTime,
       'state': state,
     };
@@ -36,10 +37,10 @@ class GoogleCloudAiplatformV1beta1NasTrialResponse {
 
   factory GoogleCloudAiplatformV1beta1NasTrialResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NasTrialResponse(
-      endTime: map['endTime'] as String,
-      finalMeasurement: GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap((map['finalMeasurement'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] as String,
-      state: map['state'] as String,
+      endTime: (map['endTime'] as String).input(),
+      finalMeasurement: (GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap((map['finalMeasurement'] as Map).cast<String, dynamic>())).input(),
+      startTime: (map['startTime'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

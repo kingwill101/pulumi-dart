@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowAccessControlContent {
   /// A list of the allowed caller IP address ranges.
-  final List<String> allowedCallerIpAddressRanges;
+  final pulumi.Input<List<String>> allowedCallerIpAddressRanges;
 
   /// Creates a new [WorkflowAccessControlContent].
   /// [allowedCallerIpAddressRanges] A list of the allowed caller IP address ranges.
@@ -19,7 +20,7 @@ class WorkflowAccessControlContent {
 
   factory WorkflowAccessControlContent.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessControlContent(
-      allowedCallerIpAddressRanges: (map['allowedCallerIpAddressRanges'] as List).cast<String>(),
+      allowedCallerIpAddressRanges: ((map['allowedCallerIpAddressRanges'] as List).cast<String>()).input(),
     );
   }
 }

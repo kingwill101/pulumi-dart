@@ -19,13 +19,10 @@ class DbNodeArgs {
   /// [dbInstanceId] The Id of instance that can run database.
   /// [zoneId] The zone ID of the node.
   DbNodeArgs({
-    required pulumi.Output<String> classCode,
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> zoneId,
-  }) :
-      classCode = pulumi.Input.asInput<String>(classCode),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    required this.classCode,
+    required this.dbInstanceId,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DbNodeArgs {
 
   factory DbNodeArgs.fromMap(Map<String, dynamic> map) {
     return DbNodeArgs(
-      classCode: pulumi.Output.create<String>(map['classCode'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      classCode: (map['classCode'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

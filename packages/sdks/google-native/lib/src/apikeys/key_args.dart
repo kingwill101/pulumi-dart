@@ -27,19 +27,13 @@ class KeyArgs {
   /// [project] Optional.
   /// [restrictions] Key restrictions.
   KeyArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<Restrictions>? restrictions,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      restrictions = pulumi.Input.asOptionalInput<Restrictions>(restrictions);
+    this.annotations,
+    this.displayName,
+    this.keyId,
+    this.location,
+    this.project,
+    this.restrictions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      restrictions: map['restrictions'] == null ? null : pulumi.Output.create<Restrictions>(Restrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      restrictions: map['restrictions'] == null ? null : (Restrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetConsumerChannelsArgs {
   /// [ids] A list of Consumer Channel IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetConsumerChannelsArgs({
-    required pulumi.Output<String> dtsInstanceId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-  }) :
-      dtsInstanceId = pulumi.Input.asInput<String>(dtsInstanceId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.dtsInstanceId,
+    this.ids,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConsumerChannelsArgs {
 
   factory GetConsumerChannelsArgs.fromMap(Map<String, dynamic> map) {
     return GetConsumerChannelsArgs(
-      dtsInstanceId: pulumi.Output.create<String>(map['dtsInstanceId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      dtsInstanceId: (map['dtsInstanceId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

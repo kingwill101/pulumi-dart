@@ -31,21 +31,14 @@ class EvaluationJobArgs {
   /// [project] Optional.
   /// [schedule] Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
   EvaluationJobArgs({
-    required pulumi.Output<String> annotationSpecSet,
-    required pulumi.Output<String> description,
-    required pulumi.Output<GoogleCloudDatalabelingV1beta1EvaluationJobConfig> evaluationJobConfig,
-    required pulumi.Output<bool> labelMissingGroundTruth,
-    required pulumi.Output<String> modelVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> schedule,
-  }) :
-      annotationSpecSet = pulumi.Input.asInput<String>(annotationSpecSet),
-      description = pulumi.Input.asInput<String>(description),
-      evaluationJobConfig = pulumi.Input.asInput<GoogleCloudDatalabelingV1beta1EvaluationJobConfig>(evaluationJobConfig),
-      labelMissingGroundTruth = pulumi.Input.asInput<bool>(labelMissingGroundTruth),
-      modelVersion = pulumi.Input.asInput<String>(modelVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schedule = pulumi.Input.asInput<String>(schedule);
+    required this.annotationSpecSet,
+    required this.description,
+    required this.evaluationJobConfig,
+    required this.labelMissingGroundTruth,
+    required this.modelVersion,
+    this.project,
+    required this.schedule,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class EvaluationJobArgs {
 
   factory EvaluationJobArgs.fromMap(Map<String, dynamic> map) {
     return EvaluationJobArgs(
-      annotationSpecSet: pulumi.Output.create<String>(map['annotationSpecSet'] as String),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      evaluationJobConfig: pulumi.Output.create<GoogleCloudDatalabelingV1beta1EvaluationJobConfig>(GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromMap((map['evaluationJobConfig'] as Map).cast<String, dynamic>())),
-      labelMissingGroundTruth: pulumi.Output.create<bool>(map['labelMissingGroundTruth'] as bool),
-      modelVersion: pulumi.Output.create<String>(map['modelVersion'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schedule: pulumi.Output.create<String>(map['schedule'] as String),
+      annotationSpecSet: (map['annotationSpecSet'] as String).input(),
+      description: (map['description'] as String).input(),
+      evaluationJobConfig: (GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromMap((map['evaluationJobConfig'] as Map).cast<String, dynamic>())).input(),
+      labelMissingGroundTruth: (map['labelMissingGroundTruth'] as bool).input(),
+      modelVersion: (map['modelVersion'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
     );
   }
 }

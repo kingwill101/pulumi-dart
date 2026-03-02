@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GitFileSource describes a file within a (possibly remote) code repository.
 class GitFileSourceResponse {
   /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
-  final String bitbucketServerConfig;
+  final pulumi.Input<String> bitbucketServerConfig;
   /// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
-  final String githubEnterpriseConfig;
+  final pulumi.Input<String> githubEnterpriseConfig;
   /// The path of the file, with the repo root as the root of the path.
-  final String path;
+  final pulumi.Input<String> path;
   /// See RepoType above.
-  final String repoType;
+  final pulumi.Input<String> repoType;
   /// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
-  final String repository;
+  final pulumi.Input<String> repository;
   /// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
-  final String revision;
+  final pulumi.Input<String> revision;
   /// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [GitFileSourceResponse].
   /// [bitbucketServerConfig] The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
@@ -50,13 +51,13 @@ class GitFileSourceResponse {
 
   factory GitFileSourceResponse.fromMap(Map<String, dynamic> map) {
     return GitFileSourceResponse(
-      bitbucketServerConfig: map['bitbucketServerConfig'] as String,
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] as String,
-      path: map['path'] as String,
-      repoType: map['repoType'] as String,
-      repository: map['repository'] as String,
-      revision: map['revision'] as String,
-      uri: map['uri'] as String,
+      bitbucketServerConfig: (map['bitbucketServerConfig'] as String).input(),
+      githubEnterpriseConfig: (map['githubEnterpriseConfig'] as String).input(),
+      path: (map['path'] as String).input(),
+      repoType: (map['repoType'] as String).input(),
+      repository: (map['repository'] as String).input(),
+      revision: (map['revision'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

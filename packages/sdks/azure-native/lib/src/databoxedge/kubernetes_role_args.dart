@@ -37,23 +37,15 @@ class KubernetesRoleArgs {
   /// [resourceGroupName] The resource group name.
   /// [roleStatus] Role status.
   KubernetesRoleArgs({
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> hostPlatform,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<KubernetesClusterInfo> kubernetesClusterInfo,
-    required pulumi.Output<KubernetesRoleResources> kubernetesRoleResources,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleStatus,
-  }) :
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      hostPlatform = pulumi.Input.asInput<String>(hostPlatform),
-      kind = pulumi.Input.asInput<String>(kind),
-      kubernetesClusterInfo = pulumi.Input.asInput<KubernetesClusterInfo>(kubernetesClusterInfo),
-      kubernetesRoleResources = pulumi.Input.asInput<KubernetesRoleResources>(kubernetesRoleResources),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleStatus = pulumi.Input.asInput<String>(roleStatus);
+    required this.deviceName,
+    required this.hostPlatform,
+    required this.kind,
+    required this.kubernetesClusterInfo,
+    required this.kubernetesRoleResources,
+    this.name,
+    required this.resourceGroupName,
+    required this.roleStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class KubernetesRoleArgs {
 
   factory KubernetesRoleArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleArgs(
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      hostPlatform: pulumi.Output.create<String>(map['hostPlatform'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      kubernetesClusterInfo: pulumi.Output.create<KubernetesClusterInfo>(KubernetesClusterInfo.fromMap((map['kubernetesClusterInfo'] as Map).cast<String, dynamic>())),
-      kubernetesRoleResources: pulumi.Output.create<KubernetesRoleResources>(KubernetesRoleResources.fromMap((map['kubernetesRoleResources'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleStatus: pulumi.Output.create<String>(map['roleStatus'] as String),
+      deviceName: (map['deviceName'] as String).input(),
+      hostPlatform: (map['hostPlatform'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      kubernetesClusterInfo: (KubernetesClusterInfo.fromMap((map['kubernetesClusterInfo'] as Map).cast<String, dynamic>())).input(),
+      kubernetesRoleResources: (KubernetesRoleResources.fromMap((map['kubernetesRoleResources'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleStatus: (map['roleStatus'] as String).input(),
     );
   }
 }

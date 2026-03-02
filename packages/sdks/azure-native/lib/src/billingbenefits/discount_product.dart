@@ -7,22 +7,22 @@ import 'price_guarantee_properties.dart';
 /// Discount type properties including product family name and product id.
 class DiscountProduct {
   /// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
-  final String applyDiscountOn;
+  final pulumi.Input<String> applyDiscountOn;
   /// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
-  final List<ConditionsItem>? conditions;
+  final pulumi.Input<List<ConditionsItem>>? conditions;
   /// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
-  final String? discountCombinationRule;
+  final pulumi.Input<String>? discountCombinationRule;
   /// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
-  final double? discountPercentage;
+  final pulumi.Input<double>? discountPercentage;
   /// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
   /// Expected value is 'Product'.
-  final String discountType;
+  final pulumi.Input<String> discountType;
   /// Set only in price guarantee scenario.
-  final PriceGuaranteeProperties? priceGuaranteeProperties;
+  final pulumi.Input<PriceGuaranteeProperties>? priceGuaranteeProperties;
   /// Product family for which the discount is given. Validation: Optional
-  final String? productFamilyName;
+  final pulumi.Input<String>? productFamilyName;
   /// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
-  final String? productId;
+  final pulumi.Input<String>? productId;
 
   /// Creates a new [DiscountProduct].
   /// [applyDiscountOn] The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
@@ -47,11 +47,11 @@ class DiscountProduct {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applyDiscountOn': applyDiscountOn,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ConditionsItem, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionsItem>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionsItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'discountCombinationRule': ?discountCombinationRule,
       'discountPercentage': ?discountPercentage,
       'discountType': discountType,
-      'priceGuaranteeProperties': ?priceGuaranteeProperties == null ? null : priceGuaranteeProperties!.toMap(),
+      'priceGuaranteeProperties': ?pulumi.Input.mapOptionalInputValue<PriceGuaranteeProperties, Map<String, dynamic>>(priceGuaranteeProperties, (value) => value.toMap()),
       'productFamilyName': ?productFamilyName,
       'productId': ?productId,
     };
@@ -59,14 +59,14 @@ class DiscountProduct {
 
   factory DiscountProduct.fromMap(Map<String, dynamic> map) {
     return DiscountProduct(
-      applyDiscountOn: map['applyDiscountOn'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ConditionsItem>(map['conditions'], (value) => ConditionsItem.fromMap((value as Map).cast<String, dynamic>())),
-      discountCombinationRule: map['discountCombinationRule'] == null ? null : map['discountCombinationRule'] as String,
-      discountPercentage: map['discountPercentage'] == null ? null : map['discountPercentage'] as double,
-      discountType: map['discountType'] as String,
-      priceGuaranteeProperties: map['priceGuaranteeProperties'] == null ? null : PriceGuaranteeProperties.fromMap((map['priceGuaranteeProperties'] as Map).cast<String, dynamic>()),
-      productFamilyName: map['productFamilyName'] == null ? null : map['productFamilyName'] as String,
-      productId: map['productId'] == null ? null : map['productId'] as String,
+      applyDiscountOn: (map['applyDiscountOn'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionsItem>(map['conditions'], (value) => ConditionsItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discountCombinationRule: map['discountCombinationRule'] == null ? null : (map['discountCombinationRule'] as String).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
+      discountType: (map['discountType'] as String).input(),
+      priceGuaranteeProperties: map['priceGuaranteeProperties'] == null ? null : (PriceGuaranteeProperties.fromMap((map['priceGuaranteeProperties'] as Map).cast<String, dynamic>())).input(),
+      productFamilyName: map['productFamilyName'] == null ? null : (map['productFamilyName'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
     );
   }
 }

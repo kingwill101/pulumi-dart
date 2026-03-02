@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'teradata_import_command_response.dart';
 
 /// A copy activity Teradata sink.
 class TeradataSinkResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Teradata import settings.
-  final TeradataImportCommandResponse? importSettings;
+  final pulumi.Input<TeradataImportCommandResponse>? importSettings;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Sink retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sinkRetryCount;
+  final pulumi.Input<dynamic>? sinkRetryCount;
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sinkRetryWait;
+  final pulumi.Input<dynamic>? sinkRetryWait;
   /// Copy sink type.
   /// Expected value is 'TeradataSink'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic writeBatchSize;
+  final pulumi.Input<dynamic>? writeBatchSize;
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic writeBatchTimeout;
+  final pulumi.Input<dynamic>? writeBatchTimeout;
 
   /// Creates a new [TeradataSinkResponse].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -45,7 +46,7 @@ class TeradataSinkResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disableMetricsCollection': ?disableMetricsCollection,
-      'importSettings': ?importSettings == null ? null : importSettings!.toMap(),
+      'importSettings': ?pulumi.Input.mapOptionalInputValue<TeradataImportCommandResponse, Map<String, dynamic>>(importSettings, (value) => value.toMap()),
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'sinkRetryCount': ?sinkRetryCount,
       'sinkRetryWait': ?sinkRetryWait,
@@ -57,14 +58,14 @@ class TeradataSinkResponse {
 
   factory TeradataSinkResponse.fromMap(Map<String, dynamic> map) {
     return TeradataSinkResponse(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      importSettings: map['importSettings'] == null ? null : TeradataImportCommandResponse.fromMap((map['importSettings'] as Map).cast<String, dynamic>()),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : map['sinkRetryCount'],
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : map['sinkRetryWait'],
-      type: map['type'] as String,
-      writeBatchSize: map['writeBatchSize'] == null ? null : map['writeBatchSize'],
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : map['writeBatchTimeout'],
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      importSettings: map['importSettings'] == null ? null : (TeradataImportCommandResponse.fromMap((map['importSettings'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
+      type: (map['type'] as String).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
     );
   }
 }

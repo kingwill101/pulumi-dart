@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SlsaBuilder encapsulates the identity of the builder of this provenance.
 class SlsaBuilderContaineranalysisV1alpha1 {
   /// id is the id of the slsa provenance builder
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [SlsaBuilderContaineranalysisV1alpha1].
   /// [id] id is the id of the slsa provenance builder
@@ -20,7 +21,7 @@ class SlsaBuilderContaineranalysisV1alpha1 {
 
   factory SlsaBuilderContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SlsaBuilderContaineranalysisV1alpha1(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

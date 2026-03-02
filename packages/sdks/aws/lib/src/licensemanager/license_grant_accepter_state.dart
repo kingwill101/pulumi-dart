@@ -37,27 +37,17 @@ class LicenseGrantAccepterState {
   /// [status] The grant status.
   /// [version] The grant version.
   LicenseGrantAccepterState({
-    pulumi.Output<List<String>>? allowedOperations,
-    pulumi.Output<String>? grantArn,
-    pulumi.Output<String>? homeRegion,
-    pulumi.Output<String>? licenseArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentArn,
-    pulumi.Output<String>? principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? version,
-  }) :
-      allowedOperations = pulumi.Input.asOptionalInput<List<String>>(allowedOperations),
-      grantArn = pulumi.Input.asOptionalInput<String>(grantArn),
-      homeRegion = pulumi.Input.asOptionalInput<String>(homeRegion),
-      licenseArn = pulumi.Input.asOptionalInput<String>(licenseArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentArn = pulumi.Input.asOptionalInput<String>(parentArn),
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.allowedOperations,
+    this.grantArn,
+    this.homeRegion,
+    this.licenseArn,
+    this.name,
+    this.parentArn,
+    this.principal,
+    this.region,
+    this.status,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class LicenseGrantAccepterState {
 
   factory LicenseGrantAccepterState.fromMap(Map<String, dynamic> map) {
     return LicenseGrantAccepterState(
-      allowedOperations: map['allowedOperations'] == null ? null : pulumi.Output.create<List<String>>((map['allowedOperations'] as List).cast<String>()),
-      grantArn: map['grantArn'] == null ? null : pulumi.Output.create<String>(map['grantArn'] as String),
-      homeRegion: map['homeRegion'] == null ? null : pulumi.Output.create<String>(map['homeRegion'] as String),
-      licenseArn: map['licenseArn'] == null ? null : pulumi.Output.create<String>(map['licenseArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentArn: map['parentArn'] == null ? null : pulumi.Output.create<String>(map['parentArn'] as String),
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      allowedOperations: map['allowedOperations'] == null ? null : ((map['allowedOperations'] as List).cast<String>()).input(),
+      grantArn: map['grantArn'] == null ? null : (map['grantArn'] as String).input(),
+      homeRegion: map['homeRegion'] == null ? null : (map['homeRegion'] as String).input(),
+      licenseArn: map['licenseArn'] == null ? null : (map['licenseArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentArn: map['parentArn'] == null ? null : (map['parentArn'] as String).input(),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

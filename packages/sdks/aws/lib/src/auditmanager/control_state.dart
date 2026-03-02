@@ -43,29 +43,18 @@ class ControlState {
   /// [testingInformation] Steps to follow to determine if the control is satisfied.
   /// [type] Type of control, such as a custom control or a standard control.
   ControlState({
-    pulumi.Output<String>? actionPlanInstructions,
-    pulumi.Output<String>? actionPlanTitle,
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<ControlControlMappingSource>>? controlMappingSources,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? testingInformation,
-    pulumi.Output<String>? type,
-  }) :
-      actionPlanInstructions = pulumi.Input.asOptionalInput<String>(actionPlanInstructions),
-      actionPlanTitle = pulumi.Input.asOptionalInput<String>(actionPlanTitle),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      controlMappingSources = pulumi.Input.asOptionalInput<List<ControlControlMappingSource>>(controlMappingSources),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      testingInformation = pulumi.Input.asOptionalInput<String>(testingInformation),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.actionPlanInstructions,
+    this.actionPlanTitle,
+    this.arn,
+    this.controlMappingSources,
+    this.description,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.testingInformation,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class ControlState {
 
   factory ControlState.fromMap(Map<String, dynamic> map) {
     return ControlState(
-      actionPlanInstructions: map['actionPlanInstructions'] == null ? null : pulumi.Output.create<String>(map['actionPlanInstructions'] as String),
-      actionPlanTitle: map['actionPlanTitle'] == null ? null : pulumi.Output.create<String>(map['actionPlanTitle'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      controlMappingSources: map['controlMappingSources'] == null ? null : pulumi.Output.create<List<ControlControlMappingSource>>(pulumi.Input.decodeList<ControlControlMappingSource>(map['controlMappingSources'], (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      testingInformation: map['testingInformation'] == null ? null : pulumi.Output.create<String>(map['testingInformation'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      actionPlanInstructions: map['actionPlanInstructions'] == null ? null : (map['actionPlanInstructions'] as String).input(),
+      actionPlanTitle: map['actionPlanTitle'] == null ? null : (map['actionPlanTitle'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      controlMappingSources: map['controlMappingSources'] == null ? null : (pulumi.Input.decodeList<ControlControlMappingSource>(map['controlMappingSources'], (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      testingInformation: map['testingInformation'] == null ? null : (map['testingInformation'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

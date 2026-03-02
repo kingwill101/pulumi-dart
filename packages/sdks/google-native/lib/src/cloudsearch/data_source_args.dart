@@ -38,25 +38,16 @@ class DataSourceArgs {
   /// [returnThumbnailUrls] Can a user request to get thumbnail URI for Items indexed in this data source.
   /// [shortName] A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
   DataSourceArgs({
-    pulumi.Output<bool>? disableModifications,
-    pulumi.Output<bool>? disableServing,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<String>>? indexingServiceAccounts,
-    pulumi.Output<List<GSuitePrincipal>>? itemsVisibility,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? operationIds,
-    pulumi.Output<bool>? returnThumbnailUrls,
-    pulumi.Output<String>? shortName,
-  }) :
-      disableModifications = pulumi.Input.asOptionalInput<bool>(disableModifications),
-      disableServing = pulumi.Input.asOptionalInput<bool>(disableServing),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      indexingServiceAccounts = pulumi.Input.asOptionalInput<List<String>>(indexingServiceAccounts),
-      itemsVisibility = pulumi.Input.asOptionalInput<List<GSuitePrincipal>>(itemsVisibility),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operationIds = pulumi.Input.asOptionalInput<List<String>>(operationIds),
-      returnThumbnailUrls = pulumi.Input.asOptionalInput<bool>(returnThumbnailUrls),
-      shortName = pulumi.Input.asOptionalInput<String>(shortName);
+    this.disableModifications,
+    this.disableServing,
+    required this.displayName,
+    this.indexingServiceAccounts,
+    this.itemsVisibility,
+    this.name,
+    this.operationIds,
+    this.returnThumbnailUrls,
+    this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      disableModifications: map['disableModifications'] == null ? null : pulumi.Output.create<bool>(map['disableModifications'] as bool),
-      disableServing: map['disableServing'] == null ? null : pulumi.Output.create<bool>(map['disableServing'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      indexingServiceAccounts: map['indexingServiceAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['indexingServiceAccounts'] as List).cast<String>()),
-      itemsVisibility: map['itemsVisibility'] == null ? null : pulumi.Output.create<List<GSuitePrincipal>>(pulumi.Input.decodeList<GSuitePrincipal>(map['itemsVisibility'], (value) => GSuitePrincipal.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operationIds: map['operationIds'] == null ? null : pulumi.Output.create<List<String>>((map['operationIds'] as List).cast<String>()),
-      returnThumbnailUrls: map['returnThumbnailUrls'] == null ? null : pulumi.Output.create<bool>(map['returnThumbnailUrls'] as bool),
-      shortName: map['shortName'] == null ? null : pulumi.Output.create<String>(map['shortName'] as String),
+      disableModifications: map['disableModifications'] == null ? null : (map['disableModifications'] as bool).input(),
+      disableServing: map['disableServing'] == null ? null : (map['disableServing'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      indexingServiceAccounts: map['indexingServiceAccounts'] == null ? null : ((map['indexingServiceAccounts'] as List).cast<String>()).input(),
+      itemsVisibility: map['itemsVisibility'] == null ? null : (pulumi.Input.decodeList<GSuitePrincipal>(map['itemsVisibility'], (value) => GSuitePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operationIds: map['operationIds'] == null ? null : ((map['operationIds'] as List).cast<String>()).input(),
+      returnThumbnailUrls: map['returnThumbnailUrls'] == null ? null : (map['returnThumbnailUrls'] as bool).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
     );
   }
 }

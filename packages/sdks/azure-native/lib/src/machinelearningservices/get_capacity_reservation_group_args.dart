@@ -16,11 +16,9 @@ class GetCapacityReservationGroupArgs {
   /// [groupId] Group ID
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCapacityReservationGroupArgs({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.groupId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCapacityReservationGroupArgs {
 
   factory GetCapacityReservationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityReservationGroupArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      groupId: (map['groupId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

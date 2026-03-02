@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of NotificationConfiguration
 class AutoScalingGroupNotificationConfiguration {
   /// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   ``autoscaling:EC2_INSTANCE_LAUNCH``   +   ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR``   +   ``autoscaling:EC2_INSTANCE_TERMINATE``   +   ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR``   +   ``autoscaling:TEST_NOTIFICATION``
-  final List<String>? notificationTypes;
+  final pulumi.Input<List<String>>? notificationTypes;
   /// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-  final String? topicARN;
+  final pulumi.Input<String>? topicARN;
 
   /// Creates a new [AutoScalingGroupNotificationConfiguration].
   /// [notificationTypes] A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   ``autoscaling:EC2_INSTANCE_LAUNCH``   +   ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR``   +   ``autoscaling:EC2_INSTANCE_TERMINATE``   +   ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR``   +   ``autoscaling:TEST_NOTIFICATION``
@@ -25,8 +26,8 @@ class AutoScalingGroupNotificationConfiguration {
 
   factory AutoScalingGroupNotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return AutoScalingGroupNotificationConfiguration(
-      notificationTypes: map['notificationTypes'] == null ? null : (map['notificationTypes'] as List).cast<String>(),
-      topicARN: map['topicARN'] == null ? null : map['topicARN'] as String,
+      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes'] as List).cast<String>()).input(),
+      topicARN: map['topicARN'] == null ? null : (map['topicARN'] as String).input(),
     );
   }
 }

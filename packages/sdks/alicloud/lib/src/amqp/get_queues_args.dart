@@ -25,17 +25,12 @@ class GetQueuesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [virtualHostName] The name of the virtual host.
   GetQueuesArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> virtualHostName,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      virtualHostName = pulumi.Input.asInput<String>(virtualHostName);
+    this.ids,
+    required this.instanceId,
+    this.nameRegex,
+    this.outputFile,
+    required this.virtualHostName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetQueuesArgs {
 
   factory GetQueuesArgs.fromMap(Map<String, dynamic> map) {
     return GetQueuesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      virtualHostName: pulumi.Output.create<String>(map['virtualHostName'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      virtualHostName: (map['virtualHostName'] as String).input(),
     );
   }
 }

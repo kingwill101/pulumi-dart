@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AS2 agreement validation settings.
 class AS2ValidationSettingsResponse {
   /// The value indicating whether to check for certificate revocation list on receive.
-  final bool checkCertificateRevocationListOnReceive;
+  final pulumi.Input<bool> checkCertificateRevocationListOnReceive;
   /// The value indicating whether to check for certificate revocation list on send.
-  final bool checkCertificateRevocationListOnSend;
+  final pulumi.Input<bool> checkCertificateRevocationListOnSend;
   /// The value indicating whether to check for duplicate message.
-  final bool checkDuplicateMessage;
+  final pulumi.Input<bool> checkDuplicateMessage;
   /// The value indicating whether the message has to be compressed.
-  final bool compressMessage;
+  final pulumi.Input<bool> compressMessage;
   /// The value indicating whether the message has to be encrypted.
-  final bool encryptMessage;
+  final pulumi.Input<bool> encryptMessage;
   /// The encryption algorithm.
-  final String encryptionAlgorithm;
+  final pulumi.Input<String> encryptionAlgorithm;
   /// The number of days to look back for duplicate interchange.
-  final int interchangeDuplicatesValidityDays;
+  final pulumi.Input<int> interchangeDuplicatesValidityDays;
   /// The value indicating whether to override incoming message properties with those in agreement.
-  final bool overrideMessageProperties;
+  final pulumi.Input<bool> overrideMessageProperties;
   /// The value indicating whether the message has to be signed.
-  final bool signMessage;
+  final pulumi.Input<bool> signMessage;
   /// The signing algorithm.
-  final String? signingAlgorithm;
+  final pulumi.Input<String>? signingAlgorithm;
 
   /// Creates a new [AS2ValidationSettingsResponse].
   /// [checkCertificateRevocationListOnReceive] The value indicating whether to check for certificate revocation list on receive.
@@ -65,16 +66,16 @@ class AS2ValidationSettingsResponse {
 
   factory AS2ValidationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AS2ValidationSettingsResponse(
-      checkCertificateRevocationListOnReceive: map['checkCertificateRevocationListOnReceive'] as bool,
-      checkCertificateRevocationListOnSend: map['checkCertificateRevocationListOnSend'] as bool,
-      checkDuplicateMessage: map['checkDuplicateMessage'] as bool,
-      compressMessage: map['compressMessage'] as bool,
-      encryptMessage: map['encryptMessage'] as bool,
-      encryptionAlgorithm: map['encryptionAlgorithm'] as String,
-      interchangeDuplicatesValidityDays: map['interchangeDuplicatesValidityDays'] as int,
-      overrideMessageProperties: map['overrideMessageProperties'] as bool,
-      signMessage: map['signMessage'] as bool,
-      signingAlgorithm: map['signingAlgorithm'] == null ? null : map['signingAlgorithm'] as String,
+      checkCertificateRevocationListOnReceive: (map['checkCertificateRevocationListOnReceive'] as bool).input(),
+      checkCertificateRevocationListOnSend: (map['checkCertificateRevocationListOnSend'] as bool).input(),
+      checkDuplicateMessage: (map['checkDuplicateMessage'] as bool).input(),
+      compressMessage: (map['compressMessage'] as bool).input(),
+      encryptMessage: (map['encryptMessage'] as bool).input(),
+      encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
+      interchangeDuplicatesValidityDays: (map['interchangeDuplicatesValidityDays'] as int).input(),
+      overrideMessageProperties: (map['overrideMessageProperties'] as bool).input(),
+      signMessage: (map['signMessage'] as bool).input(),
+      signingAlgorithm: map['signingAlgorithm'] == null ? null : (map['signingAlgorithm'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_field_id_response.dart';
 
 /// Compute numerical stats over an individual column, including min, max, and quantiles.
 class GooglePrivacyDlpV2NumericalStatsConfigResponse {
   /// Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
-  final GooglePrivacyDlpV2FieldIdResponse field;
+  final pulumi.Input<GooglePrivacyDlpV2FieldIdResponse> field;
 
   /// Creates a new [GooglePrivacyDlpV2NumericalStatsConfigResponse].
   /// [field] Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
@@ -15,13 +16,13 @@ class GooglePrivacyDlpV2NumericalStatsConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'field': field.toMap(),
+      'field': pulumi.Input.mapInputValue<GooglePrivacyDlpV2FieldIdResponse, Map<String, dynamic>>(field, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2NumericalStatsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2NumericalStatsConfigResponse(
-      field: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>()),
+      field: (GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

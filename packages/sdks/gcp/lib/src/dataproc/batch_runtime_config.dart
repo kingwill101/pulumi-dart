@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batch_runtime_config_autotuning_config.dart';
 
 class BatchRuntimeConfig {
   /// Optional. Autotuning configuration of the workload.
   /// Structure is documented below.
-  final BatchRuntimeConfigAutotuningConfig? autotuningConfig;
+  final pulumi.Input<BatchRuntimeConfigAutotuningConfig>? autotuningConfig;
   /// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
-  final String? cohort;
+  final pulumi.Input<String>? cohort;
   /// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
-  final String? containerImage;
+  final pulumi.Input<String>? containerImage;
   /// (Output)
   /// A mapping of property names to values, which are used to configure workload execution.
-  final Map<String, String>? effectiveProperties;
+  final pulumi.Input<Map<String, String>>? effectiveProperties;
   /// A mapping of property names to values, which are used to configure workload execution.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Version of the batch runtime.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [BatchRuntimeConfig].
   /// [autotuningConfig] Optional. Autotuning configuration of the workload.
@@ -36,7 +37,7 @@ class BatchRuntimeConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autotuningConfig': ?autotuningConfig == null ? null : autotuningConfig!.toMap(),
+      'autotuningConfig': ?pulumi.Input.mapOptionalInputValue<BatchRuntimeConfigAutotuningConfig, Map<String, dynamic>>(autotuningConfig, (value) => value.toMap()),
       'cohort': ?cohort,
       'containerImage': ?containerImage,
       'effectiveProperties': ?effectiveProperties,
@@ -47,12 +48,12 @@ class BatchRuntimeConfig {
 
   factory BatchRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeConfig(
-      autotuningConfig: map['autotuningConfig'] == null ? null : BatchRuntimeConfigAutotuningConfig.fromMap((map['autotuningConfig'] as Map).cast<String, dynamic>()),
-      cohort: map['cohort'] == null ? null : map['cohort'] as String,
-      containerImage: map['containerImage'] == null ? null : map['containerImage'] as String,
-      effectiveProperties: map['effectiveProperties'] == null ? null : (map['effectiveProperties'] as Map).cast<String, String>(),
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      version: map['version'] == null ? null : map['version'] as String,
+      autotuningConfig: map['autotuningConfig'] == null ? null : (BatchRuntimeConfigAutotuningConfig.fromMap((map['autotuningConfig'] as Map).cast<String, dynamic>())).input(),
+      cohort: map['cohort'] == null ? null : (map['cohort'] as String).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
+      effectiveProperties: map['effectiveProperties'] == null ? null : ((map['effectiveProperties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class AccessPolicyAssociationArgs {
   /// [principalArn] The IAM Principal ARN which requires Authentication access to the EKS cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AccessPolicyAssociationArgs({
-    required pulumi.Output<AccessPolicyAssociationAccessScope> accessScope,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> policyArn,
-    required pulumi.Output<String> principalArn,
-    pulumi.Output<String>? region,
-  }) :
-      accessScope = pulumi.Input.asInput<AccessPolicyAssociationAccessScope>(accessScope),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      policyArn = pulumi.Input.asInput<String>(policyArn),
-      principalArn = pulumi.Input.asInput<String>(principalArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.accessScope,
+    required this.clusterName,
+    required this.policyArn,
+    required this.principalArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AccessPolicyAssociationArgs {
 
   factory AccessPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssociationArgs(
-      accessScope: pulumi.Output.create<AccessPolicyAssociationAccessScope>(AccessPolicyAssociationAccessScope.fromMap((map['accessScope'] as Map).cast<String, dynamic>())),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      policyArn: pulumi.Output.create<String>(map['policyArn'] as String),
-      principalArn: pulumi.Output.create<String>(map['principalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accessScope: (AccessPolicyAssociationAccessScope.fromMap((map['accessScope'] as Map).cast<String, dynamic>())).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      policyArn: (map['policyArn'] as String).input(),
+      principalArn: (map['principalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

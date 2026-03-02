@@ -16,11 +16,9 @@ class GetEnterpriseKnowledgeGraphArgs {
   /// [resourceGroupName] The name of the EnterpriseKnowledgeGraph resource group in the user subscription.
   /// [resourceName] The name of the EnterpriseKnowledgeGraph resource.
   GetEnterpriseKnowledgeGraphArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEnterpriseKnowledgeGraphArgs {
 
   factory GetEnterpriseKnowledgeGraphArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseKnowledgeGraphArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

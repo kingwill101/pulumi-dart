@@ -35,19 +35,13 @@ class GlobalNetworkEndpointGroupState {
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
   GlobalNetworkEndpointGroupState({
-    pulumi.Output<int>? defaultPort,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkEndpointType,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-  }) :
-      defaultPort = pulumi.Input.asOptionalInput<int>(defaultPort),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkEndpointType = pulumi.Input.asOptionalInput<String>(networkEndpointType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.defaultPort,
+    this.description,
+    this.name,
+    this.networkEndpointType,
+    this.project,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class GlobalNetworkEndpointGroupState {
 
   factory GlobalNetworkEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointGroupState(
-      defaultPort: map['defaultPort'] == null ? null : pulumi.Output.create<int>(map['defaultPort'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkEndpointType: map['networkEndpointType'] == null ? null : pulumi.Output.create<String>(map['networkEndpointType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkEndpointType: map['networkEndpointType'] == null ? null : (map['networkEndpointType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

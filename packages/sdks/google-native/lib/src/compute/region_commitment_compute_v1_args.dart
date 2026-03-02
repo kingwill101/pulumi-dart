@@ -56,35 +56,21 @@ class RegionCommitmentComputeV1Args {
   /// [splitSourceCommitment] Source commitment to be split into a new commitment.
   /// [type] The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
   RegionCommitmentComputeV1Args({
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<RegionCommitmentCategoryComputeV1>? category,
-    pulumi.Output<String>? description,
-    pulumi.Output<LicenseResourceCommitmentComputeV1>? licenseResource,
-    pulumi.Output<List<String>>? mergeSourceCommitments,
-    pulumi.Output<String>? name,
-    pulumi.Output<RegionCommitmentPlanComputeV1>? plan,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<ReservationComputeV1Resource>>? reservations,
-    pulumi.Output<List<ResourceCommitmentComputeV1>>? resources,
-    pulumi.Output<String>? splitSourceCommitment,
-    pulumi.Output<RegionCommitmentTypeComputeV1>? type,
-  }) :
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      category = pulumi.Input.asOptionalInput<RegionCommitmentCategoryComputeV1>(category),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      licenseResource = pulumi.Input.asOptionalInput<LicenseResourceCommitmentComputeV1>(licenseResource),
-      mergeSourceCommitments = pulumi.Input.asOptionalInput<List<String>>(mergeSourceCommitments),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plan = pulumi.Input.asOptionalInput<RegionCommitmentPlanComputeV1>(plan),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      reservations = pulumi.Input.asOptionalInput<List<ReservationComputeV1Resource>>(reservations),
-      resources = pulumi.Input.asOptionalInput<List<ResourceCommitmentComputeV1>>(resources),
-      splitSourceCommitment = pulumi.Input.asOptionalInput<String>(splitSourceCommitment),
-      type = pulumi.Input.asOptionalInput<RegionCommitmentTypeComputeV1>(type);
+    this.autoRenew,
+    this.category,
+    this.description,
+    this.licenseResource,
+    this.mergeSourceCommitments,
+    this.name,
+    this.plan,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.reservations,
+    this.resources,
+    this.splitSourceCommitment,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class RegionCommitmentComputeV1Args {
 
   factory RegionCommitmentComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionCommitmentComputeV1Args(
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      category: map['category'] == null ? null : pulumi.Output.create<RegionCommitmentCategoryComputeV1>(RegionCommitmentCategoryComputeV1.fromValue(map['category'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      licenseResource: map['licenseResource'] == null ? null : pulumi.Output.create<LicenseResourceCommitmentComputeV1>(LicenseResourceCommitmentComputeV1.fromMap((map['licenseResource'] as Map).cast<String, dynamic>())),
-      mergeSourceCommitments: map['mergeSourceCommitments'] == null ? null : pulumi.Output.create<List<String>>((map['mergeSourceCommitments'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<RegionCommitmentPlanComputeV1>(RegionCommitmentPlanComputeV1.fromValue(map['plan'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      reservations: map['reservations'] == null ? null : pulumi.Output.create<List<ReservationComputeV1Resource>>((map['reservations'] as List).cast<ReservationComputeV1Resource>()),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<ResourceCommitmentComputeV1>>(pulumi.Input.decodeList<ResourceCommitmentComputeV1>(map['resources'], (value) => ResourceCommitmentComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
-      splitSourceCommitment: map['splitSourceCommitment'] == null ? null : pulumi.Output.create<String>(map['splitSourceCommitment'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<RegionCommitmentTypeComputeV1>(RegionCommitmentTypeComputeV1.fromValue(map['type'] as String)),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      category: map['category'] == null ? null : (RegionCommitmentCategoryComputeV1.fromValue(map['category'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      licenseResource: map['licenseResource'] == null ? null : (LicenseResourceCommitmentComputeV1.fromMap((map['licenseResource'] as Map).cast<String, dynamic>())).input(),
+      mergeSourceCommitments: map['mergeSourceCommitments'] == null ? null : ((map['mergeSourceCommitments'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plan: map['plan'] == null ? null : (RegionCommitmentPlanComputeV1.fromValue(map['plan'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      reservations: map['reservations'] == null ? null : ((map['reservations'] as List).cast<ReservationComputeV1Resource>()).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceCommitmentComputeV1>(map['resources'], (value) => ResourceCommitmentComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      splitSourceCommitment: map['splitSourceCommitment'] == null ? null : (map['splitSourceCommitment'] as String).input(),
+      type: map['type'] == null ? null : (RegionCommitmentTypeComputeV1.fromValue(map['type'] as String)).input(),
     );
   }
 }

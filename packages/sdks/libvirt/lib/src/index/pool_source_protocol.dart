@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolSourceProtocol {
   /// Indicates the version of the protocol being used for the connection.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [PoolSourceProtocol].
   /// [version] Indicates the version of the protocol being used for the connection.
@@ -19,7 +20,7 @@ class PoolSourceProtocol {
 
   factory PoolSourceProtocol.fromMap(Map<String, dynamic> map) {
     return PoolSourceProtocol(
-      version: map['version'] as String,
+      version: (map['version'] as String).input(),
     );
   }
 }

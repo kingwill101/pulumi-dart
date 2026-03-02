@@ -23,15 +23,11 @@ class PatchScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduleEntries] List of patch schedules for a Redis cache.
   PatchScheduleArgs({
-    pulumi.Output<String>? default_,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<ScheduleEntry>> scheduleEntries,
-  }) :
-      default_ = pulumi.Input.asOptionalInput<String>(default_),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleEntries = pulumi.Input.asInput<List<ScheduleEntry>>(scheduleEntries);
+    this.default_,
+    required this.name,
+    required this.resourceGroupName,
+    required this.scheduleEntries,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class PatchScheduleArgs {
 
   factory PatchScheduleArgs.fromMap(Map<String, dynamic> map) {
     return PatchScheduleArgs(
-      default_: map['default'] == null ? null : pulumi.Output.create<String>(map['default'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleEntries: pulumi.Output.create<List<ScheduleEntry>>(pulumi.Input.decodeList<ScheduleEntry>(map['scheduleEntries'], (value) => ScheduleEntry.fromMap((value as Map).cast<String, dynamic>()))),
+      default_: map['default'] == null ? null : (map['default'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleEntries: (pulumi.Input.decodeList<ScheduleEntry>(map['scheduleEntries'], (value) => ScheduleEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

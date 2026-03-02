@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretVersionsVersion {
   /// The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).
-  final String secretData;
+  final pulumi.Input<String> secretData;
   /// The type of the secret value. (Returned when `enable_details` is true).
-  final String secretDataType;
+  final pulumi.Input<String> secretDataType;
   /// The name of the secret.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// The version number of the secret value.
-  final String versionId;
+  final pulumi.Input<String> versionId;
   /// Stage labels that mark the secret version.
-  final List<String> versionStages;
+  final pulumi.Input<List<String>> versionStages;
 
   /// Creates a new [GetSecretVersionsVersion].
   /// [secretData] The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).
@@ -39,11 +40,11 @@ class GetSecretVersionsVersion {
 
   factory GetSecretVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsVersion(
-      secretData: map['secretData'] as String,
-      secretDataType: map['secretDataType'] as String,
-      secretName: map['secretName'] as String,
-      versionId: map['versionId'] as String,
-      versionStages: (map['versionStages'] as List).cast<String>(),
+      secretData: (map['secretData'] as String).input(),
+      secretDataType: (map['secretDataType'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
+      versionStages: ((map['versionStages'] as List).cast<String>()).input(),
     );
   }
 }

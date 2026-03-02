@@ -38,25 +38,16 @@ class RoutePolicyArgs {
   /// [statements] Route Policy statements.
   /// [tags] Resource tags.
   RoutePolicyArgs({
-    pulumi.Output<String>? addressFamilyType,
-    pulumi.Output<String>? annotation,
-    pulumi.Output<String>? defaultAction,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkFabricId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routePolicyName,
-    required pulumi.Output<List<RoutePolicyStatementProperties>> statements,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addressFamilyType = pulumi.Input.asOptionalInput<String>(addressFamilyType),
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      defaultAction = pulumi.Input.asOptionalInput<String>(defaultAction),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkFabricId = pulumi.Input.asInput<String>(networkFabricId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routePolicyName = pulumi.Input.asOptionalInput<String>(routePolicyName),
-      statements = pulumi.Input.asInput<List<RoutePolicyStatementProperties>>(statements),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.addressFamilyType,
+    this.annotation,
+    this.defaultAction,
+    this.location,
+    required this.networkFabricId,
+    required this.resourceGroupName,
+    this.routePolicyName,
+    required this.statements,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class RoutePolicyArgs {
 
   factory RoutePolicyArgs.fromMap(Map<String, dynamic> map) {
     return RoutePolicyArgs(
-      addressFamilyType: map['addressFamilyType'] == null ? null : pulumi.Output.create<String>(map['addressFamilyType'] as String),
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      defaultAction: map['defaultAction'] == null ? null : pulumi.Output.create<String>(map['defaultAction'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkFabricId: pulumi.Output.create<String>(map['networkFabricId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routePolicyName: map['routePolicyName'] == null ? null : pulumi.Output.create<String>(map['routePolicyName'] as String),
-      statements: pulumi.Output.create<List<RoutePolicyStatementProperties>>(pulumi.Input.decodeList<RoutePolicyStatementProperties>(map['statements'], (value) => RoutePolicyStatementProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addressFamilyType: map['addressFamilyType'] == null ? null : (map['addressFamilyType'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkFabricId: (map['networkFabricId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routePolicyName: map['routePolicyName'] == null ? null : (map['routePolicyName'] as String).input(),
+      statements: (pulumi.Input.decodeList<RoutePolicyStatementProperties>(map['statements'], (value) => RoutePolicyStatementProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

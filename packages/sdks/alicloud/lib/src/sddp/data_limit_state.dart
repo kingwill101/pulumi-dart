@@ -37,27 +37,17 @@ class DataLimitState {
   /// [serviceRegionId] The region ID of the data asset.
   /// [userName] The name of the service to which the data asset belongs.
   DataLimitState({
-    pulumi.Output<int>? auditStatus,
-    pulumi.Output<String>? engineType,
-    pulumi.Output<String>? lang,
-    pulumi.Output<int>? logStoreDay,
-    pulumi.Output<String>? parentId,
-    pulumi.Output<String>? password,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? serviceRegionId,
-    pulumi.Output<String>? userName,
-  }) :
-      auditStatus = pulumi.Input.asOptionalInput<int>(auditStatus),
-      engineType = pulumi.Input.asOptionalInput<String>(engineType),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      logStoreDay = pulumi.Input.asOptionalInput<int>(logStoreDay),
-      parentId = pulumi.Input.asOptionalInput<String>(parentId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      serviceRegionId = pulumi.Input.asOptionalInput<String>(serviceRegionId),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.auditStatus,
+    this.engineType,
+    this.lang,
+    this.logStoreDay,
+    this.parentId,
+    this.password,
+    this.port,
+    this.resourceType,
+    this.serviceRegionId,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class DataLimitState {
 
   factory DataLimitState.fromMap(Map<String, dynamic> map) {
     return DataLimitState(
-      auditStatus: map['auditStatus'] == null ? null : pulumi.Output.create<int>(map['auditStatus'] as int),
-      engineType: map['engineType'] == null ? null : pulumi.Output.create<String>(map['engineType'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      logStoreDay: map['logStoreDay'] == null ? null : pulumi.Output.create<int>(map['logStoreDay'] as int),
-      parentId: map['parentId'] == null ? null : pulumi.Output.create<String>(map['parentId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      serviceRegionId: map['serviceRegionId'] == null ? null : pulumi.Output.create<String>(map['serviceRegionId'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      auditStatus: map['auditStatus'] == null ? null : (map['auditStatus'] as int).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      logStoreDay: map['logStoreDay'] == null ? null : (map['logStoreDay'] as int).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      serviceRegionId: map['serviceRegionId'] == null ? null : (map['serviceRegionId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

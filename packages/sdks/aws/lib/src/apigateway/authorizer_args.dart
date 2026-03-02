@@ -41,27 +41,17 @@ class AuthorizerArgs {
   /// [restApi] ID of the associated REST API
   /// [type] Type of the authorizer. Possible values are `TOKEN` for a Lambda function using a single authorization token submitted in a custom header, `REQUEST` for a Lambda function using incoming request parameters, or `COGNITO_USER_POOLS` for using an Amazon Cognito user pool. Defaults to `TOKEN`.
   AuthorizerArgs({
-    pulumi.Output<String>? authorizerCredentials,
-    pulumi.Output<int>? authorizerResultTtlInSeconds,
-    pulumi.Output<String>? authorizerUri,
-    pulumi.Output<String>? identitySource,
-    pulumi.Output<String>? identityValidationExpression,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? providerArns,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApi,
-    pulumi.Output<String>? type,
-  }) :
-      authorizerCredentials = pulumi.Input.asOptionalInput<String>(authorizerCredentials),
-      authorizerResultTtlInSeconds = pulumi.Input.asOptionalInput<int>(authorizerResultTtlInSeconds),
-      authorizerUri = pulumi.Input.asOptionalInput<String>(authorizerUri),
-      identitySource = pulumi.Input.asOptionalInput<String>(identitySource),
-      identityValidationExpression = pulumi.Input.asOptionalInput<String>(identityValidationExpression),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerArns = pulumi.Input.asOptionalInput<List<String>>(providerArns),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asInput<String>(restApi),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.authorizerCredentials,
+    this.authorizerResultTtlInSeconds,
+    this.authorizerUri,
+    this.identitySource,
+    this.identityValidationExpression,
+    this.name,
+    this.providerArns,
+    this.region,
+    required this.restApi,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class AuthorizerArgs {
 
   factory AuthorizerArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizerArgs(
-      authorizerCredentials: map['authorizerCredentials'] == null ? null : pulumi.Output.create<String>(map['authorizerCredentials'] as String),
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : pulumi.Output.create<int>(map['authorizerResultTtlInSeconds'] as int),
-      authorizerUri: map['authorizerUri'] == null ? null : pulumi.Output.create<String>(map['authorizerUri'] as String),
-      identitySource: map['identitySource'] == null ? null : pulumi.Output.create<String>(map['identitySource'] as String),
-      identityValidationExpression: map['identityValidationExpression'] == null ? null : pulumi.Output.create<String>(map['identityValidationExpression'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerArns: map['providerArns'] == null ? null : pulumi.Output.create<List<String>>((map['providerArns'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApi: pulumi.Output.create<String>(map['restApi'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      authorizerCredentials: map['authorizerCredentials'] == null ? null : (map['authorizerCredentials'] as String).input(),
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds'] as int).input(),
+      authorizerUri: map['authorizerUri'] == null ? null : (map['authorizerUri'] as String).input(),
+      identitySource: map['identitySource'] == null ? null : (map['identitySource'] as String).input(),
+      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerArns: map['providerArns'] == null ? null : ((map['providerArns'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApi: (map['restApi'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

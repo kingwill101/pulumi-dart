@@ -25,17 +25,12 @@ class ImageLibArgs {
   /// [imageLibName] The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
   /// [scene] The moderation scenario to which the custom image library applies. Valid values: PORN: pornography detection, AD: ad detection, ILLEGAL: terrorist content detection
   ImageLibArgs({
-    pulumi.Output<List<String>>? bizTypes,
-    required pulumi.Output<String> category,
-    pulumi.Output<bool>? enable,
-    required pulumi.Output<String> imageLibName,
-    required pulumi.Output<String> scene,
-  }) :
-      bizTypes = pulumi.Input.asOptionalInput<List<String>>(bizTypes),
-      category = pulumi.Input.asInput<String>(category),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      imageLibName = pulumi.Input.asInput<String>(imageLibName),
-      scene = pulumi.Input.asInput<String>(scene);
+    this.bizTypes,
+    required this.category,
+    this.enable,
+    required this.imageLibName,
+    required this.scene,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ImageLibArgs {
 
   factory ImageLibArgs.fromMap(Map<String, dynamic> map) {
     return ImageLibArgs(
-      bizTypes: map['bizTypes'] == null ? null : pulumi.Output.create<List<String>>((map['bizTypes'] as List).cast<String>()),
-      category: pulumi.Output.create<String>(map['category'] as String),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      imageLibName: pulumi.Output.create<String>(map['imageLibName'] as String),
-      scene: pulumi.Output.create<String>(map['scene'] as String),
+      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes'] as List).cast<String>()).input(),
+      category: (map['category'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      imageLibName: (map['imageLibName'] as String).input(),
+      scene: (map['scene'] as String).input(),
     );
   }
 }

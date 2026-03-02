@@ -16,11 +16,9 @@ class GetADOOAuthInfoArgs {
   /// [location] The name of the Azure region.
   /// [redirectUrl] The URL the client will redirect to on successful authentication. If empty, no redirect will occur.
   GetADOOAuthInfoArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? redirectUrl,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      redirectUrl = pulumi.Input.asOptionalInput<String>(redirectUrl);
+    required this.location,
+    this.redirectUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetADOOAuthInfoArgs {
 
   factory GetADOOAuthInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetADOOAuthInfoArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      redirectUrl: map['redirectUrl'] == null ? null : pulumi.Output.create<String>(map['redirectUrl'] as String),
+      location: (map['location'] as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
     );
   }
 }

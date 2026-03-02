@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_ncross_validations.dart';
 import 'mltable_job_input.dart';
 import 'regression_training_settings.dart';
@@ -9,42 +10,42 @@ import 'table_vertical_limit_settings.dart';
 /// Regression task in AutoML Table vertical.
 class Regression {
   /// Columns to use for CVSplit data.
-  final List<String>? cvSplitColumnNames;
+  final pulumi.Input<List<String>>? cvSplitColumnNames;
   /// Featurization inputs needed for AutoML job.
-  final TableVerticalFeaturizationSettings? featurizationSettings;
+  final pulumi.Input<TableVerticalFeaturizationSettings>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
-  final TableVerticalLimitSettings? limitSettings;
+  final pulumi.Input<TableVerticalLimitSettings>? limitSettings;
   /// Log verbosity for the job.
-  final String? logVerbosity;
+  final pulumi.Input<String>? logVerbosity;
   /// Number of cross validation folds to be applied on training dataset
   /// when validation dataset is not provided.
-  final AutoNCrossValidations? nCrossValidations;
+  final pulumi.Input<AutoNCrossValidations>? nCrossValidations;
   /// Primary metric for regression task.
-  final String? primaryMetric;
+  final pulumi.Input<String>? primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
-  final String? targetColumnName;
+  final pulumi.Input<String>? targetColumnName;
   /// AutoMLJob Task type.
   /// Expected value is 'Regression'.
-  final String taskType;
+  final pulumi.Input<String> taskType;
   /// Test data input.
-  final MLTableJobInput? testData;
+  final pulumi.Input<MLTableJobInput>? testData;
   /// The fraction of test dataset that needs to be set aside for validation purpose.
   /// Values between (0.0 , 1.0)
   /// Applied when validation dataset is not provided.
-  final double? testDataSize;
+  final pulumi.Input<double>? testDataSize;
   /// [Required] Training data input.
-  final MLTableJobInput trainingData;
+  final pulumi.Input<MLTableJobInput> trainingData;
   /// Inputs for training phase for an AutoML Job.
-  final RegressionTrainingSettings? trainingSettings;
+  final pulumi.Input<RegressionTrainingSettings>? trainingSettings;
   /// Validation data inputs.
-  final MLTableJobInput? validationData;
+  final pulumi.Input<MLTableJobInput>? validationData;
   /// The fraction of training dataset that needs to be set aside for validation purpose.
   /// Values between (0.0 , 1.0)
   /// Applied when validation dataset is not provided.
-  final double? validationDataSize;
+  final pulumi.Input<double>? validationDataSize;
   /// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-  final String? weightColumnName;
+  final pulumi.Input<String>? weightColumnName;
 
   /// Creates a new [Regression].
   /// [cvSplitColumnNames] Columns to use for CVSplit data.
@@ -83,18 +84,18 @@ class Regression {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cvSplitColumnNames': ?cvSplitColumnNames,
-      'featurizationSettings': ?featurizationSettings == null ? null : featurizationSettings!.toMap(),
-      'limitSettings': ?limitSettings == null ? null : limitSettings!.toMap(),
+      'featurizationSettings': ?pulumi.Input.mapOptionalInputValue<TableVerticalFeaturizationSettings, Map<String, dynamic>>(featurizationSettings, (value) => value.toMap()),
+      'limitSettings': ?pulumi.Input.mapOptionalInputValue<TableVerticalLimitSettings, Map<String, dynamic>>(limitSettings, (value) => value.toMap()),
       'logVerbosity': ?logVerbosity,
-      'nCrossValidations': ?nCrossValidations == null ? null : nCrossValidations!.toMap(),
+      'nCrossValidations': ?pulumi.Input.mapOptionalInputValue<AutoNCrossValidations, Map<String, dynamic>>(nCrossValidations, (value) => value.toMap()),
       'primaryMetric': ?primaryMetric,
       'targetColumnName': ?targetColumnName,
       'taskType': taskType,
-      'testData': ?testData == null ? null : testData!.toMap(),
+      'testData': ?pulumi.Input.mapOptionalInputValue<MLTableJobInput, Map<String, dynamic>>(testData, (value) => value.toMap()),
       'testDataSize': ?testDataSize,
-      'trainingData': trainingData.toMap(),
-      'trainingSettings': ?trainingSettings == null ? null : trainingSettings!.toMap(),
-      'validationData': ?validationData == null ? null : validationData!.toMap(),
+      'trainingData': pulumi.Input.mapInputValue<MLTableJobInput, Map<String, dynamic>>(trainingData, (value) => value.toMap()),
+      'trainingSettings': ?pulumi.Input.mapOptionalInputValue<RegressionTrainingSettings, Map<String, dynamic>>(trainingSettings, (value) => value.toMap()),
+      'validationData': ?pulumi.Input.mapOptionalInputValue<MLTableJobInput, Map<String, dynamic>>(validationData, (value) => value.toMap()),
       'validationDataSize': ?validationDataSize,
       'weightColumnName': ?weightColumnName,
     };
@@ -102,21 +103,21 @@ class Regression {
 
   factory Regression.fromMap(Map<String, dynamic> map) {
     return Regression(
-      cvSplitColumnNames: map['cvSplitColumnNames'] == null ? null : (map['cvSplitColumnNames'] as List).cast<String>(),
-      featurizationSettings: map['featurizationSettings'] == null ? null : TableVerticalFeaturizationSettings.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>()),
-      limitSettings: map['limitSettings'] == null ? null : TableVerticalLimitSettings.fromMap((map['limitSettings'] as Map).cast<String, dynamic>()),
-      logVerbosity: map['logVerbosity'] == null ? null : map['logVerbosity'] as String,
-      nCrossValidations: map['nCrossValidations'] == null ? null : AutoNCrossValidations.fromMap((map['nCrossValidations'] as Map).cast<String, dynamic>()),
-      primaryMetric: map['primaryMetric'] == null ? null : map['primaryMetric'] as String,
-      targetColumnName: map['targetColumnName'] == null ? null : map['targetColumnName'] as String,
-      taskType: map['taskType'] as String,
-      testData: map['testData'] == null ? null : MLTableJobInput.fromMap((map['testData'] as Map).cast<String, dynamic>()),
-      testDataSize: map['testDataSize'] == null ? null : map['testDataSize'] as double,
-      trainingData: MLTableJobInput.fromMap((map['trainingData'] as Map).cast<String, dynamic>()),
-      trainingSettings: map['trainingSettings'] == null ? null : RegressionTrainingSettings.fromMap((map['trainingSettings'] as Map).cast<String, dynamic>()),
-      validationData: map['validationData'] == null ? null : MLTableJobInput.fromMap((map['validationData'] as Map).cast<String, dynamic>()),
-      validationDataSize: map['validationDataSize'] == null ? null : map['validationDataSize'] as double,
-      weightColumnName: map['weightColumnName'] == null ? null : map['weightColumnName'] as String,
+      cvSplitColumnNames: map['cvSplitColumnNames'] == null ? null : ((map['cvSplitColumnNames'] as List).cast<String>()).input(),
+      featurizationSettings: map['featurizationSettings'] == null ? null : (TableVerticalFeaturizationSettings.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>())).input(),
+      limitSettings: map['limitSettings'] == null ? null : (TableVerticalLimitSettings.fromMap((map['limitSettings'] as Map).cast<String, dynamic>())).input(),
+      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity'] as String).input(),
+      nCrossValidations: map['nCrossValidations'] == null ? null : (AutoNCrossValidations.fromMap((map['nCrossValidations'] as Map).cast<String, dynamic>())).input(),
+      primaryMetric: map['primaryMetric'] == null ? null : (map['primaryMetric'] as String).input(),
+      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
+      testData: map['testData'] == null ? null : (MLTableJobInput.fromMap((map['testData'] as Map).cast<String, dynamic>())).input(),
+      testDataSize: map['testDataSize'] == null ? null : (map['testDataSize'] as double).input(),
+      trainingData: (MLTableJobInput.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
+      trainingSettings: map['trainingSettings'] == null ? null : (RegressionTrainingSettings.fromMap((map['trainingSettings'] as Map).cast<String, dynamic>())).input(),
+      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData'] as Map).cast<String, dynamic>())).input(),
+      validationDataSize: map['validationDataSize'] == null ? null : (map['validationDataSize'] as double).input(),
+      weightColumnName: map['weightColumnName'] == null ? null : (map['weightColumnName'] as String).input(),
     );
   }
 }

@@ -53,27 +53,17 @@ class AiFeatureOnlineStoreArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature online store. eg us-central1
   AiFeatureOnlineStoreArgs({
-    pulumi.Output<AiFeatureOnlineStoreBigtable>? bigtable,
-    pulumi.Output<AiFeatureOnlineStoreDedicatedServingEndpoint>? dedicatedServingEndpoint,
-    pulumi.Output<AiFeatureOnlineStoreEmbeddingManagement>? embeddingManagement,
-    pulumi.Output<AiFeatureOnlineStoreEncryptionSpec>? encryptionSpec,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, dynamic>>? optimized,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      bigtable = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreBigtable>(bigtable),
-      dedicatedServingEndpoint = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreDedicatedServingEndpoint>(dedicatedServingEndpoint),
-      embeddingManagement = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreEmbeddingManagement>(embeddingManagement),
-      encryptionSpec = pulumi.Input.asOptionalInput<AiFeatureOnlineStoreEncryptionSpec>(encryptionSpec),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      optimized = pulumi.Input.asOptionalInput<Map<String, dynamic>>(optimized),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bigtable,
+    this.dedicatedServingEndpoint,
+    this.embeddingManagement,
+    this.encryptionSpec,
+    this.forceDestroy,
+    this.labels,
+    this.name,
+    this.optimized,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,16 +82,16 @@ class AiFeatureOnlineStoreArgs {
 
   factory AiFeatureOnlineStoreArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreArgs(
-      bigtable: map['bigtable'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreBigtable>(AiFeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())),
-      dedicatedServingEndpoint: map['dedicatedServingEndpoint'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreDedicatedServingEndpoint>(AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((map['dedicatedServingEndpoint'] as Map).cast<String, dynamic>())),
-      embeddingManagement: map['embeddingManagement'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreEmbeddingManagement>(AiFeatureOnlineStoreEmbeddingManagement.fromMap((map['embeddingManagement'] as Map).cast<String, dynamic>())),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiFeatureOnlineStoreEncryptionSpec>(AiFeatureOnlineStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      optimized: map['optimized'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['optimized'] as Map).cast<String, dynamic>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bigtable: map['bigtable'] == null ? null : (AiFeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())).input(),
+      dedicatedServingEndpoint: map['dedicatedServingEndpoint'] == null ? null : (AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((map['dedicatedServingEndpoint'] as Map).cast<String, dynamic>())).input(),
+      embeddingManagement: map['embeddingManagement'] == null ? null : (AiFeatureOnlineStoreEmbeddingManagement.fromMap((map['embeddingManagement'] as Map).cast<String, dynamic>())).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureOnlineStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      optimized: map['optimized'] == null ? null : ((map['optimized'] as Map).cast<String, dynamic>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

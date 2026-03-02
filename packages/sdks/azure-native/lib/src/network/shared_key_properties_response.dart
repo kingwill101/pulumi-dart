@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters for SharedKey.
 class SharedKeyPropertiesResponse {
   /// The provisioning state of the SharedKey resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The value of the shared key for the vpn link connection.
-  final String? sharedKey;
+  final pulumi.Input<String>? sharedKey;
   /// The length of the shared key for the vpn link connection.
-  final int? sharedKeyLength;
+  final pulumi.Input<int>? sharedKeyLength;
 
   /// Creates a new [SharedKeyPropertiesResponse].
   /// [provisioningState] The provisioning state of the SharedKey resource.
@@ -30,9 +31,9 @@ class SharedKeyPropertiesResponse {
 
   factory SharedKeyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SharedKeyPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      sharedKey: map['sharedKey'] == null ? null : map['sharedKey'] as String,
-      sharedKeyLength: map['sharedKeyLength'] == null ? null : map['sharedKeyLength'] as int,
+      provisioningState: (map['provisioningState'] as String).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
+      sharedKeyLength: map['sharedKeyLength'] == null ? null : (map['sharedKeyLength'] as int).input(),
     );
   }
 }

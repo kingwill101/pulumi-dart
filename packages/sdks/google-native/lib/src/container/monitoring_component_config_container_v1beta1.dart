@@ -6,7 +6,7 @@ import 'monitoring_component_config_enable_components_item_container_v1beta1.dar
 /// MonitoringComponentConfig is cluster monitoring component configuration.
 class MonitoringComponentConfigContainerV1beta1 {
   /// Select components to collect metrics. An empty set would disable all monitoring.
-  final List<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>? enableComponents;
+  final pulumi.Input<List<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>>? enableComponents;
 
   /// Creates a new [MonitoringComponentConfigContainerV1beta1].
   /// [enableComponents] Select components to collect metrics. An empty set would disable all monitoring.
@@ -16,13 +16,13 @@ class MonitoringComponentConfigContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enableComponents': ?enableComponents == null ? null : pulumi.Input.encodeList<MonitoringComponentConfigEnableComponentsItemContainerV1beta1, String>(enableComponents!, (value) => value.value),
+      'enableComponents': ?pulumi.Input.mapOptionalInputValue<List<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>, List<String>>(enableComponents, (value) => pulumi.Input.encodeList<MonitoringComponentConfigEnableComponentsItemContainerV1beta1, String>(value, (value) => value.value)),
     };
   }
 
   factory MonitoringComponentConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MonitoringComponentConfigContainerV1beta1(
-      enableComponents: map['enableComponents'] == null ? null : pulumi.Input.decodeList<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>(map['enableComponents'], (value) => MonitoringComponentConfigEnableComponentsItemContainerV1beta1.fromValue(value as String)),
+      enableComponents: map['enableComponents'] == null ? null : (pulumi.Input.decodeList<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>(map['enableComponents'], (value) => MonitoringComponentConfigEnableComponentsItemContainerV1beta1.fromValue(value as String))).input(),
     );
   }
 }

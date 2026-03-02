@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionConnectionFunctionAssociation {
   /// Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [DistributionConnectionFunctionAssociation].
   /// [id] Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
@@ -19,7 +20,7 @@ class DistributionConnectionFunctionAssociation {
 
   factory DistributionConnectionFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return DistributionConnectionFunctionAssociation(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

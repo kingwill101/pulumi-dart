@@ -22,17 +22,12 @@ class FirewallDeviceState {
   /// [firewallId] The unique ID of the target Firewall.
   /// [updated] When the Firewall Device was last updated.
   FirewallDeviceState({
-    pulumi.Output<String>? created,
-    pulumi.Output<int>? entityId,
-    pulumi.Output<String>? entityType,
-    pulumi.Output<int>? firewallId,
-    pulumi.Output<String>? updated,
-  }) :
-      created = pulumi.Input.asOptionalInput<String>(created),
-      entityId = pulumi.Input.asOptionalInput<int>(entityId),
-      entityType = pulumi.Input.asOptionalInput<String>(entityType),
-      firewallId = pulumi.Input.asOptionalInput<int>(firewallId),
-      updated = pulumi.Input.asOptionalInput<String>(updated);
+    this.created,
+    this.entityId,
+    this.entityType,
+    this.firewallId,
+    this.updated,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class FirewallDeviceState {
 
   factory FirewallDeviceState.fromMap(Map<String, dynamic> map) {
     return FirewallDeviceState(
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      entityId: map['entityId'] == null ? null : pulumi.Output.create<int>(map['entityId'] as int),
-      entityType: map['entityType'] == null ? null : pulumi.Output.create<String>(map['entityType'] as String),
-      firewallId: map['firewallId'] == null ? null : pulumi.Output.create<int>(map['firewallId'] as int),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId'] as int).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
     );
   }
 }

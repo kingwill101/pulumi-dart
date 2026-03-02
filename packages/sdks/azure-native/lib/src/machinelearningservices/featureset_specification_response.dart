@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DTO object representing specification
 class FeaturesetSpecificationResponse {
   /// Specifies the spec path
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [FeaturesetSpecificationResponse].
   /// [path] Specifies the spec path
@@ -20,7 +21,7 @@ class FeaturesetSpecificationResponse {
 
   factory FeaturesetSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return FeaturesetSpecificationResponse(
-      path: map['path'] == null ? null : map['path'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

@@ -5,21 +5,21 @@ import 'firewall_application_rule_collection_rule_protocol.dart';
 
 class FirewallApplicationRuleCollectionRule {
   /// Specifies a description for the rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A list of FQDN tags. Possible values are `AppServiceEnvironment`, `AzureBackup`, `AzureKubernetesService`, `HDInsight`, `MicrosoftActiveProtectionService`, `WindowsDiagnostics`, `WindowsUpdate` and `WindowsVirtualDesktop`.
-  final List<String>? fqdnTags;
+  final pulumi.Input<List<String>>? fqdnTags;
   /// Specifies the name of the rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// One or more `protocol` blocks as defined below.
-  final List<FirewallApplicationRuleCollectionRuleProtocol>? protocols;
+  final pulumi.Input<List<FirewallApplicationRuleCollectionRuleProtocol>>? protocols;
   /// A list of source IP addresses and/or IP ranges.
-  final List<String>? sourceAddresses;
+  final pulumi.Input<List<String>>? sourceAddresses;
   /// A list of source IP Group IDs for the rule.
   ///
   /// > **Note:** At least one of `source_addresses` and `source_ip_groups` must be specified for a rule.
-  final List<String>? sourceIpGroups;
+  final pulumi.Input<List<String>>? sourceIpGroups;
   /// A list of FQDNs.
-  final List<String>? targetFqdns;
+  final pulumi.Input<List<String>>? targetFqdns;
 
   /// Creates a new [FirewallApplicationRuleCollectionRule].
   /// [description] Specifies a description for the rule.
@@ -44,7 +44,7 @@ class FirewallApplicationRuleCollectionRule {
       'description': ?description,
       'fqdnTags': ?fqdnTags,
       'name': name,
-      'protocols': ?protocols == null ? null : pulumi.Input.encodeList<FirewallApplicationRuleCollectionRuleProtocol, Map<String, dynamic>>(protocols!, (value) => value.toMap()),
+      'protocols': ?pulumi.Input.mapOptionalInputValue<List<FirewallApplicationRuleCollectionRuleProtocol>, List<Map<String, dynamic>>>(protocols, (value) => pulumi.Input.encodeList<FirewallApplicationRuleCollectionRuleProtocol, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourceAddresses': ?sourceAddresses,
       'sourceIpGroups': ?sourceIpGroups,
       'targetFqdns': ?targetFqdns,
@@ -53,13 +53,13 @@ class FirewallApplicationRuleCollectionRule {
 
   factory FirewallApplicationRuleCollectionRule.fromMap(Map<String, dynamic> map) {
     return FirewallApplicationRuleCollectionRule(
-      description: map['description'] == null ? null : map['description'] as String,
-      fqdnTags: map['fqdnTags'] == null ? null : (map['fqdnTags'] as List).cast<String>(),
-      name: map['name'] as String,
-      protocols: map['protocols'] == null ? null : pulumi.Input.decodeList<FirewallApplicationRuleCollectionRuleProtocol>(map['protocols'], (value) => FirewallApplicationRuleCollectionRuleProtocol.fromMap((value as Map).cast<String, dynamic>())),
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : (map['sourceIpGroups'] as List).cast<String>(),
-      targetFqdns: map['targetFqdns'] == null ? null : (map['targetFqdns'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<FirewallApplicationRuleCollectionRuleProtocol>(map['protocols'], (value) => FirewallApplicationRuleCollectionRuleProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
+      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns'] as List).cast<String>()).input(),
     );
   }
 }

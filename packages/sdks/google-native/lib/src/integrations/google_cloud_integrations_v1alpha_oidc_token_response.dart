@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OIDC Token
 class GoogleCloudIntegrationsV1alphaOidcTokenResponse {
   /// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
-  final String audience;
+  final pulumi.Input<String> audience;
   /// The service account email to be used as the identity for the token.
-  final String serviceAccountEmail;
+  final pulumi.Input<String> serviceAccountEmail;
   /// ID token obtained for the service account
-  final String token;
+  final pulumi.Input<String> token;
   /// The approximate time until the token retrieved is valid.
-  final String tokenExpireTime;
+  final pulumi.Input<String> tokenExpireTime;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaOidcTokenResponse].
   /// [audience] Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
@@ -35,10 +36,10 @@ class GoogleCloudIntegrationsV1alphaOidcTokenResponse {
 
   factory GoogleCloudIntegrationsV1alphaOidcTokenResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaOidcTokenResponse(
-      audience: map['audience'] as String,
-      serviceAccountEmail: map['serviceAccountEmail'] as String,
-      token: map['token'] as String,
-      tokenExpireTime: map['tokenExpireTime'] as String,
+      audience: (map['audience'] as String).input(),
+      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      token: (map['token'] as String).input(),
+      tokenExpireTime: (map['tokenExpireTime'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorsRegistryEndpointRef properties.
 class AkriConnectorsRegistryEndpointRefResponse {
   /// The name of the registry endpoint.
-  final String registryEndpointRef;
+  final pulumi.Input<String> registryEndpointRef;
   /// AkriConnectorsRegistrySettings properties.
   /// Expected value is 'RegistryEndpointRef'.
-  final String registrySettingsType;
+  final pulumi.Input<String> registrySettingsType;
 
   /// Creates a new [AkriConnectorsRegistryEndpointRefResponse].
   /// [registryEndpointRef] The name of the registry endpoint.
@@ -26,8 +27,8 @@ class AkriConnectorsRegistryEndpointRefResponse {
 
   factory AkriConnectorsRegistryEndpointRefResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsRegistryEndpointRefResponse(
-      registryEndpointRef: map['registryEndpointRef'] as String,
-      registrySettingsType: map['registrySettingsType'] as String,
+      registryEndpointRef: (map['registryEndpointRef'] as String).input(),
+      registrySettingsType: (map['registrySettingsType'] as String).input(),
     );
   }
 }

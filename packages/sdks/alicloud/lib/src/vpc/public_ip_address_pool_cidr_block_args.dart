@@ -20,13 +20,10 @@ class PublicIpAddressPoolCidrBlockArgs {
   /// [cidrMask] IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
   /// [publicIpAddressPoolId] The ID of the VPC Public IP address pool.
   PublicIpAddressPoolCidrBlockArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<int>? cidrMask,
-    required pulumi.Output<String> publicIpAddressPoolId,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      cidrMask = pulumi.Input.asOptionalInput<int>(cidrMask),
-      publicIpAddressPoolId = pulumi.Input.asInput<String>(publicIpAddressPoolId);
+    this.cidrBlock,
+    this.cidrMask,
+    required this.publicIpAddressPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class PublicIpAddressPoolCidrBlockArgs {
 
   factory PublicIpAddressPoolCidrBlockArgs.fromMap(Map<String, dynamic> map) {
     return PublicIpAddressPoolCidrBlockArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      cidrMask: map['cidrMask'] == null ? null : pulumi.Output.create<int>(map['cidrMask'] as int),
-      publicIpAddressPoolId: pulumi.Output.create<String>(map['publicIpAddressPoolId'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
+      publicIpAddressPoolId: (map['publicIpAddressPoolId'] as String).input(),
     );
   }
 }

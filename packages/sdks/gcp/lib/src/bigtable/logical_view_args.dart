@@ -26,17 +26,12 @@ class LogicalViewArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [query] The logical view's select query.
   LogicalViewArgs({
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? instance,
-    required pulumi.Output<String> logicalViewId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> query,
-  }) :
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      logicalViewId = pulumi.Input.asInput<String>(logicalViewId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      query = pulumi.Input.asInput<String>(query);
+    this.deletionProtection,
+    this.instance,
+    required this.logicalViewId,
+    this.project,
+    required this.query,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class LogicalViewArgs {
 
   factory LogicalViewArgs.fromMap(Map<String, dynamic> map) {
     return LogicalViewArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      logicalViewId: pulumi.Output.create<String>(map['logicalViewId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      query: pulumi.Output.create<String>(map['query'] as String),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      logicalViewId: (map['logicalViewId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      query: (map['query'] as String).input(),
     );
   }
 }

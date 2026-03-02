@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BGP peer status details.
 class BgpPeerStatusResponse {
   /// The autonomous system number of the remote BGP peer.
-  final double asn;
+  final pulumi.Input<double> asn;
   /// For how long the peering has been up.
-  final String connectedDuration;
+  final pulumi.Input<String> connectedDuration;
   /// The virtual network gateway's local address.
-  final String localAddress;
+  final pulumi.Input<String> localAddress;
   /// The number of BGP messages received.
-  final double messagesReceived;
+  final pulumi.Input<double> messagesReceived;
   /// The number of BGP messages sent.
-  final double messagesSent;
+  final pulumi.Input<double> messagesSent;
   /// The remote BGP peer.
-  final String neighbor;
+  final pulumi.Input<String> neighbor;
   /// The number of routes learned from this peer.
-  final double routesReceived;
+  final pulumi.Input<double> routesReceived;
   /// The BGP peer state.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [BgpPeerStatusResponse].
   /// [asn] The autonomous system number of the remote BGP peer.
@@ -55,14 +56,14 @@ class BgpPeerStatusResponse {
 
   factory BgpPeerStatusResponse.fromMap(Map<String, dynamic> map) {
     return BgpPeerStatusResponse(
-      asn: map['asn'] as double,
-      connectedDuration: map['connectedDuration'] as String,
-      localAddress: map['localAddress'] as String,
-      messagesReceived: map['messagesReceived'] as double,
-      messagesSent: map['messagesSent'] as double,
-      neighbor: map['neighbor'] as String,
-      routesReceived: map['routesReceived'] as double,
-      state: map['state'] as String,
+      asn: (map['asn'] as double).input(),
+      connectedDuration: (map['connectedDuration'] as String).input(),
+      localAddress: (map['localAddress'] as String).input(),
+      messagesReceived: (map['messagesReceived'] as double).input(),
+      messagesSent: (map['messagesSent'] as double).input(),
+      neighbor: (map['neighbor'] as String).input(),
+      routesReceived: (map['routesReceived'] as double).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

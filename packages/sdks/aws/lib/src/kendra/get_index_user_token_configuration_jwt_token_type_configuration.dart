@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndexUserTokenConfigurationJwtTokenTypeConfiguration {
   /// Regular expression that identifies the claim.
-  final String claimRegex;
+  final pulumi.Input<String> claimRegex;
   /// The group attribute field.
-  final String groupAttributeField;
+  final pulumi.Input<String> groupAttributeField;
   /// Issuer of the token.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// Location of the key. Valid values are `URL` or `SECRET_MANAGER`
-  final String keyLocation;
+  final pulumi.Input<String> keyLocation;
   /// ARN of the secret.
-  final String secretsManagerArn;
+  final pulumi.Input<String> secretsManagerArn;
   /// Signing key URL.
-  final String url;
+  final pulumi.Input<String> url;
   /// The user name attribute field.
-  final String userNameAttributeField;
+  final pulumi.Input<String> userNameAttributeField;
 
   /// Creates a new [GetIndexUserTokenConfigurationJwtTokenTypeConfiguration].
   /// [claimRegex] Regular expression that identifies the claim.
@@ -49,13 +50,13 @@ class GetIndexUserTokenConfigurationJwtTokenTypeConfiguration {
 
   factory GetIndexUserTokenConfigurationJwtTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexUserTokenConfigurationJwtTokenTypeConfiguration(
-      claimRegex: map['claimRegex'] as String,
-      groupAttributeField: map['groupAttributeField'] as String,
-      issuer: map['issuer'] as String,
-      keyLocation: map['keyLocation'] as String,
-      secretsManagerArn: map['secretsManagerArn'] as String,
-      url: map['url'] as String,
-      userNameAttributeField: map['userNameAttributeField'] as String,
+      claimRegex: (map['claimRegex'] as String).input(),
+      groupAttributeField: (map['groupAttributeField'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      keyLocation: (map['keyLocation'] as String).input(),
+      secretsManagerArn: (map['secretsManagerArn'] as String).input(),
+      url: (map['url'] as String).input(),
+      userNameAttributeField: (map['userNameAttributeField'] as String).input(),
     );
   }
 }

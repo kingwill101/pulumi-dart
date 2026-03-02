@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Subnet first address, scope, and/or last address.
 class EndpointPropertiesSubnetsItemResponse {
   /// First address in the subnet.
-  final String? first;
+  final pulumi.Input<String>? first;
   /// Last address in the subnet.
-  final String? last;
+  final pulumi.Input<String>? last;
   /// Block size (number of leading bits in the subnet mask).
-  final int? scope;
+  final pulumi.Input<int>? scope;
 
   /// Creates a new [EndpointPropertiesSubnetsItemResponse].
   /// [first] First address in the subnet.
@@ -30,9 +31,9 @@ class EndpointPropertiesSubnetsItemResponse {
 
   factory EndpointPropertiesSubnetsItemResponse.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesSubnetsItemResponse(
-      first: map['first'] == null ? null : map['first'] as String,
-      last: map['last'] == null ? null : map['last'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as int,
+      first: map['first'] == null ? null : (map['first'] as String).input(),
+      last: map['last'] == null ? null : (map['last'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as int).input(),
     );
   }
 }

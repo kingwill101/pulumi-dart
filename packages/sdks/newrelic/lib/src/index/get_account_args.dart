@@ -18,13 +18,10 @@ class GetAccountArgs {
   /// [name] The name of the account in New Relic. This must be a string.
   /// [scope] Optional.
   GetAccountArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? scope,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.accountId,
+    this.name,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

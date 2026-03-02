@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Any scheduled maintenance for this instance.
 class SqlScheduledMaintenanceResponseSqladminV1beta4 {
-  final bool canDefer;
+  final pulumi.Input<bool> canDefer;
   /// If the scheduled maintenance can be rescheduled.
-  final bool canReschedule;
+  final pulumi.Input<bool> canReschedule;
   /// Maintenance cannot be rescheduled to start beyond this deadline.
-  final String scheduleDeadlineTime;
+  final pulumi.Input<String> scheduleDeadlineTime;
   /// The start time of any upcoming scheduled maintenance for this instance.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [SqlScheduledMaintenanceResponseSqladminV1beta4].
   /// [canDefer] Required.
@@ -34,10 +35,10 @@ class SqlScheduledMaintenanceResponseSqladminV1beta4 {
 
   factory SqlScheduledMaintenanceResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return SqlScheduledMaintenanceResponseSqladminV1beta4(
-      canDefer: map['canDefer'] as bool,
-      canReschedule: map['canReschedule'] as bool,
-      scheduleDeadlineTime: map['scheduleDeadlineTime'] as String,
-      startTime: map['startTime'] as String,
+      canDefer: (map['canDefer'] as bool).input(),
+      canReschedule: (map['canReschedule'] as bool).input(),
+      scheduleDeadlineTime: (map['scheduleDeadlineTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alias_context_response_containeranalysis_v1beta1.dart';
 import 'repo_id_response_containeranalysis_v1beta1.dart';
 
 /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
 class CloudRepoSourceContextResponseContaineranalysisV1beta1 {
   /// An alias, which may be a branch or tag.
-  final AliasContextResponseContaineranalysisV1beta1 aliasContext;
+  final pulumi.Input<AliasContextResponseContaineranalysisV1beta1> aliasContext;
   /// The ID of the repo.
-  final RepoIdResponseContaineranalysisV1beta1 repoId;
+  final pulumi.Input<RepoIdResponseContaineranalysisV1beta1> repoId;
   /// A revision ID.
-  final String revisionId;
+  final pulumi.Input<String> revisionId;
 
   /// Creates a new [CloudRepoSourceContextResponseContaineranalysisV1beta1].
   /// [aliasContext] An alias, which may be a branch or tag.
@@ -24,17 +25,17 @@ class CloudRepoSourceContextResponseContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliasContext': aliasContext.toMap(),
-      'repoId': repoId.toMap(),
+      'aliasContext': pulumi.Input.mapInputValue<AliasContextResponseContaineranalysisV1beta1, Map<String, dynamic>>(aliasContext, (value) => value.toMap()),
+      'repoId': pulumi.Input.mapInputValue<RepoIdResponseContaineranalysisV1beta1, Map<String, dynamic>>(repoId, (value) => value.toMap()),
       'revisionId': revisionId,
     };
   }
 
   factory CloudRepoSourceContextResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudRepoSourceContextResponseContaineranalysisV1beta1(
-      aliasContext: AliasContextResponseContaineranalysisV1beta1.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
-      repoId: RepoIdResponseContaineranalysisV1beta1.fromMap((map['repoId'] as Map).cast<String, dynamic>()),
-      revisionId: map['revisionId'] as String,
+      aliasContext: (AliasContextResponseContaineranalysisV1beta1.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
+      repoId: (RepoIdResponseContaineranalysisV1beta1.fromMap((map['repoId'] as Map).cast<String, dynamic>())).input(),
+      revisionId: (map['revisionId'] as String).input(),
     );
   }
 }

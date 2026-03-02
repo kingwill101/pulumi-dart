@@ -15,7 +15,7 @@ class DeviceTaintRuleStatusPatch {
   /// For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status.
   ///
   /// Must have 8 or fewer entries.
-  final List<ConditionPatch>? conditions;
+  final pulumi.Input<List<ConditionPatch>>? conditions;
 
   /// Creates a new [DeviceTaintRuleStatusPatch].
   /// [conditions] Conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format.
@@ -25,13 +25,13 @@ class DeviceTaintRuleStatusPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionPatch>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeviceTaintRuleStatusPatch.fromMap(Map<String, dynamic> map) {
     return DeviceTaintRuleStatusPatch(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

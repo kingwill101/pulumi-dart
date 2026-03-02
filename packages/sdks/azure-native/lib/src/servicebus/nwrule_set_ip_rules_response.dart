@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of NetWorkRuleSet - IpRules resource.
 class NWRuleSetIpRulesResponse {
   /// The IP Filter Action
-  final String? action;
+  final pulumi.Input<String>? action;
   /// IP Mask
-  final String? ipMask;
+  final pulumi.Input<String>? ipMask;
 
   /// Creates a new [NWRuleSetIpRulesResponse].
   /// [action] The IP Filter Action
@@ -25,8 +26,8 @@ class NWRuleSetIpRulesResponse {
 
   factory NWRuleSetIpRulesResponse.fromMap(Map<String, dynamic> map) {
     return NWRuleSetIpRulesResponse(
-      action: map['action'] == null ? null : map['action'] as String,
-      ipMask: map['ipMask'] == null ? null : map['ipMask'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      ipMask: map['ipMask'] == null ? null : (map['ipMask'] as String).input(),
     );
   }
 }

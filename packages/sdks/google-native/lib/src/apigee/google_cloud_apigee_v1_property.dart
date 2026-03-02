@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A single property entry in the Properties message.
 class GoogleCloudApigeeV1Property {
   /// The property key
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [GoogleCloudApigeeV1Property].
   /// [name] The property key
@@ -25,8 +26,8 @@ class GoogleCloudApigeeV1Property {
 
   factory GoogleCloudApigeeV1Property.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Property(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class SaslUserArgs {
   /// [type] The authentication mechanism. Default value: `plain`. Valid values:
   /// [username] The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
   SaslUserArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? kmsEncryptedPassword,
-    pulumi.Output<Map<String, String>>? kmsEncryptionContext,
-    pulumi.Output<String>? mechanism,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? type,
-    required pulumi.Output<String> username,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      kmsEncryptedPassword = pulumi.Input.asOptionalInput<String>(kmsEncryptedPassword),
-      kmsEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(kmsEncryptionContext),
-      mechanism = pulumi.Input.asOptionalInput<String>(mechanism),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      username = pulumi.Input.asInput<String>(username);
+    required this.instanceId,
+    this.kmsEncryptedPassword,
+    this.kmsEncryptionContext,
+    this.mechanism,
+    this.password,
+    this.type,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class SaslUserArgs {
 
   factory SaslUserArgs.fromMap(Map<String, dynamic> map) {
     return SaslUserArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : pulumi.Output.create<String>(map['kmsEncryptedPassword'] as String),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['kmsEncryptionContext'] as Map).cast<String, String>()),
-      mechanism: map['mechanism'] == null ? null : pulumi.Output.create<String>(map['mechanism'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword'] as String).input(),
+      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext'] as Map).cast<String, String>()).input(),
+      mechanism: map['mechanism'] == null ? null : (map['mechanism'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

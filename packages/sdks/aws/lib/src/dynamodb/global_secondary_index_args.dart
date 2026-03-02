@@ -54,25 +54,16 @@ class GlobalSecondaryIndexArgs {
   /// [timeouts] Optional.
   /// [warmThroughput] Sets the number of warm read and write units for this index.
   GlobalSecondaryIndexArgs({
-    required pulumi.Output<String> indexName,
-    pulumi.Output<List<GlobalSecondaryIndexKeySchema>>? keySchemas,
-    pulumi.Output<GlobalSecondaryIndexOnDemandThroughput>? onDemandThroughput,
-    pulumi.Output<GlobalSecondaryIndexProjection>? projection,
-    pulumi.Output<GlobalSecondaryIndexProvisionedThroughput>? provisionedThroughput,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tableName,
-    pulumi.Output<GlobalSecondaryIndexTimeouts>? timeouts,
-    pulumi.Output<GlobalSecondaryIndexWarmThroughput>? warmThroughput,
-  }) :
-      indexName = pulumi.Input.asInput<String>(indexName),
-      keySchemas = pulumi.Input.asOptionalInput<List<GlobalSecondaryIndexKeySchema>>(keySchemas),
-      onDemandThroughput = pulumi.Input.asOptionalInput<GlobalSecondaryIndexOnDemandThroughput>(onDemandThroughput),
-      projection = pulumi.Input.asOptionalInput<GlobalSecondaryIndexProjection>(projection),
-      provisionedThroughput = pulumi.Input.asOptionalInput<GlobalSecondaryIndexProvisionedThroughput>(provisionedThroughput),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableName = pulumi.Input.asInput<String>(tableName),
-      timeouts = pulumi.Input.asOptionalInput<GlobalSecondaryIndexTimeouts>(timeouts),
-      warmThroughput = pulumi.Input.asOptionalInput<GlobalSecondaryIndexWarmThroughput>(warmThroughput);
+    required this.indexName,
+    this.keySchemas,
+    this.onDemandThroughput,
+    this.projection,
+    this.provisionedThroughput,
+    this.region,
+    required this.tableName,
+    this.timeouts,
+    this.warmThroughput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,15 +81,15 @@ class GlobalSecondaryIndexArgs {
 
   factory GlobalSecondaryIndexArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexArgs(
-      indexName: pulumi.Output.create<String>(map['indexName'] as String),
-      keySchemas: map['keySchemas'] == null ? null : pulumi.Output.create<List<GlobalSecondaryIndexKeySchema>>(pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(map['keySchemas'], (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))),
-      onDemandThroughput: map['onDemandThroughput'] == null ? null : pulumi.Output.create<GlobalSecondaryIndexOnDemandThroughput>(GlobalSecondaryIndexOnDemandThroughput.fromMap((map['onDemandThroughput'] as Map).cast<String, dynamic>())),
-      projection: map['projection'] == null ? null : pulumi.Output.create<GlobalSecondaryIndexProjection>(GlobalSecondaryIndexProjection.fromMap((map['projection'] as Map).cast<String, dynamic>())),
-      provisionedThroughput: map['provisionedThroughput'] == null ? null : pulumi.Output.create<GlobalSecondaryIndexProvisionedThroughput>(GlobalSecondaryIndexProvisionedThroughput.fromMap((map['provisionedThroughput'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<GlobalSecondaryIndexTimeouts>(GlobalSecondaryIndexTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      warmThroughput: map['warmThroughput'] == null ? null : pulumi.Output.create<GlobalSecondaryIndexWarmThroughput>(GlobalSecondaryIndexWarmThroughput.fromMap((map['warmThroughput'] as Map).cast<String, dynamic>())),
+      indexName: (map['indexName'] as String).input(),
+      keySchemas: map['keySchemas'] == null ? null : (pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(map['keySchemas'], (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onDemandThroughput: map['onDemandThroughput'] == null ? null : (GlobalSecondaryIndexOnDemandThroughput.fromMap((map['onDemandThroughput'] as Map).cast<String, dynamic>())).input(),
+      projection: map['projection'] == null ? null : (GlobalSecondaryIndexProjection.fromMap((map['projection'] as Map).cast<String, dynamic>())).input(),
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : (GlobalSecondaryIndexProvisionedThroughput.fromMap((map['provisionedThroughput'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (GlobalSecondaryIndexTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      warmThroughput: map['warmThroughput'] == null ? null : (GlobalSecondaryIndexWarmThroughput.fromMap((map['warmThroughput'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

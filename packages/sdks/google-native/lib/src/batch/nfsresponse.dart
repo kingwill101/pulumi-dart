@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an NFS volume.
 class NFSResponse {
   /// Remote source path exported from the NFS, e.g., "/share".
-  final String remotePath;
+  final pulumi.Input<String> remotePath;
   /// The IP address of the NFS.
-  final String server;
+  final pulumi.Input<String> server;
 
   /// Creates a new [NFSResponse].
   /// [remotePath] Remote source path exported from the NFS, e.g., "/share".
@@ -25,8 +26,8 @@ class NFSResponse {
 
   factory NFSResponse.fromMap(Map<String, dynamic> map) {
     return NFSResponse(
-      remotePath: map['remotePath'] as String,
-      server: map['server'] as String,
+      remotePath: (map['remotePath'] as String).input(),
+      server: (map['server'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsWebAppSlotAuthSettingsGoogle {
   /// The OpenID Connect Client ID for the Google web application.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The client secret associated with the Google web application. Cannot be specified with `client_secret_setting_name`.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// The app setting name that contains the `client_secret` value used for Google login. Cannot be specified with `client_secret`.
-  final String? clientSecretSettingName;
+  final pulumi.Input<String>? clientSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. If not specified, `openid`, `profile`, and `email` are used as default scopes.
-  final List<String>? oauthScopes;
+  final pulumi.Input<List<String>>? oauthScopes;
 
   /// Creates a new [WindowsWebAppSlotAuthSettingsGoogle].
   /// [clientId] The OpenID Connect Client ID for the Google web application.
@@ -34,10 +35,10 @@ class WindowsWebAppSlotAuthSettingsGoogle {
 
   factory WindowsWebAppSlotAuthSettingsGoogle.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotAuthSettingsGoogle(
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : map['clientSecretSettingName'] as String,
-      oauthScopes: map['oauthScopes'] == null ? null : (map['oauthScopes'] as List).cast<String>(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
     );
   }
 }

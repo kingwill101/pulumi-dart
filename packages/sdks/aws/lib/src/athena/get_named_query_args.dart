@@ -19,13 +19,10 @@ class GetNamedQueryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] The workgroup to which the query belongs. Defaults to `primary`.
   GetNamedQueryArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? workgroup,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroup = pulumi.Input.asOptionalInput<String>(workgroup);
+    required this.name,
+    this.region,
+    this.workgroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNamedQueryArgs {
 
   factory GetNamedQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetNamedQueryArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroup: map['workgroup'] == null ? null : pulumi.Output.create<String>(map['workgroup'] as String),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroup: map['workgroup'] == null ? null : (map['workgroup'] as String).input(),
     );
   }
 }

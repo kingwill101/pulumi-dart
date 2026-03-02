@@ -42,29 +42,18 @@ class TransitGatewayPeeringState {
   /// [transitGatewayArn] ARN of the transit gateway for the peering request.
   /// [transitGatewayPeeringAttachmentId] ID of the transit gateway peering attachment.
   TransitGatewayPeeringState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? coreNetworkArn,
-    pulumi.Output<String>? coreNetworkId,
-    pulumi.Output<String>? edgeLocation,
-    pulumi.Output<String>? ownerAccountId,
-    pulumi.Output<String>? peeringType,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? transitGatewayArn,
-    pulumi.Output<String>? transitGatewayPeeringAttachmentId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      coreNetworkArn = pulumi.Input.asOptionalInput<String>(coreNetworkArn),
-      coreNetworkId = pulumi.Input.asOptionalInput<String>(coreNetworkId),
-      edgeLocation = pulumi.Input.asOptionalInput<String>(edgeLocation),
-      ownerAccountId = pulumi.Input.asOptionalInput<String>(ownerAccountId),
-      peeringType = pulumi.Input.asOptionalInput<String>(peeringType),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      transitGatewayArn = pulumi.Input.asOptionalInput<String>(transitGatewayArn),
-      transitGatewayPeeringAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayPeeringAttachmentId);
+    this.arn,
+    this.coreNetworkArn,
+    this.coreNetworkId,
+    this.edgeLocation,
+    this.ownerAccountId,
+    this.peeringType,
+    this.resourceArn,
+    this.tags,
+    this.tagsAll,
+    this.transitGatewayArn,
+    this.transitGatewayPeeringAttachmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class TransitGatewayPeeringState {
 
   factory TransitGatewayPeeringState.fromMap(Map<String, dynamic> map) {
     return TransitGatewayPeeringState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : pulumi.Output.create<String>(map['coreNetworkArn'] as String),
-      coreNetworkId: map['coreNetworkId'] == null ? null : pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      edgeLocation: map['edgeLocation'] == null ? null : pulumi.Output.create<String>(map['edgeLocation'] as String),
-      ownerAccountId: map['ownerAccountId'] == null ? null : pulumi.Output.create<String>(map['ownerAccountId'] as String),
-      peeringType: map['peeringType'] == null ? null : pulumi.Output.create<String>(map['peeringType'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      transitGatewayArn: map['transitGatewayArn'] == null ? null : pulumi.Output.create<String>(map['transitGatewayArn'] as String),
-      transitGatewayPeeringAttachmentId: map['transitGatewayPeeringAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayPeeringAttachmentId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      coreNetworkArn: map['coreNetworkArn'] == null ? null : (map['coreNetworkArn'] as String).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
+      edgeLocation: map['edgeLocation'] == null ? null : (map['edgeLocation'] as String).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
+      peeringType: map['peeringType'] == null ? null : (map['peeringType'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      transitGatewayArn: map['transitGatewayArn'] == null ? null : (map['transitGatewayArn'] as String).input(),
+      transitGatewayPeeringAttachmentId: map['transitGatewayPeeringAttachmentId'] == null ? null : (map['transitGatewayPeeringAttachmentId'] as String).input(),
     );
   }
 }

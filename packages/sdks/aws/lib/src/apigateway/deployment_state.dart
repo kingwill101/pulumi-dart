@@ -25,19 +25,13 @@ class DeploymentState {
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   /// [variables] Map to set on the related stage.
   DeploymentState({
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? restApi,
-    pulumi.Output<Map<String, String>>? triggers,
-    pulumi.Output<Map<String, String>>? variables,
-  }) :
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asOptionalInput<String>(restApi),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers),
-      variables = pulumi.Input.asOptionalInput<Map<String, String>>(variables);
+    this.createdDate,
+    this.description,
+    this.region,
+    this.restApi,
+    this.triggers,
+    this.variables,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApi: map['restApi'] == null ? null : pulumi.Output.create<String>(map['restApi'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
-      variables: map['variables'] == null ? null : pulumi.Output.create<Map<String, String>>((map['variables'] as Map).cast<String, String>()),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
     );
   }
 }

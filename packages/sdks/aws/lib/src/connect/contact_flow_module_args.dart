@@ -34,23 +34,15 @@ class ContactFlowModuleArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the Contact Flow Module. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ContactFlowModuleArgs({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? contentHash,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filename,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentHash = pulumi.Input.asOptionalInput<String>(contentHash),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filename = pulumi.Input.asOptionalInput<String>(filename),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.content,
+    this.contentHash,
+    this.description,
+    this.filename,
+    required this.instanceId,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ContactFlowModuleArgs {
 
   factory ContactFlowModuleArgs.fromMap(Map<String, dynamic> map) {
     return ContactFlowModuleArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentHash: map['contentHash'] == null ? null : pulumi.Output.create<String>(map['contentHash'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filename: map['filename'] == null ? null : pulumi.Output.create<String>(map['filename'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentHash: map['contentHash'] == null ? null : (map['contentHash'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

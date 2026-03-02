@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bgp_session.dart';
 
 /// The properties that define a direct connection.
 class DirectConnection {
   /// The bandwidth of the connection.
-  final int? bandwidthInMbps;
+  final pulumi.Input<int>? bandwidthInMbps;
   /// The BGP session associated with the connection.
-  final BgpSession? bgpSession;
+  final pulumi.Input<BgpSession>? bgpSession;
   /// The unique identifier (GUID) for the connection.
-  final String? connectionIdentifier;
+  final pulumi.Input<String>? connectionIdentifier;
   /// The PeeringDB.com ID of the facility at which the connection has to be set up.
-  final int? peeringDBFacilityId;
+  final pulumi.Input<int>? peeringDBFacilityId;
   /// The field indicating if Microsoft provides session ip addresses.
-  final String? sessionAddressProvider;
+  final pulumi.Input<String>? sessionAddressProvider;
   /// The flag that indicates whether or not the connection is used for peering service.
-  final bool? useForPeeringService;
+  final pulumi.Input<bool>? useForPeeringService;
 
   /// Creates a new [DirectConnection].
   /// [bandwidthInMbps] The bandwidth of the connection.
@@ -36,7 +37,7 @@ class DirectConnection {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bandwidthInMbps': ?bandwidthInMbps,
-      'bgpSession': ?bgpSession == null ? null : bgpSession!.toMap(),
+      'bgpSession': ?pulumi.Input.mapOptionalInputValue<BgpSession, Map<String, dynamic>>(bgpSession, (value) => value.toMap()),
       'connectionIdentifier': ?connectionIdentifier,
       'peeringDBFacilityId': ?peeringDBFacilityId,
       'sessionAddressProvider': ?sessionAddressProvider,
@@ -46,12 +47,12 @@ class DirectConnection {
 
   factory DirectConnection.fromMap(Map<String, dynamic> map) {
     return DirectConnection(
-      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : map['bandwidthInMbps'] as int,
-      bgpSession: map['bgpSession'] == null ? null : BgpSession.fromMap((map['bgpSession'] as Map).cast<String, dynamic>()),
-      connectionIdentifier: map['connectionIdentifier'] == null ? null : map['connectionIdentifier'] as String,
-      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : map['peeringDBFacilityId'] as int,
-      sessionAddressProvider: map['sessionAddressProvider'] == null ? null : map['sessionAddressProvider'] as String,
-      useForPeeringService: map['useForPeeringService'] == null ? null : map['useForPeeringService'] as bool,
+      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps'] as int).input(),
+      bgpSession: map['bgpSession'] == null ? null : (BgpSession.fromMap((map['bgpSession'] as Map).cast<String, dynamic>())).input(),
+      connectionIdentifier: map['connectionIdentifier'] == null ? null : (map['connectionIdentifier'] as String).input(),
+      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : (map['peeringDBFacilityId'] as int).input(),
+      sessionAddressProvider: map['sessionAddressProvider'] == null ? null : (map['sessionAddressProvider'] as String).input(),
+      useForPeeringService: map['useForPeeringService'] == null ? null : (map['useForPeeringService'] as bool).input(),
     );
   }
 }

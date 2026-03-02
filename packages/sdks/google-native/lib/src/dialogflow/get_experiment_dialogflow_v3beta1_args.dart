@@ -20,17 +20,12 @@ class GetExperimentDialogflowV3beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetExperimentDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> experimentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      experimentId = pulumi.Input.asInput<String>(experimentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.agentId,
+    required this.environmentId,
+    required this.experimentId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetExperimentDialogflowV3beta1Args {
 
   factory GetExperimentDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetExperimentDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      experimentId: pulumi.Output.create<String>(map['experimentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      agentId: (map['agentId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      experimentId: (map['experimentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

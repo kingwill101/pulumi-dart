@@ -30,17 +30,12 @@ class SqlDatabaseArgs {
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of SQL database (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Do not set when `azure.cosmosdb.Account` is configured with `EnableServerless` capability.
   SqlDatabaseArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<SqlDatabaseAutoscaleSettings>? autoscaleSettings,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? throughput,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      autoscaleSettings = pulumi.Input.asOptionalInput<SqlDatabaseAutoscaleSettings>(autoscaleSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      throughput = pulumi.Input.asOptionalInput<int>(throughput);
+    required this.accountName,
+    this.autoscaleSettings,
+    this.name,
+    required this.resourceGroupName,
+    this.throughput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class SqlDatabaseArgs {
 
   factory SqlDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return SqlDatabaseArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : pulumi.Output.create<SqlDatabaseAutoscaleSettings>(SqlDatabaseAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      throughput: map['throughput'] == null ? null : pulumi.Output.create<int>(map['throughput'] as int),
+      accountName: (map['accountName'] as String).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (SqlDatabaseAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
     );
   }
 }

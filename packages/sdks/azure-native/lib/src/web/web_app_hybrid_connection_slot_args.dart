@@ -50,33 +50,20 @@ class WebAppHybridConnectionSlotArgs {
   /// [serviceBusSuffix] The suffix for the service bus endpoint. By default this is .servicebus.windows.net
   /// [slot] The name of the slot for the web app.
   WebAppHybridConnectionSlotArgs({
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> namespaceName,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? relayArmUri,
-    pulumi.Output<String>? relayName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sendKeyName,
-    pulumi.Output<String>? sendKeyValue,
-    pulumi.Output<String>? serviceBusNamespace,
-    pulumi.Output<String>? serviceBusSuffix,
-    required pulumi.Output<String> slot,
-  }) :
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      relayArmUri = pulumi.Input.asOptionalInput<String>(relayArmUri),
-      relayName = pulumi.Input.asOptionalInput<String>(relayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sendKeyName = pulumi.Input.asOptionalInput<String>(sendKeyName),
-      sendKeyValue = pulumi.Input.asOptionalInput<String>(sendKeyValue),
-      serviceBusNamespace = pulumi.Input.asOptionalInput<String>(serviceBusNamespace),
-      serviceBusSuffix = pulumi.Input.asOptionalInput<String>(serviceBusSuffix),
-      slot = pulumi.Input.asInput<String>(slot);
+    this.hostname,
+    this.kind,
+    required this.name,
+    required this.namespaceName,
+    this.port,
+    this.relayArmUri,
+    this.relayName,
+    required this.resourceGroupName,
+    this.sendKeyName,
+    this.sendKeyValue,
+    this.serviceBusNamespace,
+    this.serviceBusSuffix,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class WebAppHybridConnectionSlotArgs {
 
   factory WebAppHybridConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppHybridConnectionSlotArgs(
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      relayArmUri: map['relayArmUri'] == null ? null : pulumi.Output.create<String>(map['relayArmUri'] as String),
-      relayName: map['relayName'] == null ? null : pulumi.Output.create<String>(map['relayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sendKeyName: map['sendKeyName'] == null ? null : pulumi.Output.create<String>(map['sendKeyName'] as String),
-      sendKeyValue: map['sendKeyValue'] == null ? null : pulumi.Output.create<String>(map['sendKeyValue'] as String),
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : pulumi.Output.create<String>(map['serviceBusNamespace'] as String),
-      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : pulumi.Output.create<String>(map['serviceBusSuffix'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      relayArmUri: map['relayArmUri'] == null ? null : (map['relayArmUri'] as String).input(),
+      relayName: map['relayName'] == null ? null : (map['relayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName'] as String).input(),
+      sendKeyValue: map['sendKeyValue'] == null ? null : (map['sendKeyValue'] as String).input(),
+      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace'] as String).input(),
+      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : (map['serviceBusSuffix'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

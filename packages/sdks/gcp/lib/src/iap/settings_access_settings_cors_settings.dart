@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsAccessSettingsCorsSettings {
   /// Configuration to allow HTTP OPTIONS calls to skip authorization.
   /// If undefined, IAP will not apply any special logic to OPTIONS requests.
-  final bool? allowHttpOptions;
+  final pulumi.Input<bool>? allowHttpOptions;
 
   /// Creates a new [SettingsAccessSettingsCorsSettings].
   /// [allowHttpOptions] Configuration to allow HTTP OPTIONS calls to skip authorization.
@@ -20,7 +21,7 @@ class SettingsAccessSettingsCorsSettings {
 
   factory SettingsAccessSettingsCorsSettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsCorsSettings(
-      allowHttpOptions: map['allowHttpOptions'] == null ? null : map['allowHttpOptions'] as bool,
+      allowHttpOptions: map['allowHttpOptions'] == null ? null : (map['allowHttpOptions'] as bool).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupsGroup {
   /// The Created Time of the Directory.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The Description of the Directory.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Directory.
-  final String directoryId;
+  final pulumi.Input<String> directoryId;
   /// The Group ID of the group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The Name of the group.
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// The ID of the Group.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
-  final String provisionType;
+  final pulumi.Input<String> provisionType;
 
   /// Creates a new [GetGroupsGroup].
   /// [createTime] The Created Time of the Directory.
@@ -49,13 +50,13 @@ class GetGroupsGroup {
 
   factory GetGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetGroupsGroup(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      directoryId: map['directoryId'] as String,
-      groupId: map['groupId'] as String,
-      groupName: map['groupName'] as String,
-      id: map['id'] as String,
-      provisionType: map['provisionType'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      id: (map['id'] as String).input(),
+      provisionType: (map['provisionType'] as String).input(),
     );
   }
 }

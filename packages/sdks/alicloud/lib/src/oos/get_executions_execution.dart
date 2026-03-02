@@ -1,49 +1,50 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExecutionsExecution {
   /// The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
-  final String category;
+  final pulumi.Input<String> category;
   /// The counters of OOS Execution.
-  final String counters;
+  final pulumi.Input<String> counters;
   /// The time when the execution was created.
-  final String createDate;
+  final pulumi.Input<String> createDate;
   /// The time when the execution was ended.
-  final String endDate;
+  final pulumi.Input<String> endDate;
   /// The user who execute the template.
-  final String executedBy;
+  final pulumi.Input<String> executedBy;
   /// ID of the OOS Executions.
-  final String executionId;
+  final pulumi.Input<String> executionId;
   /// ID of the OOS Executions.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether to include subtasks.
-  final bool isParent;
+  final pulumi.Input<bool> isParent;
   /// The mode of OOS Execution. Valid: `Automatic`, `Debug`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The outputs of OOS Executions.
-  final String outputs;
+  final pulumi.Input<String> outputs;
   /// The parameters required by the template
-  final String parameters;
+  final pulumi.Input<String> parameters;
   /// The id of parent OOS Execution.
-  final String parentExecutionId;
+  final pulumi.Input<String> parentExecutionId;
   /// The role that executes the current template.
-  final String ramRole;
+  final pulumi.Input<String> ramRole;
   /// The time when the template was started.
-  final String startDate;
+  final pulumi.Input<String> startDate;
   /// The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The message of status.
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
   /// The reason of status.
-  final String statusReason;
+  final pulumi.Input<String> statusReason;
   /// The id of execution template.
-  final String templateId;
+  final pulumi.Input<String> templateId;
   /// The name of execution template.
-  final String templateName;
+  final pulumi.Input<String> templateName;
   /// The version of execution template.
-  final String templateVersion;
+  final pulumi.Input<String> templateVersion;
   /// The time when the template was updated.
-  final String updateDate;
+  final pulumi.Input<String> updateDate;
 
   /// Creates a new [GetExecutionsExecution].
   /// [category] The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
@@ -119,27 +120,27 @@ class GetExecutionsExecution {
 
   factory GetExecutionsExecution.fromMap(Map<String, dynamic> map) {
     return GetExecutionsExecution(
-      category: map['category'] as String,
-      counters: map['counters'] as String,
-      createDate: map['createDate'] as String,
-      endDate: map['endDate'] as String,
-      executedBy: map['executedBy'] as String,
-      executionId: map['executionId'] as String,
-      id: map['id'] as String,
-      isParent: map['isParent'] as bool,
-      mode: map['mode'] as String,
-      outputs: map['outputs'] as String,
-      parameters: map['parameters'] as String,
-      parentExecutionId: map['parentExecutionId'] as String,
-      ramRole: map['ramRole'] as String,
-      startDate: map['startDate'] as String,
-      status: map['status'] as String,
-      statusMessage: map['statusMessage'] as String,
-      statusReason: map['statusReason'] as String,
-      templateId: map['templateId'] as String,
-      templateName: map['templateName'] as String,
-      templateVersion: map['templateVersion'] as String,
-      updateDate: map['updateDate'] as String,
+      category: (map['category'] as String).input(),
+      counters: (map['counters'] as String).input(),
+      createDate: (map['createDate'] as String).input(),
+      endDate: (map['endDate'] as String).input(),
+      executedBy: (map['executedBy'] as String).input(),
+      executionId: (map['executionId'] as String).input(),
+      id: (map['id'] as String).input(),
+      isParent: (map['isParent'] as bool).input(),
+      mode: (map['mode'] as String).input(),
+      outputs: (map['outputs'] as String).input(),
+      parameters: (map['parameters'] as String).input(),
+      parentExecutionId: (map['parentExecutionId'] as String).input(),
+      ramRole: (map['ramRole'] as String).input(),
+      startDate: (map['startDate'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
+      statusReason: (map['statusReason'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
+      templateVersion: (map['templateVersion'] as String).input(),
+      updateDate: (map['updateDate'] as String).input(),
     );
   }
 }

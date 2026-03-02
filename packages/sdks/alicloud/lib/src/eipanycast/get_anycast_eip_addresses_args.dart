@@ -43,29 +43,18 @@ class GetAnycastEipAddressesArgs {
   /// [serviceLocation] Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
   /// [status] IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
   GetAnycastEipAddressesArgs({
-    pulumi.Output<String>? anycastEipAddressName,
-    pulumi.Output<List<String>>? bindInstanceIds,
-    pulumi.Output<String>? businessStatus,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? internetChargeType,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? serviceLocation,
-    pulumi.Output<String>? status,
-  }) :
-      anycastEipAddressName = pulumi.Input.asOptionalInput<String>(anycastEipAddressName),
-      bindInstanceIds = pulumi.Input.asOptionalInput<List<String>>(bindInstanceIds),
-      businessStatus = pulumi.Input.asOptionalInput<String>(businessStatus),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      internetChargeType = pulumi.Input.asOptionalInput<String>(internetChargeType),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      serviceLocation = pulumi.Input.asOptionalInput<String>(serviceLocation),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.anycastEipAddressName,
+    this.bindInstanceIds,
+    this.businessStatus,
+    this.ids,
+    this.internetChargeType,
+    this.ipAddress,
+    this.nameRegex,
+    this.outputFile,
+    this.paymentType,
+    this.serviceLocation,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GetAnycastEipAddressesArgs {
 
   factory GetAnycastEipAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetAnycastEipAddressesArgs(
-      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : pulumi.Output.create<String>(map['anycastEipAddressName'] as String),
-      bindInstanceIds: map['bindInstanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['bindInstanceIds'] as List).cast<String>()),
-      businessStatus: map['businessStatus'] == null ? null : pulumi.Output.create<String>(map['businessStatus'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      internetChargeType: map['internetChargeType'] == null ? null : pulumi.Output.create<String>(map['internetChargeType'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      serviceLocation: map['serviceLocation'] == null ? null : pulumi.Output.create<String>(map['serviceLocation'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName'] as String).input(),
+      bindInstanceIds: map['bindInstanceIds'] == null ? null : ((map['bindInstanceIds'] as List).cast<String>()).input(),
+      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      serviceLocation: map['serviceLocation'] == null ? null : (map['serviceLocation'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

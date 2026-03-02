@@ -18,11 +18,9 @@ class GetAvailabilityZonesV3Args {
   /// [region] The region in which to obtain the Block Storage client.
   /// [state] The `state` of the availability zones to match. Can
   GetAvailabilityZonesV3Args({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.region,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetAvailabilityZonesV3Args {
 
   factory GetAvailabilityZonesV3Args.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZonesV3Args(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

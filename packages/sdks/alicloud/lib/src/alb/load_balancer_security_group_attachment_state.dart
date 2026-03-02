@@ -16,13 +16,10 @@ class LoadBalancerSecurityGroupAttachmentState {
   /// [loadBalancerId] The ID of the Application Load Balancer.
   /// [securityGroupId] The ID of the security group.
   LoadBalancerSecurityGroupAttachmentState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? loadBalancerId,
-    pulumi.Output<String>? securityGroupId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      loadBalancerId = pulumi.Input.asOptionalInput<String>(loadBalancerId),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId);
+    this.dryRun,
+    this.loadBalancerId,
+    this.securityGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class LoadBalancerSecurityGroupAttachmentState {
 
   factory LoadBalancerSecurityGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerSecurityGroupAttachmentState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      loadBalancerId: map['loadBalancerId'] == null ? null : pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
     );
   }
 }

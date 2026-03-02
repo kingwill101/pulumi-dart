@@ -22,15 +22,11 @@ class GetDaprComponentResiliencyPolicyArgs {
   /// [name] Name of the Dapr Component Resiliency Policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDaprComponentResiliencyPolicyArgs({
-    required pulumi.Output<String> componentName,
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      componentName = pulumi.Input.asInput<String>(componentName),
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.componentName,
+    required this.environmentName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDaprComponentResiliencyPolicyArgs {
 
   factory GetDaprComponentResiliencyPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDaprComponentResiliencyPolicyArgs(
-      componentName: pulumi.Output.create<String>(map['componentName'] as String),
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      componentName: (map['componentName'] as String).input(),
+      environmentName: (map['environmentName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

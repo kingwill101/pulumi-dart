@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteServicesService {
   /// The region of the network instances that access the cloud services.
-  final String accessRegionId;
+  final pulumi.Input<String> accessRegionId;
   /// The ID of the CEN instance.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// The IP address of the cloud service.
-  final List<String> cidrs;
+  final pulumi.Input<List<String>> cidrs;
   /// The description of the cloud service.
-  final String description;
+  final pulumi.Input<String> description;
   /// The domain name or IP address of the cloud service.
-  final String host;
+  final pulumi.Input<String> host;
   /// The region of the cloud service.
-  final String hostRegionId;
+  final pulumi.Input<String> hostRegionId;
   /// The VPC associated with the cloud service.
-  final String hostVpcId;
+  final pulumi.Input<String> hostVpcId;
   /// The ID of the route service.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The update interval. Default value: 5. The value cannot be modified.
-  final String updateInterval;
+  final pulumi.Input<String> updateInterval;
 
   /// Creates a new [GetRouteServicesService].
   /// [accessRegionId] The region of the network instances that access the cloud services.
@@ -64,16 +65,16 @@ class GetRouteServicesService {
 
   factory GetRouteServicesService.fromMap(Map<String, dynamic> map) {
     return GetRouteServicesService(
-      accessRegionId: map['accessRegionId'] as String,
-      cenId: map['cenId'] as String,
-      cidrs: (map['cidrs'] as List).cast<String>(),
-      description: map['description'] as String,
-      host: map['host'] as String,
-      hostRegionId: map['hostRegionId'] as String,
-      hostVpcId: map['hostVpcId'] as String,
-      id: map['id'] as String,
-      status: map['status'] as String,
-      updateInterval: map['updateInterval'] as String,
+      accessRegionId: (map['accessRegionId'] as String).input(),
+      cenId: (map['cenId'] as String).input(),
+      cidrs: ((map['cidrs'] as List).cast<String>()).input(),
+      description: (map['description'] as String).input(),
+      host: (map['host'] as String).input(),
+      hostRegionId: (map['hostRegionId'] as String).input(),
+      hostVpcId: (map['hostVpcId'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
+      updateInterval: (map['updateInterval'] as String).input(),
     );
   }
 }

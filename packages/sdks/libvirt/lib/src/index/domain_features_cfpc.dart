@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesCfpc {
   /// Sets the specific value associated with the CFPC feature.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DomainFeaturesCfpc].
   /// [value] Sets the specific value associated with the CFPC feature.
@@ -19,7 +20,7 @@ class DomainFeaturesCfpc {
 
   factory DomainFeaturesCfpc.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCfpc(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

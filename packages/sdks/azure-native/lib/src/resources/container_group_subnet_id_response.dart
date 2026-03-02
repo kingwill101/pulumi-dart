@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container group subnet information.
 class ContainerGroupSubnetIdResponse {
   /// Resource ID of subnet.
-  final String id;
+  final pulumi.Input<String> id;
   /// Friendly name for the subnet.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ContainerGroupSubnetIdResponse].
   /// [id] Resource ID of subnet.
@@ -25,8 +26,8 @@ class ContainerGroupSubnetIdResponse {
 
   factory ContainerGroupSubnetIdResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupSubnetIdResponse(
-      id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

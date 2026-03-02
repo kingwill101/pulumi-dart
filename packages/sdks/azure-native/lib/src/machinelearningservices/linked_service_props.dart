@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linked_service_link_type.dart';
 
 /// LinkedService specific properties.
 class LinkedServiceProps {
   /// The creation time of the linked service.
-  final String? createdTime;
+  final pulumi.Input<String>? createdTime;
   /// Type of the link target.
-  final LinkedServiceLinkType? linkType;
+  final pulumi.Input<LinkedServiceLinkType>? linkType;
   /// ResourceId of the link target of the linked service.
-  final String linkedServiceResourceId;
+  final pulumi.Input<String> linkedServiceResourceId;
   /// The last modified time of the linked service.
-  final String? modifiedTime;
+  final pulumi.Input<String>? modifiedTime;
 
   /// Creates a new [LinkedServiceProps].
   /// [createdTime] The creation time of the linked service.
@@ -28,7 +29,7 @@ class LinkedServiceProps {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createdTime': ?createdTime,
-      'linkType': ?linkType == null ? null : linkType!.value,
+      'linkType': ?pulumi.Input.mapOptionalInputValue<LinkedServiceLinkType, String>(linkType, (value) => value.value),
       'linkedServiceResourceId': linkedServiceResourceId,
       'modifiedTime': ?modifiedTime,
     };
@@ -36,10 +37,10 @@ class LinkedServiceProps {
 
   factory LinkedServiceProps.fromMap(Map<String, dynamic> map) {
     return LinkedServiceProps(
-      createdTime: map['createdTime'] == null ? null : map['createdTime'] as String,
-      linkType: map['linkType'] == null ? null : LinkedServiceLinkType.fromValue(map['linkType'] as String),
-      linkedServiceResourceId: map['linkedServiceResourceId'] as String,
-      modifiedTime: map['modifiedTime'] == null ? null : map['modifiedTime'] as String,
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      linkType: map['linkType'] == null ? null : (LinkedServiceLinkType.fromValue(map['linkType'] as String)).input(),
+      linkedServiceResourceId: (map['linkedServiceResourceId'] as String).input(),
+      modifiedTime: map['modifiedTime'] == null ? null : (map['modifiedTime'] as String).input(),
     );
   }
 }

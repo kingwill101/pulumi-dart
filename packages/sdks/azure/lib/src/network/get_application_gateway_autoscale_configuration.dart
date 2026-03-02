@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayAutoscaleConfiguration {
   /// Maximum capacity for autoscaling.
-  final int maxCapacity;
+  final pulumi.Input<int> maxCapacity;
   /// Minimum capacity for autoscaling.
-  final int minCapacity;
+  final pulumi.Input<int> minCapacity;
 
   /// Creates a new [GetApplicationGatewayAutoscaleConfiguration].
   /// [maxCapacity] Maximum capacity for autoscaling.
@@ -24,8 +25,8 @@ class GetApplicationGatewayAutoscaleConfiguration {
 
   factory GetApplicationGatewayAutoscaleConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayAutoscaleConfiguration(
-      maxCapacity: map['maxCapacity'] as int,
-      minCapacity: map['minCapacity'] as int,
+      maxCapacity: (map['maxCapacity'] as int).input(),
+      minCapacity: (map['minCapacity'] as int).input(),
     );
   }
 }

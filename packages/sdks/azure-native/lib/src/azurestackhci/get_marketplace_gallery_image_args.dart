@@ -16,11 +16,9 @@ class GetMarketplaceGalleryImageArgs {
   /// [marketplaceGalleryImageName] Name of the marketplace gallery image
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMarketplaceGalleryImageArgs({
-    required pulumi.Output<String> marketplaceGalleryImageName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      marketplaceGalleryImageName = pulumi.Input.asInput<String>(marketplaceGalleryImageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.marketplaceGalleryImageName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetMarketplaceGalleryImageArgs {
 
   factory GetMarketplaceGalleryImageArgs.fromMap(Map<String, dynamic> map) {
     return GetMarketplaceGalleryImageArgs(
-      marketplaceGalleryImageName: pulumi.Output.create<String>(map['marketplaceGalleryImageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      marketplaceGalleryImageName: (map['marketplaceGalleryImageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -30,17 +30,12 @@ class ShardingNetworkPrivateAddressArgs {
   /// [nodeId] The ID of the Shard node or ConfigServer node.
   /// [zoneId] The zone ID of the instance.
   ShardingNetworkPrivateAddressArgs({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? accountPassword,
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> nodeId,
-    required pulumi.Output<String> zoneId,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      accountPassword = pulumi.Input.asOptionalInput<String>(accountPassword),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      nodeId = pulumi.Input.asInput<String>(nodeId),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.accountName,
+    this.accountPassword,
+    required this.dbInstanceId,
+    required this.nodeId,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class ShardingNetworkPrivateAddressArgs {
 
   factory ShardingNetworkPrivateAddressArgs.fromMap(Map<String, dynamic> map) {
     return ShardingNetworkPrivateAddressArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      accountPassword: map['accountPassword'] == null ? null : pulumi.Output.create<String>(map['accountPassword'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      nodeId: pulumi.Output.create<String>(map['nodeId'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

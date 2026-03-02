@@ -16,13 +16,10 @@ class GetSubscriptionIamPolicyArgs {
   /// [project] Optional.
   /// [subscriptionId] Required.
   GetSubscriptionIamPolicyArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    required this.location,
+    this.project,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetSubscriptionIamPolicyArgs {
 
   factory GetSubscriptionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionIamPolicyArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

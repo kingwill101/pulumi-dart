@@ -23,15 +23,11 @@ class MigrationEntityArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   MigrationEntityArgs({
-    pulumi.Output<String>? migrationEntityName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<MigrationEntityProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      migrationEntityName = pulumi.Input.asOptionalInput<String>(migrationEntityName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<MigrationEntityProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.migrationEntityName,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class MigrationEntityArgs {
 
   factory MigrationEntityArgs.fromMap(Map<String, dynamic> map) {
     return MigrationEntityArgs(
-      migrationEntityName: map['migrationEntityName'] == null ? null : pulumi.Output.create<String>(map['migrationEntityName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MigrationEntityProperties>(MigrationEntityProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      migrationEntityName: map['migrationEntityName'] == null ? null : (map['migrationEntityName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (MigrationEntityProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

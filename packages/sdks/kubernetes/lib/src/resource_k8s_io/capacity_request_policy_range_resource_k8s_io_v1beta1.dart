@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CapacityRequestPolicyRange defines a valid range for consumable capacity values.
 ///
@@ -13,15 +14,15 @@ class CapacityRequestPolicyRangeResourceK8sIoV1beta1 {
   /// Max defines the upper limit for capacity that can be requested.
   ///
   /// Max must be less than or equal to the capacity value. Min and requestPolicy.default must be less than or equal to the maximum.
-  final String? max;
+  final pulumi.Input<String>? max;
   /// Min specifies the minimum capacity allowed for a consumption request.
   ///
   /// Min must be greater than or equal to zero, and less than or equal to the capacity value. requestPolicy.default must be more than or equal to the minimum.
-  final String min;
+  final pulumi.Input<String> min;
   /// Step defines the step size between valid capacity amounts within the range.
   ///
   /// Max (if set) and requestPolicy.default must be a multiple of Step. Min + Step must be less than or equal to the capacity value.
-  final String? step;
+  final pulumi.Input<String>? step;
 
   /// Creates a new [CapacityRequestPolicyRangeResourceK8sIoV1beta1].
   /// [max] Max defines the upper limit for capacity that can be requested.
@@ -43,9 +44,9 @@ class CapacityRequestPolicyRangeResourceK8sIoV1beta1 {
 
   factory CapacityRequestPolicyRangeResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CapacityRequestPolicyRangeResourceK8sIoV1beta1(
-      max: map['max'] == null ? null : map['max'] as String,
-      min: map['min'] as String,
-      step: map['step'] == null ? null : map['step'] as String,
+      max: map['max'] == null ? null : (map['max'] as String).input(),
+      min: (map['min'] as String).input(),
+      step: map['step'] == null ? null : (map['step'] as String).input(),
     );
   }
 }

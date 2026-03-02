@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefaultRouteTableRoute {
   /// The CIDR block of the route.
-  final String? cidrBlock;
+  final pulumi.Input<String>? cidrBlock;
   /// The Amazon Resource Name (ARN) of a core network.
-  final String? coreNetworkArn;
+  final pulumi.Input<String>? coreNetworkArn;
   /// The ID of a managed prefix list destination of the route.
   ///
   /// One of the following target arguments must be supplied:
-  final String? destinationPrefixListId;
+  final pulumi.Input<String>? destinationPrefixListId;
   /// Identifier of a VPC Egress Only Internet Gateway.
-  final String? egressOnlyGatewayId;
+  final pulumi.Input<String>? egressOnlyGatewayId;
   /// Identifier of a VPC internet gateway or a virtual private gateway.
-  final String? gatewayId;
+  final pulumi.Input<String>? gatewayId;
   /// Identifier of an EC2 instance.
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// The Ipv6 CIDR block of the route
-  final String? ipv6CidrBlock;
+  final pulumi.Input<String>? ipv6CidrBlock;
   /// Identifier of a VPC NAT gateway.
-  final String? natGatewayId;
+  final pulumi.Input<String>? natGatewayId;
   /// Identifier of an EC2 network interface.
-  final String? networkInterfaceId;
+  final pulumi.Input<String>? networkInterfaceId;
   /// Identifier of an EC2 Transit Gateway.
-  final String? transitGatewayId;
+  final pulumi.Input<String>? transitGatewayId;
   /// Identifier of a VPC Endpoint. This route must be removed prior to VPC Endpoint deletion.
-  final String? vpcEndpointId;
+  final pulumi.Input<String>? vpcEndpointId;
   /// Identifier of a VPC peering connection.
   ///
   /// Note that the default route, mapping the VPC's CIDR block to "local", is created implicitly and cannot be specified.
-  final String? vpcPeeringConnectionId;
+  final pulumi.Input<String>? vpcPeeringConnectionId;
 
   /// Creates a new [DefaultRouteTableRoute].
   /// [cidrBlock] The CIDR block of the route.
@@ -78,18 +79,18 @@ class DefaultRouteTableRoute {
 
   factory DefaultRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTableRoute(
-      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : map['coreNetworkArn'] as String,
-      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : map['destinationPrefixListId'] as String,
-      egressOnlyGatewayId: map['egressOnlyGatewayId'] == null ? null : map['egressOnlyGatewayId'] as String,
-      gatewayId: map['gatewayId'] == null ? null : map['gatewayId'] as String,
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : map['ipv6CidrBlock'] as String,
-      natGatewayId: map['natGatewayId'] == null ? null : map['natGatewayId'] as String,
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
-      transitGatewayId: map['transitGatewayId'] == null ? null : map['transitGatewayId'] as String,
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : map['vpcEndpointId'] as String,
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : map['vpcPeeringConnectionId'] as String,
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      coreNetworkArn: map['coreNetworkArn'] == null ? null : (map['coreNetworkArn'] as String).input(),
+      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : (map['destinationPrefixListId'] as String).input(),
+      egressOnlyGatewayId: map['egressOnlyGatewayId'] == null ? null : (map['egressOnlyGatewayId'] as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId'] as String).input(),
     );
   }
 }

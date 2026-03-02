@@ -22,15 +22,11 @@ class GetKubernetesNodePoolsArgs {
   /// [nodePoolName] The name of node pool.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetKubernetesNodePoolsArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nodePoolName,
-    pulumi.Output<String>? outputFile,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nodePoolName = pulumi.Input.asOptionalInput<String>(nodePoolName),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.clusterId,
+    this.ids,
+    this.nodePoolName,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetKubernetesNodePoolsArgs {
 
   factory GetKubernetesNodePoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nodePoolName: map['nodePoolName'] == null ? null : pulumi.Output.create<String>(map['nodePoolName'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nodePoolName: map['nodePoolName'] == null ? null : (map['nodePoolName'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

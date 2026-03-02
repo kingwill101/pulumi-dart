@@ -1,40 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The request configuration.
 class RestApiPollerRequestConfigResponse {
   /// The API endpoint.
-  final String apiEndpoint;
+  final pulumi.Input<String> apiEndpoint;
   /// The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
-  final String? endTimeAttributeName;
+  final pulumi.Input<String>? endTimeAttributeName;
   /// The header for the request for the remote server.
-  final Map<String, String>? headers;
+  final pulumi.Input<Map<String, String>>? headers;
   /// The HTTP method, default value GET.
-  final String? httpMethod;
+  final pulumi.Input<String>? httpMethod;
   /// Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
-  final bool? isPostPayloadJson;
+  final pulumi.Input<bool>? isPostPayloadJson;
   /// The HTTP query parameters to RESTful API.
-  final dynamic queryParameters;
+  final pulumi.Input<dynamic>? queryParameters;
   /// the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
-  final String? queryParametersTemplate;
+  final pulumi.Input<String>? queryParametersTemplate;
   /// The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
-  final String? queryTimeFormat;
+  final pulumi.Input<String>? queryTimeFormat;
   /// The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
-  final String? queryTimeIntervalAttributeName;
+  final pulumi.Input<String>? queryTimeIntervalAttributeName;
   /// The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
-  final String? queryTimeIntervalDelimiter;
+  final pulumi.Input<String>? queryTimeIntervalDelimiter;
   /// The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
-  final String? queryTimeIntervalPrepend;
+  final pulumi.Input<String>? queryTimeIntervalPrepend;
   /// The query window in minutes for the request.
-  final int? queryWindowInMin;
+  final pulumi.Input<int>? queryWindowInMin;
   /// The Rate limit queries per second for the request..
-  final int? rateLimitQPS;
+  final pulumi.Input<int>? rateLimitQPS;
   /// The retry count.
-  final int? retryCount;
+  final pulumi.Input<int>? retryCount;
   /// The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
-  final String? startTimeAttributeName;
+  final pulumi.Input<String>? startTimeAttributeName;
   /// The timeout in seconds.
-  final int? timeoutInSeconds;
+  final pulumi.Input<int>? timeoutInSeconds;
 
   /// Creates a new [RestApiPollerRequestConfigResponse].
   /// [apiEndpoint] The API endpoint.
@@ -95,22 +96,22 @@ class RestApiPollerRequestConfigResponse {
 
   factory RestApiPollerRequestConfigResponse.fromMap(Map<String, dynamic> map) {
     return RestApiPollerRequestConfigResponse(
-      apiEndpoint: map['apiEndpoint'] as String,
-      endTimeAttributeName: map['endTimeAttributeName'] == null ? null : map['endTimeAttributeName'] as String,
-      headers: map['headers'] == null ? null : (map['headers'] as Map).cast<String, String>(),
-      httpMethod: map['httpMethod'] == null ? null : map['httpMethod'] as String,
-      isPostPayloadJson: map['isPostPayloadJson'] == null ? null : map['isPostPayloadJson'] as bool,
-      queryParameters: map['queryParameters'] == null ? null : map['queryParameters'],
-      queryParametersTemplate: map['queryParametersTemplate'] == null ? null : map['queryParametersTemplate'] as String,
-      queryTimeFormat: map['queryTimeFormat'] == null ? null : map['queryTimeFormat'] as String,
-      queryTimeIntervalAttributeName: map['queryTimeIntervalAttributeName'] == null ? null : map['queryTimeIntervalAttributeName'] as String,
-      queryTimeIntervalDelimiter: map['queryTimeIntervalDelimiter'] == null ? null : map['queryTimeIntervalDelimiter'] as String,
-      queryTimeIntervalPrepend: map['queryTimeIntervalPrepend'] == null ? null : map['queryTimeIntervalPrepend'] as String,
-      queryWindowInMin: map['queryWindowInMin'] == null ? null : map['queryWindowInMin'] as int,
-      rateLimitQPS: map['rateLimitQPS'] == null ? null : map['rateLimitQPS'] as int,
-      retryCount: map['retryCount'] == null ? null : map['retryCount'] as int,
-      startTimeAttributeName: map['startTimeAttributeName'] == null ? null : map['startTimeAttributeName'] as String,
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : map['timeoutInSeconds'] as int,
+      apiEndpoint: (map['apiEndpoint'] as String).input(),
+      endTimeAttributeName: map['endTimeAttributeName'] == null ? null : (map['endTimeAttributeName'] as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
+      isPostPayloadJson: map['isPostPayloadJson'] == null ? null : (map['isPostPayloadJson'] as bool).input(),
+      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters']).input(),
+      queryParametersTemplate: map['queryParametersTemplate'] == null ? null : (map['queryParametersTemplate'] as String).input(),
+      queryTimeFormat: map['queryTimeFormat'] == null ? null : (map['queryTimeFormat'] as String).input(),
+      queryTimeIntervalAttributeName: map['queryTimeIntervalAttributeName'] == null ? null : (map['queryTimeIntervalAttributeName'] as String).input(),
+      queryTimeIntervalDelimiter: map['queryTimeIntervalDelimiter'] == null ? null : (map['queryTimeIntervalDelimiter'] as String).input(),
+      queryTimeIntervalPrepend: map['queryTimeIntervalPrepend'] == null ? null : (map['queryTimeIntervalPrepend'] as String).input(),
+      queryWindowInMin: map['queryWindowInMin'] == null ? null : (map['queryWindowInMin'] as int).input(),
+      rateLimitQPS: map['rateLimitQPS'] == null ? null : (map['rateLimitQPS'] as int).input(),
+      retryCount: map['retryCount'] == null ? null : (map['retryCount'] as int).input(),
+      startTimeAttributeName: map['startTimeAttributeName'] == null ? null : (map['startTimeAttributeName'] as String).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound {
   /// A float value.
-  final double? floatValue;
+  final pulumi.Input<double>? floatValue;
   /// An integer value (int64 format)
-  final String? integerValue;
+  final pulumi.Input<String>? integerValue;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound].
   /// [floatValue] A float value.
@@ -24,8 +25,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(
-      floatValue: map['floatValue'] == null ? null : map['floatValue'] as double,
-      integerValue: map['integerValue'] == null ? null : map['integerValue'] as String,
+      floatValue: map['floatValue'] == null ? null : (map['floatValue'] as double).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as String).input(),
     );
   }
 }

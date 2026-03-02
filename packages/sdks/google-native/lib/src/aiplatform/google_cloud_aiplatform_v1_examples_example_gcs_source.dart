@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_examples_example_gcs_source_data_format.dart';
 import 'google_cloud_aiplatform_v1_gcs_source.dart';
 
 /// The Cloud Storage input instances.
 class GoogleCloudAiplatformV1ExamplesExampleGcsSource {
   /// The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
-  final GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat? dataFormat;
+  final pulumi.Input<GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat>? dataFormat;
   /// The Cloud Storage location for the input instances.
-  final GoogleCloudAiplatformV1GcsSource? gcsSource;
+  final pulumi.Input<GoogleCloudAiplatformV1GcsSource>? gcsSource;
 
   /// Creates a new [GoogleCloudAiplatformV1ExamplesExampleGcsSource].
   /// [dataFormat] The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
@@ -20,15 +21,15 @@ class GoogleCloudAiplatformV1ExamplesExampleGcsSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataFormat': ?dataFormat == null ? null : dataFormat!.value,
-      'gcsSource': ?gcsSource == null ? null : gcsSource!.toMap(),
+      'dataFormat': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat, String>(dataFormat, (value) => value.value),
+      'gcsSource': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1GcsSource, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudAiplatformV1ExamplesExampleGcsSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ExamplesExampleGcsSource(
-      dataFormat: map['dataFormat'] == null ? null : GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat.fromValue(map['dataFormat'] as String),
-      gcsSource: map['gcsSource'] == null ? null : GoogleCloudAiplatformV1GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
+      dataFormat: map['dataFormat'] == null ? null : (GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat.fromValue(map['dataFormat'] as String)).input(),
+      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

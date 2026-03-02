@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_policy_rule_actions.dart';
 import 'management_policy_rule_filters.dart';
 
 class ManagementPolicyRule {
   /// An `actions` block as documented below.
-  final ManagementPolicyRuleActions actions;
+  final pulumi.Input<ManagementPolicyRuleActions> actions;
   /// Boolean to specify whether the rule is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A `filters` block as documented below.
-  final ManagementPolicyRuleFilters filters;
+  final pulumi.Input<ManagementPolicyRuleFilters> filters;
   /// The name of the rule. Rule name is case-sensitive. It must be unique within a policy.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ManagementPolicyRule].
   /// [actions] An `actions` block as documented below.
@@ -27,19 +28,19 @@ class ManagementPolicyRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': actions.toMap(),
+      'actions': pulumi.Input.mapInputValue<ManagementPolicyRuleActions, Map<String, dynamic>>(actions, (value) => value.toMap()),
       'enabled': enabled,
-      'filters': filters.toMap(),
+      'filters': pulumi.Input.mapInputValue<ManagementPolicyRuleFilters, Map<String, dynamic>>(filters, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory ManagementPolicyRule.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRule(
-      actions: ManagementPolicyRuleActions.fromMap((map['actions'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] as bool,
-      filters: ManagementPolicyRuleFilters.fromMap((map['filters'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      actions: (ManagementPolicyRuleActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
+      enabled: (map['enabled'] as bool).input(),
+      filters: (ManagementPolicyRuleFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

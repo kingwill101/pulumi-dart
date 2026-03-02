@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// WorkspaceHub's configuration object.
 class WorkspaceHubConfig {
-  final List<String>? additionalWorkspaceStorageAccounts;
-  final String? defaultWorkspaceResourceGroup;
+  final pulumi.Input<List<String>>? additionalWorkspaceStorageAccounts;
+  final pulumi.Input<String>? defaultWorkspaceResourceGroup;
 
   /// Creates a new [WorkspaceHubConfig].
   /// [additionalWorkspaceStorageAccounts] Optional.
@@ -23,8 +24,8 @@ class WorkspaceHubConfig {
 
   factory WorkspaceHubConfig.fromMap(Map<String, dynamic> map) {
     return WorkspaceHubConfig(
-      additionalWorkspaceStorageAccounts: map['additionalWorkspaceStorageAccounts'] == null ? null : (map['additionalWorkspaceStorageAccounts'] as List).cast<String>(),
-      defaultWorkspaceResourceGroup: map['defaultWorkspaceResourceGroup'] == null ? null : map['defaultWorkspaceResourceGroup'] as String,
+      additionalWorkspaceStorageAccounts: map['additionalWorkspaceStorageAccounts'] == null ? null : ((map['additionalWorkspaceStorageAccounts'] as List).cast<String>()).input(),
+      defaultWorkspaceResourceGroup: map['defaultWorkspaceResourceGroup'] == null ? null : (map['defaultWorkspaceResourceGroup'] as String).input(),
     );
   }
 }

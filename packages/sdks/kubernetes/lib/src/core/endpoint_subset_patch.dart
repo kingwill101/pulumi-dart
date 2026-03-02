@@ -19,11 +19,11 @@ import 'endpoint_port_patch.dart';
 /// Deprecated: This API is deprecated in v1.33+.
 class EndpointSubsetPatch {
   /// IP addresses which offer the related ports that are marked as ready. These endpoints should be considered safe for load balancers and clients to utilize.
-  final List<EndpointAddressPatch>? addresses;
+  final pulumi.Input<List<EndpointAddressPatch>>? addresses;
   /// IP addresses which offer the related ports but are not currently marked as ready because they have not yet finished starting, have recently failed a readiness check, or have recently failed a liveness check.
-  final List<EndpointAddressPatch>? notReadyAddresses;
+  final pulumi.Input<List<EndpointAddressPatch>>? notReadyAddresses;
   /// Port numbers available on the related IP addresses.
-  final List<EndpointPortPatch>? ports;
+  final pulumi.Input<List<EndpointPortPatch>>? ports;
 
   /// Creates a new [EndpointSubsetPatch].
   /// [addresses] IP addresses which offer the related ports that are marked as ready. These endpoints should be considered safe for load balancers and clients to utilize.
@@ -37,17 +37,17 @@ class EndpointSubsetPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses': ?addresses == null ? null : pulumi.Input.encodeList<EndpointAddressPatch, Map<String, dynamic>>(addresses!, (value) => value.toMap()),
-      'notReadyAddresses': ?notReadyAddresses == null ? null : pulumi.Input.encodeList<EndpointAddressPatch, Map<String, dynamic>>(notReadyAddresses!, (value) => value.toMap()),
-      'ports': ?ports == null ? null : pulumi.Input.encodeList<EndpointPortPatch, Map<String, dynamic>>(ports!, (value) => value.toMap()),
+      'addresses': ?pulumi.Input.mapOptionalInputValue<List<EndpointAddressPatch>, List<Map<String, dynamic>>>(addresses, (value) => pulumi.Input.encodeList<EndpointAddressPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'notReadyAddresses': ?pulumi.Input.mapOptionalInputValue<List<EndpointAddressPatch>, List<Map<String, dynamic>>>(notReadyAddresses, (value) => pulumi.Input.encodeList<EndpointAddressPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ports': ?pulumi.Input.mapOptionalInputValue<List<EndpointPortPatch>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<EndpointPortPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EndpointSubsetPatch.fromMap(Map<String, dynamic> map) {
     return EndpointSubsetPatch(
-      addresses: map['addresses'] == null ? null : pulumi.Input.decodeList<EndpointAddressPatch>(map['addresses'], (value) => EndpointAddressPatch.fromMap((value as Map).cast<String, dynamic>())),
-      notReadyAddresses: map['notReadyAddresses'] == null ? null : pulumi.Input.decodeList<EndpointAddressPatch>(map['notReadyAddresses'], (value) => EndpointAddressPatch.fromMap((value as Map).cast<String, dynamic>())),
-      ports: map['ports'] == null ? null : pulumi.Input.decodeList<EndpointPortPatch>(map['ports'], (value) => EndpointPortPatch.fromMap((value as Map).cast<String, dynamic>())),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<EndpointAddressPatch>(map['addresses'], (value) => EndpointAddressPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notReadyAddresses: map['notReadyAddresses'] == null ? null : (pulumi.Input.decodeList<EndpointAddressPatch>(map['notReadyAddresses'], (value) => EndpointAddressPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EndpointPortPatch>(map['ports'], (value) => EndpointPortPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

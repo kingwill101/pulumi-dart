@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTagsFilterNotTags {
-  final String? key;
-  final List<String>? matchOptions;
-  final List<String>? values;
+  final pulumi.Input<String>? key;
+  final pulumi.Input<List<String>>? matchOptions;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [GetTagsFilterNotTags].
   /// [key] Optional.
@@ -26,9 +27,9 @@ class GetTagsFilterNotTags {
 
   factory GetTagsFilterNotTags.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterNotTags(
-      key: map['key'] == null ? null : map['key'] as String,
-      matchOptions: map['matchOptions'] == null ? null : (map['matchOptions'] as List).cast<String>(),
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      matchOptions: map['matchOptions'] == null ? null : ((map['matchOptions'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

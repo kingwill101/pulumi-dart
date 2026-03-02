@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IpAccessSettingsIpRule {
   /// The description of the IP access settings.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The IP range of the IP rule.
-  final String ipRange;
+  final pulumi.Input<String> ipRange;
 
   /// Creates a new [IpAccessSettingsIpRule].
   /// [description] The description of the IP access settings.
@@ -24,8 +25,8 @@ class IpAccessSettingsIpRule {
 
   factory IpAccessSettingsIpRule.fromMap(Map<String, dynamic> map) {
     return IpAccessSettingsIpRule(
-      description: map['description'] == null ? null : map['description'] as String,
-      ipRange: map['ipRange'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipRange: (map['ipRange'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayVpnAttachmentHealthCheckConfig {
   /// Target IP.
-  final String? dip;
+  final pulumi.Input<String>? dip;
   /// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
-  final bool? enable;
+  final pulumi.Input<bool>? enable;
   /// The health check retry interval, in seconds.
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// Whether to revoke the published route when the health check fails
-  final String? policy;
+  final pulumi.Input<String>? policy;
   /// Number of retries for health check.
-  final int? retry;
+  final pulumi.Input<int>? retry;
   /// SOURCE IP.
-  final String? sip;
+  final pulumi.Input<String>? sip;
   /// The negotiation status of Tunnel.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [GatewayVpnAttachmentHealthCheckConfig].
   /// [dip] Target IP.
@@ -49,13 +50,13 @@ class GatewayVpnAttachmentHealthCheckConfig {
 
   factory GatewayVpnAttachmentHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return GatewayVpnAttachmentHealthCheckConfig(
-      dip: map['dip'] == null ? null : map['dip'] as String,
-      enable: map['enable'] == null ? null : map['enable'] as bool,
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      policy: map['policy'] == null ? null : map['policy'] as String,
-      retry: map['retry'] == null ? null : map['retry'] as int,
-      sip: map['sip'] == null ? null : map['sip'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      dip: map['dip'] == null ? null : (map['dip'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      retry: map['retry'] == null ? null : (map['retry'] as int).input(),
+      sip: map['sip'] == null ? null : (map['sip'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

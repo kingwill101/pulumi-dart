@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ResourceHealth represents the health of a resource. It has the latest device health information. This is a part of KEP https://kep.k8s.io/4680.
 class ResourceHealth {
@@ -12,9 +13,9 @@ class ResourceHealth {
   /// For example, Device Plugin got unregistered and hasn't been re-registered since.
   ///
   /// In future we may want to introduce the PermanentlyUnhealthy Status.
-  final String? health;
+  final pulumi.Input<String>? health;
   /// ResourceID is the unique identifier of the resource. See the ResourceID type for more information.
-  final String resourceID;
+  final pulumi.Input<String> resourceID;
 
   /// Creates a new [ResourceHealth].
   /// [health] Health of the resource. can be one of:
@@ -33,8 +34,8 @@ class ResourceHealth {
 
   factory ResourceHealth.fromMap(Map<String, dynamic> map) {
     return ResourceHealth(
-      health: map['health'] == null ? null : map['health'] as String,
-      resourceID: map['resourceID'] as String,
+      health: map['health'] == null ? null : (map['health'] as String).input(),
+      resourceID: (map['resourceID'] as String).input(),
     );
   }
 }

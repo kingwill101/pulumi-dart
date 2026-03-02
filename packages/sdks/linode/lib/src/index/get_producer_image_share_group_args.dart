@@ -13,9 +13,8 @@ class GetProducerImageShareGroupArgs {
   /// Creates a new [GetProducerImageShareGroupArgs].
   /// [id] The ID of the Image Share Group.
   GetProducerImageShareGroupArgs({
-    required pulumi.Output<int> id,
-  }) :
-      id = pulumi.Input.asInput<int>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetProducerImageShareGroupArgs {
 
   factory GetProducerImageShareGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupArgs(
-      id: pulumi.Output.create<int>(map['id'] as int),
+      id: (map['id'] as int).input(),
     );
   }
 }

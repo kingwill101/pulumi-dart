@@ -28,19 +28,13 @@ class SdkvoiceSipRuleState {
   /// [triggerType] The type of trigger assigned to the SIP rule in `trigger_value`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
   /// [triggerValue] If `trigger_type` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `trigger_type` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
   SdkvoiceSipRuleState({
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<SdkvoiceSipRuleTargetApplication>>? targetApplications,
-    pulumi.Output<String>? triggerType,
-    pulumi.Output<String>? triggerValue,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetApplications = pulumi.Input.asOptionalInput<List<SdkvoiceSipRuleTargetApplication>>(targetApplications),
-      triggerType = pulumi.Input.asOptionalInput<String>(triggerType),
-      triggerValue = pulumi.Input.asOptionalInput<String>(triggerValue);
+    this.disabled,
+    this.name,
+    this.region,
+    this.targetApplications,
+    this.triggerType,
+    this.triggerValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SdkvoiceSipRuleState {
 
   factory SdkvoiceSipRuleState.fromMap(Map<String, dynamic> map) {
     return SdkvoiceSipRuleState(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetApplications: map['targetApplications'] == null ? null : pulumi.Output.create<List<SdkvoiceSipRuleTargetApplication>>(pulumi.Input.decodeList<SdkvoiceSipRuleTargetApplication>(map['targetApplications'], (value) => SdkvoiceSipRuleTargetApplication.fromMap((value as Map).cast<String, dynamic>()))),
-      triggerType: map['triggerType'] == null ? null : pulumi.Output.create<String>(map['triggerType'] as String),
-      triggerValue: map['triggerValue'] == null ? null : pulumi.Output.create<String>(map['triggerValue'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetApplications: map['targetApplications'] == null ? null : (pulumi.Input.decodeList<SdkvoiceSipRuleTargetApplication>(map['targetApplications'], (value) => SdkvoiceSipRuleTargetApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
+      triggerValue: map['triggerValue'] == null ? null : (map['triggerValue'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class ProtectionIntentArgs {
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
   ProtectionIntentArgs({
-    pulumi.Output<String>? eTag,
-    required pulumi.Output<String> fabricName,
-    pulumi.Output<String>? intentObjectName,
-    pulumi.Output<String>? location,
-    pulumi.Output<AzureRecoveryServiceVaultProtectionIntent>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vaultName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      intentObjectName = pulumi.Input.asOptionalInput<String>(intentObjectName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<AzureRecoveryServiceVaultProtectionIntent>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    this.eTag,
+    required this.fabricName,
+    this.intentObjectName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ProtectionIntentArgs {
 
   factory ProtectionIntentArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionIntentArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      intentObjectName: map['intentObjectName'] == null ? null : pulumi.Output.create<String>(map['intentObjectName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AzureRecoveryServiceVaultProtectionIntent>(AzureRecoveryServiceVaultProtectionIntent.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      fabricName: (map['fabricName'] as String).input(),
+      intentObjectName: map['intentObjectName'] == null ? null : (map['intentObjectName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (AzureRecoveryServiceVaultProtectionIntent.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

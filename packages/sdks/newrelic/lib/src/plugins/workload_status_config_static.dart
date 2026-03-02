@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadStatusConfigStatic {
   /// Relevant information about the workload.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Whether the static status configuration is enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The status of the workload.
-  final String status;
+  final pulumi.Input<String> status;
   /// A short description of the status of the workload.
-  final String? summary;
+  final pulumi.Input<String>? summary;
 
   /// Creates a new [WorkloadStatusConfigStatic].
   /// [description] Relevant information about the workload.
@@ -34,10 +35,10 @@ class WorkloadStatusConfigStatic {
 
   factory WorkloadStatusConfigStatic.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigStatic(
-      description: map['description'] == null ? null : map['description'] as String,
-      enabled: map['enabled'] as bool,
-      status: map['status'] as String,
-      summary: map['summary'] == null ? null : map['summary'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      status: (map['status'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
     );
   }
 }

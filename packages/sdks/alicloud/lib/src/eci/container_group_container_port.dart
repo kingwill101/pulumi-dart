@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerGroupContainerPort {
-  final int? port;
-  final String? protocol;
+  final pulumi.Input<int>? port;
+  final pulumi.Input<String>? protocol;
 
   /// Creates a new [ContainerGroupContainerPort].
   /// [port] Optional.
@@ -22,8 +23,8 @@ class ContainerGroupContainerPort {
 
   factory ContainerGroupContainerPort.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerPort(
-      port: map['port'] == null ? null : map['port'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

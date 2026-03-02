@@ -38,27 +38,17 @@ class CertificateMapEntryArgs {
   /// [name] A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
   /// [project] Optional.
   CertificateMapEntryArgs({
-    required pulumi.Output<String> certificateMapEntryId,
-    required pulumi.Output<String> certificateMapId,
-    pulumi.Output<List<String>>? certificates,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<CertificateMapEntryMatcher>? matcher,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      certificateMapEntryId = pulumi.Input.asInput<String>(certificateMapEntryId),
-      certificateMapId = pulumi.Input.asInput<String>(certificateMapId),
-      certificates = pulumi.Input.asOptionalInput<List<String>>(certificates),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      matcher = pulumi.Input.asOptionalInput<CertificateMapEntryMatcher>(matcher),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.certificateMapEntryId,
+    required this.certificateMapId,
+    this.certificates,
+    this.description,
+    this.hostname,
+    this.labels,
+    this.location,
+    this.matcher,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class CertificateMapEntryArgs {
 
   factory CertificateMapEntryArgs.fromMap(Map<String, dynamic> map) {
     return CertificateMapEntryArgs(
-      certificateMapEntryId: pulumi.Output.create<String>(map['certificateMapEntryId'] as String),
-      certificateMapId: pulumi.Output.create<String>(map['certificateMapId'] as String),
-      certificates: map['certificates'] == null ? null : pulumi.Output.create<List<String>>((map['certificates'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      matcher: map['matcher'] == null ? null : pulumi.Output.create<CertificateMapEntryMatcher>(CertificateMapEntryMatcher.fromValue(map['matcher'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      certificateMapEntryId: (map['certificateMapEntryId'] as String).input(),
+      certificateMapId: (map['certificateMapId'] as String).input(),
+      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      matcher: map['matcher'] == null ? null : (CertificateMapEntryMatcher.fromValue(map['matcher'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

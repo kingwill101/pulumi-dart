@@ -26,17 +26,12 @@ class AppHostingDefaultDomainArgs {
   /// [location] The location of the Backend that this Domain is associated with
   /// [project] The ID of the project in which the resource belongs.
   AppHostingDefaultDomainArgs({
-    required pulumi.Output<String> backend,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> domainId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      backend = pulumi.Input.asInput<String>(backend),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      domainId = pulumi.Input.asInput<String>(domainId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backend,
+    this.disabled,
+    required this.domainId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AppHostingDefaultDomainArgs {
 
   factory AppHostingDefaultDomainArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingDefaultDomainArgs(
-      backend: pulumi.Output.create<String>(map['backend'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backend: (map['backend'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      domainId: (map['domainId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

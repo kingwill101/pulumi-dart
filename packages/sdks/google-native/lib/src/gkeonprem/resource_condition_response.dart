@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ResourceCondition provides a standard mechanism for higher-level status reporting from controller.
 class ResourceConditionResponse {
   /// Last time the condition transit from one status to another.
-  final String lastTransitionTime;
+  final pulumi.Input<String> lastTransitionTime;
   /// Human-readable message indicating details about last transition.
-  final String message;
+  final pulumi.Input<String> message;
   /// Machine-readable message indicating details about last transition.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// state of the condition.
-  final String state;
+  final pulumi.Input<String> state;
   /// Type of the condition. (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ResourceConditionResponse].
   /// [lastTransitionTime] Last time the condition transit from one status to another.
@@ -40,11 +41,11 @@ class ResourceConditionResponse {
 
   factory ResourceConditionResponse.fromMap(Map<String, dynamic> map) {
     return ResourceConditionResponse(
-      lastTransitionTime: map['lastTransitionTime'] as String,
-      message: map['message'] as String,
-      reason: map['reason'] as String,
-      state: map['state'] as String,
-      type: map['type'] as String,
+      lastTransitionTime: (map['lastTransitionTime'] as String).input(),
+      message: (map['message'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      state: (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

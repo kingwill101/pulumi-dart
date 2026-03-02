@@ -19,13 +19,10 @@ class GetInstancesArgs {
   /// [instanceName] The name of the resource.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetInstancesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    this.instanceName,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

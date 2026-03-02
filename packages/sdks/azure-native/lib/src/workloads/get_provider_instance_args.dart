@@ -19,13 +19,10 @@ class GetProviderInstanceArgs {
   /// [providerInstanceName] Name of the provider instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetProviderInstanceArgs({
-    required pulumi.Output<String> monitorName,
-    required pulumi.Output<String> providerInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      providerInstanceName = pulumi.Input.asInput<String>(providerInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.monitorName,
+    required this.providerInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetProviderInstanceArgs {
 
   factory GetProviderInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderInstanceArgs(
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      providerInstanceName: pulumi.Output.create<String>(map['providerInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      monitorName: (map['monitorName'] as String).input(),
+      providerInstanceName: (map['providerInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

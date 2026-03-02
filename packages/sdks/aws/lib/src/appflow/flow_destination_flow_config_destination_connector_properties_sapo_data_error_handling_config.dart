@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig {
   /// Name of the Amazon S3 bucket.
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// Amazon S3 bucket prefix.
-  final String? bucketPrefix;
+  final pulumi.Input<String>? bucketPrefix;
   /// If the flow should fail after the first instance of a failure when attempting to place data in the destination.
-  final bool? failOnFirstDestinationError;
+  final pulumi.Input<bool>? failOnFirstDestinationError;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig].
   /// [bucketName] Name of the Amazon S3 bucket.
@@ -29,9 +30,9 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandli
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
-      failOnFirstDestinationError: map['failOnFirstDestinationError'] == null ? null : map['failOnFirstDestinationError'] as bool,
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      failOnFirstDestinationError: map['failOnFirstDestinationError'] == null ? null : (map['failOnFirstDestinationError'] as bool).input(),
     );
   }
 }

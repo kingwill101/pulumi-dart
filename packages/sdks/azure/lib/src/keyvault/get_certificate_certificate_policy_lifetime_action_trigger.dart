@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateCertificatePolicyLifetimeActionTrigger {
   /// The number of days before the Certificate expires that the action associated with this Trigger should run.
-  final int daysBeforeExpiry;
+  final pulumi.Input<int> daysBeforeExpiry;
   /// The percentage at which during the Certificates Lifetime the action associated with this Trigger should run.
-  final int lifetimePercentage;
+  final pulumi.Input<int> lifetimePercentage;
 
   /// Creates a new [GetCertificateCertificatePolicyLifetimeActionTrigger].
   /// [daysBeforeExpiry] The number of days before the Certificate expires that the action associated with this Trigger should run.
@@ -24,8 +25,8 @@ class GetCertificateCertificatePolicyLifetimeActionTrigger {
 
   factory GetCertificateCertificatePolicyLifetimeActionTrigger.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyLifetimeActionTrigger(
-      daysBeforeExpiry: map['daysBeforeExpiry'] as int,
-      lifetimePercentage: map['lifetimePercentage'] as int,
+      daysBeforeExpiry: (map['daysBeforeExpiry'] as int).input(),
+      lifetimePercentage: (map['lifetimePercentage'] as int).input(),
     );
   }
 }

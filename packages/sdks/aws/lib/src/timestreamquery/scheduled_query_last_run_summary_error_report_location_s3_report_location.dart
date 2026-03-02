@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
   /// S3 bucket name.
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// S3 key.
-  final String? objectKey;
+  final pulumi.Input<String>? objectKey;
 
   /// Creates a new [ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation].
   /// [bucketName] S3 bucket name.
@@ -24,8 +25,8 @@ class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
 
   factory ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      objectKey: map['objectKey'] == null ? null : map['objectKey'] as String,
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      objectKey: map['objectKey'] == null ? null : (map['objectKey'] as String).input(),
     );
   }
 }

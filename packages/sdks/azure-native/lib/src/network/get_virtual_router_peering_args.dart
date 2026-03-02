@@ -19,13 +19,10 @@ class GetVirtualRouterPeeringArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualRouterName] The name of the Virtual Router.
   GetVirtualRouterPeeringArgs({
-    required pulumi.Output<String> peeringName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualRouterName,
-  }) :
-      peeringName = pulumi.Input.asInput<String>(peeringName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualRouterName = pulumi.Input.asInput<String>(virtualRouterName);
+    required this.peeringName,
+    required this.resourceGroupName,
+    required this.virtualRouterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualRouterPeeringArgs {
 
   factory GetVirtualRouterPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterPeeringArgs(
-      peeringName: pulumi.Output.create<String>(map['peeringName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualRouterName: pulumi.Output.create<String>(map['virtualRouterName'] as String),
+      peeringName: (map['peeringName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualRouterName: (map['virtualRouterName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetDotNetComponentArgs {
   /// [name] Name of the .NET Component.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDotNetComponentArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDotNetComponentArgs {
 
   factory GetDotNetComponentArgs.fromMap(Map<String, dynamic> map) {
     return GetDotNetComponentArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

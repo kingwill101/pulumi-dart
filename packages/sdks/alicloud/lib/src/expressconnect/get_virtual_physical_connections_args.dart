@@ -45,27 +45,17 @@ class GetVirtualPhysicalConnectionsArgs {
   /// [vlanIds] The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
   /// [vpconnAliUid] The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
   GetVirtualPhysicalConnectionsArgs({
-    pulumi.Output<String>? businessStatus,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<bool>? isConfirmed,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? parentPhysicalConnectionId,
-    pulumi.Output<List<String>>? virtualPhysicalConnectionIds,
-    pulumi.Output<String>? virtualPhysicalConnectionStatus,
-    pulumi.Output<List<int>>? vlanIds,
-    pulumi.Output<String>? vpconnAliUid,
-  }) :
-      businessStatus = pulumi.Input.asOptionalInput<String>(businessStatus),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      isConfirmed = pulumi.Input.asOptionalInput<bool>(isConfirmed),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      parentPhysicalConnectionId = pulumi.Input.asOptionalInput<String>(parentPhysicalConnectionId),
-      virtualPhysicalConnectionIds = pulumi.Input.asOptionalInput<List<String>>(virtualPhysicalConnectionIds),
-      virtualPhysicalConnectionStatus = pulumi.Input.asOptionalInput<String>(virtualPhysicalConnectionStatus),
-      vlanIds = pulumi.Input.asOptionalInput<List<int>>(vlanIds),
-      vpconnAliUid = pulumi.Input.asOptionalInput<String>(vpconnAliUid);
+    this.businessStatus,
+    this.ids,
+    this.isConfirmed,
+    this.nameRegex,
+    this.outputFile,
+    this.parentPhysicalConnectionId,
+    this.virtualPhysicalConnectionIds,
+    this.virtualPhysicalConnectionStatus,
+    this.vlanIds,
+    this.vpconnAliUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class GetVirtualPhysicalConnectionsArgs {
 
   factory GetVirtualPhysicalConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualPhysicalConnectionsArgs(
-      businessStatus: map['businessStatus'] == null ? null : pulumi.Output.create<String>(map['businessStatus'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      isConfirmed: map['isConfirmed'] == null ? null : pulumi.Output.create<bool>(map['isConfirmed'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      parentPhysicalConnectionId: map['parentPhysicalConnectionId'] == null ? null : pulumi.Output.create<String>(map['parentPhysicalConnectionId'] as String),
-      virtualPhysicalConnectionIds: map['virtualPhysicalConnectionIds'] == null ? null : pulumi.Output.create<List<String>>((map['virtualPhysicalConnectionIds'] as List).cast<String>()),
-      virtualPhysicalConnectionStatus: map['virtualPhysicalConnectionStatus'] == null ? null : pulumi.Output.create<String>(map['virtualPhysicalConnectionStatus'] as String),
-      vlanIds: map['vlanIds'] == null ? null : pulumi.Output.create<List<int>>((map['vlanIds'] as List).cast<int>()),
-      vpconnAliUid: map['vpconnAliUid'] == null ? null : pulumi.Output.create<String>(map['vpconnAliUid'] as String),
+      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      isConfirmed: map['isConfirmed'] == null ? null : (map['isConfirmed'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      parentPhysicalConnectionId: map['parentPhysicalConnectionId'] == null ? null : (map['parentPhysicalConnectionId'] as String).input(),
+      virtualPhysicalConnectionIds: map['virtualPhysicalConnectionIds'] == null ? null : ((map['virtualPhysicalConnectionIds'] as List).cast<String>()).input(),
+      virtualPhysicalConnectionStatus: map['virtualPhysicalConnectionStatus'] == null ? null : (map['virtualPhysicalConnectionStatus'] as String).input(),
+      vlanIds: map['vlanIds'] == null ? null : ((map['vlanIds'] as List).cast<int>()).input(),
+      vpconnAliUid: map['vpconnAliUid'] == null ? null : (map['vpconnAliUid'] as String).input(),
     );
   }
 }

@@ -7,47 +7,47 @@ import 'get_volume_group_oracle_volume_export_policy_rule.dart';
 
 class GetVolumeGroupOracleVolume {
   /// The ID of the Capacity Pool.
-  final String capacityPoolId;
-  final List<GetVolumeGroupOracleVolumeDataProtectionReplication> dataProtectionReplications;
+  final pulumi.Input<String> capacityPoolId;
+  final pulumi.Input<List<GetVolumeGroupOracleVolumeDataProtectionReplication>> dataProtectionReplications;
   /// A `data_protection_snapshot_policy` block as defined below.
-  final List<GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy> dataProtectionSnapshotPolicies;
+  final pulumi.Input<List<GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy>> dataProtectionSnapshotPolicies;
   /// The encryption key source.
-  final String encryptionKeySource;
+  final pulumi.Input<String> encryptionKeySource;
   /// A `export_policy_rule` block as defined below.
-  final List<GetVolumeGroupOracleVolumeExportPolicyRule> exportPolicyRules;
+  final pulumi.Input<List<GetVolumeGroupOracleVolumeExportPolicyRule>> exportPolicyRules;
   /// Volume ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Private Endpoint ID for Key Vault when using customer managed keys.
-  final String keyVaultPrivateEndpointId;
+  final pulumi.Input<String> keyVaultPrivateEndpointId;
   /// A `mount_ip_addresses` block as defined below.
-  final List<String> mountIpAddresses;
+  final pulumi.Input<List<String>> mountIpAddresses;
   /// The name of this Application Volume Group for Oracle application.
-  final String name;
+  final pulumi.Input<String> name;
   /// Network feature in use at the time of volume creation.
-  final String networkFeatures;
+  final pulumi.Input<String> networkFeatures;
   /// A `protocols` block as defined below.
-  final List<String> protocols;
+  final pulumi.Input<List<String>> protocols;
   /// The ID of the proximity placement group.
-  final String proximityPlacementGroupId;
+  final pulumi.Input<String> proximityPlacementGroupId;
   /// Volume security style.
-  final String securityStyle;
+  final pulumi.Input<String> securityStyle;
   /// The target performance of the file system.
-  final String serviceLevel;
+  final pulumi.Input<String> serviceLevel;
   /// Is the .snapshot (NFS clients) path of a volume visible?
-  final bool snapshotDirectoryVisible;
+  final pulumi.Input<bool> snapshotDirectoryVisible;
   /// The maximum Storage Quota allowed for a file system in Gigabytes.
-  final int storageQuotaInGb;
+  final pulumi.Input<int> storageQuotaInGb;
   /// The ID of the Subnet the NetApp Volume resides in.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// A mapping of tags assigned to the Application Volume Group.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Throughput of this volume in Mibps.
-  final double throughputInMibps;
+  final pulumi.Input<double> throughputInMibps;
   /// A unique file path for the volume.
-  final String volumePath;
+  final pulumi.Input<String> volumePath;
   /// Volume spec name.
-  final String volumeSpecName;
-  final String zone;
+  final pulumi.Input<String> volumeSpecName;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [GetVolumeGroupOracleVolume].
   /// [capacityPoolId] The ID of the Capacity Pool.
@@ -100,10 +100,10 @@ class GetVolumeGroupOracleVolume {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityPoolId': capacityPoolId,
-      'dataProtectionReplications': pulumi.Input.encodeList<GetVolumeGroupOracleVolumeDataProtectionReplication, Map<String, dynamic>>(dataProtectionReplications, (value) => value.toMap()),
-      'dataProtectionSnapshotPolicies': pulumi.Input.encodeList<GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy, Map<String, dynamic>>(dataProtectionSnapshotPolicies, (value) => value.toMap()),
+      'dataProtectionReplications': pulumi.Input.mapInputValue<List<GetVolumeGroupOracleVolumeDataProtectionReplication>, List<Map<String, dynamic>>>(dataProtectionReplications, (value) => pulumi.Input.encodeList<GetVolumeGroupOracleVolumeDataProtectionReplication, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataProtectionSnapshotPolicies': pulumi.Input.mapInputValue<List<GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy>, List<Map<String, dynamic>>>(dataProtectionSnapshotPolicies, (value) => pulumi.Input.encodeList<GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'encryptionKeySource': encryptionKeySource,
-      'exportPolicyRules': pulumi.Input.encodeList<GetVolumeGroupOracleVolumeExportPolicyRule, Map<String, dynamic>>(exportPolicyRules, (value) => value.toMap()),
+      'exportPolicyRules': pulumi.Input.mapInputValue<List<GetVolumeGroupOracleVolumeExportPolicyRule>, List<Map<String, dynamic>>>(exportPolicyRules, (value) => pulumi.Input.encodeList<GetVolumeGroupOracleVolumeExportPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'keyVaultPrivateEndpointId': keyVaultPrivateEndpointId,
       'mountIpAddresses': mountIpAddresses,
@@ -126,28 +126,28 @@ class GetVolumeGroupOracleVolume {
 
   factory GetVolumeGroupOracleVolume.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupOracleVolume(
-      capacityPoolId: map['capacityPoolId'] as String,
-      dataProtectionReplications: pulumi.Input.decodeList<GetVolumeGroupOracleVolumeDataProtectionReplication>(map['dataProtectionReplications'], (value) => GetVolumeGroupOracleVolumeDataProtectionReplication.fromMap((value as Map).cast<String, dynamic>())),
-      dataProtectionSnapshotPolicies: pulumi.Input.decodeList<GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy>(map['dataProtectionSnapshotPolicies'], (value) => GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      encryptionKeySource: map['encryptionKeySource'] as String,
-      exportPolicyRules: pulumi.Input.decodeList<GetVolumeGroupOracleVolumeExportPolicyRule>(map['exportPolicyRules'], (value) => GetVolumeGroupOracleVolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      keyVaultPrivateEndpointId: map['keyVaultPrivateEndpointId'] as String,
-      mountIpAddresses: (map['mountIpAddresses'] as List).cast<String>(),
-      name: map['name'] as String,
-      networkFeatures: map['networkFeatures'] as String,
-      protocols: (map['protocols'] as List).cast<String>(),
-      proximityPlacementGroupId: map['proximityPlacementGroupId'] as String,
-      securityStyle: map['securityStyle'] as String,
-      serviceLevel: map['serviceLevel'] as String,
-      snapshotDirectoryVisible: map['snapshotDirectoryVisible'] as bool,
-      storageQuotaInGb: map['storageQuotaInGb'] as int,
-      subnetId: map['subnetId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      throughputInMibps: map['throughputInMibps'] as double,
-      volumePath: map['volumePath'] as String,
-      volumeSpecName: map['volumeSpecName'] as String,
-      zone: map['zone'] as String,
+      capacityPoolId: (map['capacityPoolId'] as String).input(),
+      dataProtectionReplications: (pulumi.Input.decodeList<GetVolumeGroupOracleVolumeDataProtectionReplication>(map['dataProtectionReplications'], (value) => GetVolumeGroupOracleVolumeDataProtectionReplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataProtectionSnapshotPolicies: (pulumi.Input.decodeList<GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy>(map['dataProtectionSnapshotPolicies'], (value) => GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionKeySource: (map['encryptionKeySource'] as String).input(),
+      exportPolicyRules: (pulumi.Input.decodeList<GetVolumeGroupOracleVolumeExportPolicyRule>(map['exportPolicyRules'], (value) => GetVolumeGroupOracleVolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      keyVaultPrivateEndpointId: (map['keyVaultPrivateEndpointId'] as String).input(),
+      mountIpAddresses: ((map['mountIpAddresses'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      networkFeatures: (map['networkFeatures'] as String).input(),
+      protocols: ((map['protocols'] as List).cast<String>()).input(),
+      proximityPlacementGroupId: (map['proximityPlacementGroupId'] as String).input(),
+      securityStyle: (map['securityStyle'] as String).input(),
+      serviceLevel: (map['serviceLevel'] as String).input(),
+      snapshotDirectoryVisible: (map['snapshotDirectoryVisible'] as bool).input(),
+      storageQuotaInGb: (map['storageQuotaInGb'] as int).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      throughputInMibps: (map['throughputInMibps'] as double).input(),
+      volumePath: (map['volumePath'] as String).input(),
+      volumeSpecName: (map['volumeSpecName'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

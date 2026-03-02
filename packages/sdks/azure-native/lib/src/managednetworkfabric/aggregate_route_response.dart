@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// aggregateIpv4Route model.
 class AggregateRouteResponse {
   /// IPv4 Prefix of the aggregate Ipv4Route.
-  final String prefix;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [AggregateRouteResponse].
   /// [prefix] IPv4 Prefix of the aggregate Ipv4Route.
@@ -20,7 +21,7 @@ class AggregateRouteResponse {
 
   factory AggregateRouteResponse.fromMap(Map<String, dynamic> map) {
     return AggregateRouteResponse(
-      prefix: map['prefix'] as String,
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

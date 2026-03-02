@@ -6,17 +6,17 @@ import 'experiment_execution_action_target_details_properties_response.dart';
 /// Model that represents the an action and its status.
 class ActionStatusResponse {
   /// The id of the action status.
-  final String actionId;
+  final pulumi.Input<String> actionId;
   /// The name of the action status.
-  final String actionName;
+  final pulumi.Input<String> actionName;
   /// String that represents the end time of the action.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// String that represents the start time of the action.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The status of the action.
-  final String status;
+  final pulumi.Input<String> status;
   /// The array of targets.
-  final List<ExperimentExecutionActionTargetDetailsPropertiesResponse> targets;
+  final pulumi.Input<List<ExperimentExecutionActionTargetDetailsPropertiesResponse>> targets;
 
   /// Creates a new [ActionStatusResponse].
   /// [actionId] The id of the action status.
@@ -41,18 +41,18 @@ class ActionStatusResponse {
       'endTime': endTime,
       'startTime': startTime,
       'status': status,
-      'targets': pulumi.Input.encodeList<ExperimentExecutionActionTargetDetailsPropertiesResponse, Map<String, dynamic>>(targets, (value) => value.toMap()),
+      'targets': pulumi.Input.mapInputValue<List<ExperimentExecutionActionTargetDetailsPropertiesResponse>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<ExperimentExecutionActionTargetDetailsPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ActionStatusResponse.fromMap(Map<String, dynamic> map) {
     return ActionStatusResponse(
-      actionId: map['actionId'] as String,
-      actionName: map['actionName'] as String,
-      endTime: map['endTime'] as String,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      targets: pulumi.Input.decodeList<ExperimentExecutionActionTargetDetailsPropertiesResponse>(map['targets'], (value) => ExperimentExecutionActionTargetDetailsPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      actionId: (map['actionId'] as String).input(),
+      actionName: (map['actionName'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      targets: (pulumi.Input.decodeList<ExperimentExecutionActionTargetDetailsPropertiesResponse>(map['targets'], (value) => ExperimentExecutionActionTargetDetailsPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

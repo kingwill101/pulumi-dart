@@ -6,9 +6,9 @@ import 'tag_filter_response.dart';
 /// Definition of ReplicationRuleAndOperator
 class ReplicationRuleAndOperatorResponse {
   /// An object key name prefix that identifies the subset of objects to which the rule applies.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// An array of tags containing key and value pairs.
-  final List<TagFilterResponse>? tagFilters;
+  final pulumi.Input<List<TagFilterResponse>>? tagFilters;
 
   /// Creates a new [ReplicationRuleAndOperatorResponse].
   /// [prefix] An object key name prefix that identifies the subset of objects to which the rule applies.
@@ -21,14 +21,14 @@ class ReplicationRuleAndOperatorResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'prefix': ?prefix,
-      'tagFilters': ?tagFilters == null ? null : pulumi.Input.encodeList<TagFilterResponse, Map<String, dynamic>>(tagFilters!, (value) => value.toMap()),
+      'tagFilters': ?pulumi.Input.mapOptionalInputValue<List<TagFilterResponse>, List<Map<String, dynamic>>>(tagFilters, (value) => pulumi.Input.encodeList<TagFilterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ReplicationRuleAndOperatorResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationRuleAndOperatorResponse(
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      tagFilters: map['tagFilters'] == null ? null : pulumi.Input.decodeList<TagFilterResponse>(map['tagFilters'], (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilterResponse>(map['tagFilters'], (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

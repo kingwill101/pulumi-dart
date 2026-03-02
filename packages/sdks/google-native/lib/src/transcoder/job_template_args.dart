@@ -27,19 +27,13 @@ class JobTemplateArgs {
   /// [name] The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
   /// [project] Optional.
   JobTemplateArgs({
-    pulumi.Output<JobConfig>? config,
-    required pulumi.Output<String> jobTemplateId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      config = pulumi.Input.asOptionalInput<JobConfig>(config),
-      jobTemplateId = pulumi.Input.asInput<String>(jobTemplateId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.config,
+    required this.jobTemplateId,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class JobTemplateArgs {
 
   factory JobTemplateArgs.fromMap(Map<String, dynamic> map) {
     return JobTemplateArgs(
-      config: map['config'] == null ? null : pulumi.Output.create<JobConfig>(JobConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      jobTemplateId: pulumi.Output.create<String>(map['jobTemplateId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      config: map['config'] == null ? null : (JobConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      jobTemplateId: (map['jobTemplateId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

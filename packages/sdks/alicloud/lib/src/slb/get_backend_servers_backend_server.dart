@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackendServersBackendServer {
   /// backend server ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Type of the backend server.
-  final String serverType;
+  final pulumi.Input<String> serverType;
   /// Weight associated to the ECS instance.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetBackendServersBackendServer].
   /// [id] backend server ID.
@@ -29,9 +30,9 @@ class GetBackendServersBackendServer {
 
   factory GetBackendServersBackendServer.fromMap(Map<String, dynamic> map) {
     return GetBackendServersBackendServer(
-      id: map['id'] as String,
-      serverType: map['serverType'] as String,
-      weight: map['weight'] as int,
+      id: (map['id'] as String).input(),
+      serverType: (map['serverType'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class InboundSsoAssignmentArgs {
   /// [targetGroup] Immutable. Must be of the form `groups/{group}`.
   /// [targetOrgUnit] Immutable. Must be of the form `orgUnits/{org_unit}`.
   InboundSsoAssignmentArgs({
-    pulumi.Output<String>? customer,
-    pulumi.Output<int>? rank,
-    pulumi.Output<SamlSsoInfo>? samlSsoInfo,
-    pulumi.Output<SignInBehavior>? signInBehavior,
-    pulumi.Output<InboundSsoAssignmentSsoMode>? ssoMode,
-    pulumi.Output<String>? targetGroup,
-    pulumi.Output<String>? targetOrgUnit,
-  }) :
-      customer = pulumi.Input.asOptionalInput<String>(customer),
-      rank = pulumi.Input.asOptionalInput<int>(rank),
-      samlSsoInfo = pulumi.Input.asOptionalInput<SamlSsoInfo>(samlSsoInfo),
-      signInBehavior = pulumi.Input.asOptionalInput<SignInBehavior>(signInBehavior),
-      ssoMode = pulumi.Input.asOptionalInput<InboundSsoAssignmentSsoMode>(ssoMode),
-      targetGroup = pulumi.Input.asOptionalInput<String>(targetGroup),
-      targetOrgUnit = pulumi.Input.asOptionalInput<String>(targetOrgUnit);
+    this.customer,
+    this.rank,
+    this.samlSsoInfo,
+    this.signInBehavior,
+    this.ssoMode,
+    this.targetGroup,
+    this.targetOrgUnit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class InboundSsoAssignmentArgs {
 
   factory InboundSsoAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return InboundSsoAssignmentArgs(
-      customer: map['customer'] == null ? null : pulumi.Output.create<String>(map['customer'] as String),
-      rank: map['rank'] == null ? null : pulumi.Output.create<int>(map['rank'] as int),
-      samlSsoInfo: map['samlSsoInfo'] == null ? null : pulumi.Output.create<SamlSsoInfo>(SamlSsoInfo.fromMap((map['samlSsoInfo'] as Map).cast<String, dynamic>())),
-      signInBehavior: map['signInBehavior'] == null ? null : pulumi.Output.create<SignInBehavior>(SignInBehavior.fromMap((map['signInBehavior'] as Map).cast<String, dynamic>())),
-      ssoMode: map['ssoMode'] == null ? null : pulumi.Output.create<InboundSsoAssignmentSsoMode>(InboundSsoAssignmentSsoMode.fromValue(map['ssoMode'] as String)),
-      targetGroup: map['targetGroup'] == null ? null : pulumi.Output.create<String>(map['targetGroup'] as String),
-      targetOrgUnit: map['targetOrgUnit'] == null ? null : pulumi.Output.create<String>(map['targetOrgUnit'] as String),
+      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
+      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
+      samlSsoInfo: map['samlSsoInfo'] == null ? null : (SamlSsoInfo.fromMap((map['samlSsoInfo'] as Map).cast<String, dynamic>())).input(),
+      signInBehavior: map['signInBehavior'] == null ? null : (SignInBehavior.fromMap((map['signInBehavior'] as Map).cast<String, dynamic>())).input(),
+      ssoMode: map['ssoMode'] == null ? null : (InboundSsoAssignmentSsoMode.fromValue(map['ssoMode'] as String)).input(),
+      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup'] as String).input(),
+      targetOrgUnit: map['targetOrgUnit'] == null ? null : (map['targetOrgUnit'] as String).input(),
     );
   }
 }

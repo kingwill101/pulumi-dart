@@ -22,15 +22,11 @@ class GetSuppressionListArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [suppressionListName] The name of the suppression list.
   GetSuppressionListArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> emailServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> suppressionListName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      emailServiceName = pulumi.Input.asInput<String>(emailServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      suppressionListName = pulumi.Input.asInput<String>(suppressionListName);
+    required this.domainName,
+    required this.emailServiceName,
+    required this.resourceGroupName,
+    required this.suppressionListName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSuppressionListArgs {
 
   factory GetSuppressionListArgs.fromMap(Map<String, dynamic> map) {
     return GetSuppressionListArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      emailServiceName: pulumi.Output.create<String>(map['emailServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      suppressionListName: pulumi.Output.create<String>(map['suppressionListName'] as String),
+      domainName: (map['domainName'] as String).input(),
+      emailServiceName: (map['emailServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      suppressionListName: (map['suppressionListName'] as String).input(),
     );
   }
 }

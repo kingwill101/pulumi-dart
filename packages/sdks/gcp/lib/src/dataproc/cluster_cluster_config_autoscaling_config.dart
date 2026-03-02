@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigAutoscalingConfig {
   /// The autoscaling policy used by the cluster.
@@ -11,7 +12,7 @@ class ClusterClusterConfigAutoscalingConfig {
   /// Note that the policy must be in the same project and Cloud Dataproc region.
   ///
   /// - - -
-  final String policyUri;
+  final pulumi.Input<String> policyUri;
 
   /// Creates a new [ClusterClusterConfigAutoscalingConfig].
   /// [policyUri] The autoscaling policy used by the cluster.
@@ -27,7 +28,7 @@ class ClusterClusterConfigAutoscalingConfig {
 
   factory ClusterClusterConfigAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigAutoscalingConfig(
-      policyUri: map['policyUri'] as String,
+      policyUri: (map['policyUri'] as String).input(),
     );
   }
 }

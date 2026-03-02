@@ -16,13 +16,10 @@ class AdvancedQueryTemplateState {
   /// [templateName] The name of the resource
   /// [templateSql] SQL content saved on behalf of the current template
   AdvancedQueryTemplateState({
-    pulumi.Output<bool>? simpleQuery,
-    pulumi.Output<String>? templateName,
-    pulumi.Output<String>? templateSql,
-  }) :
-      simpleQuery = pulumi.Input.asOptionalInput<bool>(simpleQuery),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName),
-      templateSql = pulumi.Input.asOptionalInput<String>(templateSql);
+    this.simpleQuery,
+    this.templateName,
+    this.templateSql,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AdvancedQueryTemplateState {
 
   factory AdvancedQueryTemplateState.fromMap(Map<String, dynamic> map) {
     return AdvancedQueryTemplateState(
-      simpleQuery: map['simpleQuery'] == null ? null : pulumi.Output.create<bool>(map['simpleQuery'] as bool),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
-      templateSql: map['templateSql'] == null ? null : pulumi.Output.create<String>(map['templateSql'] as String),
+      simpleQuery: map['simpleQuery'] == null ? null : (map['simpleQuery'] as bool).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      templateSql: map['templateSql'] == null ? null : (map['templateSql'] as String).input(),
     );
   }
 }

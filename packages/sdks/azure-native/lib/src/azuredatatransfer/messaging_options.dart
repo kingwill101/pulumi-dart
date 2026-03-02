@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The option associated with messaging flows.
 class MessagingOptions {
   /// Billing tier for this messaging flow
-  final String? billingTier;
+  final pulumi.Input<String>? billingTier;
 
   /// Creates a new [MessagingOptions].
   /// [billingTier] Billing tier for this messaging flow
@@ -20,7 +21,7 @@ class MessagingOptions {
 
   factory MessagingOptions.fromMap(Map<String, dynamic> map) {
     return MessagingOptions(
-      billingTier: map['billingTier'] == null ? null : map['billingTier'] as String,
+      billingTier: map['billingTier'] == null ? null : (map['billingTier'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a field reference within a MongoDB shard key
 class MongoDbShardKeyFieldResponse {
   /// The name of the field
-  final String name;
+  final pulumi.Input<String> name;
   /// The field ordering
-  final String order;
+  final pulumi.Input<String> order;
 
   /// Creates a new [MongoDbShardKeyFieldResponse].
   /// [name] The name of the field
@@ -25,8 +26,8 @@ class MongoDbShardKeyFieldResponse {
 
   factory MongoDbShardKeyFieldResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbShardKeyFieldResponse(
-      name: map['name'] as String,
-      order: map['order'] as String,
+      name: (map['name'] as String).input(),
+      order: (map['order'] as String).input(),
     );
   }
 }

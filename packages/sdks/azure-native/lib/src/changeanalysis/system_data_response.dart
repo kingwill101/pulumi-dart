@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
 class SystemDataResponse {
   /// The timestamp of resource creation (UTC)
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// A string identifier for the identity that created the resource
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// The type of identity that created the resource: user, application, managedIdentity, key
-  final String createdByType;
+  final pulumi.Input<String> createdByType;
   /// The timestamp of resource last modification (UTC)
-  final String lastModifiedAt;
+  final pulumi.Input<String> lastModifiedAt;
   /// A string identifier for the identity that last modified the resource
-  final String lastModifiedBy;
+  final pulumi.Input<String> lastModifiedBy;
   /// The type of identity that last modified the resource: user, application, managedIdentity, key
-  final String lastModifiedByType;
+  final pulumi.Input<String> lastModifiedByType;
 
   /// Creates a new [SystemDataResponse].
   /// [createdAt] The timestamp of resource creation (UTC)
@@ -45,12 +46,12 @@ class SystemDataResponse {
 
   factory SystemDataResponse.fromMap(Map<String, dynamic> map) {
     return SystemDataResponse(
-      createdAt: map['createdAt'] as String,
-      createdBy: map['createdBy'] as String,
-      createdByType: map['createdByType'] as String,
-      lastModifiedAt: map['lastModifiedAt'] as String,
-      lastModifiedBy: map['lastModifiedBy'] as String,
-      lastModifiedByType: map['lastModifiedByType'] as String,
+      createdAt: (map['createdAt'] as String).input(),
+      createdBy: (map['createdBy'] as String).input(),
+      createdByType: (map['createdByType'] as String).input(),
+      lastModifiedAt: (map['lastModifiedAt'] as String).input(),
+      lastModifiedBy: (map['lastModifiedBy'] as String).input(),
+      lastModifiedByType: (map['lastModifiedByType'] as String).input(),
     );
   }
 }

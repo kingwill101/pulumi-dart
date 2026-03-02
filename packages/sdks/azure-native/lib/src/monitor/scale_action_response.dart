@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters for the scaling action.
 class ScaleActionResponse {
   /// the amount of time to wait since the last scaling action before this action occurs. It must be between 1 week and 1 minute in ISO 8601 format.
-  final String cooldown;
+  final pulumi.Input<String> cooldown;
   /// the scale direction. Whether the scaling action increases or decreases the number of instances.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// the type of action that should occur when the scale rule fires.
-  final String type;
+  final pulumi.Input<String> type;
   /// the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ScaleActionResponse].
   /// [cooldown] the amount of time to wait since the last scaling action before this action occurs. It must be between 1 week and 1 minute in ISO 8601 format.
@@ -35,10 +36,10 @@ class ScaleActionResponse {
 
   factory ScaleActionResponse.fromMap(Map<String, dynamic> map) {
     return ScaleActionResponse(
-      cooldown: map['cooldown'] as String,
-      direction: map['direction'] as String,
-      type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      cooldown: (map['cooldown'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureIntegrationsVms {
   /// The data polling interval in seconds
-  final int? metricsPollingInterval;
+  final pulumi.Input<int>? metricsPollingInterval;
   /// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  final List<String>? resourceGroups;
+  final pulumi.Input<List<String>>? resourceGroups;
 
   /// Creates a new [AzureIntegrationsVms].
   /// [metricsPollingInterval] The data polling interval in seconds
@@ -24,8 +25,8 @@ class AzureIntegrationsVms {
 
   factory AzureIntegrationsVms.fromMap(Map<String, dynamic> map) {
     return AzureIntegrationsVms(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
-      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups'] as List).cast<String>(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
     );
   }
 }

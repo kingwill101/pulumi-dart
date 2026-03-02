@@ -23,15 +23,11 @@ class IdentityPoolRoleAttachmentArgs {
   /// [roleMappings] A List of Role Mapping.
   /// [roles] The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
   IdentityPoolRoleAttachmentArgs({
-    required pulumi.Output<String> identityPoolId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<IdentityPoolRoleAttachmentRoleMapping>>? roleMappings,
-    required pulumi.Output<Map<String, String>> roles,
-  }) :
-      identityPoolId = pulumi.Input.asInput<String>(identityPoolId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleMappings = pulumi.Input.asOptionalInput<List<IdentityPoolRoleAttachmentRoleMapping>>(roleMappings),
-      roles = pulumi.Input.asInput<Map<String, String>>(roles);
+    required this.identityPoolId,
+    this.region,
+    this.roleMappings,
+    required this.roles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class IdentityPoolRoleAttachmentArgs {
 
   factory IdentityPoolRoleAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return IdentityPoolRoleAttachmentArgs(
-      identityPoolId: pulumi.Output.create<String>(map['identityPoolId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleMappings: map['roleMappings'] == null ? null : pulumi.Output.create<List<IdentityPoolRoleAttachmentRoleMapping>>(pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(map['roleMappings'], (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      roles: pulumi.Output.create<Map<String, String>>((map['roles'] as Map).cast<String, String>()),
+      identityPoolId: (map['identityPoolId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleMappings: map['roleMappings'] == null ? null : (pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(map['roleMappings'], (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: ((map['roles'] as Map).cast<String, String>()).input(),
     );
   }
 }

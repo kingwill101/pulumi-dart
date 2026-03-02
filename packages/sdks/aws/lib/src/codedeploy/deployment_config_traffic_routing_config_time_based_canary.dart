@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentConfigTrafficRoutingConfigTimeBasedCanary {
   /// The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
-  final int? percentage;
+  final pulumi.Input<int>? percentage;
 
   /// Creates a new [DeploymentConfigTrafficRoutingConfigTimeBasedCanary].
   /// [interval] The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
@@ -24,8 +25,8 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedCanary {
 
   factory DeploymentConfigTrafficRoutingConfigTimeBasedCanary.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigTrafficRoutingConfigTimeBasedCanary(
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      percentage: map['percentage'] == null ? null : map['percentage'] as int,
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
     );
   }
 }

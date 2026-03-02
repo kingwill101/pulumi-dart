@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class As3DeleteApps {
   /// List of application names to delete from the specified tenant.
   ///
   /// > `delete_apps` cannot be used together with `as3_json`.
-  final List<String> apps;
+  final pulumi.Input<List<String>> apps;
   /// Name of the tenant containing the apps to delete.
-  final String tenantName;
+  final pulumi.Input<String> tenantName;
 
   /// Creates a new [As3DeleteApps].
   /// [apps] List of application names to delete from the specified tenant.
@@ -26,8 +27,8 @@ class As3DeleteApps {
 
   factory As3DeleteApps.fromMap(Map<String, dynamic> map) {
     return As3DeleteApps(
-      apps: (map['apps'] as List).cast<String>(),
-      tenantName: map['tenantName'] as String,
+      apps: ((map['apps'] as List).cast<String>()).input(),
+      tenantName: (map['tenantName'] as String).input(),
     );
   }
 }

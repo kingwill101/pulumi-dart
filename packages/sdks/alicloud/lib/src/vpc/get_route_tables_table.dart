@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteTablesTable {
   /// The description of the route table instance.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the Route Table.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the route table.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Id of resource group which route tables belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The route table id.
-  final String routeTableId;
+  final pulumi.Input<String> routeTableId;
   /// The route table name.
-  final String routeTableName;
+  final pulumi.Input<String> routeTableName;
   /// The route table type.
-  final String routeTableType;
+  final pulumi.Input<String> routeTableType;
   /// The router ID.
-  final String routerId;
+  final pulumi.Input<String> routerId;
   /// The route type of route table. Valid values: `VRouter` and `VBR`.
-  final String routerType;
+  final pulumi.Input<String> routerType;
   /// The status of resource. Valid values: `Available` and `Pending`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Vpc id of the route table.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// A list of vswitch id.
-  final List<String> vswitchIds;
+  final pulumi.Input<List<String>> vswitchIds;
 
   /// Creates a new [GetRouteTablesTable].
   /// [description] The description of the route table instance.
@@ -79,19 +80,19 @@ class GetRouteTablesTable {
 
   factory GetRouteTablesTable.fromMap(Map<String, dynamic> map) {
     return GetRouteTablesTable(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      routeTableId: map['routeTableId'] as String,
-      routeTableName: map['routeTableName'] as String,
-      routeTableType: map['routeTableType'] as String,
-      routerId: map['routerId'] as String,
-      routerType: map['routerType'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      vswitchIds: (map['vswitchIds'] as List).cast<String>(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      routeTableName: (map['routeTableName'] as String).input(),
+      routeTableType: (map['routeTableType'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      routerType: (map['routerType'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

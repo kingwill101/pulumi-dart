@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecIngressRuleMatchAuthority {
   /// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-  final String exact;
+  final pulumi.Input<String> exact;
 
   /// Creates a new [GetAppSpecIngressRuleMatchAuthority].
   /// [exact] The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
@@ -19,7 +20,7 @@ class GetAppSpecIngressRuleMatchAuthority {
 
   factory GetAppSpecIngressRuleMatchAuthority.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressRuleMatchAuthority(
-      exact: map['exact'] as String,
+      exact: (map['exact'] as String).input(),
     );
   }
 }

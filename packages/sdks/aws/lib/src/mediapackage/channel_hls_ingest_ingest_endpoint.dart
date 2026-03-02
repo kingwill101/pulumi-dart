@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelHlsIngestIngestEndpoint {
   /// The password
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The URL
-  final String? url;
+  final pulumi.Input<String>? url;
   /// The username
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ChannelHlsIngestIngestEndpoint].
   /// [password] The password
@@ -29,9 +30,9 @@ class ChannelHlsIngestIngestEndpoint {
 
   factory ChannelHlsIngestIngestEndpoint.fromMap(Map<String, dynamic> map) {
     return ChannelHlsIngestIngestEndpoint(
-      password: map['password'] == null ? null : map['password'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

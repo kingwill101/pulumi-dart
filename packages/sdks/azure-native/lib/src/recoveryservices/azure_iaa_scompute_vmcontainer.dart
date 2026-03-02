@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
 class AzureIaaSComputeVMContainer {
   /// Type of backup management for the container.
-  final String? backupManagementType;
+  final pulumi.Input<String>? backupManagementType;
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
   /// Backup is VMAppContainer
   /// Expected value is 'Microsoft.Compute/virtualMachines'.
-  final String containerType;
+  final pulumi.Input<String> containerType;
   /// Friendly name of the container.
-  final String? friendlyName;
+  final pulumi.Input<String>? friendlyName;
   /// Status of health of the container.
-  final String? healthStatus;
+  final pulumi.Input<String>? healthStatus;
   /// Type of the protectable object associated with this container
-  final String? protectableObjectType;
+  final pulumi.Input<String>? protectableObjectType;
   /// Status of registration of the container with the Recovery Services Vault.
-  final String? registrationStatus;
+  final pulumi.Input<String>? registrationStatus;
   /// Resource group name of Recovery Services Vault.
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
-  final String? virtualMachineId;
+  final pulumi.Input<String>? virtualMachineId;
   /// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
-  final String? virtualMachineVersion;
+  final pulumi.Input<String>? virtualMachineVersion;
 
   /// Creates a new [AzureIaaSComputeVMContainer].
   /// [backupManagementType] Type of backup management for the container.
@@ -64,15 +65,15 @@ class AzureIaaSComputeVMContainer {
 
   factory AzureIaaSComputeVMContainer.fromMap(Map<String, dynamic> map) {
     return AzureIaaSComputeVMContainer(
-      backupManagementType: map['backupManagementType'] == null ? null : map['backupManagementType'] as String,
-      containerType: map['containerType'] as String,
-      friendlyName: map['friendlyName'] == null ? null : map['friendlyName'] as String,
-      healthStatus: map['healthStatus'] == null ? null : map['healthStatus'] as String,
-      protectableObjectType: map['protectableObjectType'] == null ? null : map['protectableObjectType'] as String,
-      registrationStatus: map['registrationStatus'] == null ? null : map['registrationStatus'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      virtualMachineId: map['virtualMachineId'] == null ? null : map['virtualMachineId'] as String,
-      virtualMachineVersion: map['virtualMachineVersion'] == null ? null : map['virtualMachineVersion'] as String,
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
+      containerType: (map['containerType'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
+      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType'] as String).input(),
+      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      virtualMachineVersion: map['virtualMachineVersion'] == null ? null : (map['virtualMachineVersion'] as String).input(),
     );
   }
 }

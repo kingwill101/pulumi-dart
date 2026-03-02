@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountVdmAttributesDashboardAttributes {
   /// Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
-  final String? engagementMetrics;
+  final pulumi.Input<String>? engagementMetrics;
 
   /// Creates a new [AccountVdmAttributesDashboardAttributes].
   /// [engagementMetrics] Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
@@ -19,7 +20,7 @@ class AccountVdmAttributesDashboardAttributes {
 
   factory AccountVdmAttributesDashboardAttributes.fromMap(Map<String, dynamic> map) {
     return AccountVdmAttributesDashboardAttributes(
-      engagementMetrics: map['engagementMetrics'] == null ? null : map['engagementMetrics'] as String,
+      engagementMetrics: map['engagementMetrics'] == null ? null : (map['engagementMetrics'] as String).input(),
     );
   }
 }

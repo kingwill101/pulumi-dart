@@ -16,11 +16,9 @@ class GetVirtualMachineManagerInventoryItemsArgs {
   /// [inventoryType] The inventory type of the System Center Virtual Machine Manager Inventory Item. Possible values are `Cloud`, `VirtualMachine`, `VirtualMachineTemplate` and `VirtualNetwork`.
   /// [systemCenterVirtualMachineManagerServerId] The ID of the System Center Virtual Machine Manager Server.
   GetVirtualMachineManagerInventoryItemsArgs({
-    required pulumi.Output<String> inventoryType,
-    required pulumi.Output<String> systemCenterVirtualMachineManagerServerId,
-  }) :
-      inventoryType = pulumi.Input.asInput<String>(inventoryType),
-      systemCenterVirtualMachineManagerServerId = pulumi.Input.asInput<String>(systemCenterVirtualMachineManagerServerId);
+    required this.inventoryType,
+    required this.systemCenterVirtualMachineManagerServerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualMachineManagerInventoryItemsArgs {
 
   factory GetVirtualMachineManagerInventoryItemsArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineManagerInventoryItemsArgs(
-      inventoryType: pulumi.Output.create<String>(map['inventoryType'] as String),
-      systemCenterVirtualMachineManagerServerId: pulumi.Output.create<String>(map['systemCenterVirtualMachineManagerServerId'] as String),
+      inventoryType: (map['inventoryType'] as String).input(),
+      systemCenterVirtualMachineManagerServerId: (map['systemCenterVirtualMachineManagerServerId'] as String).input(),
     );
   }
 }

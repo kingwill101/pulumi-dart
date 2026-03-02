@@ -16,13 +16,10 @@ class GetDocumentSchemaArgs {
   /// [location] Required.
   /// [project] Optional.
   GetDocumentSchemaArgs({
-    required pulumi.Output<String> documentSchemaId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      documentSchemaId = pulumi.Input.asInput<String>(documentSchemaId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.documentSchemaId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDocumentSchemaArgs {
 
   factory GetDocumentSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentSchemaArgs(
-      documentSchemaId: pulumi.Output.create<String>(map['documentSchemaId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      documentSchemaId: (map['documentSchemaId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -5,16 +5,16 @@ import 'get_zones_zone_supported_resource.dart';
 
 class GetZonesZone {
   /// ID of the zone. It is same as `master_zone_id`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The primary zone.
-  final String masterZoneId;
+  final pulumi.Input<String> masterZoneId;
   /// The secondary zone.
-  final String slaveZoneId;
+  final pulumi.Input<String> slaveZoneId;
   /// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
   /// It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
-  final List<String> slbSlaveZoneIds;
+  final pulumi.Input<List<String>> slbSlaveZoneIds;
   /// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
-  final List<GetZonesZoneSupportedResource> supportedResources;
+  final pulumi.Input<List<GetZonesZoneSupportedResource>> supportedResources;
 
   /// Creates a new [GetZonesZone].
   /// [id] ID of the zone. It is same as `master_zone_id`.
@@ -36,17 +36,17 @@ class GetZonesZone {
       'masterZoneId': masterZoneId,
       'slaveZoneId': slaveZoneId,
       'slbSlaveZoneIds': slbSlaveZoneIds,
-      'supportedResources': pulumi.Input.encodeList<GetZonesZoneSupportedResource, Map<String, dynamic>>(supportedResources, (value) => value.toMap()),
+      'supportedResources': pulumi.Input.mapInputValue<List<GetZonesZoneSupportedResource>, List<Map<String, dynamic>>>(supportedResources, (value) => pulumi.Input.encodeList<GetZonesZoneSupportedResource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetZonesZone.fromMap(Map<String, dynamic> map) {
     return GetZonesZone(
-      id: map['id'] as String,
-      masterZoneId: map['masterZoneId'] as String,
-      slaveZoneId: map['slaveZoneId'] as String,
-      slbSlaveZoneIds: (map['slbSlaveZoneIds'] as List).cast<String>(),
-      supportedResources: pulumi.Input.decodeList<GetZonesZoneSupportedResource>(map['supportedResources'], (value) => GetZonesZoneSupportedResource.fromMap((value as Map).cast<String, dynamic>())),
+      id: (map['id'] as String).input(),
+      masterZoneId: (map['masterZoneId'] as String).input(),
+      slaveZoneId: (map['slaveZoneId'] as String).input(),
+      slbSlaveZoneIds: ((map['slbSlaveZoneIds'] as List).cast<String>()).input(),
+      supportedResources: (pulumi.Input.decodeList<GetZonesZoneSupportedResource>(map['supportedResources'], (value) => GetZonesZoneSupportedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

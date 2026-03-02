@@ -23,17 +23,12 @@ class CapacityReservationState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zone] Specifies the Availability Zone for this Capacity Reservation. Changing this forces a new resource to be created.
   CapacityReservationState({
-    pulumi.Output<String>? capacityReservationGroupId,
-    pulumi.Output<String>? name,
-    pulumi.Output<CapacityReservationSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? zone,
-  }) :
-      capacityReservationGroupId = pulumi.Input.asOptionalInput<String>(capacityReservationGroupId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sku = pulumi.Input.asOptionalInput<CapacityReservationSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.capacityReservationGroupId,
+    this.name,
+    this.sku,
+    this.tags,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class CapacityReservationState {
 
   factory CapacityReservationState.fromMap(Map<String, dynamic> map) {
     return CapacityReservationState(
-      capacityReservationGroupId: map['capacityReservationGroupId'] == null ? null : pulumi.Output.create<String>(map['capacityReservationGroupId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<CapacityReservationSku>(CapacityReservationSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      capacityReservationGroupId: map['capacityReservationGroupId'] == null ? null : (map['capacityReservationGroupId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sku: map['sku'] == null ? null : (CapacityReservationSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

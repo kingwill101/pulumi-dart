@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_issue_code_enum_value.dart';
 
 /// Definition of ClusterIssue
 class ClusterIssue {
   /// <p>The error code of the issue.</p>
-  final ClusterIssueCodeEnumValue? code;
+  final pulumi.Input<ClusterIssueCodeEnumValue>? code;
   /// <p>A description of the issue.</p>
-  final String? message;
+  final pulumi.Input<String>? message;
   /// <p>The resource IDs that the issue relates to.</p>
-  final List<String>? resourceIds;
+  final pulumi.Input<List<String>>? resourceIds;
 
   /// Creates a new [ClusterIssue].
   /// [code] <p>The error code of the issue.</p>
@@ -23,7 +24,7 @@ class ClusterIssue {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'code': ?code == null ? null : code!.toMap(),
+      'code': ?pulumi.Input.mapOptionalInputValue<ClusterIssueCodeEnumValue, Map<String, dynamic>>(code, (value) => value.toMap()),
       'message': ?message,
       'resourceIds': ?resourceIds,
     };
@@ -31,9 +32,9 @@ class ClusterIssue {
 
   factory ClusterIssue.fromMap(Map<String, dynamic> map) {
     return ClusterIssue(
-      code: map['code'] == null ? null : ClusterIssueCodeEnumValue.fromMap((map['code'] as Map).cast<String, dynamic>()),
-      message: map['message'] == null ? null : map['message'] as String,
-      resourceIds: map['resourceIds'] == null ? null : (map['resourceIds'] as List).cast<String>(),
+      code: map['code'] == null ? null : (ClusterIssueCodeEnumValue.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds'] as List).cast<String>()).input(),
     );
   }
 }

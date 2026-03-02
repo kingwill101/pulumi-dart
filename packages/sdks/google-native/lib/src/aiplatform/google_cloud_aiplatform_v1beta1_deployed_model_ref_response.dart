@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Points to a DeployedModel.
 class GoogleCloudAiplatformV1beta1DeployedModelRefResponse {
   /// Immutable. An ID of a DeployedModel in the above Endpoint.
-  final String deployedModelId;
+  final pulumi.Input<String> deployedModelId;
   /// Immutable. A resource name of an Endpoint.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1DeployedModelRefResponse].
   /// [deployedModelId] Immutable. An ID of a DeployedModel in the above Endpoint.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1beta1DeployedModelRefResponse {
 
   factory GoogleCloudAiplatformV1beta1DeployedModelRefResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1DeployedModelRefResponse(
-      deployedModelId: map['deployedModelId'] as String,
-      endpoint: map['endpoint'] as String,
+      deployedModelId: (map['deployedModelId'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

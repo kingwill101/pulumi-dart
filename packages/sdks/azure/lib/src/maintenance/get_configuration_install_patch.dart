@@ -6,11 +6,11 @@ import 'get_configuration_install_patch_window.dart';
 
 class GetConfigurationInstallPatch {
   /// A `linux` block as defined below.
-  final List<GetConfigurationInstallPatchLinux> linuxes;
+  final pulumi.Input<List<GetConfigurationInstallPatchLinux>> linuxes;
   /// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
-  final String reboot;
+  final pulumi.Input<String> reboot;
   /// A `windows` block as defined below.
-  final List<GetConfigurationInstallPatchWindow> windows;
+  final pulumi.Input<List<GetConfigurationInstallPatchWindow>> windows;
 
   /// Creates a new [GetConfigurationInstallPatch].
   /// [linuxes] A `linux` block as defined below.
@@ -24,17 +24,17 @@ class GetConfigurationInstallPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linuxes': pulumi.Input.encodeList<GetConfigurationInstallPatchLinux, Map<String, dynamic>>(linuxes, (value) => value.toMap()),
+      'linuxes': pulumi.Input.mapInputValue<List<GetConfigurationInstallPatchLinux>, List<Map<String, dynamic>>>(linuxes, (value) => pulumi.Input.encodeList<GetConfigurationInstallPatchLinux, Map<String, dynamic>>(value, (value) => value.toMap())),
       'reboot': reboot,
-      'windows': pulumi.Input.encodeList<GetConfigurationInstallPatchWindow, Map<String, dynamic>>(windows, (value) => value.toMap()),
+      'windows': pulumi.Input.mapInputValue<List<GetConfigurationInstallPatchWindow>, List<Map<String, dynamic>>>(windows, (value) => pulumi.Input.encodeList<GetConfigurationInstallPatchWindow, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetConfigurationInstallPatch.fromMap(Map<String, dynamic> map) {
     return GetConfigurationInstallPatch(
-      linuxes: pulumi.Input.decodeList<GetConfigurationInstallPatchLinux>(map['linuxes'], (value) => GetConfigurationInstallPatchLinux.fromMap((value as Map).cast<String, dynamic>())),
-      reboot: map['reboot'] as String,
-      windows: pulumi.Input.decodeList<GetConfigurationInstallPatchWindow>(map['windows'], (value) => GetConfigurationInstallPatchWindow.fromMap((value as Map).cast<String, dynamic>())),
+      linuxes: (pulumi.Input.decodeList<GetConfigurationInstallPatchLinux>(map['linuxes'], (value) => GetConfigurationInstallPatchLinux.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reboot: (map['reboot'] as String).input(),
+      windows: (pulumi.Input.decodeList<GetConfigurationInstallPatchWindow>(map['windows'], (value) => GetConfigurationInstallPatchWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

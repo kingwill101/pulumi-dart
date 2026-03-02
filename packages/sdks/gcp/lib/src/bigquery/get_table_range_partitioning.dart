@@ -5,9 +5,9 @@ import 'get_table_range_partitioning_range.dart';
 
 class GetTableRangePartitioning {
   /// The field used to determine how to create a range-based partition.
-  final String field;
+  final pulumi.Input<String> field;
   /// Information required to partition based on ranges. Structure is documented below.
-  final List<GetTableRangePartitioningRange> ranges;
+  final pulumi.Input<List<GetTableRangePartitioningRange>> ranges;
 
   /// Creates a new [GetTableRangePartitioning].
   /// [field] The field used to determine how to create a range-based partition.
@@ -20,14 +20,14 @@ class GetTableRangePartitioning {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'field': field,
-      'ranges': pulumi.Input.encodeList<GetTableRangePartitioningRange, Map<String, dynamic>>(ranges, (value) => value.toMap()),
+      'ranges': pulumi.Input.mapInputValue<List<GetTableRangePartitioningRange>, List<Map<String, dynamic>>>(ranges, (value) => pulumi.Input.encodeList<GetTableRangePartitioningRange, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetTableRangePartitioning.fromMap(Map<String, dynamic> map) {
     return GetTableRangePartitioning(
-      field: map['field'] as String,
-      ranges: pulumi.Input.decodeList<GetTableRangePartitioningRange>(map['ranges'], (value) => GetTableRangePartitioningRange.fromMap((value as Map).cast<String, dynamic>())),
+      field: (map['field'] as String).input(),
+      ranges: (pulumi.Input.decodeList<GetTableRangePartitioningRange>(map['ranges'], (value) => GetTableRangePartitioningRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecordGeolocationRoutingPolicy {
   /// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
-  final String? continent;
+  final pulumi.Input<String>? continent;
   /// A two-character country code or `*` to indicate a default resource record set.
-  final String? country;
+  final pulumi.Input<String>? country;
   /// A subdivision code for a country.
-  final String? subdivision;
+  final pulumi.Input<String>? subdivision;
 
   /// Creates a new [RecordGeolocationRoutingPolicy].
   /// [continent] A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
@@ -29,9 +30,9 @@ class RecordGeolocationRoutingPolicy {
 
   factory RecordGeolocationRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordGeolocationRoutingPolicy(
-      continent: map['continent'] == null ? null : map['continent'] as String,
-      country: map['country'] == null ? null : map['country'] as String,
-      subdivision: map['subdivision'] == null ? null : map['subdivision'] as String,
+      continent: map['continent'] == null ? null : (map['continent'] as String).input(),
+      country: map['country'] == null ? null : (map['country'] as String).input(),
+      subdivision: map['subdivision'] == null ? null : (map['subdivision'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ExpressRoutePortAuthorizationArgs {
   /// [name] The name of the ExpressRoute Port. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the ExpressRoute Port. Changing this forces a new resource to be created.
   ExpressRoutePortAuthorizationArgs({
-    required pulumi.Output<String> expressRoutePortName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expressRoutePortName = pulumi.Input.asInput<String>(expressRoutePortName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.expressRoutePortName,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ExpressRoutePortAuthorizationArgs {
 
   factory ExpressRoutePortAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortAuthorizationArgs(
-      expressRoutePortName: pulumi.Output.create<String>(map['expressRoutePortName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expressRoutePortName: (map['expressRoutePortName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetCallerIdentityArgs {
   /// Creates a new [GetCallerIdentityArgs].
   /// [id] Account ID number of the account that owns or contains the calling entity.
   GetCallerIdentityArgs({
-    pulumi.Output<String>? id,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id);
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetCallerIdentityArgs {
 
   factory GetCallerIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetCallerIdentityArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

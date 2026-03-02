@@ -20,15 +20,11 @@ class IamAuditConfigState {
   /// [orgId] The numeric ID of the organization in which you want to manage the audit logging config.
   /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   IamAuditConfigState({
-    pulumi.Output<List<IamAuditConfigAuditLogConfig>>? auditLogConfigs,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? service,
-  }) :
-      auditLogConfigs = pulumi.Input.asOptionalInput<List<IamAuditConfigAuditLogConfig>>(auditLogConfigs),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.auditLogConfigs,
+    this.etag,
+    this.orgId,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class IamAuditConfigState {
 
   factory IamAuditConfigState.fromMap(Map<String, dynamic> map) {
     return IamAuditConfigState(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Output.create<List<IamAuditConfigAuditLogConfig>>(pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

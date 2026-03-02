@@ -25,17 +25,12 @@ class HostedConnectionArgs {
   /// [ownerAccountId] The ID of the AWS account of the customer for the connection.
   /// [vlan] The dedicated VLAN provisioned to the hosted connection.
   HostedConnectionArgs({
-    required pulumi.Output<String> bandwidth,
-    required pulumi.Output<String> connectionId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> ownerAccountId,
-    required pulumi.Output<int> vlan,
-  }) :
-      bandwidth = pulumi.Input.asInput<String>(bandwidth),
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerAccountId = pulumi.Input.asInput<String>(ownerAccountId),
-      vlan = pulumi.Input.asInput<int>(vlan);
+    required this.bandwidth,
+    required this.connectionId,
+    this.name,
+    required this.ownerAccountId,
+    required this.vlan,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class HostedConnectionArgs {
 
   factory HostedConnectionArgs.fromMap(Map<String, dynamic> map) {
     return HostedConnectionArgs(
-      bandwidth: pulumi.Output.create<String>(map['bandwidth'] as String),
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerAccountId: pulumi.Output.create<String>(map['ownerAccountId'] as String),
-      vlan: pulumi.Output.create<int>(map['vlan'] as int),
+      bandwidth: (map['bandwidth'] as String).input(),
+      connectionId: (map['connectionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerAccountId: (map['ownerAccountId'] as String).input(),
+      vlan: (map['vlan'] as int).input(),
     );
   }
 }

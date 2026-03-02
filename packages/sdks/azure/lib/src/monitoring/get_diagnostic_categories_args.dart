@@ -13,9 +13,8 @@ class GetDiagnosticCategoriesArgs {
   /// Creates a new [GetDiagnosticCategoriesArgs].
   /// [resourceId] The ID of an existing Resource which Monitor Diagnostics Categories should be retrieved for.
   GetDiagnosticCategoriesArgs({
-    required pulumi.Output<String> resourceId,
-  }) :
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDiagnosticCategoriesArgs {
 
   factory GetDiagnosticCategoriesArgs.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticCategoriesArgs(
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class AccountPrivilegeState {
   /// [dbClusterId] The Id of cluster in which account belongs.
   /// [dbNames] List of specified database name.
   AccountPrivilegeState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? accountPrivilege,
-    pulumi.Output<String>? dbClusterId,
-    pulumi.Output<List<String>>? dbNames,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      accountPrivilege = pulumi.Input.asOptionalInput<String>(accountPrivilege),
-      dbClusterId = pulumi.Input.asOptionalInput<String>(dbClusterId),
-      dbNames = pulumi.Input.asOptionalInput<List<String>>(dbNames);
+    this.accountName,
+    this.accountPrivilege,
+    this.dbClusterId,
+    this.dbNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AccountPrivilegeState {
 
   factory AccountPrivilegeState.fromMap(Map<String, dynamic> map) {
     return AccountPrivilegeState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      accountPrivilege: map['accountPrivilege'] == null ? null : pulumi.Output.create<String>(map['accountPrivilege'] as String),
-      dbClusterId: map['dbClusterId'] == null ? null : pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbNames: map['dbNames'] == null ? null : pulumi.Output.create<List<String>>((map['dbNames'] as List).cast<String>()),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountPrivilege: map['accountPrivilege'] == null ? null : (map['accountPrivilege'] as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
+      dbNames: map['dbNames'] == null ? null : ((map['dbNames'] as List).cast<String>()).input(),
     );
   }
 }

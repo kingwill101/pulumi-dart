@@ -19,13 +19,10 @@ class LicationLoadBalancerFrontendArgs {
   /// [name] The name which should be used for this Application Gateway for Containers Frontend. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Application Gateway for Containers Frontend.
   LicationLoadBalancerFrontendArgs({
-    required pulumi.Output<String> applicationLoadBalancerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationLoadBalancerId = pulumi.Input.asInput<String>(applicationLoadBalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.applicationLoadBalancerId,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LicationLoadBalancerFrontendArgs {
 
   factory LicationLoadBalancerFrontendArgs.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerFrontendArgs(
-      applicationLoadBalancerId: pulumi.Output.create<String>(map['applicationLoadBalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationLoadBalancerId: (map['applicationLoadBalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

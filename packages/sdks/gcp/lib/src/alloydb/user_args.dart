@@ -39,21 +39,14 @@ class UserArgs {
   /// [userId] The database role name of the user.
   /// [userType] The type of this user.
   UserArgs({
-    required pulumi.Output<String> cluster,
-    pulumi.Output<List<String>>? databaseRoles,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? passwordWo,
-    pulumi.Output<String>? passwordWoVersion,
-    required pulumi.Output<String> userId,
-    required pulumi.Output<String> userType,
-  }) :
-      cluster = pulumi.Input.asInput<String>(cluster),
-      databaseRoles = pulumi.Input.asOptionalInput<List<String>>(databaseRoles),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordWo = pulumi.Input.asOptionalInput<String>(passwordWo),
-      passwordWoVersion = pulumi.Input.asOptionalInput<String>(passwordWoVersion),
-      userId = pulumi.Input.asInput<String>(userId),
-      userType = pulumi.Input.asInput<String>(userType);
+    required this.cluster,
+    this.databaseRoles,
+    this.password,
+    this.passwordWo,
+    this.passwordWoVersion,
+    required this.userId,
+    required this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      cluster: pulumi.Output.create<String>(map['cluster'] as String),
-      databaseRoles: map['databaseRoles'] == null ? null : pulumi.Output.create<List<String>>((map['databaseRoles'] as List).cast<String>()),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordWo: map['passwordWo'] == null ? null : pulumi.Output.create<String>(map['passwordWo'] as String),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : pulumi.Output.create<String>(map['passwordWoVersion'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
-      userType: pulumi.Output.create<String>(map['userType'] as String),
+      cluster: (map['cluster'] as String).input(),
+      databaseRoles: map['databaseRoles'] == null ? null : ((map['databaseRoles'] as List).cast<String>()).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo'] as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      userType: (map['userType'] as String).input(),
     );
   }
 }

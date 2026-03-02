@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A VMWare Engine Node
 class ReportSummaryVMWareNodeResponse {
   /// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
-  final String code;
+  final pulumi.Input<String> code;
 
   /// Creates a new [ReportSummaryVMWareNodeResponse].
   /// [code] Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
@@ -20,7 +21,7 @@ class ReportSummaryVMWareNodeResponse {
 
   factory ReportSummaryVMWareNodeResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryVMWareNodeResponse(
-      code: map['code'] as String,
+      code: (map['code'] as String).input(),
     );
   }
 }

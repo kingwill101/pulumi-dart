@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicDbusGl {
   /// Configures whether OpenGL support is enabled in the D-Bus graphics settings.
-  final String? enable;
+  final pulumi.Input<String>? enable;
   /// Sets the render node for OpenGL in the D-Bus graphics configuration.
-  final String? renderNode;
+  final pulumi.Input<String>? renderNode;
 
   /// Creates a new [DomainDevicesGraphicDbusGl].
   /// [enable] Configures whether OpenGL support is enabled in the D-Bus graphics settings.
@@ -24,8 +25,8 @@ class DomainDevicesGraphicDbusGl {
 
   factory DomainDevicesGraphicDbusGl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicDbusGl(
-      enable: map['enable'] == null ? null : map['enable'] as String,
-      renderNode: map['renderNode'] == null ? null : map['renderNode'] as String,
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      renderNode: map['renderNode'] == null ? null : (map['renderNode'] as String).input(),
     );
   }
 }

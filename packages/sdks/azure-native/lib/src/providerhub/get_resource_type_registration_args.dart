@@ -16,11 +16,9 @@ class GetResourceTypeRegistrationArgs {
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [resourceType] The resource type.
   GetResourceTypeRegistrationArgs({
-    required pulumi.Output<String> providerNamespace,
-    required pulumi.Output<String> resourceType,
-  }) :
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+    required this.providerNamespace,
+    required this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResourceTypeRegistrationArgs {
 
   factory GetResourceTypeRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceTypeRegistrationArgs(
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
+      providerNamespace: (map['providerNamespace'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

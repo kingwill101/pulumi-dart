@@ -34,23 +34,15 @@ class UserState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userName] Name of the MemoryDB user. Up to 40 characters.
   UserState({
-    pulumi.Output<String>? accessString,
-    pulumi.Output<String>? arn,
-    pulumi.Output<UserAuthenticationMode>? authenticationMode,
-    pulumi.Output<String>? minimumEngineVersion,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? userName,
-  }) :
-      accessString = pulumi.Input.asOptionalInput<String>(accessString),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authenticationMode = pulumi.Input.asOptionalInput<UserAuthenticationMode>(authenticationMode),
-      minimumEngineVersion = pulumi.Input.asOptionalInput<String>(minimumEngineVersion),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.accessString,
+    this.arn,
+    this.authenticationMode,
+    this.minimumEngineVersion,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      accessString: map['accessString'] == null ? null : pulumi.Output.create<String>(map['accessString'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authenticationMode: map['authenticationMode'] == null ? null : pulumi.Output.create<UserAuthenticationMode>(UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())),
-      minimumEngineVersion: map['minimumEngineVersion'] == null ? null : pulumi.Output.create<String>(map['minimumEngineVersion'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      accessString: map['accessString'] == null ? null : (map['accessString'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())).input(),
+      minimumEngineVersion: map['minimumEngineVersion'] == null ? null : (map['minimumEngineVersion'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DnsZonePeeringConfig {
   /// The name of the producer VPC network.
-  final String targetNetworkId;
+  final pulumi.Input<String> targetNetworkId;
   /// The ID of the project that contains the producer VPC network.
-  final String targetProjectId;
+  final pulumi.Input<String> targetProjectId;
 
   /// Creates a new [DnsZonePeeringConfig].
   /// [targetNetworkId] The name of the producer VPC network.
@@ -24,8 +25,8 @@ class DnsZonePeeringConfig {
 
   factory DnsZonePeeringConfig.fromMap(Map<String, dynamic> map) {
     return DnsZonePeeringConfig(
-      targetNetworkId: map['targetNetworkId'] as String,
-      targetProjectId: map['targetProjectId'] as String,
+      targetNetworkId: (map['targetNetworkId'] as String).input(),
+      targetProjectId: (map['targetProjectId'] as String).input(),
     );
   }
 }

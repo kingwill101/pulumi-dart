@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobJobMonitorInfoContactInfo {
   /// DingTalk swarm robot webhook address
-  final String? ding;
+  final pulumi.Input<String>? ding;
   /// User Email Address
-  final String? userMail;
+  final pulumi.Input<String>? userMail;
   /// The user name
-  final String? userName;
+  final pulumi.Input<String>? userName;
   /// The user's mobile phone number
-  final String? userPhone;
+  final pulumi.Input<String>? userPhone;
 
   /// Creates a new [JobJobMonitorInfoContactInfo].
   /// [ding] DingTalk swarm robot webhook address
@@ -34,10 +35,10 @@ class JobJobMonitorInfoContactInfo {
 
   factory JobJobMonitorInfoContactInfo.fromMap(Map<String, dynamic> map) {
     return JobJobMonitorInfoContactInfo(
-      ding: map['ding'] == null ? null : map['ding'] as String,
-      userMail: map['userMail'] == null ? null : map['userMail'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
-      userPhone: map['userPhone'] == null ? null : map['userPhone'] as String,
+      ding: map['ding'] == null ? null : (map['ding'] as String).input(),
+      userMail: map['userMail'] == null ? null : (map['userMail'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userPhone: map['userPhone'] == null ? null : (map['userPhone'] as String).input(),
     );
   }
 }

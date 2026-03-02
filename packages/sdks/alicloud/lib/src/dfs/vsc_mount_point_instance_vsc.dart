@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VscMountPointInstanceVsc {
   /// VSC Channel primary key representation, used to retrieve the specified VSC Channel.
-  final String? vscId;
+  final pulumi.Input<String>? vscId;
   /// VSC Mount status.
-  final String? vscStatus;
+  final pulumi.Input<String>? vscStatus;
   /// The VSC type.
-  final String? vscType;
+  final pulumi.Input<String>? vscType;
 
   /// Creates a new [VscMountPointInstanceVsc].
   /// [vscId] VSC Channel primary key representation, used to retrieve the specified VSC Channel.
@@ -29,9 +30,9 @@ class VscMountPointInstanceVsc {
 
   factory VscMountPointInstanceVsc.fromMap(Map<String, dynamic> map) {
     return VscMountPointInstanceVsc(
-      vscId: map['vscId'] == null ? null : map['vscId'] as String,
-      vscStatus: map['vscStatus'] == null ? null : map['vscStatus'] as String,
-      vscType: map['vscType'] == null ? null : map['vscType'] as String,
+      vscId: map['vscId'] == null ? null : (map['vscId'] as String).input(),
+      vscStatus: map['vscStatus'] == null ? null : (map['vscStatus'] as String).input(),
+      vscType: map['vscType'] == null ? null : (map['vscType'] as String).input(),
     );
   }
 }

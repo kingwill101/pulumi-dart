@@ -6,7 +6,7 @@ import 'binding_properties.dart';
 /// Defines a desired runtime component.
 class TopologiesProperties {
   /// bindings description.
-  final List<BindingProperties>? bindings;
+  final pulumi.Input<List<BindingProperties>>? bindings;
 
   /// Creates a new [TopologiesProperties].
   /// [bindings] bindings description.
@@ -16,13 +16,13 @@ class TopologiesProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bindings': ?bindings == null ? null : pulumi.Input.encodeList<BindingProperties, Map<String, dynamic>>(bindings!, (value) => value.toMap()),
+      'bindings': ?pulumi.Input.mapOptionalInputValue<List<BindingProperties>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<BindingProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TopologiesProperties.fromMap(Map<String, dynamic> map) {
     return TopologiesProperties(
-      bindings: map['bindings'] == null ? null : pulumi.Input.decodeList<BindingProperties>(map['bindings'], (value) => BindingProperties.fromMap((value as Map).cast<String, dynamic>())),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingProperties>(map['bindings'], (value) => BindingProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PipelineExternalComputeScale properties for managed integration runtime.
 class PipelineExternalComputeScaleProperties {
   /// Number of the the external nodes, which should be greater than 0 and less than 11.
-  final int? numberOfExternalNodes;
+  final pulumi.Input<int>? numberOfExternalNodes;
   /// Number of the pipeline nodes, which should be greater than 0 and less than 11.
-  final int? numberOfPipelineNodes;
+  final pulumi.Input<int>? numberOfPipelineNodes;
   /// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
-  final int? timeToLive;
+  final pulumi.Input<int>? timeToLive;
 
   /// Creates a new [PipelineExternalComputeScaleProperties].
   /// [numberOfExternalNodes] Number of the the external nodes, which should be greater than 0 and less than 11.
@@ -30,9 +31,9 @@ class PipelineExternalComputeScaleProperties {
 
   factory PipelineExternalComputeScaleProperties.fromMap(Map<String, dynamic> map) {
     return PipelineExternalComputeScaleProperties(
-      numberOfExternalNodes: map['numberOfExternalNodes'] == null ? null : map['numberOfExternalNodes'] as int,
-      numberOfPipelineNodes: map['numberOfPipelineNodes'] == null ? null : map['numberOfPipelineNodes'] as int,
-      timeToLive: map['timeToLive'] == null ? null : map['timeToLive'] as int,
+      numberOfExternalNodes: map['numberOfExternalNodes'] == null ? null : (map['numberOfExternalNodes'] as int).input(),
+      numberOfPipelineNodes: map['numberOfPipelineNodes'] == null ? null : (map['numberOfPipelineNodes'] as int).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
     );
   }
 }

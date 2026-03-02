@@ -23,11 +23,9 @@ class IAMPolicyArgs {
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
   IAMPolicyArgs({
-    required pulumi.Output<String> folder,
-    required pulumi.Output<String> policyData,
-  }) :
-      folder = pulumi.Input.asInput<String>(folder),
-      policyData = pulumi.Input.asInput<String>(policyData);
+    required this.folder,
+    required this.policyData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,8 +36,8 @@ class IAMPolicyArgs {
 
   factory IAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return IAMPolicyArgs(
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
+      folder: (map['folder'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
     );
   }
 }

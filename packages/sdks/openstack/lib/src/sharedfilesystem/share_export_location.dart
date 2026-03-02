@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ShareExportLocation {
-  final String? path;
-  final String? preferred;
+  final pulumi.Input<String>? path;
+  final pulumi.Input<String>? preferred;
 
   /// Creates a new [ShareExportLocation].
   /// [path] Optional.
@@ -22,8 +23,8 @@ class ShareExportLocation {
 
   factory ShareExportLocation.fromMap(Map<String, dynamic> map) {
     return ShareExportLocation(
-      path: map['path'] == null ? null : map['path'] as String,
-      preferred: map['preferred'] == null ? null : map['preferred'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      preferred: map['preferred'] == null ? null : (map['preferred'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceMasterUserSecret {
   /// The Amazon Web Services KMS key identifier that is used to encrypt the secret.
-  final String kmsKeyId;
+  final pulumi.Input<String> kmsKeyId;
   /// The Amazon Resource Name (ARN) of the secret.
-  final String secretArn;
+  final pulumi.Input<String> secretArn;
   /// The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
-  final String secretStatus;
+  final pulumi.Input<String> secretStatus;
 
   /// Creates a new [GetInstanceMasterUserSecret].
   /// [kmsKeyId] The Amazon Web Services KMS key identifier that is used to encrypt the secret.
@@ -29,9 +30,9 @@ class GetInstanceMasterUserSecret {
 
   factory GetInstanceMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return GetInstanceMasterUserSecret(
-      kmsKeyId: map['kmsKeyId'] as String,
-      secretArn: map['secretArn'] as String,
-      secretStatus: map['secretStatus'] as String,
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
+      secretArn: (map['secretArn'] as String).input(),
+      secretStatus: (map['secretStatus'] as String).input(),
     );
   }
 }

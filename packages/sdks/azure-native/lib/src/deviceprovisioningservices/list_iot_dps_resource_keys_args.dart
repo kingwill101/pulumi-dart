@@ -16,11 +16,9 @@ class ListIotDpsResourceKeysArgs {
   /// [provisioningServiceName] The provisioning service name to get the shared access keys for.
   /// [resourceGroupName] resource group name
   ListIotDpsResourceKeysArgs({
-    required pulumi.Output<String> provisioningServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      provisioningServiceName = pulumi.Input.asInput<String>(provisioningServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.provisioningServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListIotDpsResourceKeysArgs {
 
   factory ListIotDpsResourceKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListIotDpsResourceKeysArgs(
-      provisioningServiceName: pulumi.Output.create<String>(map['provisioningServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      provisioningServiceName: (map['provisioningServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

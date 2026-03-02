@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyKeyAttributeKeyModesOfUse {
   /// Whether an AWS Payment Cryptography key can be used to decrypt data.
-  final bool? decrypt;
+  final pulumi.Input<bool>? decrypt;
   /// Whether an AWS Payment Cryptography key can be used to derive new keys.
-  final bool? deriveKey;
+  final pulumi.Input<bool>? deriveKey;
   /// Whether an AWS Payment Cryptography key can be used to encrypt data.
-  final bool? encrypt;
+  final pulumi.Input<bool>? encrypt;
   /// Whether an AWS Payment Cryptography key can be used to generate and verify other card and PIN verification keys.
-  final bool? generate;
+  final pulumi.Input<bool>? generate;
   /// Whether an AWS Payment Cryptography key has no special restrictions other than the restrictions implied by KeyUsage.
-  final bool? noRestrictions;
+  final pulumi.Input<bool>? noRestrictions;
   /// Whether an AWS Payment Cryptography key can be used for signing.
-  final bool? sign;
+  final pulumi.Input<bool>? sign;
   /// Whether an AWS Payment Cryptography key can be used to unwrap other keys.
-  final bool? unwrap;
+  final pulumi.Input<bool>? unwrap;
   /// Whether an AWS Payment Cryptography key can be used to verify signatures.
-  final bool? verify;
+  final pulumi.Input<bool>? verify;
   /// Whether an AWS Payment Cryptography key can be used to wrap other keys.
-  final bool? wrap;
+  final pulumi.Input<bool>? wrap;
 
   /// Creates a new [KeyKeyAttributeKeyModesOfUse].
   /// [decrypt] Whether an AWS Payment Cryptography key can be used to decrypt data.
@@ -59,15 +60,15 @@ class KeyKeyAttributeKeyModesOfUse {
 
   factory KeyKeyAttributeKeyModesOfUse.fromMap(Map<String, dynamic> map) {
     return KeyKeyAttributeKeyModesOfUse(
-      decrypt: map['decrypt'] == null ? null : map['decrypt'] as bool,
-      deriveKey: map['deriveKey'] == null ? null : map['deriveKey'] as bool,
-      encrypt: map['encrypt'] == null ? null : map['encrypt'] as bool,
-      generate: map['generate'] == null ? null : map['generate'] as bool,
-      noRestrictions: map['noRestrictions'] == null ? null : map['noRestrictions'] as bool,
-      sign: map['sign'] == null ? null : map['sign'] as bool,
-      unwrap: map['unwrap'] == null ? null : map['unwrap'] as bool,
-      verify: map['verify'] == null ? null : map['verify'] as bool,
-      wrap: map['wrap'] == null ? null : map['wrap'] as bool,
+      decrypt: map['decrypt'] == null ? null : (map['decrypt'] as bool).input(),
+      deriveKey: map['deriveKey'] == null ? null : (map['deriveKey'] as bool).input(),
+      encrypt: map['encrypt'] == null ? null : (map['encrypt'] as bool).input(),
+      generate: map['generate'] == null ? null : (map['generate'] as bool).input(),
+      noRestrictions: map['noRestrictions'] == null ? null : (map['noRestrictions'] as bool).input(),
+      sign: map['sign'] == null ? null : (map['sign'] as bool).input(),
+      unwrap: map['unwrap'] == null ? null : (map['unwrap'] as bool).input(),
+      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
+      wrap: map['wrap'] == null ? null : (map['wrap'] as bool).input(),
     );
   }
 }

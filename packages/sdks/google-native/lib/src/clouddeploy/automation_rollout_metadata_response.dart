@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AutomationRolloutMetadata contains Automation-related actions that were performed on a rollout.
 class AutomationRolloutMetadataResponse {
   /// The IDs of the AutomationRuns initiated by an advance rollout rule.
-  final List<String> advanceAutomationRuns;
+  final pulumi.Input<List<String>> advanceAutomationRuns;
   /// The ID of the AutomationRun initiated by a promote release rule.
-  final String promoteAutomationRun;
+  final pulumi.Input<String> promoteAutomationRun;
   /// The IDs of the AutomationRuns initiated by a repair rollout rule.
-  final List<String> repairAutomationRuns;
+  final pulumi.Input<List<String>> repairAutomationRuns;
 
   /// Creates a new [AutomationRolloutMetadataResponse].
   /// [advanceAutomationRuns] The IDs of the AutomationRuns initiated by an advance rollout rule.
@@ -30,9 +31,9 @@ class AutomationRolloutMetadataResponse {
 
   factory AutomationRolloutMetadataResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRolloutMetadataResponse(
-      advanceAutomationRuns: (map['advanceAutomationRuns'] as List).cast<String>(),
-      promoteAutomationRun: map['promoteAutomationRun'] as String,
-      repairAutomationRuns: (map['repairAutomationRuns'] as List).cast<String>(),
+      advanceAutomationRuns: ((map['advanceAutomationRuns'] as List).cast<String>()).input(),
+      promoteAutomationRun: (map['promoteAutomationRun'] as String).input(),
+      repairAutomationRuns: ((map['repairAutomationRuns'] as List).cast<String>()).input(),
     );
   }
 }

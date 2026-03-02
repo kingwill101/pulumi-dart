@@ -37,25 +37,16 @@ class GetGatewaysArgs {
   /// [status] Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
   /// [vpcId] Use the VPC ID as the search key.
   GetGatewaysArgs({
-    pulumi.Output<String>? businessStatus,
-    pulumi.Output<bool>? enableIpsec,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<bool>? includeReservationData,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? sslVpn,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-  }) :
-      businessStatus = pulumi.Input.asOptionalInput<String>(businessStatus),
-      enableIpsec = pulumi.Input.asOptionalInput<bool>(enableIpsec),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      includeReservationData = pulumi.Input.asOptionalInput<bool>(includeReservationData),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      sslVpn = pulumi.Input.asOptionalInput<String>(sslVpn),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.businessStatus,
+    this.enableIpsec,
+    this.ids,
+    this.includeReservationData,
+    this.nameRegex,
+    this.outputFile,
+    this.sslVpn,
+    this.status,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GetGatewaysArgs {
 
   factory GetGatewaysArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewaysArgs(
-      businessStatus: map['businessStatus'] == null ? null : pulumi.Output.create<String>(map['businessStatus'] as String),
-      enableIpsec: map['enableIpsec'] == null ? null : pulumi.Output.create<bool>(map['enableIpsec'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      includeReservationData: map['includeReservationData'] == null ? null : pulumi.Output.create<bool>(map['includeReservationData'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      sslVpn: map['sslVpn'] == null ? null : pulumi.Output.create<String>(map['sslVpn'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus'] as String).input(),
+      enableIpsec: map['enableIpsec'] == null ? null : (map['enableIpsec'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      sslVpn: map['sslVpn'] == null ? null : (map['sslVpn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

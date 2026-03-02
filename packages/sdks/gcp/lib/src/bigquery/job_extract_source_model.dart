@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobExtractSourceModel {
   /// The ID of the dataset containing this model.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// The ID of the model.
-  final String modelId;
+  final pulumi.Input<String> modelId;
   /// The ID of the project containing this model.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [JobExtractSourceModel].
   /// [datasetId] The ID of the dataset containing this model.
@@ -29,9 +30,9 @@ class JobExtractSourceModel {
 
   factory JobExtractSourceModel.fromMap(Map<String, dynamic> map) {
     return JobExtractSourceModel(
-      datasetId: map['datasetId'] as String,
-      modelId: map['modelId'] as String,
-      projectId: map['projectId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      modelId: (map['modelId'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

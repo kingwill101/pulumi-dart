@@ -25,17 +25,12 @@ class GetTemplateScratchesArgs {
   /// [status] The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
   /// [templateScratchType] The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
   GetTemplateScratchesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? templateScratchType,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      templateScratchType = pulumi.Input.asOptionalInput<String>(templateScratchType);
+    this.enableDetails,
+    this.ids,
+    this.outputFile,
+    this.status,
+    this.templateScratchType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetTemplateScratchesArgs {
 
   factory GetTemplateScratchesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      templateScratchType: map['templateScratchType'] == null ? null : pulumi.Output.create<String>(map['templateScratchType'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      templateScratchType: map['templateScratchType'] == null ? null : (map['templateScratchType'] as String).input(),
     );
   }
 }

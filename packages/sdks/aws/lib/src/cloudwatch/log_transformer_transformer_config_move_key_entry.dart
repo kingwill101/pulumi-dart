@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigMoveKeyEntry {
   /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
-  final bool? overwriteIfExists;
+  final pulumi.Input<bool>? overwriteIfExists;
   /// Specifies the key to modify.
-  final String source;
+  final pulumi.Input<String> source;
   /// Specifies the key to move to.
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [LogTransformerTransformerConfigMoveKeyEntry].
   /// [overwriteIfExists] Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
@@ -30,9 +31,9 @@ class LogTransformerTransformerConfigMoveKeyEntry {
 
   factory LogTransformerTransformerConfigMoveKeyEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigMoveKeyEntry(
-      overwriteIfExists: map['overwriteIfExists'] == null ? null : map['overwriteIfExists'] as bool,
-      source: map['source'] as String,
-      target: map['target'] as String,
+      overwriteIfExists: map['overwriteIfExists'] == null ? null : (map['overwriteIfExists'] as bool).input(),
+      source: (map['source'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class PublicAdvertisedPrefixComputeV1Args {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [status] The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
   PublicAdvertisedPrefixComputeV1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? dnsVerificationIp,
-    pulumi.Output<String>? ipCidrRange,
-    pulumi.Output<String>? name,
-    pulumi.Output<PublicAdvertisedPrefixPdpScopeComputeV1>? pdpScope,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<PublicAdvertisedPrefixStatusComputeV1>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsVerificationIp = pulumi.Input.asOptionalInput<String>(dnsVerificationIp),
-      ipCidrRange = pulumi.Input.asOptionalInput<String>(ipCidrRange),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pdpScope = pulumi.Input.asOptionalInput<PublicAdvertisedPrefixPdpScopeComputeV1>(pdpScope),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      status = pulumi.Input.asOptionalInput<PublicAdvertisedPrefixStatusComputeV1>(status);
+    this.description,
+    this.dnsVerificationIp,
+    this.ipCidrRange,
+    this.name,
+    this.pdpScope,
+    this.project,
+    this.requestId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class PublicAdvertisedPrefixComputeV1Args {
 
   factory PublicAdvertisedPrefixComputeV1Args.fromMap(Map<String, dynamic> map) {
     return PublicAdvertisedPrefixComputeV1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : pulumi.Output.create<String>(map['dnsVerificationIp'] as String),
-      ipCidrRange: map['ipCidrRange'] == null ? null : pulumi.Output.create<String>(map['ipCidrRange'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pdpScope: map['pdpScope'] == null ? null : pulumi.Output.create<PublicAdvertisedPrefixPdpScopeComputeV1>(PublicAdvertisedPrefixPdpScopeComputeV1.fromValue(map['pdpScope'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<PublicAdvertisedPrefixStatusComputeV1>(PublicAdvertisedPrefixStatusComputeV1.fromValue(map['status'] as String)),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : (map['dnsVerificationIp'] as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pdpScope: map['pdpScope'] == null ? null : (PublicAdvertisedPrefixPdpScopeComputeV1.fromValue(map['pdpScope'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      status: map['status'] == null ? null : (PublicAdvertisedPrefixStatusComputeV1.fromValue(map['status'] as String)).input(),
     );
   }
 }

@@ -49,33 +49,20 @@ class GuestArgs {
   /// [state] Specifies the state of the vCMP guest on the system. options : [`configured`,`provisioned`,`deployed`].
   /// [vlans] Specifies the list of VLANs the vCMP guest uses to communicate with other guests, the host, and with the external network. The naming format must be the combination of the partition + name. For example /Common/my-vlan
   GuestArgs({
-    pulumi.Output<List<int>>? allowedSlots,
-    pulumi.Output<int>? coresPerSlot,
-    pulumi.Output<bool>? deleteVirtualDisk,
-    pulumi.Output<String>? initialHotfix,
-    pulumi.Output<String>? initialImage,
-    pulumi.Output<String>? mgmtAddress,
-    pulumi.Output<String>? mgmtNetwork,
-    pulumi.Output<String>? mgmtRoute,
-    pulumi.Output<int>? minNumberOfSlots,
-    required pulumi.Output<String> name,
-    pulumi.Output<int>? numberOfSlots,
-    pulumi.Output<String>? state,
-    pulumi.Output<List<String>>? vlans,
-  }) :
-      allowedSlots = pulumi.Input.asOptionalInput<List<int>>(allowedSlots),
-      coresPerSlot = pulumi.Input.asOptionalInput<int>(coresPerSlot),
-      deleteVirtualDisk = pulumi.Input.asOptionalInput<bool>(deleteVirtualDisk),
-      initialHotfix = pulumi.Input.asOptionalInput<String>(initialHotfix),
-      initialImage = pulumi.Input.asOptionalInput<String>(initialImage),
-      mgmtAddress = pulumi.Input.asOptionalInput<String>(mgmtAddress),
-      mgmtNetwork = pulumi.Input.asOptionalInput<String>(mgmtNetwork),
-      mgmtRoute = pulumi.Input.asOptionalInput<String>(mgmtRoute),
-      minNumberOfSlots = pulumi.Input.asOptionalInput<int>(minNumberOfSlots),
-      name = pulumi.Input.asInput<String>(name),
-      numberOfSlots = pulumi.Input.asOptionalInput<int>(numberOfSlots),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      vlans = pulumi.Input.asOptionalInput<List<String>>(vlans);
+    this.allowedSlots,
+    this.coresPerSlot,
+    this.deleteVirtualDisk,
+    this.initialHotfix,
+    this.initialImage,
+    this.mgmtAddress,
+    this.mgmtNetwork,
+    this.mgmtRoute,
+    this.minNumberOfSlots,
+    required this.name,
+    this.numberOfSlots,
+    this.state,
+    this.vlans,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class GuestArgs {
 
   factory GuestArgs.fromMap(Map<String, dynamic> map) {
     return GuestArgs(
-      allowedSlots: map['allowedSlots'] == null ? null : pulumi.Output.create<List<int>>((map['allowedSlots'] as List).cast<int>()),
-      coresPerSlot: map['coresPerSlot'] == null ? null : pulumi.Output.create<int>(map['coresPerSlot'] as int),
-      deleteVirtualDisk: map['deleteVirtualDisk'] == null ? null : pulumi.Output.create<bool>(map['deleteVirtualDisk'] as bool),
-      initialHotfix: map['initialHotfix'] == null ? null : pulumi.Output.create<String>(map['initialHotfix'] as String),
-      initialImage: map['initialImage'] == null ? null : pulumi.Output.create<String>(map['initialImage'] as String),
-      mgmtAddress: map['mgmtAddress'] == null ? null : pulumi.Output.create<String>(map['mgmtAddress'] as String),
-      mgmtNetwork: map['mgmtNetwork'] == null ? null : pulumi.Output.create<String>(map['mgmtNetwork'] as String),
-      mgmtRoute: map['mgmtRoute'] == null ? null : pulumi.Output.create<String>(map['mgmtRoute'] as String),
-      minNumberOfSlots: map['minNumberOfSlots'] == null ? null : pulumi.Output.create<int>(map['minNumberOfSlots'] as int),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      numberOfSlots: map['numberOfSlots'] == null ? null : pulumi.Output.create<int>(map['numberOfSlots'] as int),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      vlans: map['vlans'] == null ? null : pulumi.Output.create<List<String>>((map['vlans'] as List).cast<String>()),
+      allowedSlots: map['allowedSlots'] == null ? null : ((map['allowedSlots'] as List).cast<int>()).input(),
+      coresPerSlot: map['coresPerSlot'] == null ? null : (map['coresPerSlot'] as int).input(),
+      deleteVirtualDisk: map['deleteVirtualDisk'] == null ? null : (map['deleteVirtualDisk'] as bool).input(),
+      initialHotfix: map['initialHotfix'] == null ? null : (map['initialHotfix'] as String).input(),
+      initialImage: map['initialImage'] == null ? null : (map['initialImage'] as String).input(),
+      mgmtAddress: map['mgmtAddress'] == null ? null : (map['mgmtAddress'] as String).input(),
+      mgmtNetwork: map['mgmtNetwork'] == null ? null : (map['mgmtNetwork'] as String).input(),
+      mgmtRoute: map['mgmtRoute'] == null ? null : (map['mgmtRoute'] as String).input(),
+      minNumberOfSlots: map['minNumberOfSlots'] == null ? null : (map['minNumberOfSlots'] as int).input(),
+      name: (map['name'] as String).input(),
+      numberOfSlots: map['numberOfSlots'] == null ? null : (map['numberOfSlots'] as int).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      vlans: map['vlans'] == null ? null : ((map['vlans'] as List).cast<String>()).input(),
     );
   }
 }

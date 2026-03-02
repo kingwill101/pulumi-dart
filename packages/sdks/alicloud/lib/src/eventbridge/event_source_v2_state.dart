@@ -50,31 +50,19 @@ class EventSourceV2State {
   /// [sourceScheduledEventParameters] Time event source parameter. See `source_scheduled_event_parameters` below.
   /// [sourceSlsParameters] The request parameter SourceSLSParameters. See `source_sls_parameters` below.
   EventSourceV2State({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eventBusName,
-    pulumi.Output<String>? eventSourceName,
-    pulumi.Output<bool>? linkedExternalSource,
-    pulumi.Output<EventSourceV2SourceHttpEventParameters>? sourceHttpEventParameters,
-    pulumi.Output<EventSourceV2SourceKafkaParameters>? sourceKafkaParameters,
-    pulumi.Output<EventSourceV2SourceMnsParameters>? sourceMnsParameters,
-    pulumi.Output<EventSourceV2SourceOssEventParameters>? sourceOssEventParameters,
-    pulumi.Output<EventSourceV2SourceRabbitMqParameters>? sourceRabbitMqParameters,
-    pulumi.Output<EventSourceV2SourceRocketmqParameters>? sourceRocketmqParameters,
-    pulumi.Output<EventSourceV2SourceScheduledEventParameters>? sourceScheduledEventParameters,
-    pulumi.Output<EventSourceV2SourceSlsParameters>? sourceSlsParameters,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventBusName = pulumi.Input.asOptionalInput<String>(eventBusName),
-      eventSourceName = pulumi.Input.asOptionalInput<String>(eventSourceName),
-      linkedExternalSource = pulumi.Input.asOptionalInput<bool>(linkedExternalSource),
-      sourceHttpEventParameters = pulumi.Input.asOptionalInput<EventSourceV2SourceHttpEventParameters>(sourceHttpEventParameters),
-      sourceKafkaParameters = pulumi.Input.asOptionalInput<EventSourceV2SourceKafkaParameters>(sourceKafkaParameters),
-      sourceMnsParameters = pulumi.Input.asOptionalInput<EventSourceV2SourceMnsParameters>(sourceMnsParameters),
-      sourceOssEventParameters = pulumi.Input.asOptionalInput<EventSourceV2SourceOssEventParameters>(sourceOssEventParameters),
-      sourceRabbitMqParameters = pulumi.Input.asOptionalInput<EventSourceV2SourceRabbitMqParameters>(sourceRabbitMqParameters),
-      sourceRocketmqParameters = pulumi.Input.asOptionalInput<EventSourceV2SourceRocketmqParameters>(sourceRocketmqParameters),
-      sourceScheduledEventParameters = pulumi.Input.asOptionalInput<EventSourceV2SourceScheduledEventParameters>(sourceScheduledEventParameters),
-      sourceSlsParameters = pulumi.Input.asOptionalInput<EventSourceV2SourceSlsParameters>(sourceSlsParameters);
+    this.description,
+    this.eventBusName,
+    this.eventSourceName,
+    this.linkedExternalSource,
+    this.sourceHttpEventParameters,
+    this.sourceKafkaParameters,
+    this.sourceMnsParameters,
+    this.sourceOssEventParameters,
+    this.sourceRabbitMqParameters,
+    this.sourceRocketmqParameters,
+    this.sourceScheduledEventParameters,
+    this.sourceSlsParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class EventSourceV2State {
 
   factory EventSourceV2State.fromMap(Map<String, dynamic> map) {
     return EventSourceV2State(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventBusName: map['eventBusName'] == null ? null : pulumi.Output.create<String>(map['eventBusName'] as String),
-      eventSourceName: map['eventSourceName'] == null ? null : pulumi.Output.create<String>(map['eventSourceName'] as String),
-      linkedExternalSource: map['linkedExternalSource'] == null ? null : pulumi.Output.create<bool>(map['linkedExternalSource'] as bool),
-      sourceHttpEventParameters: map['sourceHttpEventParameters'] == null ? null : pulumi.Output.create<EventSourceV2SourceHttpEventParameters>(EventSourceV2SourceHttpEventParameters.fromMap((map['sourceHttpEventParameters'] as Map).cast<String, dynamic>())),
-      sourceKafkaParameters: map['sourceKafkaParameters'] == null ? null : pulumi.Output.create<EventSourceV2SourceKafkaParameters>(EventSourceV2SourceKafkaParameters.fromMap((map['sourceKafkaParameters'] as Map).cast<String, dynamic>())),
-      sourceMnsParameters: map['sourceMnsParameters'] == null ? null : pulumi.Output.create<EventSourceV2SourceMnsParameters>(EventSourceV2SourceMnsParameters.fromMap((map['sourceMnsParameters'] as Map).cast<String, dynamic>())),
-      sourceOssEventParameters: map['sourceOssEventParameters'] == null ? null : pulumi.Output.create<EventSourceV2SourceOssEventParameters>(EventSourceV2SourceOssEventParameters.fromMap((map['sourceOssEventParameters'] as Map).cast<String, dynamic>())),
-      sourceRabbitMqParameters: map['sourceRabbitMqParameters'] == null ? null : pulumi.Output.create<EventSourceV2SourceRabbitMqParameters>(EventSourceV2SourceRabbitMqParameters.fromMap((map['sourceRabbitMqParameters'] as Map).cast<String, dynamic>())),
-      sourceRocketmqParameters: map['sourceRocketmqParameters'] == null ? null : pulumi.Output.create<EventSourceV2SourceRocketmqParameters>(EventSourceV2SourceRocketmqParameters.fromMap((map['sourceRocketmqParameters'] as Map).cast<String, dynamic>())),
-      sourceScheduledEventParameters: map['sourceScheduledEventParameters'] == null ? null : pulumi.Output.create<EventSourceV2SourceScheduledEventParameters>(EventSourceV2SourceScheduledEventParameters.fromMap((map['sourceScheduledEventParameters'] as Map).cast<String, dynamic>())),
-      sourceSlsParameters: map['sourceSlsParameters'] == null ? null : pulumi.Output.create<EventSourceV2SourceSlsParameters>(EventSourceV2SourceSlsParameters.fromMap((map['sourceSlsParameters'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
+      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName'] as String).input(),
+      linkedExternalSource: map['linkedExternalSource'] == null ? null : (map['linkedExternalSource'] as bool).input(),
+      sourceHttpEventParameters: map['sourceHttpEventParameters'] == null ? null : (EventSourceV2SourceHttpEventParameters.fromMap((map['sourceHttpEventParameters'] as Map).cast<String, dynamic>())).input(),
+      sourceKafkaParameters: map['sourceKafkaParameters'] == null ? null : (EventSourceV2SourceKafkaParameters.fromMap((map['sourceKafkaParameters'] as Map).cast<String, dynamic>())).input(),
+      sourceMnsParameters: map['sourceMnsParameters'] == null ? null : (EventSourceV2SourceMnsParameters.fromMap((map['sourceMnsParameters'] as Map).cast<String, dynamic>())).input(),
+      sourceOssEventParameters: map['sourceOssEventParameters'] == null ? null : (EventSourceV2SourceOssEventParameters.fromMap((map['sourceOssEventParameters'] as Map).cast<String, dynamic>())).input(),
+      sourceRabbitMqParameters: map['sourceRabbitMqParameters'] == null ? null : (EventSourceV2SourceRabbitMqParameters.fromMap((map['sourceRabbitMqParameters'] as Map).cast<String, dynamic>())).input(),
+      sourceRocketmqParameters: map['sourceRocketmqParameters'] == null ? null : (EventSourceV2SourceRocketmqParameters.fromMap((map['sourceRocketmqParameters'] as Map).cast<String, dynamic>())).input(),
+      sourceScheduledEventParameters: map['sourceScheduledEventParameters'] == null ? null : (EventSourceV2SourceScheduledEventParameters.fromMap((map['sourceScheduledEventParameters'] as Map).cast<String, dynamic>())).input(),
+      sourceSlsParameters: map['sourceSlsParameters'] == null ? null : (EventSourceV2SourceSlsParameters.fromMap((map['sourceSlsParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

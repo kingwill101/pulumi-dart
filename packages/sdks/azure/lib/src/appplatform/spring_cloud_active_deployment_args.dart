@@ -16,11 +16,9 @@ class SpringCloudActiveDeploymentArgs {
   /// [deploymentName] Specifies the name of Spring Cloud Deployment which is going to be active.
   /// [springCloudAppId] Specifies the id of the Spring Cloud Application. Changing this forces a new resource to be created.
   SpringCloudActiveDeploymentArgs({
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> springCloudAppId,
-  }) :
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      springCloudAppId = pulumi.Input.asInput<String>(springCloudAppId);
+    required this.deploymentName,
+    required this.springCloudAppId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class SpringCloudActiveDeploymentArgs {
 
   factory SpringCloudActiveDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudActiveDeploymentArgs(
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      springCloudAppId: pulumi.Output.create<String>(map['springCloudAppId'] as String),
+      deploymentName: (map['deploymentName'] as String).input(),
+      springCloudAppId: (map['springCloudAppId'] as String).input(),
     );
   }
 }

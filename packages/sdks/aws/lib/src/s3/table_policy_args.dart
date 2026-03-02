@@ -29,17 +29,12 @@ class TablePolicyArgs {
   /// [resourcePolicy] Amazon Web Services resource-based policy document in JSON format.
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
   TablePolicyArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourcePolicy,
-    required pulumi.Output<String> tableBucketArn,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy),
-      tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn);
+    this.name,
+    required this.namespace,
+    this.region,
+    required this.resourcePolicy,
+    required this.tableBucketArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class TablePolicyArgs {
 
   factory TablePolicyArgs.fromMap(Map<String, dynamic> map) {
     return TablePolicyArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourcePolicy: pulumi.Output.create<String>(map['resourcePolicy'] as String),
-      tableBucketArn: pulumi.Output.create<String>(map['tableBucketArn'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourcePolicy: (map['resourcePolicy'] as String).input(),
+      tableBucketArn: (map['tableBucketArn'] as String).input(),
     );
   }
 }

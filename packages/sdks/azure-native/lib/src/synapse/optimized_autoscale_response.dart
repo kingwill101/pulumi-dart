@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A class that contains the optimized auto scale definition.
 class OptimizedAutoscaleResponse {
   /// A boolean value that indicate if the optimized autoscale feature is enabled or not.
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// Maximum allowed instances count.
-  final int maximum;
+  final pulumi.Input<int> maximum;
   /// Minimum allowed instances count.
-  final int minimum;
+  final pulumi.Input<int> minimum;
   /// The version of the template defined, for instance 1.
-  final int version;
+  final pulumi.Input<int> version;
 
   /// Creates a new [OptimizedAutoscaleResponse].
   /// [isEnabled] A boolean value that indicate if the optimized autoscale feature is enabled or not.
@@ -35,10 +36,10 @@ class OptimizedAutoscaleResponse {
 
   factory OptimizedAutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return OptimizedAutoscaleResponse(
-      isEnabled: map['isEnabled'] as bool,
-      maximum: map['maximum'] as int,
-      minimum: map['minimum'] as int,
-      version: map['version'] as int,
+      isEnabled: (map['isEnabled'] as bool).input(),
+      maximum: (map['maximum'] as int).input(),
+      minimum: (map['minimum'] as int).input(),
+      version: (map['version'] as int).input(),
     );
   }
 }

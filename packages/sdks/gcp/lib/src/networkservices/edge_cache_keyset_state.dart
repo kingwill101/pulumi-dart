@@ -49,23 +49,15 @@ class EdgeCacheKeysetState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [validationSharedKeys] An ordered list of shared keys to use for validating signed requests.
   EdgeCacheKeysetState({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<EdgeCacheKeysetPublicKey>>? publicKeys,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<List<EdgeCacheKeysetValidationSharedKey>>? validationSharedKeys,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicKeys = pulumi.Input.asOptionalInput<List<EdgeCacheKeysetPublicKey>>(publicKeys),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      validationSharedKeys = pulumi.Input.asOptionalInput<List<EdgeCacheKeysetValidationSharedKey>>(validationSharedKeys);
+    this.description,
+    this.effectiveLabels,
+    this.labels,
+    this.name,
+    this.project,
+    this.publicKeys,
+    this.pulumiLabels,
+    this.validationSharedKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,14 +74,14 @@ class EdgeCacheKeysetState {
 
   factory EdgeCacheKeysetState.fromMap(Map<String, dynamic> map) {
     return EdgeCacheKeysetState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      publicKeys: map['publicKeys'] == null ? null : pulumi.Output.create<List<EdgeCacheKeysetPublicKey>>(pulumi.Input.decodeList<EdgeCacheKeysetPublicKey>(map['publicKeys'], (value) => EdgeCacheKeysetPublicKey.fromMap((value as Map).cast<String, dynamic>()))),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      validationSharedKeys: map['validationSharedKeys'] == null ? null : pulumi.Output.create<List<EdgeCacheKeysetValidationSharedKey>>(pulumi.Input.decodeList<EdgeCacheKeysetValidationSharedKey>(map['validationSharedKeys'], (value) => EdgeCacheKeysetValidationSharedKey.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<EdgeCacheKeysetPublicKey>(map['publicKeys'], (value) => EdgeCacheKeysetPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      validationSharedKeys: map['validationSharedKeys'] == null ? null : (pulumi.Input.decodeList<EdgeCacheKeysetValidationSharedKey>(map['validationSharedKeys'], (value) => EdgeCacheKeysetValidationSharedKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

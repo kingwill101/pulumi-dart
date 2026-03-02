@@ -31,23 +31,15 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoringState {
   /// [samplingRequestsPerSecond] Specifies the number of requests per second for the rate-limited sampling.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   SpringCloudApplicationInsightsApplicationPerformanceMonitoringState({
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<bool>? globallyEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? roleInstance,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<int>? samplingPercentage,
-    pulumi.Output<int>? samplingRequestsPerSecond,
-    pulumi.Output<String>? springCloudServiceId,
-  }) :
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      globallyEnabled = pulumi.Input.asOptionalInput<bool>(globallyEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      roleInstance = pulumi.Input.asOptionalInput<String>(roleInstance),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      samplingPercentage = pulumi.Input.asOptionalInput<int>(samplingPercentage),
-      samplingRequestsPerSecond = pulumi.Input.asOptionalInput<int>(samplingRequestsPerSecond),
-      springCloudServiceId = pulumi.Input.asOptionalInput<String>(springCloudServiceId);
+    this.connectionString,
+    this.globallyEnabled,
+    this.name,
+    this.roleInstance,
+    this.roleName,
+    this.samplingPercentage,
+    this.samplingRequestsPerSecond,
+    this.springCloudServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoringState {
 
   factory SpringCloudApplicationInsightsApplicationPerformanceMonitoringState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApplicationInsightsApplicationPerformanceMonitoringState(
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      globallyEnabled: map['globallyEnabled'] == null ? null : pulumi.Output.create<bool>(map['globallyEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      roleInstance: map['roleInstance'] == null ? null : pulumi.Output.create<String>(map['roleInstance'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      samplingPercentage: map['samplingPercentage'] == null ? null : pulumi.Output.create<int>(map['samplingPercentage'] as int),
-      samplingRequestsPerSecond: map['samplingRequestsPerSecond'] == null ? null : pulumi.Output.create<int>(map['samplingRequestsPerSecond'] as int),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : pulumi.Output.create<String>(map['springCloudServiceId'] as String),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      roleInstance: map['roleInstance'] == null ? null : (map['roleInstance'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage'] as int).input(),
+      samplingRequestsPerSecond: map['samplingRequestsPerSecond'] == null ? null : (map['samplingRequestsPerSecond'] as int).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
     );
   }
 }

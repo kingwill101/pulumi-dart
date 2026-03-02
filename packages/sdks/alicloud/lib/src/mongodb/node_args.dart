@@ -77,35 +77,21 @@ class NodeArgs {
   /// [shardDirect] Whether to apply for the direct connection address of the Shard node. Value description:
   /// [switchTime] Optional.
   NodeArgs({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? accountPassword,
-    pulumi.Output<bool>? autoPay,
-    pulumi.Output<String>? businessInfo,
-    required pulumi.Output<String> dbInstanceId,
-    pulumi.Output<String>? effectiveTime,
-    pulumi.Output<String>? fromApp,
-    required pulumi.Output<String> nodeClass,
-    pulumi.Output<int>? nodeStorage,
-    required pulumi.Output<String> nodeType,
-    pulumi.Output<String>? orderType,
-    pulumi.Output<int>? readonlyReplicas,
-    pulumi.Output<bool>? shardDirect,
-    pulumi.Output<String>? switchTime,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      accountPassword = pulumi.Input.asOptionalInput<String>(accountPassword),
-      autoPay = pulumi.Input.asOptionalInput<bool>(autoPay),
-      businessInfo = pulumi.Input.asOptionalInput<String>(businessInfo),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      effectiveTime = pulumi.Input.asOptionalInput<String>(effectiveTime),
-      fromApp = pulumi.Input.asOptionalInput<String>(fromApp),
-      nodeClass = pulumi.Input.asInput<String>(nodeClass),
-      nodeStorage = pulumi.Input.asOptionalInput<int>(nodeStorage),
-      nodeType = pulumi.Input.asInput<String>(nodeType),
-      orderType = pulumi.Input.asOptionalInput<String>(orderType),
-      readonlyReplicas = pulumi.Input.asOptionalInput<int>(readonlyReplicas),
-      shardDirect = pulumi.Input.asOptionalInput<bool>(shardDirect),
-      switchTime = pulumi.Input.asOptionalInput<String>(switchTime);
+    this.accountName,
+    this.accountPassword,
+    this.autoPay,
+    this.businessInfo,
+    required this.dbInstanceId,
+    this.effectiveTime,
+    this.fromApp,
+    required this.nodeClass,
+    this.nodeStorage,
+    required this.nodeType,
+    this.orderType,
+    this.readonlyReplicas,
+    this.shardDirect,
+    this.switchTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -128,20 +114,20 @@ class NodeArgs {
 
   factory NodeArgs.fromMap(Map<String, dynamic> map) {
     return NodeArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      accountPassword: map['accountPassword'] == null ? null : pulumi.Output.create<String>(map['accountPassword'] as String),
-      autoPay: map['autoPay'] == null ? null : pulumi.Output.create<bool>(map['autoPay'] as bool),
-      businessInfo: map['businessInfo'] == null ? null : pulumi.Output.create<String>(map['businessInfo'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      effectiveTime: map['effectiveTime'] == null ? null : pulumi.Output.create<String>(map['effectiveTime'] as String),
-      fromApp: map['fromApp'] == null ? null : pulumi.Output.create<String>(map['fromApp'] as String),
-      nodeClass: pulumi.Output.create<String>(map['nodeClass'] as String),
-      nodeStorage: map['nodeStorage'] == null ? null : pulumi.Output.create<int>(map['nodeStorage'] as int),
-      nodeType: pulumi.Output.create<String>(map['nodeType'] as String),
-      orderType: map['orderType'] == null ? null : pulumi.Output.create<String>(map['orderType'] as String),
-      readonlyReplicas: map['readonlyReplicas'] == null ? null : pulumi.Output.create<int>(map['readonlyReplicas'] as int),
-      shardDirect: map['shardDirect'] == null ? null : pulumi.Output.create<bool>(map['shardDirect'] as bool),
-      switchTime: map['switchTime'] == null ? null : pulumi.Output.create<String>(map['switchTime'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
+      businessInfo: map['businessInfo'] == null ? null : (map['businessInfo'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
+      fromApp: map['fromApp'] == null ? null : (map['fromApp'] as String).input(),
+      nodeClass: (map['nodeClass'] as String).input(),
+      nodeStorage: map['nodeStorage'] == null ? null : (map['nodeStorage'] as int).input(),
+      nodeType: (map['nodeType'] as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
+      readonlyReplicas: map['readonlyReplicas'] == null ? null : (map['readonlyReplicas'] as int).input(),
+      shardDirect: map['shardDirect'] == null ? null : (map['shardDirect'] as bool).input(),
+      switchTime: map['switchTime'] == null ? null : (map['switchTime'] as String).input(),
     );
   }
 }

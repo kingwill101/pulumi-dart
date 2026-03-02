@@ -26,17 +26,12 @@ class FleetspaceAccountArgs {
   /// [globalDatabaseAccountProperties] Configuration for fleetspace Account in the fleetspace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   FleetspaceAccountArgs({
-    required pulumi.Output<String> fleetName,
-    pulumi.Output<String>? fleetspaceAccountName,
-    required pulumi.Output<String> fleetspaceName,
-    pulumi.Output<FleetspaceAccountPropertiesGlobalDatabaseAccountProperties>? globalDatabaseAccountProperties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      fleetspaceAccountName = pulumi.Input.asOptionalInput<String>(fleetspaceAccountName),
-      fleetspaceName = pulumi.Input.asInput<String>(fleetspaceName),
-      globalDatabaseAccountProperties = pulumi.Input.asOptionalInput<FleetspaceAccountPropertiesGlobalDatabaseAccountProperties>(globalDatabaseAccountProperties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.fleetName,
+    this.fleetspaceAccountName,
+    required this.fleetspaceName,
+    this.globalDatabaseAccountProperties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class FleetspaceAccountArgs {
 
   factory FleetspaceAccountArgs.fromMap(Map<String, dynamic> map) {
     return FleetspaceAccountArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      fleetspaceAccountName: map['fleetspaceAccountName'] == null ? null : pulumi.Output.create<String>(map['fleetspaceAccountName'] as String),
-      fleetspaceName: pulumi.Output.create<String>(map['fleetspaceName'] as String),
-      globalDatabaseAccountProperties: map['globalDatabaseAccountProperties'] == null ? null : pulumi.Output.create<FleetspaceAccountPropertiesGlobalDatabaseAccountProperties>(FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap((map['globalDatabaseAccountProperties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      fleetspaceAccountName: map['fleetspaceAccountName'] == null ? null : (map['fleetspaceAccountName'] as String).input(),
+      fleetspaceName: (map['fleetspaceName'] as String).input(),
+      globalDatabaseAccountProperties: map['globalDatabaseAccountProperties'] == null ? null : (FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap((map['globalDatabaseAccountProperties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

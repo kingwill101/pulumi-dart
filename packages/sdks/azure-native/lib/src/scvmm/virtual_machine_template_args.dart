@@ -35,23 +35,15 @@ class VirtualMachineTemplateArgs {
   /// [virtualMachineTemplateName] Name of the VirtualMachineTemplate.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
   VirtualMachineTemplateArgs({
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? inventoryItemId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? uuid,
-    pulumi.Output<String>? virtualMachineTemplateName,
-    pulumi.Output<String>? vmmServerId,
-  }) :
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      inventoryItemId = pulumi.Input.asOptionalInput<String>(inventoryItemId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid),
-      virtualMachineTemplateName = pulumi.Input.asOptionalInput<String>(virtualMachineTemplateName),
-      vmmServerId = pulumi.Input.asOptionalInput<String>(vmmServerId);
+    required this.extendedLocation,
+    this.inventoryItemId,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.uuid,
+    this.virtualMachineTemplateName,
+    this.vmmServerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class VirtualMachineTemplateArgs {
 
   factory VirtualMachineTemplateArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineTemplateArgs(
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      inventoryItemId: map['inventoryItemId'] == null ? null : pulumi.Output.create<String>(map['inventoryItemId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
-      virtualMachineTemplateName: map['virtualMachineTemplateName'] == null ? null : pulumi.Output.create<String>(map['virtualMachineTemplateName'] as String),
-      vmmServerId: map['vmmServerId'] == null ? null : pulumi.Output.create<String>(map['vmmServerId'] as String),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      virtualMachineTemplateName: map['virtualMachineTemplateName'] == null ? null : (map['virtualMachineTemplateName'] as String).input(),
+      vmmServerId: map['vmmServerId'] == null ? null : (map['vmmServerId'] as String).input(),
     );
   }
 }

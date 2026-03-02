@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stream_processor_input_kinesis_video_stream.dart';
 
 class StreamProcessorInput {
   /// Kinesis input stream. See `kinesis_video_stream`.
-  final StreamProcessorInputKinesisVideoStream kinesisVideoStream;
+  final pulumi.Input<StreamProcessorInputKinesisVideoStream> kinesisVideoStream;
 
   /// Creates a new [StreamProcessorInput].
   /// [kinesisVideoStream] Kinesis input stream. See `kinesis_video_stream`.
@@ -14,13 +15,13 @@ class StreamProcessorInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kinesisVideoStream': kinesisVideoStream.toMap(),
+      'kinesisVideoStream': pulumi.Input.mapInputValue<StreamProcessorInputKinesisVideoStream, Map<String, dynamic>>(kinesisVideoStream, (value) => value.toMap()),
     };
   }
 
   factory StreamProcessorInput.fromMap(Map<String, dynamic> map) {
     return StreamProcessorInput(
-      kinesisVideoStream: StreamProcessorInputKinesisVideoStream.fromMap((map['kinesisVideoStream'] as Map).cast<String, dynamic>()),
+      kinesisVideoStream: (StreamProcessorInputKinesisVideoStream.fromMap((map['kinesisVideoStream'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

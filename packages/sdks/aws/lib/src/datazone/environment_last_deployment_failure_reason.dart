@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentLastDeploymentFailureReason {
-  final String code;
-  final String message;
+  final pulumi.Input<String> code;
+  final pulumi.Input<String> message;
 
   /// Creates a new [EnvironmentLastDeploymentFailureReason].
   /// [code] Required.
@@ -22,8 +23,8 @@ class EnvironmentLastDeploymentFailureReason {
 
   factory EnvironmentLastDeploymentFailureReason.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastDeploymentFailureReason(
-      code: map['code'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

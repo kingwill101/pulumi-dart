@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceGithubRepo {
   /// Specifies the GitHub account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Specifies the collaboration branch of the repository to get code from.
-  final String branchName;
+  final pulumi.Input<String> branchName;
   /// Specifies the GitHub Enterprise host name. For example: <https://github.mydomain.com>.
   ///
   /// > **Note:** You must log in to the Synapse UI to complete the authentication to the GitHub repository.
-  final String? gitUrl;
+  final pulumi.Input<String>? gitUrl;
   /// The last commit ID.
-  final String? lastCommitId;
+  final pulumi.Input<String>? lastCommitId;
   /// Specifies the name of the git repository.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
   /// Specifies the root folder within the repository. Set to `/` for the top level.
-  final String rootFolder;
+  final pulumi.Input<String> rootFolder;
 
   /// Creates a new [WorkspaceGithubRepo].
   /// [accountName] Specifies the GitHub account name.
@@ -46,12 +47,12 @@ class WorkspaceGithubRepo {
 
   factory WorkspaceGithubRepo.fromMap(Map<String, dynamic> map) {
     return WorkspaceGithubRepo(
-      accountName: map['accountName'] as String,
-      branchName: map['branchName'] as String,
-      gitUrl: map['gitUrl'] == null ? null : map['gitUrl'] as String,
-      lastCommitId: map['lastCommitId'] == null ? null : map['lastCommitId'] as String,
-      repositoryName: map['repositoryName'] as String,
-      rootFolder: map['rootFolder'] as String,
+      accountName: (map['accountName'] as String).input(),
+      branchName: (map['branchName'] as String).input(),
+      gitUrl: map['gitUrl'] == null ? null : (map['gitUrl'] as String).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
+      rootFolder: (map['rootFolder'] as String).input(),
     );
   }
 }

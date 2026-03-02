@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDeploymentAutoScaleProfile {
   /// The maximum number of NGINX capacity units for this NGINX Deployment.
-  final int maxCapacity;
+  final pulumi.Input<int> maxCapacity;
   /// The minimum number of NGINX capacity units for this NGINX Deployment.
-  final int minCapacity;
+  final pulumi.Input<int> minCapacity;
   /// The name of this NGINX Deployment.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetDeploymentAutoScaleProfile].
   /// [maxCapacity] The maximum number of NGINX capacity units for this NGINX Deployment.
@@ -29,9 +30,9 @@ class GetDeploymentAutoScaleProfile {
 
   factory GetDeploymentAutoScaleProfile.fromMap(Map<String, dynamic> map) {
     return GetDeploymentAutoScaleProfile(
-      maxCapacity: map['maxCapacity'] as int,
-      minCapacity: map['minCapacity'] as int,
-      name: map['name'] as String,
+      maxCapacity: (map['maxCapacity'] as int).input(),
+      minCapacity: (map['minCapacity'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

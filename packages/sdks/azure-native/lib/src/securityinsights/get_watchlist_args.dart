@@ -19,13 +19,10 @@ class GetWatchlistArgs {
   /// [watchlistAlias] The watchlist alias
   /// [workspaceName] The name of the workspace.
   GetWatchlistArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> watchlistAlias,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      watchlistAlias = pulumi.Input.asInput<String>(watchlistAlias),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.resourceGroupName,
+    required this.watchlistAlias,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWatchlistArgs {
 
   factory GetWatchlistArgs.fromMap(Map<String, dynamic> map) {
     return GetWatchlistArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      watchlistAlias: pulumi.Output.create<String>(map['watchlistAlias'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      watchlistAlias: (map['watchlistAlias'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

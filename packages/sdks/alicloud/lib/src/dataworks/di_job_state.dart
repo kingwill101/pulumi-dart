@@ -62,33 +62,20 @@ class DiJobState {
   /// [tableMappings] Synchronize object transformation mapping list See `table_mappings` below.
   /// [transformationRules] Definition list of synchronization object conversion rules See `transformation_rules` below.
   DiJobState({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<DiJobDestinationDataSourceSetting>>? destinationDataSourceSettings,
-    pulumi.Output<String>? destinationDataSourceType,
-    pulumi.Output<int>? diJobId,
-    pulumi.Output<String>? jobName,
-    pulumi.Output<DiJobJobSettings>? jobSettings,
-    pulumi.Output<String>? migrationType,
-    pulumi.Output<int>? projectId,
-    pulumi.Output<DiJobResourceSettings>? resourceSettings,
-    pulumi.Output<List<DiJobSourceDataSourceSetting>>? sourceDataSourceSettings,
-    pulumi.Output<String>? sourceDataSourceType,
-    pulumi.Output<List<DiJobTableMapping>>? tableMappings,
-    pulumi.Output<List<DiJobTransformationRule>>? transformationRules,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationDataSourceSettings = pulumi.Input.asOptionalInput<List<DiJobDestinationDataSourceSetting>>(destinationDataSourceSettings),
-      destinationDataSourceType = pulumi.Input.asOptionalInput<String>(destinationDataSourceType),
-      diJobId = pulumi.Input.asOptionalInput<int>(diJobId),
-      jobName = pulumi.Input.asOptionalInput<String>(jobName),
-      jobSettings = pulumi.Input.asOptionalInput<DiJobJobSettings>(jobSettings),
-      migrationType = pulumi.Input.asOptionalInput<String>(migrationType),
-      projectId = pulumi.Input.asOptionalInput<int>(projectId),
-      resourceSettings = pulumi.Input.asOptionalInput<DiJobResourceSettings>(resourceSettings),
-      sourceDataSourceSettings = pulumi.Input.asOptionalInput<List<DiJobSourceDataSourceSetting>>(sourceDataSourceSettings),
-      sourceDataSourceType = pulumi.Input.asOptionalInput<String>(sourceDataSourceType),
-      tableMappings = pulumi.Input.asOptionalInput<List<DiJobTableMapping>>(tableMappings),
-      transformationRules = pulumi.Input.asOptionalInput<List<DiJobTransformationRule>>(transformationRules);
+    this.description,
+    this.destinationDataSourceSettings,
+    this.destinationDataSourceType,
+    this.diJobId,
+    this.jobName,
+    this.jobSettings,
+    this.migrationType,
+    this.projectId,
+    this.resourceSettings,
+    this.sourceDataSourceSettings,
+    this.sourceDataSourceType,
+    this.tableMappings,
+    this.transformationRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,19 +97,19 @@ class DiJobState {
 
   factory DiJobState.fromMap(Map<String, dynamic> map) {
     return DiJobState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationDataSourceSettings: map['destinationDataSourceSettings'] == null ? null : pulumi.Output.create<List<DiJobDestinationDataSourceSetting>>(pulumi.Input.decodeList<DiJobDestinationDataSourceSetting>(map['destinationDataSourceSettings'], (value) => DiJobDestinationDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      destinationDataSourceType: map['destinationDataSourceType'] == null ? null : pulumi.Output.create<String>(map['destinationDataSourceType'] as String),
-      diJobId: map['diJobId'] == null ? null : pulumi.Output.create<int>(map['diJobId'] as int),
-      jobName: map['jobName'] == null ? null : pulumi.Output.create<String>(map['jobName'] as String),
-      jobSettings: map['jobSettings'] == null ? null : pulumi.Output.create<DiJobJobSettings>(DiJobJobSettings.fromMap((map['jobSettings'] as Map).cast<String, dynamic>())),
-      migrationType: map['migrationType'] == null ? null : pulumi.Output.create<String>(map['migrationType'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<int>(map['projectId'] as int),
-      resourceSettings: map['resourceSettings'] == null ? null : pulumi.Output.create<DiJobResourceSettings>(DiJobResourceSettings.fromMap((map['resourceSettings'] as Map).cast<String, dynamic>())),
-      sourceDataSourceSettings: map['sourceDataSourceSettings'] == null ? null : pulumi.Output.create<List<DiJobSourceDataSourceSetting>>(pulumi.Input.decodeList<DiJobSourceDataSourceSetting>(map['sourceDataSourceSettings'], (value) => DiJobSourceDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      sourceDataSourceType: map['sourceDataSourceType'] == null ? null : pulumi.Output.create<String>(map['sourceDataSourceType'] as String),
-      tableMappings: map['tableMappings'] == null ? null : pulumi.Output.create<List<DiJobTableMapping>>(pulumi.Input.decodeList<DiJobTableMapping>(map['tableMappings'], (value) => DiJobTableMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      transformationRules: map['transformationRules'] == null ? null : pulumi.Output.create<List<DiJobTransformationRule>>(pulumi.Input.decodeList<DiJobTransformationRule>(map['transformationRules'], (value) => DiJobTransformationRule.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationDataSourceSettings: map['destinationDataSourceSettings'] == null ? null : (pulumi.Input.decodeList<DiJobDestinationDataSourceSetting>(map['destinationDataSourceSettings'], (value) => DiJobDestinationDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationDataSourceType: map['destinationDataSourceType'] == null ? null : (map['destinationDataSourceType'] as String).input(),
+      diJobId: map['diJobId'] == null ? null : (map['diJobId'] as int).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      jobSettings: map['jobSettings'] == null ? null : (DiJobJobSettings.fromMap((map['jobSettings'] as Map).cast<String, dynamic>())).input(),
+      migrationType: map['migrationType'] == null ? null : (map['migrationType'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as int).input(),
+      resourceSettings: map['resourceSettings'] == null ? null : (DiJobResourceSettings.fromMap((map['resourceSettings'] as Map).cast<String, dynamic>())).input(),
+      sourceDataSourceSettings: map['sourceDataSourceSettings'] == null ? null : (pulumi.Input.decodeList<DiJobSourceDataSourceSetting>(map['sourceDataSourceSettings'], (value) => DiJobSourceDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceDataSourceType: map['sourceDataSourceType'] == null ? null : (map['sourceDataSourceType'] as String).input(),
+      tableMappings: map['tableMappings'] == null ? null : (pulumi.Input.decodeList<DiJobTableMapping>(map['tableMappings'], (value) => DiJobTableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<DiJobTransformationRule>(map['transformationRules'], (value) => DiJobTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

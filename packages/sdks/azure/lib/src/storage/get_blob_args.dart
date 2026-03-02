@@ -22,15 +22,11 @@ class GetBlobArgs {
   /// [storageAccountName] The name of the Storage Account where the Container exists.
   /// [storageContainerName] The name of the Storage Container where the Blob exists.
   GetBlobArgs({
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> storageAccountName,
-    required pulumi.Output<String> storageContainerName,
-  }) :
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asInput<String>(name),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName),
-      storageContainerName = pulumi.Input.asInput<String>(storageContainerName);
+    this.metadata,
+    required this.name,
+    required this.storageAccountName,
+    required this.storageContainerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBlobArgs {
 
   factory GetBlobArgs.fromMap(Map<String, dynamic> map) {
     return GetBlobArgs(
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
-      storageContainerName: pulumi.Output.create<String>(map['storageContainerName'] as String),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      storageContainerName: (map['storageContainerName'] as String).input(),
     );
   }
 }

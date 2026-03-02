@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_collection_error_response.dart';
 
 /// Log Collection Session details of the cluster.
 class LogCollectionSessionResponse {
   /// CorrelationId of the log collection
-  final String correlationId;
+  final pulumi.Input<String> correlationId;
   /// End Time of the logs when it was collected
-  final String endTimeCollected;
+  final pulumi.Input<String> endTimeCollected;
   /// Log Collection Error details of the cluster.
-  final LogCollectionErrorResponse logCollectionError;
+  final pulumi.Input<LogCollectionErrorResponse> logCollectionError;
   /// LogCollection job type
-  final String logCollectionJobType;
+  final pulumi.Input<String> logCollectionJobType;
   /// LogCollection status
-  final String logCollectionStatus;
+  final pulumi.Input<String> logCollectionStatus;
   /// End Time of the logs when it was collected
-  final String logEndTime;
+  final pulumi.Input<String> logEndTime;
   /// Size of the logs collected
-  final double logSize;
+  final pulumi.Input<double> logSize;
   /// Start Time of the logs when it was collected
-  final String logStartTime;
+  final pulumi.Input<String> logStartTime;
   /// Duration of logs collected
-  final String timeCollected;
+  final pulumi.Input<String> timeCollected;
 
   /// Creates a new [LogCollectionSessionResponse].
   /// [correlationId] CorrelationId of the log collection
@@ -49,7 +50,7 @@ class LogCollectionSessionResponse {
     return <String, dynamic>{
       'correlationId': correlationId,
       'endTimeCollected': endTimeCollected,
-      'logCollectionError': logCollectionError.toMap(),
+      'logCollectionError': pulumi.Input.mapInputValue<LogCollectionErrorResponse, Map<String, dynamic>>(logCollectionError, (value) => value.toMap()),
       'logCollectionJobType': logCollectionJobType,
       'logCollectionStatus': logCollectionStatus,
       'logEndTime': logEndTime,
@@ -61,15 +62,15 @@ class LogCollectionSessionResponse {
 
   factory LogCollectionSessionResponse.fromMap(Map<String, dynamic> map) {
     return LogCollectionSessionResponse(
-      correlationId: map['correlationId'] as String,
-      endTimeCollected: map['endTimeCollected'] as String,
-      logCollectionError: LogCollectionErrorResponse.fromMap((map['logCollectionError'] as Map).cast<String, dynamic>()),
-      logCollectionJobType: map['logCollectionJobType'] as String,
-      logCollectionStatus: map['logCollectionStatus'] as String,
-      logEndTime: map['logEndTime'] as String,
-      logSize: map['logSize'] as double,
-      logStartTime: map['logStartTime'] as String,
-      timeCollected: map['timeCollected'] as String,
+      correlationId: (map['correlationId'] as String).input(),
+      endTimeCollected: (map['endTimeCollected'] as String).input(),
+      logCollectionError: (LogCollectionErrorResponse.fromMap((map['logCollectionError'] as Map).cast<String, dynamic>())).input(),
+      logCollectionJobType: (map['logCollectionJobType'] as String).input(),
+      logCollectionStatus: (map['logCollectionStatus'] as String).input(),
+      logEndTime: (map['logEndTime'] as String).input(),
+      logSize: (map['logSize'] as double).input(),
+      logStartTime: (map['logStartTime'] as String).input(),
+      timeCollected: (map['timeCollected'] as String).input(),
     );
   }
 }

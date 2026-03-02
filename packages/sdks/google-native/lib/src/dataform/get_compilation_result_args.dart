@@ -18,15 +18,11 @@ class GetCompilationResultArgs {
   /// [project] Optional.
   /// [repositoryId] Required.
   GetCompilationResultArgs({
-    required pulumi.Output<String> compilationResultId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-  }) :
-      compilationResultId = pulumi.Input.asInput<String>(compilationResultId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+    required this.compilationResultId,
+    required this.location,
+    this.project,
+    required this.repositoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetCompilationResultArgs {
 
   factory GetCompilationResultArgs.fromMap(Map<String, dynamic> map) {
     return GetCompilationResultArgs(
-      compilationResultId: pulumi.Output.create<String>(map['compilationResultId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+      compilationResultId: (map['compilationResultId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
     );
   }
 }

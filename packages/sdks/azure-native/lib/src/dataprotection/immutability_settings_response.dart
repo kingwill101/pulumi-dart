@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Immutability Settings at vault level
 class ImmutabilitySettingsResponse {
   /// Immutability state
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [ImmutabilitySettingsResponse].
   /// [state] Immutability state
@@ -20,7 +21,7 @@ class ImmutabilitySettingsResponse {
 
   factory ImmutabilitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return ImmutabilitySettingsResponse(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

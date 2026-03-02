@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of key vault.
 class ElasticKeyVaultPropertiesResponse {
   /// The name of KeyVault key.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// The resource ID of KeyVault.
-  final String? keyVaultResourceId;
+  final pulumi.Input<String>? keyVaultResourceId;
   /// The Uri of KeyVault.
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// Status of the KeyVault connection.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ElasticKeyVaultPropertiesResponse].
   /// [keyName] The name of KeyVault key.
@@ -35,10 +36,10 @@ class ElasticKeyVaultPropertiesResponse {
 
   factory ElasticKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticKeyVaultPropertiesResponse(
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : map['keyVaultResourceId'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      status: map['status'] as String,
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

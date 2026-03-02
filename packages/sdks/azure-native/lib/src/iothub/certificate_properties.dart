@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The description of an X509 CA Certificate.
 class CertificateProperties {
   /// The certificate content
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// Determines whether certificate has been verified.
-  final bool? isVerified;
+  final pulumi.Input<bool>? isVerified;
 
   /// Creates a new [CertificateProperties].
   /// [certificate] The certificate content
@@ -25,8 +26,8 @@ class CertificateProperties {
 
   factory CertificateProperties.fromMap(Map<String, dynamic> map) {
     return CertificateProperties(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      isVerified: map['isVerified'] == null ? null : map['isVerified'] as bool,
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
     );
   }
 }

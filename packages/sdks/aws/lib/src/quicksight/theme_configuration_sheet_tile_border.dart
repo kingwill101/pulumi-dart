@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThemeConfigurationSheetTileBorder {
   /// The option to enable display of borders for visuals.
-  final bool? show;
+  final pulumi.Input<bool>? show;
 
   /// Creates a new [ThemeConfigurationSheetTileBorder].
   /// [show] The option to enable display of borders for visuals.
@@ -19,7 +20,7 @@ class ThemeConfigurationSheetTileBorder {
 
   factory ThemeConfigurationSheetTileBorder.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTileBorder(
-      show: map['show'] == null ? null : map['show'] as bool,
+      show: map['show'] == null ? null : (map['show'] as bool).input(),
     );
   }
 }

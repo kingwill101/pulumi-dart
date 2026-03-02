@@ -8,21 +8,21 @@ import 'os_policy_assignment_instance_filter_inventory.dart';
 class OsPolicyAssignmentInstanceFilter {
   /// Target all VMs in the project. If true, no other criteria
   /// is permitted.
-  final bool? all;
+  final pulumi.Input<bool>? all;
   /// List of label sets used for VM exclusion. If
   /// the list has more than one label set, the VM is excluded if any of the label
   /// sets are applicable for the VM. Structure is
   /// documented below.
-  final List<OsPolicyAssignmentInstanceFilterExclusionLabel>? exclusionLabels;
+  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterExclusionLabel>>? exclusionLabels;
   /// List of label sets used for VM inclusion. If
   /// the list has more than one `LabelSet`, the VM is included if any of the
   /// label sets are applicable for the VM. Structure is
   /// documented below.
-  final List<OsPolicyAssignmentInstanceFilterInclusionLabel>? inclusionLabels;
+  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterInclusionLabel>>? inclusionLabels;
   /// List of inventories to select VMs. A VM is
   /// selected if its inventory data matches at least one of the following
   /// inventories. Structure is documented below.
-  final List<OsPolicyAssignmentInstanceFilterInventory>? inventories;
+  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterInventory>>? inventories;
 
   /// Creates a new [OsPolicyAssignmentInstanceFilter].
   /// [all] Target all VMs in the project. If true, no other criteria
@@ -39,18 +39,18 @@ class OsPolicyAssignmentInstanceFilter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'all': ?all,
-      'exclusionLabels': ?exclusionLabels == null ? null : pulumi.Input.encodeList<OsPolicyAssignmentInstanceFilterExclusionLabel, Map<String, dynamic>>(exclusionLabels!, (value) => value.toMap()),
-      'inclusionLabels': ?inclusionLabels == null ? null : pulumi.Input.encodeList<OsPolicyAssignmentInstanceFilterInclusionLabel, Map<String, dynamic>>(inclusionLabels!, (value) => value.toMap()),
-      'inventories': ?inventories == null ? null : pulumi.Input.encodeList<OsPolicyAssignmentInstanceFilterInventory, Map<String, dynamic>>(inventories!, (value) => value.toMap()),
+      'exclusionLabels': ?pulumi.Input.mapOptionalInputValue<List<OsPolicyAssignmentInstanceFilterExclusionLabel>, List<Map<String, dynamic>>>(exclusionLabels, (value) => pulumi.Input.encodeList<OsPolicyAssignmentInstanceFilterExclusionLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inclusionLabels': ?pulumi.Input.mapOptionalInputValue<List<OsPolicyAssignmentInstanceFilterInclusionLabel>, List<Map<String, dynamic>>>(inclusionLabels, (value) => pulumi.Input.encodeList<OsPolicyAssignmentInstanceFilterInclusionLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inventories': ?pulumi.Input.mapOptionalInputValue<List<OsPolicyAssignmentInstanceFilterInventory>, List<Map<String, dynamic>>>(inventories, (value) => pulumi.Input.encodeList<OsPolicyAssignmentInstanceFilterInventory, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OsPolicyAssignmentInstanceFilter.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentInstanceFilter(
-      all: map['all'] == null ? null : map['all'] as bool,
-      exclusionLabels: map['exclusionLabels'] == null ? null : pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterExclusionLabel>(map['exclusionLabels'], (value) => OsPolicyAssignmentInstanceFilterExclusionLabel.fromMap((value as Map).cast<String, dynamic>())),
-      inclusionLabels: map['inclusionLabels'] == null ? null : pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterInclusionLabel>(map['inclusionLabels'], (value) => OsPolicyAssignmentInstanceFilterInclusionLabel.fromMap((value as Map).cast<String, dynamic>())),
-      inventories: map['inventories'] == null ? null : pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterInventory>(map['inventories'], (value) => OsPolicyAssignmentInstanceFilterInventory.fromMap((value as Map).cast<String, dynamic>())),
+      all: map['all'] == null ? null : (map['all'] as bool).input(),
+      exclusionLabels: map['exclusionLabels'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterExclusionLabel>(map['exclusionLabels'], (value) => OsPolicyAssignmentInstanceFilterExclusionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inclusionLabels: map['inclusionLabels'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterInclusionLabel>(map['inclusionLabels'], (value) => OsPolicyAssignmentInstanceFilterInclusionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inventories: map['inventories'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterInventory>(map['inventories'], (value) => OsPolicyAssignmentInstanceFilterInventory.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

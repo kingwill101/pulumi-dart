@@ -24,13 +24,10 @@ class SourceArgs {
   /// [displayName] The source’s display name. A source’s display name must be unique
   /// [organization] The organization whose Cloud Security Command Center the Source
   SourceArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> organization,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      organization = pulumi.Input.asInput<String>(organization);
+    this.description,
+    required this.displayName,
+    required this.organization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class SourceArgs {
 
   factory SourceArgs.fromMap(Map<String, dynamic> map) {
     return SourceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      organization: (map['organization'] as String).input(),
     );
   }
 }

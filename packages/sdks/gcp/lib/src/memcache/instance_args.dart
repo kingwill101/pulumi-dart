@@ -69,35 +69,21 @@ class InstanceArgs {
   /// [reservedIpRangeIds] Contains the name of allocated IP address ranges associated with
   /// [zones] Zones where memcache nodes should be provisioned.  If not
   InstanceArgs({
-    pulumi.Output<String>? authorizedNetwork,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<InstanceMaintenancePolicy>? maintenancePolicy,
-    pulumi.Output<InstanceMemcacheParameters>? memcacheParameters,
-    pulumi.Output<String>? memcacheVersion,
-    pulumi.Output<String>? name,
-    required pulumi.Output<InstanceNodeConfig> nodeConfig,
-    required pulumi.Output<int> nodeCount,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? reservedIpRangeIds,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      authorizedNetwork = pulumi.Input.asOptionalInput<String>(authorizedNetwork),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      maintenancePolicy = pulumi.Input.asOptionalInput<InstanceMaintenancePolicy>(maintenancePolicy),
-      memcacheParameters = pulumi.Input.asOptionalInput<InstanceMemcacheParameters>(memcacheParameters),
-      memcacheVersion = pulumi.Input.asOptionalInput<String>(memcacheVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeConfig = pulumi.Input.asInput<InstanceNodeConfig>(nodeConfig),
-      nodeCount = pulumi.Input.asInput<int>(nodeCount),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservedIpRangeIds = pulumi.Input.asOptionalInput<List<String>>(reservedIpRangeIds),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.authorizedNetwork,
+    this.deletionProtection,
+    this.displayName,
+    this.labels,
+    this.maintenancePolicy,
+    this.memcacheParameters,
+    this.memcacheVersion,
+    this.name,
+    required this.nodeConfig,
+    required this.nodeCount,
+    this.project,
+    this.region,
+    this.reservedIpRangeIds,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -120,20 +106,20 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      authorizedNetwork: map['authorizedNetwork'] == null ? null : pulumi.Output.create<String>(map['authorizedNetwork'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : pulumi.Output.create<InstanceMaintenancePolicy>(InstanceMaintenancePolicy.fromMap((map['maintenancePolicy'] as Map).cast<String, dynamic>())),
-      memcacheParameters: map['memcacheParameters'] == null ? null : pulumi.Output.create<InstanceMemcacheParameters>(InstanceMemcacheParameters.fromMap((map['memcacheParameters'] as Map).cast<String, dynamic>())),
-      memcacheVersion: map['memcacheVersion'] == null ? null : pulumi.Output.create<String>(map['memcacheVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeConfig: pulumi.Output.create<InstanceNodeConfig>(InstanceNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())),
-      nodeCount: pulumi.Output.create<int>(map['nodeCount'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservedIpRangeIds: map['reservedIpRangeIds'] == null ? null : pulumi.Output.create<List<String>>((map['reservedIpRangeIds'] as List).cast<String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (InstanceMaintenancePolicy.fromMap((map['maintenancePolicy'] as Map).cast<String, dynamic>())).input(),
+      memcacheParameters: map['memcacheParameters'] == null ? null : (InstanceMemcacheParameters.fromMap((map['memcacheParameters'] as Map).cast<String, dynamic>())).input(),
+      memcacheVersion: map['memcacheVersion'] == null ? null : (map['memcacheVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeConfig: (InstanceNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservedIpRangeIds: map['reservedIpRangeIds'] == null ? null : ((map['reservedIpRangeIds'] as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

@@ -44,31 +44,19 @@ class GatewayState {
   /// [vpcId] The ID of the vpc.
   /// [vswitchId] The ID of the vswitch.
   GatewayState({
-    pulumi.Output<String>? backupVswitchId,
-    pulumi.Output<bool>? deleteSlb,
-    pulumi.Output<bool>? enterpriseSecurityGroup,
-    pulumi.Output<String>? gatewayName,
-    pulumi.Output<String>? internetSlbSpec,
-    pulumi.Output<int>? replica,
-    pulumi.Output<List<GatewaySlbList>>? slbLists,
-    pulumi.Output<String>? slbSpec,
-    pulumi.Output<String>? spec,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      backupVswitchId = pulumi.Input.asOptionalInput<String>(backupVswitchId),
-      deleteSlb = pulumi.Input.asOptionalInput<bool>(deleteSlb),
-      enterpriseSecurityGroup = pulumi.Input.asOptionalInput<bool>(enterpriseSecurityGroup),
-      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
-      internetSlbSpec = pulumi.Input.asOptionalInput<String>(internetSlbSpec),
-      replica = pulumi.Input.asOptionalInput<int>(replica),
-      slbLists = pulumi.Input.asOptionalInput<List<GatewaySlbList>>(slbLists),
-      slbSpec = pulumi.Input.asOptionalInput<String>(slbSpec),
-      spec = pulumi.Input.asOptionalInput<String>(spec),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.backupVswitchId,
+    this.deleteSlb,
+    this.enterpriseSecurityGroup,
+    this.gatewayName,
+    this.internetSlbSpec,
+    this.replica,
+    this.slbLists,
+    this.slbSpec,
+    this.spec,
+    this.status,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class GatewayState {
 
   factory GatewayState.fromMap(Map<String, dynamic> map) {
     return GatewayState(
-      backupVswitchId: map['backupVswitchId'] == null ? null : pulumi.Output.create<String>(map['backupVswitchId'] as String),
-      deleteSlb: map['deleteSlb'] == null ? null : pulumi.Output.create<bool>(map['deleteSlb'] as bool),
-      enterpriseSecurityGroup: map['enterpriseSecurityGroup'] == null ? null : pulumi.Output.create<bool>(map['enterpriseSecurityGroup'] as bool),
-      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
-      internetSlbSpec: map['internetSlbSpec'] == null ? null : pulumi.Output.create<String>(map['internetSlbSpec'] as String),
-      replica: map['replica'] == null ? null : pulumi.Output.create<int>(map['replica'] as int),
-      slbLists: map['slbLists'] == null ? null : pulumi.Output.create<List<GatewaySlbList>>(pulumi.Input.decodeList<GatewaySlbList>(map['slbLists'], (value) => GatewaySlbList.fromMap((value as Map).cast<String, dynamic>()))),
-      slbSpec: map['slbSpec'] == null ? null : pulumi.Output.create<String>(map['slbSpec'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<String>(map['spec'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      backupVswitchId: map['backupVswitchId'] == null ? null : (map['backupVswitchId'] as String).input(),
+      deleteSlb: map['deleteSlb'] == null ? null : (map['deleteSlb'] as bool).input(),
+      enterpriseSecurityGroup: map['enterpriseSecurityGroup'] == null ? null : (map['enterpriseSecurityGroup'] as bool).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
+      internetSlbSpec: map['internetSlbSpec'] == null ? null : (map['internetSlbSpec'] as String).input(),
+      replica: map['replica'] == null ? null : (map['replica'] as int).input(),
+      slbLists: map['slbLists'] == null ? null : (pulumi.Input.decodeList<GatewaySlbList>(map['slbLists'], (value) => GatewaySlbList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slbSpec: map['slbSpec'] == null ? null : (map['slbSpec'] as String).input(),
+      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

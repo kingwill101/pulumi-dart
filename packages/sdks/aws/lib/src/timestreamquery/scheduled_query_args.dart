@@ -57,33 +57,20 @@ class ScheduledQueryArgs {
   /// [targetConfiguration] Configuration block for writing the result of a query. See below.
   /// [timeouts] Optional.
   ScheduledQueryArgs({
-    required pulumi.Output<ScheduledQueryErrorReportConfiguration> errorReportConfiguration,
-    required pulumi.Output<String> executionRoleArn,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<List<ScheduledQueryLastRunSummary>>? lastRunSummaries,
-    pulumi.Output<String>? name,
-    required pulumi.Output<ScheduledQueryNotificationConfiguration> notificationConfiguration,
-    required pulumi.Output<String> queryString,
-    pulumi.Output<List<ScheduledQueryRecentlyFailedRun>>? recentlyFailedRuns,
-    pulumi.Output<String>? region,
-    required pulumi.Output<ScheduledQueryScheduleConfiguration> scheduleConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<ScheduledQueryTargetConfiguration> targetConfiguration,
-    pulumi.Output<ScheduledQueryTimeouts>? timeouts,
-  }) :
-      errorReportConfiguration = pulumi.Input.asInput<ScheduledQueryErrorReportConfiguration>(errorReportConfiguration),
-      executionRoleArn = pulumi.Input.asInput<String>(executionRoleArn),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      lastRunSummaries = pulumi.Input.asOptionalInput<List<ScheduledQueryLastRunSummary>>(lastRunSummaries),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationConfiguration = pulumi.Input.asInput<ScheduledQueryNotificationConfiguration>(notificationConfiguration),
-      queryString = pulumi.Input.asInput<String>(queryString),
-      recentlyFailedRuns = pulumi.Input.asOptionalInput<List<ScheduledQueryRecentlyFailedRun>>(recentlyFailedRuns),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduleConfiguration = pulumi.Input.asInput<ScheduledQueryScheduleConfiguration>(scheduleConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetConfiguration = pulumi.Input.asInput<ScheduledQueryTargetConfiguration>(targetConfiguration),
-      timeouts = pulumi.Input.asOptionalInput<ScheduledQueryTimeouts>(timeouts);
+    required this.errorReportConfiguration,
+    required this.executionRoleArn,
+    this.kmsKeyId,
+    this.lastRunSummaries,
+    this.name,
+    required this.notificationConfiguration,
+    required this.queryString,
+    this.recentlyFailedRuns,
+    this.region,
+    required this.scheduleConfiguration,
+    this.tags,
+    required this.targetConfiguration,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class ScheduledQueryArgs {
 
   factory ScheduledQueryArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryArgs(
-      errorReportConfiguration: pulumi.Output.create<ScheduledQueryErrorReportConfiguration>(ScheduledQueryErrorReportConfiguration.fromMap((map['errorReportConfiguration'] as Map).cast<String, dynamic>())),
-      executionRoleArn: pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      lastRunSummaries: map['lastRunSummaries'] == null ? null : pulumi.Output.create<List<ScheduledQueryLastRunSummary>>(pulumi.Input.decodeList<ScheduledQueryLastRunSummary>(map['lastRunSummaries'], (value) => ScheduledQueryLastRunSummary.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationConfiguration: pulumi.Output.create<ScheduledQueryNotificationConfiguration>(ScheduledQueryNotificationConfiguration.fromMap((map['notificationConfiguration'] as Map).cast<String, dynamic>())),
-      queryString: pulumi.Output.create<String>(map['queryString'] as String),
-      recentlyFailedRuns: map['recentlyFailedRuns'] == null ? null : pulumi.Output.create<List<ScheduledQueryRecentlyFailedRun>>(pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRun>(map['recentlyFailedRuns'], (value) => ScheduledQueryRecentlyFailedRun.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduleConfiguration: pulumi.Output.create<ScheduledQueryScheduleConfiguration>(ScheduledQueryScheduleConfiguration.fromMap((map['scheduleConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetConfiguration: pulumi.Output.create<ScheduledQueryTargetConfiguration>(ScheduledQueryTargetConfiguration.fromMap((map['targetConfiguration'] as Map).cast<String, dynamic>())),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ScheduledQueryTimeouts>(ScheduledQueryTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      errorReportConfiguration: (ScheduledQueryErrorReportConfiguration.fromMap((map['errorReportConfiguration'] as Map).cast<String, dynamic>())).input(),
+      executionRoleArn: (map['executionRoleArn'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      lastRunSummaries: map['lastRunSummaries'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummary>(map['lastRunSummaries'], (value) => ScheduledQueryLastRunSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationConfiguration: (ScheduledQueryNotificationConfiguration.fromMap((map['notificationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      queryString: (map['queryString'] as String).input(),
+      recentlyFailedRuns: map['recentlyFailedRuns'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRun>(map['recentlyFailedRuns'], (value) => ScheduledQueryRecentlyFailedRun.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduleConfiguration: (ScheduledQueryScheduleConfiguration.fromMap((map['scheduleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetConfiguration: (ScheduledQueryTargetConfiguration.fromMap((map['targetConfiguration'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : (ScheduledQueryTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

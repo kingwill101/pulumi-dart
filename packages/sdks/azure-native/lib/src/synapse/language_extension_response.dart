@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The language extension object.
 class LanguageExtensionResponse {
   /// The language extension name.
-  final String? languageExtensionName;
+  final pulumi.Input<String>? languageExtensionName;
 
   /// Creates a new [LanguageExtensionResponse].
   /// [languageExtensionName] The language extension name.
@@ -20,7 +21,7 @@ class LanguageExtensionResponse {
 
   factory LanguageExtensionResponse.fromMap(Map<String, dynamic> map) {
     return LanguageExtensionResponse(
-      languageExtensionName: map['languageExtensionName'] == null ? null : map['languageExtensionName'] as String,
+      languageExtensionName: map['languageExtensionName'] == null ? null : (map['languageExtensionName'] as String).input(),
     );
   }
 }

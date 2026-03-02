@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Extended location of the resource.
 class A2ASharedDiskIRErrorDetailsResponse {
   /// The error code.
-  final String errorCode;
+  final pulumi.Input<String> errorCode;
   /// The error code enum.
-  final String errorCodeEnum;
+  final pulumi.Input<String> errorCodeEnum;
   /// The error message.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// The possible causes.
-  final String possibleCauses;
+  final pulumi.Input<String> possibleCauses;
   /// The recommended action.
-  final String recommendedAction;
+  final pulumi.Input<String> recommendedAction;
 
   /// Creates a new [A2ASharedDiskIRErrorDetailsResponse].
   /// [errorCode] The error code.
@@ -40,11 +41,11 @@ class A2ASharedDiskIRErrorDetailsResponse {
 
   factory A2ASharedDiskIRErrorDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2ASharedDiskIRErrorDetailsResponse(
-      errorCode: map['errorCode'] as String,
-      errorCodeEnum: map['errorCodeEnum'] as String,
-      errorMessage: map['errorMessage'] as String,
-      possibleCauses: map['possibleCauses'] as String,
-      recommendedAction: map['recommendedAction'] as String,
+      errorCode: (map['errorCode'] as String).input(),
+      errorCodeEnum: (map['errorCodeEnum'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      possibleCauses: (map['possibleCauses'] as String).input(),
+      recommendedAction: (map['recommendedAction'] as String).input(),
     );
   }
 }

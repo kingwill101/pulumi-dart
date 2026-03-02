@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesRngRate {
   /// Sets the rate of bytes per time unit for the random number generator.
-  final double bytes;
+  final pulumi.Input<double> bytes;
   /// Defines the period duration for the rate settings of the random number generator.
-  final double? period;
+  final pulumi.Input<double>? period;
 
   /// Creates a new [DomainDevicesRngRate].
   /// [bytes] Sets the rate of bytes per time unit for the random number generator.
@@ -24,8 +25,8 @@ class DomainDevicesRngRate {
 
   factory DomainDevicesRngRate.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngRate(
-      bytes: map['bytes'] as double,
-      period: map['period'] == null ? null : map['period'] as double,
+      bytes: (map['bytes'] as double).input(),
+      period: map['period'] == null ? null : (map['period'] as double).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetServerTrustCertificateArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetServerTrustCertificateArgs({
-    required pulumi.Output<String> certificateName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateName = pulumi.Input.asInput<String>(certificateName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.certificateName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServerTrustCertificateArgs {
 
   factory GetServerTrustCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetServerTrustCertificateArgs(
-      certificateName: pulumi.Output.create<String>(map['certificateName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateName: (map['certificateName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

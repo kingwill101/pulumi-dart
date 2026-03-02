@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponseHeadersPolicyCustomHeadersConfigItem {
   /// The HTTP header name.
-  final String header;
+  final pulumi.Input<String> header;
   /// Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
-  final bool override;
+  final pulumi.Input<bool> override;
   /// Value for the HTTP response header.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetResponseHeadersPolicyCustomHeadersConfigItem].
   /// [header] The HTTP header name.
@@ -29,9 +30,9 @@ class GetResponseHeadersPolicyCustomHeadersConfigItem {
 
   factory GetResponseHeadersPolicyCustomHeadersConfigItem.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicyCustomHeadersConfigItem(
-      header: map['header'] as String,
-      override: map['override'] as bool,
-      value: map['value'] as String,
+      header: (map['header'] as String).input(),
+      override: (map['override'] as bool).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

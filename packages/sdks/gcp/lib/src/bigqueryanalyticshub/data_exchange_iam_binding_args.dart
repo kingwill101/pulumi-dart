@@ -45,19 +45,13 @@ class DataExchangeIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   DataExchangeIamBindingArgs({
-    pulumi.Output<DataExchangeIamBindingCondition>? condition,
-    required pulumi.Output<String> dataExchangeId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<DataExchangeIamBindingCondition>(condition),
-      dataExchangeId = pulumi.Input.asInput<String>(dataExchangeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.dataExchangeId,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class DataExchangeIamBindingArgs {
 
   factory DataExchangeIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DataExchangeIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<DataExchangeIamBindingCondition>(DataExchangeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      dataExchangeId: pulumi.Output.create<String>(map['dataExchangeId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (DataExchangeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      dataExchangeId: (map['dataExchangeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

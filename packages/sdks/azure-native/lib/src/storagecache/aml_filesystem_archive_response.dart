@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aml_filesystem_archive_response_status.dart';
 
 /// Information about the AML file system archive
 class AmlFilesystemArchiveResponse {
   /// Lustre file system path to archive relative to the file system root.  Specify '/' to archive all modified data.
-  final String filesystemPath;
+  final pulumi.Input<String> filesystemPath;
   /// The status of the archive
-  final AmlFilesystemArchiveResponseStatus status;
+  final pulumi.Input<AmlFilesystemArchiveResponseStatus> status;
 
   /// Creates a new [AmlFilesystemArchiveResponse].
   /// [filesystemPath] Lustre file system path to archive relative to the file system root.  Specify '/' to archive all modified data.
@@ -20,14 +21,14 @@ class AmlFilesystemArchiveResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filesystemPath': filesystemPath,
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<AmlFilesystemArchiveResponseStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory AmlFilesystemArchiveResponse.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemArchiveResponse(
-      filesystemPath: map['filesystemPath'] as String,
-      status: AmlFilesystemArchiveResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      filesystemPath: (map['filesystemPath'] as String).input(),
+      status: (AmlFilesystemArchiveResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

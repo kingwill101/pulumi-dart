@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Guest disk signature based disk exclusion option when doing enable protection of virtual machine in InMage provider.
 class InMageDiskSignatureExclusionOptions {
   /// The guest signature of disk to be excluded from replication.
-  final String? diskSignature;
+  final pulumi.Input<String>? diskSignature;
 
   /// Creates a new [InMageDiskSignatureExclusionOptions].
   /// [diskSignature] The guest signature of disk to be excluded from replication.
@@ -20,7 +21,7 @@ class InMageDiskSignatureExclusionOptions {
 
   factory InMageDiskSignatureExclusionOptions.fromMap(Map<String, dynamic> map) {
     return InMageDiskSignatureExclusionOptions(
-      diskSignature: map['diskSignature'] == null ? null : map['diskSignature'] as String,
+      diskSignature: map['diskSignature'] == null ? null : (map['diskSignature'] as String).input(),
     );
   }
 }

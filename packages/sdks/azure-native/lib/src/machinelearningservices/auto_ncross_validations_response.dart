@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// N-Cross validations determined automatically.
 class AutoNCrossValidationsResponse {
   /// Determines how N-Cross validations value is determined.
   /// Expected value is 'Auto'.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [AutoNCrossValidationsResponse].
   /// [mode] Determines how N-Cross validations value is determined.
@@ -21,7 +22,7 @@ class AutoNCrossValidationsResponse {
 
   factory AutoNCrossValidationsResponse.fromMap(Map<String, dynamic> map) {
     return AutoNCrossValidationsResponse(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

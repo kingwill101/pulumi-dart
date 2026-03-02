@@ -19,13 +19,10 @@ class BucketUserDefinedLogFieldsArgs {
   /// [headerSets] Container for custom request header configuration information.
   /// [paramSets] Container for custom request parameters configuration information.
   BucketUserDefinedLogFieldsArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<List<String>>? headerSets,
-    pulumi.Output<List<String>>? paramSets,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      headerSets = pulumi.Input.asOptionalInput<List<String>>(headerSets),
-      paramSets = pulumi.Input.asOptionalInput<List<String>>(paramSets);
+    required this.bucket,
+    this.headerSets,
+    this.paramSets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class BucketUserDefinedLogFieldsArgs {
 
   factory BucketUserDefinedLogFieldsArgs.fromMap(Map<String, dynamic> map) {
     return BucketUserDefinedLogFieldsArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      headerSets: map['headerSets'] == null ? null : pulumi.Output.create<List<String>>((map['headerSets'] as List).cast<String>()),
-      paramSets: map['paramSets'] == null ? null : pulumi.Output.create<List<String>>((map['paramSets'] as List).cast<String>()),
+      bucket: (map['bucket'] as String).input(),
+      headerSets: map['headerSets'] == null ? null : ((map['headerSets'] as List).cast<String>()).input(),
+      paramSets: map['paramSets'] == null ? null : ((map['paramSets'] as List).cast<String>()).input(),
     );
   }
 }

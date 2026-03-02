@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reference to an existing bucket.
 class ExistingBucket {
   /// Arn of the bucket. Only one of [arn] or [name] can be specified.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// Name of the bucket. Only one of [arn] or [name] can be specified.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ExistingBucket].
   /// [arn] Arn of the bucket. Only one of [arn] or [name] can be specified.
@@ -25,8 +26,8 @@ class ExistingBucket {
 
   factory ExistingBucket.fromMap(Map<String, dynamic> map) {
     return ExistingBucket(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class PolicyArgs {
   /// [policyName] Policy Name.
   /// [resources] The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
   PolicyArgs({
-    required pulumi.Output<String> accessControlRules,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> kmsInstanceId,
-    required pulumi.Output<List<String>> permissions,
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<List<String>> resources,
-  }) :
-      accessControlRules = pulumi.Input.asInput<String>(accessControlRules),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsInstanceId = pulumi.Input.asInput<String>(kmsInstanceId),
-      permissions = pulumi.Input.asInput<List<String>>(permissions),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      resources = pulumi.Input.asInput<List<String>>(resources);
+    required this.accessControlRules,
+    this.description,
+    required this.kmsInstanceId,
+    required this.permissions,
+    required this.policyName,
+    required this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      accessControlRules: pulumi.Output.create<String>(map['accessControlRules'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsInstanceId: pulumi.Output.create<String>(map['kmsInstanceId'] as String),
-      permissions: pulumi.Output.create<List<String>>((map['permissions'] as List).cast<String>()),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      resources: pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
+      accessControlRules: (map['accessControlRules'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsInstanceId: (map['kmsInstanceId'] as String).input(),
+      permissions: ((map['permissions'] as List).cast<String>()).input(),
+      policyName: (map['policyName'] as String).input(),
+      resources: ((map['resources'] as List).cast<String>()).input(),
     );
   }
 }

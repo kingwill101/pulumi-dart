@@ -33,15 +33,11 @@ class IAMMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
   IAMMemberArgs({
-    pulumi.Output<IAMMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serviceAccountId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IAMMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role),
-      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
+    this.condition,
+    required this.member,
+    required this.role,
+    required this.serviceAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,10 +50,10 @@ class IAMMemberArgs {
 
   factory IAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return IAMMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IAMMemberCondition>(IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serviceAccountId: pulumi.Output.create<String>(map['serviceAccountId'] as String),
+      condition: map['condition'] == null ? null : (IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      role: (map['role'] as String).input(),
+      serviceAccountId: (map['serviceAccountId'] as String).input(),
     );
   }
 }

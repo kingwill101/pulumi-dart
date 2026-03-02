@@ -16,11 +16,9 @@ class GetEndpointAssociationsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] ID of the specific VPC Endpoint to retrieve.
   GetEndpointAssociationsArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> vpcEndpointId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
+    this.region,
+    required this.vpcEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEndpointAssociationsArgs {
 
   factory GetEndpointAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAssociationsArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcEndpointId: pulumi.Output.create<String>(map['vpcEndpointId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );
   }
 }

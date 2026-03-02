@@ -19,13 +19,10 @@ class GetQueueServicePropertiesArgs {
   /// [queueServiceName] The name of the Queue Service within the specified storage account. Queue Service Name must be 'default'
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetQueueServicePropertiesArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> queueServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      queueServiceName = pulumi.Input.asInput<String>(queueServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.queueServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetQueueServicePropertiesArgs {
 
   factory GetQueueServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueServicePropertiesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      queueServiceName: pulumi.Output.create<String>(map['queueServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      queueServiceName: (map['queueServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

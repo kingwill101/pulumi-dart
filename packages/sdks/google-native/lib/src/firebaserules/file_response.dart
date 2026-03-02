@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// `File` containing source content.
 class FileResponse {
   /// Textual Content.
-  final String content;
+  final pulumi.Input<String> content;
   /// Fingerprint (e.g. github sha) associated with the `File`.
-  final String fingerprint;
+  final pulumi.Input<String> fingerprint;
   /// File name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [FileResponse].
   /// [content] Textual Content.
@@ -30,9 +31,9 @@ class FileResponse {
 
   factory FileResponse.fromMap(Map<String, dynamic> map) {
     return FileResponse(
-      content: map['content'] as String,
-      fingerprint: map['fingerprint'] as String,
-      name: map['name'] as String,
+      content: (map['content'] as String).input(),
+      fingerprint: (map['fingerprint'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

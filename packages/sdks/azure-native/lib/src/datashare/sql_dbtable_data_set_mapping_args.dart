@@ -41,27 +41,17 @@ class SqlDBTableDataSetMappingArgs {
   /// [sqlServerResourceId] Resource id of SQL server
   /// [tableName] SQL DB table name.
   SqlDBTableDataSetMappingArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> dataSetId,
-    pulumi.Output<String>? dataSetMappingName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    required pulumi.Output<String> shareSubscriptionName,
-    required pulumi.Output<String> sqlServerResourceId,
-    required pulumi.Output<String> tableName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dataSetId = pulumi.Input.asInput<String>(dataSetId),
-      dataSetMappingName = pulumi.Input.asOptionalInput<String>(dataSetMappingName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName),
-      sqlServerResourceId = pulumi.Input.asInput<String>(sqlServerResourceId),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    required this.accountName,
+    required this.dataSetId,
+    this.dataSetMappingName,
+    required this.databaseName,
+    required this.kind,
+    required this.resourceGroupName,
+    required this.schemaName,
+    required this.shareSubscriptionName,
+    required this.sqlServerResourceId,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class SqlDBTableDataSetMappingArgs {
 
   factory SqlDBTableDataSetMappingArgs.fromMap(Map<String, dynamic> map) {
     return SqlDBTableDataSetMappingArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dataSetId: pulumi.Output.create<String>(map['dataSetId'] as String),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : pulumi.Output.create<String>(map['dataSetMappingName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
-      sqlServerResourceId: pulumi.Output.create<String>(map['sqlServerResourceId'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      dataSetId: (map['dataSetId'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
+      sqlServerResourceId: (map['sqlServerResourceId'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetEndpointArgs {
   /// [endpointType] Endpoint type. Valid values: `iot:CredentialProvider`, `iot:Data`, `iot:Data-ATS`, `iot:Jobs`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetEndpointArgs({
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<String>? region,
-  }) :
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.endpointType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

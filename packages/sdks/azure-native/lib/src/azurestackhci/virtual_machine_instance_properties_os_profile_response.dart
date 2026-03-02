@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_instance_properties_os_profile_linux_configuration_response.dart';
 import 'virtual_machine_instance_properties_os_profile_windows_configuration_response.dart';
 
 /// OsProfile - describes the configuration of the operating system and sets login data
 class VirtualMachineInstancePropertiesOsProfileResponse {
   /// AdminUsername - admin username
-  final String? adminUsername;
+  final pulumi.Input<String>? adminUsername;
   /// ComputerName - name of the compute
-  final String? computerName;
+  final pulumi.Input<String>? computerName;
   /// LinuxConfiguration - linux specific configuration values for the virtual machine instance
-  final VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse? linuxConfiguration;
+  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse>? linuxConfiguration;
   /// Windows Configuration for the virtual machine instance
-  final VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse? windowsConfiguration;
+  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse>? windowsConfiguration;
 
   /// Creates a new [VirtualMachineInstancePropertiesOsProfileResponse].
   /// [adminUsername] AdminUsername - admin username
@@ -30,17 +31,17 @@ class VirtualMachineInstancePropertiesOsProfileResponse {
     return <String, dynamic>{
       'adminUsername': ?adminUsername,
       'computerName': ?computerName,
-      'linuxConfiguration': ?linuxConfiguration == null ? null : linuxConfiguration!.toMap(),
-      'windowsConfiguration': ?windowsConfiguration == null ? null : windowsConfiguration!.toMap(),
+      'linuxConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse, Map<String, dynamic>>(linuxConfiguration, (value) => value.toMap()),
+      'windowsConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse, Map<String, dynamic>>(windowsConfiguration, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineInstancePropertiesOsProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesOsProfileResponse(
-      adminUsername: map['adminUsername'] == null ? null : map['adminUsername'] as String,
-      computerName: map['computerName'] == null ? null : map['computerName'] as String,
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>()),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>()),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

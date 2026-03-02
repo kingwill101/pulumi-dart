@@ -22,15 +22,11 @@ class VpcSecurityGroupRulesExclusiveArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupId] ID of the security group.
   VpcSecurityGroupRulesExclusiveArgs({
-    required pulumi.Output<List<String>> egressRuleIds,
-    required pulumi.Output<List<String>> ingressRuleIds,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> securityGroupId,
-  }) :
-      egressRuleIds = pulumi.Input.asInput<List<String>>(egressRuleIds),
-      ingressRuleIds = pulumi.Input.asInput<List<String>>(ingressRuleIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId);
+    required this.egressRuleIds,
+    required this.ingressRuleIds,
+    this.region,
+    required this.securityGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VpcSecurityGroupRulesExclusiveArgs {
 
   factory VpcSecurityGroupRulesExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return VpcSecurityGroupRulesExclusiveArgs(
-      egressRuleIds: pulumi.Output.create<List<String>>((map['egressRuleIds'] as List).cast<String>()),
-      ingressRuleIds: pulumi.Output.create<List<String>>((map['ingressRuleIds'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
+      egressRuleIds: ((map['egressRuleIds'] as List).cast<String>()).input(),
+      ingressRuleIds: ((map['ingressRuleIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
     );
   }
 }

@@ -18,13 +18,10 @@ class IndexingConfigurationState {
   /// [thingGroupIndexingConfiguration] Thing group indexing configuration. See below.
   /// [thingIndexingConfiguration] Thing indexing configuration. See below.
   IndexingConfigurationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<IndexingConfigurationThingGroupIndexingConfiguration>? thingGroupIndexingConfiguration,
-    pulumi.Output<IndexingConfigurationThingIndexingConfiguration>? thingIndexingConfiguration,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      thingGroupIndexingConfiguration = pulumi.Input.asOptionalInput<IndexingConfigurationThingGroupIndexingConfiguration>(thingGroupIndexingConfiguration),
-      thingIndexingConfiguration = pulumi.Input.asOptionalInput<IndexingConfigurationThingIndexingConfiguration>(thingIndexingConfiguration);
+    this.region,
+    this.thingGroupIndexingConfiguration,
+    this.thingIndexingConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class IndexingConfigurationState {
 
   factory IndexingConfigurationState.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      thingGroupIndexingConfiguration: map['thingGroupIndexingConfiguration'] == null ? null : pulumi.Output.create<IndexingConfigurationThingGroupIndexingConfiguration>(IndexingConfigurationThingGroupIndexingConfiguration.fromMap((map['thingGroupIndexingConfiguration'] as Map).cast<String, dynamic>())),
-      thingIndexingConfiguration: map['thingIndexingConfiguration'] == null ? null : pulumi.Output.create<IndexingConfigurationThingIndexingConfiguration>(IndexingConfigurationThingIndexingConfiguration.fromMap((map['thingIndexingConfiguration'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      thingGroupIndexingConfiguration: map['thingGroupIndexingConfiguration'] == null ? null : (IndexingConfigurationThingGroupIndexingConfiguration.fromMap((map['thingGroupIndexingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      thingIndexingConfiguration: map['thingIndexingConfiguration'] == null ? null : (IndexingConfigurationThingIndexingConfiguration.fromMap((map['thingIndexingConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

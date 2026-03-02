@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// storage resource of type Azure Storage Account.
 class StorageAccountResponse {
   /// The account name of the Azure Storage Account.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// The type of the storage.
   /// Expected value is 'StorageAccount'.
-  final String storageType;
+  final pulumi.Input<String> storageType;
 
   /// Creates a new [StorageAccountResponse].
   /// [accountName] The account name of the Azure Storage Account.
@@ -26,8 +27,8 @@ class StorageAccountResponse {
 
   factory StorageAccountResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountResponse(
-      accountName: map['accountName'] as String,
-      storageType: map['storageType'] as String,
+      accountName: (map['accountName'] as String).input(),
+      storageType: (map['storageType'] as String).input(),
     );
   }
 }

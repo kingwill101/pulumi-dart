@@ -16,11 +16,9 @@ class GetPoolArgs {
   /// [poolName] Name of the pool. It needs to be globally unique.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPoolArgs({
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.poolName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPoolArgs {
 
   factory GetPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetPoolArgs(
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

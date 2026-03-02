@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3FunctionNasConfigMountPoint {
   /// Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
-  final bool? enableTls;
-  final String? mountDir;
+  final pulumi.Input<bool>? enableTls;
+  final pulumi.Input<String>? mountDir;
   /// NAS server address
-  final String? serverAddr;
+  final pulumi.Input<String>? serverAddr;
 
   /// Creates a new [V3FunctionNasConfigMountPoint].
   /// [enableTls] Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
@@ -28,9 +29,9 @@ class V3FunctionNasConfigMountPoint {
 
   factory V3FunctionNasConfigMountPoint.fromMap(Map<String, dynamic> map) {
     return V3FunctionNasConfigMountPoint(
-      enableTls: map['enableTls'] == null ? null : map['enableTls'] as bool,
-      mountDir: map['mountDir'] == null ? null : map['mountDir'] as String,
-      serverAddr: map['serverAddr'] == null ? null : map['serverAddr'] as String,
+      enableTls: map['enableTls'] == null ? null : (map['enableTls'] as bool).input(),
+      mountDir: map['mountDir'] == null ? null : (map['mountDir'] as String).input(),
+      serverAddr: map['serverAddr'] == null ? null : (map['serverAddr'] as String).input(),
     );
   }
 }

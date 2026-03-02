@@ -6,15 +6,15 @@ import 'resource_info_status.dart';
 /// ResourceInfo represents the information/status of the associated resource.
 class ResourceInfo {
   /// Unique Id for the resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specific details for the resource.
-  final Map<String, String>? resource;
+  final pulumi.Input<Map<String, String>>? resource;
   /// Overall health status. Overall status is derived based on the status of each sub level resources.
-  final ResourceInfoStatus? status;
+  final pulumi.Input<ResourceInfoStatus>? status;
   /// List of Info for the sub level resources.
-  final List<ResourceInfo>? sub;
+  final pulumi.Input<List<ResourceInfo>>? sub;
   /// The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
-  final String? time;
+  final pulumi.Input<String>? time;
 
   /// Creates a new [ResourceInfo].
   /// [id] Unique Id for the resource.
@@ -34,19 +34,19 @@ class ResourceInfo {
     return <String, dynamic>{
       'id': id,
       'resource': ?resource,
-      'status': ?status == null ? null : status!.value,
-      'sub': ?sub == null ? null : pulumi.Input.encodeList<ResourceInfo, Map<String, dynamic>>(sub!, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ResourceInfoStatus, String>(status, (value) => value.value),
+      'sub': ?pulumi.Input.mapOptionalInputValue<List<ResourceInfo>, List<Map<String, dynamic>>>(sub, (value) => pulumi.Input.encodeList<ResourceInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'time': ?time,
     };
   }
 
   factory ResourceInfo.fromMap(Map<String, dynamic> map) {
     return ResourceInfo(
-      id: map['id'] as String,
-      resource: map['resource'] == null ? null : (map['resource'] as Map).cast<String, String>(),
-      status: map['status'] == null ? null : ResourceInfoStatus.fromValue(map['status'] as String),
-      sub: map['sub'] == null ? null : pulumi.Input.decodeList<ResourceInfo>(map['sub'], (value) => ResourceInfo.fromMap((value as Map).cast<String, dynamic>())),
-      time: map['time'] == null ? null : map['time'] as String,
+      id: (map['id'] as String).input(),
+      resource: map['resource'] == null ? null : ((map['resource'] as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (ResourceInfoStatus.fromValue(map['status'] as String)).input(),
+      sub: map['sub'] == null ? null : (pulumi.Input.decodeList<ResourceInfo>(map['sub'], (value) => ResourceInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      time: map['time'] == null ? null : (map['time'] as String).input(),
     );
   }
 }

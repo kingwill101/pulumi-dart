@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountPrivateEndpointConnection {
   /// The ID of the Automation Account.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the name of the Automation Account. Changing this forces a new resource to be created.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AccountPrivateEndpointConnection].
   /// [id] The ID of the Automation Account.
@@ -24,8 +25,8 @@ class AccountPrivateEndpointConnection {
 
   factory AccountPrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return AccountPrivateEndpointConnection(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

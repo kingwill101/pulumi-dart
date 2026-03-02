@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomRoutingAcceleratorIpSet {
-  final List<String> ipAddresses;
-  final String ipFamily;
+  final pulumi.Input<List<String>> ipAddresses;
+  final pulumi.Input<String> ipFamily;
 
   /// Creates a new [GetCustomRoutingAcceleratorIpSet].
   /// [ipAddresses] Required.
@@ -22,8 +23,8 @@ class GetCustomRoutingAcceleratorIpSet {
 
   factory GetCustomRoutingAcceleratorIpSet.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingAcceleratorIpSet(
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
-      ipFamily: map['ipFamily'] as String,
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
+      ipFamily: (map['ipFamily'] as String).input(),
     );
   }
 }

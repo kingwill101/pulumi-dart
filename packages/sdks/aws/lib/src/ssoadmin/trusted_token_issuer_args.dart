@@ -34,21 +34,14 @@ class TrustedTokenIssuerArgs {
   /// [trustedTokenIssuerConfiguration] A block that specifies settings that apply to the trusted token issuer, these change depending on the type you specify in `trusted_token_issuer_type`. Documented below.
   /// [trustedTokenIssuerType] Specifies the type of the trusted token issuer. Valid values are `OIDC_JWT`
   TrustedTokenIssuerArgs({
-    pulumi.Output<String>? clientToken,
-    required pulumi.Output<String> instanceArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<TrustedTokenIssuerTrustedTokenIssuerConfiguration> trustedTokenIssuerConfiguration,
-    required pulumi.Output<String> trustedTokenIssuerType,
-  }) :
-      clientToken = pulumi.Input.asOptionalInput<String>(clientToken),
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trustedTokenIssuerConfiguration = pulumi.Input.asInput<TrustedTokenIssuerTrustedTokenIssuerConfiguration>(trustedTokenIssuerConfiguration),
-      trustedTokenIssuerType = pulumi.Input.asInput<String>(trustedTokenIssuerType);
+    this.clientToken,
+    required this.instanceArn,
+    this.name,
+    this.region,
+    this.tags,
+    required this.trustedTokenIssuerConfiguration,
+    required this.trustedTokenIssuerType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class TrustedTokenIssuerArgs {
 
   factory TrustedTokenIssuerArgs.fromMap(Map<String, dynamic> map) {
     return TrustedTokenIssuerArgs(
-      clientToken: map['clientToken'] == null ? null : pulumi.Output.create<String>(map['clientToken'] as String),
-      instanceArn: pulumi.Output.create<String>(map['instanceArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trustedTokenIssuerConfiguration: pulumi.Output.create<TrustedTokenIssuerTrustedTokenIssuerConfiguration>(TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap((map['trustedTokenIssuerConfiguration'] as Map).cast<String, dynamic>())),
-      trustedTokenIssuerType: pulumi.Output.create<String>(map['trustedTokenIssuerType'] as String),
+      clientToken: map['clientToken'] == null ? null : (map['clientToken'] as String).input(),
+      instanceArn: (map['instanceArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trustedTokenIssuerConfiguration: (TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap((map['trustedTokenIssuerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      trustedTokenIssuerType: (map['trustedTokenIssuerType'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HttpRouteRuleActionFaultInjectionPolicyDelay {
   /// Specify a fixed delay before forwarding the request.
-  final String? fixedDelay;
+  final pulumi.Input<String>? fixedDelay;
   /// The percentage of traffic on which delay will be injected.
-  final int? percentage;
+  final pulumi.Input<int>? percentage;
 
   /// Creates a new [HttpRouteRuleActionFaultInjectionPolicyDelay].
   /// [fixedDelay] Specify a fixed delay before forwarding the request.
@@ -24,8 +25,8 @@ class HttpRouteRuleActionFaultInjectionPolicyDelay {
 
   factory HttpRouteRuleActionFaultInjectionPolicyDelay.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleActionFaultInjectionPolicyDelay(
-      fixedDelay: map['fixedDelay'] == null ? null : map['fixedDelay'] as String,
-      percentage: map['percentage'] == null ? null : map['percentage'] as int,
+      fixedDelay: map['fixedDelay'] == null ? null : (map['fixedDelay'] as String).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
     );
   }
 }

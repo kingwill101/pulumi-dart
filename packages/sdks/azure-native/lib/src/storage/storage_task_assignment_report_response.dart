@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The storage task assignment report
 class StorageTaskAssignmentReportResponse {
   /// The container prefix for the location of storage task assignment report
-  final String prefix;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [StorageTaskAssignmentReportResponse].
   /// [prefix] The container prefix for the location of storage task assignment report
@@ -20,7 +21,7 @@ class StorageTaskAssignmentReportResponse {
 
   factory StorageTaskAssignmentReportResponse.fromMap(Map<String, dynamic> map) {
     return StorageTaskAssignmentReportResponse(
-      prefix: map['prefix'] as String,
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

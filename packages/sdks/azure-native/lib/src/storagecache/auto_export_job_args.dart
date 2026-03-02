@@ -34,23 +34,15 @@ class AutoExportJobArgs {
   /// [state] The operational state of auto export. InProgress indicates the export is running.  Disabling indicates the user has requested to disable the export but the disabling is still in progress. Disabled indicates auto export has been disabled.  DisableFailed indicates the disabling has failed.  Failed means the export was unable to continue, due to a fatal error.
   /// [tags] Resource tags.
   AutoExportJobArgs({
-    pulumi.Output<String>? adminStatus,
-    required pulumi.Output<String> amlFilesystemName,
-    pulumi.Output<String>? autoExportJobName,
-    pulumi.Output<List<String>>? autoExportPrefixes,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      adminStatus = pulumi.Input.asOptionalInput<String>(adminStatus),
-      amlFilesystemName = pulumi.Input.asInput<String>(amlFilesystemName),
-      autoExportJobName = pulumi.Input.asOptionalInput<String>(autoExportJobName),
-      autoExportPrefixes = pulumi.Input.asOptionalInput<List<String>>(autoExportPrefixes),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.adminStatus,
+    required this.amlFilesystemName,
+    this.autoExportJobName,
+    this.autoExportPrefixes,
+    this.location,
+    required this.resourceGroupName,
+    this.state,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AutoExportJobArgs {
 
   factory AutoExportJobArgs.fromMap(Map<String, dynamic> map) {
     return AutoExportJobArgs(
-      adminStatus: map['adminStatus'] == null ? null : pulumi.Output.create<String>(map['adminStatus'] as String),
-      amlFilesystemName: pulumi.Output.create<String>(map['amlFilesystemName'] as String),
-      autoExportJobName: map['autoExportJobName'] == null ? null : pulumi.Output.create<String>(map['autoExportJobName'] as String),
-      autoExportPrefixes: map['autoExportPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['autoExportPrefixes'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      adminStatus: map['adminStatus'] == null ? null : (map['adminStatus'] as String).input(),
+      amlFilesystemName: (map['amlFilesystemName'] as String).input(),
+      autoExportJobName: map['autoExportJobName'] == null ? null : (map['autoExportJobName'] as String).input(),
+      autoExportPrefixes: map['autoExportPrefixes'] == null ? null : ((map['autoExportPrefixes'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

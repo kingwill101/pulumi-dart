@@ -19,13 +19,10 @@ class GetChannelArgs {
   /// [channelName] Channel Name
   /// [resourceGroupName] Resource Group Name
   GetChannelArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> channelName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      channelName = pulumi.Input.asInput<String>(channelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.channelName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetChannelArgs {
 
   factory GetChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      channelName: pulumi.Output.create<String>(map['channelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      channelName: (map['channelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

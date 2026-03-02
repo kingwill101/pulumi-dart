@@ -39,25 +39,16 @@ class VirtualHubIpConfigurationArgs {
   /// [subnet] The reference to the subnet resource.
   /// [virtualHubName] The name of the VirtualHub.
   VirtualHubIpConfigurationArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? ipConfigName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateIPAddress,
-    pulumi.Output<String>? privateIPAllocationMethod,
-    pulumi.Output<PublicIPAddressNetwork>? publicIPAddress,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SubnetNetwork>? subnet,
-    required pulumi.Output<String> virtualHubName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ipConfigName = pulumi.Input.asOptionalInput<String>(ipConfigName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateIPAddress = pulumi.Input.asOptionalInput<String>(privateIPAddress),
-      privateIPAllocationMethod = pulumi.Input.asOptionalInput<String>(privateIPAllocationMethod),
-      publicIPAddress = pulumi.Input.asOptionalInput<PublicIPAddressNetwork>(publicIPAddress),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnet = pulumi.Input.asOptionalInput<SubnetNetwork>(subnet),
-      virtualHubName = pulumi.Input.asInput<String>(virtualHubName);
+    this.id,
+    this.ipConfigName,
+    this.name,
+    this.privateIPAddress,
+    this.privateIPAllocationMethod,
+    this.publicIPAddress,
+    required this.resourceGroupName,
+    this.subnet,
+    required this.virtualHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class VirtualHubIpConfigurationArgs {
 
   factory VirtualHubIpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubIpConfigurationArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ipConfigName: map['ipConfigName'] == null ? null : pulumi.Output.create<String>(map['ipConfigName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateIPAddress: map['privateIPAddress'] == null ? null : pulumi.Output.create<String>(map['privateIPAddress'] as String),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : pulumi.Output.create<String>(map['privateIPAllocationMethod'] as String),
-      publicIPAddress: map['publicIPAddress'] == null ? null : pulumi.Output.create<PublicIPAddressNetwork>(map['publicIPAddress'] as PublicIPAddressNetwork),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<SubnetNetwork>(map['subnet'] as SubnetNetwork),
-      virtualHubName: pulumi.Output.create<String>(map['virtualHubName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipConfigName: map['ipConfigName'] == null ? null : (map['ipConfigName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (map['publicIPAddress'] as PublicIPAddressNetwork).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as SubnetNetwork).input(),
+      virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }
 }

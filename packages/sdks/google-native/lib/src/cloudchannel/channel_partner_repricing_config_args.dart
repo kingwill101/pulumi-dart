@@ -18,13 +18,10 @@ class ChannelPartnerRepricingConfigArgs {
   /// [channelPartnerLinkId] Required.
   /// [repricingConfig] The configuration for bill modifications made by a reseller before sending it to ChannelPartner.
   ChannelPartnerRepricingConfigArgs({
-    required pulumi.Output<String> accountId,
-    required pulumi.Output<String> channelPartnerLinkId,
-    required pulumi.Output<GoogleCloudChannelV1RepricingConfig> repricingConfig,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      channelPartnerLinkId = pulumi.Input.asInput<String>(channelPartnerLinkId),
-      repricingConfig = pulumi.Input.asInput<GoogleCloudChannelV1RepricingConfig>(repricingConfig);
+    required this.accountId,
+    required this.channelPartnerLinkId,
+    required this.repricingConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class ChannelPartnerRepricingConfigArgs {
 
   factory ChannelPartnerRepricingConfigArgs.fromMap(Map<String, dynamic> map) {
     return ChannelPartnerRepricingConfigArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      channelPartnerLinkId: pulumi.Output.create<String>(map['channelPartnerLinkId'] as String),
-      repricingConfig: pulumi.Output.create<GoogleCloudChannelV1RepricingConfig>(GoogleCloudChannelV1RepricingConfig.fromMap((map['repricingConfig'] as Map).cast<String, dynamic>())),
+      accountId: (map['accountId'] as String).input(),
+      channelPartnerLinkId: (map['channelPartnerLinkId'] as String).input(),
+      repricingConfig: (GoogleCloudChannelV1RepricingConfig.fromMap((map['repricingConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

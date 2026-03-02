@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_network_insights_analysis_forward_path_component_acl_rule_port_range.dart';
 
 class GetNetworkInsightsAnalysisForwardPathComponentAclRule {
-  final String cidr;
-  final bool egress;
-  final List<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange> portRanges;
-  final String protocol;
-  final String ruleAction;
-  final int ruleNumber;
+  final pulumi.Input<String> cidr;
+  final pulumi.Input<bool> egress;
+  final pulumi.Input<List<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange>> portRanges;
+  final pulumi.Input<String> protocol;
+  final pulumi.Input<String> ruleAction;
+  final pulumi.Input<int> ruleNumber;
 
   /// Creates a new [GetNetworkInsightsAnalysisForwardPathComponentAclRule].
   /// [cidr] Required.
@@ -31,7 +31,7 @@ class GetNetworkInsightsAnalysisForwardPathComponentAclRule {
     return <String, dynamic>{
       'cidr': cidr,
       'egress': egress,
-      'portRanges': pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange, Map<String, dynamic>>(portRanges, (value) => value.toMap()),
+      'portRanges': pulumi.Input.mapInputValue<List<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protocol': protocol,
       'ruleAction': ruleAction,
       'ruleNumber': ruleNumber,
@@ -40,12 +40,12 @@ class GetNetworkInsightsAnalysisForwardPathComponentAclRule {
 
   factory GetNetworkInsightsAnalysisForwardPathComponentAclRule.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentAclRule(
-      cidr: map['cidr'] as String,
-      egress: map['egress'] as bool,
-      portRanges: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange>(map['portRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange.fromMap((value as Map).cast<String, dynamic>())),
-      protocol: map['protocol'] as String,
-      ruleAction: map['ruleAction'] as String,
-      ruleNumber: map['ruleNumber'] as int,
+      cidr: (map['cidr'] as String).input(),
+      egress: (map['egress'] as bool).input(),
+      portRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange>(map['portRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentAclRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocol: (map['protocol'] as String).input(),
+      ruleAction: (map['ruleAction'] as String).input(),
+      ruleNumber: (map['ruleNumber'] as int).input(),
     );
   }
 }

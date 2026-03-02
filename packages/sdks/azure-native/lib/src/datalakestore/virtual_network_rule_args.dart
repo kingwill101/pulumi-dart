@@ -22,15 +22,11 @@ class VirtualNetworkRuleArgs {
   /// [subnetId] The resource identifier for the subnet.
   /// [virtualNetworkRuleName] The name of the virtual network rule to create or update.
   VirtualNetworkRuleArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<String>? virtualNetworkRuleName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      virtualNetworkRuleName = pulumi.Input.asOptionalInput<String>(virtualNetworkRuleName);
+    required this.accountName,
+    required this.resourceGroupName,
+    required this.subnetId,
+    this.virtualNetworkRuleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VirtualNetworkRuleArgs {
 
   factory VirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkRuleName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName'] as String).input(),
     );
   }
 }

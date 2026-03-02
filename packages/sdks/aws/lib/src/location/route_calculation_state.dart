@@ -36,25 +36,16 @@ class RouteCalculationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [updateTime] The timestamp for when the route calculator resource was last update in ISO 8601.
   RouteCalculationState({
-    pulumi.Output<String>? calculatorArn,
-    pulumi.Output<String>? calculatorName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataSource,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? updateTime,
-  }) :
-      calculatorArn = pulumi.Input.asOptionalInput<String>(calculatorArn),
-      calculatorName = pulumi.Input.asOptionalInput<String>(calculatorName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataSource = pulumi.Input.asOptionalInput<String>(dataSource),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.calculatorArn,
+    this.calculatorName,
+    this.createTime,
+    this.dataSource,
+    this.description,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class RouteCalculationState {
 
   factory RouteCalculationState.fromMap(Map<String, dynamic> map) {
     return RouteCalculationState(
-      calculatorArn: map['calculatorArn'] == null ? null : pulumi.Output.create<String>(map['calculatorArn'] as String),
-      calculatorName: map['calculatorName'] == null ? null : pulumi.Output.create<String>(map['calculatorName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataSource: map['dataSource'] == null ? null : pulumi.Output.create<String>(map['dataSource'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      calculatorArn: map['calculatorArn'] == null ? null : (map['calculatorArn'] as String).input(),
+      calculatorName: map['calculatorName'] == null ? null : (map['calculatorName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

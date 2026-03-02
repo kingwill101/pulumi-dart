@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The check name availability specifications.
 class ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications {
   /// Whether default validation is enabled.
-  final bool? enableDefaultValidation;
+  final pulumi.Input<bool>? enableDefaultValidation;
   /// The resource types with custom validation.
-  final List<String>? resourceTypesWithCustomValidation;
+  final pulumi.Input<List<String>>? resourceTypesWithCustomValidation;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications].
   /// [enableDefaultValidation] Whether default validation is enabled.
@@ -25,8 +26,8 @@ class ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications {
 
   factory ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications(
-      enableDefaultValidation: map['enableDefaultValidation'] == null ? null : map['enableDefaultValidation'] as bool,
-      resourceTypesWithCustomValidation: map['resourceTypesWithCustomValidation'] == null ? null : (map['resourceTypesWithCustomValidation'] as List).cast<String>(),
+      enableDefaultValidation: map['enableDefaultValidation'] == null ? null : (map['enableDefaultValidation'] as bool).input(),
+      resourceTypesWithCustomValidation: map['resourceTypesWithCustomValidation'] == null ? null : ((map['resourceTypesWithCustomValidation'] as List).cast<String>()).input(),
     );
   }
 }

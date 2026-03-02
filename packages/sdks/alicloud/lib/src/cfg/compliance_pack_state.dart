@@ -30,21 +30,14 @@ class CompliancePackState {
   /// [riskLevel] The Risk Level. Valid values:
   /// [status] The status of the Compliance Pack.
   CompliancePackState({
-    pulumi.Output<String>? compliancePackName,
-    pulumi.Output<String>? compliancePackTemplateId,
-    pulumi.Output<List<CompliancePackConfigRuleId>>? configRuleIds,
-    pulumi.Output<List<CompliancePackConfigRule>>? configRules,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? riskLevel,
-    pulumi.Output<String>? status,
-  }) :
-      compliancePackName = pulumi.Input.asOptionalInput<String>(compliancePackName),
-      compliancePackTemplateId = pulumi.Input.asOptionalInput<String>(compliancePackTemplateId),
-      configRuleIds = pulumi.Input.asOptionalInput<List<CompliancePackConfigRuleId>>(configRuleIds),
-      configRules = pulumi.Input.asOptionalInput<List<CompliancePackConfigRule>>(configRules),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      riskLevel = pulumi.Input.asOptionalInput<int>(riskLevel),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.compliancePackName,
+    this.compliancePackTemplateId,
+    this.configRuleIds,
+    this.configRules,
+    this.description,
+    this.riskLevel,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class CompliancePackState {
 
   factory CompliancePackState.fromMap(Map<String, dynamic> map) {
     return CompliancePackState(
-      compliancePackName: map['compliancePackName'] == null ? null : pulumi.Output.create<String>(map['compliancePackName'] as String),
-      compliancePackTemplateId: map['compliancePackTemplateId'] == null ? null : pulumi.Output.create<String>(map['compliancePackTemplateId'] as String),
-      configRuleIds: map['configRuleIds'] == null ? null : pulumi.Output.create<List<CompliancePackConfigRuleId>>(pulumi.Input.decodeList<CompliancePackConfigRuleId>(map['configRuleIds'], (value) => CompliancePackConfigRuleId.fromMap((value as Map).cast<String, dynamic>()))),
-      configRules: map['configRules'] == null ? null : pulumi.Output.create<List<CompliancePackConfigRule>>(pulumi.Input.decodeList<CompliancePackConfigRule>(map['configRules'], (value) => CompliancePackConfigRule.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      riskLevel: map['riskLevel'] == null ? null : pulumi.Output.create<int>(map['riskLevel'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      compliancePackName: map['compliancePackName'] == null ? null : (map['compliancePackName'] as String).input(),
+      compliancePackTemplateId: map['compliancePackTemplateId'] == null ? null : (map['compliancePackTemplateId'] as String).input(),
+      configRuleIds: map['configRuleIds'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRuleId>(map['configRuleIds'], (value) => CompliancePackConfigRuleId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configRules: map['configRules'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRule>(map['configRules'], (value) => CompliancePackConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

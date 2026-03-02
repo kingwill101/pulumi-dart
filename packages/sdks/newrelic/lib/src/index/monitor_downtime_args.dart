@@ -42,27 +42,17 @@ class MonitorDowntimeArgs {
   /// [startTime] A datetime stamp signifying the start of the Monitor Downtime.
   /// [timeZone] The timezone that applies to the Monitor Downtime schedule.
   MonitorDowntimeArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<MonitorDowntimeEndRepeat>? endRepeat,
-    required pulumi.Output<String> endTime,
-    pulumi.Output<MonitorDowntimeFrequency>? frequency,
-    pulumi.Output<List<String>>? maintenanceDays,
-    required pulumi.Output<String> mode,
-    pulumi.Output<List<String>>? monitorGuids,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> startTime,
-    required pulumi.Output<String> timeZone,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      endRepeat = pulumi.Input.asOptionalInput<MonitorDowntimeEndRepeat>(endRepeat),
-      endTime = pulumi.Input.asInput<String>(endTime),
-      frequency = pulumi.Input.asOptionalInput<MonitorDowntimeFrequency>(frequency),
-      maintenanceDays = pulumi.Input.asOptionalInput<List<String>>(maintenanceDays),
-      mode = pulumi.Input.asInput<String>(mode),
-      monitorGuids = pulumi.Input.asOptionalInput<List<String>>(monitorGuids),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      startTime = pulumi.Input.asInput<String>(startTime),
-      timeZone = pulumi.Input.asInput<String>(timeZone);
+    this.accountId,
+    this.endRepeat,
+    required this.endTime,
+    this.frequency,
+    this.maintenanceDays,
+    required this.mode,
+    this.monitorGuids,
+    this.name,
+    required this.startTime,
+    required this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class MonitorDowntimeArgs {
 
   factory MonitorDowntimeArgs.fromMap(Map<String, dynamic> map) {
     return MonitorDowntimeArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      endRepeat: map['endRepeat'] == null ? null : pulumi.Output.create<MonitorDowntimeEndRepeat>(MonitorDowntimeEndRepeat.fromMap((map['endRepeat'] as Map).cast<String, dynamic>())),
-      endTime: pulumi.Output.create<String>(map['endTime'] as String),
-      frequency: map['frequency'] == null ? null : pulumi.Output.create<MonitorDowntimeFrequency>(MonitorDowntimeFrequency.fromMap((map['frequency'] as Map).cast<String, dynamic>())),
-      maintenanceDays: map['maintenanceDays'] == null ? null : pulumi.Output.create<List<String>>((map['maintenanceDays'] as List).cast<String>()),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      monitorGuids: map['monitorGuids'] == null ? null : pulumi.Output.create<List<String>>((map['monitorGuids'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
-      timeZone: pulumi.Output.create<String>(map['timeZone'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      endRepeat: map['endRepeat'] == null ? null : (MonitorDowntimeEndRepeat.fromMap((map['endRepeat'] as Map).cast<String, dynamic>())).input(),
+      endTime: (map['endTime'] as String).input(),
+      frequency: map['frequency'] == null ? null : (MonitorDowntimeFrequency.fromMap((map['frequency'] as Map).cast<String, dynamic>())).input(),
+      maintenanceDays: map['maintenanceDays'] == null ? null : ((map['maintenanceDays'] as List).cast<String>()).input(),
+      mode: (map['mode'] as String).input(),
+      monitorGuids: map['monitorGuids'] == null ? null : ((map['monitorGuids'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      timeZone: (map['timeZone'] as String).input(),
     );
   }
 }

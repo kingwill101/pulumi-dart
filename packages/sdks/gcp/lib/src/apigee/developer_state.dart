@@ -40,27 +40,17 @@ class DeveloperState {
   /// [status] Status of the developer. Valid values are active and inactive.
   /// [userName] User name of the developer. Not used by Apigee hybrid.
   DeveloperState({
-    pulumi.Output<List<DeveloperAttribute>>? attributes,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? firstName,
-    pulumi.Output<String>? lastModifiedAt,
-    pulumi.Output<String>? lastName,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? organizatioName,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? userName,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<List<DeveloperAttribute>>(attributes),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      firstName = pulumi.Input.asOptionalInput<String>(firstName),
-      lastModifiedAt = pulumi.Input.asOptionalInput<String>(lastModifiedAt),
-      lastName = pulumi.Input.asOptionalInput<String>(lastName),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      organizatioName = pulumi.Input.asOptionalInput<String>(organizatioName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.attributes,
+    this.createdAt,
+    this.email,
+    this.firstName,
+    this.lastModifiedAt,
+    this.lastName,
+    this.orgId,
+    this.organizatioName,
+    this.status,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class DeveloperState {
 
   factory DeveloperState.fromMap(Map<String, dynamic> map) {
     return DeveloperState(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<DeveloperAttribute>>(pulumi.Input.decodeList<DeveloperAttribute>(map['attributes'], (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      firstName: map['firstName'] == null ? null : pulumi.Output.create<String>(map['firstName'] as String),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : pulumi.Output.create<String>(map['lastModifiedAt'] as String),
-      lastName: map['lastName'] == null ? null : pulumi.Output.create<String>(map['lastName'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      organizatioName: map['organizatioName'] == null ? null : pulumi.Output.create<String>(map['organizatioName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAttribute>(map['attributes'], (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      organizatioName: map['organizatioName'] == null ? null : (map['organizatioName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

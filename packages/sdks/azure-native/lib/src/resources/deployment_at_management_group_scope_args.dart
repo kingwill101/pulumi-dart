@@ -26,17 +26,12 @@ class DeploymentAtManagementGroupScopeArgs {
   /// [properties] The deployment properties.
   /// [tags] Deployment tags
   DeploymentAtManagementGroupScopeArgs({
-    pulumi.Output<String>? deploymentName,
-    required pulumi.Output<String> groupId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<DeploymentProperties> properties,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deploymentName = pulumi.Input.asOptionalInput<String>(deploymentName),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<DeploymentProperties>(properties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deploymentName,
+    required this.groupId,
+    this.location,
+    required this.properties,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DeploymentAtManagementGroupScopeArgs {
 
   factory DeploymentAtManagementGroupScopeArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentAtManagementGroupScopeArgs(
-      deploymentName: map['deploymentName'] == null ? null : pulumi.Output.create<String>(map['deploymentName'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<DeploymentProperties>(DeploymentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (DeploymentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_destination_flow_config_destination_connector_properties_zendesk_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig? errorHandlingConfig;
-  final List<String>? idFieldNames;
-  final String object;
-  final String? writeOperationType;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig>? errorHandlingConfig;
+  final pulumi.Input<List<String>>? idFieldNames;
+  final pulumi.Input<String> object;
+  final pulumi.Input<String>? writeOperationType;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk].
   /// [errorHandlingConfig] Optional.
@@ -22,7 +23,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?pulumi.Input.mapOptionalInputValue<FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig, Map<String, dynamic>>(errorHandlingConfig, (value) => value.toMap()),
       'idFieldNames': ?idFieldNames,
       'object': object,
       'writeOperationType': ?writeOperationType,
@@ -31,10 +32,10 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk(
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
-      idFieldNames: map['idFieldNames'] == null ? null : (map['idFieldNames'] as List).cast<String>(),
-      object: map['object'] as String,
-      writeOperationType: map['writeOperationType'] == null ? null : map['writeOperationType'] as String,
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
+      idFieldNames: map['idFieldNames'] == null ? null : ((map['idFieldNames'] as List).cast<String>()).input(),
+      object: (map['object'] as String).input(),
+      writeOperationType: map['writeOperationType'] == null ? null : (map['writeOperationType'] as String).input(),
     );
   }
 }

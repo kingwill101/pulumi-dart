@@ -22,15 +22,11 @@ class EmailIdentityMailFromAttributesArgs {
   /// [mailFromDomain] The custom MAIL FROM domain that you want the verified identity to use. Required if `behavior_on_mx_failure` is `REJECT_MESSAGE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EmailIdentityMailFromAttributesArgs({
-    pulumi.Output<String>? behaviorOnMxFailure,
-    required pulumi.Output<String> emailIdentity,
-    pulumi.Output<String>? mailFromDomain,
-    pulumi.Output<String>? region,
-  }) :
-      behaviorOnMxFailure = pulumi.Input.asOptionalInput<String>(behaviorOnMxFailure),
-      emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
-      mailFromDomain = pulumi.Input.asOptionalInput<String>(mailFromDomain),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.behaviorOnMxFailure,
+    required this.emailIdentity,
+    this.mailFromDomain,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EmailIdentityMailFromAttributesArgs {
 
   factory EmailIdentityMailFromAttributesArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityMailFromAttributesArgs(
-      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : pulumi.Output.create<String>(map['behaviorOnMxFailure'] as String),
-      emailIdentity: pulumi.Output.create<String>(map['emailIdentity'] as String),
-      mailFromDomain: map['mailFromDomain'] == null ? null : pulumi.Output.create<String>(map['mailFromDomain'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : (map['behaviorOnMxFailure'] as String).input(),
+      emailIdentity: (map['emailIdentity'] as String).input(),
+      mailFromDomain: map['mailFromDomain'] == null ? null : (map['mailFromDomain'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

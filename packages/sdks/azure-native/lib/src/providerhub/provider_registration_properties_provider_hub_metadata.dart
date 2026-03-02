@@ -8,17 +8,17 @@ import 'resource_provider_authorization.dart';
 /// The provider hub metadata.
 class ProviderRegistrationPropertiesProviderHubMetadata {
   /// The direct RP role definition id.
-  final String? directRpRoleDefinitionId;
+  final pulumi.Input<String>? directRpRoleDefinitionId;
   /// The global async operation resource type name.
-  final String? globalAsyncOperationResourceTypeName;
+  final pulumi.Input<String>? globalAsyncOperationResourceTypeName;
   /// The provider authentication.
-  final ProviderHubMetadataProviderAuthentication? providerAuthentication;
+  final pulumi.Input<ProviderHubMetadataProviderAuthentication>? providerAuthentication;
   /// The provider authorizations.
-  final List<ResourceProviderAuthorization>? providerAuthorizations;
+  final pulumi.Input<List<ResourceProviderAuthorization>>? providerAuthorizations;
   /// The regional async operation resource type name.
-  final String? regionalAsyncOperationResourceTypeName;
+  final pulumi.Input<String>? regionalAsyncOperationResourceTypeName;
   /// The third party provider authorization.
-  final ProviderHubMetadataThirdPartyProviderAuthorization? thirdPartyProviderAuthorization;
+  final pulumi.Input<ProviderHubMetadataThirdPartyProviderAuthorization>? thirdPartyProviderAuthorization;
 
   /// Creates a new [ProviderRegistrationPropertiesProviderHubMetadata].
   /// [directRpRoleDefinitionId] The direct RP role definition id.
@@ -40,21 +40,21 @@ class ProviderRegistrationPropertiesProviderHubMetadata {
     return <String, dynamic>{
       'directRpRoleDefinitionId': ?directRpRoleDefinitionId,
       'globalAsyncOperationResourceTypeName': ?globalAsyncOperationResourceTypeName,
-      'providerAuthentication': ?providerAuthentication == null ? null : providerAuthentication!.toMap(),
-      'providerAuthorizations': ?providerAuthorizations == null ? null : pulumi.Input.encodeList<ResourceProviderAuthorization, Map<String, dynamic>>(providerAuthorizations!, (value) => value.toMap()),
+      'providerAuthentication': ?pulumi.Input.mapOptionalInputValue<ProviderHubMetadataProviderAuthentication, Map<String, dynamic>>(providerAuthentication, (value) => value.toMap()),
+      'providerAuthorizations': ?pulumi.Input.mapOptionalInputValue<List<ResourceProviderAuthorization>, List<Map<String, dynamic>>>(providerAuthorizations, (value) => pulumi.Input.encodeList<ResourceProviderAuthorization, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regionalAsyncOperationResourceTypeName': ?regionalAsyncOperationResourceTypeName,
-      'thirdPartyProviderAuthorization': ?thirdPartyProviderAuthorization == null ? null : thirdPartyProviderAuthorization!.toMap(),
+      'thirdPartyProviderAuthorization': ?pulumi.Input.mapOptionalInputValue<ProviderHubMetadataThirdPartyProviderAuthorization, Map<String, dynamic>>(thirdPartyProviderAuthorization, (value) => value.toMap()),
     };
   }
 
   factory ProviderRegistrationPropertiesProviderHubMetadata.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationPropertiesProviderHubMetadata(
-      directRpRoleDefinitionId: map['directRpRoleDefinitionId'] == null ? null : map['directRpRoleDefinitionId'] as String,
-      globalAsyncOperationResourceTypeName: map['globalAsyncOperationResourceTypeName'] == null ? null : map['globalAsyncOperationResourceTypeName'] as String,
-      providerAuthentication: map['providerAuthentication'] == null ? null : ProviderHubMetadataProviderAuthentication.fromMap((map['providerAuthentication'] as Map).cast<String, dynamic>()),
-      providerAuthorizations: map['providerAuthorizations'] == null ? null : pulumi.Input.decodeList<ResourceProviderAuthorization>(map['providerAuthorizations'], (value) => ResourceProviderAuthorization.fromMap((value as Map).cast<String, dynamic>())),
-      regionalAsyncOperationResourceTypeName: map['regionalAsyncOperationResourceTypeName'] == null ? null : map['regionalAsyncOperationResourceTypeName'] as String,
-      thirdPartyProviderAuthorization: map['thirdPartyProviderAuthorization'] == null ? null : ProviderHubMetadataThirdPartyProviderAuthorization.fromMap((map['thirdPartyProviderAuthorization'] as Map).cast<String, dynamic>()),
+      directRpRoleDefinitionId: map['directRpRoleDefinitionId'] == null ? null : (map['directRpRoleDefinitionId'] as String).input(),
+      globalAsyncOperationResourceTypeName: map['globalAsyncOperationResourceTypeName'] == null ? null : (map['globalAsyncOperationResourceTypeName'] as String).input(),
+      providerAuthentication: map['providerAuthentication'] == null ? null : (ProviderHubMetadataProviderAuthentication.fromMap((map['providerAuthentication'] as Map).cast<String, dynamic>())).input(),
+      providerAuthorizations: map['providerAuthorizations'] == null ? null : (pulumi.Input.decodeList<ResourceProviderAuthorization>(map['providerAuthorizations'], (value) => ResourceProviderAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regionalAsyncOperationResourceTypeName: map['regionalAsyncOperationResourceTypeName'] == null ? null : (map['regionalAsyncOperationResourceTypeName'] as String).input(),
+      thirdPartyProviderAuthorization: map['thirdPartyProviderAuthorization'] == null ? null : (ProviderHubMetadataThirdPartyProviderAuthorization.fromMap((map['thirdPartyProviderAuthorization'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

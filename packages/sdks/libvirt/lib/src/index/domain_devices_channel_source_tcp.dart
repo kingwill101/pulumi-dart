@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_channel_source_tcp_reconnect.dart';
 
 class DomainDevicesChannelSourceTcp {
   /// Sets the host address for the TCP connection in the random number generator backend.
-  final String? host;
+  final pulumi.Input<String>? host;
   /// Specifies the operation mode for TCP in the random number generator backend.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Configures reconnect settings for the UNIX domain socket in the backend.
-  final DomainDevicesChannelSourceTcpReconnect? reconnect;
+  final pulumi.Input<DomainDevicesChannelSourceTcpReconnect>? reconnect;
   /// Defines the service attribute for the TCP connection in the random number generator backend.
-  final String? service;
+  final pulumi.Input<String>? service;
   /// Enables or disables TLS encryption for the TCP connection in the backend.
-  final String? tls;
+  final pulumi.Input<String>? tls;
 
   /// Creates a new [DomainDevicesChannelSourceTcp].
   /// [host] Sets the host address for the TCP connection in the random number generator backend.
@@ -32,7 +33,7 @@ class DomainDevicesChannelSourceTcp {
     return <String, dynamic>{
       'host': ?host,
       'mode': ?mode,
-      'reconnect': ?reconnect == null ? null : reconnect!.toMap(),
+      'reconnect': ?pulumi.Input.mapOptionalInputValue<DomainDevicesChannelSourceTcpReconnect, Map<String, dynamic>>(reconnect, (value) => value.toMap()),
       'service': ?service,
       'tls': ?tls,
     };
@@ -40,11 +41,11 @@ class DomainDevicesChannelSourceTcp {
 
   factory DomainDevicesChannelSourceTcp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelSourceTcp(
-      host: map['host'] == null ? null : map['host'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      reconnect: map['reconnect'] == null ? null : DomainDevicesChannelSourceTcpReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>()),
-      service: map['service'] == null ? null : map['service'] as String,
-      tls: map['tls'] == null ? null : map['tls'] as String,
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesChannelSourceTcpReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
+      tls: map['tls'] == null ? null : (map['tls'] as String).input(),
     );
   }
 }

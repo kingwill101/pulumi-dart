@@ -30,19 +30,13 @@ class CustomScenePolicyArgs {
   /// [status] Policy effective status. Valid values: `Disabled`, `Running`.
   /// [template] The name of the policy template. Valid value:
   CustomScenePolicyArgs({
-    required pulumi.Output<String> createTime,
-    required pulumi.Output<String> customScenePolicyName,
-    required pulumi.Output<String> endTime,
-    required pulumi.Output<String> siteIds,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> template,
-  }) :
-      createTime = pulumi.Input.asInput<String>(createTime),
-      customScenePolicyName = pulumi.Input.asInput<String>(customScenePolicyName),
-      endTime = pulumi.Input.asInput<String>(endTime),
-      siteIds = pulumi.Input.asInput<String>(siteIds),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      template = pulumi.Input.asInput<String>(template);
+    required this.createTime,
+    required this.customScenePolicyName,
+    required this.endTime,
+    required this.siteIds,
+    this.status,
+    required this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class CustomScenePolicyArgs {
 
   factory CustomScenePolicyArgs.fromMap(Map<String, dynamic> map) {
     return CustomScenePolicyArgs(
-      createTime: pulumi.Output.create<String>(map['createTime'] as String),
-      customScenePolicyName: pulumi.Output.create<String>(map['customScenePolicyName'] as String),
-      endTime: pulumi.Output.create<String>(map['endTime'] as String),
-      siteIds: pulumi.Output.create<String>(map['siteIds'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      template: pulumi.Output.create<String>(map['template'] as String),
+      createTime: (map['createTime'] as String).input(),
+      customScenePolicyName: (map['customScenePolicyName'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      siteIds: (map['siteIds'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      template: (map['template'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The CSPM (Cloud security posture management) monitoring for Docker Hub offering
 class CspmMonitorDockerHubOfferingResponse {
   /// The offering description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorDockerHub'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [CspmMonitorDockerHubOfferingResponse].
   /// [description] The offering description.
@@ -26,8 +27,8 @@ class CspmMonitorDockerHubOfferingResponse {
 
   factory CspmMonitorDockerHubOfferingResponse.fromMap(Map<String, dynamic> map) {
     return CspmMonitorDockerHubOfferingResponse(
-      description: map['description'] as String,
-      offeringType: map['offeringType'] as String,
+      description: (map['description'] as String).input(),
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

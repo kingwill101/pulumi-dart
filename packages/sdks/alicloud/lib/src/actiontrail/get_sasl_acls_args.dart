@@ -25,17 +25,12 @@ class GetSaslAclsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [username] Get results for the specified username.
   GetSaslAclsArgs({
-    required pulumi.Output<String> aclResourceName,
-    required pulumi.Output<String> aclResourceType,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> username,
-  }) :
-      aclResourceName = pulumi.Input.asInput<String>(aclResourceName),
-      aclResourceType = pulumi.Input.asInput<String>(aclResourceType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      username = pulumi.Input.asInput<String>(username);
+    required this.aclResourceName,
+    required this.aclResourceType,
+    required this.instanceId,
+    this.outputFile,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSaslAclsArgs {
 
   factory GetSaslAclsArgs.fromMap(Map<String, dynamic> map) {
     return GetSaslAclsArgs(
-      aclResourceName: pulumi.Output.create<String>(map['aclResourceName'] as String),
-      aclResourceType: pulumi.Output.create<String>(map['aclResourceType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      aclResourceName: (map['aclResourceName'] as String).input(),
+      aclResourceType: (map['aclResourceType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseMysqlConfigMysqlDefaultTimeZone {
-  final String description;
-  final String example;
-  final int maxLength;
-  final int minLength;
-  final String pattern;
-  final bool requiresRestart;
-  final String type;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> example;
+  final pulumi.Input<int> maxLength;
+  final pulumi.Input<int> minLength;
+  final pulumi.Input<String> pattern;
+  final pulumi.Input<bool> requiresRestart;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDatabaseMysqlConfigMysqlDefaultTimeZone].
   /// [description] Required.
@@ -42,13 +43,13 @@ class GetDatabaseMysqlConfigMysqlDefaultTimeZone {
 
   factory GetDatabaseMysqlConfigMysqlDefaultTimeZone.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlDefaultTimeZone(
-      description: map['description'] as String,
-      example: map['example'] as String,
-      maxLength: map['maxLength'] as int,
-      minLength: map['minLength'] as int,
-      pattern: map['pattern'] as String,
-      requiresRestart: map['requiresRestart'] as bool,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      example: (map['example'] as String).input(),
+      maxLength: (map['maxLength'] as int).input(),
+      minLength: (map['minLength'] as int).input(),
+      pattern: (map['pattern'] as String).input(),
+      requiresRestart: (map['requiresRestart'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

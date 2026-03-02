@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_rollout_properties_specification_response.dart';
 import 'custom_rollout_properties_status_response.dart';
 
 class CustomRolloutPropertiesResponse {
   /// The provisioned state of the resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The specification.
-  final CustomRolloutPropertiesSpecificationResponse specification;
+  final pulumi.Input<CustomRolloutPropertiesSpecificationResponse> specification;
   /// The status.
-  final CustomRolloutPropertiesStatusResponse? status;
+  final pulumi.Input<CustomRolloutPropertiesStatusResponse>? status;
 
   /// Creates a new [CustomRolloutPropertiesResponse].
   /// [provisioningState] The provisioned state of the resource.
@@ -24,16 +25,16 @@ class CustomRolloutPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'provisioningState': provisioningState,
-      'specification': specification.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'specification': pulumi.Input.mapInputValue<CustomRolloutPropertiesSpecificationResponse, Map<String, dynamic>>(specification, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<CustomRolloutPropertiesStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory CustomRolloutPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomRolloutPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      specification: CustomRolloutPropertiesSpecificationResponse.fromMap((map['specification'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : CustomRolloutPropertiesStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      provisioningState: (map['provisioningState'] as String).input(),
+      specification: (CustomRolloutPropertiesSpecificationResponse.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (CustomRolloutPropertiesStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

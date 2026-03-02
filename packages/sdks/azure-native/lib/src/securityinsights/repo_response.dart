@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a repository.
 class RepoResponse {
   /// Array of branches.
-  final List<String>? branches;
+  final pulumi.Input<List<String>>? branches;
   /// The name of the repository.
-  final String? fullName;
+  final pulumi.Input<String>? fullName;
   /// The installation id of the repository.
-  final double? installationId;
+  final pulumi.Input<double>? installationId;
   /// The url to access the repository.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [RepoResponse].
   /// [branches] Array of branches.
@@ -35,10 +36,10 @@ class RepoResponse {
 
   factory RepoResponse.fromMap(Map<String, dynamic> map) {
     return RepoResponse(
-      branches: map['branches'] == null ? null : (map['branches'] as List).cast<String>(),
-      fullName: map['fullName'] == null ? null : map['fullName'] as String,
-      installationId: map['installationId'] == null ? null : map['installationId'] as double,
-      url: map['url'] == null ? null : map['url'] as String,
+      branches: map['branches'] == null ? null : ((map['branches'] as List).cast<String>()).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
+      installationId: map['installationId'] == null ? null : (map['installationId'] as double).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

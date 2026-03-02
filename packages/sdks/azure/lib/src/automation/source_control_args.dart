@@ -41,27 +41,17 @@ class SourceControlArgs {
   /// [security] A `security` block as defined below.
   /// [sourceControlType] The source type of Source Control, possible vaules are `VsoGit`, `VsoTfvc` and `GitHub`, and the value is case sensitive.
   SourceControlArgs({
-    pulumi.Output<bool>? automaticSync,
-    required pulumi.Output<String> automationAccountId,
-    pulumi.Output<String>? branch,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> folderPath,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publishRunbookEnabled,
-    required pulumi.Output<String> repositoryUrl,
-    required pulumi.Output<SourceControlSecurity> security,
-    required pulumi.Output<String> sourceControlType,
-  }) :
-      automaticSync = pulumi.Input.asOptionalInput<bool>(automaticSync),
-      automationAccountId = pulumi.Input.asInput<String>(automationAccountId),
-      branch = pulumi.Input.asOptionalInput<String>(branch),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folderPath = pulumi.Input.asInput<String>(folderPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publishRunbookEnabled = pulumi.Input.asOptionalInput<bool>(publishRunbookEnabled),
-      repositoryUrl = pulumi.Input.asInput<String>(repositoryUrl),
-      security = pulumi.Input.asInput<SourceControlSecurity>(security),
-      sourceControlType = pulumi.Input.asInput<String>(sourceControlType);
+    this.automaticSync,
+    required this.automationAccountId,
+    this.branch,
+    this.description,
+    required this.folderPath,
+    this.name,
+    this.publishRunbookEnabled,
+    required this.repositoryUrl,
+    required this.security,
+    required this.sourceControlType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class SourceControlArgs {
 
   factory SourceControlArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlArgs(
-      automaticSync: map['automaticSync'] == null ? null : pulumi.Output.create<bool>(map['automaticSync'] as bool),
-      automationAccountId: pulumi.Output.create<String>(map['automationAccountId'] as String),
-      branch: map['branch'] == null ? null : pulumi.Output.create<String>(map['branch'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folderPath: pulumi.Output.create<String>(map['folderPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publishRunbookEnabled: map['publishRunbookEnabled'] == null ? null : pulumi.Output.create<bool>(map['publishRunbookEnabled'] as bool),
-      repositoryUrl: pulumi.Output.create<String>(map['repositoryUrl'] as String),
-      security: pulumi.Output.create<SourceControlSecurity>(SourceControlSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())),
-      sourceControlType: pulumi.Output.create<String>(map['sourceControlType'] as String),
+      automaticSync: map['automaticSync'] == null ? null : (map['automaticSync'] as bool).input(),
+      automationAccountId: (map['automationAccountId'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folderPath: (map['folderPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publishRunbookEnabled: map['publishRunbookEnabled'] == null ? null : (map['publishRunbookEnabled'] as bool).input(),
+      repositoryUrl: (map['repositoryUrl'] as String).input(),
+      security: (SourceControlSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
+      sourceControlType: (map['sourceControlType'] as String).input(),
     );
   }
 }

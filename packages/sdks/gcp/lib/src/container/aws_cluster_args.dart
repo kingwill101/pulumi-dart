@@ -55,31 +55,19 @@ class AwsClusterArgs {
   /// [networking] Cluster-wide networking configuration.
   /// [project] The project for the resource
   AwsClusterArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<AwsClusterAuthorization> authorization,
-    required pulumi.Output<String> awsRegion,
-    pulumi.Output<AwsClusterBinaryAuthorization>? binaryAuthorization,
-    required pulumi.Output<AwsClusterControlPlane> controlPlane,
-    pulumi.Output<String>? description,
-    required pulumi.Output<AwsClusterFleet> fleet,
-    required pulumi.Output<String> location,
-    pulumi.Output<AwsClusterLoggingConfig>? loggingConfig,
-    pulumi.Output<String>? name,
-    required pulumi.Output<AwsClusterNetworking> networking,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      authorization = pulumi.Input.asInput<AwsClusterAuthorization>(authorization),
-      awsRegion = pulumi.Input.asInput<String>(awsRegion),
-      binaryAuthorization = pulumi.Input.asOptionalInput<AwsClusterBinaryAuthorization>(binaryAuthorization),
-      controlPlane = pulumi.Input.asInput<AwsClusterControlPlane>(controlPlane),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fleet = pulumi.Input.asInput<AwsClusterFleet>(fleet),
-      location = pulumi.Input.asInput<String>(location),
-      loggingConfig = pulumi.Input.asOptionalInput<AwsClusterLoggingConfig>(loggingConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networking = pulumi.Input.asInput<AwsClusterNetworking>(networking),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    required this.authorization,
+    required this.awsRegion,
+    this.binaryAuthorization,
+    required this.controlPlane,
+    this.description,
+    required this.fleet,
+    required this.location,
+    this.loggingConfig,
+    this.name,
+    required this.networking,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,18 +88,18 @@ class AwsClusterArgs {
 
   factory AwsClusterArgs.fromMap(Map<String, dynamic> map) {
     return AwsClusterArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      authorization: pulumi.Output.create<AwsClusterAuthorization>(AwsClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())),
-      awsRegion: pulumi.Output.create<String>(map['awsRegion'] as String),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : pulumi.Output.create<AwsClusterBinaryAuthorization>(AwsClusterBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())),
-      controlPlane: pulumi.Output.create<AwsClusterControlPlane>(AwsClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fleet: pulumi.Output.create<AwsClusterFleet>(AwsClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<AwsClusterLoggingConfig>(AwsClusterLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networking: pulumi.Output.create<AwsClusterNetworking>(AwsClusterNetworking.fromMap((map['networking'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      authorization: (AwsClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
+      awsRegion: (map['awsRegion'] as String).input(),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : (AwsClusterBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())).input(),
+      controlPlane: (AwsClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fleet: (AwsClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (AwsClusterLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networking: (AwsClusterNetworking.fromMap((map['networking'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

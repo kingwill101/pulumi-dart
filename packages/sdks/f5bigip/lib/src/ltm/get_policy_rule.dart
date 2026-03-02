@@ -5,10 +5,10 @@ import 'get_policy_rule_action.dart';
 import 'get_policy_rule_condition.dart';
 
 class GetPolicyRule {
-  final List<GetPolicyRuleAction>? actions;
-  final List<GetPolicyRuleCondition>? conditions;
+  final pulumi.Input<List<GetPolicyRuleAction>>? actions;
+  final pulumi.Input<List<GetPolicyRuleCondition>>? conditions;
   /// Name of the policy which includes partion ( /partition/policy-name )
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetPolicyRule].
   /// [actions] Optional.
@@ -22,17 +22,17 @@ class GetPolicyRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?actions == null ? null : pulumi.Input.encodeList<GetPolicyRuleAction, Map<String, dynamic>>(actions!, (value) => value.toMap()),
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<GetPolicyRuleCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'actions': ?pulumi.Input.mapOptionalInputValue<List<GetPolicyRuleAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<GetPolicyRuleAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<GetPolicyRuleCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<GetPolicyRuleCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory GetPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetPolicyRule(
-      actions: map['actions'] == null ? null : pulumi.Input.decodeList<GetPolicyRuleAction>(map['actions'], (value) => GetPolicyRuleAction.fromMap((value as Map).cast<String, dynamic>())),
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<GetPolicyRuleCondition>(map['conditions'], (value) => GetPolicyRuleCondition.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GetPolicyRuleAction>(map['actions'], (value) => GetPolicyRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GetPolicyRuleCondition>(map['conditions'], (value) => GetPolicyRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

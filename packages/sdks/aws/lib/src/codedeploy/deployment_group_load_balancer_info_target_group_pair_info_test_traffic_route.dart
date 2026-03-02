@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute {
   /// List of Amazon Resource Names (ARNs) of the load balancer listeners.
-  final List<String> listenerArns;
+  final pulumi.Input<List<String>> listenerArns;
 
   /// Creates a new [DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute].
   /// [listenerArns] List of Amazon Resource Names (ARNs) of the load balancer listeners.
@@ -19,7 +20,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute {
 
   factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute(
-      listenerArns: (map['listenerArns'] as List).cast<String>(),
+      listenerArns: ((map['listenerArns'] as List).cast<String>()).input(),
     );
   }
 }

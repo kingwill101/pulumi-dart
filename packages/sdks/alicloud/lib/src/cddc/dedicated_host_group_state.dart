@@ -35,25 +35,16 @@ class DedicatedHostGroupState {
   /// [openPermission] Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
   /// [vpcId] The virtual private cloud (VPC) ID of the dedicated cluster.
   DedicatedHostGroupState({
-    pulumi.Output<String>? allocationPolicy,
-    pulumi.Output<int>? cpuAllocationRatio,
-    pulumi.Output<String>? dedicatedHostGroupDesc,
-    pulumi.Output<int>? diskAllocationRatio,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? hostReplacePolicy,
-    pulumi.Output<int>? memAllocationRatio,
-    pulumi.Output<bool>? openPermission,
-    pulumi.Output<String>? vpcId,
-  }) :
-      allocationPolicy = pulumi.Input.asOptionalInput<String>(allocationPolicy),
-      cpuAllocationRatio = pulumi.Input.asOptionalInput<int>(cpuAllocationRatio),
-      dedicatedHostGroupDesc = pulumi.Input.asOptionalInput<String>(dedicatedHostGroupDesc),
-      diskAllocationRatio = pulumi.Input.asOptionalInput<int>(diskAllocationRatio),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      hostReplacePolicy = pulumi.Input.asOptionalInput<String>(hostReplacePolicy),
-      memAllocationRatio = pulumi.Input.asOptionalInput<int>(memAllocationRatio),
-      openPermission = pulumi.Input.asOptionalInput<bool>(openPermission),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.allocationPolicy,
+    this.cpuAllocationRatio,
+    this.dedicatedHostGroupDesc,
+    this.diskAllocationRatio,
+    this.engine,
+    this.hostReplacePolicy,
+    this.memAllocationRatio,
+    this.openPermission,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class DedicatedHostGroupState {
 
   factory DedicatedHostGroupState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostGroupState(
-      allocationPolicy: map['allocationPolicy'] == null ? null : pulumi.Output.create<String>(map['allocationPolicy'] as String),
-      cpuAllocationRatio: map['cpuAllocationRatio'] == null ? null : pulumi.Output.create<int>(map['cpuAllocationRatio'] as int),
-      dedicatedHostGroupDesc: map['dedicatedHostGroupDesc'] == null ? null : pulumi.Output.create<String>(map['dedicatedHostGroupDesc'] as String),
-      diskAllocationRatio: map['diskAllocationRatio'] == null ? null : pulumi.Output.create<int>(map['diskAllocationRatio'] as int),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      hostReplacePolicy: map['hostReplacePolicy'] == null ? null : pulumi.Output.create<String>(map['hostReplacePolicy'] as String),
-      memAllocationRatio: map['memAllocationRatio'] == null ? null : pulumi.Output.create<int>(map['memAllocationRatio'] as int),
-      openPermission: map['openPermission'] == null ? null : pulumi.Output.create<bool>(map['openPermission'] as bool),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy'] as String).input(),
+      cpuAllocationRatio: map['cpuAllocationRatio'] == null ? null : (map['cpuAllocationRatio'] as int).input(),
+      dedicatedHostGroupDesc: map['dedicatedHostGroupDesc'] == null ? null : (map['dedicatedHostGroupDesc'] as String).input(),
+      diskAllocationRatio: map['diskAllocationRatio'] == null ? null : (map['diskAllocationRatio'] as int).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      hostReplacePolicy: map['hostReplacePolicy'] == null ? null : (map['hostReplacePolicy'] as String).input(),
+      memAllocationRatio: map['memAllocationRatio'] == null ? null : (map['memAllocationRatio'] as int).input(),
+      openPermission: map['openPermission'] == null ? null : (map['openPermission'] as bool).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

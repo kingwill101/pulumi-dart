@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerStandbyPolicyResponseComputeBeta {
-  final int initialDelaySec;
+  final pulumi.Input<int> initialDelaySec;
   /// Defines behaviour of using instances from standby pool to resize MIG.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [InstanceGroupManagerStandbyPolicyResponseComputeBeta].
   /// [initialDelaySec] Required.
@@ -23,8 +24,8 @@ class InstanceGroupManagerStandbyPolicyResponseComputeBeta {
 
   factory InstanceGroupManagerStandbyPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStandbyPolicyResponseComputeBeta(
-      initialDelaySec: map['initialDelaySec'] as int,
-      mode: map['mode'] as String,
+      initialDelaySec: (map['initialDelaySec'] as int).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxPageEntryFulfillmentConditionalCase {
   /// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
   /// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
-  final String? cases;
+  final pulumi.Input<String>? cases;
 
   /// Creates a new [CxPageEntryFulfillmentConditionalCase].
   /// [cases] A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -20,7 +21,7 @@ class CxPageEntryFulfillmentConditionalCase {
 
   factory CxPageEntryFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxPageEntryFulfillmentConditionalCase(
-      cases: map['cases'] == null ? null : map['cases'] as String,
+      cases: map['cases'] == null ? null : (map['cases'] as String).input(),
     );
   }
 }

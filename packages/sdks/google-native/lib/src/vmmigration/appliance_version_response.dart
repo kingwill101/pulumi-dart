@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an appliance version.
 class ApplianceVersionResponse {
   /// Determine whether it's critical to upgrade the appliance to this version.
-  final bool critical;
+  final pulumi.Input<bool> critical;
   /// Link to a page that contains the version release notes.
-  final String releaseNotesUri;
+  final pulumi.Input<String> releaseNotesUri;
   /// A link for downloading the version.
-  final String uri;
+  final pulumi.Input<String> uri;
   /// The appliance version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [ApplianceVersionResponse].
   /// [critical] Determine whether it's critical to upgrade the appliance to this version.
@@ -35,10 +36,10 @@ class ApplianceVersionResponse {
 
   factory ApplianceVersionResponse.fromMap(Map<String, dynamic> map) {
     return ApplianceVersionResponse(
-      critical: map['critical'] as bool,
-      releaseNotesUri: map['releaseNotesUri'] as String,
-      uri: map['uri'] as String,
-      version: map['version'] as String,
+      critical: (map['critical'] as bool).input(),
+      releaseNotesUri: (map['releaseNotesUri'] as String).input(),
+      uri: (map['uri'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

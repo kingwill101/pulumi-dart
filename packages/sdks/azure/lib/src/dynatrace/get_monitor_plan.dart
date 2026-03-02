@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMonitorPlan {
   /// Different billing cycles.
-  final String billingCycle;
+  final pulumi.Input<String> billingCycle;
   /// Date when plan was applied.
-  final String effectiveDate;
+  final pulumi.Input<String> effectiveDate;
   /// Plan id as published by Dynatrace.
-  final String plan;
+  final pulumi.Input<String> plan;
   /// Different usage type.
-  final String usageType;
+  final pulumi.Input<String> usageType;
 
   /// Creates a new [GetMonitorPlan].
   /// [billingCycle] Different billing cycles.
@@ -34,10 +35,10 @@ class GetMonitorPlan {
 
   factory GetMonitorPlan.fromMap(Map<String, dynamic> map) {
     return GetMonitorPlan(
-      billingCycle: map['billingCycle'] as String,
-      effectiveDate: map['effectiveDate'] as String,
-      plan: map['plan'] as String,
-      usageType: map['usageType'] as String,
+      billingCycle: (map['billingCycle'] as String).input(),
+      effectiveDate: (map['effectiveDate'] as String).input(),
+      plan: (map['plan'] as String).input(),
+      usageType: (map['usageType'] as String).input(),
     );
   }
 }

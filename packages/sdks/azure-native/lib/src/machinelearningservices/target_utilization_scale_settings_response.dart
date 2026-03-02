@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetUtilizationScaleSettingsResponse {
   /// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
-  final int? maxInstances;
+  final pulumi.Input<int>? maxInstances;
   /// The minimum number of instances to always be present.
-  final int? minInstances;
+  final pulumi.Input<int>? minInstances;
   /// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
-  final String? pollingInterval;
+  final pulumi.Input<String>? pollingInterval;
   /// Expected value is 'TargetUtilization'.
-  final String scaleType;
+  final pulumi.Input<String> scaleType;
   /// Target CPU usage for the autoscaler.
-  final int? targetUtilizationPercentage;
+  final pulumi.Input<int>? targetUtilizationPercentage;
 
   /// Creates a new [TargetUtilizationScaleSettingsResponse].
   /// [maxInstances] The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
@@ -39,11 +40,11 @@ class TargetUtilizationScaleSettingsResponse {
 
   factory TargetUtilizationScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TargetUtilizationScaleSettingsResponse(
-      maxInstances: map['maxInstances'] == null ? null : map['maxInstances'] as int,
-      minInstances: map['minInstances'] == null ? null : map['minInstances'] as int,
-      pollingInterval: map['pollingInterval'] == null ? null : map['pollingInterval'] as String,
-      scaleType: map['scaleType'] as String,
-      targetUtilizationPercentage: map['targetUtilizationPercentage'] == null ? null : map['targetUtilizationPercentage'] as int,
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
+      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval'] as String).input(),
+      scaleType: (map['scaleType'] as String).input(),
+      targetUtilizationPercentage: map['targetUtilizationPercentage'] == null ? null : (map['targetUtilizationPercentage'] as int).input(),
     );
   }
 }

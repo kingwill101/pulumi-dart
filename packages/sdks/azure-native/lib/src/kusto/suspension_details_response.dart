@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
 class SuspensionDetailsResponse {
   /// The starting date and time of the suspension state.
-  final String? suspensionStartDate;
+  final pulumi.Input<String>? suspensionStartDate;
 
   /// Creates a new [SuspensionDetailsResponse].
   /// [suspensionStartDate] The starting date and time of the suspension state.
@@ -20,7 +21,7 @@ class SuspensionDetailsResponse {
 
   factory SuspensionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SuspensionDetailsResponse(
-      suspensionStartDate: map['suspensionStartDate'] == null ? null : map['suspensionStartDate'] as String,
+      suspensionStartDate: map['suspensionStartDate'] == null ? null : (map['suspensionStartDate'] as String).input(),
     );
   }
 }

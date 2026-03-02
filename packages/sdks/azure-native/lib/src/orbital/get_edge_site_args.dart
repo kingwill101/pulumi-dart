@@ -16,11 +16,9 @@ class GetEdgeSiteArgs {
   /// [edgeSiteName] Edge site name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetEdgeSiteArgs({
-    required pulumi.Output<String> edgeSiteName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      edgeSiteName = pulumi.Input.asInput<String>(edgeSiteName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.edgeSiteName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEdgeSiteArgs {
 
   factory GetEdgeSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeSiteArgs(
-      edgeSiteName: pulumi.Output.create<String>(map['edgeSiteName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      edgeSiteName: (map['edgeSiteName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

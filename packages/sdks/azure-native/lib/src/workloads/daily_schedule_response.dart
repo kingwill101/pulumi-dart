@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Daily schedule.
 class DailyScheduleResponse {
   /// List of times of day this schedule has to be run.
-  final List<String>? scheduleRunTimes;
+  final pulumi.Input<List<String>>? scheduleRunTimes;
 
   /// Creates a new [DailyScheduleResponse].
   /// [scheduleRunTimes] List of times of day this schedule has to be run.
@@ -20,7 +21,7 @@ class DailyScheduleResponse {
 
   factory DailyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return DailyScheduleResponse(
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : (map['scheduleRunTimes'] as List).cast<String>(),
+      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes'] as List).cast<String>()).input(),
     );
   }
 }

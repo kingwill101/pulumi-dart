@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data type for Microsoft Threat Intelligence data connector.
 class MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed {
   /// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
-  final String lookbackPeriod;
+  final pulumi.Input<String> lookbackPeriod;
   /// Describe whether this data type connection is enabled or not.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed].
   /// [lookbackPeriod] The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
@@ -25,8 +26,8 @@ class MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed {
 
   factory MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed.fromMap(Map<String, dynamic> map) {
     return MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed(
-      lookbackPeriod: map['lookbackPeriod'] as String,
-      state: map['state'] as String,
+      lookbackPeriod: (map['lookbackPeriod'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

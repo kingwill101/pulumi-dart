@@ -25,15 +25,11 @@ class ManagedInstanceTransparentDataEncryptionArgs {
   /// [managedHsmKeyId] Optional.
   /// [managedInstanceId] Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
   ManagedInstanceTransparentDataEncryptionArgs({
-    pulumi.Output<bool>? autoRotationEnabled,
-    pulumi.Output<String>? keyVaultKeyId,
-    pulumi.Output<String>? managedHsmKeyId,
-    required pulumi.Output<String> managedInstanceId,
-  }) :
-      autoRotationEnabled = pulumi.Input.asOptionalInput<bool>(autoRotationEnabled),
-      keyVaultKeyId = pulumi.Input.asOptionalInput<String>(keyVaultKeyId),
-      managedHsmKeyId = pulumi.Input.asOptionalInput<String>(managedHsmKeyId),
-      managedInstanceId = pulumi.Input.asInput<String>(managedInstanceId);
+    this.autoRotationEnabled,
+    this.keyVaultKeyId,
+    this.managedHsmKeyId,
+    required this.managedInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class ManagedInstanceTransparentDataEncryptionArgs {
 
   factory ManagedInstanceTransparentDataEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceTransparentDataEncryptionArgs(
-      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoRotationEnabled'] as bool),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : pulumi.Output.create<String>(map['managedHsmKeyId'] as String),
-      managedInstanceId: pulumi.Output.create<String>(map['managedInstanceId'] as String),
+      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : (map['autoRotationEnabled'] as bool).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
+      managedInstanceId: (map['managedInstanceId'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The billing information of the resource.
 class ResourceSkuResponse {
@@ -11,19 +12,19 @@ class ResourceSkuResponse {
   /// Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
   /// Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
   /// Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Not used. Retained for future use.
-  final String family;
+  final pulumi.Input<String> family;
   /// The name of the SKU. Required.
   ///
   /// Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
-  final String name;
+  final pulumi.Input<String> name;
   /// Not used. Retained for future use.
-  final String size;
+  final pulumi.Input<String> size;
   /// Optional tier of this particular SKU. 'Standard' or 'Free'.
   ///
   /// `Basic` is deprecated, use `Standard` instead.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [ResourceSkuResponse].
   /// [capacity] Optional, integer. The unit count of the resource.
@@ -51,11 +52,11 @@ class ResourceSkuResponse {
 
   factory ResourceSkuResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSkuResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      family: map['family'] as String,
-      name: map['name'] as String,
-      size: map['size'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      family: (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
+      size: (map['size'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

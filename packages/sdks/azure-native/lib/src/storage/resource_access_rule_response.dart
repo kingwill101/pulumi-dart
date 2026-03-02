@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource Access Rule.
 class ResourceAccessRuleResponse {
   /// Resource Id
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Tenant Id
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ResourceAccessRuleResponse].
   /// [resourceId] Resource Id
@@ -25,8 +26,8 @@ class ResourceAccessRuleResponse {
 
   factory ResourceAccessRuleResponse.fromMap(Map<String, dynamic> map) {
     return ResourceAccessRuleResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

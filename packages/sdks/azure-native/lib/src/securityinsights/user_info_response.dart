@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User information that made some action
 class UserInfoResponse {
   /// The email of the user.
-  final String email;
+  final pulumi.Input<String> email;
   /// The name of the user.
-  final String name;
+  final pulumi.Input<String> name;
   /// The object id of the user.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
 
   /// Creates a new [UserInfoResponse].
   /// [email] The email of the user.
@@ -30,9 +31,9 @@ class UserInfoResponse {
 
   factory UserInfoResponse.fromMap(Map<String, dynamic> map) {
     return UserInfoResponse(
-      email: map['email'] as String,
-      name: map['name'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
+      email: (map['email'] as String).input(),
+      name: (map['name'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

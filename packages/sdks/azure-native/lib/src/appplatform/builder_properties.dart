@@ -7,9 +7,9 @@ import 'stack_properties.dart';
 /// KPack Builder properties payload
 class BuilderProperties {
   /// Builder buildpack groups.
-  final List<BuildpacksGroupProperties>? buildpackGroups;
+  final pulumi.Input<List<BuildpacksGroupProperties>>? buildpackGroups;
   /// Builder cluster stack property.
-  final StackProperties? stack;
+  final pulumi.Input<StackProperties>? stack;
 
   /// Creates a new [BuilderProperties].
   /// [buildpackGroups] Builder buildpack groups.
@@ -21,15 +21,15 @@ class BuilderProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildpackGroups': ?buildpackGroups == null ? null : pulumi.Input.encodeList<BuildpacksGroupProperties, Map<String, dynamic>>(buildpackGroups!, (value) => value.toMap()),
-      'stack': ?stack == null ? null : stack!.toMap(),
+      'buildpackGroups': ?pulumi.Input.mapOptionalInputValue<List<BuildpacksGroupProperties>, List<Map<String, dynamic>>>(buildpackGroups, (value) => pulumi.Input.encodeList<BuildpacksGroupProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stack': ?pulumi.Input.mapOptionalInputValue<StackProperties, Map<String, dynamic>>(stack, (value) => value.toMap()),
     };
   }
 
   factory BuilderProperties.fromMap(Map<String, dynamic> map) {
     return BuilderProperties(
-      buildpackGroups: map['buildpackGroups'] == null ? null : pulumi.Input.decodeList<BuildpacksGroupProperties>(map['buildpackGroups'], (value) => BuildpacksGroupProperties.fromMap((value as Map).cast<String, dynamic>())),
-      stack: map['stack'] == null ? null : StackProperties.fromMap((map['stack'] as Map).cast<String, dynamic>()),
+      buildpackGroups: map['buildpackGroups'] == null ? null : (pulumi.Input.decodeList<BuildpacksGroupProperties>(map['buildpackGroups'], (value) => BuildpacksGroupProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stack: map['stack'] == null ? null : (StackProperties.fromMap((map['stack'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

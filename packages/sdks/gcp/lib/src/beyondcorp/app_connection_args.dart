@@ -47,25 +47,16 @@ class AppConnectionArgs {
   /// [region] The region of the AppConnection.
   /// [type] The type of network connectivity used by the AppConnection. Refer
   AppConnectionArgs({
-    required pulumi.Output<AppConnectionApplicationEndpoint> applicationEndpoint,
-    pulumi.Output<List<String>>? connectors,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<AppConnectionGateway>? gateway,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? type,
-  }) :
-      applicationEndpoint = pulumi.Input.asInput<AppConnectionApplicationEndpoint>(applicationEndpoint),
-      connectors = pulumi.Input.asOptionalInput<List<String>>(connectors),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gateway = pulumi.Input.asOptionalInput<AppConnectionGateway>(gateway),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.applicationEndpoint,
+    this.connectors,
+    this.displayName,
+    this.gateway,
+    this.labels,
+    this.name,
+    this.project,
+    this.region,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class AppConnectionArgs {
 
   factory AppConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AppConnectionArgs(
-      applicationEndpoint: pulumi.Output.create<AppConnectionApplicationEndpoint>(AppConnectionApplicationEndpoint.fromMap((map['applicationEndpoint'] as Map).cast<String, dynamic>())),
-      connectors: map['connectors'] == null ? null : pulumi.Output.create<List<String>>((map['connectors'] as List).cast<String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      gateway: map['gateway'] == null ? null : pulumi.Output.create<AppConnectionGateway>(AppConnectionGateway.fromMap((map['gateway'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      applicationEndpoint: (AppConnectionApplicationEndpoint.fromMap((map['applicationEndpoint'] as Map).cast<String, dynamic>())).input(),
+      connectors: map['connectors'] == null ? null : ((map['connectors'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      gateway: map['gateway'] == null ? null : (AppConnectionGateway.fromMap((map['gateway'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

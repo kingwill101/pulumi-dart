@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration for data storage in the environment.
 class StorageConfigResponse {
   /// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
-  final String bucket;
+  final pulumi.Input<String> bucket;
 
   /// Creates a new [StorageConfigResponse].
   /// [bucket] Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
@@ -20,7 +21,7 @@ class StorageConfigResponse {
 
   factory StorageConfigResponse.fromMap(Map<String, dynamic> map) {
     return StorageConfigResponse(
-      bucket: map['bucket'] as String,
+      bucket: (map['bucket'] as String).input(),
     );
   }
 }

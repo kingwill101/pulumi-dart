@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointsEndpointAddressItem {
   /// Connection instance string.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// The ip address of connection string.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// IP network type:`Public` or `Private`.
-  final String netType;
+  final pulumi.Input<String> netType;
   /// Intranet connection port.
-  final String port;
+  final pulumi.Input<String> port;
   /// ID of the VPC the instance belongs to.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// ID of the vSwitch the cluster belongs to.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetEndpointsEndpointAddressItem].
   /// [connectionString] Connection instance string.
@@ -44,12 +45,12 @@ class GetEndpointsEndpointAddressItem {
 
   factory GetEndpointsEndpointAddressItem.fromMap(Map<String, dynamic> map) {
     return GetEndpointsEndpointAddressItem(
-      connectionString: map['connectionString'] as String,
-      ipAddress: map['ipAddress'] as String,
-      netType: map['netType'] as String,
-      port: map['port'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      connectionString: (map['connectionString'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      netType: (map['netType'] as String).input(),
+      port: (map['port'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

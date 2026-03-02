@@ -51,31 +51,19 @@ class PipelineArgs {
   /// [runDimensions] Dimensions emitted by Pipeline.
   /// [variables] List of variables for pipeline.
   PipelineArgs({
-    pulumi.Output<List<AppendVariableActivity>>? activities,
-    pulumi.Output<List<dynamic>>? annotations,
-    pulumi.Output<int>? concurrency,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> factoryName,
-    pulumi.Output<PipelineFolder>? folder,
-    pulumi.Output<Map<String, ParameterSpecification>>? parameters,
-    pulumi.Output<String>? pipelineName,
-    pulumi.Output<PipelinePolicy>? policy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, dynamic>>? runDimensions,
-    pulumi.Output<Map<String, VariableSpecification>>? variables,
-  }) :
-      activities = pulumi.Input.asOptionalInput<List<AppendVariableActivity>>(activities),
-      annotations = pulumi.Input.asOptionalInput<List<dynamic>>(annotations),
-      concurrency = pulumi.Input.asOptionalInput<int>(concurrency),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      folder = pulumi.Input.asOptionalInput<PipelineFolder>(folder),
-      parameters = pulumi.Input.asOptionalInput<Map<String, ParameterSpecification>>(parameters),
-      pipelineName = pulumi.Input.asOptionalInput<String>(pipelineName),
-      policy = pulumi.Input.asOptionalInput<PipelinePolicy>(policy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runDimensions = pulumi.Input.asOptionalInput<Map<String, dynamic>>(runDimensions),
-      variables = pulumi.Input.asOptionalInput<Map<String, VariableSpecification>>(variables);
+    this.activities,
+    this.annotations,
+    this.concurrency,
+    this.description,
+    required this.factoryName,
+    this.folder,
+    this.parameters,
+    this.pipelineName,
+    this.policy,
+    required this.resourceGroupName,
+    this.runDimensions,
+    this.variables,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      activities: map['activities'] == null ? null : pulumi.Output.create<List<AppendVariableActivity>>(pulumi.Input.decodeList<AppendVariableActivity>(map['activities'], (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<dynamic>>((map['annotations'] as List).cast<dynamic>()),
-      concurrency: map['concurrency'] == null ? null : pulumi.Output.create<int>(map['concurrency'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<PipelineFolder>(PipelineFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, ParameterSpecification>>(pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))),
-      pipelineName: map['pipelineName'] == null ? null : pulumi.Output.create<String>(map['pipelineName'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<PipelinePolicy>(PipelinePolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runDimensions: map['runDimensions'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['runDimensions'] as Map).cast<String, dynamic>()),
-      variables: map['variables'] == null ? null : pulumi.Output.create<Map<String, VariableSpecification>>(pulumi.Input.decodeMapValues<VariableSpecification>(map['variables'], (value) => VariableSpecification.fromMap((value as Map).cast<String, dynamic>()))),
+      activities: map['activities'] == null ? null : (pulumi.Input.decodeList<AppendVariableActivity>(map['activities'], (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      factoryName: (map['factoryName'] as String).input(),
+      folder: map['folder'] == null ? null : (PipelineFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName'] as String).input(),
+      policy: map['policy'] == null ? null : (PipelinePolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runDimensions: map['runDimensions'] == null ? null : ((map['runDimensions'] as Map).cast<String, dynamic>()).input(),
+      variables: map['variables'] == null ? null : (pulumi.Input.decodeMapValues<VariableSpecification>(map['variables'], (value) => VariableSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

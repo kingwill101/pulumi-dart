@@ -20,13 +20,10 @@ class CacheAccessPolicyArgs {
   /// [hpcCacheId] The ID of the HPC Cache that this HPC Cache Access Policy resides in. Changing this forces a new HPC Cache Access Policy to be created.
   /// [name] The name which should be used for this HPC Cache Access Policy. Changing this forces a new HPC Cache Access Policy to be created.
   CacheAccessPolicyArgs({
-    required pulumi.Output<List<CacheAccessPolicyAccessRule>> accessRules,
-    required pulumi.Output<String> hpcCacheId,
-    pulumi.Output<String>? name,
-  }) :
-      accessRules = pulumi.Input.asInput<List<CacheAccessPolicyAccessRule>>(accessRules),
-      hpcCacheId = pulumi.Input.asInput<String>(hpcCacheId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.accessRules,
+    required this.hpcCacheId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class CacheAccessPolicyArgs {
 
   factory CacheAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyArgs(
-      accessRules: pulumi.Output.create<List<CacheAccessPolicyAccessRule>>(pulumi.Input.decodeList<CacheAccessPolicyAccessRule>(map['accessRules'], (value) => CacheAccessPolicyAccessRule.fromMap((value as Map).cast<String, dynamic>()))),
-      hpcCacheId: pulumi.Output.create<String>(map['hpcCacheId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accessRules: (pulumi.Input.decodeList<CacheAccessPolicyAccessRule>(map['accessRules'], (value) => CacheAccessPolicyAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hpcCacheId: (map['hpcCacheId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

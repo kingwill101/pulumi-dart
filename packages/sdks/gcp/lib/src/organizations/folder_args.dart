@@ -23,15 +23,11 @@ class FolderArgs {
   /// [parent] The resource name of the parent Folder or Organization.
   /// [tags] A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
   FolderArgs({
-    pulumi.Output<bool>? deletionProtection,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> parent,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      parent = pulumi.Input.asInput<String>(parent),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deletionProtection,
+    required this.displayName,
+    required this.parent,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FolderArgs {
 
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      displayName: (map['displayName'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

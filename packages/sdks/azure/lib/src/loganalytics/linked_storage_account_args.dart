@@ -24,17 +24,12 @@ class LinkedStorageAccountArgs {
   /// [workspaceId] The resource ID of the Log Analytics Workspace. Changing this forces a new Log Analytics Linked Storage Account to be created.
   /// [workspaceResourceId] Optional.
   LinkedStorageAccountArgs({
-    required pulumi.Output<String> dataSourceType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<String>> storageAccountIds,
-    pulumi.Output<String>? workspaceId,
-    pulumi.Output<String>? workspaceResourceId,
-  }) :
-      dataSourceType = pulumi.Input.asInput<String>(dataSourceType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountIds = pulumi.Input.asInput<List<String>>(storageAccountIds),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId),
-      workspaceResourceId = pulumi.Input.asOptionalInput<String>(workspaceResourceId);
+    required this.dataSourceType,
+    required this.resourceGroupName,
+    required this.storageAccountIds,
+    this.workspaceId,
+    this.workspaceResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class LinkedStorageAccountArgs {
 
   factory LinkedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return LinkedStorageAccountArgs(
-      dataSourceType: pulumi.Output.create<String>(map['dataSourceType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountIds: pulumi.Output.create<List<String>>((map['storageAccountIds'] as List).cast<String>()),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : pulumi.Output.create<String>(map['workspaceResourceId'] as String),
+      dataSourceType: (map['dataSourceType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountIds: ((map['storageAccountIds'] as List).cast<String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
     );
   }
 }

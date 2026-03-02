@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource.dart';
 
 /// IP configuration for virtual network gateway.
 class VirtualNetworkGatewayIPConfiguration {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The private IP address allocation method.
-  final String? privateIPAllocationMethod;
+  final pulumi.Input<String>? privateIPAllocationMethod;
   /// The reference to the public IP resource.
-  final SubResource? publicIPAddress;
+  final pulumi.Input<SubResource>? publicIPAddress;
   /// The reference to the subnet resource.
-  final SubResource? subnet;
+  final pulumi.Input<SubResource>? subnet;
 
   /// Creates a new [VirtualNetworkGatewayIPConfiguration].
   /// [id] Resource ID.
@@ -34,18 +35,18 @@ class VirtualNetworkGatewayIPConfiguration {
       'id': ?id,
       'name': ?name,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'publicIPAddress': ?publicIPAddress == null ? null : publicIPAddress!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'publicIPAddress': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(publicIPAddress, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory VirtualNetworkGatewayIPConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayIPConfiguration(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
-      publicIPAddress: map['publicIPAddress'] == null ? null : SubResource.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResource.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'sdkinfo_response.dart';
 /// RuntimeMetadata describing a runtime environment.
 class RuntimeMetadataResponse {
   /// The parameters for the template.
-  final List<ParameterMetadataResponse> parameters;
+  final pulumi.Input<List<ParameterMetadataResponse>> parameters;
   /// SDK Info for the template.
-  final SDKInfoResponse sdkInfo;
+  final pulumi.Input<SDKInfoResponse> sdkInfo;
 
   /// Creates a new [RuntimeMetadataResponse].
   /// [parameters] The parameters for the template.
@@ -21,15 +21,15 @@ class RuntimeMetadataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': pulumi.Input.encodeList<ParameterMetadataResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
-      'sdkInfo': sdkInfo.toMap(),
+      'parameters': pulumi.Input.mapInputValue<List<ParameterMetadataResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ParameterMetadataResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sdkInfo': pulumi.Input.mapInputValue<SDKInfoResponse, Map<String, dynamic>>(sdkInfo, (value) => value.toMap()),
     };
   }
 
   factory RuntimeMetadataResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeMetadataResponse(
-      parameters: pulumi.Input.decodeList<ParameterMetadataResponse>(map['parameters'], (value) => ParameterMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sdkInfo: SDKInfoResponse.fromMap((map['sdkInfo'] as Map).cast<String, dynamic>()),
+      parameters: (pulumi.Input.decodeList<ParameterMetadataResponse>(map['parameters'], (value) => ParameterMetadataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sdkInfo: (SDKInfoResponse.fromMap((map['sdkInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

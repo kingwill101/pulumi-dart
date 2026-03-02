@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UsagePlanQuotaSettings {
   /// Maximum number of requests that can be made in a given time period.
-  final int limit;
+  final pulumi.Input<int> limit;
   /// Number of requests subtracted from the given limit in the initial time period.
-  final int? offset;
+  final pulumi.Input<int>? offset;
   /// Time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
-  final String period;
+  final pulumi.Input<String> period;
 
   /// Creates a new [UsagePlanQuotaSettings].
   /// [limit] Maximum number of requests that can be made in a given time period.
@@ -29,9 +30,9 @@ class UsagePlanQuotaSettings {
 
   factory UsagePlanQuotaSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanQuotaSettings(
-      limit: map['limit'] as int,
-      offset: map['offset'] == null ? null : map['offset'] as int,
-      period: map['period'] as String,
+      limit: (map['limit'] as int).input(),
+      offset: map['offset'] == null ? null : (map['offset'] as int).input(),
+      period: (map['period'] as String).input(),
     );
   }
 }

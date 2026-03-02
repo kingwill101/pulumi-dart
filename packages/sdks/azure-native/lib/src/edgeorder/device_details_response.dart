@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'provisioning_details_response.dart';
 
 /// Device details.
 class DeviceDetailsResponse {
   /// Device serial number to be displayed.
-  final String displaySerialNumber;
+  final pulumi.Input<String> displaySerialNumber;
   /// Management Resource Id.
-  final String managementResourceId;
+  final pulumi.Input<String> managementResourceId;
   /// Management Resource Tenant ID.
-  final String managementResourceTenantId;
+  final pulumi.Input<String> managementResourceTenantId;
   /// Provisioning Details for the device.
-  final ProvisioningDetailsResponse provisioningDetails;
+  final pulumi.Input<ProvisioningDetailsResponse> provisioningDetails;
   /// Determining nature of provisioning that the configuration supports.
-  final String provisioningSupport;
+  final pulumi.Input<String> provisioningSupport;
   /// Device serial number.
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
 
   /// Creates a new [DeviceDetailsResponse].
   /// [displaySerialNumber] Device serial number to be displayed.
@@ -38,7 +39,7 @@ class DeviceDetailsResponse {
       'displaySerialNumber': displaySerialNumber,
       'managementResourceId': managementResourceId,
       'managementResourceTenantId': managementResourceTenantId,
-      'provisioningDetails': provisioningDetails.toMap(),
+      'provisioningDetails': pulumi.Input.mapInputValue<ProvisioningDetailsResponse, Map<String, dynamic>>(provisioningDetails, (value) => value.toMap()),
       'provisioningSupport': provisioningSupport,
       'serialNumber': serialNumber,
     };
@@ -46,12 +47,12 @@ class DeviceDetailsResponse {
 
   factory DeviceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DeviceDetailsResponse(
-      displaySerialNumber: map['displaySerialNumber'] as String,
-      managementResourceId: map['managementResourceId'] as String,
-      managementResourceTenantId: map['managementResourceTenantId'] as String,
-      provisioningDetails: ProvisioningDetailsResponse.fromMap((map['provisioningDetails'] as Map).cast<String, dynamic>()),
-      provisioningSupport: map['provisioningSupport'] as String,
-      serialNumber: map['serialNumber'] as String,
+      displaySerialNumber: (map['displaySerialNumber'] as String).input(),
+      managementResourceId: (map['managementResourceId'] as String).input(),
+      managementResourceTenantId: (map['managementResourceTenantId'] as String).input(),
+      provisioningDetails: (ProvisioningDetailsResponse.fromMap((map['provisioningDetails'] as Map).cast<String, dynamic>())).input(),
+      provisioningSupport: (map['provisioningSupport'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// HyperV migrate fabric model custom properties.
 class HyperVMigrateFabricModelCustomProperties {
   /// Gets or sets the ARM Id of the HyperV site.
-  final String hyperVSiteId;
+  final pulumi.Input<String> hyperVSiteId;
   /// Gets or sets the instance type.
   /// Expected value is 'HyperVMigrate'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the migration solution ARM Id.
-  final String migrationSolutionId;
+  final pulumi.Input<String> migrationSolutionId;
 
   /// Creates a new [HyperVMigrateFabricModelCustomProperties].
   /// [hyperVSiteId] Gets or sets the ARM Id of the HyperV site.
@@ -31,9 +32,9 @@ class HyperVMigrateFabricModelCustomProperties {
 
   factory HyperVMigrateFabricModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return HyperVMigrateFabricModelCustomProperties(
-      hyperVSiteId: map['hyperVSiteId'] as String,
-      instanceType: map['instanceType'] as String,
-      migrationSolutionId: map['migrationSolutionId'] as String,
+      hyperVSiteId: (map['hyperVSiteId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      migrationSolutionId: (map['migrationSolutionId'] as String).input(),
     );
   }
 }

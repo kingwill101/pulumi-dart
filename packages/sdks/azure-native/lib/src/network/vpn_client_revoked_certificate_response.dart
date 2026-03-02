@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VPN client revoked certificate of virtual network gateway.
 class VpnClientRevokedCertificateResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the VPN client revoked certificate resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The revoked VPN client certificate thumbprint.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [VpnClientRevokedCertificateResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -40,11 +41,11 @@ class VpnClientRevokedCertificateResponse {
 
   factory VpnClientRevokedCertificateResponse.fromMap(Map<String, dynamic> map) {
     return VpnClientRevokedCertificateResponse(
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

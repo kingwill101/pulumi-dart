@@ -21,13 +21,10 @@ class GetSecretArgs {
   /// [name] Specifies the name of the Key Vault Secret.
   /// [version] Specifies the version of the Key Vault Secret. Defaults to the current version of the Key Vault Secret.
   GetSecretArgs({
-    required pulumi.Output<String> keyVaultId,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? version,
-  }) :
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId),
-      name = pulumi.Input.asInput<String>(name),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.keyVaultId,
+    required this.name,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

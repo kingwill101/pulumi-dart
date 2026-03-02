@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hyper_vto_az_stack_hcipolicy_model_custom_properties.dart';
 
 /// Policy model properties.
 class PolicyModelProperties {
   /// Policy model custom properties.
-  final HyperVToAzStackHCIPolicyModelCustomProperties customProperties;
+  final pulumi.Input<HyperVToAzStackHCIPolicyModelCustomProperties> customProperties;
 
   /// Creates a new [PolicyModelProperties].
   /// [customProperties] Policy model custom properties.
@@ -15,13 +16,13 @@ class PolicyModelProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customProperties': customProperties.toMap(),
+      'customProperties': pulumi.Input.mapInputValue<HyperVToAzStackHCIPolicyModelCustomProperties, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
     };
   }
 
   factory PolicyModelProperties.fromMap(Map<String, dynamic> map) {
     return PolicyModelProperties(
-      customProperties: HyperVToAzStackHCIPolicyModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>()),
+      customProperties: (HyperVToAzStackHCIPolicyModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

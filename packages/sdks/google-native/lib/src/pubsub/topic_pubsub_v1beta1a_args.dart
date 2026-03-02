@@ -13,9 +13,8 @@ class TopicPubsubV1beta1aArgs {
   /// Creates a new [TopicPubsubV1beta1aArgs].
   /// [name] Name of the topic.
   TopicPubsubV1beta1aArgs({
-    pulumi.Output<String>? name,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class TopicPubsubV1beta1aArgs {
 
   factory TopicPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
     return TopicPubsubV1beta1aArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

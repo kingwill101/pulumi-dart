@@ -52,31 +52,19 @@ class VpnGatewayArgs {
   /// [virtualHub] The VirtualHub to which the gateway belongs.
   /// [vpnGatewayScaleUnit] The scale unit for this vpn gateway.
   VpnGatewayArgs({
-    pulumi.Output<BgpSettings>? bgpSettings,
-    pulumi.Output<List<VpnConnectionNetwork>>? connections,
-    pulumi.Output<bool>? enableBgpRouteTranslationForNat,
-    pulumi.Output<String>? gatewayName,
-    pulumi.Output<String>? id,
-    pulumi.Output<bool>? isRoutingPreferenceInternet,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<VpnGatewayNatRule>>? natRules,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SubResource>? virtualHub,
-    pulumi.Output<int>? vpnGatewayScaleUnit,
-  }) :
-      bgpSettings = pulumi.Input.asOptionalInput<BgpSettings>(bgpSettings),
-      connections = pulumi.Input.asOptionalInput<List<VpnConnectionNetwork>>(connections),
-      enableBgpRouteTranslationForNat = pulumi.Input.asOptionalInput<bool>(enableBgpRouteTranslationForNat),
-      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      isRoutingPreferenceInternet = pulumi.Input.asOptionalInput<bool>(isRoutingPreferenceInternet),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      natRules = pulumi.Input.asOptionalInput<List<VpnGatewayNatRule>>(natRules),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualHub = pulumi.Input.asOptionalInput<SubResource>(virtualHub),
-      vpnGatewayScaleUnit = pulumi.Input.asOptionalInput<int>(vpnGatewayScaleUnit);
+    this.bgpSettings,
+    this.connections,
+    this.enableBgpRouteTranslationForNat,
+    this.gatewayName,
+    this.id,
+    this.isRoutingPreferenceInternet,
+    this.location,
+    this.natRules,
+    required this.resourceGroupName,
+    this.tags,
+    this.virtualHub,
+    this.vpnGatewayScaleUnit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class VpnGatewayArgs {
 
   factory VpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayArgs(
-      bgpSettings: map['bgpSettings'] == null ? null : pulumi.Output.create<BgpSettings>(BgpSettings.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>())),
-      connections: map['connections'] == null ? null : pulumi.Output.create<List<VpnConnectionNetwork>>((map['connections'] as List).cast<VpnConnectionNetwork>()),
-      enableBgpRouteTranslationForNat: map['enableBgpRouteTranslationForNat'] == null ? null : pulumi.Output.create<bool>(map['enableBgpRouteTranslationForNat'] as bool),
-      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : pulumi.Output.create<bool>(map['isRoutingPreferenceInternet'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      natRules: map['natRules'] == null ? null : pulumi.Output.create<List<VpnGatewayNatRule>>(pulumi.Input.decodeList<VpnGatewayNatRule>(map['natRules'], (value) => VpnGatewayNatRule.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualHub: map['virtualHub'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())),
-      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : pulumi.Output.create<int>(map['vpnGatewayScaleUnit'] as int),
+      bgpSettings: map['bgpSettings'] == null ? null : (BgpSettings.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>())).input(),
+      connections: map['connections'] == null ? null : ((map['connections'] as List).cast<VpnConnectionNetwork>()).input(),
+      enableBgpRouteTranslationForNat: map['enableBgpRouteTranslationForNat'] == null ? null : (map['enableBgpRouteTranslationForNat'] as bool).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : (map['isRoutingPreferenceInternet'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      natRules: map['natRules'] == null ? null : (pulumi.Input.decodeList<VpnGatewayNatRule>(map['natRules'], (value) => VpnGatewayNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
+      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : (map['vpnGatewayScaleUnit'] as int).input(),
     );
   }
 }

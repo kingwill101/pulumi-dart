@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus {
   /// The Access Key portion of the credentials.
-  final String accessKeyId;
+  final pulumi.Input<String> accessKeyId;
   /// Encryption keys used to encrypt data.
-  final String datakey;
+  final pulumi.Input<String> datakey;
   /// The secret key used to sign requests.
-  final String secretAccessKey;
+  final pulumi.Input<String> secretAccessKey;
   /// Identifier for the user.
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus].
   /// [accessKeyId] The Access Key portion of the credentials.
@@ -34,10 +35,10 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexu
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus(
-      accessKeyId: map['accessKeyId'] as String,
-      datakey: map['datakey'] as String,
-      secretAccessKey: map['secretAccessKey'] as String,
-      userId: map['userId'] as String,
+      accessKeyId: (map['accessKeyId'] as String).input(),
+      datakey: (map['datakey'] as String).input(),
+      secretAccessKey: (map['secretAccessKey'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

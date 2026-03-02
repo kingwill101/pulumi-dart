@@ -16,11 +16,9 @@ class GetCloudHsmClusterArgs {
   /// [cloudHsmClusterName] The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCloudHsmClusterArgs({
-    required pulumi.Output<String> cloudHsmClusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cloudHsmClusterName = pulumi.Input.asInput<String>(cloudHsmClusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cloudHsmClusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCloudHsmClusterArgs {
 
   factory GetCloudHsmClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudHsmClusterArgs(
-      cloudHsmClusterName: pulumi.Output.create<String>(map['cloudHsmClusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cloudHsmClusterName: (map['cloudHsmClusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

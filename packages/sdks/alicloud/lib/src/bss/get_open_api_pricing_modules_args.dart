@@ -29,19 +29,13 @@ class GetOpenApiPricingModulesArgs {
   /// [productType] The product type.
   /// [subscriptionType] Subscription type. Value:
   GetOpenApiPricingModulesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> productCode,
-    pulumi.Output<String>? productType,
-    required pulumi.Output<String> subscriptionType,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      productCode = pulumi.Input.asInput<String>(productCode),
-      productType = pulumi.Input.asOptionalInput<String>(productType),
-      subscriptionType = pulumi.Input.asInput<String>(subscriptionType);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    required this.productCode,
+    this.productType,
+    required this.subscriptionType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GetOpenApiPricingModulesArgs {
 
   factory GetOpenApiPricingModulesArgs.fromMap(Map<String, dynamic> map) {
     return GetOpenApiPricingModulesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      productCode: pulumi.Output.create<String>(map['productCode'] as String),
-      productType: map['productType'] == null ? null : pulumi.Output.create<String>(map['productType'] as String),
-      subscriptionType: pulumi.Output.create<String>(map['subscriptionType'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      productCode: (map['productCode'] as String).input(),
+      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      subscriptionType: (map['subscriptionType'] as String).input(),
     );
   }
 }

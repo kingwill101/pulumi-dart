@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MLTransformInputRecordTable {
   /// A unique identifier for the AWS Glue Data Catalog.
-  final String? catalogId;
+  final pulumi.Input<String>? catalogId;
   /// The name of the connection to the AWS Glue Data Catalog.
-  final String? connectionName;
+  final pulumi.Input<String>? connectionName;
   /// A database name in the AWS Glue Data Catalog.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// A table name in the AWS Glue Data Catalog.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [MLTransformInputRecordTable].
   /// [catalogId] A unique identifier for the AWS Glue Data Catalog.
@@ -34,10 +35,10 @@ class MLTransformInputRecordTable {
 
   factory MLTransformInputRecordTable.fromMap(Map<String, dynamic> map) {
     return MLTransformInputRecordTable(
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      connectionName: map['connectionName'] == null ? null : map['connectionName'] as String,
-      databaseName: map['databaseName'] as String,
-      tableName: map['tableName'] as String,
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

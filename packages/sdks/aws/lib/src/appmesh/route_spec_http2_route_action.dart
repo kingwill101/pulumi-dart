@@ -6,7 +6,7 @@ import 'route_spec_http2_route_action_weighted_target.dart';
 class RouteSpecHttp2RouteAction {
   /// Targets that traffic is routed to when a request matches the route.
   /// You can specify one or more targets and their relative weights with which to distribute traffic.
-  final List<RouteSpecHttp2RouteActionWeightedTarget> weightedTargets;
+  final pulumi.Input<List<RouteSpecHttp2RouteActionWeightedTarget>> weightedTargets;
 
   /// Creates a new [RouteSpecHttp2RouteAction].
   /// [weightedTargets] Targets that traffic is routed to when a request matches the route.
@@ -16,13 +16,13 @@ class RouteSpecHttp2RouteAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weightedTargets': pulumi.Input.encodeList<RouteSpecHttp2RouteActionWeightedTarget, Map<String, dynamic>>(weightedTargets, (value) => value.toMap()),
+      'weightedTargets': pulumi.Input.mapInputValue<List<RouteSpecHttp2RouteActionWeightedTarget>, List<Map<String, dynamic>>>(weightedTargets, (value) => pulumi.Input.encodeList<RouteSpecHttp2RouteActionWeightedTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RouteSpecHttp2RouteAction.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2RouteAction(
-      weightedTargets: pulumi.Input.decodeList<RouteSpecHttp2RouteActionWeightedTarget>(map['weightedTargets'], (value) => RouteSpecHttp2RouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>())),
+      weightedTargets: (pulumi.Input.decodeList<RouteSpecHttp2RouteActionWeightedTarget>(map['weightedTargets'], (value) => RouteSpecHttp2RouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

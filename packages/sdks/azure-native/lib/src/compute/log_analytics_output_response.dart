@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// LogAnalytics output properties
 class LogAnalyticsOutputResponse {
   /// Output file Uri path to blob container.
-  final String output;
+  final pulumi.Input<String> output;
 
   /// Creates a new [LogAnalyticsOutputResponse].
   /// [output] Output file Uri path to blob container.
@@ -20,7 +21,7 @@ class LogAnalyticsOutputResponse {
 
   factory LogAnalyticsOutputResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsOutputResponse(
-      output: map['output'] as String,
+      output: (map['output'] as String).input(),
     );
   }
 }

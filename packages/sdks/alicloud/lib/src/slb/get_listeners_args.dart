@@ -25,17 +25,12 @@ class GetListenersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [protocol] Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
   GetListenersArgs({
-    pulumi.Output<String>? descriptionRegex,
-    pulumi.Output<int>? frontendPort,
-    required pulumi.Output<String> loadBalancerId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? protocol,
-  }) :
-      descriptionRegex = pulumi.Input.asOptionalInput<String>(descriptionRegex),
-      frontendPort = pulumi.Input.asOptionalInput<int>(frontendPort),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol);
+    this.descriptionRegex,
+    this.frontendPort,
+    required this.loadBalancerId,
+    this.outputFile,
+    this.protocol,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetListenersArgs {
 
   factory GetListenersArgs.fromMap(Map<String, dynamic> map) {
     return GetListenersArgs(
-      descriptionRegex: map['descriptionRegex'] == null ? null : pulumi.Output.create<String>(map['descriptionRegex'] as String),
-      frontendPort: map['frontendPort'] == null ? null : pulumi.Output.create<int>(map['frontendPort'] as int),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
+      descriptionRegex: map['descriptionRegex'] == null ? null : (map['descriptionRegex'] as String).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
     );
   }
 }

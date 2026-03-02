@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_route_circuit_peering_config_response.dart';
 import 'sub_resource_response.dart';
 
 /// Contains IPv6 peering config.
 class Ipv6ExpressRouteCircuitPeeringConfigResponse {
   /// The Microsoft peering configuration.
-  final ExpressRouteCircuitPeeringConfigResponse? microsoftPeeringConfig;
+  final pulumi.Input<ExpressRouteCircuitPeeringConfigResponse>? microsoftPeeringConfig;
   /// The primary address prefix.
-  final String? primaryPeerAddressPrefix;
+  final pulumi.Input<String>? primaryPeerAddressPrefix;
   /// The reference to the RouteFilter resource.
-  final SubResourceResponse? routeFilter;
+  final pulumi.Input<SubResourceResponse>? routeFilter;
   /// The secondary address prefix.
-  final String? secondaryPeerAddressPrefix;
+  final pulumi.Input<String>? secondaryPeerAddressPrefix;
   /// The state of peering.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [Ipv6ExpressRouteCircuitPeeringConfigResponse].
   /// [microsoftPeeringConfig] The Microsoft peering configuration.
@@ -32,9 +33,9 @@ class Ipv6ExpressRouteCircuitPeeringConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'microsoftPeeringConfig': ?microsoftPeeringConfig == null ? null : microsoftPeeringConfig!.toMap(),
+      'microsoftPeeringConfig': ?pulumi.Input.mapOptionalInputValue<ExpressRouteCircuitPeeringConfigResponse, Map<String, dynamic>>(microsoftPeeringConfig, (value) => value.toMap()),
       'primaryPeerAddressPrefix': ?primaryPeerAddressPrefix,
-      'routeFilter': ?routeFilter == null ? null : routeFilter!.toMap(),
+      'routeFilter': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(routeFilter, (value) => value.toMap()),
       'secondaryPeerAddressPrefix': ?secondaryPeerAddressPrefix,
       'state': ?state,
     };
@@ -42,11 +43,11 @@ class Ipv6ExpressRouteCircuitPeeringConfigResponse {
 
   factory Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap(Map<String, dynamic> map) {
     return Ipv6ExpressRouteCircuitPeeringConfigResponse(
-      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : ExpressRouteCircuitPeeringConfigResponse.fromMap((map['microsoftPeeringConfig'] as Map).cast<String, dynamic>()),
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : map['primaryPeerAddressPrefix'] as String,
-      routeFilter: map['routeFilter'] == null ? null : SubResourceResponse.fromMap((map['routeFilter'] as Map).cast<String, dynamic>()),
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : map['secondaryPeerAddressPrefix'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringConfigResponse.fromMap((map['microsoftPeeringConfig'] as Map).cast<String, dynamic>())).input(),
+      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix'] as String).input(),
+      routeFilter: map['routeFilter'] == null ? null : (SubResourceResponse.fromMap((map['routeFilter'] as Map).cast<String, dynamic>())).input(),
+      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRealTimeLogDeliveriesDelivery {
   /// Real-Time Log Service Domain.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// The ID of the Real Time Log Delivery.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-  final String logstore;
+  final pulumi.Input<String> logstore;
   /// The name of the Log Service project that is used for real-time log delivery.
-  final String project;
+  final pulumi.Input<String> project;
   /// The region where the Log Service project is deployed.
-  final String slsRegion;
+  final pulumi.Input<String> slsRegion;
   /// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetRealTimeLogDeliveriesDelivery].
   /// [domain] Real-Time Log Service Domain.
@@ -44,12 +45,12 @@ class GetRealTimeLogDeliveriesDelivery {
 
   factory GetRealTimeLogDeliveriesDelivery.fromMap(Map<String, dynamic> map) {
     return GetRealTimeLogDeliveriesDelivery(
-      domain: map['domain'] as String,
-      id: map['id'] as String,
-      logstore: map['logstore'] as String,
-      project: map['project'] as String,
-      slsRegion: map['slsRegion'] as String,
-      status: map['status'] as String,
+      domain: (map['domain'] as String).input(),
+      id: (map['id'] as String).input(),
+      logstore: (map['logstore'] as String).input(),
+      project: (map['project'] as String).input(),
+      slsRegion: (map['slsRegion'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

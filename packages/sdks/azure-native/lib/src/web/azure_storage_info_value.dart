@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_storage_type.dart';
 
 /// Azure Files or Blob Storage access information value for dictionary storage.
 class AzureStorageInfoValue {
   /// Access key for the storage account.
-  final String? accessKey;
+  final pulumi.Input<String>? accessKey;
   /// Name of the storage account.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Path to mount the storage within the site's runtime environment.
-  final String? mountPath;
+  final pulumi.Input<String>? mountPath;
   /// Mounting protocol to use for the storage account.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Name of the file share (container name, for Blob storage).
-  final String? shareName;
+  final pulumi.Input<String>? shareName;
   /// Type of storage.
-  final AzureStorageType? type;
+  final pulumi.Input<AzureStorageType>? type;
 
   /// Creates a new [AzureStorageInfoValue].
   /// [accessKey] Access key for the storage account.
@@ -40,18 +41,18 @@ class AzureStorageInfoValue {
       'mountPath': ?mountPath,
       'protocol': ?protocol,
       'shareName': ?shareName,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<AzureStorageType, String>(type, (value) => value.value),
     };
   }
 
   factory AzureStorageInfoValue.fromMap(Map<String, dynamic> map) {
     return AzureStorageInfoValue(
-      accessKey: map['accessKey'] == null ? null : map['accessKey'] as String,
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      shareName: map['shareName'] == null ? null : map['shareName'] as String,
-      type: map['type'] == null ? null : AzureStorageType.fromValue(map['type'] as String),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      type: map['type'] == null ? null : (AzureStorageType.fromValue(map['type'] as String)).input(),
     );
   }
 }

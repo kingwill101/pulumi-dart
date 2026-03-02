@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
   /// Optional. Enables display for the Compute Engine VM.
-  final bool? enableDisplay;
+  final pulumi.Input<bool>? enableDisplay;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice].
   /// [enableDisplay] Optional. Enables display for the Compute Engine VM.
@@ -19,7 +20,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice(
-      enableDisplay: map['enableDisplay'] == null ? null : map['enableDisplay'] as bool,
+      enableDisplay: map['enableDisplay'] == null ? null : (map['enableDisplay'] as bool).input(),
     );
   }
 }

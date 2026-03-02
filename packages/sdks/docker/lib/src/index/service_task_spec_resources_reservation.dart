@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_task_spec_resources_reservation_generic_resources.dart';
 
 class ServiceTaskSpecResourcesReservation {
   /// User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, GPU=UUID1)
-  final ServiceTaskSpecResourcesReservationGenericResources? genericResources;
+  final pulumi.Input<ServiceTaskSpecResourcesReservationGenericResources>? genericResources;
   /// The amounf of memory in bytes the container allocates
-  final int? memoryBytes;
+  final pulumi.Input<int>? memoryBytes;
   /// CPU shares in units of 1/1e9 (or 10^-9) of the CPU. Should be at least `1000000`
-  final int? nanoCpus;
+  final pulumi.Input<int>? nanoCpus;
 
   /// Creates a new [ServiceTaskSpecResourcesReservation].
   /// [genericResources] User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, GPU=UUID1)
@@ -22,7 +23,7 @@ class ServiceTaskSpecResourcesReservation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'genericResources': ?genericResources == null ? null : genericResources!.toMap(),
+      'genericResources': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecResourcesReservationGenericResources, Map<String, dynamic>>(genericResources, (value) => value.toMap()),
       'memoryBytes': ?memoryBytes,
       'nanoCpus': ?nanoCpus,
     };
@@ -30,9 +31,9 @@ class ServiceTaskSpecResourcesReservation {
 
   factory ServiceTaskSpecResourcesReservation.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecResourcesReservation(
-      genericResources: map['genericResources'] == null ? null : ServiceTaskSpecResourcesReservationGenericResources.fromMap((map['genericResources'] as Map).cast<String, dynamic>()),
-      memoryBytes: map['memoryBytes'] == null ? null : map['memoryBytes'] as int,
-      nanoCpus: map['nanoCpus'] == null ? null : map['nanoCpus'] as int,
+      genericResources: map['genericResources'] == null ? null : (ServiceTaskSpecResourcesReservationGenericResources.fromMap((map['genericResources'] as Map).cast<String, dynamic>())).input(),
+      memoryBytes: map['memoryBytes'] == null ? null : (map['memoryBytes'] as int).input(),
+      nanoCpus: map['nanoCpus'] == null ? null : (map['nanoCpus'] as int).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_default_user_settings_custom_file_system_config_efs_file_system_config.dart';
 
 class DomainDefaultUserSettingsCustomFileSystemConfig {
   /// The default EBS storage settings for a private space. See `efs_file_system_config` Block below.
-  final DomainDefaultUserSettingsCustomFileSystemConfigEfsFileSystemConfig? efsFileSystemConfig;
+  final pulumi.Input<DomainDefaultUserSettingsCustomFileSystemConfigEfsFileSystemConfig>? efsFileSystemConfig;
 
   /// Creates a new [DomainDefaultUserSettingsCustomFileSystemConfig].
   /// [efsFileSystemConfig] The default EBS storage settings for a private space. See `efs_file_system_config` Block below.
@@ -14,13 +15,13 @@ class DomainDefaultUserSettingsCustomFileSystemConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'efsFileSystemConfig': ?efsFileSystemConfig == null ? null : efsFileSystemConfig!.toMap(),
+      'efsFileSystemConfig': ?pulumi.Input.mapOptionalInputValue<DomainDefaultUserSettingsCustomFileSystemConfigEfsFileSystemConfig, Map<String, dynamic>>(efsFileSystemConfig, (value) => value.toMap()),
     };
   }
 
   factory DomainDefaultUserSettingsCustomFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCustomFileSystemConfig(
-      efsFileSystemConfig: map['efsFileSystemConfig'] == null ? null : DomainDefaultUserSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap((map['efsFileSystemConfig'] as Map).cast<String, dynamic>()),
+      efsFileSystemConfig: map['efsFileSystemConfig'] == null ? null : (DomainDefaultUserSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap((map['efsFileSystemConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

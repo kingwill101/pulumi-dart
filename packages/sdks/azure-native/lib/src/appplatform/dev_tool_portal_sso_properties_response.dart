@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Single sign-on related configuration
 class DevToolPortalSsoPropertiesResponse {
   /// The public identifier for the application
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The secret known only to the application and the authorization server
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// The URI of a JSON file with generic OIDC provider configuration.
-  final String? metadataUrl;
+  final pulumi.Input<String>? metadataUrl;
   /// It defines the specific actions applications can be allowed to do on a user's behalf
-  final List<String>? scopes;
+  final pulumi.Input<List<String>>? scopes;
 
   /// Creates a new [DevToolPortalSsoPropertiesResponse].
   /// [clientId] The public identifier for the application
@@ -35,10 +36,10 @@ class DevToolPortalSsoPropertiesResponse {
 
   factory DevToolPortalSsoPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DevToolPortalSsoPropertiesResponse(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      metadataUrl: map['metadataUrl'] == null ? null : map['metadataUrl'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      metadataUrl: map['metadataUrl'] == null ? null : (map['metadataUrl'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

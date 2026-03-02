@@ -43,31 +43,19 @@ class DataSourceState {
   /// [qualifiedName] Business Unique Key of Data Source
   /// [type] The type of data source. For a list of data source types, see the values listed in the API documentation.
   DataSourceState({
-    pulumi.Output<String>? connectionProperties,
-    pulumi.Output<String>? connectionPropertiesMode,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? createUser,
-    pulumi.Output<int>? dataSourceId,
-    pulumi.Output<String>? dataSourceName,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? modifyTime,
-    pulumi.Output<String>? modifyUser,
-    pulumi.Output<int>? projectId,
-    pulumi.Output<String>? qualifiedName,
-    pulumi.Output<String>? type,
-  }) :
-      connectionProperties = pulumi.Input.asOptionalInput<String>(connectionProperties),
-      connectionPropertiesMode = pulumi.Input.asOptionalInput<String>(connectionPropertiesMode),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      createUser = pulumi.Input.asOptionalInput<String>(createUser),
-      dataSourceId = pulumi.Input.asOptionalInput<int>(dataSourceId),
-      dataSourceName = pulumi.Input.asOptionalInput<String>(dataSourceName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      modifyTime = pulumi.Input.asOptionalInput<int>(modifyTime),
-      modifyUser = pulumi.Input.asOptionalInput<String>(modifyUser),
-      projectId = pulumi.Input.asOptionalInput<int>(projectId),
-      qualifiedName = pulumi.Input.asOptionalInput<String>(qualifiedName),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.connectionProperties,
+    this.connectionPropertiesMode,
+    this.createTime,
+    this.createUser,
+    this.dataSourceId,
+    this.dataSourceName,
+    this.description,
+    this.modifyTime,
+    this.modifyUser,
+    this.projectId,
+    this.qualifiedName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class DataSourceState {
 
   factory DataSourceState.fromMap(Map<String, dynamic> map) {
     return DataSourceState(
-      connectionProperties: map['connectionProperties'] == null ? null : pulumi.Output.create<String>(map['connectionProperties'] as String),
-      connectionPropertiesMode: map['connectionPropertiesMode'] == null ? null : pulumi.Output.create<String>(map['connectionPropertiesMode'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      createUser: map['createUser'] == null ? null : pulumi.Output.create<String>(map['createUser'] as String),
-      dataSourceId: map['dataSourceId'] == null ? null : pulumi.Output.create<int>(map['dataSourceId'] as int),
-      dataSourceName: map['dataSourceName'] == null ? null : pulumi.Output.create<String>(map['dataSourceName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      modifyTime: map['modifyTime'] == null ? null : pulumi.Output.create<int>(map['modifyTime'] as int),
-      modifyUser: map['modifyUser'] == null ? null : pulumi.Output.create<String>(map['modifyUser'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<int>(map['projectId'] as int),
-      qualifiedName: map['qualifiedName'] == null ? null : pulumi.Output.create<String>(map['qualifiedName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties'] as String).input(),
+      connectionPropertiesMode: map['connectionPropertiesMode'] == null ? null : (map['connectionPropertiesMode'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      createUser: map['createUser'] == null ? null : (map['createUser'] as String).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as int).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as int).input(),
+      modifyUser: map['modifyUser'] == null ? null : (map['modifyUser'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as int).input(),
+      qualifiedName: map['qualifiedName'] == null ? null : (map['qualifiedName'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

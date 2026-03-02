@@ -41,29 +41,18 @@ class SqlPoolState {
   /// [synapseWorkspaceId] The ID of Synapse Workspace within which this SQL Pool should be created. Changing this forces a new Synapse SQL Pool to be created.
   /// [tags] A mapping of tags which should be assigned to the Synapse SQL Pool.
   SqlPoolState({
-    pulumi.Output<String>? collation,
-    pulumi.Output<String>? createMode,
-    pulumi.Output<bool>? dataEncrypted,
-    pulumi.Output<bool>? geoBackupPolicyEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recoveryDatabaseId,
-    pulumi.Output<SqlPoolRestore>? restore,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<String>? storageAccountType,
-    pulumi.Output<String>? synapseWorkspaceId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      collation = pulumi.Input.asOptionalInput<String>(collation),
-      createMode = pulumi.Input.asOptionalInput<String>(createMode),
-      dataEncrypted = pulumi.Input.asOptionalInput<bool>(dataEncrypted),
-      geoBackupPolicyEnabled = pulumi.Input.asOptionalInput<bool>(geoBackupPolicyEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryDatabaseId = pulumi.Input.asOptionalInput<String>(recoveryDatabaseId),
-      restore = pulumi.Input.asOptionalInput<SqlPoolRestore>(restore),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      storageAccountType = pulumi.Input.asOptionalInput<String>(storageAccountType),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.collation,
+    this.createMode,
+    this.dataEncrypted,
+    this.geoBackupPolicyEnabled,
+    this.name,
+    this.recoveryDatabaseId,
+    this.restore,
+    this.skuName,
+    this.storageAccountType,
+    this.synapseWorkspaceId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class SqlPoolState {
 
   factory SqlPoolState.fromMap(Map<String, dynamic> map) {
     return SqlPoolState(
-      collation: map['collation'] == null ? null : pulumi.Output.create<String>(map['collation'] as String),
-      createMode: map['createMode'] == null ? null : pulumi.Output.create<String>(map['createMode'] as String),
-      dataEncrypted: map['dataEncrypted'] == null ? null : pulumi.Output.create<bool>(map['dataEncrypted'] as bool),
-      geoBackupPolicyEnabled: map['geoBackupPolicyEnabled'] == null ? null : pulumi.Output.create<bool>(map['geoBackupPolicyEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryDatabaseId: map['recoveryDatabaseId'] == null ? null : pulumi.Output.create<String>(map['recoveryDatabaseId'] as String),
-      restore: map['restore'] == null ? null : pulumi.Output.create<SqlPoolRestore>(SqlPoolRestore.fromMap((map['restore'] as Map).cast<String, dynamic>())),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      storageAccountType: map['storageAccountType'] == null ? null : pulumi.Output.create<String>(map['storageAccountType'] as String),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      dataEncrypted: map['dataEncrypted'] == null ? null : (map['dataEncrypted'] as bool).input(),
+      geoBackupPolicyEnabled: map['geoBackupPolicyEnabled'] == null ? null : (map['geoBackupPolicyEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryDatabaseId: map['recoveryDatabaseId'] == null ? null : (map['recoveryDatabaseId'] as String).input(),
+      restore: map['restore'] == null ? null : (SqlPoolRestore.fromMap((map['restore'] as Map).cast<String, dynamic>())).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

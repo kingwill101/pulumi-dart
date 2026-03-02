@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultiplexProgramMultiplexProgramSettingsServiceDescriptor {
   /// Unique provider name.
-  final String providerName;
+  final pulumi.Input<String> providerName;
   /// Unique service name.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [MultiplexProgramMultiplexProgramSettingsServiceDescriptor].
   /// [providerName] Unique provider name.
@@ -24,8 +25,8 @@ class MultiplexProgramMultiplexProgramSettingsServiceDescriptor {
 
   factory MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsServiceDescriptor(
-      providerName: map['providerName'] as String,
-      serviceName: map['serviceName'] as String,
+      providerName: (map['providerName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

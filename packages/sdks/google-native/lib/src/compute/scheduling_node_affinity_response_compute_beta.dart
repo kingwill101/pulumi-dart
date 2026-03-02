@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
 class SchedulingNodeAffinityResponseComputeBeta {
   /// Corresponds to the label key of Node resource.
-  final String key;
+  final pulumi.Input<String> key;
   /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Corresponds to the label values of Node resource.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [SchedulingNodeAffinityResponseComputeBeta].
   /// [key] Corresponds to the label key of Node resource.
@@ -30,9 +31,9 @@ class SchedulingNodeAffinityResponseComputeBeta {
 
   factory SchedulingNodeAffinityResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SchedulingNodeAffinityResponseComputeBeta(
-      key: map['key'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

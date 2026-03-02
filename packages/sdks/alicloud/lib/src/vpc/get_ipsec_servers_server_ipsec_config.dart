@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIpsecServersServerIpsecConfig {
   /// IPsec authentication algorithm.
-  final String ipsecAuthAlg;
+  final pulumi.Input<String> ipsecAuthAlg;
   /// IPsec encryption algorithm.
-  final String ipsecEncAlg;
+  final pulumi.Input<String> ipsecEncAlg;
   /// IPsec survival time. Unit: seconds.
-  final int ipsecLifetime;
+  final pulumi.Input<int> ipsecLifetime;
   /// Diffie-Hellman key exchange algorithm.
-  final String ipsecPfs;
+  final pulumi.Input<String> ipsecPfs;
 
   /// Creates a new [GetIpsecServersServerIpsecConfig].
   /// [ipsecAuthAlg] IPsec authentication algorithm.
@@ -34,10 +35,10 @@ class GetIpsecServersServerIpsecConfig {
 
   factory GetIpsecServersServerIpsecConfig.fromMap(Map<String, dynamic> map) {
     return GetIpsecServersServerIpsecConfig(
-      ipsecAuthAlg: map['ipsecAuthAlg'] as String,
-      ipsecEncAlg: map['ipsecEncAlg'] as String,
-      ipsecLifetime: map['ipsecLifetime'] as int,
-      ipsecPfs: map['ipsecPfs'] as String,
+      ipsecAuthAlg: (map['ipsecAuthAlg'] as String).input(),
+      ipsecEncAlg: (map['ipsecEncAlg'] as String).input(),
+      ipsecLifetime: (map['ipsecLifetime'] as int).input(),
+      ipsecPfs: (map['ipsecPfs'] as String).input(),
     );
   }
 }

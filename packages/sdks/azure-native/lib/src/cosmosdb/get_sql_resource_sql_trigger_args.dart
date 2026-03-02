@@ -25,17 +25,12 @@ class GetSqlResourceSqlTriggerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [triggerName] Cosmos DB trigger name.
   GetSqlResourceSqlTriggerArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> triggerName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      triggerName = pulumi.Input.asInput<String>(triggerName);
+    required this.accountName,
+    required this.containerName,
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.triggerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSqlResourceSqlTriggerArgs {
 
   factory GetSqlResourceSqlTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlResourceSqlTriggerArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      triggerName: pulumi.Output.create<String>(map['triggerName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      triggerName: (map['triggerName'] as String).input(),
     );
   }
 }

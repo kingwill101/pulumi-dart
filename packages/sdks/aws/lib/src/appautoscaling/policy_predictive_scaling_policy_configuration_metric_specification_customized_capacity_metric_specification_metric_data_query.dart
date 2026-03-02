@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_predictive_scaling_policy_configuration_metric_specification_customized_capacity_metric_specification_metric_data_query_metric_stat.dart';
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery {
   /// Math expression to perform on the returned data, if this object is performing a math expression.
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// Short name that identifies the object's results in the response.
-  final String id;
+  final pulumi.Input<String> id;
   /// Human-readable label for this metric or expression.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Information about the metric data to return. See supported fields below.
-  final PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat? metricStat;
+  final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat>? metricStat;
   /// Whether to return the timestamps and raw data values of this metric.
-  final bool? returnData;
+  final pulumi.Input<bool>? returnData;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery].
   /// [expression] Math expression to perform on the returned data, if this object is performing a math expression.
@@ -33,18 +34,18 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCap
       'expression': ?expression,
       'id': id,
       'label': ?label,
-      'metricStat': ?metricStat == null ? null : metricStat!.toMap(),
+      'metricStat': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat, Map<String, dynamic>>(metricStat, (value) => value.toMap()),
       'returnData': ?returnData,
     };
   }
 
   factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery(
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      id: map['id'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      metricStat: map['metricStat'] == null ? null : PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat.fromMap((map['metricStat'] as Map).cast<String, dynamic>()),
-      returnData: map['returnData'] == null ? null : map['returnData'] as bool,
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      id: (map['id'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      metricStat: map['metricStat'] == null ? null : (PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat.fromMap((map['metricStat'] as Map).cast<String, dynamic>())).input(),
+      returnData: map['returnData'] == null ? null : (map['returnData'] as bool).input(),
     );
   }
 }

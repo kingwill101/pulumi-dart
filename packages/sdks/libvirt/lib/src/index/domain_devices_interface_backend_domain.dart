@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceBackendDomain {
   /// Sets the name of the backend domain associated with the interface, which links the interface to a specific backend configuration.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DomainDevicesInterfaceBackendDomain].
   /// [name] Sets the name of the backend domain associated with the interface, which links the interface to a specific backend configuration.
@@ -19,7 +20,7 @@ class DomainDevicesInterfaceBackendDomain {
 
   factory DomainDevicesInterfaceBackendDomain.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceBackendDomain(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

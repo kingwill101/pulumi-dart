@@ -24,15 +24,11 @@ class PrivateLinkAssociationArgs {
   /// [publicNetworkAccessEnabled] Whether public network access is allowed. Changing this forces a new Private Link Association to be created.
   /// [resourceManagementPrivateLinkId] The Resource ID of Resource Management Private Link. Changing this forces a new Private Link Association to be created.
   PrivateLinkAssociationArgs({
-    required pulumi.Output<String> managementGroupId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<bool> publicNetworkAccessEnabled,
-    required pulumi.Output<String> resourceManagementPrivateLinkId,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asInput<bool>(publicNetworkAccessEnabled),
-      resourceManagementPrivateLinkId = pulumi.Input.asInput<String>(resourceManagementPrivateLinkId);
+    required this.managementGroupId,
+    this.name,
+    required this.publicNetworkAccessEnabled,
+    required this.resourceManagementPrivateLinkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class PrivateLinkAssociationArgs {
 
   factory PrivateLinkAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceManagementPrivateLinkId: pulumi.Output.create<String>(map['resourceManagementPrivateLinkId'] as String),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceManagementPrivateLinkId: (map['resourceManagementPrivateLinkId'] as String).input(),
     );
   }
 }

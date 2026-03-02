@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration.dart';
 
 /// Configuration for gracefully shutting down the instance.
 class SchedulingGracefulShutdown {
   /// Opts-in for graceful shutdown.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
-  final Duration? maxDuration;
+  final pulumi.Input<Duration>? maxDuration;
 
   /// Creates a new [SchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.
@@ -20,14 +21,14 @@ class SchedulingGracefulShutdown {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'maxDuration': ?maxDuration == null ? null : maxDuration!.toMap(),
+      'maxDuration': ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(maxDuration, (value) => value.toMap()),
     };
   }
 
   factory SchedulingGracefulShutdown.fromMap(Map<String, dynamic> map) {
     return SchedulingGracefulShutdown(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      maxDuration: map['maxDuration'] == null ? null : Duration.fromMap((map['maxDuration'] as Map).cast<String, dynamic>()),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      maxDuration: map['maxDuration'] == null ? null : (Duration.fromMap((map['maxDuration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

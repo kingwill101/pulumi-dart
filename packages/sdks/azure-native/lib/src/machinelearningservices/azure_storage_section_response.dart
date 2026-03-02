@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_credentials_response.dart';
 
 class AzureStorageSectionResponse {
   /// Storage Account Key (Deprecated).
-  final String? accountKey;
+  final pulumi.Input<String>? accountKey;
   /// Storage Account Name.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Indicate if we are using Workspace ManagedIdentities/MSI token (Deprecated).
-  final bool? areWorkspaceManagedIdentitiesAllowed;
+  final pulumi.Input<bool>? areWorkspaceManagedIdentitiesAllowed;
   /// If this is an "DataStoreType.AzureBlob", the length of time (in seconds) to cache files locally after they are accessed (downloaded).
-  final int? blobCacheTimeout;
-  final ClientCredentialsResponse? clientCredentials;
+  final pulumi.Input<int>? blobCacheTimeout;
+  final pulumi.Input<ClientCredentialsResponse>? clientCredentials;
   /// The storage container name.
-  final String? containerName;
+  final pulumi.Input<String>? containerName;
   /// The credential.
-  final String? credential;
+  final pulumi.Input<String>? credential;
   /// The credential type.
-  final String? credentialType;
+  final pulumi.Input<String>? credentialType;
   /// The host of the container.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// Indicate if we are using SAS token or Account Key (Deprecated).
-  final bool? isSas;
+  final pulumi.Input<bool>? isSas;
   /// The protocol to use. Defaults to https.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Resource Group.
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// SAS Token for the container (Deprecated).
-  final String? sasToken;
+  final pulumi.Input<String>? sasToken;
   /// Indicates which identity to use to authenticate service data access to customer's storage.
-  final String? serviceDataAccessAuthIdentity;
+  final pulumi.Input<String>? serviceDataAccessAuthIdentity;
   /// Subscription ID.
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
 
   /// Creates a new [AzureStorageSectionResponse].
   /// [accountKey] Storage Account Key (Deprecated).
@@ -73,7 +74,7 @@ class AzureStorageSectionResponse {
       'accountName': ?accountName,
       'areWorkspaceManagedIdentitiesAllowed': ?areWorkspaceManagedIdentitiesAllowed,
       'blobCacheTimeout': ?blobCacheTimeout,
-      'clientCredentials': ?clientCredentials == null ? null : clientCredentials!.toMap(),
+      'clientCredentials': ?pulumi.Input.mapOptionalInputValue<ClientCredentialsResponse, Map<String, dynamic>>(clientCredentials, (value) => value.toMap()),
       'containerName': ?containerName,
       'credential': ?credential,
       'credentialType': ?credentialType,
@@ -89,21 +90,21 @@ class AzureStorageSectionResponse {
 
   factory AzureStorageSectionResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageSectionResponse(
-      accountKey: map['accountKey'] == null ? null : map['accountKey'] as String,
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      areWorkspaceManagedIdentitiesAllowed: map['areWorkspaceManagedIdentitiesAllowed'] == null ? null : map['areWorkspaceManagedIdentitiesAllowed'] as bool,
-      blobCacheTimeout: map['blobCacheTimeout'] == null ? null : map['blobCacheTimeout'] as int,
-      clientCredentials: map['clientCredentials'] == null ? null : ClientCredentialsResponse.fromMap((map['clientCredentials'] as Map).cast<String, dynamic>()),
-      containerName: map['containerName'] == null ? null : map['containerName'] as String,
-      credential: map['credential'] == null ? null : map['credential'] as String,
-      credentialType: map['credentialType'] == null ? null : map['credentialType'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      isSas: map['isSas'] == null ? null : map['isSas'] as bool,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      sasToken: map['sasToken'] == null ? null : map['sasToken'] as String,
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : map['serviceDataAccessAuthIdentity'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      areWorkspaceManagedIdentitiesAllowed: map['areWorkspaceManagedIdentitiesAllowed'] == null ? null : (map['areWorkspaceManagedIdentitiesAllowed'] as bool).input(),
+      blobCacheTimeout: map['blobCacheTimeout'] == null ? null : (map['blobCacheTimeout'] as int).input(),
+      clientCredentials: map['clientCredentials'] == null ? null : (ClientCredentialsResponse.fromMap((map['clientCredentials'] as Map).cast<String, dynamic>())).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      credential: map['credential'] == null ? null : (map['credential'] as String).input(),
+      credentialType: map['credentialType'] == null ? null : (map['credentialType'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      isSas: map['isSas'] == null ? null : (map['isSas'] as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
+      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

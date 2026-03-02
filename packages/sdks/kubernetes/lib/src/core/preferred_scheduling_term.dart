@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_selector_term.dart';
 
 /// An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 class PreferredSchedulingTerm {
   /// A node selector term, associated with the corresponding weight.
-  final NodeSelectorTerm preference;
+  final pulumi.Input<NodeSelectorTerm> preference;
   /// Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [PreferredSchedulingTerm].
   /// [preference] A node selector term, associated with the corresponding weight.
@@ -19,15 +20,15 @@ class PreferredSchedulingTerm {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'preference': preference.toMap(),
+      'preference': pulumi.Input.mapInputValue<NodeSelectorTerm, Map<String, dynamic>>(preference, (value) => value.toMap()),
       'weight': weight,
     };
   }
 
   factory PreferredSchedulingTerm.fromMap(Map<String, dynamic> map) {
     return PreferredSchedulingTerm(
-      preference: NodeSelectorTerm.fromMap((map['preference'] as Map).cast<String, dynamic>()),
-      weight: map['weight'] as int,
+      preference: (NodeSelectorTerm.fromMap((map['preference'] as Map).cast<String, dynamic>())).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

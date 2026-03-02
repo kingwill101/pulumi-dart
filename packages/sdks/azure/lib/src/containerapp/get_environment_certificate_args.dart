@@ -16,11 +16,9 @@ class GetEnvironmentCertificateArgs {
   /// [containerAppEnvironmentId] The ID of the Container App Environment to configure this Certificate on. Changing this forces a new resource to be created.
   /// [name] The name of the Container Apps Certificate. Changing this forces a new resource to be created.
   GetEnvironmentCertificateArgs({
-    required pulumi.Output<String> containerAppEnvironmentId,
-    required pulumi.Output<String> name,
-  }) :
-      containerAppEnvironmentId = pulumi.Input.asInput<String>(containerAppEnvironmentId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.containerAppEnvironmentId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEnvironmentCertificateArgs {
 
   factory GetEnvironmentCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentCertificateArgs(
-      containerAppEnvironmentId: pulumi.Output.create<String>(map['containerAppEnvironmentId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

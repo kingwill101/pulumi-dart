@@ -28,21 +28,14 @@ class FolderBucketViewArgs {
   /// [name] The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   /// [viewId] Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
   FolderBucketViewArgs({
-    required pulumi.Output<String> bucketId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> viewId,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      viewId = pulumi.Input.asInput<String>(viewId);
+    required this.bucketId,
+    this.description,
+    this.filter,
+    required this.folderId,
+    this.location,
+    this.name,
+    required this.viewId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class FolderBucketViewArgs {
 
   factory FolderBucketViewArgs.fromMap(Map<String, dynamic> map) {
     return FolderBucketViewArgs(
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      viewId: pulumi.Output.create<String>(map['viewId'] as String),
+      bucketId: (map['bucketId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      viewId: (map['viewId'] as String).input(),
     );
   }
 }

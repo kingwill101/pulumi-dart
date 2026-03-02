@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceCrossInstanceReplicationConfigSecondaryInstance {
   /// (Output)
   /// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
-  final String? instance;
+  final pulumi.Input<String>? instance;
   /// (Output)
   /// The unique id of the secondary instance.
-  final String? uid;
+  final pulumi.Input<String>? uid;
 
   /// Creates a new [InstanceCrossInstanceReplicationConfigSecondaryInstance].
   /// [instance] (Output)
@@ -26,8 +27,8 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstance {
 
   factory InstanceCrossInstanceReplicationConfigSecondaryInstance.fromMap(Map<String, dynamic> map) {
     return InstanceCrossInstanceReplicationConfigSecondaryInstance(
-      instance: map['instance'] == null ? null : map['instance'] as String,
-      uid: map['uid'] == null ? null : map['uid'] as String,
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
     );
   }
 }

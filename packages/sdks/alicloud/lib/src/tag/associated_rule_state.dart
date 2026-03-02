@@ -16,13 +16,10 @@ class AssociatedRuleState {
   /// [status] Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
   /// [tagKeys] List of tag keys for the associated resource tag rule.
   AssociatedRuleState({
-    pulumi.Output<String>? associatedSettingName,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? tagKeys,
-  }) :
-      associatedSettingName = pulumi.Input.asOptionalInput<String>(associatedSettingName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tagKeys = pulumi.Input.asOptionalInput<List<String>>(tagKeys);
+    this.associatedSettingName,
+    this.status,
+    this.tagKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AssociatedRuleState {
 
   factory AssociatedRuleState.fromMap(Map<String, dynamic> map) {
     return AssociatedRuleState(
-      associatedSettingName: map['associatedSettingName'] == null ? null : pulumi.Output.create<String>(map['associatedSettingName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tagKeys: map['tagKeys'] == null ? null : pulumi.Output.create<List<String>>((map['tagKeys'] as List).cast<String>()),
+      associatedSettingName: map['associatedSettingName'] == null ? null : (map['associatedSettingName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tagKeys: map['tagKeys'] == null ? null : ((map['tagKeys'] as List).cast<String>()).input(),
     );
   }
 }

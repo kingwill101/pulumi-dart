@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MLTransformSchema {
   /// The type of data in the column.
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// The name you assign to this ML Transform. It must be unique in your account.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [MLTransformSchema].
   /// [dataType] The type of data in the column.
@@ -24,8 +25,8 @@ class MLTransformSchema {
 
   factory MLTransformSchema.fromMap(Map<String, dynamic> map) {
     return MLTransformSchema(
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

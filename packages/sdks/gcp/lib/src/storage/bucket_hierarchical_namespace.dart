@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketHierarchicalNamespace {
   /// Enables hierarchical namespace for the bucket.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [BucketHierarchicalNamespace].
   /// [enabled] Enables hierarchical namespace for the bucket.
@@ -19,7 +20,7 @@ class BucketHierarchicalNamespace {
 
   factory BucketHierarchicalNamespace.fromMap(Map<String, dynamic> map) {
     return BucketHierarchicalNamespace(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

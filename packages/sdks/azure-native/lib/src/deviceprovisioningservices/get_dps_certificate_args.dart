@@ -19,13 +19,10 @@ class GetDpsCertificateArgs {
   /// [provisioningServiceName] Name of the provisioning service the certificate is associated with.
   /// [resourceGroupName] Resource group identifier.
   GetDpsCertificateArgs({
-    required pulumi.Output<String> certificateName,
-    required pulumi.Output<String> provisioningServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateName = pulumi.Input.asInput<String>(certificateName),
-      provisioningServiceName = pulumi.Input.asInput<String>(provisioningServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.certificateName,
+    required this.provisioningServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDpsCertificateArgs {
 
   factory GetDpsCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetDpsCertificateArgs(
-      certificateName: pulumi.Output.create<String>(map['certificateName'] as String),
-      provisioningServiceName: pulumi.Output.create<String>(map['provisioningServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateName: (map['certificateName'] as String).input(),
+      provisioningServiceName: (map['provisioningServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

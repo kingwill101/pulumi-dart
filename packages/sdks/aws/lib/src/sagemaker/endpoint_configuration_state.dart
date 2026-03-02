@@ -47,31 +47,19 @@ class EndpointConfigurationState {
   /// [tags] Mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   EndpointConfigurationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<EndpointConfigurationAsyncInferenceConfig>? asyncInferenceConfig,
-    pulumi.Output<EndpointConfigurationDataCaptureConfig>? dataCaptureConfig,
-    pulumi.Output<String>? executionRoleArn,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<List<EndpointConfigurationProductionVariant>>? productionVariants,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<EndpointConfigurationShadowProductionVariant>>? shadowProductionVariants,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      asyncInferenceConfig = pulumi.Input.asOptionalInput<EndpointConfigurationAsyncInferenceConfig>(asyncInferenceConfig),
-      dataCaptureConfig = pulumi.Input.asOptionalInput<EndpointConfigurationDataCaptureConfig>(dataCaptureConfig),
-      executionRoleArn = pulumi.Input.asOptionalInput<String>(executionRoleArn),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      productionVariants = pulumi.Input.asOptionalInput<List<EndpointConfigurationProductionVariant>>(productionVariants),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shadowProductionVariants = pulumi.Input.asOptionalInput<List<EndpointConfigurationShadowProductionVariant>>(shadowProductionVariants),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.asyncInferenceConfig,
+    this.dataCaptureConfig,
+    this.executionRoleArn,
+    this.kmsKeyArn,
+    this.name,
+    this.namePrefix,
+    this.productionVariants,
+    this.region,
+    this.shadowProductionVariants,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class EndpointConfigurationState {
 
   factory EndpointConfigurationState.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      asyncInferenceConfig: map['asyncInferenceConfig'] == null ? null : pulumi.Output.create<EndpointConfigurationAsyncInferenceConfig>(EndpointConfigurationAsyncInferenceConfig.fromMap((map['asyncInferenceConfig'] as Map).cast<String, dynamic>())),
-      dataCaptureConfig: map['dataCaptureConfig'] == null ? null : pulumi.Output.create<EndpointConfigurationDataCaptureConfig>(EndpointConfigurationDataCaptureConfig.fromMap((map['dataCaptureConfig'] as Map).cast<String, dynamic>())),
-      executionRoleArn: map['executionRoleArn'] == null ? null : pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      productionVariants: map['productionVariants'] == null ? null : pulumi.Output.create<List<EndpointConfigurationProductionVariant>>(pulumi.Input.decodeList<EndpointConfigurationProductionVariant>(map['productionVariants'], (value) => EndpointConfigurationProductionVariant.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shadowProductionVariants: map['shadowProductionVariants'] == null ? null : pulumi.Output.create<List<EndpointConfigurationShadowProductionVariant>>(pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariant>(map['shadowProductionVariants'], (value) => EndpointConfigurationShadowProductionVariant.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      asyncInferenceConfig: map['asyncInferenceConfig'] == null ? null : (EndpointConfigurationAsyncInferenceConfig.fromMap((map['asyncInferenceConfig'] as Map).cast<String, dynamic>())).input(),
+      dataCaptureConfig: map['dataCaptureConfig'] == null ? null : (EndpointConfigurationDataCaptureConfig.fromMap((map['dataCaptureConfig'] as Map).cast<String, dynamic>())).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      productionVariants: map['productionVariants'] == null ? null : (pulumi.Input.decodeList<EndpointConfigurationProductionVariant>(map['productionVariants'], (value) => EndpointConfigurationProductionVariant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shadowProductionVariants: map['shadowProductionVariants'] == null ? null : (pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariant>(map['shadowProductionVariants'], (value) => EndpointConfigurationShadowProductionVariant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

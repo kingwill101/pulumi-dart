@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an environment variable for the container.
 class EnvironmentVariableResponse {
   /// The name of the environment variable.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The value of the environment variable.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [EnvironmentVariableResponse].
   /// [name] The name of the environment variable.
@@ -25,8 +26,8 @@ class EnvironmentVariableResponse {
 
   factory EnvironmentVariableResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

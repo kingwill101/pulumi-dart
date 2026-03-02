@@ -36,21 +36,14 @@ class GetListenerV2Args {
   /// [region] The region in which to obtain the V2 Load Balancer client.
   /// [tags] A set of tags applied to the loadbalancer's listener.
   GetListenerV2Args({
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? loadbalancerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<int>? protocolPort,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      loadbalancerId = pulumi.Input.asOptionalInput<String>(loadbalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      protocolPort = pulumi.Input.asOptionalInput<int>(protocolPort),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    this.listenerId,
+    this.loadbalancerId,
+    this.name,
+    this.protocol,
+    this.protocolPort,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class GetListenerV2Args {
 
   factory GetListenerV2Args.fromMap(Map<String, dynamic> map) {
     return GetListenerV2Args(
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      loadbalancerId: map['loadbalancerId'] == null ? null : pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      protocolPort: map['protocolPort'] == null ? null : pulumi.Output.create<int>(map['protocolPort'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      protocolPort: map['protocolPort'] == null ? null : (map['protocolPort'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains settings for embedding management.
 class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse {
   /// Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse].
   /// [enabled] Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
@@ -20,7 +21,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse 
 
   factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAutonomousDatabasesAutonomousDatabaseSourceConfig {
   /// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
-  final bool automaticBackupsReplicationEnabled;
+  final pulumi.Input<bool> automaticBackupsReplicationEnabled;
   /// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
-  final String autonomousDatabase;
+  final pulumi.Input<String> autonomousDatabase;
 
   /// Creates a new [GetAutonomousDatabasesAutonomousDatabaseSourceConfig].
   /// [automaticBackupsReplicationEnabled] This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
@@ -24,8 +25,8 @@ class GetAutonomousDatabasesAutonomousDatabaseSourceConfig {
 
   factory GetAutonomousDatabasesAutonomousDatabaseSourceConfig.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesAutonomousDatabaseSourceConfig(
-      automaticBackupsReplicationEnabled: map['automaticBackupsReplicationEnabled'] as bool,
-      autonomousDatabase: map['autonomousDatabase'] as String,
+      automaticBackupsReplicationEnabled: (map['automaticBackupsReplicationEnabled'] as bool).input(),
+      autonomousDatabase: (map['autonomousDatabase'] as String).input(),
     );
   }
 }

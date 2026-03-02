@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
   /// Must be specified if type is `DOUBLE`. Maximum value of the parameter.
-  final double? maxValue;
+  final pulumi.Input<double>? maxValue;
   /// Must be specified if type is `DOUBLE`. Minimum value of the parameter.
-  final double? minValue;
+  final pulumi.Input<double>? minValue;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec].
   /// [maxValue] Must be specified if type is `DOUBLE`. Maximum value of the parameter.
@@ -24,8 +25,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec(
-      maxValue: map['maxValue'] == null ? null : map['maxValue'] as double,
-      minValue: map['minValue'] == null ? null : map['minValue'] as double,
+      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as double).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue'] as double).input(),
     );
   }
 }

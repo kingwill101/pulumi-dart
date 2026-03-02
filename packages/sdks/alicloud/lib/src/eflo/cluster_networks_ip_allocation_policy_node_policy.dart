@@ -5,8 +5,8 @@ import 'cluster_networks_ip_allocation_policy_node_policy_bond.dart';
 
 class ClusterNetworksIpAllocationPolicyNodePolicy {
   /// Bond information See `bonds` below.
-  final List<ClusterNetworksIpAllocationPolicyNodePolicyBond>? bonds;
-  final String? nodeId;
+  final pulumi.Input<List<ClusterNetworksIpAllocationPolicyNodePolicyBond>>? bonds;
+  final pulumi.Input<String>? nodeId;
 
   /// Creates a new [ClusterNetworksIpAllocationPolicyNodePolicy].
   /// [bonds] Bond information See `bonds` below.
@@ -18,15 +18,15 @@ class ClusterNetworksIpAllocationPolicyNodePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bonds': ?bonds == null ? null : pulumi.Input.encodeList<ClusterNetworksIpAllocationPolicyNodePolicyBond, Map<String, dynamic>>(bonds!, (value) => value.toMap()),
+      'bonds': ?pulumi.Input.mapOptionalInputValue<List<ClusterNetworksIpAllocationPolicyNodePolicyBond>, List<Map<String, dynamic>>>(bonds, (value) => pulumi.Input.encodeList<ClusterNetworksIpAllocationPolicyNodePolicyBond, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeId': ?nodeId,
     };
   }
 
   factory ClusterNetworksIpAllocationPolicyNodePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksIpAllocationPolicyNodePolicy(
-      bonds: map['bonds'] == null ? null : pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyNodePolicyBond>(map['bonds'], (value) => ClusterNetworksIpAllocationPolicyNodePolicyBond.fromMap((value as Map).cast<String, dynamic>())),
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyNodePolicyBond>(map['bonds'], (value) => ClusterNetworksIpAllocationPolicyNodePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
     );
   }
 }

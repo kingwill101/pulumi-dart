@@ -30,21 +30,14 @@ class LongRunningBackupArgs {
   /// [serverName] The name of the server.
   /// [source] Backup source
   LongRunningBackupArgs({
-    pulumi.Output<String>? backupName,
-    pulumi.Output<String>? backupNameV2,
-    pulumi.Output<String>? backupType,
-    pulumi.Output<String>? completedTime,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? source,
-  }) :
-      backupName = pulumi.Input.asOptionalInput<String>(backupName),
-      backupNameV2 = pulumi.Input.asOptionalInput<String>(backupNameV2),
-      backupType = pulumi.Input.asOptionalInput<String>(backupType),
-      completedTime = pulumi.Input.asOptionalInput<String>(completedTime),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.backupName,
+    this.backupNameV2,
+    this.backupType,
+    this.completedTime,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class LongRunningBackupArgs {
 
   factory LongRunningBackupArgs.fromMap(Map<String, dynamic> map) {
     return LongRunningBackupArgs(
-      backupName: map['backupName'] == null ? null : pulumi.Output.create<String>(map['backupName'] as String),
-      backupNameV2: map['backupNameV2'] == null ? null : pulumi.Output.create<String>(map['backupNameV2'] as String),
-      backupType: map['backupType'] == null ? null : pulumi.Output.create<String>(map['backupType'] as String),
-      completedTime: map['completedTime'] == null ? null : pulumi.Output.create<String>(map['completedTime'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupNameV2: map['backupNameV2'] == null ? null : (map['backupNameV2'] as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
+      completedTime: map['completedTime'] == null ? null : (map['completedTime'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

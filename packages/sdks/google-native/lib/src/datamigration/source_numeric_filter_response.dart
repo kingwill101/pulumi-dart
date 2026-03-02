@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Filter for fixed point number data types such as NUMERIC/NUMBER
 class SourceNumericFilterResponse {
   /// Enum to set the option defining the datatypes numeric filter has to be applied to
-  final String numericFilterOption;
+  final pulumi.Input<String> numericFilterOption;
   /// Optional. The filter will match columns with precision smaller than or equal to this number.
-  final int sourceMaxPrecisionFilter;
+  final pulumi.Input<int> sourceMaxPrecisionFilter;
   /// Optional. The filter will match columns with scale smaller than or equal to this number.
-  final int sourceMaxScaleFilter;
+  final pulumi.Input<int> sourceMaxScaleFilter;
   /// Optional. The filter will match columns with precision greater than or equal to this number.
-  final int sourceMinPrecisionFilter;
+  final pulumi.Input<int> sourceMinPrecisionFilter;
   /// Optional. The filter will match columns with scale greater than or equal to this number.
-  final int sourceMinScaleFilter;
+  final pulumi.Input<int> sourceMinScaleFilter;
 
   /// Creates a new [SourceNumericFilterResponse].
   /// [numericFilterOption] Enum to set the option defining the datatypes numeric filter has to be applied to
@@ -40,11 +41,11 @@ class SourceNumericFilterResponse {
 
   factory SourceNumericFilterResponse.fromMap(Map<String, dynamic> map) {
     return SourceNumericFilterResponse(
-      numericFilterOption: map['numericFilterOption'] as String,
-      sourceMaxPrecisionFilter: map['sourceMaxPrecisionFilter'] as int,
-      sourceMaxScaleFilter: map['sourceMaxScaleFilter'] as int,
-      sourceMinPrecisionFilter: map['sourceMinPrecisionFilter'] as int,
-      sourceMinScaleFilter: map['sourceMinScaleFilter'] as int,
+      numericFilterOption: (map['numericFilterOption'] as String).input(),
+      sourceMaxPrecisionFilter: (map['sourceMaxPrecisionFilter'] as int).input(),
+      sourceMaxScaleFilter: (map['sourceMaxScaleFilter'] as int).input(),
+      sourceMinPrecisionFilter: (map['sourceMinPrecisionFilter'] as int).input(),
+      sourceMinScaleFilter: (map['sourceMinScaleFilter'] as int).input(),
     );
   }
 }

@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_response_latest.dart';
 import 'dataset_state_response.dart';
 
 /// Machine Learning dataset object.
 class DatasetResponse {
   /// The dataset creation time (UTC).
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// Unique Dataset identifier.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// Dataset state
-  final DatasetStateResponse? datasetState;
+  final pulumi.Input<DatasetStateResponse>? datasetState;
   /// Dataset Type.
-  final String datasetType;
+  final pulumi.Input<String> datasetType;
   /// Name of the default compute to be used for any Dataset actions (such as Profile, Write).
-  final String defaultCompute;
+  final pulumi.Input<String> defaultCompute;
   /// Description about this dataset version.
-  final String description;
+  final pulumi.Input<String> description;
   /// eTag description
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Flag to hide Dataset in UI
-  final bool isVisible;
+  final pulumi.Input<bool> isVisible;
   /// Last created Dataset definition.
-  final DatasetResponseLatest? latest;
+  final pulumi.Input<DatasetResponseLatest>? latest;
   /// The dataset last modified time (UTC).
-  final String modifiedTime;
+  final pulumi.Input<String> modifiedTime;
   /// Unique dataset name
-  final String name;
+  final pulumi.Input<String> name;
   /// Tags for this dataset version.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [DatasetResponse].
   /// [createdTime] The dataset creation time (UTC).
@@ -62,13 +63,13 @@ class DatasetResponse {
     return <String, dynamic>{
       'createdTime': createdTime,
       'datasetId': datasetId,
-      'datasetState': ?datasetState == null ? null : datasetState!.toMap(),
+      'datasetState': ?pulumi.Input.mapOptionalInputValue<DatasetStateResponse, Map<String, dynamic>>(datasetState, (value) => value.toMap()),
       'datasetType': datasetType,
       'defaultCompute': defaultCompute,
       'description': description,
       'etag': etag,
       'isVisible': isVisible,
-      'latest': ?latest == null ? null : latest!.toMap(),
+      'latest': ?pulumi.Input.mapOptionalInputValue<DatasetResponseLatest, Map<String, dynamic>>(latest, (value) => value.toMap()),
       'modifiedTime': modifiedTime,
       'name': name,
       'tags': tags,
@@ -77,18 +78,18 @@ class DatasetResponse {
 
   factory DatasetResponse.fromMap(Map<String, dynamic> map) {
     return DatasetResponse(
-      createdTime: map['createdTime'] as String,
-      datasetId: map['datasetId'] as String,
-      datasetState: map['datasetState'] == null ? null : DatasetStateResponse.fromMap((map['datasetState'] as Map).cast<String, dynamic>()),
-      datasetType: map['datasetType'] as String,
-      defaultCompute: map['defaultCompute'] as String,
-      description: map['description'] as String,
-      etag: map['etag'] as String,
-      isVisible: map['isVisible'] as bool,
-      latest: map['latest'] == null ? null : DatasetResponseLatest.fromMap((map['latest'] as Map).cast<String, dynamic>()),
-      modifiedTime: map['modifiedTime'] as String,
-      name: map['name'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      createdTime: (map['createdTime'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      datasetState: map['datasetState'] == null ? null : (DatasetStateResponse.fromMap((map['datasetState'] as Map).cast<String, dynamic>())).input(),
+      datasetType: (map['datasetType'] as String).input(),
+      defaultCompute: (map['defaultCompute'] as String).input(),
+      description: (map['description'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      isVisible: (map['isVisible'] as bool).input(),
+      latest: map['latest'] == null ? null : (DatasetResponseLatest.fromMap((map['latest'] as Map).cast<String, dynamic>())).input(),
+      modifiedTime: (map['modifiedTime'] as String).input(),
+      name: (map['name'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

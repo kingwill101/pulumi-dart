@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vvp_instance_storage_oss.dart';
 
 class VvpInstanceStorage {
   /// OSS stores information. See `oss` below.
-  final VvpInstanceStorageOss oss;
+  final pulumi.Input<VvpInstanceStorageOss> oss;
 
   /// Creates a new [VvpInstanceStorage].
   /// [oss] OSS stores information. See `oss` below.
@@ -14,13 +15,13 @@ class VvpInstanceStorage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oss': oss.toMap(),
+      'oss': pulumi.Input.mapInputValue<VvpInstanceStorageOss, Map<String, dynamic>>(oss, (value) => value.toMap()),
     };
   }
 
   factory VvpInstanceStorage.fromMap(Map<String, dynamic> map) {
     return VvpInstanceStorage(
-      oss: VvpInstanceStorageOss.fromMap((map['oss'] as Map).cast<String, dynamic>()),
+      oss: (VvpInstanceStorageOss.fromMap((map['oss'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

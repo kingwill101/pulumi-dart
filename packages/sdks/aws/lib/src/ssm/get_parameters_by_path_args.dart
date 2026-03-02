@@ -22,15 +22,11 @@ class GetParametersByPathArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [withDecryption] Whether to retrieve all parameters in the hierarchy, particularly those of `SecureString` type, with their value decrypted. Defaults to `true`.
   GetParametersByPathArgs({
-    required pulumi.Output<String> path,
-    pulumi.Output<bool>? recursive,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? withDecryption,
-  }) :
-      path = pulumi.Input.asInput<String>(path),
-      recursive = pulumi.Input.asOptionalInput<bool>(recursive),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      withDecryption = pulumi.Input.asOptionalInput<bool>(withDecryption);
+    required this.path,
+    this.recursive,
+    this.region,
+    this.withDecryption,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetParametersByPathArgs {
 
   factory GetParametersByPathArgs.fromMap(Map<String, dynamic> map) {
     return GetParametersByPathArgs(
-      path: pulumi.Output.create<String>(map['path'] as String),
-      recursive: map['recursive'] == null ? null : pulumi.Output.create<bool>(map['recursive'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      withDecryption: map['withDecryption'] == null ? null : pulumi.Output.create<bool>(map['withDecryption'] as bool),
+      path: (map['path'] as String).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      withDecryption: map['withDecryption'] == null ? null : (map['withDecryption'] as bool).input(),
     );
   }
 }

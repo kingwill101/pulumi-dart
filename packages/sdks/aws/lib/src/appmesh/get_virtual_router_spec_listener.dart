@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_router_spec_listener_port_mapping.dart';
 
 class GetVirtualRouterSpecListener {
-  final List<GetVirtualRouterSpecListenerPortMapping> portMappings;
+  final pulumi.Input<List<GetVirtualRouterSpecListenerPortMapping>> portMappings;
 
   /// Creates a new [GetVirtualRouterSpecListener].
   /// [portMappings] Required.
@@ -14,13 +14,13 @@ class GetVirtualRouterSpecListener {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'portMappings': pulumi.Input.encodeList<GetVirtualRouterSpecListenerPortMapping, Map<String, dynamic>>(portMappings, (value) => value.toMap()),
+      'portMappings': pulumi.Input.mapInputValue<List<GetVirtualRouterSpecListenerPortMapping>, List<Map<String, dynamic>>>(portMappings, (value) => pulumi.Input.encodeList<GetVirtualRouterSpecListenerPortMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualRouterSpecListener.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterSpecListener(
-      portMappings: pulumi.Input.decodeList<GetVirtualRouterSpecListenerPortMapping>(map['portMappings'], (value) => GetVirtualRouterSpecListenerPortMapping.fromMap((value as Map).cast<String, dynamic>())),
+      portMappings: (pulumi.Input.decodeList<GetVirtualRouterSpecListenerPortMapping>(map['portMappings'], (value) => GetVirtualRouterSpecListenerPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

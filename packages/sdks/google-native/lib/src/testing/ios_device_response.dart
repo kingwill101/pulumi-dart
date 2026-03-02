@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A single iOS device.
 class IosDeviceResponse {
   /// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-  final String iosModelId;
+  final pulumi.Input<String> iosModelId;
   /// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-  final String iosVersionId;
+  final pulumi.Input<String> iosVersionId;
   /// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-  final String locale;
+  final pulumi.Input<String> locale;
   /// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-  final String orientation;
+  final pulumi.Input<String> orientation;
 
   /// Creates a new [IosDeviceResponse].
   /// [iosModelId] The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -35,10 +36,10 @@ class IosDeviceResponse {
 
   factory IosDeviceResponse.fromMap(Map<String, dynamic> map) {
     return IosDeviceResponse(
-      iosModelId: map['iosModelId'] as String,
-      iosVersionId: map['iosVersionId'] as String,
-      locale: map['locale'] as String,
-      orientation: map['orientation'] as String,
+      iosModelId: (map['iosModelId'] as String).input(),
+      iosVersionId: (map['iosVersionId'] as String).input(),
+      locale: (map['locale'] as String).input(),
+      orientation: (map['orientation'] as String).input(),
     );
   }
 }

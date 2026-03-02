@@ -25,17 +25,12 @@ class ListActiveSecurityAdminRulesArgs {
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   /// [top] An optional query parameter which specifies the maximum number of records to be returned by the server.
   ListActiveSecurityAdminRulesArgs({
-    required pulumi.Output<String> networkManagerName,
-    pulumi.Output<List<String>>? regions,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-    pulumi.Output<int>? top,
-  }) :
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    required this.networkManagerName,
+    this.regions,
+    required this.resourceGroupName,
+    this.skipToken,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ListActiveSecurityAdminRulesArgs {
 
   factory ListActiveSecurityAdminRulesArgs.fromMap(Map<String, dynamic> map) {
     return ListActiveSecurityAdminRulesArgs(
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

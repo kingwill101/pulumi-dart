@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis {
   /// ARN of the table which is queried with the largest time range.
-  final String? tableArn;
+  final pulumi.Input<String>? tableArn;
   /// Maximum duration in nanoseconds between the start and end of the query.
-  final int? value;
+  final pulumi.Input<int>? value;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis].
   /// [tableArn] ARN of the table which is queried with the largest time range.
@@ -24,8 +25,8 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis {
 
   factory ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis(
-      tableArn: map['tableArn'] == null ? null : map['tableArn'] as String,
-      value: map['value'] == null ? null : map['value'] as int,
+      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as int).input(),
     );
   }
 }

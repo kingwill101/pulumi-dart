@@ -26,15 +26,11 @@ class SettingsArgs {
   /// [parent] Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
   /// [serviceAccountApproverSettings] This controls the node-level settings for allowing service accounts as approvers.
   SettingsArgs({
-    pulumi.Output<SettingsEmailNotificationSettings>? emailNotificationSettings,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> parent,
-    pulumi.Output<SettingsServiceAccountApproverSettings>? serviceAccountApproverSettings,
-  }) :
-      emailNotificationSettings = pulumi.Input.asOptionalInput<SettingsEmailNotificationSettings>(emailNotificationSettings),
-      location = pulumi.Input.asInput<String>(location),
-      parent = pulumi.Input.asInput<String>(parent),
-      serviceAccountApproverSettings = pulumi.Input.asOptionalInput<SettingsServiceAccountApproverSettings>(serviceAccountApproverSettings);
+    this.emailNotificationSettings,
+    required this.location,
+    required this.parent,
+    this.serviceAccountApproverSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class SettingsArgs {
 
   factory SettingsArgs.fromMap(Map<String, dynamic> map) {
     return SettingsArgs(
-      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : pulumi.Output.create<SettingsEmailNotificationSettings>(SettingsEmailNotificationSettings.fromMap((map['emailNotificationSettings'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      serviceAccountApproverSettings: map['serviceAccountApproverSettings'] == null ? null : pulumi.Output.create<SettingsServiceAccountApproverSettings>(SettingsServiceAccountApproverSettings.fromMap((map['serviceAccountApproverSettings'] as Map).cast<String, dynamic>())),
+      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : (SettingsEmailNotificationSettings.fromMap((map['emailNotificationSettings'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      serviceAccountApproverSettings: map['serviceAccountApproverSettings'] == null ? null : (SettingsServiceAccountApproverSettings.fromMap((map['serviceAccountApproverSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

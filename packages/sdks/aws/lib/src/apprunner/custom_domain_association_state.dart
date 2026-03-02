@@ -29,21 +29,14 @@ class CustomDomainAssociationState {
   /// [serviceArn] ARN of the App Runner service.
   /// [status] Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
   CustomDomainAssociationState({
-    pulumi.Output<List<CustomDomainAssociationCertificateValidationRecord>>? certificateValidationRecords,
-    pulumi.Output<String>? dnsTarget,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<bool>? enableWwwSubdomain,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceArn,
-    pulumi.Output<String>? status,
-  }) :
-      certificateValidationRecords = pulumi.Input.asOptionalInput<List<CustomDomainAssociationCertificateValidationRecord>>(certificateValidationRecords),
-      dnsTarget = pulumi.Input.asOptionalInput<String>(dnsTarget),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      enableWwwSubdomain = pulumi.Input.asOptionalInput<bool>(enableWwwSubdomain),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceArn = pulumi.Input.asOptionalInput<String>(serviceArn),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.certificateValidationRecords,
+    this.dnsTarget,
+    this.domainName,
+    this.enableWwwSubdomain,
+    this.region,
+    this.serviceArn,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class CustomDomainAssociationState {
 
   factory CustomDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationState(
-      certificateValidationRecords: map['certificateValidationRecords'] == null ? null : pulumi.Output.create<List<CustomDomainAssociationCertificateValidationRecord>>(pulumi.Input.decodeList<CustomDomainAssociationCertificateValidationRecord>(map['certificateValidationRecords'], (value) => CustomDomainAssociationCertificateValidationRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      dnsTarget: map['dnsTarget'] == null ? null : pulumi.Output.create<String>(map['dnsTarget'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : pulumi.Output.create<bool>(map['enableWwwSubdomain'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceArn: map['serviceArn'] == null ? null : pulumi.Output.create<String>(map['serviceArn'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      certificateValidationRecords: map['certificateValidationRecords'] == null ? null : (pulumi.Input.decodeList<CustomDomainAssociationCertificateValidationRecord>(map['certificateValidationRecords'], (value) => CustomDomainAssociationCertificateValidationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsTarget: map['dnsTarget'] == null ? null : (map['dnsTarget'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : (map['enableWwwSubdomain'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

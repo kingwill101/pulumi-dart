@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_active_directory_app_response.dart';
 import 'mi_sql_connection_info_response.dart';
 
 /// Input for the task that validates connection to Azure SQL Database Managed Instance online scenario.
 class ConnectToTargetSqlMISyncTaskInputResponse {
   /// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
-  final AzureActiveDirectoryAppResponse azureApp;
+  final pulumi.Input<AzureActiveDirectoryAppResponse> azureApp;
   /// Connection information for Azure SQL Database Managed Instance
-  final MiSqlConnectionInfoResponse targetConnectionInfo;
+  final pulumi.Input<MiSqlConnectionInfoResponse> targetConnectionInfo;
 
   /// Creates a new [ConnectToTargetSqlMISyncTaskInputResponse].
   /// [azureApp] Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
@@ -20,15 +21,15 @@ class ConnectToTargetSqlMISyncTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApp': azureApp.toMap(),
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'azureApp': pulumi.Input.mapInputValue<AzureActiveDirectoryAppResponse, Map<String, dynamic>>(azureApp, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<MiSqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory ConnectToTargetSqlMISyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlMISyncTaskInputResponse(
-      azureApp: AzureActiveDirectoryAppResponse.fromMap((map['azureApp'] as Map).cast<String, dynamic>()),
-      targetConnectionInfo: MiSqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      azureApp: (AzureActiveDirectoryAppResponse.fromMap((map['azureApp'] as Map).cast<String, dynamic>())).input(),
+      targetConnectionInfo: (MiSqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubResource {
   /// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
   /// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
   /// A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
   /// Example of a relative ID: $self/frontEndConfigurations/my-frontend.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [SubResource].
   /// [id] Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
@@ -22,7 +23,7 @@ class SubResource {
 
   factory SubResource.fromMap(Map<String, dynamic> map) {
     return SubResource(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

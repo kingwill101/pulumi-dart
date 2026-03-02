@@ -16,11 +16,9 @@ class GetNGroupArgs {
   /// [ngroupsName] The NGroups name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNGroupArgs({
-    required pulumi.Output<String> ngroupsName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      ngroupsName = pulumi.Input.asInput<String>(ngroupsName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.ngroupsName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNGroupArgs {
 
   factory GetNGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNGroupArgs(
-      ngroupsName: pulumi.Output.create<String>(map['ngroupsName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ngroupsName: (map['ngroupsName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

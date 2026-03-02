@@ -40,27 +40,17 @@ class DatasetArgs {
   /// [project] Optional.
   /// [savedQueries] All SavedQueries belong to the Dataset will be returned in List/Get Dataset response. The annotation_specs field will not be populated except for UI cases which will only use annotation_spec_count. In CreateDataset request, a SavedQuery is created together if this field is set, up to one SavedQuery can be set in CreateDatasetRequest. The SavedQuery should not contain any AnnotationSpec.
   DatasetArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<dynamic> metadata,
-    required pulumi.Output<String> metadataSchemaUri,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<GoogleCloudAiplatformV1SavedQuery>>? savedQueries,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(encryptionSpec),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asInput<dynamic>(metadata),
-      metadataSchemaUri = pulumi.Input.asInput<String>(metadataSchemaUri),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      savedQueries = pulumi.Input.asOptionalInput<List<GoogleCloudAiplatformV1SavedQuery>>(savedQueries);
+    this.description,
+    required this.displayName,
+    this.encryptionSpec,
+    this.etag,
+    this.labels,
+    this.location,
+    required this.metadata,
+    required this.metadataSchemaUri,
+    this.project,
+    this.savedQueries,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1EncryptionSpec>(GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: pulumi.Output.create<dynamic>(map['metadata']),
-      metadataSchemaUri: pulumi.Output.create<String>(map['metadataSchemaUri'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      savedQueries: map['savedQueries'] == null ? null : pulumi.Output.create<List<GoogleCloudAiplatformV1SavedQuery>>(pulumi.Input.decodeList<GoogleCloudAiplatformV1SavedQuery>(map['savedQueries'], (value) => GoogleCloudAiplatformV1SavedQuery.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: (map['metadata']).input(),
+      metadataSchemaUri: (map['metadataSchemaUri'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      savedQueries: map['savedQueries'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1SavedQuery>(map['savedQueries'], (value) => GoogleCloudAiplatformV1SavedQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

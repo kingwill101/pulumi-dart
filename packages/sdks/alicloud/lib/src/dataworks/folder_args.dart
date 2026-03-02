@@ -18,13 +18,10 @@ class FolderArgs {
   /// [projectId] The ID of the project.
   /// [projectIdentifier] Optional.
   FolderArgs({
-    required pulumi.Output<String> folderPath,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? projectIdentifier,
-  }) :
-      folderPath = pulumi.Input.asInput<String>(folderPath),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      projectIdentifier = pulumi.Input.asOptionalInput<String>(projectIdentifier);
+    required this.folderPath,
+    this.projectId,
+    this.projectIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class FolderArgs {
 
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
-      folderPath: pulumi.Output.create<String>(map['folderPath'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      projectIdentifier: map['projectIdentifier'] == null ? null : pulumi.Output.create<String>(map['projectIdentifier'] as String),
+      folderPath: (map['folderPath'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectIdentifier: map['projectIdentifier'] == null ? null : (map['projectIdentifier'] as String).input(),
     );
   }
 }

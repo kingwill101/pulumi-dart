@@ -10,9 +10,8 @@ class ServiceLinkedRoleState {
   /// Creates a new [ServiceLinkedRoleState].
   /// [status] The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
   ServiceLinkedRoleState({
-    pulumi.Output<bool>? status,
-  }) :
-      status = pulumi.Input.asOptionalInput<bool>(status);
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class ServiceLinkedRoleState {
 
   factory ServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleState(
-      status: map['status'] == null ? null : pulumi.Output.create<bool>(map['status'] as bool),
+      status: map['status'] == null ? null : (map['status'] as bool).input(),
     );
   }
 }

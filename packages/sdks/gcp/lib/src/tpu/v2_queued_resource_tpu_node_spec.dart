@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_queued_resource_tpu_node_spec_node.dart';
 
 class V2QueuedResourceTpuNodeSpec {
   /// The node.
   /// Structure is documented below.
-  final V2QueuedResourceTpuNodeSpecNode node;
+  final pulumi.Input<V2QueuedResourceTpuNodeSpecNode> node;
   /// Unqualified node identifier used to identify the node in the project once provisioned.
-  final String? nodeId;
+  final pulumi.Input<String>? nodeId;
   /// The parent resource name.
-  final String parent;
+  final pulumi.Input<String> parent;
 
   /// Creates a new [V2QueuedResourceTpuNodeSpec].
   /// [node] The node.
@@ -23,7 +24,7 @@ class V2QueuedResourceTpuNodeSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'node': node.toMap(),
+      'node': pulumi.Input.mapInputValue<V2QueuedResourceTpuNodeSpecNode, Map<String, dynamic>>(node, (value) => value.toMap()),
       'nodeId': ?nodeId,
       'parent': parent,
     };
@@ -31,9 +32,9 @@ class V2QueuedResourceTpuNodeSpec {
 
   factory V2QueuedResourceTpuNodeSpec.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpuNodeSpec(
-      node: V2QueuedResourceTpuNodeSpecNode.fromMap((map['node'] as Map).cast<String, dynamic>()),
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      parent: map['parent'] as String,
+      node: (V2QueuedResourceTpuNodeSpecNode.fromMap((map['node'] as Map).cast<String, dynamic>())).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

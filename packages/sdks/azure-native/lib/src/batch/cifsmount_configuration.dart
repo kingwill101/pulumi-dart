@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information used to connect to a CIFS file system.
 class CIFSMountConfiguration {
   /// These are 'net use' options in Windows and 'mount' options in Linux.
-  final String? mountOptions;
+  final pulumi.Input<String>? mountOptions;
   /// The password to use for authentication against the CIFS file system.
-  final String password;
+  final pulumi.Input<String> password;
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
-  final String relativeMountPath;
+  final pulumi.Input<String> relativeMountPath;
   /// The URI of the file system to mount.
-  final String source;
+  final pulumi.Input<String> source;
   /// The user to use for authentication against the CIFS file system.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [CIFSMountConfiguration].
   /// [mountOptions] These are 'net use' options in Windows and 'mount' options in Linux.
@@ -40,11 +41,11 @@ class CIFSMountConfiguration {
 
   factory CIFSMountConfiguration.fromMap(Map<String, dynamic> map) {
     return CIFSMountConfiguration(
-      mountOptions: map['mountOptions'] == null ? null : map['mountOptions'] as String,
-      password: map['password'] as String,
-      relativeMountPath: map['relativeMountPath'] as String,
-      source: map['source'] as String,
-      userName: map['userName'] as String,
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
+      password: (map['password'] as String).input(),
+      relativeMountPath: (map['relativeMountPath'] as String).input(),
+      source: (map['source'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

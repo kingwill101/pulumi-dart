@@ -13,9 +13,8 @@ class GetProviderActionOverviewStatusArgs {
   /// Creates a new [GetProviderActionOverviewStatusArgs].
   /// [type] The resource type.
   GetProviderActionOverviewStatusArgs({
-    pulumi.Output<String>? type,
-  }) :
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetProviderActionOverviewStatusArgs {
 
   factory GetProviderActionOverviewStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderActionOverviewStatusArgs(
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

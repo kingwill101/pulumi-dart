@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies configuration of a redis module
 class ModuleResponse {
   /// Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
-  final String? args;
+  final pulumi.Input<String>? args;
   /// The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
-  final String name;
+  final pulumi.Input<String> name;
   /// The version of the module, e.g. '1.0'.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [ModuleResponse].
   /// [args] Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
@@ -30,9 +31,9 @@ class ModuleResponse {
 
   factory ModuleResponse.fromMap(Map<String, dynamic> map) {
     return ModuleResponse(
-      args: map['args'] == null ? null : map['args'] as String,
-      name: map['name'] as String,
-      version: map['version'] as String,
+      args: map['args'] == null ? null : (map['args'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

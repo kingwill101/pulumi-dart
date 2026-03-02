@@ -40,29 +40,18 @@ class HybridConnectionAuthorizationRuleState {
   /// [secondaryKey] The Secondary Key for the Azure Relay Hybrid Connection Authorization Rule.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
   HybridConnectionAuthorizationRuleState({
-    pulumi.Output<String>? hybridConnectionName,
-    pulumi.Output<bool>? listen,
-    pulumi.Output<bool>? manage,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespaceName,
-    pulumi.Output<String>? primaryConnectionString,
-    pulumi.Output<String>? primaryKey,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? secondaryConnectionString,
-    pulumi.Output<String>? secondaryKey,
-    pulumi.Output<bool>? send,
-  }) :
-      hybridConnectionName = pulumi.Input.asOptionalInput<String>(hybridConnectionName),
-      listen = pulumi.Input.asOptionalInput<bool>(listen),
-      manage = pulumi.Input.asOptionalInput<bool>(manage),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      primaryConnectionString = pulumi.Input.asOptionalInput<String>(primaryConnectionString),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secondaryConnectionString = pulumi.Input.asOptionalInput<String>(secondaryConnectionString),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      send = pulumi.Input.asOptionalInput<bool>(send);
+    this.hybridConnectionName,
+    this.listen,
+    this.manage,
+    this.name,
+    this.namespaceName,
+    this.primaryConnectionString,
+    this.primaryKey,
+    this.resourceGroupName,
+    this.secondaryConnectionString,
+    this.secondaryKey,
+    this.send,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class HybridConnectionAuthorizationRuleState {
 
   factory HybridConnectionAuthorizationRuleState.fromMap(Map<String, dynamic> map) {
     return HybridConnectionAuthorizationRuleState(
-      hybridConnectionName: map['hybridConnectionName'] == null ? null : pulumi.Output.create<String>(map['hybridConnectionName'] as String),
-      listen: map['listen'] == null ? null : pulumi.Output.create<bool>(map['listen'] as bool),
-      manage: map['manage'] == null ? null : pulumi.Output.create<bool>(map['manage'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['primaryConnectionString'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['secondaryConnectionString'] as String),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      send: map['send'] == null ? null : pulumi.Output.create<bool>(map['send'] as bool),
+      hybridConnectionName: map['hybridConnectionName'] == null ? null : (map['hybridConnectionName'] as String).input(),
+      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      send: map['send'] == null ? null : (map['send'] as bool).input(),
     );
   }
 }

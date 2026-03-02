@@ -30,21 +30,14 @@ class AutoscalerComputeBetaArgs {
   /// [target] URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
   /// [zone] Optional.
   AutoscalerComputeBetaArgs({
-    pulumi.Output<AutoscalingPolicyComputeBeta>? autoscalingPolicy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? target,
-    pulumi.Output<String>? zone,
-  }) :
-      autoscalingPolicy = pulumi.Input.asOptionalInput<AutoscalingPolicyComputeBeta>(autoscalingPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      target = pulumi.Input.asOptionalInput<String>(target),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.autoscalingPolicy,
+    this.description,
+    this.name,
+    this.project,
+    this.requestId,
+    this.target,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class AutoscalerComputeBetaArgs {
 
   factory AutoscalerComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalerComputeBetaArgs(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : pulumi.Output.create<AutoscalingPolicyComputeBeta>(AutoscalingPolicyComputeBeta.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (AutoscalingPolicyComputeBeta.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

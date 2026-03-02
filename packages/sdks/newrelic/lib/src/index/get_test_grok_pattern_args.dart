@@ -19,13 +19,10 @@ class GetTestGrokPatternArgs {
   /// [grok] The Grok pattern to test.
   /// [logLines] The log lines to test the Grok pattern against.
   GetTestGrokPatternArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> grok,
-    required pulumi.Output<List<String>> logLines,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      grok = pulumi.Input.asInput<String>(grok),
-      logLines = pulumi.Input.asInput<List<String>>(logLines);
+    this.accountId,
+    required this.grok,
+    required this.logLines,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTestGrokPatternArgs {
 
   factory GetTestGrokPatternArgs.fromMap(Map<String, dynamic> map) {
     return GetTestGrokPatternArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      grok: pulumi.Output.create<String>(map['grok'] as String),
-      logLines: pulumi.Output.create<List<String>>((map['logLines'] as List).cast<String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      grok: (map['grok'] as String).input(),
+      logLines: ((map['logLines'] as List).cast<String>()).input(),
     );
   }
 }

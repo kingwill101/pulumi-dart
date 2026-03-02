@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMware migrate fabric model custom properties.
 class VMwareMigrateFabricModelCustomProperties {
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareMigrate'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the ARM Id of the migration solution.
-  final String migrationSolutionId;
+  final pulumi.Input<String> migrationSolutionId;
   /// Gets or sets the ARM Id of the VMware site.
-  final String vmwareSiteId;
+  final pulumi.Input<String> vmwareSiteId;
 
   /// Creates a new [VMwareMigrateFabricModelCustomProperties].
   /// [instanceType] Gets or sets the instance type.
@@ -31,9 +32,9 @@ class VMwareMigrateFabricModelCustomProperties {
 
   factory VMwareMigrateFabricModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return VMwareMigrateFabricModelCustomProperties(
-      instanceType: map['instanceType'] as String,
-      migrationSolutionId: map['migrationSolutionId'] as String,
-      vmwareSiteId: map['vmwareSiteId'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      migrationSolutionId: (map['migrationSolutionId'] as String).input(),
+      vmwareSiteId: (map['vmwareSiteId'] as String).input(),
     );
   }
 }

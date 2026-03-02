@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketsBucketRefererConfig {
   /// Indicate whether the access request referer field can be empty.
-  final bool allowEmpty;
+  final pulumi.Input<bool> allowEmpty;
   /// Referer access whitelist.
-  final List<String> referers;
+  final pulumi.Input<List<String>> referers;
 
   /// Creates a new [GetBucketsBucketRefererConfig].
   /// [allowEmpty] Indicate whether the access request referer field can be empty.
@@ -24,8 +25,8 @@ class GetBucketsBucketRefererConfig {
 
   factory GetBucketsBucketRefererConfig.fromMap(Map<String, dynamic> map) {
     return GetBucketsBucketRefererConfig(
-      allowEmpty: map['allowEmpty'] as bool,
-      referers: (map['referers'] as List).cast<String>(),
+      allowEmpty: (map['allowEmpty'] as bool).input(),
+      referers: ((map['referers'] as List).cast<String>()).input(),
     );
   }
 }

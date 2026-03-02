@@ -22,17 +22,12 @@ class FlexibleDatabaseState {
   /// [resourceGroupName] The name of the resource group in which the MySQL Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   FlexibleDatabaseState({
-    pulumi.Output<String>? charset,
-    pulumi.Output<String>? collation,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serverName,
-  }) :
-      charset = pulumi.Input.asOptionalInput<String>(charset),
-      collation = pulumi.Input.asOptionalInput<String>(collation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asOptionalInput<String>(serverName);
+    this.charset,
+    this.collation,
+    this.name,
+    this.resourceGroupName,
+    this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class FlexibleDatabaseState {
 
   factory FlexibleDatabaseState.fromMap(Map<String, dynamic> map) {
     return FlexibleDatabaseState(
-      charset: map['charset'] == null ? null : pulumi.Output.create<String>(map['charset'] as String),
-      collation: map['collation'] == null ? null : pulumi.Output.create<String>(map['collation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: map['serverName'] == null ? null : pulumi.Output.create<String>(map['serverName'] as String),
+      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
     );
   }
 }

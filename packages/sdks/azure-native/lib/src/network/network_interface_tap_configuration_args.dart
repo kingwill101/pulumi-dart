@@ -29,19 +29,13 @@ class NetworkInterfaceTapConfigurationArgs {
   /// [tapConfigurationName] The name of the tap configuration.
   /// [virtualNetworkTap] The reference to the Virtual Network Tap resource.
   NetworkInterfaceTapConfigurationArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> networkInterfaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? tapConfigurationName,
-    pulumi.Output<VirtualNetworkTapNetwork>? virtualNetworkTap,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkInterfaceName = pulumi.Input.asInput<String>(networkInterfaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tapConfigurationName = pulumi.Input.asOptionalInput<String>(tapConfigurationName),
-      virtualNetworkTap = pulumi.Input.asOptionalInput<VirtualNetworkTapNetwork>(virtualNetworkTap);
+    this.id,
+    this.name,
+    required this.networkInterfaceName,
+    required this.resourceGroupName,
+    this.tapConfigurationName,
+    this.virtualNetworkTap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class NetworkInterfaceTapConfigurationArgs {
 
   factory NetworkInterfaceTapConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceTapConfigurationArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkInterfaceName: pulumi.Output.create<String>(map['networkInterfaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tapConfigurationName: map['tapConfigurationName'] == null ? null : pulumi.Output.create<String>(map['tapConfigurationName'] as String),
-      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : pulumi.Output.create<VirtualNetworkTapNetwork>(map['virtualNetworkTap'] as VirtualNetworkTapNetwork),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkInterfaceName: (map['networkInterfaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tapConfigurationName: map['tapConfigurationName'] == null ? null : (map['tapConfigurationName'] as String).input(),
+      virtualNetworkTap: map['virtualNetworkTap'] == null ? null : (map['virtualNetworkTap'] as VirtualNetworkTapNetwork).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlContainerIndexingPolicyExcludedPath {
   /// Path that is excluded from indexing.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [SqlContainerIndexingPolicyExcludedPath].
   /// [path] Path that is excluded from indexing.
@@ -19,7 +20,7 @@ class SqlContainerIndexingPolicyExcludedPath {
 
   factory SqlContainerIndexingPolicyExcludedPath.fromMap(Map<String, dynamic> map) {
     return SqlContainerIndexingPolicyExcludedPath(
-      path: map['path'] as String,
+      path: (map['path'] as String).input(),
     );
   }
 }

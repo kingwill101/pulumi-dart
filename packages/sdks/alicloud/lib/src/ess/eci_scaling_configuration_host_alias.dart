@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EciScalingConfigurationHostAlias {
   /// Adds a host name.
-  final List<String>? hostnames;
+  final pulumi.Input<List<String>>? hostnames;
   /// Adds an IP address.
-  final String? ip;
+  final pulumi.Input<String>? ip;
 
   /// Creates a new [EciScalingConfigurationHostAlias].
   /// [hostnames] Adds a host name.
@@ -24,8 +25,8 @@ class EciScalingConfigurationHostAlias {
 
   factory EciScalingConfigurationHostAlias.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationHostAlias(
-      hostnames: map['hostnames'] == null ? null : (map['hostnames'] as List).cast<String>(),
-      ip: map['ip'] == null ? null : map['ip'] as String,
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
     );
   }
 }

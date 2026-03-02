@@ -38,19 +38,13 @@ class CustomDeploymentSetState {
   /// [status] The status of the resource
   /// [strategy] Deployment strategy. Value range:
   CustomDeploymentSetState({
-    pulumi.Output<String>? customDeploymentSetName,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? groupCount,
-    pulumi.Output<String>? onUnableToRedeployFailedInstance,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? strategy,
-  }) :
-      customDeploymentSetName = pulumi.Input.asOptionalInput<String>(customDeploymentSetName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      groupCount = pulumi.Input.asOptionalInput<int>(groupCount),
-      onUnableToRedeployFailedInstance = pulumi.Input.asOptionalInput<String>(onUnableToRedeployFailedInstance),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      strategy = pulumi.Input.asOptionalInput<String>(strategy);
+    this.customDeploymentSetName,
+    this.description,
+    this.groupCount,
+    this.onUnableToRedeployFailedInstance,
+    this.status,
+    this.strategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,12 +59,12 @@ class CustomDeploymentSetState {
 
   factory CustomDeploymentSetState.fromMap(Map<String, dynamic> map) {
     return CustomDeploymentSetState(
-      customDeploymentSetName: map['customDeploymentSetName'] == null ? null : pulumi.Output.create<String>(map['customDeploymentSetName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      groupCount: map['groupCount'] == null ? null : pulumi.Output.create<int>(map['groupCount'] as int),
-      onUnableToRedeployFailedInstance: map['onUnableToRedeployFailedInstance'] == null ? null : pulumi.Output.create<String>(map['onUnableToRedeployFailedInstance'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      strategy: map['strategy'] == null ? null : pulumi.Output.create<String>(map['strategy'] as String),
+      customDeploymentSetName: map['customDeploymentSetName'] == null ? null : (map['customDeploymentSetName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      groupCount: map['groupCount'] == null ? null : (map['groupCount'] as int).input(),
+      onUnableToRedeployFailedInstance: map['onUnableToRedeployFailedInstance'] == null ? null : (map['onUnableToRedeployFailedInstance'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scope.dart';
 import 'web_app_assessment_settings.dart';
 
 /// WebApp assessment resource properties.
 class WebAppAssessmentV3Properties {
   /// Gets or sets the machine assessment ARM ID for VM fallback.
-  final String? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
   /// Gets or sets the scope of assessment.
-  final Scope? scope;
+  final pulumi.Input<Scope>? scope;
   /// Gets or sets the settings for the assessment.
-  final WebAppAssessmentSettings? settings;
+  final pulumi.Input<WebAppAssessmentSettings>? settings;
 
   /// Creates a new [WebAppAssessmentV3Properties].
   /// [fallbackMachineAssessmentArmId] Gets or sets the machine assessment ARM ID for VM fallback.
@@ -25,16 +26,16 @@ class WebAppAssessmentV3Properties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fallbackMachineAssessmentArmId': ?fallbackMachineAssessmentArmId,
-      'scope': ?scope == null ? null : scope!.toMap(),
-      'settings': ?settings == null ? null : settings!.toMap(),
+      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(scope, (value) => value.toMap()),
+      'settings': ?pulumi.Input.mapOptionalInputValue<WebAppAssessmentSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory WebAppAssessmentV3Properties.fromMap(Map<String, dynamic> map) {
     return WebAppAssessmentV3Properties(
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : map['fallbackMachineAssessmentArmId'] as String,
-      scope: map['scope'] == null ? null : Scope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
-      settings: map['settings'] == null ? null : WebAppAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId'] as String).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (WebAppAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

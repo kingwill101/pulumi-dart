@@ -26,15 +26,11 @@ class FunctionIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
   FunctionIamPolicyArgs({
-    required pulumi.Output<String> cloudFunction,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      cloudFunction = pulumi.Input.asInput<String>(cloudFunction),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.cloudFunction,
+    required this.policyData,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class FunctionIamPolicyArgs {
 
   factory FunctionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FunctionIamPolicyArgs(
-      cloudFunction: pulumi.Output.create<String>(map['cloudFunction'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cloudFunction: (map['cloudFunction'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

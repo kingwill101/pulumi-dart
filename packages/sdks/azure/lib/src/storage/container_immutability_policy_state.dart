@@ -24,17 +24,12 @@ class ContainerImmutabilityPolicyState {
   /// [protectedAppendWritesEnabled] Whether to allow protected append writes to append blobs to the container. Defaults to `false`. Cannot be set with `protected_append_writes_all_enabled`.
   /// [storageContainerResourceManagerId] The Resource Manager ID of the Storage Container where this Immutability Policy should be applied. Changing this forces a new resource to be created.
   ContainerImmutabilityPolicyState({
-    pulumi.Output<int>? immutabilityPeriodInDays,
-    pulumi.Output<bool>? locked,
-    pulumi.Output<bool>? protectedAppendWritesAllEnabled,
-    pulumi.Output<bool>? protectedAppendWritesEnabled,
-    pulumi.Output<String>? storageContainerResourceManagerId,
-  }) :
-      immutabilityPeriodInDays = pulumi.Input.asOptionalInput<int>(immutabilityPeriodInDays),
-      locked = pulumi.Input.asOptionalInput<bool>(locked),
-      protectedAppendWritesAllEnabled = pulumi.Input.asOptionalInput<bool>(protectedAppendWritesAllEnabled),
-      protectedAppendWritesEnabled = pulumi.Input.asOptionalInput<bool>(protectedAppendWritesEnabled),
-      storageContainerResourceManagerId = pulumi.Input.asOptionalInput<String>(storageContainerResourceManagerId);
+    this.immutabilityPeriodInDays,
+    this.locked,
+    this.protectedAppendWritesAllEnabled,
+    this.protectedAppendWritesEnabled,
+    this.storageContainerResourceManagerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ContainerImmutabilityPolicyState {
 
   factory ContainerImmutabilityPolicyState.fromMap(Map<String, dynamic> map) {
     return ContainerImmutabilityPolicyState(
-      immutabilityPeriodInDays: map['immutabilityPeriodInDays'] == null ? null : pulumi.Output.create<int>(map['immutabilityPeriodInDays'] as int),
-      locked: map['locked'] == null ? null : pulumi.Output.create<bool>(map['locked'] as bool),
-      protectedAppendWritesAllEnabled: map['protectedAppendWritesAllEnabled'] == null ? null : pulumi.Output.create<bool>(map['protectedAppendWritesAllEnabled'] as bool),
-      protectedAppendWritesEnabled: map['protectedAppendWritesEnabled'] == null ? null : pulumi.Output.create<bool>(map['protectedAppendWritesEnabled'] as bool),
-      storageContainerResourceManagerId: map['storageContainerResourceManagerId'] == null ? null : pulumi.Output.create<String>(map['storageContainerResourceManagerId'] as String),
+      immutabilityPeriodInDays: map['immutabilityPeriodInDays'] == null ? null : (map['immutabilityPeriodInDays'] as int).input(),
+      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      protectedAppendWritesAllEnabled: map['protectedAppendWritesAllEnabled'] == null ? null : (map['protectedAppendWritesAllEnabled'] as bool).input(),
+      protectedAppendWritesEnabled: map['protectedAppendWritesEnabled'] == null ? null : (map['protectedAppendWritesEnabled'] as bool).input(),
+      storageContainerResourceManagerId: map['storageContainerResourceManagerId'] == null ? null : (map['storageContainerResourceManagerId'] as String).input(),
     );
   }
 }

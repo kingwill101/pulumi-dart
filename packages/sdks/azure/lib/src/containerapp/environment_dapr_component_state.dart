@@ -38,25 +38,16 @@ class EnvironmentDaprComponentState {
   /// [secrets] A `secret` block as detailed below.
   /// [version] The version of the component.
   EnvironmentDaprComponentState({
-    pulumi.Output<String>? componentType,
-    pulumi.Output<String>? containerAppEnvironmentId,
-    pulumi.Output<bool>? ignoreErrors,
-    pulumi.Output<String>? initTimeout,
-    pulumi.Output<List<EnvironmentDaprComponentMetadata>>? metadatas,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? scopes,
-    pulumi.Output<List<EnvironmentDaprComponentSecret>>? secrets,
-    pulumi.Output<String>? version,
-  }) :
-      componentType = pulumi.Input.asOptionalInput<String>(componentType),
-      containerAppEnvironmentId = pulumi.Input.asOptionalInput<String>(containerAppEnvironmentId),
-      ignoreErrors = pulumi.Input.asOptionalInput<bool>(ignoreErrors),
-      initTimeout = pulumi.Input.asOptionalInput<String>(initTimeout),
-      metadatas = pulumi.Input.asOptionalInput<List<EnvironmentDaprComponentMetadata>>(metadatas),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
-      secrets = pulumi.Input.asOptionalInput<List<EnvironmentDaprComponentSecret>>(secrets),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.componentType,
+    this.containerAppEnvironmentId,
+    this.ignoreErrors,
+    this.initTimeout,
+    this.metadatas,
+    this.name,
+    this.scopes,
+    this.secrets,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class EnvironmentDaprComponentState {
 
   factory EnvironmentDaprComponentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentDaprComponentState(
-      componentType: map['componentType'] == null ? null : pulumi.Output.create<String>(map['componentType'] as String),
-      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['containerAppEnvironmentId'] as String),
-      ignoreErrors: map['ignoreErrors'] == null ? null : pulumi.Output.create<bool>(map['ignoreErrors'] as bool),
-      initTimeout: map['initTimeout'] == null ? null : pulumi.Output.create<String>(map['initTimeout'] as String),
-      metadatas: map['metadatas'] == null ? null : pulumi.Output.create<List<EnvironmentDaprComponentMetadata>>(pulumi.Input.decodeList<EnvironmentDaprComponentMetadata>(map['metadatas'], (value) => EnvironmentDaprComponentMetadata.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      secrets: map['secrets'] == null ? null : pulumi.Output.create<List<EnvironmentDaprComponentSecret>>(pulumi.Input.decodeList<EnvironmentDaprComponentSecret>(map['secrets'], (value) => EnvironmentDaprComponentSecret.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
+      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId'] as String).input(),
+      ignoreErrors: map['ignoreErrors'] == null ? null : (map['ignoreErrors'] as bool).input(),
+      initTimeout: map['initTimeout'] == null ? null : (map['initTimeout'] as String).input(),
+      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<EnvironmentDaprComponentMetadata>(map['metadatas'], (value) => EnvironmentDaprComponentMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<EnvironmentDaprComponentSecret>(map['secrets'], (value) => EnvironmentDaprComponentSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

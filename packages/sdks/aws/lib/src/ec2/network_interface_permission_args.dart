@@ -25,17 +25,12 @@ class NetworkInterfacePermissionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   NetworkInterfacePermissionArgs({
-    required pulumi.Output<String> awsAccountId,
-    required pulumi.Output<String> networkInterfaceId,
-    required pulumi.Output<String> permission,
-    pulumi.Output<String>? region,
-    pulumi.Output<NetworkInterfacePermissionTimeouts>? timeouts,
-  }) :
-      awsAccountId = pulumi.Input.asInput<String>(awsAccountId),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-      permission = pulumi.Input.asInput<String>(permission),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<NetworkInterfacePermissionTimeouts>(timeouts);
+    required this.awsAccountId,
+    required this.networkInterfaceId,
+    required this.permission,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NetworkInterfacePermissionArgs {
 
   factory NetworkInterfacePermissionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfacePermissionArgs(
-      awsAccountId: pulumi.Output.create<String>(map['awsAccountId'] as String),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      permission: pulumi.Output.create<String>(map['permission'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<NetworkInterfacePermissionTimeouts>(NetworkInterfacePermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      awsAccountId: (map['awsAccountId'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      permission: (map['permission'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (NetworkInterfacePermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

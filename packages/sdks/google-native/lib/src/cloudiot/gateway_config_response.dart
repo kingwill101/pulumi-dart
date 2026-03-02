@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gateway-related configuration and state.
 class GatewayConfigResponse {
   /// Indicates how to authorize and/or authenticate devices to access the gateway.
-  final String gatewayAuthMethod;
+  final pulumi.Input<String> gatewayAuthMethod;
   /// Indicates whether the device is a gateway.
-  final String gatewayType;
+  final pulumi.Input<String> gatewayType;
   /// [Output only] The ID of the gateway the device accessed most recently.
-  final String lastAccessedGatewayId;
+  final pulumi.Input<String> lastAccessedGatewayId;
   /// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
-  final String lastAccessedGatewayTime;
+  final pulumi.Input<String> lastAccessedGatewayTime;
 
   /// Creates a new [GatewayConfigResponse].
   /// [gatewayAuthMethod] Indicates how to authorize and/or authenticate devices to access the gateway.
@@ -35,10 +36,10 @@ class GatewayConfigResponse {
 
   factory GatewayConfigResponse.fromMap(Map<String, dynamic> map) {
     return GatewayConfigResponse(
-      gatewayAuthMethod: map['gatewayAuthMethod'] as String,
-      gatewayType: map['gatewayType'] as String,
-      lastAccessedGatewayId: map['lastAccessedGatewayId'] as String,
-      lastAccessedGatewayTime: map['lastAccessedGatewayTime'] as String,
+      gatewayAuthMethod: (map['gatewayAuthMethod'] as String).input(),
+      gatewayType: (map['gatewayType'] as String).input(),
+      lastAccessedGatewayId: (map['lastAccessedGatewayId'] as String).input(),
+      lastAccessedGatewayTime: (map['lastAccessedGatewayTime'] as String).input(),
     );
   }
 }

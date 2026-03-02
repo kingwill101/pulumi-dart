@@ -42,31 +42,19 @@ class NatPoolState {
   /// [resourceGroupName] The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   /// [tcpResetEnabled] Is TCP Reset enabled for this Load Balancer Rule?
   NatPoolState({
-    pulumi.Output<int>? backendPort,
-    pulumi.Output<bool>? floatingIpEnabled,
-    pulumi.Output<String>? frontendIpConfigurationId,
-    pulumi.Output<String>? frontendIpConfigurationName,
-    pulumi.Output<int>? frontendPortEnd,
-    pulumi.Output<int>? frontendPortStart,
-    pulumi.Output<int>? idleTimeoutInMinutes,
-    pulumi.Output<String>? loadbalancerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<bool>? tcpResetEnabled,
-  }) :
-      backendPort = pulumi.Input.asOptionalInput<int>(backendPort),
-      floatingIpEnabled = pulumi.Input.asOptionalInput<bool>(floatingIpEnabled),
-      frontendIpConfigurationId = pulumi.Input.asOptionalInput<String>(frontendIpConfigurationId),
-      frontendIpConfigurationName = pulumi.Input.asOptionalInput<String>(frontendIpConfigurationName),
-      frontendPortEnd = pulumi.Input.asOptionalInput<int>(frontendPortEnd),
-      frontendPortStart = pulumi.Input.asOptionalInput<int>(frontendPortStart),
-      idleTimeoutInMinutes = pulumi.Input.asOptionalInput<int>(idleTimeoutInMinutes),
-      loadbalancerId = pulumi.Input.asOptionalInput<String>(loadbalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tcpResetEnabled = pulumi.Input.asOptionalInput<bool>(tcpResetEnabled);
+    this.backendPort,
+    this.floatingIpEnabled,
+    this.frontendIpConfigurationId,
+    this.frontendIpConfigurationName,
+    this.frontendPortEnd,
+    this.frontendPortStart,
+    this.idleTimeoutInMinutes,
+    this.loadbalancerId,
+    this.name,
+    this.protocol,
+    this.resourceGroupName,
+    this.tcpResetEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,18 +75,18 @@ class NatPoolState {
 
   factory NatPoolState.fromMap(Map<String, dynamic> map) {
     return NatPoolState(
-      backendPort: map['backendPort'] == null ? null : pulumi.Output.create<int>(map['backendPort'] as int),
-      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : pulumi.Output.create<bool>(map['floatingIpEnabled'] as bool),
-      frontendIpConfigurationId: map['frontendIpConfigurationId'] == null ? null : pulumi.Output.create<String>(map['frontendIpConfigurationId'] as String),
-      frontendIpConfigurationName: map['frontendIpConfigurationName'] == null ? null : pulumi.Output.create<String>(map['frontendIpConfigurationName'] as String),
-      frontendPortEnd: map['frontendPortEnd'] == null ? null : pulumi.Output.create<int>(map['frontendPortEnd'] as int),
-      frontendPortStart: map['frontendPortStart'] == null ? null : pulumi.Output.create<int>(map['frontendPortStart'] as int),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : pulumi.Output.create<int>(map['idleTimeoutInMinutes'] as int),
-      loadbalancerId: map['loadbalancerId'] == null ? null : pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : pulumi.Output.create<bool>(map['tcpResetEnabled'] as bool),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
+      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : (map['floatingIpEnabled'] as bool).input(),
+      frontendIpConfigurationId: map['frontendIpConfigurationId'] == null ? null : (map['frontendIpConfigurationId'] as String).input(),
+      frontendIpConfigurationName: map['frontendIpConfigurationName'] == null ? null : (map['frontendIpConfigurationName'] as String).input(),
+      frontendPortEnd: map['frontendPortEnd'] == null ? null : (map['frontendPortEnd'] as int).input(),
+      frontendPortStart: map['frontendPortStart'] == null ? null : (map['frontendPortStart'] as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled'] as bool).input(),
     );
   }
 }

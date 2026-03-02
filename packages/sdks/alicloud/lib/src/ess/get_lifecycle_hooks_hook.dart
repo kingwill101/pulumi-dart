@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLifecycleHooksHook {
   /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
-  final String defaultResult;
+  final pulumi.Input<String> defaultResult;
   /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
-  final int heartbeatTimeout;
+  final pulumi.Input<int> heartbeatTimeout;
   /// ID of the lifecycle hook.
-  final String id;
+  final pulumi.Input<String> id;
   /// Type of Scaling activity attached to lifecycle hook.
-  final String lifecycleTransition;
+  final pulumi.Input<String> lifecycleTransition;
   /// Name of the lifecycle hook.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Arn of notification target.
-  final String notificationArn;
+  final pulumi.Input<String> notificationArn;
   /// Additional information that you want to include when Auto Scaling sends a message to the notification target.
-  final String notificationMetadata;
+  final pulumi.Input<String> notificationMetadata;
   /// Scaling group id the lifecycle hooks belong to.
-  final String scalingGroupId;
+  final pulumi.Input<String> scalingGroupId;
 
   /// Creates a new [GetLifecycleHooksHook].
   /// [defaultResult] Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
@@ -54,14 +55,14 @@ class GetLifecycleHooksHook {
 
   factory GetLifecycleHooksHook.fromMap(Map<String, dynamic> map) {
     return GetLifecycleHooksHook(
-      defaultResult: map['defaultResult'] as String,
-      heartbeatTimeout: map['heartbeatTimeout'] as int,
-      id: map['id'] as String,
-      lifecycleTransition: map['lifecycleTransition'] as String,
-      name: map['name'] as String,
-      notificationArn: map['notificationArn'] as String,
-      notificationMetadata: map['notificationMetadata'] as String,
-      scalingGroupId: map['scalingGroupId'] as String,
+      defaultResult: (map['defaultResult'] as String).input(),
+      heartbeatTimeout: (map['heartbeatTimeout'] as int).input(),
+      id: (map['id'] as String).input(),
+      lifecycleTransition: (map['lifecycleTransition'] as String).input(),
+      name: (map['name'] as String).input(),
+      notificationArn: (map['notificationArn'] as String).input(),
+      notificationMetadata: (map['notificationMetadata'] as String).input(),
+      scalingGroupId: (map['scalingGroupId'] as String).input(),
     );
   }
 }

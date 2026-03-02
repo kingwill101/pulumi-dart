@@ -23,15 +23,11 @@ class GetEndpointArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired endpoint.
   GetEndpointArgs({
-    pulumi.Output<String>? clientVpnEndpointId,
-    pulumi.Output<List<GetEndpointFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clientVpnEndpointId = pulumi.Input.asOptionalInput<String>(clientVpnEndpointId),
-      filters = pulumi.Input.asOptionalInput<List<GetEndpointFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.clientVpnEndpointId,
+    this.filters,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : pulumi.Output.create<String>(map['clientVpnEndpointId'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetEndpointFilter>>(pulumi.Input.decodeList<GetEndpointFilter>(map['filters'], (value) => GetEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : (map['clientVpnEndpointId'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetEndpointFilter>(map['filters'], (value) => GetEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

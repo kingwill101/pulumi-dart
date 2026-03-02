@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorFrontendEndpoint {
   /// Specifies the host name of the `frontend_endpoint`. Must be a domain name. In order to use a name.azurefd.net domain, the name value must match the Front Door name.
-  final String hostName;
+  final pulumi.Input<String> hostName;
   /// The ID of the FrontDoor.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the name of the `frontend_endpoint`.
-  final String name;
+  final pulumi.Input<String> name;
   /// Whether to allow session affinity on this host. Valid options are `true` or `false` Defaults to `false`.
-  final bool? sessionAffinityEnabled;
+  final pulumi.Input<bool>? sessionAffinityEnabled;
   /// The TTL to use in seconds for session affinity, if applicable. Defaults to `0`.
-  final int? sessionAffinityTtlSeconds;
+  final pulumi.Input<int>? sessionAffinityTtlSeconds;
   /// Defines the Web Application Firewall policy `ID` for each host.
-  final String? webApplicationFirewallPolicyLinkId;
+  final pulumi.Input<String>? webApplicationFirewallPolicyLinkId;
 
   /// Creates a new [FrontdoorFrontendEndpoint].
   /// [hostName] Specifies the host name of the `frontend_endpoint`. Must be a domain name. In order to use a name.azurefd.net domain, the name value must match the Front Door name.
@@ -44,12 +45,12 @@ class FrontdoorFrontendEndpoint {
 
   factory FrontdoorFrontendEndpoint.fromMap(Map<String, dynamic> map) {
     return FrontdoorFrontendEndpoint(
-      hostName: map['hostName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
-      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : map['sessionAffinityEnabled'] as bool,
-      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : map['sessionAffinityTtlSeconds'] as int,
-      webApplicationFirewallPolicyLinkId: map['webApplicationFirewallPolicyLinkId'] == null ? null : map['webApplicationFirewallPolicyLinkId'] as String,
+      hostName: (map['hostName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : (map['sessionAffinityEnabled'] as bool).input(),
+      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : (map['sessionAffinityTtlSeconds'] as int).input(),
+      webApplicationFirewallPolicyLinkId: map['webApplicationFirewallPolicyLinkId'] == null ? null : (map['webApplicationFirewallPolicyLinkId'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class DomainGroupState {
   /// [groupName] The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
   /// [lang] User language.
   DomainGroupState({
-    pulumi.Output<String>? domainGroupName,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? lang,
-  }) :
-      domainGroupName = pulumi.Input.asOptionalInput<String>(domainGroupName),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      lang = pulumi.Input.asOptionalInput<String>(lang);
+    this.domainGroupName,
+    this.groupName,
+    this.lang,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class DomainGroupState {
 
   factory DomainGroupState.fromMap(Map<String, dynamic> map) {
     return DomainGroupState(
-      domainGroupName: map['domainGroupName'] == null ? null : pulumi.Output.create<String>(map['domainGroupName'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
+      domainGroupName: map['domainGroupName'] == null ? null : (map['domainGroupName'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
     );
   }
 }

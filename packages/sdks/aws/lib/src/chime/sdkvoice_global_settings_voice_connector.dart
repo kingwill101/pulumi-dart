@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SdkvoiceGlobalSettingsVoiceConnector {
   /// The S3 bucket that stores the Voice Connector's call detail records.
-  final String? cdrBucket;
+  final pulumi.Input<String>? cdrBucket;
 
   /// Creates a new [SdkvoiceGlobalSettingsVoiceConnector].
   /// [cdrBucket] The S3 bucket that stores the Voice Connector's call detail records.
@@ -19,7 +20,7 @@ class SdkvoiceGlobalSettingsVoiceConnector {
 
   factory SdkvoiceGlobalSettingsVoiceConnector.fromMap(Map<String, dynamic> map) {
     return SdkvoiceGlobalSettingsVoiceConnector(
-      cdrBucket: map['cdrBucket'] == null ? null : map['cdrBucket'] as String,
+      cdrBucket: map['cdrBucket'] == null ? null : (map['cdrBucket'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class Python3PackageArgs {
   /// [resourceGroupName] The name of the resource group in which the Python3 Package is created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Automation Python3 Package.
   Python3PackageArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> contentUri,
-    pulumi.Output<String>? contentVersion,
-    pulumi.Output<String>? hashAlgorithm,
-    pulumi.Output<String>? hashValue,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      contentUri = pulumi.Input.asInput<String>(contentUri),
-      contentVersion = pulumi.Input.asOptionalInput<String>(contentVersion),
-      hashAlgorithm = pulumi.Input.asOptionalInput<String>(hashAlgorithm),
-      hashValue = pulumi.Input.asOptionalInput<String>(hashValue),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.automationAccountName,
+    required this.contentUri,
+    this.contentVersion,
+    this.hashAlgorithm,
+    this.hashValue,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class Python3PackageArgs {
 
   factory Python3PackageArgs.fromMap(Map<String, dynamic> map) {
     return Python3PackageArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      contentUri: pulumi.Output.create<String>(map['contentUri'] as String),
-      contentVersion: map['contentVersion'] == null ? null : pulumi.Output.create<String>(map['contentVersion'] as String),
-      hashAlgorithm: map['hashAlgorithm'] == null ? null : pulumi.Output.create<String>(map['hashAlgorithm'] as String),
-      hashValue: map['hashValue'] == null ? null : pulumi.Output.create<String>(map['hashValue'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      contentUri: (map['contentUri'] as String).input(),
+      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion'] as String).input(),
+      hashAlgorithm: map['hashAlgorithm'] == null ? null : (map['hashAlgorithm'] as String).input(),
+      hashValue: map['hashValue'] == null ? null : (map['hashValue'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

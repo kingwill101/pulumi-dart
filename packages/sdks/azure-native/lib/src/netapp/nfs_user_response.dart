@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The effective NFS User ID and Group ID when accessing the volume data.
 class NfsUserResponse {
   /// The NFS user's GID
-  final double? groupId;
+  final pulumi.Input<double>? groupId;
   /// The NFS user's UID
-  final double? userId;
+  final pulumi.Input<double>? userId;
 
   /// Creates a new [NfsUserResponse].
   /// [groupId] The NFS user's GID
@@ -25,8 +26,8 @@ class NfsUserResponse {
 
   factory NfsUserResponse.fromMap(Map<String, dynamic> map) {
     return NfsUserResponse(
-      groupId: map['groupId'] == null ? null : map['groupId'] as double,
-      userId: map['userId'] == null ? null : map['userId'] as double,
+      groupId: map['groupId'] == null ? null : (map['groupId'] as double).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as double).input(),
     );
   }
 }

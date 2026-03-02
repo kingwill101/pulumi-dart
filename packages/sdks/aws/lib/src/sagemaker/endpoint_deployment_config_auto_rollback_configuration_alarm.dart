@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeploymentConfigAutoRollbackConfigurationAlarm {
   /// The name of a CloudWatch alarm in your account.
-  final String alarmName;
+  final pulumi.Input<String> alarmName;
 
   /// Creates a new [EndpointDeploymentConfigAutoRollbackConfigurationAlarm].
   /// [alarmName] The name of a CloudWatch alarm in your account.
@@ -19,7 +20,7 @@ class EndpointDeploymentConfigAutoRollbackConfigurationAlarm {
 
   factory EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigAutoRollbackConfigurationAlarm(
-      alarmName: map['alarmName'] as String,
+      alarmName: (map['alarmName'] as String).input(),
     );
   }
 }

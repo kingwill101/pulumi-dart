@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'waf_rule_shared_actions.dart';
 import 'waf_rule_shared_match.dart';
 
 class WafRuleShared {
   /// The default action executed under shared configuration.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Extended action configurations under shared settings. See `actions` below.
-  final WafRuleSharedActions? actions;
+  final pulumi.Input<WafRuleSharedActions>? actions;
   /// Specify the cross-domain site ID.
-  final int? crossSiteId;
+  final pulumi.Input<int>? crossSiteId;
   /// The match expression used in shared configuration.
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// Configuration of the request matching logic engine. See `match` below.
-  final WafRuleSharedMatch? match;
+  final pulumi.Input<WafRuleSharedMatch>? match;
   /// The integration mode of the Web SDK:
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The display name of the ruleset.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The target type protected by this rule: web or app.
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [WafRuleShared].
   /// [action] The default action executed under shared configuration.
@@ -44,10 +45,10 @@ class WafRuleShared {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'actions': ?actions == null ? null : actions!.toMap(),
+      'actions': ?pulumi.Input.mapOptionalInputValue<WafRuleSharedActions, Map<String, dynamic>>(actions, (value) => value.toMap()),
       'crossSiteId': ?crossSiteId,
       'expression': ?expression,
-      'match': ?match == null ? null : match!.toMap(),
+      'match': ?pulumi.Input.mapOptionalInputValue<WafRuleSharedMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
       'mode': ?mode,
       'name': ?name,
       'target': ?target,
@@ -56,14 +57,14 @@ class WafRuleShared {
 
   factory WafRuleShared.fromMap(Map<String, dynamic> map) {
     return WafRuleShared(
-      action: map['action'] == null ? null : map['action'] as String,
-      actions: map['actions'] == null ? null : WafRuleSharedActions.fromMap((map['actions'] as Map).cast<String, dynamic>()),
-      crossSiteId: map['crossSiteId'] == null ? null : map['crossSiteId'] as int,
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      match: map['match'] == null ? null : WafRuleSharedMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      actions: map['actions'] == null ? null : (WafRuleSharedActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
+      crossSiteId: map['crossSiteId'] == null ? null : (map['crossSiteId'] as int).input(),
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      match: map['match'] == null ? null : (WafRuleSharedMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

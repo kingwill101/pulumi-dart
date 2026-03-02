@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobTableMappingSourceObjectSelectionRule {
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Expression, such as mysql_table_1
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// Expression type, value range: Exact/Regex
-  final String? expressionType;
+  final pulumi.Input<String>? expressionType;
   /// Object type, optional enumeration value:
   ///
   /// Table (Table)
   ///
   /// Database
-  final String? objectType;
+  final pulumi.Input<String>? objectType;
 
   /// Creates a new [DiJobTableMappingSourceObjectSelectionRule].
   /// [action] Optional.
@@ -37,10 +38,10 @@ class DiJobTableMappingSourceObjectSelectionRule {
 
   factory DiJobTableMappingSourceObjectSelectionRule.fromMap(Map<String, dynamic> map) {
     return DiJobTableMappingSourceObjectSelectionRule(
-      action: map['action'] == null ? null : map['action'] as String,
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      expressionType: map['expressionType'] == null ? null : map['expressionType'] as String,
-      objectType: map['objectType'] == null ? null : map['objectType'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expressionType: map['expressionType'] == null ? null : (map['expressionType'] as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
     );
   }
 }

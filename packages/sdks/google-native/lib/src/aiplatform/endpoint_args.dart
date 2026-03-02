@@ -46,31 +46,19 @@ class EndpointArgs {
   /// [project] Optional.
   /// [trafficSplit] A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
   EndpointArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enablePrivateServiceConnect,
-    pulumi.Output<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? network,
-    pulumi.Output<GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig>? predictRequestResponseLoggingConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? trafficSplit,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enablePrivateServiceConnect = pulumi.Input.asOptionalInput<bool>(enablePrivateServiceConnect),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(encryptionSpec),
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      predictRequestResponseLoggingConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig>(predictRequestResponseLoggingConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trafficSplit = pulumi.Input.asOptionalInput<Map<String, String>>(trafficSplit);
+    this.description,
+    required this.displayName,
+    this.enablePrivateServiceConnect,
+    this.encryptionSpec,
+    this.endpointId,
+    this.etag,
+    this.labels,
+    this.location,
+    this.network,
+    this.predictRequestResponseLoggingConfig,
+    this.project,
+    this.trafficSplit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] == null ? null : pulumi.Output.create<bool>(map['enablePrivateServiceConnect'] as bool),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1EncryptionSpec>(GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      predictRequestResponseLoggingConfig: map['predictRequestResponseLoggingConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig>(GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig.fromMap((map['predictRequestResponseLoggingConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      trafficSplit: map['trafficSplit'] == null ? null : pulumi.Output.create<Map<String, String>>((map['trafficSplit'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] == null ? null : (map['enablePrivateServiceConnect'] as bool).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      predictRequestResponseLoggingConfig: map['predictRequestResponseLoggingConfig'] == null ? null : (GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig.fromMap((map['predictRequestResponseLoggingConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      trafficSplit: map['trafficSplit'] == null ? null : ((map['trafficSplit'] as Map).cast<String, String>()).input(),
     );
   }
 }

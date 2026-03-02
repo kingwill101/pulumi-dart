@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleOverrideAction {
   /// Override the rule action setting to count (i.e., only count matches). Configured as an empty block `{}`.
-  final Map<String, dynamic>? count;
+  final pulumi.Input<Map<String, dynamic>>? count;
   /// Don't override the rule action setting. Configured as an empty block `{}`.
-  final Map<String, dynamic>? none;
+  final pulumi.Input<Map<String, dynamic>>? none;
 
   /// Creates a new [WebAclRuleOverrideAction].
   /// [count] Override the rule action setting to count (i.e., only count matches). Configured as an empty block `{}`.
@@ -24,8 +25,8 @@ class WebAclRuleOverrideAction {
 
   factory WebAclRuleOverrideAction.fromMap(Map<String, dynamic> map) {
     return WebAclRuleOverrideAction(
-      count: map['count'] == null ? null : (map['count'] as Map).cast<String, dynamic>(),
-      none: map['none'] == null ? null : (map['none'] as Map).cast<String, dynamic>(),
+      count: map['count'] == null ? null : ((map['count'] as Map).cast<String, dynamic>()).input(),
+      none: map['none'] == null ? null : ((map['none'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

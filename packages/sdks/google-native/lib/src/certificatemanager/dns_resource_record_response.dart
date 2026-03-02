@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be usable by certificate.
 class DnsResourceRecordResponse {
   /// Data of the DNS Resource Record.
-  final String data;
+  final pulumi.Input<String> data;
   /// Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of the DNS Resource Record. Currently always set to "CNAME".
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DnsResourceRecordResponse].
   /// [data] Data of the DNS Resource Record.
@@ -30,9 +31,9 @@ class DnsResourceRecordResponse {
 
   factory DnsResourceRecordResponse.fromMap(Map<String, dynamic> map) {
     return DnsResourceRecordResponse(
-      data: map['data'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      data: (map['data'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

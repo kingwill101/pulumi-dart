@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainMappingStatusCondition {
   /// (Output)
   /// Human readable message indicating details about the current status.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// (Output)
   /// One-word CamelCase reason for the condition's current status.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Resource record type. Example: `AAAA`.
   /// Possible values are: `A`, `AAAA`, `CNAME`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [DomainMappingStatusCondition].
   /// [message] (Output)
@@ -38,10 +39,10 @@ class DomainMappingStatusCondition {
 
   factory DomainMappingStatusCondition.fromMap(Map<String, dynamic> map) {
     return DomainMappingStatusCondition(
-      message: map['message'] == null ? null : map['message'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

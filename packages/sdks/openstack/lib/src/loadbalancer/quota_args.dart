@@ -48,25 +48,16 @@ class QuotaArgs {
   /// [projectId] ID of the project to manage quotas. Changing this
   /// [region] Region in which to manage quotas. Changing this
   QuotaArgs({
-    pulumi.Output<int>? healthMonitor,
-    pulumi.Output<int>? l7Policy,
-    pulumi.Output<int>? l7Rule,
-    pulumi.Output<int>? listener,
-    pulumi.Output<int>? loadbalancer,
-    pulumi.Output<int>? member,
-    pulumi.Output<int>? pool,
-    required pulumi.Output<String> projectId,
-    pulumi.Output<String>? region,
-  }) :
-      healthMonitor = pulumi.Input.asOptionalInput<int>(healthMonitor),
-      l7Policy = pulumi.Input.asOptionalInput<int>(l7Policy),
-      l7Rule = pulumi.Input.asOptionalInput<int>(l7Rule),
-      listener = pulumi.Input.asOptionalInput<int>(listener),
-      loadbalancer = pulumi.Input.asOptionalInput<int>(loadbalancer),
-      member = pulumi.Input.asOptionalInput<int>(member),
-      pool = pulumi.Input.asOptionalInput<int>(pool),
-      projectId = pulumi.Input.asInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.healthMonitor,
+    this.l7Policy,
+    this.l7Rule,
+    this.listener,
+    this.loadbalancer,
+    this.member,
+    this.pool,
+    required this.projectId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,15 +75,15 @@ class QuotaArgs {
 
   factory QuotaArgs.fromMap(Map<String, dynamic> map) {
     return QuotaArgs(
-      healthMonitor: map['healthMonitor'] == null ? null : pulumi.Output.create<int>(map['healthMonitor'] as int),
-      l7Policy: map['l7Policy'] == null ? null : pulumi.Output.create<int>(map['l7Policy'] as int),
-      l7Rule: map['l7Rule'] == null ? null : pulumi.Output.create<int>(map['l7Rule'] as int),
-      listener: map['listener'] == null ? null : pulumi.Output.create<int>(map['listener'] as int),
-      loadbalancer: map['loadbalancer'] == null ? null : pulumi.Output.create<int>(map['loadbalancer'] as int),
-      member: map['member'] == null ? null : pulumi.Output.create<int>(map['member'] as int),
-      pool: map['pool'] == null ? null : pulumi.Output.create<int>(map['pool'] as int),
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      healthMonitor: map['healthMonitor'] == null ? null : (map['healthMonitor'] as int).input(),
+      l7Policy: map['l7Policy'] == null ? null : (map['l7Policy'] as int).input(),
+      l7Rule: map['l7Rule'] == null ? null : (map['l7Rule'] as int).input(),
+      listener: map['listener'] == null ? null : (map['listener'] as int).input(),
+      loadbalancer: map['loadbalancer'] == null ? null : (map['loadbalancer'] as int).input(),
+      member: map['member'] == null ? null : (map['member'] as int).input(),
+      pool: map['pool'] == null ? null : (map['pool'] as int).input(),
+      projectId: (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

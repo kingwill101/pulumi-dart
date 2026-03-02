@@ -42,27 +42,17 @@ class VolumeArgs {
   /// [target] Optional.
   /// [type] Specifies the type of the storage volume, allowing for distinction of different volume types.
   VolumeArgs({
-    pulumi.Output<String>? allocationUnit,
-    pulumi.Output<VolumeBackingStore>? backingStore,
-    pulumi.Output<double>? capacity,
-    pulumi.Output<String>? capacityUnit,
-    pulumi.Output<VolumeCreate>? create,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? physicalUnit,
-    required pulumi.Output<String> pool,
-    pulumi.Output<VolumeTarget>? target,
-    pulumi.Output<String>? type,
-  }) :
-      allocationUnit = pulumi.Input.asOptionalInput<String>(allocationUnit),
-      backingStore = pulumi.Input.asOptionalInput<VolumeBackingStore>(backingStore),
-      capacity = pulumi.Input.asOptionalInput<double>(capacity),
-      capacityUnit = pulumi.Input.asOptionalInput<String>(capacityUnit),
-      create = pulumi.Input.asOptionalInput<VolumeCreate>(create),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      physicalUnit = pulumi.Input.asOptionalInput<String>(physicalUnit),
-      pool = pulumi.Input.asInput<String>(pool),
-      target = pulumi.Input.asOptionalInput<VolumeTarget>(target),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.allocationUnit,
+    this.backingStore,
+    this.capacity,
+    this.capacityUnit,
+    this.create,
+    this.name,
+    this.physicalUnit,
+    required this.pool,
+    this.target,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      allocationUnit: map['allocationUnit'] == null ? null : pulumi.Output.create<String>(map['allocationUnit'] as String),
-      backingStore: map['backingStore'] == null ? null : pulumi.Output.create<VolumeBackingStore>(VolumeBackingStore.fromMap((map['backingStore'] as Map).cast<String, dynamic>())),
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<double>(map['capacity'] as double),
-      capacityUnit: map['capacityUnit'] == null ? null : pulumi.Output.create<String>(map['capacityUnit'] as String),
-      create: map['create'] == null ? null : pulumi.Output.create<VolumeCreate>(VolumeCreate.fromMap((map['create'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      physicalUnit: map['physicalUnit'] == null ? null : pulumi.Output.create<String>(map['physicalUnit'] as String),
-      pool: pulumi.Output.create<String>(map['pool'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<VolumeTarget>(VolumeTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit'] as String).input(),
+      backingStore: map['backingStore'] == null ? null : (VolumeBackingStore.fromMap((map['backingStore'] as Map).cast<String, dynamic>())).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
+      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit'] as String).input(),
+      create: map['create'] == null ? null : (VolumeCreate.fromMap((map['create'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      physicalUnit: map['physicalUnit'] == null ? null : (map['physicalUnit'] as String).input(),
+      pool: (map['pool'] as String).input(),
+      target: map['target'] == null ? null : (VolumeTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

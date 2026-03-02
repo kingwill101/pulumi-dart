@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataMaskingStatisticsResponse {
   /// [Preview] Whether any accessed data was protected by data masking. The actual evaluation is done by accessStats.masked_field_count > 0. Since this is only used for the discovery_doc generation purpose, as long as the type (boolean) matches, client library can leverage this. The actual evaluation of the variable is done else-where.
-  final bool dataMaskingApplied;
+  final pulumi.Input<bool> dataMaskingApplied;
 
   /// Creates a new [DataMaskingStatisticsResponse].
   /// [dataMaskingApplied] [Preview] Whether any accessed data was protected by data masking. The actual evaluation is done by accessStats.masked_field_count > 0. Since this is only used for the discovery_doc generation purpose, as long as the type (boolean) matches, client library can leverage this. The actual evaluation of the variable is done else-where.
@@ -19,7 +20,7 @@ class DataMaskingStatisticsResponse {
 
   factory DataMaskingStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return DataMaskingStatisticsResponse(
-      dataMaskingApplied: map['dataMaskingApplied'] as bool,
+      dataMaskingApplied: (map['dataMaskingApplied'] as bool).input(),
     );
   }
 }

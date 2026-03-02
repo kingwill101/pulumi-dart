@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackSetAutoDeployment {
   /// Whether or not auto-deployment is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Whether or not to retain stacks when the account is removed.
-  final bool? retainStacksOnAccountRemoval;
+  final pulumi.Input<bool>? retainStacksOnAccountRemoval;
 
   /// Creates a new [StackSetAutoDeployment].
   /// [enabled] Whether or not auto-deployment is enabled.
@@ -24,8 +25,8 @@ class StackSetAutoDeployment {
 
   factory StackSetAutoDeployment.fromMap(Map<String, dynamic> map) {
     return StackSetAutoDeployment(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      retainStacksOnAccountRemoval: map['retainStacksOnAccountRemoval'] == null ? null : map['retainStacksOnAccountRemoval'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      retainStacksOnAccountRemoval: map['retainStacksOnAccountRemoval'] == null ? null : (map['retainStacksOnAccountRemoval'] as bool).input(),
     );
   }
 }

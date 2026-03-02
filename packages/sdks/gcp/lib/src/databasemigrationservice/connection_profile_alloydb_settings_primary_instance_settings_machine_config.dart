@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig {
   /// The number of CPU's in the VM instance.
-  final int cpuCount;
+  final pulumi.Input<int> cpuCount;
 
   /// Creates a new [ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig].
   /// [cpuCount] The number of CPU's in the VM instance.
@@ -19,7 +20,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig {
 
   factory ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig(
-      cpuCount: map['cpuCount'] as int,
+      cpuCount: (map['cpuCount'] as int).input(),
     );
   }
 }

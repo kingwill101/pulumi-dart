@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesVideoModelResolution {
   /// Sets the horizontal resolution for the video device model.
-  final double x;
+  final pulumi.Input<double> x;
   /// Sets the vertical resolution for the video device model.
-  final double y;
+  final pulumi.Input<double> y;
 
   /// Creates a new [DomainDevicesVideoModelResolution].
   /// [x] Sets the horizontal resolution for the video device model.
@@ -24,8 +25,8 @@ class DomainDevicesVideoModelResolution {
 
   factory DomainDevicesVideoModelResolution.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideoModelResolution(
-      x: map['x'] as double,
-      y: map['y'] as double,
+      x: (map['x'] as double).input(),
+      y: (map['y'] as double).input(),
     );
   }
 }

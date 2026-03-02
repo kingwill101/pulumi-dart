@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Column properties for TableCard.
 class GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse {
   /// Column heading.
-  final String header;
+  final pulumi.Input<String> header;
   /// Optional. Defines text alignment for all cells in this column.
-  final String horizontalAlignment;
+  final pulumi.Input<String> horizontalAlignment;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse].
   /// [header] Column heading.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse {
 
   factory GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse(
-      header: map['header'] as String,
-      horizontalAlignment: map['horizontalAlignment'] as String,
+      header: (map['header'] as String).input(),
+      horizontalAlignment: (map['horizontalAlignment'] as String).input(),
     );
   }
 }

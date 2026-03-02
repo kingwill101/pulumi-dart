@@ -37,23 +37,15 @@ class GalleryArgs {
   /// [softDeletePolicy] Contains information about the soft deletion policy of the gallery.
   /// [tags] Resource tags.
   GalleryArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? galleryName,
-    pulumi.Output<GalleryIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<SharingProfile>? sharingProfile,
-    pulumi.Output<SoftDeletePolicy>? softDeletePolicy,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      galleryName = pulumi.Input.asOptionalInput<String>(galleryName),
-      identity = pulumi.Input.asOptionalInput<GalleryIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sharingProfile = pulumi.Input.asOptionalInput<SharingProfile>(sharingProfile),
-      softDeletePolicy = pulumi.Input.asOptionalInput<SoftDeletePolicy>(softDeletePolicy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.galleryName,
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.sharingProfile,
+    this.softDeletePolicy,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class GalleryArgs {
 
   factory GalleryArgs.fromMap(Map<String, dynamic> map) {
     return GalleryArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      galleryName: map['galleryName'] == null ? null : pulumi.Output.create<String>(map['galleryName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<GalleryIdentity>(GalleryIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharingProfile: map['sharingProfile'] == null ? null : pulumi.Output.create<SharingProfile>(SharingProfile.fromMap((map['sharingProfile'] as Map).cast<String, dynamic>())),
-      softDeletePolicy: map['softDeletePolicy'] == null ? null : pulumi.Output.create<SoftDeletePolicy>(SoftDeletePolicy.fromMap((map['softDeletePolicy'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      galleryName: map['galleryName'] == null ? null : (map['galleryName'] as String).input(),
+      identity: map['identity'] == null ? null : (GalleryIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sharingProfile: map['sharingProfile'] == null ? null : (SharingProfile.fromMap((map['sharingProfile'] as Map).cast<String, dynamic>())).input(),
+      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicy.fromMap((map['softDeletePolicy'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

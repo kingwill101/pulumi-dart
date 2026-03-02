@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings of integration with GitHub.
 class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse {
   /// The access token used to authenticate the access to the GitHub repository.
-  final String accessToken;
+  final pulumi.Input<String> accessToken;
   /// A list of branches configured to be used from Dialogflow.
-  final List<String> branches;
+  final pulumi.Input<List<String>> branches;
   /// The unique repository display name for the GitHub repository.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The GitHub repository URI related to the agent.
-  final String repositoryUri;
+  final pulumi.Input<String> repositoryUri;
   /// The branch of the GitHub repository tracked for this agent.
-  final String trackingBranch;
+  final pulumi.Input<String> trackingBranch;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse].
   /// [accessToken] The access token used to authenticate the access to the GitHub repository.
@@ -40,11 +41,11 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsRes
 
   factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettingsResponse(
-      accessToken: map['accessToken'] as String,
-      branches: (map['branches'] as List).cast<String>(),
-      displayName: map['displayName'] as String,
-      repositoryUri: map['repositoryUri'] as String,
-      trackingBranch: map['trackingBranch'] as String,
+      accessToken: (map['accessToken'] as String).input(),
+      branches: ((map['branches'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      repositoryUri: (map['repositoryUri'] as String).input(),
+      trackingBranch: (map['trackingBranch'] as String).input(),
     );
   }
 }

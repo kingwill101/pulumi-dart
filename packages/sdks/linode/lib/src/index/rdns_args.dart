@@ -22,15 +22,11 @@ class RdnsArgs {
   /// [timeouts] Optional.
   /// [waitForAvailable] If true, the RDNS assignment will be retried within the operation timeout period.
   RdnsArgs({
-    required pulumi.Output<String> address,
-    required pulumi.Output<String> rdns,
-    pulumi.Output<RdnsTimeouts>? timeouts,
-    pulumi.Output<bool>? waitForAvailable,
-  }) :
-      address = pulumi.Input.asInput<String>(address),
-      rdns = pulumi.Input.asInput<String>(rdns),
-      timeouts = pulumi.Input.asOptionalInput<RdnsTimeouts>(timeouts),
-      waitForAvailable = pulumi.Input.asOptionalInput<bool>(waitForAvailable);
+    required this.address,
+    required this.rdns,
+    this.timeouts,
+    this.waitForAvailable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class RdnsArgs {
 
   factory RdnsArgs.fromMap(Map<String, dynamic> map) {
     return RdnsArgs(
-      address: pulumi.Output.create<String>(map['address'] as String),
-      rdns: pulumi.Output.create<String>(map['rdns'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RdnsTimeouts>(RdnsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      waitForAvailable: map['waitForAvailable'] == null ? null : pulumi.Output.create<bool>(map['waitForAvailable'] as bool),
+      address: (map['address'] as String).input(),
+      rdns: (map['rdns'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (RdnsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      waitForAvailable: map['waitForAvailable'] == null ? null : (map['waitForAvailable'] as bool).input(),
     );
   }
 }

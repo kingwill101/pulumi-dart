@@ -48,29 +48,18 @@ class TenantActionGroupArgs {
   /// [voiceReceivers] The list of voice receivers that are part of this tenant action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this tenant action group.
   TenantActionGroupArgs({
-    pulumi.Output<List<AzureAppPushReceiver>>? azureAppPushReceivers,
-    pulumi.Output<List<EmailReceiver>>? emailReceivers,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> groupShortName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> managementGroupId,
-    pulumi.Output<List<SmsReceiver>>? smsReceivers,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantActionGroupName,
-    pulumi.Output<List<VoiceReceiver>>? voiceReceivers,
-    pulumi.Output<List<WebhookReceiver>>? webhookReceivers,
-  }) :
-      azureAppPushReceivers = pulumi.Input.asOptionalInput<List<AzureAppPushReceiver>>(azureAppPushReceivers),
-      emailReceivers = pulumi.Input.asOptionalInput<List<EmailReceiver>>(emailReceivers),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      groupShortName = pulumi.Input.asInput<String>(groupShortName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      smsReceivers = pulumi.Input.asOptionalInput<List<SmsReceiver>>(smsReceivers),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantActionGroupName = pulumi.Input.asOptionalInput<String>(tenantActionGroupName),
-      voiceReceivers = pulumi.Input.asOptionalInput<List<VoiceReceiver>>(voiceReceivers),
-      webhookReceivers = pulumi.Input.asOptionalInput<List<WebhookReceiver>>(webhookReceivers);
+    this.azureAppPushReceivers,
+    this.emailReceivers,
+    required this.enabled,
+    required this.groupShortName,
+    this.location,
+    required this.managementGroupId,
+    this.smsReceivers,
+    this.tags,
+    this.tenantActionGroupName,
+    this.voiceReceivers,
+    this.webhookReceivers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class TenantActionGroupArgs {
 
   factory TenantActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return TenantActionGroupArgs(
-      azureAppPushReceivers: map['azureAppPushReceivers'] == null ? null : pulumi.Output.create<List<AzureAppPushReceiver>>(pulumi.Input.decodeList<AzureAppPushReceiver>(map['azureAppPushReceivers'], (value) => AzureAppPushReceiver.fromMap((value as Map).cast<String, dynamic>()))),
-      emailReceivers: map['emailReceivers'] == null ? null : pulumi.Output.create<List<EmailReceiver>>(pulumi.Input.decodeList<EmailReceiver>(map['emailReceivers'], (value) => EmailReceiver.fromMap((value as Map).cast<String, dynamic>()))),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      groupShortName: pulumi.Output.create<String>(map['groupShortName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      smsReceivers: map['smsReceivers'] == null ? null : pulumi.Output.create<List<SmsReceiver>>(pulumi.Input.decodeList<SmsReceiver>(map['smsReceivers'], (value) => SmsReceiver.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantActionGroupName: map['tenantActionGroupName'] == null ? null : pulumi.Output.create<String>(map['tenantActionGroupName'] as String),
-      voiceReceivers: map['voiceReceivers'] == null ? null : pulumi.Output.create<List<VoiceReceiver>>(pulumi.Input.decodeList<VoiceReceiver>(map['voiceReceivers'], (value) => VoiceReceiver.fromMap((value as Map).cast<String, dynamic>()))),
-      webhookReceivers: map['webhookReceivers'] == null ? null : pulumi.Output.create<List<WebhookReceiver>>(pulumi.Input.decodeList<WebhookReceiver>(map['webhookReceivers'], (value) => WebhookReceiver.fromMap((value as Map).cast<String, dynamic>()))),
+      azureAppPushReceivers: map['azureAppPushReceivers'] == null ? null : (pulumi.Input.decodeList<AzureAppPushReceiver>(map['azureAppPushReceivers'], (value) => AzureAppPushReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emailReceivers: map['emailReceivers'] == null ? null : (pulumi.Input.decodeList<EmailReceiver>(map['emailReceivers'], (value) => EmailReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: (map['enabled'] as bool).input(),
+      groupShortName: (map['groupShortName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      smsReceivers: map['smsReceivers'] == null ? null : (pulumi.Input.decodeList<SmsReceiver>(map['smsReceivers'], (value) => SmsReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantActionGroupName: map['tenantActionGroupName'] == null ? null : (map['tenantActionGroupName'] as String).input(),
+      voiceReceivers: map['voiceReceivers'] == null ? null : (pulumi.Input.decodeList<VoiceReceiver>(map['voiceReceivers'], (value) => VoiceReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webhookReceivers: map['webhookReceivers'] == null ? null : (pulumi.Input.decodeList<WebhookReceiver>(map['webhookReceivers'], (value) => WebhookReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

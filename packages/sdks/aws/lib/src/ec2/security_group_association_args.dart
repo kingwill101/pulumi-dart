@@ -22,15 +22,11 @@ class SecurityGroupAssociationArgs {
   /// [securityGroupId] The ID of the security group to be associated with the VPC endpoint.
   /// [vpcEndpointId] The ID of the VPC endpoint with which the security group will be associated.
   SecurityGroupAssociationArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? replaceDefaultAssociation,
-    required pulumi.Output<String> securityGroupId,
-    required pulumi.Output<String> vpcEndpointId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replaceDefaultAssociation = pulumi.Input.asOptionalInput<bool>(replaceDefaultAssociation),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
+    this.region,
+    this.replaceDefaultAssociation,
+    required this.securityGroupId,
+    required this.vpcEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SecurityGroupAssociationArgs {
 
   factory SecurityGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replaceDefaultAssociation: map['replaceDefaultAssociation'] == null ? null : pulumi.Output.create<bool>(map['replaceDefaultAssociation'] as bool),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      vpcEndpointId: pulumi.Output.create<String>(map['vpcEndpointId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replaceDefaultAssociation: map['replaceDefaultAssociation'] == null ? null : (map['replaceDefaultAssociation'] as bool).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );
   }
 }

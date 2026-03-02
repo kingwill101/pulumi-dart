@@ -24,17 +24,12 @@ class FleetUpdateRunState {
   /// [name] The name which should be used for this Kubernetes Fleet Update Run. Changing this forces a new Kubernetes Fleet Update Run to be created.
   /// [stages] One or more `stage` blocks as defined below. Only one of `stage` or `fleet_update_strategy_id` can be specified.
   FleetUpdateRunState({
-    pulumi.Output<String>? fleetUpdateStrategyId,
-    pulumi.Output<String>? kubernetesFleetManagerId,
-    pulumi.Output<FleetUpdateRunManagedClusterUpdate>? managedClusterUpdate,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<FleetUpdateRunStage>>? stages,
-  }) :
-      fleetUpdateStrategyId = pulumi.Input.asOptionalInput<String>(fleetUpdateStrategyId),
-      kubernetesFleetManagerId = pulumi.Input.asOptionalInput<String>(kubernetesFleetManagerId),
-      managedClusterUpdate = pulumi.Input.asOptionalInput<FleetUpdateRunManagedClusterUpdate>(managedClusterUpdate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      stages = pulumi.Input.asOptionalInput<List<FleetUpdateRunStage>>(stages);
+    this.fleetUpdateStrategyId,
+    this.kubernetesFleetManagerId,
+    this.managedClusterUpdate,
+    this.name,
+    this.stages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class FleetUpdateRunState {
 
   factory FleetUpdateRunState.fromMap(Map<String, dynamic> map) {
     return FleetUpdateRunState(
-      fleetUpdateStrategyId: map['fleetUpdateStrategyId'] == null ? null : pulumi.Output.create<String>(map['fleetUpdateStrategyId'] as String),
-      kubernetesFleetManagerId: map['kubernetesFleetManagerId'] == null ? null : pulumi.Output.create<String>(map['kubernetesFleetManagerId'] as String),
-      managedClusterUpdate: map['managedClusterUpdate'] == null ? null : pulumi.Output.create<FleetUpdateRunManagedClusterUpdate>(FleetUpdateRunManagedClusterUpdate.fromMap((map['managedClusterUpdate'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      stages: map['stages'] == null ? null : pulumi.Output.create<List<FleetUpdateRunStage>>(pulumi.Input.decodeList<FleetUpdateRunStage>(map['stages'], (value) => FleetUpdateRunStage.fromMap((value as Map).cast<String, dynamic>()))),
+      fleetUpdateStrategyId: map['fleetUpdateStrategyId'] == null ? null : (map['fleetUpdateStrategyId'] as String).input(),
+      kubernetesFleetManagerId: map['kubernetesFleetManagerId'] == null ? null : (map['kubernetesFleetManagerId'] as String).input(),
+      managedClusterUpdate: map['managedClusterUpdate'] == null ? null : (FleetUpdateRunManagedClusterUpdate.fromMap((map['managedClusterUpdate'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<FleetUpdateRunStage>(map['stages'], (value) => FleetUpdateRunStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

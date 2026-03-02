@@ -6,9 +6,9 @@ import 'mysql_column.dart';
 /// MySQL table.
 class MysqlTable {
   /// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
-  final List<MysqlColumn>? mysqlColumns;
+  final pulumi.Input<List<MysqlColumn>>? mysqlColumns;
   /// Table name.
-  final String? table;
+  final pulumi.Input<String>? table;
 
   /// Creates a new [MysqlTable].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -20,15 +20,15 @@ class MysqlTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlColumns': ?mysqlColumns == null ? null : pulumi.Input.encodeList<MysqlColumn, Map<String, dynamic>>(mysqlColumns!, (value) => value.toMap()),
+      'mysqlColumns': ?pulumi.Input.mapOptionalInputValue<List<MysqlColumn>, List<Map<String, dynamic>>>(mysqlColumns, (value) => pulumi.Input.encodeList<MysqlColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'table': ?table,
     };
   }
 
   factory MysqlTable.fromMap(Map<String, dynamic> map) {
     return MysqlTable(
-      mysqlColumns: map['mysqlColumns'] == null ? null : pulumi.Input.decodeList<MysqlColumn>(map['mysqlColumns'], (value) => MysqlColumn.fromMap((value as Map).cast<String, dynamic>())),
-      table: map['table'] == null ? null : map['table'] as String,
+      mysqlColumns: map['mysqlColumns'] == null ? null : (pulumi.Input.decodeList<MysqlColumn>(map['mysqlColumns'], (value) => MysqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
     );
   }
 }

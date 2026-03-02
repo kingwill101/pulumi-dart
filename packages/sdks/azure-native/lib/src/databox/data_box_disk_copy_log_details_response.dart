@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Copy Log Details for a disk
 class DataBoxDiskCopyLogDetailsResponse {
   /// Indicates the type of job details.
   /// Expected value is 'DataBoxDisk'.
-  final String copyLogDetailsType;
+  final pulumi.Input<String> copyLogDetailsType;
   /// Disk Serial Number.
-  final String diskSerialNumber;
+  final pulumi.Input<String> diskSerialNumber;
   /// Link for copy error logs.
-  final String errorLogLink;
+  final pulumi.Input<String> errorLogLink;
   /// Link for copy verbose logs.
-  final String verboseLogLink;
+  final pulumi.Input<String> verboseLogLink;
 
   /// Creates a new [DataBoxDiskCopyLogDetailsResponse].
   /// [copyLogDetailsType] Indicates the type of job details.
@@ -36,10 +37,10 @@ class DataBoxDiskCopyLogDetailsResponse {
 
   factory DataBoxDiskCopyLogDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataBoxDiskCopyLogDetailsResponse(
-      copyLogDetailsType: map['copyLogDetailsType'] as String,
-      diskSerialNumber: map['diskSerialNumber'] as String,
-      errorLogLink: map['errorLogLink'] as String,
-      verboseLogLink: map['verboseLogLink'] as String,
+      copyLogDetailsType: (map['copyLogDetailsType'] as String).input(),
+      diskSerialNumber: (map['diskSerialNumber'] as String).input(),
+      errorLogLink: (map['errorLogLink'] as String).input(),
+      verboseLogLink: (map['verboseLogLink'] as String).input(),
     );
   }
 }

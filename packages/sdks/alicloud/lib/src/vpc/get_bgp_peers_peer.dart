@@ -1,45 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBgpPeersPeer {
   /// The authentication key of the BGP group.
-  final String authKey;
+  final pulumi.Input<String> authKey;
   /// The BFD hop count.
-  final int bfdMultiHop;
+  final pulumi.Input<int> bfdMultiHop;
   /// The ID of the BGP group.
-  final String bgpGroupId;
+  final pulumi.Input<String> bgpGroupId;
   /// The ID of the BGP neighbor.
-  final String bgpPeerId;
+  final pulumi.Input<String> bgpPeerId;
   /// The name of the BGP neighbor.
-  final String bgpPeerName;
+  final pulumi.Input<String> bgpPeerName;
   /// The status of the BGP connection.
-  final String bgpStatus;
+  final pulumi.Input<String> bgpStatus;
   /// The description of the BGP group.
-  final String description;
+  final pulumi.Input<String> description;
   /// Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
-  final bool enableBfd;
+  final pulumi.Input<bool> enableBfd;
   /// The hold time.
-  final String hold;
+  final pulumi.Input<String> hold;
   /// The ID of the Bgp Peer.
-  final String id;
+  final pulumi.Input<String> id;
   /// The IP version.
-  final String ipVersion;
+  final pulumi.Input<String> ipVersion;
   /// Indicates whether a fake AS number is used.
-  final bool isFake;
+  final pulumi.Input<bool> isFake;
   /// The keepalive time.
-  final String keepalive;
+  final pulumi.Input<String> keepalive;
   /// The AS number of the device on the Alibaba Cloud side.
-  final String localAsn;
+  final pulumi.Input<String> localAsn;
   /// The autonomous system (AS) number of the BGP peer.
-  final String peerAsn;
+  final pulumi.Input<String> peerAsn;
   /// The IP address of the BGP neighbor.
-  final String peerIpAddress;
+  final pulumi.Input<String> peerIpAddress;
   /// The limit on routes.
-  final String routeLimit;
+  final pulumi.Input<String> routeLimit;
   /// The ID of the router.
-  final String routerId;
+  final pulumi.Input<String> routerId;
   /// The status of the BGP peer.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBgpPeersPeer].
   /// [authKey] The authentication key of the BGP group.
@@ -109,25 +110,25 @@ class GetBgpPeersPeer {
 
   factory GetBgpPeersPeer.fromMap(Map<String, dynamic> map) {
     return GetBgpPeersPeer(
-      authKey: map['authKey'] as String,
-      bfdMultiHop: map['bfdMultiHop'] as int,
-      bgpGroupId: map['bgpGroupId'] as String,
-      bgpPeerId: map['bgpPeerId'] as String,
-      bgpPeerName: map['bgpPeerName'] as String,
-      bgpStatus: map['bgpStatus'] as String,
-      description: map['description'] as String,
-      enableBfd: map['enableBfd'] as bool,
-      hold: map['hold'] as String,
-      id: map['id'] as String,
-      ipVersion: map['ipVersion'] as String,
-      isFake: map['isFake'] as bool,
-      keepalive: map['keepalive'] as String,
-      localAsn: map['localAsn'] as String,
-      peerAsn: map['peerAsn'] as String,
-      peerIpAddress: map['peerIpAddress'] as String,
-      routeLimit: map['routeLimit'] as String,
-      routerId: map['routerId'] as String,
-      status: map['status'] as String,
+      authKey: (map['authKey'] as String).input(),
+      bfdMultiHop: (map['bfdMultiHop'] as int).input(),
+      bgpGroupId: (map['bgpGroupId'] as String).input(),
+      bgpPeerId: (map['bgpPeerId'] as String).input(),
+      bgpPeerName: (map['bgpPeerName'] as String).input(),
+      bgpStatus: (map['bgpStatus'] as String).input(),
+      description: (map['description'] as String).input(),
+      enableBfd: (map['enableBfd'] as bool).input(),
+      hold: (map['hold'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipVersion: (map['ipVersion'] as String).input(),
+      isFake: (map['isFake'] as bool).input(),
+      keepalive: (map['keepalive'] as String).input(),
+      localAsn: (map['localAsn'] as String).input(),
+      peerAsn: (map['peerAsn'] as String).input(),
+      peerIpAddress: (map['peerIpAddress'] as String).input(),
+      routeLimit: (map['routeLimit'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

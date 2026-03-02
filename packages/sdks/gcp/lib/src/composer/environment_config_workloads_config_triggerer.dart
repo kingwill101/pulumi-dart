@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentConfigWorkloadsConfigTriggerer {
   /// The number of triggerers.
-  final int count;
+  final pulumi.Input<int> count;
   /// CPU request and limit for a single Airflow triggerer replica.
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// Memory (GB) request and limit for a single Airflow triggerer replica.
-  final double memoryGb;
+  final pulumi.Input<double> memoryGb;
 
   /// Creates a new [EnvironmentConfigWorkloadsConfigTriggerer].
   /// [count] The number of triggerers.
@@ -29,9 +30,9 @@ class EnvironmentConfigWorkloadsConfigTriggerer {
 
   factory EnvironmentConfigWorkloadsConfigTriggerer.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfigTriggerer(
-      count: map['count'] as int,
-      cpu: map['cpu'] as double,
-      memoryGb: map['memoryGb'] as double,
+      count: (map['count'] as int).input(),
+      cpu: (map['cpu'] as double).input(),
+      memoryGb: (map['memoryGb'] as double).input(),
     );
   }
 }

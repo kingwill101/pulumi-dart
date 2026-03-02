@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings {
   /// Describes whether model deployment permissions are enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings].
   /// [status] Describes whether model deployment permissions are enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
@@ -19,7 +20,7 @@ class DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings {
 
   factory DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

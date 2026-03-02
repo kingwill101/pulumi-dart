@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// High availability properties of a server.
 class HighAvailabilityResponse {
   /// High availability mode for a server.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
-  final String? standbyAvailabilityZone;
+  final pulumi.Input<String>? standbyAvailabilityZone;
   /// Possible states of the standby server created when high availability is set to SameZone or ZoneRedundant.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [HighAvailabilityResponse].
   /// [mode] High availability mode for a server.
@@ -30,9 +31,9 @@ class HighAvailabilityResponse {
 
   factory HighAvailabilityResponse.fromMap(Map<String, dynamic> map) {
     return HighAvailabilityResponse(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      standbyAvailabilityZone: map['standbyAvailabilityZone'] == null ? null : map['standbyAvailabilityZone'] as String,
-      state: map['state'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      standbyAvailabilityZone: map['standbyAvailabilityZone'] == null ? null : (map['standbyAvailabilityZone'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

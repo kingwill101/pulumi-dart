@@ -19,13 +19,10 @@ class ServiceMonitoringAgentProcessArgs {
   /// [processName] The name of the process.
   /// [processUser] The user who launches the process.
   ServiceMonitoringAgentProcessArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> processName,
-    pulumi.Output<String>? processUser,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      processName = pulumi.Input.asInput<String>(processName),
-      processUser = pulumi.Input.asOptionalInput<String>(processUser);
+    required this.instanceId,
+    required this.processName,
+    this.processUser,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ServiceMonitoringAgentProcessArgs {
 
   factory ServiceMonitoringAgentProcessArgs.fromMap(Map<String, dynamic> map) {
     return ServiceMonitoringAgentProcessArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      processName: pulumi.Output.create<String>(map['processName'] as String),
-      processUser: map['processUser'] == null ? null : pulumi.Output.create<String>(map['processUser'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      processName: (map['processName'] as String).input(),
+      processUser: map['processUser'] == null ? null : (map['processUser'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Pub/Sub destination.
 class PubsubDestination {
   /// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
-  final String? topic;
+  final pulumi.Input<String>? topic;
 
   /// Creates a new [PubsubDestination].
   /// [topic] The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
@@ -20,7 +21,7 @@ class PubsubDestination {
 
   factory PubsubDestination.fromMap(Map<String, dynamic> map) {
     return PubsubDestination(
-      topic: map['topic'] == null ? null : map['topic'] as String,
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

@@ -18,15 +18,11 @@ class PlacementGroupState {
   /// [servers] Optional.
   /// [type] Type of the Placement Group.
   PlacementGroupState({
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<int>>? servers,
-    pulumi.Output<String>? type,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      servers = pulumi.Input.asOptionalInput<List<int>>(servers),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.labels,
+    this.name,
+    this.servers,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class PlacementGroupState {
 
   factory PlacementGroupState.fromMap(Map<String, dynamic> map) {
     return PlacementGroupState(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      servers: map['servers'] == null ? null : pulumi.Output.create<List<int>>((map['servers'] as List).cast<int>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      servers: map['servers'] == null ? null : ((map['servers'] as List).cast<int>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

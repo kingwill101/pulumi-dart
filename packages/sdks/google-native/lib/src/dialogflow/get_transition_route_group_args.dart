@@ -22,19 +22,13 @@ class GetTransitionRouteGroupArgs {
   /// [project] Optional.
   /// [transitionRouteGroupId] Required.
   GetTransitionRouteGroupArgs({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> flowId,
-    pulumi.Output<String>? languageCode,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> transitionRouteGroupId,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      flowId = pulumi.Input.asInput<String>(flowId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      transitionRouteGroupId = pulumi.Input.asInput<String>(transitionRouteGroupId);
+    required this.agentId,
+    required this.flowId,
+    this.languageCode,
+    required this.location,
+    this.project,
+    required this.transitionRouteGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class GetTransitionRouteGroupArgs {
 
   factory GetTransitionRouteGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitionRouteGroupArgs(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      flowId: pulumi.Output.create<String>(map['flowId'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      transitionRouteGroupId: pulumi.Output.create<String>(map['transitionRouteGroupId'] as String),
+      agentId: (map['agentId'] as String).input(),
+      flowId: (map['flowId'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      transitionRouteGroupId: (map['transitionRouteGroupId'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class ListShareSynchronizationsArgs {
   /// [shareName] The name of the share.
   /// [skipToken] Continuation token
   ListShareSynchronizationsArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? orderby,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareName,
-    pulumi.Output<String>? skipToken,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      orderby = pulumi.Input.asOptionalInput<String>(orderby),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareName = pulumi.Input.asInput<String>(shareName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken);
+    required this.accountName,
+    this.filter,
+    this.orderby,
+    required this.resourceGroupName,
+    required this.shareName,
+    this.skipToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ListShareSynchronizationsArgs {
 
   factory ListShareSynchronizationsArgs.fromMap(Map<String, dynamic> map) {
     return ListShareSynchronizationsArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      orderby: map['orderby'] == null ? null : pulumi.Output.create<String>(map['orderby'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareName: pulumi.Output.create<String>(map['shareName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
+      accountName: (map['accountName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      orderby: map['orderby'] == null ? null : (map['orderby'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareName: (map['shareName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
     );
   }
 }

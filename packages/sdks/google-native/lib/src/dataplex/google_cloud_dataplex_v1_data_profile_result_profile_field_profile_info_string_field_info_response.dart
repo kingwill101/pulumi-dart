@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The profile information for a string type field.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse {
   /// Average length of non-null values in the scanned data.
-  final double averageLength;
+  final pulumi.Input<double> averageLength;
   /// Maximum length of non-null values in the scanned data.
-  final String maxLength;
+  final pulumi.Input<String> maxLength;
   /// Minimum length of non-null values in the scanned data.
-  final String minLength;
+  final pulumi.Input<String> minLength;
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse].
   /// [averageLength] Average length of non-null values in the scanned data.
@@ -30,9 +31,9 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
 
   factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse(
-      averageLength: map['averageLength'] as double,
-      maxLength: map['maxLength'] as String,
-      minLength: map['minLength'] as String,
+      averageLength: (map['averageLength'] as double).input(),
+      maxLength: (map['maxLength'] as String).input(),
+      minLength: (map['minLength'] as String).input(),
     );
   }
 }

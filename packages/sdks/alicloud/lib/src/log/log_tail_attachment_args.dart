@@ -19,13 +19,10 @@ class LogTailAttachmentArgs {
   /// [machineGroupName] The machine group name, which is unique in the same project.
   /// [project] The project name to the log store belongs.
   LogTailAttachmentArgs({
-    required pulumi.Output<String> logtailConfigName,
-    required pulumi.Output<String> machineGroupName,
-    required pulumi.Output<String> project,
-  }) :
-      logtailConfigName = pulumi.Input.asInput<String>(logtailConfigName),
-      machineGroupName = pulumi.Input.asInput<String>(machineGroupName),
-      project = pulumi.Input.asInput<String>(project);
+    required this.logtailConfigName,
+    required this.machineGroupName,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LogTailAttachmentArgs {
 
   factory LogTailAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LogTailAttachmentArgs(
-      logtailConfigName: pulumi.Output.create<String>(map['logtailConfigName'] as String),
-      machineGroupName: pulumi.Output.create<String>(map['machineGroupName'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      logtailConfigName: (map['logtailConfigName'] as String).input(),
+      machineGroupName: (map['machineGroupName'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

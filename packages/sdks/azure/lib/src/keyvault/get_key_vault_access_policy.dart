@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeyVaultAccessPolicy {
   /// The Object ID of a Azure Active Directory Application.
-  final String applicationId;
+  final pulumi.Input<String> applicationId;
   /// A list of certificate permissions applicable to this Access Policy.
-  final List<String> certificatePermissions;
+  final pulumi.Input<List<String>> certificatePermissions;
   /// A list of key permissions applicable to this Access Policy.
-  final List<String> keyPermissions;
+  final pulumi.Input<List<String>> keyPermissions;
   /// An Object ID of a User, Service Principal or Security Group.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// A list of secret permissions applicable to this Access Policy.
-  final List<String> secretPermissions;
+  final pulumi.Input<List<String>> secretPermissions;
   /// A list of storage permissions applicable to this Access Policy.
-  final List<String> storagePermissions;
+  final pulumi.Input<List<String>> storagePermissions;
   /// The Azure Active Directory Tenant ID used to authenticate requests for this Key Vault.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetKeyVaultAccessPolicy].
   /// [applicationId] The Object ID of a Azure Active Directory Application.
@@ -49,13 +50,13 @@ class GetKeyVaultAccessPolicy {
 
   factory GetKeyVaultAccessPolicy.fromMap(Map<String, dynamic> map) {
     return GetKeyVaultAccessPolicy(
-      applicationId: map['applicationId'] as String,
-      certificatePermissions: (map['certificatePermissions'] as List).cast<String>(),
-      keyPermissions: (map['keyPermissions'] as List).cast<String>(),
-      objectId: map['objectId'] as String,
-      secretPermissions: (map['secretPermissions'] as List).cast<String>(),
-      storagePermissions: (map['storagePermissions'] as List).cast<String>(),
-      tenantId: map['tenantId'] as String,
+      applicationId: (map['applicationId'] as String).input(),
+      certificatePermissions: ((map['certificatePermissions'] as List).cast<String>()).input(),
+      keyPermissions: ((map['keyPermissions'] as List).cast<String>()).input(),
+      objectId: (map['objectId'] as String).input(),
+      secretPermissions: ((map['secretPermissions'] as List).cast<String>()).input(),
+      storagePermissions: ((map['storagePermissions'] as List).cast<String>()).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetImageDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   GetImageDefinitionArgs({
-    required pulumi.Output<String> imageDefinitionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> testBaseAccountName,
-  }) :
-      imageDefinitionName = pulumi.Input.asInput<String>(imageDefinitionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName);
+    required this.imageDefinitionName,
+    required this.resourceGroupName,
+    required this.testBaseAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetImageDefinitionArgs {
 
   factory GetImageDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetImageDefinitionArgs(
-      imageDefinitionName: pulumi.Output.create<String>(map['imageDefinitionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
+      imageDefinitionName: (map['imageDefinitionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }
 }

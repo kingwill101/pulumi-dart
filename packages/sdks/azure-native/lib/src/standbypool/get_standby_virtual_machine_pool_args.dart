@@ -16,11 +16,9 @@ class GetStandbyVirtualMachinePoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [standbyVirtualMachinePoolName] Name of the standby virtual machine pool
   GetStandbyVirtualMachinePoolArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> standbyVirtualMachinePoolName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      standbyVirtualMachinePoolName = pulumi.Input.asInput<String>(standbyVirtualMachinePoolName);
+    required this.resourceGroupName,
+    required this.standbyVirtualMachinePoolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStandbyVirtualMachinePoolArgs {
 
   factory GetStandbyVirtualMachinePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetStandbyVirtualMachinePoolArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      standbyVirtualMachinePoolName: pulumi.Output.create<String>(map['standbyVirtualMachinePoolName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      standbyVirtualMachinePoolName: (map['standbyVirtualMachinePoolName'] as String).input(),
     );
   }
 }

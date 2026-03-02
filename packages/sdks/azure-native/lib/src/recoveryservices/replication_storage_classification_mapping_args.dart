@@ -29,19 +29,13 @@ class ReplicationStorageClassificationMappingArgs {
   /// [storageClassificationMappingName] Storage classification mapping name.
   /// [storageClassificationName] Storage classification name.
   ReplicationStorageClassificationMappingArgs({
-    required pulumi.Output<String> fabricName,
-    pulumi.Output<StorageMappingInputProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? storageClassificationMappingName,
-    required pulumi.Output<String> storageClassificationName,
-  }) :
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      properties = pulumi.Input.asOptionalInput<StorageMappingInputProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      storageClassificationMappingName = pulumi.Input.asOptionalInput<String>(storageClassificationMappingName),
-      storageClassificationName = pulumi.Input.asInput<String>(storageClassificationName);
+    required this.fabricName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.storageClassificationMappingName,
+    required this.storageClassificationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ReplicationStorageClassificationMappingArgs {
 
   factory ReplicationStorageClassificationMappingArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationStorageClassificationMappingArgs(
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<StorageMappingInputProperties>(StorageMappingInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      storageClassificationMappingName: map['storageClassificationMappingName'] == null ? null : pulumi.Output.create<String>(map['storageClassificationMappingName'] as String),
-      storageClassificationName: pulumi.Output.create<String>(map['storageClassificationName'] as String),
+      fabricName: (map['fabricName'] as String).input(),
+      properties: map['properties'] == null ? null : (StorageMappingInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      storageClassificationMappingName: map['storageClassificationMappingName'] == null ? null : (map['storageClassificationMappingName'] as String).input(),
+      storageClassificationName: (map['storageClassificationName'] as String).input(),
     );
   }
 }

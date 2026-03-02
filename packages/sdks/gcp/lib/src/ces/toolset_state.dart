@@ -55,31 +55,19 @@ class ToolsetState {
   /// [toolsetId] The ID to use for the toolset, which will become the final component of
   /// [updateTime] Timestamp when the toolset was last updated.
   ToolsetState({
-    pulumi.Output<String>? app,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? executionType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<ToolsetOpenApiToolset>? openApiToolset,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? toolsetId,
-    pulumi.Output<String>? updateTime,
-  }) :
-      app = pulumi.Input.asOptionalInput<String>(app),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      executionType = pulumi.Input.asOptionalInput<String>(executionType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      openApiToolset = pulumi.Input.asOptionalInput<ToolsetOpenApiToolset>(openApiToolset),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      toolsetId = pulumi.Input.asOptionalInput<String>(toolsetId),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.app,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.executionType,
+    this.location,
+    this.name,
+    this.openApiToolset,
+    this.project,
+    this.toolsetId,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,18 +88,18 @@ class ToolsetState {
 
   factory ToolsetState.fromMap(Map<String, dynamic> map) {
     return ToolsetState(
-      app: map['app'] == null ? null : pulumi.Output.create<String>(map['app'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      executionType: map['executionType'] == null ? null : pulumi.Output.create<String>(map['executionType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      openApiToolset: map['openApiToolset'] == null ? null : pulumi.Output.create<ToolsetOpenApiToolset>(ToolsetOpenApiToolset.fromMap((map['openApiToolset'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      toolsetId: map['toolsetId'] == null ? null : pulumi.Output.create<String>(map['toolsetId'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      app: map['app'] == null ? null : (map['app'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      openApiToolset: map['openApiToolset'] == null ? null : (ToolsetOpenApiToolset.fromMap((map['openApiToolset'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      toolsetId: map['toolsetId'] == null ? null : (map['toolsetId'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

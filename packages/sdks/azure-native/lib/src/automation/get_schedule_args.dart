@@ -19,13 +19,10 @@ class GetScheduleArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [scheduleName] The schedule name.
   GetScheduleArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scheduleName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleName = pulumi.Input.asInput<String>(scheduleName);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+    required this.scheduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetScheduleArgs {
 
   factory GetScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduleArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleName: pulumi.Output.create<String>(map['scheduleName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleName: (map['scheduleName'] as String).input(),
     );
   }
 }

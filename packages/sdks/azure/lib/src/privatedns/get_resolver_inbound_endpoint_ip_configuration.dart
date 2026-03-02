@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResolverInboundEndpointIpConfiguration {
   /// The private IP address of the IP configuration.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// The private IP address allocation method.
-  final String privateIpAllocationMethod;
+  final pulumi.Input<String> privateIpAllocationMethod;
   /// The subnet ID of the IP configuration.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetResolverInboundEndpointIpConfiguration].
   /// [privateIpAddress] The private IP address of the IP configuration.
@@ -29,9 +30,9 @@ class GetResolverInboundEndpointIpConfiguration {
 
   factory GetResolverInboundEndpointIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetResolverInboundEndpointIpConfiguration(
-      privateIpAddress: map['privateIpAddress'] as String,
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] as String,
-      subnetId: map['subnetId'] as String,
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      privateIpAllocationMethod: (map['privateIpAllocationMethod'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

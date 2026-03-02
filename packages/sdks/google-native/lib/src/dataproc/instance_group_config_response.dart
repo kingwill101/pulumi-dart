@@ -11,33 +11,33 @@ import 'startup_config_response.dart';
 /// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
 class InstanceGroupConfigResponse {
   /// Optional. The Compute Engine accelerator configuration for these instances.
-  final List<AcceleratorConfigResponse> accelerators;
+  final pulumi.Input<List<AcceleratorConfigResponse>> accelerators;
   /// Optional. Disk option config settings.
-  final DiskConfigResponse diskConfig;
+  final pulumi.Input<DiskConfigResponse> diskConfig;
   /// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
-  final String imageUri;
+  final pulumi.Input<String> imageUri;
   /// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
-  final InstanceFlexibilityPolicyResponse instanceFlexibilityPolicy;
+  final pulumi.Input<InstanceFlexibilityPolicyResponse> instanceFlexibilityPolicy;
   /// The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
-  final List<String> instanceNames;
+  final pulumi.Input<List<String>> instanceNames;
   /// List of references to Compute Engine instances.
-  final List<InstanceReferenceResponse> instanceReferences;
+  final pulumi.Input<List<InstanceReferenceResponse>> instanceReferences;
   /// Specifies that this instance group contains preemptible instances.
-  final bool isPreemptible;
+  final pulumi.Input<bool> isPreemptible;
   /// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
-  final String machineTypeUri;
+  final pulumi.Input<String> machineTypeUri;
   /// The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-  final ManagedGroupConfigResponse managedGroupConfig;
+  final pulumi.Input<ManagedGroupConfigResponse> managedGroupConfig;
   /// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-  final String minCpuPlatform;
+  final pulumi.Input<String> minCpuPlatform;
   /// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
-  final int minNumInstances;
+  final pulumi.Input<int> minNumInstances;
   /// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
-  final int numInstances;
+  final pulumi.Input<int> numInstances;
   /// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
-  final String preemptibility;
+  final pulumi.Input<String> preemptibility;
   /// Optional. Configuration to handle the startup of instances during cluster create and update process.
-  final StartupConfigResponse startupConfig;
+  final pulumi.Input<StartupConfigResponse> startupConfig;
 
   /// Creates a new [InstanceGroupConfigResponse].
   /// [accelerators] Optional. The Compute Engine accelerator configuration for these instances.
@@ -73,39 +73,39 @@ class InstanceGroupConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accelerators': pulumi.Input.encodeList<AcceleratorConfigResponse, Map<String, dynamic>>(accelerators, (value) => value.toMap()),
-      'diskConfig': diskConfig.toMap(),
+      'accelerators': pulumi.Input.mapInputValue<List<AcceleratorConfigResponse>, List<Map<String, dynamic>>>(accelerators, (value) => pulumi.Input.encodeList<AcceleratorConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'diskConfig': pulumi.Input.mapInputValue<DiskConfigResponse, Map<String, dynamic>>(diskConfig, (value) => value.toMap()),
       'imageUri': imageUri,
-      'instanceFlexibilityPolicy': instanceFlexibilityPolicy.toMap(),
+      'instanceFlexibilityPolicy': pulumi.Input.mapInputValue<InstanceFlexibilityPolicyResponse, Map<String, dynamic>>(instanceFlexibilityPolicy, (value) => value.toMap()),
       'instanceNames': instanceNames,
-      'instanceReferences': pulumi.Input.encodeList<InstanceReferenceResponse, Map<String, dynamic>>(instanceReferences, (value) => value.toMap()),
+      'instanceReferences': pulumi.Input.mapInputValue<List<InstanceReferenceResponse>, List<Map<String, dynamic>>>(instanceReferences, (value) => pulumi.Input.encodeList<InstanceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isPreemptible': isPreemptible,
       'machineTypeUri': machineTypeUri,
-      'managedGroupConfig': managedGroupConfig.toMap(),
+      'managedGroupConfig': pulumi.Input.mapInputValue<ManagedGroupConfigResponse, Map<String, dynamic>>(managedGroupConfig, (value) => value.toMap()),
       'minCpuPlatform': minCpuPlatform,
       'minNumInstances': minNumInstances,
       'numInstances': numInstances,
       'preemptibility': preemptibility,
-      'startupConfig': startupConfig.toMap(),
+      'startupConfig': pulumi.Input.mapInputValue<StartupConfigResponse, Map<String, dynamic>>(startupConfig, (value) => value.toMap()),
     };
   }
 
   factory InstanceGroupConfigResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupConfigResponse(
-      accelerators: pulumi.Input.decodeList<AcceleratorConfigResponse>(map['accelerators'], (value) => AcceleratorConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      diskConfig: DiskConfigResponse.fromMap((map['diskConfig'] as Map).cast<String, dynamic>()),
-      imageUri: map['imageUri'] as String,
-      instanceFlexibilityPolicy: InstanceFlexibilityPolicyResponse.fromMap((map['instanceFlexibilityPolicy'] as Map).cast<String, dynamic>()),
-      instanceNames: (map['instanceNames'] as List).cast<String>(),
-      instanceReferences: pulumi.Input.decodeList<InstanceReferenceResponse>(map['instanceReferences'], (value) => InstanceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      isPreemptible: map['isPreemptible'] as bool,
-      machineTypeUri: map['machineTypeUri'] as String,
-      managedGroupConfig: ManagedGroupConfigResponse.fromMap((map['managedGroupConfig'] as Map).cast<String, dynamic>()),
-      minCpuPlatform: map['minCpuPlatform'] as String,
-      minNumInstances: map['minNumInstances'] as int,
-      numInstances: map['numInstances'] as int,
-      preemptibility: map['preemptibility'] as String,
-      startupConfig: StartupConfigResponse.fromMap((map['startupConfig'] as Map).cast<String, dynamic>()),
+      accelerators: (pulumi.Input.decodeList<AcceleratorConfigResponse>(map['accelerators'], (value) => AcceleratorConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskConfig: (DiskConfigResponse.fromMap((map['diskConfig'] as Map).cast<String, dynamic>())).input(),
+      imageUri: (map['imageUri'] as String).input(),
+      instanceFlexibilityPolicy: (InstanceFlexibilityPolicyResponse.fromMap((map['instanceFlexibilityPolicy'] as Map).cast<String, dynamic>())).input(),
+      instanceNames: ((map['instanceNames'] as List).cast<String>()).input(),
+      instanceReferences: (pulumi.Input.decodeList<InstanceReferenceResponse>(map['instanceReferences'], (value) => InstanceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isPreemptible: (map['isPreemptible'] as bool).input(),
+      machineTypeUri: (map['machineTypeUri'] as String).input(),
+      managedGroupConfig: (ManagedGroupConfigResponse.fromMap((map['managedGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      minCpuPlatform: (map['minCpuPlatform'] as String).input(),
+      minNumInstances: (map['minNumInstances'] as int).input(),
+      numInstances: (map['numInstances'] as int).input(),
+      preemptibility: (map['preemptibility'] as String).input(),
+      startupConfig: (StartupConfigResponse.fromMap((map['startupConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

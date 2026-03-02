@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetLogicalTableMapDataTransformProjectOperation {
-  final List<String> projectedColumns;
+  final pulumi.Input<List<String>> projectedColumns;
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformProjectOperation].
   /// [projectedColumns] Required.
@@ -18,7 +19,7 @@ class GetDataSetLogicalTableMapDataTransformProjectOperation {
 
   factory GetDataSetLogicalTableMapDataTransformProjectOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformProjectOperation(
-      projectedColumns: (map['projectedColumns'] as List).cast<String>(),
+      projectedColumns: ((map['projectedColumns'] as List).cast<String>()).input(),
     );
   }
 }

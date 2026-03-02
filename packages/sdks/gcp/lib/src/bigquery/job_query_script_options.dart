@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobQueryScriptOptions {
   /// Determines which statement in the script represents the "key result",
   /// used to populate the schema and query results of the script job.
   /// Possible values are: `LAST`, `FIRST_SELECT`.
-  final String? keyResultStatement;
+  final pulumi.Input<String>? keyResultStatement;
   /// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
-  final String? statementByteBudget;
+  final pulumi.Input<String>? statementByteBudget;
   /// Timeout period for each statement in a script.
-  final String? statementTimeoutMs;
+  final pulumi.Input<String>? statementTimeoutMs;
 
   /// Creates a new [JobQueryScriptOptions].
   /// [keyResultStatement] Determines which statement in the script represents the "key result",
@@ -31,9 +32,9 @@ class JobQueryScriptOptions {
 
   factory JobQueryScriptOptions.fromMap(Map<String, dynamic> map) {
     return JobQueryScriptOptions(
-      keyResultStatement: map['keyResultStatement'] == null ? null : map['keyResultStatement'] as String,
-      statementByteBudget: map['statementByteBudget'] == null ? null : map['statementByteBudget'] as String,
-      statementTimeoutMs: map['statementTimeoutMs'] == null ? null : map['statementTimeoutMs'] as String,
+      keyResultStatement: map['keyResultStatement'] == null ? null : (map['keyResultStatement'] as String).input(),
+      statementByteBudget: map['statementByteBudget'] == null ? null : (map['statementByteBudget'] as String).input(),
+      statementTimeoutMs: map['statementTimeoutMs'] == null ? null : (map['statementTimeoutMs'] as String).input(),
     );
   }
 }

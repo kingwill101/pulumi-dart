@@ -22,15 +22,11 @@ class AccessPackageCatalogArgs {
   /// [externallyVisible] Whether the access packages in this catalog can be requested by users outside the tenant.
   /// [published] Whether the access packages in this catalog are available for management.
   AccessPackageCatalogArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? externallyVisible,
-    pulumi.Output<bool>? published,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      externallyVisible = pulumi.Input.asOptionalInput<bool>(externallyVisible),
-      published = pulumi.Input.asOptionalInput<bool>(published);
+    required this.description,
+    required this.displayName,
+    this.externallyVisible,
+    this.published,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AccessPackageCatalogArgs {
 
   factory AccessPackageCatalogArgs.fromMap(Map<String, dynamic> map) {
     return AccessPackageCatalogArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      externallyVisible: map['externallyVisible'] == null ? null : pulumi.Output.create<bool>(map['externallyVisible'] as bool),
-      published: map['published'] == null ? null : pulumi.Output.create<bool>(map['published'] as bool),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      externallyVisible: map['externallyVisible'] == null ? null : (map['externallyVisible'] as bool).input(),
+      published: map['published'] == null ? null : (map['published'] as bool).input(),
     );
   }
 }

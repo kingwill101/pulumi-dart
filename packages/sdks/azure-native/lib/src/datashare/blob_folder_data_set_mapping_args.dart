@@ -44,29 +44,18 @@ class BlobFolderDataSetMappingArgs {
   /// [storageAccountName] Storage account name of the source data set.
   /// [subscriptionId] Subscription id of storage account.
   BlobFolderDataSetMappingArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> dataSetId,
-    pulumi.Output<String>? dataSetMappingName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> prefix,
-    required pulumi.Output<String> resourceGroup,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareSubscriptionName,
-    required pulumi.Output<String> storageAccountName,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      dataSetId = pulumi.Input.asInput<String>(dataSetId),
-      dataSetMappingName = pulumi.Input.asOptionalInput<String>(dataSetMappingName),
-      kind = pulumi.Input.asInput<String>(kind),
-      prefix = pulumi.Input.asInput<String>(prefix),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    required this.accountName,
+    required this.containerName,
+    required this.dataSetId,
+    this.dataSetMappingName,
+    required this.kind,
+    required this.prefix,
+    required this.resourceGroup,
+    required this.resourceGroupName,
+    required this.shareSubscriptionName,
+    required this.storageAccountName,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class BlobFolderDataSetMappingArgs {
 
   factory BlobFolderDataSetMappingArgs.fromMap(Map<String, dynamic> map) {
     return BlobFolderDataSetMappingArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      dataSetId: pulumi.Output.create<String>(map['dataSetId'] as String),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : pulumi.Output.create<String>(map['dataSetMappingName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      prefix: pulumi.Output.create<String>(map['prefix'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      dataSetId: (map['dataSetId'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

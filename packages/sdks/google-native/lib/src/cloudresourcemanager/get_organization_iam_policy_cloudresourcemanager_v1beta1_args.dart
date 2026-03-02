@@ -12,9 +12,8 @@ class GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args {
   /// Creates a new [GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args].
   /// [organizationId] Required.
   GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args({
-    required pulumi.Output<String> organizationId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args {
 
   factory GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args(
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

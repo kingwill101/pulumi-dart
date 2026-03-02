@@ -38,25 +38,16 @@ class InferenceClusterState {
   /// [ssl] A `ssl` block as defined below. Changing this forces a new Machine Learning Inference Cluster to be created.
   /// [tags] A mapping of tags which should be assigned to the Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   InferenceClusterState({
-    pulumi.Output<String>? clusterPurpose,
-    pulumi.Output<String>? description,
-    pulumi.Output<InferenceClusterIdentity>? identity,
-    pulumi.Output<String>? kubernetesClusterId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? machineLearningWorkspaceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<InferenceClusterSsl>? ssl,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterPurpose = pulumi.Input.asOptionalInput<String>(clusterPurpose),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      identity = pulumi.Input.asOptionalInput<InferenceClusterIdentity>(identity),
-      kubernetesClusterId = pulumi.Input.asOptionalInput<String>(kubernetesClusterId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      machineLearningWorkspaceId = pulumi.Input.asOptionalInput<String>(machineLearningWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ssl = pulumi.Input.asOptionalInput<InferenceClusterSsl>(ssl),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.clusterPurpose,
+    this.description,
+    this.identity,
+    this.kubernetesClusterId,
+    this.location,
+    this.machineLearningWorkspaceId,
+    this.name,
+    this.ssl,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class InferenceClusterState {
 
   factory InferenceClusterState.fromMap(Map<String, dynamic> map) {
     return InferenceClusterState(
-      clusterPurpose: map['clusterPurpose'] == null ? null : pulumi.Output.create<String>(map['clusterPurpose'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<InferenceClusterIdentity>(InferenceClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : pulumi.Output.create<String>(map['kubernetesClusterId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      machineLearningWorkspaceId: map['machineLearningWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['machineLearningWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ssl: map['ssl'] == null ? null : pulumi.Output.create<InferenceClusterSsl>(InferenceClusterSsl.fromMap((map['ssl'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterPurpose: map['clusterPurpose'] == null ? null : (map['clusterPurpose'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      identity: map['identity'] == null ? null : (InferenceClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      machineLearningWorkspaceId: map['machineLearningWorkspaceId'] == null ? null : (map['machineLearningWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ssl: map['ssl'] == null ? null : (InferenceClusterSsl.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }
